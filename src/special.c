@@ -253,7 +253,7 @@ static bool dragon( CHAR_DATA *mob, char *spell_name )
     int sn;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -263,13 +263,13 @@ static bool dragon( CHAR_DATA *mob, char *spell_name )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     if ( ( sn = skill_lookup( spell_name ) ) < 0 )
-	return FALSE;
+	return false;
     act("$n rears back...inhales....and BREATHES!",mob,NULL,NULL,TO_ROOM);
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, victim );
-    return TRUE;
+    return true;
 }
  
  
@@ -282,10 +282,10 @@ bool spec_breath_any( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
     if ( cmd != NULL)
-        return FALSE;
+        return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     switch ( number_bits( 3 ) )
     {
@@ -299,7 +299,7 @@ bool spec_breath_any( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     case 7: return spec_breath_frost            ( mob, NULL, NULL, NULL );
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -309,7 +309,7 @@ bool spec_breath_acid( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
     if ( cmd != NULL)
-        return FALSE;
+        return false;
  
     return dragon( mob, "acid breath" );
 }
@@ -319,7 +319,7 @@ bool spec_breath_dispel( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
     if ( cmd != NULL)
-        return FALSE;
+        return false;
  
     return dragon( mob, "dispel breath" );
 }
@@ -330,7 +330,7 @@ bool spec_breath_fire( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
     if ( cmd != NULL)
-        return FALSE;
+        return false;
  
     return dragon( mob, "fire breath" );
 }
@@ -342,7 +342,7 @@ bool spec_breath_frost( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
     if ( cmd != NULL)
-        return FALSE;
+        return false;
  
     return dragon( mob, "frost breath" );
 }
@@ -356,15 +356,15 @@ bool spec_breath_gas( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int sn;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     if ( ( sn = skill_lookup( "gas breath" ) ) < 0 )
-	return FALSE;
+	return false;
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, NULL );
-    return TRUE;
+    return true;
 }
  
  
@@ -374,7 +374,7 @@ bool spec_breath_lightning( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *ar
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
     if ( cmd != NULL)
-        return FALSE;
+        return false;
  
     return dragon( mob, "lightning breath" );
 }
@@ -389,10 +389,10 @@ bool spec_cast_adept( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     CHAR_DATA *v_next;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( !IS_AWAKE(mob) )
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -403,46 +403,46 @@ bool spec_cast_adept( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     switch ( number_bits( 4 ) )
     {
     case 0:
 	act( "$n utters the word 'abrazak'.", mob, NULL, NULL, TO_ROOM );
 	spell_armor( skill_lookup( "armor" ), mob->level, mob, victim );
-	return TRUE;
+	return true;
  
     case 1:
 	act( "$n utters the word 'fido'.", mob, NULL, NULL, TO_ROOM );
 	spell_bless( skill_lookup( "bless" ), mob->level, mob, victim );
-	return TRUE;
+	return true;
  
     case 2:
 	act( "$n utters the word 'judicandus noselacri'.", mob, NULL, NULL, TO_ROOM );
 	spell_cure_blindness( skill_lookup( "cure blindness" ),
 	    mob->level, mob, victim );
-	return TRUE;
+	return true;
  
     case 3:
 	act( "$n utters the word 'judicandus dies'.", mob, NULL, NULL, TO_ROOM );
 	spell_cure_light( skill_lookup( "cure light" ),
 	    mob->level, mob, victim );
-	return TRUE;
+	return true;
  
     case 4:
 	act( "$n utters the words 'judicandus sausabru'.", mob, NULL, NULL, TO_ROOM );
 	spell_cure_poison( skill_lookup( "cure poison" ),
 	    mob->level, mob, victim );
-	return TRUE;
+	return true;
  
     case 5:
 	act( "$n utters the words 'candusima'.", mob, NULL, NULL, TO_ROOM );
 	spell_refresh( skill_lookup( "refresh" ), mob->level, mob, victim );
-	return TRUE;
+	return true;
  
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -458,10 +458,10 @@ bool spec_cast_cleric( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int sn;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -471,7 +471,7 @@ bool spec_cast_cleric( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     for ( ;; )
     {
@@ -509,9 +509,9 @@ bool spec_cast_cleric( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( ( sn = skill_lookup( spell ) ) < 0 )
-	return FALSE;
+	return false;
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, victim );
-    return TRUE;
+    return true;
 }
  
 bool spec_cast_judge( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
@@ -525,10 +525,10 @@ bool spec_cast_judge( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int sn;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -538,13 +538,13 @@ bool spec_cast_judge( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     spell = "high explosive";
     if ( ( sn = skill_lookup( spell ) ) < 0 )
-	return FALSE;
+	return false;
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, victim );
-    return TRUE;
+    return true;
 }
  
  
@@ -560,10 +560,10 @@ bool spec_cast_mage( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int sn;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -573,7 +573,7 @@ bool spec_cast_mage( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     for ( ;; )
     {
@@ -622,9 +622,9 @@ bool spec_cast_mage( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( ( sn = skill_lookup( spell ) ) < 0 )
-	return FALSE;
+	return false;
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, victim );
-    return TRUE;
+    return true;
 }
  
  
@@ -640,10 +640,10 @@ bool spec_cast_undead( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int sn;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -653,7 +653,7 @@ bool spec_cast_undead( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     for ( ;; )
     {
@@ -680,9 +680,9 @@ bool spec_cast_undead( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( ( sn = skill_lookup( spell ) ) < 0 )
-	return FALSE;
+	return false;
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, victim );
-    return TRUE;
+    return true;
 }
  
 bool spec_psionic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
@@ -698,15 +698,15 @@ bool spec_psionic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int chance;
  
     if ( cmd != NULL)
-	   return FALSE;
+	   return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     chance = mob->level + 50;
  
     if(number_percent () > chance)
-	 return FALSE;
+	 return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -716,7 +716,7 @@ bool spec_psionic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     spell = NULL;
  
@@ -744,7 +744,7 @@ bool spec_psionic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	   break;
     }
  
-    return TRUE;
+    return true;
 }
  
 bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
@@ -758,10 +758,10 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     char *crime;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( !IS_AWAKE(mob) || mob->fighting != NULL )
-	return FALSE;
+	return false;
  
     crime = "";
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
@@ -804,7 +804,7 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		if (victim->hit < 1)
 		victim->hit = 1;
 	}
-	return TRUE;
+	return true;
     }
  
     /* Check for whiners */
@@ -907,7 +907,7 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     if ( (victim != NULL) && (buf[0] != '\0') )
 	do_yell(mob,buf);
  
-    return FALSE;
+    return false;
 }
  
  
@@ -921,10 +921,10 @@ bool spec_fido( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     OBJ_DATA *obj_next;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( !IS_AWAKE(mob) )
-	return FALSE;
+	return false;
  
     for ( corpse = mob->in_room->contents; corpse != NULL; corpse = c_next )
     {
@@ -940,10 +940,10 @@ bool spec_fido( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    obj_to_room( obj, mob->in_room );
 	}
 	extract_obj( corpse );
-	return TRUE;
+	return true;
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -960,10 +960,10 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int max_evil;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( !IS_AWAKE(mob) || mob->fighting != NULL )
-	return FALSE;
+	return false;
  
     max_evil = 300;
     ech      = NULL;
@@ -988,7 +988,7 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		   mob, NULL, victim, TO_VICT);
 	    act("$n asks $N 'Do you need your diaper changed?'",
 		   mob, NULL, victim, TO_NOTVICT);
-	    return FALSE;
+	    return false;
 	}
  
 	if ( victim->fighting != NULL
@@ -1001,7 +1001,7 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL)
-	return FALSE;
+	return false;
  
     if ( victim->level < mob->level - 5)
     {
@@ -1020,7 +1020,7 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		mob, NULL, victim, TO_NOTVICT);
 	    victim->position = POS_RESTING;
 	}
-	return TRUE;
+	return true;
     }
  
     if ( victim != NULL )
@@ -1029,7 +1029,7 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    victim->name, crime );
 	do_yell( mob, buf );
 	multi_hit( mob, victim, TYPE_UNDEFINED );
-	return TRUE;
+	return true;
     }
  
     if ( ech != NULL )
@@ -1037,10 +1037,10 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	act( "$n screams 'PROTECT THE INNOCENT!!  BANZAI!!",
 	    mob, NULL, NULL, TO_ROOM );
 	multi_hit( mob, ech, TYPE_UNDEFINED );
-	return TRUE;
+	return true;
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -1053,10 +1053,10 @@ bool spec_janitor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     OBJ_DATA *trash_next;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( !IS_AWAKE(mob) )
-	return FALSE;
+	return false;
  
     for ( trash = mob->in_room->contents; trash != NULL; trash = trash_next )
     {
@@ -1070,11 +1070,11 @@ bool spec_janitor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    act( "$n picks up some trash.", mob, NULL, NULL, TO_ROOM );
 	    obj_from_room( trash );
 	    obj_to_char( trash, mob );
-	    return TRUE;
+	    return true;
 	}
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -1095,21 +1095,21 @@ bool spec_mayor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     char buf[MAX_STRING_LENGTH];
 
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( !move )
     {
 	if ( time_info.hour ==  6 )
 	{
 	    path = open_path;
-	    move = TRUE;
+	    move = true;
 	    pos  = 0;
 	}
  
 	if ( time_info.hour == 20 )
 	{
 	    path = close_path;
-	    move = TRUE;
+	    move = true;
 	    pos  = 0;
 	}
     }
@@ -1117,7 +1117,7 @@ bool spec_mayor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     if ( mob->fighting != NULL )
 	return spec_cast_cleric( mob, NULL, NULL, NULL );
     if ( !move || mob->position < POS_SLEEPING )
-	return FALSE;
+	return false;
  
     switch ( path[pos] )
     {
@@ -1125,7 +1125,7 @@ bool spec_mayor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     case '1':
     case '2':
     case '3':
-	move_char( mob, path[pos] - '0', FALSE );
+	move_char( mob, path[pos] - '0', false );
 	break;
  
     case 'W':
@@ -1183,12 +1183,12 @@ bool spec_mayor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	break;
  
     case '.' :
-	move = FALSE;
+	move = false;
 	break;
     }
  
     pos++;
-    return FALSE;
+    return false;
 }
  
  
@@ -1200,18 +1200,18 @@ bool spec_poison( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     CHAR_DATA *victim;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( mob->position != POS_FIGHTING
     || ( victim = mob->fighting ) == NULL
     ||   number_percent( ) > 2 * mob->level )
-	return FALSE;
+	return false;
  
     act( "You bite $N!",  mob, NULL, victim, TO_CHAR    );
     act( "$n bites $N!",  mob, NULL, victim, TO_NOTVICT );
     act( "$n bites you!", mob, NULL, victim, TO_VICT    );
     spell_poison( gsn_poison, mob->level, mob, victim );
-    return TRUE;
+    return true;
 }
  
  
@@ -1226,10 +1226,10 @@ bool spec_thief( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int type;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( mob->position != POS_STANDING )
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -1250,7 +1250,7 @@ bool spec_thief( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		mob, NULL, victim, TO_VICT );
 	    act( "$N discovers $n's hands in $S wallet!",
 		mob, NULL, victim, TO_NOTVICT );
-	    return TRUE;
+	    return true;
 	}
 	else
 	{   type = number_range(1,4);
@@ -1260,32 +1260,32 @@ bool spec_thief( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	           gold = UMIN(gold, mob->level * mob->level * 20 );
 	           mob->new_gold     += gold;
 	           victim->new_gold -= gold;
-	           return TRUE;
+	           return true;
               case 2:
                    gold = (victim->new_platinum) * UMIN(number_range( 1, 20 ),mob->level) / 100;
                    gold = UMIN(gold, mob->level * mob->level * 20 );
                    mob->new_platinum     += gold;
                    victim->new_platinum -= gold;
-                   return TRUE;
+                   return true;
               case 3:
                   gold = (victim->new_silver) * UMIN(number_range( 1, 20 ),mob->level) / 100;
                    gold = UMIN(gold, mob->level * mob->level * 20 );
                    mob->new_silver     += gold;
                    victim->new_silver -= gold;
-                   return TRUE;
+                   return true;
               case 4:
                   gold = (victim->new_copper) * UMIN(number_range( 1, 20 ),mob->level) / 100;
                    gold = UMIN(gold, mob->level * mob->level * 20 );
                    mob->new_copper     += gold;
                    victim->new_copper -= gold;
-                   return TRUE;
+                   return true;
             };
-            return FALSE;
+            return false;
 
 	}
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -1333,7 +1333,7 @@ bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     CHAR_DATA *v_next;
  
     if ( !IS_AWAKE(mob) )
-	return FALSE;
+	return false;
  
     if (cmd == NULL)
     {
@@ -1355,13 +1355,13 @@ bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    victim->position = POS_STUNNED;
 	    if (victim->hit > 10)
 		victim->hit = 10;
-	    return TRUE;
+	    return true;
 	}
     }
  
-    if (cmd == NULL) return FALSE;
+    if (cmd == NULL) return false;
  
-    if (IS_NPC(ch)) return FALSE;
+    if (IS_NPC(ch)) return false;
  
     for (i=0; gg_table[i].mob_num!=0; i++)
 	if ((gg_table[i].mob_num == mob->pIndexData->vnum)
@@ -1369,7 +1369,7 @@ bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	&& (gg_table[i].cmd == cmd))
 	    break;
  
-    if (gg_table[i].mob_num == 0) return FALSE;
+    if (gg_table[i].mob_num == 0) return false;
  
     if (((gg_table[i].class==CLASS_ANY) || (gg_table[i].class==ch->class)) &&
     ((gg_table[i].guild==GUILD_ANY) || (gg_table[i].guild==ch->pcdata->guild)))
@@ -1384,14 +1384,14 @@ bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    ch->position = POS_STUNNED;
 	    if (ch->hit > 10)
 		ch->hit = 10;
-	    return TRUE;
+	    return true;
 	}
  
-	return FALSE;
+	return false;
     }
  
     act(gg_table[i].msg, mob, NULL, ch, TO_VICT);
-    return TRUE;
+    return true;
 }
  
  
@@ -1412,22 +1412,22 @@ struct {
     int guild, cost;
     char buf[255];
  
-    if (cmd != do_join) return FALSE;
+    if (cmd != do_join) return false;
  
-    if (IS_NPC(ch)) return FALSE;
+    if (IS_NPC(ch)) return false;
  
     if (ch->level < 3)
     {
 	act("$n tells you 'Come back when you are more experienced.'",
 	    mob, NULL, ch, TO_VICT);
-	return TRUE;
+	return true;
     }
  
     if (ch->pcdata->guild != GUILD_NONE)
     {
 	act("$n tells you 'We only accept people who have never"
 		     " been in a guild before.'",mob, NULL, ch, TO_VICT);
-	return TRUE;
+	return true;
     }
  
     if( ch->level > 6 )
@@ -1436,7 +1436,7 @@ struct {
 	mob,NULL,ch,TO_VICT);
       act("$n whispers to you, 'I'd suggest you start over so you can join one.'",
 	mob,NULL,ch,TO_VICT);
-      return TRUE;
+      return true;
     }
  
     cost = 1;
@@ -1446,7 +1446,7 @@ struct {
 	sprintf(buf, "%s tells you 'It will cost you %d to join a guild.'",
 	    mob->name, cost);
 	send_to_char(buf, ch);
-	return TRUE;
+	return true;
     }
  
     guild = guild_lookup(arg);
@@ -1454,14 +1454,14 @@ struct {
     {
 	act("$n tells you 'I am not familiar with that guild.  "
 	    "Are they registered?'", mob, NULL, ch, TO_VICT);
-	return TRUE;
+	return true;
     }
  
     if (!has_enough_gold(ch, cost))
     {
         act("$n tells you 'You don't have enough money to join a guild.'",
             mob, NULL, ch, TO_VICT);
-        return TRUE;
+        return true;
     }
 
     add_money(ch,-1 * cost);
@@ -1469,12 +1469,12 @@ struct {
     act("$n tells you 'You are now a member of the $t guild.'",
 	mob, get_guildname(guild), ch, TO_VICT);
  
-    group_add(ch, guild_bonus[guild].mix, FALSE);
+    group_add(ch, guild_bonus[guild].mix, false);
     sprintf(buf,"You will recieve free introductory training in the %s.",
 		guild_bonus[guild].mix);
     send_to_char(buf, ch);
  
-    return TRUE;
+    return true;
 }
  
  
@@ -1487,7 +1487,7 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
  
     if ( (cmd==NULL) || (ch == NULL)
     || (!IS_SET(ch->in_room->room_flags, ROOM_PET_SHOP) ) )
-	return FALSE;
+	return false;
  
     if ( cmd == do_list)
     {
@@ -1500,17 +1500,17 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	{
 	    bug( "Do_list: bad pet shop at vnum %d.", ch->in_room->vnum );
 	    send_to_char( "You can't do that here.\n\r", ch );
-	    return TRUE;
+	    return true;
 	}
  
-	found = FALSE;
+	found = false;
 	for ( pet = pRoomIndexNext->people; pet; pet = pet->next_in_room )
 	{
 	    if ( IS_SET(pet->act, ACT_PET) )
 	    {
 		if ( !found )
 		{
-		    found = TRUE;
+		    found = true;
 		    send_to_char( "Pets for sale:\n\r", ch );
 		}
 		sprintf( buf, "[%2d] %8d - %s\n\r",
@@ -1522,7 +1522,7 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	}
 	if ( !found )
 	    send_to_char( "Sorry, we're out of pets right now.\n\r", ch );
-	return TRUE;
+	return true;
     }
  
     if ( cmd == do_buy )
@@ -1534,7 +1534,7 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	int cost, roll;
  
 	if ( IS_NPC(ch) )
-	    return TRUE;
+	    return true;
  
 	argument = one_argument(argument,arg);
  
@@ -1543,7 +1543,7 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	{
 	    bug( "Do_buy: bad pet shop at vnum %d.", ch->in_room->vnum );
 	    send_to_char( "Sorry, you can't buy that here.\n\r", ch );
-	    return TRUE;
+	    return true;
 	}
  
 	in_room     = ch->in_room;
@@ -1554,13 +1554,13 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	if ( pet == NULL || !IS_SET(pet->act, ACT_PET) )
 	{
 	    send_to_char( "Sorry, you can't buy that here.\n\r", ch );
-	    return TRUE;
+	    return true;
 	}
  
 	if ( ch->pet != NULL )
 	{
 	    send_to_char("You already own a pet.\n\r",ch);
-	    return TRUE;
+	    return true;
 	}
  
 	cost = 10 * pet->level * pet->level;
@@ -1568,14 +1568,14 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
         if (!has_enough_gold(ch, cost))
         {
             send_to_char( "You can't afford it.\n\r", ch );
-            return TRUE;
+            return true;
         }
  
 	if ( ch->level < pet->level )
 	{
 	    send_to_char( "You're not powerful enough to master this pet.\n\r",
 			 ch );
-	    return TRUE;
+	    return true;
 	}
  
 	/* haggle */
@@ -1587,7 +1587,7 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	    cost -= cost / 2 * roll / 100;
 	    sprintf(buf,"You haggle the price down to %d coins.\n\r",cost);
 	    send_to_char(buf,ch);
-	    check_improve(ch,gsn_haggle,TRUE,4);
+	    check_improve(ch,gsn_haggle,true,4);
 	}
         add_money(ch,-1 * cost);
 	pet                     = create_mobile( pet->pIndexData );
@@ -1615,10 +1615,10 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	ch->pet = pet;
 	send_to_char( "Enjoy your pet.\n\r", ch );
 	act( "$n bought $N as a pet.", ch, NULL, pet, TO_ROOM );
-	return TRUE;
+	return true;
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -1630,24 +1630,24 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
  
     int cost,roll;
  
-    if (cmd == NULL) return FALSE;
+    if (cmd == NULL) return false;
  
     if ( (cmd != do_list)  && (cmd != do_buy) &&
 	 (cmd != do_value) && (cmd != do_sell) )
-	return FALSE;
+	return false;
  
     if (cmd == do_list)
     {
 	act("$n tells you 'Sorry, not much to sell today.'", mob, NULL, ch,
 			 TO_VICT);
-	return TRUE;
+	return true;
     }
  
     if (cmd == do_buy)
     {
 	act("$n tells you 'Sorry, sold my last one this morning.'", mob, NULL,
 			ch, TO_VICT);
-	return TRUE;
+	return true;
     }
  
     if (cmd == do_value)
@@ -1657,7 +1657,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	if ( arg[0] == '\0' )
 	{
 	    send_to_char( "Value what?\n\r", ch );
-	    return TRUE;
+	    return true;
 	}
  
 	if ( ( obj = get_obj_carry( ch, arg ) ) == NULL )
@@ -1665,25 +1665,25 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	    act( "$n tells you 'You don't have that item'.",
 		mob, NULL, ch, TO_VICT );
 	    ch->reply = mob;
-	    return TRUE;
+	    return true;
 	}
  
 	if (!can_see_obj(mob,obj))
 	{
 	    act("$n doesn't see what you are offering.",mob,NULL,ch,TO_VICT);
-	    return TRUE;
+	    return true;
 	}
  
 	if ( !can_drop_obj( ch, obj ) )
 	{
 	    send_to_char( "You can't let go of it.\n\r", ch );
-	    return TRUE;
+	    return true;
 	}
  
 	if (obj->cost / 1000 > 50000)
 	{
 	    act("$n tells you 'I can't afford that.'", mob, NULL, ch, TO_VICT);
-	    return TRUE;
+	    return true;
 	}
  
 	cost = obj->cost / 1000;
@@ -1693,7 +1693,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	act( buf, mob, obj, ch, TO_VICT );
 	ch->reply = mob;
  
-	return TRUE;
+	return true;
     }
  
     if (cmd == do_sell)
@@ -1703,7 +1703,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	if ( arg[0] == '\0' )
 	{
 	    send_to_char( "Sell what?\n\r", ch );
-	    return TRUE;
+	    return true;
 	}
  
 	if ( ( obj = get_obj_carry( ch, arg ) ) == NULL )
@@ -1711,25 +1711,25 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	    act( "$n tells you 'You don't have that item'.",
 		mob, NULL, ch, TO_VICT );
 	    ch->reply = mob;
-	    return TRUE;
+	    return true;
 	}
  
 	if ( !can_drop_obj( ch, obj ) )
 	{
 	    send_to_char( "You can't let go of it.\n\r", ch );
-	    return TRUE;
+	    return true;
 	}
  
 	if (!can_see_obj(mob,obj))
 	{
 	    act("$n doesn't see what you are offering.",mob,NULL,ch,TO_VICT);
-	    return TRUE;
+	    return true;
 	}
  
 	if (obj->cost / 1000 > 50000)
 	{
 	    act("$n tells you 'I can't afford that.'", mob, NULL, ch, TO_VICT);
-	    return TRUE;
+	    return true;
 	}
  
 	cost = obj->cost / 1000;
@@ -1739,7 +1739,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	if ( obj->timer )
 	{
 	    act( "$n looks uninterested in $p.", mob, obj, ch, TO_VICT );
-	    return TRUE;
+	    return true;
 	}
  
 	act( "$n sells $p.", ch, obj, NULL, TO_ROOM );
@@ -1749,7 +1749,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	{
 	    send_to_char("You haggle with the shopkeeper.\n\r",ch);
 	    cost *= 1.1;
-	    check_improve(ch,gsn_haggle,TRUE,4);
+	    check_improve(ch,gsn_haggle,true,4);
 	}
 	sprintf( buf, "You sell $p for %d gold piece%s.",
 	    cost, cost == 1 ? "" : "s" );
@@ -1758,10 +1758,10 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
  
 	extract_obj( obj );
  
-	return TRUE;
+	return true;
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -1798,7 +1798,7 @@ bool spec_castle_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     DESCRIPTOR_DATA *d;
  
     if ( !IS_AWAKE(mob) )
-	return FALSE;
+	return false;
  
     if (cmd == NULL)
     {
@@ -1821,13 +1821,13 @@ bool spec_castle_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    victim->position = POS_STUNNED;
 	    if (victim->hit > 10)
 		victim->hit = 10;
-	    return TRUE;
+	    return true;
 	}
     }
  
-    if (cmd == NULL) return FALSE;
+    if (cmd == NULL) return false;
  
-    if (IS_NPC(ch)) return FALSE;
+    if (IS_NPC(ch)) return false;
  
     for (i=0; cg_table[i].mob_num!=0; i++)
 	if ((cg_table[i].mob_num == mob->pIndexData->vnum)
@@ -1835,7 +1835,7 @@ bool spec_castle_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	&& (cg_table[i].cmd == cmd))
 	    break;
  
-    if (cg_table[i].mob_num == 0) return FALSE;
+    if (cg_table[i].mob_num == 0) return false;
  
     if ( (cg_table[i].cmd==cmd) && (cg_table[i].castle==ch->pcdata->castle))
     {
@@ -1849,10 +1849,10 @@ bool spec_castle_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    ch->position = POS_STUNNED;
 	    if (ch->hit > 10)
 		ch->hit = 10;
-	    return TRUE;
+	    return true;
 	}
  
-	return FALSE;
+	return false;
     }
  
     act(cg_table[i].msg, mob, NULL, ch, TO_VICT);
@@ -1875,7 +1875,7 @@ bool spec_castle_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
         }
     }
  
-    return TRUE;
+    return true;
 }
  
  
@@ -1904,7 +1904,7 @@ bool spec_castle_guard_agg( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *ar
     int i;
  
     if (cmd != NULL)
-	return FALSE;
+	return false;
  
     my_castle = -1;
     for (i = 0; cg_table[i].mob_num != 0; i++)
@@ -1912,7 +1912,7 @@ bool spec_castle_guard_agg( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *ar
 	{ my_castle = cg_table[i].castle;    break; }
  
     if (my_castle == -1)
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -1924,7 +1924,7 @@ bool spec_castle_guard_agg( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *ar
     }
  
     if (victim == NULL )
-	return FALSE;
+	return false;
  
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
@@ -1956,7 +1956,7 @@ bool spec_castle_guard_agg( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *ar
     }
     multi_hit( mob, victim, TYPE_UNDEFINED );
  
-    return TRUE;
+    return true;
 }
  
  
@@ -1967,9 +1967,9 @@ bool spec_xp_converter( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
   int xp = 0;
   int practices = 0;
  
-   if( cmd == NULL) return FALSE;
-   if( cmd != do_exchange) return FALSE;
-   if(ch->level < LEVEL_HERO) return FALSE;
+   if( cmd == NULL) return false;
+   if( cmd != do_exchange) return false;
+   if(ch->level < LEVEL_HERO) return false;
 
    ch->level -= 1;
    xp = next_xp_level(ch) + 5000; 
@@ -1988,10 +1988,10 @@ bool spec_xp_converter( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      sprintf( buf, "You need %ld experience points for an exchange.\n\r",
 	      xp - ch->exp );
      send_to_char( buf, ch );
-     return FALSE;
+     return false;
    }
  
-   return TRUE;
+   return true;
  
  
 }
@@ -2013,10 +2013,10 @@ bool spec_club_bouncer( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     ROOM_INDEX_DATA *to_room;
  
     if ( !IS_AWAKE(mob) )
-	return FALSE;
+	return false;
  
     if (mob->in_room->vnum != CLUB_ENTRANCE)
-	return FALSE;
+	return false;
  
     if (cmd == NULL || cmd == do_south)
     {
@@ -2068,9 +2068,9 @@ bool spec_club_bouncer( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	}
     }
  
-    if (cmd == NULL) return FALSE;
+    if (cmd == NULL) return false;
  
-    return FALSE;
+    return false;
 }
  
  
@@ -2079,17 +2079,17 @@ bool spec_club_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     UNUSED_PARAM(arg);
 
     if ( !IS_AWAKE(mob) )
-        return FALSE;
+        return false;
  
     if (mob->in_room->vnum != CLUB_ENTRANCE)
-	return FALSE;
+	return false;
  
     if (cmd != do_south)
-	return FALSE;
+	return false;
  
     /* No NPCs in the club */
     if (IS_NPC(ch))
-	return TRUE;
+	return true;
  
     if (!has_enough_gold(ch, 10))
     {
@@ -2097,7 +2097,7 @@ bool spec_club_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
                 ch, NULL, ch, TO_ROOM);
 	send_to_char("The clerk tells you, 'You don't have the "
 			"10 coins for the cover charge.'\n\r",ch);
-	return TRUE;
+	return true;
     }
  
     /* take the money from the patron and let them in */
@@ -2106,9 +2106,9 @@ bool spec_club_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     send_to_char("You give the clerk the 10 coin cover charge "
 		 "and enter the elevator.\n\r", ch);
  
-    move_char(ch, DIR_SOUTH, TRUE);
+    move_char(ch, DIR_SOUTH, true);
  
-    return TRUE;
+    return true;
 }
  
 bool spec_club_bartender( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
@@ -2124,33 +2124,33 @@ bool spec_club_bartender( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg 
 	{
 	    act("$n does a fancy juggling act with the bar glasses.",
 		mob, NULL, mob, TO_ROOM);
-	    return TRUE;
+	    return true;
 	}
 	if (action < 10)
 	{
 	    act("$n wipes the bar down while he is waiting for a customer.",
 		mob, NULL, mob, TO_ROOM);
-	    return TRUE;
+	    return true;
 	}
 	if (action < 15)
 	{
 	    act("$n starts singing to the music.",
 		mob, NULL, mob, TO_ROOM);
-	    return TRUE;
+	    return true;
 	}
 	if (action < 20)
 	{
 	    act("You start to laugh as $n starts dancing behind the bar.",
 		mob, NULL, mob, TO_ROOM);
-	    return TRUE;
+	    return true;
 	}
 	if (action < 25)
 	{
 	    act("$n pulls out a mirror and checks his hair.",
 		mob, NULL, mob, TO_ROOM);
-	    return TRUE;
+	    return true;
 	}
-	return FALSE;
+	return false;
     }
  
     if (cmd == do_buy)
@@ -2163,19 +2163,19 @@ bool spec_club_bartender( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg 
 			mob, NULL, ch, TO_VICT);
 		act("$n cards $N and $N is BUSTED!",
 			mob, NULL, ch, TO_NOTVICT);
-		return TRUE;
+		return true;
 	    } else
 	    {
 		act("You manage to slip your fake ID past $n.",
 			mob, NULL, ch, TO_VICT);
 		act("$N manages to slip a fake ID pas $n.",
 			mob, NULL, ch, TO_NOTVICT);
-		return FALSE;
+		return false;
 	    }
 	}
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -2240,10 +2240,10 @@ bool spec_club_dj( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
 	send_to_room(song_list[cur_line], mob->in_room->vnum);
 	send_to_room(song_list[cur_line], CLUB_DANCEFLOOR);
-	return TRUE;
+	return true;
     }
  
-    return FALSE;
+    return false;
 }
  
 bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
@@ -2263,12 +2263,12 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
   char buf[MAX_STRING_LENGTH];
  
   if ( cmd != NULL)
-	return FALSE;
+	return false;
  
   chancez = number_percent();
 
   if( chancez < 95 )
-      return FALSE;
+      return false;
 
 
   for ( vch = char_list; vch != NULL; vch = vch->next )
@@ -2296,10 +2296,10 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
   if(most_hurt != NULL)
   {
      if(most_hurt->position == POS_FIGHTING)
-	 return FALSE;
+	 return false;
 
      if(IS_SET(most_hurt->in_room->room_flags, ROOM_DT) )
-	 return FALSE; 
+	 return false; 
 
      if (most_hurt->level > 15)
          chance = 97;
@@ -2311,7 +2311,7 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
          chance = 99;
 
      if( chancez < chance )
-         return FALSE;
+         return false;
 
      if(most_hurt->position == POS_SLEEPING)
        do_wake(mob,most_hurt->name);
@@ -2336,7 +2336,7 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
       spell = "heal";
     if ( ( sn = skill_lookup( spell ) ) < 0 )
-	return FALSE;
+	return false;
     do
     {
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, most_hurt );
@@ -2357,9 +2357,9 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     act("$n says, 'Ahhh. Another mortal patched up. Tis a good feeling.'",mob,NULL,NULL,TO_ROOM);
   }
   else
-    return FALSE;
+    return false;
  
-  return TRUE;
+  return true;
 }
  
  
@@ -2371,25 +2371,25 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
   char arg[MAX_INPUT_LENGTH];
   int  seeker = 0;
   int assign = 0, holder_1 = 0, holder_2 = 0;
-  bool found = FALSE;
+  bool found = false;
  
-   if( cmd == NULL) return FALSE;
+   if( cmd == NULL) return false;
  
-   if(ch->level < 50 || ch->level >= 51) return FALSE;
+   if(ch->level < 50 || ch->level >= 51) return false;
  
    if( (cmd != do_heroquest) && (cmd != do_retrieved) && (cmd != do_endquest) &&
 	  (cmd != do_listclue) && (ch->pcdata->on_quest) )
-       return FALSE;
+       return false;
  
    if( IS_NPC(ch) )
-      return FALSE;
+      return false;
  
    if( cmd == do_heroquest )
    {
      if(ch->pcdata->on_quest)
      {
        send_to_char("Your already on a quest!\n\r",ch);
-       return TRUE;
+       return true;
      }
  
       if(!(ch->pcdata->quest_pause < current_time - 7*24*60*60))
@@ -2402,7 +2402,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	sprintf (buf,"Come back in %ld days %ld hours %ld minutes Real Time.\n\r",
 	quest_day, quest_hour, quest_min);
 	send_to_char(buf,ch);
-	return TRUE;
+	return true;
       }
       else
 	ch->pcdata->quest_pause = 0;
@@ -2421,7 +2421,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      send_to_char("is costly, so do your best to finish it.\n\r",ch);
      sprintf(buf,"%s has embarked on a Hero Quest.", ch->name);
      send_info(buf);
-     ch->pcdata->on_quest = TRUE;
+     ch->pcdata->on_quest = true;
      SET_BIT(ch->imm_flags, IMM_MAGIC);
 
      /* assign quest items, give first clue */
@@ -2431,14 +2431,14 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
  
        for(holder_2 = 0; holder_2 < 10; holder_2++)
 	 if( ch->pcdata->questor[holder_2] == quest_table[assign].quest_item)
-	   found = TRUE;
+	   found = true;
  
        if(found)
 	  --holder_1;
        else
 	 ch->pcdata->questor[holder_1] = quest_table[assign].quest_item;
  
-       found = FALSE;
+       found = false;
      }
 
  
@@ -2454,7 +2454,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
        snprintf(buf, MAX_STRING_LENGTH, "%s", quest_table[holder_2].quest_clue);
        send_to_char(buf,ch);
        save_char_obj(ch);
-       return TRUE;
+       return true;
    }
 	       /* may replace with do_give */
    if( cmd == do_retrieved)
@@ -2462,7 +2462,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      if(!ch->pcdata->on_quest)
      {
        send_to_char("Your not on a quest!\n\r",ch);
-       return FALSE;
+       return false;
      }
 
      argument = one_argument( argument, arg );
@@ -2470,7 +2470,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      if( ( obj = get_obj_here(ch, arg) ) == NULL )
      {
        send_to_char("You don't have that item",ch);
-       return TRUE;
+       return true;
      }
  
      for(holder_1 = 0; holder_1 < 10; holder_1++)
@@ -2488,7 +2488,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      if (!seeker)
      {
        send_to_char("You are not on a hero quest.\n\r",ch);
-       return TRUE;
+       return true;
      }
  
      if(obj->pIndexData->vnum == seeker)
@@ -2501,16 +2501,16 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	{
 	  for(holder_1 = 0; holder_1 < 10; holder_1++)
 	    ch->pcdata->questor[holder_1] = 0;
-	  ch->pcdata->on_quest = FALSE;
+	  ch->pcdata->on_quest = false;
  
 	  send_to_char("Congratulations. It's not an easy task to complete a Hero Quest!\n\r",ch);
 	  send_to_char("You should feel great pride for what you have accomplishment.\n\r",ch);
 	  sprintf(buf,"%s has completed a Hero Quest!!!!",ch->name);
 	  send_info(buf);
 	  ch->level = 51;
-	  advance_level(ch,FALSE);
+	  advance_level(ch,false);
  	  REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
-	  return TRUE;
+	  return true;
 	}
  
 	for(holder_2 = 0; holder_2 < 76; holder_2++)
@@ -2520,12 +2520,12 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	snprintf(buf, MAX_STRING_LENGTH, "%s", quest_table[holder_2].quest_clue);
 	send_to_char(buf,ch);
  
-	return TRUE;
+	return true;
      }
      else
      {
        send_to_char("That is not the correct Item. Please continue your quest.\n\r",ch);
-       return TRUE;
+       return true;
      }
    }
  
@@ -2534,7 +2534,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      if(!ch->pcdata->on_quest)
      {
        send_to_char("Your not on a quest!\n\r",ch);
-       return FALSE;
+       return false;
      }
 
       for(holder_1 = 0; holder_1 < 10; holder_1++)
@@ -2544,7 +2544,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      if(ch->pcdata->questor[holder_1] <= 0 )
      {
        send_to_char("Somethings not right, get an Immortal.\n\r",ch);
-       return TRUE;
+       return true;
      }
      else
      {
@@ -2555,7 +2555,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
        send_to_char("Your clue is:\n\r\n\r",ch);
        sprintf(buf, "%s",quest_table[holder_2].quest_clue);
        send_to_char(buf,ch);
-       return TRUE;
+       return true;
      }
    }
  
@@ -2564,11 +2564,11 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      if(!ch->pcdata->on_quest)
      {
        send_to_char("Your not on a quest!\n\r",ch);
-       return FALSE;
+       return false;
      }
 
      send_to_char("ZZZZZZZZZZZZZAAAAAAAAAAAAAPPPPPPPPPPPPPPPPPPPPP!!!!!!!!!!\n\r",ch);
-     found = FALSE;
+     found = false;
      while(!found)
      {
        switch(dice(1,4) )
@@ -2581,7 +2581,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	    obj_next = obj->next_content;
 	    extract_obj( obj );
 	  }
-	  found = TRUE;
+	  found = true;
 	  send_to_char("All your equipment has been revoked.\n\r",ch);
 	 }
 	 break;
@@ -2590,7 +2590,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	 {
 	   ch->train -= 2;
 	   send_to_char("You have lost some training sessions.\n\r",ch);
-	   found = TRUE;
+	   found = true;
 	 }
 	 break;
 	 case 3:
@@ -2598,7 +2598,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	 {
 	   ch->practice -= 5;
 	   send_to_char("You have lost some practices.\n\r",ch);
-	   found = TRUE;
+	   found = true;
 	 }
 	 break;
 	 case 4:
@@ -2609,19 +2609,19 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	  lost = dice(1,5);
 	  ch->perm_stat[lost] -= 2;
 	  send_to_char("One of your stats has been reduced.\n\r",ch);
-	  found = TRUE;
+	  found = true;
 	 }
 	 else
 	 {
 	   ch->pcdata->perm_hit -= 20;
 	   ch->hit -= 20;
 	   send_to_char("You have lost some hit points.\n\r",ch);
-	   found = TRUE;
+	   found = true;
 	 }
 	 break;
        }
      }
-     ch->pcdata->on_quest = FALSE;
+     ch->pcdata->on_quest = false;
 
      ch->pcdata->quest_pause = current_time;
 
@@ -2634,10 +2634,10 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      ch->pcdata->title = str_dup(" has not lived up to the challenge!");
      save_char_obj(ch);
      REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
-     return TRUE;
+     return true;
    }
 
-   return FALSE;
+   return false;
 }
  
 bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument )
@@ -2647,12 +2647,12 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
     CHAR_DATA *wch;
    ROOM_INDEX_DATA *pRoomTport = NULL;
    int seeker;
-   bool found = FALSE;
+   bool found = false;
    AFFECT_DATA af;
    char buf[MAX_STRING_LENGTH];
 
    if( cmd != NULL)
-	return FALSE;
+	return false;
 
    seeker = dice(1,52);
 
@@ -2661,13 +2661,13 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
       if( !IS_NPC(wch) && wch->level == seeker && 
           !IS_SET(wch->in_room->room_flags, ROOM_INDOORS) )
       {
-	found = TRUE;
+	found = true;
         break;
       } 
    }
  
    if( wch == NULL )
-     return FALSE;
+     return false;
  
    send_to_char("A black dragon swoops down and snatches you into it's claws!\n\r",wch);
    act("A black dragon swoops down, flying off with $n.",wch,NULL,NULL,TO_ROOM);
@@ -2705,7 +2705,7 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
    if(found && mob->timer == 0)
       mob->timer = 15;
  
-   return FALSE;
+   return false;
 }
  
 bool spec_monk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
@@ -2720,15 +2720,15 @@ bool spec_monk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int chance;
  
     if ( cmd != NULL)
-	   return FALSE;
+	   return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     chance = mob->level + 50;
  
     if(number_percent () > chance)
-	 return FALSE;
+	 return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -2738,7 +2738,7 @@ bool spec_monk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     spell = NULL;
  
@@ -2760,7 +2760,7 @@ bool spec_monk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	   break;
     }
  
-    return TRUE;
+    return true;
 
 }
 
@@ -2775,10 +2775,10 @@ bool spec_cast_necro( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     int sn;
  
     if ( cmd != NULL)
-	return FALSE;
+	return false;
  
     if ( mob->position != POS_FIGHTING )
-	return FALSE;
+	return false;
  
     for ( victim = mob->in_room->people; victim != NULL; victim = v_next )
     {
@@ -2788,7 +2788,7 @@ bool spec_cast_necro( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( victim == NULL )
-	return FALSE;
+	return false;
  
     for ( ;; )
     {
@@ -2822,7 +2822,7 @@ bool spec_cast_necro( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     if ( ( sn = skill_lookup( spell ) ) < 0 )
-	return FALSE;
+	return false;
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, victim );
-    return TRUE;
+    return true;
 }

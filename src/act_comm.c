@@ -30,28 +30,28 @@ static bool is_immnote_to( CHAR_DATA *ch, NOTE_DATA *pnote );
 const struct col_table_type col_table[] =
 {
   {"",1,1,1},
-  {"regular",COL_REGULAR,8,FALSE},
-  {"gossips",COL_GOSSIP,5,FALSE},
-  {"shouts",COL_SHOUTS,14,FALSE},
-  {"question",COL_QUESTION,11,FALSE},
-  {"castle",COL_CASTLE,3,FALSE},
-  {"tell",COL_TELL,2,FALSE},
-  {"says",COL_SAYS,4,FALSE},
-  {"socials",COL_SOCIALS,5,FALSE},
-  {"highlight",COL_HIGHLIGHT,14,FALSE},
-  {"damage",COL_DAMAGE,4,FALSE},
-  {"defense",COL_DEFENSE,0,FALSE},
-  {"disarm",COL_DISARM,12,FALSE},
-  {"hero",COL_HERO,7,FALSE},
-  {"wizinfo",COL_WIZINFO,11,TRUE},
-  {"immtalk",COL_IMMTALK,6,TRUE},
-  {"room_name",COL_ROOM_NAME,6,FALSE},
+  {"regular",COL_REGULAR,8,false},
+  {"gossips",COL_GOSSIP,5,false},
+  {"shouts",COL_SHOUTS,14,false},
+  {"question",COL_QUESTION,11,false},
+  {"castle",COL_CASTLE,3,false},
+  {"tell",COL_TELL,2,false},
+  {"says",COL_SAYS,4,false},
+  {"socials",COL_SOCIALS,5,false},
+  {"highlight",COL_HIGHLIGHT,14,false},
+  {"damage",COL_DAMAGE,4,false},
+  {"defense",COL_DEFENSE,0,false},
+  {"disarm",COL_DISARM,12,false},
+  {"hero",COL_HERO,7,false},
+  {"wizinfo",COL_WIZINFO,11,true},
+  {"immtalk",COL_IMMTALK,6,true},
+  {"room_name",COL_ROOM_NAME,6,false},
 /*
-  {"prompt",COL_PROMPT,8,FALSE},
-  {"exits",COL_EXITS,6,FALSE},     */
-/*  {"mob",COL_MOB,8,FALSE},        */
-/*  {"object",COL_OBJECT,8,FALSE},  */
-  {NULL,0,0,FALSE}
+  {"prompt",COL_PROMPT,8,false},
+  {"exits",COL_EXITS,6,false},     */
+/*  {"mob",COL_MOB,8,false},        */
+/*  {"object",COL_OBJECT,8,false},  */
+  {NULL,0,0,false}
 };
 
 const struct col_disp_table_type col_disp_table[] =
@@ -85,51 +85,51 @@ bool    check_parse_name        args( ( char *name ) );
 static bool is_immnote_to( CHAR_DATA *ch, NOTE_DATA *pnote )
 {
     if ( IS_IMMORTAL(ch) && is_name( "immortal", pnote->to_list ) )
-        return TRUE;
+        return true;
 
     if ( IS_IMMORTAL(ch) && is_name( "immortal", pnote->to_list ) )
-        return TRUE;
+        return true;
 
     if ( IS_IMMORTAL(ch) && is_name( "imm", pnote->to_list ) )
-        return TRUE;
+        return true;
 
     if ( IS_IMMORTAL(ch) && is_name( "imms", pnote->to_list ) )
-        return TRUE;
+        return true;
 
-    return FALSE;
+    return false;
 }
 
 bool is_note_to( CHAR_DATA *ch, NOTE_DATA *pnote )
 {
     if ( !str_cmp( ch->name, pnote->sender ) )
-	return TRUE;
+	return true;
 
     if ( is_full_name( "all", pnote->to_list ) )
-	return TRUE;
+	return true;
 
     if ( IS_IMP(ch) && is_name("imps", pnote->to_list ) )
-	return TRUE;
+	return true;
 
     if ( IS_IMP(ch) && is_name("imp", pnote->to_list ) )
-	return TRUE;
+	return true;
 
     if ( IS_IMMORTAL(ch) && is_name( "immortal", pnote->to_list ) )
-	return TRUE;
+	return true;
 
     if ( IS_IMMORTAL(ch) && is_name( "immortals", pnote->to_list))
-        return TRUE;
+        return true;
 
     if ( IS_IMMORTAL(ch) && is_name( "imm", pnote->to_list ) )
-	return TRUE;
+	return true;
 
     if ( IS_IMMORTAL(ch) && is_name( "imms", pnote->to_list))
-        return TRUE;
+        return true;
 
     if (IS_HERO(ch) && is_name("hero", pnote->to_list))
-	return TRUE;
+	return true;
 
     if ( is_full_name( ch->name, pnote->to_list ) )
-	return TRUE;
+	return true;
 
     if (!IS_NPC(ch) && (ch->pcdata->castle != CASTLE_NONE))
     {
@@ -141,12 +141,12 @@ bool is_note_to( CHAR_DATA *ch, NOTE_DATA *pnote )
 	while (to_one[0] != '\0')
 	{
 	    if (castle_lookup(to_one) == ch->pcdata->castle)
-		return TRUE;
+		return true;
 	    to_list = one_argument(to_list, to_one);
 	}
     }
 
-    return FALSE;
+    return false;
 }
 
 void note_attach( CHAR_DATA *ch )
@@ -422,7 +422,7 @@ void do_note( CHAR_DATA *ch, char *argument )
 
 	if ( !str_cmp( argument, "all" ) )
 	{
-	    fAll = TRUE;
+	    fAll = true;
 	    anum = 0;
 	}
 
@@ -455,7 +455,7 @@ void do_note( CHAR_DATA *ch, char *argument )
 
 	else if ( is_number( argument ) )
 	{
-	    fAll = FALSE;
+	    fAll = false;
 	    anum = atoi( argument );
 	}
 	else
@@ -744,7 +744,7 @@ void do_delete( CHAR_DATA *ch, char *argument)
 	if (argument[0] != '\0')
 	{
 	    send_to_char("Delete status removed.\n\r",ch);
-	    ch->pcdata->confirm_delete = FALSE;
+	    ch->pcdata->confirm_delete = false;
 	    return;
 	}
 	else
@@ -769,7 +769,7 @@ void do_delete( CHAR_DATA *ch, char *argument)
     send_to_char("WARNING: this command is irreversible.\n\r",ch);
     send_to_char("Typing delete with an argument will undo delete status.\n\r",
 	ch);
-    ch->pcdata->confirm_delete = TRUE;
+    ch->pcdata->confirm_delete = true;
 }*/
 
 /* Delete command recoded on 11/12/97 to require a password - Ricochet*/
@@ -2551,7 +2551,7 @@ void do_quit( CHAR_DATA *ch, char *argument )
     if(ch->pcdata->mounted)
     {
       send_to_char("You dismount to let your steed graze while your gone.\n\r",ch);
-      ch->pcdata->mounted = FALSE;
+      ch->pcdata->mounted = false;
     }
 
     if ( ch->level >= 1 && !ch->pcdata->has_saved )
@@ -2562,7 +2562,7 @@ void do_quit( CHAR_DATA *ch, char *argument )
                 "\n\rYou haven't saved your character yet. Use 'save' now (see 'help save') to keep your progress.\n\r"
                 "Quitting now will delete your character. Type QUIT again to confirm or SAVE to preserve your adventurer.\n\r",
                 ch );
-            ch->pcdata->confirm_unsaved_quit = TRUE;
+            ch->pcdata->confirm_unsaved_quit = true;
             return;
         }
 
@@ -2586,7 +2586,7 @@ void do_quit( CHAR_DATA *ch, char *argument )
         save_char_obj( ch );
     id = ch->pcdata->id;
     d = ch->desc;
-    extract_char( ch, TRUE );
+    extract_char( ch, true );
     if ( d != NULL )
 	close_socket( d );
 
@@ -2603,7 +2603,7 @@ void do_quit( CHAR_DATA *ch, char *argument )
 	wizinfo(buf,LEVEL_IMMORTAL);
 	log_string(buf);
 	send_to_char("Now THAT was really stupid.\n\r",tch);
-	extract_char(tch,TRUE);
+	extract_char(tch,true);
 	close_socket(d);
       }
     }
@@ -2756,7 +2756,7 @@ void nuke_pets( CHAR_DATA *ch )
 	stop_follower(pet);
 	if (pet->in_room != NULL)
 	    act("$N slowly fades away.",ch,NULL,pet,TO_NOTVICT);
-	extract_char(pet,TRUE);
+	extract_char(pet,true);
     }
     ch->pet = NULL;
 
@@ -2839,12 +2839,12 @@ void do_order( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg, "all" ) )
     {
-	fAll   = TRUE;
+	fAll   = true;
 	victim = NULL;
     }
     else
     {
-	fAll   = FALSE;
+	fAll   = false;
 	if ( ( victim = get_char_room( ch, arg ) ) == NULL )
 	{
 	    send_to_char( "They aren't here.\n\r", ch );
@@ -2867,14 +2867,14 @@ void do_order( CHAR_DATA *ch, char *argument )
 	}
     }
 
-    found = FALSE;
+    found = false;
     for ( och = ch->in_room->people; och != NULL; och = och_next )
     {
 	och_next = och->next_in_room;
 /*
         if(och->wait > 0)
         {
-           found = TRUE;
+           found = true;
            continue;
         }
 */
@@ -2882,7 +2882,7 @@ void do_order( CHAR_DATA *ch, char *argument )
 	&&   och->master == ch
 	&& ( fAll || och == victim ) )
 	{
-	    found = TRUE;
+	    found = true;
 	    sprintf( buf, "$n orders you to '%s'.", argument );
 	    act( buf, ch, NULL, och, TO_VICT );
 	    interpret( och, argument );
@@ -3359,15 +3359,15 @@ void do_color ( CHAR_DATA *ch, char *argument )
   }
 
   if (!str_cmp (arg,"on")) {
-    ch->desc->color = TRUE;
-    ch->pcdata->color = TRUE;
+    ch->desc->color = true;
+    ch->pcdata->color = true;
     send_to_char ("Color turned on.\n\r",ch);
     return;
   }
 
   if (!str_cmp (arg,"off")) {
-    ch->desc->color = FALSE;
-    ch->pcdata->color = FALSE;
+    ch->desc->color = false;
+    ch->pcdata->color = false;
     send_to_char ("Color turned off.\n\r",ch);
     return;
   }
@@ -3388,7 +3388,7 @@ void do_color ( CHAR_DATA *ch, char *argument )
     for ( t = 1; t <= COL_MAX; t++ ) {
       if (!col_table[t].name) break;
       ch->pcdata->col_table[col_table[t].num] =
-        (sh_int) col_table[t].def;
+        (int16_t) col_table[t].def;
     }
     send_to_char ("Color defaults loaded.\n\r",ch);
     return;
@@ -3418,7 +3418,7 @@ void do_color ( CHAR_DATA *ch, char *argument )
 	}
       }
       if ((col >= 0) && (col <= 14)) {
-        ch->pcdata->col_table[idx] = (sh_int) col;
+        ch->pcdata->col_table[idx] = (int16_t) col;
         send_to_char ("Ok.\n\r",ch);
         return;
       }

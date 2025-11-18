@@ -1,3 +1,5 @@
+#pragma once
+
 /**************************************************************************
  * SEGROMv1 was written and concieved by Eclipse<Eclipse@bud.indirect.com *
  * Soulcrusher <soul@pcix.com> and Gravestone <bones@voicenet.com> all    *
@@ -25,16 +27,6 @@
  * Short scalar types.
  * Diavolo reports AIX compiler has bugs with short types.
  */
-#if     !defined(FALSE)
-#define FALSE    false
-#endif
-
-#if     !defined(TRUE)
-#define TRUE     true
-#endif
-
-typedef int16_t                        sh_int;
-
 #define UNUSED_PARAM(x) ((void)(x))
 
 
@@ -2111,8 +2103,8 @@ extern int16_t  gsn_baura;
 #define IS_SET2(flag,bit)       ((flag) & (bit))
 #define SET_BIT(var, bit)       ((var) |= (bit))
 #define REMOVE_BIT(var, bit)    ((var) &= ~(bit))
-#define VALIDATE(data)		((data)->valid=TRUE)
-#define INVALIDATE(data)	((data)->valid=FALSE)
+#define VALIDATE(data)		((data)->valid=true)
+#define INVALIDATE(data)	((data)->valid=false)
 #define IS_VALID(data)		((data) != NULL && (data)->valid)
 
 

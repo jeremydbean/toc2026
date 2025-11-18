@@ -461,7 +461,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
        {
 	send_to_char( "You raise a level!!  ", ch );
 	ch->level += 1;
-	advance_level( ch, FALSE );
+	advance_level( ch, false );
 	save_char_obj(ch);
        }
 
@@ -472,7 +472,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
 	{
 	  send_to_char( "You raise a level!!  ", ch );
 	  ch->level += 1;
-	  advance_level( ch, FALSE );
+	  advance_level( ch, false );
 
 	  if(ch->level == 50)
 	  {
@@ -549,7 +549,7 @@ int hit_gain( CHAR_DATA *ch )
 	{
 	    gain += number * gain / 100;
 	    if (ch->hit < ch->max_hit)
-		check_improve(ch,gsn_fast_healing,TRUE,8);
+		check_improve(ch,gsn_fast_healing,true,8);
 	}
 
 	switch ( ch->position )
@@ -617,7 +617,7 @@ int mana_gain( CHAR_DATA *ch )
 	{
 	    gain += number * gain / 100;
 	    if (ch->mana < ch->max_mana)
-		check_improve(ch,gsn_meditation,TRUE,8);
+		check_improve(ch,gsn_meditation,true,8);
 	}
 
 	if( ch->class == CLASS_MONK ||
@@ -787,7 +787,7 @@ void mobile_update( void )
 	  if(--ch->timer <= 0)
 	  {
 	    act("$n's time on the mortal plane is at an end.",ch,NULL,NULL,TO_ROOM);
-	    extract_char(ch, TRUE);
+	    extract_char(ch, true);
 	    continue;
 	  }
 	}
@@ -836,7 +836,7 @@ void mobile_update( void )
 	&& ( !IS_SET(ch->act, ACT_STAY_AREA)
 	||   pexit->u1.to_room->area == ch->in_room->area ) )
 	{
-	    move_char( ch, door, FALSE );
+	    move_char( ch, door, false );
 	}
 
 /*	 Flee
@@ -850,19 +850,19 @@ void mobile_update( void )
 	    CHAR_DATA *rch;
 	    bool found;
 
-	    found = FALSE;
+	    found = false;
 	    for ( rch  = pexit->u1.to_room->people;
 		  rch != NULL;
 		  rch  = rch->next_in_room )
 	    {
 		if ( !IS_NPC(rch) )
 		{
-		    found = TRUE;
+		    found = true;
 		    break;
 		}
 	    }
 	    if ( !found )
-		move_char( ch, door, FALSE );
+		move_char( ch, door, false );
 	}
 */
 
@@ -1128,7 +1128,7 @@ void char_update( void )
     CHAR_DATA *ch_quit;
     OBJ_DATA  *obj = NULL;
     ROOM_INDEX_DATA *in_room = NULL;
-    bool found = FALSE;
+    bool found = false;
 
     ch_quit	= NULL;
 
@@ -1161,7 +1161,7 @@ void char_update( void )
 	     if ( obj->item_type == ITEM_SCUBA_GEAR )
 	     {
 	       if(obj->wear_loc > 0 )
-		 found = TRUE;
+		 found = true;
 	       break;
 	     }
 	  }
@@ -1447,7 +1447,7 @@ void char_update( void )
 //		{
 //		    ch->was_in_room = ch->in_room;
 //		    if ( ch->fighting != NULL )
-//			stop_fighting( ch, TRUE );
+//			stop_fighting( ch, true );
 //
 //		    act( "$n disappears into the void.",
 //			ch, NULL, NULL, TO_ROOM );
@@ -1494,7 +1494,7 @@ void char_update( void )
                 &&   !IS_SET(ch->in_room->room_flags, ROOM_JAIL) )
                 {
                     if ( ch->fighting != NULL )
-                        stop_fighting( ch, TRUE );
+                        stop_fighting( ch, true );
 
                     act( "$n disappears into the void.", ch, NULL, NULL, TO_ROOM );
                     send_to_char( "You disappear into the void.\n\r", ch );
@@ -2737,7 +2737,7 @@ void disaster_update( void )
    ROOM_INDEX_DATA *pRoomTport = NULL;
    char buf[MAX_STRING_LENGTH];
    int disaster_pick = 0;
-   bool hit = TRUE;
+   bool hit = true;
 
    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
    {
@@ -2847,14 +2847,14 @@ void disaster_update( void )
 	    ||   IS_AFFECTED(vch, AFF_FLYING) ) )
 	    {
 	       send_to_char("and you promptly high tail it out of the waters path!\n\r",vch);
-	       hit = FALSE;
+	       hit = false;
 	    }
 	    else
 	     switch(vch->in_room->sector_type)
 	     {
 	      case 0:
 		send_to_char("and the building your in trembles as a wall of water strikes it.\n\r",vch);
-		hit = FALSE;
+		hit = false;
 	      break;
 	      case 1:
 		  send_to_char("followed shortly by a wall of water that slams into you.\n\r",vch);
@@ -2877,7 +2877,7 @@ void disaster_update( void )
 	      break;
 	     }
 
-             if(hit == TRUE)
+             if(hit == true)
              {
                      EXIT_DATA *pexit;
                      int door, move, rand_door[10];
@@ -2902,7 +2902,7 @@ void disaster_update( void )
                         send_to_char("You struggle in vain as the flood waters carry you along.\n\r",vch);
                         act("$n is carried off by the flood waters.",vch,NULL,NULL,TO_ROOM);
                         SET_BIT(vch->act, PLR_WIZINVIS);
-                        move_char( vch, rand_door[door], TRUE);
+                        move_char( vch, rand_door[door], true);
                         REMOVE_BIT(vch->act, PLR_WIZINVIS);
                         act("$n arrives on a wave of water screaming, 'HHggEEggLLggPP!'.",vch,NULL,NULL,TO_ROOM);
                         damage(vch,vch,dice(4,4),skill_lookup("waterfall"),DAM_LIGHTNING);
@@ -2930,7 +2930,7 @@ void disaster_update( void )
 
 	      send_to_char("You feel the earth, move, under your feet....\n\r",vch);
 	      if(saves_spell(vch->level,vch) )
-		      hit = FALSE;
+		      hit = false;
 	      else
 	       switch(vch->in_room->sector_type)
 	       {
@@ -2944,7 +2944,7 @@ void disaster_update( void )
 	       break;
 	       case 2:
 		 send_to_char("and fissures begin to open up all around you!\n\r",vch);
-		 hit = FALSE;
+		 hit = false;
 	       break;
 	       case 3:
 		 send_to_char("and the tree's around you begin to sway...TIMBRE!\n\r",vch);
@@ -2960,7 +2960,7 @@ void disaster_update( void )
 	       break;
 	       case 10:
 		 send_to_char("and the sands shift about.\n\r",vch);
-		 hit = FALSE;
+		 hit = false;
 	       break;
 	       case 11:
 		 send_to_char("and the tunnel begins to collapse all around you!\n\r",vch);

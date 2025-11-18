@@ -81,7 +81,7 @@ const	struct	race_type	race_table	[]		=
     },
 */
     {
-	"unique",		FALSE,
+	"unique",		false,
 	0, 		0, 		0,
 	0, 		0, 		0,
 	0, 		0,
@@ -90,7 +90,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"human",                TRUE,
+	"human",                true,
 	0,              0,              0,
 	0,              0,              0,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -99,7 +99,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"elf",                  TRUE,
+	"elf",                  true,
 	0,              AFF_INFRARED,   0,
 	0,              RES_MAGIC|RES_POISON,      VULN_IRON,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -108,7 +108,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"dwarf",                TRUE,
+	"dwarf",                true,
 	0,              AFF_INFRARED,   0,
 	0,              RES_MAGIC|RES_DISEASE, VULN_DROWNING,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -117,7 +117,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"hobbit",               TRUE,
+	"hobbit",               true,
 	0,              0,      0,
 	0,              RES_POISON|RES_DISEASE, VULN_WIND,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -126,7 +126,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"saurian",		TRUE,
+	"saurian",		true,
 	0,  AFF_INFRARED,	0,
 	IMM_POISON, RES_FIRE, VULN_COLD,
 	cc, 		A|B|C|D|E|F|G|H|I|Q|X,
@@ -135,7 +135,7 @@ const	struct	race_type	race_table	[]		=
      },
 
      {
-	"bat",                  FALSE,
+	"bat",                  false,
 	0,              AFF_FLYING|AFF_INFRARED,     OFF_DODGE|OFF_FAST,
 	0,              0,              VULN_LIGHT,
 	A|G|W,          A|C|D|E|F|H|J|K|P,
@@ -144,7 +144,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"bear",                 FALSE,
+	"bear",                 false,
 	0,              0,              OFF_CRUSH|OFF_DISARM|OFF_BERSERK,
 	0,              RES_BASH|RES_COLD,      0,
 	A|G|V,          A|B|C|D|E|F|H|J|K|U|V,
@@ -153,7 +153,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"cat",                  FALSE,
+	"cat",                  false,
 	0,              AFF_INFRARED,        OFF_FAST|OFF_DODGE,
 	0,              0,              0,
 	A|G|V,          A|C|D|E|F|H|J|K|Q|U|V,
@@ -162,7 +162,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"centipede",            FALSE,
+	"centipede",            false,
 	0,              AFF2_DARK_VISION,        0,
 	0,              RES_PIERCE|RES_COLD,    VULN_BASH,
 	0,              0,
@@ -171,7 +171,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"dog",                  FALSE,
+	"dog",                  false,
 	0,              0,              OFF_FAST,
 	0,              0,              0,
 	A|G|V,          A|C|D|E|F|H|J|K|U|V,
@@ -180,7 +180,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"doll",                 FALSE,
+	"doll",                 false,
 	0,              0,              0,
 	IMM_MAGIC,      RES_BASH|RES_LIGHT,
 	VULN_SLASH|VULN_FIRE|VULN_ACID|VULN_LIGHTNING|VULN_ENERGY,
@@ -190,7 +190,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"dragon",               FALSE,
+	"dragon",               false,
 	0, AFF_DETECT_INVIS|AFF_DETECT_HIDDEN, OFF_BASH|OFF_TAIL|OFF_CRUSH,
 	IMM_POISON,     RES_FIRE|RES_DISEASE,      0,
 	B|Z|cc,         A|C|D|E|F|H|J|K|Q|V|X,
@@ -199,7 +199,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"fido",                 FALSE,
+	"fido",                 false,
 	0,              0,              OFF_DODGE|ASSIST_RACE,
 	0,              0,                      VULN_MAGIC,
 	B|G|V,          A|C|D|E|F|H|J|K|Q|V,
@@ -208,7 +208,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"fish",                  FALSE,
+	"fish",                  false,
 	ACT_SCAVENGER|ACT_WIMPY,  AFF_INFRARED|AFF_SWIM, OFF_FAST|OFF_DODGE,
 	IMM_DROWNING,         RES_COLD,              0,
 	A|G|V,          A|D|E|F|K|O|Q|X,
@@ -217,7 +217,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"fox",                  FALSE,
+	"fox",                  false,
 	0,              AFF2_DARK_VISION,        OFF_FAST|OFF_DODGE,
 	0,              0,              0,
 	A|G|V,          A|C|D|E|F|H|J|K|Q|V,
@@ -226,7 +226,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"giant",                FALSE,
+	"giant",                false,
 	0,              0,              0,
 	0,              RES_FIRE|RES_COLD,      VULN_MENTAL|VULN_LIGHTNING,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -235,7 +235,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"goblin",               FALSE,
+	"goblin",               false,
 	0,              AFF_INFRARED,   0,
 	0,              RES_DISEASE,    VULN_MAGIC,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -244,7 +244,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"head",            FALSE,
+	"head",            false,
 	0,              0 ,   0,
 	0,              RES_POISON, 0,
 	B|H,        A|E|J|K,
@@ -253,7 +253,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"hobgoblin",            FALSE,
+	"hobgoblin",            false,
 	0,              AFF_INFRARED,   0,
 	0,              RES_DISEASE|RES_POISON, 0,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -262,7 +262,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"horse",               FALSE,
+	"horse",               false,
 	0,              0,      OFF_KICK|OFF_BASH|OFF_CRUSH,
 	0,              0, 	0,
 	A|G|N|V,        A|C|D|E|F|J|K,
@@ -271,7 +271,7 @@ const	struct	race_type	race_table	[]		=
      },
 
      {
-	"insect",              FALSE,
+	"insect",              false,
 	ACT_WIMPY,	    AFF_INFRARED|AFF_FLYING,   OFF_FAST,
 	IMM_SLASH,              0,     VULN_POISON,
 	A|B|H|M|V,      A|B|C|D|E|F|G|H|I|J|K|Q,
@@ -280,7 +280,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"kobold",               FALSE,
+	"kobold",               false,
 	0,              AFF_INFRARED,   0,
 	0,              RES_POISON,     VULN_MAGIC,
 	A|B|H|M|V,      A|B|C|D|E|F|G|H|I|J|K|Q,
@@ -289,7 +289,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"lizard",               FALSE,
+	"lizard",               false,
 	0,              0,              0,
 	0,              RES_POISON,     VULN_COLD,
 	A|G|X|cc,       A|C|D|E|F|H|K|Q|V,
@@ -298,7 +298,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"modron",               FALSE,
+	"modron",               false,
 	0,              AFF_INFRARED,           ASSIST_RACE|ASSIST_ALIGN,
 	IMM_CHARM|IMM_DISEASE|IMM_MENTAL|IMM_HOLY|IMM_NEGATIVE,
 			RES_FIRE|RES_COLD|RES_ACID,     0,
@@ -308,7 +308,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"orc",                  FALSE,
+	"orc",                  false,
 	0,              AFF_INFRARED,   0,
 	0,              RES_DISEASE,    VULN_LIGHT,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -317,7 +317,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"pig",                  FALSE,
+	"pig",                  false,
 	0,              0,              0,
 	0,              0,              0,
 	A|G|V,          A|C|D|E|F|H|J|K,
@@ -326,7 +326,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"plant",                  FALSE,
+	"plant",                  false,
 	0,              0,              0,
 	0,              0,              0,
 	A|G|V,          A|C|D|E|F|H|J|K,
@@ -335,7 +335,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"rabbit",               FALSE,
+	"rabbit",               false,
 	0,              0,              OFF_DODGE|OFF_FAST,
 	0,              0,              0,
 	A|G|V,          A|C|D|E|F|H|J|K,
@@ -344,7 +344,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"school monster",       FALSE,
+	"school monster",       false,
 	ACT_NOALIGN,            0,              0,
 	IMM_CHARM|IMM_SUMMON,   0,              VULN_MAGIC,
 	A|M|V,          A|B|C|D|E|F|H|J|K|Q|U,
@@ -353,7 +353,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"snake",                FALSE,
+	"snake",                false,
 	0,              0,              0,
 	0,              RES_POISON,     VULN_COLD,
 	A|G|R|X|Y|cc,   A|D|E|F|K|L|Q|V|X,
@@ -362,7 +362,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"song bird",            FALSE,
+	"song bird",            false,
 	0,              AFF_FLYING,             OFF_FAST|OFF_DODGE,
 	0,              0,              0,
 	A|G|W,          A|C|D|E|F|H|K|P,
@@ -371,7 +371,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"tree",                FALSE,
+	"tree",                false,
 	0,              0,              OFF_BASH|OFF_DISARM|OFF_CRUSH,
 	IMM_BASH,       RES_COLD,       VULN_FIRE|VULN_LIGHTNING,
 	A|H|M|V,        A|B|C|D|E|F|G|H|I|J|K,
@@ -380,7 +380,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"troll",                FALSE,
+	"troll",                false,
 	0,              AFF_REGENERATION|AFF_INFRARED|AFF_DETECT_HIDDEN,
 	OFF_BERSERK,
 	0,      RES_CHARM|RES_BASH,     VULN_FIRE|VULN_ACID,
@@ -390,7 +390,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"undead",           FALSE,
+	"undead",           false,
 	0, AFF_DETECT_EVIL|AFF_DETECT_MAGIC|AFF_DETECT_HIDDEN, 0,
 	IMM_CHARM|IMM_POISON|IMM_DISEASE,
         RES_SLASH|RES_PIERCE,
@@ -401,7 +401,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"vampire",           FALSE,
+	"vampire",           false,
         0,
 	AFF_DETECT_EVIL|AFF_DETECT_MAGIC|AFF_DETECT_HIDDEN,
 	OFF_RESCUE,
@@ -414,7 +414,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"water fowl",           FALSE,
+	"water fowl",           false,
 	0,              AFF_SWIM|AFF_FLYING,    0,
 	0,              RES_DROWNING,           0,
 	A|G|W,          A|C|D|E|F|H|K|P,
@@ -423,7 +423,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"wolf",                 FALSE,
+	"wolf",                 false,
 	0,              AFF2_DARK_VISION,        OFF_FAST|OFF_DODGE,
 	0,              0,              0,
 	A|G|V,          A|C|D|E|F|J|K|Q|V,
@@ -432,7 +432,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-	"wyvern",               FALSE,
+	"wyvern",               false,
 	0,              AFF_FLYING|AFF_DETECT_INVIS|AFF_DETECT_HIDDEN,
 	OFF_BASH|OFF_FAST|OFF_DODGE,
 	IMM_POISON,     0,      VULN_LIGHT,
@@ -442,7 +442,7 @@ const	struct	race_type	race_table	[]		=
     },
 
     {
-        NULL, FALSE,
+        NULL, false,
         0, 0, 0, 0, 0, 0,
         0, 0,
         NULL, NULL
@@ -524,38 +524,38 @@ const   struct  class_type      class_table     [MAX_CLASS]     =
 
     {
 	"mage", "M",  STAT_INT,  OBJ_VNUM_SCHOOL_DAGGER,
-	{ 9618 },        75, 18, 6, 6, 10, TRUE,
+	{ 9618 },        75, 18, 6, 6, 10, true,
 	{3,80,8,5,10,7,20,3}, "mage basics", "mage default"
 
     },
 
     {
 	"cleric",  "C",  STAT_WIS,  OBJ_VNUM_SCHOOL_MACE,
-	{ 9619 },        75, 18, 2, 7, 12, TRUE,
+	{ 9619 },        75, 18, 2, 7, 12, true,
 	{3,3,15,80,10,20,5,3}, "cleric basics", "cleric default"
     },
 
     {
 	"thief",   "T",  STAT_DEX,  OBJ_VNUM_SCHOOL_DAGGER,
-	{ 9639 },        75, 18, -4, 8, 13, FALSE,
+	{ 9639 },        75, 18, -4, 8, 13, false,
 	{15,80,5,10,7,5,20,3}, "thief basics", "thief default"
     },
 
     {
 	"warrior", "W",  STAT_STR,  OBJ_VNUM_SCHOOL_SWORD,
-	{ 9633 },        75, 18, -8, 9, 14, FALSE,
+	{ 9633 },        75, 18, -8, 9, 14, false,
 	{80,30,30,25,30,25,30,35}, "warrior basics", "warrior default"
     },
 
     {
 	"monk",    "Monk ",  STAT_CON,  OBJ_VNUM_SCHOOL_DAGGER,
-	{ 0, 0 },        75, 18, 0, 6, 13, TRUE,
+	{ 0, 0 },        75, 18, 0, 6, 13, true,
 	{3,20,7,80,8,6,15,3}, "monk basics", "monk default"
     },
 
     {
 	"necromancer", "Necro",  STAT_INT,  OBJ_VNUM_SCHOOL_DAGGER,
-	{ 0, 0 },        75, 18, 6, 6, 10, TRUE,
+	{ 0, 0 },        75, 18, 6, 6, 10, true,
 	{3,80,7,5,8,6,15,3}, "Necro basics", "Necro default"
     }
 

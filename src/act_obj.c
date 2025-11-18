@@ -47,7 +47,7 @@ bool	remove_obj	args( ( CHAR_DATA *ch, int iWear, bool fReplace ) );
 void	wear_obj	args( ( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace ) );
 CD *	find_keeper	args( ( CHAR_DATA *ch ) );
 int	get_cost	args( ( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy ) );
-extern const	sh_int	rev_dir	[];
+extern const	int16_t	rev_dir	[];
 #undef	CD
 
 /* RT part of the corpse looting code */
@@ -57,10 +57,10 @@ bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
     CHAR_DATA *owner, *wch;
 
     if (IS_IMMORTAL(ch))
-	return TRUE;
+	return true;
 
     if (!obj->owner || obj->owner == NULL)
-	return TRUE;
+	return true;
 
     owner = NULL;
     for ( wch = char_list; wch != NULL ; wch = wch->next )
@@ -68,21 +68,21 @@ bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
             owner = wch;
 
     if (owner == NULL)
-	return TRUE;
+	return true;
 
     if (owner->pcdata->pk_state == 1)
-	return TRUE;
+	return true;
 
     if (!str_cmp(ch->name,owner->name))
-	return TRUE;
+	return true;
 
     if (!IS_NPC(owner) && IS_SET(owner->act,PLR_CANLOOT))
-	return TRUE;
+	return true;
 
     if (is_same_group(ch,owner))
-	return TRUE;
+	return true;
 
-    return FALSE;
+    return false;
 }
 
 
@@ -91,7 +91,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     CHAR_DATA *gch;
     int members, chance;
     char buffer[100];
-    bool hidden = FALSE;
+    bool hidden = false;
 
     if(!CAN_WEAR(obj,ITEM_TAKE)) {
 	send_to_char("You can't take that.\n\r",ch);
@@ -119,8 +119,8 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 
     chance = get_skill(ch,gsn_sleight_of_hand);
     if(number_percent () < chance - 5 || IS_IMMORTAL(ch) ) {
-      check_improve( ch, gsn_sleight_of_hand, TRUE, 8 );
-      hidden = TRUE;
+      check_improve( ch, gsn_sleight_of_hand, true, 8 );
+      hidden = true;
     }
 
     if(container) {
@@ -376,7 +376,7 @@ void do_get( CHAR_DATA *ch, char *argument )
 	else
 	{
 	    /* 'get all' or 'get all.obj' */
-	    found = FALSE;
+	    found = false;
 	    for ( obj = ch->in_room->contents; obj != NULL; obj = obj_next )
 	    {
 		obj_next = obj->next_content;
@@ -387,7 +387,7 @@ void do_get( CHAR_DATA *ch, char *argument )
 		  if(obj->item_type != ITEM_MANIPULATION &&
 		     !IS_SET(obj->extra_flags2, ITEM2_NO_CAN_SEE) )
 		  {
-		    found = TRUE;
+		    found = true;
 		    get_obj( ch, obj, NULL );
 		  }
 		}
@@ -511,14 +511,14 @@ void do_get( CHAR_DATA *ch, char *argument )
 	else
 	{
 	    /* 'get all container' or 'get all.obj container' */
-	    found = FALSE;
+	    found = false;
 	    for ( obj = container->contains; obj != NULL; obj = obj_next )
 	    {
 		obj_next = obj->next_content;
 		if ( ( arg1[3] == '\0' || is_name( &arg1[4], obj->name ) )
 		&&   can_see_obj( ch, obj ) )
 		{
-		    found = TRUE;
+		    found = true;
 		    if (container->pIndexData->vnum == OBJ_VNUM_PIT
 		    &&  !IS_IMMORTAL(ch))
 		    {
@@ -550,7 +550,7 @@ void do_put( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
-    bool hidden = FALSE;
+    bool hidden = false;
     OBJ_DATA *container;
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
@@ -630,13 +630,13 @@ void do_put( CHAR_DATA *ch, char *argument )
 	    }
 	    else
 	    {
-                obj->timer = (sh_int)number_range(100,200);
+                obj->timer = (int16_t)number_range(100,200);
 	    }
 	}
 
 	chance = get_skill(ch,gsn_sleight_of_hand);
 	if(number_percent () < chance - 5 || IS_IMMORTAL (ch) )
-	   hidden = TRUE;
+	   hidden = true;
 
 	obj_from_char( obj );
 	obj_to_obj( obj, container );
@@ -666,7 +666,7 @@ void do_put( CHAR_DATA *ch, char *argument )
                     if (obj->timer)
                         continue;
                     else
-                        obj->timer = (sh_int)number_range(100,200);
+                        obj->timer = (int16_t)number_range(100,200);
                 }
 
 		obj_from_char( obj );
@@ -674,7 +674,7 @@ void do_put( CHAR_DATA *ch, char *argument )
 
 		chance = get_skill(ch,gsn_sleight_of_hand);
 		if(number_percent () < chance - 5 || IS_IMMORTAL (ch) )
-		  hidden = TRUE;
+		  hidden = true;
 		if(!hidden)
 		   act( "$n puts $p in $P.", ch, obj, container, TO_ROOM );
 		act( "You put $p in $P.", ch, obj, container, TO_CHAR );
@@ -908,7 +908,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
     else
     {
 	/* 'drop all' or 'drop all.obj' */
-	found = FALSE;
+	found = false;
 	for ( obj = ch->carrying; obj != NULL; obj = obj_next )
 	{
 	    obj_next = obj->next_content;
@@ -918,7 +918,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 	    &&   obj->wear_loc == WEAR_NONE
 	    &&   can_drop_obj( ch, obj ) )
 	    {
-		found = TRUE;
+		found = true;
         /* This next line added hopefully to fix the sub issue crash bug 10/7/97 Rico */
                 if (count >= 20)
                 continue;
@@ -1207,13 +1207,13 @@ bool has_enough_gold( const CHAR_DATA *ch, long gold_cost )
     long required_copper;
 
     if (ch == NULL)
-        return FALSE;
+        return false;
 
     if (gold_cost <= 0)
-        return TRUE;
+        return true;
 
     if (gold_cost > LONG_MAX / COPPER_PER_GOLD)
-        return FALSE;
+        return false;
 
     total_copper = coins_to_copper(ch);
     required_copper = gold_cost * COPPER_PER_GOLD;
@@ -1226,13 +1226,13 @@ static bool coin_amount_to_copper(long amount, int coin_type, long *copper)
     long multiplier = coin_copper_value(coin_type);
 
     if (amount <= 0 || multiplier <= 0)
-        return FALSE;
+        return false;
 
     if (amount > LONG_MAX / multiplier)
-        return FALSE;
+        return false;
 
     *copper = amount * multiplier;
-    return TRUE;
+    return true;
 }
 
 static bool can_carry_copper(CHAR_DATA *ch, long copper_amount)
@@ -1243,7 +1243,7 @@ static bool can_carry_copper(CHAR_DATA *ch, long copper_amount)
     long total_weight;
 
     if (ch == NULL || copper_amount < 0)
-        return FALSE;
+        return false;
 
     total_copper = coins_to_copper(ch);
     if (copper_amount > 0 && total_copper > LONG_MAX - copper_amount)
@@ -1270,11 +1270,11 @@ static bool parse_coin_amount(char *argument, long *amount, int *coin_type)
     one_argument(argument, arg2);
 
     if (arg1[0] == '\0')
-        return FALSE;
+        return false;
 
     parsed_amount = strtol(arg1, &endptr, 10);
     if (*endptr != '\0' || parsed_amount <= 0)
-        return FALSE;
+        return false;
 
     parsed_type = TYPE_PLATINUM;
     if (arg2[0] != '\0')
@@ -1288,12 +1288,12 @@ static bool parse_coin_amount(char *argument, long *amount, int *coin_type)
         else if (!str_prefix(arg2, "copper"))
             parsed_type = TYPE_COPPER;
         else
-            return FALSE;
+            return false;
     }
 
     *amount = parsed_amount;
     *coin_type = parsed_type;
-    return TRUE;
+    return true;
 }
 
 static void format_coins(long copper_amount, char *buf, size_t buf_size)
@@ -1463,13 +1463,13 @@ void do_fill( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    found = FALSE;
+    found = false;
     for ( fountain = ch->in_room->contents; fountain != NULL;
 	fountain = fountain->next_content )
     {
 	if ( fountain->item_type == ITEM_FOUNTAIN )
 	{
-	    found = TRUE;
+	    found = true;
 	    break;
 	}
     }
@@ -1616,8 +1616,8 @@ void do_drink( CHAR_DATA *ch, char *argument )
 	    act( "$n chokes and gags.", ch, NULL, NULL, TO_ROOM );
 	    send_to_char( "You choke and gag.\n\r", ch );
 	    af.type      = gsn_poison;
-	    af.level     = (sh_int)number_fuzzy(amount);
-            af.duration  = (sh_int)(3 * amount);
+	    af.level     = (int16_t)number_fuzzy(amount);
+            af.duration  = (int16_t)(3 * amount);
 	    af.location  = APPLY_NONE;
 	    af.modifier  = 0;
 	    af.bitvector = AFF_POISON;
@@ -1696,8 +1696,8 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	    send_to_char( "You choke and gag.\n\r", ch );
 
 	    af.type      = gsn_poison;
-	    af.level     = (sh_int)number_fuzzy(obj->value[0]);
-            af.duration  = (sh_int)(2 * obj->value[0]);
+	    af.level     = (int16_t)number_fuzzy(obj->value[0]);
+            af.duration  = (int16_t)(2 * obj->value[0]);
 	    af.location  = APPLY_NONE;
 	    af.modifier  = 0;
 	    af.bitvector = AFF_POISON;
@@ -1733,21 +1733,21 @@ bool remove_obj( CHAR_DATA *ch, int iWear, bool fReplace )
     OBJ_DATA *obj;
 
     if ( ( obj = get_eq_char( ch, iWear ) ) == NULL )
-	return TRUE;
+	return true;
 
-    if (!fReplace && !IS_IMMORTAL(ch)) return FALSE;
+    if (!fReplace && !IS_IMMORTAL(ch)) return false;
   {
     if ( IS_SET(obj->extra_flags, ITEM_NOREMOVE) )
     {
 	act( "You can't remove $p.", ch, obj, NULL, TO_CHAR );
-	return FALSE;
+	return false;
     }
   }
 
     unequip_char( ch, obj );
     act( "$n stops using $p.", ch, obj, NULL, TO_ROOM );
     act( "You stop using $p.", ch, obj, NULL, TO_CHAR );
-    return TRUE;
+    return true;
 }
 
 /* function for use with dual wield skill */
@@ -1756,7 +1756,7 @@ void do_secondary( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *obj;
-    bool fReplace = TRUE;
+    bool fReplace = true;
     AFFECT_DATA *paf;
 
     one_argument( argument, arg );
@@ -2254,7 +2254,7 @@ void do_wear( CHAR_DATA *ch, char *argument )
     if ( !str_cmp( arg, "all" ) )
     {
 	OBJ_DATA *obj_next;
-	bool recheck = FALSE;
+	bool recheck = false;
 
 	for ( obj = ch->carrying; obj != NULL; obj = obj_next )
 	{
@@ -2270,13 +2270,13 @@ void do_wear( CHAR_DATA *ch, char *argument )
 
 	    if ( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) )
 	    {
-		wear_obj( ch, obj, FALSE );
+		wear_obj( ch, obj, false );
 
 		if (IS_AFFECTED(ch, AFF_SNEAK) &&
 			  IS_SET(obj->extra_flags, ITEM_METAL))
 		{
 		    send_to_char("But it sure will make it hard to sneak!\n\r",ch );
-		    recheck = TRUE;
+		    recheck = true;
 		}
 	    }
 	    if (recheck)
@@ -2300,7 +2300,7 @@ void do_wear( CHAR_DATA *ch, char *argument )
 	  send_to_char("You can't wield a weapon right now.\n\r",ch);
 	  return;
 	}
-	wear_obj( ch, obj, TRUE );
+	wear_obj( ch, obj, true );
 
 	if (IS_AFFECTED(ch, AFF_SNEAK) && IS_SET(obj->extra_flags, ITEM_METAL))
 	{
@@ -2343,7 +2343,7 @@ void do_remove( CHAR_DATA *ch, char *argument )
 	{
 	    obj_next = obj->next_content;
 	    if ( obj->wear_loc != WEAR_NONE && can_see_obj( ch, obj ) )
-	      remove_obj( ch, obj->wear_loc, TRUE );
+	      remove_obj( ch, obj->wear_loc, true );
 	}
     }
     else
@@ -2353,7 +2353,7 @@ void do_remove( CHAR_DATA *ch, char *argument )
 	 send_to_char( "You do not have that item.\n\r", ch );
 	 return;
        }
-       remove_obj( ch, obj->wear_loc, TRUE );
+       remove_obj( ch, obj->wear_loc, true );
     }
 
     return;
@@ -2541,7 +2541,7 @@ void do_recite( CHAR_DATA *ch, char *argument )
     if (number_percent() >= 20 + get_skill(ch,gsn_scrolls) * 4/5)
     {
 	send_to_char("You mispronounce a syllable.\n\r",ch);
-	check_improve(ch,gsn_scrolls,FALSE,2);
+	check_improve(ch,gsn_scrolls,false,2);
     }
 
     else
@@ -2549,7 +2549,7 @@ void do_recite( CHAR_DATA *ch, char *argument )
 	obj_cast_spell( scroll->value[1], scroll->value[0], ch, victim, obj );
 	obj_cast_spell( scroll->value[2], scroll->value[0], ch, victim, obj );
 	obj_cast_spell( scroll->value[3], scroll->value[0], ch, victim, obj );
-	check_improve(ch,gsn_scrolls,TRUE,2);
+	check_improve(ch,gsn_scrolls,true,2);
     }
 
     extract_obj( scroll );
@@ -2604,7 +2604,7 @@ void do_brandish( CHAR_DATA *ch, char *argument )
  	{
 	    act ("You fail to invoke $p.",ch,staff,NULL,TO_CHAR);
 	    act ("...and nothing happens.",ch,NULL,NULL,TO_ROOM);
-	    check_improve(ch,gsn_staves,FALSE,2);
+	    check_improve(ch,gsn_staves,false,2);
 	}
 
 	else for ( vch = ch->in_room->people; vch; vch = vch_next )
@@ -2642,7 +2642,7 @@ void do_brandish( CHAR_DATA *ch, char *argument )
 	    }
 
 	    obj_cast_spell( staff->value[3], staff->value[0], ch, vch, NULL );
-	    check_improve(ch,gsn_staves,TRUE,2);
+	    check_improve(ch,gsn_staves,true,2);
 	}
     }
 
@@ -2729,12 +2729,12 @@ void do_zap( CHAR_DATA *ch, char *argument )
 		 ch,wand,NULL,TO_CHAR);
 	    act( "$n's efforts with $p produce only smoke and sparks.",
 		 ch,wand,NULL,TO_ROOM);
-	    check_improve(ch,gsn_wands,FALSE,2);
+	    check_improve(ch,gsn_wands,false,2);
 	}
 	else
 	{
 	    obj_cast_spell( wand->value[3], wand->value[0], ch, victim, obj );
-	    check_improve(ch,gsn_wands,TRUE,2);
+	    check_improve(ch,gsn_wands,true,2);
 	}
     }
 
@@ -2835,7 +2835,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
 	{
 	    if ( IS_NPC(victim) )
 	    {
-	        check_improve(ch,gsn_steal,FALSE,2);
+	        check_improve(ch,gsn_steal,false,2);
 		multi_hit( victim, ch, TYPE_UNDEFINED );
 	    }
 	    else
@@ -2867,7 +2867,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
 	victim->new_platinum -= amount;
         sprintf(buf,"Bingo! You got %ld platinum coins.\n\r",amount);
 	send_to_char(buf,ch);
-	check_improve(ch,gsn_steal,TRUE,2);
+	check_improve(ch,gsn_steal,true,2);
 	return;
     }
 
@@ -2885,7 +2885,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
 	victim->new_gold -= amount;
         sprintf(buf,"Bingo! You got %ld gold coins.\n\r",amount);
 	send_to_char(buf,ch);
-	check_improve(ch,gsn_steal,TRUE,2);
+	check_improve(ch,gsn_steal,true,2);
 	return;
     }
 
@@ -2903,7 +2903,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
 	victim->new_silver -= amount;
         sprintf(buf,"Bingo! You got %ld silver coins.\n\r",amount);
 	send_to_char(buf,ch);
-	check_improve(ch,gsn_steal,TRUE,2);
+	check_improve(ch,gsn_steal,true,2);
 	return;
     }
 
@@ -2921,7 +2921,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
 	victim->new_copper -= amount;
         sprintf(buf,"Bingo! You got %ld copper coins.\n\r",amount);
 	send_to_char(buf,ch);
-	check_improve(ch,gsn_steal,TRUE,2);
+	check_improve(ch,gsn_steal,true,2);
 	return;
     }
 
@@ -2963,7 +2963,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
 
     obj_from_char( obj );
     obj_to_char( obj, ch );
-    check_improve(ch,gsn_steal,TRUE,2);
+    check_improve(ch,gsn_steal,true,2);
     return;
 }
 
@@ -3094,7 +3094,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
 	return;
 
     obj  = get_obj_carry( keeper, argument );
-    cost = get_cost( keeper, obj, TRUE );
+    cost = get_cost( keeper, obj, true );
 
     if(cost <= 0 || !can_see_obj(ch,obj)) {
 	act( "$n tells you 'I don't sell that -- try 'list''.",
@@ -3129,7 +3129,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
 	cost -= obj->cost / 2 * roll / 100;
 	sprintf(buf,"You haggle the price down to %d coins.\n\r",cost);
 	send_to_char(buf,ch);
-	check_improve(ch,gsn_haggle,TRUE,4);
+	check_improve(ch,gsn_haggle,true,4);
     }
 
     act( "$n buys $p.", ch, obj, NULL, TO_ROOM );
@@ -3168,18 +3168,18 @@ void do_list( CHAR_DATA *ch, char *argument )
 	    return;
         one_argument(argument,arg);
 
-	found = FALSE;
+	found = false;
 	for ( obj = keeper->carrying; obj; obj = obj->next_content )
 	{
 	    if ( obj->wear_loc == WEAR_NONE
 	    &&   can_see_obj( ch, obj )
-	    &&   ( cost = get_cost( keeper, obj, TRUE ) ) > 0
+	    &&   ( cost = get_cost( keeper, obj, true ) ) > 0
 	    &&   ( arg[0] == '\0'
  	       ||  is_name(arg,obj->name) ))
 	    {
 		if ( !found )
 		{
-		    found = TRUE;
+		    found = true;
 		    send_to_char( "[Lv Price] Item\n\r", ch );
 		}
 
@@ -3237,7 +3237,7 @@ void do_sell( CHAR_DATA *ch, char *argument )
     }
 
     /* won't buy rotting goods */
-    if ( obj->timer || ( cost = get_cost( keeper, obj, FALSE ) ) <= 0 )
+    if ( obj->timer || ( cost = get_cost( keeper, obj, false ) ) <= 0 )
     {
 	act( "$n looks uninterested in $p.", keeper, obj, ch, TO_VICT );
 	return;
@@ -3257,9 +3257,9 @@ void do_sell( CHAR_DATA *ch, char *argument )
     {
         send_to_char("You haggle with the shopkeeper.\n\r",ch);
         cost += obj->cost / 2 * roll / 100;
-        cost = UMIN(cost,95 * get_cost(keeper,obj,TRUE) / 100);
+        cost = UMIN(cost,95 * get_cost(keeper,obj,true) / 100);
         cost = (int)UMAX(0L, UMIN((long)cost, keeper->new_gold));
-        check_improve(ch,gsn_haggle,TRUE,4);
+        check_improve(ch,gsn_haggle,true,4);
     }
     sprintf( buf, "You sell $p for %d gold piece%s.",
 	cost, cost == 1 ? "" : "s" );
@@ -3276,7 +3276,7 @@ void do_sell( CHAR_DATA *ch, char *argument )
     else
     {
 	obj_from_char( obj );
-        obj->timer = (sh_int)number_range(50,100);
+        obj->timer = (int16_t)number_range(50,100);
 	obj_to_char( obj, keeper );
     }
 
@@ -3324,7 +3324,7 @@ void do_value( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( cost = get_cost( keeper, obj, FALSE ) ) <= 0 )
+    if ( ( cost = get_cost( keeper, obj, false ) ) <= 0 )
     {
 	act( "$n looks uninterested in $p.", keeper, obj, ch, TO_VICT );
 	return;
@@ -3340,7 +3340,7 @@ void do_value( CHAR_DATA *ch, char *argument )
 void do_bounce( OBJ_DATA *obj )
 {
 
-    bool found = FALSE;
+    bool found = false;
     CHAR_DATA *victim;
     CHAR_DATA *rch;
     char *message;
@@ -3380,11 +3380,11 @@ void do_bounce( OBJ_DATA *obj )
 		   &&   victim->in_room != NULL
 		   &&   (pMobIndex == victim->pIndexData ) )
 		    {
-			found = TRUE;
+			found = true;
 			break;
 		    }
 		 }
-	   } while (found == FALSE);
+	   } while (found == false);
 
 	   if ( obj->carried_by != NULL )
 		{
@@ -3434,7 +3434,7 @@ void do_bounce( OBJ_DATA *obj )
 	 }
 
 	 if(IS_SET(obj->extra_flags, ITEM_TPORT) )
-           obj->timer = (sh_int)(20 + dice(2,10));
+           obj->timer = (int16_t)(20 + dice(2,10));
 	 else
 	   obj->timer = 150;
 return;
@@ -3454,7 +3454,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
   CHAR_DATA *rch = NULL;
   CHAR_DATA *bottled = NULL;
   OBJ_DATA *obj, *find_obj;
-  bool found = FALSE;
+  bool found = false;
   int which_trap = 0;
 
    one_argument( argument, arg );
@@ -3664,7 +3664,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	if ( IS_SET(pexit->exit_info, EX_SECRET) )
 	    REMOVE_BIT( pexit->exit_info, EX_SECRET );
 
-	found = TRUE;
+	found = true;
      }
 
     to_room   = pexit->u1.to_room;
@@ -3681,7 +3681,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
        if ( IS_SET(pexit_rev->exit_info, EX_SECRET) )
 	  REMOVE_BIT( pexit_rev->exit_info, EX_SECRET );
 
-       found = TRUE;
+       found = true;
     }
 
    }
@@ -3705,7 +3705,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	 {
 	   if ( find_obj->pIndexData == get_obj_index(obj->value[1])  )
 	   {
-	     found = TRUE;
+	     found = true;
 	     break;
 	   }
 	 }
@@ -3726,7 +3726,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	 {
 	   if ( find_obj->pIndexData == get_obj_index( obj->value[1])  )
 	   {
-	     found = TRUE;
+	     found = true;
 	     break;
 	   }
 	 }

@@ -852,7 +852,7 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
 	act( "$n seems to be following some unseen tracks.",
 	    ch, NULL, NULL, TO_ROOM );
 	old_room = ch->in_room;
-	move_char(ch, dir, TRUE);
+	move_char(ch, dir, true);
 	if (ch->in_room == old_room)
 	{
 	     sprintf(buf, "FatCat GOOFED in hunting code!!!  Check hunting mob in [Room: %d] trying to go %s",

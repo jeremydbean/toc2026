@@ -42,16 +42,16 @@ extern  int     _filbuf         args( (FILE *) );
 bool write_to_descriptor	args( ( int desc, char *txt, int length ) );
 bool merc_down;
 
-static sh_int clamp_sh_int_from_long( long value )
+static int16_t clamp_sh_int_from_long( long value )
 {
     if ( value > SHRT_MAX )
         return SHRT_MAX;
     if ( value < SHRT_MIN )
         return SHRT_MIN;
-    return (sh_int) value;
+    return (int16_t) value;
 }
 
-static sh_int fread_sh_int( FILE *fp )
+static int16_t fread_sh_int( FILE *fp )
 {
     return clamp_sh_int_from_long( fread_number( fp ) );
 }
@@ -95,110 +95,110 @@ ROOM_INDEX_DATA*	RELIC_ROOM_2;
 ROOM_INDEX_DATA*	RELIC_ROOM_3;
 ROOM_INDEX_DATA*	RELIC_ROOM_4;
 
-sh_int                  gsn_backstab;
-sh_int                  gsn_smite;
-sh_int                  gsn_dodge;
-sh_int                  gsn_hide;
-sh_int                  gsn_peek;
-sh_int                  gsn_pick_lock;
-sh_int                  gsn_sneak;
-sh_int                  gsn_steal;
-sh_int                  gsn_search;
+int16_t                  gsn_backstab;
+int16_t                  gsn_smite;
+int16_t                  gsn_dodge;
+int16_t                  gsn_hide;
+int16_t                  gsn_peek;
+int16_t                  gsn_pick_lock;
+int16_t                  gsn_sneak;
+int16_t                  gsn_steal;
+int16_t                  gsn_search;
  
-sh_int                  gsn_disarm;
-sh_int                  gsn_enhanced_damage;
-sh_int                  gsn_kick;
-sh_int                  gsn_parry;
-sh_int                  gsn_rescue;
-sh_int                  gsn_second_attack;
-sh_int                  gsn_third_attack;
+int16_t                  gsn_disarm;
+int16_t                  gsn_enhanced_damage;
+int16_t                  gsn_kick;
+int16_t                  gsn_parry;
+int16_t                  gsn_rescue;
+int16_t                  gsn_second_attack;
+int16_t                  gsn_third_attack;
  
-sh_int                  gsn_blindness;
-sh_int                  gsn_charm_person;
-sh_int                  gsn_curse;
-sh_int                  gsn_invis;
-sh_int                  gsn_mass_invis;
-sh_int                  gsn_poison;
-sh_int                  gsn_plague;
-sh_int                  gsn_sleep;
-sh_int			gsn_ghostly_presence;
+int16_t                  gsn_blindness;
+int16_t                  gsn_charm_person;
+int16_t                  gsn_curse;
+int16_t                  gsn_invis;
+int16_t                  gsn_mass_invis;
+int16_t                  gsn_poison;
+int16_t                  gsn_plague;
+int16_t                  gsn_sleep;
+int16_t			gsn_ghostly_presence;
 /* new gsns */
  
-sh_int                  gsn_axe;
-sh_int                  gsn_dagger;
-sh_int                  gsn_flail;
-sh_int                  gsn_mace;
-sh_int                  gsn_polearm;
-sh_int                  gsn_spear;
-sh_int                  gsn_sword;
-sh_int                  gsn_whip;
+int16_t                  gsn_axe;
+int16_t                  gsn_dagger;
+int16_t                  gsn_flail;
+int16_t                  gsn_mace;
+int16_t                  gsn_polearm;
+int16_t                  gsn_spear;
+int16_t                  gsn_sword;
+int16_t                  gsn_whip;
  
-sh_int                  gsn_bash;
-sh_int                  gsn_berserk;
-sh_int                  gsn_dirt;
-sh_int                  gsn_hand_to_hand;
-sh_int                  gsn_trip;
-sh_int                  gsn_aggrostab;
-sh_int                  gsn_shove;
-sh_int                  gsn_ride;
-sh_int                  gsn_shield_block;
-sh_int                  gsn_punch;
+int16_t                  gsn_bash;
+int16_t                  gsn_berserk;
+int16_t                  gsn_dirt;
+int16_t                  gsn_hand_to_hand;
+int16_t                  gsn_trip;
+int16_t                  gsn_aggrostab;
+int16_t                  gsn_shove;
+int16_t                  gsn_ride;
+int16_t                  gsn_shield_block;
+int16_t                  gsn_punch;
  
-sh_int                  gsn_scribe;
-sh_int                  gsn_concoct;
-sh_int                  gsn_brew;
-sh_int                  gsn_fast_healing;
-sh_int                  gsn_haggle;
-sh_int                  gsn_lore;
-sh_int                  gsn_meditation;
-sh_int                  gsn_stealth;
-sh_int			gsn_danger_sense;
+int16_t                  gsn_scribe;
+int16_t                  gsn_concoct;
+int16_t                  gsn_brew;
+int16_t                  gsn_fast_healing;
+int16_t                  gsn_haggle;
+int16_t                  gsn_lore;
+int16_t                  gsn_meditation;
+int16_t                  gsn_stealth;
+int16_t			gsn_danger_sense;
  
-sh_int                  gsn_scrolls;
-sh_int                  gsn_staves;
-sh_int                  gsn_wands;
-sh_int                  gsn_recall;
-sh_int                  gsn_dual_wield;
-sh_int                  gsn_destruction;
-sh_int                  gsn_fatality;
-sh_int                  gsn_archery;
-sh_int                  gsn_sleight_of_hand;
-sh_int                  gsn_tracking;
-sh_int			gsn_despair;
-sh_int			gsn_phase;
-sh_int			gsn_listen_at_door;
-sh_int                  gsn_doorbash;
+int16_t                  gsn_scrolls;
+int16_t                  gsn_staves;
+int16_t                  gsn_wands;
+int16_t                  gsn_recall;
+int16_t                  gsn_dual_wield;
+int16_t                  gsn_destruction;
+int16_t                  gsn_fatality;
+int16_t                  gsn_archery;
+int16_t                  gsn_sleight_of_hand;
+int16_t                  gsn_tracking;
+int16_t			gsn_despair;
+int16_t			gsn_phase;
+int16_t			gsn_listen_at_door;
+int16_t                  gsn_doorbash;
  
 /* psi skills */
-sh_int         gsn_confuse;
-sh_int         gsn_torment;
-sh_int         gsn_nightmare;
-sh_int         gsn_ego_whip;
-sh_int         gsn_pyrotechnics;
-sh_int         gsn_mindblast;
-sh_int         gsn_clairvoyance;
-sh_int         gsn_telekinesis;
-sh_int         gsn_astral_walk;
-sh_int         gsn_shift;
-sh_int         gsn_project;
-sh_int         gsn_transfusion;
-sh_int         gsn_psionic_armor;
-sh_int         gsn_psychic_shield;
-sh_int         gsn_mindbar;
+int16_t         gsn_confuse;
+int16_t         gsn_torment;
+int16_t         gsn_nightmare;
+int16_t         gsn_ego_whip;
+int16_t         gsn_pyrotechnics;
+int16_t         gsn_mindblast;
+int16_t         gsn_clairvoyance;
+int16_t         gsn_telekinesis;
+int16_t         gsn_astral_walk;
+int16_t         gsn_shift;
+int16_t         gsn_project;
+int16_t         gsn_transfusion;
+int16_t         gsn_psionic_armor;
+int16_t         gsn_psychic_shield;
+int16_t         gsn_mindbar;
  
 /* monk gsn's */
-sh_int         gsn_steel_fist;
-sh_int         gsn_crane_dance;
-sh_int         gsn_nerve_damage;
-sh_int         gsn_blinding_fists;
-sh_int         gsn_fists_of_fury;
-sh_int         gsn_stunning_blow;
-sh_int         gsn_iron_skin;
-sh_int         gsn_levitate;
+int16_t         gsn_steel_fist;
+int16_t         gsn_crane_dance;
+int16_t         gsn_nerve_damage;
+int16_t         gsn_blinding_fists;
+int16_t         gsn_fists_of_fury;
+int16_t         gsn_stunning_blow;
+int16_t         gsn_iron_skin;
+int16_t         gsn_levitate;
  
 /* Castle gsn's */
-sh_int		gsn_dshield;
-sh_int		gsn_baura;
+int16_t		gsn_dshield;
+int16_t		gsn_baura;
 /*
  * Locals.
  */
@@ -346,7 +346,7 @@ void boot_db( void )
             exit( 1 );
         }
         top_string      = string_space;
-        fBootDb         = TRUE;
+        fBootDb         = true;
     }
  
     /*
@@ -455,7 +455,7 @@ void boot_db( void )
         new_area->name          = "Newly Created Area";
         new_area->age           = 15;
         new_area->nplayer       = 0;
-        new_area->empty = FALSE;
+        new_area->empty = false;
  
         if ( area_first == NULL )
             area_first = new_area;
@@ -482,7 +482,7 @@ void boot_db( void )
         log_string("Ended LOADING COMM TABLE");
         fix_exits( );
 	log_string("Ended Fixing Exits");
-        fBootDb = FALSE;
+        fBootDb = false;
         area_update( );
 	log_string("Ended Area Update");
         load_notes( );
@@ -565,7 +565,7 @@ void load_area( FILE *fp )
     pArea->name          = fread_string( fp );
     pArea->age           = 15;
     pArea->nplayer       = 0;
-    pArea->empty         = FALSE;
+    pArea->empty         = false;
     pArea->disaster_type = 0;
  
     if ( area_first == NULL )
@@ -795,7 +795,7 @@ void load_mobiles( FILE *fp )
  
     for ( ; ; )
     {
-        sh_int vnum;
+        int16_t vnum;
         char letter,temp;
         int iHash,total;
  
@@ -811,7 +811,7 @@ void load_mobiles( FILE *fp )
             break;
  
         tempFlag = fBootDb; /* We don't care about the fBootDB flag here */
-        fBootDb  = FALSE;
+        fBootDb  = false;
         if ( get_mob_index( vnum ) != NULL )
         {
             bug( "Load_mobiles: vnum %d duplicated.", vnum );
@@ -821,7 +821,7 @@ void load_mobiles( FILE *fp )
  
         pMobIndex                       = alloc_perm( sizeof(*pMobIndex) );
         pMobIndex->vnum                 = vnum;
-        pMobIndex->new_format           = TRUE;
+        pMobIndex->new_format           = true;
         newmobs++;
         pMobIndex->player_name          = fread_string( fp );
         pMobIndex->short_descr          = fread_string( fp );
@@ -990,7 +990,7 @@ void load_objects( FILE *fp )
  
     for ( ; ; )
     {
-        sh_int vnum;
+        int16_t vnum;
         char letter;
         int iHash;
  
@@ -1006,7 +1006,7 @@ void load_objects( FILE *fp )
             break;
  
         tempFlag = fBootDb;  /* Don't care about the flag here */
-        fBootDb = FALSE;
+        fBootDb = false;
         if ( get_obj_index( vnum ) != NULL )
         {
             bug( "Load_objects: vnum %d duplicated.", vnum );
@@ -1016,7 +1016,7 @@ void load_objects( FILE *fp )
  
         pObjIndex                       = alloc_perm( sizeof(*pObjIndex) );
         pObjIndex->vnum                 = vnum;
-        pObjIndex->new_format           = TRUE;
+        pObjIndex->new_format           = true;
         pObjIndex->reset_num            = 0;
         newobjs++;
         pObjIndex->name                 = fread_string( fp );
@@ -1277,7 +1277,7 @@ void load_rooms( FILE *fp )
     ROOM_INDEX_DATA    *pRoomIndex;
     TELEPORT_ROOM_DATA *pTeleportRoom = NULL;
     ROOM_AFF_DATA      *pRoomAff = NULL;
-    sh_int vnum;
+    int16_t vnum;
     char letter;
     int door;
     int iHash;
@@ -1306,7 +1306,7 @@ void load_rooms( FILE *fp )
             break;
  
         tempFlag = fBootDb;  /* Don't care about the flag here */
-        fBootDb = FALSE;
+        fBootDb = false;
         if ( ( pRoomIndex = get_room_index( vnum ) ) != NULL )
         {
             if (tempFlag) /* Boot Time? */
@@ -1756,7 +1756,7 @@ void fix_exits( void )
         {
             bool fexit;
  
-            fexit = FALSE;
+            fexit = false;
             for ( door = 0; door <= 9; door++ )
             {
                 if ( ( pexit = pRoomIndex->exit[door] ) != NULL )
@@ -1766,7 +1766,7 @@ void fix_exits( void )
                         pexit->u1.to_room = NULL;
                     else
                     {
-                        fexit = TRUE;
+                        fexit = true;
                         pexit->u1.to_room = get_room_index( pexit->u1.vnum );
                     }
                 }
@@ -1776,7 +1776,7 @@ void fix_exits( void )
         }
     }
  
-    fBootDb = FALSE;
+    fBootDb = false;
     for (pRoom = teleport_room_list; pRoom != NULL; pRoom = pRoomNext)
     {
         pRoomNext = pRoom->next;
@@ -1834,7 +1834,7 @@ void area_update( void )
             if ( pRoomIndex != NULL && pArea == pRoomIndex->area )
                 pArea->age = 15 - 2;
             else if (pArea->nplayer == 0)
-                pArea->empty = TRUE;
+                pArea->empty = true;
         }
     }
  
@@ -1855,7 +1855,7 @@ void reset_area( AREA_DATA *pArea )
     char buf[1000];
  
     mob         = NULL;
-    last        = TRUE;
+    last        = true;
     level       = 0;
     for ( pReset = pArea->reset_first; pReset != NULL; pReset = pReset->next )
     {
@@ -1888,7 +1888,7 @@ void reset_area( AREA_DATA *pArea )
  
             if ( pMobIndex->count >= pReset->arg2 )
             {
-                last = FALSE;
+                last = false;
                 break;
             }
  
@@ -1910,7 +1910,7 @@ void reset_area( AREA_DATA *pArea )
  
             char_to_room( mob, pRoomIndex );
             level = URANGE( 0, mob->level - 2, LEVEL_HERO2 - 1 );
-            last  = TRUE;
+            last  = true;
             break;
  
         case 'O':
@@ -1929,7 +1929,7 @@ void reset_area( AREA_DATA *pArea )
             if ( pArea->nplayer > 0
             ||   count_obj_list( pObjIndex, pRoomIndex->contents ) > 0 )
             {
-                last = FALSE;
+                last = false;
                 break;
             }
 /* Blackbird: Check for max_load
@@ -1949,7 +1949,7 @@ void reset_area( AREA_DATA *pArea )
             obj       = create_object( pObjIndex, number_fuzzy(level) );
             obj->cost = 0;
             obj_to_room( obj, pRoomIndex );
-            last = TRUE;
+            last = true;
             break;
  
         case 'P':
@@ -1970,7 +1970,7 @@ void reset_area( AREA_DATA *pArea )
             || ( obj_to->in_room == NULL && !last)
             ||   count_obj_list( pObjIndex, obj_to->contains ) > 0 )
             {
-                last = FALSE;
+                last = false;
                 break;
             }
  
@@ -1990,7 +1990,7 @@ void reset_area( AREA_DATA *pArea )
  
             obj = create_object( pObjIndex, number_fuzzy(obj_to->level) );
             obj_to_obj( obj, obj_to );
-            last = TRUE;
+            last = true;
             break;
  
         case 'G':
@@ -2008,7 +2008,7 @@ void reset_area( AREA_DATA *pArea )
             {
                 bug( "Reset_area: 'E' or 'G': null mob for vnum %d.",
                     pReset->arg1 );
-                last = FALSE;
+                last = false;
                 break;
             }
  
@@ -2065,7 +2065,7 @@ void reset_area( AREA_DATA *pArea )
             obj_to_char( obj, mob );
             if ( pReset->command == 'E' )
                 equip_char( mob, obj, pReset->arg3 );
-            last = TRUE;
+            last = true;
             break;
  
         case 'D':
@@ -2133,7 +2133,7 @@ void reset_area( AREA_DATA *pArea )
                sprintf(trap_buf,"New Trap: [Room: %d]",pRoomIndex->vnum);
                wizinfo(trap_buf,LEVEL_IMMORTAL);
              }
-            last = TRUE;
+            last = true;
             break;
  
         case 'R':
@@ -2168,7 +2168,7 @@ void reset_area( AREA_DATA *pArea )
             || ( obj_to->in_room == NULL && !last)
             ||   obj_to->trapped != NULL )
             {
-                last = FALSE;
+                last = false;
                 break;
             }
  
@@ -2179,7 +2179,7 @@ void reset_area( AREA_DATA *pArea )
             }
             mob = create_mobile( pMobIndex );
             char_to_obj( mob, obj_to );
-            last = TRUE;
+            last = true;
  
             if( pReset->arg2 == 0)
               continue;
@@ -2425,7 +2425,7 @@ void clone_mobile(CHAR_DATA *parent, CHAR_DATA *clone)
     clone->affected_by  = parent->affected_by;
     if(IS_SET(clone->affected_by,AFF_FLAGS2) )
     clone->affected_by2 = parent->affected_by2;
-    clone->ridden       = FALSE;
+    clone->ridden       = false;
     clone->position     = parent->position;
     clone->practice     = parent->practice;
     clone->train        = parent->train;
@@ -2607,7 +2607,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
     *obj                = obj_zero;
     obj->pIndexData     = pObjIndex;
     obj->in_room        = NULL;
-    obj->enchanted      = FALSE;
+    obj->enchanted      = false;
  
     if( level > 52 )
       level = 52;
@@ -2923,7 +2923,7 @@ void clear_char( CHAR_DATA *ch )
     for (i = 0; i < 4; i++)
 	ch->armor[i]            = 100;
     ch->comm                    = 0;
-    ch->ridden                  = FALSE;
+    ch->ridden                  = false;
     ch->position                = POS_STANDING;
     ch->practice                = 0;
     ch->hit                     = 20;
@@ -3132,14 +3132,14 @@ int fread_number( FILE *fp )
  
     number = 0;
  
-    sign   = FALSE;
+    sign   = false;
     if ( c == '+' )
     {
         c = getc( fp );
     }
     else if ( c == '-' )
     {
-        sign = TRUE;
+        sign = true;
         c = getc( fp );
     }
  
@@ -3183,14 +3183,14 @@ long fread_long( FILE *fp )
  
     number = 0;
  
-    sign   = FALSE;
+    sign   = false;
     if ( c == '+' )
     {
         c = getc( fp );
     }
     else if ( c == '-' )
     {
-        sign = TRUE;
+        sign = true;
         c = getc( fp );
     }
  
@@ -3395,11 +3395,11 @@ char *fread_string_eol( FILE *fp )
     char *plast;
     int c;
  
-    if ( char_special[EOF-EOF] != TRUE )
+    if ( char_special[EOF-EOF] != true )
     {
-        char_special[EOF -  EOF] = TRUE;
-        char_special['\n' - EOF] = TRUE;
-        char_special['\r' - EOF] = TRUE;
+        char_special[EOF -  EOF] = true;
+        char_special['\n' - EOF] = true;
+        char_special['\r' - EOF] = true;
     }
  
     plast = top_string + sizeof(char *);
@@ -4326,7 +4326,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
             buf = stat_mob(mob);
 	    fprintf(fp, buf);
             if (!found)
-                extract_char(mob, TRUE);
+                extract_char(mob, true);
         }
     fclose(fp);
  
@@ -4573,7 +4573,7 @@ void smash_tilde( char *str )
  
 /*
  * Compare strings, case insensitive.
- * Return TRUE if different
+ * Return true if different
  *   (compatibility with historical functions).
  */
 bool str_cmp( const char *astr, const char *bstr )
@@ -4581,29 +4581,29 @@ bool str_cmp( const char *astr, const char *bstr )
     if ( astr == NULL )
     {
         bug( "Str_cmp: null astr.", 0 );
-        return TRUE;
+        return true;
     }
  
     if ( bstr == NULL )
     {
         bug( "Str_cmp: null bstr.", 0 );
-        return TRUE;
+        return true;
     }
  
     for ( ; *astr || *bstr; astr++, bstr++ )
     {
         if ( LOWER(*astr) != LOWER(*bstr) )
-            return TRUE;
+            return true;
     }
  
-    return FALSE;
+    return false;
 }
  
  
  
 /*
  * Compare strings, case insensitive, for prefix matching.
- * Return TRUE if astr not a prefix of bstr
+ * Return true if astr not a prefix of bstr
  *   (compatibility with historical functions).
  */
 bool str_prefix( const char *astr, const char *bstr )
@@ -4611,22 +4611,22 @@ bool str_prefix( const char *astr, const char *bstr )
     if ( astr == NULL )
     {
         bug( "Strn_cmp: null astr.", 0 );
-        return TRUE;
+        return true;
     }
  
     if ( bstr == NULL )
     {
         bug( "Strn_cmp: null bstr.", 0 );
-        return TRUE;
+        return true;
     }
  
     for ( ; *astr; astr++, bstr++ )
     {
         if ( LOWER(*astr) != LOWER(*bstr) )
-            return TRUE;
+            return true;
     }
  
-    return FALSE;
+    return false;
 }
  
  
@@ -4661,7 +4661,7 @@ int str_counter(const char *astr, const char *bstr)
 
 /*
  * Compare strings, case insensitive, for match anywhere.
- * Returns TRUE is astr not part of bstr.
+ * Returns true is astr not part of bstr.
  *   (compatibility with historical functions).
  */
 bool str_infix( const char *astr, const char *bstr )
@@ -4672,7 +4672,7 @@ bool str_infix( const char *astr, const char *bstr )
     char c0;
  
     if ( ( c0 = LOWER(astr[0]) ) == '\0' )
-	return FALSE;
+	return false;
  
     sstr1 = (int) strlen(astr);
     sstr2 = (int) strlen(bstr);
@@ -4680,17 +4680,17 @@ bool str_infix( const char *astr, const char *bstr )
     for ( ichar = 0; ichar <= sstr2 - sstr1; ichar++ )
     {
         if ( c0 == LOWER(bstr[ichar]) && !str_prefix( astr, bstr + ichar ) )
-            return FALSE;
+            return false;
     }
  
-    return TRUE;
+    return true;
 }
  
  
  
 /*
  * Compare strings, case insensitive, for suffix matching.
- * Return TRUE if astr not a suffix of bstr
+ * Return true if astr not a suffix of bstr
  *   (compatibility with historical functions).
  */
 bool str_suffix( const char *astr, const char *bstr )
@@ -4701,9 +4701,9 @@ bool str_suffix( const char *astr, const char *bstr )
     sstr1 = (int) strlen(astr);
     sstr2 = (int) strlen(bstr);
     if ( sstr1 <= sstr2 && !str_cmp( astr, bstr + sstr2 - sstr1 ) )
-        return FALSE;
+        return false;
     else
-        return TRUE;
+        return true;
 }
  
  

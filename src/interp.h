@@ -23,9 +23,9 @@ struct	cmd_type
 {
     char * const	name;
     DO_FUN *		do_fun;
-    sh_int		position;
-    sh_int		level;
-    sh_int		log;
+    int16_t		position;
+    int16_t		level;
+    int16_t		log;
     bool              show;
 };
 

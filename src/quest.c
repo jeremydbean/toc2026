@@ -67,8 +67,8 @@ ROOM_INDEX_DATA *find_location	args( ( CHAR_DATA *ch, char *arg ) );
 
 bool chance(int num)
 {
-    if (number_range(1,100) <= num) return TRUE;
-    else return FALSE;
+    if (number_range(1,100) <= num) return true;
+    else return false;
 }
 
 /* The main quest function */
@@ -266,7 +266,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                 ch->level += 1;
                 ch->exp = exp_per_level(ch,ch->pcdata->points) * ch->level;
                 send_to_char("You raise a level!  ", ch );
-                advance_level(ch,FALSE);
+                advance_level(ch,false);
             }
 	    else
 	    {
@@ -529,7 +529,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    }
 	    else if (ch->questobj > 0 && ch->countdown > 0)
 	    {
-		bool obj_found = FALSE;
+		bool obj_found = false;
 
     		for (obj = ch->carrying; obj != NULL; obj= obj_next)
     		{
@@ -537,11 +537,11 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 
 		    if (obj != NULL && obj->pIndexData->vnum == ch->questobj)
 		    {
-			obj_found = TRUE;
+			obj_found = true;
             	        break;
 		    }
         	}
-		if (obj_found == TRUE)
+		if (obj_found == true)
 		{
 		    int reward, pointreward;
 

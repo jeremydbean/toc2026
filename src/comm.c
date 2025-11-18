@@ -583,7 +583,7 @@ void game_loop_mac_msdos( void )
 	for ( d = descriptor_list; d != NULL; d = d_next )
 	{
 	    d_next      = d->next;
-	    d->fcommand = FALSE;
+	    d->fcommand = false;
 
 #if defined(MSDOS)
 	    if ( kbhit( ) )
@@ -610,7 +610,7 @@ void game_loop_mac_msdos( void )
 	    read_from_buffer( d );
 	    if ( d->incomm[0] != '\0' )
 	    {
-		d->fcommand     = TRUE;
+		d->fcommand     = true;
 		stop_idling( d->character );
 
 		if ( d->connected == CON_PLAYING )
@@ -641,7 +641,7 @@ void game_loop_mac_msdos( void )
 
 	    if ( ( d->fcommand || d->outtop > 0 ) )
 	    {
-		if ( !process_output( d, TRUE ) )
+		if ( !process_output( d, true ) )
 		{
 		    if ( d->character != NULL && d->character->level > 2)
 			save_char_obj( d->character );
@@ -784,7 +784,7 @@ void game_loop_unix( int control_fd )
 	for ( d = descriptor_list; d != NULL; d = d_next )
 	{
 	    d_next      = d->next;
-	    d->fcommand = FALSE;
+	    d->fcommand = false;
 
 	    if ( FD_ISSET( d->descriptor, &in_set ) )
 	    {
@@ -814,7 +814,7 @@ void game_loop_unix( int control_fd )
 	    read_from_buffer( d );
 	    if ( d->incomm[0] != '\0' )
 	    {
-		d->fcommand     = TRUE;
+		d->fcommand     = true;
 		stop_idling( d->character );
 
 		if (d->showstr_point)
@@ -846,7 +846,7 @@ void game_loop_unix( int control_fd )
 	    if ( ( d->fcommand || d->outtop > 0 )
 	    &&   FD_ISSET(d->descriptor, &out_set) )
 	    {
-		if ( !process_output( d, TRUE ) )
+		if ( !process_output( d, true ) )
 		{
 		    if ( d->character != NULL && d->character->level > 2)
 			save_char_obj( d->character );
@@ -1085,7 +1085,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 	close( dclose->ifd ); */
 
     if ( dclose->outtop > 0 )
-	process_output( dclose, FALSE );
+	process_output( dclose, false );
 
     if ( dclose->snoop_by != NULL )
     {
@@ -1185,7 +1185,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
 
     /* Hold horses if pending command already. */
     if ( d->incomm[0] != '\0' )
-	return TRUE;
+	return true;
 
     /* Check for overflow. */
     iStart = strlen(d->inbuf);
@@ -1195,7 +1195,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
         log_string( log_buf );
         write_to_descriptor( d->descriptor,
             "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
-        return FALSE;
+        return false;
     }
 
     /* Snarf input. */
@@ -1231,20 +1231,20 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
 	else if ( nRead == 0 )
 	{
 	    log_string( "EOF encountered on read." );
-	    return FALSE;
+	    return false;
 	}
 	else if ( errno == EWOULDBLOCK )
 	    break;
 	else
 	{
 	    perror( "Read_from_descriptor" );
-	    return FALSE;
+	    return false;
 	}
     }
 #endif
 
     d->inbuf[iStart] = '\0';
-    return TRUE;
+    return true;
 }
 
 
@@ -1516,7 +1516,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
      * Short-circuit if nothing to write.
      */
     if ( d->outtop == 0 )
-	return TRUE;
+	return true;
 
     /*
      * Snoop-o-rama.
@@ -1535,12 +1535,12 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
     if ( !write_to_descriptor( d->descriptor, d->outbuf, d->outtop ) )
     {
 	d->outtop = 0;
-	return FALSE;
+	return false;
     }
     else
     {
 	d->outtop = 0;
-	return TRUE;
+	return true;
     }
 }
 
@@ -1633,10 +1633,10 @@ bool write_to_descriptor( int desc, char *txt, int length )
             nBlock = 4096;
         nWrite = write( desc, txt + iStart, nBlock );
         if ( nWrite < 0 )
-            { perror( "Write_to_descriptor" ); return FALSE; }
+            { perror( "Write_to_descriptor" ); return false; }
     }
 
-    return TRUE;
+    return true;
 }
 
 
@@ -1708,9 +1708,9 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 	}
 
-	if ( check_reconnect( d, argument, FALSE ) )
+	if ( check_reconnect( d, argument, false ) )
 	{
-	    fOld = TRUE;
+	    fOld = true;
 	}
 	else
 	{
@@ -1804,7 +1804,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
 	write_to_buffer( d, echo_on_str, 0 );
 
-	if ( check_reconnect( d, ch->name, TRUE ) )
+	if ( check_reconnect( d, ch->name, true ) )
 	    return;
 
 	if ( check_playing( d, ch->name ) )
@@ -1891,7 +1891,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
 		close_socket(d_old);
 	    }
-	    if (check_reconnect(d,ch->name,TRUE))
+	    if (check_reconnect(d,ch->name,true))
 		return;
 	    write_to_buffer(d,"Reconnect attempt failed.\n\rName: ",0);
 	    if ( d->character != NULL )
@@ -2034,7 +2034,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    break;
 	}
 
-        ch->race = (sh_int)race;
+        ch->race = (int16_t)race;
 	/* initialize stats */
 	for (i = 0; i < MAX_STATS; i++)
 	    ch->perm_stat[i] = pc_race_table[race].stats[i];
@@ -2050,7 +2050,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	{
 	    if (pc_race_table[race].skills[i] == NULL)
 		break;
-	    group_add(ch,pc_race_table[race].skills[i],FALSE);
+	    group_add(ch,pc_race_table[race].skills[i],false);
 	}
 	/* add cost */
 	ch->pcdata->points = pc_race_table[race].points;
@@ -2123,7 +2123,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    break;
 	}
 
-        ch->class = (sh_int)iClass;
+        ch->class = (int16_t)iClass;
 	if(ch->class == CLASS_MONK)
 	   ch->pcdata->guild = GUILD_MONK;
 	else if( ch->class == CLASS_NECRO)
@@ -2155,11 +2155,11 @@ case CON_GET_ALIGNMENT:
 
 	write_to_buffer(d,"\n\r",0);
 
-	group_add(ch,"rom basics",FALSE);
-	group_add(ch,class_table[ch->class].base_group,FALSE);
+	group_add(ch,"rom basics",false);
+	group_add(ch,class_table[ch->class].base_group,false);
 	ch->pcdata->learned[gsn_recall] = 80;
 
-	group_add(ch,class_table[ch->class].default_group,TRUE);
+	group_add(ch,class_table[ch->class].default_group,true);
 	write_to_buffer( d, "\n\r", 2 );
 	do_help( ch, "motd" );
 	d->connected = CON_READ_MOTD;
@@ -2336,7 +2336,7 @@ case CON_GET_ALIGNMENT:
 
 
 
-	ch->pcdata->mounted = FALSE;
+	ch->pcdata->mounted = false;
 
 	if(ch->were_shape.name != NULL)
 	   do_lycanthropy(ch,"");
@@ -2438,16 +2438,16 @@ static bool is_valid_psionic_selection( const char *skill )
     {
         if ( !str_cmp( skill, psionic_skill_options[idx] ) )
         {
-            return TRUE;
+            return true;
         }
     }
 
-    return FALSE;
+    return false;
 }
 
 static void clear_psionic_preferences( CHAR_DATA *ch )
 {
-    ch->pcdata->psionic_grant_pending = FALSE;
+    ch->pcdata->psionic_grant_pending = false;
     free_string( ch->pcdata->psionic_grant_spec );
     ch->pcdata->psionic_grant_spec = str_dup( "" );
 }
@@ -2456,30 +2456,30 @@ static bool add_psionic_choice( CHAR_DATA *ch, const char *skill )
 {
     if ( skill[0] == '\0' )
     {
-        return FALSE;
+        return false;
     }
 
     if ( !is_valid_psionic_selection( skill ) )
     {
-        return FALSE;
+        return false;
     }
 
     group_add( ch, skill, 0 );
     sprintf( log_buf, "%s psi selection granted: [%s]", ch->name, skill );
     log_string( log_buf );
     wizinfo( log_buf, MAX_LEVEL );
-    return TRUE;
+    return true;
 }
 
 static bool grant_psionic_choices( CHAR_DATA *ch )
 {
     char list_buf[MAX_STRING_LENGTH];
     char *cursor;
-    bool granted_any = FALSE;
+    bool granted_any = false;
 
     if ( ch->pcdata->psionic_grant_spec[0] == '\0' )
     {
-        return FALSE;
+        return false;
     }
 
     sprintf( log_buf, "%s psi custom list: %s", ch->name, ch->pcdata->psionic_grant_spec );
@@ -2519,7 +2519,7 @@ static bool grant_psionic_choices( CHAR_DATA *ch )
 
             if ( add_psionic_choice( ch, start ) )
             {
-                granted_any = TRUE;
+                granted_any = true;
             }
 
             *cursor = saved;
@@ -2540,7 +2540,7 @@ static bool grant_psionic_choices( CHAR_DATA *ch )
 bool normalize_psionic_arguments( const char *argument, char *output, size_t length, char *invalid )
 {
     const char *ptr = argument;
-    bool have_token = FALSE;
+    bool have_token = false;
 
     if ( invalid != NULL )
     {
@@ -2599,7 +2599,7 @@ bool normalize_psionic_arguments( const char *argument, char *output, size_t len
                 strncpy( invalid, token, MAX_INPUT_LENGTH - 1 );
                 invalid[MAX_INPUT_LENGTH - 1] = '\0';
             }
-            return FALSE;
+            return false;
         }
 
         if ( output != NULL && length > 0 )
@@ -2611,7 +2611,7 @@ bool normalize_psionic_arguments( const char *argument, char *output, size_t len
             strncat( output, token, length - strlen(output) - 1 );
         }
 
-        have_token = TRUE;
+        have_token = true;
 
         if ( *ptr == ',' )
         {
@@ -2619,7 +2619,7 @@ bool normalize_psionic_arguments( const char *argument, char *output, size_t len
         }
     }
 
-    return TRUE;
+    return true;
 }
 
 void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
@@ -2813,23 +2813,23 @@ bool check_parse_name( char *name )
 	* Reserved words.
      */
     if ( is_name( name, "all auto immortal nobody immortals self someone something the you" ) )
-	return FALSE;
+	return false;
 
     /*
      * Length restrictions.
      */
 
     if ( strlen(name) <  2 )
-	return FALSE;
+	return false;
 
 #if defined(MSDOS)
     if ( strlen(name) >  8 )
-	return FALSE;
+	return false;
 #endif
 
 #if defined(macintosh) || defined(unix)
     if ( strlen(name) > 12 )
-	return FALSE;
+	return false;
 #endif
 
     /*
@@ -2840,17 +2840,17 @@ bool check_parse_name( char *name )
 	char *pc;
 	bool fIll;
 
-	fIll = TRUE;
+	fIll = true;
 	for ( pc = name; *pc != '\0'; pc++ )
 	{
 	    if ( !isalpha(*pc) )
-		return FALSE;
+		return false;
 	    if ( LOWER(*pc) != 'i' && LOWER(*pc) != 'l' )
-		fIll = FALSE;
+		fIll = false;
 	}
 
 	if ( fIll )
-	    return FALSE;
+	    return false;
     }
 
     /*
@@ -2868,12 +2868,12 @@ bool check_parse_name( char *name )
 		  pMobIndex  = pMobIndex->next )
 	    {
 		if ( is_name( name, pMobIndex->player_name ) )
-		    return FALSE;
+		    return false;
 	    }
 	}
     }
 
-    return TRUE;
+    return true;
 }
 
 
@@ -2895,7 +2895,7 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 	&&   (!fConn || ch->desc == NULL)
 	&&   !str_cmp( d->character->name, ch->name ) )
 	{
-	    if ( fConn == FALSE )
+	    if ( fConn == false )
 	    {
 		free_string( d->character->pcdata->pwd );
 		d->character->pcdata->pwd = str_dup( ch->pcdata->pwd );
@@ -2945,20 +2945,20 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 
 		if( ch->pet != NULL && ch->in_room == ch->pet->in_room
 		 && ch->pet->ridden)
-		    ch->pcdata->mounted = TRUE;
+		    ch->pcdata->mounted = true;
 		else
-		  ch->pcdata->mounted = FALSE;
+		  ch->pcdata->mounted = false;
 
 		d->connected = CON_PLAYING;
 
 		if(ch->were_shape.name != NULL)
 		    do_lycanthropy(ch,"");
 	    }
-	    return TRUE;
+	    return true;
 	}
     }
 
-    return FALSE;
+    return false;
 }
 
 
@@ -2982,11 +2982,11 @@ bool check_playing( DESCRIPTOR_DATA *d, char *name )
 	    write_to_buffer( d, "That character is already playing.\n\r",0);
 	    write_to_buffer( d, "Do you wish to connect anyway (Y/N)?",0);
 	    d->connected = CON_BREAK_CONNECT;
-	    return TRUE;
+	    return true;
 	}
     }
 
-    return FALSE;
+    return false;
 }
 
 
@@ -3590,15 +3590,15 @@ static char *swedish_speak( const char *str )
     };
 
     buf[0]      = '\0';
-    in_word = FALSE;
-    i_seen = FALSE;
+    in_word = false;
+    i_seen = false;
     for ( pName = str; *pName != '\0'; pName += length )
     {
         if ( !str_prefix( " ", pName ) )
         {
             strcat( buf, " " );
-            in_word = FALSE;
-            i_seen = FALSE;
+            in_word = false;
+            i_seen = false;
             length = 1;
         }
         else if ( !str_prefix( "e ", pName ) )
@@ -3611,40 +3611,40 @@ static char *swedish_speak( const char *str )
             strcat( buf, "ee" );
             length = 2;
         }
-        else if ( !str_prefix( "o", pName ) && in_word == FALSE )
+        else if ( !str_prefix( "o", pName ) && in_word == false )
         {
             strcat( buf, "oo" );
-            in_word = TRUE;
+            in_word = true;
             length = 1;
         }
-        else if ( !str_prefix( "u", pName ) && in_word == FALSE )
+        else if ( !str_prefix( "u", pName ) && in_word == false )
         {
             strcat( buf, "u" );
-            in_word = TRUE;
+            in_word = true;
             length = 1;
         }
-        else if ( !str_prefix( "e", pName ) && in_word == FALSE )
+        else if ( !str_prefix( "e", pName ) && in_word == false )
         {
             strcat( buf, "i" );
-            in_word = TRUE;
+            in_word = true;
             length = 1;
         }
-        else if ( !str_prefix( "ir", pName ) && in_word == FALSE )
+        else if ( !str_prefix( "ir", pName ) && in_word == false )
         {
             strcat( buf, "ur" );
-            in_word = TRUE;
+            in_word = true;
             length = 2;
         }
         else if ( !str_prefix( "i", pName ) )
         {
-            if ( i_seen == FALSE && in_word == TRUE )
+            if ( i_seen == false && in_word == true )
             {
                 strcat( buf, "ee" );
-                i_seen = TRUE;
+                i_seen = true;
             }
             else
                 strcat( buf, "i" );
-            in_word = TRUE;
+            in_word = true;
             length = 1;
         }
         else for (iSyl = 0; (length = strlen(syl_table[iSyl].old)) != 0; iSyl++)
@@ -3652,7 +3652,7 @@ static char *swedish_speak( const char *str )
             if ( !str_prefix( syl_table[iSyl].old, pName ) )
             {
                 strcat( buf, syl_table[iSyl].new );
-                in_word = TRUE;
+                in_word = true;
                 break;
             }
         }
@@ -3705,20 +3705,20 @@ static bool str_prefix_c( const char *astr, const char *bstr )
 {
     if ( astr == NULL ) {
         bug( "Strn_cmp: null astr.", 0 );
-        return TRUE;
+        return true;
     }
 
     if ( bstr == NULL ) {
         bug( "Strn_cmp: null bstr.", 0 );
-        return TRUE;
+        return true;
     }
 
     for ( ; *astr; astr++, bstr++ ) {
         if ( *astr != *bstr )
-            return TRUE;
+            return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 
@@ -3730,7 +3730,7 @@ static bool str_infix_c( const char *astr, const char *bstr )
     char c0;
 
     if ( ( c0 = astr[0] ) == '\0' )
-        return FALSE;
+        return false;
 
     sstr1 = strlen(astr);
     sstr2 = strlen(bstr);
@@ -3738,10 +3738,10 @@ static bool str_infix_c( const char *astr, const char *bstr )
     if ( sstr1 <= sstr2 )
         for ( ichar = 0; ichar <= sstr2 - sstr1; ichar++ ) {
             if ( c0 == bstr[ichar] && !str_prefix_c( astr, bstr + ichar ) )
-                return FALSE;
+                return false;
         }
 
-    return TRUE;
+    return true;
 }
 
 static char *str_replace_c( char *astr, char *bstr, char *cstr )
@@ -3749,7 +3749,7 @@ static char *str_replace_c( char *astr, char *bstr, char *cstr )
     char newstr[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
     buf[0] = '0';
-    bool found = FALSE;
+    bool found = false;
     size_t sstr1, sstr2;
     size_t ichar, jchar;
     char c0, c1, c2;
@@ -3775,7 +3775,7 @@ static char *str_replace_c( char *astr, char *bstr, char *cstr )
 
     for ( ichar = 0; ichar <= sstr1 - sstr2; ichar++ ) {
         if ( c1 == astr[ichar] && !str_prefix_c( bstr, astr + ichar ) ) {
-            found = TRUE;
+            found = true;
             jchar = ichar;
             ichar = sstr1;
         }
@@ -4015,7 +4015,7 @@ static void handle_web_admin_command( const char *line )
     {
         wizinfo( "Remote shutdown requested from web admin dashboard.", LEVEL_IMMORTAL );
         log_string( "Web admin requested shutdown." );
-        merc_down = TRUE;
+        merc_down = true;
         return;
     }
 
