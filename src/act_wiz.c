@@ -2270,7 +2270,7 @@ void do_rwhere( CHAR_DATA *ch, char *argument )
     bool found;
     int i, count;
 
-    strcpy( arg, argument );
+    strlcpy( arg, argument, sizeof(arg) );
 
     if ( arg[0] == '\0')
     {
@@ -2295,8 +2295,8 @@ void do_rwhere( CHAR_DATA *ch, char *argument )
         if ( location != NULL && !str_infix(arg, location->name))
         {
            found = true;
-           snprintf(buf, sizeof(buf),"%-40s [%5d]\n\r",location->name, location->vnum);
-           strcat(buffer,buf);
+            snprintf(buf, sizeof(buf),"%-40s [%5d]\n\r",location->name, location->vnum);
+            strlcat(buffer, buf, sizeof(buffer));
            count++;
         }
     }
@@ -2348,12 +2348,12 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
 	&&   is_name( argument, victim->name ) )
 	{
 	    found = true;
-	    sprintf( buf, "[%5d] %-28s [%5d] %s\n\r",
-		victim->pIndexData->vnum,
-		victim->short_descr,
-		victim->in_room->vnum,
-		victim->in_room->name );
- 	    strcat(buffer,buf);
+            snprintf( buf, sizeof(buf), "[%5d] %-28s [%5d] %s\n\r",
+                victim->pIndexData->vnum,
+                victim->short_descr,
+                victim->in_room->vnum,
+                victim->in_room->name );
+            strlcat(buffer, buf, sizeof(buffer));
             count++;
 	}
     }
@@ -2416,34 +2416,34 @@ void do_owhere( CHAR_DATA *ch, char *argument )
 
 	    if ( in_obj->carried_by != NULL )
 	    {
-		if( in_obj->carried_by->in_room != NULL )
-		  sprintf( buf, "[%3d] %35s [%5d] carried by %s. Room [%5d]\n\r",
-			obj_counter,
-			obj->short_descr,
+                if( in_obj->carried_by->in_room != NULL )
+                  snprintf( buf, sizeof(buf), "[%3d] %35s [%5d] carried by %s. Room [%5d]\n\r",
+                        obj_counter,
+                        obj->short_descr,
                         obj->pIndexData->vnum,
                         PERS( in_obj->carried_by, ch ),
-			in_obj->carried_by->in_room->vnum );
-		else
-		  sprintf( buf, "[%3d] %35s [%5d] carried by %s.\n\r",
-			obj_counter,
-			obj->short_descr,
+                        in_obj->carried_by->in_room->vnum );
+                else
+                  snprintf( buf, sizeof(buf), "[%3d] %35s [%5d] carried by %s.\n\r",
+                        obj_counter,
+                        obj->short_descr,
                         obj->pIndexData->vnum,
                         PERS( in_obj->carried_by, ch ) );
 	    }
 	    else if(obj->in_obj != NULL )
 	    {
-		if( in_obj->in_room != NULL )
-		  sprintf( buf, "[%3d] %35s [%5d] in %s [%5d], room [%5d].\n\r", obj_counter,
-			obj->short_descr,
+                if( in_obj->in_room != NULL )
+                  snprintf( buf, sizeof(buf), "[%3d] %35s [%5d] in %s [%5d], room [%5d].\n\r", obj_counter,
+                        obj->short_descr,
                         obj->pIndexData->vnum,
-			in_obj->name,
+                        in_obj->name,
                         in_obj->pIndexData->vnum,
-			in_obj->in_room->vnum);
-		else
-		  sprintf( buf, "[%3d] %35s [%5d] in %s.\n\r", obj_counter,
-			obj->short_descr,
+                        in_obj->in_room->vnum);
+                else
+                  snprintf( buf, sizeof(buf), "[%3d] %35s [%5d] in %s.\n\r", obj_counter,
+                        obj->short_descr,
                         obj->pIndexData->vnum,
-			obj->in_obj->name);
+                        obj->in_obj->name);
 	    }
 	    else if(obj->in_room != NULL)
 	    {
@@ -2455,7 +2455,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
 	    }
             count++;
 	    obj_counter++;
-	    strcat(buffer,buf);
+            strlcat(buffer, buf, sizeof(buffer));
 	}
     }
 

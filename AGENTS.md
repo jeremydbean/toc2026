@@ -50,4 +50,4 @@
 - Began converting loader paths in `src/db.c` to clamp integers before storing in `sh_int` fields, adding reusable `fread_sh_int`/clamp helpers, casting time initialization, and tightening string readers to avoid `getc` truncation and size_t-to-int warnings.
 - Strict conversion build (`-Wconversion -Wdouble-promotion` etc.) now reports widespread narrowing warnings in `src/db.c` file readers (vnums, materials, flags, and character/room fields) plus similar reports across `fight.c`, `handler.c`, `magic.c`, `magic2.c`, and `save.c`; these need follow-up clamping/typing passes.
 
-- String safety refactor log: converted several `sprintf` calls in `src/act_comm.c` to `snprintf`; remaining `sprintf` usages in that file plus broader `/src` scanning (including `act_wiz.c`) are still pending.
+- String safety refactor log: converted all `sprintf`/`strcpy`/`strcat` calls in `src/act_comm.c` to bounded `snprintf`/`strlcpy`/`strlcat`. Began updating `src/act_wiz.c` (search routines for rooms/mobs/objects now use `strlcpy`/`strlcat` and bounded formatting); numerous additional `sprintf` sites in `act_wiz.c` still need conversion in a follow-up pass.
