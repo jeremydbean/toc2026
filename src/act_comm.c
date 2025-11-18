@@ -385,11 +385,11 @@ void do_note( CHAR_DATA *ch, char *argument )
            {
              if ( is_immnote_to(ch, pnote) && !str_cmp( argument, "imm" ))
              {
-                 sprintf( buf, "[%3d%s] %s: %s\n\r",
-                     vnum,
-                     (pnote->date_stamp > ch->last_note
-                      && str_cmp(pnote->sender,ch->name)) ? "N" : " ",
-                      pnote->sender, pnote->subject );
+                snprintf( buf, sizeof(buf), "[%3d%s] %s: %s\n\r",
+                    vnum,
+                    (pnote->date_stamp > ch->last_note
+                     && str_cmp(pnote->sender,ch->name)) ? "N" : " ",
+                     pnote->sender, pnote->subject );
                  send_to_char( buf, ch );
                  vnum++;
                  continue;
@@ -404,11 +404,11 @@ void do_note( CHAR_DATA *ch, char *argument )
 
 	    if ( is_note_to( ch, pnote ) )
 	    {
-		sprintf( buf, "[%3d%s] %s: %s\n\r",
-		    vnum,
-		    (pnote->date_stamp > ch->last_note
-		     && str_cmp(pnote->sender,ch->name)) ? "N" : " ",
-		     pnote->sender, pnote->subject );
+                snprintf( buf, sizeof(buf), "[%3d%s] %s: %s\n\r",
+                    vnum,
+                    (pnote->date_stamp > ch->last_note
+                     && str_cmp(pnote->sender,ch->name)) ? "N" : " ",
+                     pnote->sender, pnote->subject );
 		send_to_char( buf, ch );
 		vnum++;
 	    }
@@ -435,12 +435,12 @@ void do_note( CHAR_DATA *ch, char *argument )
 		if (is_note_to(ch,pnote) && str_cmp(ch->name,pnote->sender)
 		&&  ch->last_note < pnote->date_stamp)
 		{
-		    sprintf( buf, "[%3d] %s: %s\n\r%s\n\rTo: %s\n\r",
-			vnum,
-			pnote->sender,
-			pnote->subject,
-			pnote->date,
-			pnote->to_list);
+                    snprintf( buf, sizeof(buf), "[%3d] %s: %s\n\r%s\n\rTo: %s\n\r",
+                        vnum,
+                        pnote->sender,
+                        pnote->subject,
+                        pnote->date,
+                        pnote->to_list);
 		    send_to_char( buf, ch );
 		    page_to_char( pnote->text, ch );
 		    ch->last_note = UMAX(ch->last_note,pnote->date_stamp);
@@ -566,11 +566,11 @@ void do_note( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	sprintf( buf, "%s: %s\n\rTo: %s\n\r",
-	    ch->pnote->sender,
-	    ch->pnote->subject,
-	    ch->pnote->to_list
-	    );
+        snprintf( buf, sizeof(buf), "%s: %s\n\rTo: %s\n\r",
+            ch->pnote->sender,
+            ch->pnote->subject,
+            ch->pnote->to_list
+            );
 	send_to_char( buf, ch );
 	send_to_char( ch->pnote->text, ch );
 
@@ -609,23 +609,23 @@ void do_note( CHAR_DATA *ch, char *argument )
         || strstr(ch->pnote->to_list,"immortals")
         || strstr(ch->pnote->to_list,"Immortals"))
 	{
-	    sprintf(buf,"A note to immortal has been posted by %s",ch->name);
-	    wizinfo(buf,LEVEL_IMMORTAL);
-	}
+            snprintf(buf, sizeof(buf), "A note to immortal has been posted by %s",ch->name);
+            wizinfo(buf,LEVEL_IMMORTAL);
+        }
 
 	if( strstr(ch->pnote->to_list,"Imp")
         || strstr(ch->pnote->to_list,"Imps"))
 	{
-	    sprintf(buf,"A note to imp has been posted by %s",ch->name);
-	    wizinfo(buf,MAX_LEVEL);
-	}
+            snprintf(buf, sizeof(buf), "A note to imp has been posted by %s",ch->name);
+            wizinfo(buf,MAX_LEVEL);
+        }
 
 	if( !str_cmp(ch->pnote->to_list,"all" )
 	|| !str_cmp(ch->pnote->to_list,"All" ) )
 	{
-	    sprintf(buf,"The note fairy says 'A note to all has been posted by %s'",ch->name);
-	    send_info(buf);
-	}
+            snprintf(buf, sizeof(buf), "The note fairy says 'A note to all has been posted by %s'",ch->name);
+            send_info(buf);
+        }
 
 	ch->pnote->next			= NULL;
 	strtime				= ctime( &current_time );
@@ -749,12 +749,12 @@ void do_delete( CHAR_DATA *ch, char *argument)
 	}
 	else
 	{
-	    sprintf(buf, "%s has deleted.", ch->name);
-	    wizinfo(buf,LEVEL_IMMORTAL);
-	    sprintf( strsave, "%s%s", PLAYER_DIR, capitalize( ch->name ) );
-	    update(wizlist(ch,1);
-	    do_quit(ch,"");
-	    unlink(strsave);
+            snprintf(buf, sizeof(buf), "%s has deleted.", ch->name);
+            wizinfo(buf,LEVEL_IMMORTAL);
+            snprintf( strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
+            update(wizlist(ch,1);
+            do_quit(ch,"");
+            unlink(strsave);
 	    return;
 	}
     }
@@ -829,18 +829,18 @@ void do_delete( CHAR_DATA *ch, char *argument)
     if (!strcmp( crypt(arg1, ch->pcdata->pwd),ch->pcdata->pwd) )
     {
     do_backup();
-    sprintf( buf, "mv %s%s %s%s.deleted", PLAYER_DIR, capitalize( ch->name ), PLAYER_DIR, capitalize( ch->name ));
+    snprintf( buf, sizeof(buf), "mv %s%s %s%s.deleted", PLAYER_DIR, capitalize( ch->name ), PLAYER_DIR, capitalize( ch->name ));
         int rc = system(buf); (void)rc;;
     send_to_char( "\n\r", ch );
     send_to_char( "            Goodbye cruel world!    \n\r", ch );
     send_to_char( "     You turn yourself into line noise. \n\r", ch );
     send_to_char( "\n\r", ch );
     send_to_char( "\n\r", ch );
-    sprintf( log_buf, "%s has deleted.", ch->name );
+    snprintf( log_buf, sizeof(log_buf), "%s has deleted.", ch->name );
     log_string( log_buf );
     wizinfo(log_buf,LEVEL_IMMORTAL);
 
-            sprintf( strsave, "%s%s", PLAYER_DIR, capitalize( ch->name ) );
+            snprintf( strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
             do_quit(ch,"");
             unlink(strsave);
             return;
@@ -966,7 +966,7 @@ void do_channels( CHAR_DATA *ch, char *argument)
 	char buf[100];
 	if (ch->lines)
 	{
-	    sprintf(buf,"You display %d lines of scroll.\n\r",ch->lines+2);
+            snprintf(buf, sizeof(buf), "You display %d lines of scroll.\n\r",ch->lines+2);
 	    send_to_char(buf,ch);
 	}
 	else
@@ -1082,7 +1082,7 @@ void wizinfo( char *info, int level)
 	     !IS_SET(victim->comm,COMM_QUIET) &&
 	     !IS_SET(victim->comm,COMM_NOWIZINFO) )
 	{
-	  sprintf( buf, "\x02\x0E[WizInfo] %s\x02\x01\n\r", info );
+          snprintf( buf, sizeof(buf), "\x02\x0E[WizInfo] %s\x02\x01\n\r", info );
 	  send_to_char( buf, victim );
 	}
     }
@@ -1106,7 +1106,7 @@ void send_info( char *argument )
 	   !IS_SET(victim->comm,COMM_QUIET) &&
 	   !IS_SET(victim->comm,COMM_NOINFO) )
    {
-      sprintf( buf, "[INFO] %s\n\r", argument );
+      snprintf( buf, sizeof(buf), "[INFO] %s\n\r", argument );
       send_to_char( buf, victim );
    }
  }
@@ -1148,7 +1148,7 @@ void do_hero( CHAR_DATA *ch, char *argument )
 
 
 
-      sprintf( buf, "\x02\x0D<HERO>: %s\x02\x01\n\r", argument );
+      snprintf( buf, sizeof(buf), "\x02\x0D<HERO>: %s\x02\x01\n\r", argument );
       send_to_char( buf, ch );
 
     for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1263,7 +1263,7 @@ void do_leveling( CHAR_DATA *ch, char *argument )
       if ( !IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10 )
 	  argument = speak_filter( ch, argument );
 
-      sprintf( buf, "You cheer '%s'\n\r", argument );
+      snprintf( buf, sizeof(buf), "You cheer '%s'\n\r", argument );
       send_to_char( buf, ch );
 
       for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1336,7 +1336,7 @@ void do_gossip( CHAR_DATA *ch, char *argument )
       if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_SWEDISH ) )
 	  argument = speak_filter( ch, argument );
 
-      sprintf( buf, "\x02\x02You gossip '%s'\x02\x01\n\r", argument );
+      snprintf( buf, sizeof(buf), "\x02\x02You gossip '%s'\x02\x01\n\r", argument );
       send_to_char( buf, ch );
 
       for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1409,7 +1409,7 @@ void do_question( CHAR_DATA *ch, char *argument )
 	  argument = speak_filter( ch, argument );
 
 
-      sprintf( buf, "\x02\x04You question '%s'\x02\x01\n\r", argument );
+      snprintf( buf, sizeof(buf), "\x02\x04You question '%s'\x02\x01\n\r", argument );
       send_to_char( buf, ch );
 
       for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1479,7 +1479,7 @@ void do_music( CHAR_DATA *ch, char *argument )
 	  argument = speak_filter( ch, argument );
 
 
-      sprintf( buf, "You Sing: '%s'\n\r", argument );
+      snprintf( buf, sizeof(buf), "You Sing: '%s'\n\r", argument );
       send_to_char( buf, ch );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
@@ -1554,7 +1554,7 @@ void do_castle( CHAR_DATA *ch, char *argument )
       if ( !IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10 )
 	  argument = speak_filter( ch, argument );
 
-      sprintf( buf, "\x02\x05You castle chat '%s'\x02\x01\n\r", argument );
+      snprintf( buf, sizeof(buf), "\x02\x05You castle chat '%s'\x02\x01\n\r", argument );
       send_to_char( buf, ch );
 
       for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1633,7 +1633,7 @@ void do_cgos( CHAR_DATA *ch, char *argument )
 	  argument = speak_filter( ch, argument );
 
 
-      sprintf( buf, "\x02\x05You Castle gossip '%s'\x02\x01\n\r", argument );
+      snprintf( buf, sizeof(buf), "\x02\x05You Castle gossip '%s'\x02\x01\n\r", argument );
       send_to_char( buf, ch );
 
       for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1679,7 +1679,7 @@ void do_immtalk( CHAR_DATA *ch, char *argument )
 
     REMOVE_BIT(ch->comm,COMM_NOWIZ);
 
-      sprintf( buf, "\x02\x0F[Imm] %s: %s\x02\x01\n\r", ch->name, argument );
+      snprintf( buf, sizeof(buf), "\x02\x0F[Imm] %s: %s\x02\x01\n\r", ch->name, argument );
       send_to_char( buf, ch );
 
     for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1718,7 +1718,7 @@ void do_godtalk( CHAR_DATA *ch, char *argument )
 
     REMOVE_BIT(ch->comm,COMM_NOGOD);
 
-      sprintf( buf, "\x02\x0F%s -> %s\x02\x01\n\r", ch->name, argument );
+      snprintf( buf, sizeof(buf), "\x02\x0F%s -> %s\x02\x01\n\r", ch->name, argument );
       send_to_char( buf, ch );
 
     for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1759,7 +1759,7 @@ void do_say( CHAR_DATA *ch, char *argument )
       if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_SWEDISH ) )
 	  argument = speak_filter( ch, argument );
 
-    sprintf( buf, "\x02\x07You say '%s'\x02\x01\n\r", argument );
+    snprintf( buf, sizeof(buf), "\x02\x07You say '%s'\x02\x01\n\r", argument );
     send_to_char( buf, ch );
 
     for ( gch = ch->in_room->people; gch; gch = gch->next_in_room )
