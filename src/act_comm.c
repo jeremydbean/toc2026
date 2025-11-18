@@ -195,12 +195,12 @@ void note_remove( CHAR_DATA *ch, NOTE_DATA *pnote )
     to_list     = pnote->to_list;
     while ( *to_list != '\0' )
     {
-	to_list = one_argument( to_list, to_one );
-	if ( to_one[0] != '\0' && str_cmp( ch->name, to_one ) )
-	{
-	    strcat( to_new, " " );
-	    strcat( to_new, to_one );
-	}
+        to_list = one_argument( to_list, to_one );
+        if ( to_one[0] != '\0' && str_cmp( ch->name, to_one ) )
+        {
+            strlcat( to_new, " ", sizeof(to_new) );
+            strlcat( to_new, to_one, sizeof(to_new) );
+        }
     }
 
     /*
@@ -468,20 +468,20 @@ void do_note( CHAR_DATA *ch, char *argument )
 	for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
 	{
 	    if ( is_note_to( ch, pnote ) && ( vnum++ == anum || fAll ) )
-	    {
-		sprintf( buf, "[%3d] %s: %s\n\r%s\n\rTo: %s\n\r",
-		    vnum - 1,
-		    pnote->sender,
-		    pnote->subject,
-		    pnote->date,
-		    pnote->to_list
-		    );
-		send_to_char( buf, ch );
-		send_to_char( pnote->text, ch );
-		ch->last_note = UMAX(ch->last_note,pnote->date_stamp);
-		return;
-	    }
-	}
+            {
+                snprintf( buf, sizeof(buf), "[%3d] %s: %s\n\r%s\n\rTo: %s\n\r",
+                    vnum - 1,
+                    pnote->sender,
+                    pnote->subject,
+                    pnote->date,
+                    pnote->to_list
+                    );
+                send_to_char( buf, ch );
+                send_to_char( pnote->text, ch );
+                ch->last_note = UMAX(ch->last_note,pnote->date_stamp);
+                return;
+            }
+        }
 
 	send_to_char( "No such note.\n\r", ch );
 	return;
@@ -489,22 +489,22 @@ void do_note( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg, "+" ) )
     {
-	note_attach( ch );
-	strcpy( buf, ch->pnote->text );
-	free_string(ch->pnote->old_text);
-	ch->pnote->old_text = str_dup(ch->pnote->text);
-	if ( strlen(buf) + strlen(argument) >= MAX_STRING_LENGTH - 200 )
-	{
-	    send_to_char( "Note too long.\n\r", ch );
-	    return;
-	}
+        note_attach( ch );
+        strlcpy( buf, ch->pnote->text, sizeof(buf) );
+        free_string(ch->pnote->old_text);
+        ch->pnote->old_text = str_dup(ch->pnote->text);
+        if ( strlen(buf) + strlen(argument) >= MAX_STRING_LENGTH - 200 )
+        {
+            send_to_char( "Note too long.\n\r", ch );
+            return;
+        }
 
-	strcat( buf, argument );
-	strcat( buf, "\n\r" );
-	free_string( ch->pnote->text );
-	ch->pnote->text = str_dup( buf );
-	send_to_char( "Ok.\n\r", ch );
-	return;
+        strlcat( buf, argument, sizeof(buf) );
+        strlcat( buf, "\n\r", sizeof(buf) );
+        free_string( ch->pnote->text );
+        ch->pnote->text = str_dup( buf );
+        send_to_char( "Ok.\n\r", ch );
+        return;
     }
 
     if ( !str_cmp( arg, "-" ) )
@@ -1860,8 +1860,8 @@ void do_ignore(CHAR_DATA *ch, char *argument)
 
     if ( arg[0] == '\0' )
     {
-        sprintf(buf,"You're ignoring %s.",ch->pcdata->ignore);
-        send_to_char(buf,ch);
+        snprintf(buf, sizeof(buf), "You're ignoring %s.", ch->pcdata->ignore);
+        send_to_char(buf, ch);
         return;
     }
 
@@ -1884,7 +1884,7 @@ void do_ignore(CHAR_DATA *ch, char *argument)
        return;
     }
 
-    sprintf(buf2_new,"%s",ch->pcdata->ignore);
+    strlcpy(buf2_new, ch->pcdata->ignore, sizeof(buf2_new));
 
     if ( strlen(buf2_new) > 48)
     {
@@ -1893,8 +1893,8 @@ void do_ignore(CHAR_DATA *ch, char *argument)
     }
 
     smash_tilde(arg);
-    sprintf(buf2,"%s ",ch->pcdata->ignore);
-    strcat(buf2,arg);
+    snprintf(buf2, sizeof(buf2), "%s ", ch->pcdata->ignore);
+    strlcat(buf2, arg, sizeof(buf2));
     ch->pcdata->ignore = str_dup(buf2);
     send_to_char("Ignore list updated.\n\r",ch);
     return;
