@@ -42,7 +42,7 @@ SOCIAL_SECOND_CHAR *social_table_index[SOCIALTABLE_FIRST_HASH];
 /*
  * Log-all switch.
  */
-bool				fLogAll		= FALSE;
+bool				fLogAll		= false;
 
 
 
@@ -450,9 +450,9 @@ bool check_specials(CHAR_DATA *ch, DO_FUN *cmd, char *arg)
 
         if (IS_NPC(fch) && (fch->pIndexData->spec_fun != NULL) &&
                  (*fch->pIndexData->spec_fun) ( fch, ch, cmd, arg))
-            return TRUE;
+            return true;
     }
-    return FALSE;
+    return false;
 }
 
 /*
@@ -534,7 +534,7 @@ void interpret( CHAR_DATA *ch, char *argument )
     /*
      * Look for command in command table.
      */
-    found = FALSE;
+    found = false;
     trust = get_trust( ch );
 
 /* Blackbird: We now have indexed command tables
@@ -544,13 +544,13 @@ void interpret( CHAR_DATA *ch, char *argument )
 	&&   !str_prefix( command, cmd_table[cmd].name )
 	&&   cmd_table[cmd].level <= trust )
 	{
-	    found = TRUE;
+	    found = true;
 	    break;
 	}
     }
 */
     cmd = cmd_tab_sn_lookup(command, trust);
-    if (cmd != -1) found = TRUE;
+    if (cmd != -1) found = true;
 
     /*
      * Log and snoop.
@@ -971,7 +971,7 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
     int cmd;
     bool found;
 
-    found  = FALSE;
+    found  = false;
 
 /* We now have indexed social tables (Blackbird)
     for ( cmd = 0; social_table[cmd].name[0] != '\0'; cmd++ )
@@ -979,45 +979,45 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
 	if ( command[0] == social_table[cmd].name[0]
 	&&   !str_prefix( command, social_table[cmd].name ) )
 	{
-	    found = TRUE;
+	    found = true;
 	    break;
 	}
     }
 */
 
-    if (command[0] == '\0') return FALSE;
+    if (command[0] == '\0') return false;
     if (!(((command[0] >= 'a') && (command[0] <= 'z')) ||
          ((command[0] >= 'A') && (command[0] <= 'Z'))))
-      return FALSE;
+      return false;
 
     cmd = social_tab_sn_lookup(command, 0);
 
-    if (cmd >= 0) found = TRUE;
+    if (cmd >= 0) found = true;
 
 
     if ( !found )
-	return FALSE;
+	return false;
 
     if ( !IS_NPC(ch) && IS_SET(ch->comm, COMM_NOEMOTE) )
     {
 	send_to_char( "You are anti-social!\n\r", ch );
-	return TRUE;
+	return true;
     }
 
     switch ( ch->position )
     {
     case POS_DEAD:
 	send_to_char( "Lie still; you are DEAD.\n\r", ch );
-	return TRUE;
+	return true;
 
     case POS_INCAP:
     case POS_MORTAL:
 	send_to_char( "You are hurt far too bad for that.\n\r", ch );
-	return TRUE;
+	return true;
 
     case POS_STUNNED:
 	send_to_char( "You are too stunned to do that.\n\r", ch );
-	return TRUE;
+	return true;
 
     case POS_SLEEPING:
 	/*
@@ -1027,7 +1027,7 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
 	if ( !str_cmp( social_table[cmd].name, "snore" ) )
 	    break;
 	send_to_char( "In your dreams, or what?\n\r", ch );
-	return TRUE;
+	return true;
 
     }
 
@@ -1088,7 +1088,7 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
 	}
     }
 
-    return TRUE;
+    return true;
 }
 
 
@@ -1100,7 +1100,7 @@ bool is_number ( char *arg )
 {
 
     if ( *arg == '\0' )
-        return FALSE;
+        return false;
 
     if ( *arg == '+' || *arg == '-' )
         arg++;
@@ -1108,10 +1108,10 @@ bool is_number ( char *arg )
     for ( ; *arg != '\0'; arg++ )
     {
         if ( !isdigit( *arg ) )
-            return FALSE;
+            return false;
     }
 
-    return TRUE;
+    return true;
 }
 
 

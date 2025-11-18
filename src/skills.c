@@ -43,14 +43,14 @@ void do_gain(CHAR_DATA *ch, char *argument)
 	if (IS_NPC(trainer) && IS_SET(trainer->act,ACT_PRACTICE))
 	    break;
 
-    foundgm = FALSE;
+    foundgm = false;
     if (trainer != NULL) 
         for (i=0; guildmaster_table[i].vnum != 0; i++)
         {
             gmdata = guildmaster_table[i];
             if (gmdata.vnum == trainer->pIndexData->vnum)
             {
-		foundgm = TRUE;
+		foundgm = true;
 		break;
 	    }
 	}
@@ -104,11 +104,11 @@ void do_gain(CHAR_DATA *ch, char *argument)
 
 	    gn = group_lookup(gmdata.can_gain[i]);
 
-	    isgroup = TRUE;
+	    isgroup = true;
 	    if ((gn < 0) || (group_table[gn].name == NULL))
 	    {
 	        gn = skill_lookup(gmdata.can_teach[i]);
-		isgroup = FALSE;
+		isgroup = false;
 
                 if (skill_table[gn].name == NULL)
                 {
@@ -307,7 +307,7 @@ void do_spells(CHAR_DATA *ch, char *argument)
     char spell_list[LEVEL_HERO1][MAX_STRING_LENGTH];
     char spell_columns[LEVEL_HERO1];
     int sn,lev,mana;
-    bool found = FALSE;
+    bool found = false;
     char buf[MAX_STRING_LENGTH];
 
     if (IS_NPC(ch))
@@ -329,7 +329,7 @@ void do_spells(CHAR_DATA *ch, char *argument)
 	  skill_table[sn].spell_fun != spell_null &&
 	  ch->pcdata->learned[sn] > 0)
       {
-	found = TRUE;
+	found = true;
 	lev = skill_table[sn].skill_level[ch->class];
 	if (ch->level < lev)
 	  sprintf(buf,"%-18s  n/a      ", skill_table[sn].name);
@@ -376,7 +376,7 @@ void do_skills(CHAR_DATA *ch, char *argument)
     char skill_list[LEVEL_HERO1][MAX_STRING_LENGTH];
     char skill_columns[LEVEL_HERO1];
     int sn,lev;
-    bool found = FALSE;
+    bool found = false;
     char buf[MAX_STRING_LENGTH];
 
     if (IS_NPC(ch))
@@ -399,7 +399,7 @@ void do_skills(CHAR_DATA *ch, char *argument)
 	  skill_table[sn].spell_fun == spell_null &&
 	  ch->pcdata->learned[sn] > 0)
       {
-	found = TRUE;
+	found = true;
 	lev = skill_table[sn].skill_level[ch->class];
 	if (ch->level < lev)
 	  sprintf(buf,"%-18s n/a      ", skill_table[sn].name);
@@ -626,7 +626,7 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
     int gn,sn,i;
 
     if (argument[0] == '\0')
-	return FALSE;
+	return false;
 
     argument = one_argument(argument,arg);
 
@@ -635,11 +635,11 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	if (argument[0] == '\0')
 	{
 	    do_help(ch,"group help");
-	    return TRUE;
+	    return true;
 	}
 
         do_help(ch,argument);
-	return TRUE;
+	return true;
     }
 
     if (!str_prefix(arg,"add"))
@@ -647,7 +647,7 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	if (argument[0] == '\0')
 	{
 	    send_to_char("You must provide a skill name.\n\r",ch);
-	    return TRUE;
+	    return true;
 	}
 
 	gn = group_lookup(argument);
@@ -657,22 +657,22 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	    ||  ch->pcdata->group_known[gn])
 	    {
 		send_to_char("You already know that group!\n\r",ch);
-		return TRUE;
+		return true;
 	    }
 
 	    if (group_table[gn].rating[ch->class] < 1)
 	    {
 	  	send_to_char("That group is not available.\n\r",ch);
-	 	return TRUE;
+	 	return true;
 	    }
 
 	    sprintf(buf,"%s group added\n\r",group_table[gn].name);
 	    send_to_char(buf,ch);
-	    ch->gen_data->group_chosen[gn] = TRUE;
+	    ch->gen_data->group_chosen[gn] = true;
 	    ch->gen_data->points_chosen += group_table[gn].rating[ch->class];
 	    gn_add(ch,gn);
 	    ch->pcdata->points += group_table[gn].rating[ch->class];
-	    return TRUE;
+	    return true;
 	}
 
 	sn = skill_lookup(argument);
@@ -682,26 +682,26 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	    ||  ch->pcdata->learned[sn] > 0)
 	    {
 		send_to_char("You already know that skill!\n\r",ch);
-		return TRUE;
+		return true;
 	    }
 
 	    if (skill_table[sn].rating[ch->class] < 1
 	    ||  skill_table[sn].spell_fun != spell_null)
 	    {
 		send_to_char("That skill is not available.\n\r",ch);
-		return TRUE;
+		return true;
 	    }
 	    sprintf(buf, "%s skill added\n\r",skill_table[sn].name);
 	    send_to_char(buf,ch);
-	    ch->gen_data->skill_chosen[sn] = TRUE;
+	    ch->gen_data->skill_chosen[sn] = true;
 	    ch->gen_data->points_chosen += skill_table[sn].rating[ch->class];
 	    ch->pcdata->learned[sn] = 1;
 	    ch->pcdata->points += skill_table[sn].rating[ch->class];
-	    return TRUE;
+	    return true;
 	}
 
 	send_to_char("No skills or groups by that name...\n\r",ch);
-	return TRUE;
+	return true;
     }
 
     if (!strcmp(arg,"drop"))
@@ -709,14 +709,14 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	if (argument[0] == '\0')
   	{
 	    send_to_char("You must provide a skill to drop.\n\r",ch);
-	    return TRUE;
+	    return true;
 	}
 
 	gn = group_lookup(argument);
 	if (gn != -1 && ch->gen_data->group_chosen[gn])
 	{
 	    send_to_char("Group dropped.\n\r",ch);
-	    ch->gen_data->group_chosen[gn] = FALSE;
+	    ch->gen_data->group_chosen[gn] = false;
 	    ch->gen_data->points_chosen -= group_table[gn].rating[ch->class];
 	    gn_remove(ch,gn);
 	    for (i = 0; i < MAX_GROUP; i++)
@@ -725,49 +725,49 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 		    gn_add(ch,gn);
 	    }
 	    ch->pcdata->points -= group_table[gn].rating[ch->class];
-	    return TRUE;
+	    return true;
 	}
 
 	sn = skill_lookup(argument);
 	if (sn != -1 && ch->gen_data->skill_chosen[sn])
 	{
 	    send_to_char("Skill dropped.\n\r",ch);
-	    ch->gen_data->skill_chosen[sn] = FALSE;
+	    ch->gen_data->skill_chosen[sn] = false;
 	    ch->gen_data->points_chosen -= skill_table[sn].rating[ch->class];
 	    ch->pcdata->learned[sn] = 0;
 	    ch->pcdata->points -= skill_table[sn].rating[ch->class];
-	    return TRUE;
+	    return true;
 	}
 
 	send_to_char("You haven't bought any such skill or group.\n\r",ch);
-	return TRUE;
+	return true;
     }
 
     if (!str_prefix(arg,"premise"))
     {
 	do_help(ch,"premise");
-	return TRUE;
+	return true;
     }
 
     if (!str_prefix(arg,"list"))
     {
 	list_group_costs(ch);
-	return TRUE;
+	return true;
     }
 
     if (!str_prefix(arg,"learned"))
     {
 	list_group_chosen(ch);
-	return TRUE;
+	return true;
     }
 
     if (!str_prefix(arg,"info"))
     {
 	do_groups(ch,argument);
-	return TRUE;
+	return true;
     }
 
-    return FALSE;
+    return false;
 }
 	    
 	
@@ -926,12 +926,12 @@ void gn_add( CHAR_DATA *ch, int gn)
 {
     int i;
     
-    ch->pcdata->group_known[gn] = TRUE;
+    ch->pcdata->group_known[gn] = true;
     for ( i = 0; i < MAX_IN_GROUP; i++)
     {
         if (group_table[gn].spells[i] == NULL)
             break;
-        group_add(ch,group_table[gn].spells[i],FALSE);
+        group_add(ch,group_table[gn].spells[i],false);
     }
 }
 
@@ -940,7 +940,7 @@ void gn_remove( CHAR_DATA *ch, int gn)
 {
     int i;
 
-    ch->pcdata->group_known[gn] = FALSE;
+    ch->pcdata->group_known[gn] = false;
 
     for ( i = 0; i < MAX_IN_GROUP; i ++)
     {
@@ -977,9 +977,9 @@ void group_add( CHAR_DATA *ch, const char *name, bool deduct)
 
     if (gn != -1)
     {
-	if (ch->pcdata->group_known[gn] == FALSE)  
+	if (ch->pcdata->group_known[gn] == false)  
 	{
-	    ch->pcdata->group_known[gn] = TRUE;
+	    ch->pcdata->group_known[gn] = true;
 	    if (deduct)
 		ch->pcdata->points += group_table[gn].rating[ch->class];
 	}
@@ -1005,9 +1005,9 @@ void group_remove(CHAR_DATA *ch, const char *name)
  
     gn = group_lookup(name);
  
-    if (gn != -1 && ch->pcdata->group_known[gn] == TRUE)
+    if (gn != -1 && ch->pcdata->group_known[gn] == true)
     {
-	ch->pcdata->group_known[gn] = FALSE;
+	ch->pcdata->group_known[gn] = false;
 	gn_remove(ch,gn);  /* be sure to call gn_add on all remaining groups */
     }
 }

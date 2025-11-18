@@ -44,7 +44,7 @@ void save_wizlist(void)
 {
     WIZ_DATA *pwiz;
     FILE *fp;
-    bool found = FALSE;
+    bool found = false;
 
     fclose( fpReserve ); 
     if ( ( fp = fopen( WIZ_FILE, "w" ) ) == NULL )
@@ -54,7 +54,7 @@ void save_wizlist(void)
 
     for (pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next)
     {
-        found = TRUE;
+        found = true;
 	fprintf(fp,"%s %d\n",pwiz->name,pwiz->level);
      }
 
@@ -132,7 +132,7 @@ void do_wizlost(CHAR_DATA *ch, char *argument)
                 send_to_char( "Funny, very funny...\n\r",ch );
 		return;
 	    }
-	    change_wizlist( ch, TRUE, level, arg3 );
+	    change_wizlist( ch, true, level, arg3 );
 	    return;
 	}
 	if ( !str_prefix( arg1, "delete" ) )
@@ -142,7 +142,7 @@ void do_wizlost(CHAR_DATA *ch, char *argument)
 		send_to_char( "Syntax: wizlist delete <name>\n\r", ch );
 		return;
 	    }
-	    change_wizlist( ch, FALSE, 0, arg2 );
+	    change_wizlist( ch, false, 0, arg2 );
 	    return;
 	}
 	send_to_char( "Syntax:\n\r", ch );
@@ -435,7 +435,7 @@ WIZ_DATA *new_wiz(void)
         wiz = wiz_free;
         wiz_free = wiz_free->next;
     }
-    wiz->valid = TRUE;
+    wiz->valid = true;
     wiz->name = NULL;
     wiz->next = NULL;
     return wiz;
@@ -453,7 +453,7 @@ void free_wiz(WIZ_DATA *wiz)
 
     free_string(wiz->name);
 
-    wiz->valid = FALSE;
+    wiz->valid = false;
     wiz->next = wiz_free;
     wiz_free = wiz;
 }

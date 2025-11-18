@@ -45,12 +45,12 @@ char *	const	depart_dir_name	[]		=
     "the northeast", "the northwest", "the southeast", "the southwest"
 };
 
-const	sh_int	rev_dir		[]		=
+const	int16_t	rev_dir		[]		=
 {
     2, 3, 0, 1, 5, 4, 9, 8, 7, 6
 };
 
-const	sh_int	movement_loss	[SECT_MAX]	=
+const	int16_t	movement_loss	[SECT_MAX]	=
 {
     1, 2, 2, 3, 4, 6, 4, 6, 6, 10, 4, 4
 };
@@ -86,7 +86,7 @@ bool    check_blind             args( ( CHAR_DATA *ch ) );
  * Global to this procedure only variables
  */
 static int runner = 0; /* used for function do_run and move_char */
-static bool shove = FALSE;   /* used for shove in move_char */
+static bool shove = false;   /* used for shove in move_char */
 
 /* Random room generation by gravestone */
 
@@ -209,7 +209,7 @@ void do_look( CHAR_DATA *ch, char *argument )
         }
         if (runner != 1)
         {
-           show_list_to_char( ch->in_room->contents, ch, FALSE, FALSE );
+           show_list_to_char( ch->in_room->contents, ch, false, false );
            show_char_to_char( ch->in_room->people,   ch );
         }
 /*      if ((ch->hunting != NULL)  && (!IS_NPC(ch)))
@@ -302,11 +302,11 @@ void do_look( CHAR_DATA *ch, char *argument )
             argument = one_argument( argument, key_word );
             if (obj->pIndexData->vnum == OBJ_VNUM_PIT) {
                 show_pit_list_to_char( obj->contains, ch, key_type, key_word,
-                         TRUE, TRUE );
+                         true, true );
             }
             else
             {
-                show_list_to_char( obj->contains, ch, TRUE, TRUE );
+                show_list_to_char( obj->contains, ch, true, true );
             }
             break;
         }
@@ -529,7 +529,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	       return;
       }
       else if(!IS_NPC(ch) && ch->pcdata->mounted)
-	     ch->pcdata->mounted = FALSE;
+	     ch->pcdata->mounted = false;
      }
 
     if(IS_NPC(ch) && ch->ridden)
@@ -710,16 +710,16 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	   /*
 	    * Look for a boat.
 	    */
-	   found = FALSE;
+	   found = false;
 
 	   if (IS_IMMORTAL(ch))
-		  found = TRUE;
+		  found = true;
 
 	   for ( obj = ch->carrying; obj!=NULL && !found; obj = obj->next_content )
 	   {
 		  if ( obj->item_type == ITEM_BOAT )
 		  {
-		   found = TRUE;
+		   found = true;
 		   break;
 	    }
 	   }
@@ -748,7 +748,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     }
 
     WAIT_STATE( ch, 1 );
-    ch->move = (sh_int)(ch->move - move);
+    ch->move = (int16_t)(ch->move - move);
 
     if ( (!IS_AFFECTED(ch, AFF_SNEAK) && !IS_AFFECTED2(ch,AFF2_STEALTH) )
     && ( IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS) )
@@ -866,7 +866,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	    }
 
 	    act( "You follow $N.", fch, NULL, ch, TO_CHAR );
-	    move_char(fch, door, FALSE);
+	    move_char(fch, door, false);
 	}
     }
 
@@ -878,7 +878,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 void do_north( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_NORTH, FALSE );
+    move_char( ch, DIR_NORTH, false );
     return;
 }
 
@@ -887,7 +887,7 @@ void do_north( CHAR_DATA *ch, char *argument )
 void do_east( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_EAST, FALSE );
+    move_char( ch, DIR_EAST, false );
     return;
 }
 
@@ -896,7 +896,7 @@ void do_east( CHAR_DATA *ch, char *argument )
 void do_south( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_SOUTH, FALSE );
+    move_char( ch, DIR_SOUTH, false );
     return;
 }
 
@@ -905,7 +905,7 @@ void do_south( CHAR_DATA *ch, char *argument )
 void do_west( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_WEST, FALSE );
+    move_char( ch, DIR_WEST, false );
     return;
 }
 
@@ -914,7 +914,7 @@ void do_west( CHAR_DATA *ch, char *argument )
 void do_up( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_UP, FALSE );
+    move_char( ch, DIR_UP, false );
     return;
 }
 
@@ -923,35 +923,35 @@ void do_up( CHAR_DATA *ch, char *argument )
 void do_down( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_DOWN, FALSE );
+    move_char( ch, DIR_DOWN, false );
     return;
 }
 
 void do_northeast( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_NORTHEAST, FALSE );
+    move_char( ch, DIR_NORTHEAST, false );
     return;
 }
 
 void do_northwest( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_NORTHWEST, FALSE );
+    move_char( ch, DIR_NORTHWEST, false );
     return;
 }
 
 void do_southeast( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_SOUTHEAST, FALSE );
+    move_char( ch, DIR_SOUTHEAST, false );
     return;
 }
 
 void do_southwest( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    move_char( ch, DIR_SOUTHWEST, FALSE );
+    move_char( ch, DIR_SOUTHWEST, false );
     return;
 }
 
@@ -1039,34 +1039,34 @@ void do_run( CHAR_DATA *ch, char *argument )
 
 	switch( door )
 	{
-	case 0: move_char( ch, DIR_NORTH, FALSE );
+	case 0: move_char( ch, DIR_NORTH, false );
 	break;
 
-	case 1: move_char( ch, DIR_EAST, FALSE );
+	case 1: move_char( ch, DIR_EAST, false );
 	break;
 
-	case 2: move_char( ch, DIR_SOUTH, FALSE );
+	case 2: move_char( ch, DIR_SOUTH, false );
 	break;
 
-	case 3: move_char( ch, DIR_WEST, FALSE );
+	case 3: move_char( ch, DIR_WEST, false );
 	break;
 
-	case 4: move_char( ch, DIR_UP, FALSE );
+	case 4: move_char( ch, DIR_UP, false );
 	break;
 
-	case 5: move_char( ch, DIR_DOWN, FALSE );
+	case 5: move_char( ch, DIR_DOWN, false );
 	break;
 
-	case 6: move_char( ch, DIR_NORTHEAST, FALSE );
+	case 6: move_char( ch, DIR_NORTHEAST, false );
 	break;
 
-	case 7: move_char( ch, DIR_NORTHWEST, FALSE );
+	case 7: move_char( ch, DIR_NORTHWEST, false );
 	break;
 
-	case 8: move_char( ch, DIR_SOUTHEAST, FALSE );
+	case 8: move_char( ch, DIR_SOUTHEAST, false );
 	break;
 
-	case 9: move_char( ch, DIR_SOUTHWEST, FALSE );
+	case 9: move_char( ch, DIR_SOUTHWEST, false );
 	break;
 
 	}
@@ -1416,10 +1416,10 @@ bool has_key( CHAR_DATA *ch, int key )
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
 	if ( obj->pIndexData->vnum == key )
-	    return TRUE;
+	    return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 
@@ -1522,7 +1522,7 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
         send_to_char( "You slam into the door but it refuses to budge.\n\r", ch);
         act( "$n slams into a door but nothing happens.", ch, NULL, NULL, TO_ROOM );
         ch->position = POS_RESTING;
-        check_improve(ch,gsn_doorbash,FALSE,2);
+        check_improve(ch,gsn_doorbash,false,2);
         return;
     }
 
@@ -1546,7 +1546,7 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
         REMOVE_BIT(pexit->exit_info, EX_CLOSED);
         send_to_char( "You slam into the door and it shatters!!\n\r", ch );
         act( "$n slams into a door and it shatters!", ch, NULL, NULL, TO_ROOM );
-        check_improve(ch,gsn_doorbash,TRUE,2);
+        check_improve(ch,gsn_doorbash,true,2);
 
         /* bash open the other side */
         if ( ( to_room   = pexit->u1.to_room            ) != NULL
@@ -1721,7 +1721,7 @@ void do_pick( CHAR_DATA *ch, char *argument )
     if ( !IS_NPC(ch) && number_percent( ) > ch->pcdata->learned[gsn_pick_lock] )
     {
 	send_to_char( "You failed.\n\r", ch);
-	check_improve(ch,gsn_pick_lock,FALSE,2);
+	check_improve(ch,gsn_pick_lock,false,2);
 	return;
     }
 
@@ -1743,7 +1743,7 @@ void do_pick( CHAR_DATA *ch, char *argument )
 
 	REMOVE_BIT(obj->value[1], CONT_LOCKED);
 	send_to_char( "*Click*\n\r", ch );
-	check_improve(ch,gsn_pick_lock,TRUE,2);
+	check_improve(ch,gsn_pick_lock,true,2);
 	act( "$n picks $p.", ch, obj, NULL, TO_ROOM );
 	return;
     }
@@ -1777,7 +1777,7 @@ void do_pick( CHAR_DATA *ch, char *argument )
 	REMOVE_BIT(pexit->exit_info, EX_LOCKED);
 	send_to_char( "*Click*\n\r", ch );
 	act( "$n picks the $d.", ch, NULL, pexit->keyword, TO_ROOM );
-	check_improve(ch,gsn_pick_lock,TRUE,2);
+	check_improve(ch,gsn_pick_lock,true,2);
 
 	/* pick the other side */
 	if ( ( to_room   = pexit->u1.to_room            ) != NULL
@@ -1982,7 +1982,7 @@ void do_sleep( CHAR_DATA *ch, char *argument )
     if( ( chance = get_skill(ch,gsn_phase) ) > 1 && number_percent() < chance)
     {
    	SET_BIT(ch->affected_by2, AFF2_STEALTH);
-	check_improve( ch, gsn_phase,TRUE,1);
+	check_improve( ch, gsn_phase,true,1);
     }
     return;
 }
@@ -2032,11 +2032,11 @@ void do_sneak( CHAR_DATA *ch, char *argument )
     int iWear, chance;
     bool found;
 
-    for (iWear=1, found=FALSE; iWear<MAX_WEAR; iWear++)
+    for (iWear=1, found=false; iWear<MAX_WEAR; iWear++)
     {
         obj = get_eq_char( ch, iWear);
         if ( (obj != NULL) && (IS_SET(obj->extra_flags, ITEM_METAL)))
-            found=TRUE;
+            found=true;
     }
 
     if(IS_AFFECTED2(ch,AFF2_STEALTH) )
@@ -2064,7 +2064,7 @@ void do_sneak( CHAR_DATA *ch, char *argument )
 
     if ( IS_NPC(ch) || number_percent( ) < chance )
     {
-	check_improve(ch,gsn_sneak,TRUE,3);
+	check_improve(ch,gsn_sneak,true,3);
 	af.type      = gsn_sneak;
 	af.level     = ch->level;
 	af.duration  = ch->level;
@@ -2075,7 +2075,7 @@ void do_sneak( CHAR_DATA *ch, char *argument )
 	affect_to_char( ch, &af );
     }
     else
-	check_improve(ch,gsn_sneak,FALSE,3);
+	check_improve(ch,gsn_sneak,false,3);
 
     return;
 }
@@ -2128,10 +2128,10 @@ void do_hide( CHAR_DATA *ch, char *argument )
     if ( IS_NPC(ch) || number_percent( ) < ch->pcdata->learned[gsn_hide] )
     {
 	SET_BIT(ch->affected_by, AFF_HIDE);
-	check_improve(ch,gsn_hide,TRUE,3);
+	check_improve(ch,gsn_hide,true,3);
     }
     else
-	check_improve(ch,gsn_hide,FALSE,3);
+	check_improve(ch,gsn_hide,false,3);
 
     return;
 }
@@ -2220,7 +2220,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
 	      send_to_char("Something is very wrong!\n\r",ch);
 	      location = get_random_room(ch);
 	      act( "$n failed to recall, but $e went Somewhere.", ch, NULL, NULL, TO_ROOM );
-	      stop_fighting( ch, TRUE );
+	      stop_fighting( ch, true );
 	      char_from_room(ch);
 	      char_to_room(ch,location);
 	      ch->move /= 2;
@@ -2231,7 +2231,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
 	      act( "$n pops in out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM );
 	      return;
 	    }
-	    check_improve(ch,gsn_recall,FALSE,5);
+	    check_improve(ch,gsn_recall,false,5);
 	    WAIT_STATE( ch, 4 );
 	    send_to_char( "You failed!\n\r", ch );
 	    return;
@@ -2239,10 +2239,10 @@ void do_recall( CHAR_DATA *ch, char *argument )
 
 	lose = (ch->desc != NULL) ? 25 : 50;
 	gain_exp( ch, 0 - lose );
-	check_improve(ch,gsn_recall,TRUE,5);
+	check_improve(ch,gsn_recall,true,5);
 	sprintf( buf, "You recall from combat!  You lose %d exps.\n\r", lose );
 	send_to_char( buf, ch );
-	stop_fighting( ch, TRUE );
+	stop_fighting( ch, true );
 
     }
 
@@ -2259,7 +2259,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
 	  act( "$n pops into the room from out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM );
 	  return;
 	}
-	check_improve(ch,gsn_recall,FALSE,5);
+	check_improve(ch,gsn_recall,false,5);
 	WAIT_STATE( ch, 4 );
 	sprintf( buf, "You failed!\n\r");
 	send_to_char( buf, ch );
@@ -2273,8 +2273,8 @@ void do_recall( CHAR_DATA *ch, char *argument )
         do_recall(ch->pet,"");
     else if(ch->pet != NULL && ch->pet->ridden)
     {
-     ch->pcdata->mounted = FALSE;
-     ch->pet->ridden = FALSE;
+     ch->pcdata->mounted = false;
+     ch->pet->ridden = false;
     }
 
     char_from_room( ch );
@@ -2364,13 +2364,13 @@ void do_recall( CHAR_DATA *ch, char *argument )
              if (ch->pet != NULL && !ch->pet->ridden)
              {
                  if (ch->pet->fighting != NULL)
-                   stop_fighting(ch->pet, TRUE);
+                   stop_fighting(ch->pet, true);
 
                  char_from_room(ch->pet);
                  char_to_room(ch->pet,location);
              }
 
-             stop_fighting(ch,TRUE);
+             stop_fighting(ch,true);
              act("$n disappears.", ch, NULL, NULL, TO_ROOM);
              char_from_room(ch);
              char_to_room(ch,location);
@@ -2385,13 +2385,13 @@ void do_recall( CHAR_DATA *ch, char *argument )
              {
              sprintf(buf, "You recall from combat!  You lose %d exps.\n\r", lose);
              send_to_char(buf,ch);
-             check_improve(ch,gsn_recall,TRUE,5);
+             check_improve(ch,gsn_recall,true,5);
              act("$n appears in the room.", ch, NULL, NULL, TO_ROOM);
              }
 
         return;
         }
-      check_improve(ch,gsn_recall,FALSE,5);
+      check_improve(ch,gsn_recall,false,5);
       WAIT_STATE(ch,4);
       send_to_char("You failed!\n\r",ch);
       return;
@@ -2411,7 +2411,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
              if (ch->pet != NULL && !ch->pet->ridden)
              {
                  if (ch->pet->fighting != NULL)
-                   stop_fighting(ch->pet, TRUE);
+                   stop_fighting(ch->pet, true);
 
                  char_from_room(ch->pet);
                  char_to_room(ch->pet,location);
@@ -2429,14 +2429,14 @@ void do_recall( CHAR_DATA *ch, char *argument )
              act("$n pops in out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM);
              else
              {
-             check_improve(ch,gsn_recall,TRUE,5);
+             check_improve(ch,gsn_recall,true,5);
              act("$n appears in the room.", ch, NULL, NULL, TO_ROOM);
              }
 
        return;
    }
 
-      check_improve(ch,gsn_recall,FALSE,5);
+      check_improve(ch,gsn_recall,false,5);
       WAIT_STATE(ch,4);
       send_to_char("You failed!\n\r",ch);
       return;
@@ -2446,7 +2446,7 @@ void do_train( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *mob;
-    sh_int stat = - 1;
+    int16_t stat = - 1;
     char *pOutput = NULL;
     int cost;
 
@@ -2567,7 +2567,7 @@ void do_train( CHAR_DATA *ch, char *argument )
 	    return;
         }
 
-	ch->train = (sh_int)(ch->train - cost);
+	ch->train = (int16_t)(ch->train - cost);
         ch->pcdata->perm_hit += 10;
         ch->max_hit += 10;
         ch->hit +=10;
@@ -2584,7 +2584,7 @@ void do_train( CHAR_DATA *ch, char *argument )
             return;
         }
 
-	ch->train = (sh_int)(ch->train - cost);
+	ch->train = (int16_t)(ch->train - cost);
         ch->pcdata->perm_mana += 10;
         ch->max_mana += 10;
 	ch->mana += 10;
@@ -2605,7 +2605,7 @@ void do_train( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    ch->train		= (sh_int)(ch->train - cost);
+    ch->train		= (int16_t)(ch->train - cost);
 
     ch->perm_stat[stat]		+= 1;
     act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
@@ -2730,14 +2730,14 @@ do_shove( CHAR_DATA *ch, char *argument )
 	   /*
 	    * Look for a boat.
 	    */
-	   found = FALSE;
+	   found = false;
 
 
 	   for ( obj = ch->carrying; obj!=NULL && !found; obj = obj->next_content )
 	   {
 		  if ( obj->item_type == ITEM_BOAT )
 		  {
-		   found = TRUE;
+		   found = true;
 		   break;
 	    }
 	   }
@@ -2833,11 +2833,11 @@ do_shove( CHAR_DATA *ch, char *argument )
 	   act( "$N has been shoved out of the room!", ch, NULL, victim,
 		    TO_NOTVICT );
 
-	   shove = TRUE;
-	   move_char(victim, door, FALSE);
-	   shove = FALSE;
+	   shove = true;
+	   move_char(victim, door, false);
+	   shove = false;
 	   act( "$n has shoved you out of the room!", ch, NULL, victim, TO_VICT );
-	   check_improve(ch,gsn_shove,TRUE,3);
+	   check_improve(ch,gsn_shove,true,3);
 
 	}
 	else
@@ -2845,7 +2845,7 @@ do_shove( CHAR_DATA *ch, char *argument )
 	  act( "$N resists your efforts to move $M.", ch,
 		 NULL, victim, TO_CHAR );
 	  act( "$n tried to shove you!", ch, NULL, victim, TO_VICT );
-	  check_improve(ch,gsn_shove,FALSE,3);
+	  check_improve(ch,gsn_shove,false,3);
 
 	  if(number_percent () < 10 + (victim->level - ch->level) )
 		{
@@ -2868,7 +2868,7 @@ void do_enter( CHAR_DATA *ch, char *argument )
   char arg[MAX_INPUT_LENGTH];
   ROOM_INDEX_DATA *to_room;
   OBJ_DATA *obj;
-  bool found = FALSE;
+  bool found = false;
 
    argument = one_argument (argument, arg);
 
@@ -2895,7 +2895,7 @@ void do_enter( CHAR_DATA *ch, char *argument )
    }
 
    if( obj->item_type == ITEM_PORTAL )
-       found = TRUE;
+       found = true;
 
    if ( !found )
    {
@@ -3030,7 +3030,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	   {
 	     af.type      = gsn_poison;
 	     af.level     = gch->level/2;
-              af.duration  = (sh_int)dice(5,5);
+              af.duration  = (int16_t)dice(5,5);
 	     af.location  = APPLY_DEX;
 	     af.modifier  = -6;
 	     af.bitvector = AFF_POISON;
@@ -3041,7 +3041,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	   }
 	   if(type_gas == 2)
 	   {
-              af.type = (sh_int)skill_lookup("sleep");
+              af.type = (int16_t)skill_lookup("sleep");
 	     af.level     = gch->level/2;
 	     af.duration  = 12;
 	     af.location  = APPLY_NONE;
@@ -3081,7 +3081,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 		 {
 		   af.type      = gsn_poison;
 		   af.level     = gch->level/2;
-                    af.duration  = (sh_int)dice(5,5);
+                    af.duration  = (int16_t)dice(5,5);
 		   af.location  = APPLY_DEX;
 		   af.modifier  = -6;
 		   af.bitvector = AFF_POISON;
@@ -3092,7 +3092,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 		 }
 		 if(type_gas == 2)
 		 {
-                    af.type = (sh_int)skill_lookup("sleep");
+                    af.type = (int16_t)skill_lookup("sleep");
 		   af.level     = gch->level/2;
 		   af.duration  = 12;
 		   af.location  = APPLY_NONE;
@@ -3128,7 +3128,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	 sprintf(buf, "%s has set off a Beer trap!!!", ch->name);
        break;
        case 4:                              /* sleep trap (24) */
-          af.type = (sh_int)skill_lookup("sleep");
+          af.type = (int16_t)skill_lookup("sleep");
 	 af.level     = ch->level/2;
 	 af.duration  = 12;
 	 af.location  = APPLY_NONE;
@@ -3171,9 +3171,9 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	ch->hit  = 10;
 	ch->mana = 10;
 	ch->move = 10;
-         af.type      = (sh_int)skill_lookup("curse");
+         af.type      = (int16_t)skill_lookup("curse");
 	af.level     = ch->level/2;
-         af.duration  = (sh_int)dice(1,2);
+         af.duration  = (int16_t)dice(1,2);
 	af.location  = APPLY_HITROLL;
 	af.modifier  = -1 * (ch->level / 8);
 	af.bitvector = AFF_CURSE;
@@ -3200,7 +3200,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	 {
 	    af.type      = gsn_poison;
 	    af.level     = ch->level/2;
-             af.duration  = (sh_int)dice(5,5);
+             af.duration  = (int16_t)dice(5,5);
 	    af.location  = APPLY_DEX;
 	    af.modifier  = -5;
 	    af.bitvector = AFF_POISON;
@@ -3217,7 +3217,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	  guardian->level = ch->level - 5;
 	  if(ch->level < 51 )
 	  {
-             guardian->max_hit = (sh_int)(ch->max_hit + ch->max_hit / 2);
+             guardian->max_hit = (int16_t)(ch->max_hit + ch->max_hit / 2);
              guardian->hit = guardian->max_hit;
 	  }
 	  else
@@ -3245,7 +3245,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
        case 9: /* plague trap */
 	 act( "$n yells 'OUCH!'", ch, NULL, NULL, TO_ROOM );
 	 send_to_char("Something has been injected into your body!\n\r",ch);
-         af.type      = (sh_int)skill_lookup("plague");
+         af.type      = (int16_t)skill_lookup("plague");
 	 af.level     = ch->level/2;
 	 af.duration  = 12;
 	 af.location  = APPLY_STR;
@@ -3265,8 +3265,8 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	   {
 	    if(!IS_NPC(gch) )
 	    {
-              af.type      = (sh_int)skill_lookup("blindness");
-              af.level     = (sh_int)(gch->level/3);
+              af.type      = (int16_t)skill_lookup("blindness");
+              af.level     = (int16_t)(gch->level/3);
 	      af.location  = APPLY_HITROLL;
 	      af.modifier  = -4;
 	      af.duration  = gch->level;
@@ -3279,8 +3279,8 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	 }
 	 else
 	 {
-           af.type      = (sh_int)skill_lookup("blindness");
-           af.level     = (sh_int)(ch->level/3);
+           af.type      = (int16_t)skill_lookup("blindness");
+           af.level     = (int16_t)(ch->level/3);
 	   af.location  = APPLY_HITROLL;
 	   af.modifier  = -4;
 	   af.duration  = ch->level;
@@ -3361,7 +3361,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 	    else
 	      trapped(ch, obj, obj->value[4]);
 
-	    check_improve(ch,gsn_search,FALSE,3);
+	    check_improve(ch,gsn_search,false,3);
 	    return;
 	  }
 	}
@@ -3376,7 +3376,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 
 	REMOVE_BIT(obj->value[1], CONT_TRAPPED);
 	send_to_char( "You remove the trap.\n\r", ch );
-	check_improve(ch,gsn_search,TRUE,3);
+	check_improve(ch,gsn_search,true,3);
 	act( "$n checks $p for traps, then whispers, 'Yes!'", ch, obj, NULL, TO_ROOM );
 	return;
     }
@@ -3410,7 +3410,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 	    else
 	      trapped(ch,NULL,pexit->trap);
 
-	    check_improve(ch,gsn_search,FALSE,3);
+	    check_improve(ch,gsn_search,false,3);
 	    return;
 	  }
 	}
@@ -3427,7 +3427,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 	send_to_char( "You disarm a trap.\n\r", ch );
 	act( "$n examines the $d, then whispers, 'Yes!'",
 	      ch, NULL, pexit->keyword, TO_ROOM );
-	check_improve(ch,gsn_pick_lock,TRUE,3);
+	check_improve(ch,gsn_pick_lock,true,3);
 
 	/* remove trap on the other side */
 	if ( ( to_room   = pexit->u1.to_room            ) != NULL
@@ -3494,12 +3494,12 @@ void do_ride( CHAR_DATA *ch, char *argument)
     }
 
 
-    found = FALSE;
+    found = false;
     for ( obj = ch->carrying; obj; obj = obj->next_content )
     {
 	if ( obj->item_type == ITEM_SADDLE )
 	{
-	  found = TRUE;
+	  found = true;
 	  break;
 	}
 
@@ -3507,12 +3507,12 @@ void do_ride( CHAR_DATA *ch, char *argument)
 
     if(!found)
     {
-      found = FALSE;
+      found = false;
       for ( obj = victim->carrying; obj; obj = obj->next_content )
       {
 	if ( obj->item_type == ITEM_SADDLE && obj->wear_loc == WEAR_BODY)
 	{
-	  found = TRUE;
+	  found = true;
 	  break;
 	}
 
@@ -3547,7 +3547,7 @@ void do_ride( CHAR_DATA *ch, char *argument)
       else
 	ch->hit -= 25;
 
-      check_improve(ch,gsn_ride,FALSE,6);
+      check_improve(ch,gsn_ride,false,6);
       return;
     }
 
@@ -3566,14 +3566,14 @@ void do_ride( CHAR_DATA *ch, char *argument)
      act( buf, ch, NULL, NULL, TO_ROOM );
    send_to_char("You mount your steed.\n\r",ch);
 
-    check_improve(ch,gsn_ride,FALSE,6);
+    check_improve(ch,gsn_ride,false,6);
 
     SET_BIT(victim->act, ACT_PET);
     victim->master = ch;
     ch->pet = victim;
 
-    ch->pet->ridden = TRUE;
-    ch->pcdata->mounted = TRUE;
+    ch->pet->ridden = true;
+    ch->pcdata->mounted = true;
 
     WAIT_STATE( ch, skill_table[gsn_ride].beats );
     return;
@@ -3604,13 +3604,13 @@ void do_dismount(CHAR_DATA *ch, char *argument)
      mount = ch->pet;
    else
    {
-     ch->pcdata->mounted = FALSE;
+     ch->pcdata->mounted = false;
      return;
    }
 
-   mount->ridden = FALSE;
+   mount->ridden = false;
 
-   ch->pcdata->mounted = FALSE;
+   ch->pcdata->mounted = false;
 
     if (mount->master->pet == mount)
 	mount->master->pet = NULL;
@@ -3717,7 +3717,7 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
     }
 
     WAIT_STATE( temp_ch, 1 );
-    ch->move = (sh_int)(ch->move - move);
+    ch->move = (int16_t)(ch->move - move);
 
     if ( IS_NPC(ch) || !IS_SET(temp_ch->act, PLR_WIZINVIS) )
       act( "$n rides off $Tward.", temp_ch, NULL, dir_name[door], TO_ROOM );
@@ -3766,11 +3766,11 @@ void do_stealth( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    for (iWear=1, found=FALSE; iWear<MAX_WEAR; iWear++)
+    for (iWear=1, found=false; iWear<MAX_WEAR; iWear++)
     {
 	obj = get_eq_char( ch, iWear);
 	if ( (obj != NULL) && (IS_SET(obj->extra_flags, ITEM_METAL)))
-	    found=TRUE;
+	    found=true;
     }
 
     if(IS_AFFECTED(ch,AFF_HIDE) )
@@ -3804,7 +3804,7 @@ void do_stealth( CHAR_DATA *ch, char *argument )
 
     if ( IS_NPC(ch) || number_percent( ) < chance )
     {
-	check_improve(ch,gsn_stealth,TRUE,4);
+	check_improve(ch,gsn_stealth,true,4);
 	af.type      = gsn_stealth;
 	af.level     = ch->level;
 	af.duration  = 12;
@@ -3816,7 +3816,7 @@ void do_stealth( CHAR_DATA *ch, char *argument )
 
     }
     else
-	check_improve(ch,gsn_stealth,FALSE,4);
+	check_improve(ch,gsn_stealth,false,4);
     ch->move /= 2;
 
     return;

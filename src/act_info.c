@@ -28,7 +28,7 @@ DECLARE_DO_FUN(	do_exits	);
 DECLARE_DO_FUN( do_look		);
 DECLARE_DO_FUN( do_help		);
 
-bool scan = FALSE;
+bool scan = false;
 extern const char       *       dir_name[];
 
 
@@ -158,7 +158,7 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
 	      continue;
 
 	    pstrShow = format_obj_to_char( obj, ch, fShort );
-	    fCombine = FALSE;
+	    fCombine = false;
 
 	    if ( IS_NPC(ch) || IS_SET(ch->comm, COMM_COMBINE) )
 	    {
@@ -171,7 +171,7 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
 		    if ( !strcmp( prgpstrShow[iShow], pstrShow ) )
 		    {
 			prgnShow[iShow]++;
-			fCombine = TRUE;
+			fCombine = true;
 			break;
 		    }
 		}
@@ -423,7 +423,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
     buf[0] = UPPER(buf[0]);
     send_to_char( buf, ch );
 
-    found = FALSE;
+    found = false;
     for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
     {
 	if ( ( obj = get_eq_char( victim, iWear ) ) != NULL
@@ -433,7 +433,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
 	    {
 		send_to_char( "\n\r", ch );
 		act( "$N is using:", ch, NULL, victim, TO_CHAR );
-		found = TRUE;
+		found = true;
 	    }
 
 	    if( iWear == WEAR_SHIELD
@@ -444,7 +444,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
 	    else
 	      send_to_char( where_name[iWear], ch );
 
-	    send_to_char( format_obj_to_char( obj, ch, TRUE ), ch );
+	    send_to_char( format_obj_to_char( obj, ch, true ), ch );
 	    send_to_char( "\n\r", ch );
 	}
     }
@@ -454,8 +454,8 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
     &&   number_percent( ) < ch->pcdata->learned[gsn_peek] )
     {
 	send_to_char( "\n\rYou peek at the inventory:\n\r", ch );
-	check_improve(ch,gsn_peek,TRUE,4);
-	show_list_to_char( victim->carrying, ch, TRUE, TRUE );
+	check_improve(ch,gsn_peek,true,4);
+	show_list_to_char( victim->carrying, ch, true, true );
     }
 
     return;
@@ -497,15 +497,15 @@ bool check_blind( CHAR_DATA *ch )
 {
 
     if (!IS_NPC(ch) && IS_SET(ch->act,PLR_HOLYLIGHT))
-	return TRUE;
+	return true;
 
     if ( IS_AFFECTED(ch, AFF_BLIND) )
     {
 	send_to_char( "You can't see a thing!\n\r", ch );
-	return FALSE;
+	return false;
     }
 
-    return TRUE;
+    return true;
 }
 
 /* changes your scroll */
@@ -1078,7 +1078,7 @@ void do_exits( CHAR_DATA *ch, char *argument )
 
     strcpy( buf, fAuto ? "[Exits:" : "Obvious exits:\n\r" );
 
-    found = FALSE;
+    found = false;
     for ( door = 0; door <= 9; door++ )
     {
 	if ( ( pexit = ch->in_room->exit[door] ) != NULL
@@ -1086,7 +1086,7 @@ void do_exits( CHAR_DATA *ch, char *argument )
 	&&   can_see_room(ch,pexit->u1.to_room)
 	&&   !IS_SET(pexit->exit_info, EX_SECRET) )
 	{
-	    found = TRUE;
+	    found = true;
 	    if ( fAuto )
 	    {
 		strcat( buf, " " );
@@ -1677,7 +1677,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
     char output[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
-    bool found = FALSE;
+    bool found = false;
 
     one_argument(argument,arg);
 
@@ -1707,7 +1707,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
 
 	if (!str_prefix(arg,wch->name))
 	{
-	    found = TRUE;
+	    found = true;
 
 	    /* work out the printing */
 	    class = class_table[wch->class].who_name;
@@ -1832,14 +1832,14 @@ void do_who( CHAR_DATA *ch, char *argument )
     iLevelLower    = 0;
     iLevelUpper    = MAX_LEVEL;
     iCastle	   = -1;
-    fClassRestrict = FALSE;
-    fRaceRestrict = FALSE;
-    fCastleRestrict = FALSE;
-    fImmortalOnly  = FALSE;
+    fClassRestrict = false;
+    fRaceRestrict = false;
+    fCastleRestrict = false;
+    fImmortalOnly  = false;
     for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
-	rgfClass[iClass] = FALSE;
+	rgfClass[iClass] = false;
     for ( iRace = 0; iRace < MAX_PC_RACE; iRace++ )
-	rgfRace[iRace] = FALSE;
+	rgfRace[iRace] = false;
 
     /*
 	* Parse arguments.
@@ -1872,14 +1872,14 @@ void do_who( CHAR_DATA *ch, char *argument )
 	     */
 	    if ( arg[0] == 'i' )
 	    {
-		fImmortalOnly = TRUE;
+		fImmortalOnly = true;
 	    }
 	    else
 	    {
 		iCastle = castle_lookup(arg);
 		if (iCastle != -1)
 		{
-			fCastleRestrict = TRUE;
+			fCastleRestrict = true;
 		} else
 		{
 		    iClass = class_lookup(arg);
@@ -1895,14 +1895,14 @@ void do_who( CHAR_DATA *ch, char *argument )
 			}
 		        else
 			{
-			    fRaceRestrict = TRUE;
-			    rgfRace[iRace] = TRUE;
+			    fRaceRestrict = true;
+			    rgfRace[iRace] = true;
 			}
 		    }
 		    else
 		    {
-			fClassRestrict = TRUE;
-		        rgfClass[iClass] = TRUE;
+			fClassRestrict = true;
+		        rgfClass[iClass] = true;
 		    }
 		}
 	    }
@@ -2056,7 +2056,7 @@ void do_inventory( CHAR_DATA *ch, char *argument )
     UNUSED_PARAM(argument);
 
     send_to_char( "You are carrying:\n\r", ch );
-    show_list_to_char( ch->carrying, ch, TRUE, TRUE );
+    show_list_to_char( ch->carrying, ch, true, true );
     return;
 }
 
@@ -2071,7 +2071,7 @@ void do_equipment( CHAR_DATA *ch, char *argument )
     bool found;
 
     send_to_char( "You are using:\n\r", ch );
-    found = FALSE;
+    found = false;
     for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
     {
 	if ( ( obj = get_eq_char( ch, iWear ) ) == NULL )
@@ -2088,14 +2088,14 @@ void do_equipment( CHAR_DATA *ch, char *argument )
 
 	if ( can_see_obj( ch, obj ) )
 	{
-	    send_to_char( format_obj_to_char( obj, ch, TRUE ), ch );
+	    send_to_char( format_obj_to_char( obj, ch, true ), ch );
 	    send_to_char( "\n\r", ch );
 	}
 	else
 	{
 	    send_to_char( "something.\n\r", ch );
 	}
-	found = TRUE;
+	found = true;
     }
 
     if ( !found )
@@ -2227,7 +2227,7 @@ void do_where( CHAR_DATA *ch, char *argument )
     if ( arg[0] == '\0' )
     {
 	send_to_char( "Players near you:\n\r", ch );
-	found = FALSE;
+	found = false;
 	for ( d = descriptor_list; d != NULL; d = d->next )
 	{
 	    if ( d->connected == CON_PLAYING
@@ -2238,7 +2238,7 @@ void do_where( CHAR_DATA *ch, char *argument )
 	    &&   victim != ch
 	    &&   can_see( ch, victim ) )
 	    {
-		found = TRUE;
+		found = true;
 		snprintf(buf, sizeof(buf), "%-28s %s\n\r",
 		    victim->name, victim->in_room->name );
 		send_to_char( buf, ch );
@@ -2249,7 +2249,7 @@ void do_where( CHAR_DATA *ch, char *argument )
     }
     else
     {
-	found = FALSE;
+	found = false;
 	for ( victim = char_list; victim != NULL; victim = victim->next )
 	{
 	    if ( victim->in_room != NULL
@@ -2261,7 +2261,7 @@ void do_where( CHAR_DATA *ch, char *argument )
 	    &&   victim != ch
 	    &&   is_name( arg, victim->name ) )
 	    {
-		found = TRUE;
+		found = true;
 		snprintf(buf, sizeof(buf), "%-28s %s\n\r",
 		    PERS(victim, ch), victim->in_room->name );
 		send_to_char( buf, ch );
@@ -2288,7 +2288,7 @@ void do_gwhere( CHAR_DATA *ch, char *argument )
     if( arg[0] == '\0' )
     {
 	send_to_char( "Mortals around the game:\n\r", ch);
-	found = FALSE;
+	found = false;
 	for( d = descriptor_list; d != NULL; d = d->next )
 	{
 	    if( d->connected == CON_PLAYING
@@ -2298,7 +2298,7 @@ void do_gwhere( CHAR_DATA *ch, char *argument )
 	    &&   victim != ch
 	    &&   can_see( ch, victim ) )
 	    {
-		found = TRUE;
+		found = true;
 		snprintf(buf, sizeof(buf), "%-13s  Rm [%5d]  Rm Name: %-40s\n\r",
 		victim->name, victim->in_room->vnum, victim->in_room->name );
 		send_to_char( buf, ch );
@@ -2309,7 +2309,7 @@ void do_gwhere( CHAR_DATA *ch, char *argument )
 	}
 	else
 	{
-	    found = FALSE;
+	    found = false;
 	    for( victim = char_list; victim != NULL; victim = victim->next )
 	    {
 		if( victim->in_room != NULL
@@ -2317,7 +2317,7 @@ void do_gwhere( CHAR_DATA *ch, char *argument )
 		&&  victim != ch
 		&&  is_name( arg, victim->name ) )
 		{
-		    found = TRUE;
+		    found = true;
 		    snprintf(buf, sizeof(buf), " Name: '%s'  In Room: '%d'  Room Name: '%s'\n\r",
 		    victim->name, victim->in_room->vnum, victim->in_room->name );
 		    send_to_char( buf, ch );
@@ -2344,7 +2344,7 @@ void do_wizcheck( CHAR_DATA *ch, char *argument )
     if( arg[0] == '\0' )
     {
 	send_to_char( "Immortals around the game:\n\r", ch );
-	found = FALSE;
+	found = false;
 	for( d = descriptor_list; d != NULL; d = d->next )
 	{
 	    if ( d->connected == CON_PLAYING
@@ -2354,7 +2354,7 @@ void do_wizcheck( CHAR_DATA *ch, char *argument )
 	    &&   victim->in_room != NULL
 	    &&   can_see( ch, victim ) )
 	    {
-		found = TRUE;
+		found = true;
 	/*	snprintf(buf, sizeof(buf), "Immortal: '%-13s'    Wizi: '[%5d]'  In Room:
 '%-40d'\n\r",*/
                 snprintf(buf, sizeof(buf), "Immortal: [%-13s]    Wizi: [%2d]  In Room: [%-5d]\n\r",
@@ -2367,7 +2367,7 @@ void do_wizcheck( CHAR_DATA *ch, char *argument )
     }
     else
     {
-	found = FALSE;
+	found = false;
 	for( victim = char_list; victim != NULL; victim = victim->next )
 	{
 	    if( victim->in_room != NULL
@@ -2377,7 +2377,7 @@ void do_wizcheck( CHAR_DATA *ch, char *argument )
 	    && is_name( arg, victim->name )
 	    && !IS_NPC( victim ) )
 	    {
-		found = TRUE;
+		found = true;
 		snprintf(buf, sizeof(buf), " Immortal: '%s'  Wizi: '%d'  In Room: '%d'\n\r",
 	 	    victim->name, victim->invis_level, victim->in_room->vnum );
 		    send_to_char( buf, ch );
@@ -2842,10 +2842,10 @@ void do_gainlist(CHAR_DATA *ch, char *argument)
 
             gn = group_lookup(gmdata.can_gain[i]);
 
-            isgroup = TRUE;
+            isgroup = true;
             if ((gn < 0) || (group_table[gn].name == NULL))
             {   gn = skill_lookup(gmdata.can_gain[i]);
-                isgroup = FALSE;
+                isgroup = false;
             }
             if (gn < 0)
                continue;
@@ -2890,14 +2890,14 @@ void do_practice(CHAR_DATA *ch, char *argument)
 	    break;
     }
 
-    foundgm = FALSE;
+    foundgm = false;
     if (gm != NULL)
 	for (counter=0; guildmaster_table[counter].vnum != 0; counter++)
 	{
 	    gmdata = guildmaster_table[counter];
 	    if (gmdata.vnum == gm->pIndexData->vnum)
 	    {
-		foundgm = TRUE;
+		foundgm = true;
 		break;
 	    }
 	}
@@ -3053,7 +3053,7 @@ void do_practice(CHAR_DATA *ch, char *argument)
         else
         {
             ch->practice--;
-            ch->pcdata->learned[sn] = (sh_int)(
+            ch->pcdata->learned[sn] = (int16_t)(
                 ch->pcdata->learned[sn] +
                 int_app[get_curr_stat(ch,STAT_INT)].learn /
                 skill_table[sn].rating[ch->class]);
@@ -3066,7 +3066,7 @@ void do_practice(CHAR_DATA *ch, char *argument)
             }
             else
             {
-                ch->pcdata->learned[sn] = (sh_int)adept;
+                ch->pcdata->learned[sn] = (int16_t)adept;
 		act( "You are now learned at $T.",
                     ch, NULL, skill_table[sn].name, TO_CHAR );
                 act( "$n is now learned at $T.",
@@ -3110,7 +3110,7 @@ void do_wimpy( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    ch->wimpy   = (sh_int)wimpy;
+    ch->wimpy   = (int16_t)wimpy;
     snprintf(buf, sizeof(buf), "Wimpy set to %d hit points.\n\r", wimpy );
     send_to_char( buf, ch );
     return;
@@ -3278,7 +3278,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *was_in_room, *scan_room;
     CHAR_DATA *rch;
     CHAR_DATA *list;
-    bool found = FALSE;
+    bool found = false;
     int door, loop = 0;
 
     if ( ch->position < POS_SLEEPING )
@@ -3305,7 +3305,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    scan = TRUE;
+    scan = true;
     was_in_room = ch->in_room;
     scan_room = ch->in_room;
 
@@ -3350,7 +3350,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			switch ( door )
 			{
 			 case 0:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch, ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3363,7 +3363,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 1:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch, ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3376,7 +3376,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 2:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch,   ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3389,7 +3389,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 3:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch,   ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3402,7 +3402,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 4:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch,   ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3415,7 +3415,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 5:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch,   ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3428,7 +3428,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 6:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch,   ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3441,7 +3441,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 7:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch,   ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3454,7 +3454,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 8:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch,   ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3467,7 +3467,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 			   }
 			   break;
 			 case 9:
-			   found = TRUE;
+			   found = true;
 			   show_char_to_char_0( rch,   ch );
 			   if ( ch->in_room->people != NULL )
 			   {
@@ -3490,7 +3490,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 
 	}
     ch->in_room = was_in_room;
-    scan = FALSE;
+    scan = false;
 
     if(!found)
       send_to_char("You don't see anything near you.\n\r",ch);
@@ -3545,7 +3545,7 @@ void show_pit_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, char *key_type, char 
              we_want_this_obj( obj, key_type, key_word ) )
 	{
 	    pstrShow = format_obj_to_char( obj, ch, fShort );
-	    fCombine = FALSE;
+	    fCombine = false;
 
 	    if ( IS_NPC(ch) || IS_SET(ch->comm, COMM_COMBINE) )
 	    {
@@ -3560,7 +3560,7 @@ void show_pit_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, char *key_type, char 
                         if (obj->level > ch->level)
 			    prgUsable[iShow] = '*';
 			prgnShow[iShow]++;
-			fCombine = TRUE;
+			fCombine = true;
 			break;
 		    }
 		}
@@ -3645,7 +3645,7 @@ bool we_want_this_obj ( OBJ_DATA *obj, char *key_type, char *key_word)
 {
     bool list_all;
 
-    if (obj==NULL) return FALSE;
+    if (obj==NULL) return false;
 
     list_all = (!str_cmp(key_type,"all")) || (key_type[0]=='\0');
 
@@ -3657,7 +3657,7 @@ bool we_want_this_obj ( OBJ_DATA *obj, char *key_type, char *key_word)
 	     str_cmp(key_type,"magic") && str_cmp(key_type,"misc") )
         {
             key_word = key_type;
-            list_all = TRUE;
+            list_all = true;
 	}
     }
 
@@ -3668,7 +3668,7 @@ bool we_want_this_obj ( OBJ_DATA *obj, char *key_type, char *key_word)
             if ( list_all || (!str_cmp(key_type,"weapon")) )
             {
                 if (key_word[0]=='\0')
-                    return TRUE;
+                    return true;
                 else
                     return is_name(key_word,obj->name);
             }
@@ -3678,7 +3678,7 @@ bool we_want_this_obj ( OBJ_DATA *obj, char *key_type, char *key_word)
             if ( list_all || (!str_cmp(key_type,"armor")) )
             {
                 if (key_word[0]=='\0')
-		    return TRUE;
+		    return true;
                 else
                     return is_name(key_word,obj->name);
             }
@@ -3691,7 +3691,7 @@ bool we_want_this_obj ( OBJ_DATA *obj, char *key_type, char *key_word)
             if ( list_all || (!str_cmp(key_type,"magic")) )
             {
                 if (key_word[0]=='\0')
-                    return TRUE;
+                    return true;
                 else
 		    return is_name(key_word,obj->name);
 	    }
@@ -3701,13 +3701,13 @@ bool we_want_this_obj ( OBJ_DATA *obj, char *key_type, char *key_word)
 	    if ( list_all || (!str_cmp(key_type,"misc")) )
             {
                 if (key_word[0]=='\0')
-                    return TRUE;
+                    return true;
                 else
                     return is_name(key_word,obj->name);
             }
     }
 
-    return FALSE;
+    return false;
 }
 
 /* Null functions for use with certain specs */
@@ -3762,7 +3762,7 @@ void do_danger( CHAR_DATA *ch, char *argument )
     CHAR_DATA *rch;
     CHAR_DATA *list;
     int door, loop = 0, chance;
-    bool danger = FALSE, found = FALSE;
+    bool danger = false, found = false;
 
     if(IS_NPC(ch) )
        return;
@@ -3806,7 +3806,7 @@ void do_danger( CHAR_DATA *ch, char *argument )
 
 	  while( loop != 0 )
 	  {
-	    found = FALSE;
+	    found = false;
 	    counter += 1;
 	    loop -= 1;
 
@@ -3827,8 +3827,8 @@ void do_danger( CHAR_DATA *ch, char *argument )
 		  if( IS_NPC(rch) && rch->level >= ch->level - 7
 		      && IS_SET(rch->act, ACT_AGGRESSIVE) )
 		  {
-		    danger = TRUE;
-		    found = TRUE;
+		    danger = true;
+		    found = true;
 		    break;
 		  }
 		}
@@ -3927,7 +3927,7 @@ void do_danger( CHAR_DATA *ch, char *argument )
     if(!found)
       send_to_char("You sense no danger.\n\r",ch);
     else
-      check_improve(ch,gsn_danger_sense,TRUE,5);
+      check_improve(ch,gsn_danger_sense,true,5);
 
     ch->in_room = was_in_room;
 
@@ -4011,7 +4011,7 @@ void do_pkill( CHAR_DATA *ch, char *argument )
 	if(argument[0] != '\0')
 	{
 	    send_to_char("Pkill status removed.\n\r",ch);
-	    ch->pcdata->confirm_pkill = FALSE;
+	    ch->pcdata->confirm_pkill = false;
 	    return;
 	}
 	else
@@ -4056,7 +4056,7 @@ void do_pkill( CHAR_DATA *ch, char *argument )
     send_to_char("Please make sure you have read the helps about pkilling\n\r",ch);
     send_to_char("on this mud before you make your final decision.\n\r",ch);
     send_to_char("typing pkill with an argument will undo the status.\n\r",ch);
-    ch->pcdata->confirm_pkill = TRUE;
+    ch->pcdata->confirm_pkill = true;
 }
 */
 
@@ -4334,9 +4334,9 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->pcdata->num_remorts += 1;
    free_string(ch->pcdata->list_remorts);
    ch->pcdata->list_remorts = str_dup(saveclass);
-    ch->pcdata->perm_hit  = (sh_int)(200 * UMAX(1,ch->pcdata->num_remorts));
-    ch->pcdata->perm_mana = (sh_int)(200 * UMAX(1,ch->pcdata->num_remorts));
-    ch->pcdata->perm_move = (sh_int)(200 * UMAX(1,ch->pcdata->num_remorts));
+    ch->pcdata->perm_hit  = (int16_t)(200 * UMAX(1,ch->pcdata->num_remorts));
+    ch->pcdata->perm_mana = (int16_t)(200 * UMAX(1,ch->pcdata->num_remorts));
+    ch->pcdata->perm_move = (int16_t)(200 * UMAX(1,ch->pcdata->num_remorts));
    ch->pcdata->psionic = 0;
    ch->pcdata->pk_state = 0;
    if (ch->pcdata->num_remorts >= 1)
@@ -4348,13 +4348,13 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->max_hit  = ch->pcdata->perm_hit;
    ch->max_mana = ch->pcdata->perm_mana;
    ch->max_move = ch->pcdata->perm_move;
-    ch->practice = (sh_int)(15 + (2 * UMAX(1,ch->pcdata->num_remorts)));
-    ch->train    = (sh_int)(8 + (2 * UMAX(1,ch->pcdata->num_remorts)));
+    ch->practice = (int16_t)(15 + (2 * UMAX(1,ch->pcdata->num_remorts)));
+    ch->train    = (int16_t)(8 + (2 * UMAX(1,ch->pcdata->num_remorts)));
    ch->hit      = ch->max_hit;
    ch->mana     = ch->max_mana;
    ch->move     = ch->max_move;
-    ch->class    = (sh_int)requested_class;
-    ch->race     = (sh_int)requested_race;
+    ch->class    = (int16_t)requested_class;
+    ch->race     = (int16_t)requested_race;
    if (ch->class == CLASS_MONK)
      ch->pcdata->guild = GUILD_MONK;
    else
@@ -4362,7 +4362,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
        ch->pcdata->guild = GUILD_NECRO;
      else
        if (requested_guild >= 0)
-            ch->pcdata->guild = (sh_int)requested_guild;
+            ch->pcdata->guild = (int16_t)requested_guild;
        else
            ch->pcdata->guild = GUILD_NONE;
    ch->size = pc_race_table[ch->race].size;
@@ -4376,7 +4376,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->affected_by2 = 0;
 
    for (i = 0; i < 4; i++) ch->armor[i]= 100;
-   if ( ch->pcdata->mounted) ch->pcdata->mounted = FALSE;
+   if ( ch->pcdata->mounted) ch->pcdata->mounted = false;
    REMOVE_BIT(ch->act, PLR_BOUGHT_PET);
    REMOVE_BIT(ch->act, PLR_WANTED);
    snprintf(buf, sizeof(buf), "the %s", title_table[ch->class][1][(ch->sex == SEX_FEMALE? 1 : 0)]);
@@ -4387,15 +4387,15 @@ void do_remort( CHAR_DATA *ch, char *arg)
    for (i=0;i<MAX_GROUP;i++) ch->pcdata->group_known[i] = 0;
 
    ch->pcdata->learned[gsn_recall] = 100;
-   group_add(ch,"rom basics",FALSE);
-   group_add(ch,class_table[ch->class].base_group,FALSE);
-   group_add(ch,class_table[ch->class].default_group,TRUE);
+   group_add(ch,"rom basics",false);
+   group_add(ch,class_table[ch->class].base_group,false);
+   group_add(ch,class_table[ch->class].default_group,true);
 
    for (i = 0; i < 5; i++)
    {
       if (pc_race_table[ch->race].skills[i] == NULL)
         break;
-      group_add(ch,pc_race_table[ch->race].skills[i],FALSE);
+      group_add(ch,pc_race_table[ch->race].skills[i],false);
    }
 
     ch->affected_by = ch->affected_by | (int)race_table[ch->race].aff;

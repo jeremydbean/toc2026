@@ -180,7 +180,7 @@ void edit_exit( CHAR_DATA *ch, char *argument )
     EXIT_DATA *pexit;
     int door;
     int type = 0, key=-1;
-    sh_int exit_info=0;
+    int16_t exit_info=0;
     char arg1[MAX_INPUT_LENGTH];
 
     argument = one_argument (argument, arg1 );

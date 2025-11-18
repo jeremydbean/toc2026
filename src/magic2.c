@@ -240,7 +240,7 @@ void do_lore( CHAR_DATA *ch, char *argument )
 	}
     }
 
-    check_improve(ch,gsn_lore,TRUE,5);
+    check_improve(ch,gsn_lore,true,5);
     return;
 }
 
@@ -300,7 +300,7 @@ void do_project( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= 5;
-	   check_improve(ch,gsn_project,FALSE,4);
+	   check_improve(ch,gsn_project,false,4);
 	   return;
 	 }
 
@@ -336,8 +336,8 @@ void do_project( CHAR_DATA *ch, char *argument )
 		 send_to_char("Your spirit has run into an impassable barrier.\n\r",victim);
 		 send_to_char( "You return to your body.\n\r", victim );
 		 do_return(victim,"");
-		 extract_char( victim, TRUE );
-		 check_improve(ch,gsn_project,TRUE,4);
+		 extract_char( victim, true );
+		 check_improve(ch,gsn_project,true,4);
 		 return;
 	    }
 	    else
@@ -357,8 +357,8 @@ void do_project( CHAR_DATA *ch, char *argument )
     send_to_char( "You return to your body.\n\r", victim );
 
     do_return(victim,"");
-    extract_char( victim, TRUE );
-    check_improve(ch,gsn_project,TRUE,4);
+    extract_char( victim, true );
+    check_improve(ch,gsn_project,true,4);
     return;
 
 }
@@ -369,11 +369,11 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *vch;
     CHAR_DATA *vch_next;
-    bool found = FALSE;
+    bool found = false;
     int chance;
     int level;
 
-    static const sh_int dam_each[] =
+    static const int16_t dam_each[] =
     {
 	 0,
 	 0,  0,  0,  0,	 0,	 0,  0,  0, 0,  0,
@@ -404,7 +404,7 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= 5;
-	   check_improve(ch,gsn_mindblast,FALSE,4);
+	   check_improve(ch,gsn_mindblast,false,4);
 	   return;
 	 }
 	 ch->mana -= 50;
@@ -430,7 +430,7 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
 
 	if ( vch->in_room == ch->in_room )
 	{
-	if ( vch != ch && !is_safe_spell(ch,vch,TRUE) )
+	if ( vch != ch && !is_safe_spell(ch,vch,true) )
 	{
 	 level	= UMIN(level, (int)(sizeof(dam_each)/sizeof(dam_each[0]) - 1));
 	 level	= UMAX(0, level);
@@ -440,7 +440,7 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
          act("Blood oozes from $N's ears.",ch,NULL,vch,TO_ROOM);
 	 act("Blood oozes from $N's ears.",ch,NULL,vch,TO_CHAR);
 	 damage( ch, vch, dam, gsn_mindblast, DAM_MENTAL );
-	 found = TRUE;
+	 found = true;
         }
 	 continue;
 	}
@@ -449,7 +449,7 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
 	 send_to_char( "A wave of vertigo hits you, then slowly passes.\n\r", vch );
     }
 
-    check_improve(ch,gsn_mindblast,TRUE, 4);
+    check_improve(ch,gsn_mindblast,true, 4);
     WAIT_STATE(ch,skill_table[gsn_mindblast].beats);
 
     if(!found)
@@ -502,7 +502,7 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
-	 if(is_safe_spell(ch,victim,FALSE))
+	 if(is_safe_spell(ch,victim,false))
 	 {
 	   act("$N cannot be harmed by you.",ch,NULL,victim,TO_CHAR);
 		return;
@@ -531,7 +531,7 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= 5;
-	   check_improve(ch,gsn_nightmare,FALSE,4);
+	   check_improve(ch,gsn_nightmare,false,4);
 	   return;
 	 }
     ch->mana -= 20;
@@ -591,7 +591,7 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
 			    victim );
     act("$n breaks out in a cold sweat.",victim,NULL,NULL,TO_ROOM);
     send_to_char( "Your victim is now seeing horrible visions.\n\r",ch);
-    check_improve(ch,gsn_nightmare,TRUE,4);
+    check_improve(ch,gsn_nightmare,true,4);
     WAIT_STATE( ch,skill_table[gsn_nightmare].beats);
 
     if(ch->fighting == NULL)
@@ -661,7 +661,7 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= 5;
-	   check_improve(ch,gsn_astral_walk,FALSE,4);
+	   check_improve(ch,gsn_astral_walk,false,4);
 	   return;
 	 }
 	 ch->mana -= 70;
@@ -686,15 +686,15 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
     ||   (IS_NPC(victim) && saves_spell(ch->level,victim))
     ||   (!IS_NPC(victim) && IS_SET(victim->act,PLR_NOSUMMON) ) )
     {
-	   check_improve(ch,gsn_astral_walk,TRUE,4);
+	   check_improve(ch,gsn_astral_walk,true,4);
 	   send_to_char( "You failed.\n\r", ch );
 	   return;
     }
 
     if (ch->pet != NULL && ch->in_room == ch->pet->in_room)
-	trans_pet = TRUE;
+	trans_pet = true;
     else
-	trans_pet = FALSE;
+	trans_pet = false;
 
     act("$n bows $s head, then shimmers and is gone.",ch,NULL,NULL,TO_ROOM);
     send_to_char("You feel disorientated.\n\r",ch);
@@ -719,7 +719,7 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
 
   if(!IS_IMMORTAL(ch) )
     ch->position = POS_STUNNED;
-  check_improve(ch,gsn_astral_walk,TRUE,4);
+  check_improve(ch,gsn_astral_walk,true,4);
   return;
 }
 
@@ -729,7 +729,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
-    bool found = FALSE;
+    bool found = false;
     int chance;
 
     one_argument( argument, arg );
@@ -768,7 +768,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= (dice(1,5) +3);
-	   check_improve(ch,gsn_telekinesis,FALSE,4);
+	   check_improve(ch,gsn_telekinesis,false,4);
 	   return;
 	 }
 	 ch->mana -= 50;
@@ -817,7 +817,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 		    continue;
 		else if( obj->in_room != NULL)
 		  {
-		   found = TRUE;
+		   found = true;
 		   snprintf(buf, sizeof buf,"%s has TK'd %s from room %d",ch->name,
 			obj->name,obj->in_room->vnum);
 		   wizinfo(buf, LEVEL_IMMORTAL);
@@ -838,7 +838,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 	 act("$n bows $s head and $T flies to $s hand.",ch, NULL,
 		obj->short_descr, TO_ROOM);
 	 }
-    check_improve(ch,gsn_telekinesis,TRUE,4);
+    check_improve(ch,gsn_telekinesis,true,4);
     WAIT_STATE(ch,skill_table[gsn_telekinesis].beats);
     return;
 }
@@ -885,7 +885,7 @@ void do_confuse( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
-	 if(is_safe_spell(ch,victim,FALSE))
+	 if(is_safe_spell(ch,victim,false))
 	 {
 	   act("$N cannot be harmed by you.",ch,NULL,victim,TO_CHAR);
 		return;
@@ -914,7 +914,7 @@ void do_confuse( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= (dice(1,5) + 3);
-	   check_improve(ch,gsn_confuse,FALSE,4);
+	   check_improve(ch,gsn_confuse,false,4);
 	   return;
 	 }
 
@@ -967,7 +967,7 @@ void do_confuse( CHAR_DATA *ch, char *argument )
 	 return;
     }
 
-    check_improve(ch,gsn_confuse,TRUE,4);
+    check_improve(ch,gsn_confuse,true,4);
     WAIT_STATE( ch, skill_table[gsn_confuse].beats);
     if(ch->fighting == NULL)
 	ch->fighting = victim;
@@ -1026,7 +1026,7 @@ void do_clairvoyance( CHAR_DATA *ch, char *argument )
 	 if ( number_percent( ) > chance )
 	 {
 	   send_to_char("All you can see is a fuzzy image.\n\r",ch);
-	   check_improve(ch,gsn_clairvoyance,FALSE,4);
+	   check_improve(ch,gsn_clairvoyance,false,4);
 	   ch->mana -= (dice(1,5) +3);
 	   return;
 	 }
@@ -1070,7 +1070,7 @@ void do_clairvoyance( CHAR_DATA *ch, char *argument )
 	 send_to_char("You feel as if someone is watching you.\n\r",victim);
     char_from_room(ch);
     char_to_room( ch, was_in_room );
-    check_improve(ch,gsn_clairvoyance,TRUE,4);
+    check_improve(ch,gsn_clairvoyance,true,4);
     WAIT_STATE(ch,skill_table[gsn_clairvoyance].beats);
     return;
 
@@ -1122,7 +1122,7 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
 	  return;
 	 }
 
-	 if(is_safe_spell(ch,victim,FALSE))
+	 if(is_safe_spell(ch,victim,false))
 	 {
 	   act("$N cannot be harmed by you.",ch,NULL,victim,TO_CHAR);
 		return;
@@ -1144,7 +1144,7 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
 	 if ( number_percent( ) > chance )
 	 {
 	  send_to_char("You lost your concentration.\n\r",ch);
-	  check_improve(ch,gsn_pyrotechnics,FALSE,4);
+	  check_improve(ch,gsn_pyrotechnics,false,4);
 	  ch->mana -= (dice(1,5) + 3);
 	  return;
 	 }
@@ -1294,7 +1294,7 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
 	dam /= 2;
     damage( ch, victim, dam, gsn_pyrotechnics, DAM_FIRE );
     extract_obj(light);
-    check_improve(ch,gsn_pyrotechnics,TRUE,4);
+    check_improve(ch,gsn_pyrotechnics,true,4);
     WAIT_STATE(ch,skill_table[gsn_pyrotechnics].beats);
     return;
 
@@ -1349,7 +1349,7 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
-	 if(is_safe_spell(ch,victim,FALSE))
+	 if(is_safe_spell(ch,victim,false))
 	 {
 	   act("$N cannot be harmed by you.",ch,NULL,victim,TO_CHAR);
 		return;
@@ -1373,7 +1373,7 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
 	 {
 	  send_to_char("You lost your concentration.\n\r",ch);
 	  ch->mana -= (dice(1,5) + 3);
-	  check_improve(ch,gsn_ego_whip,FALSE,4);
+	  check_improve(ch,gsn_ego_whip,false,4);
 	  return;
 	 }
 
@@ -1446,7 +1446,7 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
     if ( saves_spell( level, victim ) )
 	 dam /= 2;
     damage( ch, victim, dam, gsn_ego_whip, DAM_MENTAL );
-    check_improve(ch,gsn_ego_whip,TRUE,4);
+    check_improve(ch,gsn_ego_whip,true,4);
     WAIT_STATE(ch,skill_table[gsn_ego_whip].beats);
     return;
 }
@@ -1488,7 +1488,7 @@ void do_psionic_armor( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= (dice(1,5) + 3);
-	   check_improve(ch,gsn_psionic_armor,FALSE,4);
+	   check_improve(ch,gsn_psionic_armor,false,4);
 	   return;
 	 }
 	ch->mana -= 20;
@@ -1531,7 +1531,7 @@ void do_psionic_armor( CHAR_DATA *ch, char *argument )
 	 return;
     }
 
-    check_improve(ch,gsn_psionic_armor,TRUE,4);
+    check_improve(ch,gsn_psionic_armor,true,4);
     WAIT_STATE( ch, skill_table[gsn_psionic_armor].beats);
     return;
 }
@@ -1565,7 +1565,7 @@ void do_psychic_shield( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= (dice(1,5) + 3);
-	   check_improve(ch,gsn_psychic_shield,FALSE,4);
+	   check_improve(ch,gsn_psychic_shield,false,4);
 	   return;
 	 }
 	ch->mana -= 50;
@@ -1595,7 +1595,7 @@ void do_psychic_shield( CHAR_DATA *ch, char *argument )
 
     }
     send_to_char("Ok.\n\r",ch);
-    check_improve(ch,gsn_psychic_shield,TRUE,4);
+    check_improve(ch,gsn_psychic_shield,true,4);
     WAIT_STATE( ch, skill_table[gsn_psychic_shield].beats);
     return;
 }
@@ -1637,7 +1637,7 @@ void do_mindbar( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= (dice(1,5) +3);
-	   check_improve(ch,gsn_mindbar,FALSE,4);
+	   check_improve(ch,gsn_mindbar,false,4);
 	   return;
 	 }
 	ch->mana -= 50;
@@ -1669,7 +1669,7 @@ void do_mindbar( CHAR_DATA *ch, char *argument )
 	 return;
     }
 
-    check_improve(ch,gsn_mindbar,TRUE,4);
+    check_improve(ch,gsn_mindbar,true,4);
     WAIT_STATE( ch, skill_table[gsn_mindbar].beats);
     return;
 }
@@ -1715,7 +1715,7 @@ void do_torment( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
-	 if ( is_safe_spell(ch, victim,FALSE ) )
+	 if ( is_safe_spell(ch, victim,false ) )
 	 {
 	   act("$N cannot be harmed by you.",ch,NULL,victim,TO_CHAR);
 		return;
@@ -1744,7 +1744,7 @@ void do_torment( CHAR_DATA *ch, char *argument )
 	 {
 	  send_to_char("You lost your concentration.\n\r",ch);
 	  ch->mana -= (dice(1,5) + 3);
-	  check_improve(ch,gsn_torment,FALSE,4);
+	  check_improve(ch,gsn_torment,false,4);
 	  return;
 	 }
 
@@ -1786,7 +1786,7 @@ void do_torment( CHAR_DATA *ch, char *argument )
     if ( saves_spell( level, victim ) )
 	 dam /= 2;
     damage( ch, victim, dam, gsn_torment, DAM_MENTAL );
-    check_improve(ch,gsn_torment,TRUE,4);
+    check_improve(ch,gsn_torment,true,4);
     WAIT_STATE(ch,skill_table[gsn_torment].beats);
     return;
 }
@@ -1836,7 +1836,7 @@ void do_transfusion( CHAR_DATA *ch, char *argument )
 	 {
 	  send_to_char("You lost your concentration.\n\r",ch);
 	  ch->mana -= (dice(1,5) + 3);
-	  check_improve(ch,gsn_transfusion,FALSE,4);
+	  check_improve(ch,gsn_transfusion,false,4);
 	  return;
 	 }
 	ch->mana -= 20;
@@ -1902,7 +1902,7 @@ void do_shift( CHAR_DATA *ch, char *argument )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
 	   ch->mana -= (dice(1,5) + 3 );
-	   check_improve(ch,gsn_shift,FALSE,4);
+	   check_improve(ch,gsn_shift,false,4);
 	   return;
 	 }
 	 ch->mana -= 70;
@@ -1937,7 +1937,7 @@ void do_shift( CHAR_DATA *ch, char *argument )
     ||   (IS_NPC(victim) && saves_spell(ch->level,victim))
     ||   (!IS_NPC(victim) && IS_SET(victim->act,PLR_NOSUMMON) ) )
     {
-	   check_improve(ch,gsn_shift,TRUE,4);
+	   check_improve(ch,gsn_shift,true,4);
 	   send_to_char( "You failed.\n\r", ch );
 	   return;
     }
@@ -2135,7 +2135,7 @@ void spell_tentacles( int sn, int level, CHAR_DATA *ch, void *vo )
     {
       vch_next = vch->next_in_room;
 
-      if ( !is_safe_spell(ch,vch,TRUE) )
+      if ( !is_safe_spell(ch,vch,true) )
       {
 	  act("Black tentacles rip out of the ground, flailing $n.",vch,
 		NULL,NULL,TO_ROOM);
@@ -2232,7 +2232,7 @@ void do_brew( CHAR_DATA *ch, char *argument )
       act("$n spits it out. Apparently the herbs didn't mix correctly.",ch,
 	NULL,NULL,TO_ROOM);
       extract_obj( pObj );
-      check_improve(ch,gsn_brew,FALSE,3);
+      check_improve(ch,gsn_brew,false,3);
       return;
    }
 
@@ -2483,7 +2483,7 @@ void do_brew( CHAR_DATA *ch, char *argument )
    act("$n then pours the brewed liquid into a container.",ch,
 	NULL,NULL,TO_ROOM);
    send_to_char("The herbs have brewed, and you pour the liquid into a container.\n\r",ch);
-   check_improve(ch,gsn_brew,TRUE,5);
+   check_improve(ch,gsn_brew,true,5);
    extract_obj( pObj );
    obj_to_char(tea, ch);
    return;
@@ -2501,7 +2501,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
    char buf[MAX_STRING_LENGTH];
-   bool found = FALSE;
+   bool found = false;
 
    if(IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
       return;
@@ -2558,7 +2558,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"flaming red potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 63
@@ -2574,7 +2574,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"colorless potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 61
@@ -2590,7 +2590,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"pinkish potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 55
@@ -2605,7 +2605,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"white potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 62
@@ -2620,7 +2620,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"clear potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 54
@@ -2635,7 +2635,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"yellowish potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 67
@@ -2651,7 +2651,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"pale potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 70
@@ -2667,7 +2667,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"blue potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 55
@@ -2683,7 +2683,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"bright white potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 58
@@ -2699,7 +2699,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      free_string( potion->name );
      snprintf(buf, sizeof buf,"softly glowing potion");
      potion->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(found)
@@ -2730,7 +2730,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
        return;
      }
 
-     check_improve(ch,gsn_concoct,TRUE,5);
+     check_improve(ch,gsn_concoct,true,5);
      potion->value[0] = ch->level;
      potion->value[1] = slot_one;
      if(slot_two > 0)
@@ -2762,7 +2762,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
    char arg2[MAX_INPUT_LENGTH];
    char arg3[MAX_INPUT_LENGTH];
    char buf[MAX_STRING_LENGTH];
-   bool found = FALSE;
+   bool found = false;
 
    if(IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
       return;
@@ -2829,7 +2829,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      free_string( scroll->name );
      snprintf(buf, sizeof buf,"blank scroll");
      scroll->name = str_dup( buf );
-     found = TRUE;
+     found = true;
      snprintf(buf, sizeof buf,"A remove align scroll may have been created by %s",ch->name);
      log_string(buf);
      wizinfo(buf,LEVEL_IMMORTAL);
@@ -2849,7 +2849,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      free_string( scroll->name );
      snprintf(buf, sizeof buf,"redish-white scroll");
      scroll->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 78
@@ -2866,7 +2866,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      free_string( scroll->name );
      snprintf(buf, sizeof buf,"blinding white scroll");
      scroll->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
    if(pObj_one->pIndexData->vnum == 84
@@ -2883,7 +2883,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      free_string( scroll->name );
      snprintf(buf, sizeof buf,"yellow scroll");
      scroll->name = str_dup( buf );
-     found = TRUE;
+     found = true;
    }
 
 
@@ -2899,7 +2899,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
         free_string( scroll->name );
         snprintf(buf, sizeof buf,"deadly black scroll");
         scroll->name = str_dup( buf );
-        found = TRUE;
+        found = true;
         snprintf(buf, sizeof buf,"Vengence may soon fall upon you from %s!", ch->name);
         log_string(buf);
         wizinfo(buf,LEVEL_IMMORTAL);
@@ -2935,7 +2935,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      send_to_char("You get out your quill and begin writting the spells with the ink.\n\r",ch);
      act("Smiling gleefully, $n pulls out a sheet of vellum and writes out the spells.",ch,
 	  NULL,NULL,TO_ROOM);
-     check_improve(ch,gsn_scribe,TRUE,5);
+     check_improve(ch,gsn_scribe,true,5);
      scroll->value[0] = ch->level;
      scroll->value[1] = spell_one;
      if(spell_two > 0)
@@ -3204,7 +3204,7 @@ void spell_water_burst( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     OBJ_DATA *obj;
-    bool found = FALSE;
+    bool found = false;
 
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
@@ -3212,7 +3212,7 @@ void spell_water_burst( int sn, int level, CHAR_DATA *ch, void *vo )
 	&&   can_see_obj( ch, obj )
 	&&   obj->item_type == ITEM_DRINK_CON )
 	{
-	  found = TRUE;
+	  found = true;
 	  break;
 	}
     }
@@ -3247,7 +3247,7 @@ void spell_geyser( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     OBJ_DATA *obj;
-    bool found = FALSE;
+    bool found = false;
 
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
@@ -3255,7 +3255,7 @@ void spell_geyser( int sn, int level, CHAR_DATA *ch, void *vo )
 	&&   can_see_obj( ch, obj )
 	&&   obj->item_type == ITEM_DRINK_CON )
 	{
-	  found = TRUE;
+	  found = true;
 	  break;
 	}
     }
@@ -3295,7 +3295,7 @@ void spell_geyser( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_spiritual_hammer( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     OBJ_DATA *obj;
-    bool found = FALSE;
+    bool found = false;
 
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
@@ -3304,7 +3304,7 @@ void spell_spiritual_hammer( int sn, int level, CHAR_DATA *ch, void *vo )
 	&&   obj->item_type == ITEM_WEAPON
 	&&   obj->value[0] == WEAPON_MACE )
 	{
-	  found = TRUE;
+	  found = true;
 	  break;
 	}
     }
@@ -3781,9 +3781,9 @@ void spell_cone_of_cold( int sn, int level, CHAR_DATA *ch, void *vo )
     {
       vch_next = vch->next_in_room;
 
-      if ( !is_safe_spell(ch,vch,TRUE) )
+      if ( !is_safe_spell(ch,vch,true) )
       {
-      if ( vch != ch && !is_safe_spell(ch,vch,TRUE) )
+      if ( vch != ch && !is_safe_spell(ch,vch,true) )
              damage(ch,vch,dice(level/2,6),sn,DAM_COLD);
 
       if( vch->in_room != ch->in_room)
@@ -3868,7 +3868,7 @@ void spell_meteor_swarm( int sn, int level, CHAR_DATA *ch, void *vo )
       for ( gch = vch; gch != NULL; gch = gch->next_in_room )
       {
                             /*fix?*/
-        if ( gch != ch && !is_safe_spell(ch,gch,TRUE) && gch->in_room == ch->in_room)
+        if ( gch != ch && !is_safe_spell(ch,gch,true) && gch->in_room == ch->in_room)
         {
            /* For some randomness, lets subtract 1 meteor 15% of the time */
            if (number_percent() > 85)
@@ -3907,10 +3907,10 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
   UNUSED_PARAM(sn);
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   OBJ_DATA *obj;
-  bool found=FALSE;
+  bool found=false;
   char buf[MAX_STRING_LENGTH];
 
-      if(!IS_NPC(victim) || is_safe_spell(ch,victim,FALSE) ||
+      if(!IS_NPC(victim) || is_safe_spell(ch,victim,false) ||
        saves_spell(level,victim) || IS_SET(victim->act, ACT_AGGRESSIVE) ||
        victim->fighting != NULL)
       {
@@ -3925,7 +3925,7 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
         &&   obj->item_type == ITEM_SOUL_CONTAINER
         &&   obj->trapped == NULL )
         {
-          found = TRUE;
+          found = true;
           break;
         }
     }
@@ -3967,7 +3967,7 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
       free_string(obj->description);
       snprintf(buf, sizeof buf,"A bottle containing essence of %s is here.",victim->name);
       obj->description = str_dup(buf);
-      extract_char(victim, TRUE);
+      extract_char(victim, true);
      }
     else
       send_to_char("Nothing happens.\n\r",ch);
@@ -3979,12 +3979,12 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
 {
   CHAR_DATA *victim = (CHAR_DATA *) vo;
   OBJ_DATA *obj;
-  bool found = FALSE;
+  bool found = false;
   char buf[MAX_STRING_LENGTH];
 
     if(!IS_IMMORTAL(ch) )
     {
-      if(!IS_NPC(victim) || is_safe_spell(ch,victim,FALSE) ||
+      if(!IS_NPC(victim) || is_safe_spell(ch,victim,false) ||
        saves_spell(level,victim) || IS_SET(victim->act, ACT_AGGRESSIVE) ||
        victim->fighting != NULL)
       {
@@ -4002,7 +4002,7 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
 	&&   obj->item_type == ITEM_SOUL_CONTAINER
 	&&   obj->trapped == NULL )
 	{
-	  found = TRUE;
+	  found = true;
 	  break;
 	}
     }
@@ -4133,7 +4133,7 @@ void spell_detect_traps( int sn, int level, CHAR_DATA *ch, void *vo )
   UNUSED_PARAM(vo);
   int door;
   OBJ_DATA *obj;
-  bool found = FALSE;
+  bool found = false;
   EXIT_DATA *pexit;
   char buf[MAX_STRING_LENGTH];
   char direction[MAX_STRING_LENGTH];
@@ -4173,7 +4173,7 @@ void spell_detect_traps( int sn, int level, CHAR_DATA *ch, void *vo )
                        pexit->keyword,
                        direction);
 	     send_to_char(buf,ch);
-	     found = TRUE;
+	     found = true;
 	   }
      }
 
@@ -4185,7 +4185,7 @@ void spell_detect_traps( int sn, int level, CHAR_DATA *ch, void *vo )
 	  &&  IS_SET(obj->value[1], CONT_TRAPPED) )
 	  {
 	    act( "$p is trapped!", ch,  obj, NULL, TO_CHAR );
-	    found = TRUE;
+	    found = true;
 	  }
 	}
 
@@ -4199,7 +4199,7 @@ void spell_detect_traps( int sn, int level, CHAR_DATA *ch, void *vo )
 	  &&  IS_SET(obj->value[1], CONT_TRAPPED) )
 	  {
 	    act( "$p you hold is trapped!", ch, obj, NULL, TO_CHAR );
-	    found = TRUE;
+	    found = true;
 	  }
 	}
     }
@@ -4639,7 +4639,7 @@ void spell_neutrality_field( int sn, int level, CHAR_DATA *ch, void *vo )
     for ( vch = ch->in_room->people; vch != NULL; vch = vch_next )
     {
 	vch_next = vch->next_in_room;
-	if(!is_safe_spell(ch,vch,TRUE))
+	if(!is_safe_spell(ch,vch,true))
 	{
 	    vo = (void *)vch;
 	    (*skill_table[sn2].spell_fun) (sn2, ch->level, ch, vo );

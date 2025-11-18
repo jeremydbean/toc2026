@@ -24,7 +24,7 @@
 #pragma GCC diagnostic ignored "-Wformat-truncation"
 extern void component_update(void);
 
-static sh_int clamp_sh_int( int value )
+static int16_t clamp_sh_int( int value )
 {
     if ( value > SHRT_MAX )
         return SHRT_MAX;
@@ -32,7 +32,7 @@ static sh_int clamp_sh_int( int value )
     if ( value < SHRT_MIN )
         return SHRT_MIN;
 
-    return (sh_int) value;
+    return (int16_t) value;
 }
 
 /* command procedures needed */
@@ -82,7 +82,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
   OBJ_DATA        *container = NULL;
   OBJ_DATA        *obj_next;
   OBJ_DATA        *obj;
-  bool found     = FALSE;
+  bool found     = false;
 
   argument = one_argument( argument, arg1 );
   argument = one_argument( argument, arg2 );
@@ -126,7 +126,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
 		  && victim->in_room != NULL
 		  && (pMobIndex == victim->pIndexData ) )
 		 {
-		   found = TRUE;
+		   found = true;
 		   break;
 		 }
 	   }
@@ -152,7 +152,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
 	    obj_to_room( obj, pRoomIndex );
 	  }
 
-    found = FALSE;
+    found = false;
     }
     act( "Your $p explodes!", ch, container, NULL, TO_CHAR );
     act( "$n's $p explodes!.", ch, container, NULL, TO_ROOM );
@@ -981,7 +981,7 @@ void do_transfer( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *location;
     DESCRIPTOR_DATA *d;
     CHAR_DATA *victim;
-    bool trans_pet = FALSE;
+    bool trans_pet = false;
 
     argument = one_argument( argument, arg1 );
 
@@ -1080,14 +1080,14 @@ void do_transfer( CHAR_DATA *ch, char *argument )
     }
 
     if ( victim->fighting != NULL )
-	stop_fighting( victim, TRUE );
+	stop_fighting( victim, true );
 
     if (victim->pet != NULL && (!IS_NPC(victim) && victim->pcdata->mounted) )
-	trans_pet = TRUE;
+	trans_pet = true;
     else if(victim->ridden && victim->master != NULL && !IS_NPC(victim->master) )
     {
-      victim->master->pcdata->mounted = FALSE;
-      victim->ridden = FALSE;
+      victim->master->pcdata->mounted = false;
+      victim->ridden = false;
     }
 
     if(!IS_SWITCHED(ch) && ch->pcdata->trans[0] != '\0')
@@ -1167,7 +1167,7 @@ void do_gather( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
     char message[MAX_STRING_LENGTH];
-    bool found = FALSE;
+    bool found = false;
     OBJ_DATA *obj;
     OBJ_INDEX_DATA *search = NULL;
     OBJ_DATA *search1 = NULL;
@@ -1249,7 +1249,7 @@ void do_gather( CHAR_DATA *ch, char *argument )
 	else if ( !is_name( arg, obj->name ) )
 	   continue;
 
-	found = TRUE;
+	found = true;
 
 	if ( obj->carried_by != NULL )
 	{
@@ -1301,7 +1301,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
 {
     ROOM_INDEX_DATA *location;
     CHAR_DATA *rch;
-    bool trans_pet = FALSE;
+    bool trans_pet = false;
 
     if ( argument[0] == '\0' )
     {
@@ -1346,7 +1346,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
     }
 
     if ( ch->fighting != NULL )
-	stop_fighting( ch, TRUE );
+	stop_fighting( ch, true );
 
     for (rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room)
     {
@@ -1360,7 +1360,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
     }
 
     if (ch->pet != NULL && (!IS_NPC(ch) && ch->pcdata->mounted) )
-	trans_pet = TRUE;
+	trans_pet = true;
 
     char_from_room( ch );
     char_to_room( ch, location );
@@ -2162,8 +2162,8 @@ void do_mfind( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    fAll        = FALSE; /* !str_cmp( arg, "all" ); */
-    found       = FALSE;
+    fAll        = false; /* !str_cmp( arg, "all" ); */
+    found       = false;
     nMatch      = 0;
     buffer[0] = '\0';
     /*
@@ -2179,7 +2179,7 @@ void do_mfind( CHAR_DATA *ch, char *argument )
 	    nMatch++;
 	    if ( fAll || is_name( argument, pMobIndex->player_name ) )
 	    {
-		found = TRUE;
+		found = true;
 		sprintf( buf, "[%5d] %s\n\r",
 		    pMobIndex->vnum, pMobIndex->short_descr );
 /*		send_to_char( buf, ch );*/
@@ -2220,8 +2220,8 @@ void do_ofind( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    fAll        = FALSE; /* !str_cmp( arg, "all" ); */
-    found       = FALSE;
+    fAll        = false; /* !str_cmp( arg, "all" ); */
+    found       = false;
     nMatch      = 0;
     buffer[0] = '\0';
     /*
@@ -2237,7 +2237,7 @@ void do_ofind( CHAR_DATA *ch, char *argument )
 	    nMatch++;
 	    if ( fAll || is_name( argument, pObjIndex->name ) )
 	    {
-		found = TRUE;
+		found = true;
 		sprintf( buf, "[%5d] %s\n\r",
 		    pObjIndex->vnum, pObjIndex->short_descr );
 /*		send_to_char( buf, ch );*/
@@ -2278,7 +2278,7 @@ void do_rwhere( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    found = FALSE;
+    found = false;
     buffer[0] = '\0';
 
     count = 0;
@@ -2294,7 +2294,7 @@ void do_rwhere( CHAR_DATA *ch, char *argument )
 /*        if ( location != NULL && strstr(location->name, arg))*/
         if ( location != NULL && !str_infix(arg, location->name))
         {
-           found = TRUE;
+           found = true;
            snprintf(buf, sizeof(buf),"%-40s [%5d]\n\r",location->name, location->vnum);
            strcat(buffer,buf);
            count++;
@@ -2335,7 +2335,7 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
 
     count = 0;
 
-    found = FALSE;
+    found = false;
     buffer[0] = '\0';
     for ( victim = char_list; victim != NULL; victim = victim->next )
     {
@@ -2347,7 +2347,7 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
 	&&   victim->in_room != NULL
 	&&   is_name( argument, victim->name ) )
 	{
-	    found = TRUE;
+	    found = true;
 	    sprintf( buf, "[%5d] %-28s [%5d] %s\n\r",
 		victim->pIndexData->vnum,
 		victim->short_descr,
@@ -2374,7 +2374,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     char buffer[8*MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
-    bool found = FALSE, bvnum = FALSE;
+    bool found = false, bvnum = false;
     OBJ_DATA *obj;
     OBJ_DATA *in_obj;
     int count, vnum;
@@ -2389,7 +2389,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
 	return;
     } else {
 	if(is_number(arg)) {
-	    bvnum = TRUE;
+	    bvnum = true;
 	    vnum = atoi(arg);
 	}
 
@@ -2408,7 +2408,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
 		}
 	    }
 
-	    found = TRUE;
+	    found = true;
 
 	    for ( in_obj = obj; in_obj->in_obj != NULL;
 		 in_obj = in_obj->in_obj )
@@ -2484,7 +2484,7 @@ void do_reboot( CHAR_DATA *ch, char *argument )
 /*    do_force ( ch, "all save");*/
     do_forcesave(ch,"");
     do_save (ch, "");
-    merc_down = TRUE;
+    merc_down = true;
     for ( d = descriptor_list; d != NULL; d = d_next )
     {
 	d_next = d->next;
@@ -2512,7 +2512,7 @@ void do_shutdown( CHAR_DATA *ch, char *argument )
 /*    do_force ( ch, "all save");*/
     do_forcesave(ch,"");
     do_save (ch, "");
-    merc_down = TRUE;
+    merc_down = true;
     for ( d = descriptor_list; d != NULL; d = d_next)
     {
 	d_next = d->next;
@@ -2693,7 +2693,7 @@ void do_switch( CHAR_DATA *ch, char *argument )
 void do_return( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    bool found = FALSE;
+    bool found = false;
 
     if ( ch->desc == NULL )
 	return;
@@ -2707,7 +2707,7 @@ void do_return( CHAR_DATA *ch, char *argument )
     if( IS_SET(ch->act2,ACT2_LYCANTH) )
     {
       send_to_char("You become human once again.\n\r",ch);
-      found = TRUE;
+      found = true;
     }
     else if(strcmp(ch->name,"ghost") != 0)
       send_to_char( "Your body feels like it's old self.\n\r", ch );
@@ -2722,7 +2722,7 @@ void do_return( CHAR_DATA *ch, char *argument )
       char_to_room(ch->desc->character,ch->in_room);
       ch->desc->character->timer = 0;
       ch->desc                  = NULL;
-      extract_char(ch,TRUE);
+      extract_char(ch,true);
       return;
     }
     ch->desc                  = NULL;
@@ -2737,9 +2737,9 @@ static bool obj_check (CHAR_DATA *ch, OBJ_DATA *obj)
 	|| (IS_TRUSTED(ch,ANGEL)   && obj->level <= 35 && obj->cost <= 25000)
 	|| (IS_TRUSTED(ch,AVATAR)	 && obj->level <= 25 && obj->cost <= 15000)
 	|| (IS_TRUSTED(ch,IMMORTAL) && obj->level <= 15 && obj->cost <= 5000) )
-	return TRUE;
+	return true;
     else
-	return FALSE;
+	return false;
 }
 
 /* for clone, to insure that cloning goes many levels deep */
@@ -3028,10 +3028,10 @@ void do_purge( CHAR_DATA *ch, char *argument )
 	    &&   victim != ch /* safety precaution */ )
 	    {
                 victim->position = POS_STANDING;
-		extract_char( victim, TRUE );
+		extract_char( victim, true );
             }
 	    if(!IS_NPC(victim) && victim->pcdata->mounted)
-	      victim->pcdata->mounted = FALSE;
+	      victim->pcdata->mounted = false;
 	}
 
 	for ( obj = ch->in_room->contents; obj != NULL; obj = obj_next )
@@ -3076,7 +3076,7 @@ void do_purge( CHAR_DATA *ch, char *argument )
 	if (victim->level > 3)
 	    save_char_obj( victim );
 	d = victim->desc;
-	extract_char( victim, TRUE );
+	extract_char( victim, true );
 	if ( d != NULL )
 	  close_socket( d );
 
@@ -3085,7 +3085,7 @@ void do_purge( CHAR_DATA *ch, char *argument )
 
     act( "$n purged $N.", ch, NULL, victim, TO_NOTVICT );
         victim->position = POS_STANDING;
-      extract_char( victim, TRUE );
+      extract_char( victim, true );
     return;
 }
 
@@ -3184,7 +3184,7 @@ void do_advance( CHAR_DATA *ch, char *argument )
     {
        send_to_char( "You raise a level!!  ", victim );
        victim->level += 1;
-       advance_level( victim, TRUE );
+       advance_level( victim, true );
 
     }
   victim->level = victim->level - 1;
@@ -3407,12 +3407,12 @@ void do_log( CHAR_DATA *ch, char *argument )
     {
 	if ( fLogAll )
 	{
-	    fLogAll = FALSE;
+	    fLogAll = false;
 	    send_to_char( "Log ALL off.\n\r", ch );
 	}
 	else
 	{
-	    fLogAll = TRUE;
+	    fLogAll = true;
 	    send_to_char( "Log ALL on.\n\r", ch );
 	}
 	return;
@@ -3554,7 +3554,7 @@ void do_peace( CHAR_DATA *ch, char *argument )
     for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
     {
 	if ( rch->fighting != NULL )
-	    stop_fighting( rch, TRUE );
+	    stop_fighting( rch, true );
 	if (IS_NPC(rch))
 	{
 	    remove_all_hates(rch);
@@ -5061,7 +5061,7 @@ void do_undeny(CHAR_DATA *ch, char *argument)
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
     DESCRIPTOR_DATA d;
-    bool char_exists = FALSE;
+    bool char_exists = false;
 
     one_argument( argument, arg );
     if ( arg[0] == '\0' )
@@ -5098,7 +5098,7 @@ void do_undeny(CHAR_DATA *ch, char *argument)
        if (!IS_SET(d.character->act, PLR_DENY))
        {
            send_to_char("That player isn't denied!\n\r",ch);
-           extract_char( d.character, TRUE );
+           extract_char( d.character, true );
      /*      close_socket(d.character);*/
            return;
        }
@@ -5109,7 +5109,7 @@ void do_undeny(CHAR_DATA *ch, char *argument)
            log_string(buf);
            wizinfo(buf,DEMI);
            save_char_obj(d.character);
-           extract_char( d.character, TRUE );
+           extract_char( d.character, true );
         /*   close_socket(d.character);*/
            return;
        }
@@ -5723,7 +5723,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     char mode[MAX_INPUT_LENGTH];
     char list_buf[MAX_STRING_LENGTH];
     char invalid[MAX_INPUT_LENGTH];
-    bool immediate = FALSE;
+    bool immediate = false;
 
     list_buf[0] = '\0';
 
@@ -5751,7 +5751,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( mode, "now" ) )
     {
-        immediate = TRUE;
+        immediate = true;
     }
     else if ( mode[0] != '\0' )
     {
@@ -5788,13 +5788,13 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
 
     if ( immediate )
     {
-        victim->pcdata->psionic_grant_pending = FALSE;
-        grant_psionics( victim, 100, TRUE );
+        victim->pcdata->psionic_grant_pending = false;
+        grant_psionics( victim, 100, true );
         send_to_char( "Psionics granted immediately.\n\r", ch );
         return;
     }
 
-    victim->pcdata->psionic_grant_pending = TRUE;
+    victim->pcdata->psionic_grant_pending = true;
     victim->pcdata->psionic = 0;
     victim->pcdata->last_level = 0;
     send_to_char( "Grant flag applied. They will receive psionics on their next level check.\n\r", ch );
@@ -6242,7 +6242,7 @@ void do_itrans( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *location;
     DESCRIPTOR_DATA *d;
     CHAR_DATA *victim;
-    bool trans_pet = FALSE;
+    bool trans_pet = false;
 
     argument = one_argument( argument, arg1 );
 
@@ -6317,14 +6317,14 @@ void do_itrans( CHAR_DATA *ch, char *argument )
     }
 
     if ( victim->fighting != NULL )
-	stop_fighting( victim, TRUE );
+	stop_fighting( victim, true );
 
     if (victim->pet != NULL && (!IS_NPC(victim) && victim->pcdata->mounted) )
-	trans_pet = TRUE;
+	trans_pet = true;
     else if(victim->ridden && victim->master != NULL && !IS_NPC(victim->master) )
     {
-      victim->master->pcdata->mounted = FALSE;
-      victim->ridden = FALSE;
+      victim->master->pcdata->mounted = false;
+      victim->ridden = false;
     }
 
     char_from_room( victim );
