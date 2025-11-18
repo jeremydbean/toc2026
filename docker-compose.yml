@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  mud-server:
+    build:
+      context: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./area:/mud/area
+      - ./gods:/mud/gods
+      - ./player:/mud/player
+      - ./log:/mud/log
+
+  web-bridge:
+    image: python:3.11-slim
+    working_dir: /app
+    command: ["python", "websocket_bridge.py"]
+    volumes:
+      - ./:/app
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mud-server
