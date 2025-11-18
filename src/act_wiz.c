@@ -566,7 +566,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         char_from_room( victim );
         char_to_room( victim, jail );
         victim->pcdata->jw_timer = current_time + (atoi(arg2)*24*60*60);
-        sprintf( buf,"%s has been jailed for breaking the rules!",victim->name);
+        snprintf( buf, sizeof(buf), "%s has been jailed for breaking the rules!", victim->name );
         send_info(buf);
         return;
 
@@ -1036,11 +1036,11 @@ void do_transfer( CHAR_DATA *ch, char *argument )
             &&   d->character->in_room != NULL
             &&   can_see( ch, d->character ) )
             {
-                sprintf( buf, "%s %s", d->character->name, arg2 );
+                snprintf( buf, sizeof(buf), "%s %s", d->character->name, arg2 );
                 do_transfer( ch, buf );
             }
         }
-	return;
+        return;
     }
 
     /*
@@ -1253,8 +1253,8 @@ void do_gather( CHAR_DATA *ch, char *argument )
 
 	if ( obj->carried_by != NULL )
 	{
-	  sprintf(message,"$p has been gathered by the Gods.");
-	  act( message, obj->carried_by, obj, NULL, TO_CHAR );
+          snprintf(message, sizeof(message), "$p has been gathered by the Gods.");
+          act( message, obj->carried_by, obj, NULL, TO_CHAR );
 
 	  obj_from_char( obj );
 	  obj_to_char(obj, ch);
@@ -1263,17 +1263,17 @@ void do_gather( CHAR_DATA *ch, char *argument )
 	{
 	   if(obj->in_obj->carried_by != NULL)
 	   {
-	     sprintf(message,"$p has been gathered by the Gods.");
-	     act( message, obj->in_obj->carried_by, obj, NULL, TO_CHAR );
+             snprintf(message, sizeof(message), "$p has been gathered by the Gods.");
+             act( message, obj->in_obj->carried_by, obj, NULL, TO_CHAR );
 	   }
 	  obj_from_obj( obj);
 	  obj_to_char( obj, ch );
 	}
 	else if( obj->in_room != NULL)
 	{
-	  sprintf(message,"%s has been gathered by the Gods.\n\r",
-	  obj->short_descr ? obj->short_descr : obj->name);
-	  send_to_room(message,obj->in_room->vnum);
+          snprintf(message, sizeof(message), "%s has been gathered by the Gods.\n\r",
+          obj->short_descr ? obj->short_descr : obj->name);
+          send_to_room(message,obj->in_room->vnum);
 
 	  obj_from_room( obj );
 	  obj_to_char( obj, ch );
@@ -1287,8 +1287,8 @@ void do_gather( CHAR_DATA *ch, char *argument )
     {
        if(is_number( arg) )
        {
-	 sprintf(message,"All objects with vnum %d have been gathered.",search->vnum);
-	 act(message,ch, NULL, NULL, TO_CHAR);
+         snprintf(message, sizeof(message), "All objects with vnum %d have been gathered.", search->vnum);
+         act(message,ch, NULL, NULL, TO_CHAR);
        }
        else
 	 act("All $T's have been gathered.",ch, NULL, arg, TO_CHAR);
@@ -1485,18 +1485,18 @@ void do_rstat( CHAR_DATA *ch, char *argument )
     one_argument(location->area->name,arg);
     one_argument(location->area->name,arg);
 
-    sprintf( buf, "Name: '%s.'\n\rArea: '%s'  Number: %d.   Disaster: %d\n\r",
-	location->name,
-	one_argument(location->area->name,arg),
-	location->number,
-	location->area->disaster_type );
+    snprintf( buf, sizeof(buf), "Name: '%s.'\n\rArea: '%s'  Number: %d.   Disaster: %d\n\r",
+        location->name,
+        one_argument(location->area->name,arg),
+        location->number,
+        location->area->disaster_type );
     send_to_char( buf, ch );
 
-    sprintf( buf,
-	"Vnum: %d.  Sector: %d.  Light: %d.\n\r",
-	location->vnum,
-	location->sector_type,
-	location->light);
+    snprintf( buf, sizeof(buf),
+        "Vnum: %d.  Sector: %d.  Light: %d.\n\r",
+        location->vnum,
+        location->sector_type,
+        location->light);
     send_to_char( buf, ch );
 
     if(location->affected != NULL )
@@ -1507,11 +1507,11 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 	location->affected->timer ? location->affected->timer : 666);
 	send_to_char( buf, ch );
     }
-    sprintf( buf,
-	"Room flags: %d.   Room flags 2: %s.\n\rDescription:\n\r%s",
-	location->room_flags,
-	room_flag2_name(location->room_flags2),
-	location->description );
+    snprintf( buf, sizeof(buf),
+        "Room flags: %d.   Room flags 2: %s.\n\rDescription:\n\r%s",
+        location->room_flags,
+        room_flag2_name(location->room_flags2),
+        location->description );
     send_to_char( buf, ch );
 
     if ( location->extra_descr != NULL )
@@ -1554,18 +1554,18 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 
 	if ( ( pexit = location->exit[door] ) != NULL )
 	{
-	    sprintf( buf,
-		"Door: %d.  To: %d.  Key: %d.  Exit flags: %d.\n\rTrap: %d.  Keyword: '%s'.  Description: %s",
+            snprintf( buf, sizeof(buf),
+                "Door: %d.  To: %d.  Key: %d.  Exit flags: %d.\n\rTrap: %d.  Keyword: '%s'.  Description: %s",
 
-		door,
-		(pexit->u1.to_room == NULL ? -1 : pexit->u1.to_room->vnum),
-		pexit->key,
-		pexit->exit_info,
-		pexit->trap,
-		pexit->keyword,
-		pexit->description[0] != '\0'
-		    ? pexit->description : "(none).\n\r");
-		send_to_char( buf, ch );
+                door,
+                (pexit->u1.to_room == NULL ? -1 : pexit->u1.to_room->vnum),
+                pexit->key,
+                pexit->exit_info,
+                pexit->trap,
+                pexit->keyword,
+                pexit->description[0] != '\0'
+                    ? pexit->description : "(none).\n\r");
+                send_to_char( buf, ch );
 	}
     }
 
@@ -1625,47 +1625,47 @@ void do_ostat( CHAR_DATA *ch, char *argument )
       }
 
 
-    sprintf( buf, "Name(s): %s\n\r",
-	obj->name );
+    snprintf( buf, sizeof(buf), "Name(s): %s\n\r",
+        obj->name );
     send_to_char( buf, ch );
 
-    sprintf( buf, "Vnum: %d  Format: %s  Type: %s  Resets: %d\n\r",
-	obj->pIndexData->vnum, obj->pIndexData->new_format ? "new" : "old",
-	item_type_name(obj), obj->pIndexData->reset_num );
+    snprintf( buf, sizeof(buf), "Vnum: %d  Format: %s  Type: %s  Resets: %d\n\r",
+        obj->pIndexData->vnum, obj->pIndexData->new_format ? "new" : "old",
+        item_type_name(obj), obj->pIndexData->reset_num );
     send_to_char( buf, ch );
 
-    sprintf( buf, "Short description: %s\n\rLong description: %s\n\r",
-	obj->short_descr, obj->description );
+    snprintf( buf, sizeof(buf), "Short description: %s\n\rLong description: %s\n\r",
+        obj->short_descr, obj->description );
     send_to_char( buf, ch );
 
-    sprintf( buf, "Wear bits: %s\n\rExtra bits: %s\n\rExtra bits 2: %s\n\r",
-	wear_bit_name(obj->wear_flags), extra_bit_name( obj->extra_flags ),
-	extra2_bit_name(obj->extra_flags2) );
+    snprintf( buf, sizeof(buf), "Wear bits: %s\n\rExtra bits: %s\n\rExtra bits 2: %s\n\r",
+        wear_bit_name(obj->wear_flags), extra_bit_name( obj->extra_flags ),
+        extra2_bit_name(obj->extra_flags2) );
     send_to_char( buf, ch );
 
-    sprintf( buf, "Number: %d/%d  Weight: %d/%d  Material: %s\n\r",
-	1,           get_obj_number( obj ),
-	obj->weight, get_obj_weight( obj ),
-	material_name(obj->material) );
+    snprintf( buf, sizeof(buf), "Number: %d/%d  Weight: %d/%d  Material: %s\n\r",
+        1,           get_obj_number( obj ),
+        obj->weight, get_obj_weight( obj ),
+        material_name(obj->material) );
     send_to_char( buf, ch );
 
-    sprintf( buf, "Level: %d  Cost: %d  Condition: %d  Timer: %d\n\r",
-	obj->level, obj->cost, obj->condition, obj->timer );
+    snprintf( buf, sizeof(buf), "Level: %d  Cost: %d  Condition: %d  Timer: %d\n\r",
+        obj->level, obj->cost, obj->condition, obj->timer );
     send_to_char( buf, ch );
 
-    sprintf( buf,
-	"In room: %d  In object: %s  Carried by: %s  Wear_loc: %d\n\r",
-	obj->in_room    == NULL    ?        0 : obj->in_room->vnum,
-	obj->in_obj     == NULL    ? "(none)" : obj->in_obj->short_descr,
-	obj->carried_by == NULL    ? "(none)" :
-	    can_see(ch,obj->carried_by) ? obj->carried_by->name
-					: "someone",
-	obj->wear_loc );
+    snprintf( buf, sizeof(buf),
+        "In room: %d  In object: %s  Carried by: %s  Wear_loc: %d\n\r",
+        obj->in_room    == NULL    ?        0 : obj->in_room->vnum,
+        obj->in_obj     == NULL    ? "(none)" : obj->in_obj->short_descr,
+        obj->carried_by == NULL    ? "(none)" :
+            can_see(ch,obj->carried_by) ? obj->carried_by->name
+                                        : "someone",
+        obj->wear_loc );
     send_to_char( buf, ch );
 
-    sprintf( buf, "Values: %d %d %d %d %d\n\r",
-	obj->value[0], obj->value[1], obj->value[2], obj->value[3],
-	obj->value[4] );
+    snprintf( buf, sizeof(buf), "Values: %d %d %d %d %d\n\r",
+        obj->value[0], obj->value[1], obj->value[2], obj->value[3],
+        obj->value[4] );
     send_to_char( buf, ch );
 
     /* now give out vital statistics as per identify */
@@ -1702,11 +1702,11 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 		send_to_char( ".\n\r", ch );
 	break;
 
-	case ITEM_WAND:
-	case ITEM_STAFF:
-	    sprintf( buf, "Has %d(%d) charges of level %d",
-		obj->value[1], obj->value[2], obj->value[0] );
-	    send_to_char( buf, ch );
+        case ITEM_WAND:
+        case ITEM_STAFF:
+            snprintf( buf, sizeof(buf), "Has %d(%d) charges of level %d",
+                obj->value[1], obj->value[2], obj->value[0] );
+            send_to_char( buf, ch );
 
 	    if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
 	    {
@@ -1738,11 +1738,11 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 		snprintf(buf, sizeof(buf),"Damage is %dd%d (average %d)\n\r",
 		    obj->value[1],obj->value[2],
 		    (1 + obj->value[2]) * obj->value[1] / 2);
-	    else
-		sprintf( buf, "Damage is %d to %d (average %d)\n\r",
-		    obj->value[1], obj->value[2],
-		    ( obj->value[1] + obj->value[2] ) / 2 );
-	    send_to_char( buf, ch );
+            else
+                snprintf( buf, sizeof(buf), "Damage is %d to %d (average %d)\n\r",
+                    obj->value[1], obj->value[2],
+                    ( obj->value[1] + obj->value[2] ) / 2 );
+            send_to_char( buf, ch );
 
 	    if (obj->value[4])  /* weapon flags */
 	    {
@@ -1751,12 +1751,12 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 	    }
 	break;
 
-	case ITEM_ARMOR:
-	    sprintf( buf,
-		"Armor class is %d pierce, %d bash, %d slash, and %d vs. magic\n\r",
-		obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
-	    send_to_char( buf, ch );
-	break;
+        case ITEM_ARMOR:
+            snprintf( buf, sizeof(buf),
+                "Armor class is %d pierce, %d bash, %d slash, and %d vs. magic\n\r",
+                obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
+            send_to_char( buf, ch );
+        break;
 	case ITEM_SOUL_CONTAINER:
 	   if(obj->trapped != NULL )
 	   {
@@ -1796,18 +1796,18 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 
     for ( paf = obj->affected; paf != NULL; paf = paf->next )
     {
-	sprintf( buf, "Affects %s by %d, level %d.\n\r",
-	    affect_loc_name( paf->location ), paf->modifier,paf->level );
-	send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "Affects %s by %d, level %d.\n\r",
+            affect_loc_name( paf->location ), paf->modifier,paf->level );
+        send_to_char( buf, ch );
     }
 /* BB
     if (!obj->enchanted)
 */
     for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
     {
-	sprintf( buf, "Affects %s by %d, level %d.\n\r",
-	    affect_loc_name( paf->location ), paf->modifier,paf->level );
-	send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "Affects %s by %d, level %d.\n\r",
+            affect_loc_name( paf->location ), paf->modifier,paf->level );
+        send_to_char( buf, ch );
     }
 
     if (loaded_object) {
@@ -2478,7 +2478,7 @@ void do_reboot( CHAR_DATA *ch, char *argument )
 
     if (!IS_NPC(ch) && !IS_SET(ch->act,PLR_WIZINVIS))
     {
-	sprintf( buf, "Reboot by %s.", ch->name );
+   snprintf( buf, sizeof(buf), "Reboot by %s.", ch->name );
 	do_echo( ch, buf );
     }
 /*    do_force ( ch, "all save");*/
@@ -2504,7 +2504,7 @@ void do_shutdown( CHAR_DATA *ch, char *argument )
 
     if (!IS_SET(ch->act,PLR_WIZINVIS))
     {
-	sprintf( buf, "Shutdown by %s.", ch->name );
+   snprintf( buf, sizeof(buf), "Shutdown by %s.", ch->name );
 	append_file( ch, SHUTDOWN_FILE, buf );
     }
     strcat( buf, "\n\r" );
