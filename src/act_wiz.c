@@ -218,7 +218,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
    }
 
 
-   sprintf( arg, "%s%s", PLAYER_DIR, capitalize( arg ) );
+   snprintf( arg, sizeof(arg), "%s%s", PLAYER_DIR, capitalize( arg ) );
 
    if (( fp = fopen( arg, "r" ) ) == NULL )
    {
@@ -233,7 +233,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
      fgets(arg,80,fp);
      fscanf(fp,"%s",arg);
      logon=fread_number(fp);
-     sprintf(arg,"%s was last on at %s\n\r", capitalize( argument ),(char *)
+     snprintf(arg, sizeof(arg), "%s was last on at %s\n\r", capitalize( argument ),
 ctime(&logon ) );
      send_to_char(arg,ch);
      return;
@@ -1675,8 +1675,8 @@ void do_ostat( CHAR_DATA *ch, char *argument )
 	case ITEM_SCROLL:
 	case ITEM_POTION:
 	case ITEM_PILL:
-	    sprintf( buf, "Level %d spells of:", obj->value[0] );
-	    send_to_char( buf, ch );
+            snprintf( buf, sizeof(buf), "Level %d spells of:", obj->value[0] );
+            send_to_char( buf, ch );
 
 	    if ( obj->value[1] >= 0 && obj->value[1] < MAX_SKILL )
 	    {
@@ -1840,29 +1840,29 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    sprintf( buf, "Name: %-20s",
-	victim->name );
+    snprintf( buf, sizeof(buf), "Name: %-20s",
+        victim->name );
     send_to_char( buf, ch );
 
     if(!IS_NPC(victim)) {
-        sprintf( buf," Pkill: %s",victim->pcdata->pk_state == 1 ?
-		"Yes" : "No");
-	send_to_char(buf,ch);
+        snprintf( buf, sizeof(buf)," Pkill: %s",victim->pcdata->pk_state == 1 ?
+                "Yes" : "No");
+        send_to_char(buf,ch);
     } else {
-	send_to_char("\n\r",ch);
+        send_to_char("\n\r",ch);
     }
     if(!IS_NPC(victim)) {
-        sprintf( buf,"        Psionic: %s\n\r",victim->pcdata->psionic == 1 ?
+        snprintf( buf, sizeof(buf),"        Psionic: %s\n\r",victim->pcdata->psionic == 1 ?
     "Yes" : "No");
   send_to_char(buf,ch);
     } else {
   send_to_char("\n\r",ch);
     }
 
-    sprintf( buf, "Vnum: %d  Format: %s  Race: %s  Sex: %s  Room: %d\n\r",
-	IS_NPC(victim) ? victim->pIndexData->vnum : 0,
-	IS_NPC(victim) ? victim->pIndexData->new_format ? "new" : "old" : "pc",
-	race_table[victim->race].name,
+    snprintf( buf, sizeof(buf), "Vnum: %d  Format: %s  Race: %s  Sex: %s  Room: %d\n\r",
+        IS_NPC(victim) ? victim->pIndexData->vnum : 0,
+        IS_NPC(victim) ? victim->pIndexData->new_format ? "new" : "old" : "pc",
+        race_table[victim->race].name,
 	victim->sex == SEX_MALE    ? "male"   :
 	victim->sex == SEX_FEMALE  ? "female" : "sex-less",
 	victim->in_room == NULL    ?        0 : victim->in_room->vnum
@@ -1876,37 +1876,37 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 	send_to_char(buf,ch);
     }
 
-    sprintf( buf,
-	"Str: %d(%d)  Int: %d(%d)  Wis: %d(%d)  Dex: %d(%d)  Con: %d(%d)\n\r",
-	victim->perm_stat[STAT_STR],
-	get_curr_stat(victim,STAT_STR),
-	victim->perm_stat[STAT_INT],
+    snprintf( buf, sizeof(buf),
+        "Str: %d(%d)  Int: %d(%d)  Wis: %d(%d)  Dex: %d(%d)  Con: %d(%d)\n\r",
+        victim->perm_stat[STAT_STR],
+        get_curr_stat(victim,STAT_STR),
+        victim->perm_stat[STAT_INT],
 	get_curr_stat(victim,STAT_INT),
 	victim->perm_stat[STAT_WIS],
 	get_curr_stat(victim,STAT_WIS),
 	victim->perm_stat[STAT_DEX],
 	get_curr_stat(victim,STAT_DEX),
-	victim->perm_stat[STAT_CON],
-	get_curr_stat(victim,STAT_CON) );
+        victim->perm_stat[STAT_CON],
+        get_curr_stat(victim,STAT_CON) );
     send_to_char( buf, ch );
 
-    sprintf( buf, "Hp: %d/%d  Mana: %d/%d  End: %d/%d  Practices: %d\n\r",
-	victim->hit,         victim->max_hit,
-	victim->mana,        victim->max_mana,
-	victim->move,        victim->max_move,
-	IS_NPC(ch) ? 0 : victim->practice );
+    snprintf( buf, sizeof(buf), "Hp: %d/%d  Mana: %d/%d  End: %d/%d  Practices: %d\n\r",
+        victim->hit,         victim->max_hit,
+        victim->mana,        victim->max_mana,
+        victim->move,        victim->max_move,
+        IS_NPC(ch) ? 0 : victim->practice );
     send_to_char( buf, ch );
 
-    sprintf( buf,
-	"Lv: %d  Class: %s  Guild: %s  Castle: %s\n\rAlign: %d  Exp: %ld  Trains: %d\n\r",
-	victim->level,
-	IS_NPC(victim) ? "mobile" : class_table[victim->class].name,
-	IS_NPC(victim) ? "none" : get_guildname(victim->pcdata->guild),
-	IS_NPC(victim) ? "none" : get_castlename(victim->pcdata->castle),
-	victim->alignment, victim->exp, victim->train );
+    snprintf( buf, sizeof(buf),
+        "Lv: %d  Class: %s  Guild: %s  Castle: %s\n\rAlign: %d  Exp: %ld  Trains: %d\n\r",
+        victim->level,
+        IS_NPC(victim) ? "mobile" : class_table[victim->class].name,
+        IS_NPC(victim) ? "none" : get_guildname(victim->pcdata->guild),
+        IS_NPC(victim) ? "none" : get_castlename(victim->pcdata->castle),
+        victim->alignment, victim->exp, victim->train );
     send_to_char( buf, ch );
 
-    sprintf( buf,
+    snprintf( buf, sizeof(buf),
         "Money: %ld Platinum, %ld Gold, %ld Silver, %ld Copper\n\r",
         victim->new_platinum, victim->new_gold, victim->new_silver, victim->new_copper);
     send_to_char(buf,ch);
@@ -1916,9 +1916,9 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 	    GET_AC(victim,AC_SLASH),  GET_AC(victim,AC_EXOTIC));
     send_to_char(buf,ch);
 
-    sprintf( buf, "Hit: %d  Dam: %d  Saves: %d  Position: %d  Wimpy: %d\n\r",
-	GET_HITROLL(victim), GET_DAMROLL(victim), victim->saving_throw,
-	victim->position,    victim->wimpy );
+    snprintf( buf, sizeof(buf), "Hit: %d  Dam: %d  Saves: %d  Position: %d  Wimpy: %d\n\r",
+        GET_HITROLL(victim), GET_DAMROLL(victim), victim->saving_throw,
+        victim->position,    victim->wimpy );
     send_to_char( buf, ch );
 
     if (IS_NPC(victim) && victim->pIndexData->new_format)
@@ -1928,20 +1928,20 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 	    attack_table[victim->dam_type].name);
 	send_to_char(buf,ch);
     }
-    sprintf( buf, "Fighting: %s     Timer: %d    Hates: %s\n\r",
-	victim->fighting ? victim->fighting->name : "(none)",victim->timer,
-	victim->hates ? "yes" : "no");
+    snprintf( buf, sizeof(buf), "Fighting: %s     Timer: %d    Hates: %s\n\r",
+        victim->fighting ? victim->fighting->name : "(none)",victim->timer,
+        victim->hates ? "yes" : "no");
     send_to_char( buf, ch );
 
     if ( !IS_NPC(victim) )
     {
-	sprintf( buf,
-	    "Thirst: %d  Full: %d  Drunk: %d  Psi: %d  ",
-	    victim->pcdata->condition[COND_THIRST],
-	    victim->pcdata->condition[COND_FULL],
-	    victim->pcdata->condition[COND_DRUNK],
-	    victim->pcdata->psionic );
-	send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf),
+            "Thirst: %d  Full: %d  Drunk: %d  Psi: %d  ",
+            victim->pcdata->condition[COND_THIRST],
+            victim->pcdata->condition[COND_FULL],
+            victim->pcdata->condition[COND_DRUNK],
+            victim->pcdata->psionic );
+        send_to_char( buf, ch );
 	if(ch->trust == 70)
 	{
 	  if(victim->trust > 0 )
@@ -1954,18 +1954,18 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 	}
     }
 
-    sprintf( buf, "Carry number: %d  Carry weight: %d\n\r",
-	victim->carry_number, query_carry_weight(victim) );
+    snprintf( buf, sizeof(buf), "Carry number: %d  Carry weight: %d\n\r",
+        victim->carry_number, query_carry_weight(victim) );
     send_to_char( buf, ch );
 
 
     if (!IS_NPC(victim))
     {
-	sprintf( buf,
-	    "Age: %d  Played: %d  Psi Checks: %d/3  Quest Points: %d\n\r",
-	    get_age(victim),
-	    (int) (victim->played + current_time - victim->logon) / 3600,
-	    victim->pcdata->last_level, victim->questpoints);
+        snprintf( buf, sizeof(buf),
+            "Age: %d  Played: %d  Psi Checks: %d/3  Quest Points: %d\n\r",
+            get_age(victim),
+            (int) (victim->played + current_time - victim->logon) / 3600,
+            victim->pcdata->last_level, victim->questpoints);
 	send_to_char( buf, ch );
     }
 
@@ -2047,15 +2047,15 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 	    affect2_bit_name(victim->affected_by2));
 	send_to_char(buf,ch);
     }
-    sprintf( buf, "Master: %s  Leader: %s  Pet: %s\n\r",
-	victim->master      ? victim->master->name   : "(none)",
-	victim->leader      ? victim->leader->name   : "(none)",
-	victim->pet         ? victim->pet->name      : "(none)");
+    snprintf( buf, sizeof(buf), "Master: %s  Leader: %s  Pet: %s\n\r",
+        victim->master      ? victim->master->name   : "(none)",
+        victim->leader      ? victim->leader->name   : "(none)",
+        victim->pet         ? victim->pet->name      : "(none)");
     send_to_char( buf, ch );
 
-    sprintf( buf, "Short description: %s\n\rLong  description: %s",
-	victim->short_descr,
-	victim->long_descr[0] != '\0' ? victim->long_descr : "(none)\n\r" );
+    snprintf( buf, sizeof(buf), "Short description: %s\n\rLong  description: %s",
+        victim->short_descr,
+        victim->long_descr[0] != '\0' ? victim->long_descr : "(none)\n\r" );
     send_to_char( buf, ch );
 
     if ( IS_NPC(victim) && victim->hunting != NULL )
@@ -2076,10 +2076,10 @@ void do_mstat( CHAR_DATA *ch, char *argument )
 
     for ( paf = victim->affected; paf != NULL; paf = paf->next )
     {
-	sprintf( buf,"Spell: '%s' modifies %s by %d for %d hours with bits",
-	    skill_table[(int) paf->type].name,
-	    affect_loc_name( paf->location ),
-	    paf->modifier,
+        snprintf( buf, sizeof(buf),"Spell: '%s' modifies %s by %d for %d hours with bits",
+            skill_table[(int) paf->type].name,
+            affect_loc_name( paf->location ),
+            paf->modifier,
 	    paf->duration);
 	send_to_char(buf,ch);
 
@@ -2507,7 +2507,7 @@ void do_shutdown( CHAR_DATA *ch, char *argument )
    snprintf( buf, sizeof(buf), "Shutdown by %s.", ch->name );
 	append_file( ch, SHUTDOWN_FILE, buf );
     }
-    strcat( buf, "\n\r" );
+    strlcat( buf, "\n\r", sizeof(buf) );
     do_echo( ch, buf );
 /*    do_force ( ch, "all save");*/
     do_forcesave(ch,"");
@@ -3718,9 +3718,9 @@ void do_slookup( CHAR_DATA *ch, char *argument )
 	{
 	    if ( skill_table[sn].name == NULL )
 		break;
-	    sprintf( buf, "Sn: %3d  Slot: %3d  Skill/spell: '%s'\n\r",
-		sn, skill_table[sn].slot, skill_table[sn].name );
-	    send_to_char( buf, ch );
+            snprintf( buf, sizeof(buf), "Sn: %3d  Slot: %3d  Skill/spell: '%s'\n\r",
+                sn, skill_table[sn].slot, skill_table[sn].name );
+            send_to_char( buf, ch );
 	}
     }
     else
@@ -3731,9 +3731,9 @@ void do_slookup( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	sprintf( buf, "Sn: %3d  Slot: %3d  Skill/spell: '%s'\n\r",
-	    sn, skill_table[sn].slot, skill_table[sn].name );
-	send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "Sn: %3d  Slot: %3d  Skill/spell: '%s'\n\r",
+            sn, skill_table[sn].slot, skill_table[sn].name );
+        send_to_char( buf, ch );
     }
 
     return;
@@ -3882,7 +3882,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
-    strcpy( arg3, argument );
+    strlcpy( arg3, argument, sizeof(arg3) );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
     {
@@ -4571,7 +4571,7 @@ void do_string( CHAR_DATA *ch, char *argument )
     argument = one_argument( argument, type );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
-    strcpy( arg3, argument );
+    strlcpy( arg3, argument, sizeof(arg3) );
 
     if ( type[0] == '\0' || arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
     {
@@ -4786,7 +4786,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
-    strcpy( arg3, argument );
+    strlcpy( arg3, argument, sizeof(arg3) );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
     {
@@ -4954,7 +4954,7 @@ void do_rset( CHAR_DATA *ch, char *argument )
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
-    strcpy( arg3, argument );
+    strlcpy( arg3, argument, sizeof(arg3) );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
     {
@@ -5264,7 +5264,7 @@ void do_force( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    sprintf( buf, "$n forces you to '%s'.", argument );
+    snprintf( buf, sizeof(buf), "$n forces you to '%s'.", argument );
 
     if ( !str_cmp( arg, "all" ) )
     {
@@ -5533,10 +5533,10 @@ void do_restorechar( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    strcpy (name, capitalize(name));
-    strcpy (date, capitalize(date));
-    sprintf(filename, "%s%s.tar.gz", BACKUP_DIR, date);
-    sprintf(playerfile, "%s%s", PLAYER_DIR, name);
+    strlcpy (name, capitalize(name), sizeof(name));
+    strlcpy (date, capitalize(date), sizeof(date));
+    snprintf(filename, sizeof(filename), "%s%s.tar.gz", BACKUP_DIR, date);
+    snprintf(playerfile, sizeof(playerfile), "%s%s", PLAYER_DIR, name);
     snprintf(buf, sizeof(buf), "Restoring %s from %s\n\r", name, date);
     send_to_char(buf, ch);
 
@@ -5713,14 +5713,14 @@ void do_pstat( CHAR_DATA *ch, char *argument )
 	&& victim != ch
 	&& can_see(ch,victim) )
 	{
-	  sprintf( buf, "%-12s  [%2d]  %4d(%4d)/%4d(%4d)/%4d(%4d)  %2d/%2d    %5d   %1d    %1d\n\r",
-	  victim->name,  victim->level,  victim->hit,  victim->max_hit,
+          snprintf( buf, sizeof(buf), "%-12s  [%2d]  %4d(%4d)/%4d(%4d)/%4d(%4d)  %2d/%2d    %5d   %1d    %1d\n\r",
+          victim->name,  victim->level,  victim->hit,  victim->max_hit,
           victim->mana, victim->max_mana,  victim->move, victim->max_move,
           GET_HITROLL(victim), GET_DAMROLL(victim), victim->alignment,
-	   victim->were_shape.were_type ? victim->were_shape.were_type : 0,
-	   victim->pcdata->psionic);
-	  send_to_char( buf, ch );
-	}
+           victim->were_shape.were_type ? victim->were_shape.were_type : 0,
+           victim->pcdata->psionic);
+          send_to_char( buf, ch );
+        }
 
      }
 
@@ -5769,23 +5769,23 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     {
         if ( list_buf[0] != '\0' )
         {
-            strcat( list_buf, " " );
+            strlcat( list_buf, " ", sizeof(list_buf) );
         }
-        strcat( list_buf, mode );
+        strlcat( list_buf, mode, sizeof(list_buf) );
     }
 
     if ( !immediate && argument[0] != '\0' )
     {
         if ( list_buf[0] != '\0' )
         {
-            strcat( list_buf, " " );
+            strlcat( list_buf, " ", sizeof(list_buf) );
         }
-        strcat( list_buf, argument );
+        strlcat( list_buf, argument, sizeof(list_buf) );
     }
 
     if ( immediate )
     {
-        strcpy( list_buf, argument );
+        strlcpy( list_buf, argument, sizeof(list_buf) );
     }
 
     if ( !normalize_psionic_arguments( list_buf, list_buf, sizeof(list_buf), invalid ) )
@@ -5921,18 +5921,18 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
     fclose( fpReserve );
 
 #if !defined( macintosh ) && !defined( MSDOS )
-    sprintf( strsave, "%s%s.cps", CORPSE_DIR, victim->name );
+    snprintf( strsave, sizeof(strsave), "%s%s.cps", CORPSE_DIR, victim->name );
 #else
-    sprintf( strsave, "%s%s.cps", PLAYER_DIR, ( victim->name ) );
+    snprintf( strsave, sizeof(strsave), "%s%s.cps", PLAYER_DIR, ( victim->name ) );
 #endif
 
     log_string( strsave );
 
     if( !( fp = fopen( strsave, "r" ) ) )
     {
-	sprintf( buf, "New Corpse: fopen %s", victim->name );
-	bug( buf, 0 );
-	perror( strsave );
+        snprintf( buf, sizeof(buf), "New Corpse: fopen %s", victim->name );
+        bug( buf, 0 );
+        perror( strsave );
     }
     else
     {
@@ -5956,8 +5956,8 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 
     if( arg2[0] == '\0' )
     {
-	sprintf( buf, "%s's corpses:\n\r", victim->name );
-	send_to_char( buf,ch );
+        snprintf( buf, sizeof(buf), "%s's corpses:\n\r", victim->name );
+        send_to_char( buf,ch );
 	send_to_char( "Corpse #  Contents   Flag\n\r",ch);
 	send_to_char( "--------------------------\n\r",ch);
 
@@ -5966,7 +5966,7 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 	    if( corpse_cont[i][0] == 99 )
 		break;
 
-	    sprintf( buf, "  %d		%3d   ", i+1, corpse_cont[i][0] );
+	    snprintf( buf, sizeof(buf), "  %d		%3d   ", i+1, corpse_cont[i][0] );
 	    send_to_char( buf,ch );
 	    checksum1 = 0;
 	    checksum2 = 0;
@@ -6005,13 +6005,13 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 	corpse =	create_object( get_obj_index( OBJ_VNUM_CORPSE_PC ), -1 );
 	corpse->timer = -1;
 
-	sprintf( buf, corpse->short_descr, victim->name );
-	free_string( corpse->short_descr );
-	corpse->short_descr = str_dup( buf );
+        snprintf( buf, sizeof(buf), corpse->short_descr, victim->name );
+        free_string( corpse->short_descr );
+        corpse->short_descr = str_dup( buf );
 
-	sprintf( buf, corpse->description, victim->name );
-	free_string( corpse->description );
-	corpse->description = str_dup( buf );
+        snprintf( buf, sizeof(buf), corpse->description, victim->name );
+        free_string( corpse->description );
+        corpse->description = str_dup( buf );
 
 	for( c = 1; c < corpse_cont[number][0]+1 ; c++ )
 	{
@@ -6286,11 +6286,11 @@ void do_itrans( CHAR_DATA *ch, char *argument )
 	    &&   d->character->in_room != NULL
 	    &&   can_see( ch, d->character ) )
 	    {
-		char buf[MAX_STRING_LENGTH];
-		sprintf( buf, "%s %s", d->character->name, arg2 );
-		do_transfer( ch, buf );
-	    }
-	}
+                char buf[MAX_STRING_LENGTH];
+                snprintf( buf, sizeof(buf), "%s %s", d->character->name, arg2 );
+                do_transfer( ch, buf );
+            }
+        }
 	return;
     }
 
