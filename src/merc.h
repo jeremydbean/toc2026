@@ -15,11 +15,15 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #define args(list) list
 #define DECLARE_DO_FUN(fun) DO_FUN fun
 #define DECLARE_SPEC_FUN(fun) SPEC_FUN fun
 #define DECLARE_SPELL_FUN(fun) SPELL_FUN fun
+
+size_t strlcpy(char *dst, const char *src, size_t siz);
+size_t strlcat(char *dst, const char *src, size_t siz);
 
 
 

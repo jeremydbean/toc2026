@@ -2180,10 +2180,10 @@ void do_mfind( CHAR_DATA *ch, char *argument )
 	    if ( fAll || is_name( argument, pMobIndex->player_name ) )
 	    {
 		found = true;
-		sprintf( buf, "[%5d] %s\n\r",
+		snprintf( buf, sizeof(buf), "[%5d] %s\n\r",
 		    pMobIndex->vnum, pMobIndex->short_descr );
 /*		send_to_char( buf, ch );*/
-                strcat(buffer,buf);
+                strlcat(buffer, buf, sizeof(buffer));
 	    }
 	}
     }
@@ -2238,10 +2238,10 @@ void do_ofind( CHAR_DATA *ch, char *argument )
 	    if ( fAll || is_name( argument, pObjIndex->name ) )
 	    {
 		found = true;
-		sprintf( buf, "[%5d] %s\n\r",
+		snprintf( buf, sizeof(buf), "[%5d] %s\n\r",
 		    pObjIndex->vnum, pObjIndex->short_descr );
 /*		send_to_char( buf, ch );*/
-                strcat(buffer,buf);
+                strlcat(buffer, buf, sizeof(buffer));
 	    }
 	}
     }
@@ -3589,14 +3589,14 @@ void do_ban( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
-	strcpy( buf, "Banned sites:\n\r" );
-	for ( pban = ban_list; pban != NULL; pban = pban->next )
-	{
-	    strcat( buf, pban->name );
-	    strcat( buf, "\n\r" );
-	}
-	send_to_char( buf, ch );
-	return;
+        strlcpy( buf, "Banned sites:\n\r", sizeof(buf) );
+        for ( pban = ban_list; pban != NULL; pban = pban->next )
+        {
+            strlcat( buf, pban->name, sizeof(buf) );
+            strlcat( buf, "\n\r", sizeof(buf) );
+        }
+        send_to_char( buf, ch );
+        return;
     }
 
     for ( pban = ban_list; pban != NULL; pban = pban->next )
@@ -4045,14 +4045,14 @@ void do_mset( CHAR_DATA *ch, char *argument )
         class = class_lookup(arg3);
         if ( class == -1 )
         {
-            strcpy( buf, "Possible classes are: " );
+            strlcpy( buf, "Possible classes are: ", sizeof(buf) );
             for ( class = 0; class < MAX_CLASS; class++ )
             {
                 if ( class > 0 )
-                    strcat( buf, " " );
-                strcat( buf, class_table[class].name );
+                    strlcat( buf, " ", sizeof(buf) );
+                strlcat( buf, class_table[class].name, sizeof(buf) );
             }
-            strcat( buf, ".\n\r" );
+            strlcat( buf, ".\n\r", sizeof(buf) );
 
             send_to_char(buf,ch);
             return;
@@ -4087,8 +4087,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
         guild = guild_lookup(arg3);
         if ( guild == -1 || guild == GUILD_ANY )
         {
-            strcpy( buf, "Possible guilds are: mage, cleric, warrior, " );
-            strcat( buf, "thief, none.\n\r" );
+            strlcpy( buf, "Possible guilds are: mage, cleric, warrior, ", sizeof(buf) );
+            strlcat( buf, "thief, none.\n\r", sizeof(buf) );
 
             send_to_char(buf,ch);
             return;
@@ -4116,7 +4116,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         castle = castle_lookup(arg3);
         if ( castle == -1 )
         {
-            strcpy( buf, "Possible castles are: none, valhalla and rogue." );
+            strlcpy( buf, "Possible castles are: none, valhalla and rogue.", sizeof(buf) );
 
             send_to_char(buf,ch);
             return;
@@ -4629,15 +4629,15 @@ void do_string( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( !str_prefix( arg2, "long" ) )
-	{
-	    free_string( victim->long_descr );
-	    strcat(arg3,"\n\r");
-	    victim->long_descr = str_dup( arg3 );
-	    snprintf(buf, sizeof(buf),"Long Desc now: %s.\n\r",victim->long_descr);
-	    send_to_char(buf,ch);
-	    return;
-	}
+        if ( !str_prefix( arg2, "long" ) )
+        {
+            free_string( victim->long_descr );
+            strlcat(arg3,"\n\r", sizeof(arg3));
+            victim->long_descr = str_dup( arg3 );
+            snprintf(buf, sizeof(buf),"Long Desc now: %s.\n\r",victim->long_descr);
+            send_to_char(buf,ch);
+            return;
+        }
 
 	if ( !str_prefix( arg2, "title" ) )
 	{
@@ -4745,7 +4745,7 @@ void do_string( CHAR_DATA *ch, char *argument )
 		return;
 	    }
 
-	    strcat(argument,"\n\r");
+            strlcat(argument,"\n\r", sizeof(argument));
 
 	    if ( extra_descr_free == NULL )
 	    {
@@ -5152,18 +5152,21 @@ void do_sockets( CHAR_DATA *ch, char *argument )
 
                 for ( d = descriptor_list; d != NULL; d = d->next )
                 {
-                     sprintf(chhost,"%s",d->host);
+                     strlcpy(chhost, d->host, sizeof(chhost));
 
                    if (d->character == NULL)
                    {
                      if (!str_infix(arg2,chhost))
                      {
                       count++;
-                      sprintf( buf + strlen(buf), "[%3d %2d] (none)@%s\n\r",
-                      d->descriptor,
-                      d->connected,
-                      d->host
-                      );
+                      {
+                          size_t len = strlen(buf);
+                          snprintf( buf + len, sizeof(buf) - len, "[%3d %2d] (none)@%s\n\r",
+                              d->descriptor,
+                              d->connected,
+                              d->host
+                              );
+                      }
                      }
                    }
 
@@ -5172,13 +5175,16 @@ void do_sockets( CHAR_DATA *ch, char *argument )
                      if (!str_infix(arg2,chhost))
                      {
                      count++;
-                     sprintf( buf + strlen(buf), "[%3d %2d] %s@%s\n\r",
-                     d->descriptor,
-                     d->connected,
-                     d->original  ? d->original->name  :
-                     d->character ? d->character->name : "(none)",
-		     d->host
-                     );
+                     {
+                         size_t len = strlen(buf);
+                         snprintf( buf + len, sizeof(buf) - len, "[%3d %2d] %s@%s\n\r",
+                         d->descriptor,
+                         d->connected,
+                         d->original  ? d->original->name  :
+                         d->character ? d->character->name : "(none)",
+                         d->host
+                         );
+                     }
                      }
                    }
                 }
@@ -5191,25 +5197,31 @@ void do_sockets( CHAR_DATA *ch, char *argument )
         if (d->character == NULL)
         {
             count++;
-            sprintf( buf + strlen(buf), "[%3d %2d] (none)@%s\n\r",
-                d->descriptor,
-                d->connected,
-                d->host
-                );
+            {
+                size_t len = strlen(buf);
+                snprintf( buf + len, sizeof(buf) - len, "[%3d %2d] (none)@%s\n\r",
+                    d->descriptor,
+                    d->connected,
+                    d->host
+                    );
+            }
         }
 
 	if ( d->character != NULL && can_see( ch, d->character )
 	&& (arg[0] == '\0' || is_name(arg,d->character->name)
 			   || (d->original && is_name(arg,d->original->name))))
 	{
-	    count++;
-	    sprintf( buf + strlen(buf), "[%3d %2d] %s@%s\n\r",
-		d->descriptor,
-		d->connected,
-		d->original  ? d->original->name  :
-		d->character ? d->character->name : "(none)",
-		d->host
-		);
+            count++;
+            {
+                size_t len = strlen(buf);
+                snprintf( buf + len, sizeof(buf) - len, "[%3d %2d] %s@%s\n\r",
+                    d->descriptor,
+                    d->connected,
+                    d->original  ? d->original->name  :
+                    d->character ? d->character->name : "(none)",
+                    d->host
+                    );
+            }
 	}
     }
   }
@@ -5219,8 +5231,8 @@ void do_sockets( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    sprintf( buf2, "%d user%s\n\r", count, count == 1 ? "" : "s" );
-    strcat(buf,buf2);
+    snprintf( buf2, sizeof(buf2), "%d user%s\n\r", count, count == 1 ? "" : "s" );
+    strlcat(buf, buf2, sizeof(buf));
     page_to_char( buf, ch );
     return;
 }
