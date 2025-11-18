@@ -1,0 +1,5 @@
+# Prerequisites
+*.o
+merc
+*.ini
+*.driveupload

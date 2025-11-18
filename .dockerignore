@@ -1,0 +1,6 @@
+.git
+.gitignore
+*.o
+merc
+src/*.o
+ToCBG.png

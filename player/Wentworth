@@ -1,0 +1,556 @@
+#PLAYER
+Name Wentworth~
+Id   30708
+LogO 1544152462
+Vers 3
+Prom ~
+Ignoring ~
+Race hobbit~
+Sex  1
+Cla  3
+Gui  3
+Psionic  1
+Cast none
+Levl 52
+Plyd 81991
+ListRemorts ~
+NumRemorts 0
+Note 1542589633
+Scro 22
+Room 4210
+HMV  1427 1427 486 486 63 431
+NewGold 757
+NewPlat 2141
+NewCopp 2635
+NewSilv 1446
+Bank 0
+Dcount 0
+Corpses	0
+PkRec 0
+PkGiv 0
+Exp  130511
+Act  204
+AfBy 3678888
+AfBy2 4632
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 1
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  8
+Save  -13
+Alig  1000
+Hit   62
+Dam   113
+ACs -130 -123 -127 2
+Attr 13 13 16 16 12
+AMod 16 10 10 7 14
+Pass We2cg.QoJGvjg~
+Titl  the Dreadnought~
+Pnts 40
+TSex 1
+LLev 3
+HMVP 1380 411 406
+Cond 0 100 100
+Alias k kick~
+Alias re rescue~
+Sk 68 'confuse'
+Sk 1 'mindblast'
+Sk 1 'project'
+Sk 1 'psionic armor'
+Sk 30 'axe'
+Sk 100 'dagger'
+Sk 25 'flail'
+Sk 83 'mace'
+Sk 35 'polearm'
+Sk 51 'shield block'
+Sk 43 'spear'
+Sk 100 'sword'
+Sk 30 'whip'
+Sk 47 'berserk'
+Sk 1 'disarm'
+Sk 67 'dodge'
+Sk 100 'enhanced damage'
+Sk 85 'kick'
+Sk 57 'parry'
+Sk 15 'rescue'
+Sk 71 'second attack'
+Sk 75 'third attack'
+Sk 1 'hide'
+Sk 82 'recall'
+Sk 100 'smite'
+Gr 'rom basics'
+Gr 'warrior basics'
+Gr 'warrior default'
+Gr 'warrior guild'
+AffD 'pass door'   8  44   0   0    1048576          0
+AffD 'protection evil'   0  44   0   0       8192          0
+AffD 'fire shield'   0  44   0   0          0          8
+AffD 'frost shield'  20  44   0   0          0         16
+AffD 'detect hidden'   0  44   0   0         32          0
+AffD 'detect invis'  -1  44   0   0          8          0
+AffD 'power gloves'   0  44  35  19          0          0
+AffD 'infravision'   0 114   0   0        512          0
+AffD 'giant strength'   0  44   4   1          0          0
+AffD 'frenzy'   0  44 110  17          0          0
+AffD 'frenzy'   0  44  11  19          0          0
+AffD 'frenzy'  -1  44  11  18          0          0
+AffD 'fly'  43  47   0   0     524288          0
+AffD 'aid'  45  44  52  13          0          0
+AffD 'aid'  45  44   7  18          0          0
+AffD 'divine protection'  47  44   0   0          0       4096
+AffD 'force sword'  46  44   0   0          0        512
+AffD 'bless'  46  50  -8  24          0          0
+AffD 'bless'   0  50   8  18          0          0
+AffD 'haste'  -2  44   4   2    2097152          0
+AffD 'sanctuary'   0  44   0   0        128          0
+AffD 'major globe'   0  44 -150  17          0          0
+End
+
+#O
+Vnum 3609
+Nest 0
+ExtF 21
+Wear 10
+Lev  30
+Cost 0
+Cond 91
+Repd 0
+Val  4 5 4 4 0
+End
+
+#O
+Vnum 717
+Nest 0
+Wear 15
+Lev  40
+Cost 450
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 717
+Nest 0
+Wear 14
+Lev  40
+Cost 450
+Cond 91
+Repd 0
+End
+
+#O
+Vnum 725
+Nest 0
+Wear 9
+Lev  46
+Cost 0
+Cond 84
+Repd 0
+End
+
+#O
+Vnum 9944
+Nest 0
+Wear 0
+Lev  20
+Cost 0
+Cond 18
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 7651
+Nest 0
+ExtF 20
+Wear 5
+Lev  43
+Cost 950
+Cond 93
+Repd 0
+End
+
+#O
+Vnum 10004
+Nest 0
+ExtF 2100545
+Wear 4
+Lev  50
+Cost 3000
+Cond 97
+Repd 0
+End
+
+#O
+Vnum 10004
+Nest 0
+ExtF 2100545
+Wear 3
+Lev  50
+Cost 3000
+Cond 85
+Repd 0
+End
+
+#O
+Vnum 29206
+Nest 0
+Wear 13
+Lev  50
+Cost 2000
+Cond 86
+Repd 0
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear 1
+Lev  52
+Cost 0
+Cond 81
+Repd 0
+Val  12 12 13 -1 0
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear 2
+Lev  52
+Cost 0
+Cond 99
+Repd 0
+Val  12 12 13 -1 0
+Affect -1 52 -1 -1 24 0 0
+End
+
+#O
+Vnum 16016
+Nest 0
+Wear 8
+Lev  52
+Cost 2368
+Cond 95
+Repd 0
+Affect -1 52 -1 3 21 0 0
+End
+
+#O
+Vnum 29215
+Nest 0
+Wear 6
+Lev  51
+Cost 5000
+Cond 84
+Repd 0
+Affect -1 51 -1 5 22 0 0
+Affect -1 51 -1 -2 24 0 0
+End
+
+#O
+Vnum 29032
+Nest 0
+Wear 12
+Lev  29
+Cost 500
+Cond 78
+Repd 0
+End
+
+#O
+Vnum 17024
+Nest 1
+Wear -1
+Lev  53
+Cost 1500
+Cond 100
+Repd 0
+Affect -1 53 -1 1 22 0 0
+End
+
+#O
+Vnum 17007
+Nest 1
+Wear -1
+Lev  53
+Cost 5000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17009
+Nest 1
+Wear -1
+Lev  53
+Cost 1500
+Cond 100
+Repd 0
+Val  14 16 15 29 0
+End
+
+#O
+Vnum 700
+Nest 1
+ExtF 3146818
+Wear -1
+Lev  48
+Cost 2500
+Cond 70
+Repd 0
+End
+
+#O
+Vnum 16032
+Nest 1
+Wear -1
+Lev  52
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3746
+Nest 1
+Wear -1
+Lev  3
+Cost 10
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5612
+Nest 1
+Wear -1
+Lev  52
+Cost 600
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 8713
+Nest 1
+Wear -1
+Lev  8
+Cost 1250
+Cond 85
+Repd 0
+Val  5 5 5 0 0
+End
+
+#O
+Vnum 720
+Nest 1
+Wear -1
+Lev  34
+Cost 850
+Cond 100
+Repd 0
+Affect -1 34 -1 3 2 0 0
+End
+
+#O
+Vnum 16051
+Nest 1
+Wear -1
+Lev  51
+Cost 2436
+Cond 100
+Repd 0
+Affect -1 51 -1 -25 12 0 0
+End
+
+#O
+Vnum 3092
+Nest 1
+Wear -1
+Cost 150
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 10031
+Nest 1
+Wear -1
+Lev  39
+Cost 22000
+Cond 79
+Repd 0
+Spell 3 'shocking grasp'
+Affect -1 39 -1 3 21 0 0
+End
+
+#O
+Vnum 29219
+Nest 0
+ExtF 1048576
+Wear -1
+Lev  52
+Cost 5000
+Cond 100
+Repd 0
+Affect -1 52 -1 2 20 0 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear 17
+Cost 0
+Cond 30
+Repd 0
+End
+
+#O
+Vnum 17008
+Nest 0
+Wear -1
+Lev  52
+Cost 4800
+Cond 95
+Repd 0
+Affect -1 52 -1 -2 3 0 0
+Affect -1 52 -1 -4 13 0 0
+End
+
+#O
+Vnum 9917
+Nest 0
+Wear 7
+Lev  52
+Cost 3000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29211
+Nest 0
+Wear -1
+Lev  51
+Cost 5000
+Cond 100
+Repd 0
+Affect -1 51 -1 -1 4 0 0
+Affect -1 51 -1 -1 14 0 0
+End
+
+#O
+Vnum 29211
+Nest 0
+Wear -1
+Lev  51
+Cost 5000
+Cond 100
+Repd 0
+Affect -1 51 -1 1 23 0 0
+End
+
+#O
+Vnum 700
+Nest 0
+ExtF 3146818
+Wear -1
+Lev  48
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29207
+Nest 0
+ExtF 3
+Wear -1
+Lev  51
+Cost 2000
+Cond 100
+Repd 0
+Affect -1 51 -1 15 12 0 0
+End
+
+#O
+Vnum 5608
+Nest 0
+Wear -1
+Lev  52
+Cost 8000
+Cond 100
+Repd 0
+Affect -1 52 -1 -3 2 0 0
+End
+
+#O
+Vnum 29207
+Nest 0
+Wear -1
+Lev  51
+Cost 2000
+Cond 100
+Repd 0
+Affect -1 51 -1 1 17 0 0
+Affect -1 51 -1 5 22 0 0
+End
+
+#O
+Vnum 10001
+Nest 0
+ExtF 2100544
+Wear -1
+Lev  50
+Cost 4000
+Cond 100
+Repd 0
+Affect -1 50 -1 -4 2 0 0
+End
+
+#O
+Vnum 29211
+Nest 0
+Wear -1
+Lev  51
+Cost 5000
+Cond 100
+Repd 0
+Affect -1 51 -1 -2 4 0 0
+End
+
+#O
+Vnum 29214
+Nest 0
+Wear 16
+Lev  51
+Cost 4000
+Cond 100
+Repd 0
+End
+
+#END

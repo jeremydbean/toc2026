@@ -1,0 +1,499 @@
+#PLAYER
+Name Kyrus~
+Id   64165
+LogO 1545095705
+Vers 3
+Desc .~
+Prom ~
+Ignoring ~
+Race dwarf~
+Sex  1
+Cla  3
+Gui  3
+Psionic  0
+Cast Fors
+Levl 55
+Plyd 498630
+ListRemorts 0 ~
+NumRemorts 1
+Note 947990183
+Scro 22
+Room 29003
+HMV  1062 2472 1688 1688 27 1472
+NewGold 1757
+NewPlat 834
+NewCopp 5933
+NewSilv 2934
+Bank 39952
+Dcount 0
+Corpses	0
+PkRec 5
+PkGiv 2
+QuestPnts 1
+Exp  202084
+Act  4457676
+AfBy 3678888
+AfBy2 4632
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 1
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  8
+Prac 35
+Trai 4
+Save  3
+Alig  923
+Hit   91
+Dam   136
+ACs -148 -146 -157 -26
+Attr 15 13 14 13 14
+AMod 5 4 2 2 2
+Pass KywXdZywU5G42~
+Ariv Arriving from the $t is none other than $n Frost.~
+Dprt Leaving to $T is $n Frost.~
+Titl  the Lord of the Castle~
+Pnts 2540
+TSex 1
+LLev 0
+HMVP 2440 1605 1572
+Cond 0 -1 -1
+Alias \ who~
+Alias k kick~
+Alias ` bash~
+Alias wera wear~
+Alias waer wear~
+Alias m murder~
+Alias killuminati-addy http://24.4.71.13:80/ivy~
+Alias tit2 title Frost, Apprentice of Nasus Knox~
+Alias climb climb rope~
+Alias trick Drek is a KILLER!  PROTECT THE INNOCENT!!  BANZAI!!~
+Alias tit3 title Frost of the Saiya-jin, has achieved SSJ3.~
+Alias restring (Magical) (Glowing) (Humming)the Crystal Shard, Crenshinibon~
+Alias 0 level Gratz~
+Alias sm smite~
+Alias chat gossip~
+Alias fi fist~
+Alias co confuse~
+Alias sh cast 'shock sphere'~
+Alias fo cast 'force sword'~
+Alias ds cast 'death shroud'~
+Sk 78 'axe'
+Sk 100 'dagger'
+Sk 25 'flail'
+Sk 90 'mace'
+Sk 35 'polearm'
+Sk 91 'shield block'
+Sk 30 'spear'
+Sk 100 'sword'
+Sk 30 'whip'
+Sk 76 'bash'
+Sk 75 'berserk'
+Sk 75 'disarm'
+Sk 95 'dodge'
+Sk 100 'enhanced damage'
+Sk 92 'hand to hand'
+Sk 89 'kick'
+Sk 100 'parry'
+Sk 75 'rescue'
+Sk 97 'second attack'
+Sk 85 'third attack'
+Sk 81 'fast healing'
+Sk 75 'door bash'
+Sk 100 'recall'
+Sk 93 'smite'
+Gr 'rom basics'
+Gr 'warrior basics'
+Gr 'warrior default'
+AffD 'major globe'  17  47 -150  17          0          0
+AffD 'sanctuary'  22  47   0   0        128          0
+AffD 'haste'  20  47   4   2    2097152          0
+AffD 'bless'  33  53   8  18          0          0
+AffD 'bless'  19  53  -8  24          0          0
+AffD 'force sword'  31  47   0   0          0        512
+AffD 'divine protection'  29  47   0   0          0       4096
+AffD 'aid'  23  47   7  18          0          0
+AffD 'aid'  32  47  22  13          0          0
+AffD 'fly'   0  50   0   0     524288          0
+AffD 'frenzy'   0  47  11  18          0          0
+AffD 'frenzy'  25  47  11  19          0          0
+AffD 'frenzy'  27  47 110  17          0          0
+AffD 'giant strength'  33  47   4   1          0          0
+AffD 'infravision'   0 117   0   0        512          0
+AffD 'power gloves'   0  47  35  19          0          0
+AffD 'detect invis'  15  47   0   0          8          0
+AffD 'detect hidden'  23  47   0   0         32          0
+AffD 'frost shield'  27  47   0   0          0         16
+AffD 'fire shield'   2  47   0   0          0          8
+AffD 'protection evil'   5  47   0   0       8192          0
+AffD 'pass door'   0  47   0   0    1048576          0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear -1
+Cost 0
+Cond 45
+Repd 0
+End
+
+#O
+Vnum 3737
+Nest 0
+Wear -1
+Lev  1
+Cost 10
+Cond 22
+Repd 0
+Val  2 3 3 0 0
+End
+
+#O
+Vnum 9944
+Nest 0
+Wear 0
+Lev  20
+Cost 0
+Cond 89
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 3609
+Nest 0
+ExtF 21
+Wear 10
+Lev  30
+Cost 4000
+Cond 71
+Repd 0
+End
+
+#O
+Vnum 7651
+Nest 0
+ExtF 20
+Wear 5
+Lev  43
+Cost 950
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 717
+Nest 0
+Wear 15
+Lev  40
+Cost 450
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 717
+Nest 0
+Wear 14
+Lev  40
+Cost 450
+Cond 92
+Repd 0
+Affect -1 40 -1 4 24 0 0
+End
+
+#O
+Vnum 29206
+Nest 0
+Wear 13
+Lev  50
+Cost 2000
+Cond 82
+Repd 0
+End
+
+#O
+Vnum 10000
+Nest 0
+ExtF 2100289
+Wear 17
+Lev  50
+Cost 6000
+Cond 100
+Repd 0
+Affect -1 50 -1 -1 1 0 0
+End
+
+#O
+Vnum 10004
+Nest 0
+ExtF 2100545
+Wear 4
+Lev  50
+Cost 3000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10049
+Nest 0
+Wear -1
+Lev  32
+Cost 2300
+Cond 100
+Repd 0
+Affect -1 32 -1 5 21 0 0
+End
+
+#O
+Vnum 10004
+Nest 0
+ExtF 2100545
+Wear 3
+Lev  50
+Cost 3000
+Cond 100
+Repd 0
+Affect -1 50 -1 5 23 0 0
+Affect -1 50 -1 -3 3 0 0
+End
+
+#O
+Vnum 29235
+Nest 0
+Wear 9
+Lev  53
+Cost 5000
+Cond 99
+Repd 0
+Affect -1 53 -1 -1 24 0 0
+Affect -1 53 -1 3 24 0 0
+Affect -1 53 -1 10 17 0 0
+End
+
+#O
+Vnum 29215
+Nest 0
+Wear 6
+Lev  51
+Cost 5000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29227
+Nest 0
+Wear 7
+Lev  53
+Cost 5000
+Cond 100
+Repd 0
+Affect -1 53 -1 -17 12 0 0
+End
+
+#O
+Vnum 10006
+Nest 0
+ExtF 2100544
+Wear -1
+Lev  49
+Cost 4000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17025
+Nest 0
+ExtF 6
+Wear 2
+Lev  53
+Cost 1500
+Cond 89
+Repd 0
+End
+
+#O
+Vnum 17025
+Nest 0
+ExtF 6
+Wear 1
+Lev  53
+Cost 1500
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29236
+Nest 0
+Wear 8
+Lev  53
+Cost 5000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10001
+Nest 0
+ExtF 2100544
+Wear -1
+Lev  50
+Cost 4000
+Cond 100
+Repd 0
+Affect -1 50 -1 -1 2 0 0
+End
+
+#O
+Vnum 5634
+Nest 0
+Wear -1
+Lev  52
+Cost 5000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17008
+Nest 0
+Wear -1
+Lev  52
+Cost 4800
+Cond 100
+Repd 0
+Affect -1 52 -1 -1 13 0 0
+End
+
+#O
+Vnum 78
+Nest 0
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29211
+Nest 0
+Wear -1
+Lev  51
+Cost 5000
+Cond 96
+Repd 0
+Affect -1 51 -1 -19 12 0 0
+End
+
+#O
+Vnum 17020
+Nest 0
+ExtF 19
+Wear -1
+Lev  53
+Cost 2000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17020
+Nest 0
+ExtF 19
+Wear -1
+Lev  53
+Cost 2000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17020
+Nest 0
+ExtF 19
+Wear -1
+Lev  53
+Cost 2000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17020
+Nest 0
+ExtF 19
+Wear -1
+Lev  53
+Cost 2000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29240
+Nest 0
+Wear 11
+Lev  54
+Cost 3000
+Cond 100
+Repd 0
+Val  14 14 14 9 0
+End
+
+#O
+Vnum 13295
+Nest 0
+Wear -1
+Lev  50
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17020
+Nest 0
+ExtF 19
+Wear 16
+Lev  53
+Cost 2000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29243
+Nest 0
+ExtF 3145986
+Wear -1
+Lev  54
+Cost 7000
+Cond 100
+Repd 0
+End
+
+#END

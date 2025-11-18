@@ -1,0 +1,131 @@
+#PLAYER
+Name Miyu~
+Id   2549
+LogO 1540591380
+Vers 3
+Desc The vampire princess in the flesh.
+~
+Prom ~
+Ignoring ~
+Race elf~
+Sex  2
+Cla  5
+Gui  5
+Psionic  2
+Cast none
+Levl 20
+Plyd 89045
+ListRemorts ~
+NumRemorts 0
+Note 0
+Scro 22
+Room 4209
+HMV  236 226 349 309 213 214
+NewGold 68
+NewPlat 2
+NewCopp 1023
+NewSilv 135
+Bank 330
+Dcount 0
+Corpses	0
+PkRec 0
+PkGiv 0
+Exp  47161
+Act  220
+AfBy 512
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 2
+Color 3 4
+Color 4 9
+Color 5 0
+Color 6 5
+Color 7 13
+Color 8 11
+Color 9 7
+Color 10 12
+Color 11 6
+Color 12 6
+Color 13 0
+Color 14 0
+Color 15 0
+Color 16 3
+Pos  8
+Prac 9
+Trai 3
+Alig  -970
+ACs 100 100 100 100
+Attr 12 20 17 14 15
+AMod 0 0 0 0 0
+Pass Mi2lBnnybkuR.~
+Titl  the Mule~
+Pnts 40
+TSex 2
+LLev 23
+HMVP 226 309 214
+Cond 0 33 33
+Alias ap cast 'animate parts'~
+Sk 93 'animate parts'
+Sk 76 'armor'
+Sk 75 'blindness'
+Sk 75 'cancellation'
+Sk 80 'cause light'
+Sk 82 'chill touch'
+Sk 1 'cone of cold'
+Sk 86 'butcher'
+Sk 1 'bewitch weapon'
+Sk 1 'curse'
+Sk 75 'dust devil'
+Sk 1 'earth travel'
+Sk 75 'embalm'
+Sk 75 'evil eye'
+Sk 75 'fly'
+Sk 1 'icicle'
+Sk 1 'major globe'
+Sk 1 'maze'
+Sk 1 'moonbeam'
+Sk 1 'pass door'
+Sk 75 'plague'
+Sk 75 'poison'
+Sk 75 'remove curse'
+Sk 1 'rope trick'
+Sk 1 'sanctuary'
+Sk 1 'shield'
+Sk 1 'shroud'
+Sk 75 'shock sphere'
+Sk 76 'skeletal hands'
+Sk 1 'tentacles'
+Sk 75 'vampiric touch'
+Sk 1 'vortex'
+Sk 75 'weaken'
+Sk 1 'neutrality field'
+Sk 8 'axe'
+Sk 94 'dagger'
+Sk 6 'flail'
+Sk 5 'mace'
+Sk 3 'polearm'
+Sk 7 'spear'
+Sk 20 'sword'
+Sk 84 'whip'
+Sk 75 'sneak'
+Sk 75 'scrolls'
+Sk 75 'wands'
+Sk 85 'recall'
+Gr 'rom basics'
+Gr 'necro basics'
+Gr 'necro default'
+Gr 'necro elemental'
+Gr 'necro maladictions'
+Gr 'necromancy'
+Gr 'necro protective'
+Gr 'necro transportation'
+End
+
+#END
