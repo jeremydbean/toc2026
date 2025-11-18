@@ -32,7 +32,6 @@
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
-#include <strings.h> /* for bzero() */
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
@@ -114,6 +113,7 @@ const   char    go_ahead_str    [] = { '\0' };
 #include <fcntl.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 #include <sys/socket.h>
 #include <arpa/telnet.h>
 #include <signal.h>
@@ -749,11 +749,19 @@ void game_loop_unix( int control_fd )
    	     } */
 	}
 
-	if ( select( maxdesc+1, &in_set, &out_set, &exc_set, &null_time ) < 0 )
-	{
-	    perror( "Game_loop: select: poll" );
-	    exit( 1 );
-	}
+        {
+            int select_status;
+
+            select_status = select( maxdesc + 1, &in_set, &out_set, &exc_set, &null_time );
+            if ( select_status < 0 )
+            {
+                if ( errno == EINTR || errno == EAGAIN )
+                    continue;
+
+                perror( "Game_loop: select: poll" );
+                exit( 1 );
+            }
+        }
 
 	/*
 	 * New connection?
@@ -890,13 +898,21 @@ void game_loop_unix( int control_fd )
 
 		stall_time.tv_usec = usecDelta;
 		stall_time.tv_sec  = secDelta;
-		if ( select( 0, NULL, NULL, NULL, &stall_time ) < 0 )
-		{
-		    perror( "Game_loop: select: stall" );
-		    exit( 1 );
-		}
-	    }
-	}
+                {
+                    int select_status;
+
+                    select_status = select( 0, NULL, NULL, NULL, &stall_time );
+                    if ( select_status < 0 )
+                    {
+                        if ( errno == EINTR || errno == EAGAIN )
+                            continue;
+
+                        perror( "Game_loop: select: stall" );
+                        exit( 1 );
+                    }
+                }
+            }
+        }
 
 	gettimeofday( &last_time, NULL );
 	current_time = (time_t) last_time.tv_sec;
@@ -943,14 +959,21 @@ void new_descriptor( int control_fd )
 	return;
     }
 
-#if !defined(FNDELAY)
-#define FNDELAY O_NDELAY
-#endif
-
-    if ( fcntl( desc, F_SETFL, FNDELAY ) == -1 )
     {
-	perror( "New_descriptor: fcntl: FNDELAY" );
-	return;
+        int flags;
+
+        flags = fcntl( desc, F_GETFL, 0 );
+        if ( flags == -1 )
+        {
+            perror( "New_descriptor: fcntl: F_GETFL" );
+            return;
+        }
+
+        if ( fcntl( desc, F_SETFL, flags | O_NONBLOCK ) == -1 )
+        {
+            perror( "New_descriptor: fcntl: O_NONBLOCK" );
+            return;
+        }
     }
 
     /*
