@@ -1,24 +1,31 @@
-version: "3.9"
+version: '3.8'
 
 services:
-  mud-server:
-    build:
-      context: .
+  game:
+    build: .
+    container_name: toc2026_game
     ports:
       - "4000:4000"
     volumes:
-      - ./area:/mud/area
-      - ./gods:/mud/gods
-      - ./player:/mud/player
-      - ./log:/mud/log
+      - ./log:/opt/toc/log
+      - ./player:/opt/toc/player
+      - ./area:/opt/toc/area
+    restart: always
 
-  web-bridge:
-    image: python:3.11-slim
+  middleware:
+    image: python:3.9-slim
+    container_name: toc2026_web
     working_dir: /app
-    command: ["sh", "-c", "pip install --no-cache-dir websockets && python websocket_bridge.py"]
-    volumes:
-      - ./:/app
+    command: sh -c "pip install fastapi uvicorn websockets aiofiles python-multipart && uvicorn middleware:app --host 0.0.0.0 --port 8000"
     ports:
-      - "8081:8081"
+      - "8000:8000"
+    volumes:
+      - ./middleware.py:/app/middleware.py
+      - ./log:/app/log
+      # CRITICAL: Mount game data so the web app can read it
+      - ./area:/app/area
+      - ./player:/app/player
+      # Mount the image to serve it
+      - ./ToCBG.png:/app/static/background.jpg
     depends_on:
-      - mud-server
+      - game
