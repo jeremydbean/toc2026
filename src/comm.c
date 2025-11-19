@@ -3549,37 +3549,55 @@ static void __attribute__((unused)) act_public( const char *format, CHAR_DATA *c
 char *drunk_speak( const char *str )
 {
     static char buf[MAX_STRING_LENGTH];
-    buf[0] = '0';
     const char *cp1;
     char *cp2;
     int numb;
+    size_t remaining;
 
-    for ( cp1 = str, cp2 = buf; *cp1; )
+    buf[0] = '\0';
+    cp2 = buf;
+    remaining = sizeof(buf);
+
+#define APPEND_CHAR(ch)             \
+    do {                            \
+        if (remaining > 1) {        \
+            *cp2++ = (ch);          \
+            remaining--;            \
+        }                           \
+    } while (0)
+
+    for ( cp1 = str; *cp1 && remaining > 1; )
     {
-	switch( UPPER( *cp1 ) )
-	{
-	    case 'S':
-		*cp2++ = *cp1++;
-		*cp2++ = 's';
-		*cp2++ = 'h';
-		break;
-	    case 'O':
-		*cp2++ = *cp1++;
-		*cp2++ = 'h';
-		break;
-	    case 'T':
-		*cp2++ = *cp1++;
-		*cp2++ = 't';
-		break;
-	    case 'I':
-		*cp2++ = *cp1++;
-		*cp2++ = 'i';
-		break;
-	    default:
-		*cp2++ = *cp1++;
-	}
+        switch( UPPER( *cp1 ) )
+        {
+            case 'S':
+                APPEND_CHAR(*cp1++);
+                APPEND_CHAR('s');
+                APPEND_CHAR('h');
+                break;
+            case 'O':
+                APPEND_CHAR(*cp1++);
+                APPEND_CHAR('h');
+                break;
+            case 'T':
+                APPEND_CHAR(*cp1++);
+                APPEND_CHAR('t');
+                break;
+            case 'I':
+                APPEND_CHAR(*cp1++);
+                APPEND_CHAR('i');
+                break;
+            default:
+                APPEND_CHAR(*cp1++);
+        }
     }
-    *cp2 = '\0';
+
+    if (remaining > 0)
+    {
+        *cp2 = '\0';
+    }
+
+#undef APPEND_CHAR
 
     for( cp2 = buf; *cp2; cp2++)
     {
@@ -3636,42 +3654,42 @@ static char *swedish_speak( const char *str )
     {
         if ( !str_prefix( " ", pName ) )
         {
-            strcat( buf, " " );
+            strlcat( buf, " ", sizeof(buf) );
             in_word = false;
             i_seen = false;
             length = 1;
         }
         else if ( !str_prefix( "e ", pName ) )
         {
-            strcat( buf, "e-a" );
+            strlcat( buf, "e-a", sizeof(buf) );
             length = 1;
         }
         else if ( !str_prefix( "en ", pName ) )
         {
-            strcat( buf, "ee" );
+            strlcat( buf, "ee", sizeof(buf) );
             length = 2;
         }
         else if ( !str_prefix( "o", pName ) && in_word == false )
         {
-            strcat( buf, "oo" );
+            strlcat( buf, "oo", sizeof(buf) );
             in_word = true;
             length = 1;
         }
         else if ( !str_prefix( "u", pName ) && in_word == false )
         {
-            strcat( buf, "u" );
+            strlcat( buf, "u", sizeof(buf) );
             in_word = true;
             length = 1;
         }
         else if ( !str_prefix( "e", pName ) && in_word == false )
         {
-            strcat( buf, "i" );
+            strlcat( buf, "i", sizeof(buf) );
             in_word = true;
             length = 1;
         }
         else if ( !str_prefix( "ir", pName ) && in_word == false )
         {
-            strcat( buf, "ur" );
+            strlcat( buf, "ur", sizeof(buf) );
             in_word = true;
             length = 2;
         }
@@ -3679,11 +3697,11 @@ static char *swedish_speak( const char *str )
         {
             if ( i_seen == false && in_word == true )
             {
-                strcat( buf, "ee" );
+                strlcat( buf, "ee", sizeof(buf) );
                 i_seen = true;
             }
             else
-                strcat( buf, "i" );
+                strlcat( buf, "i", sizeof(buf) );
             in_word = true;
             length = 1;
         }
@@ -3691,7 +3709,7 @@ static char *swedish_speak( const char *str )
         {
             if ( !str_prefix( syl_table[iSyl].old, pName ) )
             {
-                strcat( buf, syl_table[iSyl].new );
+                strlcat( buf, syl_table[iSyl].new, sizeof(buf) );
                 in_word = true;
                 break;
             }
@@ -3699,8 +3717,11 @@ static char *swedish_speak( const char *str )
 
         if ( length == 0 )
         {
-            buf[strlen(buf)+1] = '\0';
-            buf[strlen(buf)] = *pName;
+            char tmp[2];
+
+            tmp[0] = *pName;
+            tmp[1] = '\0';
+            strlcat( buf, tmp, sizeof(buf) );
             length = 1;
         }
     }
@@ -3715,16 +3736,16 @@ char *speak_filter( CHAR_DATA *ch, const char *str )
 {
     static char filterbuf[MAX_STRING_LENGTH];
 
-    strcpy( filterbuf, str );
+    strlcpy( filterbuf, str, sizeof(filterbuf) );
 
     if ( IS_NPC(ch) )
-	return filterbuf;
+        return filterbuf;
 
     if( !IS_NPC(ch) && IS_SET(ch->act, PLR_SWEDISH) )
-	strcpy( filterbuf, swedish_speak( filterbuf ) );
+        strlcpy( filterbuf, swedish_speak( filterbuf ), sizeof(filterbuf) );
 
     if ( !IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10 )
-	strcpy( filterbuf, drunk_speak( filterbuf ) );
+        strlcpy( filterbuf, drunk_speak( filterbuf ), sizeof(filterbuf) );
 
     return filterbuf;
 }
@@ -3786,9 +3807,9 @@ static bool str_infix_c( const char *astr, const char *bstr )
 
 static char *str_replace_c( char *astr, char *bstr, char *cstr )
 {
-    char newstr[MAX_STRING_LENGTH];
+    char newstr[2];
     char buf[MAX_STRING_LENGTH];
-    buf[0] = '0';
+    buf[0] = '\0';
     bool found = false;
     size_t sstr1, sstr2;
     size_t ichar, jchar;
@@ -3818,19 +3839,21 @@ static char *str_replace_c( char *astr, char *bstr, char *cstr )
             found = true;
             jchar = ichar;
             ichar = sstr1;
-        }
+    }
     } if (found) {
         buf[0] = '\0';
         for ( ichar = 0; ichar < jchar; ichar++ ) {
-            sprintf(newstr, "%c", astr[ichar]);
-            strcat(buf, newstr);
+            newstr[0] = astr[ichar];
+            newstr[1] = '\0';
+            strlcat(buf, newstr, sizeof(buf));
         }
-        strcat(buf, cstr);
+        strlcat(buf, cstr, sizeof(buf));
         for ( ichar = jchar + sstr2; ichar < sstr1; ichar++ ) {
-            sprintf(newstr, "%c", astr[ichar]);
-            strcat(buf, newstr);
+            newstr[0] = astr[ichar];
+            newstr[1] = '\0';
+            strlcat(buf, newstr, sizeof(buf));
         }
-        sprintf(astr, "%s", str_replace_c(buf, bstr, cstr) );
+        strlcpy(astr, str_replace_c(buf, bstr, cstr), MAX_STRING_LENGTH);
         return astr;
     }
     return astr;
