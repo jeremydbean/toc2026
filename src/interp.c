@@ -901,7 +901,7 @@ char buf[1000];
       j = (int) (index_char - 'a');
        if ((j < 0) || (j > SOCIALTABLE_FIRST_HASH - 1)) {
           snprintf(buf, sizeof(buf), "Building index on social_table\n"
-                      "Oops, a logic error occurred for command: %s\n",
+                      "Oops, a logic error occurred for command: %.200s\n",
                   social_table[i].name);
           bug(" INITIALIZE SOCIAL TABLE, INDEX OUT OF RANGE %d", j);
        }

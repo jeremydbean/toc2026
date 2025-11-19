@@ -1844,8 +1844,12 @@ bool check_parse_name( char *name )
 	if ( fIll )
 	    return FALSE;
 
-	if (cleancaps || (total_caps > (strlen(name)) / 2 && strlen(name) < 3))
-	    return FALSE;
+        {
+            size_t name_len = strlen(name);
+
+            if (cleancaps || ((size_t) total_caps > name_len / 2 && name_len < 3))
+                return FALSE;
+        }
     }
 
     /*
@@ -2109,20 +2113,21 @@ void show_string(struct descriptor_data *d, char *input)
 	{
 	    *scan = '\0';
 	    write_to_buffer(d,buffer,strlen(buffer));
-	    for (chk = d->showstr_point; isspace(*chk); chk++);
-	    {
-		if (!*chk)
-		{
-		    if (d->showstr_head)
-        	    {
-            		free_mem(d->showstr_head,strlen(d->showstr_head)+1);
-            		d->showstr_head = 0;
-        	    }
-        	    d->showstr_point  = 0;
-    		}
-	    }
-	    return;
-	}
+            chk = d->showstr_point;
+            while (isspace(*chk))
+                chk++;
+
+            if (!*chk)
+            {
+                if (d->showstr_head)
+                {
+                    free_mem(d->showstr_head,strlen(d->showstr_head)+1);
+                    d->showstr_head = 0;
+                }
+                d->showstr_point  = 0;
+            }
+            return;
+        }
     }
     return;
 }

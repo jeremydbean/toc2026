@@ -4307,7 +4307,10 @@ void do_remort( CHAR_DATA *ch, char *arg)
    }
    if (ch->pcdata->num_remorts > 0)
    {
-     snprintf(saveclass,sizeof(saveclass),"%s %s",ch->pcdata->list_remorts,saveclass);
+     char saveclass_copy[MAX_INPUT_LENGTH];
+
+     strlcpy(saveclass_copy, saveclass, sizeof(saveclass_copy));
+     snprintf(saveclass,sizeof(saveclass),"%s %s",ch->pcdata->list_remorts,saveclass_copy);
 
      to_strip = str_dup(ch->pcdata->list_remorts);
      while (to_strip[0] != '\0')
