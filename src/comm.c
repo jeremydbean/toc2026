@@ -1618,8 +1618,15 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
     /*
      * Copy.
      */
-    strcpy( d->outbuf + d->outtop, txt );
-    d->outtop += length;
+    {
+        size_t remaining = d->outsize - d->outtop;
+        size_t copied    = strlcpy( d->outbuf + d->outtop, txt, remaining );
+
+        if (remaining > 0)
+        {
+            d->outtop += (copied >= remaining) ? remaining - 1 : copied;
+        }
+    }
     return;
 }
 
@@ -2098,17 +2105,17 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 	}
 
-	strcpy( buf, "Select a class [" );
-	for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
-	{
-	    if ( iClass > 0 )
-		strcat( buf, " " );
-	    strcat( buf, class_table[iClass].name );
-	}
-	strcat( buf, "]: " );
-	write_to_buffer( d, buf, 0 );
-	d->connected = CON_GET_NEW_CLASS;
-	break;
+        strlcpy( buf, "Select a class [", sizeof(buf) );
+        for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
+        {
+            if ( iClass > 0 )
+                strlcat( buf, " ", sizeof(buf) );
+            strlcat( buf, class_table[iClass].name, sizeof(buf) );
+        }
+        strlcat( buf, "]: ", sizeof(buf) );
+        write_to_buffer( d, buf, 0 );
+        d->connected = CON_GET_NEW_CLASS;
+        break;
 
     case CON_GET_NEW_CLASS:
 
@@ -2133,17 +2140,17 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	(iClass == CLASS_NECRO && !(ch->race == 1 || ch->race == 2 ) ) )
 	{
 	    write_to_buffer(d,"\n\rThat is not a valid class, or you are the wrong race for it.\n\r",0);
-	    strcpy( buf, "Select a class [" );
-	    for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
-	    {
-	      if ( iClass > 0 )
-		strcat( buf, " " );
-	      strcat( buf, class_table[iClass].name );
-	    }
-	    strcat( buf, "]: " );
-	    write_to_buffer( d, buf, 0 );
+            strlcpy( buf, "Select a class [", sizeof(buf) );
+            for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
+            {
+              if ( iClass > 0 )
+                strlcat( buf, " ", sizeof(buf) );
+              strlcat( buf, class_table[iClass].name, sizeof(buf) );
+            }
+            strlcat( buf, "]: ", sizeof(buf) );
+            write_to_buffer( d, buf, 0 );
 
-	    break;
+            break;
 	}
 
         ch->class = (int16_t)iClass;
@@ -3062,14 +3069,19 @@ void send_to_char( const char *txt, CHAR_DATA *ch )
 	  col = txt[++t];
 	  if (do_color && (col <= COL_MAX) )
 	  {
-	    col = pcdata->col_table[col];
-	    if (col < 15)
-	    {
-	      strcpy (ptr,col_disp_table[col].ansi_str);
-	      ptr += strlen (col_disp_table[col].ansi_str);
-	    }
-	  }
-	}
+            col = pcdata->col_table[col];
+            if (col < 15)
+            {
+              size_t remaining = sizeof(buf) - (size_t)(ptr - buf);
+              size_t copied = strlcpy( ptr, col_disp_table[col].ansi_str, remaining );
+
+              if (remaining > 0)
+              {
+                  ptr += (copied >= remaining) ? remaining - 1 : copied;
+              }
+            }
+          }
+        }
 	else
 	{
 	  *ptr++ = txt[t];
@@ -3077,8 +3089,13 @@ void send_to_char( const char *txt, CHAR_DATA *ch )
       }
       if (do_color)
       {
-	strcpy (ptr,col_disp_table[pcdata->col_table[COL_REGULAR]].ansi_str);
-	ptr += strlen (col_disp_table[pcdata->col_table[COL_REGULAR]].ansi_str);
+        size_t remaining = sizeof(buf) - (size_t)(ptr - buf);
+        size_t copied = strlcpy( ptr, col_disp_table[pcdata->col_table[COL_REGULAR]].ansi_str, remaining );
+
+        if (remaining > 0)
+        {
+            ptr += (copied >= remaining) ? remaining - 1 : copied;
+        }
       }
       *ptr = '\0';
       write_to_buffer ( ch->desc, buf, (int)(ptr - buf));
@@ -3118,15 +3135,15 @@ void page_to_char( const char *txt, CHAR_DATA *ch )
 	return;
 
 #if defined(macintosh) || defined(MSDOS)
-	send_to_char(txt,ch);
+        send_to_char(txt,ch);
 #else
     {
         size_t showstr_len = strlen(txt) + 1;
         if (showstr_len > INT_MAX)
             showstr_len = INT_MAX;
         ch->desc->showstr_head = alloc_mem((int)showstr_len);
+        strlcpy(ch->desc->showstr_head,txt,showstr_len);
     }
-    strcpy(ch->desc->showstr_head,txt);
     ch->desc->showstr_point = ch->desc->showstr_head;
     show_string(ch->desc,"");
 #endif
