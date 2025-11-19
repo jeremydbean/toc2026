@@ -517,10 +517,10 @@ void interpret( CHAR_DATA *ch, char *argument )
      * Check for aliases
      */
     if (!IS_NPC(ch))
-	for (counter=0; counter<MAX_ALIASES; counter++)
-	{
-	    char * ptr;
-	    ptr = ch->pcdata->alias[counter].first;
+        for (counter=0; counter<MAX_ALIASES; counter++)
+        {
+            char * ptr;
+            ptr = ch->pcdata->alias[counter].first;
 	    if (  ptr != NULL )
 		if ( !str_cmp(command, ptr) )
 		{
@@ -528,8 +528,22 @@ void interpret( CHAR_DATA *ch, char *argument )
                              argument);
 		    argument = one_argument( buf, command );
 		    break;
-		}
-	}
+                }
+        }
+
+    {
+        script_command_payload preprocess_payload;
+
+        preprocess_payload.ch                = ch;
+        preprocess_payload.command           = command;
+        preprocess_payload.command_capacity  = sizeof( command );
+        preprocess_payload.argument          = argument;
+        preprocess_payload.handled           = false;
+        script_event_emit( SCRIPT_EVENT_COMMAND_PREPARSE, &preprocess_payload );
+        if ( preprocess_payload.handled )
+            return;
+        argument = preprocess_payload.argument;
+    }
 
     /*
      * Look for command in command table.
@@ -575,11 +589,22 @@ void interpret( CHAR_DATA *ch, char *argument )
 
     if ( !found )
     {
-	/*
-	 * Look for command in socials table.
-	 */
-	if ( !check_social( ch, command, argument ) )
-	    send_to_char( "Huh?\n\r", ch );
+        script_command_payload not_found_payload;
+
+        not_found_payload.ch               = ch;
+        not_found_payload.command          = command;
+        not_found_payload.command_capacity = sizeof( command );
+        not_found_payload.argument         = argument;
+        not_found_payload.handled          = false;
+        script_event_emit( SCRIPT_EVENT_COMMAND_NOT_FOUND, &not_found_payload );
+        if ( not_found_payload.handled )
+            return;
+
+        /*
+         * Look for command in socials table.
+         */
+        if ( !check_social( ch, command, argument ) )
+            send_to_char( "Huh?\n\r", ch );
 	return;
     }
 
@@ -629,10 +654,35 @@ void interpret( CHAR_DATA *ch, char *argument )
     if (check_specials(ch, cmd_table[cmd].do_fun, argument))
 	return;
 
+    {
+        script_command_payload before_payload;
+
+        before_payload.ch               = ch;
+        before_payload.command          = command;
+        before_payload.command_capacity = sizeof( command );
+        before_payload.argument         = argument;
+        before_payload.handled          = false;
+        script_event_emit( SCRIPT_EVENT_BEFORE_COMMAND, &before_payload );
+        if ( before_payload.handled )
+            return;
+        argument = before_payload.argument;
+    }
+
     /*
      * Dispatch the command.
      */
     (*cmd_table[cmd].do_fun) ( ch, argument );
+
+    {
+        script_command_payload after_payload;
+
+        after_payload.ch               = ch;
+        after_payload.command          = command;
+        after_payload.command_capacity = sizeof( command );
+        after_payload.argument         = argument;
+        after_payload.handled          = true;
+        script_event_emit( SCRIPT_EVENT_AFTER_COMMAND, &after_payload );
+    }
 
 /*    }  */
     tail_chain( );
