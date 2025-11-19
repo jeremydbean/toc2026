@@ -32,6 +32,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 #include <sys/resource.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
@@ -78,10 +79,13 @@ const   char    go_ahead_str    [] = { '\0' };
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <arpa/telnet.h>
-const   char    echo_off_str    [] = { IAC, WILL, TELOPT_ECHO, '\0' };
-const   char    echo_on_str     [] = { IAC, WONT, TELOPT_ECHO, '\0' };
-const   char    go_ahead_str    [] = { IAC, GA, '\0' };
+const   char    echo_off_str    [] = { (char)IAC, (char)WILL, (char)TELOPT_ECHO, '\0' };
+const   char    echo_on_str     [] = { (char)IAC, (char)WONT, (char)TELOPT_ECHO, '\0' };
+const   char    go_ahead_str    [] = { (char)IAC, (char)GA, '\0' };
 #endif
+
+static int clamp_size_to_int( size_t value );
+static int strlen_to_int( const char *text );
 
 /*
  * OS-dependent declarations.
@@ -290,6 +294,22 @@ void    log_auth                ( DESCRIPTOR_DATA *d );
 void    process_web_admin_queue ( void );
 void    write_prompt            ( DESCRIPTOR_DATA *d );
 
+static int clamp_size_to_int( size_t value )
+{
+    if ( value > INT_MAX )
+        return INT_MAX;
+
+    return (int)value;
+}
+
+static int strlen_to_int( const char *text )
+{
+    if ( text == NULL )
+        return 0;
+
+    return clamp_size_to_int( strlen( text ) );
+}
+
 /*
  * Other local functions (OS-dependent).
  */
@@ -423,9 +443,16 @@ int init_socket( int port )
 	}
     }
 
+    if ( port <= 0 || port > USHRT_MAX )
+    {
+        fprintf( stderr, "Init_socket: invalid port %d\n", port );
+        close( fd );
+        exit( 1 );
+    }
+
     sa              = sa_zero;
     sa.sin_family   = AF_INET;
-    sa.sin_port     = htons( port );
+    sa.sin_port     = htons( (unsigned short)port );
 
     /* Use generic casting to struct sockaddr * to avoid strict-aliasing warnings */
     if ( bind( fd, (struct sockaddr *) &sa, sizeof(sa) ) < 0 )
@@ -990,43 +1017,47 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
         iStart = 0;
     else
     {
-	if ( d->outtop > 0 )
-	    return TRUE;
-	iStart = strlen(d->inbuf);
+        if ( d->outtop > 0 )
+            return TRUE;
+        iStart = strlen_to_int( d->inbuf );
     }
 
     if ( iStart >= MAX_INPUT_LENGTH - 2 )
     {
-	sprintf( log_buf, "%s input overflow!", d->host );
-	log_string( log_buf );
-	write_to_buffer( d, "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
-	return FALSE;
+        sprintf( log_buf, "%s input overflow!", d->host );
+        log_string( log_buf );
+        write_to_buffer( d, "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
+        return FALSE;
     }
 
     for ( ; ; )
     {
-	int nRead;
+        ssize_t nRead;
+        int space_left = MAX_INPUT_LENGTH - 1 - iStart;
 
-	nRead = read( d->descriptor, d->inbuf + iStart,
-	    MAX_INPUT_LENGTH - 1 - iStart );
-	if ( nRead > 0 )
-	{
-	    iStart += nRead;
-	    if ( d->inbuf[iStart-1] == '\n' || d->inbuf[iStart-1] == '\r' )
-		break;
-	}
-	else if ( nRead == 0 )
-	{
-	    log_string( "EOF encountered on read." );
-	    return FALSE;
-	}
-	else if ( errno == EWOULDBLOCK )
-	    break;
-	else
-	{
-	    perror( "Read_from_descriptor" );
-	    return FALSE;
-	}
+        if ( space_left <= 0 )
+            break;
+
+        nRead = read( d->descriptor, d->inbuf + iStart,
+            (size_t)space_left );
+        if ( nRead > 0 )
+        {
+            iStart += (int)nRead;
+            if ( d->inbuf[iStart-1] == '\n' || d->inbuf[iStart-1] == '\r' )
+                break;
+        }
+        else if ( nRead == 0 )
+        {
+            log_string( "EOF encountered on read." );
+            return FALSE;
+        }
+        else if ( errno == EWOULDBLOCK )
+            break;
+        else
+        {
+            perror( "Read_from_descriptor" );
+            return FALSE;
+        }
     }
 
     d->inbuf[iStart] = '\0';
@@ -1239,7 +1270,7 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
      * Find length in case caller didn't.
      */
     if ( length <= 0 )
-	length = strlen(txt);
+        length = strlen_to_int( txt );
 
     /*
      * Initial \n\r if needed.
@@ -1264,11 +1295,11 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 	    close_socket(d);
 	    return;
  	}
-	outbuf      = alloc_mem( 2 * d->outsize );
-	strncpy( outbuf, d->outbuf, d->outtop );
-	free_mem( d->outbuf, d->outsize );
-	d->outbuf   = outbuf;
-	d->outsize *= 2;
+        outbuf      = alloc_mem( 2 * d->outsize );
+        memcpy( outbuf, d->outbuf, (size_t)d->outtop );
+        free_mem( d->outbuf, d->outsize );
+        d->outbuf   = outbuf;
+        d->outsize *= 2;
     }
 
     /*
@@ -1281,18 +1312,23 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 
 bool write_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
 {
-    ssize_t nBlock;
     ssize_t nWrite;
     const char *p;
+    size_t remaining;
+
+    if ( txt == NULL )
+        return TRUE;
 
     if ( length <= 0 )
-        length = strlen( txt );
+        remaining = strlen( txt );
+    else
+        remaining = (size_t)length;
 
     p = txt;
-    while ( length > 0 )
+    while ( remaining > 0 )
     {
-        nBlock = UMIN( length, 4096 );
-        nWrite = write( d->descriptor, p, (size_t)nBlock );
+        size_t nBlock = remaining > 4096 ? 4096 : remaining;
+        nWrite = write( d->descriptor, p, nBlock );
         if ( nWrite < 0 )
         {
             if ( errno == EAGAIN || errno == EINTR )
@@ -1305,8 +1341,8 @@ bool write_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
         if ( nWrite == 0 )
             return FALSE;
 
-        length -= nWrite;
-        p      += nWrite;
+        remaining -= (size_t)nWrite;
+        p         += nWrite;
     }
 
     return TRUE;
@@ -1618,11 +1654,11 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    break;
 	}
 
-        ch->race = race;
+        ch->race = (sh_int)race;
 	/* initialize stats */
 	for (i = 0; i < MAX_STATS; i++)
 	    ch->perm_stat[i] = pc_race_table[race].stats[i];
-	ch->affected_by = ch->affected_by|race_table[race].aff;
+        ch->affected_by |= (int)race_table[race].aff;
 	ch->imm_flags	= ch->imm_flags|race_table[race].imm;
 	ch->res_flags	= ch->res_flags|race_table[race].res;
 	ch->vuln_flags	= ch->vuln_flags|race_table[race].vuln;
@@ -1650,11 +1686,11 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	{
 	case 'm': case 'M': ch->sex = SEX_MALE;    ch->pcdata->true_sex = SEX_MALE;    break;
 	case 'f': case 'F': ch->sex = SEX_FEMALE;  ch->pcdata->true_sex = SEX_FEMALE;  break;
-	case 'n': case 'N': ch->sex = SEX_NEUTRAL; ch->pcdata->true_sex = SEX_NEUTRAL; break;
-	default:
-	    write_to_buffer( d, "That is not a sex.\n\rWhat IS your sex? ", 0 );
-	    return;
-	}
+        case 'n': case 'N': ch->sex = SEX_NEUTRAL; ch->pcdata->true_sex = SEX_NEUTRAL; break;
+        default:
+            write_to_buffer( d, "That is not a sex.\n\rWhat IS your sex? ", 0 );
+            return;
+        }
 
 	strcpy( buf, "Select a class [" );
 	for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
@@ -1678,7 +1714,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    return;
 	}
 
-        ch->class = iClass;
+        ch->class = (sh_int)iClass;
 
 	sprintf( log_buf, "%s@%s new player.", ch->name, d->host );
 	log_string( log_buf );
@@ -2140,37 +2176,48 @@ void send_to_room( const char *txt, int vnum )
 void page_to_char( const char *txt, CHAR_DATA *ch )
 {
     if ( txt == NULL || ch->desc == NULL)
-	return;
+        return;
 
     if (ch->lines == 0 )
     {
-	send_to_char(txt,ch);
-	return;
+        send_to_char(txt,ch);
+        return;
     }
-	
-    if (ch->desc->showstr_head &&
-       (strlen(txt) + strlen(ch->desc->showstr_head) + 1) < 32000)
-    {
-	char *ptr;
 
-	ptr = alloc_mem(strlen(txt) + strlen(ch->desc->showstr_head) + 1);
-	strcpy(ptr,ch->desc->showstr_head);
-	strcat(ptr,txt);
-	ch->desc->showstr_point = ptr + (ch->desc->showstr_point - ch->desc->showstr_head);
-	free_mem(ch->desc->showstr_head,strlen(ch->desc->showstr_head) + 1);
-	ch->desc->showstr_head = ptr;
-    }
-    else
+    if (ch->desc->showstr_head)
     {
-	if (ch->desc->showstr_head)
-	    free_mem(ch->desc->showstr_head,strlen(ch->desc->showstr_head)+1);
-	ch->desc->showstr_head = alloc_mem(strlen(txt) + 1);
-	strcpy(ch->desc->showstr_head,txt);
-	ch->desc->showstr_point = ch->desc->showstr_head;
+        const size_t txt_len = strlen( txt );
+        const size_t head_len = strlen( ch->desc->showstr_head );
+        const size_t total_len = txt_len + head_len + 1u;
+
+        if ( total_len < 32000u )
+        {
+            char *ptr = alloc_mem( clamp_size_to_int( total_len ) );
+
+            strcpy(ptr,ch->desc->showstr_head);
+            strcat(ptr,txt);
+            ch->desc->showstr_point = ptr + (ch->desc->showstr_point - ch->desc->showstr_head);
+            free_mem(ch->desc->showstr_head, clamp_size_to_int( head_len + 1u ) );
+            ch->desc->showstr_head = ptr;
+        }
+        else
+        {
+            free_mem(ch->desc->showstr_head, clamp_size_to_int( head_len + 1u ) );
+            ch->desc->showstr_head = NULL;
+        }
+    }
+
+    if (ch->desc->showstr_head == NULL)
+    {
+        const size_t txt_len = strlen( txt );
+
+        ch->desc->showstr_head = alloc_mem( clamp_size_to_int( txt_len + 1u ) );
+        strcpy(ch->desc->showstr_head,txt);
+        ch->desc->showstr_point = ch->desc->showstr_head;
     }
 
     if (ch->desc->showstr_point)
-	show_string(ch->desc,"");
+        show_string(ch->desc,"");
 }
 
 
@@ -2188,11 +2235,11 @@ void show_string(struct descriptor_data *d, char *input)
     {
 	if (d->showstr_head)
 	{
-	    free_mem(d->showstr_head,strlen(d->showstr_head)+1);
-	    d->showstr_head = 0;
-	}
-	d->showstr_point  = 0;
-	return;
+            free_mem(d->showstr_head, clamp_size_to_int( strlen(d->showstr_head) + 1u ) );
+            d->showstr_head = 0;
+        }
+        d->showstr_point  = 0;
+        return;
     }
 
     if (d->character)
@@ -2209,7 +2256,7 @@ void show_string(struct descriptor_data *d, char *input)
 	else if (!*scan || (show_lines > 0 && lines >= show_lines))
 	{
 	    *scan = '\0';
-	    write_to_buffer(d,buffer,strlen(buffer));
+            write_to_buffer(d,buffer,strlen_to_int(buffer));
             chk = d->showstr_point;
             while (isspace(*chk))
                 chk++;
@@ -2218,7 +2265,7 @@ void show_string(struct descriptor_data *d, char *input)
             {
                 if (d->showstr_head)
                 {
-                    free_mem(d->showstr_head,strlen(d->showstr_head)+1);
+                    free_mem(d->showstr_head, clamp_size_to_int( strlen(d->showstr_head) + 1u ) );
                     d->showstr_head = 0;
                 }
                 d->showstr_point  = 0;
