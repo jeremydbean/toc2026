@@ -563,11 +563,12 @@ void game_loop_unix( int control )
     /* Main loop */
     while ( !merc_down )
     {
-	fd_set in_set;
-	fd_set out_set;
-	fd_set exc_set;
-	DESCRIPTOR_DATA *d;
-	int maxdesc;
+        fd_set in_set;
+        fd_set out_set;
+        fd_set exc_set;
+        DESCRIPTOR_DATA *d;
+        int maxdesc;
+        struct timeval loop_start = last_time;
 
 #if defined(MALLOC_DEBUG)
         if ( malloc_verify( ) != 1 )
@@ -578,6 +579,13 @@ void game_loop_unix( int control )
          * Process any queued web-admin actions before polling descriptors.
          */
         process_web_admin_queue();
+
+        {
+            script_loop_prepoll_payload poll_payload;
+
+            poll_payload.last_tick_time = &last_time;
+            script_event_emit( SCRIPT_EVENT_PRE_POLL, &poll_payload );
+        }
 
         /*
          * Poll all active descriptors.
@@ -632,20 +640,29 @@ void game_loop_unix( int control )
 	    d_next = d->next;
 	    d->fcommand = FALSE;
 
-	    if ( FD_ISSET( d->descriptor, &in_set ) )
-	    {
-		if ( d->character != NULL )
-		    d->character->timer = 0;
-		if ( !read_from_descriptor( d ) )
+            if ( FD_ISSET( d->descriptor, &in_set ) )
+            {
+                if ( d->character != NULL )
+                    d->character->timer = 0;
+                if ( !read_from_descriptor( d ) )
 		{
 		    FD_CLR( d->descriptor, &out_set );
 		    if ( d->character != NULL && d->character->level > 1)
 			save_char_obj( d->character );
 		    d->outtop   = 0;
-		    close_socket( d );
-		    continue;
-		}
-	    }
+                    close_socket( d );
+                    continue;
+                }
+                else
+                {
+                    script_input_event_payload input_payload;
+
+                    input_payload.descriptor = d;
+                    input_payload.buffer     = d->inbuf;
+                    input_payload.length     = strlen( d->inbuf );
+                    script_event_emit( SCRIPT_EVENT_INPUT_RECEIVED, &input_payload );
+                }
+            }
 
             if (d->character != NULL && d->character->pcdata != NULL
             &&  d->character->pcdata->dcount > 10)
@@ -655,6 +672,22 @@ void game_loop_unix( int control )
         }
 
         handle_web();
+
+        {
+            script_timer_tick_payload tick_payload;
+            struct timeval            now_time;
+            long                      elapsed;
+
+            gettimeofday( &now_time, NULL );
+            elapsed  = (long)( now_time.tv_sec - loop_start.tv_sec ) * 1000000L;
+            elapsed += (long)( now_time.tv_usec - loop_start.tv_usec );
+            if ( elapsed < 0 )
+                elapsed = 0;
+
+            tick_payload.delta_usec    = elapsed;
+            tick_payload.delta_seconds = (double)elapsed / 1000000.0;
+            script_event_emit( SCRIPT_EVENT_TIMER_TICK, &tick_payload );
+        }
 
         /*
          * Autonomous game motion.
@@ -1736,42 +1769,56 @@ case CON_DEFAULT_CHOICE:
 	d->connected	= CON_PLAYING;
 	reset_char(ch);
 
-	if ( ch->level == 0 )
 	{
-	    ch->level	= 1;
-	    ch->exp	= 0;
-	    ch->hit	= ch->max_hit;
-	    ch->mana	= ch->max_mana;
-	    ch->move	= ch->max_move;
-	    ch->train	 = 3;
-	    ch->practice = 5;
-	    sprintf( buf, "the %s",
-		title_table [ch->class] [ch->level]
-		[ch->sex == SEX_FEMALE ? 1 : 0] );
-	    set_title( ch, buf );
-	    do_outfit(ch,"");
-	    char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
-	    send_to_char("\n\r",ch);
-	    do_help(ch,"NEWBIE INFO");
-	    send_to_char("\n\r",ch);
-	}
-	else if ( ch->in_room != NULL )
-	{
-	    char_to_room( ch, ch->in_room );
-	}
-	else if ( IS_IMMORTAL(ch) )
-	{
-	    char_to_room( ch, get_room_index( ROOM_VNUM_CHAT ) );
-	}
-	else
-	{
-	    char_to_room( ch, get_room_index( ROOM_VNUM_TEMPLE ) );
-	}
+	    bool is_new_character = ( ch->level == 0 );
+	    bool is_reconnect     = ( !is_new_character && ch->was_in_room != NULL );
 
-	act( "$n has entered the game.", ch, NULL, NULL, TO_ROOM );
-	do_look( ch, "auto" );
+	    if ( is_new_character )
+	    {
+	        ch->level   = 1;
+	        ch->exp     = 0;
+	        ch->hit     = ch->max_hit;
+	        ch->mana    = ch->max_mana;
+	        ch->move    = ch->max_move;
+	        ch->train    = 3;
+	        ch->practice = 5;
+	        sprintf( buf, "the %s",
+	            title_table [ch->class] [ch->level]
+	            [ch->sex == SEX_FEMALE ? 1 : 0] );
+	        set_title( ch, buf );
+	        do_outfit(ch,"");
+	        char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
+	        send_to_char("\n\r",ch);
+	        do_help(ch,"NEWBIE INFO");
+	        send_to_char("\n\r",ch);
+	    }
+	    else if ( ch->in_room != NULL )
+	    {
+	        char_to_room( ch, ch->in_room );
+	    }
+	    else if ( IS_IMMORTAL(ch) )
+	    {
+	        char_to_room( ch, get_room_index( ROOM_VNUM_CHAT ) );
+	    }
+	    else
+	    {
+	        char_to_room( ch, get_room_index( ROOM_VNUM_TEMPLE ) );
+	    }
 
-	wizinfo("$N has entered the game.",ch->level);
+	    act( "$n has entered the game.", ch, NULL, NULL, TO_ROOM );
+	    do_look( ch, "auto" );
+
+	    wizinfo("$N has entered the game.",ch->level);
+
+	    {
+	        script_char_login_payload login_payload;
+
+	        login_payload.ch                = ch;
+	        login_payload.is_new_character = is_new_character;
+	        login_payload.is_reconnect     = is_reconnect;
+	        script_event_emit( SCRIPT_EVENT_CHAR_LOGIN, &login_payload );
+	    }
+	}
 	break;
     }
 

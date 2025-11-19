@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include <sys/types.h>
+#include <stddef.h>
 
 #include "dstring.h"
 #include "list.h"
@@ -83,6 +84,59 @@ typedef void SPELL_FUN  ( int sn, int level, CHAR_DATA *ch, void *vo );
 #define DECLARE_DO_FUN( fun )      void fun( CHAR_DATA *ch, char *argument )
 #define DECLARE_SPEC_FUN( fun )    SPEC_FUN fun
 #define DECLARE_SPELL_FUN( fun )   void fun( int sn, int level, CHAR_DATA *ch, void *vo )
+
+/*
+ * Script integration scaffolding. These types model the event hooks exposed to
+ * a future embedded Lua runtime so that game code can emit high-level events
+ * without knowing whether a scripting VM is active.
+ */
+typedef enum
+{
+    SCRIPT_EVENT_PRE_POLL = 0,
+    SCRIPT_EVENT_CHAR_LOGIN,
+    SCRIPT_EVENT_TIMER_TICK,
+    SCRIPT_EVENT_INPUT_RECEIVED,
+    SCRIPT_EVENT_COMMAND_PREPARSE,
+    SCRIPT_EVENT_COMMAND_NOT_FOUND,
+    SCRIPT_EVENT_BEFORE_COMMAND,
+    SCRIPT_EVENT_AFTER_COMMAND
+} script_event_type;
+
+typedef void (*script_event_callback)( script_event_type type, void *payload, void *context );
+
+typedef struct script_timer_tick_payload
+{
+    long   delta_usec;
+    double delta_seconds;
+} script_timer_tick_payload;
+
+typedef struct script_input_event_payload
+{
+    DESCRIPTOR_DATA *descriptor;
+    const char      *buffer;
+    size_t           length;
+} script_input_event_payload;
+
+typedef struct script_char_login_payload
+{
+    CHAR_DATA *ch;
+    bool       is_new_character;
+    bool       is_reconnect;
+} script_char_login_payload;
+
+typedef struct script_command_payload
+{
+    CHAR_DATA *ch;
+    char      *command;
+    size_t     command_capacity;
+    char      *argument;
+    bool       handled;
+} script_command_payload;
+
+typedef struct script_loop_prepoll_payload
+{
+    const struct timeval *last_tick_time;
+} script_loop_prepoll_payload;
 
 /* String and memory management parameters. */
 #define MAX_KEY_HASH             2048
@@ -2181,6 +2235,13 @@ void    extract_room    ( ROOM_INDEX_DATA *pRoom );
 void            init_web(int port);
 void            handle_web(void);
 void            shutdown_web(void);
+
+/* script_event.c */
+void script_event_subscribe( script_event_type type,
+                             script_event_callback callback,
+                             void *context );
+void script_event_unsubscribe( script_event_callback callback, void *context );
+void script_event_emit( script_event_type type, void *payload );
 
 /* interp.c */
 void    interpret       ( CHAR_DATA *ch, char *argument );
