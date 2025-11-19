@@ -34,7 +34,7 @@ void save_rooms( FILE *fp, int start, int end );
  * Other prototypes
  */
 ROOM_INDEX_DATA *       find_location   args( ( CHAR_DATA *ch, char *arg ) );
-void    load_area_file  args( ( char *strArea ) );
+void    load_area_file  args( ( const char *strArea ) );
 
 /*
  * Do Commands
