@@ -904,7 +904,7 @@ void do_prompt(CHAR_DATA *ch, char *argument)
          buf[49] = '\0';
       smash_tilde( buf );
       if (str_suffix("%c",buf))
-        strlcat(buf,"", sizeof(buf));
+        strlcat(buf,"%c", sizeof(buf));
 
    }
 

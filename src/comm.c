@@ -289,6 +289,10 @@ char * crypt                   ( const char *key, const char *salt );
 void    log_auth                ( DESCRIPTOR_DATA *d );
 void    process_web_admin_queue ( void );
 void    write_prompt            ( DESCRIPTOR_DATA *d );
+static const char default_prompt[] = "%C<%hhp %mm %vmv>%c ";
+static void prompt_append_text( char *buf, size_t buflen, const char *text );
+static void prompt_append_number( char *buf, size_t buflen, long value );
+static long prompt_exp_to_level( CHAR_DATA *owner );
 
 /*
  * Other local functions (OS-dependent).
@@ -1230,16 +1234,160 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 }
 
 
+static void prompt_append_text( char *buf, size_t buflen, const char *text )
+{
+    if ( buf == NULL || buflen == 0 || text == NULL || *text == '\0' )
+        return;
+
+    strlcat( buf, text, buflen );
+}
+
+static void prompt_append_number( char *buf, size_t buflen, long value )
+{
+    char tmp[32];
+
+    snprintf( tmp, sizeof(tmp), "%ld", value );
+    prompt_append_text( buf, buflen, tmp );
+}
+
+static long prompt_exp_to_level( CHAR_DATA *owner )
+{
+    long needed;
+
+    if ( owner == NULL || IS_NPC(owner) || owner->pcdata == NULL )
+        return 0;
+
+    if ( owner->level >= LEVEL_HERO )
+        return 0;
+
+    needed = exp_per_level( owner, owner->pcdata->points ) - owner->exp;
+    return needed > 0 ? needed : 0;
+}
+
+void write_prompt( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *display;
+    CHAR_DATA *owner;
+    const char *pattern;
+    char prompt_buf[MAX_STRING_LENGTH];
+    const char *src;
+
+    if ( d == NULL )
+        return;
+
+    display = d->character;
+
+    if ( display == NULL )
+    {
+        write_to_buffer( d, "> ", 0 );
+        return;
+    }
+
+    owner = d->original != NULL ? d->original : display;
+    pattern = ( owner != NULL && owner->prompt != NULL && owner->prompt[0] != '\0' )
+        ? owner->prompt
+        : default_prompt;
+
+    prompt_buf[0] = '\0';
+
+    if ( IS_SET(display->act, PLR_AFK) )
+        prompt_append_text( prompt_buf, sizeof(prompt_buf), "[*AFK*] " );
+
+    for ( src = pattern; src != NULL && *src != '\0'; ++src )
+    {
+        if ( *src != '%' )
+        {
+            char tmp[2];
+            tmp[0] = *src;
+            tmp[1] = '\0';
+            prompt_append_text( prompt_buf, sizeof(prompt_buf), tmp );
+            continue;
+        }
+
+        ++src;
+        if ( *src == '\0' )
+            break;
+
+        switch ( *src )
+        {
+        case '%':
+            prompt_append_text( prompt_buf, sizeof(prompt_buf), "%" );
+            break;
+        case 'h':
+            prompt_append_number( prompt_buf, sizeof(prompt_buf), display->hit );
+            break;
+        case 'H':
+            prompt_append_number( prompt_buf, sizeof(prompt_buf), display->max_hit );
+            break;
+        case 'm':
+            prompt_append_number( prompt_buf, sizeof(prompt_buf), display->mana );
+            break;
+        case 'M':
+            prompt_append_number( prompt_buf, sizeof(prompt_buf), display->max_mana );
+            break;
+        case 'v':
+            prompt_append_number( prompt_buf, sizeof(prompt_buf), display->move );
+            break;
+        case 'V':
+            prompt_append_number( prompt_buf, sizeof(prompt_buf), display->max_move );
+            break;
+        case 'e':
+            prompt_append_number( prompt_buf, sizeof(prompt_buf), prompt_exp_to_level( owner ) );
+            break;
+        case 'X':
+            if ( owner != NULL )
+                prompt_append_number( prompt_buf, sizeof(prompt_buf), owner->exp );
+            break;
+        case 'g':
+            if ( owner != NULL )
+                prompt_append_number( prompt_buf, sizeof(prompt_buf), owner->new_gold );
+            break;
+        case 's':
+            if ( owner != NULL )
+                prompt_append_number( prompt_buf, sizeof(prompt_buf), owner->new_silver );
+            break;
+        case 'r':
+            if ( display->in_room != NULL )
+                prompt_append_text( prompt_buf, sizeof(prompt_buf), display->in_room->name );
+            break;
+        case 'R':
+            if ( display->in_room != NULL )
+                prompt_append_number( prompt_buf, sizeof(prompt_buf), display->in_room->vnum );
+            break;
+        case 'c':
+            prompt_append_text( prompt_buf, sizeof(prompt_buf), color_code( owner, COL_REGULAR ) );
+            break;
+        case 'C':
+            prompt_append_text( prompt_buf, sizeof(prompt_buf), color_code( owner, COL_HIGHLIGHT ) );
+            break;
+        default:
+            break;
+        }
+    }
+
+    if ( owner != NULL && !IS_NPC(owner)
+      && owner->pcdata != NULL && owner->pcdata->color )
+    {
+        prompt_append_text( prompt_buf, sizeof(prompt_buf), color_reset_code() );
+    }
+
+    write_to_buffer( d, prompt_buf, 0 );
+}
+
+
 /*
  * Write to the descriptor's buffer.
  */
 void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 {
+    int prefix_len = 0;
+    const char *prefix = "";
+
     /*
      * Find length in case caller didn't.
      */
     if ( length <= 0 )
-	length = strlen(txt);
+        length = strlen(txt);
 
     /*
      * Initial \n\r if needed.
@@ -1248,18 +1396,29 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
     {
 	d->outbuf[0]    = '\n';
 	d->outbuf[1]    = '\r';
-	d->outtop       = 2;
+        d->outtop       = 2;
+    }
+
+    if ( d->outtop == 0 && d->character != NULL )
+    {
+        CHAR_DATA *owner = d->original != NULL ? d->original : d->character;
+
+        prefix = color_code( owner, COL_REGULAR );
+        if ( prefix != NULL )
+            prefix_len = (int)strlen( prefix );
+        else
+            prefix_len = 0;
     }
 
     /*
      * Expand the buffer as needed.
      */
-    while ( d->outtop + length >= d->outsize )
+    while ( d->outtop + prefix_len + length >= d->outsize )
     {
-	char *outbuf;
+        char *outbuf;
 
         if (d->outsize >= 32000)
-	{
+        {
 	    bug("Buffer overflow. Closing.\n\r",0);
 	    close_socket(d);
 	    return;
@@ -1267,8 +1426,14 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 	outbuf      = alloc_mem( 2 * d->outsize );
 	strncpy( outbuf, d->outbuf, d->outtop );
 	free_mem( d->outbuf, d->outsize );
-	d->outbuf   = outbuf;
-	d->outsize *= 2;
+        d->outbuf   = outbuf;
+        d->outsize *= 2;
+    }
+
+    if ( prefix_len > 0 )
+    {
+        strcpy( d->outbuf + d->outtop, prefix );
+        d->outtop += prefix_len;
     }
 
     /*
