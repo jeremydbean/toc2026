@@ -899,12 +899,12 @@ void do_prompt(CHAR_DATA *ch, char *argument)
    if( !strcmp( argument, "all" ) || !strcmp( argument, "default")) {
         buf[0] = '\0';
    } else {
-      if ( strlen(argument) > 50 )
-         argument[49] = '\0';
-      strcpy( buf, argument );
+      strlcpy( buf, argument, sizeof(buf) );
+      if ( strnlen(buf, sizeof(buf)) > 50 )
+         buf[49] = '\0';
       smash_tilde( buf );
       if (str_suffix("%c",buf))
-        strcat(buf,"");
+        strlcat(buf,"", sizeof(buf));
 
    }
 
@@ -1099,7 +1099,7 @@ void do_exits( CHAR_DATA *ch, char *argument )
     if ( !check_blind( ch ) )
 	return;
 
-    strcpy( buf, fAuto ? "[Exits:" : "Obvious exits:\n\r" );
+    strlcpy( buf, fAuto ? "[Exits:" : "Obvious exits:\n\r", sizeof(buf) );
 
     found = false;
     for ( door = 0; door <= 9; door++ )
@@ -1112,42 +1112,48 @@ void do_exits( CHAR_DATA *ch, char *argument )
 	    found = true;
 	    if ( fAuto )
 	    {
-		strcat( buf, " " );
-		if ( IS_SET(pexit->exit_info, EX_CLOSED) )
-		    strcat(buf, "(");
-		strcat( buf, dir_name[door] );
-		if ( IS_SET(pexit->exit_info, EX_CLOSED) )
-		    strcat(buf, ")");
-	    }
-	    else
-	    {
+                strlcat( buf, " ", sizeof(buf) );
+                if ( IS_SET(pexit->exit_info, EX_CLOSED) )
+                    strlcat(buf, "(", sizeof(buf));
+                strlcat( buf, dir_name[door], sizeof(buf) );
+                if ( IS_SET(pexit->exit_info, EX_CLOSED) )
+                    strlcat(buf, ")", sizeof(buf));
+            }
+            else
+            {
                 if (ch->level < LEVEL_IMMORTAL)
-	    	    sprintf( buf + strlen(buf), "%-5s - %s\n\r",
-		        capitalize( dir_name[door] ),
-			IS_SET(pexit->exit_info, EX_CLOSED)
+                {
+                    size_t len = strlen(buf);
+                    snprintf( buf + len, sizeof(buf) - len, "%-5s - %s\n\r",
+                        capitalize( dir_name[door] ),
+                        IS_SET(pexit->exit_info, EX_CLOSED)
                             ? "Closed door"
                             : (room_is_dark( pexit->u1.to_room )
                             && (!IS_AFFECTED(ch,AFF_INFRARED)))
-		                ?  "Too dark to tell"
-			        : pexit->u1.to_room->name
-		        );
+                                ?  "Too dark to tell"
+                                : pexit->u1.to_room->name
+                        );
+                }
                 else
-	    	    sprintf( buf + strlen(buf), "%-5s - [%d] %s\n\r",
-		        capitalize( dir_name[door] ),
+                {
+                    size_t len = strlen(buf);
+                    snprintf( buf + len, sizeof(buf) - len, "%-5s - [%d] %s\n\r",
+                        capitalize( dir_name[door] ),
                         pexit->u1.to_room->vnum,
-			IS_SET(pexit->exit_info, EX_CLOSED)
+                        IS_SET(pexit->exit_info, EX_CLOSED)
                             ? "Closed door"
-			    : pexit->u1.to_room->name
-		        );
-	    }
-	}
+                            : pexit->u1.to_room->name
+                        );
+                }
+            }
+        }
     }
 
     if ( !found )
-	strcat( buf, fAuto ? " none" : "None.\n\r" );
+        strlcat( buf, fAuto ? " none" : "None.\n\r", sizeof(buf) );
 
     if ( fAuto )
-	strcat( buf, "]\n\r" );
+        strlcat( buf, "]\n\r", sizeof(buf) );
 
     send_to_char( buf, ch );
     return;
@@ -1181,7 +1187,7 @@ void do_score( CHAR_DATA *ch, char *argument )
     char kader[MAX_STRING_LENGTH];
     int i = 0;
 
-    sprintf(kader,"%60s\n\r",
+    snprintf(kader, sizeof(kader),"%60s\n\r",
     "--------------------------------------------------------------");
     send_to_char(kader, ch);
 
@@ -1405,13 +1411,25 @@ void do_score( CHAR_DATA *ch, char *argument )
 
       snprintf(buf, sizeof(buf), "| Pkiller: %3s Flags:",
              (ch->pcdata->pk_state == 1 ? "Yes" : "No "));
-      sprintf(buf + strlen(buf), " %6s ",
-              (IS_SET(ch->act, PLR_WANTED) ? "WANTED" : " "));
-      sprintf(buf + strlen(buf), " %6s ",
-              (IS_SET(ch->act, PLR_JAILED) ? "JAILED" :  " "));
-      sprintf(buf + strlen(buf), " %6s ",
-              (IS_SET(ch->comm,COMM_WHINE) ? "WHINER" : " "));
-      sprintf(buf + strlen(buf), "%13s |\n\r"," ");
+      {
+        size_t len = strlen(buf);
+        snprintf(buf + len, sizeof(buf) - len, " %6s ",
+                (IS_SET(ch->act, PLR_WANTED) ? "WANTED" : " "));
+      }
+      {
+        size_t len = strlen(buf);
+        snprintf(buf + len, sizeof(buf) - len, " %6s ",
+                (IS_SET(ch->act, PLR_JAILED) ? "JAILED" :  " "));
+      }
+      {
+        size_t len = strlen(buf);
+        snprintf(buf + len, sizeof(buf) - len, " %6s ",
+                (IS_SET(ch->comm,COMM_WHINE) ? "WHINER" : " "));
+      }
+      {
+        size_t len = strlen(buf);
+        snprintf(buf + len, sizeof(buf) - len, "%13s |\n\r"," ");
+      }
       send_to_char(buf, ch);
 
 
@@ -1429,14 +1447,26 @@ void do_score( CHAR_DATA *ch, char *argument )
                (IS_SET(ch->act,PLR_HOLYLIGHT) ? "On" : "Off"));
 
         if (IS_SET(ch->act,PLR_WIZINVIS))
-           sprintf(buf + strlen(buf)," Invis level: %3d |", ch->invis_level);
+        {
+           size_t len = strlen(buf);
+           snprintf(buf + len, sizeof(buf) - len," Invis level: %3d |", ch->invis_level);
+        }
         else
-           sprintf(buf + strlen(buf)," Invis level: %3s |", "Off");
+        {
+           size_t len = strlen(buf);
+           snprintf(buf + len, sizeof(buf) - len," Invis level: %3s |", "Off");
+        }
 
         if (IS_SET(ch->act,PLR_CLOAKED))
-           sprintf(buf + strlen(buf)," Cloak level: %3d    |\n\r", ch->cloak_level);
+        {
+           size_t len = strlen(buf);
+           snprintf(buf + len, sizeof(buf) - len," Cloak level: %3d    |\n\r", ch->cloak_level);
+        }
         else
-           sprintf(buf + strlen(buf)," Cloak level: %3s    |\n\r", "Off");
+        {
+           size_t len = strlen(buf);
+           snprintf(buf + len, sizeof(buf) - len," Cloak level: %3s    |\n\r", "Off");
+        }
 
         send_to_char(buf, ch);
       }
@@ -1658,10 +1688,10 @@ void do_help( CHAR_DATA *ch, char *argument )
     argall[0] = '\0';
     while (argument[0] != '\0' )
     {
-	argument = one_argument(argument,argone);
-	if (argall[0] != '\0')
-	    strcat(argall," ");
-	strcat(argall,argone);
+        argument = one_argument(argument,argone);
+        if (argall[0] != '\0')
+            strlcat(argall," ", sizeof(argall));
+        strlcat(argall,argone, sizeof(argall));
     }
 
     for ( pHelp = help_first; pHelp != NULL; pHelp = pHelp->next )
@@ -1797,7 +1827,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
 	 	IS_SET(wch->act,PLR_CLOAKED) ? "[CLOAKED] " : "",
 		IS_SET(wch->act,PLR_AFK) ? "[*AFK*] " : "",
 		wch->name, IS_NPC(wch) ? "" : wch->pcdata->title);
-	    strcat(output,buf);
+            strlcat(output,buf, sizeof(output));
 
             page_to_char(output,ch);
 
@@ -2039,11 +2069,11 @@ void do_who( CHAR_DATA *ch, char *argument )
 	    IS_SET(wch->act, PLR_AFK)     ? "[*AFK*] " : "",
 	    wch->name,
 	    IS_NPC(wch) ? "" : wch->pcdata->title );
-	strcat(output,buf);
+        strlcat(output,buf, sizeof(output));
     }
 
-    sprintf( buf2, "\n\rPlayers found: %d\n\r", nMatch );
-    strcat(output,buf2);
+    snprintf( buf2, sizeof(buf2), "\n\rPlayers found: %d\n\r", nMatch );
+    strlcat(output,buf2, sizeof(output));
     page_to_char( output, ch );
     return;
 }
@@ -2494,12 +2524,12 @@ void set_title( CHAR_DATA *ch, char *title )
 
     if ( title[0] != '.' && title[0] != ',' && title[0] != '!' && title[0] != '?' )
     {
-	buf[0] = ' ';
-	strcpy( buf+1, title );
+        buf[0] = ' ';
+        strlcpy( buf+1, title, sizeof(buf) - 1 );
     }
     else
     {
-	strcpy( buf, title );
+        strlcpy( buf, title, sizeof(buf) );
     }
 
     free_string( ch->pcdata->title );
@@ -2554,16 +2584,16 @@ void do_description( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
-	buf[0] = '\0';
-	smash_tilde( argument );
-	if ( argument[0] == '+' )
-	{
-	    if ( ch->description != NULL )
-		strcat( buf, ch->description );
-	    argument++;
-	    while ( isspace(*argument) )
-		argument++;
-	}
+        buf[0] = '\0';
+        smash_tilde( argument );
+        if ( argument[0] == '+' )
+        {
+            if ( ch->description != NULL )
+                strlcpy( buf, ch->description, sizeof(buf) );
+            argument++;
+            while ( isspace(*argument) )
+                argument++;
+        }
 
 	if ( strlen(buf) + strlen(argument) >= MAX_STRING_LENGTH - 2 )
 	{
@@ -2571,8 +2601,8 @@ void do_description( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	strcat( buf, argument );
-	strcat( buf, "\n\r" );
+        strlcat( buf, argument, sizeof(buf) );
+        strlcat( buf, "\n\r", sizeof(buf) );
 	free_string( ch->description );
 	ch->description = str_dup( buf );
     }
@@ -4284,16 +4314,19 @@ void do_remort( CHAR_DATA *ch, char *arg)
    }
    ind_class = 0;
    had_classes[ind_class] = ch->class;
-   sprintf(saveclass,"%d ",ch->class);
+   snprintf(saveclass, sizeof(saveclass),"%d ",ch->class);
    ind_class += 1;
    if ((ch->class != CLASS_MONK) && (ch->class != CLASS_NECRO)) {
      had_classes[ind_class] = ch->pcdata->guild;
-     sprintf(saveclass+strlen(saveclass)," %d ",ch->pcdata->guild);
+     {
+       size_t len = strlen(saveclass);
+       snprintf(saveclass+len, sizeof(saveclass)-len," %d ",ch->pcdata->guild);
+     }
      ind_class += 1;
    }
    if (ch->pcdata->num_remorts > 0)
    {
-     sprintf(saveclass,"%s %s",str_dup(ch->pcdata->list_remorts),str_dup(saveclass));
+     snprintf(saveclass,sizeof(saveclass),"%s %s",ch->pcdata->list_remorts,saveclass);
 
      to_strip = str_dup(ch->pcdata->list_remorts);
      while (to_strip[0] != '\0')

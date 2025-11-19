@@ -2040,6 +2040,10 @@
 //    long                gold;
 // Wizlist structure.
 //#define LINKDEAD_TIMEOUT_PULSES   (5 * 60 * PULSE_PER_SECOND) /* 5 minutes before linkdead char is quit */
+#define args(list) list
+typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
+typedef bool SPEC_FUN   args( ( CHAR_DATA *mob, CHAR_DATA *ch,
+typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
 void act args( ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type ) );
 char * act2_bit_name args( ( long act_flags, long act_flags2 ) );
 char * act_bit_name args( ( long act_flags ) );
@@ -2119,12 +2123,10 @@ char *  crypt           args( ( const char *key, const char *salt ) );
 char *  crypt           args( ( const char *key, const char *salt ) );
 char *  crypt           args( ( const char *key, const char *salt ) );
 bool damage args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int class ) );
-#define args(list) list
 int dice args( ( int number, int size ) );
 void die_follower args( ( CHAR_DATA *ch ) );
 void do_bounce args( (OBJ_DATA *obj) );
 void do_check_psi args( ( CHAR_DATA *ch, char *argument ) );
-typedef void DO_FUN     args( ( CHAR_DATA *ch, char *argument ) );
 int do_maxload_item args( (int vnum) );
 void do_start_hunting args( ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY) );
 void do_stop_hunting args( ( CHAR_DATA *ch, char *args ) );
@@ -2425,16 +2427,14 @@ void send_to_room args( ( const char *txt, int vnum ) );
 void set_title args( ( CHAR_DATA *ch, char *title ) );
 void show_obj_condition args((OBJ_DATA *obj, CHAR_DATA *ch));
 void show_string args( ( struct descriptor_data *d, char *input) );
-size_t strlcat(char *dst, const char *src, size_t siz);
-size_t strlcpy(char *dst, const char *src, size_t siz);
 int skill_lookup args( ( const char *name ) );
 int slot_lookup args( ( int slot ) );
 void smash_tilde args( ( char *str ) );
 char * speak_filter args( (CHAR_DATA *ch, const char *str) );
-typedef bool SPEC_FUN   args( ( CHAR_DATA *mob, CHAR_DATA *ch,
 SF * spec_lookup args( ( const char *name ) );
 char * special_name args( ( SPEC_FUN *spec ) );
-typedef void SPELL_FUN  args( ( int sn, int level, CHAR_DATA *ch, void *vo ) );
+size_t strlcat(char *dst, const char *src, size_t siz);
+size_t strlcpy(char *dst, const char *src, size_t siz);
 void stop_fighting args( ( CHAR_DATA *ch, bool fBoth ) );
 void stop_follower args( ( CHAR_DATA *ch ) );
 bool str_cmp args( ( const char *astr, const char *bstr ) );

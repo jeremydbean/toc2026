@@ -58,3 +58,5 @@
 - String safety refactor log (cont.): converted the flag/bit-name builders in `src/handler.c` from repeated `strcat` calls to bounded `strlcat` to keep the static buffers within their 512-byte limits. Remaining sweep: other `src/*.c` modules still contain legacy `sprintf`/`strcpy` usage that needs refactoring.
 
 - String safety follow-up: `src/magic.c` now uses bounded `snprintf`/`strlcat` patterns, but other modules still rely on legacy string routines (`src/db.c`, `src/fight.c`, `src/act_obj.c`, `src/act_info.c`, `src/comm.c`, `src/interp.c`). Continue the buffer safety sweep in those files.
+
+- Next string-safety pass: `src/fight.c`, `src/act_obj.c`, `src/db.c`, and the commented prompt stub in `src/comm.c` still use `sprintf`/`strcat` patterns; convert them to bounded helpers with `sizeof` limits.
