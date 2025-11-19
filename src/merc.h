@@ -163,6 +163,12 @@ struct  ban_data
     char * name;
 };
 
+#define BAN_SUFFIX      0
+#define BAN_PREFIX      1
+#define BAN_NEWBIES     2
+#define BAN_ALL         3
+#define BAN_PERMIT      4
+
 /* Pkill list data */
 struct pkill_list_data
 {

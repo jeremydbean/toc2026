@@ -66,7 +66,7 @@ static bool can_chgrp( void )
             available = true;
         else
         {
-            snprintf(log_buf, sizeof(log_buf),
+            snprintf(log_buf, 2 * MAX_INPUT_LENGTH,
                      "save_char_obj: configured CHGRP_TO group '%s' missing; skipping chgrp",
                      CHGRP_TO);
             log_string(log_buf);
