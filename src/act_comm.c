@@ -59,7 +59,7 @@ static void safe_strcpy( char *dest, size_t dest_size, const char *src )
         return;
     }
 
-    copy_len = strnlen( src, dest_size - 1 );
+    copy_len = toc_strnlen( src, dest_size - 1 );
     strncpy( dest, src, copy_len );
     dest[copy_len] = '\0';
 }
@@ -71,7 +71,7 @@ static void safe_strcat( char *dest, size_t dest_size, const char *src )
     if ( dest == NULL || dest_size == 0 || src == NULL )
         return;
 
-    dest_len = strnlen( dest, dest_size - 1 );
+    dest_len = toc_strnlen( dest, dest_size - 1 );
     if ( dest_len >= dest_size - 1 )
         return;
 
