@@ -2129,7 +2129,7 @@ void reset_area( AREA_DATA *pArea )
                  REMOVE_BIT(pexit->exit_info, EX_PICKPROOF);
                SET_BIT( pexit->exit_info, EX_TRAPPED);
                pexit->trap = dice(1,10);
-               sprintf(trap_buf,"New Trap: [Room: %d]",pRoomIndex->vnum);
+               snprintf(trap_buf, sizeof(trap_buf),"New Trap: [Room: %d]",pRoomIndex->vnum);
                wizinfo(trap_buf,LEVEL_IMMORTAL);
              }
             last = true;
@@ -3740,7 +3740,7 @@ void do_areas( CHAR_DATA *ch, char *argument )
  
     for ( iArea = 0; iArea < iAreaHalf; iArea++ )
     {
-        sprintf( buf, "%-39s%-39s\n\r",
+        snprintf(buf, sizeof(buf), "%-39s%-39s\n\r",
             pArea1->name, (pArea2 != NULL) ? pArea2->name : "" );
         send_to_char( buf, ch );
         pArea1 = pArea1->next;
@@ -3758,26 +3758,26 @@ void do_memory( CHAR_DATA *ch, char *argument )
     UNUSED_PARAM(argument);
     char buf[MAX_STRING_LENGTH];
  
-    sprintf( buf, "Affects %5d\n\r", top_affect    ); send_to_char( buf, ch );
-    sprintf( buf, "Areas   %5d\n\r", top_area      ); send_to_char( buf, ch );
-    sprintf( buf, "ExDes   %5d\n\r", top_ed        ); send_to_char( buf, ch );
-    sprintf( buf, "Exits   %5d\n\r", top_exit      ); send_to_char( buf, ch );
-    sprintf( buf, "Helps   %5d\n\r", top_help      ); send_to_char( buf, ch );
-    sprintf( buf, "Socials %5d\n\r", social_count  ); send_to_char( buf, ch );
-    sprintf( buf, "Mobs    %5d(%d new format)\n\r", top_mob_index,newmobs ); 
+    snprintf(buf, sizeof(buf), "Affects %5d\n\r", top_affect    ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Areas   %5d\n\r", top_area      ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "ExDes   %5d\n\r", top_ed        ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Exits   %5d\n\r", top_exit      ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Helps   %5d\n\r", top_help      ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Socials %5d\n\r", social_count  ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Mobs    %5d(%d new format)\n\r", top_mob_index,newmobs ); 
     send_to_char( buf, ch );
-    sprintf( buf, "(in use)%5d\n\r", mobile_count  ); send_to_char( buf, ch );
-    sprintf( buf, "Objs    %5d(%d new format)\n\r", top_obj_index,newobjs ); 
+    snprintf(buf, sizeof(buf), "(in use)%5d\n\r", mobile_count  ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Objs    %5d(%d new format)\n\r", top_obj_index,newobjs ); 
     send_to_char( buf, ch );
-    sprintf( buf, "Resets  %5d\n\r", top_reset     ); send_to_char( buf, ch );
-    sprintf( buf, "Rooms   %5d\n\r", top_room      ); send_to_char( buf, ch );
-    sprintf( buf, "Shops   %5d\n\r", top_shop      ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Resets  %5d\n\r", top_reset     ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Rooms   %5d\n\r", top_room      ); send_to_char( buf, ch );
+    snprintf(buf, sizeof(buf), "Shops   %5d\n\r", top_shop      ); send_to_char( buf, ch );
  
-    sprintf( buf, "Strings %5d strings of %7d bytes (max %d).\n\r",
+    snprintf(buf, sizeof(buf), "Strings %5d strings of %7d bytes (max %d).\n\r",
         nAllocString, sAllocString, MAX_STRING );
     send_to_char( buf, ch );
 
-    sprintf( buf, "Perms   %5d blocks  of %7d bytes.\n\r",
+    snprintf(buf, sizeof(buf), "Perms   %5d blocks  of %7d bytes.\n\r",
         nAllocPerm, sAllocPerm );
     send_to_char( buf, ch );
  
@@ -3966,16 +3966,16 @@ static char* stat_mob(CHAR_DATA *victim)
     char buf[MAX_STRING_LENGTH];
     AFFECT_DATA *paf;
  
-    sprintf( bigbuf, "Name: %s.\n",
+    snprintf(bigbuf, sizeof(bigbuf), "Name: %s.\n",
         victim->name );
  
-    sprintf( buf, "Short description: %s\nLong  description: %s",
+    snprintf(buf, sizeof(buf), "Short description: %s\nLong  description: %s",
         victim->short_descr,
         victim->long_descr[0] != '\0' ? victim->long_descr : "(none)\n" );
     buf[strlen(buf)]='\0';   /* get rid of the \r */
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
-    sprintf( buf, "Vnum: %d  Format: %s  Race: %s  Sex: %s  Room: %d\n",
+    snprintf(buf, sizeof(buf), "Vnum: %d  Format: %s  Race: %s  Sex: %s  Room: %d\n",
         IS_NPC(victim) ? victim->pIndexData->vnum : 0,
 	IS_NPC(victim) ? victim->pIndexData->new_format ? "new" : "old" : "pc",
         race_table[victim->race].name,
@@ -3983,16 +3983,16 @@ static char* stat_mob(CHAR_DATA *victim)
         victim->sex == SEX_FEMALE  ? "female" : "neutral",
         victim->in_room == NULL    ?        0 : victim->in_room->vnum
         );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if (IS_NPC(victim))
     {
-        sprintf(buf,"Count: %d  Killed: %d\n",
+        snprintf(buf, sizeof(buf),"Count: %d  Killed: %d\n",
             victim->pIndexData->count,victim->pIndexData->killed);
-        strcat(bigbuf, buf);
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
-    sprintf( buf,
+    snprintf(buf, sizeof(buf),
         "Str: %d(%d)  Int: %d(%d)  Wis: %d(%d)  Dex: %d(%d)  Con: %d(%d)\n",
         victim->perm_stat[STAT_STR],
         get_curr_stat(victim,STAT_STR),
@@ -4004,131 +4004,131 @@ static char* stat_mob(CHAR_DATA *victim)
         get_curr_stat(victim,STAT_DEX),
         victim->perm_stat[STAT_CON],
         get_curr_stat(victim,STAT_CON) );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
-    sprintf( buf, "Hp: %d/%d  Mana: %d/%d  Move: %d/%d  Practices: %d\n",
+    snprintf(buf, sizeof(buf), "Hp: %d/%d  Mana: %d/%d  Move: %d/%d  Practices: %d\n",
         victim->hit,         victim->max_hit,
         victim->mana,        victim->max_mana,
         victim->move,        victim->max_move,
         IS_NPC(victim) ? 0 : victim->practice );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
-    sprintf( buf,
+    snprintf(buf, sizeof(buf),
         "Lv: %d  Class: %s  Guild: %s  Align: %d  Exp: %ld\n",
         victim->level,
         IS_NPC(victim) ? "mobile" : class_table[victim->class].name,
 	IS_NPC(victim) ? "none" : get_guildname(victim->pcdata->guild),
         victim->alignment,
         victim->exp );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
 
-    sprintf(buf,"Money: Platinum: %ld , Gold: %ld, Silver: %ld, Copper: %ld\n",
+    snprintf(buf, sizeof(buf),"Money: Platinum: %ld , Gold: %ld, Silver: %ld, Copper: %ld\n",
             victim->new_platinum, victim->new_gold, victim->new_silver, victim->new_copper);
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
     
-    sprintf(buf,"Armor: pierce: %d  bash: %d  slash: %d  magic: %d\n",
+    snprintf(buf, sizeof(buf),"Armor: pierce: %d  bash: %d  slash: %d  magic: %d\n",
             GET_AC(victim,AC_PIERCE), GET_AC(victim,AC_BASH),
             GET_AC(victim,AC_SLASH),  GET_AC(victim,AC_EXOTIC));
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
-    sprintf( buf, "Hit: %d  Dam: %d  Saves: %d  Position: %d  Wimpy: %d\n",
+    snprintf(buf, sizeof(buf), "Hit: %d  Dam: %d  Saves: %d  Position: %d  Wimpy: %d\n",
         GET_HITROLL(victim), GET_DAMROLL(victim), victim->saving_throw,
         victim->position,    victim->wimpy );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if (IS_NPC(victim) && victim->pIndexData->new_format)
     {
-        sprintf(buf, "Damage: %dd%d  Message:  %s\n",
+        snprintf(buf, sizeof(buf), "Damage: %dd%d  Message:  %s\n",
             victim->damage[DICE_NUMBER],victim->damage[DICE_TYPE],
             attack_table[victim->dam_type].name);
-	strcat(bigbuf, buf);
+	strlcat(bigbuf, buf, sizeof(bigbuf));
     }
-    sprintf( buf, "Fighting: %s\n",
+    snprintf(buf, sizeof(buf), "Fighting: %s\n",
         victim->fighting ? victim->fighting->name : "(none)" );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if ( !IS_NPC(victim) )
     {
-        sprintf( buf,
+        snprintf(buf, sizeof(buf),
             "Thirst: %d  Full: %d  Drunk: %d\n",
             victim->pcdata->condition[COND_THIRST],
             victim->pcdata->condition[COND_FULL],
             victim->pcdata->condition[COND_DRUNK] );
-        strcat(bigbuf, buf);
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
-    sprintf( buf, "Carry number: %d  Carry weight: %d\n",
+    snprintf(buf, sizeof(buf), "Carry number: %d  Carry weight: %d\n",
         victim->carry_number, query_carry_weight(victim) );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
 
     if (!IS_NPC(victim))
     {
-        sprintf( buf,
+        snprintf(buf, sizeof(buf),
             "Age: %d  Played: %d  Last Level: %d  Timer: %d\n",
             get_age(victim),
             (int) (victim->played + current_time - victim->logon) / 3600,
             victim->pcdata->last_level,
             victim->timer );
-        strcat(bigbuf, buf);
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
-    sprintf(buf, "Act: %s\n",act_bit_name(victim->act));
-    strcat(bigbuf, buf);
+    snprintf(buf, sizeof(buf), "Act: %s\n",act_bit_name(victim->act));
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if (victim->comm)
     {
-        sprintf(buf,"Comm: %s\n",comm_bit_name(victim->comm));
-        strcat(bigbuf, buf);
+        snprintf(buf, sizeof(buf),"Comm: %s\n",comm_bit_name(victim->comm));
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
 
     if (IS_NPC(victim) && victim->off_flags)
     {
-        sprintf(buf, "Offense: %s\n",off_bit_name(victim->off_flags));
-        strcat(bigbuf, buf);
+        snprintf(buf, sizeof(buf), "Offense: %s\n",off_bit_name(victim->off_flags));
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     if (victim->imm_flags)
     {
-        sprintf(buf, "Immune: %s\n",imm_bit_name(victim->imm_flags));
-        strcat(bigbuf, buf);
+        snprintf(buf, sizeof(buf), "Immune: %s\n",imm_bit_name(victim->imm_flags));
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     if (victim->res_flags)
     {
-        sprintf(buf, "Resist: %s\n", imm_bit_name(victim->res_flags));
-        strcat(bigbuf, buf);
+        snprintf(buf, sizeof(buf), "Resist: %s\n", imm_bit_name(victim->res_flags));
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     if (victim->vuln_flags)
     {
-        sprintf(buf, "Vulnerable: %s\n", imm_bit_name(victim->vuln_flags));
-        strcat(bigbuf, buf);
+        snprintf(buf, sizeof(buf), "Vulnerable: %s\n", imm_bit_name(victim->vuln_flags));
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
-    sprintf(buf, "Form: %s\nParts: %s\n",
+    snprintf(buf, sizeof(buf), "Form: %s\nParts: %s\n",
         form_bit_name(victim->form), part_bit_name(victim->parts));
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if (victim->affected_by)
     {
-        sprintf(buf, "Affected by %s\n",
+        snprintf(buf, sizeof(buf), "Affected by %s\n",
             affect_bit_name(victim->affected_by));
-        strcat(bigbuf, buf);
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
-    sprintf( buf, "Master: %s  Leader: %s  Pet: %s\n",
+    snprintf(buf, sizeof(buf), "Master: %s  Leader: %s  Pet: %s\n",
         victim->master      ? victim->master->name   : "(none)",
         victim->leader      ? victim->leader->name   : "(none)",
         victim->pet         ? victim->pet->name      : "(none)");
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if ( IS_NPC(victim) && victim->spec_fun != 0 )
-        strcat(bigbuf, "Mobile has special procedure.\n" );
+        strlcat(bigbuf, "Mobile has special procedure.\n" , sizeof(bigbuf));
  
     for ( paf = victim->affected; paf != NULL; paf = paf->next )
     {
-        sprintf( buf,
+        snprintf(buf, sizeof(buf),
             "Spell: '%s' modifies %s by %d for %d hours with bits %s, level %d.\n\r",
             skill_table[(int) paf->type].name,
             affect_loc_name( paf->location ),
@@ -4138,9 +4138,9 @@ static char* stat_mob(CHAR_DATA *victim)
             affect2_bit_name(paf->bitvector2),
             paf->level
             );
-        strcat(bigbuf, buf);
+        strlcat(bigbuf, buf, sizeof(bigbuf));
     }
-    strcat(bigbuf, "\n");
+    strlcat(bigbuf, "\n", sizeof(bigbuf));
 
     return bigbuf;
 }
@@ -4178,7 +4178,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
         }
         start = atoi(arg1);
         finish = atoi(arg2);
-        sprintf(buf, "Dumping mobs and objs from vnums %d to %d.\n\r", 
+        snprintf(buf, sizeof(buf), "Dumping mobs and objs from vnums %d to %d.\n\r", 
                 start, finish);
         send_to_char(buf, ch);
     }
@@ -4368,7 +4368,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
                 if (firstone)
                 {
                     firstone = 0;
-                    sprintf(filename,"objdmp.%d", objnum);
+                    snprintf(filename, sizeof(filename),"objdmp.%d", objnum);
                     fp = fopen(filename,"w");
  
                     fprintf(fp,"\n%d Object Stats\n", objnum);

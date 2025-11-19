@@ -37,6 +37,47 @@
 #include "interp.h"
 #include "db.h" // For resolving declarations
 
+static void safe_strcpy( char *dest, size_t dest_size, const char *src );
+static void safe_strcat( char *dest, size_t dest_size, const char *src );
+
+static void safe_strcpy( char *dest, size_t dest_size, const char *src )
+{
+    size_t copy_len;
+
+    if ( dest == NULL || dest_size == 0 )
+        return;
+
+    if ( src == NULL )
+    {
+        dest[0] = '\0';
+        return;
+    }
+
+    if ( dest_size == 1 )
+    {
+        dest[0] = '\0';
+        return;
+    }
+
+    copy_len = strnlen( src, dest_size - 1 );
+    strncpy( dest, src, copy_len );
+    dest[copy_len] = '\0';
+}
+
+static void safe_strcat( char *dest, size_t dest_size, const char *src )
+{
+    size_t dest_len;
+
+    if ( dest == NULL || dest_size == 0 || src == NULL )
+        return;
+
+    dest_len = strnlen( dest, dest_size - 1 );
+    if ( dest_len >= dest_size - 1 )
+        return;
+
+    strncat( dest, src, dest_size - dest_len - 1 );
+}
+
 /* RT code to delete yourself */
 
 void do_delet( CHAR_DATA *ch, char *argument)
@@ -63,7 +104,7 @@ void do_delete( CHAR_DATA *ch, char *argument)
 	}
 	else
 	{
-	    sprintf( strsave, "%s%s", PLAYER_DIR, capitalize( ch->name ) );
+            snprintf( strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
             log_string("[DELETE] Character self-deleted.");
 	    stop_fighting(ch,TRUE);
 	    do_quit(ch,"");
@@ -953,7 +994,7 @@ void do_emote( CHAR_DATA *ch, char *argument )
     {
         plast = buf + strlen(buf) - 1;
         if ( isalpha(*plast) )
-            strcat( buf, "." );
+            safe_strcat( buf, sizeof(buf), "." );
     }
 
     act( buf, ch, NULL, NULL, TO_ROOM );
@@ -994,7 +1035,7 @@ void do_pmote( CHAR_DATA *ch, char *argument )
 	    continue;
 	}
 
-	strcpy(temp,argument);
+        safe_strcpy(temp, sizeof(temp), argument);
 	temp[strlen(argument) - strlen(letter)] = '\0';
 	last[0] = '\0';
 	name = vch->name;
@@ -1003,7 +1044,7 @@ void do_pmote( CHAR_DATA *ch, char *argument )
 	{ 
 	    if (*letter == '\'' && matches == strlen(vch->name))
 	    {
-		strcat(temp,"r");
+                safe_strcat(temp,sizeof(temp),"r");
 		continue;
 	    }
 
@@ -1024,7 +1065,7 @@ void do_pmote( CHAR_DATA *ch, char *argument )
 		name++;
 		if (matches == strlen(vch->name))
 		{
-		    strcat(temp,"you");
+                    safe_strcat(temp,sizeof(temp),"you");
 		    last[0] = '\0';
 		    name = vch->name;
 		    continue;
@@ -1034,7 +1075,7 @@ void do_pmote( CHAR_DATA *ch, char *argument )
 	    }
 
 	    matches = 0;
-	    strcat(temp,last);
+            safe_strcat(temp,sizeof(temp),last);
 	    strncat(temp,letter,1);
 	    last[0] = '\0';
 	    name = vch->name;
@@ -1344,7 +1385,7 @@ void do_quit( CHAR_DATA *ch, char *argument )
     send_to_char( 
 	"Alas, all good things must come to an end.\n\r",ch);
     act( "$n has left the game.", ch, NULL, NULL, TO_ROOM );
-    sprintf( log_buf, "%s has quit.", ch->name );
+    snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s has quit.", ch->name );
     log_string( log_buf );
     log_string("[QUIT] Player rejoined the real world.");
     
