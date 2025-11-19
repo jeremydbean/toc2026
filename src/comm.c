@@ -2383,8 +2383,42 @@ void send_to_char( const char *txt, CHAR_DATA *ch )
 /*
  * Write to a specific room
  */
-void send_to_room( const char *txt, int vnum )
+static bool act_recipient_supports_color( const CHAR_DATA *ch )
 {
+    return ( ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->color );
+}
+
+static void act_append_color_marker( DString *buf, const CHAR_DATA *recipient, unsigned char slot )
+{
+    const char *sequence;
+
+    if ( buf == NULL )
+    {
+        return;
+    }
+
+    if ( slot == 0 )
+    {
+        if ( !act_recipient_supports_color( recipient ) )
+        {
+            return;
+        }
+
+        sequence = color_reset_code();
+    }
+    else
+    {
+        sequence = color_code( recipient, slot );
+    }
+
+    if ( sequence != NULL && *sequence != '\0' )
+    {
+        dstring_append_cstr( buf, sequence );
+    }
+}
+
+void send_to_room( const char *txt, int vnum )
+{ 
     CHAR_DATA *ch;
     LIST_ITERATOR iter;
 
@@ -2581,6 +2615,19 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
         str     = dstring_cstr( format );
         while ( *str != '\0' )
         {
+            if ( *str == '\x02' )
+            {
+                ++str;
+                if ( *str == '\0' )
+                {
+                    break;
+                }
+
+                act_append_color_marker( &buf, to, (unsigned char)*str );
+                ++str;
+                continue;
+            }
+
             if ( *str != '$' )
             {
                 dstring_append_char( &buf, *str );
