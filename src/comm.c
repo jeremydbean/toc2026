@@ -40,6 +40,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <time.h>
 
 #include "merc.h"
 #include "interp.h"
@@ -297,7 +298,7 @@ void    game_loop_unix          ( int control );
 
 int main( int argc, char **argv )
 {
-    struct timeval now_time;
+    time_t now_time;
     int port;
 
     int control;
@@ -305,8 +306,8 @@ int main( int argc, char **argv )
     /*
      * Init time.
      */
-    gettimeofday( &now_time, NULL );
-    current_time = (time_t) now_time.tv_sec;
+    time( &now_time );
+    current_time = now_time;
     strlcpy( str_boot_time, ctime( &current_time ), sizeof(str_boot_time) );
 
     /*
@@ -448,7 +449,7 @@ void game_loop_mac_msdos( void )
     static DESCRIPTOR_DATA dcon;
 
     gettimeofday( &last_time, NULL );
-    current_time = (time_t) last_time.tv_sec;
+    time( &current_time );
 
     /*
      * New_descriptor analogue.
@@ -532,8 +533,8 @@ void game_loop_mac_msdos( void )
 		break;
 	}
 
-	gettimeofday( &last_time, NULL );
-	current_time = (time_t) last_time.tv_sec;
+        gettimeofday( &last_time, NULL );
+        time( &current_time );
     }
 
     return;
@@ -550,7 +551,7 @@ void game_loop_unix( int control )
 
     signal( SIGPIPE, SIG_IGN );
     gettimeofday( &last_time, NULL );
-    current_time = (time_t) last_time.tv_sec;
+    time( &current_time );
 
     /* Main loop */
     while ( !merc_down )
@@ -671,43 +672,41 @@ void game_loop_unix( int control )
 	 * Sleep( wait_time ) using select for the sleep.
          * This logic prevents busy-waiting and high CPU usage.
 	 */
-	{
-	    struct timeval now_time;
-	    long secDelta;
-	    long usecDelta;
+        {
+            struct timeval now_time;
+            struct timeval next_time;
+            struct timeval stall_time;
 
-	    gettimeofday( &now_time, NULL );
-	    usecDelta   = ((int) last_time.tv_usec) - ((int) now_time.tv_usec)
-			+ 1000000 / PULSE_PER_SECOND;
-	    secDelta    = ((int) last_time.tv_sec ) - ((int) now_time.tv_sec );
-	    while ( usecDelta < 0 )
-	    {
-		usecDelta += 1000000;
-		secDelta  -= 1;
-	    }
+            next_time = last_time;
+            next_time.tv_usec += 1000000 / PULSE_PER_SECOND;
+            while ( next_time.tv_usec >= 1000000 )
+            {
+                next_time.tv_usec -= 1000000;
+                next_time.tv_sec  += 1;
+            }
 
-	    while ( usecDelta >= 1000000 )
-	    {
-		usecDelta -= 1000000;
-		secDelta  += 1;
-	    }
+            gettimeofday( &now_time, NULL );
+            stall_time.tv_sec  = next_time.tv_sec  - now_time.tv_sec;
+            stall_time.tv_usec = next_time.tv_usec - now_time.tv_usec;
 
-	    if ( secDelta > 0 || ( secDelta == 0 && usecDelta > 0 ) )
-	    {
-		struct timeval stall_time;
+            while ( stall_time.tv_usec < 0 )
+            {
+                stall_time.tv_usec += 1000000;
+                stall_time.tv_sec  -= 1;
+            }
 
-		stall_time.tv_usec = usecDelta;
-		stall_time.tv_sec  = secDelta;
-		if ( select( 0, NULL, NULL, NULL, &stall_time ) < 0 && errno != EINTR )
-		{
-		    perror( "Game_loop: select: stall" );
-		    exit( 1 );
-		}
-	    }
-	}
+            if ( stall_time.tv_sec > 0 || ( stall_time.tv_sec == 0 && stall_time.tv_usec > 0 ) )
+            {
+                if ( select( 0, NULL, NULL, NULL, &stall_time ) < 0 && errno != EINTR )
+                {
+                    perror( "Game_loop: select: stall" );
+                    exit( 1 );
+                }
+            }
+        }
 
-	gettimeofday( &last_time, NULL );
-	current_time = (time_t) last_time.tv_sec;
+        gettimeofday( &last_time, NULL );
+        time( &current_time );
     }
 
     return;
