@@ -61,12 +61,6 @@ void do_note( CHAR_DATA *ch, char *argument )
     stub_notify( ch );
 }
 
-void do_outfit( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
-
 void do_castle( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
