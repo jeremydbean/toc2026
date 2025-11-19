@@ -92,9 +92,10 @@ void do_areaload( CHAR_DATA *ch, char *argument )
         send_to_char( "You don't have an area file saved!\n\r", ch);
         return;
     }
-    load_area_file(strsave);
 
+    /* Close the existence check handle before loading the area again. */
     fclose( fp );
+    load_area_file(strsave);
     send_to_char( "Area loaded.\n\r", ch);
 }
 
