@@ -1,17 +1,6 @@
 #include "merc.h"
 #include "interp.h"
 
-void write_prompt( DESCRIPTOR_DATA *d )
-{
-    if ( d == NULL )
-        return;
-
-    if ( d->character != NULL )
-        write_to_buffer( d, d->character->prompt != NULL ? d->character->prompt : "> ", 0 );
-    else
-        write_to_buffer( d, "> ", 0 );
-}
-
 void init_web( int port )
 {
     UNUSED_PARAM(port);
@@ -91,12 +80,6 @@ void do_cgos( CHAR_DATA *ch, char *argument )
 }
 
 void do_ignore( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
-
-void do_color( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
     stub_notify( ch );
