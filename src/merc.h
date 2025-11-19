@@ -339,6 +339,9 @@ struct col_disp_table_type
   char *ansi_str;
 };
 
+extern const struct col_table_type col_table[];
+extern const struct col_disp_table_type col_disp_table[];
+
 /* Descriptor (channel) structure. */
 struct  descriptor_data
 {
@@ -2288,6 +2291,12 @@ bool    parse_gen_groups ( CHAR_DATA *ch,char *argument );
 void    list_group_costs ( CHAR_DATA *ch );
 void    list_group_known ( CHAR_DATA *ch );
 int     exp_per_level   ( CHAR_DATA *ch, int points );
+int     color_display_count ( void );
+const char *color_reset_code( void );
+const struct col_table_type *color_category_lookup( const char *name );
+int     color_display_lookup( const char *name );
+void    color_update_defaults( CHAR_DATA *ch, bool overwrite );
+const char *color_code      ( const CHAR_DATA *ch, int color_slot );
 void    check_improve   ( CHAR_DATA *ch, int sn, bool success, int multiplier );
 int     group_lookup    (const char *name);
 void    gn_add          ( CHAR_DATA *ch, int gn);

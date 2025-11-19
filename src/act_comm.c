@@ -182,6 +182,136 @@ void do_channels( CHAR_DATA *ch, char *argument )
 
 }
 
+void do_color( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    const struct col_table_type *category;
+    int idx;
+
+    if ( IS_NPC(ch) )
+    {
+        send_to_char("NPCs have no use for ANSI settings.\n\r", ch);
+        return;
+    }
+
+    argument = one_argument( argument, arg1 );
+    argument = one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' )
+    {
+        snprintf( buf, sizeof(buf), "Color is currently %s.\n\r",
+            ch->pcdata->color ? "ON" : "OFF" );
+        send_to_char( buf, ch );
+        send_to_char( "Channel settings:\n\r", ch );
+
+        for ( idx = 0; col_table[idx].name != NULL; ++idx )
+        {
+            const char *sample;
+            const char *reset;
+            int slot;
+
+            if ( col_table[idx].imm_only && !IS_IMMORTAL(ch) )
+                continue;
+
+            slot = ch->pcdata->col_table[col_table[idx].num];
+            if ( slot < 0 || slot >= color_display_count() )
+                slot = col_table[idx].def;
+
+            sample = col_disp_table[slot].ansi_str;
+            reset = ( sample != NULL && *sample != '\0' ) ? color_reset_code() : "";
+
+            snprintf( buf, sizeof(buf), "  %-12s : %s%s%s\n\r",
+                col_table[idx].name,
+                sample != NULL ? sample : "",
+                col_disp_table[slot].type,
+                reset );
+            send_to_char( buf, ch );
+        }
+
+        send_to_char(
+            "Use 'color on', 'color off', 'color reset', 'color list',\n\r"
+            "or 'color <group> <color>'.\n\r",
+            ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "on" ) )
+    {
+        ch->pcdata->color = true;
+        send_to_char( "ANSI colors enabled.\n\r", ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "off" ) )
+    {
+        ch->pcdata->color = false;
+        send_to_char( "ANSI colors disabled.\n\r", ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "reset" ) )
+    {
+        color_update_defaults( ch, true );
+        send_to_char( "Color preferences reset to defaults.\n\r", ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "list" ) )
+    {
+        send_to_char( "Available colors:\n\r", ch );
+        for ( idx = 0; idx < color_display_count(); ++idx )
+        {
+            const char *sample = col_disp_table[idx].ansi_str;
+            const char *reset = ( sample != NULL && *sample != '\0' ) ? color_reset_code() : "";
+            snprintf( buf, sizeof(buf), "  %-13s %s%s%s\n\r",
+                col_disp_table[idx].type,
+                sample != NULL ? sample : "",
+                col_disp_table[idx].type,
+                reset );
+            send_to_char( buf, ch );
+        }
+        return;
+    }
+
+    if ( arg2[0] == '\0' )
+    {
+        send_to_char( "Usage: color <group> <color>\n\r", ch );
+        return;
+    }
+
+    category = color_category_lookup( arg1 );
+    if ( category == NULL )
+    {
+        send_to_char( "Unknown color group. Use 'color' for a full list.\n\r", ch );
+        return;
+    }
+
+    if ( category->imm_only && !IS_IMMORTAL(ch) )
+    {
+        send_to_char( "That group is reserved for immortals.\n\r", ch );
+        return;
+    }
+
+    idx = color_display_lookup( arg2 );
+    if ( idx < 0 )
+    {
+        send_to_char( "Unknown color. Use 'color list' to see valid values.\n\r", ch );
+        return;
+    }
+
+    ch->pcdata->col_table[category->num] = idx;
+
+    snprintf( buf, sizeof(buf), "%s color set to %s%s%s.\n\r",
+        capitalize( category->name ),
+        col_disp_table[idx].ansi_str,
+        col_disp_table[idx].type,
+        col_disp_table[idx].ansi_str[0] != '\0' ? color_reset_code() : "" );
+    send_to_char( buf, ch );
+}
+
+
 /* RT deaf blocks all tells */
 
 void do_deaf( CHAR_DATA *ch, char *argument )

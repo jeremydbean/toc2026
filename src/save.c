@@ -26,7 +26,6 @@
 extern  int     _filbuf         args( (FILE *) );
 #endif
 
-extern struct col_table_type col_table[];
 extern const WERE_FORM were_types[];
 
 /*
@@ -764,6 +763,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->condition[COND_FULL]	= 48;
     ch->pcdata->has_saved		= false;
     ch->pcdata->confirm_unsaved_quit	= false;
+    ch->pcdata->color		= true;
 
     for (i=0; i<MAX_ALIASES; i++)
     {
@@ -867,6 +867,11 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 
     if (found && !ch->pcdata->has_saved)
         ch->pcdata->has_saved = true;
+
+    if (!found)
+        ch->pcdata->color = true;
+
+    color_update_defaults( ch, !found );
 
     return found;
 }
@@ -1036,10 +1041,11 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	    idx = fread_number( fp );
 	    col = fread_number( fp );
-	    if ((idx <= COL_MAX) && (idx >= 0) && (col >= 0) && (col <= 14))
-	    {
-	      ch->pcdata->col_table[idx] = col;
-	    }
+            if ((idx <= COL_MAX) && (idx >= 0) && (col >= 0)
+            &&  (col < color_display_count()))
+            {
+              ch->pcdata->col_table[idx] = col;
+            }
 	    fMatch = true;
 	    break;
 	    }
