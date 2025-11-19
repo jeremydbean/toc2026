@@ -1937,7 +1937,8 @@ void reset_area( AREA_DATA *pArea )
            if ( get_maxload_index( pReset->arg1 ) != NULL )
             {
               if (!do_maxload_item( pReset->arg1 ) ) {
-                sprintf(buf,"MAXLOAD: vnum %d maxed out.",pReset->arg1);
+                snprintf(buf, sizeof(buf), "MAXLOAD: vnum %d maxed out.",
+                         pReset->arg1);
                 log_string(buf);
                 break;
               }
@@ -1979,7 +1980,8 @@ void reset_area( AREA_DATA *pArea )
            if ( get_maxload_index( pReset->arg1 ) != NULL )
             {
               if (!do_maxload_item( pReset->arg1 ) ) {
-                sprintf(buf,"MAXLOAD: vnum %d maxed out.",pReset->arg1);
+                snprintf(buf, sizeof(buf), "MAXLOAD: vnum %d maxed out.",
+                         pReset->arg1);
                 log_string(buf);
                 break;
               }
@@ -2048,7 +2050,8 @@ void reset_area( AREA_DATA *pArea )
                   if ( get_maxload_index( pReset->arg1 ) != NULL )
                   {
                     if (!do_maxload_item( pReset->arg1 ) ) {
-                      sprintf(buf,"MAXLOAD: vnum %d maxed out.",pReset->arg1);
+                      snprintf(buf, sizeof(buf), "MAXLOAD: vnum %d maxed out.",
+                               pReset->arg1);
                       log_string(buf);
                       break;
                     }
@@ -3792,42 +3795,42 @@ static char* identify_obj(OBJ_DATA *obj)
     static char bigbuf[MAX_STRING_LENGTH];
     char buf[MAX_STRING_LENGTH];
     AFFECT_DATA *paf;
- 
-    sprintf( bigbuf,
+
+    snprintf(bigbuf, sizeof(bigbuf),
         "Vnum: %d   Keywords: '%s'   Type: %s   Style: %s   Resets: %d\n",
         obj->pIndexData->vnum,
         obj->name,
         item_type_name( obj ), obj->pIndexData->new_format ? "new" : "old",
         obj->pIndexData->reset_num
-	);
- 
-    sprintf(buf,
+        );
+
+    snprintf(buf, sizeof(buf),
         "Short description: %s\nLong description: %s\n"
         "Wear flags: %s\nExtra flags: %s\n",
         obj->short_descr, obj->description,
         wear_bit_name( obj->wear_flags ),
         extra_bit_name( obj->extra_flags )
         );
-    strcat(bigbuf, buf);
- 
-    sprintf( buf, "Number: %d   Weight: %d/%d\n",
+    strlcat(bigbuf, buf, sizeof(bigbuf));
+
+    snprintf( buf, sizeof(buf), "Number: %d   Weight: %d/%d\n",
         get_obj_number( obj ),
         obj->weight, get_obj_weight( obj )
     );
-    strcat(bigbuf, buf);
- 
-    sprintf( buf, "Level: %d  Value: %d  Condition: %d  Timer: %d\n",
-        obj->level, obj->cost, obj->condition, obj->timer );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
 
-    sprintf( buf,
+    snprintf( buf, sizeof(buf), "Level: %d  Value: %d  Condition: %d  Timer: %d\n",
+        obj->level, obj->cost, obj->condition, obj->timer );
+    strlcat(bigbuf, buf, sizeof(bigbuf));
+
+    snprintf( buf, sizeof(buf),
         "In room: %d  In object: %s  Carried by: %s  Wear_loc: %d\n",
         obj->in_room    == NULL    ?        0 : obj->in_room->vnum,
         obj->in_obj     == NULL    ? "(none)" : obj->in_obj->short_descr,
         obj->carried_by == NULL    ? "(none)" :
         obj->carried_by->name,
         obj->wear_loc );
-    strcat(bigbuf, buf);
+    strlcat(bigbuf, buf, sizeof(bigbuf));
  
     switch ( obj->item_type )
     {
@@ -3836,130 +3839,130 @@ static char* identify_obj(OBJ_DATA *obj)
     case ITEM_SCUBA_GEAR:
     case ITEM_PORTAL:
     case ITEM_PILL:
-        sprintf( buf, "Level %d spells of:", obj->value[0] );
-        strcat(bigbuf, buf);
- 
-	if ( obj->value[1] >= 0 && obj->value[1] < MAX_SKILL )
+        snprintf( buf, sizeof(buf), "Level %d spells of:", obj->value[0] );
+        strlcat(bigbuf, buf, sizeof(bigbuf));
+
+        if ( obj->value[1] >= 0 && obj->value[1] < MAX_SKILL )
         {
-            strcat(bigbuf, " '");
-            strcat(bigbuf, skill_table[obj->value[1]].name);
-            strcat(bigbuf, "'");
-        }
- 
-        if ( obj->value[2] >= 0 && obj->value[2] < MAX_SKILL )
-        {
-            strcat(bigbuf, " '");
-            strcat(bigbuf, skill_table[obj->value[2]].name);
-            strcat(bigbuf, "'");
-        }
- 
-        if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
-        {
-            strcat(bigbuf, " '");
-            strcat(bigbuf, skill_table[obj->value[3]].name);
-            strcat(bigbuf, "'");
+            strlcat(bigbuf, " '", sizeof(bigbuf));
+            strlcat(bigbuf, skill_table[obj->value[1]].name, sizeof(bigbuf));
+            strlcat(bigbuf, "'", sizeof(bigbuf));
         }
 
-        strcat(bigbuf, ".\n");
-        break;
- 
-    case ITEM_WAND:
-    case ITEM_STAFF:
-        sprintf( buf, "Has %d(%d) charges of level %d",
-            obj->value[1], obj->value[2], obj->value[0] );
-        strcat(bigbuf, buf);
- 
+        if ( obj->value[2] >= 0 && obj->value[2] < MAX_SKILL )
+        {
+            strlcat(bigbuf, " '", sizeof(bigbuf));
+            strlcat(bigbuf, skill_table[obj->value[2]].name, sizeof(bigbuf));
+            strlcat(bigbuf, "'", sizeof(bigbuf));
+        }
+
         if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
         {
-            strcat(bigbuf, " '");
-            strcat(bigbuf, skill_table[obj->value[3]].name);
-            strcat(bigbuf, "'");
+            strlcat(bigbuf, " '", sizeof(bigbuf));
+            strlcat(bigbuf, skill_table[obj->value[3]].name, sizeof(bigbuf));
+            strlcat(bigbuf, "'", sizeof(bigbuf));
         }
- 
-        strcat(bigbuf, ".\n");
+
+        strlcat(bigbuf, ".\n", sizeof(bigbuf));
         break;
- 
+
+    case ITEM_WAND:
+    case ITEM_STAFF:
+        snprintf( buf, sizeof(buf), "Has %d(%d) charges of level %d",
+            obj->value[1], obj->value[2], obj->value[0] );
+        strlcat(bigbuf, buf, sizeof(bigbuf));
+
+        if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
+        {
+            strlcat(bigbuf, " '", sizeof(bigbuf));
+            strlcat(bigbuf, skill_table[obj->value[3]].name, sizeof(bigbuf));
+            strlcat(bigbuf, "'", sizeof(bigbuf));
+        }
+
+        strlcat(bigbuf, ".\n", sizeof(bigbuf));
+        break;
+
     case ITEM_WEAPON:
-        strcat(bigbuf,"Weapon type is ");
+        strlcat(bigbuf,"Weapon type is ", sizeof(bigbuf));
         switch (obj->value[0])
         {
-            case(WEAPON_EXOTIC) : strcat(bigbuf,"exotic.\n");       break;
-            case(WEAPON_SWORD)  : strcat(bigbuf,"sword.\n");        break;
-            case(WEAPON_DAGGER) : strcat(bigbuf,"dagger.\n");       break;
-            case(WEAPON_SPEAR)  : strcat(bigbuf,"spear/staff.\n");  break;
-            case(WEAPON_MACE)   : strcat(bigbuf,"mace/club.\n");    break;
-            case(WEAPON_AXE)    : strcat(bigbuf,"axe.\n");          break;
-            case(WEAPON_FLAIL)  : strcat(bigbuf,"flail.\n");        break;
-            case(WEAPON_WHIP)   : strcat(bigbuf,"whip.\n");         break;
-            case(WEAPON_POLEARM): strcat(bigbuf,"polearm.\n");      break;
-            case(WEAPON_BOW)    : strcat(bigbuf,"bow.\n");          break;
-            default             : strcat(bigbuf,"unknown.\n");      break;
+            case(WEAPON_EXOTIC) : strlcat(bigbuf,"exotic.\n", sizeof(bigbuf));       break;
+            case(WEAPON_SWORD)  : strlcat(bigbuf,"sword.\n", sizeof(bigbuf));        break;
+            case(WEAPON_DAGGER) : strlcat(bigbuf,"dagger.\n", sizeof(bigbuf));       break;
+            case(WEAPON_SPEAR)  : strlcat(bigbuf,"spear/staff.\n", sizeof(bigbuf));  break;
+            case(WEAPON_MACE)   : strlcat(bigbuf,"mace/club.\n", sizeof(bigbuf));    break;
+            case(WEAPON_AXE)    : strlcat(bigbuf,"axe.\n", sizeof(bigbuf));          break;
+            case(WEAPON_FLAIL)  : strlcat(bigbuf,"flail.\n", sizeof(bigbuf));        break;
+            case(WEAPON_WHIP)   : strlcat(bigbuf,"whip.\n", sizeof(bigbuf));         break;
+            case(WEAPON_POLEARM): strlcat(bigbuf,"polearm.\n", sizeof(bigbuf));      break;
+            case(WEAPON_BOW)    : strlcat(bigbuf,"bow.\n", sizeof(bigbuf));          break;
+            default             : strlcat(bigbuf,"unknown.\n", sizeof(bigbuf));      break;
         }
         if (obj->pIndexData->new_format)
-            sprintf(buf,"Damage is %dd%d (average %d).\n",
+            snprintf(buf, sizeof(buf), "Damage is %dd%d (average %d).\n",
                 obj->value[1],obj->value[2],
                 (1 + obj->value[2]) * obj->value[1] / 2);
-	else
-            sprintf( buf, "Damage is %d to %d (average %d).\n",
+        else
+            snprintf( buf, sizeof(buf), "Damage is %d to %d (average %d).\n",
                 obj->value[1], obj->value[2],
                 ( obj->value[1] + obj->value[2] ) / 2 );
-        strcat(bigbuf, buf);
+        strlcat(bigbuf, buf, sizeof(bigbuf));
         break;
- 
+
     case ITEM_ARMOR:
-        sprintf( buf,
+        snprintf( buf, sizeof(buf),
         "Armor class is %d pierce, %d bash, %d slash, and %d vs. magic.\n",
             obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
-        strcat(bigbuf, buf);
+        strlcat(bigbuf, buf, sizeof(bigbuf));
         break;
     }
-/* BB 
+/* BB
     if (!obj->enchanted)
 */
     for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
     {
         if ( paf->location != APPLY_NONE && paf->modifier != 0 )
         {
-	    sprintf( buf, "Affects %s by %d.\n",
+            snprintf( buf, sizeof(buf), "Affects %s by %d.\n",
                 affect_loc_name( paf->location ), paf->modifier );
-            strcat(bigbuf, buf);
+            strlcat(bigbuf, buf, sizeof(bigbuf));
         }
     }
- 
+
     for ( paf = obj->affected; paf != NULL; paf = paf->next )
     {
         if ( paf->location != APPLY_NONE && paf->modifier != 0 )
         {
-            sprintf( buf, "Affects %s by %d.\n",
+            snprintf( buf, sizeof(buf), "Affects %s by %d.\n",
                 affect_loc_name( paf->location ), paf->modifier );
-            strcat(bigbuf, buf); 
+            strlcat(bigbuf, buf, sizeof(bigbuf));
         }
     }
- 
+
     if ( obj->extra_descr != NULL || obj->pIndexData->extra_descr != NULL )
     {
         EXTRA_DESCR_DATA *ed;
- 
-	strcat(bigbuf, "Extra description keywords: '");
- 
+
+        strlcat(bigbuf, "Extra description keywords: '", sizeof(bigbuf));
+
         for ( ed = obj->extra_descr; ed != NULL; ed = ed->next )
         {
-            strcat(bigbuf, ed->keyword);
+            strlcat(bigbuf, ed->keyword, sizeof(bigbuf));
             if ( ed->next != NULL )
-                strcat(bigbuf, " ");
+                strlcat(bigbuf, " ", sizeof(bigbuf));
         }
- 
+
         for ( ed = obj->pIndexData->extra_descr; ed != NULL; ed = ed->next )
         {
-            strcat(bigbuf, ed->keyword);
+            strlcat(bigbuf, ed->keyword, sizeof(bigbuf));
             if ( ed->next != NULL )
-                strcat(bigbuf, " ");
+                strlcat(bigbuf, " ", sizeof(bigbuf));
         }
- 
-        strcat(bigbuf, "'\n");
+
+        strlcat(bigbuf, "'\n", sizeof(bigbuf));
     }
- 
-    strcat(bigbuf, "\n");
+
+    strlcat(bigbuf, "\n", sizeof(bigbuf));
     return bigbuf;
 }
  
