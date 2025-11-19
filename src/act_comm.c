@@ -456,7 +456,8 @@ void do_gossip( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOGOSSIP);
  
-      snprintf( buf, sizeof(buf), "You gossip '%s'\n\r", argument );
+      snprintf( buf, sizeof(buf), "{%02XYou gossip '%s'{00\n\r",
+          COL_GOSSIP, argument );
       send_to_char( buf, ch );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
@@ -469,8 +470,9 @@ void do_gossip( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOGOSSIP) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new_cstr( "$n gossips '$t'", 
-		     ch,argument, d->character, TO_VICT,POS_SLEEPING );
+            snprintf( buf, sizeof(buf), "{%02X$n gossips '$t'{00", COL_GOSSIP );
+            act_new_cstr( buf,
+                     ch,argument, d->character, TO_VICT,POS_SLEEPING );
         }
       }
     }
@@ -523,7 +525,8 @@ void do_question( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOQUESTION);
  
-      snprintf( buf, sizeof(buf), "You question '%s'\n\r", argument );
+      snprintf( buf, sizeof(buf), "{%02XYou question '%s'{00\n\r",
+          COL_QUESTION, argument );
       send_to_char( buf, ch );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
@@ -536,8 +539,9 @@ void do_question( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOQUESTION) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new_cstr( "$n questions '$t'", 
-		     ch,argument, d->character, TO_VICT,POS_SLEEPING );
+            snprintf( buf, sizeof(buf), "{%02X$n questions '$t'{00", COL_QUESTION );
+            act_new_cstr( buf,
+                     ch,argument, d->character, TO_VICT,POS_SLEEPING );
         }
       }
     }
@@ -580,7 +584,8 @@ void do_answer( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOQUESTION);
  
-      snprintf( buf, sizeof(buf), "You answer '%s'\n\r", argument );
+      snprintf( buf, sizeof(buf), "{%02XYou answer '%s'{00\n\r",
+          COL_QUESTION, argument );
       send_to_char( buf, ch );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
@@ -593,8 +598,9 @@ void do_answer( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOQUESTION) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new_cstr( "$n answers '$t'", 
-		     ch,argument, d->character, TO_VICT,POS_SLEEPING );
+            snprintf( buf, sizeof(buf), "{%02X$n answers '$t'{00", COL_QUESTION );
+            act_new_cstr( buf,
+                     ch,argument, d->character, TO_VICT,POS_SLEEPING );
         }
       }
     }
@@ -635,7 +641,8 @@ void do_music( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOMUSIC);
  
-      snprintf( buf, sizeof(buf), "You MUSIC: '%s'\n\r", argument );
+      snprintf( buf, sizeof(buf), "{%02XYou MUSIC: '%s'{00\n\r",
+          COL_SOCIALS, argument );
       send_to_char( buf, ch );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
@@ -648,8 +655,9 @@ void do_music( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOMUSIC) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new_cstr( "$n MUSIC: '$t'", 
-		     ch,argument, d->character, TO_VICT,POS_SLEEPING );
+            snprintf( buf, sizeof(buf), "{%02X$n MUSIC: '$t'{00", COL_SOCIALS );
+            act_new_cstr( buf,
+                     ch,argument, d->character, TO_VICT,POS_SLEEPING );
         }
       }
     }
@@ -696,7 +704,8 @@ void do_immort( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOWIZ);
  
-      snprintf( buf, sizeof(buf), "You immort '%s'\n\r", argument );
+      snprintf( buf, sizeof(buf), "{%02XYou immort '%s'{00\n\r",
+          COL_IMMTALK, argument );
       send_to_char( buf, ch );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
@@ -710,8 +719,9 @@ void do_immort( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOWIZ) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new_cstr( "$n immorts '$t'", 
-		     ch,argument, d->character, TO_VICT,POS_DEAD );
+            snprintf( buf, sizeof(buf), "{%02X$n immorts '$t'{00", COL_IMMTALK );
+            act_new_cstr( buf,
+                     ch,argument, d->character, TO_VICT,POS_DEAD );
         }
       }
     }
@@ -732,11 +742,11 @@ void do_say( CHAR_DATA *ch, char *argument )
         argument[MAX_INPUT_LENGTH - 100] = '\0';
 
     /* Code Safety: snprintf */
-    snprintf( buf, sizeof(buf), "You say '%s'$d\n\r", argument );
+    snprintf( buf, sizeof(buf), "{%02XYou say '%s'{00\n\r", COL_SAYS, argument );
     act( buf, ch, NULL, NULL, TO_CHAR );
 
-    snprintf( buf, sizeof(buf), "$n says '%s'$d", argument );
-    act( buf, ch, NULL, NULL, TO_ROOM );
+    snprintf( buf, sizeof(buf), "{%02X$n says '$t'{00", COL_SAYS );
+    act_new_cstr( buf, ch, argument, NULL, TO_ROOM, POS_RESTING );
 
     return;
 }
@@ -773,7 +783,7 @@ void do_shout( CHAR_DATA *ch, char *argument )
     WAIT_STATE( ch, 12 );
     
     /* Code Safety: snprintf */
-    snprintf( buf, sizeof(buf), "You shout '%s'\n\r", argument );
+    snprintf( buf, sizeof(buf), "{%02XYou shout '%s'{00\n\r", COL_SHOUTS, argument );
     send_to_char( buf, ch );
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
@@ -786,7 +796,8 @@ void do_shout( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm, COMM_NOSHOUT) &&
 	     !IS_SET(victim->comm, COMM_QUIET) ) 
 	{
-	    act_new_cstr("$n shouts '$t'",ch,argument,d->character,TO_VICT,POS_SLEEPING);
+            snprintf( buf, sizeof(buf), "{%02X$n shouts '$t'{00", COL_SHOUTS );
+            act_new_cstr(buf,ch,argument,d->character,TO_VICT,POS_SLEEPING);
 	}
     }
 
@@ -858,11 +869,12 @@ void do_tell( CHAR_DATA *ch, char *argument )
     }
 
     /* Code Safety: snprintf and buffer safety */
-    snprintf( buf, sizeof(buf), "You tell %s '%s'\n\r", victim->name, argument );
+    snprintf( buf, sizeof(buf), "{%02XYou tell %s '%s'{00\n\r",
+        COL_TELL, victim->name, argument );
     send_to_char( buf, ch );
     
-    snprintf( buf, sizeof(buf), "%s tells you '%s'\n\r", PERS(ch, victim), argument );
-    buf[0] = UPPER(buf[0]);
+    snprintf( buf, sizeof(buf), "{%02X%s tells you '%s'{00\n\r",
+        COL_TELL, PERS(ch, victim), argument );
     send_to_char( buf, victim );
     victim->reply	= ch;
 
@@ -908,11 +920,12 @@ void do_reply( CHAR_DATA *ch, char *argument )
     }
 
     /* Code Safety: snprintf */
-    snprintf( buf, sizeof(buf), "You reply to %s '%s'\n\r", victim->name, argument );
+    snprintf( buf, sizeof(buf), "{%02XYou reply to %s '%s'{00\n\r",
+        COL_TELL, victim->name, argument );
     send_to_char( buf, ch );
-    
-    snprintf( buf, sizeof(buf), "%s replies '%s'\n\r", PERS(ch, victim), argument );
-    buf[0] = UPPER(buf[0]);
+
+    snprintf( buf, sizeof(buf), "{%02X%s replies '%s'{00\n\r",
+        COL_TELL, PERS(ch, victim), argument );
     send_to_char( buf, victim );
     victim->reply	= ch;
 
@@ -940,7 +953,7 @@ void do_yell( CHAR_DATA *ch, char *argument )
 
 
     /* Code Safety: snprintf */
-    snprintf( buf, sizeof(buf), "You yell '%s'\n\r", argument );
+    snprintf( buf, sizeof(buf), "{%02XYou yell '%s'{00\n\r", COL_SHOUTS, argument );
     send_to_char( buf, ch );
     
     for ( d = descriptor_list; d != NULL; d = d->next )
@@ -951,8 +964,9 @@ void do_yell( CHAR_DATA *ch, char *argument )
 	&&   d->character->in_room->area == ch->in_room->area 
         &&   !IS_SET(d->character->comm,COMM_QUIET) )
 	{
-	    act_new_cstr("$n yells '$t'",ch,argument,d->character,TO_VICT,POS_SLEEPING);
-	}
+            snprintf( buf, sizeof(buf), "{%02X$n yells '$t'{00", COL_SHOUTS );
+            act_new_cstr(buf,ch,argument,d->character,TO_VICT,POS_SLEEPING);
+        }
     }
 
     return;
