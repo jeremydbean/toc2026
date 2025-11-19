@@ -162,6 +162,11 @@ const char *color_code( const CHAR_DATA *ch, int slot )
         return "";
     }
 
+    if ( ch->desc != NULL && !ch->desc->color )
+    {
+        return "";
+    }
+
     if ( !is_valid_color_slot( slot ) )
     {
         slot = COL_REGULAR;
