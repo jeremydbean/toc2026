@@ -1,5 +1,21 @@
 #pragma once
 
+#ifndef _DEFAULT_SOURCE
+#define _DEFAULT_SOURCE
+#endif
+
+#ifndef _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE 200112L
+#endif
+
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE 600
+#endif
+
+#if !defined(unix) && (defined(__unix__) || defined(__unix) || defined(__linux__))
+#define unix 1
+#endif
+
 /**************************************************************************
  * SEGROMv1 was written and concieved by Eclipse<Eclipse@bud.indirect.com *
  * Soulcrusher <soul@pcix.com> and Gravestone <bones@voicenet.com> all    *
@@ -15,6 +31,9 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#if !defined(NOCRYPT)
+#include <crypt.h>
+#endif
 #include <sys/time.h>
 #include <sys/types.h>
 #include <stddef.h>
@@ -2320,6 +2339,8 @@ void    gain_condition  ( CHAR_DATA *ch, int iCond, int value );
 void    update_handler  ( void );
 void    ban_update      ( void );
 long    next_xp_level   ( CHAR_DATA *ch );
+void    component_update( void );
+void    do_backup       ( void );
 
 /* wizlist.c */
 void    update_wizlist  ( CHAR_DATA *ch, int level );

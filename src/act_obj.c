@@ -1734,16 +1734,19 @@ bool remove_obj( CHAR_DATA *ch, int iWear, bool fReplace )
     OBJ_DATA *obj;
 
     if ( ( obj = get_eq_char( ch, iWear ) ) == NULL )
-	return true;
+        return true;
 
-    if (!fReplace && !IS_IMMORTAL(ch)) return false;
-  {
-    if ( IS_SET(obj->extra_flags, ITEM_NOREMOVE) )
+    if ( !IS_IMMORTAL( ch ) )
     {
-	act( "You can't remove $p.", ch, obj, NULL, TO_CHAR );
-	return false;
+        if ( !fReplace )
+            return false;
+
+        if ( IS_SET(obj->extra_flags, ITEM_NOREMOVE) )
+        {
+            act( "You can't remove $p.", ch, obj, NULL, TO_CHAR );
+            return false;
+        }
     }
-  }
 
     unequip_char( ch, obj );
     act( "$n stops using $p.", ch, obj, NULL, TO_ROOM );

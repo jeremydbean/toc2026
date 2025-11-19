@@ -821,7 +821,8 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	"wands",        "staves",	"scrolls"
 	},
 	{
-	}
+          NULL
+        }
     },
     {   /* 22 Librarian */
 	41,     CLASS_ANY,     GUILD_MAGE,
@@ -949,14 +950,17 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	  "trip"
 	   },
 	   {
-	   }
+          NULL
+        }
     },
     {   /* 31 newbie gm gainer <no idea on this one> */
 	   3718,     CLASS_ANY,     GUILD_ANY,
 	   {
-	   },
+          NULL
+        },
 	   {
-	   }
+          NULL
+        }
     },
     {   /* 32 Warrior non-guild gm */
 	   51,     CLASS_WARRIOR,     GUILD_ANY,
@@ -965,7 +969,8 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	    "rescue",           "disarm"
 	   },
 	   {
-	   }
+          NULL
+        }
     },
     {   /* 33 thief non-guild */
 	   52,     CLASS_THIEF,     GUILD_ANY,
@@ -974,7 +979,8 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	    "steal",           "search",         "hide"
 	   },
 	   {
-	   }
+          NULL
+        }
     },
     {   /* 34 cleric */
 	   53,     CLASS_CLERIC,     GUILD_ANY,
@@ -986,7 +992,8 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	  "locate object"
 	   },
 	   {
-	   }
+          NULL
+        }
     },
     {   /* 35 Gioli <mage> */
 	   54,     CLASS_MAGE,     GUILD_ANY,
@@ -998,7 +1005,8 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   "wands",	     "scrolls", 
 	   },
 	   {
-	   }
+          NULL
+        }
     },
     {   /* 36 nomad gm */
 	   55,     CLASS_ANY,     GUILD_ANY,
@@ -1015,7 +1023,8 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   "sneak",  "hide", "recall"
 	   },
 	   {
-	   }
+          NULL
+        }
     },
 
     {   /* 39 Psionicist trainer fot Psion skills gm */
@@ -1028,7 +1037,8 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   "telekinesis",    "torment",           "transfusion"
 	   },
 	   {
-	   }
+          NULL
+        }
     },
 
     {   /* 40 Seraloi <mage> */

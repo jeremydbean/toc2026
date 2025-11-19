@@ -22,7 +22,6 @@
 #include "interp.h"
 #pragma GCC diagnostic ignored "-Wcomment"
 #pragma GCC diagnostic ignored "-Wformat-truncation"
-extern void component_update(void);
 
 static int16_t clamp_sh_int( int value )
 {
@@ -204,7 +203,8 @@ void do_explode( CHAR_DATA *ch, char *argument)
 }
 
 
-/*void do_finger( CHAR_DATA *ch, char *argument )
+#if 0
+void do_finger( CHAR_DATA *ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    FILE *fp;
@@ -243,9 +243,9 @@ ctime(&logon ) );
    send_to_char("Sorry only immortals may use this function.\n\r", ch);
    return;
 }
+#endif
 
-
-// equips a character
+/* equips a character */
 void do_outfit ( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *obj;
@@ -5574,7 +5574,13 @@ void do_restorechar( CHAR_DATA *ch, char *argument )
     	snprintf(buf, sizeof(buf), "cd %s;   %s | tar xvf - %s",
 		PLAYER_DIR, filename, name);
     }
-    int rc = system(buf); (void)rc;
+    int rc = system(buf);
+    if ( rc != 0 )
+    {
+        bug( "do_restorechar: system call failed", 0 );
+        send_to_char( "Restore failed. Check the server logs for details.\n\r", ch );
+        return;
+    }
 
     /* ok, check to see if we got it or not */
     if ( ( tempfile = fopen( playerfile, "r" ) ) == NULL )

@@ -22,12 +22,25 @@
  * ROM license, in the file Rom24/doc/rom.license                         *
  ***************************************************************************/
 
+#ifndef _DEFAULT_SOURCE
+#define _DEFAULT_SOURCE
+#endif
+
+#ifndef _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE 200112L
+#endif
+
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE 600
+#endif
+
 #include <ctype.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <arpa/telnet.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -71,14 +84,7 @@
 const   char    echo_off_str    [] = { '\0' };
 const   char    echo_on_str     [] = { '\0' };
 const   char    go_ahead_str    [] = { '\0' };
-#endif
-
-#if     defined(unix)
-#include <fcntl.h>
-#include <netdb.h>
-#include <netinet/in.h>
-#include <sys/socket.h>
-#include <arpa/telnet.h>
+#else
 const   char    echo_off_str    [] = { (char)IAC, (char)WILL, (char)TELOPT_ECHO, '\0' };
 const   char    echo_on_str     [] = { (char)IAC, (char)WONT, (char)TELOPT_ECHO, '\0' };
 const   char    go_ahead_str    [] = { (char)IAC, (char)GA, '\0' };

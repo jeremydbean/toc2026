@@ -30,11 +30,6 @@
 
 DECLARE_DO_FUN( do_look );
  
-#if defined(unix) && !defined(linux)
-extern int getrlimit(int resource, struct rlimit *rlp);
-extern int setrlimit(int resource, struct rlimit *rlp);
-#endif
- 
 #if !defined(macintosh)
 extern  int     _filbuf         args( (FILE *) );
 #endif
