@@ -783,7 +783,7 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     {
 	if (victim->hit > 300)
 	{
-		sprintf( buf, "%s is %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!",
+		snprintf(buf, sizeof(buf), "%s is %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!",
 			victim->name, crime );
 		do_yell( mob, buf );
 		multi_hit( mob, victim, TYPE_UNDEFINED );
@@ -829,75 +829,75 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		    break;
  
 		case 1:
-		    sprintf(buf,"Hey, %s, it's time for your bottle!",
+		    snprintf(buf, sizeof(buf),"Hey, %s, it's time for your bottle!",
 			    victim->name);
 		    break;
  
 		case 2:
-		    sprintf(buf,"%s don't make me have to give you a spanking!",
+		    snprintf(buf, sizeof(buf),"%s don't make me have to give you a spanking!",
 			    victim->name);
 		    break;
  
 		case 3:
-		    sprintf(buf,"%s, just wait 'till your parents get home!",
+		    snprintf(buf, sizeof(buf),"%s, just wait 'till your parents get home!",
 			    victim->name);
 		    break;
  
 		case 4:
-		    sprintf(buf,"I think %s needs a nap!", victim->name);
+		    snprintf(buf, sizeof(buf),"I think %s needs a nap!", victim->name);
 		    break;
  
 		case 5:
-		    sprintf(buf,"%s must be having a bad hair day!", victim->name);
+		    snprintf(buf, sizeof(buf),"%s must be having a bad hair day!", victim->name);
 		    break;
  
 		case 6:
-		    sprintf(buf,"%s has been a bad child!", victim->name);
+		    snprintf(buf, sizeof(buf),"%s has been a bad child!", victim->name);
 		    break;
  
 		case 7:
-		    sprintf(buf,"%s....Baby baby suck your thumb!",
+		    snprintf(buf, sizeof(buf),"%s....Baby baby suck your thumb!",
 			    victim->name);
 		    break;
  
 		case 8:
-		    sprintf(buf,"Awwwww.....%s, mommy can make it all better for you!",
+		    snprintf(buf, sizeof(buf),"Awwwww.....%s, mommy can make it all better for you!",
 			    victim->name);
 		    break;
  
 		case 9:
-		    sprintf(buf,"%s, want a sucker?", victim->name);
+		    snprintf(buf, sizeof(buf),"%s, want a sucker?", victim->name);
 		    break;
  
 		case 10:
-		    sprintf(buf,"%s, time for bed!", victim->name);
+		    snprintf(buf, sizeof(buf),"%s, time for bed!", victim->name);
 		    break;
  
 		case 11:
-		    sprintf(buf,"%s, did you eat your vegetables?", victim->name);
+		    snprintf(buf, sizeof(buf),"%s, did you eat your vegetables?", victim->name);
 		    break;
  
 		case 12:
-		    sprintf(buf,"%s, would you like a little cheese with that WINE?",
+		    snprintf(buf, sizeof(buf),"%s, would you like a little cheese with that WINE?",
 			victim->name);
 		    break;
  
 		case 13:
-                    sprintf(buf,"%s, don't make me turn this carriage around and go home?",
+                    snprintf(buf, sizeof(buf),"%s, don't make me turn this carriage around and go home?",
                         victim->name);
 		    break;
  
 		case 14:
-		    sprintf(buf,"Did baby %s make a stinky?", victim->name);
+		    snprintf(buf, sizeof(buf),"Did baby %s make a stinky?", victim->name);
 		    break;
  
 		case 15:
-		    sprintf(buf,"%s, come here and let me kiss your boo-boo?",
+		    snprintf(buf, sizeof(buf),"%s, come here and let me kiss your boo-boo?",
 			victim->name);
 		    break;
  
 		case 16:
-		    sprintf(buf,"Grow up %s!", victim->name);
+		    snprintf(buf, sizeof(buf),"Grow up %s!", victim->name);
 		    break;
 	    }
 	    break;
@@ -1025,7 +1025,7 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
     if ( victim != NULL )
     {
-      sprintf( buf, "%s is %s!  PROTECT THE INNOCENT!!  BANZAI!!",
+      snprintf(buf, sizeof(buf), "%s is %s!  PROTECT THE INNOCENT!!  BANZAI!!",
 	    victim->name, crime );
 	do_yell( mob, buf );
 	multi_hit( mob, victim, TYPE_UNDEFINED );
@@ -1135,7 +1135,7 @@ bool spec_mayor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
     case 'Y':
         mob->position = POS_STANDING;
-        sprintf(buf,"Get me the hell out of this room!!");
+        snprintf(buf, sizeof(buf),"Get me the hell out of this room!!");
         do_yell(mob,buf);
         break;
 
@@ -1348,7 +1348,7 @@ bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
 	if ( victim != NULL )
 	{
-	    sprintf(buf,"%s the TRAITOR is in our midst!!! KILL!!!!", victim->name);
+	    snprintf(buf, sizeof(buf),"%s the TRAITOR is in our midst!!! KILL!!!!", victim->name);
 	    do_yell( mob, buf );
 	    act("$n knocks $N into a wall.", mob, NULL, victim, TO_NOTVICT);
 	    act("$n knocks you into a wall.", mob, NULL, victim, TO_VICT);
@@ -1376,7 +1376,7 @@ bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     {
 	if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_TRAITOR) )
 	{
-	    sprintf(buf,"%s the TRAITOR is in our midst!!! KILL!!!!",
+	    snprintf(buf, sizeof(buf),"%s the TRAITOR is in our midst!!! KILL!!!!",
 		       ch->name);
 	    do_yell( mob, buf );
 	    act("$n knocks $N into a wall.", mob, NULL, ch, TO_NOTVICT);
@@ -1443,7 +1443,7 @@ struct {
  
     if (arg[0] == '\0')
     {
-	sprintf(buf, "%s tells you 'It will cost you %d to join a guild.'",
+	snprintf(buf, sizeof(buf), "%s tells you 'It will cost you %d to join a guild.'",
 	    mob->name, cost);
 	send_to_char(buf, ch);
 	return true;
@@ -1470,7 +1470,7 @@ struct {
 	mob, get_guildname(guild), ch, TO_VICT);
  
     group_add(ch, guild_bonus[guild].mix, false);
-    sprintf(buf,"You will recieve free introductory training in the %s.",
+    snprintf(buf, sizeof(buf),"You will recieve free introductory training in the %s.",
 		guild_bonus[guild].mix);
     send_to_char(buf, ch);
  
@@ -1513,7 +1513,7 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 		    found = true;
 		    send_to_char( "Pets for sale:\n\r", ch );
 		}
-		sprintf( buf, "[%2d] %8d - %s\n\r",
+		snprintf(buf, sizeof(buf), "[%2d] %8d - %s\n\r",
 		    pet->level,
 		    10 * pet->level * pet->level,
 		    pet->short_descr );
@@ -1585,7 +1585,7 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle])
 	{
 	    cost -= cost / 2 * roll / 100;
-	    sprintf(buf,"You haggle the price down to %d coins.\n\r",cost);
+	    snprintf(buf, sizeof(buf),"You haggle the price down to %d coins.\n\r",cost);
 	    send_to_char(buf,ch);
 	    check_improve(ch,gsn_haggle,true,4);
 	}
@@ -1599,12 +1599,12 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	argument = one_argument( argument, arg );
 	if ( arg[0] != '\0' )
 	{
-	    sprintf( buf, "%s %s", pet->name, arg );
+	    snprintf(buf, sizeof(buf), "%s %s", pet->name, arg );
 	    free_string( pet->name );
 	    pet->name = str_dup( buf );
 	}
  
-	sprintf( buf, "%sA neck tag says 'I belong to %s'.\n\r",
+	snprintf(buf, sizeof(buf), "%sA neck tag says 'I belong to %s'.\n\r",
 	    pet->description, ch->name );
 	free_string( pet->description );
 	pet->description = str_dup( buf );
@@ -1688,7 +1688,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
  
 	cost = obj->cost / 1000;
  
-	sprintf( buf, "$n tells you 'I'll give you between "
+	snprintf(buf, sizeof(buf), "$n tells you 'I'll give you between "
 		"%d and %d gold coins for $p'.", cost*30, cost*50 );
 	act( buf, mob, obj, ch, TO_VICT );
 	ch->reply = mob;
@@ -1751,7 +1751,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	    cost *= 1.1;
 	    check_improve(ch,gsn_haggle,true,4);
 	}
-	sprintf( buf, "You sell $p for %d gold piece%s.",
+	snprintf(buf, sizeof(buf), "You sell $p for %d gold piece%s.",
 	    cost, cost == 1 ? "" : "s" );
 	act( buf, ch, obj, NULL, TO_CHAR );
         add_money(ch,cost);
@@ -1813,7 +1813,7 @@ bool spec_castle_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
 	if ( victim != NULL )
 	{
-	    sprintf(buf,"%s the TRAITOR is in our midst!!! KILL!!!!",
+	    snprintf(buf, sizeof(buf),"%s the TRAITOR is in our midst!!! KILL!!!!",
 				 victim->name);
 	    do_yell( mob, buf );
 	    act("$n knocks $N into a wall.", mob, NULL, victim, TO_NOTVICT);
@@ -1841,7 +1841,7 @@ bool spec_castle_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     {
 	if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_TRAITOR) )
 	   {
-	    sprintf(buf,"%s the TRAITOR is in our midst!!! KILL!!!!",
+	    snprintf(buf, sizeof(buf),"%s the TRAITOR is in our midst!!! KILL!!!!",
 		       ch->name);
 	    do_yell( mob, buf );
 	    act("$n knocks $N into a wall.", mob, NULL, ch, TO_NOTVICT);
@@ -1978,14 +1978,14 @@ bool spec_xp_converter( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
    if( ch->exp - xp > 0 )
    {
      practices = dice(1,3) + 4;
-     sprintf(buf,"$N gives you %d practices for your experience.",practices);
+     snprintf(buf, sizeof(buf),"$N gives you %d practices for your experience.",practices);
      act( buf, ch, NULL, mob, TO_CHAR    );
      ch->practice += practices;
      ch->exp -= 5000;
    }
    else
    {
-     sprintf( buf, "You need %ld experience points for an exchange.\n\r",
+     snprintf(buf, sizeof(buf), "You need %ld experience points for an exchange.\n\r",
 	      xp - ch->exp );
      send_to_char( buf, ch );
      return false;
@@ -2319,7 +2319,7 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      act("$n says, 'I am needed!' and takes to the sky.",mob,NULL,NULL,TO_ROOM);
      char_from_room(mob);
      char_to_room(mob, most_hurt->in_room);
-     sprintf(buf,"%s has been touched by an angel.",most_hurt->name);
+     snprintf(buf, sizeof(buf),"%s has been touched by an angel.",most_hurt->name);
      wizinfo(buf,65);
      act("You hear the beating of mighty wings. Looking up you see...",mob,NULL,NULL,TO_ROOM);
      act("An angelic figure with beautiful white wings land in front of $N.",mob,NULL,most_hurt,TO_NOTVICT);
@@ -2419,7 +2419,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      send_to_char("joggle your memory enough for you to solve the riddles.\n\r",ch);
      send_to_char("Good luck! Your on your own from here. And remember, ending a Hero Quest\n\r",ch);
      send_to_char("is costly, so do your best to finish it.\n\r",ch);
-     sprintf(buf,"%s has embarked on a Hero Quest.", ch->name);
+     snprintf(buf, sizeof(buf),"%s has embarked on a Hero Quest.", ch->name);
      send_info(buf);
      ch->pcdata->on_quest = true;
      SET_BIT(ch->imm_flags, IMM_MAGIC);
@@ -2505,7 +2505,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
  
 	  send_to_char("Congratulations. It's not an easy task to complete a Hero Quest!\n\r",ch);
 	  send_to_char("You should feel great pride for what you have accomplishment.\n\r",ch);
-	  sprintf(buf,"%s has completed a Hero Quest!!!!",ch->name);
+	  snprintf(buf, sizeof(buf),"%s has completed a Hero Quest!!!!",ch->name);
 	  send_info(buf);
 	  ch->level = 51;
 	  advance_level(ch,false);
@@ -2553,7 +2553,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	    break;
  
        send_to_char("Your clue is:\n\r\n\r",ch);
-       sprintf(buf, "%s",quest_table[holder_2].quest_clue);
+       snprintf(buf, sizeof(buf), "%s",quest_table[holder_2].quest_clue);
        send_to_char(buf,ch);
        return true;
      }
@@ -2628,7 +2628,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      for(holder_1 = 0; holder_1 < 10; holder_1++)
 	ch->pcdata->questor[holder_1] = 0;
 
-     sprintf(buf,"%s has shamefully QUIT a Hero Quest.",ch->name);
+     snprintf(buf, sizeof(buf),"%s has shamefully QUIT a Hero Quest.",ch->name);
      send_info(buf);
      free_string(ch->pcdata->title);
      ch->pcdata->title = str_dup(" has not lived up to the challenge!");
@@ -2689,7 +2689,7 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
    }
    char_to_room(wch, pRoomTport);
    send_to_char("You are deposited in a remote site for later consumption.\n\r",wch);
-   sprintf(buf,"%s has been snatched by the dragon",wch->name);
+   snprintf(buf, sizeof(buf),"%s has been snatched by the dragon",wch->name);
    wizinfo(buf,62);
    af.type = skill_lookup("curse");
    af.level = wch->level;
