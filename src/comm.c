@@ -88,6 +88,10 @@ const   char    go_ahead_str    [] = { '\0' };
 const   char    echo_off_str    [] = { (char)IAC, (char)WILL, (char)TELOPT_ECHO, '\0' };
 const   char    echo_on_str     [] = { (char)IAC, (char)WONT, (char)TELOPT_ECHO, '\0' };
 const   char    go_ahead_str    [] = { (char)IAC, (char)GA, '\0' };
+#ifndef TELOPT_ANSI
+#define TELOPT_ANSI 46
+#endif
+static const char ansi_color_advertise[] = { (char)IAC, (char)WILL, (char)TELOPT_ANSI, '\0' };
 #endif
 
 static int clamp_size_to_int( size_t value );
@@ -904,6 +908,7 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     dnew->showstr_point = NULL;
     dnew->outsize = 2000;
     dnew->outbuf = alloc_mem(dnew->outsize);
+    dnew->color = true;
 
     size = sizeof(sock);
     if (getpeername(desc, (struct sockaddr *)&sock, &size) < 0) {
@@ -926,7 +931,13 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
         snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s", inet_ntoa(sock.sin_addr));
         log_string(log_buf);
     }
-	
+
+    /*
+     * Advertise ANSI color support using the telnet option so clients with
+     * ANSI toggles can enable it automatically.
+     */
+    write_to_descriptor( dnew, ansi_color_advertise, 0 );
+
     return dnew;
 }
 
