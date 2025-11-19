@@ -30,25 +30,30 @@ set(SRC_FILES
     src/act_move.c
     src/act_obj.c
     src/act_wiz.c
+    src/color.c
     src/comm.c
     src/const.c
+    src/container.c
     src/db.c
+    src/dstring.c
     src/edit.c
     src/fight.c
     src/handler.c
     src/hunt.c
     src/interp.c
+    src/list.c
     src/magic.c
     src/magic2.c
     src/maxload.c
     src/misc.c
-    src/nicedb.c
     src/pkill.c
     src/quest.c
     src/save.c
     src/skills.c
+    src/script_event.c
     src/special.c
     src/string_safe.c
+    src/stubs.c
     src/update.c
     src/wizlist.c
 )

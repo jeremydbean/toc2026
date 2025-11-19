@@ -35,7 +35,7 @@ bool    check_dispel    args( ( int dis_level, CHAR_DATA *victim, int sn) );
 /*
  * The kludgy global is for spells who want more stuff from command line.
  */
-char *target_name;
+extern char *target_name;
 
 extern void say_spell   args( ( CHAR_DATA *ch, int sn ) );
 extern  const char * dir_name	[];

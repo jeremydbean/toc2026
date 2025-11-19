@@ -1970,6 +1970,8 @@ extern          HUNTER_DATA             hunter_list     [];
 extern          char                    bug_buf         [];
 extern          time_t                  current_time;
 extern          bool                    fLogAll;
+extern          bool                    merc_down;
+extern          char                   *target_name;
 extern          FILE * fpReserve;
 extern          KILL_DATA               kill_table      [];
 extern          char                    log_buf         [];
@@ -1986,6 +1988,7 @@ extern          ROOM_INDEX_DATA* RELIC_ROOM_3;
 extern          ROOM_INDEX_DATA* RELIC_ROOM_4;
 
 /* Safe strings */
+size_t toc_strnlen(const char *src, size_t maxlen);
 size_t strlcpy(char *dst, const char *src, size_t siz);
 size_t strlcat(char *dst, const char *src, size_t siz);
 

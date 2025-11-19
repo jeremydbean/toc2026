@@ -35,7 +35,7 @@ extern  int     _filbuf         args( (FILE *) );
 #endif
  
 bool write_to_descriptor	args( ( int desc, char *txt, int length ) );
-bool merc_down;
+extern bool merc_down;
 
 static int16_t clamp_sh_int_from_long( long value )
 {

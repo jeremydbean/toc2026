@@ -1,5 +1,22 @@
 #include "merc.h"
 
+size_t toc_strnlen(const char *src, size_t maxlen)
+{
+    size_t len;
+
+    if (src == NULL)
+    {
+        return 0;
+    }
+
+    for (len = 0; len < maxlen && src[len] != '\0'; ++len)
+    {
+        /* Intentionally empty: all work happens in the loop header. */
+    }
+
+    return len;
+}
+
 size_t strlcpy(char *dst, const char *src, size_t siz)
 {
     size_t src_len = strlen(src);
