@@ -59,7 +59,7 @@ void do_areasave( CHAR_DATA *ch, char *argument )
     start = atoi(arg1);
     end   = atoi(arg2);
 
-    sprintf(strsave,"%s%s.are", AREA_DIR, ch->name);
+    snprintf(strsave, sizeof(strsave), "%s%s.are", AREA_DIR, ch->name);
     if ((fp = fopen(strsave,"w")) == NULL)
     {
         bug("area_save: fopen",0);
@@ -84,7 +84,7 @@ void do_areaload( CHAR_DATA *ch, char *argument )
 
     argument = one_argument (argument, arg1);
 
-    sprintf(strsave,"%s%s.are", AREA_DIR, ch->name);
+    snprintf(strsave, sizeof(strsave), "%s%s.are", AREA_DIR, ch->name);
 
     /* check to see if they have an area saved */
     if ((fp = fopen(strsave,"r")) == NULL)
