@@ -151,8 +151,43 @@ void say_spell( CHAR_DATA *ch, int sn )
 	       length = 1;
     }
 
-    snprintf( buf2, sizeof(buf2), "$n utters the words, '%s'.", buf );
-    snprintf( buf,  sizeof(buf),  "$n utters the words, '%s'.", skill_table[sn].name );
+    {
+        const size_t say_spell_overhead = sizeof("$n utters the words, ''.") - 1;
+        size_t max_spell_len = 0;
+        size_t max_name_len = 0;
+
+        if ( sizeof(buf2) > say_spell_overhead )
+            max_spell_len = sizeof(buf2) - say_spell_overhead;
+
+        if ( sizeof(buf) > say_spell_overhead )
+            max_name_len = sizeof(buf) - say_spell_overhead;
+
+        if ( max_spell_len == 0 )
+        {
+            buf[0] = '\0';
+        }
+        else if ( max_spell_len < sizeof(buf) )
+        {
+            buf[max_spell_len] = '\0';
+        }
+
+        strlcpy( buf2, "$n utters the words, '", sizeof(buf2) );
+        strlcat( buf2, buf, sizeof(buf2) );
+        strlcat( buf2, "'.", sizeof(buf2) );
+
+        {
+            char truncated_name[MAX_STRING_LENGTH];
+            size_t copy_len = max_name_len;
+
+            if ( copy_len >= sizeof(truncated_name) )
+                copy_len = sizeof(truncated_name) - 1;
+
+            strlcpy( truncated_name, skill_table[sn].name, copy_len + 1 );
+            strlcpy( buf, "$n utters the words, '", sizeof(buf) );
+            strlcat( buf, truncated_name, sizeof(buf) );
+            strlcat( buf, "'.", sizeof(buf) );
+        }
+    }
 
     for ( rch = ch->in_room->people; rch; rch = rch->next_in_room )
     {

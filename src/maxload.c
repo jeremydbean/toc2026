@@ -6,6 +6,18 @@
  * permission of Blackbird or the owners of the mud Times Of Chaos.       *
  **************************************************************************/
 
+#ifndef _DEFAULT_SOURCE
+#define _DEFAULT_SOURCE
+#endif
+
+#ifndef _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE 200112L
+#endif
+
+#ifndef _XOPEN_SOURCE
+#define _XOPEN_SOURCE 600
+#endif
+
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>

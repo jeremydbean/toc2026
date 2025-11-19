@@ -21,7 +21,6 @@
 #include "merc.h"
 #include "interp.h"
 #pragma GCC diagnostic ignored "-Wformat-truncation"
-extern void do_backup(void);
 
 /* command procedures needed */
 DECLARE_DO_FUN(	do_exits	);
@@ -30,6 +29,19 @@ DECLARE_DO_FUN( do_help		);
 
 bool scan = false;
 extern const char       *       dir_name[];
+
+static size_t bounded_strlen( const char *text, size_t limit )
+{
+    size_t length = 0;
+
+    if ( text == NULL )
+        return 0;
+
+    while ( length < limit && text[length] != '\0' )
+        length++;
+
+    return length;
+}
 
 
 char *	const	where_name	[] =
@@ -900,7 +912,7 @@ void do_prompt(CHAR_DATA *ch, char *argument)
         buf[0] = '\0';
    } else {
       strlcpy( buf, argument, sizeof(buf) );
-      if ( strnlen(buf, sizeof(buf)) > 50 )
+      if ( bounded_strlen(buf, sizeof(buf)) > 50 )
          buf[49] = '\0';
       smash_tilde( buf );
       if (str_suffix("%c",buf))
