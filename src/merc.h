@@ -355,7 +355,7 @@ struct  descriptor_data
     pid_t               ipid;
     char * ident;
     int                 port;
-    int                 ip;
+    uint32_t            ip;
     int                 top_web_desc;
     int                 descriptor;
     sh_int              connected;
