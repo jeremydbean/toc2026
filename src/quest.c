@@ -325,7 +325,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                 ch->practice += dice(1,2) + 1;
                 act( "$N gives some practices to $n.", ch, NULL, questman, TO_ROOM );
                 act( "$N gives you some practices.",   ch, NULL, questman, TO_CHAR );
-                snprintf(log_buf, sizeof(log_buf),"%s gained pracs from quest.",ch->name);
+                snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s gained pracs from quest.", ch->name);
                 log_string(log_buf);
                 return;
             }

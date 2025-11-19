@@ -123,25 +123,6 @@ int     socket          ( int domain, int type, int protocol );
 #include <sys/fnctl.h>
 #endif
 
-#if     defined(linux)
-/*
-int     accept          ( int s, struct sockaddr *addr, int *addrlen );
-int     bind            ( int s, struct sockaddr *name, int namelen );
-int     getpeername     ( int s, struct sockaddr *name, int *namelen );
-int     getsockname     ( int s, struct sockaddr *name, int *namelen );
-int     listen          ( int s, int backlog );
-int     setsockopt      ( int s, int level, int optname, char *optval,
-			    int optlen );
-int     socket          ( int domain, int type, int protocol );
-*/
-int     close           ( int fd );
-// int     gettimeofday    ( struct timeval *tp, struct timezone *tzp );
-// int     read            ( int fd, char *buf, int nbyte );
-int     select          ( int width, fd_set *readfds, fd_set *writefds,
-			    fd_set *exceptfds, struct timeval *timeout );
-int     write           ( int fd, char *buf, int nbyte );
-#endif
-
 #if     defined(macintosh)
 #include <console.h>
 #include <fcntl.h>
@@ -258,6 +239,25 @@ DESCRIPTOR_DATA * descriptor_free;
 DESCRIPTOR_DATA * d_next;
 FILE * fpReserve;
 bool                god;
+
+struct weapon_type
+{
+    const char *name;
+    sh_int *gsn;
+};
+
+static const struct weapon_type weapon_table[] =
+{
+    { "sword",   &gsn_sword },
+    { "dagger",  &gsn_dagger },
+    { "mace",    &gsn_mace },
+    { "axe",     &gsn_axe },
+    { "flail",   &gsn_flail },
+    { "whip",    &gsn_whip },
+    { "polearm", &gsn_polearm },
+    { "spear",   &gsn_spear },
+    { NULL,       NULL }
+};
 bool                merc_down;
 bool                wizlock;
 bool                newlock;
@@ -270,6 +270,7 @@ time_t              current_time;
  * Local functions.
  */
 int     init_socket             ( int port );
+DESCRIPTOR_DATA *new_descriptor ( int control );
 void    init_descriptor         ( int control );
 bool    read_from_descriptor    ( DESCRIPTOR_DATA *d );
 bool    read_from_buffer        ( DESCRIPTOR_DATA *d );
@@ -278,6 +279,12 @@ void    nanny                   ( DESCRIPTOR_DATA *d, char *argument );
 bool    process_output          ( DESCRIPTOR_DATA *d, bool fPrompt );
 void    handle_input            ( DESCRIPTOR_DATA *d );
 void    access_lookup           ( DESCRIPTOR_DATA *d );
+bool    check_parse_name        ( char *name );
+bool    check_reconnect         ( DESCRIPTOR_DATA *d, char *name, bool fConn );
+bool    check_playing           ( DESCRIPTOR_DATA *d, char *name );
+bool    write_to_descriptor     ( DESCRIPTOR_DATA *d, const char *txt, int length );
+static bool check_ban           ( const char *site, int type );
+static int  weapon_lookup       ( const char *name );
 char * crypt                   ( const char *key, const char *salt );
 void    log_auth                ( DESCRIPTOR_DATA *d );
 void    process_web_admin_queue ( void );
@@ -640,8 +647,11 @@ void game_loop_unix( int control )
 		}
 	    }
 
-            if (d->character != NULL && d->character->dcount > 10)
+            if (d->character != NULL && d->character->pcdata != NULL
+            &&  d->character->pcdata->dcount > 10)
+            {
                 close_socket(d);
+            }
         }
 
         handle_web();
@@ -721,7 +731,6 @@ void game_loop_unix( int control )
 
 void init_descriptor( int control )
 {
-    char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *dnew;
     struct sockaddr_in sock;
     socklen_t size;
@@ -850,12 +859,10 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 	 * If ch is writing note or playing, just lose link otherwise
 	 * weird stuff happens.
 	 */
-	if ( (dclose->connected == CON_PLAYING) ||
-	     ((dclose->connected >= CON_NOTE_TO) &&
-	      (dclose->connected <= CON_NOTE_FINISH)))
-	{
-	    act( "$n has lost $s link.", ch, NULL, NULL, TO_ROOM );
-	    wizinfo( "$N has lost $S link.", ch->level );
+        if ( dclose->connected == CON_PLAYING )
+        {
+            act( "$n has lost $s link.", ch, NULL, NULL, TO_ROOM );
+            wizinfo( "$N has lost $S link.", ch->level );
 	    ch->desc = NULL;
 	}
 	else
@@ -897,10 +904,10 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
     int iStart;
 
     /* Hold horses if pending command already. */
-    if ( d->incomm == 0 )
-	iStart = 0;
-    else if ( d->inbuf[d->incomm] == '\0' )
-	iStart = 0;
+    if ( d->incomm[0] == '\0' )
+        iStart = 0;
+    else if ( d->inbuf[0] == '\0' )
+        iStart = 0;
     else
     {
 	if ( d->outtop > 0 )
@@ -958,8 +965,8 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
     /*
      * Hold horses if pending command already.
      */
-    if ( d->incomm == 0 )
-	return TRUE;
+    if ( d->incomm[0] == '\0' )
+        return TRUE;
 
     /*
      * Look for at least one new line.
@@ -993,15 +1000,15 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
 	if ( d->inbuf[i] == '\b' && k > 0 )
 	    --k;
 	else if ( isprint(d->inbuf[i]) )
-	    d->incomm[d->inlast + k++] = d->inbuf[i];
+            d->incomm[k++] = d->inbuf[i];
     }
 
     /*
      * Finish off the line.
      */
     if ( k == 0 )
-	d->incomm[d->inlast + k++] = ' ';
-    d->incomm[d->inlast + k] = '\0';
+        d->incomm[k++] = ' ';
+    d->incomm[k] = '\0';
 
     /*
      * Deal with bozos with #repeat 1000 ...
@@ -1132,16 +1139,14 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
     /*
      * OS-dependent output.
      */
-    if ( !write_to_buffer( d, d->outbuf, d->outtop ) )
+    if ( !write_to_descriptor( d, d->outbuf, d->outtop ) )
     {
-	d->outtop = 0;
-	return FALSE;
+        d->outtop = 0;
+        return FALSE;
     }
-    else
-    {
-	d->outtop = 0;
-	return TRUE;
-    }
+
+    d->outtop = 0;
+    return TRUE;
 }
 
 
@@ -1192,6 +1197,39 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
     strcpy( d->outbuf + d->outtop, txt );
     d->outtop += length;
     return;
+}
+
+bool write_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
+{
+    ssize_t nBlock;
+    ssize_t nWrite;
+    const char *p;
+
+    if ( length <= 0 )
+        length = strlen( txt );
+
+    p = txt;
+    while ( length > 0 )
+    {
+        nBlock = UMIN( length, 4096 );
+        nWrite = write( d->descriptor, p, (size_t)nBlock );
+        if ( nWrite < 0 )
+        {
+            if ( errno == EAGAIN || errno == EINTR )
+                continue;
+
+            perror( "Write_to_descriptor" );
+            return FALSE;
+        }
+
+        if ( nWrite == 0 )
+            return FALSE;
+
+        length -= nWrite;
+        p      += nWrite;
+    }
+
+    return TRUE;
 }
 
 
@@ -1833,6 +1871,42 @@ bool check_parse_name( char *name )
     return TRUE;
 }
 
+
+
+/*
+ * Check if a site is banned.
+ */
+static bool check_ban( const char *site, int type )
+{
+    BAN_DATA *pban;
+
+    UNUSED_PARAM(type);
+
+    for ( pban = ban_list; pban != NULL; pban = pban->next )
+    {
+        if ( pban->name != NULL && !str_cmp( pban->name, site ) )
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+
+/*
+ * Resolve a weapon choice to a table index.
+ */
+static int weapon_lookup( const char *name )
+{
+    int i;
+
+    for ( i = 0; weapon_table[i].name != NULL; i++ )
+    {
+        if ( !str_prefix( name, weapon_table[i].name ) )
+            return i;
+    }
+
+    return -1;
+}
 
 
 /*

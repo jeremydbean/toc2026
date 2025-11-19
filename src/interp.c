@@ -562,7 +562,7 @@ void interpret( CHAR_DATA *ch, char *argument )
     ||   fLogAll
     ||   cmd_table[cmd].log == LOG_ALWAYS )
     {
-        snprintf( log_buf, sizeof(log_buf), "Log %s: %s", ch->name, logline );
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s: %s", ch->name, logline );
 	log_string( log_buf );
     }
 

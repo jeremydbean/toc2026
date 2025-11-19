@@ -1559,25 +1559,6 @@ void do_affect( CHAR_DATA *ch, char *argument)
 
 }
 
-void do_afk( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-
-    if (IS_NPC(ch))
-    return;
-
-    if ( IS_SET( ch->act, PLR_AFK ) )
-    {
-	REMOVE_BIT ( ch->act, PLR_AFK );
-	send_to_char( "And you're back!\n\r",ch );
-    }
-    else
-    {
-	SET_BIT ( ch->act, PLR_AFK );
-	send_to_char( "Come back soon!\n\r",ch );
-    }
- return;
-}
 
 char *	const	day_name	[] =
 {
