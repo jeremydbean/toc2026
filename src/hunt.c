@@ -302,54 +302,63 @@ void do_start_hunting ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY )
 	hunter->hunting = target;
 	if (insert_into_hunter_list(hunter, ANNOY) >= 0)
 	{
-	    sprintf(buf,"[Room: %d] %s is now %s [Room: %d] %s.", hunter->in_room->vnum,
-		    IS_NPC(hunter) ? hunter->short_descr : hunter->name,
-		    action[ANNOY], target->in_room->vnum,
-		    IS_NPC(target) ? target->short_descr : target->name);
-	    wizinfo(buf, LEVEL_IMMORTAL);
-	} else {
-	    sprintf(buf,"Cannot to have more than %d hunting mobs.",MAX_HUNTERS);
-	    wizinfo(buf, LEVEL_IMMORTAL);
-	}
+            snprintf(buf, sizeof(buf), "[Room: %d] %s is now %s [Room: %d] %s.",
+                     hunter->in_room->vnum,
+                     IS_NPC(hunter) ? hunter->short_descr : hunter->name,
+                     action[ANNOY], target->in_room->vnum,
+                     IS_NPC(target) ? target->short_descr : target->name);
+            wizinfo(buf, LEVEL_IMMORTAL);
+        } else {
+            snprintf(buf, sizeof(buf), "Cannot to have more than %d hunting mobs.",
+                     MAX_HUNTERS);
+            wizinfo(buf, LEVEL_IMMORTAL);
+        }
     }
     else if (hunter->hunting != target)
     {
 	if (insert_into_hunter_list(hunter, ANNOY) >= 0)
 	{
-	    sprintf(buf,"[Room: %d] %s is now %s [Room: %d] %s instead of %s.",
-		    hunter->in_room->vnum,
-		    IS_NPC(hunter)          ? hunter->short_descr : hunter->name,
-		    action[ANNOY], target->in_room->vnum,
-		    IS_NPC(target)          ? target->short_descr : target->name,
-		    IS_NPC(hunter->hunting) ? hunter->hunting->short_descr
-					    : hunter->hunting->name);
-	    wizinfo(buf, LEVEL_IMMORTAL);
-	    hunter->hunting = target;
-	} else {
-	    /* This isn't supposed to happen at all */
-	    sprintf(buf,"BUG!!!! [Room: %d] %s is active but not in hunting list",
-		    hunter->in_room->vnum,IS_NPC(hunter) ? hunter->short_descr : hunter->name);
-	    wizinfo(buf,LEVEL_IMMORTAL);
-	}
+            snprintf(buf, sizeof(buf),
+                     "[Room: %d] %s is now %s [Room: %d] %s instead of %s.",
+                     hunter->in_room->vnum,
+                     IS_NPC(hunter)          ? hunter->short_descr : hunter->name,
+                     action[ANNOY], target->in_room->vnum,
+                     IS_NPC(target)          ? target->short_descr : target->name,
+                     IS_NPC(hunter->hunting) ? hunter->hunting->short_descr
+                                             : hunter->hunting->name);
+            wizinfo(buf, LEVEL_IMMORTAL);
+            hunter->hunting = target;
+        } else {
+            /* This isn't supposed to happen at all */
+            snprintf(buf, sizeof(buf),
+                     "BUG!!!! [Room: %d] %s is active but not in hunting list",
+                     hunter->in_room->vnum,
+                     IS_NPC(hunter) ? hunter->short_descr : hunter->name);
+            wizinfo(buf,LEVEL_IMMORTAL);
+        }
     }
     else /* hunter->hunting == target */
     {
 	status = get_hunting_status(hunter);
 	if (status<0) /* hunter not in list; not supposed to happen */
 	{
-	    sprintf(buf,"BUG!!!! [Room: %d] %s is active but not in hunting list",
-		    hunter->in_room->vnum,IS_NPC(hunter) ? hunter->short_descr : hunter->name);
-	    wizinfo(buf,LEVEL_IMMORTAL);
-	}
-	else if (status != ANNOY)
-	{
-	    insert_into_hunter_list(hunter, ANNOY);
-	    sprintf(buf,"[Room: %d] %s stops %s and starts %s [Room: %d] %s.", hunter->in_room->vnum,
-		    IS_NPC(hunter) ? hunter->short_descr : hunter->name,
-		    action[status], action[ANNOY], target->in_room->vnum,
-		    IS_NPC(target) ? target->short_descr : target->name);
-	    wizinfo(buf, LEVEL_IMMORTAL);
-	}
+            snprintf(buf, sizeof(buf),
+                     "BUG!!!! [Room: %d] %s is active but not in hunting list",
+                     hunter->in_room->vnum,
+                     IS_NPC(hunter) ? hunter->short_descr : hunter->name);
+            wizinfo(buf,LEVEL_IMMORTAL);
+        }
+        else if (status != ANNOY)
+        {
+            insert_into_hunter_list(hunter, ANNOY);
+            snprintf(buf, sizeof(buf),
+                     "[Room: %d] %s stops %s and starts %s [Room: %d] %s.",
+                     hunter->in_room->vnum,
+                     IS_NPC(hunter) ? hunter->short_descr : hunter->name,
+                     action[status], action[ANNOY], target->in_room->vnum,
+                     IS_NPC(target) ? target->short_descr : target->name);
+            wizinfo(buf, LEVEL_IMMORTAL);
+        }
     }
 
     return;
@@ -366,22 +375,24 @@ void do_stop_hunting( CHAR_DATA *ch, char *arg)
 	return;
     if (ch->hunting)
     {
-	status = get_hunting_status(ch);
-	if (status<0) /* hunter not in list; not supposed to happen */
-	{
-	    sprintf(buf,"BUG!!!! [Room: %d] %s is active but not in hunting list",
-		    ch->in_room->vnum,IS_NPC(ch) ? ch->short_descr : ch->name);
-	    wizinfo(buf,LEVEL_IMMORTAL);
-	    return;
-	}
-	sprintf(buf,"[Room: %d] %s stops %s %s because %s.",
-		    ch->in_room->vnum,
-		    IS_NPC(ch)          ? ch->short_descr          : ch->name,
-		    action[status],
-		    IS_NPC(ch->hunting) ? ch->hunting->short_descr : ch->hunting->name,
-		    arg);
-	wizinfo(buf, LEVEL_IMMORTAL);
-	delete_from_hunter_list(ch);
+        status = get_hunting_status(ch);
+        if (status<0) /* hunter not in list; not supposed to happen */
+        {
+            snprintf(buf, sizeof(buf),
+                     "BUG!!!! [Room: %d] %s is active but not in hunting list",
+                     ch->in_room->vnum,
+                     IS_NPC(ch) ? ch->short_descr : ch->name);
+            wizinfo(buf,LEVEL_IMMORTAL);
+            return;
+        }
+        snprintf(buf, sizeof(buf), "[Room: %d] %s stops %s %s because %s.",
+                 ch->in_room->vnum,
+                 IS_NPC(ch)          ? ch->short_descr          : ch->name,
+                 action[status],
+                 IS_NPC(ch->hunting) ? ch->hunting->short_descr : ch->hunting->name,
+                 arg);
+        wizinfo(buf, LEVEL_IMMORTAL);
+        delete_from_hunter_list(ch);
     }
     return;
 }
@@ -453,13 +464,16 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
                find_first_step(ch, ch->in_room, victim->in_room, &distance);
 
                if (distance <= 5)
-               sprintf(buf2,"%s is in the nearby vicinity.\n\r",victim->name);
-          
+                   snprintf(buf2, sizeof(buf2), "%s is in the nearby vicinity.\n\r",
+                            victim->name);
+
                if (distance >= 6 && distance <= 12)
-               sprintf(buf2,"%s is a little ways away.\n\r",victim->name);
+                   snprintf(buf2, sizeof(buf2), "%s is a little ways away.\n\r",
+                            victim->name);
 
                if (distance > 13)
-               sprintf(buf2,"%s is far away from you.\n\r",victim->name);
+                   snprintf(buf2, sizeof(buf2), "%s is far away from you.\n\r",
+                            victim->name);
 
                send_to_char(buf2,ch);
                count2 +=1;
@@ -472,13 +486,17 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
 
      if (count == 1)
      {
-       sprintf(buf,"You sense %d additional stealthed player in the area.\n\r",count);
+       snprintf(buf, sizeof(buf),
+                "You sense %d additional stealthed player in the area.\n\r",
+                count);
        send_to_char(buf,ch);
      }
 
      if (count > 1)
      {
-       sprintf(buf,"You sense %d additional stealthed players in the area.\n\r",count);
+       snprintf(buf, sizeof(buf),
+                "You sense %d additional stealthed players in the area.\n\r",
+                count);
        send_to_char(buf,ch);
      }
 
@@ -518,20 +536,22 @@ void do_track( CHAR_DATA *ch, char *argument )
 	    send_to_char("Whom are you trying to track?\n\r", ch);
 	else
 	{
-	    sprintf(buf, "You are no longer tracking %s\n\r", IS_NPC(ch->hunting)
-				   ? ch->hunting->short_descr : ch->hunting->name);
-	    send_to_char(buf,ch);
-	    ch->hunting = NULL;
-	}
+            snprintf(buf, sizeof(buf), "You are no longer tracking %s\n\r",
+                     IS_NPC(ch->hunting)
+                         ? ch->hunting->short_descr
+                         : ch->hunting->name);
+            send_to_char(buf,ch);
+            ch->hunting = NULL;
+        }
 	return;
     }
 
     if (!(vict = get_char_world(ch, arg)))
     {
-	sprintf(buf, "No-one around by that name: %s.\n\r", arg);
-	send_to_char(buf,ch);
-	ch->hunting = NULL;
-	return;
+        snprintf(buf, sizeof(buf), "No-one around by that name: %s.\n\r", arg);
+        send_to_char(buf,ch);
+        ch->hunting = NULL;
+        return;
     }
 
     /*
@@ -585,13 +605,14 @@ void do_track( CHAR_DATA *ch, char *argument )
 	     * Display the results of the search.
 	     * ----------------------------------
 	     */
-	    sprintf(buf, "You find a trail %s from here for %s!\n\r", dir_name[dir],
-                    IS_NPC(ch->hunting) ? ch->hunting->short_descr : ch->hunting->name);
-	    send_to_char(buf, ch);
+            snprintf(buf, sizeof(buf), "You find a trail %s from here for %s!\n\r",
+                     dir_name[dir],
+                     IS_NPC(ch->hunting) ? ch->hunting->short_descr : ch->hunting->name);
+            send_to_char(buf, ch);
 
             if (IS_IMMORTAL(ch))
             {
-                sprintf(buf, "* %d steps from here!\n\r", distance);
+                snprintf(buf, sizeof(buf), "* %d steps from here!\n\r", distance);
                 send_to_char(buf, ch);
             }
 
@@ -754,9 +775,10 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
 	act("$n says 'Damn!  Lost $M!'", ch, NULL, ch->hunting, TO_ROOM);
         do_rest(ch,"");
 	WAIT_STATE(ch,120);
-	sprintf(buf, "Hunting mob in [Room: %d] can't find path to target in [Room: %d]",
-		ch->in_room->vnum, ch->hunting->in_room->vnum);
-	wizinfo(buf, LEVEL_IMMORTAL);
+        snprintf(buf, sizeof(buf),
+                 "Hunting mob in [Room: %d] can't find path to target in [Room: %d]",
+                 ch->in_room->vnum, ch->hunting->in_room->vnum);
+        wizinfo(buf, LEVEL_IMMORTAL);
 
 	/* uncomment this if mobs should stop hunting when no path can be found */
 	/* leaving this the way it is will cause the hunting mob to wait until  */
@@ -769,9 +791,10 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
     if (dir == BFS_ALREADY_THERE)
     {
 	/* This is NOT supposed to happen! */
-	sprintf(buf, "Weird situation!!  check hunting mob in [Room: %d]",ch->in_room->vnum);
-	wizinfo(buf, LEVEL_IMMORTAL);
-	return;
+        snprintf(buf, sizeof(buf),
+                 "Weird situation!!  check hunting mob in [Room: %d]", ch->in_room->vnum);
+        wizinfo(buf, LEVEL_IMMORTAL);
+        return;
     }
     else if ( IS_SET(ch->in_room->exit[dir]->u1.to_room->room_flags,ROOM_SAFE) && !ANNOY)
     {
@@ -855,18 +878,21 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
 	move_char(ch, dir, true);
 	if (ch->in_room == old_room)
 	{
-	     sprintf(buf, "FatCat GOOFED in hunting code!!!  Check hunting mob in [Room: %d] trying to go %s",
-		     ch->in_room->vnum, dir_name_cmd[dir] );
-	     wizinfo(buf, LEVEL_IMMORTAL);
+             snprintf(buf, sizeof(buf),
+                      "FatCat GOOFED in hunting code!!!  Check hunting mob in [Room: %d] trying to go %s",
+                      ch->in_room->vnum, dir_name_cmd[dir]);
+             wizinfo(buf, LEVEL_IMMORTAL);
              do_stop_hunting(ch,"mob is caught in a loop");
-	}
+        }
     }
 
     /* This shouldn't be needed but it appears that ch->hunting gets changed
        at times and causes segmentation fault */
     if (ch->hunting==NULL)
     {
-       sprintf(buf,"ERROR #6969 WITH HUNTING MOB IN [Room: %d]! REPORT TO FATCAT!!!",ch->in_room->vnum);
+       snprintf(buf, sizeof(buf),
+                "ERROR #6969 WITH HUNTING MOB IN [Room: %d]! REPORT TO FATCAT!!!",
+                ch->in_room->vnum);
        wizinfo(buf,LEVEL_IMMORTAL);
        return;
     }
