@@ -8,6 +8,7 @@ set(CMAKE_C_EXTENSIONS OFF)
 
 set(TARGET_NAME rom)
 
+# Include all source files, including the new string_safe.c
 file(GLOB SRC_FILES "${CMAKE_SOURCE_DIR}/src/*.c")
 
 add_executable(${TARGET_NAME} ${SRC_FILES})
@@ -23,6 +24,9 @@ target_compile_options(
         -Wextra
         -Wpedantic
         -Wno-unused-parameter
+        -Wno-sign-compare
+        -Wno-strict-aliasing
 )
 
+# Link against math (m), compression (z), and crypto (crypt)
 target_link_libraries(${TARGET_NAME} PRIVATE m z crypt)
