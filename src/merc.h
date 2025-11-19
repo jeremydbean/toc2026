@@ -2071,6 +2071,7 @@ bool    normalize_psionic_arguments ( const char *argument, char *output, size_t
 /* Dynamic-string aware output helpers. */
 void    send_to_char_dstring ( const DString *txt, CHAR_DATA *ch );
 void    send_to_char         ( const char *txt, CHAR_DATA *ch );
+void    write_to_buffer_raw  ( const char *txt, CHAR_DATA *ch );
 void    send_to_room    ( const char *txt, int vnum );
 void    page_to_char    ( const char *txt, CHAR_DATA *ch );
 void    act             ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type );
@@ -2319,6 +2320,11 @@ const struct col_table_type *color_category_lookup( const char *name );
 int     color_display_lookup( const char *name );
 void    color_update_defaults( CHAR_DATA *ch, bool overwrite );
 const char *color_code      ( const CHAR_DATA *ch, int color_slot );
+bool    color_is_enabled    ( const CHAR_DATA *ch );
+bool    color_parse_slot    ( const char *str, unsigned char *slot_out );
+bool    color_token_prefix  ( char ch );
+void    color_append_marker ( DString *buf, const CHAR_DATA *recipient, bool allow_color, unsigned char slot );
+void    color_convert       ( const char *text, const CHAR_DATA *recipient, bool allow_color, DString *out );
 void    check_improve   ( CHAR_DATA *ch, int sn, bool success, int multiplier );
 int     group_lookup    (const char *name);
 void    gn_add          ( CHAR_DATA *ch, int gn);

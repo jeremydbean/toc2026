@@ -2078,7 +2078,14 @@ case CON_DEFAULT_CHOICE:
                 "Type 'password null <new password>' to fix.\n\r",0);
         }
 
-	write_to_buffer( d, "\n\rWelcome to ROM 2.4.  Please do not feed the mobiles.\n\r", 0 );
+        d->color = true;
+        if ( !IS_NPC(ch) && ch->pcdata != NULL )
+        {
+            ch->pcdata->color = true;
+            color_update_defaults( ch, false );
+        }
+
+        write_to_buffer( d, "\n\rWelcome to ROM 2.4.  Please do not feed the mobiles.\n\r", 0 );
 	register_character( ch );
 	d->connected	= CON_PLAYING;
 	reset_char(ch);
@@ -2367,22 +2374,22 @@ void stop_idling( CHAR_DATA *ch )
 
 
 
-static void act_append_color_marker( DString *buf, const CHAR_DATA *recipient, unsigned char slot );
-static void act_expand_color_tokens( const char *text, const CHAR_DATA *recipient, DString *out );
-
 /*
  * Write to one char using a dynamic string buffer.
  */
 void send_to_char_dstring( const DString *txt, CHAR_DATA *ch )
 {
     DString colorized;
+    bool allow_color;
 
-    if ( txt == NULL || ch->desc == NULL )
+    if ( txt == NULL || ch == NULL || ch->desc == NULL )
         return;
 
+    allow_color = color_is_enabled( ch );
+
     dstring_init( &colorized );
-    act_expand_color_tokens( dstring_cstr( txt ), ch, &colorized );
-    write_to_buffer( ch->desc, dstring_cstr( &colorized ), (int)dstring_length( &colorized ) );
+    color_convert( dstring_cstr( txt ), ch, allow_color, &colorized );
+    write_to_buffer_raw( dstring_cstr( &colorized ), ch );
     dstring_free( &colorized );
 }
 
@@ -2401,129 +2408,19 @@ void send_to_char( const char *txt, CHAR_DATA *ch )
     dstring_free( &buffer );
 }
 
+void write_to_buffer_raw( const char *txt, CHAR_DATA *ch )
+{
+    if ( txt == NULL || ch == NULL || ch->desc == NULL )
+    {
+        return;
+    }
+
+    write_to_buffer( ch->desc, txt, (int)strlen( txt ) );
+}
+
 /*
  * Write to a specific room
  */
-static bool act_recipient_supports_color( const CHAR_DATA *ch )
-{
-    return ( ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->color );
-}
-
-static int act_hex_value( char ch )
-{
-    if ( ch >= '0' && ch <= '9' )
-    {
-        return ch - '0';
-    }
-
-    if ( ch >= 'a' && ch <= 'f' )
-    {
-        return 10 + ( ch - 'a' );
-    }
-
-    if ( ch >= 'A' && ch <= 'F' )
-    {
-        return 10 + ( ch - 'A' );
-    }
-
-    return -1;
-}
-
-static bool act_color_token_prefix( char ch )
-{
-    return ( ch == '{' || ch == '&' || ch == '$' );
-}
-
-static bool act_parse_color_slot( const char *str, unsigned char *slot_out )
-{
-    int high;
-    int low;
-
-    if ( str == NULL || slot_out == NULL )
-    {
-        return false;
-    }
-
-    high = act_hex_value( str[0] );
-    low  = act_hex_value( str[1] );
-    if ( high < 0 || low < 0 )
-    {
-        return false;
-    }
-
-    *slot_out = (unsigned char)(( high << 4 ) | low );
-    return true;
-}
-
-static void act_expand_color_tokens( const char *text,
-                                     const CHAR_DATA *recipient,
-                                     DString *out )
-{
-    const char *str;
-    unsigned char color_slot;
-
-    if ( text == NULL || out == NULL )
-    {
-        return;
-    }
-
-    for ( str = text; *str != '\0'; )
-    {
-        if ( *str == '\x02' )
-        {
-            ++str;
-            if ( *str == '\0' )
-            {
-                break;
-            }
-
-            act_append_color_marker( out, recipient, (unsigned char)*str );
-            ++str;
-            continue;
-        }
-
-        if ( act_color_token_prefix( *str )
-          && act_parse_color_slot( str + 1, &color_slot ) )
-        {
-            act_append_color_marker( out, recipient, color_slot );
-            str += 3;
-            continue;
-        }
-
-        dstring_append_char( out, *str );
-        ++str;
-    }
-}
-
-static void act_append_color_marker( DString *buf, const CHAR_DATA *recipient, unsigned char slot )
-{
-    const char *sequence;
-
-    if ( buf == NULL )
-    {
-        return;
-    }
-
-    if ( slot == 0 )
-    {
-        if ( !act_recipient_supports_color( recipient ) )
-        {
-            return;
-        }
-
-        sequence = color_reset_code();
-    }
-    else
-    {
-        sequence = color_code( recipient, slot );
-    }
-
-    if ( sequence != NULL && *sequence != '\0' )
-    {
-        dstring_append_cstr( buf, sequence );
-    }
-}
-
 void send_to_room( const char *txt, int vnum )
 { 
     CHAR_DATA *ch;
@@ -2680,6 +2577,7 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
     const char *i;
     DString buf;
     unsigned char color_slot;
+    bool allow_color;
  
     /*
      * Discard null and zero-length messages.
@@ -2720,6 +2618,7 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
             continue;
  
         dstring_clear( &buf );
+        allow_color = color_is_enabled( to );
         str     = dstring_cstr( format );
         while ( *str != '\0' )
         {
@@ -2731,15 +2630,15 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                     break;
                 }
 
-                act_append_color_marker( &buf, to, (unsigned char)*str );
+                color_append_marker( &buf, to, allow_color, (unsigned char)*str );
                 ++str;
                 continue;
             }
 
-            if ( act_color_token_prefix( *str )
-              && act_parse_color_slot( str + 1, &color_slot ) )
+            if ( color_token_prefix( *str )
+              && color_parse_slot( str + 1, &color_slot ) )
             {
-                act_append_color_marker( &buf, to, color_slot );
+                color_append_marker( &buf, to, allow_color, color_slot );
                 str += 3;
                 continue;
             }
