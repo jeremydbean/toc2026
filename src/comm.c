@@ -86,6 +86,8 @@ const   char    go_ahead_str    [] = { (char)IAC, (char)GA, '\0' };
 
 static int clamp_size_to_int( size_t value );
 static int strlen_to_int( const char *text );
+static void safe_strcpy( char *dest, size_t dest_size, const char *src );
+static void safe_strcat( char *dest, size_t dest_size, const char *src );
 
 /*
  * OS-dependent declarations.
@@ -373,7 +375,7 @@ int main( int argc, char **argv )
 #if defined(unix)
     control = init_socket( port );
     boot_db( );
-    sprintf( log_buf, "ROM is ready to rock on port %d.", port );
+    snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "ROM is ready to rock on port %d.", port );
     log_string( log_buf );
     init_web( port + 1 );
     game_loop_unix( control );
@@ -914,7 +916,7 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
         /* Store numerical IP for possible bans/logging */
         dnew->ip = sock.sin_addr.s_addr;
         
-        sprintf(log_buf, "Sock.sinaddr:  %s", inet_ntoa(sock.sin_addr));
+        snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s", inet_ntoa(sock.sin_addr));
         log_string(log_buf);
     }
 	
@@ -948,8 +950,8 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 
     if ( ( ch = dclose->character ) != NULL )
     {
-	sprintf( log_buf, "Closing link to %s.", ch->name );
-	log_string( log_buf );
+    snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Closing link to %s.", ch->name );
+    log_string( log_buf );
 	/*
 	 * If ch is writing note or playing, just lose link otherwise
 	 * weird stuff happens.
@@ -1012,7 +1014,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
 
     if ( iStart >= MAX_INPUT_LENGTH - 2 )
     {
-        sprintf( log_buf, "%s input overflow!", d->host );
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s input overflow!", d->host );
         log_string( log_buf );
         write_to_buffer( d, "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
         return FALSE;
@@ -1122,21 +1124,21 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
 	{
 	    if ( ++d->repeat >= 25 )
 	    {
-		sprintf( log_buf, "%s input spamming!", d->host );
-		log_string( log_buf );
-		write_to_buffer( d, "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
-		strcpy( d->incomm, "quit" );
-	    }
-	}
+           snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s input spamming!", d->host );
+           log_string( log_buf );
+                write_to_buffer( d, "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
+                safe_strcpy( d->incomm, sizeof(d->incomm), "quit" );
+            }
+        }
     }
 
     /*
      * Do '!' substitution.
      */
     if ( d->incomm[0] == '!' )
-	strcpy( d->incomm, d->inlast );
+        safe_strcpy( d->incomm, sizeof(d->incomm), d->inlast );
     else
-	strcpy( d->inlast, d->incomm );
+        safe_strcpy( d->inlast, sizeof(d->inlast), d->incomm );
 
     /*
      * Shift the input buffer.
@@ -1182,25 +1184,25 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
                 percent = -1;
  
             if (percent >= 100)
-                sprintf(wound,"is in excellent condition.");
+                snprintf(wound,sizeof(wound),"is in excellent condition.");
             else if (percent >= 90)
-                sprintf(wound,"has a few scratches.");
+                snprintf(wound,sizeof(wound),"has a few scratches.");
             else if (percent >= 75)
-                sprintf(wound,"has some small wounds and bruises.");
+                snprintf(wound,sizeof(wound),"has some small wounds and bruises.");
             else if (percent >= 50)
-                sprintf(wound,"has quite a few wounds.");
+                snprintf(wound,sizeof(wound),"has quite a few wounds.");
             else if (percent >= 30)
-                sprintf(wound,"has some big nasty wounds and scratches.");
+                snprintf(wound,sizeof(wound),"has some big nasty wounds and scratches.");
             else if (percent >= 15)
-                sprintf(wound,"looks pretty hurt.");
+                snprintf(wound,sizeof(wound),"looks pretty hurt.");
             else if (percent >= 0)
-                sprintf(wound,"is in awful condition.");
+                snprintf(wound,sizeof(wound),"is in awful condition.");
             else
-                sprintf(wound,"is bleeding to death.");
- 
-            sprintf(buf,"%s %s \n\r", 
-	            IS_NPC(victim) ? victim->short_descr : victim->name,wound);
-	    buf[0] = UPPER(buf[0]);
+                snprintf(wound,sizeof(wound),"is bleeding to death.");
+
+            snprintf(buf,sizeof(buf),"%s %s \n\r",
+                    IS_NPC(victim) ? victim->short_descr : victim->name,wound);
+            buf[0] = UPPER(buf[0]);
             write_to_buffer( d, buf, 0);
         }
 
@@ -1277,6 +1279,63 @@ static long prompt_exp_to_level( CHAR_DATA *owner )
 
     needed = exp_per_level( owner, owner->pcdata->points ) - owner->exp;
     return needed > 0 ? needed : 0;
+}
+
+static int clamp_size_to_int( size_t value )
+{
+    if ( value >= (size_t)INT_MAX )
+        return INT_MAX;
+
+    return (int)value;
+}
+
+static int strlen_to_int( const char *text )
+{
+    size_t length;
+
+    if ( text == NULL )
+        return 0;
+
+    length = strlen( text );
+    return clamp_size_to_int( length );
+}
+
+static void safe_strcpy( char *dest, size_t dest_size, const char *src )
+{
+    size_t copy_len;
+
+    if ( dest == NULL || dest_size == 0 )
+        return;
+
+    if ( src == NULL )
+    {
+        dest[0] = '\0';
+        return;
+    }
+
+    if ( dest_size == 1 )
+    {
+        dest[0] = '\0';
+        return;
+    }
+
+    copy_len = strnlen( src, dest_size - 1 );
+    strncpy( dest, src, copy_len + 1 );
+    dest[copy_len] = '\0';
+}
+
+static void safe_strcat( char *dest, size_t dest_size, const char *src )
+{
+    size_t dest_len;
+
+    if ( dest == NULL || dest_size == 0 || src == NULL )
+        return;
+
+    dest_len = strlen( dest );
+    if ( dest_len >= dest_size - 1 )
+        return;
+
+    strncat( dest, src, dest_size - dest_len - 1 );
 }
 
 void write_prompt( DESCRIPTOR_DATA *d )
@@ -1447,15 +1506,17 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
 
     if ( prefix_len > 0 )
     {
-        strcpy( d->outbuf + d->outtop, prefix );
+        strncpy( d->outbuf + d->outtop, prefix, (size_t)prefix_len );
         d->outtop += prefix_len;
+        d->outbuf[d->outtop] = '\0';
     }
 
     /*
      * Copy.
      */
-    strcpy( d->outbuf + d->outtop, txt );
+    strncpy( d->outbuf + d->outtop, txt, (size_t)length );
     d->outtop += length;
+    d->outbuf[d->outtop] = '\0';
     return;
 }
 
@@ -1542,23 +1603,23 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	fOld = load_char_obj( d, argument );
 	ch   = d->character;
 
-	if ( IS_SET(ch->act, PLR_DENY) )
-	{
-	    sprintf( log_buf, "Denying access to %s@%s.", argument, d->host );
-	    log_string( log_buf );
-	    write_to_buffer( d, "You are denied access.\n\r", 0 );
-	    close_socket( d );
-	    return;
-	}
+        if ( IS_SET(ch->act, PLR_DENY) )
+        {
+            snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Denying access to %s@%s.", argument, d->host );
+            log_string( log_buf );
+            write_to_buffer( d, "You are denied access.\n\r", 0 );
+            close_socket( d );
+            return;
+        }
 
-	if ( check_ban( d->host, BAN_ALL ) )
-	{
-	    sprintf( log_buf, "Banning access to %s@%s.", argument, d->host );
-	    log_string( log_buf );
-	    write_to_buffer( d, "Access denied.\n\r", 0 );
-	    close_socket( d );
-	    return;
-	}
+        if ( check_ban( d->host, BAN_ALL ) )
+        {
+            snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Banning access to %s@%s.", argument, d->host );
+            log_string( log_buf );
+            write_to_buffer( d, "Access denied.\n\r", 0 );
+            close_socket( d );
+            return;
+        }
 
 	if ( check_reconnect( d, argument, FALSE ) )
 	{
@@ -1600,10 +1661,10 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 		return;
 	    }
 	
-	    sprintf( buf, "Did I get that right, %s (Y/N)? ", argument );
-	    write_to_buffer( d, buf, 0 );
-	    d->connected = CON_CONFIRM_NEW_NAME;
-	    return;
+            snprintf( buf, sizeof(buf), "Did I get that right, %s (Y/N)? ", argument );
+            write_to_buffer( d, buf, 0 );
+            d->connected = CON_CONFIRM_NEW_NAME;
+            return;
 	}
 	break;
 
@@ -1627,9 +1688,9 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	if ( check_reconnect( d, ch->name, TRUE ) )
 	    return;
 
-	sprintf( log_buf, "%s@%s has connected.", ch->name, d->host );
-	log_string( log_buf );
-	wizinfo(log_buf,LEVEL_IMMORTAL);
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s has connected.", ch->name, d->host );
+        log_string( log_buf );
+        wizinfo(log_buf,LEVEL_IMMORTAL);
 
 	if ( IS_HERO(ch) )
 	{
@@ -1691,12 +1752,12 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
     case CON_CONFIRM_NEW_NAME:
 	switch ( *argument )
 	{
-	case 'y': case 'Y':
-	    sprintf( buf, "New character.\n\rGive me a password for %s: %s",
-		ch->name, echo_off_str );
-	    write_to_buffer( d, buf, 0 );
-	    d->connected = CON_GET_NEW_PASSWORD;
-	    break;
+        case 'y': case 'Y':
+            snprintf( buf, sizeof(buf), "New character.\n\rGive me a password for %s: %s",
+                ch->name, echo_off_str );
+            write_to_buffer( d, buf, 0 );
+            d->connected = CON_GET_NEW_PASSWORD;
+            break;
 
 	case 'n': case 'N':
 	    write_to_buffer( d, "Ok, what IS it, then? ", 0 );
@@ -1841,17 +1902,17 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             return;
         }
 
-	strcpy( buf, "Select a class [" );
-	for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
-	{
-	    if ( iClass > 0 )
-		strcat( buf, " " );
-	    strcat( buf, class_table[iClass].name );
-	}
-	strcat( buf, "]: " );
-	write_to_buffer( d, buf, 0 );
-	d->connected = CON_GET_NEW_CLASS;
-	break;
+        safe_strcpy( buf, sizeof(buf), "Select a class [" );
+        for ( iClass = 0; iClass < MAX_CLASS; iClass++ )
+        {
+            if ( iClass > 0 )
+                safe_strcat( buf, sizeof(buf), " " );
+            safe_strcat( buf, sizeof(buf), class_table[iClass].name );
+        }
+        safe_strcat( buf, sizeof(buf), "]: " );
+        write_to_buffer( d, buf, 0 );
+        d->connected = CON_GET_NEW_CLASS;
+        break;
 
     case CON_GET_NEW_CLASS:
 	iClass = class_lookup(argument);
@@ -1865,8 +1926,8 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
         ch->class = (sh_int)iClass;
 
-	sprintf( log_buf, "%s@%s new player.", ch->name, d->host );
-	log_string( log_buf );
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s new player.", ch->name, d->host );
+        log_string( log_buf );
 	write_to_buffer( d, "\n\r", 2 );
 	write_to_buffer( d, "You may be good, neutral, or evil.\n\r",0);
 	write_to_buffer( d, "Which alignment (G/N/E)? ",0);
@@ -1903,17 +1964,17 @@ case CON_DEFAULT_CHOICE:
 	    group_add(ch,class_table[ch->class].default_group,TRUE);
 	    write_to_buffer(d,"Customization complete.\n\r",0);
 	    write_to_buffer(d,"Please pick a weapon from the following choices:\n\r",0);
-	    buf[0] = '\0';
-	    for ( i = 0; weapon_table[i].name != NULL; i++)
-		if (ch->pcdata->learned[*weapon_table[i].gsn] > 0)
-		{
-		    strcat(buf,weapon_table[i].name);
-		    strcat(buf," ");
-		}
-	    strcat(buf,"\n\rYour choice? ");
-	    write_to_buffer(d,buf,0);
-	    d->connected = CON_PICK_WEAPON;
-	    break;
+            buf[0] = '\0';
+            for ( i = 0; weapon_table[i].name != NULL; i++)
+                if (ch->pcdata->learned[*weapon_table[i].gsn] > 0)
+                {
+                    safe_strcat(buf,sizeof(buf),weapon_table[i].name);
+                    safe_strcat(buf,sizeof(buf)," ");
+                }
+            safe_strcat(buf,sizeof(buf),"\n\rYour choice? ");
+            write_to_buffer(d,buf,0);
+            d->connected = CON_PICK_WEAPON;
+            break;
 	}
 
 	/*
@@ -1924,17 +1985,17 @@ case CON_DEFAULT_CHOICE:
 	else
 	{
 	    write_to_buffer(d,"Please pick a weapon from the following choices:\n\r",0);
-	    buf[0] = '\0';
-	    for ( i = 0; weapon_table[i].name != NULL; i++)
-		if (ch->pcdata->learned[*weapon_table[i].gsn] > 0)
-		{
-		    strcat(buf,weapon_table[i].name);
-		    strcat(buf," ");
-		}
-	    strcat(buf,"\n\rYour choice? ");
-	    write_to_buffer(d,buf,0);
-	    d->connected = CON_PICK_WEAPON;
-	}
+            buf[0] = '\0';
+            for ( i = 0; weapon_table[i].name != NULL; i++)
+                if (ch->pcdata->learned[*weapon_table[i].gsn] > 0)
+                {
+                    safe_strcat(buf,sizeof(buf),weapon_table[i].name);
+                    safe_strcat(buf,sizeof(buf)," ");
+                }
+            safe_strcat(buf,sizeof(buf),"\n\rYour choice? ");
+            write_to_buffer(d,buf,0);
+            d->connected = CON_PICK_WEAPON;
+        }
 	break;
 
     case CON_PICK_WEAPON:
@@ -1947,13 +2008,13 @@ case CON_DEFAULT_CHOICE:
             for ( i = 0; weapon_table[i].name != NULL; i++)
                 if (ch->pcdata->learned[*weapon_table[i].gsn] > 0)
                 {
-                    strcat(buf,weapon_table[i].name);
-                    strcat(buf," ");
+                    safe_strcat(buf,sizeof(buf),weapon_table[i].name);
+                    safe_strcat(buf,sizeof(buf)," ");
                 }
-            strcat(buf,"\n\rYour choice? ");
+            safe_strcat(buf,sizeof(buf),"\n\rYour choice? ");
             write_to_buffer(d,buf,0);
-	    return;
-	}
+            return;
+        }
 
 	ch->pcdata->learned[*weapon_table[weapon].gsn] = 40;
 	write_to_buffer(d,"\n\r",2);
@@ -1972,13 +2033,13 @@ case CON_DEFAULT_CHOICE:
             for ( i = 0; weapon_table[i].name != NULL; i++)
                 if (ch->pcdata->learned[*weapon_table[i].gsn] > 0)
                 {
-                    strcat(buf,weapon_table[i].name);
-                    strcat(buf," ");
+                    safe_strcat(buf,sizeof(buf),weapon_table[i].name);
+                    safe_strcat(buf,sizeof(buf)," ");
                 }
-            strcat(buf,"\n\rYour choice? ");
+            safe_strcat(buf,sizeof(buf),"\n\rYour choice? ");
             write_to_buffer(d,buf,0);
             d->connected = CON_PICK_WEAPON;
-	}
+        }
 	break;
 
     case CON_READ_IMOTD:
@@ -2014,10 +2075,10 @@ case CON_DEFAULT_CHOICE:
 	        ch->move    = ch->max_move;
 	        ch->train    = 3;
 	        ch->practice = 5;
-	        sprintf( buf, "the %s",
-	            title_table [ch->class] [ch->level]
-	            [ch->sex == SEX_FEMALE ? 1 : 0] );
-	        set_title( ch, buf );
+                snprintf( buf, sizeof(buf), "the %s",
+                    title_table [ch->class] [ch->level]
+                    [ch->sex == SEX_FEMALE ? 1 : 0] );
+                set_title( ch, buf );
 	        do_outfit(ch,"");
 	        char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
 	        send_to_char("\n\r",ch);
@@ -2220,11 +2281,11 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 		ch->timer	 = 0;
 		send_to_char(
 		    "Reconnecting. Type replay to see missed tells.\n\r", ch );
-		act( "$n has reconnected.", ch, NULL, NULL, TO_ROOM );
-		sprintf( log_buf, "%s@%s reconnected.", ch->name, d->host );
-		log_string( log_buf );
-		wizinfo( "$N has reconnected.", ch->level );
-		d->connected = CON_PLAYING;
+                act( "$n has reconnected.", ch, NULL, NULL, TO_ROOM );
+                snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s reconnected.", ch->name, d->host );
+                log_string( log_buf );
+                wizinfo( "$N has reconnected.", ch->level );
+                d->connected = CON_PLAYING;
 	    }
 	    return TRUE;
 	}
@@ -2341,11 +2402,12 @@ void page_to_char( const char *txt, CHAR_DATA *ch )
 
         if ( total_len < 32000u )
         {
+            ptrdiff_t point_offset = ch->desc->showstr_point - ch->desc->showstr_head;
             char *ptr = alloc_mem( clamp_size_to_int( total_len ) );
 
-            strcpy(ptr,ch->desc->showstr_head);
-            strcat(ptr,txt);
-            ch->desc->showstr_point = ptr + (ch->desc->showstr_point - ch->desc->showstr_head);
+            safe_strcpy(ptr, total_len, ch->desc->showstr_head);
+            safe_strcat(ptr, total_len, txt);
+            ch->desc->showstr_point = ptr + point_offset;
             free_mem(ch->desc->showstr_head, clamp_size_to_int( head_len + 1u ) );
             ch->desc->showstr_head = ptr;
         }
@@ -2361,7 +2423,7 @@ void page_to_char( const char *txt, CHAR_DATA *ch )
         const size_t txt_len = strlen( txt );
 
         ch->desc->showstr_head = alloc_mem( clamp_size_to_int( txt_len + 1u ) );
-        strcpy(ch->desc->showstr_head,txt);
+        safe_strcpy(ch->desc->showstr_head, txt_len + 1u, txt);
         ch->desc->showstr_point = ch->desc->showstr_head;
     }
 
@@ -2618,7 +2680,7 @@ void process_web_admin_queue(void) {
             char *argument;
 
             argument = one_argument(buf, command);
-            strcpy(arg1, argument);
+            safe_strcpy(arg1, sizeof(arg1), argument);
 
             if (!strcmp(command, "wizinfo")) {
                 wizinfo(arg1, LEVEL_IMMORTAL);
@@ -2644,7 +2706,7 @@ void wizinfo(char *info, int level)
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
     
-    sprintf(buf,"[WIZINFO]: %s\n\r",info);
+    snprintf(buf,sizeof(buf),"[WIZINFO]: %s\n\r",info);
 
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
