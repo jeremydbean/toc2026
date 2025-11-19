@@ -93,14 +93,14 @@ void do_lore( CHAR_DATA *ch, char *argument )
 
     WAIT_STATE( ch, skill_table[gsn_lore].beats );
 
-    sprintf( buf,"The %s is a %s of some sort, and weights around %d stone.\n\r",
-	obj->name,
-	item_type_name( obj ),
-	number_range(obj->weight/2,obj->weight*2) );
+    snprintf( buf, sizeof(buf), "The %s is a %s of some sort, and weights around %d stone.\n\r",
+        obj->name,
+        item_type_name( obj ),
+        number_range(obj->weight/2,obj->weight*2) );
     send_to_char( buf, ch );
 
-    sprintf( buf,"Looking it over closely, you estimate it's worth about %d gold.\n\r",
-	number_range(obj->cost/2,obj->cost*2) );
+    snprintf( buf, sizeof(buf), "Looking it over closely, you estimate it's worth about %d gold.\n\r",
+        number_range(obj->cost/2,obj->cost*2) );
 
 
     switch ( obj->item_type )
@@ -108,9 +108,9 @@ void do_lore( CHAR_DATA *ch, char *argument )
     case ITEM_SCROLL:
     case ITEM_POTION:
     case ITEM_PILL:
-	sprintf( buf, "Level %d spells of:",
-	number_range(obj->value[0]/2,obj->value[0]*2) );
-	send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "Level %d spells of:",
+        number_range(obj->value[0]/2,obj->value[0]*2) );
+        send_to_char( buf, ch );
 
 	if( number_percent () < chance )
 	{
@@ -150,10 +150,10 @@ void do_lore( CHAR_DATA *ch, char *argument )
 
     case ITEM_WAND:
     case ITEM_STAFF:
-	sprintf( buf, "The staff has %d(%d) charges of level %d,",
-	    number_range(obj->value[1]/2,obj->value[1]*2),
-	    number_range(obj->value[2]/2,obj->value[2]*2),
-	    number_range(obj->value[0]/2,obj->value[0]*2) );
+        snprintf( buf, sizeof(buf), "The staff has %d(%d) charges of level %d,",
+            number_range(obj->value[1]/2,obj->value[1]*2),
+            number_range(obj->value[2]/2,obj->value[2]*2),
+            number_range(obj->value[0]/2,obj->value[0]*2) );
 	send_to_char( buf, ch );
 
 	if( number_percent () < chance )
@@ -206,14 +206,14 @@ void do_lore( CHAR_DATA *ch, char *argument )
 	break;
 
     case ITEM_ARMOR:
-	sprintf( buf,
-	"Armor class is %d pierce, %d bash, %d slash, and %d vs. magic.\n\r",
-	    number_range(obj->value[0]/2, 15),
-	    number_range(obj->value[1]/2, 15),
-	    number_range(obj->value[2]/2, 15),
-	    number_range(obj->value[3]/2, 15) );
-	send_to_char( buf, ch );
-	break;
+        snprintf( buf, sizeof(buf),
+        "Armor class is %d pierce, %d bash, %d slash, and %d vs. magic.\n\r",
+            number_range(obj->value[0]/2, 15),
+            number_range(obj->value[1]/2, 15),
+            number_range(obj->value[2]/2, 15),
+            number_range(obj->value[3]/2, 15) );
+        send_to_char( buf, ch );
+        break;
     }
 /* BB
     if (!obj->enchanted)
@@ -222,22 +222,22 @@ void do_lore( CHAR_DATA *ch, char *argument )
     {
 	if ( paf->location != APPLY_NONE && paf->modifier != 0 )
 	{
-	    sprintf( buf, "Affects %s by %d.\n\r",
-		affect_loc_name( paf->location ),
-		number_range(paf->modifier/2, paf->modifier*2) );
-	    send_to_char( buf, ch );
-	}
+            snprintf( buf, sizeof(buf), "Affects %s by %d.\n\r",
+                affect_loc_name( paf->location ),
+                number_range(paf->modifier/2, paf->modifier*2) );
+            send_to_char( buf, ch );
+        }
     }
 
     for ( paf = obj->affected; paf != NULL; paf = paf->next )
     {
 	if ( paf->location != APPLY_NONE && paf->modifier != 0 )
 	{
-	    sprintf( buf, "Affects %s by %d.\n\r",
-		affect_loc_name( paf->location ),
-		number_range(paf->modifier/2, paf->modifier*2) );
-	    send_to_char( buf, ch );
-	}
+            snprintf( buf, sizeof(buf), "Affects %s by %d.\n\r",
+                affect_loc_name( paf->location ),
+                number_range(paf->modifier/2, paf->modifier*2) );
+            send_to_char( buf, ch );
+        }
     }
 
     check_improve(ch,gsn_lore,true,5);
@@ -4142,26 +4142,26 @@ void spell_detect_traps( int sn, int level, CHAR_DATA *ch, void *vo )
      {
        switch ( door )
        {
-	case 0:  sprintf( direction, "north");
-	break;
-	case 1:  sprintf( direction, "east");
-	break;
-	case 2:  sprintf( direction, "south");
-	break;
-	case 3:  sprintf( direction, "west");
-	break;
-	case 4:  sprintf( direction, "up");
-	break;
-	case 5:  sprintf( direction, "down");
-	break;
-	case 6:  sprintf( direction, "northeast");
-	break;
-	case 7:  sprintf( direction, "northwest");
-	break;
-	case 8:  sprintf( direction, "southeast");
-	break;
-	case 9:  sprintf( direction, "southwest");
-	break;
+        case 0:  strlcpy( direction, "north", sizeof(direction));
+        break;
+        case 1:  strlcpy( direction, "east", sizeof(direction));
+        break;
+        case 2:  strlcpy( direction, "south", sizeof(direction));
+        break;
+        case 3:  strlcpy( direction, "west", sizeof(direction));
+        break;
+        case 4:  strlcpy( direction, "up", sizeof(direction));
+        break;
+        case 5:  strlcpy( direction, "down", sizeof(direction));
+        break;
+        case 6:  strlcpy( direction, "northeast", sizeof(direction));
+        break;
+        case 7:  strlcpy( direction, "northwest", sizeof(direction));
+        break;
+        case 8:  strlcpy( direction, "southeast", sizeof(direction));
+        break;
+        case 9:  strlcpy( direction, "southwest", sizeof(direction));
+        break;
        }
 
          if ( ( pexit = ch->in_room->exit[door] ) != NULL
@@ -4264,6 +4264,7 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
     ROOM_INDEX_DATA *pRoomIndex, *pHolder;
     char *defaultRoomName = "In a pocket dimension.\n\r";
     char *defaultRoomDesc = "You stand in a misty room out of phase with the world.\n\r";
+    size_t name_len, desc_len;
     int iHash, door, vnum;
 
 
@@ -4286,10 +4287,12 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
 	  break;
     }
     pRoomIndex->vnum            = vnum;
-    pRoomIndex->name            = alloc_mem( strlen(defaultRoomName) );
-    strcpy(pRoomIndex->name, defaultRoomName);
-    pRoomIndex->description     = alloc_mem( strlen(defaultRoomDesc) );
-    strcpy(pRoomIndex->description, defaultRoomDesc);
+    name_len                    = strlen(defaultRoomName) + 1;
+    pRoomIndex->name            = alloc_mem( name_len );
+    strlcpy(pRoomIndex->name, defaultRoomName, name_len);
+    desc_len                    = strlen(defaultRoomDesc) + 1;
+    pRoomIndex->description     = alloc_mem( desc_len );
+    strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
     pRoomIndex->room_flags      = 0;
     pRoomIndex->room_flags2     = 0;
     pRoomIndex->sector_type     = 0;
@@ -4352,6 +4355,7 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
     ROOM_INDEX_DATA *pRoomIndex, *pHolder, *in_room;
     char *defaultRoomName = "In a pocket dimension.\n\r";
     char *defaultRoomDesc = "You stand in a misty room out of phase with the world.\n\r";
+    size_t name_len, desc_len;
     int iHash, door, vnum;
 
 
@@ -4374,10 +4378,12 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
 	  break;
     }
     pRoomIndex->vnum            = vnum;
-    pRoomIndex->name            = alloc_mem( strlen(defaultRoomName) );
-    strcpy(pRoomIndex->name, defaultRoomName);
-    pRoomIndex->description     = alloc_mem( strlen(defaultRoomDesc) );
-    strcpy(pRoomIndex->description, defaultRoomDesc);
+    name_len                    = strlen(defaultRoomName) + 1;
+    pRoomIndex->name            = alloc_mem( name_len );
+    strlcpy(pRoomIndex->name, defaultRoomName, name_len);
+    desc_len                    = strlen(defaultRoomDesc) + 1;
+    pRoomIndex->description     = alloc_mem( desc_len );
+    strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
     pRoomIndex->room_flags      = 0;
     pRoomIndex->room_flags2     = 0;
     pRoomIndex->sector_type     = 0;
@@ -4468,28 +4474,28 @@ void spell_butcher( int sn, int level, CHAR_DATA *ch, void *vo )
 
 
     arm1 = create_object( get_obj_index( OBJ_VNUM_SLICED_ARM ), 0 );
-    sprintf( buf,"A surgically removed arm" );
+    snprintf( buf, sizeof(buf), "A surgically removed arm" );
     free_string( arm1->short_descr );
     arm1->short_descr = str_dup( buf );
-    sprintf( buf,"A surgically removed arm waits to serve %s", ch->name );
+    snprintf( buf, sizeof(buf), "A surgically removed arm waits to serve %s", ch->name );
     free_string( arm1->description );
     arm1->description = str_dup( buf );
     obj_to_room( arm1, ch->in_room );
     arm1->timer = 250;
     arm2 = create_object( get_obj_index( OBJ_VNUM_SLICED_ARM ), 0 );
-    sprintf( buf,"A surgically removed arm" );
+    snprintf( buf, sizeof(buf), "A surgically removed arm" );
     free_string( arm2->short_descr );
     arm2->short_descr = str_dup( buf );
-    sprintf( buf,"A surgically removed arm waits to serve %s", ch->name );
+    snprintf( buf, sizeof(buf), "A surgically removed arm waits to serve %s", ch->name );
     free_string( arm2->description );
     arm2->description = str_dup( buf );
     obj_to_room( arm2, ch->in_room );
     arm2->timer = 250;
     leg1 = create_object( get_obj_index( OBJ_VNUM_SLICED_LEG ), 0 );
-    sprintf( buf,"A surgically removed leg" );
+    snprintf( buf, sizeof(buf), "A surgically removed leg" );
     free_string( leg1->short_descr );
     leg1->short_descr = str_dup( buf );
-    sprintf( buf,"A surgically removed leg waits to serve %s", ch->name );
+    snprintf( buf, sizeof(buf), "A surgically removed leg waits to serve %s", ch->name );
     free_string( leg1->description );
     leg1->description = str_dup( buf );
     obj_to_room( leg1, ch->in_room );
@@ -4504,10 +4510,10 @@ void spell_butcher( int sn, int level, CHAR_DATA *ch, void *vo )
     obj_to_room( leg2, ch->in_room );
     leg2->timer = 250;
     head = create_object( get_obj_index( OBJ_VNUM_SEVERED_HEAD ), 0 );
-    sprintf( buf,"A surgically removed head" );
+    snprintf( buf, sizeof(buf), "A surgically removed head" );
     free_string( head->short_descr );
     head->short_descr = str_dup( buf );
-    sprintf( buf,"A surgically removed head grins at %s", ch->name );
+    snprintf( buf, sizeof(buf), "A surgically removed head grins at %s", ch->name );
     free_string( head->description );
     head->description = str_dup( buf );
     obj_to_room( head, ch->in_room );
