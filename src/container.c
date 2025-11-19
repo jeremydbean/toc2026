@@ -4,6 +4,7 @@
 LIST character_list;
 #endif
 
+#if USE_CONTAINER_LISTS
 static bool character_name_matches( const void *data, void *ctx )
 {
     const CHAR_DATA *candidate = data;
@@ -16,6 +17,7 @@ static bool character_name_matches( const void *data, void *ctx )
 
     return !str_cmp( candidate->name, target );
 }
+#endif
 
 void register_character( CHAR_DATA *ch )
 {
