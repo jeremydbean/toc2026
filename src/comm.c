@@ -2399,6 +2399,52 @@ static bool act_recipient_supports_color( const CHAR_DATA *ch )
     return ( ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->color );
 }
 
+static int act_hex_value( char ch )
+{
+    if ( ch >= '0' && ch <= '9' )
+    {
+        return ch - '0';
+    }
+
+    if ( ch >= 'a' && ch <= 'f' )
+    {
+        return 10 + ( ch - 'a' );
+    }
+
+    if ( ch >= 'A' && ch <= 'F' )
+    {
+        return 10 + ( ch - 'A' );
+    }
+
+    return -1;
+}
+
+static bool act_color_token_prefix( char ch )
+{
+    return ( ch == '{' || ch == '&' || ch == '$' );
+}
+
+static bool act_parse_color_slot( const char *str, unsigned char *slot_out )
+{
+    int high;
+    int low;
+
+    if ( str == NULL || slot_out == NULL )
+    {
+        return false;
+    }
+
+    high = act_hex_value( str[0] );
+    low  = act_hex_value( str[1] );
+    if ( high < 0 || low < 0 )
+    {
+        return false;
+    }
+
+    *slot_out = (unsigned char)(( high << 4 ) | low );
+    return true;
+}
+
 static void act_append_color_marker( DString *buf, const CHAR_DATA *recipient, unsigned char slot )
 {
     const char *sequence;
@@ -2583,6 +2629,7 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
     const char *str;
     const char *i;
     DString buf;
+    unsigned char color_slot;
  
     /*
      * Discard null and zero-length messages.
@@ -2636,6 +2683,14 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
 
                 act_append_color_marker( &buf, to, (unsigned char)*str );
                 ++str;
+                continue;
+            }
+
+            if ( act_color_token_prefix( *str )
+              && act_parse_color_slot( str + 1, &color_slot ) )
+            {
+                act_append_color_marker( &buf, to, color_slot );
+                str += 3;
                 continue;
             }
 
