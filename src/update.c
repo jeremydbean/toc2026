@@ -209,9 +209,9 @@ void show_backup( CHAR_DATA *ch, char *argument )
 
     if ( arg1[0] == '\0' )
     {
-      sprintf( buf, "Next pfile backup scheduled for %s\n\r",(char *)ctime(&backup));
+      snprintf( buf, sizeof(buf), "Next pfile backup scheduled for %s\n\r", (char *)ctime(&backup));
       send_to_char(buf,ch);
-      sprintf( buf, "Next daily backup scheduled for %s\n\r",(char *)ctime(&dailybackup));
+      snprintf( buf, sizeof(buf), "Next daily backup scheduled for %s\n\r", (char *)ctime(&dailybackup));
       send_to_char(buf,ch);
       send_to_char("Type BACKUP NOW to run a backup now.\n\r",ch);
       return;
@@ -244,7 +244,7 @@ void advance_level( CHAR_DATA *ch, bool is_advance )
 	return;
 
 
-    sprintf( buf, "the %s",
+    snprintf( buf, sizeof(buf), "the %s",
         title_table [ch->class] [ch->level] [ch->sex == SEX_FEMALE ? 1 : 0] );
     set_title( ch, buf );
 
@@ -382,7 +382,7 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
     if ( !IS_NPC(ch) )
 	REMOVE_BIT( ch->act, PLR_BOUGHT_PET );
 
-    sprintf( buf,
+    snprintf( buf, sizeof(buf),
 	"Your gain is: %d/%d hp, %d/%d m, %d/%d end %d/%d prac.\n\r",
 	add_hp,		ch->max_hit,
 	add_mana,	ch->max_mana,
@@ -394,20 +394,20 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
     if (!is_advance)
     {
 	if(IS_IMMORTAL(ch) )
-	    sprintf(buf, "%s has been granted Immortality!", ch->name);
+	    snprintf( buf, sizeof(buf), "%s has been granted Immortality!", ch->name);
   else if(ch->level == LEVEL_KING)
-    	    sprintf(buf,"%s has reached the pinnacle of mortal power!!!",ch->name);
+    	    snprintf( buf, sizeof(buf),"%s has reached the pinnacle of mortal power!!!",ch->name);
 	else if(ch->level == LEVEL_HERO4)
-	    sprintf(buf,"%s is now a Lord of the Realms!!!!",ch->name);
+	    snprintf( buf, sizeof(buf),"%s is now a Lord of the Realms!!!!",ch->name);
 	else if(ch->level == LEVEL_HERO3)
-	    sprintf(buf,"%s is now a Knight of the Realms!!!",ch->name);
+	    snprintf( buf, sizeof(buf),"%s is now a Knight of the Realms!!!",ch->name);
 	else if(ch->level > LEVEL_HERO && ch->level < LEVEL_HERO4)
-	    sprintf(buf,"%s has reached the next level of Heroism!!",ch->name);
+	    snprintf( buf, sizeof(buf),"%s has reached the next level of Heroism!!",ch->name);
 	else if(IS_HERO(ch) )
-	    sprintf(buf, "%s is now a hero!",
+	    snprintf( buf, sizeof(buf), "%s is now a hero!",
 		ch->name);
 	else
-	    sprintf(buf, "%s has achieved level %d!", ch->name, ch->level);
+	    snprintf( buf, sizeof(buf), "%s has achieved level %d!", ch->name, ch->level);
 	send_info(buf);
     log_string( buf );
     }
@@ -490,7 +490,7 @@ void gain_exp( CHAR_DATA *ch, int gain )
       send_to_char("                                                                \n\r",ch);
 	    send_to_char(" ***  Congratulations.  You've done it.  You've beaten ToC. *** \n\r",ch);
       send_to_char("                                                                \n\r",ch);
-      sprintf( buf,"                           Total Time Played: %d                    ",(int) (ch->played + current_time - ch->logon) / 3600);
+      snprintf( buf, sizeof(buf),"                           Total Time Played: %d                    ",(int) (ch->played + current_time - ch->logon) / 3600);
 	    send_to_char(buf,ch);
       send_to_char(" \n\r",ch);
       send_to_char(" ============================================================== \n\r",ch);
@@ -889,7 +889,7 @@ void weather_update( void )
     {
     case  5:
 	weather_info.sunlight = SUN_LIGHT;
-	strcat( buf, "The day has begun.\n\r" );
+	strlcat( buf, "The day has begun.\n\r" , sizeof(buf) );
   component_update();
 	break;
 
@@ -898,17 +898,17 @@ void weather_update( void )
 	switch( dice(1,4) )
 	{
 	  case 1:
-	  strcat( buf,"Daylight paints the sky a bright red, heralding a new day.\n\r");
+	  strlcat( buf, "Daylight paints the sky a bright red, heralding a new day.\n\r", sizeof(buf) );
     component_update();
 	  break;
 	  case 2:
-	  strcat( buf,"The sun rises on the eastern horizen.\n\r");
+	  strlcat( buf, "The sun rises on the eastern horizen.\n\r", sizeof(buf) );
 	  break;
 	  case 3:
-	  strcat( buf,"A rooster crows off in the distance, and daylight streaks across the heavens.\n\r");
+	  strlcat( buf, "A rooster crows off in the distance, and daylight streaks across the heavens.\n\r", sizeof(buf) );
 	  break;
 	  case 4:
-	  strcat( buf,"The sun slowly glides up into the sky as the new day begins.\n\r");
+	  strlcat( buf, "The sun slowly glides up into the sky as the new day begins.\n\r", sizeof(buf) );
 	  break;
 	}
 	break;
@@ -918,35 +918,35 @@ void weather_update( void )
 	switch( dice(1,6) )
 	{
 	    case 1:
-	    strcat( buf, "The sun slowly disappears in the west.\n\r" );
+	    strlcat( buf, "The sun slowly disappears in the west.\n\r" , sizeof(buf) );
 	    break;
 
 	    case 2:
-	    strcat( buf, "The sky is ablaze with colors as the sun dips below the horizon.\n\r" );
+	    strlcat( buf, "The sky is ablaze with colors as the sun dips below the horizon.\n\r" , sizeof(buf) );
 	    break;
 
 	    case 3:
-	    strcat( buf, "Stars begin to shine coldly as the night begins.\n\r");
+	    strlcat( buf, "Stars begin to shine coldly as the night begins.\n\r", sizeof(buf) );
       component_update();
 	    break;
 
 	    case 4:
-	    strcat( buf, "The rainbow colors of an aurora fill the night sky.\n\r");
+	    strlcat( buf, "The rainbow colors of an aurora fill the night sky.\n\r", sizeof(buf) );
 	    break;
 
 	    case 5:
-	    strcat( buf, "Shooting stars leave glittering trails of white overhead.\n\r");
+	    strlcat( buf, "Shooting stars leave glittering trails of white overhead.\n\r", sizeof(buf) );
 	    break;
 
 	    case 6:
-	    strcat( buf, "Thousands of stars paint the sky as night begins.\n\r");
+	    strlcat( buf, "Thousands of stars paint the sky as night begins.\n\r", sizeof(buf) );
 	    break;
 	}
 	break;
 
     case 20:
 	weather_info.sunlight = SUN_DARK;
-	strcat( buf, "The night has begun.\n\r" );
+	strlcat( buf, "The night has begun.\n\r" , sizeof(buf) );
   component_update();
 	break;
 
@@ -977,17 +977,17 @@ void weather_update( void )
 	switch(weather_info.moon_phase)
 	{
 	  case MOON_NEW:
-	    strcat(buf,"A new moon sets.\n\r");
+	    strlcat( buf, "A new moon sets.\n\r", sizeof(buf) );
 	  break;
 	  case MOON_WAXING:
-	    strcat(buf,"A crescent moon sets.\n\r");
+	    strlcat( buf, "A crescent moon sets.\n\r", sizeof(buf) );
 	  break;
 	  case MOON_FULL:
-	    strcat(buf,"A full moon sets.\n\r");
+	    strlcat( buf, "A full moon sets.\n\r", sizeof(buf) );
       component_update();
 	  break;
 	  case MOON_WANING:
-	    strcat(buf,"A crescent moon sets.\n\r");
+	    strlcat( buf, "A crescent moon sets.\n\r", sizeof(buf) );
 	  break;
 	}
 	weather_info.moon_place = MOON_DOWN;
@@ -996,17 +996,17 @@ void weather_update( void )
 	switch(weather_info.moon_phase)
 	{
 	  case MOON_NEW:
-	    strcat(buf,"A new moon rises.\n\r");
+	    strlcat( buf, "A new moon rises.\n\r", sizeof(buf) );
 	  break;
 	  case MOON_WAXING:
-	    strcat(buf,"A crescent moon rises.\n\r");
+	    strlcat( buf, "A crescent moon rises.\n\r", sizeof(buf) );
 	  break;
 	  case MOON_FULL:
-	    strcat(buf,"A full moon rises.\n\r");
+	    strlcat( buf, "A full moon rises.\n\r", sizeof(buf) );
       component_update();
 	  break;
 	  case MOON_WANING:
-	    strcat(buf,"A crescent moon rises.\n\r");
+	    strlcat( buf, "A crescent moon rises.\n\r", sizeof(buf) );
 	  break;
 	}
 	weather_info.moon_place = MOON_UP;
@@ -1052,7 +1052,7 @@ void weather_update( void )
 	if ( weather_info.mmhg <  990
 	|| ( weather_info.mmhg < 1010 && number_bits( 2 ) == 0 ) )
 	{
-	    strcat( buf, "Clouds begin to fill the sky.\n\r" );
+	    strlcat( buf, "Clouds begin to fill the sky.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_CLOUDY;
 	}
 	break;
@@ -1061,13 +1061,13 @@ void weather_update( void )
 	if ( weather_info.mmhg <  970
 	|| ( weather_info.mmhg <  990 && number_bits( 2 ) == 0 ) )
 	{
-	    strcat( buf, "The sky breaks, and rain falls from the heavens.\n\r" );
+	    strlcat( buf, "The sky breaks, and rain falls from the heavens.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_RAINING;
 	}
 
 	if ( weather_info.mmhg > 1030 && number_bits( 2 ) == 0 )
 	{
-	    strcat( buf, "The clouds disappear.\n\r" );
+	    strlcat( buf, "The clouds disappear.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_CLOUDLESS;
 	}
 	break;
@@ -1075,14 +1075,14 @@ void weather_update( void )
     case SKY_RAINING:
 	if ( weather_info.mmhg <  970 && number_bits( 2 ) == 0 )
 	{
-	    strcat( buf, "Lightning flashes like a war in the sky.\n\r" );
+	    strlcat( buf, "Lightning flashes like a war in the sky.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_LIGHTNING;
 	}
 
 	if ( weather_info.mmhg > 1030
 	|| ( weather_info.mmhg > 1010 && number_bits( 2 ) == 0 ) )
 	{
-	    strcat( buf, "The rain gently tapers off.\n\r" );
+	    strlcat( buf, "The rain gently tapers off.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_CLOUDY;
 	}
 	break;
@@ -1091,7 +1091,7 @@ void weather_update( void )
 	if ( weather_info.mmhg > 1010
 	|| ( weather_info.mmhg >  990 && number_bits( 2 ) == 0 ) )
 	{
-	    strcat( buf, "The lightning has stopped.\n\r" );
+	    strlcat( buf, "The lightning has stopped.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_RAINING;
 	    break;
 	}
@@ -1174,7 +1174,7 @@ void char_update( void )
 
 	  SET_BIT(ch->act2, ACT2_LYCANTH);
 	  ch->timer = 500;
-	  sprintf(buf,"%s is afflicted with Lycanthropy",ch->name);
+	  snprintf( buf, sizeof(buf),"%s is afflicted with Lycanthropy",ch->name);
 	  wizinfo(buf,LEVEL_IMMORTAL);
 	}
 
@@ -1228,22 +1228,22 @@ void char_update( void )
 		     do_run(ch,"north");
 		     break;
 		case 2:
-		     sprintf(buf,"BUGS! There are BUGS EVERYWHERE!!!");
+		     snprintf( buf, sizeof(buf),"BUGS! There are BUGS EVERYWHERE!!!");
 		     do_shout(ch,buf);
 		     act("$n madly begins stomping around the room.",ch,NULL,NULL,TO_ROOM);
 		     act("In a vain attempt, you try to exterminate all bugs in the world.",ch,NULL,NULL,TO_CHAR);
 		     break;
 		case 3:
-		     sprintf(buf,"I'm trapped in this room! AHHHHHHHHHH!!!");
+		     snprintf( buf, sizeof(buf),"I'm trapped in this room! AHHHHHHHHHH!!!");
 		     do_say(ch,buf);
 		     act("$n sits down and bursts into tears.",ch,NULL,NULL,TO_ROOM);
 		     act("You sit down and burst into tears!.",ch,NULL,NULL,TO_CHAR);
 		     ch->position = POS_SITTING;
 		     break;
 		case 4:
-		     sprintf(buf,"You know, it's much too warm in this room!");
+		     snprintf( buf, sizeof(buf),"You know, it's much too warm in this room!");
 		     do_say(ch,buf);
-		     sprintf(buf,"Being naked is way cooler!");
+		     snprintf( buf, sizeof(buf),"Being naked is way cooler!");
 		     do_say(ch,buf);
 		     do_remove(ch,"all");
 		     act("$n dances around the room naked!",ch,NULL,NULL,TO_ROOM);
@@ -1256,18 +1256,18 @@ void char_update( void )
 		     act("$n snores loudly.",ch,NULL,NULL,TO_ROOM);
 		     break;
 		case 6:
-		     sprintf(buf,"You know, God smells like cheese.");
+		     snprintf( buf, sizeof(buf),"You know, God smells like cheese.");
 		     do_say(ch,buf);
 		     break;
 		case 7:
-		     sprintf(buf,"This place needs more ferns, I CAN'T STAND IT!");
+		     snprintf( buf, sizeof(buf),"This place needs more ferns, I CAN'T STAND IT!");
 		     do_say(ch,buf);
-		     sprintf(buf,"I'm outta here!");
+		     snprintf( buf, sizeof(buf),"I'm outta here!");
 		     do_say(ch,buf);
 		     do_recall(ch,"");
 		     break;
 		case 8:
-		     sprintf(buf,"THE COLORS!!! THE COLORS!!!");
+		     snprintf( buf, sizeof(buf),"THE COLORS!!! THE COLORS!!!");
 		     do_say(ch,buf);
 		     break;
 		case 9:
@@ -1275,21 +1275,21 @@ void char_update( void )
 		     act("Your mind begins to wander as you begin contemplating the complexities of fungi.",ch,NULL,NULL,TO_CHAR);
 		     break;
 		case 10:
-		     sprintf(buf,"I'm a little teapot");
+		     snprintf( buf, sizeof(buf),"I'm a little teapot");
 		     do_music(ch,buf);
 		     act("$n assumes the standard teapot position.",ch,NULL,NULL,TO_ROOM);
 		     act("You do your very best teapot impersonation.",ch,NULL,NULL,TO_CHAR);
-		     sprintf(buf,"Short and Stout");
+		     snprintf( buf, sizeof(buf),"Short and Stout");
 		     do_music(ch,buf);
 		     act("$n squats down and then stands up.",ch,NULL,NULL,TO_ROOM);
 		     act("You quickly squat and stand",ch,NULL,NULL,TO_CHAR);
-		     sprintf(buf,"Here is my handle, and here is my spout");
+		     snprintf( buf, sizeof(buf),"Here is my handle, and here is my spout");
 		     do_music(ch,buf);
 		     act("$n wiggles $s left elbow and then $s right arm.",ch,NULL,NULL,TO_ROOM);
 		     act("You show everyone your handle and then your spout.",ch,NULL,NULL,TO_CHAR);
-		     sprintf(buf,"When I get all steamed up, hear me shout");
+		     snprintf( buf, sizeof(buf),"When I get all steamed up, hear me shout");
 		     do_music(ch,buf);
-		     sprintf(buf,"Just TIP me over and pour me out!");
+		     snprintf( buf, sizeof(buf),"Just TIP me over and pour me out!");
 		     do_music(ch,buf);
 		     act("$n leans towards $s right.",ch,NULL,NULL,TO_ROOM);
 		     act("You lean towards your right.",ch,NULL,NULL,TO_CHAR);
@@ -1305,7 +1305,7 @@ void char_update( void )
 		     act("You pull on both ears and your tongue magically returns to your mouth",ch,NULL,NULL,TO_CHAR);
 		     break;
 		case 12:
-		     sprintf(buf,"I used to have several problems, but I'm feeling much better now.");
+		     snprintf( buf, sizeof(buf),"I used to have several problems, but I'm feeling much better now.");
 		     do_shout(ch,buf);
 		     break;
 		case 13:
@@ -1326,7 +1326,7 @@ void char_update( void )
 		     act("Suddenly very selfconscious, you realize everyone is staring at you!",ch,NULL,NULL,TO_CHAR);
 		     break;
 		case 17:
-		     sprintf(buf,"AHHHHHH!!! THEY'RE AFTER MEEEEE!!!!");
+		     snprintf( buf, sizeof(buf),"AHHHHHH!!! THEY'RE AFTER MEEEEE!!!!");
 		     do_shout(ch,buf);
 		     act("You must escape NOW!",ch,NULL,NULL,TO_CHAR);
 		     do_run(ch,"north");
@@ -1338,18 +1338,18 @@ void char_update( void )
 		case 19:
 		     act("$n beings rolling around on the ground screaming wildly!",ch,NULL,NULL,TO_ROOM);
 		     act("Feeling a sudden pain in your head, you realize in horror that they've returned!",ch,NULL,NULL,TO_CHAR);
-		     sprintf(buf,"OH, MY GAWD, THEY'RE EATING MY BRAIN!!!  NOOOOO!!!");
+		     snprintf( buf, sizeof(buf),"OH, MY GAWD, THEY'RE EATING MY BRAIN!!!  NOOOOO!!!");
 		     do_shout(ch,buf);
 		     break;
 		case 20:
 		     act("$n smiles proudly and points to $s head.",ch,NULL,NULL,TO_ROOM);
 		     act("You proudly call attention to your new hairdoo.",ch,NULL,NULL,TO_CHAR);
-		     sprintf(buf,"I have big pink foam curlers all over my head!");
+		     snprintf( buf, sizeof(buf),"I have big pink foam curlers all over my head!");
 		     do_say(ch,buf);
 		     break;
 		case 21:
 		     act("With a sudden look of panic, $n nervously searches the ground around $m.",ch,NULL,NULL,TO_ROOM);
-		     sprintf(buf,"I seem to have misplaced my marbles, has anyone seen them?");
+		     snprintf( buf, sizeof(buf),"I seem to have misplaced my marbles, has anyone seen them?");
 		     do_say(ch,buf);
 		     break;
 		case 22:
@@ -1368,14 +1368,14 @@ void char_update( void )
 		case 25:
 		     act("$n quickly removes two ripe oranges from $s bag.",ch,NULL,NULL,TO_ROOM);
 		     act("$n places an orange up to each of $s eyes.",ch,NULL,NULL,TO_ROOM);
-		     sprintf(buf,"I'm a bug! I'm a Bug!!");
+		     snprintf( buf, sizeof(buf),"I'm a bug! I'm a Bug!!");
 		     do_say(ch,buf);
 		     act("Appalled, you realize that witch has turned you into an insect!",ch,NULL,NULL,TO_CHAR);
 		     break;
 		case 26:
 		     act("$n looks at you through $s thumb and forefinger, while slowly pressing them together.",ch,NULL,NULL,TO_ROOM);
 		     act("You are now a Giant!  You attempt to squash all the tiny ant-people in the room with your fingers.",ch,NULL,NULL,TO_CHAR);
-		     sprintf(buf,"I'm squishing you! Squish.. Squish.. Squish..");
+		     snprintf( buf, sizeof(buf),"I'm squishing you! Squish.. Squish.. Squish..");
 		     do_say(ch,buf);
 		     break;
 		case 27:
@@ -1385,7 +1385,7 @@ void char_update( void )
 		case 28:
 		     act("$n frantically claws at $s face and screams horribly!",ch,NULL,NULL,TO_ROOM);
 		     act("You're most favored pet hampster begins to violently claw at your eyes!!!",ch,NULL,NULL,TO_CHAR);
-		     sprintf(buf,"My Eyes! My Eyes! My Hamster's Gone Mad!!! Aaaaaahhhhh");
+		     snprintf( buf, sizeof(buf),"My Eyes! My Eyes! My Hamster's Gone Mad!!! Aaaaaahhhhh");
 		     do_shout(ch,buf);
 		     break;
 	  }
@@ -1795,7 +1795,7 @@ void obj_update( void )
 
 	    SET_BIT(obj->value[1], CONT_TRAPPED);
 	    obj->value[4] = dice(1,10);
-	    sprintf(buf,"New Object Trap: %s [Vnum: %d]",obj->short_descr,
+	    snprintf( buf, sizeof(buf),"New Object Trap: %s [Vnum: %d]",obj->short_descr,
 			obj->pIndexData->vnum);
 	    wizinfo(buf,LEVEL_IMMORTAL);
 	  }
@@ -1836,40 +1836,40 @@ void obj_update( void )
               case 20:
                 message = "$p begins to emit noxious odors.";
     /*            free_string(obj->short_descr);*/
-                sprintf(buf2,"a stinking corpse");
+                snprintf( buf2, sizeof(buf2),"a stinking corpse");
                 obj->short_descr = str_dup(buf2);
 /*                free_string(obj->description);*/
-                sprintf(buf2,"A stinking corpse is lying here.");
+                snprintf( buf2, sizeof(buf2),"A stinking corpse is lying here.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 15:
                 message = "Flies begin buzzing around $p.";
 /*                free_string(obj->short_descr);*/
-                sprintf(buf2,"a rotting corpse");
+                snprintf( buf2, sizeof(buf2),"a rotting corpse");
                 obj->short_descr = str_dup(buf2);
  /*               free_string(obj->description);*/
-                sprintf(buf2,"Flies are buzzing around a rotting corpse.");
+                snprintf( buf2, sizeof(buf2),"Flies are buzzing around a rotting corpse.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 10:
                 message = "Maggots begin to eat away at $p.";
    /*             free_string(obj->short_descr);*/
-                sprintf(buf2,"a very rotted corpse");
+                snprintf( buf2, sizeof(buf2),"a very rotted corpse");
                 obj->short_descr = str_dup(buf2);
  /*               free_string(obj->description);*/
-                sprintf(buf2,"Maggots are munching on a rotting corpse.");
+                snprintf( buf2, sizeof(buf2),"Maggots are munching on a rotting corpse.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 5:
                 message = "A rotted corpse decays into a skeleton.";
    /*             free_string(obj->short_descr);*/
-                sprintf(buf2,"an old skeleton");
+                snprintf( buf2, sizeof(buf2),"an old skeleton");
                 obj->short_descr = str_dup(buf2);
 /*                free_string(obj->description);*/
-                sprintf(buf2,"An old skeleton is lying here.");
+                snprintf( buf2, sizeof(buf2),"An old skeleton is lying here.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
@@ -1909,40 +1909,40 @@ void obj_update( void )
               case 5:
                 message = "$p begins to emit noxious odors.";
   /*              free_string(obj->short_descr);*/
-                sprintf(buf2,"a stinking corpse");
+                snprintf( buf2, sizeof(buf2),"a stinking corpse");
                 obj->short_descr = str_dup(buf2);
 /*                free_string(obj->description);*/
-                sprintf(buf2,"A stinking corpse is lying here.");
+                snprintf( buf2, sizeof(buf2),"A stinking corpse is lying here.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 4:
                 message = "Flies begin buzzing around $p.";
   /*              free_string(obj->short_descr);*/
-                sprintf(buf2,"a rotting corpse");
+                snprintf( buf2, sizeof(buf2),"a rotting corpse");
                 obj->short_descr = str_dup(buf2);
 /*                free_string(obj->description);*/
-                sprintf(buf2,"Flies are buzzing around a rotting corpse.");
+                snprintf( buf2, sizeof(buf2),"Flies are buzzing around a rotting corpse.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 3:
                 message = "Maggots begin to eat away at $p.";
   /*              free_string(obj->short_descr);*/
-                sprintf(buf2,"a very rotted corpse");
+                snprintf( buf2, sizeof(buf2),"a very rotted corpse");
                 obj->short_descr = str_dup(buf2);
     /*            free_string(obj->description);*/
-                sprintf(buf2,"Maggots are munching on a rotting corpse.");
+                snprintf( buf2, sizeof(buf2),"Maggots are munching on a rotting corpse.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 2:
                 message = "A rotted corpse decays into a skeleton.";
   /*              free_string(obj->short_descr);*/
-                sprintf(buf2,"an old skeleton");
+                snprintf( buf2, sizeof(buf2),"an old skeleton");
                 obj->short_descr = str_dup(buf2);
 /*                free_string(obj->description);*/
-                sprintf(buf2,"An old skeleton is lying here.");
+                snprintf( buf2, sizeof(buf2),"An old skeleton is lying here.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
@@ -2201,7 +2201,7 @@ void dtrap_update( void )
 		    send_to_char("beneath your feet, you plummet for several yards...\n\r",ch);
 		    send_to_char("and are impaled upon several spikes!\n\r",ch);
 		    send_to_char("You have been KILLED!!!\n\r",ch);
-                    sprintf(buf,"%s has walked into a DT [Room %d].",ch->name,ch->in_room->vnum);
+                    snprintf( buf, sizeof(buf),"%s has walked into a DT [Room %d].",ch->name,ch->in_room->vnum);
                     wizinfo(buf, LEVEL_IMMORTAL);
                     log_string(buf);
 
@@ -2343,7 +2343,7 @@ void sanity_check( void )
 	&&  ch->timer > 5 ) {
 	    act("A giant boot comes and kicks out all the losers in limbo!",
 		ch,NULL,NULL,TO_ROOM );
-	    sprintf(buf,"Limbo emptied of trash!");
+	    snprintf( buf, sizeof(buf),"Limbo emptied of trash!");
 	    wizinfo(buf,LEVEL_IMMORTAL);
 	    do_quit(ch,"");
 	}
@@ -2515,7 +2515,7 @@ void hate_update( void )
 	    if ( IS_SET(ch->in_room->room_flags,ROOM_SAFE) )
 	    {
 		char buf[255];
-		sprintf(buf, "Lets take this outside %s?!", wch->name);
+		snprintf( buf, sizeof(buf), "Lets take this outside %s?!", wch->name);
 		do_say(ch, buf);
 		continue;
 	    }
@@ -2523,7 +2523,7 @@ void hate_update( void )
 	    if ( IS_AFFECTED2( wch, AFF2_GHOST ) )
 	    {
 		char buf[255];
-	 	sprintf(buf, "Wooo! your pretty scary as a ghost %s.", wch->name);
+	 	snprintf( buf, sizeof(buf), "Wooo! your pretty scary as a ghost %s.", wch->name);
 		do_say(ch,buf);
 		continue;
 	    }
@@ -2757,13 +2757,13 @@ void disaster_update( void )
 	if(number_percent() < 50)
 	{
 	  pArea->disaster_type = 0;
-	  sprintf(buf,"%s is no longer a disaster area.", pArea->name);
+	  snprintf( buf, sizeof(buf),"%s is no longer a disaster area.", pArea->name);
 	  wizinfo(buf,LEVEL_IMMORTAL);
 	  continue;
 	}
 	else
 	{
-	  sprintf(buf,"%s is still suffering from %s.",
+	  snprintf( buf, sizeof(buf),"%s is still suffering from %s.",
 		  pArea->name,
 		  disaster_name[pArea->disaster_type]);
 	  wizinfo(buf,LEVEL_IMMORTAL);
@@ -2811,14 +2811,14 @@ void disaster_update( void )
 	    send_to_char("idea to seek cover until he's full.\n\r",wch);
 	   }
 
-	   sprintf(buf,"Disaster: The Dragon has been let loose.");
+	   snprintf( buf, sizeof(buf),"Disaster: The Dragon has been let loose.");
 	   wizinfo(buf,LEVEL_IMMORTAL);
          }
        }
 
        if(pArea->disaster_type > 0)
        {
-	 sprintf(buf,"%s has been struck by %s.", pArea->name,
+	 snprintf( buf, sizeof(buf),"%s has been struck by %s.", pArea->name,
 	     disaster_name[pArea->disaster_type]);
 	 wizinfo(buf,LEVEL_IMMORTAL);
        }
