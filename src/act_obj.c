@@ -162,7 +162,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	            members++;
 
  	    if(members > 1 && obj->value[0] > 1) {
-	        sprintf(buffer,"%d platinum",obj->value[0]);
+                snprintf(buffer, sizeof(buffer), "%d platinum", obj->value[0]);
 	        do_split(ch,buffer);
 	    }
 	  }
@@ -178,7 +178,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	            members++;
 
  	    if(members > 1 && obj->value[0] > 1) {
-	        sprintf(buffer,"%d gold",obj->value[0]);
+                snprintf(buffer, sizeof(buffer), "%d gold", obj->value[0]);
 	        do_split(ch,buffer);
 	    }
 	  }
@@ -194,7 +194,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	            members++;
 
  	    if(members > 1 && obj->value[0] > 1) {
-	        sprintf(buffer,"%d silver",obj->value[0]);
+                snprintf(buffer, sizeof(buffer), "%d silver", obj->value[0]);
 	        do_split(ch,buffer);
 	    }
 	  }
@@ -210,7 +210,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	            members++;
 
  	    if(members > 1 && obj->value[0] > 1) {
-	        sprintf(buffer,"%d copper",obj->value[0]);
+                snprintf(buffer, sizeof(buffer), "%d copper", obj->value[0]);
 	        do_split(ch,buffer);
 	    }
 	  }
@@ -455,22 +455,22 @@ void do_get( CHAR_DATA *ch, char *argument )
           switch(container->value[1]) {
              case TYPE_PLATINUM:
                 ch->new_platinum += amount;
-                sprintf(buf,"You get %d platinum coins.\n\r",amount);
+                snprintf(buf, sizeof(buf), "You get %d platinum coins.\n\r", amount);
                 break;
              case TYPE_GOLD:
                 ch->new_gold += amount;
-                sprintf(buf,"You get %d gold coins.\n\r",amount);
+                snprintf(buf, sizeof(buf), "You get %d gold coins.\n\r", amount);
                 break;
              case TYPE_SILVER:
                 ch->new_silver += amount;
-                sprintf(buf,"You get %d silver coins.\n\r",amount);
+                snprintf(buf, sizeof(buf), "You get %d silver coins.\n\r", amount);
                 break;
              case TYPE_COPPER:
                 ch->new_copper += amount;
-                sprintf(buf,"You get %d copper coins.\n\r",amount);
+                snprintf(buf, sizeof(buf), "You get %d copper coins.\n\r", amount);
                 break;
              default:
-                sprintf(buf,"You get zippo.\n\r");
+                snprintf(buf, sizeof(buf), "You get zippo.\n\r");
           }
           send_to_char(buf,ch);
           container->value[0] -= amount;
@@ -750,11 +750,11 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		act( "$n drops some platinum.", ch, NULL, NULL, TO_ROOM );
 		ch->new_platinum -= amount;
 
-		if(amount >= 5000) {
-		    sprintf( buf, "%s dropped %d platinum. [Room: %d]",
-			ch->name, amount, ch->in_room->vnum);
-	            wizinfo(buf,LEVEL_IMMORTAL);
-		}
+                if(amount >= 5000) {
+                    snprintf(buf, sizeof(buf), "%s dropped %d platinum. [Room: %d]",
+                        ch->name, amount, ch->in_room->vnum);
+                    wizinfo(buf,LEVEL_IMMORTAL);
+                }
 
 		send_to_char( "OK.\n\r", ch );
 		return;
@@ -789,11 +789,11 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		act( "$n drops some gold.", ch, NULL, NULL, TO_ROOM );
 		ch->new_gold -= amount;
 
-		if(amount >= 25000) {
-		    sprintf( buf, "%s dropped %d gold. [Room: %d]",
-			ch->name, amount, ch->in_room->vnum);
-	            wizinfo(buf,LEVEL_IMMORTAL);
-		}
+                if(amount >= 25000) {
+                    snprintf(buf, sizeof(buf), "%s dropped %d gold. [Room: %d]",
+                        ch->name, amount, ch->in_room->vnum);
+                    wizinfo(buf,LEVEL_IMMORTAL);
+                }
 
 		send_to_char( "OK.\n\r", ch );
 		return;
@@ -2321,8 +2321,8 @@ void do_remove( CHAR_DATA *ch, char *argument )
     OBJ_DATA *obj;
 
     if(ch->position == POS_FIGHTING) {
-	sprintf(log_buf,"Do_remove: %s : %s",ch->name,argument);
-	log_string(log_buf);
+        snprintf(log_buf, sizeof(log_buf), "Do_remove: %s : %s", ch->name, argument);
+        log_string(log_buf);
     }
 
     one_argument( argument, arg );
@@ -2336,8 +2336,8 @@ void do_remove( CHAR_DATA *ch, char *argument )
     if ( !str_cmp( arg, "all" ) )
     {
 	OBJ_DATA *obj_next;
-	sprintf(log_buf,"%s did a remove all.",ch->name);
-	log_string(log_buf);
+        snprintf(log_buf, sizeof(log_buf), "%s did a remove all.", ch->name);
+        log_string(log_buf);
 
 	for ( obj = ch->carrying; obj != NULL; obj = obj_next )
 	{
@@ -2405,9 +2405,9 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
         send_to_char("The Gods give you one "
 		"copper coin for your sacrifice.\n\r",ch);
     else {
-	sprintf(buf,"The Gods give you %d "
-		"copper coins for your sacrifice.\n\r",copper);
-	send_to_char(buf,ch);
+        snprintf(buf, sizeof(buf), "The Gods give you %d "
+                "copper coins for your sacrifice.\n\r", copper);
+        send_to_char(buf,ch);
     }
 
     ch->new_copper += copper;
@@ -2419,9 +2419,9 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
                 members++;
 
 	if ( members > 1 && copper > 1) {
-	    sprintf(buffer,"%d copper",copper);
-	    do_split(ch,buffer);
-	}
+            snprintf(buffer, sizeof(buffer), "%d copper", copper);
+            do_split(ch,buffer);
+        }
     }
 
     act( "$n sacrifices $p to the Gods.", ch, obj, NULL, TO_ROOM );
