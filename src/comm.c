@@ -563,15 +563,20 @@ void game_loop_unix( int control )
 	int maxdesc;
 
 #if defined(MALLOC_DEBUG)
-	if ( malloc_verify( ) != 1 )
-	    abort( );
+        if ( malloc_verify( ) != 1 )
+            abort( );
 #endif
 
-	/*
-	 * Poll all active descriptors.
-	 */
-	FD_ZERO( &in_set  );
-	FD_ZERO( &out_set );
+        /*
+         * Process any queued web-admin actions before polling descriptors.
+         */
+        process_web_admin_queue();
+
+        /*
+         * Poll all active descriptors.
+         */
+        FD_ZERO( &in_set  );
+        FD_ZERO( &out_set );
 	FD_ZERO( &exc_set );
 	FD_SET( control, &in_set );
 	maxdesc = control;
@@ -635,17 +640,16 @@ void game_loop_unix( int control )
 		}
 	    }
 
-	    if (d->character != NULL && d->character->dcount > 10)
-		close_socket(d);
-	}
+            if (d->character != NULL && d->character->dcount > 10)
+                close_socket(d);
+        }
 
-	handle_web();
-        process_web_admin_queue();
+        handle_web();
 
-	/*
-	 * Autonomous game motion.
-	 */
-	update_handler( );
+        /*
+         * Autonomous game motion.
+         */
+        update_handler( );
 
 	/*
 	 * Output.

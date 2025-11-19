@@ -2880,7 +2880,8 @@ void disaster_update( void )
              if(hit == true)
              {
                      EXIT_DATA *pexit;
-                     int door, move, rand_door[10];
+                     int door = -1, move, rand_door[10];
+                     int door_index;
                      int count;
 
                      for(move = dice(1,3) ; move > 0; move--)
@@ -2897,12 +2898,13 @@ void disaster_update( void )
                          if ( count < 0 )
                              break;
 
-                         door = number_range(0,count);
+                         door_index = number_range(0,count);
+                         door = rand_door[door_index];
 
                         send_to_char("You struggle in vain as the flood waters carry you along.\n\r",vch);
                         act("$n is carried off by the flood waters.",vch,NULL,NULL,TO_ROOM);
                         SET_BIT(vch->act, PLR_WIZINVIS);
-                        move_char( vch, rand_door[door], true);
+                        move_char( vch, door, true);
                         REMOVE_BIT(vch->act, PLR_WIZINVIS);
                         act("$n arrives on a wave of water screaming, 'HHggEEggLLggPP!'.",vch,NULL,NULL,TO_ROOM);
                         damage(vch,vch,dice(4,4),skill_lookup("waterfall"),DAM_LIGHTNING);
