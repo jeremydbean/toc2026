@@ -25,6 +25,7 @@ RUN apt-get update \
     libcrypt1 \
     python3 \
     python3-pip \
+    valgrind \
  && rm -rf /var/lib/apt/lists/*
 
 ENV PIP_BREAK_SYSTEM_PACKAGES=1
