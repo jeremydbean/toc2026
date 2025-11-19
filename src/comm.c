@@ -2367,13 +2367,23 @@ void stop_idling( CHAR_DATA *ch )
 
 
 
+static void act_append_color_marker( DString *buf, const CHAR_DATA *recipient, unsigned char slot );
+static void act_expand_color_tokens( const char *text, const CHAR_DATA *recipient, DString *out );
+
 /*
  * Write to one char using a dynamic string buffer.
  */
 void send_to_char_dstring( const DString *txt, CHAR_DATA *ch )
 {
-    if ( txt != NULL && ch->desc != NULL )
-        write_to_buffer( ch->desc, dstring_cstr( txt ), (int)dstring_length( txt ) );
+    DString colorized;
+
+    if ( txt == NULL || ch->desc == NULL )
+        return;
+
+    dstring_init( &colorized );
+    act_expand_color_tokens( dstring_cstr( txt ), ch, &colorized );
+    write_to_buffer( ch->desc, dstring_cstr( &colorized ), (int)dstring_length( &colorized ) );
+    dstring_free( &colorized );
 }
 
 /*
@@ -2443,6 +2453,46 @@ static bool act_parse_color_slot( const char *str, unsigned char *slot_out )
 
     *slot_out = (unsigned char)(( high << 4 ) | low );
     return true;
+}
+
+static void act_expand_color_tokens( const char *text,
+                                     const CHAR_DATA *recipient,
+                                     DString *out )
+{
+    const char *str;
+    unsigned char color_slot;
+
+    if ( text == NULL || out == NULL )
+    {
+        return;
+    }
+
+    for ( str = text; *str != '\0'; )
+    {
+        if ( *str == '\x02' )
+        {
+            ++str;
+            if ( *str == '\0' )
+            {
+                break;
+            }
+
+            act_append_color_marker( out, recipient, (unsigned char)*str );
+            ++str;
+            continue;
+        }
+
+        if ( act_color_token_prefix( *str )
+          && act_parse_color_slot( str + 1, &color_slot ) )
+        {
+            act_append_color_marker( out, recipient, color_slot );
+            str += 3;
+            continue;
+        }
+
+        dstring_append_char( out, *str );
+        ++str;
+    }
 }
 
 static void act_append_color_marker( DString *buf, const CHAR_DATA *recipient, unsigned char slot )
