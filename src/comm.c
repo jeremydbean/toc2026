@@ -1730,7 +1730,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
 	if ( IS_SET(ch->act, PLR_DENY) )
 	{
-	    sprintf( log_buf, "Denying access to %s@%s.", argument, d->host );
+            snprintf( log_buf, sizeof(log_buf), "Denying access to %s@%s.", argument, d->host );
 	    log_string( log_buf );
 	    wizinfo( log_buf, LEVEL_IMMORTAL );
 	    write_to_buffer( d, "You are denied access.\n\r", 0 );
@@ -1783,7 +1783,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	    }
 
 
-	    sprintf( buf, "Did I get that right, %s (Y/N)? ", argument );
+            snprintf( buf, sizeof(buf), "Did I get that right, %s (Y/N)? ", argument );
 	    write_to_buffer( d, buf, 0 );
 	    d->connected = CON_CONFIRM_NEW_NAME;
 	    return;
@@ -1801,7 +1801,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
             d->login_attempts++;
             if ( d->login_attempts >= 3 )
             {
-                sprintf(log_buf, "Too many bad passwords for %s@%s.", ch->name, d->host);
+                snprintf(log_buf, sizeof(log_buf), "Too many bad passwords for %s@%s.", ch->name, d->host);
                 log_string(log_buf);
                 wizinfo(log_buf, LEVEL_IMMORTAL);
                 write_to_buffer( d, "Wrong password. Disconnecting.\n\r", 0 );
@@ -1840,7 +1840,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	if ( check_playing( d, ch->name ) )
 	    return;
 
-	sprintf( log_buf, "%s@%s has connected. [Room: %d]", ch->name,
+   snprintf( log_buf, sizeof(log_buf), "%s@%s has connected. [Room: %d]", ch->name,
 		 d->host, ch->in_room->vnum );
 	log_string( log_buf );
 	if ( IS_SET(ch->act, PLR_WIZINVIS) && ch->invis_level > 63)
@@ -1871,21 +1871,21 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
 
         samehost = 0;
-        sprintf(deshost,"%s",d->host);
+        strlcpy(deshost, d->host, sizeof(deshost));
 
         for ( dch = descriptor_list; dch != NULL; dch = dch->next )
         {
           if (dch->character == NULL)
                continue;
 
-          sprintf(chhost,"%s",dch->host);
+          strlcpy(chhost, dch->host, sizeof(chhost));
           if (strstr(deshost,chhost) != NULL)
                samehost++;
         }
 
         if (samehost > 1)
         {
-           sprintf(log_buf,"There are currently %d players on from that IP address.",samehost);
+           snprintf(log_buf, sizeof(log_buf), "There are currently %d players on from that IP address.", samehost);
            wizinfo(log_buf, AVATAR);
         }
 
@@ -1952,8 +1952,8 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	switch ( *argument )
 	{
 	case 'y': case 'Y':
-	    sprintf( buf, "New character.\n\rGive me a password for %s: %s",
-		ch->name, echo_off_str );
+            snprintf( buf, sizeof(buf), "New character.\n\rGive me a password for %s: %s",
+                ch->name, echo_off_str );
 	    write_to_buffer( d, buf, 0 );
 	    d->connected = CON_GET_NEW_PASSWORD;
 	    break;
@@ -2159,7 +2159,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	else if( ch->class == CLASS_NECRO)
 	   ch->pcdata->guild = GUILD_NECRO;
 
-	sprintf( log_buf, "%s@%s new player.", ch->name, d->host );
+   snprintf( log_buf, sizeof(log_buf), "%s@%s new player.", ch->name, d->host );
 	log_string( log_buf );
 	if ( IS_SET(ch->act, PLR_WIZINVIS))
 	    wizinfo( log_buf, ch->invis_level );
@@ -2243,9 +2243,9 @@ case CON_GET_ALIGNMENT:
 	    ch->train    = 3;
 	    ch->practice = 5;
 	    ch->pcdata->psionic = 0;
-	    sprintf( buf, "the %s",
-		title_table [ch->class] [ch->level]
-		[ch->sex == SEX_FEMALE ? 1 : 0] );
+            snprintf( buf, sizeof(buf), "the %s",
+                title_table [ch->class] [ch->level]
+                [ch->sex == SEX_FEMALE ? 1 : 0] );
 	    set_title( ch, buf );
 
 	    do_outfit(ch,"");
@@ -2384,8 +2384,8 @@ case CON_GET_ALIGNMENT:
 
 	else if (notes > 1)
 	{
-	    sprintf(buf,"\n\rYou have %d new notes waiting.\n\r",notes);
-	    send_to_char(buf,ch);
+            snprintf(buf, sizeof(buf), "\n\rYou have %d new notes waiting.\n\r", notes);
+            send_to_char(buf,ch);
 	}
 
         if (IS_SET(ch->act,PLR_SWEDISH) && !IS_IMMORTAL(ch)) {
@@ -2398,7 +2398,7 @@ case CON_GET_ALIGNMENT:
 
 	if (ch->pcdata->pk_state == 0 && ch->level > 25) {
 	    send_to_char("You've joined the ranks of the PKILLERS!\n\r",ch);
-	    sprintf(log_buf,"%s turned into a PKILLER.",ch->name);
+       snprintf(log_buf, sizeof(log_buf), "%s turned into a PKILLER.", ch->name);
 	    log_string(log_buf);
 	    ch->pcdata->pk_state = 1;
 	}
@@ -2495,7 +2495,7 @@ static bool add_psionic_choice( CHAR_DATA *ch, const char *skill )
     }
 
     group_add( ch, skill, 0 );
-    sprintf( log_buf, "%s psi selection granted: [%s]", ch->name, skill );
+    snprintf( log_buf, sizeof(log_buf), "%s psi selection granted: [%s]", ch->name, skill );
     log_string( log_buf );
     wizinfo( log_buf, MAX_LEVEL );
     return true;
@@ -2512,7 +2512,7 @@ static bool grant_psionic_choices( CHAR_DATA *ch )
         return false;
     }
 
-    sprintf( log_buf, "%s psi custom list: %s", ch->name, ch->pcdata->psionic_grant_spec );
+    snprintf( log_buf, sizeof(log_buf), "%s psi custom list: %s", ch->name, ch->pcdata->psionic_grant_spec );
     log_string( log_buf );
     wizinfo( log_buf, MAX_LEVEL );
 
@@ -2697,9 +2697,9 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     send_to_char("\n\r",ch);
     ch->position = POS_RESTING;
 
-    sprintf( log_buf, "%s has been granted psionics!\n\r", ch->name);
+    snprintf( log_buf, sizeof(log_buf), "%s has been granted psionics!\n\r", ch->name);
     send_info( log_buf );
-    sprintf( log_buf, "%s has been granted psionics! [Chance: %d]\n\r", ch->name, chance);
+    snprintf( log_buf, sizeof(log_buf), "%s has been granted psionics! [Chance: %d]\n\r", ch->name, chance);
     log_string( log_buf );
     wizinfo( log_buf, LEVEL_IMMORTAL);
 
@@ -2714,7 +2714,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
       group_add(ch,"project",0);
       group_add(ch,"nightmare",0);
       group_add(ch,"mindblast",0);
-            sprintf( log_buf, "%s remort psi granted: | [shift, project, nightmare, mindblast]", ch->name);
+            snprintf( log_buf, sizeof(log_buf), "%s remort psi granted: | [shift, project, nightmare, mindblast]", ch->name);
             log_string( log_buf );
             wizinfo( log_buf, MAX_LEVEL);
     }
@@ -2725,7 +2725,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
             group_add(ch,"telekinesis",0);
             group_add(ch,"clairvoyance",0);
             group_add(ch,"astral walk",0);
-            sprintf( log_buf, "%s remort psi granted: | [confuse, telekinesis, clairvoyance, astral walk]", ch->name);
+            snprintf( log_buf, sizeof(log_buf), "%s remort psi granted: | [confuse, telekinesis, clairvoyance, astral walk]", ch->name);
             log_string( log_buf );
             wizinfo( log_buf, MAX_LEVEL);
             ch->pcdata->last_level = 3;
@@ -2736,7 +2736,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     else
     {
         add = number_percent();
-            sprintf( log_buf, "%s psi roll 1: [%d] | [psionic armor (1-40), psychic shield (41-70), mindbar (71+)]", ch->name, add);
+            snprintf( log_buf, sizeof(log_buf), "%s psi roll 1: [%d] | [psionic armor (1-40), psychic shield (41-70), mindbar (71+)]", ch->name, add);
             log_string( log_buf );
             wizinfo( log_buf, MAX_LEVEL);
         if( add <= 40)
@@ -2747,7 +2747,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
              group_add(ch,"mindbar",0);
 
         add2 = number_percent();
-            sprintf( log_buf, "%s psi roll 2: [%d] | [torment (1-35), ego whip (36-60), pyrotechnics (61-85), mindblast (86+)]", ch->name, add2);
+            snprintf( log_buf, sizeof(log_buf), "%s psi roll 2: [%d] | [torment (1-35), ego whip (36-60), pyrotechnics (61-85), mindblast (86+)]", ch->name, add2);
             log_string( log_buf );
             wizinfo( log_buf, MAX_LEVEL);
         if( add2 <= 35)
@@ -2760,7 +2760,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
              group_add(ch,"mindblast",0);
 
         add3 = number_percent();
-            sprintf( log_buf, "%s psi roll 3: [%d] | [clairvoyance (1-25), astral walk (26-50), shift (51-75), project (76+)]", ch->name, add3);
+            snprintf( log_buf, sizeof(log_buf), "%s psi roll 3: [%d] | [clairvoyance (1-25), astral walk (26-50), shift (51-75), project (76+)]", ch->name, add3);
             log_string( log_buf );
             wizinfo( log_buf, MAX_LEVEL);
         if( add3 <= 25)
@@ -2773,7 +2773,7 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
              group_add(ch,"project",0);
 
         add4 = number_percent();
-            sprintf( log_buf, "%s psi roll 4: [%d] | [telekinesis (1-20), transfusion (21-45), confuse (46-60), nightmare (61+)]\n\r", ch->name, add4);
+            snprintf( log_buf, sizeof(log_buf), "%s psi roll 4: [%d] | [telekinesis (1-20), transfusion (21-45), confuse (46-60), nightmare (61+)]\n\r", ch->name, add4);
             log_string( log_buf );
             wizinfo( log_buf, MAX_LEVEL);
         if( add4 <= 20)
@@ -2810,7 +2810,7 @@ void do_check_psi ( CHAR_DATA *ch, char *argument )
         chance = 100;
     }
 
-    sprintf( log_buf, "%s psionic check complete! [Chance: %d]%s", ch->name, chance, forced ? " [grantpsi]" : "");
+    snprintf( log_buf, sizeof(log_buf), "%s psionic check complete! [Chance: %d]%s", ch->name, chance, forced ? " [grantpsi]" : "");
     log_string( log_buf );
     wizinfo( log_buf, MAX_LEVEL-1);
 
@@ -2823,7 +2823,7 @@ void do_check_psi ( CHAR_DATA *ch, char *argument )
     if(!forced && ch->pcdata->last_level == 3 && chance < 95)
     {
         ch->pcdata->psionic = 2;
-        sprintf( log_buf, "Psionics are forever out of the reach of %s.", ch->name);
+        snprintf( log_buf, sizeof(log_buf), "Psionics are forever out of the reach of %s.", ch->name);
         log_string( log_buf );
         wizinfo( log_buf, LEVEL_IMMORTAL);
         send_to_char("* You feel as though you've lost something... *\n\r\n\r",ch);
@@ -2940,7 +2940,7 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 	     if(!IS_SET(ch->act, PLR_WIZINVIS) )
 			 	{
 					act( "$n has reconnected.", ch, NULL, NULL, TO_ROOM );
-					sprintf( log_buf, "%s@%s reconnected. [Room: %d]", ch->name,
+                                   snprintf( log_buf, sizeof(log_buf), "%s@%s reconnected. [Room: %d]", ch->name,
 			 		d->host, ch->in_room->vnum );
 					log_string( log_buf );
 				}
@@ -2953,21 +2953,21 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 	    from the same IP address  1/23/98 *****/
 
         samehost = 0;
-        sprintf(deshost,"%s",d->host);
+        strlcpy(deshost, d->host, sizeof(deshost));
 
         for ( dch = descriptor_list; dch != NULL; dch = dch->next )
         {
           if (dch->character == NULL)
                continue;
 
-          sprintf(chhost,"%s",dch->host);
+          strlcpy(chhost, dch->host, sizeof(chhost));
           if (strstr(deshost,chhost) != NULL)
                samehost++;
         }
 
 	if (samehost > 1)
 	{
-	   sprintf(log_buf,"There are now %d players playing from that IP address.",samehost);
+      snprintf(log_buf, sizeof(log_buf), "There are now %d players playing from that IP address.", samehost);
 	   wizinfo(log_buf, AVATAR);
 	}
 
@@ -3419,7 +3419,7 @@ static void __attribute__((unused)) act_public( const char *format, CHAR_DATA *c
 	send_to_char("foul or abusive language on a public channel.\n\r",ch);
 	send_to_char("You have lost your channel usage for 3 days.\n\r",ch);
 	send_to_char("Please in the future, follow the rules as best you can.\n\r",ch);
-	sprintf(buf,"The game has nochanneled %s for using foul language.",ch->name);
+        snprintf(buf, sizeof(buf), "The game has nochanneled %s for using foul language.", ch->name);
 	wizinfo(buf,LEVEL_IMMORTAL);
 	SET_BIT(ch->comm, COMM_NOCHANNELS|COMM_NOSHOUT|COMM_NOTELL);
 	ch->pcdata->jw_timer = current_time;
@@ -3880,7 +3880,7 @@ void config_prompt( CHAR_DATA *ch )
       return;
     }
 
-    sprintf(buf2, "%s", ch->prompt);
+    strlcpy(buf2, ch->prompt, sizeof(buf2));
     if (buf2[0] == '\0') {
         size_t len = 0;
 
@@ -3928,55 +3928,55 @@ void config_prompt( CHAR_DATA *ch )
 
         snprintf(buf2, sizeof(buf2), "%s> ", buf);
     } else {
-        sprintf(buf,"%d",ch->hit);
+        snprintf(buf, sizeof(buf), "%d", ch->hit);
         str_replace_c(buf2, "%h", buf);
 
-        sprintf(buf,"%d",ch->max_hit);
+        snprintf(buf, sizeof(buf), "%d", ch->max_hit);
         str_replace_c(buf2, "%H", buf);
 
-        sprintf(buf,"%d",ch->mana);
+        snprintf(buf, sizeof(buf), "%d", ch->mana);
         str_replace_c(buf2, "%m", buf);
 
-        sprintf(buf,"%d",ch->max_mana);
+        snprintf(buf, sizeof(buf), "%d", ch->max_mana);
         str_replace_c(buf2, "%M", buf);
 
-        sprintf(buf,"%d",ch->move);
+        snprintf(buf, sizeof(buf), "%d", ch->move);
         str_replace_c(buf2, "%v", buf);
 
-        sprintf(buf,"%d",ch->max_move);
+        snprintf(buf, sizeof(buf), "%d", ch->max_move);
         str_replace_c(buf2, "%V", buf);
 
-        sprintf(buf,"%ld",ch->exp);
+        snprintf(buf, sizeof(buf), "%ld", ch->exp);
         str_replace_c(buf2, "%x", buf);
 
         if (!IS_NPC(ch) && (ch->level < 59) )
-            sprintf(buf,"%ld", next_xp_level(ch)-ch->exp);
+            snprintf(buf, sizeof(buf), "%ld", next_xp_level(ch)-ch->exp);
         else
-            sprintf(buf,"none");
+            strlcpy(buf, "none", sizeof(buf));
         str_replace_c(buf2, "%X", buf);
 
-        sprintf(buf,"%ld",query_gold(ch));
+        snprintf(buf, sizeof(buf), "%ld", query_gold(ch));
         str_replace_c(buf2, "%g", buf);
 
-        sprintf(buf,"%d",ch->alignment);
+        snprintf(buf, sizeof(buf), "%d", ch->alignment);
         str_replace_c(buf2, "%a", buf);
 
         if( IS_IMMORTAL( ch ) && ch->in_room )
-            sprintf( buf, "%d", ch->in_room->vnum );
+            snprintf( buf, sizeof(buf), "%d", ch->in_room->vnum );
         else
-            sprintf( buf, " " );
+            strlcpy( buf, " ", sizeof(buf) );
         str_replace_c(buf2, "%R", buf);
 
         if( IS_IMMORTAL( ch ) && ch->in_room )
-            sprintf( buf, "%s", ch->in_room->area->name );
+            strlcpy( buf, ch->in_room->area->name, sizeof(buf) );
         else
-            sprintf( buf, " " );
+            strlcpy( buf, " ", sizeof(buf) );
         str_replace_c(buf2, "%z", buf);
 
         if( IS_IMMORTAL( ch ) && IS_SET(ch->act, PLR_WIZINVIS) )
-            sprintf( buf, " (WIZI:%d)", ch->invis_level);
+            snprintf( buf, sizeof(buf), " (WIZI:%d)", ch->invis_level);
         else
-            sprintf( buf, " ");
+            strlcpy( buf, " ", sizeof(buf) );
         str_replace_c(buf2, "%W", buf);
     }
 
@@ -4038,9 +4038,9 @@ static void handle_web_admin_command( const char *line )
             level = LEVEL_IMMORTAL;
 
         message_start++;
-        sprintf( buf, "[WebAdmin] %s", message_start );
+        snprintf( buf, sizeof(buf), "[WebAdmin] %s", message_start );
         wizinfo( buf, level );
-        sprintf( log_buf_local, "Web admin wizinfo queued: %s", message_start );
+        snprintf( log_buf_local, sizeof(log_buf_local), "Web admin wizinfo queued: %s", message_start );
         log_string( log_buf_local );
         return;
     }
@@ -4060,7 +4060,7 @@ static void handle_web_admin_command( const char *line )
         strncpy( command_buf, command_text, sizeof(command_buf) - 1 );
         command_buf[sizeof(command_buf) - 1] = '\0';
 
-        sprintf( log_buf_local, "Web admin executing command via %s: %s",
+        snprintf( log_buf_local, sizeof(log_buf_local), "Web admin executing command via %s: %s",
             admin->name, command_text );
         log_string( log_buf_local );
         interpret( admin, command_buf );
@@ -4082,7 +4082,7 @@ static void handle_web_admin_command( const char *line )
         return;
     }
 
-    sprintf( log_buf_local, "Web admin ignored unknown command: %s", line );
+    snprintf( log_buf_local, sizeof(log_buf_local), "Web admin ignored unknown command: %s", line );
     log_string( log_buf_local );
 }
 
