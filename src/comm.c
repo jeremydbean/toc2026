@@ -1104,9 +1104,9 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
      */
     for ( i = 0, k = 0; d->inbuf[i] != '\n' && d->inbuf[i] != '\r'; i++ )
     {
-	if ( k >= MAX_INPUT_LENGTH - 2 )
-	{
-	    write_to_buffer( d, "Line too long.\n\r", 0 );
+        if ( k >= MAX_INPUT_LENGTH - 2 )
+        {
+            write_to_buffer( d, "Line too long.\n\r", 0 );
 
 	    /* skip the rest of the line */
 	    for ( ; d->inbuf[i] != '\0'; i++ )
@@ -1115,13 +1115,13 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
 		    break;
 	    }
 	    d->inbuf[i]   = '\n';
-	    d->inbuf[i+1] = '\0';
-	    break;
-	}
+            d->inbuf[i+1] = '\0';
+            break;
+        }
 
-	if ( d->inbuf[i] == '\b' && k > 0 )
-	    --k;
-	else if ( isprint(d->inbuf[i]) )
+        if ( ( d->inbuf[i] == '\b' || d->inbuf[i] == 127 ) && k > 0 )
+            --k;
+        else if ( isprint((unsigned char)d->inbuf[i]) )
             d->incomm[k++] = d->inbuf[i];
     }
 
