@@ -66,6 +66,9 @@ const struct col_table_type col_table[] =
 
 static const char *const color_reset_sequence = "\x1b[0m";
 
+static int color_hex_value( char ch );
+bool color_parse_slot( const char *str, unsigned char *slot_out );
+
 static bool is_valid_color_slot( int slot )
 {
     return slot >= 0 && slot < COLOR_TABLE_SLOTS;
@@ -179,4 +182,136 @@ const char *color_code( const CHAR_DATA *ch, int slot )
     }
 
     return col_disp_table[entry].ansi_str;
+}
+
+bool color_is_enabled( const CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+    {
+        return false;
+    }
+
+    if ( !ch->pcdata->color )
+    {
+        return false;
+    }
+
+    if ( ch->desc != NULL && !ch->desc->color )
+    {
+        return false;
+    }
+
+    return true;
+}
+
+static int color_hex_value( char ch )
+{
+    if ( ch >= '0' && ch <= '9' )
+    {
+        return ch - '0';
+    }
+
+    if ( ch >= 'a' && ch <= 'f' )
+    {
+        return 10 + ( ch - 'a' );
+    }
+
+    if ( ch >= 'A' && ch <= 'F' )
+    {
+        return 10 + ( ch - 'A' );
+    }
+
+    return -1;
+}
+
+bool color_token_prefix( char ch )
+{
+    return ( ch == '{' || ch == '&' || ch == '$' );
+}
+
+bool color_parse_slot( const char *str, unsigned char *slot_out )
+{
+    int high;
+    int low;
+
+    if ( str == NULL
+      || *str == '\0'
+      || *( str + 1 ) == '\0'
+      || slot_out == NULL )
+    {
+        return false;
+    }
+
+    high = color_hex_value( *str );
+    low  = color_hex_value( *( str + 1 ) );
+
+    if ( high < 0 || low < 0 )
+    {
+        return false;
+    }
+
+    *slot_out = (unsigned char)(( high << 4 ) | low );
+    return true;
+}
+
+void color_append_marker( DString *buf, const CHAR_DATA *recipient, bool allow_color, unsigned char slot )
+{
+    const char *sequence;
+
+    if ( buf == NULL || !allow_color )
+    {
+        return;
+    }
+
+    if ( slot == 0 )
+    {
+        sequence = color_reset_code();
+    }
+    else
+    {
+        sequence = color_code( recipient, slot );
+    }
+
+    if ( sequence != NULL && *sequence != '\0' )
+    {
+        dstring_append_cstr( buf, sequence );
+    }
+}
+
+void color_convert( const char *text, const CHAR_DATA *recipient, bool allow_color, DString *out )
+{
+    const char *str;
+    unsigned char color_slot;
+
+    if ( text == NULL || out == NULL )
+    {
+        return;
+    }
+
+    for ( str = text; *str != '\0'; )
+    {
+        if ( *str == '\x02' )
+        {
+            ++str;
+            if ( *str == '\0' )
+            {
+                break;
+            }
+
+            color_append_marker( out, recipient, allow_color, (unsigned char)*str );
+            ++str;
+            continue;
+        }
+
+        if ( color_token_prefix( *str )
+          && color_parse_slot( str + 1, &color_slot ) )
+        {
+            color_append_marker( out, recipient, allow_color, color_slot );
+            str += 3;
+            continue;
+        }
+
+        dstring_append_char( out, *str );
+        ++str;
+    }
 }
