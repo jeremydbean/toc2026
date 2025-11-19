@@ -2253,6 +2253,7 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     char *spell __attribute__((unused)) = NULL;
   CHAR_DATA *vch;
   CHAR_DATA *most_hurt = NULL;
+  LIST_ITERATOR iter;
 
   float hp_check = 0;
   int hp_hold = 0;
@@ -2271,7 +2272,7 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
       return false;
 
 
-  for ( vch = char_list; vch != NULL; vch = vch->next )
+  FOR_EACH_CHARACTER( iter, vch )
   {
      if(IS_NPC(vch) || IS_IMMORTAL(vch) || vch->battleticks > 0)
        continue;
@@ -2651,15 +2652,16 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
    bool found = false;
    AFFECT_DATA af;
    char buf[MAX_STRING_LENGTH];
+   LIST_ITERATOR iter;
 
    if( cmd != NULL)
 	return false;
 
    seeker = dice(1,52);
 
-   for ( wch = char_list; wch != NULL ; wch = wch->next )
+   FOR_EACH_CHARACTER( iter, wch )
    {
-      if( !IS_NPC(wch) && wch->level == seeker && 
+      if( !IS_NPC(wch) && wch->level == seeker &&
           !IS_SET(wch->in_room->room_flags, ROOM_INDOORS) )
       {
 	found = true;

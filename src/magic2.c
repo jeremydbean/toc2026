@@ -368,8 +368,8 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *vch;
-    CHAR_DATA *vch_next;
     bool found = false;
+    LIST_ITERATOR iter;
     int chance;
     int level;
 
@@ -418,9 +418,8 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
 
     level = ch->level;
 
-    for ( vch = char_list; vch != NULL; vch = vch_next )
+    FOR_EACH_CHARACTER( iter, vch )
     {
-	vch_next	= vch->next;
 
 	if ( vch->in_room == NULL )
 	    continue;
@@ -731,6 +730,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
     OBJ_DATA *obj;
     bool found = false;
     int chance;
+    LIST_ITERATOR iter;
 
     one_argument( argument, arg );
 
@@ -786,8 +786,8 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 	   }
     }
 
-	for ( obj = object_list; obj != NULL; obj = obj->next )
-	 {
+        FOR_EACH_OBJECT( iter, obj )
+        {
 
 
       /* item weight and item count fixes - Rico 9/9/98 */
@@ -3408,6 +3408,7 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim, *gch;
     AFFECT_DATA af;
     int count = 0;
+    LIST_ITERATOR iter;
 
     if(corpse->item_type != ITEM_CORPSE_NPC)
     {
@@ -3415,14 +3416,14 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
-    for ( gch = char_list; gch != NULL; gch = gch->next )
-	{
-	    if ( is_same_group( gch, ch ) )
-	    {
-	      if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
-		count++;
-	    }
-	}
+    FOR_EACH_CHARACTER( iter, gch )
+        {
+            if ( is_same_group( gch, ch ) )
+            {
+              if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
+                count++;
+            }
+        }
 
     if(count >= 5)
     {
@@ -3486,6 +3487,7 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim, *gch;
     AFFECT_DATA af;
     int count = 0;
+    LIST_ITERATOR iter;
 
     if(corpse->item_type != ITEM_CORPSE_NPC)
     {
@@ -3493,14 +3495,14 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
-    for ( gch = char_list; gch != NULL; gch = gch->next )
-	{
-	    if ( is_same_group( gch, ch ) )
-	    {
-	      if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
-		count++;
-	    }
-	}
+    FOR_EACH_CHARACTER( iter, gch )
+        {
+            if ( is_same_group( gch, ch ) )
+            {
+              if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
+                count++;
+            }
+        }
 
     if(count >= 2)
     {
@@ -3564,6 +3566,7 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim, *gch;
     AFFECT_DATA af;
     int count = 0;
+    LIST_ITERATOR iter;
 
     if(corpse->item_type != ITEM_CORPSE_NPC)
     {
@@ -3571,14 +3574,14 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
-    for ( gch = char_list; gch != NULL; gch = gch->next )
-	{
-	    if ( is_same_group( gch, ch ) )
-	    {
-	      if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
-		count++;
-	    }
-	}
+    FOR_EACH_CHARACTER( iter, gch )
+        {
+            if ( is_same_group( gch, ch ) )
+            {
+              if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
+                count++;
+            }
+        }
 
     if(count >= 1)
     {

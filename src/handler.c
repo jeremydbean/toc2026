@@ -1924,29 +1924,7 @@ void extract_obj_player( OBJ_DATA *obj )
         extract_obj_player( obj->contains );
     }
 
-    if ( object_list == obj )
-    {
-        object_list = obj->next;
-    }
-    else
-    {
-        OBJ_DATA *prev;
-
-        for ( prev = object_list; prev != NULL; prev = prev->next )
-        {
-            if ( prev->next == obj )
-            {
-                prev->next = obj->next;
-                break;
-            }
-        }
-
-        if ( prev == NULL )
-        {
-            bug( "Extract_obj: obj %d not found.", obj->pIndexData->vnum );
-            return;
-        }
-    }
+    unregister_object( obj );
     {
         AFFECT_DATA *paf;
         AFFECT_DATA *paf_next;
@@ -1989,7 +1967,7 @@ void extract_obj_player( OBJ_DATA *obj )
     free_string( obj->action_to_room );
 
     --obj->pIndexData->count;
-    obj->next   = obj_free;
+    obj->next_free   = obj_free;
     obj_free    = obj;
 
     if(i!=0)
@@ -2037,29 +2015,7 @@ void extract_obj( OBJ_DATA *obj )
 	extract_obj( obj->contains );
     }
 
-    if ( object_list == obj )
-    {
-	object_list = obj->next;
-    }
-    else
-    {
-	OBJ_DATA *prev;
-
-	for ( prev = object_list; prev != NULL; prev = prev->next )
-	{
-	    if ( prev->next == obj )
-	    {
-		prev->next = obj->next;
-		break;
-	    }
-	}
-
-	if ( prev == NULL )
-	{
-	    bug( "Extract_obj: obj %d not found.", obj->pIndexData->vnum );
-	    return;
-	}
-    }
+    unregister_object( obj );
 
     {
 	AFFECT_DATA *paf;
@@ -2102,7 +2058,7 @@ void extract_obj( OBJ_DATA *obj )
     free_string( obj->action_to_room );
 
     --obj->pIndexData->count;
-    obj->next   = obj_free;
+    obj->next_free   = obj_free;
     obj_free    = obj;
 
     if(i!=0)
@@ -2121,6 +2077,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
     CHAR_DATA *wch;
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
+    LIST_ITERATOR iter;
 
     if(ch->in_object != NULL )
     {
@@ -2173,38 +2130,17 @@ void extract_char( CHAR_DATA *ch, bool fPull )
     if ( ch->desc != NULL && ch->desc->original != NULL )
 	do_return( ch, "" );
 
-    for ( wch = char_list; wch != NULL; wch = wch->next )
+    list_iterator_start( &iter, &character_list );
+    while ( ( wch = list_iterator_next( &iter ) ) != NULL )
     {
-	if ( wch->reply == ch )
-	    wch->reply = NULL;
+        if ( wch->reply == ch )
+            wch->reply = NULL;
     }
 
-    if ( ch == char_list )
-    {
-       char_list = ch->next;
-    }
-    else
-    {
-	CHAR_DATA *prev;
-
-	for ( prev = char_list; prev != NULL; prev = prev->next )
-	{
-	    if ( prev->next == ch )
-	    {
-		prev->next = ch->next;
-		break;
-	    }
-	}
-
-	if ( prev == NULL )
-	{
-	    bug( "Extract_char: char not found.", 0 );
-	    return;
-	}
-    }
+    unregister_character( ch );
 
     if ( ch->desc )
-	ch->desc->character = NULL;
+        ch->desc->character = NULL;
     free_char( ch );
     return;
 }
@@ -2248,19 +2184,20 @@ CHAR_DATA *get_char_world( CHAR_DATA *ch, char *argument )
     CHAR_DATA *wch;
     int number;
     int count;
+    LIST_ITERATOR iter;
 
     if ( ( wch = get_char_room( ch, argument ) ) != NULL )
 	return wch;
 
     number = number_argument( argument, arg );
     count  = 0;
-    for ( wch = char_list; wch != NULL ; wch = wch->next )
+    FOR_EACH_CHARACTER( iter, wch )
     {
-	if ( wch->in_room == NULL || !can_see( ch, wch )
-	||   !is_name( arg, wch->name ) )
-	    continue;
-	if ( ++count == number )
-	    return wch;
+        if ( wch->in_room == NULL || !can_see( ch, wch )
+        ||   !is_name( arg, wch->name ) )
+            continue;
+        if ( ++count == number )
+            return wch;
     }
 
     return NULL;
@@ -2275,11 +2212,12 @@ CHAR_DATA *get_char_world( CHAR_DATA *ch, char *argument )
 OBJ_DATA *get_obj_type( OBJ_INDEX_DATA *pObjIndex )
 {
     OBJ_DATA *obj;
+    LIST_ITERATOR iter;
 
-    for ( obj = object_list; obj != NULL; obj = obj->next )
+    FOR_EACH_OBJECT( iter, obj )
     {
-	if ( obj->pIndexData == pObjIndex )
-	    return obj;
+        if ( obj->pIndexData == pObjIndex )
+            return obj;
     }
 
     return NULL;
@@ -2400,16 +2338,17 @@ OBJ_DATA *get_obj_world( CHAR_DATA *ch, char *argument )
     OBJ_DATA *obj;
     int number;
     int count;
+    LIST_ITERATOR iter;
 
     if ( ( obj = get_obj_here( ch, argument ) ) != NULL )
 	return obj;
 
     number = number_argument( argument, arg );
     count  = 0;
-    for ( obj = object_list; obj != NULL; obj = obj->next )
+    FOR_EACH_OBJECT( iter, obj )
     {
-	if ( can_see_obj( ch, obj ) && is_name( arg, obj->name ) )
-	{
+        if ( can_see_obj( ch, obj ) && is_name( arg, obj->name ) )
+        {
 	    if ( ++count == number )
 		return obj;
 	}

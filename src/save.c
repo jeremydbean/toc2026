@@ -691,7 +691,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     else
     {
 	ch				= char_free;
-	char_free			= char_free->next;
+	char_free			= char_free->next_free;
     }
     clear_char( ch );
 
@@ -1566,7 +1566,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	else
 	{
 	    obj		= obj_free;
-	    obj_free	= obj_free->next;
+	    obj_free	= obj_free->next_free;
 	}
 
 	*obj		= obj_zero;
@@ -1702,7 +1702,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		    free_string( obj->name        );
 		    free_string( obj->description );
 		    free_string( obj->short_descr );
-		    obj->next = obj_free;
+		    obj->next_free   = obj_free;
 		    obj_free  = obj;
 		    return;
 		}
@@ -1710,8 +1710,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		{
 		    if (!new_format)
 		    {
-			obj->next	= object_list;
-			object_list	= obj;
+                        register_object( obj );
 			obj->pIndexData->count++;
 		    }
 

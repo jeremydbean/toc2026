@@ -83,6 +83,7 @@ void do_explode( CHAR_DATA *ch, char *argument)
   OBJ_DATA        *obj_next;
   OBJ_DATA        *obj;
   bool found     = false;
+  LIST_ITERATOR iter;
 
   argument = one_argument( argument, arg1 );
   argument = one_argument( argument, arg2 );
@@ -117,22 +118,22 @@ void do_explode( CHAR_DATA *ch, char *argument)
 
 	for ( ; ; )
 	{
-	  pMobIndex = get_mob_index( number_range( 0, 65535 ) );
-	  if ( pMobIndex != NULL )
-	  {
-	   for ( victim = char_list; victim != NULL; victim = victim->next )
-	   {
-		if ( IS_NPC(victim)
-		  && victim->in_room != NULL
-		  && (pMobIndex == victim->pIndexData ) )
-		 {
-		   found = true;
-		   break;
-		 }
-	   }
-	   if(found)
-		break;
-	  }
+          pMobIndex = get_mob_index( number_range( 0, 65535 ) );
+          if ( pMobIndex != NULL )
+          {
+           FOR_EACH_CHARACTER( iter, victim )
+           {
+                if ( IS_NPC(victim)
+                  && victim->in_room != NULL
+                  && (pMobIndex == victim->pIndexData ) )
+                 {
+                   found = true;
+                   break;
+                 }
+           }
+           if(found)
+                break;
+          }
 	}
 
 	  if( victim != NULL && (number_percent () > 99) )
@@ -1119,6 +1120,7 @@ void do_at( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *location;
     ROOM_INDEX_DATA *original;
     CHAR_DATA *wch;
+    LIST_ITERATOR iter;
 
     argument = one_argument( argument, arg );
 
@@ -1149,11 +1151,11 @@ void do_at( CHAR_DATA *ch, char *argument )
      * See if 'ch' still exists before continuing!
      * Handles 'at XXXX quit' case.
      */
-    for ( wch = char_list; wch != NULL; wch = wch->next )
+    FOR_EACH_CHARACTER( iter, wch )
     {
-	if ( wch == ch )
-	{
-	    char_from_room( ch );
+        if ( wch == ch )
+        {
+            char_from_room( ch );
 	    char_to_room( ch, original );
 	    break;
 	}
@@ -1173,6 +1175,7 @@ void do_gather( CHAR_DATA *ch, char *argument )
     OBJ_DATA *search1 = NULL;
     OBJ_DATA *search2 = NULL;
     CHAR_DATA *victim = NULL;
+    LIST_ITERATOR iter;
 
     argument = one_argument( argument, arg );
     argument = one_argument( argument, arg2);
@@ -1238,10 +1241,10 @@ void do_gather( CHAR_DATA *ch, char *argument )
       return;
     }
 
-    for ( obj = object_list; obj != NULL; obj = obj->next )
+    FOR_EACH_OBJECT( iter, obj )
     {
 
-	if( search != NULL)
+        if( search != NULL)
 	{
 	  if( search->vnum != obj->pIndexData->vnum)
 	    continue;
@@ -2326,6 +2329,7 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     bool found;
     int count;
+    LIST_ITERATOR iter;
 
     if ( argument[0] == '\0' )
     {
@@ -2337,7 +2341,7 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
 
     found = false;
     buffer[0] = '\0';
-    for ( victim = char_list; victim != NULL; victim = victim->next )
+    FOR_EACH_CHARACTER( iter, victim )
     {
 
         if (count > 100)
@@ -2379,6 +2383,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
     OBJ_DATA *in_obj;
     int count, vnum;
     int obj_counter = 1;
+    LIST_ITERATOR iter;
 
     one_argument( argument, arg );
 
@@ -2394,7 +2399,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
 	}
 
         buffer[0] = '\0';
-        for ( obj = object_list; obj != NULL; obj = obj->next ) {
+        FOR_EACH_OBJECT( iter, obj ) {
             if (count > 100)
                 break;
 
@@ -2530,8 +2535,9 @@ void do_forcesave(CHAR_DATA *ch, char *argument)
 {
     UNUSED_PARAM(argument);
     CHAR_DATA *vch;
+    LIST_ITERATOR iter;
 
-     for ( vch = char_list; vch != NULL; vch = vch->next )
+     FOR_EACH_CHARACTER( iter, vch )
      {
 
        if(IS_NPC(vch) || vch->level < 3 || vch->level > ch->level)
@@ -5090,8 +5096,7 @@ void do_undeny(CHAR_DATA *ch, char *argument)
     {
 
        d.character->desc     = NULL;
-       d.character->next     = char_list;
-       char_list             = d.character;
+       register_character( d.character );
        d.connected           = CON_PLAYING;
        reset_char(d.character);
 
@@ -5247,6 +5252,7 @@ void do_force( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
+    LIST_ITERATOR iter;
 
     argument = one_argument( argument, arg );
 
@@ -5268,30 +5274,27 @@ void do_force( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg, "all" ) )
     {
-	CHAR_DATA *vch;
-	CHAR_DATA *vch_next;
+        CHAR_DATA *vch;
 
-	if (get_trust(ch) < MAX_LEVEL - 2)
-	{
-	    send_to_char("Not at your level!\n\r",ch);
-	    return;
-	}
+        if (get_trust(ch) < MAX_LEVEL - 2)
+        {
+            send_to_char("Not at your level!\n\r",ch);
+            return;
+        }
 
-	for ( vch = char_list; vch != NULL; vch = vch_next )
-	{
-	    vch_next = vch->next;
+        FOR_EACH_CHARACTER( iter, vch )
+        {
 
-	    if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch ) )
-	    {
-		act( buf, ch, NULL, vch, TO_VICT );
-		interpret( vch, argument );
-	    }
-	}
+            if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch ) )
+            {
+                act( buf, ch, NULL, vch, TO_VICT );
+                interpret( vch, argument );
+            }
+        }
     }
     else if (!str_cmp(arg,"players"))
     {
-	CHAR_DATA *vch;
-	CHAR_DATA *vch_next;
+        CHAR_DATA *vch;
 
 	if (get_trust(ch) < MAX_LEVEL - 2)
 	{
@@ -5299,12 +5302,11 @@ void do_force( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	for ( vch = char_list; vch != NULL; vch = vch_next )
-	{
-	    vch_next = vch->next;
+        FOR_EACH_CHARACTER( iter, vch )
+        {
 
-	    if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch )
-	    &&   vch->level < LEVEL_HERO)
+            if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch )
+            &&   vch->level < LEVEL_HERO)
 	    {
 		act( buf, ch, NULL, vch, TO_VICT );
 		interpret( vch, argument );
@@ -5313,8 +5315,7 @@ void do_force( CHAR_DATA *ch, char *argument )
     }
     else if (!str_cmp(arg,"gods"))
     {
-	CHAR_DATA *vch;
-	CHAR_DATA *vch_next;
+        CHAR_DATA *vch;
 
 	if (get_trust(ch) < MAX_LEVEL)
 	{
@@ -5322,12 +5323,11 @@ void do_force( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	for ( vch = char_list; vch != NULL; vch = vch_next )
-	{
-	    vch_next = vch->next;
+        FOR_EACH_CHARACTER( iter, vch )
+        {
 
-	    if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch )
-	    &&   vch->level >= LEVEL_HERO)
+            if ( !IS_NPC(vch) && get_trust( vch ) < get_trust( ch )
+            &&   vch->level >= LEVEL_HERO)
 	    {
 		act( buf, ch, NULL, vch, TO_VICT );
 		interpret( vch, argument );

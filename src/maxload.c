@@ -434,11 +434,12 @@ void do_set_maxload(CHAR_DATA *ch, char *argument)
         int with_pla = 0;
         int in_game = 0;
         OBJ_DATA *obj;
+        LIST_ITERATOR iter;
 
         with_pla = get_maxload_with_players(vnum);
 
         /* Count how many of the item exist in the world. */
-        for (obj = object_list; obj != NULL; obj = obj->next)
+        FOR_EACH_OBJECT( iter, obj )
         {
             if (obj->pIndexData->vnum == vnum)
             {

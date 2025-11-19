@@ -1732,8 +1732,7 @@ case CON_DEFAULT_CHOICE:
         }
 
 	write_to_buffer( d, "\n\rWelcome to ROM 2.4.  Please do not feed the mobiles.\n\r", 0 );
-	ch->next	= char_list;
-	char_list	= ch;
+	register_character( ch );
 	d->connected	= CON_PLAYING;
 	reset_char(ch);
 
@@ -1919,13 +1918,14 @@ static int weapon_lookup( const char *name )
 bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 {
     CHAR_DATA *ch;
+    LIST_ITERATOR iter;
 
     UNUSED_PARAM(name);
 
-    for ( ch = char_list; ch != NULL; ch = ch->next )
+    FOR_EACH_CHARACTER( iter, ch )
     {
-	if ( !IS_NPC(ch)
-	&&   (!fConn || ch->desc == NULL)
+        if ( !IS_NPC(ch)
+        &&   (!fConn || ch->desc == NULL)
 	&&   !str_cmp( d->character->name, ch->name ) )
 	{
 	    if ( fConn == FALSE )
@@ -2033,10 +2033,11 @@ void send_to_char( const char *txt, CHAR_DATA *ch )
 void send_to_room( const char *txt, int vnum )
 {
     CHAR_DATA *ch;
-    for ( ch = char_list; ch != NULL; ch = ch->next )
+    LIST_ITERATOR iter;
+
+    FOR_EACH_CHARACTER( iter, ch )
         if ( ch->in_room->vnum == vnum )
             send_to_char( txt, ch );
-    return;
 }
 
 /*

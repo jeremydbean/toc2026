@@ -760,14 +760,13 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
 void mobile_update( void )
 {
     CHAR_DATA *ch;
-    CHAR_DATA *ch_next;
     EXIT_DATA *pexit;
     int door;
+    LIST_ITERATOR iter;
 
     /* Examine all mobs. */
-    for ( ch = char_list; ch != NULL; ch = ch_next )
+    FOR_EACH_CHARACTER( iter, ch )
     {
-	ch_next = ch->next;
 
 	if ( !IS_NPC(ch) || ch->in_room == NULL )
 	    continue;
@@ -1124,11 +1123,11 @@ void weather_update( void )
 void char_update( void )
 {
     CHAR_DATA *ch;
-    CHAR_DATA *ch_next;
     CHAR_DATA *ch_quit;
     OBJ_DATA  *obj = NULL;
     ROOM_INDEX_DATA *in_room = NULL;
     bool found = false;
+    LIST_ITERATOR iter;
 
     ch_quit	= NULL;
 
@@ -1138,16 +1137,14 @@ void char_update( void )
     if (save_number > 29)
 	save_number = 0;
 
-    for ( ch = char_list; ch != NULL; ch = ch_next )
+    FOR_EACH_CHARACTER( iter, ch )
     {
-	AFFECT_DATA *paf;
-	AFFECT_DATA *paf_next;
+        AFFECT_DATA *paf;
+        AFFECT_DATA *paf_next;
 
-	ch_next = ch->next;
-
-	if(ch->in_object == NULL)
-	  in_room = ch->in_room;
-	else
+        if(ch->in_object == NULL)
+            in_room = ch->in_room;
+        else
 	  continue;
 
 //	if ( ch->timer > 20 )
@@ -1667,9 +1664,8 @@ void char_update( void )
      * Autosave and autoquit.
      * Check that these chars still exist.
      */
-    for ( ch = char_list; ch != NULL; ch = ch_next )
+    FOR_EACH_CHARACTER( iter, ch )
     {
-        ch_next = ch->next;
 
         if ( ch->desc != NULL
         &&   !IS_NPC(ch)
@@ -1703,20 +1699,18 @@ void char_update( void )
 void obj_update( void )
 {
     OBJ_DATA *obj;
-    OBJ_DATA *obj_next;
     AFFECT_DATA *paf, *paf_next;
     ROOM_INDEX_DATA *to_room;
     int toggle;
     char buf2[MAX_STRING_LENGTH];
+    LIST_ITERATOR iter;
 
-    for ( obj = object_list; obj != NULL; obj = obj_next )
+    FOR_EACH_OBJECT( iter, obj )
     {
-	CHAR_DATA *rch;
-	char *message = '\0';
+        CHAR_DATA *rch;
+        char *message = '\0';
 
-	obj_next = obj->next;
-
-	/* go through affects and decrement */
+        /* go through affects and decrement */
 	for ( paf = obj->affected; paf != NULL; paf = paf_next )
 	{
 	    paf_next    = paf->next;
@@ -2174,15 +2168,14 @@ void room_update( void )
 void dtrap_update( void )
 {
     CHAR_DATA *ch;
-    CHAR_DATA *ch_next;
     char buf[MAX_STRING_LENGTH];
+    LIST_ITERATOR iter;
 
-    for( ch = char_list; ch != NULL; ch = ch_next )
+    FOR_EACH_CHARACTER( iter, ch )
     {
-	ch_next = ch->next;
 
-	if(!IS_NPC(ch)
-	&& !IS_IMMORTAL(ch)
+        if(!IS_NPC(ch)
+        && !IS_IMMORTAL(ch)
 	&& IS_SET(ch->in_room->room_flags, ROOM_DT) )
 	{
 	    do_look( ch,"" );
@@ -2331,14 +2324,13 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
 void sanity_check( void )
 {
     CHAR_DATA *ch;
-    CHAR_DATA *ch_next;
     char buf[MAX_STRING_LENGTH];
+    LIST_ITERATOR iter;
 
-    for( ch = char_list; ch != NULL; ch = ch_next ) {
-	ch_next = ch->next;
+    FOR_EACH_CHARACTER( iter, ch ) {
 
-	if( !IS_NPC(ch)
-	&&  !IS_IMMORTAL(ch)
+        if( !IS_NPC(ch)
+        &&  !IS_IMMORTAL(ch)
 	&&  ch->in_room == get_room_index( ROOM_VNUM_LIMBO )
 	&&  ch->timer > 5 ) {
 	    act("A giant boot comes and kicks out all the losers in limbo!",
@@ -2367,19 +2359,18 @@ void sanity_check( void )
 void aggr_update( void )
 {
     CHAR_DATA *wch;
-    CHAR_DATA *wch_next;
     CHAR_DATA *ch;
     CHAR_DATA *ch_next;
     CHAR_DATA *vch;
     CHAR_DATA *vch_next;
     CHAR_DATA *victim;
+    LIST_ITERATOR iter;
 
-    for ( wch = char_list; wch != NULL; wch = wch_next )
+    FOR_EACH_CHARACTER( iter, wch )
     {
-	wch_next = wch->next;
-	if ( IS_NPC(wch)
-	||   wch->level >= LEVEL_IMMORTAL
-	||   wch->in_room == NULL
+        if ( IS_NPC(wch)
+        ||   wch->level >= LEVEL_IMMORTAL
+        ||   wch->in_room == NULL
 	||   wch->in_room->area->empty)
 	    continue;
 
@@ -2476,19 +2467,18 @@ void aggr_update( void )
 void hate_update( void )
 {
     CHAR_DATA *wch;
-    CHAR_DATA *wch_next;
     CHAR_DATA *ch;
     CHAR_DATA *ch_next;
+    LIST_ITERATOR iter;
 
     bool check_hate(CHAR_DATA *ch, CHAR_DATA *vict);
     DECLARE_DO_FUN( do_emote );
 
-    for ( wch = char_list; wch != NULL; wch = wch_next )
+    FOR_EACH_CHARACTER( iter, wch )
     {
-	wch_next = wch->next;
-	if ( IS_NPC(wch)
-	||   wch->in_room == NULL
-	||   wch->in_room->area->empty)
+        if ( IS_NPC(wch)
+        ||   wch->in_room == NULL
+        ||   wch->in_room->area->empty)
 	    continue;
 
 	for ( ch = wch->in_room->people; ch != NULL; ch = ch_next )
@@ -2738,6 +2728,7 @@ void disaster_update( void )
    char buf[MAX_STRING_LENGTH];
    int disaster_pick = 0;
    bool hit = true;
+   LIST_ITERATOR iter;
 
    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
    {
@@ -2804,12 +2795,12 @@ void disaster_update( void )
 	 {
 	   char_to_room(create_mobile(get_mob_index(4474)), get_room_index(9986) );
 
-	   for ( wch = char_list; wch != NULL ; wch = wch->next )
-	   {
-	    send_to_char("A huge shadow passes you by on the ground. Looking up you see\n\r",wch);
-	    send_to_char("the biggest blackest dragon you've ever encountered! Might be a good\n\r",wch);
-	    send_to_char("idea to seek cover until he's full.\n\r",wch);
-	   }
+           FOR_EACH_CHARACTER( iter, wch )
+           {
+            send_to_char("A huge shadow passes you by on the ground. Looking up you see\n\r",wch);
+            send_to_char("the biggest blackest dragon you've ever encountered! Might be a good\n\r",wch);
+            send_to_char("idea to seek cover until he's full.\n\r",wch);
+           }
 
 	   snprintf( buf, sizeof(buf),"Disaster: The Dragon has been let loose.");
 	   wizinfo(buf,LEVEL_IMMORTAL);
@@ -2828,7 +2819,7 @@ void disaster_update( void )
 	continue;
 
 
-     for ( vch = char_list; vch != NULL; vch = vch->next )
+     FOR_EACH_CHARACTER( iter, vch )
      {
 
        if ( vch->in_room == NULL || IS_NPC(vch) || IS_IMMORTAL(vch)

@@ -76,12 +76,10 @@ PC_DATA *               pcdata_free;
 AREA_DATA *             new_area;
  
 char                    bug_buf         [2*MAX_INPUT_LENGTH];
-CHAR_DATA *             char_list;
 char *                  help_greeting;
 char                    log_buf         [2*MAX_INPUT_LENGTH];
 KILL_DATA               kill_table      [MAX_LEVEL];
 NOTE_DATA *             note_list;
-OBJ_DATA *              object_list;
 TELEPORT_ROOM_DATA *    teleport_room_list = NULL;
 ROOM_AFF_DATA      *    room_aff_list = NULL;
 TIME_INFO_DATA          time_info;
@@ -330,7 +328,7 @@ static void maxfilelimit(void)
  */
 void boot_db( void )
 {
- 
+
 #if defined(unix)
     /* open file fix */
     maxfilelimit();
@@ -355,6 +353,9 @@ void boot_db( void )
     {
         init_mm( );
     }
+
+    list_init( &character_list );
+    list_init( &object_list );
  
     /*
      * Set time and weather.
@@ -2260,7 +2261,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
     else
     {
         mob             = char_free;
-        char_free       = char_free->next;
+        char_free       = char_free->next_free;
     }
  
     clear_char( mob );
@@ -2369,8 +2370,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
  
  
     /* link the mob to the world list */
-    mob->next           = char_list;
-    char_list           = mob;
+    register_character( mob );
     pMobIndex->count++;
     return mob;
 }
@@ -2604,7 +2604,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
     else
     {
         obj             = obj_free;
-        obj_free        = obj_free->next;
+        obj_free        = obj_free->next_free;
     }
  
     *obj                = obj_zero;
@@ -2857,10 +2857,9 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
       }
     }
  
-    obj->next           = object_list;
-    object_list         = obj;
+    register_object( obj );
     pObjIndex->count++;
- 
+
     return obj;
 }
  
@@ -2997,7 +2996,7 @@ void free_char( CHAR_DATA *ch )
 
     free_string(ch->prompt);
  
-    ch->next         = char_free;
+    ch->next_free    = char_free;
     char_free        = ch;
     return;
 }
@@ -4168,6 +4167,8 @@ void do_dump( CHAR_DATA *ch, char *argument )
     int start=0, finish=65536;
     int firstone;
     char arg1[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
+    LIST_ITERATOR iter;
+    LIST_ITERATOR obj_iter;
  
     if (argument[0] != '\0')
     {
@@ -4202,15 +4203,15 @@ void do_dump( CHAR_DATA *ch, char *argument )
  
     /* mobs */
     count = 0;  count2 = 0;
-    for (fch = char_list; fch != NULL; fch = fch->next)
+    FOR_EACH_CHARACTER( iter, fch )
     {
         count++;
         if (fch->pcdata != NULL)
             num_pcs++;
-	for (af = fch->affected; af != NULL; af = af->next)
+        for (af = fch->affected; af != NULL; af = af->next)
             aff_count++;
     }
-    for (fch = char_free; fch != NULL; fch = fch->next)
+    for (fch = char_free; fch != NULL; fch = fch->next_free)
         count2++;
  
     fprintf(fp,"Mobs    %4d (%8ld bytes), %2d free (%ld bytes)\n",
@@ -4252,13 +4253,13 @@ void do_dump( CHAR_DATA *ch, char *argument )
  
     /* objects */
     count = 0;  count2 = 0;
-    for (obj = object_list; obj != NULL; obj = obj->next)
+    FOR_EACH_OBJECT( obj_iter, obj )
     {
         count++;
         for (af = obj->affected; af != NULL; af = af->next)
             aff_count++;
     }
-    for (obj = obj_free; obj != NULL; obj = obj->next)
+    for (obj = obj_free; obj != NULL; obj = obj->next_free)
         count2++;
  
     fprintf(fp,"Objs    %4d (%8ld bytes), %2d free (%ld bytes)\n",
@@ -4312,7 +4313,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
             CHAR_DATA *mob;
             char *buf;
             int found = 0;
-            for ( mob = char_list; mob != NULL; mob = mob->next )
+            FOR_EACH_CHARACTER( iter, mob )
             {
                 if ( !IS_NPC(mob))
                     continue;
@@ -4362,7 +4363,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
             {
                 char *buf;
                 int found = 0;
-                for ( obj = object_list; obj != NULL; obj = obj->next )
+                FOR_EACH_OBJECT( obj_iter, obj )
                 {
                     if (  obj->pIndexData->vnum != vnum )
                         continue;
@@ -5016,11 +5017,14 @@ void update_relics(void)
 void respawn_relic(int i)
 {
     OBJ_DATA *obj;
+    LIST_ITERATOR iter;
 
     if(i==1) {
-	for(obj=object_list;obj;obj=obj->next)
-	    if(obj->pIndexData->vnum == VNUM_RELIC_1)
-		return;
+        FOR_EACH_OBJECT( iter, obj )
+        {
+            if(obj->pIndexData->vnum == VNUM_RELIC_1)
+                return;
+        }
 
         RELIC_1 = create_object(get_obj_index(VNUM_RELIC_1),1);
         RELIC_ROOM_1 = get_room_index(RELIC_1->value[0]);
@@ -5032,9 +5036,11 @@ void respawn_relic(int i)
             wizinfo("Relic 1 respawned.",LEVEL_IMMORTAL);
         }
     } else if(i==2) {
-	for(obj=object_list;obj;obj=obj->next)
-	    if(obj->pIndexData->vnum == VNUM_RELIC_2)
-		return;
+        FOR_EACH_OBJECT( iter, obj )
+        {
+            if(obj->pIndexData->vnum == VNUM_RELIC_2)
+                return;
+        }
 
         RELIC_2 = create_object(get_obj_index(VNUM_RELIC_2),1);
         RELIC_ROOM_2 = get_room_index(RELIC_2->value[0]);
@@ -5046,9 +5052,11 @@ void respawn_relic(int i)
             wizinfo("Relic 2 respawned.",LEVEL_IMMORTAL);
         }
     } else if(i==3) {
-	for(obj=object_list;obj;obj=obj->next)
-	    if(obj->pIndexData->vnum == VNUM_RELIC_3)
-		return;
+        FOR_EACH_OBJECT( iter, obj )
+        {
+            if(obj->pIndexData->vnum == VNUM_RELIC_3)
+                return;
+        }
 
         RELIC_3 = create_object(get_obj_index(VNUM_RELIC_3),1);
         RELIC_ROOM_3 = get_room_index(RELIC_3->value[0]);
@@ -5060,9 +5068,11 @@ void respawn_relic(int i)
             wizinfo("Relic 3 respawned.",LEVEL_IMMORTAL);
         }
     } else if(i==4) {
-	for(obj=object_list;obj;obj=obj->next)
-	    if(obj->pIndexData->vnum == VNUM_RELIC_4)
-		return;
+        FOR_EACH_OBJECT( iter, obj )
+        {
+            if(obj->pIndexData->vnum == VNUM_RELIC_4)
+                return;
+        }
 
         RELIC_4 = create_object(get_obj_index(VNUM_RELIC_4),1);
         RELIC_ROOM_4 = get_room_index(RELIC_4->value[0]);

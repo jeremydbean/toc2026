@@ -55,6 +55,7 @@ extern const	int16_t	rev_dir	[];
 bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
 {
     CHAR_DATA *owner, *wch;
+    LIST_ITERATOR iter;
 
     if (IS_IMMORTAL(ch))
 	return true;
@@ -63,7 +64,7 @@ bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
 	return true;
 
     owner = NULL;
-    for ( wch = char_list; wch != NULL ; wch = wch->next )
+    FOR_EACH_CHARACTER( iter, wch )
         if (!str_cmp(wch->name,obj->owner))
             owner = wch;
 
@@ -3346,6 +3347,7 @@ void do_bounce( OBJ_DATA *obj )
     MOB_INDEX_DATA *pMobIndex;
     ROOM_INDEX_DATA *pRoomIndex;
     char buf[MAX_STRING_LENGTH];
+    LIST_ITERATOR iter;
 
 	if( obj->carried_by != NULL )
 	  {
@@ -3364,26 +3366,26 @@ void do_bounce( OBJ_DATA *obj )
 
     if ( number_percent () < 90 )
 	 {
-	   do
-	   {
-		for ( ; ; )
-		 {
-		  pMobIndex = get_mob_index( number_range( 0, 65535 ) );
-		  if ( pMobIndex != NULL )
-		    break;
-		 }
+            do
+            {
+                for ( ; ; )
+                {
+                    pMobIndex = get_mob_index( number_range( 0, 65535 ) );
+                    if ( pMobIndex != NULL )
+                        break;
+                }
 
-		for ( victim = char_list; victim != NULL; victim = victim->next )
-		 {
-		   if ( IS_NPC(victim)
-		   &&   victim->in_room != NULL
-		   &&   (pMobIndex == victim->pIndexData ) )
-		    {
-			found = true;
-			break;
-		    }
-		 }
-	   } while (found == false);
+                FOR_EACH_CHARACTER( iter, victim )
+                {
+                    if ( IS_NPC(victim)
+                    &&   victim->in_room != NULL
+                    &&   (pMobIndex == victim->pIndexData ) )
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+            } while (found == false);
 
 	   if ( obj->carried_by != NULL )
 		{
@@ -3455,6 +3457,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
   OBJ_DATA *obj, *find_obj;
   bool found = false;
   int which_trap = 0;
+  LIST_ITERATOR iter;
 
    one_argument( argument, arg );
 
@@ -3700,14 +3703,14 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      default: return;
 
      case 1:  /* open a container with no key */
-	 for ( find_obj = object_list; find_obj != NULL; find_obj = find_obj->next )
-	 {
-	   if ( find_obj->pIndexData == get_obj_index(obj->value[1])  )
-	   {
-	     found = true;
-	     break;
-	   }
-	 }
+        FOR_EACH_OBJECT( iter, find_obj )
+        {
+          if ( find_obj->pIndexData == get_obj_index(obj->value[1])  )
+          {
+            found = true;
+            break;
+          }
+        }
 	 if(!found)
 	   return;
 
@@ -3721,10 +3724,10 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      break;
      case 2:    /* let the genie out of the bottle */
 
-	 for ( find_obj = object_list; find_obj != NULL; find_obj = find_obj->next )
-	 {
-	   if ( find_obj->pIndexData == get_obj_index( obj->value[1])  )
-	   {
+        FOR_EACH_OBJECT( iter, find_obj )
+        {
+          if ( find_obj->pIndexData == get_obj_index( obj->value[1])  )
+          {
 	     found = true;
 	     break;
 	   }

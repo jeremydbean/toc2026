@@ -1,10 +1,8 @@
 #include "merc.h"
 
-#if USE_CONTAINER_LISTS
 LIST character_list;
-#endif
+LIST object_list;
 
-#if USE_CONTAINER_LISTS
 static bool character_name_matches( const void *data, void *ctx )
 {
     const CHAR_DATA *candidate = data;
@@ -17,53 +15,71 @@ static bool character_name_matches( const void *data, void *ctx )
 
     return !str_cmp( candidate->name, target );
 }
-#endif
+
+static bool object_name_matches( const void *data, void *ctx )
+{
+    const OBJ_DATA *candidate = data;
+    const char *target = ctx;
+
+    if ( candidate == NULL || candidate->name == NULL || target == NULL )
+    {
+        return false;
+    }
+
+    return is_name( target, candidate->name );
+}
+
+static void remove_entry( LIST *list, void *target )
+{
+    LIST_NODE *node;
+
+    if ( list == NULL || target == NULL )
+    {
+        return;
+    }
+
+    for ( node = list->head; node != NULL; node = node->next )
+    {
+        if ( node->data == target )
+        {
+            list_remove( list, node );
+            break;
+        }
+    }
+}
 
 void register_character( CHAR_DATA *ch )
 {
-#if USE_CONTAINER_LISTS
     if ( list_push_front( &character_list, ch ) == NULL )
     {
-        bugf( "Unable to track character in container list for %s", ch != NULL ? ch->name : "(null)" );
+        bug( "Unable to track character in container list", 0 );
     }
-#else
-    UNUSED_PARAM( ch );
-#endif
 }
 
 void unregister_character( CHAR_DATA *ch )
 {
-#if USE_CONTAINER_LISTS
-    LIST_NODE *node;
-
-    for ( node = character_list.head; node != NULL; node = node->next )
-    {
-        if ( node->data == ch )
-        {
-            list_remove( &character_list, node );
-            break;
-        }
-    }
-#else
-    UNUSED_PARAM( ch );
-#endif
+    remove_entry( &character_list, ch );
 }
 
 CHAR_DATA *find_char_by_name( const char *name )
 {
-#if USE_CONTAINER_LISTS
     return list_find_first( &character_list, character_name_matches, (void *) name );
-#else
-    CHAR_DATA *ch;
+}
 
-    for ( ch = char_list; ch != NULL; ch = ch->next )
+void register_object( OBJ_DATA *obj )
+{
+    if ( list_push_front( &object_list, obj ) == NULL )
     {
-        if ( ch->name != NULL && !str_cmp( ch->name, name ) )
-        {
-            return ch;
-        }
+        bug( "Unable to track object in container list", 0 );
     }
+}
 
-    return NULL;
-#endif
+void unregister_object( OBJ_DATA *obj )
+{
+    remove_entry( &object_list, obj );
+}
+
+OBJ_DATA *find_object_by_name( const char *name )
+{
+    return list_find_first( &object_list, object_name_matches, (void *) name );
 }
