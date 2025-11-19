@@ -2010,13 +2010,14 @@ void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
 void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
 bool    normalize_psionic_arguments ( const char *argument, char *output, size_t length, char *invalid );
-void    send_to_char_ds ( const DString *txt, CHAR_DATA *ch );
-void    send_to_char    ( const char *txt, CHAR_DATA *ch );
+/* Dynamic-string aware output helpers. */
+void    send_to_char_dstring ( const DString *txt, CHAR_DATA *ch );
+void    send_to_char         ( const char *txt, CHAR_DATA *ch );
 void    send_to_room    ( const char *txt, int vnum );
 void    page_to_char    ( const char *txt, CHAR_DATA *ch );
 void    act             ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type );
-void    act_new_dstring ( const DString *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
-void    act_new         ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
+void    act_new         ( const DString *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
+void    act_new_cstr    ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
 char * speak_filter    (CHAR_DATA *ch, const char *str);
 char * drunk_speak     (const char *str);
 void    make_descriptor ( DESCRIPTOR_DATA *dnew, int desc );

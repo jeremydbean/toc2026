@@ -296,7 +296,7 @@ void do_gossip( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOGOSSIP) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new( "$n gossips '$t'", 
+            act_new_cstr( "$n gossips '$t'", 
 		     ch,argument, d->character, TO_VICT,POS_SLEEPING );
         }
       }
@@ -363,7 +363,7 @@ void do_question( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOQUESTION) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new( "$n questions '$t'", 
+            act_new_cstr( "$n questions '$t'", 
 		     ch,argument, d->character, TO_VICT,POS_SLEEPING );
         }
       }
@@ -420,7 +420,7 @@ void do_answer( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOQUESTION) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new( "$n answers '$t'", 
+            act_new_cstr( "$n answers '$t'", 
 		     ch,argument, d->character, TO_VICT,POS_SLEEPING );
         }
       }
@@ -475,7 +475,7 @@ void do_music( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOMUSIC) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new( "$n MUSIC: '$t'", 
+            act_new_cstr( "$n MUSIC: '$t'", 
 		     ch,argument, d->character, TO_VICT,POS_SLEEPING );
         }
       }
@@ -537,7 +537,7 @@ void do_immort( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm,COMM_NOWIZ) &&
              !IS_SET(victim->comm,COMM_QUIET) )
         {
-            act_new( "$n immorts '$t'", 
+            act_new_cstr( "$n immorts '$t'", 
 		     ch,argument, d->character, TO_VICT,POS_DEAD );
         }
       }
@@ -613,7 +613,7 @@ void do_shout( CHAR_DATA *ch, char *argument )
              !IS_SET(victim->comm, COMM_NOSHOUT) &&
 	     !IS_SET(victim->comm, COMM_QUIET) ) 
 	{
-	    act_new("$n shouts '$t'",ch,argument,d->character,TO_VICT,POS_SLEEPING);
+	    act_new_cstr("$n shouts '$t'",ch,argument,d->character,TO_VICT,POS_SLEEPING);
 	}
     }
 
@@ -778,7 +778,7 @@ void do_yell( CHAR_DATA *ch, char *argument )
 	&&   d->character->in_room->area == ch->in_room->area 
         &&   !IS_SET(d->character->comm,COMM_QUIET) )
 	{
-	    act_new("$n yells '$t'",ch,argument,d->character,TO_VICT,POS_SLEEPING);
+	    act_new_cstr("$n yells '$t'",ch,argument,d->character,TO_VICT,POS_SLEEPING);
 	}
     }
 

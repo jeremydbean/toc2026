@@ -1870,7 +1870,7 @@ bool spec_castle_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
              !IS_SET(listener->comm,COMM_QUIET) &&
              cg_table[i].castle == listener->pcdata->castle)
         {
-            act_new("$n castle chats '$t just tried to enter the castle!'",
+            act_new_cstr("$n castle chats '$t just tried to enter the castle!'",
                     mob,ch->name,d->character,TO_VICT,POS_DEAD);
         }
     }
@@ -1940,10 +1940,10 @@ bool spec_castle_guard_agg( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *ar
 	     cg_table[i].castle == member->pcdata->castle)
 	{
 	    if (cg_table[i].castle == CASTLE_OUTCAST)
-		act_new("$n castle chats '$t is invading the ruins!'",
+		act_new_cstr("$n castle chats '$t is invading the ruins!'",
 		    mob,victim->name,d->character,TO_VICT,POS_DEAD);
 	    else
-		act_new("$n castle chats '$t is inside the castle!'",
+		act_new_cstr("$n castle chats '$t is inside the castle!'",
 		    mob,victim->name,d->character,TO_VICT,POS_DEAD);
 	}
     }
