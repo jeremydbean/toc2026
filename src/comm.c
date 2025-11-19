@@ -378,7 +378,7 @@ int main( int argc, char **argv )
      */
     gettimeofday( &now_time, NULL );
     current_time        = (time_t) now_time.tv_sec;
-    strcpy( str_boot_time, ctime( &current_time ) );
+    strlcpy( str_boot_time, ctime( &current_time ), sizeof(str_boot_time) );
 
     /*
      * Macintosh console initialization.
@@ -444,7 +444,7 @@ int main( int argc, char **argv )
     control = init_socket( port );
     boot_db();
     /*init_web(port+2);*/
-    sprintf( log_buf, "TOC is ready to rock on port %d.", port );
+    snprintf( log_buf, sizeof(log_buf), "TOC is ready to rock on port %d.", port );
     log_string( log_buf );
     game_loop_unix( control );
    /* shutdown_web();*/
@@ -1007,11 +1007,11 @@ void new_descriptor( int control_fd )
 
 /*	create_ident( dnew, sock.sin_addr.s_addr, ntohs( sock.sin_port ) ); */
         addr = ntohl( sock.sin_addr.s_addr );
-        sprintf( buf, "%lu.%lu.%lu.%lu",
+        snprintf( buf, sizeof(buf), "%lu.%lu.%lu.%lu",
             ( addr >> 24 ) & 0xFF, ( addr >> 16 ) & 0xFF,
             ( addr >>  8 ) & 0xFF, ( addr       ) & 0xFF
             );
-	sprintf( log_buf, "Sock.sinaddr:  %s", buf );
+        snprintf( log_buf, sizeof(log_buf), "Sock.sinaddr:  %s", buf );
 	log_string( log_buf );
 
         if (dns == 0)
@@ -1131,7 +1131,7 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 
     if ( ( ch = dclose->character ) != NULL )
     {
-        sprintf( log_buf, "Closing link to %s.", ch->name );
+        snprintf( log_buf, sizeof(log_buf), "Closing link to %s.", ch->name );
         log_string( log_buf );
 
         if ( was_playing )
@@ -1139,14 +1139,14 @@ void close_socket( DESCRIPTOR_DATA *dclose )
             if ( !IS_SET(ch->act, PLR_WIZINVIS) )
             {
                 act( "$n has lost $s link.", ch, NULL, NULL, TO_ROOM );
-                sprintf(buf, "%s has lost %s link. [Room: %d]", ch->name,
+                snprintf(buf, sizeof(buf), "%s has lost %s link. [Room: %d]", ch->name,
                         ch->sex == 0 ? "its" : ch->sex == 1 ? "his" : "her",
                         ch->in_room->vnum);
                 wizinfo( buf, LEVEL_IMMORTAL );
             }
             else
             {
-                sprintf(buf, "%s has lost link while wizinvis. [Room: %d]", ch->name,
+                snprintf(buf, sizeof(buf), "%s has lost link while wizinvis. [Room: %d]", ch->name,
                         ch->in_room->vnum);
                 wizinfo( buf, ch->invis_level );
             }
@@ -1214,7 +1214,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
     iStart = strlen(d->inbuf);
     if ( iStart >= sizeof(d->inbuf) - 10 )
     {
-        sprintf( log_buf, "%s input overflow!", d->host );
+        snprintf( log_buf, sizeof(log_buf), "%s input overflow!", d->host );
         log_string( log_buf );
         write_to_descriptor( d->descriptor,
             "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
@@ -1344,13 +1344,13 @@ void read_from_buffer( DESCRIPTOR_DATA *d )
 	{
 	    if ( ++d->repeat >= 50 )
 	    {
-		sprintf( log_buf, "%s input spamming!", d->host );
-		log_string( log_buf );
-		write_to_descriptor( d->descriptor,
-		    "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
-		strcpy( d->incomm, "quit" );
-	    }
-	}
+                snprintf( log_buf, sizeof(log_buf), "%s input spamming!", d->host );
+                log_string( log_buf );
+                write_to_descriptor( d->descriptor,
+                    "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
+                strlcpy( d->incomm, "quit", sizeof(d->incomm) );
+            }
+        }
     }
 */
 
@@ -1358,9 +1358,9 @@ void read_from_buffer( DESCRIPTOR_DATA *d )
      * Do '!' substitution.
      */
     if ( d->incomm[0] == '!' )
-	strcpy( d->incomm, d->inlast );
+        strlcpy( d->incomm, d->inlast, sizeof(d->incomm) );
     else
-	strcpy( d->inlast, d->incomm );
+        strlcpy( d->inlast, d->incomm, sizeof(d->inlast) );
 
     /*
      * Shift the input buffer.
@@ -1409,56 +1409,56 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 	    else
 		percent = -1;
 
-	    if (percent >= 100)
-		sprintf(wound,"excellent");
-	    else if (percent >= 90)
-		sprintf(wound,"bruised");
-	    else if (percent >= 80)
-		sprintf(wound,"battered");
-	    else if (percent >= 70)
-		sprintf(wound,"injured");
-	    else if (percent >= 60)
-		sprintf(wound,"wounded");
-	    else if (percent >= 50)
-		sprintf(wound,"nasty wounds");
-	    else if (percent >= 40)
-		sprintf(wound,"bleeding");
-	    else if (percent >= 30)
-		sprintf(wound,"pretty hurt");
-	    else if (percent >= 20)
-		sprintf(wound,"bloody mess");
-	    else if (percent >= 10)
-		sprintf(wound,"critical condition");
-	    else
-		sprintf(wound,"DYING");
+            if (percent >= 100)
+                strlcpy(wound,"excellent", sizeof(wound));
+            else if (percent >= 90)
+                strlcpy(wound,"bruised", sizeof(wound));
+            else if (percent >= 80)
+                strlcpy(wound,"battered", sizeof(wound));
+            else if (percent >= 70)
+                strlcpy(wound,"injured", sizeof(wound));
+            else if (percent >= 60)
+                strlcpy(wound,"wounded", sizeof(wound));
+            else if (percent >= 50)
+                strlcpy(wound,"nasty wounds", sizeof(wound));
+            else if (percent >= 40)
+                strlcpy(wound,"bleeding", sizeof(wound));
+            else if (percent >= 30)
+                strlcpy(wound,"pretty hurt", sizeof(wound));
+            else if (percent >= 20)
+                strlcpy(wound,"bloody mess", sizeof(wound));
+            else if (percent >= 10)
+                strlcpy(wound,"critical condition", sizeof(wound));
+            else
+                strlcpy(wound,"DYING", sizeof(wound));
 
 	    if (victim->fighting != NULL && victim->fighting->max_hit > 0 )
 		percent = victim->fighting->hit * 100 / victim->fighting->max_hit;
 	    else
 		percent = -1;
 
-	    if (percent >= 100)
-		sprintf(wound2,"excellent");
-	    else if (percent >= 90)
-		sprintf(wound2,"bruised");
-	    else if (percent >= 80)
-		sprintf(wound2,"battered");
-	    else if (percent >= 70)
-		sprintf(wound2,"injured");
-	    else if (percent >= 60)
-		sprintf(wound2,"wounded");
-	    else if (percent >= 50)
-		sprintf(wound2,"nasty wounds");
-	    else if (percent >= 40)
-		sprintf(wound2,"bleeding");
-	    else if (percent >= 30)
-		sprintf(wound2,"pretty hurt");
-	    else if (percent >= 20)
-		sprintf(wound2,"bloody mess");
-	    else if (percent >= 10)
-		sprintf(wound2,"critical condition");
-	    else
-		sprintf(wound2,"DYING");
+            if (percent >= 100)
+                strlcpy(wound2,"excellent", sizeof(wound2));
+            else if (percent >= 90)
+                strlcpy(wound2,"bruised", sizeof(wound2));
+            else if (percent >= 80)
+                strlcpy(wound2,"battered", sizeof(wound2));
+            else if (percent >= 70)
+                strlcpy(wound2,"injured", sizeof(wound2));
+            else if (percent >= 60)
+                strlcpy(wound2,"wounded", sizeof(wound2));
+            else if (percent >= 50)
+                strlcpy(wound2,"nasty wounds", sizeof(wound2));
+            else if (percent >= 40)
+                strlcpy(wound2,"bleeding", sizeof(wound2));
+            else if (percent >= 30)
+                strlcpy(wound2,"pretty hurt", sizeof(wound2));
+            else if (percent >= 20)
+                strlcpy(wound2,"bloody mess", sizeof(wound2));
+            else if (percent >= 10)
+                strlcpy(wound2,"critical condition", sizeof(wound2));
+            else
+                strlcpy(wound2,"DYING", sizeof(wound2));
 
 	  if (victim->fighting != NULL)
 	    {
@@ -1466,10 +1466,10 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
                         {
               if(victim->fighting == ch)
 
-               sprintf(buf,"\n[ %s: [%d/%d hp] <*> You: %s ]",
+               snprintf(buf, sizeof(buf), "\n[ %s: [%d/%d hp] <*> You: %s ]",
                   PERS(victim,ch), victim->hit, victim->max_hit,wound2);
              else
-               sprintf(buf,"\n[ %s: [%d/%d hp] <*> %s: %s ]",
+               snprintf(buf, sizeof(buf), "\n[ %s: [%d/%d hp] <*> %s: %s ]",
                PERS(victim, ch), victim->hit,victim->max_hit,PERS(victim->fighting,ch),wound2);
                                 }
                         }
@@ -1478,10 +1478,10 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
                         if (!IS_SET(ch->act,PLR_DAMAGE_NUMBERS))
                         {
                                 if(victim->fighting == ch)
-                                 sprintf(buf,"\n[ %s: %s <*> You: %s ]",
+                                 snprintf(buf, sizeof(buf), "\n[ %s: %s <*> You: %s ]",
                         PERS(victim,ch), wound,wound2);
                                 else
-                sprintf(buf,"\n[ %s: %s <*> %s: %s ]",
+                snprintf(buf, sizeof(buf), "\n[ %s: %s <*> %s: %s ]",
                   PERS(victim,ch), wound, PERS(victim->fighting,ch), wound2);
                         }
 
