@@ -41,6 +41,8 @@
 
 void do_delet( CHAR_DATA *ch, char *argument)
 {
+    UNUSED_PARAM(argument);
+
     send_to_char("You must type the full command to delete yourself.\n\r",ch);
 }
 
@@ -88,6 +90,8 @@ void do_delete( CHAR_DATA *ch, char *argument)
 void do_channels( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
+
+    UNUSED_PARAM(argument);
 
     /* lists all channels and their status */
     send_to_char("   channel     status\n\r",ch);
@@ -182,6 +186,8 @@ void do_channels( CHAR_DATA *ch, char *argument )
 
 void do_deaf( CHAR_DATA *ch, char *argument )
 {
+    UNUSED_PARAM(argument);
+
     
     if (IS_SET(ch->comm,COMM_DEAF))
     {
@@ -199,6 +205,8 @@ void do_deaf( CHAR_DATA *ch, char *argument )
 
 void do_quiet ( CHAR_DATA *ch, char * argument)
 {
+    UNUSED_PARAM(argument);
+
     if (IS_SET(ch->comm,COMM_QUIET))
     {
       send_to_char("Quiet mode removed.\n\r",ch);
@@ -1132,6 +1140,8 @@ void do_pose( CHAR_DATA *ch, char *argument )
     int pose;
     size_t pose_entries;
 
+    UNUSED_PARAM(argument);
+
     if ( IS_NPC(ch) )
 	return;
 
@@ -1181,6 +1191,8 @@ void do_quit( CHAR_DATA *ch, char *argument )
 {
     DESCRIPTOR_DATA *d,*d_next;
     int id;
+
+    UNUSED_PARAM(argument);
 
     if ( IS_NPC(ch) )
 	return;
@@ -1235,8 +1247,10 @@ void do_quit( CHAR_DATA *ch, char *argument )
 
 void do_save( CHAR_DATA *ch, char *argument )
 {
+    UNUSED_PARAM(argument);
+
     if ( IS_NPC(ch) )
-	return;
+        return;
 
     save_char_obj( ch );
     send_to_char("Saving. Remember that ROM has automatic saving now.\n\r", ch);

@@ -1238,7 +1238,7 @@ bool write_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
  */
 void nanny( DESCRIPTOR_DATA *d, char *argument )
 {
-    DESCRIPTOR_DATA *d_old, *d_next;
+    DESCRIPTOR_DATA *d_old, *d_next_local;
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *ch;
@@ -1383,10 +1383,10 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
     case CON_BREAK_CONNECT:
 	switch( *argument )
 	{
-	case 'y' : case 'Y':
-            for ( d_old = descriptor_list; d_old != NULL; d_old = d_next )
-	    {
-		d_next = d_old->next;
+        case 'y' : case 'Y':
+            for ( d_old = descriptor_list; d_old != NULL; d_old = d_next_local )
+            {
+                d_next_local = d_old->next;
 		if (d_old == d || d_old->character == NULL)
 		    continue;
 
@@ -1919,6 +1919,8 @@ static int weapon_lookup( const char *name )
 bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 {
     CHAR_DATA *ch;
+
+    UNUSED_PARAM(name);
 
     for ( ch = char_list; ch != NULL; ch = ch->next )
     {
