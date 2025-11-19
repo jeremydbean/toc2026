@@ -1920,13 +1920,27 @@ void stop_idling( CHAR_DATA *ch )
 
 
 /*
- * Write to one char.
+ * Write to one char using a dynamic string buffer.
+ */
+void send_to_char_ds( const DString *txt, CHAR_DATA *ch )
+{
+    if ( txt != NULL && ch->desc != NULL )
+        write_to_buffer( ch->desc, dstring_cstr( txt ), (int)dstring_length( txt ) );
+}
+
+/*
+ * Backward compatible helper that wraps const strings into DString.
  */
 void send_to_char( const char *txt, CHAR_DATA *ch )
 {
-    if ( txt != NULL && ch->desc != NULL )
-        write_to_buffer( ch->desc, txt, strlen(txt) );
-    return;
+    DString buffer;
+
+    if ( txt == NULL )
+        return;
+
+    dstring_init_copy( &buffer, txt );
+    send_to_char_ds( &buffer, ch );
+    dstring_free( &buffer );
 }
 
 /*
@@ -2039,14 +2053,13 @@ void show_string(struct descriptor_data *d, char *input)
 /*
  * The primary output interface for individual characters.
  */
-void act_new( const char *format, CHAR_DATA *ch, const void *arg1, 
-	      const void *arg2, int type, int min_pos )
+void act_new_dstring( const DString *format, CHAR_DATA *ch, const void *arg1,
+              const void *arg2, int type, int min_pos )
 {
     static char * const he_she  [] = { "it",  "he",  "she" };
     static char * const him_her [] = { "it",  "him", "her" };
     static char * const his_her [] = { "its", "his", "her" };
- 
-    char buf[MAX_STRING_LENGTH];
+
     char fname[MAX_INPUT_LENGTH];
     CHAR_DATA *to;
     CHAR_DATA *vch = (CHAR_DATA *) arg2;
@@ -2054,17 +2067,19 @@ void act_new( const char *format, CHAR_DATA *ch, const void *arg1,
     OBJ_DATA *obj2 = (OBJ_DATA  *) arg2;
     const char *str;
     const char *i;
-    char *point;
+    DString buf;
  
     /*
      * Discard null and zero-length messages.
      */
-    if ( format == NULL || format[0] == '\0' )
+    if ( format == NULL || dstring_length( format ) == 0 )
         return;
 
     /* discard null rooms and chars */
     if (ch == NULL || ch->in_room == NULL)
 	return;
+
+    dstring_init( &buf );
 
     to = ch->in_room->people;
     if ( type == TO_VICT )
@@ -2072,9 +2087,10 @@ void act_new( const char *format, CHAR_DATA *ch, const void *arg1,
         if ( vch == NULL )
         {
             bug( "Act: null vch with TO_VICT.", 0 );
+            dstring_free( &buf );
             return;
         }
-	to = vch->in_room->people;
+        to = vch->in_room->people;
     }
  
     for ( ; to != NULL; to = to->next_in_room )
@@ -2091,13 +2107,14 @@ void act_new( const char *format, CHAR_DATA *ch, const void *arg1,
         if ( type == TO_NOTVICT && (to == ch || to == vch) )
             continue;
  
-        point   = buf;
-        str     = format;
+        dstring_clear( &buf );
+        str     = dstring_cstr( format );
         while ( *str != '\0' )
         {
             if ( *str != '$' )
             {
-                *point++ = *str++;
+                dstring_append_char( &buf, *str );
+                ++str;
                 continue;
             }
             ++str;
@@ -2157,18 +2174,35 @@ void act_new( const char *format, CHAR_DATA *ch, const void *arg1,
             }
  
             ++str;
-            while ( ( *point = *i ) != '\0' )
-                ++point, ++i;
+            while ( *i != '\0' )
+            {
+                dstring_append_char( &buf, *i );
+                ++i;
+            }
         }
- 
-        *point++ = '\n';
-        *point++ = '\r';
-        *point   = '\0';
-        buf[0]   = UPPER(buf[0]);
-        write_to_buffer( to->desc, buf, point - buf );
+
+        dstring_append_char( &buf, '\n' );
+        dstring_append_char( &buf, '\r' );
+        if ( dstring_length( &buf ) > 0 )
+            buf.data[0] = UPPER(buf.data[0]);
+        write_to_buffer( to->desc, dstring_cstr( &buf ), (int)dstring_length( &buf ) );
     }
- 
+
+    dstring_free( &buf );
     return;
+}
+
+void act_new( const char *format, CHAR_DATA *ch, const void *arg1,
+              const void *arg2, int type, int min_pos )
+{
+    DString dformat;
+
+    if ( format == NULL )
+        return;
+
+    dstring_init_copy( &dformat, format );
+    act_new_dstring( &dformat, ch, arg1, arg2, type, min_pos );
+    dstring_free( &dformat );
 }
 
 void act( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type )

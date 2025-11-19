@@ -18,6 +18,8 @@
 #include <sys/time.h>
 #include <sys/types.h>
 
+#include "dstring.h"
+
 /* Legacy macro removal */
 #define UNUSED_PARAM(x) ((void)(x))
 
@@ -63,6 +65,10 @@ typedef struct  offense_data            OFFENSE_DATA;
 typedef void DO_FUN     ( CHAR_DATA *ch, char *argument );
 typedef bool SPEC_FUN   ( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg );
 typedef void SPELL_FUN  ( int sn, int level, CHAR_DATA *ch, void *vo );
+
+#define DECLARE_DO_FUN( fun )      void fun( CHAR_DATA *ch, char *argument )
+#define DECLARE_SPEC_FUN( fun )    SPEC_FUN fun
+#define DECLARE_SPELL_FUN( fun )   void fun( int sn, int level, CHAR_DATA *ch, void *vo )
 
 /* String and memory management parameters. */
 #define MAX_KEY_HASH             2048
@@ -1963,10 +1969,12 @@ void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
 void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
 bool    normalize_psionic_arguments ( const char *argument, char *output, size_t length, char *invalid );
+void    send_to_char_ds ( const DString *txt, CHAR_DATA *ch );
 void    send_to_char    ( const char *txt, CHAR_DATA *ch );
 void    send_to_room    ( const char *txt, int vnum );
 void    page_to_char    ( const char *txt, CHAR_DATA *ch );
 void    act             ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type );
+void    act_new_dstring ( const DString *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
 void    act_new         ( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type, int min_pos);
 char * speak_filter    (CHAR_DATA *ch, const char *str);
 char * drunk_speak     (const char *str);
@@ -2122,7 +2130,7 @@ char * off_bit_name    ( long off_flags );
 char * off2_bit_name   ( long off_flags );
 char * imm_bit_name    ( long imm_flags );
 char * imm2_bit_name    ( long imm_flags );
-char * vuln_bit_name   ( long vuln_flags) );
+char * vuln_bit_name   ( long vuln_flags );
 char * res_bit_name    ( long res_flags );
 char * form_bit_name   ( long form_flags );
 char * part_bit_name   ( long part_flags );
