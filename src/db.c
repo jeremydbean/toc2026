@@ -4757,6 +4757,17 @@ void append_file( CHAR_DATA *ch, char *file, char *str )
 /*
  * Reports a bug.
  */
+static bool bug_is_nonfatal_act( const char *str )
+{
+    if ( str == NULL )
+        return false;
+
+    if ( strncmp( str, "Act:", 4 ) == 0 )
+        return true;
+
+    return false;
+}
+
 void bug( const char *str, int param )
 {
     char buf[MAX_STRING_LENGTH];
@@ -4786,11 +4797,12 @@ void bug( const char *str, int param )
         snprintf( buf, sizeof(buf), "[*****] FILE: %s LINE: %d", strArea, iLine );
         log_string( buf );
  
-	if ( ( fp = fopen( "shutdown.txt", "a" ) ) != NULL )
-	{
-	    fprintf( fp, "[*****] %s\n", buf );
-	    fclose( fp );
-	}
+        if ( !bug_is_nonfatal_act( str )
+        &&   ( fp = fopen( "shutdown.txt", "a" ) ) != NULL )
+        {
+            fprintf( fp, "[*****] %s\n", buf );
+            fclose( fp );
+        }
     }
 
     strlcpy( buf, "[*****] BUG: ", sizeof(buf) );
