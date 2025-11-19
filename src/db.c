@@ -292,7 +292,7 @@ char                    strArea[MAX_INPUT_LENGTH];
  * Local booting procedures.
 */
 void    init_mm         args( ( void ) );
-void    load_area_file  args( ( char *strArea ) );
+void    load_area_file  args( ( const char *strArea ) );
 void    load_area       args( ( FILE *fp ) );
 void    load_helps      args( ( FILE *fp ) );
 void    load_mobiles    args( ( FILE *fp ) );
@@ -452,7 +452,7 @@ void boot_db( void )
         new_area                = alloc_perm( sizeof(*new_area) );
         new_area->reset_first   = NULL;
         new_area->reset_last    = NULL;
-        new_area->name          = "Newly Created Area";
+        new_area->name          = str_dup( "Newly Created Area" );
         new_area->age           = 15;
         new_area->nplayer       = 0;
         new_area->empty = false;
@@ -503,7 +503,7 @@ void boot_db( void )
 /*
  * Load Area File loads the whole file
  */
-void load_area_file( char *area_filename )
+void load_area_file( const char *area_filename )
 {
     if ( area_filename[0] == '-' )
     {
@@ -520,7 +520,7 @@ void load_area_file( char *area_filename )
  
     for ( ; ; )
     {
-        char *word;
+        const char *word;
  
         if ( fread_letter( fpArea ) != '#' )
         {
