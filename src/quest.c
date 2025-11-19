@@ -795,13 +795,12 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 
 void quest_update(void)
 {
-    CHAR_DATA *ch, *ch_next;
+    CHAR_DATA *ch;
+    LIST_ITERATOR iter;
 
-    for ( ch = char_list; ch != NULL; ch = ch_next )
+    FOR_EACH_CHARACTER( iter, ch )
     {
-        ch_next = ch->next;
-
-	if (IS_NPC(ch)) continue;
+        if (IS_NPC(ch)) continue;
 
         if (ch->nextquest > 0)
         {

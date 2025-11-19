@@ -112,3 +112,28 @@ void list_foreach( const LIST *list, void (*callback)( void *data, void *ctx ), 
         callback( current->data, ctx );
     }
 }
+
+void list_iterator_start( LIST_ITERATOR *iter, const LIST *list )
+{
+    if ( iter == NULL )
+    {
+        return;
+    }
+
+    iter->list = list;
+    iter->next = ( list != NULL ) ? list->head : NULL;
+}
+
+void *list_iterator_next( LIST_ITERATOR *iter )
+{
+    LIST_NODE *node;
+
+    if ( iter == NULL || iter->next == NULL )
+    {
+        return NULL;
+    }
+
+    node = iter->next;
+    iter->next = node->next;
+    return node->data;
+}

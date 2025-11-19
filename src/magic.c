@@ -247,6 +247,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
     int mana;
     int sn;
     void check_killer args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+    LIST_ITERATOR iter;
 
     /*
      * Switched NPC's can cast spells, but others can't.
@@ -305,12 +306,11 @@ void do_cast( CHAR_DATA *ch, char *argument )
    if( !str_cmp( arg2, "all" ) && ch->level >= 69)
    {
 
-	for ( vch = char_list; vch != NULL; vch = vch_next )
-	{
-	    vch_next = vch->next;
+        FOR_EACH_CHARACTER( iter, vch )
+        {
 
-	    if ( !IS_NPC(vch) && !IS_IMMORTAL(vch) && get_trust( vch ) < get_trust( ch ) )
-	       (*skill_table[sn].spell_fun) ( sn, ch->level, ch, vch );
+            if ( !IS_NPC(vch) && !IS_IMMORTAL(vch) && get_trust( vch ) < get_trust( ch ) )
+               (*skill_table[sn].spell_fun) ( sn, ch->level, ch, vch );
 
 	}
 	return;
@@ -812,8 +812,8 @@ void spell_call_lightning( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(vo);
     CHAR_DATA *vch;
-    CHAR_DATA *vch_next;
     int dam;
+    LIST_ITERATOR iter;
 
     if ( !IS_OUTSIDE(ch) )
     {
@@ -833,9 +833,8 @@ void spell_call_lightning( int sn, int level, CHAR_DATA *ch, void *vo )
     act( "$n calls lightning from the Gods to strike $s foes!",
 	ch, NULL, NULL, TO_ROOM );
 
-    for ( vch = char_list; vch != NULL; vch = vch_next )
+    FOR_EACH_CHARACTER( iter, vch )
     {
-	vch_next	= vch->next;
 	if ( vch->in_room == NULL )
 	    continue;
 	if ( vch->in_room == ch->in_room )
@@ -2117,14 +2116,13 @@ void spell_earthquake( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(vo);
     CHAR_DATA *vch;
-    CHAR_DATA *vch_next;
+    LIST_ITERATOR iter;
 
     send_to_char( "The earth trembles beneath your feet!\n\r", ch );
     act( "$n makes the earth tremble and shiver.", ch, NULL, NULL, TO_ROOM );
 
-    for ( vch = char_list; vch != NULL; vch = vch_next )
+    FOR_EACH_CHARACTER( iter, vch )
     {
-	vch_next	= vch->next;
 	if ( vch->in_room == NULL )
 	    continue;
 	if ( vch->in_room == ch->in_room )
@@ -3399,6 +3397,7 @@ void spell_locate_object( int sn, int level, CHAR_DATA *ch, void *vo )
     OBJ_DATA *in_obj;
     bool found;
     int number = 0, max_found;
+    LIST_ITERATOR iter;
 
     if(!IS_NPC(ch) && ch->pcdata->on_quest)
     {
@@ -3412,7 +3411,7 @@ void spell_locate_object( int sn, int level, CHAR_DATA *ch, void *vo )
     buffer[0] = '\0';
     max_found = IS_IMMORTAL(ch) ? 200 : 2 * level;
 
-    for ( obj = object_list; obj != NULL; obj = obj->next )
+    FOR_EACH_OBJECT( iter, obj )
     {
 	if ( !can_see_obj( ch, obj ) || !is_name( target_name, obj->name )
 	||   (!IS_IMMORTAL(ch) && number_percent() > 2 * level)
@@ -4716,8 +4715,8 @@ void spell_high_explosive( int sn, int level, CHAR_DATA *ch, void *vo )
 void spell_blizzard( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *vch;
-    CHAR_DATA *vch_next;
     CHAR_DATA *victim = (CHAR_DATA *) vo;
+    LIST_ITERATOR iter;
     static const int16_t dam_each[] =
     {
 	  0,
@@ -4733,9 +4732,8 @@ void spell_blizzard( int sn, int level, CHAR_DATA *ch, void *vo )
     level	= UMAX(0, level);
     dam		= number_range( dam_each[level] / 2, dam_each[level] * 2 );
 
-    for ( vch = char_list; vch != NULL; vch = vch_next )
+    FOR_EACH_CHARACTER( iter, vch )
     {
-	vch_next	= vch->next;
 	if ( vch->in_room == NULL )
 	    continue;
 	if ( vch->in_room == ch->in_room )

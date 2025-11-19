@@ -1469,6 +1469,7 @@ void do_group( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
+    LIST_ITERATOR iter;
 
     one_argument( argument, arg );
 
@@ -1482,10 +1483,10 @@ void do_group( CHAR_DATA *ch, char *argument )
 	snprintf( buf, sizeof(buf), "%s's group:\n\r", PERS(leader, ch) );
 	send_to_char( buf, ch );
 
-	for ( gch = char_list; gch != NULL; gch = gch->next )
-	{
-	    if ( is_same_group( gch, ch ) )
-	    {
+        FOR_EACH_CHARACTER( iter, gch )
+        {
+            if ( is_same_group( gch, ch ) )
+            {
                 /* Code Safety: snprintf */
 		snprintf( buf, sizeof(buf),
                 "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5ld xp\n\r",
@@ -1652,6 +1653,7 @@ void do_gtell( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *gch;
+    LIST_ITERATOR iter;
 
     if ( argument[0] == '\0' )
     {
@@ -1669,10 +1671,10 @@ void do_gtell( CHAR_DATA *ch, char *argument )
     snprintf( buf, sizeof(buf), "You tell the group '%s'\n\r", argument );
     send_to_char( buf, ch );
 
-    for ( gch = char_list; gch != NULL; gch = gch->next )
+    FOR_EACH_CHARACTER( iter, gch )
     {
-	if ( is_same_group( gch, ch ) && ch != gch )
-	{
+        if ( is_same_group( gch, ch ) && ch != gch )
+        {
             /* Code Safety: snprintf */
 	    snprintf( buf, sizeof(buf), "%s tells the group '%s'\n\r", PERS(ch, gch), argument );
 	    buf[0] = UPPER(buf[0]);

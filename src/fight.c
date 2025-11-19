@@ -82,10 +82,11 @@ void violence_update( void )
     CHAR_DATA *ch;
 /*    CHAR_DATA *ch_next;*/
     CHAR_DATA *victim;
+    LIST_ITERATOR iter;
 
-    for ( ch = char_list; ch != NULL; ch = ch->next )
+    FOR_EACH_CHARACTER( iter, ch )
     {
-	/*ch_next = ch->next;*/
+        /*ch_next = ch->next;*/
 
 	if ( ( victim = ch->fighting ) == NULL || ch->in_room == NULL )
 	    continue;
@@ -109,12 +110,11 @@ void violence_update( void )
 
 void btick_update(void)
 {
-    CHAR_DATA *ch, *ch_next;
+    CHAR_DATA *ch;
+    LIST_ITERATOR iter;
 
-    for ( ch = char_list; ch != NULL; ch = ch_next )
+    FOR_EACH_CHARACTER( iter, ch )
     {
-        ch_next = ch->next;
-
         if (IS_NPC(ch)) continue;
 
         if (ch->battleticks > 0) {
@@ -267,9 +267,9 @@ void check_assist(CHAR_DATA *ch,CHAR_DATA *victim)
 
 		    target = NULL;
 		    number = 0;
-		    for (vch = ch->in_room->people; vch; vch = vch->next)
-		    {
-			if (can_see(rch,vch)
+                    for (vch = ch->in_room->people; vch; vch = vch->next_in_room)
+                    {
+                        if (can_see(rch,vch)
 			&&  is_same_group(vch,victim)
 			&&  number_range(0,number) == 0)
 			{
@@ -434,6 +434,7 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
     CHAR_DATA *vch, *vch_next, *help;
     MOB_INDEX_DATA *pMobIndex = NULL;
     OBJ_DATA *second = NULL;
+    LIST_ITERATOR iter;
 
     one_hit(ch,victim,dt);
 
@@ -444,9 +445,9 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
     if (IS_SET(ch->off_flags,OFF_AREA_ATTACK))
     {
-	for (vch = ch->in_room->people; vch != NULL; vch = vch_next)
-	{
-	    vch_next = vch->next;
+        for (vch = ch->in_room->people; vch != NULL; vch = vch_next)
+        {
+            vch_next = vch->next_in_room;
 	    if ((vch != victim && vch->fighting == ch))
 		one_hit(ch,vch,dt);
 	}
@@ -567,12 +568,11 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 	{
 	  int pick_one;
 
-	  for ( vch = char_list; vch != NULL; vch = vch_next )
-	  {
-	    vch_next = vch->next;
+          FOR_EACH_CHARACTER( iter, vch )
+          {
 
-	    if ( vch->in_room == NULL )
-	      continue;
+            if ( vch->in_room == NULL )
+              continue;
 
 	    if ( vch->in_room == ch->in_room )
 	    {
@@ -875,10 +875,11 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
  */
 bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 {
-    CHAR_DATA *vch, *vch_next;
+    CHAR_DATA *vch;
     OBJ_DATA *corpse;
     bool immune;
     int shield = 0,i,num=0;
+    LIST_ITERATOR iter;
 
     if ( victim->position == POS_DEAD )
 	return false;
@@ -1353,12 +1354,11 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	{
 	  raw_kill( ch, victim );
 
-	  for ( vch = char_list; vch != NULL; vch = vch_next )
-	  {
-	    vch_next = vch->next;
+          FOR_EACH_CHARACTER( iter, vch )
+          {
 
-	    if ( vch->in_room == NULL )
-	      continue;
+            if ( vch->in_room == NULL )
+              continue;
 
 	    if ( vch->in_room == ch->in_room )
 	    {
@@ -1975,6 +1975,7 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
 void stop_fighting( CHAR_DATA *ch, bool fBoth )
 {
     CHAR_DATA *fch;
+    LIST_ITERATOR iter;
 
     if (ch->fighting != NULL) {
         CHAR_DATA *victim = ch->fighting;
@@ -1990,10 +1991,10 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
 	}
     }
 
-    for ( fch = char_list; fch != NULL; fch = fch->next )
+    FOR_EACH_CHARACTER( iter, fch )
     {
-	if ( fch == ch || ( fBoth && fch->fighting == ch ) )
-	{
+        if ( fch == ch || ( fBoth && fch->fighting == ch ) )
+        {
 	    fch->fighting       = NULL;
 	    fch->position = IS_NPC(fch) ? ch->default_pos : POS_STANDING;
 	    update_pos( fch );
@@ -4392,6 +4393,8 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 {
   OBJ_DATA *corpse;
   char buf[MAX_STRING_LENGTH];
+  CHAR_DATA *vch;
+  LIST_ITERATOR iter;
 
     act( "$n's attack has pierced a vital organ, killing you instantly!",
 	 ch, NULL, victim, TO_VICT    );
@@ -4444,18 +4447,15 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	    remove_all_hates(victim);
 	}
 
-	if(IS_NPC(victim) && IS_SET(victim->off_flags,OFF_SUMMONER) )
-	{
-	  CHAR_DATA *vch, *vch_next;
+        if(IS_NPC(victim) && IS_SET(victim->off_flags,OFF_SUMMONER) )
+        {
+          raw_kill( ch, victim );
 
-	  raw_kill( ch, victim );
+          FOR_EACH_CHARACTER( iter, vch )
+          {
 
-	  for ( vch = char_list; vch != NULL; vch = vch_next )
-	  {
-	    vch_next = vch->next;
-
-	    if ( vch->in_room == NULL )
-	      continue;
+            if ( vch->in_room == NULL )
+              continue;
 
 	    if ( vch->in_room == ch->in_room )
 	    {
@@ -4754,10 +4754,10 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *vch;
-    CHAR_DATA *vch_next;
     OBJ_DATA *obj;
     bool hit = false;
     int dam = 0;
+    LIST_ITERATOR iter;
 
     one_argument(argument,arg);
 
@@ -4796,12 +4796,11 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
     act( "$n begins a deadly dance.",ch,NULL
 	  ,NULL, TO_ROOM );
 
-    for ( vch = char_list; vch != NULL; vch = vch_next )
+    FOR_EACH_CHARACTER( iter, vch )
     {
-	vch_next        = vch->next;
 
-	if( vch->in_room == NULL )
-		continue;
+        if( vch->in_room == NULL )
+                continue;
 
 	if( number_percent () > get_skill(ch, gsn_crane_dance) - 1 )
 	  continue;

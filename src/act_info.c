@@ -2255,6 +2255,7 @@ void do_where( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     DESCRIPTOR_DATA *d;
     bool found;
+    LIST_ITERATOR iter;
 
     one_argument( argument, arg );
 
@@ -2283,12 +2284,12 @@ void do_where( CHAR_DATA *ch, char *argument )
     }
     else
     {
-	found = false;
-	for ( victim = char_list; victim != NULL; victim = victim->next )
-	{
-	    if ( victim->in_room != NULL
-	    &&   victim->in_room->area == ch->in_room->area
-	    &&   !IS_AFFECTED(victim, AFF_HIDE)
+        found = false;
+        FOR_EACH_CHARACTER( iter, victim )
+        {
+            if ( victim->in_room != NULL
+            &&   victim->in_room->area == ch->in_room->area
+            &&   !IS_AFFECTED(victim, AFF_HIDE)
 	    &&   !IS_AFFECTED(victim, AFF_SNEAK)
 	    &&   !IS_AFFECTED2(victim, AFF2_STEALTH)
 	    &&   can_see( ch, victim )
@@ -2316,6 +2317,7 @@ void do_gwhere( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     DESCRIPTOR_DATA *d;
     bool found;
+    LIST_ITERATOR iter;
 
     one_argument( argument, arg );
 
@@ -2342,13 +2344,13 @@ void do_gwhere( CHAR_DATA *ch, char *argument )
 	    send_to_char( "Your the only one home.\n\r", ch );
 	}
 	else
-	{
-	    found = false;
-	    for( victim = char_list; victim != NULL; victim = victim->next )
-	    {
-		if( victim->in_room != NULL
-		&&  can_see( ch, victim )
-		&&  victim != ch
+        {
+            found = false;
+            FOR_EACH_CHARACTER( iter, victim )
+            {
+                if( victim->in_room != NULL
+                &&  can_see( ch, victim )
+                &&  victim != ch
 		&&  is_name( arg, victim->name ) )
 		{
 		    found = true;
@@ -2372,6 +2374,7 @@ void do_wizcheck( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     DESCRIPTOR_DATA *d;
     bool found;
+    LIST_ITERATOR iter;
 
     one_argument( argument, arg );
 
@@ -2401,12 +2404,12 @@ void do_wizcheck( CHAR_DATA *ch, char *argument )
     }
     else
     {
-	found = false;
-	for( victim = char_list; victim != NULL; victim = victim->next )
-	{
-	    if( victim->in_room != NULL
-	    && IS_IMMORTAL(victim)
-	    && can_see( ch, victim )
+        found = false;
+        FOR_EACH_CHARACTER( iter, victim )
+        {
+            if( victim->in_room != NULL
+            && IS_IMMORTAL(victim)
+            && can_see( ch, victim )
 	    && victim != ch
 	    && is_name( arg, victim->name )
 	    && !IS_NPC( victim ) )

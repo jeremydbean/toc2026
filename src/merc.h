@@ -37,15 +37,6 @@
 #define args(list) list
 #endif
 
-/*
- * Toggle for migrating away from intrusive linked lists. When enabled,
- * core data structures are tracked through LIST containers instead of
- * `next` pointers embedded in the structs themselves.
- */
-#ifndef USE_CONTAINER_LISTS
-#define USE_CONTAINER_LISTS 0
-#endif
-
 /* Short scalar types. */
 typedef int16_t     sh_int;
 
@@ -1316,16 +1307,7 @@ struct guildmaster_type
 /* One character (PC or NPC). */
 struct  char_data
 {
-#if USE_CONTAINER_LISTS
-    /*
-     * Characters are tracked in the global character_list container,
-     * so the intrusive next pointer can be removed during the
-     * migration. The room list remains until rooms adopt containers as
-     * well.
-     */
-#else
-    CHAR_DATA * next;
-#endif
+    CHAR_DATA * next_free;
     CHAR_DATA * next_in_room;
     CHAR_DATA * master;
     CHAR_DATA * leader;
@@ -1557,7 +1539,7 @@ struct  obj_index_data
 /* One object. */
 struct  obj_data
 {
-    OBJ_DATA * next;
+    OBJ_DATA * next_free;
     OBJ_DATA * next_content;
     OBJ_DATA * contains;
     OBJ_DATA * in_obj;
@@ -1891,13 +1873,10 @@ extern  char * const   title_table     [MAX_CLASS][MAX_LEVEL+1][2];
 extern          HELP_DATA         * help_first;
 extern          SHOP_DATA         * shop_first;
 extern          BAN_DATA          * ban_list;
-extern          CHAR_DATA         * char_list;
-#if USE_CONTAINER_LISTS
 extern          LIST               character_list;
-#endif
+extern          LIST               object_list;
 extern          DESCRIPTOR_DATA   * descriptor_list;
 extern          NOTE_DATA         * note_list;
-extern          OBJ_DATA          * object_list;
 extern          TELEPORT_ROOM_DATA* teleport_room_list;
 extern          ROOM_AFF_DATA     * room_aff_list;
 extern          ROOM_AFF_DATA     * room_aff_free;
@@ -2144,9 +2123,19 @@ void    extract_obj_player  ( OBJ_DATA *obj );
 void    extract_char    ( CHAR_DATA *ch, bool fPull );
 void    register_character( CHAR_DATA *ch );
 void    unregister_character( CHAR_DATA *ch );
+void    register_object ( OBJ_DATA *obj );
+void    unregister_object ( OBJ_DATA *obj );
 CD * get_char_room   ( CHAR_DATA *ch, char *argument );
 CD * get_char_world  ( CHAR_DATA *ch, char *argument );
 CHAR_DATA * find_char_by_name( const char *name );
+OBJ_DATA * find_object_by_name( const char *name );
+
+#define FOR_EACH_CHARACTER(iter, ch) \
+    for ( list_iterator_start( &(iter), &character_list ); \
+          ( ( ch ) = (CHAR_DATA *) list_iterator_next( &(iter) ) ) != NULL; )
+#define FOR_EACH_OBJECT(iter, obj) \
+    for ( list_iterator_start( &(iter), &object_list ); \
+          ( ( obj ) = (OBJ_DATA *) list_iterator_next( &(iter) ) ) != NULL; )
 OD * get_obj_type    ( OBJ_INDEX_DATA *pObjIndexData );
 OD * get_obj_list    ( CHAR_DATA *ch, char *argument, OBJ_DATA *list );
 OD * get_obj_carry   ( CHAR_DATA *ch, char *argument );
