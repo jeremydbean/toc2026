@@ -94,6 +94,7 @@ static int clamp_size_to_int( size_t value );
 static int strlen_to_int( const char *text );
 static void safe_strcpy( char *dest, size_t dest_size, const char *src );
 static void safe_strcat( char *dest, size_t dest_size, const char *src );
+static const char *wizinfo_possessive( const CHAR_DATA *ch );
 
 /*
  * OS-dependent declarations.
@@ -933,6 +934,7 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
 void close_socket( DESCRIPTOR_DATA *dclose )
 {
     CHAR_DATA *ch;
+    char buf[MAX_STRING_LENGTH];
 
     if ( dclose->outtop > 0 )
 	process_output( dclose, FALSE );
@@ -965,7 +967,9 @@ void close_socket( DESCRIPTOR_DATA *dclose )
         if ( dclose->connected == CON_PLAYING )
         {
             act( "$n has lost $s link.", ch, NULL, NULL, TO_ROOM );
-            wizinfo( "$N has lost $S link.", ch->level );
+            snprintf(buf, sizeof(buf), "%s has lost %s link.",
+                ch->name, wizinfo_possessive(ch));
+            wizinfo( buf, ch->level );
 	    ch->desc = NULL;
 	}
 	else
@@ -2107,7 +2111,8 @@ case CON_DEFAULT_CHOICE:
 	    act( "$n has entered the game.", ch, NULL, NULL, TO_ROOM );
 	    do_look( ch, "auto" );
 
-	    wizinfo("$N has entered the game.",ch->level);
+            snprintf( buf, sizeof(buf), "%s has entered the game.", ch->name );
+            wizinfo( buf, ch->level );
 
 	    {
 	        script_char_login_payload login_payload;
@@ -2265,6 +2270,7 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
 {
     CHAR_DATA *ch;
     LIST_ITERATOR iter;
+    char buf[MAX_STRING_LENGTH];
 
     UNUSED_PARAM(name);
 
@@ -2290,7 +2296,8 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
                 act( "$n has reconnected.", ch, NULL, NULL, TO_ROOM );
                 snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s reconnected.", ch->name, d->host );
                 log_string( log_buf );
-                wizinfo( "$N has reconnected.", ch->level );
+                snprintf( buf, sizeof(buf), "%s has reconnected.", ch->name );
+                wizinfo( buf, ch->level );
                 d->connected = CON_PLAYING;
 	    }
 	    return TRUE;
@@ -2562,61 +2569,144 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                 continue;
             }
             ++str;
- 
-            if ( arg1 == NULL && *str >= 'A' && *str <= 'Z' )
+
+            switch ( *str )
             {
-                bug( "Act: missing arg1 for code %d.", *str );
+            default:
+                bug( "Act: bad code %d.", *str );
                 i = " <@@@> ";
-            }
-            else if ( arg2 == NULL && *str >= 'a' && *str <= 'z' )
-            {
-                bug( "Act: missing arg2 for code %d.", *str );
-                i = " <@@@> ";
-            }
-            else
-            {
-                switch ( *str )
+                break;
+
+            /* Thx alex for 't' idea */
+            case 't':
+                if ( arg1 == NULL )
                 {
-                default:  bug( "Act: bad code %d.", *str );
-                          i = " <@@@> ";                                break;
-                /* Thx alex for 't' idea */
-                case 't': i = (char *) arg1;                            break;
-                case 'T': i = (char *) arg2;                            break;
-                case 'n': i = PERS( ch,  to  );                         break;
-                case 'N': i = PERS( vch, to  );                         break;
-                case 'e': i = he_she  [URANGE(0, ch  ->sex, 2)];        break;
-                case 'E': i = he_she  [URANGE(0, vch ->sex, 2)];        break;
-                case 'm': i = him_her [URANGE(0, ch  ->sex, 2)];        break;
-                case 'M': i = him_her [URANGE(0, vch ->sex, 2)];        break;
-                case 's': i = his_her [URANGE(0, ch  ->sex, 2)];        break;
-                case 'S': i = his_her [URANGE(0, vch ->sex, 2)];        break;
- 
-                case 'p':
-                    i = can_see_obj( to, obj1 )
-                            ? obj1->short_descr
-                            : "something";
-                    break;
- 
-                case 'P':
-                    i = can_see_obj( to, obj2 )
-                            ? obj2->short_descr
-                            : "something";
-                    break;
- 
-                case 'd':
-                    if ( arg2 == NULL || ((char *) arg2)[0] == '\0' )
-                    {
-                        i = "door";
-                    }
-                    else
-                    {
-                        one_argument( (char *) arg2, fname );
-                        i = fname;
-                    }
-                    break;
+                    bug( "Act: missing arg1 for code %c.", *str );
+                    i = " <@@@> ";
                 }
+                else
+                {
+                    i = (char *) arg1;
+                }
+                break;
+
+            case 'T':
+                if ( arg2 == NULL )
+                {
+                    bug( "Act: missing arg2 for code %c.", *str );
+                    i = " <@@@> ";
+                }
+                else
+                {
+                    i = (char *) arg2;
+                }
+                break;
+
+            case 'n':
+                i = PERS( ch,  to  );
+                break;
+
+            case 'N':
+                if ( vch == NULL )
+                {
+                    bug( "Act: missing victim for code %c.", *str );
+                    i = " <@@@> ";
+                }
+                else
+                {
+                    i = PERS( vch, to );
+                }
+                break;
+
+            case 'e':
+                i = he_she[URANGE(0, ch->sex, 2)];
+                break;
+
+            case 'E':
+                if ( vch == NULL )
+                {
+                    bug( "Act: missing victim for code %c.", *str );
+                    i = " <@@@> ";
+                }
+                else
+                {
+                    i = he_she[URANGE(0, vch->sex, 2)];
+                }
+                break;
+
+            case 'm':
+                i = him_her[URANGE(0, ch->sex, 2)];
+                break;
+
+            case 'M':
+                if ( vch == NULL )
+                {
+                    bug( "Act: missing victim for code %c.", *str );
+                    i = " <@@@> ";
+                }
+                else
+                {
+                    i = him_her[URANGE(0, vch->sex, 2)];
+                }
+                break;
+
+            case 's':
+                i = his_her[URANGE(0, ch->sex, 2)];
+                break;
+
+            case 'S':
+                if ( vch == NULL )
+                {
+                    bug( "Act: missing victim for code %c.", *str );
+                    i = " <@@@> ";
+                }
+                else
+                {
+                    i = his_her[URANGE(0, vch->sex, 2)];
+                }
+                break;
+
+            case 'p':
+                if ( obj1 == NULL )
+                {
+                    bug( "Act: missing object for code %c.", *str );
+                    i = " <@@@> ";
+                }
+                else
+                {
+                    i = can_see_obj( to, obj1 )
+                        ? obj1->short_descr
+                        : "something";
+                }
+                break;
+
+            case 'P':
+                if ( obj2 == NULL )
+                {
+                    bug( "Act: missing object for code %c.", *str );
+                    i = " <@@@> ";
+                }
+                else
+                {
+                    i = can_see_obj( to, obj2 )
+                        ? obj2->short_descr
+                        : "something";
+                }
+                break;
+
+            case 'd':
+                if ( arg2 == NULL || ((char *) arg2)[0] == '\0' )
+                {
+                    i = "door";
+                }
+                else
+                {
+                    one_argument( (char *) arg2, fname );
+                    i = fname;
+                }
+                break;
             }
- 
+
             ++str;
             while ( *i != '\0' )
             {
@@ -2707,11 +2797,24 @@ void process_web_admin_queue(void) {
     }
 }
 
-void wizinfo(char *info, int level)
+static const char *wizinfo_possessive(const CHAR_DATA *ch)
+{
+    switch ( ch->sex )
+    {
+    case SEX_MALE:
+        return "his";
+    case SEX_FEMALE:
+        return "her";
+    default:
+        return "its";
+    }
+}
+
+void wizinfo(const char *info, int level)
 {
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
-    
+
     snprintf(buf,sizeof(buf),"[WIZINFO]: %s\n\r",info);
 
     for ( d = descriptor_list; d != NULL; d = d->next )
