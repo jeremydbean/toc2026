@@ -341,7 +341,7 @@ void do_spells(CHAR_DATA *ch, char *argument)
         }
 
         if (spell_list[lev][0] == '\0')
-          snprintf(spell_list[lev], sizeof(spell_list[lev]), "\n\rLevel %2d: %s",lev,buf);
+          snprintf(spell_list[lev], sizeof(spell_list[lev]), "\n\rLevel %2d: %.4000s",lev,buf);
         else /* append */
         {
           if ( ++spell_columns[lev] % 2 == 0)
@@ -408,7 +408,7 @@ void do_skills(CHAR_DATA *ch, char *argument)
                                          ch->pcdata->learned[sn]);
 
         if (skill_list[lev][0] == '\0')
-          snprintf(skill_list[lev], sizeof(skill_list[lev]), "\n\rLevel %2d: %s",lev,buf);
+          snprintf(skill_list[lev], sizeof(skill_list[lev]), "\n\rLevel %2d: %.4000s",lev,buf);
         else /* append */
         {
           if ( ++skill_columns[lev] % 2 == 0)
