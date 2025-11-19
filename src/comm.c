@@ -946,17 +946,21 @@ void new_descriptor( int control_fd )
     buf[0] = '0';
     DESCRIPTOR_DATA *dnew;
     BAN_DATA *pban;
-    struct sockaddr_in sock;
-    struct hostent *from;
+    struct sockaddr_storage sock;
     int desc;
     socklen_t size;
+    int gni_result;
+    char hostbuf[NI_MAXHOST];
+    char numeric_host[NI_MAXHOST];
+    const struct sockaddr *sa;
 
     size = sizeof(sock);
+    sa = (struct sockaddr *) &sock;
     getsockname( control_fd, (struct sockaddr *) &sock, &size );
     if ( ( desc = accept( control_fd, (struct sockaddr *) &sock, &size) ) < 0 )
     {
-	perror( "New_descriptor: accept" );
-	return;
+        perror( "New_descriptor: accept" );
+        return;
     }
 
     {
@@ -981,12 +985,12 @@ void new_descriptor( int control_fd )
      */
     if ( descriptor_free == NULL )
     {
-	dnew            = alloc_perm( sizeof(*dnew) );
+        dnew            = alloc_perm( sizeof(*dnew) );
     }
     else
     {
-	dnew            = descriptor_free;
-	descriptor_free = descriptor_free->next;
+        dnew            = descriptor_free;
+        descriptor_free = descriptor_free->next;
     }
 
     make_descriptor( dnew, desc );
@@ -994,41 +998,56 @@ void new_descriptor( int control_fd )
     size = sizeof(sock);
     if ( getpeername( desc, (struct sockaddr *) &sock, &size ) < 0 )
     {
-	perror( "New_descriptor: getpeername" );
-	dnew->host = str_dup( "(unknown)" );
+        perror( "New_descriptor: getpeername" );
+        dnew->host = str_dup( "(unknown)" );
     }
     else
     {
-	/*
-	 * Would be nice to use inet_ntoa here but it takes a struct arg,
-	 * which ain't very compatible between gcc and system libraries.
-	 */
+        /*
+         * Would be nice to use inet_ntoa here but it takes a struct arg,
+         * which ain't very compatible between gcc and system libraries.
+         */
         unsigned long addr;
+        struct sockaddr_in *sin_peer;
 
-/*	create_ident( dnew, sock.sin_addr.s_addr, ntohs( sock.sin_port ) ); */
-        addr = ntohl( sock.sin_addr.s_addr );
-        snprintf( buf, sizeof(buf), "%lu.%lu.%lu.%lu",
-            ( addr >> 24 ) & 0xFF, ( addr >> 16 ) & 0xFF,
-            ( addr >>  8 ) & 0xFF, ( addr       ) & 0xFF
-            );
-        snprintf( log_buf, sizeof(log_buf), "Sock.sinaddr:  %s", buf );
-	log_string( log_buf );
+/*      create_ident( dnew, sock.sin_addr.s_addr, ntohs( sock.sin_port ) ); */
+        numeric_host[0] = '\0';
+        if ( sock.ss_family == AF_INET )
+        {
+            sin_peer = (struct sockaddr_in *) &sock;
+            addr = ntohl( sin_peer->sin_addr.s_addr );
+            snprintf( buf, sizeof(buf), "%lu.%lu.%lu.%lu",
+                ( addr >> 24 ) & 0xFF, ( addr >> 16 ) & 0xFF,
+                ( addr >>  8 ) & 0xFF, ( addr       ) & 0xFF
+                );
+        }
+        else
+        {
+            buf[0] = '\0';
+        }
+
+        gni_result = getnameinfo( sa, size,
+            numeric_host, sizeof(numeric_host), NULL, 0, NI_NUMERICHOST );
+        if ( gni_result != 0 && buf[0] != '\0' )
+            strncpy( numeric_host, buf, sizeof(numeric_host) - 1 );
+        numeric_host[sizeof(numeric_host) - 1] = '\0';
+        if ( numeric_host[0] == '\0' )
+            strncpy( numeric_host, "(unknown)", sizeof(numeric_host) - 1 );
+
+        snprintf( log_buf, sizeof(log_buf), "Sock.sinaddr:  %s", numeric_host );
+        log_string( log_buf );
 
         if (dns == 0)
-	from = gethostbyaddr( (char *) &sock.sin_addr,
-	    sizeof(sock.sin_addr), AF_INET );
-
-/*      if (from && (!str_cmp(from->h_name,"ursula.uoregon.edu")
-		 ||  !str_cmp(from->h_name,"monet.ucdavis.edu")))
-	    dnew->host = str_dup("white.nextwork.rose-hulman.edu");
-	else
-
-EC: What the hell is this for?
-*/
-            if (dns == 0)
-            dnew->host = str_dup( from ? from->h_name : buf );
+        {
+            gni_result = getnameinfo( sa, size,
+                hostbuf, sizeof(hostbuf), NULL, 0, NI_NAMEREQD );
+            if ( gni_result == 0 )
+                dnew->host = str_dup( hostbuf );
             else
-            dnew->host = str_dup(buf);
+                dnew->host = str_dup( numeric_host );
+        }
+        else
+            dnew->host = str_dup( numeric_host );
     }
 
     /*
@@ -1041,31 +1060,31 @@ EC: What the hell is this for?
      */
     for ( pban = ban_list; pban != NULL; pban = pban->next )
     {
-	if ( !str_suffix( pban->name, dnew->host ) )
-	{
-	    write_to_descriptor( desc,
-		"Connection closed by foreign host.\n\r", 0 );
-	    close( desc );
-	    free_string( dnew->host );
-	    free_mem( dnew->outbuf, dnew->outsize );
-	    dnew->next          = descriptor_free;
-	    descriptor_free     = dnew;
-	    return;
-	}
+        if ( !str_suffix( pban->name, dnew->host ) )
+        {
+            write_to_descriptor( desc,
+                "Connection closed by foreign host.\n\r", 0 );
+            close( desc );
+            free_string( dnew->host );
+            free_mem( dnew->outbuf, dnew->outsize );
+            dnew->next          = descriptor_free;
+            descriptor_free     = dnew;
+            return;
+        }
     }
 
 /*
 #ifdef CLOSED
     {
-	write_to_descriptor(desc,"The implementors here at TOC are sorry to inform you that we will have to be\n\r"
-	"shutting the game down for a few days.  Please keep trying.  This is not a\n\r"
-	"permanent shutdown. \n\r\n Thank you for your support,\n\rSoul.\n\r ",0);
-	close(desc);
-	free_string(dnew->host);
-	free_mem(dnew->outbuf,dnew->outsize);
-	dnew->next      = descriptor_free;
-	descriptor_free = dnew;
-	return;
+        write_to_descriptor(desc,"The implementors here at TOC are sorry to inform you that we will have to be\n\r"
+        "shutting the game down for a few days.  Please keep trying.  This is not a\n\r"
+        "permanent shutdown. \n\r\n Thank you for your support,\n\rSoul.\n\r ",0);
+        close(desc);
+        free_string(dnew->host);
+        free_mem(dnew->outbuf,dnew->outsize);
+        dnew->next      = descriptor_free;
+        descriptor_free = dnew;
+        return;
     }                 EC
 #endif
 */
