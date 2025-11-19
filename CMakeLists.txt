@@ -25,35 +25,36 @@ endif()
 
 # Explicitly list all source files to avoid globbing.
 set(SRC_FILES
-    "${CMAKE_SOURCE_DIR}/src/act_comm.c"
-    "${CMAKE_SOURCE_DIR}/src/act_info.c"
-    "${CMAKE_SOURCE_DIR}/src/act_move.c"
-    "${CMAKE_SOURCE_DIR}/src/act_obj.c"
-    "${CMAKE_SOURCE_DIR}/src/act_wiz.c"
-    "${CMAKE_SOURCE_DIR}/src/comm.c"
-    "${CMAKE_SOURCE_DIR}/src/const.c"
-    "${CMAKE_SOURCE_DIR}/src/db.c"
-    "${CMAKE_SOURCE_DIR}/src/edit.c"
-    "${CMAKE_SOURCE_DIR}/src/fight.c"
-    "${CMAKE_SOURCE_DIR}/src/handler.c"
-    "${CMAKE_SOURCE_DIR}/src/hunt.c"
-    "${CMAKE_SOURCE_DIR}/src/interp.c"
-    "${CMAKE_SOURCE_DIR}/src/magic.c"
-    "${CMAKE_SOURCE_DIR}/src/magic2.c"
-    "${CMAKE_SOURCE_DIR}/src/maxload.c"
-    "${CMAKE_SOURCE_DIR}/src/misc.c"
-    "${CMAKE_SOURCE_DIR}/src/nicedb.c"
-    "${CMAKE_SOURCE_DIR}/src/pkill.c"
-    "${CMAKE_SOURCE_DIR}/src/quest.c"
-    "${CMAKE_SOURCE_DIR}/src/save.c"
-    "${CMAKE_SOURCE_DIR}/src/skills.c"
-    "${CMAKE_SOURCE_DIR}/src/special.c"
-    "${CMAKE_SOURCE_DIR}/src/string_safe.c"
-    "${CMAKE_SOURCE_DIR}/src/update.c"
-    "${CMAKE_SOURCE_DIR}/src/wizlist.c"
+    src/act_comm.c
+    src/act_info.c
+    src/act_move.c
+    src/act_obj.c
+    src/act_wiz.c
+    src/comm.c
+    src/const.c
+    src/db.c
+    src/edit.c
+    src/fight.c
+    src/handler.c
+    src/hunt.c
+    src/interp.c
+    src/magic.c
+    src/magic2.c
+    src/maxload.c
+    src/misc.c
+    src/nicedb.c
+    src/pkill.c
+    src/quest.c
+    src/save.c
+    src/skills.c
+    src/special.c
+    src/string_safe.c
+    src/update.c
+    src/wizlist.c
 )
 
-add_executable(${TARGET_NAME} ${SRC_FILES})
+add_executable(${TARGET_NAME})
+target_sources(${TARGET_NAME} PRIVATE ${SRC_FILES})
 
 target_include_directories(${TARGET_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/src")
 
@@ -61,10 +62,10 @@ target_compile_definitions(${TARGET_NAME} PRIVATE ROM)
 
 option(ENABLE_SANITIZERS "Enable address and undefined sanitizers for debug validation" OFF)
 
-if(ENABLE_SANITIZERS)
-    target_compile_options(${TARGET_NAME} PRIVATE -fsanitize=address -fsanitize=undefined)
-    target_link_options(${TARGET_NAME} PRIVATE -fsanitize=address -fsanitize=undefined)
-endif()
+set(SANITIZER_FLAGS
+    -fsanitize=address
+    -fsanitize=undefined
+)
 
 target_compile_options(
     ${TARGET_NAME}
@@ -76,6 +77,13 @@ target_compile_options(
         -Wno-unused-parameter
         -Wno-sign-compare
         -Wno-strict-aliasing
+        $<$<AND:$<BOOL:${ENABLE_SANITIZERS}>,$<CONFIG:Debug>>:${SANITIZER_FLAGS}>
+)
+
+target_link_options(
+    ${TARGET_NAME}
+    PRIVATE
+        $<$<AND:$<BOOL:${ENABLE_SANITIZERS}>,$<CONFIG:Debug>>:${SANITIZER_FLAGS}>
 )
 
 # Link against math (m), compression (z), and crypto (crypt)
