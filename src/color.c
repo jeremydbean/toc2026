@@ -5,61 +5,63 @@
 
 enum color_option_index
 {
-    COLOR_PLAIN = 0,
-    COLOR_RED,
-    COLOR_GREEN,
-    COLOR_YELLOW,
+    COLOR_GREY = 0,
     COLOR_BLUE,
-    COLOR_MAGENTA,
+    COLOR_GREEN,
     COLOR_CYAN,
-    COLOR_WHITE,
-    COLOR_BRIGHT_RED,
-    COLOR_BRIGHT_GREEN,
-    COLOR_BRIGHT_YELLOW,
+    COLOR_RED,
+    COLOR_MAGENTA,
+    COLOR_BROWN,
+    COLOR_YELLOW,
+    COLOR_BRIGHT_GREY,
     COLOR_BRIGHT_BLUE,
-    COLOR_BRIGHT_MAGENTA,
+    COLOR_BRIGHT_GREEN,
     COLOR_BRIGHT_CYAN,
-    COLOR_BRIGHT_WHITE
+    COLOR_BRIGHT_RED,
+    COLOR_BRIGHT_MAGENTA,
+    COLOR_WHITE,
+    COLOR_PLAIN
 };
 
 const struct col_disp_table_type col_disp_table[] =
 {
-    { "plain",           "" },
-    { "red",             "\x1b[0;31m" },
-    { "green",           "\x1b[0;32m" },
-    { "yellow",          "\x1b[0;33m" },
+    { "grey",            "\x1b[1;30m" },
     { "blue",            "\x1b[0;34m" },
-    { "magenta",         "\x1b[0;35m" },
+    { "green",           "\x1b[0;32m" },
     { "cyan",            "\x1b[0;36m" },
-    { "white",           "\x1b[0;37m" },
-    { "bright-red",      "\x1b[1;31m" },
-    { "bright-green",    "\x1b[1;32m" },
-    { "bright-yellow",   "\x1b[1;33m" },
-    { "bright-blue",     "\x1b[1;34m" },
-    { "bright-magenta",  "\x1b[1;35m" },
-    { "bright-cyan",     "\x1b[1;36m" },
-    { "bright-white",    "\x1b[1;37m" }
+    { "red",             "\x1b[0;31m" },
+    { "magenta",         "\x1b[0;35m" },
+    { "brown",           "\x1b[0;33m" },
+    { "yellow",          "\x1b[1;33m" },
+    { "bright_grey",     "\x1b[0;37m" },
+    { "bright_blue",     "\x1b[1;34m" },
+    { "bright_green",    "\x1b[1;32m" },
+    { "bright_cyan",     "\x1b[1;36m" },
+    { "bright_red",      "\x1b[1;31m" },
+    { "bright_magenta",  "\x1b[1;35m" },
+    { "white",           "\x1b[1;37m" },
+    { "plain",           "" }
 };
 
 const struct col_table_type col_table[] =
 {
-    { "regular",   COL_REGULAR,   COLOR_BRIGHT_WHITE, false },
-    { "gossip",    COL_GOSSIP,    COLOR_YELLOW,       false },
-    { "shout",     COL_SHOUTS,    COLOR_RED,          false },
-    { "question",  COL_QUESTION,  COLOR_CYAN,         false },
-    { "castle",    COL_CASTLE,    COLOR_MAGENTA,      false },
-    { "tell",      COL_TELL,      COLOR_BRIGHT_MAGENTA,false },
-    { "say",       COL_SAYS,      COLOR_PLAIN,        false },
-    { "social",    COL_SOCIALS,   COLOR_GREEN,        false },
-    { "highlight", COL_HIGHLIGHT, COLOR_BRIGHT_WHITE, false },
-    { "damage",    COL_DAMAGE,    COLOR_BRIGHT_RED,   false },
-    { "defense",   COL_DEFENSE,   COLOR_BRIGHT_GREEN, false },
-    { "disarm",    COL_DISARM,    COLOR_BRIGHT_YELLOW,false },
-    { "hero",      COL_HERO,      COLOR_BRIGHT_BLUE,  false },
-    { "wizinfo",   COL_WIZINFO,   COLOR_BRIGHT_CYAN,  true  },
-    { "immtalk",   COL_IMMTALK,   COLOR_BRIGHT_MAGENTA,true  },
-    { "room",      COL_ROOM_NAME, COLOR_BRIGHT_YELLOW,false },
-    { NULL,         0,             COLOR_PLAIN,        false }
+    { "regular",    COL_REGULAR,   COLOR_BRIGHT_GREY, false },
+    { "gossips",    COL_GOSSIP,    COLOR_MAGENTA,     false },
+    { "shouts",     COL_SHOUTS,    COLOR_WHITE,       false },
+    { "question",   COL_QUESTION,  COLOR_BRIGHT_CYAN, false },
+    { "castle",     COL_CASTLE,    COLOR_CYAN,        false },
+    { "tell",       COL_TELL,      COLOR_GREEN,       false },
+    { "says",       COL_SAYS,      COLOR_RED,         false },
+    { "socials",    COL_SOCIALS,   COLOR_MAGENTA,     false },
+    { "highlight",  COL_HIGHLIGHT, COLOR_WHITE,       false },
+    { "damage",     COL_DAMAGE,    COLOR_RED,         false },
+    { "defense",    COL_DEFENSE,   COLOR_GREY,        false },
+    { "disarm",     COL_DISARM,    COLOR_BRIGHT_RED,  false },
+    { "hero",       COL_HERO,      COLOR_YELLOW,      false },
+    { "wizinfo",    COL_WIZINFO,   COLOR_BRIGHT_CYAN, true  },
+    { "immtalk",    COL_IMMTALK,   COLOR_BROWN,       true  },
+    { "room_name",  COL_ROOM_NAME, COLOR_BROWN,       false },
+    { NULL,          0,             COLOR_PLAIN,       false }
 };
 
 static const char *const color_reset_sequence = "\x1b[0m";

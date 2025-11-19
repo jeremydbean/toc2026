@@ -298,22 +298,6 @@ static void prompt_append_text( char *buf, size_t buflen, const char *text );
 static void prompt_append_number( char *buf, size_t buflen, long value );
 static long prompt_exp_to_level( CHAR_DATA *owner );
 
-static int clamp_size_to_int( size_t value )
-{
-    if ( value > INT_MAX )
-        return INT_MAX;
-
-    return (int)value;
-}
-
-static int strlen_to_int( const char *text )
-{
-    if ( text == NULL )
-        return 0;
-
-    return clamp_size_to_int( strlen( text ) );
-}
-
 /*
  * Other local functions (OS-dependent).
  */

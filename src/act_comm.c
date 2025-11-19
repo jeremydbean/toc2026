@@ -231,8 +231,8 @@ void do_color( CHAR_DATA *ch, char *argument )
         }
 
         send_to_char(
-            "Use 'color on', 'color off', 'color reset', 'color list',\n\r"
-            "or 'color <group> <color>'.\n\r",
+            "Use 'color on', 'color off', 'color default', 'color defaults',\n\r"
+            "'color list', or 'color <group> <color>'.\n\r",
             ch );
         return;
     }
@@ -251,7 +251,9 @@ void do_color( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( !str_prefix( arg1, "reset" ) )
+    if ( !str_prefix( arg1, "reset" )
+      || !str_prefix( arg1, "default" )
+      || !str_prefix( arg1, "defaults" ) )
     {
         color_update_defaults( ch, true );
         send_to_char( "Color preferences reset to defaults.\n\r", ch );
