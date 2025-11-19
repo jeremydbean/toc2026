@@ -2321,7 +2321,7 @@ void do_remove( CHAR_DATA *ch, char *argument )
     OBJ_DATA *obj;
 
     if(ch->position == POS_FIGHTING) {
-        snprintf(log_buf, sizeof(log_buf), "Do_remove: %s : %s", ch->name, argument);
+        snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "Do_remove: %s : %s", ch->name, argument);
 	log_string(log_buf);
     }
 
@@ -2336,7 +2336,7 @@ void do_remove( CHAR_DATA *ch, char *argument )
     if ( !str_cmp( arg, "all" ) )
     {
 	OBJ_DATA *obj_next;
-          snprintf(log_buf, sizeof(log_buf), "%s did a remove all.", ch->name);
+          snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s did a remove all.", ch->name);
 	log_string(log_buf);
 
 	for ( obj = ch->carrying; obj != NULL; obj = obj_next )
