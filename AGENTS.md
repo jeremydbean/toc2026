@@ -62,3 +62,4 @@
 - Next string-safety pass: `src/fight.c`, `src/act_obj.c`, `src/db.c`, and the commented prompt stub in `src/comm.c` still use `sprintf`/`strcat` patterns; convert them to bounded helpers with `sizeof` limits.
 
 - String safety follow-up (latest): `src/act_obj.c` now uses `snprintf` for its remaining formatted messages. Other modules (`src/fight.c`, `src/db.c`, `src/comm.c`, etc.) still contain legacy formatting and need similar treatment. `src/merc.h` prototypes should be alphabetized and audited to ensure every global has a declaration and local helpers have static prototypes where appropriate.
+- String safety follow-up (current run): began converting `src/db.c` to bounded `snprintf`/`strlcat` patterns (maxload logging and `identify_obj`), but the memory summary and mob stat dump routines still use `sprintf`/`strcat` and need conversion. The `merc.h` prototype audit/sorting remains outstanding.
