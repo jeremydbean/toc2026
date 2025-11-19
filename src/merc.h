@@ -2074,7 +2074,6 @@ void append_file args( ( CHAR_DATA *ch, char *file, char *str ) );
 int apply_ac args( ( OBJ_DATA *obj, int iWear, int type ) );
 void area_update args( ( void ) );
 int     atoi            args( ( const char *string ) );
-int     atoi            args( ( const char *string ) );
 void ban_update args( ( void ) );
 void boot_db args( ( void ) );
 void bug args( ( const char *str, int param ) );
