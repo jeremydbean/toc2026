@@ -2504,6 +2504,25 @@ void show_string(struct descriptor_data *d, char *input)
 /*
  * The primary output interface for individual characters.
  */
+static void act_log_missing_arg( const char *code_desc, char code_char,
+                                 const DString *format, CHAR_DATA *ch,
+                                 int type )
+{
+    char logbuf[MAX_STRING_LENGTH];
+
+    if ( ch == NULL || format == NULL )
+        return;
+
+    snprintf( logbuf, sizeof(logbuf),
+              "Act warning: %s (code %c) for '%s' type %d message '%s'",
+              code_desc,
+              code_char,
+              ch->name ? ch->name : "(null)",
+              type,
+              dstring_cstr( format ) );
+    log_string( logbuf );
+}
+
 void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
               const void *arg2, int type, int min_pos )
 {
@@ -2594,6 +2613,7 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                 if ( arg2 == NULL )
                 {
                     bug( "Act: missing arg2 for code %c.", *str );
+                    act_log_missing_arg( "missing arg2", *str, format, ch, type );
                     i = " <@@@> ";
                 }
                 else
@@ -2684,6 +2704,7 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                 if ( obj2 == NULL )
                 {
                     bug( "Act: missing object for code %c.", *str );
+                    act_log_missing_arg( "missing object", *str, format, ch, type );
                     i = " <@@@> ";
                 }
                 else
