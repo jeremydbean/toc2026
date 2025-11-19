@@ -2006,7 +2006,7 @@ void stop_idling( CHAR_DATA *ch )
 /*
  * Write to one char using a dynamic string buffer.
  */
-void send_to_char_ds( const DString *txt, CHAR_DATA *ch )
+void send_to_char_dstring( const DString *txt, CHAR_DATA *ch )
 {
     if ( txt != NULL && ch->desc != NULL )
         write_to_buffer( ch->desc, dstring_cstr( txt ), (int)dstring_length( txt ) );
@@ -2023,7 +2023,7 @@ void send_to_char( const char *txt, CHAR_DATA *ch )
         return;
 
     dstring_init_copy( &buffer, txt );
-    send_to_char_ds( &buffer, ch );
+    send_to_char_dstring( &buffer, ch );
     dstring_free( &buffer );
 }
 
@@ -2138,7 +2138,7 @@ void show_string(struct descriptor_data *d, char *input)
 /*
  * The primary output interface for individual characters.
  */
-void act_new_dstring( const DString *format, CHAR_DATA *ch, const void *arg1,
+void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
               const void *arg2, int type, int min_pos )
 {
     static char * const he_she  [] = { "it",  "he",  "she" };
@@ -2277,7 +2277,7 @@ void act_new_dstring( const DString *format, CHAR_DATA *ch, const void *arg1,
     return;
 }
 
-void act_new( const char *format, CHAR_DATA *ch, const void *arg1,
+void act_new_cstr( const char *format, CHAR_DATA *ch, const void *arg1,
               const void *arg2, int type, int min_pos )
 {
     DString dformat;
@@ -2286,14 +2286,14 @@ void act_new( const char *format, CHAR_DATA *ch, const void *arg1,
         return;
 
     dstring_init_copy( &dformat, format );
-    act_new_dstring( &dformat, ch, arg1, arg2, type, min_pos );
+    act_new( &dformat, ch, arg1, arg2, type, min_pos );
     dstring_free( &dformat );
 }
 
 void act( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type )
 {
     /* to be compatible with older code */
-    act_new( format, ch, arg1, arg2, type, POS_RESTING );
+    act_new_cstr( format, ch, arg1, arg2, type, POS_RESTING );
 }
 
 /*

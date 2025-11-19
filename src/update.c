@@ -1736,7 +1736,7 @@ void obj_update( void )
 		{
 		    if ( paf->type > 0 && skill_table[paf->type].msg_off )
 		    {
-			act_new( skill_table[paf->type].msg_off, obj->carried_by, obj,
+			act_new_cstr( skill_table[paf->type].msg_off, obj->carried_by, obj,
 				 NULL, POS_SLEEPING,TO_CHAR );
 		    }
 		}
