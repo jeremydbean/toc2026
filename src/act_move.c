@@ -182,16 +182,16 @@ void do_look( CHAR_DATA *ch, char *argument )
         /* 'look' or 'look auto' */
         if(IS_IMMORTAL(ch) && IS_SET(ch->act, PLR_HOLYLIGHT) )
         {
-        sprintf(buf,"\x02\x10%s\x02\x01\n\r", ch->in_room->name);
+        snprintf(buf, sizeof(buf), "\x02\x10%s\x02\x01\n\r", ch->in_room->name);
         send_to_char( buf, ch );
-        sprintf(buf,"[Sector: %s]     [Flags: %s]\n\r",
+        snprintf(buf, sizeof(buf), "[Sector: %s]     [Flags: %s]\n\r",
                 sector_type[ch->in_room->sector_type],
                 room_flag_name( ch->in_room->room_flags) );
         send_to_char( buf, ch );
         }
         else
         {
-          sprintf(buf,"\x02\x10%s\x02\x01\n\r",ch->in_room->name);
+          snprintf(buf, sizeof(buf), "\x02\x10%s\x02\x01\n\r",ch->in_room->name);
           send_to_char( buf, ch );
         }
 
@@ -277,7 +277,7 @@ void do_look( CHAR_DATA *ch, char *argument )
                 break;
             }
 
-            sprintf( buf, "It's %s full of a %s liquid.\n\r",
+            snprintf( buf, sizeof(buf), "It's %s full of a %s liquid.\n\r",
                 obj->value[1] <     obj->value[0] / 4
                     ? "less than" :
                 obj->value[1] < 3 * obj->value[0] / 4
@@ -382,38 +382,38 @@ void do_look( CHAR_DATA *ch, char *argument )
                   switch(obj->value[1]) {
                     case TYPE_PLATINUM:
                       if (obj->value[0] == 1)
-                        sprintf(buf,"A platinum coin.\n\r");
+                        snprintf(buf, sizeof(buf), "A platinum coin.\n\r");
                       else if (obj->value[0] < 10)
-                        sprintf(buf,"A pile of %d platinum coins.\n\r",obj->value[0]);
+                        snprintf(buf, sizeof(buf), "A pile of %d platinum coins.\n\r",obj->value[0]);
                       else
-                        sprintf(buf,"A heap of %d platinum coins.\n\r",obj->value[0]);
+                        snprintf(buf, sizeof(buf), "A heap of %d platinum coins.\n\r",obj->value[0]);
                       break;
                     case TYPE_GOLD:
                       if (obj->value[0] == 1)
-                        sprintf(buf,"A gold coin.\n\r");
+                        snprintf(buf, sizeof(buf), "A gold coin.\n\r");
                       else if (obj->value[0] < 10)
-                        sprintf(buf,"A pile of %d gold coins.\n\r",obj->value[0]);
+                        snprintf(buf, sizeof(buf), "A pile of %d gold coins.\n\r",obj->value[0]);
                       else
-                        sprintf(buf,"A heap of %d gold coins.\n\r",obj->value[0]);
+                        snprintf(buf, sizeof(buf), "A heap of %d gold coins.\n\r",obj->value[0]);
                       break;
                     case TYPE_SILVER:
                       if (obj->value[0] == 1)
-                        sprintf(buf,"A silver coin.\n\r");
+                        snprintf(buf, sizeof(buf), "A silver coin.\n\r");
                       else if (obj->value[0] < 10)
-                        sprintf(buf,"A pile of %d silver coins.\n\r",obj->value[0]);
+                        snprintf(buf, sizeof(buf), "A pile of %d silver coins.\n\r",obj->value[0]);
                       else
-                        sprintf(buf,"A heap of %d silver coins.\n\r",obj->value[0]);
+                        snprintf(buf, sizeof(buf), "A heap of %d silver coins.\n\r",obj->value[0]);
                       break;
                     case TYPE_COPPER:
                       if (obj->value[0] == 1)
-                        sprintf(buf,"A copper coin.\n\r");
+                        snprintf(buf, sizeof(buf), "A copper coin.\n\r");
                       else if (obj->value[0] < 10)
-                        sprintf(buf,"A pile of %d copper coins.\n\r",obj->value[0]);
+                        snprintf(buf, sizeof(buf), "A pile of %d copper coins.\n\r",obj->value[0]);
                       else
-                        sprintf(buf,"A heap of %d copper coins.\n\r",obj->value[0]);
+                        snprintf(buf, sizeof(buf), "A heap of %d copper coins.\n\r",obj->value[0]);
                       break;
                     default:
-                      sprintf(buf,"You non valuable coins.\n\r");
+                      snprintf(buf, sizeof(buf), "You non valuable coins.\n\r");
                   }
                   send_to_char(buf,ch);
                 }
@@ -428,9 +428,9 @@ void do_look( CHAR_DATA *ch, char *argument )
     if (count > 0 && count != number)
     {
         if (count == 1)
-            sprintf(buf,"You only see one %s here.\n\r",arg3);
+            snprintf(buf, sizeof(buf), "You only see one %s here.\n\r",arg3);
         else
-            sprintf(buf,"You only see %d %s's here.\n\r",count,arg3);
+            snprintf(buf, sizeof(buf), "You only see %d %s's here.\n\r",count,arg3);
 
         send_to_char(buf,ch);
         return;
@@ -538,7 +538,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     if (ch->in_room == NULL) {
       if (IS_NPC(ch)) {
         char buf[1000];
-        sprintf(buf,"Mob %s has no in_room",ch->name);
+        snprintf(buf, sizeof(buf), "Mob %s has no in_room",ch->name);
         log_string(buf);
         log_string("MOB going to limbo");
         char_to_room(ch, get_room_index( 9992 ) );
@@ -1188,7 +1188,7 @@ void do_open( CHAR_DATA *ch, char *argument )
             {
               send_to_char("BUG!! There's not a valid mob in the bottle!\n\r",ch);
               extract_obj(obj);
-              sprintf(buf,"BUG!!!  %s had a soul container without a valid mob!", ch->name);
+              snprintf(buf, sizeof(buf), "BUG!!!  %s had a soul container without a valid mob!", ch->name);
               wizinfo(buf,LEVEL_IMMORTAL);
               log_string(buf);
               return;
@@ -2226,8 +2226,8 @@ void do_recall( CHAR_DATA *ch, char *argument )
 	      ch->move /= 2;
 	      lose = (ch->desc != NULL) ? 25 : 50;
 	      gain_exp( ch, 0 - lose );
-	      sprintf( buf, "You exit combat to another place!  You lose %d exps.\n\r", lose );
-	      send_to_char(buf,ch);
+              snprintf( buf, sizeof(buf), "You exit combat to another place!  You lose %d exps.\n\r", lose );
+              send_to_char(buf,ch);
 	      act( "$n pops in out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM );
 	      return;
 	    }
@@ -2240,8 +2240,8 @@ void do_recall( CHAR_DATA *ch, char *argument )
 	lose = (ch->desc != NULL) ? 25 : 50;
 	gain_exp( ch, 0 - lose );
 	check_improve(ch,gsn_recall,true,5);
-	sprintf( buf, "You recall from combat!  You lose %d exps.\n\r", lose );
-	send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "You recall from combat!  You lose %d exps.\n\r", lose );
+        send_to_char( buf, ch );
 	stop_fighting( ch, true );
 
     }
@@ -2261,8 +2261,8 @@ void do_recall( CHAR_DATA *ch, char *argument )
 	}
 	check_improve(ch,gsn_recall,false,5);
 	WAIT_STATE( ch, 4 );
-	sprintf( buf, "You failed!\n\r");
-	send_to_char( buf, ch );
+        snprintf( buf, sizeof(buf), "You failed!\n\r");
+        send_to_char( buf, ch );
 	return;
     }
 
@@ -2355,7 +2355,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
              send_to_char("Something is very wrong!\n\r",ch);
              act("$n failed to recall, but $e went somewhere.", ch, NULL, NULL, TO_ROOM);
              lose = (ch->desc != NULL) ? 25 : 50;
-             sprintf(buf,"You exit combat to another place!  You lose %d exps.\n\r", lose);
+             snprintf(buf, sizeof(buf), "You exit combat to another place!  You lose %d exps.\n\r", lose);
              send_to_char(buf,ch);
           }
           else
@@ -2383,7 +2383,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
              act("$n pops in out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM);
              else
              {
-             sprintf(buf, "You recall from combat!  You lose %d exps.\n\r", lose);
+             snprintf(buf, sizeof(buf), "You recall from combat!  You lose %d exps.\n\r", lose);
              send_to_char(buf,ch);
              check_improve(ch,gsn_recall,true,5);
              act("$n appears in the room.", ch, NULL, NULL, TO_ROOM);
@@ -2470,9 +2470,9 @@ void do_train( CHAR_DATA *ch, char *argument )
 
     if ( argument[0] == '\0' )
     {
-	sprintf( buf, "You have %d training sessions.\n\r", ch->train );
-	send_to_char( buf, ch );
-	argument = "foo";
+        snprintf( buf, sizeof(buf), "You have %d training sessions.\n\r", ch->train );
+        send_to_char( buf, ch );
+        argument = "foo";
     }
 
     cost = 1;
@@ -2525,24 +2525,24 @@ void do_train( CHAR_DATA *ch, char *argument )
 
     else
     {
-	strcpy( buf, "You can train:" );
-	if ( ch->perm_stat[STAT_STR] < get_max_train(ch,STAT_STR))
-	    strcat( buf, " str" );
-	if ( ch->perm_stat[STAT_INT] < get_max_train(ch,STAT_INT))
-	    strcat( buf, " int" );
-	if ( ch->perm_stat[STAT_WIS] < get_max_train(ch,STAT_WIS))
-	    strcat( buf, " wis" );
-	if ( ch->perm_stat[STAT_DEX] < get_max_train(ch,STAT_DEX))
-	    strcat( buf, " dex" );
-	if ( ch->perm_stat[STAT_CON] < get_max_train(ch,STAT_CON))
-	    strcat( buf, " con" );
-	strcat( buf, " hp mana");
+        strlcpy( buf, "You can train:", sizeof(buf) );
+        if ( ch->perm_stat[STAT_STR] < get_max_train(ch,STAT_STR))
+            strlcat( buf, " str", sizeof(buf) );
+        if ( ch->perm_stat[STAT_INT] < get_max_train(ch,STAT_INT))
+            strlcat( buf, " int", sizeof(buf) );
+        if ( ch->perm_stat[STAT_WIS] < get_max_train(ch,STAT_WIS))
+            strlcat( buf, " wis", sizeof(buf) );
+        if ( ch->perm_stat[STAT_DEX] < get_max_train(ch,STAT_DEX))
+            strlcat( buf, " dex", sizeof(buf) );
+        if ( ch->perm_stat[STAT_CON] < get_max_train(ch,STAT_CON))
+            strlcat( buf, " con", sizeof(buf) );
+        strlcat( buf, " hp mana", sizeof(buf));
 
-	if ( buf[strlen(buf)-1] != ':' )
-	{
-	    strcat( buf, ".\n\r" );
-	    send_to_char( buf, ch );
-	}
+        if ( buf[strlen(buf)-1] != ':' )
+        {
+            strlcat( buf, ".\n\r", sizeof(buf) );
+            send_to_char( buf, ch );
+        }
 	else
 	{
 	    /*
@@ -3016,7 +3016,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	       ch->hit /= 2;
 	   }
 	 }
-    sprintf(buf, "%s has set off a Fire trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Fire trap!!!", ch->name);
        break;
        case 2:                    /* gas trap (spreads to connected rooms) */
 	 type_gas = dice(1,2);
@@ -3116,16 +3116,16 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	    }
 	 }
 	 if(type_gas == 1)
-	   sprintf(buf, "%s has set off a Nerve Gas trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Nerve Gas trap!!!", ch->name);
 	 else
-	   sprintf(buf, "%s has set off a Sleep Gas trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Sleep Gas trap!!!", ch->name);
 
 	 ch->in_room = was_in_room;
        break;
        case 3:                              /* drunk trap (48) */
 	 send_to_char("A strange mist is sprayed on you.\n\r",ch);
 	 ch->pcdata->condition[0] += 12;
-	 sprintf(buf, "%s has set off a Beer trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Beer trap!!!", ch->name);
        break;
        case 4:                              /* sleep trap (24) */
           af.type = (int16_t)skill_lookup("sleep");
@@ -3144,7 +3144,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	   act( "$n goes to sleep.", ch, NULL, NULL, TO_ROOM );
 	   ch->position = POS_SLEEPING;
 	 }
-	 sprintf(buf, "%s has set off a Sleep trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Sleep trap!!!", ch->name);
        break;
        case 5: /* tport trap (10 on all stats) */
 	 for ( ; ; )
@@ -3182,7 +3182,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 
 	act( "$n slowly fades into existence.", ch, NULL, NULL, TO_ROOM );
 	do_look( ch, "auto" );
-    sprintf(buf, "%s has set off a Teleport trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Teleport trap!!!", ch->name);
        break;
        case 6:              /* dart trap (poison) */
 	 send_to_char("You hear some clicking noises.....\n\r",ch);
@@ -3208,7 +3208,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	    affect_to_char( ch, &af );
 	 }
 	 act( "$n looks like a pin cushion.", ch, NULL, NULL, TO_ROOM );
-    sprintf(buf, "%s has set off a Dart trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Dart trap!!!", ch->name);
        break;
        case 7: /* summon trap (make a new mob with summoner) */
 	  pMobIndex = get_mob_index( 79 );
@@ -3227,7 +3227,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	  }
 	  guardian->timer = 350;
 	  multi_hit( guardian, ch, TYPE_UNDEFINED );
-    sprintf(buf, "%s has set off a Guardian trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Guardian trap!!!", ch->name);
        break;
        case 8: /* stun trap */
 	 act( "A bold of lightning zaps $n.", ch, NULL, NULL, TO_ROOM );
@@ -3240,7 +3240,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	 if(ch->hit <=1 )
 	   ch->hit = 1;
 	 ch->position = POS_STUNNED;
-    sprintf(buf, "%s has set off a Stun trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Stun trap!!!", ch->name);
        break;
        case 9: /* plague trap */
 	 act( "$n yells 'OUCH!'", ch, NULL, NULL, TO_ROOM );
@@ -3253,7 +3253,7 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	 af.bitvector = AFF_PLAGUE;
 	 af.bitvector2 = 0;
 	 affect_join(ch,&af);
-    sprintf(buf, "%s has set off a Plague trap!!!", ch->name);
+    snprintf(buf, sizeof(buf), "%s has set off a Plague trap!!!", ch->name);
        break;
        case 10:
 	 act( "There is a bright flash of light!", ch, NULL, NULL, TO_ROOM );
@@ -3289,12 +3289,12 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	   affect_to_char( ch, &af );
 	 send_to_char("Then there is only darnkess!\n\r",ch);
 	 }
-	 sprintf(buf, "%s has set off a Blindness trap!!!", ch->name);
+        snprintf(buf, sizeof(buf), "%s has set off a Blindness trap!!!", ch->name);
        break;
     }
    if(!IS_IMMORTAL(ch) )
     {
-      sprintf(buf1, "%s has set off a trap!!!", ch->name);
+      snprintf(buf1, sizeof(buf1), "%s has set off a trap!!!", ch->name);
       send_info(buf1);
     }
     wizinfo(buf,LEVEL_IMMORTAL);
@@ -3555,12 +3555,12 @@ void do_ride( CHAR_DATA *ch, char *argument)
    {
      obj_from_char(obj);
      obj_to_char(obj,victim);
-     sprintf(buf,"%s saddles %s and mounts $m.",ch->name,
-		  victim->short_descr ? victim->short_descr: victim->name);
+     snprintf(buf, sizeof(buf), "%s saddles %s and mounts $m.",ch->name,
+                  victim->short_descr ? victim->short_descr: victim->name);
      obj->wear_loc = WEAR_BODY;
    }
    else
-     sprintf(buf,"%s mounts %s.",ch->name,
+     snprintf(buf, sizeof(buf), "%s mounts %s.",ch->name,
        victim->short_descr ? victim->short_descr : victim->name);
    if(!IS_SET(ch->act,PLR_WIZINVIS) )
      act( buf, ch, NULL, NULL, TO_ROOM );
@@ -3595,7 +3595,7 @@ void do_dismount(CHAR_DATA *ch, char *argument)
    }
 
    if(!IS_SET(ch->act,PLR_WIZINVIS) )
-     sprintf(buf,"%s dismounts from %s.",ch->name,
+     snprintf(buf, sizeof(buf), "%s dismounts from %s.",ch->name,
        ch->pet->short_descr ? ch->pet->short_descr : ch->pet->name);
    act( buf, ch, NULL, NULL, TO_ROOM );
    send_to_char("You dismount.\n\r",ch);
@@ -3737,8 +3737,8 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
 
     if( !IS_SET(ch->act, PLR_WIZINVIS) )
     {
-      sprintf(buf,"$n rides in from the $T on %s.",
-	ch->pet->short_descr ? ch->pet->short_descr : ch->pet->name);
+      snprintf(buf, sizeof(buf), "$n rides in from the $T on %s.",
+        ch->pet->short_descr ? ch->pet->short_descr : ch->pet->name);
       act( buf , ch, NULL, dir_name[rev_dir[door]], TO_ROOM );
     }
 
