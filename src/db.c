@@ -438,7 +438,7 @@ void boot_db( void )
  
         for ( ; ; )
         {
-            strcpy( strArea, fread_word( fpList ) );
+            strlcpy( strArea, fread_word( fpList ), sizeof(strArea) );
             if ( strArea[0] == '$' )
                 break;
  
@@ -634,7 +634,7 @@ void load_socials( FILE *fp)
         if (!strcmp(temp,"#0"))
             return;  /* done */
  
-        strcpy(social.name,temp);
+    strlcpy(social.name, temp, sizeof(social.name));
         fread_to_eol(fp);
  
         temp = fread_string_eol(fp);
@@ -1693,7 +1693,7 @@ void load_notes( void )
         pnotelast       = pnote;
     }
  
-    strcpy( strArea, NOTE_FILE );
+    strlcpy( strArea, NOTE_FILE, sizeof(strArea) );
     fpArea = fp;
     bug( "Load_notes: bad key word.", 0 );
     exit( 1 );
@@ -2216,10 +2216,10 @@ void create_room( int vnum )
     pRoomIndex->extra_descr     = NULL;
     pRoomIndex->area            = new_area;
     pRoomIndex->vnum            = vnum;
-    pRoomIndex->name            = alloc_mem( strlen(defaultRoomName) );
-    strcpy(pRoomIndex->name, defaultRoomName);
-    pRoomIndex->description     = alloc_mem( strlen(defaultRoomDesc) );
-    strcpy(pRoomIndex->description, defaultRoomDesc);
+    pRoomIndex->name            = alloc_mem( strlen(defaultRoomName) + 1 );
+    pRoomIndex->description     = alloc_mem( strlen(defaultRoomDesc) + 1 );
+    strlcpy(pRoomIndex->name, defaultRoomName, strlen(defaultRoomName) + 1);
+    strlcpy(pRoomIndex->description, defaultRoomDesc, strlen(defaultRoomDesc) + 1);
     pRoomIndex->room_flags      = 0;
     pRoomIndex->room_flags2     = 0;
     pRoomIndex->sector_type     = 0;
@@ -3687,12 +3687,12 @@ char *str_dup( const char *str )
     if ( str >= string_space && str < top_string )
     {
         str_new = alloc_mem( alloc_len );
-        strcpy( str_new, str );
+        strlcpy( str_new, str, (size_t)alloc_len );
         return str_new;
     }
 
     str_new = alloc_mem( alloc_len );
-    strcpy( str_new, str );
+    strlcpy( str_new, str, (size_t)alloc_len );
     return str_new;
 }
  
@@ -4784,7 +4784,7 @@ void bug( const char *str, int param )
             fseek( fpArea, iChar, 0 );
         }
  
-        sprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
+        snprintf( buf, sizeof(buf), "[*****] FILE: %s LINE: %d", strArea, iLine );
         log_string( buf );
  
 	if ( ( fp = fopen( "shutdown.txt", "a" ) ) != NULL )
@@ -4794,8 +4794,8 @@ void bug( const char *str, int param )
 	}
     }
 
-    strcpy( buf, "[*****] BUG: " );
-    sprintf( buf + strlen(buf), str, param );
+    strlcpy( buf, "[*****] BUG: ", sizeof(buf) );
+    snprintf( buf + strlen(buf), sizeof(buf) - strlen(buf), str, param );
     log_string( buf );
 
     return;
