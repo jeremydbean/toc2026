@@ -109,6 +109,15 @@ Run these commands from inside the cloned `tocGPT` folder. Windows checkouts can
      -v $(pwd)/log:/app/log \
      toc
    ```
+
+### Checking for memory leaks with Valgrind
+
+The runtime image includes Valgrind so you can track down leaks during play sessions.
+
+- Start the server under Valgrind: `docker run --rm -it toc ./scripts/run_valgrind.sh`
+- Pass any usual `merc` arguments after `--` if you need to override defaults, for example: `docker run --rm -it toc ./scripts/run_valgrind.sh -- -p 9000`
+
+Valgrind output will appear in the container logs, highlighting any allocations that are not freed when characters quit or objects are extracted.
 4. Publish the web admin dashboard (port 9001) alongside the game port (persistent storage). The dashboard now binds to `0.0.0.0` by default inside the container so it is reachable from the host; set `WEB_ADMIN_HOST` to `127.0.0.1` if you want to restrict it to container-local access only:
     ```bash
     docker run --rm -it \
