@@ -2035,7 +2035,7 @@ void    stop_follower   ( CHAR_DATA *ch );
 void    nuke_pets       ( CHAR_DATA *ch );
 void    die_follower    ( CHAR_DATA *ch );
 bool    is_same_group   ( CHAR_DATA *ach, CHAR_DATA *bch );
-void    wizinfo         ( char *info, int level );
+void    wizinfo         ( const char *info, int level );
 void    send_info       ( char *argument );
 
 /* act_info.c */
