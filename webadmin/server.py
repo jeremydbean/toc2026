@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import subprocess
 from pathlib import Path
@@ -7,8 +9,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
-QUEUE_PATH = Path("/app/area/webadmin.queue")
-DEFAULT_LOG = Path("/app/log/toc.log")
+QUEUE_PATH: Path = Path("/app/area/webadmin.queue")
+DEFAULT_LOG: Path = Path("/app/log/toc.log")
 
 app = FastAPI(title="ToC Web Admin", version="1.0")
 
@@ -23,7 +25,7 @@ class WizinfoRequest(BaseModel):
 
 
 class QueueWriter:
-    def __init__(self, queue_path: Path):
+    def __init__(self, queue_path: Path) -> None:
         self.queue_path = queue_path
         self.queue_path.touch(exist_ok=True)
 
@@ -32,10 +34,10 @@ class QueueWriter:
             queue_file.write(line.rstrip("\n") + "\n")
 
 
-queue_writer = QueueWriter(QUEUE_PATH)
+queue_writer: QueueWriter = QueueWriter(QUEUE_PATH)
 
 
-def read_process_health() -> dict:
+def read_process_health() -> dict[str, bool]:
     merc_running = subprocess.run(
         ["sh", "-c", "pgrep -f 'merc' >/dev/null"],
         check=False,
@@ -51,7 +53,7 @@ def read_process_health() -> dict:
 
 
 @app.get("/", response_class=HTMLResponse)
-async def dashboard():
+async def dashboard() -> str:
     return """
     <html>
       <head>
@@ -129,13 +131,13 @@ async def dashboard():
 
 
 @app.get("/api/health")
-async def health():
+async def health() -> dict[str, bool | str]:
     status = read_process_health()
     return {"status": "ok", **status}
 
 
 @app.get("/api/logs")
-async def tail_logs(lines: int = 200):
+async def tail_logs(lines: int = 200) -> HTMLResponse:
     log_path = DEFAULT_LOG
     if not log_path.exists():
         raise HTTPException(status_code=404, detail="Log file not found")
@@ -144,7 +146,7 @@ async def tail_logs(lines: int = 200):
 
 
 @app.post("/api/wizinfo")
-async def send_wizinfo(request: WizinfoRequest):
+async def send_wizinfo(request: WizinfoRequest) -> str:
     if not request.message.strip():
         raise HTTPException(status_code=400, detail="Message cannot be empty")
     level = request.level if request.level and request.level > 0 else 62
@@ -153,7 +155,7 @@ async def send_wizinfo(request: WizinfoRequest):
 
 
 @app.post("/api/command")
-async def run_command(request: CommandRequest):
+async def run_command(request: CommandRequest) -> str:
     if not request.command.strip():
         raise HTTPException(status_code=400, detail="Command required")
     queue_writer.append(f"command|{request.command.strip()}")
@@ -161,25 +163,24 @@ async def run_command(request: CommandRequest):
 
 
 @app.post("/api/backup")
-async def run_backup():
+async def run_backup() -> str:
     queue_writer.append("backup")
     return "queued"
 
 
 @app.post("/api/shutdown")
-async def run_shutdown():
+async def run_shutdown() -> str:
     queue_writer.append("shutdown")
     return "queued"
 
-
-def main():
+def main() -> None:
     global queue_writer, QUEUE_PATH, DEFAULT_LOG
 
     parser = argparse.ArgumentParser(description="Run ToC web admin server")
     parser.add_argument("--port", type=int, default=9001)
     parser.add_argument("--host", default="0.0.0.0")
-    parser.add_argument("--queue", default=str(QUEUE_PATH))
-    parser.add_argument("--log-file", default=str(DEFAULT_LOG))
+    parser.add_argument("--queue", type=Path, default=QUEUE_PATH)
+    parser.add_argument("--log-file", type=Path, default=DEFAULT_LOG)
     args = parser.parse_args()
     QUEUE_PATH = Path(args.queue)
     DEFAULT_LOG = Path(args.log_file)
