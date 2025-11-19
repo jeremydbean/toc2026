@@ -2399,8 +2399,9 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	long quest_hour = (quest_timer - (quest_day * 86400)) / 3600;
 	long quest_min = (quest_timer - (quest_day * 86400) - (quest_hour * 3600) ) / 60;
 	send_to_char("The Master refuses your offer to quest.\n",ch);
-	sprintf (buf,"Come back in %ld days %ld hours %ld minutes Real Time.\n\r",
-	quest_day, quest_hour, quest_min);
+        snprintf(buf, sizeof(buf),
+                 "Come back in %ld days %ld hours %ld minutes Real Time.\n\r",
+                 quest_day, quest_hour, quest_min);
 	send_to_char(buf,ch);
 	return true;
       }
