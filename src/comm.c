@@ -673,6 +673,53 @@ void game_loop_unix( int control )
 
         handle_web();
 
+        /*
+         * Process pending input lines.
+         */
+        for ( d = descriptor_list; d != NULL; d = d_next )
+        {
+            CHAR_DATA *ch;
+
+            d_next = d->next;
+
+            if ( !read_from_buffer( d ) )
+                continue;
+
+            if ( d->incomm[0] == '\0' )
+                continue;
+
+            d->fcommand = TRUE;
+
+            if ( d->connected != CON_PLAYING )
+            {
+                nanny( d, d->incomm );
+                d->incomm[0] = '\0';
+                continue;
+            }
+
+            ch = d->character;
+            if ( ch == NULL )
+            {
+                close_socket( d );
+                continue;
+            }
+
+            stop_idling( ch );
+
+            if ( ch->wait > 0 )
+            {
+                --ch->wait;
+                if ( ch->wait > 0 )
+                {
+                    d->incomm[0] = '\0';
+                    continue;
+                }
+            }
+
+            interpret( ch, d->incomm );
+            d->incomm[0] = '\0';
+        }
+
         {
             script_timer_tick_payload tick_payload;
             struct timeval            now_time;
@@ -998,7 +1045,7 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
     /*
      * Hold horses if pending command already.
      */
-    if ( d->incomm[0] == '\0' )
+    if ( d->incomm[0] != '\0' )
         return TRUE;
 
     /*
