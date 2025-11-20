@@ -389,7 +389,7 @@ int main( int argc, char **argv )
     boot_db( );
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "ROM is ready to rock on port %d.", port );
     log_string( log_buf );
-    init_web( port + 1 );
+    /* init_web( port + 1 );  REMOVED: Legacy C webserver conflicts with Python server */
     game_loop_unix( control );
     close ( control );
 #endif
