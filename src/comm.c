@@ -305,6 +305,7 @@ static int  weapon_lookup       ( const char *name );
 char * crypt                   ( const char *key, const char *salt );
 void    log_auth                ( DESCRIPTOR_DATA *d );
 void    process_web_admin_queue ( void );
+void    run_web_command         ( char *argument );
 void    write_prompt            ( DESCRIPTOR_DATA *d );
 static const char default_prompt[] = "%C<%hhp %mm %vmv>%c ";
 static void prompt_append_text( char *buf, size_t buflen, const char *text );
@@ -365,11 +366,6 @@ int main( int argc, char **argv )
 	if ( !is_number( argv[1] ) )
 	{
 	    fprintf( stderr, "Usage: %s [port #]\n", argv[0] );
-	    exit( 1 );
-	}
-	else if ( ( port = atoi( argv[1] ) ) <= 1024 )
-	{
-	    fprintf( stderr, "Port number must be above 1024.\n" );
 	    exit( 1 );
 	}
     }
@@ -2832,7 +2828,51 @@ void act( const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2,
  * Process the web admin queue file.
  * Optimizes disk I/O by checking for file existence/size with stat first.
  */
-#define QUEUE_FILE "../webadmin.queue"
+#define QUEUE_FILE "webadmin.queue"
+
+void run_web_command(char *argument) {
+    CHAR_DATA *ch;
+    ROOM_INDEX_DATA *room;
+    
+    /* Create a temporary mobile. We try to copy an existing mob or alloc new */
+    MOB_INDEX_DATA *pMobIndex = get_mob_index(MOB_VNUM_FIDO); // Default fallback
+    
+    if (!pMobIndex) {
+        /* If no mobs exist yet, we can't safely run commands that need a body */
+        /* Try to find any valid mob index */
+        int vnum;
+        for (vnum = 0; vnum < 32768; vnum++) {
+             if ((pMobIndex = get_mob_index(vnum)) != NULL) break;
+        }
+        if (!pMobIndex) return;
+    }
+
+    ch = create_mobile(pMobIndex);
+    
+    /* Rebrand the mobile as the WebAdmin */
+    free_string(ch->name);
+    ch->name = str_dup("WebAdmin");
+    free_string(ch->short_descr);
+    ch->short_descr = str_dup("The Web Admin");
+    free_string(ch->long_descr);
+    ch->long_descr = str_dup("The Web Interface Administrator is here.\n\r");
+    
+    /* Grant powers */
+    ch->level = MAX_LEVEL;
+    ch->trust = MAX_LEVEL;
+    
+    /* Put them in Limbo or a safe room to execute the command */
+    room = get_room_index(ROOM_VNUM_LIMBO);
+    if (!room) room = get_room_index(ROOM_VNUM_SCHOOL);
+    if (room) {
+        char_to_room(ch, room);
+        interpret(ch, argument);
+        char_from_room(ch);
+    }
+    
+    /* Clean up */
+    extract_char(ch, TRUE);
+}
 
 void process_web_admin_queue(void) {
     FILE *fp;
@@ -2845,32 +2885,33 @@ void process_web_admin_queue(void) {
     }
 
     if ((fp = fopen(QUEUE_FILE, "r")) != NULL) {
-        if (fgets(buf, sizeof(buf), fp) != NULL) {
+        while (fgets(buf, sizeof(buf), fp) != NULL) {
             /* Remove trailing newline */
             size_t len = strlen(buf);
             if (len > 0 && buf[len - 1] == '\n') {
                 buf[len - 1] = '\0';
             }
 
-            log_string(buf); // Log the raw command
+            if (buf[0] == '\0') continue;
 
-            char command[MAX_INPUT_LENGTH];
-            char arg1[MAX_INPUT_LENGTH];
-            char *argument;
+            /* Parse format: action|arg1|arg2... */
+            char *cmd = strtok(buf, "|");
+            if (!cmd) continue;
 
-            argument = one_argument(buf, command);
-            safe_strcpy(arg1, sizeof(arg1), argument);
-
-            if (!strcmp(command, "wizinfo")) {
-                wizinfo(arg1, LEVEL_IMMORTAL);
-            } else if (!strcmp(command, "command")) {
-                /* Execute a game command as a high-level user if needed, or implement specific logic */
-                // For example, interpreting it as a system command:
-                // interpret(system_char, arg1);
-                log_string("Web command received (not fully implemented).");
-            } else if (!strcmp(command, "backup")) {
-                // Trigger backup logic
-            } else if (!strcmp(command, "shutdown")) {
+            if (!strcmp(cmd, "wizinfo")) {
+                char *level_str = strtok(NULL, "|");
+                char *msg = strtok(NULL, "|");
+                if (level_str && msg) {
+                    wizinfo(msg, atoi(level_str));
+                }
+            } else if (!strcmp(cmd, "command")) {
+                char *game_cmd = strtok(NULL, "|");
+                if (game_cmd) {
+                    run_web_command(game_cmd);
+                }
+            } else if (!strcmp(cmd, "backup")) {
+                do_backup();
+            } else if (!strcmp(cmd, "shutdown")) {
                 merc_down = TRUE;
             }
         }
