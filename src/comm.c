@@ -2533,6 +2533,10 @@ void show_string(struct descriptor_data *d, char *input)
                 }
                 d->showstr_point  = 0;
             }
+            else
+            {
+                write_to_buffer(d,"[Hit Return to continue]\n\r",0);
+            }
             return;
         }
     }
@@ -2944,7 +2948,7 @@ void wizinfo(const char *info, int level)
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
 
-    snprintf(buf,sizeof(buf),"[WIZINFO]: %s\n\r",info);
+    snprintf(buf,sizeof(buf),"{%02X[WIZINFO]{00: %s\n\r",COL_WIZINFO,info);
 
     for ( d = descriptor_list; d != NULL; d = d->next )
     {

@@ -148,5 +148,27 @@ void do_notell( CHAR_DATA *ch, char *argument )
 void do_wizinfo( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
-    stub_notify( ch );
+    
+    if (IS_NPC(ch))
+    {
+        return;
+    }
+
+    if (argument[0] == '\0')
+    {
+        if (IS_SET(ch->comm, COMM_NOWIZINFO))
+        {
+            send_to_char("Wizinfo channel is now ON.\n\r", ch);
+            REMOVE_BIT(ch->comm, COMM_NOWIZINFO);
+        }
+        else
+        {
+            send_to_char("Wizinfo channel is now OFF.\n\r", ch);
+            SET_BIT(ch->comm, COMM_NOWIZINFO);
+        }
+    }
+    else
+    {
+        send_to_char("Just type 'wizinfo' to toggle the channel on or off.\n\r", ch);
+    }
 }
