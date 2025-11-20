@@ -360,12 +360,17 @@ int main( int argc, char **argv )
     /*
      * Get the port number.
      */
-    port = 3333;
+    port = 9000;
     if ( argc > 1 )
     {
 	if ( !is_number( argv[1] ) )
 	{
 	    fprintf( stderr, "Usage: %s [port #]\n", argv[0] );
+	    exit( 1 );
+	}
+	else if ( ( port = atoi( argv[1] ) ) <= 1024 )
+	{
+	    fprintf( stderr, "Port number must be above 1024.\n" );
 	    exit( 1 );
 	}
     }
