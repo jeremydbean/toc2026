@@ -2948,7 +2948,7 @@ void wizinfo(const char *info, int level)
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
 
-    snprintf(buf,sizeof(buf),"{%02X[WIZINFO]{00: %s\n\r",COL_WIZINFO,info);
+    snprintf(buf,sizeof(buf),"{%02X[WIZINFO] %s{00\n\r",COL_WIZINFO,info);
 
     for ( d = descriptor_list; d != NULL; d = d->next )
     {

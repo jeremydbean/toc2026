@@ -4,3 +4,11 @@
 merc
 src/*.o
 ToCBG.png
+.python_history
+.sleep
+.sleep.save
+.wakeup
+SpectrumSniper_*
+bettercap*
+mutesleep.sh
+starwars_wifi_passwords.txt

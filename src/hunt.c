@@ -634,7 +634,7 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
     int 	i, secret_cnt,  dir;
     int		distance;
     char        buf[MAX_STRING_LENGTH];
-    char	achOpenDir[16];		/* Maximum length of a dir_name_cmd. */
+    char	achOpenDir[32];		/* Enough for "999.secret\0" */
     const char	*dir_name_cmd[]	=
     {
 	"n", "e", "s", "w", "u", "d", "ne", "nw", "se", "sw"

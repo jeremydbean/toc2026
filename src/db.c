@@ -3285,7 +3285,7 @@ long flag_convert(char letter )
 char *fread_string( FILE *fp )
 {
     char *plast;
-    char c;
+    int c;
  
     plast = top_string + sizeof(char *);
     if ( plast > &string_space[MAX_STRING - MAX_STRING_LENGTH] )
@@ -3314,18 +3314,20 @@ char *fread_string( FILE *fp )
          *   it was too dirty for portability.
          *   -- Furey
 	 */
- 
-        switch ( *plast = getc(fp) )
+
+        c = getc(fp);
+        if (c == EOF)
         {
-        default:
-            plast++;
-            break;
- 
-        case EOF:
-        /* temp fix */
+            /* temp fix */
             bug( "Fread_string: EOF", 0 );
             return NULL;
             /* exit( 1 ); */
+        }
+
+        switch ( *plast = c )
+        {
+        default:
+            plast++;
             break;
  
         case '\n':
@@ -3421,17 +3423,20 @@ char *fread_string_eol( FILE *fp )
  
     for ( ;; )
     {
-        if ( !char_special[ ( *plast++ = (char) getc( fp ) ) - EOF ] )
+        c = getc(fp);
+        if (c == EOF)
+        {
+            bug( "Fread_string_eol  EOF", 0 );
+            exit( 1 );
+        }
+
+        *plast++ = (char) c;
+        if ( !char_special[ c - EOF ] )
             continue;
  
         switch ( plast[-1] )
         {
         default:
-            break;
- 
-        case EOF:
-            bug( "Fread_string_eol  EOF", 0 );
-            exit( 1 );
             break;
 
         case '\n':  case '\r':
