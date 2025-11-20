@@ -110,10 +110,10 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
         strlcat( buf, "(Humming) ", sizeof(buf) );
     if ( IS_OBJ_STAT(obj, ITEM_DAMAGED) )
         strlcat( buf, "(Damaged) ", sizeof(buf) );
-/*    if ( IS_OBJ_STAT(obj, ITEM_EMBALMED   )   strcat( buf, "(Embalmed) "  ); */
+/*    if ( IS_OBJ_STAT(obj, ITEM_EMBALMED   )   strlcat( buf, "(Embalmed) ", sizeof(buf) ); */
  /*
       if ( IS_AFFECTED(ch, AFF_DETECT_GOOD)
-	    && IS_OBJ_STAT(obj, ITEM_GOOD)   )   strcat( buf, "(Silver) ");
+	    && IS_OBJ_STAT(obj, ITEM_GOOD)   )   strlcat( buf, "(Silver) ", sizeof(buf) );
 
 	 <if used, declare in merc.h for new item spec>
 */
@@ -333,7 +333,7 @@ if(!scan)
   strlcat( buf, PERS( victim, ch ), sizeof(buf) );
 
 /*   if(IS_NPC(victim)&&ch->questmob > 0 && victim->pIndexData->vnum == ch->questmob)
-	strcat( buf,"[*TARGET*]");
+	strlcat( buf,"[*TARGET*]", sizeof(buf) );
 */
 
   if ( (!IS_NPC(victim) && !IS_SET(ch->comm, COMM_BRIEF) ) )

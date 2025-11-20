@@ -17,6 +17,7 @@ size_t toc_strnlen(const char *src, size_t maxlen)
     return len;
 }
 
+#ifndef __APPLE__
 size_t strlcpy(char *dst, const char *src, size_t siz)
 {
     size_t src_len = strlen(src);
@@ -54,3 +55,4 @@ size_t strlcat(char *dst, const char *src, size_t siz)
 
     return dst_len + src_len;
 }
+#endif

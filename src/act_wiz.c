@@ -229,9 +229,9 @@ void do_finger( CHAR_DATA *ch, char *argument )
    else
    if(IS_IMMORTAL(ch))
    {
-     fgets(arg,80,fp);
-     fgets(arg,80,fp);
-     fgets(arg,80,fp);
+     fgets(arg,sizeof(arg),fp);
+     fgets(arg,sizeof(arg),fp);
+     fgets(arg,sizeof(arg),fp);
      fscanf(fp,"%s",arg);
      logon=fread_number(fp);
      snprintf(arg, sizeof(arg), "%s was last on at %s\n\r", capitalize( argument ),

@@ -31,7 +31,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#if !defined(NOCRYPT)
+#if !defined(NOCRYPT) && !defined(__APPLE__)
 #include <crypt.h>
 #endif
 #include <sys/time.h>
@@ -1989,8 +1989,10 @@ extern          ROOM_INDEX_DATA* RELIC_ROOM_4;
 
 /* Safe strings */
 size_t toc_strnlen(const char *src, size_t maxlen);
+#ifndef __APPLE__
 size_t strlcpy(char *dst, const char *src, size_t siz);
 size_t strlcat(char *dst, const char *src, size_t siz);
+#endif
 
 /*
  * The crypt(3) function is not available on some operating systems.

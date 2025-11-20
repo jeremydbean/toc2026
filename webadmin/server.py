@@ -11,19 +11,6 @@ from pydantic import BaseModel
 
 QUEUE_PATH: Path = Path("/app/area/webadmin.queue")
 DEFAULT_LOG: Path = Path("/app/log/toc.log")
-from __future__ import annotations
-
-import argparse
-import subprocess
-from pathlib import Path
-from typing import Optional
-
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
-from pydantic import BaseModel
-
-QUEUE_PATH: Path = Path("/app/area/webadmin.queue")
-DEFAULT_LOG: Path = Path("/app/log/toc.log")
 
 app = FastAPI(title="ToC Web Admin", version="1.0")
 

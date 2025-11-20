@@ -6,7 +6,12 @@ CC       := gcc
 CFLAGS   ?= -std=gnu89 -O2 -fcommon -DROM
 WARNFLAGS?= -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
 
-LDFLAGS  := -lcrypt -lm
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	LDFLAGS := -lm
+else
+	LDFLAGS := -lcrypt -lm
+endif
 
 SRC_DIR  := src
 AREA_DIR := area
