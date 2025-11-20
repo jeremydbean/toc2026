@@ -38,6 +38,7 @@ COPY --from=build /app/gods /app/gods
 COPY --from=build /app/heroes /app/heroes
 COPY --from=build /app/log /app/log
 COPY --from=build /app/player /app/player
+COPY --from=build /app/webadmin /app/webadmin
 COPY --from=build /app/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh \
  && chmod +x /usr/local/bin/docker-entrypoint.sh

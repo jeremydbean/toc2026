@@ -13,7 +13,8 @@ touch webadmin.queue
 export PYTHONPATH="/app:${PYTHONPATH}"
 
 if [ "${WEB_ADMIN_ENABLED:-1}" != "0" ]; then
-  python3 -m webadmin.server --host "$WEB_ADMIN_HOST" --port "$WEB_ADMIN_PORT" --queue /app/area/webadmin.queue --log-file /app/log/toc.log &
+  cd /app && python3 -m webadmin.server --host "$WEB_ADMIN_HOST" --port "$WEB_ADMIN_PORT" --queue /app/area/webadmin.queue --log-file /app/log/toc.log --area-path /app/area &
+  cd /app/area
 fi
 
 if [ "$#" -eq 0 ]; then

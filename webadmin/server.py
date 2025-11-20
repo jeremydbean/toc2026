@@ -188,7 +188,7 @@ def main() -> None:
 
     import uvicorn
 
-    uvicorn.run("webadmin.server:app", host=args.host, port=args.port, reload=False)
+    uvicorn.run(app, host=args.host, port=args.port, reload=False)
 
 
 if __name__ == "__main__":
