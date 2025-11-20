@@ -121,6 +121,11 @@ void save_char_obj( CHAR_DATA *ch )
             bug("save_char_obj: system backup failed.", 0);
 #endif
 	fpReserve = fopen( NULL_FILE, "r" );
+        if (fpReserve == NULL)
+        {
+            bug("save_char_obj: could not reopen fpReserve after god log", 0);
+            perror(NULL_FILE);
+        }
     }
 #endif
 
@@ -145,6 +150,11 @@ void save_char_obj( CHAR_DATA *ch )
             bug("save_char_obj: player backup failed.", 0);
 #endif
         fpReserve = fopen( NULL_FILE, "r" );
+        if (fpReserve == NULL)
+        {
+            bug("save_char_obj: could not reopen fpReserve after hero log", 0);
+            perror(NULL_FILE);
+        }
     }
 #endif
 
@@ -181,6 +191,11 @@ void save_char_obj( CHAR_DATA *ch )
     if (system(buf) == -1)
         bug("save_char_obj: mail backup failed.", 0);
     fpReserve = fopen( NULL_FILE, "r" );
+    if (fpReserve == NULL)
+    {
+        bug("save_char_obj: could not reopen fpReserve at end", 0);
+        perror(NULL_FILE);
+    }
     return;
 }
 
