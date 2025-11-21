@@ -248,6 +248,7 @@ ctime(&logon ) );
 /* equips a character */
 void do_outfit ( CHAR_DATA *ch, char *argument )
 {
+    UNUSED_PARAM(argument);
     OBJ_DATA *obj;
 
     if (ch->level > 5 || IS_NPC(ch))

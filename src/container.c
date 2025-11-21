@@ -63,7 +63,7 @@ void unregister_character( CHAR_DATA *ch )
 
 CHAR_DATA *find_char_by_name( const char *name )
 {
-    return list_find_first( &character_list, character_name_matches, (void *) name );
+    return list_find_first( &character_list, character_name_matches, (void *)(uintptr_t) name );
 }
 
 void register_object( OBJ_DATA *obj )
@@ -81,5 +81,5 @@ void unregister_object( OBJ_DATA *obj )
 
 OBJ_DATA *find_object_by_name( const char *name )
 {
-    return list_find_first( &object_list, object_name_matches, (void *) name );
+    return list_find_first( &object_list, object_name_matches, (void *)(uintptr_t) name );
 }

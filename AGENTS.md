@@ -230,7 +230,7 @@ The codebase is in solid shape with significant string safety improvements compl
 2. ✅ Remove duplicate imports in `webadmin/server.py` (lines 13-24) → 1 min **COMPLETED**
 3. ✅ Replace magic number `80` with `sizeof(arg)` in `act_wiz.c` fgets calls → 2 min **COMPLETED**
 4. ✅ Move documentation files (`swedish.txt`, `swe.txt`, `points`) out of `src/` → 1 min **COMPLETED**
-5. ⚠️ Add conditional `#ifdef __APPLE__` around `<crypt.h>` include in `merc.h` → 5 min **PARTIALLY COMPLETED** (crypt.h fixed, but strlcpy/strlcat collision remains)
+5. ✅ Add conditional `#ifdef __APPLE__` around `<crypt.h>` include in `merc.h` → 5 min **COMPLETED**
 
 ### Medium-Term Improvements (1-4 hours)
 1. Complete `-Wconversion` cleanup in `db.c` file loaders (add clamping for all `sh_int` assignments)

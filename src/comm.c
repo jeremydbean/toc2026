@@ -2575,9 +2575,9 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
 
     char fname[MAX_INPUT_LENGTH];
     CHAR_DATA *to;
-    CHAR_DATA *vch = (CHAR_DATA *) arg2;
-    OBJ_DATA *obj1 = (OBJ_DATA  *) arg1;
-    OBJ_DATA *obj2 = (OBJ_DATA  *) arg2;
+    CHAR_DATA *vch = (CHAR_DATA *)(uintptr_t) arg2;
+    OBJ_DATA *obj1 = (OBJ_DATA  *)(uintptr_t) arg1;
+    OBJ_DATA *obj2 = (OBJ_DATA  *)(uintptr_t) arg2;
     const char *str;
     const char *i;
     DString buf;
@@ -2672,7 +2672,7 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                 }
                 else
                 {
-                    i = (char *) arg1;
+                    i = (char *)(uintptr_t) arg1;
                 }
                 break;
 
@@ -2685,7 +2685,7 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                 }
                 else
                 {
-                    i = (char *) arg2;
+                    i = (char *)(uintptr_t) arg2;
                 }
                 break;
 
@@ -2783,13 +2783,13 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
                 break;
 
             case 'd':
-                if ( arg2 == NULL || ((char *) arg2)[0] == '\0' )
+                if ( arg2 == NULL || ((char *)(uintptr_t) arg2)[0] == '\0' )
                 {
                     i = "door";
                 }
                 else
                 {
-                    one_argument( (char *) arg2, fname );
+                    one_argument( (char *)(uintptr_t) arg2, fname );
                     i = fname;
                 }
                 break;

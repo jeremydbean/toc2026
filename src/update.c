@@ -2231,7 +2231,7 @@ void ban_update( void )
 void do_lycanthropy(CHAR_DATA *ch, char *argument)
 {
      UNUSED_PARAM(argument);
-     OBJ_DATA *obj, *obj_next;
+     OBJ_DATA *pObj, *obj_next;
      CHAR_DATA * mob = NULL;
      int primer = 0, tracker = 0, counter = 0, ac = 0;
 /*     char buf[MAX_STRING_LENGTH];*/
@@ -2284,9 +2284,9 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
           if (!ch->were_shape.obj[tracker])
 	     break;
 
-	  obj = create_object( get_obj_index(ch->were_shape.obj[tracker]),
+	  pObj = create_object( get_obj_index(ch->were_shape.obj[tracker]),
 		0 );
-	  obj_to_char(obj,mob);
+	  obj_to_char(pObj,mob);
 	}
       }
 
@@ -2298,10 +2298,10 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
     {
       if(!IS_IMMORTAL(ch) && IS_SWITCHED(ch) )
       {          /* save the items held */
-	 for ( obj = ch->carrying; obj != NULL; obj = obj_next)
+	 for ( pObj = ch->carrying; pObj != NULL; pObj = obj_next)
 	 {
-	    obj_next = obj->next_content;
-	    ch->desc->original->were_shape.obj[counter] = obj->pIndexData->vnum;
+	    obj_next = pObj->next_content;
+	    ch->desc->original->were_shape.obj[counter] = pObj->pIndexData->vnum;
 	    counter++;
 	 }
 		/* zero out the extra items that were dropped */
