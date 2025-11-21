@@ -281,7 +281,7 @@ class Mobile:
     race: str
     act_flags: str
     affected_by: str
-    alignment: int
+    alignment: str
     level: int
     hitroll: int
     ac: List[int]
@@ -314,8 +314,9 @@ class Object:
     material: str
     item_type: str
     extra_flags: str
+    extra_flags2: str
     wear_flags: str
-    values: List[int]
+    values: List[str]
     level: int
     weight: int
     cost: int
@@ -343,8 +344,8 @@ class Room:
     name: str
     description: str
     area_prefix: str
-    room_flags: int
-    sector_type: int
+    room_flags: str
+    sector_type: str
     exits: List[Exit] = field(default_factory=list)
     extra_descr: List[Dict[str, str]] = field(default_factory=list)
     area_file: str = ""
@@ -508,7 +509,16 @@ class AreaParser:
                 act_line = lines[i].split()
                 act_flags = act_line[0] if len(act_line) > 0 else ""
                 affected_by = act_line[1] if len(act_line) > 1 else ""
-                alignment = int(act_line[2]) if len(act_line) > 2 else 0
+                
+                # Handle optional 3rd flag set (some areas have 3 flag sets before alignment)
+                # We look for the alignment (which should be a number, usually 0 or negative)
+                # If the 3rd token is not a number, we assume it's another flag set
+                idx = 2
+                if len(act_line) > 3 and not act_line[2].lstrip('-').isdigit():
+                    affected_by += " " + act_line[2]
+                    idx += 1
+                
+                alignment = act_line[idx] if len(act_line) > idx else "0"
                 i += 1
                 
                 # Parse level/hitroll line
@@ -631,18 +641,47 @@ class AreaParser:
                 
                 # Parse type/flags line
                 type_line = lines[i].split()
-                item_type = type_line[0] if len(type_line) > 0 else "1"
-                extra_flags = type_line[1] if len(type_line) > 1 else "0"
-                extra_flags2 = type_line[2] if len(type_line) > 2 else "0"
-                wear_flags = type_line[3] if len(type_line) > 3 else "A"
+                values_inline = False
+                values = []
+                
+                # Debug print for school.are object 3745
+                if vnum == 3745:
+                    print(f"DEBUG: vnum={vnum} type_line={type_line} len={len(type_line)}")
+
+                # Check for inline values (heuristic: if line has >= 8 tokens, assume 3 flags + 5 values)
+                if len(type_line) >= 8:
+                    values_inline = True
+                    values = type_line[-5:]
+                    flag_parts = type_line[:-5]
+                else:
+                    flag_parts = type_line
+                
+                item_type = flag_parts[0] if len(flag_parts) > 0 else "1"
+                extra_flags = flag_parts[1] if len(flag_parts) > 1 else "0"
+                
+                if len(flag_parts) >= 4:
+                    extra_flags2 = flag_parts[2]
+                    wear_flags = flag_parts[3]
+                elif len(flag_parts) == 3:
+                    extra_flags2 = "0"
+                    wear_flags = flag_parts[2]
+                else:
+                    extra_flags2 = "0"
+                    wear_flags = "A"
+                
                 i += 1
                 
-                # Parse values line
-                values_line = lines[i].split()
-                values = [int(v) if v.lstrip('-').isdigit() else 0 for v in values_line[:4]]
-                while len(values) < 4:
-                    values.append(0)
-                i += 1
+                if not values_inline:
+                    # Parse values line
+                    values_line = lines[i].split()
+                    values = []
+                    for v in values_line:
+                        values.append(v)
+                    i += 1
+                
+                # Ensure at least 5 values
+                while len(values) < 5:
+                    values.append("0")
                 
                 # Parse level/weight/cost line
                 lwc_line = lines[i].split()
@@ -683,6 +722,7 @@ class AreaParser:
                     material=material,
                     item_type=item_type,
                     extra_flags=extra_flags,
+                    extra_flags2=extra_flags2,
                     wear_flags=wear_flags,
                     values=values,
                     level=level,
@@ -739,8 +779,8 @@ class AreaParser:
                 # Parse area/flags/sector line
                 afs_line = lines[i].split()
                 area_prefix = afs_line[0] if len(afs_line) > 0 else ""
-                room_flags = int(afs_line[1]) if len(afs_line) > 1 else 0
-                sector_type = int(afs_line[2]) if len(afs_line) > 2 else 0
+                room_flags = afs_line[1] if len(afs_line) > 1 else "0"
+                sector_type = afs_line[2] if len(afs_line) > 2 else "0"
                 i += 1
                 
                 exits = []

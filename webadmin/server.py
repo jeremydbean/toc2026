@@ -12,8 +12,10 @@ from pydantic import BaseModel
 from webadmin.area_parser import AreaParser
 from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES
 
-QUEUE_PATH: Path = Path("/app/area/webadmin.queue")
-DEFAULT_LOG: Path = Path("/app/log/toc.log")
+# Default paths
+QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
+DEFAULT_LOG: Path = Path(os.getenv("LOG_FILE", "log/toc.log"))
+AREA_PATH: Path = Path(os.getenv("AREA_PATH", "area"))
 
 app = FastAPI(title="ToC Web Admin", version="1.0")
 
@@ -288,6 +290,21 @@ async def index() -> str:
         </div>
     </div>
 
+    <!-- Object Detail Modal -->
+    <div class="modal fade" id="objectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content bg-dark border-secondary text-light">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">Object Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="object-modal-body">
+                    <!-- Content injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Container -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="liveToast" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
@@ -411,7 +428,7 @@ async def index() -> str:
             } else if(currentDb === 'objects') {
                 headerHtml = '<th>Vnum</th><th>Name</th><th>Type</th><th>Level</th><th>Area</th>';
                 rowsHtml = data.map(o => `
-                    <tr>
+                    <tr style="cursor: pointer" data-vnum="${o.vnum}">
                         <td><span class="badge vnum-badge">#${o.vnum}</span></td>
                         <td>${o.short_desc || 'Unnamed'}</td>
                         <td>${o.item_type}</td>
@@ -444,6 +461,101 @@ async def index() -> str:
             headers.innerHTML = headerHtml;
             content.innerHTML = rowsHtml || '<tr><td colspan="5" class="text-center py-4">No results found</td></tr>';
         }
+
+        let objectModal = null;
+
+        async function showObject(vnum) {
+            if (!objectModal) {
+                objectModal = new bootstrap.Modal(document.getElementById('objectModal'));
+            }
+            
+            const body = document.getElementById('object-modal-body');
+            body.innerHTML = '<div class="text-center"><div class="spinner-border text-primary"></div></div>';
+            objectModal.show();
+
+            try {
+                const res = await fetch('/api/objects/' + vnum);
+                const obj = await res.json();
+                
+                let affectsHtml = obj.affects.map(a => `<span class="badge bg-info me-1">${a}</span>`).join('');
+                if (!affectsHtml) affectsHtml = '<span class="text-muted">None</span>';
+
+                let extraFlagsHtml = obj.extra_flags.map(f => `<span class="badge bg-secondary me-1">${f}</span>`).join('');
+                if (!extraFlagsHtml) extraFlagsHtml = '<span class="text-muted">None</span>';
+
+                let wearFlagsHtml = obj.wear_flags.map(f => `<span class="badge bg-secondary me-1">${f}</span>`).join('');
+                if (!wearFlagsHtml) wearFlagsHtml = '<span class="text-muted">None</span>';
+
+                let valuesHtml = obj.values.map((v, i) => `<div><strong>Val ${i}:</strong> ${v}</div>`).join('');
+
+                body.innerHTML = `
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <h4>${obj.short_desc} <span class="badge vnum-badge">#${obj.vnum}</span></h4>
+                            <p class="text-muted"><em>${obj.long_desc}</em></p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <span class="badge bg-primary">${obj.item_type}</span>
+                            <div class="mt-2">Level: ${obj.level}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-secondary mb-3">
+                                <div class="card-header py-1">Properties</div>
+                                <div class="card-body py-2">
+                                    <div><strong>Material:</strong> ${obj.material}</div>
+                                    <div><strong>Weight:</strong> ${obj.weight}</div>
+                                    <div><strong>Cost:</strong> ${obj.cost}</div>
+                                    <div><strong>Condition:</strong> ${obj.condition}</div>
+                                    <div><strong>Area:</strong> ${obj.area} (${obj.area_file})</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-secondary mb-3">
+                                <div class="card-header py-1">Values</div>
+                                <div class="card-body py-2">
+                                    ${valuesHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Extra Flags:</strong> ${extraFlagsHtml} <small class="text-muted">(${obj.extra_flags_raw})</small><br>
+                        <strong>Extra Flags 2:</strong> <small class="text-muted">${obj.extra_flags2_raw}</small><br>
+                        <strong>Wear Flags:</strong> ${wearFlagsHtml} <small class="text-muted">(${obj.wear_flags_raw})</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Affects:</strong><br>
+                        ${affectsHtml}
+                    </div>
+                    
+                    ${obj.extra_descr.length > 0 ? `
+                    <div class="mb-3">
+                        <strong>Extra Descriptions:</strong>
+                        ${obj.extra_descr.map(ed => `
+                            <div class="border-start border-secondary ps-2 mt-1">
+                                <strong>${ed.keywords}:</strong> ${ed.description}
+                            </div>
+                        `).join('')}
+                    </div>` : ''}
+                `;
+            } catch(e) {
+                body.innerHTML = `<div class="alert alert-danger">Error loading object: ${e}</div>`;
+            }
+        }
+
+        // Event delegation for table clicks
+        document.getElementById('db-content').addEventListener('click', function(e) {
+            const row = e.target.closest('tr');
+            if (row && row.dataset.vnum && currentDb === 'objects') {
+                showObject(row.dataset.vnum);
+            }
+        });
 
         function filterDb() {
             const q = document.getElementById('db-search').value.toLowerCase();
@@ -564,8 +676,10 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "level": obj.level,
         "weight": obj.weight,
         "cost": obj.cost,
+        "condition": obj.condition,
         "extra_flags": decoded_extra_flags,
         "extra_flags_raw": obj.extra_flags,
+        "extra_flags2_raw": obj.extra_flags2,
         "wear_flags": decoded_wear_flags,
         "wear_flags_raw": obj.wear_flags,
         "values": obj.values,
