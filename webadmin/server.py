@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 from pathlib import Path
 from typing import Optional, Dict, Any
@@ -9,8 +10,12 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
-from webadmin.area_parser import AreaParser
-from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES
+try:
+    from webadmin.area_parser import AreaParser
+    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES
+except ImportError:
+    from area_parser import AreaParser
+    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -40,7 +45,15 @@ class QueueWriter:
 
 
 queue_writer: Optional[QueueWriter] = None
-parser = AreaParser()
+
+# Initialize parser and load area files
+print(f"Loading areas from {AREA_PATH}...")
+parser = AreaParser(AREA_PATH)
+try:
+    parser.parse_all()
+    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas")
+except Exception as e:
+    print(f"Warning: Failed to parse areas: {e}")
 
 
 def read_process_health() -> dict[str, bool]:
@@ -690,6 +703,85 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "area_file": obj.area_file,
         "carried_by": carried_by_with_rates
     }
+
+
+@app.get("/api/stats")
+async def get_stats() -> Dict[str, int]:
+    return {
+        "mobiles": len(parser.mobiles),
+        "objects": len(parser.objects),
+        "rooms": len(parser.rooms),
+        "areas": len(parser.areas)
+    }
+
+
+@app.get("/api/mobs")
+async def get_mobs(limit: int = 500) -> list:
+    result = []
+    for i, (vnum, mob) in enumerate(parser.mobiles.items()):
+        if i >= limit:
+            break
+        result.append({
+            "vnum": mob.vnum,
+            "short_desc": mob.short_desc,
+            "long_desc": mob.long_desc,
+            "level": mob.level,
+            "race": mob.race,
+            "keywords": mob.keywords,
+            "area": mob.area_name,
+            "area_file": mob.area_file
+        })
+    return result
+
+
+@app.get("/api/rooms")
+async def get_rooms(limit: int = 300) -> list:
+    result = []
+    for i, (vnum, room) in enumerate(parser.rooms.items()):
+        if i >= limit:
+            break
+        result.append({
+            "vnum": room.vnum,
+            "name": room.name,
+            "description": room.description,
+            "sector_type": room.sector_type,
+            "area": room.area_name,
+            "area_file": room.area_file
+        })
+    return result
+
+
+@app.get("/api/areas")
+async def get_areas() -> list:
+    result = []
+    for area in parser.areas:
+        result.append({
+            "name": area.name,
+            "filename": area.filename,
+            "builders": area.builders,
+            "vnums": f"{area.vnum_low} - {area.vnum_high}"
+        })
+    return result
+
+
+@app.get("/api/objects")
+async def get_objects(limit: int = 500) -> list:
+    result = []
+    for i, (vnum, obj) in enumerate(parser.objects.items()):
+        if i >= limit:
+            break
+        item_type_name = ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
+        result.append({
+            "vnum": obj.vnum,
+            "short_desc": obj.short_desc,
+            "long_desc": obj.long_desc,
+            "description": obj.long_desc,
+            "item_type": item_type_name,
+            "level": obj.level,
+            "area": obj.area_name,
+            "area_file": obj.area_file
+        })
+    return result
 
 
 def main() -> None:
