@@ -9,6 +9,268 @@ from pathlib import Path
 from typing import Dict, List, Optional, Set
 
 
+# Apply location mappings (for object affects)
+APPLY_LOCATIONS = {
+    1: 'strength',
+    2: 'dexterity',
+    3: 'intelligence',
+    4: 'wisdom',
+    5: 'constitution',
+    6: 'sex',
+    12: 'mana',
+    13: 'hit points',
+    14: 'movement',
+    17: 'armor class',
+    18: 'hitroll',
+    19: 'damroll',
+    23: 'save vs breath',
+    24: 'save vs spell',
+}
+
+# Item type mappings
+ITEM_TYPES = {
+    1: 'light',
+    2: 'scroll',
+    3: 'wand',
+    4: 'staff',
+    5: 'weapon',
+    6: 'treasure',
+    8: 'treasure',
+    9: 'armor',
+    10: 'potion',
+    11: 'clothing',
+    12: 'furniture',
+    13: 'trash',
+    15: 'container',
+    16: 'drink container',
+    17: 'key',
+    18: 'food',
+    19: 'money',
+    20: 'boat',
+    21: 'npc corpse',
+    22: 'pc corpse',
+    23: 'fountain',
+    24: 'pill',
+    25: 'protect',
+    26: 'map',
+    27: 'portal',
+    28: 'warp stone',
+    30: 'room key',
+    31: 'manipulation',
+    33: 'saddle',
+    37: 'action',
+}
+
+# Object flags (extra_flags)
+ITEM_FLAGS = {
+    'A': 'glow',
+    'B': 'hum',
+    'C': 'dark',
+    'D': 'lock',
+    'E': 'evil',
+    'F': 'invis',
+    'G': 'magic',
+    'H': 'nodrop',
+    'I': 'bless',
+    'J': 'anti-good',
+    'K': 'anti-evil',
+    'L': 'anti-neutral',
+    'M': 'noremove',
+    'N': 'inventory',
+    'O': 'nopurge',
+    'P': 'rot-death',
+    'S': 'bounce',
+    'T': 'tport',
+    'U': 'noidentify',
+    'V': 'nolocate',
+    'W': 'race-restricted',
+    'Z': 'flags2',
+}
+
+# Wear flags
+WEAR_FLAGS = {
+    'A': 'take',
+    'B': 'finger',
+    'C': 'neck',
+    'D': 'body',
+    'E': 'head',
+    'F': 'legs',
+    'G': 'feet',
+    'H': 'hands',
+    'I': 'arms',
+    'J': 'shield',
+    'K': 'about',
+    'L': 'waist',
+    'M': 'wrist',
+    'N': 'wield',
+    'O': 'hold',
+    'P': 'two-hands',
+}
+
+# Mob ACT flags
+ACT_FLAGS = {
+    'A': 'is-npc',
+    'B': 'sentinel',
+    'C': 'scavenger',
+    'D': 'is-healer',
+    'E': 'gain',
+    'F': 'aggressive',
+    'G': 'stay-area',
+    'H': 'wimpy',
+    'I': 'pet',
+    'J': 'train',
+    'K': 'practice',
+    'L': 'update-always',
+    'M': 'nopush',
+    'O': 'undead',
+    'Q': 'cleric',
+    'R': 'mage',
+    'S': 'thief',
+    'T': 'warrior',
+    'U': 'noalign',
+    'V': 'nopurge',
+    'W': 'mountable',
+    'X': 'nokill',
+    'Z': 'flags2',
+}
+
+# Mob AFFECTED_BY flags
+AFFECTED_FLAGS = {
+    'A': 'blind',
+    'B': 'invisible',
+    'C': 'detect-evil',
+    'D': 'detect-invis',
+    'E': 'detect-magic',
+    'F': 'detect-hidden',
+    'G': 'berserk',
+    'H': 'sanctuary',
+    'I': 'faerie-fire',
+    'J': 'infravision',
+    'K': 'curse',
+    'L': 'swim',
+    'M': 'poison',
+    'N': 'protect',
+    'O': 'regeneration',
+    'P': 'sneak',
+    'Q': 'hide',
+    'R': 'sleep',
+    'S': 'charm',
+    'T': 'flying',
+    'U': 'pass-door',
+    'V': 'haste',
+    'W': 'calm',
+    'X': 'plague',
+    'Y': 'weaken',
+    'Z': 'flags2',
+}
+
+# Mob OFF_BITS
+OFF_FLAGS = {
+    'A': 'area-attack',
+    'B': 'backstab',
+    'C': 'bash',
+    'D': 'berserk',
+    'E': 'disarm',
+    'F': 'dodge',
+    'G': 'fade',
+    'H': 'fast',
+    'I': 'kick',
+    'J': 'kick-dirt',
+    'K': 'parry',
+    'L': 'rescue',
+    'M': 'tail',
+    'N': 'trip',
+    'O': 'crush',
+    'P': 'assist-all',
+    'Q': 'assist-align',
+    'R': 'assist-race',
+    'S': 'assist-players',
+    'T': 'assist-guards',
+    'U': 'assist-vnum',
+    'V': 'summoner',
+    'W': 'needs-master',
+    'Z': 'flags2',
+}
+
+# Mob IMMUNITIES
+IMM_FLAGS = {
+    'A': 'summon',
+    'B': 'charm',
+    'C': 'magic',
+    'D': 'weapon',
+    'E': 'bash',
+    'F': 'pierce',
+    'G': 'slash',
+    'H': 'fire',
+    'I': 'cold',
+    'J': 'lightning',
+    'K': 'acid',
+    'L': 'poison',
+    'M': 'negative',
+    'N': 'holy',
+    'O': 'energy',
+    'P': 'mental',
+    'Q': 'disease',
+    'R': 'drowning',
+    'S': 'light',
+    'Z': 'flags2',
+}
+
+# Mob RESISTANCES (same flags as IMM, different context)
+RES_FLAGS = IMM_FLAGS.copy()
+
+# Mob VULNERABILITIES
+VULN_FLAGS = {
+    'C': 'magic',
+    'D': 'weapon',
+    'E': 'bash',
+    'F': 'pierce',
+    'G': 'slash',
+    'H': 'fire',
+    'I': 'cold',
+    'J': 'lightning',
+    'K': 'acid',
+    'L': 'poison',
+    'M': 'negative',
+    'N': 'holy',
+    'O': 'energy',
+    'P': 'mental',
+    'Q': 'disease',
+    'R': 'drowning',
+    'S': 'light',
+    'T': 'wood',
+    'U': 'silver',
+    'Z': 'flags2',
+}
+
+
+def decode_flags(flag_string: str, flag_map: Dict[str, str]) -> List[str]:
+    """Convert flag letters to human-readable names."""
+    if not flag_string or flag_string == '0':
+        return []
+    return [flag_map.get(char, char) for char in flag_string if char in flag_map]
+
+
+def decode_applies(affects: List[Dict[str, int]]) -> List[str]:
+    """Convert affect location/modifier pairs to human-readable strings."""
+    result = []
+    for affect in affects:
+        location = affect.get('location', 0)
+        modifier = affect.get('modifier', 0)
+        
+        location_name = APPLY_LOCATIONS.get(location, f'unknown-{location}')
+        
+        # Format with +/- sign
+        if modifier > 0:
+            result.append(f'+{modifier} {location_name}')
+        elif modifier < 0:
+            result.append(f'{modifier} {location_name}')
+        else:
+            result.append(f'{location_name}')
+    
+    return result
+
+
 @dataclass
 class Mobile:
     vnum: int
@@ -198,7 +460,7 @@ class AreaParser:
     
     def _parse_mobiles(self, content: str, area_file: str, area_name: str) -> None:
         """Parse #MOBILES section"""
-        mob_match = re.search(r'#MOBILES\s*$(.*?)^#', content, re.MULTILINE | re.DOTALL)
+        mob_match = re.search(r'#MOBILES\s*\n(.*?)(?=^#[A-Z])', content, re.MULTILINE | re.DOTALL)
         if not mob_match:
             return
         
@@ -208,6 +470,11 @@ class AreaParser:
         i = 0
         while i < len(lines):
             line = lines[i].strip()
+            
+            # Skip blank lines
+            if not line:
+                i += 1
+                continue
             
             # Check for vnum
             if line.startswith('#'):
@@ -320,7 +587,7 @@ class AreaParser:
     
     def _parse_objects(self, content: str, area_file: str, area_name: str) -> None:
         """Parse #OBJECTS section"""
-        obj_match = re.search(r'#OBJECTS\s*$(.*?)^#', content, re.MULTILINE | re.DOTALL)
+        obj_match = re.search(r'#OBJECTS\s*\n(.*?)(?=^#[A-Z])', content, re.MULTILINE | re.DOTALL)
         if not obj_match:
             return
         
@@ -330,6 +597,11 @@ class AreaParser:
         i = 0
         while i < len(lines):
             line = lines[i].strip()
+            
+            # Skip blank lines
+            if not line:
+                i += 1
+                continue
             
             if line.startswith('#'):
                 if line == '#0':
@@ -429,7 +701,7 @@ class AreaParser:
     
     def _parse_rooms(self, content: str, area_file: str, area_name: str) -> None:
         """Parse #ROOMS section"""
-        room_match = re.search(r'#ROOMS\s*$(.*?)^#', content, re.MULTILINE | re.DOTALL)
+        room_match = re.search(r'#ROOMS\s*\n(.*?)(?=^#[A-Z])', content, re.MULTILINE | re.DOTALL)
         if not room_match:
             return
         
@@ -439,6 +711,11 @@ class AreaParser:
         i = 0
         while i < len(lines):
             line = lines[i].strip()
+            
+            # Skip blank lines
+            if not line:
+                i += 1
+                continue
             
             if line.startswith('#'):
                 if line == '#0':
