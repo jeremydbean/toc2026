@@ -4383,7 +4383,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
         }
     }
    ch->level    = 3;
-   ch->pcdata->points =+ 2500;
+   ch->pcdata->points += 2500;
    ch->exp      = 3 * exp_per_level(ch,ch->pcdata->points);
    for (i=0;i<MAX_STATS;i++) ch->perm_stat[i] = 13;
    ch->pcdata->num_remorts += 1;
