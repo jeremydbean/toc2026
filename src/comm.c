@@ -753,7 +753,15 @@ void game_loop_unix( int control )
                 }
             }
 
-            interpret( ch, d->incomm );
+            /* Handle pager continuation */
+            if ( d->showstr_point )
+            {
+                show_string( d, d->incomm );
+            }
+            else
+            {
+                interpret( ch, d->incomm );
+            }
             d->incomm[0] = '\0';
         }
 

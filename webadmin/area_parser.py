@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Optional, Set, Any
 
 
 # Apply location mappings (for object affects)
@@ -42,23 +42,90 @@ ITEM_TYPES = {
     12: 'furniture',
     13: 'trash',
     15: 'container',
-    16: 'drink container',
-    17: 'key',
-    18: 'food',
-    19: 'money',
-    20: 'boat',
-    21: 'npc corpse',
-    22: 'pc corpse',
-    23: 'fountain',
-    24: 'pill',
-    25: 'protect',
-    26: 'map',
-    27: 'portal',
-    28: 'warp stone',
-    30: 'room key',
+    17: 'drink container',
+    18: 'key',
+    19: 'food',
+    20: 'money',
+    22: 'boat',
+    23: 'npc corpse',
+    25: 'fountain',
+    26: 'pill',
+    28: 'map',
+    29: 'scuba gear',
+    30: 'portal',
     31: 'manipulation',
     33: 'saddle',
     37: 'action',
+}
+
+# Weapon class mappings
+WEAPON_CLASSES = {
+    0: 'exotic',
+    1: 'sword',
+    2: 'dagger',
+    3: 'spear',
+    4: 'mace',
+    5: 'axe',
+    6: 'flail',
+    7: 'whip',
+    8: 'polearm',
+    9: 'bow',
+}
+
+# Weapon type flags
+WEAPON_TYPES = {
+    'A': 'flaming',
+    'B': 'frost',
+    'C': 'vampiric',
+    'D': 'sharp',
+    'E': 'vorpal',
+    'F': 'two-hands',
+}
+
+# Damage type names
+DAMAGE_TYPES = {
+    0: 'none',
+    1: 'slice',
+    2: 'stab',
+    3: 'slash',
+    4: 'whip',
+    5: 'claw',
+    6: 'blast',
+    7: 'pound',
+    8: 'crush',
+    9: 'grep',
+    10: 'bite',
+    11: 'pierce',
+    12: 'suction',
+}
+
+# Container flags
+CONTAINER_FLAGS = {
+    1: 'closeable',
+    2: 'pickproof',
+    4: 'closed',
+    8: 'locked',
+    16: 'trapped',
+}
+
+# Liquid types
+LIQUID_TYPES = {
+    0: 'water',
+    1: 'beer',
+    2: 'wine',
+    3: 'ale',
+    4: 'dark ale',
+    5: 'whiskey',
+    6: 'lemonade',
+    7: 'firebreather',
+    8: 'local specialty',
+    9: 'slime mold juice',
+    10: 'milk',
+    11: 'tea',
+    12: 'coffee',
+    13: 'blood',
+    14: 'salt water',
+    15: 'cola',
 }
 
 # Object flags (extra_flags)
@@ -267,6 +334,136 @@ def decode_applies(affects: List[Dict[str, int]]) -> List[str]:
             result.append(f'{modifier} {location_name}')
         else:
             result.append(f'{location_name}')
+    
+    return result
+
+
+def interpret_values(item_type_num: int, values: List[str]) -> Dict[str, Any]:
+    """Interpret value fields based on item type."""
+    result = {}
+    
+    try:
+        item_type_num = int(item_type_num)
+    except (ValueError, TypeError):
+        return result
+    
+    # Ensure we have 5 values
+    while len(values) < 5:
+        values.append('0')
+    
+    if item_type_num == 1:  # ITEM_LIGHT
+        result['hours'] = values[2]
+        if values[2] == '9999':
+            result['hours_text'] = 'infinite'
+        elif values[2] == '0':
+            result['hours_text'] = 'dead'
+        else:
+            result['hours_text'] = f'{values[2]} hours'
+    
+    elif item_type_num in [2, 10, 26]:  # SCROLL, POTION, PILL
+        result['spell_level'] = values[0]
+        result['spell1'] = values[1]
+        result['spell2'] = values[2]
+        result['spell3'] = values[3]
+    
+    elif item_type_num in [3, 4]:  # WAND, STAFF
+        result['spell_level'] = values[0]
+        result['max_charges'] = values[1]
+        result['current_charges'] = values[2]
+        result['spell_num'] = values[3]
+    
+    elif item_type_num == 5:  # WEAPON
+        try:
+            weapon_class = int(values[0])
+            result['weapon_class'] = WEAPON_CLASSES.get(weapon_class, f'unknown-{weapon_class}')
+            result['num_dice'] = values[1]
+            result['size_dice'] = values[2]
+            result['damage_text'] = f"{values[1]}d{values[2]}"
+            
+            # Damage type
+            dam_type_str = values[3]
+            if dam_type_str.isdigit():
+                dam_type = int(dam_type_str)
+                result['damage_type'] = DAMAGE_TYPES.get(dam_type, f'unknown-{dam_type}')
+            else:
+                result['damage_type'] = dam_type_str
+            
+            # Weapon type flags
+            weapon_flags = values[4] if len(values) > 4 else '0'
+            result['weapon_flags'] = decode_flags(weapon_flags, WEAPON_TYPES)
+        except (ValueError, IndexError):
+            pass
+    
+    elif item_type_num == 9:  # ARMOR
+        result['ac_pierce'] = values[0]
+        result['ac_bash'] = values[1]
+        result['ac_slash'] = values[2]
+        result['ac_magic'] = values[3]
+        result['ac_summary'] = f"Pierce: {values[0]}, Bash: {values[1]}, Slash: {values[2]}, Magic: {values[3]}"
+    
+    elif item_type_num == 15:  # CONTAINER
+        try:
+            result['capacity'] = values[0]
+            container_flags_val = int(values[1])
+            
+            # Decode container flags from bitfield
+            container_flag_list = []
+            for bit_val, flag_name in CONTAINER_FLAGS.items():
+                if container_flags_val & bit_val:
+                    container_flag_list.append(flag_name)
+            result['container_flags'] = container_flag_list
+            result['key_vnum'] = values[2]
+        except (ValueError, IndexError):
+            pass
+    
+    elif item_type_num == 17:  # DRINK_CON
+        result['capacity'] = values[0]
+        result['current_quantity'] = values[1]
+        try:
+            liquid_type = int(values[2])
+            result['liquid_type'] = LIQUID_TYPES.get(liquid_type, f'unknown-{liquid_type}')
+        except (ValueError, IndexError):
+            pass
+        poisoned = values[3] if len(values) > 3 else '0'
+        result['poisoned'] = poisoned != '0'
+    
+    elif item_type_num == 19:  # FOOD
+        result['hours_of_food'] = values[0]
+    
+    elif item_type_num == 20:  # MONEY
+        result['gold_value'] = values[0]
+    
+    elif item_type_num == 25:  # FOUNTAIN
+        result['capacity'] = values[0]
+        result['current_quantity'] = values[1]
+    
+    elif item_type_num == 30:  # PORTAL
+        result['portal_type'] = values[0]
+        result['to_room'] = values[1]
+        result['timer'] = values[2]
+        result['closeable'] = values[3]
+        result['key_vnum'] = values[4]
+    
+    elif item_type_num == 31:  # MANIPULATION
+        manip_types = {1: 'flip', 2: 'move', 3: 'pull', 4: 'push', 5: 'turn', 
+                       6: 'climb up', 7: 'climb down', 8: 'crawl', 9: 'jump'}
+        try:
+            manip_type = int(values[0])
+            result['manip_type'] = manip_types.get(manip_type, f'unknown-{manip_type}')
+        except (ValueError, IndexError):
+            pass
+        result['room_goes_to'] = values[1]
+        result['door'] = values[2]
+        result['object_state'] = values[3]
+    
+    elif item_type_num == 37:  # ACTION
+        action_types = {1: 'recall', 2: 'death', 3: 'poison'}
+        try:
+            action_type = int(values[0])
+            result['action_type'] = action_types.get(action_type, f'unknown-{action_type}')
+        except (ValueError, IndexError):
+            pass
+        result['poison_duration'] = values[2]
     
     return result
 

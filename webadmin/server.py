@@ -13,10 +13,10 @@ import asyncio
 
 try:
     from webadmin.area_parser import AreaParser
-    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES
+    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES, interpret_values
 except ImportError:
     from area_parser import AreaParser
-    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES
+    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES, interpret_values
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -618,24 +618,13 @@ async def index() -> str:
                 line.style.whiteSpace = 'pre-wrap';
                 output.appendChild(line);
                 output.scrollTop = output.scrollHeight;
-                
-                // Auto-send newline for pager prompts
-                if (text.includes('[Hit Return to continue]')) {
-                    setTimeout(() => {
-                        if (ws && ws.readyState === WebSocket.OPEN) {
-                            ws.send('\n');
-                        }
-                    }, 100);
-                }
             }
 
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     const cmd = input.value;
                     if (ws && ws.readyState === WebSocket.OPEN) {
-                        ws.send(cmd + '\\n');
-                        // Echo command locally? Maybe not, MUD usually echoes
-                        // writeToTerm('> ' + cmd); 
+                        ws.send(cmd + '\r\n');
                     }
                     input.value = '';
                 }
@@ -685,16 +674,83 @@ async def index() -> str:
                     </tr>
                 `).join('');
             } else if(currentDb === 'objects') {
-                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Type</th><th class="p-4">Level</th><th class="p-4">Area</th>';
-                rowsHtml = data.map(o => `
+                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Type</th><th class="p-4">Level</th><th class="p-4">Details</th>';
+                rowsHtml = data.map(o => {
+                    // Build affects display
+                    let affectsHtml = '';
+                    if(o.affects && o.affects.length > 0) {
+                        affectsHtml = '<div class="mt-2"><strong class="text-green-400">Affects:</strong> ' + 
+                            o.affects.map(a => `<span class="text-green-300">${a}</span>`).join(', ') + '</div>';
+                    }
+                    
+                    // Build flags display
+                    let flagsHtml = '';
+                    if(o.flags && o.flags.length > 0) {
+                        flagsHtml = '<div class="mt-1"><strong class="text-purple-400">Flags:</strong> ' + 
+                            o.flags.map(f => `<span class="text-purple-300">${f}</span>`).join(', ') + '</div>';
+                    }
+                    
+                    // Build wear locations
+                    let wearHtml = '';
+                    if(o.wear_locations && o.wear_locations.length > 0) {
+                        wearHtml = '<div class="mt-1"><strong class="text-blue-400">Wear:</strong> ' + 
+                            o.wear_locations.map(w => `<span class="text-blue-300">${w}</span>`).join(', ') + '</div>';
+                    }
+                    
+                    // Build weapon/armor details
+                    let statsHtml = '';
+                    if(o.values_interpreted) {
+                        if(o.values_interpreted.damage_text) {
+                            statsHtml += `<div class="mt-1"><strong class="text-red-400">Damage:</strong> <span class="text-red-300">${o.values_interpreted.damage_text}</span>`;
+                            if(o.values_interpreted.damage_type) {
+                                statsHtml += ` <span class="text-gray-400">(${o.values_interpreted.damage_type})</span>`;
+                            }
+                            if(o.values_interpreted.weapon_class) {
+                                statsHtml += ` <span class="text-gray-400">[${o.values_interpreted.weapon_class}]</span>`;
+                            }
+                            statsHtml += '</div>';
+                        }
+                        if(o.values_interpreted.ac_summary) {
+                            statsHtml += `<div class="mt-1"><strong class="text-cyan-400">AC:</strong> <span class="text-cyan-300">${o.values_interpreted.ac_summary}</span></div>`;
+                        }
+                    }
+                    
+                    // Build mob carriers list
+                    let carriersHtml = '';
+                    if(o.carried_by && o.carried_by.length > 0) {
+                        carriersHtml = '<div class="mt-2"><strong class="text-yellow-400">Found on:</strong> ' + 
+                            o.carried_by.slice(0, 3).map(m => `<span class="text-yellow-300">${m.name} (${m.level})</span>`).join(', ');
+                        if(o.carried_by.length > 3) {
+                            carriersHtml += ` <span class="text-gray-500">+${o.carried_by.length - 3} more</span>`;
+                        }
+                        carriersHtml += '</div>';
+                    }
+                    
+                    return `
                     <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-mono text-sm text-gray-500">#${o.vnum}</td>
-                        <td class="p-4 font-bold text-gray-300">${o.short_desc || 'Unnamed'}</td>
-                        <td class="p-4 text-blue-400">${o.item_type}</td>
-                        <td class="p-4 text-yellow-500">${o.level}</td>
-                        <td class="p-4 text-gray-500 text-sm">${o.area || '-'}</td>
+                        <td class="p-4 font-mono text-sm text-gray-500 align-top">#${o.vnum}</td>
+                        <td class="p-4 font-bold text-gray-300 align-top">
+                            ${o.short_desc || 'Unnamed'}
+                            <div class="text-xs text-gray-500 mt-1">${o.material || 'unknown'}</div>
+                        </td>
+                        <td class="p-4 text-blue-400 align-top">${o.item_type}</td>
+                        <td class="p-4 text-yellow-500 align-top">
+                            ${o.level}
+                            <div class="text-xs text-gray-500 mt-1">
+                                ${o.weight}lb / ${o.cost}g
+                            </div>
+                        </td>
+                        <td class="p-4 text-sm align-top">
+                            ${affectsHtml}
+                            ${statsHtml}
+                            ${flagsHtml}
+                            ${wearHtml}
+                            ${carriersHtml}
+                            <div class="mt-1 text-xs text-gray-600">${o.area || '-'}</div>
+                        </td>
                     </tr>
-                `).join('');
+                `;
+                }).join('');
             } else if(currentDb === 'areas') {
                 headerHtml = '<th class="p-4">Name</th><th class="p-4">Filename</th><th class="p-4">Builders</th><th class="p-4">Vnums</th>';
                 rowsHtml = data.map(a => `
@@ -960,14 +1016,56 @@ async def get_objects(limit: int = 500) -> list:
     for i, (vnum, obj) in enumerate(parser.objects.items()):
         if i >= limit:
             break
-        item_type_name = ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
+        
+        # Get item type number and name
+        try:
+            item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
+        except (ValueError, TypeError):
+            item_type_num = 0
+        item_type_name = ITEM_TYPES.get(item_type_num, obj.item_type)
+        
+        # Decode flags
+        flags_decoded = decode_flags(obj.extra_flags, ITEM_FLAGS)
+        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
+        
+        # Decode affects
+        affects_decoded = decode_applies(obj.affects)
+        
+        # Interpret values based on item type
+        values_interpreted = interpret_values(item_type_num, obj.values)
+        
+        # Get mobs that carry this object
+        carriers = []
+        for mob_vnum in obj.carried_by:
+            if mob_vnum in parser.mobiles:
+                mob = parser.mobiles[mob_vnum]
+                carriers.append({
+                    "vnum": mob.vnum,
+                    "name": mob.short_desc,
+                    "level": mob.level,
+                    "area": mob.area_name
+                })
+        
         result.append({
             "vnum": obj.vnum,
+            "keywords": obj.keywords,
             "short_desc": obj.short_desc,
             "long_desc": obj.long_desc,
-            "description": obj.long_desc,
+            "material": obj.material,
             "item_type": item_type_name,
+            "item_type_num": item_type_num,
             "level": obj.level,
+            "weight": obj.weight,
+            "cost": obj.cost,
+            "condition": obj.condition,
+            "flags": flags_decoded,
+            "wear_locations": wear_decoded,
+            "affects": affects_decoded,
+            "affects_raw": obj.affects,
+            "values": obj.values,
+            "values_interpreted": values_interpreted,
+            "extra_descriptions": obj.extra_descr,
+            "carried_by": carriers,
             "area": obj.area_name,
             "area_file": obj.area_file
         })
