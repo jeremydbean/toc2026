@@ -13,12 +13,12 @@ touch webadmin.queue
 export PYTHONPATH="/app:${PYTHONPATH}"
 
 if [ "${WEB_ADMIN_ENABLED:-1}" != "0" ]; then
-  cd /app && python3 -m webadmin.server --host "$WEB_ADMIN_HOST" --port "$WEB_ADMIN_PORT" --queue /app/area/webadmin.queue --log-file /app/log/toc.log --area-path /app/area &
+  cd /app && python3 -m webadmin.server --host "$WEB_ADMIN_HOST" --port "$WEB_ADMIN_PORT" --queue /app/area/webadmin.queue --log-file /app/log/toc.log &
   cd /app/area
 fi
 
 if [ "$#" -eq 0 ]; then
-  exec ./merc "$DEFAULT_PORT"
+  exec merc "$DEFAULT_PORT"
 fi
 
 # Allow explicit invocation without duplicating the binary name
@@ -29,7 +29,7 @@ fi
 # Accept a convenience alias for starting the server
 if [ "$1" = "server" ]; then
   shift
-  exec ./merc "$DEFAULT_PORT" "$@"
+  exec merc "$DEFAULT_PORT" "$@"
 fi
 
 # Support enabling newplayer lock while still respecting the env port
@@ -41,12 +41,12 @@ if [ "$1" = "newlock" ]; then
   else
     shift
   fi
-  exec ./merc newlock "$PORT_ARG" "$@"
+  exec merc newlock "$PORT_ARG" "$@"
 fi
 
 case "$1" in
   [0-9]*)
-    exec ./merc "$@"
+    exec merc "$@"
     ;;
   *)
     exec "$@"

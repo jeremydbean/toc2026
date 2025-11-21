@@ -6,9 +6,10 @@ import subprocess
 from pathlib import Path
 from typing import Optional, Dict, Any
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
+import asyncio
 
 try:
     from webadmin.area_parser import AreaParser
@@ -83,7 +84,7 @@ async def index() -> str:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tales of Chaos - MUD</title>
+    <title>Times of Chaos - MUD</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -170,6 +171,9 @@ async def index() -> str:
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -178,17 +182,17 @@ async def index() -> str:
     <nav class="bg-black/90 border-b border-red-900/30 fixed w-full z-50 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('home')">
                     <i class="fa-solid fa-dragon text-3xl text-red-700"></i>
-                    <span class="text-2xl font-bold text-white tracking-wider font-cinzel">TALES OF CHAOS</span>
+                    <span class="text-2xl font-bold text-white tracking-wider font-cinzel">TIMES OF CHAOS</span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
-                        <a href="#play" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Play Now</a>
-                        <a href="#world" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">The World</a>
-                        <a href="#classes" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Classes</a>
-                        <a href="#community" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Community</a>
+                        <a href="#" onclick="showSection('home')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#" onclick="showSection('play')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Play Now</a>
+                        <a href="#" onclick="showSection('database')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Database</a>
+                        <a href="#" onclick="showSection('guide')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">How to Play</a>
+                        <a href="#" onclick="showSection('admin')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Admin</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -201,179 +205,310 @@ async def index() -> str:
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-red-900/30">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#play" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Play Now</a>
-                <a href="#world" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">The World</a>
+                <a href="#" onclick="showSection('home')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#" onclick="showSection('play')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Play Now</a>
+                <a href="#" onclick="showSection('database')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Database</a>
+                <a href="#" onclick="showSection('guide')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">How to Play</a>
+                <a href="#" onclick="showSection('admin')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Admin</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-pattern relative h-screen flex items-center justify-center pt-16">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-[#0a0a0a]"></div>
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <div class="mb-6 inline-block">
-                <span class="py-1 px-3 rounded-full bg-red-900/30 border border-red-800/50 text-red-400 text-xs font-bold tracking-widest uppercase">
-                    Legacy MUD Engine Reborn
-                </span>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
-                ENTER THE <span class="text-red-600">CHAOS</span>
-            </h1>
-            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                A text-based MMORPG experience powered by the classic ROM codebase. 
-                Explore persistent realms, battle legendary monsters, and forge your legacy in pure text.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#play" class="btn-primary px-8 py-4 rounded text-lg font-bold flex items-center justify-center gap-2 group">
-                    <i class="fa-solid fa-terminal"></i> CONNECT NOW
-                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                </a>
-                <a href="https://github.com/jeremydbean/tocgpt" target="_blank" class="px-8 py-4 rounded border border-gray-600 hover:border-white bg-transparent text-white text-lg font-bold flex items-center justify-center gap-2 transition-all hover:bg-white/5">
-                    <i class="fa-brands fa-github"></i> VIEW SOURCE
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Main Content Container -->
+    <div class="pt-20 flex-grow">
+        
+        <!-- HOME SECTION -->
+        <div id="home-section" class="tab-content active">
+            <!-- Hero Section -->
+            <section class="hero-pattern relative h-screen flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-[#0a0a0a]"></div>
+                <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                    <div class="mb-6 inline-block">
+                        <span class="py-1 px-3 rounded-full bg-red-900/30 border border-red-800/50 text-red-400 text-xs font-bold tracking-widest uppercase">
+                            Legacy MUD Engine Reborn
+                        </span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
+                        ENTER THE <span class="text-red-600">CHAOS</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                        A text-based MMORPG experience powered by the classic ROM codebase. 
+                        Explore persistent realms, battle legendary monsters, and forge your legacy in pure text.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="showSection('play')" class="btn-primary px-8 py-4 rounded text-lg font-bold flex items-center justify-center gap-2 group">
+                            <i class="fa-solid fa-terminal"></i> CONNECT NOW
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <a href="https://github.com/jeremydbean/tocgpt" target="_blank" class="px-8 py-4 rounded border border-gray-600 hover:border-white bg-transparent text-white text-lg font-bold flex items-center justify-center gap-2 transition-all hover:bg-white/5">
+                            <i class="fa-brands fa-github"></i> VIEW SOURCE
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-    <!-- Status & Connection -->
-    <section id="play" class="py-20 bg-[#0a0a0a] relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-900 to-transparent"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                
-                <!-- Terminal Simulation -->
-                <div class="parchment p-1 rounded-lg bg-[#111]">
-                    <div class="bg-black p-4 rounded border border-gray-800 h-80 font-mono text-sm overflow-y-auto relative" id="terminal-window">
-                        <div class="flex gap-1.5 mb-4">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <!-- Features Grid -->
+            <section class="py-20 bg-[#0f0f0f]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">A World of Text</h2>
+                        <p class="text-gray-400 max-w-2xl mx-auto">Features derived from the legendary ROM architecture, enhanced for the modern era.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="stat-card p-8 rounded-lg text-center">
+                            <div class="w-16 h-16 bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-red-500">
+                                <i class="fa-solid fa-skull-crossbones text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Tactical Combat</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Real-time text combat based on THAC0 mechanics. Manage your skills, spells, and equipment weight to survive against legendary mobs.
+                            </p>
                         </div>
-                        <div class="text-green-500 space-y-1">
-                            <p>Connecting to tocGPT Server...</p>
-                            <p>Host: toc.mudserver.com</p>
-                            <p>Port: 4000</p>
-                            <p>Connected.</p>
-                            <br>
-                            <pre class="text-red-600 font-bold leading-none">
-  / _ \___ _/ /  ___ ___  / _/
- / // / _ `/ /__/ -_|_-< / _/ 
-/____/\_,_/____/\__/___/___/  
-      CHAOS MUD SYSTEM v2.0
-                            </pre>
-                            <br>
-                            <p class="text-gray-300">Welcome to Tales of Chaos.</p>
-                            <p class="text-gray-300">By what name do you wish to be known?</p>
-                            <p class="blinking-cursor">></p>
+                        <div class="stat-card p-8 rounded-lg text-center">
+                            <div class="w-16 h-16 bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-500">
+                                <i class="fa-solid fa-hat-wizard text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Complex Magic</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Hundreds of spells across distinct schools of magic. From simple heals to room-clearing chaos storms. Mana management is key.
+                            </p>
+                        </div>
+                        <div class="stat-card p-8 rounded-lg text-center">
+                            <div class="w-16 h-16 bg-yellow-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-500">
+                                <i class="fa-solid fa-scroll text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">50+ Custom Areas</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">
+                                Explore thousands of unique rooms defined in our `.are` files. Visit Midgaard, Moria, or the dangerous realm of Thalos.
+                            </p>
                         </div>
                     </div>
                 </div>
+            </section>
+        </div>
 
-                <!-- Server Details -->
-                <div class="space-y-8">
-                    <div>
-                        <h2 class="text-3xl font-bold text-white mb-4">Live Server Status</h2>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="flex h-3 w-3 relative">
-                                <span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span id="status-dot" class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                            </span>
-                            <span id="status-text" class="text-green-400 font-mono">ONLINE</span>
-                        </div>
-                        <p class="text-gray-400 mb-6">
-                            Experience the thrill of pure imagination. No graphics card required.
-                            Our server runs a modified ROM codebase inside a modern Docker container, ensuring stability and performance.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-[#151515] p-4 rounded border-l-2 border-red-700">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Port</div>
-                            <div class="text-white font-mono text-xl flex items-center gap-2">
-                                4000 
-                                <button onclick="copyToClipboard('4000')" class="text-xs text-gray-600 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+        <!-- PLAY SECTION -->
+        <div id="play-section" class="tab-content">
+            <section class="py-10 bg-[#0a0a0a] min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Terminal Window -->
+                        <div class="lg:col-span-2">
+                            <div class="parchment p-1 rounded-lg bg-[#111]">
+                                <div class="bg-black p-4 rounded border border-gray-800 h-[600px] font-mono text-sm overflow-y-auto relative flex flex-col" id="terminal-container">
+                                    <div class="flex-grow overflow-y-auto mb-2" id="terminal-output">
+                                        <div class="text-green-500 space-y-1">
+                                            <p>Initializing Web Client...</p>
+                                            <p>Connecting to WebSocket Bridge...</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2 border-t border-gray-800 pt-2">
+                                        <span class="text-green-500">></span>
+                                        <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-gray-200 flex-grow font-mono" autocomplete="off" autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex justify-between text-gray-400 text-sm">
+                                <div>Status: <span id="connection-status" class="text-yellow-500">Connecting...</span></div>
+                                <div>Host: localhost:9000</div>
                             </div>
                         </div>
-                        <div class="bg-[#151515] p-4 rounded border-l-2 border-red-700">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Protocol</div>
-                            <div class="text-white font-mono text-xl">Telnet</div>
+
+                        <!-- Server Details -->
+                        <div class="space-y-8">
+                            <div>
+                                <h2 class="text-3xl font-bold text-white mb-4">Live Server Status</h2>
+                                <div class="flex items-center gap-3 mb-6">
+                                    <span class="flex h-3 w-3 relative">
+                                        <span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                        <span id="status-dot" class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                    </span>
+                                    <span id="status-text" class="text-green-400 font-mono">ONLINE</span>
+                                </div>
+                                <p class="text-gray-400 mb-6">
+                                    Connect directly via Telnet if you prefer a dedicated client like Mudlet or Tintin++.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-4">
+                                <div class="bg-[#151515] p-4 rounded border-l-2 border-red-700">
+                                    <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Host</div>
+                                    <div class="text-white font-mono text-xl">localhost</div>
+                                </div>
+                                <div class="bg-[#151515] p-4 rounded border-l-2 border-red-700">
+                                    <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Port</div>
+                                    <div class="text-white font-mono text-xl flex items-center gap-2">
+                                        9000 
+                                        <button onclick="copyToClipboard('9000')" class="text-xs text-gray-600 hover:text-white"><i class="fa-regular fa-copy"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- DATABASE SECTION -->
+        <div id="database-section" class="tab-content">
+            <section class="py-10 bg-[#0a0a0a] min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">World Database</h2>
+                    
+                    <div class="flex gap-4 mb-8">
+                        <button onclick="loadDb('mobs')" class="px-4 py-2 rounded bg-red-900/20 text-red-400 hover:bg-red-900/40 border border-red-900/50 transition-colors">Mobiles</button>
+                        <button onclick="loadDb('objects')" class="px-4 py-2 rounded bg-blue-900/20 text-blue-400 hover:bg-blue-900/40 border border-blue-900/50 transition-colors">Objects</button>
+                        <button onclick="loadDb('areas')" class="px-4 py-2 rounded bg-yellow-900/20 text-yellow-400 hover:bg-yellow-900/40 border border-yellow-900/50 transition-colors">Areas</button>
+                    </div>
+
+                    <div class="mb-6">
+                        <input type="text" id="db-search" placeholder="Search database..." class="w-full bg-[#151515] border border-gray-800 rounded px-4 py-3 text-white focus:border-red-700 outline-none" onkeyup="filterDb()">
+                    </div>
+
+                    <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-gray-400">
+                                <thead class="bg-[#0a0a0a] text-gray-200 uppercase text-xs font-bold">
+                                    <tr id="db-headers">
+                                        <!-- Headers injected via JS -->
+                                    </tr>
+                                </thead>
+                                <tbody id="db-content" class="divide-y divide-gray-800">
+                                    <tr><td colspan="5" class="p-4 text-center">Select a category to load data</td></tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-
-            </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Features Grid -->
-    <section id="world" class="py-20 bg-[#0f0f0f]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">A World of Text</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Features derived from the legendary ROM architecture, enhanced for the modern era.</p>
-            </div>
+        <!-- GUIDE SECTION -->
+        <div id="guide-section" class="tab-content">
+            <section class="py-10 bg-[#0a0a0a] min-h-screen">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Adventurer's Guide</h2>
+                    
+                    <div class="space-y-12">
+                        <div>
+                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Getting Started</h3>
+                            <div class="prose prose-invert max-w-none text-gray-300">
+                                <p>Welcome to Times of Chaos. When you first connect, you will be asked to provide a name for your character. Choose wisely, as this is how you will be known throughout the realms.</p>
+                                <p>After naming your character, you will select a race and a class. Each combination offers unique strengths and weaknesses.</p>
+                            </div>
+                        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="stat-card p-8 rounded-lg text-center">
-                    <div class="w-16 h-16 bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-red-500">
-                        <i class="fa-solid fa-skull-crossbones text-2xl"></i>
+                        <div>
+                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Basic Commands</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <code class="text-yellow-500 font-bold">look</code>
+                                    <p class="text-sm text-gray-400 mt-1">Examine your current surroundings.</p>
+                                </div>
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <code class="text-yellow-500 font-bold">score</code>
+                                    <p class="text-sm text-gray-400 mt-1">View your character's attributes and status.</p>
+                                </div>
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <code class="text-yellow-500 font-bold">inventory</code>
+                                    <p class="text-sm text-gray-400 mt-1">See what you are carrying.</p>
+                                </div>
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <code class="text-yellow-500 font-bold">equipment</code>
+                                    <p class="text-sm text-gray-400 mt-1">See what you are wearing.</p>
+                                </div>
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <code class="text-yellow-500 font-bold">north, south, east, west</code>
+                                    <p class="text-sm text-gray-400 mt-1">Move in a direction.</p>
+                                </div>
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <code class="text-yellow-500 font-bold">kill &lt;target&gt;</code>
+                                    <p class="text-sm text-gray-400 mt-1">Initiate combat with a monster.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Combat & Magic</h3>
+                            <div class="prose prose-invert max-w-none text-gray-300">
+                                <p>Combat is automatic once initiated. You will automatically attack every round. However, you can use special skills or cast spells during combat to turn the tide.</p>
+                                <ul class="list-disc pl-5 space-y-2 mt-2">
+                                    <li><strong class="text-white">Warriors</strong> should use <code class="text-red-400">kick</code> and <code class="text-red-400">bash</code> to disable opponents.</li>
+                                    <li><strong class="text-white">Mages</strong> cast spells using <code class="text-blue-400">cast 'spell name' &lt;target&gt;</code>.</li>
+                                    <li><strong class="text-white">Clerics</strong> can heal using <code class="text-yellow-400">cast 'heal' &lt;target&gt;</code>.</li>
+                                    <li><strong class="text-white">Thieves</strong> can <code class="text-green-400">backstab</code> for massive opening damage.</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Tactical Combat</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Real-time text combat based on THAC0 mechanics. Manage your skills, spells, and equipment weight to survive against legendary mobs like the Red Dragon.
-                    </p>
                 </div>
-
-                <!-- Feature 2 -->
-                <div class="stat-card p-8 rounded-lg text-center">
-                    <div class="w-16 h-16 bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-500">
-                        <i class="fa-solid fa-hat-wizard text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Complex Magic</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Hundreds of spells across distinct schools of magic. From simple heals to room-clearing chaos storms. Mana management is key.
-                    </p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="stat-card p-8 rounded-lg text-center">
-                    <div class="w-16 h-16 bg-yellow-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-500">
-                        <i class="fa-solid fa-scroll text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">50+ Custom Areas</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Explore thousands of unique rooms defined in our `.are` files. Visit Midgaard, Moria, or the dangerous realm of Thalos.
-                    </p>
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Classes -->
-    <section id="classes" class="py-20 bg-[#0a0a0a] relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row gap-12 items-start">
-                <div class="w-full md:w-1/3 sticky top-24">
-                    <h2 class="text-4xl font-bold text-white mb-6">Choose Your Path</h2>
-                    <p class="text-gray-400 mb-8">
-                        Your class defines your journey. Will you rely on brute strength, divine favor, arcane knowledge, or subtle strikes?
-                    </p>
-                    <div class="space-y-2">
-                        <button onclick="showClass('warrior')" class="class-btn w-full text-left px-4 py-3 bg-red-900/20 hover:bg-red-900/40 border-l-4 border-red-600 text-white font-medium transition-all active">Warrior</button>
-                        <button onclick="showClass('mage')" class="class-btn w-full text-left px-4 py-3 hover:bg-blue-900/20 border-l-4 border-transparent hover:border-blue-500 text-gray-400 hover:text-white transition-all">Mage</button>
-                        <button onclick="showClass('cleric')" class="class-btn w-full text-left px-4 py-3 hover:bg-yellow-900/20 border-l-4 border-transparent hover:border-yellow-500 text-gray-400 hover:text-white transition-all">Cleric</button>
-                        <button onclick="showClass('thief')" class="class-btn w-full text-left px-4 py-3 hover:bg-green-900/20 border-l-4 border-transparent hover:border-green-500 text-gray-400 hover:text-white transition-all">Thief</button>
+        <!-- ADMIN SECTION -->
+        <div id="admin-section" class="tab-content">
+            <section class="py-10 bg-[#0a0a0a] min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Server Administration</h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                        <!-- WizInfo -->
+                        <div class="bg-[#151515] p-6 rounded border border-gray-800">
+                            <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-bullhorn text-red-500 mr-2"></i> Broadcast WizInfo</h3>
+                            <form onsubmit="sendWizInfo(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-sm text-gray-400 mb-1">Message</label>
+                                    <textarea id="wizinfo-msg" rows="3" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none" required></textarea>
+                                </div>
+                                <div>
+                                    <label class="block text-sm text-gray-400 mb-1">Min Level</label>
+                                    <input type="number" id="wizinfo-level" value="62" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none">
+                                </div>
+                                <button type="submit" class="btn-primary px-4 py-2 rounded font-bold w-full">Send Broadcast</button>
+                            </form>
+                        </div>
+
+                        <!-- Server Command -->
+                        <div class="bg-[#151515] p-6 rounded border border-gray-800">
+                            <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-terminal text-red-500 mr-2"></i> Server Command</h3>
+                            <form onsubmit="sendCommand(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-sm text-gray-400 mb-1">Command</label>
+                                    <input type="text" id="server-cmd" placeholder="e.g. copyover" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none" required>
+                                </div>
+                                <button type="submit" class="px-4 py-2 rounded font-bold w-full bg-red-900 hover:bg-red-800 text-white transition-colors">Execute Command</button>
+                            </form>
+                            
+                            <div class="mt-8 pt-8 border-t border-gray-800">
+                                <h4 class="text-white font-bold mb-4">Quick Actions</h4>
+                                <div class="flex gap-4">
+                                    <button onclick="action('backup')" class="flex-1 px-4 py-2 rounded bg-blue-900/30 text-blue-400 hover:bg-blue-900/50 border border-blue-900 transition-colors">
+                                        <i class="fa-solid fa-save mr-2"></i> Backup
+                                    </button>
+                                    <button onclick="action('shutdown')" class="flex-1 px-4 py-2 rounded bg-red-900/30 text-red-400 hover:bg-red-900/50 border border-red-900 transition-colors">
+                                        <i class="fa-solid fa-power-off mr-2"></i> Shutdown
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logs -->
+                    <div class="bg-[#151515] rounded border border-gray-800">
+                        <div class="p-4 border-b border-gray-800 flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white">Server Logs</h3>
+                            <button onclick="refreshLogs()" class="text-sm text-gray-400 hover:text-white"><i class="fa-solid fa-sync mr-1"></i> Refresh</button>
+                        </div>
+                        <div id="log-terminal" class="bg-black p-4 font-mono text-xs text-green-500 h-96 overflow-y-auto whitespace-pre-wrap">Loading logs...</div>
                     </div>
                 </div>
-                
-                <div class="w-full md:w-2/3 bg-[#111] border border-gray-800 rounded-lg p-8 min-h-[400px]" id="class-display">
-                    <!-- Content injected via JS -->
-                </div>
-            </div>
+            </section>
         </div>
-    </section>
+
+    </div>
 
     <!-- Footer -->
     <footer class="bg-black border-t border-gray-900 py-12">
@@ -390,135 +525,248 @@ async def index() -> str:
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Navigation
+        function showSection(id) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(id + '-section').classList.add('active');
+            
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+            if(id === 'play') initTerminal();
+            if(id === 'admin') refreshLogs();
+        }
+
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
 
-        // Copy to clipboard
         function copyToClipboard(text) {
-            const el = document.createElement('textarea');
-            el.value = text;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            alert('Port copied to clipboard!');
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Port copied to clipboard!');
+            });
         }
 
-        // Class Data
-        const classes = {
-            warrior: {
-                title: "The Warrior",
-                icon: "fa-shield-halved",
-                color: "text-red-500",
-                desc: "Masters of weapons and combat tactics. Warriors have the highest health pools and can wear the heaviest armor.",
-                stats: [
-                    { label: "Strength", val: "95%" },
-                    { label: "Magic", val: "10%" },
-                    { label: "Defense", val: "90%" }
-                ],
-                skills: ["Kick", "Bash", "Rescue", "Parry", "Double Attack"]
-            },
-            mage: {
-                title: "The Mage",
-                icon: "fa-hat-wizard",
-                color: "text-blue-500",
-                desc: "Scholars of the arcane. Mages are physically weak but command devastating elemental spells that can destroy entire rooms of enemies.",
-                stats: [
-                    { label: "Strength", val: "20%" },
-                    { label: "Magic", val: "100%" },
-                    { label: "Defense", val: "30%" }
-                ],
-                skills: ["Fireball", "Lightning Bolt", "Teleport", "Invisibility", "Sleep"]
-            },
-            cleric: {
-                title: "The Cleric",
-                icon: "fa-cross",
-                color: "text-yellow-500",
-                desc: "Servants of the gods. Clerics keep the party alive with healing magic and protect them with powerful blessings.",
-                stats: [
-                    { label: "Strength", val: "60%" },
-                    { label: "Magic", val: "85%" },
-                    { label: "Defense", val: "60%" }
-                ],
-                skills: ["Heal", "Sanctuary", "Bless", "Curse", "Resurrection"]
-            },
-            thief: {
-                title: "The Thief",
-                icon: "fa-mask",
-                color: "text-green-500",
-                desc: "Masters of stealth and trickery. Thieves strike from the shadows and can pick locks or steal gold from enemies.",
-                stats: [
-                    { label: "Strength", val: "60%" },
-                    { label: "Magic", val: "20%" },
-                    { label: "Defense", val: "70%" }
-                ],
-                skills: ["Backstab", "Pick Lock", "Steal", "Hide", "Sneak"]
+        // ============ TERMINAL / WEBSOCKET ============
+        let ws = null;
+        let termInitialized = false;
+
+        function initTerminal() {
+            if(termInitialized) return;
+            termInitialized = true;
+
+            const output = document.getElementById('terminal-output');
+            const input = document.getElementById('terminal-input');
+            const status = document.getElementById('connection-status');
+
+            function connect() {
+                const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+                ws = new WebSocket(protocol + '//' + window.location.host + '/ws');
+
+                ws.onopen = () => {
+                    status.textContent = 'Connected';
+                    status.className = 'text-green-500';
+                    writeToTerm('Connected to server.');
+                };
+
+                ws.onmessage = (event) => {
+                    writeToTerm(event.data);
+                };
+
+                ws.onclose = () => {
+                    status.textContent = 'Disconnected';
+                    status.className = 'text-red-500';
+                    writeToTerm('Connection lost. Reconnecting in 3s...');
+                    setTimeout(connect, 3000);
+                };
+
+                ws.onerror = (err) => {
+                    console.error('WebSocket error:', err);
+                    ws.close();
+                };
             }
-        };
 
-        // Initialize Class Display
-        function renderClass(key) {
-            const c = classes[key];
-            const html = `
-                <div class="animate-fade-in">
-                    <div class="flex items-center gap-4 mb-6">
-                        <i class="fa-solid ${c.icon} text-4xl ${c.color}"></i>
-                        <h3 class="text-3xl font-cinzel font-bold text-white">${c.title}</h3>
-                    </div>
-                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">${c.desc}</p>
-                    
-                    <div class="mb-8">
-                        <h4 class="text-white font-bold mb-4 uppercase tracking-wide text-sm">Base Attributes</h4>
-                        <div class="space-y-3">
-                            ${c.stats.map(s => `
-                                <div class="flex items-center gap-3">
-                                    <div class="w-24 text-gray-500 text-sm">${s.label}</div>
-                                    <div class="flex-1 bg-gray-800 rounded-full h-2">
-                                        <div class="h-2 rounded-full ${c.color.replace('text-', 'bg-')}" style="width: ${s.val}"></div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
+            function writeToTerm(text) {
+                // Convert ANSI color codes to HTML
+                // Replace ESC[...m sequences with span tags
+                let html = text
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/\x1b\[0m/g, '</span>')
+                    .replace(/\x1b\[1;30m/g, '<span style="color: #555">')
+                    .replace(/\x1b\[1;31m/g, '<span style="color: #ff5555">')
+                    .replace(/\x1b\[1;32m/g, '<span style="color: #55ff55">')
+                    .replace(/\x1b\[1;33m/g, '<span style="color: #ffff55">')
+                    .replace(/\x1b\[1;34m/g, '<span style="color: #5555ff">')
+                    .replace(/\x1b\[1;35m/g, '<span style="color: #ff55ff">')
+                    .replace(/\x1b\[1;36m/g, '<span style="color: #55ffff">')
+                    .replace(/\x1b\[1;37m/g, '<span style="color: #ffffff">')
+                    .replace(/\x1b\[0;30m/g, '<span style="color: #333">')
+                    .replace(/\x1b\[0;31m/g, '<span style="color: #aa0000">')
+                    .replace(/\x1b\[0;32m/g, '<span style="color: #00aa00">')
+                    .replace(/\x1b\[0;33m/g, '<span style="color: #aaaa00">')
+                    .replace(/\x1b\[0;34m/g, '<span style="color: #0000aa">')
+                    .replace(/\x1b\[0;35m/g, '<span style="color: #aa00aa">')
+                    .replace(/\x1b\[0;36m/g, '<span style="color: #00aaaa">')
+                    .replace(/\x1b\[0;37m/g, '<span style="color: #aaaaaa">')
+                    .replace(/\x1b\[([0-9;]+)m/g, '');
+                
+                const line = document.createElement('div');
+                line.innerHTML = html;
+                line.style.whiteSpace = 'pre-wrap';
+                output.appendChild(line);
+                output.scrollTop = output.scrollHeight;
+                
+                // Auto-send newline for pager prompts
+                if (text.includes('[Hit Return to continue]')) {
+                    setTimeout(() => {
+                        if (ws && ws.readyState === WebSocket.OPEN) {
+                            ws.send('\n');
+                        }
+                    }, 100);
+                }
+            }
 
-                    <div>
-                        <h4 class="text-white font-bold mb-4 uppercase tracking-wide text-sm">Key Abilities</h4>
-                        <div class="flex flex-wrap gap-2">
-                            ${c.skills.map(sk => `
-                                <span class="px-3 py-1 rounded bg-gray-800 text-gray-300 text-sm border border-gray-700">${sk}</span>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.getElementById('class-display').innerHTML = html;
-        }
-
-        function showClass(key) {
-            // Update buttons
-            document.querySelectorAll('.class-btn').forEach(btn => {
-                btn.className = "class-btn w-full text-left px-4 py-3 hover:bg-gray-800 border-l-4 border-transparent text-gray-400 hover:text-white transition-all";
-                if(btn.textContent.toLowerCase().includes(key)) {
-                    const color = classes[key].color.replace('text-', ''); // Extract color name roughly
-                    let borderColor = 'border-gray-500';
-                    if(key === 'warrior') borderColor = 'border-red-600';
-                    if(key === 'mage') borderColor = 'border-blue-600';
-                    if(key === 'cleric') borderColor = 'border-yellow-600';
-                    if(key === 'thief') borderColor = 'border-green-600';
-                    
-                    btn.className = `class-btn w-full text-left px-4 py-3 bg-gray-900 ${borderColor} text-white font-medium transition-all`;
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const cmd = input.value;
+                    if (ws && ws.readyState === WebSocket.OPEN) {
+                        ws.send(cmd + '\\n');
+                        // Echo command locally? Maybe not, MUD usually echoes
+                        // writeToTerm('> ' + cmd); 
+                    }
+                    input.value = '';
                 }
             });
-            renderClass(key);
+
+            connect();
         }
 
-        // Initial Render
-        showClass('warrior');
+        // ============ DATABASE ============
+        let currentDb = 'mobs';
+        let dbData = { mobs: [], objects: [], areas: [] };
 
-        // Server Status Check
+        async function loadDb(type) {
+            currentDb = type;
+            const content = document.getElementById('db-content');
+            const headers = document.getElementById('db-headers');
+            
+            content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-gray-500">Loading...</td></tr>';
+
+            try {
+                if(dbData[type].length === 0) {
+                    const res = await fetch('/api/' + type + (type === 'areas' ? '' : '?limit=1000'));
+                    dbData[type] = await res.json();
+                }
+                renderDb(dbData[type]);
+            } catch(e) {
+                content.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500">Error loading data: ${e}</td></tr>`;
+            }
+        }
+
+        function renderDb(data) {
+            const headers = document.getElementById('db-headers');
+            const content = document.getElementById('db-content');
+            
+            let headerHtml = '';
+            let rowsHtml = '';
+
+            if(currentDb === 'mobs') {
+                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Level</th><th class="p-4">Race</th><th class="p-4">Area</th>';
+                rowsHtml = data.map(m => `
+                    <tr class="hover:bg-[#151515] transition-colors">
+                        <td class="p-4 font-mono text-sm text-gray-500">#${m.vnum}</td>
+                        <td class="p-4 font-bold text-gray-300">${m.short_desc || 'Unnamed'}</td>
+                        <td class="p-4 text-yellow-500">${m.level}</td>
+                        <td class="p-4 text-gray-400">${m.race}</td>
+                        <td class="p-4 text-gray-500 text-sm">${m.area || '-'}</td>
+                    </tr>
+                `).join('');
+            } else if(currentDb === 'objects') {
+                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Type</th><th class="p-4">Level</th><th class="p-4">Area</th>';
+                rowsHtml = data.map(o => `
+                    <tr class="hover:bg-[#151515] transition-colors">
+                        <td class="p-4 font-mono text-sm text-gray-500">#${o.vnum}</td>
+                        <td class="p-4 font-bold text-gray-300">${o.short_desc || 'Unnamed'}</td>
+                        <td class="p-4 text-blue-400">${o.item_type}</td>
+                        <td class="p-4 text-yellow-500">${o.level}</td>
+                        <td class="p-4 text-gray-500 text-sm">${o.area || '-'}</td>
+                    </tr>
+                `).join('');
+            } else if(currentDb === 'areas') {
+                headerHtml = '<th class="p-4">Name</th><th class="p-4">Filename</th><th class="p-4">Builders</th><th class="p-4">Vnums</th>';
+                rowsHtml = data.map(a => `
+                    <tr class="hover:bg-[#151515] transition-colors">
+                        <td class="p-4 font-bold text-gray-300">${a.name}</td>
+                        <td class="p-4 font-mono text-sm text-gray-500">${a.filename}</td>
+                        <td class="p-4 text-gray-400">${a.builders}</td>
+                        <td class="p-4 text-gray-500 text-sm">${a.vnums}</td>
+                    </tr>
+                `).join('');
+            }
+
+            headers.innerHTML = headerHtml;
+            content.innerHTML = rowsHtml || '<tr><td colspan="5" class="p-4 text-center">No results found</td></tr>';
+        }
+
+        function filterDb() {
+            const q = document.getElementById('db-search').value.toLowerCase();
+            const filtered = dbData[currentDb].filter(item => 
+                JSON.stringify(item).toLowerCase().includes(q)
+            );
+            renderDb(filtered);
+        }
+
+        // ============ ADMIN ============
+        async function action(type) {
+            if(!confirm('Are you sure?')) return;
+            try {
+                await fetch('/api/' + type, { method: 'POST' });
+                alert(type + ' queued successfully');
+            } catch(e) { alert('Error: ' + e); }
+        }
+
+        async function sendWizInfo(e) {
+            e.preventDefault();
+            const msg = document.getElementById('wizinfo-msg').value;
+            const level = document.getElementById('wizinfo-level').value;
+            try {
+                await fetch('/api/wizinfo', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({message: msg, level: parseInt(level)})
+                });
+                alert('Broadcast queued');
+                e.target.reset();
+            } catch(e) { alert('Error: ' + e); }
+        }
+
+        async function sendCommand(e) {
+            e.preventDefault();
+            const cmd = document.getElementById('server-cmd').value;
+            try {
+                await fetch('/api/command', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({command: cmd})
+                });
+                alert('Command queued');
+                e.target.reset();
+            } catch(e) { alert('Error: ' + e); }
+        }
+
+        async function refreshLogs() {
+            const el = document.getElementById('log-terminal');
+            try {
+                const res = await fetch('/api/logs');
+                el.textContent = await res.text();
+                el.scrollTop = el.scrollHeight;
+            } catch(e) { el.textContent = 'Error loading logs'; }
+        }
+
+        // ============ STATUS ============
         async function checkStatus() {
             try {
                 const res = await fetch('/api/health');
@@ -726,6 +974,63 @@ async def get_objects(limit: int = 500) -> list:
     return result
 
 
+# ============ WebSocket Bridge ============
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    writer = None
+    try:
+        # Connect to the MUD server
+        reader, writer = await asyncio.open_connection('localhost', 9000)
+        
+        async def receive_from_mud():
+            try:
+                while True:
+                    data = await reader.read(4096)
+                    if not data:
+                        break
+                    try:
+                        text = data.decode('latin-1', errors='ignore')
+                        await websocket.send_text(text)
+                    except Exception:
+                        break
+            except Exception:
+                pass
+
+        async def send_to_mud():
+            try:
+                while True:
+                    data = await websocket.receive_text()
+                    writer.write(data.encode('latin-1'))
+                    await writer.drain()
+            except Exception:
+                pass
+
+        # Run both tasks
+        receive_task = asyncio.create_task(receive_from_mud())
+        send_task = asyncio.create_task(send_to_mud())
+        
+        done, pending = await asyncio.wait(
+            [receive_task, send_task],
+            return_when=asyncio.FIRST_COMPLETED,
+        )
+        
+        for task in pending:
+            task.cancel()
+            
+    except Exception as e:
+        print(f"WebSocket Error: {e}")
+        await websocket.close()
+    finally:
+        if writer:
+            try:
+                writer.close()
+                await writer.wait_closed()
+            except:
+                pass
+
+
 def main() -> None:
     global queue_writer, QUEUE_PATH, DEFAULT_LOG
 
@@ -742,329 +1047,5 @@ def main() -> None:
     import uvicorn
 
     uvicorn.run(app, host=args.host, port=args.port, reload=False)
-
-
-
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <style>
-        body { background-color: #f5f5f5; font-family: 'Roboto', sans-serif; }
-        .mdl-layout__header { background-color: #673ab7; }
-        .page-content { padding: 20px; max-width: 1400px; margin: 0 auto; }
-        .stat-card { background: #fff; padding: 20px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
-        .stat-number { font-size: 48px; font-weight: 700; color: #673ab7; }
-        .stat-label { font-size: 14px; color: #757575; text-transform: uppercase; }
-        .search-box { margin: 20px 0; }
-        .item-card { background: #fff; padding: 15px; margin: 10px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
-        .item-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-        .item-vnum { display: inline-block; background: #673ab7; color: #fff; padding: 2px 8px; border-radius: 3px; font-family: monospace; font-size: 12px; }
-        .item-name { font-size: 18px; font-weight: 500; margin: 5px 0; color: #212121; }
-        .item-desc { font-size: 14px; color: #757575; }
-        .item-meta { font-size: 12px; color: #9e9e9e; margin-top: 5px; }
-        .chip { display: inline-block; padding: 2px 8px; margin: 2px; border-radius: 12px; font-size: 11px; background: #e0e0e0; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .loading { text-align: center; padding: 40px; color: #757575; }
-    </style>
-</head>
-<body>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Times of Chaos - Database</span>
-                <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="/">Admin</a>
-                    <a class="mdl-navigation__link" href="/browse">Database</a>
-                </nav>
-            </div>
-        </header>
-        <main class="mdl-layout__content">
-            <div class="page-content">
-                <!-- Stats Overview -->
-                <div class="mdl-grid" style="margin-bottom: 20px;">
-                    <div class="mdl-cell mdl-cell--3-col">
-                        <div class="stat-card">
-                            <div class="stat-number" id="statMobiles">-</div>
-                            <div class="stat-label">Mobiles</div>
-                        </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--3-col">
-                        <div class="stat-card">
-                            <div class="stat-number" id="statObjects">-</div>
-                            <div class="stat-label">Objects</div>
-                        </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--3-col">
-                        <div class="stat-card">
-                            <div class="stat-number" id="statRooms">-</div>
-                            <div class="stat-label">Rooms</div>
-                        </div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--3-col">
-                        <div class="stat-card">
-                            <div class="stat-number" id="statAreas">-</div>
-                            <div class="stat-label">Areas</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tabs -->
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--12-col">
-                        <div style="background: #fff; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" style="padding: 0;">
-                                <div class="mdl-tabs__tab-bar" style="background: #673ab7;">
-                                    <a href="#mobiles" class="mdl-tabs__tab is-active" onclick="showTab('mobiles')" style="color: #fff;">Mobiles</a>
-                                    <a href="#objects" class="mdl-tabs__tab" onclick="showTab('objects')" style="color: #fff;">Objects</a>
-                                    <a href="#rooms" class="mdl-tabs__tab" onclick="showTab('rooms')" style="color: #fff;">Rooms</a>
-                                    <a href="#areas" class="mdl-tabs__tab" onclick="showTab('areas')" style="color: #fff;">Areas</a>
-                                </div>
-                                
-                                <div style="padding: 20px;">
-                                    <!-- Mobiles Tab -->
-                                    <div id="mobiles" class="tab-content active">
-                                        <div class="search-box">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;">
-                                                <input class="mdl-textfield__input" type="text" id="mobSearch" oninput="filterMobs()">
-                                                <label class="mdl-textfield__label" for="mobSearch">Search mobiles by name, keywords, or area...</label>
-                                            </div>
-                                        </div>
-                                        <div id="mobsList" class="loading">Loading mobiles...</div>
-                                    </div>
-
-                                    <!-- Objects Tab -->
-                                    <div id="objects" class="tab-content">
-                                        <div class="search-box">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;">
-                                                <input class="mdl-textfield__input" type="text" id="objectSearch" oninput="filterObjects()">
-                                                <label class="mdl-textfield__label" for="objectSearch">Search objects by name or type...</label>
-                                            </div>
-                                        </div>
-                                        <div id="objectsList" class="loading">Loading objects...</div>
-                                    </div>
-
-                                    <!-- Rooms Tab -->
-                                    <div id="rooms" class="tab-content">
-                                        <div class="search-box">
-                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;">
-                                                <input class="mdl-textfield__input" type="text" id="roomSearch" oninput="filterRooms()">
-                                                <label class="mdl-textfield__label" for="roomSearch">Search rooms by name or area...</label>
-                                            </div>
-                                        </div>
-                                        <div id="roomsList" class="loading">Loading rooms...</div>
-                                    </div>
-
-                                    <!-- Areas Tab -->
-                                    <div id="areas" class="tab-content">
-                                        <div id="areasList" class="loading">Loading areas...</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <script>
-        let allMobs = [];
-        let allObjects = [];
-        let allRooms = [];
-        let allAreas = [];
-
-        async function loadStats() {
-            try {
-                const res = await fetch('/api/stats');
-                const stats = await res.json();
-                document.getElementById('statMobiles').textContent = stats.mobiles;
-                document.getElementById('statObjects').textContent = stats.objects;
-                document.getElementById('statRooms').textContent = stats.rooms;
-                document.getElementById('statAreas').textContent = stats.areas;
-            } catch (e) {
-                console.error('Failed to load stats:', e);
-            }
-        }
-
-        async function loadMobs() {
-            try {
-                const res = await fetch('/api/mobs?limit=500');
-                allMobs = await res.json();
-                displayMobs(allMobs);
-            } catch (e) {
-                document.getElementById('mobsList').innerHTML = '<p style="color: red;">Error loading mobiles</p>';
-            }
-        }
-
-        function displayMobs(mobs) {
-            const container = document.getElementById('mobsList');
-            if (!mobs || mobs.length === 0) {
-                container.innerHTML = '<p>No mobiles found</p>';
-                return;
-            }
-            container.innerHTML = mobs.map(mob => `
-                <div class="item-card">
-                    <span class="item-vnum">#${mob.vnum}</span>
-                    <div class="item-name">${mob.short_desc || 'Unnamed'}</div>
-                    <div class="item-desc">${mob.long_desc || ''}</div>
-                    <div class="item-meta">
-                        <span class="chip">Level ${mob.level || '?'}</span>
-                        <span class="chip">${mob.race || 'unknown'}</span>
-                        <span class="chip">${mob.area || 'unknown area'}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function filterMobs() {
-            const query = document.getElementById('mobSearch').value.toLowerCase();
-            if (!query) {
-                displayMobs(allMobs);
-                return;
-            }
-            const filtered = allMobs.filter(mob => 
-                (mob.short_desc && mob.short_desc.toLowerCase().includes(query)) ||
-                (mob.keywords && mob.keywords.toLowerCase().includes(query)) ||
-                (mob.area && mob.area.toLowerCase().includes(query))
-            );
-            displayMobs(filtered);
-        }
-
-        async function loadObjects() {
-            try {
-                const res = await fetch('/api/objects?limit=500');
-                allObjects = await res.json();
-                displayObjects(allObjects);
-            } catch (e) {
-                document.getElementById('objectsList').innerHTML = '<p style="color: red;">Error loading objects</p>';
-            }
-        }
-
-        function displayObjects(objects) {
-            const container = document.getElementById('objectsList');
-            if (!objects || objects.length === 0) {
-                container.innerHTML = '<p>No objects found</p>';
-                return;
-            }
-            container.innerHTML = objects.map(obj => `
-                <div class="item-card">
-                    <span class="item-vnum">#${obj.vnum}</span>
-                    <div class="item-name">${obj.short_desc || 'Unnamed'}</div>
-                    <div class="item-desc">${obj.description || ''}</div>
-                    <div class="item-meta">
-                        <span class="chip">${obj.item_type || 'unknown'}</span>
-                        <span class="chip">Level ${obj.level || '?'}</span>
-                        <span class="chip">${obj.area || 'unknown area'}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function filterObjects() {
-            const query = document.getElementById('objectSearch').value.toLowerCase();
-            if (!query) {
-                displayObjects(allObjects);
-                return;
-            }
-            const filtered = allObjects.filter(obj => 
-                (obj.short_desc && obj.short_desc.toLowerCase().includes(query)) ||
-                (obj.item_type && obj.item_type.toLowerCase().includes(query)) ||
-                (obj.area && obj.area.toLowerCase().includes(query))
-            );
-            displayObjects(filtered);
-        }
-
-        async function loadRooms() {
-            try {
-                const res = await fetch('/api/rooms?limit=300');
-                allRooms = await res.json();
-                displayRooms(allRooms);
-            } catch (e) {
-                document.getElementById('roomsList').innerHTML = '<p style="color: red;">Error loading rooms</p>';
-            }
-        }
-
-        function displayRooms(rooms) {
-            const container = document.getElementById('roomsList');
-            if (!rooms || rooms.length === 0) {
-                container.innerHTML = '<p>No rooms found</p>';
-                return;
-            }
-            container.innerHTML = rooms.map(room => `
-                <div class="item-card">
-                    <span class="item-vnum">#${room.vnum}</span>
-                    <div class="item-name">${room.name || 'Unnamed Room'}</div>
-                    <div class="item-desc">${room.description || ''}</div>
-                    <div class="item-meta">
-                        <span class="chip">${room.sector || 'unknown'}</span>
-                        <span class="chip">${room.area || 'unknown area'}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function filterRooms() {
-            const query = document.getElementById('roomSearch').value.toLowerCase();
-            if (!query) {
-                displayRooms(allRooms);
-                return;
-            }
-            const filtered = allRooms.filter(room => 
-                (room.name && room.name.toLowerCase().includes(query)) ||
-                (room.description && room.description.toLowerCase().includes(query)) ||
-                (room.area && room.area.toLowerCase().includes(query))
-            );
-            displayRooms(filtered);
-        }
-
-        async function loadAreas() {
-            try {
-                const res = await fetch('/api/areas');
-                allAreas = await res.json();
-                displayAreas(allAreas);
-            } catch (e) {
-                document.getElementById('areasList').innerHTML = '<p style="color: red;">Error loading areas</p>';
-            }
-        }
-
-        function displayAreas(areas) {
-            const container = document.getElementById('areasList');
-            if (!areas || areas.length === 0) {
-                container.innerHTML = '<p>No areas found</p>';
-                return;
-            }
-            container.innerHTML = areas.map(area => `
-                <div class="item-card">
-                    <div class="item-name">${area.name || area.filename}</div>
-                    <div class="item-meta">
-                        <span class="chip">${area.filename}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.getElementById(tabName).classList.add('active');
-            
-            // Load data when tab is shown
-            if (tabName === 'mobiles' && allMobs.length === 0) loadMobs();
-            if (tabName === 'objects' && allObjects.length === 0) loadObjects();
-            if (tabName === 'rooms' && allRooms.length === 0) loadRooms();
-            if (tabName === 'areas' && allAreas.length === 0) loadAreas();
-        }
-
-        // Load initial data
-        loadStats();
-        loadMobs();
-    </script>
-</body>
-</html>
-    """
-
-
 if __name__ == "__main__":
     main()

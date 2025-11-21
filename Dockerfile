@@ -13,8 +13,7 @@ RUN apt-get update \
 WORKDIR /app
 COPY . .
 
-RUN make \
- && cp merc area/merc
+RUN make
 
 FROM debian:bookworm-slim AS runtime
 
@@ -33,6 +32,7 @@ RUN pip install --no-cache-dir fastapi "uvicorn[standard]"
 
 WORKDIR /app/area
 
+COPY --from=build /app/merc /usr/local/bin/merc
 COPY --from=build /app/area /app/area
 COPY --from=build /app/gods /app/gods
 COPY --from=build /app/heroes /app/heroes

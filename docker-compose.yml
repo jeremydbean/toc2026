@@ -5,7 +5,8 @@ services:
     build: .
     container_name: toc2026_game
     ports:
-      - "4000:4000"
+      - "9000:9000"
+      - "9001:9001"
     volumes:
       - ./log:/opt/toc/log
       - ./player:/opt/toc/player
