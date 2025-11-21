@@ -180,7 +180,7 @@ void save_char_obj( CHAR_DATA *ch )
     }
     fclose( fp );
     /* move the file */
-#ifdef CHGRP_TO
+#if defined(unix) && defined(CHGRP_TO)
     if (can_chgrp())
         snprintf(buf, sizeof(buf), "mv %s %s; chgrp %s %s", PLAYER_TEMP, strsave, CHGRP_TO, strsave);
     else

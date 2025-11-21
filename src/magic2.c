@@ -1619,7 +1619,7 @@ void do_mindbar( CHAR_DATA *ch, char *argument )
 	  return;
 	 }
 
-	 if( !arg[0] == '\0')
+	 if( arg[0] != '\0')
 	 {
 	  send_to_char( "You can only use this on yourself.\n\r", ch );
 	  return;

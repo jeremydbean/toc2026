@@ -91,7 +91,10 @@ typedef struct  weather_data            WEATHER_DATA;
 typedef struct  room_aff_data           ROOM_AFF_DATA;
 typedef struct  were_form               WERE_FORM;
 typedef struct  pkill_list_data         PKILL_LIST_DATA;
+#ifndef ITEM_MAX_LOAD_TYPEDEF
+#define ITEM_MAX_LOAD_TYPEDEF
 typedef struct  item_max_load           ITEM_MAX_LOAD;
+#endif
 typedef struct  wiz_data                WIZ_DATA;
 typedef struct  offense_data            OFFENSE_DATA;
 

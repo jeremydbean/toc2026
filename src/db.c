@@ -382,7 +382,7 @@ void boot_db( void )
 	if( time_info.day == 25 || time_info.day < 34)
 		weather_info.moon_phase = MOON_WANING;
 
-	if(time_info.hour >= 19 && time_info.hour < 7)
+	if(time_info.hour >= 19 || time_info.hour < 7)
 	   weather_info.moon_place = MOON_UP;
 	else
 	   weather_info.moon_place = MOON_DOWN;

@@ -337,7 +337,6 @@ int main( int argc, char **argv )
 {
     time_t now_time;
     int port;
-
     int control;
 
     /*

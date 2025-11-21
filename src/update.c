@@ -1708,7 +1708,7 @@ void obj_update( void )
     FOR_EACH_OBJECT( iter, obj )
     {
         CHAR_DATA *rch;
-        char *message = '\0';
+        char *message = NULL;
 
         /* go through affects and decrement */
 	for ( paf = obj->affected; paf != NULL; paf = paf_next )
@@ -2916,7 +2916,7 @@ void disaster_update( void )
 	     }
 	   break;
 	   case 3:
-	     if( vch->in_room->sector_type != 7 ||
+	     if( vch->in_room->sector_type != 7 &&
 	       vch->in_room->sector_type != 8)
 	     {
 		int dam = 0;

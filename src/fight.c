@@ -2644,7 +2644,7 @@ base_exp = 200 + 50 * (level_range - 4);
 	if (victim->alignment > 500 || victim->alignment < -500)
 	    xp = base_exp * 4/3;
 
-	else if (victim->alignment < 200 || victim->alignment > -200)
+	else if (victim->alignment < 200 && victim->alignment > -200)
 	    xp = base_exp * 1/2;
 
 	else

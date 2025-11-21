@@ -11,7 +11,10 @@
 #define args(list) list
 #endif
 
+#ifndef ITEM_MAX_LOAD_TYPEDEF
+#define ITEM_MAX_LOAD_TYPEDEF
 typedef struct item_max_load ITEM_MAX_LOAD;
+#endif
 
 #define MAXLOAD_KEY_HASH 127
 #define MAXLOADFILE "../area/maxload.txt"
