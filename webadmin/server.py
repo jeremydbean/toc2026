@@ -79,531 +79,473 @@ def read_process_health() -> dict[str, bool]:
 async def index() -> str:
     return """
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Times of Chaos | Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <title>Tales of Chaos - MUD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
-        body { background-color: #0d1117; }
-        .sidebar { background-color: #161b22; border-right: 1px solid #30363d; }
-        .nav-link { color: #c9d1d9; }
-        .nav-link:hover { color: #fff; background-color: #21262d; }
-        .nav-link.active { background-color: #1f6feb !important; color: #fff !important; }
-        .card { background-color: #161b22; border: 1px solid #30363d; }
-        .card-header { border-bottom: 1px solid #30363d; background-color: #21262d; }
-        .log-terminal { background-color: #0d1117; color: #7ee787; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; height: 600px; overflow-y: auto; padding: 1rem; border: 1px solid #30363d; border-radius: 6px; }
-        .table { color: #c9d1d9; }
-        .table-hover tbody tr:hover { color: #fff; background-color: #21262d; }
-        .form-control, .form-select { background-color: #0d1117; border-color: #30363d; color: #c9d1d9; }
-        .form-control:focus { background-color: #0d1117; color: #fff; border-color: #1f6feb; box-shadow: 0 0 0 0.25rem rgba(31, 111, 235, 0.25); }
-        .vnum-badge { font-family: monospace; background-color: #238636; }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto+Mono:wght@400;500&family=Lato:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #4a0404;
+            --secondary-color: #1a1a1a;
+            --accent-color: #d4af37;
+            --text-color: #e0e0e0;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: var(--text-color);
+            font-family: 'Lato', sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+        }
+
+        .terminal-font {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .hero-pattern {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .parchment {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #6b0606;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .blinking-cursor::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+            color: var(--accent-color);
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0f0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     </style>
 </head>
-<body>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <div class="d-flex flex-column flex-shrink-0 p-3 sidebar" style="width: 260px; height: 100vh; position: fixed; z-index: 1000;">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <i class="bi bi-fire fs-4 me-2 text-danger"></i>
-                <span class="fs-4 fw-bold">ToC Admin</span>
-            </a>
-            <hr class="text-secondary">
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active" onclick="showView('dashboard', this)">
-                        <i class="bi bi-speedometer2 me-2"></i> Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link" onclick="showView('database', this)">
-                        <i class="bi bi-database me-2"></i> Database
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link" onclick="showView('logs', this)">
-                        <i class="bi bi-terminal me-2"></i> Server Logs
-                    </a>
-                </li>
-            </ul>
-            <hr class="text-secondary">
-            <div class="dropdown">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-                    <i class="bi bi-person-circle me-2"></i>
-                    <strong>Administrator</strong>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="bg-black/90 border-b border-red-900/30 fixed w-full z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-dragon text-3xl text-red-700"></i>
+                    <span class="text-2xl font-bold text-white tracking-wider font-cinzel">TALES OF CHAOS</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="#play" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Play Now</a>
+                        <a href="#world" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">The World</a>
+                        <a href="#classes" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Classes</a>
+                        <a href="#community" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">Community</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-red-900/30">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#play" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">Play Now</a>
+                <a href="#world" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium">The World</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern relative h-screen flex items-center justify-center pt-16">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-[#0a0a0a]"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <div class="mb-6 inline-block">
+                <span class="py-1 px-3 rounded-full bg-red-900/30 border border-red-800/50 text-red-400 text-xs font-bold tracking-widest uppercase">
+                    Legacy MUD Engine Reborn
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
+                ENTER THE <span class="text-red-600">CHAOS</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                A text-based MMORPG experience powered by the classic ROM codebase. 
+                Explore persistent realms, battle legendary monsters, and forge your legacy in pure text.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#play" class="btn-primary px-8 py-4 rounded text-lg font-bold flex items-center justify-center gap-2 group">
+                    <i class="fa-solid fa-terminal"></i> CONNECT NOW
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                    <li><a class="dropdown-item" href="#" onclick="action('backup')"><i class="bi bi-save me-2"></i> Backup World</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-danger" href="#" onclick="action('shutdown')"><i class="bi bi-power me-2"></i> Shutdown</a></li>
-                </ul>
+                <a href="https://github.com/jeremydbean/tocgpt" target="_blank" class="px-8 py-4 rounded border border-gray-600 hover:border-white bg-transparent text-white text-lg font-bold flex items-center justify-center gap-2 transition-all hover:bg-white/5">
+                    <i class="fa-brands fa-github"></i> VIEW SOURCE
+                </a>
             </div>
         </div>
+    </section>
 
-        <!-- Main Content -->
-        <div class="flex-grow-1 p-4" style="margin-left: 260px; min-height: 100vh;">
-            
-            <!-- Dashboard View -->
-            <div id="view-dashboard" class="view-section">
-                <h2 class="mb-4 border-bottom pb-2 border-secondary">Dashboard</h2>
+    <!-- Status & Connection -->
+    <section id="play" class="py-20 bg-[#0a0a0a] relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-900 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 
-                <!-- Stats Row -->
-                <div class="row g-4 mb-4">
-                    <div class="col-md-3">
-                        <div class="card h-100">
-                            <div class="card-body d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
-                                    <i class="bi bi-people fs-3 text-primary"></i>
-                                </div>
-                                <div>
-                                    <h6 class="card-subtitle mb-1 text-muted">Mobiles</h6>
-                                    <h3 class="card-title mb-0" id="stat-mobs">-</h3>
-                                </div>
-                            </div>
+                <!-- Terminal Simulation -->
+                <div class="parchment p-1 rounded-lg bg-[#111]">
+                    <div class="bg-black p-4 rounded border border-gray-800 h-80 font-mono text-sm overflow-y-auto relative" id="terminal-window">
+                        <div class="flex gap-1.5 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card h-100">
-                            <div class="card-body d-flex align-items-center">
-                                <div class="bg-success bg-opacity-10 p-3 rounded me-3">
-                                    <i class="bi bi-box-seam fs-3 text-success"></i>
-                                </div>
-                                <div>
-                                    <h6 class="card-subtitle mb-1 text-muted">Objects</h6>
-                                    <h3 class="card-title mb-0" id="stat-objs">-</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card h-100">
-                            <div class="card-body d-flex align-items-center">
-                                <div class="bg-warning bg-opacity-10 p-3 rounded me-3">
-                                    <i class="bi bi-geo-alt fs-3 text-warning"></i>
-                                </div>
-                                <div>
-                                    <h6 class="card-subtitle mb-1 text-muted">Rooms</h6>
-                                    <h3 class="card-title mb-0" id="stat-rooms">-</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card h-100">
-                            <div class="card-body d-flex align-items-center">
-                                <div class="bg-info bg-opacity-10 p-3 rounded me-3">
-                                    <i class="bi bi-map fs-3 text-info"></i>
-                                </div>
-                                <div>
-                                    <h6 class="card-subtitle mb-1 text-muted">Areas</h6>
-                                    <h3 class="card-title mb-0" id="stat-areas">-</h3>
-                                </div>
-                            </div>
+                        <div class="text-green-500 space-y-1">
+                            <p>Connecting to tocGPT Server...</p>
+                            <p>Host: toc.mudserver.com</p>
+                            <p>Port: 4000</p>
+                            <p>Connected.</p>
+                            <br>
+                            <pre class="text-red-600 font-bold leading-none">
+  / _ \___ _/ /  ___ ___  / _/
+ / // / _ `/ /__/ -_|_-< / _/ 
+/____/\_,_/____/\__/___/___/  
+      CHAOS MUD SYSTEM v2.0
+                            </pre>
+                            <br>
+                            <p class="text-gray-300">Welcome to Tales of Chaos.</p>
+                            <p class="text-gray-300">By what name do you wish to be known?</p>
+                            <p class="blinking-cursor">></p>
                         </div>
                     </div>
                 </div>
 
-                <div class="row g-4">
-                    <!-- WizInfo -->
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <i class="bi bi-broadcast me-2"></i> Broadcast WizInfo
-                            </div>
-                            <div class="card-body">
-                                <form onsubmit="sendWizInfo(event)">
-                                    <div class="mb-3">
-                                        <label class="form-label">Message</label>
-                                        <textarea class="form-control" id="wizinfo-msg" rows="3" required></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Min Level</label>
-                                        <input type="number" class="form-control" id="wizinfo-level" value="62">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary"><i class="bi bi-send me-2"></i> Send Broadcast</button>
-                                </form>
-                            </div>
+                <!-- Server Details -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-4">Live Server Status</h2>
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="flex h-3 w-3 relative">
+                                <span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span id="status-dot" class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                            </span>
+                            <span id="status-text" class="text-green-400 font-mono">ONLINE</span>
                         </div>
+                        <p class="text-gray-400 mb-6">
+                            Experience the thrill of pure imagination. No graphics card required.
+                            Our server runs a modified ROM codebase inside a modern Docker container, ensuring stability and performance.
+                        </p>
                     </div>
 
-                    <!-- Server Command -->
-                    <div class="col-md-6">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <i class="bi bi-terminal-fill me-2"></i> Server Command
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-[#151515] p-4 rounded border-l-2 border-red-700">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Port</div>
+                            <div class="text-white font-mono text-xl flex items-center gap-2">
+                                4000 
+                                <button onclick="copyToClipboard('4000')" class="text-xs text-gray-600 hover:text-white"><i class="fa-regular fa-copy"></i></button>
                             </div>
-                            <div class="card-body">
-                                <form onsubmit="sendCommand(event)">
-                                    <div class="mb-3">
-                                        <label class="form-label">Command</label>
-                                        <input type="text" class="form-control" id="server-cmd" placeholder="e.g. copyover" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-danger"><i class="bi bi-lightning-charge me-2"></i> Execute</button>
-                                </form>
-                            </div>
+                        </div>
+                        <div class="bg-[#151515] p-4 rounded border-l-2 border-red-700">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Protocol</div>
+                            <div class="text-white font-mono text-xl">Telnet</div>
                         </div>
                     </div>
                 </div>
+
             </div>
-
-            <!-- Database View -->
-            <div id="view-database" class="view-section d-none">
-                <h2 class="mb-4 border-bottom pb-2 border-secondary">Database Browser</h2>
-                
-                <ul class="nav nav-tabs mb-4" id="dbTabs">
-                    <li class="nav-item">
-                        <button class="nav-link active" onclick="loadDb('mobs')">Mobiles</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" onclick="loadDb('objects')">Objects</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" onclick="loadDb('rooms')">Rooms</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link" onclick="loadDb('areas')">Areas</button>
-                    </li>
-                </ul>
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text bg-dark border-secondary text-secondary"><i class="bi bi-search"></i></span>
-                            <input type="text" class="form-control" id="db-search" placeholder="Search..." onkeyup="filterDb()">
-                        </div>
-                        <div class="table-responsive" style="max-height: 600px;">
-                            <table class="table table-hover table-dark mb-0">
-                                <thead>
-                                    <tr id="db-headers">
-                                        <!-- Headers injected via JS -->
-                                    </tr>
-                                </thead>
-                                <tbody id="db-content">
-                                    <tr><td colspan="5" class="text-center text-muted py-4">Select a category to load data</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Logs View -->
-            <div id="view-logs" class="view-section d-none">
-                <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2 border-secondary">
-                    <h2 class="mb-0">Server Logs</h2>
-                    <button class="btn btn-outline-light btn-sm" onclick="refreshLogs()"><i class="bi bi-arrow-clockwise me-2"></i> Refresh</button>
-                </div>
-                <div id="log-terminal" class="log-terminal">
-                    Loading logs...
-                </div>
-            </div>
-
         </div>
-    </div>
+    </section>
 
-    <!-- Object Detail Modal -->
-    <div class="modal fade" id="objectModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content bg-dark border-secondary text-light">
-                <div class="modal-header border-secondary">
-                    <h5 class="modal-title">Object Details</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+    <!-- Features Grid -->
+    <section id="world" class="py-20 bg-[#0f0f0f]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">A World of Text</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Features derived from the legendary ROM architecture, enhanced for the modern era.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="stat-card p-8 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-red-500">
+                        <i class="fa-solid fa-skull-crossbones text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Tactical Combat</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Real-time text combat based on THAC0 mechanics. Manage your skills, spells, and equipment weight to survive against legendary mobs like the Red Dragon.
+                    </p>
                 </div>
-                <div class="modal-body" id="object-modal-body">
+
+                <!-- Feature 2 -->
+                <div class="stat-card p-8 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-500">
+                        <i class="fa-solid fa-hat-wizard text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Complex Magic</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Hundreds of spells across distinct schools of magic. From simple heals to room-clearing chaos storms. Mana management is key.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="stat-card p-8 rounded-lg text-center">
+                    <div class="w-16 h-16 bg-yellow-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-500">
+                        <i class="fa-solid fa-scroll text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">50+ Custom Areas</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Explore thousands of unique rooms defined in our `.are` files. Visit Midgaard, Moria, or the dangerous realm of Thalos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes -->
+    <section id="classes" class="py-20 bg-[#0a0a0a] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <div class="w-full md:w-1/3 sticky top-24">
+                    <h2 class="text-4xl font-bold text-white mb-6">Choose Your Path</h2>
+                    <p class="text-gray-400 mb-8">
+                        Your class defines your journey. Will you rely on brute strength, divine favor, arcane knowledge, or subtle strikes?
+                    </p>
+                    <div class="space-y-2">
+                        <button onclick="showClass('warrior')" class="class-btn w-full text-left px-4 py-3 bg-red-900/20 hover:bg-red-900/40 border-l-4 border-red-600 text-white font-medium transition-all active">Warrior</button>
+                        <button onclick="showClass('mage')" class="class-btn w-full text-left px-4 py-3 hover:bg-blue-900/20 border-l-4 border-transparent hover:border-blue-500 text-gray-400 hover:text-white transition-all">Mage</button>
+                        <button onclick="showClass('cleric')" class="class-btn w-full text-left px-4 py-3 hover:bg-yellow-900/20 border-l-4 border-transparent hover:border-yellow-500 text-gray-400 hover:text-white transition-all">Cleric</button>
+                        <button onclick="showClass('thief')" class="class-btn w-full text-left px-4 py-3 hover:bg-green-900/20 border-l-4 border-transparent hover:border-green-500 text-gray-400 hover:text-white transition-all">Thief</button>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-2/3 bg-[#111] border border-gray-800 rounded-lg p-8 min-h-[400px]" id="class-display">
                     <!-- Content injected via JS -->
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Toast Container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-900 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-gray-500 text-sm">
+                &copy; 2023 tocGPT Project. Based on Merc/ROM Codebase.
             </div>
-            <div class="toast-body" id="toast-msg"></div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-500 hover:text-white"><i class="fa-brands fa-discord text-xl"></i></a>
+                <a href="#" class="text-gray-500 hover:text-white"><i class="fa-brands fa-twitter text-xl"></i></a>
+                <a href="https://github.com/jeremydbean/tocgpt" class="text-gray-500 hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
+            </div>
         </div>
-    </div>
+    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // State
-        let currentDb = 'mobs';
-        let dbData = { mobs: [], objects: [], rooms: [], areas: [] };
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
 
-        // Navigation
-        function showView(viewId, linkEl) {
-            document.querySelectorAll('.view-section').forEach(el => el.classList.add('d-none'));
-            document.getElementById('view-' + viewId).classList.remove('d-none');
-            
-            if(linkEl) {
-                document.querySelectorAll('.sidebar .nav-link').forEach(el => el.classList.remove('active'));
-                linkEl.classList.add('active');
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert('Port copied to clipboard!');
+        }
+
+        // Class Data
+        const classes = {
+            warrior: {
+                title: "The Warrior",
+                icon: "fa-shield-halved",
+                color: "text-red-500",
+                desc: "Masters of weapons and combat tactics. Warriors have the highest health pools and can wear the heaviest armor.",
+                stats: [
+                    { label: "Strength", val: "95%" },
+                    { label: "Magic", val: "10%" },
+                    { label: "Defense", val: "90%" }
+                ],
+                skills: ["Kick", "Bash", "Rescue", "Parry", "Double Attack"]
+            },
+            mage: {
+                title: "The Mage",
+                icon: "fa-hat-wizard",
+                color: "text-blue-500",
+                desc: "Scholars of the arcane. Mages are physically weak but command devastating elemental spells that can destroy entire rooms of enemies.",
+                stats: [
+                    { label: "Strength", val: "20%" },
+                    { label: "Magic", val: "100%" },
+                    { label: "Defense", val: "30%" }
+                ],
+                skills: ["Fireball", "Lightning Bolt", "Teleport", "Invisibility", "Sleep"]
+            },
+            cleric: {
+                title: "The Cleric",
+                icon: "fa-cross",
+                color: "text-yellow-500",
+                desc: "Servants of the gods. Clerics keep the party alive with healing magic and protect them with powerful blessings.",
+                stats: [
+                    { label: "Strength", val: "60%" },
+                    { label: "Magic", val: "85%" },
+                    { label: "Defense", val: "60%" }
+                ],
+                skills: ["Heal", "Sanctuary", "Bless", "Curse", "Resurrection"]
+            },
+            thief: {
+                title: "The Thief",
+                icon: "fa-mask",
+                color: "text-green-500",
+                desc: "Masters of stealth and trickery. Thieves strike from the shadows and can pick locks or steal gold from enemies.",
+                stats: [
+                    { label: "Strength", val: "60%" },
+                    { label: "Magic", val: "20%" },
+                    { label: "Defense", val: "70%" }
+                ],
+                skills: ["Backstab", "Pick Lock", "Steal", "Hide", "Sneak"]
             }
+        };
 
-            if(viewId === 'logs') refreshLogs();
-            if(viewId === 'database' && dbData[currentDb].length === 0) loadDb(currentDb);
+        // Initialize Class Display
+        function renderClass(key) {
+            const c = classes[key];
+            const html = `
+                <div class="animate-fade-in">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fa-solid ${c.icon} text-4xl ${c.color}"></i>
+                        <h3 class="text-3xl font-cinzel font-bold text-white">${c.title}</h3>
+                    </div>
+                    <p class="text-gray-300 text-lg mb-8 leading-relaxed">${c.desc}</p>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-wide text-sm">Base Attributes</h4>
+                        <div class="space-y-3">
+                            ${c.stats.map(s => `
+                                <div class="flex items-center gap-3">
+                                    <div class="w-24 text-gray-500 text-sm">${s.label}</div>
+                                    <div class="flex-1 bg-gray-800 rounded-full h-2">
+                                        <div class="h-2 rounded-full ${c.color.replace('text-', 'bg-')}" style="width: ${s.val}"></div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="text-white font-bold mb-4 uppercase tracking-wide text-sm">Key Abilities</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${c.skills.map(sk => `
+                                <span class="px-3 py-1 rounded bg-gray-800 text-gray-300 text-sm border border-gray-700">${sk}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('class-display').innerHTML = html;
         }
 
-        // Actions
-        async function action(type) {
-            if(!confirm('Are you sure?')) return;
-            try {
-                await fetch('/api/' + type, { method: 'POST' });
-                showToast(type + ' queued successfully');
-            } catch(e) { showToast('Error: ' + e, true); }
-        }
-
-        async function sendWizInfo(e) {
-            e.preventDefault();
-            const msg = document.getElementById('wizinfo-msg').value;
-            const level = document.getElementById('wizinfo-level').value;
-            try {
-                await fetch('/api/wizinfo', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({message: msg, level: parseInt(level)})
-                });
-                showToast('Broadcast queued');
-                e.target.reset();
-            } catch(e) { showToast('Error: ' + e, true); }
-        }
-
-        async function sendCommand(e) {
-            e.preventDefault();
-            const cmd = document.getElementById('server-cmd').value;
-            try {
-                await fetch('/api/command', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({command: cmd})
-                });
-                showToast('Command queued');
-                e.target.reset();
-            } catch(e) { showToast('Error: ' + e, true); }
-        }
-
-        // Logs
-        async function refreshLogs() {
-            const el = document.getElementById('log-terminal');
-            try {
-                const res = await fetch('/api/logs');
-                el.textContent = await res.text();
-                el.scrollTop = el.scrollHeight;
-            } catch(e) { el.textContent = 'Error loading logs'; }
-        }
-
-        // Database
-        async function loadDb(type) {
-            currentDb = type;
-            
-            // Update tabs
-            document.querySelectorAll('#dbTabs .nav-link').forEach(el => {
-                el.classList.toggle('active', el.textContent.toLowerCase().includes(type === 'mobs' ? 'mobiles' : type));
-            });
-
-            const content = document.getElementById('db-content');
-            content.innerHTML = '<tr><td colspan="5" class="text-center py-4"><div class="spinner-border text-primary"></div></td></tr>';
-
-            try {
-                if(dbData[type].length === 0) {
-                    const res = await fetch('/api/' + type + (type === 'areas' ? '' : '?limit=1000'));
-                    dbData[type] = await res.json();
+        function showClass(key) {
+            // Update buttons
+            document.querySelectorAll('.class-btn').forEach(btn => {
+                btn.className = "class-btn w-full text-left px-4 py-3 hover:bg-gray-800 border-l-4 border-transparent text-gray-400 hover:text-white transition-all";
+                if(btn.textContent.toLowerCase().includes(key)) {
+                    const color = classes[key].color.replace('text-', ''); // Extract color name roughly
+                    let borderColor = 'border-gray-500';
+                    if(key === 'warrior') borderColor = 'border-red-600';
+                    if(key === 'mage') borderColor = 'border-blue-600';
+                    if(key === 'cleric') borderColor = 'border-yellow-600';
+                    if(key === 'thief') borderColor = 'border-green-600';
+                    
+                    btn.className = `class-btn w-full text-left px-4 py-3 bg-gray-900 ${borderColor} text-white font-medium transition-all`;
                 }
-                renderDb(dbData[type]);
-            } catch(e) {
-                content.innerHTML = `<tr><td colspan="5" class="text-center text-danger py-4">Error loading data: ${e}</td></tr>`;
-            }
+            });
+            renderClass(key);
         }
 
-        function renderDb(data) {
-            const headers = document.getElementById('db-headers');
-            const content = document.getElementById('db-content');
-            
-            let headerHtml = '';
-            let rowsHtml = '';
+        // Initial Render
+        showClass('warrior');
 
-            if(currentDb === 'mobs') {
-                headerHtml = '<th>Vnum</th><th>Name</th><th>Level</th><th>Race</th><th>Area</th>';
-                rowsHtml = data.map(m => `
-                    <tr>
-                        <td><span class="badge vnum-badge">#${m.vnum}</span></td>
-                        <td>${m.short_desc || 'Unnamed'}</td>
-                        <td>${m.level}</td>
-                        <td>${m.race}</td>
-                        <td>${m.area || '-'}</td>
-                    </tr>
-                `).join('');
-            } else if(currentDb === 'objects') {
-                headerHtml = '<th>Vnum</th><th>Name</th><th>Type</th><th>Level</th><th>Area</th>';
-                rowsHtml = data.map(o => `
-                    <tr style="cursor: pointer" data-vnum="${o.vnum}">
-                        <td><span class="badge vnum-badge">#${o.vnum}</span></td>
-                        <td>${o.short_desc || 'Unnamed'}</td>
-                        <td>${o.item_type}</td>
-                        <td>${o.level}</td>
-                        <td>${o.area || '-'}</td>
-                    </tr>
-                `).join('');
-            } else if(currentDb === 'rooms') {
-                headerHtml = '<th>Vnum</th><th>Name</th><th>Sector</th><th>Area</th>';
-                rowsHtml = data.map(r => `
-                    <tr>
-                        <td><span class="badge vnum-badge">#${r.vnum}</span></td>
-                        <td>${r.name || 'Unnamed'}</td>
-                        <td>${r.sector_type}</td>
-                        <td>${r.area || '-'}</td>
-                    </tr>
-                `).join('');
-            } else if(currentDb === 'areas') {
-                headerHtml = '<th>Name</th><th>Filename</th><th>Builders</th><th>Vnums</th>';
-                rowsHtml = data.map(a => `
-                    <tr>
-                        <td>${a.name}</td>
-                        <td><code>${a.filename}</code></td>
-                        <td>${a.builders}</td>
-                        <td>${a.vnums}</td>
-                    </tr>
-                `).join('');
-            }
-
-            headers.innerHTML = headerHtml;
-            content.innerHTML = rowsHtml || '<tr><td colspan="5" class="text-center py-4">No results found</td></tr>';
-        }
-
-        let objectModal = null;
-
-        async function showObject(vnum) {
-            if (!objectModal) {
-                objectModal = new bootstrap.Modal(document.getElementById('objectModal'));
-            }
-            
-            const body = document.getElementById('object-modal-body');
-            body.innerHTML = '<div class="text-center"><div class="spinner-border text-primary"></div></div>';
-            objectModal.show();
-
+        // Server Status Check
+        async function checkStatus() {
             try {
-                const res = await fetch('/api/objects/' + vnum);
-                const obj = await res.json();
+                const res = await fetch('/api/health');
+                const data = await res.json();
+                const statusPing = document.getElementById('status-ping');
+                const statusDot = document.getElementById('status-dot');
+                const statusText = document.getElementById('status-text');
                 
-                let affectsHtml = obj.affects.map(a => `<span class="badge bg-info me-1">${a}</span>`).join('');
-                if (!affectsHtml) affectsHtml = '<span class="text-muted">None</span>';
-
-                let extraFlagsHtml = obj.extra_flags.map(f => `<span class="badge bg-secondary me-1">${f}</span>`).join('');
-                if (!extraFlagsHtml) extraFlagsHtml = '<span class="text-muted">None</span>';
-
-                let wearFlagsHtml = obj.wear_flags.map(f => `<span class="badge bg-secondary me-1">${f}</span>`).join('');
-                if (!wearFlagsHtml) wearFlagsHtml = '<span class="text-muted">None</span>';
-
-                let valuesHtml = obj.values.map((v, i) => `<div><strong>Val ${i}:</strong> ${v}</div>`).join('');
-
-                body.innerHTML = `
-                    <div class="row mb-3">
-                        <div class="col-md-8">
-                            <h4>${obj.short_desc} <span class="badge vnum-badge">#${obj.vnum}</span></h4>
-                            <p class="text-muted"><em>${obj.long_desc}</em></p>
-                        </div>
-                        <div class="col-md-4 text-end">
-                            <span class="badge bg-primary">${obj.item_type}</span>
-                            <div class="mt-2">Level: ${obj.level}</div>
-                        </div>
-                    </div>
-                    
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="card bg-dark border-secondary mb-3">
-                                <div class="card-header py-1">Properties</div>
-                                <div class="card-body py-2">
-                                    <div><strong>Material:</strong> ${obj.material}</div>
-                                    <div><strong>Weight:</strong> ${obj.weight}</div>
-                                    <div><strong>Cost:</strong> ${obj.cost}</div>
-                                    <div><strong>Condition:</strong> ${obj.condition}</div>
-                                    <div><strong>Area:</strong> ${obj.area} (${obj.area_file})</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card bg-dark border-secondary mb-3">
-                                <div class="card-header py-1">Values</div>
-                                <div class="card-body py-2">
-                                    ${valuesHtml}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <strong>Extra Flags:</strong> ${extraFlagsHtml} <small class="text-muted">(${obj.extra_flags_raw})</small><br>
-                        <strong>Extra Flags 2:</strong> <small class="text-muted">${obj.extra_flags2_raw}</small><br>
-                        <strong>Wear Flags:</strong> ${wearFlagsHtml} <small class="text-muted">(${obj.wear_flags_raw})</small>
-                    </div>
-
-                    <div class="mb-3">
-                        <strong>Affects:</strong><br>
-                        ${affectsHtml}
-                    </div>
-                    
-                    ${obj.extra_descr.length > 0 ? `
-                    <div class="mb-3">
-                        <strong>Extra Descriptions:</strong>
-                        ${obj.extra_descr.map(ed => `
-                            <div class="border-start border-secondary ps-2 mt-1">
-                                <strong>${ed.keywords}:</strong> ${ed.description}
-                            </div>
-                        `).join('')}
-                    </div>` : ''}
-                `;
-            } catch(e) {
-                body.innerHTML = `<div class="alert alert-danger">Error loading object: ${e}</div>`;
+                if (data.merc) {
+                    statusDot.className = "relative inline-flex rounded-full h-3 w-3 bg-green-500";
+                    statusPing.className = "animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75";
+                    statusText.className = "text-green-400 font-mono";
+                    statusText.textContent = "ONLINE";
+                } else {
+                    statusDot.className = "relative inline-flex rounded-full h-3 w-3 bg-red-500";
+                    statusPing.className = "";
+                    statusText.className = "text-red-400 font-mono";
+                    statusText.textContent = "OFFLINE";
+                }
+            } catch (e) {
+                console.error("Status check failed", e);
             }
         }
+        
+        setInterval(checkStatus, 30000);
+        checkStatus();
 
-        // Event delegation for table clicks
-        document.getElementById('db-content').addEventListener('click', function(e) {
-            const row = e.target.closest('tr');
-            if (row && row.dataset.vnum && currentDb === 'objects') {
-                showObject(row.dataset.vnum);
-            }
-        });
-
-        function filterDb() {
-            const q = document.getElementById('db-search').value.toLowerCase();
-            const filtered = dbData[currentDb].filter(item => 
-                JSON.stringify(item).toLowerCase().includes(q)
-            );
-            renderDb(filtered);
-        }
-
-        // Stats
-        async function loadStats() {
-            try {
-                const res = await fetch('/api/stats');
-                const s = await res.json();
-                document.getElementById('stat-mobs').textContent = s.mobiles;
-                document.getElementById('stat-objs').textContent = s.objects;
-                document.getElementById('stat-rooms').textContent = s.rooms;
-                document.getElementById('stat-areas').textContent = s.areas;
-            } catch(e) { console.error(e); }
-        }
-
-        // Utils
-        function showToast(msg, isError = false) {
-            const el = document.getElementById('liveToast');
-            const body = document.getElementById('toast-msg');
-            el.classList.toggle('text-bg-danger', isError);
-            el.classList.toggle('text-bg-primary', !isError);
-            body.textContent = msg;
-            const toast = new bootstrap.Toast(el);
-            toast.show();
-        }
-
-        // Init
-        loadStats();
-        setInterval(refreshLogs, 5000);
     </script>
 </body>
 </html>

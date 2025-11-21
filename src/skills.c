@@ -345,8 +345,8 @@ void do_spells(CHAR_DATA *ch, char *argument)
         else /* append */
         {
           if ( ++spell_columns[lev] % 2 == 0)
-            strlcat(spell_list[lev],"\n\r          ",sizeof(spell_list[lev]));
-          strlcat(spell_list[lev],buf,sizeof(spell_list[lev]));
+            toc_strlcat(spell_list[lev],"\n\r          ",sizeof(spell_list[lev]));
+          toc_strlcat(spell_list[lev],buf,sizeof(spell_list[lev]));
         }
       }
     }
@@ -412,8 +412,8 @@ void do_skills(CHAR_DATA *ch, char *argument)
         else /* append */
         {
           if ( ++skill_columns[lev] % 2 == 0)
-            strlcat(skill_list[lev],"\n\r          ",sizeof(skill_list[lev]));
-          strlcat(skill_list[lev],buf,sizeof(skill_list[lev]));
+            toc_strlcat(skill_list[lev],"\n\r          ",sizeof(skill_list[lev]));
+          toc_strlcat(skill_list[lev],buf,sizeof(skill_list[lev]));
         }
       }
     }

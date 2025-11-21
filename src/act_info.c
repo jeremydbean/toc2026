@@ -97,35 +97,35 @@ char *format_obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort )
 
     buf[0] = '\0';
     if ( IS_OBJ_STAT(obj, ITEM_INVIS) )
-        strlcat( buf, "(Invis) ", sizeof(buf) );
+        toc_strlcat( buf, "(Invis) ", sizeof(buf) );
     if ( IS_AFFECTED(ch, AFF_DETECT_EVIL)
          && IS_OBJ_STAT(obj, ITEM_EVIL) )
-        strlcat( buf, "(Red Aura) ", sizeof(buf) );
+        toc_strlcat( buf, "(Red Aura) ", sizeof(buf) );
     if ( IS_AFFECTED(ch, AFF_DETECT_MAGIC)
          && IS_OBJ_STAT(obj, ITEM_MAGIC) )
-        strlcat( buf, "(Magical) ", sizeof(buf) );
+        toc_strlcat( buf, "(Magical) ", sizeof(buf) );
     if ( IS_OBJ_STAT(obj, ITEM_GLOW) )
-        strlcat( buf, "(Glowing) ", sizeof(buf) );
+        toc_strlcat( buf, "(Glowing) ", sizeof(buf) );
     if ( IS_OBJ_STAT(obj, ITEM_HUM) )
-        strlcat( buf, "(Humming) ", sizeof(buf) );
+        toc_strlcat( buf, "(Humming) ", sizeof(buf) );
     if ( IS_OBJ_STAT(obj, ITEM_DAMAGED) )
-        strlcat( buf, "(Damaged) ", sizeof(buf) );
-/*    if ( IS_OBJ_STAT(obj, ITEM_EMBALMED   )   strlcat( buf, "(Embalmed) ", sizeof(buf) ); */
+        toc_strlcat( buf, "(Damaged) ", sizeof(buf) );
+/*    if ( IS_OBJ_STAT(obj, ITEM_EMBALMED   )   toc_strlcat( buf, "(Embalmed) ", sizeof(buf) ); */
  /*
       if ( IS_AFFECTED(ch, AFF_DETECT_GOOD)
-	    && IS_OBJ_STAT(obj, ITEM_GOOD)   )   strlcat( buf, "(Silver) ", sizeof(buf) );
+	    && IS_OBJ_STAT(obj, ITEM_GOOD)   )   toc_strlcat( buf, "(Silver) ", sizeof(buf) );
 
 	 <if used, declare in merc.h for new item spec>
 */
     if ( fShort )
     {
         if ( obj->short_descr != NULL )
-            strlcat( buf, obj->short_descr, sizeof(buf) );
+            toc_strlcat( buf, obj->short_descr, sizeof(buf) );
     }
     else
     {
         if ( obj->description != NULL )
-            strlcat( buf, obj->description, sizeof(buf) );
+            toc_strlcat( buf, obj->description, sizeof(buf) );
     }
 
     return buf;
@@ -258,53 +258,53 @@ void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 
     if(IS_NPC(victim) && ch->questmob > 0 && victim->pIndexData->vnum ==
         ch->questmob )
-        strlcat( buf, "[TARGET] ", sizeof(buf) );
+        toc_strlcat( buf, "[TARGET] ", sizeof(buf) );
 
 if(!scan)
   {
     if ( !IS_NPC(victim) && !victim->desc )
-        strlcat( buf, "(Linkdead) ", sizeof(buf) );
+        toc_strlcat( buf, "(Linkdead) ", sizeof(buf) );
     if ( IS_AFFECTED(victim, AFF_INVISIBLE) )
-        strlcat( buf, "(Invis) ", sizeof(buf) );
+        toc_strlcat( buf, "(Invis) ", sizeof(buf) );
     if ( IS_AFFECTED(victim, AFF_FLYING) )
-        strlcat( buf, "(Flying) ", sizeof(buf) );
+        toc_strlcat( buf, "(Flying) ", sizeof(buf) );
 
     if ( IS_AFFECTED(victim, AFF_SWIM)
          && (victim->in_room->sector_type == SECT_WATER_NOSWIM
          || victim->in_room->sector_type == SECT_WATER_SWIM) )
-        strlcat( buf, "(Swimming) ", sizeof(buf) );
+        toc_strlcat( buf, "(Swimming) ", sizeof(buf) );
 
     if ( !IS_NPC(victim)
          && IS_SET(victim->act, PLR_WIZINVIS) )
-        strlcat( buf, "(Wizi) ", sizeof(buf) );
+        toc_strlcat( buf, "(Wizi) ", sizeof(buf) );
     if ( IS_AFFECTED(victim, AFF_HIDE) )
-        strlcat( buf, "(Hide) ", sizeof(buf) );
+        toc_strlcat( buf, "(Hide) ", sizeof(buf) );
     if ( IS_AFFECTED(victim, AFF_CHARM) )
-        strlcat( buf, "(Charmed) ", sizeof(buf) );
+        toc_strlcat( buf, "(Charmed) ", sizeof(buf) );
     if ( IS_AFFECTED(victim, AFF_PASS_DOOR) )
-        strlcat( buf, "(Translucent) ", sizeof(buf) );
+        toc_strlcat( buf, "(Translucent) ", sizeof(buf) );
     if ( IS_AFFECTED(victim, AFF_FAERIE_FIRE) )
-        strlcat( buf, "(Pink Aura) ", sizeof(buf) );
+        toc_strlcat( buf, "(Pink Aura) ", sizeof(buf) );
     if ( IS_AFFECTED(victim, AFF_SANCTUARY) )
-        strlcat( buf, "(White Aura) ", sizeof(buf) );
+        toc_strlcat( buf, "(White Aura) ", sizeof(buf) );
     if ( IS_EVIL(victim)
     &&   IS_AFFECTED(ch, AFF_DETECT_EVIL) )
-        strlcat( buf, "(Red Aura) ", sizeof(buf) );
+        toc_strlcat( buf, "(Red Aura) ", sizeof(buf) );
     if ( IS_GOOD(victim)
     &&   IS_AFFECTED2(ch, AFF2_DETECT_GOOD) )
-        strlcat( buf, "(Silver Aura) ", sizeof(buf) );
+        toc_strlcat( buf, "(Silver Aura) ", sizeof(buf) );
     if ( IS_AFFECTED2(victim, AFF2_STEALTH) )
-        strlcat( buf, "(Stealth Mode) ", sizeof(buf) );
+        toc_strlcat( buf, "(Stealth Mode) ", sizeof(buf) );
     if ( IS_AFFECTED2(victim, AFF2_FLAMING_HOT) )
-        strlcat( buf, "(Flaming) ", sizeof(buf) );
+        toc_strlcat( buf, "(Flaming) ", sizeof(buf) );
     if ( IS_AFFECTED2(victim, AFF2_FLAMING_COLD) )
-        strlcat( buf, "(Frosty) ", sizeof(buf) );
+        toc_strlcat( buf, "(Frosty) ", sizeof(buf) );
     if ( IS_AFFECTED2(victim, AFF2_FORCE_SWORD) )
-        strlcat( buf, "(Guarded) ", sizeof(buf) );
+        toc_strlcat( buf, "(Guarded) ", sizeof(buf) );
     if ( IS_AFFECTED2(victim, AFF2_GHOST) )
-        strlcat( buf, "(Ghostly) ", sizeof(buf) );
+        toc_strlcat( buf, "(Ghostly) ", sizeof(buf) );
     if ( !IS_NPC(victim) && IS_SET(victim->act, PLR_TRAITOR ) )
-        strlcat( buf, "(TRAITOR) ", sizeof(buf) );
+        toc_strlcat( buf, "(TRAITOR) ", sizeof(buf) );
 
   }
 
@@ -323,29 +323,29 @@ if(!scan)
     if( victim->position == victim->start_pos
          && victim->long_descr[0] != '\0')
     {
-      strlcat( buf, victim->long_descr, sizeof(buf) );
+      toc_strlcat( buf, victim->long_descr, sizeof(buf) );
       send_to_char( buf, ch );
       return;
     }
 
   }
 
-  strlcat( buf, PERS( victim, ch ), sizeof(buf) );
+  toc_strlcat( buf, PERS( victim, ch ), sizeof(buf) );
 
 /*   if(IS_NPC(victim)&&ch->questmob > 0 && victim->pIndexData->vnum == ch->questmob)
-	strlcat( buf,"[*TARGET*]", sizeof(buf) );
+	toc_strlcat( buf,"[*TARGET*]", sizeof(buf) );
 */
 
   if ( (!IS_NPC(victim) && !IS_SET(ch->comm, COMM_BRIEF) ) )
   {
     if( victim->pcdata->mounted )
     {
-      strlcat( buf, " the ", sizeof(buf) );
-      strlcat( buf, title_table [victim->class] [victim->level]
+      toc_strlcat( buf, " the ", sizeof(buf) );
+      toc_strlcat( buf, title_table [victim->class] [victim->level]
                          [victim->sex == SEX_FEMALE ? 1 : 0], sizeof(buf) );
      }
      else
-       strlcat( buf, victim->pcdata->title, sizeof(buf) );
+       toc_strlcat( buf, victim->pcdata->title, sizeof(buf) );
   }
 
   if(scan)
@@ -353,43 +353,43 @@ if(!scan)
 
   if(!IS_NPC(victim) && victim->pet != NULL && victim->pcdata->mounted )
   {
-     strlcat(buf, " is here, riding on the back of ", sizeof(buf));
+     toc_strlcat(buf, " is here, riding on the back of ", sizeof(buf));
      if(can_see(ch,victim->pet) )
-         strlcat( buf, PERS( victim->pet, ch ), sizeof(buf) );
+         toc_strlcat( buf, PERS( victim->pet, ch ), sizeof(buf) );
      else
-       strlcat( buf,"something", sizeof(buf));
+       toc_strlcat( buf,"something", sizeof(buf));
 
-     strlcat( buf, ".", sizeof(buf) );
+     toc_strlcat( buf, ".", sizeof(buf) );
   }
   else
   {
    switch ( victim->position )
    {
-    case POS_DEAD:     strlcat( buf, " is DEAD!!", sizeof(buf) );              break;
-    case POS_MORTAL:   strlcat( buf, " is mortally wounded.", sizeof(buf) );   break;
-    case POS_INCAP:    strlcat( buf, " is incapacitated.", sizeof(buf) );      break;
-    case POS_STUNNED:  strlcat( buf, " is lying here stunned.", sizeof(buf) ); break;
-    case POS_SLEEPING: strlcat( buf, " is sleeping here.", sizeof(buf) );      break;
-    case POS_RESTING:  strlcat( buf, " is resting here.", sizeof(buf) );       break;
-    case POS_SITTING:  strlcat( buf, " is sitting here.", sizeof(buf) );	 break;
-    case POS_STANDING: strlcat( buf, " is here.", sizeof(buf) );               break;
+    case POS_DEAD:     toc_strlcat( buf, " is DEAD!!", sizeof(buf) );              break;
+    case POS_MORTAL:   toc_strlcat( buf, " is mortally wounded.", sizeof(buf) );   break;
+    case POS_INCAP:    toc_strlcat( buf, " is incapacitated.", sizeof(buf) );      break;
+    case POS_STUNNED:  toc_strlcat( buf, " is lying here stunned.", sizeof(buf) ); break;
+    case POS_SLEEPING: toc_strlcat( buf, " is sleeping here.", sizeof(buf) );      break;
+    case POS_RESTING:  toc_strlcat( buf, " is resting here.", sizeof(buf) );       break;
+    case POS_SITTING:  toc_strlcat( buf, " is sitting here.", sizeof(buf) );	 break;
+    case POS_STANDING: toc_strlcat( buf, " is here.", sizeof(buf) );               break;
     case POS_FIGHTING:
-	strlcat( buf, " is here, fighting ", sizeof(buf) );
+	toc_strlcat( buf, " is here, fighting ", sizeof(buf) );
 	if ( victim->fighting == NULL )
-	    strlcat( buf, "thin air??", sizeof(buf) );
+	    toc_strlcat( buf, "thin air??", sizeof(buf) );
 	else if ( victim->fighting == ch )
-	    strlcat( buf, "YOU!", sizeof(buf) );
+	    toc_strlcat( buf, "YOU!", sizeof(buf) );
 	else if ( victim->in_room == victim->fighting->in_room )
 	{
-	    strlcat( buf, PERS( victim->fighting, ch ), sizeof(buf) );
-	    strlcat( buf, ".", sizeof(buf) );
+	    toc_strlcat( buf, PERS( victim->fighting, ch ), sizeof(buf) );
+	    toc_strlcat( buf, ".", sizeof(buf) );
 	}
 	else
-	    strlcat( buf, "somone who left??", sizeof(buf) );
+	    toc_strlcat( buf, "somone who left??", sizeof(buf) );
 	break;
    }
   }
-    strlcat( buf, "\n\r", sizeof(buf) );
+    toc_strlcat( buf, "\n\r", sizeof(buf) );
     buf[0] = UPPER(buf[0]);
     send_to_char( buf, ch );
     return;
@@ -430,30 +430,30 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
     else
 	percent = -1;
 
-    strlcpy( buf, PERS(victim, ch), sizeof(buf) );
+    toc_strlcpy( buf, PERS(victim, ch), sizeof(buf) );
 
     if (percent >= 100)
-        strlcat( buf, " is in excellent condition.\n\r", sizeof(buf));
+        toc_strlcat( buf, " is in excellent condition.\n\r", sizeof(buf));
     else if (percent >= 90)
-        strlcat( buf, " has a few bruises.\n\r", sizeof(buf));
+        toc_strlcat( buf, " has a few bruises.\n\r", sizeof(buf));
     else if (percent >= 80)
-        strlcat( buf," has been battered quite a bit.\n\r", sizeof(buf));
+        toc_strlcat( buf," has been battered quite a bit.\n\r", sizeof(buf));
     else if (percent >=  70)
-        strlcat( buf, " is injured.\n\r", sizeof(buf));
+        toc_strlcat( buf, " is injured.\n\r", sizeof(buf));
     else if (percent >= 60)
-        strlcat( buf, " is wounded.\n\r", sizeof(buf));
+        toc_strlcat( buf, " is wounded.\n\r", sizeof(buf));
     else if (percent >= 50)
-        strlcat ( buf, " has some nasty wounds.\n\r", sizeof(buf));
+        toc_strlcat ( buf, " has some nasty wounds.\n\r", sizeof(buf));
     else if (percent >= 40 )
-        strlcat (buf, " is bleeding profusely.\n\r", sizeof(buf));
+        toc_strlcat (buf, " is bleeding profusely.\n\r", sizeof(buf));
     else if (percent >= 30 )
-        strlcat (buf, " is pretty hurt.\n\r", sizeof(buf));
+        toc_strlcat (buf, " is pretty hurt.\n\r", sizeof(buf));
     else if (percent >= 20 )
-        strlcat (buf, " is a bloody mess.\n\r", sizeof(buf));
+        toc_strlcat (buf, " is a bloody mess.\n\r", sizeof(buf));
     else if (percent >= 10 )
-        strlcat (buf, " is in critical condition.\n\r", sizeof(buf));
+        toc_strlcat (buf, " is in critical condition.\n\r", sizeof(buf));
     else
-        strlcat(buf, " is dying.\n\r", sizeof(buf));
+        toc_strlcat(buf, " is dying.\n\r", sizeof(buf));
 
     buf[0] = UPPER(buf[0]);
     send_to_char( buf, ch );
@@ -911,12 +911,12 @@ void do_prompt(CHAR_DATA *ch, char *argument)
    if( !strcmp( argument, "all" ) || !strcmp( argument, "default")) {
         buf[0] = '\0';
    } else {
-      strlcpy( buf, argument, sizeof(buf) );
+      toc_strlcpy( buf, argument, sizeof(buf) );
       if ( bounded_strlen(buf, sizeof(buf)) > 50 )
          buf[49] = '\0';
       smash_tilde( buf );
       if (str_suffix("%c",buf))
-        strlcat(buf,"%c", sizeof(buf));
+        toc_strlcat(buf,"%c", sizeof(buf));
 
    }
 
@@ -1111,7 +1111,7 @@ void do_exits( CHAR_DATA *ch, char *argument )
     if ( !check_blind( ch ) )
 	return;
 
-    strlcpy( buf, fAuto ? "[Exits:" : "Obvious exits:\n\r", sizeof(buf) );
+    toc_strlcpy( buf, fAuto ? "[Exits:" : "Obvious exits:\n\r", sizeof(buf) );
 
     found = false;
     for ( door = 0; door <= 9; door++ )
@@ -1124,12 +1124,12 @@ void do_exits( CHAR_DATA *ch, char *argument )
 	    found = true;
 	    if ( fAuto )
 	    {
-                strlcat( buf, " ", sizeof(buf) );
+                toc_strlcat( buf, " ", sizeof(buf) );
                 if ( IS_SET(pexit->exit_info, EX_CLOSED) )
-                    strlcat(buf, "(", sizeof(buf));
-                strlcat( buf, dir_name[door], sizeof(buf) );
+                    toc_strlcat(buf, "(", sizeof(buf));
+                toc_strlcat( buf, dir_name[door], sizeof(buf) );
                 if ( IS_SET(pexit->exit_info, EX_CLOSED) )
-                    strlcat(buf, ")", sizeof(buf));
+                    toc_strlcat(buf, ")", sizeof(buf));
             }
             else
             {
@@ -1162,10 +1162,10 @@ void do_exits( CHAR_DATA *ch, char *argument )
     }
 
     if ( !found )
-        strlcat( buf, fAuto ? " none" : "None.\n\r", sizeof(buf) );
+        toc_strlcat( buf, fAuto ? " none" : "None.\n\r", sizeof(buf) );
 
     if ( fAuto )
-        strlcat( buf, "]\n\r", sizeof(buf) );
+        toc_strlcat( buf, "]\n\r", sizeof(buf) );
 
     send_to_char( buf, ch );
     return;
@@ -1683,8 +1683,8 @@ void do_help( CHAR_DATA *ch, char *argument )
     {
         argument = one_argument(argument,argone);
         if (argall[0] != '\0')
-            strlcat(argall," ", sizeof(argall));
-        strlcat(argall,argone, sizeof(argall));
+            toc_strlcat(argall," ", sizeof(argall));
+        toc_strlcat(argall,argone, sizeof(argall));
     }
 
     for ( pHelp = help_first; pHelp != NULL; pHelp = pHelp->next )
@@ -1820,7 +1820,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
 	 	IS_SET(wch->act,PLR_CLOAKED) ? "[CLOAKED] " : "",
 		IS_SET(wch->act,PLR_AFK) ? "[*AFK*] " : "",
 		wch->name, IS_NPC(wch) ? "" : wch->pcdata->title);
-            strlcat(output,buf, sizeof(output));
+            toc_strlcat(output,buf, sizeof(output));
 
             page_to_char(output,ch);
 
@@ -2062,11 +2062,11 @@ void do_who( CHAR_DATA *ch, char *argument )
 	    IS_SET(wch->act, PLR_AFK)     ? "[*AFK*] " : "",
 	    wch->name,
 	    IS_NPC(wch) ? "" : wch->pcdata->title );
-        strlcat(output,buf, sizeof(output));
+        toc_strlcat(output,buf, sizeof(output));
     }
 
     snprintf( buf2, sizeof(buf2), "\n\rPlayers found: %d\n\r", nMatch );
-    strlcat(output,buf2, sizeof(output));
+    toc_strlcat(output,buf2, sizeof(output));
     page_to_char( output, ch );
     return;
 }
@@ -2521,11 +2521,11 @@ void set_title( CHAR_DATA *ch, char *title )
     if ( title[0] != '.' && title[0] != ',' && title[0] != '!' && title[0] != '?' )
     {
         buf[0] = ' ';
-        strlcpy( buf+1, title, sizeof(buf) - 1 );
+        toc_strlcpy( buf+1, title, sizeof(buf) - 1 );
     }
     else
     {
-        strlcpy( buf, title, sizeof(buf) );
+        toc_strlcpy( buf, title, sizeof(buf) );
     }
 
     free_string( ch->pcdata->title );
@@ -2585,7 +2585,7 @@ void do_description( CHAR_DATA *ch, char *argument )
         if ( argument[0] == '+' )
         {
             if ( ch->description != NULL )
-                strlcpy( buf, ch->description, sizeof(buf) );
+                toc_strlcpy( buf, ch->description, sizeof(buf) );
             argument++;
             while ( isspace(*argument) )
                 argument++;
@@ -2597,8 +2597,8 @@ void do_description( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-        strlcat( buf, argument, sizeof(buf) );
-        strlcat( buf, "\n\r", sizeof(buf) );
+        toc_strlcat( buf, argument, sizeof(buf) );
+        toc_strlcat( buf, "\n\r", sizeof(buf) );
 	free_string( ch->description );
 	ch->description = str_dup( buf );
     }
@@ -4324,7 +4324,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
    {
      char saveclass_copy[MAX_INPUT_LENGTH];
 
-     strlcpy(saveclass_copy, saveclass, sizeof(saveclass_copy));
+     toc_strlcpy(saveclass_copy, saveclass, sizeof(saveclass_copy));
      snprintf(saveclass,sizeof(saveclass),"%s %s",ch->pcdata->list_remorts,saveclass_copy);
 
      to_strip = str_dup(ch->pcdata->list_remorts);

@@ -51,6 +51,8 @@ char *	const	material_type	[]		=
 /* return the material name */
 char* material_name(int material)
 {
+  if (material < 0 || material >= 20)
+    return "unknown";
   return material_type[material];
 }
 
@@ -59,13 +61,13 @@ int material_lookup (const char *name)
 {
   int type;
 
-   for( type = 0; type < 19; type++)
+   for( type = 0; type < 20; type++)
    {
       if(!str_prefix(name, material_type[type]) )
 	return type;
    }
 
-   return 16;
+   return 19; /* unknown */
 }
 
 /* returns race number */
@@ -2756,28 +2758,28 @@ char *affect_bit_name( long vector )
     static char buf[512];
 
     buf[0] = '\0';
-    if ( vector & AFF_BLIND         ) strlcat( buf, " blind", sizeof(buf) );
-    if ( vector & AFF_INVISIBLE     ) strlcat( buf, " invisible", sizeof(buf) );
-    if ( vector & AFF_DETECT_EVIL   ) strlcat( buf, " detect_evil", sizeof(buf) );
-    if ( vector & AFF_DETECT_INVIS  ) strlcat( buf, " detect_invis", sizeof(buf) );
-    if ( vector & AFF_DETECT_MAGIC  ) strlcat( buf, " detect_magic", sizeof(buf) );
-    if ( vector & AFF_DETECT_HIDDEN ) strlcat( buf, " detect_hidden", sizeof(buf) );
-    if ( vector & AFF_SANCTUARY     ) strlcat( buf, " sanctuary", sizeof(buf) );
-    if ( vector & AFF_FAERIE_FIRE   ) strlcat( buf, " faerie_fire", sizeof(buf) );
-    if ( vector & AFF_INFRARED      ) strlcat( buf, " infrared", sizeof(buf) );
-    if ( vector & AFF_CURSE         ) strlcat( buf, " curse", sizeof(buf) );
-    if ( vector & AFF_POISON        ) strlcat( buf, " poison", sizeof(buf) );
-    if ( vector & AFF_PROTECT       ) strlcat( buf, " protect", sizeof(buf) );
-    if ( vector & AFF_SLEEP         ) strlcat( buf, " sleep", sizeof(buf) );
-    if ( vector & AFF_SNEAK         ) strlcat( buf, " sneak", sizeof(buf) );
-    if ( vector & AFF_HIDE          ) strlcat( buf, " hide", sizeof(buf) );
-    if ( vector & AFF_CHARM         ) strlcat( buf, " charm", sizeof(buf) );
-    if ( vector & AFF_FLYING        ) strlcat( buf, " flying", sizeof(buf) );
-    if ( vector & AFF_PASS_DOOR     ) strlcat( buf, " pass_door", sizeof(buf) );
-    if ( vector & AFF_BERSERK       ) strlcat( buf, " berserk", sizeof(buf) );
-    if ( vector & AFF_CALM          ) strlcat( buf, " calm", sizeof(buf) );
-    if ( vector & AFF_HASTE         ) strlcat( buf, " haste", sizeof(buf) );
-    if ( vector & AFF_PLAGUE        ) strlcat( buf, " plague", sizeof(buf) );
+    if ( vector & AFF_BLIND         ) toc_strlcat( buf, " blind", sizeof(buf) );
+    if ( vector & AFF_INVISIBLE     ) toc_strlcat( buf, " invisible", sizeof(buf) );
+    if ( vector & AFF_DETECT_EVIL   ) toc_strlcat( buf, " detect_evil", sizeof(buf) );
+    if ( vector & AFF_DETECT_INVIS  ) toc_strlcat( buf, " detect_invis", sizeof(buf) );
+    if ( vector & AFF_DETECT_MAGIC  ) toc_strlcat( buf, " detect_magic", sizeof(buf) );
+    if ( vector & AFF_DETECT_HIDDEN ) toc_strlcat( buf, " detect_hidden", sizeof(buf) );
+    if ( vector & AFF_SANCTUARY     ) toc_strlcat( buf, " sanctuary", sizeof(buf) );
+    if ( vector & AFF_FAERIE_FIRE   ) toc_strlcat( buf, " faerie_fire", sizeof(buf) );
+    if ( vector & AFF_INFRARED      ) toc_strlcat( buf, " infrared", sizeof(buf) );
+    if ( vector & AFF_CURSE         ) toc_strlcat( buf, " curse", sizeof(buf) );
+    if ( vector & AFF_POISON        ) toc_strlcat( buf, " poison", sizeof(buf) );
+    if ( vector & AFF_PROTECT       ) toc_strlcat( buf, " protect", sizeof(buf) );
+    if ( vector & AFF_SLEEP         ) toc_strlcat( buf, " sleep", sizeof(buf) );
+    if ( vector & AFF_SNEAK         ) toc_strlcat( buf, " sneak", sizeof(buf) );
+    if ( vector & AFF_HIDE          ) toc_strlcat( buf, " hide", sizeof(buf) );
+    if ( vector & AFF_CHARM         ) toc_strlcat( buf, " charm", sizeof(buf) );
+    if ( vector & AFF_FLYING        ) toc_strlcat( buf, " flying", sizeof(buf) );
+    if ( vector & AFF_PASS_DOOR     ) toc_strlcat( buf, " pass_door", sizeof(buf) );
+    if ( vector & AFF_BERSERK       ) toc_strlcat( buf, " berserk", sizeof(buf) );
+    if ( vector & AFF_CALM          ) toc_strlcat( buf, " calm", sizeof(buf) );
+    if ( vector & AFF_HASTE         ) toc_strlcat( buf, " haste", sizeof(buf) );
+    if ( vector & AFF_PLAGUE        ) toc_strlcat( buf, " plague", sizeof(buf) );
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
 
@@ -2786,18 +2788,18 @@ char *affect2_bit_name( long vector )
     static char buf[512];
 
     buf[0] = '\0';
-    if ( vector & AFF2_HOLD          ) strlcat( buf, " hold", sizeof(buf) );
-    if ( vector & AFF2_FLAMING_HOT   ) strlcat( buf, " hot flames", sizeof(buf) );
-    if ( vector & AFF2_FLAMING_COLD  ) strlcat( buf, " cold flames", sizeof(buf) );
-    if ( vector & AFF2_PARALYSIS     ) strlcat( buf, " paralysis", sizeof(buf) );
-    if ( vector & AFF2_DARK_VISION   ) strlcat( buf, " dark_vision", sizeof(buf) );
-    if ( vector & AFF2_DETECT_GOOD   ) strlcat( buf, " detect_good", sizeof(buf) );
-    if ( vector & AFF2_STEALTH       ) strlcat( buf, " stealth", sizeof(buf) );
-    if ( vector & AFF2_STUNNED       ) strlcat( buf, " stunned", sizeof(buf) );
-    if ( vector & AFF2_NO_RECOVER   ) strlcat( buf,  " sleepless", sizeof(buf) );
-    if ( vector & AFF2_FORCE_SWORD  ) strlcat( buf,  " force_sword", sizeof(buf) );
-    if ( vector & AFF2_GHOST	    ) strlcat( buf,  " ghostly_presence", sizeof(buf) );
-    if ( vector & AFF2_DIVINE_PROT  ) strlcat( buf,  " divine protection", sizeof(buf) );
+    if ( vector & AFF2_HOLD          ) toc_strlcat( buf, " hold", sizeof(buf) );
+    if ( vector & AFF2_FLAMING_HOT   ) toc_strlcat( buf, " hot flames", sizeof(buf) );
+    if ( vector & AFF2_FLAMING_COLD  ) toc_strlcat( buf, " cold flames", sizeof(buf) );
+    if ( vector & AFF2_PARALYSIS     ) toc_strlcat( buf, " paralysis", sizeof(buf) );
+    if ( vector & AFF2_DARK_VISION   ) toc_strlcat( buf, " dark_vision", sizeof(buf) );
+    if ( vector & AFF2_DETECT_GOOD   ) toc_strlcat( buf, " detect_good", sizeof(buf) );
+    if ( vector & AFF2_STEALTH       ) toc_strlcat( buf, " stealth", sizeof(buf) );
+    if ( vector & AFF2_STUNNED       ) toc_strlcat( buf, " stunned", sizeof(buf) );
+    if ( vector & AFF2_NO_RECOVER   ) toc_strlcat( buf,  " sleepless", sizeof(buf) );
+    if ( vector & AFF2_FORCE_SWORD  ) toc_strlcat( buf,  " force_sword", sizeof(buf) );
+    if ( vector & AFF2_GHOST	    ) toc_strlcat( buf,  " ghostly_presence", sizeof(buf) );
+    if ( vector & AFF2_DIVINE_PROT  ) toc_strlcat( buf,  " divine protection", sizeof(buf) );
     return (buf[0] != '\0' ) ? buf+1 : "none";
 }
 /*
@@ -2808,33 +2810,33 @@ char *extra_bit_name( int extra_flags )
     static char buf[512];
 
     buf[0] = '\0';
-    if ( extra_flags & ITEM_GLOW         ) strlcat( buf, " glow", sizeof(buf) );
-    if ( extra_flags & ITEM_HUM          ) strlcat( buf, " hum", sizeof(buf) );
-    if ( extra_flags & ITEM_DARK         ) strlcat( buf, " dark", sizeof(buf) );
-    if ( extra_flags & ITEM_LOCK         ) strlcat( buf, " lock", sizeof(buf) );
-    if ( extra_flags & ITEM_EVIL         ) strlcat( buf, " evil", sizeof(buf) );
-    if ( extra_flags & ITEM_INVIS        ) strlcat( buf, " invis", sizeof(buf) );
-    if ( extra_flags & ITEM_MAGIC        ) strlcat( buf, " magic", sizeof(buf) );
-    if ( extra_flags & ITEM_NODROP       ) strlcat( buf, " nodrop", sizeof(buf) );
-    if ( extra_flags & ITEM_BLESS        ) strlcat( buf, " bless", sizeof(buf) );
-    if ( extra_flags & ITEM_DAMAGED        ) strlcat( buf, " damaged", sizeof(buf) );
-    if ( extra_flags & ITEM_ANTI_GOOD    ) strlcat( buf, " anti-good", sizeof(buf) );
-    if ( extra_flags & ITEM_ANTI_EVIL    ) strlcat( buf, " anti-evil", sizeof(buf) );
-    if ( extra_flags & ITEM_ANTI_NEUTRAL ) strlcat( buf, " anti-neutral", sizeof(buf) );
-    if ( extra_flags & ITEM_NOREMOVE     ) strlcat( buf, " noremove", sizeof(buf) );
-    if ( extra_flags & ITEM_INVENTORY    ) strlcat( buf, " inventory", sizeof(buf) );
-    if ( extra_flags & ITEM_NOPURGE      ) strlcat( buf, " nopurge", sizeof(buf) );
-    if ( extra_flags & ITEM_VIS_DEATH    ) strlcat( buf, " vis_death", sizeof(buf) );
-    if ( extra_flags & ITEM_ROT_DEATH    ) strlcat( buf, " rot_death", sizeof(buf) );
-    if ( extra_flags & ITEM_METAL        ) strlcat( buf, " metal", sizeof(buf) );
-    if ( extra_flags & ITEM_BOUNCE       ) strlcat( buf, " bounce", sizeof(buf) );
-    if ( extra_flags & ITEM_TPORT        ) strlcat( buf, " Tport", sizeof(buf) );
-    if ( extra_flags & ITEM_NOIDENTIFY   ) strlcat( buf, " no_identify", sizeof(buf) );
-    if ( extra_flags & ITEM_NOLOCATE     ) strlcat( buf, " no_locate", sizeof(buf) );
-    if ( extra_flags & ITEM_RACE_RESTRICTED) strlcat( buf, " race_restrict", sizeof(buf) );
-    if ( extra_flags & ITEM_ADD_AFFECT   ) strlcat( buf, " aff_wearer", sizeof(buf) );
-    if ( extra_flags & ITEM_EMBALMED	 ) strlcat( buf, " embalmed", sizeof(buf) );
-    if ( extra_flags & ITEM_FLAGS2       ) strlcat( buf, " flags2", sizeof(buf) );
+    if ( extra_flags & ITEM_GLOW         ) toc_strlcat( buf, " glow", sizeof(buf) );
+    if ( extra_flags & ITEM_HUM          ) toc_strlcat( buf, " hum", sizeof(buf) );
+    if ( extra_flags & ITEM_DARK         ) toc_strlcat( buf, " dark", sizeof(buf) );
+    if ( extra_flags & ITEM_LOCK         ) toc_strlcat( buf, " lock", sizeof(buf) );
+    if ( extra_flags & ITEM_EVIL         ) toc_strlcat( buf, " evil", sizeof(buf) );
+    if ( extra_flags & ITEM_INVIS        ) toc_strlcat( buf, " invis", sizeof(buf) );
+    if ( extra_flags & ITEM_MAGIC        ) toc_strlcat( buf, " magic", sizeof(buf) );
+    if ( extra_flags & ITEM_NODROP       ) toc_strlcat( buf, " nodrop", sizeof(buf) );
+    if ( extra_flags & ITEM_BLESS        ) toc_strlcat( buf, " bless", sizeof(buf) );
+    if ( extra_flags & ITEM_DAMAGED        ) toc_strlcat( buf, " damaged", sizeof(buf) );
+    if ( extra_flags & ITEM_ANTI_GOOD    ) toc_strlcat( buf, " anti-good", sizeof(buf) );
+    if ( extra_flags & ITEM_ANTI_EVIL    ) toc_strlcat( buf, " anti-evil", sizeof(buf) );
+    if ( extra_flags & ITEM_ANTI_NEUTRAL ) toc_strlcat( buf, " anti-neutral", sizeof(buf) );
+    if ( extra_flags & ITEM_NOREMOVE     ) toc_strlcat( buf, " noremove", sizeof(buf) );
+    if ( extra_flags & ITEM_INVENTORY    ) toc_strlcat( buf, " inventory", sizeof(buf) );
+    if ( extra_flags & ITEM_NOPURGE      ) toc_strlcat( buf, " nopurge", sizeof(buf) );
+    if ( extra_flags & ITEM_VIS_DEATH    ) toc_strlcat( buf, " vis_death", sizeof(buf) );
+    if ( extra_flags & ITEM_ROT_DEATH    ) toc_strlcat( buf, " rot_death", sizeof(buf) );
+    if ( extra_flags & ITEM_METAL        ) toc_strlcat( buf, " metal", sizeof(buf) );
+    if ( extra_flags & ITEM_BOUNCE       ) toc_strlcat( buf, " bounce", sizeof(buf) );
+    if ( extra_flags & ITEM_TPORT        ) toc_strlcat( buf, " Tport", sizeof(buf) );
+    if ( extra_flags & ITEM_NOIDENTIFY   ) toc_strlcat( buf, " no_identify", sizeof(buf) );
+    if ( extra_flags & ITEM_NOLOCATE     ) toc_strlcat( buf, " no_locate", sizeof(buf) );
+    if ( extra_flags & ITEM_RACE_RESTRICTED) toc_strlcat( buf, " race_restrict", sizeof(buf) );
+    if ( extra_flags & ITEM_ADD_AFFECT   ) toc_strlcat( buf, " aff_wearer", sizeof(buf) );
+    if ( extra_flags & ITEM_EMBALMED	 ) toc_strlcat( buf, " embalmed", sizeof(buf) );
+    if ( extra_flags & ITEM_FLAGS2       ) toc_strlcat( buf, " flags2", sizeof(buf) );
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
 
@@ -2843,15 +2845,15 @@ char *extra2_bit_name( int extra_flags )
  static char buf[512];
 
   buf[0] = '\0';
-  if ( extra_flags & ITEM2_HUMAN_ONLY        ) strlcat( buf, " humans only", sizeof(buf) );
-  if ( extra_flags & ITEM2_ELF_ONLY          ) strlcat( buf, " elves only", sizeof(buf) );
-  if ( extra_flags & ITEM2_DWARF_ONLY        ) strlcat( buf, " dwarves only", sizeof(buf) );
-  if ( extra_flags & ITEM2_HALFLING_ONLY     ) strlcat( buf, " halflings only", sizeof(buf) );
-  if ( extra_flags & ITEM2_ADD_INVIS         ) strlcat( buf, " add_invis", sizeof(buf) );
-  if ( extra_flags & ITEM2_ADD_DETECT_INVIS  ) strlcat( buf, " detect_invis", sizeof(buf) );
-  if ( extra_flags & ITEM2_ADD_FLY           ) strlcat( buf, " add_flying", sizeof(buf) );
-  if ( extra_flags & ITEM2_NO_CAN_SEE        ) strlcat( buf, " no_can_see", sizeof(buf) );
-  if ( extra_flags & ITEM2_NOSTEAL	     ) strlcat( buf, " no_steal", sizeof(buf) );
+  if ( extra_flags & ITEM2_HUMAN_ONLY        ) toc_strlcat( buf, " humans only", sizeof(buf) );
+  if ( extra_flags & ITEM2_ELF_ONLY          ) toc_strlcat( buf, " elves only", sizeof(buf) );
+  if ( extra_flags & ITEM2_DWARF_ONLY        ) toc_strlcat( buf, " dwarves only", sizeof(buf) );
+  if ( extra_flags & ITEM2_HALFLING_ONLY     ) toc_strlcat( buf, " halflings only", sizeof(buf) );
+  if ( extra_flags & ITEM2_ADD_INVIS         ) toc_strlcat( buf, " add_invis", sizeof(buf) );
+  if ( extra_flags & ITEM2_ADD_DETECT_INVIS  ) toc_strlcat( buf, " detect_invis", sizeof(buf) );
+  if ( extra_flags & ITEM2_ADD_FLY           ) toc_strlcat( buf, " add_flying", sizeof(buf) );
+  if ( extra_flags & ITEM2_NO_CAN_SEE        ) toc_strlcat( buf, " no_can_see", sizeof(buf) );
+  if ( extra_flags & ITEM2_NOSTEAL	     ) toc_strlcat( buf, " no_steal", sizeof(buf) );
   return ( buf[0] != '\0' ) ? buf+1 : "none";
 
 }
@@ -2864,46 +2866,46 @@ char *act_bit_name( long act_flags )
 
     if (IS_SET(act_flags,ACT_IS_NPC))
     {
-	strlcat( buf, " npc", sizeof(buf) );
-	if (act_flags & ACT_SENTINEL    ) strlcat( buf, " sentinel", sizeof(buf) );
-	if (act_flags & ACT_SCAVENGER   ) strlcat( buf, " scavenger", sizeof(buf) );
-	if (act_flags & ACT_AGGRESSIVE  ) strlcat( buf, " aggressive", sizeof(buf) );
-	if (act_flags & ACT_STAY_AREA   ) strlcat( buf, " stay_area", sizeof(buf) );
-	if (act_flags & ACT_WIMPY       ) strlcat( buf, " wimpy", sizeof(buf) );
-	if (act_flags & ACT_PET         ) strlcat( buf, " pet", sizeof(buf) );
-	if (act_flags & ACT_TRAIN       ) strlcat( buf, " train", sizeof(buf) );
-	if (act_flags & ACT_PRACTICE    ) strlcat( buf, " practice", sizeof(buf) );
-	if (act_flags & ACT_UNDEAD      ) strlcat( buf, " undead", sizeof(buf) );
-	if (act_flags & ACT_CLERIC      ) strlcat( buf, " cleric", sizeof(buf) );
-	if (act_flags & ACT_MAGE        ) strlcat( buf, " mage", sizeof(buf) );
-	if (act_flags & ACT_THIEF       ) strlcat( buf, " thief", sizeof(buf) );
-	if (act_flags & ACT_WARRIOR     ) strlcat( buf, " warrior", sizeof(buf) );
-	if (act_flags & ACT_NOALIGN     ) strlcat( buf, " no_align", sizeof(buf) );
-	if (act_flags & ACT_NOPURGE     ) strlcat( buf, " no_purge", sizeof(buf) );
-	if (act_flags & ACT_IS_HEALER   ) strlcat( buf, " healer", sizeof(buf) );
-	if (act_flags & ACT_GAIN        ) strlcat( buf, " skill_train", sizeof(buf) );
-	if (act_flags & ACT_UPDATE_ALWAYS) strlcat( buf, " update_always", sizeof(buf) );
-	if (act_flags & ACT_NOSHOVE     ) strlcat( buf, " no_shove", sizeof(buf) );
-	if (act_flags & ACT_MOUNTABLE   ) strlcat( buf, " mountable", sizeof(buf) );
-        if (act_flags & ACT_NOKILL	) strlcat( buf, " nokill", sizeof(buf) );
+	toc_strlcat( buf, " npc", sizeof(buf) );
+	if (act_flags & ACT_SENTINEL    ) toc_strlcat( buf, " sentinel", sizeof(buf) );
+	if (act_flags & ACT_SCAVENGER   ) toc_strlcat( buf, " scavenger", sizeof(buf) );
+	if (act_flags & ACT_AGGRESSIVE  ) toc_strlcat( buf, " aggressive", sizeof(buf) );
+	if (act_flags & ACT_STAY_AREA   ) toc_strlcat( buf, " stay_area", sizeof(buf) );
+	if (act_flags & ACT_WIMPY       ) toc_strlcat( buf, " wimpy", sizeof(buf) );
+	if (act_flags & ACT_PET         ) toc_strlcat( buf, " pet", sizeof(buf) );
+	if (act_flags & ACT_TRAIN       ) toc_strlcat( buf, " train", sizeof(buf) );
+	if (act_flags & ACT_PRACTICE    ) toc_strlcat( buf, " practice", sizeof(buf) );
+	if (act_flags & ACT_UNDEAD      ) toc_strlcat( buf, " undead", sizeof(buf) );
+	if (act_flags & ACT_CLERIC      ) toc_strlcat( buf, " cleric", sizeof(buf) );
+	if (act_flags & ACT_MAGE        ) toc_strlcat( buf, " mage", sizeof(buf) );
+	if (act_flags & ACT_THIEF       ) toc_strlcat( buf, " thief", sizeof(buf) );
+	if (act_flags & ACT_WARRIOR     ) toc_strlcat( buf, " warrior", sizeof(buf) );
+	if (act_flags & ACT_NOALIGN     ) toc_strlcat( buf, " no_align", sizeof(buf) );
+	if (act_flags & ACT_NOPURGE     ) toc_strlcat( buf, " no_purge", sizeof(buf) );
+	if (act_flags & ACT_IS_HEALER   ) toc_strlcat( buf, " healer", sizeof(buf) );
+	if (act_flags & ACT_GAIN        ) toc_strlcat( buf, " skill_train", sizeof(buf) );
+	if (act_flags & ACT_UPDATE_ALWAYS) toc_strlcat( buf, " update_always", sizeof(buf) );
+	if (act_flags & ACT_NOSHOVE     ) toc_strlcat( buf, " no_shove", sizeof(buf) );
+	if (act_flags & ACT_MOUNTABLE   ) toc_strlcat( buf, " mountable", sizeof(buf) );
+        if (act_flags & ACT_NOKILL	) toc_strlcat( buf, " nokill", sizeof(buf) );
     }
     else
     {
-	strlcat( buf, " player", sizeof(buf) );
-	if (act_flags & PLR_BOUGHT_PET  ) strlcat( buf, " owner", sizeof(buf) );
-	if (act_flags & PLR_AUTOASSIST  ) strlcat( buf, " autoassist", sizeof(buf) );
-	if (act_flags & PLR_AUTOEXIT    ) strlcat( buf, " autoexit", sizeof(buf) );
-	if (act_flags & PLR_AUTOLOOT    ) strlcat( buf, " autoloot", sizeof(buf) );
-	if (act_flags & PLR_AUTOSAC     ) strlcat( buf, " autosac", sizeof(buf) );
-	if (act_flags & PLR_AUTOGOLD    ) strlcat( buf, " autogold", sizeof(buf) );
-	if (act_flags & PLR_AUTOSPLIT   ) strlcat( buf, " autosplit", sizeof(buf) );
-	if (act_flags & PLR_HOLYLIGHT   ) strlcat( buf, " holy_light", sizeof(buf) );
-	if (act_flags & PLR_WIZINVIS    ) strlcat( buf, " wizinvis", sizeof(buf) );
-	if (act_flags & PLR_CANLOOT     ) strlcat( buf, " loot_corpse", sizeof(buf) );
-	if (act_flags & PLR_NOSUMMON    ) strlcat( buf, " no_summon", sizeof(buf) );
-	if (act_flags & PLR_NOFOLLOW    ) strlcat( buf, " no_follow", sizeof(buf) );
-	if (act_flags & PLR_FREEZE      ) strlcat( buf, " frozen", sizeof(buf) );
-	if (act_flags & PLR_WANTED      ) strlcat( buf, " wanted", sizeof(buf) );
+	toc_strlcat( buf, " player", sizeof(buf) );
+	if (act_flags & PLR_BOUGHT_PET  ) toc_strlcat( buf, " owner", sizeof(buf) );
+	if (act_flags & PLR_AUTOASSIST  ) toc_strlcat( buf, " autoassist", sizeof(buf) );
+	if (act_flags & PLR_AUTOEXIT    ) toc_strlcat( buf, " autoexit", sizeof(buf) );
+	if (act_flags & PLR_AUTOLOOT    ) toc_strlcat( buf, " autoloot", sizeof(buf) );
+	if (act_flags & PLR_AUTOSAC     ) toc_strlcat( buf, " autosac", sizeof(buf) );
+	if (act_flags & PLR_AUTOGOLD    ) toc_strlcat( buf, " autogold", sizeof(buf) );
+	if (act_flags & PLR_AUTOSPLIT   ) toc_strlcat( buf, " autosplit", sizeof(buf) );
+	if (act_flags & PLR_HOLYLIGHT   ) toc_strlcat( buf, " holy_light", sizeof(buf) );
+	if (act_flags & PLR_WIZINVIS    ) toc_strlcat( buf, " wizinvis", sizeof(buf) );
+	if (act_flags & PLR_CANLOOT     ) toc_strlcat( buf, " loot_corpse", sizeof(buf) );
+	if (act_flags & PLR_NOSUMMON    ) toc_strlcat( buf, " no_summon", sizeof(buf) );
+	if (act_flags & PLR_NOFOLLOW    ) toc_strlcat( buf, " no_follow", sizeof(buf) );
+	if (act_flags & PLR_FREEZE      ) toc_strlcat( buf, " frozen", sizeof(buf) );
+	if (act_flags & PLR_WANTED      ) toc_strlcat( buf, " wanted", sizeof(buf) );
     }
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -2916,13 +2918,13 @@ char *act2_bit_name( long act_flags, long act_flags2 )
 
     if (IS_SET(act_flags,ACT_IS_NPC))
     {
-	if (act_flags2 & ACT2_LYCANTH      ) strlcat( buf, " lycanthropy", sizeof(buf) );
-	if (act_flags2 & ACT2_NO_TPORT      ) strlcat( buf, " YES!", sizeof(buf) );
+	if (act_flags2 & ACT2_LYCANTH      ) toc_strlcat( buf, " lycanthropy", sizeof(buf) );
+	if (act_flags2 & ACT2_NO_TPORT      ) toc_strlcat( buf, " YES!", sizeof(buf) );
 
     }
     else
     {                 /*PLR_*/
-	if (act_flags2 & ACT2_NO_TPORT ) strlcat( buf, " YES!", sizeof(buf) );
+	if (act_flags2 & ACT2_NO_TPORT ) toc_strlcat( buf, " YES!", sizeof(buf) );
     }
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -2933,21 +2935,21 @@ char *comm_bit_name(long comm_flags)
 
     buf[0] = '\0';
 
-    if (comm_flags & COMM_QUIET         ) strlcat( buf, " quiet", sizeof(buf) );
-    if (comm_flags & COMM_DEAF          ) strlcat( buf, " deaf", sizeof(buf) );
-    if (comm_flags & COMM_NOWIZ         ) strlcat( buf, " no_wiz", sizeof(buf) );
-    if (comm_flags & COMM_NOGRATZ       ) strlcat( buf, " no_gratz", sizeof(buf) );
-    if (comm_flags & COMM_NOGOSSIP      ) strlcat( buf, " no_gossip", sizeof(buf) );
-    if (comm_flags & COMM_NOQUESTION    ) strlcat( buf, " no_question", sizeof(buf) );
-    if (comm_flags & COMM_NOMUSIC       ) strlcat( buf, " no_music", sizeof(buf) );
-    if (comm_flags & COMM_COMPACT       ) strlcat( buf, " compact", sizeof(buf) );
-    if (comm_flags & COMM_BRIEF         ) strlcat( buf, " brief", sizeof(buf) );
-    if (comm_flags & COMM_PROMPT        ) strlcat( buf, " prompt", sizeof(buf) );
-    if (comm_flags & COMM_COMBINE       ) strlcat( buf, " combine", sizeof(buf) );
-    if (comm_flags & COMM_NOEMOTE       ) strlcat( buf, " no_emote", sizeof(buf) );
-    if (comm_flags & COMM_NOSHOUT       ) strlcat( buf, " no_shout", sizeof(buf) );
-    if (comm_flags & COMM_NOTELL        ) strlcat( buf, " no_tell", sizeof(buf) );
-    if (comm_flags & COMM_NOCHANNELS    ) strlcat( buf, " no_channels", sizeof(buf) );
+    if (comm_flags & COMM_QUIET         ) toc_strlcat( buf, " quiet", sizeof(buf) );
+    if (comm_flags & COMM_DEAF          ) toc_strlcat( buf, " deaf", sizeof(buf) );
+    if (comm_flags & COMM_NOWIZ         ) toc_strlcat( buf, " no_wiz", sizeof(buf) );
+    if (comm_flags & COMM_NOGRATZ       ) toc_strlcat( buf, " no_gratz", sizeof(buf) );
+    if (comm_flags & COMM_NOGOSSIP      ) toc_strlcat( buf, " no_gossip", sizeof(buf) );
+    if (comm_flags & COMM_NOQUESTION    ) toc_strlcat( buf, " no_question", sizeof(buf) );
+    if (comm_flags & COMM_NOMUSIC       ) toc_strlcat( buf, " no_music", sizeof(buf) );
+    if (comm_flags & COMM_COMPACT       ) toc_strlcat( buf, " compact", sizeof(buf) );
+    if (comm_flags & COMM_BRIEF         ) toc_strlcat( buf, " brief", sizeof(buf) );
+    if (comm_flags & COMM_PROMPT        ) toc_strlcat( buf, " prompt", sizeof(buf) );
+    if (comm_flags & COMM_COMBINE       ) toc_strlcat( buf, " combine", sizeof(buf) );
+    if (comm_flags & COMM_NOEMOTE       ) toc_strlcat( buf, " no_emote", sizeof(buf) );
+    if (comm_flags & COMM_NOSHOUT       ) toc_strlcat( buf, " no_shout", sizeof(buf) );
+    if (comm_flags & COMM_NOTELL        ) toc_strlcat( buf, " no_tell", sizeof(buf) );
+    if (comm_flags & COMM_NOCHANNELS    ) toc_strlcat( buf, " no_channels", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -2958,25 +2960,25 @@ char *imm_bit_name(long imm_flags)
 
     buf[0] = '\0';
 
-    if (imm_flags & IMM_SUMMON          ) strlcat( buf, " summon", sizeof(buf) );
-    if (imm_flags & IMM_CHARM           ) strlcat( buf, " charm", sizeof(buf) );
-    if (imm_flags & IMM_MAGIC           ) strlcat( buf, " magic", sizeof(buf) );
-    if (imm_flags & IMM_WEAPON          ) strlcat( buf, " weapon", sizeof(buf) );
-    if (imm_flags & IMM_BASH            ) strlcat( buf, " blunt", sizeof(buf) );
-    if (imm_flags & IMM_PIERCE          ) strlcat( buf, " piercing", sizeof(buf) );
-    if (imm_flags & IMM_SLASH           ) strlcat( buf, " slashing", sizeof(buf) );
-    if (imm_flags & IMM_FIRE            ) strlcat( buf, " fire", sizeof(buf) );
-    if (imm_flags & IMM_COLD            ) strlcat( buf, " cold", sizeof(buf) );
-    if (imm_flags & IMM_LIGHTNING       ) strlcat( buf, " lightning", sizeof(buf) );
-    if (imm_flags & IMM_ACID            ) strlcat( buf, " acid", sizeof(buf) );
-    if (imm_flags & IMM_POISON          ) strlcat( buf, " poison", sizeof(buf) );
-    if (imm_flags & IMM_NEGATIVE        ) strlcat( buf, " negative", sizeof(buf) );
-    if (imm_flags & IMM_HOLY            ) strlcat( buf, " holy", sizeof(buf) );
-    if (imm_flags & IMM_ENERGY          ) strlcat( buf, " energy", sizeof(buf) );
-    if (imm_flags & IMM_MENTAL          ) strlcat( buf, " mental", sizeof(buf) );
-    if (imm_flags & IMM_DISEASE         ) strlcat( buf, " disease", sizeof(buf) );
-    if (imm_flags & IMM_DROWNING        ) strlcat( buf, " drowning", sizeof(buf) );
-    if (imm_flags & IMM_LIGHT           ) strlcat( buf, " light", sizeof(buf) );
+    if (imm_flags & IMM_SUMMON          ) toc_strlcat( buf, " summon", sizeof(buf) );
+    if (imm_flags & IMM_CHARM           ) toc_strlcat( buf, " charm", sizeof(buf) );
+    if (imm_flags & IMM_MAGIC           ) toc_strlcat( buf, " magic", sizeof(buf) );
+    if (imm_flags & IMM_WEAPON          ) toc_strlcat( buf, " weapon", sizeof(buf) );
+    if (imm_flags & IMM_BASH            ) toc_strlcat( buf, " blunt", sizeof(buf) );
+    if (imm_flags & IMM_PIERCE          ) toc_strlcat( buf, " piercing", sizeof(buf) );
+    if (imm_flags & IMM_SLASH           ) toc_strlcat( buf, " slashing", sizeof(buf) );
+    if (imm_flags & IMM_FIRE            ) toc_strlcat( buf, " fire", sizeof(buf) );
+    if (imm_flags & IMM_COLD            ) toc_strlcat( buf, " cold", sizeof(buf) );
+    if (imm_flags & IMM_LIGHTNING       ) toc_strlcat( buf, " lightning", sizeof(buf) );
+    if (imm_flags & IMM_ACID            ) toc_strlcat( buf, " acid", sizeof(buf) );
+    if (imm_flags & IMM_POISON          ) toc_strlcat( buf, " poison", sizeof(buf) );
+    if (imm_flags & IMM_NEGATIVE        ) toc_strlcat( buf, " negative", sizeof(buf) );
+    if (imm_flags & IMM_HOLY            ) toc_strlcat( buf, " holy", sizeof(buf) );
+    if (imm_flags & IMM_ENERGY          ) toc_strlcat( buf, " energy", sizeof(buf) );
+    if (imm_flags & IMM_MENTAL          ) toc_strlcat( buf, " mental", sizeof(buf) );
+    if (imm_flags & IMM_DISEASE         ) toc_strlcat( buf, " disease", sizeof(buf) );
+    if (imm_flags & IMM_DROWNING        ) toc_strlcat( buf, " drowning", sizeof(buf) );
+    if (imm_flags & IMM_LIGHT           ) toc_strlcat( buf, " light", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -2987,26 +2989,26 @@ char *res_bit_name(long res_flags)
 
     buf[0] = '\0';
 
-    if (res_flags & RES_CHARM         ) strlcat( buf, " charm", sizeof(buf) );
-    if (res_flags & RES_MAGIC         ) strlcat( buf, " magic", sizeof(buf) );
-    if (res_flags & RES_WEAPON        ) strlcat( buf, " weapon", sizeof(buf) );
-    if (res_flags & RES_BASH          ) strlcat( buf, " bash", sizeof(buf) );
-    if (res_flags & RES_PIERCE        ) strlcat( buf, " pierce", sizeof(buf) );
-    if (res_flags & RES_SLASH         ) strlcat( buf, " slash", sizeof(buf) );
-    if (res_flags & RES_FIRE          ) strlcat( buf, " fire", sizeof(buf) );
-    if (res_flags & RES_COLD          ) strlcat( buf, " cold", sizeof(buf) );
-    if (res_flags & RES_LIGHTNING     ) strlcat( buf, " lightning", sizeof(buf) );
-    if (res_flags & RES_ACID          ) strlcat( buf, " acid", sizeof(buf) );
-    if (res_flags & RES_POISON        ) strlcat( buf, " poison", sizeof(buf) );
-    if (res_flags & RES_NEGATIVE      ) strlcat( buf, " negative", sizeof(buf) );
-    if (res_flags & RES_HOLY          ) strlcat( buf, " holy", sizeof(buf) );
-    if (res_flags & RES_ENERGY        ) strlcat( buf, " energy", sizeof(buf) );
-    if (res_flags & RES_MENTAL        ) strlcat( buf, " mental", sizeof(buf) );
-    if (res_flags & RES_DISEASE       ) strlcat( buf, " disease", sizeof(buf) );
-    if (res_flags & RES_DROWNING      ) strlcat( buf, " drowning", sizeof(buf) );
-    if (res_flags & RES_LIGHT         ) strlcat( buf, " light", sizeof(buf) );
-    if (res_flags & RES_WIND          ) strlcat( buf, " wind", sizeof(buf) );
-    if (res_flags & RES_FLAGS2        ) strlcat( buf, " flags2", sizeof(buf) );
+    if (res_flags & RES_CHARM         ) toc_strlcat( buf, " charm", sizeof(buf) );
+    if (res_flags & RES_MAGIC         ) toc_strlcat( buf, " magic", sizeof(buf) );
+    if (res_flags & RES_WEAPON        ) toc_strlcat( buf, " weapon", sizeof(buf) );
+    if (res_flags & RES_BASH          ) toc_strlcat( buf, " bash", sizeof(buf) );
+    if (res_flags & RES_PIERCE        ) toc_strlcat( buf, " pierce", sizeof(buf) );
+    if (res_flags & RES_SLASH         ) toc_strlcat( buf, " slash", sizeof(buf) );
+    if (res_flags & RES_FIRE          ) toc_strlcat( buf, " fire", sizeof(buf) );
+    if (res_flags & RES_COLD          ) toc_strlcat( buf, " cold", sizeof(buf) );
+    if (res_flags & RES_LIGHTNING     ) toc_strlcat( buf, " lightning", sizeof(buf) );
+    if (res_flags & RES_ACID          ) toc_strlcat( buf, " acid", sizeof(buf) );
+    if (res_flags & RES_POISON        ) toc_strlcat( buf, " poison", sizeof(buf) );
+    if (res_flags & RES_NEGATIVE      ) toc_strlcat( buf, " negative", sizeof(buf) );
+    if (res_flags & RES_HOLY          ) toc_strlcat( buf, " holy", sizeof(buf) );
+    if (res_flags & RES_ENERGY        ) toc_strlcat( buf, " energy", sizeof(buf) );
+    if (res_flags & RES_MENTAL        ) toc_strlcat( buf, " mental", sizeof(buf) );
+    if (res_flags & RES_DISEASE       ) toc_strlcat( buf, " disease", sizeof(buf) );
+    if (res_flags & RES_DROWNING      ) toc_strlcat( buf, " drowning", sizeof(buf) );
+    if (res_flags & RES_LIGHT         ) toc_strlcat( buf, " light", sizeof(buf) );
+    if (res_flags & RES_WIND          ) toc_strlcat( buf, " wind", sizeof(buf) );
+    if (res_flags & RES_FLAGS2        ) toc_strlcat( buf, " flags2", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 
@@ -3017,27 +3019,27 @@ char *vuln_bit_name(long vuln_flags)
 
     buf[0] = '\0';
 
-    if (vuln_flags & VULN_MAGIC          ) strlcat( buf, " magic", sizeof(buf) );
-    if (vuln_flags & VULN_WEAPON         ) strlcat( buf, " weapon", sizeof(buf) );
-    if (vuln_flags & VULN_BASH           ) strlcat( buf, " bash", sizeof(buf) );
-    if (vuln_flags & VULN_PIERCE         ) strlcat( buf, " pierce", sizeof(buf) );
-    if (vuln_flags & VULN_SLASH          ) strlcat( buf, " slash", sizeof(buf) );
-    if (vuln_flags & VULN_FIRE           ) strlcat( buf, " fire", sizeof(buf) );
-    if (vuln_flags & VULN_COLD           ) strlcat( buf, " cold", sizeof(buf) );
-    if (vuln_flags & VULN_LIGHTNING      ) strlcat( buf, " lightning", sizeof(buf) );
-    if (vuln_flags & VULN_ACID           ) strlcat( buf, " acid", sizeof(buf) );
-    if (vuln_flags & VULN_POISON         ) strlcat( buf, " poison", sizeof(buf) );
-    if (vuln_flags & VULN_NEGATIVE       ) strlcat( buf, " negative", sizeof(buf) );
-    if (vuln_flags & VULN_HOLY           ) strlcat( buf, " holy", sizeof(buf) );
-    if (vuln_flags & VULN_ENERGY         ) strlcat( buf, " energy", sizeof(buf) );
-    if (vuln_flags & VULN_MENTAL         ) strlcat( buf, " mental", sizeof(buf) );
-    if (vuln_flags & VULN_DISEASE        ) strlcat( buf, " disease", sizeof(buf) );
-    if (vuln_flags & VULN_DROWNING       ) strlcat( buf, " drowning", sizeof(buf) );
-    if (vuln_flags & VULN_LIGHT          ) strlcat( buf, " light", sizeof(buf) );
-    if (vuln_flags & VULN_WIND           ) strlcat( buf, " wind", sizeof(buf) );
-    if (vuln_flags & VULN_IRON           ) strlcat( buf, " iron", sizeof(buf) );
-    if (vuln_flags & VULN_WOOD           ) strlcat( buf, " wood", sizeof(buf) );
-    if (vuln_flags & VULN_SILVER         ) strlcat( buf, " silver", sizeof(buf) );
+    if (vuln_flags & VULN_MAGIC          ) toc_strlcat( buf, " magic", sizeof(buf) );
+    if (vuln_flags & VULN_WEAPON         ) toc_strlcat( buf, " weapon", sizeof(buf) );
+    if (vuln_flags & VULN_BASH           ) toc_strlcat( buf, " bash", sizeof(buf) );
+    if (vuln_flags & VULN_PIERCE         ) toc_strlcat( buf, " pierce", sizeof(buf) );
+    if (vuln_flags & VULN_SLASH          ) toc_strlcat( buf, " slash", sizeof(buf) );
+    if (vuln_flags & VULN_FIRE           ) toc_strlcat( buf, " fire", sizeof(buf) );
+    if (vuln_flags & VULN_COLD           ) toc_strlcat( buf, " cold", sizeof(buf) );
+    if (vuln_flags & VULN_LIGHTNING      ) toc_strlcat( buf, " lightning", sizeof(buf) );
+    if (vuln_flags & VULN_ACID           ) toc_strlcat( buf, " acid", sizeof(buf) );
+    if (vuln_flags & VULN_POISON         ) toc_strlcat( buf, " poison", sizeof(buf) );
+    if (vuln_flags & VULN_NEGATIVE       ) toc_strlcat( buf, " negative", sizeof(buf) );
+    if (vuln_flags & VULN_HOLY           ) toc_strlcat( buf, " holy", sizeof(buf) );
+    if (vuln_flags & VULN_ENERGY         ) toc_strlcat( buf, " energy", sizeof(buf) );
+    if (vuln_flags & VULN_MENTAL         ) toc_strlcat( buf, " mental", sizeof(buf) );
+    if (vuln_flags & VULN_DISEASE        ) toc_strlcat( buf, " disease", sizeof(buf) );
+    if (vuln_flags & VULN_DROWNING       ) toc_strlcat( buf, " drowning", sizeof(buf) );
+    if (vuln_flags & VULN_LIGHT          ) toc_strlcat( buf, " light", sizeof(buf) );
+    if (vuln_flags & VULN_WIND           ) toc_strlcat( buf, " wind", sizeof(buf) );
+    if (vuln_flags & VULN_IRON           ) toc_strlcat( buf, " iron", sizeof(buf) );
+    if (vuln_flags & VULN_WOOD           ) toc_strlcat( buf, " wood", sizeof(buf) );
+    if (vuln_flags & VULN_SILVER         ) toc_strlcat( buf, " silver", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 
@@ -3057,21 +3059,21 @@ char *wear_bit_name(int wear_flags)
     static char buf[512];
 
     buf [0] = '\0';
-    if (wear_flags & ITEM_TAKE          ) strlcat( buf, " take", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_FINGER   ) strlcat( buf, " finger", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_NECK     ) strlcat( buf, " neck", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_BODY     ) strlcat( buf, " torso", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_HEAD     ) strlcat( buf, " head", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_LEGS     ) strlcat( buf, " legs", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_FEET     ) strlcat( buf, " feet", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_HANDS    ) strlcat( buf, " hands", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_ARMS     ) strlcat( buf, " arms", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_SHIELD   ) strlcat( buf, " shield", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_ABOUT    ) strlcat( buf, " body", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_WAIST    ) strlcat( buf, " waist", sizeof(buf) );
-    if (wear_flags & ITEM_WEAR_WRIST    ) strlcat( buf, " wrist", sizeof(buf) );
-    if (wear_flags & ITEM_WIELD         ) strlcat( buf, " wield", sizeof(buf) );
-    if (wear_flags & ITEM_HOLD          ) strlcat( buf, " hold", sizeof(buf) );
+    if (wear_flags & ITEM_TAKE          ) toc_strlcat( buf, " take", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_FINGER   ) toc_strlcat( buf, " finger", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_NECK     ) toc_strlcat( buf, " neck", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_BODY     ) toc_strlcat( buf, " torso", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_HEAD     ) toc_strlcat( buf, " head", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_LEGS     ) toc_strlcat( buf, " legs", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_FEET     ) toc_strlcat( buf, " feet", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_HANDS    ) toc_strlcat( buf, " hands", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_ARMS     ) toc_strlcat( buf, " arms", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_SHIELD   ) toc_strlcat( buf, " shield", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_ABOUT    ) toc_strlcat( buf, " body", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_WAIST    ) toc_strlcat( buf, " waist", sizeof(buf) );
+    if (wear_flags & ITEM_WEAR_WRIST    ) toc_strlcat( buf, " wrist", sizeof(buf) );
+    if (wear_flags & ITEM_WIELD         ) toc_strlcat( buf, " wield", sizeof(buf) );
+    if (wear_flags & ITEM_HOLD          ) toc_strlcat( buf, " hold", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -3081,32 +3083,32 @@ char *form_bit_name(long form_flags)
     static char buf[512];
 
     buf[0] = '\0';
-    if (form_flags & FORM_POISON        ) strlcat( buf, " poison", sizeof(buf) );
-    else if (form_flags & FORM_EDIBLE   ) strlcat( buf, " edible", sizeof(buf) );
-    if (form_flags & FORM_MAGICAL       ) strlcat( buf, " magical", sizeof(buf) );
-    if (form_flags & FORM_INSTANT_DECAY ) strlcat( buf, " instant_rot", sizeof(buf) );
-    if (form_flags & FORM_OTHER         ) strlcat( buf, " other", sizeof(buf) );
-    if (form_flags & FORM_ANIMAL        ) strlcat( buf, " animal", sizeof(buf) );
-    if (form_flags & FORM_SENTIENT      ) strlcat( buf, " sentient", sizeof(buf) );
-    if (form_flags & FORM_UNDEAD        ) strlcat( buf, " undead", sizeof(buf) );
-    if (form_flags & FORM_CONSTRUCT     ) strlcat( buf, " construct", sizeof(buf) );
-    if (form_flags & FORM_MIST          ) strlcat( buf, " mist", sizeof(buf) );
-    if (form_flags & FORM_INTANGIBLE    ) strlcat( buf, " intangible", sizeof(buf) );
-    if (form_flags & FORM_BIPED         ) strlcat( buf, " biped", sizeof(buf) );
-    if (form_flags & FORM_CENTAUR       ) strlcat( buf, " centaur", sizeof(buf) );
-    if (form_flags & FORM_INSECT        ) strlcat( buf, " insect", sizeof(buf) );
-    if (form_flags & FORM_SPIDER        ) strlcat( buf, " spider", sizeof(buf) );
-    if (form_flags & FORM_CRUSTACEAN    ) strlcat( buf, " crustacean", sizeof(buf) );
-    if (form_flags & FORM_WORM          ) strlcat( buf, " worm", sizeof(buf) );
-    if (form_flags & FORM_BLOB          ) strlcat( buf, " blob", sizeof(buf) );
-    if (form_flags & FORM_MAMMAL        ) strlcat( buf, " mammal", sizeof(buf) );
-    if (form_flags & FORM_BIRD          ) strlcat( buf, " bird", sizeof(buf) );
-    if (form_flags & FORM_REPTILE       ) strlcat( buf, " reptile", sizeof(buf) );
-    if (form_flags & FORM_SNAKE         ) strlcat( buf, " snake", sizeof(buf) );
-    if (form_flags & FORM_DRAGON        ) strlcat( buf, " dragon", sizeof(buf) );
-    if (form_flags & FORM_AMPHIBIAN     ) strlcat( buf, " amphibian", sizeof(buf) );
-    if (form_flags & FORM_FISH          ) strlcat( buf, " fish", sizeof(buf) );
-    if (form_flags & FORM_COLD_BLOOD    ) strlcat( buf, " cold_blooded", sizeof(buf) );
+    if (form_flags & FORM_POISON        ) toc_strlcat( buf, " poison", sizeof(buf) );
+    else if (form_flags & FORM_EDIBLE   ) toc_strlcat( buf, " edible", sizeof(buf) );
+    if (form_flags & FORM_MAGICAL       ) toc_strlcat( buf, " magical", sizeof(buf) );
+    if (form_flags & FORM_INSTANT_DECAY ) toc_strlcat( buf, " instant_rot", sizeof(buf) );
+    if (form_flags & FORM_OTHER         ) toc_strlcat( buf, " other", sizeof(buf) );
+    if (form_flags & FORM_ANIMAL        ) toc_strlcat( buf, " animal", sizeof(buf) );
+    if (form_flags & FORM_SENTIENT      ) toc_strlcat( buf, " sentient", sizeof(buf) );
+    if (form_flags & FORM_UNDEAD        ) toc_strlcat( buf, " undead", sizeof(buf) );
+    if (form_flags & FORM_CONSTRUCT     ) toc_strlcat( buf, " construct", sizeof(buf) );
+    if (form_flags & FORM_MIST          ) toc_strlcat( buf, " mist", sizeof(buf) );
+    if (form_flags & FORM_INTANGIBLE    ) toc_strlcat( buf, " intangible", sizeof(buf) );
+    if (form_flags & FORM_BIPED         ) toc_strlcat( buf, " biped", sizeof(buf) );
+    if (form_flags & FORM_CENTAUR       ) toc_strlcat( buf, " centaur", sizeof(buf) );
+    if (form_flags & FORM_INSECT        ) toc_strlcat( buf, " insect", sizeof(buf) );
+    if (form_flags & FORM_SPIDER        ) toc_strlcat( buf, " spider", sizeof(buf) );
+    if (form_flags & FORM_CRUSTACEAN    ) toc_strlcat( buf, " crustacean", sizeof(buf) );
+    if (form_flags & FORM_WORM          ) toc_strlcat( buf, " worm", sizeof(buf) );
+    if (form_flags & FORM_BLOB          ) toc_strlcat( buf, " blob", sizeof(buf) );
+    if (form_flags & FORM_MAMMAL        ) toc_strlcat( buf, " mammal", sizeof(buf) );
+    if (form_flags & FORM_BIRD          ) toc_strlcat( buf, " bird", sizeof(buf) );
+    if (form_flags & FORM_REPTILE       ) toc_strlcat( buf, " reptile", sizeof(buf) );
+    if (form_flags & FORM_SNAKE         ) toc_strlcat( buf, " snake", sizeof(buf) );
+    if (form_flags & FORM_DRAGON        ) toc_strlcat( buf, " dragon", sizeof(buf) );
+    if (form_flags & FORM_AMPHIBIAN     ) toc_strlcat( buf, " amphibian", sizeof(buf) );
+    if (form_flags & FORM_FISH          ) toc_strlcat( buf, " fish", sizeof(buf) );
+    if (form_flags & FORM_COLD_BLOOD    ) toc_strlcat( buf, " cold_blooded", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -3116,27 +3118,27 @@ char *part_bit_name(long part_flags)
     static char buf[512];
 
     buf[0] = '\0';
-    if (part_flags & PART_HEAD          ) strlcat( buf, " head", sizeof(buf) );
-    if (part_flags & PART_ARMS          ) strlcat( buf, " arms", sizeof(buf) );
-    if (part_flags & PART_LEGS          ) strlcat( buf, " legs", sizeof(buf) );
-    if (part_flags & PART_HEART         ) strlcat( buf, " heart", sizeof(buf) );
-    if (part_flags & PART_BRAINS        ) strlcat( buf, " brains", sizeof(buf) );
-    if (part_flags & PART_GUTS          ) strlcat( buf, " guts", sizeof(buf) );
-    if (part_flags & PART_HANDS         ) strlcat( buf, " hands", sizeof(buf) );
-    if (part_flags & PART_FEET          ) strlcat( buf, " feet", sizeof(buf) );
-    if (part_flags & PART_FINGERS       ) strlcat( buf, " fingers", sizeof(buf) );
-    if (part_flags & PART_EAR           ) strlcat( buf, " ears", sizeof(buf) );
-    if (part_flags & PART_EYE           ) strlcat( buf, " eyes", sizeof(buf) );
-    if (part_flags & PART_LONG_TONGUE   ) strlcat( buf, " long_tongue", sizeof(buf) );
-    if (part_flags & PART_EYESTALKS     ) strlcat( buf, " eyestalks", sizeof(buf) );
-    if (part_flags & PART_TENTACLES     ) strlcat( buf, " tentacles", sizeof(buf) );
-    if (part_flags & PART_FINS          ) strlcat( buf, " fins", sizeof(buf) );
-    if (part_flags & PART_WINGS         ) strlcat( buf, " wings", sizeof(buf) );
-    if (part_flags & PART_TAIL          ) strlcat( buf, " tail", sizeof(buf) );
-    if (part_flags & PART_CLAWS         ) strlcat( buf, " claws", sizeof(buf) );
-    if (part_flags & PART_FANGS         ) strlcat( buf, " fangs", sizeof(buf) );
-    if (part_flags & PART_HORNS         ) strlcat( buf, " horns", sizeof(buf) );
-    if (part_flags & PART_SCALES        ) strlcat( buf, " scales", sizeof(buf) );
+    if (part_flags & PART_HEAD          ) toc_strlcat( buf, " head", sizeof(buf) );
+    if (part_flags & PART_ARMS          ) toc_strlcat( buf, " arms", sizeof(buf) );
+    if (part_flags & PART_LEGS          ) toc_strlcat( buf, " legs", sizeof(buf) );
+    if (part_flags & PART_HEART         ) toc_strlcat( buf, " heart", sizeof(buf) );
+    if (part_flags & PART_BRAINS        ) toc_strlcat( buf, " brains", sizeof(buf) );
+    if (part_flags & PART_GUTS          ) toc_strlcat( buf, " guts", sizeof(buf) );
+    if (part_flags & PART_HANDS         ) toc_strlcat( buf, " hands", sizeof(buf) );
+    if (part_flags & PART_FEET          ) toc_strlcat( buf, " feet", sizeof(buf) );
+    if (part_flags & PART_FINGERS       ) toc_strlcat( buf, " fingers", sizeof(buf) );
+    if (part_flags & PART_EAR           ) toc_strlcat( buf, " ears", sizeof(buf) );
+    if (part_flags & PART_EYE           ) toc_strlcat( buf, " eyes", sizeof(buf) );
+    if (part_flags & PART_LONG_TONGUE   ) toc_strlcat( buf, " long_tongue", sizeof(buf) );
+    if (part_flags & PART_EYESTALKS     ) toc_strlcat( buf, " eyestalks", sizeof(buf) );
+    if (part_flags & PART_TENTACLES     ) toc_strlcat( buf, " tentacles", sizeof(buf) );
+    if (part_flags & PART_FINS          ) toc_strlcat( buf, " fins", sizeof(buf) );
+    if (part_flags & PART_WINGS         ) toc_strlcat( buf, " wings", sizeof(buf) );
+    if (part_flags & PART_TAIL          ) toc_strlcat( buf, " tail", sizeof(buf) );
+    if (part_flags & PART_CLAWS         ) toc_strlcat( buf, " claws", sizeof(buf) );
+    if (part_flags & PART_FANGS         ) toc_strlcat( buf, " fangs", sizeof(buf) );
+    if (part_flags & PART_HORNS         ) toc_strlcat( buf, " horns", sizeof(buf) );
+    if (part_flags & PART_SCALES        ) toc_strlcat( buf, " scales", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -3146,12 +3148,12 @@ char *weapon_bit_name(int weapon_flags)
     static char buf[512];
 
     buf[0] = '\0';
-    if (weapon_flags & WEAPON_FLAMING   ) strlcat( buf, " flaming", sizeof(buf) );
-    if (weapon_flags & WEAPON_FROST     ) strlcat( buf, " frost", sizeof(buf) );
-    if (weapon_flags & WEAPON_VAMPIRIC  ) strlcat( buf, " vampiric", sizeof(buf) );
-    if (weapon_flags & WEAPON_SHARP     ) strlcat( buf, " sharp", sizeof(buf) );
-    if (weapon_flags & WEAPON_VORPAL    ) strlcat( buf, " vorpal", sizeof(buf) );
-    if (weapon_flags & WEAPON_TWO_HANDS ) strlcat( buf, " two-handed", sizeof(buf) );
+    if (weapon_flags & WEAPON_FLAMING   ) toc_strlcat( buf, " flaming", sizeof(buf) );
+    if (weapon_flags & WEAPON_FROST     ) toc_strlcat( buf, " frost", sizeof(buf) );
+    if (weapon_flags & WEAPON_VAMPIRIC  ) toc_strlcat( buf, " vampiric", sizeof(buf) );
+    if (weapon_flags & WEAPON_SHARP     ) toc_strlcat( buf, " sharp", sizeof(buf) );
+    if (weapon_flags & WEAPON_VORPAL    ) toc_strlcat( buf, " vorpal", sizeof(buf) );
+    if (weapon_flags & WEAPON_TWO_HANDS ) toc_strlcat( buf, " two-handed", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -3162,31 +3164,31 @@ char *off_bit_name(long off_flags)
 
     buf[0] = '\0';
 
-    if (off_flags & OFF_AREA_ATTACK       ) strlcat( buf, " area attack", sizeof(buf) );
-    if (off_flags & OFF_BACKSTAB          ) strlcat( buf, " backstab", sizeof(buf) );
-    if (off_flags & OFF_BASH              ) strlcat( buf, " bash", sizeof(buf) );
-    if (off_flags & OFF_BERSERK           ) strlcat( buf, " berserk", sizeof(buf) );
-    if (off_flags & OFF_DISARM            ) strlcat( buf, " disarm", sizeof(buf) );
-    if (off_flags & OFF_DODGE             ) strlcat( buf, " dodge", sizeof(buf) );
-    if (off_flags & OFF_FADE              ) strlcat( buf, " fade", sizeof(buf) );
-    if (off_flags & OFF_FAST              ) strlcat( buf, " fast", sizeof(buf) );
-    if (off_flags & OFF_KICK              ) strlcat( buf, " kick", sizeof(buf) );
-    if (off_flags & OFF_KICK_DIRT         ) strlcat( buf, " kick_dirt", sizeof(buf) );
-    if (off_flags & OFF_PARRY             ) strlcat( buf, " parry", sizeof(buf) );
-    if (off_flags & OFF_RESCUE            ) strlcat( buf, " rescue", sizeof(buf) );
-    if (off_flags & OFF_TAIL              ) strlcat( buf, " tail", sizeof(buf) );
-    if (off_flags & OFF_TRIP              ) strlcat( buf, " trip", sizeof(buf) );
-    if (off_flags & OFF_CRUSH             ) strlcat( buf, " crush", sizeof(buf) );
-    if (off_flags & ASSIST_ALL            ) strlcat( buf, " assist_all", sizeof(buf) );
-    if (off_flags & ASSIST_ALIGN          ) strlcat( buf, " assist_align", sizeof(buf) );
-    if (off_flags & ASSIST_RACE           ) strlcat( buf, " assist_race", sizeof(buf) );
-    if (off_flags & ASSIST_PLAYERS        ) strlcat( buf, " assist_players", sizeof(buf) );
-    if (off_flags & ASSIST_GUARD          ) strlcat( buf, " assist_guard", sizeof(buf) );
-    if (off_flags & ASSIST_VNUM           ) strlcat( buf, " assist_vnum", sizeof(buf) );
-    if (off_flags & OFF_SUMMONER          ) strlcat( buf, " off_summoner", sizeof(buf) );
-    if (off_flags & NEEDS_MASTER          ) strlcat( buf, " needs_master", sizeof(buf) );
-    if (off_flags & OFF_ATTACK_DOOR_OPENER) strlcat( buf, " attack_opener", sizeof(buf) );
-    if (off_flags & OFF_FLAGS2            ) strlcat( buf, " off_flags2", sizeof(buf) );
+    if (off_flags & OFF_AREA_ATTACK       ) toc_strlcat( buf, " area attack", sizeof(buf) );
+    if (off_flags & OFF_BACKSTAB          ) toc_strlcat( buf, " backstab", sizeof(buf) );
+    if (off_flags & OFF_BASH              ) toc_strlcat( buf, " bash", sizeof(buf) );
+    if (off_flags & OFF_BERSERK           ) toc_strlcat( buf, " berserk", sizeof(buf) );
+    if (off_flags & OFF_DISARM            ) toc_strlcat( buf, " disarm", sizeof(buf) );
+    if (off_flags & OFF_DODGE             ) toc_strlcat( buf, " dodge", sizeof(buf) );
+    if (off_flags & OFF_FADE              ) toc_strlcat( buf, " fade", sizeof(buf) );
+    if (off_flags & OFF_FAST              ) toc_strlcat( buf, " fast", sizeof(buf) );
+    if (off_flags & OFF_KICK              ) toc_strlcat( buf, " kick", sizeof(buf) );
+    if (off_flags & OFF_KICK_DIRT         ) toc_strlcat( buf, " kick_dirt", sizeof(buf) );
+    if (off_flags & OFF_PARRY             ) toc_strlcat( buf, " parry", sizeof(buf) );
+    if (off_flags & OFF_RESCUE            ) toc_strlcat( buf, " rescue", sizeof(buf) );
+    if (off_flags & OFF_TAIL              ) toc_strlcat( buf, " tail", sizeof(buf) );
+    if (off_flags & OFF_TRIP              ) toc_strlcat( buf, " trip", sizeof(buf) );
+    if (off_flags & OFF_CRUSH             ) toc_strlcat( buf, " crush", sizeof(buf) );
+    if (off_flags & ASSIST_ALL            ) toc_strlcat( buf, " assist_all", sizeof(buf) );
+    if (off_flags & ASSIST_ALIGN          ) toc_strlcat( buf, " assist_align", sizeof(buf) );
+    if (off_flags & ASSIST_RACE           ) toc_strlcat( buf, " assist_race", sizeof(buf) );
+    if (off_flags & ASSIST_PLAYERS        ) toc_strlcat( buf, " assist_players", sizeof(buf) );
+    if (off_flags & ASSIST_GUARD          ) toc_strlcat( buf, " assist_guard", sizeof(buf) );
+    if (off_flags & ASSIST_VNUM           ) toc_strlcat( buf, " assist_vnum", sizeof(buf) );
+    if (off_flags & OFF_SUMMONER          ) toc_strlcat( buf, " off_summoner", sizeof(buf) );
+    if (off_flags & NEEDS_MASTER          ) toc_strlcat( buf, " needs_master", sizeof(buf) );
+    if (off_flags & OFF_ATTACK_DOOR_OPENER) toc_strlcat( buf, " attack_opener", sizeof(buf) );
+    if (off_flags & OFF_FLAGS2            ) toc_strlcat( buf, " off_flags2", sizeof(buf) );
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
 
@@ -3197,7 +3199,7 @@ char *off2_bit_name(long off_flags)
 
     buf[0] = '\0';
 
-    if (off_flags & OFF2_HUNTER        ) strlcat( buf, " hunter", sizeof(buf) );
+    if (off_flags & OFF2_HUNTER        ) toc_strlcat( buf, " hunter", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }
@@ -3207,32 +3209,32 @@ char *room_flag_name(int room_flag)
     static char buf[512];
 
     buf[0] = '\0';
-    if (room_flag & ROOM_DARK         ) strlcat( buf, " Dark", sizeof(buf) );
-    if (room_flag & ROOM_JAIL         ) strlcat( buf, " Jail", sizeof(buf) );
-    if (room_flag & ROOM_NO_MOB       ) strlcat( buf, " No_Mob", sizeof(buf) );
-    if (room_flag & ROOM_INDOORS      ) strlcat( buf, " Indoors", sizeof(buf) );
-    if (room_flag & ROOM_RIVER        ) strlcat( buf, " River", sizeof(buf) );
-    if (room_flag & ROOM_TELEPORT     ) strlcat( buf, " Tport", sizeof(buf) );
-    if (room_flag & ROOM_CULT_ENTRANCE) strlcat( buf, " Cult_ent", sizeof(buf) );
-    if (room_flag & ROOM_AFFECTED_BY  ) strlcat( buf, " affected_by", sizeof(buf) );
-    if (room_flag & ROOM_DT	      ) strlcat( buf, " death_trap", sizeof(buf) );
-    if (room_flag & ROOM_PRIVATE      ) strlcat( buf, " Private", sizeof(buf) );
-    if (room_flag & ROOM_SAFE         ) strlcat( buf, " Safe", sizeof(buf) );
-    if (room_flag & ROOM_SOLITARY     ) strlcat( buf, " Solitary", sizeof(buf) );
-    if (room_flag & ROOM_PET_SHOP     ) strlcat( buf, " Pet_Shop", sizeof(buf) );
-    if (room_flag & ROOM_NO_RECALL    ) strlcat( buf, " No_Recall", sizeof(buf) );
-    if (room_flag & ROOM_IMP_ONLY     ) strlcat( buf, " Imp_Only", sizeof(buf) );
-    if (room_flag & ROOM_GODS_ONLY    ) strlcat( buf, " Gods_Only", sizeof(buf) );
-    if (room_flag & ROOM_HEROES_ONLY  ) strlcat( buf, " Heroes_Only", sizeof(buf) );
-    if (room_flag & ROOM_NEWBIES_ONLY ) strlcat( buf, " Newbies_Only", sizeof(buf) );
-    if (room_flag & ROOM_LAW          ) strlcat( buf, " Law", sizeof(buf) );
-    if (room_flag & ROOM_HP_REGEN     ) strlcat( buf, " Hp_Regen", sizeof(buf) );
-    if (room_flag & ROOM_MANA_REGEN   ) strlcat( buf, " Mana_Regen", sizeof(buf) );
-    if (room_flag & ROOM_ARENA        ) strlcat( buf, " Arena", sizeof(buf) );
-    if (room_flag & ROOM_CASTLE_JOIN  ) strlcat( buf, " Castle_Join", sizeof(buf) );
-    if (room_flag & ROOM_SILENT       ) strlcat( buf, " Silent", sizeof(buf) );
-    if (room_flag & ROOM_BFS_MARK     ) strlcat( buf, " hunt mark", sizeof(buf) );
-    if (room_flag & ROOM_FLAGS2       ) strlcat( buf, " Flags2", sizeof(buf) );
+    if (room_flag & ROOM_DARK         ) toc_strlcat( buf, " Dark", sizeof(buf) );
+    if (room_flag & ROOM_JAIL         ) toc_strlcat( buf, " Jail", sizeof(buf) );
+    if (room_flag & ROOM_NO_MOB       ) toc_strlcat( buf, " No_Mob", sizeof(buf) );
+    if (room_flag & ROOM_INDOORS      ) toc_strlcat( buf, " Indoors", sizeof(buf) );
+    if (room_flag & ROOM_RIVER        ) toc_strlcat( buf, " River", sizeof(buf) );
+    if (room_flag & ROOM_TELEPORT     ) toc_strlcat( buf, " Tport", sizeof(buf) );
+    if (room_flag & ROOM_CULT_ENTRANCE) toc_strlcat( buf, " Cult_ent", sizeof(buf) );
+    if (room_flag & ROOM_AFFECTED_BY  ) toc_strlcat( buf, " affected_by", sizeof(buf) );
+    if (room_flag & ROOM_DT	      ) toc_strlcat( buf, " death_trap", sizeof(buf) );
+    if (room_flag & ROOM_PRIVATE      ) toc_strlcat( buf, " Private", sizeof(buf) );
+    if (room_flag & ROOM_SAFE         ) toc_strlcat( buf, " Safe", sizeof(buf) );
+    if (room_flag & ROOM_SOLITARY     ) toc_strlcat( buf, " Solitary", sizeof(buf) );
+    if (room_flag & ROOM_PET_SHOP     ) toc_strlcat( buf, " Pet_Shop", sizeof(buf) );
+    if (room_flag & ROOM_NO_RECALL    ) toc_strlcat( buf, " No_Recall", sizeof(buf) );
+    if (room_flag & ROOM_IMP_ONLY     ) toc_strlcat( buf, " Imp_Only", sizeof(buf) );
+    if (room_flag & ROOM_GODS_ONLY    ) toc_strlcat( buf, " Gods_Only", sizeof(buf) );
+    if (room_flag & ROOM_HEROES_ONLY  ) toc_strlcat( buf, " Heroes_Only", sizeof(buf) );
+    if (room_flag & ROOM_NEWBIES_ONLY ) toc_strlcat( buf, " Newbies_Only", sizeof(buf) );
+    if (room_flag & ROOM_LAW          ) toc_strlcat( buf, " Law", sizeof(buf) );
+    if (room_flag & ROOM_HP_REGEN     ) toc_strlcat( buf, " Hp_Regen", sizeof(buf) );
+    if (room_flag & ROOM_MANA_REGEN   ) toc_strlcat( buf, " Mana_Regen", sizeof(buf) );
+    if (room_flag & ROOM_ARENA        ) toc_strlcat( buf, " Arena", sizeof(buf) );
+    if (room_flag & ROOM_CASTLE_JOIN  ) toc_strlcat( buf, " Castle_Join", sizeof(buf) );
+    if (room_flag & ROOM_SILENT       ) toc_strlcat( buf, " Silent", sizeof(buf) );
+    if (room_flag & ROOM_BFS_MARK     ) toc_strlcat( buf, " hunt mark", sizeof(buf) );
+    if (room_flag & ROOM_FLAGS2       ) toc_strlcat( buf, " Flags2", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 
@@ -3243,7 +3245,7 @@ char *room_flag2_name(int room_flag)
 {
     static char buf[512];
 
-    if (room_flag & ROOM2_NO_TPORT         ) strlcat( buf, " No_Tport", sizeof(buf) );
+    if (room_flag & ROOM2_NO_TPORT         ) toc_strlcat( buf, " No_Tport", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }

@@ -60,6 +60,14 @@
 #include "interp.h"
 #include "db.h"
 
+#ifndef NI_MAXHOST
+#define NI_MAXHOST 1025
+#endif
+
+#ifndef O_NDELAY
+#define O_NDELAY O_NONBLOCK
+#endif
+
 /*
  * Signal handling.
  * Apollo has a problem with __attribute(atomic) in signal.h,
@@ -337,7 +345,7 @@ int main( int argc, char **argv )
      */
     time( &now_time );
     current_time = now_time;
-    strlcpy( str_boot_time, ctime( &current_time ), sizeof(str_boot_time) );
+    toc_strlcpy( str_boot_time, ctime( &current_time ), sizeof(str_boot_time) );
 
     /*
      * Macintosh console initialization.
@@ -1278,7 +1286,7 @@ static void prompt_append_text( char *buf, size_t buflen, const char *text )
     if ( buf == NULL || buflen == 0 || text == NULL || *text == '\0' )
         return;
 
-    strlcat( buf, text, buflen );
+    toc_strlcat( buf, text, buflen );
 }
 
 static void prompt_append_number( char *buf, size_t buflen, long value )

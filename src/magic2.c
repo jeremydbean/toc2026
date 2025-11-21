@@ -4145,25 +4145,25 @@ void spell_detect_traps( int sn, int level, CHAR_DATA *ch, void *vo )
      {
        switch ( door )
        {
-        case 0:  strlcpy( direction, "north", sizeof(direction));
+        case 0:  toc_strlcpy( direction, "north", sizeof(direction));
         break;
-        case 1:  strlcpy( direction, "east", sizeof(direction));
+        case 1:  toc_strlcpy( direction, "east", sizeof(direction));
         break;
-        case 2:  strlcpy( direction, "south", sizeof(direction));
+        case 2:  toc_strlcpy( direction, "south", sizeof(direction));
         break;
-        case 3:  strlcpy( direction, "west", sizeof(direction));
+        case 3:  toc_strlcpy( direction, "west", sizeof(direction));
         break;
-        case 4:  strlcpy( direction, "up", sizeof(direction));
+        case 4:  toc_strlcpy( direction, "up", sizeof(direction));
         break;
-        case 5:  strlcpy( direction, "down", sizeof(direction));
+        case 5:  toc_strlcpy( direction, "down", sizeof(direction));
         break;
-        case 6:  strlcpy( direction, "northeast", sizeof(direction));
+        case 6:  toc_strlcpy( direction, "northeast", sizeof(direction));
         break;
-        case 7:  strlcpy( direction, "northwest", sizeof(direction));
+        case 7:  toc_strlcpy( direction, "northwest", sizeof(direction));
         break;
-        case 8:  strlcpy( direction, "southeast", sizeof(direction));
+        case 8:  toc_strlcpy( direction, "southeast", sizeof(direction));
         break;
-        case 9:  strlcpy( direction, "southwest", sizeof(direction));
+        case 9:  toc_strlcpy( direction, "southwest", sizeof(direction));
         break;
        }
 
@@ -4292,10 +4292,10 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
     pRoomIndex->vnum            = vnum;
     name_len                    = strlen(defaultRoomName) + 1;
     pRoomIndex->name            = alloc_mem( name_len );
-    strlcpy(pRoomIndex->name, defaultRoomName, name_len);
+    toc_strlcpy(pRoomIndex->name, defaultRoomName, name_len);
     desc_len                    = strlen(defaultRoomDesc) + 1;
     pRoomIndex->description     = alloc_mem( desc_len );
-    strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
+    toc_strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
     pRoomIndex->room_flags      = 0;
     pRoomIndex->room_flags2     = 0;
     pRoomIndex->sector_type     = 0;
@@ -4383,10 +4383,10 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
     pRoomIndex->vnum            = vnum;
     name_len                    = strlen(defaultRoomName) + 1;
     pRoomIndex->name            = alloc_mem( name_len );
-    strlcpy(pRoomIndex->name, defaultRoomName, name_len);
+    toc_strlcpy(pRoomIndex->name, defaultRoomName, name_len);
     desc_len                    = strlen(defaultRoomDesc) + 1;
     pRoomIndex->description     = alloc_mem( desc_len );
-    strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
+    toc_strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
     pRoomIndex->room_flags      = 0;
     pRoomIndex->room_flags2     = 0;
     pRoomIndex->sector_type     = 0;

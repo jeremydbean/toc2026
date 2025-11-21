@@ -501,7 +501,7 @@ void interpret( CHAR_DATA *ch, char *argument )
      * Special parsing so ' can be a command,
      *   also no spaces needed after punctuation.
      */
-    strlcpy( logline, argument, sizeof(logline) );
+    toc_strlcpy( logline, argument, sizeof(logline) );
     if ( !isalpha(argument[0]) && !isdigit(argument[0]) )
     {
 	command[0] = argument[0];
@@ -1181,12 +1181,12 @@ int number_argument( char *argument, char *arg )
 	    *pdot = '\0';
 	    number = atoi( argument );
 	    *pdot = '.';
-              strlcpy( arg, pdot+1, MAX_INPUT_LENGTH );
+              toc_strlcpy( arg, pdot+1, MAX_INPUT_LENGTH );
               return number;
           }
       }
 
-    strlcpy( arg, argument, MAX_INPUT_LENGTH );
+    toc_strlcpy( arg, argument, MAX_INPUT_LENGTH );
     return 1;
 }
 

@@ -434,7 +434,7 @@ void boot_db( void )
  
         for ( ; ; )
         {
-            strlcpy( strArea, fread_word( fpList ), sizeof(strArea) );
+            toc_strlcpy( strArea, fread_word( fpList ), sizeof(strArea) );
             if ( strArea[0] == '$' )
                 break;
  
@@ -630,7 +630,7 @@ void load_socials( FILE *fp)
         if (!strcmp(temp,"#0"))
             return;  /* done */
  
-    strlcpy(social.name, temp, sizeof(social.name));
+    toc_strlcpy(social.name, temp, sizeof(social.name));
         fread_to_eol(fp);
  
         temp = fread_string_eol(fp);
@@ -1689,7 +1689,7 @@ void load_notes( void )
         pnotelast       = pnote;
     }
  
-    strlcpy( strArea, NOTE_FILE, sizeof(strArea) );
+    toc_strlcpy( strArea, NOTE_FILE, sizeof(strArea) );
     fpArea = fp;
     bug( "Load_notes: bad key word.", 0 );
     exit( 1 );
@@ -2217,8 +2217,8 @@ void create_room( int vnum )
     pRoomIndex->vnum            = vnum;
     pRoomIndex->name            = alloc_mem( strlen(defaultRoomName) + 1 );
     pRoomIndex->description     = alloc_mem( strlen(defaultRoomDesc) + 1 );
-    strlcpy(pRoomIndex->name, defaultRoomName, strlen(defaultRoomName) + 1);
-    strlcpy(pRoomIndex->description, defaultRoomDesc, strlen(defaultRoomDesc) + 1);
+    toc_strlcpy(pRoomIndex->name, defaultRoomName, strlen(defaultRoomName) + 1);
+    toc_strlcpy(pRoomIndex->description, defaultRoomDesc, strlen(defaultRoomDesc) + 1);
     pRoomIndex->room_flags      = 0;
     pRoomIndex->room_flags2     = 0;
     pRoomIndex->sector_type     = 0;
@@ -3689,12 +3689,12 @@ char *str_dup( const char *str )
     if ( str >= string_space && str < top_string )
     {
         str_new = alloc_mem( alloc_len );
-        strlcpy( str_new, str, (size_t)alloc_len );
+        toc_strlcpy( str_new, str, (size_t)alloc_len );
         return str_new;
     }
 
     str_new = alloc_mem( alloc_len );
-    strlcpy( str_new, str, (size_t)alloc_len );
+    toc_strlcpy( str_new, str, (size_t)alloc_len );
     return str_new;
 }
  
@@ -3810,17 +3810,17 @@ static char* identify_obj(OBJ_DATA *obj)
         wear_bit_name( obj->wear_flags ),
         extra_bit_name( obj->extra_flags )
         );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
 
     snprintf( buf, sizeof(buf), "Number: %d   Weight: %d/%d\n",
         get_obj_number( obj ),
         obj->weight, get_obj_weight( obj )
     );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
 
     snprintf( buf, sizeof(buf), "Level: %d  Value: %d  Condition: %d  Timer: %d\n",
         obj->level, obj->cost, obj->condition, obj->timer );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
 
     snprintf( buf, sizeof(buf),
         "In room: %d  In object: %s  Carried by: %s  Wear_loc: %d\n",
@@ -3829,7 +3829,7 @@ static char* identify_obj(OBJ_DATA *obj)
         obj->carried_by == NULL    ? "(none)" :
         obj->carried_by->name,
         obj->wear_loc );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     switch ( obj->item_type )
     {
@@ -3839,63 +3839,63 @@ static char* identify_obj(OBJ_DATA *obj)
     case ITEM_PORTAL:
     case ITEM_PILL:
         snprintf( buf, sizeof(buf), "Level %d spells of:", obj->value[0] );
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
 
         if ( obj->value[1] >= 0 && obj->value[1] < MAX_SKILL )
         {
-            strlcat(bigbuf, " '", sizeof(bigbuf));
-            strlcat(bigbuf, skill_table[obj->value[1]].name, sizeof(bigbuf));
-            strlcat(bigbuf, "'", sizeof(bigbuf));
+            toc_strlcat(bigbuf, " '", sizeof(bigbuf));
+            toc_strlcat(bigbuf, skill_table[obj->value[1]].name, sizeof(bigbuf));
+            toc_strlcat(bigbuf, "'", sizeof(bigbuf));
         }
 
         if ( obj->value[2] >= 0 && obj->value[2] < MAX_SKILL )
         {
-            strlcat(bigbuf, " '", sizeof(bigbuf));
-            strlcat(bigbuf, skill_table[obj->value[2]].name, sizeof(bigbuf));
-            strlcat(bigbuf, "'", sizeof(bigbuf));
+            toc_strlcat(bigbuf, " '", sizeof(bigbuf));
+            toc_strlcat(bigbuf, skill_table[obj->value[2]].name, sizeof(bigbuf));
+            toc_strlcat(bigbuf, "'", sizeof(bigbuf));
         }
 
         if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
         {
-            strlcat(bigbuf, " '", sizeof(bigbuf));
-            strlcat(bigbuf, skill_table[obj->value[3]].name, sizeof(bigbuf));
-            strlcat(bigbuf, "'", sizeof(bigbuf));
+            toc_strlcat(bigbuf, " '", sizeof(bigbuf));
+            toc_strlcat(bigbuf, skill_table[obj->value[3]].name, sizeof(bigbuf));
+            toc_strlcat(bigbuf, "'", sizeof(bigbuf));
         }
 
-        strlcat(bigbuf, ".\n", sizeof(bigbuf));
+        toc_strlcat(bigbuf, ".\n", sizeof(bigbuf));
         break;
 
     case ITEM_WAND:
     case ITEM_STAFF:
         snprintf( buf, sizeof(buf), "Has %d(%d) charges of level %d",
             obj->value[1], obj->value[2], obj->value[0] );
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
 
         if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
         {
-            strlcat(bigbuf, " '", sizeof(bigbuf));
-            strlcat(bigbuf, skill_table[obj->value[3]].name, sizeof(bigbuf));
-            strlcat(bigbuf, "'", sizeof(bigbuf));
+            toc_strlcat(bigbuf, " '", sizeof(bigbuf));
+            toc_strlcat(bigbuf, skill_table[obj->value[3]].name, sizeof(bigbuf));
+            toc_strlcat(bigbuf, "'", sizeof(bigbuf));
         }
 
-        strlcat(bigbuf, ".\n", sizeof(bigbuf));
+        toc_strlcat(bigbuf, ".\n", sizeof(bigbuf));
         break;
 
     case ITEM_WEAPON:
-        strlcat(bigbuf,"Weapon type is ", sizeof(bigbuf));
+        toc_strlcat(bigbuf,"Weapon type is ", sizeof(bigbuf));
         switch (obj->value[0])
         {
-            case(WEAPON_EXOTIC) : strlcat(bigbuf,"exotic.\n", sizeof(bigbuf));       break;
-            case(WEAPON_SWORD)  : strlcat(bigbuf,"sword.\n", sizeof(bigbuf));        break;
-            case(WEAPON_DAGGER) : strlcat(bigbuf,"dagger.\n", sizeof(bigbuf));       break;
-            case(WEAPON_SPEAR)  : strlcat(bigbuf,"spear/staff.\n", sizeof(bigbuf));  break;
-            case(WEAPON_MACE)   : strlcat(bigbuf,"mace/club.\n", sizeof(bigbuf));    break;
-            case(WEAPON_AXE)    : strlcat(bigbuf,"axe.\n", sizeof(bigbuf));          break;
-            case(WEAPON_FLAIL)  : strlcat(bigbuf,"flail.\n", sizeof(bigbuf));        break;
-            case(WEAPON_WHIP)   : strlcat(bigbuf,"whip.\n", sizeof(bigbuf));         break;
-            case(WEAPON_POLEARM): strlcat(bigbuf,"polearm.\n", sizeof(bigbuf));      break;
-            case(WEAPON_BOW)    : strlcat(bigbuf,"bow.\n", sizeof(bigbuf));          break;
-            default             : strlcat(bigbuf,"unknown.\n", sizeof(bigbuf));      break;
+            case(WEAPON_EXOTIC) : toc_strlcat(bigbuf,"exotic.\n", sizeof(bigbuf));       break;
+            case(WEAPON_SWORD)  : toc_strlcat(bigbuf,"sword.\n", sizeof(bigbuf));        break;
+            case(WEAPON_DAGGER) : toc_strlcat(bigbuf,"dagger.\n", sizeof(bigbuf));       break;
+            case(WEAPON_SPEAR)  : toc_strlcat(bigbuf,"spear/staff.\n", sizeof(bigbuf));  break;
+            case(WEAPON_MACE)   : toc_strlcat(bigbuf,"mace/club.\n", sizeof(bigbuf));    break;
+            case(WEAPON_AXE)    : toc_strlcat(bigbuf,"axe.\n", sizeof(bigbuf));          break;
+            case(WEAPON_FLAIL)  : toc_strlcat(bigbuf,"flail.\n", sizeof(bigbuf));        break;
+            case(WEAPON_WHIP)   : toc_strlcat(bigbuf,"whip.\n", sizeof(bigbuf));         break;
+            case(WEAPON_POLEARM): toc_strlcat(bigbuf,"polearm.\n", sizeof(bigbuf));      break;
+            case(WEAPON_BOW)    : toc_strlcat(bigbuf,"bow.\n", sizeof(bigbuf));          break;
+            default             : toc_strlcat(bigbuf,"unknown.\n", sizeof(bigbuf));      break;
         }
         if (obj->pIndexData->new_format)
             snprintf(buf, sizeof(buf), "Damage is %dd%d (average %d).\n",
@@ -3905,14 +3905,14 @@ static char* identify_obj(OBJ_DATA *obj)
             snprintf( buf, sizeof(buf), "Damage is %d to %d (average %d).\n",
                 obj->value[1], obj->value[2],
                 ( obj->value[1] + obj->value[2] ) / 2 );
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
         break;
 
     case ITEM_ARMOR:
         snprintf( buf, sizeof(buf),
         "Armor class is %d pierce, %d bash, %d slash, and %d vs. magic.\n",
             obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
         break;
     }
 /* BB
@@ -3924,7 +3924,7 @@ static char* identify_obj(OBJ_DATA *obj)
         {
             snprintf( buf, sizeof(buf), "Affects %s by %d.\n",
                 affect_loc_name( paf->location ), paf->modifier );
-            strlcat(bigbuf, buf, sizeof(bigbuf));
+            toc_strlcat(bigbuf, buf, sizeof(bigbuf));
         }
     }
 
@@ -3934,7 +3934,7 @@ static char* identify_obj(OBJ_DATA *obj)
         {
             snprintf( buf, sizeof(buf), "Affects %s by %d.\n",
                 affect_loc_name( paf->location ), paf->modifier );
-            strlcat(bigbuf, buf, sizeof(bigbuf));
+            toc_strlcat(bigbuf, buf, sizeof(bigbuf));
         }
     }
 
@@ -3942,26 +3942,26 @@ static char* identify_obj(OBJ_DATA *obj)
     {
         EXTRA_DESCR_DATA *ed;
 
-        strlcat(bigbuf, "Extra description keywords: '", sizeof(bigbuf));
+        toc_strlcat(bigbuf, "Extra description keywords: '", sizeof(bigbuf));
 
         for ( ed = obj->extra_descr; ed != NULL; ed = ed->next )
         {
-            strlcat(bigbuf, ed->keyword, sizeof(bigbuf));
+            toc_strlcat(bigbuf, ed->keyword, sizeof(bigbuf));
             if ( ed->next != NULL )
-                strlcat(bigbuf, " ", sizeof(bigbuf));
+                toc_strlcat(bigbuf, " ", sizeof(bigbuf));
         }
 
         for ( ed = obj->pIndexData->extra_descr; ed != NULL; ed = ed->next )
         {
-            strlcat(bigbuf, ed->keyword, sizeof(bigbuf));
+            toc_strlcat(bigbuf, ed->keyword, sizeof(bigbuf));
             if ( ed->next != NULL )
-                strlcat(bigbuf, " ", sizeof(bigbuf));
+                toc_strlcat(bigbuf, " ", sizeof(bigbuf));
         }
 
-        strlcat(bigbuf, "'\n", sizeof(bigbuf));
+        toc_strlcat(bigbuf, "'\n", sizeof(bigbuf));
     }
 
-    strlcat(bigbuf, "\n", sizeof(bigbuf));
+    toc_strlcat(bigbuf, "\n", sizeof(bigbuf));
     return bigbuf;
 }
  
@@ -3978,7 +3978,7 @@ static char* stat_mob(CHAR_DATA *victim)
         victim->short_descr,
         victim->long_descr[0] != '\0' ? victim->long_descr : "(none)\n" );
     buf[strlen(buf)]='\0';   /* get rid of the \r */
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     snprintf(buf, sizeof(buf), "Vnum: %d  Format: %s  Race: %s  Sex: %s  Room: %d\n",
         IS_NPC(victim) ? victim->pIndexData->vnum : 0,
@@ -3988,13 +3988,13 @@ static char* stat_mob(CHAR_DATA *victim)
         victim->sex == SEX_FEMALE  ? "female" : "neutral",
         victim->in_room == NULL    ?        0 : victim->in_room->vnum
         );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if (IS_NPC(victim))
     {
         snprintf(buf, sizeof(buf),"Count: %d  Killed: %d\n",
             victim->pIndexData->count,victim->pIndexData->killed);
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     snprintf(buf, sizeof(buf),
@@ -4009,14 +4009,14 @@ static char* stat_mob(CHAR_DATA *victim)
         get_curr_stat(victim,STAT_DEX),
         victim->perm_stat[STAT_CON],
         get_curr_stat(victim,STAT_CON) );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     snprintf(buf, sizeof(buf), "Hp: %d/%d  Mana: %d/%d  Move: %d/%d  Practices: %d\n",
         victim->hit,         victim->max_hit,
         victim->mana,        victim->max_mana,
         victim->move,        victim->max_move,
         IS_NPC(victim) ? 0 : victim->practice );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     snprintf(buf, sizeof(buf),
         "Lv: %d  Class: %s  Guild: %s  Align: %d  Exp: %ld\n",
@@ -4025,32 +4025,32 @@ static char* stat_mob(CHAR_DATA *victim)
 	IS_NPC(victim) ? "none" : get_guildname(victim->pcdata->guild),
         victim->alignment,
         victim->exp );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
 
     snprintf(buf, sizeof(buf),"Money: Platinum: %ld , Gold: %ld, Silver: %ld, Copper: %ld\n",
             victim->new_platinum, victim->new_gold, victim->new_silver, victim->new_copper);
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     
     snprintf(buf, sizeof(buf),"Armor: pierce: %d  bash: %d  slash: %d  magic: %d\n",
             GET_AC(victim,AC_PIERCE), GET_AC(victim,AC_BASH),
             GET_AC(victim,AC_SLASH),  GET_AC(victim,AC_EXOTIC));
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     snprintf(buf, sizeof(buf), "Hit: %d  Dam: %d  Saves: %d  Position: %d  Wimpy: %d\n",
         GET_HITROLL(victim), GET_DAMROLL(victim), victim->saving_throw,
         victim->position,    victim->wimpy );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if (IS_NPC(victim) && victim->pIndexData->new_format)
     {
         snprintf(buf, sizeof(buf), "Damage: %dd%d  Message:  %s\n",
             victim->damage[DICE_NUMBER],victim->damage[DICE_TYPE],
             attack_table[victim->dam_type].name);
-	strlcat(bigbuf, buf, sizeof(bigbuf));
+	toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
     snprintf(buf, sizeof(buf), "Fighting: %s\n",
         victim->fighting ? victim->fighting->name : "(none)" );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if ( !IS_NPC(victim) )
     {
@@ -4059,12 +4059,12 @@ static char* stat_mob(CHAR_DATA *victim)
             victim->pcdata->condition[COND_THIRST],
             victim->pcdata->condition[COND_FULL],
             victim->pcdata->condition[COND_DRUNK] );
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     snprintf(buf, sizeof(buf), "Carry number: %d  Carry weight: %d\n",
         victim->carry_number, query_carry_weight(victim) );
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
 
     if (!IS_NPC(victim))
@@ -4075,61 +4075,61 @@ static char* stat_mob(CHAR_DATA *victim)
             (int) (victim->played + current_time - victim->logon) / 3600,
             victim->pcdata->last_level,
             victim->timer );
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     snprintf(buf, sizeof(buf), "Act: %s\n",act_bit_name(victim->act));
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if (victim->comm)
     {
         snprintf(buf, sizeof(buf),"Comm: %s\n",comm_bit_name(victim->comm));
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
 
     if (IS_NPC(victim) && victim->off_flags)
     {
         snprintf(buf, sizeof(buf), "Offense: %s\n",off_bit_name(victim->off_flags));
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     if (victim->imm_flags)
     {
         snprintf(buf, sizeof(buf), "Immune: %s\n",imm_bit_name(victim->imm_flags));
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     if (victim->res_flags)
     {
         snprintf(buf, sizeof(buf), "Resist: %s\n", imm_bit_name(victim->res_flags));
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     if (victim->vuln_flags)
     {
         snprintf(buf, sizeof(buf), "Vulnerable: %s\n", imm_bit_name(victim->vuln_flags));
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     snprintf(buf, sizeof(buf), "Form: %s\nParts: %s\n",
         form_bit_name(victim->form), part_bit_name(victim->parts));
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if (victim->affected_by)
     {
         snprintf(buf, sizeof(buf), "Affected by %s\n",
             affect_bit_name(victim->affected_by));
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
  
     snprintf(buf, sizeof(buf), "Master: %s  Leader: %s  Pet: %s\n",
         victim->master      ? victim->master->name   : "(none)",
         victim->leader      ? victim->leader->name   : "(none)",
         victim->pet         ? victim->pet->name      : "(none)");
-    strlcat(bigbuf, buf, sizeof(bigbuf));
+    toc_strlcat(bigbuf, buf, sizeof(bigbuf));
  
     if ( IS_NPC(victim) && victim->spec_fun != 0 )
-        strlcat(bigbuf, "Mobile has special procedure.\n" , sizeof(bigbuf));
+        toc_strlcat(bigbuf, "Mobile has special procedure.\n" , sizeof(bigbuf));
  
     for ( paf = victim->affected; paf != NULL; paf = paf->next )
     {
@@ -4143,9 +4143,9 @@ static char* stat_mob(CHAR_DATA *victim)
             affect2_bit_name(paf->bitvector2),
             paf->level
             );
-        strlcat(bigbuf, buf, sizeof(bigbuf));
+        toc_strlcat(bigbuf, buf, sizeof(bigbuf));
     }
-    strlcat(bigbuf, "\n", sizeof(bigbuf));
+    toc_strlcat(bigbuf, "\n", sizeof(bigbuf));
 
     return bigbuf;
 }
@@ -4810,7 +4810,7 @@ void bug( const char *str, int param )
         }
     }
 
-    strlcpy( buf, "[*****] BUG: ", sizeof(buf) );
+    toc_strlcpy( buf, "[*****] BUG: ", sizeof(buf) );
     snprintf( buf + strlen(buf), sizeof(buf) - strlen(buf), str, param );
     log_string( buf );
 

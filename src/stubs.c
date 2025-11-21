@@ -33,7 +33,7 @@ bool normalize_psionic_arguments( const char *argument, char *output, size_t len
     if ( output == NULL || length == 0 )
         return FALSE;
 
-    strlcpy( output, argument != NULL ? argument : "", length );
+    toc_strlcpy( output, argument != NULL ? argument : "", length );
     return TRUE;
 }
 

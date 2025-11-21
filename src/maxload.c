@@ -545,7 +545,7 @@ void do_lst_maxload(CHAR_DATA *ch, char *argument)
     /* Header. */
     snprintf(buf, sizeof(buf), "Listing of all items which have a %s set.\n\r",
              "maxload");
-    strlcat(buf,
+    toc_strlcat(buf,
             "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r",
             sizeof(buf));
 
@@ -554,10 +554,10 @@ void do_lst_maxload(CHAR_DATA *ch, char *argument)
 
         snprintf(line_buf, sizeof(line_buf), "       %-8s %-8s %-8s %-8s %-40s\n\r",
                  "VNUM", "IN_GAME", "WITH_PLA", "MAX", "DESCRIPTION");
-        strlcat(buf, line_buf, sizeof(buf));
+        toc_strlcat(buf, line_buf, sizeof(buf));
     }
 
-    strlcat(buf,
+    toc_strlcat(buf,
             "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r",
             sizeof(buf));
 
@@ -591,7 +591,7 @@ void do_lst_maxload(CHAR_DATA *ch, char *argument)
         send_to_char("TRUNCATED INFORMATION\n\r", ch);
     }
 
-    strlcat(buf,
+    toc_strlcat(buf,
             "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r",
             sizeof(buf));
     page_to_char(buf, ch);

@@ -142,7 +142,7 @@ void say_spell( CHAR_DATA *ch, int sn )
              {
                  if ( !str_prefix( syl_table[iSyl].old, pName ) )
                   {
-                            strlcat( buf, syl_table[iSyl].new, sizeof(buf) );
+                            toc_strlcat( buf, syl_table[iSyl].new, sizeof(buf) );
                             break;
                   }
              }
@@ -171,9 +171,9 @@ void say_spell( CHAR_DATA *ch, int sn )
             buf[max_spell_len] = '\0';
         }
 
-        strlcpy( buf2, "$n utters the words, '", sizeof(buf2) );
-        strlcat( buf2, buf, sizeof(buf2) );
-        strlcat( buf2, "'.", sizeof(buf2) );
+        toc_strlcpy( buf2, "$n utters the words, '", sizeof(buf2) );
+        toc_strlcat( buf2, buf, sizeof(buf2) );
+        toc_strlcat( buf2, "'.", sizeof(buf2) );
 
         {
             char truncated_name[MAX_STRING_LENGTH];
@@ -182,10 +182,10 @@ void say_spell( CHAR_DATA *ch, int sn )
             if ( copy_len >= sizeof(truncated_name) )
                 copy_len = sizeof(truncated_name) - 1;
 
-            strlcpy( truncated_name, skill_table[sn].name, copy_len + 1 );
-            strlcpy( buf, "$n utters the words, '", sizeof(buf) );
-            strlcat( buf, truncated_name, sizeof(buf) );
-            strlcat( buf, "'.", sizeof(buf) );
+            toc_strlcpy( truncated_name, skill_table[sn].name, copy_len + 1 );
+            toc_strlcpy( buf, "$n utters the words, '", sizeof(buf) );
+            toc_strlcat( buf, truncated_name, sizeof(buf) );
+            toc_strlcat( buf, "'.", sizeof(buf) );
         }
     }
 
@@ -3484,7 +3484,7 @@ void spell_locate_object( int sn, int level, CHAR_DATA *ch, void *vo )
 	}
 
 	buf[0] = UPPER(buf[0]);
-	strlcat(buffer, buf, sizeof(buffer));
+	toc_strlcat(buffer, buf, sizeof(buffer));
 
 	if (number >= max_found)
 	    break;

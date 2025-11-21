@@ -2525,22 +2525,22 @@ void do_train( CHAR_DATA *ch, char *argument )
 
     else
     {
-        strlcpy( buf, "You can train:", sizeof(buf) );
+        toc_strlcpy( buf, "You can train:", sizeof(buf) );
         if ( ch->perm_stat[STAT_STR] < get_max_train(ch,STAT_STR))
-            strlcat( buf, " str", sizeof(buf) );
+            toc_strlcat( buf, " str", sizeof(buf) );
         if ( ch->perm_stat[STAT_INT] < get_max_train(ch,STAT_INT))
-            strlcat( buf, " int", sizeof(buf) );
+            toc_strlcat( buf, " int", sizeof(buf) );
         if ( ch->perm_stat[STAT_WIS] < get_max_train(ch,STAT_WIS))
-            strlcat( buf, " wis", sizeof(buf) );
+            toc_strlcat( buf, " wis", sizeof(buf) );
         if ( ch->perm_stat[STAT_DEX] < get_max_train(ch,STAT_DEX))
-            strlcat( buf, " dex", sizeof(buf) );
+            toc_strlcat( buf, " dex", sizeof(buf) );
         if ( ch->perm_stat[STAT_CON] < get_max_train(ch,STAT_CON))
-            strlcat( buf, " con", sizeof(buf) );
-        strlcat( buf, " hp mana", sizeof(buf));
+            toc_strlcat( buf, " con", sizeof(buf) );
+        toc_strlcat( buf, " hp mana", sizeof(buf));
 
         if ( buf[strlen(buf)-1] != ':' )
         {
-            strlcat( buf, ".\n\r", sizeof(buf) );
+            toc_strlcat( buf, ".\n\r", sizeof(buf) );
             send_to_char( buf, ch );
         }
 	else

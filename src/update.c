@@ -888,7 +888,7 @@ void weather_update( void )
     {
     case  5:
 	weather_info.sunlight = SUN_LIGHT;
-	strlcat( buf, "The day has begun.\n\r" , sizeof(buf) );
+	toc_strlcat( buf, "The day has begun.\n\r" , sizeof(buf) );
   component_update();
 	break;
 
@@ -897,17 +897,17 @@ void weather_update( void )
 	switch( dice(1,4) )
 	{
 	  case 1:
-	  strlcat( buf, "Daylight paints the sky a bright red, heralding a new day.\n\r", sizeof(buf) );
+	  toc_strlcat( buf, "Daylight paints the sky a bright red, heralding a new day.\n\r", sizeof(buf) );
     component_update();
 	  break;
 	  case 2:
-	  strlcat( buf, "The sun rises on the eastern horizen.\n\r", sizeof(buf) );
+	  toc_strlcat( buf, "The sun rises on the eastern horizen.\n\r", sizeof(buf) );
 	  break;
 	  case 3:
-	  strlcat( buf, "A rooster crows off in the distance, and daylight streaks across the heavens.\n\r", sizeof(buf) );
+	  toc_strlcat( buf, "A rooster crows off in the distance, and daylight streaks across the heavens.\n\r", sizeof(buf) );
 	  break;
 	  case 4:
-	  strlcat( buf, "The sun slowly glides up into the sky as the new day begins.\n\r", sizeof(buf) );
+	  toc_strlcat( buf, "The sun slowly glides up into the sky as the new day begins.\n\r", sizeof(buf) );
 	  break;
 	}
 	break;
@@ -917,35 +917,35 @@ void weather_update( void )
 	switch( dice(1,6) )
 	{
 	    case 1:
-	    strlcat( buf, "The sun slowly disappears in the west.\n\r" , sizeof(buf) );
+	    toc_strlcat( buf, "The sun slowly disappears in the west.\n\r" , sizeof(buf) );
 	    break;
 
 	    case 2:
-	    strlcat( buf, "The sky is ablaze with colors as the sun dips below the horizon.\n\r" , sizeof(buf) );
+	    toc_strlcat( buf, "The sky is ablaze with colors as the sun dips below the horizon.\n\r" , sizeof(buf) );
 	    break;
 
 	    case 3:
-	    strlcat( buf, "Stars begin to shine coldly as the night begins.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "Stars begin to shine coldly as the night begins.\n\r", sizeof(buf) );
       component_update();
 	    break;
 
 	    case 4:
-	    strlcat( buf, "The rainbow colors of an aurora fill the night sky.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "The rainbow colors of an aurora fill the night sky.\n\r", sizeof(buf) );
 	    break;
 
 	    case 5:
-	    strlcat( buf, "Shooting stars leave glittering trails of white overhead.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "Shooting stars leave glittering trails of white overhead.\n\r", sizeof(buf) );
 	    break;
 
 	    case 6:
-	    strlcat( buf, "Thousands of stars paint the sky as night begins.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "Thousands of stars paint the sky as night begins.\n\r", sizeof(buf) );
 	    break;
 	}
 	break;
 
     case 20:
 	weather_info.sunlight = SUN_DARK;
-	strlcat( buf, "The night has begun.\n\r" , sizeof(buf) );
+	toc_strlcat( buf, "The night has begun.\n\r" , sizeof(buf) );
   component_update();
 	break;
 
@@ -976,17 +976,17 @@ void weather_update( void )
 	switch(weather_info.moon_phase)
 	{
 	  case MOON_NEW:
-	    strlcat( buf, "A new moon sets.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "A new moon sets.\n\r", sizeof(buf) );
 	  break;
 	  case MOON_WAXING:
-	    strlcat( buf, "A crescent moon sets.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "A crescent moon sets.\n\r", sizeof(buf) );
 	  break;
 	  case MOON_FULL:
-	    strlcat( buf, "A full moon sets.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "A full moon sets.\n\r", sizeof(buf) );
       component_update();
 	  break;
 	  case MOON_WANING:
-	    strlcat( buf, "A crescent moon sets.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "A crescent moon sets.\n\r", sizeof(buf) );
 	  break;
 	}
 	weather_info.moon_place = MOON_DOWN;
@@ -995,17 +995,17 @@ void weather_update( void )
 	switch(weather_info.moon_phase)
 	{
 	  case MOON_NEW:
-	    strlcat( buf, "A new moon rises.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "A new moon rises.\n\r", sizeof(buf) );
 	  break;
 	  case MOON_WAXING:
-	    strlcat( buf, "A crescent moon rises.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "A crescent moon rises.\n\r", sizeof(buf) );
 	  break;
 	  case MOON_FULL:
-	    strlcat( buf, "A full moon rises.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "A full moon rises.\n\r", sizeof(buf) );
       component_update();
 	  break;
 	  case MOON_WANING:
-	    strlcat( buf, "A crescent moon rises.\n\r", sizeof(buf) );
+	    toc_strlcat( buf, "A crescent moon rises.\n\r", sizeof(buf) );
 	  break;
 	}
 	weather_info.moon_place = MOON_UP;
@@ -1051,7 +1051,7 @@ void weather_update( void )
 	if ( weather_info.mmhg <  990
 	|| ( weather_info.mmhg < 1010 && number_bits( 2 ) == 0 ) )
 	{
-	    strlcat( buf, "Clouds begin to fill the sky.\n\r" , sizeof(buf) );
+	    toc_strlcat( buf, "Clouds begin to fill the sky.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_CLOUDY;
 	}
 	break;
@@ -1060,13 +1060,13 @@ void weather_update( void )
 	if ( weather_info.mmhg <  970
 	|| ( weather_info.mmhg <  990 && number_bits( 2 ) == 0 ) )
 	{
-	    strlcat( buf, "The sky breaks, and rain falls from the heavens.\n\r" , sizeof(buf) );
+	    toc_strlcat( buf, "The sky breaks, and rain falls from the heavens.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_RAINING;
 	}
 
 	if ( weather_info.mmhg > 1030 && number_bits( 2 ) == 0 )
 	{
-	    strlcat( buf, "The clouds disappear.\n\r" , sizeof(buf) );
+	    toc_strlcat( buf, "The clouds disappear.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_CLOUDLESS;
 	}
 	break;
@@ -1074,14 +1074,14 @@ void weather_update( void )
     case SKY_RAINING:
 	if ( weather_info.mmhg <  970 && number_bits( 2 ) == 0 )
 	{
-	    strlcat( buf, "Lightning flashes like a war in the sky.\n\r" , sizeof(buf) );
+	    toc_strlcat( buf, "Lightning flashes like a war in the sky.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_LIGHTNING;
 	}
 
 	if ( weather_info.mmhg > 1030
 	|| ( weather_info.mmhg > 1010 && number_bits( 2 ) == 0 ) )
 	{
-	    strlcat( buf, "The rain gently tapers off.\n\r" , sizeof(buf) );
+	    toc_strlcat( buf, "The rain gently tapers off.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_CLOUDY;
 	}
 	break;
@@ -1090,7 +1090,7 @@ void weather_update( void )
 	if ( weather_info.mmhg > 1010
 	|| ( weather_info.mmhg >  990 && number_bits( 2 ) == 0 ) )
 	{
-	    strlcat( buf, "The lightning has stopped.\n\r" , sizeof(buf) );
+	    toc_strlcat( buf, "The lightning has stopped.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_RAINING;
 	    break;
 	}

@@ -2187,7 +2187,7 @@ void do_mfind( CHAR_DATA *ch, char *argument )
 		snprintf( buf, sizeof(buf), "[%5d] %s\n\r",
 		    pMobIndex->vnum, pMobIndex->short_descr );
 /*		send_to_char( buf, ch );*/
-                strlcat(buffer, buf, sizeof(buffer));
+                toc_strlcat(buffer, buf, sizeof(buffer));
 	    }
 	}
     }
@@ -2245,7 +2245,7 @@ void do_ofind( CHAR_DATA *ch, char *argument )
 		snprintf( buf, sizeof(buf), "[%5d] %s\n\r",
 		    pObjIndex->vnum, pObjIndex->short_descr );
 /*		send_to_char( buf, ch );*/
-                strlcat(buffer, buf, sizeof(buffer));
+                toc_strlcat(buffer, buf, sizeof(buffer));
 	    }
 	}
     }
@@ -2274,7 +2274,7 @@ void do_rwhere( CHAR_DATA *ch, char *argument )
     bool found;
     int i, count;
 
-    strlcpy( arg, argument, sizeof(arg) );
+    toc_strlcpy( arg, argument, sizeof(arg) );
 
     if ( arg[0] == '\0')
     {
@@ -2300,7 +2300,7 @@ void do_rwhere( CHAR_DATA *ch, char *argument )
         {
            found = true;
             snprintf(buf, sizeof(buf),"%-40s [%5d]\n\r",location->name, location->vnum);
-            strlcat(buffer, buf, sizeof(buffer));
+            toc_strlcat(buffer, buf, sizeof(buffer));
            count++;
         }
     }
@@ -2358,7 +2358,7 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
                 victim->short_descr,
                 victim->in_room->vnum,
                 victim->in_room->name );
-            strlcat(buffer, buf, sizeof(buffer));
+            toc_strlcat(buffer, buf, sizeof(buffer));
             count++;
 	}
     }
@@ -2461,7 +2461,7 @@ void do_owhere( CHAR_DATA *ch, char *argument )
 	    }
             count++;
 	    obj_counter++;
-            strlcat(buffer, buf, sizeof(buffer));
+            toc_strlcat(buffer, buf, sizeof(buffer));
 	}
     }
 
@@ -2513,7 +2513,7 @@ void do_shutdown( CHAR_DATA *ch, char *argument )
    snprintf( buf, sizeof(buf), "Shutdown by %s.", ch->name );
 	append_file( ch, SHUTDOWN_FILE, buf );
     }
-    strlcat( buf, "\n\r", sizeof(buf) );
+    toc_strlcat( buf, "\n\r", sizeof(buf) );
     do_echo( ch, buf );
 /*    do_force ( ch, "all save");*/
     do_forcesave(ch,"");
@@ -3596,11 +3596,11 @@ void do_ban( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
-        strlcpy( buf, "Banned sites:\n\r", sizeof(buf) );
+        toc_strlcpy( buf, "Banned sites:\n\r", sizeof(buf) );
         for ( pban = ban_list; pban != NULL; pban = pban->next )
         {
-            strlcat( buf, pban->name, sizeof(buf) );
-            strlcat( buf, "\n\r", sizeof(buf) );
+            toc_strlcat( buf, pban->name, sizeof(buf) );
+            toc_strlcat( buf, "\n\r", sizeof(buf) );
         }
         send_to_char( buf, ch );
         return;
@@ -3889,7 +3889,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
-    strlcpy( arg3, argument, sizeof(arg3) );
+    toc_strlcpy( arg3, argument, sizeof(arg3) );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
     {
@@ -4052,14 +4052,14 @@ void do_mset( CHAR_DATA *ch, char *argument )
         class = class_lookup(arg3);
         if ( class == -1 )
         {
-            strlcpy( buf, "Possible classes are: ", sizeof(buf) );
+            toc_strlcpy( buf, "Possible classes are: ", sizeof(buf) );
             for ( class = 0; class < MAX_CLASS; class++ )
             {
                 if ( class > 0 )
-                    strlcat( buf, " ", sizeof(buf) );
-                strlcat( buf, class_table[class].name, sizeof(buf) );
+                    toc_strlcat( buf, " ", sizeof(buf) );
+                toc_strlcat( buf, class_table[class].name, sizeof(buf) );
             }
-            strlcat( buf, ".\n\r", sizeof(buf) );
+            toc_strlcat( buf, ".\n\r", sizeof(buf) );
 
             send_to_char(buf,ch);
             return;
@@ -4094,8 +4094,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
         guild = guild_lookup(arg3);
         if ( guild == -1 || guild == GUILD_ANY )
         {
-            strlcpy( buf, "Possible guilds are: mage, cleric, warrior, ", sizeof(buf) );
-            strlcat( buf, "thief, none.\n\r", sizeof(buf) );
+            toc_strlcpy( buf, "Possible guilds are: mage, cleric, warrior, ", sizeof(buf) );
+            toc_strlcat( buf, "thief, none.\n\r", sizeof(buf) );
 
             send_to_char(buf,ch);
             return;
@@ -4123,7 +4123,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
         castle = castle_lookup(arg3);
         if ( castle == -1 )
         {
-            strlcpy( buf, "Possible castles are: none, valhalla and rogue.", sizeof(buf) );
+            toc_strlcpy( buf, "Possible castles are: none, valhalla and rogue.", sizeof(buf) );
 
             send_to_char(buf,ch);
             return;
@@ -4578,7 +4578,7 @@ void do_string( CHAR_DATA *ch, char *argument )
     argument = one_argument( argument, type );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
-    strlcpy( arg3, argument, sizeof(arg3) );
+    toc_strlcpy( arg3, argument, sizeof(arg3) );
 
     if ( type[0] == '\0' || arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
     {
@@ -4639,7 +4639,7 @@ void do_string( CHAR_DATA *ch, char *argument )
         if ( !str_prefix( arg2, "long" ) )
         {
             free_string( victim->long_descr );
-            strlcat(arg3,"\n\r", sizeof(arg3));
+            toc_strlcat(arg3,"\n\r", sizeof(arg3));
             victim->long_descr = str_dup( arg3 );
             snprintf(buf, sizeof(buf),"Long Desc now: %s.\n\r",victim->long_descr);
             send_to_char(buf,ch);
@@ -4752,7 +4752,7 @@ void do_string( CHAR_DATA *ch, char *argument )
 		return;
 	    }
 
-            strlcat(argument,"\n\r", sizeof(argument));
+            toc_strlcat(argument,"\n\r", sizeof(argument));
 
 	    if ( extra_descr_free == NULL )
 	    {
@@ -4793,7 +4793,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
-    strlcpy( arg3, argument, sizeof(arg3) );
+    toc_strlcpy( arg3, argument, sizeof(arg3) );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
     {
@@ -4961,7 +4961,7 @@ void do_rset( CHAR_DATA *ch, char *argument )
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
-    strlcpy( arg3, argument, sizeof(arg3) );
+    toc_strlcpy( arg3, argument, sizeof(arg3) );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' || arg3[0] == '\0' )
     {
@@ -5158,7 +5158,7 @@ void do_sockets( CHAR_DATA *ch, char *argument )
 
                 for ( d = descriptor_list; d != NULL; d = d->next )
                 {
-                     strlcpy(chhost, d->host, sizeof(chhost));
+                     toc_strlcpy(chhost, d->host, sizeof(chhost));
 
                    if (d->character == NULL)
                    {
@@ -5238,7 +5238,7 @@ void do_sockets( CHAR_DATA *ch, char *argument )
     }
 
     snprintf( buf2, sizeof(buf2), "%d user%s\n\r", count, count == 1 ? "" : "s" );
-    strlcat(buf, buf2, sizeof(buf));
+    toc_strlcat(buf, buf2, sizeof(buf));
     page_to_char( buf, ch );
     return;
 }
@@ -5534,8 +5534,8 @@ void do_restorechar( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    strlcpy (name, capitalize(name), sizeof(name));
-    strlcpy (date, capitalize(date), sizeof(date));
+    toc_strlcpy (name, capitalize(name), sizeof(name));
+    toc_strlcpy (date, capitalize(date), sizeof(date));
     snprintf(filename, sizeof(filename), "%s%s.tar.gz", BACKUP_DIR, date);
     snprintf(playerfile, sizeof(playerfile), "%s%s", PLAYER_DIR, name);
     snprintf(buf, sizeof(buf), "Restoring %s from %s\n\r", name, date);
@@ -5776,23 +5776,23 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     {
         if ( list_buf[0] != '\0' )
         {
-            strlcat( list_buf, " ", sizeof(list_buf) );
+            toc_strlcat( list_buf, " ", sizeof(list_buf) );
         }
-        strlcat( list_buf, mode, sizeof(list_buf) );
+        toc_strlcat( list_buf, mode, sizeof(list_buf) );
     }
 
     if ( !immediate && argument[0] != '\0' )
     {
         if ( list_buf[0] != '\0' )
         {
-            strlcat( list_buf, " ", sizeof(list_buf) );
+            toc_strlcat( list_buf, " ", sizeof(list_buf) );
         }
-        strlcat( list_buf, argument, sizeof(list_buf) );
+        toc_strlcat( list_buf, argument, sizeof(list_buf) );
     }
 
     if ( immediate )
     {
-        strlcpy( list_buf, argument, sizeof(list_buf) );
+        toc_strlcpy( list_buf, argument, sizeof(list_buf) );
     }
 
     if ( !normalize_psionic_arguments( list_buf, list_buf, sizeof(list_buf), invalid ) )
