@@ -680,8 +680,14 @@ class AreaParser:
         with open(filepath, 'r', encoding='latin-1', errors='ignore') as f:
             content = f.read()
         
-        area_name = self._extract_area_name(content)
-        area = Area(filename=filepath.name, name=area_name)
+        area_info = self._extract_area_info(content)
+        area_name = area_info["name"]
+        
+        area = Area(
+            filename=filepath.name, 
+            name=area_name,
+            credits=area_info["credits"]
+        )
         self.areas[filepath.name] = area
         
         # Parse each section
@@ -689,13 +695,52 @@ class AreaParser:
         self._parse_objects(content, filepath.name, area_name)
         self._parse_rooms(content, filepath.name, area_name)
         self._parse_resets(content, filepath.name)
+        
+        # Calculate vnum range for this area
+        vnums = []
+        for vnum, mob in self.mobiles.items():
+            if mob.area_file == filepath.name:
+                vnums.append(vnum)
+        for vnum, obj in self.objects.items():
+            if obj.area_file == filepath.name:
+                vnums.append(vnum)
+        for vnum, room in self.rooms.items():
+            if room.area_file == filepath.name:
+                vnums.append(vnum)
+                
+        if vnums:
+            area.vnums = f"{min(vnums)} - {max(vnums)}"
+            # Also try to extract builder from credits if possible, or leave empty
+            # Usually builder is part of the name or credits in some formats, but here it's mixed.
+            # We'll leave builders empty for now unless we find a #BUILDERS section.
+
     
-    def _extract_area_name(self, content: str) -> str:
-        """Extract area name from #AREA section"""
+    def _extract_area_info(self, content: str) -> Dict[str, Any]:
+        """Extract area info from #AREA section"""
         match = re.search(r'#AREA\s+([^\n]+?)~', content, re.MULTILINE)
         if match:
-            return match.group(1).strip()
-        return "Unknown Area"
+            raw_line = match.group(1).strip()
+            # Format: { credits } Name
+            # e.g. { 1 5 } Hatchet Mud School
+            # e.g. {None } Diku Limbo
+            
+            credits_match = re.match(r'\{(.*?)\}\s*(.*)', raw_line)
+            if credits_match:
+                return {
+                    "credits": credits_match.group(1).strip(),
+                    "name": credits_match.group(2).strip()
+                }
+            return {"name": raw_line, "credits": ""}
+            
+        # Check for HELPS
+        if re.search(r'#HELPS', content):
+             return {"name": "Help File", "credits": ""}
+
+        # Check for SOCIALS
+        if re.search(r'#SOCIALS', content):
+             return {"name": "Socials File", "credits": ""}
+
+        return {"name": "Unknown Area", "credits": ""}
     
     def _read_to_tilde(self, lines: List[str], index: int) -> tuple[str, int]:
         """Read lines until hitting a tilde, return combined text and new index"""
@@ -732,19 +777,28 @@ class AreaParser:
                 if line == '#0':
                     break
                     
-                try:
-                    vnum = int(line[1:])
-                except ValueError:
+                # Handle "#VNUM Keywords~" format
+                vnum_match = re.match(r'^#(\d+)\s*(.*)$', line)
+                if not vnum_match:
                     i += 1
                     continue
+                    
+                vnum = int(vnum_match.group(1))
+                rest_of_line = vnum_match.group(2).strip()
+                
+                if rest_of_line:
+                    keywords = rest_of_line.rstrip('~')
+                else:
+                    try:
+                        i += 1
+                        while i < len(lines) and not lines[i].strip(): i += 1
+                        if i >= len(lines): break
+                        keywords = lines[i].rstrip('~')
+                    except IndexError:
+                        break
                 
                 # Read mobile data
                 try:
-                    i += 1
-                    while i < len(lines) and not lines[i].strip(): i += 1
-                    if i >= len(lines): break
-                    
-                    keywords = lines[i].rstrip('~')
                     i += 1
                     while i < len(lines) and not lines[i].strip(): i += 1
                     
@@ -891,18 +945,27 @@ class AreaParser:
                 if line == '#0':
                     break
                 
-                try:
-                    vnum = int(line[1:])
-                except ValueError:
+                # Handle "#VNUM Keywords~" format
+                vnum_match = re.match(r'^#(\d+)\s*(.*)$', line)
+                if not vnum_match:
                     i += 1
                     continue
+                    
+                vnum = int(vnum_match.group(1))
+                rest_of_line = vnum_match.group(2).strip()
+                
+                if rest_of_line:
+                    keywords = rest_of_line.rstrip('~')
+                else:
+                    try:
+                        i += 1
+                        if i >= len(lines):
+                            break
+                        keywords = lines[i].rstrip('~')
+                    except IndexError:
+                        break
                 
                 try:
-                    i += 1
-                    if i >= len(lines):
-                        break
-                    
-                    keywords = lines[i].rstrip('~')
                     i += 1
                     
                     short_desc = lines[i].rstrip('~')
@@ -993,7 +1056,12 @@ class AreaParser:
                             i += 1
                             affect_line = lines[i].split()
                             if len(affect_line) >= 2:
-                                affects.append({"location": affect_line[0], "modifier": int(affect_line[1])})
+                                try:
+                                    location = int(affect_line[0])
+                                    modifier = int(affect_line[1])
+                                    affects.append({"location": location, "modifier": modifier})
+                                except ValueError:
+                                    pass
                             i += 1
                         else:
                             break
@@ -1060,18 +1128,29 @@ class AreaParser:
                 if line == '#0':
                     break
                 
-                try:
-                    vnum = int(line[1:])
-                except ValueError:
+                # Handle "#VNUM Name~" format
+                vnum_match = re.match(r'^#(\d+)\s*(.*)$', line)
+                if not vnum_match:
                     i += 1
                     continue
+                    
+                vnum = int(vnum_match.group(1))
+                rest_of_line = vnum_match.group(2).strip()
+                
+                if rest_of_line:
+                    # Name is on the same line
+                    name = rest_of_line.rstrip('~')
+                else:
+                    # Name is on the next line
+                    try:
+                        i += 1
+                        if i >= len(lines):
+                            break
+                        name = lines[i].rstrip('~')
+                    except IndexError:
+                        break
                 
                 try:
-                    i += 1
-                    if i >= len(lines):
-                        break
-                    
-                    name = lines[i].rstrip('~')
                     i += 1
                     
                     description, i = self._read_to_tilde(lines, i)

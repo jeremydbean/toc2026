@@ -105,6 +105,9 @@ async def index() -> str:
     <title>Times of Chaos - MUD</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto+Mono:wght@400;500&family=Lato:wght@400;700&display=swap');
 
@@ -315,17 +318,8 @@ async def index() -> str:
                         <!-- Terminal Window -->
                         <div class="lg:col-span-2">
                             <div class="parchment p-1 rounded-lg bg-[#111]">
-                                <div class="bg-black p-4 rounded border border-gray-800 h-[600px] font-mono text-sm overflow-y-auto relative flex flex-col" id="terminal-container">
-                                    <div class="flex-grow overflow-y-auto mb-2" id="terminal-output">
-                                        <div class="text-green-500 space-y-1">
-                                            <p>Initializing Web Client...</p>
-                                            <p>Connecting to WebSocket Bridge...</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex gap-2 border-t border-gray-800 pt-2">
-                                        <span class="text-green-500">></span>
-                                        <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-gray-200 flex-grow font-mono" autocomplete="off" autofocus>
-                                    </div>
+                                <div class="bg-black p-4 rounded border border-gray-800 h-[600px] font-mono text-sm relative" id="terminal-container">
+                                    <!-- xterm.js will be injected here -->
                                 </div>
                             </div>
                             <div class="mt-4 flex justify-between text-gray-400 text-sm">
@@ -590,15 +584,38 @@ async def index() -> str:
 
         // ============ TERMINAL / WEBSOCKET ============
         let ws = null;
+        let term = null;
+        let fitAddon = null;
         let termInitialized = false;
 
         function initTerminal() {
             if(termInitialized) return;
             termInitialized = true;
 
-            const output = document.getElementById('terminal-output');
-            const input = document.getElementById('terminal-input');
+            const container = document.getElementById('terminal-container');
             const status = document.getElementById('connection-status');
+
+            // Initialize xterm.js
+            term = new Terminal({
+                cursorBlink: true,
+                fontFamily: '"Roboto Mono", monospace',
+                fontSize: 12,
+                theme: {
+                    background: '#000000',
+                    foreground: '#e0e0e0',
+                    cursor: '#00ff00'
+                },
+                convertEol: false,
+                lineHeight: 1.0
+            });
+            
+            fitAddon = new FitAddon.FitAddon();
+            term.loadAddon(fitAddon);
+            term.open(container);
+            fitAddon.fit();
+            
+            // Handle resize
+            window.addEventListener('resize', () => fitAddon.fit());
 
             function connect() {
                 const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
@@ -607,17 +624,17 @@ async def index() -> str:
                 ws.onopen = () => {
                     status.textContent = 'Connected';
                     status.className = 'text-green-500';
-                    writeToTerm('Connected to server.');
+                    term.writeln('\x1b[32mConnected to server.\x1b[0m');
                 };
 
                 ws.onmessage = (event) => {
-                    writeToTerm(event.data);
+                    term.write(event.data);
                 };
 
                 ws.onclose = () => {
                     status.textContent = 'Disconnected';
                     status.className = 'text-red-500';
-                    writeToTerm('Connection lost. Reconnecting in 3s...');
+                    term.writeln('\x1b[31mConnection lost. Reconnecting in 3s...\x1b[0m');
                     setTimeout(connect, 3000);
                 };
 
@@ -627,46 +644,10 @@ async def index() -> str:
                 };
             }
 
-            function writeToTerm(text) {
-                // Convert ANSI color codes to HTML
-                // Replace ESC[...m sequences with span tags
-                let html = text
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;')
-                    .replace(/\\x1b\\[0m/g, '</span>')
-                    .replace(/\\x1b\\[1;30m/g, '<span style="color: #555">')
-                    .replace(/\\x1b\\[1;31m/g, '<span style="color: #ff5555">')
-                    .replace(/\\x1b\\[1;32m/g, '<span style="color: #55ff55">')
-                    .replace(/\\x1b\\[1;33m/g, '<span style="color: #ffff55">')
-                    .replace(/\\x1b\\[1;34m/g, '<span style="color: #5555ff">')
-                    .replace(/\\x1b\\[1;35m/g, '<span style="color: #ff55ff">')
-                    .replace(/\\x1b\\[1;36m/g, '<span style="color: #55ffff">')
-                    .replace(/\\x1b\\[1;37m/g, '<span style="color: #ffffff">')
-                    .replace(/\\x1b\\[0;30m/g, '<span style="color: #333">')
-                    .replace(/\\x1b\\[0;31m/g, '<span style="color: #aa0000">')
-                    .replace(/\\x1b\\[0;32m/g, '<span style="color: #00aa00">')
-                    .replace(/\\x1b\\[0;33m/g, '<span style="color: #aaaa00">')
-                    .replace(/\\x1b\\[0;34m/g, '<span style="color: #0000aa">')
-                    .replace(/\\x1b\\[0;35m/g, '<span style="color: #aa00aa">')
-                    .replace(/\\x1b\\[0;36m/g, '<span style="color: #00aaaa">')
-                    .replace(/\\x1b\\[0;37m/g, '<span style="color: #aaaaaa">')
-                    .replace(/\\x1b\\[([0-9;]+)m/g, '');
-                
-                const line = document.createElement('div');
-                line.innerHTML = html;
-                line.style.whiteSpace = 'pre-wrap';
-                output.appendChild(line);
-                output.scrollTop = output.scrollHeight;
-            }
-
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    const cmd = input.value;
-                    if (ws && ws.readyState === WebSocket.OPEN) {
-                        ws.send(cmd + '\\r\\n');
-                    }
-                    input.value = '';
+            // Handle input
+            term.onData(data => {
+                if (ws && ws.readyState === WebSocket.OPEN) {
+                    ws.send(data);
                 }
             });
 
@@ -1143,13 +1124,18 @@ async def get_rooms(limit: int = 300) -> list:
 @app.get("/api/areas")
 async def get_areas() -> list:
     result = []
-    for area in parser.areas:
-        result.append({
-            "name": area.name,
-            "filename": area.filename,
-            "builders": area.builders,
-            "vnums": f"{area.vnum_low} - {area.vnum_high}"
-        })
+    try:
+        for area in parser.areas.values():
+            result.append({
+                "name": area.name,
+                "filename": area.filename,
+                "builders": area.builders,
+                "vnums": getattr(area, "vnums", "")
+            })
+    except Exception as e:
+        print(f"Error in get_areas: {e}")
+        # Return partial result or empty list instead of 500
+        return result
     return result
 
 

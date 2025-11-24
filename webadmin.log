@@ -1,0 +1,24 @@
+INFO:     Will watch for changes in these directories: ['/Users/jeremybean/toc2026']
+INFO:     Uvicorn running on http://127.0.0.1:9002 (Press CTRL+C to quit)
+INFO:     Started reloader process [61371] using WatchFiles
+INFO:     Started server process [61403]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:57332 - "WebSocket /ws" [accepted]
+INFO:     connection open
+DEBUG: AreaParser file: webadmin.area_parser
+DEBUG: AreaParser source: /Users/jeremybean/toc2026/webadmin/area_parser.py
+Loaded: 2241 mobs, 3223 objects, 7324 rooms, 95 areas
+INFO:     127.0.0.1:57337 - "GET / HTTP/1.1" 200 OK
+INFO:     connection closed
+INFO:     127.0.0.1:57337 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57337 - "GET /api/objects?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57339 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57350 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57354 - "GET /api/areas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57354 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57367 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57371 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57389 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57393 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57397 - "GET /api/health HTTP/1.1" 200 OK
