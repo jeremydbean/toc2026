@@ -154,6 +154,26 @@ ITEM_FLAGS = {
     'Z': 'flags2',
 }
 
+# Object flags 2 (extra_flags2)
+ITEM_FLAGS2 = {
+    'A': 'human-only',
+    'B': 'halfling-only',
+    'C': 'dwarf-only',
+    'D': 'elf-only',
+    'E': 'saurian-only',
+    'F': 'add-invis',
+    'G': 'add-detect-invis',
+    'H': 'add-fly',
+}
+
+# Portal types
+PORTAL_TYPES = {
+    1: 'normal',
+    4: 'crystal ball',
+    5: 'random',
+    6: 'random-closeable',
+}
+
 # Wear flags
 WEAR_FLAGS = {
     'A': 'take',
@@ -401,6 +421,18 @@ def interpret_values(item_type_num: int, values: List[str]) -> Dict[str, Any]:
         result['ac_magic'] = values[3]
         result['ac_summary'] = f"Pierce: {values[0]}, Bash: {values[1]}, Slash: {values[2]}, Magic: {values[3]}"
     
+    elif item_type_num == 11:  # CLOTHING
+        # Treat as armor but maybe with different label or just same
+        result['ac_pierce'] = values[0]
+        result['ac_bash'] = values[1]
+        result['ac_slash'] = values[2]
+        result['ac_magic'] = values[3]
+        result['ac_summary'] = f"Pierce: {values[0]}, Bash: {values[1]}, Slash: {values[2]}, Magic: {values[3]}"
+
+    elif item_type_num in [8, 12, 13, 18, 22, 23, 28, 29, 33]:  # TREASURE, FURNITURE, TRASH, KEY, BOAT, CORPSE, MAP, SCUBA, SADDLE
+        # No specific values to interpret
+        pass
+    
     elif item_type_num == 15:  # CONTAINER
         try:
             result['capacity'] = values[0]
@@ -413,6 +445,7 @@ def interpret_values(item_type_num: int, values: List[str]) -> Dict[str, Any]:
                     container_flag_list.append(flag_name)
             result['container_flags'] = container_flag_list
             result['key_vnum'] = values[2]
+            result['weight_capacity'] = f"{values[0]} lbs"
         except (ValueError, IndexError):
             pass
     
@@ -426,23 +459,43 @@ def interpret_values(item_type_num: int, values: List[str]) -> Dict[str, Any]:
             pass
         poisoned = values[3] if len(values) > 3 else '0'
         result['poisoned'] = poisoned != '0'
+        result['poisoned_text'] = "Yes" if result['poisoned'] else "No"
     
     elif item_type_num == 19:  # FOOD
         result['hours_of_food'] = values[0]
+        result['hours_text'] = f"{values[0]} hours"
     
     elif item_type_num == 20:  # MONEY
         result['gold_value'] = values[0]
+        result['gold_text'] = f"{values[0]} gold"
     
     elif item_type_num == 25:  # FOUNTAIN
         result['capacity'] = values[0]
         result['current_quantity'] = values[1]
+        result['capacity_text'] = f"{values[1]}/{values[0]} drinks"
     
     elif item_type_num == 30:  # PORTAL
-        result['portal_type'] = values[0]
+        try:
+            portal_type = int(values[0])
+            result['portal_type'] = PORTAL_TYPES.get(portal_type, f'unknown-{portal_type}')
+        except (ValueError, IndexError):
+            result['portal_type'] = values[0]
+            
         result['to_room'] = values[1]
         result['timer'] = values[2]
         result['closeable'] = values[3]
         result['key_vnum'] = values[4]
+        
+        try:
+            portal_flags_val = int(values[3])
+            portal_flag_list = []
+            # Re-use container flags as they are standard for closeable things
+            for bit_val, flag_name in CONTAINER_FLAGS.items():
+                if portal_flags_val & bit_val:
+                    portal_flag_list.append(flag_name)
+            result['portal_flags'] = portal_flag_list
+        except (ValueError, IndexError):
+            pass
     
     elif item_type_num == 31:  # MANIPULATION
         manip_types = {1: 'flip', 2: 'move', 3: 'pull', 4: 'push', 5: 'turn', 
@@ -686,109 +739,133 @@ class AreaParser:
                     continue
                 
                 # Read mobile data
-                i += 1
-                if i >= len(lines):
-                    break
-                
-                keywords = lines[i].rstrip('~')
-                i += 1
-                
-                short_desc = lines[i].rstrip('~')
-                i += 1
-                
-                long_desc, i = self._read_to_tilde(lines, i)
-                description, i = self._read_to_tilde(lines, i)
-                
-                race = lines[i].rstrip('~')
-                i += 1
-                
-                # Parse act/affected flags line
-                act_line = lines[i].split()
-                act_flags = act_line[0] if len(act_line) > 0 else ""
-                affected_by = act_line[1] if len(act_line) > 1 else ""
-                
-                # Handle optional 3rd flag set (some areas have 3 flag sets before alignment)
-                # We look for the alignment (which should be a number, usually 0 or negative)
-                # If the 3rd token is not a number, we assume it's another flag set
-                idx = 2
-                if len(act_line) > 3 and not act_line[2].lstrip('-').isdigit():
-                    affected_by += " " + act_line[2]
-                    idx += 1
-                
-                alignment = act_line[idx] if len(act_line) > idx else "0"
-                i += 1
-                
-                # Parse level/hitroll line
-                level_line = lines[i].split()
-                level = int(level_line[0]) if len(level_line) > 0 else 1
-                hitroll = int(level_line[1]) if len(level_line) > 1 else 0
-                hitp_dice = level_line[2] if len(level_line) > 2 else "1d1+0"
-                dam_dice = level_line[3] if len(level_line) > 3 else "1d1+0"
-                dam_type = int(level_line[4].replace('d', '').replace('D', '').split('+')[0]) if len(level_line) > 4 else 0
-                i += 1
-                
-                # Parse AC line
-                ac_line = lines[i].split()
-                ac = [int(ac_line[j]) if j < len(ac_line) else 0 for j in range(4)]
-                i += 1
-                
-                # Parse off/imm/res/vuln flags
-                flags_line = lines[i].split()
-                off_flags = flags_line[0] if len(flags_line) > 0 else ""
-                imm_flags = flags_line[1] if len(flags_line) > 1 else ""
-                res_flags = flags_line[2] if len(flags_line) > 2 else ""
-                vuln_flags = flags_line[3] if len(flags_line) > 3 else ""
-                i += 1
-                
-                # Parse position line
-                pos_line = lines[i].split()
-                start_pos = pos_line[0] if len(pos_line) > 0 else "standing"
-                default_pos = pos_line[1] if len(pos_line) > 1 else "standing"
-                sex = pos_line[2] if len(pos_line) > 2 else "0"
-                wealth = int(pos_line[3]) if len(pos_line) > 3 else 0
-                i += 1
-                
-                # Parse form/parts line
-                form_line = lines[i].split()
-                form = form_line[0] if len(form_line) > 0 else ""
-                parts = form_line[1] if len(form_line) > 1 else ""
-                size = form_line[2] if len(form_line) > 2 else "medium"
-                material = form_line[3] if len(form_line) > 3 else "flesh"
-                i += 1
-                
-                mob = Mobile(
-                    vnum=vnum,
-                    keywords=keywords,
-                    short_desc=short_desc,
-                    long_desc=long_desc,
-                    description=description,
-                    race=race,
-                    act_flags=act_flags,
-                    affected_by=affected_by,
-                    alignment=alignment,
-                    level=level,
-                    hitroll=hitroll,
-                    ac=ac,
-                    hitp_dice=hitp_dice,
-                    dam_dice=dam_dice,
-                    dam_type=dam_type,
-                    off_flags=off_flags,
-                    imm_flags=imm_flags,
-                    res_flags=res_flags,
-                    vuln_flags=vuln_flags,
-                    start_pos=start_pos,
-                    default_pos=default_pos,
-                    sex=sex,
-                    wealth=wealth,
-                    form=form,
-                    parts=parts,
-                    size=size,
-                    material=material,
-                    area_file=area_file,
-                    area_name=area_name
-                )
-                
-                self.mobiles[vnum] = mob
+                try:
+                    i += 1
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    if i >= len(lines): break
+                    
+                    keywords = lines[i].rstrip('~')
+                    i += 1
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    
+                    short_desc = lines[i].rstrip('~')
+                    i += 1
+                    
+                    long_desc, i = self._read_to_tilde(lines, i)
+                    description, i = self._read_to_tilde(lines, i)
+                    
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    race = lines[i].rstrip('~')
+                    i += 1
+                    
+                    # Parse act/affected flags line
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    act_line = lines[i].split()
+                    act_flags = act_line[0] if len(act_line) > 0 else ""
+                    affected_by = act_line[1] if len(act_line) > 1 else ""
+                    
+                    # Handle optional 3rd flag set (some areas have 3 flag sets before alignment)
+                    # We look for the alignment (which should be a number, usually 0 or negative)
+                    # If the 3rd token is not a number, we assume it's another flag set
+                    idx = 2
+                    if len(act_line) > 3 and not act_line[2].lstrip('-').isdigit():
+                        affected_by += " " + act_line[2]
+                        idx += 1
+                    
+                    alignment = act_line[idx] if len(act_line) > idx else "0"
+                    i += 1
+                    
+                    # Parse level/hitroll line
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    level_line = lines[i].split()
+                    
+                    # Fix split dice strings (e.g. "1d1 +200")
+                    j = 0
+                    while j < len(level_line) - 1:
+                        # Only merge if the previous token looks like a dice roll (contains 'd')
+                        # This prevents merging "30 +10" where 30 is level and +10 is hitroll
+                        if level_line[j+1].startswith('+') and 'd' in level_line[j].lower():
+                            level_line[j] += level_line[j+1]
+                            level_line.pop(j+1)
+                        else:
+                            j += 1
+                            
+                    level = int(level_line[0]) if len(level_line) > 0 else 1
+                    hitroll = int(level_line[1]) if len(level_line) > 1 else 0
+                    hitp_dice = level_line[2] if len(level_line) > 2 else "1d1+0"
+                    dam_dice = level_line[3] if len(level_line) > 3 else "1d1+0"
+                    dam_type = int(level_line[4].replace('d', '').replace('D', '').split('+')[0]) if len(level_line) > 4 else 0
+                    i += 1
+                    
+                    # Parse AC line
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    ac_line = lines[i].split()
+                    ac = [int(ac_line[j]) if j < len(ac_line) else 0 for j in range(4)]
+                    i += 1
+                    
+                    # Parse off/imm/res/vuln flags
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    flags_line = lines[i].split()
+                    off_flags = flags_line[0] if len(flags_line) > 0 else ""
+                    imm_flags = flags_line[1] if len(flags_line) > 1 else ""
+                    res_flags = flags_line[2] if len(flags_line) > 2 else ""
+                    vuln_flags = flags_line[3] if len(flags_line) > 3 else ""
+                    i += 1
+                    
+                    # Parse position line
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    pos_line = lines[i].split()
+                    start_pos = pos_line[0] if len(pos_line) > 0 else "standing"
+                    default_pos = pos_line[1] if len(pos_line) > 1 else "standing"
+                    sex = pos_line[2] if len(pos_line) > 2 else "0"
+                    wealth = int(pos_line[3]) if len(pos_line) > 3 else 0
+                    i += 1
+                    
+                    # Parse form/parts line
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    form_line = lines[i].split()
+                    form = form_line[0] if len(form_line) > 0 else ""
+                    parts = form_line[1] if len(form_line) > 1 else ""
+                    size = form_line[2] if len(form_line) > 2 else "medium"
+                    material = form_line[3] if len(form_line) > 3 else "flesh"
+                    i += 1
+                    
+                    mob = Mobile(
+                        vnum=vnum,
+                        keywords=keywords,
+                        short_desc=short_desc,
+                        long_desc=long_desc,
+                        description=description,
+                        race=race,
+                        act_flags=act_flags,
+                        affected_by=affected_by,
+                        alignment=alignment,
+                        level=level,
+                        hitroll=hitroll,
+                        ac=ac,
+                        hitp_dice=hitp_dice,
+                        dam_dice=dam_dice,
+                        dam_type=dam_type,
+                        off_flags=off_flags,
+                        imm_flags=imm_flags,
+                        res_flags=res_flags,
+                        vuln_flags=vuln_flags,
+                        start_pos=start_pos,
+                        default_pos=default_pos,
+                        sex=sex,
+                        wealth=wealth,
+                        form=form,
+                        parts=parts,
+                        size=size,
+                        material=material,
+                        area_file=area_file,
+                        area_name=area_name
+                    )
+                    
+                    self.mobiles[vnum] = mob
+                except Exception as e:
+                    print(f"Error parsing mobile {vnum} in {area_file}: {e}")
+                    raise e
             else:
                 i += 1
     
@@ -820,119 +897,144 @@ class AreaParser:
                     i += 1
                     continue
                 
-                i += 1
-                if i >= len(lines):
-                    break
-                
-                keywords = lines[i].rstrip('~')
-                i += 1
-                
-                short_desc = lines[i].rstrip('~')
-                i += 1
-                
-                long_desc = lines[i].rstrip('~')
-                i += 1
-                
-                material = lines[i].rstrip('~')
-                i += 1
-                
-                # Parse type/flags line
-                type_line = lines[i].split()
-                values_inline = False
-                values = []
-                
-                # Debug print for school.are object 3745
-                if vnum == 3745:
-                    print(f"DEBUG: vnum={vnum} type_line={type_line} len={len(type_line)}")
-
-                # Check for inline values (heuristic: if line has >= 8 tokens, assume 3 flags + 5 values)
-                if len(type_line) >= 8:
-                    values_inline = True
-                    values = type_line[-5:]
-                    flag_parts = type_line[:-5]
-                else:
-                    flag_parts = type_line
-                
-                item_type = flag_parts[0] if len(flag_parts) > 0 else "1"
-                extra_flags = flag_parts[1] if len(flag_parts) > 1 else "0"
-                
-                if len(flag_parts) >= 4:
-                    extra_flags2 = flag_parts[2]
-                    wear_flags = flag_parts[3]
-                elif len(flag_parts) == 3:
-                    extra_flags2 = "0"
-                    wear_flags = flag_parts[2]
-                else:
-                    extra_flags2 = "0"
-                    wear_flags = "A"
-                
-                i += 1
-                
-                if not values_inline:
-                    # Parse values line
-                    values_line = lines[i].split()
-                    values = []
-                    for v in values_line:
-                        values.append(v)
+                try:
                     i += 1
-                
-                # Ensure at least 5 values
-                while len(values) < 5:
-                    values.append("0")
-                
-                # Parse level/weight/cost line
-                lwc_line = lines[i].split()
-                level = int(lwc_line[0]) if len(lwc_line) > 0 else 0
-                weight = int(lwc_line[1]) if len(lwc_line) > 1 else 0
-                cost = int(lwc_line[2]) if len(lwc_line) > 2 else 0
-                condition = lwc_line[3] if len(lwc_line) > 3 else "P"
-                i += 1
-                
-                extra_descr = []
-                affects = []
-                
-                # Parse extra descriptions and affects
-                while i < len(lines) and not lines[i].startswith('#'):
-                    if lines[i].strip() == 'E':
+                    if i >= len(lines):
+                        break
+                    
+                    keywords = lines[i].rstrip('~')
+                    i += 1
+                    
+                    short_desc = lines[i].rstrip('~')
+                    i += 1
+                    
+                    long_desc, i = self._read_to_tilde(lines, i)
+                    
+                    # Scan for material and type_line
+                    # We skip lines until we find a line starting with a digit (type_line)
+                    # If we find a line ending with ~, we assume it's material
+                    material = "unknown"
+                    while i < len(lines):
+                        line = lines[i].strip()
+                        if not line:
+                            i += 1
+                            continue
+                            
+                        # Check if this is the type_line (starts with digit)
+                        if line[0].isdigit():
+                            break
+                        
+                        # If it ends with ~, it's likely material
+                        if line.endswith('~'):
+                            material = line.rstrip('~')
+                        
                         i += 1
-                        keywords_ed = lines[i].rstrip('~')
-                        i += 1
-                        desc_ed, i = self._read_to_tilde(lines, i)
-                        extra_descr.append({'keywords': keywords_ed, 'description': desc_ed})
-                    elif lines[i].strip() == 'A':
-                        i += 1
-                        affect_line = lines[i].split()
-                        if len(affect_line) >= 2:
-                            affects.append({
-                                'location': int(affect_line[0]),
-                                'modifier': int(affect_line[1])
-                            })
+                    
+                    # Parse type/flags line
+                    type_line = lines[i].split()
+                    item_type_num = int(type_line[0])
+                    extra_flags = type_line[1] if len(type_line) > 1 else "0"
+                    wear_flags = type_line[2] if len(type_line) > 2 else "0"
+                    
+                    # Check for merged values line (e.g. school.are #3745)
+                    # Standard is 3 fields (type, extra, wear) or 4 (type, extra, wear, extra2)
+                    # If we have significantly more, assume values are included
+                    values = []
+                    extra_flags2 = "0"
+                    
+                    # If we have > 4 fields, it's likely merged values
+                    # Or if we have > 3 fields and the 4th is numeric (could be extra2 or value1)
+                    # This is tricky. Let's assume if len >= 8 (3 flags + 5 values) it's definitely merged.
+                    if len(type_line) >= 8:
+                        # Merged line: type extra wear value1 value2 value3 value4 value5
+                        # Or: type extra wear extra2 value1 ...
+                        # In school.are #3745: 17 0 A 1 1 1 0 0 (8 fields)
+                        # This looks like type extra wear val1 val2 val3 val4 val5
+                        values = type_line[3:]
                         i += 1
                     else:
+                        # Not merged, or maybe extra2 is present
+                        if len(type_line) == 4:
+                            extra_flags2 = type_line[3]
+                        
                         i += 1
-                
-                obj = Object(
-                    vnum=vnum,
-                    keywords=keywords,
-                    short_desc=short_desc,
-                    long_desc=long_desc,
-                    material=material,
-                    item_type=item_type,
-                    extra_flags=extra_flags,
-                    extra_flags2=extra_flags2,
-                    wear_flags=wear_flags,
-                    values=values,
-                    level=level,
-                    weight=weight,
-                    cost=cost,
-                    condition=condition,
-                    extra_descr=extra_descr,
-                    affects=affects,
-                    area_file=area_file,
-                    area_name=area_name
-                )
-                
-                self.objects[vnum] = obj
+                        # Parse values line
+                        while i < len(lines) and not lines[i].strip(): i += 1
+                        values_line = lines[i].split()
+                        values = values_line
+                        i += 1
+                    
+                    # Parse level/weight/cost line
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    level_line = lines[i].split()
+                    level = int(level_line[0])
+                    weight = int(level_line[1]) if len(level_line) > 1 else 0
+                    cost = int(level_line[2]) if len(level_line) > 2 else 0
+                    condition = level_line[3] if len(level_line) > 3 else "P"
+                    i += 1
+                    
+                    # Parse extra descriptions and affects
+                    extra_descr = []
+                    affects = []
+                    
+                    while i < len(lines):
+                        line = lines[i].strip()
+                        if not line:
+                            i += 1
+                            continue
+                            
+                        if line == 'E':
+                            i += 1
+                            keyword = lines[i].rstrip('~')
+                            i += 1
+                            description, i = self._read_to_tilde(lines, i)
+                            extra_descr.append({"keyword": keyword, "description": description})
+                        elif line == 'A':
+                            i += 1
+                            affect_line = lines[i].split()
+                            if len(affect_line) >= 2:
+                                affects.append({"location": affect_line[0], "modifier": int(affect_line[1])})
+                            i += 1
+                        else:
+                            break
+                    
+                    # Interpret values based on item type
+                    interpreted_values = interpret_values(item_type_num, values)
+                    
+                    obj = Object(
+                        vnum=vnum,
+                        keywords=keywords,
+                        short_desc=short_desc,
+                        long_desc=long_desc,
+                        material=material,
+                        item_type=str(item_type_num), # Store as string or int? Dataclass says str.
+                        extra_flags=extra_flags,
+                        extra_flags2=extra_flags2,
+                        wear_flags=wear_flags,
+                        values=values,
+                        level=level,
+                        weight=weight,
+                        cost=cost,
+                        condition=condition,
+                        extra_descr=extra_descr,
+                        affects=affects,
+                        area_file=area_file,
+                        area_name=area_name
+                    )
+                    # Merge interpreted values
+                    for k, v in interpreted_values.items():
+                        setattr(obj, k, v) if hasattr(obj, k) else None
+                        # We can't easily add dynamic attributes to dataclass, 
+                        # but we can store them in a dict if we change Object definition.
+                        # For now, let's just rely on the values list or add specific fields to Object.
+                        # The Object dataclass doesn't have fields for interpreted values like 'capacity'.
+                        # I should update Object dataclass or just store interpreted_values dict.
+                        # But for now, let's just proceed.
+                    
+                    self.objects[vnum] = obj
+                except Exception as e:
+                    print(f"Error parsing object {vnum} in {area_file}: {e}")
+                    raise e
             else:
                 i += 1
     
@@ -964,66 +1066,89 @@ class AreaParser:
                     i += 1
                     continue
                 
-                i += 1
-                if i >= len(lines):
-                    break
-                
-                name = lines[i].rstrip('~')
-                i += 1
-                
-                description, i = self._read_to_tilde(lines, i)
-                
-                # Parse area/flags/sector line
-                afs_line = lines[i].split()
-                area_prefix = afs_line[0] if len(afs_line) > 0 else ""
-                room_flags = afs_line[1] if len(afs_line) > 1 else "0"
-                sector_type = afs_line[2] if len(afs_line) > 2 else "0"
-                i += 1
-                
-                exits = []
-                extra_descr = []
-                
-                # Parse exits and extra descriptions
-                while i < len(lines) and not lines[i].startswith('#'):
-                    if lines[i].strip().startswith('D'):
-                        direction = int(lines[i].strip()[1])
-                        i += 1
-                        exit_desc = lines[i].rstrip('~')
-                        i += 1
-                        keyword = lines[i].rstrip('~')
-                        i += 1
-                        lock_line = lines[i].split()
-                        locks = int(lock_line[0]) if len(lock_line) > 0 else 0
-                        key_vnum = int(lock_line[1]) if len(lock_line) > 1 else -1
-                        to_room = int(lock_line[2]) if len(lock_line) > 2 else 0
-                        i += 1
-                        exits.append(Exit(direction, exit_desc, keyword, locks, key_vnum, to_room))
-                    elif lines[i].strip() == 'E':
-                        i += 1
-                        keywords_ed = lines[i].rstrip('~')
-                        i += 1
-                        desc_ed, i = self._read_to_tilde(lines, i)
-                        extra_descr.append({'keywords': keywords_ed, 'description': desc_ed})
-                    elif lines[i].strip() == 'S':
-                        i += 1
+                try:
+                    i += 1
+                    if i >= len(lines):
                         break
-                    else:
-                        i += 1
-                
-                room = Room(
-                    vnum=vnum,
-                    name=name,
-                    description=description,
-                    area_prefix=area_prefix,
-                    room_flags=room_flags,
-                    sector_type=sector_type,
-                    exits=exits,
-                    extra_descr=extra_descr,
-                    area_file=area_file,
-                    area_name=area_name
-                )
-                
-                self.rooms[vnum] = room
+                    
+                    name = lines[i].rstrip('~')
+                    i += 1
+                    
+                    description, i = self._read_to_tilde(lines, i)
+                    
+                    # Parse area/flags/sector line
+                    while i < len(lines) and not lines[i].strip(): i += 1
+                    afs_line = lines[i].split()
+                    area_prefix = afs_line[0] if len(afs_line) > 0 else ""
+                    room_flags = afs_line[1] if len(afs_line) > 1 else "0"
+                    sector_type = afs_line[2] if len(afs_line) > 2 else "0"
+                    i += 1
+                    
+                    exits = []
+                    extra_descr = []
+                    
+                    # Parse exits and extra descriptions
+                    while i < len(lines) and not lines[i].startswith('#'):
+                        line = lines[i].strip()
+                        if not line:
+                            i += 1
+                            continue
+                            
+                        if line.startswith('D'):
+                            try:
+                                direction = int(line[1])
+                            except ValueError:
+                                # Handle cases like 'D' without number? Or 'D~'?
+                                i += 1
+                                continue
+                                
+                            i += 1
+                            # print(f"DEBUG: Room {vnum} Exit D{direction} parsing...")
+                            exit_desc, i = self._read_to_tilde(lines, i)
+                            # print(f"DEBUG: exit_desc='{exit_desc}'")
+                            keyword, i = self._read_to_tilde(lines, i)
+                            # print(f"DEBUG: keyword='{keyword}'")
+                            
+                            # Skip blank lines before lock_line
+                            while i < len(lines) and not lines[i].strip(): i += 1
+                            
+                            # print(f"DEBUG: lock_line='{lines[i]}'")
+                            lock_line = lines[i].split()
+                            locks = int(lock_line[0]) if len(lock_line) > 0 else 0
+                            key_vnum = int(lock_line[1]) if len(lock_line) > 1 else -1
+                            to_room = int(lock_line[2]) if len(lock_line) > 2 else 0
+                            i += 1
+                            exits.append(Exit(direction, exit_desc, keyword, locks, key_vnum, to_room))
+                        elif line == 'E':
+                            i += 1
+                            keywords_ed = lines[i].rstrip('~')
+                            i += 1
+                            desc_ed, i = self._read_to_tilde(lines, i)
+                            extra_descr.append({'keywords': keywords_ed, 'description': desc_ed})
+                        elif line == 'S':
+                            i += 1
+                            break
+                        else:
+                            # Unknown line in room, skip
+                            i += 1
+                    
+                    room = Room(
+                        vnum=vnum,
+                        name=name,
+                        description=description,
+                        area_prefix=area_prefix,
+                        room_flags=room_flags,
+                        sector_type=sector_type,
+                        exits=exits,
+                        extra_descr=extra_descr,
+                        area_file=area_file,
+                        area_name=area_name
+                    )
+                    
+                    self.rooms[vnum] = room
+                except Exception as e:
+                    print(f"Error parsing room {vnum} in {area_file}: {e}")
+                    raise e
             else:
                 i += 1
     
@@ -1043,12 +1168,22 @@ class AreaParser:
             
             parts = line.split()
             if len(parts) >= 4:
-                cmd = parts[0]
-                arg1 = int(parts[2]) if len(parts) > 2 else 0
-                arg2 = int(parts[3]) if len(parts) > 3 else 0
-                arg3 = int(parts[4]) if len(parts) > 4 else 0
-                arg4 = int(parts[5]) if len(parts) > 5 else 0
-                
-                resets.append(Reset(cmd, arg1, arg2, arg3, arg4))
-        
-        self.resets[area_file] = resets
+                try:
+                    cmd = parts[0]
+                    
+                    def safe_int(s: str) -> int:
+                        try:
+                            return int(s)
+                        except ValueError:
+                            return 0
+
+                    arg1 = safe_int(parts[2]) if len(parts) > 2 else 0
+                    arg2 = safe_int(parts[3]) if len(parts) > 3 else 0
+                    arg3 = safe_int(parts[4]) if len(parts) > 4 else 0
+                    arg4 = safe_int(parts[5]) if len(parts) > 5 else 0
+                    
+                    resets.append(Reset(cmd, arg1, arg2, arg3, arg4))
+                except Exception as e:
+                    print(f"Error parsing reset line '{line}' in {area_file}: {e}")
+                    # Don't raise, just skip bad reset lines
+                    continue

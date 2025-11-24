@@ -13,10 +13,10 @@ import asyncio
 
 try:
     from webadmin.area_parser import AreaParser
-    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES, interpret_values
+    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values
 except ImportError:
     from area_parser import AreaParser
-    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, WEAR_FLAGS, ITEM_TYPES, interpret_values
+    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -48,7 +48,13 @@ class QueueWriter:
 queue_writer: Optional[QueueWriter] = None
 
 # Initialize parser and load area files
-print(f"Loading areas from {AREA_PATH}...")
+print(f"DEBUG: AreaParser file: {AreaParser.__module__}")
+try:
+    print(f"DEBUG: AreaParser path: {AreaParser.__file__}") # This might fail if it's a class
+except:
+    import inspect
+    print(f"DEBUG: AreaParser source: {inspect.getfile(AreaParser)}")
+
 parser = AreaParser(AREA_PATH)
 try:
     parser.parse_all()
@@ -719,9 +725,10 @@ async def index() -> str:
                     
                     // Build flags display
                     let flagsHtml = '';
-                    if(o.flags && o.flags.length > 0) {
+                    if((o.flags && o.flags.length > 0) || (o.flags2 && o.flags2.length > 0)) {
+                        let allFlags = [...(o.flags || []), ...(o.flags2 || [])];
                         flagsHtml = '<div class="mt-1"><strong class="text-purple-400">Flags:</strong> ' + 
-                            o.flags.map(f => `<span class="text-purple-300">${f}</span>`).join(', ') + '</div>';
+                            allFlags.map(f => `<span class="text-purple-300">${f}</span>`).join(', ') + '</div>';
                     }
                     
                     // Build wear locations
@@ -731,21 +738,95 @@ async def index() -> str:
                             o.wear_locations.map(w => `<span class="text-blue-300">${w}</span>`).join(', ') + '</div>';
                     }
                     
-                    // Build weapon/armor details
+                    // Build detailed stats based on item type
                     let statsHtml = '';
                     if(o.values_interpreted) {
-                        if(o.values_interpreted.damage_text) {
-                            statsHtml += `<div class="mt-1"><strong class="text-red-400">Damage:</strong> <span class="text-red-300">${o.values_interpreted.damage_text}</span>`;
-                            if(o.values_interpreted.damage_type) {
-                                statsHtml += ` <span class="text-gray-400">(${o.values_interpreted.damage_type})</span>`;
-                            }
-                            if(o.values_interpreted.weapon_class) {
-                                statsHtml += ` <span class="text-gray-400">[${o.values_interpreted.weapon_class}]</span>`;
+                        const v = o.values_interpreted;
+                        
+                        // Weapon
+                        if(v.damage_text) {
+                            statsHtml += `<div class="mt-1"><strong class="text-red-400">Damage:</strong> <span class="text-red-300">${v.damage_text}</span>`;
+                            if(v.damage_type) statsHtml += ` <span class="text-gray-400">(${v.damage_type})</span>`;
+                            if(v.weapon_class) statsHtml += ` <span class="text-gray-400">[${v.weapon_class}]</span>`;
+                            if(v.weapon_flags && v.weapon_flags.length > 0) statsHtml += ` <span class="text-orange-400">{${v.weapon_flags.join(', ')}}</span>`;
+                            statsHtml += '</div>';
+                        }
+                        
+                        // Armor
+                        if(v.ac_summary) {
+                            statsHtml += `<div class="mt-1"><strong class="text-cyan-400">AC:</strong> <span class="text-cyan-300">${v.ac_summary}</span></div>`;
+                        }
+                        
+                        // Container
+                        if(v.capacity) {
+                            statsHtml += `<div class="mt-1"><strong class="text-orange-400">Container:</strong> <span class="text-gray-300">Cap: ${v.weight_capacity || v.capacity}</span>`;
+                            if(v.container_flags && v.container_flags.length > 0) statsHtml += ` <span class="text-orange-300">[${v.container_flags.join(', ')}]</span>`;
+                            if(v.key_vnum && v.key_vnum !== '0') statsHtml += ` <span class="text-gray-500">Key: #${v.key_vnum}</span>`;
+                            statsHtml += '</div>';
+                        }
+                        
+                        // Drink Container
+                        if(v.liquid_type) {
+                            statsHtml += `<div class="mt-1"><strong class="text-blue-400">Drink:</strong> <span class="text-blue-300">${v.liquid_type}</span>`;
+                            statsHtml += ` <span class="text-gray-400">(${v.current_quantity}/${v.capacity})</span>`;
+                            if(v.poisoned) statsHtml += ` <span class="text-green-500 font-bold">[POISONED]</span>`;
+                            statsHtml += '</div>';
+                        }
+                        
+                        // Fountain
+                        if(v.capacity_text) {
+                            statsHtml += `<div class="mt-1"><strong class="text-blue-400">Fountain:</strong> <span class="text-blue-300">${v.capacity_text}</span></div>`;
+                        }
+                        
+                        // Food
+                        if(o.item_type === 'food' && v.hours_text) {
+                            statsHtml += `<div class="mt-1"><strong class="text-green-400">Food:</strong> <span class="text-green-300">${v.hours_text}</span></div>`;
+                        }
+
+                        // Light
+                        if(o.item_type === 'light' && v.hours_text) {
+                            statsHtml += `<div class="mt-1"><strong class="text-yellow-200">Light:</strong> <span class="text-yellow-100">${v.hours_text}</span></div>`;
+                        }
+                        
+                        // Money
+                        if(v.gold_text) {
+                            statsHtml += `<div class="mt-1"><strong class="text-yellow-400">Value:</strong> <span class="text-yellow-300">${v.gold_text}</span></div>`;
+                        }
+                        
+                        // Manipulation
+                        if(v.manip_type) {
+                             statsHtml += `<div class="mt-1"><strong class="text-gray-400">Manip:</strong> <span class="text-gray-300">${v.manip_type}</span>`;
+                             if(v.room_goes_to) statsHtml += ` -> Room #${v.room_goes_to}`;
+                             statsHtml += '</div>';
+                        }
+
+                        // Action
+                        if(v.action_type) {
+                             statsHtml += `<div class="mt-1"><strong class="text-gray-400">Action:</strong> <span class="text-gray-300">${v.action_type}</span></div>`;
+                        }
+                        
+                        // Spells (Scroll, Potion, Pill, Wand, Staff)
+                        if(v.spell_level) {
+                            statsHtml += `<div class="mt-1"><strong class="text-pink-400">Spells (Lvl ${v.spell_level}):</strong> `;
+                            let spells = [];
+                            if(v.spell1) spells.push(v.spell1);
+                            if(v.spell2) spells.push(v.spell2);
+                            if(v.spell3) spells.push(v.spell3);
+                            if(v.spell_num) spells.push(v.spell_num);
+                            statsHtml += `<span class="text-pink-300">${spells.join(', ')}</span>`;
+                            
+                            if(v.max_charges) {
+                                statsHtml += ` <span class="text-gray-400">(${v.current_charges}/${v.max_charges} charges)</span>`;
                             }
                             statsHtml += '</div>';
                         }
-                        if(o.values_interpreted.ac_summary) {
-                            statsHtml += `<div class="mt-1"><strong class="text-cyan-400">AC:</strong> <span class="text-cyan-300">${o.values_interpreted.ac_summary}</span></div>`;
+                        
+                        // Portal
+                        if(v.portal_type) {
+                            statsHtml += `<div class="mt-1"><strong class="text-indigo-400">Portal:</strong> <span class="text-indigo-300">${v.portal_type}</span>`;
+                            if(v.to_room) statsHtml += ` <span class="text-gray-400">-> Room #${v.to_room}</span>`;
+                            if(v.portal_flags && v.portal_flags.length > 0) statsHtml += ` <span class="text-indigo-300">[${v.portal_flags.join(', ')}]</span>`;
+                            statsHtml += '</div>';
                         }
                     }
                     
@@ -1088,6 +1169,7 @@ async def get_objects(limit: int = 500) -> list:
         
         # Decode flags
         flags_decoded = decode_flags(obj.extra_flags, ITEM_FLAGS)
+        flags2_decoded = decode_flags(obj.extra_flags2, ITEM_FLAGS2)
         wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
         
         # Decode affects
@@ -1121,6 +1203,7 @@ async def get_objects(limit: int = 500) -> list:
             "cost": obj.cost,
             "condition": obj.condition,
             "flags": flags_decoded,
+            "flags2": flags2_decoded,
             "wear_locations": wear_decoded,
             "affects": affects_decoded,
             "affects_raw": obj.affects,
