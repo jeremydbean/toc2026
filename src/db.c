@@ -2727,20 +2727,21 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
 	if( pObjIndex->level == -1)
         {
           int alter_stat;
+          int safe_level = level < 63 ? level : 63;  /* Arrays have 64 elements (0-63) */
  
 	  alter_stat = number_percent ();
 
             if(alter_stat < 50)
             {                         /* average weapon */
  
-                obj->value[1] = dice_thrown[level];
-                obj->value[2] = dice_size[level];
+                obj->value[1] = dice_thrown[safe_level];
+                obj->value[2] = dice_size[safe_level];
             }
             else if( alter_stat < 85)
             {
                                       /* alter average weapon a little */
-		obj->value[1] = dice_thrown[level];
-                obj->value[2] = dice_size[level + 1];
+		obj->value[1] = dice_thrown[safe_level];
+                obj->value[2] = dice_size[safe_level + 1];
  
 
             }
@@ -2748,8 +2749,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
 	    {
                                      /* alter average weapon alot */
              
-	      obj->value[1] = dice_thrown[level + 1];
-	      obj->value[2] = dice_size[level + 1];
+	      obj->value[1] = dice_thrown[safe_level + 1];
+	      obj->value[2] = dice_size[safe_level + 1];
 	    }
 
 	}

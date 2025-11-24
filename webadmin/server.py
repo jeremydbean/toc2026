@@ -58,17 +58,29 @@ except Exception as e:
 
 
 def read_process_health() -> dict[str, bool]:
-    merc_running = subprocess.run(
-        ["sh", "-c", "pgrep -f 'merc' >/dev/null"],
-        check=False,
-    ).returncode
-    webadmin_running = subprocess.run(
-        ["sh", "-c", "pgrep -f 'uvicorn .*webadmin.server' >/dev/null"],
-        check=False,
-    ).returncode
+    # Check if processes are running by looking at /proc filesystem
+    merc_running = False
+    webadmin_running = False
+    
+    try:
+        # Check /proc for running processes
+        result = subprocess.run(
+            ["sh", "-c", r"cat /proc/*/cmdline 2>/dev/null | tr '\000' '\n'"],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=2,
+        )
+        if result.returncode == 0:
+            output = result.stdout.lower()
+            merc_running = "merc" in output
+            webadmin_running = "webadmin.server" in output
+    except Exception:
+        pass
+    
     return {
-        "merc": merc_running == 0,
-        "webadmin": webadmin_running == 0,
+        "merc": merc_running,
+        "webadmin": webadmin_running,
     }
 
 
@@ -526,15 +538,37 @@ async def index() -> str:
 
     <script>
         // Navigation
+        console.log("Script loading...");
+        
+        // Ensure DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM Content Loaded");
+        });
+        
         function showSection(id) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.getElementById(id + '-section').classList.add('active');
-            
-            // Close mobile menu if open
-            document.getElementById('mobile-menu').classList.add('hidden');
+            console.log("showSection called with id:", id);
+            try {
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+                const targetSection = document.getElementById(id + '-section');
+                console.log("Target section:", targetSection);
+                if(targetSection) {
+                    targetSection.classList.add('active');
+                    console.log("Section activated successfully");
+                } else {
+                    console.error("Section not found:", id + '-section');
+                }
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if(mobileMenu) {
+                    mobileMenu.classList.add('hidden');
+                }
 
-            if(id === 'play') initTerminal();
-            if(id === 'admin') refreshLogs();
+                if(id === 'play') initTerminal();
+                if(id === 'admin') refreshLogs();
+            } catch(e) {
+                console.error("Error in showSection:", e);
+            }
         }
 
         function toggleMobileMenu() {
@@ -594,24 +628,24 @@ async def index() -> str:
                     .replace(/&/g, '&amp;')
                     .replace(/</g, '&lt;')
                     .replace(/>/g, '&gt;')
-                    .replace(/\x1b\[0m/g, '</span>')
-                    .replace(/\x1b\[1;30m/g, '<span style="color: #555">')
-                    .replace(/\x1b\[1;31m/g, '<span style="color: #ff5555">')
-                    .replace(/\x1b\[1;32m/g, '<span style="color: #55ff55">')
-                    .replace(/\x1b\[1;33m/g, '<span style="color: #ffff55">')
-                    .replace(/\x1b\[1;34m/g, '<span style="color: #5555ff">')
-                    .replace(/\x1b\[1;35m/g, '<span style="color: #ff55ff">')
-                    .replace(/\x1b\[1;36m/g, '<span style="color: #55ffff">')
-                    .replace(/\x1b\[1;37m/g, '<span style="color: #ffffff">')
-                    .replace(/\x1b\[0;30m/g, '<span style="color: #333">')
-                    .replace(/\x1b\[0;31m/g, '<span style="color: #aa0000">')
-                    .replace(/\x1b\[0;32m/g, '<span style="color: #00aa00">')
-                    .replace(/\x1b\[0;33m/g, '<span style="color: #aaaa00">')
-                    .replace(/\x1b\[0;34m/g, '<span style="color: #0000aa">')
-                    .replace(/\x1b\[0;35m/g, '<span style="color: #aa00aa">')
-                    .replace(/\x1b\[0;36m/g, '<span style="color: #00aaaa">')
-                    .replace(/\x1b\[0;37m/g, '<span style="color: #aaaaaa">')
-                    .replace(/\x1b\[([0-9;]+)m/g, '');
+                    .replace(/\\x1b\\[0m/g, '</span>')
+                    .replace(/\\x1b\\[1;30m/g, '<span style="color: #555">')
+                    .replace(/\\x1b\\[1;31m/g, '<span style="color: #ff5555">')
+                    .replace(/\\x1b\\[1;32m/g, '<span style="color: #55ff55">')
+                    .replace(/\\x1b\\[1;33m/g, '<span style="color: #ffff55">')
+                    .replace(/\\x1b\\[1;34m/g, '<span style="color: #5555ff">')
+                    .replace(/\\x1b\\[1;35m/g, '<span style="color: #ff55ff">')
+                    .replace(/\\x1b\\[1;36m/g, '<span style="color: #55ffff">')
+                    .replace(/\\x1b\\[1;37m/g, '<span style="color: #ffffff">')
+                    .replace(/\\x1b\\[0;30m/g, '<span style="color: #333">')
+                    .replace(/\\x1b\\[0;31m/g, '<span style="color: #aa0000">')
+                    .replace(/\\x1b\\[0;32m/g, '<span style="color: #00aa00">')
+                    .replace(/\\x1b\\[0;33m/g, '<span style="color: #aaaa00">')
+                    .replace(/\\x1b\\[0;34m/g, '<span style="color: #0000aa">')
+                    .replace(/\\x1b\\[0;35m/g, '<span style="color: #aa00aa">')
+                    .replace(/\\x1b\\[0;36m/g, '<span style="color: #00aaaa">')
+                    .replace(/\\x1b\\[0;37m/g, '<span style="color: #aaaaaa">')
+                    .replace(/\\x1b\\[([0-9;]+)m/g, '');
                 
                 const line = document.createElement('div');
                 line.innerHTML = html;
@@ -624,7 +658,7 @@ async def index() -> str:
                 if (e.key === 'Enter') {
                     const cmd = input.value;
                     if (ws && ws.readyState === WebSocket.OPEN) {
-                        ws.send(cmd + '\r\n');
+                        ws.send(cmd + '\\r\\n');
                     }
                     input.value = '';
                 }
@@ -864,11 +898,39 @@ async def health() -> dict[str, bool | str]:
 
 @app.get("/api/logs")
 async def tail_logs(lines: int = 200) -> HTMLResponse:
-    log_path = DEFAULT_LOG
-    if not log_path.exists():
-        raise HTTPException(status_code=404, detail="Log file not found")
-    log_lines = log_path.read_text(encoding="utf-8", errors="ignore").splitlines()[-lines:]
-    return HTMLResponse("\n".join(log_lines))
+    log_dir = Path("/app/log")
+    
+    # Try to read DEFAULT_LOG first (toc.log)
+    if DEFAULT_LOG.exists():
+        log_lines = DEFAULT_LOG.read_text(encoding="utf-8", errors="ignore").splitlines()[-lines:]
+        return HTMLResponse("\n".join(log_lines))
+    
+    # Fall back to aggregating numbered log files
+    if not log_dir.exists():
+        raise HTTPException(status_code=404, detail="Log directory not found")
+    
+    # Get all numbered log files and sort by modification time
+    log_files = sorted(
+        [f for f in log_dir.glob("*.log") if f.name.replace(".log", "").isdigit()],
+        key=lambda f: f.stat().st_mtime,
+        reverse=True
+    )
+    
+    if not log_files:
+        raise HTTPException(status_code=404, detail="No log files found")
+    
+    # Aggregate lines from the most recent log files
+    all_lines = []
+    for log_file in log_files[:10]:  # Read up to 10 most recent logs
+        try:
+            content = log_file.read_text(encoding="utf-8", errors="ignore")
+            all_lines.extend(content.splitlines())
+            if len(all_lines) >= lines:
+                break
+        except Exception:
+            continue
+    
+    return HTMLResponse("\n".join(all_lines[-lines:]))
 
 
 @app.post("/api/wizinfo")

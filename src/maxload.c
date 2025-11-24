@@ -473,6 +473,11 @@ void do_set_maxload(CHAR_DATA *ch, char *argument)
         top_maxload++;
         i = vnum % MAXLOAD_KEY_HASH;
         pLoad = malloc(sizeof(*pLoad));
+        if (pLoad == NULL)
+        {
+            bug("do_oset: malloc failed for maxload entry", 0);
+            return;
+        }
         pLoad->vnum = vnum;
         pLoad->item_game_load = in_game;
         pLoad->item_curr_load = with_pla;
@@ -703,6 +708,11 @@ void read_maxload_file(void)
         top_maxload++;
         i = vnum % MAXLOAD_KEY_HASH;
         pLoad = malloc(sizeof(*pLoad));
+        if (pLoad == NULL)
+        {
+            bug("do_loaditem: malloc failed for maxload entry", 0);
+            return;
+        }
         pLoad->vnum = vnum;
         pLoad->item_game_load = 0;
         pLoad->item_curr_load = curr_load;
