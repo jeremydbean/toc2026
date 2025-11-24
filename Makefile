@@ -3,7 +3,7 @@ CC       := gcc
 
 # Default flags favor stability while still surfacing helpful warnings. Use
 # `make CFLAGS="..."` to override for local builds.
-CFLAGS   ?= -std=gnu89 -O2 -fcommon -DROM
+CFLAGS   ?= -std=gnu89 -O2 -fcommon -DROM -Dunix
 WARNFLAGS?= -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
 
 UNAME_S := $(shell uname -s)

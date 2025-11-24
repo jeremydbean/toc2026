@@ -330,6 +330,16 @@ VULN_FLAGS = {
     'Z': 'flags2',
 }
 
+DICE_THROWN = [
+    2,3,3,3,3,4,4,4,3,3,3,4,4,4,4,4,4,4,4,4,5,5,4,4,5,7,4,6,6,5,5,5,
+    6,6,6,6,6,6,7,7,7,5,5,5,6,7,8,8,6,6,6,6,7,8,8,8,8,8,8,8,8,8,8,8
+]
+
+DICE_SIZE = [
+    4,3,3,3,4,3,3,3,5,6,6,4,4,5,5,5,5,6,6,6,5,5,7,7,6,4,8,5,5,7,7,7,
+    6,6,6,7,7,7,6,6,6,9,9,9,8,7,6,6,9,9,9,9,8,7,7,7,7,7,7,7,7,7,7,7
+]
+
 
 def decode_flags(flag_string: str, flag_map: Dict[str, str]) -> List[str]:
     """Convert flag letters to human-readable names."""
@@ -358,7 +368,7 @@ def decode_applies(affects: List[Dict[str, int]]) -> List[str]:
     return result
 
 
-def interpret_values(item_type_num: int, values: List[str]) -> Dict[str, Any]:
+def interpret_values(item_type_num: int, values: List[str], level: int = 0) -> Dict[str, Any]:
     """Interpret value fields based on item type."""
     result = {}
     
@@ -396,9 +406,24 @@ def interpret_values(item_type_num: int, values: List[str]) -> Dict[str, Any]:
         try:
             weapon_class = int(values[0])
             result['weapon_class'] = WEAPON_CLASSES.get(weapon_class, f'unknown-{weapon_class}')
-            result['num_dice'] = values[1]
-            result['size_dice'] = values[2]
-            result['damage_text'] = f"{values[1]}d{values[2]}"
+            
+            num_dice = int(values[1])
+            size_dice = int(values[2])
+            
+            if num_dice == 0 and size_dice == 0 and level == -1:
+                # Calculate dynamic stats assuming level 1 for display baseline
+                safe_level = 1
+                if safe_level < len(DICE_THROWN):
+                    num_dice = DICE_THROWN[safe_level]
+                    size_dice = DICE_SIZE[safe_level]
+                    result['damage_text'] = f"{num_dice}d{size_dice} (scales)"
+                else:
+                    result['damage_text'] = "0d0 (scales)"
+            else:
+                result['damage_text'] = f"{num_dice}d{size_dice}"
+            
+            result['num_dice'] = str(num_dice)
+            result['size_dice'] = str(size_dice)
             
             # Damage type
             dam_type_str = values[3]
@@ -600,6 +625,8 @@ class Room:
     extra_descr: List[Dict[str, str]] = field(default_factory=list)
     area_file: str = ""
     area_name: str = ""
+    mobs: List[int] = field(default_factory=list)
+    objects: List[int] = field(default_factory=list)
 
 
 @dataclass
@@ -653,13 +680,23 @@ class AreaParser:
         self._build_cross_references()
     
     def _build_cross_references(self) -> None:
-        """Build relationships between mobs and objects based on resets"""
+        """Build relationships between mobs, objects, and rooms based on resets"""
         for area_file, resets in self.resets.items():
             current_mob_vnum = None
             
             for reset in resets:
                 if reset.command == 'M':  # Mobile reset
                     current_mob_vnum = reset.arg1
+                    room_vnum = reset.arg3
+                    if room_vnum in self.rooms:
+                        if current_mob_vnum not in self.rooms[room_vnum].mobs:
+                            self.rooms[room_vnum].mobs.append(current_mob_vnum)
+                elif reset.command == 'O':  # Object reset
+                    obj_vnum = reset.arg1
+                    room_vnum = reset.arg3
+                    if room_vnum in self.rooms:
+                        if obj_vnum not in self.rooms[room_vnum].objects:
+                            self.rooms[room_vnum].objects.append(obj_vnum)
                 elif reset.command == 'G' and current_mob_vnum:  # Give object to mob
                     obj_vnum = reset.arg1
                     if obj_vnum in self.objects and current_mob_vnum in self.mobiles:
@@ -1067,7 +1104,7 @@ class AreaParser:
                             break
                     
                     # Interpret values based on item type
-                    interpreted_values = interpret_values(item_type_num, values)
+                    interpreted_values = interpret_values(item_type_num, values, level)
                     
                     obj = Object(
                         vnum=vnum,

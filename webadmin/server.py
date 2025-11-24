@@ -373,6 +373,7 @@ async def index() -> str:
                     <div class="flex gap-4 mb-8">
                         <button onclick="loadDb('mobs')" class="px-4 py-2 rounded bg-red-900/20 text-red-400 hover:bg-red-900/40 border border-red-900/50 transition-colors">Mobiles</button>
                         <button onclick="loadDb('objects')" class="px-4 py-2 rounded bg-blue-900/20 text-blue-400 hover:bg-blue-900/40 border border-blue-900/50 transition-colors">Objects</button>
+                        <button onclick="loadDb('rooms')" class="px-4 py-2 rounded bg-green-900/20 text-green-400 hover:bg-green-900/40 border border-green-900/50 transition-colors">Rooms</button>
                         <button onclick="loadDb('areas')" class="px-4 py-2 rounded bg-yellow-900/20 text-yellow-400 hover:bg-yellow-900/40 border border-yellow-900/50 transition-colors">Areas</button>
                     </div>
 
@@ -518,6 +519,86 @@ async def index() -> str:
                     </div>
                 </div>
             </section>
+        </div>
+
+        <!-- Room Detail Modal -->
+        <div id="room-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
+                        <div>
+                            <h3 id="room-modal-title" class="text-2xl font-bold text-white font-cinzel">Room Name</h3>
+                            <div class="text-gray-500 font-mono text-sm mt-1">Vnum: <span id="room-modal-vnum" class="text-gray-300">#1234</span></div>
+                        </div>
+                        <button onclick="closeRoomModal()" class="text-gray-400 hover:text-white">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Main Info -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <div>
+                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Description</h4>
+                                <p id="room-modal-desc" class="text-gray-300 leading-relaxed whitespace-pre-wrap font-serif"></p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Exits</h4>
+                                <div id="room-modal-exits" class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    <!-- Exits injected here -->
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Extra Descriptions</h4>
+                                <div id="room-modal-extras" class="space-y-2">
+                                    <!-- Extras injected here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sidebar -->
+                        <div class="space-y-6">
+                            <div class="bg-[#111] p-4 rounded border border-gray-800">
+                                <h4 class="text-blue-400 font-bold mb-3 uppercase text-xs tracking-wider">Contents</h4>
+                                
+                                <div class="mb-4">
+                                    <div class="text-xs text-gray-500 mb-1">Mobiles</div>
+                                    <ul id="room-modal-mobs" class="space-y-1 text-sm">
+                                        <!-- Mobs injected here -->
+                                    </ul>
+                                </div>
+                                
+                                <div>
+                                    <div class="text-xs text-gray-500 mb-1">Objects</div>
+                                    <ul id="room-modal-objects" class="space-y-1 text-sm">
+                                        <!-- Objects injected here -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="bg-[#111] p-4 rounded border border-gray-800">
+                                <h4 class="text-yellow-400 font-bold mb-3 uppercase text-xs tracking-wider">Details</h4>
+                                <div class="space-y-2 text-sm">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-500">Area:</span>
+                                        <span id="room-modal-area" class="text-gray-300 text-right"></span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-500">Sector:</span>
+                                        <span id="room-modal-sector" class="text-gray-300 text-right"></span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-500">Flags:</span>
+                                        <span id="room-modal-flags" class="text-gray-300 text-right"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -857,6 +938,19 @@ async def index() -> str:
                         <td class="p-4 text-gray-500 text-sm">${a.vnums}</td>
                     </tr>
                 `).join('');
+            } else if(currentDb === 'rooms') {
+                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Area</th><th class="p-4">Sector</th><th class="p-4">Actions</th>';
+                rowsHtml = data.map(r => `
+                    <tr class="hover:bg-[#151515] transition-colors">
+                        <td class="p-4 font-mono text-sm text-gray-500">#${r.vnum}</td>
+                        <td class="p-4 font-bold text-gray-300">${r.name}</td>
+                        <td class="p-4 text-gray-500 text-sm">${r.area || '-'}</td>
+                        <td class="p-4 text-gray-400">${r.sector_type}</td>
+                        <td class="p-4">
+                            <button onclick="showRoomDetail(${r.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
+                        </td>
+                    </tr>
+                `).join('');
             }
 
             headers.innerHTML = headerHtml;
@@ -946,6 +1040,82 @@ async def index() -> str:
         setInterval(checkStatus, 30000);
         checkStatus();
 
+        // Room Modal Functions
+        async function showRoomDetail(vnum) {
+            try {
+                const res = await fetch(`/api/rooms/${vnum}`);
+                if(!res.ok) throw new Error('Failed to fetch room');
+                const room = await res.json();
+                
+                document.getElementById('room-modal-title').textContent = room.name;
+                document.getElementById('room-modal-vnum').textContent = '#' + room.vnum;
+                document.getElementById('room-modal-desc').textContent = room.description;
+                document.getElementById('room-modal-area').textContent = room.area;
+                document.getElementById('room-modal-sector').textContent = room.sector_type;
+                document.getElementById('room-modal-flags').textContent = room.room_flags;
+                
+                // Exits
+                const exitsContainer = document.getElementById('room-modal-exits');
+                if(room.exits && room.exits.length > 0) {
+                    exitsContainer.innerHTML = room.exits.map(ex => `
+                        <div onclick="showRoomDetail(${ex.to_room})" class="bg-[#222] p-2 rounded border border-gray-700 text-center cursor-pointer hover:bg-[#333] transition-colors">
+                            <div class="text-yellow-500 font-bold uppercase text-xs">${ex.direction}</div>
+                            <div class="text-gray-400 text-xs truncate" title="${ex.to_room_name}">${ex.to_room_name}</div>
+                            <div class="text-gray-600 text-[10px] font-mono">#${ex.to_room}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    exitsContainer.innerHTML = '<div class="col-span-full text-gray-500 italic text-sm">No exits</div>';
+                }
+                
+                // Mobs
+                const mobsContainer = document.getElementById('room-modal-mobs');
+                if(room.mobs && room.mobs.length > 0) {
+                    mobsContainer.innerHTML = room.mobs.map(m => `
+                        <li class="flex justify-between items-center">
+                            <span class="text-red-300 truncate" title="${m.name}">${m.name}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${m.vnum}</span>
+                        </li>
+                    `).join('');
+                } else {
+                    mobsContainer.innerHTML = '<li class="text-gray-500 italic">None</li>';
+                }
+                
+                // Objects
+                const objsContainer = document.getElementById('room-modal-objects');
+                if(room.objects && room.objects.length > 0) {
+                    objsContainer.innerHTML = room.objects.map(o => `
+                        <li class="flex justify-between items-center">
+                            <span class="text-blue-300 truncate" title="${o.name}">${o.name}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${o.vnum}</span>
+                        </li>
+                    `).join('');
+                } else {
+                    objsContainer.innerHTML = '<li class="text-gray-500 italic">None</li>';
+                }
+
+                // Extras
+                const extrasContainer = document.getElementById('room-modal-extras');
+                if(room.extra_descr && room.extra_descr.length > 0) {
+                    extrasContainer.innerHTML = room.extra_descr.map(ed => `
+                        <div class="bg-[#151515] p-2 rounded border border-gray-800">
+                            <span class="text-green-400 font-bold text-xs">${ed.keyword}:</span>
+                            <span class="text-gray-400 text-sm">${ed.description}</span>
+                        </div>
+                    `).join('');
+                } else {
+                    extrasContainer.innerHTML = '<div class="text-gray-500 italic text-sm">None</div>';
+                }
+                
+                document.getElementById('room-modal').classList.remove('hidden');
+            } catch(e) {
+                alert('Error loading room details: ' + e);
+            }
+        }
+        
+        function closeRoomModal() {
+            document.getElementById('room-modal').classList.add('hidden');
+        }
     </script>
 </body>
 </html>
@@ -1044,9 +1214,13 @@ async def get_object(vnum: int) -> Dict[str, Any]:
     
     # Decode affects to human-readable format
     decoded_affects = decode_applies(obj.affects)
-    decoded_item_type = ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
+    item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
+    decoded_item_type = ITEM_TYPES.get(item_type_num, obj.item_type)
     decoded_extra_flags = decode_flags(obj.extra_flags, ITEM_FLAGS)
     decoded_wear_flags = decode_flags(obj.wear_flags, WEAR_FLAGS)
+    
+    # Interpret values
+    values_interpreted = interpret_values(item_type_num, obj.values, obj.level)
     
     return {
         "vnum": obj.vnum,
@@ -1066,6 +1240,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "wear_flags": decoded_wear_flags,
         "wear_flags_raw": obj.wear_flags,
         "values": obj.values,
+        "values_interpreted": values_interpreted,
         "affects": decoded_affects,
         "affects_raw": obj.affects,
         "extra_descr": obj.extra_descr,
@@ -1151,6 +1326,7 @@ async def get_objects(limit: int = 500) -> list:
             item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
         except (ValueError, TypeError):
             item_type_num = 0
+        
         item_type_name = ITEM_TYPES.get(item_type_num, obj.item_type)
         
         # Decode flags
@@ -1162,7 +1338,7 @@ async def get_objects(limit: int = 500) -> list:
         affects_decoded = decode_applies(obj.affects)
         
         # Interpret values based on item type
-        values_interpreted = interpret_values(item_type_num, obj.values)
+        values_interpreted = interpret_values(item_type_num, obj.values, obj.level)
         
         # Get mobs that carry this object
         carriers = []
@@ -1201,6 +1377,68 @@ async def get_objects(limit: int = 500) -> list:
             "area_file": obj.area_file
         })
     return result
+
+
+@app.get("/api/rooms/{vnum}")
+async def get_room(vnum: int) -> Dict[str, Any]:
+    room = parser.rooms.get(vnum)
+    if not room:
+        raise HTTPException(status_code=404, detail="Room not found")
+
+    # Resolve mobs
+    mobs_in_room = []
+    for mob_vnum in room.mobs:
+        mob = parser.mobiles.get(mob_vnum)
+        if mob:
+            mobs_in_room.append({
+                "vnum": mob.vnum,
+                "name": mob.short_desc,
+                "level": mob.level,
+                "race": mob.race
+            })
+
+    # Resolve objects
+    objects_in_room = []
+    for obj_vnum in room.objects:
+        obj = parser.objects.get(obj_vnum)
+        if obj:
+            objects_in_room.append({
+                "vnum": obj.vnum,
+                "name": obj.short_desc,
+                "level": obj.level,
+                "item_type": ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
+            })
+
+    # Resolve exits
+    exits_data = []
+    for ex in room.exits:
+        to_room_name = "Unknown"
+        to_room = parser.rooms.get(ex.to_room)
+        if to_room:
+            to_room_name = to_room.name
+            
+        exits_data.append({
+            "direction": parser.DIRECTIONS[ex.direction] if 0 <= ex.direction < len(parser.DIRECTIONS) else str(ex.direction),
+            "to_room": ex.to_room,
+            "to_room_name": to_room_name,
+            "keyword": ex.keyword,
+            "locks": ex.locks,
+            "key_vnum": ex.key_vnum
+        })
+
+    return {
+        "vnum": room.vnum,
+        "name": room.name,
+        "description": room.description,
+        "area": room.area_name,
+        "area_file": room.area_file,
+        "room_flags": room.room_flags,
+        "sector_type": room.sector_type,
+        "exits": exits_data,
+        "extra_descr": room.extra_descr,
+        "mobs": mobs_in_room,
+        "objects": objects_in_room
+    }
 
 
 # ============ WebSocket Bridge ============

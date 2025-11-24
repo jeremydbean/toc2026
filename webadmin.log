@@ -1,24 +1,903 @@
-INFO:     Will watch for changes in these directories: ['/Users/jeremybean/toc2026']
-INFO:     Uvicorn running on http://127.0.0.1:9002 (Press CTRL+C to quit)
-INFO:     Started reloader process [61371] using WatchFiles
-INFO:     Started server process [61403]
+INFO:     Started server process [65450]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     127.0.0.1:57332 - "WebSocket /ws" [accepted]
+INFO:     Uvicorn running on http://0.0.0.0:9001 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58415 - "WebSocket /ws" [accepted]
 INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58420 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58424 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58428 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58434 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58438 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58447 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58451 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58455 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58460 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
 DEBUG: AreaParser file: webadmin.area_parser
 DEBUG: AreaParser source: /Users/jeremybean/toc2026/webadmin/area_parser.py
 Loaded: 2241 mobs, 3223 objects, 7324 rooms, 95 areas
-INFO:     127.0.0.1:57337 - "GET / HTTP/1.1" 200 OK
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58465 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58466 - "WebSocket /ws" [accepted]
+INFO:     connection open
 INFO:     connection closed
-INFO:     127.0.0.1:57337 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57337 - "GET /api/objects?limit=1000 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57339 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57350 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57354 - "GET /api/areas HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57354 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57367 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57371 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57389 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57393 - "GET /api/health HTTP/1.1" 200 OK
-INFO:     127.0.0.1:57397 - "GET /api/health HTTP/1.1" 200 OK
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58470 - "GET /api/objects/9589 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58474 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58478 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58482 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58486 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58490 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58494 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58498 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58502 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58504 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58509 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58514 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58518 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58522 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58527 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58532 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58536 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58540 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58545 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58545 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58547 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58551 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58555 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58559 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58563 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58568 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58572 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58587 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58593 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58595 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58599 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58605 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58609 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58615 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58619 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58624 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58628 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58635 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58639 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58643 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58645 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58649 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58653 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58657 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58661 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58666 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58674 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58678 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58682 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58685 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58694 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58700 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58704 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58709 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58714 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58719 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58725 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58729 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58734 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58734 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58736 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58740 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58744 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58749 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58753 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58757 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58761 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58767 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58771 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58773 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58778 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58783 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58787 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58793 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58797 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58801 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58806 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58811 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58815 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58819 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58821 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58827 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58831 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58836 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58840 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58844 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58848 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58853 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58857 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58860 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58864 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58878 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58882 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58888 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58892 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58896 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58900 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58904 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58913 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58913 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58915 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58920 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58925 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58937 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58942 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58965 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58969 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:58994 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:58999 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59001 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59007 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59017 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59025 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59039 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59045 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59052 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59056 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59056 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59060 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59065 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59069 - "GET /api/objects?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59071 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59075 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59080 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59085 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59089 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59094 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59100 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59104 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59108 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59112 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59114 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59118 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59122 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59126 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59131 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59135 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59139 - "GET /api/areas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59141 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59139 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59139 - "GET /api/mobs?limit=1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59145 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59149 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59155 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59158 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59162 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59166 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59171 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59176 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59180 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59184 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59188 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59192 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59194 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59204 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59209 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59213 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59219 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59223 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59228 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59232 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59234 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59239 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59243 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59247 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59252 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59256 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59263 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59268 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59273 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59278 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59282 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59286 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59288 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59292 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59298 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59302 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59312 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59317 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59322 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59326 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59328 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59332 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59336 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59339 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59343 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59347 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59351 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59356 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59360 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59365 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59370 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59374 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59376 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59380 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59385 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59389 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59395 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59405 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59411 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59413 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59417 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59422 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59427 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59431 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59435 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59439 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59443 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59447 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59452 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59456 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59462 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59464 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59469 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59473 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59478 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59482 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59486 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59490 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59494 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59496 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59501 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59506 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59512 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59518 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59523 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59527 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59533 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59538 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59543 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59548 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59550 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59554 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59560 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59564 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     connection closed
+INFO:     127.0.0.1:59579 - "WebSocket /ws" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:59585 - "WebSocket /ws" [accepted]
+INFO:     connection open
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+WebSocket Error: [Errno 61] Connection refused
+INFO:     127.0.0.1:59590 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59605 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59612 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59614 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59623 - "GET /api/health HTTP/1.1" 200 OK

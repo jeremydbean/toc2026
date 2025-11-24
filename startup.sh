@@ -1,2 +1,2 @@
-cd areas
-./merc 9000 
+cd area
+../merc 9000 
