@@ -330,6 +330,98 @@ VULN_FLAGS = {
     'Z': 'flags2',
 }
 
+# Mob FORM flags
+FORM_FLAGS = {
+    'A': 'edible',
+    'B': 'poison',
+    'C': 'magical',
+    'D': 'instant_decay',
+    'E': 'other',
+    'G': 'animal',
+    'H': 'sentient',
+    'I': 'undead',
+    'J': 'construct',
+    'K': 'mist',
+    'L': 'intangible',
+    'M': 'biped',
+    'N': 'centaur',
+    'O': 'insect',
+    'P': 'spider',
+    'Q': 'crustacean',
+    'R': 'worm',
+    'S': 'blob',
+    'T': 'mammal',
+    'U': 'bird',
+    'V': 'reptile',
+    'W': 'snake',
+    'X': 'dragon',
+    'Y': 'amphibian',
+    'Z': 'fish',
+    'a': 'cold_blood',
+}
+
+# Mob PART flags
+PART_FLAGS = {
+    'A': 'head',
+    'B': 'arms',
+    'C': 'legs',
+    'D': 'heart',
+    'E': 'brains',
+    'F': 'guts',
+    'G': 'hands',
+    'H': 'feet',
+    'I': 'fingers',
+    'J': 'ear',
+    'K': 'eye',
+    'L': 'long_tongue',
+    'M': 'eyestalks',
+    'N': 'tentacles',
+    'O': 'fins',
+    'P': 'wings',
+    'Q': 'tail',
+    'R': 'claws',
+    'S': 'fangs',
+    'T': 'horns',
+    'U': 'scales',
+    'V': 'tusks',
+    'W': 'whiskers',
+    'X': 'fire_breath',
+    'Y': 'gas_breath',
+    'Z': 'ice_breath',
+    'a': 'acid_breath',
+    'b': 'lightning_breath',
+}
+
+# Mob SIZE flags
+SIZE_FLAGS = {
+    'T': 'tiny',
+    'S': 'small',
+    'M': 'medium',
+    'L': 'large',
+    'H': 'huge',
+    'G': 'giant',
+}
+
+# Mob POSITION flags
+POSITION_FLAGS = {
+    '0': 'dead',
+    '1': 'mortal',
+    '2': 'incap',
+    '3': 'stunned',
+    '4': 'sleeping',
+    '5': 'resting',
+    '6': 'sitting',
+    '7': 'fighting',
+    '8': 'standing',
+}
+
+# Mob SEX flags
+SEX_FLAGS = {
+    '0': 'neutral',
+    '1': 'male',
+    '2': 'female',
+}
+
 DICE_THROWN = [
     2,3,3,3,3,4,4,4,3,3,3,4,4,4,4,4,4,4,4,4,5,5,4,4,5,7,4,6,6,5,5,5,
     6,6,6,6,6,6,7,7,7,5,5,5,6,7,8,8,6,6,6,6,7,8,8,8,8,8,8,8,8,8,8,8
@@ -561,6 +653,7 @@ class Mobile:
     hitroll: int
     ac: List[int]
     hitp_dice: str
+    mana_dice: str
     dam_dice: str
     dam_type: int
     off_flags: str
@@ -578,6 +671,7 @@ class Mobile:
     area_file: str = ""
     area_name: str = ""
     drops: List[int] = field(default_factory=list)  # Object vnums this mob can drop
+    spawn_rooms: List[int] = field(default_factory=list)  # Room vnums where this mob spawns
 
 
 @dataclass
@@ -681,16 +775,24 @@ class AreaParser:
     
     def _build_cross_references(self) -> None:
         """Build relationships between mobs, objects, and rooms based on resets"""
+        print(f"DEBUG: Building cross references. Total areas with resets: {len(self.resets)}")
         for area_file, resets in self.resets.items():
             current_mob_vnum = None
+            # print(f"DEBUG: Processing {area_file} with {len(resets)} resets")
             
             for reset in resets:
                 if reset.command == 'M':  # Mobile reset
                     current_mob_vnum = reset.arg1
                     room_vnum = reset.arg3
+                    
                     if room_vnum in self.rooms:
                         if current_mob_vnum not in self.rooms[room_vnum].mobs:
                             self.rooms[room_vnum].mobs.append(current_mob_vnum)
+                        if current_mob_vnum in self.mobiles:
+                            if room_vnum not in self.mobiles[current_mob_vnum].spawn_rooms:
+                                self.mobiles[current_mob_vnum].spawn_rooms.append(room_vnum)
+                    else:
+                        pass
                 elif reset.command == 'O':  # Object reset
                     obj_vnum = reset.arg1
                     room_vnum = reset.arg3
@@ -884,8 +986,9 @@ class AreaParser:
                     level = int(level_line[0]) if len(level_line) > 0 else 1
                     hitroll = int(level_line[1]) if len(level_line) > 1 else 0
                     hitp_dice = level_line[2] if len(level_line) > 2 else "1d1+0"
-                    dam_dice = level_line[3] if len(level_line) > 3 else "1d1+0"
-                    dam_type = int(level_line[4].replace('d', '').replace('D', '').split('+')[0]) if len(level_line) > 4 else 0
+                    mana_dice = level_line[3] if len(level_line) > 3 else "1d1+0"
+                    dam_dice = level_line[4] if len(level_line) > 4 else "1d1+0"
+                    dam_type = int(level_line[5].replace('d', '').replace('D', '').split('+')[0]) if len(level_line) > 5 else 0
                     i += 1
                     
                     # Parse AC line
@@ -935,6 +1038,7 @@ class AreaParser:
                         hitroll=hitroll,
                         ac=ac,
                         hitp_dice=hitp_dice,
+                        mana_dice=mana_dice,
                         dam_dice=dam_dice,
                         dam_type=dam_type,
                         off_flags=off_flags,
@@ -1303,3 +1407,30 @@ class AreaParser:
                     print(f"Error parsing reset line '{line}' in {area_file}: {e}")
                     # Don't raise, just skip bad reset lines
                     continue
+        
+        self.resets[area_file] = resets
+
+def interpret_mob_values(mob: Mobile) -> Dict[str, Any]:
+    """Interpret mobile flags and values."""
+    result = {}
+    
+    result['act_flags'] = decode_flags(mob.act_flags, ACT_FLAGS)
+    result['affected_by'] = decode_flags(mob.affected_by, AFFECTED_FLAGS)
+    result['off_flags'] = decode_flags(mob.off_flags, OFF_FLAGS)
+    result['imm_flags'] = decode_flags(mob.imm_flags, IMM_FLAGS)
+    result['res_flags'] = decode_flags(mob.res_flags, RES_FLAGS)
+    result['vuln_flags'] = decode_flags(mob.vuln_flags, VULN_FLAGS)
+    result['form_flags'] = decode_flags(mob.form, FORM_FLAGS)
+    result['part_flags'] = decode_flags(mob.parts, PART_FLAGS)
+    
+    result['start_pos'] = POSITION_FLAGS.get(mob.start_pos, mob.start_pos)
+    result['default_pos'] = POSITION_FLAGS.get(mob.default_pos, mob.default_pos)
+    result['sex'] = SEX_FLAGS.get(mob.sex, mob.sex)
+    result['size'] = SIZE_FLAGS.get(mob.size, mob.size)
+    
+    result['damage_type'] = DAMAGE_TYPES.get(mob.dam_type, f'unknown-{mob.dam_type}')
+    
+    # Calculate wealth string
+    result['wealth_text'] = f"{mob.wealth} gold"
+    
+    return result

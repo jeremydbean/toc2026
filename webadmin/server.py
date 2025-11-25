@@ -6,17 +6,17 @@ import subprocess
 from pathlib import Path
 from typing import Optional, Dict, Any
 
-from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect, Query
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 import asyncio
 
 try:
-    from webadmin.area_parser import AreaParser
-    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values
+    from webadmin.area_parser import AreaParser, APPLY_LOCATIONS
+    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values
 except ImportError:
-    from area_parser import AreaParser
-    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values
+    from area_parser import AreaParser, APPLY_LOCATIONS
+    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -46,6 +46,43 @@ class QueueWriter:
 
 
 queue_writer: Optional[QueueWriter] = None
+
+# Class stat weights for gear optimization
+CLASS_WEIGHTS = {
+    "mage": {
+        "intelligence": 2.0, "mana": 1.0, "save vs spell": 1.0, "hit points": 0.5,
+        "constitution": 0.5, "dexterity": 0.5
+    },
+    "cleric": {
+        "wisdom": 2.0, "mana": 1.0, "save vs spell": 1.0, "hit points": 0.8,
+        "constitution": 0.5, "strength": 0.2
+    },
+    "thief": {
+        "dexterity": 2.0, "hitroll": 1.5, "damroll": 1.5, "hit points": 0.8,
+        "strength": 0.5, "constitution": 0.5
+    },
+    "warrior": {
+        "strength": 1.5, "constitution": 1.5, "hitroll": 1.5, "damroll": 1.5, 
+        "hit points": 1.0, "dexterity": 0.5
+    },
+    "monk": {
+        "constitution": 2.0, "strength": 1.0, "hitroll": 1.5, "damroll": 1.5, 
+        "hit points": 1.0, "dexterity": 0.8
+    },
+    "necromancer": {
+        "intelligence": 2.0, "mana": 1.0, "save vs spell": 1.0, "hit points": 0.5,
+        "constitution": 0.5, "dexterity": 0.5
+    },
+}
+
+# Race flag mapping
+RACE_FLAGS = {
+    "human": "human-only",
+    "elf": "elf-only",
+    "dwarf": "dwarf-only",
+    "hobbit": "halfling-only",
+    "saurian": "saurian-only",
+}
 
 # Initialize parser and load area files
 print(f"DEBUG: AreaParser file: {AreaParser.__module__}")
@@ -370,6 +407,26 @@ async def index() -> str:
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">World Database</h2>
                     
+                    <!-- Stats Grid -->
+                    <div id="db-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Mobiles</div>
+                            <div id="stat-mobs" class="text-2xl font-bold text-red-500">-</div>
+                        </div>
+                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Objects</div>
+                            <div id="stat-objs" class="text-2xl font-bold text-blue-500">-</div>
+                        </div>
+                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Rooms</div>
+                            <div id="stat-rooms" class="text-2xl font-bold text-green-500">-</div>
+                        </div>
+                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Areas</div>
+                            <div id="stat-areas" class="text-2xl font-bold text-yellow-500">-</div>
+                        </div>
+                    </div>
+                    
                     <div class="flex gap-4 mb-8">
                         <button onclick="loadDb('mobs')" class="px-4 py-2 rounded bg-red-900/20 text-red-400 hover:bg-red-900/40 border border-red-900/50 transition-colors">Mobiles</button>
                         <button onclick="loadDb('objects')" class="px-4 py-2 rounded bg-blue-900/20 text-blue-400 hover:bg-blue-900/40 border border-blue-900/50 transition-colors">Objects</button>
@@ -377,8 +434,126 @@ async def index() -> str:
                         <button onclick="loadDb('areas')" class="px-4 py-2 rounded bg-yellow-900/20 text-yellow-400 hover:bg-yellow-900/40 border border-yellow-900/50 transition-colors">Areas</button>
                     </div>
 
-                    <div class="mb-6">
-                        <input type="text" id="db-search" placeholder="Search database..." class="w-full bg-[#151515] border border-gray-800 rounded px-4 py-3 text-white focus:border-red-700 outline-none" onkeyup="filterDb()">
+                    <div class="flex gap-4 mb-6">
+                        <input type="text" id="db-search" placeholder="Search loaded data..." class="flex-1 bg-[#151515] border border-gray-800 rounded px-4 py-3 text-white focus:border-red-700 outline-none" onkeyup="filterDb()">
+                    </div>
+
+                    <!-- Advanced Filters (Objects Only) -->
+                    <div id="obj-filter-container" class="hidden w-full mb-6">
+                        <div class="flex justify-end mb-2">
+                            <button onclick="toggleFilters()" class="px-4 py-2 rounded bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-600 transition-colors flex items-center gap-2">
+                                <i class="fa-solid fa-filter"></i> Filters
+                            </button>
+                        </div>
+                        
+                        <div id="advanced-filters" class="hidden bg-[#151515] p-4 rounded border border-gray-800 grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Type -->
+                            <div>
+                                <label class="block text-xs text-gray-500 uppercase mb-1">Item Type</label>
+                                <select id="filter-type" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
+                                    <option value="">Any</option>
+                                    <option value="weapon">Weapon</option>
+                                    <option value="armor">Armor</option>
+                                    <option value="light">Light</option>
+                                    <option value="container">Container</option>
+                                    <option value="drink container">Drink Container</option>
+                                    <option value="food">Food</option>
+                                    <option value="potion">Potion</option>
+                                    <option value="scroll">Scroll</option>
+                                    <option value="wand">Wand</option>
+                                    <option value="staff">Staff</option>
+                                    <option value="pill">Pill</option>
+                                    <option value="clothing">Clothing</option>
+                                    <option value="money">Money</option>
+                                    <option value="boat">Boat</option>
+                                    <option value="fountain">Fountain</option>
+                                    <option value="portal">Portal</option>
+                                    <option value="key">Key</option>
+                                    <option value="map">Map</option>
+                                    <option value="treasure">Treasure</option>
+                                </select>
+                            </div>
+
+                            <!-- Wear -->
+                            <div>
+                                <label class="block text-xs text-gray-500 uppercase mb-1">Wear Location</label>
+                                <select id="filter-wear" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
+                                    <option value="">Any</option>
+                                    <option value="take">Take</option>
+                                    <option value="finger">Finger</option>
+                                    <option value="neck">Neck</option>
+                                    <option value="body">Body</option>
+                                    <option value="head">Head</option>
+                                    <option value="legs">Legs</option>
+                                    <option value="feet">Feet</option>
+                                    <option value="hands">Hands</option>
+                                    <option value="arms">Arms</option>
+                                    <option value="shield">Shield</option>
+                                    <option value="about">About Body</option>
+                                    <option value="waist">Waist</option>
+                                    <option value="wrist">Wrist</option>
+                                    <option value="wield">Wield</option>
+                                    <option value="hold">Hold</option>
+                                    <option value="two-hands">Two Hands</option>
+                                </select>
+                            </div>
+
+                            <!-- Level -->
+                            <div>
+                                <label class="block text-xs text-gray-500 uppercase mb-1">Level Range</label>
+                                <div class="flex gap-2">
+                                    <input type="number" id="filter-min-level" placeholder="Min" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
+                                    <input type="number" id="filter-max-level" placeholder="Max" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
+                                </div>
+                            </div>
+
+                            <!-- Stat Filter -->
+                            <div class="md:col-span-3">
+                                <label class="block text-xs text-gray-500 uppercase mb-1">Stat Filter (e.g. hitroll>5)</label>
+                                <input type="text" id="filter-stat" placeholder="hitroll>5" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
+                            </div>
+
+                            <!-- Flags -->
+                            <div class="md:col-span-3">
+                                <label class="block text-xs text-gray-500 uppercase mb-2">Flags</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="glow"> Glow
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="hum"> Hum
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="magic"> Magic
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="invis"> Invis
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="nodrop"> NoDrop
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="noremove"> NoRemove
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="anti-good"> Anti-Good
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="anti-evil"> Anti-Evil
+                                    </label>
+                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
+                                        <input type="checkbox" class="filter-flag" value="anti-neutral"> Anti-Neutral
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Apply Button -->
+                            <div class="md:col-span-3 flex justify-end">
+                                <button onclick="loadDb('objects', true)" class="px-6 py-2 rounded bg-blue-600 text-white hover:bg-blue-500 font-bold transition-colors">
+                                    Apply Filters
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
@@ -739,16 +914,70 @@ async def index() -> str:
         let currentDb = 'mobs';
         let dbData = { mobs: [], objects: [], areas: [] };
 
-        async function loadDb(type) {
+        async function loadStats() {
+            try {
+                const res = await fetch('/api/stats');
+                const data = await res.json();
+                document.getElementById('stat-mobs').textContent = data.mobiles;
+                document.getElementById('stat-objs').textContent = data.objects;
+                document.getElementById('stat-rooms').textContent = data.rooms;
+                document.getElementById('stat-areas').textContent = data.areas;
+            } catch(e) {
+                console.error("Error loading stats:", e);
+            }
+        }
+        
+        // Call on load
+        loadStats();
+
+        function toggleFilters() {
+            const el = document.getElementById('advanced-filters');
+            el.classList.toggle('hidden');
+        }
+
+        async function loadDb(type, forceRefresh = false) {
             currentDb = type;
             const content = document.getElementById('db-content');
             const headers = document.getElementById('db-headers');
+            const filterContainer = document.getElementById('obj-filter-container');
+            
+            // Toggle filter visibility
+            if(type === 'objects') {
+                filterContainer.classList.remove('hidden');
+            } else {
+                filterContainer.classList.add('hidden');
+            }
             
             content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-gray-500">Loading...</td></tr>';
 
             try {
-                if(dbData[type].length === 0) {
-                    const res = await fetch('/api/' + type + (type === 'areas' ? '' : '?limit=1000'));
+                let url = '/api/' + type + (type === 'areas' ? '' : '?limit=1000');
+                
+                // Add filters for objects
+                if(type === 'objects') {
+                    const typeFilter = document.getElementById('filter-type').value;
+                    const wearFilter = document.getElementById('filter-wear').value;
+                    const minLevel = document.getElementById('filter-min-level').value;
+                    const maxLevel = document.getElementById('filter-max-level').value;
+                    const statFilter = document.getElementById('filter-stat').value;
+                    
+                    // Collect flags
+                    const flags = Array.from(document.querySelectorAll('.filter-flag:checked')).map(cb => cb.value);
+                    
+                    if(typeFilter) url += '&item_type=' + encodeURIComponent(typeFilter);
+                    if(wearFilter) url += '&wear_flag=' + encodeURIComponent(wearFilter);
+                    if(minLevel) url += '&min_level=' + minLevel;
+                    if(maxLevel) url += '&max_level=' + maxLevel;
+                    if(statFilter) url += '&stat_filter=' + encodeURIComponent(statFilter);
+                    if(flags.length > 0) url += '&extra_flags=' + encodeURIComponent(flags.join(','));
+                    
+                    if(typeFilter || wearFilter || minLevel || maxLevel || statFilter || flags.length > 0) {
+                        forceRefresh = true;
+                    }
+                }
+
+                if(forceRefresh || !dbData[type] || dbData[type].length === 0) {
+                    const res = await fetch(url);
                     dbData[type] = await res.json();
                 }
                 renderDb(dbData[type]);
@@ -1216,7 +1445,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
     decoded_affects = decode_applies(obj.affects)
     item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
     decoded_item_type = ITEM_TYPES.get(item_type_num, obj.item_type)
-    decoded_extra_flags = decode_flags(obj.extra_flags, ITEM_FLAGS)
+    decoded_extra_flags = decode_flags(obj.extraFlags, ITEM_FLAGS)
     decoded_wear_flags = decode_flags(obj.wear_flags, WEAR_FLAGS)
     
     # Interpret values
@@ -1235,8 +1464,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "cost": obj.cost,
         "condition": obj.condition,
         "extra_flags": decoded_extra_flags,
-        "extra_flags_raw": obj.extra_flags,
-        "extra_flags2_raw": obj.extra_flags2,
+        "extra_flags_raw": obj.extraFlags,
         "wear_flags": decoded_wear_flags,
         "wear_flags_raw": obj.wear_flags,
         "values": obj.values,
@@ -1315,12 +1543,31 @@ async def get_areas() -> list:
 
 
 @app.get("/api/objects")
-async def get_objects(limit: int = 500) -> list:
+async def get_objects(
+    limit: int = 500,
+    name: Optional[str] = None,
+    min_level: Optional[int] = None,
+    max_level: Optional[int] = None,
+    item_type: Optional[str] = None,
+    wear_flag: Optional[str] = None,
+    extra_flags: Optional[str] = None,
+    stat_filter: Optional[str] = None
+) -> list:
     result = []
-    for i, (vnum, obj) in enumerate(parser.objects.items()):
-        if i >= limit:
+    count = 0
+    
+    for vnum, obj in parser.objects.items():
+        if count >= limit:
             break
-        
+            
+        # Filters
+        if name and name.lower() not in obj.short_desc.lower() and name.lower() not in obj.keywords.lower():
+            continue
+        if min_level is not None and obj.level < min_level:
+            continue
+        if max_level is not None and obj.level > max_level:
+            continue
+            
         # Get item type number and name
         try:
             item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
@@ -1329,13 +1576,48 @@ async def get_objects(limit: int = 500) -> list:
         
         item_type_name = ITEM_TYPES.get(item_type_num, obj.item_type)
         
+        if item_type and item_type.lower() not in item_type_name.lower():
+            continue
+            
         # Decode flags
         flags_decoded = decode_flags(obj.extra_flags, ITEM_FLAGS)
         flags2_decoded = decode_flags(obj.extra_flags2, ITEM_FLAGS2)
         wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
         
+        if wear_flag:
+            found_wear = False
+            for flag in wear_decoded:
+                if wear_flag.lower() in flag.lower():
+                    found_wear = True
+                    break
+            if not found_wear:
+                continue
+
+        if extra_flags:
+            # Expect comma-separated list of required flags
+            req_flags = [f.strip().lower() for f in extra_flags.split(',')]
+            all_obj_flags = [f.lower() for f in flags_decoded + flags2_decoded]
+            if not all(rf in all_obj_flags for rf in req_flags):
+                continue
+        
         # Decode affects
         affects_decoded = decode_applies(obj.affects)
+        
+        # Stat filter (e.g. "hitroll>5")
+        if stat_filter:
+            try:
+                if '>' in stat_filter:
+                    s_name, s_val = stat_filter.split('>')
+                    s_val = int(s_val)
+                    found_stat = False
+                    for aff in affects_decoded:
+                        if s_name.lower() in aff['location'].lower() and aff['modifier'] > s_val:
+                            found_stat = True
+                            break
+                    if not found_stat:
+                        continue
+            except:
+                pass
         
         # Interpret values based on item type
         values_interpreted = interpret_values(item_type_num, obj.values, obj.level)
@@ -1376,6 +1658,8 @@ async def get_objects(limit: int = 500) -> list:
             "area": obj.area_name,
             "area_file": obj.area_file
         })
+        count += 1
+    
     return result
 
 
@@ -1415,7 +1699,7 @@ async def get_room(vnum: int) -> Dict[str, Any]:
         to_room_name = "Unknown"
         to_room = parser.rooms.get(ex.to_room)
         if to_room:
-            to_room_name = to_room.name
+            to_room_name = to_room.name;
             
         exits_data.append({
             "direction": parser.DIRECTIONS[ex.direction] if 0 <= ex.direction < len(parser.DIRECTIONS) else str(ex.direction),
@@ -1441,78 +1725,195 @@ async def get_room(vnum: int) -> Dict[str, Any]:
     }
 
 
-# ============ WebSocket Bridge ============
-
-@app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
-    await websocket.accept()
-    writer = None
-    try:
-        # Connect to the MUD server
-        reader, writer = await asyncio.open_connection('localhost', 9000)
-        
-        async def receive_from_mud():
-            try:
-                while True:
-                    data = await reader.read(4096)
-                    if not data:
-                        break
-                    try:
-                        text = data.decode('latin-1', errors='ignore')
-                        await websocket.send_text(text)
-                    except Exception:
-                        break
-            except Exception:
-                pass
-
-        async def send_to_mud():
-            try:
-                while True:
-                    data = await websocket.receive_text()
-                    writer.write(data.encode('latin-1'))
-                    await writer.drain()
-            except Exception:
-                pass
-
-        # Run both tasks
-        receive_task = asyncio.create_task(receive_from_mud())
-        send_task = asyncio.create_task(send_to_mud())
-        
-        done, pending = await asyncio.wait(
-            [receive_task, send_task],
-            return_when=asyncio.FIRST_COMPLETED,
-        )
-        
-        for task in pending:
-            task.cancel()
+@app.get("/api/mobs/{vnum}")
+async def get_mob(vnum: int) -> Dict[str, Any]:
+    if vnum not in parser.mobiles:
+        raise HTTPException(status_code=404, detail="Mobile not found")
+    
+    mob = parser.mobiles[vnum]
+    
+    # Interpret values
+    values_interpreted = interpret_mob_values(mob)
+    
+    # Get drops
+    drops = []
+    for obj_vnum in mob.drops:
+        if obj_vnum in parser.objects:
+            obj = parser.objects[obj_vnum]
+            drops.append({
+                "vnum": obj.vnum,
+                "short_desc": obj.short_desc
+            })
             
-    except Exception as e:
-        print(f"WebSocket Error: {e}")
-        await websocket.close()
-    finally:
-        if writer:
+    # Get spawn rooms
+    spawn_rooms = []
+    for room_vnum in mob.spawn_rooms:
+        if room_vnum in parser.rooms:
+            room = parser.rooms[room_vnum]
+            spawn_rooms.append({
+                "vnum": room.vnum,
+                "name": room.name,
+                "area": room.area_name
+            })
+            
+    return {
+        "vnum": mob.vnum,
+        "keywords": mob.keywords,
+        "short_desc": mob.short_desc,
+        "long_desc": mob.long_desc,
+        "description": mob.description,
+        "race": mob.race,
+        "level": mob.level,
+        "alignment": mob.alignment,
+        "hitroll": mob.hitroll,
+        "ac": mob.ac,
+        "hitp_dice": mob.hitp_dice,
+        "mana_dice": mob.mana_dice,
+        "dam_dice": mob.dam_dice,
+        "dam_type": mob.dam_type,
+        "start_pos": mob.start_pos,
+        "default_pos": mob.default_pos,
+        "sex": mob.sex,
+        "wealth": mob.wealth,
+        "form": mob.form,
+        "parts": mob.parts,
+        "size": mob.size,
+        "material": mob.material,
+        "act_flags_raw": mob.act_flags,
+        "affected_by_raw": mob.affected_by,
+        "off_flags_raw": mob.off_flags,
+        "imm_flags_raw": mob.imm_flags,
+        "res_flags_raw": mob.res_flags,
+        "vuln_flags_raw": mob.vuln_flags,
+        "values_interpreted": values_interpreted,
+        "area": mob.area_name,
+        "area_file": mob.area_file,
+        "drops": drops,
+        "spawn_rooms": spawn_rooms
+    }
+
+
+@app.get("/api/best_gear")
+async def get_best_gear(
+    class_name: str = Query(..., description="Class name (mage, cleric, thief, warrior, monk, necromancer)"),
+    race_name: str = Query("human", description="Race name"),
+    level: int = Query(50, description="Player level"),
+    limit: int = Query(5, description="Items per slot")
+):
+    class_name = class_name.lower()
+    race_name = race_name.lower()
+    
+    if class_name not in CLASS_WEIGHTS:
+        raise HTTPException(status_code=400, detail=f"Unknown class: {class_name}")
+        
+    weights = CLASS_WEIGHTS[class_name]
+    race_flag = RACE_FLAGS.get(race_name)
+    
+    # Group by wear location
+    best_items = {} # location -> list of (score, item)
+    
+    for vnum, obj in parser.objects.items():
+        # Level check
+        if obj.level > level:
+            continue
+            
+        # Race check (exclude items restricted to OTHER races)
+        flags2_decoded = decode_flags(obj.extra_flags2, ITEM_FLAGS2)
+        restricted = False
+        for flag in flags2_decoded:
+            if flag.endswith("-only"):
+                if race_flag and flag == race_flag:
+                    pass # Allowed
+                elif flag == "human-only" and race_name == "human":
+                    pass
+                else:
+                    restricted = True # Restricted to another race
+                    break
+        if restricted:
+            continue
+            
+        # Calculate score
+        score = 0.0
+        affects_decoded = decode_applies(obj.affects)
+        
+        for aff in obj.affects:
+            loc_id = aff.get('location', 0)
+            val = aff.get('modifier', 0)
+            loc_name = APPLY_LOCATIONS.get(loc_id, '').lower()
+            
+            if loc_name in weights:
+                score += val * weights[loc_name]
+            elif loc_name == 'armor class':
+                # Negative AC is good in ROM, so multiply by -1 to make it a positive score
+                score += (val * -1.0)
+                
+        # Also check values for weapons (avg damage)
+        try:
+            item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
+        except:
+            item_type_num = 0
+            
+        if item_type_num == 5: # Weapon
+            # values[1] is dice count, values[2] is dice size
             try:
-                writer.close()
-                await writer.wait_closed()
+                d_num = int(obj.values[1])
+                d_size = int(obj.values[2])
+                avg_dam = d_num * (d_size + 1) / 2.0
+                score += avg_dam * 2.0 # Weight weapon damage highly
             except:
                 pass
+                
+        if score <= 0:
+            continue
+        
+        # Add to best items per slot
+        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
+        for slot in wear_decoded:
+            if slot == "take": continue
+            
+            if slot not in best_items:
+                best_items[slot] = []
+            
+            best_items[slot].append({
+                "score": round(score, 2),
+                "vnum": obj.vnum,
+                "name": obj.short_desc,
+                "level": obj.level,
+                "affects": affects_decoded,
+                "area": obj.area_name
+            })
+            
+    # Sort and limit
+    result = {}
+    for slot, items in best_items.items():
+        items.sort(key=lambda x: x['score'], reverse=True)
+        result[slot] = items[:limit]
+        
+    return result
 
 
-def main() -> None:
-    global queue_writer, QUEUE_PATH, DEFAULT_LOG
-
-    parser = argparse.ArgumentParser(description="Run ToC web admin server")
-    parser.add_argument("--port", type=int, default=9001)
-    parser.add_argument("--host", default="0.0.0.0")
-    parser.add_argument("--queue", type=Path, default=QUEUE_PATH)
-    parser.add_argument("--log-file", type=Path, default=DEFAULT_LOG)
-    args = parser.parse_args()
-    QUEUE_PATH = Path(args.queue)
-    DEFAULT_LOG = Path(args.log_file)
-    queue_writer = QueueWriter(QUEUE_PATH)
-
-    import uvicorn
-
-    uvicorn.run(app, host=args.host, port=args.port, reload=False)
 if __name__ == "__main__":
-    main()
+    import uvicorn
+    
+    arg_parser = argparse.ArgumentParser(description="ToC Web Admin Server")
+    arg_parser.add_argument("--host", default="0.0.0.0", help="Host to bind to")
+    arg_parser.add_argument("--port", type=int, default=9001, help="Port to bind to")
+    arg_parser.add_argument("--queue", type=Path, default=QUEUE_PATH, help="Path to command queue file")
+    arg_parser.add_argument("--log-file", type=Path, default=DEFAULT_LOG, help="Path to log file")
+    arg_parser.add_argument("--area-path", type=Path, default=AREA_PATH, help="Path to area files")
+    
+    args = arg_parser.parse_args()
+    
+    # Update globals
+    QUEUE_PATH = args.queue
+    DEFAULT_LOG = args.log_file
+    AREA_PATH = args.area_path
+    
+    # Initialize parser
+    print(f"DEBUG: AreaParser file: {AreaParser.__module__}")
+    print(f"DEBUG: AreaParser source: {AreaParser.__init__.__code__.co_filename}")
+    parser = AreaParser(AREA_PATH)
+    parser.parse_all()
+    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas")
+    
+    uvicorn.run(app, host=args.host, port=args.port)
