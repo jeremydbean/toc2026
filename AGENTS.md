@@ -281,9 +281,10 @@ The codebase is in solid shape with significant string safety improvements compl
 - **Docker Workflow**: Standardized on `docker build -t toc . && docker run ...` for all testing to ensure environment consistency.
 - **Admin Queue Debugging**: Added logging to `src/comm.c` to verify detection of `/app/area/webadmin.queue`.
 
-### Pending Tasks
-- **Admin Commands**: User reports admin commands still fail despite fixes. Investigating path/permissions.
+### Completed Tasks (Nov 24, 2025)
+- **Admin Commands**: Fixed by initializing `queue_writer` in a startup event and ensuring `merc` output is piped to `/app/log/toc.log` in `docker-entrypoint.sh`.
 - **Frontend Enhancements**:
-  - Link Mobs <-> Objects in the web UI.
-  - Add 'View' button to Objects table.
-  - Implement 'Best Gear' UI.
+  - **Link Mobs <-> Objects**: Added clickable links in Mob Detail (drops) and Object Detail (carried by).
+  - **Object View**: Added "View" button to Objects table and implemented a detailed Object Modal.
+  - **Best Gear**: Implemented "Best Gear" UI with Class/Race/Level filters and backend integration.
+- **Python Fixes**: Reverted accidental C-style syntax in `webadmin/server.py`.
