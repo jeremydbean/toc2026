@@ -192,7 +192,10 @@ ITEM_FLAGS2 = {
 
 # Portal types
 PORTAL_TYPES = {
+    0: 'standard',
     1: 'normal',
+    2: 'summon',
+    3: 'portal',
     4: 'crystal ball',
     5: 'random',
     6: 'random-closeable',
