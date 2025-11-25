@@ -1704,6 +1704,13 @@ void obj_update( void )
     int toggle;
     char buf2[MAX_STRING_LENGTH];
     LIST_ITERATOR iter;
+    
+    /* Deferred extraction list - collect objects to extract, then extract after iteration.
+     * This avoids modifying the object_list while iterating over it, which can cause segfaults.
+     * Max 1000 objects to extract per tick should be more than enough.
+     */
+    OBJ_DATA *extract_list[1000];
+    int extract_count = 0;
 
     FOR_EACH_OBJECT( iter, obj )
     {
@@ -2069,7 +2076,18 @@ void obj_update( void )
 	    }
 	}
 
-	extract_obj( obj );
+	/* Defer extraction until after iteration to avoid segfault */
+	if (extract_count < 1000)
+	    extract_list[extract_count++] = obj;
+    }
+
+    /* Now safely extract all collected objects outside the iteration loop */
+    {
+        int i;
+        for (i = 0; i < extract_count; i++)
+        {
+            extract_obj( extract_list[i] );
+        }
     }
 
     return;
