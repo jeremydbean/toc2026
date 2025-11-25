@@ -1653,6 +1653,7 @@ async def websocket_logs(websocket: WebSocket):
                         new_data = f.read()
                         if new_data:
                             await websocket.send_text(new_data)
+                    
                     last_pos = current_pos
                 elif current_pos < last_pos:
                     # File truncated/rotated
@@ -1931,7 +1932,6 @@ async def get_objects(
         count += 1
     
     return result
-}
 
 
 @app.get("/api/rooms/{vnum}")
@@ -1972,7 +1972,7 @@ async def get_room(vnum: int) -> Dict[str, Any]:
         if to_room:
             to_room_name = to_room.name
             
-        exits_data.push({
+        exits_data.append({
             "direction": parser.DIRECTIONS[ex.direction] if 0 <= ex.direction < len(parser.DIRECTIONS) else str(ex.direction),
             "to_room": ex.to_room,
             "to_room_name": to_room_name,
@@ -2003,46 +2003,42 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
     
     mob = parser.mobiles[vnum]
     
-    // Interpret values
-    values_interpreted = interpret_mob_values(mob);
+    # Interpret values
+    values_interpreted = interpret_mob_values(mob)
     
-    // Get drops
-    drops = [];
-    for obj_vnum in mob.drops {
-        if obj_vnum in parser.objects {
-            obj = parser.objects[obj_vnum];
-            drops.push({
+    # Get drops
+    drops = []
+    for obj_vnum in mob.drops:
+        if obj_vnum in parser.objects:
+            obj = parser.objects[obj_vnum]
+            drops.append({
                 "vnum": obj.vnum,
                 "name": obj.short_desc,
                 "level": obj.level,
                 "chance": 100,
                 "item_type": ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
-            });
-        }
-    }
+            })
     
-    // Get spawn rooms
-    spawn_rooms = [];
-    for room_vnum in mob.spawn_rooms {
-        if room_vnum in parser.rooms {
-            room = parser.rooms[room_vnum];
-            spawn_rooms.push({
+    # Get spawn rooms
+    spawn_rooms = []
+    for room_vnum in mob.spawn_rooms:
+        if room_vnum in parser.rooms:
+            room = parser.rooms[room_vnum]
+            spawn_rooms.append({
                 "vnum": room.vnum,
                 "name": room.name,
                 "area": room.area_name
-            });
-        }
-    }
+            })
     
-    // Decode flags
-    act_decoded = decode_flags(mob.act_flags, ACT_FLAGS);
-    off_decoded = decode_flags(mob.off_flags, OFF_FLAGS);
-    imm_decoded = decode_flags(mob.imm_flags, IMM_FLAGS);
-    res_decoded = decode_flags(mob.res_flags, RES_FLAGS);
-    vuln_decoded = decode_flags(mob.vuln_flags, VULN_FLAGS);
-    form_decoded = decode_flags(mob.form, FORM_FLAGS);
-    parts_decoded = decode_flags(mob.parts, PART_FLAGS);
-    affected_decoded = decode_flags(mob.affected_by, AFFECTED_FLAGS);
+    # Decode flags
+    act_decoded = decode_flags(mob.act_flags, ACT_FLAGS)
+    off_decoded = decode_flags(mob.off_flags, OFF_FLAGS)
+    imm_decoded = decode_flags(mob.imm_flags, IMM_FLAGS)
+    res_decoded = decode_flags(mob.res_flags, RES_FLAGS)
+    vuln_decoded = decode_flags(mob.vuln_flags, VULN_FLAGS)
+    form_decoded = decode_flags(mob.form, FORM_FLAGS)
+    parts_decoded = decode_flags(mob.parts, PART_FLAGS)
+    affected_decoded = decode_flags(mob.affected_by, AFFECTED_FLAGS)
 
     return {
         "vnum": mob.vnum,
@@ -2127,7 +2123,7 @@ async def get_best_gear(
                     break
         if restricted:
             continue
-            
+        
         # Calculate score
         score = 0.0
         affects_decoded = decode_applies(obj.affects)
@@ -2140,35 +2136,33 @@ async def get_best_gear(
             if loc_name in weights:
                 score += val * weights[loc_name]
             elif loc_name == 'armor class':
-                // Negative AC is good in ROM, so multiply by -1 to make it a positive score
+                # Negative AC is good in ROM, so multiply by -1 to make it a positive score
                 score += (val * -1.0)
-                
-        // Also check values for weapons (avg damage)
-        try {
-            item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0;
-        } catch {
-            item_type_num = 0;
-        }
+        
+        # Also check values for weapons (avg damage)
+        try:
+            item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
+        except:
+            item_type_num = 0
             
-        if item_type_num == 5: // Weapon
-            // values[1] is dice count, values[2] is dice size
-            try {
-                d_num = int(obj.values[1]);
-                d_size = int(obj.values[2]);
-                avg_dam = d_num * (d_size + 1) / 2.0;
-                score += avg_dam * 2.0; // Weight weapon damage highly
-            } catch {
-                pass;
-            }
+        if item_type_num == 5: # Weapon
+            # values[1] is dice count, values[2] is dice size
+            try:
+                d_num = int(obj.values[1])
+                d_size = int(obj.values[2])
+                avg_dam = d_num * (d_size + 1) / 2.0
+                score += avg_dam * 2.0 # Weight weapon damage highly
+            except:
+                pass
         
-        if score <= 0 {
-            continue;
-        }
+        if score <= 0:
+            continue
         
-        // Add to best items per slot
-        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS);
-        for slot in wear_decoded {
-            if slot == "take": continue
+        # Add to best items per slot
+        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
+        for slot in wear_decoded:
+            if slot == "take":
+                continue
             
             if slot not in best_items:
                 best_items[slot] = []
@@ -2181,16 +2175,14 @@ async def get_best_gear(
                 "affects": affects_decoded,
                 "area": obj.area_name
             })
-            
-    // Sort and limit
-    result = {};
-    for slot, items in best_items.items() {
-        items.sort(key=lambda x: x['score'], reverse=true);
-        result[slot] = items[:limit];
-    }
+    
+    # Sort and limit
+    result = {}
+    for slot, items in best_items.items():
+        items.sort(key=lambda x: x['score'], reverse=True)
+        result[slot] = items[:limit]
         
-    return result;
-}
+    return result
 
 
 if __name__ == "__main__":
@@ -2205,16 +2197,21 @@ if __name__ == "__main__":
     
     args = arg_parser.parse_args()
     
-    // Update globals
-    QUEUE_PATH = args.queue;
-    DEFAULT_LOG = args.log_file;
-    AREA_PATH = args.area_path;
+    # Update globals
+    QUEUE_PATH = args.queue
+    DEFAULT_LOG = args.log_file
+    AREA_PATH = args.area_path
     
-    // Initialize parser
-    print(f"DEBUG: AreaParser file: {AreaParser.__module__}");
-    print(f"DEBUG: AreaParser source: {AreaParser.__init__.__code__.co_filename}");
-    parser = AreaParser(AREA_PATH);
-    parser.parse_all();
-    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas");
+    # Initialize parser
+    print(f"DEBUG: AreaParser file: {AreaParser.__module__}")
+    print(f"DEBUG: AreaParser source: {AreaParser.__init__.__code__.co_filename}")
+    
+    # Initialize queue writer
+    queue_writer = QueueWriter(QUEUE_PATH)
+    print(f"QueueWriter initialized in main with path: {QUEUE_PATH}")
+
+    parser = AreaParser(AREA_PATH)
+    parser.parse_all()
+    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas")
     
     uvicorn.run(app, host=args.host, port=args.port)
