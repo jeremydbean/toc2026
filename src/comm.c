@@ -2908,6 +2908,8 @@ void process_web_admin_queue(void) {
         return;
     }
 
+    log_string("DEBUG: Found webadmin queue file!");
+
     if ((fp = fopen(QUEUE_FILE, "r")) != NULL) {
         while (fgets(buf, sizeof(buf), fp) != NULL) {
             /* Remove trailing newline */

@@ -1348,13 +1348,63 @@ async def index() -> str:
             } catch(e) { alert('Error: ' + e); }
         }
 
-        async function refreshLogs() {
-            const el = document.getElementById('log-terminal');
-            try {
-                const res = await fetch('/api/logs');
-                el.textContent = await res.text();
-                el.scrollTop = el.scrollHeight;
-            } catch(e) { el.textContent = 'Error loading logs'; }
+        let logWs = null;
+        let logTerm = null;
+        let logFitAddon = null;
+
+        function initLogs() {
+            const container = document.getElementById('log-terminal');
+            if (!logTerm) {
+                container.innerHTML = ''; // Clear "Loading logs..." text
+                container.className = "bg-black p-1 h-96 overflow-hidden"; // Remove overflow-y-auto, let xterm handle it
+
+                logTerm = new Terminal({
+                    cursorBlink: false,
+                    fontFamily: '"Roboto Mono", monospace',
+                    fontSize: 12,
+                    theme: {
+                        background: '#000000',
+                        foreground: '#00ff00',
+                    },
+                    disableStdin: true,
+                    convertEol: true
+                });
+                
+                logFitAddon = new FitAddon.FitAddon();
+                logTerm.loadAddon(logFitAddon);
+                logTerm.open(container);
+                logFitAddon.fit();
+                
+                window.addEventListener('resize', () => logFitAddon.fit());
+            }
+            
+            connectLogs();
+        }
+
+        function connectLogs() {
+            if (logWs) {
+                logWs.close();
+            }
+
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            logWs = new WebSocket(protocol + '//' + window.location.host + '/ws/logs');
+
+            logWs.onopen = () => {
+                logTerm.writeln('\x1b[32mConnected to log stream.\x1b[0m');
+            };
+
+            logWs.onmessage = (event) => {
+                logTerm.write(event.data);
+            };
+
+            logWs.onclose = () => {
+                logTerm.writeln('\x1b[31mLog stream disconnected. Reconnecting...\x1b[0m');
+                setTimeout(connectLogs, 3000);
+            };
+        }
+
+        function refreshLogs() {
+             initLogs();
         }
 
         // ============ STATUS ============
@@ -1557,39 +1607,60 @@ async def health() -> dict[str, bool | str]:
 
 @app.get("/api/logs")
 async def tail_logs(lines: int = 200) -> HTMLResponse:
-    log_dir = Path("/app/log")
+    if not DEFAULT_LOG.exists():
+        return HTMLResponse("Log file not found.")
     
-    # Try to read DEFAULT_LOG first (toc.log)
-    if DEFAULT_LOG.exists():
-        log_lines = DEFAULT_LOG.read_text(encoding="utf-8", errors="ignore").splitlines()[-lines:]
-        return HTMLResponse("\n".join(log_lines))
-    
-    # Fall back to aggregating numbered log files
-    if not log_dir.exists():
-        raise HTTPException(status_code=404, detail="Log directory not found")
-    
-    # Get all numbered log files and sort by modification time
-    log_files = sorted(
-        [f for f in log_dir.glob("*.log") if f.name.replace(".log", "").isdigit()],
-        key=lambda f: f.stat().st_mtime,
-        reverse=True
-    )
-    
-    if not log_files:
-        raise HTTPException(status_code=404, detail="No log files found")
-    
-    # Aggregate lines from the most recent log files
-    all_lines = []
-    for log_file in log_files[:10]:  # Read up to 10 most recent logs
-        try:
-            content = log_file.read_text(encoding="utf-8", errors="ignore")
-            all_lines.extend(content.splitlines())
-            if len(all_lines) >= lines:
-                break
-        except Exception:
-            continue
-    
-    return HTMLResponse("\n".join(all_lines[-lines:]))
+    try:
+        # Use tail command for efficiency if available (Linux/Mac)
+        if os.name == 'posix':
+            proc = subprocess.Popen(['tail', '-n', str(lines), str(DEFAULT_LOG)], stdout=subprocess.PIPE)
+            output, _ = proc.communicate()
+            return HTMLResponse(output.decode('utf-8', errors='replace'))
+        else:
+            # Fallback for Windows or if tail fails
+            with open(DEFAULT_LOG, "r", encoding="utf-8", errors="replace") as f:
+                all_lines = f.readlines();
+                return HTMLResponse("".join(all_lines[-lines:]))
+    except Exception as e:
+        return HTMLResponse(f"Error reading log: {e}")
+
+@app.websocket("/ws/logs")
+async def websocket_logs(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        # Send last 200 lines first
+        if DEFAULT_LOG.exists():
+            # Use tail for initial load
+            if os.name == 'posix':
+                proc = subprocess.Popen(['tail', '-n', '200', str(DEFAULT_LOG)], stdout=subprocess.PIPE)
+                output, _ = proc.communicate()
+                await websocket.send_text(output.decode('utf-8', errors='replace'))
+            else:
+                with open(DEFAULT_LOG, "r", encoding="utf-8", errors="replace") as f:
+                    lines = f.readlines()
+                    await websocket.send_text("".join(lines[-200:]))
+        
+        # Tail the file
+        last_pos = DEFAULT_LOG.stat().st_size if DEFAULT_LOG.exists() else 0
+        
+        while True:
+            await asyncio.sleep(1)
+            if DEFAULT_LOG.exists():
+                current_pos = DEFAULT_LOG.stat().st_size
+                if current_pos > last_pos:
+                    with open(DEFAULT_LOG, "r", encoding="utf-8", errors="replace") as f:
+                        f.seek(last_pos)
+                        new_data = f.read()
+                        if new_data:
+                            await websocket.send_text(new_data)
+                    last_pos = current_pos
+                elif current_pos < last_pos:
+                    # File truncated/rotated
+                    last_pos = 0
+    except WebSocketDisconnect:
+        pass
+    except Exception as e:
+        print(f"WebSocket error: {e}")
 
 
 @app.post("/api/wizinfo")
@@ -1643,7 +1714,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
     decoded_affects = decode_applies(obj.affects)
     item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
     decoded_item_type = ITEM_TYPES.get(item_type_num, obj.item_type)
-    decoded_extra_flags = decode_flags(obj.extra_flags, ITEM_FLAGS)
+    decoded_extra_flags = decode_flags(obj.extraFlags, ITEM_FLAGS)
     decoded_wear_flags = decode_flags(obj.wear_flags, WEAR_FLAGS)
     
     # Interpret values
@@ -1662,7 +1733,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "cost": obj.cost,
         "condition": obj.condition,
         "extra_flags": decoded_extra_flags,
-        "extra_flags_raw": obj.extra_flags,
+        "extra_flags_raw": obj.extraFlags,
         "wear_flags": decoded_wear_flags,
         "wear_flags_raw": obj.wear_flags,
         "values": obj.values,
@@ -1860,6 +1931,7 @@ async def get_objects(
         count += 1
     
     return result
+}
 
 
 @app.get("/api/rooms/{vnum}")
@@ -1898,9 +1970,9 @@ async def get_room(vnum: int) -> Dict[str, Any]:
         to_room_name = "Unknown"
         to_room = parser.rooms.get(ex.to_room)
         if to_room:
-            to_room_name = to_room.name;
+            to_room_name = to_room.name
             
-        exits_data.append({
+        exits_data.push({
             "direction": parser.DIRECTIONS[ex.direction] if 0 <= ex.direction < len(parser.DIRECTIONS) else str(ex.direction),
             "to_room": ex.to_room,
             "to_room_name": to_room_name,
@@ -1931,42 +2003,46 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
     
     mob = parser.mobiles[vnum]
     
-    # Interpret values
-    values_interpreted = interpret_mob_values(mob)
+    // Interpret values
+    values_interpreted = interpret_mob_values(mob);
     
-    # Get drops
-    drops = []
-    for obj_vnum in mob.drops:
-        if obj_vnum in parser.objects:
-            obj = parser.objects[obj_vnum]
-            drops.append({
+    // Get drops
+    drops = [];
+    for obj_vnum in mob.drops {
+        if obj_vnum in parser.objects {
+            obj = parser.objects[obj_vnum];
+            drops.push({
                 "vnum": obj.vnum,
                 "name": obj.short_desc,
                 "level": obj.level,
                 "chance": 100,
                 "item_type": ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
-            })
-            
-    # Get spawn rooms
-    spawn_rooms = []
-    for room_vnum in mob.spawn_rooms:
-        if room_vnum in parser.rooms:
-            room = parser.rooms[room_vnum]
-            spawn_rooms.append({
+            });
+        }
+    }
+    
+    // Get spawn rooms
+    spawn_rooms = [];
+    for room_vnum in mob.spawn_rooms {
+        if room_vnum in parser.rooms {
+            room = parser.rooms[room_vnum];
+            spawn_rooms.push({
                 "vnum": room.vnum,
                 "name": room.name,
                 "area": room.area_name
-            })
-            
-    # Decode flags
-    act_decoded = decode_flags(mob.act_flags, ACT_FLAGS)
-    off_decoded = decode_flags(mob.off_flags, OFF_FLAGS)
-    imm_decoded = decode_flags(mob.imm_flags, IMM_FLAGS)
-    res_decoded = decode_flags(mob.res_flags, RES_FLAGS)
-    vuln_decoded = decode_flags(mob.vuln_flags, VULN_FLAGS)
-    form_decoded = decode_flags(mob.form, FORM_FLAGS)
-    parts_decoded = decode_flags(mob.parts, PART_FLAGS)
-    affected_decoded = decode_flags(mob.affected_by, AFFECTED_FLAGS)
+            });
+        }
+    }
+    
+    // Decode flags
+    act_decoded = decode_flags(mob.act_flags, ACT_FLAGS);
+    off_decoded = decode_flags(mob.off_flags, OFF_FLAGS);
+    imm_decoded = decode_flags(mob.imm_flags, IMM_FLAGS);
+    res_decoded = decode_flags(mob.res_flags, RES_FLAGS);
+    vuln_decoded = decode_flags(mob.vuln_flags, VULN_FLAGS);
+    form_decoded = decode_flags(mob.form, FORM_FLAGS);
+    parts_decoded = decode_flags(mob.parts, PART_FLAGS);
+    affected_decoded = decode_flags(mob.affected_by, AFFECTED_FLAGS);
 
     return {
         "vnum": mob.vnum,
@@ -2064,31 +2140,34 @@ async def get_best_gear(
             if loc_name in weights:
                 score += val * weights[loc_name]
             elif loc_name == 'armor class':
-                # Negative AC is good in ROM, so multiply by -1 to make it a positive score
+                // Negative AC is good in ROM, so multiply by -1 to make it a positive score
                 score += (val * -1.0)
                 
-        # Also check values for weapons (avg damage)
-        try:
-            item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
-        except:
-            item_type_num = 0
+        // Also check values for weapons (avg damage)
+        try {
+            item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0;
+        } catch {
+            item_type_num = 0;
+        }
             
-        if item_type_num == 5: # Weapon
-            # values[1] is dice count, values[2] is dice size
-            try:
-                d_num = int(obj.values[1])
-                d_size = int(obj.values[2])
-                avg_dam = d_num * (d_size + 1) / 2.0
-                score += avg_dam * 2.0 # Weight weapon damage highly
-            except:
-                pass
-                
-        if score <= 0:
-            continue
+        if item_type_num == 5: // Weapon
+            // values[1] is dice count, values[2] is dice size
+            try {
+                d_num = int(obj.values[1]);
+                d_size = int(obj.values[2]);
+                avg_dam = d_num * (d_size + 1) / 2.0;
+                score += avg_dam * 2.0; // Weight weapon damage highly
+            } catch {
+                pass;
+            }
         
-        # Add to best items per slot
-        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
-        for slot in wear_decoded:
+        if score <= 0 {
+            continue;
+        }
+        
+        // Add to best items per slot
+        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS);
+        for slot in wear_decoded {
             if slot == "take": continue
             
             if slot not in best_items:
@@ -2103,13 +2182,15 @@ async def get_best_gear(
                 "area": obj.area_name
             })
             
-    # Sort and limit
-    result = {}
-    for slot, items in best_items.items():
-        items.sort(key=lambda x: x['score'], reverse=True)
-        result[slot] = items[:limit]
+    // Sort and limit
+    result = {};
+    for slot, items in best_items.items() {
+        items.sort(key=lambda x: x['score'], reverse=true);
+        result[slot] = items[:limit];
+    }
         
-    return result
+    return result;
+}
 
 
 if __name__ == "__main__":
@@ -2124,16 +2205,16 @@ if __name__ == "__main__":
     
     args = arg_parser.parse_args()
     
-    # Update globals
-    QUEUE_PATH = args.queue
-    DEFAULT_LOG = args.log_file
-    AREA_PATH = args.area_path
+    // Update globals
+    QUEUE_PATH = args.queue;
+    DEFAULT_LOG = args.log_file;
+    AREA_PATH = args.area_path;
     
-    # Initialize parser
-    print(f"DEBUG: AreaParser file: {AreaParser.__module__}")
-    print(f"DEBUG: AreaParser source: {AreaParser.__init__.__code__.co_filename}")
-    parser = AreaParser(AREA_PATH)
-    parser.parse_all()
-    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas")
+    // Initialize parser
+    print(f"DEBUG: AreaParser file: {AreaParser.__module__}");
+    print(f"DEBUG: AreaParser source: {AreaParser.__init__.__code__.co_filename}");
+    parser = AreaParser(AREA_PATH);
+    parser.parse_all();
+    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas");
     
     uvicorn.run(app, host=args.host, port=args.port)
