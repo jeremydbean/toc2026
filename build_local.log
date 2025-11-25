@@ -1,0 +1,36 @@
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/act_comm.c -o src/act_comm.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/act_info.c -o src/act_info.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/act_move.c -o src/act_move.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/act_obj.c -o src/act_obj.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/act_wiz.c -o src/act_wiz.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/color.c -o src/color.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/comm.c -o src/comm.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/const.c -o src/const.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/container.c -o src/container.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/db.c -o src/db.o
+src/db.c:28:32: warning: unknown warning group '-Wuse-after-free', ignored [-Wunknown-warning-option]
+   28 | #pragma GCC diagnostic ignored "-Wuse-after-free"
+      |                                ^
+1 warning generated.
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/dstring.c -o src/dstring.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/edit.c -o src/edit.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/fight.c -o src/fight.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/handler.c -o src/handler.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/hunt.c -o src/hunt.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/interp.c -o src/interp.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/list.c -o src/list.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/magic.c -o src/magic.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/magic2.c -o src/magic2.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/maxload.c -o src/maxload.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/misc.c -o src/misc.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/pkill.c -o src/pkill.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/quest.c -o src/quest.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/save.c -o src/save.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/script_event.c -o src/script_event.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/skills.c -o src/skills.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/special.c -o src/special.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/string_safe.c -o src/string_safe.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/stubs.c -o src/stubs.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/update.c -o src/update.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -c src/wizlist.c -o src/wizlist.o
+gcc -std=gnu89 -O2 -fcommon -DROM -Dunix -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o merc src/act_comm.o src/act_info.o src/act_move.o src/act_obj.o src/act_wiz.o src/color.o src/comm.o src/const.o src/container.o src/db.o src/dstring.o src/edit.o src/fight.o src/handler.o src/hunt.o src/interp.o src/list.o src/magic.o src/magic2.o src/maxload.o src/misc.o src/pkill.o src/quest.o src/save.o src/script_event.o src/skills.o src/special.o src/string_safe.o src/stubs.o src/update.o src/wizlist.o -lm

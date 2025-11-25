@@ -1917,8 +1917,9 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
             obj = parser.objects[obj_vnum]
             drops.append({
                 "vnum": obj.vnum,
-                "short_desc": obj.short_desc,
+                "name": obj.short_desc,
                 "level": obj.level,
+                "chance": 100,
                 "item_type": ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
             })
             
@@ -1962,8 +1963,8 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
         "default_pos": mob.default_pos,
         "sex": mob.sex,
         "wealth": mob.wealth,
-        "form": mob.form,
-        "parts": mob.parts,
+        "form": form_decoded,
+        "parts": parts_decoded,
         "size": mob.size,
         "material": mob.material,
         "act_flags": act_decoded,
