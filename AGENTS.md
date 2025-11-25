@@ -272,3 +272,18 @@ The codebase is in solid shape with significant string safety improvements compl
 **Last comprehensive review**: November 20, 2025  
 **Review scope**: All C sources, Python webadmin, build configs, string safety audit, warning flag analysis  
 **Next review recommended**: After completing quick wins above, or when adding new features
+
+## Recent Updates (Nov 24, 2025)
+### Web Admin & Docker Integration
+- **Real-time Logs**: Implemented WebSocket endpoint `/ws/logs` in `webadmin/server.py` to stream `/app/log/toc.log` to the web interface.
+- **Python Syntax Fixes**: Fixed multiple `SyntaxError` issues in `webadmin/server.py` caused by accidental insertion of C-style syntax (`{`, `}`, `//`).
+- **Queue Writer Fix**: Fixed `AttributeError: 'NoneType' object has no attribute 'append'` by properly initializing `queue_writer` in the `__main__` block of `server.py`.
+- **Docker Workflow**: Standardized on `docker build -t toc . && docker run ...` for all testing to ensure environment consistency.
+- **Admin Queue Debugging**: Added logging to `src/comm.c` to verify detection of `/app/area/webadmin.queue`.
+
+### Pending Tasks
+- **Admin Commands**: User reports admin commands still fail despite fixes. Investigating path/permissions.
+- **Frontend Enhancements**:
+  - Link Mobs <-> Objects in the web UI.
+  - Add 'View' button to Objects table.
+  - Implement 'Best Gear' UI.
