@@ -1,0 +1,5 @@
+DEBUG: Building cross references. Total areas with resets: 88
+Mobs: 2241
+Objects: 3223
+Rooms: 7324
+Areas: 95

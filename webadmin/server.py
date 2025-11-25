@@ -1040,7 +1040,7 @@ async def index() -> str:
             content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-gray-500">Loading...</td></tr>';
 
             try {
-                let url = '/api/' + type + (type === 'areas' ? '' : '?limit=1000');
+                let url = '/api/' + type + (type === 'areas' ? '' : '?limit=10000');
                 
                 // Add filters for objects
                 if(type === 'objects') {
@@ -1079,6 +1079,30 @@ async def index() -> str:
             const headers = document.getElementById('db-headers');
             const content = document.getElementById('db-content');
             
+            // Update stats card with loaded count
+            if(currentDb === 'mobs') {
+                const total = parseInt(document.getElementById('stat-mobs').textContent.split('/')[1] || document.getElementById('stat-mobs').textContent);
+                const loaded = data.length;
+                const el = document.getElementById('stat-mobs');
+                el.textContent = `${loaded} / ${total}`;
+                if(loaded < total) el.classList.add('text-orange-400');
+                else el.classList.remove('text-orange-400');
+            } else if(currentDb === 'objects') {
+                const total = parseInt(document.getElementById('stat-objs').textContent.split('/')[1] || document.getElementById('stat-objs').textContent);
+                const loaded = data.length;
+                const el = document.getElementById('stat-objs');
+                el.textContent = `${loaded} / ${total}`;
+                if(loaded < total) el.classList.add('text-orange-400');
+                else el.classList.remove('text-orange-400');
+            } else if(currentDb === 'rooms') {
+                const total = parseInt(document.getElementById('stat-rooms').textContent.split('/')[1] || document.getElementById('stat-rooms').textContent);
+                const loaded = data.length;
+                const el = document.getElementById('stat-rooms');
+                el.textContent = `${loaded} / ${total}`;
+                if(loaded < total) el.classList.add('text-orange-400');
+                else el.classList.remove('text-orange-400');
+            }
+
             let headerHtml = '';
             let rowsHtml = '';
 
@@ -1663,7 +1687,7 @@ async def get_stats() -> Dict[str, int]:
 
 
 @app.get("/api/mobs")
-async def get_mobs(limit: int = 500) -> list:
+async def get_mobs(limit: int = 10000) -> list:
     result = []
     for i, (vnum, mob) in enumerate(parser.mobiles.items()):
         if i >= limit:
@@ -1682,7 +1706,7 @@ async def get_mobs(limit: int = 500) -> list:
 
 
 @app.get("/api/rooms")
-async def get_rooms(limit: int = 300) -> list:
+async def get_rooms(limit: int = 10000) -> list:
     result = []
     for i, (vnum, room) in enumerate(parser.rooms.items()):
         if i >= limit:
@@ -1718,7 +1742,7 @@ async def get_areas() -> list:
 
 @app.get("/api/objects")
 async def get_objects(
-    limit: int = 500,
+    limit: int = 10000,
     name: Optional[str] = None,
     min_level: Optional[int] = None,
     max_level: Optional[int] = None,
