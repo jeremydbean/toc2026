@@ -1006,6 +1006,57 @@ async def index() -> str:
             </div>
         </div>
 
+        <!-- Area Map Modal -->
+        <div id="map-modal" class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-[#0a0a0a] border border-gray-700 rounded-lg w-full h-full max-w-[95vw] max-h-[95vh] overflow-hidden shadow-2xl flex flex-col">
+                <div class="p-4 border-b border-gray-800 flex justify-between items-center shrink-0">
+                    <div>
+                        <h3 id="map-modal-title" class="text-xl font-bold text-white font-cinzel">Area Map</h3>
+                        <div class="text-gray-500 text-sm mt-1"><span id="map-modal-rooms">0</span> rooms</div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2 text-sm text-gray-400">
+                            <span>Zoom:</span>
+                            <button onclick="mapZoom(-0.2)" class="px-2 py-1 bg-gray-800 rounded hover:bg-gray-700">-</button>
+                            <span id="map-zoom-level">100%</span>
+                            <button onclick="mapZoom(0.2)" class="px-2 py-1 bg-gray-800 rounded hover:bg-gray-700">+</button>
+                            <button onclick="mapZoom(0, true)" class="px-2 py-1 bg-gray-800 rounded hover:bg-gray-700 ml-2">Reset</button>
+                        </div>
+                        <button onclick="closeMapModal()" class="text-gray-400 hover:text-white">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="map-container" class="flex-1 overflow-auto relative bg-[#050505]" style="cursor: grab;">
+                    <svg id="map-svg" class="absolute" style="min-width: 100%; min-height: 100%;"></svg>
+                </div>
+                
+                <!-- Legend -->
+                <div class="p-2 border-t border-gray-800 flex flex-wrap gap-4 text-xs text-gray-400 shrink-0 bg-[#0a0a0a]">
+                    <span class="font-bold text-gray-300">Legend:</span>
+                    <span><span class="inline-block w-4 h-0.5 bg-gray-500 mr-1 align-middle"></span> N/S/E/W</span>
+                    <span><span class="inline-block w-4 h-0.5 bg-[#4477aa] mr-1 align-middle" style="border-bottom: 2px dashed #4477aa; background: transparent;"></span> Up</span>
+                    <span><span class="inline-block w-4 h-0.5 bg-[#aa5544] mr-1 align-middle" style="border-bottom: 2px dashed #aa5544; background: transparent;"></span> Down</span>
+                    <span><span class="inline-block w-4 h-0.5 bg-[#7a7] mr-1 align-middle" style="border-bottom: 2px dashed #7a7; background: transparent;"></span> Special (climb, enter, etc)</span>
+                    <span class="ml-4"><span class="inline-block w-3 h-3 bg-[#2a1a1a] border border-[#633] rounded mr-1 align-middle"></span> Has Mobs</span>
+                    <span><span class="inline-block w-3 h-3 bg-[#1a1a2a] border border-[#336] rounded mr-1 align-middle"></span> Has Objects</span>
+                    <span><span class="inline-block w-3 h-3 bg-[#2a1a2a] border border-[#636] rounded mr-1 align-middle"></span> Both</span>
+                </div>
+                
+                <!-- Room tooltip -->
+                <div id="map-tooltip" class="fixed hidden bg-[#1a1a1a] border border-gray-600 rounded-lg p-3 shadow-xl z-[60] max-w-xs pointer-events-none">
+                    <div id="map-tooltip-name" class="font-bold text-white text-sm"></div>
+                    <div id="map-tooltip-vnum" class="text-gray-500 text-xs font-mono mb-2"></div>
+                    <div id="map-tooltip-desc" class="text-gray-400 text-xs line-clamp-3 mb-2"></div>
+                    <div id="map-tooltip-exits" class="text-green-400 text-xs mb-1"></div>
+                    <div id="map-tooltip-mobs" class="text-yellow-400 text-xs"></div>
+                    <div id="map-tooltip-objects" class="text-blue-400 text-xs"></div>
+                    <div class="text-gray-600 text-[10px] mt-2 italic">Click to view details</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Footer -->
@@ -1418,13 +1469,16 @@ async def index() -> str:
                 `;
                 }).join('');
             } else if(currentDb === 'areas') {
-                headerHtml = '<th class="p-4">Name</th><th class="p-4">Filename</th><th class="p-4">Builders</th><th class="p-4">Vnums</th>';
+                headerHtml = '<th class="p-4">Name</th><th class="p-4">Filename</th><th class="p-4">Builders</th><th class="p-4">Vnums</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(a => `
                     <tr class="hover:bg-[#151515] transition-colors">
                         <td class="p-4 font-bold text-gray-300">${a.name}</td>
                         <td class="p-4 font-mono text-sm text-gray-500">${a.filename}</td>
-                        <td class="p-4 text-gray-400">${a.builders}</td>
-                        <td class="p-4 text-gray-500 text-sm">${a.vnums}</td>
+                        <td class="p-4 text-gray-400">${a.builders || '-'}</td>
+                        <td class="p-4 text-gray-500 text-sm">${a.vnums || '-'}</td>
+                        <td class="p-4">
+                            <button onclick="showAreaMap('${a.filename}')" class="text-xs bg-green-900/30 hover:bg-green-900/50 text-green-400 px-2 py-1 rounded border border-green-900/50"><i class="fas fa-map mr-1"></i>Map</button>
+                        </td>
                     </tr>
                 `).join('');
             } else if(currentDb === 'rooms') {
@@ -1898,6 +1952,260 @@ async def index() -> str:
             const msg = 'Score Breakdown:\\n\\n' + breakdown.replace(/\\\\n/g, '\\n');
             alert(msg);
         }
+
+        // ============ AREA MAP ============
+        let mapData = null;
+        let mapScale = 1;
+        let mapPan = { x: 0, y: 0 };
+        let isDragging = false;
+        let dragStart = { x: 0, y: 0 };
+        
+        async function showAreaMap(filename) {
+            try {
+                const res = await fetch('/api/areas/' + encodeURIComponent(filename) + '/map');
+                if(!res.ok) throw new Error('Failed to fetch map data');
+                mapData = await res.json();
+                
+                document.getElementById('map-modal-title').textContent = mapData.area_name + ' Map';
+                document.getElementById('map-modal-rooms').textContent = mapData.rooms.length;
+                
+                // Reset view
+                mapScale = 1;
+                mapPan = { x: 0, y: 0 };
+                document.getElementById('map-zoom-level').textContent = '100%';
+                
+                renderMap();
+                document.getElementById('map-modal').classList.remove('hidden');
+                
+                // Setup pan/drag
+                setupMapDrag();
+            } catch(e) {
+                alert('Error loading map: ' + e.message);
+            }
+        }
+        
+        function closeMapModal() {
+            document.getElementById('map-modal').classList.add('hidden');
+            mapData = null;
+        }
+        
+        function mapZoom(delta, reset = false) {
+            if(reset) {
+                mapScale = 1;
+                mapPan = { x: 0, y: 0 };
+            } else {
+                mapScale = Math.max(0.3, Math.min(3, mapScale + delta));
+            }
+            document.getElementById('map-zoom-level').textContent = Math.round(mapScale * 100) + '%';
+            renderMap();
+        }
+        
+        function setupMapDrag() {
+            const container = document.getElementById('map-container');
+            
+            container.onmousedown = (e) => {
+                isDragging = true;
+                dragStart = { x: e.clientX - mapPan.x, y: e.clientY - mapPan.y };
+                container.style.cursor = 'grabbing';
+            };
+            
+            container.onmousemove = (e) => {
+                if(isDragging) {
+                    mapPan.x = e.clientX - dragStart.x;
+                    mapPan.y = e.clientY - dragStart.y;
+                    renderMap();
+                }
+            };
+            
+            container.onmouseup = () => {
+                isDragging = false;
+                container.style.cursor = 'grab';
+            };
+            
+            container.onmouseleave = () => {
+                isDragging = false;
+                container.style.cursor = 'grab';
+            };
+            
+            // Scroll wheel zoom
+            container.onwheel = (e) => {
+                e.preventDefault();
+                mapZoom(e.deltaY > 0 ? -0.1 : 0.1);
+            };
+        }
+        
+        function renderMap() {
+            if(!mapData) return;
+            
+            const svg = document.getElementById('map-svg');
+            const container = document.getElementById('map-container');
+            const tooltip = document.getElementById('map-tooltip');
+            
+            const CELL_SIZE = 80 * mapScale;
+            const ROOM_SIZE = 60 * mapScale;
+            const PADDING = 100;
+            
+            // Calculate bounds
+            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+            mapData.rooms.forEach(r => {
+                minX = Math.min(minX, r.x);
+                maxX = Math.max(maxX, r.x);
+                minY = Math.min(minY, r.y);
+                maxY = Math.max(maxY, r.y);
+            });
+            
+            const width = (maxX - minX + 1) * CELL_SIZE + PADDING * 2;
+            const height = (maxY - minY + 1) * CELL_SIZE + PADDING * 2;
+            
+            svg.setAttribute('width', width);
+            svg.setAttribute('height', height);
+            svg.style.transform = `translate(${mapPan.x}px, ${mapPan.y}px)`;
+            
+            let html = '';
+            
+            // Direction names for labels
+            const DIR_NAMES = ['north', 'east', 'south', 'west', 'up', 'down'];
+            
+            // Draw grid
+            html += '<defs><pattern id="grid" width="' + CELL_SIZE + '" height="' + CELL_SIZE + '" patternUnits="userSpaceOnUse">';
+            html += '<path d="M ' + CELL_SIZE + ' 0 L 0 0 0 ' + CELL_SIZE + '" fill="none" stroke="#1a1a1a" stroke-width="1"/>';
+            html += '</pattern></defs>';
+            html += '<rect width="100%" height="100%" fill="url(#grid)"/>';
+            
+            // Draw connections first (so rooms appear on top)
+            mapData.rooms.forEach(room => {
+                const x1 = (room.x - minX) * CELL_SIZE + PADDING + CELL_SIZE/2;
+                const y1 = (room.y - minY) * CELL_SIZE + PADDING + CELL_SIZE/2;
+                
+                room.exits.forEach(ex => {
+                    const targetRoom = mapData.rooms.find(r => r.vnum === ex.to_room);
+                    if(targetRoom) {
+                        const x2 = (targetRoom.x - minX) * CELL_SIZE + PADDING + CELL_SIZE/2;
+                        const y2 = (targetRoom.y - minY) * CELL_SIZE + PADDING + CELL_SIZE/2;
+                        
+                        // Color and style based on direction
+                        let color = '#444';
+                        let dashArray = '';
+                        let strokeWidth = 3 * mapScale;
+                        
+                        if(ex.direction === 4) { // up
+                            color = '#4477aa';
+                            dashArray = '5,3';
+                        } else if(ex.direction === 5) { // down
+                            color = '#aa5544';
+                            dashArray = '5,3';
+                        }
+                        
+                        // Check if this is a non-cardinal exit (has keyword like climb, enter, etc)
+                        const hasKeyword = ex.keyword && ex.keyword.trim().length > 0;
+                        if(hasKeyword) {
+                            color = '#7a7';
+                            dashArray = '3,3';
+                        }
+                        
+                        html += '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + color + '" stroke-width="' + strokeWidth + '"' + (dashArray ? ' stroke-dasharray="' + dashArray + '"' : '') + '/>';
+                        
+                        // Add label for up/down/keyword exits at midpoint
+                        if(ex.direction >= 4 || hasKeyword) {
+                            const midX = (x1 + x2) / 2;
+                            const midY = (y1 + y2) / 2;
+                            let label = hasKeyword ? ex.keyword : DIR_NAMES[ex.direction];
+                            if(label.length > 8) label = label.substring(0, 6) + '..';
+                            html += '<rect x="' + (midX - 20) + '" y="' + (midY - 8) + '" width="40" height="16" fill="#111" rx="3"/>';
+                            html += '<text x="' + midX + '" y="' + (midY + 3) + '" text-anchor="middle" fill="' + color + '" font-size="' + (9 * mapScale) + '" font-family="monospace">' + label + '</text>';
+                        }
+                    }
+                });
+            });
+            
+            // Draw rooms
+            mapData.rooms.forEach(room => {
+                const x = (room.x - minX) * CELL_SIZE + PADDING + (CELL_SIZE - ROOM_SIZE)/2;
+                const y = (room.y - minY) * CELL_SIZE + PADDING + (CELL_SIZE - ROOM_SIZE)/2;
+                
+                // Room color based on content
+                let fillColor = '#1a1a1a';
+                let strokeColor = '#444';
+                if(room.mob_count > 0) {
+                    fillColor = '#2a1a1a';
+                    strokeColor = '#633';
+                }
+                if(room.obj_count > 0) {
+                    fillColor = '#1a1a2a';
+                    strokeColor = '#336';
+                }
+                if(room.mob_count > 0 && room.obj_count > 0) {
+                    fillColor = '#2a1a2a';
+                    strokeColor = '#636';
+                }
+                
+                html += '<g class="map-room" data-vnum="' + room.vnum + '" style="cursor:pointer">';
+                html += '<rect x="' + x + '" y="' + y + '" width="' + ROOM_SIZE + '" height="' + ROOM_SIZE + '" fill="' + fillColor + '" stroke="' + strokeColor + '" stroke-width="2" rx="4"/>';
+                
+                // Room name (truncated)
+                const fontSize = Math.max(8, 10 * mapScale);
+                const maxChars = Math.floor(ROOM_SIZE / (fontSize * 0.6));
+                let name = room.name.length > maxChars ? room.name.substring(0, maxChars-2) + '..' : room.name;
+                html += '<text x="' + (x + ROOM_SIZE/2) + '" y="' + (y + ROOM_SIZE/2) + '" text-anchor="middle" dominant-baseline="middle" fill="#aaa" font-size="' + fontSize + '" font-family="sans-serif">' + name.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</text>';
+                
+                // Vnum label
+                html += '<text x="' + (x + ROOM_SIZE/2) + '" y="' + (y + ROOM_SIZE - 4) + '" text-anchor="middle" fill="#555" font-size="' + (fontSize * 0.7) + '" font-family="monospace">#' + room.vnum + '</text>';
+                
+                // Direction indicators for up/down
+                const hasUp = room.exits.some(e => e.direction === 4);
+                const hasDown = room.exits.some(e => e.direction === 5);
+                if(hasUp) {
+                    html += '<text x="' + (x + ROOM_SIZE - 8) + '" y="' + (y + 12) + '" fill="#88f" font-size="' + (fontSize * 0.8) + '">↑</text>';
+                }
+                if(hasDown) {
+                    html += '<text x="' + (x + ROOM_SIZE - 8) + '" y="' + (y + ROOM_SIZE - 4) + '" fill="#f88" font-size="' + (fontSize * 0.8) + '">↓</text>';
+                }
+                
+                html += '</g>';
+            });
+            
+            svg.innerHTML = html;
+            
+            // Setup room interactions
+            document.querySelectorAll('.map-room').forEach(el => {
+                el.onmouseenter = (e) => {
+                    const vnum = parseInt(el.dataset.vnum);
+                    const room = mapData.rooms.find(r => r.vnum === vnum);
+                    if(room) {
+                        document.getElementById('map-tooltip-name').textContent = room.name;
+                        document.getElementById('map-tooltip-vnum').textContent = '#' + room.vnum;
+                        document.getElementById('map-tooltip-desc').textContent = room.description.substring(0, 150) + (room.description.length > 150 ? '...' : '');
+                        
+                        // Format exits
+                        const exitStr = room.exits.map(e => {
+                            const dirName = DIR_NAMES[e.direction] || 'special';
+                            const kw = e.keyword && e.keyword.trim() ? ' (' + e.keyword + ')' : '';
+                            return dirName + kw;
+                        }).join(', ');
+                        document.getElementById('map-tooltip-exits').textContent = room.exits.length > 0 ? 'Exits: ' + exitStr : 'No exits';
+                        
+                        document.getElementById('map-tooltip-mobs').textContent = room.mob_count > 0 ? 'Mobs: ' + room.mob_names.join(', ') : '';
+                        document.getElementById('map-tooltip-objects').textContent = room.obj_count > 0 ? 'Objects: ' + room.obj_names.join(', ') : '';
+                        tooltip.classList.remove('hidden');
+                    }
+                };
+                
+                el.onmousemove = (e) => {
+                    tooltip.style.left = (e.clientX + 15) + 'px';
+                    tooltip.style.top = (e.clientY + 15) + 'px';
+                };
+                
+                el.onmouseleave = () => {
+                    tooltip.classList.add('hidden');
+                };
+                
+                el.onclick = () => {
+                    const vnum = parseInt(el.dataset.vnum);
+                    closeMapModal();
+                    showRoomDetail(vnum);
+                };
+            });
+        }
     </script>
 </body>
 </html>
@@ -2115,6 +2423,125 @@ async def get_areas() -> list:
         # Return partial result or empty list instead of 500
         return result
     return result
+
+
+@app.get("/api/areas/{filename}/map")
+async def get_area_map(filename: str) -> Dict[str, Any]:
+    """Generate map data for an area with room positions calculated using BFS layout."""
+    
+    # Find the area
+    area = parser.areas.get(filename)
+    if not area:
+        raise HTTPException(status_code=404, detail="Area not found")
+    
+    # Get all rooms in this area
+    area_rooms = [r for r in parser.rooms.values() if r.area_file == filename]
+    if not area_rooms:
+        raise HTTPException(status_code=404, detail="No rooms found in area")
+    
+    # Build adjacency and calculate positions using BFS
+    # Direction offsets: 0=north(y-1), 1=east(x+1), 2=south(y+1), 3=west(x-1), 4=up, 5=down
+    DIR_OFFSETS = {
+        0: (0, -1),   # north
+        1: (1, 0),    # east
+        2: (0, 1),    # south
+        3: (-1, 0),   # west
+        4: (0, 0),    # up (same visual position, noted differently)
+        5: (0, 0),    # down (same visual position)
+    }
+    
+    room_vnums = {r.vnum for r in area_rooms}
+    positions = {}
+    visited = set()
+    
+    # Start BFS from first room
+    from collections import deque
+    queue = deque()
+    start_room = area_rooms[0]
+    positions[start_room.vnum] = (0, 0)
+    visited.add(start_room.vnum)
+    queue.append(start_room.vnum)
+    
+    while queue:
+        current_vnum = queue.popleft()
+        current_pos = positions[current_vnum]
+        current_room = parser.rooms.get(current_vnum)
+        
+        if not current_room:
+            continue
+            
+        for ex in current_room.exits:
+            if ex.to_room in room_vnums and ex.to_room not in visited:
+                dx, dy = DIR_OFFSETS.get(ex.direction, (0, 0))
+                
+                # For up/down, try to find a free adjacent spot
+                if ex.direction in (4, 5):
+                    # Try to place near current room
+                    for test_dx, test_dy in [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1)]:
+                        test_pos = (current_pos[0] + test_dx, current_pos[1] + test_dy)
+                        if test_pos not in positions.values():
+                            dx, dy = test_dx, test_dy
+                            break
+                
+                new_pos = (current_pos[0] + dx, current_pos[1] + dy)
+                
+                # Handle collisions - find nearest free spot
+                attempts = 0
+                while new_pos in positions.values() and attempts < 50:
+                    # Spiral outward to find free spot
+                    attempts += 1
+                    spiral_x = (attempts % 7) - 3
+                    spiral_y = (attempts // 7) - 3
+                    new_pos = (current_pos[0] + dx + spiral_x, current_pos[1] + dy + spiral_y)
+                
+                positions[ex.to_room] = new_pos
+                visited.add(ex.to_room)
+                queue.append(ex.to_room)
+    
+    # Handle disconnected rooms (place them in a row below)
+    max_y = max(p[1] for p in positions.values()) if positions else 0
+    disconnected_x = 0
+    for room in area_rooms:
+        if room.vnum not in positions:
+            positions[room.vnum] = (disconnected_x, max_y + 2)
+            disconnected_x += 1
+    
+    # Build result
+    result_rooms = []
+    for room in area_rooms:
+        pos = positions.get(room.vnum, (0, 0))
+        
+        # Get mob/object info
+        mob_names = []
+        for mob_vnum in room.mobs:
+            mob = parser.mobiles.get(mob_vnum)
+            if mob:
+                mob_names.append(mob.short_desc)
+        
+        obj_names = []
+        for obj_vnum in room.objects:
+            obj = parser.objects.get(obj_vnum)
+            if obj:
+                obj_names.append(obj.short_desc)
+        
+        result_rooms.append({
+            "vnum": room.vnum,
+            "name": room.name,
+            "description": room.description,
+            "x": pos[0],
+            "y": pos[1],
+            "exits": [{"direction": ex.direction, "to_room": ex.to_room, "keyword": ex.keyword} for ex in room.exits],
+            "mob_count": len(room.mobs),
+            "obj_count": len(room.objects),
+            "mob_names": mob_names[:3],  # Limit to first 3
+            "obj_names": obj_names[:3],
+        })
+    
+    return {
+        "area_name": area.name,
+        "filename": filename,
+        "rooms": result_rooms
+    }
 
 
 @app.get("/api/objects")

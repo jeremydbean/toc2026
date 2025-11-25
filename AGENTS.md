@@ -334,3 +334,42 @@ The codebase is in solid shape with significant string safety improvements compl
 - **Gotcha**: When debugging, `curl` output will show the literal `${m.vnum}` because that JavaScript code runs in the browser, not on the server. This is expected - the template literal interpolation happens client-side when `data.map()` executes.
 - **Not a bug**: Seeing `onclick="showMobDetail(${m.vnum})"` in the raw HTML is correct - this is inside a JavaScript string that gets interpolated when the browser runs the code.
 
+#### 5. Python String Escaping for JavaScript
+- **Issue**: When embedding JavaScript in Python triple-quoted strings, `\n` in Python becomes a literal newline, breaking JS syntax.
+- **Example**: `item.score_breakdown.join('\n')` in Python outputs a literal newline in the HTML, causing `SyntaxError: Invalid or unexpected token`.
+- **Fix**: Use `\\n` in Python to output literal `\n` for JavaScript:
+  ```python
+  # BAD - outputs actual newline, breaks JS
+  join('\n')
+  
+  # GOOD - outputs \n for JavaScript to interpret
+  join('\\n')
+  ```
+- **Location**: `webadmin/server.py` around line 1906 (Best Gear score breakdown)
+
+#### 6. Python vs JavaScript Syntax in Embedded Code
+- **Issue**: When writing JavaScript inside Python strings, accidentally using Python/JavaScript syntax in the wrong context.
+- **Examples found**:
+  - `exits_data.push({...})` - JavaScript `push` used in Python code (should be `append`)
+  - `obj.extraFlags` - camelCase used but Python dataclass uses `extra_flags`
+- **Prevention**: Always check the context - if it's inside `"""..."""` it's being sent to browser (JS), if it's in the Python endpoint function it's Python.
+
+### Web Admin Features (Nov 25, 2025)
+
+#### Interactive Area Maps
+- **Feature**: Visual graph-paper style maps for every area in the database
+- **Location**: Database → Areas → click "Map" button on any row
+- **API Endpoint**: `GET /api/areas/{filename}/map`
+- **Implementation**: `webadmin/server.py` - `get_area_map()` function uses BFS to layout rooms based on exit directions
+- **Features**:
+  - SVG-based rendering with pan (drag) and zoom (scroll wheel or buttons)
+  - Room colors: dark=empty, red-tint=has mobs, blue-tint=has objects, purple=both
+  - Hover tooltips show room name, vnum, description, mobs, and objects
+  - Click any room to open detailed room modal
+  - Up/down exit indicators (↑↓) on rooms
+  - Handles disconnected rooms by placing them in a row below the main map
+- **Layout Algorithm**:
+  - BFS starting from first room in area
+  - Direction offsets: north=y-1, east=x+1, south=y+1, west=x-1
+  - Up/down exits find nearest free adjacent cell
+  - Collision handling spirals outward to find free spots
