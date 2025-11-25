@@ -14,9 +14,11 @@ import asyncio
 try:
     from webadmin.area_parser import AreaParser, APPLY_LOCATIONS
     from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values
+    from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS
 except ImportError:
     from area_parser import AreaParser, APPLY_LOCATIONS
     from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values
+    from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -776,6 +778,93 @@ async def index() -> str:
             </div>
         </div>
 
+        <!-- Mob Detail Modal -->
+        <div id="mob-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
+                        <div>
+                            <h3 id="mob-modal-title" class="text-2xl font-bold text-white font-cinzel">Mob Name</h3>
+                            <div class="text-gray-500 font-mono text-sm mt-1">Vnum: <span id="mob-modal-vnum" class="text-gray-300">#1234</span></div>
+                        </div>
+                        <button onclick="closeMobModal()" class="text-gray-400 hover:text-white">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Main Info -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <div>
+                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Description</h4>
+                                <p id="mob-modal-desc" class="text-gray-300 leading-relaxed whitespace-pre-wrap font-serif"></p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Combat</h4>
+                                    <div class="bg-[#111] p-3 rounded border border-gray-800 text-sm space-y-1">
+                                        <div class="flex justify-between"><span class="text-gray-500">Level:</span> <span id="mob-modal-level" class="text-yellow-400"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Hitroll:</span> <span id="mob-modal-hitroll" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Hit Dice:</span> <span id="mob-modal-hitdice" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Mana Dice:</span> <span id="mob-modal-manadice" class="text-blue-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Dam Dice:</span> <span id="mob-modal-damdice" class="text-red-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Dam Type:</span> <span id="mob-modal-damtype" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">AC:</span> <span id="mob-modal-ac" class="text-cyan-300"></span></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Details</h4>
+                                    <div class="bg-[#111] p-3 rounded border border-gray-800 text-sm space-y-1">
+                                        <div class="flex justify-between"><span class="text-gray-500">Race:</span> <span id="mob-modal-race" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Sex:</span> <span id="mob-modal-sex" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Size:</span> <span id="mob-modal-size" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Align:</span> <span id="mob-modal-align" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Wealth:</span> <span id="mob-modal-wealth" class="text-yellow-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Material:</span> <span id="mob-modal-material" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Start Pos:</span> <span id="mob-modal-startpos" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Def Pos:</span> <span id="mob-modal-defpos" class="text-gray-300"></span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Flags</h4>
+                                <div class="space-y-2 text-sm">
+                                    <div id="mob-modal-act" class="text-gray-400"><span class="text-purple-400 font-bold">ACT:</span> <span></span></div>
+                                    <div id="mob-modal-off" class="text-gray-400"><span class="text-red-400 font-bold">OFF:</span> <span></span></div>
+                                    <div id="mob-modal-aff" class="text-gray-400"><span class="text-green-400 font-bold">AFF:</span> <span></span></div>
+                                    <div id="mob-modal-imm" class="text-gray-400"><span class="text-blue-400 font-bold">IMM:</span> <span></span></div>
+                                    <div id="mob-modal-res" class="text-gray-400"><span class="text-cyan-400 font-bold">RES:</span> <span></span></div>
+                                    <div id="mob-modal-vuln" class="text-gray-400"><span class="text-orange-400 font-bold">VULN:</span> <span></span></div>
+                                    <div id="mob-modal-form" class="text-gray-400"><span class="text-gray-400 font-bold">FORM:</span> <span></span></div>
+                                    <div id="mob-modal-parts" class="text-gray-400"><span class="text-gray-400 font-bold">PARTS:</span> <span></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sidebar -->
+                        <div class="space-y-6">
+                            <div class="bg-[#111] p-4 rounded border border-gray-800">
+                                <h4 class="text-yellow-400 font-bold mb-3 uppercase text-xs tracking-wider">Drops</h4>
+                                <ul id="mob-modal-drops" class="space-y-2 text-sm">
+                                    <!-- Drops injected here -->
+                                </ul>
+                            </div>
+
+                            <div class="bg-[#111] p-4 rounded border border-gray-800">
+                                <h4 class="text-blue-400 font-bold mb-3 uppercase text-xs tracking-wider">Spawn Locations</h4>
+                                <div class="text-xs text-gray-500 mb-2">Rooms where this mob loads:</div>
+                                <ul id="mob-modal-spawns" class="space-y-1 text-sm max-h-60 overflow-y-auto">
+                                    <!-- Spawns injected here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Footer -->
@@ -994,7 +1083,7 @@ async def index() -> str:
             let rowsHtml = '';
 
             if(currentDb === 'mobs') {
-                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Level</th><th class="p-4">Race</th><th class="p-4">Area</th>';
+                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Level</th><th class="p-4">Race</th><th class="p-4">Area</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(m => `
                     <tr class="hover:bg-[#151515] transition-colors">
                         <td class="p-4 font-mono text-sm text-gray-500">#${m.vnum}</td>
@@ -1002,6 +1091,9 @@ async def index() -> str:
                         <td class="p-4 text-yellow-500">${m.level}</td>
                         <td class="p-4 text-gray-400">${m.race}</td>
                         <td class="p-4 text-gray-500 text-sm">${m.area || '-'}</td>
+                        <td class="p-4">
+                            <button onclick="showMobDetail(${m.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
+                        </td>
                     </tr>
                 `).join('');
             } else if(currentDb === 'objects') {
@@ -1345,6 +1437,88 @@ async def index() -> str:
         function closeRoomModal() {
             document.getElementById('room-modal').classList.add('hidden');
         }
+
+        // Mob Modal Functions
+        async function showMobDetail(vnum) {
+            try {
+                const res = await fetch(`/api/mobs/${vnum}`);
+                if(!res.ok) throw new Error('Failed to fetch mob');
+                const mob = await res.json();
+                
+                document.getElementById('mob-modal-title').textContent = mob.short_desc;
+                document.getElementById('mob-modal-vnum').textContent = '#' + mob.vnum;
+                document.getElementById('mob-modal-desc').textContent = mob.description;
+                
+                // Combat
+                document.getElementById('mob-modal-level').textContent = mob.level;
+                document.getElementById('mob-modal-hitroll').textContent = mob.hitroll;
+                document.getElementById('mob-modal-hitdice').textContent = mob.hitp_dice;
+                document.getElementById('mob-modal-manadice').textContent = mob.mana_dice;
+                document.getElementById('mob-modal-damdice').textContent = mob.dam_dice;
+                document.getElementById('mob-modal-damtype').textContent = mob.dam_type;
+                document.getElementById('mob-modal-ac').textContent = mob.ac.join(' / ');
+                
+                // Details
+                document.getElementById('mob-modal-race').textContent = mob.race;
+                document.getElementById('mob-modal-sex').textContent = mob.sex;
+                document.getElementById('mob-modal-size').textContent = mob.size;
+                document.getElementById('mob-modal-align').textContent = mob.alignment;
+                document.getElementById('mob-modal-wealth').textContent = mob.wealth + 'g';
+                document.getElementById('mob-modal-material').textContent = mob.material;
+                document.getElementById('mob-modal-startpos').textContent = mob.start_pos;
+                document.getElementById('mob-modal-defpos').textContent = mob.default_pos;
+                
+                // Flags
+                document.getElementById('mob-modal-act').querySelector('span:last-child').textContent = mob.act_flags.join(', ') || 'None';
+                document.getElementById('mob-modal-off').querySelector('span:last-child').textContent = mob.off_flags.join(', ') || 'None';
+                document.getElementById('mob-modal-aff').querySelector('span:last-child').textContent = mob.affected_by.join(', ') || 'None';
+                document.getElementById('mob-modal-imm').querySelector('span:last-child').textContent = mob.imm_flags.join(', ') || 'None';
+                document.getElementById('mob-modal-res').querySelector('span:last-child').textContent = mob.res_flags.join(', ') || 'None';
+                document.getElementById('mob-modal-vuln').querySelector('span:last-child').textContent = mob.vuln_flags.join(', ') || 'None';
+                document.getElementById('mob-modal-form').querySelector('span:last-child').textContent = mob.form.join(', ') || 'None';
+                document.getElementById('mob-modal-parts').querySelector('span:last-child').textContent = mob.parts.join(', ') || 'None';
+                
+                // Drops
+                const dropsContainer = document.getElementById('mob-modal-drops');
+                if(mob.drops && mob.drops.length > 0) {
+                    dropsContainer.innerHTML = mob.drops.map(d => `
+                        <li class="flex justify-between items-center bg-[#151515] p-2 rounded border border-gray-800">
+                            <div>
+                                <span class="text-blue-300 font-bold">${d.name}</span>
+                                <div class="text-xs text-gray-500 font-mono">#${d.vnum}</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-yellow-500 font-bold">${d.chance}%</div>
+                                <div class="text-xs text-gray-600">drop chance</div>
+                            </div>
+                        </li>
+                    `).join('');
+                } else {
+                    dropsContainer.innerHTML = '<li class="text-gray-500 italic">No drops</li>';
+                }
+                
+                // Spawns
+                const spawnsContainer = document.getElementById('mob-modal-spawns');
+                if(mob.spawn_rooms && mob.spawn_rooms.length > 0) {
+                    spawnsContainer.innerHTML = mob.spawn_rooms.map(r => `
+                        <li onclick="closeMobModal(); showRoomDetail(${r.vnum})" class="flex justify-between items-center cursor-pointer hover:bg-[#222] p-1 rounded transition-colors">
+                            <span class="text-gray-300 truncate text-xs">${r.name}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${r.vnum}</span>
+                        </li>
+                    `).join('');
+                } else {
+                    spawnsContainer.innerHTML = '<li class="text-gray-500 italic">No spawn locations found</li>';
+                }
+                
+                document.getElementById('mob-modal').classList.remove('hidden');
+            } catch(e) {
+                alert('Error loading mob details: ' + e);
+            }
+        }
+        
+        function closeMobModal() {
+            document.getElementById('mob-modal').classList.add('hidden');
+        }
     </script>
 </body>
 </html>
@@ -1445,7 +1619,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
     decoded_affects = decode_applies(obj.affects)
     item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
     decoded_item_type = ITEM_TYPES.get(item_type_num, obj.item_type)
-    decoded_extra_flags = decode_flags(obj.extraFlags, ITEM_FLAGS)
+    decoded_extra_flags = decode_flags(obj.extra_flags, ITEM_FLAGS)
     decoded_wear_flags = decode_flags(obj.wear_flags, WEAR_FLAGS)
     
     # Interpret values
@@ -1464,7 +1638,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "cost": obj.cost,
         "condition": obj.condition,
         "extra_flags": decoded_extra_flags,
-        "extra_flags_raw": obj.extraFlags,
+        "extra_flags_raw": obj.extra_flags,
         "wear_flags": decoded_wear_flags,
         "wear_flags_raw": obj.wear_flags,
         "values": obj.values,
@@ -1610,8 +1784,9 @@ async def get_objects(
                     s_name, s_val = stat_filter.split('>')
                     s_val = int(s_val)
                     found_stat = False
-                    for aff in affects_decoded:
-                        if s_name.lower() in aff['location'].lower() and aff['modifier'] > s_val:
+                    for aff in obj.affects:
+                        loc_name = APPLY_LOCATIONS.get(aff.get('location', 0), '').lower()
+                        if s_name.lower() in loc_name and aff.get('modifier', 0) > s_val:
                             found_stat = True
                             break
                     if not found_stat:
@@ -1742,7 +1917,9 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
             obj = parser.objects[obj_vnum]
             drops.append({
                 "vnum": obj.vnum,
-                "short_desc": obj.short_desc
+                "short_desc": obj.short_desc,
+                "level": obj.level,
+                "item_type": ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
             })
             
     # Get spawn rooms
@@ -1756,6 +1933,16 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
                 "area": room.area_name
             })
             
+    # Decode flags
+    act_decoded = decode_flags(mob.act_flags, ACT_FLAGS)
+    off_decoded = decode_flags(mob.off_flags, OFF_FLAGS)
+    imm_decoded = decode_flags(mob.imm_flags, IMM_FLAGS)
+    res_decoded = decode_flags(mob.res_flags, RES_FLAGS)
+    vuln_decoded = decode_flags(mob.vuln_flags, VULN_FLAGS)
+    form_decoded = decode_flags(mob.form, FORM_FLAGS)
+    parts_decoded = decode_flags(mob.parts, PART_FLAGS)
+    affected_decoded = decode_flags(mob.affected_by, AFFECTED_FLAGS)
+
     return {
         "vnum": mob.vnum,
         "keywords": mob.keywords,
@@ -1779,12 +1966,20 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
         "parts": mob.parts,
         "size": mob.size,
         "material": mob.material,
+        "act_flags": act_decoded,
         "act_flags_raw": mob.act_flags,
+        "affected_by": affected_decoded,
         "affected_by_raw": mob.affected_by,
+        "off_flags": off_decoded,
         "off_flags_raw": mob.off_flags,
+        "imm_flags": imm_decoded,
         "imm_flags_raw": mob.imm_flags,
+        "res_flags": res_decoded,
         "res_flags_raw": mob.res_flags,
+        "vuln_flags": vuln_decoded,
         "vuln_flags_raw": mob.vuln_flags,
+        "form_flags": form_decoded,
+        "parts_flags": parts_decoded,
         "values_interpreted": values_interpreted,
         "area": mob.area_name,
         "area_file": mob.area_file,

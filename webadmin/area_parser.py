@@ -23,8 +23,12 @@ APPLY_LOCATIONS = {
     17: 'armor class',
     18: 'hitroll',
     19: 'damroll',
+    20: 'save vs paralysis',
+    21: 'save vs rod',
+    22: 'save vs petrification',
     23: 'save vs breath',
     24: 'save vs spell',
+    25: 'spell affect',
 }
 
 # Item type mappings
@@ -97,6 +101,26 @@ DAMAGE_TYPES = {
     10: 'bite',
     11: 'pierce',
     12: 'suction',
+    13: 'beating',
+    14: 'digestion',
+    15: 'charge',
+    16: 'slap',
+    17: 'punch',
+    18: 'wrath',
+    19: 'magic',
+    20: 'divine power',
+    21: 'cleave',
+    22: 'scratch',
+    23: 'peck',
+    24: 'peck',
+    25: 'chop',
+    26: 'sting',
+    27: 'smash',
+    28: 'shocking bite',
+    29: 'flaming bite',
+    30: 'freezing bite',
+    31: 'acidic bite',
+    32: 'chomp',
 }
 
 # Container flags
