@@ -201,6 +201,161 @@ PORTAL_TYPES = {
     6: 'random-closeable',
 }
 
+# Spell names by slot number (from src/const.c skill_table)
+SPELL_NAMES = {
+    1: "armor",
+    2: "teleport",
+    3: "bless",
+    4: "blindness",
+    5: "burning hands",
+    6: "call lightning",
+    7: "charm person",
+    8: "chill touch",
+    10: "colour spray",
+    11: "control weather",
+    12: "create food",
+    13: "create water",
+    14: "cure blindness",
+    15: "cure critical",
+    16: "cure light",
+    17: "curse",
+    18: "detect evil",
+    19: "detect invis",
+    20: "detect magic",
+    21: "detect poison",
+    22: "dispel evil",
+    23: "earthquake",
+    24: "enchant weapon",
+    25: "energy drain",
+    26: "fireball",
+    27: "harm",
+    28: "heal",
+    29: "invis",
+    30: "lightning bolt",
+    31: "locate object",
+    32: "magic missile",
+    33: "poison",
+    34: "protection evil",
+    35: "remove curse",
+    36: "sanctuary",
+    38: "sleep",
+    39: "giant strength",
+    40: "summon",
+    41: "ventriloquate",
+    42: "word of recall",
+    43: "cure poison",
+    44: "detect hidden",
+    45: "identify",
+    53: "shocking grasp",
+    56: "fly",
+    57: "continual light",
+    58: "know alignment",
+    59: "dispel magic",
+    61: "cure serious",
+    62: "cause light",
+    63: "cause critical",
+    64: "cause serious",
+    65: "flamestrike",
+    66: "stone skin",
+    67: "shield",
+    68: "weaken",
+    69: "mass invis",
+    70: "acid blast",
+    72: "faerie fire",
+    73: "faerie fog",
+    74: "pass door",
+    77: "infravision",
+    80: "create spring",
+    81: "refresh",
+    82: "change sex",
+    83: "gate",
+    200: "acid breath",
+    201: "fire breath",
+    202: "frost breath",
+    203: "gas breath",
+    204: "lightning breath",
+    401: "general purpose",
+    402: "high explosive",
+    500: "chain lightning",
+    501: "cure disease",
+    502: "haste",
+    503: "plague",
+    504: "frenzy",
+    505: "demonfire",
+    506: "holy word",
+    507: "cancellation",
+    508: "mass healing",
+    509: "calm",
+    510: "enchant armor",
+    511: "slow",
+    512: "dispel good",
+    513: "detect good",
+    514: "heat metal",
+    515: "power gloves",
+    516: "mass sanctuary",
+    517: "aid",
+    518: "restore mana",
+    519: "cure nightmare",
+    520: "blizzard",
+    521: "icicle",
+    522: "fire shield",
+    523: "portal",
+    524: "dispel breath",
+    525: "detect traps",
+    526: "major globe",
+    527: "skeletal hands",
+    528: "earth travel",
+    529: "vampiric touch",
+    530: "trap the soul",
+    531: "remove align",
+    532: "vengence",
+    533: "raise dead",
+    534: "waterfall",
+    535: "dust devil",
+    536: "vortex",
+    537: "water burst",
+    538: "geyser",
+    539: "spiritual hammer",
+    540: "evil eye",
+    541: "sunray",
+    542: "moonbeam",
+    543: "force sword",
+    544: "create skeleton",
+    545: "create wraith",
+    546: "create vampire",
+    547: "animate parts",
+    548: "shroud",
+    549: "cone of cold",
+    550: "meteor swarm",
+    551: "death shroud",
+    552: "stinking cloud",
+    553: "rope trick",
+    554: "haven",
+    555: "maze",
+    556: "tentacles",
+    557: "butcher",
+    558: "bewitch weapon",
+    559: "divine intervention",
+    560: "neutrality field",
+    561: "shock sphere",
+    562: "ghostly presence",
+    563: "death ray",
+    564: "cause madness",
+    565: "mana convert",
+    566: "frost shield",
+    567: "embalm",
+    568: "divine protection",
+    594: "iportal",
+    595: "wormhole",
+    600: "enchant item",
+}
+
+def get_spell_name(spell_num: int) -> str:
+    """Convert spell slot number to spell name."""
+    if spell_num == 0:
+        return ""
+    return SPELL_NAMES.get(spell_num, f"unknown-{spell_num}")
+
 # Wear flags
 WEAR_FLAGS = {
     'A': 'take',
@@ -511,15 +666,33 @@ def interpret_values(item_type_num: int, values: List[str], level: int = 0) -> D
     
     elif item_type_num in [2, 10, 26]:  # SCROLL, POTION, PILL
         result['spell_level'] = values[0]
-        result['spell1'] = values[1]
-        result['spell2'] = values[2]
-        result['spell3'] = values[3]
+        # Convert spell numbers to names
+        try:
+            spell1_num = int(values[1])
+            spell2_num = int(values[2])
+            spell3_num = int(values[3])
+            result['spell1'] = get_spell_name(spell1_num) if spell1_num else ""
+            result['spell2'] = get_spell_name(spell2_num) if spell2_num else ""
+            result['spell3'] = get_spell_name(spell3_num) if spell3_num else ""
+            result['spell1_raw'] = values[1]
+            result['spell2_raw'] = values[2]
+            result['spell3_raw'] = values[3]
+        except (ValueError, IndexError):
+            result['spell1'] = values[1]
+            result['spell2'] = values[2]
+            result['spell3'] = values[3]
     
     elif item_type_num in [3, 4]:  # WAND, STAFF
         result['spell_level'] = values[0]
         result['max_charges'] = values[1]
         result['current_charges'] = values[2]
-        result['spell_num'] = values[3]
+        # Convert spell number to name
+        try:
+            spell_num = int(values[3])
+            result['spell_num'] = get_spell_name(spell_num) if spell_num else ""
+            result['spell_num_raw'] = values[3]
+        except (ValueError, IndexError):
+            result['spell_num'] = values[3]
     
     elif item_type_num == 5:  # WEAPON
         try:

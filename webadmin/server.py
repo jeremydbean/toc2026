@@ -64,30 +64,96 @@ class WizinfoRequest(BaseModel):
 
 
 # Class stat weights for gear optimization
+# Class-specific stat weights for Best Gear scoring
+# Based on code analysis:
+# - Hitroll: improves chance to hit (thac0), critical for melee DPS
+# - Damroll: adds directly to damage output, critical for melee DPS  
+# - STR: gives bonus hit/dam via str_app table (+6 hit, +9 dam at 25 str)
+# - DEX: affects thief skills, dodge/parry, AC
+# - CON: affects max HP
+# - INT: affects mana for mages, learning rate
+# - WIS: affects cleric spells, mana
+# - HP: raw survivability, important for melee tanks
+# - Mana: casting resource, critical for casters
+
 CLASS_WEIGHTS = {
     "mage": {
-        "intelligence": 2.0, "mana": 1.0, "save vs spell": 1.0, "hit points": 0.5,
-        "constitution": 0.5, "dexterity": 0.5
+        # Pure caster: INT and mana are king, some survivability
+        "intelligence": 3.0,      # Prime stat, affects spell damage/learning
+        "mana": 1.5,              # Casting resource
+        "save vs spell": 1.0,     # Resist enemy spells
+        "hit points": 0.8,        # Survivability
+        "constitution": 0.8,      # More HP
+        "wisdom": 0.5,            # Some mana benefit
+        "dexterity": 0.3,         # Minimal AC benefit
+        "hitroll": 0.2,           # Rarely melee
+        "damroll": 0.2,           # Rarely melee
+        "strength": 0.1,          # Carry capacity only
     },
     "cleric": {
-        "wisdom": 2.0, "mana": 1.0, "save vs spell": 1.0, "hit points": 0.8,
-        "constitution": 0.5, "strength": 0.2
+        # Healer/buffer with some melee capability
+        "wisdom": 3.0,            # Prime stat for cleric spells
+        "mana": 1.5,              # Casting resource
+        "hit points": 1.2,        # Frontline healer needs HP
+        "constitution": 1.0,      # Survivability
+        "save vs spell": 1.0,     # Resist debuffs
+        "hitroll": 1.0,           # Can melee with mace
+        "damroll": 1.0,           # Can melee with mace
+        "strength": 0.8,          # Bonus to hit/dam
+        "intelligence": 0.3,      # Minor mana benefit
+        "dexterity": 0.3,         # AC benefit
     },
     "thief": {
-        "dexterity": 2.0, "hitroll": 1.5, "damroll": 1.5, "hit points": 0.8,
-        "strength": 0.5, "constitution": 0.5
+        # Melee DPS with DEX focus for backstab/skills
+        "dexterity": 3.0,         # Prime stat, affects skills/dodge
+        "hitroll": 3.5,           # Critical for backstab to land
+        "damroll": 3.5,           # Multiplied by backstab
+        "hit points": 1.2,        # Need to survive
+        "strength": 1.5,          # Bonus hit/dam
+        "constitution": 1.0,      # HP
+        "save vs spell": 0.5,     # Some spell resist
+        "intelligence": 0.2,      # Minor
+        "wisdom": 0.2,            # Minor
+        "mana": 0.1,              # Thieves don't cast
     },
     "warrior": {
-        "strength": 1.5, "constitution": 1.5, "hitroll": 1.5, "damroll": 1.5, 
-        "hit points": 1.0, "dexterity": 0.5
+        # Tank/melee DPS, all about hit/dam and survivability
+        "hitroll": 4.0,           # Must hit to deal damage
+        "damroll": 4.0,           # Direct damage boost
+        "strength": 2.5,          # Bonus hit/dam via str_app
+        "hit points": 2.0,        # Tank survivability
+        "constitution": 2.0,      # More HP
+        "dexterity": 1.0,         # AC, parry
+        "save vs spell": 0.5,     # Some magic resist
+        "wisdom": 0.1,            # Useless
+        "intelligence": 0.1,      # Useless
+        "mana": 0.0,              # Warriors don't cast
     },
     "monk": {
-        "constitution": 2.0, "strength": 1.0, "hitroll": 1.5, "damroll": 1.5, 
-        "hit points": 1.0, "dexterity": 0.8
+        # Unarmed fighter, CON-based, needs survivability
+        "constitution": 3.0,      # Prime stat
+        "hitroll": 3.5,           # Need to hit
+        "damroll": 3.5,           # Unarmed damage
+        "hit points": 2.0,        # Survivability
+        "strength": 1.5,          # Bonus hit/dam
+        "dexterity": 1.5,         # Dodge/AC
+        "save vs spell": 0.5,     # Magic resist
+        "wisdom": 0.3,            # Minor
+        "intelligence": 0.2,      # Minor
+        "mana": 0.1,              # Some monk abilities use mana
     },
     "necromancer": {
-        "intelligence": 2.0, "mana": 1.0, "save vs spell": 1.0, "hit points": 0.5,
-        "constitution": 0.5, "dexterity": 0.5
+        # Dark caster with some survivability focus
+        "intelligence": 3.0,      # Prime stat
+        "mana": 1.5,              # Casting resource
+        "hit points": 1.0,        # Survivability (vampiric touch, etc.)
+        "constitution": 1.0,      # HP
+        "save vs spell": 1.0,     # Resist enemy magic
+        "wisdom": 0.5,            # Some mana benefit
+        "dexterity": 0.3,         # AC
+        "strength": 0.2,          # Minor
+        "hitroll": 0.2,           # Rarely melee
+        "damroll": 0.2,           # Rarely melee
     },
 }
 
@@ -1463,7 +1529,7 @@ async def index() -> str:
                             <div class="mt-1 text-xs text-gray-600">${o.area || '-'}</div>
                         </td>
                         <td class="p-4 align-top">
-                            <button onclick="showObjDetail(${o.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
+                            <button onclick="showObjDetail(${o.vnum}); return false;" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
                         </td>
                     </tr>
                 `;
@@ -1635,9 +1701,13 @@ async def index() -> str:
 
         // Room Modal Functions
         async function showRoomDetail(vnum) {
+            console.log('showRoomDetail called with vnum:', vnum);
             try {
-                const res = await fetch(`/api/rooms/${vnum}`);
-                if(!res.ok) throw new Error('Failed to fetch room');
+                const url = `/api/rooms/${vnum}`;
+                console.log('Fetching URL:', url);
+                const res = await fetch(url);
+                console.log('Response status:', res.status);
+                if(!res.ok) throw new Error('Failed to fetch room: ' + res.status);
                 const room = await res.json();
                 
                 document.getElementById('room-modal-title').textContent = room.name;
@@ -1712,10 +1782,15 @@ async def index() -> str:
 
         // Mob Modal Functions
         async function showMobDetail(vnum) {
+            console.log('showMobDetail called with vnum:', vnum);
             try {
-                const res = await fetch(`/api/mobs/${vnum}`);
-                if(!res.ok) throw new Error('Failed to fetch mob');
+                const url = `/api/mobs/${vnum}`;
+                console.log('Fetching URL:', url);
+                const res = await fetch(url);
+                console.log('Response status:', res.status);
+                if(!res.ok) throw new Error('Failed to fetch mob: ' + res.status);
                 const mob = await res.json();
+                console.log('Mob data:', mob);
                 
                 document.getElementById('mob-modal-title').textContent = mob.short_desc;
                 document.getElementById('mob-modal-vnum').textContent = '#' + mob.vnum;
@@ -1794,10 +1869,21 @@ async def index() -> str:
 
         // Object Modal Functions
         async function showObjDetail(vnum) {
+            console.log('showObjDetail called with vnum:', vnum, 'type:', typeof vnum);
+            console.trace('Call stack for showObjDetail');
+            if(vnum === undefined || vnum === null || vnum === 'undefined') {
+                console.error('showObjDetail called with invalid vnum!');
+                alert('Error: Object vnum is undefined. Check console for stack trace.');
+                return;
+            }
             try {
-                const res = await fetch(`/api/objects/${vnum}`);
-                if(!res.ok) throw new Error('Failed to fetch object');
+                const url = `/api/objects/${vnum}`;
+                console.log('Fetching URL:', url);
+                const res = await fetch(url);
+                console.log('Response status:', res.status);
+                if(!res.ok) throw new Error('Failed to fetch object: ' + res.status);
                 const obj = await res.json();
+                console.log('Object data:', obj);
                 
                 document.getElementById('obj-modal-title').textContent = obj.short_desc;
                 document.getElementById('obj-modal-vnum').textContent = '#' + obj.vnum;
@@ -2407,11 +2493,17 @@ async def get_rooms(limit: int = 10000) -> list:
     return result
 
 
+# Help/documentation area files that should be hidden from the database view
+HELP_AREA_FILES = {'commands.are', 'skills.are', 'spells.are', 'masters.are', 'toc.are', 'help.are'}
+
 @app.get("/api/areas")
 async def get_areas() -> list:
     result = []
     try:
         for area in parser.areas.values():
+            # Skip help/documentation files
+            if area.filename in HELP_AREA_FILES:
+                continue
             result.append({
                 "name": area.name,
                 "filename": area.filename,
