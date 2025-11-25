@@ -3342,6 +3342,70 @@ void do_restore( CHAR_DATA *ch, char *argument )
 }
 
 
+/* Herbie command - allows lower-level immortals to use restore on players
+ * Added for level 61 (Saints) to help players without full restore access
+ */
+void do_herbie( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+
+    one_argument( argument, arg );
+
+    if (arg[0] == '\0')
+    {
+        send_to_char( "Syntax: herbie <player>\n\r", ch );
+        send_to_char( "Sends an angel to restore a player's health, mana, and movement.\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( IS_NPC(victim) )
+    {
+        send_to_char( "Not on NPCs.\n\r", ch );
+        return;
+    }
+
+    if ( victim->level >= ch->level && victim != ch )
+    {
+        send_to_char( "You cannot use herbie on someone of equal or higher level.\n\r", ch );
+        return;
+    }
+
+    /* Strip negative effects */
+    affect_strip(victim, gsn_plague);
+    affect_strip(victim, gsn_poison);
+    affect_strip(victim, gsn_blindness);
+    affect_strip(victim, gsn_sleep);
+    affect_strip(victim, gsn_curse);
+
+    /* Restore stats */
+    victim->hit  = victim->max_hit;
+    victim->mana = victim->max_mana;
+    victim->move = victim->max_move;
+
+    /* Restore hunger/thirst if not NPC */
+    if (!IS_NPC(victim) && victim->pcdata != NULL)
+    {
+        victim->pcdata->condition[COND_THIRST] = 100;
+        victim->pcdata->condition[COND_FULL] = 100;
+    }
+
+    update_pos( victim );
+
+    act( "An angel named Herbie glides down from heaven and cures all your wounds.",
+        ch, NULL, victim, TO_VICT );
+    act( "$N has been visited by Herbie the angel.", ch, NULL, victim, TO_CHAR );
+
+    return;
+}
+
+
 void do_freeze( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];

@@ -13,17 +13,20 @@ import asyncio
 
 try:
     from webadmin.area_parser import AreaParser, APPLY_LOCATIONS
-    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values
-    from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS
+    from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
+    from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
 except ImportError:
     from area_parser import AreaParser, APPLY_LOCATIONS
-    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values
-    from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS
+    from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
+    from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
 DEFAULT_LOG: Path = Path(os.getenv("LOG_FILE", "log/toc.log"))
 AREA_PATH: Path = Path(os.getenv("AREA_PATH", "area"))
+
+MUD_HOST = "127.0.0.1"
+MUD_PORT = int(os.getenv("MUD_PORT", 9000))
 
 # QueueWriter for inter-process communication with the MUD server
 class QueueWriter:
@@ -664,56 +667,116 @@ async def index() -> str:
                     <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Adventurer's Guide</h2>
                     
                     <div class="space-y-12">
+                        <!-- Introduction -->
                         <div>
-                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Getting Started</h3>
+                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Welcome to Times of Chaos</h3>
                             <div class="prose prose-invert max-w-none text-gray-300">
-                                <p>Welcome to Times of Chaos. When you first connect, you will be asked to provide a name for your character. Choose wisely, as this is how you will be known throughout the realms.</p>
-                                <p>After naming your character, you will select a race and a class. Each combination offers unique strengths and weaknesses.</p>
+                                <p>Times of Chaos is a text-based Multiplayer Online Role-Playing Game (MUD) set in a fantasy world. You will explore vast realms, fight dangerous monsters, solve quests, and grow in power.</p>
+                                <p>You can play directly from your browser using the "Play Now" tab, or connect using a dedicated MUD client (like Mudlet or Tintin++) to <strong>localhost:9000</strong>.</p>
                             </div>
                         </div>
 
+                        <!-- Character Creation -->
                         <div>
-                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Basic Commands</h3>
+                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Character Creation</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-2">Races</h4>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li><strong class="text-yellow-500">Human:</strong> Versatile and balanced. No specific weaknesses.</li>
+                                        <li><strong class="text-yellow-500">Elf:</strong> Agile and magical. Innate <em>Infrared</em> and <em>Sneak</em>.</li>
+                                        <li><strong class="text-yellow-500">Dwarf:</strong> Tough and sturdy. Innate <em>Infrared</em> and <em>Bash</em>.</li>
+                                        <li><strong class="text-yellow-500">Hobbit:</strong> Small and stealthy. Innate <em>Hide</em>.</li>
+                                        <li><strong class="text-yellow-500">Saurian:</strong> Lizard-like humanoids. Innate <em>Infrared</em>.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white mb-2">Classes</h4>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li><strong class="text-blue-400">Warrior:</strong> Masters of weapons and combat. Primary Stat: <strong>Strength</strong>.</li>
+                                        <li><strong class="text-blue-400">Mage:</strong> Wielders of arcane magic. Primary Stat: <strong>Intelligence</strong>.</li>
+                                        <li><strong class="text-blue-400">Cleric:</strong> Healers and divine casters. Primary Stat: <strong>Wisdom</strong>.</li>
+                                        <li><strong class="text-blue-400">Thief:</strong> Experts in stealth and trickery. Primary Stat: <strong>Dexterity</strong>.</li>
+                                        <li><strong class="text-blue-400">Monk:</strong> Unarmed fighters and disciplinarians. Primary Stat: <strong>Constitution</strong>.</li>
+                                        <li><strong class="text-blue-400">Necromancer:</strong> Masters of death and dark arts. Primary Stat: <strong>Intelligence</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Web Features -->
+                        <div>
+                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Web Features</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <h4 class="text-lg font-bold text-white mb-2"><i class="fas fa-map text-green-500 mr-2"></i>Interactive Maps</h4>
+                                    <p class="text-sm text-gray-400">In the <strong>Database</strong> section, click "Areas" and then the "Map" button next to any area to view a live, generated map of the zone. You can see room connections, mobs, and objects.</p>
+                                </div>
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <h4 class="text-lg font-bold text-white mb-2"><i class="fas fa-khanda text-yellow-500 mr-2"></i>Best Gear Finder</h4>
+                                    <p class="text-sm text-gray-400">Use the <strong>Best Gear</strong> tool to automatically calculate the best equipment for your class and level. It analyzes item stats and suggests the optimal loadout.</p>
+                                </div>
+                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
+                                    <h4 class="text-lg font-bold text-white mb-2"><i class="fas fa-database text-blue-500 mr-2"></i>Database</h4>
+                                    <p class="text-sm text-gray-400">Search the entire game world for Mobs, Objects, and Rooms. Find out where items drop or where specific monsters spawn.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Basic Commands -->
+                        <div>
+                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Essential Commands</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <code class="text-yellow-500 font-bold">look</code>
-                                    <p class="text-sm text-gray-400 mt-1">Examine your current surroundings.</p>
+                                    <h4 class="text-white font-bold mb-2">Movement & Looking</h4>
+                                    <ul class="text-sm text-gray-400 space-y-1">
+                                        <li><code class="text-yellow-500">north, south, east, west</code> - Move</li>
+                                        <li><code class="text-yellow-500">up, down</code> - Change elevation</li>
+                                        <li><code class="text-yellow-500">look</code> - See room description</li>
+                                        <li><code class="text-yellow-500">exits</code> - See available exits</li>
+                                    </ul>
                                 </div>
                                 <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <code class="text-yellow-500 font-bold">score</code>
-                                    <p class="text-sm text-gray-400 mt-1">View your character's attributes and status.</p>
+                                    <h4 class="text-white font-bold mb-2">Combat</h4>
+                                    <ul class="text-sm text-gray-400 space-y-1">
+                                        <li><code class="text-yellow-500">kill &lt;target&gt;</code> - Attack a monster</li>
+                                        <li><code class="text-yellow-500">cast '&lt;spell&gt;' &lt;target&gt;</code> - Cast magic</li>
+                                        <li><code class="text-yellow-500">flee</code> - Run away from combat</li>
+                                        <li><code class="text-yellow-500">consider &lt;target&gt;</code> - Check difficulty</li>
+                                    </ul>
                                 </div>
                                 <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <code class="text-yellow-500 font-bold">inventory</code>
-                                    <p class="text-sm text-gray-400 mt-1">See what you are carrying.</p>
+                                    <h4 class="text-white font-bold mb-2">Information</h4>
+                                    <ul class="text-sm text-gray-400 space-y-1">
+                                        <li><code class="text-yellow-500">score</code> - Check stats/exp/hp</li>
+                                        <li><code class="text-yellow-500">inventory</code> - Check carried items</li>
+                                        <li><code class="text-yellow-500">equipment</code> - Check worn items</li>
+                                        <li><code class="text-yellow-500">who</code> - See online players</li>
+                                    </ul>
                                 </div>
                                 <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <code class="text-yellow-500 font-bold">equipment</code>
-                                    <p class="text-sm text-gray-400 mt-1">See what you are wearing.</p>
-                                </div>
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <code class="text-yellow-500 font-bold">north, south, east, west</code>
-                                    <p class="text-sm text-gray-400 mt-1">Move in a direction.</p>
-                                </div>
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <code class="text-yellow-500 font-bold">kill &lt;target&gt;</code>
-                                    <p class="text-sm text-gray-400 mt-1">Initiate combat with a monster.</p>
+                                    <h4 class="text-white font-bold mb-2">Communication</h4>
+                                    <ul class="text-sm text-gray-400 space-y-1">
+                                        <li><code class="text-yellow-500">say &lt;message&gt;</code> - Talk to room</li>
+                                        <li><code class="text-yellow-500">tell &lt;player&gt; &lt;msg&gt;</code> - Private message</li>
+                                        <li><code class="text-yellow-500">gossip &lt;message&gt;</code> - Global chat</li>
+                                        <li><code class="text-yellow-500">group</code> - Manage party</li>
+                                    </ul>
                                 </div>
                             </div>
+                        </div>
+                        
+                        <!-- Tips -->
+                        <div>
+                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Survival Tips</h3>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li><strong>Resting:</strong> Type <code class="text-yellow-500">sleep</code> to regenerate Health and Mana faster. Type <code class="text-yellow-500">wake</code> to stand up.</li>
+                                <li><strong>Leveling:</strong> Gain experience by killing monsters. When you have enough, find your Guildmaster to <code class="text-yellow-500">train</code> stats and <code class="text-yellow-500">practice</code> skills.</li>
+                                <li><strong>Light:</strong> Some areas are dark. Make sure to carry a light source or you won't be able to see!</li>
+                                <li><strong>Food & Drink:</strong> Your character gets hungry and thirsty. Buy food at the inn or find a water source.</li>
+                            </ul>
                         </div>
 
-                        <div>
-                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Combat & Magic</h3>
-                            <div class="prose prose-invert max-w-none text-gray-300">
-                                <p>Combat is automatic once initiated. You will automatically attack every round. However, you can use special skills or cast spells during combat to turn the tide.</p>
-                                <ul class="list-disc pl-5 space-y-2 mt-2">
-                                    <li><strong class="text-white">Warriors</strong> should use <code class="text-red-400">kick</code> and <code class="text-red-400">bash</code> to disable opponents.</li>
-                                    <li><strong class="text-white">Mages</strong> cast spells using <code class="text-blue-400">cast 'spell name' &lt;target&gt;</code>.</li>
-                                    <li><strong class="text-white">Clerics</strong> can heal using <code class="text-yellow-400">cast 'heal' &lt;target&gt;</code>.</li>
-                                    <li><strong class="text-white">Thieves</strong> can <code class="text-green-400">backstab</code> for massive opening damage.</li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -1220,6 +1283,8 @@ async def index() -> str:
             // Handle resize
             window.addEventListener('resize', () => fitAddon.fit());
 
+            let localEcho = true; // Default to true as most MUDs expect client echo unless negotiated
+
             function connect() {
                 const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
                 ws = new WebSocket(protocol + '//' + window.location.host + '/ws');
@@ -1231,7 +1296,24 @@ async def index() -> str:
                 };
 
                 ws.onmessage = (event) => {
-                    term.write(event.data);
+                    let data = event.data;
+                    
+                    // Telnet Negotiation for Echo - filter out telnet control sequences
+                    // IAC WILL ECHO (255 251 1) -> Server will echo, turn local echo OFF
+                    const iacWillEcho = String.fromCharCode(255, 251, 1);
+                    if (data.includes(iacWillEcho)) {
+                        localEcho = false;
+                        data = data.split(iacWillEcho).join('');
+                    }
+                    
+                    // IAC WONT ECHO (255 252 1) -> Server won't echo, turn local echo ON
+                    const iacWontEcho = String.fromCharCode(255, 252, 1);
+                    if (data.includes(iacWontEcho)) {
+                        localEcho = true;
+                        data = data.split(iacWontEcho).join('');
+                    }
+
+                    term.write(data);
                 };
 
                 ws.onclose = () => {
@@ -1249,8 +1331,24 @@ async def index() -> str:
 
             // Handle input
             term.onData(data => {
+                console.log('Terminal input received:', data, 'charCodes:', Array.from(data).map(c => c.charCodeAt(0)));
+                const cr = String.fromCharCode(13);
+                const lf = String.fromCharCode(10);
+                const crlf = cr + lf;
+                
+                // Convert CR to CRLF for sending to MUD (MUD expects CRLF line endings)
+                let sendData = data.split(cr).join(crlf);
+                console.log('Sending to server:', sendData, 'charCodes:', Array.from(sendData).map(c => c.charCodeAt(0)));
+                
+                if (localEcho) {
+                    // Echo locally
+                    term.write(sendData);
+                }
                 if (ws && ws.readyState === WebSocket.OPEN) {
-                    ws.send(data);
+                    ws.send(sendData);
+                    console.log('WebSocket send complete');
+                } else {
+                    console.error('WebSocket not ready:', ws ? ws.readyState : 'null');
                 }
             });
 
@@ -1548,13 +1646,14 @@ async def index() -> str:
                     </tr>
                 `).join('');
             } else if(currentDb === 'rooms') {
-                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Area</th><th class="p-4">Sector</th><th class="p-4">Actions</th>';
+                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Area</th><th class="p-4">Sector</th><th class="p-4">Flags</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(r => `
                     <tr class="hover:bg-[#151515] transition-colors">
                         <td class="p-4 font-mono text-sm text-gray-500">#${r.vnum}</td>
                         <td class="p-4 font-bold text-gray-300">${r.name}</td>
                         <td class="p-4 text-gray-500 text-sm">${r.area || '-'}</td>
-                        <td class="p-4 text-gray-400">${r.sector_type}</td>
+                        <td class="p-4 text-gray-400 capitalize">${r.sector_type}</td>
+                        <td class="p-4 text-gray-500 text-xs">${r.room_flags || '-'}</td>
                         <td class="p-4">
                             <button onclick="showRoomDetail(${r.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
                         </td>
@@ -1563,7 +1662,7 @@ async def index() -> str:
             }
 
             headers.innerHTML = headerHtml;
-            content.innerHTML = rowsHtml || '<tr><td colspan="5" class="p-4 text-center">No results found</td></tr>';
+            content.innerHTML = rowsHtml || '<tr><td colspan="6" class="p-4 text-center">No results found</td></tr>';
         }
 
         function filterDb() {
@@ -1763,7 +1862,7 @@ async def index() -> str:
                     extrasContainer.innerHTML = room.extra_descr.map(ed => `
                         <div class="bg-[#151515] p-2 rounded border border-gray-800">
                             <span class="text-green-400 font-bold text-xs">${ed.keyword}:</span>
-                            <span class="text-gray-400 text-sm">${ed.description}</span>
+                            <span class="text-gray-400 text-xs">${ed.description}</span>
                         </div>
                     `).join('');
                 } else {
@@ -1829,15 +1928,9 @@ async def index() -> str:
                 const dropsContainer = document.getElementById('mob-modal-drops');
                 if(mob.drops && mob.drops.length > 0) {
                     dropsContainer.innerHTML = mob.drops.map(d => `
-                        <li onclick="closeMobModal(); showObjDetail(${d.vnum})" class="flex justify-between items-center bg-[#151515] p-2 rounded border border-gray-800 cursor-pointer hover:bg-[#222] transition-colors">
-                            <div>
-                                <span class="text-blue-300 font-bold">${d.name}</span>
-                                <div class="text-xs text-gray-500 font-mono">#${d.vnum}</div>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-yellow-500 font-bold">${d.chance}%</div>
-                                <div class="text-xs text-gray-600">drop chance</div>
-                            </div>
+                        <li class="flex justify-between items-center">
+                            <span class="text-red-300 truncate" title="${d.name}">${d.name}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${d.vnum}</span>
                         </li>
                     `).join('');
                 } else {
@@ -2003,7 +2096,7 @@ async def index() -> str:
                     
                     for(const item of data[slot]) {
                         const breakdown = item.score_breakdown ? item.score_breakdown.join('\\n') : 'No breakdown';
-                        const breakdownEscaped = breakdown.replace(/'/g, "\\\\'").replace(/\\n/g, '\\\\n');
+                        const breakdownEscaped = breakdown.split("'").join("\\\\'").split('\\n').join('\\\\n');
                         html += `
                             <div class="p-3 hover:bg-[#151515] transition-colors flex justify-between items-center group">
                                 <div class="flex items-center gap-3 overflow-hidden">
@@ -2013,7 +2106,7 @@ async def index() -> str:
                                         <div class="text-xs text-gray-500">Lvl ${item.level} • ${item.area || 'Unknown Area'}</div>
                                     </div>
                                 </div>
-                                <div class="text-right pl-4 shrink-0 cursor-help" title="${breakdown.replace(/"/g, '&quot;')}" onclick="showScoreBreakdown('${breakdownEscaped}')">
+                                <div class="text-right pl-4 shrink-0 cursor-help" title="${breakdown.split('"').join('&quot;')}" onclick="showScoreBreakdown('${breakdownEscaped}')">
                                     <div class="text-green-400 font-bold text-lg">${item.score}</div>
                                     <div class="text-[10px] text-gray-600 uppercase tracking-wider">Score</div>
                                 </div>
@@ -2035,7 +2128,7 @@ async def index() -> str:
         }
 
         function showScoreBreakdown(breakdown) {
-            const msg = 'Score Breakdown:\\n\\n' + breakdown.replace(/\\\\n/g, '\\n');
+            const msg = 'Score Breakdown:\\n\\n' + breakdown.split('\\\\n').join('\\n');
             alert(msg);
         }
 
@@ -2251,7 +2344,7 @@ async def index() -> str:
                 const fontSize = Math.max(8, 10 * mapScale);
                 const maxChars = Math.floor(ROOM_SIZE / (fontSize * 0.6));
                 let name = room.name.length > maxChars ? room.name.substring(0, maxChars-2) + '..' : room.name;
-                html += '<text x="' + (x + ROOM_SIZE/2) + '" y="' + (y + ROOM_SIZE/2) + '" text-anchor="middle" dominant-baseline="middle" fill="#aaa" font-size="' + fontSize + '" font-family="sans-serif">' + name.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</text>';
+                html += '<text x="' + (x + ROOM_SIZE/2) + '" y="' + (y + ROOM_SIZE/2) + '" text-anchor="middle" dominant-baseline="middle" fill="#aaa" font-size="' + fontSize + '" font-family="sans-serif">' + name.split('&').join('&amp;').split('<').join('&lt;') + '</text>';
                 
                 // Vnum label
                 html += '<text x="' + (x + ROOM_SIZE/2) + '" y="' + (y + ROOM_SIZE - 4) + '" text-anchor="middle" fill="#555" font-size="' + (fontSize * 0.7) + '" font-family="monospace">#' + room.vnum + '</text>';
@@ -2435,8 +2528,8 @@ async def get_object(vnum: int) -> Dict[str, Any]:
     decoded_affects = decode_applies(obj.affects)
     item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
     decoded_item_type = ITEM_TYPES.get(item_type_num, obj.item_type)
-    decoded_extra_flags = decode_flags(obj.extra_flags, ITEM_FLAGS)
-    decoded_wear_flags = decode_flags(obj.wear_flags, WEAR_FLAGS)
+    decoded_extra_flags = decode_flags(obj.extraFlags, ITEM_FLAGS)
+    decoded_wear_flags = decode_flags(obj.wearFlags, WEAR_FLAGS)
     
     # Interpret values
     values_interpreted = interpret_values(item_type_num, obj.values, obj.level)
@@ -2454,9 +2547,9 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "cost": obj.cost,
         "condition": obj.condition,
         "extra_flags": decoded_extra_flags,
-        "extra_flags_raw": obj.extra_flags,
+        "extra_flags_raw": obj.extraFlags,
         "wear_flags": decoded_wear_flags,
-        "wear_flags_raw": obj.wear_flags,
+        "wear_flags_raw": obj.wearFlags,
         "values": obj.values,
         "values_interpreted": values_interpreted,
         "affects": decoded_affects,
@@ -2503,13 +2596,27 @@ async def get_rooms(limit: int = 10000) -> list:
     for i, (vnum, room) in enumerate(parser.rooms.items()):
         if i >= limit:
             break
+            
+        # Decode room flags
+        decoded_flags = decode_flags(room.room_flags, ROOM_FLAGS)
+        
+        # Decode sector type
+        sector_num = int(room.sector_type) if room.sector_type.isdigit() else 0
+        decoded_sector = SECTOR_TYPES.get(sector_num, room.sector_type)
+        
         result.append({
             "vnum": room.vnum,
             "name": room.name,
             "description": room.description,
-            "sector_type": room.sector_type,
+            "sector_type": decoded_sector,
+            "sector_type_raw": room.sector_type,
+            "room_flags": decoded_flags,
+            "room_flags_raw": room.room_flags,
             "area": room.area_name,
-            "area_file": room.area_file
+            "area_file": room.area_file,
+            "exits_count": len(room.exits),
+            "mob_count": len(room.mobs),
+            "obj_count": len(room.objects)
         })
     return result
 
@@ -2701,9 +2808,9 @@ async def get_objects(
         # Get item type number and name
         try:
             item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
-        except (ValueError, TypeError):
+        except:
             item_type_num = 0
-        
+            
         item_type_name = ITEM_TYPES.get(item_type_num, obj.item_type)
         
         if item_type and item_type.lower() not in item_type_name.lower():
@@ -2841,14 +2948,23 @@ async def get_room(vnum: int) -> Dict[str, Any]:
             "key_vnum": ex.key_vnum
         })
 
+    # Decode room flags
+    decoded_flags = decode_flags(room.room_flags, ROOM_FLAGS)
+    
+    # Decode sector type
+    sector_num = int(room.sector_type) if room.sector_type.isdigit() else 0
+    decoded_sector = SECTOR_TYPES.get(sector_num, room.sector_type)
+
     return {
         "vnum": room.vnum,
         "name": room.name,
         "description": room.description,
         "area": room.area_name,
         "area_file": room.area_file,
-        "room_flags": room.room_flags,
-        "sector_type": room.sector_type,
+        "room_flags": decoded_flags,
+        "room_flags_raw": room.room_flags,
+        "sector_type": decoded_sector,
+        "sector_type_raw": room.sector_type,
         "exits": exits_data,
         "extra_descr": room.extra_descr,
         "mobs": mobs_in_room,
@@ -2981,6 +3097,7 @@ async def get_best_gear(
                 else:
                     restricted = True # Restricted to another race
                     break
+        
         if restricted:
             continue
         
@@ -3059,8 +3176,41 @@ async def get_best_gear(
         items.sort(key=lambda x: x['score'], reverse=True)
         result[slot] = items[:limit]
         
-    return result;
+    return result
 
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        # Connect to the C Game Server
+        reader, writer = await asyncio.open_connection(MUD_HOST, MUD_PORT)
+        
+        async def mud_to_ws():
+            while True:
+                data = await reader.read(4096)
+                if not data: break
+                # Decode Latin-1 (standard for MUDs) to send to Browser (UTF-8 auto handled by websocket lib)
+                await websocket.send_text(data.decode('latin-1', errors='replace'))
+
+        async def ws_to_mud():
+            try:
+                while True:
+                    data = await websocket.receive_text()
+                    writer.write(data.encode('latin-1'))
+                    await writer.drain()
+            except WebSocketDisconnect:
+                pass
+
+        # Run both tasks until one fails
+        await asyncio.wait(
+            [asyncio.create_task(mud_to_ws()), asyncio.create_task(ws_to_mud())],
+            return_when=asyncio.FIRST_COMPLETED
+        )
+    except Exception as e:
+        print(f"Connection Error: {e}")
+        await websocket.close()
+    
 
 if __name__ == "__main__":
     import uvicorn

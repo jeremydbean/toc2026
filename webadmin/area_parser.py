@@ -86,6 +86,52 @@ WEAPON_TYPES = {
     'F': 'two-hands',
 }
 
+# Room flags
+ROOM_FLAGS = {
+    'A': 'dark',
+    'B': 'jail',
+    'C': 'no_mob',
+    'D': 'indoors',
+    'E': 'river',
+    'F': 'teleport',
+    'G': 'cult_entrance',
+    'H': 'affected_by',
+    'I': 'deathtrap',
+    'J': 'private',
+    'K': 'safe',
+    'L': 'solitary',
+    'M': 'pet_shop',
+    'N': 'no_recall',
+    'O': 'imp_only',
+    'P': 'gods_only',
+    'Q': 'heroes_only',
+    'R': 'newbies_only',
+    'S': 'law',
+    'T': 'hp_regen',
+    'U': 'mana_regen',
+    'V': 'arena',
+    'W': 'castle_join',
+    'X': 'silent',
+    'Y': 'bfs_mark',
+    'Z': 'flags2',
+}
+
+# Sector types
+SECTOR_TYPES = {
+    0: 'inside',
+    1: 'city',
+    2: 'field',
+    3: 'forest',
+    4: 'hills',
+    5: 'mountain',
+    6: 'water_swim',
+    7: 'water_noswim',
+    8: 'under_water',
+    9: 'air',
+    10: 'desert',
+    11: 'underground',
+}
+
 # Damage type names
 DAMAGE_TYPES = {
     0: 'none',

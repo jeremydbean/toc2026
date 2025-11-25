@@ -334,6 +334,7 @@ DECLARE_DO_FUN(	do_rescue	);
 DECLARE_DO_FUN(	do_rest		);
 DECLARE_DO_FUN(	do_restore	);
 DECLARE_DO_FUN(	do_restorechar	);
+DECLARE_DO_FUN( do_herbie       );
 DECLARE_DO_FUN( do_retrieved    );
 DECLARE_DO_FUN(	do_return	);
 DECLARE_DO_FUN( do_ride         );

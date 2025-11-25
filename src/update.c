@@ -2639,46 +2639,76 @@ void update_handler( void )
 void component_update( void )
 {
   ROOM_INDEX_DATA *component_area, *component_room;
-  OBJ_DATA *component;
+  OBJ_DATA *component, *obj;
   int count, count2, areas, herb, spell_comp, pick;
+  int herb_count = 0, spell_comp_count = 0;
+  LIST_ITERATOR obj_iter;
 
-  areas = dice(1,3) + 1;
-  herb = dice(1,2) + 1;
-
-  for( count = 0; count < areas; count++)
+  /* Count existing components in the world to prevent overflow */
+  FOR_EACH_OBJECT( obj_iter, obj )
   {
-    for( ; ; )
-    {
-      component_area = get_room_index( number_range( 0, 65535 ) );
+    if (obj == NULL || obj->pIndexData == NULL)
+      continue;
+    /* Check if this is an herb (vnums 34-53) */
+    if (obj->pIndexData->vnum >= 34 && obj->pIndexData->vnum <= 53)
+      herb_count++;
+    /* Check if this is a spell component (vnums 54-88) */
+    if (obj->pIndexData->vnum >= 54 && obj->pIndexData->vnum <= 88)
+      spell_comp_count++;
+  }
 
-      if(component_area != NULL)
-	break;
-    }
+  /* Limit herbs to 250 in the world */
+  if (herb_count >= 250)
+  {
+    /* Skip herb spawning if we have too many */
+  }
+  else
+  {
+    areas = dice(1,3) + 1;
+    herb = dice(1,2) + 1;
 
-    for(count2 = 0; count2 < herb; count2++)
+    for( count = 0; count < areas; count++)
     {
       for( ; ; )
       {
-	component_room = get_room_index( number_range( 0, 65535 ) );
+        component_area = get_room_index( number_range( 0, 65535 ) );
 
-	if( component_room != NULL
-	 && component_room->area == component_area->area )
-	  break;
+        if(component_area != NULL)
+          break;
       }
 
+      for(count2 = 0; count2 < herb; count2++)
+      {
+        /* Check limit again in case we hit it during spawning */
+        if (herb_count >= 250)
+          break;
 
-      pick = component_table[dice(1,20) - 1].herb;
-      component = create_object( get_obj_index(pick), 1 );
-      component->timer = 60;
-      obj_to_room(component, component_room);
+        for( ; ; )
+        {
+          component_room = get_room_index( number_range( 0, 65535 ) );
 
-      send_to_room("You notice a strange plant on the ground.\n\r",
-	  component_room->vnum);
+          if( component_room != NULL
+           && component_room->area == component_area->area )
+            break;
+        }
+
+        pick = component_table[dice(1,20) - 1].herb;
+        component = create_object( get_obj_index(pick), 1 );
+        component->timer = 720;  /* 12 hours (720 ticks) */
+        obj_to_room(component, component_room);
+        herb_count++;
+
+        send_to_room("You notice a strange plant on the ground.\n\r",
+            component_room->vnum);
+      }
     }
-
   }
 
   if(number_percent () < 50)
+    return;
+
+  /* Limit spell components to 200 in the world */
+  if (spell_comp_count >= 200)
     return;
 
   areas = dice(1,2) + 1;
@@ -2696,6 +2726,10 @@ void component_update( void )
 
     for(count2 = 0; count2 < spell_comp; count2++)
     {
+      /* Check limit again */
+      if (spell_comp_count >= 200)
+        break;
+
       for( ; ; )
       {
 	component_room = get_room_index( number_range( 0, 65535 ) );
@@ -2707,7 +2741,10 @@ void component_update( void )
 
       pick = component_table[dice(1,33) - 1].component;
       component = create_object( get_obj_index(pick), 1 );
+      /* BUG FIX: Spell components were missing timer, causing them to never rot */
+      component->timer = 720;  /* 12 hours (720 ticks) */
       obj_to_room(component, component_room);
+      spell_comp_count++;
 
       send_to_room("You notice something strange on the ground.\n\r",
 	  component_room->vnum);

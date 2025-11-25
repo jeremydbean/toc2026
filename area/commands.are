@@ -1884,6 +1884,22 @@ is only usable by creators and implementors.  Restore should be used sparingly
 or not at all.
 ~
 
+61 HERBIE~
+Syntax: herbie <player>
+
+Herbie sends a friendly angel named Herbie to restore a player's health, mana,
+and movement points. It also cures poison, plague, blindness, sleep, and curse
+effects, and restores hunger and thirst.
+
+Unlike the full 'restore' command, herbie can only be used on individual
+players (not rooms or 'all'), and cannot be used on immortals of equal or
+higher level. This command is intended for Saints and higher to help players
+in need without requiring full restore privileges.
+
+The target player will see: "An angel named Herbie glides down from heaven 
+and cures all your wounds."
+~
+
 66 SLAY~
 Syntax: slay <character>
 
@@ -2201,6 +2217,119 @@ This is to be used only as a last resort for players that have
 consistently abused their note privilege.
 ~
 
+0 ' SAY~
+Syntax: '<message>
+Syntax: say <message>
+
+The apostrophe (') is a shortcut for the SAY command.  Typing:
+   'Hello everyone!
+is identical to:
+   say Hello everyone!
+
+SAY speaks aloud to everyone in your current room.  Only people in the same
+room can hear you.  Use TELL for private messages to individuals, or GOSSIP
+for world-wide chat.
+~
+
+0 ; GTELL~
+Syntax: ;<message>
+Syntax: gtell <message>
+
+The semicolon (;) is a shortcut for the GTELL command.  Typing:
+   ;Careful, there's a trap ahead.
+is identical to:
+   gtell Careful, there's a trap ahead.
+
+GTELL sends a message privately to all members of your current group,
+regardless of where they are in the world.  Use GROUP to see who is in your
+party.  Note that you must have no space between the semicolon and your
+message.
+~
+
+0 'ASTRAL WALK' ASTRAL~
+Syntax: astral walk <target>
+
+ASTRAL WALK is a psionic travel ability that teleports you to another
+character anywhere in the world.  The target must be visible to you and
+not in a protected room (private, safe, immortal-only, etc.).  The spell
+costs 70 mana and requires training in the astral_walk psionic skill.
+
+If successful, you (and your pet if nearby) shimmer and appear next to
+the target.  If you fail your concentration check, you lose a small amount
+of mana without teleporting.  The target receives no warning of your arrival.
+
+See also: PROJECT, SHIFT
+~
+
+0 'EGO WHIP' EGOWHIP~
+Syntax: ego whip <target>
+
+EGO WHIP is a psionic attack that assaults the victim's mind, dealing
+mental damage and potentially reducing one of their primary stats (STR,
+INT, WIS, or DEX) for a period of time.  The stat penalty increases with
+your level.  Costs 20 mana per use.
+
+If the target already has the ego whip debuff, additional uses deal damage
+without adding another stat reduction.  Useful against physically strong
+foes since it bypasses armor entirely.  Requires training in the ego_whip
+psionic skill.
+
+See also: MINDBLAST
+~
+
+51 IMOTD~
+Syntax: imotd
+
+Displays the Immortal Message of the Day, which contains important notices
+and updates specifically for immortal staff members.  This message is shown
+automatically when an immortal logs in.
+~
+
+64 IPORTAL~
+Syntax: iportal <target> [timer] [description]
+
+IPORTAL creates an immortal portal in your current room leading to the
+specified destination.  The target can be either a room vnum or the name
+of a mob/player currently online.
+
+Options:
+  timer        - Number of ticks before the portal disappears.  Use 0 for
+                 permanent.  Default is 0.
+  description  - Custom description for the portal.  If omitted, the portal
+                 appears as "(Shimmering) <default portal text>".
+
+Examples:
+  iportal 3001               - Permanent portal to room 3001
+  iportal 3001 10            - Portal to room 3001 lasting 10 ticks
+  iportal Brak 0 A swirling vortex of energy crackles here.
+
+Note: This is a powerful tool; use responsibly.
+~
+
+69 @ GODTALK~
+Syntax: @<message>
+
+The @ symbol is a shortcut for the GODTALK channel, available only to gods
+(level 69+).  This is a private channel for the highest immortals.
+
+Typing:
+   @Anyone around for a reboot?
+is identical to:
+   godtalk Anyone around for a reboot?
+
+See also: IMMTALK (:), HERO (=)
+~
+
+70 DUMP_EXITS~
+Syntax: dump_exits
+
+DUMP_EXITS writes a complete dump of all room exits in the game to the
+file "exits.dmp" in the area directory.  This is an IMP-only diagnostic
+command used for debugging area connectivity or verifying exit data.
+
+The dump includes source room vnum, destination vnum, and exit direction
+for every exit defined in the loaded areas.
+~
 
 0 $~
 

@@ -330,11 +330,6 @@ The codebase is in solid shape with significant string safety improvements compl
 - **Debugging tip**: Use `docker exec toc cat /app/webadmin/server.py | grep "something"` to verify the container has the expected code.
 
 #### 4. JavaScript Template Literals in Python Strings
-- **Context**: The web admin UI uses JavaScript template literals (`${variable}`) inside Python triple-quoted strings.
-- **Gotcha**: When debugging, `curl` output will show the literal `${m.vnum}` because that JavaScript code runs in the browser, not on the server. This is expected - the template literal interpolation happens client-side when `data.map()` executes.
-- **Not a bug**: Seeing `onclick="showMobDetail(${m.vnum})"` in the raw HTML is correct - this is inside a JavaScript string that gets interpolated when the browser runs the code.
-
-#### 5. Python String Escaping for JavaScript
 - **Issue**: When embedding JavaScript in Python triple-quoted strings, `\n` in Python becomes a literal newline, breaking JS syntax.
 - **Example**: `item.score_breakdown.join('\n')` in Python outputs a literal newline in the HTML, causing `SyntaxError: Invalid or unexpected token`.
 - **Fix**: Use `\\n` in Python to output literal `\n` for JavaScript:
@@ -347,12 +342,23 @@ The codebase is in solid shape with significant string safety improvements compl
   ```
 - **Location**: `webadmin/server.py` around line 1906 (Best Gear score breakdown)
 
-#### 6. Python vs JavaScript Syntax in Embedded Code
+#### 5. Python vs JavaScript Syntax in Embedded Code
 - **Issue**: When writing JavaScript inside Python strings, accidentally using Python/JavaScript syntax in the wrong context.
 - **Examples found**:
   - `exits_data.push({...})` - JavaScript `push` used in Python code (should be `append`)
   - `obj.extraFlags` - camelCase used but Python dataclass uses `extra_flags`
 - **Prevention**: Always check the context - if it's inside `"""..."""` it's being sent to browser (JS), if it's in the Python endpoint function it's Python.
+
+#### 6. Python Syntax Corruption in `webadmin/server.py`
+- **Issue**: The file `webadmin/server.py` was corrupted with C-style syntax (braces `{}`, semicolons `;`, `//` comments) inside Python functions (`get_areas`, `get_area_map`, `get_objects`, `get_mob`, `get_best_gear`, `websocket_endpoint`). This caused `SyntaxError` and prevented the server from starting.
+- **Fix**: Systematically replaced all C-style syntax with valid Python syntax (indentation, `#` comments, `except` blocks, `append` instead of `push`).
+- **Lesson**: Be extremely careful when copying code between languages or using AI generation that might mix languages. Always verify syntax after edits.
+
+#### 7. Segfault on Startup due to `webadmin.queue`
+- **Issue**: The MUD server (`merc`) segfaulted immediately after startup (`ROM is ready to rock... Segmentation fault`).
+- **Root Cause**: The `area/webadmin.queue` file likely contained malformed data (possibly from the corrupted Python script writing to it).
+- **Fix**: Deleted `area/webadmin.queue` and restarted the container.
+- **Prevention**: Ensure `webadmin/server.py` writes valid commands to the queue file.
 
 ### Web Admin Features (Nov 25, 2025)
 

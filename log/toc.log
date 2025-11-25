@@ -1,52 +1,53 @@
-Tue Nov 25 05:21:07 2025 :: LOADING COMM TABLE
-Tue Nov 25 05:21:07 2025 ::  INIT OK 
-Tue Nov 25 05:21:07 2025 :: Ended LOADING COMM TABLE
-Tue Nov 25 05:21:07 2025 :: Ended Fixing Exits
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 3715 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 3715|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 717 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 717|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 717 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 717|Signval: 1|Gameload|Total: 2
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 911 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 911|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 911 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 911|Signval: 1|Gameload|Total: 2
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 1388 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 1388|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 7664 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 7664|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 7665 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 7665|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 17713 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 17713|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (-1).
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 10051 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 10051|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 10051 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 10051|Signval: 1|Gameload|Total: 2
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (5).
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (-1).
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (-1).
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (-1).
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (-1).
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (-1).
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (-1).
-Tue Nov 25 05:21:07 2025 :: [*****] BUG: Equip_char: already equipped (-1).
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 29215 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 29215|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 29215 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 29215|Signval: 1|Gameload|Total: 2
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 29240 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 29240|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 29240 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 29240|Signval: 1|Gameload|Total: 2
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 29240 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 29240|Signval: 1|Gameload|Total: 3
-Tue Nov 25 05:21:07 2025 :: Called for vnum: 28114 to modify as: 1 as gameload.
-Tue Nov 25 05:21:07 2025 :: Vnum 28114|Signval: 1|Gameload|Total: 1
-Tue Nov 25 05:21:07 2025 :: Ended Area Update
-Tue Nov 25 05:21:07 2025 :: Ended Loading Notes
-Tue Nov 25 05:21:07 2025 :: Ended Loading Ban
-Tue Nov 25 05:21:07 2025 :: Ended Loading Pkills
-Tue Nov 25 05:21:07 2025 :: ROM is ready to rock on port 9000.
+Tue Nov 25 14:10:59 2025 :: LOADING COMM TABLE
+Tue Nov 25 14:10:59 2025 ::  INIT OK 
+Tue Nov 25 14:10:59 2025 :: Ended LOADING COMM TABLE
+Tue Nov 25 14:10:59 2025 :: Ended Fixing Exits
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 3715 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 3715|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 717 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 717|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 717 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 717|Signval: 1|Gameload|Total: 2
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 911 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 911|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 911 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 911|Signval: 1|Gameload|Total: 2
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 1388 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 1388|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 7664 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 7664|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 7665 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 7665|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 17713 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 17713|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (-1).
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 10051 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 10051|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 10051 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 10051|Signval: 1|Gameload|Total: 2
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (5).
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (-1).
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (-1).
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (-1).
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (-1).
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (-1).
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (-1).
+Tue Nov 25 14:10:59 2025 :: [*****] BUG: Equip_char: already equipped (-1).
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 29215 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 29215|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 29215 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 29215|Signval: 1|Gameload|Total: 2
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 29240 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 29240|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 29240 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 29240|Signval: 1|Gameload|Total: 2
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 29240 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 29240|Signval: 1|Gameload|Total: 3
+Tue Nov 25 14:10:59 2025 :: Called for vnum: 28114 to modify as: 1 as gameload.
+Tue Nov 25 14:10:59 2025 :: Vnum 28114|Signval: 1|Gameload|Total: 1
+Tue Nov 25 14:10:59 2025 :: Ended Area Update
+Tue Nov 25 14:10:59 2025 :: Ended Loading Notes
+Tue Nov 25 14:10:59 2025 :: Ended Loading Ban
+Tue Nov 25 14:10:59 2025 :: Ended Loading Pkills
+Tue Nov 25 14:10:59 2025 :: ROM is ready to rock on port 9000.
+Tue Nov 25 14:11:01 2025 :: Sock.sinaddr:  127.0.0.1
