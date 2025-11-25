@@ -2639,22 +2639,25 @@ void update_handler( void )
 void component_update( void )
 {
   ROOM_INDEX_DATA *component_area, *component_room;
-  OBJ_DATA *component, *obj;
+  OBJ_DATA *component;
+  OBJ_INDEX_DATA *pObjIndex;
   int count, count2, areas, herb, spell_comp, pick;
   int herb_count = 0, spell_comp_count = 0;
-  LIST_ITERATOR obj_iter;
+  int vnum;
 
-  /* Count existing components in the world to prevent overflow */
-  FOR_EACH_OBJECT( obj_iter, obj )
+  /* Count existing components in the world using object index counts.
+   * This is more efficient and safer than iterating the full object_list.
+   * Herbs are vnums 34-53, spell components are vnums 54-88.
+   */
+  for (vnum = 34; vnum <= 53; vnum++)
   {
-    if (obj == NULL || obj->pIndexData == NULL)
-      continue;
-    /* Check if this is an herb (vnums 34-53) */
-    if (obj->pIndexData->vnum >= 34 && obj->pIndexData->vnum <= 53)
-      herb_count++;
-    /* Check if this is a spell component (vnums 54-88) */
-    if (obj->pIndexData->vnum >= 54 && obj->pIndexData->vnum <= 88)
-      spell_comp_count++;
+    if ((pObjIndex = get_obj_index(vnum)) != NULL)
+      herb_count += pObjIndex->count;
+  }
+  for (vnum = 54; vnum <= 88; vnum++)
+  {
+    if ((pObjIndex = get_obj_index(vnum)) != NULL)
+      spell_comp_count += pObjIndex->count;
   }
 
   /* Limit herbs to 250 in the world */

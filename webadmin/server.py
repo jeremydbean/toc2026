@@ -1336,13 +1336,23 @@ async def index() -> str:
                 const lf = String.fromCharCode(10);
                 const crlf = cr + lf;
                 
-                // Convert CR to CRLF for sending to MUD (MUD expects CRLF line endings)
-                let sendData = data.split(cr).join(crlf);
+                // Convert lone CR or lone LF to CRLF for sending to MUD (MUD expects CRLF line endings)
+                // First replace any CRLF that already exists, then replace lone CR, then lone LF
+                let sendData = data;
+                // Temporarily mark existing CRLF
+                sendData = sendData.split(crlf).join('\\x00CRLF\\x00');
+                // Replace lone CR with CRLF
+                sendData = sendData.split(cr).join(crlf);
+                // Replace lone LF with CRLF  
+                sendData = sendData.split(lf).join(crlf);
+                // Restore any original CRLF
+                sendData = sendData.split('\\x00CRLF\\x00').join(crlf);
+                
                 console.log('Sending to server:', sendData, 'charCodes:', Array.from(sendData).map(c => c.charCodeAt(0)));
                 
                 if (localEcho) {
                     // Echo locally
-                    term.write(sendData);
+                    term.write(data);  // Echo original data, not converted
                 }
                 if (ws && ws.readyState === WebSocket.OPEN) {
                     ws.send(sendData);
@@ -3182,34 +3192,57 @@ async def get_best_gear(
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
+    writer = None
     try:
         # Connect to the C Game Server
         reader, writer = await asyncio.open_connection(MUD_HOST, MUD_PORT)
         
         async def mud_to_ws():
-            while True:
-                data = await reader.read(4096)
-                if not data: break
-                # Decode Latin-1 (standard for MUDs) to send to Browser (UTF-8 auto handled by websocket lib)
-                await websocket.send_text(data.decode('latin-1', errors='replace'))
+            try:
+                while True:
+                    data = await reader.read(4096)
+                    if not data: 
+                        break
+                    # Decode Latin-1 (standard for MUDs) to send to Browser (UTF-8 auto handled by websocket lib)
+                    await websocket.send_text(data.decode('latin-1', errors='replace'))
+            except Exception as e:
+                print(f"mud_to_ws error: {e}")
 
         async def ws_to_mud():
             try:
                 while True:
                     data = await websocket.receive_text()
+                    print(f"WS received: {repr(data)}")
                     writer.write(data.encode('latin-1'))
                     await writer.drain()
             except WebSocketDisconnect:
-                pass
+                print("WebSocket disconnected")
+            except Exception as e:
+                print(f"ws_to_mud error: {e}")
 
         # Run both tasks until one fails
-        await asyncio.wait(
+        done, pending = await asyncio.wait(
             [asyncio.create_task(mud_to_ws()), asyncio.create_task(ws_to_mud())],
             return_when=asyncio.FIRST_COMPLETED
         )
+        
+        # Cancel pending tasks
+        for task in pending:
+            task.cancel()
+            
     except Exception as e:
         print(f"Connection Error: {e}")
-        await websocket.close()
+    finally:
+        if writer:
+            writer.close()
+            try:
+                await writer.wait_closed()
+            except Exception:
+                pass
+        try:
+            await websocket.close()
+        except Exception:
+            pass
     
 
 if __name__ == "__main__":
