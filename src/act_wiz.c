@@ -2775,7 +2775,7 @@ void do_clone(CHAR_DATA *ch, char *argument )
     CHAR_DATA *mob;
     OBJ_DATA  *obj;
 
-    rest = one_argument(argument,arg);
+    rest = one_argument( argument, arg );
 
     if (arg[0] == '\0')
     {
@@ -2878,8 +2878,6 @@ void do_clone(CHAR_DATA *ch, char *argument )
 	return;
     }
 }
-
-/* RT to replace the two load commands */
 
 void do_load(CHAR_DATA *ch, char *argument )
 {
@@ -3049,7 +3047,7 @@ void do_purge( CHAR_DATA *ch, char *argument )
 	      extract_obj( obj );
 	}
 
-	act( "A flash of brilliant light blinds you, and the room is completely clean.", ch, NULL, NULL, TO_ROOM);
+	act( "A flash of brilliant light blinds you, and the room is completely clean.", ch, NULL, NULL, TO_ROOM );
 	send_to_char( "Room purged.\n\r", ch );
 	return;
     }
@@ -3164,7 +3162,7 @@ void do_advance( CHAR_DATA *ch, char *argument )
 	victim->exp      = exp_per_level(victim,victim->pcdata->points);
 	victim->max_hit  = 20;
 	victim->max_mana = 100;
-	victim->max_move = 100;
+	victim->max_move  = 100;
 	victim->practice = 0;
 	victim->train    = 0;
 	victim->hit      = victim->max_hit;
@@ -3871,6 +3869,7 @@ void do_sset( CHAR_DATA *ch, char *argument )
 	  snprintf(buf, sizeof(buf),"%s %s skill set to %d.\n\r",victim->name,skill_table[sn].name,value);
 	else
 	  snprintf(buf, sizeof(buf),"Your %s skill is now %d.\n\r",skill_table[sn].name,value);
+
 	send_to_char(buf,ch);
     }
 
@@ -4109,6 +4108,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	send_to_char(buf,ch);
 	return;
     }
+
 
     if ( !str_prefix( arg2, "castle" ) )
     {
@@ -4445,7 +4445,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (!str_prefix( arg2, "race" ) )
+    if (!str_prefix(arg2, "race" ) )
     {
 	int race;
 
@@ -5445,7 +5445,7 @@ void do_cloak( CHAR_DATA *ch, char *argument )
     char arg[MAX_STRING_LENGTH];
 
     if(IS_NPC(ch))
-    return;
+	return;
 
     one_argument( argument, arg );
 
@@ -5714,7 +5714,7 @@ void do_pstat( CHAR_DATA *ch, char *argument )
 
      for( d = descriptor_list; d != NULL; d = d->next )
      {
-	if(  d->connected == CON_PLAYING
+	if (d->connected == CON_PLAYING
 	&& (victim = d->character ) != NULL
 	&& !IS_NPC(victim)
 	&& victim != ch
@@ -5751,6 +5751,8 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     if ( arg[0] == '\0' )
     {
         send_to_char( "Syntax: grantpsi <player> [now] [skill1,skill2,...]\n\r", ch );
+        send_to_char( "  Target: Room vnum or mob name.\n\r", ch );
+        send_to_char( "  Timer:  0 for permanent, or number of ticks.\n\r", ch );
         return;
     }
 
@@ -5850,7 +5852,7 @@ void do_gkick( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-	 if ( !str_cmp( arg2, "n") || !str_cmp( arg2, "north" ) ) door = 0;
+    if ( !str_cmp( arg2, "n") || !str_cmp( arg2, "north" ) ) door = 0;
     else if ( !str_cmp( arg2, "e") || !str_cmp( arg2, "east" ) )  door = 1;
     else if ( !str_cmp( arg2, "s") || !str_cmp( arg2, "south" ) ) door = 2;
     else if ( !str_cmp( arg2, "w") || !str_cmp( arg2, "west" ) )  door = 3;
@@ -6366,4 +6368,98 @@ void do_component_update( CHAR_DATA *ch, char *argument )
   	component_update();
     send_to_char( "New Components Scattered!\n\r", ch );
     return;
+}
+
+void do_iportal( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    OBJ_DATA *portal;
+    OBJ_INDEX_DATA *pObjIndex;
+    ROOM_INDEX_DATA *to_room;
+    int timer;
+
+    argument = one_argument( argument, arg1 );
+    argument = one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' )
+    {
+        send_to_char( "Syntax: iportal <target> [timer] [description]\n\r", ch );
+        send_to_char( "  Target: Room vnum or mob name.\n\r", ch );
+        send_to_char( "  Timer:  0 for permanent, or number of ticks.\n\r", ch );
+        return;
+    }
+
+    /* Find target room */
+    if ( is_number( arg1 ) )
+    {
+        if ( ( to_room = get_room_index( atoi( arg1 ) ) ) == NULL )
+        {
+            send_to_char( "No such room.\n\r", ch );
+            return;
+        }
+    }
+    else
+    {
+        if ( ( victim = get_char_world( ch, arg1 ) ) == NULL )
+        {
+            send_to_char( "No such character.\n\r", ch );
+            return;
+        }
+        to_room = victim->in_room;
+    }
+
+    if ( to_room == NULL )
+    {
+        send_to_char( "Target is not in a room.\n\r", ch );
+        return;
+    }
+
+    /* Parse timer */
+    if ( arg2[0] == '\0' )
+        timer = 0;
+    else if ( is_number( arg2 ) )
+        timer = atoi( arg2 );
+    else
+    {
+        send_to_char( "Timer must be a number.\n\r", ch );
+        return;
+    }
+
+    pObjIndex = get_obj_index( 33 ); /* Portal object */
+    if ( pObjIndex == NULL )
+    {
+        send_to_char( "Portal object (vnum 33) not found.\n\r", ch );
+        return;
+    }
+
+    portal = create_object( pObjIndex, 0 );
+    portal->timer = timer;
+    portal->value[0] = 3; /* Portal type: portal spell */
+    portal->value[1] = to_room->vnum;
+    portal->value[2] = 10000; /* High charges */
+
+    /* Description */
+    if ( argument[0] != '\0' )
+    {
+        free_string( portal->description );
+        portal->description = str_dup( argument );
+    }
+    else
+    {
+        /* Default description with (Shimmering) */
+        snprintf( buf, sizeof(buf), "(Shimmering) %s", pObjIndex->description );
+        free_string( portal->description );
+        portal->description = str_dup( buf );
+    }
+
+    obj_to_room( portal, ch->in_room );
+
+    act( "$p appears before you.", ch, portal, NULL, TO_CHAR );
+    act( "$p appears before you.", ch, portal, NULL, TO_ROOM );
+    
+    snprintf(buf, sizeof(buf), "Portal created to room %d with timer %d.\n\r", to_room->vnum, timer);
+    send_to_char(buf, ch);
 }

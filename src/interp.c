@@ -95,6 +95,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "goto",       	do_goto,      	POS_DEAD,       IM,  LOG_NORMAL, 1 },
     { "hit",		do_kill,	POS_FIGHTING,	 0,  LOG_NORMAL, 0 },
     { "inventory",	do_inventory,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
+    { "iportal",	do_iportal,	POS_DEAD,	L6,  LOG_ALWAYS, 1 },
     { "ignore",         do_ignore,      POS_DEAD,        0,  LOG_ALWAYS, 1 },
     { "kill",		do_kill,	POS_FIGHTING,	 0,  LOG_NORMAL, 1 },
     { "look",		do_look,	POS_RESTING,	 0,  LOG_NORMAL, 1 },

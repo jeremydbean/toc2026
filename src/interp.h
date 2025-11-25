@@ -225,6 +225,7 @@ DECLARE_DO_FUN( do_hpardon      );
 DECLARE_DO_FUN(	do_idea		);
 DECLARE_DO_FUN( do_ignore       );
 DECLARE_DO_FUN(	do_immtalk	);
+DECLARE_DO_FUN( do_iportal	);
 DECLARE_DO_FUN( do_imotd	);
 DECLARE_DO_FUN( do_info		);
 DECLARE_DO_FUN(	do_inventory	);
