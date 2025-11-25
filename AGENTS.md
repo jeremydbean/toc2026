@@ -288,3 +288,49 @@ The codebase is in solid shape with significant string safety improvements compl
   - **Object View**: Added "View" button to Objects table and implemented a detailed Object Modal.
   - **Best Gear**: Implemented "Best Gear" UI with Class/Race/Level filters and backend integration.
 - **Python Fixes**: Reverted accidental C-style syntax in `webadmin/server.py`.
+
+### Critical Lessons Learned (Nov 25, 2025)
+
+#### 1. Spurious Whitespace in C Code Causes Segfaults
+- **Issue**: A single extra blank line accidentally inserted inside a `send_to_char()` function call in `src/comm.c` (line ~2328) caused the MUD server to segfault after startup.
+- **Symptom**: Server starts normally, logs "ROM is ready to rock", then crashes with "Segmentation fault" after ~2 minutes.
+- **Root Cause**: The blank line inside the function call:
+  ```c
+  send_to_char(
+  
+      "Reconnecting...", ch);  // BAD - blank line breaks compilation/behavior
+  ```
+- **Fix**: Remove the spurious blank line so the function call is contiguous.
+- **Lesson**: When editing C code, be extremely careful not to introduce whitespace inside multi-line function calls. Always run `git diff` before rebuilding to check for unintended changes.
+
+#### 2. FastAPI Deprecation Warning - `on_event` to `lifespan`
+- **Issue**: FastAPI 0.100+ deprecated `@app.on_event("startup")` decorator, producing a warning on every startup.
+- **Fix**: Replace with the modern `lifespan` context manager pattern:
+  ```python
+  from contextlib import asynccontextmanager
+  
+  @asynccontextmanager
+  async def lifespan(app: FastAPI):
+      # Startup code here
+      global queue_writer
+      queue_writer = QueueWriter(QUEUE_PATH)
+      yield
+      # Shutdown code here (if needed)
+  
+  app = FastAPI(title="ToC Web Admin", lifespan=lifespan)
+  ```
+- **Location**: `webadmin/server.py` lines 26-55
+
+#### 3. Docker Build Workflow - ALWAYS Rebuild After Changes
+- **Critical Rule**: After ANY change to source files (C or Python), you MUST rebuild the Docker image:
+  ```bash
+  docker rm -f toc && docker build -t toc . && docker run -d --name toc -p 9000:9000 -p 9001:9001 -v "$(pwd)/player:/app/player" -v "$(pwd)/gods:/app/gods" -v "$(pwd)/backups:/app/backups" -v "$(pwd)/log:/app/log" -e WEB_ADMIN_ENABLED=1 toc
+  ```
+- **Why**: The Docker container runs from the built image, NOT from local files (except mounted volumes like `player/`, `gods/`, `log/`). Changes to `src/` or `webadmin/` won't take effect until you rebuild.
+- **Debugging tip**: Use `docker exec toc cat /app/webadmin/server.py | grep "something"` to verify the container has the expected code.
+
+#### 4. JavaScript Template Literals in Python Strings
+- **Context**: The web admin UI uses JavaScript template literals (`${variable}`) inside Python triple-quoted strings.
+- **Gotcha**: When debugging, `curl` output will show the literal `${m.vnum}` because that JavaScript code runs in the browser, not on the server. This is expected - the template literal interpolation happens client-side when `data.map()` executes.
+- **Not a bug**: Seeing `onclick="showMobDetail(${m.vnum})"` in the raw HTML is correct - this is inside a JavaScript string that gets interpolated when the browser runs the code.
+

@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1764035608
+LogO 1764040679
 Vers 3
 Desc You see something very special about him.
 ~
@@ -17,12 +17,12 @@ PsiSpec ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 5912661
+Plyd 5912945
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4207
+Room 1
 HMV  30010 30010 15050 15050 14975 14975
 NewGold 856160
 NewPlat 10000033

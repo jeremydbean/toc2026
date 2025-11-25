@@ -25,18 +25,7 @@ QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
 DEFAULT_LOG: Path = Path(os.getenv("LOG_FILE", "log/toc.log"))
 AREA_PATH: Path = Path(os.getenv("AREA_PATH", "area"))
 
-app = FastAPI(title="ToC Web Admin", version="1.0")
-
-
-class CommandRequest(BaseModel):
-    command: str
-
-
-class WizinfoRequest(BaseModel):
-    message: str
-    level: Optional[int] = None
-
-
+# QueueWriter for inter-process communication with the MUD server
 class QueueWriter:
     def __init__(self, queue_path: Path) -> None:
         self.queue_path = queue_path
@@ -49,11 +38,30 @@ class QueueWriter:
 
 queue_writer: Optional[QueueWriter] = None
 
-@app.on_event("startup")
-async def startup_event():
+
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
     global queue_writer
     queue_writer = QueueWriter(QUEUE_PATH)
     print(f"DEBUG: QueueWriter initialized at {QUEUE_PATH}")
+    yield
+    # Shutdown (nothing needed)
+
+
+app = FastAPI(title="ToC Web Admin", version="1.0", lifespan=lifespan)
+
+
+class CommandRequest(BaseModel):
+    command: str
+
+
+class WizinfoRequest(BaseModel):
+    message: str
+    level: Optional[int] = None
+
 
 # Class stat weights for gear optimization
 CLASS_WEIGHTS = {
@@ -1854,16 +1862,18 @@ async def index() -> str:
                     `;
                     
                     for(const item of data[slot]) {
+                        const breakdown = item.score_breakdown ? item.score_breakdown.join('\\n') : 'No breakdown';
+                        const breakdownEscaped = breakdown.replace(/'/g, "\\\\'").replace(/\\n/g, '\\\\n');
                         html += `
                             <div class="p-3 hover:bg-[#151515] transition-colors flex justify-between items-center group">
                                 <div class="flex items-center gap-3 overflow-hidden">
                                     <div class="bg-gray-900 text-gray-500 text-xs font-mono px-2 py-1 rounded">#${item.vnum}</div>
                                     <div class="truncate">
-                                        <div class="text-gray-300 font-bold group-hover:text-white cursor-pointer" onclick="showObjDetail(${item.vnum})">${item.name}</div>
+                                        <div class="text-gray-300 font-bold group-hover:text-white cursor-pointer hover:underline" onclick="showObjDetail(${item.vnum})">${item.name}</div>
                                         <div class="text-xs text-gray-500">Lvl ${item.level} • ${item.area || 'Unknown Area'}</div>
                                     </div>
                                 </div>
-                                <div class="text-right pl-4 shrink-0">
+                                <div class="text-right pl-4 shrink-0 cursor-help" title="${breakdown.replace(/"/g, '&quot;')}" onclick="showScoreBreakdown('${breakdownEscaped}')">
                                     <div class="text-green-400 font-bold text-lg">${item.score}</div>
                                     <div class="text-[10px] text-gray-600 uppercase tracking-wider">Score</div>
                                 </div>
@@ -1882,6 +1892,11 @@ async def index() -> str:
             } catch(e) {
                 container.innerHTML = `<div class="text-center text-red-500 py-12">Error: ${e.message}</div>`;
             }
+        }
+
+        function showScoreBreakdown(breakdown) {
+            const msg = 'Score Breakdown:\\n\\n' + breakdown.replace(/\\\\n/g, '\\n');
+            alert(msg);
         }
     </script>
 </body>
@@ -2005,7 +2020,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
     decoded_affects = decode_applies(obj.affects)
     item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
     decoded_item_type = ITEM_TYPES.get(item_type_num, obj.item_type)
-    decoded_extra_flags = decode_flags(obj.extraFlags, ITEM_FLAGS)
+    decoded_extra_flags = decode_flags(obj.extra_flags, ITEM_FLAGS)
     decoded_wear_flags = decode_flags(obj.wear_flags, WEAR_FLAGS)
     
     # Interpret values
@@ -2024,7 +2039,7 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "cost": obj.cost,
         "condition": obj.condition,
         "extra_flags": decoded_extra_flags,
-        "extra_flags_raw": obj.extraFlags,
+        "extra_flags_raw": obj.extra_flags,
         "wear_flags": decoded_wear_flags,
         "wear_flags_raw": obj.wear_flags,
         "values": obj.values,
@@ -2262,7 +2277,7 @@ async def get_room(vnum: int) -> Dict[str, Any]:
         if to_room:
             to_room_name = to_room.name
             
-        exits_data.push({
+        exits_data.append({
             "direction": parser.DIRECTIONS[ex.direction] if 0 <= ex.direction < len(parser.DIRECTIONS) else str(ex.direction),
             "to_room": ex.to_room,
             "to_room_name": to_room_name,
@@ -2416,6 +2431,7 @@ async def get_best_gear(
         
         # Calculate score
         score = 0.0
+        breakdown = []
         affects_decoded = decode_applies(obj.affects)
         
         for aff in obj.affects:
@@ -2424,10 +2440,15 @@ async def get_best_gear(
             loc_name = APPLY_LOCATIONS.get(loc_id, '').lower()
             
             if loc_name in weights:
-                score += val * weights[loc_name]
+                w = weights[loc_name]
+                s = val * w
+                score += s
+                breakdown.append(f"{loc_name.title()}: {val} x {w} = {s:.1f}")
             elif loc_name == 'armor class':
                 # Negative AC is good in ROM, so multiply by -1 to make it a positive score
-                score += (val * -1.0)
+                s = val * -1.0
+                score += s
+                breakdown.append(f"AC: {val} x -1 = {s:.1f}")
         
         # Also check values for weapons (avg damage)
         try:
@@ -2441,7 +2462,9 @@ async def get_best_gear(
                 d_num = int(obj.values[1])
                 d_size = int(obj.values[2])
                 avg_dam = d_num * (d_size + 1) / 2.0
-                score += avg_dam * 2.0 # Weight weapon damage highly
+                s = avg_dam * 2.0
+                score += s # Weight weapon damage highly
+                breakdown.append(f"Dmg: {d_num}d{d_size} (avg {avg_dam:.1f}) x 2.0 = {s:.1f}")
             except:
                 pass
         
@@ -2454,11 +2477,20 @@ async def get_best_gear(
             if slot == "take":
                 continue
             
+            # Filter: Only weapons in wield slot
+            if slot == "wield" and item_type_num != 5:
+                continue
+                
+            # Filter: No weapons in armor slots (head, body, etc)
+            if item_type_num == 5 and slot not in ["wield", "two-hands"]:
+                continue
+
             if slot not in best_items:
                 best_items[slot] = []
             
             best_items[slot].append({
                 "score": round(score, 2),
+                "score_breakdown": breakdown,
                 "vnum": obj.vnum,
                 "name": obj.short_desc,
                 "level": obj.level,
