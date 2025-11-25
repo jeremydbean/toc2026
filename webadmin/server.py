@@ -1535,12 +1535,12 @@ async def index() -> str:
                 `;
                 }).join('');
             } else if(currentDb === 'areas') {
-                headerHtml = '<th class="p-4">Name</th><th class="p-4">Filename</th><th class="p-4">Builders</th><th class="p-4">Vnums</th><th class="p-4">Actions</th>';
+                headerHtml = '<th class="p-4">Name</th><th class="p-4">Builder</th><th class="p-4">Filename</th><th class="p-4">Vnums</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(a => `
                     <tr class="hover:bg-[#151515] transition-colors">
                         <td class="p-4 font-bold text-gray-300">${a.name}</td>
+                        <td class="p-4 text-gray-400">${a.builder || '-'}</td>
                         <td class="p-4 font-mono text-sm text-gray-500">${a.filename}</td>
-                        <td class="p-4 text-gray-400">${a.builders || '-'}</td>
                         <td class="p-4 text-gray-500 text-sm">${a.vnums || '-'}</td>
                         <td class="p-4">
                             <button onclick="showAreaMap('${a.filename}')" class="text-xs bg-green-900/30 hover:bg-green-900/50 text-green-400 px-2 py-1 rounded border border-green-900/50"><i class="fas fa-map mr-1"></i>Map</button>
@@ -2048,11 +2048,25 @@ async def index() -> str:
         
         async function showAreaMap(filename) {
             try {
+                console.log('Fetching map for:', filename);
                 const res = await fetch('/api/areas/' + encodeURIComponent(filename) + '/map');
-                if(!res.ok) throw new Error('Failed to fetch map data');
-                mapData = await res.json();
+                console.log('Response status:', res.status);
+                if(!res.ok) throw new Error('Failed to fetch map data (HTTP ' + res.status + ')');
                 
-                document.getElementById('map-modal-title').textContent = mapData.area_name + ' Map';
+                const text = await res.text();
+                console.log('Response length:', text.length);
+                if(!text || text.length === 0) {
+                    throw new Error('Empty response from server - server may have crashed');
+                }
+                
+                mapData = JSON.parse(text);
+                console.log('Parsed mapData, rooms:', mapData?.rooms?.length);
+                
+                if(!mapData || !mapData.rooms || !Array.isArray(mapData.rooms)) {
+                    throw new Error('Invalid map data received - missing rooms array');
+                }
+                
+                document.getElementById('map-modal-title').textContent = (mapData.area_name || 'Unknown') + ' Map';
                 document.getElementById('map-modal-rooms').textContent = mapData.rooms.length;
                 
                 // Reset view
@@ -2066,6 +2080,7 @@ async def index() -> str:
                 // Setup pan/drag
                 setupMapDrag();
             } catch(e) {
+                console.error('Map loading error:', e);
                 alert('Error loading map: ' + e.message);
             }
         }
@@ -2121,7 +2136,10 @@ async def index() -> str:
         }
         
         function renderMap() {
-            if(!mapData) return;
+            if(!mapData || !mapData.rooms || !Array.isArray(mapData.rooms)) {
+                console.error('renderMap called with invalid mapData');
+                return;
+            }
             
             const svg = document.getElementById('map-svg');
             const container = document.getElementById('map-container');
@@ -2163,7 +2181,8 @@ async def index() -> str:
                 const x1 = (room.x - minX) * CELL_SIZE + PADDING + CELL_SIZE/2;
                 const y1 = (room.y - minY) * CELL_SIZE + PADDING + CELL_SIZE/2;
                 
-                room.exits.forEach(ex => {
+                const exits = room.exits || [];
+                exits.forEach(ex => {
                     const targetRoom = mapData.rooms.find(r => r.vnum === ex.to_room);
                     if(targetRoom) {
                         const x2 = (targetRoom.x - minX) * CELL_SIZE + PADDING + CELL_SIZE/2;
@@ -2195,10 +2214,10 @@ async def index() -> str:
                         if(ex.direction >= 4 || hasKeyword) {
                             const midX = (x1 + x2) / 2;
                             const midY = (y1 + y2) / 2;
-                            let label = hasKeyword ? ex.keyword : DIR_NAMES[ex.direction];
-                            if(label.length > 8) label = label.substring(0, 6) + '..';
+                            let label = hasKeyword ? ex.keyword : (DIR_NAMES[ex.direction] || '?');
+                            if(label && label.length > 8) label = label.substring(0, 6) + '..';
                             html += '<rect x="' + (midX - 20) + '" y="' + (midY - 8) + '" width="40" height="16" fill="#111" rx="3"/>';
-                            html += '<text x="' + midX + '" y="' + (midY + 3) + '" text-anchor="middle" fill="' + color + '" font-size="' + (9 * mapScale) + '" font-family="monospace">' + label + '</text>';
+                            html += '<text x="' + midX + '" y="' + (midY + 3) + '" text-anchor="middle" fill="' + color + '" font-size="' + (9 * mapScale) + '" font-family="monospace">' + (label || '?') + '</text>';
                         }
                     }
                 });
@@ -2238,8 +2257,9 @@ async def index() -> str:
                 html += '<text x="' + (x + ROOM_SIZE/2) + '" y="' + (y + ROOM_SIZE - 4) + '" text-anchor="middle" fill="#555" font-size="' + (fontSize * 0.7) + '" font-family="monospace">#' + room.vnum + '</text>';
                 
                 // Direction indicators for up/down
-                const hasUp = room.exits.some(e => e.direction === 4);
-                const hasDown = room.exits.some(e => e.direction === 5);
+                const roomExits = room.exits || [];
+                const hasUp = roomExits.some(e => e.direction === 4);
+                const hasDown = roomExits.some(e => e.direction === 5);
                 if(hasUp) {
                     html += '<text x="' + (x + ROOM_SIZE - 8) + '" y="' + (y + 12) + '" fill="#88f" font-size="' + (fontSize * 0.8) + '">↑</text>';
                 }
@@ -2263,12 +2283,13 @@ async def index() -> str:
                         document.getElementById('map-tooltip-desc').textContent = room.description.substring(0, 150) + (room.description.length > 150 ? '...' : '');
                         
                         // Format exits
-                        const exitStr = room.exits.map(e => {
+                        const tooltipExits = room.exits || [];
+                        const exitStr = tooltipExits.map(e => {
                             const dirName = DIR_NAMES[e.direction] || 'special';
                             const kw = e.keyword && e.keyword.trim() ? ' (' + e.keyword + ')' : '';
                             return dirName + kw;
                         }).join(', ');
-                        document.getElementById('map-tooltip-exits').textContent = room.exits.length > 0 ? 'Exits: ' + exitStr : 'No exits';
+                        document.getElementById('map-tooltip-exits').textContent = tooltipExits.length > 0 ? 'Exits: ' + exitStr : 'No exits';
                         
                         document.getElementById('map-tooltip-mobs').textContent = room.mob_count > 0 ? 'Mobs: ' + room.mob_names.join(', ') : '';
                         document.getElementById('map-tooltip-objects').textContent = room.obj_count > 0 ? 'Objects: ' + room.obj_names.join(', ') : '';
@@ -2494,7 +2515,7 @@ async def get_rooms(limit: int = 10000) -> list:
 
 
 # Help/documentation area files that should be hidden from the database view
-HELP_AREA_FILES = {'commands.are', 'skills.are', 'spells.are', 'masters.are', 'toc.are', 'help.are'}
+HELP_AREA_FILES = {'commands.are', 'skills.are', 'spells.are', 'masters.are', 'toc.are', 'help.are', 'social.are'}
 
 @app.get("/api/areas")
 async def get_areas() -> list:
@@ -2504,8 +2525,21 @@ async def get_areas() -> list:
             # Skip help/documentation files
             if area.filename in HELP_AREA_FILES:
                 continue
+            
+            # Parse area name: "Builder    Area Name" -> separate fields
+            full_name = area.name
+            parts = full_name.split(None, 1)  # Split on first whitespace
+            if len(parts) == 2:
+                builder = parts[0].strip()
+                area_name = parts[1].strip()
+            else:
+                builder = ""
+                area_name = full_name.strip()
+            
             result.append({
-                "name": area.name,
+                "name": area_name,
+                "full_name": full_name,
+                "builder": builder,
                 "filename": area.filename,
                 "builders": area.builders,
                 "vnums": getattr(area, "vnums", "")
@@ -2514,6 +2548,8 @@ async def get_areas() -> list:
         print(f"Error in get_areas: {e}")
         # Return partial result or empty list instead of 500
         return result
+    # Sort by area name (case-insensitive)
+    result.sort(key=lambda a: a["name"].lower())
     return result
 
 
