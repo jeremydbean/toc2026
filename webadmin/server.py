@@ -49,6 +49,12 @@ class QueueWriter:
 
 queue_writer: Optional[QueueWriter] = None
 
+@app.on_event("startup")
+async def startup_event():
+    global queue_writer
+    queue_writer = QueueWriter(QUEUE_PATH)
+    print(f"DEBUG: QueueWriter initialized at {QUEUE_PATH}")
+
 # Class stat weights for gear optimization
 CLASS_WEIGHTS = {
     "mage": {
@@ -253,6 +259,7 @@ async def index() -> str:
                         <span onclick="showSection('database')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Database</span>
                         <span onclick="showSection('guide')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">How to Play</span>
                         <span onclick="showSection('admin')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Admin</span>
+                        <button onclick="showBestGear()" class="px-4 py-2 rounded hover:bg-gray-800 transition-colors text-yellow-500 hover:text-yellow-300"><i class="fas fa-khanda mr-2"></i>Best Gear</button>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -698,6 +705,52 @@ async def index() -> str:
             </section>
         </div>
 
+        <!-- Best Gear Section -->
+        <div id="best-gear-section" class="tab-content">
+            <section class="py-10 bg-[#0a0a0a] min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Best Gear Finder</h2>
+                    
+                    <div class="bg-[#151515] p-6 rounded border border-gray-800 mb-8">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-1">Class</label>
+                                <select id="bg-class" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none">
+                                    <option value="mage">Mage</option>
+                                    <option value="cleric">Cleric</option>
+                                    <option value="thief">Thief</option>
+                                    <option value="warrior">Warrior</option>
+                                    <option value="monk">Monk</option>
+                                    <option value="necromancer">Necromancer</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-1">Race</label>
+                                <select id="bg-race" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none">
+                                    <option value="human">Human</option>
+                                    <option value="elf">Elf</option>
+                                    <option value="dwarf">Dwarf</option>
+                                    <option value="hobbit">Hobbit</option>
+                                    <option value="saurian">Saurian</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-400 mb-1">Max Level</label>
+                                <input type="number" id="bg-level" value="50" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none">
+                            </div>
+                            <button onclick="loadBestGear()" class="px-4 py-2 rounded bg-yellow-600 hover:bg-yellow-500 text-black font-bold transition-colors">
+                                Find Gear
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="bg-results" class="space-y-8">
+                        <div class="text-center text-gray-500 py-12">Select options and click Find Gear</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
         <!-- Room Detail Modal -->
         <div id="room-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
             <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
@@ -858,6 +911,86 @@ async def index() -> str:
                                 <ul id="mob-modal-spawns" class="space-y-1 text-sm max-h-60 overflow-y-auto">
                                     <!-- Spawns injected here -->
                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Object Detail Modal -->
+        <div id="obj-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
+            <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
+                        <div>
+                            <h3 id="obj-modal-title" class="text-2xl font-bold text-white font-cinzel">Object Name</h3>
+                            <div class="text-gray-500 font-mono text-sm mt-1">Vnum: <span id="obj-modal-vnum" class="text-gray-300">#1234</span></div>
+                        </div>
+                        <button onclick="closeObjModal()" class="text-gray-400 hover:text-white">
+                            <i class="fa-solid fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Main Info -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <div>
+                                <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Description</h4>
+                                <p id="obj-modal-desc" class="text-gray-300 leading-relaxed whitespace-pre-wrap font-serif"></p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Stats</h4>
+                                    <div class="bg-[#111] p-3 rounded border border-gray-800 text-sm space-y-1">
+                                        <div class="flex justify-between"><span class="text-gray-500">Type:</span> <span id="obj-modal-type" class="text-blue-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Level:</span> <span id="obj-modal-level" class="text-yellow-400"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Weight:</span> <span id="obj-modal-weight" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Cost:</span> <span id="obj-modal-cost" class="text-yellow-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Material:</span> <span id="obj-modal-material" class="text-gray-300"></span></div>
+                                        <div class="flex justify-between"><span class="text-gray-500">Condition:</span> <span id="obj-modal-condition" class="text-gray-300"></span></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Affects</h4>
+                                    <ul id="obj-modal-affects" class="bg-[#111] p-3 rounded border border-gray-800 text-sm space-y-1 min-h-[100px]">
+                                        <!-- Affects injected here -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Flags</h4>
+                                <div class="space-y-2 text-sm">
+                                    <div id="obj-modal-extra" class="text-gray-400"><span class="text-purple-400 font-bold">EXTRA:</span> <span></span></div>
+                                    <div id="obj-modal-wear" class="text-gray-400"><span class="text-blue-400 font-bold">WEAR:</span> <span></span></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Values</h4>
+                                <div id="obj-modal-values" class="bg-[#111] p-3 rounded border border-gray-800 text-sm">
+                                    <!-- Values injected here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sidebar -->
+                        <div class="space-y-6">
+                            <div class="bg-[#111] p-4 rounded border border-gray-800">
+                                <h4 class="text-yellow-400 font-bold mb-3 uppercase text-xs tracking-wider">Carried By</h4>
+                                <div class="text-xs text-gray-500 mb-2">Mobs that load this item:</div>
+                                <ul id="obj-modal-carried" class="space-y-2 text-sm max-h-60 overflow-y-auto">
+                                    <!-- Carried by injected here -->
+                                </ul>
+                            </div>
+
+                            <div class="bg-[#111] p-4 rounded border border-gray-800">
+                                <h4 class="text-green-400 font-bold mb-3 uppercase text-xs tracking-wider">Extra Descriptions</h4>
+                                <div id="obj-modal-extras" class="space-y-2 text-sm">
+                                    <!-- Extras injected here -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1121,7 +1254,7 @@ async def index() -> str:
                     </tr>
                 `).join('');
             } else if(currentDb === 'objects') {
-                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Type</th><th class="p-4">Level</th><th class="p-4">Details</th>';
+                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Type</th><th class="p-4">Level</th><th class="p-4">Details</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(o => {
                     // Build affects display
                     let affectsHtml = '';
@@ -1241,7 +1374,7 @@ async def index() -> str:
                     let carriersHtml = '';
                     if(o.carried_by && o.carried_by.length > 0) {
                         carriersHtml = '<div class="mt-2"><strong class="text-yellow-400">Found on:</strong> ' + 
-                            o.carried_by.slice(0, 3).map(m => `<span class="text-yellow-300">${m.name} (${m.level})</span>`).join(', ');
+                            o.carried_by.slice(0, 3).map(m => `<span class="text-yellow-300 cursor-pointer hover:underline" onclick="showMobDetail(${m.vnum})">${m.name} (${m.level})</span>`).join(', ');
                         if(o.carried_by.length > 3) {
                             carriersHtml += ` <span class="text-gray-500">+${o.carried_by.length - 3} more</span>`;
                         }
@@ -1269,6 +1402,9 @@ async def index() -> str:
                             ${wearHtml}
                             ${carriersHtml}
                             <div class="mt-1 text-xs text-gray-600">${o.area || '-'}</div>
+                        </td>
+                        <td class="p-4 align-top">
+                            <button onclick="showObjDetail(${o.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
                         </td>
                     </tr>
                 `;
@@ -1537,7 +1673,7 @@ async def index() -> str:
                 document.getElementById('mob-modal-sex').textContent = mob.sex;
                 document.getElementById('mob-modal-size').textContent = mob.size;
                 document.getElementById('mob-modal-align').textContent = mob.alignment;
-                document.getElementById('mob-modal-wealth').textContent = mob.wealth + 'g';
+                document.getElementById('mob-modal-wealth').textContent = mob.wealth;
                 document.getElementById('mob-modal-material').textContent = mob.material;
                 document.getElementById('mob-modal-startpos').textContent = mob.start_pos;
                 document.getElementById('mob-modal-defpos').textContent = mob.default_pos;
@@ -1556,7 +1692,7 @@ async def index() -> str:
                 const dropsContainer = document.getElementById('mob-modal-drops');
                 if(mob.drops && mob.drops.length > 0) {
                     dropsContainer.innerHTML = mob.drops.map(d => `
-                        <li class="flex justify-between items-center bg-[#151515] p-2 rounded border border-gray-800">
+                        <li onclick="closeMobModal(); showObjDetail(${d.vnum})" class="flex justify-between items-center bg-[#151515] p-2 rounded border border-gray-800 cursor-pointer hover:bg-[#222] transition-colors">
                             <div>
                                 <span class="text-blue-300 font-bold">${d.name}</span>
                                 <div class="text-xs text-gray-500 font-mono">#${d.vnum}</div>
@@ -1592,6 +1728,160 @@ async def index() -> str:
         
         function closeMobModal() {
             document.getElementById('mob-modal').classList.add('hidden');
+        }
+
+        // Object Modal Functions
+        async function showObjDetail(vnum) {
+            try {
+                const res = await fetch(`/api/objects/${vnum}`);
+                if(!res.ok) throw new Error('Failed to fetch object');
+                const obj = await res.json();
+                
+                document.getElementById('obj-modal-title').textContent = obj.short_desc;
+                document.getElementById('obj-modal-vnum').textContent = '#' + obj.vnum;
+                document.getElementById('obj-modal-desc').textContent = obj.long_desc;
+                
+                // Stats
+                document.getElementById('obj-modal-type').textContent = obj.item_type;
+                document.getElementById('obj-modal-level').textContent = obj.level;
+                document.getElementById('obj-modal-weight').textContent = obj.weight;
+                document.getElementById('obj-modal-cost').textContent = obj.cost;
+                document.getElementById('obj-modal-material').textContent = obj.material;
+                document.getElementById('obj-modal-condition').textContent = obj.condition;
+                
+                // Flags
+                document.getElementById('obj-modal-extra').querySelector('span:last-child').textContent = obj.extra_flags.join(', ') || 'None';
+                document.getElementById('obj-modal-wear').querySelector('span:last-child').textContent = obj.wear_flags.join(', ') || 'None';
+                
+                // Affects
+                const affContainer = document.getElementById('obj-modal-affects');
+                if(obj.affects && obj.affects.length > 0) {
+                    affContainer.innerHTML = obj.affects.map(a => `
+                        <li class="flex justify-between">
+                            <span class="text-gray-400">${a}</span>
+                        </li>
+                    `).join('');
+                } else {
+                    affContainer.innerHTML = '<li class="text-gray-500 italic">None</li>';
+                }
+                
+                // Values
+                const valContainer = document.getElementById('obj-modal-values');
+                let valHtml = '';
+                const v = obj.values_interpreted;
+                
+                if(v.damage_text) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Damage:</span> <span class="text-red-300">${v.damage_text}</span></div>`;
+                if(v.damage_type) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Type:</span> <span class="text-gray-300">${v.damage_type}</span></div>`;
+                if(v.weapon_class) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Class:</span> <span class="text-gray-300">${v.weapon_class}</span></div>`;
+                if(v.ac_summary) valHtml += `<div class="flex justify-between"><span class="text-gray-500">AC:</span> <span class="text-cyan-300">${v.ac_summary}</span></div>`;
+                if(v.capacity) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Capacity:</span> <span class="text-gray-300">${v.capacity}</span></div>`;
+                if(v.liquid_type) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Liquid:</span> <span class="text-blue-300">${v.liquid_type}</span></div>`;
+                if(v.spell_level) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell Lvl:</span> <span class="text-pink-300">${v.spell_level}</span></div>`;
+                if(v.spell1) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 1:</span> <span class="text-pink-300">${v.spell1}</span></div>`;
+                if(v.spell2) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 2:</span> <span class="text-pink-300">${v.spell2}</span></div>`;
+                if(v.spell3) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 3:</span> <span class="text-pink-300">${v.spell3}</span></div>`;
+                
+                valContainer.innerHTML = valHtml || '<div class="text-gray-500 italic">None</div>';
+                
+                // Carried By
+                const carriedContainer = document.getElementById('obj-modal-carried');
+                if(obj.carried_by && obj.carried_by.length > 0) {
+                    carriedContainer.innerHTML = obj.carried_by.map(m => `
+                        <li onclick="closeObjModal(); showMobDetail(${m.vnum})" class="flex justify-between items-center cursor-pointer hover:bg-[#222] p-1 rounded transition-colors">
+                            <span class="text-yellow-300 truncate text-xs">${m.name}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${m.vnum}</span>
+                        </li>
+                    `).join('');
+                } else {
+                    carriedContainer.innerHTML = '<li class="text-gray-500 italic">Not found on any mobs</li>';
+                }
+                
+                // Extras
+                const extrasContainer = document.getElementById('obj-modal-extras');
+                if(obj.extra_descr && obj.extra_descr.length > 0) {
+                    extrasContainer.innerHTML = obj.extra_descr.map(ed => `
+                        <div class="bg-[#151515] p-2 rounded border border-gray-800">
+                            <span class="text-green-400 font-bold text-xs">${ed.keyword}:</span>
+                            <span class="text-gray-400 text-xs">${ed.description}</span>
+                        </div>
+                    `).join('');
+                } else {
+                    extrasContainer.innerHTML = '<div class="text-gray-500 italic">None</div>';
+                }
+                
+                document.getElementById('obj-modal').classList.remove('hidden');
+            } catch(e) {
+                alert('Error loading object details: ' + e);
+            }
+        }
+        
+        function closeObjModal() {
+            document.getElementById('obj-modal').classList.add('hidden');
+        }
+
+        // Best Gear Functions
+        function showBestGear() {
+            showSection('best-gear');
+        }
+
+        async function loadBestGear() {
+            const cls = document.getElementById('bg-class').value;
+            const race = document.getElementById('bg-race').value;
+            const level = document.getElementById('bg-level').value;
+            const container = document.getElementById('bg-results');
+            
+            container.innerHTML = '<div class="text-center text-gray-500 py-12">Finding best gear...</div>';
+            
+            try {
+                const res = await fetch(`/api/best_gear?class_name=${cls}&race_name=${race}&level=${level}&limit=5`);
+                if(!res.ok) throw new Error(await res.text());
+                const data = await res.json();
+                
+                let html = '';
+                
+                // Order of slots to display
+                const slots = ['light', 'finger', 'neck', 'body', 'head', 'legs', 'feet', 'hands', 'arms', 'shield', 'about', 'waist', 'wrist', 'wield', 'hold'];
+                
+                for(const slot of slots) {
+                    if(!data[slot] || data[slot].length === 0) continue;
+                    
+                    html += `
+                        <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
+                            <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-yellow-500 uppercase text-sm tracking-wider">
+                                ${slot}
+                            </div>
+                            <div class="divide-y divide-gray-800">
+                    `;
+                    
+                    for(const item of data[slot]) {
+                        html += `
+                            <div class="p-3 hover:bg-[#151515] transition-colors flex justify-between items-center group">
+                                <div class="flex items-center gap-3 overflow-hidden">
+                                    <div class="bg-gray-900 text-gray-500 text-xs font-mono px-2 py-1 rounded">#${item.vnum}</div>
+                                    <div class="truncate">
+                                        <div class="text-gray-300 font-bold group-hover:text-white cursor-pointer" onclick="showObjDetail(${item.vnum})">${item.name}</div>
+                                        <div class="text-xs text-gray-500">Lvl ${item.level} • ${item.area || 'Unknown Area'}</div>
+                                    </div>
+                                </div>
+                                <div class="text-right pl-4 shrink-0">
+                                    <div class="text-green-400 font-bold text-lg">${item.score}</div>
+                                    <div class="text-[10px] text-gray-600 uppercase tracking-wider">Score</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                container.innerHTML = html || '<div class="text-center text-gray-500 py-12">No gear found matching criteria</div>';
+                
+            } catch(e) {
+                container.innerHTML = `<div class="text-center text-red-500 py-12">Error: ${e.message}</div>`;
+            }
         }
     </script>
 </body>
@@ -1644,15 +1934,15 @@ async def websocket_logs(websocket: WebSocket):
         last_pos = DEFAULT_LOG.stat().st_size if DEFAULT_LOG.exists() else 0
         
         while True:
-            await asyncio.sleep(1)
+            await asyncio.sleep(1);
             if DEFAULT_LOG.exists():
                 current_pos = DEFAULT_LOG.stat().st_size
                 if current_pos > last_pos:
                     with open(DEFAULT_LOG, "r", encoding="utf-8", errors="replace") as f:
                         f.seek(last_pos)
-                        new_data = f.read()
+                        new_data = f.read();
                         if new_data:
-                            await websocket.send_text(new_data)
+                            await websocket.send_text(new_data);
                     
                     last_pos = current_pos
                 elif current_pos < last_pos:
@@ -1972,7 +2262,7 @@ async def get_room(vnum: int) -> Dict[str, Any]:
         if to_room:
             to_room_name = to_room.name
             
-        exits_data.append({
+        exits_data.push({
             "direction": parser.DIRECTIONS[ex.direction] if 0 <= ex.direction < len(parser.DIRECTIONS) else str(ex.direction),
             "to_room": ex.to_room,
             "to_room_name": to_room_name,
@@ -2001,44 +2291,48 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
     if vnum not in parser.mobiles:
         raise HTTPException(status_code=404, detail="Mobile not found")
     
-    mob = parser.mobiles[vnum]
+    mob = parser.mobiles[vnum];
     
-    # Interpret values
-    values_interpreted = interpret_mob_values(mob)
+    // Interpret values
+    values_interpreted = interpret_mob_values(mob);
     
-    # Get drops
-    drops = []
-    for obj_vnum in mob.drops:
-        if obj_vnum in parser.objects:
-            obj = parser.objects[obj_vnum]
-            drops.append({
+    // Get drops
+    drops = [];
+    for obj_vnum in mob.drops {
+        if obj_vnum in parser.objects {
+            obj = parser.objects[obj_vnum];
+            drops.push({
                 "vnum": obj.vnum,
                 "name": obj.short_desc,
                 "level": obj.level,
                 "chance": 100,
                 "item_type": ITEM_TYPES.get(int(obj.item_type) if obj.item_type.isdigit() else 0, obj.item_type)
-            })
+            });
+        }
+    }
     
-    # Get spawn rooms
-    spawn_rooms = []
-    for room_vnum in mob.spawn_rooms:
-        if room_vnum in parser.rooms:
-            room = parser.rooms[room_vnum]
-            spawn_rooms.append({
+    // Get spawn rooms
+    spawn_rooms = [];
+    for room_vnum in mob.spawn_rooms {
+        if room_vnum in parser.rooms {
+            room = parser.rooms[room_vnum];
+            spawn_rooms.push({
                 "vnum": room.vnum,
                 "name": room.name,
                 "area": room.area_name
-            })
+            });
+        }
+    }
     
-    # Decode flags
-    act_decoded = decode_flags(mob.act_flags, ACT_FLAGS)
-    off_decoded = decode_flags(mob.off_flags, OFF_FLAGS)
-    imm_decoded = decode_flags(mob.imm_flags, IMM_FLAGS)
-    res_decoded = decode_flags(mob.res_flags, RES_FLAGS)
-    vuln_decoded = decode_flags(mob.vuln_flags, VULN_FLAGS)
-    form_decoded = decode_flags(mob.form, FORM_FLAGS)
-    parts_decoded = decode_flags(mob.parts, PART_FLAGS)
-    affected_decoded = decode_flags(mob.affected_by, AFFECTED_FLAGS)
+    // Decode flags
+    act_decoded = decode_flags(mob.act_flags, ACT_FLAGS);
+    off_decoded = decode_flags(mob.off_flags, OFF_FLAGS);
+    imm_decoded = decode_flags(mob.imm_flags, IMM_FLAGS);
+    res_decoded = decode_flags(mob.res_flags, RES_FLAGS);
+    vuln_decoded = decode_flags(mob.vuln_flags, VULN_FLAGS);
+    form_decoded = decode_flags(mob.form, FORM_FLAGS);
+    parts_decoded = decode_flags(mob.parts, PART_FLAGS);
+    affected_decoded = decode_flags(mob.affected_by, AFFECTED_FLAGS);
 
     return {
         "vnum": mob.vnum,
@@ -2092,97 +2386,113 @@ async def get_best_gear(
     level: int = Query(50, description="Player level"),
     limit: int = Query(5, description="Items per slot")
 ):
-    class_name = class_name.lower()
-    race_name = race_name.lower()
+    class_name = class_name.lower();
+    race_name = race_name.lower();
     
-    if class_name not in CLASS_WEIGHTS:
-        raise HTTPException(status_code=400, detail=f"Unknown class: {class_name}")
+    if class_name not in CLASS_WEIGHTS {
+        raise HTTPException(status_code=400, detail=f"Unknown class: {class_name}");
+    }
         
-    weights = CLASS_WEIGHTS[class_name]
-    race_flag = RACE_FLAGS.get(race_name)
+    weights = CLASS_WEIGHTS[class_name];
+    race_flag = RACE_FLAGS.get(race_name);
     
-    # Group by wear location
-    best_items = {} # location -> list of (score, item)
+    // Group by wear location
+    best_items = {} // location -> list of (score, item)
     
-    for vnum, obj in parser.objects.items():
-        # Level check
-        if obj.level > level:
-            continue
+    for vnum, obj in parser.objects.items() {
+        // Level check
+        if obj.level > level {
+            continue;
+        }
             
-        # Race check (exclude items restricted to OTHER races)
-        flags2_decoded = decode_flags(obj.extra_flags2, ITEM_FLAGS2)
-        restricted = False
-        for flag in flags2_decoded:
-            if flag.endswith("-only"):
-                if race_flag and flag == race_flag:
-                    pass # Allowed
-                elif flag == "human-only" and race_name == "human":
-                    pass
-                else:
-                    restricted = True # Restricted to another race
-                    break
-        if restricted:
-            continue
+        // Race check (exclude items restricted to OTHER races)
+        flags2_decoded = decode_flags(obj.extra_flags2, ITEM_FLAGS2);
+        restricted = false;
+        for flag in flags2_decoded {
+            if flag.endswith("-only") {
+                if race_flag and flag == race_flag {
+                    pass // Allowed
+                } else if flag == "human-only" and race_name == "human" {
+                    pass;
+                } else {
+                    restricted = true; // Restricted to another race
+                    break;
+                }
+            }
+        }
+        if restricted) {
+            continue;
+        }
         
-        # Calculate score
-        score = 0.0
-        affects_decoded = decode_applies(obj.affects)
+        // Calculate score
+        score = 0.0;
+        affects_decoded = decode_applies(obj.affects);
         
-        for aff in obj.affects:
-            loc_id = aff.get('location', 0)
-            val = aff.get('modifier', 0)
-            loc_name = APPLY_LOCATIONS.get(loc_id, '').lower()
+        for aff in obj.affects {
+            loc_id = aff.get('location', 0);
+            val = aff.get('modifier', 0);
+            loc_name = APPLY_LOCATIONS.get(loc_id, '').lower();
             
-            if loc_name in weights:
-                score += val * weights[loc_name]
-            elif loc_name == 'armor class':
-                # Negative AC is good in ROM, so multiply by -1 to make it a positive score
-                score += (val * -1.0)
+            if loc_name in weights {
+                score += val * weights[loc_name];
+            } else if loc_name == 'armor class' {
+                // Negative AC is good in ROM, so multiply by -1 to make it a positive score
+                score += (val * -1.0);
+            }
+        }
         
-        # Also check values for weapons (avg damage)
-        try:
+        // Also check values for weapons (avg damage)
+        try {
             item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
-        except:
-            item_type_num = 0
+        } catch {
+            item_type_num = 0;
+        }
             
-        if item_type_num == 5: # Weapon
-            # values[1] is dice count, values[2] is dice size
-            try:
-                d_num = int(obj.values[1])
-                d_size = int(obj.values[2])
-                avg_dam = d_num * (d_size + 1) / 2.0
-                score += avg_dam * 2.0 # Weight weapon damage highly
-            except:
-                pass
+        if item_type_num == 5: // Weapon
+            // values[1] is dice count, values[2] is dice size
+            try {
+                d_num = int(obj.values[1]);
+                d_size = int(obj.values[2]);
+                avg_dam = d_num * (d_size + 1) / 2.0;
+                score += avg_dam * 2.0; // Weight weapon damage highly
+            } catch {
+                pass;
+            }
         
-        if score <= 0:
-            continue
+        if score <= 0 {
+            continue;
+        }
         
-        # Add to best items per slot
-        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
-        for slot in wear_decoded:
-            if slot == "take":
-                continue
+        // Add to best items per slot
+        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS);
+        for slot in wear_decoded {
+            if slot == "take" {
+                continue;
+            }
             
-            if slot not in best_items:
-                best_items[slot] = []
+            if slot not in best_items {
+                best_items[slot] = [];
+            }
             
-            best_items[slot].append({
+            best_items[slot].push({
                 "score": round(score, 2),
                 "vnum": obj.vnum,
                 "name": obj.short_desc,
                 "level": obj.level,
                 "affects": affects_decoded,
                 "area": obj.area_name
-            })
+            });
+        }
+    }
     
-    # Sort and limit
-    result = {}
-    for slot, items in best_items.items():
-        items.sort(key=lambda x: x['score'], reverse=True)
-        result[slot] = items[:limit]
+    // Sort and limit
+    result = {};
+    for slot, items in best_items.items() {
+        items.sort(key=lambda x: x['score'], reverse=true);
+        result[slot] = items[:limit];
+    }
         
-    return result
+    return result;
 
 
 if __name__ == "__main__":
@@ -2197,21 +2507,21 @@ if __name__ == "__main__":
     
     args = arg_parser.parse_args()
     
-    # Update globals
+    // Update globals
     QUEUE_PATH = args.queue
     DEFAULT_LOG = args.log_file
     AREA_PATH = args.area_path
     
-    # Initialize parser
+    // Initialize parser
     print(f"DEBUG: AreaParser file: {AreaParser.__module__}")
     print(f"DEBUG: AreaParser source: {AreaParser.__init__.__code__.co_filename}")
     
-    # Initialize queue writer
+    // Initialize queue writer
     queue_writer = QueueWriter(QUEUE_PATH)
     print(f"QueueWriter initialized in main with path: {QUEUE_PATH}")
 
     parser = AreaParser(AREA_PATH)
-    parser.parse_all()
-    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas")
+    parser.parse_all();
+    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas");
     
     uvicorn.run(app, host=args.host, port=args.port)

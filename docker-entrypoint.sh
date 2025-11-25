@@ -18,7 +18,8 @@ if [ "${WEB_ADMIN_ENABLED:-1}" != "0" ]; then
 fi
 
 if [ "$#" -eq 0 ]; then
-  exec merc "$DEFAULT_PORT"
+  # Run merc with output piped to log file and stdout
+  exec sh -c "merc $DEFAULT_PORT 2>&1 | tee /app/log/toc.log"
 fi
 
 # Allow explicit invocation without duplicating the binary name
