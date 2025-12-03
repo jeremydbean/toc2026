@@ -983,7 +983,7 @@ void weather_update( void )
 	  break;
 	  case MOON_FULL:
 	    toc_strlcat( buf, "A full moon sets.\n\r", sizeof(buf) );
-      component_update();
+	    component_update();
 	  break;
 	  case MOON_WANING:
 	    toc_strlcat( buf, "A crescent moon sets.\n\r", sizeof(buf) );
@@ -1002,7 +1002,7 @@ void weather_update( void )
 	  break;
 	  case MOON_FULL:
 	    toc_strlcat( buf, "A full moon rises.\n\r", sizeof(buf) );
-      component_update();
+	    component_update();
 	  break;
 	  case MOON_WANING:
 	    toc_strlcat( buf, "A crescent moon rises.\n\r", sizeof(buf) );
@@ -2690,13 +2690,20 @@ void component_update( void )
 
     for( count = 0; count < areas; count++)
     {
+      int area_attempts = 0;
       for( ; ; )
       {
         component_area = get_room_index( number_range( 0, 65535 ) );
 
         if(component_area != NULL)
           break;
+        
+        if (++area_attempts > 100)  /* Prevent infinite loop - give up after 100 tries */
+          break;
       }
+      
+      if (component_area == NULL)  /* Skip this area if we couldn't find a room */
+        continue;
 
       for(count2 = 0; count2 < herb; count2++)
       {
@@ -2704,6 +2711,7 @@ void component_update( void )
         if (herb_count >= 250)
           break;
 
+        int room_attempts = 0;
         for( ; ; )
         {
           component_room = get_room_index( number_range( 0, 65535 ) );
@@ -2711,7 +2719,13 @@ void component_update( void )
           if( component_room != NULL
            && component_room->area == component_area->area )
             break;
+          
+          if (++room_attempts > 100)  /* Prevent infinite loop */
+            break;
         }
+        
+        if (component_room == NULL)  /* Skip if we couldn't find a room */
+          continue;
 
         pick = component_table[dice(1,20) - 1].herb;
         component = create_object( get_obj_index(pick), 1 );
@@ -2737,13 +2751,20 @@ void component_update( void )
 
   for( count = 0; count < areas; count++)
   {
+    int spell_area_attempts = 0;
     for( ; ; )
     {
       component_area = get_room_index( number_range( 0, 65535 ) );
 
       if(component_area != NULL)
-	break;
+        break;
+      
+      if (++spell_area_attempts > 100)  /* Prevent infinite loop */
+        break;
     }
+    
+    if (component_area == NULL)  /* Skip this area if no room found */
+      continue;
 
     for(count2 = 0; count2 < spell_comp; count2++)
     {
@@ -2751,13 +2772,20 @@ void component_update( void )
       if (spell_comp_count >= 200)
         break;
 
+      int spell_room_attempts = 0;
       for( ; ; )
       {
-	component_room = get_room_index( number_range( 0, 65535 ) );
+        component_room = get_room_index( number_range( 0, 65535 ) );
 
-	if( component_room != NULL && component_room->area == component_area->area)
-	  break;
+        if( component_room != NULL && component_room->area == component_area->area)
+          break;
+        
+        if (++spell_room_attempts > 100)  /* Prevent infinite loop */
+          break;
       }
+      
+      if (component_room == NULL)  /* Skip if no room found */
+        continue;
 
 
       pick = component_table[dice(1,33) - 1].component;

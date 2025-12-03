@@ -1332,21 +1332,14 @@ async def index() -> str:
             // Handle input
             term.onData(data => {
                 console.log('Terminal input received:', data, 'charCodes:', Array.from(data).map(c => c.charCodeAt(0)));
-                const cr = String.fromCharCode(13);
-                const lf = String.fromCharCode(10);
-                const crlf = cr + lf;
                 
-                // Convert lone CR or lone LF to CRLF for sending to MUD (MUD expects CRLF line endings)
-                // First replace any CRLF that already exists, then replace lone CR, then lone LF
-                let sendData = data;
-                // Temporarily mark existing CRLF
-                sendData = sendData.split(crlf).join('\\x00CRLF\\x00');
-                // Replace lone CR with CRLF
-                sendData = sendData.split(cr).join(crlf);
-                // Replace lone LF with CRLF  
-                sendData = sendData.split(lf).join(crlf);
-                // Restore any original CRLF
-                sendData = sendData.split('\\x00CRLF\\x00').join(crlf);
+                // Normalize all line endings to \n
+                // The MUD server (comm.c) accepts \n, \r, or \r\n as line terminators
+                // and consumes consecutive terminators.
+                // Sending just \n avoids potential double-newline issues where \r\n might be
+                // interpreted as two lines if processed in chunks, or if the client sends
+                // mixed signals.
+                let sendData = data.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
                 
                 console.log('Sending to server:', sendData, 'charCodes:', Array.from(sendData).map(c => c.charCodeAt(0)));
                 
