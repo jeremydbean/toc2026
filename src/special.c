@@ -2448,7 +2448,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	  if(ch->pcdata->questor[holder_1] > 0)
 	    break;
  
-	for(holder_2 = 0; holder_2 < 76; holder_2++)
+	for(holder_2 = 0; holder_2 < 77; holder_2++)
 	  if(ch->pcdata->questor[holder_1] == quest_table[holder_2].quest_item)
 	    break;
  
@@ -2512,10 +2512,11 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	  ch->level = 51;
 	  advance_level(ch,false);
  	  REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
+	  save_char_obj(ch);
 	  return true;
 	}
  
-	for(holder_2 = 0; holder_2 < 76; holder_2++)
+	for(holder_2 = 0; holder_2 < 77; holder_2++)
 	  if(ch->pcdata->questor[holder_1 + 1] == quest_table[holder_2].quest_item)
 	    break;
  
@@ -2543,14 +2544,14 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	  if(ch->pcdata->questor[holder_1] > 0)
 	    break;
  
-     if(ch->pcdata->questor[holder_1] <= 0 )
+     if( holder_1 >= 10 || ch->pcdata->questor[holder_1] <= 0 )
      {
        send_to_char("Somethings not right, get an Immortal.\n\r",ch);
        return true;
      }
      else
      {
-	for(holder_2 = 0; holder_2 < 76; holder_2++)
+	for(holder_2 = 0; holder_2 < 77; holder_2++)
 	  if(ch->pcdata->questor[holder_1] == quest_table[holder_2].quest_item)
 	    break;
  
@@ -2608,7 +2609,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	 {
 	  int lost;
 
-	  lost = dice(1,5);
+	  lost = number_range(0, MAX_STATS - 1);
 	  ch->perm_stat[lost] -= 2;
 	  send_to_char("One of your stats has been reduced.\n\r",ch);
 	  found = true;

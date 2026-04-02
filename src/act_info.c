@@ -4328,11 +4328,15 @@ void do_remort( CHAR_DATA *ch, char *arg)
      snprintf(saveclass,sizeof(saveclass),"%s %s",ch->pcdata->list_remorts,saveclass_copy);
 
      to_strip = str_dup(ch->pcdata->list_remorts);
-     while (to_strip[0] != '\0')
-      {
-       to_strip = one_argument(to_strip,get_class);
-       had_classes[ind_class] = atoi(get_class);
-       ind_class += 1;
+     {
+       char *to_strip_base = to_strip;
+       while (to_strip[0] != '\0')
+        {
+         to_strip = one_argument(to_strip,get_class);
+         had_classes[ind_class] = atoi(get_class);
+         ind_class += 1;
+       }
+       free_string(to_strip_base);
      }
    }
    if (ch->pcdata->num_remorts < 4)
@@ -4372,7 +4376,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
    wizinfo(buf,LEVEL_IMMORTAL);
    do_backup();
 
-   if (ch->pcdata->num_remorts >= 5)
+   if (ch->pcdata->num_remorts == 4)
     {
      for (obj = ch->carrying; obj != NULL; obj = obj_next)
         {
