@@ -335,3 +335,39 @@ curl -s http://localhost:9001/api/health
 ### Web Admin & Docker Integration
 - **Real-time Logs**: Implemented WebSocket endpoint `/ws/logs` in `webadmin/server.py` to stream `/app/log/toc.log` to the web interface.
 - **Python Syntax Fixes**: Fixed multiple `SyntaxError` issues in `webadmin/server.py` caused by accidental insertion of C-style syntax (`{`, `}`, `//` comments)
+
+## Immortal Command Additions (Apr 2, 2025 — Commit f1f1800)
+
+### 11 New Immortal Commands
+All implemented in `src/act_wiz.c`, declared in `src/interp.h`, registered in `src/interp.c`, with help text in `area/commands.are`.
+
+| Command | Level | Description |
+|---------|-------|-------------|
+| mute    | L5    | Toggle all speech: COMM_MUTE + NOCHANNELS/NOTELL/NOSHOUT/NOEMOTE |
+| drag    | L6    | Pull any online PC to your current room |
+| duel    | L4    | Force two online PCs into PK combat (transports p2 to p1's room) |
+| weather | L5    | Set global weather: sunny/cloudy/rain/storm |
+| lights  | L5    | Toggle ROOM_DARK flag on current room |
+| seal    | L5    | Toggle EX_WIZLOCKED on a room exit by direction |
+| finger  | L5    | Player info lookup (online: live stats; offline: saved file scan) |
+| trail   | L7    | Show last TRAIL_LEN rooms visited (ring buffer in pc_data) |
+| petrify | L5    | Apply timed 'stone' affect blocking ALL commands |
+| empower | L4    | Apply sanctuary+haste+fly+passdr+protect+regen+divprot+stat boosts |
+| colossus| L4    | Apply 500% HP/mana/move boost, heal to full (gsn_titanic affect) |
+
+### Infrastructure Changes
+- **`src/merc.h`**: `MAX_SKILL` 228→231; `COMM_MUTE (cc)` added after `COMM_NOBEEP`; `TRAIL_LEN 10` define; `int trail[TRAIL_LEN]` + `sh_int trail_head` in `pc_data`; `extern sh_int gsn_empower/gsn_titanic/gsn_petrify`
+- **`src/db.c`**: `int16_t gsn_empower/gsn_titanic/gsn_petrify` defined
+- **`src/const.c`**: Three new skill table entries (empower, titanic, petrify) — all inaccessible to players
+- **`src/act_comm.c`**: `do_say` checks `COMM_MUTE` before allowing speech
+- **`src/act_move.c`**: `move_char()` updates trail ring-buffer after every PC room transition
+- **`src/interp.c`**: Petrify affect blocks all commands alongside `PLR_FREEZE`; 11 new command table entries; `do_finger` uncommented and re-enabled at L5
+
+### Design Notes
+- **empower**: All affects use `type = gsn_empower`; `affect_strip(victim, gsn_empower)` removes all atomically; toggling while active removes instead of re-applying
+- **colossus**: Uses `type = gsn_titanic`; APPLY_HIT/MANA/MOVE modifiers capped at 30000 to prevent `sh_int` overflow; current hp/mana/move clamped to new max on removal
+- **trail**: Ring buffer; entries are 0 for never-visited; `trail_head` points to next write slot; `do_trail` walks oldest-to-newest
+- **petrify**: Purely an affect with no bitvector; the interp.c check (`is_affected(ch, gsn_petrify)`) blocks ALL commands
+- **finger (offline)**: Opens player file, scans for `Levl`/`Cla`/`Plyd`/`LogO`/`Race` keywords via `fgets` + `sscanf`; strips trailing `~` from race name
+- **duel**: Uses `extern void set_fighting()` declared locally; sets both players' `pk_state = 1` if 0 to bypass PK safety check
+
