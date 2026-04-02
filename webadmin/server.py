@@ -49,7 +49,6 @@ async def lifespan(app: FastAPI):
     # Startup
     global queue_writer
     queue_writer = QueueWriter(QUEUE_PATH)
-    print(f"DEBUG: QueueWriter initialized at {QUEUE_PATH}")
     yield
     # Shutdown (nothing needed)
 
@@ -170,17 +169,9 @@ RACE_FLAGS = {
 }
 
 # Initialize parser and load area files
-print(f"DEBUG: AreaParser file: {AreaParser.__module__}")
-try:
-    print(f"DEBUG: AreaParser path: {AreaParser.__file__}") # This might fail if it's a class
-except:
-    import inspect
-    print(f"DEBUG: AreaParser source: {inspect.getfile(AreaParser)}")
-
 parser = AreaParser(AREA_PATH)
 try:
     parser.parse_all()
-    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas")
 except Exception as e:
     print(f"Warning: Failed to parse areas: {e}")
 
@@ -3254,17 +3245,5 @@ if __name__ == "__main__":
     QUEUE_PATH = args.queue
     DEFAULT_LOG = args.log_file
     AREA_PATH = args.area_path
-    
-    # Initialize parser
-    print(f"DEBUG: AreaParser file: {AreaParser.__module__}")
-    print(f"DEBUG: AreaParser source: {AreaParser.__init__.__code__.co_filename}")
-    
-    # Initialize queue writer
-    queue_writer = QueueWriter(QUEUE_PATH)
-    print(f"QueueWriter initialized in main with path: {QUEUE_PATH}")
-
-    parser = AreaParser(AREA_PATH)
-    parser.parse_all()
-    print(f"Loaded: {len(parser.mobiles)} mobs, {len(parser.objects)} objects, {len(parser.rooms)} rooms, {len(parser.areas)} areas")
     
     uvicorn.run(app, host=args.host, port=args.port)
