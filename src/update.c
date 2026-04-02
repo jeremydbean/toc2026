@@ -1675,6 +1675,10 @@ void char_update( void )
 
         if ( ch_quit != NULL && ch == ch_quit )
         {
+            if ( ch->fighting != NULL )
+                stop_fighting( ch, true );
+            if ( ch->position < POS_STUNNED )
+                ch->position = POS_STUNNED;
             save_char_obj( ch );
             do_quit( ch, "" );
             ch_quit = NULL;
@@ -1683,6 +1687,10 @@ void char_update( void )
 
     if ( ch_quit != NULL )
     {
+        if ( ch_quit->fighting != NULL )
+            stop_fighting( ch_quit, true );
+        if ( ch_quit->position < POS_STUNNED )
+            ch_quit->position = POS_STUNNED;
         save_char_obj( ch_quit );
         do_quit( ch_quit, "" );
         ch_quit = NULL;

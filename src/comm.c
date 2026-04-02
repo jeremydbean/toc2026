@@ -1001,7 +1001,10 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 	}
 	else
 	{
-	    free_char( dclose->original ? dclose->original : dclose->character );
+	    CHAR_DATA *save_ch = dclose->original ? dclose->original : dclose->character;
+	    if ( save_ch != NULL && !IS_NPC(save_ch) && save_ch->level >= 1 )
+		save_char_obj( save_ch );
+	    free_char( save_ch );
 	}
     }
 
@@ -2378,7 +2381,7 @@ void stop_idling( CHAR_DATA *ch )
     ||   ch->desc == NULL
     ||   ch->desc->connected != CON_PLAYING
     ||   ch->was_in_room == NULL 
-    ||   ch->in_room != get_room_index(ROOM_VNUM_LIMBO))
+    ||   ch->in_room->vnum != ROOM_VNUM_LIMBO)
 	return;
 
     ch->timer = 0;
