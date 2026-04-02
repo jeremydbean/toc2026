@@ -1034,7 +1034,8 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   "ego whip",       "mindbar",           "mindblast",
 	   "nightmare",      "project",           "psionic armor",
 	   "psychic shield", "pyrotechnics",      "shift",
-	   "telekinesis",    "torment",           "transfusion"
+	   "telekinesis",    "torment",           "transfusion",
+	   "mind leech"
 	   },
 	   {
           NULL
@@ -3130,6 +3131,14 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	spell_null,		TAR_IGNORE,		POS_FIGHTING,
 	&gsn_mindblast,		SLOT( 0),	0,	12,
 	"mindblast",		"!Mindblast!"
+    },
+
+    {
+	"mind leech",
+	{ 22, 22, 22, 22, 22, 22 },	{ 5, 5, 5, 5, 5, 5},
+	spell_null,		TAR_CHAR_OFFENSIVE,	POS_FIGHTING,
+	&gsn_mindleech,		SLOT( 0),	0,	12,
+	"mental drain",	"!Mind Leech!"
     },
 
     {

@@ -180,6 +180,7 @@ int16_t         gsn_transfusion;
 int16_t         gsn_psionic_armor;
 int16_t         gsn_psychic_shield;
 int16_t         gsn_mindbar;
+int16_t         gsn_mindleech;
  
 /* monk gsn's */
 int16_t         gsn_steel_fist;

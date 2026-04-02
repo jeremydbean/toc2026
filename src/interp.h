@@ -253,6 +253,7 @@ DECLARE_DO_FUN( do_manipulate   );
 DECLARE_DO_FUN(	do_memory	);
 DECLARE_DO_FUN(	do_mfind	);
 DECLARE_DO_FUN( do_mindbar      );
+DECLARE_DO_FUN( do_mindleech    );
 DECLARE_DO_FUN( do_mindblast    );
 DECLARE_DO_FUN(	do_mload	);
 DECLARE_DO_FUN(	do_mset		);

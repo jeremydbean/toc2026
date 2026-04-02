@@ -59,9 +59,9 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
         { &gsn_ego_whip,     &gsn_torment,        &gsn_nightmare,     &gsn_mindblast,    NULL },
         { &gsn_astral_walk,  &gsn_shift,          &gsn_project,       &gsn_telekinesis,  NULL },
         { &gsn_mindbar,      &gsn_psionic_armor,  &gsn_psychic_shield,&gsn_transfusion,  NULL },
-        { &gsn_clairvoyance, &gsn_confuse,        &gsn_pyrotechnics,  NULL,              NULL }
+        { &gsn_clairvoyance, &gsn_confuse,        &gsn_pyrotechnics,  &gsn_mindleech,    NULL }
     };
-    static const int psi_set_sizes[4] = { 4, 4, 4, 3 };
+    static const int psi_set_sizes[4] = { 4, 4, 4, 4 };
 
     int i, s;
     bool spec_only;

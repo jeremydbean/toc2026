@@ -364,6 +364,130 @@ void do_project( CHAR_DATA *ch, char *argument )
 }
 
 /* psi */
+void do_mindleech( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+    int chance;
+    int drain;
+
+    one_argument( argument, arg );
+
+    if ( !IS_NPC(ch) )
+    {
+        if ( (chance = get_skill(ch, gsn_mindleech)) == 0 )
+        {
+            send_to_char( "Do what?\n\r", ch );
+            return;
+        }
+
+        if ( arg[0] == '\0' && ch->fighting == NULL )
+        {
+            send_to_char( "Who do you want to leech?\n\r", ch );
+            return;
+        }
+        else if ( arg[0] == '\0' && ch->fighting != NULL )
+            victim = ch->fighting;
+        else if ( (victim = get_char_room(ch, arg)) == NULL )
+        {
+            send_to_char( "They aren't here.\n\r", ch );
+            return;
+        }
+
+        if ( victim == ch )
+        {
+            send_to_char( "You cannot leech yourself.\n\r", ch );
+            return;
+        }
+
+        if ( ch->mana < 30 )
+        {
+            send_to_char( "You don't have enough mana.\n\r", ch );
+            return;
+        }
+
+        if ( is_safe_spell(ch, victim, false) )
+        {
+            act( "$N cannot be harmed by you.", ch, NULL, victim, TO_CHAR );
+            return;
+        }
+
+        if ( IS_AFFECTED2(victim, AFF2_GHOST) || IS_AFFECTED2(ch, AFF2_GHOST) )
+        {
+            send_to_char( "Ghosts have no mind to leech.\n\r", ch );
+            return;
+        }
+
+        if ( victim->fighting != NULL && !is_same_group(ch, victim->fighting) )
+        {
+            send_to_char( "Kill stealing is not permitted.\n\r", ch );
+            return;
+        }
+
+        if ( number_percent() > chance )
+        {
+            send_to_char( "You lost your concentration.\n\r", ch );
+            ch->mana -= (dice(1,5) + 3);
+            check_improve(ch, gsn_mindleech, false, 4);
+            return;
+        }
+
+        ch->mana -= 30;
+    }
+    else
+    {
+        if ( IS_SET(ch->act, ACT_PET) || IS_SET(ch->affected_by, AFF_CHARM) ||
+             (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+            return;
+
+        if ( arg[0] == '\0' && ch->fighting == NULL )
+            return;
+        else if ( arg[0] == '\0' && ch->fighting != NULL )
+            victim = ch->fighting;
+        else if ( (victim = get_char_room(ch, arg)) == NULL )
+            return;
+
+        if ( victim == ch )
+            return;
+    }
+
+    /* Amount to drain scales with caster level. */
+    drain = number_range( ch->level * 2, ch->level * 3 );
+    drain = UMIN( drain, victim->mana );
+
+    if ( drain > 0 )
+    {
+        victim->mana -= drain;
+        /* Caster absorbs half the drained mana. */
+        ch->mana = UMIN( ch->max_mana, ch->mana + drain / 2 );
+        act( "You reach into $N's mind and siphon away their mental energy!", ch, NULL, victim, TO_CHAR );
+        act( "$n reaches into your mind, draining your mental energy!", ch, NULL, victim, TO_VICT );
+        act( "$n's eyes glow as $e leeches $N's mental energy.", ch, NULL, victim, TO_NOTVICT );
+    }
+    else
+    {
+        /* Target has no mana — deal mental damage instead. */
+        drain = number_range( ch->level, ch->level * 2 );
+        act( "You probe $N's empty mind and find nothing to drain — the shock damages $M!", ch, NULL, victim, TO_CHAR );
+        act( "$n probes your mind and finds it empty — the backlash hurts!", ch, NULL, victim, TO_VICT );
+        damage( ch, victim, drain, gsn_mindleech, DAM_MENTAL );
+    }
+
+    check_improve(ch, gsn_mindleech, true, 4);
+    WAIT_STATE(ch, skill_table[gsn_mindleech].beats);
+
+    if ( ch->fighting == NULL && victim->fighting == NULL )
+    {
+        ch->fighting = victim;
+        victim->fighting = ch;
+        ch->position = POS_FIGHTING;
+        victim->position = POS_FIGHTING;
+    }
+
+    return;
+}
+
+/* psi */
 void do_mindblast( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];

@@ -1860,6 +1860,7 @@ extern sh_int  gsn_transfusion;
 extern sh_int  gsn_psionic_armor;
 extern sh_int  gsn_psychic_shield;
 extern sh_int  gsn_mindbar;
+extern sh_int  gsn_mindleech;
 extern sh_int  gsn_steel_fist;
 extern sh_int  gsn_crane_dance;
 extern sh_int  gsn_nerve_damage;
