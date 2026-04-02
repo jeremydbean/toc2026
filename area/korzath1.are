@@ -4864,69 +4864,69 @@ G  1  29005  10                  metallic pack
 E  1  29032  3   12               walking stick
 E  1  29033  10  17               key
 *
-M  0  29015  5   29082          Engineer
-E  1  29034  15  8                engineer boots
-E  1  29035  15  9                engineer gloves
+* M  0  29015  5   29082          Engineer  (removed: room does not exist)
+* E  1  29034  15  8                engineer boots  (removed)
+* E  1  29035  15  9                engineer gloves  (removed)
 *
-M  0  29015  5   29084          Engineer
-E  1  29034  15  8                engineer boots
-E  1  29035  15  9                engineer gloves
+* M  0  29015  5   29084          Engineer  (removed: room does not exist)
+* E  1  29034  15  8                engineer boots  (removed)
+* E  1  29035  15  9                engineer gloves  (removed)
 *
-M  0  29015  5   29085          Engineer
-E  1  29034  15  8                engineer boots
-E  1  29035  15  9                engineer gloves
+* M  0  29015  5   29085          Engineer  (removed: room does not exist)
+* E  1  29034  15  8                engineer boots  (removed)
+* E  1  29035  15  9                engineer gloves  (removed)
 *
-M  0  29015  5   29086          Engineer
-E  1  29034  15  8                engineer boots
-E  1  29035  15  9                engineer gloves
+* M  0  29015  5   29086          Engineer  (removed: room does not exist)
+* E  1  29034  15  8                engineer boots  (removed)
+* E  1  29035  15  9                engineer gloves  (removed)
 *
-M  0  29015  5   29086          Engineer
-E  1  29034  15  8                engineer boots
-E  1  29035  15  9                engineer gloves
+* M  0  29015  5   29086          Engineer  (removed: room does not exist)
+* E  1  29034  15  8                engineer boots  (removed)
+* E  1  29035  15  9                engineer gloves  (removed)
 *
-M  0  29016  6   29088          Metalurgist
-E  1  29036  10  17               glowing potion
-G  1  29037  40                  green scroll
+* M  0  29016  6   29088          Metalurgist  (removed: room does not exist)
+* E  1  29036  10  17               glowing potion  (removed)
+* G  1  29037  40                  green scroll  (removed)
 *
-M  0  29016  6   29099          Metalurgist
-E  1  29036  10  17               glowing potion
-G  1  29037  40                  green scroll
+* M  0  29016  6   29099          Metalurgist  (removed: room does not exist)
+* E  1  29036  10  17               glowing potion  (removed)
+* G  1  29037  40                  green scroll  (removed)
 *
-M  0  29016  5   29098          Metalurgist
-E  1  29036  10  17               glowing potion
-G  1  29037  40                  green scroll
+* M  0  29016  5   29098          Metalurgist  (removed: room does not exist)
+* E  1  29036  10  17               glowing potion  (removed)
+* G  1  29037  40                  green scroll  (removed)
 *
-M  0  29016  6   29100          Metalurgist
-E  1  29036  10  17               glowing potion
-G  1  29037  40                  green scroll
+* M  0  29016  6   29100          Metalurgist  (removed: room does not exist)
+* E  1  29036  10  17               glowing potion  (removed)
+* G  1  29037  40                  green scroll  (removed)
 *
-M  0  29016  6   29100          Metalurgist
-E  1  29036  10  17               glowing potion
-G  1  29037  40                  green scroll
+* M  0  29016  6   29100          Metalurgist  (removed: room does not exist)
+* E  1  29036  10  17               glowing potion  (removed)
+* G  1  29037  40                  green scroll  (removed)
 *
-M  0  29016  6   29102          Metalurgist
-E  1  29036  10  17               glowing potion
-G  1  29037  40                  green scroll
+* M  0  29016  6   29102          Metalurgist  (removed: room does not exist)
+* E  1  29036  10  17               glowing potion  (removed)
+* G  1  29037  40                  green scroll  (removed)
 *
-M  0  29017  5   29091          Blacksmith
-E  1  29038  17  16               hammer
-E  1  29039  17  10               titanium arm plates
+* M  0  29017  5   29091          Blacksmith  (removed: room does not exist)
+* E  1  29038  17  16               hammer  (removed)
+* E  1  29039  17  10               titanium arm plates  (removed)
 *
-M  0  29017  5   29092          Blacksmith
-E  1  29038  17  16               hammer
-E  1  29039  17  10               titanium arm plates
+* M  0  29017  5   29092          Blacksmith  (removed: room does not exist)
+* E  1  29038  17  16               hammer  (removed)
+* E  1  29039  17  10               titanium arm plates  (removed)
 *
-M  0  29017  5   29094          Blacksmith
-E  1  29038  17  16               hammer
-E  1  29039  17  10               titanium arm plates
+* M  0  29017  5   29094          Blacksmith  (removed: room does not exist)
+* E  1  29038  17  16               hammer  (removed)
+* E  1  29039  17  10               titanium arm plates  (removed)
 *
-M  0  29017  5   29095          Blacksmith
-E  1  29038  17  16               hammer
-E  1  29039  17  10               titanium arm plates
+* M  0  29017  5   29095          Blacksmith  (removed: room does not exist)
+* E  1  29038  17  16               hammer  (removed)
+* E  1  29039  17  10               titanium arm plates  (removed)
 *
-M  0  29017  5   29096          Blacksmith
-E  1  29038  17  16               hammer
-E  1  29039  17  10               titanium arm plates
+* M  0  29017  5   29096          Blacksmith  (removed: room does not exist)
+* E  1  29038  17  16               hammer  (removed)
+* E  1  29039  17  10               titanium arm plates  (removed)
 *
 M  0  29018  5   29073          Machinery Worker
 E  1  29040  15  6                safety goggles
@@ -4944,153 +4944,153 @@ M  0  29018  5   29077          Machinery Worker
 E  1  29040  15  6                safety goggles
 E  1  29041  15  14               titanium bracer
 *
-M  0  29018  5   29079          Machinery Worker
-E  1  29040  15  6                safety goggles
-E  1  29041  15  15               titanium bracer
+* M  0  29018  5   29079          Machinery Worker  (removed: room does not exist)
+* E  1  29040  15  6                safety goggles  (removed)
+* E  1  29041  15  15               titanium bracer  (removed)
 *
 M  0  29019  3   29075          Supervisor
 E  1  29042  15  7                denim jeans
 E  1  29043  10  2                water ring
 *
-M  0  29019  3   29079          Supervisor
-E  1  29042  15  7                denim jeans
-E  1  29043  10  2                water ring
+* M  0  29019  3   29079          Supervisor  (removed: room does not exist)
+* E  1  29042  15  7                denim jeans  (removed)
+* E  1  29043  10  2                water ring  (removed)
 *
 M  0  29019  3   29078          Supervisor
 E  1  29042  15  7                denim jeans
 E  1  29043  10  2                water ring
 *
-M  0  29020  8   29103          Secret Guard
-E  1  29044  12  12               cloak of darkness
-E  1  29045  12  13               titanium belt
+* M  0  29020  8   29103          Secret Guard  (removed: room does not exist)
+* E  1  29044  12  12               cloak of darkness  (removed)
+* E  1  29045  12  13               titanium belt  (removed)
 *
-M  0  29020  8   29103          Secret Guard
-E  1  29044  12  12               cloak of darkness
-E  1  29045  12  13               titanium belt
+* M  0  29020  8   29103          Secret Guard  (removed: room does not exist)
+* E  1  29044  12  12               cloak of darkness  (removed)
+* E  1  29045  12  13               titanium belt  (removed)
 *
-M  0  29020  8   29104          Secret Guard
-E  1  29044  12  12               cloak of darkness
-E  1  29045  12  13               titanium belt
+* M  0  29020  8   29104          Secret Guard  (removed: room does not exist)
+* E  1  29044  12  12               cloak of darkness  (removed)
+* E  1  29045  12  13               titanium belt  (removed)
 *
-M  0  29020  8   29104          Secret Guard
-E  1  29044  12  12               cloak of darkness
-E  1  29045  12  13               titanium belt
+* M  0  29020  8   29104          Secret Guard  (removed: room does not exist)
+* E  1  29044  12  12               cloak of darkness  (removed)
+* E  1  29045  12  13               titanium belt  (removed)
 *
-M  0  29020  8   29105          Secret Guard
-E  1  29044  12  12               cloak of darkness
-E  1  29045  12  13               titanium belt
+* M  0  29020  8   29105          Secret Guard  (removed: room does not exist)
+* E  1  29044  12  12               cloak of darkness  (removed)
+* E  1  29045  12  13               titanium belt  (removed)
 *
-M  0  29020  8   29105          Secret Guard
-E  1  29044  12  12               cloak of darkness
-E  1  29045  12  13               titanium belt
+* M  0  29020  8   29105          Secret Guard  (removed: room does not exist)
+* E  1  29044  12  12               cloak of darkness  (removed)
+* E  1  29045  12  13               titanium belt  (removed)
 *
-M  0  29020  8   29106          Secret Guard
-E  1  29044  12  12               cloak of darkness
-E  1  29045  12  13               titanium belt
+* M  0  29020  8   29106          Secret Guard  (removed: room does not exist)
+* E  1  29044  12  12               cloak of darkness  (removed)
+* E  1  29045  12  13               titanium belt  (removed)
 *
-M  0  29020  8   29106          Secret Guard
-E  1  29044  12  12               cloak of darkness
-E  1  29045  12  13               titanium belt
+* M  0  29020  8   29106          Secret Guard  (removed: room does not exist)
+* E  1  29044  12  12               cloak of darkness  (removed)
+* E  1  29045  12  13               titanium belt  (removed)
 *
-M  0  29021  3   29107          Mad Mage
-E  1  29046  7   16               mind mace
-E  1  29047  7   4                oiled cloak
+* M  0  29021  3   29107          Mad Mage  (removed: room does not exist)
+* E  1  29046  7   16               mind mace  (removed)
+* E  1  29047  7   4                oiled cloak  (removed)
 *
-M  0  29021  3   29108          Mad Mage
-E  1  29046  7   16               mind mace
-E  1  29047  7   3                oiled cloak
+* M  0  29021  3   29108          Mad Mage  (removed: room does not exist)
+* E  1  29046  7   16               mind mace  (removed)
+* E  1  29047  7   3                oiled cloak  (removed)
 *
-M  0  29021  3   29109          Mad Mage
-E  1  29046  7   16               mind mace
-E  1  29047  7   4                oiled cloak
+* M  0  29021  3   29109          Mad Mage  (removed: room does not exist)
+* E  1  29046  7   16               mind mace  (removed)
+* E  1  29047  7   4                oiled cloak  (removed)
 *
-M  0  29022  3   29107          Dwarf Mage
-E  1  29048  7   5                scorched plate
-E  1  29049  7   0                starlight
-E  1  29050  5   17               concoction list
+* M  0  29022  3   29107          Dwarf Mage  (removed: room does not exist)
+* E  1  29048  7   5                scorched plate  (removed)
+* E  1  29049  7   0                starlight  (removed)
+* E  1  29050  5   17               concoction list  (removed)
 *
-M  0  29022  3   29108          Dwarf Mage
-E  1  29048  7   5                scorched plate
-E  1  29049  7   0                starlight
-E  1  29050  5   17               concoction list
+* M  0  29022  3   29108          Dwarf Mage  (removed: room does not exist)
+* E  1  29048  7   5                scorched plate  (removed)
+* E  1  29049  7   0                starlight  (removed)
+* E  1  29050  5   17               concoction list  (removed)
 *
-M  0  29022  3   29109          Dwarf Mage
-E  1  29048  7   5                scorched plate
-E  1  29049  7   0                starlight
-E  1  29050  5   17               concoction list
+* M  0  29022  3   29109          Dwarf Mage  (removed: room does not exist)
+* E  1  29048  7   5                scorched plate  (removed)
+* E  1  29049  7   0                starlight  (removed)
+* E  1  29050  5   17               concoction list  (removed)
 *
-M  0  29023  3   29107          Human Mage
-E  1  29051  7   12               robe of invisibility
-E  1  29052  5   17               herb list
-E  1  29053  7   3                infinity cloak
+* M  0  29023  3   29107          Human Mage  (removed: room does not exist)
+* E  1  29051  7   12               robe of invisibility  (removed)
+* E  1  29052  5   17               herb list  (removed)
+* E  1  29053  7   3                infinity cloak  (removed)
 *
-M  0  29023  3   29108          Human Mage
-E  1  29051  7   12               robe of invisibility
-E  1  29052  5   17               herb list
-E  1  29053  7   3                infinity cloak
+* M  0  29023  3   29108          Human Mage  (removed: room does not exist)
+* E  1  29051  7   12               robe of invisibility  (removed)
+* E  1  29052  5   17               herb list  (removed)
+* E  1  29053  7   3                infinity cloak  (removed)
 *
-M  0  29023  3   29109          Human Mage
-E  1  29051  7   12               robe of invisibility
-E  1  29052  5   17               herb list
-E  1  29053  7   3                infinity cloak
+* M  0  29023  3   29109          Human Mage  (removed: room does not exist)
+* E  1  29051  7   12               robe of invisibility  (removed)
+* E  1  29052  5   17               herb list  (removed)
+* E  1  29053  7   3                infinity cloak  (removed)
 *
-M  0  29024  3   29107          Elf Mage
-E  1  29054  7   17               staff of strength
-E  1  29055  7   12               shape shifting cloak
+* M  0  29024  3   29107          Elf Mage  (removed: room does not exist)
+* E  1  29054  7   17               staff of strength  (removed)
+* E  1  29055  7   12               shape shifting cloak  (removed)
 *
-M  0  29024  3   29108          Elf Mage
-E  1  29054  7   17               staff of strength
-E  1  29055  7   12               shape shifting cloak
+* M  0  29024  3   29108          Elf Mage  (removed: room does not exist)
+* E  1  29054  7   17               staff of strength  (removed)
+* E  1  29055  7   12               shape shifting cloak  (removed)
 *
-M  0  29024  3   29109          Elf Mage
-E  1  29054  7   17               staff of strength
-E  1  29055  7   12               shape shifting cloak
+* M  0  29024  3   29109          Elf Mage  (removed: room does not exist)
+* E  1  29054  7   17               staff of strength  (removed)
+* E  1  29055  7   12               shape shifting cloak  (removed)
 *
-M  0  29025  3   29107          Hobbit Mage
-E  1  29056  7   6                Eversight
-E  1  29057  7   17               scribe list
+* M  0  29025  3   29107          Hobbit Mage  (removed: room does not exist)
+* E  1  29056  7   6                Eversight  (removed)
+* E  1  29057  7   17               scribe list  (removed)
 *
-M  0  29025  3   29108          Hobbit Mage
-E  1  29056  7   6                Eversight
-E  1  29057  7   17               scribe list
+* M  0  29025  3   29108          Hobbit Mage  (removed: room does not exist)
+* E  1  29056  7   6                Eversight  (removed)
+* E  1  29057  7   17               scribe list  (removed)
 *
-M  0  29025  3   29109          Hobbit Mage
-E  1  29056  7   6                Eversight
-E  1  29057  7   17               scribe list
+* M  0  29025  3   29109          Hobbit Mage  (removed: room does not exist)
+* E  1  29056  7   6                Eversight  (removed)
+* E  1  29057  7   17               scribe list  (removed)
 *
-M  0  29026  1   29113          Evil Diana
-E  1  29060  5   5                platinum plate
-E  1  29061  5   6                platinum helm
-E  1  29062  5   7                platinum leggings
-E  1  29063  5   8                platinum boots
-E  1  29064  5   9                platinum gauntlets
-E  1  29065  5   10               platinum sleeves
-E  1  29066  5   11               platinum spiked shield
-E  1  29067  5   13               platinum girth
-E  1  29068  5   16               unholy avenger
+* M  0  29026  1   29113          Evil Diana  (removed: room does not exist)
+* E  1  29060  5   5                platinum plate  (removed)
+* E  1  29061  5   6                platinum helm  (removed)
+* E  1  29062  5   7                platinum leggings  (removed)
+* E  1  29063  5   8                platinum boots  (removed)
+* E  1  29064  5   9                platinum gauntlets  (removed)
+* E  1  29065  5   10               platinum sleeves  (removed)
+* E  1  29066  5   11               platinum spiked shield  (removed)
+* E  1  29067  5   13               platinum girth  (removed)
+* E  1  29068  5   16               unholy avenger  (removed)
 *
-M  0  29027  4   29114          Troll Beast
-M  0  29027  4   29115          Troll Beast
-M  0  29027  4   29116          Troll Beast
-M  0  29027  4   29117          Troll Beast
+* M  0  29027  4   29114          Troll Beast  (removed: room does not exist)
+* M  0  29027  4   29115          Troll Beast  (removed: room does not exist)
+* M  0  29027  4   29116          Troll Beast  (removed: room does not exist)
+* M  0  29027  4   29117          Troll Beast  (removed: room does not exist)
 *
-M  0  29028  3   29119          Robot Mech
-E  1  29058  5   5                chunk of mecharmor
+* M  0  29028  3   29119          Robot Mech  (removed: room does not exist)
+* E  1  29058  5   5                chunk of mecharmor  (removed)
 *
-M  0  29028  3   29120          Robot Mech
-E  1  29058  5   5                chunk of mecharmor
+* M  0  29028  3   29120          Robot Mech  (removed: room does not exist)
+* E  1  29058  5   5                chunk of mecharmor  (removed)
 *
-M  0  29028  3   29121          Robot Mech
-E  1  29058  5   5                chunk of mecharmor
+* M  0  29028  3   29121          Robot Mech  (removed: room does not exist)
+* E  1  29058  5   5                chunk of mecharmor  (removed)
 *
-M  0  29029  3   29123          Giant
-E  1  29059  5   11               giant hand
+* M  0  29029  3   29123          Giant  (removed: room does not exist)
+* E  1  29059  5   11               giant hand  (removed)
 *
-M  0  29029  3   29124          Giant
-E  1  29059  5   11               giant hand
+* M  0  29029  3   29124          Giant  (removed: room does not exist)
+* E  1  29059  5   11               giant hand  (removed)
 *
-M  0  29029  3   29125          Giant
-E  1  29059  5   11               giant hand
+* M  0  29029  3   29125          Giant  (removed: room does not exist)
+* E  1  29059  5   11               giant hand  (removed)
 *
 M  0  29030  1   29005          Scared Soldier
 E  1  29001  5   17               simple key

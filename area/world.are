@@ -2394,19 +2394,19 @@ O  0  29416  1  29401		loads beach sign
 *
 O  0  29417  1  29496		loads city of lud sign
 *
-O  0  29418  1  29461		loads campfire
-P  0  29419  1  29418		put jaw in campfire
-P  0  29420  1  29418		puts tarot card in fire
+* O  0  29418  1  29461		loads campfire  (removed: obj does not exist)
+* P  0  29419  1  29418		put jaw in campfire  (removed: obj does not exist)
+* P  0  29420  1  29418		puts tarot card in fire  (removed: obj does not exist)
 *
-O  0  29421  1  29482		loads hitching post
+* O  0  29421  1  29482		loads hitching post  (removed: obj does not exist)
 *
-O  0  29422  1  29498		loads death button
+* O  0  29422  1  29498		loads death button  (removed: obj does not exist)
 *
-O  0  29423  1  29497		loads rope
+* O  0  29423  1  29497		loads rope  (removed: obj does not exist)
 *
-O  0  29424  1  29480		loads silly cactus
+* O  0  29424  1  29480		loads silly cactus  (removed: obj does not exist)
 *
-O  0  29425  1  29496		loads chasm to jump to Lud
+* O  0  29425  1  29496		loads chasm to jump to Lud  (removed: obj does not exist)
 *
 *---Doors---*
 D 0 29497 4 4

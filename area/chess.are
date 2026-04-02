@@ -2305,24 +2305,24 @@ E 1 24310 -1 11
 M 0 24312 1 24340      /*white king*/
 E 1 24310 -1 11
 
-M 0 24313 2 24382      /*fish*/
-M 0 24313 2 24383
+* M 0 24313 2 24382      /*fish*/  (removed: room does not exist)
+* M 0 24313 2 24383  (removed: room does not exist)
 
-M 0 24314 13 24386     /*card diamonds*/
-G 1 24311 13
+* M 0 24314 13 24386     /*card diamonds*/  (removed: room does not exist)
+* G 1 24311 13  (removed)
 
-M 0 24315 13 24386     /*card hearts*/
-G 1 24312 13
+* M 0 24315 13 24386     /*card hearts*/  (removed: room does not exist)
+* G 1 24312 13  (removed)
 
-M 0 24316 13 24387     /*card clubs*/
-G 1 24313 13
+* M 0 24316 13 24387     /*card clubs*/  (removed: room does not exist)
+* G 1 24313 13  (removed)
 
-M 0 24317 13 24387     /*card spades*/
-G 1 24314 13
+* M 0 24317 13 24387     /*card spades*/  (removed: room does not exist)
+* G 1 24314 13  (removed)
 
-M 0 24318 1 24388      /*card joker*/
-E 1 24315 2 6
-E 1 24316 2 3
+* M 0 24318 1 24388      /*card joker*/  (removed: room does not exist)
+* E 1 24315 2 6  (removed)
+* E 1 24316 2 3  (removed)
 
                        
 D 0 24301 2 1         /*doors*/
