@@ -1814,16 +1814,14 @@ void do_stand( CHAR_DATA *ch, char *argument )
       send_to_char("You wake up but feel dizzy, you'd better rest awhile.\n\r",ch);
       ch->position = POS_RESTING;
       act("$n wakes up.",ch,NULL,NULL,TO_ROOM);
-        if( IS_SET( ch->affected_by2, AFF2_STEALTH) )
-          REMOVE_BIT(ch->affected_by2, AFF2_STEALTH);
+        affect_strip(ch, gsn_stealth);
         break;
     }
 
 	send_to_char( "You wake and stand up.\n\r", ch );
 	act( "$n wakes and stands up.", ch, NULL, NULL, TO_ROOM );
 	ch->position = POS_STANDING;
-        if( IS_SET( ch->affected_by2, AFF2_STEALTH) )
-          REMOVE_BIT(ch->affected_by2, AFF2_STEALTH);
+        affect_strip(ch, gsn_stealth);
 	break;
 
     case POS_RESTING: case POS_SITTING:
@@ -1870,8 +1868,7 @@ void do_rest( CHAR_DATA *ch, char *argument )
 	send_to_char( "You wake up and start resting.\n\r", ch );
 	act ("$n wakes up and starts resting.",ch,NULL,NULL,TO_ROOM);
 	ch->position = POS_RESTING;
-        if( IS_SET( ch->affected_by2, AFF2_STEALTH) )
-          REMOVE_BIT(ch->affected_by2, AFF2_STEALTH);
+        affect_strip(ch, gsn_stealth);
 	break;
 
     case POS_RESTING:
@@ -1917,8 +1914,7 @@ void do_sit (CHAR_DATA *ch, char *argument )
 	    send_to_char("You wake up.\n\r",ch);
 	    act("$n wakes and sits up.",ch,NULL,NULL,TO_ROOM);
 	    ch->position = POS_SITTING;
-    	    if( IS_SET( ch->affected_by2, AFF2_STEALTH) )
-               REMOVE_BIT(ch->affected_by2, AFF2_STEALTH);
+    	    affect_strip(ch, gsn_stealth);
 	    break;
 	case POS_RESTING:
 	    send_to_char("You stop resting.\n\r",ch);
@@ -2017,8 +2013,7 @@ void do_wake( CHAR_DATA *ch, char *argument )
     act( "You wake $M.", ch, NULL, victim, TO_CHAR );
     act( "$n wakes you.", ch, NULL, victim, TO_VICT );
 
-    if( IS_SET( victim->affected_by2, AFF2_STEALTH) )
-      REMOVE_BIT(victim->affected_by2, AFF2_STEALTH);
+    affect_strip(victim, gsn_stealth);
     return;
 }
 
@@ -2100,11 +2095,12 @@ void recheck_sneak( CHAR_DATA *ch)
 
     affect_strip( ch, gsn_stealth );
 
-    if ( IS_NPC(ch) || number_percent( ) < (ch->pcdata->learned[gsn_stealth]/3) )
+    if ( ch->battleticks <= 0
+    &&   ( IS_NPC(ch) || number_percent( ) < (ch->pcdata->learned[gsn_stealth]/3) ) )
     {
 	af.type      = gsn_stealth;
 	af.level     = ch->level;
-	af.duration  = ch->level;
+	af.duration  = 12;
 	af.location  = APPLY_NONE;
 	af.modifier  = 0;
 	af.bitvector = 0;
@@ -3788,16 +3784,19 @@ void do_stealth( CHAR_DATA *ch, char *argument )
     if (IS_NPC(ch))
 	chance = number_percent();
     else
+    {
+	if (get_skill(ch, gsn_stealth) < 1)
+	{
+	    send_to_char("You don't know how to use stealth.\n\r", ch);
+	    return;
+	}
 	chance = ch->pcdata->learned[gsn_stealth];
+    }
 
     if (found)
     {
 	send_to_char("Ok, you try to move silently in that noisy armor.\n\r", ch);
 	chance /= 3;
-    }
-    else
-    {
-	send_to_char( "You blend into the shadows.\n\r", ch );
     }
 
     affect_strip( ch, gsn_stealth );
@@ -3813,11 +3812,14 @@ void do_stealth( CHAR_DATA *ch, char *argument )
 	af.bitvector = 0;
         af.bitvector2 = AFF2_STEALTH;
 	affect_to_char( ch, &af );
-
+	send_to_char("You blend into the shadows.\n\r", ch);
+	ch->move /= 2;
     }
     else
+    {
 	check_improve(ch,gsn_stealth,false,4);
-    ch->move /= 2;
+	send_to_char("You fail to enter stealth.\n\r", ch);
+    }
 
     return;
 }
