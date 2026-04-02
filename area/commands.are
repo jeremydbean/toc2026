@@ -1187,9 +1187,16 @@ BENEFITS PER REMORT
     5th       58        59          1000 each          25      18       +5
 
   Starting at remort 1 you are immune to hunger and thirst forever.
-  On the 5th (final) remort you may choose any class and guild freely
-  (the usual restriction of picking only classes you have never been does
-  not apply).
+  Starting at remort 2 you gain psionic powers: you can use all fifteen
+  psionic abilities (ego whip, mindblast, nightmare, torment, clairvoyance,
+  mindbar, psionic armor, psychic shield, telekinesis, astral walk, shift,
+  confuse, project, pyrotechnics, transfusion).  These are re-granted on
+  each subsequent remort since skills are wiped.
+  Starting at remort 4 your recall always succeeds (no skill check, no
+  random-room mishap).  Recall from combat still costs experience.
+  On the 5th (final) remort you carry unlimited items and weight and may
+  choose any class and guild freely (the usual restriction of picking only
+  classes you have never been does not apply).
 
 HERO QUEST COST
   Buying level 51 (hero) via AQUEST BUY HERO costs:

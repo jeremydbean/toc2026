@@ -4489,6 +4489,11 @@ void do_remort( CHAR_DATA *ch, char *arg)
          break;
      }
    }
+   /* Grant psionic powers on 2nd remort and beyond (they are wiped with
+    * all other skills and must be re-awarded each time). */
+   if ( ch->pcdata->num_remorts >= 2 )
+       grant_psionics( ch, 100, true );
+
    ch->position = POS_STANDING;
    /*
    ch->pcdata->bank = 0;

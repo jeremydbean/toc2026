@@ -2338,14 +2338,17 @@ void do_recall( CHAR_DATA *ch, char *argument )
     else
       skill = ch->pcdata->learned[gsn_recall];
 
+    /* 4th+ remort: recall always succeeds (no chance check, no random room). */
+    if ( !IS_NPC(ch) && ch->pcdata->num_remorts >= 4 )
+        skill = 101;
+
     chance = number_percent();
 
     if (ch->fighting != NULL)
     {
        if (chance < skill)
        {
-          if (chance < 5)
-
+          if (chance < 5 && (IS_NPC(ch) || ch->pcdata->num_remorts < 4))
           {
              location = get_random_room(ch);
              send_to_char("Something is very wrong!\n\r",ch);
@@ -2395,7 +2398,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
 
    if (chance < skill)
    {
-      if (chance < 5)
+      if (chance < 5 && (IS_NPC(ch) || ch->pcdata->num_remorts < 4))
       {
          location = get_random_room(ch);
          send_to_char("Something is very wrong!\n\r",ch);
