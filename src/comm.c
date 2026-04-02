@@ -661,7 +661,7 @@ void game_loop_unix( int control )
 	    {
 		FD_CLR( d->descriptor, &in_set  );
 		FD_CLR( d->descriptor, &out_set );
-		if ( d->character && d->character->level > 1)
+		if ( d->character && d->character->level >= 1)
 		    save_char_obj( d->character );
 		d->outtop       = 0;
 		close_socket( d );
@@ -683,7 +683,7 @@ void game_loop_unix( int control )
                 if ( !read_from_descriptor( d ) )
 		{
 		    FD_CLR( d->descriptor, &out_set );
-		    if ( d->character != NULL && d->character->level > 1)
+		    if ( d->character != NULL && d->character->level >= 1)
 			save_char_obj( d->character );
 		    d->outtop   = 0;
                     close_socket( d );
@@ -797,7 +797,7 @@ void game_loop_unix( int control )
 	    {
 		if ( !process_output( d, TRUE ) )
 		{
-		    if ( d->character != NULL && d->character->level > 1)
+		    if ( d->character != NULL && d->character->level >= 1)
 			save_char_obj( d->character );
 		    d->outtop   = 0;
 		    close_socket( d );
@@ -2128,6 +2128,7 @@ case CON_DEFAULT_CHOICE:
 	        send_to_char("\n\r",ch);
 	        do_help(ch,"NEWBIE INFO");
 	        send_to_char("\n\r",ch);
+	        save_char_obj( ch );
 	    }
 	    else if ( ch->in_room != NULL )
 	    {

@@ -267,6 +267,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                 ch->exp = exp_per_level(ch,ch->pcdata->points) * ch->level;
                 send_to_char("You raise a level!  ", ch );
                 advance_level(ch,false);
+                save_char_obj(ch);
             }
 	    else
 	    {
