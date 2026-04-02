@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import os
 import subprocess
+import sys
 from pathlib import Path
 from typing import Optional, Dict, Any
 
@@ -173,7 +174,7 @@ parser = AreaParser(AREA_PATH)
 try:
     parser.parse_all()
 except Exception as e:
-    print(f"Warning: Failed to parse areas: {e}")
+    print(f"Warning: Failed to parse areas: {e}", file=sys.stderr)
 
 
 def read_process_health() -> dict[str, bool]:
@@ -2468,7 +2469,7 @@ async def websocket_logs(websocket: WebSocket):
     except WebSocketDisconnect:
         pass
     except Exception as e:
-        print(f"WebSocket error: {e}")
+        print(f"WebSocket error: {e}", file=sys.stderr)
 
 
 @app.post("/api/wizinfo")
@@ -2646,7 +2647,7 @@ async def get_areas() -> list:
                 "vnums": getattr(area, "vnums", "")
             })
     except Exception as e:
-        print(f"Error in get_areas: {e}")
+        print(f"Error in get_areas: {e}", file=sys.stderr)
         # Return partial result or empty list instead of 500
         return result
     # Sort by area name (case-insensitive)
@@ -3190,19 +3191,18 @@ async def websocket_endpoint(websocket: WebSocket):
                     # Decode Latin-1 (standard for MUDs) to send to Browser (UTF-8 auto handled by websocket lib)
                     await websocket.send_text(data.decode('latin-1', errors='replace'))
             except Exception as e:
-                print(f"mud_to_ws error: {e}")
+                print(f"mud_to_ws error: {e}", file=sys.stderr)
 
         async def ws_to_mud():
             try:
                 while True:
                     data = await websocket.receive_text()
-                    print(f"WS received: {repr(data)}")
                     writer.write(data.encode('latin-1'))
                     await writer.drain()
             except WebSocketDisconnect:
-                print("WebSocket disconnected")
+                pass
             except Exception as e:
-                print(f"ws_to_mud error: {e}")
+                print(f"ws_to_mud error: {e}", file=sys.stderr)
 
         # Run both tasks until one fails
         done, pending = await asyncio.wait(
@@ -3215,7 +3215,7 @@ async def websocket_endpoint(websocket: WebSocket):
             task.cancel()
             
     except Exception as e:
-        print(f"Connection Error: {e}")
+        print(f"Connection Error: {e}", file=sys.stderr)
     finally:
         if writer:
             writer.close()

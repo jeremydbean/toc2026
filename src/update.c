@@ -889,7 +889,7 @@ void weather_update( void )
     case  5:
 	weather_info.sunlight = SUN_LIGHT;
 	toc_strlcat( buf, "The day has begun.\n\r" , sizeof(buf) );
-  component_update();
+	component_update();
 	break;
 
     case  6:
@@ -898,10 +898,10 @@ void weather_update( void )
 	{
 	  case 1:
 	  toc_strlcat( buf, "Daylight paints the sky a bright red, heralding a new day.\n\r", sizeof(buf) );
-    component_update();
+	  component_update();
 	  break;
 	  case 2:
-	  toc_strlcat( buf, "The sun rises on the eastern horizen.\n\r", sizeof(buf) );
+	  toc_strlcat( buf, "The sun rises on the eastern horizon.\n\r", sizeof(buf) );
 	  break;
 	  case 3:
 	  toc_strlcat( buf, "A rooster crows off in the distance, and daylight streaks across the heavens.\n\r", sizeof(buf) );
@@ -926,7 +926,7 @@ void weather_update( void )
 
 	    case 3:
 	    toc_strlcat( buf, "Stars begin to shine coldly as the night begins.\n\r", sizeof(buf) );
-      component_update();
+	    component_update();
 	    break;
 
 	    case 4:
@@ -946,7 +946,7 @@ void weather_update( void )
     case 20:
 	weather_info.sunlight = SUN_DARK;
 	toc_strlcat( buf, "The night has begun.\n\r" , sizeof(buf) );
-  component_update();
+	component_update();
 	break;
 
     case 24:
