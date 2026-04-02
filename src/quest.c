@@ -90,89 +90,117 @@ void do_quest(CHAR_DATA *ch, char *argument)
     {
 	if (IS_SET(ch->act, PLR_QUESTOR))
 	{
-	    if (ch->questmob == -1 && ch->questgiver != NULL && ch->questgiver->short_descr != NULL)
+	    /* Active quest status panel */
+	    send_to_char(
+		"{09.-[ Quest Status ]--------------------------------------------.{00\n\r", ch);
+	    if (ch->questmob == -1 && ch->questgiver != NULL
+	    &&  ch->questgiver->short_descr != NULL)
 	    {
-		snprintf(buf, sizeof(buf), "Your quest is ALMOST complete!\n\rGet back to %s before your time runs out!\n\r",ch->questgiver->short_descr);
+		snprintf(buf, sizeof(buf),
+		    "{09|{00 {04Type  :{00 Quest nearly done!\n\r"
+		    "{09|{00 {04Return:{00 {06Get back to %s right away!{00\n\r",
+		    ch->questgiver->short_descr);
 		send_to_char(buf, ch);
-		if (ch->questrush)
-		    send_to_char("[RUSH CONTRACT - 2x reward]\n\r", ch);
-		if (ch->queststreak > 0)
-		{
-		    int bonus_pct = UMIN(ch->queststreak, 5) * 10;
-		    snprintf(buf, sizeof(buf), "Win streak: %d  (+%d%% bonus)\n\r", ch->queststreak, bonus_pct);
-		    send_to_char(buf, ch);
-		}
-                return;
 	    }
 	    else if (ch->questobj > 0)
 	    {
-                questinfoobj = get_obj_index(ch->questobj);
+		questinfoobj = get_obj_index(ch->questobj);
 		if (questinfoobj != NULL)
 		{
-		    snprintf(buf, sizeof(buf), "You are on a quest to recover the %s!\n\r",questinfoobj->name);
+		    snprintf(buf, sizeof(buf),
+			"{09|{00 {04Type  :{00 Recovery Quest\n\r"
+			"{09|{00 {04Target:{00 {0DRecover {01%s{00\n\r",
+			questinfoobj->name);
 		    send_to_char(buf, ch);
-		    if (ch->questrush)
-			send_to_char("[RUSH CONTRACT - 2x reward]\n\r", ch);
-		    if (ch->queststreak > 0)
-		    {
-			int bonus_pct = UMIN(ch->queststreak, 5) * 10;
-			snprintf(buf, sizeof(buf), "Win streak: %d  (+%d%% bonus)\n\r", ch->queststreak, bonus_pct);
-			send_to_char(buf, ch);
-		    }
-                    return;
 		}
 	    }
 	    else if (ch->questmob > 0)
 	    {
-                questinfo = get_mob_index(ch->questmob);
+		questinfo = get_mob_index(ch->questmob);
 		if (questinfo != NULL)
 		{
-	            snprintf(buf, sizeof(buf), "You are on a quest to slay the dreaded %s!\n\r",questinfo->short_descr);
+		    snprintf(buf, sizeof(buf),
+			"{09|{00 {04Type  :{00 Kill Quest\n\r"
+			"{09|{00 {04Target:{00 {07Slay %s{00\n\r",
+			questinfo->short_descr);
 		    send_to_char(buf, ch);
-		    if (ch->questrush)
-			send_to_char("[RUSH CONTRACT - 2x reward]\n\r", ch);
-		    if (ch->queststreak > 0)
-		    {
-			int bonus_pct = UMIN(ch->queststreak, 5) * 10;
-			snprintf(buf, sizeof(buf), "Win streak: %d  (+%d%% bonus)\n\r", ch->queststreak, bonus_pct);
-			send_to_char(buf, ch);
-		    }
-                    return;
 		}
 	    }
+	    if (ch->countdown > 0)
+	    {
+		const char *tcol = (ch->countdown <= 3) ? "{0C" : "{0D";
+		snprintf(buf, sizeof(buf),
+		    "{09|{00 {04Timer :{00 %s%d minute%s remaining{00\n\r",
+		    tcol, ch->countdown,
+		    ch->countdown == 1 ? "" : "s");
+		send_to_char(buf, ch);
+	    }
+	    if (ch->questrush)
+		send_to_char(
+		    "{09|{00 {0C** RUSH CONTRACT - double reward for finishing on time! **{00\n\r", ch);
+	    if (ch->queststreak > 0)
+	    {
+		int bonus_pct = UMIN(ch->queststreak, 5) * 10;
+		snprintf(buf, sizeof(buf),
+		    "{09|{00 {06Streak:{00 {0D%d{00 win%s in a row"
+		    " ({0D+%d%%{00 bonus on completion)\n\r",
+		    ch->queststreak,
+		    ch->queststreak == 1 ? "" : "s",
+		    bonus_pct);
+		send_to_char(buf, ch);
+	    }
+	    send_to_char(
+		"{09'------------------------------------------------------'{00\n\r", ch);
+	    return;
 	}
-        if (ch->nextquest > 1)
-        {
-           snprintf(buf, sizeof(buf), "There are %d minutes remaining until you can go on another quest.\n\r",ch->nextquest);
-           send_to_char(buf, ch);
-        }
-        else if (ch->nextquest == 1)
-        {
-           snprintf(buf, sizeof(buf), "There is less than a minute remaining until you can go on another quest.\n\r");
-           send_to_char(buf, ch);
-        }
-        if (ch->questgamble_pts > 0)
-        {
-            snprintf(buf, sizeof(buf),
-                "GAMBLE PENDING: type 'AQUEST GAMBLE YES/NO' for your %d-point wager!\n\r",
-                ch->questgamble_pts);
-            send_to_char(buf, ch);
-        }
-        if (ch->queststreak > 0)
-        {
-            int bonus_pct = UMIN(ch->queststreak, 5) * 10;
-            snprintf(buf, sizeof(buf),
-                "Win streak: %d  (next completion earns +%d%% quest points)\n\r",
-                ch->queststreak, bonus_pct);
-            send_to_char(buf, ch);
-        }
-        if (!IS_SET(ch->act, PLR_QUESTOR))
-            send_to_char("You aren't currently on a quest.\n\r",ch);
-        return;
+
+	/* Not currently questing - summary panel */
+	send_to_char(
+	    "{09.-[ Quest Summary ]-------------------------------------------.{00\n\r", ch);
+	snprintf(buf, sizeof(buf),
+	    "{09|{00 {04Quest Points:{00 {0D%d{00\n\r", ch->questpoints);
+	send_to_char(buf, ch);
+	if (ch->nextquest > 1)
+	{
+	    snprintf(buf, sizeof(buf),
+		"{09|{00 {04Next Quest  :{00 {07%d{00 minutes before you may quest again\n\r",
+		ch->nextquest);
+	    send_to_char(buf, ch);
+	}
+	else if (ch->nextquest == 1)
+	    send_to_char(
+		"{09|{00 {04Next Quest  :{00 {07Less than 1 minute{00 remaining\n\r", ch);
+	else
+	    send_to_char(
+		"{09|{00 {04Next Quest  :{00 {06Ready!{00 Find a questmaster and type"
+		" {0DAQUÉST REQUEST{00.\n\r", ch);
+	if (ch->questgamble_pts > 0)
+	{
+	    snprintf(buf, sizeof(buf),
+		"{09|{00 {0CGamble Offer:{00 {0D%d{00 pts pending -"
+		" type {0DAQUÉST GAMBLE YES{00 or {0DAQUÉST GAMBLE NO{00\n\r",
+		ch->questgamble_pts);
+	    send_to_char(buf, ch);
+	}
+	if (ch->queststreak > 0)
+	{
+	    int bonus_pct = UMIN(ch->queststreak, 5) * 10;
+	    snprintf(buf, sizeof(buf),
+		"{09|{00 {06Win Streak  :{00 {0D%d{00 win%s in a row"
+		" (next quest earns {0D+%d%%{00 bonus)\n\r",
+		ch->queststreak,
+		ch->queststreak == 1 ? "" : "s",
+		bonus_pct);
+	    send_to_char(buf, ch);
+	}
+	send_to_char(
+	    "{09'-------------------------------------------------------'{00\n\r", ch);
+	return;
     }
     if (!strcmp(arg1, "points"))
     {
-	snprintf(buf, sizeof(buf), "You have %d quest points.\n\r",ch->questpoints);
+	snprintf(buf, sizeof(buf),
+	    "Quest Points: {0D%d{00\n\r", ch->questpoints);
 	send_to_char(buf, ch);
 	return;
     }
@@ -180,33 +208,41 @@ void do_quest(CHAR_DATA *ch, char *argument)
     {
 	if (!IS_SET(ch->act, PLR_QUESTOR))
 	{
-	    send_to_char("You aren't currently on a quest.\n\r",ch);
 	    if (ch->nextquest > 1)
 	    {
-		snprintf(buf, sizeof(buf), "There are %d minutes remaining until you can go on another quest.\n\r",ch->nextquest);
+		snprintf(buf, sizeof(buf),
+		    "Not on a quest. {07%d{00 minute%s before you may quest again.\n\r",
+		    ch->nextquest, ch->nextquest == 1 ? "" : "s");
 		send_to_char(buf, ch);
 	    }
 	    else if (ch->nextquest == 1)
-	    {
-		snprintf(buf, sizeof(buf), "There is less than a minute remaining until you can go on another quest.\n\r");
-		send_to_char(buf, ch);
-	    }
+		send_to_char(
+		    "Not on a quest. {07Under 1 minute{00 before you may quest again.\n\r", ch);
+	    else
+		send_to_char(
+		    "Not on a quest. {06Ready to quest!{00 Find a questmaster.\n\r", ch);
 	}
-        else if (ch->countdown > 0)
-        {
-	    snprintf(buf, sizeof(buf), "Time left for current quest: %d\n\r",ch->countdown);
+	else if (ch->countdown > 0)
+	{
+	    const char *tcol = (ch->countdown <= 3) ? "{0C" : "{0D";
+	    snprintf(buf, sizeof(buf),
+		"Quest timer: %s%d minute%s remaining.{00\n\r",
+		tcol, ch->countdown, ch->countdown == 1 ? "" : "s");
 	    send_to_char(buf, ch);
 	}
-        else
-        {   if (ch->nextquest > 0)
-            { snprintf(buf, sizeof(buf), "Time left before you can start a next quest: %d\n\r",ch->nextquest);
-              send_to_char(buf,ch);
-            }
-            else
-            { snprintf(buf, sizeof(buf),"You can start a new quest if you want.\n\r");
-              send_to_char(buf,ch);
-            }
-        }
+	else
+	{
+	    if (ch->nextquest > 0)
+	    {
+		snprintf(buf, sizeof(buf),
+		    "Quest complete. {07%d{00 minute%s before you may quest again.\n\r",
+		    ch->nextquest, ch->nextquest == 1 ? "" : "s");
+		send_to_char(buf, ch);
+	    }
+	    else
+		send_to_char(
+		    "{06Ready to start a new quest!{00 Find a questmaster.\n\r", ch);
+	}
 	return;
     }
     else if (!strcmp(arg1, "gamble"))
@@ -214,16 +250,23 @@ void do_quest(CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch)) return;
         if (ch->questgamble_pts <= 0)
         {
-            send_to_char("You don't have a pending double-or-nothing offer.\n\r", ch);
+            send_to_char("{07You have no pending double-or-nothing offer.{00\n\r", ch);
             return;
         }
         if (arg2[0] == '\0'
         || (str_cmp(arg2,"yes") && str_cmp(arg2,"y") && str_cmp(arg2,"no") && str_cmp(arg2,"n")))
         {
+            send_to_char(
+		"{09.-[ Double-or-Nothing Gamble ]-------------------------------.{00\n\r", ch);
             snprintf(buf, sizeof(buf),
-                "Double-or-nothing: risk your %d points to win %d, or lose everything.\n\r"
-                "Type 'AQUEST GAMBLE YES' to risk it, or 'AQUEST GAMBLE NO' to collect safely.\n\r",
-                ch->questgamble_pts, ch->questgamble_pts * 2);
+                "{09|{00 {04Wager:{00 {0D%d{00 quest points\n\r"
+                "{09|{00 {06Win  :{00 {0D%d{00 quest points  {01(50%% chance){00\n\r"
+                "{09|{00 {07Lose :{00 {0D0{00 quest points  {01(50%% chance){00\n\r"
+                "{09|{00\n\r"
+		"{09|{00  Type {0DAQUÉST GAMBLE YES{00 to risk it all!\n\r"
+		"{09|{00  Type {0DAQUÉST GAMBLE NO{00  to collect {0D%d{00 pts safely.\n\r"
+		"{09'---------------------------------------------------------------'{00\n\r",
+                ch->questgamble_pts, ch->questgamble_pts * 2, ch->questgamble_pts);
             send_to_char(buf, ch);
             return;
         }
@@ -234,15 +277,23 @@ void do_quest(CHAR_DATA *ch, char *argument)
             if (chance(50))
             {
                 ch->questpoints += wagered * 2;
-                snprintf(buf, sizeof(buf), "Fortune smiles upon you! You WIN %d quest points!\n\r", wagered * 2);
+                snprintf(buf, sizeof(buf),
+		    "\n\r{0D** Fortune SMILES upon you!"
+		    " You WIN %d quest points! **{00\n\r\n\r",
+		    wagered * 2);
                 send_to_char(buf, ch);
-                act("Fortune favors $n today!", ch, NULL, NULL, TO_ROOM);
+                act("{0DFortune{00 shines on $n - they won the gamble!",
+		    ch, NULL, NULL, TO_ROOM);
             }
             else
             {
-                snprintf(buf, sizeof(buf), "The dice betray you! You lose your %d quest points.\n\r", wagered);
+                snprintf(buf, sizeof(buf),
+		    "\n\r{0AThe dice BETRAY you!"
+		    " Your %d quest points are lost.{00\n\r\n\r",
+		    wagered);
                 send_to_char(buf, ch);
-                act("$n curses their luck bitterly.", ch, NULL, NULL, TO_ROOM);
+                act("$n curses their luck and slams a fist on the table.",
+		    ch, NULL, NULL, TO_ROOM);
             }
             save_char_obj(ch);
             return;
@@ -252,7 +303,9 @@ void do_quest(CHAR_DATA *ch, char *argument)
             int claimed = ch->questgamble_pts;
             ch->questgamble_pts = 0;
             ch->questpoints += claimed;
-            snprintf(buf, sizeof(buf), "Wise choice! You safely collect your %d quest points.\n\r", claimed);
+            snprintf(buf, sizeof(buf),
+		"{06Wise choice. You safely collect {0D%d{00{06 quest points.{00\n\r",
+		claimed);
             send_to_char(buf, ch);
             save_char_obj(ch);
             return;
@@ -309,27 +362,36 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
     {
         act( "$n asks $N for a list of quest items.", ch, NULL, questman, TO_ROOM);
         act ("You ask $N for a list of quest items.",ch, NULL, questman, TO_CHAR);
-        send_to_char("Current Quest Items available for Purchase:\n\r"
-    "Potion of Sanctuary                150qp\n\r"
-        "1-3 Practices:                 500qp\n\r"
-        "Potion of Extra Heal           450qp\n\r"
-        "Jug O' Moonshine               450qp\n\r"
-        "level 51 hero! (non-remort)   7000qp\n\r"
-        "level 51 hero! (remort)       5000qp\n\r"
-    "\n\r"
-    "Earn special bonuses automatically:\n\r"
-    "  Win streak        +10%% per quest in a row (up to +50%%\n\r"
-    "  Rush contract     20%% chance: 2x reward, 5-8 minute timer\n\r"
-    "  Double-or-nothing After every quest, gamble points for 2x or zero\n\r"
-    "\n\r"
-    "To buy an item, type 'AQUEST BUY <item>'.\n\r", ch);
+        send_to_char(
+	    "{09.-[ Quest Shop ]-----------------------------------------------.{00\n\r"
+	    "{09|{00\n\r"
+	    "{09|{00  {04Item                               Cost{00\n\r"
+	    "{09|{00  {01------------------------------------------{00\n\r"
+	    "{09|{00  Potion of Sanctuary              {0D150 qp{00\n\r"
+	    "{09|{00  Potion of Extra Heal             {0D450 qp{00\n\r"
+	    "{09|{00  Jug O' Moonshine                 {0D450 qp{00\n\r"
+	    "{09|{00  1-3 Practices                    {0D500 qp{00\n\r"
+	    "{09|{00  Level 51 Hero  (non-remort)     {0D7000 qp{00\n\r"
+	    "{09|{00  Level 51 Hero  (remort)         {0D5000 qp{00\n\r"
+	    "{09|{00\n\r"
+	    "{09|{00  {04Automatic Bonus Systems:{00\n\r"
+	    "{09|{00  {06Win Streak     {00+10%% per quest in a row (max +50%%)\n\r"
+	    "{09|{00  {0CRush Contract  {0020%% chance: 2x reward, 5-8 minute timer\n\r"
+	    "{09|{00  {0DGamble Offer   {00Double-or-nothing after every completion\n\r"
+	    "{09|{00\n\r"
+	    "{09|{00  Type {0DAQUÉST BUY <item>{00 to purchase.\n\r"
+	    "{09'---------------------------------------------------------------'{00\n\r",
+	    ch);
 
         if (ch->level >= LEVEL_HERO)
         {
-            send_to_char("\n\rEnd-game rewards for maxed heroes:\n\r"
-                "Legendary boon (gold + pracs)       750qp\n\r"
-                "Keepsake trophy                     600qp\n\r"
-                "Surprise cache (potion bundle)      500qp\n\r", ch);
+            send_to_char(
+		"{09.-[ End-Game Rewards (Heroes Only) ]-------------------------.{00\n\r"
+		"{09|{00  Legendary Boon  (gold + practices)   {0D750 qp{00\n\r"
+		"{09|{00  Keepsake Trophy                      {0D600 qp{00\n\r"
+		"{09|{00  Surprise Cache  (potion bundle)      {0D500 qp{00\n\r"
+		"{09'---------------------------------------------------------------'{00\n\r",
+		ch);
         }
         return;
     }
@@ -550,24 +612,42 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
     }
     else if (!strcmp(arg1, "request"))
     {
-        act( "$n asks $N for a quest.", ch, NULL, questman, TO_ROOM);
-	act ("You ask $N for a quest.",ch, NULL, questman, TO_CHAR);
+        act( "$n approaches $N seeking a quest.", ch, NULL, questman, TO_ROOM);
+	act ("You approach $N and ask for a quest.",ch, NULL, questman, TO_CHAR);
 	if (IS_SET(ch->act, PLR_QUESTOR))
 	{
-	    snprintf(buf, sizeof(buf), "But you're already on a quest!");
+	    snprintf(buf, sizeof(buf),
+		"You're already on a quest, %s! Finish it first.", ch->name);
 	    do_say(questman, buf);
 	    return;
 	}
 	if (ch->nextquest > 0)
 	{
-	    snprintf(buf, sizeof(buf), "You're very brave, %s, but let someone else have a chance.",ch->name);
-	    do_say(questman, buf);
-	    snprintf(buf, sizeof(buf), "Come back later.");
+	    snprintf(buf, sizeof(buf),
+		"You've earned a rest, %s. Return in %d minute%s.",
+		ch->name, ch->nextquest, ch->nextquest == 1 ? "" : "s");
 	    do_say(questman, buf);
 	    return;
 	}
 
-	snprintf(buf, sizeof(buf), "Thank you, brave %s!",ch->name);
+	switch (number_range(0, 3))
+	{
+	    case 0:
+		snprintf(buf, sizeof(buf), "Ah, a brave soul! Well met, %s.", ch->name);
+		break;
+	    case 1:
+		snprintf(buf, sizeof(buf),
+		    "Your timing is perfect, %s. I have just the task for you.", ch->name);
+		break;
+	    case 2:
+		snprintf(buf, sizeof(buf),
+		    "Welcome, %s. The realm needs someone of your skill.", ch->name);
+		break;
+	    default:
+		snprintf(buf, sizeof(buf),
+		    "Thank you for answering the call, brave %s!", ch->name);
+		break;
+	}
 	do_say(questman, buf);
 
 	generate_quest(ch, questman);
@@ -578,17 +658,28 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    {
 		ch->countdown = number_range(5, 8);
 		ch->questrush = true;
-		do_say(questman, "I have a RUSH CONTRACT for you - double the reward, half the time!");
-		snprintf(buf, sizeof(buf), "You have only %d minutes - finish fast for double quest points!",ch->countdown);
+		send_to_char(
+		    "\n\r{0C** RUSH CONTRACT! Double reward - finish before time runs out! **{00\n\r\n\r",
+		    ch);
+		do_say(questman,
+		    "This is a RUSH CONTRACT - finish fast and I'll double your reward!");
+		snprintf(buf, sizeof(buf),
+		    "You have only %d minutes. Don't waste a second!", ch->countdown);
 		do_say(questman, buf);
 	    }
 	    else
 	    {
 		ch->countdown = number_range(10,30);
 		ch->questrush = false;
-		snprintf(buf, sizeof(buf), "You have %d minutes to complete this quest.",ch->countdown);
+		snprintf(buf, sizeof(buf),
+		    "You have %d minutes to complete this quest.", ch->countdown);
 		do_say(questman, buf);
-		do_say(questman, "May the gods go with you!");
+		switch (number_range(0, 2))
+		{
+		    case 0: do_say(questman, "May the gods guide your blade!"); break;
+		    case 1: do_say(questman, "The realm is counting on you!"); break;
+		    case 2: do_say(questman, "Fortune favors the bold - good luck!"); break;
+		}
 	    }
 	    SET_BIT(ch->act, PLR_QUESTOR);
 	}
@@ -600,7 +691,9 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	act ("You inform $N you have completed $s quest.",ch, NULL, questman, TO_CHAR);
 	if (ch->questgiver != questman)
 	{
-	    snprintf(buf, sizeof(buf), "I never sent you on a quest! Perhaps you're thinking of someone else.");
+	    snprintf(buf, sizeof(buf),
+		"I don't recall sending you on a quest, %s. Wrong person!",
+		ch->name);
 	    do_say(questman,buf);
 	    return;
 	}
@@ -623,13 +716,17 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		streak_bonus = UMIN(ch->queststreak, 5) * 10;
 		pointreward = pointreward + (pointreward * streak_bonus) / 100;
 
-		snprintf(buf, sizeof(buf), "Congratulations on completing your quest!");
-		do_say(questman,buf);
+		switch (number_range(0, 2))
+		{
+		    case 0: do_say(questman, "Excellent work! The realm is in your debt!"); break;
+		    case 1: do_say(questman, "Splendid - you've returned victorious!"); break;
+		    case 2: do_say(questman, "Well done! I knew you were right for the job."); break;
+		}
 		if (ch->questrush)
-		    do_say(questman, "Rush contract fulfilled - double reward earned!");
+		    do_say(questman, "Rush contract fulfilled - your double reward is well earned!");
 		if (ch->queststreak > 0)
 		{
-		    snprintf(buf, sizeof(buf), "That's %d in a row! +%d%% streak bonus applied.",
+		    snprintf(buf, sizeof(buf), "Streak of %d in a row! A +%d%% bonus has been added!",
 			    ch->queststreak + 1, streak_bonus);
 		    do_say(questman, buf);
 		}
@@ -643,11 +740,18 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                 add_money(ch,reward);
 		/* double-or-nothing gamble offer */
 		ch->questgamble_pts = pointreward;
-		snprintf(buf, sizeof(buf), "Your %d gold is yours! Now, feeling lucky?", reward);
+		snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
 		do_say(questman,buf);
-		snprintf(buf, sizeof(buf), "Risk your %d quest points in a double-or-nothing gamble!", pointreward);
-		do_say(questman,buf);
-		do_say(questman,"Type 'AQUEST GAMBLE YES' to risk it, or 'AQUEST GAMBLE NO' to collect safely.");
+		send_to_char(
+		    "{09.-[ Double-or-Nothing Gamble Offer ]-------------------------.{00\n\r", ch);
+		snprintf(buf, sizeof(buf),
+		    "{09|{00 {04Earned :{00 {0D%d{00 quest points\n\r"
+		    "{09|{00 {06Win     :{00 50%%%% chance to earn {0D%d{00 pts\n\r"
+		    "{09|{00 {07Lose    :{00 50%%%% chance to earn {0D0{00 pts\n\r"
+		    "{09|{00  Type {0DAQUÉST GAMBLE YES{00 or {0DAQUÉST GAMBLE NO{00\n\r"
+		    "{09'---------------------------------------------------------------'{00\n\r",
+		    pointreward, pointreward * 2);
+		send_to_char(buf, ch);
 		if( ch->level == 50 )
 		    ch->nextquest = 5;
 		else
@@ -687,13 +791,13 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    act("You hand $p to $N.",ch, obj, questman, TO_CHAR);
 		    act("$n hands $p to $N.",ch, obj, questman, TO_ROOM);
 
-	    	    snprintf(buf, sizeof(buf), "Congratulations on completing your quest!");
+	    	    snprintf(buf, sizeof(buf), "Congratulations, %s! Quest accomplished!", ch->name);
 		    do_say(questman,buf);
 		    if (ch->questrush)
-		        do_say(questman, "Rush contract fulfilled - double reward earned!");
+		        do_say(questman, "Rush contract fulfilled - your double reward is well earned!");
 		    if (ch->queststreak > 0)
 		    {
-		        snprintf(buf, sizeof(buf), "That's %d in a row! +%d%% streak bonus applied.",
+		        snprintf(buf, sizeof(buf), "Streak of %d in a row! A +%d%% bonus has been added!",
 			     ch->queststreak + 1, streak_bonus);
 		        do_say(questman, buf);
 		    }
@@ -708,11 +812,18 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    extract_obj(obj);
 		    /* double-or-nothing gamble offer */
 		    ch->questgamble_pts = pointreward;
-		    snprintf(buf, sizeof(buf), "Your %d gold is yours! Now, feeling lucky?", reward);
+		    snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
 		    do_say(questman, buf);
-		    snprintf(buf, sizeof(buf), "Risk your %d quest points in a double-or-nothing gamble!", pointreward);
-		    do_say(questman, buf);
-		    do_say(questman,"Type 'AQUEST GAMBLE YES' to risk it, or 'AQUEST GAMBLE NO' to collect safely.");
+		    send_to_char(
+			"{09.-[ Double-or-Nothing Gamble Offer ]-------------------------.{00\n\r", ch);
+		    snprintf(buf, sizeof(buf),
+			"{09|{00 {04Earned :{00 {0D%d{00 quest points\n\r"
+			"{09|{00 {06Win     :{00 50%%%% chance to earn {0D%d{00 pts\n\r"
+			"{09|{00 {07Lose    :{00 50%%%% chance to earn {0D0{00 pts\n\r"
+			"{09|{00  Type {0DAQUÉST GAMBLE YES{00 or {0DAQUÉST GAMBLE NO{00\n\r"
+			"{09'---------------------------------------------------------------'{00\n\r",
+			pointreward, pointreward * 2);
+		    send_to_char(buf, ch);
 		    if( ch->level == 50 )
 			ch->nextquest = 6;
 		    else
@@ -721,56 +832,65 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		}
 		else
 		{
-		    snprintf(buf, sizeof(buf), "You haven't completed the quest yet, but there is still time!");
-		    do_say(questman, buf);
+		    do_say(questman,
+			"You haven't finished the quest, but there is still time!");
 		    return;
 		}
 	    }
 	    else if ((ch->questmob > 0 || ch->questobj > 0) && ch->countdown > 0)
 	    {
-		snprintf(buf, sizeof(buf), "You haven't completed the quest yet, but there is still time!");
-		do_say(questman, buf);
+		do_say(questman, "You haven't finished the quest, but there is still time!");
 		return;
 	    }
 	}
 	if (ch->nextquest > 0)
-	    snprintf(buf, sizeof(buf),"But you didn't complete your quest in time!");
-	else snprintf(buf, sizeof(buf), "You have to REQUEST a quest first, %s.",ch->name);
+	    snprintf(buf, sizeof(buf),
+		"Alas, %s - your quest has already timed out.", ch->name);
+	else
+	    snprintf(buf, sizeof(buf),
+		"You have no active quest, %s. Try AQUEST REQUEST first.", ch->name);
 	do_say(questman, buf);
 	return;
     }
     else if (!strcmp(arg1,"abort") )
     {
-	act( "$n informs $N that $e is quitting for now.",ch,NULL,questman,TO_ROOM );
-	act( "You inform $N that you are quitting for now.",ch,NULL,questman,TO_CHAR);
-/*        snprintf(test_buf, sizeof(test_buf),"%s is aborting a quest.",ch->name);
-        log_string(test_buf);*/
+	act( "$n approaches $N to abandon $s quest.",ch,NULL,questman,TO_ROOM );
+	act( "You tell $N that you are abandoning your quest.",ch,NULL,questman,TO_CHAR);
 
 	if( ch->questgiver != questman )
 	{
-	    snprintf(buf, sizeof(buf),"I never sent you on a quest!.");
-	    do_say(questman,buf);
+	    do_say(questman, "I never assigned you a quest, friend. Wrong person!");
 	    return;
 	}
 
         if ( IS_HERO(ch) )
         {
-            snprintf(buf, sizeof(buf),"Heroes are not allowed to abort quests!");
+            snprintf(buf, sizeof(buf),"Heroes cannot abandon quests, %s!", ch->name);
             do_say(questman,buf);
             return;
         }
         if( IS_SET(ch->act, PLR_QUESTOR) )
         {
-            snprintf(buf, sizeof(buf),"You are removed from your quest obligation %s.",ch->name );
+            snprintf(buf, sizeof(buf),
+		"Very well, %s. Your quest obligation is lifted.", ch->name);
 	    do_say(questman,buf);
 	    if (ch->queststreak > 0)
 	    {
-		snprintf(buf, sizeof(buf), "Your winning streak of %d is lost!", ch->queststreak);
+		snprintf(buf, sizeof(buf),
+		    "You had a streak of %d in a row - all gone now!", ch->queststreak);
 		do_say(questman, buf);
+		send_to_char("{07Your winning streak has been broken!{00\n\r", ch);
 		ch->queststreak = 0;
 	    }
-	    snprintf(buf, sizeof(buf),"Better luck next time!");
-	    do_say(questman,buf);
+	    switch (number_range(0, 2))
+	    {
+		case 0: do_say(questman,
+		    "Perhaps fortune will favor you more next time."); break;
+		case 1: do_say(questman,
+		    "Come back when you're ready. The work won't do itself."); break;
+		case 2: do_say(questman,
+		    "May your next quest go better!"); break;
+	    }
 
 	    REMOVE_BIT(ch->act, PLR_QUESTOR);
 	    ch->questgiver = NULL;
@@ -785,8 +905,19 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	}
     }
 
-    send_to_char("AQUEST commands: POINTS INFO TIME REQUEST COMPLETE LIST BUY GAMBLE ABORT.\n\r",ch);
-    send_to_char("For more information, type 'HELP AQUEST'.\n\r",ch);
+    send_to_char(
+	"{09.-[ AQUEST Commands ]-----------------------------------------.{00\n\r"
+	"{09|{00  {04INFO     {00 View quest status or summary\n\r"
+	"{09|{00  {04POINTS   {00 Check your quest point balance\n\r"
+	"{09|{00  {04TIME     {00 Check your quest timer\n\r"
+	"{09|{00  {04REQUEST  {00 Seek a quest from the questmaster\n\r"
+	"{09|{00  {04COMPLETE {00 Turn in a finished quest\n\r"
+	"{09|{00  {04LIST     {00 Browse the quest shop\n\r"
+	"{09|{00  {04BUY      {00 Purchase a quest reward\n\r"
+	"{09|{00  {04GAMBLE   {00 Double-or-nothing your pending points\n\r"
+	"{09|{00  {04ABORT    {00 Give up your current quest\n\r"
+	"{09'---------------------------------------------------------------'{00\n\r",
+	ch);
     return;
 }
 
@@ -830,20 +961,22 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 
     if ( vsearch == NULL || ( victim = get_char_world( ch, vsearch->player_name ) ) == NULL )
     {
-	snprintf(buf, sizeof(buf), "I'm sorry, but I don't have any quests for you at this time.");
+	snprintf(buf, sizeof(buf),
+	    "My apologies, %s - there are no suitable quests at the moment.",
+	    ch->name);
 	do_say(questman, buf);
-	snprintf(buf, sizeof(buf), "Try again later.");
-	do_say(questman, buf);
+	do_say(questman, "Please try again shortly.");
 	ch->nextquest = 5;
         return;
     }
 
     if ( ( room = find_location( ch, victim->name ) ) == NULL )
     {
-	snprintf(buf, sizeof(buf), "I'm sorry, but I don't have any quests for you at this time.");
+	snprintf(buf, sizeof(buf),
+	    "My apologies, %s - there are no suitable quests at the moment.",
+	    ch->name);
 	do_say(questman, buf);
-	snprintf(buf, sizeof(buf), "Try again later.");
-	do_say(questman, buf);
+	do_say(questman, "Please try again shortly.");
 	ch->nextquest = 5;
         return;
     }
@@ -881,16 +1014,32 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	obj_to_room(questitem, room);
 	ch->questobj = questitem->pIndexData->vnum;
 
-	snprintf(buf, sizeof(buf), "Robbers have stolen %s!",questitem->short_descr);
-	do_say(questman,buf);
-	do_say(questman, "A bounty of questpoints for you if you recover it!");
+	switch (number_range(0, 2))
+	{
+	    case 0:
+		snprintf(buf, sizeof(buf),
+		    "Bandits have made off with %s!", questitem->short_descr);
+		do_say(questman, buf);
+		do_say(questman, "Recover it and you'll be rewarded with quest points!");
+		break;
+	    case 1:
+		snprintf(buf, sizeof(buf),
+		    "Raiders stole %s from the realm!", questitem->short_descr);
+		do_say(questman, buf);
+		do_say(questman, "Bring it back and I'll make it worth your while!");
+		break;
+	    case 2:
+		snprintf(buf, sizeof(buf),
+		    "A prized artifact - %s - has gone missing!", questitem->short_descr);
+		do_say(questman, buf);
+		do_say(questman, "Find it and I'll reward you handsomely in quest points!");
+		break;
+	}
 
-	/* I changed my area names so that they have just the name of the area
-	   and none of the level stuff. You may want to comment these next two
-	   lines. - Vassago */
-
-	snprintf(buf, sizeof(buf), "Look in the general area of %s for %s!",room->area->name, room->name);
-	do_say(questman,buf);
+	snprintf(buf, sizeof(buf),
+	    "It was last spotted near %s, in the %s region.",
+	    room->name, room->area->name);
+	do_say(questman, buf);
 	return;
     }
 
@@ -898,34 +1047,41 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 
     else
     {
-    switch(number_range(0,1))
+    switch(number_range(0,3))
     {
 	case 0:
-        snprintf(buf, sizeof(buf), "%s has been declared a outlaw!",victim->short_descr);
+        snprintf(buf, sizeof(buf), "%s has been declared an outlaw!",victim->short_descr);
 	do_say(questman,buf);
-        snprintf(buf, sizeof(buf), "They must be found and killed!");
-	do_say(questman,buf);
+        do_say(questman, "Hunt them down before they cause more trouble!");
 	break;
 
 	case 1:
-	snprintf(buf, sizeof(buf), "Somehow %s escaped from jail!",victim->short_descr);
+	snprintf(buf, sizeof(buf), "The criminal known as %s has escaped from prison!",victim->short_descr);
 	do_say(questman,buf);
-	snprintf(buf, sizeof(buf), "Since the escape, %s has murdered %d civilians!",victim->short_descr, number_range(2,20));
+	snprintf(buf, sizeof(buf), "Since the escape, they've slain %d innocent people!",number_range(2,20));
 	do_say(questman,buf);
-	do_say(questman,"You must find and kill them!");
+	do_say(questman,"You must find and stop them!");
+	break;
+
+	case 2:
+	snprintf(buf, sizeof(buf), "A bounty has been posted on %s.",victim->short_descr);
+	do_say(questman,buf);
+	do_say(questman, "Eliminate this threat and collect your reward!");
+	break;
+
+	case 3:
+	snprintf(buf, sizeof(buf), "%s threatens the peace of the realm!",victim->short_descr);
+	do_say(questman,buf);
+	snprintf(buf, sizeof(buf), "Deal with them before %d more innocents suffer!",number_range(3,15));
+	do_say(questman,buf);
 	break;
     }
 
     if (room->name != NULL)
     {
-        snprintf(buf, sizeof(buf), "Seek %s out somewhere in the vicinity of %s!",victim->short_descr,room->name);
-	do_say(questman,buf);
-
-	/* I changed my area names so that they have just the name of the area
-	   and none of the level stuff. You may want to comment these next two
-	   lines. - Vassago */
-
-	snprintf(buf, sizeof(buf), "That location is in the general area of %s.",room->area->name);
+	snprintf(buf, sizeof(buf),
+	    "Your quarry was last spotted near %s, in the %s region.",
+	    room->name, room->area->name);
 	do_say(questman,buf);
     }
 
@@ -994,7 +1150,31 @@ void quest_update(void)
             }
             if (ch->countdown > 0 && ch->countdown < 6)
             {
-                send_to_char("Better hurry, you're almost out of time for your quest!\n\r",ch);
+		switch (ch->countdown)
+		{
+		    case 5:
+			send_to_char(
+			    "{0AQuest Warning:{00 Only 5 minutes remaining!\n\r", ch);
+			break;
+		    case 4:
+		    case 3:
+			send_to_char(
+			    "{0C** Quest Warning: Time is running out! **{00\n\r", ch);
+			break;
+		    case 2:
+			send_to_char(
+			    "{0C** Quest Warning: 2 minutes left - hurry! **{00\n\r", ch);
+			if (ch->questrush)
+			    send_to_char(
+				"{0C** RUSH CONTRACT: Don't lose that double reward! **{00\n\r", ch);
+			break;
+		    case 1:
+			send_to_char(
+			    "{07** FINAL MINUTE! Complete your quest NOW! **{00\n\r", ch);
+			break;
+		    default:
+			break;
+		}
                 continue;
             }
         }
