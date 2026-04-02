@@ -1865,7 +1865,7 @@ void do_transfusion( CHAR_DATA *ch, char *argument )
 	  TO_NOTVICT );
 
     ch->hit -= 50;
-    ch->mana -= 20;
+    /* Note: PC mana cost already deducted above in the !IS_NPC block. */
     victim->hit = UMIN( victim->hit + 50, victim->max_hit);
     return;
 

@@ -88,6 +88,10 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 
     ch->pcdata->psionic              = 1;
     ch->pcdata->psionic_grant_pending = false;
+    /* Clear the spec so future remort auto-grants give all 15 skills rather
+     * than silently repeating a previous immortal-customised list. */
+    free_string( ch->pcdata->psionic_grant_spec );
+    ch->pcdata->psionic_grant_spec = str_dup( "" );
     send_to_char( "\n\r{0E}Your mind awakens to hidden psionic powers!{x}\n\r", ch );
 }
 
