@@ -235,7 +235,7 @@ Crafting and utility commands:
   a corpse behind.
 ~
 
-0 BACKSTAB BS BASH BERSERK BLINDING CONFUSE CRANE DOORBASH DIRT DISARM DISMOUNT FISTS HIT KICK MIND BLAST MINDBLAST MURDE MURDER NERVE NIGHTMARE PYROTECHNICS RESCUE SMITE STUNNING TORMENT TRIP~
+0 BACKSTAB BS BASH BERSERK BLINDING CONFUSE CRANE DOORBASH DIRT DISARM DISMOUNT ENERVATE FISTS HIT KICK MIND BLAST MINDBLAST MURDE MURDER NERVE NIGHTMARE RESCUE SMITE STUNNING TORMENT TRIP~
 Syntax: backstab <victim>          Syntax: bs <victim>
 Syntax: bash <victim>              Syntax: berserk
 Syntax: blinding <victim>          Syntax: confuse <victim>
@@ -246,7 +246,7 @@ Syntax: hit <victim>
 Syntax: kick <victim>              Syntax: murder <victim>
 Syntax: mindblast <victim>
 Syntax: nerve <victim>             Syntax: nightmare <victim>
-Syntax: pyrotechnics <victim>      Syntax: rescue <ally>
+Syntax: enervate <victim>          Syntax: rescue <ally>
 Syntax: smite <victim>             Syntax: stunning <victim>
 Syntax: torment <victim>           Syntax: trip <victim>
 
@@ -256,7 +256,7 @@ skill or spell and often requires appropriate weapons or positioning.
   weapon.
 - BASH: slam your foe to the ground, potentially stunning them.
 - BERSERK: enter a battle frenzy to boost offense while losing some control.
-- BLINDING/CONFUSE/NIGHTMARE/PYROTECHNICS/SMITE/STUNNING/TORMENT: offensive
+- BLINDING/CONFUSE/ENERVATE/NIGHTMARE/SMITE/STUNNING/TORMENT: offensive
   techniques that inflict status effects; see the relevant skill for exact
   outcomes and save checks.
 - CRANE and FISTS: unarmed fighting stances that improve hand-to-hand combat.
@@ -475,8 +475,8 @@ and optionally locks in a comma-separated list of psionic skills to award when
 the check fires (default behavior rolls normally). Using "now" grants psionics
 immediately, sends the unlock messaging, and applies the chosen skills right
 away. Valid picks include: psionic armor, psychic shield, mindbar, torment,
-ego whip, pyrotechnics, mindblast, clairvoyance, astral walk, shift, project,
-telekinesis, transfusion, and nightmare.
+ego whip, enervate, mindblast, clairvoyance, astral walk, shift, project,
+telekinesis, transfusion, nightmare, mind leech, and confuse.
 
 ~
 
@@ -1187,11 +1187,12 @@ BENEFITS PER REMORT
     5th       58        59          1000 each          25      18       +5
 
   Starting at remort 1 you are immune to hunger and thirst forever.
-  Starting at remort 2 you gain psionic powers: you can use all fifteen
-  psionic abilities (ego whip, mindblast, nightmare, torment, clairvoyance,
-  mindbar, psionic armor, psychic shield, telekinesis, astral walk, shift,
-  confuse, project, pyrotechnics, transfusion).  These are re-granted on
-  each subsequent remort since skills are wiped.
+  Starting at remort 2 you gain psionic powers: you receive 4 randomly chosen
+  skills from each of 4 psionic disciplines (16 total possible: ego whip,
+  mindblast, nightmare, torment, clairvoyance, mindbar, psionic armor, psychic
+  shield, telekinesis, astral walk, shift, confuse, project, transfusion, mind
+  leech, enervate).  These are re-granted on each subsequent remort since
+  skills are wiped.  At the final (5th) remort all 16 psionic skills are given.
   Starting at remort 4 your recall always succeeds (no skill check, no
   random-room mishap).  Recall from combat still costs experience.
   On the 5th (final) remort you carry unlimited items and weight and may
@@ -2300,7 +2301,27 @@ psionic skill.
 See also: MINDBLAST
 ~
 
-51 IMOTD~
+0 ENERVATE~
+Syntax: enervate <target>
+
+ENERVATE is a psionic assault that directly tears the target's life force
+and physical stamina away, siphoning them back into the caster.  It belongs
+to the Control psionic discipline alongside clairvoyance, confuse, and mind
+leech.
+
+Mechanics:
+  - Deals mental damage to HP equal to level to level*2.
+  - Drains endurance (move) equal to level to level*2, floored at 0.
+  - Caster absorbs half the HP damage as healing.
+  - Caster absorbs half the endurance drained as restored movement.
+  - Mana cost: 35.
+
+Enervate is particularly punishing against physically active foes since it
+simultaneously degrades their ability to fight, flee, and sustain themselves.
+Requires training in the enervate psionic skill.
+
+See also: MINDLEECH, EGO WHIP, TORMENT
+~
 Syntax: imotd
 
 Displays the Immortal Message of the Day, which contains important notices

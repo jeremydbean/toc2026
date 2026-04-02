@@ -1033,9 +1033,9 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   "astral walk",    "clairvoyance",      "confuse",
 	   "ego whip",       "mindbar",           "mindblast",
 	   "nightmare",      "project",           "psionic armor",
-	   "psychic shield", "pyrotechnics",      "shift",
+	   "psychic shield", "shift",
 	   "telekinesis",    "torment",           "transfusion",
-	   "mind leech"
+	   "mind leech",     "enervate"
 	   },
 	   {
           NULL
@@ -3178,6 +3178,14 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	spell_null,		TAR_CHAR_OFFENSIVE,	 POS_FIGHTING,
 	&gsn_pyrotechnics,	SLOT(0),        0,	 12,
 	"flame",			"!Pyrotechnics"
+    },
+
+    {
+	"enervate",
+	{ 21, 21, 21, 21, 21, 21 },	{ 5, 5, 5, 5, 5, 5},
+	spell_null,		TAR_CHAR_OFFENSIVE,	 POS_FIGHTING,
+	&gsn_enervate,		SLOT(0),	 0,	 12,
+	"life drain",		"!Enervate!"
     },
 
     {

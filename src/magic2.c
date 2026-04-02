@@ -488,6 +488,134 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
 }
 
 /* psi */
+void do_enervate( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+    int chance;
+    int hp_drain;
+    int move_drain;
+
+    one_argument( argument, arg );
+
+    if ( !IS_NPC(ch) )
+    {
+        if ( (chance = get_skill(ch, gsn_enervate)) == 0 )
+        {
+            send_to_char( "Do what?\n\r", ch );
+            return;
+        }
+
+        if ( arg[0] == '\0' && ch->fighting == NULL )
+        {
+            send_to_char( "Who do you want to enervate?\n\r", ch );
+            return;
+        }
+        else if ( arg[0] == '\0' && ch->fighting != NULL )
+            victim = ch->fighting;
+        else if ( (victim = get_char_room(ch, arg)) == NULL )
+        {
+            send_to_char( "They aren't here.\n\r", ch );
+            return;
+        }
+
+        if ( victim == ch )
+        {
+            send_to_char( "You would only drain yourself.\n\r", ch );
+            return;
+        }
+
+        if ( ch->mana < 35 )
+        {
+            send_to_char( "You don't have enough mana.\n\r", ch );
+            return;
+        }
+
+        if ( is_safe_spell(ch, victim, false) )
+        {
+            act( "$N cannot be harmed by you.", ch, NULL, victim, TO_CHAR );
+            return;
+        }
+
+        if ( IS_AFFECTED2(victim, AFF2_GHOST) || IS_AFFECTED2(ch, AFF2_GHOST) )
+        {
+            send_to_char( "Ghosts have no vitality to drain.\n\r", ch );
+            return;
+        }
+
+        if ( victim->fighting != NULL && !is_same_group(ch, victim->fighting) )
+        {
+            send_to_char( "Kill stealing is not permitted.\n\r", ch );
+            return;
+        }
+
+        if ( number_percent() > chance )
+        {
+            send_to_char( "You lost your concentration.\n\r", ch );
+            ch->mana -= (dice(1,5) + 3);
+            check_improve(ch, gsn_enervate, false, 4);
+            return;
+        }
+
+        ch->mana -= 35;
+    }
+    else
+    {
+        if ( IS_SET(ch->act, ACT_PET) || IS_SET(ch->affected_by, AFF_CHARM) ||
+             (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+            return;
+
+        if ( arg[0] == '\0' && ch->fighting == NULL )
+            return;
+        else if ( arg[0] == '\0' && ch->fighting != NULL )
+            victim = ch->fighting;
+        else if ( (victim = get_char_room(ch, arg)) == NULL )
+            return;
+
+        if ( victim == ch )
+            return;
+    }
+
+    /* Drain endurance (move) and absorb half back. */
+    move_drain = number_range( ch->level, ch->level * 2 );
+    move_drain = UMIN( move_drain, victim->move );
+    if ( move_drain > 0 )
+    {
+        victim->move -= move_drain;
+        ch->move = UMIN( ch->max_move, ch->move + move_drain / 2 );
+    }
+
+    /* Deal HP damage and absorb half as healing. */
+    hp_drain = number_range( ch->level, ch->level * 2 );
+
+    act( "You tear the life force from $N, drinking in $S vitality!", ch, NULL, victim, TO_CHAR );
+    act( "$n tears your life force away, leaving you weakened and spent!", ch, NULL, victim, TO_VICT );
+    act( "$n's eyes dim as $e drains $N's very life and endurance.", ch, NULL, victim, TO_NOTVICT );
+
+    damage( ch, victim, hp_drain, gsn_enervate, DAM_MENTAL );
+
+    /* Heal the caster for half the HP damage (after victim may be dead). */
+    if ( victim != NULL && victim->position > POS_DEAD )
+    {
+        ch->hit = UMIN( ch->max_hit, ch->hit + hp_drain / 2 );
+    }
+
+    check_improve(ch, gsn_enervate, true, 4);
+    WAIT_STATE(ch, skill_table[gsn_enervate].beats);
+
+    if ( ch->fighting == NULL && victim != NULL && victim->position > POS_DEAD
+         && victim->fighting == NULL )
+    {
+        ch->fighting = victim;
+        victim->fighting = ch;
+        ch->position = POS_FIGHTING;
+        victim->position = POS_FIGHTING;
+    }
+
+    return;
+}
+
+/* psi */
 void do_mindblast( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];

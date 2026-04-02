@@ -181,6 +181,7 @@ int16_t         gsn_psionic_armor;
 int16_t         gsn_psychic_shield;
 int16_t         gsn_mindbar;
 int16_t         gsn_mindleech;
+int16_t         gsn_enervate;
  
 /* monk gsn's */
 int16_t         gsn_steel_fist;

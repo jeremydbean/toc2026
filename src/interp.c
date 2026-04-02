@@ -309,6 +309,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "levitate",	do_levitate,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "mindbar",    	do_mindbar,     POS_FIGHTING,   15,  LOG_NORMAL, 0 },
     { "mindleech",      do_mindleech,   POS_FIGHTING,   15,  LOG_NORMAL, 0 },
+    { "enervate",       do_enervate,    POS_FIGHTING,   15,  LOG_NORMAL, 0 },
     { "practice",	do_practice,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
     { "psionic",    	do_psionic_armor,POS_FIGHTING,  15,  LOG_NORMAL, 0 },
     { "psychic",    	do_psychic_shield,POS_STANDING, 15,  LOG_NORMAL, 0 },

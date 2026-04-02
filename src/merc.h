@@ -173,7 +173,7 @@ typedef struct script_loop_prepoll_payload
 /* Game parameters. */
 #define WORLD_SIZE              30000
 #define MAX_SOCIALS             512
-#define MAX_SKILL               226
+#define MAX_SKILL               228
 #define MAX_GROUP               56
 #define MAX_IN_GROUP            20
 #define MAX_CLASS               6
@@ -1861,6 +1861,7 @@ extern sh_int  gsn_psionic_armor;
 extern sh_int  gsn_psychic_shield;
 extern sh_int  gsn_mindbar;
 extern sh_int  gsn_mindleech;
+extern sh_int  gsn_enervate;
 extern sh_int  gsn_steel_fist;
 extern sh_int  gsn_crane_dance;
 extern sh_int  gsn_nerve_damage;
