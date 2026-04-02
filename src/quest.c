@@ -90,7 +90,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
     {
 	if (IS_SET(ch->act, PLR_QUESTOR))
 	{
-	    if (ch->questmob == -1 && ch->questgiver->short_descr != NULL)
+	    if (ch->questmob == -1 && ch->questgiver != NULL && ch->questgiver->short_descr != NULL)
 	    {
 		snprintf(buf, sizeof(buf), "Your quest is ALMOST complete!\n\rGet back to %s before your time runs out!\n\r",ch->questgiver->short_descr);
 		send_to_char(buf, ch);
@@ -576,7 +576,6 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    do_say(questman, buf);
 		    return;
 		}
-		return;
 	    }
 	    else if ((ch->questmob > 0 || ch->questobj > 0) && ch->countdown > 0)
 	    {
@@ -605,9 +604,9 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    return;
 	}
 
-        if (ch -> level >= 50)
+        if ( IS_HERO(ch) )
         {
-            snprintf(buf, sizeof(buf),"HERO's are not allowed to abort quests!.");
+            snprintf(buf, sizeof(buf),"Heroes are not allowed to abort quests!");
             do_say(questman,buf);
             return;
         }
@@ -754,9 +753,9 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	break;
 
 	case 1:
-	snprintf(buf, sizeof(buf), "Soulcrusher accidentally left %s escape from jail!",victim->short_descr);
+	snprintf(buf, sizeof(buf), "Somehow %s escaped from jail!",victim->short_descr);
 	do_say(questman,buf);
-	snprintf(buf, sizeof(buf), "Since the escape, %s has murdered %d civillians!",victim->short_descr, number_range(2,20));
+	snprintf(buf, sizeof(buf), "Since the escape, %s has murdered %d civilians!",victim->short_descr, number_range(2,20));
 	do_say(questman,buf);
 	do_say(questman,"You must find and kill them!");
 	break;
@@ -828,6 +827,7 @@ void quest_update(void)
                 ch->questgiver = NULL;
                 ch->countdown = 0;
                 ch->questmob = 0;
+                ch->questobj = 0;
             }
             if (ch->countdown > 0 && ch->countdown < 6)
             {

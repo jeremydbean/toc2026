@@ -274,7 +274,13 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf( fp, "QuestNext %d\n", 30	);
     fprintf( fp, "Exp  %ld\n",	ch->exp			);
     if (ch->act != 0)
-	fprintf( fp, "Act  %ld\n",   ch->act		);
+    {
+	long act_save = ch->act;
+	if (ch->countdown != 0)  /* mid-quest logout: strip QUESTOR so re-login state is clean */
+	    REMOVE_BIT(act_save, PLR_QUESTOR);
+	if (act_save != 0)
+	    fprintf( fp, "Act  %ld\n", act_save );
+    }
     if (ch->act2 != 0)
 	fprintf( fp, "Act2 %ld\n",   ch->act2           );
     if (ch->affected_by != 0)
