@@ -3765,8 +3765,32 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
         spell_null,             TAR_IGNORE,             POS_STANDING,
         &gsn_smite,          SLOT( 0),        0,     24,
         "smite",             "!SMITE!"
-    }
+    },
 
+    /* Immortal command tracking skills */
+    {
+        "empower",
+        { -1, -1, -1, -1, -1, -1 },     { 0, 0, 0, 0, 0, 0 },
+        spell_null,             TAR_IGNORE,             POS_DEAD,
+        &gsn_empower,           SLOT( 0),       0,      0,
+        "",                     "The divine empowerment fades away."
+    },
+
+    {
+        "titanic",
+        { -1, -1, -1, -1, -1, -1 },     { 0, 0, 0, 0, 0, 0 },
+        spell_null,             TAR_IGNORE,             POS_DEAD,
+        &gsn_titanic,           SLOT( 0),       0,      0,
+        "",                     "Your titanic stature fades away."
+    },
+
+    {
+        "petrify",
+        { -1, -1, -1, -1, -1, -1 },     { 0, 0, 0, 0, 0, 0 },
+        spell_null,             TAR_IGNORE,             POS_DEAD,
+        &gsn_petrify,           SLOT( 0),       0,      0,
+        "",                     "The stone crumbles and you move freely again."
+    }
 
 };
 

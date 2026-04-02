@@ -173,7 +173,8 @@ typedef struct script_loop_prepoll_payload
 /* Game parameters. */
 #define WORLD_SIZE              30000
 #define MAX_SOCIALS             512
-#define MAX_SKILL               228
+#define MAX_SKILL               231
+#define TRAIL_LEN               10
 #define MAX_GROUP               56
 #define MAX_IN_GROUP            20
 #define MAX_CLASS               6
@@ -1303,6 +1304,7 @@ struct  kill_data
 #define COMM_NORMUD             (Z)
 #define COMM_NOTITLE            (aa)
 #define COMM_NOBEEP             (bb)
+#define COMM_MUTE               (cc)
 
 #define IS_QUESTOR(ch)          (IS_SET((ch)->act, PLR_QUESTOR ) )
 
@@ -1557,6 +1559,8 @@ struct  pc_data
     char * ignore;
     long                pkills_given;
     long                pkills_received;
+    int                 trail[TRAIL_LEN];
+    sh_int              trail_head;
 };
 
 struct my_mesg_buf{
@@ -1873,6 +1877,9 @@ extern sh_int  gsn_iron_skin;
 extern sh_int  gsn_levitate;
 extern sh_int  gsn_dshield;
 extern sh_int  gsn_baura;
+extern sh_int  gsn_empower;
+extern sh_int  gsn_titanic;
+extern sh_int  gsn_petrify;
 
 /* Utility macros. */
 #define UMIN(a, b)              ((a) < (b) ? (a) : (b))

@@ -737,6 +737,12 @@ void do_say( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( !IS_NPC(ch) && IS_SET(ch->comm, COMM_MUTE) )
+    {
+        send_to_char( "The gods have silenced you!\n\r", ch );
+        return;
+    }
+
     /* Code Safety: Truncate argument if too long to prevent issues downstream */
     if ( strlen(argument) > MAX_INPUT_LENGTH - 100 )
         argument[MAX_INPUT_LENGTH - 100] = '\0';

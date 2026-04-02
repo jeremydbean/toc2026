@@ -2429,6 +2429,143 @@ Use with caution — the old player file is deleted and replaced with a new
 one under the new name immediately.
 ~
 
+63 MUTE~
+Syntax: mute <player>
+
+MUTE silences a player completely — they cannot use say, tell, shout,
+channels, or emote until the immortal toggles the mute off.  All
+communication flags are set simultaneously.  Toggling mute again on a
+muted player restores all speech privileges.  The flag is saved across
+logins.
+
+See also: NOCHANNELS, NOTELL, NOSHOUT, NOEMOTE
+~
+
+64 DRAG~
+Syntax: drag <player>
+
+DRAG instantly pulls an online player from wherever they are to your
+current room, as if hauled by an unseen force.  Any active combat the
+victim is engaged in is stopped first.  The dragged player sees a
+notification and an automatic room description.
+
+See also: TRANSFER
+~
+
+64 DUEL~
+Syntax: duel <player1> <player2>
+
+DUEL forces two online players into combat against each other.  Player2
+is transported to player1's room; both are set PK-enabled and their
+fighting is started automatically.  A global notification is sent to both
+participants and to you.
+
+Use responsibly — this will force real combat between the two players.
+
+See also: SLAY, PEACE
+~
+
+63 WEATHER~
+Syntax: weather <sunny|cloudy|rain|storm>
+
+WEATHER immediately changes the global weather.  Affects all outdoor rooms
+and triggers the appropriate atmospheric messages.
+
+  sunny   — clear skies, high pressure
+  cloudy  — overcast, moderate pressure
+  rain    — raining, low pressure
+  storm   — lightning and thunder, very low pressure
+
+See also: REPOP
+~
+
+63 LIGHTS~
+Syntax: lights
+
+LIGHTS toggles the ROOM_DARK flag on your current room.  When dark, mobs
+and players without infravision or a light source cannot see clearly.
+Toggling again re-enables the room's normal lighting.
+
+See also: SEAL
+~
+
+63 SEAL~
+Syntax: seal <direction>
+
+SEAL toggles the WIZLOCKED flag on the specified exit of your current room.
+A sealed exit cannot be passed by any player, regardless of level, until
+unsealed.  Valid directions: north, east, south, west, up, down, ne, nw,
+se, sw.
+
+See also: LIGHTS
+~
+
+63 FINGER~
+Syntax: finger <player>
+
+FINGER retrieves information about a player.  If the player is online, their
+live stats (level, race, class, title, HP/mana/move, room, playing time) are
+shown.  If offline, the player file is scanned for level, race, class, last
+login, and total playing time.
+
+See also: PSTAT, WHOIS
+~
+
+65 TRAIL~
+Syntax: trail <player>
+
+TRAIL shows the last few rooms visited by the specified player, taken from
+their session ring-buffer.  The buffer holds the TRAIL_LEN most recent
+rooms and is updated every time the player moves.  Entries are shown
+oldest-first with room vnum and name.  The buffer is cleared on login.
+
+See also: FINGER, PSTAT
+~
+
+63 PETRIFY~
+Syntax: petrify <player> [duration]
+
+PETRIFY applies a stone affect to a player, completely blocking all commands
+for the duration (in ticks).  Default duration is 50 ticks.  Petrified
+players cannot act at all.  Toggling petrify on an already-petrified player
+removes the effect immediately.  The affect is saved across logins.
+
+See also: FREEZE, STASIS
+~
+
+62 EMPOWER~
+Syntax: empower <player> [duration | perm | toggle]
+
+EMPOWER grants a player a full suite of divine buffs: sanctuary, haste,
+fly, pass door, protection, regeneration, divine shielding, and large
+boosts to all five stats plus hitroll, damroll, and armor class.
+
+  empower bob           -- applies for 100 ticks (no cross-login persistence)
+  empower bob 200       -- applies for 200 ticks
+  empower bob perm      -- permanent (duration = -1); persists across logins
+  empower bob toggle    -- permanent toggle; calling again while active removes
+
+All effects are applied under the 'empower' skill type and can be stripped
+atomically by toggling again.
+
+See also: COLOSSUS, RESTORE
+~
+
+62 COLOSSUS~
+Syntax: colossus <player> [duration | perm | toggle]
+
+COLOSSUS grants a player a 500% bonus to maximum HP, mana, and move, then
+heals them to full.  The boosts are applied as affects under the 'titanic'
+skill type and are removed cleanly when toggled off.
+
+  colossus bob          -- 100-tick duration
+  colossus bob 300      -- 300-tick duration
+  colossus bob perm     -- permanent
+  colossus bob toggle   -- permanent toggle; calling again removes the boost
+
+See also: EMPOWER, RESTORE
+~
+
 0 $~
 
 #$

@@ -783,6 +783,13 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     char_from_room( ch );
     char_to_room( ch, to_room );
 
+    /* Update trail ring-buffer for player characters */
+    if ( !IS_NPC(ch) && ch->pcdata != NULL )
+    {
+        ch->pcdata->trail[ch->pcdata->trail_head] = to_room->vnum;
+        ch->pcdata->trail_head = (sh_int)((ch->pcdata->trail_head + 1) % TRAIL_LEN);
+    }
+
     if ( ( !IS_AFFECTED(ch, AFF_SNEAK) && !IS_AFFECTED2(ch,AFF2_STEALTH) )
     && ( IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS) )
     && !shove )

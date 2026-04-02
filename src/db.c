@@ -196,6 +196,11 @@ int16_t         gsn_levitate;
 /* Castle gsn's */
 int16_t		gsn_dshield;
 int16_t		gsn_baura;
+
+/* Immortal command gsn's */
+int16_t		gsn_empower;
+int16_t		gsn_titanic;
+int16_t		gsn_petrify;
 /*
  * Locals.
  */

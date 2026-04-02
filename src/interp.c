@@ -356,6 +356,7 @@ const	struct	cmd_type	cmd_table	[] =
 /*    { "edit",           do_edit,        POS_DEAD,       L5,  LOG_ALWAYS, 1 },*/
     { "explode",        do_explode,     POS_DEAD,       L7,  LOG_NORMAL, 1 },
 /*    { "finger",         do_finger,      POS_DEAD,       ML,  LOG_NORMAL, 1 },*/
+    { "finger",         do_finger,      POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "fling",          do_bowl,        POS_DEAD,       L5,  LOG_NORMAL, 1 },
     { "force",          do_force,       POS_DEAD,       L7,  LOG_ALWAYS, 1 },
     { "fsave",          do_forcesave,   POS_DEAD,       L3,  LOG_ALWAYS, 1 },
@@ -413,6 +414,16 @@ const	struct	cmd_type	cmd_table	[] =
     { "slay",           do_slay,        POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "smash",          do_smash,       POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "stasis",         do_stasis,      POS_DEAD,       L6,  LOG_ALWAYS, 1 },
+    { "mute",           do_mute,        POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "drag",           do_drag,        POS_DEAD,       L6,  LOG_ALWAYS, 1 },
+    { "duel",           do_duel,        POS_DEAD,       L4,  LOG_ALWAYS, 1 },
+    { "weather",        do_imweather,   POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "lights",         do_lights,      POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "seal",           do_seal,        POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "trail",          do_trail,       POS_DEAD,       L7,  LOG_ALWAYS, 1 },
+    { "petrify",        do_petrify,     POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "empower",        do_empower,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
+    { "colossus",       do_colossus,    POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "snoop",          do_snoop,       POS_DEAD,       L3,  LOG_ALWAYS, 1 },
     { "stat",           do_stat,        POS_DEAD,       L7,  LOG_NORMAL, 1 },
     { "string",         do_string,      POS_DEAD,       L7,  LOG_ALWAYS, 1 },
@@ -498,6 +509,15 @@ void interpret( CHAR_DATA *ch, char *argument )
     {
 	send_to_char( "You're totally frozen!\n\r", ch );
 	return;
+    }
+
+    /*
+     * Implement petrify -- stone affect blocks all commands.
+     */
+    if ( !IS_NPC(ch) && is_affected( ch, gsn_petrify ) )
+    {
+        send_to_char( "You are turned to stone and cannot move!\n\r", ch );
+        return;
     }
 
     if(ch->in_object)

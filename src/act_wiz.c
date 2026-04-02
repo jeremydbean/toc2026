@@ -6738,6 +6738,35 @@ void do_rename( CHAR_DATA *ch, char *argument )
         }
     }
 
+    /* Check: new name must not be in use by another online character */
+    {
+        DESCRIPTOR_DATA *d;
+        for ( d = descriptor_list; d != NULL; d = d->next )
+        {
+            CHAR_DATA *wch = ( d->original != NULL ) ? d->original : d->character;
+            if ( wch != NULL && wch != victim
+                 && !IS_NPC(wch)
+                 && !str_cmp( wch->name, arg2 ) )
+            {
+                send_to_char( "That name is already in use by an online player.\n\r", ch );
+                return;
+            }
+        }
+    }
+
+    /* Check: new name must not have an existing player file on disk */
+    {
+        FILE *fp;
+        char check_file[MAX_STRING_LENGTH];
+        snprintf( check_file, sizeof(check_file), "%s%s", PLAYER_DIR, capitalize(arg2) );
+        if ( ( fp = fopen( check_file, "r" ) ) != NULL )
+        {
+            fclose( fp );
+            send_to_char( "A player with that name already exists.\n\r", ch );
+            return;
+        }
+    }
+
     /* Record old save path before changing the name */
     snprintf( old_file, sizeof(old_file), "%s%s", PLAYER_DIR, capitalize(victim->name) );
 
@@ -6758,5 +6787,804 @@ void do_rename( CHAR_DATA *ch, char *argument )
     snprintf( buf, sizeof(buf), "RENAME: %s renamed '%s' to '%s'.", ch->name, arg1, arg2 );
     log_string( buf );
 
+    return;
+}
+
+
+/*
+ * MUTE: silences all speech channels for a player.
+ */
+void do_mute( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Mute whom?\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( IS_NPC(victim) )
+    {
+        send_to_char( "Not on NPCs.\n\r", ch );
+        return;
+    }
+
+    if ( get_trust( victim ) >= get_trust( ch ) )
+    {
+        send_to_char( "You failed.\n\r", ch );
+        return;
+    }
+
+    if ( IS_SET(victim->comm, COMM_MUTE) )
+    {
+        REMOVE_BIT( victim->comm, COMM_MUTE );
+        REMOVE_BIT( victim->comm, COMM_NOCHANNELS );
+        REMOVE_BIT( victim->comm, COMM_NOTELL );
+        REMOVE_BIT( victim->comm, COMM_NOSHOUT );
+        REMOVE_BIT( victim->comm, COMM_NOEMOTE );
+        send_to_char( "The silence lifts -- you can speak again.\n\r", victim );
+        snprintf( buf, sizeof(buf), "Mute removed from %s.\n\r", victim->name );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        SET_BIT( victim->comm, COMM_MUTE );
+        SET_BIT( victim->comm, COMM_NOCHANNELS );
+        SET_BIT( victim->comm, COMM_NOTELL );
+        SET_BIT( victim->comm, COMM_NOSHOUT );
+        SET_BIT( victim->comm, COMM_NOEMOTE );
+        send_to_char( "The gods have silenced you -- you cannot speak!\n\r", victim );
+        snprintf( buf, sizeof(buf), "%s has been muted.\n\r", victim->name );
+        send_to_char( buf, ch );
+    }
+
+    save_char_obj( victim );
+    return;
+}
+
+
+/*
+ * DRAG: pull a player from anywhere to your current room.
+ */
+void do_drag( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Drag whom here?\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( IS_NPC(victim) )
+    {
+        send_to_char( "Not on NPCs.\n\r", ch );
+        return;
+    }
+
+    if ( victim == ch )
+    {
+        send_to_char( "You can't drag yourself.\n\r", ch );
+        return;
+    }
+
+    if ( victim->in_room == NULL )
+    {
+        send_to_char( "They are in limbo.\n\r", ch );
+        return;
+    }
+
+    if ( ch->in_room == NULL )
+    {
+        send_to_char( "You are in limbo.\n\r", ch );
+        return;
+    }
+
+    if ( victim->fighting != NULL )
+        stop_fighting( victim, true );
+
+    act( "$n is dragged away by an unseen force!", victim, NULL, NULL, TO_ROOM );
+    char_from_room( victim );
+    char_to_room( victim, ch->in_room );
+    act( "$n is dragged in!", victim, NULL, NULL, TO_ROOM );
+    act( "An unseen force drags you here!", ch, NULL, victim, TO_VICT );
+    do_look( victim, "auto" );
+    send_to_char( "Ok.\n\r", ch );
+    return;
+}
+
+
+/*
+ * DUEL: force combat between two online players.
+ */
+void do_duel( CHAR_DATA *ch, char *argument )
+{
+    extern void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim );
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *p1;
+    CHAR_DATA *p2;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' || arg2[0] == '\0' )
+    {
+        send_to_char( "Syntax: duel <player1> <player2>\n\r", ch );
+        return;
+    }
+
+    if ( ( p1 = get_char_world( ch, arg1 ) ) == NULL || IS_NPC(p1) )
+    {
+        send_to_char( "First player not found online.\n\r", ch );
+        return;
+    }
+
+    if ( ( p2 = get_char_world( ch, arg2 ) ) == NULL || IS_NPC(p2) )
+    {
+        send_to_char( "Second player not found online.\n\r", ch );
+        return;
+    }
+
+    if ( p1 == p2 )
+    {
+        send_to_char( "A duel requires two different players.\n\r", ch );
+        return;
+    }
+
+    if ( p1->in_room == NULL || p2->in_room == NULL )
+    {
+        send_to_char( "One of the players is in limbo.\n\r", ch );
+        return;
+    }
+
+    /* Stop any existing fights */
+    if ( p1->fighting != NULL )
+        stop_fighting( p1, true );
+    if ( p2->fighting != NULL )
+        stop_fighting( p2, true );
+
+    /* Move p2 to p1's room */
+    act( "$n vanishes in a flash of light!", p2, NULL, NULL, TO_ROOM );
+    char_from_room( p2 );
+    char_to_room( p2, p1->in_room );
+    act( "$n crashes in, ready to fight!", p2, NULL, NULL, TO_ROOM );
+    do_look( p2, "auto" );
+
+    /* Enable pk so they can fight */
+    if ( p1->pcdata->pk_state == 0 )
+        p1->pcdata->pk_state = 1;
+    if ( p2->pcdata->pk_state == 0 )
+        p2->pcdata->pk_state = 1;
+
+    /* Start the duel */
+    set_fighting( p1, p2 );
+    set_fighting( p2, p1 );
+
+    snprintf( buf, sizeof(buf), "The gods have forced a duel between %s and %s!\n\r",
+              p1->name, p2->name );
+    send_to_char( buf, p1 );
+    send_to_char( buf, p2 );
+    send_to_char( buf, ch );
+
+    multi_hit( p1, p2, TYPE_UNDEFINED );
+    return;
+}
+
+
+/*
+ * IMWEATHER: set weather conditions instantly.
+ */
+void do_imweather( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    const char *desc;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Syntax: weather <sunny|cloudy|rain|storm>\n\r", ch );
+        snprintf( buf, sizeof(buf), "Current sky: %d (0=sunny 1=cloudy 2=rain 3=storm)\n\r",
+                  weather_info.sky );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "sunny" ) || !str_prefix( arg, "clear" ) )
+    {
+        weather_info.sky  = SKY_CLOUDLESS;
+        weather_info.mmhg = 1010;
+        desc = "The skies clear and the sun shines brightly.";
+    }
+    else if ( !str_prefix( arg, "cloudy" ) || !str_prefix( arg, "overcast" ) )
+    {
+        weather_info.sky  = SKY_CLOUDY;
+        weather_info.mmhg = 990;
+        desc = "Clouds roll in and cover the sky.";
+    }
+    else if ( !str_prefix( arg, "rain" ) || !str_prefix( arg, "raining" ) )
+    {
+        weather_info.sky  = SKY_RAINING;
+        weather_info.mmhg = 970;
+        desc = "Dark clouds open up as rain begins to fall.";
+    }
+    else if (  !str_prefix( arg, "storm" )    || !str_prefix( arg, "lightning" )
+            || !str_prefix( arg, "thunder" )  )
+    {
+        weather_info.sky  = SKY_LIGHTNING;
+        weather_info.mmhg = 950;
+        desc = "The sky erupts with lightning and thunder!";
+    }
+    else
+    {
+        send_to_char( "Syntax: weather <sunny|cloudy|rain|storm>\n\r", ch );
+        return;
+    }
+
+    /* Broadcast to all connected players */
+    {
+        DESCRIPTOR_DATA *d;
+        snprintf( buf, sizeof(buf), "%s\n\r", desc );
+        for ( d = descriptor_list; d != NULL; d = d->next )
+            if ( d->connected == CON_PLAYING )
+                send_to_char( buf, d->character );
+    }
+    send_to_char( "Weather changed.\n\r", ch );
+    return;
+}
+
+
+/*
+ * LIGHTS: toggle ROOM_DARK on the current room.
+ */
+void do_lights( CHAR_DATA *ch, char *argument )
+{
+    UNUSED_PARAM(argument);
+
+    if ( ch->in_room == NULL )
+    {
+        send_to_char( "You aren't in a room.\n\r", ch );
+        return;
+    }
+
+    if ( IS_SET(ch->in_room->room_flags, ROOM_DARK) )
+    {
+        REMOVE_BIT( ch->in_room->room_flags, ROOM_DARK );
+        act( "The lights come on, illuminating the area.", ch, NULL, NULL, TO_ROOM );
+        send_to_char( "The lights come on, illuminating the area.\n\r", ch );
+    }
+    else
+    {
+        SET_BIT( ch->in_room->room_flags, ROOM_DARK );
+        act( "Darkness descends as the lights go out.", ch, NULL, NULL, TO_ROOM );
+        send_to_char( "Darkness descends as the lights go out.\n\r", ch );
+    }
+    return;
+}
+
+
+/*
+ * SEAL: toggle EX_WIZLOCKED on a room exit.
+ */
+void do_seal( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    int door = -1;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Syntax: seal <north|east|south|west|up|down|ne|nw|se|sw>\n\r", ch );
+        return;
+    }
+
+    if ( ch->in_room == NULL )
+    {
+        send_to_char( "You aren't in a room.\n\r", ch );
+        return;
+    }
+
+    if      ( !str_prefix( arg, "north"     ) ) door = DIR_NORTH;
+    else if ( !str_prefix( arg, "east"      ) ) door = DIR_EAST;
+    else if ( !str_prefix( arg, "south"     ) ) door = DIR_SOUTH;
+    else if ( !str_prefix( arg, "west"      ) ) door = DIR_WEST;
+    else if ( !str_prefix( arg, "up"        ) ) door = DIR_UP;
+    else if ( !str_prefix( arg, "down"      ) ) door = DIR_DOWN;
+    else if ( !str_prefix( arg, "northeast" ) ) door = DIR_NORTHEAST;
+    else if ( !str_prefix( arg, "northwest" ) ) door = DIR_NORTHWEST;
+    else if ( !str_prefix( arg, "southeast" ) ) door = DIR_SOUTHEAST;
+    else if ( !str_prefix( arg, "southwest" ) ) door = DIR_SOUTHWEST;
+
+    if ( door < 0 )
+    {
+        send_to_char( "Invalid direction.\n\r", ch );
+        return;
+    }
+
+    if ( ch->in_room->exit[door] == NULL )
+    {
+        send_to_char( "There is no exit in that direction.\n\r", ch );
+        return;
+    }
+
+    if ( IS_SET(ch->in_room->exit[door]->exit_info, EX_WIZLOCKED) )
+    {
+        REMOVE_BIT( ch->in_room->exit[door]->exit_info, EX_WIZLOCKED );
+        send_to_char( "Exit unsealed.\n\r", ch );
+    }
+    else
+    {
+        SET_BIT( ch->in_room->exit[door]->exit_info, EX_WIZLOCKED );
+        send_to_char( "Exit sealed.\n\r", ch );
+    }
+    return;
+}
+
+
+/*
+ * FINGER: look up player info (online or offline).
+ */
+void do_finger( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char fname[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+    FILE *fp;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Finger whom?\n\r", ch );
+        return;
+    }
+
+    /* Online player */
+    if ( ( victim = get_char_world( ch, arg ) ) != NULL && !IS_NPC(victim) )
+    {
+        int days, hours, mins;
+        int played = victim->played + (int)( current_time - victim->logon );
+
+        days  = played / 86400;
+        hours = ( played % 86400 ) / 3600;
+        mins  = ( played % 3600 ) / 60;
+
+        snprintf( buf, sizeof(buf),
+            "=== Finger: %s ===\n\r"
+            "  Level : %-3d  Race : %-10s  Class: %s\n\r"
+            "  Title : %s\n\r"
+            "  HP    : %d/%d   Mana: %d/%d   Move: %d/%d\n\r"
+            "  Room  : %s [vnum %d]\n\r"
+            "  Played: %dd %dh %dm  (online now)\n\r",
+            victim->name,
+            victim->level,
+            pc_race_table[victim->race].name,
+            ( victim->class >= 0 && victim->class < MAX_CLASS )
+                ? class_table[victim->class].name : "Unknown",
+            victim->pcdata->title,
+            victim->hit, victim->max_hit,
+            victim->mana, victim->max_mana,
+            victim->move, victim->max_move,
+            victim->in_room ? victim->in_room->name : "Limbo",
+            victim->in_room ? victim->in_room->vnum : 0,
+            days, hours, mins );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    /* Offline player -- scan save file */
+    snprintf( fname, sizeof(fname), "%s%s", PLAYER_DIR, capitalize( arg ) );
+
+    if ( ( fp = fopen( fname, "r" ) ) == NULL )
+    {
+        send_to_char( "No player by that name found.\n\r", ch );
+        return;
+    }
+
+    {
+        int  p_level  = 0;
+        int  p_class  = -1;
+        int  p_played = 0;
+        long p_logoff = 0L;
+        char p_race[64];
+        char keyword[64];
+        char linebuf[256];
+        p_race[0] = '\0';
+
+        while ( fgets( linebuf, (int)sizeof(linebuf), fp ) != NULL )
+        {
+            if ( sscanf( linebuf, "%60s", keyword ) != 1 )
+                continue;
+            if ( !strcmp( keyword, "Levl" ) )
+                sscanf( linebuf, "%*s %d", &p_level );
+            else if ( !strcmp( keyword, "Cla" ) )
+                sscanf( linebuf, "%*s %d", &p_class );
+            else if ( !strcmp( keyword, "Plyd" ) )
+                sscanf( linebuf, "%*s %d", &p_played );
+            else if ( !strcmp( keyword, "LogO" ) )
+                sscanf( linebuf, "%*s %ld", &p_logoff );
+            else if ( !strcmp( keyword, "Race" ) )
+            {
+                char *tilde;
+                sscanf( linebuf, "%*s %60s", p_race );
+                tilde = strchr( p_race, '~' );
+                if ( tilde ) *tilde = '\0';
+            }
+        }
+        fclose( fp );
+
+        {
+            int  days  =  p_played / 86400;
+            int  hours = ( p_played % 86400 ) / 3600;
+            int  mins  = ( p_played % 3600 ) / 60;
+            const char *class_name =
+                ( p_class >= 0 && p_class < MAX_CLASS )
+                    ? class_table[p_class].name : "Unknown";
+            time_t logoff_time = (time_t)p_logoff;
+
+            snprintf( buf, sizeof(buf),
+                "=== Finger: %s (offline) ===\n\r"
+                "  Level : %-3d  Race : %-10s  Class: %s\n\r"
+                "  Last on : %s"
+                "  Played  : %dd %dh %dm\n\r",
+                capitalize( arg ),
+                p_level, p_race[0] ? p_race : "Unknown", class_name,
+                p_logoff ? ctime( &logoff_time ) : "Unknown\n",
+                days, hours, mins );
+            send_to_char( buf, ch );
+        }
+    }
+    return;
+}
+
+
+/*
+ * TRAIL: show the last rooms visited by a player.
+ */
+void do_trail( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    int i;
+    int idx;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Trail whom?\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC(victim) )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( victim->pcdata == NULL )
+    {
+        send_to_char( "No trail data.\n\r", ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "Recent trail for %s (oldest first):\n\r", victim->name );
+    send_to_char( buf, ch );
+
+    for ( i = 0; i < TRAIL_LEN; i++ )
+    {
+        ROOM_INDEX_DATA *room;
+        int vnum;
+
+        /* Walk the ring buffer oldest-to-newest */
+        idx = ( victim->pcdata->trail_head + i ) % TRAIL_LEN;
+        vnum = victim->pcdata->trail[idx];
+
+        if ( vnum == 0 )
+            continue;
+
+        room = get_room_index( vnum );
+        if ( room != NULL )
+            snprintf( buf, sizeof(buf), "  [%5d] %s\n\r", vnum, room->name );
+        else
+            snprintf( buf, sizeof(buf), "  [%5d] <unknown room>\n\r", vnum );
+        send_to_char( buf, ch );
+    }
+    return;
+}
+
+
+/*
+ * PETRIFY: turn a player to stone, blocking all commands.
+ */
+void do_petrify( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    AFFECT_DATA af;
+    int duration;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' )
+    {
+        send_to_char( "Syntax: petrify <player> [duration]\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg1 ) ) == NULL )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( IS_NPC(victim) )
+    {
+        send_to_char( "Not on NPCs.\n\r", ch );
+        return;
+    }
+
+    if ( get_trust( victim ) >= get_trust( ch ) )
+    {
+        send_to_char( "You failed.\n\r", ch );
+        return;
+    }
+
+    /* Toggle off if already petrified */
+    if ( is_affected( victim, gsn_petrify ) )
+    {
+        affect_strip( victim, gsn_petrify );
+        send_to_char( "The stone shatters -- you can move again!\n\r", victim );
+        snprintf( buf, sizeof(buf), "Petrify removed from %s.\n\r", victim->name );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    duration = ( arg2[0] != '\0' ) ? atoi( arg2 ) : 50;
+    if ( duration < 1 ) duration = 50;
+
+    af.type      = gsn_petrify;
+    af.level     = (sh_int)ch->level;
+    af.duration  = (sh_int)duration;
+    af.location  = APPLY_NONE;
+    af.modifier  = 0;
+    af.bitvector = 0;
+    af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    act( "$n is turned to stone!", victim, NULL, NULL, TO_ROOM );
+    send_to_char( "Your body hardens -- you have been turned to stone!\n\r", victim );
+    snprintf( buf, sizeof(buf), "%s has been petrified for %d ticks.\n\r", victim->name, duration );
+    send_to_char( buf, ch );
+    save_char_obj( victim );
+    return;
+}
+
+
+/*
+ * EMPOWER: apply all major beneficial effects and boost stats.
+ */
+void do_empower( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    AFFECT_DATA af;
+    int duration;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' )
+    {
+        send_to_char( "Syntax: empower <player> [duration | perm | toggle]\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg1 ) ) == NULL )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    /* Toggle off if already empowered */
+    if ( is_affected( victim, gsn_empower ) )
+    {
+        affect_strip( victim, gsn_empower );
+        act( "The divine empowerment fades from $n.", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "The divine empowerment fades away.\n\r", victim );
+        snprintf( buf, sizeof(buf), "Empowerment removed from %s.\n\r", victim->name );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( arg2[0] == '\0' || !str_prefix( arg2, "toggle" )
+    ||   !str_prefix( arg2, "perm" ) )
+        duration = -1;
+    else
+    {
+        duration = atoi( arg2 );
+        if ( duration < 1 ) duration = 100;
+    }
+
+    af.type     = gsn_empower;
+    af.level    = (sh_int)ch->level;
+    af.duration = (sh_int)duration;
+
+    /* Sanctuary */
+    af.location  = APPLY_NONE;   af.modifier = 0;
+    af.bitvector = AFF_SANCTUARY; af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    /* Haste + DEX boost */
+    af.location  = APPLY_DEX;    af.modifier = 4;
+    af.bitvector = AFF_HASTE;    af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    /* Flying */
+    af.location  = APPLY_NONE;  af.modifier = 0;
+    af.bitvector = AFF_FLYING;  af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    /* Pass Door */
+    af.location  = APPLY_NONE;    af.modifier = 0;
+    af.bitvector = AFF_PASS_DOOR; af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    /* Protection */
+    af.location  = APPLY_NONE;  af.modifier = 0;
+    af.bitvector = AFF_PROTECT; af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    /* Regeneration */
+    af.location  = APPLY_NONE;       af.modifier = 0;
+    af.bitvector = AFF_REGENERATION; af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    /* Divine Protection */
+    af.location   = APPLY_NONE;   af.modifier = 0;
+    af.bitvector  = 0;            af.bitvector2 = AFF2_DIVINE_PROT;
+    affect_to_char( victim, &af );
+
+    /* Stat boosts */
+    af.bitvector = 0; af.bitvector2 = 0;
+
+    af.location = APPLY_STR;     af.modifier = 15; affect_to_char( victim, &af );
+    af.location = APPLY_INT;     af.modifier = 15; affect_to_char( victim, &af );
+    af.location = APPLY_WIS;     af.modifier = 15; affect_to_char( victim, &af );
+    af.location = APPLY_DEX;     af.modifier = 11; affect_to_char( victim, &af );
+    af.location = APPLY_CON;     af.modifier = 15; affect_to_char( victim, &af );
+
+    /* Combat boosts */
+    af.location = APPLY_HITROLL; af.modifier = 20;   affect_to_char( victim, &af );
+    af.location = APPLY_DAMROLL; af.modifier = 20;   affect_to_char( victim, &af );
+    af.location = APPLY_AC;      af.modifier = -100; affect_to_char( victim, &af );
+
+    act( "$n is surrounded by a blazing divine aura!", victim, NULL, NULL, TO_ROOM );
+    send_to_char( "You are filled with divine power -- all buffs applied!\n\r", victim );
+    if ( duration == -1 )
+        snprintf( buf, sizeof(buf), "%s has been permanently empowered.\n\r", victim->name );
+    else
+        snprintf( buf, sizeof(buf), "%s has been empowered for %d ticks.\n\r", victim->name, duration );
+    send_to_char( buf, ch );
+    return;
+}
+
+
+/*
+ * COLOSSUS: massively boost HP, mana, and movement (500% bonus).
+ */
+void do_colossus( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    AFFECT_DATA af;
+    int duration;
+    int hp_boost, mana_boost, move_boost;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' )
+    {
+        send_to_char( "Syntax: colossus <player> [duration | perm | toggle]\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg1 ) ) == NULL )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    /* Toggle off if already colossus */
+    if ( is_affected( victim, gsn_titanic ) )
+    {
+        affect_strip( victim, gsn_titanic );
+        if ( victim->hit   > victim->max_hit  ) victim->hit   = victim->max_hit;
+        if ( victim->mana  > victim->max_mana ) victim->mana  = victim->max_mana;
+        if ( victim->move  > victim->max_move ) victim->move  = victim->max_move;
+        act( "$n shrinks back to mortal proportions.", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "Your titanic stature fades away.\n\r", victim );
+        snprintf( buf, sizeof(buf), "Colossus removed from %s.\n\r", victim->name );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( arg2[0] == '\0' || !str_prefix( arg2, "toggle" )
+    ||   !str_prefix( arg2, "perm" ) )
+        duration = -1;
+    else
+    {
+        duration = atoi( arg2 );
+        if ( duration < 1 ) duration = 100;
+    }
+
+    /* 500% bonus: add 5x current max, capped to avoid sh_int overflow */
+    hp_boost   = UMIN( 30000, (int)victim->max_hit  * 5 );
+    mana_boost = UMIN( 30000, (int)victim->max_mana * 5 );
+    move_boost = UMIN( 30000, (int)victim->max_move * 5 );
+
+    af.type     = gsn_titanic;
+    af.level    = (sh_int)ch->level;
+    af.duration = (sh_int)duration;
+    af.bitvector  = 0;
+    af.bitvector2 = 0;
+
+    af.location = APPLY_HIT;  af.modifier = (sh_int)hp_boost;
+    affect_to_char( victim, &af );
+
+    af.location = APPLY_MANA; af.modifier = (sh_int)mana_boost;
+    affect_to_char( victim, &af );
+
+    af.location = APPLY_MOVE; af.modifier = (sh_int)move_boost;
+    affect_to_char( victim, &af );
+
+    /* Heal to full immediately */
+    victim->hit  = victim->max_hit;
+    victim->mana = victim->max_mana;
+    victim->move = victim->max_move;
+
+    act( "$n grows to titanic proportions!", victim, NULL, NULL, TO_ROOM );
+    send_to_char( "Your body surges with titanic power -- HP, mana, and move multiplied!\n\r", victim );
+    if ( duration == -1 )
+        snprintf( buf, sizeof(buf), "%s made colossus permanently (+%d HP, +%d mana, +%d move).\n\r",
+                  victim->name, hp_boost, mana_boost, move_boost );
+    else
+        snprintf( buf, sizeof(buf), "%s made colossus for %d ticks (+%d HP, +%d mana, +%d move).\n\r",
+                  victim->name, duration, hp_boost, mana_boost, move_boost );
+    send_to_char( buf, ch );
     return;
 }
