@@ -94,6 +94,14 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	    {
 		snprintf(buf, sizeof(buf), "Your quest is ALMOST complete!\n\rGet back to %s before your time runs out!\n\r",ch->questgiver->short_descr);
 		send_to_char(buf, ch);
+		if (ch->questrush)
+		    send_to_char("[RUSH CONTRACT - 2x reward]\n\r", ch);
+		if (ch->queststreak > 0)
+		{
+		    int bonus_pct = UMIN(ch->queststreak, 5) * 10;
+		    snprintf(buf, sizeof(buf), "Win streak: %d  (+%d%% bonus)\n\r", ch->queststreak, bonus_pct);
+		    send_to_char(buf, ch);
+		}
                 return;
 	    }
 	    else if (ch->questobj > 0)
@@ -103,6 +111,14 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		{
 		    snprintf(buf, sizeof(buf), "You are on a quest to recover the %s!\n\r",questinfoobj->name);
 		    send_to_char(buf, ch);
+		    if (ch->questrush)
+			send_to_char("[RUSH CONTRACT - 2x reward]\n\r", ch);
+		    if (ch->queststreak > 0)
+		    {
+			int bonus_pct = UMIN(ch->queststreak, 5) * 10;
+			snprintf(buf, sizeof(buf), "Win streak: %d  (+%d%% bonus)\n\r", ch->queststreak, bonus_pct);
+			send_to_char(buf, ch);
+		    }
                     return;
 		}
 	    }
@@ -113,6 +129,14 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		{
 	            snprintf(buf, sizeof(buf), "You are on a quest to slay the dreaded %s!\n\r",questinfo->short_descr);
 		    send_to_char(buf, ch);
+		    if (ch->questrush)
+			send_to_char("[RUSH CONTRACT - 2x reward]\n\r", ch);
+		    if (ch->queststreak > 0)
+		    {
+			int bonus_pct = UMIN(ch->queststreak, 5) * 10;
+			snprintf(buf, sizeof(buf), "Win streak: %d  (+%d%% bonus)\n\r", ch->queststreak, bonus_pct);
+			send_to_char(buf, ch);
+		    }
                     return;
 		}
 	    }
@@ -121,15 +145,29 @@ void do_quest(CHAR_DATA *ch, char *argument)
         {
            snprintf(buf, sizeof(buf), "There are %d minutes remaining until you can go on another quest.\n\r",ch->nextquest);
            send_to_char(buf, ch);
-           return;
         }
         else if (ch->nextquest == 1)
         {
            snprintf(buf, sizeof(buf), "There is less than a minute remaining until you can go on another quest.\n\r");
            send_to_char(buf, ch);
-           return;
         }
-        send_to_char("You aren't currently on a quest.\n\r",ch);
+        if (ch->questgamble_pts > 0)
+        {
+            snprintf(buf, sizeof(buf),
+                "GAMBLE PENDING: type 'AQUEST GAMBLE YES/NO' for your %d-point wager!\n\r",
+                ch->questgamble_pts);
+            send_to_char(buf, ch);
+        }
+        if (ch->queststreak > 0)
+        {
+            int bonus_pct = UMIN(ch->queststreak, 5) * 10;
+            snprintf(buf, sizeof(buf),
+                "Win streak: %d  (next completion earns +%d%% quest points)\n\r",
+                ch->queststreak, bonus_pct);
+            send_to_char(buf, ch);
+        }
+        if (!IS_SET(ch->act, PLR_QUESTOR))
+            send_to_char("You aren't currently on a quest.\n\r",ch);
         return;
     }
     if (!strcmp(arg1, "points"))
@@ -170,6 +208,55 @@ void do_quest(CHAR_DATA *ch, char *argument)
             }
         }
 	return;
+    }
+    else if (!strcmp(arg1, "gamble"))
+    {
+        if (IS_NPC(ch)) return;
+        if (ch->questgamble_pts <= 0)
+        {
+            send_to_char("You don't have a pending double-or-nothing offer.\n\r", ch);
+            return;
+        }
+        if (arg2[0] == '\0'
+        || (str_cmp(arg2,"yes") && str_cmp(arg2,"y") && str_cmp(arg2,"no") && str_cmp(arg2,"n")))
+        {
+            snprintf(buf, sizeof(buf),
+                "Double-or-nothing: risk your %d points to win %d, or lose everything.\n\r"
+                "Type 'AQUEST GAMBLE YES' to risk it, or 'AQUEST GAMBLE NO' to collect safely.\n\r",
+                ch->questgamble_pts, ch->questgamble_pts * 2);
+            send_to_char(buf, ch);
+            return;
+        }
+        if (!str_cmp(arg2, "yes") || !str_cmp(arg2, "y"))
+        {
+            int wagered = ch->questgamble_pts;
+            ch->questgamble_pts = 0;
+            if (chance(50))
+            {
+                ch->questpoints += wagered * 2;
+                snprintf(buf, sizeof(buf), "Fortune smiles upon you! You WIN %d quest points!\n\r", wagered * 2);
+                send_to_char(buf, ch);
+                act("Fortune favors $n today!", ch, NULL, NULL, TO_ROOM);
+            }
+            else
+            {
+                snprintf(buf, sizeof(buf), "The dice betray you! You lose your %d quest points.\n\r", wagered);
+                send_to_char(buf, ch);
+                act("$n curses their luck bitterly.", ch, NULL, NULL, TO_ROOM);
+            }
+            save_char_obj(ch);
+            return;
+        }
+        /* arg2 == "no" or "n" */
+        {
+            int claimed = ch->questgamble_pts;
+            ch->questgamble_pts = 0;
+            ch->questpoints += claimed;
+            snprintf(buf, sizeof(buf), "Wise choice! You safely collect your %d quest points.\n\r", claimed);
+            send_to_char(buf, ch);
+            save_char_obj(ch);
+            return;
+        }
     }
 
 /* Checks for a character in the room with spec_questmaster set. This special
@@ -229,6 +316,12 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
         "Jug O' Moonshine               450qp\n\r"
         "level 51 hero! (non-remort)   7000qp\n\r"
         "level 51 hero! (remort)       5000qp\n\r"
+    "\n\r"
+    "Earn special bonuses automatically:\n\r"
+    "  Win streak        +10%% per quest in a row (up to +50%%\n\r"
+    "  Rush contract     20%% chance: 2x reward, 5-8 minute timer\n\r"
+    "  Double-or-nothing After every quest, gamble points for 2x or zero\n\r"
+    "\n\r"
     "To buy an item, type 'AQUEST BUY <item>'.\n\r", ch);
 
         if (ch->level >= LEVEL_HERO)
@@ -481,12 +574,23 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 
         if (ch->questmob > 0 || ch->questobj > 0)
 	{
-            ch->countdown = number_range(10,30);
+	    if (chance(20))
+	    {
+		ch->countdown = number_range(5, 8);
+		ch->questrush = true;
+		do_say(questman, "I have a RUSH CONTRACT for you - double the reward, half the time!");
+		snprintf(buf, sizeof(buf), "You have only %d minutes - finish fast for double quest points!",ch->countdown);
+		do_say(questman, buf);
+	    }
+	    else
+	    {
+		ch->countdown = number_range(10,30);
+		ch->questrush = false;
+		snprintf(buf, sizeof(buf), "You have %d minutes to complete this quest.",ch->countdown);
+		do_say(questman, buf);
+		do_say(questman, "May the gods go with you!");
+	    }
 	    SET_BIT(ch->act, PLR_QUESTOR);
-	    snprintf(buf, sizeof(buf), "You have %d minutes to complete this quest.",ch->countdown);
-	    do_say(questman, buf);
-	    snprintf(buf, sizeof(buf), "May the gods go with you!");
-	    do_say(questman, buf);
 	}
 	return;
     }
@@ -506,22 +610,44 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    if (ch->questmob == -1 && ch->countdown > 0)
 	    {
 		int reward, pointreward;
+		int streak_bonus;
 
 		reward = number_range(1,30);
 		pointreward = number_range(10,40);
 
+		/* rush contract: 2x base reward */
+		if (ch->questrush)
+		    pointreward *= 2;
+
+		/* streak bonus: +10% per streak level, capped at +50% */
+		streak_bonus = UMIN(ch->queststreak, 5) * 10;
+		pointreward = pointreward + (pointreward * streak_bonus) / 100;
+
 		snprintf(buf, sizeof(buf), "Congratulations on completing your quest!");
 		do_say(questman,buf);
-		snprintf(buf, sizeof(buf),"As a reward, I am giving you %d quest points, and %d gold.",pointreward,reward);
-		do_say(questman,buf);
-
+		if (ch->questrush)
+		    do_say(questman, "Rush contract fulfilled - double reward earned!");
+		if (ch->queststreak > 0)
+		{
+		    snprintf(buf, sizeof(buf), "That's %d in a row! +%d%% streak bonus applied.",
+			    ch->queststreak + 1, streak_bonus);
+		    do_say(questman, buf);
+		}
 	        REMOVE_BIT(ch->act, PLR_QUESTOR);
 	        ch->questgiver = NULL;
 	        ch->countdown = 0;
 	        ch->questmob = 0;
 		ch->questobj = 0;
+		ch->questrush = false;
+		ch->queststreak++;
                 add_money(ch,reward);
-		ch->questpoints += pointreward;
+		/* double-or-nothing gamble offer */
+		ch->questgamble_pts = pointreward;
+		snprintf(buf, sizeof(buf), "Your %d gold is yours! Now, feeling lucky?", reward);
+		do_say(questman,buf);
+		snprintf(buf, sizeof(buf), "Risk your %d quest points in a double-or-nothing gamble!", pointreward);
+		do_say(questman,buf);
+		do_say(questman,"Type 'AQUEST GAMBLE YES' to risk it, or 'AQUEST GAMBLE NO' to collect safely.");
 		if( ch->level == 50 )
 		    ch->nextquest = 5;
 		else
@@ -545,26 +671,48 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		if (obj_found == true)
 		{
 		    int reward, pointreward;
+		    int streak_bonus;
 
 		    reward = number_range(15,30);
 		    pointreward = number_range(10,40);
+
+		    /* rush contract: 2x base reward */
+		    if (ch->questrush)
+		        pointreward *= 2;
+
+		    /* streak bonus: +10% per streak level, capped at +50% */
+		    streak_bonus = UMIN(ch->queststreak, 5) * 10;
+		    pointreward = pointreward + (pointreward * streak_bonus) / 100;
 
 		    act("You hand $p to $N.",ch, obj, questman, TO_CHAR);
 		    act("$n hands $p to $N.",ch, obj, questman, TO_ROOM);
 
 	    	    snprintf(buf, sizeof(buf), "Congratulations on completing your quest!");
 		    do_say(questman,buf);
-		    snprintf(buf, sizeof(buf),"As a reward, I am giving you %d quest points, and %d gold.",pointreward,reward);
-		    do_say(questman,buf);
-
+		    if (ch->questrush)
+		        do_say(questman, "Rush contract fulfilled - double reward earned!");
+		    if (ch->queststreak > 0)
+		    {
+		        snprintf(buf, sizeof(buf), "That's %d in a row! +%d%% streak bonus applied.",
+			     ch->queststreak + 1, streak_bonus);
+		        do_say(questman, buf);
+		    }
 	            REMOVE_BIT(ch->act, PLR_QUESTOR);
 	            ch->questgiver = NULL;
 	            ch->countdown = 0;
 	            ch->questmob = 0;
 		    ch->questobj = 0;
+		    ch->questrush = false;
+		    ch->queststreak++;
                     add_money(ch,reward);
-		    ch->questpoints += pointreward;
 		    extract_obj(obj);
+		    /* double-or-nothing gamble offer */
+		    ch->questgamble_pts = pointreward;
+		    snprintf(buf, sizeof(buf), "Your %d gold is yours! Now, feeling lucky?", reward);
+		    do_say(questman, buf);
+		    snprintf(buf, sizeof(buf), "Risk your %d quest points in a double-or-nothing gamble!", pointreward);
+		    do_say(questman, buf);
+		    do_say(questman,"Type 'AQUEST GAMBLE YES' to risk it, or 'AQUEST GAMBLE NO' to collect safely.");
 		    if( ch->level == 50 )
 			ch->nextquest = 6;
 		    else
@@ -615,6 +763,12 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
         {
             snprintf(buf, sizeof(buf),"You are removed from your quest obligation %s.",ch->name );
 	    do_say(questman,buf);
+	    if (ch->queststreak > 0)
+	    {
+		snprintf(buf, sizeof(buf), "Your winning streak of %d is lost!", ch->queststreak);
+		do_say(questman, buf);
+		ch->queststreak = 0;
+	    }
 	    snprintf(buf, sizeof(buf),"Better luck next time!");
 	    do_say(questman,buf);
 
@@ -631,7 +785,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	}
     }
 
-    send_to_char("AQUEST commands: POINTS INFO TIME REQUEST COMPLETE LIST BUY ABORT.\n\r",ch);
+    send_to_char("AQUEST commands: POINTS INFO TIME REQUEST COMPLETE LIST BUY GAMBLE ABORT.\n\r",ch);
     send_to_char("For more information, type 'HELP AQUEST'.\n\r",ch);
     return;
 }
@@ -824,6 +978,14 @@ void quest_update(void)
                     ch->nextquest = 15;
                 snprintf(buf, sizeof(buf), "You have run out of time for your quest!\n\rYou may quest again in %d minutes.\n\r",ch->nextquest);
                 send_to_char(buf, ch);
+                if (ch->queststreak > 0)
+                {
+                    snprintf(buf, sizeof(buf),
+                        "Your winning streak of %d is lost from failing to complete in time!\n\r",
+                        ch->queststreak);
+                    send_to_char(buf, ch);
+                    ch->queststreak = 0;
+                }
                 REMOVE_BIT(ch->act, PLR_QUESTOR);
                 ch->questgiver = NULL;
                 ch->countdown = 0;

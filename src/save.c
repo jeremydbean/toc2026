@@ -268,6 +268,10 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "PkGiv %ld\n",ch->pcdata->pkills_given );
     if( ch->questpoints != 0 )
 	fprintf( fp, "QuestPnts %d\n",	ch->questpoints );
+    if( ch->queststreak != 0 )
+	fprintf( fp, "QuestStrk %d\n",	ch->queststreak );
+    if( ch->questgamble_pts != 0 )
+	fprintf( fp, "QuestGmbl %d\n",	ch->questgamble_pts );
     if( ch->nextquest != 0 )
 	fprintf( fp, "QuestNext %d\n",	ch->nextquest	);
     else if( ch->countdown != 0 )
@@ -1237,6 +1241,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 		 break;
 	      }
 	    KEY("QuestPnts",	ch->questpoints, 	fread_number(fp));
+	    KEY("QuestStrk",	ch->queststreak,	fread_number(fp));
+	    KEY("QuestGmbl",	ch->questgamble_pts,	fread_number(fp));
 	    KEY("QuestNext",	ch->nextquest,		fread_number(fp));
 	      break;
 	case 'R':

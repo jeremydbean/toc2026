@@ -1482,6 +1482,9 @@ struct  char_data
     sh_int              countdown;
     sh_int              questobj;
     sh_int              questmob;
+    sh_int              queststreak;    /* consecutive complete count; resets on fail/abort */
+    sh_int              questgamble_pts;/* points withheld pending double-or-nothing offer */
+    bool                questrush;      /* current quest is a rush contract */
 };
 
 /* Hate data */
