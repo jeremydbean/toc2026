@@ -4860,7 +4860,7 @@ E  1  29030  15  6                security helmet
 E  1  29031  10  17               key card
 *
 M  0  29014  1   29068          Schlepper
-E  1  29005  10  -1               metallic pack
+G  1  29005  10                  metallic pack
 E  1  29032  3   12               walking stick
 E  1  29033  10  17               key
 *
@@ -4886,27 +4886,27 @@ E  1  29035  15  9                engineer gloves
 *
 M  0  29016  6   29088          Metalurgist
 E  1  29036  10  17               glowing potion
-E  1  29037  40  -1               green scroll
+G  1  29037  40                  green scroll
 *
 M  0  29016  6   29099          Metalurgist
 E  1  29036  10  17               glowing potion
-E  1  29037  40  -1               green scroll
+G  1  29037  40                  green scroll
 *
 M  0  29016  5   29098          Metalurgist
 E  1  29036  10  17               glowing potion
-E  1  29037  40  -1               green scroll
+G  1  29037  40                  green scroll
 *
 M  0  29016  6   29100          Metalurgist
 E  1  29036  10  17               glowing potion
-E  1  29037  40  -1               green scroll
+G  1  29037  40                  green scroll
 *
 M  0  29016  6   29100          Metalurgist
 E  1  29036  10  17               glowing potion
-E  1  29037  40  -1               green scroll
+G  1  29037  40                  green scroll
 *
 M  0  29016  6   29102          Metalurgist
 E  1  29036  10  17               glowing potion
-E  1  29037  40  -1               green scroll
+G  1  29037  40                  green scroll
 *
 M  0  29017  5   29091          Blacksmith
 E  1  29038  17  16               hammer

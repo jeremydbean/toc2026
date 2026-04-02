@@ -2365,7 +2365,7 @@ E 1 25219 -1 16      *wand
 *Mage in southern tower
 M 0 25201 4 25278
 E 1 25218 -1 5       *robe
-E 1 25219 -1 5       *wand
+E 1 25219 -1 16      *wand
 *Gateguards of the eastern gate
 M 0 25202 8 25208
 E 1 25215 -1 16      *sword

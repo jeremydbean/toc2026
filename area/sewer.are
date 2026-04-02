@@ -4801,7 +4801,7 @@ E 1 7216 99 16          Equip Red Dragon Claw Weapon on Red
 E 1 7303 99 17          Equip Red DragonOrb on Red
 M 0 7041 2 7444          Load The Sea Hag
 M 0 7042 2 7435          Load The Good Guardian Naga
-E 1 7190 5 -1
+G 1 7190 5
 M 0 7042 2 7435          Load The Good Guardian Naga
 M 0 7043 3 7439          Load The Basilisk
 O 0 7300 8 7439          Load pack

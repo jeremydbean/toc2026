@@ -5331,12 +5331,12 @@ E  1  29232  2  12		  equips darkmist
 *
 M  0  29218  2  29284		Grand Warlock
 E  1  29233  3  17		  equips mana staff
-E  1  29234  3  -1		  equips opaque potion
+G  1  29234  3  		  equips opaque potion
 G  1  29278  9  		  loads protection potion
 *
 M  0  29218  2  29288		Grand Warlock
 E  1  29233  3  17		  equips mana staff
-E  1  29234  3  -1		  equips opaque potion
+G  1  29234  3  		  equips opaque potion
 G  1  29278  9  		  loads protection potion
 *
 M  0  29219  3  29286		Doomsayer
