@@ -266,18 +266,38 @@ void advance_level( CHAR_DATA *ch, bool is_advance )
 
     if (ch->level == LEVEL_HERO3 + ch->pcdata->num_remorts)
     {
-            send_to_char("\n\r",ch);
-            send_to_char("    NOTE:  This is the maxlevel you can achieve unless you remort.   \n\r",ch);
-            send_to_char("              (Type 'HELP REMORT' for more information.)\n\r",ch);
-            send_to_char("\n\r",ch);
+	    send_to_char("\n\r",ch);
+	    if (ch->pcdata->num_remorts >= 5)
+	    {
+		send_to_char("    NOTE:  You have reached the absolute maximum level!   \n\r",ch);
+		send_to_char("           Type 'HELP REMORT' to review your bonuses.    \n\r",ch);
+	    }
+	    else
+	    {
+		send_to_char("    NOTE:  This is the maxlevel you can achieve unless you remort.   \n\r",ch);
+		send_to_char("              (Type 'HELP REMORT' for more information.)\n\r",ch);
+	    }
+	    send_to_char("\n\r",ch);
     }
 
-    if (ch->level == 58)
+    if (ch->level == 58 && ch->pcdata->num_remorts == 4)
     {
             send_to_char("\n\r",ch);
             send_to_char("      IMPORTANT: This is your FINAL time to remort.  You may once again choose   \n\r",ch);
             send_to_char("    any class or guild.  Choose Wisely! (Type 'HELP REMORT' for more information.)\n\r",ch);
             send_to_char("\n\r",ch);
+    }
+
+    if (ch->level == 59 && ch->pcdata->num_remorts >= 5)
+    {
+        send_to_char(" ============================================================== \n\r",ch);
+        send_to_char("                                                                \n\r",ch);
+        send_to_char(" ***  Congratulations.  You've done it.  You've beaten ToC. *** \n\r",ch);
+        send_to_char("                                                                \n\r",ch);
+        snprintf( buf, sizeof(buf),"       Total Time Played: %d hours\n\r",
+                  (int) (ch->played + current_time - ch->logon) / 3600);
+        send_to_char(buf,ch);
+        send_to_char(" ============================================================== \n\r",ch);
     }
 
     if(ch->level == 6 && ch->pcdata->guild == GUILD_NONE)
@@ -441,7 +461,6 @@ long next_xp_level( CHAR_DATA *ch )
 
 void gain_exp( CHAR_DATA *ch, int gain )
 {
-    char buf[MAX_STRING_LENGTH];
     int chance;
 
     if ( IS_NPC(ch) || ch->level > LEVEL_KING || ch->level == 50)
@@ -484,17 +503,9 @@ void gain_exp( CHAR_DATA *ch, int gain )
 	    send_to_char("be able to COMMUNICATE with anyone until your Quest has been finished.\n\r",ch);
 	  }
 
-    if(ch->level == 59)
+    if(ch->level == 59 && ch->pcdata->num_remorts >= 5)
 	  {
-      send_to_char(" ============================================================== \n\r",ch);
-      send_to_char("                                                                \n\r",ch);
-	    send_to_char(" ***  Congratulations.  You've done it.  You've beaten ToC. *** \n\r",ch);
-      send_to_char("                                                                \n\r",ch);
-      snprintf( buf, sizeof(buf),"                           Total Time Played: %d                    ",(int) (ch->played + current_time - ch->logon) / 3600);
-	    send_to_char(buf,ch);
-      send_to_char(" \n\r",ch);
-      send_to_char(" ============================================================== \n\r",ch);
-
+        /* "beaten ToC" message now handled in advance_level() */
 	  }
 
 	  chance = number_range(18,21);

@@ -1155,46 +1155,62 @@ curse may not recall at all.
 ~
 
 0 REMORT~
-Syntax: REMORT <passwd> <class> <guild> <race>
+Syntax: REMORT <password> <class> <guild> <race>
 
-REMORT allows level 54+ to start over their career as a new reborn character,
-without loosing your character-name. Because of the difficulty of having to
-advance again, some rewards are there for the remorted characters. This depends
-on the number of times a character has remorted:
+REMORT allows a character at their current maximum level to start over as a
+reborn adventurer of the same name.  Each remort raises your permanent maximum
+level by one, increases your starting and per-level stats, and grants extra
+starting resources.  You may remort up to five times.
 
-Nr of Remorts:    Max Level    Level bonus      Extra Bonus            Title
-   1                 55              +1      Freedom Hunger & Thirst   Master
-   2                 56              +2         Psionic Powers         Lord
-   3                 57              +3       Best Psionic Powers      Emperor
-   4                 58              +4     Addl Psionics/Free Recall  Hand
-   5                 59              +5      No Encumbrance limits     King
+REQUIREMENT
+  You must reach level 54 + (number of remorts already done) to remort.
+  Example: first remort requires level 54; second requires level 55; etc.
 
-NOTE: A character who remorts loses all the knowledge of his current character.
-      You'll start all over, just as you would have created a new character.
-      This means you'll lose all spells/skills you currently know. The starting
-      hp/mana/end for your character will increase with each remort, and your
-      banked and held gold will remain.  On your last remort, you may pick
-      any class/guild, and you will keep all items you had at the time.
+WHAT YOU KEEP vs. WHAT YOU LOSE
+  Keep: character name, gold (held and banked), quest points, remort bonuses,
+        titles earned.  On your FIFTH (final) remort you also keep all gear.
+  Lose: all levels (restart at level 3), all spells and skills, all group
+        knowledge, current class/guild/race (replaced by your new choices).
+        Stats are reset to 13 in all categories.
 
-The extra bonusses are accumulative over the number of remorts. I.e. the
-first time you remort, you no longer are affected by hunger or thirst and the
-second time you remort, you are guaranteed to be granted psionic abilities at
-at level 18, and third time, you are granted the best psionic abilities.  On
-your last remort at level 58, you can once again choose any class and guild
-and you no longer have any limitations on the number or weight of items you
-may carry.
+BENEFITS PER REMORT
+  The table below shows cumulative values AT THE START of each new life.
+  "Base HP/Mana/Move" is your starting maximum before any level gains.
+  "Per Level Bonus" is added to every normal level-up gain.
 
-Hero questing at level 50 costs 1000 qps instead of the 500 for the first time.
-The class & guild to be selected has to be different as the one you are
-currently in. This if you are W/M you can't have these selections on your remort.
-Remorting will remember all the classes/guilds you have been in. If you select a
-class which has not a guild (i.e. MONK & NECRO) you have to type none as guild.
-The Monks have a race restriction of Dwarf & Human.
-The Necromancers have a race restriction of Elf & Human.
+  Remort   Req.Lvl   Max Lvl   Base HP/Mana/Move   Pracs   Trains   Per-Lvl
+  ------   -------   -------   ----------------    -----   ------   -------
+    1st       54        55           200 each          17      10       +1
+    2nd       55        56           400 each          19      12       +2
+    3rd       56        57           600 each          21      14       +3
+    4th       57        58           800 each          23      16       +4
+    5th       58        59          1000 each          25      18       +5
 
-The classes you can select: mage, cleric, thief, warrior, monk and necro.
-The guilds you can select:  mage, cleric, thief, warrior and none (see above).
-The races you can select:   human, elf, dwarf, hobbit and saurian.
+  Starting at remort 1 you are immune to hunger and thirst forever.
+  On the 5th (final) remort you may choose any class and guild freely
+  (the usual restriction of picking only classes you have never been does
+  not apply).
+
+HERO QUEST COST
+  Buying level 51 (hero) via AQUEST BUY HERO costs:
+    7000 quest points for a character who has never remorted.
+    5000 quest points for any character who has remorted at least once.
+
+CLASS, GUILD, AND RACE OPTIONS
+  You must choose a class AND guild combination you have never used before
+  (tracked across all remorts) -- EXCEPT on your final (5th) remort.
+  Classes: mage, cleric, thief, warrior, monk, necro
+  Guilds:  mage, cleric, thief, warrior, none
+           (Monks and Necros must use 'none' as their guild.)
+  Races:   human, elf, dwarf, hobbit, saurian
+           Monks are restricted to: dwarf, human.
+           Necromancers are restricted to: elf, human.
+
+NOTES
+  If you supply a class with no guild (monk or necro), type 'none' for guild.
+  All affects, immunities, resistances, and flags are cleared on remort.
+  Your pk_state is reset; the title is set to match your new class.
+  Remort history is saved; HELP SCORE shows your remort count.
 ~
 
 0 ATTRIBUTE AFFECT REPORT SCORE WORTH~

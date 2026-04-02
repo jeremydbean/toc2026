@@ -4202,8 +4202,6 @@ void do_remort( CHAR_DATA *ch, char *arg)
    int requested_race = -2;
    int i;
    int ind_class;
-   OBJ_DATA *obj;
-   OBJ_DATA *obj_next;
 
    if (IS_NPC(ch))
         return;
@@ -4376,16 +4374,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
    wizinfo(buf,LEVEL_IMMORTAL);
    do_backup();
 
-   if (ch->pcdata->num_remorts == 4)
-    {
-     for (obj = ch->carrying; obj != NULL; obj = obj_next)
-        {
-          obj_next = obj->next_content;
-          obj_from_char(obj);
-          extract_obj(obj);
-
-        }
-    }
+   /* Final remort: items are KEPT (no stripping). */
    ch->level    = 3;
    ch->pcdata->points += 2500;
    ch->exp      = 3 * exp_per_level(ch,ch->pcdata->points);
