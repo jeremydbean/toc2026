@@ -46,17 +46,26 @@ bool normalize_psionic_arguments( const char *argument, char *output, size_t len
 
 void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 {
-    /* All fifteen psionic skill gsn pointers. */
-    static const sh_int *psionics[] = {
-        &gsn_astral_walk,   &gsn_clairvoyance, &gsn_confuse,
-        &gsn_ego_whip,      &gsn_mindbar,      &gsn_mindblast,
-        &gsn_nightmare,     &gsn_project,      &gsn_psionic_armor,
-        &gsn_psychic_shield,&gsn_pyrotechnics, &gsn_shift,
-        &gsn_telekinesis,   &gsn_torment,      &gsn_transfusion,
-        NULL
+    /* 4 thematic psionic skill sets.  Normal remorts (2-4): 1 random skill
+     * per set (4 total).  Final remort (num_remorts == 5): all 15 skills.
+     * Immortal grantpsi with a spec: honours the spec and bypasses sets.
+     *
+     * Set 0  Assault:  ego_whip, torment, nightmare, mindblast
+     * Set 1  Astral:   astral_walk, shift, project, telekinesis
+     * Set 2  Defense:  mindbar, psionic_armor, psychic_shield, transfusion
+     * Set 3  Control:  clairvoyance, confuse, pyrotechnics
+     */
+    static const sh_int *psi_sets[4][5] = {
+        { &gsn_ego_whip,     &gsn_torment,        &gsn_nightmare,     &gsn_mindblast,    NULL },
+        { &gsn_astral_walk,  &gsn_shift,          &gsn_project,       &gsn_telekinesis,  NULL },
+        { &gsn_mindbar,      &gsn_psionic_armor,  &gsn_psychic_shield,&gsn_transfusion,  NULL },
+        { &gsn_clairvoyance, &gsn_confuse,        &gsn_pyrotechnics,  NULL,              NULL }
     };
-    int i;
+    static const int psi_set_sizes[4] = { 4, 4, 4, 3 };
+
+    int i, s;
     bool spec_only;
+    bool is_final;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
@@ -64,32 +73,58 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     if ( !force_grant && number_percent() >= chance )
         return;
 
-    /* If an immortal specified a particular skill list, honour it. */
+    /* An immortal-specified skill list overrides set logic. */
     spec_only = ( ch->pcdata->psionic_grant_spec != NULL
                && ch->pcdata->psionic_grant_spec[0] != '\0' );
 
-    for ( i = 0; psionics[i] != NULL; i++ )
+    is_final = ( ch->pcdata->num_remorts >= 5 );
+
+    if ( spec_only )
     {
-        sh_int sn = *psionics[i];
-        if ( sn < 0 )
-            continue;
-
-        if ( spec_only )
+        /* Grant only the skills matching the immortal-supplied spec string. */
+        for ( s = 0; s < 4; s++ )
         {
-            /* Match by skill name substring (names are unique enough). */
-            if ( strstr( ch->pcdata->psionic_grant_spec,
-                         skill_table[(int)sn].name ) == NULL )
-                continue;
+            for ( i = 0; psi_sets[s][i] != NULL; i++ )
+            {
+                sh_int sn = *psi_sets[s][i];
+                if ( sn >= 0 &&
+                     strstr( ch->pcdata->psionic_grant_spec,
+                             skill_table[(int)sn].name ) != NULL )
+                {
+                    if ( ch->pcdata->learned[(int)sn] < 75 )
+                        ch->pcdata->learned[(int)sn] = 75;
+                }
+            }
         }
-
-        if ( ch->pcdata->learned[(int)sn] < 75 )
-            ch->pcdata->learned[(int)sn] = 75;
+    }
+    else if ( is_final )
+    {
+        /* Final remort: award all 15 psionic skills. */
+        for ( s = 0; s < 4; s++ )
+        {
+            for ( i = 0; psi_sets[s][i] != NULL; i++ )
+            {
+                sh_int sn = *psi_sets[s][i];
+                if ( sn >= 0 && ch->pcdata->learned[(int)sn] < 75 )
+                    ch->pcdata->learned[(int)sn] = 75;
+            }
+        }
+    }
+    else
+    {
+        /* Normal remorts (2-4): pick 1 random skill from each set = 4 skills. */
+        for ( s = 0; s < 4; s++ )
+        {
+            int pick = number_range( 0, psi_set_sizes[s] - 1 );
+            sh_int sn = *psi_sets[s][pick];
+            if ( sn >= 0 && ch->pcdata->learned[(int)sn] < 75 )
+                ch->pcdata->learned[(int)sn] = 75;
+        }
     }
 
-    ch->pcdata->psionic              = 1;
+    ch->pcdata->psionic               = 1;
     ch->pcdata->psionic_grant_pending = false;
-    /* Clear the spec so future remort auto-grants give all 15 skills rather
-     * than silently repeating a previous immortal-customised list. */
+    /* Clear spec so future auto-grants use set logic, not a stale immortal list. */
     free_string( ch->pcdata->psionic_grant_spec );
     ch->pcdata->psionic_grant_spec = str_dup( "" );
     send_to_char( "\n\r{0E}Your mind awakens to hidden psionic powers!{x}\n\r", ch );
