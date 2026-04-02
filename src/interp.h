@@ -440,3 +440,8 @@ DECLARE_DO_FUN( do_worth	);
 DECLARE_DO_FUN(	do_yell		);
 DECLARE_DO_FUN(	do_zap		);
 DECLARE_DO_FUN( do_bowl		);
+DECLARE_DO_FUN( do_announce     );
+DECLARE_DO_FUN( do_repop        );
+DECLARE_DO_FUN( do_stasis       );
+DECLARE_DO_FUN( do_smash        );
+DECLARE_DO_FUN( do_rename       );

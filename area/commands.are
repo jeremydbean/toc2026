@@ -2375,6 +2375,60 @@ The dump includes source room vnum, destination vnum, and exit direction
 for every exit defined in the loaded areas.
 ~
 
+64 ANNOUNCE~
+Syntax: announce <message>
+
+ANNOUNCE broadcasts a highlighted global message to every player online.
+The message is framed with a colored banner so it stands out from regular
+game text.  Use it for server-wide news, events, or important notices.
+
+See also: WIZINFO, GECHO
+~
+
+63 REPOP~
+Syntax: repop
+
+REPOP forces an immediate reset of the area you are currently standing in.
+It is equivalent to the area aging out naturally, respawning all mobs and
+objects according to the area's reset data.  The area age is randomized
+after the reset so the normal timer continues from a low value.
+
+Useful for testing area resets or quickly restocking a cleared zone.
+~
+
+64 STASIS~
+Syntax: stasis <player>
+
+STASIS is a toggle that locks a player in their current room.  While in
+stasis the player can still communicate (say, tell, chat, etc.) but cannot
+move, flee, or recall.  Toggling stasis again releases them.  The flag is
+saved across logins.
+
+See also: FREEZE, JAIL
+~
+
+63 SMASH~
+Syntax: smash
+
+SMASH removes all purgeable objects from the current room, leaving mobs
+intact.  Objects with the NOPURGE flag (pits, fountains, etc.) are
+unaffected.  A count of removed items is echoed back to the immortal.
+
+See also: PURGE
+~
+
+62 RENAME~
+Syntax: rename <player> <new_name>
+
+RENAME changes an online player's character name and renames their save
+file on disk accordingly.  The new name must be 2-12 alphabetic characters.
+The player is notified of the change.  Immortals of equal or higher trust
+cannot be renamed.
+
+Use with caution — the old player file is deleted and replaced with a new
+one under the new name immediately.
+~
+
 0 $~
 
 #$

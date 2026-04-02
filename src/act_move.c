@@ -556,6 +556,11 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 
     in_room = ch->in_room;
 
+    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_STASIS) )
+    {
+	send_to_char( "You are held in place and cannot move!\n\r", ch );
+	return;
+    }
 
 
     if ( (( pexit   = in_room->exit[door] ) == NULL)
@@ -2293,6 +2298,12 @@ void do_recall( CHAR_DATA *ch, char *argument )
     if (IS_NPC(ch))
     {
         send_to_char("Only players can recall.\n\r",ch);
+        return;
+    }
+
+    if ( IS_SET(ch->act, PLR_STASIS) )
+    {
+        send_to_char( "You are held in place and cannot recall!\n\r", ch );
         return;
     }
 

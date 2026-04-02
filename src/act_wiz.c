@@ -16,6 +16,7 @@
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <stdlib.h>
+#include <ctype.h>
 #include <unistd.h>
 #include <limits.h>
 #include "merc.h"
@@ -6526,4 +6527,236 @@ void do_iportal( CHAR_DATA *ch, char *argument )
     
     snprintf(buf, sizeof(buf), "Portal created to room %d with timer %d.\n\r", to_room->vnum, timer);
     send_to_char(buf, ch);
+}
+
+
+/*
+ * Announce: colored global banner broadcast to all players.
+ */
+void do_announce( CHAR_DATA *ch, char *argument )
+{
+    DESCRIPTOR_DATA *d;
+    char buf[MAX_STRING_LENGTH];
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Announce what?\n\r", ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf),
+        "\n\r{Y============================================================{x\n\r"
+        "{W  ANNOUNCEMENT from %s:{x\n\r"
+        "{W  %s{x\n\r"
+        "{Y============================================================{x\n\r\n\r",
+        ch->name, argument );
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *victim;
+        victim = ( d->original != NULL ) ? d->original : d->character;
+        if ( d->connected == CON_PLAYING && victim != NULL )
+            send_to_char( buf, victim );
+    }
+
+    return;
+}
+
+
+/*
+ * Repop: force-reset the current area immediately.
+ */
+void do_repop( CHAR_DATA *ch, char *argument )
+{
+    extern void reset_area( AREA_DATA *pArea );
+    char buf[MAX_STRING_LENGTH];
+    AREA_DATA *pArea;
+
+    UNUSED_PARAM(argument);
+
+    if ( ch->in_room == NULL || ch->in_room->area == NULL )
+    {
+        send_to_char( "You are not in a valid area.\n\r", ch );
+        return;
+    }
+
+    pArea = ch->in_room->area;
+    reset_area( pArea );
+    pArea->age = number_range( 0, 3 );
+
+    snprintf( buf, sizeof(buf), "Area '%s' has been repopulated.\n\r", pArea->name );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "REPOP: %s force-reset area '%s'.", ch->name, pArea->name );
+    log_string( buf );
+
+    return;
+}
+
+
+/*
+ * Stasis: lock a player in their room (can talk, cannot move/flee/recall).
+ */
+void do_stasis( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Put whom in stasis?\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( IS_NPC(victim) )
+    {
+        send_to_char( "Not on NPCs.\n\r", ch );
+        return;
+    }
+
+    if ( get_trust( victim ) >= get_trust( ch ) )
+    {
+        send_to_char( "You failed.\n\r", ch );
+        return;
+    }
+
+    if ( IS_SET(victim->act, PLR_STASIS) )
+    {
+        REMOVE_BIT( victim->act, PLR_STASIS );
+        send_to_char( "You can move freely again.\n\r", victim );
+        snprintf( buf, sizeof(buf), "Stasis removed from %s.\n\r", victim->name );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        SET_BIT( victim->act, PLR_STASIS );
+        send_to_char( "You are locked in place — you cannot move!\n\r", victim );
+        snprintf( buf, sizeof(buf), "%s is now in stasis.\n\r", victim->name );
+        send_to_char( buf, ch );
+    }
+
+    save_char_obj( victim );
+
+    return;
+}
+
+
+/*
+ * Smash: purge all objects from the current room, leaving mobs intact.
+ */
+void do_smash( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *obj;
+    OBJ_DATA *obj_next;
+    char buf[MAX_STRING_LENGTH];
+    int count;
+
+    UNUSED_PARAM(argument);
+
+    count = 0;
+    for ( obj = ch->in_room->contents; obj != NULL; obj = obj_next )
+    {
+        obj_next = obj->next_content;
+        if ( !IS_OBJ_STAT(obj, ITEM_NOPURGE) )
+        {
+            extract_obj( obj );
+            count++;
+        }
+    }
+
+    snprintf( buf, sizeof(buf), "%d object%s removed from the room.\n\r",
+        count, count == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+    act( "The room is swept clean of all objects.", ch, NULL, NULL, TO_ROOM );
+
+    return;
+}
+
+
+/*
+ * Rename: rename an online player character, updating their save file.
+ */
+void do_rename( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char old_file[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    const char *p;
+    size_t len;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' || arg2[0] == '\0' )
+    {
+        send_to_char( "Syntax: rename <player> <new_name>\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg1 ) ) == NULL )
+    {
+        send_to_char( "That player is not online.\n\r", ch );
+        return;
+    }
+
+    if ( IS_NPC(victim) )
+    {
+        send_to_char( "Not on NPCs.\n\r", ch );
+        return;
+    }
+
+    if ( get_trust( victim ) >= get_trust( ch ) )
+    {
+        send_to_char( "You failed.\n\r", ch );
+        return;
+    }
+
+    len = strlen( arg2 );
+    if ( len < 2 || len > 12 )
+    {
+        send_to_char( "New name must be 2-12 letters.\n\r", ch );
+        return;
+    }
+
+    for ( p = arg2; *p != '\0'; p++ )
+    {
+        if ( !isalpha( (unsigned char)*p ) )
+        {
+            send_to_char( "New name must contain only letters.\n\r", ch );
+            return;
+        }
+    }
+
+    /* Record old save path before changing the name */
+    snprintf( old_file, sizeof(old_file), "%s%s", PLAYER_DIR, capitalize(victim->name) );
+
+    /* Delete old player file — new one created by save_char_obj below */
+    unlink( old_file );
+
+    /* Capitalize and apply new name */
+    arg2[0] = (char)UPPER( (unsigned char)arg2[0] );
+    free_string( victim->name );
+    victim->name = str_dup( arg2 );
+
+    save_char_obj( victim );
+
+    snprintf( buf, sizeof(buf), "%s has been renamed to %s.\n\r", arg1, arg2 );
+    send_to_char( buf, ch );
+    snprintf( buf, sizeof(buf), "Your name has been changed to %s by an immortal.\n\r", arg2 );
+    send_to_char( buf, victim );
+    snprintf( buf, sizeof(buf), "RENAME: %s renamed '%s' to '%s'.", ch->name, arg1, arg2 );
+    log_string( buf );
+
+    return;
 }

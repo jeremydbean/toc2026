@@ -1272,6 +1272,7 @@ struct  kill_data
 #define PLR_WARNED              (cc)
 #define PLR_JAILED              (dd)
 #define PLR_EXCON               (ee)
+#define PLR_STASIS              (ff)    /* locked in room, can talk but not move */
 
 /* COMM flags */
 #define COMM_QUIET              (A)

@@ -340,6 +340,7 @@ const	struct	cmd_type	cmd_table	[] =
 	*/
     { "advance",	do_advance,	POS_DEAD,	L4,  LOG_ALWAYS, 1 },
     { "allow",          do_allow,       POS_DEAD,       L3,  LOG_ALWAYS, 1 },
+    { "announce",       do_announce,    POS_DEAD,       L6,  LOG_ALWAYS, 1 },
 /*  { "areaload",       do_areaload,    POS_DEAD,       L4,  LOG_ALWAYS, 1 }, */
 /*  { "areasave",       do_areasave,    POS_DEAD,       L4,  LOG_ALWAYS, 1 }, */
     { "backup",					show_backup,		POS_DEAD,				L1,  LOG_ALWAYS, 1 },
@@ -397,6 +398,8 @@ const	struct	cmd_type	cmd_table	[] =
     { "purge",          do_purge,       POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "qflag",          set_questflag,  POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "reboot",         do_reboot,      POS_DEAD,       L2,  LOG_ALWAYS, 1 },
+    { "rename",         do_rename,      POS_DEAD,       L4,  LOG_ALWAYS, 1 },
+    { "repop",          do_repop,       POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "restore",        do_restore,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
 /*  {"restorechar",    do_restorechar, POS_DEAD,       L3,  LOG_ALWAYS, 1 },*/
     { "herbie",         do_herbie,      POS_DEAD,       L9,  LOG_ALWAYS, 1 },
@@ -408,6 +411,8 @@ const	struct	cmd_type	cmd_table	[] =
 	  { "component",     do_component_update,    POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "sla",            do_sla,         POS_DEAD,       L4,  LOG_NORMAL, 0 },
     { "slay",           do_slay,        POS_DEAD,       L4,  LOG_ALWAYS, 1 },
+    { "smash",          do_smash,       POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "stasis",         do_stasis,      POS_DEAD,       L6,  LOG_ALWAYS, 1 },
     { "snoop",          do_snoop,       POS_DEAD,       L3,  LOG_ALWAYS, 1 },
     { "stat",           do_stat,        POS_DEAD,       L7,  LOG_NORMAL, 1 },
     { "string",         do_string,      POS_DEAD,       L7,  LOG_ALWAYS, 1 },
