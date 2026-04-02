@@ -726,6 +726,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		send_to_char("You don't have enough platinum.\n\r",ch);
 		return;
 	    } else {
+		int original_amount = amount;
 		for(obj = ch->in_room->contents;obj;obj = obj_next) {
 		    obj_next = obj->next_content;
 
@@ -749,11 +750,11 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		obj_to_room( create_money(amount,TYPE_PLATINUM),
 			ch->in_room);
 		act( "$n drops some platinum.", ch, NULL, NULL, TO_ROOM );
-		ch->new_platinum -= amount;
+		ch->new_platinum -= original_amount;
 
-                if(amount >= 5000) {
+                if(original_amount >= 5000) {
                     snprintf( buf, sizeof(buf), "%s dropped %d platinum. [Room: %d]",
-                        ch->name, amount, ch->in_room->vnum);
+                        ch->name, original_amount, ch->in_room->vnum);
                     wizinfo(buf,LEVEL_IMMORTAL);
                 }
 
@@ -765,6 +766,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		send_to_char("You don't have enough gold.\n\r",ch);
 		return;
 	    } else {
+		int original_amount = amount;
 		for(obj = ch->in_room->contents;obj;obj = obj_next) {
 		    obj_next = obj->next_content;
 
@@ -788,11 +790,11 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		obj_to_room( create_money(amount,TYPE_GOLD),
 			ch->in_room);
 		act( "$n drops some gold.", ch, NULL, NULL, TO_ROOM );
-		ch->new_gold -= amount;
+		ch->new_gold -= original_amount;
 
-                if(amount >= 25000) {
+                if(original_amount >= 25000) {
                     snprintf( buf, sizeof(buf), "%s dropped %d gold. [Room: %d]",
-                        ch->name, amount, ch->in_room->vnum);
+                        ch->name, original_amount, ch->in_room->vnum);
                     wizinfo(buf,LEVEL_IMMORTAL);
                 }
 
@@ -804,6 +806,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		send_to_char("You don't have enough silver.\n\r",ch);
 		return;
 	    } else {
+		int original_amount = amount;
 		for(obj = ch->in_room->contents;obj;obj = obj_next) {
 		    obj_next = obj->next_content;
 
@@ -827,7 +830,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		obj_to_room( create_money(amount,TYPE_SILVER),
 			ch->in_room);
 		act( "$n drops some silver.", ch, NULL, NULL, TO_ROOM );
-		ch->new_silver -= amount;
+		ch->new_silver -= original_amount;
 		send_to_char( "OK.\n\r", ch );
 		return;
     	    }
@@ -836,6 +839,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		send_to_char("You don't have enough copper.\n\r",ch);
 		return;
 	    } else {
+		int original_amount = amount;
 		for(obj = ch->in_room->contents;obj;obj = obj_next) {
 		    obj_next = obj->next_content;
 
@@ -859,7 +863,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		obj_to_room( create_money(amount,TYPE_COPPER),
 			ch->in_room);
 		act( "$n drops some copper.", ch, NULL, NULL, TO_ROOM );
-		ch->new_copper -= amount;
+		ch->new_copper -= original_amount;
 		send_to_char( "OK.\n\r", ch );
 		return;
     	    }
@@ -3872,9 +3876,9 @@ long query_gold(CHAR_DATA *ch)
 
   if (ch == NULL) return 0;
 
-  total = (5 * ch->new_platinum) + ch->new_gold;
-  total += ch->new_silver / 10;
-  total += ch->new_copper / 100;
+  total = (ch->new_platinum * GOLD_PER_PLATINUM) + ch->new_gold;
+  total += ch->new_silver / SILVER_PER_GOLD;
+  total += ch->new_copper / COPPER_PER_GOLD;
   return total;
 }
 

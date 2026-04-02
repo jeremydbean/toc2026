@@ -1754,13 +1754,17 @@ void do_split( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
     char arg[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
     CHAR_DATA *gch;
     int members;
     long amount;
     long share;
     long extra;
+    int coin_type;
+    const char *coin_name;
 
-    one_argument( argument, arg );
+    argument = one_argument( argument, arg );
+    one_argument( argument, arg2 );
 
     if ( arg[0] == '\0' )
     {
@@ -1782,12 +1786,39 @@ void do_split( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (!has_enough_gold(ch, amount))
+    /* Determine coin type from optional second arg; default to gold. */
+    if ( arg2[0] == '\0' || !str_prefix( arg2, "gold" ) )
+        { coin_type = TYPE_GOLD;     coin_name = "gold";     }
+    else if ( !str_prefix( arg2, "platinum" ) )
+        { coin_type = TYPE_PLATINUM; coin_name = "platinum"; }
+    else if ( !str_prefix( arg2, "silver" ) )
+        { coin_type = TYPE_SILVER;   coin_name = "silver";   }
+    else if ( !str_prefix( arg2, "copper" ) )
+        { coin_type = TYPE_COPPER;   coin_name = "copper";   }
+    else
+        { coin_type = TYPE_GOLD;     coin_name = "gold";     }
+
+    /* Check the player has enough of the right coin type. */
+    switch ( coin_type )
     {
-        send_to_char( "You don't have that much gold.\n\r", ch );
-        return;
+    case TYPE_PLATINUM:
+        if ( ch->new_platinum < amount )
+            { send_to_char( "You don't have that much platinum.\n\r", ch ); return; }
+        break;
+    case TYPE_SILVER:
+        if ( ch->new_silver < amount )
+            { send_to_char( "You don't have that much silver.\n\r", ch ); return; }
+        break;
+    case TYPE_COPPER:
+        if ( ch->new_copper < amount )
+            { send_to_char( "You don't have that much copper.\n\r", ch ); return; }
+        break;
+    default: /* gold */
+        if ( !has_enough_gold( ch, amount ) )
+            { send_to_char( "You don't have that much gold.\n\r", ch ); return; }
+        break;
     }
-  
+
     members = 0;
     for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
     {
@@ -1810,24 +1841,48 @@ void do_split( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    add_money(ch, -amount);
-    add_money(ch, share + extra);
+    /* Deduct from splitter, credit their own share back. */
+    switch ( coin_type )
+    {
+    case TYPE_PLATINUM:
+        ch->new_platinum -= amount;
+        ch->new_platinum += share + extra;
+        break;
+    case TYPE_SILVER:
+        ch->new_silver -= amount;
+        ch->new_silver += share + extra;
+        break;
+    case TYPE_COPPER:
+        ch->new_copper -= amount;
+        ch->new_copper += share + extra;
+        break;
+    default: /* gold */
+        add_money(ch, -amount);
+        add_money(ch, share + extra);
+        break;
+    }
 
     /* Code Safety: snprintf */
     snprintf( buf, sizeof(buf),
-        "You split %ld gold coins.  Your share is %ld gold.\n\r",
-        amount, share + extra );
+        "You split %ld %s coins.  Your share is %ld %s.\n\r",
+        amount, coin_name, share + extra, coin_name );
     send_to_char( buf, ch );
 
-    snprintf( buf, sizeof(buf), "$n splits %ld gold coins.  Your share is %ld gold.",
-        amount, share );
+    snprintf( buf, sizeof(buf), "$n splits %ld %s coins.  Your share is %ld %s.",
+        amount, coin_name, share, coin_name );
 
     for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
     {
 	if ( gch != ch && is_same_group( gch, ch ) && !IS_AFFECTED(gch,AFF_CHARM))
 	{
 	    act( buf, ch, NULL, gch, TO_VICT );
-            add_money(gch, share);
+            switch ( coin_type )
+            {
+            case TYPE_PLATINUM: gch->new_platinum += share; break;
+            case TYPE_SILVER:   gch->new_silver   += share; break;
+            case TYPE_COPPER:   gch->new_copper    += share; break;
+            default:            add_money(gch, share);      break;
+            }
         }
     }
 
