@@ -3013,17 +3013,16 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (chance > 50)
     {
-    send_to_char("You hear a whistling sound. As you look up, a SWORD plunges into your heart!",victim);
+    send_to_char("You hear a whistling sound. As you look up, a SWORD plunges into your heart!\n\r",victim);
     act("You hear a whistling sound, then a SWORD plunges into $n's heart!",victim,NULL,NULL,TO_ROOM);
+    if(!IS_NPC(victim) && IS_IMMORTAL(victim) )
+      do_echo(ch,"You hear a horrible howling as a GOD meets FARSLAYER!");
     }
     else
     {
-    send_to_char("You hear a whistling sound. Your vengeance has gone awry!!!",ch);
+    send_to_char("You hear a whistling sound. Your vengeance has gone awry!!!\n\r",ch);
     act("You hear a whistling sound, then a SWORD plunges into $n's heart!",ch,NULL,NULL,TO_ROOM);
     }
-
-    if(!IS_NPC(victim) && IS_IMMORTAL(victim) )
-      do_echo(ch,"You hear a horrible howling as a GOD meets FARSLAYER!");
 
     if(!IS_IMMORTAL(ch) )
     {
@@ -3064,7 +3063,7 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     wizinfo(buf, LEVEL_IMMORTAL);
     log_string(buf);
     SET_BIT(ch->act, PLR_WANTED);
-    send_to_char("You are now WANTED!!",ch);
+    send_to_char("You are now WANTED!!\n\r",ch);
     raw_kill(ch,victim);
     }
     else
@@ -3079,7 +3078,6 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     snprintf(buf, sizeof buf,"%s got hit by their own farslay *tee-hee*",ch->name);
     wizinfo(buf,LEVEL_IMMORTAL);
     log_string(buf);
-    SET_BIT(ch->act, PLR_WANTED);
     raw_kill(ch,ch);
     }
 

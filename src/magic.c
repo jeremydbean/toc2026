@@ -588,7 +588,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
     case TAR_IGNORE:
 	if(sn == skill_lookup("vengence") )
 	    vo = (void *) victim;
-// 	else
+	else
 	  vo = NULL;
 	break;
 
