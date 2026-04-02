@@ -177,19 +177,19 @@ void save_char_obj( CHAR_DATA *ch )
         && ch->pet->carrying == NULL )
 	    fwrite_pet(ch->pet,fp);
 	fprintf( fp, "#END\n" );
-    }
-    fclose( fp );
-    /* move the file */
+	fclose( fp );
+	/* move the file only when write succeeded */
 #if defined(unix) && defined(CHGRP_TO)
-    if (can_chgrp())
-        snprintf(buf, sizeof(buf), "mv %s %s; chgrp %s %s", PLAYER_TEMP, strsave, CHGRP_TO, strsave);
-    else
-        snprintf(buf, sizeof(buf), "mv %s %s", PLAYER_TEMP, strsave);
+	if (can_chgrp())
+	    snprintf(buf, sizeof(buf), "mv %s %s; chgrp %s %s", PLAYER_TEMP, strsave, CHGRP_TO, strsave);
+	else
+	    snprintf(buf, sizeof(buf), "mv %s %s", PLAYER_TEMP, strsave);
 #else
-    snprintf(buf, sizeof(buf), "mv %s %s", PLAYER_TEMP, strsave);
+	snprintf(buf, sizeof(buf), "mv %s %s", PLAYER_TEMP, strsave);
 #endif
-    if (system(buf) == -1)
-        bug("save_char_obj: mail backup failed.", 0);
+	if (system(buf) == -1)
+	    bug("save_char_obj: mv failed.", 0);
+    }
     fpReserve = fopen( NULL_FILE, "r" );
     if (fpReserve == NULL)
     {
@@ -999,9 +999,17 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	    if ( !str_cmp( word, "Alias" ) )
 	    {
-		ch->pcdata->alias[cur_alias].first = str_dup( fread_word(fp) );
-		ch->pcdata->alias[cur_alias].second = fread_string( fp );
-		cur_alias++;
+		if ( cur_alias < MAX_ALIASES )
+		{
+		    ch->pcdata->alias[cur_alias].first = str_dup( fread_word(fp) );
+		    ch->pcdata->alias[cur_alias].second = fread_string( fp );
+		    cur_alias++;
+		}
+		else
+		{
+		    bug( "Fread_char: too many aliases (>%d), skipping.", MAX_ALIASES );
+		    fread_to_eol( fp );
+		}
 		fMatch = true;
 	    }
 
@@ -1321,6 +1329,12 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    {
 		int value;
 			     value       = fread_number(fp);
+	      if ( value < 0 || value >= 7 )  /* were_types[] has 7 entries (0-6) */
+	      {
+		  bug( "Fread_char: bad were_type %d, ignoring.", value );
+		  fMatch = true;
+		  break;
+	      }
 	      ch->were_shape.were_type    = value;
 	      ch->were_shape.name       = were_types[value].name;
 	      ch->were_shape.str        = were_types[value].str;
