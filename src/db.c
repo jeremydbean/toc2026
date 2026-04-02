@@ -25,7 +25,9 @@
 #include "interp.h"
 #include <limits.h>
 #pragma GCC diagnostic ignored "-Wformat-security"
+#if defined(__GNUC__) && !defined(__clang__) && __GNUC__ >= 12
 #pragma GCC diagnostic ignored "-Wuse-after-free"
+#endif
 #include "db.h"
 
 DECLARE_DO_FUN( do_look );
