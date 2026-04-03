@@ -2179,8 +2179,8 @@ void spell_earth_travel( int sn, int level, CHAR_DATA *ch, void *vo )
     do_look(ch,"auto");
 
     snprintf(buf, sizeof buf,"%s traveled to %s via the earth. [Room: %d]",
-	 (ch->short_descr == NULL ? ch->short_descr : ch->name),
-	 (victim->short_descr == NULL ? victim->short_descr : victim->name),
+	 (ch->short_descr == NULL ? ch->name : ch->short_descr),
+	 (victim->short_descr == NULL ? victim->name : victim->short_descr),
 	  victim->in_room->vnum);
 
     if (IS_SET(ch->act, PLR_WIZINVIS) )
@@ -3921,11 +3921,13 @@ void spell_cone_of_cold( int sn, int level, CHAR_DATA *ch, void *vo )
 
       if ( !is_safe_spell(ch,vch,true) )
       {
-      if ( vch != ch && !is_safe_spell(ch,vch,true) )
-             damage(ch,vch,dice(level/2,6),sn,DAM_COLD);
-
-      if( vch->in_room != ch->in_room)
-                break;
+          if ( vch != ch )
+          {
+              if ( damage(ch,vch,dice(level/2,6),sn,DAM_COLD) )
+                  continue;
+          }
+          if( vch->in_room != ch->in_room)
+              break;
       }
 
     }
@@ -4066,6 +4068,12 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
           found = true;
           break;
         }
+    }
+
+    if (!found)
+    {
+        send_to_char("You have no soul container to put them in.\n\r",ch);
+        return;
     }
 
     if (obj->value[3] != 0)
@@ -4769,6 +4777,8 @@ void spell_neutrality_field( int sn, int level, CHAR_DATA *ch, void *vo )
     int sn2;
 
     sn2 = skill_lookup("dispel magic");
+    if ( sn2 < 0 )
+        return;
 
     if( ch->position != POS_FIGHTING )
     {

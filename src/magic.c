@@ -1354,8 +1354,8 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
     affect_to_char( victim, &af );
     act( "Isn't $n just so nice?", ch, NULL, victim, TO_VICT );
     snprintf(buf, sizeof(buf), "%s has charmed %s. [Room: %d]",
-         (ch->short_descr == NULL ? ch->short_descr : ch->name),
-         (victim->short_descr == NULL ? victim->short_descr : victim->name),
+         (ch->short_descr == NULL ? ch->name : ch->short_descr),
+         (victim->short_descr == NULL ? victim->name : victim->short_descr),
           victim->in_room->vnum);
     log_string( buf );
       wizinfo(buf, 68);
@@ -2884,8 +2884,8 @@ void spell_gate( int sn, int level, CHAR_DATA *ch, void *vo )
 	do_look(ch->pet,"auto");
     }
     snprintf(buf, sizeof(buf), "%s has gated to %s. [Room: %d]",
-         (ch->short_descr == NULL ? ch->short_descr : ch->name),
-         (victim->short_descr == NULL ? victim->short_descr : victim->name),
+         (ch->short_descr == NULL ? ch->name : ch->short_descr),
+         (victim->short_descr == NULL ? victim->name : victim->short_descr),
           victim->in_room->vnum);
 
     if (IS_SET(ch->act, PLR_WIZINVIS) )
@@ -4268,8 +4268,8 @@ void spell_summon( int sn, int level, CHAR_DATA *ch, void *vo )
       send_to_char("Your target is aware of the summons.\n\r",ch);
 
       snprintf(buf, sizeof(buf), "%s has tried to summon %s. [Room %d]",
-     (ch->short_descr == NULL ? ch->short_descr : ch->name),
-     (victim->short_descr == NULL ? victim->short_descr : victim->name),
+     (ch->short_descr == NULL ? ch->name : ch->short_descr),
+     (victim->short_descr == NULL ? victim->name : victim->short_descr),
      victim->in_room->vnum);
       if(IS_SET(ch->act, PLR_WIZINVIS) )
 //       else
@@ -4321,8 +4321,8 @@ void spell_summon( int sn, int level, CHAR_DATA *ch, void *vo )
     do_look( victim, "auto" );
 */
     snprintf(buf, sizeof(buf), "%s has tried to summon %s. [Room %d]",
-	 (ch->short_descr == NULL ? ch->short_descr : ch->name),
-	 (victim->short_descr == NULL ? victim->short_descr : victim->name),
+	 (ch->short_descr == NULL ? ch->name : ch->short_descr),
+	 (victim->short_descr == NULL ? victim->name : victim->short_descr),
 	 victim->in_room->vnum);
     if(IS_SET(ch->act, PLR_WIZINVIS) )
 //     else
@@ -4556,6 +4556,8 @@ void spell_dispel_breath( int sn, int level, CHAR_DATA *ch, void *vo )
     int hpch;
 
     sn2 = skill_lookup("dispel magic");
+    if ( sn2 < 0 )
+        return;
 
     for ( vch = ch->in_room->people; vch != NULL; vch = vch_next )
     {
@@ -4996,8 +4998,8 @@ void spell_portal( int sn, int level, CHAR_DATA *ch, void *vo )
 	NULL,TO_ROOM);
 
     snprintf(buf, sizeof(buf), "%s has created a portal to %s. [Room %d]",
-	 (ch->short_descr == NULL ? ch->short_descr : ch->name),
-	 (victim->short_descr == NULL ? victim->short_descr : victim->name),
+	 (ch->short_descr == NULL ? ch->name : ch->short_descr),
+	 (victim->short_descr == NULL ? victim->name : victim->short_descr),
 	 victim->in_room->vnum);
 
     if(IS_SET(ch->act, PLR_WIZINVIS) )
@@ -5046,8 +5048,8 @@ void spell_portal( int sn, int level, CHAR_DATA *ch, void *vo )
 	NULL,TO_ROOM);
 
     snprintf(buf, sizeof(buf), "%s has created a portal to %s. [Room %d]",
-	 (ch->short_descr == NULL ? ch->short_descr : ch->name),
-	 (victim->short_descr == NULL ? victim->short_descr : victim->name),
+	 (ch->short_descr == NULL ? ch->name : ch->short_descr),
+	 (victim->short_descr == NULL ? victim->name : victim->short_descr),
 	 victim->in_room->vnum);
 
 
