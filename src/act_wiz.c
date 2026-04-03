@@ -7645,3 +7645,91 @@ void do_colossus( CHAR_DATA *ch, char *argument )
     send_to_char( buf, ch );
     return;
 }
+
+
+/*
+ * summonevent — immortal command to manually spawn or despawn the seasonal
+ *               event boss.  Works regardless of active season (for testing).
+ *
+ * Usage:
+ *   summonevent         — spawn the boss (or despawn if already alive)
+ *   summonevent status  — show current boss state without changing it
+ */
+void do_summonevent( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    const char *season_name;
+    int  forced_vnum = 0;
+
+    one_argument( argument, arg );
+    season_name = get_season_name();   /* NULL if off-season */
+
+    /* --- Status query --- */
+    if ( !str_cmp( arg, "status" ) )
+    {
+        if ( season_name )
+        {
+            snprintf( buf, sizeof(buf), "Active season  : %s\n\r", season_name );
+            send_to_char( buf, ch );
+        }
+        else
+            send_to_char( "Active season  : none (off-season)\n\r", ch );
+
+        if ( event_boss_mob != NULL )
+        {
+            snprintf( buf, sizeof(buf),
+                      "Event boss     : %s (vnum %d) -- ALIVE\n\r",
+                      event_boss_mob->short_descr,
+                      event_boss_mob->pIndexData->vnum );
+            send_to_char( buf, ch );
+        }
+        else
+            send_to_char( "Event boss     : none\n\r", ch );
+
+        return;
+    }
+
+    /* --- The despawn case: if a boss is alive, any invocation without a
+           specific name arg will toggle it off.  If a specific name is
+           given we always (re)spawn that boss. --- */
+    if ( !str_cmp( arg, "horseman" ) )
+        forced_vnum = MOB_VNUM_EVENT_HORSEMAN;
+    else if ( !str_cmp( arg, "father" ) || !str_cmp( arg, "winter" ) )
+        forced_vnum = MOB_VNUM_EVENT_FATHER;
+
+    /* Despawn if alive and no specific target was requested. */
+    if ( event_boss_mob != NULL && forced_vnum == 0 )
+    {
+        send_to_char( "Despawning the event boss.\n\r", ch );
+        despawn_event_boss();
+        return;
+    }
+
+    /* Despawn existing if we're switching to a different boss. */
+    if ( event_boss_mob != NULL && forced_vnum != 0
+         && event_boss_mob->pIndexData->vnum != forced_vnum )
+    {
+        send_to_char( "Despawning the current event boss first.\n\r", ch );
+        despawn_event_boss();
+    }
+
+    if ( season_name == NULL && forced_vnum == 0 )
+        send_to_char(
+            "No seasonal event is currently active -- spawning for testing.\n\r", ch );
+
+    spawn_event_boss( forced_vnum );
+
+    if ( event_boss_mob != NULL )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Event boss spawned: %s (vnum %d) at room %d.\n\r",
+                  event_boss_mob->short_descr,
+                  event_boss_mob->pIndexData->vnum,
+                  EVENT_BOSS_SPAWN_ROOM );
+        send_to_char( buf, ch );
+    }
+    else
+        send_to_char( "spawn_event_boss failed -- check logs.\n\r", ch );
+}
+

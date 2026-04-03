@@ -2659,6 +2659,7 @@ void update_handler( void )
     static  int     pulse_disaster=0;
     static  int     pulse_hunting=0;
     static  int	    pulse_dtrap=0;
+    static  int     pulse_event=0;
 
     if ( --pulse_area     <= 0 )
     {
@@ -2723,6 +2724,14 @@ void update_handler( void )
 	pulse_dtrap 	= PULSE_DEATHTRAP;
 	dtrap_update();
     }
+
+    /* Seasonal event boss: spawn roll + yell + despawn timer, once per tick. */
+    if ( --pulse_event <= 0 )
+    {
+        pulse_event = PULSE_TICK;
+        tick_event_boss();
+    }
+
     tail_chain( );
     return;
 }

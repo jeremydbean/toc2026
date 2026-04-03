@@ -2145,6 +2145,71 @@ void make_corpse( CHAR_DATA *ch )
         }
     }
 
+    /* Event boss drops: guaranteed rare loot + small chance of training cake. */
+    if ( IS_NPC(ch) && ch->pIndexData != NULL )
+    {
+        int vnum = ch->pIndexData->vnum;
+
+        if ( vnum == MOB_VNUM_EVENT_HORSEMAN || vnum == MOB_VNUM_EVENT_FATHER )
+        {
+            /* Determine which drop pool to use based on which boss died. */
+            int weapon_vnum, armor_vnum, trinket_vnum, cake_vnum;
+
+            if ( vnum == MOB_VNUM_EVENT_HORSEMAN )
+            {
+                weapon_vnum  = OBJ_VNUM_HORSEMAN_REAPER;
+                armor_vnum   = OBJ_VNUM_HORSEMAN_HELM;
+                trinket_vnum = OBJ_VNUM_PUMPKIN_CHARM;
+                cake_vnum    = OBJ_VNUM_HORSEMAN_CAKE;
+            }
+            else
+            {
+                weapon_vnum  = OBJ_VNUM_WINTER_HAMMER;
+                armor_vnum   = OBJ_VNUM_WINTER_MANTLE;
+                trinket_vnum = OBJ_VNUM_SNOWFLAKE_PEND;
+                cake_vnum    = OBJ_VNUM_WINTER_CAKE;
+            }
+
+            /* 50% chance: drop the weapon */
+            if ( number_percent() <= 50 )
+            {
+                OBJ_INDEX_DATA *oi = get_obj_index( weapon_vnum );
+                if ( oi != NULL )
+                    obj_to_room( create_object( oi, 0 ), ch->in_room );
+            }
+
+            /* 50% chance: drop the armor */
+            if ( number_percent() <= 50 )
+            {
+                OBJ_INDEX_DATA *oi = get_obj_index( armor_vnum );
+                if ( oi != NULL )
+                    obj_to_room( create_object( oi, 0 ), ch->in_room );
+            }
+
+            /* 75% chance: drop a trinket */
+            if ( number_percent() <= 75 )
+            {
+                OBJ_INDEX_DATA *oi = get_obj_index( trinket_vnum );
+                if ( oi != NULL )
+                    obj_to_room( create_object( oi, 0 ), ch->in_room );
+            }
+
+            /* 5% chance: drop a training cake (very rare) */
+            if ( number_percent() <= 5 )
+            {
+                OBJ_INDEX_DATA *oi = get_obj_index( cake_vnum );
+                if ( oi != NULL )
+                    obj_to_room( create_object( oi, 0 ), ch->in_room );
+            }
+
+            /* Clear the global boss pointer as the mob is now dead. */
+            if ( event_boss_mob == ch )
+            {
+                event_boss_mob = NULL;
+            }
+        }
+    }
+
     /* corpse_back( ch, corpse ); */
     return;
 }

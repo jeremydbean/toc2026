@@ -455,3 +455,4 @@ DECLARE_DO_FUN( do_trail        );
 DECLARE_DO_FUN( do_petrify      );
 DECLARE_DO_FUN( do_empower      );
 DECLARE_DO_FUN( do_colossus     );
+DECLARE_DO_FUN( do_summonevent  );

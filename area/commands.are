@@ -2815,6 +2815,40 @@ Boosts are applied as affects under the 'titanic' skill type.
 See also: EMPOWER, RESTORE
 ~
 
+65 SUMMONEVENT~
+Syntax: summonevent
+        summonevent status
+
+SUMMONEVENT manually spawns (or despawns) the current seasonal event boss
+in Dresden's Oak Tree / Christmas Tree Square (room 2401).
+
+  summonevent          -- if no boss is alive, spawn it; if alive, despawn it
+  summonevent status   -- show active season and boss state without acting
+
+The boss spawns automatically ~once every 48 hours during active seasonal
+events (Hallows End: Oct 18-Nov 1; Winter Veil: Dec 16-Jan 6).  It
+broadcasts a global shout on arrival, periodically yells taunts, and
+auto-despawns after two real hours if not killed.
+
+Event mobs:
+  the Headless Horseman (vnum 29910) -- Hallows End boss, undead, level 52
+  Father Winter          (vnum 29911) -- Winter Veil boss, human, level 50
+
+Rare drops on kill:
+  the Headless Horseman's Reaper (29920) -- two-handed vorpal sword
+  the Horseman's cursed helm (29921)     -- powerful head armor
+  Frostbite (29922)                      -- frost warhammer
+  the Winter Veil mantle (29923)         -- powerful cloak armor
+  a pumpkin-lantern charm (29924)        -- neck trinket (mana/move)
+  a snowflake pendant (29925)            -- neck trinket (mana/hp)
+  a piece of shadowed horseman's cake (29926) -- VERY RARE: +1 train on eat
+  a slice of Winter Veil yule log (29927)     -- VERY RARE: +1 train on eat
+
+This command requires Level 5 immortal or higher.
+
+See also: COLOSSUS, EMPOWER, PETRIFY
+~
+
 65 FLING~
 Syntax: fling <player>
         fling all

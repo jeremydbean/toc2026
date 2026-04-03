@@ -977,6 +977,35 @@ struct  kill_data
 #define OBJ_VNUM_SEASONAL_CANDY    29900  /* Hallows End trick-or-treat candy */
 #define OBJ_VNUM_SEASONAL_GIFT     29901  /* Winter Veil wrapped gift */
 
+/* Seasonal event boss mobs (seasonal.are) */
+#define MOB_VNUM_EVENT_HORSEMAN    29910  /* Hallows End: the Headless Horseman */
+#define MOB_VNUM_EVENT_FATHER      29911  /* Winter Veil: Father Winter */
+
+/* Seasonal event boss drop items (seasonal.are) */
+#define OBJ_VNUM_HORSEMAN_REAPER   29920  /* the Headless Horseman's Reaper (weapon) */
+#define OBJ_VNUM_HORSEMAN_HELM     29921  /* the Horseman's cursed helm */
+#define OBJ_VNUM_WINTER_HAMMER     29922  /* Frostbite (Winter Veil weapon) */
+#define OBJ_VNUM_WINTER_MANTLE     29923  /* the Winter Veil mantle */
+#define OBJ_VNUM_PUMPKIN_CHARM     29924  /* a pumpkin-lantern charm */
+#define OBJ_VNUM_SNOWFLAKE_PEND    29925  /* a snowflake pendant */
+#define OBJ_VNUM_HORSEMAN_CAKE     29926  /* Horseman's training cake */
+#define OBJ_VNUM_WINTER_CAKE       29927  /* Winter Veil yule log (training cake) */
+
+/* Seasonal vendor mobs */
+#define MOB_VNUM_VENDOR_HALLOWEEN  29930  /* Madame Hexley the Hallows End merchant */
+#define MOB_VNUM_VENDOR_WINTER     29931  /* Tinsel the Winter Veil gift elf */
+
+/* Seasonal vendor shop items */
+#define OBJ_VNUM_JACK_O_MASK       29928  /* a grinning jack-o-lantern mask */
+#define OBJ_VNUM_ELF_HAT           29929  /* a jaunty elf hat */
+#define OBJ_VNUM_CANDY_CORN        29932  /* a bag of candy corn */
+#define OBJ_VNUM_SPICED_CIDER      29933  /* a cup of hot spiced cider */
+
+/* Spawn room for seasonal event bosses and vendors: Dresden Oak Tree Square */
+#define EVENT_BOSS_SPAWN_ROOM      2401
+#define VENDOR_SPAWN_ROOM          2401   /* same square as bosses */
+#define VENDOR_DURATION            14400  /* seconds before vendor despawns (4 hours) */
+
 /* Item types. */
 #define ITEM_LIGHT                    1
 #define ITEM_SCROLL                   2
@@ -2378,6 +2407,16 @@ void    update_wizlist  ( CHAR_DATA *ch, int level );
 /* season.c */
 const char *get_season_name  ( void );
 const char *get_seasonal_area( const char *area_file );
+void        spawn_event_boss        ( int forced_vnum );
+void        despawn_event_boss      ( void );
+void        tick_event_boss         ( void );
+int         get_event_boss_vnum     ( void );
+void        spawn_seasonal_vendors  ( void );
+void        despawn_seasonal_vendors( void );
+void        tick_seasonal_vendors   ( void );
+extern CHAR_DATA *event_boss_mob;
+extern CHAR_DATA *event_vendor_halloween;
+extern CHAR_DATA *event_vendor_winter;
 
 #undef  CD
 #undef  MID

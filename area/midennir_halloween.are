@@ -211,11 +211,11 @@ with a stylized ivory hilt.
 #3500
 The Plains~
    You are standing on the plains. This is a vast desolate place where the
-wind can howl undisturbed since nothing but you bars its way. However you
-are not the first to wander here. Before you somebody has left a small path.
-The path looks rather bewildered and is not the kind of path to lead to
-anywhere significant or important but it seems to have made up its mind to
-enter the hills far away north.
+wind can howl undisturbed since nothing but you bars its way.  Tonight the
+wind carries with it the distant sound of spectral laughter and the smell
+of woodsmoke laced with something else -- candle wax and ancient dust.
+Before you somebody has left a small path.  Crude effigies of straw have
+been staked at intervals along it, their hollow faces turned toward you.
 ~
 30 0 1
 D2
@@ -229,9 +229,11 @@ D7
 S
 #3501
 The Lane~
-   You are strolling along a pleasant, shady lane. The road is lined on both
-sides by tall, stately trees which lend the scene with a sense of quiet
-serenity. You can follow the road north or south.
+   You stroll along a lane that in daylight would be pleasant and shaded.
+Tonight the branches form grasping arches overhead, and the spaces between
+them are filled with a darkness that seems to press inward.  Luminous fungi
+glow an eerie orange at the base of the trunks.  Somewhere nearby, something
+small and fast is moving through the leaves.
 ~
 30 0 1
 D0
@@ -246,10 +248,11 @@ S
 #3502
 The Cross Roads~
 Here, the great eastern road intersects with an older road between the mines
-of Moria and the ruined city of Thalos.  The outskirts of Dresden lie to your
-west, and the highway continues the the east.  An old northern road leads to
-the abandoned mines of Moria, while the southern road shows the scars of the
-war which destroyed Thalos.
+of Moria and the ruined city of Thalos.  A crow sits at the center of the
+crossroads watching you with unblinking eyes, surrounded by a ring of carved
+pumpkins.  The outskirts of Dresden lie to your west; the highway continues
+east into darkness.  The abandoned mine road north seems more abandoned than
+usual tonight.
 ~
 30 0 1
 D0
@@ -275,10 +278,11 @@ The road leads west towards Dresden.
 S
 #3503
 City Entrance~
-   You stand on the outskirts of a large city - Dresden, the capital of this
-land. The road leads east into the peace and quiet - and dangers - of the
-forest, and to the west it becomes the main street of the town, surrounded by
-a confusion of shops, bars, and market places.
+   You stand on the outskirts of Dresden.  A line of carved pumpkins marks
+the city boundary, their flames burning in no wind.  To the east lies the
+darkening forest; to the west the main street is crowded with Hallows End
+stalls selling costumes, carved gourds, and mysterious treats.  A banner
+overhead reads: WELCOME TO HALLOWS END (the letters appear to be dripping).
 ~
 30 4 1
 D1
@@ -292,9 +296,11 @@ D3
 S
 #3505
 The Trail to Miden'nir~
-     You are in a light forest. A path leads south, but the passage to the
-east is easy enough. To the west, smoke can be seen rising above the
-treetops. The sprawl of Dresden lies north of here.
+     You are in a dark forest.  The trees press close on either side, their
+branches interlocked far above in a canopy broken only by drifting will-o-wisps.
+A path leads south through the shadows; to the east the forest thins.  To
+the west, orange firelight glows through the trees -- the festival pyres.
+The sprawl of Dresden lies north of here, its lights oddly dim tonight.
 ~
 35 0 3
 D0
