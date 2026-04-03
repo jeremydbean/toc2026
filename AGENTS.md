@@ -233,9 +233,9 @@ The codebase is in solid shape with significant string safety improvements compl
 5. ✅ Add conditional `#ifdef __APPLE__` around `<crypt.h>` include in `merc.h` → 5 min **COMPLETED**
 
 ### Medium-Term Improvements (1-4 hours)
-1. Complete `-Wconversion` cleanup in `db.c` file loaders (add clamping for all `sh_int` assignments)
-2. Add token-based authentication to web admin API endpoints
-3. Archive or convert unsafe code in `area/resolve.c`
+1. ✅ Complete `-Wconversion` cleanup across all C source files — COMPLETED (Nov 2025)
+2. ✅ Add token-based authentication to web admin API endpoints (`WEB_ADMIN_TOKEN` env var) — COMPLETED (Nov 2025)
+3. ✅ Archive dead code `area/resolve.c` — COMPLETED (Nov 2025, moved to `archive/resolve.c`)
 4. Run sanitizer build and fix any discovered issues
 5. Audit and document all global variables and function prototypes in `merc.h`
 
