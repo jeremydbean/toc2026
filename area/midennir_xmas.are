@@ -1,0 +1,1408 @@
+#AREA	{ 5 15} Copper  Miden'nir~
+
+
+
+#MOBILES
+#3500
+wyvern~
+the wyvern~
+A monstrous wyvern slowly circles just above your head, its breath steaming in the cold air.
+~
+This huge winged creature looks really menacing.  A dusting of snow coats its
+scales -- proof it has been roosting somewhere up in the frozen peaks.  You
+are happy it doesn't APPEAR to be very hungry ... yet.
+~
+wyvern~
+G 0 -200 S
+8 2 8d8+80 1d1+149 2d6+1 10
+5 4 5 6
+DNR 0 0 0
+8 8 3 0 
+0 0 H 0
+#3501
+goblin mountain~
+the goblin~
+A goblin wearing a crooked Father Winter hat stomps through the snow, grumbling.
+~
+You see before you a small and twisted creature with knotted muscles.  Someone
+has jammed a bright red hat onto its head, and it doesn't look pleased about
+it in the slightest.
+~
+goblin~
+FGT 0 -500 S
+6 1 4d4+65 1d1+99 2d4+1 17
+4 6 4 9
+KR 0 0 0
+8 8 1 25
+0 0 S 0
+#3502
+boy small~
+the small boy~
+A small boy sits here, licking his wounds.
+~
+The poor boy has numerous cuts and scratches, but appears to be all right.
+He is apparently the only survivor of the ambush.
+~
+human~
+BH 0 500 S
+4 0 1d12+47 1d1+99 1d6+0 13
+8 8 8 10
+I 0 0 C
+5 5 1 0
+0 0 S 0
+#3503
+innkeeper~
+the Innkeeper~
+The Innkeeper stands here, pouring mugs of warm spiced cider.
+~
+The Innkeeper has strung evergreen boughs along the bar and hung a small
+wreath above the door.  He seems almost cheerful for once, humming a winter
+carol under his breath while he works.
+~
+human~
+BT 0 500 S
+10 1 1d12+200 1d1+149 2d8+1 17
+2 2 2 8
+BFKQ AB CD 0
+8 8 1 350
+0 0 M 0
+#3504
+bard~
+the bard~
+A bard sits here attempting to play a winter carol, with modest success.
+~
+The bard has traded his usual bitter expression for a faintly festive one.
+He is playing a slow, pretty carol -- though the audience is thin and the
+warm mulled wine he keeps refilling seems to be helping his performance.
+~
+human~
+BST D 600 S
+8 3 1d12+110 1d1+99 2d6+0 17
+3 5 3 6
+FIJKNQ 0 0 0
+6 6 1 260
+0 0 M 0
+#3505
+horseman dark~
+the dark horseman~
+A dark horseman is here, mounted on his black steed.
+~
+The man is obviously an outlaw, and has no qualms about slashing you into
+little bits.
+~
+human~
+GHS P -750 S
+8 2 1d12+110 1d1+99 2d5+2 17
+5 3 3 6
+BFJKQ 0 0 0
+8 8 1 400
+0 0 M 0
+#3506
+goblin lieutenant~
+the goblin lieutenant~
+A goblin dressed as a Father Winter workshop elf sorts through a sack of baubles.
+~
+The goblin lieutenant has traded his usual scowl for a look of intense
+concentration as he counts through shiny trinkets in a tattered burlap sack.
+He glances up with obvious irritation -- you've interrupted his inventory.
+~
+goblin~
+FGT 0 -600 S
+7 1 1d12+100 1d1+149 1d10+1 17
+3 5 3 8
+DKNR 0 0 0
+8 8 1 55
+0 0 M 0
+#3507
+goblin leader~
+the goblin leader~
+A fat goblin in a red coat, wearing a badly glued white beard, surveys the room.
+~
+The goblin leader has fully embraced the Winter Veil spirit -- or at least his
+interpretation of it.  The beard is crooked, the coat is three sizes too
+big, and there are several suspicious bulges that suggest stolen goods.  He
+grabs for his shortsword all the same.
+~
+goblin~
+CFGT 0 -1000 S
+9 2 1d12+120 1d1+199 1d12+3 17
+1 3 1 6
+DJKNR 0 0 0
+8 8 1 500
+0 0 M 0
+#0
+
+
+
+#OBJECTS
+#3500
+sword short~
+a goblin's short sword~
+A rusted sword lies on the ground.~
+iron~
+5 0 AN
+1 2 4 2 0
+5 4 50 A
+E
+sword~
+It looks heavier than your average short sword, but it could use some oiling.
+~
+A 
+18 -1 
+#3501
+spear long~
+a long spear~
+A blackened spear with an evil-looking blade lies here.~
+iron~
+5 0 AN
+8 2 5 25 F
+3 8 130 A
+E
+spear~
+This used to be a boar spear, but it has been used for more dangerous game.
+~
+A
+17 2
+#3502
+helmet horned black~
+a black horned helmet~
+A helmet with sharp black horns sits here.~
+iron~
+9 0 AE
+3 5 4 0 1
+5 3 100 A  
+#3503
+cloak stained~
+a stained travelling cloak~
+A worn and stained cloak is crumpled up on the floor.~
+cloth~
+9 0 AC
+2 3 4 0 1
+3 4 20 A
+#3504
+bracer leather enchanted~
+an enchanted leather bracer~
+A leather bracer with mystic symbols sits here.~
+leather~
+9 0 AM
+2 4 4 2 0
+7 1 400 G
+A
+18 1
+E
+bracer~
+This bracer is covered with runes of protection and luck in combat.
+~
+#3505
+knife dagger~
+a rune-covered knife~
+A wide-bladed knife sits undisturbed on the floor.~
+mithril~
+5 GK AN
+2 2 4 2 0
+6 1 750 P
+A
+18 1
+E
+knife dagger~
+It's very sharp, you suspect this knife is more effective than many swords.
+It appears to be of elvish origins, and is made of finely crafted mithril,
+with a stylized ivory hilt.
+~
+
+#0
+
+
+
+#ROOMS
+#3500
+The Plains~
+   You are standing on the plains. A thin layer of snow has settled across
+the flatlands, turning the vast desolate expanse a clean, quiet white.
+The wind cuts like a blade without a single tree to bar its way. Someone
+has left a faint path; it wanders uncertainly toward the hills far north.
+~
+30 0 1
+D2
+~
+~
+0 0 3501
+D7
+~
+~
+0 -1 21
+S
+#3501
+The Lane~
+   You are strolling along a pleasant, snowy lane. The tall, stately trees
+lining the road are dusted with frost, their bare branches glittering in
+the pale winter light. You can follow the road north or south.
+~
+30 0 1
+D0
+~
+~
+0 0 3500
+D2
+~
+~
+0 0 3502
+S
+#3502
+The Cross Roads~
+Here, the great eastern road intersects with an older road. A light snowfall
+has blanketed the intersection; you can still make out the wheel ruts of
+recent travellers. Dresden lies west. The mines of Moria are to the north.
+~
+30 0 1
+D0
+An old road leads towards the abandoned mines of Moria.
+~
+~
+0 0 3501
+D1
+The road continues east, where you hear faint singing.
+~
+~
+0 0 3525
+D2
+A once mighty road leads through the dwarf forest towards ruined Thalos.
+~
+~
+0 0 5261
+D3
+The road leads west towards Dresden.
+~
+~
+0 0 3503
+S
+#3503
+City Entrance~
+   You stand on the outskirts of Dresden, the capital. The road leads east
+into the frosted forest, and to the west it becomes the main street of the
+town. Coloured lanterns have been hung from the gateposts for the Winter
+Veil season, swaying gently in the cold breeze.
+~
+30 4 1
+D0
+~
+~
+0 -1 20100
+D1
+~
+~
+0 0 3502
+D3
+~
+~
+0 0 2440
+S
+#3505
+The Trail to Miden'nir~
+     You are in a lightly frosted forest. Pine boughs droop under the weight
+of fresh snow. A path leads south, and the passage east is easy enough.
+To the west, a thin ribbon of smoke rises above the snow-covered treetops.
+The sprawl of Dresden lies north.
+~
+35 0 3
+D0
+To the north, you see the southern gates of Dresden.
+~
+~
+0 0 2432
+D1
+More light forest.
+~
+~
+0 0 3506
+D2
+This path cuts through the darkness of the Miden'nir.
+~
+~
+0 0 3507
+D3
+The Woodsman's Inn.
+~
+~
+0 0 3570
+E
+credits credit author~
++-------------------------------------------------+
+| This area originally written for Copper II DIKU |
+|   by ?                                          |
+| Modifications and alterations for MERCmud DIKU  |
+|   by VampLestat                        1 JAN 93 |
++-------------------------------------------------+
+~
+S
+#3506
+The Miden'nir~
+     You are in a dark, snow-hushed forest. The trees are heavy with ice
+crystals, and every branch is outlined in white. To the east, mountains
+block passage. The lighter forest to the west or south offer a way to travel.
+~
+35 0 3
+D1
+~
+~
+0 -1 3550
+D2
+The forest is darker to the south.
+~
+~
+0 0 3509
+D3
+The forest gets lighter as you go west.
+~
+~
+0 0 3505
+S
+#3507
+A Burned Cart~
+    There is a smoldering cart here with several snow-dusted arrows sticking
+in it. The snow around the cart has been melted by residual heat, leaving a
+dark ring of mud. Whatever happened here, the forest has grown quieter
+since then.
+~
+35 F 3
+3585 10 1
+D0
+The forest is lighter in this direction.
+~
+~
+0 0 3505
+D2
+More and darker woods.
+~
+~
+0 0 3510
+D3
+There is a small path leading west.
+~
+~
+0 0 3508
+S
+#3508
+On a Small Path~
+     A path is here, leading east and south through the snow-covered woods of
+Miden'nir. Mountains slash the scenery to the west of here.
+~
+35 0 3
+D1
+Wind-swept forest.
+~
+~
+0 0 3507
+D2
+To the south, the trail continues.
+~
+~
+0 0 3511
+S
+#3509
+The Miden'nir~
+     The trees of Miden'nir stand snow-laden and silent. The canopy above is
+thick enough that only a dusting has reached the forest floor. The trees
+become too thick to the west, but you may go north, south, or toward the
+mountains east.
+~
+35 0 3
+D0
+The trees lighten up a bit this way.
+~
+~
+0 0 3506
+D1
+Huge grey mountains lie in this direction.
+~
+~
+0 0 3512
+D2
+The forest continues.
+~
+~
+0 0 3514
+S
+#3510
+A Crossroads~
+     Here footworn paths meet leading north, south and east. The trees seem to
+be closing in on you at this point. Snow fills in your footprints almost as
+fast as you make them in this hushed corner of the forest.
+~
+35 0 3
+D0
+Trees as far as the eye can see.
+~
+~
+0 0 3507
+D1
+There is an especially dark part of the forest this way.
+~
+~
+0 0 3514
+D2
+There is an especially dark section of forest this way.
+~
+~
+0 0 3516
+S
+#3511
+The Trail~
+     You are on a north-south trail through the snowy woods. To the west,
+impassable snow-capped mountains glare at you, and the thick undergrowth
+prevents any movement westward.
+~
+35 0 3
+D0
+The trail bends to the north.
+~
+~
+0 0 3508
+D2
+To the south, the path re-enters the forest.
+~
+~
+0 0 3515
+D3
+You don't see anything here.
+~
+secret~
+4 -1 20501
+S
+#3512
+The Miden'nir~
+     The trees of Miden'nir stand silent, laden with snow. You can go north
+toward the mountains, or west to the lighter forest, but the frozen slopes
+prevent any movement east.
+~
+35 0 3
+D0
+~
+~
+0 -1 3550
+D2
+A light section of forest.
+~
+~
+0 0 3513
+D3
+The forest continues here.
+~
+~
+0 0 3509
+S
+#3513
+The Miden'nir~
+    The forest is dark and cold. To the west it grows even darker and colder.
+Something evil still hides among these snow-smothered trees.  The forest
+gets lighter to the north.  A bitter wind kicks up flurries of snow.
+~
+35 0 3
+D0
+There is a small clearing to the north.
+~
+~
+0 0 3512
+D3
+It gets darker and thicker this way.
+~
+~
+0 0 3514
+S
+#3514
+Deep Forest~
+     It is quite dark and bitterly cold here; frozen forest surrounds you.
+With each step, the forest seems to close around you. Your breath fogs
+the air in front of your face. It might just be time to head back somewhere
+warm.
+~
+35 0 3
+D0
+More forest.
+~
+~
+0 0 3509
+D1
+Lighter forest and mountains in the distance.
+~
+~
+0 0 3513
+D2
+More trees.
+~
+~
+0 0 3517
+D3
+The forest continues.
+~
+~
+0 0 3510
+S
+#3515
+Light Forest~
+     The forest is lighter here and you can pick your way along the trail.
+Snow lies thick on every branch. To the east the forest becomes dark and
+denser. South, the trail continues.
+~
+35 0 3
+D0
+A trail leading north-south.
+~
+~
+0 0 3511
+D1
+The trees get thicker as you go east.
+~
+~
+0 0 3516
+D2
+More trees and some small snow-covered hills.
+~
+~
+0 0 3518
+S
+#3516
+Muddy Ground~
+     The ground here is frozen solid rather than muddy, and patches of snow
+fill in the hollows. Your boots crunch rather than squelch. You can go in
+any of the four cardinal directions from here.
+~
+35 0 3
+D0
+The Miden'nir continues.
+~
+~
+0 0 3510
+D1
+More trees.
+~
+~
+0 0 3517
+D2
+The trees get VERY thick to the south. You can barely see...
+~
+~
+0 0 3519
+D3
+Some light trees and a pale winter sky.
+~
+~
+0 0 3515
+D5
+~
+~
+0 -1 19
+S
+#3517
+Near the Mountains~
+    The most prominent feature here is the snow-plastered mountains to the
+east. You can only go north and west from here as the frozen rocks stop
+all other movement.
+~
+35 0 3
+D0
+Many trees to the north.
+~
+~
+0 0 3514
+D3
+There is a bit of a slope downward to the west.
+~
+~
+0 0 3516
+S
+#3518
+The Fading Trail~
+     The trail becomes nearly impassable here under the accumulated snow.
+You can go north as the forest is relatively sparse. To the south you can
+make out a footpath pressed into the white.
+~
+35 0 3
+D0
+You can see a trail this way.
+~
+~
+0 0 3515
+D1
+The trees are nearly trunk-to-trunk this way.
+~
+~
+0 0 -1
+D2
+Dark forests.
+~
+~
+0 0 3522
+S
+#3519
+The Dark Path~
+     You are hemmed in by snow-laden trees on either side of you.  The path
+continues north and south, and while it is much too thick to explore west,
+you can head off into the frozen woods.
+~
+35 0 3
+D0
+The forest gets lighter this way.
+~
+~
+0 0 3516
+D1
+The forest continues.
+~
+~
+0 0 3520
+D2
+There is a strong stench coming from this direction.
+~
+~
+0 0 3521
+D3
+The trees are nearly trunk-to-trunk this way.
+~
+~
+0 0 -1
+S
+#3520
+The Dark Forest~
+     You stomp your way through knee-deep snow and frozen underbrush.  The
+dark forest of Miden'nir is thick here, the branches above so dense that
+little snow has reached the ground directly below. You find paths south
+and west.
+~
+35 0 3
+D2
+The thick forest continues.
+~
+~
+0 0 3523
+D3
+The thick forest continues.
+~
+~
+0 0 3519
+S
+#3521
+Carnage~
+     Here, you see a gruesome sight. Blood stains the snow red -- on the
+trees and soaked into the frozen ground. Two frost-rimed carcasses lie
+before you. The forest is impassable to the south, but other directions
+look clear.
+~
+35 1 3
+D0
+Darkness...
+~
+~
+0 0 3519
+D1
+Your light does not extend that far.
+~
+~
+0 0 3523
+D3
+More dark forest.
+~
+~
+0 0 3522
+E
+carcass body corpse carcasses bodies corpses~
+   The corpses looked as if they have been pierced by a large, jagged
+spear. The damage these people sustained is simply amazing. Worse, the
+lips on the bodies are deep blue with cold, and the wounds are rimmed with
+ice -- they have been here since before the first snow.
+~
+S
+#3522
+Deep in the Forest of Miden'nir~
+   There is a sickening stench here even through the cold. The smell of
+blood and death mingles with the crisp winter air.
+To the north you catch glimpses of pale grey sky. To the east you
+simply cannot see. To the south is a tall row of snow-capped bushes.
+The trees are close and the cold is stifling.~
+35 0 3
+D0
+You see daylight and a trail to follow.
+~
+~
+0 0 3518
+D1
+The stench seems to be coming from this direction.
+~
+~
+0 0 3521
+D2
+A tall row of snow-capped bushes.
+~
+~
+0 0 28161
+S
+#3523
+The Dark Forest~
+   The branches above you block out the pale winter sun, making the forest
+very dark. The forest continues east toward the mountains. The air is
+still and freezing -- a stench comes from the west and an ugly feeling
+causes the hair to rise on the back of your neck.
+~
+35 0 3
+D0
+It appears to get much darker that direction.
+~
+~
+0 0 3520
+D1
+~
+~
+0 -1 3551
+D3
+The light grows stronger in this direction.
+~
+~
+0 0 3521
+S
+#3525
+Along the Eastern Road~
+     You are walking along a snow-dusted road between Dresden and the eastern
+lands. A northern road crosses to the west, towards Dresden.  
+~
+30 0 1
+D1
+The road continues to the east.
+~
+~
+0 -1 3526
+D3
+You can see the crossroads.
+~
+~
+0 -1 3502
+S
+#3526
+Along the Eastern Road~
+     You are travelling down the road toward the east. The road to Dresden
+is west of you, and a heavily guarded checkpoint is east.  A very dim path
+leads north and a dirt path wanders off south. Snow fills the ditches on
+either side.
+~
+30 0 1
+D1
+The road continues west towards a guarded checkpoint.
+~
+~
+0 -1 3527
+D2
+There is a dusty road to the south.
+~
+~
+0 -1 55
+D3
+The road continues west towards Dresden.
+~
+~
+0 -1 3525
+D0
+~
+~
+0 -1 38
+S
+#3527
+The Checkpoint~
+     You are met by a group of heavily armored knights stamping their feet
+against the cold. They check you over for contraband and then allow you
+to pass on. One cautions you not to stray into the desert, where the cold
+nights are even more dangerous than the heat.
+~
+30 0 1
+D1
+The road continues east towards New Thalos.
+~
+~
+0 -1 3528
+D3
+The road continues west towards Dresden.
+~
+~
+0 -1 3526
+S
+#3528 
+Along the Eastern Road~
+  You are walking along a well-travelled road, just east of a heavily 
+guarded checkpoint. The snow that lies thick to the west begins to thin
+as you move toward the warmer desert climate ahead.
+~
+30 0 1
+D1
+The road continues ahead, growing more arid as you near the desert.
+~
+~
+0 -1 3529
+D3
+You see a heavily guarded checkpoint to the west.
+~
+~
+0 -1 3527
+S
+#3529
+Along the Eastern Road~
+  The snow has all but disappeared here as the desert climate takes hold.
+The temperature swings are brutal -- hot by day, bitterly cold by night.
+Ahead of you the road is partially buried by creeping sands.
+~
+30 0 1
+D1
+You see the Sands of Sorrow spilling over the road.
+~
+~
+0 -1 3530
+D3
+The road continues to the west, towards distant Dresden.
+~
+~
+0 -1 3528
+S
+#3530
+Near the Sands of Sorrow~
+  The eastern road is losing ground to the creeping desert here.  You stagger
+in the growing heat, and wonder if you have enough water.  The endless waste
+of the Sands of Sorrows is south, and the road continues east and west.  The 
+sun paints illusions at the edge of your vision, one of them looks like a far 
+off city...
+~
+30 0 10
+D1
+The road ahead is almost lost in the desert.
+~
+~
+0 -1 3531
+D3
+You see a clearer section of road. 
+~
+~
+0 -1 3529
+S
+#3531
+Near the Sands of Sorrow~
+  The road is almost completely swallowed by the desert here.  The heat is
+sucking the life from your body, you wonder if it will ever end.  To your
+south, the Sands of Sorrow stretch on for miles, and to the east you think
+you see the towers of a magnificent city...or is it just a mirage?
+~
+30 0 10
+D1
+You can barely make out enough road to follow.
+~
+~
+0 -1 3532
+D3
+The desert thins a little to the west.
+~
+~
+0 -1 3530
+S
+#3532
+On the Outskirts of New Thalos~
+  The sun is hot enough to melt your armor, but salvation is at hand.  Off to
+the east, you see the mighty gates of New Thalos, one of the most prosperous
+cities of all of Thera.  To the south, you see the endless wasteland of the
+Sands of Sorrows, and to the west you can barely make out a faint, but
+well-used, road leading to the City of Dresden. 
+~
+30 0 10
+D1
+~
+~
+0 -1 42
+D3
+You see the road to Dresden, covered with sand.
+~
+~
+0 -1 3531
+S
+#3550
+At The Foot of The Dark Hills~
+You find yourself at the foot of a range of dark, snow-capped hills that
+stretch off to the north. In the distance you can just make out the tops
+of mist-covered mountains wreathed in low cloud.
+~
+35 0 5
+D2
+The forest of Miden'nir spreads out before you.
+~
+~
+0 -1 3512
+D3
+The forest of Miden'nir spreads out before you.
+~
+~
+0 -1 3506
+D0
+Into a range of dark hills
+~
+~
+0 -1 18
+S
+#3551
+The Deep in the Forest of Miden'nir~
+   The branches above you block out the pale winter light. The forest here
+is very dark and very cold.  The forest continues west, but ice-locked
+mountains block all other directions, except south where a small tunnel
+is dug into the mountainside, and up a mountain pass.
+~
+35 1 3
+D2
+~
+~
+0 -1 3552
+D3
+~
+~
+0 -1 3523
+S
+#3552
+A Tunnel in the Mountains~
+     The walls of this tunnel were carved out by the goblins of this forest.
+The floor is well worn and continues south into the mountain, or north
+back into the frozen forest. Ice has formed along the lower walls.
+~
+35 1 1
+D0
+Outside, you see the forest of Miden'nir.
+~
+~
+0 -1 3551
+D2
+The tunnel continues to the south.
+~
+~
+0 -1 3553
+S
+#3553
+A Tunnel in the Mountains~
+     The tunnel gets lighter to the north, presumably leading out, while to
+the south the passage gets smaller and smaller.  A small alcove has been
+carved into the east wall.
+~
+35 1 1
+D0
+The tunnel gets wider in this direction.
+~
+~
+0 -1 3552
+D1
+You see a small alcove.
+~
+~
+0 -1 3554
+D2
+The tunnel gets smaller in this direction.
+~
+~
+0 -1 3555
+S
+#3554
+A Small Alcove~
+     A small alcove has been carved out here.  There are a bunch of twigs
+and leaves thrown into a pile here, probably serving as a bed.  A handful
+of small, shiny objects are tucked in among the leaves.
+~
+35 1 1
+D3
+You see the main passageway.
+~
+~
+0 -1 3553
+E
+twigs leaves bed~
+     The twigs and leaves have all been piled together as a makeshift bed for
+some small humanoid. Among them you spot a couple of bright baubles, likely
+stolen from travellers.
+~
+S
+#3555
+A Tunnel in the Mountains~
+     As you explore further into the mountainside, the tunnel gets smaller and
+smaller to the south.  You almost have to hunch over to make your way thru
+this area.  A small archway to the south leads into a large chamber.
+~
+35 1 1
+D0
+The tunnel continues north.
+~
+~
+0 -1 3553
+D2
+You see a small cavern.
+~
+~
+0 -1 3556
+S
+#3556
+The Goblin Headquarters~
+     The tunnel widens into a large (well, large for goblins) cavern that
+serves as the living quarters for the goblins of Miden'nir.  A sad
+collection of stolen Winter Veil decorations has been tacked to the
+cave walls: tinsel, a single unlit candle, and a pine bough that has
+seen better days.  Gnawed bones are strewn about the floor.
+~
+35 1 1
+D0
+The tunnel heads north.
+~
+~
+0 -1 3555
+S
+#3570
+The Front of the Inn~
+     You are standing on a well-worn path which opens into a clearing.
+An old, wooden building is here with smoke billowing from its chimney.
+A painted sign hangs on the porch to the west, and someone has hung a
+festive evergreen wreath on the front door -- a small but genuine
+gesture of celebration even out here in the deep, cold forest.
+~
+4 0 3
+D0
+You can go north around the inn.
+~
+~
+0 0 3571
+D1
+Back through the trees to the Miden'nir.
+~
+~
+0 0 3505
+D2
+You can go south around the inn.
+~
+~
+0 0 3572
+D3
+The front door of the inn beckons.
+~
+~
+0 0 3574
+E
+sign~
+The sign reads:
+   The Woodsman
+~
+E
+credits credit author~
++-------------------------------------------------+
+| This zone originally written for Copper II DIKU |
+|   by ?                                          |
+| Modification and alterations for MERCmud DIKU   |
+|   by VampLestat                        1 JAN 93 |
++-------------------------------------------------+
+~
+S
+#3571
+North of the Inn~
+     You are standing north of the inn in a light snowfall.  The air here
+is filled with the smell of smoke and something warm and spiced cooking.
+South, the front porch is waiting for you.
+~
+4 0 3
+D2
+You see the front of the Inn.
+~
+~
+0 -1 3570
+S
+#3572
+South of the Inn~
+     You are standing south of the inn.  You could go north and enter
+through the front door, or west to the rear of the establishment.  You
+hear muffled cries from a tiny trail leading south. The cold is biting.
+~
+4 0 3
+D0
+This way leads to the front of the inn.
+~
+~
+0 0 3570
+D2
+The trail heads south.
+~
+~
+0 0 3575
+D3
+This way leads to the back of the inn.
+~
+~
+0 0 3573
+S
+#3573
+Behind the Inn~
+     You now stand behind the inn in the cold. The keep has thrown his
+garbage out as usual, but the cold has at least muted the smell somewhat.
+A couple of piles of rubbish are to the west. You can return north or
+east around the inn.
+~
+4 0 3
+D1
+You can return around the inn this way.
+~
+~
+0 0 3572
+D3
+Only rats and fool adventurers play in garbage.
+~
+~
+0 0 3578
+S
+#3574
+The Woodsman Inn~
+    You are in the common room of the Woodsman Inn. Evergreen boughs have
+been draped along the rafters and a pair of red candles burn on the bar,
+filling the room with a warm pine scent. A thin haze of wood smoke sits in
+the air. The bard is attempting a winter carol in the corner. You can go
+north to the bar or south for a quieter table.
+~
+4 12 1
+D0
+The bar is here, manned by the innkeeper.
+~
+~
+0 0 3576
+D1
+You can leave now and return to the cold outside.
+~
+~
+0 0 3570
+D2
+An empty table is a rare commodity.
+~
+~
+0 0 3579
+D3
+~
+~
+0 0 3577
+S
+#3575
+The Ambush Point~
+     This is an overgrown foot-trail south of the inn, now blanketed in snow.
+A number of bushes are trampled and branches have been knocked down.
+Obviously there has been a battle here rather recently.
+~
+4 0 3
+D0
+The inn lies to the north.
+~
+~
+0 0 3572
+D3
+A trail thru the snowy woods.
+~
+~
+0 0 3581
+S
+#3576
+The Bar~
+     This is where people use to come and enjoy the food and hospitality
+of the innkeeper. These days he only serves the hardy few. Sprigs of pine
+and holly have been tucked behind the bottles behind the bar, and a pot of
+spiced cider sits warming by the fire. You can leave south to the common room.
+~
+4 0 1
+D2
+You may retreat south back to the common room.
+~
+~
+0 0 3574
+S
+#3577
+The Bard's Table~
+     You are in a darker corner in the Inn.  A large round table with a few
+wooden chairs sits here.  The bard has placed a small sprig of holly as a
+centerpiece -- a surprisingly tender touch.
+~
+4 8 1
+D1
+You see the main floor of the Inn to the east.
+~
+~
+0 0 3574
+S
+#3578
+Garbage dump~
+You stand knee deep in garbage, which at least smells slightly less terrible
+than usual in the cold.  YECCH!!! The ice has not improved the situation
+much at all.
+~
+4 0 3
+D1
+You can return to cleaner lands this way.
+~
+~
+0 0 3573
+S
+#3579
+A Quieter Section of the Inn~
+There seems to be no one in this end of the Woodsman. It is warm here by
+the hearthstone, probably a safe place to rest and warm your bones ...
+~
+4 8 0
+D0
+You see the common room.
+~
+~
+0 0 3574
+S
+#3581
+On the Trail of the Horsemen~
+  The path continues east and west of here.  Fresh tracks are almost
+gone, swallowed by new snow -- but you can still make out the horsemen's
+trail heading west.
+~
+4 0 3
+D1
+Back to ambush point.
+~
+~
+0 0 3575
+D3
+The trail continues.
+~
+~
+0 -1 3582
+S
+#3582
+On the Trail of the Horsemen~
+  The path continues east and south. The tracks in the snow show the
+horsemen turned south. The wind is picking up, threatening to bury
+the trail entirely.
+~
+4 0 3
+D1
+The trail continues.
+~
+~
+0 0 3581
+D2
+The tracks lead south.
+~
+~
+0 -1 3583
+S
+#3583
+On the Trail of the Horsemen~
+  The trail of the horsemen continues east and north along this snowy
+path through the forest.  The tracks are still relatively fresh.
+~
+4 0 3
+D0
+The trail continues.
+~
+~
+0 -1 3582
+D3
+The tracks lead east.
+~
+~
+0 -1 3584
+S
+#3584
+A Dead End Trail~
+  The path comes to an abrupt end here, as the frozen trees close around
+you.  Fresh snow-pressed tracks cover the ground and end right here.
+The horsemen must be nearby.  You notice an opening in the underbrush
+to the south.
+~
+4 0 3
+D1
+Back to along the trail.
+~
+~
+0 0 3583
+S
+#3585
+AMBUSH~
+     You are in a light forest dusted with snow. A path leads south, but the
+passage to the east is easy enough. To the west, smoke can be seen rising
+above the snow-covered treetops. The sprawl of Dresden lies north.
+~
+35 0 3
+D0
+The forest is lighter in this direction.
+~
+~
+0 0 3505
+D2
+More and darker snowy woods.
+~
+~
+0 0 3510
+D3
+There is a small path leading west.
+~
+~
+0 0 3508
+S
+#0
+
+
+
+#RESETS
+M 0 3500 2 3521       Load Wyvern at Carnage  * This area written for *
+M 0 3500 2 3521            Wyvern at Carnage  *   Copper II by ?      *
+M 0 3501 8 3512       Load Goblin in forest   * Heavy Modificatios    *
+E 1 3500 18 16          sword
+E 1 3045 6 5		jacket
+M 0 3501 8 3512            Goblin in forest   *   by VampLestat       *
+E 1 3500 18 16          sword
+E 1 3502 6 6		helmet
+E 1 3075 6 8		boots
+M 0 3501 8 3509            Goblin in forest   *   for Merc Mud        *
+E 1 3500 18 16          sword
+E 1 3072 6 5		jerkin
+M 0 3501 8 3506            Goblin in forest
+E 1 3500 18 16          sword
+E 1 3074 6 7		skirt
+M 0 3501 8 3513            Goblin in forest
+E 1 3500 18 16          sword
+E 1 3077 6 10		sleeves
+M 0 3501 8 3556            Goblin in Cavern
+E 1 3500 18 16          sword
+E 1 3076 6 9		gloves
+M 0 3506 4 3551       Load Lieutenant at Entrance
+E 1 3502 -1 6		helmet
+E 1 3500 20 16		sword
+E 1 3072 8 5            jerkin
+M 0 3506 4 3556       Lieutenant at Cavern
+E 1 3500 20 16          sword
+E 1 3502 -1 6		helmet
+E 1 3072 8 5            jerkin
+M 0 3507 1 3556       Load Leader at Cavern
+E 1 3072 -1 5		scale mail jerkin
+E 1 3501 6 16		long spear
+E 1 3502 -1 6		helmet 
+M 0 3502 1 3575       Load Small Boy at Ambush
+M 0 3503 1 3576       Load Innkeeper at Bar
+M 0 3504 1 3577       Load Bard at Table
+E 1 3505 3 16		magic dagger
+M 0 3505 4 3584       Load Horseman at End of Trail
+E 1 3503 8 3		wear cloak
+E 1 3022 -1 16		sword
+M 0 3505 4 3584            Horseman at End of Trail
+E 1 3504 4 14		wear magical bracer
+E 1 3022 -1 16		sword
+
+M 0 3501 13 3585            Goblin at ambush
+E 1 3500 18 16          sword
+E 1 3074 6 7		skirt
+M 0 3501 13 3585            Goblin at ambush
+M 0 3501 13 3585            Goblin at ambush
+M 0 3501 13 3585            Goblin at ambush
+M 0 3501 13 3585            Goblin at ambush
+D 0 3511 3 4
+S
+
+
+
+#SPECIALS
+M  3500 spec_poison
+S
+
+
+
+#$

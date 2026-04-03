@@ -1043,6 +1043,16 @@ void weather_update( void )
     else
 	diff = weather_info.mmhg > 1015 ? -2 : 2;
 
+    /* Seasonal weather bias: Winter Veil pushes toward overcast/snow;
+     * Hallows End pushes toward stormy gloom. */
+    {
+        const char *season = get_season_name();
+        if ( season != NULL && !str_cmp( season, "Winter Veil" ) )
+            diff -= 1;   /* bias toward lower pressure (cloudy/precipitation) */
+        else if ( season != NULL && !str_cmp( season, "Hallows End" ) )
+            diff -= 1;   /* darker, stormier skies for Halloween */
+    }
+
     weather_info.change   += diff * dice(1, 4) + dice(2, 6) - dice(2, 6);
     weather_info.change    = UMAX(weather_info.change, -12);
     weather_info.change    = UMIN(weather_info.change,  12);
@@ -1062,7 +1072,12 @@ void weather_update( void )
 	if ( weather_info.mmhg <  990
 	|| ( weather_info.mmhg < 1010 && number_bits( 2 ) == 0 ) )
 	{
-	    toc_strlcat( buf, "Clouds begin to fill the sky.\n\r" , sizeof(buf) );
+	    if ( get_season_name() != NULL && !str_cmp( get_season_name(), "Winter Veil" ) )
+	        toc_strlcat( buf, "Heavy grey clouds roll in, threatening snow.\n\r", sizeof(buf) );
+	    else if ( get_season_name() != NULL && !str_cmp( get_season_name(), "Hallows End" ) )
+	        toc_strlcat( buf, "Dark, brooding clouds creep across the sky.\n\r", sizeof(buf) );
+	    else
+	        toc_strlcat( buf, "Clouds begin to fill the sky.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_CLOUDY;
 	}
 	break;
@@ -1071,7 +1086,12 @@ void weather_update( void )
 	if ( weather_info.mmhg <  970
 	|| ( weather_info.mmhg <  990 && number_bits( 2 ) == 0 ) )
 	{
-	    toc_strlcat( buf, "The sky breaks, and rain falls from the heavens.\n\r" , sizeof(buf) );
+	    if ( get_season_name() != NULL && !str_cmp( get_season_name(), "Winter Veil" ) )
+	        toc_strlcat( buf, "Snow begins to fall from the leaden sky.\n\r", sizeof(buf) );
+	    else if ( get_season_name() != NULL && !str_cmp( get_season_name(), "Hallows End" ) )
+	        toc_strlcat( buf, "A cold, gloomy rain begins to fall.\n\r", sizeof(buf) );
+	    else
+	        toc_strlcat( buf, "The sky breaks, and rain falls from the heavens.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_RAINING;
 	}
 
@@ -1085,14 +1105,20 @@ void weather_update( void )
     case SKY_RAINING:
 	if ( weather_info.mmhg <  970 && number_bits( 2 ) == 0 )
 	{
-	    toc_strlcat( buf, "Lightning flashes like a war in the sky.\n\r" , sizeof(buf) );
+	    if ( get_season_name() != NULL && !str_cmp( get_season_name(), "Hallows End" ) )
+	        toc_strlcat( buf, "Lightning crashes ominously as the storm deepens.\n\r", sizeof(buf) );
+	    else
+	        toc_strlcat( buf, "Lightning flashes like a war in the sky.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_LIGHTNING;
 	}
 
 	if ( weather_info.mmhg > 1030
 	|| ( weather_info.mmhg > 1010 && number_bits( 2 ) == 0 ) )
 	{
-	    toc_strlcat( buf, "The rain gently tapers off.\n\r" , sizeof(buf) );
+	    if ( get_season_name() != NULL && !str_cmp( get_season_name(), "Winter Veil" ) )
+	        toc_strlcat( buf, "The snowfall eases and the sky grows lighter.\n\r", sizeof(buf) );
+	    else
+	        toc_strlcat( buf, "The rain gently tapers off.\n\r" , sizeof(buf) );
 	    weather_info.sky = SKY_CLOUDY;
 	}
 	break;

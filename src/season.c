@@ -93,7 +93,7 @@ const char *get_seasonal_area( const char *area_file )
     {
         if ( !str_cmp( area_file, "dresden.are"  ) ) return "dresden_xmas.are";
         if ( !str_cmp( area_file, "limbo.are"    ) ) return "limbo_xmas.are";
-        /* No midennir_xmas.are -- fall through to normal */
+        if ( !str_cmp( area_file, "midennir.are" ) ) return "midennir_xmas.are";
     }
 
     return area_file;

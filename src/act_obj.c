@@ -3230,6 +3230,15 @@ void do_list( CHAR_DATA *ch, char *argument )
 
 	if ( !found )
 	    send_to_char( "You can't buy anything here.\n\r", ch );
+
+	/* Seasonal shop flavour message */
+	{
+	    const char *season = get_season_name();
+	    if ( season != NULL && !str_cmp( season, "Hallows End" ) )
+	        act( "$n slides a bowl of trick-or-treat candy across the counter with a grin.", keeper, NULL, ch, TO_VICT );
+	    else if ( season != NULL && !str_cmp( season, "Winter Veil" ) )
+	        act( "$n gestures to the small evergreen decorated behind the counter. 'Happy Winter Veil!'", keeper, NULL, ch, TO_VICT );
+	}
 	return;
     }
 }

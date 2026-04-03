@@ -2129,6 +2129,22 @@ void make_corpse( CHAR_DATA *ch )
     }
 
     obj_to_room( corpse, ch->in_room );
+
+    /* Seasonal event drops: 15% chance a killed NPC drops a seasonal item. */
+    if ( IS_NPC(ch) )
+    {
+        const char *season = get_season_name();
+        int drop_vnum = 0;
+        if ( season != NULL && !str_cmp( season, "Hallows End"  ) ) drop_vnum = OBJ_VNUM_SEASONAL_CANDY;
+        if ( season != NULL && !str_cmp( season, "Winter Veil"  ) ) drop_vnum = OBJ_VNUM_SEASONAL_GIFT;
+        if ( drop_vnum != 0 && number_percent() <= 15 )
+        {
+            OBJ_DATA *drop = create_object( get_obj_index( drop_vnum ), 0 );
+            if ( drop != NULL )
+                obj_to_room( drop, ch->in_room );
+        }
+    }
+
     /* corpse_back( ch, corpse ); */
     return;
 }

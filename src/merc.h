@@ -973,6 +973,10 @@ struct  kill_data
 #define OBJ_VNUM_SCHOOL_BANNER     3716
 #define OBJ_VNUM_MAP               3162
 
+/* Seasonal event drop items (seasonal.are) */
+#define OBJ_VNUM_SEASONAL_CANDY    29900  /* Hallows End trick-or-treat candy */
+#define OBJ_VNUM_SEASONAL_GIFT     29901  /* Winter Veil wrapped gift */
+
 /* Item types. */
 #define ITEM_LIGHT                    1
 #define ITEM_SCROLL                   2

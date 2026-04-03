@@ -1,0 +1,50 @@
+#AREA	{  0  0} Built-In  Seasonal Items~
+
+
+
+#MOBILES
+#0
+
+
+
+#OBJECTS
+#29900
+candy treat sweet~
+a piece of trick-or-treat candy~
+A bright piece of wrapped candy has been dropped here.~
+cloth~
+19 A AN
+0 3 0 0 0
+0 0 1 A
+E
+candy treat~
+It is a small piece of hard candy wrapped in orange and black paper.
+Stamped on the wrapper is a little carved pumpkin face.
+~
+#29901
+gift~
+a small wrapped gift~
+A small wrapped gift has been left here.~
+cloth~
+19 A AN
+0 3 0 0 0
+0 0 1 A
+E
+gift present~
+It is a small gift wrapped in red paper and tied with a golden ribbon.
+A tiny card reads: "Happy Winter Veil!"
+~
+
+
+
+#ROOMS
+#0
+
+
+
+#RESETS
+S
+
+
+
+#$
