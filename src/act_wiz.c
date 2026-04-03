@@ -3332,8 +3332,11 @@ void do_restore( CHAR_DATA *ch, char *argument )
     victim->hit  = victim->max_hit;
     victim->mana = victim->max_mana;
     victim->move = victim->max_move;
-    victim->pcdata->condition[COND_THIRST] = 100;
-    victim->pcdata->condition[COND_FULL] = 100;
+    if ( !IS_NPC(victim) && victim->pcdata != NULL )
+    {
+        victim->pcdata->condition[COND_THIRST] = 100;
+        victim->pcdata->condition[COND_FULL] = 100;
+    }
     update_pos( victim );
     act( "An angel glides down from heaven and cures all your wounds.",
 	ch, NULL, victim, TO_VICT );
@@ -3349,26 +3352,23 @@ void do_restore( CHAR_DATA *ch, char *argument )
 void do_herbie( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
+    CHAR_DATA *herbie;
+    MOB_INDEX_DATA *herbie_idx;
 
     one_argument( argument, arg );
 
-    if (arg[0] == '\0')
+    if ( arg[0] == '\0' )
     {
         send_to_char( "Syntax: herbie <player>\n\r", ch );
-        send_to_char( "Sends an angel to restore a player's health, mana, and movement.\n\r", ch );
+        send_to_char( "Sends Herbie the Angel to restore a player's health, mana, and movement.\n\r", ch );
         return;
     }
 
-    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC(victim) )
     {
-        send_to_char( "They aren't here.\n\r", ch );
-        return;
-    }
-
-    if ( IS_NPC(victim) )
-    {
-        send_to_char( "Not on NPCs.\n\r", ch );
+        send_to_char( "That player is not online.\n\r", ch );
         return;
     }
 
@@ -3378,31 +3378,70 @@ void do_herbie( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Strip negative effects */
-    affect_strip(victim, gsn_plague);
-    affect_strip(victim, gsn_poison);
-    affect_strip(victim, gsn_blindness);
-    affect_strip(victim, gsn_sleep);
-    affect_strip(victim, gsn_curse);
+    if ( victim->in_room == NULL )
+    {
+        send_to_char( "They don't seem to be anywhere.\n\r", ch );
+        return;
+    }
 
-    /* Restore stats */
+    /* Spawn a fresh Herbie instance at the victim's location */
+    herbie_idx = get_mob_index( 99 );
+    if ( herbie_idx == NULL )
+    {
+        /* Fallback: no mob vnum 99 loaded, deliver silently */
+        act( "An angel named Herbie glides down from heaven and cures all your wounds.",
+            ch, NULL, victim, TO_VICT );
+    }
+    else
+    {
+        herbie = create_mobile( herbie_idx );
+        char_to_room( herbie, victim->in_room );
+
+        /* Herbie arrives */
+        act( "A bright light fills the room as $n descends gracefully from above.",
+            herbie, NULL, NULL, TO_ROOM );
+
+        /* Herbie greets the player */
+        act( "$n kneels beside you, smiling warmly.  'Fear not.  You are watched over.'",
+            herbie, NULL, victim, TO_VICT );
+        act( "$n kneels beside $N and places a gentle hand on $S shoulder.",
+            herbie, NULL, victim, TO_NOTVICT );
+
+        /* Herbie heals */
+        act( "$n closes $s eyes.  A warm golden glow radiates from $s hands into your body.",
+            herbie, NULL, victim, TO_VICT );
+        act( "$n closes $s eyes and a warm golden glow flows between $m and $N.",
+            herbie, NULL, victim, TO_NOTVICT );
+
+        /* Herbie departs */
+        act( "$n rises, folds $s wings, and with a soft rustle of feathers vanishes into the light.",
+            herbie, NULL, NULL, TO_ROOM );
+
+        /* Remove the temporary Herbie instance */
+        extract_char( herbie, TRUE );
+    }
+
+    /* Apply the actual healing */
+    affect_strip( victim, gsn_plague );
+    affect_strip( victim, gsn_poison );
+    affect_strip( victim, gsn_blindness );
+    affect_strip( victim, gsn_sleep );
+    affect_strip( victim, gsn_curse );
+
     victim->hit  = victim->max_hit;
     victim->mana = victim->max_mana;
     victim->move = victim->max_move;
 
-    /* Restore hunger/thirst if not NPC */
-    if (!IS_NPC(victim) && victim->pcdata != NULL)
+    if ( victim->pcdata != NULL )
     {
         victim->pcdata->condition[COND_THIRST] = 100;
-        victim->pcdata->condition[COND_FULL] = 100;
+        victim->pcdata->condition[COND_FULL]   = 100;
     }
 
     update_pos( victim );
 
-    act( "An angel named Herbie glides down from heaven and cures all your wounds.",
-        ch, NULL, victim, TO_VICT );
-    act( "$N has been visited by Herbie the angel.", ch, NULL, victim, TO_CHAR );
-
+    snprintf( buf, sizeof(buf), "Herbie has visited %s.\n\r", victim->name );
+    send_to_char( buf, ch );
     return;
 }
 

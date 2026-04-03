@@ -1947,17 +1947,17 @@ or not at all.
 61 HERBIE~
 Syntax: herbie <player>
 
-Herbie sends a friendly angel named Herbie to restore a player's health, mana,
-and movement points. It also cures poison, plague, blindness, sleep, and curse
-effects, and restores hunger and thirst.
+Summons Herbie the Angel directly to an online player's location.  Herbie
+arrives in person, kneels beside the player, channels a golden healing
+light, then departs.  The player and everyone in the room sees the full
+sequence of acts.
 
-Unlike the full 'restore' command, herbie can only be used on individual
-players (not rooms or 'all'), and cannot be used on immortals of equal or
-higher level. This command is intended for Saints and higher to help players
-in need without requiring full restore privileges.
+Herbie cures: poison, plague, blindness, sleep, and curse.
+Herbie restores: hit points, mana, movement, hunger, and thirst.
 
-The target player will see: "An angel named Herbie glides down from heaven 
-and cures all your wounds."
+Cannot be used on players of equal or higher level.  Cannot target mobs.
+
+See also: RESTORE, EMPOWER
 ~
 
 66 SLAY~
