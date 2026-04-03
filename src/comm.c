@@ -2380,7 +2380,8 @@ void stop_idling( CHAR_DATA *ch )
     if ( ch == NULL
     ||   ch->desc == NULL
     ||   ch->desc->connected != CON_PLAYING
-    ||   ch->was_in_room == NULL 
+    ||   ch->was_in_room == NULL
+    ||   ch->in_room == NULL
     ||   ch->in_room->vnum != ROOM_VNUM_LIMBO)
 	return;
 
@@ -2447,7 +2448,7 @@ void send_to_room( const char *txt, int vnum )
     LIST_ITERATOR iter;
 
     FOR_EACH_CHARACTER( iter, ch )
-        if ( ch->in_room->vnum == vnum )
+        if ( ch->in_room != NULL && ch->in_room->vnum == vnum )
             send_to_char( txt, ch );
 }
 
@@ -2621,6 +2622,11 @@ void act_new( const DString *format, CHAR_DATA *ch, const void *arg1,
         if ( vch == NULL )
         {
             bug( "Act: null vch with TO_VICT.", 0 );
+            dstring_free( &buf );
+            return;
+        }
+        if ( vch->in_room == NULL )
+        {
             dstring_free( &buf );
             return;
         }

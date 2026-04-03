@@ -1472,6 +1472,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
 bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
 {
+    if ( ch->in_room == NULL || victim->in_room == NULL )
+	return true;
+
     /* no killing in shops hack */
     if (IS_NPC(victim) && victim->pIndexData->pShop != NULL)
     {
@@ -1572,6 +1575,9 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
 
 bool is_safe_spell(CHAR_DATA *ch, CHAR_DATA *victim, bool area )
 {
+    if ( ch->in_room == NULL || victim->in_room == NULL )
+	return true;
+
     /* can't zap self (crash bug) */
     if (ch == victim)
 	return true;
