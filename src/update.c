@@ -594,7 +594,7 @@ int hit_gain( CHAR_DATA *ch )
     if (IS_AFFECTED(ch,AFF_HASTE))
 	gain /=2;
 
-    if (!IS_NPC(ch) && IS_SET(ch->in_room->room_flags, ROOM_HP_REGEN) )
+    if (!IS_NPC(ch) && ch->in_room != NULL && IS_SET(ch->in_room->room_flags, ROOM_HP_REGEN) )
 	gain *= 2;
 
     return UMIN(gain, ch->max_hit - ch->hit);
@@ -668,7 +668,7 @@ int mana_gain( CHAR_DATA *ch )
     if (IS_AFFECTED(ch,AFF_HASTE))
 	gain /=2 ;
 
-    if (!IS_NPC(ch) && IS_SET(ch->in_room->room_flags, ROOM_MANA_REGEN) )
+    if (!IS_NPC(ch) && ch->in_room != NULL && IS_SET(ch->in_room->room_flags, ROOM_MANA_REGEN) )
 	gain *= 2;
 
     return UMIN(gain, ch->max_mana - ch->mana);
@@ -1158,6 +1158,9 @@ void char_update( void )
         else
 	  continue;
 
+        if ( in_room == NULL )
+            continue;
+
 //	if ( ch->timer > 20 )
 //	    ch_quit = ch;
 
@@ -1216,7 +1219,7 @@ void char_update( void )
 	  }
 	}
 
-	if(!IS_NPC(ch) && IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
+	if(!IS_NPC(ch) && ch->in_room != NULL && IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
 	   room_affect(ch,ch->in_room, 10);
 
 
@@ -2231,6 +2234,7 @@ void dtrap_update( void )
 
         if(!IS_NPC(ch)
         && !IS_IMMORTAL(ch)
+	&& ch->in_room != NULL
 	&& IS_SET(ch->in_room->room_flags, ROOM_DT) )
 	{
 	    do_look( ch,"" );
