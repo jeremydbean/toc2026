@@ -1834,7 +1834,7 @@ bool check_ducking(CHAR_DATA *ch, CHAR_DATA *victim)
 bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 {
   int chance;
-  int iWear = 0;
+  int iWear;
   int i;
   OBJ_DATA *obj;
   bool damaged = false;
@@ -1844,6 +1844,8 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( (obj = get_eq_char( victim, WEAR_SHIELD )) == NULL )
        return false;
+
+    iWear = obj->wear_loc;  /* always WEAR_SHIELD for apply_ac calculations */
 
     if ( IS_NPC(victim) )
     {
@@ -3736,16 +3738,21 @@ void do_smite( CHAR_DATA *ch, char *argument )
 
 		weapondamage = number_percent();
         if (weapondamage < 4)
-				{
-           act("\n\r** Your weapon makes a loud CRACK and SLAMS into the ground!! \n\r**",ch,NULL,victim,TO_CHAR);
-           act("$n's makes a terrible cracking sound and SLAMS to the ground!!",ch,NULL,victim,TO_ROOM);
-					 obj->condition = 1;
-					 SET_BIT(obj->extra_flags, ITEM_DAMAGED);
-           obj_from_char(obj);
-					 obj_to_room( obj, ch->in_room );
-					 snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s weapon has been smited!\n\r", ch->name);
-					 log_string( log_buf );
-					 wizinfo( log_buf, MAX_LEVEL);
+		{
+           /* re-fetch weapon — it may have been disarmed during multi_hit */
+           obj = get_eq_char( ch, WEAR_WIELD );
+           if ( obj != NULL )
+           {
+               act("\n\r** Your weapon makes a loud CRACK and SLAMS into the ground!! \n\r**",ch,NULL,victim,TO_CHAR);
+               act("$n's makes a terrible cracking sound and SLAMS to the ground!!",ch,NULL,victim,TO_ROOM);
+               obj->condition = 1;
+               SET_BIT(obj->extra_flags, ITEM_DAMAGED);
+               obj_from_char(obj);
+               obj_to_room( obj, ch->in_room );
+               snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s weapon has been smited!\n\r", ch->name);
+               log_string( log_buf );
+               wizinfo( log_buf, MAX_LEVEL);
+           }
         }
 
 
@@ -5393,8 +5400,12 @@ void damage_eq(CHAR_DATA *victim, int dam)
     char buf[MAX_STRING_LENGTH];
     OBJ_DATA *obj;
     int iWear, level;
+    static int depth = 0;
 
-    iWear = number_range(0,MAX_WEAR); /* get random wear slot */
+    if (depth >= 3)      /* prevent deep recursion */
+        return;
+
+    iWear = number_range(0,MAX_WEAR - 1); /* get random wear slot (0..17) */
     obj = get_eq_char(victim, iWear);
 
     if(obj != NULL) /* is the person wearing at the wear slot? */
@@ -5412,7 +5423,11 @@ void damage_eq(CHAR_DATA *victim, int dam)
                 send_to_char(buf,victim);
                 extract_obj(obj);
                 if(number_percent() < 15)
+                {
+                    depth++;
                     damage_eq(victim,dam);
+                    depth--;
+                }
                 return;
             }
             else
@@ -5421,8 +5436,12 @@ void damage_eq(CHAR_DATA *victim, int dam)
                     obj->short_descr);
                 send_to_char(buf,victim);
                 if(number_percent() < 15)
+                {
+                    depth++;
                     damage_eq(victim,dam);
-										SET_BIT(obj->extra_flags, ITEM_DAMAGED);
+                    depth--;
+                }
+                SET_BIT(obj->extra_flags, ITEM_DAMAGED);
                 return;
             }
         }
