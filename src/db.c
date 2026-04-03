@@ -1197,20 +1197,23 @@ void load_resets( FILE *fp )
  
         case 'O':
             temp_index = get_obj_index  ( pReset->arg1 );
-            temp_index->reset_num++;
+            if ( temp_index != NULL )
+                temp_index->reset_num++;
             get_room_index ( pReset->arg3 );
             break;
  
         case 'P':
             temp_index = get_obj_index  ( pReset->arg1 );
-            temp_index->reset_num++;
+            if ( temp_index != NULL )
+                temp_index->reset_num++;
             get_obj_index  ( pReset->arg3 );
             break;
  
         case 'G':
         case 'E':
             temp_index = get_obj_index  ( pReset->arg1 );
-            temp_index->reset_num++;
+            if ( temp_index != NULL )
+                temp_index->reset_num++;
             break;
  
         case 'D':
@@ -1562,6 +1565,11 @@ void load_shops( FILE *fp )
         pShop->close_hour       = (sh_int)(fread_number( fp ));
                                   fread_to_eol( fp );
         pMobIndex               = get_mob_index( pShop->keeper );
+        if ( pMobIndex == NULL )
+        {
+            bug( "Load_shops: bad keeper vnum %d.", pShop->keeper );
+            break;
+        }
         pMobIndex->pShop        = pShop;
  
         if ( shop_first == NULL )
@@ -1601,7 +1609,12 @@ void load_specials( FILE *fp )
             break;
  
         case 'M':
-            pMobIndex           = get_mob_index ( fread_number ( fp ) );
+            pMobIndex = get_mob_index ( fread_number ( fp ) );
+            if ( pMobIndex == NULL )
+            {
+                bug( "Load_specials: 'M': mob vnum not found.", 0 );
+                exit( 1 );
+            }
             pMobIndex->spec_fun = spec_lookup   ( fread_word   ( fp ) );
             if ( pMobIndex->spec_fun == 0 )
             {

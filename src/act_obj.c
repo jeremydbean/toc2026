@@ -60,7 +60,7 @@ bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
     if (IS_IMMORTAL(ch))
 	return true;
 
-    if (!obj->owner || obj->owner == NULL)
+    if (obj->owner == NULL || obj->owner[0] == '\0')
 	return true;
 
     owner = NULL;

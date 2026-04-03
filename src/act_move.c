@@ -528,8 +528,6 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	       do_riding(ch,door, skip_special_check);
 	       return;
       }
-      else if(!IS_NPC(ch) && ch->pcdata->mounted)
-	     ch->pcdata->mounted = false;
      }
 
     if(IS_NPC(ch) && ch->ridden)
