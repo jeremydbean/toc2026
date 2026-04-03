@@ -1827,8 +1827,16 @@ void do_whois (CHAR_DATA *ch, char *argument)
 	if( IS_IMMORTAL( ch ) ) {
 	snprintf(buf, sizeof(buf),"----------------------------------------------------\n\r");
 	send_to_char(buf,ch);
-	snprintf(buf, sizeof(buf),"In Room [%d]  Played [%d hours]  Idle [%d ticks]\n\r",
-	    wch->in_room->vnum, ( wch->played + (int) ( current_time - wch->logon) ) / 3600, wch->timer );
+	if (wch->in_room != NULL)
+	{
+	    snprintf(buf, sizeof(buf),"In Room [%d]  Played [%d hours]  Idle [%d ticks]\n\r",
+	        wch->in_room->vnum, ( wch->played + (int) ( current_time - wch->logon) ) / 3600, wch->timer );
+	}
+	else
+	{
+	    snprintf(buf, sizeof(buf),"In Room [none]  Played [%d hours]  Idle [%d ticks]\n\r",
+	        ( wch->played + (int) ( current_time - wch->logon) ) / 3600, wch->timer );
+	}
 	send_to_char(buf,ch);
 	send_to_char("Pkill ",ch);
 	if( wch->pcdata->pk_state == 1 )

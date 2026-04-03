@@ -36,6 +36,9 @@ void do_gain(CHAR_DATA *ch, char *argument)
     if (IS_NPC(ch))
 	return;
 
+    if (ch->in_room == NULL)
+	return;
+
     /* find a trainer */
     for ( trainer = ch->in_room->people; 
 	  trainer != NULL; 

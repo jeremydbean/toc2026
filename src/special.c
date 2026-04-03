@@ -2668,6 +2668,7 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
    FOR_EACH_CHARACTER( iter, wch )
    {
       if( !IS_NPC(wch) && wch->level == seeker &&
+          wch->in_room != NULL &&
           !IS_SET(wch->in_room->room_flags, ROOM_INDOORS) )
       {
 	found = true;
