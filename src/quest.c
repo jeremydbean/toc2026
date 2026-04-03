@@ -316,6 +316,12 @@ void do_quest(CHAR_DATA *ch, char *argument)
    procedure must be defined in special.c. You could instead use an
    ACT_QUESTMASTER flag instead of a special procedure. */
 
+    if ( ch->in_room == NULL )
+    {
+        send_to_char("You can't do that here.\n\r",ch);
+        return;
+    }
+
     for ( questman = ch->in_room->people; questman != NULL; questman = questman->next_in_room )
     {
 	if (!IS_NPC(questman)) continue;
