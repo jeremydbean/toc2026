@@ -3209,7 +3209,10 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	 {
 	   dam = dice(dam_size, 5);
 	   if(ch->hit >= dam - 1)
-	     damage( ch, ch, dam, skill_lookup("magic missile"), DAM_MENTAL );
+	   {
+	     if (damage( ch, ch, dam, skill_lookup("magic missile"), DAM_MENTAL ))
+	       return;  /* ch was killed by dart */
+	   }
 	 }
 	 if(number_percent () > 50)
 	 {
@@ -3249,9 +3252,15 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
 	 send_to_char("You are zapped by a bolt of lightning!\n\r",ch);
 	 dam = dice((1+ch->level/5),10);
 	 if(ch->hit > dam - 1)
-	   damage( ch, ch, dam, skill_lookup("lightning bolt"), DAM_LIGHTNING );
+	 {
+	   if (damage( ch, ch, dam, skill_lookup("lightning bolt"), DAM_LIGHTNING ))
+	     return;  /* ch was killed */
+	 }
 	 else
-	   damage( ch, ch, ch->hit - 1, skill_lookup("lightning bolt"), DAM_LIGHTNING );
+	 {
+	   if (damage( ch, ch, ch->hit - 1, skill_lookup("lightning bolt"), DAM_LIGHTNING ))
+	     return;  /* ch was killed */
+	 }
 	 if(ch->hit <=1 )
 	   ch->hit = 1;
 	 ch->position = POS_STUNNED;

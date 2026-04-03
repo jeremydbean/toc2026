@@ -470,7 +470,13 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
         drain = number_range( ch->level, ch->level * 2 );
         act( "You probe $N's empty mind and find nothing to drain — the shock damages $M!", ch, NULL, victim, TO_CHAR );
         act( "$n probes your mind and finds it empty — the backlash hurts!", ch, NULL, victim, TO_VICT );
-        damage( ch, victim, drain, gsn_mindleech, DAM_MENTAL );
+        if (damage( ch, victim, drain, gsn_mindleech, DAM_MENTAL ))
+        {
+            /* victim was killed — skip the fight-start block */
+            check_improve(ch, gsn_mindleech, true, 4);
+            WAIT_STATE(ch, skill_table[gsn_mindleech].beats);
+            return;
+        }
     }
 
     check_improve(ch, gsn_mindleech, true, 4);
@@ -592,19 +598,21 @@ void do_enervate( CHAR_DATA *ch, char *argument )
     act( "$n tears your life force away, leaving you weakened and spent!", ch, NULL, victim, TO_VICT );
     act( "$n's eyes dim as $e drains $N's very life and endurance.", ch, NULL, victim, TO_NOTVICT );
 
-    damage( ch, victim, hp_drain, gsn_enervate, DAM_MENTAL );
-
-    /* Heal the caster for half the HP damage (after victim may be dead). */
-    if ( victim != NULL && victim->position > POS_DEAD )
+    if (damage( ch, victim, hp_drain, gsn_enervate, DAM_MENTAL ))
     {
-        ch->hit = (sh_int)(UMIN( ch->max_hit, ch->hit + hp_drain / 2 ));
+        /* victim was killed — skip healing and fight-start */
+        check_improve(ch, gsn_enervate, true, 4);
+        WAIT_STATE(ch, skill_table[gsn_enervate].beats);
+        return;
     }
+
+    /* Heal the caster for half the HP damage. */
+    ch->hit = (sh_int)(UMIN( ch->max_hit, ch->hit + hp_drain / 2 ));
 
     check_improve(ch, gsn_enervate, true, 4);
     WAIT_STATE(ch, skill_table[gsn_enervate].beats);
 
-    if ( ch->fighting == NULL && victim != NULL && victim->position > POS_DEAD
-         && victim->fighting == NULL )
+    if ( ch->fighting == NULL && victim->fighting == NULL )
     {
         ch->fighting = victim;
         victim->fighting = ch;
@@ -2282,7 +2290,8 @@ void spell_tentacles( int sn, int level, CHAR_DATA *ch, void *vo )
 	  for( count = 0; count < tentacle; count++)
 	  {
 	    dam  = dice(15, 10);
-	    damage( ch, vch, dam, sn, DAM_SLASH);
+	    if (damage( ch, vch, dam, sn, DAM_SLASH))
+		break;  /* vch was killed */
 	    if( vch->in_room != ch->in_room)
 		break;
 	  }
@@ -2861,9 +2870,13 @@ void do_concoct( CHAR_DATA *ch, char *argument )
        send_to_char("Uh oh. Something isn't right.\n\r",ch);
        act("The cauldron explodes it's noxious contents all over $n!",ch,
 	NULL,NULL,TO_ROOM);
-       damage( ch, ch, dice(2,10), gsn_concoct, DAM_FIRE );
-       extract_obj( pObj_one );
-       extract_obj( pObj_two );
+       if (!damage( ch, ch, dice(2,10), gsn_concoct, DAM_FIRE ))
+       {
+           /* ch survived; extract the spent ingredients */
+           extract_obj( pObj_one );
+           extract_obj( pObj_two );
+       }
+       /* if ch was killed, make_corpse already moved objects to corpse */
        return;
      }
 
@@ -3422,8 +3435,8 @@ void spell_geyser( int sn, int level, CHAR_DATA *ch, void *vo )
 
     extract_obj(obj);
 
-    damage( ch, victim, dice(10, 10) + level, sn, DAM_DROWNING );
-    victim->position = POS_RESTING;
+    if (!damage( ch, victim, dice(10, 10) + level, sn, DAM_DROWNING ))
+        victim->position = POS_RESTING;  /* victim survived; knock them down */
     return;
 }
 

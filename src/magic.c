@@ -3023,7 +3023,8 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                         victim->armor[i] += apply_ac( obj_lose, iWear, i );
                                 }
                                 dam = GET_DAMROLL(ch) + dice(2, ch->level/2);
-                                damage( ch, victim, dam, sn, DAM_FIRE );
+                                if (damage( ch, victim, dam, sn, DAM_FIRE ))
+                                    return;  /* victim killed */
                             }
                             else
                             {
@@ -3046,7 +3047,8 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                 dam = GET_DAMROLL(ch) + dice(1, ch->level/2);
                                 if ( saves_spell( level, victim ) )
                                     dam /= 2;
-                                damage( ch, victim, dam, sn, DAM_FIRE );
+                                if (damage( ch, victim, dam, sn, DAM_FIRE ))
+                                    return;  /* victim killed */
                                 ++hit_it;
                             }
                         }
@@ -3057,7 +3059,8 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                             if( IS_OBJ_STAT( obj_lose, ITEM_NOREMOVE) )
                             {
                                 dam = GET_DAMROLL(ch) + dice(2, ch->level/2);
-                                damage( ch, victim, dam, sn, DAM_FIRE );
+                                if (damage( ch, victim, dam, sn, DAM_FIRE ))
+                                    return;  /* victim killed */
                             }
                             else
                             {
@@ -3072,7 +3075,8 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                 dam = GET_DAMROLL(ch) + dice(1, ch->level/2);
                                 if ( saves_spell( level, victim ) )
                                     dam /= 2;
-                                damage( ch, victim, dam, sn, DAM_FIRE );
+                                if (damage( ch, victim, dam, sn, DAM_FIRE ))
+                                    return;  /* victim killed */
                                 ++hit_it;
                             }
                         }

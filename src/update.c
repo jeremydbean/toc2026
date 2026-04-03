@@ -1189,7 +1189,8 @@ void char_update( void )
 	  if(!found)
 	  {
 	  send_to_char("Glub, glub, gurgle, glug......Your Drowning!!!\n\r",ch);
-	  damage(ch,ch,dice( 10, 10) + 150,skill_lookup("waterfal"),DAM_DROWNING);
+	  if (damage(ch,ch,dice( 10, 10) + 150,skill_lookup("waterfal"),DAM_DROWNING))
+	      continue;  /* ch was killed by drowning */
 	  }
 
 	}
