@@ -446,8 +446,8 @@ void boot_db( void )
             toc_strlcpy( strArea, fread_word( fpList ), sizeof(strArea) );
             if ( strArea[0] == '$' )
                 break;
- 
-            load_area_file(strArea);
+
+            load_area_file( get_seasonal_area(strArea) );
         }
         fclose( fpList );
  

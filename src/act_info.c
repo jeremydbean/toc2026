@@ -1632,6 +1632,15 @@ void do_time( CHAR_DATA *ch, char *argument )
        }
        send_to_char( buf,ch );
     }
+
+    {
+        const char *season = get_season_name();
+        if ( season != NULL )
+        {
+            snprintf(buf, sizeof(buf), "The world is celebrating %s!\n\r", season);
+            send_to_char( buf, ch );
+        }
+    }
     return;
 }
 

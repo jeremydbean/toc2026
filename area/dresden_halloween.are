@@ -40,7 +40,7 @@ A ghost of Maliki floats thru the walls.
 He looks at you and shouts BOO! then cackles insanely.
 ~
 gnome~
-JBKMRV DF 1000 M
+JBKMRV DF 0 M
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIK ABCD 0 0
@@ -383,7 +383,7 @@ A singing, happy demon wanders around, singing about blood and gore.
 A demon who seems to be very happy, with all this mayhem and death around.
 ~
 human~
-G 0 400 S
+G 0 -800 S
 2 1 2d6+22 1d1+99 1d6+0 13
 8 8 8 10
 U 0 0 C
@@ -444,7 +444,7 @@ A zombie is walking around, messing things up.
 ~
 ~
 human~
-GH 0 900 M
+GH 0 -600 M
 1 0 2d6+10 1d1+99 1d5+0 7
 10 10 10 10
 NU 0 0 C
@@ -594,7 +594,7 @@ she may turn you into a toad.
 Type 'heal' to see a listing of spells.
 ~
 human~
-BDMQV DFH 1000 S
+BDMQV DFH -500 S
 40 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 FHIK ABCD 0 0

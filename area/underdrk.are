@@ -396,7 +396,7 @@ bracer~
 a dark metal bracers~
 A pair of metal bracers are lying here on the ground.~
 steel~
-9 G AI
+9 G AM
 0 0 0 0 0
 -1 1 100 P
 A
@@ -2286,7 +2286,7 @@ M 0 25100 4 25168    *loads a fourth displacer beast
 M 0 25101 2 25142    *loads drow guard
 E 1 25105 10 16
 E 1 25106 10 12
-E 2 25109 10 15
+E 2 25109 14 15
 M 0 25102 1 25142    *loads cleric
 E 1 25110 3 15
 E 1 25111 3 12
@@ -2294,19 +2294,19 @@ E 1 25112 3 16
 M 0 25103 2 25158    *loads drow guard
 E 1 25105 10 16
 E 1 25106 10 12
-E 1 25109 10 15
+E 1 25109 14 15
 M 0 25103 2 25158    *loads drow guard
 E 1 25105 10 16
 E 1 25106 10 12
-E 1 25109 10 15
+E 1 25109 14 15
 M 0 25104 2 25164    *loads drow guard
 E 1 25105 10 16
 E 1 25106 10 12
-E 1 25109 10 15
+E 1 25109 14 15
 M 0 25104 2 25164    *loads drow guard
 E 1 25105 10 16
 E 1 25106 10 12
-E 1 25109 10 15
+E 1 25109 14 15
 M 0 25105 3 25122    *loads cave fisher
 M 0 25105 3 25140    *loads cave fisher
 M 0 25105 3 25175    *loads cave fisher

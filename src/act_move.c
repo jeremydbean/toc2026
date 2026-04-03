@@ -697,6 +697,16 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	}
     }
 
+    if ( !IS_NPC(ch) && !IS_IMMORTAL(ch)
+    &&   ch->level > 10
+    &&   to_room->vnum >= 3200
+    &&   to_room->vnum <= 3795 )
+    {
+	send_to_char( "The entrance shimmers and repels you -- Mud School is for newbies only.\n\r", ch );
+	runner = 2;
+	return;
+    }
+
     if ( in_room->sector_type == SECT_AIR
     ||   to_room->sector_type == SECT_AIR )
     {

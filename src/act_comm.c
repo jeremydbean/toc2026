@@ -871,7 +871,6 @@ void do_tell( CHAR_DATA *ch, char *argument )
     if (IS_SET(victim->act,PLR_AFK))
     {
         act("$E is AFK and may not respond right away.",ch,NULL,victim,TO_CHAR);
-        return;
     }
 
     /* Code Safety: snprintf and buffer safety */
@@ -894,9 +893,21 @@ void do_reply( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     char buf[MAX_STRING_LENGTH];
 
-    if ( IS_SET(ch->comm, COMM_NOTELL) )
+    if ( IS_SET(ch->comm, COMM_NOTELL) || IS_SET(ch->comm, COMM_DEAF) )
     {
 	send_to_char( "Your message didn't get through.\n\r", ch );
+	return;
+    }
+
+    if ( IS_SET(ch->comm, COMM_QUIET) )
+    {
+	send_to_char( "You must turn off quiet mode first.\n\r", ch);
+	return;
+    }
+
+    if ( argument[0] == '\0' )
+    {
+	send_to_char( "Reply what?\n\r", ch );
 	return;
     }
 
@@ -922,7 +933,6 @@ void do_reply( CHAR_DATA *ch, char *argument )
     if (IS_SET(victim->act,PLR_AFK))
     {
         act("$E is AFK and may not respond right away.",ch,NULL,victim,TO_CHAR);
-        return;
     }
 
     /* Code Safety: snprintf */

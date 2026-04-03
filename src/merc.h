@@ -1131,7 +1131,7 @@ struct  kill_data
 #define ROOM_VNUM_ALTAR            4208
 #define ROOM_VNUM_SCHOOL           3700
 #define ROOM_VNUM_JAIL             3
-#define ROOM_VNUM_BANK             4
+#define ROOM_VNUM_BANK          9621
 
 /* Room flags. */
 #define ROOM_DARK               (A)
@@ -2370,6 +2370,10 @@ void    do_backup       ( void );
 
 /* wizlist.c */
 void    update_wizlist  ( CHAR_DATA *ch, int level );
+
+/* season.c */
+const char *get_season_name  ( void );
+const char *get_seasonal_area( const char *area_file );
 
 #undef  CD
 #undef  MID

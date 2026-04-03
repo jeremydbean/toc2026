@@ -499,6 +499,32 @@ void do_get( CHAR_DATA *ch, char *argument )
 
 	if ( str_cmp( arg1, "all" ) && str_prefix( "all.", arg1 ) )
 	{
+	    int wanted_coin_type = -1;
+
+	    if ( !str_cmp(arg1, "gold") )
+		wanted_coin_type = TYPE_GOLD;
+	    else if ( !str_cmp(arg1, "silver") )
+		wanted_coin_type = TYPE_SILVER;
+	    else if ( !str_cmp(arg1, "copper") )
+		wanted_coin_type = TYPE_COPPER;
+	    else if ( !str_cmp(arg1, "platinum") )
+		wanted_coin_type = TYPE_PLATINUM;
+
+	    if ( wanted_coin_type >= 0 )
+	    {
+		for ( obj = container->contains; obj != NULL; obj = obj->next_content )
+		{
+		    if ( obj->item_type == ITEM_MONEY && obj->value[1] == wanted_coin_type )
+			break;
+		}
+
+		if ( obj != NULL )
+		{
+		    get_obj( ch, obj, container );
+		    return;
+		}
+	    }
+
 	    /* 'get obj container' */
 	    obj = get_obj_list( ch, arg1, container->contains );
 	    if(obj == NULL )

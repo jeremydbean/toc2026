@@ -897,7 +897,7 @@ looks as though he may sink his teeth into anyone, without considering
 the quality of the blood.
 ~
 human~
-BCGT CFH 100 S
+BCGT CFH -600 S
 25 5 5d10+350 1d1+99 2d10+7 27
 -7 -9 -8 -3
 CFIKS BLQ N HJ
@@ -931,7 +931,7 @@ of skin that fall from his face.  One eyeball is half out of it's socket
 and swivels independant of the other one to stare at you.
 ~
 human~
-BGT CFH 500 S
+BGT CFH -750 S
 42 25 6d6+1350 6d6+450 5d6+20 7
 -12 -13 -13 -10
 EFKOTU ABH CLQ GI
@@ -948,7 +948,7 @@ Maggots crawl on his flesh and the stench is awful.  He reaches out
 with a hand oozing with open sores and tries to grab at you.
 ~
 human~
-BGT CH 400 S
+BGT CH -600 S
 40 25 10d10+1080 4d4+250 4d6+25 7
 -10 -15 -10 -5
 CEFKNT ABRS D C
@@ -963,7 +963,7 @@ A vampire stands here.
 A big strong vampire of Dresden.
 ~
 human~
-BGT 0 750 M
+BGT 0 -800 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
 0 0 0 0
@@ -982,7 +982,7 @@ A vampire stands here.
 A big strong Vampire of Dresden.
 ~
 human~
-BGT 0 750 M
+BGT 0 -800 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
 0 0 0 0
@@ -1020,7 +1020,7 @@ A witch flies here on her broom.
 A younger hag smiles and offers you some poisoned apple.
 ~
 human~
-G 0 500 M
+G 0 -400 M
 10 20 6d6+62 1d1+99 1d5+5 17
 5 5 5 5
 0 0 0 0
@@ -1148,7 +1148,7 @@ carries his trusty long sword at his side wherever he goes.  The Duke holds a
 lot of power in Dresden... attacking him would only get you killed.
 ~
 human~
-TV CDFHNP 750 S
+TV CDFHNP -850 S
 35 25 5d5+1000 1d1+199 8d6+20 20
 -15 -15 -15 -10
 CDEFHIJKNOT ABN RS P
@@ -1163,7 +1163,7 @@ A skeleton stands here rattling his bones.
 A skeleton stalks the night.
 ~
 human~
-GT 0 500 M
+GT 0 -400 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
 0 0 0 0
@@ -1182,7 +1182,7 @@ A  wraith fades in and out of sight here.
 An uneartly wraith of tremendous power..
 ~
 human~
-GT 0 500 M
+GT 0 -700 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
 0 0 0 0
@@ -1201,7 +1201,7 @@ A skeleton stands here rattling in his chains.
 A skeleton rattles his chains and shouts BOO!
 ~
 human~
-BFGT 0 500 M
+BFGT 0 -400 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
 0 0 0 0
@@ -1220,7 +1220,7 @@ A skeleton stalks the night.
 A skeleton crumbling into decay stumbles towards you.
 ~
 human~
-BFGT 0 500 M
+BFGT 0 -400 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
 0 0 0 0

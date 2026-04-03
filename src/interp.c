@@ -295,8 +295,8 @@ const	struct	cmd_type	cmd_table	[] =
     /*
 	* Miscellaneous commands.
 	*/
-    { "follow",		do_follow,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
-    { "aquest",		do_quest,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "follow", 		do_follow,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "aquest", 		do_quest,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
     { "join",		do_join,	POS_STANDING,	 0,  LOG_ALWAYS, 1 },
     { "gain",		do_gain,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
     { "gainlist",       do_gainlist,    POS_SLEEPING,    5,  LOG_NORMAL, 1 },
