@@ -3016,7 +3016,8 @@ void disaster_update( void )
                         move_char( vch, door, true);
                         REMOVE_BIT(vch->act, PLR_WIZINVIS);
                         act("$n arrives on a wave of water screaming, 'HHggEEggLLggPP!'.",vch,NULL,NULL,TO_ROOM);
-                        damage(vch,vch,dice(4,4),skill_lookup("waterfall"),DAM_LIGHTNING);
+                        if (damage(vch,vch,dice(4,4),skill_lookup("waterfall"),DAM_LIGHTNING))
+                            break;  /* vch was killed; stop moving them */
                      }
              }
            break;
@@ -3126,15 +3127,20 @@ void disaster_update( void )
 		send_to_char("      *                   *     \n",vch);
 		send_to_char("        *               *       \n",vch);
 		send_to_char("           *  *   *  *          \n\r",vch);
-		for ( ; ; )
 		{
-		  pRoomTport = get_room_index( number_range( 0, 65535 ) );
-		  if ( pRoomTport != NULL )
-		    if(    !IS_SET(pRoomTport->room_flags, ROOM_PRIVATE)
-		      &&   !IS_SET(pRoomTport->room_flags, ROOM_NO_RECALL)
-		      &&   !IS_SET(pRoomTport->room_flags, ROOM_JAIL)
-		      &&   !IS_SET(pRoomTport->room_flags, ROOM_SOLITARY) )
+		  int attempts;
+		  for (attempts = 0; attempts < 200; attempts++)
+		  {
+		    pRoomTport = get_room_index( number_range( 0, 65535 ) );
+		    if ( pRoomTport != NULL
+		      &&  !IS_SET(pRoomTport->room_flags, ROOM_PRIVATE)
+		      &&  !IS_SET(pRoomTport->room_flags, ROOM_NO_RECALL)
+		      &&  !IS_SET(pRoomTport->room_flags, ROOM_JAIL)
+		      &&  !IS_SET(pRoomTport->room_flags, ROOM_SOLITARY) )
 		       break;
+		  }
+		  if (pRoomTport == NULL)
+		      break;  /* no valid room found; skip tornado transport */
 		}
 		act("$n is sucked into the tornado!",vch,NULL,NULL,TO_ROOM);
 		char_from_room(vch);

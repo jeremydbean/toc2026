@@ -3464,15 +3464,18 @@ void spell_spiritual_hammer( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
+    {
+    int saved_obj_level = obj->level;  /* save before extract frees obj */
     extract_obj(obj);
 
     if(ch->alignment > 250)
-       damage( ch, (CHAR_DATA *) vo, dice(level/3, 6) + obj->level/2, sn, DAM_HOLY );
+       damage( ch, (CHAR_DATA *) vo, dice(level/3, 6) + saved_obj_level/2, sn, DAM_HOLY );
     else if(ch->alignment < -250 )
-       damage( ch, (CHAR_DATA *) vo, dice(level/3, 6) + obj->level/2, sn, DAM_UNHOLY );
+       damage( ch, (CHAR_DATA *) vo, dice(level/3, 6) + saved_obj_level/2, sn, DAM_UNHOLY );
     else
-       damage( ch, (CHAR_DATA *) vo, dice(level/3, 6) + obj->level/2, sn, DAM_BASH );
+       damage( ch, (CHAR_DATA *) vo, dice(level/3, 6) + saved_obj_level/2, sn, DAM_BASH );
     return;
+    }
 
 }
 
@@ -4019,11 +4022,15 @@ void spell_meteor_swarm( int sn, int level, CHAR_DATA *ch, void *vo )
     if (count3 > 12)
        count3 = 12;
 
-      for ( gch = vch; gch != NULL; gch = gch->next_in_room )
       {
+      CHAR_DATA *gch_next;
+      for ( gch = vch; gch != NULL; gch = gch_next )
+      {
+        gch_next = gch->next_in_room;  /* save before possible extraction */
                             /*fix?*/
         if ( gch != ch && !is_safe_spell(ch,gch,true) && gch->in_room == ch->in_room)
         {
+           bool gch_killed = false;
            /* For some randomness, lets subtract 1 meteor 15% of the time */
            if (number_percent() > 85)
              count3--;
@@ -4032,11 +4039,13 @@ void spell_meteor_swarm( int sn, int level, CHAR_DATA *ch, void *vo )
            while( count2 < 4 && count3 > 0 && gch->in_room == ch->in_room)
            {
              if(saves_spell(level,gch) )
-               damage(ch,gch,dice(level,5),sn,DAM_FIRE);
+               gch_killed = damage(ch,gch,dice(level,5),sn,DAM_FIRE);
              else
-               damage(ch,gch,dice(level,7),sn,DAM_FIRE);
+               gch_killed = damage(ch,gch,dice(level,7),sn,DAM_FIRE);
              count2++;
              count3--;
+             if (gch_killed)
+               break;  /* gch was killed; stop attacking it */
            }
 
            if (count3 < 1)
@@ -4045,8 +4054,7 @@ void spell_meteor_swarm( int sn, int level, CHAR_DATA *ch, void *vo )
            count2 = 0;
 
         }
-      if(gch != NULL)
-        vch = gch->next_in_room;
+      }
       }
    return;
 }
