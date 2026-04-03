@@ -1202,7 +1202,8 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
     dam = dice(level,6);
     if (saves_spell(level,victim))
 	dam /= 3;
-    damage(ch,victim,dam,sn,DAM_LIGHTNING);
+    if (damage(ch,victim,dam,sn,DAM_LIGHTNING))
+	return;  /* first target killed; stop chain */
     last_vict = victim;
     level -= 4;   /* decrement damage */
 
@@ -1224,7 +1225,13 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
 	    dam = dice(level,6);
 	    if (saves_spell(level,tmp_vict))
 		dam /= 3;
-	    damage(ch,tmp_vict,dam,sn,DAM_LIGHTNING);
+	    if (damage(ch,tmp_vict,dam,sn,DAM_LIGHTNING))
+	    {
+		/* tmp_vict killed; do not use freed pointer as sentinel */
+		last_vict = NULL;
+		level = 0;
+		break;
+	    }
 	    level -= 4;  /* decrement damage */
 	  }
 	}   /* end target searching loop */
@@ -1245,7 +1252,8 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
 	  dam = dice(level,6);
 	  if (saves_spell(level,ch))
 	    dam /= 3;
-	  damage(ch,ch,dam,sn,DAM_LIGHTNING);
+	  if (damage(ch,ch,dam,sn,DAM_LIGHTNING))
+	    return;  /* caster killed by reflected bolt */
 	  level -= 4;  /* decrement damage */
 
 	}
