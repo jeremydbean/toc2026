@@ -6070,8 +6070,8 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 		item_level[i][c]	= fread_number( fp );
 	    }
 	}
+        fclose( fp );
     }
-    fclose( fp );
     fpReserve = fopen( NULL_FILE, "r" );
 
     if( arg2[0] == '\0' )

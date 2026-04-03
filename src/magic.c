@@ -1231,9 +1231,6 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
 
 	if (!found) /* no target found, hit the caster */
 	{
-	  if (ch == NULL)
-	    return;
-
 	  if (last_vict == ch) /* no double hits */
 	  {
 	    act("The bolt seems to have fizzled out.",ch,NULL,NULL,TO_ROOM);
@@ -1250,8 +1247,7 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
 	    dam /= 3;
 	  damage(ch,ch,dam,sn,DAM_LIGHTNING);
 	  level -= 4;  /* decrement damage */
-	  if (ch == NULL)
-	    return;
+
 	}
     /* now go back and find more targets */
     }

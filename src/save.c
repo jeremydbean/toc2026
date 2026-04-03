@@ -110,16 +110,18 @@ void save_char_obj( CHAR_DATA *ch )
 	{
 	    bug("Save_char_obj: fopen",0);
 	    perror(strsave);
- 	}
-
-        fprintf(fp,"Lev %2d Trust %2d  %s%s\n",
-            ch->level, get_trust(ch), ch->name, ch->pcdata->title);
-	fclose( fp );
+	}
+	else
+	{
+	    fprintf(fp,"Lev %2d Trust %2d  %s%s\n",
+	        ch->level, get_trust(ch), ch->name, ch->pcdata->title);
+	    fclose( fp );
 #ifdef CHGRP_TO
         snprintf(buf, sizeof(buf), "chgrp %s %s", CHGRP_TO, strsave);
         if (system(buf) == -1)
             bug("save_char_obj: system backup failed.", 0);
 #endif
+	}
 	fpReserve = fopen( NULL_FILE, "r" );
         if (fpReserve == NULL)
         {
@@ -140,15 +142,17 @@ void save_char_obj( CHAR_DATA *ch )
             bug("Save_char_obj: fopen",0);
             perror(strsave);
         }
-
-        fprintf(fp,"Lev %2d Trust %2d  %s%s\n",
-            ch->level, get_trust(ch), ch->name, ch->pcdata->title);
-        fclose( fp );
+        else
+        {
+            fprintf(fp,"Lev %2d Trust %2d  %s%s\n",
+                ch->level, get_trust(ch), ch->name, ch->pcdata->title);
+            fclose( fp );
 #ifdef CHGRP_TO
-        snprintf(buf, sizeof(buf), "chgrp %s %s", CHGRP_TO, strsave);
-        if (system(buf) == -1)
-            bug("save_char_obj: player backup failed.", 0);
+            snprintf(buf, sizeof(buf), "chgrp %s %s", CHGRP_TO, strsave);
+            if (system(buf) == -1)
+                bug("save_char_obj: player backup failed.", 0);
 #endif
+        }
         fpReserve = fopen( NULL_FILE, "r" );
         if (fpReserve == NULL)
         {

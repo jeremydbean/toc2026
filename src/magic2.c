@@ -3575,7 +3575,7 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
 
     victim = create_mobile(  get_mob_index(  MOB_VNUM_ANIMATE ) );
     char_to_room( victim, ch->in_room );
-    victim->level = corpse->level/3;
+    victim->level = (sh_int)UMAX(1, corpse->level/3);
     victim->max_hit = (sh_int)(dice(5,8) + ch->max_hit / 4);
     victim->hit = victim->max_hit;
     victim->timer = 75;
@@ -3654,7 +3654,7 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
 
     victim = create_mobile(  get_mob_index(  MOB_VNUM_ANIMATE ) );
     char_to_room( victim, ch->in_room );
-    victim->level = corpse->level/2;
+    victim->level = (sh_int)UMAX(1, corpse->level/2);
     victim->max_hit = (sh_int)(dice(20,8) + ch->max_hit / 2);
     victim->hit = victim->max_hit;
     victim->timer = 150;
