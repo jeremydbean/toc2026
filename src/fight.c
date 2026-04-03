@@ -1867,7 +1867,10 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 	act( "\x02\x0BYour shield BUCKLES under $n's onslaught.\x02\x01", ch,
 	      NULL, victim, TO_VICT );
 	act( "\x02\x0BYou shatter $N's shield!\x02\x01", ch, NULL, victim, TO_CHAR );
-	extract_obj(obj);
+	send_to_char("Your shield cracks and falls into your pack — take it to a repair shop.\n\r", victim);
+	unequip_char(victim, obj);
+	SET_BIT(obj->extra_flags, ITEM_DAMAGED);
+	obj->condition = 0;
 	return false;
       }
       else if(obj->level > 5)
@@ -1885,7 +1888,10 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 	     act( "\x02\x0BYour shield buckles under $n's onslaught.\x02\x01", ch,
 		NULL, victim, TO_VICT );
 	     act( "\x02\x0BYou shatter $N's shield!\x02\x01", ch, NULL, victim, TO_CHAR );
-	     extract_obj(obj);
+	     send_to_char("Your shield falls into your pack — take it to a repair shop.\n\r", victim);
+	     unequip_char(victim, obj);
+	     SET_BIT(obj->extra_flags, ITEM_DAMAGED);
+	     obj->condition = 0;
 	     return false;
 	   }
 	 }
@@ -3743,12 +3749,13 @@ void do_smite( CHAR_DATA *ch, char *argument )
            obj = get_eq_char( ch, WEAR_WIELD );
            if ( obj != NULL )
            {
-               act("\n\r** Your weapon makes a loud CRACK and SLAMS into the ground!! \n\r**",ch,NULL,victim,TO_CHAR);
-               act("$n's makes a terrible cracking sound and SLAMS to the ground!!",ch,NULL,victim,TO_ROOM);
-               obj->condition = 1;
+               act("\n\r** Your weapon makes a loud CRACK and is badly damaged!\n\r**",ch,NULL,victim,TO_CHAR);
+               act("$n's weapon makes a terrible cracking sound and is badly damaged!",ch,NULL,victim,TO_ROOM);
+               obj->condition = 0;
                SET_BIT(obj->extra_flags, ITEM_DAMAGED);
-               obj_from_char(obj);
-               obj_to_room( obj, ch->in_room );
+               if ( obj->wear_loc != WEAR_NONE )
+                   unequip_char(ch, obj);
+               send_to_char("Your weapon falls into your pack — take it to a repair shop.\n\r", ch);
                snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s weapon has been smited!\n\r", ch->name);
                log_string( log_buf );
                wizinfo( log_buf, MAX_LEVEL);
@@ -5421,7 +5428,10 @@ void damage_eq(CHAR_DATA *victim, int dam)
                 snprintf(buf, sizeof(buf),"The blow shatters your %s!\n\r",
                     obj->short_descr);
                 send_to_char(buf,victim);
-                extract_obj(obj);
+                unequip_char(victim, obj);
+                SET_BIT(obj->extra_flags, ITEM_DAMAGED);
+                obj->condition = 0;
+                send_to_char("The item falls into your pack — take it to a repair shop.\n\r", victim);
                 if(number_percent() < 15)
                 {
                     depth++;

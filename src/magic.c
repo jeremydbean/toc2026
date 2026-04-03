@@ -3031,9 +3031,9 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                             }
                             else
                             {
-                                act( "\n$n throws a burning hot $p to the ground!",
+                                act( "\n$n's $p warps and buckles from the heat, becoming unusable!",
                                      victim, obj_lose, NULL, TO_ROOM );
-                                send_to_char("You quickly remove a burning piece of armor.\n\r",
+                                send_to_char("Your armor warps from the heat and falls into your pack — take it to a repair shop.\n\r",
                                              victim);
                                 if ( ( iWear = obj_lose->wear_loc ) != WEAR_NONE )
                                 {
@@ -3044,12 +3044,9 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                                     obj_lose->value[i] -= 1;
                                 obj_lose->cost       = obj_lose->cost/3;
                                 if ( iWear != WEAR_NONE )
-                                {
-                                    for (i = 0; i < 4; i++)
-                                        victim->armor[i] += apply_ac( obj_lose, iWear, i );
-                                }
-                                obj_from_char(obj_lose);
-                                obj_to_room(obj_lose, victim->in_room);
+                                    unequip_char(victim, obj_lose);
+                                SET_BIT(obj_lose->extra_flags, ITEM_DAMAGED);
+                                obj_lose->condition = 0;
                                 dam = GET_DAMROLL(ch) + dice(1, ch->level/2);
                                 if ( saves_spell( level, victim ) )
                                     dam /= 2;
@@ -3068,12 +3065,14 @@ void spell_heat_metal( int sn, int level, CHAR_DATA *ch, void *vo )
                             }
                             else
                             {
-                                act( "\n$n is burned by $p, and throws it to the ground.",
+                                act( "\n$n's $p glows red-hot and warps, becoming unusable!",
                                      victim, obj_lose, NULL, TO_ROOM );
-                                send_to_char("You drop your weapon because it's red hot!\n\r",
+                                send_to_char("Your weapon warps from the heat and falls into your pack — take it to a repair shop.\n\r",
                                              victim);
-                                obj_from_char(obj_lose);
-                                obj_to_room(obj_lose, victim->in_room);
+                                if ( obj_lose->wear_loc != WEAR_NONE )
+                                    unequip_char(victim, obj_lose);
+                                SET_BIT(obj_lose->extra_flags, ITEM_DAMAGED);
+                                obj_lose->condition = 0;
                                 dam = GET_DAMROLL(ch) + dice(1, ch->level/2);
                                 if ( saves_spell( level, victim ) )
                                     dam /= 2;
