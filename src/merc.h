@@ -1036,6 +1036,7 @@ struct  kill_data
 #define ITEM_EMBALMED           (Y)
 #define ITEM_FLAGS2             (Z)
 #define ITEM_DAMAGED            (aa)
+#define ITEM_HEATED             (bb)
 
 /* Second group of extra flags */
 #define ITEM2_HUMAN_ONLY        (A)

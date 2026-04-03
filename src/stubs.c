@@ -53,15 +53,15 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
      * Set 0  Assault:  ego_whip, torment, nightmare, mindblast
      * Set 1  Astral:   astral_walk, shift, project, telekinesis
      * Set 2  Defense:  mindbar, psionic_armor, psychic_shield, transfusion
-     * Set 3  Control:  clairvoyance, confuse, pyrotechnics
+     * Set 3  Control:  clairvoyance, confuse, mindleech, enervate, pyrotechnics
      */
-    static const sh_int *psi_sets[4][5] = {
-        { &gsn_ego_whip,     &gsn_torment,        &gsn_nightmare,     &gsn_mindblast,    NULL },
-        { &gsn_astral_walk,  &gsn_shift,          &gsn_project,       &gsn_telekinesis,  NULL },
-        { &gsn_mindbar,      &gsn_psionic_armor,  &gsn_psychic_shield,&gsn_transfusion,  NULL },
-        { &gsn_clairvoyance, &gsn_confuse,        &gsn_mindleech,     &gsn_enervate,     NULL }
+    static const sh_int *psi_sets[4][6] = {
+        { &gsn_ego_whip,     &gsn_torment,        &gsn_nightmare,     &gsn_mindblast,    NULL,             NULL },
+        { &gsn_astral_walk,  &gsn_shift,          &gsn_project,       &gsn_telekinesis,  NULL,             NULL },
+        { &gsn_mindbar,      &gsn_psionic_armor,  &gsn_psychic_shield,&gsn_transfusion,  NULL,             NULL },
+        { &gsn_clairvoyance, &gsn_confuse,        &gsn_mindleech,     &gsn_enervate,     &gsn_pyrotechnics,NULL }
     };
-    static const int psi_set_sizes[4] = { 4, 4, 4, 4 };
+    static const int psi_set_sizes[4] = { 4, 4, 4, 5 };
 
     int i, s;
     bool spec_only;

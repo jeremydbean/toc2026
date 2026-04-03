@@ -2820,6 +2820,7 @@ char *extra_bit_name( int extra_flags )
     if ( extra_flags & ITEM_NODROP       ) toc_strlcat( buf, " nodrop", sizeof(buf) );
     if ( extra_flags & ITEM_BLESS        ) toc_strlcat( buf, " bless", sizeof(buf) );
     if ( extra_flags & ITEM_DAMAGED        ) toc_strlcat( buf, " damaged", sizeof(buf) );
+    if ( extra_flags & ITEM_HEATED         ) toc_strlcat( buf, " heated", sizeof(buf) );
     if ( extra_flags & ITEM_ANTI_GOOD    ) toc_strlcat( buf, " anti-good", sizeof(buf) );
     if ( extra_flags & ITEM_ANTI_EVIL    ) toc_strlcat( buf, " anti-evil", sizeof(buf) );
     if ( extra_flags & ITEM_ANTI_NEUTRAL ) toc_strlcat( buf, " anti-neutral", sizeof(buf) );

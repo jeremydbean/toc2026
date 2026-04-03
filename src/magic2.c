@@ -1332,222 +1332,107 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
-    OBJ_DATA *light;
     int chance;
-    int dam = 0;
+    int dam;
+    int hpch;
 
-    one_argument(argument,arg);
+    one_argument(argument, arg);
 
-    if(!IS_NPC(ch))
+    if ( !IS_NPC(ch) )
     {
-	 if ( (chance = get_skill(ch,gsn_pyrotechnics)) == 0 )
-	 {
-	  send_to_char("Do what?\n\r",ch);
-	  return;
-	 }
+        if ( (chance = get_skill(ch, gsn_pyrotechnics)) == 0 )
+        {
+            send_to_char("Do what?\n\r", ch);
+            return;
+        }
 
-	 if( arg[0] == '\0' && ch->fighting == NULL)
-	 {
-	  send_to_char( "Who do you want to burn?\n\r", ch );
-	  return;
-	 }
-	 else if(arg[0] == '\0' && ch->fighting != NULL)
-	   victim = ch->fighting;
-	 else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
-	 {
-	  send_to_char( "They aren't here.\n\r", ch );
-	  return;
-	 }
+        if ( arg[0] == '\0' && ch->fighting == NULL )
+        {
+            send_to_char("Who do you want to burn?\n\r", ch);
+            return;
+        }
+        else if ( arg[0] == '\0' && ch->fighting != NULL )
+            victim = ch->fighting;
+        else if ( (victim = get_char_room(ch, arg)) == NULL )
+        {
+            send_to_char("They aren't here.\n\r", ch);
+            return;
+        }
 
-	 if(victim == ch)
-	   return;
+        if ( victim == ch )
+            return;
 
-	 if( ch->mana < 15)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
+        if ( ch->mana < 20 )
+        {
+            send_to_char("You don't have enough mana.\n\r", ch);
+            return;
+        }
 
-	 if ( !get_eq_char( ch, WEAR_LIGHT ) )
-	 {
-	  send_to_char( "You must be carrying a light source.\n\r", ch );
-	  return;
-	 }
+        if ( is_safe_spell(ch, victim, false) )
+        {
+            act("$N cannot be harmed by you.", ch, NULL, victim, TO_CHAR);
+            return;
+        }
 
-	 if(is_safe_spell(ch,victim,false))
-	 {
-	   act("$N cannot be harmed by you.",ch,NULL,victim,TO_CHAR);
-		return;
-	 }
+        if ( IS_AFFECTED2(victim, AFF2_GHOST) )
+        {
+            act("Your attack passes right thru $N!", ch, NULL, victim, TO_CHAR);
+            act("$n's attack passes right thru $N!", ch, NULL, victim, TO_ROOM);
+            return;
+        }
 
-    if ( IS_AFFECTED2(victim, AFF2_GHOST ) )
-    {
-        act("Your attack passes right thru $N!",ch,NULL,victim,TO_CHAR);
-        act("$n's attack passes right thru $N!",ch,NULL,victim,TO_ROOM);
-        return;
-    }
+        if ( IS_AFFECTED2(ch, AFF2_GHOST) )
+        {
+            send_to_char("You cannot attack while in this form.\n\r", ch);
+            return;
+        }
 
-    if ( IS_AFFECTED2(ch, AFF2_GHOST ) )
-    {
-        send_to_char("You cannot attack while in this form.\n\r",ch);
-        return;
-    }
+        if ( number_percent() > chance )
+        {
+            send_to_char("You lost your concentration.\n\r", ch);
+            check_improve(ch, gsn_pyrotechnics, false, 4);
+            ch->mana -= (dice(1, 5) + 3);
+            return;
+        }
 
-	 if ( number_percent( ) > chance )
-	 {
-	  send_to_char("You lost your concentration.\n\r",ch);
-	  check_improve(ch,gsn_pyrotechnics,false,4);
-	  ch->mana -= (dice(1,5) + 3);
-	  return;
-	 }
-
-	ch->mana -= 15;
+        ch->mana -= 20;
     }
     else
     {
-	if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
-	    (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		 return;
+        if ( IS_SET(ch->act, ACT_PET) || IS_SET(ch->affected_by, AFF_CHARM) ||
+             (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+            return;
 
-	 if ( !get_eq_char( ch, WEAR_LIGHT ) )
-	 {
-	  send_to_char( "You must be carrying a light source.\n\r", ch );
-	  return;
-	 }
+        if ( arg[0] == '\0' && ch->fighting == NULL )
+            return;
+        else if ( arg[0] == '\0' && ch->fighting != NULL )
+            victim = ch->fighting;
+        else if ( (victim = get_char_room(ch, arg)) == NULL )
+            return;
 
-	 if( arg[0] == '\0' && ch->fighting == NULL)
-	 {
-	  send_to_char( "Who do you want to burn?\n\r", ch );
-	  return;
-	 }
-	 else if(arg[0] == '\0' && ch->fighting != NULL)
-	   victim = ch->fighting;
-	 else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
-	 {
-	  send_to_char( "They aren't here.\n\r", ch );
-	  return;
-	 }
-
-	 if(victim == ch)
-	   return;
+        if ( victim == ch )
+            return;
     }
 
-    if ( victim->fighting != NULL && !is_same_group(ch,victim->fighting))
+    if ( victim->fighting != NULL && !is_same_group(ch, victim->fighting) )
     {
-	   send_to_char("Kill stealing is not permitted.\n\r",ch);
-	   return;
+        send_to_char("Kill stealing is not permitted.\n\r", ch);
+        return;
     }
 
+    act("You focus your mind and unleash a torrent of psionic fire at $N!", ch, NULL, victim, TO_CHAR);
+    act("$n's eyes blaze white as a column of psionic fire erupts around $N!", ch, NULL, victim, TO_ROOM);
+    act("$n's mind ignites the air around you in searing psionic flame!", ch, NULL, victim, TO_VICT);
 
-    light = get_eq_char(ch, WEAR_LIGHT);
+    hpch = UMAX(10, ch->hit);
+    dam  = number_range(hpch / 14 + 1, hpch / 7);
+    if ( saves_spell(ch->level, victim) )
+        dam /= 2;
 
-	if(light->level <= 2)
-	{
-	act( "You change $p into a ball of flame, and fling it at $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A ball of flame smashes into.", ch,
-		 NULL, victim, TO_VICT );
-	act( "A ball of flame smashes into $N.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(2, 10);
-	}
-	else if( light->level < 5)
-	{
-	act( "You change $p into a ball of flame, and fling it at $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A ball of flame smashes into.", ch,
-		 NULL, victim, TO_VICT );
-	act( "A ball of flame smashes into $N.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level, 10);
-	}
-	else if(light->level < 10)
-	{
-	act( "You alter $p into a flaming bat that attacks $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A flaming bat attacks you then vanishes.", ch,
-		 NULL, victim, TO_VICT );
-	act( "A flaming bat attacks $N then vanishes.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level, 10);
-	}
-	else if( light->level < 15)
-	{
-	act( "You change $p into a ball of flame, and fling it at $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A ball of flame blows up in your face.", ch,
-		 NULL, victim, TO_VICT );
-	act( "A ball of flame hits $N.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level, 10);
-	}
-	else if(light->level < 20)
-	{
-	act( "You alter $p into a flaming eagle that attacks $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A flaming eagle attacks you then vanishes.", ch,
-		 NULL, victim, TO_VICT );
-	act( "A flaming eagle attacks $N then vanishes.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level, 10);
-	}
-	else if(light->level < 25)
-	{
-	act( "You alter $p into a flaming lion that attacks $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A flaming lion claws you, then vanishes.", ch,
-		 NULL, victim, TO_VICT );
-	act( "A flaming lion claws $N then vanishes.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level/2, 15);
-	}
-	else if(light->level < 30)
-	{
-	act( "You alter $p into a fire elemental that attacks $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A fire elemental smashes into you and exlplodes!", ch,
-		 NULL, victim, TO_VICT );
-	act( "A fire elemental smashes into $N and explodes!", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level/2, 15);
-	}
-	else if(light->level < 35)
-	{
-	act( "You transform $p into a flaming pheonix that attacks $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A pheonix embraces you with wings of fire, then vanishes.", ch,
-		 NULL, victim, TO_VICT );
-	act( "A pheonix embraces $N in wings of fire, then vanishes.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level/2, 15);
-	}
-	else if(light->level < 40)
-	{
-	act( "You transform $p into a fire demon that attacks $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A flaming demon slams into you engulfing you in flames.", ch,
-		 NULL, victim, TO_VICT );
-	act( "$N is engulfed in the white hot flames of a fire demon.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level/2, 15);
-	}
-	else if(light->level > 45)
-	{
-	act( "You transform $p into a red dragon that swoops down on $N.", ch,
-		 light, victim, TO_CHAR );
-	act( "A red dragon breathes on you, then soars off into the sky.", ch,
-		 NULL, victim, TO_VICT );
-	act( "A red dragon makes a strafing run on $N, then flies away.", ch,
-		 NULL, victim, TO_ROOM );
-	dam = dice(light->level/2, 15);
-	}
-
-    if ( saves_spell( ch->level, victim ) )
-	dam /= 2;
-    damage( ch, victim, dam, gsn_pyrotechnics, DAM_FIRE );
-    extract_obj(light);
-    check_improve(ch,gsn_pyrotechnics,true,4);
-    WAIT_STATE(ch,skill_table[gsn_pyrotechnics].beats);
+    try_heat_gear(ch, victim);
+    damage(ch, victim, dam, gsn_pyrotechnics, DAM_FIRE);
+    check_improve(ch, gsn_pyrotechnics, true, 4);
+    WAIT_STATE(ch, skill_table[gsn_pyrotechnics].beats);
     return;
 
 }

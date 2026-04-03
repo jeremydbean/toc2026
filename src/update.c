@@ -1997,6 +1997,16 @@ void obj_update( void )
 	if ( obj->timer <= 0 || --obj->timer > 0 )
 	    continue;
 
+	/* Heated items cool down and become wearable again -- don't extract. */
+	if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
+	{
+	    REMOVE_BIT( obj->extra_flags, ITEM_HEATED );
+	    obj->timer = 0;
+	    if ( obj->carried_by != NULL )
+	        act( "$p has cooled down and can be worn again.", obj->carried_by, obj, NULL, TO_CHAR );
+	    continue;
+	}
+
 	switch ( obj->item_type )
 	{
 	default:              message = "$p crumbles into dust.";  break;

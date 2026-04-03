@@ -4576,6 +4576,54 @@ void spell_dispel_breath( int sn, int level, CHAR_DATA *ch, void *vo )
 }
 
 
+/*
+ * try_heat_gear: ~15% chance to superheat one worn armor/clothing item on
+ * victim, forced off into inventory, can't re-wear for 3-8 ticks.
+ */
+void try_heat_gear( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    OBJ_DATA *candidates[MAX_WEAR];
+    int count = 0;
+    int slot;
+    OBJ_DATA *obj;
+
+    if ( victim == NULL || victim->in_room == NULL )
+        return;
+
+    if ( number_percent() > 15 )
+        return;
+
+    /* Collect equipped armor/clothing that can be removed */
+    for ( slot = 0; slot < MAX_WEAR; slot++ )
+    {
+        obj = get_eq_char( victim, slot );
+        if ( obj == NULL )
+            continue;
+        if ( obj->item_type != ITEM_ARMOR && obj->item_type != ITEM_CLOTHING )
+            continue;
+        if ( IS_OBJ_STAT(obj, ITEM_NOREMOVE) )
+            continue;
+        if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
+            continue;
+        candidates[count++] = obj;
+    }
+
+    if ( count == 0 )
+        return;
+
+    obj = candidates[number_range(0, count - 1)];
+
+    act( "{RA searing heat engulfs $p -- it's scorching hot!{x}", victim, obj, NULL, TO_CHAR );
+    act( "{R$p bursts bright red as $n tears it off!{x}", victim, obj, NULL, TO_ROOM );
+    if ( ch != victim )
+        act( "{RYour fire superheats $N's $p!{x}", ch, obj, victim, TO_CHAR );
+
+    unequip_char( victim, obj );
+    SET_BIT( obj->extra_flags, ITEM_HEATED );
+    obj->timer = number_range( 3, 8 );
+}
+
+
 void spell_fire_breath( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
@@ -4633,6 +4681,7 @@ void spell_fire_breath( int sn, int level, CHAR_DATA *ch, void *vo )
     dam  = number_range( hpch/16+1, hpch/8 );
     if ( saves_spell( level, victim ) )
 	dam /= 2;
+    try_heat_gear( ch, victim );
     damage( ch, victim, dam, sn, DAM_FIRE );
     return;
 }

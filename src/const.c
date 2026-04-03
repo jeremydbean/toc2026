@@ -1035,7 +1035,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	   "nightmare",      "project",           "psionic armor",
 	   "psychic shield", "shift",
 	   "telekinesis",    "torment",           "transfusion",
-	   "mind leech",     "enervate"
+	   "mind leech",     "enervate",          "pyrotechnics"
 	   },
 	   {
           NULL

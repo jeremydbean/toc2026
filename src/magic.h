@@ -152,3 +152,6 @@ DECLARE_SPELL_FUN(	spell_lightning_breath	);
 DECLARE_SPELL_FUN(	spell_general_purpose	);
 DECLARE_SPELL_FUN(	spell_high_explosive	);
 DECLARE_SPELL_FUN(	spell_cause_madness	);
+
+/* Gear-heating helper, defined in magic.c, called from magic2.c as well */
+void try_heat_gear( CHAR_DATA *ch, CHAR_DATA *victim );

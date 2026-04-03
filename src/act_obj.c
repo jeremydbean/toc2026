@@ -1900,6 +1900,12 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 {
     char buf[MAX_STRING_LENGTH];
 
+    if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
+    {
+        act( "$p is still scorching hot -- you can't wear it yet!", ch, obj, NULL, TO_CHAR );
+        return;
+    }
+
     if ( ch->level < obj->level )
     {
         snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
