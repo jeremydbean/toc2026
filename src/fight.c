@@ -856,9 +856,9 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     if ( dam <= 0 )
 	dam = 1;
 
-    damage( ch, victim, dam, dt, dam_type );
-    if( IS_NPC(ch) && IS_SET(ch->act2,ACT2_LYCANTH)
-	&& victim->were_shape.name == NULL)
+    if (!damage( ch, victim, dam, dt, dam_type )
+    &&  IS_NPC(ch) && IS_SET(ch->act2,ACT2_LYCANTH)
+	&&  victim->were_shape.name == NULL)
     {
       int value;
 
@@ -3276,7 +3276,8 @@ void do_dirt( CHAR_DATA *ch, char *argument )
     {
 	AFFECT_DATA af;
 	act("$n is blinded by the dirt in $s eyes!",victim,NULL,NULL,TO_ROOM);
-	damage(ch,victim,number_range(2,5),gsn_dirt,DAM_NONE);
+	if (damage(ch,victim,number_range(2,5),gsn_dirt,DAM_NONE))
+	    return;  /* victim was killed */
 	send_to_char("You can't see a thing!\n\r",victim);
 	check_improve(ch,gsn_dirt,true,2);
 	WAIT_STATE(ch,skill_table[gsn_dirt].beats);

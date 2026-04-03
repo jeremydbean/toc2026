@@ -3527,7 +3527,8 @@ void spell_magic_missile( int sn, int level, CHAR_DATA *ch, void *vo )
       dam	= number_range( dam_each[level] / 2, dam_each[level] * 2 );
       if ( saves_spell( level, victim ) )
 	dam /= 2;
-      damage( ch, victim, dam, sn, DAM_ENERGY );
+      if (damage( ch, victim, dam, sn, DAM_ENERGY ))
+	  return;  /* victim was killed */
     }
     return;
 }

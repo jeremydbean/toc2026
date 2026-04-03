@@ -2260,10 +2260,11 @@ void spell_skeletal_hands( int sn, int level, CHAR_DATA *ch, void *vo )
      dam  = dice(4, ch->level/3);
      if ( saves_spell( level, victim ) )
 	 dam /= 2;
-     damage( ch, victim, dam, sn, DAM_NEGATIVE );
-    }
+     if (damage( ch, victim, dam, sn, DAM_NEGATIVE ))
+         return;  /* victim was killed */
+   }
 
-    return;
+   return;
 }
 
 void spell_tentacles( int sn, int level, CHAR_DATA *ch, void *vo )

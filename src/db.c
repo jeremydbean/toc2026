@@ -4214,6 +4214,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
     /* open file */
     fclose(fpReserve);
     fp = fopen("mem.dmp","w");
+    if (fp == NULL) { fpReserve = fopen(NULL_FILE, "r"); send_to_char("Could not open mem.dmp for writing.\n\r", ch); return; }
  
     /* report use of data structures */
     
@@ -4310,6 +4311,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
  
     /* start printing out mobile data */
     fp = fopen("mob.dmp","w");
+    if (fp == NULL) { send_to_char("Could not open mob.dmp for writing.\n\r", ch); fpReserve = fopen(NULL_FILE, "r"); return; }
  
     fprintf(fp,"\nMobile Analysis\n");
     fprintf(fp,  "---------------\n");
@@ -4359,6 +4361,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
  
     /* start printing out object data */
     fp = fopen("obj.dmp","w");
+    if (fp == NULL) { send_to_char("Could not open obj.dmp for writing.\n\r", ch); fpReserve = fopen(NULL_FILE, "r"); return; }
  
     fprintf(fp,"\nObject Analysis\n");
     fprintf(fp,  "---------------\n");
@@ -4398,7 +4401,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
                     firstone = 0;
                     snprintf(filename, sizeof(filename),"objdmp.%d", objnum);
                     fp = fopen(filename,"w");
- 
+                    if (fp == NULL) break;  /* skip this type if file can't be opened */
                     fprintf(fp,"\n%d Object Stats\n", objnum);
                     fprintf(fp,  "---------------\n");
                 }
@@ -4929,6 +4932,7 @@ void do_dump_exits( CHAR_DATA *ch , char *argument )
 
     fclose(fpReserve);
     fp = fopen("exits.dmp","w");
+    if (fp == NULL) { fpReserve = fopen(NULL_FILE, "r"); send_to_char("Could not open exits.dmp for writing.\n\r", ch); return; }
 
     for(i=0;i < 32768;i++) {
         if(!((in_room = get_room_index(i))))
