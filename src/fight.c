@@ -5062,11 +5062,14 @@ void do_blinding_fists( CHAR_DATA *ch, char *argument )
       else
       {    /* hit is used for dam type to give wider range */
 	act("$n blurs into motion, striking you.",ch,NULL,victim,TO_VICT);
-	damage( ch, victim, number_range(ch->level,ch->level*3),
-		gsn_blinding_fists, hit );
+	if ( damage( ch, victim, number_range(ch->level,ch->level*3),
+		gsn_blinding_fists, hit ) )
+	    break;  /* victim was killed; stop iterating */
 	check_improve(ch,gsn_blinding_fists,true,6);
 	WAIT_STATE( ch, skill_table[gsn_blinding_fists].beats);
       }
+      if ( ch->fighting != victim )
+          break;  /* victim fled or fight state changed */
     }
     return;
 
@@ -5160,18 +5163,22 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 
     for(hit = number_bits(2) + 2 + (ch->level >= 35) + (ch->level >= 45); hit > 0; hit--)
     {
+      if ( ch->fighting != victim )
+          break;  /* victim fled or fight state changed; stop iterating */
       if( number_percent( ) > chance )
       {
 	act("$N tries to flee from your onslaught.",ch,NULL,victim,TO_CHAR);
 	act("You try and escape from $N's onslaught.",ch,NULL,victim,TO_VICT);
 	do_flee(victim,"");
 	check_improve(ch,gsn_fists_of_fury,false,6);
+	break;  /* victim fled; stop attacking and don't use stale victim ptr */
       }
       else
       {    /* hit is used for dam type to give wider range */
 	act("Lightning quick, $n's fists slam into you!",ch,NULL,victim,TO_VICT);
-	damage( ch, victim, number_range(ch->level,ch->level*2),
-		gsn_fists_of_fury, hit );
+	if ( damage( ch, victim, number_range(ch->level,ch->level*2),
+		gsn_fists_of_fury, hit ) )
+	    break;  /* victim was killed; stop iterating */
 	check_improve(ch,gsn_fists_of_fury,true,6);
 	WAIT_STATE( ch, skill_table[gsn_fists_of_fury].beats);
       }

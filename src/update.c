@@ -1589,7 +1589,7 @@ void char_update( void )
 	 *   as it may be lethal damage (on NPC).
 	 */
 
-	if (is_affected(ch, gsn_plague) && ch != NULL)
+	if (ch != NULL && is_affected(ch, gsn_plague))
 	{
 	    AFFECT_DATA *af, plague;
 	    CHAR_DATA *vch;
@@ -1649,11 +1649,12 @@ void char_update( void )
 	    ch->move -= dam;
 	    damage( ch, ch, dam, gsn_plague,DAM_DISEASE);
 	}
-	else if ( IS_AFFECTED(ch, AFF_POISON) && ch != NULL)
+	else if ( ch != NULL && IS_AFFECTED(ch, AFF_POISON) )
 	{
 	    act( "$n shivers and suffers.", ch, NULL, NULL, TO_ROOM );
 	    send_to_char( "You shiver and suffer.\n\r", ch );
-	    damage( ch, ch, dice(2,4), gsn_poison, DAM_POISON );
+	    if ( damage( ch, ch, dice(2,4), gsn_poison, DAM_POISON ) )
+	        continue;  /* ch was killed/extracted; do not touch ch again */
 	    if(IS_SET(ch->imm_flags,IMM_POISON) )
 	    {
 	      REMOVE_BIT(ch->affected_by, AFF_POISON);

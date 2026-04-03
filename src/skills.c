@@ -110,7 +110,7 @@ void do_gain(CHAR_DATA *ch, char *argument)
 	        gn = skill_lookup(gmdata.can_teach[i]);
 		isgroup = false;
 
-                if (skill_table[gn].name == NULL)
+                if (gn < 0 || skill_table[gn].name == NULL)
                 {
                     snprintf( buf, sizeof(buf),
                            "[*****] BUG: Group/Skill lookup failed for %s.",
