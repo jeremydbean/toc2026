@@ -502,6 +502,12 @@ void do_jail( CHAR_DATA *ch, char *argument )
     jail = get_room_index( ROOM_VNUM_JAIL);
     temple = get_room_index( ROOM_VNUM_TEMPLE);
 
+    if ( jail == NULL || temple == NULL )
+    {
+        send_to_char( "Jail or temple room not found — check ROOM_VNUM_JAIL/TEMPLE.\n\r", ch );
+        return;
+    }
+
     if ( arg[0] == '\0' || arg2[0] == '\0' || !is_number( arg2 ) )
     {
         send_to_char( "Syntax: jail <player> <# of days>.\n\r", ch );
@@ -539,6 +545,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         REMOVE_BIT(victim->act, PLR_JAILED );
         REMOVE_BIT(victim->comm, COMM_NOCHANNELS );
         REMOVE_BIT(victim->comm, COMM_NOTITLE);
+        free_string(victim->pcdata->title);
         victim->pcdata->title = str_dup(" the Jailbird.");
         SET_BIT(victim->act, PLR_EXCON );
         send_to_char( "You have been released from Jail.\n\r",victim );
@@ -546,8 +553,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         send_to_char( buf,ch);
         char_from_room( victim );
         char_to_room( victim, temple );
-        victim->act = 65788;  /* reset victim auto-flags to safe defaults */
-        ch->pcdata->jw_timer = 0;
+        victim->pcdata->jw_timer = 0;
         return;
     }
 
@@ -560,6 +566,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         SET_BIT(victim->act, PLR_JAILED );
         SET_BIT(victim->comm, COMM_NOCHANNELS );
         SET_BIT(victim->comm, COMM_NOTITLE);
+        free_string(victim->pcdata->title);
         victim->pcdata->title = str_dup(" . (JAILED)");
         REMOVE_BIT(victim->act, PLR_WARNED );
         REMOVE_BIT(victim->act, PLR_EXCON );
