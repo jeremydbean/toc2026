@@ -1299,7 +1299,7 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 
 	plague.type             = gsn_plague;
 	plague.level            = af->level - 1;
-	plague.duration         = number_range(1,2 * plague.level);
+	plague.duration         = (sh_int)(number_range(1,2 * plague.level));
 	plague.location         = APPLY_STR;
 	plague.modifier         = -5;
 	plague.bitvector        = AFF_PLAGUE;
@@ -1544,7 +1544,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 
     for (i = 0; i < 4; i++)
 	ch->armor[i]            -= apply_ac( obj, iWear,i );
-    obj->wear_loc        = iWear;
+    obj->wear_loc        = (sh_int)(iWear);
 /* BB
     if (!obj->enchanted)
 */
@@ -1612,8 +1612,8 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 		    send_to_char("You feel really bad!\n\r",ch);
 
 		    af.type		= gsn_poison;
-		    af.level		= number_fuzzy(obj->value[2]);
-		    af.duration		= 3 * obj->value[2];
+		    af.level		= (sh_int)(number_fuzzy(obj->value[2]));
+		    af.duration		= (sh_int)(3 * obj->value[2]);
 		    af.location		= APPLY_NONE;
 		    af.modifier		= 0;
 		    af.bitvector	= AFF_POISON;

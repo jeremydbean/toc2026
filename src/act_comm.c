@@ -344,7 +344,7 @@ void do_color( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    ch->pcdata->col_table[category->num] = idx;
+    ch->pcdata->col_table[category->num] = (sh_int)(idx);
 
     snprintf( buf, sizeof(buf), "%s color set to %s%s%s.\n\r",
         capitalize( category->name ),

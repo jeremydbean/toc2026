@@ -656,7 +656,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	{
 	    if (chance(20))
 	    {
-		ch->countdown = number_range(5, 8);
+		ch->countdown = (sh_int)(number_range(5, 8));
 		ch->questrush = true;
 		send_to_char(
 		    "\n\r{0C** RUSH CONTRACT! Double reward - finish before time runs out! **{00\n\r\n\r",
@@ -669,7 +669,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    }
 	    else
 	    {
-		ch->countdown = number_range(10,30);
+		ch->countdown = (sh_int)(number_range(10,30));
 		ch->questrush = false;
 		snprintf(buf, sizeof(buf),
 		    "You have %d minutes to complete this quest.", ch->countdown);
@@ -739,7 +739,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		ch->queststreak++;
                 add_money(ch,reward);
 		/* double-or-nothing gamble offer */
-		ch->questgamble_pts = pointreward;
+		ch->questgamble_pts = (sh_int)(pointreward);
 		snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
 		do_say(questman,buf);
 		send_to_char(
@@ -811,7 +811,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                     add_money(ch,reward);
 		    extract_obj(obj);
 		    /* double-or-nothing gamble offer */
-		    ch->questgamble_pts = pointreward;
+		    ch->questgamble_pts = (sh_int)(pointreward);
 		    snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
 		    do_say(questman, buf);
 		    send_to_char(

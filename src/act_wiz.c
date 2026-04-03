@@ -6547,7 +6547,7 @@ void do_iportal( CHAR_DATA *ch, char *argument )
     }
 
     portal = create_object( pObjIndex, 0 );
-    portal->timer = timer;
+    portal->timer = (sh_int)(timer);
     portal->value[0] = 3; /* Portal type: portal spell */
     portal->value[1] = to_room->vnum;
     portal->value[2] = 10000; /* High charges */
@@ -6628,7 +6628,7 @@ void do_repop( CHAR_DATA *ch, char *argument )
 
     pArea = ch->in_room->area;
     reset_area( pArea );
-    pArea->age = number_range( 0, 3 );
+    pArea->age = (sh_int)(number_range( 0, 3 ));
 
     snprintf( buf, sizeof(buf), "Area '%s' has been repopulated.\n\r", pArea->name );
     send_to_char( buf, ch );

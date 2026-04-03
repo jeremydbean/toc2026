@@ -230,13 +230,13 @@ int find_first_step(CHAR_DATA *ch, ROOM_INDEX_DATA *src, ROOM_INDEX_DATA *target
 	    if (IS_AFFECTED(ch, AFF_FLYING) || IS_IMMORTAL(ch))
             {
 	        MARK( TOROOM( src, curr_dir ) );
-	        bfs_enqueue( TOROOM( src, curr_dir ), curr_dir, *distance );
+	        bfs_enqueue( TOROOM( src, curr_dir ), (char)(curr_dir), *distance );
             }
             else if ( (src->exit[curr_dir]->u1.to_room->sector_type != SECT_AIR)  &&
                  (src->exit[curr_dir]->u1.to_room->sector_type != SECT_WATER_NOSWIM) )
             {
 		MARK( TOROOM( src, curr_dir ) );
-	        bfs_enqueue( TOROOM( src, curr_dir ), curr_dir, *distance );
+	        bfs_enqueue( TOROOM( src, curr_dir ), (char)(curr_dir), *distance );
             }
 	}
 

@@ -90,7 +90,7 @@ void load_wizlist(void)
 
         if (pwiz->name != NULL) free_string(pwiz->name);
         pwiz->name = str_dup(fread_word(fp));
-        pwiz->level = fread_number(fp);
+        pwiz->level = (sh_int)(fread_number(fp));
 	fread_to_eol(fp);
 
         if (wiz_list == NULL)
@@ -364,7 +364,7 @@ void update_wizlist(CHAR_DATA *ch, int level)
 
     curr = new_wiz();
     curr->name = str_dup(ch->name);
-    curr->level = level;
+    curr->level = (sh_int)(level);
     curr->next = wiz_list;
     wiz_list = curr;
     save_wizlist();
@@ -416,7 +416,7 @@ void change_wizlist(CHAR_DATA *ch, bool add, int level, char *argument)
     {
         curr = new_wiz();
         curr->name = str_dup( capitalize( arg ) );
-        curr->level = level;
+        curr->level = (sh_int)(level);
         curr->next = wiz_list;
         wiz_list = curr;
 	save_wizlist();

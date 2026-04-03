@@ -724,7 +724,7 @@ int index1, index2;
 char index_char1,index_char2;
 CMD_LIST *cmd_list_elem;
 
-  len = strlen(arg1);
+  len = (int)(strlen(arg1));
   if (len <= 0) return -1;
 
   if (len == 1)
@@ -796,7 +796,7 @@ int index1, index2;
 char index_char1,index_char2;
 SOCIAL_LIST *social_list_elem;
 
-  len = strlen(arg1);
+  len = (int)(strlen(arg1));
   if (len <= 0) return -1;
 
   if (len == 1)
@@ -872,7 +872,7 @@ char buf[1000];
      for (j=0;j < CMDTABLE_SECOND_HASH; j++) cmd_sec_char -> command_ind[j] = NULL;
      cmd_sec_char -> def_command = NULL;
      if (i < CMDTABLE_FIRST_HASH - 1)
-        cmd_sec_char -> ind_char = (char) 'a' + i;
+        cmd_sec_char -> ind_char = (char)('a' + i);
      else
         cmd_sec_char -> ind_char = '?';
      cmd_table_index[i] = cmd_sec_char;
@@ -964,7 +964,7 @@ char buf[1000];
      for (j=0;j < SOCIALTABLE_SECOND_HASH; j++) social_sec_char -> command_ind[j] = NULL;
      social_sec_char -> def_command = NULL;
      if (i < SOCIALTABLE_FIRST_HASH - 1)
-        social_sec_char -> ind_char = (char) 'a' + i;
+        social_sec_char -> ind_char = (char)('a' + i);
      else
         social_sec_char -> ind_char = '?';
      social_table_index[i] = social_sec_char;

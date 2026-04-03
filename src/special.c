@@ -800,7 +800,7 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		act("$n says '$N isn't worth the trouble to kill!'",
 						mob, NULL, victim, TO_NOTVICT);
  
-		victim->hit *= 0.10;
+		victim->hit = (sh_int)(victim->hit * 0.10);
 		if (victim->hit < 1)
 		victim->hit = 1;
 	}
@@ -1465,7 +1465,7 @@ struct {
     }
 
     add_money(ch,-1 * cost);
-    ch->pcdata->guild = guild;
+    ch->pcdata->guild = (sh_int)(guild);
     act("$n tells you 'You are now a member of the $t guild.'",
 	mob, get_guildname(guild), ch, TO_VICT);
  
@@ -1748,7 +1748,7 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle])
 	{
 	    send_to_char("You haggle with the shopkeeper.\n\r",ch);
-	    cost *= 1.1;
+	    cost = (int)(cost * 1.1);
 	    check_improve(ch,gsn_haggle,true,4);
 	}
 	snprintf(buf, sizeof(buf), "You sell $p for %d gold piece%s.",
@@ -1972,7 +1972,7 @@ bool spec_xp_converter( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
    if(ch->level < LEVEL_HERO) return false;
 
    ch->level -= 1;
-   xp = next_xp_level(ch) + 5000; 
+   xp = (int)(next_xp_level(ch) + 5000); 
    ch->level += 1;
 
    if( ch->exp - xp > 0 )
@@ -2284,7 +2284,7 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
 	if(hp_check > hp_hold)
 	{
-	  hp_hold = hp_check;
+	  hp_hold = (int)(hp_check);
 	  most_hurt = vch;
 	}
      }
@@ -2695,9 +2695,9 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
    send_to_char("You are deposited in a remote site for later consumption.\n\r",wch);
    snprintf(buf, sizeof(buf),"%s has been snatched by the dragon",wch->name);
    wizinfo(buf,62);
-   af.type = skill_lookup("curse");
+   af.type = (sh_int)(skill_lookup("curse"));
    af.level = wch->level;
-   af.duration = dice(1,3);
+   af.duration = (sh_int)(dice(1,3));
    af.location = 0;
    af.modifier = 0;
    af.bitvector = AFF_CURSE;

@@ -319,12 +319,12 @@ void advance_level( CHAR_DATA *ch, bool is_advance )
     if (guild == GUILD_NONE)
 	guild = ch->class;
 
-      add_hp	= con_app[get_curr_stat(ch,STAT_CON)].hitp +
+      add_hp	= (sh_int)(con_app[get_curr_stat(ch,STAT_CON)].hitp +
 		 UMAX(class_table[ch->class].hp_min,
 		    ( number_range( class_table[ch->class].hp_min,
 				    class_table[ch->class].hp_max ) * 0.5 +
 		      number_range( class_table[guild].hp_min,
-				    class_table[guild].hp_max ) * 0.5) );
+				    class_table[guild].hp_max ) * 0.5) ));
 /*
     add_mana 	= number_range(2,(2*get_curr_stat(ch,STAT_INT)
 EC				  + get_curr_stat(ch,STAT_WIS))/5);
@@ -541,7 +541,7 @@ int hit_gain( CHAR_DATA *ch )
 	    case POS_RESTING:  					break;
 	    case POS_FIGHTING:	gain /= 3;		 	break;
 */
-	    default:            gain *= .75;              break;
+	    default:            gain = (int)(gain * 0.75);              break;
 	    case POS_SLEEPING:  gain = 4 * gain / 2;            break;
 	    case POS_RESTING:   gain = gain/3;                  break;
 	    case POS_FIGHTING:  gain /= 2;                      break;
@@ -573,7 +573,7 @@ int hit_gain( CHAR_DATA *ch )
 */
 	    default:            gain /= 3;                      break;
 	    case POS_SLEEPING:                                  break;
-	    case POS_RESTING:   gain *= .75;                    break;
+	    case POS_RESTING:   gain = (int)(gain * 0.75);                    break;
 	    case POS_FIGHTING:  gain /= 5;                      break;
 	}
 
@@ -612,7 +612,7 @@ int mana_gain( CHAR_DATA *ch )
 	gain = 5 + ch->level;
 	switch (ch->position)
 	{
-	    default:            gain *= .75;              break;
+	    default:            gain = (int)(gain * 0.75);              break;
 	    case POS_SLEEPING:  gain = 3 * gain / 2;            break;
 	    case POS_RESTING:   gain = gain/3;                  break;
 	    case POS_FIGHTING:  gain /= 2;                      break;
@@ -646,7 +646,7 @@ int mana_gain( CHAR_DATA *ch )
 	{
 	    default:            gain /= 3;                      break;
 	    case POS_SLEEPING:                                  break;
-	    case POS_RESTING:   gain *= .75;                    break;
+	    case POS_RESTING:   gain = (int)(gain * 0.75);                    break;
 	    case POS_FIGHTING:  gain /= 5;                      break;
 
 	}
@@ -737,7 +737,7 @@ void gain_condition( CHAR_DATA *ch, int iCond, int value )
     if (condition == -1)
 	return;
 
-    ch->pcdata->condition[iCond]	= URANGE( 0, condition + value, 48 );
+    ch->pcdata->condition[iCond]	= (sh_int)(URANGE( 0, condition + value, 48 ));
 
     if ( ch->pcdata->condition[iCond] == 0 )
     {
@@ -1618,7 +1618,7 @@ void char_update( void )
 
 	    plague.type 		= gsn_plague;
 	    plague.level 		= af->level - 1;
-	    plague.duration 	= number_range(1,2 * plague.level);
+	    plague.duration 	= (sh_int)(number_range(1,2 * plague.level));
 	    plague.location		= APPLY_STR;
 	    plague.modifier 	= -5;
 	    plague.bitvector 	= AFF_PLAGUE;
@@ -2300,18 +2300,18 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
 
       mob = create_mobile(get_mob_index(ch->were_shape.mob_vnum) );
       char_to_room(mob,ch->in_room);
-      mob->perm_stat[0] = UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.str) + ch->were_shape.factor);
-      mob->perm_stat[3] = UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.dex) + ch->were_shape.factor);
-      mob->perm_stat[4] = UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.con) + ch->were_shape.factor);
-      mob->perm_stat[1] = UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.intel) + ch->were_shape.factor);
-      mob->perm_stat[2] = UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.wis) + ch->were_shape.factor);
-      mob->hitroll      = dice(10,  ch->were_shape.factor);
-      mob->damroll      = dice(10,  ch->were_shape.factor);
-      mob->level        = UMIN(ch->level,dice(10,  ch->level/5) );
+      mob->perm_stat[0] = (sh_int)(UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.str) + ch->were_shape.factor));
+      mob->perm_stat[3] = (sh_int)(UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.dex) + ch->were_shape.factor));
+      mob->perm_stat[4] = (sh_int)(UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.con) + ch->were_shape.factor));
+      mob->perm_stat[1] = (sh_int)(UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.intel) + ch->were_shape.factor));
+      mob->perm_stat[2] = (sh_int)(UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.wis) + ch->were_shape.factor));
+      mob->hitroll      = (sh_int)(dice(10,  ch->were_shape.factor));
+      mob->damroll      = (sh_int)(dice(10,  ch->were_shape.factor));
+      mob->level        = (sh_int)(UMIN(ch->level,dice(10,  ch->level/5) ));
       if(mob->level > 55)
 	mob->level = 55;
-      mob->hit          = dice(ch->level, ch->were_shape.hp);
-      mob->max_hit      = dice(ch->level, ch->were_shape.hp);
+      mob->hit          = (sh_int)(dice(ch->level, ch->were_shape.hp));
+      mob->max_hit      = (sh_int)(dice(ch->level, ch->were_shape.hp));
       for(ac = 0; ac < 4; ac++)
 	 mob->armor[ac] = ch->armor[ac] * 3/4;
 
@@ -3160,11 +3160,11 @@ void disaster_update( void )
 
 		    send_to_char(" and blinded!\n\r",vch);
 
-		    af.type      = skill_lookup("blindness");
+		    af.type      = (sh_int)(skill_lookup("blindness"));
 		    af.level     = vch->level;
 		    af.location  = APPLY_HITROLL;
 		    af.modifier  = -4;
-		    af.duration  = dice(3,3);
+		    af.duration  = (sh_int)(dice(3,3));
 		    af.bitvector = AFF_BLIND;
 		    af.bitvector2= 0;
 		    affect_to_char( vch, &af );

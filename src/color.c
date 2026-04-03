@@ -146,7 +146,7 @@ void color_update_defaults( CHAR_DATA *ch, bool overwrite )
           || ch->pcdata->col_table[slot] < 0
           || ch->pcdata->col_table[slot] >= COLOR_OPTION_COUNT )
         {
-            ch->pcdata->col_table[slot] = col_table[idx].def;
+            ch->pcdata->col_table[slot] = (sh_int)(col_table[idx].def);
         }
     }
 }

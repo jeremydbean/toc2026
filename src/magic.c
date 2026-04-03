@@ -138,7 +138,7 @@ void say_spell( CHAR_DATA *ch, int sn )
     buf[0]	= '\0';
     for ( pName = skill_table[sn].name; *pName != '\0'; pName += length )
     {
-            for ( iSyl = 0; (length = strlen(syl_table[iSyl].old)) != 0; iSyl++ )
+            for ( iSyl = 0; (length = (int)(strlen(syl_table[iSyl].old))) != 0; iSyl++ )
              {
                  if ( !str_prefix( syl_table[iSyl].old, pName ) )
                   {
@@ -689,23 +689,23 @@ void spell_aid(int sn, int level, CHAR_DATA *ch, void *vo)
 
     hitpts = 20 + dice(1,level/2);
 
-    af.type 	 = sn;
-    af.level	 = level;
+    af.type 	 = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
-    af.duration	 = 7 + level/4;
+    af.duration	 = (sh_int)(7 + level/4);
     af.bitvector = 0;
     af.bitvector2 = 0;
-    af.modifier  = level/10;
+    af.modifier  = (sh_int)(level/10);
     af.location  = APPLY_HITROLL;
     affect_to_char(victim,&af);
 
     /* reduce chance of killing newbies & low level PCs */
     if(hitpts >= victim->max_hit)
-	 af.modifier = 5 + dice(1,10);
+	 af.modifier = (sh_int)(5 + dice(1,10));
 //     else
-    af.modifier = hitpts;
+    af.modifier = (sh_int)(hitpts);
     af.location  = APPLY_HIT;
     affect_to_char(victim,&af);
 
@@ -734,8 +734,8 @@ void spell_armor( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
-    af.type      = sn;
-    af.level	 = level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
@@ -766,17 +766,17 @@ void spell_bless( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N already has divine favor.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level	 = level;
-    af.duration  = 6+level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
+    af.duration  = (sh_int)(6+level);
     af.location  = APPLY_HITROLL;
-    af.modifier  = level / 8;
+    af.modifier  = (sh_int)(level / 8);
     af.bitvector = 0;
     af.bitvector2= 0;
     affect_to_char( victim, &af );
 
     af.location  = APPLY_SAVING_SPELL;
-    af.modifier  = 0 - level / 8;
+    af.modifier  = (sh_int)(0 - level / 8);
     affect_to_char( victim, &af );
     send_to_char( "You feel righteous.\n\r", victim );
     if ( ch != victim )
@@ -803,11 +803,11 @@ void spell_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
     if ( IS_AFFECTED(victim, AFF_BLIND) || saves_spell( level, victim ) )
 	return;
 
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     af.location  = APPLY_HITROLL;
     af.modifier  = -4;
-    af.duration  = 1+level;
+    af.duration  = (sh_int)(1+level);
     af.bitvector = AFF_BLIND;
     af.bitvector2= 0;
     affect_to_char( victim, &af );
@@ -941,9 +941,9 @@ void spell_calm( int sn, int level, CHAR_DATA *ch, void *vo )
 	    if (IS_NPC(vch))
 		remove_all_hates(vch);
 
-	    af.type = sn;
-  	    af.level = level;
-	    af.duration = level/4;
+	    af.type = (sh_int)(sn);
+  	    af.level = (sh_int)(level);
+	    af.duration = (sh_int)(level/4);
 	    af.location = APPLY_HITROLL;
 	    if (!IS_NPC(vch))
 	      af.modifier = -5;
@@ -1274,13 +1274,13 @@ void spell_change_sex( int sn, int level, CHAR_DATA *ch, void *vo )
     }
     if (saves_spell(level , victim))
 	return;
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = 2 * level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(2 * level);
     af.location  = APPLY_SEX;
     do
     {
-	af.modifier  = number_range( 0, 2 ) - victim->sex;
+	af.modifier  = (sh_int)(number_range( 0, 2 ) - victim->sex);
     }
     while ( af.modifier == 0 );
     af.bitvector = 0;
@@ -1344,9 +1344,9 @@ void spell_charm_person( int sn, int level, CHAR_DATA *ch, void *vo )
   	stop_follower( victim );
     add_follower( victim, ch );
     victim->leader = ch;
-    af.type      = sn;
-    af.level	 = level;
-    af.duration  = number_fuzzy( 5 + level / 20 );
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
+    af.duration  = (sh_int)(number_fuzzy( 5 + level / 20 ));
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = AFF_CHARM;
@@ -1390,8 +1390,8 @@ void spell_chill_touch( int sn, int level, CHAR_DATA *ch, void *vo )
     if ( !saves_spell( level, victim ) )
     {
 	act("$n turns blue and shivers.",victim,NULL,NULL,TO_ROOM);
-	af.type      = sn;
-	af.level     = level;
+	af.type      = (sh_int)(sn);
+	af.level     = (sh_int)(level);
 	af.duration  = 6;
 	af.location  = APPLY_STR;
 	af.modifier  = -1;
@@ -1502,7 +1502,7 @@ void spell_create_spring( int sn, int level, CHAR_DATA *ch, void *vo )
     OBJ_DATA *spring;
 
     spring = create_object( get_obj_index( OBJ_VNUM_SPRING ), -1 );
-    spring->timer = level;
+    spring->timer = (sh_int)(level);
     obj_to_room( spring, ch->in_room );
     act( "$p flows from the ground.", ch, spring, NULL, TO_ROOM );
     act( "$p flows from the ground.", ch, spring, NULL, TO_CHAR );
@@ -1592,7 +1592,7 @@ void spell_cure_critical( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=3;
     }
 
-    victim->hit = UMIN( victim->hit + heal, victim->max_hit );
+    victim->hit = (sh_int)(UMIN( victim->hit + heal, victim->max_hit ));
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -1636,7 +1636,7 @@ void spell_cure_light( int sn, int level, CHAR_DATA *ch, void *vo )
     int heal;
 
     heal = dice(1, 8) + level / 3;
-    victim->hit = UMIN( victim->hit + heal, victim->max_hit );
+    victim->hit = (sh_int)(UMIN( victim->hit + heal, victim->max_hit ));
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -1683,7 +1683,7 @@ void spell_cure_serious( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=5;
     }
 
-    victim->hit = UMIN( victim->hit + heal, victim->max_hit );
+    victim->hit = (sh_int)(UMIN( victim->hit + heal, victim->max_hit ));
     update_pos( victim );
     send_to_char( "You feel better!\n\r", victim );
     if ( ch != victim )
@@ -1706,17 +1706,17 @@ void spell_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if ( IS_AFFECTED(victim, AFF_CURSE) || saves_spell( level, victim ) )
 	return;
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = 2*level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(2*level);
     af.location  = APPLY_HITROLL;
-    af.modifier  = -1 * (level / 8);
+    af.modifier  = (sh_int)(-1 * (level / 8));
     af.bitvector = AFF_CURSE;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
 
     af.location  = APPLY_SAVING_SPELL;
-    af.modifier  = level / 8;
+    af.modifier  = (sh_int)(level / 8);
     affect_to_char( victim, &af );
 
     send_to_char( "You feel unclean.\n\r", victim );
@@ -1767,9 +1767,9 @@ void spell_detect_evil( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N can already detect evil.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level	 = level;
-    af.duration  = level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
+    af.duration  = (sh_int)(level);
     af.modifier  = 0;
     af.location  = APPLY_NONE;
     af.bitvector = AFF_DETECT_EVIL;
@@ -1795,9 +1795,9 @@ void spell_detect_good( int sn, int level, CHAR_DATA *ch, void *vo )
 		  NULL,victim,TO_CHAR);
 	return;
     }
-    af.type       = sn;
-    af.level	  = level;
-    af.duration   = level;
+    af.type       = (sh_int)(sn);
+    af.level	  = (sh_int)(level);
+    af.duration   = (sh_int)(level);
     af.modifier   = 0;
     af.location   = APPLY_NONE;
     af.bitvector  = 0;
@@ -1823,9 +1823,9 @@ void spell_detect_hidden( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N can already sense hidden lifeforms.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(level);
     af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = AFF_DETECT_HIDDEN;
@@ -1852,9 +1852,9 @@ void spell_detect_invis( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N can already see invisible things.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(level);
     af.modifier  = 0;
     af.location  = APPLY_NONE;
     af.bitvector = AFF_DETECT_INVIS;
@@ -1881,9 +1881,9 @@ void spell_detect_magic( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N can already detect magic.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level	 = level;
-    af.duration  = level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
+    af.duration  = (sh_int)(level);
     af.modifier  = 0;
     af.location  = APPLY_NONE;
     af.bitvector = AFF_DETECT_MAGIC;
@@ -2276,10 +2276,10 @@ void spell_enchant_item( int sn, int level, CHAR_DATA *ch, void *vo )
     if (!found)
     { paf = new_affect();
       paf->type       = -1;
-      paf->level      = level;
+      paf->level      = (sh_int)(level);
       paf->duration   = -1;
-      paf->location   = obj_apply;
-      paf->modifier   = obj_modifier;
+      paf->location   = (sh_int)(obj_apply);
+      paf->modifier   = (sh_int)(obj_modifier);
       paf->bitvector  = 0;
       paf->bitvector2 = 0;
       paf->next       = obj->affected;
@@ -2430,10 +2430,10 @@ void spell_enchant_armor( int sn, int level, CHAR_DATA *ch, void *vo )
     if (!ac_found)
     { paf = new_affect();
       paf->type       = -1;
-      paf->level      = level;
+      paf->level      = (sh_int)(level);
       paf->duration   = -1;
       paf->location   = APPLY_AC;
-      paf->modifier   = added;
+      paf->modifier   = (sh_int)(added);
       paf->bitvector  = 0;
       paf->bitvector2 = 0;
       paf->next       = obj->affected;
@@ -2565,10 +2565,10 @@ void spell_enchant_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
     if (!dam_found)
     { paf = new_affect();
       paf->type	      = -1;
-      paf->level      = level;
+      paf->level      = (sh_int)(level);
       paf->duration   = -1;
       paf->location   = APPLY_DAMROLL;
-      paf->modifier   =  added;
+      paf->modifier   =  (sh_int)(added);
       paf->bitvector  = 0;
       paf->bitvector2 = 0;
       paf->next	      = obj->affected;
@@ -2585,10 +2585,10 @@ void spell_enchant_weapon( int sn, int level, CHAR_DATA *ch, void *vo )
     if (!hit_found)
     { paf = new_affect();
       paf->type       = -1;
-      paf->level      = level;
+      paf->level      = (sh_int)(level);
       paf->duration   = -1;
       paf->location   = APPLY_HITROLL;
-      paf->modifier   =  added;
+      paf->modifier   =  (sh_int)(added);
       paf->bitvector  = 0;
       paf->bitvector2 = 0;
       paf->next       = obj->affected;
@@ -2630,8 +2630,8 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
 //     else
     {
 	gain_exp( victim, 0 - 2 * number_range( level/3, level / 2 ) );
-	victim->mana	= victim->mana - victim->mana * .15;
-	victim->move	= victim->move - victim->move * .15;
+	victim->mana	= (sh_int)(victim->mana - victim->mana * .15);
+	victim->move	= (sh_int)(victim->move - victim->move * .15);
 	dam		 = dice(3, ch->level/3);
 	ch->hit		+= dam/2;
     }
@@ -2694,11 +2694,11 @@ void spell_faerie_fire( int sn, int level, CHAR_DATA *ch, void *vo )
     if(is_safe_spell(ch,victim,false) )
 	return;
 
-    af.type      = sn;
-    af.level	 = level;
-    af.duration  = 3 + level/8;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
+    af.duration  = (sh_int)(3 + level/8);
     af.location  = APPLY_AC;
-    af.modifier  = 10 + level;
+    af.modifier  = (sh_int)(10 + level);
     af.bitvector = AFF_FAERIE_FIRE;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
@@ -2756,9 +2756,9 @@ void spell_fly( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N doesn't need your help to fly.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level	 = level;
-    af.duration  = level + 3;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
+    af.duration  = (sh_int)(level + 3);
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = AFF_FLYING;
@@ -2805,13 +2805,13 @@ if(!IS_IMMORTAL(ch) )
     }
   }
 
-    af.type 	 = sn;
-    af.level	 = level;
+    af.type 	 = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
-    af.duration	 = level / 3;
-    af.modifier  = level / 6;
+    af.duration	 = (sh_int)(level / 3);
+    af.modifier  = (sh_int)(level / 6);
     af.bitvector = 0;
     af.bitvector2 = 0;
 
@@ -2821,7 +2821,7 @@ if(!IS_IMMORTAL(ch) )
     af.location  = APPLY_DAMROLL;
     affect_to_char(victim,&af);
 
-    af.modifier  = 10 * (level / 6);
+    af.modifier  = (sh_int)(10 * (level / 6));
     af.location  = APPLY_AC;
     affect_to_char(victim,&af);
 
@@ -2909,9 +2909,9 @@ void spell_giant_strength( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N can't get any stronger.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level	 = level;
-    af.duration  = level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
+    af.duration  = (sh_int)(level);
     af.location  = APPLY_STR;
     af.modifier  = 1 + (level >= 18) + (level >= 25) + (level >= 32);
     af.bitvector = 0;
@@ -2967,12 +2967,12 @@ void spell_haste( int sn, int level, CHAR_DATA *ch, void *vo )
            return;
     }
 
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
-	  af.duration  = level/3;
+	  af.duration  = (sh_int)(level/3);
     af.location  = APPLY_DEX;
     af.modifier  = 1 + (level >= 18) + (level >= 25) + (level >= 32);
     af.bitvector = AFF_HASTE;
@@ -3112,7 +3112,7 @@ void spell_heal( int sn, int level, CHAR_DATA *ch, void *vo )
     heal /=3;
     }
 
-    victim->hit = UMIN( victim->hit + heal, victim->max_hit );
+    victim->hit = (sh_int)(UMIN( victim->hit + heal, victim->max_hit ));
     update_pos( victim );
     send_to_char( "A warm feeling fills your body.\n\r", victim );
     if ( ch != victim )
@@ -3334,9 +3334,9 @@ void spell_infravision( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
     act( "$n's eyes glow red.", victim, NULL, NULL, TO_ROOM );
-    af.type      = sn;
-    af.level	 = level;
-    af.duration  = 2 * level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
+    af.duration  = (sh_int)(2 * level);
     af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = AFF_INFRARED;
@@ -3358,8 +3358,8 @@ void spell_invis( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
 
     act( "$n fades out of existence.", victim, NULL, NULL, TO_ROOM );
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     af.duration  = 24;
     af.location  = APPLY_NONE;
     af.modifier  = 0;
@@ -3574,7 +3574,7 @@ void spell_mana_convert( int sn, int level, CHAR_DATA *ch, void *vo )
 // 	   else
 		  ch->hit -= dice(8, 5);
 
-	   ch->mana = UMIN( ch->mana + vitalize, ch->max_mana);
+	   ch->mana = (sh_int)(UMIN( ch->mana + vitalize, ch->max_mana));
 	   send_to_char("Power flows into you.\n\r", ch);
 	   return;
 	 }
@@ -3608,7 +3608,7 @@ void spell_mana_convert( int sn, int level, CHAR_DATA *ch, void *vo )
 
 	  vitalize = number_range( vitalize / 2, (vitalize + ch->level/4)*2 );
 
-	   ch->mana = UMIN( ch->mana + vitalize, ch->max_mana);
+	   ch->mana = (sh_int)(UMIN( ch->mana + vitalize, ch->max_mana));
 	   ch->move = 0;
 	   send_to_char("Power flows into you.\n\r", ch);
 	   return;
@@ -3650,8 +3650,8 @@ void spell_mass_invis( int sn, int level, CHAR_DATA *ch, void *vo )
 	    continue;
 	act( "$n slowly fades out of existence.", gch, NULL, NULL, TO_ROOM );
 	send_to_char( "You slowly fade out of existence.\n\r", gch );
-	af.type      = sn;
-	af.level     = level/2;
+	af.type      = (sh_int)(sn);
+	af.level     = (sh_int)(level/2);
 	af.duration  = 24;
 	af.location  = APPLY_NONE;
 	af.modifier  = 0;
@@ -3675,9 +3675,9 @@ void spell_mass_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
     {
 	if ( !is_same_group( gch, ch ) || IS_AFFECTED(gch, AFF_SANCTUARY) )
 	    continue;
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = number_fuzzy( level / 4 );
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(number_fuzzy( level / 4 ));
     af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = AFF_SANCTUARY;
@@ -3717,12 +3717,12 @@ void spell_pass_door( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N is already shifted out of phase.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
-    af.duration  = number_fuzzy( level / 2 );
+    af.duration  = (sh_int)(number_fuzzy( level / 2 ));
     af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = AFF_PASS_DOOR;
@@ -3759,9 +3759,9 @@ void spell_plague( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-    af.type 	  = sn;
-    af.level	  = level * 3/4;
-    af.duration  = level;
+    af.type 	  = (sh_int)(sn);
+    af.level	  = (sh_int)(level * 3/4);
+    af.duration  = (sh_int)(level);
     af.location  = APPLY_STR;
     af.modifier  = -5;
     af.bitvector = AFF_PLAGUE;
@@ -3791,9 +3791,9 @@ void spell_poison( int sn, int level, CHAR_DATA *ch, void *vo )
 	send_to_char("You feel momentarily ill, but it passes.\n\r",victim);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(level);
     af.location  = APPLY_STR;
     af.modifier  = -2;
     af.bitvector = AFF_POISON;
@@ -3820,17 +3820,17 @@ void spell_power_gloves( int sn, int level, CHAR_DATA *ch, void *vo)
     }
 
 
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
     af.duration  = 12;
     af.location  = APPLY_DAMROLL;
     if(IS_IMMORTAL(ch) )
-    af.modifier  = level/2;
+    af.modifier  = (sh_int)(level/2);
 //     else
-    af.modifier  = dice(1,6) * level/10;
+    af.modifier  = (sh_int)(dice(1,6) * level/10);
     af.bitvector = 0;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
@@ -3856,8 +3856,8 @@ void spell_protection( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N is already protected.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
@@ -3887,8 +3887,8 @@ void spell_divine_protection( int sn, int level, CHAR_DATA *ch, void *vo )
           act("$N is already protected.",ch,NULL,victim,TO_CHAR);
         return;
     }
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
@@ -3909,7 +3909,7 @@ void spell_refresh( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
     CHAR_DATA *victim = (CHAR_DATA *) vo;
-    victim->move = UMIN( victim->move + level, victim->max_move );
+    victim->move = (sh_int)(UMIN( victim->move + level, victim->max_move ));
     if (victim->max_move == victim->move)
 	send_to_char("You feel fully refreshed!\n\r",victim);
 //     else
@@ -3984,7 +3984,7 @@ void spell_restore_mana( int sn, int level, CHAR_DATA *ch, void *vo )
 
   vitalize = dice(5,10);
 
-  victim->mana = UMIN( victim->mana + vitalize, victim->max_mana);
+  victim->mana = (sh_int)(UMIN( victim->mana + vitalize, victim->max_mana));
   send_to_char("A pulse of energy surges through your body.\n\r",victim);
   return;
 }
@@ -4002,12 +4002,12 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N is already in sanctuary.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
 //     else
-    af.duration  = number_fuzzy( level / 4 );
+    af.duration  = (sh_int)(number_fuzzy( level / 4 ));
     af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = AFF_SANCTUARY;
@@ -4040,9 +4040,9 @@ void spell_shield( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = 8 + level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(8 + level);
     af.location  = APPLY_AC;
     af.modifier  = -20;
     af.bitvector = 0;
@@ -4100,9 +4100,9 @@ void spell_sleep( int sn, int level, CHAR_DATA *ch, void *vo )
     ||   saves_spell( level, victim ) )
 	return;
 
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = 4 + level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(4 + level);
     af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = AFF_SLEEP;
@@ -4180,9 +4180,9 @@ void spell_slow( int sn, int level, CHAR_DATA *ch, void *vo )
         }
 
 
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = level/4;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(level/4);
     af.location  = APPLY_DEX;
     af.modifier  = -1 - (level >= 18) - (level >= 25) - (level >= 32);
     af.bitvector = 0;
@@ -4221,9 +4221,9 @@ void spell_stone_skin( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N is already as hard as can be.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(level);
     af.location  = APPLY_AC;
     af.modifier  = -40;
     af.bitvector = 0;
@@ -4422,11 +4422,11 @@ void spell_weaken( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if ( is_affected( victim, sn ) || saves_spell( level, victim ) )
 	return;
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = level / 2;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(level / 2);
     af.location  = APPLY_STR;
-    af.modifier  = -1 * (level / 5);
+    af.modifier  = (sh_int)(-1 * (level / 5));
     af.bitvector = AFF_WEAKEN;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
@@ -4620,7 +4620,7 @@ void try_heat_gear( CHAR_DATA *ch, CHAR_DATA *victim )
 
     unequip_char( victim, obj );
     SET_BIT( obj->extra_flags, ITEM_HEATED );
-    obj->timer = number_range( 3, 8 );
+    obj->timer = (sh_int)(number_range( 3, 8 ));
 }
 
 

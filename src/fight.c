@@ -602,7 +602,7 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 	    help->level = victim->level - 5;
 	    if(victim->level < 51 )
 	     {
-	       help->max_hit = victim->max_hit * 1.5;
+	       help->max_hit = (sh_int)(victim->max_hit * 3 / 2);
 	       help->hit = help->max_hit;
 	     }
 	    else
@@ -1143,7 +1143,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if( shield > 0 )
     {
      int dt1, dam_type1;
-     int dam1 = dam * 0.6;
+     int dam1 = (int)(dam * 0.6);
 
      if(shield == 1 )
      {
@@ -1256,9 +1256,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 				 victim->position = POS_STANDING;
 
 
-				victim->hit    = (victim->max_hit * .75);
-				victim->mana   = (victim->max_mana * .75);
-				victim->move   = (victim->max_move * .75);
+				victim->hit    = (sh_int)(victim->max_hit * 3 / 4);
+				victim->mana   = (sh_int)(victim->max_mana * 3 / 4);
+				victim->move   = (sh_int)(victim->max_move * 3 / 4);
 
 				REMOVE_BIT(victim->affected_by2, AFF2_DIVINE_PROT);
 				affect_strip(victim,skill_lookup("divine protection") );
@@ -1336,7 +1336,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
               base_exp = exp_per_level(victim,victim->pcdata->points) * victim->level;
               curr_exp = victim->exp;
               if (curr_exp > base_exp) {
-                gain_exp(victim, UMIN(-1 * ((curr_exp - base_exp)/16),-1));
+                gain_exp(victim, (int)UMIN(-1L * ((curr_exp - base_exp)/16),-1L));
               } else if (curr_exp < base_exp) {
                 { snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "[GAMEDRIVER] %s has %ld exp at level %d. Minimum for level is %ld.",
                                   victim->name, curr_exp, victim->level, base_exp);
@@ -2029,25 +2029,25 @@ void make_corpse( CHAR_DATA *ch )
     {
 	name            = ch->short_descr;
 	corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_NPC), 0);
-	corpse->timer   = number_range( 5, 7 );
+	corpse->timer   = (sh_int)(number_range( 5, 7 ));
 	if ( ch->new_gold > 0 )
 	{
-	    obj_to_obj( create_money( ch->new_gold, TYPE_GOLD ), corpse );
+	    obj_to_obj( create_money( (int)(ch->new_gold), TYPE_GOLD ), corpse );
 	    ch->new_gold = 0;
 	}
         if ( ch->new_copper > 0 )
         {
-            obj_to_obj( create_money( ch->new_copper, TYPE_COPPER ), corpse );
+            obj_to_obj( create_money( (int)(ch->new_copper), TYPE_COPPER ), corpse );
             ch->new_copper= 0;
         }
         if ( ch->new_silver > 0 )
         {
-            obj_to_obj( create_money( ch->new_silver, TYPE_SILVER ), corpse );
+            obj_to_obj( create_money( (int)(ch->new_silver), TYPE_SILVER ), corpse );
             ch->new_silver = 0;
         }
         if ( ch->new_platinum > 0 )
         {
-            obj_to_obj( create_money( ch->new_platinum, TYPE_PLATINUM ), corpse );
+            obj_to_obj( create_money( (int)(ch->new_platinum), TYPE_PLATINUM ), corpse );
             ch->new_platinum = 0;
         }
 	corpse->cost = 0;
@@ -2056,7 +2056,7 @@ void make_corpse( CHAR_DATA *ch )
     {
 	name            = ch->name;
 	corpse          = create_object(get_obj_index(OBJ_VNUM_CORPSE_PC), 0);
-	corpse->timer   = number_range( 25, 35 );
+	corpse->timer   = (sh_int)(number_range( 25, 35 ));
 	REMOVE_BIT(ch->act,PLR_CANLOOT);
 	if (!IS_SET(ch->act,PLR_WANTED))
 	    corpse->owner = str_dup(ch->name);
@@ -2085,20 +2085,20 @@ void make_corpse( CHAR_DATA *ch )
 
 	obj_from_char( obj );
 	if (obj->item_type == ITEM_POTION)
-	    obj->timer = number_range(100,300);
+	    obj->timer = (sh_int)(number_range(100,300));
 	if (obj->item_type == ITEM_SCROLL)
-	    obj->timer = number_range(200,500);
+	    obj->timer = (sh_int)(number_range(200,500));
 	if (obj->item_type == ITEM_SCUBA_GEAR)
 	    {
 		if(obj->value[0] == 0)
 		  obj->timer = 2;
 		else
-		  obj->timer = dice(5,obj->value[0]);
+		  obj->timer = (sh_int)(dice(5,obj->value[0]));
 	    }
 	if (IS_SET(obj->extra_flags,ITEM_ROT_DEATH))
-	    obj->timer = number_range(5,10);
+	    obj->timer = (sh_int)(number_range(5,10));
 	if (obj->item_type == ITEM_KEY)
-	    obj->timer = number_range(40,80);
+	    obj->timer = (sh_int)(number_range(40,80));
 	REMOVE_BIT(obj->extra_flags,ITEM_VIS_DEATH);
 	REMOVE_BIT(obj->extra_flags,ITEM_ROT_DEATH);
 
@@ -2191,7 +2191,7 @@ void death_cry( CHAR_DATA *ch )
 
 	name            = IS_NPC(ch) ? ch->short_descr : ch->name;
 	obj             = create_object( get_obj_index( vnum ), 0 );
-	obj->timer      = number_range( 4, 7 );
+	obj->timer      = (sh_int)(number_range( 4, 7 ));
 
 	snprintf(buf, sizeof(buf), obj->short_descr, name );
 	free_string( obj->short_descr );
@@ -2277,7 +2277,7 @@ void raw_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 
 	  af.type         = gsn_stunning_blow;
 	  af.level        = victim->level;
-	  af.duration     = dice(1,3) + 1;
+	  af.duration     = (sh_int)(dice(1,3) + 1);
 	  af.location     = APPLY_DEX;
 	  af.modifier     = +1;
 	  af.bitvector    = 0;
@@ -2512,9 +2512,9 @@ base_exp = 200 + 50 * (level_range - 4);
 	case  5 :       group_bonus = 1.15;     break;
 */
 	default :       group_bonus = 1;        break;
-	case  2 :       group_bonus = 1.15;     break;
+	case  2 :       group_bonus = (float)(1.15);     break;
 	case  3 :       group_bonus = 1.25;     break;
-	case  4 :       group_bonus = 1.3;      break;
+	case  4 :       group_bonus = (float)(1.3);      break;
 	case  5 :       group_bonus = 1.25;     break;
 	case  6 :       group_bonus = 1.25;     break;
     }
@@ -2532,7 +2532,7 @@ base_exp = 200 + 50 * (level_range - 4);
     {
 	change = (align / 100);
 	/*change = UMAX(1,change);*/
-	gch->alignment = UMAX(-1000,gch->alignment - change);
+	gch->alignment = (sh_int)(UMAX(-1000,gch->alignment - change));
 	snprintf(buf, sizeof(buf), "%s alignment has lowered by %d. [Alignment: %d]\n\r",gch->name,change,gch->alignment);
 	log_string( buf );
 	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))
@@ -2546,7 +2546,7 @@ base_exp = 200 + 50 * (level_range - 4);
     {
 	change = (align / 100);
 	/*change = UMAX(1,change);*/
-	gch->alignment = UMIN(1000,gch->alignment + change);
+	gch->alignment = (sh_int)(UMIN(1000,gch->alignment + change));
 	snprintf(buf, sizeof(buf), "%s alignment has lowered by %d. [Alignment: %d]\n\r",gch->name,change,gch->alignment);
 	log_string( buf );
 	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))
@@ -2675,19 +2675,19 @@ base_exp = 200 + 50 * (level_range - 4);
 
 
     if (gch->level > 35 && gch->level < 54)
-		xp +=  1.5 * xp;
+		xp +=  (int)(1.5 * xp);
 
 	if (gch->level == 55)
-		xp +=  1.5 * xp;
+		xp +=  (int)(1.5 * xp);
 
 	if (gch->level == 56)
-	  xp +=  1.75 * xp;
+	  xp +=  (int)(1.75 * xp);
 
 	if (gch->level == 57)
-	  xp +=  1.75 * xp;
+	  xp +=  (int)(1.75 * xp);
 
 	if (gch->level == 58)
-	  xp +=  1.5 * xp;
+	  xp +=  (int)(1.5 * xp);
 
 /*if( IS_AFFECTED2( gch, AFF2_DIVINE_PROT )
 	  xp +=  2 * xp;
@@ -2701,13 +2701,13 @@ base_exp = 200 + 50 * (level_range - 4);
      || IS_SET(victim->affected_by, AFF_SANCTUARY)
      || IS_SET(victim->imm_flags, IMM_MAGIC)
      || victim->spec_fun != 0) )
-      xp += xp * .15;
+      xp += (int)(xp * .15);
 
     /* randomize the rewards */
     xp = number_range (xp * 3/4, xp * 5/4);
 
     /* adjust for grouping */
-    xp = xp * gch->level/total_levels * group_bonus;
+    xp = (int)((double)xp * gch->level/total_levels * group_bonus);
 
     if(gch->level > 10 && xp >= 600 )
     {
@@ -2972,7 +2972,7 @@ void do_berserk( CHAR_DATA *ch, char *argument)
 
 	af.type         = gsn_berserk;
 	af.level        = ch->level;
-	af.duration     = number_fuzzy(ch->level / 8);
+	af.duration     = (sh_int)(number_fuzzy(ch->level / 8));
 	af.modifier     = UMAX(1,ch->level/5);
 	af.bitvector    = AFF_BERSERK;
 	af.bitvector2   = 0;
@@ -4448,7 +4448,7 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
               base_exp = exp_per_level(victim,victim->pcdata->points) * victim->level;
               curr_exp = victim->exp;
               if (curr_exp > base_exp)
-                gain_exp(victim, UMIN(-1 * ((curr_exp - base_exp)/2),-1));
+                gain_exp(victim, (int)UMIN(-1L * ((curr_exp - base_exp)/2),-1L));
               else if (curr_exp < base_exp)
               { snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "[GAMEDRIVER] %s has %ld exp at level %d. Minimum for level is %ld.",
                                   victim->name, curr_exp, victim->level, base_exp);
@@ -4743,10 +4743,10 @@ void do_steel_fist( CHAR_DATA *ch, char *argument )
     if(!is_affected( ch, skill_lookup("steel fist") ) )
     {
 	af.type         = gsn_steel_fist;
-	af.level        = level;
-	af.duration     = dice(3,2) + 2;
+	af.level        = (sh_int)(level);
+	af.duration     = (sh_int)(dice(3,2) + 2);
 	af.location     = APPLY_DAMROLL;
-	af.modifier     = dice(3,3) + level/6;
+	af.modifier     = (sh_int)(dice(3,3) + level/6);
 	af.bitvector    = 0;
 	af.bitvector2   = 0;
 	affect_to_char( ch, &af );
@@ -4825,11 +4825,11 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
 	  {
 	    hit = true;
 	    if(vch->hit < 1000)
-	      dam = number_range(vch->hit * .25, vch->hit *.30);
+	      dam = number_range((int)(vch->hit * .25), (int)(vch->hit * .30));
 	    else if(vch->hit < 4000)
-	      dam = number_range(vch->hit * .10,vch->hit * .15);
+	      dam = number_range((int)(vch->hit * .10),(int)(vch->hit * .15));
 	    else
-	      dam = number_range(vch->hit * .5,vch->hit * .8);
+	      dam = number_range((int)(vch->hit * .5),(int)(vch->hit * .8));
 
 	    act( "You are mesmerized by $n's grace, then the strike hits.",ch,NULL,vch, TO_VICT );
 	    damage( ch, vch, dam, gsn_crane_dance, DAM_BASH );
@@ -4955,7 +4955,7 @@ void do_nerve_damage( CHAR_DATA *ch, char *argument )
     {
 	af.type         = gsn_nerve_damage;
 	af.level        = ch->level;
-	af.duration     = dice(3,3) + 3;
+	af.duration     = (sh_int)(dice(3,3) + 3);
 	af.location     = APPLY_DEX;
 	af.modifier     = -3;
 	af.bitvector    = 0;
@@ -5361,8 +5361,8 @@ void do_iron_skin( CHAR_DATA *ch, char *argument )
     if(!is_affected( ch, skill_lookup("iron skin") ) )
     {
 	af.type         = gsn_iron_skin;
-	af.level        = level;
-	af.duration     = dice(1,2);
+	af.level        = (sh_int)(level);
+	af.duration     = (sh_int)(dice(1,2));
 	af.location     = APPLY_AC;
 	af.modifier     = -15 - ch->level/5;
 	af.bitvector    = 0;

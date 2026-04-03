@@ -811,7 +811,7 @@ void load_mobiles( FILE *fp )
             exit( 1 );
         }
  
-        vnum                            = fread_number( fp );
+        vnum                            = (sh_int)(fread_number( fp ));
         if ( vnum == 0 )
             break;
  
@@ -960,7 +960,7 @@ void load_mobiles( FILE *fp )
             case ('G') :                pMobIndex->size = SIZE_GIANT;   break;
             default:                    pMobIndex->size = SIZE_MEDIUM; break;
         }
-        pMobIndex->material             = material_lookup(fread_word( fp ));
+        pMobIndex->material             = (sh_int)(material_lookup(fread_word( fp )));
  
         pMobIndex->action = NULL;
  
@@ -1006,7 +1006,7 @@ void load_objects( FILE *fp )
             exit( 1 );
         }
  
-        vnum                            = fread_number( fp );
+        vnum                            = (sh_int)(fread_number( fp ));
         if ( vnum == 0 )
             break;
  
@@ -1027,20 +1027,20 @@ void load_objects( FILE *fp )
         pObjIndex->name                 = fread_string( fp );
         pObjIndex->short_descr          = fread_string( fp );
         pObjIndex->description          = fread_string( fp );
-        pObjIndex->material             = material_lookup(fread_string( fp ));
+        pObjIndex->material             = (sh_int)(material_lookup(fread_string( fp )));
  
-        pObjIndex->item_type            = fread_number( fp );
-        pObjIndex->extra_flags          = fread_flag( fp );
+        pObjIndex->item_type            = (sh_int)(fread_number( fp ));
+        pObjIndex->extra_flags          = (int)(fread_flag( fp ));
         if(IS_SET(pObjIndex->extra_flags,ITEM_FLAGS2) )
-           pObjIndex->extra_flags2      = fread_flag( fp );
-        pObjIndex->wear_flags           = fread_flag( fp );
-        pObjIndex->value[0]             = fread_flag( fp );
-        pObjIndex->value[1]             = fread_flag( fp );
-        pObjIndex->value[2]             = fread_flag( fp );
-        pObjIndex->value[3]             = fread_flag( fp );
-        pObjIndex->value[4]             = fread_flag( fp );
-        pObjIndex->level                = fread_number( fp );
-        pObjIndex->weight               = fread_number( fp );
+           pObjIndex->extra_flags2      = (int)(fread_flag( fp ));
+        pObjIndex->wear_flags           = (sh_int)(fread_flag( fp ));
+        pObjIndex->value[0]             = (int)(fread_flag( fp ));
+        pObjIndex->value[1]             = (int)(fread_flag( fp ));
+        pObjIndex->value[2]             = (int)(fread_flag( fp ));
+        pObjIndex->value[3]             = (int)(fread_flag( fp ));
+        pObjIndex->value[4]             = (int)(fread_flag( fp ));
+        pObjIndex->level                = (sh_int)(fread_number( fp ));
+        pObjIndex->weight               = (sh_int)(fread_number( fp ));
         pObjIndex->cost                 = fread_number( fp ); 
  
         /* condition */
@@ -1072,8 +1072,8 @@ void load_objects( FILE *fp )
                 paf->type               = -1;
                 paf->level              = pObjIndex->level;
                 paf->duration           = -1;
-                paf->location           = fread_number( fp );
-                paf->modifier           = fread_number( fp );
+                paf->location           = (sh_int)(fread_number( fp ));
+                paf->modifier           = (sh_int)(fread_number( fp ));
                 paf->bitvector          = 0;
                 paf->bitvector2         = 0;
                 paf->next               = pObjIndex->affected;
@@ -1173,10 +1173,10 @@ void load_resets( FILE *fp )
         pReset          = alloc_perm( sizeof(*pReset) );
         pReset->command = letter;
         /* if_flag */     fread_number( fp );
-        pReset->arg1    = fread_number( fp );
-        pReset->arg2    = fread_number( fp );
+        pReset->arg1    = (sh_int)(fread_number( fp ));
+        pReset->arg2    = (sh_int)(fread_number( fp ));
         pReset->arg3    = (letter == 'G' || letter == 'R')
-                            ? 0 : fread_number( fp );
+                            ? 0 : (sh_int)(fread_number( fp ));
                           fread_to_eol( fp );
  
         /*
@@ -1306,7 +1306,7 @@ void load_rooms( FILE *fp )
             exit( 1 );
         }
  
-        vnum                            = fread_number( fp );
+        vnum                            = (sh_int)(fread_number( fp ));
         if ( vnum == 0 )
             break;
  
@@ -1396,12 +1396,12 @@ void load_rooms( FILE *fp )
         pRoomIndex->vnum                = vnum;
         pRoomIndex->name                = fread_string( fp );
         pRoomIndex->description         = fread_string( fp );
-        pRoomIndex->number              = fread_number( fp );
-        pRoomIndex->room_flags          = fread_flag( fp );
+        pRoomIndex->number              = (sh_int)(fread_number( fp ));
+        pRoomIndex->room_flags          = (int)(fread_flag( fp ));
         if(IS_SET(pRoomIndex->room_flags,ROOM_FLAGS2) )
-          pRoomIndex->room_flags2       = fread_flag( fp );
+          pRoomIndex->room_flags2       = (int)(fread_flag( fp ));
         /* horrible hack */
-        pRoomIndex->sector_type         = fread_number( fp );
+        pRoomIndex->sector_type         = (sh_int)(fread_number( fp ));
         pRoomIndex->light               = 0;
  
         /* If it is a teleporting room, we need to load the info for it */
@@ -1411,8 +1411,8 @@ void load_rooms( FILE *fp )
             if (pTeleportRoom == NULL)
                 pTeleportRoom           = alloc_perm( sizeof(*pTeleportRoom) );
             pTeleportRoom->room         = pRoomIndex;
-            pTeleportRoom->to_room      = fread_number( fp );
-            pTeleportRoom->speed        = fread_number( fp );
+            pTeleportRoom->to_room      = (sh_int)(fread_number( fp ));
+            pTeleportRoom->speed        = (sh_int)(fread_number( fp ));
             pTeleportRoom->timer        = pTeleportRoom->speed;
             pTeleportRoom->visible      = fread_number( fp );
  
@@ -1426,17 +1426,17 @@ void load_rooms( FILE *fp )
                 pRoomAff         = alloc_perm(sizeof(*pRoomAff) );
             pRoomAff->room       = pRoomIndex;
             pRoomAff->timer      = -1;
-            pRoomAff->type       = fread_number( fp );
-            pRoomAff->level      = fread_number( fp );
+            pRoomAff->type       = (sh_int)(fread_number( fp ));
+            pRoomAff->level      = (sh_int)(fread_number( fp ));
             pRoomAff->name       = room_aff_type[pRoomAff->type];
-            pRoomAff->bitvector  = fread_flag( fp );
-            pRoomAff->bitvector2 = fread_flag( fp );
-            pRoomAff->modifier   = fread_number( fp );
-            pRoomAff->location   = fread_number( fp );
-            pRoomAff->duration   = fread_number( fp );
+            pRoomAff->bitvector  = (int)(fread_flag( fp ));
+            pRoomAff->bitvector2 = (int)(fread_flag( fp ));
+            pRoomAff->modifier   = (sh_int)(fread_number( fp ));
+            pRoomAff->location   = (sh_int)(fread_number( fp ));
+            pRoomAff->duration   = (sh_int)(fread_number( fp ));
             pRoomAff->aff_exit   = 10;
-            pRoomAff->dam_dice   = fread_number( fp );
-            pRoomAff->dam_number = fread_number( fp );
+            pRoomAff->dam_dice   = (sh_int)(fread_number( fp ));
+            pRoomAff->dam_number = (sh_int)(fread_number( fp ));
             pRoomIndex->affected = pRoomAff;
  
             pRoomAff->next       = room_aff_list;
@@ -1479,9 +1479,9 @@ void load_rooms( FILE *fp )
                 pexit->keyword          = fread_string( fp );
                 pexit->exit_info        = 0;
                 pexit->trap             = 0;
-                pexit->lock             = fread_number( fp );
-                pexit->key              = fread_number( fp );
-                pexit->u1.vnum          = fread_number( fp );
+                pexit->lock             = (sh_int)(fread_number( fp ));
+                pexit->key              = (sh_int)(fread_number( fp ));
+                pexit->u1.vnum          = (sh_int)(fread_number( fp ));
                 if ( !str_prefix("secret", pexit->keyword) )
                     pexit->lock = 4; /* Make it a secret exit */
  
@@ -1551,15 +1551,15 @@ void load_shops( FILE *fp )
         int iTrade;
  
         pShop                   = alloc_perm( sizeof(*pShop) );
-        pShop->keeper           = fread_number( fp );
+        pShop->keeper           = (sh_int)(fread_number( fp ));
         if ( pShop->keeper == 0 )
             break;
         for ( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
-            pShop->buy_type[iTrade]     = fread_number( fp );
-        pShop->profit_buy       = fread_number( fp );
-        pShop->profit_sell      = fread_number( fp );
-        pShop->open_hour        = fread_number( fp );
-        pShop->close_hour       = fread_number( fp );
+            pShop->buy_type[iTrade]     = (sh_int)(fread_number( fp ));
+        pShop->profit_buy       = (sh_int)(fread_number( fp ));
+        pShop->profit_sell      = (sh_int)(fread_number( fp ));
+        pShop->open_hour        = (sh_int)(fread_number( fp ));
+        pShop->close_hour       = (sh_int)(fread_number( fp ));
                                   fread_to_eol( fp );
         pMobIndex               = get_mob_index( pShop->keeper );
         pMobIndex->pShop        = pShop;
@@ -1636,7 +1636,7 @@ void load_notes( void )
  
         do
         {
-            letter = getc( fp );
+            letter = (char)(getc( fp ));
             if ( feof(fp) )
             {
                 fclose( fp );
@@ -1717,7 +1717,7 @@ void load_ban( void )
 	char letter;
 
 	do {
-	    letter = getc( fp );
+	    letter = (char)(getc( fp ));
 	    if( feof( fp ) ) {
 		fclose( fp );
 		return;
@@ -1834,7 +1834,7 @@ void area_update( void )
             ROOM_INDEX_DATA *pRoomIndex;
  
             reset_area( pArea );
-            pArea->age = number_range( 0, 3 );
+            pArea->age = (sh_int)(number_range( 0, 3 ));
             pRoomIndex = get_room_index( ROOM_VNUM_SCHOOL );
             if ( pRoomIndex != NULL && pArea == pRoomIndex->area )
                 pArea->age = 15 - 2;
@@ -2121,7 +2121,7 @@ void reset_area( AREA_DATA *pArea )
                if(IS_SET(pexit->exit_info, EX_PICKPROOF) )
                  REMOVE_BIT(pexit->exit_info, EX_PICKPROOF);
                 SET_BIT( pexit->exit_info,EX_TRAPPED);
-                pexit->trap = dice(1,10);
+                pexit->trap = (sh_int)(dice(1,10));
                 break;
             }
                /* set some random traps */
@@ -2137,7 +2137,7 @@ void reset_area( AREA_DATA *pArea )
                if(IS_SET(pexit->exit_info, EX_PICKPROOF) )
                  REMOVE_BIT(pexit->exit_info, EX_PICKPROOF);
                SET_BIT( pexit->exit_info, EX_TRAPPED);
-               pexit->trap = dice(1,10);
+               pexit->trap = (sh_int)(dice(1,10));
                snprintf(trap_buf, sizeof(trap_buf),"New Trap: [Room: %d]",pRoomIndex->vnum);
                wizinfo(trap_buf,LEVEL_IMMORTAL);
              }
@@ -2223,9 +2223,9 @@ void create_room( int vnum )
     pRoomIndex->contents        = NULL;
     pRoomIndex->extra_descr     = NULL;
     pRoomIndex->area            = new_area;
-    pRoomIndex->vnum            = vnum;
-    pRoomIndex->name            = alloc_mem( strlen(defaultRoomName) + 1 );
-    pRoomIndex->description     = alloc_mem( strlen(defaultRoomDesc) + 1 );
+    pRoomIndex->vnum            = (sh_int)(vnum);
+    pRoomIndex->name            = alloc_mem( (int)(strlen(defaultRoomName) + 1) );
+    pRoomIndex->description     = alloc_mem( (int)(strlen(defaultRoomDesc) + 1) );
     toc_strlcpy(pRoomIndex->name, defaultRoomName, strlen(defaultRoomName) + 1);
     toc_strlcpy(pRoomIndex->description, defaultRoomDesc, strlen(defaultRoomDesc) + 1);
     pRoomIndex->room_flags      = 0;
@@ -2283,20 +2283,20 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
     if(IS_SET(mob->act,ACT_FLAGS2) )
       mob->act2            = pMobIndex->act2;
     mob->comm              = COMM_NOCHANNELS|COMM_NOSHOUT|COMM_NOTELL;
-    mob->affected_by       = pMobIndex->affected_by;
+    mob->affected_by       = (int)(pMobIndex->affected_by);
     if(IS_SET(mob->affected_by,AFF_FLAGS2) )
-      mob->affected_by2    = pMobIndex->affected_by2;
+      mob->affected_by2    = (int)(pMobIndex->affected_by2);
     mob->alignment         = pMobIndex->alignment;
     mob->level             = pMobIndex->level;
     mob->hitroll           = pMobIndex->hitroll;
     mob->damroll           = pMobIndex->damage[DICE_BONUS];
-    mob->max_hit           = dice(pMobIndex->hit[DICE_NUMBER],
+    mob->max_hit           = (sh_int)(dice(pMobIndex->hit[DICE_NUMBER],
                                pMobIndex->hit[DICE_TYPE])
-                          + pMobIndex->hit[DICE_BONUS];
+                           + pMobIndex->hit[DICE_BONUS]);
     mob->hit               = mob->max_hit;
-    mob->max_mana          = dice(pMobIndex->mana[DICE_NUMBER],
+    mob->max_mana          = (sh_int)(dice(pMobIndex->mana[DICE_NUMBER],
                                pMobIndex->mana[DICE_TYPE])
-                          + pMobIndex->mana[DICE_BONUS];
+                           + pMobIndex->mana[DICE_BONUS]);
     mob->mana              = mob->max_mana;
     mob->damage[DICE_NUMBER]= pMobIndex->damage[DICE_NUMBER];
     mob->damage[DICE_TYPE] = pMobIndex->damage[DICE_TYPE];
@@ -2319,7 +2319,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA *pMobIndex )
     mob->default_pos       = pMobIndex->default_pos;
     mob->sex               = pMobIndex->sex;
     if (mob->sex == 3) /* random sex */
-        mob->sex = number_range(1,2);
+        mob->sex = (sh_int)(number_range(1,2));
     mob->race              = pMobIndex->race;
     mob->form              = pMobIndex->form;
     mob->parts             = pMobIndex->parts;
@@ -2625,7 +2625,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
     }
  
     if (pObjIndex->level == -1)
-        obj->level      = UMAX(0,level);
+        obj->level      = (sh_int)(UMAX(0,level));
     else
         obj->level      = pObjIndex->level;
  
@@ -2808,8 +2808,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
           paf->type               = -1;
           paf->level              = obj->level;
           paf->duration           = -1;
-          paf->location           = obj_apply;
-          paf->modifier           = obj_modifier;
+          paf->location           = (sh_int)(obj_apply);
+          paf->modifier           = (sh_int)(obj_modifier);
           paf->bitvector          = 0;
           paf->bitvector2         = 0;
           paf->next               = obj->affected;
@@ -2824,8 +2824,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
           paf->type               = -1;
           paf->level              = obj->level;
           paf->duration           = -1;
-          paf->location           = obj_apply;
-          paf->modifier           = obj_modifier;
+          paf->location           = (sh_int)(obj_apply);
+          paf->modifier           = (sh_int)(obj_modifier);
           paf->bitvector          = 0;
           paf->bitvector2         = 0;
           paf->next               = obj->affected;
@@ -2839,8 +2839,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
           paf->type               = -1;
           paf->level              = obj->level;
           paf->duration           = -1;
-          paf->location           = obj_apply;
-          paf->modifier           = obj_modifier;
+          paf->location           = (sh_int)(obj_apply);
+          paf->modifier           = (sh_int)(obj_modifier);
           paf->bitvector          = 0;
           paf->bitvector2         = 0;
           paf->next               = obj->affected;
@@ -2853,8 +2853,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
         paf->type               = -1;
         paf->level              = obj->level;
         paf->duration           = -1;
-        paf->location           = obj_apply;
-        paf->modifier           = obj_modifier;
+        paf->location           = (sh_int)(obj_apply);
+        paf->modifier           = (sh_int)(obj_modifier);
         paf->bitvector          = 0;
         paf->bitvector2         = 0;
         paf->next               = obj->affected;
@@ -3113,7 +3113,7 @@ char fread_letter( FILE *fp )
  
     do
     {
-	c = getc( fp );
+	c = (char)(getc( fp ));
     }
     while ( isspace(c) );
  
@@ -3133,7 +3133,7 @@ int fread_number( FILE *fp )
  
     do
     {
-	c = getc( fp );
+	c = (char)(getc( fp ));
     }
     while ( isspace(c) );
  
@@ -3142,12 +3142,12 @@ int fread_number( FILE *fp )
     sign   = false;
     if ( c == '+' )
     {
-        c = getc( fp );
+        c = (char)(getc( fp ));
     }
     else if ( c == '-' )
     {
         sign = true;
-        c = getc( fp );
+        c = (char)(getc( fp ));
     }
  
     if ( !isdigit(c) )
@@ -3159,7 +3159,7 @@ int fread_number( FILE *fp )
     while ( isdigit(c) )
     {
         number = number * 10 + c - '0';
-        c      = getc( fp );
+        c      = (char)(getc( fp ));
     }
  
     if ( sign )
@@ -3184,7 +3184,7 @@ long fread_long( FILE *fp )
  
     do
     {
-	c = getc( fp );
+	c = (char)(getc( fp ));
     }
     while ( isspace(c) );
  
@@ -3193,12 +3193,12 @@ long fread_long( FILE *fp )
     sign   = false;
     if ( c == '+' )
     {
-        c = getc( fp );
+        c = (char)(getc( fp ));
     }
     else if ( c == '-' )
     {
         sign = true;
-        c = getc( fp );
+        c = (char)(getc( fp ));
     }
  
     if ( !isdigit(c) )
@@ -3210,7 +3210,7 @@ long fread_long( FILE *fp )
     while ( isdigit(c) )
     {
         number = number * 10 + c - '0';
-        c      = getc( fp );
+        c      = (char)(getc( fp ));
     }
  
     if ( sign )
@@ -3230,7 +3230,7 @@ long fread_flag( FILE *fp)
  
     do
     {
-        c = getc(fp);
+        c = (char)(getc(fp));
     }
     while ( isspace(c));
  
@@ -3241,14 +3241,14 @@ long fread_flag( FILE *fp)
         while (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'))
         {
             number += flag_convert(c);
-            c = getc(fp);
+            c = (char)(getc(fp));
         }
     }
  
     while (isdigit(c))
     {
         number = number * 10 + c - '0';
-        c = getc(fp);
+        c = (char)(getc(fp));
     }
  
     if (c == '|')
@@ -3314,7 +3314,7 @@ char *fread_string( FILE *fp )
     }
     while ( isspace(c) );
  
-    if ( ( *plast++ = c ) == '~' )
+    if ( ( *plast++ = (char)(c) ) == '~' )
         return &str_empty[0];
  
     for ( ;; )
@@ -3334,7 +3334,7 @@ char *fread_string( FILE *fp )
             /* exit( 1 ); */
         }
 
-        switch ( *plast = c )
+        switch ( *plast = (char)(c) )
         {
         default:
             plast++;
@@ -3363,7 +3363,7 @@ char *fread_string( FILE *fp )
                 char *pString;
  
                 plast[-1] = '\0';
-                iHash     = UMIN( MAX_KEY_HASH - 1, plast - 1 - top_string );
+                iHash     = (int)(UMIN( MAX_KEY_HASH - 1, plast - 1 - top_string ));
                 for ( pHash = string_hash[iHash]; pHash; pHash = pHashPrev )
                 {
                     for ( ic = 0; ic < (int)sizeof(char *); ic++ )
@@ -3463,7 +3463,7 @@ char *fread_string_eol( FILE *fp )
                 char *pString;
  
                 plast[-1] = '\0';
-                iHash     = UMIN( MAX_KEY_HASH - 1, plast - 1 - top_string );
+                iHash     = (int)(UMIN( MAX_KEY_HASH - 1, plast - 1 - top_string ));
                 for ( pHash = string_hash[iHash]; pHash; pHash = pHashPrev )
                 {
                     for ( ic = 0; ic < (int)sizeof(char *); ic++ )
@@ -4209,7 +4209,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
  
     /* mobile prototypes */
     fprintf(fp,"MobProt %4d (%8ld bytes)\n",
-        top_mob_index, (long) top_mob_index * (sizeof(*pMobIndex))); 
+        top_mob_index, (unsigned long)((unsigned long) top_mob_index * (sizeof(*pMobIndex)))); 
  
     /* mobs */
     count = 0;  count2 = 0;
@@ -4225,8 +4225,8 @@ void do_dump( CHAR_DATA *ch, char *argument )
         count2++;
  
     fprintf(fp,"Mobs    %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        count, (long) count * (sizeof(*fch)), count2, 
-        (long) count2 * (sizeof(*fch)));
+        count, (unsigned long)((unsigned long) count * (sizeof(*fch))), count2, 
+        (unsigned long)((unsigned long) count2 * (sizeof(*fch))));
  
     /* pcdata */
     count = 0;
@@ -4234,8 +4234,8 @@ void do_dump( CHAR_DATA *ch, char *argument )
         count++; 
  
     fprintf(fp,"Pcdata  %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        num_pcs, (long) num_pcs * (sizeof(*pc)), count, 
-        (long) count * (sizeof(*pc)));
+        num_pcs, (unsigned long)((unsigned long) num_pcs * (sizeof(*pc))), count, 
+        (unsigned long)((unsigned long) count * (sizeof(*pc))));
  
     /* descriptors */
     count = 0; count2 = 0;
@@ -4245,8 +4245,8 @@ void do_dump( CHAR_DATA *ch, char *argument )
         count2++;
  
     fprintf(fp, "Descs  %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        count, (long) count * (sizeof(*d)), 
-        count2, (long) count2 * (sizeof(*d)));
+        count, (unsigned long)((unsigned long) count * (sizeof(*d))), 
+        count2, (unsigned long)((unsigned long) count2 * (sizeof(*d))));
  
     /* object prototypes */
     for ( vnum = 0; nMatch < top_obj_index; vnum++ )
@@ -4258,7 +4258,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
         }
  
     fprintf(fp,"ObjProt %4d (%8ld bytes)\n",
-	top_obj_index, (long) top_obj_index * (sizeof(*pObjIndex)));
+	top_obj_index, (unsigned long)((unsigned long) top_obj_index * (sizeof(*pObjIndex))));
  
  
     /* objects */
@@ -4273,8 +4273,8 @@ void do_dump( CHAR_DATA *ch, char *argument )
         count2++;
  
     fprintf(fp,"Objs    %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        count, (long) count * (sizeof(*obj)), 
-        count2, (long) count2 * (sizeof(*obj)));
+        count, (unsigned long)((unsigned long) count * (sizeof(*obj))), 
+        count2, (unsigned long)((unsigned long) count2 * (sizeof(*obj))));
  
     /* affects */
     count = 0;
@@ -4282,16 +4282,16 @@ void do_dump( CHAR_DATA *ch, char *argument )
         count++;
  
     fprintf(fp,"Affects %4d (%8ld bytes), %2d free (%ld bytes)\n",
-        aff_count, (long) aff_count * (sizeof(*af)), 
-        count, (long) count * (sizeof(*af)));
+        aff_count, (unsigned long)((unsigned long) aff_count * (sizeof(*af))), 
+        count, (unsigned long)((unsigned long) count * (sizeof(*af))));
  
     /* rooms */
     fprintf(fp,"Rooms   %4d (%8ld bytes)\n",
-        top_room, (long) top_room * (sizeof(*room)));
+        top_room, (unsigned long)((unsigned long) top_room * (sizeof(*room))));
  
      /* exits */
     fprintf(fp,"Exits   %4d (%8ld bytes)\n",
-        top_exit, (long) top_exit * (sizeof(*exit)));
+        top_exit, (unsigned long)((unsigned long) top_exit * (sizeof(*exit))));
  
     fclose(fp);
  
@@ -4799,7 +4799,7 @@ void bug( const char *str, int param )
         }
         else
         {
-	    iChar = ftell( fpArea );
+	    iChar = (int)(ftell( fpArea ));
             fseek( fpArea, 0, 0 );
             for ( iLine = 0; ftell( fpArea ) < iChar; iLine++ )
             {

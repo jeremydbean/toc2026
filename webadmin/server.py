@@ -6,10 +6,22 @@ import subprocess
 from pathlib import Path
 from typing import Optional, Dict, Any
 
-from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect, Query
+from fastapi import Depends, FastAPI, Header, HTTPException, WebSocket, WebSocketDisconnect, Query
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 import asyncio
+
+# Optional shared-secret authentication.
+# Set WEB_ADMIN_TOKEN in the environment to require the X-Admin-Token header
+# on mutating / sensitive endpoints.  Leave unset (or empty) to allow
+# unauthenticated access (backward-compatible default).
+_WEB_ADMIN_TOKEN: str = os.environ.get("WEB_ADMIN_TOKEN", "")
+
+
+async def verify_token(x_admin_token: str = Header(default="")) -> None:
+    """FastAPI dependency that enforces the WEB_ADMIN_TOKEN when configured."""
+    if _WEB_ADMIN_TOKEN and x_admin_token != _WEB_ADMIN_TOKEN:
+        raise HTTPException(status_code=403, detail="Forbidden")
 
 try:
     from webadmin.area_parser import AreaParser, APPLY_LOCATIONS
@@ -2432,7 +2444,10 @@ async def tail_logs(lines: int = 200) -> HTMLResponse:
         return HTMLResponse(f"Error reading log: {e}")
 
 @app.websocket("/ws/logs")
-async def websocket_logs(websocket: WebSocket):
+async def websocket_logs(websocket: WebSocket, x_admin_token: str = Query(default="")):
+    if _WEB_ADMIN_TOKEN and x_admin_token != _WEB_ADMIN_TOKEN:
+        await websocket.close(code=4003)
+        return
     await websocket.accept()
     try:
         # Send last 200 lines first
@@ -2472,7 +2487,7 @@ async def websocket_logs(websocket: WebSocket):
 
 
 @app.post("/api/wizinfo")
-async def send_wizinfo(request: WizinfoRequest) -> str:
+async def send_wizinfo(request: WizinfoRequest, _: None = Depends(verify_token)) -> str:
     if not request.message.strip():
         raise HTTPException(status_code=400, detail="Message cannot be empty")
     level = request.level if request.level and request.level > 0 else 62
@@ -2481,7 +2496,7 @@ async def send_wizinfo(request: WizinfoRequest) -> str:
 
 
 @app.post("/api/command")
-async def run_command(request: CommandRequest) -> str:
+async def run_command(request: CommandRequest, _: None = Depends(verify_token)) -> str:
     if not request.command.strip():
         raise HTTPException(status_code=400, detail="Command required")
     queue_writer.append(f"command|{request.command.strip()}")
@@ -2489,13 +2504,13 @@ async def run_command(request: CommandRequest) -> str:
 
 
 @app.post("/api/backup")
-async def run_backup() -> str:
+async def run_backup(_: None = Depends(verify_token)) -> str:
     queue_writer.append("backup")
     return "queued"
 
 
 @app.post("/api/shutdown")
-async def run_shutdown() -> str:
+async def run_shutdown(_: None = Depends(verify_token)) -> str:
     queue_writer.append("shutdown")
     return "queued"
 

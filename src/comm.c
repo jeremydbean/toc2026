@@ -1501,7 +1501,7 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
      * Find length in case caller didn't.
      */
     if ( length <= 0 )
-        length = strlen(txt);
+        length = (int)(strlen(txt));
 
     /*
      * Initial \n\r if needed.

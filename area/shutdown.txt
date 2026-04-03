@@ -26,3 +26,9 @@
 [*****] Bind Error
 [*****] Bind Error
 [*****] Bind Error
+[*****] [*****] FILE: commands.are LINE: 2485
+[*****] [*****] FILE: commands.are LINE: 2485
+[*****] [*****] FILE: commands.are LINE: 2485
+[*****] [*****] FILE: commands.are LINE: 2485
+[*****] [*****] FILE: commands.are LINE: 2485
+[*****] [*****] FILE: ashen_wastes.are LINE: 428

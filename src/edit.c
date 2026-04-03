@@ -266,8 +266,8 @@ void edit_exit( CHAR_DATA *ch, char *argument )
     pexit->description      = "";
     pexit->keyword          = str_dup(argument);
     pexit->exit_info        = exit_info;
-    pexit->lock             = type;
-    pexit->key              = key;
+    pexit->lock             = (sh_int)(type);
+    pexit->key              = (sh_int)(key);
     pexit->u1.to_room       = location;
     if ( !str_prefix("secret", pexit->keyword) )
         pexit->lock = 4; /* Make it a secret exit */

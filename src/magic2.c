@@ -459,7 +459,7 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
     {
         victim->mana -= drain;
         /* Caster absorbs half the drained mana. */
-        ch->mana = UMIN( ch->max_mana, ch->mana + drain / 2 );
+        ch->mana = (sh_int)(UMIN( ch->max_mana, ch->mana + drain / 2 ));
         act( "You reach into $N's mind and siphon away their mental energy!", ch, NULL, victim, TO_CHAR );
         act( "$n reaches into your mind, draining your mental energy!", ch, NULL, victim, TO_VICT );
         act( "$n's eyes glow as $e leeches $N's mental energy.", ch, NULL, victim, TO_NOTVICT );
@@ -582,7 +582,7 @@ void do_enervate( CHAR_DATA *ch, char *argument )
     if ( move_drain > 0 )
     {
         victim->move -= move_drain;
-        ch->move = UMIN( ch->max_move, ch->move + move_drain / 2 );
+        ch->move = (sh_int)(UMIN( ch->max_move, ch->move + move_drain / 2 ));
     }
 
     /* Deal HP damage and absorb half as healing. */
@@ -597,7 +597,7 @@ void do_enervate( CHAR_DATA *ch, char *argument )
     /* Heal the caster for half the HP damage (after victim may be dead). */
     if ( victim != NULL && victim->position > POS_DEAD )
     {
-        ch->hit = UMIN( ch->max_hit, ch->hit + hp_drain / 2 );
+        ch->hit = (sh_int)(UMIN( ch->max_hit, ch->hit + hp_drain / 2 ));
     }
 
     check_improve(ch, gsn_enervate, true, 4);
@@ -823,10 +823,10 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
 	 dream = victim->mana;
 
     af.type      = gsn_nightmare;
-    af.level     = level;
-    af.duration  = level/3;
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(level/3);
     af.location  = APPLY_MANA;
-    af.modifier  = -1 * (dream);
+    af.modifier  = (sh_int)(-1 * (dream));
     af.bitvector = 0;
     af.bitvector2= AFF2_NO_RECOVER;
     affect_to_char( victim, &af );
@@ -834,7 +834,7 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
     if(!IS_NPC(ch) && IS_NPC(victim) )
     {
 	af.location = APPLY_AC;
-	af.modifier = dice(level/2,3);
+	af.modifier = (sh_int)(dice(level/2,3));
 	affect_to_char( victim, &af);
     }
 
@@ -1545,8 +1545,8 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
     if ( !is_affected( victim, gsn_ego_whip ) )
     {
 	af.type      = gsn_ego_whip;
-	af.level	   = level;
-	af.duration  = dice(4,5);
+	af.level	   = (sh_int)(level);
+	af.duration  = (sh_int)(dice(4,5));
 	af.bitvector  = 0;
 	af.bitvector2 = 0;
 	what_affect  = dice(1,4);
@@ -1649,8 +1649,8 @@ void do_psionic_armor( CHAR_DATA *ch, char *argument )
     && !is_affected( victim, skill_lookup("mindbar") ) )
     {
     af.type      = gsn_psionic_armor;
-    af.level	  = level;
-    af.duration  = level/2;
+    af.level	  = (sh_int)(level);
+    af.duration  = (sh_int)(level/2);
     af.modifier =  0;
     af.location  = 0;
     af.modifier  = 0;
@@ -1720,8 +1720,8 @@ void do_psychic_shield( CHAR_DATA *ch, char *argument )
 		 continue;
 
 	 af.type      = gsn_psychic_shield;
-	 af.level	  = level;
-	 af.duration  = level/2;
+	 af.level	  = (sh_int)(level);
+	 af.duration  = (sh_int)(level/2);
 	 af.modifier  =  0;
 	 af.location  =  0;
 	 af.modifier  =  0;
@@ -1790,8 +1790,8 @@ void do_mindbar( CHAR_DATA *ch, char *argument )
     && !is_affected( victim, skill_lookup("mindbar") ) )
 	{
     af.type      = gsn_mindbar;
-    af.level	  = level;
-    af.duration  = number_fuzzy( level / 6 );
+    af.level	  = (sh_int)(level);
+    af.duration  = (sh_int)(number_fuzzy( level / 6 ));
     af.modifier  = 0;
     af.location  = 0;
     af.modifier  = 0;
@@ -2124,8 +2124,8 @@ void spell_major_globe( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 */
-    af.type      = sn;
-    af.level	 = level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
     else
@@ -3517,12 +3517,12 @@ void spell_force_sword( int sn, int level, CHAR_DATA *ch, void *vo )
        return;
     }
     act( "A sword materializes out of nowhere to guard $n.", victim, NULL, NULL, TO_ROOM );
-    af.type      = sn;
-    af.level	 = level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
     else
-    af.duration  = dice(2,2) + 1;
+    af.duration  = (sh_int)(dice(2,2) + 1);
     af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = 0;
@@ -3576,7 +3576,7 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
     victim = create_mobile(  get_mob_index(  MOB_VNUM_ANIMATE ) );
     char_to_room( victim, ch->in_room );
     victim->level = corpse->level/3;
-    victim->max_hit = dice(5,8) + ch->max_hit / 4;
+    victim->max_hit = (sh_int)(dice(5,8) + ch->max_hit / 4);
     victim->hit = victim->max_hit;
     victim->timer = 75;
     victim->armor[AC_PIERCE] = 0;
@@ -3602,9 +3602,9 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
     act("Flesh melts from bone, and a skeleton stands up.",ch,NULL,NULL,TO_CHAR);
     add_follower( victim, ch );
     victim->leader = ch;
-    af.type      = skill_lookup("charm person");
+    af.type      = (sh_int)(skill_lookup("charm person"));
     af.level	 = ch->level;
-    af.duration  = number_fuzzy( ch->level );
+    af.duration  = (sh_int)(number_fuzzy( ch->level ));
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = AFF_CHARM;
@@ -3655,7 +3655,7 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
     victim = create_mobile(  get_mob_index(  MOB_VNUM_ANIMATE ) );
     char_to_room( victim, ch->in_room );
     victim->level = corpse->level/2;
-    victim->max_hit = dice(20,8) + ch->max_hit / 2;
+    victim->max_hit = (sh_int)(dice(20,8) + ch->max_hit / 2);
     victim->hit = victim->max_hit;
     victim->timer = 150;
     victim->armor[AC_PIERCE]    = ch->armor[AC_PIERCE];
@@ -3681,9 +3681,9 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
     act("Flesh flakes and rots, and a wraith stands up.",ch,NULL,NULL,TO_CHAR);
     add_follower( victim, ch );
     victim->leader = ch;
-    af.type      = skill_lookup("charm person");
+    af.type      = (sh_int)(skill_lookup("charm person"));
     af.level	 = ch->level;
-    af.duration  = number_fuzzy( ch->level );
+    af.duration  = (sh_int)(number_fuzzy( ch->level ));
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = AFF_CHARM;
@@ -3733,7 +3733,7 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
     victim = create_mobile(  get_mob_index(  MOB_VNUM_ANIMATE ) );
     char_to_room( victim, ch->in_room );
     victim->level = ch->level-10;
-    victim->max_hit = dice(30,8) + ch->max_hit/2;
+    victim->max_hit = (sh_int)(dice(30,8) + ch->max_hit/2);
     victim->hit = victim->max_hit;
     victim->timer = 250;
     victim->armor[AC_PIERCE]    = ch->armor[AC_PIERCE];
@@ -3760,9 +3760,9 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
     act("Flesh rejuvenates itself, and a vampire stands up.",ch,NULL,NULL,TO_CHAR);
     add_follower( victim, ch );
     victim->leader = ch;
-    af.type      = skill_lookup("charm person");
+    af.type      = (sh_int)(skill_lookup("charm person"));
     af.level	 = ch->level;
-    af.duration  = number_fuzzy( ch->level );
+    af.duration  = (sh_int)(number_fuzzy( ch->level ));
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = AFF_CHARM;
@@ -3858,8 +3858,8 @@ void spell_maze( int sn, int level, CHAR_DATA *ch, void *vo )
     if ( saves_spell( level, victim ) && chance < 65 )
       victim = ch;
 
-    af.type      = sn;
-    af.level	 = level;
+    af.type      = (sh_int)(sn);
+    af.level	 = (sh_int)(level);
     af.duration  = 12;
     af.modifier  = 0;
     af.location  = 0;
@@ -3892,9 +3892,9 @@ void spell_shroud( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("$N is already cloaked in a shroud of darkness.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
-    af.duration  = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
+    af.duration  = (sh_int)(level);
     af.location  = APPLY_AC;
     af.modifier  = -35;
     af.bitvector = 0;
@@ -4181,12 +4181,12 @@ void spell_fire_shield( int sn, int level, CHAR_DATA *ch, void *vo )
       */
 
     }
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
       af.duration  = ch->level;
     else
-      af.duration  = dice(10,2) + 5;
+      af.duration  = (sh_int)(dice(10,2) + 5);
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = 0;
@@ -4212,12 +4212,12 @@ void spell_frost_shield( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("You can't cast this spell on $N.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
     else
-    af.duration  = dice(10,2) + 5;
+    af.duration  = (sh_int)(dice(10,2) + 5);
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = 0;
@@ -4243,12 +4243,12 @@ void spell_death_shroud( int sn, int level, CHAR_DATA *ch, void *vo )
 	  act("You can't cast this spell on $N.",ch,NULL,victim,TO_CHAR);
 	return;
     }
-    af.type      = sn;
-    af.level     = level;
+    af.type      = (sh_int)(sn);
+    af.level     = (sh_int)(level);
     if(IS_NPC(ch) )
-      af.duration  = dice(10,2) + 5;
+      af.duration  = (sh_int)(dice(10,2) + 5);
     else
-      af.duration  = level/15 + 1;
+      af.duration  = (sh_int)(level/15 + 1);
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = 0;
@@ -4364,7 +4364,7 @@ void spell_stinking_cloud( int sn, int level, CHAR_DATA *ch, void *vo )
 
     raf             = alloc_mem(sizeof(*raf) );
     raf->room       = ch->in_room;
-    raf->timer      = dice(1,3);
+    raf->timer      = (sh_int)(dice(1,3));
     raf->type       = 1;
     raf->level      = ch->level;
     raf->name       = "stinking cloud";
@@ -4372,7 +4372,7 @@ void spell_stinking_cloud( int sn, int level, CHAR_DATA *ch, void *vo )
     raf->bitvector2 = 0;
     raf->modifier   = -2;
     raf->location   = APPLY_HITROLL;
-    raf->duration   = dice(1,4);
+    raf->duration   = (sh_int)(dice(1,4));
     raf->aff_exit   = 10;
     raf->dam_dice   = 2;
     raf->dam_number = 8;
@@ -4424,12 +4424,12 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
        if ( pHolder == NULL && vnum > 0)
 	  break;
     }
-    pRoomIndex->vnum            = vnum;
+    pRoomIndex->vnum            = (sh_int)(vnum);
     name_len                    = strlen(defaultRoomName) + 1;
-    pRoomIndex->name            = alloc_mem( name_len );
+    pRoomIndex->name            = alloc_mem( (int)name_len );
     toc_strlcpy(pRoomIndex->name, defaultRoomName, name_len);
     desc_len                    = strlen(defaultRoomDesc) + 1;
-    pRoomIndex->description     = alloc_mem( desc_len );
+    pRoomIndex->description     = alloc_mem( (int)desc_len );
     toc_strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
     pRoomIndex->room_flags      = 0;
     pRoomIndex->room_flags2     = 0;
@@ -4458,7 +4458,7 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
 
     raf             = alloc_mem(sizeof(*raf) );
     raf->room       = pRoomIndex;
-    raf->timer      = 1 + dice(2,2);
+    raf->timer      = (sh_int)(1 + dice(2,2));
     raf->type       = 2;
     raf->level      = ch->level;
     raf->name       = "rope trick";
@@ -4515,12 +4515,12 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
        if ( pHolder == NULL && vnum > 0)
 	  break;
     }
-    pRoomIndex->vnum            = vnum;
+    pRoomIndex->vnum            = (sh_int)(vnum);
     name_len                    = strlen(defaultRoomName) + 1;
-    pRoomIndex->name            = alloc_mem( name_len );
+    pRoomIndex->name            = alloc_mem( (int)name_len );
     toc_strlcpy(pRoomIndex->name, defaultRoomName, name_len);
     desc_len                    = strlen(defaultRoomDesc) + 1;
-    pRoomIndex->description     = alloc_mem( desc_len );
+    pRoomIndex->description     = alloc_mem( (int)desc_len );
     toc_strlcpy(pRoomIndex->description, defaultRoomDesc, desc_len);
     pRoomIndex->room_flags      = 0;
     pRoomIndex->room_flags2     = 0;
@@ -4565,7 +4565,7 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
 
     raf             = alloc_mem(sizeof(*raf) );
     raf->room       = pRoomIndex;
-    raf->timer      = 2 + dice(3,2);;
+    raf->timer      = (sh_int)(2 + dice(3,2));;
     raf->type       = 2;
     raf->level      = ch->level;
     raf->name       = "haven";
@@ -4819,9 +4819,9 @@ void spell_ghostly_presence( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-    af.type = sn;
-    af.level		= level;
-    af.duration		= dice(2,2) + 1;
+    af.type = (sh_int)(sn);
+    af.level		= (sh_int)(level);
+    af.duration		= (sh_int)(dice(2,2) + 1);
     af.location		= APPLY_NONE;
     af.modifier		= 0;
     af.bitvector	= 0;
@@ -4908,8 +4908,8 @@ void spell_cause_madness( int sn, int level, CHAR_DATA *ch, void *vo )
 	if(victim == NULL)
 		return;
 
-    af.type		= sn;
-    af.level		= level;
+    af.type		= (sh_int)(sn);
+    af.level		= (sh_int)(level);
     af.duration		= 10;
     af.location		= APPLY_INT;
     af.modifier		= -3;
