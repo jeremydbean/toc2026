@@ -311,7 +311,7 @@ void do_nochannels( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
-	send_to_char( "Nochannel whom?", ch );
+	send_to_char( "Nochannel whom?\n\r", ch );
 	return;
     }
 
@@ -397,7 +397,7 @@ void do_whiner( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
-	send_to_char( "Who's a whiner?", ch );
+	send_to_char( "Who's a whiner?\n\r", ch );
 	return;
     }
 
@@ -444,7 +444,7 @@ void do_warn( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
-	send_to_char( "Warn who?",ch );
+	send_to_char( "Warn who?\n\r",ch );
 	return;
     }
 
@@ -468,7 +468,7 @@ void do_warn( CHAR_DATA *ch, char *argument )
 	send_to_char( "Remember its not good to break the rules!\n\r", victim);
 	snprintf(buf, sizeof(buf),"%s no longer has a WARNING flag.\n\r",victim->name);
 	send_to_char( buf,ch );
-	ch->act = 65788;
+	victim->act = 65788;  /* reset victim auto-flags to safe defaults */
 /*	ch->pcdata->jw_timer = 0;*/
     }
     else
@@ -546,7 +546,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
         send_to_char( buf,ch);
         char_from_room( victim );
         char_to_room( victim, temple );
-        ch->act = 65788;
+        victim->act = 65788;  /* reset victim auto-flags to safe defaults */
         ch->pcdata->jw_timer = 0;
         return;
     }
@@ -585,7 +585,7 @@ void do_nonote( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
-	send_to_char( "Nonote whom?", ch );
+	send_to_char( "Nonote whom?\n\r", ch );
 	return;
     }
 
@@ -4536,7 +4536,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
     {
 	if ( value < 50 || value > 500 )
 	{
-	  send_to_char("Timer must be between 50 and 500",ch);
+	  send_to_char("Timer must be between 50 and 500\n\r",ch);
 	  return;
 	}
 
@@ -4638,7 +4638,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
     if( !str_prefix(arg2, "were") )
     {
       if(value > 6)
-      { send_to_char("Value must be 6 or less",ch); return;}
+      { send_to_char("Value must be 6 or less\n\r",ch); return;}
 
       victim->were_shape.were_type  = value;
       victim->were_shape.name       = were_types[value].name;
@@ -4943,7 +4943,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
     {
        if(obj->item_type == ITEM_WEAPON && value > 75 )
        {
-	 send_to_char("You don't need weapon that powerful. 75 is Max.",ch);
+	 send_to_char("You don't need weapon that powerful. 75 is Max.\n\r",ch);
 	 return;
        }
 
@@ -4957,7 +4957,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
     {
        if(obj->item_type == ITEM_WEAPON && value > 75 )
        {
-	 send_to_char("You don't need a weapon that powerful. 75 is Max.",ch);
+	 send_to_char("You don't need a weapon that powerful. 75 is Max.\n\r",ch);
 	 return;
        }
 
