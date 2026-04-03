@@ -4530,7 +4530,7 @@ void spell_acid_breath( int sn, int level, CHAR_DATA *ch, void *vo )
 
 		    if (number_bits(2) == 0 || victim->in_room == NULL)
 			extract_obj(t_obj);
-// 		    else
+		    else
 			obj_to_room(t_obj,victim->in_room);
 		}
 
@@ -4621,7 +4621,7 @@ void spell_fire_breath( int sn, int level, CHAR_DATA *ch, void *vo )
 
 		    if (number_bits(2) == 0 || ch->in_room == NULL)
 			extract_obj(t_obj);
-// 		    else
+		    else
 			obj_to_room(t_obj,ch->in_room);
 		}
 	    }
@@ -4749,8 +4749,8 @@ void spell_high_explosive( int sn, int level, CHAR_DATA *ch, void *vo )
 
 void spell_blizzard( int sn, int level, CHAR_DATA *ch, void *vo )
 {
+    UNUSED_PARAM(vo);
     CHAR_DATA *vch;
-    CHAR_DATA *victim = (CHAR_DATA *) vo;
     LIST_ITERATOR iter;
     static const int16_t dam_each[] =
     {
@@ -4774,9 +4774,9 @@ void spell_blizzard( int sn, int level, CHAR_DATA *ch, void *vo )
 	if ( vch->in_room == ch->in_room )
 	{
 	    if ( vch != ch && !is_safe_spell(ch,vch,true)) {
-		if ( saves_spell( level, victim ) )
-		    damage(ch,vch,dam/2,sn,DAM_BASH);
-// 		else
+		if ( saves_spell( level, vch ) )
+		    damage(ch,vch,dam/2,sn,DAM_COLD);
+		else
 		    damage( ch, vch, dam, sn, DAM_COLD );
 	    }
 
@@ -4859,12 +4859,11 @@ void spell_portal( int sn, int level, CHAR_DATA *ch, void *vo )
   	NULL,TO_ROOM);
 
       snprintf(buf, sizeof(buf), "%s has created a portal to %s. [Room %d]",
-  	 (ch->short_descr == NULL ? ch->short_descr : ch->name),
-  	 (victim->short_descr == NULL ? victim->short_descr : victim->name),
+  	 (ch->short_descr != NULL ? ch->short_descr : ch->name),
+  	 (victim->short_descr != NULL ? victim->short_descr : victim->name),
   	 victim->in_room->vnum);
 
-    if(IS_SET(ch->act, PLR_WIZINVIS) )
-//     else
+    if(!IS_SET(ch->act, PLR_WIZINVIS) )
       wizinfo(buf, LEVEL_IMMORTAL);
 
     return;
@@ -4907,12 +4906,11 @@ void spell_portal( int sn, int level, CHAR_DATA *ch, void *vo )
 	NULL,TO_ROOM);
 
     snprintf(buf, sizeof(buf), "%s has created a portal to %s. [Room %d]",
-	 (ch->short_descr == NULL ? ch->short_descr : ch->name),
-	 (victim->short_descr == NULL ? victim->short_descr : victim->name),
+	 (ch->short_descr != NULL ? ch->short_descr : ch->name),
+	 (victim->short_descr != NULL ? victim->short_descr : victim->name),
 	 victim->in_room->vnum);
 
-    if(IS_SET(ch->act, PLR_WIZINVIS) )
-//     else
+    if(!IS_SET(ch->act, PLR_WIZINVIS) )
       wizinfo(buf, LEVEL_IMMORTAL);
 
     return;

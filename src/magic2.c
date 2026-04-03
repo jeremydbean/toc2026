@@ -3528,14 +3528,14 @@ void spell_geyser( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
-    extract_obj(obj);
-
     act("$n pours water out of $p onto the ground.",ch,obj,NULL,TO_ROOM);
     act("Seconds later, a geyser of water erupts under $N!",ch,obj,victim,TO_ROOM);
     act("$n pours water out of $p onto the ground.",ch,obj,NULL,TO_CHAR);
     act("Seconds later, a geyser of water erupts under $N!",ch,obj,victim,TO_CHAR);
     act("$n pours water out of $p onto the ground.",ch,obj,NULL,TO_VICT);
     act("Seconds later, a geyser of water erupts under YOU!",ch,obj,victim,TO_VICT);
+
+    extract_obj(obj);
 
     damage( ch, victim, dice(10, 10) + level, sn, DAM_DROWNING );
     victim->position = POS_RESTING;
