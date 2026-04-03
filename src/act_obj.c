@@ -3797,8 +3797,8 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	    act("All the exits seal themselves off, and the walls close in on you!",
 		ch, NULL, NULL, TO_CHAR);
 	send_to_char("Obviously you don't pay attention to warnings.\n\r",ch);
-	raw_kill(ch, ch);
 	send_to_char("You have been KILLED!\n\r",ch);
+	raw_kill(ch, ch);
      break;
    }
      return;
