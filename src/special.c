@@ -2304,7 +2304,8 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      if(most_hurt->position == POS_FIGHTING)
 	 return false;
 
-     if(IS_SET(most_hurt->in_room->room_flags, ROOM_DT) )
+     if(most_hurt->in_room == NULL
+     || IS_SET(most_hurt->in_room->room_flags, ROOM_DT) )
 	 return false; 
 
      if (most_hurt->level > 15)
