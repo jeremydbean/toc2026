@@ -2714,17 +2714,22 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
          switch (obj->value[0] )
          {
          case 1:
-          for ( ; ; )
-           {
-            to_room = get_room_index( number_range( 0, 65535 ) );
-            if (  to_room != NULL &&
-               (  !IS_SET(to_room->room_flags, ROOM_GODS_ONLY)
-                  || !IS_SET(to_room->room_flags, ROOM_NO_RECALL)
-                  || !IS_SET(to_room->room_flags, ROOM_JAIL)
-                  || !IS_SET(to_room->room_flags2, ROOM2_NO_TPORT)
-                  || !IS_SET(to_room->room_flags, ROOM_IMP_ONLY) ) )
-                  break;
-           }
+          {
+            int attempts;
+            for ( attempts = 0; attempts < 200; attempts++ )
+            {
+                to_room = get_room_index( number_range( 0, 65535 ) );
+                if (  to_room != NULL
+                &&   !IS_SET(to_room->room_flags, ROOM_GODS_ONLY)
+                &&   !IS_SET(to_room->room_flags, ROOM_NO_RECALL)
+                &&   !IS_SET(to_room->room_flags, ROOM_JAIL)
+                &&   !IS_SET(to_room->room_flags2, ROOM2_NO_TPORT)
+                &&   !IS_SET(to_room->room_flags, ROOM_IMP_ONLY) )
+                    break;
+            }
+            if ( to_room == NULL )
+                break;
+          }
           obj->value[1] = to_room->vnum;
           break;
         }

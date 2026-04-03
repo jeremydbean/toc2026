@@ -4359,18 +4359,26 @@ void spell_teleport( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-    for ( ; ; )
     {
-	pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-	if ( pRoomIndex != NULL )
-	if ( can_see_room(ch,pRoomIndex)
-	&&   !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
-	&&   !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
-	&&   !IS_SET(pRoomIndex->room_flags, ROOM_JAIL)
-	&&   !IS_SET(pRoomIndex->room_flags, ROOM_DT)
-	&&   !IS_SET(pRoomIndex->room_flags2, ROOM2_NO_TPORT)
-	&&   !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) )
-	    break;
+	int attempts;
+	for ( attempts = 0; attempts < 200; attempts++ )
+	{
+	    pRoomIndex = get_room_index( number_range( 0, 65535 ) );
+	    if ( pRoomIndex != NULL
+	    &&   can_see_room(ch,pRoomIndex)
+	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
+	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
+	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_JAIL)
+	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_DT)
+	    &&   !IS_SET(pRoomIndex->room_flags2, ROOM2_NO_TPORT)
+	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) )
+	        break;
+	}
+	if ( pRoomIndex == NULL )
+	{
+	    send_to_char( "The teleport fizzles.\n\r", ch );
+	    return;
+	}
     }
 
     if (victim != ch)

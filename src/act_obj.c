@@ -3379,26 +3379,32 @@ void do_bounce( OBJ_DATA *obj )
 
     if ( number_percent () < 90 )
 	 {
-            do
             {
-                for ( ; ; )
+                int do_attempts;
+                for ( do_attempts = 0; do_attempts < 200 && !found; do_attempts++ )
                 {
-                    pMobIndex = get_mob_index( number_range( 0, 65535 ) );
-                    if ( pMobIndex != NULL )
-                        break;
-                }
-
-                FOR_EACH_CHARACTER( iter, victim )
-                {
-                    if ( IS_NPC(victim)
-                    &&   victim->in_room != NULL
-                    &&   (pMobIndex == victim->pIndexData ) )
+                    int mob_attempts;
+                    for ( mob_attempts = 0; mob_attempts < 200; mob_attempts++ )
                     {
-                        found = true;
+                        pMobIndex = get_mob_index( number_range( 0, 65535 ) );
+                        if ( pMobIndex != NULL )
+                            break;
+                    }
+                    if ( pMobIndex == NULL )
                         break;
+
+                    FOR_EACH_CHARACTER( iter, victim )
+                    {
+                        if ( IS_NPC(victim)
+                        &&   victim->in_room != NULL
+                        &&   (pMobIndex == victim->pIndexData ) )
+                        {
+                            found = true;
+                            break;
+                        }
                     }
                 }
-            } while (found == false);
+            }
 
 	   if ( obj->carried_by != NULL )
 		{
@@ -3420,12 +3426,17 @@ void do_bounce( OBJ_DATA *obj )
 	 }
     else
 	 {
-	  for ( ; ; )
+	  {
+		int attempts;
+		for ( attempts = 0; attempts < 200; attempts++ )
 		{
-		 pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-		 if ( pRoomIndex != NULL )
-		   break;
+		    pRoomIndex = get_room_index( number_range( 0, 65535 ) );
+		    if ( pRoomIndex != NULL )
+			break;
 		}
+		if ( pRoomIndex == NULL )
+		    pRoomIndex = get_room_index( ROOM_VNUM_TEMPLE );
+	  }
 
 		if( obj->in_obj != NULL )
 		{

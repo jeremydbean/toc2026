@@ -116,24 +116,27 @@ void do_explode( CHAR_DATA *ch, char *argument)
 	obj_from_obj( obj );
 	obj_to_char(obj,ch);
 
-	for ( ; ; )
 	{
-          pMobIndex = get_mob_index( number_range( 0, 65535 ) );
-          if ( pMobIndex != NULL )
-          {
-           FOR_EACH_CHARACTER( iter, victim )
-           {
-                if ( IS_NPC(victim)
-                  && victim->in_room != NULL
-                  && (pMobIndex == victim->pIndexData ) )
-                 {
-                   found = true;
-                   break;
-                 }
-           }
-           if(found)
-                break;
-          }
+	    int wiz_attempts;
+	    for ( wiz_attempts = 0; wiz_attempts < 200 && !found; wiz_attempts++ )
+	    {
+	        pMobIndex = get_mob_index( number_range( 0, 65535 ) );
+	        if ( pMobIndex != NULL )
+	        {
+	            FOR_EACH_CHARACTER( iter, victim )
+	            {
+	                if ( IS_NPC(victim)
+	                  && victim->in_room != NULL
+	                  && (pMobIndex == victim->pIndexData ) )
+	                 {
+	                   found = true;
+	                   break;
+	                 }
+	            }
+	            if(found)
+	                break;
+	        }
+	    }
 	}
 
 	  if( victim != NULL && (number_percent () > 99) )
@@ -143,11 +146,16 @@ void do_explode( CHAR_DATA *ch, char *argument)
 	  }
 	  else
 	  {
-	    for( ; ; )
 	    {
-	      pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-	      if ( pRoomIndex != NULL )
-		break;
+		int attempts;
+		for ( attempts = 0; attempts < 200; attempts++ )
+		{
+		    pRoomIndex = get_room_index( number_range( 0, 65535 ) );
+		    if ( pRoomIndex != NULL )
+			break;
+		}
+		if ( pRoomIndex == NULL )
+		    pRoomIndex = get_room_index( ROOM_VNUM_TEMPLE );
 	    }
 	    obj_from_char(obj);
 	    obj_to_room( obj, pRoomIndex );
@@ -174,15 +182,18 @@ void do_explode( CHAR_DATA *ch, char *argument)
 
 	 if( IS_NPC(rch) )
 	 {
-	   for ( ; ; )
 	   {
-		pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-		if ( pRoomIndex != NULL )
+		int attempts;
+		for ( attempts = 0; attempts < 200; attempts++ )
 		{
-		   char_from_room(rch);
-		   char_to_room(rch, pRoomIndex);
-		   rch = ch->in_room->people;
-		   break;
+		    pRoomIndex = get_room_index( number_range( 0, 65535 ) );
+		    if ( pRoomIndex != NULL )
+		    {
+			char_from_room(rch);
+			char_to_room(rch, pRoomIndex);
+			rch = ch->in_room->people;
+			break;
+		    }
 		}
 	   }
 	 }

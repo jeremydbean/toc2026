@@ -2680,19 +2680,28 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
    act("A black dragon swoops down, flying off with $n.",wch,NULL,NULL,TO_ROOM);
    char_from_room(wch);
  
-   for ( ; ; )
    {
-     pRoomTport = get_room_index( number_range( 0, 65535 ) );
-     if ( pRoomTport != NULL )
-      if(!IS_SET(pRoomTport->room_flags, ROOM_INDOORS)  &&
-         !IS_SET(pRoomTport->room_flags, ROOM_SAFE)  &&
-         !IS_SET(pRoomTport->room_flags, ROOM_JAIL)  &&
-         !IS_SET(pRoomTport->room_flags, ROOM_IMP_ONLY)  &&
-         !IS_SET(pRoomTport->room_flags, ROOM_GODS_ONLY)  &&
-         !IS_SET(pRoomTport->room_flags, ROOM_HEROES_ONLY) &&
-	 !IS_SET(pRoomTport->room_flags, ROOM_DT) &&
-	 pRoomTport->people == NULL)
-	 break;
+     int attempts;
+     for ( attempts = 0; attempts < 200; attempts++ )
+     {
+         pRoomTport = get_room_index( number_range( 0, 65535 ) );
+         if ( pRoomTport != NULL
+         &&   !IS_SET(pRoomTport->room_flags, ROOM_INDOORS)
+         &&   !IS_SET(pRoomTport->room_flags, ROOM_SAFE)
+         &&   !IS_SET(pRoomTport->room_flags, ROOM_JAIL)
+         &&   !IS_SET(pRoomTport->room_flags, ROOM_IMP_ONLY)
+         &&   !IS_SET(pRoomTport->room_flags, ROOM_GODS_ONLY)
+         &&   !IS_SET(pRoomTport->room_flags, ROOM_HEROES_ONLY)
+         &&   !IS_SET(pRoomTport->room_flags, ROOM_DT)
+         &&   pRoomTport->people == NULL )
+             break;
+     }
+     if ( pRoomTport == NULL )
+     {
+         char_to_room( wch, get_room_index(ROOM_VNUM_TEMPLE) );
+         send_to_char("The dragon loses its grip and drops you!\n\r", wch);
+         return false;
+     }
    }
    char_to_room(wch, pRoomTport);
    send_to_char("You are deposited in a remote site for later consumption.\n\r",wch);

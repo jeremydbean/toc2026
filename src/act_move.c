@@ -94,17 +94,22 @@ ROOM_INDEX_DATA *get_random_room(CHAR_DATA *ch)
 {
     ROOM_INDEX_DATA *room;
 
-    for( ; ; )
-    {
-	room = get_room_index( number_range(0, 65535) );
-	if ( room != NULL )
-	if ( can_see_room(ch, room)
-	&& !IS_SET(room->room_flags, ROOM_PRIVATE )
-	&& !IS_SET(room->room_flags, ROOM_SOLITARY )
-	&& !IS_SET(room->room_flags, ROOM_JAIL )
-	&& !IS_SET(room->room_flags, ROOM_SAFE )
-	&& !IS_SET(room->room_flags, ROOM_NO_RECALL ) )
-	break;
+        {
+	int attempts;
+	for ( attempts = 0; attempts < 200; attempts++ )
+	{
+	    room = get_room_index( number_range(0, 65535) );
+	    if ( room != NULL
+	    &&   can_see_room(ch, room)
+	    &&   !IS_SET(room->room_flags, ROOM_PRIVATE )
+	    &&   !IS_SET(room->room_flags, ROOM_SOLITARY )
+	    &&   !IS_SET(room->room_flags, ROOM_JAIL )
+	    &&   !IS_SET(room->room_flags, ROOM_SAFE )
+	    &&   !IS_SET(room->room_flags, ROOM_NO_RECALL ) )
+		break;
+	}
+	if ( room == NULL )
+	    room = get_room_index( ROOM_VNUM_TEMPLE );
     }
   return room;
 }
@@ -1295,8 +1300,11 @@ void do_open( CHAR_DATA *ch, char *argument )
 	    for ( rch = to_room->people; rch != NULL; rch = rch->next_in_room )
 	      act( msg, rch, NULL, pexit_rev->keyword, TO_CHAR );
 
-	    for ( rch = to_room->people; rch != NULL; rch = rch->next_in_room )
 	    {
+		CHAR_DATA *rch_next;
+		for ( rch = to_room->people; rch != NULL; rch = rch_next )
+		{
+		    rch_next = rch->next_in_room;
 		if(IS_NPC(rch) && IS_SET(rch->off_flags, OFF_ATTACK_DOOR_OPENER) )
 		{
 		  char_from_room(rch);
@@ -1316,7 +1324,8 @@ void do_open( CHAR_DATA *ch, char *argument )
 		    act("$n slaps you for your impoliteness.",rch,NULL,ch,TO_VICT);
 		  }
 		}
-	    }
+		}  /* end for rch_next loop */
+	    }  /* end attack-door-opener block */
 	}
     }
 
@@ -3162,18 +3171,23 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
     snprintf(buf, sizeof(buf), "%s has set off a Sleep trap!!!", ch->name);
        break;
        case 5: /* tport trap (10 on all stats) */
-	 for ( ; ; )
 	 {
-	   pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-	   if ( pRoomIndex != NULL )
-	   if ( can_see_room(ch,pRoomIndex)
-	   &&   !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
-	   &&   !IS_SET(pRoomIndex->room_flags, ROOM_GODS_ONLY)
-	   &&   !IS_SET(pRoomIndex->room_flags, ROOM_IMP_ONLY)
-	   &&   !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
-	   &&   !IS_SET(pRoomIndex->room_flags, ROOM_JAIL)
-	   &&   !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) )
-	    break;
+	   int attempts;
+	   for ( attempts = 0; attempts < 200; attempts++ )
+	   {
+	     pRoomIndex = get_room_index( number_range( 0, 65535 ) );
+	     if ( pRoomIndex != NULL
+	     &&   can_see_room(ch,pRoomIndex)
+	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
+	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_GODS_ONLY)
+	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_IMP_ONLY)
+	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
+	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_JAIL)
+	     &&   !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) )
+	       break;
+	   }
+	   if ( pRoomIndex == NULL )
+	     break;
 	 }
 
 	send_to_char("You have been teleported!\n\r",ch);
