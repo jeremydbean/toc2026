@@ -3243,23 +3243,32 @@ void trapped( CHAR_DATA *ch, OBJ_DATA *obj, int find_trap )
     snprintf(buf, sizeof(buf), "%s has set off a Dart trap!!!", ch->name);
        break;
        case 7: /* summon trap (make a new mob with summoner) */
-	  pMobIndex = get_mob_index( 79 );
-	  guardian = create_mobile ( pMobIndex );
-	  char_to_room( guardian, ch->in_room );
-	  guardian->level = ch->level - 5;
-	  if(ch->level < 51 )
 	  {
-             guardian->max_hit = (int16_t)(ch->max_hit + ch->max_hit / 2);
-             guardian->hit = guardian->max_hit;
+	      char save_name[MAX_INPUT_LENGTH];
+	      toc_strlcpy( save_name, ch->name, sizeof(save_name) );
+	      pMobIndex = get_mob_index( 79 );
+	      guardian = create_mobile ( pMobIndex );
+	      char_to_room( guardian, ch->in_room );
+	      guardian->level = ch->level - 5;
+	      if(ch->level < 51 )
+	      {
+	          guardian->max_hit = (int16_t)(ch->max_hit + ch->max_hit / 2);
+	          guardian->hit = guardian->max_hit;
+	      }
+	      else
+	      {
+	          guardian->max_hit = ch->max_hit * 3;
+	          guardian->hit = guardian->max_hit;
+	      }
+	      guardian->timer = 350;
+	      multi_hit( guardian, ch, TYPE_UNDEFINED );
+	      snprintf(buf, sizeof(buf), "%s has set off a Guardian trap!!!", save_name);
+	      if ( ch->in_room == NULL )  /* ch was killed by guardian */
+	      {
+	          wizinfo(buf, LEVEL_IMMORTAL);
+	          return;
+	      }
 	  }
-	  else
-	  {
-	    guardian->max_hit = ch->max_hit * 3;
-	    guardian->hit = guardian->max_hit;
-	  }
-	  guardian->timer = 350;
-	  multi_hit( guardian, ch, TYPE_UNDEFINED );
-    snprintf(buf, sizeof(buf), "%s has set off a Guardian trap!!!", ch->name);
        break;
        case 8: /* stun trap */
 	 act( "A bold of lightning zaps $n.", ch, NULL, NULL, TO_ROOM );

@@ -2914,9 +2914,13 @@ void disaster_update( void )
        else
        {
          pRoomTport = get_room_index(9986);
-	 if( pRoomTport->people == NULL)
+	 if( pRoomTport != NULL && pRoomTport->people == NULL)
 	 {
-	   char_to_room(create_mobile(get_mob_index(4474)), get_room_index(9986) );
+	   {
+	       MOB_INDEX_DATA *pDragon = get_mob_index(4474);
+	       if (pDragon != NULL)
+	           char_to_room(create_mobile(pDragon), pRoomTport);
+	   }
 
            FOR_EACH_CHARACTER( iter, wch )
            {
