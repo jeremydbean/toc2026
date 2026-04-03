@@ -39,6 +39,11 @@ void do_heal(CHAR_DATA *ch, char *argument)
     char *words;	
 
     /* check for healer */
+    if ( ch->in_room == NULL )
+    {
+        send_to_char( "You can't do that here.\n\r", ch );
+        return;
+    }
     for ( mob = ch->in_room->people; mob; mob = mob->next_in_room )
     {
         if ( IS_NPC(mob) && IS_SET(mob->act, ACT_IS_HEALER) )

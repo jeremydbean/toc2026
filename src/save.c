@@ -1900,7 +1900,12 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Time",	obj->timer,		(sh_int)(fread_number( fp )) );
 	    if(!str_cmp(word,"Trap") )
 	    {
-	      char_to_obj(create_mobile(get_mob_index(fread_number(fp))),obj );
+	      int trap_vnum = fread_number(fp);
+	      MOB_INDEX_DATA *trap_mob = get_mob_index(trap_vnum);
+	      if (trap_mob != NULL)
+	          char_to_obj(create_mobile(trap_mob), obj);
+	      else
+	          bug("fread_obj: bad trap vnum %d", trap_vnum);
 	      fMatch = true;
 	    }
 	    break;

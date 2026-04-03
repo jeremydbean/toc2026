@@ -464,6 +464,9 @@ bool check_specials(CHAR_DATA *ch, DO_FUN *cmd, char *arg)
 {
     CHAR_DATA *fch, *fch_next;
 
+    if (ch->in_room == NULL)
+        return false;
+
     for ( fch = ch->in_room->people; fch != NULL; fch = fch_next )
     {
         fch_next = fch->next_in_room;

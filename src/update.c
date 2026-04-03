@@ -2306,7 +2306,14 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
       if(ch->were_shape.name == NULL)
 	return;
 
-      mob = create_mobile(get_mob_index(ch->were_shape.mob_vnum) );
+      {
+        MOB_INDEX_DATA *were_mob_idx = get_mob_index(ch->were_shape.mob_vnum);
+        if (were_mob_idx == NULL)
+            return;
+        mob = create_mobile(were_mob_idx);
+      }
+      if (mob == NULL)
+          return;
       char_to_room(mob,ch->in_room);
       mob->perm_stat[0] = (sh_int)(UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.str) + ch->were_shape.factor));
       mob->perm_stat[3] = (sh_int)(UMIN(MAX_STAT,dice(ch->level/10, ch->were_shape.dex) + ch->were_shape.factor));

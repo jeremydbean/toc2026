@@ -2163,6 +2163,8 @@ CHAR_DATA *get_char_room( CHAR_DATA *ch, char *argument )
     count  = 0;
     if ( !str_prefix( arg, "self" ) )
 	return ch;
+    if ( ch->in_room == NULL )
+	return NULL;
     for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
     {
 	if ( !can_see( ch, rch ) || !is_name( arg, rch->name ) )
@@ -2315,6 +2317,8 @@ OBJ_DATA *get_obj_here( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *obj;
 
+    if ( ch->in_room == NULL )
+	return NULL;
     obj = get_obj_list( ch, argument, ch->in_room->contents );
 
     if ( obj != NULL )
