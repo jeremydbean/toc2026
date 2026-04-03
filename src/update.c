@@ -2184,12 +2184,16 @@ void room_update( void )
 	    else if(IS_SET(pRoom->room->room_flags, ROOM_RIVER))
 	    {
 		CHAR_DATA *pChar, *pCharNext;
-		ROOM_INDEX_DATA * to_room;
+                EXIT_DATA *pexit;
+                ROOM_INDEX_DATA * to_room;
 
-		to_room = pRoom->room->exit[pRoom->to_room]->u1.to_room;
+                pexit = pRoom->room->exit[pRoom->to_room];
+                if (pexit == NULL || pexit->u1.to_room == NULL)
+                    continue;  /* misconfigured river room — skip this room */
+                to_room = pexit->u1.to_room;
 
-		for (pChar = pRoom->room->people; pChar != NULL;
-			pChar = pCharNext)
+                for (pChar = pRoom->room->people; pChar != NULL;
+                        pChar = pCharNext)
 		{
 		    pCharNext = pChar->next_in_room;
 

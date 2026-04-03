@@ -3043,7 +3043,7 @@ void do_purge( CHAR_DATA *ch, char *argument )
                 victim->position = POS_STANDING;
 		extract_char( victim, true );
             }
-	    if(!IS_NPC(victim) && victim->pcdata->mounted)
+	    else if(!IS_NPC(victim) && victim->pcdata->mounted)
 	      victim->pcdata->mounted = false;
 	}
 
