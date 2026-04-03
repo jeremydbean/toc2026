@@ -4476,39 +4476,43 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	    remove_all_hates(victim);
 	}
 
-        if(IS_NPC(victim) && IS_SET(victim->off_flags,OFF_SUMMONER) )
-        {
-          raw_kill( ch, victim );
+	/* pre-save before raw_kill may free the victim struct */
+	{
+	  bool victim_was_npc = IS_NPC(victim);
 
-          FOR_EACH_CHARACTER( iter, vch )
-          {
+	  if(IS_NPC(victim) && IS_SET(victim->off_flags,OFF_SUMMONER) )
+	  {
+	    raw_kill( ch, victim );
 
-            if ( vch->in_room == NULL )
-              continue;
-
-	    if ( vch->in_room == ch->in_room )
+	    FOR_EACH_CHARACTER( iter, vch )
 	    {
 
-	      if( IS_SET(vch->off_flags, NEEDS_MASTER) )
+	      if ( vch->in_room == NULL )
+	        continue;
+
+	      if ( vch->in_room == ch->in_room )
 	      {
-		act("$N screams as it is pulled back into the abyss!",ch,
-		   NULL,vch,TO_ROOM);
-		act("$N screams as it is pulled back into the abyss!",ch,
-		   NULL,vch,TO_CHAR);
-		extract_char(vch, true);
+
+	        if( IS_SET(vch->off_flags, NEEDS_MASTER) )
+	        {
+		  act("$N screams as it is pulled back into the abyss!",ch,
+		     NULL,vch,TO_ROOM);
+		  act("$N screams as it is pulled back into the abyss!",ch,
+		     NULL,vch,TO_CHAR);
+		  extract_char(vch, true);
+	        }
+
 	      }
-
+	      continue;
 	    }
-	    continue;
 	  }
-	}
-	else
-	  raw_kill( ch, victim );
+	  else
+	    raw_kill( ch, victim );
 
-	/* RT new auto commands */
+	  /* RT new auto commands */
 
-	if ( !IS_NPC(ch) && IS_NPC(victim) )
-	{
+	  if ( !IS_NPC(ch) && victim_was_npc )
+	  {
 	    corpse = get_obj_list( ch, "corpse", ch->in_room->contents );
 
 	    if ( IS_SET(ch->act, PLR_AUTOLOOT) &&
@@ -4530,6 +4534,7 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	      else
 		do_sacrifice( ch, "corpse" );
 	    }
+	  }
 	}
    return;
 }
