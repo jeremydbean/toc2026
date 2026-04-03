@@ -817,7 +817,9 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	victim = d->original ? d->original : d->character;
  
 	if (!can_see(mob, victim)
-	   || (victim->in_room->area != mob->in_room->area))
+	    || victim->in_room == NULL
+	    || mob->in_room == NULL
+	    || victim->in_room->area != mob->in_room->area)
 	    continue;
  
 	if ( IS_SET(victim->comm,COMM_WHINE) )

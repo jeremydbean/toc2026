@@ -4447,12 +4447,20 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
     pRoomIndex->contents        = NULL;
     pRoomIndex->extra_descr     = NULL;
     pRoomIndex->area            = new_area;
-    for ( ; ; )
     {
-       vnum = number_range( 0, 30000);
-       pHolder = get_room_index( vnum );
-       if ( pHolder == NULL && vnum > 0)
-	  break;
+      int attempts;
+      for (attempts = 0; attempts < 1000; attempts++)
+      {
+         vnum = number_range( 1, 30000);
+         pHolder = get_room_index( vnum );
+         if ( pHolder == NULL )
+            break;
+      }
+      if ( pHolder != NULL ) /* no free vnum found */
+      {
+         send_to_char("The magic fails to find a suitable dimension.\n\r",ch);
+         return;
+      }
     }
     pRoomIndex->vnum            = (sh_int)(vnum);
     name_len                    = strlen(defaultRoomName) + 1;
@@ -4465,13 +4473,13 @@ void spell_rope_trick( int sn, int level, CHAR_DATA *ch, void *vo )
     pRoomIndex->room_flags2     = 0;
     pRoomIndex->sector_type     = 0;
     pRoomIndex->light           = 0;
-    pRoomIndex->affected        = 0;
+    pRoomIndex->affected        = NULL;
     for ( door = 0; door <= 9; door++ )
-	pRoomIndex->exit[door] = NULL;
+       pRoomIndex->exit[door] = NULL;
 
-    iHash			= vnum % MAX_KEY_HASH;
-    pRoomIndex->next    	= room_index_hash[iHash];
-    room_index_hash[iHash]	= pRoomIndex;
+    iHash                      = vnum % MAX_KEY_HASH;
+    pRoomIndex->next           = room_index_hash[iHash];
+    room_index_hash[iHash]     = pRoomIndex;
 
     ch->was_in_room = ch->in_room;
     char_from_room(ch);
@@ -4538,12 +4546,20 @@ void spell_haven( int sn, int level, CHAR_DATA *ch, void *vo )
     pRoomIndex->contents        = NULL;
     pRoomIndex->extra_descr     = NULL;
     pRoomIndex->area            = new_area;
-    for ( ; ; )
     {
-       vnum = number_range( 0, 30000);
-       pHolder = get_room_index( vnum );
-       if ( pHolder == NULL && vnum > 0)
-	  break;
+        int attempts;
+        for (attempts = 0; attempts < 1000; attempts++)
+        {
+            vnum = number_range( 1, 30000);
+            pHolder = get_room_index( vnum );
+            if ( pHolder == NULL )
+                break;
+        }
+        if ( pHolder != NULL ) /* no free vnum found */
+        {
+            send_to_char("The magic fails to find a suitable haven.\n\r",ch);
+            return;
+        }
     }
     pRoomIndex->vnum            = (sh_int)(vnum);
     name_len                    = strlen(defaultRoomName) + 1;
