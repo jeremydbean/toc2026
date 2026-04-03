@@ -7006,7 +7006,7 @@ void do_imweather( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' )
     {
-        send_to_char( "Syntax: weather <sunny|cloudy|rain|storm>\n\r", ch );
+        send_to_char( "Syntax: iweather <sunny|cloudy|rain|storm>\n\r", ch );
         snprintf( buf, sizeof(buf), "Current sky: %d (0=sunny 1=cloudy 2=rain 3=storm)\n\r",
                   weather_info.sky );
         send_to_char( buf, ch );
@@ -7040,7 +7040,7 @@ void do_imweather( CHAR_DATA *ch, char *argument )
     }
     else
     {
-        send_to_char( "Syntax: weather <sunny|cloudy|rain|storm>\n\r", ch );
+        send_to_char( "Syntax: iweather <sunny|cloudy|rain|storm>\n\r", ch );
         return;
     }
 
@@ -7073,14 +7073,14 @@ void do_lights( CHAR_DATA *ch, char *argument )
     if ( IS_SET(ch->in_room->room_flags, ROOM_DARK) )
     {
         REMOVE_BIT( ch->in_room->room_flags, ROOM_DARK );
-        act( "The lights come on, illuminating the area.", ch, NULL, NULL, TO_ROOM );
-        send_to_char( "The lights come on, illuminating the area.\n\r", ch );
+        act( "$n reaches over and flips the light switch back on. *CLICK*  Blinding light floods the area.", ch, NULL, NULL, TO_ROOM );
+        send_to_char( "You reach over and flip the light switch on. *CLICK*  Let there be light!\n\r", ch );
     }
     else
     {
         SET_BIT( ch->in_room->room_flags, ROOM_DARK );
-        act( "Darkness descends as the lights go out.", ch, NULL, NULL, TO_ROOM );
-        send_to_char( "Darkness descends as the lights go out.\n\r", ch );
+        act( "$n casually reaches over and flips the light switch. *CLICK*  The room plunges into darkness.", ch, NULL, NULL, TO_ROOM );
+        send_to_char( "You casually reach over and flip the light switch. *CLICK*  Niiiice.\n\r", ch );
     }
     return;
 }

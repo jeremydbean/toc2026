@@ -199,7 +199,8 @@ Boggle away.  They've left.
 You boggle at yourself.  Hmmm...intriguing.
 $n boggles quietly to $mself.
 
-booger 0 0
+
+booger 0 0
 Use a hanky you pig! Jeez.. some people.
 $n blows a wad of boogers down $s chin. EWWWW!
 You empty your nose on $M. Boy are you disgusting!
@@ -2049,6 +2050,75 @@ They didn't want a cold shower.
 You *whoosh* yourself with a bucket of cold water!  Brrr!
 $n *whooshes* $mself with a bucket of cold water!
 
+awkward 0 0
+You stand there awkwardly, shifting your weight from foot to foot.
+$n stands there looking deeply, profoundly awkward.
+You stand next to $N in palpable, uncomfortable silence.
+$n stands next to $N.  The silence stretches.  Nobody knows what to do.
+$n stands next to you in complete silence.  It.  Is.  Awkward.
+Awkward at whom?  You're awkward at the entire room.
+You stand in awkward silence with yourself.
+$n stands in awkward silence with $mself.
+
+dab 0 0
+You briefly contemplate dabbing, then do it anyway.  No regrets.
+$n dabs.  It's 2016 somewhere.
+You dab specifically at $N.  $E deserved that.
+$n dabs at $N.  This is fine.
+$n dabs at you.  You file this away.
+You dab at no one.  The air is unimpressed.
+You dab at yourself.  No one can stop you.
+$n dabs at $mself.  Living freely.
+
+derp 0 0
+You make the most gloriously derpy face possible.
+$n crosses $s eyes and makes an absolutely derpy face.
+You make the derpiest face right at $N.
+$n makes the most derpy face RIGHT at $N.
+$n makes a terrifically derpy face right AT you.  Thanks for that.
+Who are you derping at?  You derp at the air defiantly.
+You derp at yourself in an imaginary mirror.
+$n derps at $mself.  The reflection derps back.
+
+facepalm 0 0
+You slap your forehead so hard your neck snaps.
+$n lets out a groan and slaps $s forehead dramatically.
+You slap your forehead SO hard at $N's last move.
+$n facepalms SO hard at $N.  We're all thinking it.
+$n facepalms at you.  Ouch.  Fair, though.
+Who are you facepalming at?  They're not here, but you do it anyway.
+You facepalm yourself.  Self-awareness: achieved.
+$n facepalms $mself.  Respect.
+
+micdrop 0 0
+You say something utterly brilliant, then drop the mic.
+$n drops the mic.  The crowd goes wild.
+You look squarely at $N, deliver the hottest take of the century, and drop the mic.
+$n monologues at $N and drops the mic.  Nobody move.
+$n delivers a devastating truth right to your face, then drops the mic.
+You drop the mic...  into nothing.  Still counts.
+You drop the mic on yourself.  Arguably the boldest move.
+$n drops the mic on $mself.  Self-roast of the year.
+
+panic 0 0
+You spin in circles flailing both arms!  Pure chaos!
+$n spins in circles with arms flailing!  PANIC MODE ACTIVATED!
+You grab $M by the shoulders and transmit every ounce of your panic directly.
+$n grabs $N by the shoulders, eyes wide: 'DO YOU SEE WHAT IS HAPPENING?!'
+$n grabs you by the shoulders, clearly panicking.  Is this contagious?
+You panic at nobody.  They're not here to calm you down anyway.
+You panic at yourself!  Nobody relax...  you panic on.
+$n panics at $mself!  Full breakdown.  Respect.
+
+slowclap 0 0
+You applaud while moving your hands at exactly half speed.
+$n gives the world's most passive-aggressive slow clap.
+You slow-clap directly at $N.  The message is clear.
+$n launches into a slow, deliberate, deeply pointed clap in $N's direction.
+$n slow claps at you.  $e doesn't look impressed.  At all.
+Who deserves the slow clap?  You slow clap at the empty air.
+You slow clap for yourself.  You've earned it and you know it.
+$n slow claps for $mself.  Zero shame.
 
 
 #0

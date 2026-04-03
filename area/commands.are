@@ -272,7 +272,7 @@ skill or spell and often requires appropriate weapons or positioning.
 - RESCUE: pull an ally out of melee by taking their opponent onto yourself.
 ~
 
-0 AQUEST TOPTEN SEARCH TRACK HIDE LEVITATE SNEAK STEAL STEALTH STEEL SHOVE ROLL IRON MINDBAR PSIONIC PSYCHIC FLING GKICK QUI QUIT~
+0 AQUEST TOPTEN SEARCH TRACK HIDE LEVITATE SNEAK STEAL STEALTH STEEL SHOVE ROLL IRON MINDBAR PSIONIC PSYCHIC QUI QUIT~
 Syntax: aquest
 Syntax: topten
 Syntax: search
@@ -289,8 +289,6 @@ Syntax: iron
 Syntax: mindbar
 Syntax: psionic
 Syntax: psychic
-Syntax: fling <victim>
-Syntax: gkick <victim>
 Syntax: quit
 Syntax: qui
 
@@ -303,51 +301,41 @@ Exploration and miscellaneous skills:
   unseen or silently when trained.
 - LEVITATE engages psionic lift, allowing you to float over some hazards.
 - STEAL takes items from another character if you remain unnoticed.
-- SHOVE and FLING push or toss targets out of the current room.
+- SHOVE pushes a target out of the current room into an adjacent one.
 - ROLL and IRON are defensive stances that improve dodging or toughness.
 - MINDBAR/PSIONIC/PSYCHIC toggle specialized psionic defenses or channels.
-- GKICK delivers a sweeping group kick aimed at disrupting multiple foes.
 - QUIT (or QUI) cleanly saves your character and disconnects from the game
   when you are not in combat.
 ~
 
-62 IMMORTAL CHANNELS BEEP GODTALK INVIS ITRANS JAIL KSOCK MAXLOADS NEWCORPSE NOCHANNELS NOTITLE SLA SLAY WARN WHINER WIZCHECK TRANSFUSION RETRIEVED LISTCLUE~
-Syntax: godtalk <message>
-Syntax: imotd
-Syntax: invis [level]
-Syntax: itrans <player> <room vnum>
-Syntax: jail <player>
-Syntax: ksock <descriptor>
-Syntax: maxloads
-Syntax: newcorpse <player>
-Syntax: nochannels <player>
-Syntax: notitle <player>
-Syntax: sla <player>
-Syntax: slay <player>
-Syntax: warn <player> <reason>
-Syntax: whiner <player>
-Syntax: wizcheck <player>
-Syntax: transfusion <target>
-Syntax: retrieved
-Syntax: listclue
+62 IMMORTAL~
+This help topic covers miscellaneous immortal tools.  Type WIZHELP for a
+complete listing of all immortal commands available to your trust level.
+For staff communication see IMMTALK (:) and WIZINFO.  Immortal channels
+and flags are logged; all actions with LOG_ALWAYS are permanently recorded.
+
+See also: WIZHELP, PSTAT, WIZCHECK, FINGER
+~
+
+62 BEEP~
 Syntax: beep <immortal>
 
-Immortal-only administration commands, shown here for completeness but only
-usable by staff:
-- GODTALK is a private channel for level 1 immortals and above.
-- IMOTD views the immortal MOTD.
-- INVIS sets your invisibility level for mortals.
-- ITRANS transfers a player to a room vnum.
-- JAIL moves a player into the jail room.
-- KSOCK shows socket information for a descriptor number.
-- NEWCORPSE creates a replacement corpse for a player.
-- NOCHANNELS and NOTITLE strip channel or title privileges from a player.
-- SLAY executes a targeted character immediately.
-- WARN and WHINER issue administrative warnings or flags.
-- WIZCHECK reports potential issues with a player's stats or flags.
-- TRANSFUSION heals using your own energy; RETRIEVED and LISTCLUE support
-  quest object recovery and quest clue listings.
-- BEEP pings another immortal regardless of channel settings.
+BEEP sends a ping-style private message to the named immortal regardless of
+whether they have the immortal channel muted.  Use it to get the attention
+of an AFK immortal without broadcasting to the whole staff channel.
+
+See also: IMMTALK, WIZINFO
+~
+
+62 TRANSFUSION~
+Syntax: transfusion <target>
+
+TRANSFUSION is a psionic skill that lets you sacrifice a portion of your
+own hitpoints to restore a target's health.  The amount transferred
+depends on your psionic skill level and constitution.  Cannot be used
+if it would reduce you below a safe minimum HP threshold.
+
+See also: PSIONICS, MINDBAR
 ~
 
 0 ALIAS ALIASES~
@@ -772,7 +760,8 @@ insane      cover       flare       head        pie         cower
 noogie      yeehaw      pissed      passout     adjust      scratch
 meditate    bkiss       beer        bcatch      claw        rose
 laces       tag         tank        starve      aargh       homework
-puff        differ      yae         lightbulb   voodoo
+puff        differ      yae         lightbulb   voodoo      awkward
+dab         derp        facepalm    micdrop     panic       slowclap
 ~
 
 0 EQUIPMENT INVENTORY~
@@ -1688,45 +1677,93 @@ vnum.
 Syntax: reboot
         shutdown
 
-Reboot shuts down the server.  When the normal 'startup' script is used
-to control the server, a delay of fifteen seconds will ensue (to allow
-old connections to die), followed by a reboot.
+REBOOT shuts down and immediately restarts the game server.  When launched
+under the normal startup script, the server pauses roughly fifteen seconds
+for connections to drain, then launches a fresh copy.  All characters are
+automatically saved before the reboot sequence begins.
 
-Shutdown shuts down the server and prevents the normal 'startup' script
-from restarting it.
+  reboot  — safe restart; the startup script brings the server back up
+            automatically after the delay
 
-Never, ever, shutdown the mud without consulting Eclipse, Gravestone or
-Soulcrusher.
+SHUTDOWN shuts the server down and signals the startup script NOT to
+restart it.  Use shutdown only when the server needs to stay offline for
+maintenance, patching, or emergency fixes.
+
+  shutdown — permanent stop; requires manual intervention to bring the
+             server back up
+
+Both commands are implementor-level only.  Before using either, notify
+the rest of the admin team so players are not caught off-guard.
+A brief WIZINFO warning before shutdown is strongly recommended.
+
+See also: WIZINFO, GECHO, WIZLOCK
 ~
 
-66 WIZLOCK NEWLOCK~
+66 WIZLOCK~
 Syntax: wizlock
-        newlock
 
-Wizlock and newlock both block login attempts to ToC Mud.  Wizlock locks
-out all non-gods (i.e. level less than 62), except for link-dead players who
-are returning.  Newlock only locks out new character generation, typically
-used for preventing a spammer from returning.  Wizlocking should be avoided,
-and newlocking should be accompanied by mail or a note to the implementors.
+WIZLOCK locks the game against new logins.  All players below immortal rank
+(level 62 and lower) are refused entry — except link-dead characters who are
+returning to their existing sessions, who are allowed back in.
 
-A god must be at least Supreme level to wizlock the game.
+Wizlock should be used sparingly: typically only during a full reboot,
+critical maintenance, or an exploit emergency.  When wizlocking, send a
+GECHO or WIZINFO first so online players know what is happening.
+
+Type WIZLOCK again to unlock the game.
+
+See also: NEWLOCK, SHUTDOWN, REBOOT, DENY
 ~
 
-67 DENY UNDENY~
+62 NEWLOCK~
+Syntax: newlock
+
+NEWLOCK blocks new character creation.  Existing characters can still log
+in normally; only the creation of brand-new characters is prevented.  This
+is typically used when dealing with a ban-evading spammer who keeps making
+new alts.
+
+Type NEWLOCK again to re-enable character creation.
+
+See also: WIZLOCK, DENY, BAN
+~
+
+67 DENY~
 Syntax: deny <name>
-        undeny <name>
 
-Deny locks a character out of a game permanently, rendering their character
-name unusable.  Use the undeny command to allow to character to play again.
+DENY permanently locks a named character out of the game.  The player will
+be unable to log in with that character; the game simply disconnects them
+during the login sequence.  This is a hard ban on a character file.
 
+DENY should be reserved for serious, repeated violations where a FREEZE or
+timeout is insufficient.  Unlike FREEZE, a denied character cannot be
+unblocked from within the game unless a staff member explicitly uses UNDENY.
+
+See also: UNDENY, FREEZE, BAN, WIZLOCK
 ~
 
-67 DISCONNECT DUMP~
+67 UNDENY~
+Syntax: undeny <name>
+
+UNDENY removes a previously applied DENY flag from a character, restoring
+their ability to log in.  Only supply the character name — they do not need
+to be online for UNDENY to take effect.
+
+See also: DENY
+~
+
+67 DUMP~
 Syntax: dump <name>
 
-Disconnect breaks a player's link to the game, dumping them back to the telnet
-prompt.  This is a non-lethal way of getting rid of spammers and annoying
-players.
+DUMP (formerly DISCONNECT) breaks a player's network link, returning them to
+their telnet prompt or their client's connection screen.  The character
+remains in the game briefly in a link-dead state and saves normally.
+
+Use DUMP as a non-lethal first response to spammers or players who need to
+be cleanly logged off.  If the player reconnects and continues misbehaving,
+consider FREEZE, DENY, or escalate to BAN.
+
+See also: FREEZE, DENY, BAN, SNOOP
 ~
 
 64 FREEZE~
@@ -1856,20 +1893,19 @@ name and $n for the player name if you want those in the message.
 DO NOT USE ANY OTHER VARIABLES, DOING SO WILL CAUSE THE MUD TO CRASH.
 ~
 
-63 NOCHANNEL NOEMOTE NOSHOUT NOTELL~
-Syntax: nochannel <character>
-        noemote   <character>
-        noshout   <character>
-        notell    <character>
+63 NOCHANNEL~
+Syntax: nochannels <character>
 
-Noemote, noshout, and notell are used to muffle other characters, by
-preventing them from emoting, shouting, and telling, respectively.
-Characters who are noshout'ed or notell'ed will also not receive those
-forms of communication.
+NOCHANNELS is the most broad communication restriction for a misbehaving
+player.  It prevents the target from using ANY global channel: gossip,
+auction, info, music, Q/A, etc.  The target can still say, tell, and
+emote normally.  Toggle again to restore channel privileges.
 
-The nochannel command is similar, but more drastic. It prevents the victim
-from using any of the channels (gossip, auction, Q/A, music) on the game.
-Nochannels usually result from swearing or spamming on public channels.
+Typically used for persistent channel spammers or players using channels
+for language violations.  For a complete communication lockdown, use MUTE
+instead, which also strips tell, shout, say, and emote simultaneously.
+
+See also: MUTE, NOSHOUT, NOEMOTE, NONOTE
 ~
 
 66 PARDON~
@@ -1955,17 +1991,35 @@ command, and then moving you back (if the command didn't change your
 location).
 ~
 
-64 ECHO GECHO PECHO~
-Syntax: echo  <message>
-        gecho <message>
-        pecho <character> <message>
+64 ECHO~
+Syntax: echo <message>
 
-These commands all perform similar functions.  Echo sends the message to
-all characters in the same room as the user, with no indication of who sent
-it.  Gecho does the same for all players connected to the game, and pecho
-sends the message to the player specified as the target.  Any higher-level
-god will see a prompt in front of your message, informing him or her that it
-is an echo.
+ECHO sends a raw message to all characters in your current room.  No name
+or attribution is shown — the text appears verbatim on every nearby screen.
+Useful for producing custom room flavor text or staging events.  Immortals
+of higher trust will see a faint staff tag prepended to the message.
+
+See also: GECHO, PECHO, RECHO
+~
+
+64 GECHO~
+Syntax: gecho <message>
+
+GECHO broadcasts a message to every connected player on the entire MUD,
+regardless of location.  No attribution is appended.  Use sparingly —
+unnecessary global echoes are disruptive and are logged.
+
+See also: ECHO, PECHO, ANNOUNCE
+~
+
+64 PECHO~
+Syntax: pecho <player> <message>
+
+PECHO sends a raw private message directly to a single player's screen.
+No name or source is shown.  The player sees only the text you type.
+Useful for delivering event narration or hints without breaking immersion.
+
+See also: ECHO, GECHO, TELL
 ~
 
 62 GOTO~
@@ -1990,18 +2044,38 @@ oriented stuff into the game. Item 26 is a generic item with a no_locate
 flag on it that can be used as a quest item.
 ~
 
-62 HOLYLIGHT WIZINVIS~
+62 HOLYLIGHT~
 Syntax: holylight
-        wizinvis <level>
 
-Holylight is a toggle that allows you to see (almost) every character and
-mobile in the game.  With holy light, you can see what's in the game more
-easily.  Without holy light, you can only see what mortal players see.
+HOLYLIGHT is a toggle.  When active, you can see virtually everything in
+the game regardless of visibility conditions: invisible characters, mobs,
+and objects; dark rooms; hidden players; and camouflaged entities.
 
-Wizinvis takes a level argument, and will make you invisible to all players of
-a lower level than your invisibility level.  It defaults to the maximum
-(your level) if no argument is given.  Wizi 70 characters are totally
-invisible.
+When HOLYLIGHT is off, you see what mortal players see — useful for testing
+how a room or mob appears to players without elevated vision.
+
+Holylight can be toggled on and off at any time.  It does not affect
+whether other players can see you.
+
+See also: WIZINVIS, INVIS, DETECT
+~
+
+62 WIZINVIS~
+Syntax: wizinvis [level]
+
+WIZINVIS sets your visibility level.  Any player whose level is below your
+wizinvis level will be completely unable to see you — you won't appear in
+the room, won't show in WHO, and your actions produce no messages to them.
+
+  wizinvis      — sets invisibility to your own level (maximum stealth)
+  wizinvis 70   — total invisibility to everyone except other 70s
+  wizinvis 0    — removes wizinvis; you become fully visible again
+  wizinvis 62   — visible to other immortals but hidden from all mortals
+
+Players who CAN see you (at or above your wizi level) see your name flagged
+as (Wizi) in the room and WHO list.
+
+See also: HOLYLIGHT, INVIS, POOFIN, POOFOUT
 ~
 
 65 MEMORY~
@@ -2067,27 +2141,55 @@ Syntax: pstat
 Pstat shows you various statistics of all the players connected to the mud.
 ~
 
-62 MWHERE OWHERE RWHERE GWHERE~
-Syntax: mwhere <name>
-Syntax: owhere <name>
-Syntax: rwhere <string>
-Syntax: gwhere
+62 MWHERE~
+Syntax: mwhere <keyword>
 
-Mwhere shows you the locations of all mobiles with a particular name.
-Owhere shows you the location of all objects with a particular name.
-Gwhere shows you the locations of all the players connected to the mud.
-
-Rwhere shows you the room vnum and name of any room matching any part of
-the string that you input.  The rwhere command is not case sensitive.
+MWHERE searches for all loaded instances of any mobile whose name field
+matches the given keyword and displays their room name and vnum.
+The search is case-insensitive and matches any part of the mob name.
 
 Example:
-rwhere hermit
+  mwhere guard
+  City Guard          [  2345]
+  North Gate Guard    [ 12001]
 
-Hermit's hut                             [  331]
-Hermit's Lair                            [ 1589]
-The Hermit's Corner                      [ 6373]
+See also: OWHERE, RWHERE, GWHERE, MSTAT
+~
 
+62 OWHERE~
+Syntax: owhere <keyword>
 
+OWHERE locates all instances of an object whose name field matches the
+given keyword anywhere in the game world — carried, worn, in containers,
+or on mob corpses.  Displays object name, holder/location, and room vnum.
+
+See also: MWHERE, RWHERE, GWHERE, VNUM
+~
+
+62 RWHERE~
+Syntax: rwhere <string>
+
+RWHERE searches the room name of every loaded room for a partial match
+and returns the room name and vnum.  Case-insensitive.  Useful for
+locating a room when you only know part of its name.
+
+Example:
+  rwhere hermit
+  Hermit's Hut          [  331]
+  Hermit's Lair         [ 1589]
+  The Hermit's Corner   [ 6373]
+
+See also: MWHERE, OWHERE, GWHERE, GOTO
+~
+
+62 GWHERE~
+Syntax: gwhere [keyword]
+
+GWHERE with no argument lists every player currently connected, their
+room name, and their room vnum.  With a keyword argument it filters to
+mobiles matching that name, similar to MWHERE.
+
+See also: MWHERE, OWHERE, RWHERE, WIZCHECK
 ~
 
 62 QFLAG~
@@ -2107,65 +2209,123 @@ Peace causes all characters in a room to stop fighting. It also strips the
 AGGRESSIVE bit from mobiles.
 ~
 
-62 POOFIN POOFOUT~
-Syntax: poofin  <message>
+62 POOFIN~
+Syntax: poofin <message>
+
+POOFIN sets the message other players see when you use GOTO to arrive in
+their room.  The default is '$n appears in a swirling mist.'  Your
+custom message must include your name somewhere (the game inserts $n for
+you if you include the literal text of your name, or simply write it
+in naturally).  Only players who can see you will see the message.
+
+Type 'poofin' with no argument to reset to the default message.
+
+Example:  poofin Galdor rides in on a bolt of lightning.
+
+See also: POOFOUT, GOTO, INVIS
+~
+
+62 POOFOUT~
 Syntax: poofout <message>
 
-The standard messages for goto are 'arrives in a swirling mist' and
-'leaves in a swirling mist'.  You can replace these messages with messages of
-your own choosing using the poofin and poofout commands.  These messages
-must include your name somewhere in the string.
+POOFOUT sets the message other players see when you leave a room via GOTO.
+The default is '$n leaves in a swirling mist.'  Same rules as POOFIN —
+the message should read naturally with your name included, and only visible
+characters will see it.
 
-Poofin and poofout only show to characters who can see you.
-(see also goto)
+Type 'poofout' with no argument to reset to the default message.
+
+Example:  poofout Galdor vanishes with a thunderclap.
+
+See also: POOFIN, GOTO, INVIS
 ~
 
-66 LOG SNOOP~
-Syntax: log   <character>
-        log   all
-        snoop <character>
+66 LOG~
+Syntax: log <character>
+        log all
 
-Log <character> causes all of a character's commands to be logged into
-the server's log file.  Like Freeze, it is a permanent character toggle.
-Logs may only be used by creators and implementors, and should be accompanied
-by mail to the implementors.
+LOG toggles command logging for the specified player.  When enabled, every
+command the player types is written to the server log file.  This is a
+persistent per-character toggle that survives reboots.
 
-Certain commands (Password) are protected against log.  Conversely, certain
-commands (especially immortal commands) are always logged.
+  log <name>  — toggle logging for that specific player
+  log all     — toggle server-wide logging of ALL players (session only;
+                does not persist across reboots)
 
-Log all logs all character commands.  It is a server-wide toggle; it does not
-persist across reboots. Please do not use this unless you tell an IMP first.
+Note: PASSWORD commands are never logged regardless of this flag.
+All immortal commands are always logged regardless of this flag.
+Requires creator level or higher.  Inform an implementor before use.
 
-Snoop shows you a copy of all the input and output going to a character.
-The character must have an open channel.  You may snoop more than one
-character at a time. Try to respect privacy.  This command should only be
-used if a character is suspected of some kind of cheating, or you need to
-watch someone do something to find a bug in the game.  In the latter case,
-it is a good idea to ask for permission first.  Do not use snoop just to
-be nosy.  Make sure you have a reason to use it, because you may be
-questioned later about why you snooped someone.
-
-Snoop yourself to cancel all outstanding snoops.
+See also: SNOOP, PSTAT
 ~
 
-64 SWITCH RETURN~
-Syntax: switch <character>
-        return
+67 SNOOP~
+Syntax: snoop <character>
+        snoop <your own name>
 
-Switch switches you into the body of another character (who must not
-already have a descriptor, e.g. you can't switch into a PC). You also cannot
-switch into link-dead PCs.
+SNOOP lets you monitor a live copy of all input and output for the target
+character.  You see exactly what they type and exactly what their screen
+shows, in real time.  You may snoop multiple characters simultaneously.
 
-Return returns you to your original body.
+Snoop yourself (or your own name) to cancel ALL active snoops at once.
+
+Privacy guidelines:
+  - Only use snoop if you have a legitimate reason (cheating investigation,
+    bug reproduction, or explicit admin need).
+  - Ask for permission when the purpose is debugging rather than enforcement.
+  - Do not use snoop purely out of curiosity.  Snoops are logged and you
+    may be questioned about their use.
+
+See also: LOG, SWITCH, PSTAT
+~
+
+64 SWITCH~
+Syntax: switch <mobile>
+
+SWITCH transfers your consciousness into the target mobile, giving you
+direct control of it.  You type commands as if you were that mob — its
+stats, skills, and position all apply.  Your immortal body is left standing
+in place while you are switched.
+
+Restrictions:
+  - You can only switch into mobs, not player characters.
+  - You cannot switch into a mob that already has a descriptor (i.e. one
+    another immortal is already controlling).
+  - You cannot switch into link-dead PCs.
+
+Use RETURN to exit the mob and return to your immortal body.
+If the mob is killed while you are switched, you are ejected safely.
+
+See also: RETURN, FORCE, AT
+~
+
+64 RETURN~
+Syntax: return
+
+RETURN exits a mobile body and returns your immortal character to normal
+control.  Use this after SWITCH to come back to yourself.  If you are
+not currently switched into a mobile, RETURN has no effect.
+
+See also: SWITCH
 ~
 
 62 IMMTALK :~
 Syntax: immtalk <message>
         immtalk
+        : <message>
 
-Immtalk sends a message to all immortals.  : is a synonym for immtalk.
-Using this command with no argument turns off the immortal channel (or
-turns it back on).
+IMMTALK (alias :) sends a message to all immortals who have the immortal
+channel active.  Messages are prefixed with your name and level so other
+staff can identify the sender.
+
+Using IMMTALK with no argument toggles your own immortal channel on or off.
+When off, you will neither send nor receive immtalk messages.
+
+Note: IMMTALK is currently implemented as a stub.  Use WIZINFO to toggle
+the immortal info broadcast channel, or @/GODTALK for the high-level
+staff-only channel.
+
+See also: WIZINFO, GODTALK (@), BEEP
 ~
 
 62 WIZHELP~
@@ -2190,7 +2350,7 @@ Syntax: edit <field> <arguments>
 Where field is exit
 ~
 
-62 SHOWHUNT ~
+62 SHOWHUNT~
 Syntax: showhunt
 
 Shows the number of hunting mobs in the game.
@@ -2465,26 +2625,35 @@ Use responsibly — this will force real combat between the two players.
 See also: SLAY, PEACE
 ~
 
-63 WEATHER~
-Syntax: weather <sunny|cloudy|rain|storm>
+63 IWEATHER~
+Syntax: iweather <sunny|cloudy|rain|storm>
 
-WEATHER immediately changes the global weather.  Affects all outdoor rooms
-and triggers the appropriate atmospheric messages.
+IWEATHER immediately forces a global weather change.  All outdoor rooms will
+reflect the new conditions, and atmospheric transition messages are sent to
+all players in outdoor areas.
 
-  sunny   — clear skies, high pressure
-  cloudy  — overcast, moderate pressure
-  rain    — raining, low pressure
-  storm   — lightning and thunder, very low pressure
+  iweather sunny  — clear skies; barometric pressure rises to 1000+ mmhg
+  iweather cloudy — overcast skies; pressure sits at a middling 750 mmhg
+  iweather rain   — light-to-heavy rain; pressure drops below 700 mmhg
+  iweather storm  — full lightning storm; pressure plummets below 500 mmhg
 
-See also: REPOP
+Storm and rain conditions affect certain spells and skills (e.g. call
+lightning gains bonus damage during storms).  Sunny conditions speed up
+healing ticks for outdoor characters.
+
+The player-level WEATHER command (no arguments) simply reads the current
+conditions and is separate from this immortal command.
+
+See also: REPOP, LIGHTS
 ~
 
 63 LIGHTS~
 Syntax: lights
 
-LIGHTS toggles the ROOM_DARK flag on your current room.  When dark, mobs
-and players without infravision or a light source cannot see clearly.
-Toggling again re-enables the room's normal lighting.
+LIGHTS toggles the ROOM_DARK flag on your current room by reaching over
+and flipping the proverbial light switch.  *CLICK*  When dark, mobs and
+players without infravision or a light source cannot see clearly.
+Flip it again to restore the room's lighting.  Let there be light!
 
 See also: SEAL
 ~
@@ -2534,36 +2703,222 @@ See also: FREEZE, STASIS
 ~
 
 62 EMPOWER~
-Syntax: empower <player> [duration | perm | toggle]
+Syntax: empower <player>
+        empower <player> <ticks>
+        empower <player> perm
+        empower <player> toggle
 
 EMPOWER grants a player a full suite of divine buffs: sanctuary, haste,
 fly, pass door, protection, regeneration, divine shielding, and large
 boosts to all five stats plus hitroll, damroll, and armor class.
 
-  empower bob           -- applies for 100 ticks (no cross-login persistence)
-  empower bob 200       -- applies for 200 ticks
-  empower bob perm      -- permanent (duration = -1); persists across logins
-  empower bob toggle    -- permanent toggle; calling again while active removes
+  empower bob           -- permanent (duration -1); default when no arg given
+  empower bob 200       -- applies for 200 ticks; expires naturally
+  empower bob perm      -- explicit permanent
+  empower bob toggle    -- permanent; if target is already empowered,
+                           removes all empower effects immediately instead
 
-All effects are applied under the 'empower' skill type and can be stripped
-atomically by toggling again.
+If the target is already empowered, a second empower call (any argument)
+strips the effects and acts as a toggle-off regardless of duration given.
+
+All effects use the 'empower' skill type and are removed atomically.
 
 See also: COLOSSUS, RESTORE
 ~
 
 62 COLOSSUS~
-Syntax: colossus <player> [duration | perm | toggle]
+Syntax: colossus <player>
+        colossus <player> <ticks>
+        colossus <player> perm
+        colossus <player> toggle
 
-COLOSSUS grants a player a 500% bonus to maximum HP, mana, and move, then
-heals them to full.  The boosts are applied as affects under the 'titanic'
-skill type and are removed cleanly when toggled off.
+COLOSSUS grants a player a 500% bonus to maximum HP, mana, and move
+(capped at +30000 per resource to prevent overflow), then heals them to
+full immediately.
 
-  colossus bob          -- 100-tick duration
+  colossus bob          -- permanent (duration -1); default when no arg given
   colossus bob 300      -- 300-tick duration
-  colossus bob perm     -- permanent
-  colossus bob toggle   -- permanent toggle; calling again removes the boost
+  colossus bob perm     -- explicit permanent
+  colossus bob toggle   -- permanent; if already colossal, strips and
+                           removes the boost instead
+
+If the target is already under colossus, calling again strips it
+regardless of arguments.  Health, mana, and move are clamped back to
+new (reduced) max on removal.
+
+Boosts are applied as affects under the 'titanic' skill type.
 
 See also: EMPOWER, RESTORE
+~
+
+65 FLING~
+Syntax: fling <player>
+        fling all
+
+FLING hurls the target player (or all players) into the sky and drops
+them in a completely random room somewhere in the world.  The target sees
+an appropriately dramatic message and lands with a room description.
+
+See also: TRANSFER, DRAG
+~
+
+69 GKICK~
+Syntax: gkick
+
+GKICK immediately disconnects all non-immortal players from the game.
+Use for emergencies or immediately before scheduled reboots.
+
+See also: REBOOT, SHUTDOWN, WIZLOCK
+~
+
+60 IMOTD~
+Syntax: imotd
+
+IMOTD displays the immortal message-of-the-day.
+
+See also: MOTD
+~
+
+62 INVIS~
+Syntax: invis [level]
+
+INVIS makes you invisible to all players below the specified trust level
+(default: your own level).  Use VISIBLE to reappear.
+
+See also: WIZINVIS, HOLYLIGHT
+~
+
+68 ITRANS~
+Syntax: itrans <player> [room]
+        itrans all [room]
+
+ITRANS performs a silent transfer — the target is moved without seeing
+the usual transfer arrival or departure messages.  Room may be a vnum or
+a player name for their current location.  Omit room to transfer to your
+own position.
+
+See also: TRANSFER, DRAG
+~
+
+62 JAIL~
+Syntax: jail <player>
+
+JAIL teleports the specified player to the jail room.
+
+See also: TRANSFER, STASIS
+~
+
+64 KSOCK~
+Syntax: ksock <descriptor>
+
+KSOCK forcibly closes a network connection by descriptor number.
+Use SOCKETS to view current descriptor numbers.
+
+See also: SOCKETS, DUMP
+~
+
+68 MAXLOADS~
+Syntax: maxloads list
+        maxloads set <vnum> <count>
+        maxloads pla <vnum>
+
+MAXLOADS manages per-object maximum load counts.  'list' shows all
+configured limits.  'set' assigns a max count for an object vnum.
+'pla' shows current player-carried counts for a vnum.
+
+See also: LOAD
+~
+
+67 NEWCORPSE~
+Syntax: newcorpse <player>
+        newcorpse <player> <corpse_number>
+
+NEWCORPSE reconstructs a lost corpse for the specified player from their
+saved corpse file.  Useful for restoring items lost to crashes or bugs.
+
+See also: RESTORE
+~
+
+63 NOCHANNELS~
+Syntax: nochannels <player>
+
+NOCHANNELS prevents a player from using any global communication channel
+(gossip, music, info, etc.).  Toggle again to restore access.
+
+See also: MUTE, NOSHOUT, NOEMOTE
+~
+
+64 NOEMOTE~
+Syntax: noemote <player>
+
+NOEMOTE prevents a player from using the emote command.
+Toggle again to restore.
+
+See also: MUTE, NOCHANNELS
+~
+
+64 NOSHOUT~
+Syntax: noshout <player>
+
+NOSHOUT prevents a player from using the shout command.
+Toggle again to restore.
+
+See also: MUTE, NOCHANNELS
+~
+
+65 NOTELL~
+This command is not currently implemented.  Use MUTE to restrict all
+player communication at once.
+
+See also: MUTE
+~
+
+65 NOTITLE~
+Syntax: notitle <player>
+
+NOTITLE prevents a player from changing their own title.
+Toggle again to allow title changes.
+
+See also: SET
+~
+
+66 SLA~
+Syntax: sla <player>
+
+SLA is a silent version of SLAY.  The target is removed with no message
+shown to the room.
+
+See also: SLAY
+~
+
+62 WARN~
+Syntax: warn <player> <message>
+
+WARN sends a formal warning to the specified player and logs the action
+to the system log.
+
+See also: FREEZE, STASIS
+~
+
+67 WHINER~
+Syntax: whiner <player>
+
+WHINER toggles the WHINER communication flag on a player.  Flagged
+players have their channel messages marked, identifying them as chronic
+complainers.
+
+See also: NOCHANNELS
+~
+
+62 WIZCHECK~
+Syntax: wizcheck
+        wizcheck <player>
+
+WIZCHECK with no argument lists all immortals currently online with their
+invisibility level and room vnum.  With a player name, shows extended
+status info for that character.
+
+See also: WIZLIST
 ~
 
 0 $~

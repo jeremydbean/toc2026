@@ -417,7 +417,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "mute",           do_mute,        POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "drag",           do_drag,        POS_DEAD,       L6,  LOG_ALWAYS, 1 },
     { "duel",           do_duel,        POS_DEAD,       L4,  LOG_ALWAYS, 1 },
-    { "weather",        do_imweather,   POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "iweather",       do_imweather,   POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "lights",         do_lights,      POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "seal",           do_seal,        POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "trail",          do_trail,       POS_DEAD,       L7,  LOG_ALWAYS, 1 },
