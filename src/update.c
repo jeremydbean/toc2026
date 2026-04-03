@@ -1596,7 +1596,7 @@ void char_update( void )
 	    int save, dam;
 
 	    if (ch->in_room == NULL)
-		return;
+		continue;  /* skip char but keep processing others */
 
 	    act("$n writhes in agony as plague sores erupt from $s skin.",
 		ch,NULL,NULL,TO_ROOM);
@@ -1610,14 +1610,11 @@ void char_update( void )
 	    if (af == NULL)
 	    {
 		REMOVE_BIT(ch->affected_by,AFF_PLAGUE);
-		return;
-	    }
+                continue;  /* affect strip done; skip char but keep processing others */
+            }
 
-	    if (af->level == 1)
-		return;
-
-	    plague.type 		= gsn_plague;
-	    plague.level 		= af->level - 1;
+            if (af->level == 1)
+                continue;  /* no spread at level 1; skip char but keep processing others */
 	    plague.duration 	= (sh_int)(number_range(1,2 * plague.level));
 	    plague.location		= APPLY_STR;
 	    plague.modifier 	= -5;
@@ -3079,8 +3076,8 @@ void disaster_update( void )
 
 	       if( hit )
 	       {
-		         damage(vch,vch,dam,skill_lookup("earthquake"),DAM_BASH);
-		         vch->position = POS_STUNNED;
+		         if ( !damage(vch,vch,dam,skill_lookup("earthquake"),DAM_BASH) )
+		             vch->position = POS_STUNNED;
 	       }
 	     }
 	   break;

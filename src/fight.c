@@ -5273,8 +5273,9 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
     {
       act("You strike a stunning blow to $N.",ch,NULL,victim,TO_CHAR);
       act("$N strikes you with a stunning blow!",ch,NULL,victim,TO_VICT);
-      damage( ch, victim, number_range(ch->level,ch->level*2),
-		gsn_stunning_blow, hit );
+      if ( damage( ch, victim, number_range(ch->level,ch->level*2),
+		gsn_stunning_blow, hit ) )
+          return;  /* victim killed; do not use stale victim pointer */
       check_improve(ch,gsn_stunning_blow,true,6);
 
       if(!is_affected( victim, skill_lookup("stunning blow") ) )
@@ -5293,8 +5294,9 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
     }
     else
     {
-      damage( ch, victim, number_range(ch->level/2,ch->level*3),
-		gsn_stunning_blow, hit );
+      if ( damage( ch, victim, number_range(ch->level/2,ch->level*3),
+		gsn_stunning_blow, hit ) )
+          return;  /* victim killed */
       check_improve(ch,gsn_stunning_blow,false,6);
       WAIT_STATE( ch, skill_table[gsn_stunning_blow].beats);
       WAIT_STATE( victim, 1 * PULSE_VIOLENCE );

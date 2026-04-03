@@ -2046,7 +2046,10 @@ bool spec_club_bouncer( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
 	if ( victim != NULL )
 	{
-	    to_room = victim->in_room->exit[DIR_NORTH]->u1.to_room;
+	    EXIT_DATA *north_exit = victim->in_room->exit[DIR_NORTH];
+	    if ( north_exit == NULL || north_exit->u1.to_room == NULL )
+	        return false;  /* no north exit to throw them out of */
+	    to_room = north_exit->u1.to_room;
  
 	    act("$n notices that $N is one of the undesireables and "
 		"lets him know about it.", mob, NULL, victim, TO_NOTVICT);
