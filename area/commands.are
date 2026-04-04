@@ -1600,7 +1600,7 @@ Type a channel name without a message to turn that channel off.
 51 HERO =~
 Syntax: hero <message>
 
-A channel is provided for heros to communicate with one another.  This is
+A channel is provided for heroes to communicate with one another.  This is
 similar to the other public channels, like gossip, etc. The equals sign,
 '=' is a synonym for hero.
 
