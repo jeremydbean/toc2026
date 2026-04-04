@@ -4545,8 +4545,61 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
     snprintf(buf, sizeof(buf),"%s finished %s... *FATALITY*. [Room: %d]",ch->name,
 	IS_NPC(victim) ? victim->short_descr : victim->name, ch->in_room->vnum);
     wizinfo(buf,LEVEL_IMMORTAL);
-	 log_string( buf );
+    log_string( buf );
 
+    /*
+     * Arena / quest-flag kills: safe death, same as damage().
+     * Skip pkill accounting and XP loss; teleport victim to altar.
+     */
+    if ( !IS_NPC(victim) && !IS_NPC(ch)
+    &&   IS_SET(ch->in_room->room_flags, ROOM_ARENA) )
+    {
+	stop_fighting( victim, true );
+	snprintf(log_buf, 2 * MAX_INPUT_LENGTH,
+	    "%s *FATALITY* killed in arena by %s at %d",
+	    victim->name, ch->name, ch->in_room->vnum);
+	wizinfo(log_buf, LEVEL_IMMORTAL);
+	act( "$N vanishes in a puff of purple smoke.", ch, NULL, victim, TO_CHAR );
+	send_to_char("!<POOF>!\n\r", victim);
+	char_from_room(victim);
+	char_to_room(victim, get_room_index(ROOM_VNUM_ALTAR));
+	while ( victim->affected )
+	    affect_remove( victim, victim->affected );
+	victim->affected_by = 0;
+	victim->affected_by2 = 0;
+	if ( victim->pcdata->mounted)
+	    victim->pcdata->mounted = false;
+	victim->position = POS_RESTING;
+	victim->hit  = UMAX( 1, victim->hit  );
+	victim->mana = UMAX( 1, victim->mana );
+	victim->move = UMAX( 1, victim->move );
+	return;
+    }
+
+    if ( IS_SET(victim->act, PLR_QFLAG) && !IS_NPC(victim) )
+    {
+	stop_fighting( victim, true );
+	snprintf(log_buf, 2 * MAX_INPUT_LENGTH,
+	    "%s *FATALITY* killed while on a quest by %s at %d",
+	    victim->name, IS_NPC(ch) ? ch->short_descr : ch->name,
+	    ch->in_room->vnum);
+	wizinfo(log_buf, LEVEL_IMMORTAL);
+	act( "$N vanishes in a puff of purple smoke.", ch, NULL, victim, TO_CHAR );
+	send_to_char("!<POOF>!\n\r", victim);
+	char_from_room(victim);
+	char_to_room(victim, get_room_index(ROOM_VNUM_ALTAR));
+	while ( victim->affected )
+	    affect_remove( victim, victim->affected );
+	victim->affected_by = 0;
+	victim->affected_by2 = 0;
+	if ( victim->pcdata->mounted)
+	    victim->pcdata->mounted = false;
+	victim->position = POS_RESTING;
+	victim->hit  = UMAX( 1, victim->hit  );
+	victim->mana = UMAX( 1, victim->mana );
+	victim->move = UMAX( 1, victim->move );
+	return;
+    }
 
 	group_gain( ch, victim );
 
