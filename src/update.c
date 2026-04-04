@@ -973,7 +973,7 @@ void weather_update( void )
        component_update(); */
 
      if (current_time > dailybackup)
-
+        do_dailybackup();
 
     if(time_info.day == 0 || time_info.day < 10)
        weather_info.moon_phase = MOON_NEW;
@@ -1196,6 +1196,7 @@ void char_update( void )
 	if(!IS_NPC(ch) && !IS_IMMORTAL (ch)
 	    && in_room->sector_type == SECT_UNDER_WATER )
 	{
+	  found = false;
 	  for ( obj = ch->carrying; obj!=NULL && !found; obj = obj->next_content )
 	  {
 	     if ( obj->item_type == ITEM_SCUBA_GEAR )
@@ -1205,6 +1206,15 @@ void char_update( void )
 	       break;
 	     }
 	  }
+
+	  if(!found)
+	  {
+	  send_to_char("Glub, glub, gurgle, glug......Your Drowning!!!\n\r",ch);
+	  if (damage(ch,ch,dice( 10, 10) + 150,skill_lookup("waterfal"),DAM_DROWNING))
+	      continue;  /* ch was killed by drowning */
+	  }
+
+	}
 
 	if(IS_NPC(ch) && number_range(1,2000) == 2000
 	   && dice(1,50) == 50
@@ -1216,15 +1226,6 @@ void char_update( void )
 	  ch->timer = 500;
 	  snprintf( buf, sizeof(buf),"%s is afflicted with Lycanthropy",ch->name);
 	  wizinfo(buf,LEVEL_IMMORTAL);
-	}
-
-	  if(!found)
-	  {
-	  send_to_char("Glub, glub, gurgle, glug......Your Drowning!!!\n\r",ch);
-	  if (damage(ch,ch,dice( 10, 10) + 150,skill_lookup("waterfal"),DAM_DROWNING))
-	      continue;  /* ch was killed by drowning */
-	  }
-
 	}
 
 	if(IS_AFFECTED2(ch, AFF2_NO_RECOVER) )
