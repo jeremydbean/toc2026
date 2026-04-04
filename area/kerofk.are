@@ -1352,7 +1352,7 @@ apple~
    It looks like it didn't get enough sun.
 ~
 #8741
-potato potatoe~
+potato~
 a potato~
 A potato sits here, eyeing you.~
 food~
@@ -1360,8 +1360,8 @@ food~
 4 0 0 0 0
 -1 2 10 P
 E
-potato potatoe~
-   Looks like a potatoe^H.
+potato~
+   Looks like a potato.
 ~
 #8742
 onion~
