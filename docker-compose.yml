@@ -11,7 +11,10 @@ services:
       - ./log:/opt/toc/log
       - ./player:/opt/toc/player
       - ./area:/opt/toc/area
-    restart: always
+    # unless-stopped: restart the container if it exits unexpectedly (crash /
+    # OOM), but do NOT restart if the entrypoint exits 0 (immortal shutdown)
+    # or if explicitly stopped with 'docker stop'.
+    restart: unless-stopped
 
   middleware:
     image: python:3.9-slim
