@@ -474,8 +474,8 @@ FGHU 0 -200 M
 0 0 S 0
 {
 A 8 
-$n clicks it's claws at $N~
-$n clicks it's claws at you.~
+$n clicks its claws at $N~
+$n clicks its claws at you.~
 }
 #3063
 vagabond ghoul~
@@ -525,7 +525,7 @@ cat~
 an alley cat~
 A black cat slips out of the shadows and walks beneath a ladder.
 ~
-The black cat arches it's back and hisses at you.
+The black cat arches its back and hisses at you.
 ~
 cat~
 FGHU 0 -200 S

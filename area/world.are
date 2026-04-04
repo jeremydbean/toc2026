@@ -4,10 +4,10 @@
 #29401
 lobstrosity~
 a lobstrosity~
-A lobstrosity reaches towards you with it's claws.
+A lobstrosity reaches towards you with its claws.
 ~
 This creature of the sea looks like a cross between a lobster, a crayfish,
-and a scorpion.  It's pinchers look quite poisonous.
+and a scorpion.  Its pinchers look quite poisonous.
 ~
 unique~
 FG L -150 S
@@ -338,7 +338,7 @@ You look at the sign:
 #29416
 sign~
 a sign (Beach)~
-a sign lies on it's back in the sand.~
+a sign lies on its back in the sand.~
 wood~
 13 0 0
 0 0 0 0 0
