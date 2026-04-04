@@ -724,8 +724,8 @@ bool parse_gen_groups(CHAR_DATA *ch,char *argument)
 	    gn_remove(ch,gn);
 	    for (i = 0; i < MAX_GROUP; i++)
 	    {
-		if (ch->gen_data->group_chosen[gn])
-		    gn_add(ch,gn);
+		if (ch->gen_data->group_chosen[i])
+		    gn_add(ch,i);
 	    }
 	    ch->pcdata->points -= group_table[gn].rating[ch->class];
 	    return true;
