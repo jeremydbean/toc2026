@@ -1726,7 +1726,7 @@ D2
 S
 #9905
 On the road.~
-There is nothing, absolutly nothing at all in front of you aside from the
+There is nothing, absolutely nothing at all in front of you aside from the
 keep.  You don't appear to have come any closer to the keep and you are
 worried that perhaps some strange kind of magic is at work here.
 ~
@@ -3992,7 +3992,7 @@ D 0 9942 0 1                    Close door to Home Sweet Home
 D 0 9971 2 1                    Close door to Chamber of Darkness
 *
 * Eclipses Resets
-M 0 9915 1 9982                 Gaurdian of the Moon
+M 0 9915 1 9982                 Guardian of the Moon
 E 1 9923 2 16                   Moonray Sword
 E 1 9924 2 11                   Dagger of Celestial Light
 G 1 9922 1
