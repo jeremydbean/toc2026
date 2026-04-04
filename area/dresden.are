@@ -1896,7 +1896,7 @@ sign~
 This ancient oak tree is a symbol of strength for our city.  The sages say it
 was planted at the beginning of time.  Legends say if you bury coins at the
 base of the tree you can be granted the favor of the Gods.  Good luck
-adventurers in you travels.  May Devota protect you.
+adventurers in your travels.  May Devota protect you.
 
 Mayor of Dresden.
 ~
@@ -2234,7 +2234,7 @@ Top of the oak tree.~
 The branches begin to get smaller and the leaf cover thinner as you climb
 higher.  When you look up you are almost blinded by the bright sunlight
 streaming through the canopy.  You think this would be as far as you should
-climb since it could get dangerous.  Looking around you you see a wonderful
+climb since it could get dangerous.  Looking around you see a wonderful
 sight.  Almost all of Sembia can be seen from up here.
 ~
 24 516 3
@@ -2479,7 +2479,7 @@ sign~
      (  _ * _  )                                  (  _ + _  )
       \/ | | \/      All Adventurers Welcome!      \/ | | \/
 	 | |                                          | |
-	 | |        Grunar the Dwarf Proprieter       | |
+	 | |        Grunar the Dwarf Proprietor       | |
 	 |\|                                          |/|
 	 |\|                                          |/|
 	 |\|                                          |/|
@@ -3544,7 +3544,7 @@ over the door.
 ~
 24 0 1
 D0
-Broad steps leading up the the University of Magic.
+Broad steps leading up the University of Magic.
 ~
 ~
 0 -1 4319
@@ -3614,7 +3614,7 @@ Corner of Magic Street and Fireball Lane.
 ~
 0 -1 2475
 D1
-Broad steps leading up the the University of Magic.
+Broad steps leading up the University of Magic.
 ~
 ~
 0 -1 4321
@@ -3710,7 +3710,7 @@ Fireball Lane.
 ~
 0 -1 2478
 D2
-Broad steps leading up the the University of Magic.
+Broad steps leading up the University of Magic.
 ~
 ~
 0 -1 4323
@@ -8761,7 +8761,7 @@ door south~
 S
 #4511
 Shrine dedicated to Branani.~
-As you enter the Shrine of Branani, God of of Secrecy and Stealth, you feel
+As you enter the Shrine of Branani, God of Secrecy and Stealth, you feel
 that you are not alone in the seemingly empty Shrine.  You think this will be
 a good time to pray.
 ~
@@ -8939,7 +8939,7 @@ door north~
 1 -1 4521
 E
 window~
-As you look out through the window you see the the slums section to the
+As you look out through the window you see the slums section to the
 southeast and the docks and river quarter to the south west.
 ~
 S

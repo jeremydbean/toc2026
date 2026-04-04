@@ -9,7 +9,7 @@ A horrible asp~
 A small, poisonous asp slithers over your feet.
 ~
 The asp is a small, smooth-scaled snake the color of worn pottery.
-The poison bite of this snake has felled many a mighty pharoah.
+The poison bite of this snake has felled many a mighty pharaoh.
 ~
 snake~
 FG 0 0 S
@@ -54,7 +54,7 @@ A pyramid watcher~
 The pyramid watcher protects the tombs from intruders.
 ~
 The pyramid watcher has made a pledge to destroy any would-be looters of
-the tombs of the pharoahs.  He is clad from head to foot in utilitarian
+the tombs of the pharaohs.  He is clad from head to foot in utilitarian
 sand-colored clothing.
 ~
 human~
@@ -81,7 +81,7 @@ GH P -250 S
 #28005
 ali baba thief~
 Ali Baba~
-Ali Baba is here, hunting for the pharoah's tomb.
+Ali Baba is here, hunting for the pharaoh's tomb.
 ~
 You see a tall, full-bearded man with a mischievous glint in his eye.  Ali Baba
 has made his life from stealing things from others, including many items stolen
@@ -247,7 +247,7 @@ A mighty androsphinx tosses its lion-like mane.
 ~
 The mighty androsphinx is a huge creature, with the body of a lion whose
 face  is quite man-like, perhaps even handsome, and a massive pair of feathered
-wings.  Tales are told of pharoahs that were rendered permanently deaf by the
+wings.  Tales are told of pharaohs that were rendered permanently deaf by the
 mighty roar of this sphinx.
 ~
 sphinx~
@@ -278,7 +278,7 @@ ACDEFJKMO ABLQ 0 0
 #28017
 ramses mummy~
 Ramses the Damned~
-You have awakened the mighty servant to the pharoahs, Ramses.
+You have awakened the mighty servant to the pharaohs, Ramses.
 ~
 As your light spills over his face and body, you can see his features begin
 to fill out, swell, and harden, until an apparently healthy man stands before
@@ -461,11 +461,11 @@ stone~
 50 5000 5000 P
 E
 stone sarcophagus~
-The sarcophagus is engraved on the sides with the images of pharoahs,
+The sarcophagus is engraved on the sides with the images of pharaohs,
 great wars fought long ago, mighty pyramids being constructed...
 
 A raised image atop the sarcophagus is formed in the visage of one of
-the mighty pharoahs, painted in gold and studded with precious gems.
+the mighty pharaohs, painted in gold and studded with precious gems.
 
 You see a small keyhole in the side of the sarcophagus.
 ~
@@ -798,7 +798,7 @@ Across the hot burning sands you see a small oasis and some tents.
 0 -1 5056
 E
 pyramid~
-The massive pyramid rises out of the sand, a monument to long-dead pharoahs.
+The massive pyramid rises out of the sand, a monument to long-dead pharaohs.
 ~
 S
 #28001
@@ -1017,7 +1017,7 @@ S
 A Ladder~
    You are climbing an ancient ladder that leads down into the depths of
 the pyramid.  The air around is thick with layers of dust and a strange
-musty smell.  Above you you see tiny beams of light coming through the
+musty smell.  Above you, you see tiny beams of light coming through the
 stones of the ceiling.
 ~
 280 12 0
@@ -1437,7 +1437,7 @@ S
 #28026
 A Demolished Tomb~
   This tomb has been utterly destroyed by thieves and looters in search of
-the treasures of the pharoahs.  Nothing of interest remains in this room,
+the treasures of the pharaohs.  Nothing of interest remains in this room,
 except a large stone coffin that leans against the western wall.
 ~
 280 8 0
@@ -1454,14 +1454,14 @@ coffin lid~
 E
 coffin lid~
 The coffin is sculpted into the form of a man, standing several heads above
-you, and clad in the garments of pharoahs.  It has apparently been untouched
+you, and clad in the garments of pharaohs.  It has apparently been untouched
 by the ravages of time and the activities of looters.  Several markings on the
 side indicate spots where unsuccessful attempts were made to open the coffin.
 
 You can't see any way to open it.
 ~
 E
-man garments pharoah~
+man garments pharaoh~
 As you look closer at the figure sculpted into the stone coffin you notice a
 small marking carved into its chest.  It looks like a scarab or small beetle
 would fit into the small space, if properly sized.
@@ -1581,7 +1581,7 @@ E
 pedestal writings~
 The writings are covered in sand and worn nearly away by the passage
 of time: 'I am Ramses the Damned, once counselor and aide to the mightiest
-of pharoahs and queens of this land.  Much time has passed since I last
+of pharaohs and queens of this land.  Much time has passed since I last
 walked the earth.  Disturb my rest at your peril.'
 ~
 S
@@ -1818,11 +1818,11 @@ The Tomb Entrance~
    You are in a small, dark chamber that has stood undisturbed for
 many years.  To the north stands a massive stone tomb, which is
 covered in hieroglyphics and gold-lined carvings that mark it as the
-final resting place of the mighty pharoahs of this land.
+final resting place of the mighty pharaohs of this land.
 ~
 280 13 0
 D0
-You see the tomb of the pharoahs.
+You see the tomb of the pharaohs.
 ~
 tomb~
 1 -1 28045
@@ -1839,14 +1839,14 @@ which encloses it.  It is covered in small hieroglyphics.
 E
 hieroglyphics carvings~
 The markings indicate that this tomb is indeed the tomb of the greatest
-pharoahs of the ancient civilization that built this massive pyramid.
+pharaohs of the ancient civilization that built this massive pyramid.
 ~
 S
 #28045
-The Tomb of the Pharoahs~
+The Tomb of the Pharaohs~
    Great golden sarcophogi line the walls of this massive tomb.  It has
 withstood the passage of time intact, untouched by the hands of thieves
-and looters.  The treasures taken by the pharoahs to their graves still
+and looters.  The treasures taken by the pharaohs to their graves still
 lie before your feet.
 ~
 280 9 0
@@ -2247,9 +2247,9 @@ S
  D 0 28030 0 1     from the inside
  D 0 28031 5 1     Close the stone into the tomb of Ramses from above
  D 0 28032 4 1     from below
- D 0 28043 5 1     Close the floor into the tomb of the pharoahs
- D 0 28044 4 1     Close the ceiling out of the tomb of the pharoahs
- D 0 28044 0 1     Close the tomb of the pharoahs from the outside
+ D 0 28043 5 1     Close the floor into the tomb of the pharaohs
+ D 0 28044 4 1     Close the ceiling out of the tomb of the pharaohs
+ D 0 28044 0 1     Close the tomb of the pharaohs from the outside
  D 0 28045 2 1     from the inside
  D 0 28058 2 2     LOCK the entrance to the hole in the sand
 * it's a one-way door so we don't need to do it from the inside
@@ -2327,7 +2327,7 @@ S
 * second one, the first one will be loaded sans key on the next reset.
 * Of course, this won't really FORCE the previous players to kill both, but
 * it is more balanced than always fighting only the first caryatid.
-* And also the treasure of the pharoahs
+* And also the treasure of the pharaohs
  O 0 28010 0 28045        The stone sarcophagus
  P 0 28011 0 28010        Dust
  P 0 28012 0 28010        The scarab (key to the coffin lid in room #26)

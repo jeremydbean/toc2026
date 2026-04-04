@@ -9,7 +9,7 @@ The Watchman~
 The Night Watchman stands here guarding the gate.
 ~
 This is the most unique person you have seen in this wide land. With his low
-slung cape and crooked back, you almost think he is a old man but upon 
+slung cape and crooked back, you almost think he is an old man but upon 
 spotting you, he springs from his chair and welcome's you to the guild with
 this warning. "All may enter, but few return, so watch your step, and defend
 your back!"
@@ -289,7 +289,7 @@ $n asks,"Are you interested in becoming an assassin?"~
 #17000
 tooth dagger lion~
 A Lions Tooth Dagger~
-A odd looking animal like dagger lies here.~
+An odd looking animal-like dagger lies here.~
 adamantite~
 5 P AN
 2 11 4 6 DE
@@ -476,7 +476,7 @@ A
 #17009
 cadnium shield~
 The Cadnium Shield~
-A odd looking plate with a strap lies humming in the dirt.~
+An odd looking plate with a strap lies humming in the dirt.~
 adamantite~
 9 BFG AJ
 15 17 16 30 0
@@ -496,7 +496,7 @@ A
 #17010
 dagger hook~
 A Hook-Nose Dagger~
-A evil looking dagger lies in the dust.~
+An evil looking dagger lies in the dust.~
 adamantite~
 5 ABEJ AN
 2 3 15 11 A
@@ -554,7 +554,7 @@ A sheaf of paper bound in black.
 #17014
 rod~
 Rod of Cancellation~
-A odd looking metal rod lies on the floor.~
+An odd looking metal rod lies on the floor.~
 iron~
 3 AB AO
 50 5 5 59 0
@@ -621,7 +621,7 @@ guild of assassins.
 #17018
 red key~
 A Red Key~
-A odd looking key lies on the floor.~
+An odd looking key lies on the floor.~
 iron~
 18 0 AN
 0 0 0 0 0
@@ -729,7 +729,7 @@ A
 #17025
 ring masters~
 The Masters Ring~
-A odd looking ring lies in the dirt.~
+An odd looking ring lies in the dirt.~
 adamantite~
 9 BCJ AB
 10 10 15 10 0
@@ -800,7 +800,7 @@ too dark to tell
 ~
 0 -1 17003
 D2
-to dark to tell
+too dark to tell
 ~
 gate~
 1 -1 17001
@@ -814,34 +814,34 @@ to speak no sound exits your mouth......
 ~
 1 DX 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17002
 D0
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17004
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17011
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17005
 D4
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17018
 S
 #17004
 Trapped!~
-The door slams shut behind you and suddenly dissapears into the wall. You
+The door slams shut behind you and suddenly disappears into the wall. You
 are now trapped in a very small room, and it feels like the air is quickly
 becoming stale to breath....
 ~
@@ -857,30 +857,30 @@ to the north, and a closed door to the south.
 ~
 1 D 0
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17003
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17006
 D2
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17007
 S
 #17006
 Trapped!~
-The door to the south slams shut behind you and dissapears into the wall.
+The door to the south slams shut behind you and disappears into the wall.
 The planners of this guild added many traps for the unwary to stumble upon
 and you are unlucky to do so...
 ~
 1 D 0
 D4
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17009
@@ -894,12 +894,12 @@ see an exit to the north, and a gaping hole in the wall to the west....
 ~
 1 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 17005
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17008
@@ -907,7 +907,7 @@ S
 #17008
 Suprise!~
 You begin to feel unlucky as you stumble upon yet another trap room in the
-guild. As the door dissapears, you try to breath a sigh of outrage...but
+guild. As the door disappears, you try to breath a sigh of outrage...but
 funny enough...you can't hear the sound of your own voice.
 ~
 1 DFNX 0
@@ -934,7 +934,7 @@ attention, and you see that not all of them died natural deaths.
 ~
 1 D 0
 D4
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17001
@@ -949,22 +949,22 @@ the east is a closed door, and west leads back to the CrossRoads.
 ~
 1 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17003
 D1
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17014
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17012
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17013
@@ -977,7 +977,7 @@ faintly hear what sounds to be like the screaming of some tortured soul.
 ~
 1 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17011
@@ -990,7 +990,7 @@ hear the sound of someone screaming.
 ~
 1 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17011
@@ -1004,17 +1004,17 @@ all the water, you see a door. Also doors to the east and to the west.
 ~
 1 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17011
 D1
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17015
 D2
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17016
@@ -1029,12 +1029,12 @@ you can look back into the triple junction.
 ~
 1 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17014
 D0
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17017
@@ -1056,7 +1056,7 @@ flying above a ruined town that looks startling like this one...
 ~
 1 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17015
@@ -1069,36 +1069,36 @@ to the north and south, and a ladder leads down to the xroads.
 ~
 1 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17019
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17020
 D5
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17003
 S
 #17019
 Archers post~
-This is a old ruined archers station. Deep slits have been cut into the walls
+This is an old ruined archers station. Deep slits have been cut into the walls
 for the defense of this guild during times of trouble. All that is left now
 are burned walls, and piles of moldy clothing. Exits lead to the south and
 to the west.
 ~
 1 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17019
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17026
@@ -1114,12 +1114,12 @@ out over a misty city.
 ~
 1 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17018
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17021
@@ -1133,12 +1133,12 @@ seems to be voices coming from the north.
 ~
 1 D 0
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17020
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17022
@@ -1152,16 +1152,16 @@ guild.
 ~
 1 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17021
 D1
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17023
-D3 to dark to tell
+D3 too dark to tell
 ~
 ~
 1 -1 17024
@@ -1175,7 +1175,7 @@ seems that all of the assassins have not left.
 ~
 1 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 17022
@@ -1189,12 +1189,12 @@ explore.
 ~
 1 D 0
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 17022
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 17025
@@ -1203,7 +1203,7 @@ S
 Transportation room~
 Red light blinds you as you enter this room. In the middle of this room 
 stands a glowing red aura that you can deem no purpose from. Its cool to the
-touch and eminates no heat. A large sign on the wall reads:
+touch and emanates no heat. A large sign on the wall reads:
 WARNING: This is the guild transportation chamber to the upper levels, from
 this point there is no turning back, so if you are summoned pass the guardian
 and enter the masters realm. Intruders beware if you dont know the password.
@@ -1231,7 +1231,7 @@ to the north. A low shuffling sound catches your attention.
 ~
 1 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 17029
@@ -1254,12 +1254,12 @@ opposite of the beauty of this hallway.
 ~
 1 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 17027
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17030
@@ -1273,12 +1273,12 @@ that have tried to pass this room before.
 ~
 1 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17029
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17031
@@ -1292,12 +1292,12 @@ drive them away.
 ~
 1 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17030
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17032
@@ -1310,17 +1310,17 @@ you think you hear the sound of a cat.....
 ~
 1 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17031
 D3
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17033
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17034
@@ -1334,7 +1334,7 @@ and powerful this master is.
 ~
 1 D 0
 D1
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17032
@@ -1347,12 +1347,12 @@ powerful minions are up there somewhere.....
 ~
 1 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17032
 D4
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17035
@@ -1366,12 +1366,12 @@ only escape.
 ~
 1 D 0
 D5
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17034
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17036
@@ -1384,22 +1384,22 @@ that you cannot make out any other feature of this room.
 ~
 1 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 17035
 D0
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17037
 D2
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17038
 D1
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17039
@@ -1413,7 +1413,7 @@ He will be able to provide you with all you may need.
 ~
 1 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17036
@@ -1421,7 +1421,7 @@ S
 #17038
 Byrne's office~
 This is the office of Gareth Byrne, the master recruiter. He is one of the 
-most powerfull men in the realm. Lords and ladies once bowed to the power of
+most powerful men in the realm. Lords and ladies once bowed to the power of
 this man. You can see by the shape of this office that he is a very wealthy
 individual. A large map of Sembia hangs on the wall behind his desk, and the
 floor is a rich black marble only found in the evil infested mines of Moria.
@@ -1431,7 +1431,7 @@ that Byrne and the master had something to do with that......
 ~
 1 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17036
@@ -1450,7 +1450,7 @@ small dark man seated in from of a roaring fire.
 ~
 1 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 door~
 1 -1 17036

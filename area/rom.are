@@ -172,7 +172,7 @@ Not fufilling the roles of your office can result in demotion or deletion.
 
 8)  Do not undermine the authority of a higher level god.  If you
     see that someone has been frozen or nochannelled do not restore
-    their priveleges.  They are being punished for a reason.
+    their privileges.  They are being punished for a reason.
 
 9)  Do not try to overrule each other.
 
@@ -283,7 +283,7 @@ Syntax:
 
 The clone command duplicates an object or mobile.  The level of item or mobile
 that may be cloned depends on your level.  The target object or mob must be in
-the same room as you, or in your posession.  Strung and set information is
+the same room as you, or in your possession.  Strung and set information is
 preserved by clone, as well as any spell effects and container contents or
 mobile inventory, except for items which are too high for you to clone.
 Strung extended descriptions on objects are not kept, however.
@@ -334,7 +334,7 @@ Changes from stock ROM code should be listed here.
 The gate spell is a powerful transportation magic that opens up a portal
 between your character and another person or creature somewhere else in the
 world.  This portal will transport you and any pet you might have, but not
-other members of your group.  Monsters recieve a save against gate, and
+other members of your group.  Monsters receive a save against gate, and
 monster or players s more than 3 levels higher than you can not be gated to at
 all.  God rooms, private rooms, and no recall rooms cannot be gated to, and
 no recall rooms cannot be gated out of.  Finally, any god or hero is also

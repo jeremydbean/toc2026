@@ -1407,7 +1407,7 @@ you are standing in.
 ~
 0 -1 7021
 D2
-To the south there's a ENORMOUS quadruple sewer junction, all lit up by
+To the south there's an ENORMOUS quadruple sewer junction, all lit up by
 an odd light.
 ~
 ~
@@ -1465,7 +1465,7 @@ You stand in a junction with pipes leading west, north and east.
 ~
 70 9 11
 D0
-To the north there's a ENORMOUS quadruple sewer junction, all lit up by
+To the north there's an ENORMOUS quadruple sewer junction, all lit up by
 an odd light.
 ~
 ~
@@ -2260,7 +2260,7 @@ your legs up to your knees as well. The pipe leads west and south.
 D3
 You can see a room in which mud drips from the roof onto the floor in 
 great cakes of sludge. There doesn't seem to be any exits from that room
-apart from in you direction.
+apart from in your direction.
 ~
 ~
 0 -1 7101
@@ -4249,7 +4249,7 @@ blue.
 ~
 E
 green~
-This looks like a evil dragon
+This looks like an evil dragon
 ~
 E
 red~
