@@ -371,3 +371,150 @@ All implemented in `src/act_wiz.c`, declared in `src/interp.h`, registered in `s
 - **finger (offline)**: Opens player file, scans for `Levl`/`Cla`/`Plyd`/`LogO`/`Race` keywords via `fgets` + `sscanf`; strips trailing `~` from race name
 - **duel**: Uses `extern void set_fighting()` declared locally; sets both players' `pk_state = 1` if 0 to bypass PK safety check
 
+---
+
+## Comprehensive Update (April 2026)
+
+**Last comprehensive review**: April 3, 2026
+**Review scope**: Full .are file audit (30 rounds), crash/UAF fixes, new immortal commands, new content, documentation overhaul
+**Previous review**: November 20, 2025
+
+---
+
+## .ARE File Audit Methodology
+
+All 132 `.are` files were audited in 30 rounds using Python scripts. This section documents methodology so future agents can continue the work.
+
+### Files to NEVER Modify
+- `area/korzath2old.are` — backup of an old area version, do not edit
+- `area/savedTrinidad.are` — archived save state, do not edit
+
+### Encoding
+All `.are` files use **latin-1** (ISO-8859-1) encoding. Always open with `encoding='latin-1'` in Python. Writing back must use the same encoding.
+
+### Audit Pattern List (completed as of April 2026)
+The following categories have been exhaustively scanned and fixed:
+- `alot` → `a lot`
+- there/their/they're confusion
+- `immediatly` → `immediately`, `strangly` → `strangely`
+- Apostrophe errors in contractions (it's vs its, you're vs your)
+- Double-word errors (the the, in in, etc.)
+- `erradicate` → `eradicate`, `heros` → `heroes`
+- `forboding` → `foreboding`, `amazment` → `amazement`, `unconsious` → `unconscious`
+- `preperation` → `preparation`, `beneith` → `beneath`
+- `pedistal`/`pedastal` → `pedestal`, `stalagtites` → `stalactites`
+- `Persistant` → `Persistent`, `apparant` → `apparent`, `boundries` → `boundaries`
+- `Calender` → `Calendar`, `unfamilar` → `unfamiliar`, `equipement` → `equipment`
+- `nonexistance` → `nonexistence`, `harrasing` → `harassing`
+- `headress` → `headdress`
+- a/an article errors (a animal → an animal, a oak → an oak, etc.)
+- `terrrifying` → `terrifying`, `apperance` → `appearance`
+- `Sacraficial` → `Sacrificial`, `decend` → `descend`
+- `parliment` → `parliament`, `throught` → `through`, `wich` → `which`
+- `crouds` → `crowds`, `maintenence` → `maintenance`
+- `inscripted` → `inscribed`, `Dispite` → `Despite`
+- `indiscernable` → `indiscernible`, `infititely` → `infinitely`
+- Control character artifacts (`^H` = chr(8) in object keywords)
+
+### Pattern Pitfalls
+- **NEVER use `wonderfull?` or `bountifull?` regex** — these match correctly spelled words. Use the full misspelling: `wonderfull` (not `wonderfull?`).
+- **`nether.are` has duplicate mob blocks** — many descriptions appear twice verbatim. Always use Python `content.replace(old, new, 1)` or use a context anchor to target the specific instance.
+- **Context-sensitive matching**: For areas with repeated similar strings, include 1–2 surrounding words in the old string to ensure you replace the right occurrence.
+
+### Audit Script Template
+```python
+import os, re
+
+AREA_DIR = "area"
+SKIP = {"korzath2old.are", "savedTrinidad.are"}
+
+for fname in sorted(os.listdir(AREA_DIR)):
+    if not fname.endswith(".are") or fname in SKIP:
+        continue
+    path = os.path.join(AREA_DIR, fname)
+    with open(path, encoding="latin-1") as f:
+        content = f.read()
+    matches = re.findall(r'YOUR_PATTERN', content, re.IGNORECASE)
+    if matches:
+        print(f"{fname}: {matches[:5]}")
+```
+
+---
+
+## Crash & UAF Fix Summary (April 2026)
+
+### Pattern 1: Use-After-Free in damage loops
+**Problem**: Code called `raw_kill(victim)` then continued using the `victim` pointer.
+**Files fixed**: `fight.c` (damage/fatality), `magic.c` (chain lightning), `magic2.c` (missile loops), `update.c` (river sweep)
+**Fix**: Check return value of `raw_kill()` before any subsequent use of the character pointer.
+
+### Pattern 2: Infinite random-vnum loops
+**Problem**: `for(;;)` loops calling `get_room_index(number_range(0, 65535))` could spin indefinitely.
+**Fix**:
+```c
+int attempts = 0;
+for (;;) {
+    if (++attempts > 200) { room = NULL; break; }
+    room = get_room_index(number_range(low, high));
+    if (room != NULL) break;
+}
+if (room == NULL) continue;
+```
+
+### Pattern 3: NULL dereference after list traversal
+**Problem**: Iterating `ch->in_room->people` without accounting for mobs extracted mid-loop.
+**Fix**: Save `next` pointer before processing the current element; recheck pointers after any extract/kill.
+
+### Pattern 4: Missing in-room NULL guard
+**Problem**: Functions assumed `ch->in_room != NULL` without checking.
+**Files fixed**: `special.c` (`spec_healer`), `quest.c` (`do_quest`), `update.c`
+
+---
+
+## New Content Summary (April 2026)
+
+### The Ashen Wastes (`area/ashen_wastes.are`)
+- **Vnum range**: 26700–26799
+- **Theme**: Post-apocalyptic scorched wasteland
+- **Purpose**: High-level (55–70) grinding zone with rare drops tied to the heated gear mechanic
+
+### Seasonal Area System
+- Holiday portals open/close based on in-game date and weather system
+- `dresden_halloween.are`, `limbo_halloween.are` — Halloween
+- `dresden_xmas.are`, `limbo_xmas.are`, `midennir_halloween.are` — Christmas/winter
+
+### Heated Gear Mechanic
+- Objects gain `OBJ_HEATED` flag from fire spells, traps, or environmental effects
+- `update.c` ticks — wearing heated objects deals passive burn damage; cools over time
+- Fire protection affects reduce burn damage; creates tactical depth in fire-type areas
+
+### Pyrotechnics Rewrite
+- `spell_pyrotechnics` rebuilt as a proper psi-class area attack with level-based scaling and burn/daze secondary effects
+
+---
+
+## Security Posture (April 2026)
+
+- ✅ `WEB_ADMIN_TOKEN` auth — mutating endpoints require `X-Admin-Token` header when env var is set
+- ✅ README documents firewall rules, HTTPS proxy guidance, token setup
+- ✅ `resolve.c` archived — no longer in build path
+- **Pending**: Port 9000 (telnet) has no TLS — standard for MUDs but note for public deployments
+- **Pending**: Area files are trusted admin input; no validation for malformed vnum ranges
+
+---
+
+## Agent Workflow Notes (Updated April 2026)
+
+1. **Never modify `player/` or `gods/`** — live character data, requires explicit user permission
+2. **Never modify `korzath2old.are` or `savedTrinidad.are`** — archived reference files
+3. **Area file encoding**: Always `encoding='latin-1'` for `.are` files
+4. **String safety**: `strlcpy`/`strlcat` for copies, `snprintf(buf, sizeof(buf), ...)` for formatting
+5. **Suppress unused param warnings**: `UNUSED_PARAM(x)` macro from `merc.h`
+6. **After C changes**: `make` (verify no warnings) then test in Docker
+7. **New game commands**: Implement in `act_*.c`, declare in `interp.h`, register in `interp.c`, add help to `area/commands.are`
+8. **New spells**: `magic.c`/`magic2.c`, skill table in `const.c`, `gsn_` global in `db.c`
+9. **UAF rule**: After `raw_kill()` or `extract_char()`, all pointers to that character are invalid
+10. **Vnum search loops**: Always bounded (max 200 attempts); null-check result before use
+11. **Docker rebuild**: `docker build --no-cache -t toc .` if changes appear not to be reflected
+12. **AGENTS.md**: Append new sections rather than rewriting; prevents merge conflicts
+
