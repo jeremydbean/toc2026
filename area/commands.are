@@ -2763,6 +2763,34 @@ the player file on quit.
 See also: FINGER, TRAIL, PSTAT
 ~
 
+63 PRESTORE~
+Syntax: prestore <player>
+        prestore <player> <number>
+
+PRESTORE manages versioned snapshots of a player's save file.
+
+With just a player name, PRESTORE lists all available restore points in
+order from newest to oldest, showing the date and time of each snapshot:
+
+  prestore Conan
+    [1] Fri Apr 04 2026 15:30:22   <- most recent
+    [2] Fri Apr 04 2026 12:10:05
+    [3] Thu Apr 03 2026 22:45:11
+
+To restore a player to one of the listed points, specify the number:
+
+  prestore Conan 2
+
+Snapshots are taken automatically every time a player's file is saved.
+Up to 30 versions are kept per player; older ones are pruned automatically.
+
+If the target player is currently online, they are saved and disconnected
+before the restore takes effect.  They must reconnect to use the restored
+character.
+
+See also: ACTIVITY, FINGER, PSTAT
+~
+
 65 TRAIL~
 Syntax: trail <player>
 

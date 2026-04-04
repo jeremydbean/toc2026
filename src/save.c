@@ -11,9 +11,12 @@
 #include <types.h>
 #else
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <dirent.h>
 #endif
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <time.h>
@@ -75,6 +78,134 @@ static bool can_chgrp( void )
     return available;
 }
 #endif
+
+
+/*
+ * player_snapshot -- copy the current player file into the versioned backup
+ * directory before it is overwritten.
+ *
+ * Layout: PLAYER_VER_DIR/<Name>/<Name>.YYYYMMDD_HHMMSS
+ *
+ * The PLAYER_VER_MAX most recent versions are kept; older ones are pruned.
+ * Safe to call even if the player file does not yet exist (first save).
+ */
+void player_snapshot( const char *name )
+{
+    char src[MAX_INPUT_LENGTH];
+    char vdir[MAX_INPUT_LENGTH];
+    char dest[MAX_INPUT_LENGTH];
+    char mkdircmd[MAX_INPUT_LENGTH * 2];
+    FILE *in, *out;
+    time_t now = current_time;
+    struct tm *tm_now;
+    char ts[32];
+    int  c;
+
+    /* Source: live player file */
+    snprintf( src, sizeof(src), "%s%s", PLAYER_DIR, capitalize( (char *)name ) );
+
+    /* Does the file exist yet? If not, nothing to snapshot */
+    if ( ( in = fopen( src, "r" ) ) == NULL )
+        return;
+
+    /* Ensure per-player version directory exists */
+    snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capitalize( (char *)name ) );
+    snprintf( mkdircmd, sizeof(mkdircmd), "mkdir -p %s", vdir );
+    if ( system( mkdircmd ) == -1 )
+    {
+        fclose( in );
+        bug( "player_snapshot: mkdir failed", 0 );
+        return;
+    }
+
+    /* Build timestamped destination filename */
+    tm_now = localtime( &now );
+    strftime( ts, sizeof(ts), "%Y%m%d_%H%M%S", tm_now );
+    snprintf( dest, sizeof(dest), "%s/%s.%s", vdir, capitalize( (char *)name ), ts );
+
+    /* Don't create a duplicate if snapshot already exists for this second */
+    {
+        FILE *test = fopen( dest, "r" );
+        if ( test != NULL )
+        {
+            fclose( test );
+            fclose( in );
+            return;
+        }
+    }
+
+    /* Copy src → dest byte-by-byte (avoids shell dependency) */
+    if ( ( out = fopen( dest, "w" ) ) == NULL )
+    {
+        fclose( in );
+        bug( "player_snapshot: fopen dest failed", 0 );
+        return;
+    }
+    while ( ( c = fgetc( in ) ) != EOF )
+        fputc( c, out );
+    fclose( in );
+    fclose( out );
+
+    /* Prune: keep only the PLAYER_VER_MAX most recent versions */
+    {
+        DIR *dp = opendir( vdir );
+        if ( dp != NULL )
+        {
+            /* Collect matching filenames into a simple sorted array */
+            /* Use a fixed-max buffer: PLAYER_VER_MAX + 10 entries */
+#define VER_SCAN_MAX (PLAYER_VER_MAX + 64)
+            char  entries[VER_SCAN_MAX][64];
+            int   count = 0;
+            struct dirent *ent;
+            const char *cap_name = capitalize( (char *)name );
+            size_t nlen = strlen( cap_name );
+
+            while ( ( ent = readdir( dp ) ) != NULL && count < VER_SCAN_MAX )
+            {
+                /* Match files named exactly "<Name>.<timestamp>" */
+                if ( strncmp( ent->d_name, cap_name, nlen ) == 0
+                  && ent->d_name[nlen] == '.' )
+                {
+                    snprintf( entries[count], sizeof(entries[count]),
+                              "%s", ent->d_name );
+                    count++;
+                }
+            }
+            closedir( dp );
+
+            /* Sort ascending (oldest first) — simple insertion sort on name,
+               which is lexicographic == chronological for YYYYMMDD_HHMMSS */
+            {
+                int i, j;
+                char tmp[64];
+                for ( i = 1; i < count; i++ )
+                {
+                    snprintf( tmp, sizeof(tmp), "%s", entries[i] );
+                    j = i - 1;
+                    while ( j >= 0 && strcmp( entries[j], tmp ) > 0 )
+                    {
+                        snprintf( entries[j+1], sizeof(entries[j+1]),
+                                  "%s", entries[j] );
+                        j--;
+                    }
+                    snprintf( entries[j+1], sizeof(entries[j+1]), "%s", tmp );
+                }
+            }
+
+            /* Delete oldest until we are within the limit */
+            {
+                int i;
+                for ( i = 0; i < count - PLAYER_VER_MAX; i++ )
+                {
+                    char to_del[MAX_INPUT_LENGTH];
+                    snprintf( to_del, sizeof(to_del), "%s/%s", vdir, entries[i] );
+                    remove( to_del );
+                }
+            }
+#undef VER_SCAN_MAX
+        }
+    }
+}
 
 
 /*
@@ -182,6 +313,8 @@ void save_char_obj( CHAR_DATA *ch )
 	    fwrite_pet(ch->pet,fp);
 	fprintf( fp, "#END\n" );
 	fclose( fp );
+	/* Snapshot the old player file before overwriting it */
+	player_snapshot( ch->name );
 	/* move the file only when write succeeded */
 #if defined(unix) && defined(CHGRP_TO)
 	if (can_chgrp())

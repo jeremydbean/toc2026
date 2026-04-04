@@ -11,6 +11,7 @@
 #else
 #include <sys/types.h>
 #include <sys/time.h>
+#include <dirent.h>
 #endif
 #include <stdio.h>
 #include <string.h>
@@ -7522,6 +7523,236 @@ void do_activity( CHAR_DATA *ch, char *argument )
         }
         send_to_char( buf, ch );
     }
+    return;
+}
+
+
+/*
+ * PRESTORE: List and restore versioned player file snapshots.
+ * Syntax: prestore <player>          -- list available versions with dates
+ *         prestore <player> <number> -- restore that numbered version
+ */
+void do_prestore( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char vdir[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char capname[MAX_INPUT_LENGTH];
+    char srcpath[MAX_STRING_LENGTH];
+    char dstpath[MAX_STRING_LENGTH];
+    char cpbuf[MAX_STRING_LENGTH];
+    char datebuf[64];
+    char *versions[PLAYER_VER_MAX + 64];
+    const char *ts;
+    FILE *fsrc;
+    FILE *fdst;
+    CHAR_DATA *victim;
+    DESCRIPTOR_DATA *d;
+    struct tm t;
+    int count;
+    int i, j, n;
+    int yr, mo, dy, hr, mn, sc;
+    int c;
+    int found_online;
+    int namelen;
+    DIR *dp;
+    struct dirent *de;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' )
+    {
+        send_to_char( "Syntax: prestore <player>\n\r", ch );
+        send_to_char( "        prestore <player> <number>\n\r", ch );
+        return;
+    }
+
+    strlcpy( capname, capitalize( arg1 ), sizeof(capname) );
+    snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capname );
+
+    dp = opendir( vdir );
+    if ( dp == NULL )
+    {
+        snprintf( buf, sizeof(buf), "No version history found for %s.\n\r", capname );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    /* Collect matching version filenames: <Name>.YYYYMMDD_HHMMSS */
+    count   = 0;
+    namelen = (int) strlen( capname );
+    while ( (de = readdir(dp)) != NULL && count < PLAYER_VER_MAX + 64 )
+    {
+        if ( (int) strlen( de->d_name ) != namelen + 16 )
+            continue;
+        if ( strncmp( de->d_name, capname, (size_t) namelen ) != 0 )
+            continue;
+        if ( de->d_name[namelen] != '.' )
+            continue;
+        versions[count++] = strdup( de->d_name );
+    }
+    closedir( dp );
+
+    if ( count == 0 )
+    {
+        snprintf( buf, sizeof(buf), "No versions on record for %s.\n\r", capname );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    /* Sort newest-first (reverse-lexicographic) via insertion sort */
+    for ( i = 1; i < count; i++ )
+    {
+        char *key = versions[i];
+        for ( j = i - 1; j >= 0 && strcmp( versions[j], key ) < 0; j-- )
+            versions[j + 1] = versions[j];
+        versions[j + 1] = key;
+    }
+
+    if ( arg2[0] == '\0' || !str_cmp( arg2, "list" ) )
+    {
+        /* LIST mode: show numbered versions with human-readable dates */
+        snprintf( buf, sizeof(buf),
+                  "Version history for %s (%d snapshot%s):\n\r",
+                  capname, count, count == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+
+        for ( i = 0; i < count; i++ )
+        {
+            ts = versions[i] + namelen + 1;  /* skip "<Name>." */
+            if ( sscanf( ts, "%4d%2d%2d_%2d%2d%2d",
+                         &yr, &mo, &dy, &hr, &mn, &sc ) == 6 )
+            {
+                memset( &t, 0, sizeof(t) );
+                t.tm_year = yr - 1900;
+                t.tm_mon  = mo - 1;
+                t.tm_mday = dy;
+                t.tm_hour = hr;
+                t.tm_min  = mn;
+                t.tm_sec  = sc;
+                mktime( &t );
+                strftime( datebuf, sizeof(datebuf),
+                          "%a %b %d %Y %H:%M:%S", &t );
+            }
+            else
+            {
+                strlcpy( datebuf, ts, sizeof(datebuf) );
+            }
+            snprintf( buf, sizeof(buf), "  [%2d] %s\n\r", i + 1, datebuf );
+            send_to_char( buf, ch );
+        }
+        send_to_char( "Use 'prestore <player> <number>' to restore.\n\r", ch );
+    }
+    else
+    {
+        /* RESTORE mode */
+        n = atoi( arg2 );
+        if ( n < 1 || n > count )
+        {
+            snprintf( buf, sizeof(buf),
+                      "Invalid number. Choose 1-%d (use 'prestore %s' to list).\n\r",
+                      count, capname );
+            send_to_char( buf, ch );
+            for ( i = 0; i < count; i++ ) free( versions[i] );
+            return;
+        }
+
+        snprintf( srcpath, sizeof(srcpath), "%s%s/%s",
+                  PLAYER_VER_DIR, capname, versions[n - 1] );
+        snprintf( dstpath, sizeof(dstpath), "%s%s",
+                  PLAYER_DIR, capname );
+
+        /* If the player is online, save and disconnect first */
+        found_online = 0;
+        victim = get_char_world( ch, capname );
+        if ( victim != NULL && !IS_NPC( victim )
+        &&   !str_cmp( victim->name, capname ) )
+        {
+            found_online = 1;
+            save_char_obj( victim );
+            if ( victim->desc != NULL )
+            {
+                send_to_char(
+                    "An immortal is restoring your character to an earlier state.\n\r"
+                    "Please reconnect.\n\r", victim );
+                for ( d = descriptor_list; d != NULL; d = d->next )
+                {
+                    if ( d == victim->desc )
+                    {
+                        close_socket( d );
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                extract_char( victim, TRUE );
+            }
+        }
+
+        /* Copy the snapshot over the live player file */
+        fsrc = fopen( srcpath, "rb" );
+        if ( fsrc == NULL )
+        {
+            bug( "do_prestore: cannot open source snapshot", 0 );
+            send_to_char( "Error: cannot read snapshot file.\n\r", ch );
+            for ( i = 0; i < count; i++ ) free( versions[i] );
+            return;
+        }
+
+        fdst = fopen( dstpath, "wb" );
+        if ( fdst == NULL )
+        {
+            bug( "do_prestore: cannot open dest player file", 0 );
+            send_to_char( "Error: cannot write player file.\n\r", ch );
+            fclose( fsrc );
+            for ( i = 0; i < count; i++ ) free( versions[i] );
+            return;
+        }
+
+        while ( (c = fgetc(fsrc)) != EOF )
+            fputc( (unsigned char) c, fdst );
+        fclose( fsrc );
+        fclose( fdst );
+
+        /* Format the restored date for display and logging */
+        ts = versions[n - 1] + namelen + 1;
+        if ( sscanf( ts, "%4d%2d%2d_%2d%2d%2d",
+                     &yr, &mo, &dy, &hr, &mn, &sc ) == 6 )
+        {
+            memset( &t, 0, sizeof(t) );
+            t.tm_year = yr - 1900;
+            t.tm_mon  = mo - 1;
+            t.tm_mday = dy;
+            t.tm_hour = hr;
+            t.tm_min  = mn;
+            t.tm_sec  = sc;
+            mktime( &t );
+            strftime( datebuf, sizeof(datebuf),
+                      "%a %b %d %Y %H:%M:%S", &t );
+        }
+        else
+        {
+            strlcpy( datebuf, ts, sizeof(datebuf) );
+        }
+
+        snprintf( cpbuf, sizeof(cpbuf),
+                  "%s restored %s to: %s%s",
+                  ch->name, capname, datebuf,
+                  found_online ? " (was online, disconnected)" : "" );
+        log_string( cpbuf );
+
+        snprintf( buf, sizeof(buf),
+                  "%s restored to: %s\n\r", capname, datebuf );
+        send_to_char( buf, ch );
+        if ( found_online )
+            send_to_char( "Player was online and has been disconnected.\n\r", ch );
+    }
+
+    for ( i = 0; i < count; i++ )
+        free( versions[i] );
     return;
 }
 

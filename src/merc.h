@@ -2076,6 +2076,8 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 #define PLAYER_DIR      "../player/"
 #define BACKUP_DIR      "../backups/"
 #define PLAYER_TEMP     "../player/temp"
+#define PLAYER_VER_DIR  "../player/versions/"  /* per-player versioned snapshots */
+#define PLAYER_VER_MAX  30                      /* keep this many versions per player */
 #define GOD_DIR         "../gods/"
 #define HERO_DIR        "../heroes/"
 #define CORPSE_DIR      "../corpse/"
@@ -2380,6 +2382,7 @@ void save_wizlist      ( void );
 void    save_char_obj   ( CHAR_DATA *ch );
 bool    load_char_obj   ( DESCRIPTOR_DATA *d, char *name );
 void    corpse_back     ( CHAR_DATA *ch, OBJ_DATA *corpse );
+void    player_snapshot ( const char *name );  /* versioned snapshot of player file */
 
 /* skills.c */
 bool    parse_gen_groups ( CHAR_DATA *ch,char *argument );
