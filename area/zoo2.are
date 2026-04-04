@@ -187,7 +187,7 @@ F L 0 0
 #5815
 rattle snake rattlesnake~
 a Rattlesnake~
-a coiled up snake rattling it's tail at your presense.
+a coiled up snake rattling it's tail at your presence.
 ~
 The rattlesnake knows you are here and is rattling his tail as a warning.
 ~
@@ -1332,7 +1332,8 @@ S
 
 #0
 
-#RESETS
+#RESETS
+
 D 0 5830 1 1
 M 0 5801 2 5805		* Dolphins
 M 0 5802 2 5806		* Blowfish
@@ -1358,8 +1359,10 @@ M 0 5818 2 5814		* Teddy Bear
 M 0 5819 2 5816		* Panda Bear
 M 0 5820 2 5814		* Brown Bear
 M 0 5821 2 5815		* Black Bear
-E 1 5803 2 13
-M 0 5822 2 5817
+E 1 5803 2 13
+
+M 0 5822 2 5817
+
 		* Lynx
 M 0 5823 2 5820		* Cougar
 M 0 5824 2 5817		* Lion
