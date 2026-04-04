@@ -286,6 +286,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	long act_save = ch->act;
 	if (ch->countdown != 0)  /* mid-quest logout: strip QUESTOR so re-login state is clean */
 	    REMOVE_BIT(act_save, PLR_QUESTOR);
+	REMOVE_BIT(act_save, PLR_AFK);  /* AFK is session-only, never persist it */
 	if (act_save != 0)
 	    fprintf( fp, "Act  %ld\n", act_save );
     }
@@ -771,6 +772,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->pkills_received         = 0;
     ch->pcdata->pkills_given            = 0;
     ch->pcdata->corpses			= 0;
+    ch->pcdata->afk_msg                 = NULL;
     ch->pcdata->pwd			= str_dup( "" );
     ch->pcdata->bamfin			= str_dup( "" );
     ch->pcdata->bamfout			= str_dup( "" );

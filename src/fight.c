@@ -2409,7 +2409,26 @@ void raw_kill( CHAR_DATA *ch, CHAR_DATA *victim )
     }
 
     if(!IS_SET(victim->in_room->room_flags, ROOM_JAIL) )
+    {
+        /* Death log */
+        {
+            FILE *dfp = fopen( "../log/deaths.log", "a" );
+            if ( dfp != NULL )
+            {
+                char *ts = ctime( &current_time );
+                ts[strlen(ts)-1] = '\0';   /* strip trailing newline */
+                fprintf( dfp, "[%s] DEATH: %s (level %d) killed by %s in %s [vnum %d]\n",
+                    ts,
+                    victim->name, victim->level,
+                    ( ch == victim ) ? "themselves"
+                        : IS_NPC(ch) ? ch->short_descr : ch->name,
+                    victim->in_room ? victim->in_room->name : "unknown",
+                    victim->in_room ? victim->in_room->vnum : 0 );
+                fclose( dfp );
+            }
+        }
        extract_char( victim, false );
+    }
 
     while ( victim->affected )
 	affect_remove( victim, victim->affected );

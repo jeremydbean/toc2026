@@ -1592,6 +1592,7 @@ struct  pc_data
     long                dcount;
     int                 corpses;
     char * ignore;
+    char * afk_msg;             /* optional message shown to tellers while AFK */
     long                pkills_given;
     long                pkills_received;
     int                 trail[TRAIL_LEN];

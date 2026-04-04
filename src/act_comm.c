@@ -396,17 +396,43 @@ void do_quiet ( CHAR_DATA *ch, char * argument)
 
 void do_afk ( CHAR_DATA *ch, char * argument)
 {
-    UNUSED_PARAM(argument);
+    char buf[MAX_STRING_LENGTH];
+
+    if (IS_NPC(ch))
+        return;
+
     if (IS_SET(ch->act,PLR_AFK))
     {
-      send_to_char("AFK mode removed.\n\r",ch);
-      REMOVE_BIT(ch->act,PLR_AFK);
+        /* Toggle off */
+        send_to_char("AFK mode removed.\n\r",ch);
+        REMOVE_BIT(ch->act,PLR_AFK);
+        if (ch->pcdata->afk_msg != NULL)
+        {
+            free_string(ch->pcdata->afk_msg);
+            ch->pcdata->afk_msg = NULL;
+        }
     }
-   else
-   {
-     send_to_char("You are now in AFK mode.\n\r",ch);
-     SET_BIT(ch->act,PLR_AFK);
-   }
+    else
+    {
+        if (argument[0] != '\0')
+        {
+            if (ch->pcdata->afk_msg != NULL)
+                free_string(ch->pcdata->afk_msg);
+            ch->pcdata->afk_msg = str_dup(argument);
+            snprintf(buf, sizeof(buf), "You are now AFK: %s\n\r", argument);
+            send_to_char(buf, ch);
+        }
+        else
+        {
+            if (ch->pcdata->afk_msg != NULL)
+            {
+                free_string(ch->pcdata->afk_msg);
+                ch->pcdata->afk_msg = NULL;
+            }
+            send_to_char("You are now in AFK mode.\n\r",ch);
+        }
+        SET_BIT(ch->act,PLR_AFK);
+    }
 }
 
 void do_replay (CHAR_DATA *ch, char *argument)
@@ -870,7 +896,14 @@ void do_tell( CHAR_DATA *ch, char *argument )
 
     if (IS_SET(victim->act,PLR_AFK))
     {
-        act("$E is AFK and may not respond right away.",ch,NULL,victim,TO_CHAR);
+        if (victim->pcdata->afk_msg != NULL)
+        {
+            snprintf( buf, sizeof(buf), "$E is AFK: %s",
+                victim->pcdata->afk_msg );
+            act(buf, ch, NULL, victim, TO_CHAR);
+        }
+        else
+            act("$E is AFK and may not respond right away.",ch,NULL,victim,TO_CHAR);
     }
 
     /* Code Safety: snprintf and buffer safety */
@@ -932,7 +965,14 @@ void do_reply( CHAR_DATA *ch, char *argument )
 
     if (IS_SET(victim->act,PLR_AFK))
     {
-        act("$E is AFK and may not respond right away.",ch,NULL,victim,TO_CHAR);
+        if (victim->pcdata->afk_msg != NULL)
+        {
+            snprintf( buf, sizeof(buf), "$E is AFK: %s",
+                victim->pcdata->afk_msg );
+            act(buf, ch, NULL, victim, TO_CHAR);
+        }
+        else
+            act("$E is AFK and may not respond right away.",ch,NULL,victim,TO_CHAR);
     }
 
     /* Code Safety: snprintf */

@@ -7224,6 +7224,10 @@ void do_finger( CHAR_DATA *ch, char *argument )
     /* Online player */
     if ( ( victim = get_char_world( ch, arg ) ) != NULL && !IS_NPC(victim) )
     {
+        static const char *guild_names[] =
+            { "Mage","Cleric","Thief","Warrior","Monk","Necromancer",
+              "?6","?7","?8","?9","Any","None" };
+        const char *guild_name;
         int days, hours, mins;
         int played = victim->played + (int)( current_time - victim->logon );
 
@@ -7231,9 +7235,14 @@ void do_finger( CHAR_DATA *ch, char *argument )
         hours = ( played % 86400 ) / 3600;
         mins  = ( played % 3600 ) / 60;
 
+        guild_name = ( victim->pcdata->guild >= 0
+                       && victim->pcdata->guild <= GUILD_NONE )
+                     ? guild_names[victim->pcdata->guild] : "Unknown";
+
         snprintf( buf, sizeof(buf),
             "=== Finger: %s ===\n\r"
             "  Level : %-3d  Race : %-10s  Class: %s\n\r"
+            "  Guild : %-12s  Remorts: %d\n\r"
             "  Title : %s\n\r"
             "  HP    : %d/%d   Mana: %d/%d   Move: %d/%d\n\r"
             "  Room  : %s [vnum %d]\n\r"
@@ -7243,6 +7252,8 @@ void do_finger( CHAR_DATA *ch, char *argument )
             pc_race_table[victim->race].name,
             ( victim->class >= 0 && victim->class < MAX_CLASS )
                 ? class_table[victim->class].name : "Unknown",
+            guild_name,
+            victim->pcdata->num_remorts,
             victim->pcdata->title,
             victim->hit, victim->max_hit,
             victim->mana, victim->max_mana,
@@ -7264,10 +7275,15 @@ void do_finger( CHAR_DATA *ch, char *argument )
     }
 
     {
-        int  p_level  = 0;
-        int  p_class  = -1;
-        int  p_played = 0;
-        long p_logoff = 0L;
+        static const char *guild_names[] =
+            { "Mage","Cleric","Thief","Warrior","Monk","Necromancer",
+              "?6","?7","?8","?9","Any","None" };
+        int  p_level    = 0;
+        int  p_class    = -1;
+        int  p_played   = 0;
+        long p_logoff   = 0L;
+        int  p_guild    = GUILD_NONE;
+        int  p_remorts  = 0;
         char p_race[64];
         char keyword[64];
         char linebuf[256];
@@ -7285,6 +7301,10 @@ void do_finger( CHAR_DATA *ch, char *argument )
                 sscanf( linebuf, "%*s %d", &p_played );
             else if ( !strcmp( keyword, "LogO" ) )
                 sscanf( linebuf, "%*s %ld", &p_logoff );
+            else if ( !strcmp( keyword, "Gui" ) )
+                sscanf( linebuf, "%*s %d", &p_guild );
+            else if ( !strcmp( keyword, "NumRemorts" ) )
+                sscanf( linebuf, "%*s %d", &p_remorts );
             else if ( !strcmp( keyword, "Race" ) )
             {
                 char *tilde;
@@ -7302,15 +7322,20 @@ void do_finger( CHAR_DATA *ch, char *argument )
             const char *class_name =
                 ( p_class >= 0 && p_class < MAX_CLASS )
                     ? class_table[p_class].name : "Unknown";
+            const char *guild_name =
+                ( p_guild >= 0 && p_guild <= GUILD_NONE )
+                    ? guild_names[p_guild] : "Unknown";
             time_t logoff_time = (time_t)p_logoff;
 
             snprintf( buf, sizeof(buf),
                 "=== Finger: %s (offline) ===\n\r"
                 "  Level : %-3d  Race : %-10s  Class: %s\n\r"
+                "  Guild : %-12s  Remorts: %d\n\r"
                 "  Last on : %s"
                 "  Played  : %dd %dh %dm\n\r",
                 capitalize( arg ),
                 p_level, p_race[0] ? p_race : "Unknown", class_name,
+                guild_name, p_remorts,
                 p_logoff ? ctime( &logoff_time ) : "Unknown\n",
                 days, hours, mins );
             send_to_char( buf, ch );

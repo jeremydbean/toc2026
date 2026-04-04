@@ -175,9 +175,11 @@ void do_backup( void )
     wizinfo("Automated backup complete.",62);
     log_string("Automated backup complete.");
     backup = current_time + (60*60*4);
-  /*  system("tar cfz ../backups/`date +%b.%d`.tar.gz ../player"); */
     if (system("tar cfz ../backups/`date +%b.%d.%Y-%H.%M.%S`.tar.gz ../player") == -1)
         bug("do_backup: archive creation failed.", 0);
+    /* Prune backups older than 30 days */
+    if (system("find ../backups -name '*.tar.gz' -mtime +30 -delete") == -1)
+        bug("do_backup: backup pruning failed.", 0);
     return;
 
 }
@@ -190,6 +192,9 @@ void do_dailybackup( void )
     dailybackup = current_time + (60*60*24);
     if (system("tar cfz ../backups/`date +%b.%d`.tar.gz ../player") == -1)
         bug("do_dailybackup: archive creation failed.", 0);
+    /* Prune backups older than 30 days */
+    if (system("find ../backups -name '*.tar.gz' -mtime +30 -delete") == -1)
+        bug("do_dailybackup: backup pruning failed.", 0);
     return;
 
 }
