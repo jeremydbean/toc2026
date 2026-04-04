@@ -3929,7 +3929,7 @@ You see the eternal darkness of the Abyss.
 S
 #13510
 Maintenance Walkway~
-This is a maintence accessway. You walk on a metal catwalk hundreds of 
+This is a maintenance accessway. You walk on a metal catwalk hundreds of 
 feet above the floor. The catwalk sways unsteadily as you walk on it.
 The catwalk continues to the south.
 To the north is a steel door.
@@ -4114,7 +4114,7 @@ You see the eternal darkness of the Abyss.
 S
 #13519
 Maintenance Walkway~
-This is a maintence accessway. You walk on a metal catwalk hundreds of 
+This is a maintenance accessway. You walk on a metal catwalk hundreds of 
 feet above the floor. The catwalk sways unsteadily as you walk on it.
 The catwalk continues to the east and south.
 ~
@@ -4132,7 +4132,7 @@ You see a maintenance walkway.
 S
 #13520
 Maintenance Walkway~
-This is a maintence accessway. You walk on a metal catwalk hundreds of 
+This is a maintenance accessway. You walk on a metal catwalk hundreds of 
 feet above the floor. The catwalk sways unsteadily as you walk on it.
 The catwalk continues to the north and west.
 ~
@@ -4494,7 +4494,7 @@ You see the stairs to the control room.
 ~
 0 -1 13528
 D3
-You see a reactor core maintence hatch.
+You see a reactor core maintenance hatch.
 ~
 hatch maintenance reactor core~
 1 -1 13537
