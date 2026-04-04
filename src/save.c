@@ -314,10 +314,9 @@ void save_char_obj( CHAR_DATA *ch )
 	fprintf( fp, "#END\n" );
 	fclose( fp );
 	/* Snapshot the old player file before overwriting it.
-	   Under-hero players: every save is a version point.
-	   Hero/immortal players: only explicit calls (logout, 4h) snapshot;
-	   skip here to avoid burning through all 30 slots on routine saves. */
-	if ( ch->level < LEVEL_HERO )
+	   All players snapshot on every save so the user's intent of
+	   "snapshot at save" is honoured for heroes and immortals too.
+	   PLAYER_VER_MAX caps total slots; oldest entries are pruned. */
 	    player_snapshot( ch->name );
 	/* move the file only when write succeeded */
 #if defined(unix) && defined(CHGRP_TO)
@@ -921,6 +920,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->session_logon           = 0;
     ch->pcdata->session_start_exp       = 0;
     ch->pcdata->session_start_level     = 0;
+    ch->pcdata->snap_4h_done            = FALSE;
     ch->pcdata->session_kills           = 0;
     ch->pcdata->session_pk_kills        = 0;
     ch->pcdata->session_deaths          = 0;

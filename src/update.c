@@ -431,13 +431,6 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
 	send_info(buf);
     log_string( buf );
     }
-
-    /* Extra snapshot on every level gain for under-hero players.
-       This ensures level milestones are always preserved regardless
-       of how frequently routine auto-saves have filled the window. */
-    if ( ch->level < LEVEL_HERO )
-        player_snapshot( ch->name );
-
     return;
 }
 
