@@ -3617,7 +3617,7 @@ box, covered with dust. To the south you can just make out a small exit.
 ~
 72 8 0
 D2
-To dark to tell.
+Too dark to tell.
 ~
 door iron~
 1 -1 7286
@@ -3642,12 +3642,12 @@ north you can see an iron door.
 ~
 72 12 11
 D0
-To dark to tell.
+Too dark to tell.
 ~
 door iron~
 1 -1 7285
 D3
-To dark to tell.
+Too dark to tell.
 ~
 ~
 0 -1 7283
@@ -4375,7 +4375,7 @@ a breeze.
 ~
 74 9 1
 D1
-To dark to tell
+Too dark to tell
 ~
 ~
 0 -1 7429
@@ -4655,7 +4655,7 @@ You can see calm water.
 ~
 0 -1 7442
 D1
-To dark to tell, but you can feel something nearby.
+Too dark to tell, but you can feel something nearby.
 ~
 ~
 0 -1 7445
@@ -4667,7 +4667,7 @@ touching your right leg.
 ~
 74 9 6
 D0 
-To dark to tell.
+Too dark to tell.
 ~
 ~
 0 -1 7443

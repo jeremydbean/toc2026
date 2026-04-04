@@ -809,7 +809,7 @@ mountain.
 ~
 250 A 5
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25002
@@ -828,17 +828,17 @@ path continues to the north.
 ~
 250 A 5
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25004
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25003
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25001
@@ -853,7 +853,7 @@ no egress to the river itself from this place, only back to the east.
 ~
 250 A 5
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25002
@@ -867,12 +867,12 @@ south is the path back into the mountains.
 ~
 250 A 5
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25002
 D7
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25005
@@ -888,12 +888,12 @@ southeast.
 ~
 250 A 5
 D8
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25004
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25006
@@ -907,12 +907,12 @@ might be safer just to go back down the path.
 ~
 250 A 5
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25005
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25007
@@ -952,12 +952,12 @@ a good idea to get out of here as fast as you can.
 250 ACF 5
 25010 4 1
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25007
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25009
@@ -970,12 +970,12 @@ the mountain, and the bridge is always behind you to the east.
 ~
 250 AC 5
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25008
 D7
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25015
@@ -997,7 +997,7 @@ desperatly for air as the current pulls you south.
 250 E 6
 2 5 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25012
@@ -1027,7 +1027,7 @@ Slowly you begin your struggle for life.
 250 F 6
 25014 5 1
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25003
@@ -1057,12 +1057,12 @@ back to the southeast leads to the bridge.
 ~
 250 A 5
 D8
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25009
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25016
@@ -1076,12 +1076,12 @@ almost there.
 ~
 250 A 5
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25015
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25017
@@ -1096,7 +1096,7 @@ you. A small sign stands here.
 ~
 250 A 5
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25016
@@ -1105,7 +1105,7 @@ D1
 truelove~
 4 -1 25062
 D3
-to dark to tell
+too dark to tell
 ~
 friend~
 4 -1 25018
@@ -1133,12 +1133,12 @@ pecking sound reaches your ears as you manuver your way along the path.
 ~
 250 A 0
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25017
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25019
@@ -1153,12 +1153,12 @@ you can just make out a inscription written in common upon the rock.
 ~
 250 AK 5
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25018
 D0
-to dark to tell
+too dark to tell
 ~
 dawn~
 4 -1 25020
@@ -1182,12 +1182,12 @@ the passageway, maybe it would be better to turn back now.
 ~
 250 AD 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25019
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25021
@@ -1201,7 +1201,7 @@ quite figure out how to get into the lair itself.
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25020
@@ -1222,27 +1222,27 @@ Southwest.
 ~
 250 D 0|11
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25021
 D6
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25023
 D7
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25024
 D8
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25025
 D9
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25026
@@ -1255,7 +1255,7 @@ key to open it and the treasure is yours!
 ~
 250 D 0
 D9
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25022
@@ -1268,7 +1268,7 @@ key to open it and the treasure is yours!
 ~
 250 D 0
 D8
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25022
@@ -1281,7 +1281,7 @@ key to open it and the treasure is yours!
 ~
 250 D 0
 D7
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25022
@@ -1294,7 +1294,7 @@ key to open it and the treasure is yours!
 ~
 250 D 0
 D6
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25022
@@ -1308,7 +1308,7 @@ presence here.
 ~
 250 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 gate~
 1 -1 25028
@@ -1323,22 +1323,22 @@ directions.
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25027
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25038
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25031
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25029
@@ -1352,12 +1352,12 @@ exits lead to the east and the northwest.
 ~
 250 D 0
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25028
 D7
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25030
@@ -1383,12 +1383,12 @@ the southeast.
 ~
 250 D 0
 D8
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25029
 D5
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25048
@@ -1403,17 +1403,17 @@ keep. Exits lead to the north, west and east.
 ~
 250 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25028
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25032
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25037
@@ -1426,12 +1426,12 @@ lead futher along the hallway to the east and west back to the ballroom.
 ~
 250 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25031
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25033
@@ -1447,17 +1447,17 @@ over the mountains, also some shuffling noises come from that room.
 ~
 250 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25032
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 4 -1 25035
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25034
@@ -1472,7 +1472,7 @@ just an empty room, devoid of life....or is it...
 ~
 250 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25033
@@ -1486,7 +1486,7 @@ been looking for, because it will surely help you in your quest for Smaug.
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25033
@@ -1502,7 +1502,7 @@ pulled out a bit from the desk. All in all a very tidy room.
 ~
 250 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25037
@@ -1516,12 +1516,12 @@ the south.
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25031
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25036
@@ -1537,17 +1537,17 @@ covered in dust and refuse from the disuse of ages.
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25028
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25039
 D6
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25040
@@ -1560,12 +1560,12 @@ you would like to go and visit him?
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25038
 D4
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25043
@@ -1578,12 +1578,12 @@ throne room.
 ~
 250 D 0
 D9
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25038
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25041
@@ -1599,12 +1599,12 @@ back to the west.
 ~
 250 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25040
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25042
@@ -1620,7 +1620,7 @@ Mountain.
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25041
@@ -1635,12 +1635,12 @@ the coming of smaug.
 ~
 250 D 0
 D5
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25039
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25044
@@ -1654,12 +1654,12 @@ reflecting off the walls of this place.
 ~
 250 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25043
 D6
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25045
@@ -1673,12 +1673,12 @@ before you enter?
 ~
 250 D 0
 D9
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25044
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25046
@@ -1694,12 +1694,12 @@ carefully.
 ~
 250 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25045
 D9
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25047
@@ -1715,7 +1715,7 @@ reach your ears.
 ~
 250 D 0
 D6
-to dark to tell
+too dark to tell
 ~
 ~
 1 -1 25046
@@ -1728,12 +1728,12 @@ here his rule is complete.
 ~
 250 D 0
 D4
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25030
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25049
@@ -1745,17 +1745,17 @@ your light.
 ~
 250 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25048
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25050
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25053
@@ -1767,17 +1767,17 @@ your lights.
 ~
 250 D 0
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25049
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25052
 D7
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25051
@@ -1788,7 +1788,7 @@ You have reached a dead end, your only recourse is to turn back.
 ~
 250 D 0
 D8
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25050
@@ -1799,7 +1799,7 @@ You have reached a dead end, your only recourse is to turn back.
 ~
 250 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25050
@@ -1811,32 +1811,32 @@ your lights.
 ~
 250 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25049
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25054
 D3
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25060
 D7
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25058
 D9
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25057
 D6
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25055
@@ -1847,7 +1847,7 @@ You have reached a dead end, your only recourse is to turn back.
 ~
 250 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25053
@@ -1859,12 +1859,12 @@ your lights.
 ~
 250 D 0
 D7
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25053
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25056
@@ -1875,7 +1875,7 @@ You have reached a dead end, your only recourse is to turn back.
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25055
@@ -1886,7 +1886,7 @@ You have reached a dead end, your only recouse is to turn back.
 ~
 250 D 0
 D6
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25053
@@ -1897,7 +1897,7 @@ You have reached a dead end your only recourse is to turn back.
 ~
 250 D 0
 D8
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25053
@@ -1908,7 +1908,7 @@ You have reached a dead end your only recourse is to turn back.
 ~
 250 D 0
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25060
@@ -1921,17 +1921,17 @@ another way to get to the mighty beast.
 ~
 250 D 0
 D0
-To dark to tell
+Too dark to tell
 ~
 ~
 0 -1 25059
 D2
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25061
 D1
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25053
@@ -1942,7 +1942,7 @@ You have reached a dead end, your only recourse is to turn back.
 ~
 250 D 0
 D0
-to dark to tell
+too dark to tell
 ~
 ~
 0 -1 25060
