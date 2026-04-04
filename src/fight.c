@@ -4947,6 +4947,12 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
 	  (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
 		return;
 
+    if ( IS_AFFECTED2( ch, AFF2_GHOST ) )
+    {
+	send_to_char("You cannot attack while in this form.\n\r",ch);
+	return;
+    }
+
     send_to_char("You flow into action, striking at all your opponents.\n\r",ch);
     act( "$n begins a deadly dance.",ch,NULL
 	  ,NULL, TO_ROOM );
@@ -4964,6 +4970,8 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
 	{
 	  if( vch != ch && !is_safe_spell(ch,vch,true) )
 	  {
+	    if ( IS_AFFECTED2( vch, AFF2_GHOST ) )
+	      continue;
 	    hit = true;
 	    if(vch->hit < 1000)
 	      dam = number_range((int)(vch->hit * .25), (int)(vch->hit * .30));
@@ -5091,6 +5099,18 @@ void do_nerve_damage( CHAR_DATA *ch, char *argument )
 	    return;
     }
 
+    if ( IS_AFFECTED2( victim, AFF2_GHOST ) )
+    {
+	act("Your attack passes right thru $N!",ch,NULL,victim,TO_CHAR);
+	act("$n's attack passes right thru $N!",ch,NULL,victim,TO_ROOM);
+	return;
+    }
+
+    if ( IS_AFFECTED2( ch, AFF2_GHOST ) )
+    {
+	send_to_char("You cannot attack while in this form.\n\r",ch);
+	return;
+    }
 
     if(!is_affected( victim, skill_lookup("nerve damage") ) )
     {
@@ -5191,6 +5211,19 @@ void do_blinding_fists( CHAR_DATA *ch, char *argument )
 	 chance = ch->level + 10;
 	 if( victim == ch)
 	    return;
+    }
+
+    if ( IS_AFFECTED2( victim, AFF2_GHOST ) )
+    {
+	act("Your attack passes right thru $N!",ch,NULL,victim,TO_CHAR);
+	act("$n's attack passes right thru $N!",ch,NULL,victim,TO_ROOM);
+	return;
+    }
+
+    if ( IS_AFFECTED2( ch, AFF2_GHOST ) )
+    {
+	send_to_char("You cannot attack while in this form.\n\r",ch);
+	return;
     }
 
     act("$n blurs into motion.",ch,NULL,victim,TO_ROOM);
@@ -5298,6 +5331,19 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 	 chance = ch->level + 10;
 	 if( victim == ch)
 	    return;
+    }
+
+    if ( IS_AFFECTED2( victim, AFF2_GHOST ) )
+    {
+	act("Your attack passes right thru $N!",ch,NULL,victim,TO_CHAR);
+	act("$n's attack passes right thru $N!",ch,NULL,victim,TO_ROOM);
+	return;
+    }
+
+    if ( IS_AFFECTED2( ch, AFF2_GHOST ) )
+    {
+	send_to_char("You cannot attack while in this form.\n\r",ch);
+	return;
     }
 
     act("$n errupts in a fury of flying fists!",ch,NULL,victim,TO_ROOM);
@@ -5411,6 +5457,19 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
 	 chance = 60;
 	 if( victim == ch)
 	    return;
+    }
+
+    if ( IS_AFFECTED2( victim, AFF2_GHOST ) )
+    {
+	act("Your attack passes right thru $N!",ch,NULL,victim,TO_CHAR);
+	act("$n's attack passes right thru $N!",ch,NULL,victim,TO_ROOM);
+	return;
+    }
+
+    if ( IS_AFFECTED2( ch, AFF2_GHOST ) )
+    {
+	send_to_char("You cannot attack while in this form.\n\r",ch);
+	return;
     }
 
     if(number_percent () < 1 + (chance / 2) + ch->level - victim->level)
