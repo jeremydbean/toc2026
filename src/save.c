@@ -105,7 +105,7 @@ void player_snapshot( const char *name )
     snprintf( src, sizeof(src), "%s%s", PLAYER_DIR, capitalize( (char *)name ) );
 
     /* Does the file exist yet? If not, nothing to snapshot */
-    if ( ( in = fopen( src, "r" ) ) == NULL )
+    if ( ( in = fopen( src, "rb" ) ) == NULL )
         return;
 
     /* Ensure per-player version directory exists */
@@ -135,7 +135,7 @@ void player_snapshot( const char *name )
     }
 
     /* Copy src → dest byte-by-byte (avoids shell dependency) */
-    if ( ( out = fopen( dest, "w" ) ) == NULL )
+    if ( ( out = fopen( dest, "wb" ) ) == NULL )
     {
         fclose( in );
         bug( "player_snapshot: fopen dest failed", 0 );

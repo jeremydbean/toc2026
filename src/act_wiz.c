@@ -7670,6 +7670,20 @@ void do_prestore( CHAR_DATA *ch, char *argument )
         if ( victim != NULL && !IS_NPC( victim )
         &&   !str_cmp( victim->name, capname ) )
         {
+            if ( victim == ch )
+            {
+                send_to_char( "You cannot prestore yourself.\n\r", ch );
+                for ( i = 0; i < count; i++ ) free( versions[i] );
+                return;
+            }
+
+            if ( get_trust( victim ) >= get_trust( ch ) )
+            {
+                send_to_char( "You failed.\n\r", ch );
+                for ( i = 0; i < count; i++ ) free( versions[i] );
+                return;
+            }
+
             found_online = 1;
             save_char_obj( victim );
             if ( victim->desc != NULL )
@@ -7686,10 +7700,9 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                     }
                 }
             }
-            else
-            {
-                extract_char( victim, TRUE );
-            }
+            /* Extract the link-dead character so reconnection loads the
+               restored file rather than reattaching to in-memory state. */
+            extract_char( victim, TRUE );
         }
 
         /* Copy the snapshot over the live player file */
