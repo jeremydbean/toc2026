@@ -313,8 +313,12 @@ void save_char_obj( CHAR_DATA *ch )
 	    fwrite_pet(ch->pet,fp);
 	fprintf( fp, "#END\n" );
 	fclose( fp );
-	/* Snapshot the old player file before overwriting it */
-	player_snapshot( ch->name );
+	/* Snapshot the old player file before overwriting it.
+	   Under-hero players: every save is a version point.
+	   Hero/immortal players: only explicit calls (logout, 4h) snapshot;
+	   skip here to avoid burning through all 30 slots on routine saves. */
+	if ( ch->level < LEVEL_HERO )
+	    player_snapshot( ch->name );
 	/* move the file only when write succeeded */
 #if defined(unix) && defined(CHGRP_TO)
 	if (can_chgrp())

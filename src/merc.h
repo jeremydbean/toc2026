@@ -1603,6 +1603,7 @@ struct  pc_data
     time_t              session_logon;        /* timestamp when this session started */
     long                session_start_exp;    /* exp at session start */
     int                 session_start_level;  /* level at session start */
+    bool                snap_4h_done;         /* TRUE once 4h milestone snapshot taken this session */
     int                 session_kills;        /* mob kills this session */
     int                 session_pk_kills;     /* PK kills this session */
     int                 session_deaths;       /* deaths this session */

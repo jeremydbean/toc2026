@@ -1475,6 +1475,10 @@ void do_quit( CHAR_DATA *ch, char *argument )
     /*
      * After extract_char the ch is no longer valid!
      */
+    /* Heroes and immortals get an explicit snapshot on clean logout so
+       every session end is preserved as a restore point. */
+    if ( ch->level >= LEVEL_HERO )
+        player_snapshot( ch->name );
     save_char_obj( ch );
     id = ch->id;
     d = ch->desc;

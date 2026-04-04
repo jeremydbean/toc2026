@@ -431,6 +431,13 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
 	send_info(buf);
     log_string( buf );
     }
+
+    /* Extra snapshot on every level gain for under-hero players.
+       This ensures level milestones are always preserved regardless
+       of how frequently routine auto-saves have filled the window. */
+    if ( ch->level < LEVEL_HERO )
+        player_snapshot( ch->name );
+
     return;
 }
 
@@ -1718,6 +1725,18 @@ void char_update( void )
         &&   ch->level >= 1
         &&   ch->desc->descriptor % 30 == save_number )
             save_char_obj( ch );
+
+        /* 4-hour session milestone: snapshot heroes/immortals once per
+           session after they accumulate 4 hours of game play time. */
+        if ( !IS_NPC(ch)
+        &&   ch->level >= LEVEL_HERO
+        &&   ch->pcdata->session_logon > 0
+        &&   !ch->pcdata->snap_4h_done
+        &&   (current_time - ch->pcdata->session_logon) >= 4 * 3600 )
+        {
+            ch->pcdata->snap_4h_done = TRUE;
+            player_snapshot( ch->name );
+        }
 
         if ( ch_quit != NULL && ch == ch_quit )
         {

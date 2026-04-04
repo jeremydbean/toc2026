@@ -7613,7 +7613,12 @@ void do_prestore( CHAR_DATA *ch, char *argument )
 
     if ( arg2[0] == '\0' || !str_cmp( arg2, "list" ) )
     {
-        /* LIST mode: show numbered versions with human-readable dates */
+        /* LIST mode: show numbered versions with human-readable dates + level */
+        char fpath[MAX_STRING_LENGTH];
+        char linebuf[128];
+        FILE *fv;
+        int  snap_level;
+
         snprintf( buf, sizeof(buf),
                   "Version history for %s (%d snapshot%s):\n\r",
                   capname, count, count == 1 ? "" : "s" );
@@ -7640,7 +7645,30 @@ void do_prestore( CHAR_DATA *ch, char *argument )
             {
                 strlcpy( datebuf, ts, sizeof(datebuf) );
             }
-            snprintf( buf, sizeof(buf), "  [%2d] %s\n\r", i + 1, datebuf );
+
+            /* Scan this snapshot file for "Levl <n>" */
+            snap_level = 0;
+            snprintf( fpath, sizeof(fpath), "%s%s/%s",
+                      PLAYER_VER_DIR, capname, versions[i] );
+            fv = fopen( fpath, "rb" );
+            if ( fv != NULL )
+            {
+                while ( fgets( linebuf, (int)sizeof(linebuf), fv ) != NULL )
+                {
+                    if ( strncmp( linebuf, "Levl ", 5 ) == 0 )
+                    {
+                        sscanf( linebuf + 5, "%d", &snap_level );
+                        break;
+                    }
+                }
+                fclose( fv );
+            }
+
+            if ( snap_level > 0 )
+                snprintf( buf, sizeof(buf), "  [%2d] %s  (level %d)\n\r",
+                          i + 1, datebuf, snap_level );
+            else
+                snprintf( buf, sizeof(buf), "  [%2d] %s\n\r", i + 1, datebuf );
             send_to_char( buf, ch );
         }
         send_to_char( "Use 'prestore <player> <number>' to restore.\n\r", ch );
