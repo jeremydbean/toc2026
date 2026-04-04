@@ -1185,11 +1185,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
       if(dam1 > 0)
       {
        ch->hit -= dam1;
-       if(ch->hit > 0 )
-	 dam_message(victim, ch, dam1, dt1, immune);
-       else
-	 ch->hit = 1;
-
+       dam_message(victim, ch, dam1, dt1, immune);
+       if(ch->hit <= 0)
+         ch->hit = 1;
        if ( dam1 > ch->max_hit / 4 )
 	    send_to_char( "That really did HURT!\n\r", ch );
        if ( ch->hit < ch->max_hit / 4 )
@@ -4200,6 +4198,19 @@ void do_kick( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( IS_AFFECTED2( victim, AFF2_GHOST ) )
+    {
+	act("Your kick passes right thru $N!",ch,NULL,victim,TO_CHAR);
+	act("$n's kick passes right thru $N!",ch,NULL,victim,TO_ROOM);
+	return;
+    }
+
+    if ( IS_AFFECTED2( ch, AFF2_GHOST ) )
+    {
+	send_to_char("You cannot attack while in this form.\n\r",ch);
+	return;
+    }
+
     WAIT_STATE( ch, skill_table[gsn_kick].beats );
     if ( IS_NPC(ch) || number_percent( ) < ch->pcdata->learned[gsn_kick] )
     {
@@ -4250,6 +4261,19 @@ void do_disarm( CHAR_DATA *ch, char *argument )
     if ( ( obj = get_eq_char( victim, WEAR_WIELD ) ) == NULL )
     {
 	send_to_char( "Your opponent is not wielding a weapon.\n\r", ch );
+	return;
+    }
+
+    if ( IS_AFFECTED2( victim, AFF2_GHOST ) )
+    {
+	act("Your disarm attempt passes right thru $N!",ch,NULL,victim,TO_CHAR);
+	act("$n's disarm attempt passes right thru $N!",ch,NULL,victim,TO_ROOM);
+	return;
+    }
+
+    if ( IS_AFFECTED2( ch, AFF2_GHOST ) )
+    {
+	send_to_char("You cannot attack while in this form.\n\r",ch);
 	return;
     }
 
@@ -4533,10 +4557,13 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 		(IS_NPC(ch) ? ch->short_descr : ch->name),
 		victim->in_room->vnum );
 	    log_string( log_buf );
-            ch->pcdata->pkills_given += 1;
-            victim->pcdata->pkills_received += 1;
-            update_pkills(ch);
-            update_pkills(victim);
+	    if ( !IS_NPC(ch) )
+	    {
+		ch->pcdata->pkills_given += 1;
+		update_pkills(ch);
+	    }
+	    victim->pcdata->pkills_received += 1;
+	    update_pkills(victim);
 	    wizinfo(log_buf, LEVEL_IMMORTAL);
 
 	    /*
@@ -4742,6 +4769,7 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 	victim->position = POS_STANDING;
 
       victim->hit -= dice(2,4);
+      update_pos(victim);
 
       if(number_percent () > 25)
       {
@@ -4752,6 +4780,13 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 	 send_to_char("An arrow slams into you!\n\r",victim);
 
       act("$n has been shot by an arrow!",victim,NULL,NULL,TO_ROOM);
+
+      if (victim->position == POS_DEAD)
+      {
+          group_gain(ch, victim);
+          raw_kill(ch, victim);
+          return;
+      }
 
       if(IS_NPC(victim) && number_percent () < 50)
       {
