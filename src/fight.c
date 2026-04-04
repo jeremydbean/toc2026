@@ -2404,12 +2404,20 @@ void raw_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 
 	victim->pIndexData->killed++;
 	kill_table[URANGE(0, victim->level, MAX_LEVEL-1)].killed++;
+	/* Track mob kill for session stats */
+	if (!IS_NPC(ch))
+	    ch->pcdata->session_kills++;
 	extract_char( victim, true );
 	return;
     }
 
     if(!IS_SET(victim->in_room->room_flags, ROOM_JAIL) )
     {
+        /* Track PK kill and death for session stats */
+        if (!IS_NPC(ch) && ch != victim)
+            ch->pcdata->session_pk_kills++;
+        victim->pcdata->session_deaths++;
+
         /* Death log */
         {
             FILE *dfp = fopen( "../log/deaths.log", "a" );

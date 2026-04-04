@@ -7403,6 +7403,130 @@ void do_trail( CHAR_DATA *ch, char *argument )
 
 
 /*
+ * ACTIVITY: show session stats for a player (online live data or last-session snapshot).
+ */
+void do_activity( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    FILE *fp;
+    char fname[MAX_INPUT_LENGTH];
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Activity for whom?\n\r", ch );
+        return;
+    }
+
+    /* Online player -- show live session data */
+    if ( ( victim = get_char_world( ch, arg ) ) != NULL && !IS_NPC(victim) )
+    {
+        long dur       = (long)(current_time - victim->pcdata->session_logon);
+        long exp_gained = victim->exp - victim->pcdata->session_start_exp;
+        int  lvl_gained = (int)victim->level - victim->pcdata->session_start_level;
+        int  hours      = (int)(dur / 3600);
+        int  mins       = (int)((dur % 3600) / 60);
+        time_t login_t  = (time_t)victim->pcdata->session_logon;
+        char *login_str = ctime( &login_t );
+        login_str[strlen(login_str) - 1] = '\0';
+
+        snprintf( buf, sizeof(buf),
+            "=== Activity: %s (online) ===\n\r"
+            "  Login    : %s\n\r"
+            "  Duration : %dh %dm (and counting)\n\r"
+            "  Level    : %d  (gained %d this session)\n\r"
+            "  Exp      : %ld  (gained %ld this session)\n\r"
+            "  Session  : Kills %-4d  PK Kills %-3d  Deaths %-3d  Quests %d\n\r",
+            victim->name,
+            login_str,
+            hours, mins,
+            (int)victim->level, lvl_gained,
+            victim->exp, exp_gained,
+            victim->pcdata->session_kills,
+            victim->pcdata->session_pk_kills,
+            victim->pcdata->session_deaths,
+            victim->pcdata->session_quests );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    /* Offline player -- scan save file for last-session snapshot */
+    snprintf( fname, sizeof(fname), "%s%s", PLAYER_DIR, capitalize( arg ) );
+
+    if ( ( fp = fopen( fname, "r" ) ) == NULL )
+    {
+        send_to_char( "No player by that name found.\n\r", ch );
+        return;
+    }
+
+    {
+        long p_login  = 0L;
+        long p_dur    = 0L;
+        long p_exp_g  = 0L;
+        int  p_lvl_g  = 0;
+        int  p_kills  = 0;
+        int  p_pk     = 0;
+        int  p_deaths = 0;
+        int  p_quests = 0;
+        int  p_level  = 0;
+        char keyword[64];
+        char linebuf[256];
+
+        while ( fgets( linebuf, (int)sizeof(linebuf), fp ) != NULL )
+        {
+            if ( sscanf( linebuf, "%60s", keyword ) != 1 )
+                continue;
+            if      ( !strcmp( keyword, "Levl"     ) ) sscanf( linebuf, "%*s %d",  &p_level );
+            else if ( !strcmp( keyword, "SesLogin" ) ) sscanf( linebuf, "%*s %ld", &p_login );
+            else if ( !strcmp( keyword, "SesDur"   ) ) sscanf( linebuf, "%*s %ld", &p_dur   );
+            else if ( !strcmp( keyword, "SesExpG"  ) ) sscanf( linebuf, "%*s %ld", &p_exp_g );
+            else if ( !strcmp( keyword, "SesLvlG"  ) ) sscanf( linebuf, "%*s %d",  &p_lvl_g );
+            else if ( !strcmp( keyword, "SesKill"  ) ) sscanf( linebuf, "%*s %d",  &p_kills );
+            else if ( !strcmp( keyword, "SesPK"    ) ) sscanf( linebuf, "%*s %d",  &p_pk    );
+            else if ( !strcmp( keyword, "SesDead"  ) ) sscanf( linebuf, "%*s %d",  &p_deaths);
+            else if ( !strcmp( keyword, "SesQuest" ) ) sscanf( linebuf, "%*s %d",  &p_quests);
+        }
+        fclose( fp );
+
+        if ( p_login == 0L )
+        {
+            snprintf( buf, sizeof(buf),
+                "=== Activity: %s (offline) ===\n\r"
+                "  No session data recorded yet.\n\r",
+                capitalize( arg ) );
+        }
+        else
+        {
+            int  hours  = (int)(p_dur / 3600);
+            int  mins   = (int)((p_dur % 3600) / 60);
+            time_t login_t = (time_t)p_login;
+            char *login_str = ctime( &login_t );
+            login_str[strlen(login_str) - 1] = '\0';
+
+            snprintf( buf, sizeof(buf),
+                "=== Activity: %s (offline) ===\n\r"
+                "  Last Login : %s\n\r"
+                "  Duration   : %dh %dm\n\r"
+                "  Level      : %d  (gained %d last session)\n\r"
+                "  Exp Gained : %+ld\n\r"
+                "  Session    : Kills %-4d  PK Kills %-3d  Deaths %-3d  Quests %d\n\r",
+                capitalize( arg ),
+                login_str,
+                hours, mins,
+                p_level, p_lvl_g,
+                p_exp_g,
+                p_kills, p_pk, p_deaths, p_quests );
+        }
+        send_to_char( buf, ch );
+    }
+    return;
+}
+
+
+/*
  * PETRIFY: turn a player to stone, blocking all commands.
  */
 void do_petrify( CHAR_DATA *ch, char *argument )

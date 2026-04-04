@@ -270,6 +270,14 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Corpses	%d\n",	ch->pcdata->corpses	);
     fprintf( fp, "PkRec %ld\n",ch->pcdata->pkills_received );
     fprintf( fp, "PkGiv %ld\n",ch->pcdata->pkills_given );
+    fprintf( fp, "SesLogin %ld\n", ch->pcdata->last_session_login );
+    fprintf( fp, "SesDur   %ld\n", ch->pcdata->last_session_dur );
+    fprintf( fp, "SesExpG  %ld\n", ch->pcdata->last_session_exp_gain );
+    fprintf( fp, "SesLvlG  %d\n",  ch->pcdata->last_session_lvl_gain );
+    fprintf( fp, "SesKill  %d\n",  ch->pcdata->last_session_kills );
+    fprintf( fp, "SesPK    %d\n",  ch->pcdata->last_session_pk_kills );
+    fprintf( fp, "SesDead  %d\n",  ch->pcdata->last_session_deaths );
+    fprintf( fp, "SesQuest %d\n",  ch->pcdata->last_session_quests );
     if( ch->questpoints != 0 )
 	fprintf( fp, "QuestPnts %d\n",	ch->questpoints );
     if( ch->queststreak != 0 )
@@ -773,6 +781,21 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->pkills_given            = 0;
     ch->pcdata->corpses			= 0;
     ch->pcdata->afk_msg                 = NULL;
+    ch->pcdata->session_logon           = 0;
+    ch->pcdata->session_start_exp       = 0;
+    ch->pcdata->session_start_level     = 0;
+    ch->pcdata->session_kills           = 0;
+    ch->pcdata->session_pk_kills        = 0;
+    ch->pcdata->session_deaths          = 0;
+    ch->pcdata->session_quests          = 0;
+    ch->pcdata->last_session_login      = 0;
+    ch->pcdata->last_session_dur        = 0;
+    ch->pcdata->last_session_exp_gain   = 0;
+    ch->pcdata->last_session_lvl_gain   = 0;
+    ch->pcdata->last_session_kills      = 0;
+    ch->pcdata->last_session_pk_kills   = 0;
+    ch->pcdata->last_session_deaths     = 0;
+    ch->pcdata->last_session_quests     = 0;
     ch->pcdata->pwd			= str_dup( "" );
     ch->pcdata->bamfin			= str_dup( "" );
     ch->pcdata->bamfout			= str_dup( "" );
@@ -1273,6 +1296,14 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Save",	ch->saving_throw,	(sh_int)(fread_number( fp )) );
 	    KEY( "SavedOnce",	ch->pcdata->has_saved,	fread_number( fp ) );
 	    KEY( "Scro",	ch->lines,		fread_number( fp ) );
+	    KEY( "SesLogin",	ch->pcdata->last_session_login,	 fread_long( fp ) );
+	    KEY( "SesDur",	ch->pcdata->last_session_dur,	 fread_long( fp ) );
+	    KEY( "SesExpG",	ch->pcdata->last_session_exp_gain, fread_long( fp ) );
+	    KEY( "SesLvlG",	ch->pcdata->last_session_lvl_gain, fread_number( fp ) );
+	    KEY( "SesKill",	ch->pcdata->last_session_kills,	 fread_number( fp ) );
+	    KEY( "SesPK",	ch->pcdata->last_session_pk_kills, fread_number( fp ) );
+	    KEY( "SesDead",	ch->pcdata->last_session_deaths,  fread_number( fp ) );
+	    KEY( "SesQuest",	ch->pcdata->last_session_quests,  fread_number( fp ) );
 	    KEY( "Sex",		ch->sex,		(sh_int)(fread_number( fp )) );
 	    KEY( "ShortDescr",	ch->short_descr,	fread_string( fp ) );
 	    KEY( "ShD",		ch->short_descr,	fread_string( fp ) );

@@ -1598,6 +1598,25 @@ struct  pc_data
     int                 trail[TRAIL_LEN];
     sh_int              trail_head;
     sh_int              exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%) */
+
+    /* Current session stats (in-memory, not saved to player file) */
+    time_t              session_logon;        /* timestamp when this session started */
+    long                session_start_exp;    /* exp at session start */
+    int                 session_start_level;  /* level at session start */
+    int                 session_kills;        /* mob kills this session */
+    int                 session_pk_kills;     /* PK kills this session */
+    int                 session_deaths;       /* deaths this session */
+    int                 session_quests;       /* quests completed this session */
+
+    /* Last session snapshot (persisted to player file) */
+    long                last_session_login;   /* unix timestamp of last login */
+    long                last_session_dur;     /* session duration in seconds */
+    long                last_session_exp_gain;/* net exp gained last session */
+    int                 last_session_lvl_gain;/* levels gained last session */
+    int                 last_session_kills;   /* mob kills last session */
+    int                 last_session_pk_kills;/* PK kills last session */
+    int                 last_session_deaths;  /* deaths last session */
+    int                 last_session_quests;  /* quests completed last session */
 };
 
 struct my_mesg_buf{

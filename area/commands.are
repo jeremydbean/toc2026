@@ -2741,7 +2741,26 @@ live stats (level, race, class, title, HP/mana/move, room, playing time) are
 shown.  If offline, the player file is scanned for level, race, class, last
 login, and total playing time.
 
-See also: PSTAT, WHOIS
+See also: ACTIVITY, PSTAT, WHOIS
+~
+
+63 ACTIVITY~
+Syntax: activity <player>
+
+ACTIVITY shows session statistics for a player.
+
+If the player is online, live data for the current session is displayed:
+  - Session login time and duration
+  - Current level and experience (with session gains)
+  - Mob kills, PK kills, deaths, and quests completed this session
+
+If the player is offline, the last recorded session snapshot is shown with
+the same fields from the moment they logged out.
+
+Session data is tracked automatically from login to logout and written to
+the player file on quit.
+
+See also: FINGER, TRAIL, PSTAT
 ~
 
 65 TRAIL~

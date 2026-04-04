@@ -191,6 +191,7 @@ DECLARE_DO_FUN(	do_exits	);
 DECLARE_DO_FUN( do_explode      );
 DECLARE_DO_FUN(	do_fill		);
 DECLARE_DO_FUN( do_finger       );
+DECLARE_DO_FUN( do_activity     );
 DECLARE_DO_FUN(	do_fists_of_fury);
 DECLARE_DO_FUN(	do_flee		);
 DECLARE_DO_FUN( do_flip		);

@@ -796,8 +796,9 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 
 		    act("You hand $p to $N.",ch, obj, questman, TO_CHAR);
 		    act("$n hands $p to $N.",ch, obj, questman, TO_ROOM);
-
-	    	    snprintf(buf, sizeof(buf), "Congratulations, %s! Quest accomplished!", ch->name);
+	    /* Track quest completion for session stats */
+	    if (!IS_NPC(ch))
+		ch->pcdata->session_quests++;
 		    do_say(questman,buf);
 		    if (ch->questrush)
 		        do_say(questman, "Rush contract fulfilled - your double reward is well earned!");

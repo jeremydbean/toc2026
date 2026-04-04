@@ -1459,6 +1459,19 @@ void do_quit( CHAR_DATA *ch, char *argument )
     log_string( log_buf );
     log_string("[QUIT] Player rejoined the real world.");
     
+    /* Snapshot session stats so they can be viewed offline */
+    {
+        long dur = (long)(current_time - ch->pcdata->session_logon);
+        ch->pcdata->last_session_login    = (long)ch->pcdata->session_logon;
+        ch->pcdata->last_session_dur      = dur;
+        ch->pcdata->last_session_exp_gain = ch->exp - ch->pcdata->session_start_exp;
+        ch->pcdata->last_session_lvl_gain = (int)ch->level - ch->pcdata->session_start_level;
+        ch->pcdata->last_session_kills    = ch->pcdata->session_kills;
+        ch->pcdata->last_session_pk_kills = ch->pcdata->session_pk_kills;
+        ch->pcdata->last_session_deaths   = ch->pcdata->session_deaths;
+        ch->pcdata->last_session_quests   = ch->pcdata->session_quests;
+    }
+
     /*
      * After extract_char the ch is no longer valid!
      */

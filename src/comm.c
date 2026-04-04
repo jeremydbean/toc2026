@@ -2109,6 +2109,18 @@ case CON_DEFAULT_CHOICE:
 	d->connected	= CON_PLAYING;
 	reset_char(ch);
 
+	/* Initialize session tracking for this login */
+	if (!IS_NPC(ch))
+	{
+	    ch->pcdata->session_logon       = current_time;
+	    ch->pcdata->session_start_exp   = ch->exp;
+	    ch->pcdata->session_start_level = (int)ch->level;
+	    ch->pcdata->session_kills       = 0;
+	    ch->pcdata->session_pk_kills    = 0;
+	    ch->pcdata->session_deaths      = 0;
+	    ch->pcdata->session_quests      = 0;
+	}
+
 	{
 	    bool is_new_character = ( ch->level == 0 );
 	    bool is_reconnect     = ( !is_new_character && ch->was_in_room != NULL );

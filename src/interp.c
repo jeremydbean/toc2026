@@ -357,6 +357,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "explode",        do_explode,     POS_DEAD,       L7,  LOG_NORMAL, 1 },
 /*    { "finger",         do_finger,      POS_DEAD,       ML,  LOG_NORMAL, 1 },*/
     { "finger",         do_finger,      POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "activity",       do_activity,    POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "fling",          do_bowl,        POS_DEAD,       L5,  LOG_NORMAL, 1 },
     { "force",          do_force,       POS_DEAD,       L7,  LOG_ALWAYS, 1 },
     { "fsave",          do_forcesave,   POS_DEAD,       L3,  LOG_ALWAYS, 1 },
