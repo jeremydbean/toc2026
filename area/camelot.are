@@ -318,7 +318,7 @@ charmed knight reknown~
 Knight of Reknown~
 (Charmed) A Knight of Reknown woodenly attacks you!
 ~
-The knight is in rusty armor and bears a knotched sword. He has a disheveled 
+The knight is in rusty armor and bears a notched sword. He has a disheveled 
 look to him and his eyes stare vacantly at you!
 ~
 human~
@@ -334,7 +334,7 @@ Knight of Quality~
 (Charmed) A Knight of Quality woodenly attacks you!
 ~
 A charmed knight of quality stands here in his rusted armor. His eyes are 
-vacant, his sword is knotched, and he is unkempt.
+vacant, his sword is notched, and he is unkempt.
 ~
 human~
 AGT H 600 S
@@ -2585,7 +2585,7 @@ S
 #725
 The Green Field Before Camelot~
 You stand under the open sky in the emerald green field before Camelot.
-Camelot lies ontop of a hill overlooking the field. Flags and banners 
+Camelot lies on top of a hill overlooking the field. Flags and banners 
 snap in the fresh breeze from the proud towers of Camelot. You can either 
 head east to Camelot or west to the chasm.
 ~
