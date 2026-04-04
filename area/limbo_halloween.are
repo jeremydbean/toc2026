@@ -10,7 +10,7 @@ The weaponsmaster is here sharpening an exotic looking sword.
 ~
 Even though your guildmaster looks old and tired, you can clearly see the
 vast amount of knowledge he possesses. He is wearing fine magic clothing,
-and you notice that she is surrounded by a blue shimmering aura.
+and you notice that he is surrounded by a blue shimmering aura.
 ~
 human~
 JKTV DEFJ 0 S
@@ -25,7 +25,7 @@ Geko the gladiator~
 The mighty gladiator is here waiting for his next battle.
 ~
 The gladiator is a strong man.  He looks like someone who could teach
-even the mightest of warriors a thing or two.
+even the mightiest of warriors a thing or two.
 ~
 human~
 GJKTV DEFJ 0 S
@@ -39,9 +39,9 @@ vladamir veteran gm~
 Vladamir the veteran~
 The veteran is here resting from his years of fighting in the Dragon Wars.
 ~
-The mighy veteran looks like he has given his country many years of
+The mighty veteran looks like he has given his country many years of
 good service in the line of battle.  He looks like his experiences in
-life is more than you will ever know.
+life are more than you will ever know.
 ~
 human~
 GJKTV DEFJ 0 S
@@ -365,7 +365,7 @@ ACDEIKbb ABCD 0 0
 #43
 drixt dragon gm~
 Drixt the golden dragon~
-There is a golden dragon here who looks like he has been in a cell to long.
+There is a golden dragon here who looks like he has been in a cell too long.
 ~
 This gold dragon seems to have been in this cell for a long time.  He
 seems to have been treated pretty good though.  Wonder what the guards
@@ -555,7 +555,7 @@ Fingers the shopkeeper~
 A rosey cheeked hobbit wisks over to you to show off his latest buy.
 ~
 A plump little hobbit named Fingers runs this establishment.  He is well
-known for his ability to dissapear when his fingers get him in trouble.
+known for his ability to disappear when his fingers get him in trouble.
 ~
 hobbit~
 BKSV DF 0 S
@@ -745,7 +745,7 @@ elite guard Krill undead~
 Krill the Undead~
 Krill the undead guard of Dresden wanders here.
 ~
-Krill is was powerfully built human with rigid facial features.
+Krill was a powerfully built human with rigid facial features.
 His fangs are polished with silver and his smouldering eyes
 burn fear into the hearts of men, and lust into the hearts of women.
 ~
@@ -785,7 +785,7 @@ $n howls loudly in your ear!~
 #4447
 elite guard dwarf vampire~
 an elite dwarven vampire~
-An elite dwarven vampire flies thru the airs and lands here.
+An elite dwarven vampire flies through the air and lands here.
 ~
 He is a dark man with rigid facial features.  Tall, dark, handsome
 and incredibly frightening.  He hasn't noticed you yet, and you look
@@ -809,7 +809,7 @@ Shevian of Transylvania~
 Shevian of Transylvania is sharpening his fangs here.
 ~
 He is one of the most powerful vampires in the world. A beautiful
-woman is held in his arms, unconcious, with a small trickle of blood
+woman is held in his arms, unconscious, with a small trickle of blood
 running from her neck.  He gazes at you and you freeze in terror.
 ~
 elf~
@@ -827,7 +827,7 @@ $n whispers to you,"Succumb to the powers of evil and join me!"~
 #4449
 elite guard elf vampire~
 an elite elven vampire~
-An elite elven vampire flies thru the airs and lands here.
+An elite elven vampire flies through the air and lands here.
 ~
 He is a dark man with rigid facial features.  Tall, dark, handsome
 and incredibly frightening.  He hasn't noticed you yet, and you look
@@ -864,12 +864,12 @@ AMV ABCDEFGH M 0
 {
 A -1
 $n speaks with $N.~
-$n tells you,"Surrender your soul to me and live forever!~
+$n tells you,"Surrender your soul to me and live forever!"~
 }
 #4451
 elite guard hobbit vampire~
-a elite hobbit vampire~
-An elite hobbit vampire flies thru the airs and lands here.
+an elite hobbit vampire~
+An elite hobbit vampire flies through the air and lands here.
 ~
 He is a dark man with rigid facial features.  Tall, dark, handsome
 and incredibly frightening.  He hasn't noticed you yet, and you look
@@ -927,8 +927,8 @@ Commander of the Undead~
 The Commander of the Undead is here, gathering up his troops.
 ~
 The Commander wears a glowing shroud and gathers up pieces
-of skin that fall from his face.  One eyeball is half out of it's socket
-and swivels independant of the other one to stare at you.
+of skin that fall from his face.  One eyeball is half out of its socket
+and swivels independent of the other one to stare at you.
 ~
 human~
 BGT CFH -750 S
@@ -1176,10 +1176,10 @@ $n tells you,"Let the power of evil corrupt you entirely!"~
 }
 #4469
 guard cityguard wraith~
-a  wraith~
-A  wraith fades in and out of sight here.
+a wraith~
+A wraith fades in and out of sight here.
 ~
-An uneartly wraith of tremendous power..
+An unearthly wraith of tremendous power.
 ~
 human~
 GT 0 -700 M
@@ -1283,7 +1283,7 @@ CEFHKMN ABK 0 J
 #7551
 ghost~
 ghost~
-A gasous form drifts through the room.
+A gaseous form drifts through the room.
 ~
 ~
 unique~
@@ -1635,7 +1635,7 @@ herb~
 E
 chervil herb~
 The chervil plant is very similar to parsley. It's most common uses are in
-soups and salads to add flavor, and is rumored to be an ingriedent in some
+soups and salads to add flavor, and is rumored to be an ingredient in some
 potions; if for nothing else, to help kill the taste, as most potions have
 an atrocious flavor.
 ~

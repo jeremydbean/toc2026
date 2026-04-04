@@ -144,7 +144,7 @@ N 0 C 0
 #2407
 dwarf warrior pet~
 the dwarven warrior~
-A stout dwarven wearrior is here leaning on an axe.
+A stout dwarven warrior is here leaning on an axe.
 ~
 The stout dwarven warrior looks like he could handle himself against great
 odds.
@@ -300,7 +300,7 @@ leather worker~
 the leather worker~
 The leather worker is sitting by the table, sewing a leather cap.
 ~
-She looks as an honest, hard-working artisan who only just earns enough to
+She looks like an honest, hard-working artisan who only just earns enough to
 keep herself going.
 ~
 human~
@@ -316,7 +316,7 @@ the bartender~
 The bartender ladles steaming mulled wine into goblets, filling the room with warmth.
 ~
 A cheerful bartender wearing a red vest and a sprig of holly in his lapel.
-For once he does not look tired -- Winter Veil always fills the bar, andwith good cheer rather than the usual troublemakers.  A steaming pot of
+For once he does not look tired -- Winter Veil always fills the bar, and with good cheer rather than the usual troublemakers.  A steaming pot of
 mulled wine sits on the bar beside a bowl of spiced nuts.
 ~
 human~
@@ -1880,14 +1880,14 @@ sign~
 This ancient tree is a symbol of strength for our city.  The sages say it
 was planted at the beginning of time.  Legends say if you bury coins at the
 base of the tree you can be granted the favor of the Gods.  Good luck
-adventurers in you travels.  May Devota protect you.
+adventurers in your travels.  May Devota protect you.
 
 Mayor of Dresden.
 ~
 S
 #2402
 Northern Christmas Tree Square.~
-This is the northern exit from Oak Tree Square.  Here you can get back on the
+This is the northern exit from Christmas Tree Square.  Here you can get back on the
 Main Processional heading towards the palace to the north.
 
 Colored lights have been hung around the square for the holiday season.
@@ -1909,7 +1909,7 @@ Center of Christmas Tree Square.
 south~
 0 0 2401
 D3
-Northwestern corner of CHristmas Tree Square.
+Northwestern corner of Christmas Tree Square.
 ~
 west~
 0 0 2406
@@ -2516,7 +2516,7 @@ sign~
      (  _ * _  )                                  (  _ + _  )
       \/ | | \/      All Adventurers Welcome!      \/ | | \/
 	 | |                                          | |
-	 | |        Grunar the Dwarf Proprieter       | |
+	 | |        Grunar the Dwarf Proprietor       | |
 	 |\|                                          |/|
 	 |\|                                          |/|
 	 |\|                                          |/|

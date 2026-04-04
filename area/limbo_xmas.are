@@ -10,7 +10,7 @@ The weaponsmaster is here sharpening an exotic looking sword.
 ~
 Even though your guildmaster looks old and tired, you can clearly see the
 vast amount of knowledge he possesses. He is wearing fine magic clothing,
-and you notice that she is surrounded by a blue shimmering aura.
+and you notice that he is surrounded by a blue shimmering aura.
 ~
 human~
 JKTV DEFJ 0 S
@@ -25,7 +25,7 @@ Geko the gladiator~
 The mighty gladiator is here waiting for his next battle.
 ~
 The gladiator is a strong man.  He looks like someone who could teach
-even the mightest of warriors a thing or two.
+even the mightiest of warriors a thing or two.
 ~
 human~
 GJKTV DEFJ 0 S
@@ -39,9 +39,9 @@ vladamir veteran gm~
 Vladamir the veteran~
 The veteran is here resting from his years of fighting in the Dragon Wars.
 ~
-The mighy veteran looks like he has given his country many years of
+The mighty veteran looks like he has given his country many years of
 good service in the line of battle.  He looks like his experiences in
-life is more than you will ever know.
+life are more than you will ever know.
 ~
 human~
 GJKTV DEFJ 0 S
@@ -365,7 +365,7 @@ ACDEIKbb ABCD 0 0
 #43
 drixt dragon gm~
 Drixt the golden dragon~
-There is a golden dragon here who looks like he has been in a cell to long.
+There is a golden dragon here who looks like he has been in a cell too long.
 ~
 This gold dragon seems to have been in this cell for a long time.  He
 seems to have been treated pretty good though.  Wonder what the guards
@@ -555,7 +555,7 @@ Fingers the shopkeeper~
 A rosey cheeked hobbit wisks over to you to show off his latest buy.
 ~
 A plump little hobbit named Fingers runs this establishment.  He is well
-known for his ability to dissapear when his fingers get him in trouble.
+known for his ability to disappear when his fingers get him in trouble.
 ~
 hobbit~
 BKSV DF 0 S
@@ -723,7 +723,7 @@ elite guard Prancer~
 Prancer~
 Prancer is here serving Santa.
 ~
-Dasher is a powerfully built reindeer with rigid facial features.  He
+Prancer is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 human~
@@ -776,7 +776,7 @@ AMV ABCDEFGH M 0
 {
 A 54
 $n speaks quietly to $N.~
-$n tells you,"Remember always the glory of the dwarven hero's!~
+$n tells you,"Remember always the glory of the dwarven heroes!"~
 }
 #4447
 elite guard dwarf Donder~
@@ -860,7 +860,7 @@ AMV ABCDEFGH M 0
 {
 A 54
 $n speaks with $N.~
-$n tells you,"Respect your opponent and he will respect you.~
+$n tells you,"Respect your opponent and he will respect you."~
 }
 #4451
 elite guard hobbit vixen~
@@ -887,7 +887,7 @@ regular guard Comet~
 Comet~
 Comet is standing here serving Santa.
 ~
-Vixen is a powerfully built reindeer with rigid facial features.  He
+Comet is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 human~
@@ -1206,7 +1206,7 @@ BFGT 0 500 M
 {
 A 54
 $n welcomes $N to the city!~
-#n welcomes you to the great city of dresden!~
+$n welcomes you to the great city of dresden!~
 }
 #4471
 guard cityguard bellringer~
@@ -1279,7 +1279,7 @@ CEFHKMN ABK 0 J
 #7550
 ghost~
 ghost~
-A gasous form drifts through the room.
+A gaseous form drifts through the room.
 ~
 ~
 unique~
@@ -1581,7 +1581,7 @@ herb~
 E
 chervil herb~
 The chervil plant is very similar to parsley. It's most common uses are in
-soups and salads to add flavor, and is rumored to be an ingriedent in some
+soups and salads to add flavor, and is rumored to be an ingredient in some
 potions; if for nothing else, to help kill the taste, as most potions have
 an atrocious flavor.
 ~
