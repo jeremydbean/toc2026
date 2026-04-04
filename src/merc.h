@@ -1596,6 +1596,7 @@ struct  pc_data
     long                pkills_received;
     int                 trail[TRAIL_LEN];
     sh_int              trail_head;
+    sh_int              exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%) */
 };
 
 struct my_mesg_buf{

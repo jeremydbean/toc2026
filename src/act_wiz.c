@@ -7629,18 +7629,21 @@ void do_colossus( CHAR_DATA *ch, char *argument )
     af.location = APPLY_MOVE; af.modifier = (sh_int)move_boost;
     affect_to_char( victim, &af );
 
+    af.location = APPLY_EXP;  af.modifier = 50;
+    affect_to_char( victim, &af );
+
     /* Heal to full immediately */
     victim->hit  = victim->max_hit;
     victim->mana = victim->max_mana;
     victim->move = victim->max_move;
 
     act( "$n grows to titanic proportions!", victim, NULL, NULL, TO_ROOM );
-    send_to_char( "Your body surges with titanic power -- HP, mana, and move multiplied!\n\r", victim );
+    send_to_char( "Your body surges with titanic power -- HP, mana, and move multiplied, and you gain 50% bonus experience!\n\r", victim );
     if ( duration == -1 )
-        snprintf( buf, sizeof(buf), "%s made colossus permanently (+%d HP, +%d mana, +%d move).\n\r",
+        snprintf( buf, sizeof(buf), "%s made colossus permanently (+%d HP, +%d mana, +%d move, +50%% exp).\n\r",
                   victim->name, hp_boost, mana_boost, move_boost );
     else
-        snprintf( buf, sizeof(buf), "%s made colossus for %d ticks (+%d HP, +%d mana, +%d move).\n\r",
+        snprintf( buf, sizeof(buf), "%s made colossus for %d ticks (+%d HP, +%d mana, +%d move, +50%% exp).\n\r",
                   victim->name, duration, hp_boost, mana_boost, move_boost );
     send_to_char( buf, ch );
     return;

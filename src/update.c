@@ -472,6 +472,9 @@ void gain_exp( CHAR_DATA *ch, int gain )
     if (ch->level == LEVEL_KING)
         return;
 
+     if ( gain > 0 && !IS_NPC(ch) && ch->pcdata->exp_bonus > 0 )
+         gain += gain * ch->pcdata->exp_bonus / 100;
+
      ch->exp = UMAX( exp_per_level(ch,ch->pcdata->points), ch->exp + gain );
 
      if(ch->level >= LEVEL_HERO)
