@@ -1148,6 +1148,7 @@ struct  kill_data
 #define APPLY_SAVING_PETRI           22
 #define APPLY_SAVING_BREATH          23
 #define APPLY_SAVING_SPELL           24
+#define APPLY_IMMUNITY               25  /* modifier = IMM_* flag bit to grant */
 
 /* Values for containers */
 #define CONT_CLOSEABLE                1
@@ -2407,6 +2408,7 @@ void    update_wizlist  ( CHAR_DATA *ch, int level );
 /* season.c */
 const char *get_season_name  ( void );
 const char *get_seasonal_area( const char *area_file );
+bool        verify_event_boss       ( void );
 void        spawn_event_boss        ( int forced_vnum );
 void        despawn_event_boss      ( void );
 void        tick_event_boss         ( void );

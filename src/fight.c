@@ -3454,9 +3454,6 @@ void do_trip( CHAR_DATA *ch, char *argument )
 
     if (victim == ch)
     {
-    if(victim->ridden || (!IS_NPC(victim) && victim->pcdata->mounted) )
-      return;
-
 	send_to_char("You fall flat on your face!\n\r",ch);
 	WAIT_STATE(ch,2 * skill_table[gsn_trip].beats);
 	act("$n trips over $s own feet!",ch,NULL,NULL,TO_ROOM);
@@ -3952,14 +3949,16 @@ void do_backstab( CHAR_DATA *ch, char *argument )
 
     if ( !IS_NPC(victim) && victim->pcdata->dcount >= 6 )
     {
-	send_to_char("Go pick on someone else.\n\r",ch);
-	return;
+        WAIT_STATE( ch, skill_table[gsn_backstab].beats );
+        send_to_char("Go pick on someone else.\n\r",ch);
+        return;
     }
 
     if( victim->hit < victim->max_hit/3 )
     {
-      act( "You failed.", ch,  NULL, victim, TO_CHAR );
-      return;
+        WAIT_STATE( ch, skill_table[gsn_backstab].beats );
+        act( "You failed.", ch,  NULL, victim, TO_CHAR );
+        return;
     }
 
     check_killer( ch, victim );
@@ -4936,16 +4935,16 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
 	    else if(vch->hit < 4000)
 	      dam = number_range((int)(vch->hit * .10),(int)(vch->hit * .15));
 	    else
-	      dam = number_range((int)(vch->hit * .5),(int)(vch->hit * .8));
+              dam = number_range((int)(vch->hit * .05),(int)(vch->hit * .08));
 
-	    act( "You are mesmerized by $n's grace, then the strike hits.",ch,NULL,vch, TO_VICT );
-	    damage( ch, vch, dam, gsn_crane_dance, DAM_BASH );
-	  }
-	  continue;
-	}
+            act( "You are mesmerized by $n's grace, then the strike hits.",ch,NULL,vch, TO_VICT );
+            damage( ch, vch, dam, gsn_crane_dance, DAM_BASH );
+          }
+          continue;
+        }
 
-	if( vch->in_room->area == ch->in_room->area )
-	send_to_char("You hear the cries of a thousand cranes as they take flight.\n\r",vch);
+        if( vch->in_room->area == ch->in_room->area )
+        send_to_char("You hear the cries of a thousand cranes as they take flight.\n\r",vch);
     }
 
     if(!IS_NPC(ch) && hit)
@@ -5489,23 +5488,23 @@ void do_iron_skin( CHAR_DATA *ch, char *argument )
 
 	pick = dice(1,4);
 
-        switch (pick)
+        /* Grant a random physical immunity through the affect system so it
+           is properly removed when iron skin expires.  pick==4 grants none. */
+        if (pick >= 1 && pick <= 3)
         {
-         case 1: if(!IS_SET(ch->imm_flags, IMM_BASH) )
-                    SET_BIT(ch->imm_flags, IMM_BASH);
-                break;
-         case 2: if(!IS_SET(ch->imm_flags, IMM_PIERCE) )
-                    {
-                        SET_BIT(ch->imm_flags, IMM_PIERCE);
-                    }
-                 break;
-         case 3: if(!IS_SET(ch->imm_flags, IMM_SLASH) )
-                    {
-                        SET_BIT(ch->imm_flags, IMM_SLASH);
-                    }
-                 break;
+            AFFECT_DATA imm_af;
+            long imm_flag = (pick == 1) ? IMM_BASH
+                          : (pick == 2) ? IMM_PIERCE
+                          :               IMM_SLASH;
+            imm_af.type      = gsn_iron_skin;
+            imm_af.level     = (sh_int)level;
+            imm_af.duration  = af.duration;
+            imm_af.location  = APPLY_IMMUNITY;
+            imm_af.modifier  = (sh_int)imm_flag;
+            imm_af.bitvector  = 0;
+            imm_af.bitvector2 = 0;
+            affect_to_char( ch, &imm_af );
         }
-
     }
     else
     {

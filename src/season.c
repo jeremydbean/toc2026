@@ -193,7 +193,7 @@ static void boss_global_shout( const char *msg )
  * character_list.  If the mob was killed/extracted, clears the pointer.
  * Returns TRUE if the boss is alive.
  * ----------------------------------------------------------- */
-static bool verify_event_boss( void )
+bool verify_event_boss( void )
 {
     LIST_ITERATOR iter;
     CHAR_DATA    *ch;
@@ -519,16 +519,35 @@ void tick_seasonal_vendors( void )
         return;
     }
 
-    /* Clear stale pointers if the mob was killed or extracted. */
-    if ( event_vendor_halloween != NULL && event_vendor_halloween->in_room == NULL )
+    /* Clear stale pointers if the mob was killed or extracted.
+     * Scan character_list rather than testing ->in_room == NULL;
+     * that field is freed before the pointer reaches us and could
+     * be non-NULL if the slot was reused for a new character. */
+    if ( event_vendor_halloween != NULL )
     {
-        event_vendor_halloween = NULL;
-        vendor_spawn_time      = 0;
+        LIST_ITERATOR iter;
+        CHAR_DATA    *vc;
+        bool found = FALSE;
+        FOR_EACH_CHARACTER( iter, vc )
+            if ( vc == event_vendor_halloween ) { found = TRUE; break; }
+        if ( !found )
+        {
+            event_vendor_halloween = NULL;
+            vendor_spawn_time      = 0;
+        }
     }
-    if ( event_vendor_winter != NULL && event_vendor_winter->in_room == NULL )
+    if ( event_vendor_winter != NULL )
     {
-        event_vendor_winter = NULL;
-        vendor_spawn_time   = 0;
+        LIST_ITERATOR iter;
+        CHAR_DATA    *vc;
+        bool found = FALSE;
+        FOR_EACH_CHARACTER( iter, vc )
+            if ( vc == event_vendor_winter ) { found = TRUE; break; }
+        if ( !found )
+        {
+            event_vendor_winter = NULL;
+            vendor_spawn_time   = 0;
+        }
     }
 
     /* Roll for a new spawn if none active. */

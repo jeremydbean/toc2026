@@ -284,8 +284,8 @@ int get_skill(const CHAR_DATA *ch, int sn)
 
 	else if (sn == gsn_disarm
 	     &&  (IS_SET(ch->off_flags,OFF_DISARM)
-	     ||   IS_SET(ch->off_flags,ACT_WARRIOR)
-	     ||   IS_SET(ch->off_flags,ACT_THIEF)))
+	     ||   IS_SET(ch->act,ACT_WARRIOR)
+	     ||   IS_SET(ch->act,ACT_THIEF)))
 	    skill = 20 + 3 * ch->level;
 
 	else if (sn == gsn_berserk && IS_SET(ch->off_flags,OFF_BERSERK))
@@ -871,6 +871,10 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     case APPLY_SAVING_PETRI:  ch->saving_throw          += mod; break;
     case APPLY_SAVING_BREATH: ch->saving_throw          += mod; break;
     case APPLY_SAVING_SPELL:  ch->saving_throw          += mod; break;
+    case APPLY_IMMUNITY:
+	if (fAdd) SET_BIT(ch->imm_flags, (long)paf->modifier);
+	else      REMOVE_BIT(ch->imm_flags, (long)paf->modifier);
+	break;
     }
 
     /*
@@ -2563,7 +2567,7 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
     &&   get_trust( ch ) < victim->invis_level )
 	return false;
 
-    if ( IS_NPC(ch) && IS_AFFECTED(victim, AFF2_GHOST))
+    if ( IS_NPC(ch) && IS_AFFECTED2(victim, AFF2_GHOST))
 	return false;
 
     if ( !IS_NPC(victim)

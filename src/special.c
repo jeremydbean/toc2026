@@ -2732,11 +2732,8 @@ bool spec_monk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
     UNUSED_PARAM(ch);
     UNUSED_PARAM(arg);
-    char *spell __attribute__((unused)) = NULL;
     CHAR_DATA *victim;
     CHAR_DATA *v_next;
-
-    int min_level;
     int chance;
  
     if ( cmd != NULL)
@@ -2760,26 +2757,38 @@ bool spec_monk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     if ( victim == NULL )
 	return false;
  
-    spell = NULL;
- 
     for ( ;; )
     {
- 
-	switch ( number_bits( 4 ) )
-	{
-	case  1: min_level = 18; do_blinding_fists( mob, victim->name);  break;
-	case  2: min_level = 20; do_stunning_blow(mob, victim->name);  break;
-	case  3: min_level = 21; do_steel_fist( mob, mob->name);   break;
-	case  4: min_level = 24; do_fists_of_fury( mob, victim->name); break;
-	case  5: min_level = 25; do_iron_skin( mob, mob->name); break;
-	case  6: min_level = 35; do_crane_dance(mob,victim->name);     break;
-	default: min_level = 15; do_nerve_damage(mob, victim->name);    break;
-        } 
- 
-	if( mob->level >= min_level)
-	   break;
+        DO_FUN *skill_fn  = NULL;
+        char   *skill_arg = NULL;
+        int     min_level = 0;
+        int     tries     = 0;
+
+        while ( tries++ < 200 )
+        {
+            switch ( number_range( 0, 17 ) )
+            {
+            case  1: min_level = 18; skill_fn = do_blinding_fists; skill_arg = victim->name; break;
+            case  2: min_level = 20; skill_fn = do_stunning_blow;  skill_arg = victim->name; break;
+            case  3: min_level = 21; skill_fn = do_steel_fist;     skill_arg = mob->name;    break;
+            case  4: min_level = 24; skill_fn = do_fists_of_fury;  skill_arg = victim->name; break;
+            case  5: min_level = 25; skill_fn = do_iron_skin;      skill_arg = mob->name;    break;
+            case  6: min_level = 35; skill_fn = do_crane_dance;    skill_arg = victim->name; break;
+            default: min_level = 15; skill_fn = do_nerve_damage;   skill_arg = victim->name; break;
+            }
+
+            if ( mob->level >= min_level )
+                break;
+
+            skill_fn = NULL;
+        }
+
+        if ( skill_fn == NULL )
+            break;   /* no appropriate skill found within 200 tries */
+
+        skill_fn( mob, skill_arg );
+        break;
     }
- 
     return true;
 
 }

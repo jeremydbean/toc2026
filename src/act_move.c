@@ -588,8 +588,16 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 
     if ( IS_SET(pexit->exit_info, EX_WIZLOCKED) )
     {
-	   if (IS_AFFECTED(ch, AFF_PASS_DOOR) )
-		{
+        if ( ch->level >= 68 )
+        {
+            act( "The $d shudders and parts before you as you step through.",
+                 ch, NULL, pexit->keyword, TO_CHAR );
+            act( "The $d shudders and parts as $n steps through, sealing shut behind them.",
+                 ch, NULL, pexit->keyword, TO_ROOM );
+            /* fall through — allow movement */
+        }
+        else if (IS_AFFECTED(ch, AFF_PASS_DOOR) )
+        {
 		  if ( runner == 1 )
 		    {
 			 act( "\nYou run right into a glowing $d.\n\r",
@@ -604,23 +612,23 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 		    act( "\nThe $d has been Wizard Locked. You can not pass\r",
 				 ch, NULL, pexit->keyword, TO_CHAR );
 		  return;
-		}
-	   else
-		{
+        }
+        else
+        {
 		   if ( runner == 1 )
 			{
 			  act( "\nYou run right into a closed $d.\n\r",
 				 ch, NULL, pexit->keyword, TO_CHAR );
 			  act( " $n runs smack into the closed $d.\n\r",
 				 ch, NULL, pexit->keyword, TO_ROOM );
-			  runner = 2;
-			  ch->position = POS_RESTING;
+			 runner = 2;
+			 ch->position = POS_RESTING;
 			  return;
 			}
 		   else
 			act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
 		   return;
-		}
+        }
     }
 
     if ( IS_SET(pexit->exit_info, EX_CLOSED)
@@ -3695,13 +3703,29 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
     ||   ( to_room = pexit->u1.to_room   ) == NULL
     ||	 !can_see_room(temp_ch,pexit->u1.to_room)
     ||   IS_SET(pexit->exit_info, EX_SECRET)
-    ||   IS_SET(pexit->exit_info, EX_WIZLOCKED)
     ||   IS_SET(pexit->exit_info, EX_CLOSED)
     ||   IS_SET(to_room->room_flags,ROOM_LAW)
     ||   IS_SET(ch->act,ACT_AGGRESSIVE) )
     {
        send_to_char( "Alas, you cannot take a mount that way.\n\r", temp_ch );
        return;
+    }
+
+    if ( IS_SET(pexit->exit_info, EX_WIZLOCKED) )
+    {
+        if ( temp_ch->level >= 68 )
+        {
+            act( "The $d shudders and parts as $n rides through, sealing shut behind them.",
+                 temp_ch, NULL, pexit->keyword, TO_ROOM );
+            act( "The $d shudders and parts before you as you ride through.",
+                 temp_ch, NULL, pexit->keyword, TO_CHAR );
+            /* fall through — allow movement */
+        }
+        else
+        {
+            send_to_char( "Alas, you cannot take a mount that way.\n\r", temp_ch );
+            return;
+        }
     }
 
     if( IS_SET(to_room->room_flags, ROOM_INDOORS ) && !IS_IMMORTAL(temp_ch) )

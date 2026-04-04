@@ -3002,6 +3002,7 @@ void do_steal( CHAR_DATA *ch, char *argument )
 
     obj_from_char( obj );
     obj_to_char( obj, ch );
+    act( "You steal $p from $N.", ch, obj, victim, TO_CHAR );
     check_improve(ch,gsn_steal,true,2);
     return;
 }

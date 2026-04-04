@@ -7665,6 +7665,10 @@ void do_summonevent( CHAR_DATA *ch, char *argument )
     one_argument( argument, arg );
     season_name = get_season_name();   /* NULL if off-season */
 
+    /* Validate event_boss_mob — it may be a dangling pointer if the boss
+     * was killed by players since the last tick fired verify_event_boss(). */
+    verify_event_boss();
+
     /* --- Status query --- */
     if ( !str_cmp( arg, "status" ) )
     {
