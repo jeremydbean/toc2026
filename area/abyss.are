@@ -1081,7 +1081,7 @@ small tablet~
 +                                                                    +
 +     PS. prepare to die - it is extremely hard {30 50} area          +
 +                          with aggro mobs                           +
-+                     only armed personel allowed                    +
++                     only armed personnel allowed                    +
 +                                                                    +
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ~
@@ -1177,7 +1177,7 @@ small tablet~
 +                                                                    +
 +     PS. prepare to die - it is extremely hard {30 50} area          +
 +                          with aggro mobs                           +
-+                     only armed personel allowed                    +
++                     only armed personnel allowed                    +
 +                                                                    +
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ~
@@ -1949,7 +1949,7 @@ D5
 0 -1 24546
 S
 #24548
-A Coridoor~
+A Corridor~
 You step into a rather long hallway, there appears to be
 a door or two further down the hall. There seems to be a
 strange glow at the southern end of the hall.
@@ -1965,7 +1965,7 @@ D3
 0 -1 24547
 S
 #24549
-Southern End of Coridoor~
+Southern End of Corridor~
 At this end of the hall you come to a huge door made entirely of
 gold and silver. A small keyhole is set into the left side of the
 door. The air seems to crackle with magical energy.  The door resists
@@ -2724,7 +2724,7 @@ G 1 24518 -1                      A Crystal Ring
 M 1 24509 1 24545 1              the Hydra
 G 1 24526 5                       soul amulet
 *
-D 1 24549 2 1                   Southern End of Coridoor Close South
+D 1 24549 2 1                   Southern End of Corridor Close South
 *
 M 1 24514 2 24550 1              the Death knight
 E 1 24505 3 5                     A Rune Covered Breast Plate
