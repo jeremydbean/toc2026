@@ -185,12 +185,10 @@ void do_backup( void )
 /* Pfile backup command fixed on 12/17/97 - Ricochet */
 void do_dailybackup( void )
 {
-    extern long backup;
     wizinfo("Daily backup complete.",62);
     log_string("Daily backup complete.");
     dailybackup = current_time + (60*60*24);
-  /*  system("tar cfz ../backups/`date +%b.%d`.tar.gz ../player"); */
-    if (system("tar cf ../backups/`date +%b.%d`.tar.gz ../player") == -1)
+    if (system("tar cfz ../backups/`date +%b.%d`.tar.gz ../player") == -1)
         bug("do_dailybackup: archive creation failed.", 0);
     return;
 
@@ -214,15 +212,12 @@ void show_backup( CHAR_DATA *ch, char *argument )
       snprintf( buf, sizeof(buf), "Next daily backup scheduled for %s\n\r", (char *)ctime(&dailybackup));
       send_to_char(buf,ch);
       send_to_char("Type BACKUP NOW to run a backup now.\n\r",ch);
-      return;
+      send_to_char("Type BACKUP DAILY to run a daily backup now.\n\r",ch);
     }
-
-    if ( !str_cmp( arg1, "now" ) || !str_cmp( arg1, "NOW" ))
+    else if ( !str_cmp( arg1, "now" ) )
       do_backup();
-    if ( !str_cmp( arg1, "daily" ) || !str_cmp( arg1, "DAILY" ))
+    else if ( !str_cmp( arg1, "daily" ) )
       do_dailybackup();
-
-      return;
 
     return;
 }
@@ -972,7 +967,10 @@ void weather_update( void )
 /*    if( time_info.hour == 11 || time_info.hour == 23)
        component_update(); */
 
-     if (current_time > dailybackup)
+    if (current_time > backup)
+        do_backup();
+
+    if (current_time > dailybackup)
         do_dailybackup();
 
     if(time_info.day == 0 || time_info.day < 10)
