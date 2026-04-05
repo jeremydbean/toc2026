@@ -1447,8 +1447,12 @@ void do_score( CHAR_DATA *ch, char *argument )
 
       if (IS_SET( ch->act, PLR_JAILED ))
       {
-        snprintf(buf, sizeof(buf), "| You are jailed until %s.           %23s\n\r",
-                 (char *)ctime(&ch->pcdata->jw_timer) , " ");
+        char jail_ts[32];
+        char *jail_nl;
+        strlcpy( jail_ts, ctime(&ch->pcdata->jw_timer), sizeof(jail_ts) );
+        jail_nl = strchr( jail_ts, '\n' );
+        if ( jail_nl ) *jail_nl = '\0';
+        snprintf(buf, sizeof(buf), "| You are jailed until %s.\n\r", jail_ts);
         send_to_char(buf,ch);
       }
 

@@ -212,10 +212,18 @@ void show_backup( CHAR_DATA *ch, char *argument )
 
     if ( arg1[0] == '\0' )
     {
-      snprintf( buf, sizeof(buf), "Next pfile backup scheduled for %s\n\r", (char *)ctime(&backup));
-      send_to_char(buf,ch);
-      snprintf( buf, sizeof(buf), "Next daily backup scheduled for %s\n\r", (char *)ctime(&dailybackup));
-      send_to_char(buf,ch);
+      {
+        char ts1[32], ts2[32];
+        char *nl;
+        strlcpy( ts1, ctime(&backup),      sizeof(ts1) );
+        nl = strchr(ts1, '\n'); if (nl) *nl = '\0';
+        strlcpy( ts2, ctime(&dailybackup), sizeof(ts2) );
+        nl = strchr(ts2, '\n'); if (nl) *nl = '\0';
+        snprintf( buf, sizeof(buf), "Next pfile backup scheduled for %s\n\r", ts1);
+        send_to_char(buf,ch);
+        snprintf( buf, sizeof(buf), "Next daily backup scheduled for %s\n\r", ts2);
+        send_to_char(buf,ch);
+      }
       send_to_char("Type BACKUP NOW to run a backup now.\n\r",ch);
       send_to_char("Type BACKUP DAILY to run a daily backup now.\n\r",ch);
     }

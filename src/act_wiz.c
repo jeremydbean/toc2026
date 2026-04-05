@@ -7327,17 +7327,27 @@ void do_finger( CHAR_DATA *ch, char *argument )
                 ( p_guild >= 0 && p_guild <= GUILD_NONE )
                     ? guild_names[p_guild] : "Unknown";
             time_t logoff_time = (time_t)p_logoff;
+            char logoff_str[32];
+            char *nl;
+
+            if ( p_logoff ) {
+                strlcpy( logoff_str, ctime( &logoff_time ), sizeof(logoff_str) );
+                nl = strchr( logoff_str, '\n' );
+                if ( nl ) *nl = '\0';
+            } else {
+                strlcpy( logoff_str, "Unknown", sizeof(logoff_str) );
+            }
 
             snprintf( buf, sizeof(buf),
                 "=== Finger: %s (offline) ===\n\r"
                 "  Level : %-3d  Race : %-10s  Class: %s\n\r"
                 "  Guild : %-12s  Remorts: %d\n\r"
-                "  Last on : %s"
+                "  Last on : %s\n\r"
                 "  Played  : %dd %dh %dm\n\r",
                 capitalize( arg ),
                 p_level, p_race[0] ? p_race : "Unknown", class_name,
                 guild_name, p_remorts,
-                p_logoff ? ctime( &logoff_time ) : "Unknown\n",
+                logoff_str,
                 days, hours, mins );
             send_to_char( buf, ch );
         }
@@ -7734,6 +7744,13 @@ void do_prestore( CHAR_DATA *ch, char *argument )
         }
 
         /* Copy the snapshot over the live player file */
+
+        /* Safety: if the player was offline, their current file may not be in
+           the snapshot set (e.g., manually edited outside the game).  Take a
+           snapshot now so the pre-restore state is always recoverable. */
+        if ( !found_online )
+            player_snapshot( capname );
+
         fsrc = fopen( srcpath, "rb" );
         if ( fsrc == NULL )
         {

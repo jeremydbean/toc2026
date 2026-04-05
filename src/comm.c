@@ -2913,10 +2913,20 @@ void run_web_command(char *argument) {
     if (room) {
         char_to_room(ch, room);
         interpret(ch, argument);
-        char_from_room(ch);
+        /* Do NOT call char_from_room here: it sets ch->in_room = NULL, which
+           causes extract_char to bail early (NULL-room guard) and leak the mob.
+           extract_char handles removal from the current room internally. */
+    } else {
+        /* No room to place ch in means we can't run the command safely.
+           Place in limbo as a last resort so extract_char has a valid room. */
+        room = get_room_index( ROOM_VNUM_LIMBO );
+        if ( room == NULL )
+            room = get_room_index( 1 ); /* absolute fallback */
+        if ( room != NULL )
+            char_to_room( ch, room );
     }
     
-    /* Clean up */
+    /* Clean up — extract_char calls char_from_room internally */
     extract_char(ch, TRUE);
 }
 
