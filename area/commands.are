@@ -290,41 +290,277 @@ Crafting and utility commands:
   a corpse behind.
 ~
 
-0 BACKSTAB BS BASH BERSERK BLINDING CONFUSE CRANE DOORBASH DIRT DISARM DISMOUNT ENERVATE FISTS HIT KICK MIND BLAST MINDBLAST MURDE MURDER NERVE NIGHTMARE RESCUE SMITE STUNNING TORMENT TRIP~
-Syntax: backstab <victim>          Syntax: bs <victim>
-Syntax: bash <victim>              Syntax: berserk
-Syntax: blinding <victim>          Syntax: confuse <victim>
-Syntax: crane                      Syntax: doorbash <door>
-Syntax: dirt <victim>              Syntax: disarm
-Syntax: dismount                   Syntax: fists
-Syntax: hit <victim>
-Syntax: kick <victim>              Syntax: murder <victim>
-Syntax: mindblast <victim>
-Syntax: nerve <victim>             Syntax: nightmare <victim>
-Syntax: enervate <victim>          Syntax: rescue <ally>
-Syntax: smite <victim>             Syntax: stunning <victim>
-Syntax: torment <victim>           Syntax: trip <victim>
+0 BACKSTAB BS~
+Syntax: backstab <victim>
+Syntax: bs <victim>
 
-Advanced combat maneuvers.  Each of these abilities relies on its associated
-skill or spell and often requires appropriate weapons or positioning.
-- BACKSTAB/BS: attack from hiding for heavy opening damage with a piercing
-  weapon.
-- BASH: slam your foe to the ground, potentially stunning them.
-- BERSERK: enter a battle frenzy to boost offense while losing some control.
-- BLINDING/CONFUSE/ENERVATE/NIGHTMARE/SMITE/STUNNING/TORMENT: offensive
-  techniques that inflict status effects; see the relevant skill for exact
-  outcomes and save checks.
-- CRANE and FISTS: unarmed fighting stances that improve hand-to-hand combat.
-- DOORBASH: force a locked door open with brute strength instead of a key.
-- DIRT: fling dirt to blind an opponent temporarily.
-- DISARM: knock a weapon from your opponent's hand.
-- DISMOUNT: climb off your current mount.
-- HIT and MURDER/MURDE: direct physical attacks; HIT mirrors the normal KILL
-  command while MURDER is always considered a hostile action.
-- KICK, NERVE, TRIP: quick physical attacks aimed at disrupting foes.
-- MINDBLAST: psionic assault that harms and can disorient foes if they fail
-  their save.
-- RESCUE: pull an ally out of melee by taking their opponent onto yourself.
+Strike an enemy from hiding, delivering a single devastating blow before
+they can react.  The attack requires a piercing weapon and that you are
+hidden when you initiate it.  Damage is multiplied based on your backstab
+skill level; a higher skill means a deeper wound.  You are automatically
+revealed after the strike whether it succeeds or fails.  You cannot
+backstab a target you are already fighting.
+
+See also: HIDE, SNEAK
+~
+
+0 BASH~
+Syntax: bash <victim>
+
+Hurl yourself into an enemy with full body force, knocking them to the
+ground.  A successful bash interrupts your foe's next action and leaves
+them vulnerable to follow-up attacks for a brief moment.  Failure means
+you stumble and lose your own next action instead.  Two-handed and large
+weapons give a better chance to knock the target down; smaller frames are
+easier to topple than giants or quadrupeds.
+
+See also: TRIP, KICK
+~
+
+0 BERSERK~
+Syntax: berserk
+
+Enter a battle frenzy that sharpens your instinct to kill at the cost of
+your defenses.  While berserk, you deal more damage and gain offensive
+bonuses, but your armor class worsens and you cannot use skills that require
+calm or concentration.  The frenzy sustains itself while you are fighting
+and fades shortly after combat ends.  Only warriors with sufficient martial
+training can enter a true berserk.
+
+See also: KICK, BASH
+~
+
+0 BLINDING~
+Syntax: blinding <victim>
+
+A precision strike or magical technique aimed directly at an enemy's eyes.
+On a failed save the target is blinded, suffering significant penalties to
+hit chance and losing the ability to see room descriptions or other
+characters clearly.  The blindness lasts for a limited duration and can be
+cured by spells or natural recovery.
+
+See also: DIRT, CONFUSE, STUNNING
+~
+
+0 CONFUSE~
+Syntax: confuse <victim>
+
+A psionic or magical assault that muddles the target's thoughts, causing
+them to act erratically.  A confused foe may attack random targets, forget
+commands, or simply stand dazed for the duration.  Intelligence and mental
+resistance affect whether the target can shake the effect.
+
+See also: BLINDING, NIGHTMARE, TORMENT
+~
+
+0 CRANE FISTS~
+Syntax: crane
+Syntax: fists
+
+Toggle unarmed fighting stances.
+
+CRANE adopts the crane style: balanced, evasive, with a slight defensive
+edge.  The stance improves your dodge and parry while sacrificing some raw
+damage output.  Suitable for characters who prefer to outlast their foes.
+
+FISTS adopts the iron-fist style: aggressive, forward-pressing, with
+emphasis on raw hand-to-hand damage.  You deal more damage unarmed but
+take more hits in return.  Best used when you intend to end the fight
+quickly.
+
+Both stances require training in the appropriate hand-to-hand skill.
+Entering combat or exceeding your movement limit will break the stance.
+
+See also: KICK, BERSERK
+~
+
+0 DIRT DIRT-KICK~
+Syntax: dirt <victim>
+
+Scoop dirt, sand, or debris from the ground and fling it into an enemy's
+eyes.  On a failed save the target is blinded temporarily, lowering their
+to-hit chance significantly.  The technique costs no mana and relies on
+your DIRT KICK skill; a higher skill means a better chance to land and a
+longer duration.  Only works in outdoor or appropriate terrain rooms.
+
+See also: BLINDING, BASH, TRIP
+~
+
+0 DISARM~
+Syntax: disarm
+
+Attempt to knock your opponent's weapon from their grip during combat.
+A successful disarm sends the weapon flying to the floor, forcing the
+enemy to fight barehanded until they pick it up or draw another.  The
+chance to succeed is influenced by your disarm skill, relative weapon
+sizes, and your opponent's dexterity.  You must be in combat and wielding
+a weapon to attempt it.
+
+See also: BASH, TRIP
+~
+
+0 DISMOUNT~
+Syntax: dismount
+
+Climb down from your current mount, returning to normal movement.  If
+you are thrown from or killed while mounted, dismounting happens
+automatically.  Some rooms or area transitions may also force a dismount
+if mounted travel is not permitted there.
+
+See also: MOUNT, RIDE
+~
+
+0 DOORBASH~
+Syntax: doorbash <direction>
+
+Charge a closed or locked door with brute force, attempting to break it
+open without a key.  Success destroys the door; failure leaves you
+winded for a short period.  The chance to succeed depends on your
+strength, the BASH DOOR skill, and the door's construction.  Magically
+sealed or wizard-locked exits cannot be doorbashed.
+
+See also: BASH, PICK
+~
+
+0 ENERVATE~
+Syntax: enervate <victim>
+
+Drain vital energy from your target, weakening their physical or mental
+reserves.  On a failed save the victim suffers reduced stats or combat
+effectiveness for the duration.  The precise debuff depends on your level
+and spellcasting ability.  Particularly effective against high-endurance
+fighters who rely on long attrition.
+
+See also: CONFUSE, TORMENT, NIGHTMARE
+~
+
+0 HIT MURDER MURDE~
+Syntax: hit <victim>
+Syntax: murder <victim>
+Syntax: murde <victim>
+
+Direct physical attack commands.
+
+HIT works identically to the KILL command: it starts or continues combat
+against the chosen target.  Use it when you prefer not to type "kill".
+
+MURDER (and its abbreviation MURDE) explicitly flags your action as a
+hostile assault regardless of the target's criminal status or alignment.
+Unlike HIT, MURDER is always logged and counts as a pk-flagged attack if
+the target is a player.  Use with care in populated areas.
+
+See also: KILL, BACKSTAB, BASH
+~
+
+0 KICK~
+Syntax: kick <victim>
+
+A quick boot to disrupt an enemy or deal extra damage during combat.
+Kick costs no mana and triggers on its own timer, separate from your
+main weapon attacks.  Damage scales with your KICK skill and your
+strength.  The attack can occasionally knock a smaller or off-balance
+opponent back a step, delaying their next action.
+
+See also: TRIP, NERVE, BASH
+~
+
+0 MINDBLAST MIND BLAST~
+Syntax: mindblast <victim>
+
+Unleash a raw burst of psionic energy at a single target.  The blast
+deals direct mental damage and, on a failed save, leaves the victim
+disoriented: their attacks may miss wildly for a short time.  Mindblast
+draws from your mana pool and scales with your psionic skill level.  It
+can be used freely in or out of combat and does not require line-of-sight
+to a room exit.
+
+See also: CONFUSE, CLAIRVOYANCE, TELEKINESIS
+~
+
+0 NERVE~
+Syntax: nerve <victim>
+
+Strike a precise nerve cluster to temporarily cripple an opponent.  On a
+successful hit the target suffers reduced movement or attack speed,
+slowing their ability to act in combat.  The technique requires hand-to-
+hand training or knowledge of anatomy; the higher your skill the more
+effective and longer-lasting the effect.
+
+See also: KICK, TRIP, BASH
+~
+
+0 NIGHTMARE~
+Syntax: nightmare <victim>
+
+Plant a waking nightmare in your target's mind, flooding their perception
+with fear and confusion.  Victims who fail the mental save cower, flee,
+or act irrationally for the duration.  The spell is psionic in nature and
+is resisted by mental fortitude.  It is especially devastating against
+foes with low willpower or those already suffering other mental effects.
+
+See also: CONFUSE, TORMENT, ENERVATE
+~
+
+0 RESCUE~
+Syntax: rescue <ally>
+
+Leap into the fray to defend an ally under attack, drawing that enemy's
+aggression onto yourself.  A successful rescue shifts the attacker's
+focus from your ally to you, giving your companion a moment to recover or
+flee.  The maneuver requires the RESCUE skill and works best when you
+have higher combat stats than the enemy.  You cannot rescue someone if
+you are already engaged with a different opponent.
+
+See also: SHIELD BLOCK, BASH, FLEE
+~
+
+0 SMITE~
+Syntax: smite <victim>
+
+Channel divine or magical wrath through your weapon in a single brutal
+strike.  The smite deals additional holy or elemental damage on top of
+your normal weapon hit, and on a failed save the target is briefly
+stunned or staggered.  Smiting consumes mana and requires that you are
+wielding a weapon attuned to the ability.
+
+See also: STUNNING, BASH, BLINDING
+~
+
+0 STUNNING~
+Syntax: stunning <victim>
+
+A focused blow or magical technique designed to leave a target senseless.
+On a failed save the victim is stunned: they cannot act, lose their
+dexterity bonus, and are easier to hit for the duration.  The chance to
+land and the stun length both improve with your skill level and the
+victim's current condition.
+
+See also: BASH, SMITE, BLINDING
+~
+
+0 TORMENT~
+Syntax: torment <victim>
+
+Inflict sustained psychic or magical pain on a target, causing them to
+writhe in agony.  Tormented victims suffer a damage-over-time effect
+and penalties to concentration, making spellcasting or skill use risky.
+The effect stacks poorly with other pain-inflicting debuffs.  Mental
+and magical resistances reduce both the initial application chance and
+the recurring damage.
+
+See also: NIGHTMARE, ENERVATE, CONFUSE
+~
+
+0 TRIP~
+Syntax: trip <victim>
+
+Hook or sweep a foot to send your opponent stumbling to the ground.  A
+tripped target falls prone, losing their next attack and suffering an
+armor-class penalty until they stand.  Trip works best against bipedal
+targets; quadrupeds and very large creatures are much harder to topple.
+Requires the TRIP skill; failure makes you lose footing yourself briefly.
+
+See also: BASH, KICK, NERVE
 ~
 
 0 AQUEST TOPTEN SEARCH TRACK HIDE LEVITATE SNEAK STEAL STEALTH STEEL SHOVE ROLL IRON MINDBAR PSIONIC PSYCHIC QUI QUIT~
