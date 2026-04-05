@@ -67,7 +67,6 @@ DECLARE_SPEC_FUN(       spec_quest_master       );
 DECLARE_SPEC_FUN(       spec_kidnapper          );
 DECLARE_SPEC_FUN(       spec_monk               );
 DECLARE_SPEC_FUN(       spec_banker             );
-DECLARE_SPEC_FUN(       spec_banker             );
 
 struct quest_type
 {
@@ -2902,6 +2901,10 @@ bool spec_banker( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
         if ( !IS_AWAKE(mob) || mob->in_room == NULL )
             return false;
 
+        /* Only behave as a banker when actually standing in a bank room */
+        if ( !IS_SET(mob->in_room->room_flags2, ROOM2_BANK) )
+            return false;
+
         /* Only act 1-in-8 ticks to avoid being spammy */
         if ( number_bits(3) != 0 )
             return false;
@@ -2953,6 +2956,10 @@ bool spec_banker( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     /* A player in the same room is issuing a command                      */
     /* ------------------------------------------------------------------ */
     if ( ch == NULL || IS_NPC(ch) || ch->in_room != mob->in_room )
+        return false;
+
+    /* Mob must actually be in a bank room */
+    if ( mob->in_room == NULL || !IS_SET(mob->in_room->room_flags2, ROOM2_BANK) )
         return false;
 
     /* Only care about banking commands */

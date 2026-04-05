@@ -1343,6 +1343,20 @@ A 0 750 S
 MNc AB CD 0
 8 8 2 500
 DHZ ACDEFHJKPQUVX M 0
+#4
+teller banker~
+the bank teller~
+A neat-looking bank teller stands behind the counter.
+~
+This well-dressed teller handles deposits and withdrawals with practiced efficiency.
+~
+human~
+AB 0 500 S
+23 0 1d1+425 3d6+4 3d6+4 16
+-6 -6 -6 -2
+CFIK ABQ 0 0
+8 8 1 1000
+0 0 M 0
 #0
 
 
@@ -5406,7 +5420,12 @@ You see darkness.
 S
 #0
 
+#RESETS
+M 0 4 1 4   ; the bank teller
+S
+
 #SPECIALS
+M 4 spec_banker
 M 4474 spec_kidnapper
 S
 
