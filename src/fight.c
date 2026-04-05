@@ -2960,34 +2960,34 @@ void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
 	}
 	else
 	{
-		if (IS_SET(ch->act,PLR_DAMAGE_NUMBERS))
+		if (ch == victim)
 		{
-			if (ch == victim)
-				 {
-			 snprintf(buf1, sizeof(buf1), "$n's %s\x02\x0A %s\x02\x01 $m%c [\x02\x0A-%d\x02\x01]",attack,vp,punct,dam);
-			 snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 you%c [\x02\x0A-%d\x02\x01]",attack,vp,punct,dam);
-				 }
-				 else
-				 {
-			 snprintf(buf1, sizeof(buf1), "$n's %s\x02\x0A %s\x02\x01 $N%c [\x02\x0A-%d\x02\x01]",  attack, vp, punct, dam );
-			 snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 $N%c [\x02\x0A-%d\x02\x01]",  attack, vp, punct, dam );
-			 snprintf(buf3, sizeof(buf3), "$n's %s\x02\x0A %s\x02\x01 you%c[\x02\x0A-%d\x02\x01]", attack, vp, punct, dam );
-				 }
+		if (IS_SET(ch->act, PLR_DAMAGE_NUMBERS))
+			{
+			snprintf(buf1, sizeof(buf1), "$n's %s\x02\x0A %s\x02\x01 $m%c [\x02\x0A-%d\x02\x01]", attack, vp, punct, dam);
+			snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 you%c [\x02\x0A-%d\x02\x01]", attack, vp, punct, dam);
+			}
+		else
+			{
+			snprintf(buf1, sizeof(buf1), "$n's %s\x02\x0A %s\x02\x01 $m%c", attack, vp, punct);
+			snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 you%c", attack, vp, punct);
+			}
 		}
-		if (!IS_SET(ch->act,PLR_DAMAGE_NUMBERS))
-{
-	if (ch == victim)
-		 {
-	 snprintf(buf1, sizeof(buf1), "$n's %s\x02\x0A %s\x02\x01 $m%c",attack,vp,punct);
-	 snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 you%c",attack,vp,punct);
-		 }
-		 else
-		 {
-	 snprintf(buf1, sizeof(buf1), "$n's %s\x02\x0A %s\x02\x01 $N%c",  attack, vp, punct );
-	 snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 $N%c",  attack, vp, punct );
-	 snprintf(buf3, sizeof(buf3), "$n's %s\x02\x0A %s\x02\x01 you%c", attack, vp, punct );
-		 }
-}
+	else
+		{
+		/* buf1 — bystanders never see raw numbers */
+		snprintf(buf1, sizeof(buf1), "$n's %s\x02\x0A %s\x02\x01 $N%c", attack, vp, punct);
+		/* buf2 — attacker sees numbers based on their own setting */
+		if (IS_SET(ch->act, PLR_DAMAGE_NUMBERS))
+			snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 $N%c [\x02\x0A-%d\x02\x01]", attack, vp, punct, dam);
+		else
+			snprintf(buf2, sizeof(buf2), "Your %s\x02\x0A %s\x02\x01 $N%c", attack, vp, punct);
+		/* buf3 — victim sees numbers based on their own setting */
+		if (!IS_NPC(victim) && IS_SET(victim->act, PLR_DAMAGE_NUMBERS))
+			snprintf(buf3, sizeof(buf3), "$n's %s\x02\x0A %s\x02\x01 you%c [\x02\x0A-%d\x02\x01]", attack, vp, punct, dam);
+		else
+			snprintf(buf3, sizeof(buf3), "$n's %s\x02\x0A %s\x02\x01 you%c", attack, vp, punct);
+		}
 	}
     }
 

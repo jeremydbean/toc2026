@@ -161,8 +161,11 @@ Syntax: damagenumbers
 AFK toggles an "away from keyboard" flag and message so others know you are
 currently unavailable.  You will not auto-reply to tells while AFK.
 
- DAMAGENUMBERS toggles numerical combat feedback on or off, letting you see
- exact damage values when you hit or are hit.
+DAMAGENUMBERS toggles numerical combat feedback on or off.  When enabled,
+you will see the exact damage value in brackets after each hit you deliver
+or receive, e.g. "Your slash devastates the orc! [-47]".  Bystanders in
+the room always see the descriptive message without numbers regardless of
+your setting.  The flag is saved across logins.
 ~
 
 0 CRAWL JUMP~
@@ -1928,7 +1931,8 @@ a potion or scroll, and various other items.
 ~
 
 66 SET~
-Syntax: set mob   <mobile> <field> <value>
+Syntax: set char  <player> <field> <value>
+        set mob   <mobile> <field> <value>
         set obj   <object> <field> <value>
         set room  <number> <field> <value>
         set skill <char>   <name>  <rating>
@@ -1939,6 +1943,27 @@ structures. Type set <class> without an argument to see a listing of options.
 Set skill all (pc's only) will set all the character's skills to the value
 given.  Use string to change the strings on an object or mobile.
 (see also string, stat)
+
+SET CHAR fields available:
+  Stats:     str int wis dex con sex class level race align
+  Resources: hp mana end practice train
+  Currency:  platinum gold silver copper bank
+  Social:    guild castle castlehead
+  Conditions:thirst drunk hunger timer
+  Combat:    hp mana end hunt annoy mountable were
+  Flags:     pkiller excon wanted freeze deny
+  Records:   dcount pkills
+
+  pkiller  <on|off>   -- toggle PKiller status
+  excon    <on|off>   -- toggle ex-convict (con-death) flag
+  wanted   <on|off>   -- toggle WANTED flag
+  freeze   <on|off>   -- freeze/unfreeze player (saves to file)
+  deny     <on|off>   -- grant/revoke login access (saves to file)
+  bank     <amount>   -- set the player's bank balance
+  dcount   <number>   -- set the player's death count
+  pkills   <number>   -- set pkills given and received to the same value
+
+See also: SET, STRING, STAT
 ~
 
 64 STRING~
@@ -1971,11 +1996,25 @@ See also: MUTE, NOSHOUT, NOEMOTE, NONOTE
 ~
 
 66 PARDON~
-Syntax: pardon <character> killer
-        pardon <character> thief
+Syntax: pardon <character> <flag>
+  Flags: wanted excon pkiller warned freeze deny all
 
-Pardon pardons a player for their crimes.  Don't pardon a player unless you
-are sure they deserve it.
+PARDON removes a punishment or status flag from a player.  The flag names
+are:
+
+  wanted   -- clears the WANTED flag
+  excon    -- clears the EXCON (ex-convict / con-death) flag
+  pkiller  -- clears active PKiller status
+  warned   -- clears the WARNED flag
+  freeze   -- removes the FREEZE (total lockout) flag
+  deny     -- restores login access denied by the DENY flag
+  all      -- clears WANTED, EXCON, PKILLER, and WARNED in one step
+
+The old keywords "killer" and "thief" are accepted as aliases for "wanted"
+and "excon" respectively.  Don't pardon a player unless you are sure they
+deserve it.  Characters are saved immediately after any flag change.
+
+See also: SET, FREEZE, DENY
 ~
 
 66 PURGE~

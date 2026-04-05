@@ -466,7 +466,22 @@ Date           Name(s)            Offense                Punishment
 ~
 
 -1 NEWS~
-(Last updated: 07/16/2024)
+(Last updated: 2026)
+
+- DAMAGENUMBERS command improved: each player now sees damage numbers
+        based on their own toggle, not the attacker's.  Bystanders always
+        see the descriptive message without raw numbers.
+
+- SET CHAR expanded with new immortal fields: pkiller, excon, wanted,
+        freeze, deny, bank, dcount, pkills.  Type "set char" with no
+        arguments to see the full field list.
+
+- PARDON command expanded: now handles wanted, excon, pkiller, warned,
+        freeze, deny, and "all" (clears all punishment flags at once).
+        Old keywords "killer" and "thief" still work as aliases.  Each
+        change saves the character file immediately.  See HELP PARDON.
+
+(Previous entry: 07/16/2024)
 
 - Added a fresh change log entry to HELP NEWS so the latest updates are
         visible in-game without checking outside resources.

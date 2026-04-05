@@ -851,7 +851,8 @@ void do_pardon( CHAR_DATA *ch, char *argument )
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' )
     {
-	send_to_char("Syntax: pardon <character> <wanted|excon>.\n\r", ch );
+	send_to_char("Syntax: pardon <character> <flag>\n\r", ch );
+	send_to_char("  Flags: wanted excon pkiller warned freeze deny all\n\r", ch );
 	return;
     }
 
@@ -867,27 +868,88 @@ void do_pardon( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( !str_cmp( arg2, "wanted" ) )
+    if ( !str_cmp( arg2, "wanted" ) || !str_cmp( arg2, "killer" ) )
     {
-	if ( IS_SET(victim->act, PLR_WANTED) )
-	{
-	    REMOVE_BIT( victim->act, PLR_WANTED );
-	    snprintf(buf, sizeof(buf),"WANTED flag removed from %s.\n\r",victim->name);
-	    send_to_char( buf, ch );
-	    send_to_char( "You are no longer WANTED.\n\r", victim );
-	}
+	REMOVE_BIT( victim->act, PLR_WANTED );
+	snprintf(buf, sizeof(buf), "WANTED flag removed from %s.\n\r", victim->name);
+	send_to_char( buf, ch );
+	send_to_char( "You are no longer WANTED.\n\r", victim );
+	save_char_obj( victim );
 	return;
     }
 
-    if ( !str_cmp( arg2, "excon" ) )
+    if ( !str_cmp( arg2, "excon" ) || !str_cmp( arg2, "thief" ) )
     {
-	if ( IS_SET(victim->act, PLR_EXCON) )
+	REMOVE_BIT( victim->act, PLR_EXCON );
+	snprintf(buf, sizeof(buf), "EXCON flag removed from %s.\n\r", victim->name);
+	send_to_char( buf, ch );
+	send_to_char( "You are no longer considered an EXCON.\n\r", victim );
+	save_char_obj( victim );
+	return;
+    }
+
+    if ( !str_cmp( arg2, "pkiller" ) )
+    {
+	victim->pcdata->pk_state = 0;
+	snprintf(buf, sizeof(buf), "PKiller status cleared from %s.\n\r", victim->name);
+	send_to_char( buf, ch );
+	send_to_char( "Your PKiller status has been cleared.\n\r", victim );
+	save_char_obj( victim );
+	return;
+    }
+
+    if ( !str_cmp( arg2, "warned" ) )
+    {
+	REMOVE_BIT( victim->act, PLR_WARNED );
+	snprintf(buf, sizeof(buf), "WARNED flag removed from %s.\n\r", victim->name);
+	send_to_char( buf, ch );
+	send_to_char( "Your WARNED flag has been cleared.\n\r", victim );
+	save_char_obj( victim );
+	return;
+    }
+
+    if ( !str_cmp( arg2, "freeze" ) )
+    {
+	if ( get_trust(victim) >= get_trust(ch) )
 	{
-		REMOVE_BIT( victim->act, PLR_EXCON );
-		snprintf(buf, sizeof(buf),"EXCON flag removed from %s.\n\r",victim->name);
-		send_to_char( buf, ch );
-		send_to_char( "You are no longer considered an EXCON.\n\r", victim );
+	    send_to_char( "You failed.\n\r", ch );
+	    return;
 	}
+	REMOVE_BIT( victim->act, PLR_FREEZE );
+	snprintf(buf, sizeof(buf), "FREEZE flag removed from %s.\n\r", victim->name);
+	send_to_char( buf, ch );
+	send_to_char( "You can play again.\n\r", victim );
+	save_char_obj( victim );
+	return;
+    }
+
+    if ( !str_cmp( arg2, "deny" ) )
+    {
+	if ( get_trust(victim) >= get_trust(ch) )
+	{
+	    send_to_char( "You failed.\n\r", ch );
+	    return;
+	}
+	REMOVE_BIT( victim->act, PLR_DENY );
+	snprintf(buf, sizeof(buf), "DENY flag removed from %s.\n\r", victim->name);
+	send_to_char( buf, ch );
+	save_char_obj( victim );
+	return;
+    }
+
+    if ( !str_cmp( arg2, "all" ) )
+    {
+	victim->pcdata->pk_state = 0;
+	REMOVE_BIT( victim->act, PLR_WANTED );
+	REMOVE_BIT( victim->act, PLR_EXCON );
+	REMOVE_BIT( victim->act, PLR_WARNED );
+	snprintf(buf, sizeof(buf),
+	    "All punishment flags cleared from %s.\n\r", victim->name);
+	send_to_char( buf, ch );
+	send_to_char(
+	    "An immortal has pardoned you.  All punishment flags have been cleared.\n\r",
+	    victim);
+	save_char_obj( victim );
 	return;
     }
 
@@ -4022,6 +4084,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	send_to_char( "    race platinum gold silver copper hp mana end practice align\n\r",  ch );
 	send_to_char( "    train thirst drunk hunger timer hunt annoy\n\r",ch );
 	send_to_char( "    guild castle castlehead mountable were\n\r",	ch );
+	send_to_char( "    pkiller excon wanted freeze deny bank dcount pkills\n\r", ch );
 	return;
     }
 
@@ -4680,6 +4743,216 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
       return;
     }
+
+    if ( !str_prefix( arg2, "pkiller" ) )
+    {
+	if ( IS_NPC(victim) )
+	{
+	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	if ( !str_prefix(arg3, "on") || !str_prefix(arg3, "yes") || !str_cmp(arg3, "1") )
+	{
+	    victim->pcdata->pk_state = 1;
+	    snprintf(buf, sizeof(buf), "%s is now a PKiller.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	    send_to_char("You have been flagged as a PKiller by an immortal.\n\r", victim);
+	}
+	else if ( !str_prefix(arg3, "off") || !str_prefix(arg3, "no") || !str_cmp(arg3, "0") )
+	{
+	    victim->pcdata->pk_state = 0;
+	    snprintf(buf, sizeof(buf), "PKiller flag removed from %s.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	    send_to_char("Your PKiller status has been cleared by an immortal.\n\r", victim);
+	}
+	else
+	    send_to_char("Pkiller: use on/off or yes/no or 1/0.\n\r", ch);
+	return;
+    }
+
+    if ( !str_prefix( arg2, "excon" ) )
+    {
+	if ( IS_NPC(victim) )
+	{
+	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	if ( !str_prefix(arg3, "on") || !str_prefix(arg3, "yes") )
+	{
+	    SET_BIT(victim->act, PLR_EXCON);
+	    snprintf(buf, sizeof(buf), "%s is now flagged EXCON.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	}
+	else if ( !str_prefix(arg3, "off") || !str_prefix(arg3, "no") )
+	{
+	    REMOVE_BIT(victim->act, PLR_EXCON);
+	    snprintf(buf, sizeof(buf), "EXCON flag removed from %s.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	    send_to_char("Your EXCON status has been cleared.\n\r", victim);
+	}
+	else
+	    send_to_char("Excon: use on/off or yes/no.\n\r", ch);
+	return;
+    }
+
+    if ( !str_prefix( arg2, "wanted" ) )
+    {
+	if ( IS_NPC(victim) )
+	{
+	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	if ( !str_prefix(arg3, "on") || !str_prefix(arg3, "yes") )
+	{
+	    SET_BIT(victim->act, PLR_WANTED);
+	    snprintf(buf, sizeof(buf), "%s is now WANTED.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	}
+	else if ( !str_prefix(arg3, "off") || !str_prefix(arg3, "no") )
+	{
+	    REMOVE_BIT(victim->act, PLR_WANTED);
+	    snprintf(buf, sizeof(buf), "WANTED flag removed from %s.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	    send_to_char("You are no longer WANTED.\n\r", victim);
+	}
+	else
+	    send_to_char("Wanted: use on/off or yes/no.\n\r", ch);
+	return;
+    }
+
+    if ( !str_prefix( arg2, "freeze" ) )
+    {
+	if ( IS_NPC(victim) )
+	{
+	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	if ( get_trust(victim) >= get_trust(ch) )
+	{
+	    send_to_char("You failed.\n\r", ch);
+	    return;
+	}
+
+	if ( !str_prefix(arg3, "on") || !str_prefix(arg3, "yes") )
+	{
+	    SET_BIT(victim->act, PLR_FREEZE);
+	    snprintf(buf, sizeof(buf), "%s is now FROZEN.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	    send_to_char("You can't do ANYTHING!\n\r", victim);
+	    save_char_obj(victim);
+	}
+	else if ( !str_prefix(arg3, "off") || !str_prefix(arg3, "no") )
+	{
+	    REMOVE_BIT(victim->act, PLR_FREEZE);
+	    snprintf(buf, sizeof(buf), "FREEZE flag removed from %s.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	    send_to_char("You can play again.\n\r", victim);
+	    save_char_obj(victim);
+	}
+	else
+	    send_to_char("Freeze: use on/off or yes/no.\n\r", ch);
+	return;
+    }
+
+    if ( !str_prefix( arg2, "deny" ) )
+    {
+	if ( IS_NPC(victim) )
+	{
+	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	if ( get_trust(victim) >= get_trust(ch) )
+	{
+	    send_to_char("You failed.\n\r", ch);
+	    return;
+	}
+
+	if ( !str_prefix(arg3, "on") || !str_prefix(arg3, "yes") )
+	{
+	    SET_BIT(victim->act, PLR_DENY);
+	    snprintf(buf, sizeof(buf), "%s has been DENIED access.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	    send_to_char("You are denied access!\n\r", victim);
+	    save_char_obj(victim);
+	}
+	else if ( !str_prefix(arg3, "off") || !str_prefix(arg3, "no") )
+	{
+	    REMOVE_BIT(victim->act, PLR_DENY);
+	    snprintf(buf, sizeof(buf), "DENY flag removed from %s.\n\r", victim->name);
+	    send_to_char(buf, ch);
+	    save_char_obj(victim);
+	}
+	else
+	    send_to_char("Deny: use on/off or yes/no.\n\r", ch);
+	return;
+    }
+
+    if ( !str_prefix( arg2, "bank" ) )
+    {
+	if ( IS_NPC(victim) )
+	{
+	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	if ( value < 0 )
+	{
+	    send_to_char("Bank balance cannot be negative.\n\r", ch);
+	    return;
+	}
+
+	victim->pcdata->bank = value;
+	snprintf(buf, sizeof(buf), "%s bank balance set to %d.\n\r", victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
+    if ( !str_prefix( arg2, "dcount" ) )
+    {
+	if ( IS_NPC(victim) )
+	{
+	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	if ( value < 0 )
+	{
+	    send_to_char("Death count cannot be negative.\n\r", ch);
+	    return;
+	}
+
+	victim->pcdata->dcount = value;
+	snprintf(buf, sizeof(buf), "%s death count set to %d.\n\r", victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
+    if ( !str_prefix( arg2, "pkills" ) )
+    {
+	if ( IS_NPC(victim) )
+	{
+	    send_to_char( "Not on NPC's.\n\r", ch );
+	    return;
+	}
+
+	if ( value < 0 )
+	{
+	    send_to_char("PK kill count cannot be negative.\n\r", ch);
+	    return;
+	}
+
+	victim->pcdata->pkills_given   = value;
+	victim->pcdata->pkills_received = value;
+	snprintf(buf, sizeof(buf), "%s PK kills (given and received) set to %d.\n\r", victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
     /*
      * Generate usage message.
      */
