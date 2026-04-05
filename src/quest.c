@@ -1092,10 +1092,9 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	do_say(questman,buf);
     }
 
-  /* This last if statment should not be necessary, but it appears that
-     it is needed to avoid crashes - Rico */
+  /* Guard: vnum must be positive and within hash range. */
 
-       if (victim->pIndexData->vnum < 30001 && victim->pIndexData->vnum > 0)
+       if (victim->pIndexData->vnum > 0)
        ch->questmob = victim->pIndexData->vnum;
        else
        {

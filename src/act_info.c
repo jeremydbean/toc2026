@@ -1831,40 +1831,36 @@ void do_whois (CHAR_DATA *ch, char *argument)
 		wch->name, IS_NPC(wch) ? "" : wch->pcdata->title);
             toc_strlcat(output,buf, sizeof(output));
 
-            page_to_char(output,ch);
-
-	if( IS_IMMORTAL( ch ) ) {
-	snprintf(buf, sizeof(buf),"----------------------------------------------------\n\r");
-	send_to_char(buf,ch);
-	if (wch->in_room != NULL)
-	{
-	    snprintf(buf, sizeof(buf),"In Room [%d]  Played [%d hours]  Idle [%d ticks]\n\r",
-	        wch->in_room->vnum, ( wch->played + (int) ( current_time - wch->logon) ) / 3600, wch->timer );
-	}
-	else
-	{
-	    snprintf(buf, sizeof(buf),"In Room [none]  Played [%d hours]  Idle [%d ticks]\n\r",
-	        ( wch->played + (int) ( current_time - wch->logon) ) / 3600, wch->timer );
-	}
-	send_to_char(buf,ch);
-	send_to_char("Pkill ",ch);
-	if( wch->pcdata->pk_state == 1 )
-	send_to_char("[Yes]\n\r",ch);
-	else
-	send_to_char("[No]\n\r",ch);
+        if( IS_IMMORTAL( ch ) ) {
+        snprintf(buf, sizeof(buf),"----------------------------------------------------\n\r");
+        toc_strlcat(output, buf, sizeof(output));
+        if (wch->in_room != NULL)
+        {
+            snprintf(buf, sizeof(buf),"In Room [%d]  Played [%d hours]  Idle [%d ticks]\n\r",
+                wch->in_room->vnum, ( wch->played + (int) ( current_time - wch->logon) ) / 3600, wch->timer );
+        }
+        else
+        {
+            snprintf(buf, sizeof(buf),"In Room [none]  Played [%d hours]  Idle [%d ticks]\n\r",
+                ( wch->played + (int) ( current_time - wch->logon) ) / 3600, wch->timer );
+        }
+        toc_strlcat(output, buf, sizeof(output));
+        toc_strlcat(output, wch->pcdata->pk_state == 1
+                            ? "Pkill [Yes]\n\r" : "Pkill [No]\n\r",
+                    sizeof(output));
     }
 
-	}
+        }
     }
 
     if (!found)
     {
-	send_to_char("No one of that name is playing.\n\r",ch);
-	return;
+        send_to_char("No one of that name is playing.\n\r",ch);
+        return;
     }
 
+    page_to_char(output,ch);
 }
-
 
 /*
  * New 'who' command originally by Alander of Rivers of Mud.

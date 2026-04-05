@@ -950,9 +950,10 @@ void do_drop( CHAR_DATA *ch, char *argument )
 	    &&   can_drop_obj( ch, obj ) )
 	    {
 		found = true;
-        /* This next line added hopefully to fix the sub issue crash bug 10/7/97 Rico */
+        /* Limit drop-all to 20 items per command to prevent lag spikes */
                 if (count >= 20)
-                continue;
+                    continue;
+                count++;
 		obj_from_char( obj );
 		obj_to_room( obj, ch->in_room );
 		act( "$n drops $p.", ch, obj, NULL, TO_ROOM );
@@ -967,13 +968,12 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		    act( "$p burst into flames as it hits the ground.",
 			ch, obj, NULL, TO_CHAR);
 		    extract_obj( obj );
-                    count++;
-		}
+                }
 
-	    }
-	}
+            }
+        }
 
-	if ( !found )
+        if ( !found )
 	{
 	    if ( arg[3] == '\0' )
 		act( "You are not carrying anything.",

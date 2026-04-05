@@ -2425,18 +2425,16 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
     else  /* MOON_DOWN */
     {
       if(!IS_IMMORTAL(ch) && IS_SWITCHED(ch) )
-      {          /* save the items held */
-	 for ( pObj = ch->carrying; pObj != NULL; pObj = obj_next)
-	 {
-	    obj_next = pObj->next_content;
-	    ch->desc->original->were_shape.obj[counter] = pObj->pIndexData->vnum;
-	    counter++;
-	 }
-		/* zero out the extra items that were dropped */
-	  while( counter != 4)
-	  {
-	    ch->desc->original->were_shape.obj[counter] = 0;
-	    counter++;
+      {          /* save the items held (at most 4 slots in were_shape.obj) */
+         for ( pObj = ch->carrying; pObj != NULL && counter < 4; pObj = obj_next)
+         {
+            obj_next = pObj->next_content;
+            ch->desc->original->were_shape.obj[counter] = pObj->pIndexData->vnum;
+            counter++;
+         }
+                /* zero out the remaining slots */
+          while( counter < 4)
+          {
 	  }
 
 
@@ -2507,42 +2505,17 @@ void aggr_update( void )
 	    int count;
 
 	    ch_next	= ch->next_in_room;
-/*
-	    if ( !IS_NPC(ch)
-	    ||   !IS_SET(ch->act, ACT_AGGRESSIVE)
-	    ||   IS_SET(ch->in_room->room_flags,ROOM_SAFE)
-	    ||   IS_AFFECTED(ch,AFF_CALM)
-	    ||   ch->fighting != NULL
-	    ||   IS_AFFECTED(ch, AFF_CHARM)
-	    ||   !IS_AWAKE(ch)
-	    ||   ( IS_SET(ch->act, ACT_WIMPY) && IS_AWAKE(wch) )
-	    ||   !can_see( ch, wch )
-	    ||   number_bits(1) == 0)
-		continue;
-*/
-     /* the above code is commented out for bug testing, and replaced with
-        individual if statements below to narrow down the problem - Rico 10/29/98*/
-
-             if (!IS_NPC(ch))
-               continue;
-             if (!IS_SET(ch->act, ACT_AGGRESSIVE))
-               continue;
-             if (IS_SET(ch->in_room->room_flags,ROOM_SAFE))
-               continue;
-             if (IS_AFFECTED(ch,AFF_CALM))
-               continue;
-             if (ch->fighting != NULL)
-               continue;
-             if (IS_AFFECTED(ch, AFF_CHARM))
-               continue;
-             if (!IS_AWAKE(ch))
-               continue;
-             if (( IS_SET(ch->act, ACT_WIMPY) && IS_AWAKE(wch) ))
-               continue;
-             if (!can_see( ch, wch ))
-               continue;
-             if (number_bits(1) == 0)
-               continue;
+if ( !IS_NPC(ch)
+            ||   !IS_SET(ch->act, ACT_AGGRESSIVE)
+            ||   IS_SET(ch->in_room->room_flags,ROOM_SAFE)
+            ||   IS_AFFECTED(ch,AFF_CALM)
+            ||   ch->fighting != NULL
+            ||   IS_AFFECTED(ch, AFF_CHARM)
+            ||   !IS_AWAKE(ch)
+            ||   ( IS_SET(ch->act, ACT_WIMPY) && IS_AWAKE(wch) )
+            ||   !can_see( ch, wch )
+            ||   number_bits(1) == 0)
+                continue;
 
 
 	    /*
