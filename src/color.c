@@ -25,21 +25,21 @@ enum color_option_index
 
 const struct col_disp_table_type col_disp_table[] =
 {
-    { "grey",            "\x1b[1;30m" },
+    { "grey",            "\x1b[90m"   },   /* high-intensity black = dark grey */
     { "blue",            "\x1b[0;34m" },
     { "green",           "\x1b[0;32m" },
     { "cyan",            "\x1b[0;36m" },
     { "red",             "\x1b[0;31m" },
     { "magenta",         "\x1b[0;35m" },
     { "brown",           "\x1b[0;33m" },
-    { "yellow",          "\x1b[1;33m" },
-    { "bright_grey",     "\x1b[0;37m" },
-    { "bright_blue",     "\x1b[1;34m" },
-    { "bright_green",    "\x1b[1;32m" },
-    { "bright_cyan",     "\x1b[1;36m" },
-    { "bright_red",      "\x1b[1;31m" },
-    { "bright_magenta",  "\x1b[1;35m" },
-    { "white",           "\x1b[1;37m" },
+    { "yellow",          "\x1b[93m"   },   /* high-intensity yellow */
+    { "bright_grey",     "\x1b[0;37m" },   /* normal white = light grey */
+    { "bright_blue",     "\x1b[94m"   },   /* high-intensity blue */
+    { "bright_green",    "\x1b[92m"   },   /* high-intensity green */
+    { "bright_cyan",     "\x1b[96m"   },   /* high-intensity cyan */
+    { "bright_red",      "\x1b[91m"   },   /* high-intensity red */
+    { "bright_magenta",  "\x1b[95m"   },   /* high-intensity magenta */
+    { "white",           "\x1b[97m"   },   /* high-intensity white */
     { "plain",           "" }
 };
 
@@ -226,7 +226,11 @@ static int color_hex_value( char ch )
 
 bool color_token_prefix( char ch )
 {
-    return ( ch == '{' || ch == '&' || ch == '$' );
+    /* Only '&' is recognized as a text-level color prefix.
+     * '{' and '$' were removed: they produce false matches on common text
+     * (e.g. level-range notation like "{30 50}" or dollar amounts like "$103.50").
+     * All in-code color markers use the \x02+byte internal encoding instead. */
+    return ( ch == '&' );
 }
 
 bool color_parse_slot( const char *str, unsigned char *slot_out )
