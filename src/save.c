@@ -396,6 +396,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "NewCopp %ld\n",	ch->new_copper		);
     fprintf( fp, "NewSilv %ld\n",	ch->new_silver		);
     fprintf( fp, "BankCP %ld\n",	        ch->pcdata->bank	);
+    fprintf( fp, "IntTime %ld\n",	        ch->pcdata->bank_interest_time	);
     if (ch->pcdata->dcount > 0)
 	fprintf( fp, "Dcount %ld\n",	ch->pcdata->dcount	);
     else
@@ -910,6 +911,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->psionic_grant_pending   = false;
     ch->pcdata->castle			= 0;
     ch->pcdata->bank			= 0;
+    ch->pcdata->bank_interest_time	= 0;
     ch->pcdata->dcount			= 0;
     ch->pcdata->pkills_received         = 0;
     ch->pcdata->pkills_given            = 0;
@@ -1343,6 +1345,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'I':
             KEY( "Ignoring",    ch->pcdata->ignore,     fread_string(fp));
 	    KEY( "Id",		ch->pcdata->id,		fread_number( fp ) );
+	    KEY( "IntTime",	ch->pcdata->bank_interest_time,	fread_long( fp ) );
 	    KEY( "InvisLevel",	ch->invis_level,	(sh_int)(fread_number( fp )) );
 	    KEY( "Invi",	ch->invis_level,	(sh_int)(fread_number( fp )) );
 	    break;

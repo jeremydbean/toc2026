@@ -233,8 +233,11 @@ to be inside a bank room (look for the flag or ask a banker).
                Handy before depositing to keep your inventory tidy.
 
 Notes:
-  - The bank charges no fees and earns no interest.  Your balance is kept
-    exactly as deposited, stored as a copper equivalent internally.
+  - The bank earns 1% interest per real day on your balance.  Interest is
+    applied automatically while you are logged in (once every 24 real hours,
+    catching up to 7 days if you were offline).  Accounts below 1 platinum
+    do not earn interest.
+  - No fees are charged on deposits or withdrawals.
   - Pkiller characters cannot access banking services.
   - Your bank balance is retained across deaths and remorts.
 ~

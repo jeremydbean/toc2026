@@ -1168,6 +1168,52 @@ void weather_update( void )
 
 
 
+/* Bank interest: 1% per real day, capped at 7 days of accrual at once.
+ * Minimum balance of 1 platinum to earn any interest. */
+#define BANK_INTEREST_SECS     86400L   /* one real day */
+#define BANK_INTEREST_MAX_DAYS 7        /* cap catch-up to 7 days */
+#define BANK_INTEREST_MIN      COPPER_PER_PLATINUM  /* 1 platinum minimum */
+
+static void bank_interest( CHAR_DATA *ch )
+{
+    long elapsed, days, gain;
+    char buf[MAX_STRING_LENGTH];
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+    if ( ch->pcdata->bank < BANK_INTEREST_MIN )
+        return;
+
+    /* First login ever: seed the timestamp and wait for tomorrow */
+    if ( ch->pcdata->bank_interest_time == 0 )
+    {
+        ch->pcdata->bank_interest_time = current_time;
+        return;
+    }
+
+    elapsed = (long)(current_time - ch->pcdata->bank_interest_time);
+    if ( elapsed < BANK_INTEREST_SECS )
+        return;
+
+    days = elapsed / BANK_INTEREST_SECS;
+    if ( days > BANK_INTEREST_MAX_DAYS )
+        days = BANK_INTEREST_MAX_DAYS;
+
+    /* 1% per day, rounded down to nearest copper */
+    gain = (ch->pcdata->bank / 100L) * days;
+    if ( gain < 1 )
+        gain = 1;
+
+    ch->pcdata->bank += gain;
+    ch->pcdata->bank_interest_time += days * BANK_INTEREST_SECS;
+
+    snprintf( buf, sizeof(buf),
+        "\n\rYour bank account earned %ld copper in interest (%ld day%s at 1%% daily).\n\r",
+        gain, days, days == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+}
+
+
 /*
  * Update all chars, including mobs.
 */
@@ -1200,6 +1246,10 @@ void char_update( void )
 
         if ( in_room == NULL )
             continue;
+
+        /* Bank interest check (once per real day per player) */
+        if ( !IS_NPC(ch) )
+            bank_interest( ch );
 
 //	if ( ch->timer > 20 )
 //	    ch_quit = ch;

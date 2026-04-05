@@ -1620,6 +1620,8 @@ struct  pc_data
     int                 last_session_pk_kills;/* PK kills last session */
     int                 last_session_deaths;  /* deaths last session */
     int                 last_session_quests;  /* quests completed last session */
+
+    long                bank_interest_time;   /* unix timestamp of last interest payment */
 };
 
 struct my_mesg_buf{
