@@ -4308,6 +4308,391 @@ void do_bet( CHAR_DATA *ch, char *argument )
     return;
 }
 
+/* -----------------------------------------------------------------------
+ * do_roulette -- single-zero European roulette
+ *   Usage: roulette <amount> <bet>
+ *   Bets: red black even odd low high first second third <number 0-36>
+ * ----------------------------------------------------------------------- */
+
+void do_roulette( CHAR_DATA *ch, char *argument )
+{
+    /* European single-zero layout: red numbers */
+    static const bool IS_RED[37] = {
+        0,1,0,1,0,1,0,1,0,1, /* 0-9  */
+        0,0,1,0,1,0,1,0,1,1, /* 10-19 */
+        0,1,0,1,0,1,0,1,0,0, /* 20-29 */
+        1,0,1,0,1,0,1         /* 30-36 */
+    };
+
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    long amount, net;
+    int  spin;
+    bool wins;
+    const char *color;
+
+    if ( IS_NPC(ch) )
+    {
+        send_to_char( "NPCs cannot gamble.\n\r", ch );
+        return;
+    }
+
+    if ( !in_casino(ch) )
+    {
+        send_to_char( "You need to be in the casino to play roulette.\n\r", ch );
+        return;
+    }
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' || arg2[0] == '\0' )
+    {
+        send_to_char( "Syntax: roulette <amount> <bet>\n\r", ch );
+        send_to_char( "  Even-money bets  (1:1): red  black  even  odd  low(1-18)  high(19-36)\n\r", ch );
+        send_to_char( "  Dozen bets       (2:1): first(1-12)  second(13-24)  third(25-36)\n\r", ch );
+        send_to_char( "  Straight-up     (35:1): 0  1  2  ...  36\n\r", ch );
+        send_to_char( "  Zero (0) loses all even-money and dozen bets.\n\r", ch );
+        return;
+    }
+
+    if ( !is_number(arg1) )
+    {
+        send_to_char( "Specify a numeric amount.  Syntax: roulette <amount> <bet>\n\r", ch );
+        return;
+    }
+
+    amount = (long)atol( arg1 );
+
+    if ( amount < CASINO_BET_MIN )
+    {
+        snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", CASINO_BET_MIN );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( amount > CASINO_BET_MAX )
+    {
+        snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", CASINO_BET_MAX );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !has_enough_gold( ch, amount ) )
+    {
+        send_to_char( "You don't have enough gold for that bet.\n\r", ch );
+        return;
+    }
+
+    /* --- validate bet type before deducting --- */
+    wins = false;
+    net  = amount; /* net winnings if wins (not counting returned stake) */
+
+    if ( is_number(arg2) )
+    {
+        int pick = atoi(arg2);
+        if ( pick < 0 || pick > 36 )
+        {
+            send_to_char( "Straight-up bets must be a number from 0 to 36.\n\r", ch );
+            return;
+        }
+        /* Validated OK — spin and evaluate below */
+    }
+    else if ( str_cmp(arg2,"red")  && str_cmp(arg2,"black") &&
+              str_cmp(arg2,"even") && str_cmp(arg2,"odd")   &&
+              str_cmp(arg2,"low")  && str_cmp(arg2,"high")  &&
+              str_prefix(arg2,"first")  && str_cmp(arg2,"1st") &&
+              str_prefix(arg2,"second") && str_cmp(arg2,"2nd") &&
+              str_prefix(arg2,"third")  && str_cmp(arg2,"3rd") )
+    {
+        send_to_char( "Valid bets: red black even odd low high first second third 0-36\n\r", ch );
+        return;
+    }
+
+    /* --- spin the wheel --- */
+    spin  = number_range( 0, 36 );
+    color = ( spin == 0 ) ? "green" : IS_RED[spin] ? "red" : "black";
+
+    snprintf( buf, sizeof(buf),
+        "The wheel spins... the ball settles on %d (%s).\n\r", spin, color );
+    send_to_char( buf, ch );
+
+    /* --- evaluate --- */
+    if ( is_number(arg2) )
+    {
+        int pick = atoi(arg2);
+        if ( spin == pick ) { wins = true; net = 35 * amount; }
+    }
+    else if ( !str_cmp(arg2, "red") )
+    {
+        if ( spin != 0 && IS_RED[spin] ) { wins = true; }
+    }
+    else if ( !str_cmp(arg2, "black") )
+    {
+        if ( spin != 0 && !IS_RED[spin] ) { wins = true; }
+    }
+    else if ( !str_cmp(arg2, "even") )
+    {
+        if ( spin != 0 && spin % 2 == 0 ) { wins = true; }
+    }
+    else if ( !str_cmp(arg2, "odd") )
+    {
+        if ( spin != 0 && spin % 2 != 0 ) { wins = true; }
+    }
+    else if ( !str_cmp(arg2, "low") )
+    {
+        if ( spin >= 1 && spin <= 18 ) { wins = true; }
+    }
+    else if ( !str_cmp(arg2, "high") )
+    {
+        if ( spin >= 19 && spin <= 36 ) { wins = true; }
+    }
+    else if ( !str_prefix(arg2, "first")  || !str_cmp(arg2, "1st") )
+    {
+        if ( spin >= 1 && spin <= 12 ) { wins = true; net = 2 * amount; }
+    }
+    else if ( !str_prefix(arg2, "second") || !str_cmp(arg2, "2nd") )
+    {
+        if ( spin >= 13 && spin <= 24 ) { wins = true; net = 2 * amount; }
+    }
+    else /* third / 3rd */
+    {
+        if ( spin >= 25 && spin <= 36 ) { wins = true; net = 2 * amount; }
+    }
+
+    /* --- settle --- */
+    add_money( ch, -amount );
+
+    if ( wins )
+    {
+        add_money( ch, amount + net );
+        snprintf( buf, sizeof(buf),
+            "You win!  Net gain: %ld gold.  (Balance: %ld gold)\n\r",
+            net, query_gold(ch) );
+    }
+    else
+    {
+        snprintf( buf, sizeof(buf),
+            "You lose %ld gold.  (Balance: %ld gold)\n\r",
+            amount, query_gold(ch) );
+    }
+    send_to_char( buf, ch );
+
+    act( "$n places a bet on the roulette wheel.", ch, NULL, NULL, TO_ROOM );
+    return;
+}
+
+/* -----------------------------------------------------------------------
+ * do_poker -- no-hold video poker (dealt once, pays on hand rank)
+ *   Usage: poker <amount>  (min 5 gold, max 200 gold)
+ * ----------------------------------------------------------------------- */
+
+#define POKER_BET_MIN  5L
+#define POKER_BET_MAX  200L
+
+typedef struct { int rank; int suit; } PokerCard;
+
+static const char * const PRANK[13] =
+    { "2","3","4","5","6","7","8","9","10","J","Q","K","A" };
+static const char PSUIT[4] = { 'c', 'd', 'h', 's' };
+
+static void poker_deal( PokerCard hand[5] )
+{
+    int deck[52], i, j, tmp;
+    for ( i = 0; i < 52; i++ ) deck[i] = i;
+    for ( i = 0; i < 5; i++ )
+    {
+        j = number_range( i, 51 );
+        tmp = deck[i]; deck[i] = deck[j]; deck[j] = tmp;
+        hand[i].rank = deck[i] % 13;
+        hand[i].suit = deck[i] / 13;
+    }
+}
+
+/* Returns: 8=royal 7=str.flush 6=quads 5=full 4=flush 3=straight
+ *          2=trips 1=two-pair  0=jacks+ -1=nothing              */
+static int poker_eval( PokerCard h[5] )
+{
+    int cnt[13] = {0};
+    int scnt[4] = {0};
+    int i, pairs, trips, quads, ph;
+    bool fl, str;
+
+    for ( i = 0; i < 5; i++ ) { cnt[h[i].rank]++; scnt[h[i].suit]++; }
+
+    fl = false;
+    for ( i = 0; i < 4; i++ ) if ( scnt[i] == 5 ) { fl = true; break; }
+
+    str = false;
+    {
+        int uniq = 0, mn = 0, k;
+        for ( k = 0; k < 13; k++ ) if ( cnt[k] ) uniq++;
+        if ( uniq == 5 )
+        {
+            /* wheel: A-2-3-4-5 */
+            if ( cnt[12] && cnt[0] && cnt[1] && cnt[2] && cnt[3] )
+                str = true;
+            else
+            {
+                bool ok = true;
+                while ( !cnt[mn] ) mn++;
+                for ( k = mn; k < mn + 5; k++ )
+                    if ( k >= 13 || !cnt[k] ) { ok = false; break; }
+                if ( ok ) str = true;
+            }
+        }
+    }
+
+    pairs = trips = quads = 0; ph = -1;
+    for ( i = 0; i < 13; i++ )
+    {
+        if      ( cnt[i] == 2 ) { pairs++; ph = i; }
+        else if ( cnt[i] == 3 ) trips++;
+        else if ( cnt[i] == 4 ) quads++;
+    }
+
+    /* Royal flush: 10-J-Q-K-A of same suit */
+    if ( fl && cnt[8] && cnt[9] && cnt[10] && cnt[11] && cnt[12] ) return 8;
+    if ( fl && str )      return 7;
+    if ( quads )          return 6;
+    if ( trips && pairs ) return 5;
+    if ( fl )             return 4;
+    if ( str )            return 3;
+    if ( trips )          return 2;
+    if ( pairs >= 2 )     return 1;
+    if ( pairs == 1 && ph >= 9 ) return 0;  /* jacks or better */
+    return -1;
+}
+
+void do_poker( CHAR_DATA *ch, char *argument )
+{
+    static const char * const HAND_NAME[9] = {
+        "Jacks or Better", "Two Pair",   "Three of a Kind", "Straight",
+        "Flush",           "Full House",  "Four of a Kind",
+        "Straight Flush",  "Royal Flush"
+    };
+    /* Net multiplier on the wagered amount (return = stake + mult*stake) */
+    static const int PAYOUT[9] = { 0, 1, 2, 3, 5, 7, 10, 20, 100 };
+
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char hand_str[64];
+    long amount;
+    PokerCard hand[5];
+    int rank, i;
+
+    UNUSED_PARAM(argument);
+
+    if ( IS_NPC(ch) )
+    {
+        send_to_char( "NPCs cannot gamble.\n\r", ch );
+        return;
+    }
+
+    if ( !in_casino(ch) )
+    {
+        send_to_char( "You need to be in the casino to play video poker.\n\r", ch );
+        return;
+    }
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        snprintf( buf, sizeof(buf),
+            "Syntax: poker <amount>  (min %ld gold, max %ld gold)\n\r",
+            POKER_BET_MIN, POKER_BET_MAX );
+        send_to_char( buf, ch );
+        send_to_char( "Payouts (net multiple of wager):\n\r", ch );
+        send_to_char( "  Royal Flush    -- 100x\n\r", ch );
+        send_to_char( "  Straight Flush --  20x\n\r", ch );
+        send_to_char( "  Four of a Kind --  10x\n\r", ch );
+        send_to_char( "  Full House     --   7x\n\r", ch );
+        send_to_char( "  Flush          --   5x\n\r", ch );
+        send_to_char( "  Straight       --   3x\n\r", ch );
+        send_to_char( "  Three of a Kind --  2x\n\r", ch );
+        send_to_char( "  Two Pair       --   1x\n\r", ch );
+        send_to_char( "  Jacks or Better -- push\n\r", ch );
+        return;
+    }
+
+    if ( !is_number(arg) )
+    {
+        send_to_char( "Specify a numeric amount.  Syntax: poker <amount>\n\r", ch );
+        return;
+    }
+
+    amount = (long)atol( arg );
+
+    if ( amount < POKER_BET_MIN )
+    {
+        snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", POKER_BET_MIN );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( amount > POKER_BET_MAX )
+    {
+        snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", POKER_BET_MAX );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !has_enough_gold( ch, amount ) )
+    {
+        send_to_char( "You don't have enough gold for that bet.\n\r", ch );
+        return;
+    }
+
+    add_money( ch, -amount );
+
+    poker_deal( hand );
+    rank = poker_eval( hand );
+
+    /* Build a readable hand string: "Ac Kc Qc Jc 10c" */
+    hand_str[0] = '\0';
+    for ( i = 0; i < 5; i++ )
+    {
+        char card[8];
+        snprintf( card, sizeof(card), "%s%c", PRANK[hand[i].rank], PSUIT[hand[i].suit] );
+        strlcat( hand_str, card, sizeof(hand_str) );
+        if ( i < 4 ) strlcat( hand_str, " ", sizeof(hand_str) );
+    }
+
+    snprintf( buf, sizeof(buf), "Your hand: [ %s ]\n\r", hand_str );
+    send_to_char( buf, ch );
+
+    if ( rank == -1 )
+    {
+        snprintf( buf, sizeof(buf),
+            "No winning hand.  You lose %ld gold.  (Balance: %ld gold)\n\r",
+            amount, query_gold(ch) );
+        send_to_char( buf, ch );
+    }
+    else if ( rank == 0 )
+    {
+        /* Push: return the stake */
+        add_money( ch, amount );
+        snprintf( buf, sizeof(buf),
+            "%s -- push!  Your %ld gold is returned.  (Balance: %ld gold)\n\r",
+            HAND_NAME[rank], amount, query_gold(ch) );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        long winnings = (long)PAYOUT[rank] * amount;
+        add_money( ch, amount + winnings );
+        snprintf( buf, sizeof(buf),
+            "%s!  You win %ld gold.  (Balance: %ld gold)\n\r",
+            HAND_NAME[rank], winnings, query_gold(ch) );
+        send_to_char( buf, ch );
+    }
+
+    act( "$n studies a video poker terminal intently.", ch, NULL, NULL, TO_ROOM );
+    return;
+}
+
 
 /*    if ( is_number( arg ) )
     {

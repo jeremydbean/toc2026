@@ -131,6 +131,44 @@ glass~
 10 10 5 0 0
 5 1 5 P
 
+#4814
+video poker terminal machine lucky~
+a video poker terminal~
+A sleek video poker terminal stands here, its screen glowing invitingly.~
+steel~
+12 O 0
+0 0 0 0 0
+1 300 0 P
+E
+video poker terminal~
+A polished steel cabinet topped with a glowing screen shows five card-back
+images and the words 'Insert coin to play'.  The payout table is etched
+into a brass plate on the side:
+  Royal Flush 100x   Str.Flush 20x   Four-of-a-Kind 10x
+  Full House  7x     Flush 5x        Straight 3x
+  Trips 2x           Two Pair 1x     Jacks+ Push
+    Type: POKER <amount>   (min 5, max 200 gold)
+~
+
+#4815
+roulette wheel table lucky~
+a roulette wheel~
+A roulette wheel gleams beneath the overhead lamps, ready to spin.~
+wood~
+12 O 0
+0 0 0 0 0
+1 400 0 P
+E
+roulette wheel~
+A deep mahogany bowl holds the spinning wheel, its pockets numbered 0 through 36
+in alternating red and black (0 is green).  A brass placard lists the bets:
+  Straight-up (35:1): any single number 0-36
+  Dozens     (2:1):  first(1-12)  second(13-24)  third(25-36)
+  Even-money (1:1):  red  black  even  odd  low(1-18)  high(19-36)
+  Zero loses all even-money and dozen bets.
+    Type: ROULETTE <amount> <bet>
+~
+
 #0
 
 #ROOMS
@@ -200,13 +238,14 @@ The polished bar gleams warmly to the west.
 S
 
 #4812
-Card and Dice Tables~
+Card, Dice, and Games~
    This alcove is quieter than the main floor, though no less charged with
-tension.  A row of green felt-covered dice tables lines the south wall, each
+tension.  A row of green felt-covered dice tables lines one wall, each
 one attended by a croupier in black and white.  A slate board behind them is
-chalked with results of the last dozen rolls.  The rules are simple: call HI
-or LO, roll the two dice -- seven or higher is HI, six or lower is LO.  An
-exact seven means the house wins.
+chalked with results of the last dozen rolls.  In the corner, a sleek video
+poker terminal glows with an inviting light, while a polished roulette wheel
+occupies the centrepiece -- its red and black pockets daring you to pick a
+number.  The rules are posted on each table.
 ~
 0 D 0
 D3
@@ -241,6 +280,8 @@ M 0 4811 1 4811
 O 0 4811 2 4811
 M 0 4812 1 4812
 O 0 4812 2 4812
+O 0 4814 1 4812
+O 0 4815 1 4812
 M 0 4813 1 4813
 S
 

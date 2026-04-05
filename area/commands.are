@@ -129,22 +129,58 @@ Psionic utility commands:
   current room permit travel; many safe or special rooms block shifting.
 ~
 
-0 CHANGES MOTD NEWS RULES STORY WIZLIST~
+0 CHANGES~
 Syntax: changes
+
+Displays a log of recent game updates, balance changes, new features, and
+bug fixes added by the implementors.  Read this regularly to stay current
+on what is new in the game.
+
+See also: NEWS, MOTD
+~
+
+0 MOTD~
 Syntax: motd
+
+Reprints the message of the day that is shown each time you log in.
+The MOTD is used to announce urgent news, maintenance warnings, or
+temporary game changes that affect all players.  If you miss it on
+login you can review it at any time with this command.
+
+See also: CHANGES, NEWS, RULES
+~
+
+0 NEWS~
 Syntax: news
+
+Shows recent news posts from the game staff.  News covers ongoing events,
+story updates, policy announcements, and other information that is relevant
+to all players.  Older entries scroll off as new ones are added.
+
+See also: CHANGES, MOTD
+~
+
+0 RULES~
 Syntax: rules
+
+Displays the official game rules and player conduct policies.  All players
+are expected to read and follow these rules.  Ignorance of the rules is
+not an accepted excuse for violations.  Contact an immortal if you have
+questions about how a rule applies to a specific situation.
+
+See also: WIZLIST, CREDITS
+~
+
+0 STORY~
 Syntax: story
- Syntax: wizlist
- 
- Information commands:
- - CHANGES lists recent game updates.
- - MOTD shows the message of the day you see on login.
- - NEWS lists recent news posts.
- - RULES displays the game rules and policies.
- - STORY recounts the world background.
- - WIZLIST shows the immortals of the realm in order of seniority.
- ~
+
+Recounts the background lore and history of the game world.  Reading the
+story gives context for the setting, the major factions, and the events
+that brought the world to its current state.  Useful for new players or
+anyone who wants to understand the roleplaying background.
+
+See also: CHANGES, NEWS
+~
 
 0 LORE~
 Syntax: lore <object>
@@ -154,28 +190,51 @@ special effects.  Higher lore skill gives more detailed information and a
 better chance to identify cursed or hidden attributes.
 ~
 
-0 AFK DAMAGENUMBERS~
+0 AFK~
 Syntax: afk
-Syntax: damagenumbers
 
-AFK toggles an "away from keyboard" flag and message so others know you are
-currently unavailable.  You will not auto-reply to tells while AFK.
+Toggles an "away from keyboard" flag on your character so other players
+know you are temporarily unavailable.  While AFK, auto-reply to tells is
+suppressed and your name may display differently in WHO.  Type AFK again
+to clear the flag when you return.  The flag does not persist across
+logins.
 
-DAMAGENUMBERS toggles numerical combat feedback on or off.  When enabled,
-you will see the exact damage value in brackets after each hit you deliver
-or receive, e.g. "Your slash devastates the orc! [-47]".  Bystanders in
-the room always see the descriptive message without numbers regardless of
-your setting.  The flag is saved across logins.
+See also: TELL, REPLY, WHO
 ~
 
-0 CRAWL JUMP~
+0 DAMAGENUMBERS~
+Syntax: damagenumbers
+
+Toggles numerical combat feedback on or off.  When enabled, the exact
+damage dealt or received is shown in brackets after each hit, for example:
+  Your slash devastates the orc! [-47]
+  The orc claws you! [-12]
+Bystanders in the room always see only the descriptive message regardless
+of their own setting.  The flag is saved across logins.
+
+See also: SCORE, REPORT
+~
+
+0 CRAWL~
 Syntax: crawl
+
+Adopt a low crawling posture, allowing you to pass through narrow tunnels
+or low passages that block upright movement.  While crawling, movement
+costs extra points and your combat effectiveness is reduced.  Type STAND
+or CRAWL again to return to a normal posture.
+
+See also: JUMP, STAND, SNEAK
+~
+
+0 JUMP~
 Syntax: jump
 
-CRAWL lets you move through low passages or stay low to the ground to reduce
-your profile; movement is slower while crawling.  JUMP clears pits, low
-barriers, and similar hazards when the room allows it, sometimes avoiding
-traps or terrain penalties.
+Leap over a pit, low barrier, or floor-based hazard in the current room
+when the terrain supports it.  A successful jump avoids movement penalties
+or traps triggered by walking.  Some rooms require JUMP to proceed at all.
+Failing a jump in a dangerous room may result in a fall.
+
+See also: CRAWL, CLIMB, LEVITATE
 ~
 
 0 DELET DELETE~
@@ -242,33 +301,106 @@ Notes:
   - Your bank balance is retained across deaths and remorts.
 ~
 
-0 CASINO LUCKY DRAGON SLOTS BET GAMBLING~
+0 CASINO LUCKY DRAGON GAMBLING~
+The Lucky Dragon Casino is located in Dresden's Market Plaza -- head south
+from the plaza to find the gilded entrance doors.
+
+Games available:
+  SLOTS     -- Three-reel slot machine (cost: 1 gold per pull)
+  BET       -- Hi/Lo dice game (1-500 gold per bet)
+  ROULETTE  -- European single-zero roulette wheel (1-500 gold per bet)
+  POKER     -- Video poker, dealt once, paid on hand rank (5-200 gold)
+
+Type the game's name alone for full payout tables and instructions.
+See also: SLOTS, BET, ROULETTE, POKER, BANK
+~
+
+0 SLOTS~
 Syntax: slots
+
+Play the three-reel slot machine in the casino.  Costs 1 gold per pull.
+
+  Symbols: SEVEN, BAR, CHERRY, LEMON, ORANGE, GRAPE
+  Payouts:
+    Three SEVENS -- Jackpot!  Win 100 gold
+    Three BARs   -- Win 50 gold
+    Three of any -- Win 20 gold
+    Two matching -- Win 3 gold
+    Any CHERRY   -- Get your 1 gold back
+    No match     -- Lose 1 gold
+
+You must be inside the Lucky Dragon Casino to use this command.
+
+See also: CASINO, BET, ROULETTE, POKER
+~
+
+0 BET~
 Syntax: bet <amount> hi
 Syntax: bet <amount> lo
 
-The Lucky Dragon Casino is located in Dresden's Market Plaza -- head south from
-the plaza to find the gilded entrance doors.
+Hi/Lo dice game at the casino.  Place a wager of 1 to 500 gold on the
+outcome of two dice.
 
-SLOTS
-  Play the three-reel slot machine.  Costs 1 gold per pull.  Payouts:
-    Three sevens  -- Jackpot! Win 100 gold
-    Three bars    -- Win 50 gold
-    Three of any  -- Win 20 gold
-    Two matching  -- Win 3 gold
-    Any cherry    -- Get your 1 gold back
-    No match      -- Lose 1 gold
+  HI: wins if the two-dice total is MORE than 7  (pays 1:1)
+  LO: wins if the two-dice total is LESS than 7  (pays 1:1)
+  Exactly 7: the house always wins.
 
-BET    (Hi/Lo dice)
-  Place a wager of 1 to 500 gold on the outcome of two dice.
-    HI: wins if the total is MORE than 7     (pays 1:1)
-    LO: wins if the total is LESS than 7     (pays 1:1)
-    7 exactly: the house always wins on a seven.
-  Examples:
-    bet 50 hi
-    bet 200 lo
+Examples:
+  bet 50 hi
+  bet 200 lo
 
-See also: BANK, DEPOSIT, WITHDRAW
+You must be inside the Lucky Dragon Casino to use this command.
+
+See also: CASINO, SLOTS, ROULETTE, POKER
+~
+
+0 ROULETTE~
+Syntax: roulette <amount> <bet>
+
+European single-zero roulette at the casino.  Place a bet of 1 to 500 gold.
+
+  EVEN-MONEY bets (1:1): red  black  even  odd  low(1-18)  high(19-36)
+  DOZEN bets      (2:1): first(1-12)  second(13-24)  third(25-36)
+  STRAIGHT-UP    (35:1): any single number from 0 to 36
+
+  Zero (0) is green and loses all even-money and dozen bets.
+
+Examples:
+  roulette 100 red
+  roulette 50 17
+  roulette 200 first
+  roulette 25 odd
+
+You must be inside the Lucky Dragon Casino to use this command.
+
+See also: CASINO, SLOTS, BET, POKER
+~
+
+0 POKER~
+Syntax: poker <amount>
+
+Video poker at the casino.  A hand of five cards is dealt from a standard
+52-card deck.  The hand is evaluated immediately; there is no hold mechanic.
+Minimum bet: 5 gold.  Maximum bet: 200 gold.
+
+  Payout table (net multiple of wager):
+    Royal Flush     (A-K-Q-J-10 same suit) -- 100x
+    Straight Flush  (5 consecutive, flush)  --  20x
+    Four of a Kind                          --  10x
+    Full House      (trips + pair)          --   7x
+    Flush           (5 same suit)           --   5x
+    Straight        (5 consecutive)         --   3x
+    Three of a Kind                         --   2x
+    Two Pair                                --   1x
+    Jacks or Better (pair J/Q/K/A)         --  push (bet returned)
+    Anything else                           --  lose
+
+Cards are shown as rank + suit letter, e.g. "Ac Kc Qc Jc 10c" = royal flush.
+Suits: c=clubs  d=diamonds  h=hearts  s=spades
+
+You must be inside the Lucky Dragon Casino to use this command.
+
+See also: CASINO, SLOTS, BET, ROULETTE
 ~
 
 0 BREW CONCOCT SCRIBE SHOOT PICK JUNK~
@@ -563,40 +695,217 @@ Requires the TRIP skill; failure makes you lose footing yourself briefly.
 See also: BASH, KICK, NERVE
 ~
 
-0 AQUEST TOPTEN SEARCH TRACK HIDE LEVITATE SNEAK STEAL STEALTH STEEL SHOVE ROLL IRON MINDBAR PSIONIC PSYCHIC QUI QUIT~
+0 AQUEST~
 Syntax: aquest
+
+Shows the status of the automatic quest system.  If a quest is currently
+active, AQUEST displays the objective, the target mob or object, the
+reward, and the time remaining.  If no quest is running you will be told
+when you are next eligible to receive one.
+
+Quest objectives are assigned automatically by the quest system and vary
+by character level.  Complete them for experience and quest points that
+can be spent on special rewards.
+
+See also: QUEST, TOPTEN
+~
+
+0 TOPTEN~
 Syntax: topten
+
+Displays the current leaderboard of notable characters ranked by pkill
+score, quest points, or other tracked statistics depending on the current
+season or game mode.  Use it to see how you compare with other players
+and to identify top-ranked targets or allies.
+
+See also: AQUEST, SCORE
+~
+
+0 SEARCH~
 Syntax: search
+
+Actively examines the current room for concealed doors, hidden exits, or
+lurking traps.  A successful search reveals the object and describes it
+briefly.  Your chance to find something depends on your intelligence,
+the SEARCH skill level, and how well hidden the object is.  Some things
+can only be discovered through careful searching, not normal movement.
+
+See also: TRACK, HIDE, SNEAK
+~
+
+0 TRACK~
 Syntax: track <target>
+
+Attempt to follow the scent trail or footprints left by a character
+across rooms.  If sign is found you will automatically move one step
+in the direction the target went.  Repeat the command to keep following.
+The skill degrades with distance, time, and weather; rain or magic can
+erase a trail entirely.  NPCs with the HUNTER flag track back at you
+automatically.
+
+See also: SEARCH, HUNT
+~
+
+0 HIDE~
 Syntax: hide
-Syntax: levitate
+
+Attempt to conceal yourself in the shadows of the current room.  While
+hidden you do not appear on the room's character list to non-sneaking
+players and most mobs.  Moving, attacking, or casting a spell breaks
+hiding immediately.  The chance to hide successfully depends on your
+HIDE skill and the lighting level in the room.
+
+See also: SNEAK, STEALTH, STEEL, BACKSTAB
+~
+
+0 SNEAK~
 Syntax: sneak
-Syntax: steal <object> <victim>
+
+Toggle silent movement.  While sneaking, your footsteps do not generate
+entry or exit messages in adjacent rooms, making it harder for players
+and mobs to notice you passing through.  Sneaking costs extra movement
+per step and requires the SNEAK skill.  The toggle turns off if you run
+out of movement or enter combat.
+
+See also: HIDE, STEALTH, STEAL
+~
+
+0 STEALTH~
 Syntax: stealth
+
+Toggle the enhanced stealth mode.  STEALTH combines elements of hiding
+and sneaking into a sustained stance that makes you harder to detect
+overall, including by mobs that might see through ordinary hiding.
+It requires a higher skill investment than SNEAK or HIDE alone and
+drains movement steadily while active.
+
+See also: HIDE, SNEAK, STEEL
+~
+
+0 STEEL~
 Syntax: steel
+
+Toggle the STEEL stealth stance.  An advanced self-concealment technique
+that renders you nearly invisible to passive detection by other players
+and mobs.  STEEL is distinct from HIDE in that it persists through slow
+movement and requires significantly higher skill to maintain.  It cancels
+if you attack, cast, or are struck.
+
+See also: HIDE, SNEAK, STEALTH
+~
+
+0 LEVITATE~
+Syntax: levitate
+
+Toggle psionic levitation.  While levitating you float just above the
+ground, allowing you to pass over certain terrain hazards such as lava
+flows, shallow water crossings, and floor-based traps.  Levitation
+requires psionic training and a small continuous mana drain.  It offers
+no protection against falling damage from great heights.
+
+See also: FLY, PSIONICS, TELEKINESIS
+~
+
+0 STEAL~
+Syntax: steal <object> <victim>
+
+Attempt to take an object from another character's inventory without
+their knowledge.  Success depends on your STEAL skill, the victim's
+dexterity and awareness, and whether you are hidden or sneaking when
+you attempt it.  A failed steal is always noticed by the target and
+nearby bystanders, flagging you as a criminal.  You cannot steal from
+players in safe rooms or during active combat.
+
+See also: SNEAK, HIDE, PICK
+~
+
+0 SHOVE~
 Syntax: shove <victim>
+
+Push a target out of the room in a random or specified direction.  A
+successful shove can separate enemies from allies, break formations, or
+force a foe into a dangerous adjacent room.  The target gets a saving
+throw based on their size and strength versus yours.  Shoving another
+player counts as a hostile action.
+
+See also: BASH, TRIP, DRAG
+~
+
+0 ROLL~
 Syntax: roll
+
+Toggle the ROLL defensive stance.  While in this stance you improve
+your chance to dodge incoming melee attacks by moving with the blows
+rather than taking them head-on.  The stance lowers your own offensive
+accuracy slightly and requires the ROLL skill.  It disengages if you
+are stunned, knocked prone, or run out of movement.
+
+See also: IRON, BERSERK, CRANE
+~
+
+0 IRON~
 Syntax: iron
+
+Toggle the IRON defensive stance.  Brace yourself to absorb incoming
+hits rather than avoid them.  IRON increases effective armor and
+reduces damage from each blow at the cost of slower attack speed.
+Particularly useful when tanking multiple enemies or absorbing burst
+damage.  Requires the IRON skill; cancels if you move or are knocked
+down.
+
+See also: ROLL, BASH, CRANE
+~
+
+0 MINDBAR~
 Syntax: mindbar
+
+Toggle the mental barrier that shields you from psionic and magical
+intrusion.  While MINDBAR is active, targeted mental effects such as
+CONFUSE, NIGHTMARE, and charm spells have a reduced chance to
+penetrate.  The barrier does not protect against physical attacks or
+area-effect spells.  Maintaining it costs a small mana drain per tick.
+
+See also: PSIONIC, PSYCHIC, PSIONICS, TRANSFUSION
+~
+
+0 PSIONIC~
 Syntax: psionic
+
+Toggle the psionic awareness channel.  When active you receive passive
+mental impressions from nearby sources of psionic activity, alerting
+you to hidden psionicists, active mind-affecting spells, or psionic
+creatures in adjacent rooms.  The sensitivity and range scale with your
+psionic skill level.
+
+See also: PSYCHIC, MINDBAR, PSIONICS
+~
+
+0 PSYCHIC~
 Syntax: psychic
+
+Toggle psychic resonance mode.  An advanced psionic state that enhances
+all active mental abilities: MINDBAR becomes stronger, psionic attack
+spells deal more damage, and your saves against mental effects improve.
+PSYCHIC mode requires substantial psionic training and drains mana
+steadily while active.  It cannot be combined with IRON or ROLL stances.
+
+See also: PSIONIC, MINDBAR, PSIONICS
+~
+
+0 QUIT QUI~
 Syntax: quit
 Syntax: qui
 
-Exploration and miscellaneous skills:
-- AQUEST shows the status of the automatic quest system.
-- TOPTEN displays the current leaderboard of notable characters.
-- SEARCH actively looks for hidden doors, exits, or traps in the room.
-- TRACK attempts to follow the trail of another character across rooms.
-- HIDE, SNEAK, STEALTH, and STEEL are stealth toggles that help you move
-  unseen or silently when trained.
-- LEVITATE engages psionic lift, allowing you to float over some hazards.
-- STEAL takes items from another character if you remain unnoticed.
-- SHOVE pushes a target out of the current room into an adjacent one.
-- ROLL and IRON are defensive stances that improve dodging or toughness.
-- MINDBAR/PSIONIC/PSYCHIC toggle specialized psionic defenses or channels.
-- QUIT (or QUI) cleanly saves your character and disconnects from the game
-  when you are not in combat.
+Save your character and cleanly disconnect from the game.  QUI is a
+shortened alias for QUIT that requires you to type the extra letter to
+prevent accidental disconnection.  Both commands behave identically.
+
+You cannot quit while in active combat.  Quitting in a non-safe room
+is allowed but your character will remain visible in the room briefly
+before fully departing.  All inventory, equipment, and bank balance are
+saved automatically when you quit.
+
+See also: SAVE, RECALL, AFK
 ~
 
 62 IMMORTAL~
@@ -1055,14 +1364,24 @@ puff        differ      yae         lightbulb   voodoo      awkward
 dab         derp        facepalm    micdrop     panic       slowclap
 ~
 
-0 EQUIPMENT INVENTORY~
+0 EQUIPMENT~
 Syntax: equipment
+
+Lists all items you currently have equipped: worn armor, wielded weapons,
+held items, and any light source.  Each item is shown at its wear location.
+Use INVENTORY to see items you are carrying but not yet equipped.
+
+See also: INVENTORY, WEAR, WIELD, HOLD, REMOVE
+~
+
+0 INVENTORY~
 Syntax: inventory
 
-EQUIPMENT lists your equipment (armor, weapons, and held items).
+Lists all items you are carrying in your pack but not currently equipped.
+Use COMBINE to view stacked identical items as a single line.  Use
+EQUIPMENT to see what you have worn or wielded.
 
-INVENTORY lists your inventory (i.e. items you are carrying but not currently
-using).
+See also: EQUIPMENT, COMBINE, COMPARE, LORE
 ~
 
 0 EXAMINE LOOK READ~
@@ -1393,28 +1712,29 @@ session.  The higher your wisdom, the more practice sessions you will gain
 each time you gain a level.  Unused sessions are saved until you do use them.
 ~
 
-0 QUIT RENT SAVE~
-Syntax: quit
+0 SAVE~
 Syntax: save
 
-SAVE saves your character and object.  The game saves your character every
-15 minutes regardless, and is the preferred method of saving.  Typing save
-will block all other command for about 20 seconds, so use it sparingly.
-(90+ players all typing save every 30 seconds generates a lot of lag.)
-You may not save until you are at least level 3.
+Immediately saves your character and carried inventory to disk.  The game
+also auto-saves every 15 minutes, so manual saves are rarely critical.
+Typing save can cause a brief command delay, so avoid spamming it.
+You must be at least level 3 to save.
 
-Some objects, particularly keys, may not be saved.  Objects more than two
-levels higher than your current level will also not be saved.
+Note: some objects (keys, items more than two levels above yours) are not
+saved and will vanish on logout.  QUIT performs an automatic save, so
+you do not need to save before quitting.
 
-QUIT leaves the game.  You may QUIT anywhere and when you re-enter the game
-you will be back in the same room.
+See also: QUIT, PASSWORD
+~
 
-QUIT automatically does a SAVE, so you can safely leave the game with just one
-command.  Nevertheless it's a good idea to SAVE before QUIT.  If you get into
-the habit of using QUIT without SAVE, and then you play some other mud that
-doesn't save before quitting, you're going to regret it.
+0 RENT~
+Syntax: (not applicable)
 
-There is no RENT in this mud.  Just SAVE and QUIT whenever you want to leave.
+There is no RENT in this game.  Simply SAVE and QUIT when you want to
+leave; your character and equipment are stored automatically.  You will
+return to the same room next time you log in.
+
+See also: QUIT, SAVE
 ~
 
 0 RECALL /~
@@ -1522,30 +1842,60 @@ NOTES
   Remort history is saved; HELP SCORE shows your remort count.
 ~
 
-0 ATTRIBUTE AFFECT REPORT SCORE WORTH~
+0 AFFECT~
 Syntax: affect
-Syntax: attributes
+
+Shows all magical and psionic effects currently active on your character.
+For each effect, the entry shows the spell or skill name, the modifier it
+applies, the stat or attribute affected, and how many ticks remain.  A
+duration of "permanent" means the effect does not expire.
+
+See also: SCORE, IDENTIFY, ATTRIBUTE
+~
+
+0 ATTRIBUTE ATTRIBUTES~
+Syntax: attribute
+
+Displays a quick summary of your five core attributes: Strength,
+Intelligence, Wisdom, Dexterity, and Constitution.  Values are shown as
+base(current) to separate your trained score from bonuses applied by
+equipment or active spells.
+
+See also: SCORE, AFFECT, TRAIN
+~
+
+0 REPORT~
 Syntax: report
+
+Announces your current hit points, mana, and movement to yourself and to
+every player in the same room.  Useful in group combat so healers and
+allies can gauge how much support you need.  Does not reveal your
+maximum values, only your current condition.
+
+See also: SCORE, GROUP, HEAL
+~
+
+0 SCORE~
 Syntax: score
+
+Displays your full character sheet: name, level, class, race, all
+attributes, hit points, mana, movement, armor class, hitroll, damroll,
+experience, gold, remort count, and more.  Attribute scores are shown as
+trained(current) so you can see exactly how much bonus gear and spells
+are contributing.  Only you can see your own SCORE output.
+
+See also: ATTRIBUTE, AFFECT, WORTH, REPORT
+~
+
+0 WORTH~
 Syntax: worth
 
-AFFECT shows spells you are currently affected by. When high enough level,
-it will show the spell affected by, the duration of the spells affects left,
-and the level of the spell cast.
+Shows a brief financial and experience summary: your current gold on hand,
+bank balance, total experience earned, and how much experience remains
+before your next level.  A quick alternative to the full SCORE display
+when you only need to check progress or wealth.
 
-ATTRIBUTE shows a quick list of your attributes of Str, Int, Wis, Dex and
-Con in the same format as the SCORE command below.
-
-REPORT shows your current statistics (hit points, mana and movement) to you
-and also announces them to other players in the room.
-
-SCORE shows much more detailed statistics to you only.  Your ability scores
-are shown as true value(current value), so for example Str: 15(23) means you
-have a 15 strength from training, but a 23 strength from other factors
-(spells or equipment).
-
-WORTH shows you a brief summary of your gold and experience points, including
-how much experience you need to gain the next level.
+See also: SCORE, BANK, BALANCE
 ~
 
 0 REST SLEEP STAND WAKE SIT~
@@ -1661,16 +2011,26 @@ the gold after a kill.  However, this is most conveniently done using
 the AUTOSPLIT option.
 ~
 
-0 TIME WEATHER~
+0 TIME~
 Syntax: time
+
+Displays the current in-game time of day, the date since the mud was last
+started, and the real-world local time on the host server.  Game time
+progresses faster than real time; day and night cycles affect some spells,
+monster behavior, and room lighting.
+
+See also: WEATHER, TICK
+~
+
+0 WEATHER~
 Syntax: weather
 
-TIME shows the game time, as well as the time the mud was last started,
-and the current local time for the host computer.
+Shows the current in-game weather conditions: sky state (clear, cloudy,
+raining, storming, etc.), wind direction, and temperature.  Weather can
+affect movement, some spells, and area events.  Certain seasons also
+change which weather patterns are possible.
 
-WEATHER shows the current game weather.
-
-For information about spells that affect the weather, see help WEATHERSPELLS.
+See also: TIME, TICK
 ~
 
 0 TITLE~
@@ -1847,14 +2207,26 @@ Typing a channel name without a message turns that channel off.
 See also helps on CHANNELS, CC CGOS GTELL DEAF QUIET REPLY SAY and TELL.
 ~
 
-0 DEAF QUIET~
-Deaf allows you to turn off your shout channel.
-Type deaf once to toggle the shout channel off, and again to toggle it
-back on.  The shout channel is used to give information to everyone on
-the mud, and sometimes its overuse leads to considerable spamming.
+0 DEAF~
+Syntax: deaf
 
-Quiet allows you to toggle on/off all channels so all you will hear are
-emotes and says.
+Toggles the shout channel on or off.  When deaf is active you will not
+receive SHOUT messages from other players.  Type DEAF again to restore
+your ability to hear shouts.  The gossip and other channels are unaffected;
+use QUIET to silence everything at once.
+
+See also: QUIET, CHANNELS, SHOUT
+~
+
+0 QUIET~
+Syntax: quiet
+
+Toggles all public channels off simultaneously, so you hear only EMOTES
+and SAY in your current room.  Useful for concentrating during difficult
+combat or roleplay scenes.  Type QUIET again to restore all channels.
+Individual channel states are preserved; they return to how they were.
+
+See also: DEAF, CHANNELS, NOISY
 ~
 
 0 GTELL REPLY SAY TELL~
