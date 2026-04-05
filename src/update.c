@@ -1917,40 +1917,40 @@ void obj_update( void )
             {
               case 20:
                 message = "$p begins to emit noxious odors.";
-    /*            free_string(obj->short_descr);*/
+    free_string(obj->short_descr);
                 snprintf( buf2, sizeof(buf2),"a stinking corpse");
                 obj->short_descr = str_dup(buf2);
-/*                free_string(obj->description);*/
+free_string(obj->description);
                 snprintf( buf2, sizeof(buf2),"A stinking corpse is lying here.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 15:
                 message = "Flies begin buzzing around $p.";
-/*                free_string(obj->short_descr);*/
+free_string(obj->short_descr);
                 snprintf( buf2, sizeof(buf2),"a rotting corpse");
                 obj->short_descr = str_dup(buf2);
- /*               free_string(obj->description);*/
+ free_string(obj->description);
                 snprintf( buf2, sizeof(buf2),"Flies are buzzing around a rotting corpse.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 10:
                 message = "Maggots begin to eat away at $p.";
-   /*             free_string(obj->short_descr);*/
+   free_string(obj->short_descr);
                 snprintf( buf2, sizeof(buf2),"a very rotted corpse");
                 obj->short_descr = str_dup(buf2);
- /*               free_string(obj->description);*/
+ free_string(obj->description);
                 snprintf( buf2, sizeof(buf2),"Maggots are munching on a rotting corpse.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 5:
                 message = "A rotted corpse decays into a skeleton.";
-   /*             free_string(obj->short_descr);*/
+   free_string(obj->short_descr);
                 snprintf( buf2, sizeof(buf2),"an old skeleton");
                 obj->short_descr = str_dup(buf2);
-/*                free_string(obj->description);*/
+free_string(obj->description);
                 snprintf( buf2, sizeof(buf2),"An old skeleton is lying here.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
@@ -1990,40 +1990,40 @@ void obj_update( void )
             {
               case 5:
                 message = "$p begins to emit noxious odors.";
-  /*              free_string(obj->short_descr);*/
+  free_string(obj->short_descr);
                 snprintf( buf2, sizeof(buf2),"a stinking corpse");
                 obj->short_descr = str_dup(buf2);
-/*                free_string(obj->description);*/
+free_string(obj->description);
                 snprintf( buf2, sizeof(buf2),"A stinking corpse is lying here.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 4:
                 message = "Flies begin buzzing around $p.";
-  /*              free_string(obj->short_descr);*/
+  free_string(obj->short_descr);
                 snprintf( buf2, sizeof(buf2),"a rotting corpse");
                 obj->short_descr = str_dup(buf2);
-/*                free_string(obj->description);*/
+free_string(obj->description);
                 snprintf( buf2, sizeof(buf2),"Flies are buzzing around a rotting corpse.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 3:
                 message = "Maggots begin to eat away at $p.";
-  /*              free_string(obj->short_descr);*/
+  free_string(obj->short_descr);
                 snprintf( buf2, sizeof(buf2),"a very rotted corpse");
                 obj->short_descr = str_dup(buf2);
-    /*            free_string(obj->description);*/
+    free_string(obj->description);
                 snprintf( buf2, sizeof(buf2),"Maggots are munching on a rotting corpse.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
                 break;
               case 2:
                 message = "A rotted corpse decays into a skeleton.";
-  /*              free_string(obj->short_descr);*/
+  free_string(obj->short_descr);
                 snprintf( buf2, sizeof(buf2),"an old skeleton");
                 obj->short_descr = str_dup(buf2);
-/*                free_string(obj->description);*/
+free_string(obj->description);
                 snprintf( buf2, sizeof(buf2),"An old skeleton is lying here.");
                 obj->description = str_dup(buf2);
                 toggle = 1;
