@@ -2083,6 +2083,7 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 #define PLAYER_TEMP     "../player/temp"
 #define PLAYER_VER_DIR  "../player/versions/"  /* per-player versioned snapshots */
 #define PLAYER_VER_MAX  30                      /* keep this many versions per player */
+#define PLAYER_SNAPSHOT_MIN_INTERVAL 1800       /* minimum seconds between snapshots (30 min) */
 #define GOD_DIR         "../gods/"
 #define HERO_DIR        "../heroes/"
 #define CORPSE_DIR      "../corpse/"

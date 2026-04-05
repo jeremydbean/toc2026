@@ -104,6 +104,44 @@ void player_snapshot( const char *name )
 
     /* Ensure per-player version directory exists */
     snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capitalize( (char *)name ) );
+
+    /* Throttle: skip if a snapshot was written within PLAYER_SNAPSHOT_MIN_INTERVAL.
+     * This prevents routine autosaves from creating a snapshot every 30 minutes;
+     * snapshots are still captured on level-up, quit, and other high-value saves
+     * once the interval has elapsed. */
+    {
+        DIR *dp = opendir( vdir );
+        if ( dp != NULL )
+        {
+            char newest[64] = "";
+            struct dirent *ent;
+            const char *cap = capitalize( (char *)name );
+            size_t nlen = strlen( cap );
+            while ( (ent = readdir( dp )) != NULL )
+            {
+                if ( strncmp( ent->d_name, cap, nlen ) == 0
+                  && ent->d_name[nlen] == '.' )
+                {
+                    if ( strcmp( ent->d_name, newest ) > 0 )
+                        strlcpy( newest, ent->d_name, sizeof(newest) );
+                }
+            }
+            closedir( dp );
+            if ( newest[0] != '\0' )
+            {
+                char fpath[MAX_INPUT_LENGTH];
+                struct stat fst;
+                snprintf( fpath, sizeof(fpath), "%s/%s", vdir, newest );
+                if ( stat( fpath, &fst ) == 0
+                  && difftime( now, fst.st_mtime ) < PLAYER_SNAPSHOT_MIN_INTERVAL )
+                {
+                    fclose( in );
+                    return;  /* too soon since last snapshot, skip */
+                }
+            }
+        }
+    }
+
     snprintf( mkdircmd, sizeof(mkdircmd), "mkdir -p %s", vdir );
     if ( system( mkdircmd ) == -1 )
     {
