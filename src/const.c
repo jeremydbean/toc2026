@@ -761,7 +761,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	  "continual light", "create food",      "create spring",
 	  "create water",
 	  "call lightning",  "control weather",  "faerie fire",
-	  "faerie fog",      "lightning bolt",   "detect stealth",
+	  "faerie fog",      "lightning bolt",
 	  "detect evil",     "detect hidden",    "detect invis",
 	  "detect magic",    "detect poison",    "identify",
 	  "know alignment",  "locate object",    "detect good",
@@ -830,7 +830,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	  "detect evil",     "detect hidden",    "detect invis",
 	  "detect magic",    "detect poison",    "identify",
 	  "know alignment",  "locate object",    "detect good",
-	  "detect traps",    "detect stealth",
+	  "detect traps",
 	  "call lightning",  "control weather",  "faerie fire",
 	  "faerie fog",      "lightning bolt",   "meditation",
 	  "dodge",         "staves",		 "wands",    "second attack"
@@ -2297,14 +2297,6 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	spell_detect_poison,    TAR_OBJ_INV,            POS_STANDING,
 	NULL,                   SLOT(21),        5,     12,
 	"",                     "!Detect Poison!"
-    },
-
-    {
-	"detect stealth",
-	{ 10, 10, 13, 13, 62, 62 },     { 1,  1,  2,  2, 2, 2},
-	spell_detect_hidden,    TAR_CHAR_DEFENSIVE,          POS_STANDING,
-	NULL,                   SLOT(570),       10,     12,
-	"",                     "You feel less aware of stealthy creatures."
     },
 
     {
@@ -4014,7 +4006,7 @@ const   struct  group_type      group_table     [MAX_GROUP]     =
 	  "detect evil",     "detect hidden",    "detect invis",
 	  "detect magic",    "detect poison",    "know alignment",
 	  "detect good",     "identify",         "locate object",
-	  "detect traps",    "detect stealth"
+	  "detect traps"
 	}
     },
 
