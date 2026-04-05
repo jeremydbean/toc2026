@@ -1475,16 +1475,10 @@ void do_quit( CHAR_DATA *ch, char *argument )
     /*
      * After extract_char the ch is no longer valid!
      */
-    /* Write the final state first, then take a post-save snapshot so the
-       logout version (with final session stats, final level, etc.) is
-       captured correctly.  save_char_obj also takes a pre-save snapshot
-       internally; the post-save one captures the freshly-written file.
-       The 1-second granularity dedupe check in player_snapshot means both
-       fire only when they land in different seconds (normal case); if they
-       share a timestamp the internal pre-save snapshot wins and the post-save
-       call is a no-op — still acceptable. */
+    /* save_char_obj now takes a post-mv snapshot internally, so the final
+       quit state (with session stats) is always captured without a separate
+       call here. */
     save_char_obj( ch );
-    player_snapshot( ch->name );
     id = ch->id;
     d = ch->desc;
     extract_char( ch, TRUE );

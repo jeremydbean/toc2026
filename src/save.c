@@ -125,7 +125,7 @@ void player_snapshot( const char *name )
 
     /* Don't create a duplicate if snapshot already exists for this second */
     {
-        FILE *test = fopen( dest, "r" );
+        FILE *test = fopen( dest, "rb" );
         if ( test != NULL )
         {
             fclose( test );
@@ -313,11 +313,6 @@ void save_char_obj( CHAR_DATA *ch )
 	    fwrite_pet(ch->pet,fp);
 	fprintf( fp, "#END\n" );
 	fclose( fp );
-	/* Snapshot the old player file before overwriting it.
-	   All players snapshot on every save so the user's intent of
-	   "snapshot at save" is honoured for heroes and immortals too.
-	   PLAYER_VER_MAX caps total slots; oldest entries are pruned. */
-	    player_snapshot( ch->name );
 	/* move the file only when write succeeded */
 #if defined(unix) && defined(CHGRP_TO)
 	if (can_chgrp())
@@ -329,6 +324,9 @@ void save_char_obj( CHAR_DATA *ch )
 #endif
 	if (system(buf) == -1)
 	    bug("save_char_obj: mv failed.", 0);
+	/* Snapshot the freshly-written file so every save captures the
+	   state that actually landed on disk, not the pre-overwrite version. */
+	player_snapshot( ch->name );
     }
     fpReserve = fopen( NULL_FILE, "r" );
     if (fpReserve == NULL)
