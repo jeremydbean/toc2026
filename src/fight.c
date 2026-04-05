@@ -216,6 +216,8 @@ void check_assist(CHAR_DATA *ch,CHAR_DATA *victim)
     {
 	rch_next = rch->next_in_room;
 
+	if ( victim->in_room == NULL ) return;  /* victim died in a prior iteration */
+
 	if (IS_AWAKE(rch) && rch->fighting == NULL)
 	{
 
@@ -226,6 +228,7 @@ void check_assist(CHAR_DATA *ch,CHAR_DATA *victim)
 	    {
 		do_emote(rch,"screams and attacks!");
 		multi_hit(rch,victim,TYPE_UNDEFINED);
+		if ( victim->in_room == NULL ) return;  /* victim killed */
 		continue;
 	    }
 
@@ -235,7 +238,10 @@ void check_assist(CHAR_DATA *ch,CHAR_DATA *victim)
 		if ( ( (!IS_NPC(rch) && IS_SET(rch->act,PLR_AUTOASSIST))
 		||     IS_AFFECTED(rch,AFF_CHARM))
 		&&   is_same_group(ch,rch) )
+		{
 		    multi_hit (rch,victim,TYPE_UNDEFINED);
+		    if ( victim->in_room == NULL ) return;  /* victim killed */
+		}
 
 		continue;
 	    }
