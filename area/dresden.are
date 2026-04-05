@@ -4014,7 +4014,7 @@ S
 Market Plaza.~
 The Market Plaza is alive with activity.  There are booths and tents all over
 the plaza.  You see people going in and out of the open doorways of all the
-surrounding buildings.
+surrounding buildings.  To the south, gilded doors bear the sign 'Lucky Dragon Casino'.
 ~
 24 0 1
 D0
@@ -4027,6 +4027,11 @@ Dark alleyway.
 ~
 ~
 0 -1 2509
+D2
+A pair of gilded doors leads into the Lucky Dragon Casino.
+~
+~
+0 -1 4810
 D3
 Market Plaza.
 ~

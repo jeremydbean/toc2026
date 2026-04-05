@@ -1,0 +1,253 @@
+#AREA   { 20 60 } Graves   The Lucky Dragon Casino~
+
+#HELPS
+0 $~
+
+#MOBILES
+
+#4810
+pit boss dragon lucky~
+the Pit Boss~
+The Pit Boss stands here, arms folded, watching everything.
+~
+An immaculately dressed man in a dark suit fills the room with quiet authority.
+His sharp eyes miss nothing.  A small golden dragon pin gleams on his lapel.
+Beneath the polished exterior, every line of his body says he has seen it all
+and is not impressed.
+~
+human~
+ABV 0 0 S
+50 15 50d10+4500 10d10+500 5d8+19 17
+-20 -20 -20 -17
+FK AB 0 0
+8 8 1 500
+0 0 M 0
+
+#4811
+slot attendant lucky~
+the Slot Attendant~
+The Slot Attendant stands here in her red uniform, ready to assist.
+~
+A cheery young woman in a bright red uniform beams at you.  She seems
+genuinely glad to help, and is quick to explain the slot machines nearby.
+Her golden name badge reads "Mei."
+~
+human~
+AB 0 0 S
+30 5 6d12+853 5d10+300 2d12+8 0
+-9 -9 -9 -8
+0 AB 0 0
+8 8 2 100
+0 0 M 0
+
+#4812
+croupier lucky dice~
+the Croupier~
+The Croupier stands behind the dice table, expression professionally unreadable.
+~
+The croupier's black waistcoat and white gloves mark his status.  He handles
+the dice and chips with practiced ease, and his voice is calm and measured as
+he calls each result.  He seems to enjoy watching the dice fall.
+~
+human~
+AB 0 0 S
+30 5 6d12+853 5d10+300 2d12+8 0
+-9 -9 -9 -8
+0 AB 0 0
+8 8 1 100
+0 0 M 0
+
+#4813
+barkeeper lucky bar dragon~
+the Barkeeper~
+The Barkeeper polishes glasses behind the bar with infinite patience.
+~
+A heavyset person of few words, the barkeeper's expression is one of absolute
+equanimity.  Winners, losers, nobles, rogues -- all receive the same steady
+gaze and the same prompt service.  The bottles behind the bar gleam like a
+small rainbow.
+~
+human~
+AB 0 0 S
+30 5 6d12+853 5d10+300 2d12+8 0
+-9 -9 -9 -8
+0 AB 0 0
+8 8 1 100
+0 0 M 0
+
+#0
+
+#OBJECTS
+
+#4810
+dragon token lucky casino~
+a Lucky Dragon token~
+A heavy gold-coloured token stamped with a coiled dragon lies here.~
+brass~
+8 0 0 A
+0 0 0 0 0
+10 1 50 P
+E
+token dragon lucky~
+One face bears a coiled dragon; the other reads 'Lucky Dragon Casino - Dresden'.
+~
+
+#4811
+slot machine lucky dragon casino~
+a Lucky Dragon slot machine~
+A gleaming slot machine with a golden dragon motif stands here.~
+steel~
+12 O 0 0
+0 0 0 0 0
+1 500 0 P
+E
+slot machine~
+Three spinning reels are visible through a glass window.  A worn wooden handle
+sticks out invitingly from the side.  A sign reads:
+  'Pull the handle -- type SLOTS to play!  Cost: 1 gold per pull.'
+~
+
+#4812
+dice table felt croupier lucky~
+a green felt dice table~
+A green felt-topped dice table is set up here for play.~
+wood~
+12 O 0 0
+0 0 0 0 0
+1 200 0 P
+E
+dice table felt~
+A wide table covered in crisp green felt is marked with 'HI' and 'LO' zones.
+Two ivory dice rest in a small wooden cup beside the croupier.
+  Type: BET <amount> HI   or   BET <amount> LO   (min 1, max 500 gold)
+~
+
+#4813
+glass whiskey ale~
+a glass of aged whiskey~
+A glass of amber-gold whiskey sits here, smelling of honey and oak.~
+glass~
+17 0 0 A
+10 10 5 0 0
+5 1 5 P
+
+#0
+
+#ROOMS
+
+#4810
+The Lucky Dragon Casino - Entrance~
+   You step through a pair of gilded doors into the Lucky Dragon Casino.  Rich
+red velvet drapes the walls and polished brass fixtures gleam in the warm light.
+Above the reception desk, a large golden dragon twists in an eternal coil, its
+emerald eyes watching every arrival.  The casino floor lies to the south, the
+noise of gaming and laughter drifting through.  The gilded doors to the north
+lead back to Dresden's Market Plaza.
+~
+CA DK 0
+D0
+The gilded doors lead back to the Market Plaza.
+~
+~
+0 -1 2487
+D2
+A velvet rope parts to reveal the main casino floor.
+~
+~
+0 -1 4811
+E
+sign dragon~
+       ___________________________________
+      |                                   |
+      |   THE LUCKY DRAGON CASINO         |
+      |                                   |
+      |  * Slots:     type SLOTS          |
+      |  * Hi/Lo:     type BET <amt> HI   |
+      |               or  BET <amt> LO    |
+      |                                   |
+      |   Min bet:    1 gold              |
+      |   Max bet:    500 gold            |
+      |___________________________________|
+~
+S
+
+#4811
+Casino Main Floor~
+   The main floor blazes with light from dozens of magical lanterns suspended
+overhead.  The air hums with excitement and the steady clink of gold.  Rows of
+gilded slot machines fill the centre of the room -- each one engraved with a
+serpentine dragon coiling around the reels.  To the east a low archway opens
+onto the dice and card tables.  West lies the bar, its amber bottles promising
+consolation to the unlucky.  The entrance is back through the velvet rope to
+the north.
+~
+CA D 0
+D0
+A velvet rope parts back toward the casino entrance.
+~
+~
+0 -1 4810
+D1
+An archway opens onto the dice and card tables.
+~
+~
+0 -1 4812
+D3
+The polished bar gleams warmly to the west.
+~
+~
+0 -1 4813
+S
+
+#4812
+Card and Dice Tables~
+   This alcove is quieter than the main floor, though no less charged with
+tension.  A row of green felt-covered dice tables lines the south wall, each
+one attended by a croupier in black and white.  A slate board behind them is
+chalked with results of the last dozen rolls.  The rules are simple: call HI
+or LO, roll the two dice -- seven or higher is HI, six or lower is LO.  An
+exact seven means the house wins.
+~
+CA D 0
+D3
+The archway leads back to the main casino floor.
+~
+~
+0 -1 4811
+S
+
+#4813
+The Dragon's Bar~
+   Polished bottles in every colour line the mirrored wall behind the bar,
+catching the lamplight like a stained glass window.  The barkeeper works in
+quiet, methodical silence, polishing glasses with a clean white cloth while
+soft lute music from somewhere unseen fills the air.  Comfortable stools invite
+tired gamblers to rest and reflect on their fortunes -- or misfortunes.
+~
+CA DK 0
+D1
+The casino floor stretches to the east.
+~
+~
+0 -1 4811
+S
+
+#0
+
+#RESETS
+M 0 4810 1 4810
+O 0 4810 5 4810
+M 0 4811 1 4811
+O 0 4811 2 4811
+M 0 4812 1 4812
+O 0 4812 2 4812
+M 0 4813 1 4813
+S
+
+#SHOPS
+0
+
+#SPECIALS
+S
+
+#$

@@ -428,6 +428,8 @@ DECLARE_DO_FUN(	do_where	);
 DECLARE_DO_FUN( do_deposit	);
 DECLARE_DO_FUN( do_withdraw	);
 DECLARE_DO_FUN( do_balance	);
+DECLARE_DO_FUN( do_slots	);
+DECLARE_DO_FUN( do_bet		);
 DECLARE_DO_FUN(	do_whiner	);
 DECLARE_DO_FUN(	do_who		);
 DECLARE_DO_FUN( do_whois	);

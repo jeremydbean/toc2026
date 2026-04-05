@@ -4082,7 +4082,233 @@ void add_platinum(CHAR_DATA *ch, long amount)
   if (ch->new_platinum < 0) ch->new_platinum = 0;
 }
 
-/* Old money code, left here just in case. Ungrim. | do_drop*/
+/* ============================================================
+ * Casino commands:  SLOTS  and  BET
+ * Both require the player to be in the casino vnum range.
+ * ============================================================*/
+
+#define CASINO_VNUM_LOW  4810
+#define CASINO_VNUM_HIGH 4829
+#define CASINO_BET_MIN   1L
+#define CASINO_BET_MAX   500L
+
+static bool in_casino( CHAR_DATA *ch )
+{
+    if ( ch->in_room == NULL ) return false;
+    return ( ch->in_room->vnum >= CASINO_VNUM_LOW
+          && ch->in_room->vnum <= CASINO_VNUM_HIGH );
+}
+
+void do_slots( CHAR_DATA *ch, char *argument )
+{
+    UNUSED_PARAM(argument);
+
+    static const char * const symbols[] =
+        { "SEVEN", "SEVEN", "BAR", "CHERRY", "LEMON", "ORANGE", "GRAPE" };
+    static const int NUM_SYM = 7;
+
+    char buf[MAX_STRING_LENGTH];
+    int r1, r2, r3;
+    long payout = 0;
+    const char *result_msg;
+
+    if ( IS_NPC(ch) )
+    {
+        send_to_char( "NPCs cannot gamble.\n\r", ch );
+        return;
+    }
+
+    if ( !in_casino(ch) )
+    {
+        send_to_char( "You need to be at a slot machine in the casino to play.\n\r", ch );
+        return;
+    }
+
+    if ( !has_enough_gold( ch, CASINO_BET_MIN ) )
+    {
+        send_to_char( "You need at least 1 gold to play the slots.\n\r", ch );
+        return;
+    }
+
+    /* Deduct 1 gold before spinning */
+    add_money( ch, -CASINO_BET_MIN );
+
+    r1 = number_range( 0, NUM_SYM - 1 );
+    r2 = number_range( 0, NUM_SYM - 1 );
+    r3 = number_range( 0, NUM_SYM - 1 );
+
+    snprintf( buf, sizeof(buf),
+        "The reels spin... [ %-6s | %-6s | %-6s ]\n\r",
+        symbols[r1], symbols[r2], symbols[r3] );
+    send_to_char( buf, ch );
+
+    if ( r1 == 0 && r2 == 0 && r3 == 0 )
+    {
+        /* Three sevens: jackpot */
+        payout = 100;
+        result_msg = "*** JACKPOT! THREE SEVENS! ***\n\r";
+    }
+    else if ( r1 == 2 && r2 == 2 && r3 == 2 )
+    {
+        /* Three bars */
+        payout = 50;
+        result_msg = "Three BARs!  Nice win!\n\r";
+    }
+    else if ( r1 == r2 && r2 == r3 )
+    {
+        /* Any other three of a kind */
+        payout = 20;
+        result_msg = "Three of a kind!  You win!\n\r";
+    }
+    else if ( r1 == r2 || r2 == r3 || r1 == r3 )
+    {
+        /* Two matching */
+        payout = 3;
+        result_msg = "Two of a kind -- you recover your bet plus a little extra.\n\r";
+    }
+    else if ( r1 == 3 || r2 == 3 || r3 == 3 )
+    {
+        /* Any cherry - break even */
+        payout = 1;
+        result_msg = "A cherry!  You get your coin back.\n\r";
+    }
+    else
+    {
+        payout = 0;
+        result_msg = "No match.  Better luck next time.\n\r";
+    }
+
+    send_to_char( result_msg, ch );
+
+    if ( payout > 0 )
+    {
+        add_money( ch, payout );
+        if ( payout > 1 )
+        {
+            snprintf( buf, sizeof(buf),
+                "You receive %ld gold coins.  Your new total is %ld gold.\n\r",
+                payout, query_gold(ch) );
+            send_to_char( buf, ch );
+        }
+    }
+
+    act( "$n pulls the handle on a slot machine.", ch, NULL, NULL, TO_ROOM );
+    return;
+}
+
+void do_bet( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    long amount;
+    int die1, die2, total;
+    bool pick_hi;
+
+    if ( IS_NPC(ch) )
+    {
+        send_to_char( "NPCs cannot gamble.\n\r", ch );
+        return;
+    }
+
+    if ( !in_casino(ch) )
+    {
+        send_to_char( "You need to be at the dice table in the casino to bet.\n\r", ch );
+        return;
+    }
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' || arg2[0] == '\0' )
+    {
+        send_to_char( "Syntax: bet <amount> hi   or   bet <amount> lo\n\r", ch );
+        send_to_char( "  HI wins if the two dice total MORE than 7.\n\r", ch );
+        send_to_char( "  LO wins if the two dice total LESS than 7.\n\r", ch );
+        send_to_char( "  A total of exactly 7 means the HOUSE wins.\n\r", ch );
+        return;
+    }
+
+    if ( !is_number(arg1) )
+    {
+        send_to_char( "Specify a numeric amount.  Syntax: bet <amount> hi/lo\n\r", ch );
+        return;
+    }
+
+    amount = (long)atol( arg1 );
+
+    if ( amount < CASINO_BET_MIN )
+    {
+        snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", CASINO_BET_MIN );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( amount > CASINO_BET_MAX )
+    {
+        snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", CASINO_BET_MAX );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_prefix( arg2, "high" ) || !str_cmp( arg2, "hi" ) )
+        pick_hi = true;
+    else if ( !str_prefix( arg2, "low" ) || !str_cmp( arg2, "lo" ) )
+        pick_hi = false;
+    else
+    {
+        send_to_char( "Choose: bet <amount> hi   or   bet <amount> lo\n\r", ch );
+        return;
+    }
+
+    if ( !has_enough_gold( ch, amount ) )
+    {
+        send_to_char( "You don't have enough gold for that bet.\n\r", ch );
+        return;
+    }
+
+    die1 = number_range( 1, 6 );
+    die2 = number_range( 1, 6 );
+    total = die1 + die2;
+
+    snprintf( buf, sizeof(buf),
+        "The croupier rolls... [ %d + %d = %d ]\n\r", die1, die2, total );
+    send_to_char( buf, ch );
+
+    act( "$n places a bet at the dice table.", ch, NULL, NULL, TO_ROOM );
+
+    if ( total == 7 )
+    {
+        /* House wins on a 7 */
+        add_money( ch, -amount );
+        snprintf( buf, sizeof(buf),
+            "Seven -- the house wins.  You lose %ld gold.  (Balance: %ld gold)\n\r",
+            amount, query_gold(ch) );
+        send_to_char( buf, ch );
+    }
+    else if ( ( total > 7 && pick_hi ) || ( total < 7 && !pick_hi ) )
+    {
+        /* Player wins -- pays 1:1 */
+        add_money( ch, amount );
+        snprintf( buf, sizeof(buf),
+            "You called it!  You win %ld gold.  (Balance: %ld gold)\n\r",
+            amount, query_gold(ch) );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        /* Player loses */
+        add_money( ch, -amount );
+        snprintf( buf, sizeof(buf),
+            "Wrong call.  You lose %ld gold.  (Balance: %ld gold)\n\r",
+            amount, query_gold(ch) );
+        send_to_char( buf, ch );
+    }
+
+    return;
+}
+
+
 /*    if ( is_number( arg ) )
     {
 	int amount;

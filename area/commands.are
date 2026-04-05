@@ -242,6 +242,35 @@ Notes:
   - Your bank balance is retained across deaths and remorts.
 ~
 
+0 CASINO LUCKY DRAGON SLOTS BET GAMBLING~
+Syntax: slots
+Syntax: bet <amount> hi
+Syntax: bet <amount> lo
+
+The Lucky Dragon Casino is located in Dresden's Market Plaza -- head south from
+the plaza to find the gilded entrance doors.
+
+SLOTS
+  Play the three-reel slot machine.  Costs 1 gold per pull.  Payouts:
+    Three sevens  -- Jackpot! Win 100 gold
+    Three bars    -- Win 50 gold
+    Three of any  -- Win 20 gold
+    Two matching  -- Win 3 gold
+    Any cherry    -- Get your 1 gold back
+    No match      -- Lose 1 gold
+
+BET    (Hi/Lo dice)
+  Place a wager of 1 to 500 gold on the outcome of two dice.
+    HI: wins if the total is MORE than 7     (pays 1:1)
+    LO: wins if the total is LESS than 7     (pays 1:1)
+    7 exactly: the house always wins on a seven.
+  Examples:
+    bet 50 hi
+    bet 200 lo
+
+See also: BANK, DEPOSIT, WITHDRAW
+~
+
 0 BREW CONCOCT SCRIBE SHOOT PICK JUNK~
 Syntax: brew <potion recipe>
 Syntax: concoct <component list>
