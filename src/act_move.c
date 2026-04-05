@@ -2894,10 +2894,9 @@ do_shove( CHAR_DATA *ch, char *argument )
 		    TO_NOTVICT );
 
 	   shove = true;
-	   move_char(victim, door, false);
-	   shove = false;
-	   act( "$n has shoved you out of the room!", ch, NULL, victim, TO_VICT );
-	   check_improve(ch,gsn_shove,true,3);
+           act( "$n has shoved you out of the room!", ch, NULL, victim, TO_VICT );
+           move_char(victim, door, false);
+           shove = false;
 
 	}
 	else

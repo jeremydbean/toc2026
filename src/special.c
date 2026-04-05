@@ -693,7 +693,6 @@ bool spec_psionic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     CHAR_DATA *victim;
     CHAR_DATA *v_next;
 
-    int min_level;
     int do_protect;
     int chance;
  
@@ -719,29 +718,49 @@ bool spec_psionic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	return false;
  
     spell = NULL;
- 
-    for ( ;; )
+
     {
- 
-	switch ( number_bits( 4 ) )
-	{
-	case  1: min_level =  13;
-		    do_protect = ( number_percent () );
-		    if(do_protect <=60)
-		      do_psionic_armor(mob, mob->name);
-		    else
-		      do_mindbar(mob,mob->name);
-	break;
-	case  2: min_level = 15; do_torment(mob, victim->name);    break;
-	case  3: min_level = 18; do_ego_whip( mob, victim->name);  break;
-	case  4: min_level = 20; do_nightmare(mob, victim->name);  break;
-	case  5: min_level = 21; do_confuse( mob, victim->name);   break;
-	case  6: min_level = 25; do_mindblast( mob, victim->name); break;
-	default: min_level = 15; do_torment(mob,victim->name);     break;
-	}
- 
-	if( mob->level >= min_level)
-	   break;
+        int psi_tries;
+        int psi_sel = 0;
+        int psi_minlevel = 13;
+
+        for ( psi_tries = 0; psi_tries < 200; psi_tries++ )
+        {
+            psi_sel = (int)number_bits( 4 );
+            switch ( psi_sel )
+            {
+            case  1: psi_minlevel = 13; break;
+            case  2: psi_minlevel = 15; break;
+            case  3: psi_minlevel = 18; break;
+            case  4: psi_minlevel = 20; break;
+            case  5: psi_minlevel = 21; break;
+            case  6: psi_minlevel = 25; break;
+            default: psi_minlevel = 15; break;
+            }
+            if ( mob->level >= psi_minlevel )
+                break;
+            psi_sel = -1;
+        }
+
+        if ( psi_sel <= 0 )
+            return true;  /* no ability available */
+
+        switch ( psi_sel )
+        {
+        case  1:
+            do_protect = ( number_percent () );
+            if ( do_protect <= 60 )
+                do_psionic_armor(mob, mob->name);
+            else
+                do_mindbar(mob,mob->name);
+            break;
+        case  2: do_torment(mob, victim->name);   break;
+        case  3: do_ego_whip( mob, victim->name); break;
+        case  4: do_nightmare(mob, victim->name); break;
+        case  5: do_confuse( mob, victim->name);  break;
+        case  6: do_mindblast( mob, victim->name);break;
+        default: do_torment(mob,victim->name);    break;
+        }
     }
  
     return true;

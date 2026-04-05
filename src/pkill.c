@@ -38,7 +38,8 @@ void save_pkills(void)
   if ((fp = fopen( PKILLFILE ".tmp", "w" ) ) == NULL )
   {  log_string("Failed writing pkiller file");
      perror("Failed writing pkiler file");
-     exit(1);
+     fpReserve = fopen( NULL_FILE, "r" );
+     return;
   }
   for (ptr = pkill_list; ptr != NULL; ptr = ptr -> next)
   {     fprintf(fp,"PK %s %ld %ld\n",
@@ -220,7 +221,7 @@ void load_pkills(void)
         fread_to_eol( fp );
         continue;
      }
-     if ((UPPER(word[0]) != 'P') && (UPPER(word[1]) != 'K')) {
+     if ((UPPER(word[0]) != 'P') || (UPPER(word[1]) != 'K')) {
         log_string("Error in read_max_load_file: UPPER(word) <> PK");
         snprintf(buf, sizeof(buf), "Skipping line with word: %s", word);
         log_string(buf);

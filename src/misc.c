@@ -63,7 +63,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
         /* display price list */
 	act("$N says 'I offer the following spells:'",ch,NULL,mob,TO_CHAR);
 	send_to_char("  light:   cure light wounds     50 gold\n\r",ch);
-	send_to_char("  serious: cure serious wounds  140 gold\n\r",ch);
+	send_to_char("  serious: cure serious wounds  150 gold\n\r",ch);
 	send_to_char("  critic:  cure critical wounds 250 gold\n\r",ch);
 	send_to_char("  heal:    healing spell	      500 gold\n\r",ch);
 	send_to_char("  blind:   cure blindness       100 gold\n\r",ch);
