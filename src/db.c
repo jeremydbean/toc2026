@@ -2976,6 +2976,7 @@ void free_char( CHAR_DATA *ch )
     OBJ_DATA *obj_next;
     AFFECT_DATA *paf;
     AFFECT_DATA *paf_next;
+    int i;
     
     if (IS_NPC(ch))
         mobile_count--;
@@ -3012,7 +3013,14 @@ void free_char( CHAR_DATA *ch )
         free_string( ch->pcdata->depart         );
         free_string( ch->pcdata->title          );
         free_string( ch->pcdata->psionic_grant_spec );
-      /*  free_string( ch->pcdata->ignore         );*/
+        free_string( ch->pcdata->list_remorts   );
+        free_string( ch->pcdata->afk_msg        );
+        free_string( ch->pcdata->ignore         );
+        for ( i = 0; i < MAX_ALIASES; i++ )
+        {
+            free_string( ch->pcdata->alias[i].first  );
+            free_string( ch->pcdata->alias[i].second );
+        }
         ch->pcdata->next = pcdata_free;
         pcdata_free      = ch->pcdata;
     }
