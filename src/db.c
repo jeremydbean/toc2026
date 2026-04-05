@@ -2708,6 +2708,9 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
     case ITEM_SPELL_COMPONENT:
     case ITEM_SOUL_CONTAINER:
     case ITEM_ACTION:
+    case ITEM_CAKE:
+    case ITEM_CASTLE_RELIC:
+    case ITEM_PROTECT:
         break;
  
     case ITEM_PORTAL:
@@ -3590,8 +3593,15 @@ char *fread_word( FILE *fp )
     }
  
     bug( "Fread_word: word too long.", 0 );
-    exit( 1 );
-    return NULL;
+    /* Recover: drain the rest of the oversized token instead of crashing */
+    while ( TRUE )
+    {
+        int c = getc( fp );
+        if ( c == EOF || ( cEnd == ' ' ? isspace(c) : c == cEnd ) )
+            break;
+    }
+    word[0] = '\0';
+    return word;
 }
  
 

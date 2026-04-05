@@ -1527,6 +1527,12 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
     int i;
 
 
+    if ( iWear == WEAR_NONE )
+    {
+	bug( "Equip_char: called with WEAR_NONE (-1); item not equipped.", 0 );
+	return;
+    }
+
     if ( get_eq_char( ch, iWear ) != NULL )
     {
 	bug( "Equip_char: already equipped (%d).", iWear );
@@ -2741,6 +2747,8 @@ char *affect_loc_name( int location )
     case APPLY_CLASS:           return "class";
     case APPLY_LEVEL:           return "level";
     case APPLY_AGE:             return "age";
+    case APPLY_HEIGHT:          return "height";
+    case APPLY_WEIGHT:          return "weight";
     case APPLY_MANA:            return "mana";
     case APPLY_HIT:             return "hp";
     case APPLY_MOVE:            return "moves";

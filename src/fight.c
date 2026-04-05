@@ -2871,6 +2871,10 @@ void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
     int old_dam;
     old_dam = dam;
 
+    /* Resolve TYPE_UNDEFINED: treat as plain hit (no named attack) */
+    if ( dt == TYPE_UNDEFINED )
+	dt = TYPE_HIT;
+
 /*
     if (!IS_NPC(ch) && (dam > 40)) dam = 40 + (dam - 40) * 2;
 */

@@ -2300,6 +2300,14 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     },
 
     {
+	"detect stealth",
+	{ 10, 10, 13, 13, 62, 62 },     { 1,  1,  2,  2, 2, 2},
+	spell_detect_hidden,    TAR_CHAR_DEFENSIVE,          POS_STANDING,
+	NULL,                   SLOT(570),       10,     12,
+	"",                     "You feel less aware of stealthy creatures."
+    },
+
+    {
 	"detect traps",
 	{ 11, 11, 62, 62, 62, 62},	{1, 1, 2, 2, 2, 2},
 	spell_detect_traps,	TAR_IGNORE,		POS_STANDING,
