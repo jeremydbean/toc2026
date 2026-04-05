@@ -2802,6 +2802,32 @@ oldest-first with room vnum and name.  The buffer is cleared on login.
 See also: FINGER, PSTAT
 ~
 
+63 RESETPWD~
+Syntax: resetpwd <player> <newpassword>
+
+RESETPWD resets the password of an OFFLINE player to the specified new
+password.  This is the "forgot password" rescue tool for when a player
+cannot log in and contacts an immortal for help.
+
+  resetpwd Bob secret99
+
+Requirements and restrictions:
+  - The target player must be OFFLINE.  If they are logged in, ask them
+    to use the PASSWORD command themselves.
+  - The new password must be at least 5 characters and must not contain
+    the '~' character.
+  - You cannot reset the password of a character at or above your own
+    level (you cannot reset another immortal's password unless you outrank
+    them).
+  - Password resets are always logged to the system log and broadcast on
+    WIZINFO to all online immortals.
+
+The command rewrites only the hashed password field in the player save
+file, leaving all other character data untouched.
+
+See also: FINGER, TRAIL
+~
+
 63 PETRIFY~
 Syntax: petrify <player> [duration]
 

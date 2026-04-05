@@ -8187,3 +8187,193 @@ void do_summonevent( CHAR_DATA *ch, char *argument )
         send_to_char( "spawn_event_boss failed -- check logs.\n\r", ch );
 }
 
+/*
+ * do_resetpwd -- reset an offline player's password
+ *
+ * Usage: resetpwd <player> <newpassword>
+ *
+ * Rewrites the 'Pass' line in the player's save file on disk.
+ * The target must be OFFLINE; if the player is logged in, the
+ * in-memory copy would be overwritten on next save anyway, so
+ * we refuse to avoid a race condition.
+ *
+ * Security notes:
+ *   - Caller must outrank the target (by trust level from the save file).
+ *   - New password must be >=5 chars and must not contain '~' (tilde is
+ *     the area-file string terminator and would corrupt the save file).
+ *   - Canonical crypt(3) hash is stored, identical to what comm.c uses
+ *     during normal password creation.
+ *   - The reset is logged via wizinfo so all online immortals see it.
+ */
+void do_resetpwd( CHAR_DATA *ch, char *argument )
+{
+    char arg_name[MAX_INPUT_LENGTH];
+    char arg_pwd [MAX_INPUT_LENGTH];
+    char fname   [MAX_INPUT_LENGTH];
+    char tmpname [MAX_INPUT_LENGTH];
+    char buf     [MAX_STRING_LENGTH];
+    char linebuf [4096];
+    FILE *fpin;
+    FILE *fpout;
+    const char *pwdhash;
+    const char *p;
+    int  target_trust;
+    bool found_pass;
+    bool pass_written;
+
+    if ( IS_NPC(ch) )
+        return;
+
+    argument = one_argument( argument, arg_name );
+    one_argument( argument, arg_pwd );
+
+    if ( arg_name[0] == '\0' || arg_pwd[0] == '\0' )
+    {
+        send_to_char( "Usage: resetpwd <player> <newpassword>\n\r", ch );
+        return;
+    }
+
+    /* Must be offline */
+    if ( get_char_world( ch, arg_name ) != NULL )
+    {
+        send_to_char( "That player is currently online.  Ask them to use 'password' directly.\n\r", ch );
+        return;
+    }
+
+    /* Validate new password before touching the file */
+    if ( strlen( arg_pwd ) < 5 )
+    {
+        send_to_char( "New password must be at least 5 characters long.\n\r", ch );
+        return;
+    }
+
+    for ( p = arg_pwd; *p != '\0'; p++ )
+    {
+        if ( *p == '~' )
+        {
+            send_to_char( "Password may not contain the '~' character.\n\r", ch );
+            return;
+        }
+    }
+
+    /* Open the player save file */
+    snprintf( fname, sizeof(fname), "%s%s", PLAYER_DIR, capitalize( arg_name ) );
+
+    if ( ( fpin = fopen( fname, "r" ) ) == NULL )
+    {
+        send_to_char( "No player by that name found.\n\r", ch );
+        return;
+    }
+
+    /* Read the target's trust from the save file to enforce level check */
+    target_trust = 0;
+    while ( fgets( linebuf, (int)sizeof(linebuf), fpin ) != NULL )
+    {
+        int val;
+        if ( sscanf( linebuf, "Levl %d", &val ) == 1 )
+        {
+            target_trust = val;
+            break;
+        }
+    }
+    rewind( fpin );
+
+    if ( target_trust >= get_trust( ch ) )
+    {
+        fclose( fpin );
+        send_to_char( "You cannot reset the password of someone at or above your level.\n\r", ch );
+        return;
+    }
+
+    /* Hash the new password with the player's name as salt (same as comm.c) */
+    pwdhash = crypt( arg_pwd, capitalize( arg_name ) );
+
+    /* Safety check: crypt() failure returns NULL on some platforms */
+    if ( pwdhash == NULL )
+    {
+        fclose( fpin );
+        send_to_char( "Password hashing failed -- password not changed.\n\r", ch );
+        return;
+    }
+
+    /* Double-check the hash contains no tilde */
+    for ( p = pwdhash; *p != '\0'; p++ )
+    {
+        if ( *p == '~' )
+        {
+            fclose( fpin );
+            send_to_char( "Hashed password contains '~' -- choose a different password.\n\r", ch );
+            return;
+        }
+    }
+
+    /* Write to a temp file then rename (atomic-ish, avoids file corruption) */
+    snprintf( tmpname, sizeof(tmpname), "%s%s.tmp", PLAYER_DIR, capitalize( arg_name ) );
+
+    if ( ( fpout = fopen( tmpname, "w" ) ) == NULL )
+    {
+        fclose( fpin );
+        send_to_char( "Failed to open temp file for writing.  Check server logs.\n\r", ch );
+        bug( "do_resetpwd: fopen('%s', 'w') failed for %s", 0 );
+        return;
+    }
+
+    found_pass  = false;
+    pass_written = false;
+
+    while ( fgets( linebuf, (int)sizeof(linebuf), fpin ) != NULL )
+    {
+        /* Replace the Pass line; skip any legacy "Password" line too */
+        if ( !pass_written
+          && ( strncmp( linebuf, "Pass ", 5 ) == 0
+            || strncmp( linebuf, "Password ", 9 ) == 0 ) )
+        {
+            fprintf( fpout, "Pass %s~\n", pwdhash );
+            found_pass  = true;
+            pass_written = true;
+        }
+        else
+        {
+            fputs( linebuf, fpout );
+        }
+    }
+
+    fclose( fpin );
+    fclose( fpout );
+
+    if ( !found_pass )
+    {
+        /* Unusual -- player file had no Pass line; clean up and report */
+        remove( tmpname );
+        send_to_char( "Player save file had no password entry -- aborting.\n\r", ch );
+        return;
+    }
+
+    /* Atomically replace the original file */
+    if ( rename( tmpname, fname ) != 0 )
+    {
+        remove( tmpname );
+        send_to_char( "Failed to save the new password.  Check server logs.\n\r", ch );
+        bug( "do_resetpwd: rename failed for %s", 0 );
+        return;
+    }
+
+    /* Notify the acting immortal */
+    snprintf( buf, sizeof(buf),
+        "Password for %s has been reset by %s.\n\r",
+        capitalize( arg_name ), ch->name );
+    send_to_char( buf, ch );
+
+    /* Broadcast to all online immortals via wizinfo */
+    snprintf( buf, sizeof(buf),
+        "%s reset the password for offline player %s.",
+        ch->name, capitalize( arg_name ) );
+    wizinfo( buf, LEVEL_IMMORTAL );
+
+    /* Also write to the system log */
+    snprintf( buf, sizeof(buf),
+        "RESETPWD: %s reset password for %s",
+        ch->name, capitalize( arg_name ) );
+    log_string( buf );
+}
+

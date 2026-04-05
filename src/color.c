@@ -226,11 +226,7 @@ static int color_hex_value( char ch )
 
 bool color_token_prefix( char ch )
 {
-    /* Only '&' is recognized as a text-level color prefix.
-     * '{' and '$' were removed: they produce false matches on common text
-     * (e.g. level-range notation like "{30 50}" or dollar amounts like "$103.50").
-     * All in-code color markers use the \x02+byte internal encoding instead. */
-    return ( ch == '&' );
+    return ( ch == '{' || ch == '&' || ch == '$' );
 }
 
 bool color_parse_slot( const char *str, unsigned char *slot_out )
