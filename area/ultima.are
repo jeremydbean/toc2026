@@ -1375,7 +1375,7 @@ a mandolin~
 The fine instrument lies here.~
 wood~
 5 0 AN
-0 0 0 6 0
+0 1 8 6 0
 9 5 50 P
 #7625
 cup~
@@ -1650,7 +1650,7 @@ a rusty sword~
 A corroded, rusty sword is here.~
 steel~
 5 HM AN
-1 0 0 1 0
+1 4 6 1 0
 32 9 0 W
 A
 9 100

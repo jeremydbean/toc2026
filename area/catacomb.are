@@ -291,7 +291,7 @@ the neutralizer~
 A long thin sword with a wide blade makes you wonder.~
 adamantite~
 5 BJK AN
-1 0 0 3 0
+1 1 5 3 0
 -1 9 1000 P
 A
 18 1
@@ -411,7 +411,7 @@ a templar's sword~
 A sword made of wood has been left here.~
 wood~
 5 I AN
-1 0 0 3 0
+1 1 5 3 0
 -1 6 500 P
 A
 18 1

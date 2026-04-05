@@ -198,7 +198,7 @@ a commoner's longsword~
 A commoner's longsword made of adamantite has been left here.~
 adamantite~
 5 0 AN
-1 0 0 3 1
+1 1 5 3 1
 -1 10 200 P
 A
 18 1
@@ -210,7 +210,7 @@ a noble's longsword~
 A drow noble's longsword made of adamantite lies here.~
 adamantite~
 5 0 AN
-1 0 0 3 0
+1 1 5 3 0
 -1 15 300 P
 A
 18 2
@@ -222,7 +222,7 @@ a snake headed whip~
 A whip with two snakes heads lies here.~
 leather~
 5 GJ AN
-7 0 0 4 0
+7 1 5 4 0
 -1 5 500 P
 A
 18 2
@@ -234,7 +234,7 @@ a snake headed whip~
 A whip with three snake heads has been left here.~
 leather~
 5 GJ AN
-7 0 0 4 0
+7 1 5 4 0
 -1 5 740 P
 A
 18 2
@@ -246,7 +246,7 @@ a snake headed whip~
 A whip with four snake heads has been left here.~
 leather~
 5 GJ AN
-7 0 0 4 0
+7 1 5 4 0
 -1 5 900 P
 A
 18 2
@@ -258,7 +258,7 @@ a black longsword~
 A black longsword has been carelessly left here.~
 adamantite~
 5 ABG AN
-1 0 0 3 0
+1 1 5 3 0
 -1 10 900 P
 A
 18 3
@@ -270,7 +270,7 @@ a snake headed whip~
 A whip with five snake heads is lying here.~
 leather~
 5 GJ AN
-7 0 0 4 0
+7 1 5 4 0
 -1 5 2400 P
 A
 1 -1
@@ -282,7 +282,7 @@ a snake headed whip~
 A whip with six snake heads has been dropped here.~
 leather~
 5 GJ AN
-7 0 0 4 0
+7 1 5 4 0
 -1 5 2400 P
 A
 1 -2

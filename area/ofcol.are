@@ -617,7 +617,7 @@ a hand axe~
 A hand axe is on the floor here.~
 wood~
 5 0 AN
-5 0 0 3 0
+5 1 5 3 0
 -1 5 100 P
 E
 handaxe hand axe~
@@ -630,7 +630,7 @@ a meat cleaver~
 A sharp meat cleaver is just lying on the floor here!~
 steel~
 5 0 AN
-2 0 0 3 0
+2 1 5 3 0
 -1 5 150 P
 E
 meat cleaver~
@@ -752,7 +752,7 @@ a pitchfork~
 A pitchfork is on the floor.~
 wood~
 5 0 AN
-3 0 0 11 0
+3 1 5 11 0
 -1 5 50 P
 #616
 vest~
@@ -912,7 +912,7 @@ a claymore~
 A VERY big sword is against the wall here.~
 steel~
 5 0 AN
-1 0 0 1 F
+1 1 5 1 F
 -1 4 100 P
 A
 18 -2
@@ -1172,7 +1172,7 @@ a ranseur~
 A heavy polearm is against the wall here, ready to inflict damage.~
 steel~
 5 GK AN
-8 0 0 2 0
+8 1 5 2 0
 -1 4 100 P
 A
 18 5
@@ -1280,7 +1280,7 @@ the Golden Claw~
 A huge golden claw is on the floor~
 gold~
 5 GK AN
-0 0 0 5 0
+0 1 5 5 0
 -1 20 500 P
 A
 19 4

@@ -964,7 +964,7 @@ an epee~
 A nice looking epee lies here, begging to be picked up.~
 steel~
 5 0 8193
-1 0 0 3 0
+1 1 5 3 0
 -1 7 1750 P
 A
 18 3
@@ -986,7 +986,7 @@ a war ribbon~
 There is a coiled up piece of ribbon here.~
 steel~
 5 0 AN
-0 0 0 4 0
+0 1 5 4 0
 -1 4 1150 P
 E
 war ribbon~
@@ -1059,7 +1059,7 @@ an arbalest~
 There is an arbalest here, nearly as tall as you!~
 steel~
 5 0 AN
-0 0 0 11 0
+0 1 5 11 0
 -1 15 1250 P
 A
 18 -3
@@ -1186,7 +1186,7 @@ a flaming sword~
 There is a sword here with a blade of red.~
 steel~
 5 1089 8193
-1 0 0 3 A
+1 1 5 3 A
 -1 7 2800 P
 A
 17 -8
@@ -1200,7 +1200,7 @@ the dreamblade~
 A sword lies here with a shifting blade that hurts your eyes.~
 silver~
 5 GU AN
-1 0 0 6 D
+1 1 5 6 D
 -1 5 2000 P
 E
 dreamblade blade~
@@ -1248,7 +1248,7 @@ an elite sword~
 A beautiful sword has been discarded here.~
 steel~
 5 0 AN
-1 0 0 3 0
+1 1 5 3 0
 -1 5 1500 P
 #8733
 amulet protection~
@@ -1286,7 +1286,7 @@ a flail~
 A sharp-looking flail is here.~
 steel~
 5 AG AN
-6 0 0 6 0
+6 1 5 6 0
 -1 7 1000 P
 A
 19 3
@@ -1309,7 +1309,7 @@ an axe~
 A big axe is here.~
 bronze~
 5 AG AN
-5 0 0 3 0
+5 1 5 3 0
 -1 9 1200 P
 A
 19 4

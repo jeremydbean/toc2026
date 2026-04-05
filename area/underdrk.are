@@ -344,7 +344,7 @@ a goblin spear~
 A crude looking spear is here gathering dust.~
 wood~
 5 0 AN
-0 0 0 0 0
+0 1 5 0 0
 -1 2 10 P
 #25105
 sword~
@@ -352,7 +352,7 @@ an adamantite longsword~
 A sharp looking longsword is sitting here against the wall.~
 adamantite~
 5 ABG AN
-1 0 0 3 D
+1 1 5 3 D
 -1 5 1000 P
 A
 2 1
@@ -478,7 +478,7 @@ a battle axe~
 A battle axe, fresh blood on the blade, is leaning up against the wall.~
 steel~
 5 0 AN
-5 0 0 1 0
+5 1 5 1 0
 -1 10 100 P
 
 #0

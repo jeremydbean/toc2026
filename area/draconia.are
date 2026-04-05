@@ -310,7 +310,7 @@ a silver dagger~
 A silver dagger is lying here.~
 silver~
 5 0 AN
-2 0 0 11 0
+2 1 5 11 0
 -1 10 500 P
 #2202
 knife tooth dragon~
@@ -394,7 +394,7 @@ a stone club~
 A heavy looking stone club is here.~
 stone~
 5 0 AN
-4 0 0 7 0
+4 1 5 7 0
 -1 18 200 P
 #2224
 ring diamond~

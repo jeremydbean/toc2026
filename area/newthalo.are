@@ -1363,7 +1363,7 @@ a morningstar~
 A small spiked metal ball connected to a rod by links of chain lies here.~
 steel~
 5 0 AN
-4 0 0 8 0
+4 1 5 8 0
 -1 5 450 P
 #9504
 awl pike awl-pike~
@@ -1371,7 +1371,7 @@ an awl-pike~
 An awl pike lies here.~
 iron~
 5 0 AN
-5 0 0 11 0
+5 1 5 11 0
 -1 5 450 P
 #9505
 bardiche~
@@ -1379,7 +1379,7 @@ a bardiche~
 A bardiche lies here.~
 steel~
 5 0 AN
-8 0 0 3 0
+8 1 5 3 0
 -1 10 625 P
 #9506
 bec corbine~
@@ -1387,7 +1387,7 @@ a bec de corbine~
 A bec de corbine lies here.~
 steel~
 5 0 AN
-8 0 0 3 0
+8 1 5 3 0
 -1 10 700 P
 #9507
 bill guisarme~
@@ -1395,7 +1395,7 @@ a bill-guisarme~
 A bill-guisarme lies here.~
 steel~
 5 0 AN
-8 0 0 3 0
+8 1 5 3 0
 -1 10 750 P
 #9508
 fauchard~
@@ -1403,7 +1403,7 @@ a fauchard~
 A fauchard lies here.~
 steel~
 5 0 AN
-8 0 0 3 0
+8 1 5 3 0
 -1 10 750 P
 #9509
 glaive~
@@ -1411,7 +1411,7 @@ a glaive~
 A glaive lies here.~
 steel~
 5 0 AN
-8 0 0 12 0
+8 1 5 12 0
 -1 7 750 P
 #9510
 guisarme~
@@ -1419,7 +1419,7 @@ a guisarme~
 A guisarme lies here.~
 iron~
 5 0 AN
-8 0 0 4 0
+8 1 5 4 0
 -1 7 700 P
 #9511
 sickle~
@@ -1427,7 +1427,7 @@ a sickle~
 A sickle lies here.~
 steel~
 5 0 AN
-1 0 0 3 0
+1 1 5 3 0
 -1 5 540 P
 #9512
 bastard two sword~
@@ -1435,7 +1435,7 @@ a two-handed bastard sword~
 A two handed bastard sword lies here.~
 steel~
 5 0 AN
-1 0 0 21 F
+1 1 5 21 F
 -1 10 350 P
 #9513
 scimitar~
@@ -1443,7 +1443,7 @@ a scimitar~
 a scimitar lies here.~
 steel~
 5 0 AN
-1 0 0 1 0
+1 1 5 1 0
 -1 6 475 P
 #9514
 rapier~
@@ -1451,7 +1451,7 @@ a rapier~
 A rapier lies here.~
 steel~
 5 0 AN
-1 0 0 3 0
+1 1 5 3 0
 -1 10 425 P
 #9515
 banded mail~
@@ -2003,7 +2003,7 @@ a pair of sewing shears~
 a pair of sewing shears lies here.~
 steel~
 5 0 AN
-2 0 0 16 0
+2 1 5 16 0
 -1 1 170 P
 #9584
 meat cleaver~
@@ -2011,7 +2011,7 @@ a meat cleaver~
 a meat cleaver lies here~
 steel~
 5 0 AN
-2 0 0 9 0
+2 1 5 9 0
 -1 1 80 P
 #9585
 fountain pen~
@@ -2019,7 +2019,7 @@ a fountain pen~
 a fountain pen lies here.~
 iron~
 5 B AN
-2 0 0 2 0
+2 1 5 2 0
 -1 1 80 P
 A
 18 2
@@ -2031,7 +2031,7 @@ a sledge hammer~
 a sledge hammer lies here.~
 bronze~
 5 0 AN
-4 0 0 7 0
+4 1 5 7 0
 -1 5 150 P
 #9587
 horse shoe~
@@ -2057,7 +2057,7 @@ a riding crop~
 a riding crop made of dragon leather lies here.~
 leather~
 5 0 AN
-7 0 0 2 0
+7 1 5 2 0
 -1 1 400 P
 #9590
 chessboard~
@@ -2065,7 +2065,7 @@ a chessboard~
 a heavy marble chessboard lies here.~
 leather~
 5 0 AN
-4 0 0 6 0
+4 1 5 6 0
 -1 4 250 P
 A
 18 2
@@ -2085,7 +2085,7 @@ something~
 something lies here.~
 steel~
 5 0 AN
-0 0 0 32 0
+0 1 5 32 0
 -1 8 300 P
 #9593
 key~
@@ -2129,7 +2129,7 @@ the Daemon Claw~
 A glove with blades mounted on it lies here~
 steel~
 5 B AN
-2 0 0 5 0
+2 1 5 5 0
 -1 2 40 P
 A
 18 -2
@@ -2139,7 +2139,7 @@ the wolverine claw~
 A claw from some animal lies here.~
 steel~
 5 B AN
-2 0 0 5 0
+2 1 5 5 0
 -1 3 50 P
 #9600
 halberd~
@@ -2147,7 +2147,7 @@ the halberd~
 A mighty halberd lies against the wall.~
 steel~
 5 GI AN
-8 0 0 3
+8 1 5 3
 -1 16 200 P
 A
 18 2

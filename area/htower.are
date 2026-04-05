@@ -1071,7 +1071,7 @@ a mithril hammer~
 a mithril hammer has been left here~
 steel~
 5 G AN
-4 0 0 7 E
+4 1 5 7 E
 -1 19 1000 P
 A
 18 2
@@ -1099,7 +1099,7 @@ a long sword~
 A long sword has been left here.~
 steel~
 5 0 AN
-1 0 0 3 D
+1 1 5 3 D
 -1 8 5000 P
 A
 18 1
@@ -1111,7 +1111,7 @@ a silver dagger~
 A finely crafted dagger made of silver is on the ground here.~
 silver~
 5 0 AN
-2 0 0 11 D
+2 1 5 11 D
 -1 5 7500 P
 A
 18 2
@@ -1123,7 +1123,7 @@ a curved scimitar~
 A curved scimitar is here in a jewel-covered sheath.~
 steel~
 5 0 AN
-1 0 0 3 D
+1 1 5 3 D
 -1 10 8750 P
 A
 13 3
@@ -1133,7 +1133,7 @@ a wooden staff~
 A wooden staff is against the wall here.~
 wood~
 5 0 AN
-3 0 0 11 D
+3 1 5 11 D
 -1 6 10 P
 #1321
 cabinet silver~
@@ -1398,7 +1398,7 @@ a silvery dagger~
 A long dagger that seems to be made of silver is here.~
 silver~
 5 G AN
-2 0 0 11 D
+2 1 5 11 D
 -1 5 1200 P
 A
 18 1
@@ -1642,7 +1642,7 @@ an iron shod staff~
 A grey piece of wood shod in iron has been left here.~
 wood~
 5 G AN
-3 0 0 2 D
+3 1 5 2 D
 -1 7 9000 P
 A
 18 3
@@ -1696,7 +1696,7 @@ a sharp shard of obsidian~
 A piece of black glass is here.~
 glass~
 5 J AN
-2 0 0 11 D
+2 1 5 11 D
 -1 8 1200 P
 A
 19 3
@@ -1740,7 +1740,7 @@ an ivory hilted dagger~
 An ivory hilted dagger has been left here~
 steel~
 5 GIK AN
-2 0 0 11 D
+2 1 5 11 D
 -1 8 12000 P
 A
 18 1
@@ -1810,7 +1810,7 @@ the ebony kris~
 A wavy bladed knife made of ebony is here.~
 stone~
 5 G AN
-2 0 0 11 D
+2 1 5 11 D
 -1 9 6000 P
 A
 2 2

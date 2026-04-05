@@ -922,7 +922,7 @@ a flashlight~
 A long flashlight has been dropped here.~
 steel~
 5 0 AN
-0 0 0 7 0
+0 1 5 7 0
 -1 8 150 P
 E
 flashlight light~
@@ -946,7 +946,7 @@ an evil knife~
 An evil knife lies on the ground here.~
 iron~
 5 EJ ANO
-2 0 0 11 0
+2 1 5 11 0
 -1 5 500 P
 E
 knife evil~
@@ -982,7 +982,7 @@ the Blade of Darkness~
 A dark, incredibly sharp blade lies on the ground here.~
 adamantite~
 5 FGJL AN
-1 0 0 3 0
+1 1 5 3 0
 -1 15 750 P
 E
 blade darkness~
@@ -1009,7 +1009,7 @@ Magebane~
 An oddly shaped sword lies here.~
 adamantite~
 5 ABHM AN
-1 0 0 11 0
+1 1 5 11 0
 -1 20 600 P
 E
 mage bane magebane sword~
@@ -1186,7 +1186,7 @@ a long sword~
 An ordinary long sword gathers dust here.~
 steel~
 5 0 AN
-1 0 0 3 0
+1 1 5 3 0
 -1 12 120 P
 E
 sword long longsword~
@@ -1198,7 +1198,7 @@ A T-square of Death~
 A T-square has been carelessly discarded here.~
 wood~
 5 AGH AN
-0 0 0 3 P
+0 1 5 3 P
 -1 9 500 P
 E
 t-square t square death~

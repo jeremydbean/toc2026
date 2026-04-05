@@ -397,7 +397,7 @@ A toy boomerang~
 A toy boomerang wants to be picked up.~
 wood~
 5 0 AN
-0 0 0 7 0
+0 1 5 7 0
 -1 5 15 G
 #1503
 staff gnarled~
@@ -405,7 +405,7 @@ A gnarled staff~
 A gnarled staff is here.~
 wood~
 5 0 AN
-0 0 0 7 0
+0 1 5 7 0
 -1 15 250 P
 #1504
 sword gnome~
@@ -413,7 +413,7 @@ A gnome sword~
 A gnome sword catches your eye.~
 steel~
 5 0 AN
-1 0 0 3 0
+1 1 5 3 0
 -1 10 200 G
 #1505
 shield studded~
@@ -465,7 +465,7 @@ An electrum sword~
 An electrum sword lies here.~
 steel~
 5 AG AN
-1 0 0 3 0
+1 1 5 3 0
 -1 10 1716 P
 #1511
 basket wicker~
@@ -557,7 +557,7 @@ a large club~
 A large club sits here.~
 wood~
 5 0 AN
-4 0 0 7 0
+4 1 5 7 0
 -1 22 30 P
 #1522
 banana~

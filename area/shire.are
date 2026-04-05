@@ -662,7 +662,7 @@ a bardiche~
 A long weapon with a sharp end is on the floor.~
 steel~
 5 0 AN
-8 0 0 3 D
+8 1 5 3 D
 -1 10 1000 P
 A
 18 4
@@ -672,7 +672,7 @@ a flail~
 A flail is on the floor.~
 steel~
 5 0 AN
-6 0 0 3 D
+6 1 5 3 D
 -1 8 300 P
 #1115
 birch staff~

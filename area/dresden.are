@@ -1204,7 +1204,7 @@ a giant scimitar~
 An enormous scimitar is stuck point first into the ground here.~
 steel~
 5 ABGK AN
-0 0 0 3 0
+0 4 6 3 0
 35 20 2000 P
 A
 1 3
@@ -1218,7 +1218,7 @@ a huge two-handed sword~
 A huge two-handed sword is leaning up against the wall here.~
 steel~
 5 ABGHKM AN
-0 0 0 3 0
+0 4 6 3 0
 35 20 2000 P
 A
 1 3
@@ -1610,7 +1610,7 @@ a suicide's dagger~
 An extremely sharp dagger, blood stain upon the edge, lies forgotten here.~
 steel~
 5 BEHJLM AN
-2 0 0 11 CD
+2 1 5 11 CD
 -1 5 2500 P
 A
 1 1

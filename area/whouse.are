@@ -393,7 +393,7 @@ a crossbow~
 A huge crossbow is leaning against the wall here.~
 wood~
 5 0 AN
-9 0 0 11 0
+9 1 5 11 0
 -1 20 100 P
 E
 Crossbow cross bow~
@@ -410,7 +410,7 @@ a sturdy axe~
 A thick, well-crafted axe lies here, well-polished.~
 iron~
 5 A AN
-5 0 0 21 0
+5 1 5 21 0
 -1 20 150 P
 E
 axe sturdy~
@@ -426,7 +426,7 @@ an immense bastard sword~
 An astoundingly big bastard sword stands here.~
 steel~
 5 AB AN
-1 0 0 3 0
+1 1 5 3 0
 -1 30 250 P
 E
 Sword bastard~
@@ -461,7 +461,7 @@ a slingshot~
 A slingshot of wood has been discarded here.~
 wood~
 5 0 AN
-0 0 0 11 0
+0 1 5 11 0
 -1 2 25 P
 E
 slingshot sling shot~
@@ -475,7 +475,7 @@ a dart~
 A dart is stuck in the ground.~
 steel~
 5 0 AN
-0 0 0 11 0
+0 1 5 11 0
 -1 1 15 P
 E
 dart~
@@ -490,7 +490,7 @@ a pike~
 A nasty looking pike is lying on the ground.~
 iron~
 5 0 AN
-8 0 0 3 0
+8 1 5 3 0
 -1 20 100 P
 E
 pike~
@@ -502,7 +502,7 @@ a wicked knife~
 A wickedly curved knife sits here.~
 adamantite~
 5 0 ANO
-2 0 0 11 0
+2 1 5 11 0
 -1 5 100 P
 E
 knife wicked~
@@ -516,7 +516,7 @@ a quarterstaff~
 A metal-shod quarterstaff has been stuck in the ground.~
 wood~
 5 0 AN
-0 0 0 7 0
+0 1 5 7 0
 -1 12 20 P
 E
 staff quarter quarterstaff~
@@ -530,7 +530,7 @@ Bevgul~
 A strange weapon made of wood and spikes sits here.~
 wood~
 5 0 AN
-0 0 0 6 0
+0 1 5 6 0
 -1 8 300 P
 E
 Bevgul weapon wood spike spikes~

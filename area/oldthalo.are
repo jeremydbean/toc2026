@@ -320,7 +320,7 @@ a two-handed sword~
 A nice two-handed sword hangs on a hook in the wall.~
 steel~
 5 GK AN
-1 0 0 3 F
+1 1 5 3 F
 -1 24 7830 P
 A
 18 2
@@ -506,7 +506,7 @@ a long slim dagger~
 A long slim dagger has been left here.~
 steel~
 5 G AN
-2 0 0 11 0
+2 1 5 11 0
 -1 4 420 G
 A
 18 1
