@@ -367,14 +367,14 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Gui  %d\n",	ch->pcdata->guild	);
     fprintf( fp, "Psionic  %d\n", ch->pcdata->psionic );
     fprintf( fp, "PsiGrant %d\n", ch->pcdata->psionic_grant_pending ? 1 : 0 );
-    fprintf( fp, "PsiSpec %s~\n", ch->pcdata->psionic_grant_spec );
+    fprintf( fp, "PsiSpec %s~\n", ch->pcdata->psionic_grant_spec ? ch->pcdata->psionic_grant_spec : "" );
     fprintf( fp, "Cast %s\n",	get_castlename( ch->pcdata->castle) );
     fprintf( fp, "Levl %d\n",	ch->level		);
     if (ch->trust != 0)
 	fprintf( fp, "Tru  %d\n",	ch->trust	);
     fprintf( fp, "Plyd %d\n",
 	ch->played + (int) (current_time - ch->logon)	);
-    fprintf( fp, "ListRemorts %s~\n", ch->pcdata->list_remorts );
+    fprintf( fp, "ListRemorts %s~\n", ch->pcdata->list_remorts ? ch->pcdata->list_remorts : "" );
     fprintf( fp, "NumRemorts %d\n", ch->pcdata->num_remorts );
     fprintf( fp, "Note %d\n",	(int)	ch->last_note	);
     fprintf( fp, "Scro %d\n", 	ch->lines		);
