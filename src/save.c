@@ -1060,6 +1060,14 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if (!found)
         ch->pcdata->color = true;
 
+    /* fread_string() can return NULL on a truncated player file (EOF mid-string).
+     * The KEY() macro stores that NULL directly; guard here so the rest of the
+     * code never has to handle a NULL psionic_grant_spec or list_remorts. */
+    if ( ch->pcdata->psionic_grant_spec == NULL )
+        ch->pcdata->psionic_grant_spec = str_dup( "" );
+    if ( ch->pcdata->list_remorts == NULL )
+        ch->pcdata->list_remorts = str_dup( "" );
+
     color_update_defaults( ch, !found );
 
     return found;
