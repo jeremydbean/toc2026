@@ -3482,23 +3482,32 @@ void do_bounce( OBJ_DATA *obj )
                 }
             }
 
-	   if ( obj->carried_by != NULL )
-		{
-		obj_from_char( obj );
-		obj_to_char(obj, victim);
-		}
-	   else if( obj->in_obj != NULL )
-		{
-		  obj_from_obj( obj);
-		  obj_to_char( obj, victim );
-		}
-	   else if( obj->in_room != NULL)
-		{
-		obj_from_room( obj );
-		obj_to_char( obj, victim );
-		}
-
-	   obj->level = victim->level;
+/* Bug fix (Eclipse): if no matching mob found, victim is uninitialized;
+   fall through to random-room drop instead of using garbage pointer. */
+	   if ( found )
+	   {
+		   if ( obj->carried_by != NULL )
+		   { obj_from_char( obj ); obj_to_char(obj, victim); }
+		   else if ( obj->in_obj != NULL )
+		   { obj_from_obj( obj ); obj_to_char( obj, victim ); }
+		   else if ( obj->in_room != NULL )
+		   { obj_from_room( obj ); obj_to_char( obj, victim ); }
+		   obj->level = victim->level;
+	   }
+	   else
+	   {
+		   int fb_try; ROOM_INDEX_DATA *fb_room = NULL;
+		   for (fb_try = 0; fb_try < 200; fb_try++) {
+			   fb_room = get_room_index(number_range(0,65535));
+			   if (fb_room != NULL) break;
+		   }
+		   if (fb_room == NULL) fb_room = get_room_index(ROOM_VNUM_TEMPLE);
+		   if (obj->carried_by != NULL) obj_from_char(obj);
+		   else if (obj->in_obj != NULL) obj_from_obj(obj);
+		   else if (obj->in_room != NULL) obj_from_room(obj);
+		   obj_to_room(obj, fb_room);
+		   obj->level = 0;
+	   }
 	 }
     else
 	 {

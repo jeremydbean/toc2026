@@ -28,7 +28,7 @@ OFFENSE_DATA     *offense_first;
 
 void  	 	 free_wiz         args( (WIZ_DATA *ban) );
 WIZ_DATA         *new_wiz         args( (void) );
-WIZ_DATA         *wiz_list;
+/* WIZ_DATA *wiz_list -- duplicate removed; already declared above */
 
 /*
 void             load_offense     args( ( void ) );

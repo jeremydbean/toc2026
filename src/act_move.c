@@ -1113,10 +1113,17 @@ void do_run( CHAR_DATA *ch, char *argument )
 
 	}
 
+     /* Crash fix: if ch was killed by an arrival trap, in_room is NULL;
+        move_char returns without setting runner=2 in that path. */
+     if ( ch->in_room == NULL )
+     {
+         runner = 0;
+         return;
+     }
+
      room_vnum2 = ch->in_room->vnum;
 
   }
-
 
   runner=0;
   return;
