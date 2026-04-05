@@ -66,13 +66,7 @@ static bool can_chgrp( void )
         checked = 1;
         if (getgrnam(CHGRP_TO) != NULL)
             available = true;
-        else
-        {
-            snprintf(log_buf, 2 * MAX_INPUT_LENGTH,
-                     "save_char_obj: configured CHGRP_TO group '%s' missing; skipping chgrp",
-                     CHGRP_TO);
-            log_string(log_buf);
-        }
+        /* else: group absent — silently skip chgrp on this system */
     }
 
     return available;

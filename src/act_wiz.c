@@ -8165,6 +8165,37 @@ void do_petrify( CHAR_DATA *ch, char *argument )
 /*
  * EMPOWER: apply all major beneficial effects and boost stats.
  */
+/* Helper: add a real-spell affect tagged "via empower" by using the actual
+ * spell's gsn as the type.  The caller sets af.duration/af.level first. */
+static void empower_add_spell( CHAR_DATA *victim, AFFECT_DATA *af,
+                                const char *spell_name,
+                                int location, int modifier,
+                                long bitvector, long bitvector2 )
+{
+    sh_int sn = (sh_int)skill_lookup( spell_name );
+    if ( sn < 0 ) sn = 0;   /* fallback: won't display prettily but won't crash */
+    af->type      = sn;
+    af->location  = (sh_int)location;
+    af->modifier  = (sh_int)modifier;
+    af->bitvector  = bitvector;
+    af->bitvector2 = bitvector2;
+    affect_to_char( victim, af );
+}
+
+/* Spells granted by empower — used both for apply and for strip on toggle-off */
+static const char * const empower_spells[] =
+{
+    "sanctuary",
+    "haste",
+    "fly",
+    "pass door",
+    "protection evil",
+    "fire shield",
+    "divine protection",
+    "giant strength",
+    NULL
+};
+
 void do_empower( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -8173,6 +8204,7 @@ void do_empower( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     AFFECT_DATA af;
     int duration;
+    int i;
 
     argument = one_argument( argument, arg1 );
     one_argument( argument, arg2 );
@@ -8189,10 +8221,17 @@ void do_empower( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Toggle off if already empowered */
+    /* Toggle off if already empowered (sentinel is gsn_empower) */
     if ( is_affected( victim, gsn_empower ) )
     {
+        /* Strip sentinel + stat/combat boosts */
         affect_strip( victim, gsn_empower );
+        /* Strip each granted spell */
+        for ( i = 0; empower_spells[i] != NULL; i++ )
+        {
+            sh_int sn = (sh_int)skill_lookup( empower_spells[i] );
+            if ( sn >= 0 ) affect_strip( victim, sn );
+        }
         act( "The divine empowerment fades from $n.", victim, NULL, NULL, TO_ROOM );
         send_to_char( "The divine empowerment fades away.\n\r", victim );
         snprintf( buf, sizeof(buf), "Empowerment removed from %s.\n\r", victim->name );
@@ -8209,55 +8248,39 @@ void do_empower( CHAR_DATA *ch, char *argument )
         if ( duration < 1 ) duration = 100;
     }
 
-    af.type     = gsn_empower;
+    /* Sentinel affect — type=gsn_empower, no bitvector, no location.
+     * is_affected(gsn_empower) uses this for toggle detection.        */
+    af.type       = gsn_empower;
+    af.level      = (sh_int)ch->level;
+    af.duration   = (sh_int)duration;
+    af.location   = APPLY_NONE;
+    af.modifier   = 0;
+    af.bitvector  = 0;
+    af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    /* Granted spells — each uses its real spell type so affect shows by name */
     af.level    = (sh_int)ch->level;
     af.duration = (sh_int)duration;
 
-    /* Sanctuary */
-    af.location  = APPLY_NONE;   af.modifier = 0;
-    af.bitvector = AFF_SANCTUARY; af.bitvector2 = 0;
-    affect_to_char( victim, &af );
+    empower_add_spell( victim, &af, "sanctuary",       APPLY_NONE,    0,  AFF_SANCTUARY,     0 );
+    empower_add_spell( victim, &af, "haste",           APPLY_DEX,     4,  AFF_HASTE,         0 );
+    empower_add_spell( victim, &af, "fly",             APPLY_NONE,    0,  AFF_FLYING,        0 );
+    empower_add_spell( victim, &af, "pass door",       APPLY_NONE,    0,  AFF_PASS_DOOR,     0 );
+    empower_add_spell( victim, &af, "protection evil", APPLY_NONE,    0,  AFF_PROTECT,       0 );
+    empower_add_spell( victim, &af, "fire shield",     APPLY_NONE,    0,  0,                 AFF2_FLAMING_HOT );
+    empower_add_spell( victim, &af, "divine protection",APPLY_NONE,   0,  0,                 AFF2_DIVINE_PROT );
+    empower_add_spell( victim, &af, "giant strength",  APPLY_STR,    15,  0,                 0 );
 
-    /* Haste + DEX boost */
-    af.location  = APPLY_DEX;    af.modifier = 4;
-    af.bitvector = AFF_HASTE;    af.bitvector2 = 0;
-    affect_to_char( victim, &af );
+    /* Stat/combat boosts — type=gsn_empower so they group cleanly */
+    af.type       = gsn_empower;
+    af.bitvector  = 0;
+    af.bitvector2 = 0;
 
-    /* Flying */
-    af.location  = APPLY_NONE;  af.modifier = 0;
-    af.bitvector = AFF_FLYING;  af.bitvector2 = 0;
-    affect_to_char( victim, &af );
-
-    /* Pass Door */
-    af.location  = APPLY_NONE;    af.modifier = 0;
-    af.bitvector = AFF_PASS_DOOR; af.bitvector2 = 0;
-    affect_to_char( victim, &af );
-
-    /* Protection */
-    af.location  = APPLY_NONE;  af.modifier = 0;
-    af.bitvector = AFF_PROTECT; af.bitvector2 = 0;
-    affect_to_char( victim, &af );
-
-    /* Regeneration */
-    af.location  = APPLY_NONE;       af.modifier = 0;
-    af.bitvector = AFF_REGENERATION; af.bitvector2 = 0;
-    affect_to_char( victim, &af );
-
-    /* Divine Protection */
-    af.location   = APPLY_NONE;   af.modifier = 0;
-    af.bitvector  = 0;            af.bitvector2 = AFF2_DIVINE_PROT;
-    affect_to_char( victim, &af );
-
-    /* Stat boosts */
-    af.bitvector = 0; af.bitvector2 = 0;
-
-    af.location = APPLY_STR;     af.modifier = 15; affect_to_char( victim, &af );
-    af.location = APPLY_INT;     af.modifier = 15; affect_to_char( victim, &af );
-    af.location = APPLY_WIS;     af.modifier = 15; affect_to_char( victim, &af );
-    af.location = APPLY_DEX;     af.modifier = 11; affect_to_char( victim, &af );
-    af.location = APPLY_CON;     af.modifier = 15; affect_to_char( victim, &af );
-
-    /* Combat boosts */
+    af.location = APPLY_INT;     af.modifier = 15;   affect_to_char( victim, &af );
+    af.location = APPLY_WIS;     af.modifier = 15;   affect_to_char( victim, &af );
+    af.location = APPLY_DEX;     af.modifier = 11;   affect_to_char( victim, &af );
+    af.location = APPLY_CON;     af.modifier = 15;   affect_to_char( victim, &af );
     af.location = APPLY_HITROLL; af.modifier = 20;   affect_to_char( victim, &af );
     af.location = APPLY_DAMROLL; af.modifier = 20;   affect_to_char( victim, &af );
     af.location = APPLY_AC;      af.modifier = -100; affect_to_char( victim, &af );
@@ -8274,9 +8297,9 @@ void do_empower( CHAR_DATA *ch, char *argument )
 
 
 /*
- * COLOSSUS: massively boost HP, mana, and movement (500% bonus).
+ * TITANIC: massively boost HP, mana, and movement (500% bonus).
  */
-void do_colossus( CHAR_DATA *ch, char *argument )
+void do_titanic( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
@@ -8291,7 +8314,7 @@ void do_colossus( CHAR_DATA *ch, char *argument )
 
     if ( arg1[0] == '\0' )
     {
-        send_to_char( "Syntax: colossus <player> [duration | perm | toggle]\n\r", ch );
+        send_to_char( "Syntax: titanic <player> [duration | perm | toggle]\n\r", ch );
         return;
     }
 
@@ -8310,7 +8333,7 @@ void do_colossus( CHAR_DATA *ch, char *argument )
         if ( victim->move  > victim->max_move ) victim->move  = victim->max_move;
         act( "$n shrinks back to mortal proportions.", victim, NULL, NULL, TO_ROOM );
         send_to_char( "Your titanic stature fades away.\n\r", victim );
-        snprintf( buf, sizeof(buf), "Colossus removed from %s.\n\r", victim->name );
+        snprintf( buf, sizeof(buf), "Titanic removed from %s.\n\r", victim->name );
         send_to_char( buf, ch );
         return;
     }
@@ -8364,10 +8387,10 @@ void do_colossus( CHAR_DATA *ch, char *argument )
     act( "$n grows to titanic proportions!", victim, NULL, NULL, TO_ROOM );
     send_to_char( "Your body surges with titanic power -- HP, mana, and move multiplied, and you gain 50% bonus experience!\n\r", victim );
     if ( duration == -1 )
-        snprintf( buf, sizeof(buf), "%s made colossus permanently (+%d HP, +%d mana, +%d move, +50%% exp).\n\r",
+        snprintf( buf, sizeof(buf), "%s made titanic permanently (+%d HP, +%d mana, +%d move, +50%% exp).\n\r",
                   victim->name, hp_boost, mana_boost, move_boost );
     else
-        snprintf( buf, sizeof(buf), "%s made colossus for %d ticks (+%d HP, +%d mana, +%d move, +50%% exp).\n\r",
+        snprintf( buf, sizeof(buf), "%s made titanic for %d ticks (+%d HP, +%d mana, +%d move, +50%% exp).\n\r",
                   victim->name, duration, hp_boost, mana_boost, move_boost );
     send_to_char( buf, ch );
     return;

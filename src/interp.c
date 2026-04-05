@@ -425,7 +425,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "trail",          do_trail,       POS_DEAD,       L7,  LOG_ALWAYS, 1 },
     { "petrify",        do_petrify,     POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "empower",        do_empower,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
-    { "colossus",       do_colossus,    POS_DEAD,       L4,  LOG_ALWAYS, 1 },
+    { "titanic",        do_titanic,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "summonevent",    do_summonevent, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "resetpwd",       do_resetpwd,    POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "snoop",          do_snoop,       POS_DEAD,       L3,  LOG_ALWAYS, 1 },

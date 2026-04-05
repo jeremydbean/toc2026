@@ -1553,16 +1553,33 @@ void do_affect( CHAR_DATA *ch, char *argument)
 	send_to_char( "You are affected by:\n\r",ch);
 	for( paf = ch->affected; paf != NULL; paf = paf->next )
 	{
+		/* Skip pure sentinel entries (no location, no modifier, no bits) */
+		if ( paf->location == APPLY_NONE && paf->modifier == 0
+		&&   paf->bitvector == 0 && paf->bitvector2 == 0 )
+			continue;
+
 		snprintf(buf, sizeof(buf), "Spell: '%s'", skill_table[paf->type].name);
 		send_to_char( buf, ch );
 
 		if( ch->level >= 20 )
 		{
-			snprintf(buf, sizeof(buf),
-			     " modifies %s by %d for %d hours",
-			     affect_loc_name( paf->location ),
-			     paf->modifier,
-			     paf->duration );
+			const char *dur_str;
+			char dur_buf[32];
+			if ( paf->duration == -1 )
+				dur_str = "permanent";
+			else
+			{
+				snprintf( dur_buf, sizeof(dur_buf), "%d hours", paf->duration );
+				dur_str = dur_buf;
+			}
+
+			if ( paf->location != APPLY_NONE || paf->modifier != 0 )
+				snprintf(buf, sizeof(buf),
+				    " modifies %s by %d for %s",
+				    affect_loc_name( paf->location ),
+				    paf->modifier, dur_str );
+			else
+				snprintf(buf, sizeof(buf), " for %s", dur_str);
 			send_to_char( buf, ch );
 		}
 	send_to_char( ".\n\r",ch );

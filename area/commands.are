@@ -2922,26 +2922,26 @@ strips the effects and acts as a toggle-off regardless of duration given.
 
 All effects use the 'empower' skill type and are removed atomically.
 
-See also: COLOSSUS, RESTORE
+See also: TITANIC, RESTORE
 ~
 
-62 COLOSSUS~
-Syntax: colossus <player>
-        colossus <player> <ticks>
-        colossus <player> perm
-        colossus <player> toggle
+62 TITANIC~
+Syntax: titanic <player>
+        titanic <player> <ticks>
+        titanic <player> perm
+        titanic <player> toggle
 
-COLOSSUS grants a player a 500% bonus to maximum HP, mana, and move
+TITANIC grants a player a 500% bonus to maximum HP, mana, and move
 (capped at +30000 per resource to prevent overflow), then heals them to
-full immediately.
+full immediately.  Also grants +50% bonus experience for the duration.
 
-  colossus bob          -- permanent (duration -1); default when no arg given
-  colossus bob 300      -- 300-tick duration
-  colossus bob perm     -- explicit permanent
-  colossus bob toggle   -- permanent; if already colossal, strips and
-                           removes the boost instead
+  titanic bob          -- permanent (duration -1); default when no arg given
+  titanic bob 300      -- 300-tick duration
+  titanic bob perm     -- explicit permanent
+  titanic bob toggle   -- permanent; if already titanic, strips and
+                          removes the boost instead
 
-If the target is already under colossus, calling again strips it
+If the target is already under titanic, calling again strips it
 regardless of arguments.  Health, mana, and move are clamped back to
 new (reduced) max on removal.
 
@@ -2981,7 +2981,7 @@ Rare drops on kill:
 
 This command requires Level 5 immortal or higher.
 
-See also: COLOSSUS, EMPOWER, PETRIFY
+See also: TITANIC, EMPOWER, PETRIFY
 ~
 
 65 FLING~
