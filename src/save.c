@@ -1061,12 +1061,23 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
         ch->pcdata->color = true;
 
     /* fread_string() can return NULL on a truncated player file (EOF mid-string).
-     * The KEY() macro stores that NULL directly; guard here so the rest of the
-     * code never has to handle a NULL psionic_grant_spec or list_remorts. */
-    if ( ch->pcdata->psionic_grant_spec == NULL )
-        ch->pcdata->psionic_grant_spec = str_dup( "" );
-    if ( ch->pcdata->list_remorts == NULL )
-        ch->pcdata->list_remorts = str_dup( "" );
+     * The KEY() macro stores that NULL directly; guard ALL string fields here so
+     * no code elsewhere has to handle unexpected NULL character strings. */
+    if ( ch->name                          == NULL ) ch->name                          = str_dup( "" );
+    if ( ch->short_descr                   == NULL ) ch->short_descr                   = str_dup( "" );
+    if ( ch->long_descr                    == NULL ) ch->long_descr                    = str_dup( "" );
+    if ( ch->description                   == NULL ) ch->description                   = str_dup( "" );
+    if ( ch->rreply                        == NULL ) ch->rreply                        = str_dup( "" );
+    if ( ch->prompt                        == NULL ) ch->prompt                        = str_dup( "" );
+    if ( ch->pcdata->pwd                   == NULL ) ch->pcdata->pwd                   = str_dup( "" );
+    if ( ch->pcdata->bamfin                == NULL ) ch->pcdata->bamfin                = str_dup( "" );
+    if ( ch->pcdata->bamfout               == NULL ) ch->pcdata->bamfout               = str_dup( "" );
+    if ( ch->pcdata->trans                 == NULL ) ch->pcdata->trans                 = str_dup( "" );
+    if ( ch->pcdata->arrive                == NULL ) ch->pcdata->arrive                = str_dup( "" );
+    if ( ch->pcdata->depart                == NULL ) ch->pcdata->depart                = str_dup( "" );
+    if ( ch->pcdata->title                 == NULL ) ch->pcdata->title                 = str_dup( "" );
+    if ( ch->pcdata->psionic_grant_spec    == NULL ) ch->pcdata->psionic_grant_spec    = str_dup( "" );
+    if ( ch->pcdata->list_remorts          == NULL ) ch->pcdata->list_remorts          = str_dup( "" );
 
     color_update_defaults( ch, !found );
 
@@ -1484,6 +1495,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    if ( !str_cmp( word, "Title" )  || !str_cmp( word, "Titl"))
 	    {
 		ch->pcdata->title = fread_string( fp );
+		if ( ch->pcdata->title == NULL )
+		    ch->pcdata->title = str_dup( "" );
 		if (ch->pcdata->title[0] != '.' && ch->pcdata->title[0] != ','
 		&&  ch->pcdata->title[0] != '!' && ch->pcdata->title[0] != '?')
 		{
