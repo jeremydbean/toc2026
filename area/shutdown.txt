@@ -33,3 +33,17 @@
 [*****] [*****] FILE: commands.are LINE: 2485
 [*****] [*****] FILE: ashen_wastes.are LINE: 428
 [*****] [*****] FILE: commands.are LINE: 2875
+[*****] [*****] FILE: commands.are LINE: 2818
+[*****] [*****] FILE: commands.are LINE: 2901
+[*****] [*****] FILE: seasonal.are LINE: 310
+[*****] [*****] FILE: seasonal.are LINE: 310
+[*****] [*****] FILE: newthalo.are LINE: 7268
+[*****] [*****] FILE: newthalo.are LINE: 7268
+[*****] [*****] FILE: newthalo.are LINE: 7268
+[*****] [*****] FILE: newthalo.are LINE: 7268
+[*****] [*****] FILE: newthalo.are LINE: 7268
+[*****] [*****] FILE: shire.are LINE: 457
+[*****] [*****] FILE: shire.are LINE: 457
+[*****] [*****] FILE: haon.are LINE: 47
+[*****] [*****] FILE: froboz.are LINE: 45
+[*****] [*****] FILE: chess.are LINE: 2330
