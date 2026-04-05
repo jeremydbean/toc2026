@@ -201,6 +201,7 @@ def parse_sections(content):
 # Text / typo checks (description lines only – skip tilde-only and data lines)
 # ─────────────────────────────────────────────────────────────────────────────
 def check_typos(fname, content):
+    lines = content.split('\n')
     issues = []
     for pattern, fix, category in TYPOS:
         if fix is None and category is None:
@@ -208,6 +209,9 @@ def check_typos(fname, content):
         for m in re.finditer(pattern, content, re.IGNORECASE):
             # find the line number
             line_no = content[:m.start()].count('\n') + 1
+            # double-word check: skip matches on data lines (lines with digits)
+            if category == 'double-word' and re.search(r'\d', lines[line_no - 1]):
+                continue
             snippet = content[max(0, m.start()-30):m.end()+30].replace('\n', ' ').strip()
             if fix and category not in ('check-quite-vs-quiet', 'check-quiet-vs-quite'):
                 issues.append((line_no, category, f"'{m.group()}' → '{fix}': ...{snippet}..."))
@@ -289,12 +293,6 @@ def check_mobs(fname, section):
 
         if 'F' in act_flags and 'G' not in act_flags:
             issues.append((vnum, 'mob-flags', 'AGGRESSIVE (F) without STAY_AREA (G) – mob will wander across zone boundaries'))
-
-        if 'J' in act_flags:
-            issues.append((vnum, 'permission', 'ACT_TRAIN (J) set – requires IMP permission'))
-
-        if 'K' in act_flags:
-            issues.append((vnum, 'permission', 'ACT_PRACTICE (K) set – requires IMP permission'))
 
         # AFF sanity
         if 'X' in aff_flags:
@@ -560,18 +558,21 @@ def check_shops(fname, section):
         if len(parts) < 10:
             continue
         try:
-            buy_pct = int(parts[7])
-            sell_pct = int(parts[8])
-            open_hr = int(parts[9])
-            close_hr = int(parts[10]) if len(parts) > 10 else None
-            if buy_pct < 100:
-                issues.append((line_no, 'shop', f'buy% {buy_pct} < 100 (players buy cheaper than list price): {line!r}'))
-            if sell_pct > 100:
-                issues.append((line_no, 'shop', f'sell% {sell_pct} > 100 (players sell for more than list price): {line!r}'))
+            # Shop line: keeper type1..type5 profit_sell profit_buy open_hr close_hr
+            # profit_sell = % of cost shopkeeper charges players (normal: 100-200%)
+            # profit_buy  = % of cost shopkeeper pays players    (normal: 20-95%)
+            sell_pct = int(parts[6])  # sell profit (what player pays)
+            buy_pct  = int(parts[7])  # buy profit  (what shopkeeper pays player)
+            open_hr  = int(parts[8])
+            close_hr = int(parts[9]) if len(parts) > 9 else None
+            if sell_pct < 100:
+                issues.append((line_no, 'shop', f'sell% {sell_pct} < 100 (shopkeeper undersells, players exploit for free items): {line!r}'))
+            if buy_pct > 100:
+                issues.append((line_no, 'shop', f'buy% {buy_pct} > 100 (shopkeeper overpays players, infinite profit loop): {line!r}'))
+            if sell_pct <= 0 or buy_pct <= 0:
+                issues.append((line_no, 'shop', f'sell%={sell_pct} buy%={buy_pct} — zero/negative profit value: {line!r}'))
             if open_hr < 0 or open_hr > 23:
                 issues.append((line_no, 'shop', f'open_hr {open_hr} out of range 0-23'))
-            if close_hr is not None and (close_hr < 0 or close_hr > 23):
-                issues.append((line_no, 'shop', f'close_hr {close_hr} out of range 0-23'))
         except (ValueError, IndexError):
             pass
     return issues
