@@ -3266,7 +3266,9 @@ char *room_flag2_name(int room_flag)
 {
     static char buf[512];
 
+    buf[0] = '\0';
     if (room_flag & ROOM2_NO_TPORT         ) toc_strlcat( buf, " No_Tport", sizeof(buf) );
+    if (room_flag & ROOM2_BANK             ) toc_strlcat( buf, " Bank", sizeof(buf) );
 
     return ( buf[0] != '\0' ) ? buf+1 : "none";
 }

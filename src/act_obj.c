@@ -1355,7 +1355,7 @@ void do_deposit( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if(ch->in_room != get_room_index(ROOM_VNUM_BANK)) {
+    if(!IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
         send_to_char( "You're not in the bank!\n\r", ch );
         return;
     }
@@ -1403,7 +1403,7 @@ void do_withdraw( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if(ch->in_room != get_room_index(ROOM_VNUM_BANK)) {
+    if(!IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
         send_to_char("You're not in the bank!\n\r",ch);
         return;
     }
@@ -1437,7 +1437,7 @@ void do_convert(CHAR_DATA *ch, char *argument)
 {
     UNUSED_PARAM(argument);
 
-    if(ch->in_room != get_room_index(ROOM_VNUM_BANK)) {
+    if(!IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
         send_to_char("You're not in the bank!\n\r",ch);
         return;
     }
@@ -1455,7 +1455,7 @@ void do_balance( CHAR_DATA *ch, char *argument )
     if(IS_NPC(ch))
         return;
 
-    if(ch->in_room != get_room_index(ROOM_VNUM_BANK)) {
+    if(!IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
         send_to_char("You need to be in the bank!\n\r",ch);
         return;
     }

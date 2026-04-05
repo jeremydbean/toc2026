@@ -1196,6 +1196,8 @@ struct  kill_data
 #define ROOM_FLAGS2             (Z)
 
 #define ROOM2_NO_TPORT          (A)
+#define ROOM2_B_UNUSED          (B)
+#define ROOM2_BANK              (C)
 
 /* Directions. */
 #define DIR_NORTH                     0
