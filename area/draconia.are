@@ -11,10 +11,10 @@ This small dragon hisses at you as you enter the room.  Although it is only a
 few feet long, its sharp teeth make you think twice about petting it.
 ~
 lizard~
-BGT T -700 S
+ABGT T -700 S
 7 3 7d5+85 4d7+40 1d8+1 10
 4 4 4 4
-F 0 B M
+F AB B M
 8 8 0 400
 0 0 S 0
 #2201
@@ -27,10 +27,10 @@ has black scales and a seven foot wingspan.  He scowls at you and hefts his
 spear as you enter the room.
 ~
 lizard~
-BCFR D -750 S
+ABCFGR D -750 S
 13 7 13d10+150 7d13+75 2d6+3 0
 -1 -1 -1 -1
-E 0 0 I
+E AB 0 I
 8 8 1 450
 0 0 M 0
 #2202
@@ -41,10 +41,10 @@ The lord of this crypt is here.
 He doesn't look happy to see you.
 ~
 undead~
-BCF T -1000 S
+ABCFG T -1000 S
 27 15 27d20+320 14d27+150 3d6+8 10
 -8 -8 -8 -8
-DHKN B 0 N
+DHKN AB 0 N
 8 8 1 300
 0 0 M 0
 #2203
@@ -57,10 +57,10 @@ surprised at the fact that he is human, and realize that he must be very
 powerful to have been accepted by the creatures which live here.
 ~
 human~
-B BDH -800 S
+AB BDH -800 S
 22 9 22d17+264 11d22+130 1d8+10 19
 -5 -5 -5 -5
-FH C 0 D
+FH ABC 0 D
 8 8 1 800
 0 0 M 0
 #2204
@@ -72,10 +72,10 @@ A Draconian stands here, dressed in simple robes.  Around his neck you
 notice a golden medallion in the shape of a five headed dragon.  
 ~
 lizard~
-BCF DH -750 S
+ABCFG DH -750 S
 22 9 22d17+264 11d22+130 3d5+6 17
 -5 -5 -5 -5
-DEF 0 0 0
+DEF AB 0 0
 8 8 1 200
 0 0 M 0
 #2205
@@ -88,10 +88,10 @@ though he could crush your head with a single blow.  Yet you sense that he
 is controlled by a greater power. 
 ~
 lizard~
-BC DH -800 S
+ABC DH -800 S
 26 13 26d20+312 13d26+150 2d8+12 5
 -7 -7 -7 -7
-CDFH 0 B 0
+CDFH AB B 0
 8 8 1 200
 0 0 L 0
 #2206
@@ -104,10 +104,10 @@ all.  You find yourself strangely repulsed as she draws a knife and
 prepares to defend herself. 
 ~
 lizard~
-BR 0 -500 S
+ABR 0 -500 S
 6 2 6d5+70 3d6+30 2d3+1 13
 4 4 4 4
-N 0 0 0
+N AB 0 0
 8 8 2 50
 0 0 M 0
 #2207
@@ -119,10 +119,10 @@ This creature has devoted its life to defending the king.  Your intrusion has
 not pleased it.
 ~
 lizard~
-BF CDF -750 S
+ABFG CDF -750 S
 18 9 18d14+216 9d18+100 2d6+10 9
 -3 -3 -3 -3
-DEFP E F C
+DEFP ABE F C
 8 8 1 500
 0 0 M 0
 #2220
@@ -134,7 +134,7 @@ You see before you the master of this Tower, Tiamat.  She frowns at you as she
 prepares to make you pay for your insolence ... with your lives!
 ~
 dragon~
-BCF DFH -1000 S
+ABCFG DFH -1000 S
 55 35 10d30+1860 28d55+330 4d9+15 18
 -25 -25 -25 -25
 ADEFHJKMN ABHI 0 J
@@ -149,7 +149,7 @@ This huge red dragon dominates the chamber.  As you turn to flee, he grins at
 you and invites you to stay ... forever! 
 ~
 dragon~
-BCF DF -1000 S
+ABCFG DF -1000 S
 45 15 45d34+540 23d45+270 2d8+10 29
 -15 -15 -15 -15
 DEFHJKMN ABH 0 I
@@ -164,7 +164,7 @@ This huge black wyrm laughs at your puny weapons.  You realize that he is not
 going to roll over and die for you.
 ~
 dragon~
-BCF DF -1000 S
+ABCFG DF -1000 S
 39 15 39d30+468 20d39+230 3d8+4 31
 -13 -13 -13 -13
 CEFHKMN ABK 0 J
@@ -180,7 +180,7 @@ dragons, you are not afraid.  She smiles at you and says 'I think you will find
 me a greater challenge than my offspring.'
 ~
 dragon~
-BCF DF -1000 S
+ABCFG DF -1000 S
 37 13 37d28+444 19d37+220 3d8+4 30
 -12 -12 -12 -12
 EFHKMN ABI 0 H
@@ -196,7 +196,7 @@ She looks at you with sorrow in her eyes and says 'You have slaughtered my
 children.  Prepare to die.'
 ~
 dragon~
-BCF DF -1000 S
+ABCFG DF -1000 S
 41 13 41d31+492 21d41+240 3d8+15 27
 -14 -14 -14 -14
 CDEFHJKMN AB 0 0
@@ -211,10 +211,10 @@ A hydra is here, guarding the entrance to a sealed vault.  You have the feeling
 it isn't happy to see you.
 ~
 lizard~
-BCF DF -750 S
+ABCFG DF -750 S
 18 12 18d14+216 9d18+100 2d8+7 26
 -3 -3 -3 -3
-CDEFK 0 0 J
+CDEFK AB 0 J
 8 8 0 1700
 0 0 L 0
 #2227
@@ -226,10 +226,10 @@ He looks like he's under a lot of stress.  He would probably like it if you
 left him alone.
 ~
 human~
-B 0 0 S 
+AB 0 0 S
 5 2 5d4+60 3d5+30 1d6+4 17
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #2240
@@ -241,10 +241,10 @@ This used to be one of the warriors of this tribe.  He was denied his final
 rest, however, and now guards this corridor tirelessly as a zombie.
 ~
 undead~
-BCF DF -400 S
+ABCFG DF -400 S
 9 2 9d7+108 5d9+50 1d8+6 10
 2 2 2 2
-DIR 0 0 0
+DIR AB 0 0
 8 8 0 80
 0 0 M 0
 #2241
@@ -255,10 +255,10 @@ A Phase Dragon is darting around the room.
 This small dragon looks like he's up to no good. 
 ~
 unique~
-CFGH DF -300 S 
+ACFGH DF -300 S
 10 5 10d8+120 5d10+60 2d6+6 22
 1 1 1 1
-CF 0 0 0
+CF AB 0 0
 8 8 1 90
 0 0 L 0
 #2242
@@ -270,10 +270,10 @@ This dragon man looks VERY foolish, dressed in a green and blue striped
 suit.  As you enter the room, he points at you and laughs. 
 ~
 lizard~
-GH 0 0 S 
+AGH 0 0 S
 5 5 5d4+60 3d5+50 3d3+4 7
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 1 40
 0 0 M 0
 #2243
@@ -285,10 +285,10 @@ This draconian looks VERY busy as she orders her slaves around.  You think
 it might be a good idea to leave her alone. 
 ~
 lizard~
-BC DFH -600 S 
+ABC DFH -600 S
 20 10 20d15+240 10d20+120 2d8+5 5
 -4 -4 -4 -4
-DEF B 0 0
+DEF AB 0 0
 8 8 2 100
 0 0 L 0
 #0

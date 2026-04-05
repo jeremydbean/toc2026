@@ -13,7 +13,7 @@ undead~
 ABCOT 0 -600 S
 13 6 1d6+165 2d13+113 2d7+1 5
 0 0 0 0
-EKNR AILQR BF HN
+EKNR ABILQR BF HN
 8 8 0 25
 0 0 M 0
 #11001
@@ -28,7 +28,7 @@ snake~
 AFG J -300 S
 12 6 2d6+150 2d12+112 3d6+0 10
 0 0 0 0
-FHR A I K  
+FHR AB I K
 8 8 0 0
 0 0 S 0
 #11002
@@ -80,7 +80,7 @@ centipede~
 AW 0 -300 S
 11 5 1d6+150 2d11+111 2d6+1 10
 -1 0 0 0 
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #11005
@@ -93,7 +93,7 @@ Necromancers got their hold on him.  Now he just awaits, blade
 drawn, like some ethereal beefeater.
 ~
 undead~
-ABFT 0 -700 S
+ABFGT 0 -700 S
 15 7 1d8+185 2d15+115 2d8+2 0
 0 0 0 0
 CEFIKNU ABILQR P HN
@@ -109,7 +109,7 @@ you.  He twitches from excitement so much that his scraggly hair
 jostles as he flashes his dull yellow teeth.
 ~
 human~
-ABFT DFHJO -750 S
+ABFGT DFHJO -750 S
 25 12 3d6+510 2d25+125 3d6+8 0
 -1 0 -1 -5
 CEFIKNU AB IP HN
@@ -159,7 +159,7 @@ A blob of green slime drops upon you!
 It looks like animated mucous, dissolving and eating all it touches.
 ~
 unique~
-ABF 0 -200 S
+ABFG 0 -200 S
 6 2 1d10+75 2d6+106 1d8+1 14
 0 0 0 0
 NU AB FKLQR I
@@ -206,7 +206,7 @@ Slightly smaller than its green cousin, this creature also appears
 to be made of living crystalline substance which glows yellow.
 ~
 centipede~
-AFU 0 -350 S
+AFGU 0 -350 S
 7 2 1d8+85 2d7+57 2d4+1 10
 0 0 0 0
 EKNU ABL I HS
@@ -235,7 +235,7 @@ This great beast has huge mandibles and a mammals' mouth, angry animal
 eyes set between unreadable insect eyes.  The effect is confusing.
 ~
 unique~
-AFT 0 -750 S
+AFGT 0 -750 S
 18 9 3d6+225 2d18+118 3d6+2 10
 0 -10 0 0
 CEIKNU AB FG H
@@ -250,7 +250,7 @@ As it oozes slowly at you, you can make out items undigested within
 it.  From past unfortunates, you presume.
 ~
 jelly~
-AFT 0 -700 S
+AFGT 0 -700 S
 16 8 2d6+196 2d16+116 2d8+2 14
 -1 0 0 0
 NU AB F I
@@ -266,7 +266,7 @@ long, wicked nails which are stained with the ichor of embalmers
 and malignant salves.
 ~
 human~
-ABFHRU 0 -750 S
+ABFGHRU 0 -750 S
 17 8 1d6+210 2d17+207 2d8+2 5
 0 0 0 -10
 EFKNU AB CI N
@@ -605,7 +605,7 @@ glass~
 E
 vial potion puce~
 The vial contains a disgusting looking liquid, which appears to
-be almost puce in colour.
+be almost puce in color.
 ~
 #11023
 shield large shiny~

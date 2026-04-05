@@ -10,10 +10,10 @@ A goblin slave lies here asleep.
 The defenseless goblin begs for mercy.
 ~
 goblin~
-HB 0 -450 S
+ABH 0 -450 S
 1 1 1d11+11 1d5+0 1d5+0 13
 1 1 1 0
-CFKM 0 0 0
+CFKM AB 0 0
 8 8 1 0
 0 0 M 0
 #5101
@@ -24,10 +24,10 @@ A drow commoner walks on guard duty.
 I doubt he is the type to give directions.
 ~
 elf~
-CFGHM D -650 S
+ACFGHM D -650 S
 10 12 1d10+130 12d10+5 1d10+5 17
 3 3 3 2
-CEFIKNU 0 BC 0
+CEFIKNU AB BC 0
 8 8 1 100
 0 0 M 0
 #5102
@@ -38,10 +38,10 @@ The drow warrior noble stands here guarding his home.
 He looks pissed off!
 ~
 elf~
-BFGM D -750 S
+ABFGM D -750 S
 12 9 2d20+160 15d10+2 15d1+2 3
 3 3 3 2
-CDEFK 0 BC 0
+CDEFK AB BC 0
 8 8 1 150
 0 0 M 0
 #5103
@@ -52,10 +52,10 @@ The drow mage noble is here protecting his home.
 The mage prepares to cast a spell ... at you!!
 ~
 elf~
-BFGM D -750 S
+ABFGM D -750 S
 15 8 1d12+190 8d20+2 8d2+2 11
 4 4 4 2
-EFK 0 BC 0
+EFK AB BC 0
 8 8 1 150
 0 0 M 0
 #5104
@@ -66,10 +66,10 @@ The drow priestess is here shouting orders.
 I wouldn't want go get on her bad side!
 ~
 elf~
-BFGM D -800 S
+ABFGM D -800 S
 17 5 1d11+205 17d10+2 17d1+2 8
 4 4 4 2
-DEK 0 BC 0
+DEK AB BC 0
 8 8 2 200
 0 0 M 0
 #5105
@@ -80,10 +80,10 @@ The drow master stares at you angrily.
 The drow master is ALWAYS ready for a fight.
 ~
 elf~
-BFGM D -850 S
+ABFGM D -850 S
 21 10 1d12+248 18d1+4 18d1+4 1
 5 5 5 2
-DEFKN 0 BC 0
+DEFKN AB BC 0
 8 8 1 200
 0 0 M 0
 #5106
@@ -94,10 +94,10 @@ The drow weapons master is here shadow boxing.
 He definitely knows his way around in combat.
 ~
 elf~
-BFGM D -850 S
+ABFGM D -850 S
 23 11 23d23+230 1d4+15 1d4+15 1
 5 5 5 2
-DEFKN 0 BC 0
+DEFKN AB BC 0
 8 8 1 200
 0 0 M 0
 #5107
@@ -108,10 +108,10 @@ The matron mother of the house is standing here.
 She looks really pissed off!
 ~
 elf~
-BFGM D -1000 S
+ABFGM D -1000 S
 24 10 1d50+450 15d15+4 20D2+4 8
 5 5 5 3
-ACDEFKN 0 BC 0
+ACDEFKN AB BC 0
 8 8 2 500
 0 0 M 0
 #5108
@@ -122,10 +122,10 @@ The matron mother of the 1st house is waiting for you.
 She looks like she is about to rip your head off and eat it.
 ~
 elf~
-BFGM DH -1000 S
+ABFGM DH -1000 S
 25 10 1d50+350 20d20+4 20d2+4 8
 5 5 5 3
-ACDEFKN 0 BC 0
+ACDEFKN AB BC 0
 8 8 2 500
 0 0 M 0
 #5109
@@ -137,10 +137,10 @@ It's about the most putrid thing you've ever seen. All slimy with numerous
 tentacles coming out of its body. The yochlol is not in a good mood.
 ~
 unique~
-FB DH -1000 S
+ABFG DH -1000 S
 35 15 25d2+2200 5d200+35 5d20+4 8
 7 7 7 4
-ACDEFKN BLQ C 0
+ACDEFKN ABLQ C 0
 8 8 1 500
 0 0 L 0
 #5110
@@ -151,10 +151,10 @@ The drow guard is here staring at you ominously.
 The drow guard blends so well with his environment, you barely see his form.
 ~
 elf~
-BFGM DJP -700 S
+ABFGM DJP -700 S
 12 9 12d12+120 1d4+5 1d4+5 1
 3 3 3 2
-EFK 0 BC 0
+EFK AB BC 0
 8 8 1 50
 0 0 M 0
 #5111
@@ -165,10 +165,10 @@ The drow scout is here sneaking among the shadows.
 The drow scout blends so well with her environment, you barely see her form.
 ~
 elf~
-FGHM JPQ -700 S
+AFGHM JPQ -700 S
 7 13 28d8+80 1d4+3 1d4+3 1
 2 2 2 2
-EFK 0 BC 0
+EFK AB BC 0
 8 8 2 20
 0 0 M 0
 #5112
@@ -183,7 +183,7 @@ countless years and deaths.  She glares at you, and then shouting something
 in the dark elf language she attacks!
 ~
 unique~
-BCFGMOQRSTV CDEFGHJOTV -1000 S
+ABCFGMOQRSTV CDEFGHJOTV -1000 S
 60 60 80d80+500 100d10+5000 20d2+50 20
 -30 -30 -30 -30
 ACDEFHIJK ABLQ KNP Y
@@ -1240,7 +1240,7 @@ S
 M 0 5100 15 5122           GOBLIN SLAVE
 *
 M 0 5101 10 5118           DROW COMMONER
-E 1 5100 50 16T
+E 1 5100 50 16
 M 0 5101 10 5133
 E 1 5100 50 16
 *

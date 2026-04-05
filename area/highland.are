@@ -10,10 +10,10 @@ It's over 6 meters long. You wonder what something so big eats to stay
 alive.
 ~
 unique~
-FGT 0 -250 S
+AFGT 0 -250 S
 15 5 15d11+180 7d15+90 2d6+3 16
 -2 -2 -2 0
-FIJU R IL 0
+FIJU ABR IL 0
 8 8 0 0
 0 0 S 0
 #17101
@@ -24,10 +24,10 @@ The Barbarian stinks and sweats.
 The Barbarian looks like he could eat a horse but he will consider you also.
 ~
 human~
-GT 0 -100 S
+AGT 0 -100 S
 14 5 14d10+182 7d14+84 1d12+3 7
 -1 -2 -1 1
-CEKU 0 0 0
+CEKU AB 0 0
 8 8 1 50
 0 0 M 0
 #17102
@@ -38,10 +38,10 @@ The warrior looks at you.
 The warrior looks suspiciously around for anyone he thinks he wants to kill.
 ~
 human~
-GT 0 -200 S
+AGT 0 -200 S
 16 6 16d12+200 8d16+96 3d4+4 17
 -2 -1 -2 1
-CDKNU 0 P Q
+CDKNU AB P Q
 8 8 1 100
 0 0 M 0
 #17103
@@ -53,10 +53,10 @@ The Guards are under strict instructions to let in only those people who
 belong here.  They also guard the lord's cleric and mage.
 ~
 human~
-BT 0 -350 S
+ABT 0 -350 S
 18 7 18d14+252 9d18+108 2d7+5 8
 -3 -3 -3 0
-CDKNU 0 P Q
+CDKNU AB P Q
 8 8 1 130
 0 0 M 0
 #17104
@@ -68,10 +68,10 @@ The Elite of the army. He will protect his Lord at all cost.  He is entirely
 fearless - even death does not scare him.
 ~
 human~
-BT 0 -600 S
+ABT 0 -600 S
 21 9 21d16+294 10d21+126 4d4+6 27
 -5 -4 -5 -1
-CDEFKNU 0 BP Q
+CDEFKNU AB BP Q
 8 8 1 160
 0 0 M 0
 #17105
@@ -83,10 +83,10 @@ A man who lives in these harsh lands. He knows his way around here.  He
 walks around playing his bagpipes.
 ~
 human~
-GT CH 750 S
+AGT CH 750 S
 25 10 15d19+370 7d15+90 2d10+7 6
 -7 -7 -8 -3
-EFNOU K IN QR
+EFNOU ABK IN QR
 8 8 1 300
 0 0 M 0
 #17106
@@ -98,10 +98,10 @@ He rules this district. He is a very harsh ruler and all his subjects
 fear him. He has teeth like a boar.  Man but is he ugly!
 ~ 
 human~
-BT H -1000 S
+ABT H -1000 S
 25 10 15d19+375 7d15+90 3d7+7 21
 -7 -7 -7 -3
-DEIKU L BI P
+DEIKU ABL BI P
 8 8 1 1000
 0 0 M 0
 #17107
@@ -114,10 +114,10 @@ how the Lord can stand the sight of her even in absolute darkness.
 Perhaps that is why you don't see any children around.
 ~
 human~
-BCT 0 -750 S
+ABCT 0 -750 S
 20 8 20d15+287 10d20+120 2d8+5 4
 -3 -4 -3 0
-DEIKU L BI P
+DEIKU ABL BI P
 8 8 2 1000
 0 0 M 0
 #17108
@@ -130,13 +130,13 @@ something about making a big mistake and now having to roam the lands without
 peace.
 ~
 human~
-GT BHJ 0 S
+AGT BHJ 0 S
 35 15 35d26+450 17d35+210 4d7+10 3
 -12 -12 -11 -6
-AEFHKNU O HI N 
+AEFHKNU ABO HI N
 8 8 1 10 
 0 0 L 0
-#17109 
+#17109
 sheep~
 A sheep~
 The sheep is eating grass.
@@ -145,10 +145,10 @@ It looks like a sheep, it sounds like a sheep and whatdo ya know - it's
 even a sheep.
 ~
 unique~
-GT 0 0 S
+AGT 0 0 S
 10 2 10d7+120 5d10+60 1d8+2 15
 1 1 1 7
-CFIU 0 IQ K
+CFIU AB IQ K
 8 8 0 0
 0 0 M 0
 #17110
@@ -160,10 +160,10 @@ She is the personal mage for the Lord. She is doing some sort of an
 experiment here. Beter watch out or it might explode in your face.
 ~
 human~
-BR CFH -750 S
+ABR CFH -750 S
 18 7 18d13+234 9d18+108 2d6+4 19
 -4 -4 -4 1
-FNQ 0 C 0
+FNQ AB C 0
 8 8 2 1000
 0 0 M 0
 #17111
@@ -176,10 +176,10 @@ in body and mind. Presently he is meditating on something, so he
 is deep in thought and hasn't noticed you enter yet.
 ~
 human~
-BQ H -350 S
+ABQ H -350 S
 18 7 18d13+234 9d18+108 2d6+3 18
 -4 -4 -4 1
-FNOQ 0 BN 0
+FNOQ AB BN 0
 8 8 1 1000
 0 0 M 0 
 #17112
@@ -190,10 +190,10 @@ The keeper greets you.
 His sole duty is that his beacon stays lit. It's the only thing he cares for.
 ~
 human~
-BT 0 0 S
+ABT 0 0 S
 16 6 16d12+200 8d16+96 2d6+4 17
 -2 -3 -1 2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 500
 0 0 M 0
 #17113
@@ -205,10 +205,10 @@ Before you, you see a reptilian monster of enormous size.  You better not
 get into a fight with her.
 ~
 snake~
-BT DFHJPQ 200 S
+ABT DFHJPQ 200 S
 24 12 24d18+408 12d24+144 3d7+7 31
 -7 -6 -6 -3
-ACDEHJMOR AL BJ OS
+ACDEHJMOR ABL BJ OS
 8 8 2 2000
 0 0 H 0
 #17114
@@ -220,10 +220,10 @@ A smaller replica of Nessy lies here sleeping contently. Don't disturb her -
 even kids of a reptilian need their sleep.
 ~
 snake~
-BT DFJPQ 300 S
+ABT DFJPQ 300 S
 20 10 20d15+335 10d20+120 4d4+5 32
 -4 -5 -5 -1
-CDEJMOR AL BJ OS
+CDEJMOR ABL BJ OS
 4 8 2 500
 0 0 L 0
 #17115
@@ -236,10 +236,10 @@ The guardian will attack anybody that comes here except for its mistress,
 the mage.
 ~
 human~
-BFT DFJT -750 S
+ABFGT DFJT -750 S
 20 10 20d15+260 10d20+120 2d8+5 26
 -4 -4 -4 1
-EFNU 0 H I
+EFNU AB H I
 8 8 0 100
 0 0 L 0
 #17116
@@ -252,10 +252,10 @@ Normally they would be on duty but they are just on-call now.  They are not
 very tall but look quite tough.
 ~
 human~
-BFT 0 -400 S
+ABFGT 0 -400 S
 17 8 17d13+255 8d17+102 2d7+4 27
 -3 -2 -3 2
-EIKLQ 0 0 0
+EIKLQ AB 0 0
 8 8 1 130
 0 0 M 0
 #0

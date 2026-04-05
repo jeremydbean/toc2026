@@ -12,7 +12,7 @@ leaves his side, and shall remain unwinded until the dread ship Naglfar sails
 towards Valhalla on the dawn of Ragnarok
 ~
 human~
-BOTV CDFJ 1000 S
+ABOTV CDFJ 1000 S
 68 30 1d1+19999 1d1+499  5d4+50  8
 -20 -20 -20 -10
 ACDEFHIKLNOT ABP CD 0
@@ -196,7 +196,7 @@ then wakes you up and steals the warm spot you left on the bed. So watch out
 and don't let down your guard.
 ~
 dog~
-BCGMTV CDEFGHJOTV 1000 S
+ABCGMTV CDEFGHJOTV 1000 S
 70 150 200d2+10500 100d1+500 10d10+15 5
 -20 -20 -20 -20
 ACHN ABKL HIJ 0
@@ -214,7 +214,7 @@ master and mistress will be with you shortly.' After saying this he walks
 over to the fireplace and stokes up the fire.
 ~
 human~
-BTV DFHNc 1000 S
+ABTV DFHNc 1000 S
 60 50 6d6+7400 4d2+1320 8d6+70 13
 -125 -125 -125 -125
 CDFHJLN ABP CD 0
@@ -248,7 +248,7 @@ a black bastard sword in one hand, and a short sword in the other.  He
 looks VERY formidable.
 ~
 unique~
-BGTU DFNTV 1000 S
+ABGTU DFNTV 1000 S
 65 10 10d100+11000 1d1+1000 11d15+300 3
 -13 -13 -13 -13
 DEFIKNRV ABE JP 0
@@ -265,7 +265,7 @@ razor sharp, gleam slightly in the dim light entering from the small bar'd
 window in the room.
 ~
 unique~
-BFGR DFHT -1000 S
+ABFGR DFHT -1000 S
 70 5 20d100+17000 1d1+1000 15d10+300 17
 -12 -12 -12 -12
 DEFIKNR ABEF JP 0
@@ -284,7 +284,7 @@ the god, Rimmon, and to harm the Gimp is to suffer the wrath of Rimmon
 himself.
 ~
 human~
-BGMT CDEFHTU -500 S
+ABGMT CDEFHTU -500 S
 45 20 300d2+50 2d50+100 7d5+20 4
 -5 -5 -5 -5
 BDFIKN ABEPR EG FN
@@ -301,7 +301,7 @@ but to add to that collection, every chance it gets..  It is now VERY happy
 because you just gave it one of those chances!
 ~
 undead~
-BFGR DFHT -1000 S
+ABFGR DFHT -1000 S
 70 5 20d100+21500 2d70+1500 10d10+250 20
 -50 -55 -50 -55
 DEFIKNR ABEF JP 0
@@ -323,10 +323,10 @@ looks over at the dartboard and caws, "Slay the ego! Slay the ego!
 Bawwwwk!"
 ~
 songbird~
-BIMU DFGHLOTVZ D 0 S
+ABIMU DFGHLOTVZ D 0 S
 69 60 200d2+12000 100d55+400 10d10+20 10
 -70 -70 -70 -70
-ABCDEFGHIJKLV ACDEFGHIJKLMNOPQRS 0 0
+ABCDEFGHIJKLV ABCDEFGHIJKLMNOPQRS 0 0
 8 8 1 0
 0 0 M 0
 #9920
@@ -342,7 +342,7 @@ then he shoots it and begins to laugh as he skips away, but you're not
 worried about that right now.  That mule is FAR too attractive.
 ~
 human~
-HMR HOPTUV -1000 S
+AHMR HOPTUV -1000 S
 60 20 2D200+10000 2d200+700 6d4+70 19
 10 10 10 10
 CDEFHIK ABP O 0
@@ -359,10 +359,10 @@ flashes a smile before he sees your shoes.  His whole expression changes.
 overgrown feet!"  He growls and huffs.
 ~
 elf~
-CHM OTV 1000 S
+ACHM OTV 1000 S
 10 1 10d10+100 10D10+100 2d5+5 17
 1 1 1 1
-DFKN A 0 0
+DFKN AB 0 0
 8 8 1 1000
 0 0 S 0
 #9922
@@ -375,10 +375,10 @@ most outstanding features.  Well that and the red nose he has from
 drinking so much.  He looks at your and puts his dukes up.
 ~
 elf~
-CGHM GOT -750 S
+ACGHM GOT -750 S
 25 5 15d20+100 15D20+100 3d6+20 17
 -1 -1 -1 -1
-EFKN A 0 0
+EFKN AB 0 0
 8 8 1 5000
 0 0 S 0
 #9923
@@ -408,7 +408,7 @@ razor sharp, gleam slightly in the dim light entering from the small bar'd
 window in the room.
 ~
 unique~
-BFGR DFHT -1000 S
+ABFGR DFHT -1000 S
 70 5 20d100+17000 1d1+1000 15d10+300 17
 -12 -12 -12 -12
 DEFIKNR ABEF JP 0

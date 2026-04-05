@@ -13,7 +13,7 @@ once had red hair. Clad in silk vestments of orange and red, he only glances
 at you quickly before returning to his contemplations of the pond.
 ~
 human~
-BGQR CDEFJOTVZ AB 1000 S
+ABGQR CDEFJOTVZ AB 1000 S
 30 6 200d2+65 100d1+75 5d5+17 17
 -3 -5 -2 -10 
 ACEFN ABLN IJKPQ M 
@@ -32,7 +32,7 @@ you get closer to the master, the sound of the wind becomes louder and
 louder, maybe this is the person you seek for enlightenment.
 ~
 human~
-BEGKMV CDEFGHNTV 1000 S
+ABEGKMV CDEFGHNTV 1000 S
 60 19 200d2+5560 100d1+410 5d8+15 17
 -15 -15 -15 -30
 ACDEFHI ABCNP DIJKL M 
@@ -50,7 +50,7 @@ sacred place, if you look closely you can see the notches of those who failed
 marked on the pommel of this guards sword.
 ~
 human~
-CGMT CDEFGHTV 1000 S
+ACGMT CDEFGHTV 1000 S
 40 9 200d2+300 100d1+50 5d6+9 17
 -6 -6 -6 -6
 ACEFJKNU ABENQR FK M 
@@ -65,7 +65,7 @@ Erm this is quite an ugly fellow, kinda reminds you of your favorite aunt
 hilda.....blach.
 ~
 human~
-CDE H 1000 S
+ACDE H 1000 S
 51 30 200d2+5000 100d1+500 10d10+10 17
 -20 -20 -20 -20
 0 ABC 0 0

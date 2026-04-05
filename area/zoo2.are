@@ -9,10 +9,10 @@ A sleek Dolphin swims here in circles.
 You see a sleek dolphin swimming about in circles.
 ~
 fish~
-T N 0 S
+AT N 0 S
 7 1 1d1+131 1d1+100 1d8+1 24
 0 0 0 0
-FM 0 0 0
+FM AB 0 0
 8 8 0 0
 0 0 M 0
 #5802
@@ -23,10 +23,10 @@ A disgusting blowfish puffs, puffs, and puffs here.
 You see a bizarre puffy fish staring at you, puffing.
 ~
 fish~
-T N 0 S
+AT N 0 S
 7 1 1d1+131 1d1+100 1d8+1 10
 0 0 0 0
-FM 0 D FG
+FM AB D FG
 8 8 0 0
 0 0 M 0
 #5803
@@ -37,10 +37,10 @@ A slender barricuda searches for prey.
 You see a hungry shiny barricuda swimming close to you.
 ~
 fish~
-T N 0 S
+AT N 0 S
 9 2 1d1+169 1d1+100 1d8+2 10
 0 0 0 0
-FMD 0 0 0 
+FMD AB 0 0
 8 8 2 50
 0 0 M 0
 #5804
@@ -52,10 +52,10 @@ You see the oddest fish you have ever encountered, with what appear to be antenn
 sprouting from all over.
 ~
 fish~
-T O 0 S
+AT O 0 S
 9 1 1d1+169 1d1+100 1d8+2 11
 -5 -5 -5 -5
-FM L 0 0 
+FM ABL 0 0
 8 8 2 0
 0 0 M 0
 #5805
@@ -66,10 +66,10 @@ A fierce looking eel bares its fangs.
 You see a long scary eel with huge fangs.
 ~
 fish~
-T 0 0 S
+AT 0 0 S
 11 0 1d1+223 1d1+100 1d10+2 10
 0 0 0 0
-FM 0 0 0
+FM AB 0 0
 8 8 0 100
 0 0 S 0
 #5806
@@ -80,10 +80,10 @@ A small octopus swims near you, tentacles flailing.
 You see a wildly flailing octopus swimming closeby.
 ~
 fish~
-T V 0 S
+AT V 0 S
 10 2 1d1+195 1d1+100 1d10+1 12
 0 0 0 0
-FKO 0 0 0
+FKO AB 0 0
 8 8 0 100
 0 0 M 0
 #5807
@@ -94,10 +94,10 @@ A mean looking shark stalks this area.
 You see a large white shark barreling towards you, it obviously smells blood.
 ~
 fish~
-GT 0 0 S
+AGT 0 0 S
 13 1 1d1+223 1d1+100 2d5+3 10
 0 0 0 0
-FM 0 0 0 
+FM AB 0 0
 8 8 2 200
 0 0 L 0
 #5808
@@ -108,10 +108,10 @@ A simple ordinary billy goat.
 You see a normal scruffy goat eating everything in sight.
 ~
 human~
-CT 0 0 S
+ACT 0 0 S
 5 0 1d1+79 1d1+100 1d6+1 15
 0 0 0 0
-FB 0 0 0
+FB AB 0 0
 8 8 2 1
 0 0 S 0
 #5809
@@ -122,10 +122,10 @@ A simple mountain Llama stands here looking at you.
 You see a brown cuddly looking Llama.
 ~
 horse~
-T 0 0 S
+AT 0 0 S
 6 1 1d1+100 1d1+100 1d6+2 15
 0 0 0 0
-FB 0 0 0
+FB AB 0 0
 8 8 2 1
 0 0 S 0
 #5810
@@ -136,10 +136,10 @@ A broadshouldered jersey cow grazes here.
 You see a big black and white cow grazing here.
 ~
 horse~
-T 0 0 S
+AT 0 0 S
 9 1 1d1+169 1d1+100 2d4+2 10
 0 0 0 0
-CJ 0 0 0
+CJ AB 0 0
 8 8 1 100
 0 0 M 0
 #5811
@@ -150,10 +150,10 @@ A curly-tailed pig drinks from a water trough here.
 You see a clean pink hog vieing for your attention.
 ~
 human~
-T 0 0 S
+AT 0 0 S
 8 0 1d1+144 1d1+100 1d7+2 15
 0 0 0 0
-CF 0 0 0
+CF AB 0 0
 8 8 2 50
 0 0 M 0
 #5813
@@ -164,10 +164,10 @@ a white-tailed deer prances around here.
 You see a cute deer prancing here.
 ~
 horse~
-T 0 0 S
+AT 0 0 S
 9 0 1d1+169 1d1+100 2d4+2 2
 0 0 0 0
-F 0 0 0 
+F AB 0 0
 8 8 2 200
 0 0 M 0
 #5814
@@ -178,10 +178,10 @@ a snake is lying here coiled up.
 You see a venomous snake coiled up ready to strike.
 ~
 snake~
-T 0 0 S
+AT 0 0 S
 10 1 1d1+195 1d1+100 2d4+2 10
 0 0 0 0
-F L 0 0 
+F ABL 0 0
 8 8 1 50
 0 0 S 0
 #5815
@@ -192,10 +192,10 @@ a coiled up snake rattling its tail at your presence.
 The rattlesnake knows you are here and is rattling his tail as a warning.
 ~
 snake~
-T 0 0 S
+AT 0 0 S
 10 1 1d1+195 1d1+100 2d4+2 26
 0 0 0 0 
-F L 0 0
+F ABL 0 0
 8 8 2 50
 0 0 S 0
 #5816
@@ -206,10 +206,10 @@ a cat-sized green lizard stalks here in search of prey.
 A green lizard peers back at you through gray tiny eyes.
 ~
 saurian~
-T 0 0 S
+AT 0 0 S
 12 4 1d1+252 1d1+100 1d10+3 5
 0 0 0 0
-F 0 0 0
+F AB 0 0
 8 8 2 0
 0 0 S 0
 #5817
@@ -220,10 +220,10 @@ a small version of the famous Loch Ness monster rolls around on its back here.
 You see what could only be the son of the Loch Ness Monster here.
 ~
 saurian~
-T 0 0 S
+AT 0 0 S
 14 4 1d1+315 1d1+100 1d12+3 4
 0 0 0 0
-FKM 0 0 0
+FKM AB 0 0
 8 8 2 1
 0 0 M 0
 #5818
@@ -234,10 +234,10 @@ a real life alive teddy bear, just like the one you had when you were a kid sits
 You see an animated teddy bear.
 ~
 bear~
-T 0 0 S
+AT 0 0 S
 8 1 1d1+144 1d1+100 1d7+2 25
 0 0 0 0
-CK 0 0 0 
+CK AB 0 0
 8 8 2 0
 0 0 S 0
 #5819
@@ -248,10 +248,10 @@ a black and white panda bear eats hay here.
 You see a black-eyed Panda bear rolling in the hay.
 ~
 bear~
-T 0 0 S
+AT 0 0 S
 10 1 1d1+195 1d1+100 2d4+2 32
 0 0 0 0
-FK 0 0 0
+FK AB 0 0
 8 8 2 100
 0 0 M 0
 #5820
@@ -262,10 +262,10 @@ A bear with a silky brown coat wanders this area.
 You see a brown bear.
 ~
 bear~
-T 0 0 S
+AT 0 0 S
 10 3 1d1+195 1d1+100 2d4+2 5
 -2 -2 -2 -2
-FK 0 0 0
+FK AB 0 0
 8 8 2 100
 0 0 M 0
 #5821
@@ -276,10 +276,10 @@ A bear with a shiny black coar roars here.
 You see a black bear.
 ~
 bear~
-T 0 0 S
+AT 0 0 S
 10 5 1d1+195 1d1+100 2d4+2 5
 -5 -5 -5 -5
-FK 0 0 0
+FK AB 0 0
 8 8 2 100
 0 0 M 0
 #5822
@@ -290,10 +290,10 @@ a small furry eared cat skitters about.
 You see a fluffy eared cat stalking here quietly.
 ~
 cat~
-T 0 0 S
+AT 0 0 S
 7 1 1d1+131 1d1+100 1d8+1 22
 0 0 0 0
-F 0 0 0
+F AB 0 0
 8 8 2 50
 0 0 S 0
 #5823
@@ -304,10 +304,10 @@ a medium sized sandy cat struts about here.
 You see a stealthy Cougar here.
 ~
 cat~
-T 0 0 S
+AT 0 0 S
 9 4 1d1+195 1d1+100 1d8+2 10
 0 0 0 0
-F 0 0 0
+F AB 0 0
 8 8 1 0
 0 0 S 0
 #5824
@@ -318,10 +318,10 @@ a proud lion with a great orange mane rests here.
 You see a proud lion, proud even in captivity.
 ~
 cat~
-T 0 0 S
+AT 0 0 S
 11 4 1d1+195 1d1+100 1d10+2 5
 -2 -2 -2 -2
-F 0 0 0
+F AB 0 0
 8 8 1 0
 0 0 S 0
 #5825
@@ -332,10 +332,10 @@ a striped bengal tiger prowls here.
 You see a striped large cat here.
 ~
 cat~
-T 0 0 S
+AT 0 0 S
 12 6 1d1+223 1d1+100 1d10+3 5
 0 0 0 0
-FK 0 0 0 
+FK AB 0 0
 8 8 1 0
 0 0 M 0
 #5826
@@ -346,10 +346,10 @@ there is a fido in a cage here.
 You see a standard issue fido in a cage.
 ~
 dog~
-T 0 0 S
+AT 0 0 S
 7 1 1d1+131 1d1+100 1d8+1 10
 0 0 0 0
-F 0 0 0 
+F AB 0 0
 8 8 1 0
 0 0 S 0
 #5827
@@ -360,10 +360,10 @@ a coyote howls at the moon.
 You see a dirty coyote howling away.
 ~
 dog~
-T 0 0 S
+AT 0 0 S
 9 1 1d1+169 1d1+100 1d8+2 10
 0 0 0 0
-F 0 0 0
+F AB 0 0
 8 8 2 0
 0 0 S 0
 #5828
@@ -374,10 +374,10 @@ a dark wolf rest in the corner.
 You see a dark wolf mulling about here.
 ~
 dog~
-T 0 0 S
+AT 0 0 S
 10 2 1d1+195 1d1+100 2d4+2 10
 0 0 0 0
-F 0 0 0 
+F AB 0 0
 8 8 1 0
 0 0 S 0
 #5829
@@ -388,13 +388,13 @@ an oddly evil looking dog glares at you.
 You see an evil looking wolf.
 ~
 dog~
-T 0 -500 S
+AT 0 -500 S
 10 5 1d1+195 1d1+100 2d4+2 10
 -3 -3 -3 -3
-FK 0 0 0 
+FK AB 0 0
 8 8 1 0
 0 0 M 0
-#5830 
+#5830
 zoo man official~
 a Zoo Official~
 A man wearing an official loooking jacket is here.
@@ -402,10 +402,10 @@ A man wearing an official loooking jacket is here.
 You see a Zoo Official smiling at you.
 ~
 human~
-T 0 750 S
+AT 0 750 S
 15 3 1d1+349 1d1+250 2d6+3 17
 -2 -2 -2 -2
-FIK 0 0 0 
+FIK AB 0 0
 8 8 1 400
 0 0 M 0
 #5831
@@ -416,10 +416,10 @@ An employee of the gift shops stands here ready to assist you.
 You see a Zoo Gift Shop employee.
 ~
 human~
-BT D 0 S
+ABT D 0 S
 15 0 1d1+1 1d1+1 1d1+1 1
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 S 0
 #5832
@@ -431,10 +431,10 @@ a man sweeps the floors here with a long broom. the broom is being
 assailed by flies...and what is that smell?
 ~
 human~
-CGT H 0 S
+ACGT H 0 S
 10 1 1d1+195 1d1+100 2d4+2 17
 -1 -1 -1 -1
-CFI 0 0 0
+CFI AB 0 0
 8 8 1 100
 0 0 M 0
 #5833
@@ -445,10 +445,10 @@ a fierce scaled crocodile takes notice of your presence.
 Through slit yellow eyes the croc' peers back.
 ~
 lizard~
-FT 0 0 S
+AFGT 0 0 S
 20 3 1d1+540 1d1+100 2d8+5 10
 -2 -2 -2 -2
-DFJ 0 FG E
+DFJ AB FG E
 8 8 1 0
 0 0 M 0
 #5834
@@ -459,10 +459,10 @@ a huge black bear rears up and bellows as you enter the room.
 You see a HUGE black bear and he looks angry.
 ~
 bear~
-FT 0 0 S 
+AFGT 0 0 S
 20 6 1d1+540 1d1+100 2d8+5 10
 -3 -3 -3 -3
-DFJ 0 0 0
+DFJ AB 0 0
 8 8 2 9
 0 0 M 0
 #5835
@@ -473,10 +473,10 @@ a massive white bear slowly turns to meet you.
 You see a huge bear with a white coast spotted with dried blood. uh-oh.
 ~
 bear~
-FT 0 0 S
+AFGT 0 0 S
 23 5 1d1+673 1d1+100 3d6+6 13
 -3 -3 -3 -3
-DFJ 0 0 I
+DFJ AB 0 I
 8 8 2 0
 0 0 L 0
 #5836
@@ -487,10 +487,10 @@ a 35 foot long snake winds towards you here.
 You see one long strong snake, it starts to coil around your leg.
 ~
 human~
-FT 0 -500 S
+AFGT 0 -500 S
 25 5 1d1+770 1d1+100 2d10+7 8
 1 1 1 1 
-DM 0 0 G
+DM AB 0 G
 8 8 1 0
 0 0 L 0
 #5837
@@ -501,10 +501,10 @@ a small child is here petting the animals.
 You see a small brat pulling the animals' tails.
 ~
 human~
-BT 0 1000 S
+ABT 0 1000 S
 5 0 1d1+100 1d1+100 1d6+1 16
 0 0 0 0
-F 0 0 0
+F AB 0 0
 0 0 0 0
 0 0 S 0
 #5838
@@ -515,10 +515,10 @@ a itty bitty mouse with HUGE fangs and a stomach you can hear rumbling.
 You see one hungry mouse, FEED the mouse.
 ~
 human~
-FGT 0 -500 S
+AFGT 0 -500 S
 25 3 1d1+770 1d1+100 2d10+7 23
 0 0 0 0 
-DF 0 0 0
+DF AB 0 0
 8 8 1 0
 0 0 S 0
 #0

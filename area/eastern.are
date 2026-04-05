@@ -12,7 +12,7 @@ Dressed in loose fitting rags, this man looks like he could use
 some rest.
 ~
 human~
-H P 500 S
+AH P 500 S
 15 4 15d15+150 8d4+35 5d4+4 17
 0 0 0 0
 IJU AB H 0 
@@ -27,7 +27,7 @@ Dressed in loose fitting rags, this man looks like he could use
 LOTS of rest.
 ~
 human~
-H P 650 S
+AH P 650 S
 18 5 18d18+200 5d4+30 5d6+10 17
 0 0 0 0
 IJU AB H 0 
@@ -42,10 +42,10 @@ This relatively harmless snake has bright alternating bands of red, yellow
 and black.
 ~
 snake~
-GT 0 -10 S
+AGT 0 -10 S
 17 1 17d17+170 1d1+20 5d9+4 10
 0 0 0 0 
-EFMR 0 L I 
+EFMR AB L I
 8 8 0 20
 0 0 S 0
 #5003
@@ -56,10 +56,10 @@ A small, red scorpion scuttles away at your approach.
 The little tail is mighty dangerous for such a small creature.
 ~
 scorpion~
-GT 0 -50 S
+AGT 0 -50 S
 16 0 16d16+150 100d1+20 4d8+4 26
 0 0 0 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 15
 0 0 S 0
 #5004
@@ -70,10 +70,10 @@ A giant, purple sand worm thrusts up out of the sand and attacks!
 He's big, mean, and purple. Watch out!
 ~
 worm~
-BFT 0 -100 S
+ABFGT 0 -100 S
 19 2 18d18+180 100d1+60 3d6+4 7
 -4 -4 -4 -4
-EFNU EH 0 0
+EFNU ABEH 0 0
 8 8 0 65
 0 0 L 0
 #5005
@@ -86,10 +86,10 @@ The brass dragon is one of those dragons that follows the light, though at
 this moment in time she is quite upset at you intruding upon her home.
 ~
 dragon~
-BCFT DH 450 S
+ABCFGT DH 450 S
 31 6 30d30+300 100d1+100 1d9+25 6
 -10 -10 -10 -10
-EFNU HI F 0
+EFNU ABHI F 0
 8 8 2 750
 0 0 G 0
 #5006
@@ -102,10 +102,10 @@ is a large, engraved cutlass. He has an especially haughty air
 about him.
 ~
 human~
-GHT 0 750 S
+AGHT 0 750 S
 22 2 22d20+180 100d1+45 6d8+2 17
 -1 -1 -1 -1
-EFNU H 0 0
+EFNU ABH 0 0
 6 6 1 250
 0 0 M 0
 #5007
@@ -117,10 +117,10 @@ This is the nomad leader's second in command. His clothes are richly
 woven of silk and gold thread. A nasty cutlass hangs at his side.
 ~
 human~
-BT 0 750 S
+ABT 0 750 S
 25 1 25d25+220 100d1+25 8d5+11 17
 0 0 0 0
-EFNU H 0 0
+EFNU ABH 0 0
 8 8 1 100
 0 0 M 0
 #5008
@@ -130,10 +130,10 @@ A proud nomad warrior stands here.
 ~
 ~
 human~
-BT 0 700 S
+ABT 0 700 S
 18 1 18d18+150 100d1+10 4d6+7 17
 1 1 1 1
-EFNU H 0 0
+EFNU ABH 0 0
 8 8 1 10
 0 0 M 0
 #5009
@@ -143,10 +143,10 @@ A young slave sits here staring at you with pleading eyes.
 ~
 ~
 human~
-BHT 0 600 S
+ABHT 0 600 S
 13 0 13d13+130 100d1+5 4d5+5 17
 0 0 0 0
-EFNU H 0 0
+EFNU ABH 0 0
 5 5 2 0
 0 0 M 0
 #5010
@@ -158,10 +158,10 @@ The dracolich is now only bone with pieces of flesh hanging from it.
 Obviously it no longer fears death.
 ~
 dragon~
-BFT DH -800 S
+ABFGT DH -800 S
 30 4 20d20+200 100d1+150 25d2+0 10 
 -10 -10 -10 -10
-EFNU EH C 0
+EFNU ABEH C 0
 8 8 0 500
 0 0 G 0
 #5011
@@ -172,10 +172,10 @@ The drider looks at you viciously while it draws its sword.
 This half-spider, half-drow creature is a formidable opponent.
 ~
 elf~
-FGT D -700 S
+AFGT D -700 S
 18 1 18d18+180 100d1+25 5d6+5 17
 0 0 0 0
-EFNU H 0 0
+EFNU ABH 0 0
 8 8 2 10
 0 0 M 0
 #5012
@@ -186,10 +186,10 @@ A duergar is here mining precious stones with his pick.
 The duergar could crush your head as easily as it does those rocks.
 ~
 dwarf~
-FGT D -750 S
+AFGT D -750 S
 15 1 15d15+150 100d1+25 5d5+5 17
 0 0 0 0 
-EFNU H 0 0
+EFNU ABH 0 0
 8 8 1 10
 0 0 M 0
 #5013
@@ -201,10 +201,10 @@ The myconoid looks something like a giant mushroom (and probably
 has the same effect).
 ~
 unique~
-GHT D 700 S
+AGHT D 700 S
 6 4 6d6+60 100d1+40 2d7+0 17
 4 4 4 4 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 10
 0 0 M 0
 #5014
@@ -215,10 +215,10 @@ A rather large myconoid stands here chanting in a strange tongue.
 The shaman shoots spores into the air.
 ~
 unique~
-BHT DH 750 S
+ABHT DH 750 S
 8 1 8d8+80 100d1+15 2d7+2 17
 3 3 3 3 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 20
 0 0 L 0
 #5015
@@ -228,10 +228,10 @@ A small oasis invites you to dive in.
 ~
 ~
 unique~
-BCT 0 -200 S
+ABCT 0 -200 S
 18 1 17d18+170 100d1+10 6d4+5 17
 0 0 0 0 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 10
 0 0 M 0
 #5017
@@ -242,10 +242,10 @@ A very dangerous rabid camel snorts at you.
 Don't mess with this animal.
 ~
 camel~
-BFT 0 -350 S
+ABFGT 0 -350 S
 15 0 16d16+160 100d1+5 7d4+7 10
 0 0 0 0 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 5
 0 0 L 0
 #0
@@ -386,9 +386,9 @@ gold~
 2500 0 0 0 0
 0 0 0 P
 #5016
-sabre~
-a long, curved sabre~
-A long, curved sabre stands upright in the ground.~
+saber~
+a long, curved saber~
+A long, curved saber stands upright in the ground.~
 steel~
 5 K AN
 1 2 8 3 0
@@ -1476,7 +1476,7 @@ P 1 5015 1 5023            $$$
 M 0 5017 1 5058          Rabid Camel
 *
 M 0 5006 1 5061          Nomad leader
-E 1 5016 10 16             (sabre)
+E 1 5016 10 16             (saber)
 M 0 5007 1 5060          Nomad Comm.
 E 1 5017 15 16             (scimitar)
 M 0 5008 5 5059          Nomad Warriors

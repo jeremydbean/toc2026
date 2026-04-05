@@ -39,7 +39,7 @@ because one day he might be on the giving end of that dagger that puts an
 end to your life.
 ~
 human~
-CFGS BDFGPQ -500 S
+ACFGS BDFGPQ -500 S
 45 3 200d2+1500 100d1+50 5d4+5 17
 -2 -2 -2 0
 ABEGHJZ A AB 0 0
@@ -75,10 +75,10 @@ And a pale complection that reminds you of the undead.....maybe the rumors
 are true and the masters really are the living dead.......
 ~
 human~
-CFS BDFGJPTU -1000 S
+ACFGS BDFGJPTU -1000 S
 49 5 200d2+1300 100d1+50 7d4+5 17
 -3 -3 -3 -1
-BFGHLNUZ A HI 0 0
+BFGHLNUZ A ABHI 0 0
 8 8 1 500
 0 0 M 0
 #17004
@@ -115,7 +115,7 @@ and pain. His entire focus is to eradicate the enemies of the master
 assassin.
 ~
 unique~
-CFT BGHPTU -1000 S
+ACFGT BGHPTU -1000 S
 52 9 200d2+1790 100d1+200 7d7+15 17
 -6 -6 -6 -3
 ABCENUZ A ABK C 0
@@ -155,7 +155,7 @@ walk undetected by mortals, to become shadows, to blend perfectly until the
 moment of attack...And even then you might not know what caused your death.
 ~
 unique~
-CFT BDEFGHTX -1000 S
+ACFGT BDEFGHTX -1000 S
 58 10 200d2+3560 100d1+300 7d7+5 17
 -8 -8 -8 -10
 CDEFLNUZ A ABPQ C 0 
@@ -172,10 +172,10 @@ personal guards, and he trusts them with his life. Upon encountering one of
 these creatures, you had better pray for you life is for naught.
 ~
 unique~
-BCFG DEFGJT -1000 S
+ABCFG DEFGJT -1000 S
 59 15 200d2+3750 100d1+450 10d8+9 17
 -10 -10 -10 -15
-CFHN D P J
+CFHN ABD P J
 8 8 0 5000
 0 0 L 0
 #17009
@@ -235,7 +235,7 @@ you notice that his eye's have a quicksilver appearance that constantly
 seem to change color in the light.
 ~
 unique~
-FGMS DEFGHTVZ G 0 S
+AFGMS DEFGHTVZ G 0 S
 60 0 200d2+8745 100d1+5000 10d10+10 17
 -15 -15 -15 -15
 CFIJNVZ A ABCD 0 0
@@ -253,7 +253,7 @@ Master Cat, and follows his rules. You can see that the prism cat is a close
 relative to the calico cat.
 ~
 cat~
-CT DEFGPTV 0 S
+ACT DEFGPTV 0 S
 45 5 200d2+1000 100d1+100 5d5+7 22
 -5 -5 -5 0
 CDEFHN AB 0 0 

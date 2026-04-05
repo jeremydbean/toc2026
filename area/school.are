@@ -10,7 +10,7 @@ An adept of Haze is here, contemplating your progress.
 He is big and bad.  Don't mess with him.
 ~
 human~
-BGQTV CH 1000 S
+ABGQTV CH 1000 S
 30 +10 1d1+999  1d1+999 2d4+30 13
 -15 -15 -15 -15
 ACEFHIKN ABCD 0 0
@@ -26,7 +26,7 @@ might be in big trouble. Perhaps now would be a good time to leave, before
 it notices you. 
 ~
 ~
-BG C 0 S
+ABG C 0 S
 5 -5 1d1+49 1d1+99 1d1+0 14
 -15 -15 -15 -15
 AN AB CD 0
@@ -41,10 +41,10 @@ This little guy seems to have been captured and left here to die. You
 wouldn't hurt the poor defenseless little guy now, would you?
 ~
 school monster~
-B 0 0 S
+AB 0 0 S
 1 0 1d1+7 1d1+99 1d3+0 5
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 0 10
 0 0 M 0
 #3703
@@ -58,10 +58,10 @@ make the world that much safer for everyone else, and save the axeman the
 trouble..
 ~
 school monster~
-BH 0 0 S
+ABH 0 0 S
 1 0 1d1+7 1d1+99 1d2+0 5
 10 10 10 10
-O 0 0 0
+O AB 0 0
 8 8 0 10
 0 0 M 0
 #3704
@@ -74,10 +74,10 @@ or too.  It still seems to be wearing some servicable items, although you
 might need to clean a little dried blood off.
 ~
 school monster~
-BF 0 0 S
+ABFG 0 0 S
 1 0 1d1+7 1d1+99 1d4+0 5
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 M 0
 #3705
@@ -90,10 +90,10 @@ tell, though a little on the skinny side.  It looks like it would rather
 eat you than ask for help.
 ~
 school monster~
-BFH 0 0 S
+ABFGH 0 0 S
 1 0 1d1+7 1d1+99 1d3+0 5
 10 10 10 10
-J 0 0 0
+J AB 0 0
 8 8 0 10
 0 0 M 0 
 #3706
@@ -106,10 +106,10 @@ into a demonic mask.  He looks pretty tough, but that key around his
 neck looks like it might be pretty important.
 ~
 school monster~
-B J 0 S
+AB J 0 S
 2 1 2d2+20 1d1+99 1d4+1 5
 8 8 8 10
-FN 0 0 0
+FN AB 0 0
 8 8 0 25
 0 0 M 0
 #3707
@@ -120,7 +120,7 @@ An adept of the god Shadizar is here, contemplating your progress.
 He is big and bad.  Don't mess with him.
 ~
 human~
-BGQTV CH 1000 S
+ABGQTV CH 1000 S
 30 +10 1d1+999  1d1+999 2d4+30 13
 -15 -15 -15 -15
 ACEFHIKN ABCD 0 0
@@ -134,7 +134,7 @@ The priestess of Thalia is here, contemplating your progress.
 She's big and bad.  Don't mess with her.
 ~
 human~
-BCQTV CH 1000 S
+ABCQTV CH 1000 S
 30 10 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 ACEFHIKN ABCD 0 0
@@ -148,10 +148,10 @@ A rabbit is bouncing around here.
 The rabbit smiles at you, completely harmless!
 ~
 rabbit~
-GHU 0 100 S
+AGHU 0 100 S
 1 0 1d1+10 1d1+99 1d3+0 10
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 3 0
 0 0 T 0 
 #3710
@@ -162,10 +162,10 @@ A lizard slithers up to you.
 It smiles at you, and tries to eat your leg.
 ~
 lizard~
-GU 0 -100 S
+AGU 0 -100 S
 2 0 2d2+20 1d1+99 1d4+1 10
 8 8 8 10
-R 0 0 0
+R AB 0 0
 8 8 3 0
 0 0 S 0
 #3711
@@ -176,10 +176,10 @@ A boar tries to run you over.
 It grunts at you.
 ~
 pig~
-GU 0 0 S
+AGU 0 0 S
 3 1 3d3+30 1d1+99 1d6+1 15
 7 7 7 9
-CDFR 0 0 0
+CDFR AB 0 0
 8 8 3 0
 0 0 M 0
 #3712
@@ -190,10 +190,10 @@ A fox is here staring at you.
 Its fur might be worth money.
 ~
 fox~
-GHU 0 100 S
+AGHU 0 100 S
 1 1 1d1+12 1d1+99 1d3+1 10
 8 8 8 10
-NR 0 0 0
+NR AB 0 0
 8 8 3 0
 0 0 S 0 
 #3713
@@ -204,10 +204,10 @@ A snail is trying to get out of your way.
 You don't see much but slime about it.
 ~
 ~
-GU 0 0 S
+AGU 0 0 S
 0 0 1d1+0 1d1+99 1d1+0 14
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 AGQc AFHM T 0
 #3714
@@ -218,10 +218,10 @@ A beast tries to feed off of you.
 It looks mean.  You'd better run.
 ~
 school monster~
-FUT 0 0 S
+AFGTU 0 0 S
 5 1 5d5+55 1d1+99 1d6+3 10
 5 5 5 8
-EKM 0 HI 0
+EKM AB HI 0
 8 8 0 50
 0 0 L 0
 #3715
@@ -232,10 +232,10 @@ A bear is here growling at you.
 The bear must be bigger than you!  It wants to rip your head off.
 ~
 bear~
-GU 0 0 S
+AGU 0 0 S
 4 1 4d4+44 1d1+99 1d6+2 5
 6 5 6 7
-CR 0 0 0
+CR AB 0 0
 8 8 3 0
 0 0 L 0
 #3716
@@ -246,10 +246,10 @@ A wolf is here snarling at you.
 The wolf doesn't want to be bothered.
 ~
 wolf~
-GU 0 0 S
+AGU 0 0 S
 4 0 4d4+44 1d1+99 1d6+2 10
 7 7 7 10
-NR 0 0 0 
+NR AB 0 0
 8 8 3 0
 0 0 M 0
 #3717
@@ -261,7 +261,7 @@ He is big and bad.  Don't mess with him, but asks 'Would you like to buy a
 monkey?'
 ~
 human~
-BCQTV CH 1000 S
+ABCQTV CH 1000 S
 30 10 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 ACEFHIKN ABCD 0 0
@@ -275,7 +275,7 @@ An adept of Eclipse is here, training young students.
 He is big and bad.  Don't mess with him.
 ~
 human~
-BCJQTV CH 1000 S
+ABCJQTV CH 1000 S
 30 10 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 ACEFHIKN ABCD 0 0
@@ -289,7 +289,7 @@ An adept of Soulcrusher is ready to help you practice.
 He's big and bad.  Don't mess with him.
 ~
 human~
-BGKQTV CH -1000 S
+ABGKQTV CH -1000 S
 30 +10 1d1+999 1d1+999 2d4+30 13
 -15 -15 -15 -15
 ACEFHIKN ABCD 0 0
@@ -304,10 +304,10 @@ This horrible creature is your final test for mud school.  Kill him, and the
 diploma is yours.
 ~
 school monster~
-B J 0 S
+AB J 0 S
 3 1 2d4+30 1d1+99 1d6+1 5
 8 8 8 10
-EFN 0 0 0
+EFN AB 0 0
 8 8 0 30
 0 0 M 0
 #3721
@@ -319,10 +319,10 @@ It looks mean, with large fangs and a stinger dripping poison. You feel
 comfortable that you can kill it, being the mighty adventurer you are.
 ~
 school monster~
-B 0 0 S
+AB 0 0 S
 3 1 2d4+30 1d1+99 1d6+1 5
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 M 0
 #3722
@@ -335,10 +335,10 @@ comfortable place to live. He's humming a little ditty as he shuffles
 across the cavern floor.
 ~
 school monster~
-GU 0 0 S
+AGU 0 0 S
 2 0 2d2+20 1d1+99 1d4+1 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 M 0
 #3723
@@ -351,10 +351,10 @@ away quickly.  As you look down, you notice your boot laces have been
 tied together.
 ~
 school monster~
-GU 0 0 S
+AGU 0 0 S
 3 1 2d4+30 1d1+99 1d6+1 5
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 M 0
 #3724
@@ -367,10 +367,10 @@ with a total disregard to its surroundings.  As you take a closer look, you
 notice that it is wearing equipment similar to yours. Hmmmm....
 ~
 school monster~
-GU 0 0 S
+AGU 0 0 S
 2 0 2d2+20 1d1+99 1d4+1 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 M 0
 #3725
@@ -383,10 +383,10 @@ students close their eyes.  That and his monotone voice has made all of
 his students fall asleep.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3726
@@ -397,10 +397,10 @@ A student is sleeping here.
 The teacher has finally put this student to sleep with this BORING lecture.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 4 4 1 10
 0 0 M 0
 #3727
@@ -413,10 +413,10 @@ running all over the classroom like a rabbit on acid.  Good luck under-
 standing anything he says.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3728
@@ -429,10 +429,10 @@ its own to take down the information pouring from the instructor at a
 rapid speed.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3729
@@ -445,10 +445,10 @@ its own to take down the information pouring from the instructor at a
 rapid speed.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 2 10
 0 0 M 0
 #3730
@@ -461,10 +461,10 @@ but his students understand.  He's wearing thick glasses and a pocket
 protector.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 5 0 2d5+50 1d1+99 1d5+5 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3731
@@ -475,10 +475,10 @@ A geek is here laughing at a strange language his teacher is talking.
 Thick glasses and a pocket protector?  Yep.  This is most certainly a geek.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3732
@@ -490,10 +490,10 @@ Thick glasses, a pocket protector, and ponytails.  The ever-strange and
 elusive female geek.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 2 10
 0 0 M 0
 #3733
@@ -505,10 +505,10 @@ His eyes are filled with despair as he looks at you.  A gag in his mouth
 prevents him from speaking anything.
 ~
 human~
-B 0 0 S
+AB 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 10
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 6 6 1 10
 0 0 M 0
 #3734
@@ -522,10 +522,10 @@ that ate the canary.  Then he takes a drink from the bottle he is holding
 in his other hand.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3735
@@ -538,10 +538,10 @@ boyfriend, licks his ear, and then takes the bottle from his hand to take
 a swig.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 2 10
 0 0 M 0
 #3736
@@ -554,10 +554,10 @@ and wearing work out clothes.  He's also chewing on pipeweed from The Shire
 and spitting the juice into a cup he is holding in his hand.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3737
@@ -568,10 +568,10 @@ A student is laying here covered in his own sweat.
 If you have had a gym class then you've seen this guy before.  Not pretty.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3738
@@ -582,10 +582,10 @@ A released goblin stands here ready to fight.
 He was just released from his storage bottle.  He doesn't look too happy.
 ~
 goblin~
-GU 0 0 S
+AGU 0 0 S
 1 0 1d1+10 1d1+99 1d1+1 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 M 0
 #3739
@@ -596,10 +596,10 @@ A released orc stands here ready to fight.
 He was just released from his storage bottle.  He doesn't look too happy.
 ~
 orc~
-GU 0 0 S
+AGU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 M 0
 #3740
@@ -610,10 +610,10 @@ A released dragon baby stands here ready to fight.
 It was just released from his storage bottle.  It doesn't look too happy.
 ~
 unique~
-GU 0 0 S
+AGU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 M 0
 #3741
@@ -624,10 +624,10 @@ A released newt stands here ready to fight.
 It was just released from his storage bottle.  It doesn't look too happy.
 ~
 lizard~
-G 0 0 S
+AG 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 0 10
 0 0 S 0
 #3742
@@ -639,10 +639,10 @@ He's old and he looks like he's been working these halls for years.  His
 breath smells of stale beer and he's muttering curses under his breath.
 ~
 human~
-GU 0 0 S
+AGU 0 0 S
 3 0 3d3+30 1d1+99 1d3+3 10
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3743
@@ -654,10 +654,10 @@ He looks at you and then continues to teach the class.  He hacks the arms
 off of one of his students and then calls for a cleric.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 5 0 3d3+60 1d1+99 1d5+3 0
 10 10 10 10
-EK 0 0 0
+EK AB 0 0
 8 8 1 10
 0 0 M 0
 #3744
@@ -669,10 +669,10 @@ He doesn't even notice you because all of his attention is focused on
 the teacher.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 2 0 3d3+20 1d1+99 2d2+2 0
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3745
@@ -684,10 +684,10 @@ She looks at you and smiles and offers you a seat at the front of
   the class.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 5 0 3d3+60 1d1+99 1d5+5 0
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 2 10
 0 0 M 0
 #3746
@@ -699,10 +699,10 @@ He is paying more attention to the teacher then you and only nudges you
  and growls when you block his view.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 1 0 3d3+20 1d1+99 1d5+5 0
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3747
@@ -713,10 +713,10 @@ A teacher sits on his desk watching helplessly as his students rob you blind.
 He looks at you and says, 'There is no honor among thieves.'
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 0
 10 10 10 10 
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3748
@@ -727,10 +727,10 @@ He sees you and immediately runs over and tries to steal your gold.
 The only thing you see are hands because he is moving so fast.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 2 0 2d2+20 1d1+99 2d2+2 0
 10 10 10 10
-0 0 0 0 
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3749
@@ -741,10 +741,10 @@ He yells at you to sit down because you are interrupting HIS class.
 He's twirling his fingers and uttering nonsense words.  A true mage.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 0
 10 10 10 10
-0 0 0 0 
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3750
@@ -755,10 +755,10 @@ A student looks at you then looks at the teacher again.
 She has dreamy eyes as she watches the instructor.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 2 0 2d2+20 1d1+99 2d2+2 0
 10 10 10 10
-0 0 0 0 
+0 AB 0 0
 8 8 2 10
 0 0 M 0
 #3751
@@ -770,10 +770,10 @@ He has his eyes closed and legs crossed.  His shiny bald head almost blinds
   you when you first see it.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 0
 10 10 10 10
-0 0 0 0 
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3752
@@ -784,10 +784,10 @@ A student is here mimicking his teacher.
 He has his eyes closed and legs crossed and his short hair looks freshly cut.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 1 0 1d1+20 1d1+99 1d2+2 0
 10 10 10 10
-0 0 0 0 
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3753
@@ -798,10 +798,10 @@ A teacher is standing here holding a kris over a corpse.
 His eyes are glazed over as he stabs the corpse fanaticly.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 0
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3754
@@ -812,10 +812,10 @@ A student sits here learning the finer points of corpses.
 He watches the teacher with a maniacle gleam in his eye.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 2 0 2d2+20 1d1+99 1d2+2 0
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3755
@@ -826,10 +826,10 @@ A huge woman holding a club watches you.
 She's big.  She's bad.  She needs to shave.  The librarian watches you.
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 5 0 5d5+50 1d1+99 1d5+5 0
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 2 19
 0 0 M 0
 #3756
@@ -841,10 +841,10 @@ She looks mean and the cigarette in her mouth has burned down to half with
   the ashes falling off in the food.  Yum, Yum, good!
 ~
 human~
-BGU 0 0 S
+ABGU 0 0 S
 3 0 3d3+30 1d1+99 1d3+3 0
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 2 10
 0 0 M 0
 #3757
@@ -855,10 +855,10 @@ A green blob of unidentifiable food has come to life and attacks!
 UGH! Well, it was food.
 ~
 unique~
-BFU 0 0 S
+ABFGU 0 0 S
 2 0 1d1+15 1d1+99 1d1+1 0
 10 10 10 10
-0 0 0 0 
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #3758
@@ -870,10 +870,10 @@ You can't help but laugh as he struggles and falls with his pants around
   his ankles.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 4 0 4d4+40 1d1+99 1d4+4 0
 10 10 10 10 
-0 0 0 0 
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3759
@@ -884,10 +884,10 @@ A half-dressed teacher is trying to cover herself up.
 Her robes are open and her body is exposed.  Sex ed?
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 4 0 4d4+40 1d1+99 1d4+4 0
 10 10 10 10
-0 0 0 0 
+0 AB 0 0
 8 8 2 10
 0 0 M 0
 #3760
@@ -898,10 +898,10 @@ The Clipsenstein Monster is tearing the laboratory apart.
 He's big.  He's bad.  He's drunk and on a rampage.
 ~
 human~
-BU 0 0 S
+ABU 0 0 S
 5 0 5d5+25 1d1+99 1d5+5 0
 10 10 10 10 
-0 0 0 0 
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #3761
@@ -912,10 +912,10 @@ A goldfish with a huge mouth attacks you.
 Its body is barely viewable behind its teeth.
 ~
 fish~
-BFU 0 0 S
+ABFGU 0 0 S
 1 0 1d1+10 1d1+99 1d1+1 0
 10 10 10 10
-0 0 0 0 
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #3762
@@ -926,10 +926,10 @@ A waitress stands here waiting to serve you.
 She looks at you and bats her eyes.  Flirting to get you to buy more.
 ~
 human~
-BUV 0 0 S
+ABUV 0 0 S
 5 0 5d5+50 1d1+99 5d5+5 0
 10 10 10 10 
-0 0 0 0 
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #0

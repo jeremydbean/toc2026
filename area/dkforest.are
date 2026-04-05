@@ -10,10 +10,10 @@ This small dark being looks like it belongs in this horrid forest, it grins
 evilly at you and slips between the trees.
 ~
 undead~
-BHT LQ -800 S
+ABHT LQ -800 S
 10 2 12d8+80 10d5+70 1d10+2 22
 -2 -2 -2 -2
-FIKN Q 0 0
+FIKN ABQ 0 0
 8 8 1 150
 0 0 T 0
 
@@ -26,10 +26,10 @@ Seeing you, this fearsome gnoll warrior throws back his head and howls with
 animal fury. He looks pissed and he's headed your way!
 ~
 kobold~
-BFT FJ -700 S
+ABFGT FJ -700 S
 12 5 12d9+150 6d12+72 1d10+3 5
 -5 -2 -2 0
-CDEFIK AQ I HP
+CDEFIK ABQ I HP
 8 8 1 120
 0 0 L 0
 
@@ -42,10 +42,10 @@ You see a disgusting compost of dead, diseased foliage. Maggots and other
 larva crawl throughout the mound as it moves toward you!
 ~
 unique~
-FS DFN -800 S
+AFGS DFN -800 S
 22 7 22d18+260 10d10+100 4d6+8 9
 -4 -5 -3 0
-CDEFHKNO FEQ FJ K
+CDEFHKNO ABEFQ FJ K
 8 8 0 45
 0 0 H 0
 
@@ -59,10 +59,10 @@ black scales gleam in the dim light of the swamp as it turns its awesome
 gaze on you, you know this is the end of your puny life.
 ~
 dragon~
-BCFMT DFGJNT -1000 S
+ABCFGMT DFGJNT -1000 S
 30 10 30d20+700 15d30+250 7d6+25 31
 -13 -14 -18 -11
-ACDEFHIKO KLQR HMP IS
+ACDEFHIKO ABKLQR HMP IS
 8 8 2 4000
 0 0 G 0
 
@@ -76,10 +76,10 @@ but there the similarity ends. It moves quickly through the swamp toward
 you.
 ~
 unique~
-BCFMTV DFJLQ -1000 S
+ABCFGMTV DFJLQ -1000 S
 25 8 25d22+200 12d25+150 2d12+8 15
 -7 -7 -7 0
-AEFHKNO PRQ I H
+AEFHKNO ABPQR I H
 8 8 0 1500
 0 0 G 0
 
@@ -91,10 +91,10 @@ A giant leech slides through the muck toward you.
 This loathesome blood sucking beast squelches through the muck.
 ~
 snake~
-CF FJL -500 S
+ACFG FJL -500 S
 14 5 2d20+160 10d20+100 1d15+4 10
 -1 -1 -1 0
-FHL QPR I H
+FHL ABPQR I H
 8 8 0 25
 0 0 L 0
 
@@ -107,10 +107,10 @@ This worm creature moves slowly through the mud of the swamp. Its mottled
 green and brown skin keeps it well camouflaged from sight.
 ~
 snake~
-BHG LQ 0 S
+ABGH LQ 0 S
 14 5 2d20+150 10d20+100 2d5+4 10
 0 0 0 0
-FHN R I H
+FHN ABR I H
 8 8 0 0
 0 0 L 0
 
@@ -123,10 +123,10 @@ A fearsome beast of legend, The manticore possesses all the might of a
 lion and the cunning of a human.
 ~
 wolf~
-BFT QDFT -750 S
+ABFGT QDFT -750 S
 18 4 3d9+280 10d20+120 2d8+4 5
 -3 -3 -3 -3
-CEFIMN A P R
+CEFIMN AB P R
 8 8 0 800
 0 0 L 0
 
@@ -139,10 +139,10 @@ This tall, skinny beast looks almost comical until you see its razor teeth
 and the hunger in its eyes.
 ~
 troll~
-BCFGT G -1000 S
+ABCFGT G -1000 S
 22 4 22d17+240 4d10+140 4d5+6 5
 -2 -2 -2 -2
-CEFIKN QI K HP
+CEFIKN ABIQ K HP
 8 8 0 400
 0 0 L 0
 
@@ -155,10 +155,10 @@ This tall, skinny beast looks almost comical until you see its razor teeth
 and the hunger in its eyes.
 ~
 troll~
-CGT G -800 S
+ACGT G -800 S
 22 4 22d17+240 4d10+140 4d5+6 5
 -2 -2 -2 -2
-CEFIKN QI K HP
+CEFIKN ABIQ K HP
 8 8 0 400
 0 0 L 0
 
@@ -171,10 +171,10 @@ A dog faced creature dressed in rough leathers is surprised by your presence
 and grabs for his weapon to attack.
 ~
 kobold~
-FT FJ -700 S
+AFGT FJ -700 S
 12 5 12d9+140 6d12+72 1d10+3 5
 -5 -2 -2 0
-CDEFIK AQ I HP
+CDEFIK ABQ I HP
 8 8 1 120
 0 0 L 0
 
@@ -187,10 +187,10 @@ This greyish brown man shaped mushroom seems intent only on killing anything
 that moves.
 ~
 unique~
-BFT Q -700 S
+ABFGT Q -700 S
 15 4 15d8+240 8d15+88 2d7+4 25
 -5 -5 20 20
-CEFIN PQ R H
+CEFIN ABPQ R H
 8 8 0 115
 0 0 M 0
 
@@ -203,10 +203,10 @@ This greyish brown man shaped mushroom seems intent only on killing anything
 that moves.
 ~
 unique~
-FT Q -700 S
+AFGT Q -700 S
 15 4 15d8+240 8d15+88 2d7+4 25
 -5 -5 20 20
-CEFIN PQ R H
+CEFIN ABPQ R H
 8 8 0 115
 0 0 M 0
 
@@ -219,10 +219,10 @@ The strange yellow fungus grows all around and on the mushrooms, as it
 senses your presences it begins to move ominously toward you.
 ~
 unique~
-CFMT DFOV -1000 S
+ACFGMT DFOV -1000 S
 18 10 18d14+330 9d18+100 2d8+7 14
 0 0 0 100
-EHN DEFGQR 0 CHIMOY
+EHN ABDEFGQR 0 CHIMOY
 8 8 0 0
 0 0 M 0
 
@@ -236,10 +236,10 @@ protect his eternal resting place, and keep it free from thieves. They lumber
 slowly toward you, intent to fulfill their duty.
 ~
 giant~
-BFMT DGOV 0 S
+ABFGMT DGOV 0 S
 55 30 30d24+5000 15d30+180 6d8+35 27
 -40 -40 -40 -45
-CDEFHIKNPO BILPQ HIJMNPOS K
+CDEFHIKNPO ABILPQ HIJMNPOS K
 8 8 0 0
 0 0 G 0
 
@@ -253,10 +253,10 @@ It begins thrashing its branches as it senses your presences. Trying to pull
 you in to its gaping maw.
 ~
 unique~
-BCFT DFN 0 S
+ABCFGT DFN 0 S
 22 10 22d16+240 10d30+150 2d9+12 18
 -2 -2 -2 -2
-AEFHKNP EQR JKP CH
+AEFHKNP ABEQR JKP CH
 8 8 0 2000
 0 0 M 0
 
@@ -269,10 +269,10 @@ A small ball of dancing light, the Will'o'Wisp flitters back and forth
 over the swamp.
 ~
 unique~
-BHR AOV 0 S
+ABHR AOV 0 S
 12 6 12d5+80 10d30+110 2d4+5 26
 0 0 0 0
-FHKN HJ 0 Y
+FHKN ABHJ 0 Y
 8 8 0 100
 0 0 S 0
 
@@ -285,10 +285,10 @@ A small ball of dancing light, the Will'o'Wisp flitters back and forth
 over the swamp.
 ~
 unique~
-HR AOV 0 S
+AHR AOV 0 S
 12 6 12d5+80 10d30+110 2d4+0 26
 0 0 0 0
-FHKN HJ 0 Y
+FHKN ABHJ 0 Y
 8 8 0 100
 0 0 S 0
 
@@ -301,10 +301,10 @@ This small twisted creature looks like it belongs in this horrid forest, it
 grins evilly at you and slips between the trees.
 ~
 undead~
-HS LQ -800 S
+AHS LQ -800 S
 15 2 12d8+150 10d5+70 2d9+2 22
 -2 -2 -2 -2
-FIKNQ Q 0 0
+FIKNQ ABQ 0 0
 8 8 1 150
 0 0 T 0
 
@@ -317,10 +317,10 @@ This large green being flits through the trees waiting for anyone foolhardy
 enough to leave the path.
 ~
 undead~
-HS LQ -1000 S
+AHS LQ -1000 S
 20 2 12d8+250 10d5+140 2d10+2 13
 -4 -4 -4 -4
-FIKN Q 0 0
+FIKN ABQ 0 0
 8 8 1 150
 0 0 T 0
 
@@ -333,10 +333,10 @@ This large green being flits through the trees waiting for anyone foolhardy
 enough to leave the path.
 ~
 undead~
-BHS LQ -1000 S
+ABHS LQ -1000 S
 22 2 12d8+250 10d5+140 2d10+2 5
 -4 -4 -4 -4
-FIKNQ Q 0 0
+FIKNQ ABQ 0 0
 8 8 1 150
 0 0 T 0
 
@@ -350,7 +350,7 @@ stench alone of the foul thing makes you gag. Hacking at a tree wouldn't make
 much sense now, would it?
 ~
 human~
-BM AOX 0 S
+ABM AOX 0 S
 30 15 9d10+9999 1d10+100 3d10+1 1
 -1 -1 -1 -1
 CEO ABCD 0 0
@@ -366,10 +366,10 @@ You seem to have interrupted some sort of strange service and this fellow
 looks like he's mighty annoyed about it!
 ~
 kobold~
-FQ DFJ -700 S
+AFGQ DFJ -700 S
 15 5 12d9+170 6d12+72 2d8+3 27
 -5 -2 -2 0
-CDEFIKQ AQ I HP
+CDEFIKQ ABQ I HP
 8 8 1 120
 0 0 L 0
 

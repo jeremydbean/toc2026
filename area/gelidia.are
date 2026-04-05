@@ -13,10 +13,10 @@ This citizen is bundled up nice and warmly as she goes about
 her daily activities in town.
 ~
 human~
-CS P 650 S
+ACS P 650 S
 11 1 2d5+135 1d1+100 1d8+2 0
 2 2 2 2
-FT 0 0 0
+FT AB 0 0
 8 8 2 230
 0 0 M 0
 #18201
@@ -27,10 +27,10 @@ A townguard of Gelidia stands here watching over the city.
 A tall guard stands here waiting for you to make a wrong move.
 ~
 human~
-BGMT GN 0 S
+ABGMT GN 0 S
 25 2 4d5+350 1d1+100 3d10+8 27
 -5 -5 -5 -5
-CEFKT BLQ 0 P
+CEFKT ABLQ 0 P
 8 8 1 640
 0 0 L 0
 #18202
@@ -42,7 +42,7 @@ This man makes his entire living selling goods from his
 cart, maybe you should buy something from him.
 ~
 human~
-BCGLMV DW 500 S
+ABCGLMV DW 500 S
 20 2 1d1+500 1d1+100 3d3+15 0
 -5 -5 -5 -5
 0 ABCDEFGHIJKLMNOPQRS 0 0
@@ -57,7 +57,7 @@ The blacksmith is a very large, muscular man who makes his
 entire living making new equipment for people like you.
 ~
 human~
-BGLMV DW 600 S
+ABGLMV DW 600 S
 20 2 1d1+500 1d1+100 3d3+15 0
 -5 -5 -5 -5
 0 ABCDEFGHIJKLMNOPQRS 0 0
@@ -72,13 +72,13 @@ This woman is the owner of this small crystal shop.  She makes
 everything herself and is obviously a very talented craftswoman.
 ~
 elf~
-BGLMV DW 1000 S
+ABGLMV DW 1000 S
 20 2 1d1+500 1d1+100 2d2+10 0
 -5 -5 -5 -5
 0 ABCDEFGHIJKLMNOPQRS 0 0
 8 8 2 500
 0 0 S 0
-#18205 
+#18205
 pawn owner~
 the pawn shop owner~
 The pawn shop owner is here looking you up and down. 
@@ -87,7 +87,7 @@ You are looking at a small greedy man who will only give
 you a fraction of what an item is worth.
 ~
 human~
-BCGLMV DW 500 S
+ABCGLMV DW 500 S
 20 2 1d1+500 1d1+100 2d2+10 0
 -5 -5 -5 -5
 0 ABCDEFGHIJKLMNOPQRS 0 0
@@ -102,7 +102,7 @@ This man makes his entire living selling the goods in his
 cart.  He cheerfully calls out to you as you approach him.
 ~
 human~
-BCGLMV DW 500 S
+ABCGLMV DW 500 S
 20 2 1d1+500 1d1+100 3d3+20 0
 -5 -5 -5 -5
 0 ABCDEFGHIJKLMNOPQRS 0 0
@@ -117,7 +117,7 @@ This is a small woman trying to make some extra money by
 selling beautiful flowers.
 ~
 human~
-GLMV DW 500 S
+AGLMV DW 500 S
 20 2 1d1+500 1d1+100 3d3+20 0
 -5 -5 -5 -5
 0 ABCDEFGHIJKLMNOPQRS 0 0
@@ -132,10 +132,10 @@ This woman is fairly appealing to the eye and she works quickly
 as she serves people their food.
 ~
 human~
-BG V 400 S
+ABG V 400 S
 15 2 4d5+160 1d1+100 3d2+5 0
 -5 -5 -5 -5
-FI A 0 0
+FI AB 0 0
 8 8 2 450
 0 0 M 0
 #18209
@@ -147,10 +147,10 @@ This citizen is bundled up nice and warmly as he goes about his
 daily activities in town.
 ~
 human~
-CS P 650 S
+ACS P 650 S
 11 1 2d5+126 1d1+100 1d9+2 0
 2 2 2 2
-FT 0 0 0
+FT AB 0 0
 8 8 1 320
 0 0 M 0
 #18210
@@ -162,10 +162,10 @@ This horse has lived its whole life in a very cold environment
 and has grown a very thick coat of hair.
 ~
 horse~
-W C 300 S
+AW C 300 S
 18 2 3d7+225 1d1+100 2d7+3 13
 -10 -10 -10 -10
-CIM I 0 0
+CIM ABI 0 0
 8 8 1 0
 0 0 L 0
 

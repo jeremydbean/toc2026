@@ -34,7 +34,7 @@ Before you stands an enormous cow, cud dripping from its massive jowls.
 A deep 'MOOOOOO' comes from its throat as it leaps to the attack!
 ~
 cow~
-BMTV DFHJ -750 S
+ABMTV DFHJ -750 S
 55 27 200d1+4700 2d155+500 11d5+5 27
 -3 -3 -3 -3
 CDEJKTU AB CLQ N
@@ -71,7 +71,7 @@ you.
 Type 'heal' to see a listing of her spells.
 ~
 human~
-BDMQV DFHJ 1000 S
+ABDMQV DFHJ 1000 S
 60 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 FHIKT ABCD 0 0
@@ -87,10 +87,10 @@ A single, large eye bulges from the center of its forehead, and the
 look within that eye is that of an animal far from sanity!
 ~
 pig~
-BMRTV BDFJQ 950 S
+ABMRTV BDFJQ 950 S
 50 25 100d1+2350 2d50+640 7d5+10 10
 -1 -1 -1 -1
-F B 0 0
+F AB 0 0
 8 8 1 0
 0 0 H 0
 #2704
@@ -102,7 +102,7 @@ Before you stands and enormous cow, cud dripping from its massive jowls.
 A deep 'MOOOOOO' comes from its throat as it leaps to the attack!
 ~
 cow~
-BMTV DFJ -750 S
+ABMTV DFJ -750 S
 55 27 200d1+4700 2d155+500 11d5+5 27
 -3 -3 -3 -3
 CDEJKTU AB CLQ N
@@ -117,7 +117,7 @@ This sheep is obviously completely insane, and judging by the lather
 around its muzzle, very rabid as well.
 ~
 sheep~
-BMTV DFJ 500 S
+ABMTV DFJ 500 S
 55 27 200d1+4700 2d155+500 11d5+5 1
 -3 -3 -3 -3
 CDEJKTU AB CLQ R
@@ -901,7 +901,7 @@ relics~
 S
 #2737
 Room of Shadowthorn~
-You step into what appears to be total nothingness. Suddenly, colour and
+You step into what appears to be total nothingness. Suddenly, color and
 light begin to swirl before you in quick dizzying patterns, they slow..
 stop.. and form the room of Shadowthorn, Sorcerer of Horde. You wonder if
 this room was even here before you stepped through the door. Now, however,

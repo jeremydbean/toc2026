@@ -11,10 +11,10 @@ A young dwarf plays with a toy axe.
 This is a young but not totally harmless creature.
 ~
 dwarf~
-CGT 0 -5 S
+ACGT 0 -5 S
 3 0 1d4+30 1d1+99 1d4+2 13
 7 6 7 10
-DJR 0 0 0
+DJR AB 0 0
 6 8 3 10
 0 0 S 0
 #6601
@@ -25,10 +25,10 @@ A cute and fuzzy teddy bear stands here.
 This is a tiny little bear with a heart on his chest.
 ~
 doll~
-CG 0 500 S
+ACG 0 500 S
 1 0 1d10+10 1d1+99 1d4+0 13
 8 5 9 10
-NR 0 0 0
+NR AB 0 0
 8 8 1 0
 0 0 S cloth
 #6602
@@ -39,10 +39,10 @@ A raggedy anne doll is sitting here.
 You see a small little cute rag doll.
 ~
 doll~
-CG 0 300 S
+ACG 0 300 S
 2 0 2d5+19 1d1+99 1d5+0 13
 7 4 8 10
-FHR 0 0 0
+FHR AB 0 0
 6 8 2 0
 0 0 S cloth
 #6603
@@ -53,10 +53,10 @@ A toy soldier is standing here.
 The toy is looking for target practice.
 ~
 doll~
-CGT 0 -300 S
+ACGT 0 -300 S
 3 1 3d5+36 1d1+99 1d4+3 17
 6 7 6 9
-IR 0 G E
+IR AB G E
 8 8 1 0
 0 0 S 0
 #6604
@@ -68,10 +68,10 @@ This is obviously a reject from the factory.
 He snarls and growls at you.
 ~
 doll~
-CF 0 -400 S
+ACFG 0 -400 S
 3 0 3d4+29 1d1+99 1d6+1 32
 6 3 7 10
-DJNR 0 0 0
+DJNR AB 0 0
 8 8 1 5
 0 0 S cloth
 #6605
@@ -82,10 +82,10 @@ An abused and old doll is here.
 This doll has been hugged and played with until there is almost nothing left.
 ~
 doll~
-CG 0 -2 S
+ACG 0 -2 S
 1 0 1d10+1 1d1+99 1d4+0 13
 8 5 9 10
-R 0 0 0
+R AB 0 0
 8 8 0 0
 0 0 S cloth
 #6606
@@ -97,10 +97,10 @@ You see an old dwarven lady who has been hunched over with age.  However, it
 appears that there is still some fight left in her.
 ~
 dwarf~
-G 0 10 S
+AG 0 10 S
 5 1 4d4+50 5d4+100 1d6+1 16
 5 5 5 10
-CDR 0 0 0
+CDR AB 0 0
 8 8 2 50
 0 0 M 0
 #6607
@@ -112,10 +112,10 @@ This is a big mean bully who is tired of being lost in this maze.
 You suddenly think that you had better flee.
 ~
 dwarf~
-BCT D -800 S
+ABCT D -800 S
 8 1 3d10+100 8d4+100 1d7+3 17
 3 2 3 8
-CDJR 0 0 0
+CDJR AB 0 0
 8 8 1 120
 0 0 M 0
 #6608
@@ -127,10 +127,10 @@ You see a little tyke who has always gotten what he wanted.  You have the
 biggest urge to put him out of his misery.
 ~
 dwarf~
-BC 0 -750 S
+ABC 0 -750 S
 1 0 2d4+15 1d1+199 2d2+1 13
 8 8 8 10
-IJN 0 0 0
+IJN AB 0 0
 8 8 1 50
 0 0 S 0
 #0

@@ -11,10 +11,10 @@ You see a cute little blue smurf with a white hat and white boots.  You
 have a sudden urge to crush him.
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 1 1 10d2+2 2d8+1 1d2+1 17
 9 9 9 9
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #102
@@ -25,10 +25,10 @@ A smurf is here, picking berries.
 A small smurf is quietly picking berries.  He hardly seems to notice you.
 ~
 hobbit~
-BH 0 100 S
+ABH 0 100 S
 1 1 2d5+20 2d8+1 1d2+1 2
 9 9 9 9 
-N 0 0 0
+N AB 0 0
 8 8 1 0
 0 0 S 0
 #103
@@ -40,10 +40,10 @@ Brainy Smurf has on his usual glasses.  Brainy Smurf isn't liked much by the
 other smurfs.  They fear his knowledge.  Knowledge is power!
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 3 2 3d10+1 2d7+1 1d4+1 3
 7 7 7 7 
-N 0 0 0
+N AB 0 0
 8 8 1 0
 0 0 S 0
 #104
@@ -55,10 +55,10 @@ Handy is always building something.  He never takes a break.  Why don't you
 give him a break, like all of his bones?
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 3 2 3d10+1 2d8+1 1d4+1 3
 7 7 7 7 
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #105
@@ -70,10 +70,10 @@ Sleepy never gets enough sleep.  You would think he goes to college.  I wonder
 if he has ever stayed up a whole night without sleeping.
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 3 2 3d10+1 2d7+1 1d4+1 2
 7 7 7 7
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #106
@@ -85,10 +85,10 @@ Hefty is a total health nut.  He lifts weights, eats right, and exercises all
 the time.  Won't do him much good when he's DEAD.
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 3 2 3d10+1 2d7+1 1d4+1 3
 7 7 7 7 
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #107
@@ -99,10 +99,10 @@ Grumpy Smurf is here, swearing.
 Grumpy has never been happy in his whole life.  So why don't you just end it?
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 3 2 3d10+1 2d7+1 1d4+1 2
 7 7 7 7 
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #108
@@ -114,10 +114,10 @@ Jokey loves to give people presents.  Too bad the present explodes when opened.
 Oh well, to each his own.
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 3 2 3d10+1 2d7+1 1d4+1 2
 7 7 7 7 
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 S 0
 #109
@@ -129,10 +129,10 @@ Smurfette is the cutest little smurf you've ever seen.  If only she were your
 size.  I wonder how much she charges the other smurfs.
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 3 2 3d10+1 2d7+1 1d4+1 2
 7 7 7 7 
-K 0 0 0
+K AB 0 0
 8 8 2 0
 0 0 S 0
 #110
@@ -145,10 +145,10 @@ beard.  Papa Smurf treats his fellow smurfs with dignity and respect.  That
 is why Papa Smurf is so popular among the ladies.
 ~
 hobbit~
-GH 0 100 S
+AGH 0 100 S
 10 4 10d10+50 2d25+1 2d2+12 3
 1 1 1 1
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #111
@@ -160,10 +160,10 @@ Gargamel has never done anything right in his life.  He has caught smurfs
 before but always lets them escape.  He brings true meaning to the word moron.
 ~
 troll~
-BH 0 -100 S
+ABH 0 -100 S
 10 4 10d10+50 2d25+1 2d2+12 2
 1 1 1 1
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #112
@@ -175,10 +175,10 @@ Azreal is Gargamel's worthless cat.  He is just about as dumb as Gargamel.
 He should just grab a smurf in his teeth and chew away.
 ~
 cat~
-BH 0 -100 S
+ABH 0 -100 S
 8 3 8d8+80 2d10+1 1d4+5 2
 3 3 3 3
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #113
@@ -191,10 +191,10 @@ brother Super Smurf to take care of this problem. Now Super Smurf comes
 to the rescue! (This mob is not intended for lowbies*)
 ~
 hobbit~
-BH H 100 S
+ABH H 100 S
 70 4 100d20+5000 10d20+500 5d50+30 3 
 1 1 1 1
-K 0 0 0
+K AB 0 0
 8 8 1 0
 0 0 S 0
 #0

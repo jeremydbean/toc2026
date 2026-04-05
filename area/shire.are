@@ -14,10 +14,10 @@ than the oldest man, he seems to have an inner strength which most mortals
 cannot overcome.
 ~
 human~
-BRG D 500 S
+ABGR D 500 S
 18 2 18d14+216 9d18+108 2d13+3 16
 -3 -3 -2 0
-FN B I L
+FN AB I L
 8 8 1 1231
 0 0 L 0
 #1101
@@ -32,7 +32,7 @@ usually a halfling of peace, he will fight you to the death if you attempt
 to take away that which belongs to him.
 ~
 dwarf~
-BCGT BD 0 S
+ABCGT BD 0 S
 19 3 19d15+228 9d18+114 2d7+5 17
 -4 -3 -4 -1
 CEF AB CL O
@@ -48,10 +48,10 @@ been tanned from working the fields night and day.  He's quite a jolly
 chap, always ready to befriend an injured bunny rabbit.
 ~
 hobbit~
-BHT 0 350 S
+ABHT 0 350 S
 7 1 7d5+84 3d7+42 1d8+1 17
 4 4 3 6
-EFI I L R
+EFI ABI L R
 8 8 1 200
 0 0 M 0
 #1103
@@ -63,10 +63,10 @@ The toddler is dressed in nothing but his birthday suit.  He crawls about
 for he hasn't learned to walk yet.  He peers up at you and asks "da da?"
 ~
 human~
-BHT 0 100 S
+ABHT 0 100 S
 2 0 2d3+24 1d2+12 2d4+0 10
 9 8 8 9
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 0
 0 0 T 0
 #1104
@@ -79,10 +79,10 @@ toddlers for too long has evidently taken its toll.  She looks to you and
 in her eyes you can see her longing for a better life.
 ~
 human~
-BT 0 100 S
+ABT 0 100 S
 5 0 5d4+6 3d5+30 1d6+1 16
 4 5 5 7
-EFN Q E K
+EFN ABQ E K
 8 8 2 30
 0 0 M 0
 #1105
@@ -95,10 +95,10 @@ is past her prime, you see that she still has a lot of years left, and that
 if provoked, her rear kick can be quite deadly.
 ~
 unique~
-BHTW 0 0 S
+ABHTW 0 0 S
 4 0 4d3+48 2d4+24 1d5+1 15
 6 6 5 8
-FJN A H J
+FJN AB H J
 8 8 2 0
 0 0 M 0
 #1106
@@ -111,10 +111,10 @@ and cares only for the care-free life that he leads.  It is enormously fat
 and consequently cannot move around very quickly.
 ~
 pig~
-BHTW 0 0 S
+ABHTW 0 0 S
 3 0 3d2+36 1d3+18 1d6+0 15
 6 7 7 9
-FJN A 0 0
+FJN AB 0 0
 8 8 1 0
 0 0 S 0
 #1107
@@ -125,10 +125,10 @@ A chicken sits on her nest.
 The chicken is bright and healthy.  She has no weapons but her beak.
 ~
 song bird~
-BH 0 0 S
+ABH 0 0 S
 2 0 2d1+24 1d2+12 1d5+0 23
 8 7 8 9
-FJN 0 Q 0
+FJN AB Q 0
 6 6 2 0
 0 0 T 0
 #1108
@@ -141,10 +141,10 @@ reckoned with.  With his horns and his hooves he can attack just about
 anything.
 ~
 unique~
-BFT 0 -50 S
+ABFGT 0 -50 S
 6 1 6d5+72 3d6+36 1d7+1 15
 4 4 3 6
-FJN L H G
+FJN ABL H G
 8 8 1 0
 0 0 B 0
 #1109
@@ -155,10 +155,10 @@ A horse becomes frightened by your presence.
 The horse looks at you and turns away.  You can tell that it is afraid of you.
 ~
 horse~
-BHTW 0 0 S
+ABHTW 0 0 S
 4 0 4d3+48 2d4+24 1d5+1 8
 6 5 6 8
-FINO A 0 0
+FINO AB 0 0
 8 8 0 0
 0 0 L 0
 #1110
@@ -172,10 +172,10 @@ his belt is a thin dagger, and on his body he wears a suit of leather armor.
 This is one halfling you don't want to mess with.
 ~
 human~
-CGT 0 150 S
+ACGT 0 150 S
 8 1 8d6+96 4d8+48 1d7+2 7
 3 3 3 5
-EFNP 0 0 H
+EFNP AB 0 H
 8 8 1 50
 0 0 M 0
 #1111
@@ -189,10 +189,10 @@ his belt is a thin dagger, and on his body he wears a suit of leather armor.
 This is one halfling you don't want to mess with.
 ~
 human~
-CGT 0 150 S
+ACGT 0 150 S
 8 1 8d6+96 4d8+48 1d7+2 7
 3 3 3 5
-EFNP 0 0 H
+EFNP AB 0 H
 8 8 1 50
 0 0 M 0
 #1112
@@ -206,10 +206,10 @@ as long as he's in office, the Shire will always remain a safe haven for
 Shire folk.
 ~
 human~
-GT 0 700 S
+AGT 0 700 S
 14 2 14d10+163 7d14+84 1d12+3 7
 -1 -1 0 1
-EFNP 0 0 0
+EFNP AB 0 0
 8 8 1 500
 0 0 M 0
 #1113
@@ -218,13 +218,13 @@ the Innkeeper~
 The Innkeeper stands here awaiting your order.
 ~
 The Innkeeper is a jolly old halfling who spends his days eavesdropping on
-local gossip.  In his younger days, he was quite a seasoned traveller.
+local gossip.  In his younger days, he was quite a seasoned traveler.
 ~
 human~
-BGT 0 200 S
+ABGT 0 200 S
 12 1 12d9+144 6d12+72 1d10+3 17
 0 1 0 0 
-EFN 0 L E
+EFN AB L E
 8 8 1 700
 0 0 M 0
 #1114
@@ -237,10 +237,10 @@ respect from his workers than he can get.  He looks like the type of person
 who deserves a spanking but never got one.
 ~
 human~
-CGHT 0 200 S
+ACGHT 0 200 S
 6 0 6d5+72 3d6+367 1d7+1 17
 3 4 4 6
-EFN 0 K 0
+EFN AB K 0
 8 8 1 200
 0 0 M 0
 #1115
@@ -253,10 +253,10 @@ mill.  He doesn't notice your presence, but he looks like he could break you
 in two without thinking about it.
 ~
 dwarf~
-BHT 0 50 S
+ABHT 0 50 S
 4 0 4d3+48 2d4+24 1d5+1 17
 6 6 6 8
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 50
 0 0 M 0
 #1116
@@ -269,10 +269,10 @@ on his countenance is solemn and tragic.  He cares not for this world any
 longer and wearies of it.
 ~
 elf~
-BT 0 750 S
+ABT 0 750 S
 17 2 17d13+204 8d17+102 3d4+4 7
 -3 -2 -3 -1
-EFN 0 C G
+EFN AB C G
 8 8 1 500
 0 0 M 0
 #1117
@@ -285,10 +285,10 @@ dwarves of his land.  His glowing eyes peer out of his bushy face and stare
 beyond your gaze.
 ~
 dwarf~
-BT K 750 S
+ABT K 750 S
 17 2 17d14+204 8d17+102 3d4+4 7
 -3 -3 -2 -1
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 700
 0 0 L 0
 #1118
@@ -300,7 +300,7 @@ The shopkeeper will fight like a madman to protect his store from riff-raff
 like you.
 ~
 human~
-BT 0 600 S
+ABT 0 600 S
 21 3 21d15+252 10d21+126 4d4+5 17
 -5 -5 -5 -3
 EFNU AB 0 0
@@ -316,7 +316,7 @@ However, he also knows that it's worth protecting and so will do everything
 in his power to prevent riff-raff like you from stealing it.
 ~
 dwarf~
-BT 0 600 S
+ABT 0 600 S
 21 3 21d15+252 10d21+126 4d4+5 17
 -4 -5 -5 -3
 EFN AB 0 0
@@ -328,10 +328,10 @@ the blacksmith~
 The blacksmith bids you welcome to his humble store.
 ~
 The blacksmith is a lean and mean fighting machine.  His knowledge of weapons
-and armour would certainly help him in any fight against riff-raff like you.
+and armor would certainly help him in any fight against riff-raff like you.
 ~
 human~
-BT 0 600 S
+ABT 0 600 S
 50 5 50d38+600 25d50+30 5d8+18 7
 -20 -18 -19 -16
 EFN AB 0 0
@@ -345,10 +345,10 @@ The battle master offers you the services of his fine trainees.
 The battle master is a wizened fighter, with many scars to prove his worth.
 ~
 human~
-BT 0 350 S
+ABT 0 350 S
 25 4 25d19+288 13d25+150 2d10+7 7
 -7 -7 -7 -5
-CFT 0 0 0
+CFT AB 0 0
 8 8 1 1500
 0 0 L 0
 #1122
@@ -360,10 +360,10 @@ The halfling youth is not yet quite in the prime of his youth.  He's knee
 high and you get the sudden urge to step on him.
 ~
 human~
-CGH 0 0 S
+ACGH 0 0 S
 3 0 3d2+36 1d3+18 1d6+0 17
 7 7 6 9
-EFN 0 C 0
+EFN AB C 0
 8 8 1 0
 0 0 M 0
 #1123
@@ -376,10 +376,10 @@ past his prime, he still looks like he could put up more than his share of
 a good fight.
 ~
 human~
-B 0 100 S
+AB 0 100 S
 8 1 8d8+88 2d3+7 1d8+1 3
 3 3 2 5
-EFN 0 E R
+EFN AB E R
 6 6 1 0
 0 0 M 0
 #1124
@@ -391,10 +391,10 @@ The gossip is all talk and no action.  You're transfixed by her ability to
 talk so much so quickly.
 ~
 hobbit~
-BHT 0 0 S
+ABHT 0 0 S
 4 0 4d3+48 2d4+24 1d5+1 16
 6 5 6 8
-EFN 0 E R
+EFN AB E R
 8 8 2 25
 0 0 M 0
 #1125
@@ -408,10 +408,10 @@ at her feet, hoping she'll take you in like a lost puppy.  You wouldn't dare
 harm a hair on her precious little head.
 ~
 human~
-BT 0 1000 S
+ABT 0 1000 S
 6 0 6d4+72 3d6+24 1d7+1 22
 3 4 4 6
-EFN 0 0 0
+EFN AB 0 0
 8 8 2 75
 0 0 M 0
 #1126
@@ -424,10 +424,10 @@ fresh, but his enthusiasm and desire to please more than make up for what
 he lacks in skill.
 ~
 human~
-BT 0 0 S
+ABT 0 0 S
 5 0 5d4+60 3d5+30 1d6+1 17
 5 4 5 7
-EFN 0 L K
+EFN AB L K
 8 8 1 0
 0 0 M 0
 #1127
@@ -440,10 +440,10 @@ all of the latest fashions and his manners impeccable.  He offers you some
 coins if you'd be so good as to order a drink for him.
 ~
 hobbit~
-BTH 0 -25 S
+ABHT 0 -25 S
 4 0 4d3+48 2d4+24 1d5+1 17
 6 6 6 8
-EFN 0 H G
+EFN AB H G
 6 6 1 0
 0 0 M 0
 #1128
@@ -454,7 +454,7 @@ A country bumpkin dreams of pipeweed and its many uses.
 The country bumpkin snores noisily.
 ~
 hobbit~
-BT 0 0S
+BT 0 S
 5 0 5d4+60 2d5+30 1d6+1 17
 4 5 5 7
 EFN 0 I E
@@ -466,13 +466,13 @@ the Innkeeper~
 The Innkeeper stands here awaiting your order.
 ~
 The Innkeeper is a jolly old halfling who spends his days eavesdropping on
-local gossip.  In his younger days, he was quite a seasoned traveller.
+local gossip.  In his younger days, he was quite a seasoned traveler.
 ~
 dwarf~
-BT 0 200 S
+ABT 0 200 S
 12 1 12d9+144 6d12+72 1d10+3 7
 0 0 0 2
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 1000
 0 0 M 0
 #1131
@@ -483,10 +483,10 @@ The receptionist sits here, signing forms.
 He is a very professional looking type.
 ~
 human~
-BT 0 200 S
+ABT 0 200 S
 12 1 12d8+144 6d12+72 1d10+3 7
 1 0 0 2
-EFN 0 0 E
+EFN AB 0 E
 6 6 1 70
 0 0 M 0
 #1132
@@ -499,10 +499,10 @@ He looks at you, smiles and asks you if you have seen a halfling youth
 somewhere outside the shire.
 ~
 human~
-CGT J 150 S
+ACGT J 150 S
 8 1 8d6+96 4d8+48 1d7+2 7
 3 3 3 5
-EFNP 0 0 H
+EFNP AB 0 H
 8 8 1 50
 0 0 M 0
 #1133
@@ -514,10 +514,10 @@ The halfling youth is not yet quite in the prime of his youth.  He's knee
 high and you get the sudden urge to step on him.
 ~
 human~
-CGH 0 -300 S
+ACGH 0 -300 S
 3 0 3d2+36 1d3+18 1d6+0 17
 7 7 6 9
-EFN 0 C 0
+EFN AB C 0
 8 8 1 0
 0 0 M 0
 #0
@@ -826,7 +826,7 @@ To the south lies Kid'n Keep, the local nursery.
 S
 #1107
 The House of Arms~
-   You are inside the finest weapons and armour shop in all of Shiredom.  The
+   You are inside the finest weapons and armor shop in all of Shiredom.  The
 shopkeeper proudly displays his fine wares and humbly offers the best daggers
 that you have ever laid eyes on.
 ~
@@ -1792,7 +1792,7 @@ M 0 1103 6 1108
 M 0 1103 6 1108
 M 0 1110 8 1110         Non-mobile sheriffs
 E 1 1109 9 16           Tiny dagger
-E 1 616 100 5           Leather armour
+E 1 616 100 5           Leather armor
 M 0 1110 8 1110
 E 1 616 100 5
 M 0 1111 4 1110         Mobile sheriff
@@ -1905,14 +1905,14 @@ M 0 1127 7 1144
 M 0 1127 7 1144
 M 0 1110 8 1145         Non-mobile sheriffs
 E 1 1109 3 16           Tiny daggers
-E 1 616 100 5           Leather armour
+E 1 616 100 5           Leather armor
 M 0 1110 8 1145
 E 1 616 100 5
 M 0 1111 4 1145         Mobile sheriff
 E 1 616 100 5
 M 0 1110 8 1153         Non-mobile sheriffs
 E 1 1109 3 16           Tiny daggers
-E 1 616 100 5           Leather armour
+E 1 616 100 5           Leather armor
 M 0 1110 8 1153
 E 1 616 100 5
 M 0 1111 4 1153         Mobile sheriff

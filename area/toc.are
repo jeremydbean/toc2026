@@ -341,7 +341,7 @@ something needs changing.
 
 67 DEMIGODS DEMI-GODS~
 Your job is to keep the peace.  This means if someone is being
-obnoxious, kindly ask them to stop the annoying behaviour.  If they
+obnoxious, kindly ask them to stop the annoying behavior.  If they
 persist, you can remove their channels until they simmer down.  If they
 are a blatant pain, gossiping foul language and such, nochannel them and
 dump them in jail.  Jailing is usually only for those players that
@@ -826,14 +826,14 @@ Trainer for C/C is Tempora.  Trainer for ?/C is Grill.
 -1 COMBAT~
 This group is primarily for mages. They gain the following spells:
 
-Acid Blast, Chain Lightning, Colour Spray, Fireball, Shocking Grasp,
+Acid Blast, Chain Lightning, Color Spray, Fireball, Shocking Grasp,
 Heat Metal
 
 at a cost of 6 trains.
 
 Guild members gain the following:
 
-Colour Spray, Fireball, Shocking Grasp
+Color Spray, Fireball, Shocking Grasp
 
 at a cost of 4 trains.
 
@@ -1237,7 +1237,7 @@ cause light      cause serious        cc                 cgos
 chain lightning  changes              channels           charm person
 chill touch      citadel of war       clairvoyance       cleric
 climb            close                cold spells        color
-colour spray     combat               combine            commands
+color spray     combat               combine            commands
 compact          compare              concoct            cone of cold
 confuse          consider             continual light    control weather
 count            crane dance          create food        create skeleton

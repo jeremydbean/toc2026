@@ -10,10 +10,10 @@ This creature of the sea looks like a cross between a lobster, a crayfish,
 and a scorpion.  Its pinchers look quite poisonous.
 ~
 unique~
-FG L -150 S
+AFG L -150 S
 12 0 12d9+144 3d12+72 1d10+3 5
 0 0 0 2
-R AR 0 H
+R ABR 0 H
 8 8 1 0
 0 0 T 0
 #29402
@@ -25,10 +25,10 @@ This grizzly bear is taller than you when standing on his hind legs.
 His fur ripples as he flexes in anticipation of a fight.
 ~
 bear~
-FG 0 -100 S
+AFG 0 -100 S
 15 0 15d11+180 7d15+90 2d6+3 7
 -2 -2 -2 0
-U 0 0 0
+U AB 0 0
 8 8 1 0
 0 0 L 0
 #29403
@@ -42,10 +42,10 @@ ocean and how they have ruthlessly run west and slammed into the colossal
 tree of Haon Dor.
 ~
 undead~
-G D -150 S
+AG D -150 S
 17 1 17d12+200 8d17+100 3d4+4 8
 -3 -3 -3 -1
-CEIRZ A I 0 H
+CEIRZ A ABI 0 H
 8 8 1 0
 0 0 H 0
 #29404
@@ -57,10 +57,10 @@ This is one of Korzath's scouts that was sent across the sea under Kazor's
 command to hunt down and find the people and city of Tandelador.
 ~
 human~
-CGH D 25 S
+ACGH D 25 S
 18 1 18d13+216 9d18+100 2d7+4 17
 -3 -3 -3 -1
-DFLR 0 0 0
+DFLR AB 0 0
 8 8 1 0
 0 0 M 0
 #29405
@@ -73,10 +73,10 @@ healing spells on any object around him and offers his spells to you but,
 since you are not a tree, it will cost you.
 ~
 hobbit~
-DGMV D 150 S
+ADGMV D 150 S
 50 20 50d38+600 25d50+300 5d8+19 19
 -20 -20 -20 -20
-F BCDP 0 0
+F ABCDP 0 0
 8 8 1 0
 0 0 M 0
 #29406
@@ -87,10 +87,10 @@ A slow mutant moves towards you oh so slowly.
 Slow, VERY slow.
 ~
 unique~
-CFG J -150 S
+ACFG J -150 S
 20 2 20d15+240 10d20+120 2d8+5 16
 -4 -4 -4 -2
-EFNR 0 0 0
+EFNR AB 0 0
 8 8 1 0
 0 0 L 0
 #29407
@@ -101,10 +101,10 @@ A nasty red scorpion pops out of the sand.
 This little red scorpion enjoys the heat of his desert home.
 ~
 unique~
-FG P -150 S
+AFG P -150 S
 22 2 22d16+260 11d22+132 4d4+6 26
 -5 -5 -5 -3
-FJR H 0 I
+FJR ABH 0 I
 8 8 2 0
 0 0 T 0
 #29408
@@ -118,7 +118,7 @@ Rich, VERY rich.
 He robbed you, yes, he ROBBED you.
 ~
 elf~
-CGHMS DHOTVZ G -100 S
+ACGHMS DHOTVZ G -100 S
 52 22 52d39+624 25d52+300 6d7+20 2
 -22 -22 -22 -20
 BDEFHIJKN AB 0 0
@@ -133,10 +133,10 @@ This strong black stallion must belong to a great and powerful
 adventurer.
 ~
 horse~
-BW DJPU 100 S
+ABW DJPU 100 S
 20 2 20d15+240 10d20+120 2d8+5 32
 -4 -4 -4 -4
-DFIKL 0 0 0
+DFIKL AB 0 0
 8 8 1 0
 0 0 L 0
 #29410

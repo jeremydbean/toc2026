@@ -14,10 +14,10 @@ rise up out of its back start to move almost hypnotically as it starts
 to walk toward you.
 ~
 cat~
-BFGT G 0 S
+ABFGT G 0 S
 10 5 2d7+121 2d7+121 1d10+10 5
 0 0 0 4
-0 0 0 0
+0 AB 0 0
 8 8 0 100
 0 0 M 0
 #25101
@@ -29,10 +29,10 @@ He glares at you with his glowing red eyes out of the darkness.  He's wearing
 chainmail and a dark cloak.  A slender sword rests in a scabbard on his hip.
 ~
 elf~
-BCGT DFJPQ -750 S
+ABCGT DFJPQ -750 S
 5 5 2d8+134 2d8+134 1d5+5 0
 1 1 1 2
-CEFKQ 0 BCL 0
+CEFKQ AB BCL 0
 8 8 1 80
 0 0 M 0
 #25102
@@ -45,10 +45,10 @@ on her belt before she remembers her orders.  Her long white hair flows down
 her back and her eyes grow red.
 ~
 elf~
-BCGQ DFJPQ -800 S
+ABCGQ DFJPQ -800 S
 11 5 2d8+134 100d2+30 1d11+11 0
 1 1 1 2
-CEFKQ 0 BCL 0
+CEFKQ AB BCL 0
 8 8 2 100
 0 0 M 0
 #25103
@@ -61,10 +61,10 @@ stays on the hilt of his sharp looking sword.  You should watch what you do
 around him.
 ~
 elf~
-BCGT DFJ -750 S
+ABCGT DFJ -750 S
 10 5 5d10+250 5d10+400 1d10+10 0
 1 1 1 3
-CEFKT 0 BCL 0
+CEFKT AB BCL 0
 8 8 1 500
 0 0 M 0
 #25104
@@ -76,10 +76,10 @@ You can't make out his features because of the piwafwi hood he has pulled
 over his head.
 ~
 elf~
-BCGT DFJ -850 S
+ABCGT DFJ -850 S
 20 10 3d9+333 3d9+333 2d8+5 0
 -3 -3 -3 1
-CEFKT 0 BCL 0
+CEFKT AB BCL 0
 8 8 1 100
 0 0 M 0
 #25105
@@ -96,7 +96,7 @@ centipede~
 A 0 0 S
 15 5 3d9+208 3d9+208 1d15+15 32
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 L 0
 #25106
@@ -109,10 +109,10 @@ black body inside of bright silk robes and gold jewlery hanging off of his
 body at every point it can.
 ~
 dwarf~
-B 0 -500 S
+AB 0 -500 S
 20 10 3d9+301 3d9+301 1d20+20 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 1000
 0 0 S 0
 #25107
@@ -125,10 +125,10 @@ He pushes his way the front of the group of goblins and demands to know what
 you want.
 ~
 goblin~
-B 0 -250 S
+AB 0 -250 S
 15 5 3d9+208 3d9+9 1d15+10 0
 4 4 4 8
-0 0 0 0
+0 AB 0 0
 8 8 1 5
 0 0 M 0
 #25108
@@ -141,10 +141,10 @@ wouldn't do anything unless his chief demanded it of him.  Maybe not even
 then.
 ~
 goblin~
-B 0 -250 S
+AB 0 -250 S
 10 3 2d7+121 2d7+1 1d10+10 0
 9 9 9 9
-0 0 0 0
+0 AB 0 0
 8 8 1 2
 0 0 M 0
 #25109
@@ -155,10 +155,10 @@ A strange purple humanoid with tentacles wriggling in its mouth.
 It look's at you and attacks!
 ~
 undead~
-BR JT -900 S
+ABR JT -900 S
 17 3 2d10+170 20d20+100 1d13+13 0
 -1 -1 -1 2
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #25110
@@ -170,10 +170,10 @@ Its head is sticking out of a giant shell.  It's slow moving, but looks
 strong.
 ~
 giant~
-B 0 0 S
+AB 0 0 S
 20 1 3d9+333 1d4+4 1d20+20 8
 5 5 5 9
-O 0 0 0
+O AB 0 0
 8 8 0 0
 0 0 L 0
 #25111
@@ -184,10 +184,10 @@ A strange looking cow is standing here.
 The roth is the underground version of cattle.  Yumm, good eating.
 ~
 horse~
-B 0 0 S
+AB 0 0 S
 10 1 2d7+121 2d7+2 1d10+10 10
 1 1 1 9
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #25112
@@ -199,10 +199,10 @@ He got lost from the rest of his tribe and now lives here in this cavern
 tending the herd of roth.
 ~
 unique~
-B 0 0 S
+AB 0 0 S
 15 5 3d9+208 3d9+208 1d15+15 1
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #25113
@@ -214,10 +214,10 @@ This guard notices you and begins his attack swinging wildly with his axe.
 By all the notches on it you know you should be careful.
 ~
 orc~
-BFT G -500 S
+ABFGT G -500 S
 16 5 3d9+233 3d9+233 1d16+16 1
 -1 -1 -1 2
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #25114
@@ -229,10 +229,10 @@ It's tall and has a bony exoskeleton.  The next thing you notice are its
 hooks, but that's only because they're coming for your head!
 ~
 unique~
-CGFH 0 0 S
+ACFGH 0 0 S
 20 5 3d9+333 1d1+1 1d20+20 21
 -6 -6 -6 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 L 0
 #25115
@@ -243,10 +243,10 @@ You see a strange looking insect in the darkness.
 It looks like a big centipede.
 ~
 centipede~
-CG 0 0 S
+ACG 0 0 S
 15 3 3d9+208 1d1+1 1d15+15 0
 -1 -1 -1 1
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 L 0
 #25116
@@ -259,10 +259,10 @@ each gulp of air he gulps down into his barrel like chest.  When you see
 his eyes you can see a universe behind them.
 ~
 unique~
-BT HTV 950 S
+ABT HTV 950 S
 20 3 3d9+333 3d9+333 1d20+20 0
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 1000
 0 0 M 0
 #25117
@@ -274,10 +274,10 @@ Remember, if the women don't find you handsome at least let them find you
 handy.
 ~
 unique~
-BT HTV 950 S
+ABT HTV 950 S
 20 3 3d9+333 3d9+333 1d20+20 0
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 1000
 0 0 M 0
 #25118
@@ -291,7 +291,7 @@ there is only one being in the entire universe that can approach this
 beautiful, magnificent creature.
 ~
 horse~
-GQRSTW CDEFGHJOTUV 1000 S
+AGQRSTW CDEFGHJOTUV 1000 S
 60 30 100d100+10000 100d100+10000 20d20+20 32
 -20 -20 -20 -20
 ACDEFHIKNO ABCDQRS 0 0

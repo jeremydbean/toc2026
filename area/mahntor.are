@@ -18,10 +18,10 @@ was involved in the carnage that occurred here. His soul is trapped here, as
 he waits for release.
 ~
 human~
-BT DHJ -750 S
+ABT DHJ -750 S
 25 5 5d10+550 100d1+50 1d8+15 17
 -6 -6 -6 -6
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 200
 0 0 M 0
 #2301
@@ -34,10 +34,10 @@ Very few leaves remain. Its limbs are crooked and gnarled. It moans as the
 wind pushes it back and forth.
 ~
 tree~
-BT J 250 S
+ABT J 250 S
 20 3 3d9+333 100d1+35 3d6+5 17
 -4 -4 -4 -4
-EFNU I E H
+EFNU ABI E H
 8 8 0 100
 0 0 L 0
 #2302
@@ -50,10 +50,10 @@ a bird's beak, huge white eyes, a furry body, and long clawed hands and feet.
 It sees you and snarls.
 ~
 saurian~
-BFT CEJP 0 S
+ABFGT CEJP 0 S
 15 3 3d9+208 100d1+35 3d6+3 17
 -2 -2 -2 -2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 100
 0 0 M 0
 #2303
@@ -64,10 +64,10 @@ A rather large rock toad sits here, croaking loudly.
 A grey toad. Its about the size of a cow. Small horns grow all over its body.
 ~
 toad~
-BT J -250 S
+ABT J -250 S
 14 2 2d10+190 100d1+10 2d8+3 17
 -1 -1 -1 -1
-EFNU 0 0 0
+EFNU AB 0 0
 6 6 0 50
 0 0 S 0
 #2304
@@ -79,10 +79,10 @@ The weeping willow has long thins branches. These branches seem to droop in
 anguish and dismay. You hear a faint sound of crying.
 ~
 tree~
-BT DHJ 750 S
+ABT DHJ 750 S
 25 3 5d10+550 100d1+150 4d6+5 17
 -6 -6 -6 -6
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 2 175
 0 0 L 0
 #2305
@@ -93,10 +93,10 @@ A mistling emerges from the mist surrounding you.
 It looks like a thin wisp of mist that has gained substance and size.
 ~
 mist~
-BFT JQ 0 S
+ABFGT JQ 0 S
 15 1 3d9+208 100d1+10 2d9+3 17
 -2 -2 -2 -2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 75
 0 0 M 0
 #2306
@@ -109,10 +109,10 @@ appears to emerge from the mist. You feel the cold radiating from his form as
 he nears you.
 ~
 wraith~
-BCFT J -700 S
+ABCFGT J -700 S
 20 4 3d9+333 100d1+50 6d4+5 17
 -4 -4 -4 -4
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 55
 0 0 M 0
 #2307
@@ -124,10 +124,10 @@ You see a pitifully overworked ogre. It is dressed in rags and shuffles along
 with its head hung low. It sees you and cringes in mortal terror.
 ~
 ogre~
-GHT 0 -200 S
+AGHT 0 -200 S
 10 1 2d8+134 100d1+10 2d6+2 17
 1 1 1 1
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 45
 0 0 L 0
 #2308
@@ -139,10 +139,10 @@ The ogre warrior is dressed in thick fur armor. He looks quite large and
 formidable.
 ~
 ogre~
-CFGHT 0 -350 S
+ACFGHT 0 -350 S
 15 1 3d9+208 100d1+10 3d6+3 17
 -2 -2 -2 -2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 50
 0 0 L 0
 #2309
@@ -154,10 +154,10 @@ The ogre guard stands here manning his post. It appears as though he would
 fight to the death before abandoning his post.
 ~
 ogre~
-BCFGT J -500 S
+ABCFGT J -500 S
 19 2 3d9+308 100d1+55 3d6+5 17
 -4 -4 -4 -4
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 55
 0 0 L 0
 #2310
@@ -169,10 +169,10 @@ The ogre shaman is draped in thick fur cloaks and pelts. He has all types of
 charms and holy symbols draped about him. He looks at you and snarls.
 ~
 ogre~
-BCFGHT DH -750 S
+ABCFGHT DH -750 S
 20 2 3d9+333 100d1+75 4d6+5 17
 -4 -4 -4 -4
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 75
 0 0 L 0
 #2311
@@ -184,10 +184,10 @@ This is the biggest ogre you have ever seen. He is heavily equipped and looks
 quite formidable. He towers high above you and growls menacingly.
 ~
 ogre~
-BCFGHT DH -1000 S
+ABCFGHT DH -1000 S
 25 4 5d10+550 100d1+50 5d5+5 17
 -6 -6 -6 -6
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 150
 0 0 L 0
 #2312
@@ -199,10 +199,10 @@ The plains barbarian is clad in heavy furs. He seems used to the chilling cold
 and icy wastes.
 ~
 human~
-BCFGT J 0 S
+ABCFGT J 0 S
 20 2 3d9+333 100d1+10 3d6+4 17
 -4 -4 -4 -4
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 25
 0 0 M 0
 #2313
@@ -214,10 +214,10 @@ The white yeti looks like a huge white snow ape. Its long arms end in long
 curved talons and its mouth is full of sharp teeth.
 ~
 yeti~
-BCFGT J -350 S
+ABCFGT J -350 S
 16 2 3d9+233 100d1+10 3d7+3 17
 -2 -2 -2 -2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 15
 0 0 L 0
 #2314
@@ -230,10 +230,10 @@ The huge worm is almost 50 feet long. Its huge gaping mouth spews ice and snow
 as it charges directly at you.
 ~
 worm~
-BCFGT J 0 S
+ABCFGT J 0 S
 20 2 3d9+333 100d1+15 3d6+5 17
 -4 -4 -4 -4
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 15
 0 0 L 0
 #2315
@@ -245,10 +245,10 @@ You see a rather ragged and cold minotaur. It appears to be looking for a warm
 place to seek refuge from the cold.
 ~
 minotaur~
-BCGHT 0 -100 S
+ABCGHT 0 -100 S
 15 1 2d9+208 100d1+25 2d5+5 17
 -2 -2 -2 -2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 25
 0 0 L 0
 #2316
@@ -260,10 +260,10 @@ The minotaur is clad in heavy furs. Beneath these furs, you see the gleam of
 his armor.
 ~
 minotaur~
-BCFGT 0 -330 S
+ABCFGT 0 -330 S
 22 2 5d10+400 100d1+34 4d6+5 17
 -5 -5 -5 -5
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 35
 0 0 L 0
 #2317
@@ -275,10 +275,10 @@ You see a huge minotaur that is dressed in thick furs and armor. He has black
 fur and red eyes. He looks quite capable of protecting the city.
 ~
 minotaur~
-CFGT 0 -330 S
+ACFGT 0 -330 S
 21 2 4d10+360 100d1+25 3d7+5 17
 -4 -4 -4 -4
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 25
 0 0 L 0
 #2318
@@ -290,10 +290,10 @@ The minotaur stands rigidly before the gates of the keep. It looks quite
 miserable standing in the driven snow and ice.
 ~
 minotaur~
-BCGT D -330 S
+ABCGT D -330 S
 25 3 5d10+550 100d1+35 5d5+5 17
 -6 -6 -6 -6
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 50
 0 0 L 0
 #2319
@@ -301,14 +301,14 @@ minotaur high guard~
 the High Minotaur Guard~
 The minotaur high guard is here guarding the Keep.
 ~
-The high guard is dressed in blue plate armour. He looks quite dangerous and
+The high guard is dressed in blue plate armor. He looks quite dangerous and
 skilled.
 ~
 minotaur~
-BCFGT D -330 S
+ABCFGT D -330 S
 25 3 5d10+550 100d1+50 4d7+4 17
 -6 -6 -6 -6
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 50
 0 0 L 0
 #2320
@@ -320,10 +320,10 @@ The royal guard is quite huge. He is dressed in heavy red armor and wields a
 huge glaive. He looks quite capable of protecting the keep.
 ~
 minotaur~
-BCFGT D -330 S
+ABCFGT D -330 S
 26 4 5d10+600 100d1+50 5d5+4 17
 -7 -7 -7 -7
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 50
 0 0 L 0
 #2321
@@ -335,10 +335,10 @@ This minotaur wields a huge morningstar and is clad in heavy crimson plate and
 furs.
 ~
 minotaur~
-BCFGT D -250 S
+ABCFGT D -250 S
 28 5 6d12+703 100d1+50 6d5+5 17
 -8 -8 -8 -8
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 50
 0 0 L 0
 #2322
@@ -350,10 +350,10 @@ She looks quite attractive. Her low cut gown reveals why she was chosen to be
 in the harem.
 ~
 human~
-BCGHT 0 750 S
+ABCGHT 0 750 S
 2 0 2d7+21 100d1+1 3d1+5 17
 9 9 9 9
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 0
 0 0 M 0
 #2323
@@ -364,10 +364,10 @@ A minotaur butler stands here rigidly, awaiting orders.
 He looks quite regal and refined to be a minotaur.
 ~
 minotaur~
-BCGHT 0 250 S
+ABCGHT 0 250 S
 20 3 3d9+333 100d1+10 3d6+4 17
 -4 -4 -4 -4
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 10
 0 0 L 0
 #2324
@@ -379,10 +379,10 @@ The ring-keeper is a huge minotaur. You notice a huge ring of multicolored
 keys hanging from his belt. He wears huge, spiked brass knuckles.
 ~
 minotaur~
-BCGT DH -300 S
+ABCGT DH -300 S
 29 7 6d12+778 100d1+100 5d7+5 17
 -8 -8 -8 -8 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 100
 0 0 L 0
 #2325
@@ -394,10 +394,10 @@ Gorak is HUGE. His bulging muscles are confined beneath heavy armor. He is the
 master of the warrior guild of Mahn-Tor.
 ~
 minotaur~
-BFT DH -300 S
+ABFGT DH -300 S
 30 10 6d12+853 100d1+150 6d6+5 17
 -8 -8 -8 -8 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 150
 0 0 L 0
 #2326
@@ -409,10 +409,10 @@ Darkoth is a living incarnation of evil. He radiates a dark aura, and a cold
 chill runs down your spine. He is the master of the Mahn-Tor anti-paladins.
 ~
 minotaur~
-BFT DH -1000 S
+ABFGT DH -1000 S
 30 10 6d12+853 100d1+100 6d6+5 17
 -8 -8 -8 -8
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 150
 0 0 L 0
 #2327
@@ -424,10 +424,10 @@ Tyrgoth is the minotaur incarnation of good. You feel safe and at ease in his
 presence. He is the leader of the Mahn-Tor paladins.
 ~
 minotaur~
-BT DH 1000 S
+ABT DH 1000 S
 30 10 6d12+853 100d1+100 6d6+5 17
 -8 -8 -8 -8 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 150
 0 0 L 0
 #2328
@@ -440,10 +440,10 @@ power. He appears quite dangerous, despite his size. He is the leader of the
 mages of Mahn-Tor.
 ~
 minotaur~
-BFT DH 300 S
+ABFGT DH 300 S
 30 10 6d12+853 100d1+150 6d6+5 17
 -8 -8 -8 -8 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 200
 0 0 L 0
 #2329
@@ -455,10 +455,10 @@ Sumaron is clad in white glowing robes. He is goodness incarnate. He is the
 master of all the clerics of Mahn-Tor.
 ~
 minotaur~
-BFT DH 1000 S
+ABFGT DH 1000 S
 30 10 6d12+853 100d1+150 6d6+5 17
 -8 -8 -8 -8 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 200
 0 0 L 0
 #2330
@@ -470,10 +470,10 @@ Nasturn is quite a natural looking minotaur. He is dressed in leather and
 wears no metal of any type. He looks at you and smiles.
 ~
 minotaur~
-BT DH 500 S
+ABT DH 500 S
 30 15 6d12+853 100d1+150 6d6+5 17
 -8 -8 -8 -8 
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 250
 0 0 L 0
 #2331
@@ -485,10 +485,10 @@ Belrak is clad in green and brown leather. He looks quite agile and thin, when
 compared to the normal minotaur. He looks at you with a slight smirk.
 ~
 minotaur~
-BFT DH 500 S
+ABFGT DH 500 S
 30 15 6d12+853 100d1+150 6d6+5 17
 -8 -8 -8 -8 
-EFNUX 0 0 0
+EFNUX AB 0 0
 8 8 1 250
 0 0 L 0
 #2332
@@ -500,10 +500,10 @@ Dorgar is clad all in black. He is tall and slender, unlike most minotaurs. He
 appears to be quite a skilled thief.
 ~
 minotaur~
-BCFT Q -500 S
+ABCFGT Q -500 S
 30 10 6d12+853 100d1+150 6d6+5 17
 -8 -8 -8 -8 
-ENFU 0 0 0
+ENFU AB 0 0
 8 8 1 500
 0 0 L 0
 #2333
@@ -516,10 +516,10 @@ armor and robes. He wields the largest axe you have ever seen. You can see why
 Mahn-Tor is the leader of the minotaurs. He is awe-inspiring.
 ~
 minotaur~
-BCT BDHTU -500 S
+ABCT BDHTU -500 S
 33 17 10d10+1100 100d1+250 6d7+5 17
 -11 -11 -11 -11
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 500
 0 0 H 0
 #0
@@ -1554,7 +1554,7 @@ E
 sign~
     []================================[]
      |      BEWARE!      | Hope you   |
-     |   Travellers are  | enjoy it!  |
+     |   Travelers are  | enjoy it!  |
      |  advised to stay  | <------->  |
      |   in groups for   |  Skurge    |
      |      safety.      | Ragnarok   |
@@ -1682,7 +1682,7 @@ The bloody intersection~
 This is a small intersection. Paths lead east, west, and south. You are struck
 by the carnage here when you enter the clearing. There appears to have been a
 great battle here. Blood is everywhere and the ground is all torn up. Pieces
-of beaten armour and broken blades lie all around. Examining the tracks here
+of beaten armor and broken blades lie all around. Examining the tracks here
 lead you to believe that the dead and wounded were dragged off in two 
 directions, south and east.
 ~
@@ -3042,7 +3042,7 @@ D0
 S
 #2372
 Gorak's Training Room~
-This room is full of all sorts of weapons and armours. Pieces of old targets
+This room is full of all sorts of weapons and armors. Pieces of old targets
 and practice dummies lie all around. The walls are chipped and scored from
 weapon blows. This is obviously the room of an avid warrior. A red door leads
 east.

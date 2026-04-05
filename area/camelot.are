@@ -45,7 +45,7 @@ human~
 AGT 0 500 S
 22 11 5d10+400 2d22+220 5d6+14 16
 -5 -5 -5 -5
-CDK B E 0
+CDK AB E 0
 8 8 1 100
 0 0 M 0
 #702
@@ -60,7 +60,7 @@ human~
 AGT P 250 S
 19 9 3d9+308 2d19+119 4d7+10 22
 -4 -4 -4 -4
-I 0 N 0
+I AB N 0
 8 8 1 10
 0 0 M 0
 #703
@@ -74,7 +74,7 @@ human~
 AGT N 750 S
 25 13 5d10+550 2d25+225 4d10+10 0
 -7 -7 -7 -7
-CEK E B 0
+CEK ABE B 0
 8 8 1 100
 0 0 M 0
 #704
@@ -88,10 +88,10 @@ of the Realms. At his side is Excalibur the famous sword given to him by
 the Lady of the Lake.
 ~
 human~
-BGT H 1000 S
+ABGT H 1000 S
 48 24  25d10+3750 2d48+848 4d20+16 3
 -27 -27 -27 -27
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 3000
 0 0 M 0
 #705
@@ -137,7 +137,7 @@ human~
 ABFGT DFH -750 S
 35 17 10d10+1300 2d35+335 4d15+10 3
 -10 -10 -10 -10
-CKIN A B 0
+CKIN AB B 0
 8 8 1 100
 0 0 M 0
 #708
@@ -153,7 +153,7 @@ human~
 ABGT N 750 S
 34 17 10d10+1200 2d34+340 4d15+10 0
 -11 -11 -11 -11
-CDEKQ B N 0
+CDEKQ AB N 0
 8 8 1 150
 0 0 M 0
 #709
@@ -182,7 +182,7 @@ human~
 AGT H 800 S
 45 23 25d10+3000 2d45+845 4d20+10 1
 -25 -25 -25 -25
-EFKNU 0 0 0
+EFKNU AB 0 0
 8 8 1 300
 0 0 M 0
 #711
@@ -198,7 +198,7 @@ human~
 ABGT G -750 S
 30 15 6d12+853 2d30+330 4d14+8 1
 -9 -9 -9 -9
-CDEK B E 0
+CDEK AB E 0
 8 8 1 150
 0 0 M 0
 #712
@@ -245,7 +245,7 @@ human~
 AGR HN -750 S
 39 20 15d10+1700 19d39+234 4d15+18 18 
 -19 -19 -19 -35
-EFNU P AB 0
+EFNU ABP AB 0
 8 8 2 200
 0 0 M 0
 #715
@@ -276,7 +276,7 @@ You sure are BLEEDING!
 The Questing Beast is in perfect health.
 ~
 lion~
-ABFH DFHPQ -1000 S
+ABFGH DFHPQ -1000 S
 44 22 25d10+2750 2d44+440 4d15+15 6
 -15 -15 -15 -15
 ACDEFGHIJKMNO AB E 0
@@ -325,7 +325,7 @@ human~
 AGT H -400 S
 38 19 38d28+570 19d38+228 6d6+12 1
 -18 -18 -18 -7
-EFKNU A 0 0
+EFKNU AB 0 0
 8 8 1 50
 0 0 M 0
 #720
@@ -340,7 +340,7 @@ human~
 AGT H 600 S
 42 23 42d32+546 21d42+252 4d12+14 3
 -22 -22 -22 -9
-EFKNU A 0 0
+EFKNU AB 0 0
 8 8 1 100
 0 0 M 0
 #721
@@ -356,7 +356,7 @@ human~
 AGT 0 0 S
 36 18 36d27+432 18d36+216 3d10+11 16
 -16 -16 -16 -5
-EFNU A 0 0
+EFNU AB 0 0
 8 8 2 100
 0 0 M 0
 #722
@@ -381,10 +381,10 @@ a squire~
 The charmed squire is wearing various leather garmets in a state of disarray.
 ~
 human~
-T 0 0 S
+AT 0 0 S
 35 18 35d26+420 17d35+210 4d7+11 17  
 -17 -17 -18 -6
-EFKNU 0 0 0
+EFKNU AB 0 0
 8 8 1 0
 0 0 M 0
 #724
@@ -416,7 +416,7 @@ human~
 ABGH H 1000 S
 30 15 6d12+853 2d30+330 4d6+8 11
 -9 -9 -9 -9
-BHIN A BF 0
+BHIN AB BF 0
 8 8 1 25
 0 0 M 0
 #726
@@ -441,7 +441,7 @@ A knight dressed red shimmering armor faces you!
 ~
 Perimones, the red knight, has a red beard and mustache. He is a short 
 stocky man. His ruby armor is shimmering in the sunlight, and he wears 
-the silken red favour of Galenvine on his sleeve.
+the silken red favor of Galenvine on his sleeve.
 ~
 human~
 ABGT N 500 S
@@ -479,7 +479,7 @@ human~
 AGH 0 0 S
 15 7 3d9+208 2d15+115 2d6+3 0
 -2 -2 -2 -2
-IK 0 0 0
+IK AB 0 0
 8 8 1 125
 0 0 M 0
 #730
@@ -493,7 +493,7 @@ human~
 ACGH 0 0 S
 5 2 2d6+60 2d5+50 1d6+1 0
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #731
@@ -507,7 +507,7 @@ human~
 ACGH 0 0 S
 10 5 2d7+121 2d10+110 2d4+2 0
 1 1 1 1
-0 0 0 0
+0 AB 0 0
 8 8 1 110
 0 0 M 0
 #732
@@ -522,7 +522,7 @@ human~
 AG 0 0 S
 7 3 2d6+85 2d7+70 1d8+1 0
 4 4 4 4
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #733
@@ -536,7 +536,7 @@ human~
 ABCG 0 100 S
 3 1 2d6+35 2d3+30 1d5+0 0
 7 7 7 7
-0 0 0 0
+0 AB 0 0
 8 8 2 10
 0 0 M 0
 #734
@@ -551,7 +551,7 @@ human~
 ABCG 0 100 S
 4 2 2d7+46 2d4+40 1d5+1 0
 6 6 6 6
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #735
@@ -565,7 +565,7 @@ human~
 ABCG 0 100 S
 5 2 2d6+60 2d5+50 1d6+1 0
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #736
@@ -579,7 +579,7 @@ human~
 ACG P 0 S
 2 1 2d7+21 2d2+20 1d5+0 0
 8 8 8 8
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #737
@@ -616,7 +616,7 @@ human~
 ABGST 0 500 S
 30 15 6d12+853 2d30+330 4d6+8 0
 -9 -9 -9 -9
-CDEKO B EH 0
+CDEKO AB EH 0
 8 8 1 150
 0 0 M 0
 #739
@@ -630,7 +630,7 @@ human~
 ABG 0 400 S
 25 13 5d10+550 2d25+225 2d10+7 0
 -7 -7 -7 -7
-HIJ B E C
+HIJ AB E C
 8 8 1 100
 0 0 M 0
 #740
@@ -645,7 +645,7 @@ horse~
 AIW OS 0 S
 18 9 3d9+283 2d18+118 2d7+4 10
 -3 -3 -3 -3
-CIJSW E LQ C
+CIJSW ABE LQ C
 8 8 2 0
 0 0 L 0
 #741
@@ -659,7 +659,7 @@ horse~
 AIW OS 0 S
 23 12 5d10+450 2d23+123 3d6+6 10
 -6 -6 -6 -6
-CIJSW E LQ C
+CIJSW ABE LQ C
 8 8 2 0
 0 0 L 0
 #742
@@ -673,7 +673,7 @@ horse~
 AIW OS 0 S
 28 14 6d12+703 2d28+228 2d12+8 10
 -8 -8 -8 -8
-CIJSW E LQ C
+CIJSW ABE LQ C
 8 8 1 0
 0 0 L 0
 #743
@@ -703,7 +703,7 @@ human~
 ACG Q 0 S
 5 2 2d6+60 2d5+50 1d6+1 0
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 S 0
 #745
@@ -732,7 +732,7 @@ human~
 ABG FN 300 S
 20 10 3d9+333 2d20+220 2d8+5 1
 -4 -4 -4 -4
-EKT B E C
+EKT AB E C
 8 8 1 50
 0 0 M 0
 #747
@@ -747,7 +747,7 @@ human~
 ABGT DFN 500 S
 25 13 5d10+550 2d25+225 2d10+7 1
 -7 -7 -7 -7
-CDEKT B E C
+CDEKT AB E C
 8 8 1 100
 0 0 M 0
 #748
@@ -763,7 +763,7 @@ human~
 ABCGT 0 0 S
 22 11 5d10+400 2d22+220 4d4+6 3
 -5 -5 -5 -5
-CDEKT B E C
+CDEKT AB E C
 8 8 1 100
 0 0 M 0
 #749
@@ -780,7 +780,7 @@ human~
 ABCGT 0 -100 S
 28 14 6d12+703 2d28+280 2d12+8 1
 -8 -8 -8 -8
-CDEKT B E C
+CDEKT AB E C
 8 8 1 150
 0 0 M 0
 #750
@@ -794,7 +794,7 @@ human~
 ABCG 0 0 S
 1 0 2d6+10 1d1+5 1d4+0 0
 9 9 9 9
-0 0 0 0
+0 AB 0 0
 8 8 1 1
 0 0 M 0
 #751
@@ -810,7 +810,7 @@ human~
 ABCFGT 0 -200 S
 24 12 5d10+500 2d24+240 2d10+6 3
 -6 -6 -6 -6
-CDEKT B E C
+CDEKT AB E C
 8 8 1 100
 0 0 M 0
 #752
@@ -825,7 +825,7 @@ human~
 ABFGT F -700 S
 30 15 6d12+853 2d30+330 4d6+8 1
 -9 -9 -9 -9
-CDEKT B E C
+CDEKT AB E C
 8 8 1 350
 0 0 M 0
 #753
@@ -928,7 +928,7 @@ human~
 AGT G 300 S
 30 15 6d12+853 2d30+330 4d6+8 3
 -9 -9 -9 -9
-DK B D E
+DK AB D E
 8 8 1 150
 0 0 M 0
 #760
@@ -972,7 +972,7 @@ human~
 ABG FN 300 S
 20 10 3d9+333 2d20+220 2d8+5 1
 -4 -4 -4 -4
-EKT B E C
+EKT AB E C
 8 8 1 50
 0 0 M 0
 #763
@@ -987,7 +987,7 @@ human~
 ACG Q 0 S
 5 2 2d6+60 2d5+50 1d6+1 0
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 S 0
 #764
@@ -1003,7 +1003,7 @@ human~
 AT H 750 S
 46 23 46d35+816 23d46+276 4d20+12 3
 -25 -26 -26 -12
-EFKNU B 0 0
+EFKNU AB 0 0
 8 8 1 300
 0 0 M 0
 #765
@@ -1016,7 +1016,7 @@ delivered him as a baby oh so many years ago. There isn't anything Kay
 wouldn't do for his brother and king.
 ~
 human~
-BT 0 750 S
+ABT 0 750 S
 43 18 43d32+602 21d43+258 4d15+15 3
 -24 -24 -24 -11
 EFKNU AB 0 0
@@ -1046,7 +1046,7 @@ ancient wyrms,  the most powerful dragons ever alive. When you look upon
 this magnificent animal you feel a certain goodness entering you.
 ~
 unique~
-BT H 1000 S
+ABT H 1000 S
 50 25 50d38+950 25d50+300 8d8+20 5
 -30 -31 -30 -34
 EFNU AB EH 0
@@ -1061,10 +1061,10 @@ This is a magical creature who helped Arthur get the finest blade ever
 created by man or god.
 ~
 human~
-BT H 1000 S
+ABT H 1000 S
 42 21 42d31+546 21d42+252 4d12+14 11
 -21 -21 -21 -9
-EFINU BR I 0
+EFINU ABR I 0
 8 8 2 1000
 0 0 M 0
 #769
@@ -1075,10 +1075,10 @@ A large gargoyle lands next to you, baring his fangs at you.
 This creepy fellow looks like he could use you as a meal.
 ~
 unique~
-BCFGT DEJ -100 S
+ABCFGT DEJ -100 S
 22 11 5d10+400 2d22+222 4d4+6 5
 -5 -5 -5 -5
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 100
 0 0 M 0
 #0
@@ -1685,9 +1685,9 @@ Out of the darkness red glowing eyes laugh and dance at you. A rage slowly
 fills you, you want to kill. Rend. Tear. Rape. Murder - ahhahahahah!
 ~
 #740
-favour silken~
-a silken favour~
-A silken favour is here. Maybe it belongs to your lady?~
+favor silken~
+a silken favor~
+A silken favor is here. Maybe it belongs to your lady?~
 silk~
 13 GMU AO
 0 0 0 0 0
@@ -4555,7 +4555,7 @@ M 1 723 7 714       1 at creek
 * Lady in waiting 7
 *
 M 1 721 7 773       3 in maiden tower
-E 1 740 7 17         silken favour
+E 1 740 7 17         silken favor
 M 1 721 7 773
 E 1 740 7 17
 M 1 721 7 773

@@ -18,7 +18,7 @@ fearsome sight. Despite the wasted, rotten flesh it is garbed in the rich
 clothes of nobility.
 ~
 undead~
-ABCF DH -1000 S
+ABCFG DH -1000 S
 47 23 25d10+3500 469d1+1 6d6+17 17
 -17 -17 -17 3
 CDIKLN AB E CK 
@@ -55,7 +55,7 @@ victims stain the robe. Its skeletal figure resembles that of the angel of
 death. Its eyes glow with a furious fire to kill.
 ~
 undead~
-ABCF DHTU -1000 S
+ABCFG DHTU -1000 S
 36 18 10d10+1400 3245d1+1 3d10+11 17
 -12 -12 -12 5
 DEHIJK AB D FGNO
@@ -70,7 +70,7 @@ A large demon like creature hovers abover you, in a cloud of grey mist.
 Its winged form stares down at you in utter hatred.
 ~
 undead~
-ABCF U -1000 S
+ABCFG U -1000 S
 34 17 10d10+1200 339d1+1 4d7+10 17
 -11 -11 -11 5
 HIK AB R X
@@ -85,10 +85,10 @@ The black slayer is a shadowy figure, about 7 feet in height. Garbed in
 a heavy, black cloak.  In his right hand he wields a wicked dagger.
 ~
 undead~
-ABCF DP -1000 S
+ABCFG DP -1000 S
 25 12 5d10+550 249d1+1 2d10+7 17
 -7 -7 -7 6
-ACFHIK A C B
+ACFHIK AB C B
 8 8 1 75
 0 0 M 0
 #24505
@@ -99,10 +99,10 @@ A ghostly apparition floats here, staring at you in utter hatred.
 The lost soul is a ghostly apparition, seeking revenge on the living.
 ~
 undead~
-ACF DP -1000 S
+ACFG DP -1000 S
 20 10 3d9+333 199d1+1 2d8+5 17
 -4 -4 -4 7
-FGJK A C DS
+FGJK AB C DS
 8 8 2 50
 0 0 M 0
 #24506
@@ -114,7 +114,7 @@ This huge creature is approximately 18 feet tall, He grasps a huge bolt
 of lightning it his right hand.... He doesn't look happy to see you.
 ~
 giant~
-ABCF DP -1000 S
+ABCFG DP -1000 S
 40 20 15d10+1850 399d1+1 4d8+13 17
 -13 -13 -13 4
 CEIKL AB D CIJK
@@ -133,7 +133,7 @@ bear~
 ABC DH 0 S
 22 11 5d10+400 219d1+1 4d4+6 8
 -5 -5 -5 6
-ACDHIKL 0 J E 
+ACDHIKL AB J E
 8 8 1 50
 0 0 M 0
 #24508
@@ -145,7 +145,7 @@ The creature is formed entirely of flames. The creature gives off an
 intense heat.
 ~
 undead~
-ABF B -1000 S
+ABFG B -1000 S
 35 17 10d10+1200 349d1+1 4d7+10 17
 -11 -11 -11 7
 CDEFGHIK AB H LNOS 
@@ -160,7 +160,7 @@ The huge, scaled creature has eight heads... each capable of breathing
 a dangerous stream of fire.
 ~
 dragon~
-ABCF 0 -1000 S
+ABCFG 0 -1000 S
 36 18 10d10+1400 3245d1+1 3d10+11 32
 -12 -12 -12 6
 HK AB R OL 
@@ -176,10 +176,10 @@ size.  Its huge tentacles grasp something... though you can not make out
 what the object is.
 ~
 water fowl~
-ABF D -1000 S
+ABFG D -1000 S
 40 20 15d10+1700 399d1+1 4d8+11 17
 -13 -13 -13 7
-AB R C HI 
+AB ABR C HI
 8 8 1 200
 0 0 L 0
 #24511
@@ -191,7 +191,7 @@ It is a rather large creature resembling a tree. At the base of the trunk
 is a large opening that looks very much like a mouth.
 ~
 tree~
-ABCF H -1000 S
+ABCFG H -1000 S
 44 22 25d10+2550 439d1+1 8d4+12 27
 -15 -15 -15 4
 CEF AB D CH
@@ -211,7 +211,7 @@ undead~
 ABCGH DP -1000 S
 26 13 5d10+600 2245d1+1 2d10+7 17
 -7 -7 -7 6
-ADEF 0 LM D
+ADEF AB LM D
 8 8 1 75
 0 0 M 0
 #24513
@@ -224,7 +224,7 @@ He is a large, muscular man of undead nature. He is clad in rather magical
 looking suit of armor, his sword burning fiercely.
 ~
 human~
-ABF H -1000 S
+ABFG H -1000 S
 50 25 50d10+4500 499d1+1 5d8+19 17
 -20 -20 -20 3
 ABCDEFGHJKN AB H IJK
@@ -240,7 +240,7 @@ of a once mighty warrior. Its eyes are fixed coldly upon you, unsheathing
 its sword, he charges for battle.
 ~
 undead~
-ABCF H -1000 S
+ABCFG H -1000 S
 38 19 10d10+1600 379d1+1 4d8+13 17
 -13 -13 -13 5
 CBEGK AB D H
@@ -255,7 +255,7 @@ This creature is covered with a slime-like substance, many tentacles protrude
 from its disgusting body.
 ~
 unique~
-ABCF H -1000 S
+ABCFG H -1000 S
 46 23 25d10+3250 4245d1+1 6d6+16 14
 -16 -16 -16 4
 J AB KL I
@@ -269,7 +269,7 @@ A shadowy figure stands here, looking you over with greed.
 This creature has almost no form, it looks like some sort of shadow with wings.
 ~
 undead~
-ACF D -1000 S
+ACFG D -1000 S
 28 14 6d12+703 279d1+1 2d12+8 17
 -8 -8 -8 5
 CDHI AB MNO S
@@ -301,7 +301,7 @@ water fowl~
 AB FH 0 S
 32 16 10d10+900 319d1+1 6d4+8 17
 -10 -10 -10 5
-AHI 0 HIJK 0
+AHI AB HIJK 0
 8 8 1 125
 0 0 M 0
 #24519
@@ -315,7 +315,7 @@ water fowl~
 AB FH 0 S
 32 16 10d10+900 319d1+1 6d4+8 17
 -10 -10 -10 5
-AHI 0 HIJK 0
+AHI AB HIJK 0
 8 8 1 125
 0 0 M 0
 #24520
@@ -329,7 +329,7 @@ song bird~
 AB D 0 S
 32 16 10d10+900 319d1+1 6d4+8 17
 -10 -10 -10 5
-AHI 0 HIJK 0
+AHI AB HIJK 0
 8 8 1 125
 0 0 M 0
 #24521
@@ -343,7 +343,7 @@ dragon~
 AB D 0 S
 32 16 10d10+900 319d1+1 6d4+8 29
 -10 -10 -10 5
-AHI 0 HIJK 0
+AHI AB HIJK 0
 8 8 1 125
 0 0 M 0
 #24522
@@ -357,7 +357,7 @@ goblin~
 A D -351 S
 18 9 3d9+283 179d1+1 2d7+4 17
 -3 -3 -3 7
-0 0 0 0
+0 AB 0 0
 8 8 1 75
 0 0 M 0
 #24523
@@ -371,7 +371,7 @@ goblin~
 AB 0 -351 S
 30 15 6d12+853 299d1+1 4d6+8 6
 -9 -9 -9 5
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #24524
@@ -385,7 +385,7 @@ goblin~
 AB 0 -351 S
 30 15 6d12+853 299d1+1 4d6+8 6
 -9 -9 -9 5
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #24525
@@ -399,7 +399,7 @@ unique~
 AB 0 0 S
 20 10 3d9+333 199d1+1 2d8+5 31
 -4 -4 -4 7
-0 0 0 0
+0 AB 0 0
 8 8 0 50
 0 0 M 0
 #24526
@@ -413,7 +413,7 @@ unique~
 AB 0 0 S
 50 25 50d10+4500 499d1+1 5d8+19 31
 -20 -20 -20 3
-0 0 0 0
+0 AB 0 0
 8 8 0 1000
 0 0 M 0
 #24530
@@ -424,7 +424,7 @@ A Vrock stands here
 It is a vulture/human creature. Extremely ugly, and nasty.
 ~
 human~
-ACF DF -666 S
+ACFG DF -666 S
 21 0 4d10+360 209d1+1 4d4+5 17
 -5 -5 -5 6
 FI AB C D
@@ -438,7 +438,7 @@ A demon Hezrou stands here.
 Not unlike a large toad/man
 ~
 undead~
-ACF DF -666 S
+ACFG DF -666 S
 17 8 3d9+2245 169d1+1 3d4+4 18
 -3 -3 -3 7
 AKN AB PGS HR
@@ -452,7 +452,7 @@ A demon Glabrezu stands here.
 I forget what this one looks like.
 ~
 undead~
-ACF DF -666 S
+ACFG DF -666 S
 18 9 3d9+283 179d1+1 2d7+4 18
 -3 -3 -3 7
 J AB 0 0
@@ -466,7 +466,7 @@ Nalfeshnee stands here
 This one is big and mean looking.
 ~
 undead~
-ABCF DF -666 S
+ABCFG DF -666 S
 19 9 3d9+308 190d1+1 2d7+5 18
 -4 -4 -4 7
 A AB 0 0
@@ -480,7 +480,7 @@ Merilith slithers here
 A woman with 6 arms and a snake's tail
 ~
 undead~
-ACF DF -666 S
+ACFG DF -666 S
 15 7 3d9+208 149d1+1 2d6+3 18
 -4 -4 -4 7
 A AB 0 0
@@ -494,7 +494,7 @@ Balor stands here, surrounded by electrical fire
 He is very large, and looks rather deadly
 ~
 dragon~
-ACF DF -666 S
+ACFG DF -666 S
 20 10 3d9+333 199d1+1 2d8+5 28
 -4 -4 -4 7
 I AB D C

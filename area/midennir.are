@@ -12,10 +12,10 @@ This huge winged creature looks really menacing.  You are happy it doesn't
 APPEAR to be very hungry ... yet.
 ~
 wyvern~
-G 0 -200 S
+AG 0 -200 S
 8 2 8d8+80 1d1+149 2d6+1 10
 5 4 5 6
-DNR 0 0 0
+DNR AB 0 0
 8 8 3 0 
 0 0 H 0
 #3501
@@ -26,10 +26,10 @@ A mountain goblin is wandering about, mumbling to himself.
 You see before you a small and twisted creature with knotted muscles.
 ~
 goblin~
-FGT 0 -500 S
+AFGT 0 -500 S
 6 1 4d4+65 1d1+99 2d4+1 17
 4 6 4 9
-KR 0 0 0
+KR AB 0 0
 8 8 1 25
 0 0 S 0
 #3502
@@ -41,10 +41,10 @@ The poor boy has numerous cuts and scratches, but appears to be all right.
 He is apparently the only survivor of the ambush.
 ~
 human~
-BH 0 500 S
+ABH 0 500 S
 4 0 1d12+47 1d1+99 1d6+0 13
 8 8 8 10
-I 0 0 C
+I AB 0 C
 5 5 1 0
 0 0 S 0
 #3503
@@ -57,7 +57,7 @@ nights are spent watching out for goblins.  His inn is no longer the happy
 place that is used to be in days past.
 ~
 human~
-BT 0 500 S
+ABT 0 500 S
 10 1 1d12+200 1d1+149 2d8+1 17
 2 2 2 8
 BFKQ AB CD 0
@@ -72,10 +72,10 @@ You can smell the alcohol on his breath from across the room.  This poor bard
 has been sitting here quite a while, drinking himself into oblivion.
 ~
 human~
-BST D 600 S
+ABST D 600 S
 8 3 1d12+110 1d1+99 2d6+0 17
 3 5 3 6
-FIJKNQ 0 0 0
+FIJKNQ AB 0 0
 6 6 1 260
 0 0 M 0
 #3505
@@ -87,10 +87,10 @@ The man is obviously an outlaw, and has no qualms about slashing you into
 little bits.
 ~
 human~
-GHS P -750 S
+AGHS P -750 S
 8 2 1d12+110 1d1+99 2d5+2 17
 5 3 3 6
-BFJKQ 0 0 0
+BFJKQ AB 0 0
 8 8 1 400
 0 0 M 0
 #3506
@@ -102,10 +102,10 @@ The goblin lieutenant is rather angry, and looking for one of his men to
 beat up upon, but maybe you will do just fine ...
 ~
 goblin~
-FGT 0 -600 S
+AFGT 0 -600 S
 7 1 1d12+100 1d1+149 1d10+1 17
 3 5 3 8
-DKNR 0 0 0
+DKNR AB 0 0
 8 8 1 55
 0 0 M 0
 #3507
@@ -117,10 +117,10 @@ The leader doesn't look too happy that you have found him here.  He grabs
 for his shortsword and lunges for your neck.
 ~
 goblin~
-CFGT 0 -1000 S
+ACFGT 0 -1000 S
 9 2 1d12+120 1d1+199 1d12+3 17
 1 3 1 6
-DJKNR 0 0 0
+DJKNR AB 0 0
 8 8 1 500
 0 0 M 0
 #0

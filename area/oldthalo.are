@@ -13,7 +13,7 @@ eyestalks atop the round body which can do anything from charm you
 to disintegrate you.  Beholders are not known for their personality.
 ~
 unique~
-ABHF D -1000 S
+ABFGH D -1000 S
 25 6 25d25+250 2d25+125 6d6+5 19
 -5 -5 -5 -5
 DEFK AB C E 
@@ -28,10 +28,10 @@ This is a creature with the upper torso of a beautiful woman, but the lower
 body of a four-legged beast.  She licks her lips as she looks at you greedily.
 ~
 mammal~
-CFG 0 -750 S
+ACFG 0 -750 S
 9 1 9d9+99 2d9+109 1d5+4 0
 0 0 0 -1
-BEFKNR A BC EN
+BEFKNR AB BC EN
 8 8 2 50
 0 0 M 0
 #5202
@@ -43,10 +43,10 @@ A strong, wooden chest bound with iron straps and a heavy pad-lock on the
 front.
 ~
 unique~
-BCFGH P -100 S
+ABCFGH P -100 S
 11 1 11d11+110 2d11+111 2d7+0 0
 0 0 0 -1
-EK 0 B 0
+EK AB B 0
 8 8 0 75
 0 0 M 0
 #5203
@@ -56,10 +56,10 @@ Two skeletons lie crushed under a large boulder.
 ~
 ~
 unique~
-BCFGH P -100 S
+ABCFGH P -100 S
 11 1 11d11+110 1d11+111 3d5+1 17
 0 0 0 -1
-EK 0 B 0
+EK AB B 0
 8 8 0 75
 0 0 M 0
 #5204
@@ -69,10 +69,10 @@ The stone floor of this house has been ripped apart.
 ~
 ~
 unique~
-BCFGH P -150 S
+ABCFGH P -150 S
 11 1 11d11+110 2d11+111 2d6+0 0
 0 0 0 -1
-EK 0 B 0
+EK AB B 0
 8 8 0 75
 0 0 M 0
 #5205
@@ -82,10 +82,10 @@ Some broken shards of pottery lie strewn about the floor.
 ~
 ~
 unique~
-BCFGH P -200 S
+ABCFGH P -200 S
 11 0 11d11+110 2d11+111 2d5+1 0
 0 0 0 -1
-EK 0 B 0
+EK AB B 0
 8 8 0 75
 0 0 M 0
 #5206
@@ -95,10 +95,10 @@ A few wooden planks lie stacked on a low shelf.
 ~
 ~
 unique~
-BCFGH P -100 S
+ABCFGH P -100 S
 11 0 11d11+110 2d11+111 4d3+1 0
 0 0 0 -1
-EK 0 B 0
+EK AB B 0
 8 8 0 75
 0 0 M 0
 #5207
@@ -109,10 +109,10 @@ A small horned lizard flicks his tongue and slithers away.
 A cute little lizard, that is, if you like reptiles!
 ~
 lizard~
-H 0 -50 S
+AH 0 -50 S
 3 0 1d4+30 2d3+20 1d4+0 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #5208
@@ -124,10 +124,10 @@ It is a big chunk of rock that has been magically formed into a giant
 stone creature. He stands here still guarding the city.
 ~
 unique~
-B N 1000 S
+AB N 1000 S
 25 5 6d10+600 2d25+125 3d7+15 1
 -5 -5 -5 -7
-CEIKOR A BFG CE
+CEIKOR AB BFG CE
 8 8 0 250
 0 0 L 0
 #0

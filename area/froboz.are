@@ -11,10 +11,10 @@ and splattered with the blood of innocent citizens of Dresden!  Cliche
 practically oozes off him. Get him!
 ~
 human~
-B 0 -300 S
+AB 0 -300 S
 5 1 5d4+60 1d1+100 1d8+0 4
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #12001
@@ -26,10 +26,10 @@ This spirit looks kind of like the banshees that Mother always told
 you about.  It seems pretty serious about guarding this wagon...
 ~
 undead~
-B D -200 S
+AB D -200 S
 5 1 5d4+60 1d1+25 1d6+1 27
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #12002
@@ -42,10 +42,10 @@ forced to work to exhaustion, he still holds his head high.  You can have
 his life, but not his dignity.
 ~
 human~
-2 0 250 S
+2A 0 250 S
 2 0 3d5+15 1d1+10 1d5+0 15
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #12003
@@ -61,7 +61,7 @@ lizard~
 AH 0 0 S
 5 1 3d5+20 1d1+10 1d6+0 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #12004
@@ -74,10 +74,10 @@ order, and receiving the money, it quickly fetches and fixes the food,
 delivering it with a tinny 'Thank You!'
 ~
 unique~
-B 0 0 S
+AB 0 0 S
 4 1 3d5+45 1d1+1 1d8+0 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #12005
@@ -90,10 +90,10 @@ do greeting visitors and answering the phone, she never bats an eye as
 she says to you, 'May I help you?'
 ~
 human~
-B 0 150 S
+AB 0 150 S
 2 1 3d5+15 1d1+25 1d5+0 16
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 6 6 2 0
 0 0 M 0
 #12006
@@ -106,10 +106,10 @@ Unfortunately, there isn't much room for advancement in this corporation,
 so now is as good a time as any to goof off.
 ~
 human~
-B 0 100 S
+AB 0 100 S
 2 1 3d5+15 1d1+25 1d5+0 13
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #12007
@@ -121,10 +121,10 @@ This secretary has SCADS of work to do, from her boss, friends of her
 boss, other workers, etc.  You wonder why she puts up with this at all...
 ~
 human~
-B 0 300 S
+AB 0 300 S
 3 1 3d5+20 1d1+15 1d5+0 16
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #12008
@@ -137,10 +137,10 @@ you! For a second you get angry, before you realize that this is his
 _job_...to yell at people.
 ~
 human~
-BH 0 -300 S
+ABH 0 -300 S
 7 2 7d6+85 1d1+50 1d8+0 4
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 6 6 1 0
 0 0 M 0
 #12009
@@ -153,10 +153,10 @@ Its extruding parts look so hazardous that just thinking about entering
 the same room might get you extremely hurt!
 ~
 unique~
-BF D 0 S
+ABFG D 0 S
 9 3 9d8+108 1d1+1 1d8+5 15
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 H 0
 #12010
@@ -168,10 +168,10 @@ This ghost escaped the nets of the workers and now desperately seeks escape.
 You feel for it, probably because of the fate that was intended for it...
 ~
 undead~
-B B 0 S
+AB B 0 S
 3 1 3d3+35 1d1+25 1d7+0 17
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #12011
@@ -182,10 +182,10 @@ A Dock Worker moves big crates about here.
 He's big, he's brawny, he's busy. Leave him alone.
 ~
 human~
-B 0 100 S
+AB 0 100 S
 4 0 4d4+48 1d1+25 1d6+1 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #12012
@@ -197,10 +197,10 @@ He looks at you with half-lidded eyes and rubs his hands on his jumpsuit
 absently.  Not a real rocket scientist here.
 ~
 human~
-B 0 400 S
+AB 0 400 S
 8 1 8d7+96 1d1+10 1d6+0 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #0

@@ -28,7 +28,7 @@ The towel boy sits at his table with a pile of clean towels. Don't forget
 to tip him; rumor has it that he can provide various healing service.
 ~
 human~
-BDMGQV DFHJ 1000 S
+ABDGMQV DFHJ 1000 S
 60 30 300d1+5000 2d500+1500 12d7+10 1
 -5 -5 -5 -5
 F AB 0 0
@@ -44,7 +44,7 @@ notice a large bulge under his leather trench coat. Either this guy is
 packing, or he is really happy to see you.
 ~
 human~
-BMTV DFHJ 500 S
+ABMTV DFHJ 500 S
 55 27 200d1+4700 2d255+600 11d5+5 21
 -3 -3 -3 -3
 CDEJKU AB CLQ R
@@ -59,10 +59,10 @@ She coolly eyes you, wondering whether she should summon security.  You
 had better have an appointment!
 ~
 human~
-BGMTV DFHJ 1000 S
+ABGMTV DFHJ 1000 S
 25 25 100d1+2350 2d500+450 7d5+10 1
 -1 -1 -1 -1
-F B 0 0
+F AB 0 0
 8 8 1 20
 0 0 M 0
 #17504
@@ -104,7 +104,7 @@ The elven soldier stand at attention. His impeccable uniform is offset by
 a blue cap. You notice the logo of The Consortium on his left shoulder.
 ~
 elf~
-BMTV DFJ 500 S
+ABMTV DFJ 500 S
 55 27 200d1+4700 2d155+500 11d5+5 1
 -3 -3 -3 -3
 CDEJKTU AB CLQ R
@@ -120,7 +120,7 @@ notice a large bulge under his leather trench coat. Either this guy is
 packing, or he is really happy to see you.
 ~
 human~
-BMTV DFJ 500 S
+ABMTV DFJ 500 S
 55 27 200d1+4700 2d255+600 11d5+5 21
 -3 -3 -3 -3
 CDEJKU AB CLQ R

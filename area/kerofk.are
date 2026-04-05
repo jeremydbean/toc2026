@@ -27,7 +27,7 @@ The Sentinel Beast is somewhat reminiscent of a wolf if you ignore the
 multi-colored glowing eyes, the horns, the six inch long claws...
 ~
 unique~
-BFT DFH 0 S
+ABFGT DFH 0 S
 48 25 25d10+2000 1d1+400 12d10+40 6
 -10 -10 -10 -10
 ACDEF AB C 0
@@ -44,7 +44,7 @@ powers are no small matter, however; she is still one of the best
 mages in the city.
 ~
 human~
-BR DT 700 S
+ABR DT 700 S
 45 8 10d20+1700 1d1+400 7d5+15 5
 -6 -6 -6 -10
 FGH ABI CO G
@@ -60,7 +60,7 @@ his fingers twitch and his eyes dart, you wonder if he really is what
 he appears...
 ~
 human~
-BS F 700 S
+ABS F 700 S
 40 5 10d20+1100 1d1+400 6d6+15 5
 -9 -7 -7 -5
 BEFG AB CO 0
@@ -75,7 +75,7 @@ Seobagn snickers at you while he spins a coin around his fingers with
 practised ease.  You wonder if its your coin.
 ~
 human~
-BS DPQ -250 S
+ABS DPQ -250 S
 45 8 10d20+1700 1d1+400 6d6+15 5
 -9 -8 -8 -6
 BFHN ABR LO 0
@@ -91,7 +91,7 @@ different orders at the same time.  Maybe you should bother him
 later...
 ~
 human~
-BS DPQ -250 S
+ABS DPQ -250 S
 40 5 10d20+1400 1d1+400 8d4+5 5
 -6 -6 -6 -6
 BFHN ABR LO 0
@@ -107,7 +107,7 @@ up with the thirsty populace.
 'What do you want?' she asks while pulling out an order pad.
 ~
 human~
-BS 0 250 S
+ABS 0 250 S
 25 3 20d10+500 1d1+300 5d4+5 5
 -6 -6 -6 -4
 BFN AB L 0
@@ -122,10 +122,10 @@ The drunk person looks at you and slurs, 'Whatre you lookin' at,
 bozo?'
 ~
 human~
-BT 0 -250 S
+ABT 0 -250 S
 28 5 10d20+600 1d1+100 5d5+5 5
 -5 -5 -5 -1
-CJ 0 L 0
+CJ AB L 0
 8 8 1 500
 0 0 M 0
 #8708
@@ -136,10 +136,10 @@ A lucky gambler is here, striking it rich!
 The lucky gambler looks at you and snickers.  Poor Boy!
 ~
 human~
-BT D -250 S
+ABT D -250 S
 31 5 10d20+850 1d1+400 5d6+5 5
 -6 -6 -6 -1
-HN P B 0
+HN ABP B 0
 8 8 1 500
 0 0 M 0
 #8709
@@ -151,7 +151,7 @@ The dealer looks at you flatly and says, 'Are you in or out?'  He
 really doesn't seem to care one way or another.
 ~
 human~
-BR DFH -250 S
+ABR DFH -250 S
 39 5 10d20+1200 1d1+200 6d6+5 5
 -6 -6 -6 -2
 FG AB C 0
@@ -167,7 +167,7 @@ seen.  His eyes light up while he counts his money--a man possessed by
 his greed.
 ~
 human~
-BT 0 -250 S
+ABT 0 -250 S
 46 5 10d20+1900 1d1+200 7d9+15 5
 -6 -7 -7 -2
 CDEI AB I 0
@@ -183,7 +183,7 @@ you to her establishment and invites you to browse as long as you
 wish.
 ~
 human~
-BQ BCD -250 S
+ABQ BCD -250 S
 40 5 10d20+1400 12d6+400 8d4+5 5
 -6 -7 -6 -4
 FN AB 0 0
@@ -199,10 +199,10 @@ money down, hoping to at least break even.  It doesn't even look like
 he's got a chance.
 ~
 human~
-BS F -250 S
+ABS F -250 S
 27 5 10d20+500 1d1+100 4d6+5 5
 -4 -4 -4 -1
-BF 0 0 0
+BF AB 0 0
 8 8 1 500
 0 0 M 0
 #8713
@@ -215,10 +215,10 @@ what, but he seems anxious to tell you.  The more he talks, the more
 your attention wanders until you're ready to go.
 ~
 human~
-T 0 -250 S
+AT 0 -250 S
 25 5 10d20+500 1d1+400 8d4+5 5
 -5 -4 -5 0
-EJ 0 0 0
+EJ AB 0 0
 8 8 1 500
 0 0 M 0
 #8714
@@ -230,10 +230,10 @@ Myrama is all smiles as you look at her.  She is bright, witty, and
 the only reason why Kell is so successful.  Myrama is truly marvelous!
 ~
 human~
-BQ 0 -250 S
+ABQ 0 -250 S
 35 5 10d20+900 1d1+300 8d4+5 5
 -2 -4 -3 -1
-N 0 0 0
+N AB 0 0
 8 8 2 500
 0 0 M 0
 #8715
@@ -246,7 +246,7 @@ sharp-minded when it comes to plants.  You've no doubt this woman is
 an expert in her field.
 ~
 human~
-BR D -250 S
+ABR D -250 S
 40 5 10d20+1300 12d6+400 8d4+5 5
 -6 -6 -6 -10
 BFHN ABR LO 0
@@ -261,7 +261,7 @@ The lawyer looks at you, ready to spot anything he can sue you for.
 This has got to be one of the most loathesome mobs in the whole mud!
 ~
 human~
-BS DPQ -250 S
+ABS DPQ -250 S
 36 5 10d20+1200 1d1+99 6d6+5 5
 -7 -5 -4 -7
 BFHN ABR LO 0
@@ -278,7 +278,7 @@ too good at hiding them, is she?).  Obviously, this woman is here more to
 protect the mayor than to do office work.
 ~
 human~
-BS DPQ -250 S
+ABS DPQ -250 S
 41 5 10d20+1550 1d1+400 8d5+5 5
 -6 -6 -6 -1
 BFHNU ABR LO 0
@@ -294,7 +294,7 @@ putting practice.  He sits you down, offers you a drink, and asks what
 he can do for you.
 ~
 human~
-B H -250 S
+AB H -250 S
 44 5 10d20+1800 1d1+200 8d7+10 5
 -6 -8 -5 -7
 BFHN AB LO 0
@@ -310,7 +310,7 @@ plate armor, a little part of your brain start screaming about how
 you'd be crazy to mess with them.
 ~
 human~
-BT D -250 S
+ABT D -250 S
 39 5 10d20+1300 1d1+200 8d5+5 5
 -5 -5 -5 -5
 CK AB H 0
@@ -324,7 +324,7 @@ The council member looks quite upset as you interrupt them!
 The council member is not just another politician...he can fight, too!
 ~
 human~
-BQ N -250 S
+ABQ N -250 S
 36 5 10d20+900 1d1+400 8d4+5 5
 -6 -6 -6 -6
 BFHN AB C 0
@@ -339,7 +339,7 @@ The jailer looks bored, as if he was in a Fortran class.  That
 bored...really!
 ~
 human~
-BS 0 -250 S
+ABS 0 -250 S
 32 5 10d20+900 1d1+400 8d4+5 5
 -3 -5 -2 -1
 BJ AB 0 0
@@ -354,10 +354,10 @@ The prisoner looks up at you weakly and mumbles,
 'I am not a number!'  He gasps and looks dejected again.
 ~
 human~
-BS DPQ -250 S
+ABS DPQ -250 S
 25 5 10d20+500 1d1+100 4d4+5 5
 1 1 1 1
-I 0 0 0
+I AB 0 0
 6 6 1 0
 0 0 M 0
 #8723
@@ -369,7 +369,7 @@ The innguard looks fearless and ready to defend the patrons of the
 Fortress at a moments notice.
 ~
 human~
-BT H -250 S
+ABT H -250 S
 37 5 10d20+950 1d1+100 7d6+5 5
 -4 -4 -4 -4
 C AB G 0
@@ -384,7 +384,7 @@ Jenk is a lowdown no good shopkeeper who'll sell anything to make a
 gold piece!  He's corrupt, greedy, and you're kind of man!
 ~
 human~
-B H -250 S
+AB H -250 S
 43 5 10d15+1700 1d1+99 6d7+15 5
 -6 -6 -7 -2
 N AB 0 0
@@ -399,7 +399,7 @@ The black marketeer has set up shop in Jenk's place to sell just what
 you need...  Now what is it that you need?
 ~
 human~
-BS H -250 S
+ABS H -250 S
 33 5 15d10+900 1d1+100 7d4+5 5
 -6 -4 -4 -2
 B AB 0 0
@@ -415,7 +415,7 @@ one life.  He now devotes his life to XXXXX, hoping to one day ascend to
 immortality.
 ~
 human~
-BQ H -250 S
+ABQ H -250 S
 35 5 20d8+1000 1d1+300 4d9+5 5
 -4 -4 -4 -6
 DN AB N 0
@@ -430,7 +430,7 @@ The High Priest will be ascending to XXXXX soon, and now his entire
 body glows with the same light as his soul.
 ~
 human~
-BS HN 1000 S
+ABS HN 1000 S
 47 5 10d20+1750 1d1+400 7d9+25 5
 -8 -8 -8 -10
 ADK ABN P 0
@@ -445,7 +445,7 @@ The recruiting sergeant has seen the world.  Now he's trying to make
 you do the same.  ARGH!!! Resist!  Resist!!
 ~
 human~
-BT 0 0 S
+ABT 0 0 S
 26 5 10d20+400 1d1+100 4d4+5 5
 -3 -3 -3 -3
 F AB 0 0
@@ -460,7 +460,7 @@ The Captain has a true love of civilized fighting.  He raises his
 eyebrow to you...shall we have a go at it?
 ~
 human~
-BT HN 200 S
+ABT HN 200 S
 48 7 10d20+1800 1d1+100 7d9+15 5
 -7 -7 -7 -7
 AK AB F 0
@@ -475,10 +475,10 @@ The beggar looks up at you with sad eyes.  However, you notice
 something shiny clenched in his hand...  What is he hiding?
 ~
 human~
-CS 0 850 S
+ACS 0 850 S
 27 5 10d20+500 1d1+100 3d5+5 5
 -1 -1 -1 -1
-I 0 0 0
+I AB 0 0
 8 8 1 5
 0 0 M 0
 #8731
@@ -490,10 +490,10 @@ The citizen looks at you with a flat stare.  You can see he's
 wondering if you'll butt in line.
 ~
 human~
-CQ 0 150 S
+ACQ 0 150 S
 25 5 10d20+550 1d1+100 2d12+4 5
 -4 -4 -5 -2
-J 0 0 0
+J AB 0 0
 8 8 1 500
 0 0 M 0
 #8732
@@ -505,7 +505,7 @@ This citizen really doesn't have time to fool around with adventurers;
 he has too much to do.
 ~
 human~
-CR 0 150 S
+ACR 0 150 S
 27 5 10d20+600 1d1+100 4d7+5 5
 -4 -4 -4 -2
 U AB 0 0
@@ -519,7 +519,7 @@ A militia guard is here keeping the peace.
 The militia guardsman looks very well trained, for a citizen.
 ~
 human~
-CT H 500 S
+ACT H 500 S
 33 5 10d20+800 1d1+100 7d4+5 5
 -4 -4 -4 -3
 DOU AB I 0
@@ -535,7 +535,7 @@ hair that stick straight up and wears an electric blue robe to hide
 the rest of his features.
 ~
 human~
-R DK 650 S
+AR DK 650 S
 40 5 10d20+1400 12d6+400 8d4+5 5
 -6 -5 -5 -10
 GH AB P 0
@@ -551,7 +551,7 @@ The guard guard looks at you and enunciates very clearly,
 	(looks like he got the right job!)
 ~
 human~
-BS DPQ 350 S
+ABS DPQ 350 S
 25 5 10d20+600 1d1+100 4d4+5 5
 -2 -2 -2 -3
 C AB 0 0
@@ -566,7 +566,7 @@ You try to look closer at the light and nearly burn your retinas clear
 off.  That wasn't too bright now, was it?
 ~
 unique~
-BFM DF 0 S
+ABFGM DF 0 S
 51 5 10d20+1900 1d1+400 8d9+25 5
 -7 -7 -6 -10
 CH AB GO 0
@@ -580,7 +580,7 @@ Some guardian wisps here attack!
 The wisp is made up of clammy, misty air, and a bad attitude.
 ~
 unique~
-BFQ DN -250 S
+ABFGQ DN -250 S
 51 5 10d20+1900 1d1+400 9d8+25 5
 -6 -6 -8 -10
 CM ABDF O 0
@@ -595,7 +595,7 @@ The orb is pure crystal and shines with a bright aura.  This is surely
 the object of your quest!
 ~
 unique~
-BFR DN -250 S
+ABFGR DN -250 S
 50 5 10d20+1900 1d1+400 8d8+25 5
 -6 -6 -8 -10
 CM ABDFO J 0
@@ -611,7 +611,7 @@ lunged for power and achieved it, making him immortal.  Will you be
 able to stop him?
 ~
 unique~
-BFR DFHN -1000 S
+ABFGR DFHN -1000 S
 55 5 10d20+2400 1d1+500 10d9+30 5
 -9 -9 -9 -10
 ABCEFHN ABM NOP 0
@@ -626,7 +626,7 @@ The demons are spindly with great bats wings and glowing blue eyes.
 They are twisted things not of nature.  They attack!
 ~
 unique~
-BT DFN -850 S
+ABT DFN -850 S
 45 5 10d20+1600 1d1+200 8d9+10 5
 -8 -8 -8 -10
 DGU ABM N 0
@@ -642,7 +642,7 @@ vampire.  And a demonologist to boot!  He growls incoherently at you
 as he attacks!
 ~
 human~
-BFR D -950 S
+ABFGR D -950 S
 42 5 10d20+1500 1d1+400 7d9+15 5
 -9 -9 -7 -10
 FKN ABR M NS
@@ -657,7 +657,7 @@ There doesn't seem to be much to look at, besides the coiling mist
 attacking you!
 ~
 unique~
-BQ F 0 S
+ABQ F 0 S
 40 5 10d20+1200 1d1+400 8d4+5 5
 -6 -6 -7 -5
 BFHNU ABR LO 0
@@ -673,7 +673,7 @@ family.  She is a beautiful woman that you wish you could take away
 from all this.
 ~
 human~
-BR O 950 S
+ABR O 950 S
 32 5 10d20+900 1d1+200 8d4+5 5
 -4 -4 -5 -3
 K AB 0 0
@@ -689,7 +689,7 @@ head of the household as far as you can tell, and leeches onto the
 power with a death-grip.  What a horrible woman!
 ~
 human~
-BT 0 -550 S
+ABT 0 -550 S
 38 5 10d20+1200 1d1+400 8d4+5 5
 -5 -5 -5 -2
 CO AB 0 0
@@ -704,7 +704,7 @@ Talbot has a permanent sneer on his face.  He barely glances at you as
 he beats his brother's sword back to take a vicious swipe...
 ~
 human~
-BT 0 0 S
+ABT 0 0 S
 34 5 10d20+900 1d1+100 6d5+4 5
 -4 -4 -3 -1
 E AB 0 0
@@ -719,7 +719,7 @@ Korino looks at you with barely disguised contempt as he parries
 Talbot's blow and ripostes around...
 ~
 human~
-BT 0 0 S
+ABT 0 0 S
 34 5 10d20+900 1d1+100 6d5+4 5
 -3 -2 -3 -1
 EKU AB 0 0
@@ -734,7 +734,7 @@ He smiles, leans back, and tries to look bored to cover that vulturous
 attitude.  He doesn't quite succeed; he IS a lawyer, after all.
 ~
 human~
-BS DPQ -550 S
+ABS DPQ -550 S
 26 5 10d20+500 1d1+100 5d4+3 5
 -1 -1 -1 -1
 BFHN ABR LO 0
@@ -749,7 +749,7 @@ He looks tired and dirty.  A glare out of the corner of his eye, and
 he dismisses you easily.  He doesn't seem to care one whit about you.
 ~
 human~
-BT DPQ 250 S
+ABT DPQ 250 S
 29 5 10d20+800 1d1+100 6d4+5 5
 -1 -1 -1 -1
 J AB M 0
@@ -764,10 +764,10 @@ This citizen really doesn't have time to fool around with adventurers;
 she has far too much to do.
 ~
 human~
-CT 0 -150 S
+ACT 0 -150 S
 23 5 10d20+400 1d1+100 7d4+5 5
 -1 -2 -2 -1
-K 0 0 0
+K AB 0 0
 8 8 2 500
 0 0 M 0
 #8750
@@ -780,7 +780,7 @@ noticeable about this magnificent beast.  Red within red eyes, with
 tiny pupils of black in the center.
 ~
 dog~
-BFS DF -550 S
+ABFGS DF -550 S
 46 5 10d20+1700 1d1+400 8d7+25 5
 -7 -7 -7 -7
 FH ABH 0 0
@@ -795,7 +795,7 @@ You see the bloodlust in its eyes, and know there's no reasoning with
 this creature...
 ~
 goblin~
-BS Q -450 S
+ABS Q -450 S
 30 5 10d20+800 1d1+100 8d5+5 5
 -6 -6 -6 -2
 UI AB 0 0
@@ -809,7 +809,7 @@ The farmer sells her lackluster with all the excitement it warrants.
 She looks wearied, but keeps hanging in there!
 ~
 human~
-BS DPQ 250 S
+ABS DPQ 250 S
 40 5 10d20+1300 12d6+400 8d4+5 5
 -6 -6 -6 -1
 BFHN ABR LO 0
@@ -823,7 +823,7 @@ A receptionist stands in front of you, waiting to help you.
 She looks at you happily, and pushes a ledger at you.
 ~
 human~
-BS DPQ 0 S
+ABS DPQ 0 S
 40 5 10d20+1400 1d1+400 8d4+5 5
 -6 -6 -6 -1
 BFHN ABR LO 0
@@ -839,7 +839,7 @@ different orders at the same time.  Maybe you should bother him
 later...
 ~
 human~
-BS DPQ 250 S
+ABS DPQ 250 S
 40 5 10d20+1400 1d1+400 8d4+5 5
 -6 -6 -6 -1
 BFHN ABR LO 0
@@ -854,7 +854,7 @@ You see the bloodlust in its eyes, and know there's no reasoning with
 this creature...
 ~
 goblin~
-BFS N -450 S
+ABFGS N -450 S
 47 5 10d20+1600 1d1+100 8d8+25 5
 -8 -8 -8 -6
 BC AB 0 0
@@ -1724,8 +1724,8 @@ S
 Moon Gate Road, East~
    You near the end of Moon Gate Road, and ahead you spot a sharp
 dropoff aways to the east.  A large building to the south has a
-picture of a trout in full plate hanging out front.  'Bob's Armoury
-and Tackle' it proclaims.  Armoury? Tackle Shop?!?  How curious!
+picture of a trout in full plate hanging out front.  'Bob's Armory
+and Tackle' it proclaims.  Armory? Tackle Shop?!?  How curious!
    Moon Gate Road continues to the east and west.
 ~
 87 0 1
@@ -2407,7 +2407,7 @@ A closer examinations reveal the weapons are all junk.
 ~
 S 
 #8743
-Bob's Armoury and Tackle~
+Bob's Armory and Tackle~
    This place has to be the WEIRDEST shop you've ever been in.
 Fishing poles and halberds decorate the walls.  Breast plates stacked
 with cups of nightcrawlers on top.  Bow strings and fishing line, etc,

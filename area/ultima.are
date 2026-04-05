@@ -13,7 +13,7 @@ unique~
 AFG T -200 S
 2 0 2d7+21 2d2+20 1d5+0 26
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 T 0
 #7601
@@ -28,7 +28,7 @@ bat~
 ABFG T -500 S
 4 0 2d7+46 2d4+40 1d5+1 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #7602
@@ -45,7 +45,7 @@ human~
 AGT 0 1000 S
 4 0 2d7+46 2d4+40 1d5+1 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #7603
@@ -61,7 +61,7 @@ human~
 AGH 0 1000 S
 3 0 2d6+35 2d3+30 1d6+0 16
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 5
 0 0 S 0
 #7604
@@ -76,7 +76,7 @@ horse~
 ABGH 0 1000 S
 3 0 2d6+35 2d3+30 1d6+0 15
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #7605
@@ -93,7 +93,7 @@ human~
 ACGT H 1000 S
 5 1 2d6+60 2d5+50 1d6+1 16
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 10
 0 0 M 0
 #7606
@@ -110,7 +110,7 @@ rat~
 AFG 0 -1000 S
 5 1 2d6+60 2d5+50 1d6+1 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #7607
@@ -126,7 +126,7 @@ unique~
 ABCFG 0 -1000 S
 8 3 2d7+96 2d8+80 1d7+2 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #7608
@@ -142,7 +142,7 @@ human~
 AGR E 1000 S
 6 2 2d7+71 2d6+60 1d7+1 19
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #7609
@@ -158,7 +158,7 @@ human~
 ABGR H 1000 S
 30 15 6d12+853 2d30+330 4d6+8 19
 -7 -5 -6 -5
-AGI A BC E
+AGI AB BC E
 8 6 1 50
 0 0 M 0
 #7610
@@ -174,7 +174,7 @@ human~
 AGRT H 1000 S
 8 3 2d7+96 2d8+80 1d7+2 19
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 10
 0 0 M 0
 #7611
@@ -190,7 +190,7 @@ unique~
 AFGH 0 -1000 S
 7 3 2d6+85 2d7+70 1d8+1 14
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #7612
@@ -205,7 +205,7 @@ snake~
 AFGH 0 -1000 S
 9 4 2d6+110 2d9+90 1d8+2 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 S 0
 #7613
@@ -221,7 +221,7 @@ horse~
 ABGT 0 500 S
 25 13 5d10+550 2d25+225 2d10+7 7
 -6 -7 -5 0
-CIO B E 0
+CIO AB E 0
 8 8 1 0
 0 0 L 0
 #7614
@@ -237,7 +237,7 @@ human~
 ABGT 0 750 S
 9 4 2d6+110 2d9+90 1d8+2 1
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 6 1 25
 0 0 M 0
 #7615
@@ -252,7 +252,7 @@ human~
 AG OX 500 S
 8 2 2d7+96 2d8+80 1d7+2 16
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 5
 0 0 M 0
 #7616
@@ -303,7 +303,7 @@ human~
 AG 0 1000 S
 9 4 2d6+110 2d9+90 1d8+2 1
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #7619
@@ -334,10 +334,10 @@ This orc is a disgusting animal. The ape-like monster scratches
 its armpits.  It travels in herds and is a coward.
 ~
 orc~
-AFGHT 0  -1000 S
+AFGHT 0 -1000 S
 11 5 2d8+134 2d11+111 1d10+2 5
 0 0 0 0
-CDE B E I
+CDE AB E I
 8 8 0 10
 0 0 L 0
 #7621
@@ -352,7 +352,7 @@ troll~
 AFGT 0 -1000 S
 13 7 2d10+170 2d13+113 2d5+3 27
 -1 -1 -1 0
-CDEO B E I
+CDEO AB E I
 8 8 0 10
 0 0 G 0
 #7622
@@ -368,7 +368,7 @@ unique~
 ACG FH 0 S
 15 7 3d9+208 2d15+115 2d6+3 0
 -2 -2 -2 -5
-FGH BO J H
+FGH ABO J H
 8 8 0 25
 0 0 T 0
 #7623
@@ -386,7 +386,7 @@ human~
 AGQ DF 1000 S
 12 6 2d10+170 2d12+112 2d5+3 19
 0 0 0 -5
-FGK B C N
+FGK AB C N
 8 8 1 50
 0 0 M 0
 #7624
@@ -403,7 +403,7 @@ human~
 AGQ DF 1000 S
 12 6 2d10+170 2d12+112 2d5+3 19
 0 0 0 -5
-FGK B C N
+FGK AB C N
 8 8 1 50
 0 0 M 0
 #7625
@@ -438,7 +438,7 @@ human~
 AGQ HNO 1000 S
 15 8 3d9+208 2d15+115 2d7+5 19
 -2 -2 -2 -5
-FGHK B C N
+FGHK AB C N
 6 6 2 50
 0 0 M 0
 #7627
@@ -454,7 +454,7 @@ human~
 ABGT PQ -666 S
 11 5 2d8+134 2d11+111 1d10+2 0
 1 1 1 1
-HIJN 0 0 0
+HIJN AB 0 0
 8 8 1 0
 0 0 M 0
 #7628
@@ -469,7 +469,7 @@ human~
 ABFGT PQ -1000 S
 14 7 2d10+190 2d14+114 1d12+3 0
 -1 -1 -1 1
-HIJN 0 0 0
+HIJN AB 0 0
 8 8 1 0
 0 0 M 0
 #7629
@@ -486,7 +486,7 @@ human~
 AGT 0 1000 S
 13 7 2d10+170 2d13+113 2d5+3 0
 -1 -1 -1 1
-0 0 0 0
+0 AB 0 0
 8 8 1 25
 0 0 M 0
 #7630
@@ -503,7 +503,7 @@ human~
 ABGT 0 1000 S
 10 5 2d7+121 2d10+110 2d4+2 17
 0 0 0 0
-CDEK B 0 0
+CDEK AB 0 0
 8 8 1 50
 0 0 M 0
 #7631
@@ -518,7 +518,7 @@ human~
 ABGT 0 1000 S
 13 7 2d10+170 2d13+113 2d5+3 0
 -1 -1 -1 1
-CDEK B 0 0
+CDEK AB 0 0
 8 8 1 100
 0 0 M 0
 #7632
@@ -533,7 +533,7 @@ unique~
 AFGT 0 -1000 S
 16 8 3d9+233 2d16+116 2d7+5 8
 -2 -2 -2 -5
-CDEKO B 0 0
+CDEKO AB 0 0
 8 8 0 10
 0 0 M 0
 #7633
@@ -549,7 +549,7 @@ hobbit~
 ACG PQ -1000 S
 15 7 3d9+208 2d15+115 2d6+3 22
 -2 -2 -2 -5
-FGHI B C E
+FGHI AB C E
 8 8 1 50
 0 0 S 0
 #7634
@@ -600,7 +600,7 @@ human~
 AGT H 1000 S
 22 11 5d10+400 2d22+222 4d4+6 17
 -5 -5 -5 0
-CDEFIK B E C
+CDEFIK AB E C
 8 8 1 50
 0 0 L 0
 #7637
@@ -617,7 +617,7 @@ human~
 AGT H 1000 S
 33 17 10d10+1100 2d33+333 6d5+10 17
 -11 -11 -11 -5
-CDEFIK B E 0
+CDEFIK AB E 0
 8 8 1 100
 0 0 L 0
 #7638
@@ -632,7 +632,7 @@ unique~
 AG 0 -1000 S
 26 13 5d10+600 2d26+226 3d7+7 31
 -7 -7 -7 -7
-FN BL K N
+FN ABL K N
 8 8 0 0
 0 0 M 0
 #7639
@@ -665,7 +665,7 @@ human~
 AGT 0 1000 S
 25 12 5d10+550 2d25+225 2d10+7 17
 -7 -7 -7 0
-CDEIK B E C
+CDEIK AB E C
 8 8 1 75
 0 0 M 0
 #7641
@@ -682,7 +682,7 @@ human~
 ABGT H 1000 S
 28 14 6d12+750 2d28+228 2d12+10 0
 -8 -8 -8 -1
-CDEIK B E 0
+CDEIK AB E 0
 8 8 2 100
 0 0 M 0
 #7642
@@ -707,7 +707,7 @@ the sandtrap~
 A tentacle reaches out of the sand, and latches onto your leg.
 ~
 The Sandtrap burrows around under the stand, and comes onto
-travellers hidden.  No one is really sure what the Sandtrap looks
+travelers hidden.  No one is really sure what the Sandtrap looks
 like, but it is a dangerous foe.
 ~
 unique~
@@ -741,7 +741,7 @@ A paladin practices his sword strokes here.
 ~
 This paladin works hard to keep his Honor and the Honor of his
 people.  Honor does not lead his life, Honor is his life.  His
-shiney armour and equally shiny sword serves to remind you that he
+shiney armor and equally shiny sword serves to remind you that he
 is among Brittannia's most powerful battalion.
 ~
 human~
@@ -875,7 +875,7 @@ human~
 AG 0 1000 S
 33 17 10d10+1100 2d33+333 6d4+10 16
 -11 -11 -11 0
-DN BN P M
+DN ABN P M
 8 8 2 10
 0 0 M 0
 #7654
@@ -1073,7 +1073,7 @@ unique~
 AFG L -1000 S
 25 15 5d10+550 2d25+225 2d10+7 32
 -7 -7 -7 0
-FHM BR E F
+FHM ABR E F
 8 8 1 0
 0 0 L 0
 #7666
@@ -1088,7 +1088,7 @@ horse~
 AG 0 500 S
 28 14 6d12+703 2d28+228 2d12+8 0
 -8 -8 -8 0
-CEIKM B E 0
+CEIKM AB E 0
 8 8 2 0
 0 0 M 0
 #7667
@@ -1103,14 +1103,14 @@ unique~
 AFG 0 -1000 S
 30 15 6d12+853 2d30+330 4d6+8 12
 -2 -9 -5 0
-BCEFHKN B EG F
+BCEFHKN AB EG F
 8 8 0 0
 0 0 H 0
 #7668
 armourer~
 the armourer~
 The Armourer stands here.~
-The Armourer sells... armour.
+The Armourer sells... armor.
 ~
 human~
 ABGLMTV CDEF 1000 S
@@ -1603,9 +1603,9 @@ steel~
 A
 18 2
 #7642
-armour~
-shiny armour~
-A paladin's suit of armour lies here.~
+armor~
+shiny armor~
+A paladin's suit of armor lies here.~
 steel~
 9 0 AD
 0 0 0 0 0
@@ -1728,8 +1728,8 @@ A
 A
 19 6
 #7651
-black death armour~
-a completely black armour~
+black death armor~
+a completely black armor~
 This completely black armor reeks of death.~
 iron~
 9 CEJL AD
@@ -1858,9 +1858,9 @@ A
 A
 18 3
 #7661
-armour~
-Sentri's armour~
-Sentri left his armour here.~
+armor~
+Sentri's armor~
+Sentri left his armor here.~
 steel~
 9 K AD
 0 0 0 0 0
@@ -3953,7 +3953,7 @@ D2
 S
 #7703
 The Armourer~
-The Armourer buys and sells armour.  His smithy is impressive
+The Armourer buys and sells armor.  His smithy is impressive
 with all of his greatest works hanging on the walls.
 ~
 77 AD 0
@@ -5182,7 +5182,7 @@ Path~
 2 7605 7774
 S
 #7774
-The Altar of Honour~
+The Altar of Honor~
 You may gain true enlightenment here.  There is a large plaque on
 the wall.  The path continues only if you use the mantra, to
 gain enlightenment.
@@ -5190,7 +5190,7 @@ gain enlightenment.
 77 D 0
 E
 plaque~
-Honour is the courage to stand for truth, against any odds.
+Honor is the courage to stand for truth, against any odds.
 ~
 D0
 The Path Of Enlightenment leads on.
@@ -5506,7 +5506,7 @@ E 1 7639 5 16            glowing sword
 M 0 7642 1 7708         lady of Empath Abbey
 E 1 7640 5 3             amulet of love
 *
-M 0 7668 1 7703         armourer in armour shop
+M 0 7668 1 7703         armourer in armor shop
 *
 M 0 7669 1 7705         weaponsmith in weapon shop
 *
@@ -5520,7 +5520,7 @@ G 1 7614 2               moonstone
 *
 M 0 7645 6 7737         paladins in their tents
 E 1 7641 6 17            sword
-E 1 7642 6 5             armour
+E 1 7642 6 5             armor
 M 0 7645 6 7738
 E 1 7641 6 17
 E 1 7642 6 5

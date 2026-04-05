@@ -14,7 +14,7 @@ of this mountain for many, many years and he is
 wise beyond his years.
 ~
 human~
-BMQ CHN 750 S
+ABMQ CHN 750 S
 40 4 15d9+1650 1d1+210 4d7+13 13
 -13 -13 -10 -8
 CFO AB I 0
@@ -31,7 +31,7 @@ he spends all of his time sitting upon his golden
 throne.
 ~
 human~
-BMT HNOV 850 S
+ABMT HNOV 850 S
 57 12 30d20+6600 1d1+300 13d4+26 18
 -21 -21 -23 -25
 ACDFIKO AB GI P
@@ -46,7 +46,7 @@ This sorcerer is a master of all magic and looks at
 you like it's just daring you to pick a fight.
 ~
 human~
-BMR NTV 725 S
+ABMR NTV 725 S
 30 3 3d4+715 1d1+130 5d4+9 19
 -2 -2 -2 -5
 FU ABN CI M
@@ -62,10 +62,10 @@ features upon his face.  He looks menacing and snarls at
 you.
 ~
 modron~
-BFMT GHJ -100 S
+ABFGMT GHJ -100 S
 48 8 20d12+2900 1d1+100 10d6+19 27
 -19 -19 -19 -10
-CEIK 0 BEI JP
+CEIK AB BEI JP
 8 8 0 779
 0 0 L 0
 #18005
@@ -78,10 +78,10 @@ is enveloped in a cloud of the opaque stuff and you aren't
 even sure where he actually is.
 ~
 undead~
-BMOS DEFHJOQT -400 S
+ABMOS DEFHJOQT -400 S
 30 3 10d12+700 1d1+100 5d4+8 8
 -7 -7 -7 -5
-FG AM H N
+FG ABM H N
 8 8 0 289
 0 0 G 0
 #18006
@@ -93,10 +93,10 @@ This is one of the many creatures that inhabit this
 frozen land.  It looks poised to strike at any moment!
 ~
 snake~
-FGOT P -300 S
+AFGOT P -300 S
 20 5 5d10+300 1d1+100 4d3+6 30
 -2 -2 -2 2
-FM IL B H
+FM ABIL B H
 8 8 0 0
 0 0 S 0
 #18007
@@ -108,10 +108,10 @@ This is a very large wolf that loves the cold weather
 and would like nothing more than to eat you for dinner.
 ~
 wolf~
-GT GJ 100 S
+AGT GJ 100 S
 25 4 7d10+440 1d1+100 3d7+6 10
 -7 -6 -7 0
-FI E I R
+FI ABE I R
 8 8 1 0
 0 0 L 0
 #18008
@@ -123,10 +123,10 @@ This is a very large polar bear that hasn't eaten anything
 in days.  He licks his lips at the sight of you.
 ~
 bear~
-GMT G 0 S
+AGMT G 0 S
 29 3 2d10+480 1d1+100 9d3+5 5
 -5 -5 -5 0
-IKO 0 I J
+IKO AB I J
 8 8 1 0
 0 0 L 0
 #18009
@@ -139,10 +139,10 @@ the mighty Lanatir.  Now he just tries to keep warm
 inside the ice keep.
 ~
 human~
-CT N 400 S
+ACT N 400 S
 34 6 14d5+700 1d1+100 10d3+3 17
 -11 -11 -12 -3
-CDEFI 0 0 K
+CDEFI AB 0 K
 8 8 1 650
 0 0 L 0 
 #18010
@@ -154,10 +154,10 @@ This is one of the many that once fought for the mighty
 Lanatir.  Now he is just looking for a good fight.
 ~
 human~
-CFT G 200 S
+ACFGT G 200 S
 37 4 3d6+1488 1d1+100 8d4+12 8
 -5 -4 -5 0
-CDKN 0 0 0
+CDKN AB 0 0
 8 8 1 345
 0 0 L 0
 #18011
@@ -169,10 +169,10 @@ This demon was created by an unknown magic and it now
 roams the halls of this ancient ice keep.
 ~
 undead~
-FMOR HNTU -850 S
+AFGMOR HNTU -850 S
 47 6 25d12+2200 1d1+200 12d3+15 26
 -10 -10 -10 -10
-DEFHK 0 M N
+DEFHK AB M N
 8 8 0 209
 0 0 G 0
 #18012
@@ -185,10 +185,10 @@ frozen pond, and has remained here despite the pond
 being frozen solid.
 ~
 water fowl~
-G 0 950 S
+AG 0 950 S
 13 1 1d5+176 1d1+50 2d5+4 23
 -1 -1 -1 -1
-F 0 I H
+F AB I H
 8 8 1 0
 0 0 S 0
 #18013
@@ -199,10 +199,10 @@ A large sparrow is here chirping.
 A large sparrow is here innocently singing a song.
 ~
 song bird~
-G T 910 S
+AG T 910 S
 18 1 2d9+250 1d1+90 3d5+5 13
 -1 -1 -1 -1
-F 0 I O
+F AB I O
 8 8 2 0
 0 0 S 0
 #18014
@@ -214,7 +214,7 @@ Standing before you is a tall man with a long beard.  He is
 the owner of the outpost and is waiting for you to buy something.
 ~
 human~
-BGLMV DFJ 1000 S
+ABGLMV DFJ 1000 S
 10 2 1d1+500 1d1+100 5d5+4 5
 -5 -5 -5 -5
 0 ABCDEFGHIJKLMNOPQRS 0 0
@@ -230,7 +230,7 @@ the light you attempt to get a glimpse of his face, but you can
 see nothing.
 ~
 human~
-BGLMV DFJ -600 S
+ABGLMV DFJ -600 S
 30 2 1d1+999 1d1+200 9d9+6 6
 -5 -5 -5 -5 
 0 ABCDEFGHIJKLMNOPQRS 0 0

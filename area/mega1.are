@@ -12,10 +12,10 @@ mates have cost city authorities many millions of creds a week in
 vandalism repairs.
 ~
 human~
-C 0 -400 S
+AC 0 -400 S
 5 5 2d6+60 1d5+100 1d6+1 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 S 0
 #8001
@@ -27,10 +27,10 @@ This punk is from one of the rowdiest, scruffiest, and definitely most
 fashionable of all gangs -- the Grunge Mongers.
 ~
 human~
-CG 0 -500 S
+ACG 0 -500 S
 10 1 2d7+121 1d10+100 2d4+2 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #8002
@@ -43,10 +43,10 @@ not be stopped by anyone who tries to deter him from revenge upon the
 Justice Department.
 ~
 human~
-BF D 0 S
+ABFG D 0 S
 17 -3 3d9+258 1d17+100 3d4+4 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #8003
@@ -58,10 +58,10 @@ A member of a local Block's Citi-Def militia, this man is well-armed
 and undersupervised.
 ~
 human~
-CG J 0 S
+ACG J 0 S
 16 -2 3d9+233 1d16+100 2d6+4 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #8004
@@ -72,10 +72,10 @@ A dunk is here blending into the crowd.
 He blends into the crowd as his hand travels into another citizen's pocket.
 ~
 human~
-CGH 0 -150 S
+ACGH 0 -150 S
 10 1 2d7+121 1d10+100 2d4+2 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #8005
@@ -87,10 +87,10 @@ A practitioner in Mega-City One's largest growth industry, mugging, is
 looking you over for a possible business transaction.
 ~
 human~
-CG 0 -400 S
+ACG 0 -400 S
 14 -1 2d10+190 1d14+100 1d12+3 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #8006
@@ -103,10 +103,10 @@ crimes you have committed.  Being a rookie he will probably be easier on
 you though.
 ~
 human~
-G DF 300 S
+AG DF 300 S
 20 -4 3d9+333 1d20+100 2d8+5 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #8007
@@ -118,10 +118,10 @@ Wallaby Gleep is a heavy-set man who gives you the impression that he is
 unintelligent and unimaginative, but looks can be deceiving.
 ~
 human~
-BC DFJ -600 S
+ABC DFJ -600 S
 22 -5 5d10+400 1d22+100 4d4+6 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 L 0
 #8008
@@ -134,10 +134,10 @@ Scrooge.  Indeed, the only thing guaranteed to bring a spark to his dead
 eyes is the mention of money.
 ~
 human~
-BCF DF -750 S
+ABCFG DF -750 S
 25 -7 5d10+550 1d25+100 2d10+7 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #8009
@@ -150,10 +150,10 @@ deal out of life.  He is content to run the bite fights for Throt and
 Gleep.
 ~
 human~
-BC 0 -750 S
+ABC 0 -750 S
 19 -4 3d9+308 1d19+100 2d7+5 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #8010
@@ -165,10 +165,10 @@ He is a dedicated, if somewhat pessimistic Judge.  He is the Senior Judge
 of the Downtown Quadrant.
 ~
 human~
-G DFH 300 S
+AG DFH 300 S
 30 -9 6d12+853 1d30+100 4d6+8 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 L 0
 #8011
@@ -181,10 +181,10 @@ She is fanatically dedicated to her job and has no ambitions other than
 to enforce the LAW.
 ~
 human~
-G DF 500 S
+AG DF 500 S
 25 -7 5d10+550 1d25+100 2d10+7 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 L 0
 #8012
@@ -195,10 +195,10 @@ A bite fighter is here sharpening his teeth.
 A bite fighter is here with sharpened teeth and a bad attitude.
 ~
 human~
-BF 0 -400 S
+ABFG 0 -400 S
 20 -4 3d9+333 1d20+100 2d8+5 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #0

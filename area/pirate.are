@@ -13,10 +13,10 @@ a stern complexion.  He must have been BAD to get into such a command
 so don't mess with him!
 ~
 human~
-BCGT DFHN -1000 S
+ABCGT DFHN -1000 S
 60 30 50d10+9500 30d60+360 8d6+30 17
 -39 -39 -39 -20
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 1000
 0 0 M 0
 #16001
@@ -32,10 +32,10 @@ and defend himself if necessary.  He tells you to leave his equipment
 alone!
 ~
 human~
-BCGT CDEHJN 500 S
+ABCGT CDEHJN 500 S
 50 25 50d10+4500 25d50+300 5d8+20 7
 -30 -30 -30 -15
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 500
 0 0 M 0
 #16002
@@ -49,10 +49,10 @@ to have an air of command around him which must explain why he got
 his position on the ship as a First Mate.
 ~
 human~
-BCGT DFHJN -700 S
+ABCGT DFHJN -700 S
 51 26 50d10+4500 25d51+306 5d8+22 7
 -33 -33 -33 -17
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 600
 0 0 M 0
 #16003
@@ -67,10 +67,10 @@ It looks like he mixes whatever leftovers he has into the cauldron and
 calls it food.  For some strange reason, you lose your appetite.
 ~
 human~
-BCGT DJ 0 S
+ABCGT DJ 0 S
 45 23 25d10+1000 22d45+270 8d4+16 3
 -26 -25 -26 -12
-EFNU 0 LQ 0
+EFNU AB LQ 0
 8 8 1 200
 0 0 M 0
 #16004
@@ -83,10 +83,10 @@ his movements.  He looks trained to kill in a single blow, so don't get
 on his bad side!
 ~
 human~
-CFGST BDFHKNPQ -1000 S
+ACFGST BDFHKNPQ -1000 S
 58 28 50d10+7500 27d55+330 5d8+24 25
 -20 -20 -20 -20
-BEFNU A 0 0
+BEFNU AB 0 0
 8 8 1 1000
 0 0 M 0
 #16005
@@ -99,10 +99,10 @@ from his face, taken away by the sandman.  I bet he would be VERY
 upset if you woke him up, so step lightly.
 ~
 human~
-BFGT DJNR -350 S
+ABFGT DJNR -350 S
 38 19 10d10+800 19d38+228 4d9+12 1
 -16 -17 -16 -15
-EFNU A R 0
+EFNU AB R 0
 4 4 1 60
 0 0 M 0
 #16006
@@ -115,10 +115,10 @@ in his argument with his parrot.  You wonder who has higher intellect ...
 the bird or the pirate?
 ~
 human~
-CGHT DFN -350 S
+ACGHT DFN -350 S
 45 23 25d10+1400 22d45+270 3d15+15 3
 -26 -26 -26 -12
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 500
 0 0 M 0
 #16007
@@ -130,10 +130,10 @@ His face is red and his ears almost seem to be blowing steam!  What did
 you do to make him so mad?
 ~
 human~
-CFGT H -400 S
+ACFGT H -400 S
 42 21 25d10+1200 21d42+252 3d15+15 1
 -22 -22 -21 -10
-BEFNU A R 0
+BEFNU AB R 0
 8 8 1 200
 0 0 M 0
 #16008
@@ -146,10 +146,10 @@ his mouth with a bottle of beer.  As he swears, drool comes spitting
 out of his mouth. Yuk!
 ~
 human~
-CFGT 0 -500 S
+ACFGT 0 -500 S
 37 18 10d10+900 18d37+222 3d12+15 13
 -19 -19 -19 -7
-EFNU A L 0
+EFNU AB L 0
 8 8 1 200
 0 0 M 0
 #16009
@@ -161,10 +161,10 @@ He has been standing out in the sun for hours doing nothing but getting
 a really bad tan.  He sure could use a friend to talk to.
 ~
 human~
-CGT CDEFN -500 S
+ACGT CDEFN -500 S
 48 24 25d10+1250 24d48+288 5d10+20 3
 -30 -30 -20 -15
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 250
 0 0 M 0
 #16010
@@ -176,10 +176,10 @@ He looks like the quiet type.  But don't let looks deceive you, he could
 be very deadly in combat.
 ~
 human~
-CGT DFHJN -600 S
+ACGT DFHJN -600 S
 46 23 25d10+1000 23d46+276 3d15+16 1
 -25 -25 -25 -12
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 750
 0 0 M 0
 #16011
@@ -192,10 +192,10 @@ When you try to talk to him, he gruffly says,"Work! Work! Work! That's
 all we do everyday! WORK!"
 ~
 human~
-CGHT D -500 S
+ACGHT D -500 S
 35 16 10d10+800 17d35+218 4d7+11 17
 -18 -18 -18 -6
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 200
 0 0 M 0
 #16012
@@ -206,10 +206,10 @@ The sailor is standing here enjoying the sea breeze.
 He looks like a happy-go-lucky man who takes things as they come.
 ~
 human~
-GHT D 100 S
+AGHT D 100 S
 35 18 10d10+800 17d35+218 4d7+11 11
 -18 -17 -17 -6
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 400
 0 0 M 0
 #16013
@@ -220,10 +220,10 @@ A seafaring rat is scurrying around scavenging for food.
 This is the BIGGEST rat you've ever seen!  He has razor sharp teeth!
 ~
 unique~
-CFGHT JM -500 S
+ACFGHT JM -500 S
 34 17 10d10+700 17d34+204 4d7+10 5
 -15 -15 -15 -5
-EFNU 0 0 Q
+EFNU AB 0 Q
 8 8 0 9
 0 0 S 0
 #16014
@@ -234,10 +234,10 @@ A lookout has been posted here to search for signs of danger.
 He peers intently in all directions and keeps an eye on the weather.
 ~
 human~
-BGT CDEFHJNT -800 S
+ABGT CDEFHJNT -800 S
 52 26 50d10+4500 25d50+300 5d8+20 3
 -30 -30 -30 -15
-EFNU 0 R 0
+EFNU AB R 0
 8 8 1 450
 0 0 M 0
 #16015
@@ -248,10 +248,10 @@ She sells seashells by the seashore.
 She is a pretty young girl standing behind the counter watching the shop.
 ~
 human~
-BCGT CDEFN 1000 S
+ABCGT CDEFN 1000 S
 55 28 50d10+7000 27d55+330 10d4+23 17
 -35 -35 -35 -18
-EFNU AC 0 0
+EFNU ABC 0 0
 8 8 1 15000
 0 0 M 0
 #0
@@ -802,8 +802,8 @@ wood~
 14 3 1764 P
 #16049
 sack~
-a traveller's sac~
-A traveller's sac is dumped on the floor.~
+a traveler's sac~
+A traveler's sac is dumped on the floor.~
 cloth~
 15 0 AD
 200 1 0 0 0
@@ -2498,7 +2498,7 @@ S
 Seashells Galore~
 This remote shop located by the seashore sells trinkets made from everything
 immaginable.  The walls are stacked with shelves and shelves of multi-colored
-potions and wands.  A traveller can find all the things he needs for any
+potions and wands.  A traveler can find all the things he needs for any
 journeys he may plan.  Try out the delicious seafood they serve here!
 ~
 160 8 0

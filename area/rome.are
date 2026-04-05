@@ -10,10 +10,10 @@ The adjudicator is a retired gladiator and scars cover all exposed parts of
 his body.  Although he is getting on in years, he remains healthy and fit.
 ~
 human~
-B H 100 S
+AB H 100 S
 17 1 17d13+204 9d17+102 3d4+4 2
 -3 -3 -2 -1
-EFJK 0 0 0
+EFJK AB 0 0
 8 8 1 600
 0 0 M 0
 #19101
@@ -25,10 +25,10 @@ The scorekeeper is a young man of about 25 years of age and is very intently
 studying his clipboard.
 ~
 human~
-B 0 100 S
+AB 0 100 S
 12 0 12d9+144 6d14+72 1d10+3 17
 0 0 0 2
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 150
 0 0 M 0
 #19102
@@ -40,10 +40,10 @@ The lion paces back and forth waiting for his dinner. Even though he is so
 thin that his ribs are visible, strong muscles ripple with each stride. 
 ~
 cat~
-BF J -750 S
+ABFG J -750 S
 15 1 15d11+180 8d15+90 2d6+3 3
 -2 -2 -1 0
-CEFO J 0 0
+CEFO ABJ 0 0
 8 8 1 0
 0 0 M 0
 #19103
@@ -54,10 +54,10 @@ A spectator is here watching the games.
 The spectator is filthy, half drunk and screaming his head off.
 ~
 human~
-BH 0 -100 S
+ABH 0 -100 S
 10 0 10d8+120 5d10+60 2d4+2 17
 1 1 2 3
-EFIN 0 0 0
+EFIN AB 0 0
 6 6 0 72
 0 0 M 0
 #19104
@@ -70,10 +70,10 @@ attitude.  While he is getting old and his hair and beard are streaked with
 gray, he is by no means an easy target.
 ~
 human~
-GH 0 500 S
+AGH 0 500 S
 17 1 17d13+204 9d17+102 3d4+4 13
 -2 -3 -3 -1
-CEFJN 0 0 0
+CEFJN AB 0 0
 8 8 1 600
 0 0 M 0
 #19105
@@ -85,10 +85,10 @@ A very pretty young woman who was captured instead of being killed when the
 Roman legions subjugated her land.
 ~
 human~
-BH 0 0 S
+ABH 0 0 S
 8 0 8d6+69 4d8+48 1d7+2 16
 3 2 3 1
-EFN 0 0 0
+EFN AB 0 0
 8 8 2 0
 0 0 M 0
 #19106
@@ -100,10 +100,10 @@ A well muscled man who is very heavily armored and armed to the teeth.  He
 lives for combat.
 ~
 human~
-B 0 -250 S
+AB 0 -250 S
 19 1 19d14+228 10d19+114 2d7+5 15
 -4 -4 -4 -2
-DEFJK 0 0 0
+DEFJK AB 0 0
 8 8 1 900
 0 0 M 0
 #19107
@@ -115,10 +115,10 @@ You see a very slight and small individual whose whole life is centered
 around nothing but horses and speed.
 ~
 human~
-B 0 100 S
+AB 0 100 S
 15 0 15d11+180 8d15+90 2d6+3 18
 -2 -2 -1 0
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 10
 0 0 M 0
 #19108
@@ -128,10 +128,10 @@ There is a coach standing here, going over last minute strategy.
 ~
 ~
 human~
-B 0 0 S
+AB 0 0 S
 16 1 16d12+192 8d15+90 2d6+3 18
 0 -1 -1 1
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 500
 0 0 M 0
 #19109
@@ -143,10 +143,10 @@ You see a young man, just out of med school, wearing a white coat and using
 a stethoscope.
 ~
 human ~
-B 0 500 S
+AB 0 500 S
 18 1 18d13+216 9d18+108 2d7+4 27
 -2 -3 -3 -1
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 750
 0 0 M 0
 #19110
@@ -159,10 +159,10 @@ deep brown eyes and shoulder-length chestnut hair.  Her body is perfectly
 proportioned and she stands about 5' 5" tall.
 ~
 human~
-BH 0 750 S
+ABH 0 750 S
 15 0 15d11+18 8d15+90 2d6+3 16
 -2 -2 -1 0
-EFN 0 0 0
+EFN AB 0 0
 8 8 2 400
 0 0 M 0
 #19111
@@ -175,10 +175,10 @@ he enjoys the quiet life.  There is a long scar running from the edge of his
 mouth to his right ear, making it look like he is always smiling.
 ~
 human~
-B H 450 S
+AB H 450 S
 28 2 28d21+336 14d28+163 2d12+8 8
 -8 -7 -8 -6
-CEFN 0 0 0
+CEFN AB 0 0
 8 8 1 1000
 0 0 M 0
 #19112
@@ -189,10 +189,10 @@ A poor peddler is standing here, trying to support his meager existence.
 You see a small, dirty man who doesn't look very healthy.  
 ~
 human~
-GH 0 250 S
+AGH 0 250 S
 9 0 9d8+108 5d9+54 1d8+2 17
 2 2 2 0
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 160
 0 0 M 0
 #19113
@@ -204,10 +204,10 @@ You see a young boy who looks very strong and very fast.  He has the look of
 a scholar about him.
 ~
 human~
-BH 0 0 S
+ABH 0 0 S
 11 0 11d8+132 6d11+66 1d10+2 0
 1 1 0 2
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 10
 0 0 M 0
 #19114
@@ -217,10 +217,10 @@ The plaintiff stands here, pleading his case.
 ~
 ~
 human~
-B 0 -300 S
+AB 0 -300 S
 16 1 16d12+192 8d16+96 2d6+4 17
 -2 -2 -1 0
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 600
 0 0 M 0
 #19115
@@ -230,10 +230,10 @@ A ticket master is here, looking at you expectantly.
 ~
 ~
 human~
-B 0 0 S
+AB 0 0 S
 22 2 22d17+264 11d22+132 4d4+6 27
 -5 -5 -5 -3
-DEFK 0 0 0
+DEFK AB 0 0
 8 8 1 750
 0 0 M 0
 #19116
@@ -245,10 +245,10 @@ The vendor is a scruffy looking man who isn't afraid of a fight and looks
 like he's had just about enough of smart-mouthed spectators.
 ~
 human~
-GH 0 -250 S
+AGH 0 -250 S
 13 0 13d10+156 7d13+78 2d5+3 17
 0 -1 -1 1
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 375
 0 0 M 0
 #19117
@@ -258,10 +258,10 @@ A citizen of Rome is standing here.
 ~
 ~
 human~
-GH 0 0 S
+AGH 0 0 S
 10 0 10d8+120 5d10+60 2d4+2 13
 1 1 2 3
-EFJN 0 0 0
+EFJN AB 0 0
 8 8 1 150
 0 0 M 0
 #19118
@@ -272,10 +272,10 @@ A gateguard stands here, tending the gate.
 You see a strong, loyal public defender.
 ~
 human~
-BCH 0 500 S
+ABCH 0 500 S
 16 1 16d12+192 8d16+96 2d6+4 15
 -1 -2 -2 0
-CEFI 0 0 0
+CEFI AB 0 0
 8 8 1 600
 0 0 M 0
 #19119
@@ -286,10 +286,10 @@ A soldier on leave is walking around.
 You see a member of one of the emperor's elite legions.  He looks VERY strong.
 ~
 human~
-G 0 0 S
+AG 0 0 S
 19 2 19d14+228 10d19+144 2d7+5 8
 -4 -4 -3 -2
-CDEI 0 0 0
+CDEI AB 0 0
 8 8 1 500
 0 0 M 0
 #19120
@@ -301,10 +301,10 @@ You see a man who is dressed in the finest of clothes, has eaten the best of
 foods and lived in the most opulent palace that Rome has ever known. 
 ~
 human~
-BT H 500 S
+ABT H 500 S
 29 2 29d22+348 14d29+174 2d12+8 18
 -8 -9 -9 -7
-CEFIK 0 0 0
+CEFIK AB 0 0
 6 6 1 1543
 0 0 M 0
 #19121
@@ -317,10 +317,10 @@ the deadliest of weapons.  He is very strong and would put up one hell of a
 fight.
 ~
 human~
-BF DF 100 S
+ABFG DF 100 S
 20 2 20d15+240 10d20+120 2d8+5 8
 -4 -4 -3 -2
-CDEFIKN 0 0 0
+CDEFIKN AB 0 0
 8 8 1 300
 0 0 M 0
 #19122
@@ -330,10 +330,10 @@ A judge is standing here, reading a case.
 ~
 ~
 human~
-B 0 0 S
+AB 0 0 S
 26 2 26d20+312 13d26+156 3d7+7 18
 -7 -7 -7 -5
-EFIN 0 0 0
+EFIN AB 0 0
 6 6 1 1302
 0 0 M 0
 #19123
@@ -343,10 +343,10 @@ The master scheduler is here, writing in an appointment book.
 ~
 ~
 human~
-B 0 -200 S
+AB 0 -200 S
 20 1 20d15+240 10d20+120 2d8+5 27
 -4 -4 -4 -2
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 932
 0 0 M 0
 #19124
@@ -357,10 +357,10 @@ There is a slippery slimeball here.
 There is a green "ball" of slime oozing from the coating on the walls.
 ~
 unique~
-BCF D -500 S
+ABCFG D -500 S
 17 0 17d13+204 9d17+102 3d4+4 14
 -2 -3 -3 -1
-CEFO 0 0 0
+CEFO AB 0 0
 8 8 0 10
 0 0 M 0
 #19125
@@ -372,10 +372,10 @@ You see a middle-aged man who's knowledge of magic, both offensive and
 defensive, is legendary.  He literally glows with a pink aura.
 ~
 human~
-B 0 -750 S
+AB 0 -750 S
 28 4 28d21+336 14d28+168 2d12+8 19
 -7 -8 -8 -6
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 2000
 0 0 M 0
 #19126
@@ -385,10 +385,10 @@ Titus Andronicus is standing here, polishing a few swords.
 ~
 ~
 human~
-BF DH -500 S
+ABFG DH -500 S
 29 4 29d22+348 14d29+174 2d12+8 3
 -9 -9 -8 -7
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 2000
 0 0 M 0
 #19127
@@ -398,10 +398,10 @@ The senator is here, waiting for debate to begin.
 ~
 ~
 human~
-B 0 350 S
+AB 0 350 S
 15 2 15d11+180 8d15+90 2d6+3 17
 -2 -1 -2 0
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 450
 0 0 M 0
 #19128
@@ -411,10 +411,10 @@ The bailiff stands here, keeping order in the courtroom.
 ~
 ~
 human~
-B 0 100 S
+AB 0 100 S
 21 2 21d16+252 11d21+136 4d4+5 13
 -5 -5 -4 -3
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 832
 0 0 M 0
 #19129
@@ -424,10 +424,10 @@ A defendant stands here, pleading her case.
 ~
 ~
 human~
-B 0 200 S
+AB 0 200 S
 16 1 16d12+192 8d16+96 2d6+4 17
 -1 -2 -2 0
-EFN 0 0 0
+EFN AB 0 0
 8 8 2 500
 0 0 M 0
 #19130
@@ -437,7 +437,7 @@ Jupiter, King of the Gods, is resting here.
 ~
 ~
 human~
-BFT DH 1000 S
+ABFGT DH 1000 S
 43 20 43d32+516 22d43+258 3d12+15 20
 -14 -15 -14 -16
 CDEFJK AB 0 0
@@ -450,7 +450,7 @@ Venus, the god of beauty and knowledge, is resting here.
 ~
 ~
 human~
-BT DH 1000 S
+ABT DH 1000 S
 42 19 42d31+504 21d42+252 4d8+14 19
 -14 -14 -14 -12
 CDEFJK AB 0 0
@@ -463,7 +463,7 @@ Mars, the god of war and state, is resting here.
 ~
 ~
 human~
-BT DH 1000 S
+ABT DH 1000 S
 40 17 40d30+480 20d40+240 4d8+13 20
 -13 -13 -13 -11
 CDEFJK AB 0 0
@@ -476,7 +476,7 @@ Mercury, the messenger of the gods, is standing here.
 ~
 ~
 human~
-BT 0 1000 S
+ABT 0 1000 S
 38 14 38d29+456 19d38+228 5d6+12 18
 -13 -13 -13 -11
 CDEFJK AB 0 0
@@ -495,7 +495,7 @@ human~
 AB H 450 S
 28 4 28d21+336 14d28+168 2d12+8 15
 -7 -8 -8 -6
-CEFIK 0 0 0
+CEFIK AB 0 0
 8 8 1 1940
 0 0 L 0
 #19135
@@ -507,10 +507,10 @@ You see a burly man who is wearin a black hood that obscures his face.  He
 has a very sadistic attitude and clearly loves his work.
 ~
 human~
-BCF 0 -1000 S
+ABCFG 0 -1000 S
 25 3 25d19+300 13d25+150 2d10+7 8
 -7 -6 -7 -5
-CEFJKN 0 0 0
+CEFJKN AB 0 0
 8 8 1 900
 0 0 M 0
 #19136
@@ -522,10 +522,10 @@ A fat, nice looking baker. But you can see that he has many scars on his
 body.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 28 4 28d21+336 14d28+163 2d12+8 7
 -7 -7 -6 -5
-CEFK 0 0 0
+CEFK AB 0 0
 8 8 1 1000
 0 0 M 0
 #19137
@@ -536,10 +536,10 @@ A grocer stands at the counter, with a slightly impatient look on his face.
 A tall grocer, who moves two 200 pounds bag of flour around on his shoulders.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 28 4 28d21+336 14d28+168 2d12+8 27
 -6 -7 -7 -5
-CEFK 0 0 0
+CEFK AB 0 0
 8 8 1 1000
 0 0 M 0
 #0

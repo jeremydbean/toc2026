@@ -12,7 +12,7 @@ cups can be seen on each one.  Its beak is big enough to snap you
 in two, and looks very uninviting.
 ~
 fish~
-FGT FJ -300 S
+AFGT FJ -300 S
 50 25 10d20+2100 1d1+99 12d6+30 12
 -10 -15 -10 -5
 ACEFKN ABEHIR C 0
@@ -30,10 +30,10 @@ It seems a bit surprised that you were not mesmerized by it's
 hypnotic tunnel.
 ~
 fish~
-BR DFHQV -700 S
+ABR DFHQV -700 S
 49 25 10d20+1900 5d10+400 5d8+20 19
 -10 -10 -15 -25
-DFH ACHIR 0 0
+DFH ABCHIR 0 0
 8 8 1 0
 0 0 M 0
 #6403
@@ -47,10 +47,10 @@ cilia hang from its underbody, similar to those found on a jellyfish.
 It has two small arms that end in lobster like pinchers.
 ~
 fish~
-GQ DFJP -700 S
+AGQ DFJP -700 S
 48 20 20d10+2100 5d10+250 5d10+20 5
 -9 -10 -12 -10
-FH AHIR C F
+FH ABHIR C F
 8 8 1 0
 0 0 M 0
 #6404
@@ -62,10 +62,10 @@ The whale is typical of all whales in appearance, with the exception
 of its teeth, which resemble those of a shark. It looks hungry.
 ~
 fish~
-FGT DFJ 0 S
+AFGT DFJ 0 S
 48 22 5d50+1900 5d10+100 8d12+25 10
 -12 -12 -12 -12
-HM AEHIR 0 F
+HM ABEHIR 0 F
 8 8 1 0
 0 0 H 0
 #6405
@@ -79,7 +79,7 @@ Her song sings of the foolishness of the mighty hero, and how he
 always perishes in the end.
 ~
 fish~
-GQ DFHJ -500 S
+AGQ DFHJ -500 S
 40 10 5d20+900 5d10+200 7d8+10 2
 -8 -9 -10 -11
 EFKN ABHIR C 0
@@ -95,10 +95,10 @@ found in this part of the sea due to the many predatory fish that
 swim these waters.
 ~
 fish~
-GHS CDFHJ 1000 S
+AGHS CDFHJ 1000 S
 36 10 10d10+900 1d1+99 6d6+16 27
 -6 -6 -6 -6
-CEFHMQS AHIR 0 0
+CEFHMQS ABHIR 0 0
 8 8 1 0
 0 0 M 0
 #6407
@@ -110,10 +110,10 @@ The man-o-war is very large, with dozens of long tentacles swirling
 in the water.  It's very hard to see as it is completely transparent.
 ~
 fish~
-GT PQ 0 S
+AGT PQ 0 S
 37 12 15d12+1300 1d1+99 6d8+15 4
 -7 -8 -6 -7
-AEFGKM AHIR 0 0
+AEFGKM ABHIR 0 0
 8 8 1 0
 0 0 L 0
 #6408
@@ -125,10 +125,10 @@ The shark has a striking resemblance to one seen by million. The
 name JAWS pops into your head for some reason.
 ~
 fish~
-FGT DFJV -250 S
+AFGT DFJV -250 S
 35 12 4d40+1200 1d1+99 4d15+15 10
 -9 -9 -7 -3
-CDEFHK AHIR 0 0
+CDEFHK ABHIR 0 0
 8 8 1 0
 0 0 L 0
 #6409
@@ -142,10 +142,10 @@ huge head is topped with a greenish gold crest. You see death in
 its eyes.
 ~
 dragon~
-FGT DF -300 S
+AFGT DF -300 S
 47 13 10d20+2200 1d1+99 4d20+25 8
 -12 -14 -13 -13
-CDEK AEHIR 0 0
+CDEK ABEHIR 0 0
 8 8 1 0
 0 0 H 0
 #6410
@@ -157,7 +157,7 @@ It looks like it use to be a man, but now its rotting bloated
 flesh is all that is left, and its hunger for flesh.
 ~
 undead~
-GT DFJ -1000 S
+AGT DFJ -1000 S
 46 14 10d20+1800 5d10+200 8d8+30 5
 -11 -12 -12 -10
 BD AB CEN N
@@ -173,10 +173,10 @@ in color than its land bound cousin, and has gills.  One other
 thing you notice; it looks meaner than a hobgoblin.
 ~
 fish~
-CGQ FP -500 S
+ACGQ FP -500 S
 41 14 3d50+1300 5d10+200 4d10+20 7
 -10 -12 -10 -11
-EFK AHI 0 0
+EFK ABHI 0 0
 8 8 1 0
 0 0 M 0
 #6412
@@ -189,10 +189,10 @@ in color than its land bound cousin, and has gills.  One other
 thing you notice; it looks meaner than a hobgoblin.
 ~
 fish~
-CGR FPN -500 S
+ACGR FPN -500 S
 41 14 3d50+1300 5d10+200 4d10+20 7
 -10 -10 -10 -11
-EFK AHI 0 0
+EFK ABHI 0 0
 8 8 1 0
 0 0 M 0
 #6413
@@ -205,10 +205,10 @@ in color than its land bound cousin, and has gills.  One other
 thing you notice; it looks meaner than a hobgoblin.
 ~
 fish~
-CGS FPQ -500 S
+ACGS FPQ -500 S
 41 14 3d50+1300 5d10+200 4d10+20 7
 -10 -12 -10 -11
-EFK AHI 0 0
+EFK ABHI 0 0
 8 8 1 0
 0 0 M 0
 #6414
@@ -221,10 +221,10 @@ in color than its land bound cousin, and has gills.  One other
 thing you notice; it looks meaner than a hobgoblin.
 ~
 fish~
-CGT FP -500 S
+ACGT FP -500 S
 41 14 3d50+1300 5d10+200 4d10+20 7
 -10 -12 -10 -11
-DEFK AHI 0 0
+DEFK ABHI 0 0
 8 8 1 0
 0 0 M 0
 #6415
@@ -236,10 +236,10 @@ On closer inspection of the beast, you decide it is some kind
 of gargoyle. It is not pleased to see you.
 ~
 fish~
-BFGT CDEFJ -850 S
+ABFGT CDEFJ -850 S
 44 12 5d20+1450 5d10+200 8d6+20 6
 -10 -9 -11 -13
-CFK AHI 0 0
+CFK ABHI 0 0
 8 8 1 0
 0 0 M 0
 #6416
@@ -252,10 +252,10 @@ The only thing you actually see is a lot of sharp teeth trying to
 rip you to shreds.
 ~
 fish~
-BFGT DFJQ 0 S
+ABFGT DFJQ 0 S
 38 14 10d15+1400 5d10+200 8d6+20 28
 -15 -15 -12 -10
-CEHK AEHIJ 0 C
+CEHK ABEHIJ 0 C
 8 8 1 0
 0 0 M 0
 #6417
@@ -268,10 +268,10 @@ fangs. It is green and scaly, with a mangy shock of black
 hair.
 ~
 fish~
-CGT DFJP -750 S
+ACGT DFJP -750 S
 35 10 2d75+900 1d1+99 4d10+10 10
 -9 -9 -9 -7
-EFK AIJ 0 HK
+EFK ABIJ 0 HK
 8 8 1 0
 0 0 M 0
 #6418
@@ -282,10 +282,10 @@ The ships captain says "Ahoy mates, lets DANCE!"
 The captain is still wearing scraps of his former attire. A rotting
 leather belt hold what's left of his trousers to a skeletal frame.
 Captains bars still cling to his shirt, a symbol of the authority
-he once commanded. In his hand is a shining sabre.
+he once commanded. In his hand is a shining saber.
 ~
 undead~
-BFGT DFHJ -1000 S
+ABFGT DFHJ -1000 S
 60 22 25d15+7000 5d10+100 10d10+30 1
 -20 -20 -20 -20
 CDEFHKN ABHIK C N
@@ -300,7 +300,7 @@ The guardian stands watch over its treasure.
 glow brightly at your entrance.
 ~
 ghost~
-BFGTV DFHV 0 S
+ABFGTV DFHV 0 S
 60 30 25d10+6500 5d10+100 10d10+35 1
 -20 -20 -20 -20
 ACDEFHKN ABCHIK 0 P
@@ -315,7 +315,7 @@ The crab is typical of all crabs in appearance, with the exception
 that it's pinchers are quite large.
 ~
 fish~
-FGT DFJ 0 S
+AFGT DFJ 0 S
 47 22 5d45+1900 5d10+100 6d12+20 10
 -12 -12 -12 -12
 CEM ABGHI CE 0
@@ -331,10 +331,10 @@ The only thing you actually see is a lot of sharp teeth trying to
 rip you to shreds.
 ~
 fish~
-BFGT DFJQ 0 S
+ABFGT DFJQ 0 S
 43 14 10d15+1500 5d10+200 11d7+20 28
 -15 -15 -12 -10
-CEHK AEHIJ 0 C
+CEHK ABEHIJ 0 C
 8 8 1 0
 0 0 M 0
 #6422
@@ -351,7 +351,7 @@ might have died in.
 "You're all going to die.", quoth the raven, nevermore.
 ~
 fish~
-BGT DFJH 0 S
+ABGT DFJH 0 S
 48 25 10d15+1900 5d10+200 8d13+30 30
 -15 -15 -15 -15
 CEHK ABEHIJ FG 0
@@ -361,15 +361,15 @@ CEHK ABEHIJ FG 0
 
 #OBJECTS
 #6401
-sabre sword undead~
-the sabre of the undead~
+saber sword undead~
+the saber of the undead~
 A beam of darkness hides in the shadows here.~
 adamantite~
 5 CEGHM AN
 1 6 9 1 0
 51 1 6000 P
 E
-sabre~
+saber~
 Inscribe on the blade are ancient runes of death.  These runes become
 readable as you hold the sword. They say:
 
@@ -565,7 +565,7 @@ a short sword of speed~
 A sword lies here, humming.~
 steel~
 5 0 AN
-11 7 6 1 0
+1 7 6 1 0
 40 3 2000 P
 A
 2 2
@@ -2350,7 +2350,7 @@ E 1 6431 30 5
 E 1 6435 30 17              give bubble
 *
 M 0 6418 1 6435         undead captain
-E 1 6401 15 16              give sabre
+E 1 6401 15 16              give saber
 E 1 6405 15 13              give nevermore
 E 1 6407 30 5               give plate
 *

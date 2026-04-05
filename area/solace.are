@@ -13,10 +13,10 @@ with pride on his chestplate. The gold crest of two coins seems to match
 the wealth of this town.
 ~
 human~
-BT CDFH 750 S
+ABT CDFH 750 S
 30 10 6d12+853 2d30+130 4d6+8 0
 -9 -9 -9 -7
-CEFK 0 0 0
+CEFK AB 0 0
 8 8 1 1000
 0 0 M 0
 #13202
@@ -34,7 +34,7 @@ human~
 ABGT CFH 800 S
 27 10 5d10+650 2d27+127 5d4+7 0
 -8 -8 -8 -4
-0 0 0 0
+0 AB 0 0
 8 8 1 1000
 0 0 M 0
 #13203
@@ -50,7 +50,7 @@ human~
 ABGT CH 400 S
 20 5 3d9+333 2d20+120 2d8+5 0
 -4 -4 -4 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 500
 0 0 M 0
 #13204
@@ -64,7 +64,7 @@ human~
 ABGT 0 750 S
 15 5 3d9+208 2d15+115 2d3+3 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13205
@@ -75,10 +75,10 @@ A townguard stands here.
 A big strong townguard of Solace.
 ~
 human~
-ABFT 0 750 S
+ABFGT 0 750 S
 15 5 3d9+208 2d15+115 2d3+3 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13206
@@ -92,7 +92,7 @@ human~
 A 0 500 S
 10 2 2d7+121 2d10+110 2d4+2 0
 1 1 1 3
-0 0 0 0
+0 AB 0 0
 8 8 1 50
 0 0 M 0
 #13207
@@ -106,7 +106,7 @@ human~
 A 0 500 S
 5 2 2d6+60 2d5+50 1d6+1 0
 5 5 5 7
-0 0 0 0
+0 AB 0 0
 8 8 2 25
 0 0 M 0
 #13208
@@ -119,7 +119,7 @@ human~
 AB H 500 S
 25 10 5d10+550 2d25+125 2d10+7 0
 -7 -7 -7 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 1000
 0 0 M 0
 #13209
@@ -131,10 +131,10 @@ A fat, nice looking baker. But you can see that he has many scars on his
 body.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 23 8 5d10+450 2d23+123 3d6+6 0
 -6 -6 -6 -3
-0 0 0 0
+0 AB 0 0
 8 8 1 1000
 0 0 M 0
 #13210
@@ -145,10 +145,10 @@ Cookie's Helper is here offering you a free cookie sample.
 A young neighborhood girl helps out cookie when she is not around.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 20 2 3d9+333 2d20+120 2d8+5 0
 -4 -4 -4 -1
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #13211
@@ -163,7 +163,7 @@ human~
 A H 500 S
 30 10 6d12+853 2d30+130 4d6+8 0
 -9 -9 -9 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #13212
@@ -176,10 +176,10 @@ red hair. His clothes seems dirty and tattered. His bushy beard obscures
 his stone face.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 15 2 3d9+208 2d15+115 2d6+3 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13213
@@ -191,10 +191,10 @@ This is the ghost of a long dead waiter. Probably one of the many that
 Jander killed for spilling a drink or something.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 15 2 3d9+208 2d15+115 2d6+3 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13214
@@ -206,10 +206,10 @@ This is probably another of Jander's victims. Probably got caught with
 his hand in the cash or something.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 13 2 2d10+170 2d13+113 2d5+3 0
 0 0 0 3
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #13215
@@ -223,7 +223,7 @@ human~
 AG 0 750 S
 15 5 3d9+208 2d15+115 2d6+3 0
 0 0 0 3
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13216
@@ -237,7 +237,7 @@ cat~
 AG Q 0 S
 10 5 2d7+121 2d10+110 2d4+2 0
 1 1 1 3
-0 0 0 0
+0 AB 0 0
 8 8 0 10
 0 0 M 0
 #13217
@@ -249,10 +249,10 @@ a stringy rat like individual. He beams at you through his spectacles
 as if he can see the money in your pockets.
 ~
 human~
-B H 500 S
+AB H 500 S
 17 5 3d9+258 2d17+117 3d4+4 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13218
@@ -264,10 +264,10 @@ These are like the biggest and meanest men you've every seen.
 They look more like trolls or ogres than men.
 ~
 human~
-B CFH 750 S
+AB CFH 750 S
 16 5 3d9+233 2d16+116 2d6+4 0
 -1 -1 -1 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13219
@@ -278,10 +278,10 @@ Jhen the farmer is here.
 a rather tall man who works hard for his money.
 ~
 human~
-B 0 700 S
+AB 0 700 S
 23 5 5d10+450 2d23+123 3d6+6 0
 -5 -5 -5 -2
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13220
@@ -293,10 +293,10 @@ a pretty woman who works hard for her money. Travelling every year
 to the market to sell her fruits.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 24 5 5d10+500 2d24+124 2d10+6 16
 -5 -5 -5 -2
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #13221
@@ -307,10 +307,10 @@ Janni is here.
 Janni has spent his whole life making trinkets for people to enjoy.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 24 5 5d10+500 2d24+124 2d10+6 0
 -5 -5 -5 -2
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13222
@@ -321,10 +321,10 @@ Nisi is here.
 Nisi is a very interesting person. It shows in the wares she sells
 ~
 human~
-B 0 500 S
+AB 0 500 S
 24 5 5d10+500 2d24+124 2d10+6 16
 -5 -5 -5 -2
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #13223
@@ -335,10 +335,10 @@ Molin the brewer is here.
 Molin is a grey old man with hair down to his toes.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 24 15 5d10+500 2d24+124 2d10+6 0
 -5 -5 -5 -2
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13224
@@ -349,10 +349,10 @@ Rashan the farmer is here.
 Rashan is a middle aged man who grows his rutabagas by candlelight.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 21 5 4d10+360 2d21+121 4d4+5 0
 -5 -5 -5 -2
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13225
@@ -364,10 +364,10 @@ Lexie is an accomplish diver. But he seems to have problems keeping
 students.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 25 5 5d10+550 2d25+125 2d10+7 0
 -5 -5 -5 -3
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13226
@@ -379,10 +379,10 @@ Croben is a young man who learned the art of container making from his
 grandfather.
 ~
 human~
-B 0 500 S
+AB 0 500 S
 25 5 5d10+550 2d25+125 2d10+7 0
 -5 -5 -5 -3
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13227
@@ -396,10 +396,10 @@ Otik whispers, "A magical staff! I bet it was forged by demons from the
 terrible Darken Wood. There are terrible mysteries in that place, there are."
 ~
 human~
-B 0 500 S
+AB 0 500 S
 27 5 5d10+650 2d27+127 5d4+7 0
 -5 -5 -5 -3
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13228
@@ -413,10 +413,10 @@ looks older than her 19 years. Rough living has hardened her and she
 presents a tough image as protection against her sense of vulnerablility.
 ~
 human~
-B 0 750 S
+AB 0 750 S
 16 5 3d9+233 2d16+116 2d6+4 16
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 2 500
 0 0 M 0
 #13229
@@ -428,10 +428,10 @@ A thin, cloaked figure sits alone at a table near the door, an untouched
 glass of ale before him.
 ~
 human~
-BS 0 -500 S
+ABS 0 -500 S
 17 5 3d9+200 2d17+117 3d4+4 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13230
@@ -442,10 +442,10 @@ an old man is here.
 he looks like an old man....go figure..
 ~
 human~
-BR 0 750 S
+ABR 0 750 S
 13 5 2d10+170 2d13+113 2d5+3 0
 -1 -1 -1 3
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13231
@@ -460,10 +460,10 @@ ago! If only I could catch it. He who walks the paths of the white stag is
 blessed, I hear tell."
 ~
 human~
-B 0 750 S
+AB 0 750 S
 7 1 2d10+20 1d7+70 1d8+1 0
 4 4 4 8
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13232
@@ -474,10 +474,10 @@ a brat is here.
 he looks like a pain in the ass.
 ~
 human~
-B 0 -750 S
+AB 0 -750 S
 5 1 1d3+70 2d5+50 1d6+1 10
 5 5 5 9
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #13233
@@ -488,10 +488,10 @@ a mage is here.
 He is the typical adventurer. He looks as if he has travelled far.
 ~
 human~
-BR 0 750 S
+ABR 0 750 S
 14 5 2d10+190 2d14+214 1d12+3 0
 -1 -1 -1 4
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13234
@@ -502,10 +502,10 @@ a thief is here.
 He is the typical adventurer. He looks as if he has travelled far.
 ~
 human~
-BS 0 -750 S
+ABS 0 -750 S
 12 1 2d10+150 2d12+112 1d10+3 17
 0 0 0 4
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13235
@@ -516,10 +516,10 @@ a warrior is here.
 He is the typical adventurer. He looks as if he has travelled far.
 ~
 human~
-BT 0 750 S
+ABT 0 750 S
 16 1 3d9+233 2d16+116 2d6+4 0
 -1 -1 -1 2
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13236
@@ -530,10 +530,10 @@ a cleric is here.
 He is the typical adventurer. He looks as if he has travelled far.
 ~
 human~
-BQ 0 750 S
+ABQ 0 750 S
 19 5 3d9+308 2d19+219 2d7+5 0
 -4 -4 -4 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13237
@@ -544,10 +544,10 @@ a ghost of a gambler is floating here looking for something to bet on.
 Even in death this sad spirit is looking to gamble.
 ~
 undead~
-B 0 -200 S
+AB 0 -200 S
 10 1 2d7+121 2d10+110 2d4+2 0
 -1 -1 -1 -3
-0 0 0 0
+0 AB 0 0
 8 8 0 100
 0 0 M 0
 #13238
@@ -560,7 +560,7 @@ human~
 A 0 750 S
 5 2 1d5+50 2d5+50 1d6+1 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13239
@@ -573,7 +573,7 @@ cat~
 ABG Q -100 S
 5 2 2d6+10 2d5+50 1d6+1 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 10
 0 0 M 0
 #13240
@@ -583,10 +583,10 @@ there is a large bat here.
 ~
 ~
 cat~
-BF D 100 S
+ABFG D 100 S
 5 2 2d6+10 2d5+50 1d6+1 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 10
 0 0 M 0
 #13241
@@ -599,7 +599,7 @@ human~
 ACG 0 100 S
 8 2 2d6+100 2d8+80 1d7+2 16
 -3 -3 -3 -5
-0 0 0 0
+0 AB 0 0
 8 8 0 100
 0 0 M 0
 #13242
@@ -609,10 +609,10 @@ there is a tired adventurer resting here.
 ~
 ~
 human~
-B 0 100 S
+AB 0 100 S
 13 2 2d10+170 2d13+113 2d5+3 0
 -1 -1 -1 0
-0 0 0 0
+0 AB 0 0
 8 8 0 100
 0 0 M 0
 #13243
@@ -622,10 +622,10 @@ Magnus the wizard is resting here from his long journeys.
 ~
 ~
 human~
-B 0 100 S
+AB 0 100 S
 19 2 3d9+308 2d19+219 2d7+5 0
 -3 -3 -3 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13244
@@ -635,10 +635,10 @@ Lord Doom is resting here from his long journeys.
 ~
 ~
 human~
-BR D 100 S
+ABR D 100 S
 18 2 3d9+283 2d18+118 2d7+4 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13245
@@ -649,10 +649,10 @@ of the Guard.
 ~
 ~
 human~
-B 0 100 S
+AB 0 100 S
 14 2 9d2+100 2d14+114 2d6+3 0
 -1 -1 -1 3
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13246
@@ -662,10 +662,10 @@ There is a bodyguard here.
 ~
 ~
 human~
-BT 0 100 S
+ABT 0 100 S
 16 2 9d10+50 2d16+116 3d4+4 0
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #13247
@@ -678,10 +678,10 @@ The Secretary says 'Sorry, but the Captain is extremely busy today'.
 The Secretary says 'Please sit down and have a seat in the meantime'.
 ~
 human~
-BT 0 100 S
+ABT 0 100 S
 25 2 5d10+550 2d25+125 2d10+7 16
 -5 -5 -5 -2
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #13248
@@ -694,10 +694,10 @@ The Secretary says 'Sorry, but the Lieutenant is extremely busy today'.
 The Secretary says 'Please sit down and have a seat in the meantime'.
 ~
 human~
-B 0 100 S
+AB 0 100 S
 20 5 3d9+333 2d20+120 2d8+5 16
 -4 -4 -4 -1
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #13249
@@ -710,10 +710,10 @@ The Secretary says 'Sorry, but the Sergeant is extremely busy today'.
 The Secretary says 'Please sit down and have a seat in the meantime'.
 ~
 human~
-B 0 100 S
+AB 0 100 S
 15 20 3d9+208 1d15+115 2d6+3 16
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #13250
@@ -727,7 +727,7 @@ song bird~
 A 0 0 S
 12 1 2d10+150 2d12+112 2d5+3 23
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #13251
@@ -741,7 +741,7 @@ song bird~
 A 0 0 S
 15 1 3d9+208 2d15+115 2d6+3 23
 -2 -2 -2 1
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #13252
@@ -756,7 +756,7 @@ bat~
 A 0 0 S
 18 1 3d9+283 2d18+118 2d7+4 23
 -4 -4 -4 -1
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #13253
@@ -771,7 +771,7 @@ bat~
 A 0 0 S
 21 7 4d10+360 2d21+121 4d4+5 23
 -5 -5 -5 -2
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #0
@@ -1621,81 +1621,81 @@ steel~
 30 1 0 0 0
 25 4 50 P
 #13282
-travellers robe~
-travellers robe~
+travelers robe~
+travelers robe~
 A pile of cloth is on the ground here.~
 cloth~
 9 0 AK
 0 0 0 0 0
 -1 4 50 P
 #13283
-travellers dagger~
-travellers dagger~
-A small dagger is here. It looks like the kind a lot of travellers carry.~
+travelers dagger~
+travelers dagger~
+A small dagger is here. It looks like the kind a lot of travelers carry.~
 steel~
 5 0 AN
 2 0 0 11 0
 -1 3 50 P
 #13284
-travellers spellbook~
-travellers spellbook~
+travelers spellbook~
+travelers spellbook~
 A leather bound book with an arcane symbol is laying here.~
 leather~
 4 0 AO
 14 5 5 65 0
 -1 4 50 P
 #13285
-travellers holy symbol~
-travellers holy symbol~
+travelers holy symbol~
+travelers holy symbol~
 A cheap holy symbol is laying here.~
 steel~
 4 0 AO
 19 5 5 35 0
 -1 4 50 P
 #13286
-travellers vest~
-a travellers vest~
-You see a travellers vest here.~
+travelers vest~
+a travelers vest~
+You see a travelers vest here.~
 leather~
 9 0 AD
 0 0 0 0 0
 -1 3 50 P
 #13287
-travellers cloak~
-a travellers cloak~
-You see a travellers cloak here.~
+travelers cloak~
+a travelers cloak~
+You see a travelers cloak here.~
 cloth~
 9 0 AC
 0 0 0 0 0
 -1 4 5 P
 #13288
-travellers sword~
-a travellers sword~
-You see a travellers sword here.~
+travelers sword~
+a travelers sword~
+You see a travelers sword here.~
 steel~
 5 G AN
 1 0 0 3 0
 -1 5 500 P
 #13289
-travellers scalemail~
-a travellers scalemail~
-You see a travellers scalemail here.~
+travelers scalemail~
+a travelers scalemail~
+You see a travelers scalemail here.~
 steel~
 9 0 AD
 0 0 0 0 0
 -1 10 50 P
 #13290
-travellers shield~
-a travellers shield~
-You see a travellers shield here.~
+travelers shield~
+a travelers shield~
+You see a travelers shield here.~
 steel~
 9 0 AJ
 0 0 0 0 0
 -1 7 50 P
 #13291
-travellers hammer~
-a travellers hammer~
-You see a travellers hammer here.~
+travelers hammer~
+a travelers hammer~
+You see a travelers hammer here.~
 steel~
 5 0 AN
 4 0 0 7 0
@@ -2793,7 +2793,7 @@ S
 #13238
 Molin's Mulburry Extracts.~
 This is the shop of the famous mulburry extract. Known throughout the
-valley to quech the thirst of even the thirstiest traveller. What else it does
+valley to quech the thirst of even the thirstiest traveler. What else it does
 is just rumor. That person recovered in a month anyway...
 There is a small sign on the wall.
 ~
@@ -4697,105 +4697,105 @@ G 1 13279 1                  load belt pouch
 G 1 13280 1                  load cloak of storage
 G 1 13281 1                  load ring of holding
 *
-M 0 13233 5 13279       Mage traveller Common East
-E 1 13282 1 12              wear travellers robe
-E 1 13283 1 16              wield travellers dagger
-E 1 13284 1 17              hold travellers spellbook
+M 0 13233 5 13279       Mage traveler Common East
+E 1 13282 1 12              wear travelers robe
+E 1 13283 1 16              wield travelers dagger
+E 1 13284 1 17              hold travelers spellbook
 *
-M 0 13234 5 13279       Thief traveller Common East
-E 1 13283 1 16              wield travellers dagger
-E 1 13286 1 5                wear travellers vest
-E 1 13287 1 3                wear travellers cloak
+M 0 13234 5 13279       Thief traveler Common East
+E 1 13283 1 16              wield travelers dagger
+E 1 13286 1 5                wear travelers vest
+E 1 13287 1 3                wear travelers cloak
 *
-M 0 13235 5 13279       Warrior traveller Common East
-E 1 13288 1 16              wield travellers sword
-E 1 13289 1 5                wear travellers scalemail
-E 1 13290 1 11              wear travellers shield
+M 0 13235 5 13279       Warrior traveler Common East
+E 1 13288 1 16              wield travelers sword
+E 1 13289 1 5                wear travelers scalemail
+E 1 13290 1 11              wear travelers shield
 *
-M 0 13236 5 13279       Cleric traveller Common East
-E 1 13285 1 17              hold travellers holy symbol
-E 1 13291 1 16              wield travellers hammer
-E 1 13282 1 12              wear travellers robe
+M 0 13236 5 13279       Cleric traveler Common East
+E 1 13285 1 17              hold travelers holy symbol
+E 1 13291 1 16              wield travelers hammer
+E 1 13282 1 12              wear travelers robe
 *
-M 0 13233 5 13278       Mage traveller Common West
-E 1 13282 2 12              wear travellers robe
-E 1 13283 1 16              wield travellers dagger
-E 1 13284 1 17              hold travellers spellbook
+M 0 13233 5 13278       Mage traveler Common West
+E 1 13282 2 12              wear travelers robe
+E 1 13283 1 16              wield travelers dagger
+E 1 13284 1 17              hold travelers spellbook
 *
-M 0 13234 5 13278       Thief traveller Common West
-E 1 13283 2 16              wield travellers dagger
-E 1 13286 1 5                wear travellers vest
-E 1 13287 1 3                wear travellers cloak
+M 0 13234 5 13278       Thief traveler Common West
+E 1 13283 2 16              wield travelers dagger
+E 1 13286 1 5                wear travelers vest
+E 1 13287 1 3                wear travelers cloak
 *
-M 0 13235 5 13278       Warrior traveller Common West
-E 1 13288 1 16              wield travellers sword
-E 1 13289 1 5                wear travellers scalemail
-E 1 13290 1 11              wear travellers shield
+M 0 13235 5 13278       Warrior traveler Common West
+E 1 13288 1 16              wield travelers sword
+E 1 13289 1 5                wear travelers scalemail
+E 1 13290 1 11              wear travelers shield
 *
-M 0 13236 5 13278       Cleric traveller Common West
-E 1 13285 1 17              hold travellers holy symbol
-E 1 13291 1 16              wield travellers hammer
-E 1 13282 1 12              wear travellers robe
+M 0 13236 5 13278       Cleric traveler Common West
+E 1 13285 1 17              hold travelers holy symbol
+E 1 13291 1 16              wield travelers hammer
+E 1 13282 1 12              wear travelers robe
 *
-M 0 13233 5 13280       Mage traveller Bar West
-E 1 13282 1 12              wear travellers robe
-E 1 13283 1 16              wield travellers dagger
-E 1 13284 1 17              hold travellers spellbook
+M 0 13233 5 13280       Mage traveler Bar West
+E 1 13282 1 12              wear travelers robe
+E 1 13283 1 16              wield travelers dagger
+E 1 13284 1 17              hold travelers spellbook
 *
-M 0 13234 5 13280       Thief traveller Bar West
-E 1 13283 1 16              wield travellers dagger
-E 1 13286 1 5                wear travellers vest
-E 1 13287 1 3                wear travellers cloak
+M 0 13234 5 13280       Thief traveler Bar West
+E 1 13283 1 16              wield travelers dagger
+E 1 13286 1 5                wear travelers vest
+E 1 13287 1 3                wear travelers cloak
 *
-M 0 13235 5 13280       Warrior traveller Bar West
-E 1 13288 1 16              wield travellers sword
-E 1 13289 1 5                wear travellers scalemail
-E 1 13290 1 11              wear travellers shield
+M 0 13235 5 13280       Warrior traveler Bar West
+E 1 13288 1 16              wield travelers sword
+E 1 13289 1 5                wear travelers scalemail
+E 1 13290 1 11              wear travelers shield
 *
-M 0 13236 5 13280       Cleric traveller Bar West
-E 1 13285 1 17              hold travellers holy symbol
-E 1 13291 1 16              wield travellers hammer
-E 1 13282 1 12              wear travellers robe
+M 0 13236 5 13280       Cleric traveler Bar West
+E 1 13285 1 17              hold travelers holy symbol
+E 1 13291 1 16              wield travelers hammer
+E 1 13282 1 12              wear travelers robe
 *
-M 0 13233 5 13291       Mage traveller Bar North
-E 1 13282 1 12              wear travellers robe
-E 1 13283 1 16              wield travellers dagger
-E 1 13284 1 17              hold travellers spellbook
+M 0 13233 5 13291       Mage traveler Bar North
+E 1 13282 1 12              wear travelers robe
+E 1 13283 1 16              wield travelers dagger
+E 1 13284 1 17              hold travelers spellbook
 *
-M 0 13234 5 13291       Thief traveller Bar North
-E 1 13283 1 16              wield travellers dagger
-E 1 13286 1 5                wear travellers vest
-E 1 13287 1 3                wear travellers cloak
+M 0 13234 5 13291       Thief traveler Bar North
+E 1 13283 1 16              wield travelers dagger
+E 1 13286 1 5                wear travelers vest
+E 1 13287 1 3                wear travelers cloak
 *
-M 0 13235 5 13291       Warrior traveller Bar North
-E 1 13288 1 16              wield travellers sword
-E 1 13289 1 5                wear travellers scalemail
-E 1 13290 1 11              wear travellers shield
+M 0 13235 5 13291       Warrior traveler Bar North
+E 1 13288 1 16              wield travelers sword
+E 1 13289 1 5                wear travelers scalemail
+E 1 13290 1 11              wear travelers shield
 *
-M 0 13236 5 13291       Cleric traveller Bar North
-E 1 13285 1 17              hold travellers holy symbol
-E 1 13291 1 16              wield travellers hammer
-E 1 13282 1 12              wear travellers robe
+M 0 13236 5 13291       Cleric traveler Bar North
+E 1 13285 1 17              hold travelers holy symbol
+E 1 13291 1 16              wield travelers hammer
+E 1 13282 1 12              wear travelers robe
 *
-M 0 13233 5 13281       Mage traveller Bar
-E 1 13282 1 12              wear travellers robe
-E 1 13283 1 16              wield travellers dagger
-E 1 13284 1 17              hold travellers spellbook
+M 0 13233 5 13281       Mage traveler Bar
+E 1 13282 1 12              wear travelers robe
+E 1 13283 1 16              wield travelers dagger
+E 1 13284 1 17              hold travelers spellbook
 *
-M 0 13234 5 13281       Thief traveller Bar
-E 1 13283 1 16              wield travellers dagger
-E 1 13286 1 5                wear travellers vest
-E 1 13287 1 3                wear travellers cloak
+M 0 13234 5 13281       Thief traveler Bar
+E 1 13283 1 16              wield travelers dagger
+E 1 13286 1 5                wear travelers vest
+E 1 13287 1 3                wear travelers cloak
 *
-M 0 13235 5 13281       Warrior traveller Bar
-E 1 13288 1 16              wield travellers sword
-E 1 13289 1 5                wear travellers scalemail
-E 1 13290 1 11              wear travellers shield
+M 0 13235 5 13281       Warrior traveler Bar
+E 1 13288 1 16              wield travelers sword
+E 1 13289 1 5                wear travelers scalemail
+E 1 13290 1 11              wear travelers shield
 *
-M 0 13236 5 13281       Cleric traveller Bar
-E 1 13285 1 17              hold travellers holy symbol
-E 1 13291 1 16              wield travellers hammer
-E 1 13282 1 12              wear travellers robe
+M 0 13236 5 13281       Cleric traveler Bar
+E 1 13285 1 17              hold travelers holy symbol
+E 1 13291 1 16              wield travelers hammer
+E 1 13282 1 12              wear travelers robe
 *
 M 0 13243 1 13300       Magnus the wizard
 E 1 13292 1 17              hold Magnus's spellbook
@@ -5055,14 +5055,14 @@ M  13233 spec_cast_mage     Mage
 M  13243 spec_cast_mage     Magnus
 *
 M  13217 spec_thief               Town Clerk
-M  13234 spec_thief               Thief, Traveller
+M  13234 spec_thief               Thief, Traveler
 M  13229 spec_thief               Thief, Cloaked
 M  13232 spec_thief               Bratty Boy
 *
 M  13202 spec_cast_cleric      Lieutenant Commander
 M  13211 spec_cast_cleric      Marilyn
 M  13208 spec_cast_cleric      Matt
-M  13236 spec_cast_cleric      Cleric, Traveller
+M  13236 spec_cast_cleric      Cleric, Traveler
 *
 M  13212 spec_cast_undead   Ghost of Jander
 M  13213 spec_cast_undead   Ghost of waiter

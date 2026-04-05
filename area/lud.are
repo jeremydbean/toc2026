@@ -34,10 +34,10 @@ many years now in a vain attempt to please what they think are Gods that
 live in the northern part of the city.
 ~
 human~
-HSM DFHJMPTV -800 S
+AHMS DFHJMPTV -800 S
 50 20 50d38+650 25d50+300 5d8+19 13
 -20 -20 -20 -18
-CEFHJKLU R LQ P
+CEFHJKLU ABR LQ P
 8 8 1 500
 0 0 M 0
 #29503
@@ -51,10 +51,10 @@ many years now in a vain attempt to please what they think are Gods that
 live in the northern part of the city.
 ~
 human~
-GHSM DFHJMPTV -800 S
+AGHMS DFHJMPTV -800 S
 50 20 50d38+650 25d50+300 5d8+19 13
 -20 -20 -20 -18
-CEFHJKLU R LQ P
+CEFHJKLU ABR LQ P
 8 8 1 500
 0 0 M 0
 #29504
@@ -65,10 +65,10 @@ The Slow Mutant has taken shape from the gas.
 Slow, VERY Slow.
 ~
 undead~
-CFGOM IDLOZ A 0 S
+ACFGMO IDLOZ A 0 S
 51 21 200d10+5000 1d1+500 5d8+20 26
 -23 -23 -23 -15
-AJKNUZ B BP DFG R
+AJKNUZ B ABP DFG R
 8 8 1 1000
 0 0 L 0
 #29505
@@ -105,10 +105,10 @@ inside with a pendulum swinging in it.  Guess they don't call him the
 Tick-Tock man for nothing.
 ~
 giant~
-BTM HTV -1000 S
+ABMT HTV -1000 S
 57 27 200d2+9500 100d1+1000 5d10+25 8
 -35 -35 -35 -30
-ACDFJKLP B LQ P
+ACDFJKLP AB LQ P
 8 8 1 2500
 0 0 G 0
 #29507
@@ -142,10 +142,10 @@ in search of The Dark Tower located in End-World.  He has never forgotten
 the face of his father, but he thinks you have.
 ~
 human~
-BTM BCDEFGHOTVZ A 1000 S
+ABMT BCDEFGHOTVZ A 1000 S
 67 27 200d2+10000 100d1+1000 9d10+15 6
 -55 -55 -55 -40
-ACDEFHKLV BLPQ CE 0
+ACDEFHKLV ABLPQ CE 0
 8 8 1 5000
 0 0 L 0
 #29509
@@ -179,10 +179,10 @@ her world to here by Roland.  She lost her legs in an accident in her world
 and floats here ready to defend her life and honor.
 ~
 human~
-BFRM DGHOTV 1000 S
+ABFGMR DGHOTV 1000 S
 64 24 200d2+9000 100d1+1000 9d10+13 18
 -51 -51 -51 -38
-ADFHKL B CP 0
+ADFHKL AB CP 0
 8 8 2 5000
 0 0 M 0
 #29511
@@ -195,10 +195,10 @@ to here.  He is part of Roland's ka-tet which is made up of Roland, Eddie,
 Susannah, Jake, and Oy.
 ~
 human~
-BFSM DGHOQV 750 S
+ABFGMS DGHOQV 750 S
 63 23 200d2+7000 1d1+1000 9d10+13 2
 -50 -50 -50 -37
-ABDFHKL BE P 0
+ABDFHKL ABE P 0
 8 8 1 4000
 0 0 M 0
 #29512
@@ -211,10 +211,10 @@ ringed black eyes stare out at you from his matted black-and grey-striped
 fur.  He is Jake's pet and screams at you, "AKE AKE AKE!"
 ~
 human~
-BFTM DGHOTV 0 S
+ABFGMT DGHOTV 0 S
 62 28 200d2+6000 1d1+1000 9d10+12 31
 -49 -49 -49 -35
-ADFHL BE LQ 0
+ADFHL ABE LQ 0
 8 8 1 3000
 0 0 S 0
 #29513
@@ -228,10 +228,10 @@ boards fizzle and crackle with exposed wires throwing electricity through
 the air.  You can feel the room heating up with static electricity.
 ~
 undead~
-BFOM DFGHLOTVZ A 0 S
+ABFGMO DFGHLOTVZ A 0 S
 69 29 200d2+12000 100d1+1000 10d10+17 15
 -56 -56 -56 -42
-ADEHLV BILOPQ CDEFG H
+ADEHLV ABILOPQ CDEFG H
 8 8 1 10000
 0 0 H 0
 #29514
@@ -243,7 +243,7 @@ This machine has become rundown but still manages to function after going
 for over 1,000 years without maintenance.
 ~
 unique~
-BIMV DOV 1000 S
+ABIMV DOV 1000 S
 50 20 50d38+600 25d50+300 5d8+20 28
 -50 -50 -50 -50
 FKV ABCDP 0 0

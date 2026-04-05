@@ -26,10 +26,10 @@ A small rat is scurrying from room to room.
 This rat looks like ... a rat.
 ~
 cat~
-H P -250 S
+AH P -250 S
 1 2 10d1+11 1d1+2 1d1+2 32
 9 9 9 9 
-0 0 0 0
+0 AB 0 0
 8 8 2 10
 0 0 S 0
 #3802
@@ -42,10 +42,10 @@ that Snigger has no fangs, any casual observer would quickly argue that point.
 Poisonous?  Why don't you find out?
 ~
 snake~
-B HN 750 S
+AB HN 750 S
 45 20 40d40+999 2d40+40 2d40+40 8
 -13 -13 -13 -11
-0 0 0 0
+0 AB 0 0
 8 8 1 500
 0 0 M 0
 #3803
@@ -58,10 +58,10 @@ claws long enough and leap high enough to jump up and claw your eyes out!  She
 is currently purring and washing herself, oblivious to your presence.
 ~
 cat~
-B HN 750 S
+AB HN 750 S
 45 15 40d40+999 2d40+40 2d40+40 22
 -13 -13 -13 -11
-0 0 0 0
+0 AB 0 0
 8 8 2 500
 0 0 S 0
 #3804
@@ -72,10 +72,10 @@ A rat scurries around.
 This rat is about average size, with average size teeth and average size claws.
 ~
 cat~
-FGH P -250 S
+AFGH P -250 S
 2 1 2d2+20 1d2+2 1d2+2 10
 8 8 8 9
-0 0 0 0
+0 AB 0 0
 8 8 2 8
 0 0 S 0
 #3805
@@ -87,10 +87,10 @@ This rat is about the length of your arm, with sharp claws and teeth, which it
 uses now to bite at you!
 ~
 cat~
-FG 0 -400 S
+AFG 0 -400 S
 3 1 3d3+33 1d3+3 1d3+3 10
 7 7 7 9
-0 0 0 0
+0 AB 0 0
 8 8 2 8
 0 0 M 0
 #3806
@@ -103,10 +103,10 @@ both, namely standing erect, wielding a weapon, but with fur, ears, and tail
 of a rat.
 ~
 human~
-BF 0 -500 S
+ABFG 0 -500 S
 4 1 4d4+44 1d4+4 1d4+4 10
 6 6 6 8
-0 0 0 0
+0 AB 0 0
 8 8 2 8
 0 0 M 0
 #3807
@@ -119,10 +119,10 @@ both, namely standing erect, wielding a weapon, but with fur, ears, and tail
 of a rat.  He seems to be guarding something.
 ~
 human~
-BF 0 -500 S
+ABFG 0 -500 S
 5 2 15d5+55 1d5+5 1d5+5 10
 5 5 5 7
-0 0 0 0
+0 AB 0 0
 8 8 2 8
 0 0 M 0
 #3808
@@ -135,10 +135,10 @@ both, namely standing erect, wielding a weapon, but with fur, ears, and tail
 of a rat.  They don't notice you in their duscussion.
 ~
 human~
-BFH 0 -500 S
+ABFGH 0 -500 S
 4 1 4d4+44 1d4+4 1d5+1 10
 6 6 6 8
-0 0 0 0
+0 AB 0 0
 8 8 2 200
 0 0 M 0
 #3809
@@ -151,10 +151,10 @@ has red scales over it's four-legged reptilian body, with sharp claws and
 piercing tail.  It is disturbed by your intrusion.
 ~
 wyvern~
-BF 8 -740 S
+ABFG 8 -740 S
 7 3 7d7+77 1d7+7 1d7+7 29
 4 4 4 6 
-0 0 0 0
+0 AB 0 0
 8 8 1 1000
 0 0 L 0
 #3810
@@ -168,10 +168,10 @@ of a rat.  This one is different from the others, since it is better attired
 and also much bigger.
 ~
 human~
-BF 0 -740 S
+ABFG 0 -740 S
 7 1 7d7+77 1d7+7 1d7+7 10
 4 4 4 6
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 M 0
 #3811
@@ -183,10 +183,10 @@ This rat is about the length of your arm, with sharp claws and teeth, which it
 uses now to bite at you!
 ~
 cat~
-BF 0 -400 S
+ABFG 0 -400 S
 3 1 3d3+33 1d3+3 1d3+3 10
 7 7 7 9
-0 0 0 0
+0 AB 0 0
 8 8 2 10
 0 0 S 0
 #3812
@@ -200,10 +200,10 @@ of a rat.  This one looks quite big, and the barbed whip he flicks toward you
 looks quite deadly.
 ~
 human~
-F 0 -600 S
+AFG 0 -600 S
 6 1 6d6+66 1d6+6 1d6+6 10
 4 4 4 9
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #3813
@@ -216,10 +216,10 @@ slave used to be a citizen of Dresden!  She asks pitifully for you to help
 her escape.
 ~
 human~
-H 0 100 S
+AH 0 100 S
 2 1 2d2+22 1d2+2 1d2+2 16
 8 8 8 9
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #3814
@@ -232,10 +232,10 @@ slave used to be a citizen of Dresden!  He asks pitifully for you to help
 him escape.
 ~
 human~
-H 0 100 S
+AH 0 100 S
 2 1 2d2+22 1d2+2 1d2+2 16
 8 8 8 9
-0 0 0 0 
+0 AB 0 0
 8 8 2 10
 0 0 M 0
 #3815
@@ -248,10 +248,10 @@ Even in his mortal, statuesque form, Hatchet smirks a bit.  He smiles at your
 entrance, and welcomes you to join in conversation.
 ~
 human~
-B DHN 1000 S
+AB DHN 1000 S
 60 20 40d40+444 1d40+40 40d40+40 20
 -20 -20 -20 0
-CEFHINO 0 0 0
+CEFHINO AB 0 0
 8 8 1 1000
 0 0 M 0
 #3816
@@ -265,10 +265,10 @@ smiles at you, and with an accent not too different from a Southern one, says,
 'Please join us in conversation!'
 ~
 human~
-B DHN 1000 S
+AB DHN 1000 S
 60 20 40d40+444 1d40+40 40d40+40 20
 -20 -20 -20 0
-CEFHINO 0 0 0
+CEFHINO AB 0 0
 8 8 2 1000
 0 0 M 0
 #3817
@@ -279,10 +279,10 @@ Some green ooze clings onto the ceiling and the walls.
 This ooze looks like bad stuff, almost as if it's alive.
 ~
 unique~
-BF 0 0 S
+ABFG 0 0 S
 5 1 5d5+55 1d5+5 1d5+5 14
 5 5 5 7
-0 0 0 0 
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #0

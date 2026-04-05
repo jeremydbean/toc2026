@@ -13,10 +13,10 @@ a huge figure made up from mud alone, and it sure looks like it had human
 flesh for breakfast and is strongly intent on having the same for dinner.
 ~
 unique~
-GT P -250 S
+AGT P -250 S
 12 0 12d9+144 6d12+72 1d10+3 27
 0 1 0 2
-CEF 0 LR K
+CEF AB LR K
 8 8 0 100
 0 0 L 0
 #7001
@@ -29,10 +29,10 @@ though it looks rather peaceful, hanging there. The thought of arousing this
 cruel creature doesn't seem appealing.
 ~
 bat~
-FGT LR -500 S
+AFGT LR -500 S
 1 0 1d1+12 1d1+6 1d4+0 10
 9 9 9 9
-FH 0 0 S
+FH AB 0 S
 4 4 0 0
 0 0 T 0
 #7002
@@ -42,10 +42,10 @@ The huge hungry-looking sewer rat sits here.
 ~
 ~
 unique~
-BFT J -750 S
+ABFGT J -750 S
 5 0 5d4+60 3d5+30 1d6+1 10
 5 5 6 7
-EFN A 0 0
+EFN AB 0 0
 8 8 1 0
 0 0 L 0
 #7003
@@ -55,10 +55,10 @@ The small hairy spider.
 ~
 ~
 spider~
-FT P -700 S
+AFGT P -700 S
 1 0 1d1+12 1d1+6 1d4+0 10
 9 9 8 9
-EF E 0 H
+EF ABE 0 H
 8 8 1 0
 0 0 T 0
 #7004
@@ -68,10 +68,10 @@ The giant mean-looking earth beetle crawls towards you.
 ~
 ~
 unique~
-T J -300 S
+AT J -300 S
 8 0 8d6+96 4d8+48 1d7+2 15
 4 3 3 5
-EFN 0 Q I
+EFN AB Q I
 8 8 1 100
 0 0 M 0
 #7005
@@ -81,10 +81,10 @@ The giant maggot crawls toward you.
 ~
 ~
 unique~
-T J -300 S
+AT J -300 S
 3 0 3d2+36 2d3+18 1d6+0 14
 8 7 7 9
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 2
 0 0 L 0
 #7006
@@ -94,10 +94,10 @@ The snake slithers towards you.
 ~
 ~
 snake~
-FT J -500 S
+AFGT J -500 S
 4 1 4d3+48 2d4+24 1d5+1 10
 6 7 6 8
-EFN 0 L I
+EFN AB L I
 8 8 0 1
 0 0 S 0
 #7007
@@ -108,10 +108,10 @@ The evil wanderer stares at you.
 The evil wanderer is very thin.  He is dressed in a grey cloak.
 ~
 human~
-CHT J -750 S
+ACHT J -750 S
 10 0 10d8+120 5d10+60 2d4+2 17
 1 1 1 2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 300
 0 0 M 0
 #7008
@@ -124,10 +124,10 @@ greenish, reptilian skin, leathery wings, and a bat-like mouth, with
 teeth gleaming yellow.
 ~
 saurian~
-T DJ -800 S
+AT DJ -800 S
 11 0 11d8+132 6d11+66 1d10+2 17
 1 1 1 2
-EFNU 0 0 I
+EFNU AB 0 I
 8 8 0 500
 0 0 M 0
 #7010
@@ -139,10 +139,10 @@ The head and torso of a chreffn is copper-covered, with yellow,
 glowing eyes. The lower body is in an orange shading.
 ~
 unique~
-CTH DJP -850 S
+ACHT DJP -850 S
 12 1 12d9+144 6d12+72 1d10+3 15
 0 0 1 2
-EFN 0 0 0
+EFN AB 0 0
 8 8 0 1500
 0 0 M 0
 #7011
@@ -155,10 +155,10 @@ somewhere between a human and a rat. It breaths very heavily, while staring
 at you with such a glint in the eyes that reminds you of immense hunger.
 ~
 unique~
-FHT J -700 S
+AFGHT J -700 S
 10 0 10d8+12 5d10+60 2d4+2 7
 1 1 1 2
-EFN 0 0 S
+EFN AB 0 S
 8 8 0 1
 0 0 M 0
 #7013
@@ -171,10 +171,10 @@ a huge figure made up from mud alone, and it sure looks like it had human
 flesh for breakfast and is strongly intent on having the same for dinner.
 ~
 unique~
-FGT JP -250 S
+AFGT JP -250 S
 12 0 12d9+144 6d12+72 1d10+3 27
 0 1 0 2
-EFN 0 LR K
+EFN AB LR K
 8 8 0 1000
 0 0 L 0
 #7040
@@ -187,10 +187,10 @@ arrives.  It says 'Oh, human YOU woke me up ... Hsss', while
 it moves closer.  'Can one NEVER sleep in peace ... Hsss'.
 ~
 lizard~
-BFT DJ -1000 S
+ABFGT DJ -1000 S
 30 2 30d23+360 15d30+180 4d6+8 29
 -9 -9 -8 -7
-EFN 0 H I
+EFN AB H I
 8 8 0 6000
 0 0 H 0
 #7041
@@ -203,10 +203,10 @@ Big yellow eyes and sharp teeth.  Its ears are very big,
 and it has small sharp horns.  It hates beauty.
 ~
 unique~
-FT J -850 S
+AFGT J -850 S
 14 0 14d10+168 7d14+84 1d12+3 5
 0 -1 -1 1
-EFN R 0 0
+EFN ABR 0 0
 8 8 2 0
 0 0 M 0
 #7042
@@ -220,10 +220,10 @@ She notice that you look at her, and she says: 'Watch out. This way
 leads to some evil creatures'.
 ~
 snake~
-BT J 750 S
+ABT J 750 S
 12 0 12d9+144 6d12+72 1d10+3 18
 0 0 1 2
-EFN 0 0 0
+EFN AB 0 0
 8 8 2 100
 0 0 M 0
 #7043
@@ -236,10 +236,10 @@ toothy jaws. It is dull brown with yellowish underbelly. Its eyes are
 glowing pale green.
 ~
 unique~
-GFT DJ -250 S
+AFGT DJ -250 S
 13 0 13d10+156 7d13+73 2d5+3 1
 -1 -1 -1 1
-EFN 0 0 0
+EFN AB 0 0
 8 8 1 350
 0 0 L 0
 #7044
@@ -253,10 +253,10 @@ interested in you at all, but anyway it attacks. It looks like it's
 mind has been burned out.
 ~
 unique~
-FT JP -500 S
+AFGT JP -500 S
 5 0 5d4+60 3d5+30 1d6+1 27
 5 6 5 7
-EFN 0 0 I
+EFN AB 0 I
 8 8 0 0
 0 0 M 0
 #7045
@@ -269,10 +269,10 @@ closer you saw his second head. He wears an animal skin dress,
 filthy and moth eaten. Jones really stinks...
 ~
 unique~
-CFT J -500 S
+ACFGT J -500 S
 10 0 10d8+120 5d10+60 5d4+2 17
 2 1 1 3
-EFN 0 0 0
+EFN AB 0 0
 5 5 1 60
 0 0 M 0
 #7046
@@ -285,10 +285,10 @@ and the one of his heads hangs down. At the rope around his stomach
 hangs dead mouses and rats. He does not smell good.
 ~
 unique~
-CT J 200 S
+ACT J 200 S
 6 0 6d4+72 3d6+36 1d7+1 17
 4 4 4 6
-EFN 0 0 0
+EFN AB 0 0
 5 5 1 40
 0 0 M 0
 #7200
@@ -301,10 +301,10 @@ black and purple rod above its head as if it was going to attack you any
 moment now. In the middle of its head are four tentacles with sharp points.
 ~
 human~
-CFT DJ -750 S
+ACFGT DJ -750 S
 14 1 14d10+168 7d14+84 1d12+3 4
 0 -1 -1 1
-EFN 0 0 0
+EFN AB 0 0
 8 8 0 1000
 0 0 L 0
 #7201
@@ -317,10 +317,10 @@ and carrying a large mace in its hand. In the center of its head are four large
 tentacles with very sharp points.
 ~
 human~
-CFT DJ -750 S
+ACFGT DJ -750 S
 8 0 8d6+96 4d8+48 1d7+2 4
 3 3 4 5
-EFN 0 0 0
+EFN AB 0 0
 8 8 0 400
 0 0 M 0
 #7202
@@ -333,10 +333,10 @@ dressed in purple and black cloth. It has four small tentacles in the
 center of its head.
 ~
 human~
-CFT DJ -650 S
+ACFGT DJ -650 S
 6 0 6d4+72 3d6+36 1d7+1 4
 6 6 6 8
-EFN 0 0 0
+EFN AB 0 0
 8 8 0 200
 0 0 M 0
 #7203
@@ -348,10 +348,10 @@ The wererat is about four foot tall. It looks very much like rat, except
 that it is standing.
 ~
 unique~
-CFGT J -700 S
+ACFGT J -700 S
 6 0 6d4+72 3d6+36 1d7+1 100
 7 6 6 8
-EFN 0 0 S
+EFN AB 0 S
 8 8 0 5
 0 0 M 0
 #7204
@@ -363,10 +363,10 @@ The gigantic rat is about ten foot long from head to tail and has claws
 the size of your head looking very nasty.
 ~
 unique~
-GFT J -750 S
+AFGT J -750 S
 12 0 12d9+144 6d12+72 1d10+3 5
 1 0 0 2
-EFN 0 0 S
+EFN AB 0 S
 4 8 1 2513
 0 0 H 0
 #0

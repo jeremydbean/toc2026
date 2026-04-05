@@ -11,10 +11,10 @@ A shadow guardian screams a challenge and attacks.
 It seems to be made of nothing more than darkness ...
 ~
 unique~
-CFG BDJP -350 S
+ACFG BDJP -350 S
 9 0 9d8+108 5d8+54 1d8+2 18
 4 3 4 0
-EFNU H 0 0
+EFNU ABH 0 0
 8 8 0 100
 0 0 M 0
 #1301
@@ -25,10 +25,10 @@ An emaciated adventurer is here looking lost and hopeless.
 He looks haggard and sickly; no doubt he's been lost here for quite some time.
 ~
 human~
-BCHT DJ 400 S
+ABCHT DJ 400 S
 8 0 8d6+96 4d8+48 1d6+2 17
 3 4 3 0
-EFNU 0 0 G
+EFNU AB 0 G
 6 6 1  286
 0 0 M 0
 #1302
@@ -42,10 +42,10 @@ You see before you, one of Midgaard's finest fighting elite, the mighty
 bunny slayer himself, Edgar the Horrible!
 ~
 human~
-CHT J 750 S
+ACHT J 750 S
 1 0 1d1+12 1d1+6 1d4+0 17
 1 1 1 0
-EFNU Q 0 R 
+EFNU ABQ 0 R
 8 8 1 23
 0 0 M 0
 #1303
@@ -56,10 +56,10 @@ A huge diamond golem is standing guard here.
 It looks quite strong.
 ~
 unique~
-BGT D 500 S
+ABGT D 500 S
 23 2 23d17+276 12d23+138 3d6+6 8
 -6 -6 -5 -1
-EFNU H J K
+EFNU ABH J K
 8 8 0 985
 0 0 H 0
 #1304
@@ -71,10 +71,10 @@ He seems to be contemplating life, love and the mysteries of the universe.
 Then again, he may just have a headache.
 ~
 human~
-GHT D 450 S
+AGHT D 450 S
 10 0 10d8+120 5d10+60 2d4+2 7
 1 1 -1 0
-EFNU 0 E R
+EFNU AB E R
 8 8 1 436
 0 0 M 0
 #1305
@@ -85,10 +85,10 @@ Strick is here levitating drinks to his customers.
 He looks rather harmless, but then again so does a sleeping dragon.
 ~
 human~               
-BGT D 750 S
+ABGT D 750 S
 25 3 25d19+300 13d23+138 3d6+6 8
 -6 -7 -7 -2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 2000
 0 0 M 0
 #1306
@@ -99,10 +99,10 @@ Tatorious the wizard is here counting his earnings.
 Tatorious winks at you mischievously.
 ~
 human~
-BGT D 750 S
+ABGT D 750 S
 25 3 25d19+300 13d23+150 2d10+7 19
 -6 -7 -7 -2
-EFNU 0 F G
+EFNU AB F G
 8 8 1 3000
 0 0 M 0
 #1307
@@ -112,10 +112,10 @@ Ezmerelda the cook is here stirring a large pot of something.
 ~
 ~
 human~
-BGT D -500 S
+ABGT D -500 S
 20 2 20d15+150 10d20+120 2d8+5 13
 -4 -4 -4 -1
-EFNU 0 K L
+EFNU AB K L
 8 8 2 1092
 0 0 M 0
 #1308
@@ -125,10 +125,10 @@ The cook's assistant is here assisting the cook.
 ~
 ~
 human~
-BGHT D -200 S
+ABGHT D -200 S
 11 0 11d8+8 6d11+66 1d10+2 17
 1 1 0 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 116
 0 0 M 0
 #1309
@@ -144,10 +144,10 @@ casting, you can not tell.
 He looks quite mad, no doubt he's been mistreated horribly.
 ~
 human~
-BCFGHT J 100 S
+ABCFGHT J 100 S
 16 1 16d12+192 8d16+96 2d6+4 7
 -2 -2 -1 0
-EFNU 0 0 L
+EFNU AB 0 L
 8 8 1 0
 0 0 M 0
 #1310
@@ -158,10 +158,10 @@ The Jailor is here enjoying a comfortable nap.
 He looks rather dirty.
 ~
 human~
-BGT D 100 S
+ABGT D 100 S
 17 1 16d12+192 8d16+96 2d6+4 7
 -1 -2 -2 0
-EFNU 0 0 0
+EFNU AB 0 0
 4 4 1 1326
 0 0 M 0
 #1311
@@ -172,10 +172,10 @@ A straw broom is here leaning against the wall.
 The broom screams 'Take that you lout!'
 ~
 unique~
-BCFGT DJ 50 S
+ABCFGT DJ 50 S
 7 0 7d5+84 4d7+42 1d8+1 27
 3 3 4 1
-EFNU 0 0 H
+EFNU AB 0 H
 8 8 0 0
 0 0 M 0
 #1312
@@ -186,10 +186,10 @@ A pair of disembodied hands floats in the air here.
 The hands twitch with anticipation of strangling someone.
 ~
 unique~
-FGT 0 -400 S
+AFGT 0 -400 S
 9 0 9d8+108 5d8+54 1d8+2 5
 2 2 2 0
-EFNU 0 0 I
+EFNU AB 0 I
 8 8 0 0
 0 0 S 0
 #1313
@@ -200,10 +200,10 @@ A pair of disembodied eyes floats here glaring at you.
 The eyes smolder with hatred.
 ~
 unique~
-FGT D -600 S
+AFGT D -600 S
 15 1 15d11+180 8d15+90 2d6+3 18
 -2 -2 -2 0
-EFNU L I K
+EFNU ABL I K
 8 8 0 0
 0 0 T 0
 #1314
@@ -214,10 +214,10 @@ A visiting mage is here snoring away in peaceful slumber.
 He looks quite sleepy.
 ~
 human~
-BCGHR D 250 S
+ABCGHR D 250 S
 12 1 12d9+144 6d12+72 1d10+3 7
 0 -1 -1 0
-EFNU 0 0 0
+EFNU AB 0 0
 4 4 1 726
 0 0 M 0
 #1315
@@ -228,10 +228,10 @@ A young apprentice magic user is here doing magical studies.
 She looks quite intent on her studies.
 ~
 human~
-BGHT 0 400 S
+ABGHT 0 400 S
 7 0 7d5+84 4d7+42 1d8+1 17
 3 3 4 0
-EFNU 0 0 0
+EFNU AB 0 0
 6 6 2 369
 0 0 M 0
 #1316
@@ -242,10 +242,10 @@ A young apprentice is here mumbling words of magic to himself.
 He looks to be oblivious to all but the spell he is memorizing.
 ~
 human~
-BGHT 0 380 S
+ABGHT 0 380 S
 7 0 7d5+84 4d7+42 1d8+1 17
 3 3 4 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 487
 0 0 M 0
 #1317
@@ -256,10 +256,10 @@ A young apprentice is sleeping here.
 He seems to be dreaming.
 ~
 human~
-BGHT 0 350 S
+ABGHT 0 350 S
 7 0 7d5+84 4d7+42 1d8+1 17
 3 3 4 0
-EFNU 0 0 0
+EFNU AB 0 0
 4 4 1 211
 0 0 M 0
 #1318
@@ -270,10 +270,10 @@ A young apprentice is here teasing a cornered kitten.
 He looks like a mischievous youth.
 ~
 human~
-BGHT 0 -200 S
+ABGHT 0 -200 S
 7 1 7d5+84 4d7+42 1d8+1 17
 2 3 3 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 382
 0 0 M 0
 #1319
@@ -285,10 +285,10 @@ The little ball of fur looks very unhappy.  Singed fur and a few minor burns
 mark its mottled coat.
 ~
 cat~
-BGHT D 500 S
+ABGHT D 500 S
 1 0 1d1+12 1d1+6 1d4+0 22
 9 9 8 2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 2 0
 0 0 S 0
 #1320
@@ -299,10 +299,10 @@ A student of spells is here looking quite bored
 The student yawns.
 ~
 human~
-BGHT 0 350 S
+ABGHT 0 350 S
 8 0 8d6+96 4d8+48 1d7+2 17
 3 2 2 0
-EFNU 0 0 R          
+EFNU AB 0 R
 6 6 1 263
 0 0 M 0
 #1321
@@ -313,10 +313,10 @@ The instructor screams at your interruption and attacks you.
 He looks quite angry at your interruption.
 ~
 human~
-BFGT D 300 S
+ABFGT D 300 S
 14 1 14d10+163 7d14+84 1d12+3 17
 -1 -0 -1 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 880
 0 0 M 0
 #1322
@@ -327,10 +327,10 @@ A student of spells is here trying to master invisibility.
 He blinks in and out of existence, trying to master the spell.
 ~
 human~
-BGHT D 400 S
+ABGHT D 400 S
 8 0 8d6+98 4d8+48 2d7+6 17
 2 3 3 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 198
 0 0 M 0
 #1323
@@ -340,10 +340,10 @@ A spell teacher screams at your interruption and attacks.
 ~
 ~
 human~
-BFGT BD 300 S
+ABFGT BD 300 S
 15 1 15d11+180 8d15+90 2d6+3 17
 -2 -2 -2 0
-EFNU 0 0 J
+EFNU AB 0 J
 8 8 1 1256
 0 0 M 0
 #1324
@@ -354,10 +354,10 @@ A student of spells has fallen asleep at her desk here.
 She looks to have collapsed from sheer boredom.
 ~
 human~
-BGHT D 400 S
+ABGHT D 400 S
 9 0 9d8+108 5d8+54 1d8+2 17
 2 1 1 0
-EFNU 0 H R
+EFNU AB H R
 4 4 2 567
 0 0 M 0
 #1325
@@ -367,10 +367,10 @@ An old wizard is here making a speech
 ~
 ~
 human~
-BGHT D 400 S
+ABGHT D 400 S
 18 1 18d13+216 9d18+108 2d7+4 17
 -3 -3 -2 0
-EFNU J 0 0
+EFNU ABJ 0 0
 8 8 1 2468
 0 0 M 0
 #1326
@@ -380,10 +380,10 @@ A young mage is here learning hand to hand combat.
 ~
 ~
 human~
-BGHT D 300 S
+ABGHT D 300 S
 9 0 9d8+10 5d8+54 1d8+2 17
 1 2 2 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 695
 0 0 M 0
 #1327
@@ -395,10 +395,10 @@ She looks quite rugged. In fact, she more resembles a warrior than a magic
 user.
 ~
 human~
-BFGT D 200 S
+ABFGT D 200 S
 17 1 17d13+204 9d17+102 3d4+4 17
 -3 -2 -2 -1
-EFNU 0 0 R
+EFNU AB 0 R
 8 8 2 3211
 0 0 M 0
 #1328
@@ -408,10 +408,10 @@ A spell teacher is here relaxing.
 ~
 ~
 human~
-BGHT D 200 S
+ABGHT D 200 S
 15 1 15d11+180 8d15+90 2d6+3 17
 -2 -2 -2 0
-EFNU 0 E 0
+EFNU AB E 0
 5 5 1 1002
 0 0 M 0
 #1329
@@ -421,10 +421,10 @@ An aged wizard is sleeping here.
 ~
 ~
 human~
-BGHT D 350 S
+ABGHT D 350 S
 20 1 20d15+240 10d20+120 2d8+5 17
 -4 -4 -3 -1
-EFNU 0 0 0
+EFNU AB 0 0
 4 4 1 1567
 0 0 M 0
 #1330
@@ -434,10 +434,10 @@ A scribe is here working on some manuscripts.
 ~
 ~
 human~
-BCGHT D 400 S
+ABCGHT D 400 S
 14 1 14d10+168 7d14+84 1d12+3 17
 -1 -1 -1 -1
-EFNU 0 I 0
+EFNU AB I 0
 8 8 1 312
 0 0 M 0
 #1331
@@ -449,10 +449,10 @@ She's quite cute.  Too bad her only interest seems to be the words of
 lore she is translating.
 ~
 human~
-BGHT D 500 S
+ABGHT D 500 S
 15 1 15d11+180 8d15+90 2d6+3 17
 -2 -2 -1 0
-EFNU 0 Q 0
+EFNU AB Q 0
 8 8 2 684
 0 0 M 0
 #1332
@@ -464,10 +464,10 @@ He seems to be so old, his skin has become nothing but a giant wrinkle.
 The master scribe screams 'How dare you interrupt my important work???'
 ~
 human~
-BFGHT D 100 S
+ABFGHT D 100 S
 22 2 22d17+264 11d22+132 4d4+6 17
 -5 -4 -5 -2
-EFNU 0 0 J
+EFNU AB 0 J
 8 8 1 1634
 0 0 M 0
 #1333
@@ -477,10 +477,10 @@ The scribe's assistant is here folding parchments.
 ~
 ~
 human~
-BFGHT D 100 S
+ABFGHT D 100 S
 16 1 16d12+192 8d16+96 2d6+4 17
 -2 -2 -1 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 1050
 0 0 M 0
 #1334
@@ -490,10 +490,10 @@ The Enchanter is here placing a dweomer upon well made sword.
 ~
 ~
 human~
-BFGT D -200 S
+ABFGT D -200 S
 23 2 23d17+276 12d23+138 3d6+6 17
 -5 -6 -5 -2
-EFNU A 0 K
+EFNU AB 0 K
 8 8 1 1812
 0 0 M 0
 #1335
@@ -504,10 +504,10 @@ A well crafted sword lies on the work table here.
 It looks quite sharp.
 ~
 unique~
-BFGT 0 -500 S
+ABFGT 0 -500 S
 10 0 10d8+120 5d10+60 2d4+2 3
 1 1 1 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #1336
@@ -521,10 +521,10 @@ wildly, and he starts to drool.
 The Mad Alchemist throws back his head and cackles with insane glee!
 ~
 human~
-BCFGHT D 150 S
+ABCFGHT D 150 S
 24 3 24d18+288 12d23+144 2d10+6 19
 -5 -5 -6 -2
-EFNU H 0 0
+EFNU ABH 0 0
 8 8 1 2346
 0 0 M 0
 #1337
@@ -534,10 +534,10 @@ The master summoner is here holding gateways open to other planes.
 ~
 ~
 human~
-BFGHT D -200 S
+ABFGHT D -200 S
 22 2 22d17+264 11d22+132 4d4+6 17
 -5 -5 -5 -1
-EFNU 0 L 0
+EFNU AB L 0
 8 8 1 1019
 0 0 M 0
 #1338
@@ -548,10 +548,10 @@ The master charmer utters the words, 'uuuzzldctz'.
 The master charmer sizes you up, always looking for a new pet.
 ~
 human~
-BFT D -400 S
+ABFGT D -400 S
 23 2 23d17+276 12d23+138 3d6+6 6
 -6 -6 -4 -1
-EFNU B 0 0
+EFNU AB 0 0
 8 8 1 1672
 0 0 M 0
 #1339
@@ -562,10 +562,10 @@ A wooden golem stands a silent vigil here, guarding the stairs.
 He looks flammable.
 ~
 unique~
-BFGT D 100 S
+ABFGT D 100 S
 16 1 16d12+192 8d16+96 2d6+4 7
 -2 -2 -2 0
-EFNU 0 0 H
+EFNU AB 0 H
 8 8 0 1000
 0 0 H 0
 #1340
@@ -576,10 +576,10 @@ The master spell binder is here re-charging a blackened wand.
 The master spell binder snarls at you and attacks.
 ~
 human~
-BCFGT D -500 S
+ABCFGT D -500 S
 23 3 23d17+276 12d23+138 3d6+6 19
 -5 -6 -6 -2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 1315
 0 0 M 0
 #1341
@@ -589,10 +589,10 @@ The golem maker is here chiseling some stone.
 ~
 ~
 human~
-BFGT D 300 S
+ABFGT D 300 S
 21 2 21d16+252 11d21+136 4d4+5 7
 -5 -5 -4 -1
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 2678
 0 0 M 0
 #1342
@@ -603,10 +603,10 @@ A granite golem stands here waiting to do its master's bidding.
 It looks like a statue, until you see it shamble towards you.
 ~
 unique~
-BFGT 0 300 S
+ABFGT 0 300 S
 20 2 20d15+240 10d20+120 2d8+5 8
 -4 -4 -4 0
-EFNU 0 0 K
+EFNU AB 0 K
 8 8 0 0
 0 0 H 0
 #1343
@@ -617,10 +617,10 @@ A bronze golem stands here shining in the light.
 He looks rather dim witted.
 ~
 unique~
-BFGT 0 350 S
+ABFGT 0 350 S
 18 1 18d13+216 9d18+108 2d7+4 8
 -3 -2 -2 0
-EFNU 0 0 K
+EFNU AB 0 K
 8 8 0 0
 0 0 H 0
 #1344
@@ -632,10 +632,10 @@ It looks to be made of a potpourri of different body parts; some don't even
 resemble anything human.
 ~
 unique~
-BFGT 0 200 S
+ABFGT 0 200 S
 12 0 12d9+144 6d12+62 1d10+3 8
 0 0 -1 1
-EFNU 0 C D
+EFNU AB C D
 8 8 0 477
 0 0 H 0
 #1345
@@ -646,10 +646,10 @@ A cloth golem wanders around here.
 It looks like a bunch of old rags, quite surprising it can actually walk.
 ~
 unique~
-BCGT 0 350 S
+ABCGT 0 350 S
 8 0 8d6+96 4d8+48 1d7+2 13
 3 3 2 0
-EFNU 0 0 H
+EFNU AB 0 H
 8 8 0 0
 0 0 H 0
 #1346
@@ -661,10 +661,10 @@ It seems to be forged of dark metal.  It looks strong and durable,
 but somewhat un-intelligent.
 ~
 unique~
-BCGT 0 350 S
+ABCGT 0 350 S
 25 3 25d19+300 13d23+150 2d10+10 8
 -7 -7 -6 -2
-EFNU 0 D C
+EFNU AB D C
 8 8 0 1000
 0 0 H 0
 #1347
@@ -674,10 +674,10 @@ A clay golem stands guard here.
 ~
 ~
 unique~
-BCFGT D 200 S
+ABCFGT D 200 S
 15 1 15d11+180 8d15+90 2d6+3 8
 -2 -2 -2 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 235
 0 0 H 0
 #1348
@@ -689,10 +689,10 @@ The image of an ugly dragon flickers slightly, and where the dragon was
 now stands a small harmless looking old man.
 ~
 unique~
-BCGHT D 150 S
+ABCGHT D 150 S
 21 2 21d16+252 11d21+126 4d4+5 20
 -4 -5 -5 -1
-EFNU 0 0 R
+EFNU AB 0 R
 8 8 1 2345
 0 0 M 0
 #1349
@@ -706,10 +706,10 @@ embers which serve as eyes can be seen through the shadow.
 The Necromancer shrieks some obscenities and orders his minions to attack.
 ~
 unique~
-BCFGHT DJ -750 S
+ABCFGHT DJ -750 S
 25 3 25d19+300 13d23+150 2d10+7 18
 -7 -7 -7 -3
-EFNU 0 0 P
+EFNU AB 0 P
 8 8 1 1116
 0 0 M 0
 #1350
@@ -720,10 +720,10 @@ An animated skeleton screams silently and attacks.
 It feels no pain, and hacks at you ruthlessly.
 ~
 undead~
-BFGT DJ -500 S
+ABFGT DJ -500 S
 15 1 15d11+180 8d15+90 2d6+3 27
 -2 -2 -1 0
-EFNU 0 D C
+EFNU AB D C
 8 8 0 0
 0 0 M 0
 #1351
@@ -733,10 +733,10 @@ An undead giant lumbers towards you.
 ~
 ~
 undead~
-BCFGT DJ -500 S
+ABCFGT DJ -500 S
 18 1 18d13+216 9d18+108 2d7+4 8
 -3 -2 -3 0
-EFNU 0 D C
+EFNU AB D C
 8 8 0 0
 0 0 G 0
 #1352
@@ -749,10 +749,10 @@ her mouth should be, comes a disgusting giggling sound that makes your skin
 crawl with revulsion.
 ~
 undead~
-BCFGT DJ -450 S
+ABCFGT DJ -450 S
 20 2 20d15+240 10d20+120 2d8+5 19
 -4 -4 -4 -1
-EFNU 0 0 0 
+EFNU AB 0 0
 8 8 2 2150
 0 0 M 0
 #1353
@@ -763,10 +763,10 @@ The Librarian has fallen asleep at his desk here.
 He looks like a rather peaceful old man.
 ~
 human~
-BFGT D 450 S
+ABFGT D 450 S
 23 3 23d17+276 12d23+138 3d6+6 7
 -5 -6 -6 -2
-EFNU 0 C D
+EFNU AB C D
 4 4 1 1287
 0 0 M 0
 #1354
@@ -780,10 +780,10 @@ great master in hopes of gleaning secrets one could never hope to uncover
 alone.
 ~
 human~
-BCFGT D 0 S
+ABCFGT D 0 S
 24 3 24d18+288 12d23+144 2d10+6 17
 -6 -6 -5 -1
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 1742
 0 0 M 0
 #1355
@@ -795,10 +795,10 @@ The grey cat cocks an ear towards you, sensing your scrutiny, then purrs
 contentedly.  It looks rather harmless, until you notice its very large claws.
 ~
 cat~
-BGT BP 0 S
+ABGT BP 0 S
 15 1 15d11+180 8d15+90 2d6+6 22
 -2 -2 -2 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 2 0
 0 0 S 0
 #1356
@@ -809,10 +809,10 @@ The master of Neutrality stands here contemplating the balance of the universe.
 He looks quite peaceful.
 ~
 human~
-BGT DH 0 S
+ABGT DH 0 S
 30 3 30d23+360 15d30+180 4d6+8 6
 -9 -9 -8 -2
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 1634
 0 0 M 0
 #1357
@@ -825,10 +825,10 @@ must have been beautiful, now the scar combined with what seems to be a
 permanent scowl make her looks quite fearsome.
 ~
 human~
-BCFGT DJP -750 S
+ABCFGT DJP -750 S
 20 4 20d15+240 10d20+120 2d8+5 17
 -4 -4 -3 -1
-EFNU 0 0 R
+EFNU AB 0 R
 8 8 2 1896
 0 0 M 0
 #1358
@@ -840,10 +840,10 @@ It looks both mean and dangerous.  Petting seems to be completely out of
 the question.
 ~
 cat~
-BGT DJP -750 S
+ABGT DJP -750 S
 16 1 16d12+192 8d16+96 2d6+4 22
 -2 -2 -2 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 0
 0 0 S 0
 #1359
@@ -854,10 +854,10 @@ The master of the black robes is here plotting vile deeds.
 The master glares at you.
 ~
 human~
-BCGT DHJ -7500 S
+ABCGT DHJ -7500 S
 30 5 30d23+360 15d30+180 4d6+8 6
 -8 -9 -9 -3
-EFNU 0 0 L
+EFNU AB 0 L
 8 8 1 1847
 0 0 M 0
 #1360
@@ -869,10 +869,10 @@ He looks like a fanatic.
 The apprentice screams 'Thou art unworthy of this honor!'
 ~
 human~
-BFGT D 750 S
+ABFGT D 750 S
 20 2 20d15+240 10d20+120 2d8+5 17
 -4 -4 -4 -1
-EFNU 0 Q 0
+EFNU AB Q 0
 8 8 1 3400
 0 0 M 0
 #1361
@@ -883,10 +883,10 @@ A white cat is here preening its fur.
 It seems to be nothing more than a large ball of fluff with claws.
 ~
 cat~
-BGT DP 750 S
+ABGT DP 750 S
 15 1 15d11+180 8d15+90 2d6+3 22
 -1 -2 -1 0
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 0 0
 0 0 S 0
 #1362
@@ -897,10 +897,10 @@ The master of goodness is here frowning at your intrusion.
 He looks like a self-righteous bastard.
 ~
 human~
-BGT DH 1000 S
+ABGT DH 1000 S
 30 5 30d23+360 15d30+180 4d6+8 6
 -8 -9 -9 -3
-EFNU 0 0 R
+EFNU AB 0 R
 8 8 1 1801
 0 0 M 0
 #1363
@@ -912,10 +912,10 @@ It looks incredibly large for a cat, no doubt a giant of its species.
 A beautiful jewel encrusted collar about its neck is its only adornment.
 ~
 cat~
-BGT DP 800 S
+ABGT DP 800 S
 25 6 25d19+300 13d25+150 2d10+6 5
 -7 -7 -7 -4
-EFNU A 0 0
+EFNU AB 0 0
 8 8 0 0
 0 0 S 0
 #1364
@@ -929,10 +929,10 @@ youthful appearance through the use of strong magics.
 The Grand Mistress pets her familiar and smiles at you in confidence.
 ~
 human~
-BGT DH 0 S
+ABGT DH 0 S
 50 12 50d38+600 25d50+300 5d8+19 20
 -20 -20 -20 -7
-EFNU B 0 0
+EFNU AB 0 0
 8 8 2 3493
 0 0 M 0
 #1365
@@ -942,10 +942,10 @@ A wandering wizard is here mumbling to himself.
 ~
 ~
 human~
-BGT D 350 S
+ABGT D 350 S
 17 1 17d13+204 9d17+102 3d4+4 17
 -3 -2 -3 -1
-EFNU 0 0 0
+EFNU AB 0 0
 8 8 1 1210
 0 0 M 0
 #0

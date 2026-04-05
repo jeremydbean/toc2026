@@ -11,10 +11,10 @@ the sea.  It is trying desperatly to pull the ship and its passengers down
 into the oceanic abyss.
 ~
 undead~
-GM A -200 S
+AGM A -200 S
 12 1 12d9+144 6d12+72 1d10+3 12
 1 1 1 2
-N AR 0 0
+N ABR 0 0
 8 8 1 0
 0 0 M 0
 #29351
@@ -25,10 +25,10 @@ The sea beast is searching for a sailor to chew on.
 The sea beast has come from the depths of the sea to feed on the ship.
 ~
 undead~
-G M -200 S
+AG M -200 S
 20 2 20d15+240 10d20+120 2d8+5 13
 -4 -4 -4 -2
-EFLU AR 0 H
+EFLU ABR 0 H
 8 8 1 0
 0 0 G 0
 #29352
@@ -40,7 +40,7 @@ The mutated barnacle has grown tired of feeding on the ships hull.  Now
 it wants to feed on you with its newly grown teeth!
 ~
 undead~
-GM D -300 S
+AGM D -300 S
 25 2 25d18+300 12d25+150 2d10+7 10
 -7 -7 -7 -4
 FIL ABR 0 H
@@ -55,7 +55,7 @@ The passenger just wished to purchase passage so he could explore the Old
 World and help the soldiers find Tandelador.
 ~
 human~
-GM Q 0 S
+AGM Q 0 S
 18 1 18d13+215 9d18+100 2d7+4 17
 -3 -3 -3 -1
 DF AB 0 0
@@ -71,7 +71,7 @@ sending across the Dragon Sea.  They plan to search the Old World to find
 Tandelador.
 ~
 dwarf~
-G N 0 S
+AG N 0 S
 27 2 27d20+324 12d27+162 5d4+7 17
 -7 -7 -7 -5
 DEKLS AB 0 R
@@ -87,7 +87,7 @@ a piece of the sail around him and is dancing on the deck screaming,
 "BAWK BAWK BAWGAWWWWWWWKKKK!"
 ~
 human~
-GH 0 0 S
+AGH 0 0 S
 15 1 15d11+180 7d15+90 2d6+3 16
 -2 -2 -2 0
 F AB 0 0
@@ -103,7 +103,7 @@ This one is Quest Boss Alpha, he has spec_mage.
 He has the word "alpha" in his name for easier editing.
 ~
 dwarf~
-BMRUV DFHOTUVZ F 0 S
+ABMRUV DFHOTUVZ F 0 S
 60 30 60d45+1000 30d60+360 8d6+30 18
 -30 -30 -30 -40
 ABCDEFHIJKLMNOVR AB NP 0
@@ -119,7 +119,7 @@ This one is Quest Boss Bravo, he has spec_cleric.
 He has the word "bravo" in his name for easier editing.
 ~
 dwarf~
-BMQUV DFHOTUVZ F 0 S
+ABMQUV DFHOTUVZ F 0 S
 60 30 60d45+1000 30d60+360 8d6+30 18
 -30 -30 -30 -40
 ABCDEFHIJKLMNOVR AB NP 0
@@ -135,7 +135,7 @@ This one is Quest Boss Charlie, he has spec_undead.
 He has the word "charlie" in his name for easier editing.
 ~
 dwarf~
-BMOUV DFHOTUVZ F 0 S
+ABMOUV DFHOTUVZ F 0 S
 60 30 60d45+1000 30d60+360 8d6+30 18
 -30 -30 -30 -40
 ABCDEFHIJKLMNOVR AB NP 0
@@ -151,7 +151,7 @@ This one is Quest Boss Delta, he has spec_psionic.
 He has the word "delta" in his name for easier editing.
 ~
 dwarf~
-BMTUV DFHOTUVZ F 0 S
+ABMTUV DFHOTUVZ F 0 S
 60 30 60d45+1000 30d60+360 8d6+30 18
 -30 -30 -30 -40
 ABCDEFHIJKLMNOVR AB NP 0
@@ -167,7 +167,7 @@ This minion is level 50.
 This mob has the word "fifty" in his name for easier editing.
 ~
 dwarf~
-BMTUV DFHOTUV 0 S
+ABMTUV DFHOTUV 0 S
 50 20 50d38+650 25d50+300 5d8+19 17
 -20 -20 -20 -30
 ABCDEFHIJKLMNR AB NP 0
@@ -183,7 +183,7 @@ This minion is level 40.
 This mob has the word "forty" in his name for easier editing.
 ~
 dwarf~
-BMUV DFHOTUV 0 S
+ABMUV DFHOTUV 0 S
 40 15 40d30+500 20d40+250 4d8+13 17
 -13 -13 -13 -15
 BCDEFHIJKLNR AB 0 0
@@ -199,7 +199,7 @@ This minion is level 30.
 This mob has the word "thirty" in his name for easier editing.
 ~
 dwarf~
-BMUV DFOT 0 S
+ABMUV DFOT 0 S
 30 10 30d23+400 15d30+180 4d6+8 17
 -9 -9 -9 -10
 BCDEFIJKLR AB 0 0
@@ -215,7 +215,7 @@ This minion is level 20.
 This mob has the word "twenty" in his name for easier editing.
 ~
 dwarf~
-BMUV DFOT 0 S
+ABMUV DFOT 0 S
 20 5 20d15+250 10d20+120 2d8+5 17
 -4 -4 -4 -5
 BCDEFJLR AB 0 0

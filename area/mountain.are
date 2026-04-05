@@ -41,7 +41,7 @@ been restless, as you can see by the ruins of deepingdell below. Foolhardy
 are the people that attack this great wyrm.
 ~
 dragon~
-CGMRT EFGHJTV -1000 S
+ACGMRT EFGHJTV -1000 S
 63 100 200d2+13500 100d1+560 10d10+15 18
 -25 -25 -25 -25
 ACFHMOXZ A ABHM JKPQ IN
@@ -57,7 +57,7 @@ Muscles bulge from beneath a fine Mithril tunic, and the flash of the
 sword Orcrist strikes fear in the most stalwart of opponents.
 ~
 dwarf~
-BGMT CGHJV 1000 S
+ABGMT CGHJV 1000 S
 57 53 200d2+5630 100d1+150 10d7+15 8
 -20 -20 -20 -20
 CDEFHN ABN C M
@@ -74,7 +74,7 @@ is mirrored in his eyes, that this once place of splendor has gone to
 evil.
 ~
 dwarf~
-BGMT CDFGHJV 1000 S
+ABGMT CDFGHJV 1000 S
 55 50 200d2+3500 100d1+150 10d6+10 8
 -18 -18 -18 -18
 CDEFHIN ABN CQ M
@@ -92,7 +92,7 @@ pick him for the next meal, he attacks out of fear and un-successfully
 concealed hate.
 ~
 human~
-CFGMT BDFGJPT -750 S
+ACFGMT BDFGJPT -750 S
 56 25 200d2+3000 100d1+150 5d8+15 17
 -14 -14 -10 -9
 BCGHNUZ A ABIM P Q
@@ -109,7 +109,7 @@ hold it. He seems to be very sturdy, and has a sharp gleam in his eyes, that
 pick-axe he holds makes a good tool, and a fine weapon.
 ~
 dwarf~
-CGMT FGJV 700 S
+ACGMT FGJV 700 S
 50 19 200d2+1000 100d1+150 5d7+19 17
 -14 -14 -14 -18
 ACDEFHINU ABEN Q M
@@ -126,7 +126,7 @@ represents the personal guard of Balin the herald. The Huge axe that rests
 beside him is covered in the notches of previously won battles.
 ~
 dwarf~
-CGMT FGJTUV 750 S
+ACGMT FGJTUV 750 S
 53 43 200d2+2000 100d1+150 5d9+18 17
 -14 -14 -14 -14
 ACDEFHNUZ A ABEN C M
@@ -143,7 +143,7 @@ trooper to Balin and Thorin. The large mithril axe looks well worn, but
 wickedly sharp.
 ~
 dwarf~
-BGMT BDFGHJTV 750 S
+ABGMT BDFGHJTV 750 S
 55 43 200d2+3750 100d1+150 7d9+14 17
 -16 -16 -16 -16
 ACDFHINOU ABEN CPQ M
@@ -160,7 +160,7 @@ you have ever seen. Each of the black feathers glistens with malevolence,
 maybe it would be better to go try to kill that thrush.
 ~
 raven~
-CFGMT DFHJQTUV -750 S
+ACFGMT DFHJQTUV -750 S
 55 32 200d2+3565 100d1+50 10d7+18 23
 -13 -13 -13 -13
 BEFHU ABEM 0 N
@@ -192,10 +192,10 @@ like an immortal guardian to the back entrace to the lair of smaug, though
 this bird is in the favor of the gods and it would be unwise to attack him.
 ~
 song bird~
-B 0 0 S
+AB 0 0 S
 50 10 200d2+10 100d1+10 5d5+10 10
 -6 -6 -6 -6
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 S 0
 #25011
@@ -207,7 +207,7 @@ This is a very, VERY clean looking dwarf...he continually sweeps his room
 with an odd-shaped broom.
 ~
 dwarf~
-CFGMO BDEFJNTUV 850 S
+ACFGMO BDEFJNTUV 850 S
 50 100 200d2+1000 100d1+150 10d5+18 17
 -15 -11 -10 -14
 AEFGNHUXZ A ABIM H NOP

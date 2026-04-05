@@ -13,10 +13,10 @@ chequered shirt.  His features are worn with hard work and his expression is
 one of a peaceful man leading a simple life.
 ~
 human~
-G 0 350 S
+AG 0 350 S
 5 1 5d5+50 5d5+20 1d8+2 3
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #6002
@@ -28,10 +28,10 @@ The bear is a big, brown, furry animal with very large claws and very sharp
 teeth.  It doesn't resemble those cute little thingies from toy shops at all.
 ~
 bear~
-FG 0 0 S
+AFG 0 0 S
 8 3 8d8+80 1d8+1 2d6+2 5
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 L 0
 #6003
@@ -44,10 +44,10 @@ the dreaded rabbit rabies, a horrible disease that turns helpless and innocent
 rabbits into ferocious and bloodthirsty monsters.
 ~
 rabbit~
-96 0 -150 S
+69A 0 -150 S
 3 2 1d4+26 1d3+10 1d8+0 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 T 0
 #6004
@@ -59,10 +59,10 @@ She is a graceful creature on long, slender legs, and with large, brown eyes
 looking back at you with an air of watchful interest.
 ~
 unique~
-DI D 350 S
+ADI D 350 S
 2 2 2d8+2 2d4+1 1d6+0 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #6005
@@ -73,10 +73,10 @@ A brown fox is here, looking for some rabbits to chew up.
 It is a large fox with beautiful, red-brown fur and a long, thick brush.
 ~
 fox~
-G 0 0 S
+AG 0 0 S
 2 2 1d4+18 1d6+5 1d6+0 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #6100
@@ -88,10 +88,10 @@ It is an exceptionally large wolf with thick, black fur.  Saliva is dripping
 quickly from its long, white fangs.  It looks quite dangerous and very angry.
 ~
 dog~
-FG 0 -350 S
+AFG 0 -350 S
 5 2 1d12+60 1d12+60 2d4+0 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #6101
@@ -103,10 +103,10 @@ It is an exceptionally large wolf with thick, black fur.  Saliva is dripping
 quickly from its long, white fangs.  It looks quite dangerous and very angry.
 ~
 dog~
-FG 0 -350 S
+AFG 0 -350 S
 5 2 1d12+60 1d12+60 2d4+0 5
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #6102
@@ -117,10 +117,10 @@ A large, grey wolf is here, glaring hungrily at you.
 The large, grey wolf eyes you with interest while licking its lips.
 ~
 dog~
-FG 0 -150 S
+AFG 0 -150 S
 3 2 1d12+35 1d12+35 1d7+0 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #6103
@@ -131,10 +131,10 @@ A large, black wolf is here, glaring hungrily at you.
 The large, black wolf eyes you with interest while licking its lips.
 ~
 dog~
-FG 0 -150 S
+AFG 0 -150 S
 3 2 1d12+35 1d12+35 1d7+0 5
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #6112
@@ -151,7 +151,7 @@ dragon~
 ABFG D -1000 S
 25 5 20d20+350 10d10+100 2d6+18 5
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 0 500
 0 0 L 0
 #6115
@@ -164,10 +164,10 @@ tangled brown beard.  He wears ragged brown and green clothing and looks as if
 he is having great fun.
 ~
 unique~
-CEH BDP 750 S
+ACEH BDP 750 S
 10 3 10d10+100 10d10+50 1d8+2 6
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 S 0
 #6116
@@ -179,10 +179,10 @@ The druid looks quite old.  You would think him venerable, but you know
 he would be a tough foe.
 ~
 human~
-BCF D 0 S
+ABCFG D 0 S
 17 4 17d17+170 10d10+50 2d8+2 8
 -3 -3 -3 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #0
@@ -392,7 +392,7 @@ glass~
 2 3 300 P
 E
 potion yellow~
-It has a deep yellow colour and a strong spicy smell.
+It has a deep yellow color and a strong spicy smell.
 ~
 #6111
 shield large~

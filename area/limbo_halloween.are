@@ -13,7 +13,7 @@ vast amount of knowledge he possesses. He is wearing fine magic clothing,
 and you notice that he is surrounded by a blue shimmering aura.
 ~
 human~
-JKTV DEFJ 0 S
+AJKTV DEFJ 0 S
 36 0 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -28,7 +28,7 @@ The gladiator is a strong man.  He looks like someone who could teach
 even the mightiest of warriors a thing or two.
 ~
 human~
-GJKTV DEFJ 0 S
+AGJKTV DEFJ 0 S
 36 0 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -44,7 +44,7 @@ good service in the line of battle.  He looks like his experiences in
 life are more than you will ever know.
 ~
 human~
-GJKTV DEFJ 0 S
+AGJKTV DEFJ 0 S
 36 0 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -60,7 +60,7 @@ you would guess that he has been a blacksmith for a long time, and he
 probably can make some very good equipment.
 ~
 dwarf~
-JBKTV DEFJ 0 S
+ABJKTV DEFJ 0 S
 36 0 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -75,7 +75,7 @@ This is one big, ugly, and smelly troll.  You are unable to detect any
 signs that he has ever been in a battle.  Wonder why?
 ~
 troll~
-GKTV DEFJ 0 S
+AGKTV DEFJ 0 S
 36 0 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -92,7 +92,7 @@ the way of the true thief.  She is dressed in poor clothing, having
 the appearance of a beggar.
 ~
 human~
-GJKSV DFP 0 S
+AGJKSV DFP 0 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -107,7 +107,7 @@ This is a very strange shopkeeper.  He seems to keep his inventory
 inside his long overcoat that he is wearing.
 ~
 human~
-GJKSV DF 0 S
+AGJKSV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -123,7 +123,7 @@ Quickfingers is a very ordinary looking man, maybe to ordinary.  He
 seems to be able to blend into the crowds very well.
 ~
 halfling~
-BJKSV DF 0 S
+ABJKSV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -138,7 +138,7 @@ The locksmith seems very capable in his choosen profession.  He can
 pop a lock faster than anyone else you have ever seen.
 ~
 gnome~
-JBKSV DF 0 S
+ABJKSV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -152,7 +152,7 @@ The ninja master is barely visible.
 The ninja master is here showing his methods to his students.
 ~
 human~
-BJKSV DPF 0 S
+ABJKSV DPF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -167,7 +167,7 @@ The cook look like he has had a few too many of his award winning
 recipes (well, at least for a thieves guild).
 ~
 dwarf~
-BKSV DF 0 S
+ABKSV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -182,7 +182,7 @@ It is very hard to keep the assassin in view.  He seems to be able to
 just disappear into the shadows.
 ~
 elf~
-GKSV DF 0 S
+AGKSV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -198,7 +198,7 @@ The master of ceremonies is a very busy man.  He is the most well versed
 person in the art of benedictions and therefore is in high demand.
 ~
 human~
-JBKQV CDEFH 0 S
+ABJKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -214,7 +214,7 @@ His motto is that through meditation and a stress free life, you can
 achieve great happiness.
 ~
 halfling~
-GJKQV CDEFH 0 S
+AGJKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -229,7 +229,7 @@ You have heard many tales about the crypt thing, but no one has ever lived
 to tell a personal account of meeting him.
 ~
 undead~
-BGKQV CDEFH 0 S
+ABGKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -245,7 +245,7 @@ He is said to have killed half of the enemy soldiers by himself in the last
 war.
 ~
 human~
-BGJKQV CDEFH 0 S
+ABGJKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -261,7 +261,7 @@ his god called him to service.  Now he spends all of his time working for
 his god.
 ~
 elf~
-BJKQV CDEFH 0 S
+ABJKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -276,7 +276,7 @@ The healer must have the divine favor of his god because his healing skills
 are known around the world as the best healing skills ever.
 ~
 human~
-BJKQV CDEFH 0 S
+ABJKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -291,7 +291,7 @@ The missionary of Breas has traveled the world converting others to
 follow his god.
 ~
 human~
-GJKQV CDEFH 0 S
+AGJKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -307,7 +307,7 @@ she has a peaceful, loving look. You notice that she is surrounded by
 a white aura.
 ~
 human~
-JBKQV CDEFH 0 S
+ABJKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -324,7 +324,7 @@ person there is when it comes to wands. She seems to have a very large
 selection and can tell you everything there is about wandmaking
 ~
 human~
-JBKRV DF 0 S
+ABJKRV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -340,7 +340,7 @@ a lot about the history of the world.  He is rarely not seen reading a
 history book.
 ~
 human~
-JKRV DF 0 S
+AJKRV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -356,7 +356,7 @@ bolts.  He is just rambling on about spells he used to know but can't
 seem to remember.
 ~
 human~
-BKRV DF 0 S
+ABKRV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -372,7 +372,7 @@ seems to have been treated pretty good though.  Wonder what the guards
 think about him being here.
 ~
 dragon~
-BKRV DF 0 S
+ABKRV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -387,7 +387,7 @@ The summoner seems to have no order to the things that he is summoning.
 He is summoning all kinds of creatures.
 ~
 human~
-JBKRV DF 0 S
+ABJKRV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -402,7 +402,7 @@ Boy this magician sure is good.  You can't tell how he is doing his
 tricks.
 ~
 gnome~
-GJKRV DF 0 S
+AGJKRV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -417,7 +417,7 @@ The mystic knight is the greatest fighter that the mages have ever
 known.  His skills rival that of some of the strongest warriors.
 ~
 human~
-GJKTV DF 0 S
+AGJKTV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -433,7 +433,7 @@ have no enemies and everyone just seems to want to do what he tells
 them to do.
 ~
 human~
-JBKTV DF 0 S
+ABJKTV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -448,7 +448,7 @@ The fire mage is here.  He seems very comfortable with magic relating
 to fire.
 ~
 human~
-BKTV DF 0 S
+ABKTV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -466,7 +466,7 @@ He does not have enough experience yet to train people in new arts, just to
 show them how to better use the arts they already know.
 ~
 human~
-JBKTV DF 0 S
+ABJKTV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -482,7 +482,7 @@ you would guess that he has been a blacksmith for a long time, and he
 probably can make some very good equipment.
 ~
 dwarf~
-JBKTV DEFJ 0 S
+ABJKTV DEFJ 0 S
 36 0 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -496,7 +496,7 @@ Tia, the ninja master is barely visible.
 The ninja master is here showing his methods to his students.
 ~
 human~
-GJKSV DPF 0 S
+AGJKSV DPF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -511,7 +511,7 @@ The missionary of Devota has traveled the world converting others to
 follow his god.
 ~
 human~
-GJKQV CDEFH 0 S
+AGJKQV CDEFH 0 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIKbb ABCD 0 0
@@ -526,7 +526,7 @@ Boy this magician sure is good.  You can't tell how he is doing his
 tricks.
 ~
 gnome~
-GJKRV DF 0 S
+AGJKRV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -543,7 +543,7 @@ when a sale goes the wrong way and can go berserk.  Only the brave or
 foolhardy try to bargin with Jazair.
 ~
 human~
-BKTV DF 0 S
+ABKTV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -558,7 +558,7 @@ A plump little hobbit named Fingers runs this establishment.  He is well
 known for his ability to disappear when his fingers get him in trouble.
 ~
 hobbit~
-BKSV DF 0 S
+ABKSV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -575,7 +575,7 @@ defense.  He is dressed on plain grey robes and has a shaved head except
 for a long single braid.
 ~
 human~
-BKSV DF 0 S
+ABKSV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -593,7 +593,7 @@ here in hopes that this wandering mage is his brother.  His clothes are
 travel worn, and a large scar mars his face.
 ~
 gnome~
-GJKRV DF 0 S
+AGJKRV DF 0 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIKbb ABCD 0 0
@@ -610,7 +610,7 @@ hand is slowly dragging his razor gloved hand down the chalkboard.  The
 sound is painful to hear!
 ~
 unique~
-GJKRV DF -750 S
+AGJKRV DF -750 S
 50 20 1D1+15000 1D1+500 10D30+50 13
 -20 -20 -20 -20
 ACDEIKbbdd ABCD 0 0
@@ -625,10 +625,10 @@ The greater vampire oozes fear.  Just by looking at him the hair on your
 arms rise. He looks mighty tough.
 ~
 undead~
-BFR DF -900 S
+ABFGR DF -900 S
 29 0 10d10+850 1d1+200 7d5+35 6
 -5 -5 -5 -3
-W 0 0 0
+W AB 0 0
 8 8 1 0
 0 0 M 0
 #72
@@ -640,10 +640,10 @@ As you watch, Naberius transfroms from a large bird into a viscious
 creature, all talons and teeth.
 ~
 unique~
-BFT DFH -1000 S
+ABFGT DFH -1000 S
 29 0 10d15+900 1d1+200 5d8+50 5
 -8 -8 -8 -5
-W 0 0 0
+W AB 0 0
 8 8 1 0
 0 0 M 0
 #73
@@ -655,10 +655,10 @@ The Efreeti is a creature formed from the elemental plane of fire. It's
 flame's lick at you hungrily as it attacks.
 ~
 unique~
-BFQ DFT -800 S
+ABFGQ DFT -800 S
 29 0 10d10+750 1d1+200 6d6+35 3
 -5 -5 -5 -3
-W 0 0 0
+W AB 0 0
 8 8 1 0
 0 0 M 0
 #74
@@ -671,10 +671,10 @@ it looks like.  The blow's it is dishing out on your body are real enough
 though.
 ~
 unique~
-BFS DFTB -900 S
+ABFGS DFTB -900 S
 29 0 10d10+750 1d1+200 5d7+35 8
 -5 -5 -5 -3
-W 0 0 0
+W AB 0 0
 8 8 1 0
 0 0 M 0
 #79
@@ -685,10 +685,10 @@ A guardian demon is here, protecting it's domain.
 The guardian demon looks fierce, and very good at it's job.
 ~
 undead~
-BFR DFH -950 S
+ABFGR DFH -950 S
 29 0 10d10+1000 1d1+200 5d5+5 5
 -5 -5 -5 -3
-V 0 0 0
+V AB 0 0
 8 8 1 0
 0 0 M 0
 #80
@@ -697,10 +697,10 @@ an undead mob~
 An undead mob is waiting to be created here.~
 You see one of the undead.~
 unique~
-O DF -750 S
+AO DF -750 S
 0 0 1d1+1 1d1+1 1d1+1 5
 0 0 0 0
-IK 0 0 NS
+IK AB 0 NS
 8 8 1 0
 0 0 M 0
 #99
@@ -712,7 +712,7 @@ The Great Pumpkin comes only on Halloween, flying through the skies delivering
 toys to all the good little boys and girls of the world.
 ~
 unique~
-BQ CDFHJT -1000 S
+ABQ CDFHJT -1000 S
 65 10 1d1+9000 1d1+1000 10d20+100 20
 -5 -5 -5 -5
 AEFGHIK ABCDEFG 0 0
@@ -885,7 +885,7 @@ AMV ABCDEFGH M 0
 {
 A -1
 $n smashes $N aside.~
-$n tells you,"Blood is honour, and you are what you drink!"~
+$n tells you,"Blood is honor, and you are what you drink!"~
 }
 #4452
 regular guard vampire~
@@ -897,10 +897,10 @@ looks as though he may sink his teeth into anyone, without considering
 the quality of the blood.
 ~
 human~
-BCGT CFH -600 S
+ABCGT CFH -600 S
 25 5 5d10+350 1d1+99 2d10+7 27
 -7 -9 -8 -3
-CFIKS BLQ N HJ
+CFIKS ABLQ N HJ
 8 8 1 200
 AMV ABCDEFGH M 0
 
@@ -914,7 +914,7 @@ turns to you as you walk in and narrows his eyes.  Then shrugs you
 off as not worth the trouble and goes back about his business.
 ~
 human~
-BGT CDFH -650 S
+ABGT CDFH -650 S
 45 30 5d10+1680 1d1+599 6d6+25 7
 -15 -15 -15 -5
 CDEFIKOT AB MNRS 0
@@ -931,7 +931,7 @@ of skin that fall from his face.  One eyeball is half out of its socket
 and swivels independent of the other one to stare at you.
 ~
 human~
-BGT CFH -750 S
+ABGT CFH -750 S
 42 25 6d6+1350 6d6+450 5d6+20 7
 -12 -13 -13 -10
 EFKOTU ABH CLQ GI
@@ -948,7 +948,7 @@ Maggots crawl on his flesh and the stench is awful.  He reaches out
 with a hand oozing with open sores and tries to grab at you.
 ~
 human~
-BGT CH -600 S
+ABGT CH -600 S
 40 25 10d10+1080 4d4+250 4d6+25 7
 -10 -15 -10 -5
 CEFKNT ABRS D C
@@ -1040,7 +1040,7 @@ She loves animals in all forms, and sells them not for money, but to spread
 the love of animals around.
 ~
 human~
-BGMV 0 0 S
+ABGMV 0 0 S
 40 40 1d1+1999 1d1+1999 10d10+30 16
 -205 -205 -205 -205
 0 ABCD 0 0
@@ -1055,10 +1055,10 @@ A massive black jaguar stands here, raking the floor with its claws.
 The Jaguar looks like a very fierce, yet agile fighter.
 ~
 unique~
-BITU PV 0 S
+ABITU PV 0 S
 40 10 15d10+1199 1d1+199 4d8+13 5
 -13 -13 -13 0
-ADFHO 0 0 R
+ADFHO AB 0 R
 8 8 3 0
 AGNV ACDEFHJKQUV H 0
 
@@ -1070,10 +1070,10 @@ A black raven is here, using its wings to hover in the air.
 The Raven looks like a fierce fighter.
 ~
 unique~
-BITU TV 0 S
+ABITU TV 0 S
 36 25 10d10+800 1d1+499 4d7+10 23
 -8 -8 -8 0
-BFH 0 0 0
+BFH AB 0 0
 8 8 3 0
 AGW ACDEFHJKPU S 0
 
@@ -1085,10 +1085,10 @@ A pseudodragon is here, gazing at its master with admiration.
 The Pseudodragon resembles a miniature red dragon, with light brown scales.
 ~
 unique~
-BIRU DT 0 S
+ABIRU DT 0 S
 32 22 6d12+699 1d1+599 4d6+9 5
 -10 -10 -10 -15
-FHM 0 C 0
+FHM AB C 0
 8 8 3 0
 CHZ ACDEFHJKLPQUVX S 0
 
@@ -1100,10 +1100,10 @@ An imp flits about here.
 The Imp looks to be a weak, yet fearless fighter.
 ~
 unique~
-BIRU JTV 0 S
+ABIRU JTV 0 S
 28 18 5d10+599 1d1+569 3d7+7 26
 -5 -5 -5 -10
-FHM 0 C 0
+FHM AB C 0
 8 8 3 0
 BXcc ACDEFHJKLPQUVX S 0
 
@@ -1115,10 +1115,10 @@ A bald eagle glides here, on the warm air currents.
 The Eagle looks to be a fierce, and agile fighter.
 ~
 unique~
-BITU FTV 0 S
+ABITU FTV 0 S
 24 0 3d9+333 1d1+439 2d8+5 5
 -7 -9 -9 -6
-AEFH 0 0 0
+AEFH AB 0 0
 8 8 3 0
 AGW ACDEFHJKPU M 0
 
@@ -1130,10 +1130,10 @@ A sabertooth tiger pads softly about here, sniffing the air for intruders.
 The Sabertooth Tiger bares its 9 inch fangs at you.
 ~
 unique~
-BITU GP 0 S
+ABITU GP 0 S
 20 6 5d10+400 1d1+199 4d4+6 8
 -5 -5 -5 -5
-CDFIJ 0 0 0
+CDFIJ AB 0 0
 8 8 3 0
 DGVcc ACDEFHJKUV H 0
 
@@ -1148,7 +1148,7 @@ carries his trusty long sword at his side wherever he goes.  The Duke holds a
 lot of power in Dresden... attacking him would only get you killed.
 ~
 human~
-TV CDFHNP -850 S
+ATV CDFHNP -850 S
 35 25 5d5+1000 1d1+199 8d6+20 20
 -15 -15 -15 -10
 CDEFHIJKNOT ABN RS P
@@ -1240,7 +1240,7 @@ One of his arms is the size of your leg.  Starting a brawl in this tavern
 would be a mistake.
 ~
 human~
-BGT 0 -500 S
+ABGT 0 -500 S
 40 40 8d8+20000 1d1+1999 8d8+40 8
 -25 -25 -25 -25
 0 ABCD 0 0
@@ -1258,7 +1258,7 @@ him or you'll wind up getting your body parts scraped up from the sidewalk
 with a gravedigger's trowel.
 ~
 human~
-BGT H -750 S
+ABGT H -750 S
 40 30 4d4+950 1d1+299 8d6+25 8
 -20 -20 -20 -20
 AO AB D 0
@@ -1273,7 +1273,7 @@ This huge black wyrm laughs at your puny weapons.  You realize that he is not
 going to roll over and die for you.
 ~
 dragon~
-BCF DF -1000 S
+ABCFG DF -1000 S
 39 15 39d30+468 20d39+230 3d8+4 31
 -13 -13 -13 -13
 CEFHKMN ABK 0 J
@@ -1287,7 +1287,7 @@ A gaseous form drifts through the room.
 ~
 ~
 unique~
-0 0 750 S
+A 0 750 S
 26 5 5d10+550 26d5+100 4d6+3 32
 -15 -15 -15 -10
 MNc AB CD 0
@@ -1337,7 +1337,7 @@ A gaseous form drifts through the room.
 ~
 ~
 undead~
-0 0 750 S
+A 0 750 S
 26 13 5d10+550 26d5+100 4d6+3 32
 -15 -15 -15 -10
 MNc AB CD 0
@@ -3489,7 +3489,7 @@ map olympus~
 			    u|t             |
 			    s+--Ares Street-+--Weapon
 		    Mystery  |              |   Shop
-		    Shop-----+           Armoury
+		    Shop-----+           Armory
 			     |
 		   Residence-+-Residence
 			     |

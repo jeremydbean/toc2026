@@ -9,7 +9,7 @@ Lucas, the barkeep, keeps a wary eye on you as you enter.
 Lucas is a large man who looks like he won't tolerate fights in his bar.
 ~
 human~
-BMV DFW 0 S
+ABMV DFW 0 S
 60 5 50d10+9500 1d1+300 8d6+28 27
 -5 -5 -5 -5
 0 ABCDLPQ 0 0
@@ -24,7 +24,7 @@ Laurie, the bard, sits in the corner strumming his lute,
 singing ballads of heroes and wars.
 ~
 human~
-BR HNO 850 S
+ABR HNO 850 S
 35 3 10d10+800 1d1+500 4d7+11 17
 -2 -2 -2 -2
 FKN ABQ CP M
@@ -38,7 +38,7 @@ Jimmy the hand moves in the shadows
 Jimmy is clearly a trained thief, as he can move almost without detection.
 ~
 human~
-SG DFHPQ -250 S
+AGS DFHPQ -250 S
 25 5 5d10+550 1d1+500 2d10+7 2
 -2 -2 -2 -2
 EFHKNU ABPQ CM 0
@@ -52,7 +52,7 @@ Father Tully has taken pity on the outcasts of society.
 Father Tully is a big, gentle man who can heal you of your afflictions.
 ~
 human~
-BDV DFHW 1000 S
+ABDV DFHW 1000 S
 60 5 50d10+9500 1d1+1000 8d6+28 20
 -5 -5 -5 -5
 0 ABCD 0 0
@@ -67,7 +67,7 @@ This man has the sinister look of a trained assassin.  You shudder
 and hope that you're not his target.
 ~
 human~
-GOSV DFGOPQ -550 S
+AGOSV DFGOPQ -550 S
 40 3 15d10+1850 1d1+1000 4d8+13 17
 -5 -5 0 0
 EFHIKN ABQP H N

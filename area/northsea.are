@@ -10,10 +10,10 @@ This goat is acclimated to the rugged terrain of the mountains.  It looks
 at you and shies away a little.
 ~
 mammal~
-GHT 0 0 S
+AGHT 0 0 S
 30 15 6d12+853 2d30+130 4d6+8 15
 -6 -9 -7 0
-0 ACI E H
+0 ABCI E H
 8 8 1 0
 0 0 M 0
 #6701
@@ -25,7 +25,7 @@ This demon has pure malevolence for anything living. Oops!  You're living!
 I guess that means YOU!
 ~
 undead~
-BFT D -750 S
+ABFGT D -750 S
 40 20 15d10+1850 2d40+240 4d8+13 29
 -12 -13 -12 -20
 DEFHK ABH E N
@@ -39,7 +39,7 @@ A mound of books rise up into a human shape and tries to hit you!
 Ironically enough, the book-monster's head is War and Peace.  Hmmm.
 ~
 unique~
-BFT D 0 S
+ABFGT D 0 S
 35 18 10d10+1300 2d35+235 4d7+11 27
 -10 -11 -10 -9
 C AB EI H
@@ -54,7 +54,7 @@ It resembles a lot of other bad feelings you've had, but a lot more
 tangible....magic?
 ~
 unique~
-BFT D 0 S
+ABFGT D 0 S
 31 16 6d12+928 2d31+231 4d6+9 26
 -10 -11 -9 -10
 EH AB CP O
@@ -69,7 +69,7 @@ It looks like you deepest, darkest fears personified. Wait a minute!
 It IS your deepest, darkest fears personified!
 ~
 unique~
-BFT D 0 S
+ABFGT D 0 S
 33 17 10d10+1100 2d33+233 6d4+10 20
 -10 -11 -10 -10
 EH AB CP O
@@ -83,7 +83,7 @@ A guardian guards the door.  It looks at you and attacks!
 The guardian guards the door. That's all its brain can handle: guarding.
 ~
 giant~
-BFT D 0 S
+ABFGT D 0 S
 35 18 10d10+1300 2d35+235 4d7+11 0
 -11 -11 -11 -10
 CEIKN AB LQ C
@@ -98,7 +98,7 @@ Trapped by Rand, this smallish demon god seems quite annoyed, and very
 insane.... and quite deadly.
 ~
 undead~
-BFRT BDFGHJOQTV -1000 S
+ABFGRT BDFGHJOQTV -1000 S
 45 23 24d10+3000 2d45+445 8d4+21 18
 -15 -16 -15 -25
 CEFIJKMNOV ABH LQR N
@@ -113,10 +113,10 @@ The enormous dragon-turtle is large enough to lift the sturdiest of ships.
 He has just noticed your approach and is preparing to ram you!
 ~
 dragon~
-BCFG L 0 S
+ABCFG L 0 S
 35 17 10d10+1300 3d35+335 4d7+11 31
 -11 -11 -11 -3
-AEMO BKLR DEIP 0
+AEMO ABKLR DEIP 0
 8 8 1 250
 0 0 G 0
 #6708
@@ -129,7 +129,7 @@ It has a fringe of horny spines that look particularly nasty. Though small,
 it looks to be a formidable opponent.
 ~
 fish~
-G 0 0 S
+AG 0 0 S
 30 15 6d12+853 3d30+330 4d6+8 10
 -9 -9 -9 0
 FH ABR I 0
@@ -146,7 +146,7 @@ beautiful human female... though she has a slightly greenish tinge to her
 skin.
 ~
 plant~
-CG L 0 S
+ACG L 0 S
 30 15 6d12+853 3d30+330 4d6+8 12
 -9 -9 -9 -2
 EFGN ABIR E G
@@ -162,10 +162,10 @@ similar to that of a great fish, and its forelegs end in powerful fins.
 This creature would make a marvelous ocean steed.
 ~
 fish~
-G 0 0 S
+AG 0 0 S
 30 15 6d12+853 3d30+330 4d6+8 13
 -9 -9 -9 -2
-CEKO 0 0 0
+CEKO AB 0 0
 8 8 1 125
 0 0 L 0
 #6711
@@ -177,10 +177,10 @@ With the head of an enormous lion and the body of a large sea serpent, this
 creature is not something to mess with.
 ~
 fish~
-FG 0 0 S
+AFG 0 0 S
 30 15 6d12+853 3d30+330 4d6+8 10
 -9 -9 -9 -2
-FM 0 0 0
+FM AB 0 0
 8 8 1 125
 0 0 L 0
 #6712
@@ -193,10 +193,10 @@ The locathat does not approve of you raiding his hunting grounds. He gives a
 quick nod to his companions and attacks!
 ~
 human~
-CFG LO 0 S
+ACFG LO 0 S
 35 17 10d10+1300 3d35+335 4d7+11 32
 -11 -11 -11 -1
-CEO BR EI H
+CEO ABR EI H
 8 8 1 250
 0 0 L 0
 #6713
@@ -209,10 +209,10 @@ that he has decided that he likes your equipment and is going to take it
 from you... or die trying.
 ~
 human~
-CFG DFJQT 0 S
+ACFG DFJQT 0 S
 30 15 6d12+853 3d30+330 4d6+8 5
 -9 -9 -9 -2
-BEF B E J
+BEF AB E J
 8 8 1 100
 0 0 L 0
 #6714
@@ -225,10 +225,10 @@ race of jungle warriors. They had waged a war against the evil Slaad and
 lost. This was their punishment for their insolence.
 ~
 human~
-CFG J 0 S
+ACFG J 0 S
 32 16 10d10+1000 2d32+332 6d4+9 7
 -10 -10 -10 0
-CDEIKN BE P C
+CDEIKN ABE P C
 8 8 1 100
 0 0 L 0
 #6715
@@ -241,10 +241,10 @@ won his position at a cost. His eyes burn with a deep hatred of those who
 still retain his former human form.
 ~
 human~
-CFG J 0 S
+ACFG J 0 S
 35 18 10d10+1300 2d35+235 4d7+11 7
 -10 -11 -10 0
-CDEIKN BE P 0
+CDEIKN ABE P 0
 8 8 1 200
 0 0 L 0
 #6716
@@ -257,10 +257,10 @@ to clear the jungles of all living beings not in service to the Slaad, they
 prepare for battle.
 ~
 human~
-CFG J -800 S
+ACFG J -800 S
 35 18 10d10+1300 2d35+235 4d7+11 7
 -10 -10 -10 0
-CDEIKN E BP 0
+CDEIKN ABE BP 0
 8 8 1 150
 0 0 M 0
 #6717
@@ -273,10 +273,10 @@ larger, they are weaker than the others classes. They have two scimitar-like
 blades protruding from each of their webbed hands.
 ~
 human~
-CFG J -650 S
+ACFG J -650 S
 32 16 10d10+1000 2d32+332 6d4+9 5
 -10 -10 -10 0
-CDEIKN BE CP 0
+CDEIKN ABE CP 0
 8 8 1 100
 0 0 L 0
 #6718
@@ -288,10 +288,10 @@ This large, red hued frogman is busily on the hunt for additional slaves for
 it's master! I wouldn't let him see you.. oops, too late!
 ~
 human~
-CFG J -700 S
+ACFG J -700 S
 34 17 10d10+1200 3d34+334 4d7+10 8
 -11 -11 -11 -3
-CDEIKN BE CP 0
+CDEIKN ABE CP 0
 8 8 0 150
 0 0 L 0
 #6719
@@ -305,10 +305,10 @@ robes made of some sort of jungle moss, that give off an eerie lumimescent
 light.
 ~
 human~
-CFG J -750 S
+ACFG J -750 S
 36 18 10d10+1400 3d36+336 3d10+11 19
 -12 -12 -12 -5
-CDEIKN BE CP 0
+CDEIKN ABE CP 0
 8 8 0 150
 0 0 L 0
 #6720
@@ -321,10 +321,10 @@ fighters and extremely adept spellcasters. Nearly half a man's height taller
 than the lesser species, this creature towers above you.
 ~
 human~
-BCFG DFJ -800 S
+ABCFG DFJ -800 S
 40 20 15d10+1850 4d40+440 4d8+13 19
 -13 -13 -13 -5
-CDEIKN BE CP 0
+CDEIKN ABE CP 0
 8 8 0 150
 0 0 L 0
 #6721
@@ -338,10 +338,10 @@ quick, agile, and intelligent.  They enjoy blood flow emensely and as such,
 choose the occupations which allow them to exerience it often.
 ~
 human~
-CFG DFJ -800 S
+ACFG DFJ -800 S
 40 20 15d10+1850 4d40+440 4d8+13 27
 -13 -13 -13 -5
-CDEIKN BE CP 0
+CDEIKN ABE CP 0
 8 8 0 150
 0 0 L 0
 #6722
@@ -356,10 +356,10 @@ to gain supreme power from the other. If they could end the quarrel and team
 up, they may actually be able to conquer lands beyond this jungle island.
 ~
 human~
-BF DFHJT -1000 S
+ABFG DFHJT -1000 S
 45 23 25d10+3000 4d45+445 8d4+16 18
 -15 -15 -15 -9
-CDEIKN BE CP 0
+CDEIKN ABE CP 0
 8 8 1 150
 0 0 L 0
 #6723
@@ -373,10 +373,10 @@ constantly shifting shape will drive all insane if forced to watch him for too
 long.
 ~
 human~
-BF DFHJT -1000 S
+ABFG DFHJT -1000 S
 45 23 25d10+3000 4d45+445 8d4+16 18
 -15 -15 -15 -9
-CDEIKN BE CP 0
+CDEIKN ABE CP 0
 8 8 1 150
 0 0 L 0
 #6724
@@ -388,10 +388,10 @@ This has got to be the largest snake you have ever seen. Its head is the size
 of a large watermellon. It could surely swallow you whole.
 ~
 snake~
-CFG DFJ 0 S
+ACFG DFJ 0 S
 35 18 10d10+1300 2d35+235 4d7+11 8
 -10 -10 -10 0
-0 0 0 0
+0 AB 0 0
 8 8 1 150
 0 0 L 0
 #6725
@@ -404,10 +404,10 @@ it.  Elongated fangs protrude below it's bottom lip.  Clearly this ape is not
 a product of natural evolution.
 ~
 human~
-CFG J 0 S
+ACFG J 0 S
 37 19 10d10+1500 3d37+337 3d10+12 7
 -12 -12 -12 -1
-CDEIJKNO BQS E P
+CDEIJKNO ABQS E P
 8 8 1 50
 0 0 L 0
 #6726
@@ -420,10 +420,10 @@ A shiney substance drips from the tips of each thorn. I wouldn't get too close
 if I were you.
 ~
 plant~
-FG PQ -200 S
+AFG PQ -200 S
 36 18 10d10+1400 3d36+336 3d10+11 26
 -12 -12 -12 0
-GN BL C H
+GN ABL C H
 8 8 0 0
 0 0 H 0
 #6727
@@ -434,10 +434,10 @@ The strange seabird swoops down for a closer look.
 A cross between a seagull and a heron, this bird seems harmless enough.
 ~
 song bird~
-CG T 100 S
+ACG T 100 S
 30 15 6d12+853 3d30+330 4d6+8 23
 -9 -9 -9 0
-EFH B E J
+EFH AB E J
 8 8 1 75
 0 0 M 0
 #6728
@@ -450,10 +450,10 @@ instead of having feathers upon its head, it has only the gleaming bone of
 its skull.  I guess that's where its name came from.
 ~
 song bird~
-CF JT 0 S
+ACFG JT 0 S
 35 18 10d10+1300 3d35+335 4d7+11 23
 -11 -11 -11 -1
-EFH B E J
+EFH AB E J
 8 8 1 100
 0 0 M 0
 #0

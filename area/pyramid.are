@@ -12,10 +12,10 @@ The asp is a small, smooth-scaled snake the color of worn pottery.
 The poison bite of this snake has felled many a mighty pharaoh.
 ~
 snake~
-FG 0 0 S
+AFG 0 0 S
 10 5 2d7+120 1d6+1 1d6+1 10
 1 1 1 3
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #28001
@@ -27,10 +27,10 @@ The cobra snake waves back and forth before you, its hood displaying brilliant
 colors designed to serve notice to its prey that it is about to strike.
 ~
 snake~
-FG 0 0 S
+AFG 0 0 S
 7 5 7d7+70 2d4+2 2d4+2 10
 4 4 4 6
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #28002
@@ -42,10 +42,10 @@ The mongoose is a wily rodent, a quick hunter of nasty poisonous snakes.
 She sniffs you and appears to be looking for food in your hand.
 ~
 unique~
-G J 10 S
+AG J 10 S
 11 5 11d11+110 3d5+3 3d5+3 10
 1 1 1 3
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 S 0
 #28003
@@ -58,10 +58,10 @@ the tombs of the pharaohs.  He is clad from head to foot in utilitarian
 sand-colored clothing.
 ~
 human~
-B 0 250 S
+AB 0 250 S
 8 3 8d8+80 8d8+80 1d7+2 7
 3 3 3 5
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #28004
@@ -72,10 +72,10 @@ A sneaky tomb thief moves about in search of treasure.
 The thief brushes against you briefly, then slinks back into the shadows.
 ~
 human~
-GH P -250 S
+AGH P -250 S
 10 5 10d10+100 10d10+100 2d6+3 7
 1 1 1 3
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #28005
@@ -89,10 +89,10 @@ recently from under the nose of the hapless guardians of this pyramid.  Someday
 he might get caught, but not today...
 ~
 human~
-CG P -300 S
+ACG P -300 S
 18 10 18d18+180 3d8+2 3d8+2 7
 -2 -2 -2 0
-0 0 0 0
+0 AB 0 0
 8 8 1 200
 0 0 M 0
 #28006
@@ -105,10 +105,10 @@ It seems to rise up at the touch of your feet.  Wait, it is rising, a few feet
 above the ground!  In fact, it seems to be ALIVE!
 ~
 unique~
-B DJ 500 S
+AB DJ 500 S
 9 1 9d9+90 2d5+2 2d5+2 16
 2 2 2 4
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #28007
@@ -120,10 +120,10 @@ You only see the disfigured, rotting features of decaying human flesh,
 animated by the distempered spirit of a long-deceased person.
 ~
 undead~
-FG J -600 S
+AFG J -600 S
 12 8 12d12+120 1d6+6 1d6+6 7
 0 0 0 3
-0 0 0 0
+0 AB 0 0
 8 8 0 100
 0 0 M 0
 #28008
@@ -136,10 +136,10 @@ of the desert floor.  It seems quite large and strong and at home in the heat
 and sandy winds.
 ~
 unique~
-G J 0 S
+AG J 0 S
 14 6 14d14+140 14d14+1 2d7+4 7
 0 0 0 2
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #28009
@@ -151,10 +151,10 @@ The efreeti is a mighty being formed from living fire.  He gazes down at you
 with disdain and scorn, arms folded across his mighty chest.
 ~
 unique~
-BH DJT -600 S
+ABH DJT -600 S
 20 10 20d20+200 20d20+200 4d6+4 29
 -2 -2 -2 0
-AEGK HQ 0 I
+AEGK ABHQ 0 I
 8 8 1 100
 0 0 L 0
 #28010
@@ -167,10 +167,10 @@ outward into the room.  The sandstone of the caryatid is smooth with age,
 but you can still make out a deadly stone sword in the hands of each figure.
 ~
 unique~
-B J 0 S
+AB J 0 S
 24 10 24d24+240 4d6+8 4D6+8 7
 -3 -3 -3 -1
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 L 0
 #28011
@@ -184,7 +184,7 @@ He smiles down at you congenially, arms folded across his blue-tinged
 skin, and strokes his goatee.
 ~
 unique~
-B J 600 S
+AB J 600 S
 28 15 28d28+280 28d28+280 6d6+12 19
 -8 -8 -8 -10
 EFNU AB 0 0
@@ -201,10 +201,10 @@ to pieces.  They tend to be quite jealous of the sharper wits of their older
 cousins.
 ~
 sphinx~
-FH JT -200 S
+AFGH JT -200 S
 15 5 15d15+150 1d10+5 1d10+5 5
 -1 -1 -1 -1
-0 0 0 0
+0 AB 0 0
 8 8 0 10
 0 0 M 0
 #28013
@@ -218,10 +218,10 @@ and the hind legs of a mighty cat.  Right now she is confused, having
 just heard a puzzling riddle from a cousin criosphinx.
 ~
 sphinx~
-B DT 100 S
+AB DT 100 S
 19 10 19d19+190 2d10+10 2d10+10 5
 -2 -2 -2 0
-0 0 0 0
+0 AB 0 0
 8 8 2 100
 0 0 L 0
 #28014
@@ -234,10 +234,10 @@ the body of a well-furred feline with eagle-like wings.  He delights in
 riddles, and in poking occasional fun at his easily confused lesser cousins.
 ~
 sphinx~
-B DT 300 S
+AB DT 300 S
 23 10 23d23+230 3d10+15 3d10+15 5
 -3 -3 -3 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 L 0
 #28015
@@ -251,10 +251,10 @@ wings.  Tales are told of pharaohs that were rendered permanently deaf by the
 mighty roar of this sphinx.
 ~
 sphinx~
-B DT 400 S
+AB DT 400 S
 27 15 27d27+270 4d10+20 4d10+20 5
 -5 -5 -5 -3
-0 0 0 0
+0 AB 0 0
 8 8 0 100
 0 0 L 0
 #28016
@@ -269,7 +269,7 @@ it, although you can still make out the features of the handsome face that once
 advised many rulers.
 ~
 sphinx~
-B DEFHT 500 S
+AB DEFHT 500 S
 41 20 41d41+410 41d41+410 5d10+25 5
 -14 -14 -14 -14
 ACDEFJKMO ABLQ 0 0
@@ -287,7 +287,7 @@ a soft black, his skin a deep chocolate, and his tall frame is totally still,
 his chest not even moving to breathe.
 ~
 undead~
-B DEHT 150 S
+AB DEHT 150 S
 38 20 38d38+380 38d38+380 8d5+40 8
 -13 -13 -13 -13
 DEFHIK ABLQ 0 0
@@ -1088,7 +1088,7 @@ S
 #28010
 The Fire Pool~
    This room is dominated by a massive raised pool that is filled with
-not water but flames of intense heat.  The multicoloured flames lick out
+not water but flames of intense heat.  The multicolored flames lick out
 at you, searching for things to burn.
    The pool proceeds to the east into a small chamber.
 ~
@@ -1929,7 +1929,7 @@ S
 An Arched Hall~
    This hallway has a beautiful arch to it, formed painstakingly and
 exquisitely out of the sandy stones of the pyramid.  To the east is
-a small, golden-coloured crypt, and the hall proceeds to the south
+a small, golden-colored crypt, and the hall proceeds to the south
 and north.
 ~
 280 8 0
@@ -2006,7 +2006,7 @@ You see a hall with a beautifully arched ceiling.
 E
 particles glass~
 The glassy particles reflect and refract your light source in a myriad
-of dazzling colours that dance across your eyes and make you giggle.
+of dazzling colors that dance across your eyes and make you giggle.
 ~
 S
 #28053

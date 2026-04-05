@@ -7,7 +7,6 @@
 #MOBILES
 
 #2800
-
 guardian beast~
 
 the guardian beast~
@@ -26,7 +25,7 @@ saliva dripping from the beast's jaw.  The guardian beast snarls again.
 
 human~
 
-BCFGT DPQ -200 S
+ABCFGT DPQ -200 S
 
 7 2 7d5+84 3d7+42 1d8+1 11
 
@@ -39,7 +38,6 @@ EFNU 0 E K
 0 0 M 0
 
 #2801
-
 young troll~
 
 the young troll~
@@ -58,7 +56,7 @@ of yours!!
 
 troll~
 
-CFGT P -500 S
+ACFGT P -500 S
 
 6 1 6d5+72  3d6+36 1d7+1 7
 
@@ -71,7 +69,6 @@ EFNU 0 BE K
 0 0 L 0
 
 #2802
-
 medium troll~
 
 the medium troll~
@@ -90,7 +87,7 @@ His eyes dart toward you, as he realizes you are one third his size.
 
 troll~
 
-BCFGT P -500 S
+ABCFGT P -500 S
 
 8 2 8d6+96 4d8+64 1d7+2 11
 
@@ -103,7 +100,6 @@ EFNU 0 BE K
 0 0 L 0
 
 #2803
-
 baby troll~
 
 a baby troll~
@@ -122,7 +118,7 @@ He notices you and gargles "WANNA JOIN?".
 
 troll~
 
-BCFT P -100 S
+ABCFGT P -100 S
 
 5 0 5d4+60 2d5+25  1d6+1 7
 
@@ -135,7 +131,6 @@ EFNU 0 BE K
 0 0 L 0
 
 #2804
-
 giant troll~
 
 the giant troll~
@@ -154,7 +149,7 @@ You gasp as you realize you have intruded upon his acts of passion!
 
 troll~
 
-BCFGT P -750 S
+ABCFGT P -750 S
 
 13 5 13d10+169 6d13+169 2d5+3 3
 
@@ -167,7 +162,6 @@ EFNR 0 BEHI JKP
 0 0 H 0
 
 #2805
-
 large troll female~
 
 the large female troll~
@@ -186,7 +180,7 @@ Her smiles turn into snarls as she screams at you!
 
 troll~
 
-BCFGT P -750 S
+ABCFGT P -750 S
 
 11 4 11d8+143 5d11+121 1d10+2 7
 
@@ -199,7 +193,6 @@ EFNU 0 BE K
 0 0 H 0
 
 #2806
-
 fat worm~
 
 a fat worm~
@@ -216,7 +209,7 @@ It moves quickly, from corpse to corpse.
 
 unique~
 
-CFHT PQ 0 S
+ACFGHT PQ 0 S
 
 3 1 3d2+36 1d3+9 1d6+0 7
 
@@ -229,7 +222,6 @@ FHNU 0 I E
 0 0 M 0
 
 #2807
-
 roving beast~
 
 the roving beast~
@@ -250,7 +242,7 @@ jaw.  The roving beast snarls at you.
 
 human~
 
-BCFGT DP -200 S
+ABCFGT DP -200 S
 
 7 2 7d5+84 3d7+49 1d8+1 11
 
@@ -263,7 +255,6 @@ EFNU 0 E K
 0 0 M 0
 
 #2808
-
 medium troll~
 
 the medium troll~
@@ -282,7 +273,7 @@ He advances toward you.
 
 troll~
 
-CFGT P -500 S
+ACFGT P -500 S
 
 8 2 8d6+96 4d8+64 1d7+2 11
 

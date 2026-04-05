@@ -10,7 +10,7 @@ You see the Master of Illusion is quite skilled at phasing in and
 out of existence.
 ~
 human~
-BJKMUV BDFHOTV 0 S
+ABJKMUV BDFHOTV 0 S
 55 10 200d2+3000 25d55+300 10d4+25 19
 -25 -25 -25 -25
 CEFHIK ABCDEP 0 0
@@ -24,7 +24,7 @@ The Invisible Healer is here providing services for the temple.
 This is the Invisible Healer of the Temple Of Illusion.
 ~
 human~
-BDLMV BDFHOTV 1000 S
+ABDLMV BDFHOTV 1000 S
 35 3 35d27+450 15d35+200 4d7+11 18
 -11 -11 -11 -11
 CFHJK ABCDEP 0 0
@@ -40,7 +40,7 @@ mainly a provider for Temple Of Illusion cult members only but to
 stay in business he sells to all.
 ~
 human~
-BMV HOTV 1000 S
+ABMV HOTV 1000 S
 25 2 25d20+300 12d25+150 2d10+7 6
 -7 -7 -7 -7
 FHJK ABCDEP 0 0
@@ -55,7 +55,7 @@ This is one of the Temple of Illusion guards who ensures that no violence
 takes place inside the sacred temple.
 ~
 human~
-BCMV DFHJOQTV 0 S
+ABCMV DFHJOQTV 0 S
 50 10 50d40+700 25d50+300 5d10+20 19
 -25 -25 -25 -35
 CDEFHIKLU ABEGIJP 0 H

@@ -19,7 +19,7 @@ shiver. The guardian stands motionless before you, its rough grey skin
 looks impervious to normal weapons.
 ~
 unique~
-BFGT DEFJ -900 S
+ABFGT DEFJ -900 S
 45 25 25d10+3000 2d45+1045 8d4+16 5
 -15 -15 -14 -13
 CDEFHN ABD K I
@@ -33,7 +33,7 @@ A pile of gold coins lies on the ground.
 A large sparkly pile of gold coins.
 ~
 unique~
-BGT J -800 S
+ABGT J -800 S
 30 15 6d12+853 2d30+330 4d6+8 8
 -8 -9 -9 -7
 CFHK ABH I K
@@ -48,7 +48,7 @@ This is the most handsome male you have ever seen. His naked body
 makes your mouth water.
 ~
 unique~
-BGT J -1000 S
+ABGT J -1000 S
 40 20 15d10+1850 2d40+440 4d8+13 5
 -13 -13 -13 -11
 EFHN ABH L 0
@@ -63,7 +63,7 @@ This is the most beautiful female you have ever seen. The curves of her
 naked body make you sweat, and babble uncontrollably.
 ~
 unique~
-BGT J -1000 S
+ABGT J -1000 S
 40 20 15d10+1850 2d40+440 4d8+13 5
 -13 -13 -13 -11
 EFHN ABH L 0
@@ -77,7 +77,7 @@ A shiny gold bar lies on the ground.
 This gold bar must be worth bucks!
 ~
 unique~
-BGT J -800 S
+ABGT J -800 S
 37 19 10d10+1500 2d37+337 3d10+12 7
 -1 0 -1 -1
 CFHKO AB 0 0
@@ -91,7 +91,7 @@ A yummy looking chicken pot pie is here on the ground.
 You see a golden crusted pot pie filled with chicken and vegetables.
 ~
 unique~
-BGT J -800 S
+ABGT J -800 S
 42 21 25d10+2250 2d42+442 3d12+14 15
 -14 -14 -14 -12
 EFHN AB 0 0
@@ -105,7 +105,7 @@ A yummy looking beef pot pie is here on the ground.
 You see a golden crusted pot pie filled with beef and vegetables.
 ~
 unique~
-BGT J -800 S
+ABGT J -800 S
 42 21 25d10+2500 2d42+442 3d12+14 15
 -14 -14 -14 -12
 EFHN AB 0 0
@@ -119,7 +119,7 @@ A yummy looking vegetable pot pie is here on the ground.
 You see a golden crusted pot pie filled with vegetables.
 ~
 unique~
-BGT J -800 S
+ABGT J -800 S
 42 21 25d10+2500 2d42+442 3d12+14 15
 -14 -14 -14 -12
 EFHN AB 0 0
@@ -134,7 +134,7 @@ You see a faint silhouette of a person. Looking closely at it you can barely
 make out features that would identify it as the person it was in life.
 ~
 undead~
-GT J -700 S
+AGT J -700 S
 32 16 10d10+1000 2d32+332 6d4+9 18
 -10 -9 -10 -8
 EFHN AB 0 0
@@ -149,7 +149,7 @@ You see a unrecognizable person going through unheard of and
 indescribable torture. It screams out at you in pain and terror.
 ~
 undead~
-BGT J -800 S
+ABGT J -800 S
 34 17 10d10+1200 3d34+334 4d7+10 13
 -11 -10 -11 -9
 EFHN AB 0 0
@@ -165,7 +165,7 @@ It writhes in agony and pain as it gasps frantically for Death to answer
 its desperate plea...
 ~
 human~
-GBT J -757 S
+ABGT J -757 S
 46 23 25d10+3250 2d46+446 6d6+16 22
 -16 -16 -15 -14
 EFHN AB 0 0
@@ -181,7 +181,7 @@ broken bones, feet, and toes jutting from the surface. You hear low moans
 of horror, pain, and sorrow issuing from the walls.
 ~
 unique~
-BGT J -1000 S
+ABGT J -1000 S
 50 50 50d10+4500 2d50+1500 5d8+19 8
 -20 -20 -20 -18
 EFHIO AB 0 0
@@ -197,7 +197,7 @@ Its decaying eyes stare at you intently as it sees only you
 delicious and juicy brain.
 ~
 undead~
-FGT J -743 S
+AFGT J -743 S
 30 15 6d12+853 2d30+330 4d6+8 27
 -9 -9 -9 -7
 EFHN AB 0 0
@@ -212,7 +212,7 @@ The blood arm of some poor luckless indivudual. The stench of the
 gore covered limb makes you want to retch.
 ~
 unique~
-BGT J -884 S
+ABGT J -884 S
 33 17 10d10+1100 3d33+333 6d4+10 17
 -10 -11 -11 -9
 EFHN AB 0 0
@@ -226,7 +226,7 @@ A bloody severed foot lies here.
 This bloody foot definitely wasn't a lucky one.
 ~
 unique~
-BGT J -800 S
+ABGT J -800 S
 33 17 10d10+1100 3d33+333 6d4+10 15
 -11 -11 -11 -9
 EFHN AB 0 0
@@ -241,7 +241,7 @@ I wonder how the person that lost this smells...hopefully not as bad as
 this nose does...
 ~
 unique~
-BGT J -800 S
+ABGT J -800 S
 33 17 10d10+1100 3d33+333 6d4+10 13
 -10 -11 -11 -9
 EFHN AB 0 0
@@ -255,7 +255,7 @@ The blood in the fountain gurgles merrily.
 You see gallons and gallons of thick red blood gurgling in the fountain.
 ~
 unique~
-BGT J -950 S
+ABGT J -950 S
 45 23 25d10+3000 2d45+445 8d4+16 15
 -14 -15 -15 -13
 FH AB 0 0
@@ -270,7 +270,7 @@ This soul is definetely clueless to where it is. He holds a ticket
 that reads #14349023402342039840293481234900049.
 ~
 undead~
-BGT J -500 S
+ABGT J -500 S
 44 22 25d10+2750 2d44+444 8d4+15 18
 -15 -15 -15 -13
 EFHN AB 0 0
@@ -286,7 +286,7 @@ hulk that is being burned for eternity...I screams out as the flames lick
 at its body and devour its flesh...
 ~
 unique~
-BGT J -800 S
+ABGT J -800 S
 44 22 25d10+2750 2d44+444 8d4+15 5
 -15 -14 -15 -13
 EFHN AB 0 0
@@ -301,7 +301,7 @@ Stringy bits of flesh blow gently in the breeze. The bones rattle as you walk
 by them.
 ~
 undead~
-BGT J -700 S
+ABGT J -700 S
 37 19 10d10+1500 2d37+337 3d10+12 18
 -12 -12 -11 -10
 EFHN AB 0 0
@@ -319,7 +319,7 @@ skin gives them a diseased and decaying look. They somewhat resemble
 shadows or ghasts.
 ~
 unique~
-FGT J -900 S
+AFGT J -900 S
 35 18 10d10+1300 2d35+335 4d7+11 5
 -11 -11 -11 -9
 EFHN AB 0 0
@@ -335,7 +335,7 @@ thrown at him. He sits here chained to the wall; banished to hell forever by
 the God.
 ~
 human~
-BGT J -1000 S
+ABGT J -1000 S
 35 18 10d10+1300 2d35+335 4d7+11 17
 -11 -10 -11 -9
 EFHN AB 0 0
@@ -350,7 +350,7 @@ She is sad looking indeed. Cuts and scraps all over her. Many scars
 and burns cover her face and arms.
 ~
 human~
-BGT J -800 S
+ABGT J -800 S
 38 19 10d10+1600 2d38+338 5d6+12 16
 -13 -13 -13 -11
 EFHN AB 0 0
@@ -366,7 +366,7 @@ and burns cover her face and arms. One of his arms is broken at the
 forearm and hangs limply by his side.
 ~
 human~
-BGT J -800 S
+ABGT J -800 S
 38 19 10d10+1600 2d38+338 5d6+12 16
 -13 -13 -13 -11
 EFHN AB 0 0
@@ -381,7 +381,7 @@ This very large demon stands before you licking its daggerlike teeth.
 Yellow spittle runs down the scales of his blackened skin.
 ~
 unique~
-FGT J -800 S
+AFGT J -800 S
 40 20 15d10+1850 2d40+440 4d8+13 5
 -13 -13 -12 -11
 EFHN AB 0 I
@@ -396,7 +396,7 @@ You can barely make out anything on it. All you can make out is the flames
 of hell consuming it and the smell of burning flesh.
 ~
 human~
-BGT J -900 S
+ABGT J -900 S
 42 21 25d10+2250 2d42+442 3d12+14 15
 -14 -14 -14 -12
 EFHN AB 0 0
@@ -412,7 +412,7 @@ As you look closer at the hard hat you notice
 it says, '4th DEMONsion Construction Co.'
 ~
 human~
-BGT J -666 S
+ABGT J -666 S
 45 23 25d10+3000 2d45+445 8d4+16 27
 -15 -16 -16 -14
 CEFHN AB 0 0
@@ -428,7 +428,7 @@ As you look closer at the hard hat you notice
 it says, '4th DEMONsion Construction Co.'
 ~
 human~
-BGT J -666 S
+ABGT J -666 S
 46 23 25d10+3250 2d46+446 6d6+16 27
 -16 -15 -16 -14
 CEFHN AB 0 0
@@ -444,7 +444,7 @@ As you look closer at the hard hat you notice
 it says, '4th DEMONsion Construction Co.'
 ~
 human~
-BGT J -666 S
+ABGT J -666 S
 46 23 25d10+3250 2d46+446 6d6+16 27
 -16 -15 -16 -14
 CEFHN AB 0 0
@@ -460,7 +460,7 @@ with blisters and puss. As you look at it, it smiles at you with sharp blood
 covered teeth. This is definetly a face only a mother could love.
 ~
 unique~
-BGT J -1000 S
+ABGT J -1000 S
 48 24 50d10+4000 2d48+448 6d6+18 18
 -18 -18 -18 -16
 EFHN ABH I R
@@ -476,7 +476,7 @@ room burning everything in its path; Including the poor souls that are
 chained to various posts around the room.
 ~
 unique~
-BGT J -600 S
+ABGT J -600 S
 46 23 25d10+3250 2d46+446 6d6+16 8
 -16 -16 -16 -14
 EFHN ABH I R
@@ -492,7 +492,7 @@ ghastly red. Its sooty black teeth and tongue are covered with green spittle
 that runs down its  dung covered coat.
 ~
 dog~
-BFGT DFJQ -900 S
+ABFGT DFJQ -900 S
 45 23 25d10+3000 2d45+445 8d4+16 10
 -15 -15 -14 -13
 EFHN AB H 0
@@ -507,7 +507,7 @@ As you look at the corpse you recoil as you notice its eyes still move.
 They stare intently from its bluish face as if pleading for your help.
 ~
 undead~
-BGT J -900 S
+ABGT J -900 S
 47 24 25d10+3500 2d47+447 6d6+17 17
 -16 -17 -17 -15
 EFHN AB I H
@@ -525,7 +525,7 @@ and then starting over. Every couple of minutes it takes time out to
 break an apendage off of a nearby soul and beat the soul with it.
 ~
 unique~
-BFGT J -1000 S
+ABFGT J -1000 S
 52 26 50d10+5500 2d52+1552 6d7+20 3
 -22 -22 -21 -20
 EFHN ABH 0 0
@@ -541,7 +541,7 @@ iceflow. It desperatly gasps for air for a few minutes and then seems to
 die for a second before it is restore and begins thrashing about again.
 ~
 undead~
-BGT J -789 S
+ABGT J -789 S
 49 25 50d10+4000 2d49+449 4d10+18 13
 -19 -19 -19 -17
 EFHN AB I H
@@ -558,7 +558,7 @@ see small white maggots eating away at the body. The flesh seems to
 move and wriggle with a life of its own...
 ~
 undead~
-BGT J -876 S
+ABGT J -876 S
 51 27 50d10+5000 2d51+1551 5d8+20 17
 -21 -20 -21 -19
 EFHN AB I H
@@ -573,7 +573,7 @@ What a cute little penguin....wait why is it looking at you that way...
 HEY! penguins don't have teeth!
 ~
 water fowl~
-BFGT J -876 S
+ABFGT J -876 S
 52 28 50d10+5500 2d52+1552 6d7+20 23
 -21 -22 -22 -20
 EFHN AB I 0
@@ -590,7 +590,7 @@ It runs about screaming, 'I SCREAM, YOU SCREAM!
 WE ALL SCREAM FOR I SCREAM!!!'
 ~
 human~
-BGT J -706 S
+ABGT J -706 S
 52 28 50d10+5500 2d52+1552 6d7+20 27
 -22 -21 -22 -20
 EFHN ABI 0 H
@@ -608,7 +608,7 @@ He is dressing in a white jumpsuit with the words,
 written on it in large yellow letters.
 ~
 unique~
-BGT J -706 S
+ABGT J -706 S
 52 28 50d10+5500 2d52+1552 6d7+20 27
 -22 -21 -22 -20
 EFHN ABI 0 H
@@ -627,7 +627,7 @@ back in large black letters.
 He seems none to happy to see you.
 ~
 unique~
-BFGT DFJ -1000 S
+ABFGT DFJ -1000 S
 53 29 50d10+6000 2d53+1553 6d7+21 5
 -23 -23 -22 -21
 EFHN ABH 0 I
@@ -643,7 +643,7 @@ by watching the little lights on the telephone blink. She is oblivious
 to your presence and seems fascinated by the phones.
 ~
 human~
-BGT DEF -700 S
+ABGT DEF -700 S
 53 29 50d10+6000 2d53+1553 6d7+21 5
 -22 -23 -23 -21
 EFHN ABH 0 I
@@ -658,7 +658,7 @@ Just looking at them makes your blood boil.
 AAAAAAAAAAaaaaaaaaaaaarrrrrrrrgggggghhhhh!!!!!!!!!!!
 ~
 human~
-BGT DFJ -1000 S
+ABGT DFJ -1000 S
 53 29 50d10+6000 2d53+1553 6d7+21 5
 -22 -23 -23 -21
 EFHN AB 0 0
@@ -672,7 +672,7 @@ A records worker is here filing bad reports.
 You see a rather plain looking office personnel here filing a file on someone.
 ~
 human~
-BGT DFJ -1000 S
+ABGT DFJ -1000 S
 51 27 50d10+5000 2d51+1551 5d8+20 17
 -21 -21 -20 -19
 EFHN AB 0 0
@@ -687,7 +687,7 @@ Its a jolly old man, with red cheeks and a rolly polly belly and a laugh
 as jolly as you can get.
 ~
 human~
-BGT DFJ 1000 S
+ABGT DFJ 1000 S
 53 29 50d10+6000 2d53+1553 6d7+21 6
 -23 -23 -23 -21
 EFHN ABI 0 0
@@ -702,7 +702,7 @@ The dark black robes hide most of his features, but you can barely make
 out his emaciated face beneath his hood.
 ~
 human~
-BGT DFJ -1000 S
+ABGT DFJ -1000 S
 53 29 50d10+6000 2d53+1553 6d7+21 6
 -22 -23 23 -21
 EFHN AB 0 0
@@ -716,7 +716,7 @@ A bowl of blood sits here on the altar.
 Its is a wooden bowl filled with blood and bits of flesh.
 ~
 unique~
-BFGT DFJ -900 S
+ABFGT DFJ -900 S
 48 24 25d10+3750 2d48+448 6d6+18 7
 -18 -18 -17 -16
 EFHN ABR 0 0
@@ -730,7 +730,7 @@ A jury member sits here with a guilty sign, waiting for a trial to begin.
 It seems to be a lesser demon disguised as mortal. Fair trial...not likely.
 ~
 unique~
-BGT DFJ -800 S
+ABGT DFJ -800 S
 40 20 15d10+1850 2d40+440 4d8+13 5
 -13 -12 -13 -11
 EFHN AB 0 I
@@ -745,7 +745,7 @@ This is the High Judge of Hell. He has never found anyone innocent,
 and is notorious for his painful and harsh punishments.
 ~
 human~
-BGT DFJ -1000 S
+ABGT DFJ -1000 S
 52 28 50d10+5500 2d52+1552 6d7+20 17
 -21 -22 -22 -20
 EFHN AB 0 0
@@ -759,7 +759,7 @@ The Lawyer from Hell sits here playing games on his laptop computer.
 Slimy, sleezy and has very sharp teeth...a lawyer all right...
 ~
 human~
-BGT DFJ -1000 S
+ABGT DFJ -1000 S
 53 29 50d10+6000 2d53+1553 6d7+21 8
 -23 -23 -22 -21
 EFHN AB 0 0
@@ -775,7 +775,7 @@ She seems not to notice you; But is absorbed in her favorite soap,
 'As The Hell Burns'
 ~
 human~
-BGT DFJ -1000 S
+ABGT DFJ -1000 S
 51 27 50d10+5000 2d51+1551 5d8+20 22
 -21 -21 -21 -19
 EFHN AB 0 0
@@ -792,7 +792,7 @@ and then goes back to practicing.
 He is known to buy anything....and sell anything people sell him.
 ~
 human~
-BGT DFJ -600 S
+ABGT DFJ -600 S
 51 27 50d10+5000 2d51+1551 5d8+20 15
 -21 -21 -20 -19
 EFHN AB 0 0
@@ -806,7 +806,7 @@ A maintenance worker is here fixing stuff.
 He is in a yellow jumpsuit with a large nuclear warning symbol on the back.
 ~
 human~
-BGT DFJ -750 S
+ABGT DFJ -750 S
 50 26 50d10+4500 2d50+1550 5d8+19 15
 -19 -20 -20 -18
 EFHN AB 0 0
@@ -820,7 +820,7 @@ A weed is growing out of the cement here.
 You see a nasty yellow and purple weed.
 ~
 unique~
-BGT DEJ -1000 S
+ABGT DEJ -1000 S
 50 26 50d10+4500 2d50+1550 5d8+19 4
 -20 -20 -19 -28
 EFHN AB 0 0
@@ -851,7 +851,7 @@ This is what used to be a horse....maybe...its hard to tell; half of it has
 been digested already.
 ~
 horse~
-BGT DFJ -800 S
+ABGT DFJ -800 S
 51 27 50d10+5000 2d51+1551 5d8+20 8
 -21 -21 -21 -19
 EFHN AB 0 0
@@ -866,7 +866,7 @@ A large brown and green slime covered reptile. It seems to move around
 to each food item and proceed to barf acid all over it.
 ~
 unique~
-BGT DFJ -900 S
+ABGT DFJ -900 S
 53 29 50d10+6000 2d53+1553 6d7+21 14
 -23 -23 -22 -21
 EFHN AB 0 0
@@ -881,7 +881,7 @@ Its one of those really nasty pieces of food in the refrigerator that disappears
 and you wonder if it just walked away....
 ~
 unique~
-BGT DFJ -900 S
+ABGT DFJ -900 S
 51 27 50d10+5000 2d51+1551 5d8+20 13
 -21 -21 -20 -19
 EHIJN AB 0 0
@@ -896,7 +896,7 @@ He is dressed in a black jumpsuit with a large nuclear warning symbol on
 the back.
 ~
 human~
-BGT J -900 S
+ABGT J -900 S
 52 27 50d10+5500 2d52+1552 5d8+20 13
 -22 -22 -21 -20
 EFHN AB 0 0
@@ -911,7 +911,7 @@ He is dressed in a black jumpsuit with a large lighting bolt symbol on
 the back.
 ~
 human~
-BGT J -900 S
+ABGT J -900 S
 51 27 50d10+5000 2d51+1551 5d8+20 17
 -20 -21 -21 -19
 EFHN AB 0 0
@@ -931,7 +931,7 @@ Homer calmly stands up and unplugs the control panel and sits down
 for a nap.
 ~
 human~
-BGT J -900 S
+ABGT J -900 S
 52 28 50d10+5500 2d52+1552 5d8+20 13
 -22 -22 -22 -20
 EFHN AB 0 0
@@ -945,7 +945,7 @@ A nice slice of devils food cake is here waiting to be eaten.
 Mmmmmm...don't you just want to take a bite?
 ~
 unique~
-BGT J -900 S
+ABGT J -900 S
 52 28 50d10+5500 2d52+1552 5d8+20 1
 -22 -22 -21 -20
 EFHN AB 0 0
@@ -961,7 +961,7 @@ You spots you and screams, 'Git awai froom mi food!'
 'I'll kill you!'
 ~
 human~
-BFGT J -900 S
+ABFGT J -900 S
 52 28 50d10+5500 2d52+1552 5d8+20 27
 -22 -21 -22 -20
 H AB 0 0
@@ -974,7 +974,7 @@ A frantic lady is here tearing her hair out looking for a sale.
 ~
 ~
 human~
-GT J -600 S
+AGT J -600 S
 49 25 50d10+4000 2d49+1449 4d10+18 5
 -19 -19 -18 -17
 EFHN AB 0 0
@@ -987,7 +987,7 @@ A nuclear technician is here fiddling with his rad suit.
 ~
 ~
 human~
-BGT J -850 S
+ABGT J -850 S
 52 28 50d10+5500 2d52+1552 5d8+20 17
 -21 -22 -22 -20
 EFHN AB 0 0
@@ -1000,7 +1000,7 @@ A stray proton is here wizzing about.
 ~
 ~
 unique~
-BGT J -850 S
+ABGT J -850 S
 52 28 50d10+5500 2d52+1552 5d8+20 6
 -22 -22 -22 -20
 EFHN AB 0 0
@@ -1013,7 +1013,7 @@ Radiation is here doing unknown things to you.
 ~
 ~
 unique~
-BGT J -1000 S
+ABGT J -1000 S
 53 29 50d10+6000 2d53+1553 6d7+21 6
 -22 -23 -23 -21
 EFHN AB 0 0
@@ -1030,7 +1030,7 @@ the reactor floor frantically check dials and gauges while flashing lights
 and sirens sound.
 ~
 human~
-BGT J -1000 S
+ABGT J -1000 S
 54 30 50d10+6500 2d54+2524 7d6+22 8
 -24 -24 -23 -22
 EFHN AB 0 0
@@ -1048,7 +1048,7 @@ nails rip slowly through their flesh, as he cackles with glee at the
 sounds of their unending pain...
 ~
 unique~
-BGT J -1000 S
+ABGT J -1000 S
 50 26 50d10+4500 2d50+1500 5d8+19 7
 -19 -20 -20 -18
 EFHN ABH 0 I
@@ -1063,7 +1063,7 @@ This enormous carcass looks as if it came from a small dragon or a very
 large cow.
 ~
 unique~
-BGT J -675 S
+ABGT J -675 S
 49 25 50d10+4000 2d49+449 4d10+18 9
 -19 -19 -19 -17
 EFHN ABI 0 H
@@ -1077,7 +1077,7 @@ A guard dog sits here guarding the break room.
 A vicious looking pit bull & demon dog mix is here slobering on the donuts.
 ~
 dog~
-BGT J -900 S
+ABGT J -900 S
 45 23 25d10+3000 2d45+445 8d4+16 32
 -14 -15 -15 -13
 EFHN AB 0 0
@@ -1091,7 +1091,7 @@ A mouth watering juicy steak is here steaming.
 Mmmmmmm.....steak....mmmmmm...you feel your mouth start to water.
 ~
 unique~
-BGT J -900 S
+ABGT J -900 S
 52 28 50d10+5500 2d52+1512 6d7+20 27
 -22 -22 -21 -20
 EFHN AB 0 0
@@ -1116,7 +1116,7 @@ a black leather whip~
 A black leather whip lies on the ground here.~
 leather~
 5 BEJ AN
-7 4 11 40 0
+7 4 11 4 0
 40 20 1263 P
 
 #13403

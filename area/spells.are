@@ -14,9 +14,9 @@ Minimum level depends on your primary class and is:
 Mage:15  Cleric:13  Thief:18  Warrior:20  Monk: N/A   Necromancer:N/A
 ~
 
-0 'ACID BLAST' 'COLOUR SPRAY' 'MAGIC MISSILE' 'SHOCK SPHERE'~
+0 'ACID BLAST' 'Color SPRAY' 'MAGIC MISSILE' 'SHOCK SPHERE'~
 Syntax: cast 'acid blast'     <victim>
-Syntax: cast 'colour spray'   <victim>
+Syntax: cast 'color spray'   <victim>
 Syntax: cast 'magic missile'  <victim>
 Syntax: cast 'shock sphere'   <victim>
 
@@ -29,7 +29,7 @@ Acid blast is only usable by mages at level 28 or higher.
 
 Shock sphere is only usable by necromancers at level 15 and higher.
 
-For colour spray, minimum level depends on your primary class and is:
+For color spray, minimum level depends on your primary class and is:
 Mage:16  Cleric:18  Thief:20  Warrior:22   Monk: N/A   Necromancer:N/A
 
 For magic missile, minimum level depends on your primary class and is:

@@ -14,10 +14,10 @@ has a dog like snout, perky ears, and 6 legs, and has many more long
 sharp nasty teeth.
 ~
 lizard~
-GT F -400 S
+AGT F -400 S
 30 7 6d12+850 10d10+20 5d7+14 10
 -9 -9 -9 -6
-CDE 0 L F
+CDE AB L F
 8 8 1 250
 0 0 S 0
 #24102
@@ -31,10 +31,10 @@ battle with a minion of hell, and you die horribly!' . With that the
 hag breaks into an ugly fit of laughter.
 ~
 saurian~
-BCGQ DK 0 S
+ABCGQ DK 0 S
 28 5 6d12+740 10d10+20 3d8+13 5
 -7 -8 -8 -4
-K 0 F 0 
+K AB F 0
 8 8 2 500
 0 0 M 0
 #24103
@@ -50,10 +50,10 @@ running loose in the forest. Avoid the hag. Is there any chance of you
 hiring on to help defend Dunkeldorf?'.
 ~
 human~
-BGT N 500 S
+ABGT N 500 S
 30 6 6d12+875 10d10+20 4d6+13 25
 -9 -8 -7 0
-CDFK 0 0 H
+CDFK AB 0 H
 8 8 1 1000
 0 0 M 0
 #24104
@@ -66,10 +66,10 @@ carrying a lumber axe. He sees you and asks 'Have you come from the
 forest? You have? Is it safe again in the forest?
 ~
 human~
-GT P 400 S
+AGT P 400 S
 25 7 5d10+600 10d10+10 4d5+5 25
 -6 -6 -6 -6
-KO 0 0 P
+KO AB 0 P
 8 8 1 800
 0 0 M 0
 #24105
@@ -84,10 +84,10 @@ woods will strike town next. He gets to talking of the glory days of
 Dunkeldorf, before everyone started disappearing.
 ~
 human~
-BGT 0 450 S
+ABGT 0 450 S
 26 5 5d10+550 10d10+5 2d10+8 17
 -5 -5 -5 0
-DE CD 0 G
+DE ABCD 0 G
 8 8 1 5000
 0 0 M 0
 #24106
@@ -102,10 +102,10 @@ temple and fighting the guardian there. He wishes you luck and
 godspeed.
 ~
 human~
-BGT 0 550 S
+ABGT 0 550 S
 27 5 5d10+675 10d10+15 5d4+10 17
 -5 -5 -5 -2
-DEF CD 0 0
+DEF ABCD 0 0
 8 8 1 5000
 0 0 M 0
 #24107
@@ -120,10 +120,10 @@ to get iron from the old mine in the Murkmire, but the cave has long
 since collapsed and become unstable, so now he trades for it.
 ~
 human~
-BGT 0 600 S
+ABGT 0 600 S
 29 6 6d12+800 10d10+5 3d8+8 17
 -6 -6 -6 0
-DE CD 0 0
+DE ABCD 0 0
 8 8 1 5000
 0 0 M 0
 #24108
@@ -137,10 +137,10 @@ tells you a sad tale about his mad sister Gelda running off into the
 forest one night naked and screaming, never to return.
 ~
 human~
-BGT 0 700 S
+ABGT 0 700 S
 28 5 6d12+700 10d10+10 2d12+5 17
 -5 -5 -5 -2
-DE CD 0 0
+DE ABCD 0 0
 8 8 1 5000
 0 0 S 0
 #24109
@@ -153,10 +153,10 @@ satchel full of curiosities. He sings for you a song of life in the
 shire, and of longbottom leaf.
 ~
 hobbit~
-BG 0 300 S
+ABG 0 300 S
 26 4 5d10+475 10d10+1 2d10+5 17
 -4 -2 -4 -5
-EFJ CD 0 0
+EFJ ABCD 0 0
 8 8 1 5000
 0 0 S 0
 #24110
@@ -169,10 +169,10 @@ crush an ox. Its rounded head gives it away as a non poisonous
 constrictor.
 ~
 snake~
-GT JP 0 S
+AGT JP 0 S
 32 9 10d10+1050 10d10+1 4d7+14 10
 -10 -10 -9 -2
-DH 0 L J
+DH AB L J
 8 8 2 100
 0 0 L 0
 #24111
@@ -199,10 +199,10 @@ in the runes of the sickle and save the cross for dire need. May god be
 with you.'
 ~
 human~
-BGT HN 1000 S
+ABGT HN 1000 S
 33 10 10d10+1375 10d10+30 5d6+16 20
 -11 -10 -9 -9
-DEFH N G S
+DEFH ABN G S
 8 8 1 4000
 0 0 M 0
 #24112
@@ -214,10 +214,10 @@ The witch looks harried and driven. Her eyes dance wildly,
 and she cackles at you with an insane glee.
 ~
 saurian~
-GQ D -700 S
+AGQ D -700 S
 32 6 10d10+1050 10d10+300 3d9+10 19
 -8 -8 -7 -12
-K P C N
+K ABP C N
 8 8 2 2000
 0 0 M 0
 #24113
@@ -229,10 +229,10 @@ The warlock looks harried and driven. His eyes dart wildly,
 and he cackles with an insane glee.
 ~
 saurian~
-GR D -800 S
+AGR D -800 S
 33 6 10d10+1125 10d10+300 3d8+14 19
 -8 -7 -7 -11
-FK 0 0 F
+FK AB 0 F
 8 8 1 2250
 0 0 M 0
 #24114
@@ -244,10 +244,10 @@ The coven leader looks harried and driven. His eyes
 dart wildly, and he cackles with an insane glee.
 ~
 saurian~
-GR DF -900 S
+AGR DF -900 S
 34 8 10d10+1300 10d10+15 3d8+16 9
 -10 -10 -10 -10
-DEFI 0 G 0
+DEFI AB G 0
 8 8 1 1500
 0 0 M 0
 #24115
@@ -262,10 +262,10 @@ terrible talons. It looks at you, and with a fiery laughter, it says:
 battle, but you will not stop our plan!'
 ~
 saurian~
-FGT DFH -1000 S
+AFGT DFH -1000 S
 35 10 10d10+1350 10d10+25 4d7+17 18
 -12 -11 -11 -12
-DEHIK H P N
+DEHIK ABH P N
 8 8 1 7500
 0 0 M 0
 #24116
@@ -282,10 +282,10 @@ stretches out his hands in benediction, a sign that his services are open
 to you.
 ~ 
 human~
-BDGQ DEFH 1000 S
+ABDGQ DEFH 1000 S
 35 8 10d10+1300 10d10+400 3d8+12 20
 -5 -5 -5 -5
-0 CD 0 0
+0 ABCD 0 0
 8 8 1 1000
 0 0 M 0
 #0

@@ -11,10 +11,10 @@ A bat flaps wildly at you!
 Your typical smelly, blind flying mammal.
 ~
 bat~
-BF F 0 S
+ABFG F 0 S
 5 1 5d5+50 5d4+30 2d3+3 5
 5 5 5 5
-F B E F
+F AB E F
 8 8 0 500
 0 0 S 0
 #2002
@@ -25,10 +25,10 @@ A templar page in training is here looking mildly confused.
 He has lost his family and everything of his former life.
 ~
 human~
-H 0 200 S
+AH 0 200 S
 7 2 7d7+70 4d7+40 2d4+2 7
 4 4 4 4 
-F B E F
+F AB E F
 8 8 1 600
 0 0 M 0
 #2003
@@ -42,10 +42,10 @@ essential exploration gear; if there IS anything down here, he
 probably won't last long.
 ~
 human~
-CH F 100 S
+ACH F 100 S
 8 2 8d8+80 4d8+50 2d5+1 13
 3 3 3 3 
-J A 0 0
+J AB 0 0
 8 8 1 800
 0 0 M 0
 #2004
@@ -57,10 +57,10 @@ Working for an evil necromancer isn't the greatest thing in the world.
 They seem like little more than zombie servants themselves.
 ~
 undead~
-BF 0 -500 S
+ABFG 0 -500 S
 9 2 2d6+110 5d5+50 1d8+2 7
 2 2 2 2 
-C A 0 0
+C AB 0 0
 8 8 0 100
 0 0 M 0
 #2005
@@ -71,10 +71,10 @@ Some mist swirls about you here ... it seems ALIVE!
 In fact it IS alive in a magical sort of sense.
 ~
 unique~
-B HPU 0 S
+AB HPU 0 S
 10 2 2d7+121 5d10+50 2d5+2 0
 1 1 1 1
-E B 0 0
+E AB 0 0
 8 8 0 200
 0 0 M 0
 #2006
@@ -85,10 +85,10 @@ It is here.
 It sure is annoying, isn't It?
 ~
 unique~
-F 0 0 S
+AFG 0 0 S
 10 2 2d8+121 5d10+50 3d3+4 8
 1 1 1 1
-D AE 0 0
+D ABE 0 0
 8 8 0 1000
 0 0 M 0
 #2007
@@ -100,10 +100,10 @@ Even though he has died in the physical sense of the word, the battle
 continues for him in his charmed state.
 ~
 undead~
-CF 0 -350 S
+ACFG 0 -350 S
 11 2 2d8+134 5d11+60 1d10+2 2
 1 1 1 1
-I A 0 0
+I AB 0 0
 8 8 1 1100
 0 0 M 0
 #2008
@@ -118,10 +118,10 @@ A templar tells you, "You are an evil force trying to spread your ways!".
 A templar tells you, "You must die for your sin!".
 ~
 human~
-CF 0 600 S
+ACFG 0 600 S
 12 2 12d12+120 6d12+70 1d4+8 25
 0 0 0 0 
-F B 0 0
+F AB 0 0
 8 8 1 500
 0 0 M 0
 #2009
@@ -132,10 +132,10 @@ A mysterious ghostly wraith forms before your eyes.
 Hard to tell much about the mysterious form even upon further inspection.
 ~
 undead~
-CF FU 0 S
+ACFG FU 0 S
 12 2 12d12+120 6d12+70 2d7+1 32
 0 0 0 0 
-H B 0 0
+H AB 0 0
 8 8 1 600
 0 0 M 0
 #2010
@@ -146,10 +146,10 @@ A templar officer keeps an eye on things here.
 A templar officer tells you "Better move along evil one!"
 ~
 human~
-F D 700 S
+AFG D 700 S
 13 3 13d13+130 6d13+70 1d6+8 1
 -1 -1 -1 -1
-FN 0 0 0
+FN AB 0 0
 8 8 1 600
 0 0 M 0
 #2011
@@ -160,10 +160,10 @@ A blank-faced zombie mage joins the battle.
 He seems to lack real interest in what he is doing.
 ~
 undead~
-CF 0 -250 S
+ACFG 0 -250 S
 13 3 13d13+130 6d13+70 1d4+8 10
 -1 -1 -1 -1
-K B 0 0
+K AB 0 0
 8 8 1 550
 0 0 M 0
 #2012
@@ -174,10 +174,10 @@ Eerie shadows fill the room.
 Looks vaguely you-shaped.
 ~
 undead~
-0 FPU 0 S
+A FPU 0 S
 14 3 14d14+140 7d14+84 2d9+1 5
 -1 -1 -1 -1
-EF B 0 0
+EF AB 0 0
 8 8 0 800
 0 0 M 0
 #2013
@@ -188,10 +188,10 @@ A bat flaps wildly at you!
 A rather LARGE "bat" ...
 ~
 bat~
-BF F -500 S
+ABFG F -500 S
 15 3 15d15+150 7d15+80 1d10+7 5
 -2 -2 -2 -2
-F B 0 0
+F AB 0 0
 8 8 1 1000
 0 0 L 0
 #2014
@@ -203,10 +203,10 @@ Though he seems absorbed in his work, you'd bet he'd take the time out
 to kill you to get a fresh corpse!
 ~
 undead~
-BF 0 -800 S
+ABFG 0 -800 S
 15 3 15d15+150 7d15+80 1d8+8 7
 -2 -2 -2 -2
-HK B 0 0
+HK AB 0 0
 8 8 1 1100
 0 0 M 0
 #2015
@@ -218,10 +218,10 @@ A slight, tolerant smile comes briefly across his face.  In the blink
 of an eye he seems stern again.
 ~
 human~
-B DFH 800 S
+AB DFH 800 S
 16 3 16d16+160 7d16+80 1d8+12 6
 -2 -2 -2 -2
-FK B 0 0
+FK AB 0 0
 8 8 1 1500
 0 0 M 0
 #2016
@@ -232,10 +232,10 @@ The light shines off a beautiful but dangerous dragon lurking here.
 The spray of colored light bouncing off his scales is almost blinding.
 ~
 unique~
-BF DF -300 S
+ABFG DF -300 S
 20 3 20d20+200 10d20+120 6d3+14 10
 -4 -4 -4 -4
-EK B 0 0
+EK AB 0 0
 8 8 1 1000
 0 0 M 0
 #2017
@@ -246,10 +246,10 @@ You hear and smell the presence of the darkenbeast.
 You see nothing more than the sense of darkness and evil.
 ~
 unique~
-BF 0 -750 S
+ABFG 0 -750 S
 24 3 4d24+240 12d24+140 3d7+7 10
 -6 -6 -6 -6 
-EK B 0 0
+EK AB 0 0
 8 8 0 1000
 0 0 M 0
 #0

@@ -106,10 +106,10 @@ The mercenary looks like he is an adiquate guard, but if you want to travel to
 dangerous areas you may want to hire a bodyguard.
 ~
 human~
-BIU S 0 S
+ABIU S 0 S
 1 2 2d6+11 1d1+99 1d4+0 1
 -8 -8 -8 -10
-0 0 C 0
+0 AB C 0
 8 8 1 0
 0 0 M 0
 #2405
@@ -121,10 +121,10 @@ The elven scout looks like an agile fighter but would rather leave the heavy
 fighting to the stout warriors.
 ~
 elf~
-BIU JPS 0 S
+ABIU JPS 0 S
 3 2 4d6+25 1d1+99 1d6+0 2
 -7 -7 -7 -10
-N 0 C 0
+N AB C 0
 8 8 1 0
 0 0 M 0
 #2406
@@ -135,10 +135,10 @@ A trustworthy bodyguard is here protecting his master.
 The bodyguard looks like a trustworthy warrior.
 ~
 human~
-BIU FS 0 S
+ABIU FS 0 S
 5 3 3d12+50 1d1+99 1d6+0 7
 -5 -5 -5 -9
-N 0 C 0
+N AB C 0
 8 8 1 0
 0 0 L 0
 #2407
@@ -150,10 +150,10 @@ The stout dwarven warrior looks like he could handle himself against great
 odds.
 ~
 dwarf~
-BIU JS 0 S
+ABIU JS 0 S
 7 3 6d10+60 1d1+149 2d4+1 21
 -4 -4 -4 -8
-CDL 0 C 0
+CDL AB C 0
 8 8 1 0
 0 0 M 0
 #2408
@@ -165,10 +165,10 @@ The fierce looking giant gladiator looks like he has survived many bouts in the
 arena and can take care of himself as well as protect his master.
 ~
 giant~
-BIU S 0 S
+ABIU S 0 S
 9 3 6d10+80 1d1+99 2d5+1 27
 -4 -4 -4 -8
-C 0 C 0
+C AB C 0
 8 8 1 0
 0 0 G 0
 #2409
@@ -180,10 +180,10 @@ The nomad warrior is wearing a long white robe over his chainmail.  On his head
 is a turban of white cloth.  There is a huge scimitar hanging at his side.
 ~
 human~
-BIU S 0 S
+ABIU S 0 S
 25 20 10d10+380 1d1+199 4d5+10 8
 -10 -10 -10 -5
-C 0 C 0
+C AB C 0
 8 8 1 0
 0 0 H 0
 #2420
@@ -212,7 +212,7 @@ wizard. He is equipped with fine clothing, and is wearing many fine
 rings and bracelets.
 ~
 human~
-BMV D 0 S
+ABMV D 0 S
 23 0 1d1+999 1d1+999 1d8+32 19
 -15 -15 -15 -15
 AF ABCD 0 0
@@ -247,7 +247,7 @@ A grocer stands at the counter, with a slightly impatient look on his face.
 A tall grocer, who moves two 200 pounds bag of flour around on his shoulders.
 ~
 human~
-BMV 0 0 S
+ABMV 0 0 S
 23 0 1d1+999 1d1+99 1d8+20 13
 -15 -15 -15 -15
 EFJ ABCD 0 0
@@ -261,7 +261,7 @@ A weaponsmith.
 A young weaponsmith, who still has lots to learn.
 ~
 human~
-BTVM 0 0 S
+ABMTV 0 0 S
 23 10 1d1+999 1d1+99 1d8+32 17
 -15 -15 -15 -15
 CEIK ABCD 0 0
@@ -275,10 +275,10 @@ A thief, all dressed in black.
 Well COUNT your money!
 ~
 human~
-CHS PQ 0 S
+ACHS PQ 0 S
 8 1 6d8+80 1d1+99 1d5+1 17
 2 4 3 7
-EFJN 0 0 0
+EFJN AB 0 0
 8 8 3 100
 0 0 M 0
 #2426
@@ -289,7 +289,7 @@ A retired captain stands here, selling boats.
 This captain has killed more sharks than you have eaten peas.
 ~
 human~
-BMTV 0 0 S
+ABMTV 0 0 S
 23 10 1d1+999 1d1+99 1d8+32 13
 -15 -15 -15 -15
 CEI ABCD 0 0
@@ -304,7 +304,7 @@ She looks like an honest, hard-working artisan who only just earns enough to
 keep herself going.
 ~
 human~
-BMV 0 0 S
+ABMV 0 0 S
 23 0 1d1+999 1d1+99 1d8+20 17
 -15 -15 -15 -15
 AFN ABCD 0 0
@@ -341,7 +341,7 @@ frame.  She looks up from her pile of papers and maps and looks inquiringly
 at you, smiling faintly.
 ~
 human~
-BMV 0 0 S
+ABMV 0 0 S
 25 0 1d1+999 1d1+199 5d6+20 16
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -355,10 +355,10 @@ A vagabond is here, looking for victims.
 He looks pretty mean.
 ~
 human~
-CS 0 -200 S
+ACS 0 -200 S
 5 1 2d6+60 1d1+99 1d6+1 17
 7 5 5 10
-BJNQ 0 0 C
+BJNQ AB 0 C
 8 8 1 18
 0 0 M 0
 #2431
@@ -369,10 +369,10 @@ A singing, happy drunk wanders around, singing about Moria.
 A drunk who seems to be too happy, and to carry too much money.
 ~
 human~
-G 0 400 S
+AG 0 400 S
 2 1 2d6+22 1d1+99 1d6+0 13
 8 8 8 10
-U 0 0 C
+U AB 0 C
 8 8 1 65
 0 0 M 0
 #2432
@@ -383,10 +383,10 @@ A beggar is here, asking for a few coins.
 The beggar looks like she is fed up with life.
 ~
 human~
-B 0 400 S
+AB 0 400 S
 1 0 2d6+10 1d1+99 1d5+0 13
 8 8 8 10
-FJNU 0 0 C
+FJNU AB 0 C
 8 8 2 0
 0 0 M 0
 #2433
@@ -397,10 +397,10 @@ A reindeer prances down the street.
 The reindeer is a half starved reject from Santa's herd.
 ~
 cat~
-FGHU 0 -200 S
+AFGHU 0 -200 S
 0 1 1d6+4 1d1+99 1d4+0 22
 8 8 8 9
-DR 0 0 C
+DR AB 0 C
 8 8 3 0
 0 0 S 0
 #2434
@@ -431,10 +431,10 @@ Santa's elf is collecting presents for you.
 He's a cute little elf wearing a bright red cap.
 ~
 human~
-GH 0 900 S
+AGH 0 900 S
 1 0 2d6+10 1d1+99 1d5+0 7
 10 10 10 10
-NU 0 0 C
+NU AB 0 C
 8 8 3 10
 0 0 M 0
 #2436
@@ -445,10 +445,10 @@ A cute little pony is ready to take you places.
 The pony is a small horse, white, with brown patches. It is quite cute.
 ~
 horse~
-BIUW S 0 S
+ABIUW S 0 S
 5 3 2d6+60 2d5+105 1d6+1 10
 -8 -8 -8 -10
-I 0 C 0
+I AB C 0
 8 8 1 0
 0 0 M 0
 #2437
@@ -460,10 +460,10 @@ The pack mule is a beast of burden. It is a cross between a donky and a horse.
 It is a dark brown color, with lighter brown around its muzzle and forelocks.
 ~
 horse~
-BIUW S 0 S
+ABIUW S 0 S
 10 5 2d7+121 2d10+110 2d4+2 10
 -10 -10 -10 -12
-I 0 C 0
+I AB C 0
 8 8 1 0
 0 0 M 0
 #2438
@@ -476,10 +476,10 @@ tan color, with white mane, muzzle, forelocks and tail. It is quite a nice
 looking steed.
 ~
 horse~
-BIUW S 0 S
+ABIUW S 0 S
 15 8 3d9+208 2d15+115 2d6+3 10
 -15 -15 -15 -20
-I 0 C 0
+I AB C 0
 8 8 1 0
 0 0 M 0
 #2439
@@ -491,10 +491,10 @@ The stallion has recently been broken well enough to ride, though still a bit
 rambunctious. He is entirely black, and is a steed worthy of its owner.
 ~
 horse~
-BIUW S 0 S
+ABIUW S 0 S
 20 10 3d9+333 2d20+120 2d8+5 32
 -20 -20 -20 -25
-I 0 C 0
+I AB C 0
 8 8 1 0
 0 0 M 0
 #2440
@@ -507,10 +507,10 @@ It is a mottled grey color, and upon its great barrel chest is the coat of
 arms brand of its owner. This beast would be a formidable mount in battle.
 ~
 horse~
-BIUW S 0 S
+ABIUW S 0 S
 25 13 5d10+550 2d25+125 2d10+7 32
 -25 -25 -25 -30
-I 0 C 0
+I AB C 0
 8 8 1 0
 0 0 M 0
 #2441
@@ -524,10 +524,10 @@ an elephant, the rider has the advantage of height and is next to impossible
 to dismount.
 ~
 horse~
-BIUW S 0 S
+ABIUW S 0 S
 30 15 6d12+853 2d30+130 4d6+8 8
 -20 -20 -20 -25
-I 0 C 0
+I AB C 0
 8 8 1 0
 0 0 M 0
 #4200
@@ -541,7 +541,7 @@ he is from the nearby deserts, and from you have heard of the nomadic warriors
 of the deserts he is probably best left alone.
 ~
 giant~
-BTV CDFJ 1000 S
+ABTV CDFJ 1000 S
 40 30 1d1+2999 1d1+499 4d4+30 8
 -20 -20 -20 -10
 ACDEFHIKLNOT ABP CD 0
@@ -557,7 +557,7 @@ vacationing healer.
 Type 'heal' to see a listing of spells.
 ~
 human~
-BDMQV DFH 1000 S
+ABDMQV DFH 1000 S
 55 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 FHIK ABCD 0 0
@@ -572,7 +572,7 @@ He hates Christmas, hates hates hates it!  And he is determined to keep
 you from having any fun at all!
 ~
 giant~
-BMTV CDFJ 1000 S
+ABMTV CDFJ 1000 S
 40 30 1d1+2999 1d1+499 4d4+30 8
 -20 -20 -20 -10
 ACDEFHIKLNOT ABP CD 0
@@ -590,7 +590,7 @@ does not look like the type of warrior to mess with and he looks very serious
 about his job.
 ~
 giant~
-BMRV BCDFJT 1000 S
+ABMRV BCDFJT 1000 S
 40 30 1d1+2999 1d1+499 4d4+30 8
 -20 -20 -20 -10
 ACDEFHIKLNOT ABP CD 0
@@ -605,7 +605,7 @@ Although retired from adventuring, the healer still lends a hand.
 Type 'heal' to see a listing of spells.
 ~
 elf~
-BDMQV DFH 1000 S
+ABDMQV DFH 1000 S
 40 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 FHIK ABCD 0 0
@@ -622,7 +622,7 @@ does not look like the type of warrior to mess with and he looks very serious
 about his job.
 ~
 giant~
-BMTV CDFJ 1000 S
+ABMTV CDFJ 1000 S
 40 30 1d1+2999 1d1+499 4d4+30 8
 -20 -20 -20 -10
 ACDEFHIKLNOT ABP CD 0
@@ -637,7 +637,7 @@ Although retired from adventuring, the healer still lends a hand.
 Type 'heal' to see a listing of spells.
 ~
 dwarf~
-BDMQV DFH 1000 S
+ABDMQV DFH 1000 S
 40 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 FHIK ABCD 0 0
@@ -655,7 +655,7 @@ does not look like the type of warrior to mess with and he looks very serious
 about his job.
 ~
 giant~
-BMSV CDFJPQ 1000 S
+ABMSV CDFJPQ 1000 S
 40 30 1d1+2999 1d1+499 4d4+30 8
 -20 -20 -20 -10
 ACDEFHIKLNOT ABP CD 0
@@ -670,7 +670,7 @@ Although retired from adventuring, the healer still lends a hand.
 Type 'heal' to see a listing of spells.
 ~
 hobbit~
-BDMQV DFH 1000 S
+ABDMQV DFH 1000 S
 40 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 FHIK ABCD 0 0
@@ -687,7 +687,7 @@ does not look like the type of warrior to mess with and he looks very serious
 about his job.
 ~
 giant~
-BMQV CDFHJ 1000 S
+ABMQV CDFHJ 1000 S
 40 30 1d1+2999 1d1+499 4d4+30 8
 -20 -20 -20 -10
 ACDEFHIKLNOT ABP CD 0
@@ -702,7 +702,7 @@ Although retired from adventuring, the healer still lends a hand.
 Type 'heal' to see a listing of spells.
 ~
 human~
-BDMQV DFH 1000 S
+ABDMQV DFH 1000 S
 40 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 FHIK ABCD 0 0
@@ -717,10 +717,10 @@ A black sash holds up his brown robe which he wears around his body. He wears
 sandals upon his feet, and carries no visible weapons about his body.
 ~
 human~
-GMQTU CNPV -1000 S
+AGMQTU CNPV -1000 S
 15 18 6d6+226 1d1+699 6d4+20 25
 -5 -5 -5 -10
-CEFIJKNTU BMNPRS IJLQ K
+CEFIJKNTU ABMNPRS IJLQ K
 8 8 1 100
 0 0 H 0
 #4611
@@ -733,10 +733,10 @@ worn about her slim waist. Balanced against the table leg you notice a
 massive warhammer which is within her reach if she needs to use it.
 ~
 human~
-BQ HN 1000 S
+ABQ HN 1000 S
 25 20 8d6+755 1d1+889 4d6+22 8
 -10 -10 -10 -5
-FOTU ALNPQRS BI M
+FOTU ABLNPQRS BI M
 6 6 2 0
 0 0 M 0
 #4612
@@ -748,10 +748,10 @@ He wears a white, silk robe that covers his body and a purple sash is worn
 about his waist. A tanned hand rests on a mace lying by his side.
 ~
 human~
-BQ HN 1000 S
+ABQ HN 1000 S
 25 20 8d6+760 1d1+799 6d6+20 8
 -8 -8 -8 -5
-FOTU ALNPQRS BI M
+FOTU ABLNPQRS BI M
 8 8 1 0
 0 0 M 0
 #4613
@@ -764,16 +764,16 @@ veil covers his face, and two eyeholes have been poked into the veil so that
 he can see.
 ~
 human~
-CGU W 0 S
+ACGU W 0 S
 5 2 4d4+60 1d1+99 1d8+5 17
 2 2 2 0
-DT 0 MNR 0
+DT AB MNR 0
 8 8 1 0
 0 0 M 0
 #4614
 knight paladin shopkeeper warrior valkur~
 Valkur~
-Leaning against the wall is a muscled warrior in sparkling, steel armour.
+Leaning against the wall is a muscled warrior in sparkling, steel armor.
 He greets you with a warm smile and says 'How may I help you?'
 ~
 Valkur wears a white cloak across his back with Breas' coat of arms stitched
@@ -784,7 +784,7 @@ upon the top. At his side is a giant, two-handed sword tied to his scabbard in
 a peace knot.
 ~
 human~
-BMQTV HN 1000 S
+ABMQTV HN 1000 S
 50 60 1d1+29999 1d1+29999 9d9+100 8
 -100 -100 -100 -100
 O ABCD 0 0
@@ -799,7 +799,7 @@ She kneels on the floor looking skyward to heaven.  Her face is calm and
 her voice tranquil as she asks 'How may I help you?'
 ~
 human~
-BJMQV W 1000 S
+ABJMQV W 1000 S
 40 0 1d1+1999 1d1+1999 3d8+24 20
 -20 -20 -20 -20
 AFO ABCD 0 0
@@ -813,10 +813,10 @@ A cleric from a distant land wanders about the guild.
 He greets you with a warm smile, and firm handshake.
 ~
 elf~
-0 0 1000 S
+A 0 1000 S
 12 5 1d1+149 1d1+499 6d6+10 20
 -10 -5 -5 -5
-0 A 0 0
+0 AB 0 0
 8 8 1 0
 0 0 H 0
 #4617
@@ -827,7 +827,7 @@ Your guildmaster is standing here.
 His eyes are glazed over as if in a trance as he looks past you.
 ~
 human~
-KEMQV W 1000 S
+AEKMQV W 1000 S
 40 0 1d1+1999 1d1+199 3d8+24 20
 -20 -20 -20 -20
 AF ABCD 0 0
@@ -841,7 +841,7 @@ A knight templar strolls about here, guarding the temple from intruders.
 A warhammer is strapped to his leg, and he wears light chain mail.
 ~
 human~
-GQ DN 0 S
+AGQ DN 0 S
 14 5 6d6+180 1d1+99 3d4+14 7
 -5 -5 -5 -5
 EFKT AB 0 0
@@ -855,7 +855,7 @@ A knight templar strolls about here, guarding the temple from intruders.
 A warhammer is strapped to her leg, and she wears light chain mail.
 ~
 human~
-GQ DN 0 S
+AGQ DN 0 S
 16 5 6d6+190 1d1+99 3d4+15 7
 -5 -5 -5 -5
 EFKT AB 0 0
@@ -869,7 +869,7 @@ A knight templar stands here, guarding the temple from intruders.
 A flail is strapped to his leg, and he wears a suit of plate mail on his body.
 ~
 human~
-GQ DN 0 S
+AGQ DN 0 S
 20 10 8d8+270 1d1+99 4d4+20 7
 -10 -5 -5 -7
 EFKT AB 0 0
@@ -884,7 +884,7 @@ A flail is strapped to her leg, and she wears a suit of plate mail on her
 body.
 ~
 human~
-GQ DN 0 S
+AGQ DN 0 S
 20 10 8d8+270 1d1+99 4d4+20 7
 -10 -8 -5 -5
 EFKT AB 0 0
@@ -899,7 +899,7 @@ She wears a white apron about her waist, and offers you plates and dishes of
 exotic foods from around the world.
 ~
 human~
-BQUV HN 1000 S
+ABQUV HN 1000 S
 35 0 1d1+1999 1d1+199 6d6+24 16
 -10 -10 -10 -10
 CEFKO ABCD 0 0
@@ -914,7 +914,7 @@ When you look at her she smacks you in the face so hard, you get a big purple
 bruise on the side of your cheek.  She laughs at you as you start to cry.
 ~
 human~
-BDMQUV H 1000 S
+ABDMQUV H 1000 S
 40 30 1d1+1999 1d1+199 8d8+30 20
 -20 -20 -20 -20
 0 ABCD 0 0
@@ -927,7 +927,7 @@ The missionary is here, selling equipment for when you go abroad.
 ~
 ~
 human~
-BMQTUV H 1000 S
+ABMQTUV H 1000 S
 40 30 1d1+1999 1d1+99 8d8+30 27
 -20 -20 -20 -20
 0 ABCD 0 0
@@ -941,10 +941,10 @@ A priest walks around the courtyard here.
 A simple man wearing black robes, and carrying no visible weapons.
 ~
 human~
-GQ 0 -500 S
+AGQ 0 -500 S
 6 0 1d1+59 1d1+99 2d4+10 7
 5 5 10 0
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #4626
@@ -955,10 +955,10 @@ A priestess walks around the courtyard here.
 A simple woman wearing black robes, and carrying no visible weapons.
 ~
 human~
-GQ 0 -500 S
+AGQ 0 -500 S
 6 0 1d1+59 1d1+99 2d4+10 7
 5 5 10 0
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #4700
@@ -972,10 +972,10 @@ exam, and as pennance, is doomed to serve as the guild's guard for
 eternity.  This does not please him in the least!
 ~
 undead~
-BGTV BDFHJQT -1000 S
+ABGTV BDFHJQT -1000 S
 50 25 5d10+4500 2d50+500 5d8+19 0
 -20 -20 -20 -20
-CDEIKN BILQR FG EN
+CDEIKN ABILQR FG EN
 8 8 1 0
 0 0 M 0
 #4701
@@ -990,7 +990,7 @@ vampire~
 ABEGJKV HT -1000 S
 55 27 50d10+7000 2d55+2000 10d4+23 18
 -25 -25 -25 -25
-ACDEIKN BILQR FG EN
+ACDEIKN ABILQR FG EN
 8 8 1 0
 0 0 L 0
 #4702
@@ -1005,7 +1005,7 @@ undead~
 ABDGQV HT -1000 S
 50 25 50d10+44500 2d50+1500 5d8+19 0
 -20 -20 -20 -20
-ACDEIKN BILQR FQ EN
+ACDEIKN ABILQR FQ EN
 8 8 1 0
 0 0 M 0
 #4703
@@ -1021,7 +1021,7 @@ undead~
 AEGJKTV 0 -1000 S
 50 25 50d10+4500 2d50+1500 5d8+19 0
 -20 -20 -20 -20
-ACDEIKN BILQR FQ EN
+ACDEIKN ABILQR FQ EN
 8 8 1 0
 0 0 M 0
 #4704
@@ -1038,7 +1038,7 @@ undead~
 ABEGJKTV 0 -1000 S
 50 25 50d10+4500 2d50+1500 5d8+19 0
 -20 -20 -20 -20
-ACDEIKN BILQR FQ EN
+ACDEIKN ABILQR FQ EN
 8 8 1 0
 0 0 M 0
 #4705
@@ -1055,7 +1055,7 @@ undead~
 ABEGJKOV T -1000 S
 50 25 50d10+4500 2d50+1500 5d8+19 0
 -20 -20 -20 -20
-ACDEIKN BILQR FQ EN
+ACDEIKN ABILQR FQ EN
 8 8 1 0
 0 0 M 0
 #4706
@@ -1072,7 +1072,7 @@ undead~
 ABEGJKOV H -1000 S
 54 27 5d50+6500 2d54+3000 7d6+22 10
 -24 -24 -24 -24
-ACDEIKN BILQR FQ EN
+ACDEIKN ABILQR FQ EN
 8 8 1 0
 0 0 M 0
 #4707
@@ -1088,7 +1088,7 @@ undead~
 ABGV J -1000 S
 50 25 50d10+4500 2d50+1500 5d8+19 0
 -20 -20 -20 -20
-ACDEIKN BILQR FQ EN
+ACDEIKN ABILQR FQ EN
 8 8 1 0
 0 0 M 0
 #4708
@@ -1106,7 +1106,7 @@ undead~
 ABGV J -1000 S
 50 25 50d10+4500 2d50+1500 5d8+19 0
 -20 -20 -20 -20
-ACDEIKN BILQR FQ EN
+ACDEIKN ABILQR FQ EN
 8 8 1 0
 0 0 M 0
 #4709
@@ -1122,7 +1122,7 @@ undead~
 ABGV J -1000 S
 50 25 50d10+4500 2d50+1500 5d8+19 0
 -20 -20 -20 -20
-ACDEIKN BILQR FQ EN
+ACDEIKN ABILQR FQ EN
 8 8 1 0
 0 0 M 0
 #4801
@@ -1136,7 +1136,7 @@ from the elements. Up ahead in the distance you can see another strange
 phenomenon, maybe you should go explore.
 ~
 unique~
-BGMTV DFGJT 0 S
+ABGMTV DFGJT 0 S
 60 50 200d2+6500 100d1+250 10d5+15 17
 -18 -19 -17 -20
 ACDEFHN ABEHI 0 0
@@ -1152,7 +1152,7 @@ at the trees and birds around you, for some reason you feel that this is the
 person you seek.
 ~
 human~
-BEGJKLMV DEFH 0 S
+ABEGJKLMV DEFH 0 S
 60 100 200d2+5000 100d1+150 10d10+10 17
 -20 -20 -20 -20
 EFNU AB 0 0
@@ -1168,7 +1168,7 @@ remind you of a bird in flight, you have the odd feeling that this is the
 person that you have been looking for.
 ~
 human~
-BEGJKLMV DEFH 0 S
+ABEGJKLMV DEFH 0 S
 60 100 200d2+5000 100d1+150 10d10+10 17
 -20 -20 -20 -20
 EFNU AB 0 0
@@ -1184,7 +1184,7 @@ have sought along the path of the way. Learn well from this man, for all
 of his teachings bring inner harmony and grace to your being.
 ~
 human~
-BEGJKLMV DEFH 0 S
+ABEGJKLMV DEFH 0 S
 60 100 200d2+7000 100d1+300 10d10+15 17
 -20 -20 -20 -20
 EFNU AB 0 0
@@ -1305,7 +1305,7 @@ A
 #4615
 white cloak~
 a white cloak~
-The cloak is the colour of snow, and feels soft to the touch.~
+The cloak is the color of snow, and feels soft to the touch.~
 cloth~
 11 GI AC
 8 8 7 2 0
@@ -1398,7 +1398,7 @@ A
 #4622
 light chain mail~
 a suit of light chain mail~
-This armour looks like its made from aluminum.~
+This armor looks like its made from aluminum.~
 steel~
 9 DGIKLM AD
 6 7 7 0 0

@@ -47,7 +47,7 @@ unique~
 ABMV B 0 S
 1 3 5d4+9 5d4+0 5d5+1 18
 -1 -1 -1 -1
-0 B 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #17402
@@ -65,7 +65,7 @@ unique~
 ABMV B 0 S
 1 3 5d4+9 5d4+0 5d5+1 18
 -1 -1 -1 -1
-0 B 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #17403
@@ -81,7 +81,7 @@ carries a reputation of getting into quite a bit of trouble, but given
 enough tries and she can cure just about anything.
 ~
 human~
-BDMGQV DFHJ 1000 S
+ABDGMQV DFHJ 1000 S
 60 30 300d1+5000 2d500+1500 12d7+10 1
 -5 -5 -5 -5
 F AB 0 0
@@ -102,7 +102,7 @@ bracers on his arms are etched with the following statement. "Woe be to he who
 made himself an enemy of Istari, for his payment is eternal payback."
 ~
 dwarf~
-BMTV BDFHJ 500 S
+ABMTV BDFHJ 500 S
 55 27 200d1+4700 2d255+600 11d5+5 21
 -3 -3 -3 -3
 CDEJKU AB CLQ R
@@ -166,7 +166,7 @@ to he who made himself an enemy of Istari, for his payment is eternal
 payback."
 ~
 dwarf~
-BMTV BDFJ 500 S
+ABMTV BDFJ 500 S
 55 27 200d1+4700 2d255+600 11d5+5 21
 -3 -3 -3 -3
 CDEJKU AB CLQ R
@@ -573,7 +573,7 @@ through the generations."
 ~
 S
 #17409
-The Room of Travellers~
+The Room of Travelers~
 This room is a simple unfurnished and bare room.  Three exits lead out of
 the room with the exception of the spiral stairwell up.  The north exit
 has above it an engraving of a comet screaming across the sky.  The 
@@ -1172,7 +1172,7 @@ S
 #17434
 A Fenced Path~
 The damp air chills you as you walk this cobblestone path. On either side
-of the path a small wooden fence has been erected to keep the traveller
+of the path a small wooden fence has been erected to keep the traveler
 off the grass growing to either side.  As you walk, you notice to the right
 of the path several gravestones, marking the site of last resting places of
 those who gave their final breath to this tower's existence.  To the north

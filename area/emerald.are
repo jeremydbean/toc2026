@@ -13,10 +13,10 @@ is just slightly taller than 5 feet and has the eternally beautiful
 and youthful features of the faerie folk.  
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 24 6 2d10+500 1d1+99 5d5+5 17
 -7 -7 -7 -7
-KU NBJ B 0
+KU ABJN B 0
 8 8 2 100
 0 0 S 0
 #20502
@@ -31,10 +31,10 @@ running water and you cannot be sure if it is her singing or a brook
 in the distance.  She calls out to you to join her in her dance. 
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 29 9 2d10+750 1d1+99 4d5+10 16
 -10 -10 -10 -10
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 2 150
 0 0 S 0
 #20503
@@ -50,10 +50,10 @@ out. Not looking at them directly, he seems to be eyeing one of the
 brownies.
 ~
 unique~
-G D 1000 S
+AG D 1000 S
 13 4 2d1+175 1d1+99 2d5+2 19
 0 0 0 0
-FU NBJ B 0
+FU ABJN B 0
 8 8 2 80
 0 0 S 0
 #20504
@@ -66,10 +66,10 @@ and equally playful.  He is dressed in a brown jerkin and you see that
 its pockets are filled with acorns and nuts.  
 ~
 unique~
-G TD 0 S
+AG TD 0 S
 20 6 2d1+350 1d1+99 3d5+12 2
 -5 -5 -5 -5
-FU NBJ B 0
+FU ABJN B 0
 8 8 1 80
 0 0 S 0
 #20505
@@ -85,10 +85,10 @@ pretty elvin features, and is dressed totally in brown. She wears
 no cap, her otherwise long hair tied in a pony-tail.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 17 5 2d1+280 1d1+99 3d4+9 17
 -4 -4 -4 -4
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 1 100
 0 0 S 0
 #20506
@@ -96,7 +96,7 @@ Ranger~
 a ranger~
 A ranger stands here, inspecting the ground.
 ~
-A young man dressed in superb leather armour and green stands here,
+A young man dressed in superb leather armor and green stands here,
 longbow strapped comfortably over his back and a longsword by his
 side. He has dark black hair, and has features which are both kind
 and handsome while lacking in weakness. He notices you and smiles,
@@ -104,10 +104,10 @@ while continues tending to a small deer which seems to have injured
 its leg.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 39 20 15d10+1700 1d1+99 5d6+13 17
 -10 -10 -10 -10
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 1 100
 0 0 M 0
 #20507
@@ -122,10 +122,10 @@ bone in his spindly body and the forest would be well rid of him.
 He unleashes a torrent of curses at you.  
 ~
 unique~
-BCHS PQH -900 S
+ABCHS PQH -900 S
 20 12 2d1+400 1d1+99 3d5+5 22
 0 0 0 0
-AEFKU L L N
+AEFKU ABL L N
 8 8 0 50
 0 0 S 0
 #20508
@@ -141,7 +141,7 @@ got 'kill me now' written all over its forehead in every possible
 language known.
 ~
 unique~
-B D -1000 S
+AB D -1000 S
 15 3 2d1+200 1d1+99 2d5+5 11
 +5 +5 +5 +5
 CDEFKJU AB B N
@@ -158,10 +158,10 @@ banquet table.  This one looks set to give you a good kick if you won't
 let it continue eating its weeds.  It bares large yellowed teeth at you.
 ~
 unique~
-B D -950 S
+AB D -950 S
 20 8 2d1+390 1d1+99 3d5+14 13
 0 0 0 0
-CDEFKJU B B N
+CDEFKJU AB B N
 8 8 0 50
 0 0 M 0
 #20510
@@ -174,7 +174,7 @@ rotting cape about his body and draws his weapon slowly.  He has been
 preparing for the Great Hunt and in a low voice he intones your name.
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 35 15 2d1+1500 1d1+99 6d6+25 17
 -8 -8 -8 -8
 CDEFKJU AB B N
@@ -191,7 +191,7 @@ It holds its boney hands out-stretched and seems to be asking you
 for a dance.  A tango perhaps, or a foxtrot.
 ~
 unique~
-BFG D -1000 S
+ABFG D -1000 S
 25 10 2d1+600 1d1+99 4d5+10 22
 -3 -3 -3 -3
 CDEFKJU AB B N
@@ -210,7 +210,7 @@ forest brown leathers and green cloak, he is currently practicing
 the use of his staff.
 ~
 unique~
-B DFN 0 S
+AB DFN 0 S
 60 20 2d1+10000 1d1+99 5d6+150 13
 -19 -19 -19 -19
 FK AB BCD 0
@@ -222,13 +222,13 @@ the Ancient Ranger Lord~
 A silver haired ranger sits here making arrows.
 ~
 A tall middle-aged man wearing a combination of light mithril chain
-and leather armour sits in a chair here. His jet black hair, piercing
+and leather armor sits in a chair here. His jet black hair, piercing
 eyes and muscled arms are a testimony to his fighting prowess and
 physical fitness. He is intently carving some wooden sticks, probably
 arrows after he's finished with them.
 ~
 unique~
-BJ DFH 0 S
+ABJ DFH 0 S
 58 30 2d1+9500 1d1+99 5d9+25 13
 -12 -12 -12 -12
 FK AB BCD 0
@@ -242,16 +242,16 @@ A twelve foot bear stands here scratching his crotch.
 Smokey smiles affably at you as he beckons you over to buy his wares.
 ~
 unique~
-B DF 750 S
+AB DF 750 S
 55 25 2d1+7000 1d1+99 6d6+50 5
 -10 -10 -10 -10
-DKN L L H
+DKN ABL L H
 8 8 0 100
 0 0 L 0
 #20515
 Grand Pooh-Ba~
 the Grand Pooh-Ba~
-The Grand Pooh-Ba stands here in coloured robes looking busy.
+The Grand Pooh-Ba stands here in colored robes looking busy.
 ~
 The Pixie-Brownie Bonanza is usually hosted and chaired by at least
 one individual formally known as "The Chairman of the Great Feast
@@ -262,10 +262,10 @@ pixies and brownies. He is dressed in large and flowing green-brown
 robe, and seems rather busy with his duties.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 30 20 2d1+850 1d1+99 5d6+5 27
 +3 +3 +3 +3
-CFK NBJL B 0
+CFK ABJLN B 0
 8 8 1 100
 0 0 S 0
 #20516
@@ -273,12 +273,12 @@ Witch Aude~
 Aude~
 Aude the witch is murmuring soft curses to herself.
 ~
-Her shimmering long hair, the colour of corn-silk shimmers as it catches
+Her shimmering long hair, the color of corn-silk shimmers as it catches
 the sparks from the fire. Aude looks at you with moistened lips and half
 closed eyes issuing an invitation you somehow cannot resist.
 ~
 unique~
-BF DFHO -1000 S
+ABFG DFHO -1000 S
 40 15 2d1+1500 1d1+99 5d6+35 18
 -5 -5 -5 -5
 FQ AB B HN
@@ -295,7 +295,7 @@ her mottled cheeks and her gnarled skin testify to her long suffering and
 an intense adhorrence for all beauty and youth.
 ~
 unique~
-BF DFH -1000 S
+ABFG DFH -1000 S
 41 15 2d1+1600 1d1+99 5d6+40 20
 -6 -6 -6 -6
 KFQ AB B HN
@@ -311,7 +311,7 @@ Gertrude. Born in a half-living, half-dead state, she harnesses the power
 of the undeed to destroy you!
 ~
 unique~
-BF DFH -1000 S
+ABFG DFH -1000 S
 40 15 2d1+1450 1d1+99 5d6+40 19
 -5 -5 -5 -5
 EFQ AB B HN
@@ -330,10 +330,10 @@ the wishful malady that the young are known to fall into once in
 a while. Love.
 ~
 unique~
-BH 0 750 S
+ABH 0 750 S
 15 10 2d1+200 1d1+99 5d6+0 17
 +7 +7 +7 +7
-JK 0 0 CDEFGHIJKL
+JK AB 0 CDEFGHIJKL
 8 8 1 30
 0 0 S 0
 #20520
@@ -348,10 +348,10 @@ farmers with a few hunters and trappers. His sun burnt arms and face
 mark him as a happy worker, and no slacker.
 ~
 unique~
-G 0 750 S
+AG 0 750 S
 15 12 2d1+220 1d1+99 5d6+5 17
 +2 +2 +2 +2
-FJKE 0 0 CDEFGHIJL
+FJKE AB 0 CDEFGHIJL
 8 8 1 30
 0 0 M 0
 #20521
@@ -363,10 +363,10 @@ This young straw-chewing punk spits and clenches his fist at you. Better
 SCRAM! He looks around for Maddie, the local beauty.
 ~
 unique~
-B 0 750 S
+AB 0 750 S
 15 5 2d1+320 1d1+99 4d5+8 17
 -3 -3 -3 -3
-FJKERL 0 0 ABCDE
+FJKERL AB 0 ABCDE
 8 8 1 30
 0 0  M 0
 #20522
@@ -378,10 +378,10 @@ Maddie looks at you with desperate eyes imploring your assistance against
 her ruffian suitors.
 ~
 unique~
-BH 0 750 S
+ABH 0 750 S
 20 8 2d1+320 1d1+99 4d5+15 17
 -3 -3 -3 -3
-FK 0 0 ABC
+FK AB 0 ABC
 8 8 2 30
 0 0 M 0
 #20523
@@ -397,7 +397,7 @@ green apron which reads "Roses for the loving, Lilies for the sad,
 Tulips for the laughing, violets for the glad".
 ~
 unique~
-BG 0 1000 S
+ABG 0 1000 S
 20 10 2d1+380 1d1+99 2d5+20 9
 -1 -1 -1 -1
 EF AB B H
@@ -416,10 +416,10 @@ spared the tricksters or thieves of the larger towns. Her basket is
 full of delicious looking apples and pears.
 ~
 unique~
-GH 0 750 S
+AGH 0 750 S
 15 5 2d1+180 1d1+99 3d5+8 17
 +3 +3 +3 +3
-FK 0 0 CDEFGHIJL
+FK AB 0 CDEFGHIJL
 8 8 2 30
 0 0 M 0
 #20525
@@ -445,10 +445,10 @@ He is singing a song over and over again and you catch its words...
 
 ~
 unique~
-GCB 0 0 S
+ABCG 0 0 S
 13 8 2d1+150 1d1+99 4d5+5 17
 +4 +4 +4 +4
-CDFK 0 0 CDEFGHIJL
+CDFK AB 0 CDEFGHIJL
 8 8 1 30
 0 0 M 0
 #20526
@@ -464,10 +464,10 @@ warrior monk, and he must be trying to regain spiritual peace and
 conscience with the Most High.
 ~
 unique~
-GB HDN 1000 S
+ABG HDN 1000 S
 39 15 2d1+1550 1d1+99 5d6+35 17
 -6 -6 -6 -6
-EFKH B B QXY
+EFKH AB B QXY
 8 8 1 30
 0 0 M 0
 #20527
@@ -483,7 +483,7 @@ is mercy to be found in this evil place, she will fade away before
 the witches come to sacrifice her tonight. She looks at you pleadingly.
 ~
 unique~
-BG DKNI 1000 S
+ABG DKNI 1000 S
 15 10 2d1+80 1d1+99 4d5+0 2
 2 2 2 2
 K AB B 0
@@ -500,10 +500,10 @@ seems lost in her own world, her long black hair framing a face that
 is almost too beautiful to describe.  
 ~
 unique~
-GBCH HDN 1000 S
+ABCGH HDN 1000 S
 50 15 2d1+3000 1d1+99 5d6+50 17
 -20 -20 -20 -10
-EFK B B QXY
+EFK AB B QXY
 8 8 2 30
 0 0 M 0
 #20529
@@ -517,7 +517,7 @@ tail from side to side.  A sudden crackle of orange electricity runs
 down the length of its body and disappears.
 ~
 unique~
-GBCH DF 0 S
+ABCGH DF 0 S
 40 10 2d1+3000 1d1+99 6d6+15 10
 -10 -10 -10 -5
 DFKJ AB B 0
@@ -534,7 +534,7 @@ he seems abit tight-lipped at the moment.  You're probably going to
 have to beat it out of him.  
 ~
 unique~
-GBC DN 0 S
+ABCG DN 0 S
 38 15 2d1+1450 1d1+99 5d6+15 12
 -13 -13 -13 -13
 FK AB B 0
@@ -546,7 +546,7 @@ Sir Sorrow~
 Sir Sorrow the sad knight stares into the sky.
 ~
 Before you is the famed knight of the Order of the Bleeding Hearts,
-Sir Sorrow. Famed fighters and honourable men, they have one nagging
+Sir Sorrow. Famed fighters and honorable men, they have one nagging
 trait.. all of them seem full of sorrow and sadness all year round.
 It's not the sort of whining self-flagellation type insecurity or
 self-pity, but a strange and deep "sorrow" which they all seem 
@@ -554,10 +554,10 @@ burdened with. The Sorrow of God, perhaps? Nobody really knows save
 the members of the order.
 ~
 unique~
-GB DH 1000 S
+ABG DH 1000 S
 37 12 2d1+1300 1d1+99 5d6+25 17
 -12 -12 -12 -12
-EK 0 0 0
+EK AB 0 0
 8 8 1 30
 0 0 M 0
 #20532
@@ -573,7 +573,7 @@ You draw back in ponder of this pointed-beard priest while his greyish-
 black apparel gives hint of his oriental origin.
 ~
 unique~
-GB DH 1000 S
+ABG DH 1000 S
 60 25 2d1+5500 1d1+99 10d5+65 20
 -11 -11 -11 -11
 DEFHK AB BHIJKLMNOP 0
@@ -590,7 +590,7 @@ Farmer Griff smiles and says "You musn't leave without trying my
 
 ~
 unique~
-BG 0 750 S
+ABG 0 750 S
 20 15 2d1+500 1d1+99 4d5+10 17
 -0 -0 -0 -0
 EFQ AB B H
@@ -606,7 +606,7 @@ fanged maw.  It snarls viciously and circles you slowly, seeming to
 consider you with an evil intelligence. 
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 30 8 2d1+900 1d1+99 5d5+16 10
 -5 -5 -5 -5
 BEFG AB B N
@@ -622,7 +622,7 @@ He looks like a dirty-furred dwarf with overly long hands and a mouth
 filled with sharp little teeth.  
 ~
 unique~
-BFC DF -1000 S
+ABCFG DF -1000 S
 12 5 2d1+180 1d1+99 4d5+12 25
 2 2 2 2
 BCF AB B 0
@@ -639,10 +639,10 @@ witches.  His strength proved less than his faith in himself and his
 spectre now wanders the edge of this dark lake forever.
 ~
 unique~
-BC 0 1000 S
+ABC 0 1000 S
 35 25 2d1+1050 1d1+99 5d9+25 15
 5 5 5 5
-FGK BCDEFGHIJKLMNOPQRS CD 0
+FGK ABCDEFGHIJKLMNOPQRS CD 0
 8 8 0 15
 0 0 M 0
 #20537
@@ -657,7 +657,7 @@ you sharply and for a moment, you see upon her face the image of
 smiling demon.  
 ~
 unique~
-GB DH -1000 S
+ABG DH -1000 S
 43 10 2d1+2150 1d1+99 5d6+45 17
 -2 -2 -2 -2
 AFK AB B N
@@ -677,7 +677,7 @@ you see that ages of paranoia and fear have moulded a defiant snarl
 permanently on his scarred face. 
 ~
 unique~
-CT H 0 S
+ACT H 0 S
 58 12 2d1+5900 1d1+99 5d6+105 17
 -5 -5 -5 -5
 ACEFJK AB C N
@@ -696,7 +696,7 @@ Imbessar. She has tracked him to the Emerald Forest and it is here
 that they will have their last battle. 
 ~
 unique~
-BRH HN -1000 S
+ABHR HN -1000 S
 54 12 2d1+4500 1d1+99 5d6+85 19
 -1 -1 -1 -1
 FH AB C N
@@ -716,10 +716,10 @@ years, her long blond hair fall gently over her shoulders making
 her strikingly beautiful.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 34 15 2d1+1200 1d1+99 6d6+25 17
 -8 -8 -8 -8
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 2 100
 0 0 M 0
 #20541
@@ -735,10 +735,10 @@ out. Not looking at them directly, he seems to be eyeing one of the
 brownies.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 13 4 2d1+175 1d1+99 4d5+7 19
 0 0 0 0
-FU NBJ B 0
+FU ABJN B 0
 8 8 2 80
 0 0 S 0
 #20542
@@ -754,10 +754,10 @@ out. Not looking at them directly, he seems to be eyeing one of the
 brownies.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 13 4 2d1+175 1d1+99 4d5+7 19
 0 0 0 0
-FU NBJ B 0
+FU ABJN B 0
 8 8 2 80
 0 0 S 0
 #20543
@@ -773,10 +773,10 @@ out. Not looking at them directly, he seems to be eyeing one of the
 brownies.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 13 4 2d1+175 1d1+99 4d5+7 19
 0 0 0 0
-FU NBJ B 0
+FU ABJN B 0
 8 8 2 80
 0 0 S 0
 #20544
@@ -792,10 +792,10 @@ out. Not looking at them directly, he seems to be eyeing one of the
 brownies.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 13 4 2d1+175 1d1+99 4d5+7 19
 0 0 0 0
-FU NBJ B 0
+FU ABJN B 0
 8 8 2 80
 0 0 S 0
 #20545
@@ -811,10 +811,10 @@ pretty elvin features, and is dressed totally in brown. She wears
 no cap, her otherwise long hair tied in a pony-tail.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 17 5 2d1+280 1d1+99 4d5+9 17
 -4 -4 -4 -4
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 1 100
 0 0 S 0
 #20546
@@ -830,10 +830,10 @@ pretty elvin features, and is dressed totally in brown. She wears
 no cap, her otherwise long hair tied in a pony-tail.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 17 5 2d1+280 1d1+99 4d5+9 17
 -4 -4 -4 -4
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 1 100
 0 0 S 0
 #20547
@@ -849,10 +849,10 @@ pretty elvin features, and is dressed totally in brown. She wears
 no cap, her otherwise long hair tied in a pony-tail.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 17 5 2d1+280 1d1+99 4d5+9 17
 -4 -4 -4 -4
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 1 100
 0 0 S 0
 #20548
@@ -868,10 +868,10 @@ pretty elvin features, and is dressed totally in brown. She wears
 no cap, her otherwise long hair tied in a pony-tail.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 17 5 2d1+280 1d1+99 4d5+9 17
 -4 -4 -4 -4
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 1 100
 0 0 S 0
 #20549
@@ -887,10 +887,10 @@ pretty elvin features, and is dressed totally in brown. She wears
 no cap, her otherwise long hair tied in a pony-tail.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 17 5 2d1+280 1d1+99 4d5+9 17
 -4 -4 -4 -4
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 1 100
 0 0 S 0
 #20550
@@ -903,10 +903,10 @@ and equally playful.  He is dressed in a brown jerkin and you see that
 its pockets are filled with acorns and nuts.  
 ~
 unique~
-B TD 0 S
+AB TD 0 S
 20 6 2d1+350 1d1+99 4d5+12 2
 -5 -5 -5 -5
-FU NBJ B 0
+FU ABJN B 0
 8 8 1 80
 0 0 S 0
 #20551
@@ -919,10 +919,10 @@ and equally playful.  He is dressed in a brown jerkin and you see that
 its pockets are filled with acorns and nuts.  
 ~
 unique~
-B TD 0 S
+AB TD 0 S
 20 6 2d1+350 1d1+99 4d5+12 2
 -5 -5 -5 -5
-FU NBJ B 0
+FU ABJN B 0
 8 8 1 80
 0 0 S 0
 #20552
@@ -935,10 +935,10 @@ and equally playful.  He is dressed in a brown jerkin and you see that
 its pockets are filled with acorns and nuts.  
 ~
 unique~
-B TD 0 S
+AB TD 0 S
 20 6 2d1+350 1d1+99 4d5+12 2
 -5 -5 -5 -5
-FU NBJ B 0
+FU ABJN B 0
 8 8 1 80
 0 0 S 0
 #20553
@@ -951,10 +951,10 @@ and equally playful.  He is dressed in a brown jerkin and you see that
 its pockets are filled with acorns and nuts.  
 ~
 unique~
-B TD 0 S
+AB TD 0 S
 20 6 2d1+350 1d1+99 4d5+12 2
 -5 -5 -5 -5
-FU NBJ B 0
+FU ABJN B 0
 8 8 1 80
 0 0 S 0
 #20554
@@ -970,10 +970,10 @@ is just slightly taller than 5 feet and has the eternally beautiful
 and youthful features of the faerie folk.  
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 24 6 2d10+500 1d1+99 5d5+5 17
 -7 -7 -7 -7
-KU NBJ B 0
+KU ABJN B 0
 8 8 2 100
 0 0 S 0
 #20555
@@ -989,10 +989,10 @@ is just slightly taller than 5 feet and has the eternally beautiful
 and youthful features of the faerie folk.  
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 24 6 2d10+500 1d1+99 5d5+5 17
 -7 -7 -7 -7
-KU NBJ B 0
+KU ABJN B 0
 8 8 2 100
 0 0 S 0
 #20556
@@ -1008,10 +1008,10 @@ is just slightly taller than 5 feet and has the eternally beautiful
 and youthful features of the faerie folk.  
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 24 6 2d10+500 1d1+99 5d5+5 17
 -7 -7 -7 -7
-KU NBJ B 0
+KU ABJN B 0
 8 8 2 100
 0 0 S 0
 #20557
@@ -1027,10 +1027,10 @@ is just slightly taller than 5 feet and has the eternally beautiful
 and youthful features of the faerie folk.  
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 24 6 2d10+500 1d1+99 5d5+5 17
 -7 -7 -7 -7
-KU NBJ B 0
+KU ABJN B 0
 8 8 2 100
 0 0 S 0
 #20558
@@ -1045,10 +1045,10 @@ running water and you cannot be sure if it is her singing or a brook
 in the distance.  She calls out to you to join her in her dance. 
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 29 9 2d10+750 1d1+99 5d5+10 16
 -10 -10 -10 -10
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 2 150
 0 0 S 0
 #20559
@@ -1063,10 +1063,10 @@ running water and you cannot be sure if it is her singing or a brook
 in the distance.  She calls out to you to join her in her dance. 
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 29 9 2d10+750 1d1+99 5d5+10 16
 -10 -10 -10 -10
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 2 150
 0 0 S 0
 #20560
@@ -1081,10 +1081,10 @@ running water and you cannot be sure if it is her singing or a brook
 in the distance.  She calls out to you to join her in her dance. 
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 29 9 2d10+750 1d1+99 5d5+10 16
 -10 -10 -10 -10
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 2 150
 0 0 S 0
 #20561
@@ -1099,10 +1099,10 @@ running water and you cannot be sure if it is her singing or a brook
 in the distance.  She calls out to you to join her in her dance. 
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 29 9 2d10+750 1d1+99 5d5+10 16
 -10 -10 -10 -10
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 2 150
 0 0 S 0
 #20562
@@ -1119,10 +1119,10 @@ years, her long blond hair fall gently over her shoulders making
 her strikingly beautiful.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 34 15 2d1+1200 1d1+99 6d6+25 17
 -8 -8 -8 -8
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 2 100
 0 0 M 0
 #20563
@@ -1139,10 +1139,10 @@ years, her long blond hair fall gently over her shoulders making
 her strikingly beautiful.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 34 15 2d1+1200 1d1+99 6d6+25 17
 -8 -8 -8 -8
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 2 100
 0 0 M 0
 #20564
@@ -1150,7 +1150,7 @@ Ranger~
 a ranger~
 A ranger stands here, inspecting the ground.
 ~
-A young man dressed in superb leather armour and green stands here,
+A young man dressed in superb leather armor and green stands here,
 longbow strapped comfortably over his back and a longsword by his
 side. He has dark black hair, and has features which are both kind
 and handsome while lacking in weakness. He notices you and smiles,
@@ -1158,10 +1158,10 @@ while continues tending to a small deer which seems to have injured
 its leg.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 39 20 2d1+1700 1d1+99 6d6+35 17
 -10 -10 -10 -10
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 1 100
 0 0 M 0
 #20565
@@ -1169,7 +1169,7 @@ Ranger~
 a ranger~
 A ranger stands here, inspecting the ground.
 ~
-A young man dressed in superb leather armour and green stands here,
+A young man dressed in superb leather armor and green stands here,
 longbow strapped comfortably over his back and a longsword by his
 side. He has dark black hair, and has features which are both kind
 and handsome while lacking in weakness. He notices you and smiles,
@@ -1177,10 +1177,10 @@ while continues tending to a small deer which seems to have injured
 its leg.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 39 20 2d1+1700 1d1+99 6d6+35 17
 -10 -10 -10 -10
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 1 100
 0 0 M 0
 #20566
@@ -1188,7 +1188,7 @@ Ranger~
 a ranger~
 A ranger stands here, inspecting the ground.
 ~
-A young man dressed in superb leather armour and green stands here,
+A young man dressed in superb leather armor and green stands here,
 longbow strapped comfortably over his back and a longsword by his
 side. He has dark black hair, and has features which are both kind
 and handsome while lacking in weakness. He notices you and smiles,
@@ -1196,10 +1196,10 @@ while continues tending to a small deer which seems to have injured
 its leg.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 39 20 2d1+1700 1d1+99 6d6+35 17
 -10 -10 -10 -10
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 1 100
 0 0 M 0
 #20567
@@ -1207,7 +1207,7 @@ Ranger~
 a ranger~
 A ranger stands here, inspecting the ground.
 ~
-A young man dressed in superb leather armour and green stands here,
+A young man dressed in superb leather armor and green stands here,
 longbow strapped comfortably over his back and a longsword by his
 side. He has dark black hair, and has features which are both kind
 and handsome while lacking in weakness. He notices you and smiles,
@@ -1215,10 +1215,10 @@ while continues tending to a small deer which seems to have injured
 its leg.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 39 20 2d1+1700 1d1+99 6d6+35 17
 -10 -10 -10 -10
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 1 100
 0 0 M 0
 #20568
@@ -1234,7 +1234,7 @@ got 'kill me now' written all over its forehead in every possible
 language known.
 ~
 unique~
-B D -1000 S
+AB D -1000 S
 15 3 2d1+200 1d1+99 4d5+5 11
 +5 +5 +5 +5
 CDEFKJU AB B N
@@ -1253,7 +1253,7 @@ got 'kill me now' written all over its forehead in every possible
 language known.
 ~
 unique~
-B D -1000 S
+AB D -1000 S
 15 3 2d1+200 1d1+99 4d5+5 11
 +5 +5 +5 +5
 CDEFKJU AB B N
@@ -1272,7 +1272,7 @@ got 'kill me now' written all over its forehead in every possible
 language known.
 ~
 unique~
-B D -1000 S
+AB D -1000 S
 15 3 2d1+200 1d1+99 4d5+5 11
 +5 +5 +5 +5
 CDEFKJU AB B N
@@ -1291,7 +1291,7 @@ got 'kill me now' written all over its forehead in every possible
 language known.
 ~
 unique~
-B D -1000 S
+AB D -1000 S
 15 3 2d1+200 1d1+99 4d5+5 11
 +5 +5 +5 +5
 CDEFKJU AB B N
@@ -1308,7 +1308,7 @@ It holds its boney hands out-stretched and seems to be asking you
 for a dance.  A tango perhaps, or a foxtrot.
 ~
 unique~
-BFG D -1000 S
+ABFG D -1000 S
 25 10 2d1+600 1d1+99 5d5+15 22
 -3 -3 -3 -3
 CDEFKJU AB B N
@@ -1325,7 +1325,7 @@ It holds its boney hands out-stretched and seems to be asking you
 for a dance.  A tango perhaps, or a foxtrot.
 ~
 unique~
-BFG D -1000 S
+ABFG D -1000 S
 25 10 2d1+600 1d1+99 5d5+15 22
 -3 -3 -3 -3
 CDEFKJU AB B N
@@ -1342,7 +1342,7 @@ It holds its boney hands out-stretched and seems to be asking you
 for a dance.  A tango perhaps, or a foxtrot.
 ~
 unique~
-BFG D -1000 S
+ABFG D -1000 S
 25 10 2d1+600 1d1+99 5d5+15 22
 -3 -3 -3 -3
 CDEFKJU AB B N
@@ -1359,7 +1359,7 @@ It holds its boney hands out-stretched and seems to be asking you
 for a dance.  A tango perhaps, or a foxtrot.
 ~
 unique~
-BFG D -1000 S
+ABFG D -1000 S
 25 10 2d1+600 1d1+99 5d5+15 22
 -3 -3 -3 -3
 CDEFKJU AB B N
@@ -1376,10 +1376,10 @@ banquet table.  This one looks set to give you a good kick if you won't
 let it continue eating its weeds.  It bares large yellowed teeth at you.
 ~
 unique~
-B D -950 S
+AB D -950 S
 20 8 2d1+390 1d1+99 4d5+15 13
 0 0 0 0
-CDEFKJU B B N
+CDEFKJU AB B N
 8 8 0 50
 0 0 M 0
 #20577
@@ -1393,10 +1393,10 @@ banquet table.  This one looks set to give you a good kick if you won't
 let it continue eating its weeds.  It bares large yellowed teeth at you.
 ~
 unique~
-B D -950 S
+AB D -950 S
 20 8 2d1+390 1d1+99 4d5+15 13
 0 0 0 0
-CDEFKJU B B N
+CDEFKJU AB B N
 8 8 0 50
 0 0 M 0
 #20578
@@ -1410,10 +1410,10 @@ banquet table.  This one looks set to give you a good kick if you won't
 let it continue eating its weeds.  It bares large yellowed teeth at you.
 ~
 unique~
-B D -950 S
+AB D -950 S
 20 8 2d1+390 1d1+99 4d5+15 13
 0 0 0 0
-CDEFKJU B B N
+CDEFKJU AB B N
 8 8 0 50
 AB ABCDEF M 0
 #20579
@@ -1427,10 +1427,10 @@ banquet table.  This one looks set to give you a good kick if you won't
 let it continue eating its weeds.  It bares large yellowed teeth at you.
 ~
 unique~
-B D -950 S
+AB D -950 S
 20 8 2d1+390 1d1+99 4d5+15 13
 0 0 0 0
-CDEFKJU B B N
+CDEFKJU AB B N
 8 8 0 50
 0 0 M 0
 #20580
@@ -1443,7 +1443,7 @@ fanged maw.  It snarls viciously and circles you slowly, seeming to
 consider you with an evil intelligence. 
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 30 8 2d1+900 1d1+99 5d5+16 10
 -5 -5 -5 -5
 BEFG AB B N
@@ -1459,7 +1459,7 @@ fanged maw.  It snarls viciously and circles you slowly, seeming to
 consider you with an evil intelligence. 
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 30 8 2d1+900 1d1+99 5d5+16 10
 -5 -5 -5 -5
 BEFG AB B N
@@ -1475,7 +1475,7 @@ fanged maw.  It snarls viciously and circles you slowly, seeming to
 consider you with an evil intelligence. 
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 30 8 2d1+900 1d1+99 5d5+16 10
 -5 -5 -5 -5
 BEFG AB B N
@@ -1491,7 +1491,7 @@ rotting cape about his body and draws his weapon slowly.  He has been
 preparing for the Great Hunt and in a low voice he intones your name.
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 35 15 2d1+1700 1d1+99 6d6+25 17
 -8 -8 -8 -8
 CDEFKJU AB B N
@@ -1507,7 +1507,7 @@ rotting cape about his body and draws his weapon slowly.  He has been
 preparing for the Great Hunt and in a low voice he intones your name.
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 35 15 2d1+1700 1d1+99 6d6+25 17
 -8 -8 -8 -8
 CDEFKJU AB B N
@@ -1523,7 +1523,7 @@ rotting cape about his body and draws his weapon slowly.  He has been
 preparing for the Great Hunt and in a low voice he intones your name.
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 35 15 2d1+1700 1d1+99 6d6+25 17
 -8 -8 -8 -8
 CDEFKJU AB B N
@@ -1539,7 +1539,7 @@ rotting cape about his body and draws his weapon slowly.  He has been
 preparing for the Great Hunt and in a low voice he intones your name.
 ~
 unique~
-BF D -1000 S
+ABFG D -1000 S
 35 15 2d1+1700 1d1+99 6d6+25 17
 -8 -8 -8 -8
 CDEFKJU AB B N
@@ -1556,10 +1556,10 @@ water as her laughter rings gaily through the forest.  A tunic wrapped
 loosely in a braided cloak of forest green lies among the lilac bushes.
 ~
 unique~
-B TD 1000 S
+AB TD 1000 S
 27 10 2d10+650 1d1+99 5d5+0 16
 -8 -8 -8 -8
-FKU NBJ B 0
+FKU ABJN B 0
 8 8 2 150
 0 0 S 0
 #20588
@@ -1567,7 +1567,7 @@ Ranger~
 a ranger~
 A ranger stands here, inspecting the ground.
 ~
-A young man dressed in superb leather armour and green stands here,
+A young man dressed in superb leather armor and green stands here,
 longbow strapped comfortably over his back and a longsword by his
 side. He has dark black hair, and has features which are both kind
 and handsome while lacking in weakness. He notices you and smiles,
@@ -1575,10 +1575,10 @@ while continues tending to a small deer which seems to have injured
 its leg.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 40 20 2d1+1700 1d1+99 6d6+35 17
 -10 -10 -10 -10
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 1 100
 0 0 M 0
 #20589
@@ -1586,7 +1586,7 @@ Ranger~
 a ranger~
 A ranger stands here, inspecting the ground.
 ~
-A young man dressed in superb leather armour and green stands here,
+A young man dressed in superb leather armor and green stands here,
 longbow strapped comfortably over his back and a longsword by his
 side. He has dark black hair, and has features which are both kind
 and handsome while lacking in weakness. He notices you and smiles,
@@ -1594,10 +1594,10 @@ while continues tending to a small deer which seems to have injured
 its leg.
 ~
 unique~
-B D 1000 S
+AB D 1000 S
 40 20 2d1+1700 1d1+99 6d6+35 17
 -10 -10 -10 -10
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 1 100
 0 0 M 0
 #20590
@@ -1605,7 +1605,7 @@ Ranger~
 a ranger~
 A ranger stands here, inspecting the ground.
 ~
-A young man dressed in superb leather armour and green stands here,
+A young man dressed in superb leather armor and green stands here,
 longbow strapped comfortably over his back and a longsword by his
 side. He has dark black hair, and has features which are both kind
 and handsome while lacking in weakness. He notices you and smiles,
@@ -1613,10 +1613,10 @@ while continues tending to a small deer which seems to have injured
 its leg.
 ~
 unique~
-G D 1000 S
+AG D 1000 S
 40 20 2d1+1700 1d1+99 6d6+35 17
 -10 -10 -10 -10
-NFKU NBJL B 0
+NFKU ABJLN B 0
 8 8 1 100
 0 0 M 0
 #20591
@@ -1631,7 +1631,7 @@ in the sixth plane of Hell, he now watches over witchwood with his liege of
 huntsmen in service to Gertrude.
 ~
 unique~
-BF DFH -1000 S
+ABFG DFH -1000 S
 40 14 2d1+1600 1d1+99 8d6+30 19
 -7 -7 -7 -7
 KFQ AB B HN
@@ -1797,7 +1797,7 @@ energy~
 1 1 20 P
 E
 Sunflower bouquet flower~
-Your heart instantly lifts at the bursts of vivid colour from the fiery
+Your heart instantly lifts at the bursts of vivid color from the fiery
 red-orange centres of the flowers.
 ~
 #20512
@@ -1874,7 +1874,7 @@ sword~
 The sword you hold in your hands once belonged to a templar knight of
 great renown and virtue as can be seen from the intricate carvings on
 the hilt of the blade. The crown, dove and cross signify great deeds
-of virtue done in honour of King, God and Church.
+of virtue done in honor of King, God and Church.
 ~
 A
 18 4
@@ -1931,7 +1931,7 @@ Steel~
 36 9 4000 P
 E
 shirt mailed~
-This shirt of steel mail is the standard armour of the Crusader
+This shirt of steel mail is the standard armor of the Crusader
 Knights. Made for practical protection rather than fanfare or
 tourneys, it looks battered in a few places and has lost it's
 original luster. It can still be used though, and is much lighter
@@ -1942,7 +1942,7 @@ A
 #20519
 steel leggings~
 a pair of light steel leggings~
-A pair of firm looking steel leg armour lies on the ground.~
+A pair of firm looking steel leg armor lies on the ground.~
 steel~
 9 GKL AF
 8 8 8 0 0
@@ -2012,7 +2012,7 @@ a wooden chest~
 There is a sturdy wooden chest at the foot of the bed.~
 wood~
 15 G 0
-100 40 0 0 0
+100 5 0 0 0
 30 100000 1000 P
 #20524
 herbal potion~
@@ -3157,7 +3157,7 @@ A Fae Crossing~
 The path has taken you to a junction over which hangs the twisted 
 branches of two Blackthorn trees and an Elderwood tree.  You remember 
 folktales which tell that spiteful faeries lurk under the meetings of
-such trees to waylay and confound woodland travellers.  Feeling a little
+such trees to waylay and confound woodland travelers.  Feeling a little
 uncomfortable, you look south, where the forest seems to darken 
 menacingly.  The east trail beckons you to the safety of the Emerald
 Forest.  
@@ -4043,7 +4043,7 @@ In the Emerald Forest~
 You are at a three-way junction in the middle of the woods.  Wild trumpet
 creepers run along the footpaths here.  It would seem some mischievous
 pixie has drawn the vines across the path with the hope of tripping 
-woodland travellers such as you.  You watch your step.    
+woodland travelers such as you.  You watch your step.    
 ~
 205 A 3
 D1
@@ -4789,7 +4789,7 @@ The Wood-Path~
 The Wood-path you're following gets more pronounced and used here,
 a testimony that the Emerald Forest isn't populated (or at least
 explored and travelled) only by its original furry or buzzing citizens.
-Multi-coloured flowers dance gaily in the wind while clinging to the feet
+Multi-colored flowers dance gaily in the wind while clinging to the feet
 of the tall oak and pine trees flanking the forest road. Flying
 squirrels leap from branch to branch, probably searching for a
 delicious cashew or two.
@@ -5158,7 +5158,7 @@ Dou             -> Fight
 Kan             -> See
 Si              -> Die
 Gou             -> Dog
-Yan Se          -> Colour
+Yan Se          -> Color
 Qi Dao          -> Pray
 Jiu Ming        -> Help!
 Pang Pai        -> Cabal
@@ -5181,7 +5181,7 @@ of this small monastery.  It is ruined beyond repair and seems to have
 been abandoned many years ago.  There is a quiet and melancholic silence 
 in the air.  You notice footprints in the dust that lead west into a 
 leaf-strewn courtyard and continue into a small chapel.  You notice for
-the first time that that area of the monastery seems to have been spared
+the first time that area of the monastery seems to have been spared
 the dereliction that the rest of the monastery has fallen into. 
 ~
 205 A 0
@@ -5368,7 +5368,7 @@ S
 Inside the mountain~
 You walk into a large enclosure with gracious bison carvings and imported
 Swiss furniture. Cracked Egyptian pots with large flowering ferns sit on
-rainbow coloured sheepskin rugs. On the east wall, there is a charcoal
+rainbow colored sheepskin rugs. On the east wall, there is a charcoal
 sketched portrait of a party of raiding ragers standing over a field of
 multilated bodies of mages and clerics.
 

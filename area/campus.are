@@ -10,7 +10,7 @@ This large, purpled, mohawked warrior looks quite aggressive.  It
 is probably not something anyone should mess with.
 ~
 human~
-ABFT D 0 S
+ABFGT D 0 S
 19 9 3d9+308 2d19+119 2d7+5 17
 -1 -2 -1 -1
 CEIKU AB E P
@@ -43,7 +43,7 @@ human~
 ACHT 0 0 S
 15 8 3d9+208 2d15+115 2d6+3 16
 -1 0 -1 -2
-EIP A B 0
+EIP AB B 0
 8 8 0 15
 0 0 M 0
 #15003
@@ -58,7 +58,7 @@ human~
 ABH BDH 100 S
 10 5 2d7+121 2d10+110 2d4+2 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 1
 0 0 M 0
 #15004
@@ -73,7 +73,7 @@ human~
 A D 0 S
 25 12 5d10+550 2d25+125 2d10+7 18
 -1 0 -1 -2
-DEFK A B E
+DEFK AB B E
 8 8 0 25
 0 0 M 0
 #15005
@@ -85,7 +85,7 @@ You don't want to misbehave when these thins are around.  In fact you
 don't want to even be around these things.
 ~
 human~
-AFT D -250 S
+AFGT D -250 S
 25 12 2d10+550 2d25+125 2d10+7 13
 -1 -3 -1 0
 DEIKU AB E NP
@@ -100,7 +100,7 @@ You don't want to misbehave when these guys are around.  In fact you
 don't want to even be around these guys.
 ~
 human~
-AFT D -250 S
+AFGT D -250 S
 25 12 2d10+550 2d25+125 2d10+7 13
 -1 -3 -1 0
 DEIKU AB E NP
@@ -115,7 +115,7 @@ You don't want to misbehave when these gals are around.  In fact you
 don't want to even be around these gals.
 ~
 human~
-AFT D -250 S
+AFGT D -250 S
 25 12 2d10+550 2d25+125 2d10+7 13
 -1 -3 -1 0
 DEIKU AB E NP
@@ -134,7 +134,7 @@ human~
 A D 250 S
 17 7 3d9+258 2d15+115 3d4+4 0
 -1 -1 -1 0
-EIKU A B P
+EIKU AB B P
 8 8 0 10
 0 0 M 0
 #15009
@@ -150,7 +150,7 @@ human~
 A D 250 S
 17 7 3d9+258 2d15+115 3d4+4 0
 -1 -1 -1 0
-EIKU A B P
+EIKU AB B P
 8 8 1 10
 0 0 M 0
 #15010
@@ -166,7 +166,7 @@ human~
 A D 250 S
 17 7 3d9+258 2d15+115 3d4+4 0
 -1 -1 -1 0
-EIKU A B P
+EIKU AB B P
 8 8 2 10
 0 0 M 0
 #15011
@@ -181,7 +181,7 @@ human~
 AC 0 0 S
 15 7 3d9+208 2d15+115 2d6+3 0
 0 0 0 -1
-EIKU A B P
+EIKU AB B P
 8 8 0 5
 0 0 M 0
 #15012
@@ -197,7 +197,7 @@ human~
 AC 0 0 S
 15 7 3d9+208 2d15+115 2d6+3 0
 0 0 0 -1
-EIKU A B P
+EIKU AB B P
 8 8 1 5
 0 0 M 0
 #15013
@@ -212,7 +212,7 @@ human~
 AC 0 0 S
 15 7 3d9+208 2d15+115 2d6+3 0
 0 0 0 -1
-EIKU A B P
+EIKU AB B P
 8 8 2 10
 0 0 M 0
 #15014
@@ -226,7 +226,7 @@ human~
 AH W 0 S
 10 5 2d7+121 2d10+110 2d4+2 0
 0 0 0 0
-U 0 0 0
+U AB 0 0
 8 8 0 1
 0 0 M 0
 #15015
@@ -240,7 +240,7 @@ human~
 AH W 0 S
 10 5 2d7+121 2d10+110 2d4+2 0
 0 0 0 0
-U 0 0 0
+U AB 0 0
 8 8 1 1
 0 0 M 0
 #15016
@@ -254,7 +254,7 @@ human~
 AH W 0 S
 10 5 2d7+121 2d10+110 2d4+2 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 2 1
 0 0 M 0
 #15017
@@ -302,7 +302,7 @@ human~
 AH W 0 S
 10 5 2d7+121 2d10+110 2d4+2 0
 0 0 0 0
-U 0 0 0
+U AB 0 0
 8 8 0 1
 0 0 M 0
 #15020
@@ -316,7 +316,7 @@ human~
 AH W 0 S
 10 5 2d7+121 2d10+110 2d4+2 0
 0 0 0 0
-U 0 0 0
+U AB 0 0
 8 8 1 1
 0 0 M 0
 #15021
@@ -330,7 +330,7 @@ human~
 AH W 0 S
 10 5 2d7+121 2d10+110 2d4+2 0
 0 0 0 0
-U 0 0 0
+U AB 0 0
 8 8 2 1
 0 0 M 0
 #15022
@@ -342,7 +342,7 @@ This large, purpled, mohawked warrior looks quite aggressive.  It is
 probably not something anyone should mess with.
 ~
 human~
-ABFT D 0 S
+ABFGT D 0 S
 19 9 3d9+308 2d19+119 2d7+5 17
 -1 -2 -1 -1
 CEIKU AB E P
@@ -359,7 +359,7 @@ human~
 AB 0 -100 S
 15 7 3d9+208 2d15+115 2d6+3 0
 -1 -1 -1 0
-EKU A BL Q 
+EKU AB BL Q
 8 8 0 10
 0 0 M 0
 #15024
@@ -370,7 +370,7 @@ A rather large jock occupies the room.
 It (he?) is quite big.  It (she?) looks at you with undisguised hunger...
 ~
 human~
-AFT 0 0 S
+AFGT 0 0 S
 18 9 3d9+283 2d18+118 3d5+5 17
 -2 -5 -2 0
 CDFIKNOU AB E CP
@@ -384,7 +384,7 @@ A mosher moshes here.  Oh it hit you!
 This mosher moshes with enthusiasm!
 ~
 human~
-ABFT D 0 S
+ABFGT D 0 S
 19 9 3d9+308 2d19+119 3d5+6 15
 -1 -5 -1 0
 CDFIKNOU AB E CP
@@ -398,7 +398,7 @@ A mosher moshes here.  Oh he hit you!
 This mosher moshes with enthusiasm!
 ~
 human~
-ABFT D 0 S
+ABFGT D 0 S
 19 9 3d9+308 2d19+119 3d5+6 15
 -1 -5 -1 0
 CDFIKNOU AB E CP
@@ -412,7 +412,7 @@ A mosher moshes here.  Oh she hit you!
 This mosher moshes with enthusiasm!
 ~
 human~
-ABFT D 0 S
+ABFGT D 0 S
 19 9 3d9+308 2d19+119 3d5+6 15
 -1 -5 -1 0
 CDFIKNOU AB E CP
@@ -460,7 +460,7 @@ human~
 AC 0 0 S
 15 7 3d9+208 2d15+115 2d6+3 0
 0 0 0 -1
-EIKU A B P
+EIKU AB B P
 4 4 0 5
 0 0 M 0
 #15031
@@ -474,7 +474,7 @@ human~
 AC 0 0 S
 15 7 3d9+208 2d15+115 2d6+3 0
 0 0 0 -1
-EIKU A B P
+EIKU AB B P
 6 6 0 5
 0 0 M 0
 #15032
@@ -489,7 +489,7 @@ human~
 AC 0 150 S
 23 12 5d10+450 2d23+123 3d8+4 0
 -1 -2 -1 -1
-CEFIKN A B P
+CEFIKN AB B P
 8 8 1 25
 0 0 L 0
 #15033
@@ -503,7 +503,7 @@ adventurer are not afraid!
 (unless you are less than 25th level ... that is.
 ~
 human~
-AF BD -275 S
+AFG BD -275 S
 27 13 5d10+650 2d27+127 5d4+10 18
 -1 -3 -2 -5
 CEFIKN AB C N
@@ -520,7 +520,7 @@ human~
 AB 0 300 S
 15 7 3d9+208 2d15+115 2d6+3 0
 0 0 0 -1
-FN A C P
+FN AB C P
 6 6 1 15
 0 0 M 0
 #15035
@@ -528,14 +528,14 @@ bubble man~
 the Bubble Man~
 The Bubble Man is bubbling over.
 ~
-His surface is a nice mixture of colour and light.
+His surface is a nice mixture of color and light.
 It seems to be very thin though.
 ~
 human~
 AB 0 0 S
 20 10 3d9+333 2d20+120 2d8+5 6
 0 -5 -2 -1
-FHK A C F
+FHK AB C F
 8 8 1 25
 0 0 M 0
 #15036
@@ -567,7 +567,7 @@ human~
 AB BDH 100 S
 15 7 3d9+208 2d15+115 2d6+3 0
 -1 -1 -1 -2
-FIK A C M
+FIK AB C M
 8 8 1 15
 0 0 M 0
 #15038
@@ -582,7 +582,7 @@ human~
 AB BDH 100 S
 15 7 3d9+208 2d15+115 2d6+3 0
 -1 -1 -1 -2
-FIK A C M
+FIK AB C M
 8 8 1 15
 0 0 M 0
 #15039
@@ -680,14 +680,14 @@ golden world copy~
 a copy of Golden World~
 A copy of Golden World lies here.
 ~
-It looks like the student humour newspaper, but it contains nothing to do
+It looks like the student humor newspaper, but it contains nothing to do
 with actual news that you didn't know already.
 ~
 paper~
-0 T 0 S
+A T 0 S
 1 1 1d1+1 1d1+1 1d1+1 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 T 0
 #15046
@@ -702,7 +702,7 @@ undead~
 ABC BD -100 S
 25 14 5d10+550 2d25+225 2d10+7 26
 -5 -5 -5 -5
-EFHKNU AILQR C N
+EFHKNU ABILQR C N
 8 8 0 0
 0 0 M 0
 #15047
@@ -710,13 +710,13 @@ wraith~
 a wraith~
 An ethereal wraith-like shape is here.
 ~
-This ghostly creture is grey in colour and has an amorphous shape.
+This ghostly creture is grey in color and has an amorphous shape.
 ~
 undead~
 AB BD -400 S
 20 10 3d9+333 2d20+220 2d8+5 26
 -3 -3 -3 -3
-EFHKNU AILQR C N
+EFHKNU ABILQR C N
 8 8 0 0
 0 0 M 0
 #0
@@ -1264,7 +1264,7 @@ steel~
 -1 1 10 P
 E
 popcoke coke pop can~
-This can is elegantly decorated with garish colours that almost make you
+This can is elegantly decorated with garish colors that almost make you
 sick.  They were probably intended to have a similar effect to the drink
 inside.
 ~
@@ -1303,7 +1303,7 @@ paper~
 -1 1 1 P
 E
 copy golden world~
-It looks like the student humour newspaper, but it contains nothing to do
+It looks like the student humor newspaper, but it contains nothing to do
 with actual news that you didn't know already.
 ~
 #15044
@@ -1632,7 +1632,7 @@ S
 #15001
 Campus Crescent~
 This cobblestone road is not littered in any way, thus displaying the
-conscientious behaviour of the politically correct students (as they
+conscientious behavior of the politically correct students (as they
 all seem to be).  The road continues east and west.
 ~
 15 N 1
@@ -1654,7 +1654,7 @@ S
 #15002
 Campus Crescent~
 This cobblestone road is not littered in any way, thus displaying the
-conscientious behaviour of the politically correct students (as they
+conscientious behavior of the politically correct students (as they
 all seem to be).  The road continues east and west.  To the north and
 south, you can see dormitories.
 ~
@@ -1691,7 +1691,7 @@ S
 #15003
 Campus Crescent~
 This cobblestone road is not littered in any way, thus displaying the
-conscientious behaviour of the politically correct students (as they
+conscientious behavior of the politically correct students (as they
 all seem to be).  The road continues east and west.  A noxious smell
 permeates from the south.
 ~
@@ -1756,7 +1756,7 @@ S
 #15005
 Campus Crescent~
 This cobblestone road is not littered in any way, thus displaying the
-conscientious behaviour of the politically correct students (as they
+conscientious behavior of the politically correct students (as they
 all seem to be).  The road continues east and west.  A large building
 lies south, off the road.  You can see another building to the north.
 ~
@@ -1793,7 +1793,7 @@ S
 #15006
 Campus Crescent~
 This cobblestone road is not littered in any way, thus displaying the
-conscientious behaviour of the politically correct students (as they
+conscientious behavior of the politically correct students (as they
 all seem to be).  The road continues east and west.  The bookstore is
 to the north.  An odd, round-shaped building lies to the south.
 ~
@@ -3403,7 +3403,7 @@ S
 #15066
 Campus Pub~
 This is your everyday campus pub with loud music, lots of underagers,
-lots of beer, and the perennial favourite, Moshing.  You find it very
+lots of beer, and the perennial favorite, Moshing.  You find it very
 difficult to move around, so decide to limit yourself to the bar.
 There is only one exit... the one you entered by (down if you can't
 remember).
@@ -7478,7 +7478,7 @@ M 0 15021 3 15027         Froshie
 M 0 15021 3 15028         Froshie
 M 0 15021 3 15041         Froshie
 M 0 15022 3 15138         FREC
-E 1 15024 30 12                  Golden Party Armour
+E 1 15024 30 12                  Golden Party Armor
 E 1 15026 -1 8                   Work Boots
 E 1 15034 -1 16                  Long Sword
 M 0 15022 3 15138         FREC
@@ -7561,7 +7561,7 @@ G 1 15039 -1                     Shotglass
 M 0 15043 2 15065         Drunk
 M 0 15043 2 15066         Drunk
 M 0 15044 1 15188         Chief Frec
-E 1 15024 30 12                  Golden Party Armour
+E 1 15024 30 12                  Golden Party Armor
 E 1 15026 -1 8                   Work Boots
 E 1 15035 4 16                   T-Square Of Death
 M 0 15045 10 15184        Golden World - Mob

@@ -13,7 +13,7 @@ wizard. He is equipped with fine clothing, and is wearing many fine
 rings and bracelets.
 ~
 human~
-BV D 900 S
+ABV D 900 S
 23 0 1d1+999 1d1+999 1d8+32 19 
 -15 -15 -15 -15
 AF ABCD 0 0
@@ -27,7 +27,7 @@ The baker leers at you and offers you a spider cookie.
 A fat, nice looking baker. But the cookie seems to be walking
 off the counter.~
 human~
-BV 0 900 S
+ABV 0 900 S
 23 0 1d1+999 1d1+99 1d8+20 13
 -15 -15 -15 -15
 CDF ABCD 0 0 
@@ -41,7 +41,7 @@ A grocer stands at the counter, with blood dripping from his lips.
 A tall grocer, obviously just finished packing the meat? (I hope)
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 23 0 1d1+999 1d1+99 1d8+20 13
 -15 -15 -15 -15
 EFJ ABCD 0 0
@@ -55,7 +55,7 @@ A weaponsmith stands here grinning evilly at you.
 A young weaponsmith, wielding a skull asks you if you have anything he'd like.
 ~
 human~
-BTV 0 900 S
+ABTV 0 900 S
 23 10 1d1+999 1d1+99 1d8+32 17
 -15 -15 -15 -15
 CEIK ABCD 0 0
@@ -66,11 +66,11 @@ armourer armorer~
 the armourer~
 An armourer looks at you and shouts BOO!
 ~
-An old but very strong armourer, he has made more armours in his
+An old but very strong armourer, he has made more armors in his
 lifetime than you have ever seen.
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 23 10 1d1+999 1d1+99 1d8+32 17
 -15 -15 -15 -15
 CEFJKN ABCD 0 0
@@ -84,10 +84,10 @@ A ghost hides here and grins at you.
 BOO!
 ~
 human~
-CHS PQ -100 S
+ACHS PQ -100 S
 8 1 6d8+80 1d1+99 1d5+1 17
 2 4 3 7
-EFJN 0 0 0
+EFJN AB 0 0
 8 8 3 100
 0 0 M 0
 #3006
@@ -98,7 +98,7 @@ A ghostly apparition shimmers here beckoning you out to sea with him.
 This captain died a long time ago in one of his own leaky boats.
 ~
 human~
-BTV 0 900 S
+ABTV 0 900 S
 23 10 1d1+999 1d1+99 1d8+32 13 
 -15 -15 -15 -15
 CEI ABCD 0 0
@@ -112,7 +112,7 @@ A sailor stands here, waiting to train you.
 He looks like a strong, fit sailor.
 ~
 human~
-BJTV 0 900 S
+ABJTV 0 900 S
 23 5 1d1+999 1d1+99 1d4+23 13
 -15 -15 -15 -15
 FHJN ABCD 0 0
@@ -126,7 +126,7 @@ A monster shop boy is here, screaming at the monsters in their cages.
 He is young and close-cropped and looks quite happy.
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 23 0 1d1+999 1d1+99 1d8+20 17
 -15 -15 -15 -15
 0 ABCD 0 0
@@ -141,7 +141,7 @@ He phases in and out of your sight.  As you look closely
 you can see precious gems gleaming in his intestines.
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 23 0 1d1+999 1d1+99 1d8+22 16
 -15 -15 -15 -15
 AF ABCD 0 0
@@ -156,7 +156,7 @@ She looks as an honest, hard-working artisan who only just earns enough to
 keep herself going.
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 23 0 1d1+999 1d1+99 1d8+20 17
 -15 -15 -15 -15
 AFN ABCD 0 0
@@ -214,7 +214,7 @@ vast amount of knowledge she possesses. She is wearing fine magic clothing,
 and you notice that she is surrounded by a blue shimmering aura.
 ~
 elf~
-BKRV DEFJZ 1000 S
+ABKRV DEFJZ 1000 S
 36 0 1d1+1999 1d1+999 3d8+24 19
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -229,7 +229,7 @@ You are in no doubt that this guildmaster is truly close to your god; he has
 a peaceful, loving look. You notice that he is surrounded by a white aura.
 ~
 human~
-BKQV CDEFHZ 1000 S
+ABKQV CDEFHZ 1000 S
 36 0 1d1+1999 1d1+999 3d8+24 20
 -15 -15 -15 -15
 EFHIK ABCD 0 0
@@ -245,7 +245,7 @@ the way of the true thief.  She is dressed in poor clothing, having
 the appearance of a beggar.
 human~
 ~
-BKSV DFZ 1000 S
+ABKSV DFZ 1000 S
 36 0 1d1+1999 1d1+199 3d8+24 17
 -15 -15 -15 -15
 BEFHJN ABCD 0 0
@@ -261,7 +261,7 @@ across his body prove that he was using arms before you were born.  He
 has a calm look on his face.
 ~
 dwarf~
-BKTV DF 1000 S
+ABKTV DF 1000 S
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIK ABCD 0 0
@@ -277,7 +277,7 @@ He is here to guard the Mage's Guild and his superior knowledge of offensive
 as well as defensive spells make him a deadly opponent.
 ~
 elf~
-BRTV BDJ 800 S
+ABRTV BDJ 800 S
 30 5 1d1+999 1d1+499 10d4+10 19
 -10 -10 -10 -8
 AEG AB CD 0
@@ -294,7 +294,7 @@ his religious devotion combined with his superior skill makes him a deadly
 opponent.
 ~
 human~
-BQTV DJ 800 S
+ABQTV DJ 800 S
 30 5 1d1+999 1d1+499 5d8+10 20
 -10 -10 -10 -7
 DEIK AB CD 0 
@@ -310,7 +310,7 @@ using all sorts of weapons.  His superior knowledge of how and where to use
 them combined with his extraordinary stealth makes him a deadly opponent.
 ~
 human~
-BSTV DFPQ 800 S
+ABSTV DFPQ 800 S
 30 8 1d1+999 1d1+99 4d10+12 11
 -12 -12 -12 -6
 BEFJN AB CD 0
@@ -327,7 +327,7 @@ extreme skill combined with his experience in warfare makes him a deadly
 opponent.
 ~
 human~
-BTV DF 800 S
+ABTV DF 800 S
 30 10 1d1+999 1d1+199 11d4+10 17 
 -10 -10 -10 -4
 ACDEHIK AB CD 0
@@ -341,7 +341,7 @@ A bartender watches you calmly, while he skillfully pours blood from a pitcher.
 A tired looking Bartender who hates trouble in his bar.
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 23 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 FHJN AB CD 0
@@ -355,7 +355,7 @@ A waiter smiles at you showing his long fangs.
 A tired looking waiter.
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 23 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 FHJN AB CD 0
@@ -369,7 +369,7 @@ A man with hairy hands and yellow teeth looks at you and howls.
 The werewolf snarls and walks away.
 ~
 human~
-BRV D 600 S
+ABRV D 600 S
 23 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 FJN AB CD 0
@@ -382,7 +382,7 @@ A waiter who seems to have reached contact with God.
 ~
 ~
 human~
-BQV 0 600 S
+ABQV 0 600 S
 23 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 FHJN AB CD 0
@@ -395,7 +395,7 @@ A waiter who knows where all his customers keep their money.
 ~
 ~
 human~
-BSV 0 600 S
+ABSV 0 600 S
 23 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 FHJN AB CD 0
@@ -408,7 +408,7 @@ A waiter who easily could kill you, and still carry quite a few firebreathers.
 ~
 ~
 human~
-BTV 0 600 S
+ABTV 0 600 S
 23 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 BFHJN AB CD 0
@@ -423,7 +423,7 @@ Filthy looks real, ehm, dirty. He likes to keep his costumers happy,
 but do not mess with him or else he'll get upset.
 ~
 human~
-BSV 0 600 S
+ABSV 0 600 S
 23 2 1d1+499 1d1+99 1d8+18 13
 -8 -8 -8  -4
 BEFJN AB CD 0
@@ -438,10 +438,10 @@ A horrible bloody mess of bandages with dark holes where
 the eyes should be.
 ~
 human~
-CGT 0 1000 S
+ACGT 0 1000 S
 15 3 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+CDEKLTU AB C 0
 8 8 3 150
 0 0 M 0
 #3061
@@ -452,10 +452,10 @@ revenge on those who brought him back to life.
 ~
 ~
 human~
-GH 0 900 S
+AGH 0 900 S
 1 0 2d6+10 1d1+99 1d5+0 7
 10 10 10 10
-NU 0 0 C
+NU AB 0 C
 8 8 3 10
 0 0 M 0
 #3062
@@ -485,10 +485,10 @@ A ghoul is here howling at the moon.
 He looks pretty mean.
 ~
 human~
-CS 0 -200 S
+ACS 0 -200 S
 5 1 2d6+60 1d1+99 1d6+1 17
 7 5 5 10
-BJNQ 0 0 C
+BJNQ AB 0 C
 8 8 1 18
 0 0 M 0
 #3064
@@ -499,10 +499,10 @@ Medusa stands here, snakes writhing about her head.
 Medusa beckons you to look closely at her.
 ~
 human~
-G 0 400 S
+AG 0 400 S
 2 -1 2d6+22 1d1+99 1d6+0 13 
 8 8 8 10
-U 0 0 C
+U AB 0 C
 8 8 1 65
 0 0 M 0
 #3065
@@ -514,10 +514,10 @@ The jack-o-lantern glows with an eerie green light and moves
 slightly as you look away.
 ~
 human~
-B 0 400 S
+AB 0 400 S
 1 0 2d6+10 1d1+99 1d5+0 13
 8 8 8 10
-FJNU 0 0 C
+FJNU AB 0 C
 8 8 2 0
 0 0 M 0
 #3066
@@ -528,10 +528,10 @@ A black cat slips out of the shadows and walks beneath a ladder.
 The black cat arches its back and hisses at you.
 ~
 cat~
-FGHU 0 -200 S
+AFGHU 0 -200 S
 0 1 1d6+4 1d1+99 1d4+0 22
 8 8 8 9
-DR 0 0 C
+DR AB 0 C
 8 8 3 0
 0 0 S 0
 #3067
@@ -543,10 +543,10 @@ The skeleton rattles it's bones and dares you to
 try something.
 ~
 human~
-BT 0 1000 S
+ABT 0 1000 S
 15 3 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+CDEKLTU AB C 0
 8 8 3 150
 0 0 M 0
 #3068
@@ -557,10 +557,10 @@ A skeleton is here haunting the gate.
 The skeleton rattles it's bones hoping you'll try something.
 ~
 human~
-BT 0 1000 S
+ABT 0 1000 S
 15 3 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+CDEKLTU AB C 0
 8 8 3 150
 0 0 M 0
 #3069
@@ -571,10 +571,10 @@ A skeleton is here haunting YOU.
 The skeleton rattles it's bones and dares you to try something.
 ~
 human~
-BT BQ 1000 S
+ABT BQ 1000 S
 20 4 20d20+200 1d1+199 2d4+7 17
 -4 -6 -6 0
-CDEHKLTU 0 C 0
+CDEHKLTU AB C 0
 8 8 3 500
 0 0 M 0
 #3070
@@ -586,7 +586,7 @@ The old man says, 'Would you like to buy a nice love poison?'
 He looks very dangerous.  I wouldn't try to rob him.
 ~
 human~
-BQRV DEF 1000 S
+ABQRV DEF 1000 S
 32 0 1d1+999 1d1+999 10d10+10 19
 -15 -15 -15 -15
 FGH ABCD 0 0
@@ -600,10 +600,10 @@ A skeleton is here haunting the gate.
 A skeleton is rattling it's bones and dares you to try something.
 ~
 human~
-BT 0 1000 S
+ABT 0 1000 S
 15 3 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+CDEKLTU AB C 0
 8 8 3 150
 0 0 M 0
 #3072
@@ -614,10 +614,10 @@ A skeleton is here rattling his chains.
 A skeleton rattles it's bones and chains and leers at you.
 ~
 human~
-BT 0 1000 S
+ABT 0 1000 S
 15 3 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+CDEKLTU AB C 0
 8 8 3 150
 0 0 M 0
 #3090
@@ -628,10 +628,10 @@ A small black kitten scratches and hisses.
 The kitten looks evil and dangerous.
 ~
 cat~
-BU 0 400 S
+ABU 0 400 S
 1 2 2d6+11 1d1+99 1d4+0 22
 8 8 8 10
-0 0 C 0
+0 AB C 0
 8 8 3 0
 0 0 T 0
 #3091
@@ -642,10 +642,10 @@ A Cujo is here.
 Cujo bares his blood covered fangs at you.
 ~
 dog~
-BU F 400 S
+ABU F 400 S
 3 2 4d6+25 1d1+99 1d6+0 10
 7 7 7 10
-N 0 C 0
+N AB C 0
 8 8 3 0
 0 Q S 0
 #3092
@@ -656,10 +656,10 @@ A small, quick, loyal beagle is here.
 The beagle looks like a fierce fighter.
 ~
 dog~
-BU F 400 S
+ABU F 400 S
 5 3 3d12+50 1d1+99 1d6+0 10
 5 5 5 9
-N 0 C 0
+N AB C 0
 8 8 3 0
 0 Q S 0
 #3093
@@ -670,10 +670,10 @@ A large, loyal rottweiler is here.
 The rottweiler looks like a strong, fierce fighter.
 ~
 dog~
-BU F 400 S
+ABU F 400 S
 7 3 6d10+60 1d1+149 2d4+1 10
 4 4 4 8
-CDL 0 C 0
+CDL AB C 0
 8 8 3 0
 0 0 M 0
 #3094
@@ -684,10 +684,10 @@ A large, trained wolf is here.
 The wolf looks like a strong, fearless fighter.
 ~
 wolf~
-BU F 0 S
+ABU F 0 S
 9 3 6d10+80 1d1+99 2d5+1 10
 4 4 4 8
-C 0 C 0
+C AB C 0
 8 8 3 0
 0 0 M 0 
 #3100
@@ -699,7 +699,7 @@ She is very beautiful with golden hair, and deep blue eyes. A good reason
 for coming here more often.
 ~
 human~
-BV 0 1000 S
+ABV 0 1000 S
 23 2 1d1+499 1d1+99 1d8+12 13
 -15 -15 -15 -15
 FG AB CD 0
@@ -713,10 +713,10 @@ A sexton is sitting here, drinking hot tea.
 The sexton looks like he is relaxing after another grave-digging job.
 ~
 human~
-BH 0 800 S
+ABH 0 800 S
 3 0 2d6+35 1d1+99 1d7+0 17
 7 7 7 10
-0 0 0 C
+0 AB 0 C
 6 6 1 75
 0 0 M 0
 #3121
@@ -727,10 +727,10 @@ A swan is swimming around in the pond.
 The white swan is very elegant.
 ~
 water fowl~
-BU 0 1000 S
+ABU 0 1000 S
 1 0 2d6+10 1d1+99 1d5+0 23
 8 8 8 10
-CFR 0 R C 
+CFR AB R C
 8 8 3 0
 0 0 S 0
 #3122
@@ -741,10 +741,10 @@ A duckling is swimming around in the pond.
 The duckling is adorable, it looks most of all like a tiny furball.
 ~
 water fowl~
-BU 0 1000 S
+ABU 0 1000 S
 0 0 1d4+0 1d1+99 1d1+0 24
 10 10 10 10
-FR 0 R C
+FR AB R C
 8 8 3 0
 0 0 T 0
 #3123
@@ -755,10 +755,10 @@ A sparrow is flapping around on the ground.
 The sparrow looks like it is enjoying life.
 ~
 song bird~
-GHU 0 1000 S
+AGHU 0 1000 S
 0 0 2d6+0 1d1+99 1d3+0 23
 10 10 10 10
-R 0 0 C
+R AB 0 C
 8 8 3 0
 0 0 T 0
 #3124
@@ -769,10 +769,10 @@ A duck is here, quacking happily.
 The duck is quite fat.  It looks like it is enjoying life.
 ~
 water fowl~
-GU 0 1000 S
+AGU 0 1000 S
 1 0 2d6+5 1d1+99 1d4+0 24
 10 10 10 10
-FR 0 R C
+FR AB R C
 8 8 3 0
 0 0 S 0
 #3140
@@ -783,10 +783,10 @@ The captain of the guard is looking very upset.
 A big, strong, angry captain.
 ~
 human~
-BCFT D 1000 S
+ABCFGT D 1000 S
 17 4 15d15+190 1d1+199 2d4+6 17
 -2 -2 -2 6
-CDEHKLU 0 C 0
+CDEHKLU AB C 0
 8 8 1 500
 0 0 M 0
 #3141
@@ -797,10 +797,10 @@ A witch is hovering in the air on her broom.
 A wicked looking hag.  
 ~
 human~
-BCFT 0 1000 S
+ABCFGT 0 1000 S
 15 3 15d15+10 1d1+149 2d4+4 17
 0 0 0 8
-CDEHKLU 0 C 0
+CDEHKLU AB C 0
 8 8 3 150
 0 0 M 0 
 #3142
@@ -813,10 +813,10 @@ The Secretary says 'Sorry, but the Mayor is extremely busy today'.
 The Secretary says 'Please sit down and have a seat in the meantime'.
 ~
 human~
-B 0 900 S
+AB 0 900 S
 12 2 4d12+148 1d1+99 2d7+1 16
 0 0 0 8
-FHI 0 0 0
+FHI AB 0 0
 6 6 2 100
 0 0 M 0
 #3143
@@ -827,7 +827,7 @@ The mayor is here.  He shakes your hand.
 He is a stocky, middle-aged man with thin, grey hair.
 ~
 human~
-B N 900 S
+AB N 900 S
 23 6 6d10+500 1d1+199 1d8+12 17 
 -15 -15 -15 -15
 EFNS AB CD 0
@@ -841,10 +841,10 @@ The town crier is here, weeping quietly.
 He is very good at his job - completely dissolved in tears.
 ~
 human~
-H 0 900 S
+AH 0 900 S
 1 0 2d6+10 1d1+99 1d5+0 16
 10 10 10 10
-D 0 0 C 
+D AB 0 C
 8 8 1 14
 0 0 M 0
 #3150
@@ -856,7 +856,7 @@ Esme brushes a lock of dark hair away from her wire-rimmed glasess and
 smiles warmly at you.
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 25 0 1d1+999 1d1+199 1d8+10 16
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -873,7 +873,7 @@ frame.  She looks up from her pile of papers and maps and looks inquiringly
 at you, smiling faintly.
 ~
 human~
-BV 0 900 S
+ABV 0 900 S
 25 0 1d1+999 1d1+199 5d6+20 16
 -15 -15 -15 -15
 FG ABCD 0 0
@@ -889,10 +889,10 @@ jaw, almost as if he were smiling at you.  He's quite friendly, but don't
 get him drunk.
 ~
 snake~
-BV D 200 S
+ABV D 200 S
 15 3 11d10+200 1d1+99 4d6+4 10
 -6 -5 -2 4
-FHNR 0 F 0
+FHNR AB F 0
 8 8 1 0
 0 0 S 0 
 #0
@@ -2242,7 +2242,7 @@ map olympus~
                             u|t             |
                             s+--Ares Street-+--Weapon
                     Mystery  |              |   Shop
-                    Shop-----+           Armoury
+                    Shop-----+           Armory
                              |
                    Residence-+-Residence
                              |
@@ -2812,7 +2812,7 @@ S
 #3013
 Main Street~
    You are on the main street passing through the City of Midgaard.  South of
-here is the entrance to the Armoury, and the bakery is to the north.  East of
+here is the entrance to the Armory, and the bakery is to the north.  East of
 here is the market square.
 ~
 30 0 1
@@ -2827,7 +2827,7 @@ You see the market square.
 ~
 0 -1 3014
 D2
-You see the armoury.
+You see the armory.
 ~
 ~
 0 -1 3020
@@ -2984,8 +2984,8 @@ impossible to climb back up.
 0 -1 7017
 S
 #3020
-The Armoury~
-   The armoury with all kinds of armours on the walls and in the window.  You
+The Armory~
+   The armory with all kinds of armors on the walls and in the window.  You
 see helmets, shields and chain mails.  To the north is the main street.
 On the wall is a small note.
 ~

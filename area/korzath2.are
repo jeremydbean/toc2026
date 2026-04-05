@@ -10,7 +10,7 @@ The Animated Skeleton is searching for a way to relieve the pain of living.
 He is an unholy creature who fears the good and holy.
 ~
 human~
-CFGHMO DGOV -350 S
+ACFGHMO DGOV -350 S
 56 22 50d37+1000 25d49+294 4d10+18 5
 -30 -30 -30 -30
 DEFHJKP ABM 0 N
@@ -25,7 +25,7 @@ This deranged madman was trapped in the maze once he was determined to be
 'unworthy' in the Battleground Arena.
 ~
 human~
-CG DGOV -250 S
+ACG DGOV -250 S
 59 22 53d37+1000 25d49+300 4d10+18 7
 -30 -30 -30 -30
 DFHIKNU AB CDEFG EHOP
@@ -40,7 +40,7 @@ The lieutenant went insane after spending many months trapped here in the
 maze.
 ~
 human~
-CGT DGOV -275 S
+ACGT DGOV -275 S
 59 22 53d37+1000 25d49+280 4d10+18 11
 -30 -30 -30 -30
 DEFHIKLP AB CDEFG G
@@ -55,7 +55,7 @@ The Shadowman slips from room to room, shadow by shadow.  His face is
 decrepid and sickly looking.  He must be a creature of the undead.
 ~
 undead~
-CFGM BDGOV -500 S
+ACFGM BDGOV -500 S
 59 22 53d38+1000 25d50+300 6d7+21 6
 -30 -30 -30 -35
 FHIKPZ AX ABM HI ENO
@@ -70,7 +70,7 @@ A Necromancer in the Battleground animated a corpse into a vampire and
 sent it to the maze to feed off of the dead adventurers who perish here.
 ~
 vampire~
-CFGM DOTV -350 S
+ACFGM DOTV -350 S
 59 23 53d40+1000 21d53+318 6d7+21 5
 -33 -33 -33 -33
 DEFHJKP AB 0 N
@@ -85,7 +85,7 @@ The Keeper of the Gate has spent many years here waiting for someone to
 successfully defeat him and complete the first test.
 ~
 saurian~
-BFGM BDGHOTV -100 S
+ABFGM BDGHOTV -100 S
 54 22 54d41+1400 22d54+324 7d6+22 26
 -34 -34 -34 -23
 CDEFHIJKP AB 0 C
@@ -100,7 +100,7 @@ The Guardian of the Bridge only allows captured beings to be sent across the
 bridge and into the Battleground Arena.
 ~
 giant~
-BCGMT DGHOTV -100 S
+ABCGMT DGHOTV -100 S
 54 23 54d41+1500 22d54+320 7d6+23 27
 -34 -34 -34 -34
 ACDEFHIK AB E M
@@ -116,7 +116,7 @@ rears his black head back and wails out a terrifying battle cry as he moves
 to attack you.
 ~
 unique~
-CFGMT GOV -50 S
+ACFGMT GOV -50 S
 54 22 54d41+1500 22d54+350 7d6+22 10
 -54 -55 -54 -55
 CDFHIKLP AB 0 C
@@ -133,7 +133,7 @@ can see when his own death will be.  He attacks as if his time hasn't
 come yet.
 ~
 unique~
-CFGM DGOV -50 S
+ACFGM DGOV -50 S
 54 23 54d41+1500 22d54+350 7d6+22 8
 -65 -65 -65 -63
 CDEFHJKLP ABE 0 S
@@ -152,7 +152,7 @@ as he has.  Peering closer you can see the maggots that move and writhe
 in the erupting sickness of his demented face.
 ~
 human~
-FGMR BDOTV -400 S
+AFGMR BDOTV -400 S
 55 25 55d41+1500 22d55+330 10d4+24 19
 -65 -65 -65 -70
 FHJKP AB C F
@@ -170,7 +170,7 @@ at you and snorts; the smell of the air from his nostrils turns your
 stomach upside down.
 ~
 undead~
-CFGMO GOV -200 S
+ACFGMO GOV -200 S
 55 25 55d41+1500 22d55+330 10d4+25 31
 -66 -65 -66 -66
 CDEFHKMP ABJ E LNQ
@@ -187,10 +187,10 @@ time where people built machines whose sole purpose was to annihilate living
 beings.
 ~
 unique~
-FGM DGOV -2 S
+AFGM DGOV -2 S
 55 25 55d41+1500 22d55+200 10d4+25 28
 -67 -67 -67 -50
-ACDEFHKLOPZ A AP J C
+ACDEFHKLOPZ A ABP J C
 8 8 1 1000
 0 0 H 0
 #29213
@@ -202,10 +202,10 @@ David the Hawk is on the verge of natural death but, it hasn't lessened
 the birds fighting ability in the slightest.
 ~
 song bird~
-BGHM BHOV 500 S
+ABGHM BHOV 500 S
 56 26 56d42+2000 23d56+330 10d4+24 24
 -26 -26 -26 -26
-ACDEFHKLP 0 CD K
+ACDEFHKLP AB CD K
 8 8 1 1500
 0 0 M 0
 #29214
@@ -216,7 +216,7 @@ There is nothing left in this Nothingman.
 "He who forgets, will be destined to remember...."
 ~
 undead~
-FGHM GOV 1 S
+AFGHM GOV 1 S
 56 26 56d42+2500 23d56+300 10d4+25 21
 -67 -66 -66 -67
 DEFHIKP ABM 0 CE
@@ -262,7 +262,7 @@ The cloud is only a cloud of air but, it has conscious enough thought to
 realize you intend to harm it.
 ~
 unique~
-BFGM DHOT 5 S
+ABFGM DHOT 5 S
 58 28 58d44+4000 24d58+350 5d10+25 14
 -28 -28 -28 -28
 FHJKV ABP D HIJ
@@ -280,7 +280,7 @@ He makes a small flame in his hand as if mocking any magical ability
 you might have.
 ~
 human~
-FGMR DHOTVZ F 50 S
+AFGMR DHOTVZ F 50 S
 58 28 58d44+3500 24d58+400 5d10+26 19
 -28 -28 -28 -35
 FHKPV ABP LQ EF
@@ -297,10 +297,10 @@ DOOM! PRAY FOR FORGIVENESS! PRAISE TO KORZATH AND THE CAUSE..."
 Man, somebody needs to shut this guy up.
 ~
 unique~
-CGM BDGOX 50 S
+ACGM BDGOX 50 S
 58 28 58d44+5000 24d58+350 5d10+26 2
 -50 -50 -52 -50
-CDEFHIKP P M Y
+CDEFHIKP ABP M Y
 8 8 1 2100
 0 0 M 0
 #29220
@@ -311,7 +311,7 @@ The Keeper watches over the Battleground.
 The Keeper evaluates the fighting ability of the Battleground creatures.
 ~
 wyvern~
-BCFGM BDHOT 50 S
+ABCFGM BDHOT 50 S
 59 29 59d44+5000 24d59+350 8d6+26 21
 -30 -30 -30 -32
 CDEFHIJKP ABEGP 0 S
@@ -326,7 +326,7 @@ The Keeper of the Nexus is a tall wyvern.  His wings flap wildly when he
 sees you have entered the Loop.
 ~
 wyvern~
-BCFGM BDHOT -50 S
+ABCFGM BDHOT -50 S
 59 29 59d44+6000 24d59+350 8d6+26 32
 -30 -30 -30 -30
 ACEFKP ABP 0 S
@@ -341,7 +341,7 @@ The Keeper of Lost Souls wishes to make your soul eternally lost in
 the Loop.
 ~
 wyvern~
-BCFGM BDHOT -50 S
+ABCFGM BDHOT -50 S
 59 29 59d44+6000 24d59+350 8d6+26 32
 -30 -30 -30 -30
 ACEFKP ABP 0 S
@@ -358,7 +358,7 @@ are deemed the best of the best.  They work to shape the creatures
 battle talents so that they can be used in Korzath's new military.
 ~
 human~
-BFGMT DGHOTV -200 S
+ABFGMT DGHOTV -200 S
 62 32 62d47+6000 31d62+370 9d6+29 3
 -32 -32 -32 -32
 CDEFHIKLP ABP G G
@@ -372,7 +372,7 @@ You scream and writhe as plague sores erupt from your skin.
 A terrible, contagious disease.
 ~
 unique~
-BFGM DOTX 1 S
+ABFGM DOTX 1 S
 64 45 64d48+6400 22d64+380 8d7+30 12
 -55 -55 -55 -55
 AFHKP ABLP 0 OR
@@ -388,7 +388,7 @@ force.  They are ordered to capture or execute all intruders.  They prefer
 to do the latter.
 ~
 giant~
-CFGMT DGHNOTV 200 S
+ACFGMT DGHNOTV 200 S
 65 37 65d49+7000 32d65+390 9d8+30 1
 -35 -35 -35 -35
 CDEFHIKLOP ABP 0 F
@@ -404,7 +404,7 @@ tacticians who happen to be women.  The Lord Generals are in charge of
 all outside military actions taken by Korzath's personal army.
 ~
 human~
-BCFGM DHNOTV 300 S
+ABCFGM DHNOTV 300 S
 68 38 68d51+8000 34d68+410 9d10+23 11
 -40 -38 -40 -38
 CDEFIKLOP ABP 0 0
@@ -420,7 +420,7 @@ are set extremely deep in the Fade's eye sockets.  It moves toward you and
 only then can you smell the vileness of this demon.
 ~
 unique~
-BCFGM BDHNOTVZ G -850 S
+ABCFGM BDHNOTVZ G -850 S
 69 40 69d52+8500 34d69+400 10d10+20 27
 -41 -40 -41 -42
 ACDEFHIJKLNPZ A ABLMPQ C NO
@@ -436,7 +436,7 @@ his master and Korzath is at one with him.  Together, they are a deadly
 pair.
 ~
 giant~
-BCGMR DFGHJNOTVZ F -500 S
+ABCGMR DFGHJNOTVZ F -500 S
 70 50 70d53+4000 35d70+420 10d11+17 30
 -60 -60 -60 -60
 CDEFHKLNOPRV ABMNP PS 0
@@ -454,7 +454,7 @@ You know little of his ancestors but, Korzath's strong build and height
 suggest that they were a very dangerous society of people.
 ~
 giant~
-BCGM DFGHJNOTVZ F -500 S
+ABCGM DFGHJNOTVZ F -500 S
 70 50 70d53+4000 35d70+420 10d11+20 20
 -60 -60 -60 -60
 CDEFHKLNPRV ABCP D C
@@ -468,7 +468,7 @@ A healer stands ready to cure your wounds.
 Dressed in white robes and golden garbs; this is one powerful healer.
 ~
 human~
-BDGMQ DFHOT 0 S
+ABDGMQ DFHOT 0 S
 56 26 56d42+670 23d56+330 10d4+24 0
 -26 -26 -26 -26
 CV AB 0 0
@@ -483,7 +483,7 @@ Gweedo has been serving drinks here ever since Haze sat down and wrote
 him into the .are file.
 ~
 human~
-BGHMS DOT 0 S
+ABGHMS DOT 0 S
 70 50 70d53+1000 35d70+420 10d11+20 20
 -50 -50 -50 -50
 CDEFH ABCD 0 0
@@ -497,7 +497,7 @@ A guy in a clown mask stares at you.
 A guy in a clown mask wanders around aimlessly.
 ~
 human~
-CG D -250 S
+ACG D -250 S
 59 32 200d2+1500 25d49+450 4d10+18 7
 -15 -15 -15 -15
 DFHKNU ABPN CDEFG EHOP
@@ -2112,7 +2112,7 @@ plaque~
    (One)   Dax
    (Two)   Oreous
    (Three) Gant
-   (Four)  Traveller
+   (Four)  Traveler
    (Five)  Gunslinger
    (Six)   Vladimyr	You can look at each name or corresponding number.
    (Seven) Condor
@@ -2138,17 +2138,17 @@ his soul has ascended into an immortal.
 ~
 E
 gant three~
-	Gant led Silverglen along with Traveller.  While Traveller kept the
+	Gant led Silverglen along with Traveler.  While Traveler kept the
 castle together, Gant worked to add more members.  The castle had nearly
 ceased to add new blood to it's ranks until Gant attained his leadership
 position.  He interviewed countless possible recruits to find the ones
 who would be the best candidates to become members of Silverglen.
 ~
 E
-traveller four~
-	Successor to the throne of Silverglen, Traveller ruled his castle
+traveler four~
+	Successor to the throne of Silverglen, Traveler ruled his castle
 with a swift and sure hand.  The castle that once held such peaceful values,
-fell to corruption after Queen Katrina died of the plague.  Traveller took
+fell to corruption after Queen Katrina died of the plague.  Traveler took
 over and quickly moved to Outcast the troublemakers of the castle: Strongarm
 and Gunslinger.  He restored the lawful image to this once unlawful castle.
 ~
@@ -2198,7 +2198,7 @@ hours in search of the thief so that they could execute him.  They failed.
 E
 mithran ten~
 	Mithran, second ruler of Silverglen.  Mithran took over as Castle
-leader after King Telemid disappeared.  He selected Traveller as Chancellor
+leader after King Telemid disappeared.  He selected Traveler as Chancellor
 to the castle and ruled until he the day he vanished like Telemid had.
 ~
 S
@@ -4992,7 +4992,7 @@ blue swirl begins to show itself underneath you.  You can see that the
 blue light is eminating from a swirling groove engraved in the floor.
 Finally, the floor stops moving and two shapes reveal themselves from
 the darkness around you.
-     "Welcome to my humble abode young travellers," Korzath says, "Stay
+     "Welcome to my humble abode young travelers," Korzath says, "Stay
 awhile...in fact....STAY FOREVER!"
      A Sword of Starlight appears in Korzath's hands and the darkness of
 the room is destroyed by the utterly powerful light produced by the Sword.

@@ -13,10 +13,10 @@ hat.  His face is covered with a curly white beard which suffers from
 years of neglect.
 ~
 human~
-BMT OJV 0 S
+ABMT OJV 0 S
 35 5 1d1+750 1d1+1 12d5+10 27
 -5 -5 -5 +10
-EDFHIKLNU 0 0 JI
+EDFHIKLNU AB 0 JI
 8 8 1 3540
 0 0 M 0
 #19002
@@ -29,10 +29,10 @@ menaces towards you.  This little devil is about 90% teeth and about
 1% brains.  Pirhanas will attack anything that moves.
 ~
 unique~
-BFMU QJV 0 S
+ABFGMU QJV 0 S
 40 5 1d50+1200 1d1+1 4d11+35 10
 -10 -10 -10 0
-DEFHKMUZ AB 0 0 JHI
+DEFHKMUZ AB AB 0 JHI
 8 8 1 0
 0 0 M 0
 #19003
@@ -43,10 +43,10 @@ A giant bee is here, buzzing around.
 A six inch bee with big complex eyes and a furry body is flying around.
 ~
 insect~
-BMU TJ 0 S
+ABMU TJ 0 S
 10 1 1d50+100 1d1+1 1d1+50 26
 0 0 0 0
-GKU 0 0 0
+GKU AB 0 0
 8 8 1 0
 0 0 S 0
 #19004
@@ -59,10 +59,10 @@ diving around the forest at innocent bystanders.  They seem to be
 protecting the queen bee who is oddly out of the hive.
 ~
 unique~
-BMUF TJ 0 S
+ABFGMU TJ 0 S
 50 6 5d15+1000 1d1+1 4d15+10 26
 -15 -15 -15 +10
-DFH EFL 0 EHIJKPR
+DFH ABEFL 0 EHIJKPR
 8 8 1 0
 0 0 L 0
 #19005
@@ -75,10 +75,10 @@ inches in length and weighing about 2 pounds she packs a mean
 sting.  She is looking at you with her big bee eyes.
 ~
 unique~
-BMU TJ 0 S
+ABMU TJ 0 S
 30 3 1d1+500 1d1+1 1d1+75 26
 -15 -15 -15 +10
-DFH EFL 0 EHIJKPR
+DFH ABEFL 0 EHIJKPR
 8 8 2 0
 0 0 S 0
 #19006
@@ -91,10 +91,10 @@ Too bad for him the bee net hasn't been invented yet.  He appears to
 be guarding his precious royal jelly.
 ~
 human~
-BTU BDFJHOVX 0 S
+ABTU BDFJHOVX 0 S
 36 3 1d1+972 300d2+1 2d10+10 16
 0 0 0 0
-CDEFIJKNV 0 0 0
+CDEFIJKNV AB 0 0
 8 8 1 680
 0 0 M 0
 #19007
@@ -108,10 +108,10 @@ jewelry for them to wear.  He looks like if he could be a very
 formidable opponent if tampered with.
 ~
 human~
-BGR BDFJHOVX 500 S
+ABGR BDFJHOVX 500 S
 42 4 1d1+900 300d2+1 4d15+5 16
 0 0 0 0
-FHIJKNV 0 0 0
+FHIJKNV AB 0 0
 8 8 1 1000
 0 0 M 0
 #19008
@@ -125,10 +125,10 @@ is covered with dark brown fur and an interesting looking
 amulet.
 ~
 horse~
-BMU QJ 0 S
+ABMU QJ 0 S
 36 3 1d1+900 1d1+1 4d15+5 15
 0 0 0 0
-FIKO 0 0 0
+FIKO AB 0 0
 8 8 1 0
 0 0 H 0
 #19009
@@ -140,10 +140,10 @@ The giant boar is a ferocious beast if bothered.  He has long
 ivory tusks and a hairy back.  Boy does he stink!
 ~
 horse~
-BMU J 0 S
+ABMU J 0 S
 30 3 1d1+750 1d1+1 4d6+8 15
 0 0 0 0
-FIKO 0 0 0
+FIKO AB 0 0
 8 8 1 0
 0 0 L 0
 #19010
@@ -155,10 +155,10 @@ Aggressive and nasty by nature, the sow will try to protect
 her piglets.
 ~
 horse~
-FBMU J 0 S
+ABFGMU J 0 S
 30 3 1d1+750 1d1+1 4d6+8 15
 0 0 0 0
-FIKO 0 0 0
+FIKO AB 0 0
 8 8 2 0
 0 0 L 0
 #19011
@@ -171,10 +171,10 @@ It is about the size of a regular full grown hog and smells much
 worse.
 ~
 horse~
-BMU J 0 S
+ABMU J 0 S
 15 1 1d1+300 1d1+1 4d2+2 15
 0 0 0 0
-FIKO 0 0 0
+FIKO AB 0 0
 8 8 1 0
 0 0 M 0
 #19012
@@ -187,10 +187,10 @@ Nymphs are known for enjoying a certain activity...now if you
 could just remember what it is...
 ~
 human~
-BHMW IJ 250 S
+ABHMW IJ 250 S
 36 3 1d1+971 1d1+1 4d5+10 16
 -5 -5 -5 -5
-EFHJKNU 0 0 0
+EFHJKNU AB 0 0
 8 8 2 500
 0 0 M 0
 #19013
@@ -203,10 +203,10 @@ having pleasant dreams or feels gratified in some way.  It is surprising
 to see a 16 year old so worn out....HHHHMMM....damn nymphs!
 ~
 human~
-BMH RJ 250 S
+ABHM RJ 250 S
 36 3 1d1+971 1d1+1 4d5+10 16
 -5 -5 -5 -5
-EFHJKNU 0 0 0
+EFHJKNU AB 0 0
 4 4 1 500
 0 0 M 0
 #19014
@@ -217,10 +217,10 @@ A carrion crawler is here, scavenging for dead stuff.
 The carrion crawler is a very large centipede looking beast.
 ~
 centipede~
-BCFM J -500 S
+ABCFGM J -500 S
 45 4 1d1+2500 1d100+1 10d4+20 32
 -5 -5 -5 -5
-DEFHKMO 0 0 0
+DEFHKMO AB 0 0
 8 8 1 320
 0 0 H 0
 #19015
@@ -235,10 +235,10 @@ filled with razor sharp fangs.  It has four arms and walks upright.
 Better not mess with it!
 ~
 unique~
-BFGHS TJQZ A -1000 S
+ABFGHS TJQZ A -1000 S
 54 5 1d1+4000 1d100+1 7d6+20 9
 -5 -5 -5 -5
-BCDEFHIJKNR 0 0 NYPJ
+BCDEFHIJKNR AB 0 NYPJ
 8 8 1 100
 0 0 L 0
 #19016
@@ -250,10 +250,10 @@ Legend has it that handful of elven archers once held off over
 a hundred raiding orcs.  Looking at this one you can see why.
 ~
 elf~
-BGT J 750 S
+ABGT J 750 S
 40 4 4d10+1850 1d1+100 4d8+13 13
 -5 -5 -5 -5
-EDFHIKLNU 0 0 0
+EDFHIKLNU AB 0 0
 8 8 1 500
 0 0 M 0
 #19017
@@ -265,10 +265,10 @@ Trained in the arts of war by the elven armorer Eliakas, this
 soldier would definitely fight well.
 ~
 elf~
-BGT 0 750 S
+ABGT 0 750 S
 40 4 4d10+1850 1d1+100 4d8+13 13
 -5 -5 -5 -5
-EDFHIKLNU J 0 0
+EDFHIKLNU ABJ 0 0
 8 8 1 500
 0 0 M 0
 #19018
@@ -281,10 +281,10 @@ very best elven soldiers.  They are like the Green Berets, the Seals,
 the Commandos and the Rangers all rolled into one.
 ~
 elf~
-BGMTF DHJVZ A 750 S
+ABFGMT DHJVZ A 750 S
 54 5 50d10+6500 1d1+100 7d6+22 13
 -10 -10 -10 -10
-EDFHIKLNU 0 0 0
+EDFHIKLNU AB 0 0
 8 8 1 500
 0 0 M 0
 #19019
@@ -296,10 +296,10 @@ Queen Elifreda is the most beautiful elf you have ever seen.  She
 is dressed in a blue and gold satin gown studded with garnets.
 ~
 elf~
-BGMTR RDHJV 1000 S
+ABGMRT RDHJV 1000 S
 60 7 1d1+7000 1d1+1500 8d6+28 16
 -10 -10 -10 -10
-EDFHIKLNU J 0 0
+EDFHIKLNU ABJ 0 0
 8 8 2 6000
 0 0 M 0
 #19020
@@ -312,10 +312,10 @@ Adored by all of the elves, he is kindly and fair.  In battle, he is one
 of the more formidable opponents one can meet.
 ~
 elf~
-BGMTR RDHJV 1000 S
+ABGMRT RDHJV 1000 S
 60 7 1d1+10000 1d1+2000 10d6+30 13
 -10 -10 -10 -10
-EDFHIKLNU 0 0 0
+EDFHIKLNU AB 0 0
 8 8 1 10000
 0 0 M 0
 #19021
@@ -326,10 +326,10 @@ The city baker is here, preparing some tasty lembas.
 Maybe he will sell you some lembas.
 ~
 elf~
-BMX J 0 S
+ABMX J 0 S
 40 4 1d1+1000 1d1+1 10d6+30 13
 0 0 0 0
-EDFHIKLNU 0 0 0
+EDFHIKLNU AB 0 0
 8 8 1 0
 0 0 M 0
 #19022
@@ -340,10 +340,10 @@ The city's winer stands here, making fine wines.
 Maybe he will sell you some oerivir.
 ~
 elf~
-BMX J 0 S
+ABMX J 0 S
 40 4 1d1+1000 1d1+1 10d6+30 13
 0 0 0 0
-EDFHIKLNU 0 0 0
+EDFHIKLNU AB 0 0
 8 8 1 0
 0 0 M 0
 #19023
@@ -355,10 +355,10 @@ A huge figure for an elf, Elerach looks like a Neanderthal.  His
 combat skills are legendary, so watch out!
 ~
 elf~
-BMT HVJ 750 S
+ABMT HVJ 750 S
 50 4 1d1+3000 1d1+1 5d7+20 13
 -5 -5 -5 -5
-EDFHIKLNU 0 0 0
+EDFHIKLNU AB 0 0
 8 8 1 0
 0 0 M 0
 #19024
@@ -369,10 +369,10 @@ An elven mage rests here, recovering.
 An average ordinary elf with magic is what you see.
 ~
 elf~
-BMR JV 750 S
+ABMR JV 750 S
 40 4 15d10+1700 40d5+100 3d10+12 16
 0 0 0 0
-EFHKU 0 0 0
+EFHKU AB 0 0
 8 8 1 500
 0 0 M 0
 #19025
@@ -383,10 +383,10 @@ Pico's lab rat named "Koko" scurries around here.
 Wait a minute!  That is not a rat!  Its a little brown toy poodle!!!
 ~
 dog~
-BMR JV 0 S
+ABMR JV 0 S
 1 1 1d20+1 1d100+100 1d5+2 10
 0 0 0 0
-EFHKU A 0 0
+EFHKU AB 0 0
 8 8 1 10
 0 0 S 0
 

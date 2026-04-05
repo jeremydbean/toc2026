@@ -14,7 +14,7 @@ the remains of her late husband, but her expression is reverential.
 Perhaps he is food for the spirit as well as the body.
 ~
 unique~
-BDGMQV DFH 0 S
+ABDGMQV DFH 0 S
 40 4 40d30+600 20d40+240 4d8+13 20
 -12 -12 -12 -10
 FHIK ABCD 0 P
@@ -31,7 +31,7 @@ dripping sizzling venom onto the floor.  Yet, somehow,  you feel she is
 exactly the one who can lead you to your destiny.
 ~
 unique~
-BEGKMV DFHNZ AB 0 S
+ABEGKMV DFHNZ AB 0 S
 60 19 60d45+1020 30d60+420 5d8+15 26
 -18 -18 -18 -15
 ACDEFHO ABCD 0 0
@@ -48,7 +48,7 @@ looks like hamburger... until you notice the spit-out remnants of armor
 lying on the floor.  
 ~
 plant~
-BCGMT DFGOVZ B 0 S
+ABCGMT DFGOVZ B 0 S
 40 9 40d30+680 20d40+240 4d8+13 32
 -10 -10 -10 -10
 CEFJKNU ABLQR EP GK

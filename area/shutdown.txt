@@ -32,3 +32,4 @@
 [*****] [*****] FILE: commands.are LINE: 2485
 [*****] [*****] FILE: commands.are LINE: 2485
 [*****] [*****] FILE: ashen_wastes.are LINE: 428
+[*****] [*****] FILE: commands.are LINE: 2875

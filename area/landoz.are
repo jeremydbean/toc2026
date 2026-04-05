@@ -11,10 +11,10 @@ for oil.  He must have rusted while he was out chopping
 some wood because he is still holding his giant tin axe.
 ~
 human~
-BHT H 1000 S
+ABHT H 1000 S
 25 2 5d9+480 1d1+100 3d5+9 17
 -2 -2 -2 -2
-E 0 0 0
+E AB 0 0
 8 8 1 0
 0 0 L 0
 #17702
@@ -26,10 +26,10 @@ As you get closer to the scarecrow you barely hear
 him humming the tune, "If I only had a brain."
 ~
 doll~
-BCHT 0 800 S
+ABCHT 0 800 S
 20 2 4d8+275 1d1+100 3d3+8 16
 0 0 0 0
-FN LQ 0 EH
+FN ABLQ 0 EH
 8 8 1 23
 0 0 M 0
 #17703
@@ -41,10 +41,10 @@ As you examine Dorothy she whimpers, "Theres no place like
 home.  Can you help me get home?"
 ~
 human~
-GHQ HN 1000 S
+AGHQ HN 1000 S
 22 5 5d8+390 1d1+100 4d5+6 5
 0 0 0 -2
-FK N 0 0
+FK ABN 0 0
 8 8 2 125
 0 0 M 0
 #17704
@@ -58,10 +58,10 @@ Road" over and over again.  He is really getting on your
 nerves.
 ~
 elf~
-CGS P 300 S
+ACGS P 300 S
 5 1 2d6+57 1d1+100 1d5+3 10
 5 5 5 5
-F 0 0 0 
+F AB 0 0
 8 8 1 1
 0 0 T 0
 #17705
@@ -75,10 +75,10 @@ Road" over and over again.  She is really getting on your
 nerves.
 ~
 elf~
-CGS P 300 S
+ACGS P 300 S
 5 1 2d6+59 1d1+100 1d5+2 10
 5 5 5 5
-F 0 0 0 
+F AB 0 0
 8 8 2 100
 0 0 T 0
 #17706
@@ -91,10 +91,10 @@ was killed when Dorothy's house landed on her.  Now only
 her undead spirit haunts the basement of Dorothy's house.
 ~
 undead~
-BFMOR BH -750 S
+ABFGMOR BH -750 S
 28 5 6d10+721 1d1+150 8d3+7 5
 -10 -10 -10 -10
-AFKN B 0 N
+AFKN AB 0 N
 8 8 2 1257
 0 0 M 0
 #17707
@@ -106,13 +106,13 @@ This monkey is one of the many minions of the wicked witch
 of the west.  Its only purpose in life is to see you dead.
 ~
 unique~
-FT T -300 S
+AFGT T -300 S
 25 3 5d11+475 1d1+100 6d4+7 13
 -5 -5 -5 -5
-DFR AL 0 N
+DFR ABL 0 N
 8 8 0 10
 0 0 M 0
-#17708  
+#17708
 ruler trees~
 The Ruler of the Trees~
 The Ruler of the Trees stands before you.
@@ -122,10 +122,10 @@ clearly realiaze he is very old.  Maybe it would be best if
 you left him alone.
 ~
 tree~
-BMR OZ A -600 S
+ABMR OZ A -600 S
 30 3 6d12+767 1d1+100 4d8+8 15
 -7 -7 -7 -6
-CEFO 0 0 0
+CEFO AB 0 0
 8 8 0 705
 0 0 G 0
 #17709
@@ -137,10 +137,10 @@ This is Glinda the good witch of the north.  She is very
 happy now that the wicked witch of the east is dead.
 ~
 human~
-BHR HO 1000 S
+ABHR HO 1000 S
 40 8 1d1+1622 1d1+141 10d4+8 19
 -15 -15 -15 -15
-AF C 0 0
+AF ABC 0 0
 8 8 2 1238
 0 0 M 0
 #17710
@@ -152,10 +152,10 @@ Before you is the Mayor of Munchkin Land.  It is mostly
 an honorary title and he has no real duties.
 ~
 elf~
-CGS P 350 S
+ACGS P 350 S
 10 2 2d10+116 1d1+100 3d3+5 16
 0 0 0 0
-F 0 0 0 
+F AB 0 0
 8 8 1 224
 0 0 T 0
 #17711
@@ -168,10 +168,10 @@ He has been wandering around this forest for many years and
 seems very lifeless.
 ~
 tree~
-HT G -100 S
+AHT G -100 S
 17 3 3d10+259 1d1+100 3d6+3 27
 -3 -3 -3 -3
-CEF 0 0 0
+CEF AB 0 0
 8 8 0 9
 0 0 H 0
 #17712
@@ -183,10 +183,10 @@ This guard only has one purpose in life...to keep you from
 entering the tower.
 ~
 modron~
-BT T 300 S
+ABT T 300 S
 26 4 4d12+525 1d1+100 6d4+8 15
 -7 -7 -7 -7
-CDER A 0 0
+CDER AB 0 0
 8 8 1 123
 0 0 L 0
 #17713
@@ -198,10 +198,10 @@ This lion is trying its hardest to appear mean, but you can
 tell that he really is afraid of you.
 ~
 bear~
-BHT NV 600 S
+ABHT NV 600 S
 18 2 4d8+266 1d1+100 4d4+5 5
 -3 -3 -3 0
-CK E 0 P
+CK ABE 0 P
 8 8 1 524
 0 0 M 0
 #17714
@@ -213,10 +213,10 @@ This is Dorothy's pet.  She would be very upset if
 anything happened to it.
 ~
 dog~
-S LN 1000 S
+AS LN 1000 S
 5 1 2d6+75 1d1+100 2d3+2 10
 0 0 0 0
-M 0 0 0
+M AB 0 0
 8 8 1 0
 0 0 S 0
 #17715
@@ -228,10 +228,10 @@ This is a citizen of the Emerald City.  He looks like he's
 running errands and he's ignoring you completely.  
 ~
 human~
-C V 0 S
+AC V 0 S
 10 2 2d8+135 1d1+100 3d5+2 16
 0 0 0 0
-I I 0 0
+I ABI 0 0
 8 8 1 367
 0 0 M 0
 #17716
@@ -244,7 +244,7 @@ illusion.  It has a very loud booming voice and it seems to
 be trying to scare you away.
 ~ 
 head~
-BMR HKT 400 S
+ABMR HKT 400 S
 30 5 1d1+999 1d1+100 8d4+10 27
 -8 -8 -8 -8
 FO AB 0 0
@@ -260,7 +260,7 @@ magnificent powers and knows all.  What is it that you have
 come looking for?
 ~
 human~
-BMR HOV 850 S
+ABMR HOV 850 S
 45 9 15d12+2425 1d1+153 10d4+13 19
 -15 -15 -15 -15
 AFIO AB C 0
@@ -275,7 +275,7 @@ This is the infamous Wicked Witch of the West.  She is the
 pinnacle of evil and she stands here cackling at you.
 ~
 dwarf~
-BFMR HOT -1000 S
+ABFGMR HOT -1000 S
 40 12 20d5+1636 1d1+183 13d5+12 5
 -16 -16 -16 -16
 ADH AB C NR

@@ -32,7 +32,7 @@ unique~
 AFG DJP -1000 S
 45 10 10d20+1500 1d1+510 12d8+5 7
 -8 -8 -8 -8
-CIKR AFHJPR CGK 0
+CIKR ABFHJPR CGK 0
 8 8 1 500
 0 0 M 0
 #5602
@@ -44,10 +44,10 @@ A sneaky looking dark lord of Tarin stands here.
 as all monsters in this realm.
 ~
 unique~
-AF DHJ -1000 S
+AFG DHJ -1000 S
 50 10 10d20+1600 1d1+510 12d8+5 6
 -8 -8 -8 -8
-DEFHKR AILQ EJ 0
+DEFHKR ABILQ EJ 0
 8 8 1 700
 0 0 M 0
 #5603
@@ -59,10 +59,10 @@ An enormous looking warlord stands here.
 eyes.
 ~
 unique~
-AF DJ -700 S
+AFG DJ -700 S
 44 10 10d20+1600 1d1+510 12d8+5 6
 -8 -8 -8 -8
-DEFHKR AILQ EJ 0
+DEFHKR ABILQ EJ 0
 8 8 1 700
 0 0 M 0
 #5604
@@ -109,7 +109,7 @@ unique~
 AB DH 1000 S
 50 10 10d20+1600 1d1+510 12d8+5 7
 -8 -8 -8 -8
-CIKR AFHJPR CGK 0
+CIKR ABFHJPR CGK 0
 8 8 1 500
 0 0 M 0
 #5607
@@ -165,7 +165,7 @@ A hoovering red devil is here.
 You see nothing special about it.
 ~
 unique~
-AF FJ -700 S
+AFG FJ -700 S
 42 10 10d20+1500 1d1+410 12d8+5 6
 -8 -8 -8 -8
 BCDEFKR ABHLQ CIJKN 0
@@ -179,7 +179,7 @@ A huge black devil is here.
 You see a black devil with an evil look in its eyes.
 ~
 unique~
-AF FJ -700 S
+AFG FJ -700 S
 42 10 10d20+1500 1d1+410 12d8+5 6
 -8 -8 -8 -8
 BCDEFKR ABHLQ CIJKN 0
@@ -209,10 +209,10 @@ A large drake stands here, burning with scorching heat.
 human. -* Eirk *-
 ~
 unique~
-AF DJ -700 S
+AFG DJ -700 S
 35 10 10d20+1000 1d1+510 12d8+5 6
 -8 -8 -8 -8
-DEFHK AILQ EJ 0
+DEFHK ABILQ EJ 0
 8 8 1 700
 0 0 M 0
 #5614
@@ -224,7 +224,7 @@ You see the looks of a once peaceful blacksmith turned, by the evil forces,
 into this horrible creature.
 ~
 unique~
-ABCFQ DFH -1000 S
+ABCFGQ DFH -1000 S
 55 30 10d50+3400 1d1+1000 10d20+25 6
 -15 -15 -15 -15
 ACDEFGV ABEKP CN 0
@@ -238,7 +238,7 @@ A large black minotaur stands here, drooling like a madman.
 You see a large creature, totally enveloped in darkness.
 ~
 unique~
-ABF DJ -1000 S
+ABFG DJ -1000 S
 45 25 10d20+1700 1d1+1000 12d10+25 6
 -12 -12 -12 -12
 CDHNR ABQ D 0
@@ -254,7 +254,7 @@ hands seems to be able to cut through rocks has been placed in the end of
 its arms and legs. Eyes burning with hatred meets you as you enter.
 ~
 unique~
-ABF DFHJ -1000 S
+ABFG DFHJ -1000 S
 65 35 10d20+5500 1d1+1000 10d20+25 20
 -20 -20 -20 -20
 ACDEFGV ABEKP CN 0
@@ -270,7 +270,7 @@ his eyes ears have been cut off and the only thing on him that reminds of a
 human being is the fact that he still got his nose and eyes. Both blue!
 ~
 unique~
-ABF DJ -1000 S
+ABFG DJ -1000 S
 46 25 10d20+1800 1d1+1000 12d10+25 6
 -12 -12 -12 -12
 CDHNR ABQ D 0
@@ -403,7 +403,7 @@ A transparent spirit is hoovering above the ground here.
 The spirit is white, and looks just like a cartoon monster.
 ~
 unique~
-ACF BDJ -500 S
+ACFG BDJ -500 S
 40 25 10d20+1200 1d1+1000 12d8+15 6
 -12 -12 -12 -12
 CDHN ABQ D 0
@@ -834,7 +834,7 @@ iron mask~
 the iron mask of sorrow~
 An enormous iron mask lies here, trembling with powers.~
 iron~
-9 GHMU AP
+9 GHMU AE
 0 20 0 0 0
 51 15 8500 P
 A
@@ -1068,7 +1068,7 @@ S
 #5606
 Marble hallway~
    You stand in a marble corridor leading east from here. The light
-gives the walls some fantastic colours and to the east you notice a
+gives the walls some fantastic colors and to the east you notice a
 faint light.
 You can go south and east from here.
 ~
@@ -1562,7 +1562,7 @@ D3
 E
 pillar pillars~
 The pillars in each corner of the hall send you different beautiful
-colours
+colors
 ~
 S
 #5628
@@ -1616,7 +1616,7 @@ curtain~
 E
 pillar pillars~
 The pillars in each corner of the hall send you different beautiful
-colours.
+colors.
 ~
 S
 #5630
@@ -1667,7 +1667,7 @@ D3
 E
 pillar~
 The pillars in each corner of the hall send you different beautiful
-colours.
+colors.
 ~
 S
 #5632
@@ -1687,7 +1687,7 @@ D3
 0 -1 5631
 E
 pillar~
-This pillar reflects a fantastic blue colour that almost blinds you.
+This pillar reflects a fantastic blue color that almost blinds you.
 ~
 S
 #5633
@@ -1722,7 +1722,7 @@ The runes read : Treasure room of Tarin
 E
 pillar pillars~
 The pillars in each corner of the hall send you different beautiful
-colours.
+colors.
 ~
 S
 #5634
@@ -1786,9 +1786,9 @@ Tarin.
 ~
 E
 pillar pillars~
-From here all the colours of the four pillars meet and the colours
-transform into the most beautiful white silver colour you have ever
-seen. Above these colours a huge golden throne rises.
+From here all the colors of the four pillars meet and the colors
+transform into the most beautiful white silver color you have ever
+seen. Above these colors a huge golden throne rises.
 ~
 S
 #5636
@@ -1929,7 +1929,7 @@ D5
 S
 #5644
 Silvery rooms of privacy~
-   You enter a colourful room mostly painted in silver. An enormous bed
+   You enter a colorful room mostly painted in silver. An enormous bed
 rests on the floor. A mirror and a table stand up against the north
 wall. Pictures stand on the shelves and on the table.
 ~
@@ -2034,7 +2034,7 @@ S
 Realm of Illusions~
    You enter the last realm of the illusion. Silence is unknown and
 pain is the only soil existence. From the roof and walls runs a liquid
-equally coloured as blood. Screams and shouts from the east would scare
+equally colored as blood. Screams and shouts from the east would scare
 most people from entering the lair.
 ~
 56 13 0
@@ -2234,7 +2234,7 @@ Trail through the deep forest~
    You walk through the forest and start wondering why the trees have
 made a perfect wall on each side of the road as if to keep you and
 other adventures out of the rest of forest. The sun gives the crowns of
-the trees far above you a sapphire green colour that is reflected
+the trees far above you a sapphire green color that is reflected
 everywhere in the forest.
 ~
 56 0 3
@@ -2364,7 +2364,7 @@ Dark dense forest~
    You notice that the dense forest is becoming a little lighter here,
 and you start breathing normally again. The sunbeams from above you hit
 the ground randomly, lighting this entire area up in a beautiful
-light-green colour.
+light-green color.
 ~
 56 1 3
 D0
@@ -2429,9 +2429,9 @@ S
 #5670
 Behind the tree~
    You stand behind the enormous tree, the sun lights up this place in
-a wonderful green colour. Deer, rabbits and other inhabitants of this
+a wonderful green color. Deer, rabbits and other inhabitants of this
 wood live here peacefully. The green grass you stand on feels soft and
-you notice the constant shifting in the colour of the grass, one minute
+you notice the constant shifting in the color of the grass, one minute
 it seems light and green and the next minute it becomes darker under
 the shadow of something moving high up in the trees.
 ~
@@ -2450,7 +2450,7 @@ S
 #5671
 Crown of the trees~
    You stand on a platform build perfectly into the crown of these
-trees. All around you there are leaves all coloured in the most be-
+trees. All around you there are leaves all colored in the most be-
 autiful green you have ever seen. The rope below you scatters and it
 seems rather impossible to get down this way.
 ~
@@ -2971,7 +2971,7 @@ P 1 5623 1  5626 - the funds of Tarin -> Treasure room of Tarin
 M 0 5622 2 5636 - the silvery waiter -> Treasure room of Tarin
 M 0 5622 2 5644 - the silvery waiter -> Silvery rooms of privacy
 M 0 5623 1 5685 - the king of trees -> High tree
-E 1 5629 1 18 -     the iron mask of sorrow
+E 1 5629 1 6  -     the iron mask of sorrow
 M 0 5624 1 5684 - A huge ancient tree -> Crown of the trees
 M 0 5625 4 5678 - the black griffen -> Crown of the trees
 M 0 5625 4 5680 - the black griffen -> Crown of the trees

@@ -5,7 +5,6 @@
 #MOBILES
 
 #19001
-
 disciple meditating~
 
 The Meditating Disciple~
@@ -26,7 +25,7 @@ he tells you, "Lest you be destroyed in the material armageddon."
 
 human~
 
-BGQR CDEFJOVZ AB 1000 S
+ABGQR CDEFJOVZ AB 1000 S
 
 30 6 200d2+65 2d50+100 5d5+17 7
 
@@ -39,7 +38,6 @@ AEFKN ABLNP JKPQ M
 0 0 M 0
 
 #19002
-
 disciple~
 
 The Last Disciple of Trigali~
@@ -66,7 +64,7 @@ that one can truly control one's self.
 
 human~
 
-BEGKMV CDEFGHNOTVZ AB 1000 S
+ABEGKMV CDEFGHNOTVZ AB 1000 S
 
 60 30 200d2+4550 100d1+400 7d8+15 17
 
@@ -79,7 +77,6 @@ ACDEFHIK ABCNP DIJK M
 0 0 M 0
 
 #19003
-
 protector~
 
 The Protector of the Shrine~
@@ -102,7 +99,7 @@ the Essence may enter.
 
 human~
 
-CGMT CDEFGHNTV 1000 S
+ACGMT CDEFGHNTV 1000 S
 
 55 25 2500d2+300 100d1+50 10d6+9 18
 

@@ -11,7 +11,7 @@ hollow red eyes track your every movement.  It has stalked this wasteland
 for ages, feeding on whatever wanders in from the lava forest beyond.
 ~
 human~
-CFGMT CFJ -800 S
+ACFGMT CFJ -800 S
 52 25 100d2+2000 100d1+100 10d7+15 8
 -12 -12 -12 -12
 EFI ABH 0 I
@@ -26,7 +26,7 @@ a rough statue until it suddenly lunges.  Its obsidian-edged claws rake the
 air as it attacks, and its wingbeats shower the ground with choking ash.
 ~
 human~
-CFGMT CFJ -800 S
+ACFGMT CFJ -800 S
 53 27 100d2+2400 100d1+100 10d7+18 5
 -13 -13 -13 -13
 EFI ABH 0 I
@@ -41,7 +41,7 @@ Whatever damage you deal it seems to reform before your eyes as cooling lava
 is re-melted from within.  It regards your presence with absolute fury.
 ~
 human~
-CFGMT CFJ -800 S
+ACFGMT CFJ -800 S
 54 29 100d2+2800 100d1+100 10d8+15 8
 -14 -14 -14 -14
 CEFI ABH 0 I
@@ -57,10 +57,10 @@ savagery more than compensate.  Wisps of smoke curl from its nostrils with
 each shallow breath.
 ~
 dragon~
-CFGMT J -800 S
+ACFGMT J -800 S
 55 31 100d2+3200 100d1+100 10d8+18 29
 -15 -15 -15 -15
-EFI 0 0 0
+EFI AB 0 0
 8 8 1 0
 0 0 L 0
 #26714
@@ -73,7 +73,7 @@ the stone smokes where it treads.  An ancient and terrible hatred burns from
 its hollow eyes.
 ~
 human~
-CFGMT CFJ -850 S
+ACFGMT CFJ -850 S
 56 32 100d2+3600 100d1+100 10d9+18 29
 -16 -16 -16 -16
 DEFI ABH 0 I
@@ -89,10 +89,10 @@ eyes smolder with angry light.  What passes for thought in its thick skull
 is directed entirely toward violence.
 ~
 giant~
-CGMT CFJ -800 S
+ACGMT CFJ -800 S
 56 30 100d2+4000 100d1+100 10d8+22 8
 -15 -15 -15 -15
-CEFI 0 0 0
+CEFI AB 0 0
 8 8 1 0
 0 0 H 0
 #26716
@@ -105,7 +105,7 @@ has faithfully guarded this wasteland ever since.  Its blade drips with
 what looks disturbingly like liquid fire.
 ~
 human~
-BGMT CFJ -900 S
+ABGMT CFJ -900 S
 57 34 100d2+4200 100d1+100 10d9+20 29
 -17 -17 -17 -17
 CDEFI ABH 0 I
@@ -120,10 +120,10 @@ ash it commands.  Its touch brings the numbing cold of an unnatural death,
 incongruous in this superheated place.  The wraith seems drawn to suffering.
 ~
 undead~
-CFGMO 0 -850 S
+ACFGMO 0 -850 S
 58 35 100d2+4600 100d1+100 10d9+22 18
 -18 -18 -18 -18
-AEFK 0 0 0
+AEFK AB 0 0
 8 8 0 0
 0 0 M 0
 #26718
@@ -136,7 +136,7 @@ staggering, and the stone around it glows dull red from the infernal
 temperature of its presence.
 ~
 dragon~
-CFGMT J -900 S
+ACFGMT J -900 S
 60 38 100d2+5800 100d1+100 10d10+20 29
 -20 -20 -20 -20
 CEFHIM ABH 0 I
@@ -152,7 +152,7 @@ with inner fire.  It was the first being to call these wastes home, and
 will be the last.  It speaks no words but promises only death.
 ~
 human~
-CFGMRT CFJ -1000 S
+ACFGMRT CFJ -1000 S
 62 42 200d2+7200 100d1+200 10d11+25 29
 -22 -22 -22 -22
 ACDEFHIM ABHM H I

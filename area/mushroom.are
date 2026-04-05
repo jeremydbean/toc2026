@@ -10,10 +10,10 @@ He watches you with calculating eyes.  Any threat toward him or his city
 will be met with extreme prejudice.
 ~
 elf~
-BT J -500 S
+ABT J -500 S
 20 10 3d9+333 2d2+2 2d8+5 3
 -3 -2 -2 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 150
 0 0 M 0
 #25201
@@ -26,10 +26,10 @@ eye color, weight, and everything else about you is stored away inside
 his head for reference at some future time.
 ~
 elf~
-BR JT -500 S
+ABR JT -500 S
 20 10 3d9+333 2d20+220 2d8+5 19
 -3 -2 -2 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 150
 0 0 M 0
 #25202
@@ -42,10 +42,10 @@ tries to get into the city without first stating his name and business this
 guard stops him before he can take 1 step.
 ~
 elf~
-BT J -500 S
+ABT J -500 S
 20 10 3d9+333 2d20+120 2d8+5 3
 -3 -3 -2 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 1
 0 0 M 0
 #25203
@@ -57,10 +57,10 @@ He is one of the rogue male nobles of the city fighting against the ruling
 body for some reason or another.
 ~
 elf~
-BRT JT -750 S
+ABRT JT -750 S
 25 13 5d10+550 2d25+125 2d10+7 3
 -4 -4 -4 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 200
 0 0 M 0
 #25204
@@ -72,10 +72,10 @@ He gives you a quick once over, and then turns his attention back to the task
 at hand.. his whip and an unfortunate soul's back. Ooohhh, that's gotta hurt!
 ~
 elf~
-BT J -750 S
+ABT J -750 S
 20 10 3d9+333 2d20+120 2d8+5 3
 -2 -3 -2 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 100
 0 0 M 0
 #25205
@@ -88,10 +88,10 @@ taskmaster every once in awhile with a look of horror and dread.  Maybe
 the whip will find its back again.
 ~
 kobold~
-BC 0 0 S
+ABC 0 0 S
 10 5 2d7+121 2d10+110 2d4+2 3
 -4 -4 -5 -1
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #25206
@@ -105,10 +105,10 @@ way down.  Just when you think he does he uses his momentum to carry him
 over to the next still to take a sip.
 ~
 elf~
-B J 0 S
+AB J 0 S
 20 2 3d9+333 2d20+120 2d8+5 3
 -2 -2 -2 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 300
 0 0 M 0
 #25207
@@ -121,10 +121,10 @@ to his operation.  Carrying in mushroom wine for the tavern above without
 having to pay the enormous tax rate of the gate.
 ~
 elf~
-B J -750 S
+AB J -750 S
 20 3 3d9+333 2d20+120 2d8+5 3
 -4 -4 -4 -9
-0 0 0 0
+0 AB 0 0
 8 8 1 300
 0 0 M 0
 #25208
@@ -137,10 +137,10 @@ they make you think of a gentle flowing stream.  Her stark white hair flows
 behind her.
 ~
 elf~
-B J 750 S
+AB J 750 S
 20 3 3d9+333 2d20+120 2d8+5 3
 -2 -2 -2 -2
-0 0 0 0
+0 AB 0 0
 8 8 2 0
 0 0 M 0
 #25209
@@ -153,10 +153,10 @@ in waves.  She beckons you to come dance with her worshippers.  There is a
 sense of extreme power and serenity about her.
 ~
 elf~
-BM CDEGHJOTV 1000 S
+ABM CDEGHJOTV 1000 S
 60 30 50d10+9500 2d60+1000 8d6+28 20
 -30 -30 -30 -30
-CDEFHKO ALPNQR CK 0
+CDEFHKO ABLNPQR CK 0
 8 8 2 0
 0 0 M 0
 #25210
@@ -168,10 +168,10 @@ He's obviously kinned to the race of dwarves that live in the mountains of
 the surface world, although his dark skin reminds you more of the drow.
 ~
 dwarf~
-B J -500 S
+AB J -500 S
 20 2 3d9+333 2d20+120 2d8+5 3
 -3 -3 -3 -3
-0 0 0 0
+0 AB 0 0
 8 8 1 200
 0 0 M 0
 #25211
@@ -182,10 +182,10 @@ A giant snail is here pulling a wagon.
 For some reason, the words "Doctor Doolittle" come to mind.
 ~
 horse~
-B 0 0 S
+AB 0 0 S
 20 2 3d9+333 2d20+120 2d8+5 8
 -1 -1 -1 -9
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #25212
@@ -196,10 +196,10 @@ A gnome merchant is using the river to bring his goods to market.
 He's small and sturdy and looks like he has done this many times before.
 ~
 hobbit~
-B 0 240 S
+AB 0 240 S
 20 2 3d9+333 2d20+120 2d8+5 3
 -3 -3 -3 -2
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 #25213
@@ -210,10 +210,10 @@ A huge dark spider drops down on you from above!
 It's big and it's ugly and it's mean.  What more do you need to know?
 ~
 insect~
-BF 0 -1000 S
+ABFG 0 -1000 S
 40 4 15d10+1850 2d40+140 4d8+13 3
 -6 -6 -6 -1
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 G 0
 #25214
@@ -226,10 +226,10 @@ with more notches than you can count on it's handle he's more than likely
 a deadly foe.
 ~
 dwarf~
-G 0 -500 S
+AG 0 -500 S
 20 2 3d9+333 2d20+120 2d8+5 25
 -2 -2 -3 -1
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 

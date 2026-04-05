@@ -34,7 +34,7 @@ statue that you are scared to approach.  A fire burns deep within his
 eyes which tells you that he fears no one.  Especially not you.
 ~
 dwarf~
-BCGMTV DGOQTV 0 S
+ABCGMTV DGOQTV 0 S
 55 27 200d1+4700 26d55+330 11d5+5 21
 -30 -30 -30 -30
 CEFHIKNRU AB 0 0
@@ -50,7 +50,7 @@ fear and makes you want to turn and run until you can run no farther.
 Though not physically huge, you can feel the power that come off of them.
 ~
 dwarf~
-BGMRV BDOPTVZ A 0 S
+ABGMRV BDOPTVZ A 0 S
 50 25 100d1+2350 26d55+330 7d5+10 31
 -10 -10 -10 -10
 CDEFHIKRUZ A AB C Y
@@ -66,7 +66,7 @@ She puts her arm around you and comforts you....asking what is wrong and
 what she can do to help you.
 ~
 human~
-BDGMV DHOT 0 S
+ABDGMV DHOT 0 S
 60 21 51d39+600 25d51+300 5d8+20 27
 -50 -50 -50 -50
 FK ABCD 0 0
@@ -80,10 +80,10 @@ A deer is here looking around in wonder.
 This deer feels at home in the peaceful environment of Castle Dominion.
 ~
 unique~
-GHT J 0 S
+AGHT J 0 S
 6 0 6d4+72 3d6+36 1d7+1 15
 4 4 4 6
-EFN A 0 0
+EFN AB 0 0
 8 8 1 10
 0 0 M 0
 #17605
@@ -95,10 +95,10 @@ This bunny is plump and well fed by the plentiful amount of growth
 surrounding the castle.
 ~
 rabbit~
-GHT J 0 S
+AGHT J 0 S
 2 0 2d1+24 1d2+12 1d5+0 22
 8 8 8 9
-EFN A 0 0
+EFN AB 0 0
 8 8 2 10
 0 0 S 0
 #17606
@@ -109,10 +109,10 @@ A maid is on her hands and knees scrubbing the floor.
 The maid works extra hard to ensure Castle Dominion remains spotless.
 ~
 human~
-BGHIMV H 0 S
+ABGHIMV H 0 S
 2 0 2d1+24 1d2+12 1d5+0 22
 8 8 8 8
-F BCDEFGHIJKLMNOPQRS 0 0
+F ABCDEFGHIJKLMNOPQRS 0 0
 8 8 2 0
 0 0 M 0
 #17607
@@ -125,7 +125,7 @@ statue that you are scared to approach.  A fire burns deep within his
 eyes which tells you that he fears no one.  Especially not you.
 ~
 dwarf~
-BCGMTV DGOQTV 0 S
+ABCGMTV DGOQTV 0 S
 55 27 200d1+4700 26d55+330 11d5+5 21
 -30 -30 -30 -30
 CEFHIKNRU AB 0 0
@@ -141,7 +141,7 @@ statue that you are scared to approach.  A fire burns deep within his
 eyes which tells you that he fears no one.  Especially not you.
 ~
 dwarf~
-BCGMTV DGOQTV 0 S
+ABCGMTV DGOQTV 0 S
 55 27 200d1+4700 26d55+330 11d5+5 21
 -30 -30 -30 -30
 CEFHIKNRU AB 0 0
@@ -157,7 +157,7 @@ statue that you are scared to approach.  A fire burns deep within his
 eyes which tells you that he fears no one.  Especially not you.
 ~
 dwarf~
-BCGMTV DGOQTV 0 S
+ABCGMTV DGOQTV 0 S
 55 27 200d1+4700 26d55+330 11d5+5 21
 -30 -30 -30 -30
 CEFHIKNRU AB 0 0
@@ -173,7 +173,7 @@ statue that you are scared to approach.  A fire burns deep within his
 eyes which tells you that he fears no one.  Especially not you.
 ~
 dwarf~
-BCGMTV DGOQTV 0 S
+ABCGMTV DGOQTV 0 S
 55 27 200d1+4700 26d55+330 11d5+5 21
 -30 -30 -30 -30
 CEFHIKNRU AB 0 0
@@ -189,7 +189,7 @@ statue that you are scared to approach.  A fire burns deep within his
 eyes which tells you that he fears no one.  Especially not you.
 ~
 dwarf~
-BCGMTV DGHOQTV 0 S
+ABCGMTV DGHOQTV 0 S
 55 27 200d1+4700 26d55+330 11d5+5 21
 -30 -30 -30 -30
 CEFHIKNRU AB 0 0
@@ -205,7 +205,7 @@ fear and makes you want to turn and run until you can run no farther.
 Though not physically huge, you can feel the power that come off of them.
 ~
 dwarf~
-BGMRV BDOPTVZ A 0 S
+ABGMRV BDOPTVZ A 0 S
 50 25 100d1+2350 26d55+330 7d5+10 31
 -10 -10 -10 -10
 CDEFHIKRUZ A AB C Y
@@ -221,7 +221,7 @@ fear and makes you want to turn and run until you can run no farther.
 Though not physically huge, you can feel the power that come off of them.
 ~
 dwarf~
-BGMRV BDOPTVZ A 0 S
+ABGMRV BDOPTVZ A 0 S
 50 25 100d1+2350 26d55+330 7d5+10 31
 -10 -10 -10 -10
 CDEFHIKRUZ A AB C Y
@@ -237,7 +237,7 @@ fear and makes you want to turn and run until you can run no farther.
 Though not physically huge, you can feel the power that come off of them.
 ~
 dwarf~
-BGMRV BDOPTVZ A 0 S
+ABGMRV BDOPTVZ A 0 S
 50 25 100d1+2350 26d55+330 7d5+10 31
 -10 -10 -10 -10
 CDEFHIKRUZ A AB C Y

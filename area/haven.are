@@ -5,7 +5,6 @@
 #MOBILES
 
 #1801
-
 gnome busy~
 
 the busy gnome~
@@ -37,7 +36,6 @@ EFKNR 0 B 0
 0 0 S 0
 
 #1802
-
 gnome guard~
 
 the gnome guard~
@@ -65,7 +63,6 @@ EFKNR 0 B 0
 0 0 S 0
 
 #1803
-
 bear giant polar~
 
 the giant polar bear~
@@ -80,7 +77,7 @@ He blends with the snow.
 
 bear~
 
-BF DQ 0 S
+ABFG DQ 0 S
 
 25 3 6d10+400 2d25+125 20d2+1 5
 
@@ -93,7 +90,6 @@ CDEO 0 BIR CF
 0 0 L 0
 
 #1804
-
 dragon white~
 
 the white dragon~
@@ -121,7 +117,6 @@ ACEIKMN 0 BEL F
 0 0 G 0
 
 #1805
-
 dragon blue~
 
 the blue dragon~
@@ -138,7 +133,7 @@ to match her electric blue scales.
 
 dragon~
 
-F  DH -1000 S
+AFG DH -1000 S
 
 29 6 25d4+600 2D29+229 4d10+10 5
 
@@ -151,7 +146,6 @@ ACEIKMN 0 BEL F
 0 0 G 0
 
 #1806
-
 queen snow~
 
 the Snow Queen~
@@ -179,7 +173,6 @@ AEFIKN A BCI E
 0 0 M 0
 
 #1807
-
 giant frost guard~
 
 the cold frost giant~
@@ -209,7 +202,6 @@ CDEIKT 0 BI 0
 0 0 L 0
 
 #1808
-
 mistress white~
 
 the white mistress~
@@ -224,7 +216,7 @@ She is a fanatical servant to the Snow Queen.
 
 human~
 
-ABCF DF -500 S
+ABCFG DF -500 S
 
 30 5 100d4+50 2d30+130 4d6+8 0
 
@@ -237,7 +229,6 @@ EFNR 0 BCI 0
 0 0 M 0
 
 #1809
-
 master herbal~
 
 the master herbal~
@@ -265,7 +256,6 @@ EFNR 0 BCI 0
 0 0 M 0
 
 #1810
-
 thief~
 
 the thief~
@@ -280,7 +270,7 @@ He REALLY likes your money!
 
 human~
 
-HS P -500 S
+AHS P -500 S
 
 22 3 7d7+77 2d22+122 2d3+3 2
 

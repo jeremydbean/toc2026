@@ -1,5 +1,21 @@
 # Agent Notes for tocGPT
 
+## Area File Documentation
+
+**The comprehensive area building reference is at `wiki/area-building-guide.md`.**  
+This file documents every section, every flag, every value, and every option for `.are` files.
+Use it whenever creating or troubleshooting area files, mob definitions, objects, rooms, resets, shops, or spec-funs.
+The old HTML wiki files in `wiki/` are superseded by this guide but kept for historical reference.
+
+Key sections in the guide:
+- **#MOBILES** — mob format, ALL flag tables (ACT/AFF/OFF/IMM/RES/VULN/FORM/PARTS), HP chart
+- **#OBJECTS** — object format, item types, wear/weapon/apply tables, values by type
+- **#ROOMS** — room format, flags, sectors, exit/door format, ROOM_AFF_BY
+- **#RESETS** — all reset commands (M/O/G/E/P/D/R/H), wear-loc table
+- **#SHOPS / #SPECIALS** — complete formats + full spec_fun list
+- **Spell slot numbers** — all spell names and their slot numbers for scrolls/wands/potions/pills
+- **Complete area template** — copy-paste starting point for a new area
+
 ## Project Overview
 - **Project**: Text-based MUD (ToC) implemented primarily in C under `src/` with additional area data files under `area/`. Build the `merc` server with `make` (uses GCC `-std=gnu89`, `-O2`, `-fcommon`, `-DROM`, and warning flags) and run `make clean` to remove objects/binary.
 - **Runtime entrypoint**: `docker-entrypoint.sh` starts in `/app/area`, ensures writable dirs (`log`, `player`, `backups`, etc.), optionally launches the FastAPI web admin (controlled by `WEB_ADMIN_ENABLED`, `WEB_ADMIN_HOST`, `WEB_ADMIN_PORT`), and finally execs `./merc` on the resolved port or passes through provided commands/ports.

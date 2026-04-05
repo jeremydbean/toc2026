@@ -12,10 +12,10 @@ snores very loudly and occasionally rubs his chin. Well, better
 kill him now I guess.
 ~
 dwarf~
-BMS D 350 S
+ABMS D 350 S
 6 1 2d6+85 1d1+100 1d8+1 7
 -1 -1 -1 -1
-CFI BQ 0 0
+CFI ABQ 0 0
 8 8 1 10
 0 0 M 0
 #20101
@@ -26,10 +26,10 @@ The rat sits on its haunches here, thinking about its next meal.
 The rat looks as if it hasn't eaten in days....it contemplates eating YOU!
 ~
 rabbit~
-BCMS Q 0 S
+ABCMS Q 0 S
 5 1 2d6+60 1d1+100 1d6+1 5
 -1 -1 -1 -1
-NM 0 0 0
+NM AB 0 0
 8 8 1 1
 0 0 S 0
 #20102
@@ -41,10 +41,10 @@ The Guard is a highly trained specialist in torture and hand to hand combat.
 Selectively chosen from the ranks of cityguards he is the best of the elite.
 ~
 dwarf~
-GT 0 250 S
+AGT 0 250 S
 40 4 25d10+3000 1d1+100 8d4+16 0
 -5 -5 -5 -5
-CEFIPU NP BO M
+CEFIPU ABNP BO M
 8 8 1 25
 0 0 M 0
 #20103
@@ -56,10 +56,10 @@ The Prison Worker looks almost exactly like a janitor you have
 seen in Dresden!
 ~
 human~
-CGT DF 250 S
+ACGT DF 250 S
 9 1 2d6+110 1d1+100 1d8+2 13
 1 1 0 0
-GI 0 0 0
+GI AB 0 0
 8 8 1 1
 O O S O
 #20104
@@ -72,10 +72,10 @@ in. And for that matter anyone not wanted out! He is about 7'8'' and
 towers above you.
  ~
 giant~
-BT HG 100 S
+ABT HG 100 S
 35 3 10d10+1300 1d1+100 4d7+11 7
 -3 -3 0 0
-CEIO 0 B 0 
+CEIO AB B 0
 8 8 1 1
 0 0 L 0
 #20105
@@ -87,10 +87,10 @@ The prisoner has been doing hard time for a while. He has the
 haggard look of an inmate with nothing to lose.
 ~
 human~
-GHS 0 -100 S
+AGHS 0 -100 S
 23 1 5d10+450 1d1+100 3d6+6 16
 -1 -1 -1 -1
-FN 0 0 0
+FN AB 0 0
 8 8 1 1
 0 0 S 0
 #20106
@@ -103,10 +103,10 @@ support that huge body. It is at least 2 feet long. Do you have
 some bug spray?
 ~
 fido~
-GCHS T -250 S
+ACGHS T -250 S
 8 0 2d7+96 1d1+100 1d7+2 10
 4 4 4 4
-EN 0 0 0
+EN AB 0 0
 8 8 0 1
 0 0 S 0
 #20107
@@ -118,10 +118,10 @@ The flunky is the lowest ranking scum of the prison. He is a shame
 to all.  Kinda makes ya want to put him out of his misery.
 ~
 troll~
-GH 0 -100 S
+AGH 0 -100 S
 13 0 2d10+170 1d1+100 2d5+3 16
 -1 -1 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 1
 0 0 M 0
 #20108
@@ -134,10 +134,10 @@ work today.  He must have eyes but all you can see are slits with
 puffy bloodshot teary......well you get the idea.
 ~
 human~
-BMT I 0 S
+ABMT I 0 S
 25 3 10d10+1300 1d1+100 4d7+11 10
 -2 -2 -2 0
-0 0 0 0
+0 AB 0 0
 8 8 1 10
 0 0 M 0
 #20109
@@ -147,10 +147,10 @@ The gangster is here yelling orders to his flunkies.~
 Sadly the gangster was caught not paying taxes to the mayor.
 ~
 human~
-CGHS 0 -300 S
+ACGHS 0 -300 S
 23 2 5d10+450 1d1 +200 3d6+6 16
 -2 0 -2 -2
-NF 0 0 0
+NF AB 0 0
 8 8 1 1000
 0 0 M 0
 #20110
@@ -166,10 +166,10 @@ murder of the weak. Brad loves to lust after Trixie. And after looking
 at him you notice he has a preferance for women's clothing.
 ~
 human~
-GHTU 0 0 S
+AGHTU 0 0 S
 47 5 25d10+3500 1d1+100 6d6+17 16
 -3 -3 1 -1
-CH 0 0 0
+CH AB 0 0
 8 8 1 500
 0 0 M 0
 #20111
@@ -181,10 +181,10 @@ She looks like your average, everyday, dumb, closed minded secretary.
 Great body. No mind. And a great set of.....paper clips.
 ~
 human~
-BTU 0 1000 S
+ABTU 0 1000 S
 38 2 10d10+1600 1d1+100 5d6+12 22
 1 -2 -1 1
-HIN 0 0 0
+HIN AB 0 0
 8 8 2 200
 0 0 M 0
 #20112
@@ -197,7 +197,7 @@ wall, he likes to order supplies from Terry and he HATES to work. All
 of which is quite evident in this room.
 ~
 human~
-BT 0 250 S
+ABT 0 250 S
 35 3 10d10+1300 1d1+100 4d7+11 17
 -1 1 0 -2
 CO AB 0 0
@@ -212,10 +212,10 @@ Butch is a young lad with all the enthusiasm that ignorance can provide.
 He works long and hard to keep this prison in working order.
 ~
 human~
-GT 0 300 S
+AGT 0 300 S
 33 2 10d10+1100 1d1+100 6d4+10 7
 -1 1 0 -1
-E 0 0 0
+E AB 0 0
 8 8 1 50
 0 0 M 0
 #20114
@@ -229,10 +229,10 @@ into a loose hairnet. She brings her light and salvation to work with
 her everyday.....her son Jacob.
 ~
 human~
-BR H 750 S
+ABR H 750 S
 49 4 50d10+4000 1d1+500 4d10+18 22
 -3 -3 -2 1
-N 0 0 0
+N AB 0 0
 8 8 2 100
 0 0 M 0
 #20115
@@ -244,10 +244,10 @@ The Steam Monster is glittering although there is no light. It swirls
 about and about almost charming you in the process......
 ~
 troll~
-BFR D -300 S
+ABFGR D -300 S
 20 2 3d9+333 1d1+500 2d8+5 3
 1 0 -1 0
-A E 0 0 
+A ABE 0 0
 8 8 0 25
 0 0 M 0
 #20116
@@ -259,10 +259,10 @@ Larry is not the best paid person in here so he supplements his income
 with a little on the side buying and selling.
 ~
 human~
-BT 0 250 S
+ABT 0 250 S
 40 4 15d10+1850 1d1+200 4d8+13 7
 -2 1 -3 -1
-CEH 0 0 0
+CEH AB 0 0
 8 8 1 500
 0 0 M 0
 #20117
@@ -276,10 +276,10 @@ become the weaponsmaster. Unfortunately he has to resort to selling
 arms to pay the rent.
 ~
 human~
-BT 0 350 S
+ABT 0 350 S
 45 4 25d10+3000 1d1+100 8d4+16 8
 -1 -3 1 -2
-CD 0 0 0
+CD AB 0 0
 8 8 1 500
 0 0 M 0
 #20118
@@ -291,10 +291,10 @@ You look at the slice of bologna and it curls itself into a tube
 and skitters away.
 ~
 undead~
-BHS 0 -450 S
+ABHS 0 -450 S
 15 1 3d9+208 1d1+100 2d6+3 13
 1 -1 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 1
 0 0 S 0
 #20119
@@ -308,10 +308,10 @@ and the hope that more and more worthy people like you will come
 and visit.
 ~
 dwarf~
-BJKQ HN 1000 S
+ABJKQ HN 1000 S
 60 5 50d10+9500 1d1+500 8d6+28 20
 -3 -3 -1 -4
-0 BCMPQ 0 0
+0 ABCMPQ 0 0
 8 8 1 100
 0 0 L 0
 #20120
@@ -324,10 +324,10 @@ in and out of the shower all day long. But he keeps a supply of a
 few handy items.
 ~
 human~
-BS J 500 S
+ABS J 500 S
 15 1 3d9+208 1d1+100 2d6+3 0
 1 -1 0 0
-0 0 0 0
+0 AB 0 0
 8 8 1 50
 0 0 M 0
 #20121
@@ -339,10 +339,10 @@ An ageless demon with no face and no soul.....he is feared by all
 but he is really just a lonely lost being. All he really wants is 
 a friend for eternity. ~
 vampire~
-BT J -1000 S
+ABT J -1000 S
 55 5 50d10+7000 1d1+100 10d4+23 21
 -4 -3 -4 -2
-CD 0 0 0
+CD AB 0 0
 8 8 1 500
 0 0 L 0
 #20122
@@ -355,10 +355,10 @@ rainbow of colors swirling from the outside to the inside....swirling
 ...swirling....
 ~
 undead~
-BFS DH -600 S
+ABFGS DH -600 S
 32 3 10d10+1000 1d1+500 6d4+9 12
 -2 1 0 0
-0 F 0 0
+0 ABF 0 0
 8 8 0 2
 0 0 M 0
 #20123
@@ -370,10 +370,10 @@ Since you are a lesser being than Mnemoth you cannot comprehend what
 you see here.
 ~
 dragon~
-GR BDFHJPU 1000 S
+AGR BDFHJPU 1000 S
 20 3 10d10+1300 1d1+500 4d7+11 6
 -2 -2 -2 -4
-AM 0 0 0
+AM AB 0 0
 8 8 1 100
 0 0 L 0
 #20124
@@ -386,10 +386,10 @@ He sells chemicals to Steve in the prison maintenance. He also likes to
 stroll the grounds and flirt with Wendy his wife.
 ~
 human~
-CGHS H 350 S
+ACGHS H 350 S
 30 2 6d12+853 1d1+100 4d6+8 25
 -1 1 1 -2
-0 0 0 0
+0 AB 0 0
 8 8 1 750
 0 0 M 0
 #0

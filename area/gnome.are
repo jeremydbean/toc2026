@@ -12,10 +12,10 @@ The little tyke looks so innocent playing with his boomerang that you
 just want to pick him up and hug him.
 ~
 hobbit~
-CE 0 600 S
+ACE 0 600 S
 3 0 3d4+37 2d3+50 2d4+0 0
 0 0 0 0
-FR 0 0 0
+FR AB 0 0
 8 8 1 10
 0 0 T 0
 #1501
@@ -27,10 +27,10 @@ The woman is short and gnarled, but acts like a woman several times her
 beauty.  She's starting to look pretty attractive to you ...
 ~
 hobbit~
-CE 0 600 S
+ACE 0 600 S
 5 0 2d6+70 2d5+75 1d8+0 0
 0 0 0 0
-FR 0 0 0
+FR AB 0 0
 8 8 2 25
 0 0 S 0
 #1502
@@ -42,10 +42,10 @@ This is a prime example of a gnome.  He looks short and weak, but at the
 same time an intelligent creature who could outsmart you.
 ~
 hobbit~
-C 0 500 S
+AC 0 500 S
 6 1 1d12+100 2d6+75 1d8+1 0
 0 0 0 0
-FIR 0 0 0
+FIR AB 0 0
 8 8 1 35
 0 0 S 0
 #1503
@@ -57,10 +57,10 @@ You see a gnome who is lost deep into some invention that he is about
 to make.  His hair is white, but he looks fairly strong.
 ~
 hobbit~
-BC 0 500 S
+ABC 0 500 S
 7 2 2d5+100 2d7+80 2d5+1 0
 0 0 0 -1
-FIR 0 0 0
+FIR AB 0 0
 8 8 1 50
 0 0 S 0
 #1504
@@ -72,10 +72,10 @@ This is a well trained gnome.  He might not have a lot of strength but
 he makes up for it with his weapons skill.
 ~
 hobbit~
-B 0 400 S
+AB 0 400 S
 8 2 2d6+120 2d8+75 3d3+2 0
 -1 -1 -1 0
-EFIR 0 0 0
+EFIR AB 0 0
 8 8 1 50
 0 0 S 0
 #1505
@@ -87,10 +87,10 @@ The Chief looks like he could whap you hard.  He looks not only powerful
 but wise and resourceful.  You better not mess with him.
 ~
 hobbit~
-B 0 550 S
+AB 0 550 S
 15 3 1d12+300 2d15+100 2d10+0 0
 0 -1 0 -2
-EFIR 0 BC 0
+EFIR AB BC 0
 8 8 1 100
 0 0 S 0
 #1507
@@ -102,10 +102,10 @@ The small troll is a short and stocky beast with a human-like face
 but with the eyes and fangs of a wild beast.
 ~
 troll~
-BCF 0 -600 S
+ABCFG 0 -600 S
 8 2 2d4+105 2d8+65 2d5+1 0
 0 0 0 0
-EFIR 0 0 0
+EFIR AB 0 0
 8 8 1 35
 0 0 M 0
 #1508
@@ -116,10 +116,10 @@ A small mouse runs across your foot.
 The Mouse is a cute little creature.
 ~
 mammal~
-BC 0 100 S
+ABC 0 100 S
 1 0 2d4+10 2d1+5 1d4+0 10
 0 0 0 0
-R 0 0 0
+R AB 0 0
 8 8 1 0
 0 0 T 0
 #1509
@@ -130,10 +130,10 @@ A small rat shrieks and runs around.
 The rat is a little evil creature that deserves death.
 ~
 mammal~
-CW 0 -200 S
+ACW 0 -200 S
 2 0 2d4+24 2d2+5 1d5+1 10
 0 0 0 0
-R 0 0 0
+R AB 0 0
 8 8 1 0
 0 0 T 0
 #1510
@@ -144,10 +144,10 @@ A large rat runs up to you and nibbles on your boots.
 You have the urge to kill this vile creature.
 ~
 mammal~
-CW 0 -200 S
+ACW 0 -200 S
 4 0 3d4+48 2d4+5 1d8+0 10
 0 0 0 0
-R 0 0 0
+R AB 0 0
 8 8 1 0
 0 0 S 0
 #1511
@@ -158,10 +158,10 @@ A giant rat growls at you and prepares to attack.
 This rat has grown up to be the size of an average dog.
 ~
 mammal~
-CW 0 -200 S
+ACW 0 -200 S
 6 1 1d12+72 2d6+10 1d8+1 10
 0 0 0 0
-FR 0 0 0
+FR AB 0 0
 8 8 1 0
 0 0 M 0
 #1512
@@ -173,10 +173,10 @@ You see before you a huge mass of living flesh.  You cringe in fear as
 he lifts his powerful arm to bludgeon you.
 ~
 troll~
-BF 0 -750 S
+ABFG 0 -750 S
 14 3 3d5+160 2d14+75 2d8+1 7
 -2 -2 -2 0
-CDEKR 0 0 0 
+CDEKR AB 0 0
 8 8 1 75
 0 0 L 0
 #1513
@@ -187,10 +187,10 @@ A black bat hangs from the ceiling.
 The bat is a grotesque little creature with large wings and fangs.
 ~
 bat~
-0 0 -500 S
+A 0 -500 S
 5 0 3d4+70 2d5+25 1d8+0 10
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 S 0
 #1514
@@ -202,10 +202,10 @@ This is a creature which has passed away long ago.  His body has been
 pulled out of its resting place by some evil force.
 ~
 undead~
-0 0 -700 S
+A 0 -700 S
 7 1 3d4+90 2d7+50 3d4+0 5
 0 0 0 0
-CR 0 BI N
+CR AB BI N
 8 8 0 50
 0 0 M 0
 #1515
@@ -217,10 +217,10 @@ You see a huge flame which resembles the shape of a bat.  The creature
 hangs from the ceiling and bites at you.
 ~
 bat~
-BCF D -700 S
+ABCFG D -700 S
 12 2 3d4+150 2d12+75 3d5+0 29
 0 0 0 -2
-FR H C IR
+FR ABH C IR
 8 8 1 0
 0 0 S 0
 #1516
@@ -232,10 +232,10 @@ This is an extra large, extra ugly goblin like creature.  He grins evilly
 as he attempts to brain you.
 ~
 hobgoblin~
-BF 0 -700 S
+ABFG 0 -700 S
 6 0 1d12+102 2d6+50 1d8+1 0
 0 -1 0 0
-DEKR 0 E 0
+DEKR AB E 0
 8 8 1 75
 0 0 L 0
 #1517
@@ -247,10 +247,10 @@ This is just a low life hobgoblin, who couldn't make it to the ranks
 of the elite guards.  He looks pissed.
 ~
 hobgoblin~
-BF 0 -600 S
+ABFG 0 -600 S
 3 0 2d6+36 2d3+50 1d7+0 0
 0 -1 0 0
-DEKR 0 E 0
+DEKR AB E 0
 8 8 1 50
 0 0 L 0
 #1518
@@ -262,10 +262,10 @@ This is one of the elite hobgoblin guards.  He stands tall for his short
 stature.  He grins a toothy grin as he prepares to attack.
 ~
 hobgoblin~
-B 0 -500 S
+AB 0 -500 S
 7 1 1d12+85 2d7+65 1d7+2 0
 -1 -1 -1 0
-DEKR 0 E 0
+DEKR AB E 0
 8 8 1 85
 0 0 L 0
 #1519
@@ -277,10 +277,10 @@ The king is a silly looking hobgoblin whose muscles bulge out of his robes,
 destroying the sophisticated effect he was trying to create.
 ~
 hobgoblin~
-B 0 -500 S
+AB 0 -500 S
 12 2 2d6+148 2d12+112 2d7+1 0
 -5 -5 -5 -5
-DEKR 0 CE 0
+DEKR AB CE 0
 6 8 1 500
 0 0 L 0
 #1520
@@ -291,10 +291,10 @@ A hobgoblin miner stands here looking for gold.
 The miner is totally covered in dust.
 ~
 hobgoblin~
-BC 0 -400 S
+ABC 0 -400 S
 5 0 1d12+60 2d5+50 1d8+0 0
 0 -1 0 0
-DER 0 E 0
+DER AB E 0
 8 8 1 50
 0 0 L 0
 #1521
@@ -306,10 +306,10 @@ The hobgoblin treasurer is an old goblin with glasses.  It appears that he
 can only see a couple feet in front of him.
 ~
 hobgoblin~
-BC 0 -200 S
+ABC 0 -200 S
 10 2 3d5+120 2d10+110 2d6+1 0
 -1 -1 -1 0
-DER 0 E 0
+DER AB E 0
 8 8 1 200
 0 0 L 0
 #1522
@@ -320,10 +320,10 @@ A gnome prisoner is here resting in the straw.
 The prisoner is just barely alive.
 ~
 hobbit~
-BC 0 100 S
+ABC 0 100 S
 3 0 3d5+10 2d3+50 2d3+1 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 5 8 1 0
 0 0 S 0
 #1523
@@ -334,10 +334,10 @@ A human prisoner is here resting in the straw.
 The prisoner is just barely alive.
 ~
 human~
-BC 0 100 S
+ABC 0 100 S
 3 0 3d5+10 2d3+50 2d3+1 0
 0 0 0 0
-0 0 0 0
+0 AB 0 0
 5 8 2 0
 0 0 M 0
 #1524
@@ -349,10 +349,10 @@ The hermit crab is about 5 feet high and looks mad that you had the nerve
 to wake it up.
 ~
 unique~
-BCF 0 -10 S
+ABCFG 0 -10 S
 5 0 1d11+61 2d5+50 1d8+0 5
 -2 0 -2 0
-CEN F GI E
+CEN ABF GI E
 8 8 1 0
 0 0 M 0
 #1526
@@ -364,10 +364,10 @@ The cook is a dirty and fat hobgoblin.  He burps as he stirs up something
 in a pot.
 ~
 hobgoblin~
-BC 0 -300 S
+ABC 0 -300 S
 7 1 1d12+85 2d7+75 1d7+1 0
 -1 -1 -1 0
-CDER 0 E 0
+CDER AB E 0
 8 8 1 75
 0 0 L 0
 #0

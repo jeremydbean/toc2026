@@ -10,7 +10,7 @@ He's about ten feet tall and armed to the teeth.  Ghostly translucent armor
 covers his body and he shines with an inner light.
 ~
 human~
-BNQT BHQTV 1000 S
+ABNQT BHQTV 1000 S
 60 40 50d10+9500 50d10+9500 8d8+26 1
 -30 -30 -30 -29
 CDEFHIK ABKLPQ 0 0
@@ -25,7 +25,7 @@ He looks at you from underneath the hood of his robe.  Grinning he pulls
 out some sand from his pockets and starts to sprinkle it on you.
 ~
 human~
-BGMOR BHOTUV 1000 S
+ABGMOR BHOTUV 1000 S
 60 40 50d10+9500 50d10+9500 8d8+26 1
 -30 -30 -30 -29
 AEFGKN ABHIJKLP 0 0
@@ -41,10 +41,10 @@ within dreams.  His robes are stitched in gold with different arcane symbols
 and his feet are bare.
 ~
 human~
-BDJK HN 1000 S
+ABDJK HN 1000 S
 60 40 50d10+20000 50d10+20000 8d8+26 20
 -30 -30 -30 -30
-0 0 0 0
+0 AB 0 0
 8 8 1 8
 0 0 M 0
 #27004
@@ -57,10 +57,10 @@ couldn't find their way back to reality.  They hate anyone that can.
 BEWARE.
 ~
 undead~
-CFGHO BPQT -1000 S
+ACFGHO BPQT -1000 S
 23 5 5d10+200 5d10+200 3d6+6 18
 -4 -4 -4 -4
-0 0 0 0
+0 AB 0 0
 8 8 0 1000
 0 0 M 0
 #27005
@@ -72,10 +72,10 @@ You feel happy and sad all at once.  Every emotion you've ever had runs through
 your body as you see your dream.
 ~
 unique~
-BDMQV H 1000 S
+ABDMQV H 1000 S
 60 60 60d60+20000 200d200+1 3d100+100 18
 -30 -30 -30 -30
-0 0 0 0
+0 AB 0 0
 8 8 1 0
 0 0 M 0
 #27006
@@ -89,7 +89,7 @@ starlight dotting the silky strands.  She smiles at you and then weaves you a
 dream.
 ~
 unique~
-BMQR HOPQTUV 1000 S
+ABMQR HOPQTUV 1000 S
 60 20 200d2+9500 200d2+9500 3d20+20 18
 -30 -30 -30 -30
 EFKN ABJKLPQ D MX

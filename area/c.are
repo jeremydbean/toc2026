@@ -10,10 +10,10 @@ The troll is small, dark, and smelly.  You would be willing
 to bet that he has never seen the light of day.
 ~
 troll~
-FS 0 -500 S
+AFGS 0 -500 S
 2 19 2d7+21 10d3+5 1d5+1 16
 0 0 0 0
-NF 0 0 0
+NF AB 0 0
 8 8 0 10
 0 0 M 0 
 #24201
@@ -25,10 +25,10 @@ The pawn seems to be made of carved wood, and animated by
 some magical means.
 ~
 human~
-S 0 -200 S
+AS 0 -200 S
 3 9 2d6+35 5d5+10 1d6+1 16
 1 1 1 1
-NC 0 0 0 
+NC AB 0 0
 8 8 0 15
 0 0 S 0
 #24202
@@ -40,10 +40,10 @@ The pawn seems to be made of carved wood, and animated by
 some magical means.
 ~
 human~
-S 0 200 S
+AS 0 200 S
 3 9 2d6+35 5d5+10 1d6+1 16
 1 1 1 1
-NC 0 0 0
+NC AB 0 0
 8 8 0 15
 0 0 S 0
 #24203
@@ -55,10 +55,10 @@ The black Rook stares absently into space, he doesn't seem
 to notice you.
 ~
 elf~
-T 0 -300 S
+AT 0 -300 S
 5 6 2d6+60 6d10+8 2d4+1 16
 1 1 1 1
-IK 0 0 0
+IK AB 0 0
 8 8 0 15
 0 0 M 0
 #24204
@@ -70,10 +70,10 @@ The white Rook stares absently into space, he doesn't seem
 to notice you.
 ~
 elf~
-T 0 300 S
+AT 0 300 S
 5 6 2d6+60 6d10+8 2d4+1 16
 1 1 1 1
-IK 0 0 0
+IK AB 0 0
 8 8 0 15
 0 0 M 0
 #24205
@@ -85,10 +85,10 @@ The black Knight would probably look a lot more noble if
 he was astride a horse.
 ~
 dwarf~
-T 0 -400 S
+AT 0 -400 S
 6 5 2d7+71 3d10+40 1d8+2 16
 1 1 1 1
-FKC 0 0 0
+FKC AB 0 0
 8 8 0 20
 0 0 M 0
 #24206
@@ -100,10 +100,10 @@ The white Knight would probably look a lot more noble if
 he was astride a horse.
 ~
 dwarf~
-T 0 400 S
+AT 0 400 S
 6 5 2d7+71 3d10+40 1d8+2 16
 1 1 1 1
-FKC 0 0 0
+FKC AB 0 0
 8 8 0 15
 0 0 M 0
 #24207
@@ -114,10 +114,10 @@ A black bishop stands here quietly.
 The bishop looks at you, then stares at the ceiling and yawns.
 ~
 human~
-Q 0 -400 S
+AQ 0 -400 S
 6 5 2d7+71 3d10+40 1d8+2 16
 1 1 1 1 
-O 0 0 0
+O AB 0 0
 8 8 0 25
 0 0 M 0
 #24208
@@ -128,10 +128,10 @@ A white bishop stands here quietly.
 The bishop looks at you, then stares at the ceiling and yawns.
 ~
 human~
-Q 0 400 S
+AQ 0 400 S
 6 5 2d7+71 3d10+40 1d8+2 16
 1 1 1 1
-O 0 0 0
+O AB 0 0
 8 8 0 25
 0 0 M 0
 #24209
@@ -143,10 +143,10 @@ The black Queen stares into you eyes and screams, "Mop
 the floor, you nitwit!"
 ~
 human~
-R 0 -600 S
+AR 0 -600 S
 10 5 2d7+121 2d4+120 2d6+1 16
 1 1 1 1
-F 0 0 0
+F AB 0 0
 8 8 0 40
 0 0 M 0
 #24210
@@ -158,10 +158,10 @@ The white Queen stares into you eyes and screams, "Mop
 the floor, you nitwit!"
 ~
 human~
-R 0 600 S
+AR 0 600 S
 10 5 2d7+121 2d4+120 2d6+1 16
 1 1 1 1
-F 0 0 0
+F AB 0 0
 8 8 0 40
 0 0 M 0
 #24211
@@ -174,10 +174,10 @@ The black King looks rather haggard.  He tells you,
 is not much of a comedian.
 ~
 human~
-R 0 -700 S
+AR 0 -700 S
 9 5 2d6+110 5d5+90 2d5+2 16
 1 1 1 1
-EK 0 0 0
+EK AB 0 0
 8 8 0 45
 0 0 M 0
 #24212
@@ -190,10 +190,10 @@ The white King looks rather haggard.  He tells you,
 is not much of a comedian.
 ~
 human~
-R 0 700 S
+AR 0 700 S
 9 5 2d6+110 5d5+90 2d5+2 16
 1 1 1 1 
-EK 0 0 0
+EK AB 0 0
 8 8 0 45
 0 0 M 0
 #24213
@@ -204,10 +204,10 @@ A flying fish jumps out of the water at you!
 The fish winks at you?!
 ~
 human~
-S T 0 S
+AS T 0 S
 3 5 2d6+35 3d3+25 1d1+6 16
 0 0 0 0
-FK 0 0 0
+FK AB 0 0
 8 8 0 10
 0 0 S 0
 #24214
@@ -219,10 +219,10 @@ The playing card grins at you evilly.
 He is of the suit diamonds.
 ~
 elf~
-R 0 0 S
+AR 0 0 S
 5 3 2d6+60 2d5+50 2d4+0 16
 1 1 1 1 
-F 0 0 0
+F AB 0 0
 8 8 0 25
 0 0 M 0
 #24215
@@ -234,10 +234,10 @@ The playing card grins at you evilly.
 He is of the suit hearts.
 ~
 elf~
-R 0 0 S
+AR 0 0 S
 5 3 2d6+60 2d5+50 2d4+0 16
 1 1 1 1
-F 0 0 0
+F AB 0 0
 8 8 0 25
 0 0 M 0
 #24216
@@ -249,10 +249,10 @@ The playing card grins at you evilly.
 He is of the suit clubs.
 ~
 elf~
-R 0 0 S
+AR 0 0 S
 5 3 2d6+60 2d5+50 2d4+0 16
 1 1 1 1
-F 0 0 0
+F AB 0 0
 8 8 0 25
 0 0 M 0
 #24217
@@ -264,10 +264,10 @@ The playing card grins at you evilly.
 He is of the suit spades.
 ~
 elf~
-R 0 0 S
+AR 0 0 S
 5 3 2d6+60 2d5+50 2d4+0 16
 F 0 0 0
-8 8 0 25
+8 8AB 0 25
 0 0 M 0
 #24218
 joker madman nut~
@@ -279,10 +279,10 @@ The Joker cackles happily and ruffles your hair.
 The Joker is NUTS!
 ~
 human~
-S 0 -900 S
+AS 0 -900 S
 13 8 2d10+170 2d10+160 2d7+1 16
 1 1 1 1
-NF 0 0 0
+NF AB 0 0
 8 8 0 50
 0 0 M 0
 S

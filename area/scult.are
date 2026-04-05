@@ -13,7 +13,7 @@ Realizing this, you understand their intense sadness, and determine that
 these are the best possible guards for a cult such as this.
 ~
 undead~
-BG DFHJNU 0 S
+ABG DFHJNU 0 S
 60 8 50d10+9500 2d65+765 8d6+128 30
 -30 -30 -30 -30
 CDEFHIKNU AB 0 0
@@ -32,10 +32,10 @@ The longer you look at it, the harder it is to focus, shimmering, fading,
 consuming... you are lost within its embrace... utterly alone.
 ~
 undead~
-BDGJK DFHJN 0 S
+ABDGJK DFHJN 0 S
 60 9 50d10+10000 2d70+900 8d8+148 20
 -30 -30 -30 -30
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 G 0
 #26002
@@ -49,10 +49,10 @@ that this was not always so, and that through some dark acts of sorcery, this
 once living creature has been morbidly transformed into its current state.
 ~
 undead~
-BGJK DFHJN 0 S
+ABGJK DFHJN 0 S
 65 8 50d10+9500 2d65+800 8d6+128 18
 -15 -15 -15 -15
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 L 0
 #0

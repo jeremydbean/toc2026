@@ -9,10 +9,10 @@ An ogre is here looking very alert for danger.
 You see an very dirty ogre.
 ~
 ogre~
-CGT J -600 S
+ACGT J -600 S
 15 0 3d9+208 0d0+0 2d6+3 8
 -2 -2 -2 10
-CIOP Q 0 0
+CIOP ABQ 0 0
 8 8 1 0
 AHV ABCDEFGHIJKL L 0
 #5702
@@ -23,10 +23,10 @@ A gnoll is here watching out for signs of trouble.
 You see a gnoll looking at you questioningly.
 ~
 gnoll~
-CGT J -600 S
+ACGT J -600 S
 15 0 3d9+208 0d0+0 2d6+3 17
 -2 -2 -2 10
-CIP Q 0 0
+CIP ABQ 0 0
 8 8 1 0
 AHV ABCDEFGHIJK L 0
 #5703
@@ -37,7 +37,7 @@ A pirate captain stands here, watching over his boat.
 This captain has killed more seamen than you have eaten peas.
 ~
 human~
-BTV 0 900 S
+ABTV 0 900 S
 25 10 1d1+1500 1d1+150 1d8+40 13
 -17 -17 -17 -17
 CEI ABCD 0 0
@@ -51,7 +51,7 @@ A pirate stands here, waiting for his next raid.
 He looks like a strong, fit pirate.
 ~
 human~
-BJSV 0 900 S
+ABJSV 0 900 S
 23 5 1d1+999 1d1+99 1d4+23 13
 -15 -15 -15 -15
 FHJN ABCD 0 0
@@ -65,7 +65,7 @@ A pirate stands here, waiting for his next raid.
 He looks like a strong, fit pirate.
 ~
 human~
-BJSV 0 900 S
+ABJSV 0 900 S
 23 5 1d1+999 1d1+99 1d4+23 13
 -15 -15 -15 -15
 FHJN ABCD 0 0
@@ -79,10 +79,10 @@ You see the misty outline of a midgaardian person floating before you.
 The person is dressed in misty clothing and holds his hands out to you for aid.
 ~
 ghost~
-GOTU DFJPTU 0 S
+AGOTU DFJPTU 0 S
 20 0 3d9+333 0d0+0 2d8+5 19
 -4 -4 -4 -4
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #5707
@@ -93,10 +93,10 @@ You see the misty outline of a midgaardian person floating before you.
 The person is dressed in misty clothing and holds his hands out to you for aid.
 ~
 ghost~
-GOTU DFJPTU 0 S
+AGOTU DFJPTU 0 S
 20 0 3d9+333 0d0+0 2d8+5 19
 -4 -4 -4 -4
-0 0 0 0
+0 AB 0 0
 8 8 0 0
 0 0 M 0
 #5708
@@ -109,10 +109,10 @@ scars across his body prove that he was using arms before you were born.
 He has a dazed look on his face.
 ~
 dwarf~
-BKT DF 1000 S
+ABKT DF 1000 S
 36 0 1d1+1999 1d1+199 3d8+24 19
 -20 -20 -20 -3
-ACDEIK 0 0 0
+ACDEIK AB 0 0
 8 8 1 0
 0 0 M 0
 #5709
@@ -125,7 +125,7 @@ using all sorts of weapons.  His superior knowledge of how and where to use
 them combined with his extraordinary stealth makes him a deadly opponent.
 ~
 human~
-CFGS DFOPQV -1000 S
+ACFGS DFOPQV -1000 S
 56 3 1d1+6999 1d1+199 10d4+24 11
 -26 -26 -26 -3
 BCDEIJK ABLQ 0 0
@@ -139,10 +139,10 @@ A cityguard stands here.
 A big, strong, crazed guard.
 ~
 human~
-CGT 0 1000 S
+ACGT 0 1000 S
 15 3 15d15+160 1d1+149 2d4+4 17
 0 0 0 8
-CDEKLTU 0 C 0
+CDEKLTU AB C 0
 8 8 0 150
 0 0 M 0
 #5711
@@ -153,10 +153,10 @@ A troll is here, looking for victims.
 He looks pretty mean, and would probably love to eat you.
 ~
 troll~
-CFGT Jc -600 S
+ACFGT Jc -600 S
 25 2 5d10+550 0d0+0 2d10+7 8
 -7 -7 -7 -7
-DU 0 BE HK
+DU AB BE HK
 8 8 1 0
 ABHMV ABCDEFGHIJKUV L 0
 #5712
@@ -170,7 +170,7 @@ giant~
 ACFGT J -600 S
 30 4 6d12+853 0d0+0 4d6+8 7
 -9 -9 -9 -9
-CDOU 0 HI JP
+CDOU AB HI JP
 8 8 1 0
 AGV ACDFGHIJK G 0
 #5713
@@ -181,10 +181,10 @@ A large, trained wolf is here.
 The wolf looks like a strong, fearless fighter.
 ~
 wolf~
-BU F 0 S
+ABU F 0 S
 9 3 6d10+80 1d1+99 2d5+1 10
 4 4 4 8
-C 0 C 0
+C AB C 0
 8 8 3 0
 0 0 M 0
 #5714
@@ -195,10 +195,10 @@ The captain of the guard has a crazed look in his eyes.
 A big, strong, crazy captain.
 ~
 human~
-CFT D 1000 S
+ACFGT D 1000 S
 17 4 15d15+190 1d1+199 2d4+6 17
 -2 -2 -2 6
-CDEHKLU 0 C 0
+CDEHKLU AB C 0
 8 8 1 500
 0 0 M 0
 #5715
@@ -209,13 +209,13 @@ The ghost of the mayor is here weaping.
 He is a stocky, middle-aged man with thin, grey hair with tears in his eyes.
 ~
 human~
-B N 900 S
+AB N 900 S
 23 6 6d10+500 1d1+199 1d8+12 17
 -15 -15 -15 -15
 EFNS AB CD 0
 4 4 1 1000
 0 0 M 0
-#5716 
+#5716
 apparition~
 the dark apparition~
 A dark apparition flings itself at you with a bonegrinding shriek.
@@ -2013,7 +2013,7 @@ S
 Old Main Street~
 You are on the main street passing through the City of Midgaard.   A slient
 hush fills the air as though you are disturbing the silence that has
-remained here for so long.  South of here is the entrance to the Armoury,
+remained here for so long.  South of here is the entrance to the Armory,
 and the bakery is to the north.  East of here is the market square.
 ~
 57 0 1
@@ -2028,7 +2028,7 @@ You see the market square.
 ~
 0 -1 5714
 D2
-You see the armoury.
+You see the armory.
 ~
 ~
 0 -1 5720
@@ -2178,8 +2178,8 @@ impossible to climb back up.
 0 -1 5737
 S
 #5720
-The Ruins of the Armoury~
-Nothing remains of this once famous armoury shop of Midgaard.  Holes it the
+The Ruins of the Armory~
+Nothing remains of this once famous armory shop of Midgaard.  Holes it the
 walls is all that is left of this place letting moss and vines grow through
 them.
 ~
@@ -2636,7 +2636,7 @@ S
 #5742
 Wall Road~
 You are walking next to the western city wall.  The stone cobblestone is
-cracked and even missing in some areas.  Red coloured stains and black
+cracked and even missing in some areas.  Red colored stains and black
 scorch marks seem to be everwhere along this path.  The road continues
 further south and the city gate is just north of here.
 ~
@@ -2661,7 +2661,7 @@ S
 #5743
 Wall Road~
 You are walking next to the western city wall.  The stone cobblestone is
-crached and even missing in some areas.  Red coloured stains and black
+crached and even missing in some areas.  Red colored stains and black
 scorch marks seem to be everwhere along this path.  Wall Road continues
 further north and south.  A small, poor alley leads east.  Some letters
 have been written on the wall here in blood.
@@ -5951,7 +5951,7 @@ E 1 5722 3 9
 M 0 5711 2 5974         
 E 1 5722 3 9
 M 0 5712 1 5902         *giant
-E 1 5704 5 5704
+E 1 5704 5 16
 M 0 5715 1 5838         *ghost of the mayor
 M 0 5716 4 5705         *apparition
 M 0 5716 4 5960

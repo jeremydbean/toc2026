@@ -13,10 +13,10 @@ scales -- proof it has been roosting somewhere up in the frozen peaks.  You
 are happy it doesn't APPEAR to be very hungry ... yet.
 ~
 wyvern~
-G 0 -200 S
+AG 0 -200 S
 8 2 8d8+80 1d1+149 2d6+1 10
 5 4 5 6
-DNR 0 0 0
+DNR AB 0 0
 8 8 3 0 
 0 0 H 0
 #3501
@@ -29,10 +29,10 @@ has jammed a bright red hat onto its head, and it doesn't look pleased about
 it in the slightest.
 ~
 goblin~
-FGT 0 -500 S
+AFGT 0 -500 S
 6 1 4d4+65 1d1+99 2d4+1 17
 4 6 4 9
-KR 0 0 0
+KR AB 0 0
 8 8 1 25
 0 0 S 0
 #3502
@@ -44,10 +44,10 @@ The poor boy has numerous cuts and scratches, but appears to be all right.
 He is apparently the only survivor of the ambush.
 ~
 human~
-BH 0 500 S
+ABH 0 500 S
 4 0 1d12+47 1d1+99 1d6+0 13
 8 8 8 10
-I 0 0 C
+I AB 0 C
 5 5 1 0
 0 0 S 0
 #3503
@@ -60,7 +60,7 @@ wreath above the door.  He seems almost cheerful for once, humming a winter
 carol under his breath while he works.
 ~
 human~
-BT 0 500 S
+ABT 0 500 S
 10 1 1d12+200 1d1+149 2d8+1 17
 2 2 2 8
 BFKQ AB CD 0
@@ -76,10 +76,10 @@ He is playing a slow, pretty carol -- though the audience is thin and the
 warm mulled wine he keeps refilling seems to be helping his performance.
 ~
 human~
-BST D 600 S
+ABST D 600 S
 8 3 1d12+110 1d1+99 2d6+0 17
 3 5 3 6
-FIJKNQ 0 0 0
+FIJKNQ AB 0 0
 6 6 1 260
 0 0 M 0
 #3505
@@ -91,10 +91,10 @@ The man is obviously an outlaw, and has no qualms about slashing you into
 little bits.
 ~
 human~
-GHS P -750 S
+AGHS P -750 S
 8 2 1d12+110 1d1+99 2d5+2 17
 5 3 3 6
-BFJKQ 0 0 0
+BFJKQ AB 0 0
 8 8 1 400
 0 0 M 0
 #3506
@@ -107,10 +107,10 @@ concentration as he counts through shiny trinkets in a tattered burlap sack.
 He glances up with obvious irritation -- you've interrupted his inventory.
 ~
 goblin~
-FGT 0 -600 S
+AFGT 0 -600 S
 7 1 1d12+100 1d1+149 1d10+1 17
 3 5 3 8
-DKNR 0 0 0
+DKNR AB 0 0
 8 8 1 55
 0 0 M 0
 #3507
@@ -124,10 +124,10 @@ big, and there are several suspicious bulges that suggest stolen goods.  He
 grabs for his shortsword all the same.
 ~
 goblin~
-CFGT 0 -1000 S
+ACFGT 0 -1000 S
 9 2 1d12+120 1d1+199 1d12+3 17
 1 3 1 6
-DJKNR 0 0 0
+DJKNR AB 0 0
 8 8 1 500
 0 0 M 0
 #0
@@ -252,7 +252,7 @@ S
 The Cross Roads~
 Here, the great eastern road intersects with an older road. A light snowfall
 has blanketed the intersection; you can still make out the wheel ruts of
-recent travellers. Dresden lies west. The mines of Moria are to the north.
+recent travelers. Dresden lies west. The mines of Moria are to the north.
 ~
 30 0 1
 D0
@@ -280,7 +280,7 @@ S
 City Entrance~
    You stand on the outskirts of Dresden, the capital. The road leads east
 into the frosted forest, and to the west it becomes the main street of the
-town. Coloured lanterns have been hung from the gateposts for the Winter
+town. Colored lanterns have been hung from the gateposts for the Winter
 Veil season, swaying gently in the cold breeze.
 ~
 30 4 1
@@ -1014,7 +1014,7 @@ E
 twigs leaves bed~
      The twigs and leaves have all been piled together as a makeshift bed for
 some small humanoid. Among them you spot a couple of bright baubles, likely
-stolen from travellers.
+stolen from travelers.
 ~
 S
 #3555
