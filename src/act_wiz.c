@@ -2592,8 +2592,12 @@ void do_shutdown( CHAR_DATA *ch, char *argument )
 
     if (!IS_SET(ch->act,PLR_WIZINVIS))
     {
-   snprintf( buf, sizeof(buf), "Shutdown by %s.", ch->name );
-	append_file( ch, SHUTDOWN_FILE, buf );
+        snprintf( buf, sizeof(buf), "Shutdown by %s.", ch->name );
+        append_file( ch, SHUTDOWN_FILE, buf );
+    }
+    else
+    {
+        snprintf( buf, sizeof(buf), "The game is shutting down." );
     }
     toc_strlcat( buf, "\n\r", sizeof(buf) );
     do_echo( ch, buf );

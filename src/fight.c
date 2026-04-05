@@ -4370,6 +4370,94 @@ void do_slay( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     char arg[MAX_INPUT_LENGTH];
 
+    static const struct {
+        const char *to_char;
+        const char *to_vict;
+        const char *to_room;
+    } slay_msg[] = {
+        {
+            "You slay $M in cold blood!",
+            "$n slays you in cold blood!",
+            "$n slays $N in cold blood!"
+        },
+        {
+            "A bolt of divine lightning arcs from your fingertip and reduces $M to cinders!",
+            "A bolt of divine lightning arcs from $n's fingertip and reduces you to cinders!",
+            "A bolt of divine lightning arcs from $n's fingertip and reduces $N to cinders!"
+        },
+        {
+            "You point at $M and $E simply ceases to exist.",
+            "$n points at you — and you simply cease to exist.",
+            "$n points at $N — and $E simply ceases to exist."
+        },
+        {
+            "With a contemptuous wave of your hand, $M is torn apart at the seams!",
+            "With a contemptuous wave of $s hand, $n tears you apart at the seams!",
+            "With a contemptuous wave of $s hand, $n tears $N apart at the seams!"
+        },
+        {
+            "You utter a single word of power and $M explodes in a shower of gore!",
+            "$n utters a single word of power — you explode in a shower of gore!",
+            "$n utters a single word of power and $N explodes in a shower of gore!"
+        },
+        {
+            "You snap your fingers and $M is instantly vaporized!",
+            "$n snaps $s fingers — you are instantly vaporized!",
+            "$n snaps $s fingers and $N is instantly vaporized!"
+        },
+        {
+            "Shadows surge from your outstretched hand and swallow $M whole!",
+            "Shadows surge from $n's outstretched hand and swallow you whole!",
+            "Shadows surge from $n's outstretched hand and swallow $N whole!"
+        },
+        {
+            "You call down the wrath of the gods upon $M, reducing $M to smoldering ash!",
+            "$n calls down the wrath of the gods upon you, reducing you to smoldering ash!",
+            "$n calls down the wrath of the gods upon $N, reducing $M to smoldering ash!"
+        },
+        {
+            "Ice crackles across $S skin as you freeze $M solid, then shatter $M into a thousand pieces!",
+            "Ice crackles across your skin as $n freezes you solid, then shatters you into a thousand pieces!",
+            "Ice crackles across $S skin as $n freezes $N solid, then shatters $M into a thousand pieces!"
+        },
+        {
+            "You snap your gaze to $M — $E implodes with a sickening crunch.",
+            "$n's gaze falls on you — you implode with a sickening crunch.",
+            "$n's gaze falls on $N — $E implodes with a sickening crunch."
+        },
+        {
+            "A pillar of holy fire descends from the heavens and consumes $M entirely!",
+            "A pillar of holy fire descends from the heavens and consumes you entirely!",
+            "A pillar of holy fire descends from the heavens and consumes $N entirely!"
+        },
+        {
+            "You clench your fist and $M crumples to the ground, every bone crushed to powder.",
+            "$n clenches $s fist and you crumple to the ground, every bone crushed to powder.",
+            "$n clenches $s fist and $N crumples to the ground, every bone crushed to powder."
+        },
+        {
+            "Reality itself recoils from your touch as $M is unmade from the inside out.",
+            "Reality itself recoils as $n unmakes you from the inside out.",
+            "Reality itself recoils as $n unmakes $N from the inside out."
+        },
+        {
+            "You breathe a quiet word and $M withers away to dust and memory.",
+            "$n breathes a quiet word and you wither away to dust and memory.",
+            "$n breathes a quiet word and $N withers away to dust and memory."
+        },
+        {
+            "With a flick of your wrist you open a void beneath $M, and $E falls forever into nothing.",
+            "With a flick of $s wrist $n opens a void beneath you, and you fall forever into nothing.",
+            "With a flick of $s wrist $n opens a void beneath $N, and $E falls forever into nothing."
+        },
+        {
+            "You lay a single finger against $S temple — $E drops like a puppet with cut strings.",
+            "$n lays a single finger against your temple — you drop like a puppet with cut strings.",
+            "$n lays a single finger against $S temple — $E drops like a puppet with cut strings."
+        },
+    };
+    static const int num_msgs = (int)(sizeof(slay_msg) / sizeof(slay_msg[0]));
+
     one_argument( argument, arg );
     if ( arg[0] == '\0' )
     {
@@ -4395,9 +4483,12 @@ void do_slay( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    act( "You slay $M in cold blood!",  ch, NULL, victim, TO_CHAR    );
-    act( "$n slays you in cold blood!", ch, NULL, victim, TO_VICT    );
-    act( "$n slays $N in cold blood!",  ch, NULL, victim, TO_NOTVICT );
+    {
+        int idx = number_range( 0, num_msgs - 1 );
+        act( slay_msg[idx].to_char, ch, NULL, victim, TO_CHAR    );
+        act( slay_msg[idx].to_vict, ch, NULL, victim, TO_VICT    );
+        act( slay_msg[idx].to_room, ch, NULL, victim, TO_NOTVICT );
+    }
     raw_kill( ch, victim );
     return;
 }
