@@ -244,7 +244,7 @@ crystal rose~
 a beautiful crystal rose~
 A small, beautiful rose made of crystal is here.~
 glass~
-9 AU A
+9 AU AO
 4 4 4 4 0
 1 1 4000 P
 #18208
@@ -252,7 +252,7 @@ crystal locket~
 a small crystal locket~
 A small locket made of beautiful crystal is here.~
 glass~
-9 AU A
+9 AU AO
 4 4 4 4 0
 1 1 3200 P
 #18209
@@ -260,7 +260,7 @@ crystal dog puppy~
 a crystal puppy dog~
 A small crystalline puppy is here.~
 glass~
-9 AU A
+9 AU AO
 4 4 4 4 0
 1 1 2750 P
 #18210
@@ -310,7 +310,7 @@ pink carnation~
 a lovely pink carnation~
 A beautiful pink carnation is here.~
 paper~
-9 0 A
+9 0 AO
 3 3 3 3 0
 3 1 560 P
 #18216
@@ -318,7 +318,7 @@ red rose~
 a lovely red rose~
 A beautiful red rose is here.~
 paper~
-9 0 A
+9 0 AO
 3 3 3 3 0
 3 1 1020 P
 #18217

@@ -1289,7 +1289,7 @@ lance knight knight's~
 a knight's lance~
 An 18' pole is sunk into the ground here.~
 wood~
-5 0 AP
+5 0 AN
 3 4 7 11 F
 25 15 100 P
 A
@@ -1667,7 +1667,7 @@ spear unholy~
 a spear glowing in an unholy dark light~
 A spear is here, glowing with an unholy dark light.~
 mithril~
-5 ACEJG AP
+5 ACEJG AN
 3 4 10 11 ACDF
 34 10 900 P
 A

@@ -1434,7 +1434,7 @@ bastard two sword~
 a two-handed bastard sword~
 A two handed bastard sword lies here.~
 steel~
-5 0 AO
+5 0 AN
 1 0 0 21 F
 -1 10 350 P
 #9513
@@ -1778,7 +1778,7 @@ silk jacket~
 a silk~
 A silk jacket is here.~
 cloth~
-9 0 A
+9 0 AD
 0 0 0 0 0
 -1 3 150 P
 #9556

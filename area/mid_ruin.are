@@ -716,7 +716,7 @@ a piece of wand~
 You see a small section of a blue wand laying discarded in the dirt.
 ~
 crystal~
-1 97 16384
+1 97 AO
 0 0 250 0 0
 50 1 1000 B
 #5713
@@ -725,7 +725,7 @@ the Blue DragonOrb~
 A large blue orb lays on the ground pulsing with energy.
 ~
 crystal~
-4 1|64|512 16384
+4 1|64|512 AO
 12 7 7 27 0
 24 5 7000 P
 #5714
@@ -734,7 +734,7 @@ a set of blue dragon claws~
 A pair of blue dragon claws lie on the ground.
 ~
 dragon~
-5 64|512 8192
+5 64|512 AN
 1 6 24 5 0
 24 18 6000 P
 #5715
@@ -743,7 +743,7 @@ a blue torso~
 There is a pile of blue dragonscales here.
 ~
 dragonscales~
-9 64|512 8
+9 64|512 AD
 8 8 6 0 0
 24 26 6000 P
 #5716
@@ -752,7 +752,7 @@ a giant club~
 A giant club lays here discarded.
 ~
 wood~
-5 0 8192
+5 0 AN
 0 10 18 7 0
 20 18 1000 G
 #5717
@@ -761,7 +761,7 @@ a bastardsword~
 A heavy sword lies on the ground.
 ~
 metal~
-5 0 8192
+5 0 AN
 0 6 18 3 0
 18 10 700 G
 #5718
@@ -770,7 +770,7 @@ a longsword~
 A longsword lies on the ground.
 ~
 metal~
-5 0 8192
+5 0 AN
 0 8 14 3 0
 15 10 700 G
 #5719
@@ -779,7 +779,7 @@ a set of gauntlets of ogre power~
 A set of leather gauntlets lies here.
 ~
 leather~
-9 64 128
+9 64 AH
 5 5 5 0 0
 15 3 900 G
 A
@@ -790,7 +790,7 @@ Heartseaker~
 a small dagger lies here.
 ~
 metal~
-5 4|16|64|512|2048 8192
+5 4|16|64|512|2048 AN
 1 20 40 2 0
 50 3 9000 P
 A
@@ -803,7 +803,7 @@ a cutlass~
 A sailors cutlass lies here.
 ~
 metal~
-5 0 8192
+5 0 AN
 0 8 17 1 0
 20 7 2000 P
 #5722

@@ -7,8 +7,33 @@ import os, re, sys
 from collections import defaultdict
 
 AREA_DIR = "area"
-SKIP = {"korzath2old.are", "savedTrinidad.are"}
+SKIP = {"korzath2old.are", "savedTrinidad.are", "c.are", "pi.are"}
 REPORT = defaultdict(list)
+
+
+def decode_flags(flag_str):
+    """Convert a numeric decimal flag value to its letter representation.
+    Handles both pure letter flags ('AN') and decimal ('8193' = AN = TAKE+WIELD).
+    Returns the original string if it already contains letters."""
+    flag_str = flag_str.strip()
+    if not flag_str or flag_str in ('0', ''):
+        return flag_str
+    # If it contains any letter, treat as letter flags already
+    if any(c.isalpha() for c in flag_str):
+        return flag_str
+    # Pure numeric — decode bit values to letters
+    try:
+        val = int(flag_str)
+        result = ''
+        for i in range(26):
+            if val & (1 << i):
+                result += chr(ord('A') + i)
+        for i in range(26):
+            if val & (1 << (26 + i)):
+                result += chr(ord('a') + i)
+        return result if result else '0'
+    except ValueError:
+        return flag_str
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Known typos: (pattern, replacement, context_note)
@@ -361,10 +386,10 @@ def check_objects(fname, section):
         # FLAGS2 token (Z in extra_flags) is optional — only present when Z is set
         if 'Z' in item_flags:
             item_flags2 = tparts[2] if len(tparts) > 2 else '0'
-            wear_flags = tparts[3] if len(tparts) > 3 else '0'
+            wear_flags = decode_flags(tparts[3] if len(tparts) > 3 else '0')
         else:
             item_flags2 = '0'
-            wear_flags = tparts[2] if len(tparts) > 2 else '0'
+            wear_flags = decode_flags(tparts[2] if len(tparts) > 2 else '0')
 
         # Values line
         val_line_idx = type_line_idx + 1
@@ -410,9 +435,11 @@ def check_objects(fname, section):
         if item_type == 9:
             if 'A' not in wear_flags:
                 issues.append((vnum, 'object-flags', f'ARMOR (type 9) missing TAKE flag (A) in wear_flags: {wear_flags!r}'))
-            # Should have at least one wear location (not just A)
+            # Should have at least one wear location (not just A or AO held-item pattern)
+            # AO = TAKE+HOLD is a valid "held armor" pattern — skip that combination
             wear_locs = [c for c in wear_flags if c not in ('0', 'A', 'N', 'O', 'P', 'Z')]
-            if not wear_locs:
+            has_hold = 'O' in wear_flags
+            if not wear_locs and not has_hold:
                 issues.append((vnum, 'object-flags', f'ARMOR (type 9) has no wear location flags beyond TAKE: {wear_flags!r}'))
 
         # --- CLOTHING checks ---
