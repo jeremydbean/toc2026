@@ -1605,11 +1605,11 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 	    case 1:
 		do_recall(ch,"");
 		extract_obj(obj);
-		break;
+		return;  /* obj freed; skip do_obj_action below */
 	    case 2:
+		/* raw_kill disposes obj via make_corpse; don't extract again */
 		raw_kill(ch,ch);
-		extract_obj(obj);
-		break;
+		return;  /* ch and obj may be freed; skip do_obj_action below */
 	    case 3:
 		if(obj->value[2] != 0 && !IS_NPC(ch))
 		{
@@ -1627,6 +1627,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 		    af.bitvector2	= 0;
 		    affect_join(ch,&af);
 		    extract_obj(obj);
+		    return;  /* obj freed; skip do_obj_action below */
 		}
 		break;
 	}
