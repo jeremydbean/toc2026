@@ -471,6 +471,9 @@ def check_objects(fname, section):
 
         # --- Apply type bounds check ---
         # Scan remaining lines for 'A' apply blocks
+        # Skip balance check for items that can't be equipped (applies won't activate)
+        equippable_slots = set('BCDEFGHIJKLMNO')  # wear slots beyond just TAKE
+        has_equip_slot = any(c in equippable_slots for c in wear_flags)
         valid_applies = set(range(0, 26))  # 0=NONE through 25=IMMUNITY (from merc.h)
         for i2 in range(type_line_idx + 2, len(lines)):
             al = lines[i2].strip()
@@ -483,13 +486,14 @@ def check_objects(fname, section):
                             aval = int(aparts[1])
                             if atype not in valid_applies:
                                 issues.append((vnum, 'object-values', f'unknown apply type {atype} (valid: {sorted(valid_applies)})'))
-                            # Flag suspiciously large bonuses
-                            if atype in (18, 19) and aval > 15:
-                                issues.append((vnum, 'balance', f'apply type {atype} value {aval} is very high (>15 hitroll/damroll)'))
-                            if atype in (1,2,3,4,5) and aval > 6:
-                                issues.append((vnum, 'balance', f'apply type {atype} (stat) value {aval} is very high (>6)'))
-                            if atype == 13 and aval > 500:
-                                issues.append((vnum, 'balance', f'apply HIT {aval} is very high (>500)'))
+                            # Flag suspiciously large bonuses (only for items that can actually be equipped)
+                            if has_equip_slot:
+                                if atype in (18, 19) and aval > 15:
+                                    issues.append((vnum, 'balance', f'apply type {atype} value {aval} is very high (>15 hitroll/damroll)'))
+                                if atype in (1,2,3,4,5) and aval > 6:
+                                    issues.append((vnum, 'balance', f'apply type {atype} (stat) value {aval} is very high (>6)'))
+                                if atype == 13 and aval > 500:
+                                    issues.append((vnum, 'balance', f'apply HIT {aval} is very high (>500)'))
                         except ValueError:
                             pass
 
