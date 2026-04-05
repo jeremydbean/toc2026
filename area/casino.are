@@ -84,7 +84,7 @@ dragon token lucky casino~
 a Lucky Dragon token~
 A heavy gold-coloured token stamped with a coiled dragon lies here.~
 brass~
-8 0 0 A
+8 0 A
 0 0 0 0 0
 10 1 50 P
 E
@@ -97,7 +97,7 @@ slot machine lucky dragon casino~
 a Lucky Dragon slot machine~
 A gleaming slot machine with a golden dragon motif stands here.~
 steel~
-12 O 0 0
+12 O 0
 0 0 0 0 0
 1 500 0 P
 E
@@ -112,7 +112,7 @@ dice table felt croupier lucky~
 a green felt dice table~
 A green felt-topped dice table is set up here for play.~
 wood~
-12 O 0 0
+12 O 0
 0 0 0 0 0
 1 200 0 P
 E
@@ -127,7 +127,7 @@ glass whiskey ale~
 a glass of aged whiskey~
 A glass of amber-gold whiskey sits here, smelling of honey and oak.~
 glass~
-17 0 0 A
+17 0 A
 10 10 5 0 0
 5 1 5 P
 
@@ -144,7 +144,7 @@ emerald eyes watching every arrival.  The casino floor lies to the south, the
 noise of gaming and laughter drifting through.  The gilded doors to the north
 lead back to Dresden's Market Plaza.
 ~
-CA DK 0
+0 DK 0
 D0
 The gilded doors lead back to the Market Plaza.
 ~
@@ -181,7 +181,7 @@ onto the dice and card tables.  West lies the bar, its amber bottles promising
 consolation to the unlucky.  The entrance is back through the velvet rope to
 the north.
 ~
-CA D 0
+0 D 0
 D0
 A velvet rope parts back toward the casino entrance.
 ~
@@ -208,7 +208,7 @@ chalked with results of the last dozen rolls.  The rules are simple: call HI
 or LO, roll the two dice -- seven or higher is HI, six or lower is LO.  An
 exact seven means the house wins.
 ~
-CA D 0
+0 D 0
 D3
 The archway leads back to the main casino floor.
 ~
@@ -224,7 +224,7 @@ quiet, methodical silence, polishing glasses with a clean white cloth while
 soft lute music from somewhere unseen fills the air.  Comfortable stools invite
 tired gamblers to rest and reflect on their fortunes -- or misfortunes.
 ~
-CA DK 0
+0 DK 0
 D1
 The casino floor stretches to the east.
 ~
