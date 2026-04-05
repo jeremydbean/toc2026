@@ -2665,8 +2665,6 @@ base_exp = 200 + 50 * (level_range - 4);
 	change = (align / 100);
 	/*change = UMAX(1,change);*/
 	gch->alignment = (sh_int)(UMAX(-1000,gch->alignment - change));
-	snprintf(buf, sizeof(buf), "%s alignment has lowered by %d. [Alignment: %d]\n\r",gch->name,change,gch->alignment);
-	log_string( buf );
 	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))
 		{
 		snprintf(buf, sizeof(buf), "Your alignment has lowered by %d.\n\r",change);
@@ -2679,8 +2677,6 @@ base_exp = 200 + 50 * (level_range - 4);
 	change = (align / 100);
 	/*change = UMAX(1,change);*/
 	gch->alignment = (sh_int)(UMIN(1000,gch->alignment + change));
-	snprintf(buf, sizeof(buf), "%s alignment has lowered by %d. [Alignment: %d]\n\r",gch->name,change,gch->alignment);
-	log_string( buf );
 	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))
 		{
 		snprintf(buf, sizeof(buf), "Your alignment has lowered by %d.\n\r",change);
@@ -2692,8 +2688,6 @@ base_exp = 200 + 50 * (level_range - 4);
     {
 	change = (align / 100);
 	gch->alignment -= change;
-	snprintf(buf, sizeof(buf), "%s alignment has lowered by %d. [Alignment: %d]\n\r",gch->name,change,gch->alignment);
-	log_string( buf );
 	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))
 		{
 		snprintf(buf, sizeof(buf), "Your alignment has lowered by %d.\n\r",change);
@@ -2840,22 +2834,6 @@ base_exp = 200 + 50 * (level_range - 4);
 
     /* adjust for grouping */
     xp = (int)((double)xp * gch->level/total_levels * group_bonus);
-
-    if(gch->level > 10 && xp >= 600 )
-    {
-      snprintf(buf, sizeof(buf),"%s gained %d XP.",gch->name,xp);
-      wizinfo(buf,LEVEL_IMMORTAL);
-
-    }
-
-		if( xp >= 10 )
-		{
-			snprintf(buf, sizeof(buf),"[XP TRACK]: %s (Level %d) gained %d XP from '%s' (Level %d).",gch->name,gch->level,xp,victim->name,victim->level);
-			log_string(buf);
-
-			snprintf(buf, sizeof(buf),"[XP_EXCEL]: %s;%d;%d;%s;%d",gch->name,gch->level,xp,victim->name,victim->level);
-			log_string(buf);
-		}
 
     return xp;
 }

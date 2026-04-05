@@ -180,20 +180,6 @@ void add_maxload_index(int vnum, int signval, int game_load)
 {
     ITEM_MAX_LOAD *pLoad;
     int modified = 0;
-    char buf[1000];
-
-    /* Log how the function is being used for traceability. */
-    if (game_load)
-    {
-        snprintf(buf, sizeof(buf), "Called for vnum: %d to modify as: %d as gameload.",
-                 vnum, signval);
-    }
-    else
-    {
-        snprintf(buf, sizeof(buf), "Called for vnum: %d to modify as: %d as playerload.",
-                 vnum, signval);
-    }
-    log_string(buf);
 
     for (pLoad = maxload_index_hash[vnum % MAXLOAD_KEY_HASH]; pLoad != NULL;
          pLoad = pLoad->next)
@@ -209,10 +195,6 @@ void add_maxload_index(int vnum, int signval, int game_load)
             if (game_load)
             {
                 pLoad->item_game_load += 1;
-                snprintf(log_buf, 2 * MAX_INPUT_LENGTH,
-                         "Vnum %d|Signval: %d|Gameload|Total: %d", vnum, signval,
-                         pLoad->item_game_load);
-                log_string(log_buf);
                 break;
             }
             else
@@ -221,10 +203,6 @@ void add_maxload_index(int vnum, int signval, int game_load)
                 pLoad->item_game_load = UMAX(0, pLoad->item_game_load);
                 pLoad->item_curr_load += 1;
                 modified = 1;
-                snprintf(log_buf, 2 * MAX_INPUT_LENGTH,
-                         "Vnum %d|Signval: %d|!Gameload|Total: %d", vnum, signval,
-                         pLoad->item_game_load);
-                log_string(log_buf);
                 break;
             }
         }
@@ -236,10 +214,6 @@ void add_maxload_index(int vnum, int signval, int game_load)
             {
                 pLoad->item_game_load -= 1;
                 pLoad->item_game_load = UMAX(0, pLoad->item_game_load);
-                snprintf(log_buf, 2 * MAX_INPUT_LENGTH,
-                         "Vnum %d|Signval: %d|Gameload|Total: %d", vnum, signval,
-                         pLoad->item_game_load);
-                log_string(log_buf);
                 break;
             }
             else
@@ -248,10 +222,6 @@ void add_maxload_index(int vnum, int signval, int game_load)
                 pLoad->item_curr_load = UMAX(0, pLoad->item_curr_load);
                 pLoad->item_game_load += 1;
                 modified = 1;
-                snprintf(log_buf, 2 * MAX_INPUT_LENGTH,
-                         "Vnum %d|Signval: %d|!Gameload|Total: %d", vnum, signval,
-                         pLoad->item_game_load);
-                log_string(log_buf);
                 break;
             }
         }
