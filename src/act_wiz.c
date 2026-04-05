@@ -8047,10 +8047,19 @@ void do_colossus( CHAR_DATA *ch, char *argument )
         if ( duration < 1 ) duration = 100;
     }
 
-    /* 500% bonus: add 5x current max, capped to avoid sh_int overflow */
+    /* 500% bonus: add 5x current max, but cap so that max + boost stays
+       within sh_int range (32767).  We use 30000 as the safe ceiling so
+       there is still head-room for other modifiers.                      */
     hp_boost   = UMIN( 30000, (int)victim->max_hit  * 5 );
     mana_boost = UMIN( 30000, (int)victim->max_mana * 5 );
     move_boost = UMIN( 30000, (int)victim->max_move * 5 );
+    /* Secondary clamp: total must not exceed 30000 after addition */
+    if ( (int)victim->max_hit  + hp_boost   > 30000 ) hp_boost   = 30000 - (int)victim->max_hit;
+    if ( (int)victim->max_mana + mana_boost > 30000 ) mana_boost = 30000 - (int)victim->max_mana;
+    if ( (int)victim->max_move + move_boost > 30000 ) move_boost = 30000 - (int)victim->max_move;
+    if ( hp_boost   < 0 ) hp_boost   = 0;
+    if ( mana_boost < 0 ) mana_boost = 0;
+    if ( move_boost < 0 ) move_boost = 0;
 
     af.type     = gsn_titanic;
     af.level    = (sh_int)ch->level;
