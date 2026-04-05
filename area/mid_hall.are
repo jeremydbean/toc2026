@@ -175,7 +175,7 @@ tall, every inch of it muscle. It would be a Bad Thing to commit a crime
 in his presence.
 ~
 giant~
-BTV CDFJZ 1000 M
+ABTV CDFJZ 1000 M
 40 30 1d1+2999 1d1+499  4d4+30  8
 -20 -20 -20 -10
 ACDEFHIKLNOT ABP CD 0
@@ -198,7 +198,7 @@ Although retired from adventuring, the healer still lends a hand.
 Type 'heal' to see a listing of spells.
 ~
 human~
-BQVa DFH 1000 S
+ABQVa DFH 1000 S
 40 0 1d1+999 1d1+999 2d4+30 20
 -15 -15 -15 -15
 FHIK ABCD 0 0
@@ -466,10 +466,10 @@ A huge hairy spider is here.
 The spider's red eyes peirce thru your soul.
 ~
 fido~
-FGHU 0 -200 M
+AFGHU 0 -200 M
 0 0 1d6+4 1d1+99 1d4+0 10
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 3 0
 0 0 S 0
 {

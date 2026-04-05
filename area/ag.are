@@ -15,7 +15,7 @@ this warning. "All may enter, but few return, so watch your step, and defend
 your back!"
 ~
 human~
-BCT HEFGT -500 M
+ABCT HEFGT -500 M
 51 5 200d2+3500 100d1+50 5d4+5 17
 -5 -5 -5 -5
 BEGNQ ABJK P 0
@@ -42,7 +42,7 @@ human~
 ACFGS BDFGPQ -500 S
 45 3 200d2+1500 100d1+50 5d4+5 17
 -2 -2 -2 0
-ABEGHJZ A AB 0 0
+ABEGHJZ AB AB 0 0
 8 8 1 300
 0 0 M 0
 #17002
@@ -78,7 +78,7 @@ human~
 ACFGS BDFGJPTU -1000 S
 49 5 200d2+1300 100d1+50 7d4+5 17
 -3 -3 -3 -1
-BFGHLNUZ A ABHI 0 0
+BFGHLNUZ AB ABHI 0 0
 8 8 1 500
 0 0 M 0
 #17004
@@ -92,10 +92,10 @@ india he is a master of the hunt. This guardian is one of your greatest
 challanges, maybe you should turn back now.....
 ~
 cat~
-BFG FGHT 0 M
+ABFG FGHT 0 M
 58 5 200d2+1900 100d1+500 7d6+10 5
 -7 -7 -7 -7
-BFGHNLU HI 0 0
+BFGHNLU ABHI 0 0
 8 8 2 1000
 0 0 L 0
 {
@@ -118,7 +118,7 @@ unique~
 ACFGT BGHPTU -1000 S
 52 9 200d2+1790 100d1+200 7d7+15 17
 -6 -6 -6 -3
-ABCENUZ A ABK C 0
+ABCENUZ AB ABK C 0
 8 8 0 600
 0 0 M 0
 #17006
@@ -132,10 +132,10 @@ master of that art. This is no being to be trifeled with since he possess
 all the powers of the dead!
 ~
 human~
-CFG BGHJX -1000 M
+ACFG BGHJX -1000 M
 49 5 200d2+1000 100d1+100 5d5+5 17
 -3 -3 -3 0
-CEFGLU 0 0 0
+CEFGLU AB 0 0
 8 8 0 500
 0 0 L 0
 {
@@ -158,7 +158,7 @@ unique~
 ACFGT BDEFGHTX -1000 S
 58 10 200d2+3560 100d1+300 7d7+5 17
 -8 -8 -8 -10
-CDEFLNUZ A ABPQ C 0 
+CDEFLNUZ AB ABPQ C 0 
 8 8 0 1000
 0 0 M 0
 #17008
@@ -189,10 +189,10 @@ in its finest form. The dark shape of his body and the way it blends into the
 stonework behind him tell you that this is a worthy opponent.
 ~
 human~
-CFST BDEFGH -1000 M
+ACFGST BDEFGH -1000 M
 52 5 200d2+1650 100d1+100 5d5+4 17
 -4 -4 -5 -3
-BCDEFNZ A AB P 0
+BCDEFNZ AB AB P 0
 8 8 1 750
 0 0 M 0
 {
@@ -212,7 +212,7 @@ further down his face you can see the tension and promise of pain etched
 neatly upon his persona.
 ~
 human~
-BCRS DEFGHJT -1000 M
+ABCRS DEFGHJT -1000 M
 60 15 200d2+9999 100d1+500 10d11+4 17
 -10 -10 -10 -10
 BCDEFIJKX AB 0 0
@@ -238,7 +238,7 @@ unique~
 AFGMS DEFGHTVZ G 0 S
 60 0 200d2+8745 100d1+5000 10d10+10 17
 -15 -15 -15 -15
-CFIJNVZ A ABCD 0 0
+CFIJNVZ AB ABCD 0 0
 8 8 1 0
 0 0 M 0
 #17012
@@ -270,7 +270,7 @@ over seeing of the new recruits to the guild, and on the training of the
 current members. This is no man to trifle with...
 ~
 human~
-BGT DEFGHJTV -1000 M
+ABGT DEFGHJTV -1000 M
 57 11 200d2+3750 100d1+300 3d10+10 17
 -15 -15 -15 -10
 CDEFHNV AB 0 0

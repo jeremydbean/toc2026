@@ -11,7 +11,7 @@ His name is Bazil Broketail of Quosh and he wields `Piocar'. Relkin Orphanboy
 of Quosh is his dragonboy, his humanoid caretaker and friend.
 ~
 dragon~
-B CEFHN 850 M
+AB CEFHN 850 M
 40 25 75d2+1650 0d0+200 8d4+22 5
 -11 -11 -11 -9
 DEIKLMNO ABM CQ 0
@@ -27,7 +27,7 @@ In front of you, you see a medium, fullgrown brasshide Battle Dragon. His name
 is Chektor and Harcho is his dragonboy, his humanoid caretaker.
 ~
 dragon~
-B CEFHN 750 M
+AB CEFHN 750 M
 38 23 50d2+1400 0d0+200 6d5+20 5
 -11 -10 -10 -8
 DEIKLMNO ABM CQ 0
@@ -43,7 +43,7 @@ In front of you, you see a large, fullgrown silverhide Battle Dragon. Her name
 is Vander and Kastrul is her dragonboy, her humanoid caretaker.
 ~
 dragon~
-BR CEFHN 800 M
+ABR CEFHN 800 M
 42 27 100d2+1900 0d0+200 12d3+25 5
 -11 -11 -11 -10
 DEIKLMNO ABM CQ 0
@@ -60,7 +60,7 @@ is Kepabar, the heaviest Dragon in the 109th and Tomas is his dragonboy, his
 humanoid caretaker.
 ~
 dragon~
-B CEFHN 900 M
+AB CEFHN 900 M
 44 30 100d2+2350 0d0+200 8d4+27 5
 -13 -13 -13 -11
 DEIKLMNO ABM CQ 0
@@ -76,7 +76,7 @@ In front of you, you see a large, fullgrown brasshide Battle Dragon. Her name
 is Nesessitas and Marco Velo is her dragonboy, her humanoid caretaker.
 ~
 dragon~
-BQ CEFHN 950 M
+ABQ CEFHN 950 M
 44 33 100d2+2400 0d0+200 8d4+25 5
 -14 -13 -14 -11
 DEIKLMNO ABM CQ 0
@@ -94,7 +94,7 @@ red tunic under a studded leather jerkin. A few sheathed daggers hang from his
 belt and over his shoulder is slung a short bow.
 ~
 human~
-B N 750 M
+AB N 750 M
 33 17 50d2+1050 0d0+100 6d4+16 17
 -7 -7 -7 -4
 EFILN AB Q 0
@@ -112,7 +112,7 @@ red tunic under a studded leather jerkin. A few sheathed daggers hang from his
 belt and over his shoulder is slung a short bow.
 ~
 human~
-B N 750 M
+AB N 750 M
 32 17 50d2+1000 0d0+100 6d4+15 17
 -6 -7 -6 -3
 EFILN AB Q 0
@@ -130,7 +130,7 @@ red tunic under a studded leather jerkin. A few sheathed daggers hang from his
 belt and over his shoulder is slung a short bow.
 ~
 human~
-B N 750 M
+AB N 750 M
 32 17 50d2+1050 0d0+100 6d4+15 17
 -7 -6 -7 -4
 EFILN AB Q 0
@@ -148,7 +148,7 @@ red tunic under a studded leather jerkin. A few sheathed daggers hang from his
 belt and over his shoulder is slung a short bow.
 ~
 human~
-B N 1000 M
+AB N 1000 M
 31 16 50d2+958 0d0+100 6d4+14 17
 -6 -5 -6 -2
 EFILN AB Q 0
@@ -166,7 +166,7 @@ wearing a red tunic under a studded leather jerkin. A few sheathed daggers
 hang from his belt and over his shoulder is slung a short bow.
 ~
 human~
-B N 750 M
+AB N 750 M
 33 16 50d2+1130 0d0+100 6d4+17 17
 -7 -7 -7 -5
 EFILN AB Q 0
@@ -184,7 +184,7 @@ chain-mail and sturdy leather boots. In his hand he holds a dangerous looking
 blade.
 ~
 human~
-B N 800 M
+AB N 800 M
 36 20 50d2+1375 0d0+100 10d3+19 17
 -10 -9 -10 -6
 DEILN AB Q 0
@@ -202,7 +202,7 @@ chain-mail and sturdy leather boots. In his hand he holds a well balanced
 war blade.
 ~
 human~
-B N 800 M
+AB N 800 M
 34 19 50d2+1180 0d0+100 7d4+18 17
 -9 -8 -8 -5
 DEILN AB Q 0
@@ -219,7 +219,7 @@ He's clad in a red tunic under a long chain-mail and sturdy leather boots.
 In his hands he holds a mighty war blade.
 ~
 human~
-B N 900 M
+AB N 900 M
 33 18 50d2+1050 0d0+100 6d4+18 17
 -8 -7 -8 -4
 DEILN AB Q 0
@@ -237,7 +237,7 @@ vile creatures. This one has devoted its life to the spear, and now is very
 proficient in the techniques concerning this deadly weapon.
 ~
 orc~
-CG Z -500 M
+ACG Z -500 M
 30 15 30d2+880 0d0+100 6d4+13 17
 -6 -6 -6 -2
 EFILNR AB Q JN
@@ -255,10 +255,10 @@ body is extremely muscular, and you can't hope to survive a skirmish with
 him.
 ~
 troll~
-CG 0 -550 M
+ACG 0 -550 M
 39 22 75d2+1650 0d0+100 5d6+20 17
 -13 -13 -13 -6
-DEIJLNRZ A AB Q JN
+DEIJLNRZ AB AB Q JN
 8 8 1 200
 AMV 0 L 0
 {}
@@ -272,7 +272,7 @@ of Padmasa. The whitish Trolls are able to withstand daylight and are able to
 wield swords.
 ~
 troll~
-G Z -800 M
+AG Z -800 M
 41 25 100d2+1900 0d0+100 4d8+22 17
 -14 -14 -14 -7
 DEIJLNR AB Q N
@@ -290,7 +290,7 @@ vile creatures. This one has devoted its life to serving the unholy gods of
 evil.
 ~
 orc~
-CGQ Z -500 M
+ACGQ Z -500 M
 31 15 30d2+900 0d0+100 6d4+13 17
 -8 -8 -8 -4
 EFILNR AB Q JN
@@ -308,7 +308,7 @@ vile creatures. This one has devoted its life to the flail, and now has be-
 come very proficient with it indeed.
 ~
 orc~
-CG Z -600 M
+ACG Z -600 M
 32 15 30d2+960 0d0+100 6d4+13 17
 -9 -8 -9 -3
 EFILNR AB Q JN
@@ -326,7 +326,7 @@ vile creatures. This one has devoted its life to the axe, and now has become
 very proficient with it indeed.
 ~
 orc~
-CG Z -550 M
+ACG Z -550 M
 33 15 30d2+1050 0d0+100 6d4+13 17
 -10 -9 -10 -4
 EFILNR AB Q JN
@@ -344,10 +344,10 @@ vile creatures. This one has devoted its life to the dagger, and now has
 become very proficient with it indeed.
 ~
 orc~
-CFG Z -550 M
+ACFG Z -550 M
 35 15 30d2+1250 0d0+100 6d4+23 17
 -10 -9 -10 -4
-BEFILNRZ A AB Q JN
+BEFILNRZ AB AB Q JN
 8 8 0 100
 AMV 0 M 0
 

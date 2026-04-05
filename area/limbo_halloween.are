@@ -729,10 +729,10 @@ collar.  Don't cause trouble around him, he will not like his victims
 stolen away.
 ~
 human~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -750,10 +750,10 @@ His fangs are polished with silver and his smouldering eyes
 burn fear into the hearts of men, and lust into the hearts of women.
 ~
 human~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -771,10 +771,10 @@ Hair bulges from inside his shirt and trousers.  His snout is wet and gleaming.
 He howls at the moon and sharpens his claws as the drools in your direction.
 ~
 dwarf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -15 -14 -14 -10
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -792,10 +792,10 @@ and incredibly frightening.  He hasn't noticed you yet, and you look
 away trying to avoid his red burning gaze.
 ~
 dwarf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -813,10 +813,10 @@ woman is held in his arms, unconscious, with a small trickle of blood
 running from her neck.  He gazes at you and you freeze in terror.
 ~
 elf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -834,10 +834,10 @@ and incredibly frightening.  He hasn't noticed you yet, and you look
 away trying to avoid his red burning gaze.
 ~
 elf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -855,10 +855,10 @@ shirt.  His black, silk cape is lined with a brilliant red. He smiles charmingly
 at you and asks you to be dinner.
 ~
 hobbit~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EKJ MHI
+CDEFIKNQS ABLN EKJ MHI
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -876,10 +876,10 @@ and incredibly frightening.  He hasn't noticed you yet, and you look
 away trying to avoid his red burning gaze.
 ~
 hobbit~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EKJ MHI
+CDEFIKNQS ABLN EKJ MHI
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -963,10 +963,10 @@ A vampire stands here.
 A big strong vampire of Dresden.
 ~
 human~
-BGT 0 -800 M
+ABGT 0 -800 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 {
@@ -982,10 +982,10 @@ A vampire stands here.
 A big strong Vampire of Dresden.
 ~
 human~
-BGT 0 -800 M
+ABGT 0 -800 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 250
 0 0 M 0
 {
@@ -1001,10 +1001,10 @@ A warlock practices evil spells here..
 An ugly old warlock cackles at you.
 ~
 human~
-G 0 -500 M
+AG 0 -500 M
 10 20 6d6+62 1d1+99 1d5+5 17
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 1 300
 0 0 M 0
 {
@@ -1020,10 +1020,10 @@ A witch flies here on her broom.
 A younger hag smiles and offers you some poisoned apple.
 ~
 human~
-G 0 -400 M
+AG 0 -400 M
 10 20 6d6+62 1d1+99 1d5+5 17
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 2 150
 0 0 M 0
 {
@@ -1163,10 +1163,10 @@ A skeleton stands here rattling his bones.
 A skeleton stalks the night.
 ~
 human~
-GT 0 -400 M
+AGT 0 -400 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 {
@@ -1182,10 +1182,10 @@ A wraith fades in and out of sight here.
 An unearthly wraith of tremendous power.
 ~
 human~
-GT 0 -700 M
+AGT 0 -700 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 250
 0 0 M 0
 {
@@ -1201,10 +1201,10 @@ A skeleton stands here rattling in his chains.
 A skeleton rattles his chains and shouts BOO!
 ~
 human~
-BFGT 0 -400 M
+ABFGT 0 -400 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 {
@@ -1220,10 +1220,10 @@ A skeleton stalks the night.
 A skeleton crumbling into decay stumbles towards you.
 ~
 human~
-BFGT 0 -400 M
+ABFGT 0 -400 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 250
 0 0 M 0
 {
@@ -1305,10 +1305,10 @@ fate of your life. She is the one to fear, as she is the total embodiment
 of death itself.
 ~
 unique~
-LMTUVZ B BCDEFHJNPTUVZ G 0 S
+ALMTUVZ B BCDEFHJNPTUVZ G 0 S
 55 100 5000d1+1 500d1+1 10d5+15 11
 -10 -10 -10 -10
-AFHIZ A AB CD 0
+AFHIZ AB AB CD 0
 8 8 2 100
 0 0 M 0
 
@@ -1323,10 +1323,10 @@ all your hopes and desires, and makes the fullness of life what it is.
 It would not be good to anger her.
 ~
 unique~
-LMTUVZ B BCDEFHJNPTUVZ G 0 S
+ALMTUVZ B BCDEFHJNPTUVZ G 0 S
 55 100 5000d1+1 500d1+1 10d5+15 11
 -10 -10 -10 -10
-AFHIZ A AB CD 0
+AFHIZ AB AB CD 0
 8 8 2 100
 0 0 M 0
 

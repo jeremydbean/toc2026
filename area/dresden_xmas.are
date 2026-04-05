@@ -42,7 +42,7 @@ red-and-green wizard robe trimmed with white fur.  A sprig of mistletoe
 is tucked into his hatband.  He seems oddly pleased with himself.
 ~
 gnome~
-JBKMRV DF 0 M
+ABJKMRV DF 0 M
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIK ABCD 0 0
@@ -229,7 +229,7 @@ cut into snowflakes and trees, and spiced strudels wrapped in gold paper.
 You can smell cinnamon and cloves from across the room.
 ~
 human~
-BMV 0 0 M
+ABMV 0 0 M
 23 0 1d1+999 1d1+99 1d8+20 13
 -15 -15 -15 -15
 CDF ABCD 0 0
@@ -320,7 +320,7 @@ For once he does not look tired -- Winter Veil always fills the bar, and with go
 mulled wine sits on the bar beside a bowl of spiced nuts.
 ~
 human~
-BMV 0 0 M
+ABMV 0 0 M
 23 0 1d1+499 1d1+99 1d8+18 13
 -6 -6 -6 0
 FHJN AB CD 0
@@ -412,10 +412,10 @@ This reindeer was kicked out of Santa's herd for bad behavior.  He has
 come to Dresden to seek out revenge.
 ~
 fido~
-FGHU 0 -200 M
+AFGHU 0 -200 M
 0 0 1d6+4 1d1+99 1d4+0 10
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 3 0
 0 0 S 0
 {

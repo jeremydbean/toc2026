@@ -226,10 +226,10 @@ look any way it wants, usually choosing horrible, disgusting forms, such as
 mutilated animate corpses, that strike fear in any conscious man's mind.
 ~
 undead~
-CGT CDEFNZ -700 M
+ACGT CDEFNZ -700 M
 14 8 10d2+190 0d0+200 1d13+4 18
 -3 -3 -3 1
-DGLNR AKLQ 0 CJNP
+DGLNR ABKLQ 0 CJNP
 8 8 0 0
 ACDL 0 M 0
 {}
@@ -244,7 +244,7 @@ other dark and mysterious places. The Midgaard ruins, being sheltered by the
 woods, thus form a perfect habitat. 
 ~
 snake~
-BGT CFNZ -400 M
+ABGT CFNZ -400 M
 15 10 9d3+208 0d0+100 2d6+4 10
 -2 -2 -2 0
 FLMNOR ABLQ 0 0
@@ -265,7 +265,7 @@ its mission it will discorpeate and his soul will return to the realm of
 the dead until it is summoned again.
 ~
 undead~
-CGT CDEFNZ -600 M
+ACGT CDEFNZ -600 M
 18 14 9d3+283 0d0+200 2d7+5 18
 -5 -5 -5 -3
 CEFLNR ABQ BQ CE
@@ -288,7 +288,7 @@ hold precious ... some covet piles of coins and gems, while others have
 collected only weapons.
 ~
 dragon~
-BCGT CDEFJNRZcc -900 M
+ABCGT CDEFJNRZcc -900 M
 60 40 200d2+4000 75d2+600 8d6+50 32
 -40 -40 -40 -30
 DEHILMNOR ABEILPQ 0 HN
@@ -309,7 +309,7 @@ tail and clawed hands and feet. Before it dies, the escaping magic energy
 transforms it into a green lightning ball and finally explodes.
 ~
 dragon~
-CGR CDFJNQ -600 M
+ACGR CDFJNQ -600 M
 24 20 25d2+450 25d2+250 10d2+9 5
 -10 -10 -10 -8
 EFIJLMNR ABLQ P HN
@@ -329,7 +329,7 @@ armies. When these creatures are killed, they turn into a substance similar
 to stone, trapping inside whatever dealt the final blow.
 ~
 dragon~
-CGT CN -700 M
+ACGT CN -700 M
 20 15 9d3+333 0d0+200 8d2+5 5
 -7 -7 -7 -4
 DEFIJLMNR ABLQ 0 HN
@@ -351,7 +351,7 @@ killed, a Bozak's flesh becomes dry and brittle, turning to dust. The bones
 begin to vibrate, then explode violently, hitting all within a ten feet range.
 ~
 dragon~
-CGR CDEFN -600 M
+ACGR CDEFN -600 M
 28 22 10d5+650 1d2999+1 12d2+8 5
 -11 -11 -11 -10
 EFIJLMNR ABLQ 0 HN
@@ -374,7 +374,7 @@ to best effect. Kapaks serve as skirmishers and assassins in the Dark Queen's
 army. When they are slain, their body dissolves into a pool of acid.
 ~
 dragon~
-CGT CFN -600 M
+ACGT CFN -600 M
 22 18 10d5+400 0d0+200 4d4+6 5
 -8 -8 -8 -5
 BDEFIJLMNR ABLQ 0 HN
@@ -397,7 +397,7 @@ They retain this death shape for three days, after which their form bursts into
 flames and is reduced to black soot.
 ~
 dragon~
-GT CN -800 M
+AGT CN -800 M
 26 22 10d5+600 0d0+200 7d3+10 5
 -11 -11 -11 -7
 DEHIJLMNOR ABLQ 0 HN
@@ -416,7 +416,7 @@ skills it had in life, but also some tortured sense of nobility: he will not
 attack from an ambush, nor attack an unarmed person.
 ~
 undead~
-GT CEFN 700 M
+AGT CEFN 700 M
 35 28 50d2+1300 0d0+300 4d7+12 18
 -14 -14 -14 -8
 DEHILNR ABLQ C HN
@@ -435,7 +435,7 @@ but those not aware of how to control the warrior risk disaster. Skeleton
 warriors will not rest until they and their circlets are destroyed.
 ~
 undead~
-BT CEFN 700 M
+ABT CEFN 700 M
 25 21 10d5+550 0d0+300 2d10+8 18
 -11 -11 -11 -6
 DEFILNR ABLQ 0 HN
@@ -456,7 +456,7 @@ of Ulgo, but driven by hunger they have now come in search of food near
 the ruins of Midgaard.
 ~
 troll~
-CGHT CFNaa -100 M
+ACGHT CFNaa -100 M
 20 15 9d3+333 0d0+100 8d2+5 5
 -8 -7 -8 -3
 BEILOR AB BLQ N
@@ -472,7 +472,7 @@ A Hrulga gallops through the forest, its manes and tails tossing.
 fangs instead of teeth, and clawed feet instead of hoves.
 ~
 horse~
-GT CFN -200 M
+AGT CFN -200 M
 15 10 9d3+208 0d0+100 2d6+4 15
 -5 -4 -5 0
 DFILR ABPQ B N
@@ -493,7 +493,7 @@ ding tusks. Their eyes are sunk in deep sockets beneath a heavy ridge of bone
 across their brow, and they are burned with a hideous hunger.
 ~
 troll~
-CGT CFN -600 M
+ACGT CFN -600 M
 27 22 10d5+650 0d0+100 5d4+7 5
 -11 -10 -11 -6
 DEHIKLNOR AB BLQ 0
@@ -513,10 +513,10 @@ where between spots and stripes. It stares at you with a dreadful intensity
 while yelping its high-pitched, hooting laugh.
 ~
 wolf~
-GT CFN -300 M
+AGT CFN -300 M
 13 8 10d2+170 0d0+0 2d5+3 10
 -1 -1 -1 1
-ILNR A 0 N
+ILNR AB 0 N
 8 8 0 0
 AGV 0 M 0
 {}
@@ -531,10 +531,10 @@ not just gliding. Dreadwing's eyes always glow an eerie, pale blue. They
 are highly skilled in using their talons and tooth filled mouths in combat. 
 ~
 bat~
-GT CENT -150 M
+AGT CENT -150 M
 18 14 9d3+283 0d0+100 7d2+5 5
 -5 -3 -5 -1
-DEFHLMNR AL 0 HN
+DEFHLMNR ABL 0 HN
 8 8 0 0
 ABGHVWX QU M 0
 {}
@@ -550,7 +550,7 @@ still, but there is an evil about it now, so profound, so veil, it makes
 the hairs in the nape of your neck stand upright.
 ~
 vampire~
-GR CDEFNZcc -800 M
+AGR CDEFNZcc -800 M
 24 20 10d5+475 35d2+180 7d3+6 15
 -11 -10 -11 -7
 DHILR ABLQ P NRSY
@@ -568,7 +568,7 @@ can be encountered in human form, or in were-form, which looks like a wolf-man
 with long claws and huge bat wings.
 ~
 vampire~
-CGT CDEFNZcc -700 M
+ACGT CDEFNZcc -700 M
 22 19 10d5+400 0d0+200 5d4+6 5 
 -10 -9 -10 -6
 DEFHLOR ABLQ P NRSY
@@ -586,10 +586,10 @@ torso and left wing is covered is large scars from great battles which
 he must have fought.
 ~
 dragon~
-BCF DF -1000 M
+ABCFG DF -1000 M
 44 22 25d10+2750 2d44+440 8d4+15 30
 -15 -15 -15 -15
-ACM BEI C HN
+ACM ABEI C HN
 8 8 1 1500
 AHMV 0 G 0
 {}

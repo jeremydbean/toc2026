@@ -727,10 +727,10 @@ Prancer is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 human~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -747,10 +747,10 @@ Dasher is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 human~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -767,10 +767,10 @@ Dancer is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 dwarf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -15 -14 -14 -10
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -787,10 +787,10 @@ Donder is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 dwarf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -807,10 +807,10 @@ Blitzen is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 elf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -827,10 +827,10 @@ Cupid is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 elf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -851,10 +851,10 @@ And they wouldn't let him join in any of their reindeer games.
 So he grew up big and tough and ready to guard Santa!
 ~
 hobbit~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EKJ MHI
+CDEFIKNQS ABLN EKJ MHI
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -871,10 +871,10 @@ Vixen is a powerfully built reindeer with rigid facial features.  He
 is ready to be yoked to the sleigh to deliver gifts.
 ~
 hobbit~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EKJ MHI
+CDEFIKNQS ABLN EKJ MHI
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -959,10 +959,10 @@ A bellringer is collecting for the Salvation Army.
 He's big and strong and has a big iron pot you can drop your donation into.
 ~
 human~
-BGT 0 750 M
+ABGT 0 750 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 {
@@ -978,10 +978,10 @@ A bellringer is collecting for the Salvation Army.
 He's big and strong and has a big iron pot you can drop your donation into.
 ~
 human~
-BGT 0 750 M
+ABGT 0 750 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 250
 0 0 M 0
 {
@@ -997,10 +997,10 @@ Santa's elf is wrapping packages.
 He is a very hardworking and loyal helper to Santa.
 ~
 human~
-G 0 500 M
+AG 0 500 M
 10 20 6d6+62 1d1+99 1d5+5 17
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 1 300
 0 0 M 0
 {
@@ -1016,10 +1016,10 @@ Santa's elf is wrapping packages.
 She is a very hardworking and loyal helper to Santa.
 ~
 human~
-G 0 500 M
+AG 0 500 M
 10 20 6d6+62 1d1+99 1d5+5 17
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 2 150
 0 0 M 0
 {
@@ -1159,10 +1159,10 @@ A bellringer is collecting for the Salvation Army.
 He's big and strong and has a big iron pot you can drop your donation into.
 ~
 human~
-GT 0 500 M
+AGT 0 500 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 {
@@ -1178,10 +1178,10 @@ A bellringer is collecting for the Salvation Army.
 He's big and strong and has a big iron pot you can drop your donation into.
 ~
 human~
-GT 0 500 M
+AGT 0 500 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 250
 0 0 M 0
 {
@@ -1197,10 +1197,10 @@ A bellringer is collecting for the Salvation Army.
 He's big and strong and has a big iron pot you can drop your donation into.
 ~
 human~
-BFGT 0 500 M
+ABFGT 0 500 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 {
@@ -1216,10 +1216,10 @@ A bellringer is collecting for the Salvation Army.
 He's big and strong and has a big iron pot you can drop your donation into.
 ~
 human~
-BFGT 0 500 M
+ABFGT 0 500 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 250
 0 0 M 0
 {

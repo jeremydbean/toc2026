@@ -814,10 +814,10 @@ faintly.  He is very helpful and will gladly lend a hand if you are a good
 and just person.
 ~
 human~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -836,10 +836,10 @@ creater Glorianna gave to him when he was made.  He is very helpful and
 will lend a hand to you if you are a good and just person.
 ~
 human~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -859,10 +859,10 @@ enemies without it.  He will only lend a hand to you if you are a good and
 just person.
 ~
 dwarf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -15 -14 -14 -10
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -882,10 +882,10 @@ strongest of enemies.  He is very helpful and will lend a hand to you if you
 are a good and just person.
 ~
 dwarf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -14 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -904,10 +904,10 @@ that his creater Silverstar gave to him when he was made.  He is very helpful
 and will lend a hand to you if you are for the cause of good.
 ~
 elf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -926,10 +926,10 @@ that his creater Silverstar gave to him when he was made.  He is very helpful
 and will lend a hand to you if you are for the cause of good.
 ~
 elf~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EJK HIM
+CDEFIKNQS ABLN EJK HIM
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -948,10 +948,10 @@ creater Perri gave to him when he was made.  He is very helpfull and will lend
 a hand to you if you are for the cause of good.
 ~
 hobbit~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EKJ MHI
+CDEFIKNQS ABLN EKJ MHI
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -970,10 +970,10 @@ creater Perri gave to him when he was made.  He is very helpfull and will lend
 a hand to you if you are for the cause of good.
 ~
 hobbit~
-CGTV DFN 0 M
+ACGTV DFN 0 M
 40 10 15d10+1550 1d1+99 4d8+13 8
 -14 -13 -13 -8
-CDEFIKNQS BLN EKJ MHI
+CDEFIKNQS ABLN EKJ MHI
 8 8 1 3000
 AMV ABCDEFGH M 0
 {
@@ -1058,10 +1058,10 @@ A Dresden cityguard stands here.
 A big strong cityguard of Dresden.
 ~
 human~
-BGT 0 750 M
+ABGT 0 750 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 {
@@ -1077,10 +1077,10 @@ A Dresden cityguard stands here.
 A big strong cityguard of Dresden.
 ~
 human~
-BGT 0 750 M
+ABGT 0 750 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 250
 0 0 M 0
 {
@@ -1096,10 +1096,10 @@ A citizen of Dresden stands here.
 He is one of the wealthy citizens of Dresden.
 ~
 human~
-G 0 500 M
+AG 0 500 M
 10 20 6d6+62 1d1+99 1d5+5 17
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 1 300
 0 0 M 0
 {
@@ -1115,10 +1115,10 @@ A citizen of Dresden stands here.
 She is one of the wealthy citizens of Dresden.
 ~
 human~
-G 0 500 M
+AG 0 500 M
 10 20 6d6+62 1d1+99 1d5+5 17
 5 5 5 5
-0 0 0 0
+0 AB 0 0
 8 8 2 150
 0 0 M 0
 {
@@ -1258,10 +1258,10 @@ A Dresden cityguard stands here.
 A big strong cityguard of Dresden.
 ~
 human~
-GT 0 500 M
+AGT 0 500 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 1 250
 0 0 M 0
 {
@@ -1277,10 +1277,10 @@ A Dresden cityguard stands here.
 A big strong cityguard of Dresden.
 ~
 human~
-GT 0 500 M
+AGT 0 500 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
-0 0 0 0
+0 AB 0 0
 8 8 2 250
 0 0 M 0
 {
@@ -1296,7 +1296,7 @@ A Dresden cityguard stands here.
 A big strong cityguard of Dresden.
 ~
 human~
-BFGMT 0 500 M
+ABFGMT 0 500 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
 0 AB 0 0
@@ -1315,7 +1315,7 @@ A Dresden cityguard stands here.
 A big strong cityguard of Dresden.
 ~
 human~
-BFGMT 0 500 M
+ABFGMT 0 500 M
 20 15 4d6+310 1d1+99 2d10+20 8
 -5 -5 -5 -5
 0 AB 0 0
@@ -1386,10 +1386,10 @@ fate of your life.  She is the one to fear simply because Atropos is the
 embodyment of death itself.
 ~
 unique~
-LMTUVZ B BCDEFHJNPTUVZ G 0 S
+ALMTUVZ B BCDEFHJNPTUVZ G 0 S
 55 100 5000d1+1 500d1+1 10d5+15 11
 -10 -10 -10 -10
-AFHIZ A AB CD 0
+AFHIZ AB AB CD 0
 8 8 2 100
 0 0 M 0
 
@@ -1404,10 +1404,10 @@ all your hopes and desires, and makes the fullness of life what it is.
 It would not be good to piss her off.
 ~
 unique~
-LMTUVZ B BCDEFHNOPTUVZ G 0 S
+ALMTUVZ B BCDEFHNOPTUVZ G 0 S
 55 100 5000d1+1 500d1+1 10d5+15 11
 -10 -10 -10 -10
-ACEFIJZ A AB CD 0
+ACEFIJZ AB AB CD 0
 8 8 2 100
 0 0 M 0
 

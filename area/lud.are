@@ -12,7 +12,7 @@ behind him like earthshaking footsteps.  He holds something important but
 killing an immortal man is impossible.
 ~
 human~
-BGOM HT -1000 M
+ABGMO HT -1000 M
 30 15 6d12+900 1d1+500 4d6+8 20
 -66 -66 -66 -66
 ACDEFHIJKLN ABCDEFGHIJKLMNOPQRS 0 0
@@ -68,7 +68,7 @@ undead~
 ACFGMO IDLOZ A 0 S
 51 21 200d10+5000 1d1+500 5d8+20 26
 -23 -23 -23 -15
-AJKNUZ B ABP DFG R
+AJKNUZ AB ABP DFG R
 8 8 1 1000
 0 0 L 0
 #29505
@@ -82,10 +82,10 @@ evilly at you and you see he is missing quite a few teeth.  It doesn't
 look like he has much reason to live so you can expect him to fight hard.
 ~
 human~
-BRM HTV -1000 M
+ABMR HTV -1000 M
 56 26 200d2+8000 100d1+1000 6d8+24 19
 -30 -30 -30 -30
-AFKPV BQ C P
+AFKPV ABQ C P
 8 8 1 2500
 0 0 L 0
 {
@@ -119,10 +119,10 @@ The Security Droid roams the halls.
 This droid protects against unwanted visitors.  You fit that description.
 ~
 unique~
-CFGM DJVOZ A 0 M
+ACFGM DJVOZ A 0 M
 51 21 200d2+5000 1d1+500 6d8+20 28
 -23 -23 -23 -20
-AEFHKLUZ B BP C O
+AEFHKLUZ AB BP C O
 8 8 0 0
 0 0 M 0
 {
@@ -158,10 +158,10 @@ worlds.  He is street smart from once being a criminal in New York.  Now
 he has learned from Roland how to be a Gunslinger.
 ~
 human~
-BFTM DGHOV 1000 M
+ABFGMT DGHOV 1000 M
 65 25 200d2+9500 100d1+1000 9d10+14 8
 -52 -52 -52 -39
-ACDFHKL BLPQ DE 0
+ACDFHKL ABLPQ DE 0
 8 8 1 5000
 0 0 L 0
 {

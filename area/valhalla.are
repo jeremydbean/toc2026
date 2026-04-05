@@ -28,7 +28,7 @@ created by Sauron. But since the downfall of Sauron he has been in
 service here.
 ~
 nazgul~
-BFRT DEFHNaa -1000 M
+ABFGRT DEFHNaa -1000 M
 65 12 19D100+6500 1D1+499 10d10+200 29
 -15 -15 -15 -15
 ACDFIKMGV ABEIJ C K
@@ -46,7 +46,7 @@ stay on here just for the time he has spend here and they have grown
 quite attached to him.
 ~
 human~
-BHO CDE 0 M
+ABHO CDE 0 M
 55 8 10D10+6000 10D10+200 4D4+50 3
 -13 -13 -13 -10
 ABCDEF AB CD O
@@ -62,7 +62,7 @@ The Gods have their own stuff and don't deposit here anymore so
 i don't have a thing here.
 ~
 human~
-BHO CDE 0 M
+ABHO CDE 0 M
 55 8 12D10+6000 0D0+100 5D8+50 4
 -13 -13 -13 -10
 ABVDEF AB CD O
@@ -80,7 +80,7 @@ so in death rather than face hell. Now he has to stay here
 till, till, till.......
 ~
 human~
-BF CDEH -1000 M
+ABFG CDEH -1000 M
 55 15 10D100+4000 0D0+0 4D15+40 27
 -11 -11 -11 0
 ABCDEFIJKMNQ ABC HIJK L
@@ -97,7 +97,7 @@ He was the second to fall to the powers of THE ring in lust for power
 and glory.
 ~
 nazgul~
-BRTdd DEFHNaa -1000 M
+ABRTd DEFHNaa -1000 M
 60 12 19D100+5500 1D1+499 10d8+120 29
 -13 -13 -13 -5
 ACDFIKMG ABEIJ C K
@@ -113,7 +113,7 @@ This man wanted to escape the life he was meant for that of a
 fisherman. So he became a mercenary and is now lord of his own.
 ~
 nazgul~
-HRTdd DEFHNaa -1000 M
+AHRTd DEFHNaa -1000 M
 57 12 19D100+5000 1D1+499 10d8+110 29
 -13 -13 -13 -5
 ACDFIKMG ABEIJ C K
@@ -129,7 +129,7 @@ As a Kirannian evil mage he took power and ruled. After death he still
 rules now over the dead.
 ~
 nazgul~
-BRTdd DEFHNaa -1000 M
+ABRTd DEFHNaa -1000 M
 57 12 19D100+5000 1D1+499 10d8+115 29
 -13 -13 -13 -5
 ACDFIKMG ABEIJ C K
@@ -146,7 +146,7 @@ of killing. His major pasttime was on research on "How to hurt and
 hurt more".
 ~
 nazgul~
-BRTdd DEFHNaa -1000 M
+ABRTd DEFHNaa -1000 M
 57 12 19D100+5000 1D1+499 10d8+105 29
 -13 -13 -13 -5
 ACDFIKMG ABEIJ C K
@@ -162,7 +162,7 @@ If there was an ever a maniac it's him. He was the trainer and builder of the
 host of Mordor. Now has anyone seen a more terrifying army since.
 ~
 nazgul~
-FRTdd DEFHNaa -1000 M
+AFGRTd DEFHNaa -1000 M
 57 12 19D100+5000 1D1+499 10d8+100 29
 -13 -13 -13 -5
 ACDFIKMG ABEIJ C K
@@ -178,7 +178,7 @@ This the sole female nazgul and there are no words to describe her. Not
 now, not ever.
 ~
 nazgul~
-BRTdd DEFHNaa -1000 M
+ABRTd DEFHNaa -1000 M
 57 12 19D100+5000 1D1+499 10d8+125 29
 -13 -13 -13 -5
 ACDFIKMG ABEIJ C K
@@ -394,7 +394,7 @@ unique~
 ARSTVW DEFHJTU 0 S
 55 30 10d10+5000 2d55+1000 2d50+25 4
 -20 -20 -20 -20
-ABCDEFGHIJKLMNOVZ B ABCDEFGHIJKLMNOPQRS 0 0
+ABCDEFGHIJKLMNOVZ AB ABCDEFGHIJKLMNOPQRS 0 0
 6 6 0 0
 0 0 L 0
 #9924

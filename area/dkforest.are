@@ -382,7 +382,7 @@ This being has only one purpose in life, to guard his masters tower from
 intruders.. like YOU!
 ~
 unique~
-FOT BDEFHNOPQUV -1000 M
+AFGOT BDEFHNOPQUV -1000 M
 55 32 30d20+2100 10d30+300 4d8+35 13
 -23 -21 -23 -30
 ADEFHN ABIM GKP HN
@@ -407,10 +407,10 @@ protect his eternal resting place, and keep it free from thieves. They lumber
 slowly toward you, intent to fulfill their duty.
 ~
 giant~
-BFMT DGOV 0 M
+ABFGMT DGOV 0 M
 61 30 30d24+10000 15d30+180 6d8+35 27
 -50 -50 -50 -55
-CDEFHIKNPO BILPQ HIJMNPOS K
+CDEFHIKNPO ABILPQ HIJMNPOS K
 8 8 0 0
 0 0 G 0
 {

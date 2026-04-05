@@ -303,10 +303,10 @@ A human warrior grins an evil grin in your face.
 He doesn't look friendly at all...  He is no Mr. Rogers!
 ~
 human~
-CFGT -300 S
+ACFGT -300 S
 9 2 4d10+130 1d1+99 1d8+3 17
 3 2 4 6
-CJQU 0 0 0
+CJQU AB 0 0
 8 8 1 300
 0 0 M 0
 #4107

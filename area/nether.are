@@ -14,7 +14,7 @@ drakes are the most active of all dragons, spending only half their time
 sleeping and resting unlike other dragons.
 ~
 drake~
-ACFQR BCFHT -800 M
+ACFGQR BCFHT -800 M
 52 20 4D50+1800 2D50+200 10D4+70 31
 -100 -100 -100 -250
 ABCDEFIKN ABCEFHI OPRS K
@@ -34,7 +34,7 @@ drakes are the most active of all dragons, spending only half their time
 sleeping and resting unlike other dragons.
 ~
 drake~
-ACFQR BCFHT -800 M
+ACFGQR BCFHT -800 M
 57 40 8D50+2800 1D50+200 10D12+60 31
 -100 -100 -100 -250
 ABCDEFIKN ABCEFHI OPRS K
@@ -55,7 +55,7 @@ Like their lesser cousins, their gaze turns victims to stone, but
 they can be safely viewed through a mirror.
 ~
 dragon~
-ACFQRST BCFHLT -1000 M
+ACFGQRST BCFHLT -1000 M
 56 40 8D50+2800 1D50+200 10D8+60 29
 -100 -100 -100 -250
 ABCDEFIKN ABCHI OPRS J
@@ -77,7 +77,7 @@ and constructions absentmindedly when they walk. They should be treated
 as fire drakes in all other respects.
 ~
 dragon~
-ABCFQRST BCFHTXaacc -1000 M
+ABCFGQRST BCFHTXaacc -1000 M
 59 40 8D50+4800 1D50+200 10D8+60 32
 -100 -100 -100 -150
 ABCDEFIKN ABEFHIK OPRS GJ
@@ -101,7 +101,7 @@ thousands of square miles. There is said to be a very obscure, evil ritual
 that will awaken a balrog against its will.
 ~
 dragon~
-ACFQR BCFHT -1000 M
+ACFGQR BCFHT -1000 M
 60 50 8D50+5800 1D50+200 10D12+70 27
 -100 -100 -100 -200
 ABCDEFIKN ABCDEFHI OPRS GJK
@@ -119,7 +119,7 @@ tempting individuals to do evil and horrible deeds in the dark of night,
 and if they can tempt their victims without the use of spells, all the better.
 ~
 demon~
-ACFNQ BCFT -1000 M
+ACFGNQ BCFT -1000 M
 54 25 8D50+2800 1D50+200 10D6+60 31
 -100 -100 -100 -50
 ABCDEFIKN ABCEFI OPRS J
@@ -139,7 +139,7 @@ demons would lair in an icy cavern complex. They enjoy freezing their
 victims to death, sometimes encasing beings in ice while still alive.
 ~
 demon~
-ACFNQ BCFT -800 M
+ACFGNQ BCFT -800 M
 55 25 8D50+2800 1D50+200 10D6+60 30
 -100 -100 -100 0
 ABCDEFIKN ABFHI OPRS GK
@@ -158,7 +158,7 @@ diseases like Asthma, Rabies, Malaria, Leprosy, Plague and such.
 They are loners, avoided even by other demons.
 ~
 demon~
-ACFNQ BCFT -800 M
+ACFGNQ BCFT -800 M
 56 25 8D50+2800 1D50+200 10D6+60 28
 -100 -100 -100 -50
 ABCDEFIKN ABCEF OPRS GJK
@@ -177,7 +177,7 @@ is much different than that of its brethern, a black fire which can be hot
 or cold whichever it chooses.
 ~
 demon~
-ACFNQ BCFT -800 M
+ACFGNQ BCFT -800 M
 56 25 8D50+2800 1D50+200 10D6+60 31
 -100 -100 -100 -150
 ABCDEFIKN ABCEFHI OPRS K
@@ -323,7 +323,7 @@ breathing fire at their prey, then close in for the kill with a flurry of
 razor-sharp teeth and claws.
 ~
 vampire~
-ABCDFR CDE -800 M
+ABCDFGR CDE -800 M
 50 23 10D20+1400 30D5+150 4D10+30 30
 -5 -4 -2 -50
 ABEFR ABHL NOPRS JK

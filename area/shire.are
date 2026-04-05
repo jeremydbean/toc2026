@@ -454,10 +454,10 @@ A country bumpkin dreams of pipeweed and its many uses.
 The country bumpkin snores noisily.
 ~
 hobbit~
-BT 0 S
+ABT 0 S
 5 0 5d4+60 2d5+30 1d6+1 17
 4 5 5 7
-EFN 0 I E
+EFN AB I E
 4 4 1 70
 0 0 M 0
 #1130

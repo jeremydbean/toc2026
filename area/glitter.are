@@ -10,7 +10,7 @@ When you take a closer look you see that the Crown Prince has the shakes.
 Not at all the regal figure you expected to find ....
 ~
 human~
-BCGHTM CDEFHN 1000 M
+ABCGHMT CDEFHN 1000 M
 61 35 200d2+8850 0d0+200 9d6+45 17
 -20 -20 -20 -20
 ILNR ABQ BQ 0
@@ -28,7 +28,7 @@ You are baffled by such a regal person. You can do nothing, but kneel before
 her and bow your head in silence.
 ~
 human~
-BGQM CDEFHN 1000 M
+ABGMQ CDEFHN 1000 M
 61 40 200d2+8950 100d2+950 9d6+50 20
 -22 -22 -22 -21
 LNR ABQ BQ 0
@@ -45,7 +45,7 @@ planets, where women rule over men. She glares at you and is disgusted by
 your pitiful appearance ... After all ... you are only a male.
 ~
 human~
-BCGTM CDFHN 500 M
+ABCGMT CDFHN 500 M
 54 33 100d2+4200 0d0+100 7D6+38 17
 -20 -20 -20 -15
 IJLNR ABQ BQ 0
@@ -61,7 +61,7 @@ The moment you set your eyes on her you understand that you'd better not mess
 with her or her mistress.
 ~
 human~
-BCGTM CDF 500 M
+ABCGMT CDF 500 M
 51 24 100d2+2500 0d0+100 5d8+35 17
 -19 -19 -19 -15
 ILNR ABQ BQ C
@@ -78,7 +78,7 @@ He tells you :'DON'T EVEN THINK ABOUT GETTING PAST ME, YOU'RE NOTHING BUT
 	       IN IRONS !!'.
 ~
 human~
-BGT CFH 500 M
+ABGT CFH 500 M
 48 25 100d2+2550 0d0+100 6d6+25 17
 -19 -19 -19 -14
 ILN ABQ BQ 0
@@ -93,7 +93,7 @@ The Royal Guard guards the entrance to his king's chambers.
 He urges you to reconsider and go away .... he doesn't want to hurt you.
 ~
 human~
-BFGT CFH 600 M
+ABFGT CFH 600 M
 49 27 100d2+2650 0d0+100 4d10+28 17
 -20 -20 -20 -15
 ILN ABQ BW C
@@ -111,7 +111,7 @@ estimate his mental powers ... remember he has pledged his life to the royal
 family ... he's prepared to die ... are you ??
 ~
 human~
-BGRM CDEFHN 750 M
+ABGMR CDEFHN 750 M
 60 35 100d2+3900 30d2+560 7d8+40 19
 -22 -23 -22 -22
 FILNR ABQ BCPQ 0
@@ -128,7 +128,7 @@ years old ... the poor thing was probably getting ready to go to her
 first ball, when suddenly, the rebels began their attack.
 ~
 human~
-BGHT CHNQ 650 M
+ABGHT CHNQ 650 M
 45 17 100d2+2200 0d0+100 8d4+17 22
 -17 -17 -17 -12
 ILN ABQ BQ CP
@@ -144,7 +144,7 @@ You see a pretty looking lass ... she's quite young herself, and as frightened
 as the young girl she takes care of ... can't you have pity on them ??
 ~
 human~
-BGHT CHQ 550 M
+ABGHT CHQ 550 M
 47 19 100d2+2400 0d0+100 6d6+18 22
 -19 -19 -19 -14
 ILNR ABQ BQ CP
@@ -164,7 +164,7 @@ that he can't afford to be captured or killed, since his people will be
 needing him in the Solgart system now more than ever.
 ~
 human~
-BGT CDFHN 750 M
+ABGT CDFHN 750 M
 55 35 100d2+4300 0d0+100 10d4+40 17
 -20 -21 -20 -15
 IN ABQ BQ 0
@@ -182,7 +182,7 @@ turning dark brownish, which means he's becoming cautious. He obviously
 does not trust you.
 ~
 vaporbreather~
-BGT CDFH 200 M
+ABGT CDFH 200 M
 52 40 100d2+4000 0d0+100 6d7+36 17
 -21 -21 -20 -16
 IN ABQ BQ F
@@ -200,7 +200,7 @@ white and starts running in the other direction yelling : 'They are already
 here !!!'.
 ~
 human~
-BGHT C 500 M
+ABGHT C 500 M
 44 18 50d2+2200 0d0+100 8d4+19 17
 -17 -17 -17 -12
 IN ABQ BQ CP
@@ -217,7 +217,7 @@ see you, you wonder if anything can ever surprise him anymore, he doesn't
 even take notice of you ... drat you wonder what his name was again ??
 ~
 ghost~
-BGR BCDEFHNU 750 M
+ABGR BCDEFHNU 750 M
 43 30 100d2+2900 50d2+480 4d8+40 19
 -18 -18 -18 -16
 GIN ABQ BCPQ HJN
@@ -233,7 +233,7 @@ Somehow, long ago, something must have happened that mutated a spider, and
 let it become the monster that is attacking you now ...
 ~
 spider~
-BCFGT CDEFJK -750 M
+ABCFGT CDEFJK -750 M
 41 24 50d2+2200 0d0+150 4d8+32 30
 -18 -18 -18 -13
 IN ABLQ BQ CHJKN
@@ -253,7 +253,7 @@ superiors, be certain of that !! ... and off he is, having spotted yet another
 person who has broken the Protocol.
 ~
 human~
-CGHT CHN 550 M
+ACGHT CHN 550 M
 39 15 15d5+1700 0d0+100 5d6+15 17
 -15 -15 -15 -10
 IN ABQ BQ C
@@ -269,7 +269,7 @@ You are astounded to find out that he's quite calm now ... and that, in his
 hand, he's holding quite a dangerous looking blade ...
 ~
 human~
-BCGT CHN 550 M
+ABCGT CHN 550 M
 38 15 10d5+1600 0d0+100 5d6+16 17
 -15 -15 -15 -10
 IN ABQ BQ C
@@ -288,7 +288,7 @@ old age. The captain checks all the rooms and evacuates all who hasn't left
 yet.
 ~
 human~
-CGT CFN 600 M
+ACGT CFN 600 M
 37 20 10d5+1500 0d0+100 3d10+19 17
 -14 -15 -14 -9
 EIN ABQ BQ 0
@@ -304,7 +304,7 @@ The soldier was and is loyal to his king. He is desperately seeking for a way
 to the higher levels ... aren't you too ??
 ~
 human~
-CGT CN 600 M
+ACGT CN 600 M
 35 20 200d2+900 0d0+100 4d7+18 17
 -13 -13 -13 -8
 IN ABQ BQ 0
@@ -324,7 +324,7 @@ and all unarmed, since nobody was allowed to wear weapons when they were near
 the king ... and his mental powers were useless against Abdiel's mind-dead ...
 ~
 human~
-BCGR CDEFHN 750 M
+ABCGR CDEFHN 750 M
 33 30 10d3+1850 10d3+280 11d3+35 19
 -13 -14 -13 -13
 FIN ABQ BCPQ 0
@@ -341,7 +341,7 @@ and costly perfumed oil, a silver chalice and a dagger, whose hilt is formed
 by an eight-pointed star.
 ~
 human~
-BCGQR CDEFHN 1000 M
+ABCGQR CDEFHN 1000 M
 35 17 10d5+1640 10d4+400 4d6+16 20
 -13 -13 -13 -10
 ILN ABQ BQ 0
@@ -358,7 +358,7 @@ He is wearing a brown robe. On his right arm you can see a lot of nasty scars
 mortal weapon.
 ~
 human~
-BCGQ CDEFHN 750 M
+ABCGQ CDEFHN 750 M
 31 18 12d3+900 10d3+360 2d12+14 20
 -10 -10 -10 -7
 ILN ABQ BQ 0
@@ -376,7 +376,7 @@ self-inflicted as are those on his right arm. He's wielding a silver dagger ...
 as a warrior-priest he IS allowed to handle mortal weapons.
 ~
 human~
-BGT CDEFHN 750 M
+ABGT CDEFHN 750 M
 32 20 10d4+1420 0d0+300 6d4+18 20
 -13 -14 -13 -10
 EILNR ABQ BQ 0
@@ -394,7 +394,7 @@ mental powers allowed him to drain this man's soul and make it into one of
 his mind- deads.
 ~
 mind-dead~
-CGT CDEFNQ -750 M
+ACGT CDEFNQ -750 M
 28 16 12d3+728 5d6+135 2d12+16 18
 -10 -10 -10 -5
 EIJN ABPQ BQ HJNO
@@ -411,7 +411,7 @@ You can see the difference in its eyes ... they are so ... so ... so empty
 mental powers.
 ~
 mind-dead~
-CGT CDEFNQ -750 M
+ACGT CDEFNQ -750 M
 26 15 10d2+645 5d5+130 3d7+15 18
 -9 -9 -9 -4
 EIN ABPQ BQ HJNO
@@ -427,7 +427,7 @@ Khardan is clad in dark green robes. From his belt hang several pouches with
 all kinds of herbs and minerals in it. He stands ready to fight intruders.
 ~
 human~
-BGR CDFHN -800 M
+ABGR CDFHN -800 M
 25 17 10d3+518 10d3+275 3d6+14 30
 -8 -8 -8 -4
 CN ABQ BCPQ 0
@@ -443,7 +443,7 @@ Jack's life is all about butchering. Somehow when he's around knives, he gets
 an irresistible urge to cut meat.
 ~
 human~
-BCGT C -900 M
+ABCGT C -900 M
 24 15 10d3+518 0d0+100 2d10+14 17
 -7 -7 -7 -3
 IJN ABQ BQ N
@@ -459,7 +459,7 @@ He glances at you and raises his eyebrow : 'there's nothing wrong with you !!
 why are you wasting my time ??'.
 ~
 human~
-BGT CHN 600 M
+ABGT CHN 600 M
 23 14 10d3+468 0d0+100 3d6+13 17
 -7 -7 -7 -2
 CN ABQ BQ 0
@@ -475,7 +475,7 @@ You notice how calm she's under the situation. She tells you she's got no time
 for you : 'There are real patients who do need my help !!'.
 ~
 human~
-BGT CHN 600 M
+ABGT CHN 600 M
 21 11 10d2+378 0d0+100 4d4+11 22
 -5 -5 -5 -1
 IN ABQ BQ 0
@@ -491,7 +491,7 @@ Pauline's determined to fend off any rebel, who wants to enter and loot her
 shop.
 ~
 human~
-BCGT CH 400 M
+ABCGT CH 400 M
 20 10 2d9+339 0d0+100 2d8+10 22
 -4 -4 -4 0
 IN ABQ BQ 0
@@ -508,7 +508,7 @@ and been through a lot. If you are one of the rebels ... be warned, he won't
 give that up easily.
 ~
 human~
-BCGT CH 450 M
+ABCGT CH 450 M
 19 7 2d9+313 0d0+100 2d8+10 17
 -4 -4 -4 0
 EFIN ABQ BQ 0
@@ -524,7 +524,7 @@ John Doe's profession is being a baker, not a fighter !! So don't be so
 surprised to find him hiding behind the counter !!!
 ~
 human~
-BCGHT CH 0 M
+ABCGHT CH 0 M
 18 6 2d9+288 0d0+100 2d7+4 17
 -3 -3 -3 0
 IN ABQ BQ CP
@@ -542,7 +542,7 @@ are not one of the rebels and his face brightens at first; then he realizes
 that you're probably up to no good either.
 ~
 human~
-BCGHT CHN 400 M
+ABCGHT CHN 400 M
 17 6 2d9+262 0d0+100 3d4+4 17
 -3 -3 -3 0
 IN ABQ BQ 0
@@ -558,7 +558,7 @@ He shows no flaws ... no wonder cause he's under the command of Citizen's
 General Derek Sagan.
 ~
 human~
-BGT C 100 M
+ABGT C 100 M
 16 5 2d9+236 0d0+100 2d6+5 17
 -2 -2 -2 1
 IN ABQ BQ 0
@@ -574,7 +574,7 @@ Blahh!! it takes all your will-power to look his way, you can't help but
 loathe him.
 ~
 human~
-GHT C -400 M
+AGHT C -400 M
 14 4 2d10+174 0d0+100 1d12+3 17
 -1 -1 -1 1
 IN ABQ BQ N
@@ -589,7 +589,7 @@ The commander of the Home Guard is tied to a chair and unconscious.
 He opens his eyes one last time and murmurs : 'I did not talk ....'
 ~
 human~
-BGT CR 750 M
+ABGT CR 750 M
 14 6 2d10+197 0d0+100 1d13+4 17
 -1 -2 -1 1
 IN ABQ BQ 0
@@ -605,7 +605,7 @@ You can see the greed in his eyes ... you won't be able to reason with him,
 you had better bash some sense into him.
 ~
 human~
-GHT C -650 M
+AGHT C -650 M
 12 2 2d10+150 0d0+100 1d10+3 17
 0 0 0 1
 IN ABQ BQ N
@@ -626,7 +626,7 @@ president and let him form a 'democratic' council. Robes was an easy prey for
 Abdiel's mental powers.
 ~
 human~
-CGHT C -750 M
+ACGHT C -750 M
 10 1 2d7+121 0d0+100 4d2+2 17
 1 1 1 1
 ILN ABQ BQ N
@@ -644,7 +644,7 @@ but he's determined now ... together with a few other loyalists he prepares
 to make his last stand.
 ~
 human~
-BGT CFN 750 M
+ABGT CFN 750 M
 13 4 2d10+170 0d0+100 5d2+4 17
 -1 -1 -1 1
 ILN ABQ BPQ 0
@@ -662,7 +662,7 @@ estimate her mental powers ... don't forget she has pledged her life to the
 royal family ... she's prepared to die ... are you ??
 ~
 human~
-BGMR CDEFHN 750 M
+ABGMR CDEFHN 750 M
 61 35 100d2+3700 30d2+640 7d8+40 19
 -22 -23 -22 -22
 FILNR ABQ BCPQ 0

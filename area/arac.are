@@ -10,10 +10,10 @@ He looks freshly hatched and EXTREMELY hungry.  His young fangs are just
 growing in as of late.
 ~
 arachnid~
-CG D 0 M
+ACG D 0 M
 15 20 3d9+208 5d4+50 2d6+3 10
 -2 -2 -2 -2
-KR B P N
+KR AB P N
 8 8 2 10
 0 0 M 0
 {}
@@ -29,7 +29,7 @@ dragon~
 ABCFG D -800 M
 34 35 10d10+600 24d24+240 5d6+12 13
 -11 -11 -11 -11
-ACEFI BH R I
+ACEFI ABH R I
 8 8 1 2000
 0 0 G 0
 {}
@@ -41,10 +41,10 @@ The Wolf Spider is here, licking its bloody fangs.
 The Wolf Spider howls and attacks!
 ~
 arachnid~
-CG D -300 M
+ACG D -300 M
 16 21 3d9+233 5d4+50 2d8+4 10
 -2 -2 -2 -2
-KR B P N
+KR AB P N
 8 8 2 10
 0 0 M 0
 {}
@@ -57,10 +57,10 @@ Aww. Poor baby killing orc stuck in the web.  Fear is in his eyes
 as he watches for spiders.
 ~
 orc~
-B A -400 M
+AB A -400 M
 15 22 5d10+400 2d10+30 2d8+3 4
 -2 -2 -2 -2
-KR B P N
+KR AB P N
 8 8 1 15
 0 0 M 0
 {}
@@ -74,10 +74,10 @@ She flies around in circles until she sees you.  Then, stinger first, she
 flies at you.
 ~
 insect~
-CG D -750 M
+ACG D -750 M
 22 28 12d12+400 5d4+50 5d6+6 10
 -5 -4 -7 -9
-KR B P N
+KR AB P N
 8 8 2 1500
 0 0 M 0
 {}
@@ -89,10 +89,10 @@ The drone spider walks around doing her master's bidding.
 Just your average, run of the mill giant drone spider.
 ~
 arachnid~
-CG D -300 M
+ACG D -300 M
 16 22 3d9+233 5d4+50 2d8+3 10
 -2 -2 -2 -3
-KR B P N
+KR AB P N
 8 8 2 200
 0 0 M 0
 {}
@@ -105,10 +105,10 @@ The spider is transparent and travels the webs of the ethereal web like
 a normal spider would one of the Prime Material Plane.
 ~
 arachnid~
-CG D 700 M
+ACG D 700 M
 20 27 10d10+333 5d4+50 2d10+5 10
 -4 -3 -3 1
-KR B P N
+KR AB P N
 8 8 2 200
 0 0 M 0
 {}
@@ -121,10 +121,10 @@ This is a poor human that has been enslaved by Arachnos to repair the web
 and feed the children.
 ~
 human~
-CG 0 0 M
+ACG 0 0 M
 18 23 10d10+283 8d8+80 2d9+4 22
 -2 0 -2 1
-CK 0 0 C
+CK AB 0 C
 8 8 1 500
 0 0 M 0
 {}
@@ -137,10 +137,10 @@ Demoniac in nature, but more mischievous.  He twiddles his thumbs
 and tries to steal your gold.
 ~
 demon~
-CH BDP -600 M
+ACH BDP -600 M
 20 23 10d10+333 10d8+3 2d10+5 20
 -4 -5 -8 2
-CEK 0 0 C
+CEK AB 0 C
 8 8 1 1000
 0 0 M 0
 {}
@@ -152,10 +152,10 @@ The Bird Spider snaps its powerful jaws.
 This spider is covered with feathers and has a beak.
 ~
 arachnid~
-FB 0 -600 M
+ABFG 0 -600 M
 24 30 3d30+500 14d14+140 2d12+6 10
 -6 -5 -7 -6
-CEK 0 0 K
+CEK AB 0 K
 8 8 2 1250
 0 0 L 0
 {}
@@ -168,10 +168,10 @@ A glazed look when you first come upon here quickly turns into one of
 terror as he tells you to turn back.
 ~
 human~
-BC D -400 M
+ABC D -400 M
 17 22 3d10+258 3d10+80 3d6+6 4
 -3 -2 1 -1
-S 0 0 0
+S AB 0 0
 8 8 1 3000
 0 0 M 0
 {}
@@ -184,10 +184,10 @@ He looks at you and knows ALL of your secrets.  Even that time you...
 never mind.
 ~
 human~
-BC D 800 M
+ABC D 800 M
 35 35 10d30+1300 25d25+250 4d9+11 8
 -11 -10 -12 -10
-CDEFK 0 0 0
+CDEFK AB 0 0
 8 8 1 600
 0 0 M 0
 {}
@@ -199,10 +199,10 @@ The guardian is obviously not doing his job.
 He looks like a lazy bum who sleeps half the time.
 ~
 human~
-FG P 250 M
+AFG P 250 M
 27 24 7d10+650 17d17+170 5d8+10 8
 -7 -7 -7 0
-CG 0 0 0
+CG AB 0 0
 4 4 1 2000
 0 0 M 0
 {}
@@ -217,10 +217,10 @@ fangs of normal spiders, but then, as you realize, she does not need
 them.
 ~
 arachnid~
-BF BD -1000 M
+ABFG BD -1000 M
 36 33 8d40+1400 26d26+260 3d8+20 8
 -8 -10 -8 -4
-CD 0 0 0
+CD AB 0 0
 8 8 2 2500
 0 0 G 0
 {}
@@ -233,10 +233,10 @@ She is the last bastion of good in this realm.  Her mission is to
 someday free the slaves of the Empress.
 ~
 elf~
-BC D 1000 M
+ABC D 1000 M
 36 33 26d26+1400 10d10+100 3d10+12 4
 -12 -12 -12 -10
-CD 0 0 0
+CD AB 0 0
 8 8 2 150
 0 0 M 0
 {}
@@ -251,7 +251,7 @@ dragon~
 AB D 750 M
 20 22 20d10+150 10d10+120 2d6+23 9
 0 0 0 0
-CDEF 0 0 0
+CDEF AB 0 0
 8 8 1 2000
 0 0 M 0
 {}
@@ -266,7 +266,7 @@ dragon~
 AB D 200 M
 23 22 20d10+400 10d10+120 4d6+5 9
 -1 -1 -1 -1
-CDEF 0 0 0
+CDEF AB 0 0
 8 8 1 2000
 0 0 L 0
 {}
@@ -283,7 +283,7 @@ arachnid~
 ABE 0 -350 M
 18 23 10d8+250 8d8+80 2d5+10 10
 -1 -1 -1 -1
-CDEF 0 0 0
+CDEF AB 0 0
 8 8 0 0
 0 0 M 0
 {}
@@ -301,7 +301,7 @@ arachnid~
 ABE 0 -800 M
 35 25 15d15+1300 8d8+80 5d8+2 10
 -8 -7 -3 -5
-CDEF 0 0 0
+CDEF AB 0 0
 8 8 2 0
 0 0 G 0
 {}
@@ -314,10 +314,10 @@ wished to someplace with ease but didn't want others to have the same
 comfort. So he posted a guard
 ~
 golem~
-FG P 250 M
+AFG P 250 M
 27 24 7d10+650 17d17+170 5d8+10 8
 -7 -7 -7 0
-CG 0 0 0
+CG AB 0 0
 4 4 1 2000
 0 0 G 0
 {}

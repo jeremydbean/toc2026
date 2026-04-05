@@ -215,11 +215,18 @@ def check_mobs(fname, section):
             issues.append((vnum, 'format', f'mob block too short ({len(lines)} lines) – possibly malformed'))
             continue
 
-        # Find the "ACT AFF ALIGN S" line – it contains literal " S" at end
+        # Find the "ACT AFF ALIGN S|M" line – ends with literal " S" or " M"
+        # When ACT or AFF flags include Z (FLAGS2 overflow), there's an extra token
+        # Formats:
+        #   ACT AFF ALIGN S
+        #   ACT AFF_FLAGS2 AFF ALIGN S   (ACT has Z)
+        #   ACT AFF AFF_FLAGS2 ALIGN S   (AFF has Z)
+        #   ACT ACT_FLAGS2 AFF ALIGN S   (ACT has Z)
         act_line = None
         act_idx = None
         for i, l in enumerate(lines):
-            if l.rstrip().endswith(' S') and i >= 4:
+            stripped = l.rstrip()
+            if (stripped.endswith(' S') or stripped.endswith(' M')) and i >= 4:
                 act_line = l.strip()
                 act_idx = i
                 break
@@ -229,17 +236,27 @@ def check_mobs(fname, section):
             continue
 
         parts = act_line.split()
-        if len(parts) < 4:
+        if len(parts) < 3:
             issues.append((vnum, 'format', f'ACT/AFF/ALIGN S line malformed: {act_line!r}'))
             continue
 
-        act_flags = parts[0]
-        aff_flags = parts[1]
+        # Parse flexibly: last token is S/M, second-to-last is alignment (int),
+        # first token is act_flags. If alignment isn't parseable at parts[-2],
+        # this is a malformed line.
+        mob_type = parts[-1]   # S or M
         try:
-            alignment = int(parts[2])
+            alignment = int(parts[-2])
         except ValueError:
             issues.append((vnum, 'format', f'alignment not int in: {act_line!r}'))
             continue
+
+        act_flags = parts[0]
+        # AFF flags: token [1], but if ACT has Z there may be an ACT_FLAGS2 token
+        # The second-to-last token is alignment, the one before that is AFF (or AFF_FLAGS2)
+        # We only need act_flags and aff_flags for our checks
+        # aff_flags is the last alphabetic token before the alignment
+        aff_index = len(parts) - 3  # typically parts[1], but could be parts[2] for Z-overflow
+        aff_flags = parts[1] if aff_index >= 1 else '0'
 
         # ACT checks
         if 'A' not in act_flags:
@@ -321,6 +338,13 @@ def check_objects(fname, section):
             issues.append((vnum, 'format', 'cannot find type/flags line'))
             continue
 
+        # Skip blank lines between material~ and type/flags line
+        while type_line_idx < len(lines) and lines[type_line_idx].strip() == '':
+            type_line_idx += 1
+        if type_line_idx >= len(lines):
+            issues.append((vnum, 'format', 'cannot find type/flags line after material'))
+            continue
+
         type_line = lines[type_line_idx].strip()
         tparts = type_line.split()
         if len(tparts) < 2:
@@ -334,8 +358,13 @@ def check_objects(fname, section):
             continue
 
         item_flags = tparts[1] if len(tparts) > 1 else '0'
-        item_flags2 = tparts[2] if len(tparts) > 2 else '0'
-        wear_flags = tparts[3] if len(tparts) > 3 else '0'
+        # FLAGS2 token (Z in extra_flags) is optional — only present when Z is set
+        if 'Z' in item_flags:
+            item_flags2 = tparts[2] if len(tparts) > 2 else '0'
+            wear_flags = tparts[3] if len(tparts) > 3 else '0'
+        else:
+            item_flags2 = '0'
+            wear_flags = tparts[2] if len(tparts) > 2 else '0'
 
         # Values line
         val_line_idx = type_line_idx + 1

@@ -45,7 +45,7 @@ undead~
 AG D -150 S
 17 1 17d12+200 8d17+100 3d4+4 8
 -3 -3 -3 -1
-CEIRZ A ABI 0 H
+CEIRZ AB ABI 0 H
 8 8 1 0
 0 0 H 0
 #29404
@@ -148,7 +148,7 @@ The Borg have been brought here by Haze to guard this room and assimilate
 all who dare invade it.
 ~
 unique~
-BGMV DFHOPTVZ G 0 M
+ABGMV DFHOPTVZ G 0 M
 70 30 70d55+9500 35d70+400 60d10+500 28
 -50 -50 -50 -30
 CEFIJKL AB 0 0

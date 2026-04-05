@@ -40,7 +40,7 @@ A ghost of Maliki floats thru the walls.
 He looks at you and shouts BOO! then cackles insanely.
 ~
 gnome~
-JBKMRV DF 0 M
+ABJKMRV DF 0 M
 36 0 1d1+1999 1d1+199 3d8+24 13
 -20 -20 -20 -20
 ACDEIK ABCD 0 0
@@ -216,7 +216,7 @@ horror circus. He is equipped with fine floppy shoes and is wearing a large
 rubber nose that is constantly dripping blood.
 ~
 human~
-BMV D 0 M
+ABMV D 0 M
 23 0 1d1+999 1d1+999 1d8+32 19
 -15 -15 -15 -15
 AF ABCD 0 0
@@ -237,7 +237,7 @@ A young, nubile, nice looking fairy. But you can see that she has many items
 to bake this Halloween, so she doesn't have time for extra curricular events.
 ~
 human~
-BMV 0 0 M
+ABMV 0 0 M
 23 0 1d1+999 1d1+99 1d8+20 13
 -15 -15 -15 -15
 CDF ABCD 0 0
@@ -256,7 +256,7 @@ A ghoul stands at the counter, with a slightly dead look on its face.
 A tall ghoul, who moves two 200 pound corpses around on his shoulders.
 ~
 human~
-BMV 0 0 M
+ABMV 0 0 M
 23 0 1d1+999 1d1+99 1d8+20 13
 -15 -15 -15 -15
 EFJ ABCD 0 0
@@ -275,7 +275,7 @@ An undead spirit, serving as a weaponsmith.
 An undead spirit, currently called to serve as weaponsmith.
 ~
 human~
-BTVM 0 0 M
+ABMTV 0 0 M
 23 10 1d1+999 1d1+99 1d8+32 17
 -15 -15 -15 -15
 CEIK ABCD 0 0
@@ -426,10 +426,10 @@ The trick or treater is dressed in a white sheet, in a bad attempt to pass
 as a ghost.  He demands that you give him candy or else!
 ~
 fido~
-FGHU 0 -200 M
+AFGHU 0 -200 M
 0 0 1d6+4 1d1+99 1d4+0 10
 10 10 10 10
-0 0 0 0
+0 AB 0 0
 8 8 3 0
 0 0 S 0
 {
@@ -444,10 +444,10 @@ A zombie is walking around, messing things up.
 ~
 ~
 human~
-GH 0 -600 M
+AGH 0 -600 M
 1 0 2d6+10 1d1+99 1d5+0 7
 10 10 10 10
-NU 0 0 C
+NU AB 0 C
 8 8 3 10
 0 0 M 0
 {
