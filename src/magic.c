@@ -2169,7 +2169,7 @@ void spell_earthquake( int sn, int level, CHAR_DATA *ch, void *vo )
 	    if ( vch != ch && !is_safe_spell(ch,vch,true)) {
 		if (IS_AFFECTED(vch,AFF_FLYING))
 		    damage(ch,vch,0,sn,DAM_BASH);
-// 		else
+		else
 		    damage( ch, vch, level + dice(2, 8), sn, DAM_BASH );
 	    }
 
