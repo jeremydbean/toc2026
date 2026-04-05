@@ -66,6 +66,8 @@ DECLARE_SPEC_FUN(       spec_paramedic          );
 DECLARE_SPEC_FUN(       spec_quest_master       );
 DECLARE_SPEC_FUN(       spec_kidnapper          );
 DECLARE_SPEC_FUN(       spec_monk               );
+DECLARE_SPEC_FUN(       spec_banker             );
+DECLARE_SPEC_FUN(       spec_banker             );
 
 struct quest_type
 {
@@ -214,6 +216,7 @@ const   struct  spec_type       spec_table      [ ] =
     { "spec_quest_master",      spec_quest_master       },
     { "spec_kidnapper",         spec_kidnapper          },
     { "spec_monk",              spec_monk               },
+    { "spec_banker",            spec_banker             },
     /*
      * End of list.
      */
@@ -2873,4 +2876,100 @@ bool spec_cast_necro( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	return false;
     (*skill_table[sn].spell_fun) ( sn, mob->level, mob, victim );
     return true;
+}
+
+
+
+/*
+ * spec_banker: gives the bank mob personality.
+ *
+ * Periodic (cmd==NULL): occasionally greets players or performs idle actions.
+ * On banking commands (deposit/withdraw/balance/convert): refuses service
+ *   outright if the player is an active PKer (pk_state == 1).
+ */
+bool spec_banker( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
+{
+    UNUSED_PARAM(arg);
+
+    /* ------------------------------------------------------------------ */
+    /* Periodic idle tick -- no command being processed                    */
+    /* ------------------------------------------------------------------ */
+    if ( cmd == NULL )
+    {
+        CHAR_DATA *rch;
+        bool has_player = false;
+
+        if ( !IS_AWAKE(mob) || mob->in_room == NULL )
+            return false;
+
+        /* Only act 1-in-8 ticks to avoid being spammy */
+        if ( number_bits(3) != 0 )
+            return false;
+
+        /* Check if any players are in the room */
+        for ( rch = mob->in_room->people; rch != NULL; rch = rch->next_in_room )
+        {
+            if ( !IS_NPC(rch) )
+            {
+                has_player = true;
+                break;
+            }
+        }
+
+        if ( !has_player )
+            return false;
+
+        switch ( number_range(0, 5) )
+        {
+        case 0:
+            act( "$n says 'Welcome!  How may I assist you today?'",
+                 mob, NULL, NULL, TO_ROOM );
+            break;
+        case 1:
+            act( "$n carefully counts a stack of coins and sets them aside.",
+                 mob, NULL, NULL, TO_ROOM );
+            break;
+        case 2:
+            act( "$n says 'Deposit, withdraw, balance -- just say the word.'",
+                 mob, NULL, NULL, TO_ROOM );
+            break;
+        case 3:
+            act( "$n reviews a thick ledger, muttering quietly to $mself.",
+                 mob, NULL, NULL, TO_ROOM );
+            break;
+        case 4:
+            act( "$n polishes the brass counter with a small cloth.",
+                 mob, NULL, NULL, TO_ROOM );
+            break;
+        default:
+            /* Stay silent this tick */
+            break;
+        }
+
+        return false;  /* never block a command on a periodic tick */
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* A player in the same room is issuing a command                      */
+    /* ------------------------------------------------------------------ */
+    if ( ch == NULL || IS_NPC(ch) || ch->in_room != mob->in_room )
+        return false;
+
+    /* Only care about banking commands */
+    if ( cmd != do_deposit && cmd != do_withdraw
+      && cmd != do_balance  && cmd != do_convert )
+        return false;
+
+    /* Refuse service to active PKers */
+    if ( ch->pcdata != NULL && ch->pcdata->pk_state == 1 )
+    {
+        act( "$n eyes you coldly and says 'We do not serve outlaws here.'",
+             mob, NULL, ch, TO_VICT );
+        act( "$n refuses to serve $N.",
+             mob, NULL, ch, TO_NOTVICT );
+        return true;   /* block the command */
+    }
+
+    /* Let the command execute normally */
+    return false;
 }
