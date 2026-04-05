@@ -333,7 +333,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 
     if (ch->level + 2 == skill_table[sn].skill_level[ch->class])
 	mana = 50;
-//     else
+    else
     	mana = UMAX(
 	    skill_table[sn].min_mana,
 	    100 / ( 2 + ch->level - skill_table[sn].skill_level[ch->class] ) );
@@ -479,7 +479,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
     case TAR_EXIT:
        if(arg2[0] == '\0' )
 	 vo = (void *) 10;
-//        else
+       else
        {
 	  if ( !str_cmp( arg2, "north" ) )
 	    vo = (void *) 0;
@@ -501,7 +501,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 	    vo = (void *) 8;
 	  else if ( !str_cmp( arg2, "southwest" ) )
 	    vo = (void *) 9;
-// 	  else
+	  else
 	  {
 	    send_to_char("That's not a valid direction.\n\r",ch);
 	    return;
@@ -535,7 +535,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 	check_improve(ch,sn,false,1);
 	ch->mana -= mana / 2;
     }
-//     else
+    else
     {
 	ch->mana -= mana;
 	(*skill_table[sn].spell_fun) ( sn, ch->level, ch, vo );
@@ -694,7 +694,7 @@ void spell_aid(int sn, int level, CHAR_DATA *ch, void *vo)
     af.level	 = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
     af.duration	 = (sh_int)(7 + level/4);
     af.bitvector = 0;
     af.bitvector2 = 0;
@@ -705,7 +705,7 @@ void spell_aid(int sn, int level, CHAR_DATA *ch, void *vo)
     /* reduce chance of killing newbies & low level PCs */
     if(hitpts >= victim->max_hit)
 	 af.modifier = (sh_int)(5 + dice(1,10));
-//     else
+    else
     af.modifier = (sh_int)(hitpts);
     af.location  = APPLY_HIT;
     affect_to_char(victim,&af);
@@ -739,7 +739,7 @@ void spell_armor( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level	 = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
     af.duration  = 24;
     af.modifier  = -20;
     af.location  = APPLY_AC;
@@ -948,7 +948,7 @@ void spell_calm( int sn, int level, CHAR_DATA *ch, void *vo )
 	    af.location = APPLY_HITROLL;
 	    if (!IS_NPC(vch))
 	      af.modifier = -5;
-// 	    else
+	    else
 	      af.modifier = -2;
 	    af.bitvector = AFF_CALM;
 	    af.bitvector2 = 0;
@@ -1159,7 +1159,7 @@ void spell_cancellation( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (found)
 	send_to_char("Ok.\n\r",ch);
-//     else
+    else
 	send_to_char("Spell failed.\n\r",ch);
     return;
 }
@@ -1404,7 +1404,7 @@ void spell_chill_touch( int sn, int level, CHAR_DATA *ch, void *vo )
 	af.bitvector2 = 0;
 	affect_join( victim, &af );
     }
-//     else
+    else
     {
 	dam /= 2;
     }
@@ -1434,7 +1434,7 @@ void spell_colour_spray( int sn, int level, CHAR_DATA *ch, void *vo )
     dam		= number_range( dam_each[level] / 2,  dam_each[level] * 2 );
     if ( saves_spell( level, victim ) )
 	dam /= 2;
-//     else
+    else
 	spell_blindness(skill_lookup("blindness"),level/2,ch,(void *) victim);
 
     damage( ch, victim, dam, sn, DAM_LIGHT );
@@ -1473,7 +1473,7 @@ void spell_control_weather( int sn, int level, CHAR_DATA *ch, void *vo )
 	weather_info.change -= dice( level / 3, 4 );
 	send_to_char("Clouds start to gather overhead.\n\r",ch);
     }
-//     else
+    else
     {
 	send_to_char ("Do you want it to get better or worse?\n\r", ch );
 	return;
@@ -1577,7 +1577,7 @@ void spell_cure_blindness( int sn, int level, CHAR_DATA *ch, void *vo )
 	send_to_char( "Your vision returns!\n\r", victim );
 	act("$n is no longer blinded.",victim,NULL,NULL,TO_ROOM);
     }
-//     else
+    else
 	send_to_char("Spell failed.\n\r",ch);
 }
 
@@ -1625,7 +1625,7 @@ void spell_cure_disease( int sn, int level, CHAR_DATA *ch, void *vo )
 	send_to_char("Your sores vanish.\n\r",victim);
 	act("$n looks relieved as $s sores vanish.",victim,NULL,NULL,TO_ROOM);
     }
-//     else
+    else
 	send_to_char("Spell failed.\n\r",ch);
   return;
 }
@@ -1670,7 +1670,7 @@ void spell_cure_poison( int sn, int level, CHAR_DATA *ch, void *vo )
         send_to_char("A warm feeling runs through your body.\n\r",victim);
 	act("$n looks much better.",victim,NULL,NULL,TO_ROOM);
     }
-//     else
+    else
         send_to_char("Spell failed.\n\r",ch);
 }
 
@@ -1947,7 +1947,7 @@ void spell_dispel_evil( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (victim->hit > (ch->level * 4))
       dam = dice( level, 4 );
-//     else
+    else
       dam = UMAX(victim->hit, dice(level,4));
     if ( saves_spell( level, victim ) )
 	dam /= 2;
@@ -1978,7 +1978,7 @@ void spell_dispel_good( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (victim->hit > (ch->level * 4))
 	 dam = dice( level, 4 );
-//     else
+    else
 	 dam = UMAX(victim->hit, dice(level,4));
     if ( saves_spell( level, victim ) )
 	dam /= 2;
@@ -2148,7 +2148,7 @@ void spell_dispel_magic( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (found)
         send_to_char("Ok.\n\r",ch);
-//     else
+    else
         send_to_char("Spell failed.\n\r",ch);
 }
 
@@ -2814,7 +2814,7 @@ if(!IS_IMMORTAL(ch) )
     af.level	 = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
     af.duration	 = (sh_int)(level / 3);
     af.modifier  = (sh_int)(level / 6);
     af.bitvector = 0;
@@ -2868,7 +2868,7 @@ void spell_gate( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (ch->pet != NULL && ch->in_room == ch->pet->in_room)
 	gate_pet = true;
-//     else
+    else
 	gate_pet = false;
 
     act("$n steps through a gate and vanishes.",ch,NULL,NULL,TO_ROOM);
@@ -2895,7 +2895,7 @@ void spell_gate( int sn, int level, CHAR_DATA *ch, void *vo )
 
     if (IS_SET(ch->act, PLR_WIZINVIS) )
       wizinfo(buf, ch->invis_level);
-//     else
+    else
       wizinfo(buf, 68);
 }
 
@@ -2976,7 +2976,7 @@ void spell_haste( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
 	  af.duration  = (sh_int)(level/3);
     af.location  = APPLY_DEX;
     af.modifier  = 1 + (level >= 18) + (level >= 25) + (level >= 32);
@@ -3731,7 +3731,7 @@ void spell_pass_door( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
     af.duration  = (sh_int)(number_fuzzy( level / 2 ));
     af.location  = APPLY_NONE;
     af.modifier  = 0;
@@ -3834,7 +3834,7 @@ void spell_power_gloves( int sn, int level, CHAR_DATA *ch, void *vo)
     af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
     af.duration  = 12;
     af.location  = APPLY_DAMROLL;
     if(IS_IMMORTAL(ch) )
@@ -3870,7 +3870,7 @@ void spell_protection( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
     af.duration  = 24;
     af.location  = APPLY_NONE;
     af.modifier  = 0;
@@ -3901,7 +3901,7 @@ void spell_divine_protection( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
     af.duration  = 6;
     af.location  = APPLY_NONE;
     af.modifier  = 0;
@@ -4016,7 +4016,7 @@ void spell_sanctuary( int sn, int level, CHAR_DATA *ch, void *vo )
     af.level     = (sh_int)(level);
     if(IS_IMMORTAL(ch) )
     af.duration  = ch->level;
-//     else
+    else
     af.duration  = (sh_int)(number_fuzzy( level / 4 ));
     af.location  = APPLY_NONE;
     af.modifier  = 0;
