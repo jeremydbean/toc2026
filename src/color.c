@@ -26,14 +26,14 @@ enum color_option_index
 const struct col_disp_table_type col_disp_table[] =
 {
     { "grey",            "\x1b[90m"   },   /* high-intensity black = dark grey */
-    { "blue",            "\x1b[0;34m" },
-    { "green",           "\x1b[0;32m" },
-    { "cyan",            "\x1b[0;36m" },
-    { "red",             "\x1b[0;31m" },
-    { "magenta",         "\x1b[0;35m" },
-    { "brown",           "\x1b[0;33m" },
+    { "blue",            "\x1b[34m"   },
+    { "green",           "\x1b[32m"   },
+    { "cyan",            "\x1b[36m"   },
+    { "red",             "\x1b[31m"   },
+    { "magenta",         "\x1b[35m"   },
+    { "brown",           "\x1b[33m"   },
     { "yellow",          "\x1b[93m"   },   /* high-intensity yellow */
-    { "bright_grey",     "\x1b[0;37m" },   /* normal white = light grey */
+    { "bright_grey",     "\x1b[37m"   },   /* normal white = light grey */
     { "bright_blue",     "\x1b[94m"   },   /* high-intensity blue */
     { "bright_green",    "\x1b[92m"   },   /* high-intensity green */
     { "bright_cyan",     "\x1b[96m"   },   /* high-intensity cyan */
@@ -226,7 +226,11 @@ static int color_hex_value( char ch )
 
 bool color_token_prefix( char ch )
 {
-    return ( ch == '{' || ch == '&' || ch == '$' );
+    /* Only '{' is the canonical color prefix.  '&' and '$' were legacy
+     * alternatives: '&' was never used in code; '$' conflicts with the
+     * act() substitution codes ($n, $e, etc.) and could cause those
+     * tokens to be misidentified as color markers. */
+    return ( ch == '{' );
 }
 
 bool color_parse_slot( const char *str, unsigned char *slot_out )

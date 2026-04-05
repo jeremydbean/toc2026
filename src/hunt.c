@@ -379,14 +379,14 @@ void do_stop_hunting( CHAR_DATA *ch, char *arg)
         if (status<0) /* hunter not in list; not supposed to happen */
         {
             snprintf(buf, sizeof(buf),
-                     "BUG!!!! [Room: %d] %s is active but not in hunting list",
-                     ch->in_room->vnum,
+                     "BUG!!!! [Room: %s] %s is active but not in hunting list",
+                     ch->in_room ? "known" : "NULL",
                      IS_NPC(ch) ? ch->short_descr : ch->name);
             wizinfo(buf,LEVEL_IMMORTAL);
             return;
         }
         snprintf(buf, sizeof(buf), "[Room: %d] %s stops %s %s because %s.",
-                 ch->in_room->vnum,
+                 ch->in_room ? ch->in_room->vnum : -1,
                  IS_NPC(ch)          ? ch->short_descr          : ch->name,
                  action[status],
                  IS_NPC(ch->hunting) ? ch->hunting->short_descr : ch->hunting->name,
@@ -461,21 +461,20 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
             &&   victim != ch
             &&   can_see( ch, victim ) )
             {
-               find_first_step(ch, ch->in_room, victim->in_room, &distance);
-
-               if (distance <= 5)
-                   snprintf(buf2, sizeof(buf2), "%s is in the nearby vicinity.\n\r",
-                            victim->name);
-
-               if (distance >= 6 && distance <= 12)
-                   snprintf(buf2, sizeof(buf2), "%s is a little ways away.\n\r",
-                            victim->name);
-
-               if (distance > 13)
-                   snprintf(buf2, sizeof(buf2), "%s is far away from you.\n\r",
-                            victim->name);
-
-               send_to_char(buf2,ch);
+                   distance = 0;
+               if (find_first_step(ch, ch->in_room, victim->in_room, &distance) >= BFS_ALREADY_THERE)
+               {
+                   if (distance <= 5)
+                       snprintf(buf2, sizeof(buf2), "%s is in the nearby vicinity.\n\r",
+                                victim->name);
+                   else if (distance <= 12)
+                       snprintf(buf2, sizeof(buf2), "%s is a little ways away.\n\r",
+                                victim->name);
+                   else
+                       snprintf(buf2, sizeof(buf2), "%s is far away from you.\n\r",
+                                victim->name);
+                   send_to_char(buf2, ch);
+               }
                count2 +=1;
             }
         }
@@ -594,9 +593,12 @@ void do_track( CHAR_DATA *ch, char *argument )
 	        ||  (!IS_NPC (ch) && number_percent () >            /* PC @ norm */
 		     ch->pcdata->learned[gsn_tracking]))
 	    {
+	        int rnd_attempts = 0;
 	        do
 		{
 		    dir = number_door();
+		    if (++rnd_attempts > 100)
+		        break; /* give up: use whatever direction was found by BFS */
 		} while ( (ch->in_room->exit[dir] == NULL)
 			 || (ch->in_room->exit[dir]->u1.to_room == NULL) );
 	    }
@@ -796,7 +798,9 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
         wizinfo(buf, LEVEL_IMMORTAL);
         return;
     }
-    else if ( IS_SET(ch->in_room->exit[dir]->u1.to_room->room_flags,ROOM_SAFE) && !ANNOY)
+    else if ( ch->in_room->exit[dir] != NULL
+	      && ch->in_room->exit[dir]->u1.to_room != NULL
+	      && IS_SET(ch->in_room->exit[dir]->u1.to_room->room_flags,ROOM_SAFE) && !ANNOY)
     {
 	if (ch->position != POS_RESTING)
 	    do_rest(ch,"");
