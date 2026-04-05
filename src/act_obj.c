@@ -1738,10 +1738,20 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	break;
 
     case ITEM_PILL:
-	obj_cast_spell( obj->value[1], obj->value[0], ch, ch, NULL );
-	obj_cast_spell( obj->value[2], obj->value[0], ch, ch, NULL );
-	obj_cast_spell( obj->value[3], obj->value[0], ch, ch, NULL );
-	break;
+	{
+	    int sn1    = obj->value[1];
+	    int sn2    = obj->value[2];
+	    int sn3    = obj->value[3];
+	    int plevel = obj->value[0];
+	    extract_obj( obj );
+	    obj = NULL;
+	    obj_cast_spell( sn1, plevel, ch, ch, NULL );
+	    if ( ch->in_room == NULL ) return;
+	    obj_cast_spell( sn2, plevel, ch, ch, NULL );
+	    if ( ch->in_room == NULL ) return;
+	    obj_cast_spell( sn3, plevel, ch, ch, NULL );
+	}
+	return;
 
     case ITEM_CAKE:
 	send_to_char("Your stomach is filled with a warm feeling.\n\r",ch);
@@ -2504,11 +2514,21 @@ void do_quaff( CHAR_DATA *ch, char *argument )
     act( "$n quaffs $p.", ch, obj, NULL, TO_ROOM );
     act( "You quaff $p.", ch, obj, NULL ,TO_CHAR );
 
-    obj_cast_spell( obj->value[1], obj->value[0], ch, ch, NULL );
-    obj_cast_spell( obj->value[2], obj->value[0], ch, ch, NULL );
-    obj_cast_spell( obj->value[3], obj->value[0], ch, ch, NULL );
+    /* Save spell values before extracting to avoid double-free if ch dies */
+    {
+	int sn1    = obj->value[1];
+	int sn2    = obj->value[2];
+	int sn3    = obj->value[3];
+	int olevel = obj->value[0];
 
-    extract_obj( obj );
+	extract_obj( obj );
+
+	obj_cast_spell( sn1, olevel, ch, ch, NULL );
+	if ( ch->in_room == NULL ) return;
+	obj_cast_spell( sn2, olevel, ch, ch, NULL );
+	if ( ch->in_room == NULL ) return;
+	obj_cast_spell( sn3, olevel, ch, ch, NULL );
+    }
     return;
 }
 
@@ -2585,13 +2605,31 @@ void do_recite( CHAR_DATA *ch, char *argument )
 
     else
     {
-	obj_cast_spell( scroll->value[1], scroll->value[0], ch, victim, obj );
-	obj_cast_spell( scroll->value[2], scroll->value[0], ch, victim, obj );
-	obj_cast_spell( scroll->value[3], scroll->value[0], ch, victim, obj );
+	/* Save scroll values before extracting; victim may die mid-cast */
+	int sn1    = scroll->value[1];
+	int sn2    = scroll->value[2];
+	int sn3    = scroll->value[3];
+	int slevel = scroll->value[0];
+
+	extract_obj( scroll );
+	scroll = NULL;
+
+	obj_cast_spell( sn1, slevel, ch, victim, obj );
+	if ( ch->in_room == NULL ) return;
+	if ( victim != NULL && victim->in_room == NULL ) victim = NULL;
+
+	obj_cast_spell( sn2, slevel, ch, victim, obj );
+	if ( ch->in_room == NULL ) return;
+	if ( victim != NULL && victim->in_room == NULL ) victim = NULL;
+
+	obj_cast_spell( sn3, slevel, ch, victim, obj );
+	if ( ch->in_room == NULL ) return;
+
 	check_improve(ch,gsn_scrolls,true,2);
     }
 
-    extract_obj( scroll );
+    if ( scroll != NULL )
+	extract_obj( scroll );
     return;
 }
 
@@ -2681,6 +2719,7 @@ void do_brandish( CHAR_DATA *ch, char *argument )
 	    }
 
 	    obj_cast_spell( staff->value[3], staff->value[0], ch, vch, NULL );
+	    if ( ch->in_room == NULL ) return;  /* ch died (e.g. spell reflect) */
 	    check_improve(ch,gsn_staves,true,2);
 	}
     }
@@ -2773,6 +2812,7 @@ void do_zap( CHAR_DATA *ch, char *argument )
 	else
 	{
 	    obj_cast_spell( wand->value[3], wand->value[0], ch, victim, obj );
+	    if ( ch->in_room == NULL ) return;  /* ch died (e.g. spell reflect) */
 	    check_improve(ch,gsn_wands,true,2);
 	}
     }

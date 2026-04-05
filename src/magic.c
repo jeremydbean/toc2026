@@ -631,10 +631,11 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
     target_name = "";
     (*skill_table[sn].spell_fun) ( sn, level, ch, vo );
 
-
-
+    /* Guard: if ch or victim died during the spell, skip retaliation logic */
     if ( skill_table[sn].target == TAR_CHAR_OFFENSIVE
     &&   victim != ch
+    &&   victim->in_room != NULL  /* victim survived */
+    &&   ch->in_room != NULL      /* ch survived */
     &&   victim->master != ch )
     {
 	CHAR_DATA *vch;
