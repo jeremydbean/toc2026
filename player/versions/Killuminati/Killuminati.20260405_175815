@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1775427513
+LogO 1775426295
 Vers 3
 Desc You see something very special about him.
 ~
@@ -17,18 +17,18 @@ PsiSpec ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 5914222
+Plyd 5913245
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
-Scro 0
+Scro 22
 Room 9621
-HMV  30010 30010 15050 15050 14975 14975
-NewGold 72
-NewPlat 2508594
-NewCopp 22
-NewSilv 53
-BankCP 7500000000000
+HMV  30000 30000 15000 15000 15000 15000
+NewGold 856160
+NewPlat 10000033
+NewCopp 522
+NewSilv 1248
+BankCP 0
 Dcount 0
 SavedOnce 1
 Corpses	0
@@ -51,7 +51,7 @@ Invi 70
 Mounted 0
 On_Quest 0
 Quest_Pause 0
-Pk_State 0
+Pk_State 1
 Jw_Timer 0
 ColFlag 1
 Color 0 0
@@ -795,10 +795,10 @@ Lev  52
 Cost 1900
 Cond 100
 Repd 0
-Affect -1 52 -1 13 12 0 0
-Affect -1 52 -1 -1 14 0 0
-Affect -1 52 -1 1 24 0 0
 Affect -1 52 -1 -4 19 0 0
+Affect -1 52 -1 1 24 0 0
+Affect -1 52 -1 -1 14 0 0
+Affect -1 52 -1 13 12 0 0
 End
 
 #O
