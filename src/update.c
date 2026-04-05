@@ -3322,14 +3322,18 @@ void room_aff_update( void )
       {
 	if(raf->type == EXTRA_DIMENSIONAL)
 	{
-	  if(raf->room->people == NULL && raf->room->contents == NULL)
+          /* Save room pointer before calling remove_room_affect(), which
+             frees the raf struct (pRoom->affected = raf is freed inside).
+             Accessing raf->room after that call is a use-after-free. */
+          ROOM_INDEX_DATA *expiring_room = raf->room;
+	  if(expiring_room->people == NULL && expiring_room->contents == NULL)
 	  {
-	     remove_room_affect(raf->room,raf);
-	     extract_room(raf->room);
+	     remove_room_affect(expiring_room,raf);
+	     extract_room(expiring_room);
 	  }
 	  else
 	  {
-	    for ( gch = raf->room->people; gch != NULL; gch = gch_next )
+	    for ( gch = expiring_room->people; gch != NULL; gch = gch_next )
 	    {
 	      gch_next = gch->next_in_room;
 
@@ -3341,14 +3345,14 @@ void room_aff_update( void )
 		char_to_room(gch,gch->was_in_room);
 	    }
 
-	    for( obj = raf->room->contents; obj != NULL; obj = obj_next)
+	    for( obj = expiring_room->contents; obj != NULL; obj = obj_next)
 	    {
 		obj_next = obj->next_content;
 		extract_obj(obj);
 	    }
 
-	    remove_room_affect(raf->room,raf);
-	    extract_room(raf->room);
+	    remove_room_affect(expiring_room,raf);
+	    extract_room(expiring_room);
 	  }
 	}
 	else
