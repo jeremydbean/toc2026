@@ -504,7 +504,7 @@ D2
 There is a circular room back there.
 ~
 ~ 
-1 -1 24300
+1 24301 24300
 S
 #24302
 The Furnished Chamber~
@@ -2325,7 +2325,7 @@ E 1 24310 -1 11
 * E 1 24316 2 3  (removed)
 
                        
-D 0 24301 2 1         /*doors*/
+D 0 24301 2 2         /*doors*/
 D 0 24300 0 1
 
 D 0 24339 3 2

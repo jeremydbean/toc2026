@@ -41,7 +41,7 @@ The poor boy has numerous cuts and scratches, but appears to be all right.
 He is apparently the only survivor of the ambush.
 ~
 human~
-BH 0 500 S
+BH 0 -500 S
 4 0 1d12+47 1d1+99 1d6+0 13
 8 8 8 10
 I 0 0 C
@@ -57,7 +57,7 @@ nights are spent watching out for goblins.  His inn is no longer the happy
 place that it used to be in days past.
 ~
 human~
-BT 0 500 S
+BT 0 -500 S
 10 1 1d12+200 1d1+149 2d8+1 17
 2 2 2 8
 BFKQ AB CD 0
@@ -72,7 +72,7 @@ You can smell the alcohol on his breath from across the room.  This poor bard
 has been sitting here quite a while, drinking himself into oblivion.
 ~
 human~
-BST D 600 S
+BST D -600 S
 8 3 1d12+110 1d1+99 2d6+0 17
 3 5 3 6
 FIJKNQ 0 0 0

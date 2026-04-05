@@ -7230,6 +7230,7 @@ M 0 9540 1 9795   ; Raistlin
 D 0 9798 3 0   ; Under the dock
 M 0 9591 1 9799   ; the Ixitxachitl
 D 0 9799 1 0   ; Lair of the Ixitxachitl
+M 0 9512 1 9621   ; the banker
 S
 
 #SHOPS
@@ -7264,6 +7265,7 @@ M 9575 spec_breath_fire
 M 9582 spec_guard
 M 9561 spec_guard
 M 9562 spec_guard
+M 9512 spec_banker
 S
 
 #$

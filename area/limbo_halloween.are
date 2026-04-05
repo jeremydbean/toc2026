@@ -712,7 +712,7 @@ The Great Pumpkin comes only on Halloween, flying through the skies delivering
 toys to all the good little boys and girls of the world.
 ~
 unique~
-BQ CDFHJT 1000 S
+BQ CDFHJT -1000 S
 65 10 1d1+9000 1d1+1000 10d20+100 20
 -5 -5 -5 -5
 AEFGHIK ABCDEFG 0 0
@@ -914,7 +914,7 @@ turns to you as you walk in and narrows his eyes.  Then shrugs you
 off as not worth the trouble and goes back about his business.
 ~
 human~
-BGT CDFH 650 S
+BGT CDFH -650 S
 45 30 5d10+1680 1d1+599 6d6+25 7
 -15 -15 -15 -5
 CDEFIKOT AB MNRS 0
@@ -1001,7 +1001,7 @@ A warlock practices evil spells here..
 An ugly old warlock cackles at you.
 ~
 human~
-G 0 500 M
+G 0 -500 M
 10 20 6d6+62 1d1+99 1d5+5 17
 5 5 5 5
 0 0 0 0
@@ -1240,7 +1240,7 @@ One of his arms is the size of your leg.  Starting a brawl in this tavern
 would be a mistake.
 ~
 human~
-BGT 0 500 S
+BGT 0 -500 S
 40 40 8d8+20000 1d1+1999 8d8+40 8
 -25 -25 -25 -25
 0 ABCD 0 0
@@ -1258,7 +1258,7 @@ him or you'll wind up getting your body parts scraped up from the sidewalk
 with a gravedigger's trowel.
 ~
 human~
-BGT H 750 S
+BGT H -750 S
 40 30 4d4+950 1d1+299 8d6+25 8
 -20 -20 -20 -20
 AO AB D 0

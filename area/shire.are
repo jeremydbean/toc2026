@@ -490,11 +490,11 @@ EFN 0 0 E
 6 6 1 70
 0 0 M 0
 #1132
-shiriff~
-a shiriff~
-A shiriff of the Shire looks for the lost halfling youth.
+sheriff~
+a sheriff~
+A sheriff of the Shire looks for the lost halfling youth.
 ~
-The shiriff is over waist high, quite tall for a halfling.
+The sheriff is over waist high, quite tall for a halfling.
 He looks at you, smiles and asks you if you have seen a halfling youth
 somewhere outside the shire.
 ~
@@ -867,15 +867,15 @@ To the south runs Bywater Road.
 ~
 0 -1 1112
 D1
-A large, imposing building lies to the east.  A sign reads 'Shiriff Post'.
+A large, imposing building lies to the east.  A sign reads 'Sheriff Post'.
 ~
 ~
 0 -1 1110
 S
 #1110
-Shiriff Post of the Eastern Shire~
-   You are in the Shiriff Post which acts as the nucleus for the three shiriffs
-of the Eastern Shire.  As you examine the shiriffs on duty, you come to realize
+Sheriff Post of the Eastern Shire~
+   You are in the Sheriff Post which acts as the nucleus for the three sheriffs
+of the Eastern Shire.  As you examine the sheriffs on duty, you come to realize
 that the halflings of the Shire are not to be reckoned with.  You cower with
 awe.  A door offers passage to the east.
 ~
@@ -896,11 +896,11 @@ Thain's Office~
    You stand inside the office of the Thain, the police protectorate of the
 great Shire.  The Thain has sworn to protect the Shire from all thieves and
 murderers with his life, and so eyes you suspiciously.  A door to the west
-leads to the Shiriff Post.
+leads to the Sheriff Post.
 ~
 11 8 0
 D3
-A door offers passage to the Shiriff Post.
+A door offers passage to the Sheriff Post.
 ~
 door~
 1 0 1110
@@ -909,7 +909,7 @@ S
 Bywater Road~
    You stand on Bywater Road, the busiest street in all of Shiredom.  The road
 continues to the north and south.  To the east you spy the training grounds for
-shiriffs in training.
+sheriffs in training.
 ~
 11 0 1
 D0
@@ -923,7 +923,7 @@ To the south runs Bywater Road.
 ~
 0 -1 1113
 D1
-The Shiriff Training Grounds lies to the east.
+The Sheriff Training Grounds lies to the east.
 ~
 ~
 0 -1 1117
@@ -1001,7 +1001,7 @@ The only exit lies to the north.
 0 -1 1113
 S
 #1117
-Shiriff Training Grounds~
+Sheriff Training Grounds~
    The sounds of mock battle and feigned death cries fill your ears.  Every
 which way you turn you see halfling trainees at the prime of their youth.  A
 wizened old battle instructor meets your gaze and asks if he may be of
@@ -1027,7 +1027,7 @@ To the east you see the entrance to the Shire.
 ~
 0 -1 1103
 D2
-A large, imposing building lies to the south.  A sign reads 'Shiriff Post'.
+A large, imposing building lies to the south.  A sign reads 'Sheriff Post'.
 ~
 ~
 0 -1 1119
@@ -1038,9 +1038,9 @@ To the west runs Bywater Road.
 0 -1 1120
 S
 #1119
-Shiriff Post of the Bridge~
-   You are in the Shiriff Post which acts as the nucleus for the three shiriffs
-of the Bridge.  As you examine the shiriffs on duty, you come to realize that
+Sheriff Post of the Bridge~
+   You are in the Sheriff Post which acts as the nucleus for the three sheriffs
+of the Bridge.  As you examine the sheriffs on duty, you come to realize that
 the halflings of the Shire are not to be reckoned with.  You cower with awe.
 The only exit is to the north.
 ~
@@ -1323,7 +1323,7 @@ You see Delving Lane.
 ~
 0 -1 1134
 D1
-A large, imposing building lies to the east.  A sign reads 'Shiriff Post'.
+A large, imposing building lies to the east.  A sign reads 'Sheriff Post'.
 ~
 ~
 0 -1 1145
@@ -1545,9 +1545,9 @@ You see the reception.
 0 -1 1157
 S
 #1145
-Shiriff Post of Delving Lane~
-   You are in the Shiriff Post which acts as the nucleus for the three shiriffs
-of Delving Lane.  As you examine the shiriffs on duty, you come to realize
+Sheriff Post of Delving Lane~
+   You are in the Sheriff Post which acts as the nucleus for the three sheriffs
+of Delving Lane.  As you examine the sheriffs on duty, you come to realize
 that the halflings of the Shire are not to be reckoned with.  You cower with
 awe.  The only exit is to the west.
 ~
@@ -1705,9 +1705,9 @@ You see a halfling hole.
 0 -1 1155
 S
 #1153
-Shiriff Post of the Lower Shire~
-   You are in the shiriff Post which acts as the nucleus for the three shiriffs
-of the Lower Shire.  As you examine the shiriffs on duty, you come to realize
+Sheriff Post of the Lower Shire~
+   You are in the sheriff Post which acts as the nucleus for the three sheriffs
+of the Lower Shire.  As you examine the sheriffs on duty, you come to realize
 that the halflings of the Shire are not to be reckoned with.  You cower with
 awe.  The only exit is to the east.
 ~
@@ -1790,12 +1790,12 @@ M 0 1103 6 1108
 M 0 1103 6 1108
 M 0 1103 6 1108
 M 0 1103 6 1108
-M 0 1110 8 1110         Non-mobile shiriffs
+M 0 1110 8 1110         Non-mobile sheriffs
 E 1 1109 9 16           Tiny dagger
 E 1 616 100 5           Leather armour
 M 0 1110 8 1110
 E 1 616 100 5
-M 0 1111 4 1110         Mobile shiriff
+M 0 1111 4 1110         Mobile sheriff
 E 1 616 100 5
 M 0 1112 1 1111         Thain
 E 1 1113 100 16         Long sword
@@ -1825,12 +1825,12 @@ M 0 1126 3 1117
 E 1 1113 100 16
 M 0 1126 3 1117
 E 1 1113 100 16
-M 0 1110 8 1119         Non-mobile shiriffs
+M 0 1110 8 1119         Non-mobile sheriffs
 E 1 1109 3 16           Tiny dagger
 E 1 616 100 5
 M 0 1110 8 1119
 E 1 616 100 5
-M 0 1111 4 1119         Mobile shiriff
+M 0 1111 4 1119         Mobile sheriff
 E 1 616 100 5
 M 0 1119 1 1121         Grocer
 G 1 1103 999            bread
@@ -1903,19 +1903,19 @@ M 0 1127 7 1144         Chic urbanites
 M 0 1127 7 1144
 M 0 1127 7 1144
 M 0 1127 7 1144
-M 0 1110 8 1145         Non-mobile shiriffs
+M 0 1110 8 1145         Non-mobile sheriffs
 E 1 1109 3 16           Tiny daggers
 E 1 616 100 5           Leather armour
 M 0 1110 8 1145
 E 1 616 100 5
-M 0 1111 4 1145         Mobile shiriff
+M 0 1111 4 1145         Mobile sheriff
 E 1 616 100 5
-M 0 1110 8 1153         Non-mobile shiriffs
+M 0 1110 8 1153         Non-mobile sheriffs
 E 1 1109 3 16           Tiny daggers
 E 1 616 100 5           Leather armour
 M 0 1110 8 1153
 E 1 616 100 5
-M 0 1111 4 1153         Mobile shiriff
+M 0 1111 4 1153         Mobile sheriff
 E 1 616 100 5
 M 0 1128 4 1154         Country bumpkin
 E 1 1115 20 17            equip a birch staff
@@ -1936,14 +1936,14 @@ S
 
 #SPECIALS
 M  1100 spec_cast_mage          Wizard
-M  1110 spec_guard              shiriff
-M  1111 spec_guard              shiriff
+M  1110 spec_guard              sheriff
+M  1111 spec_guard              sheriff
 M  1112 spec_guard              Thain
 M  1116 spec_cast_mage          elf
 M  1117 spec_cast_cleric        dwarf
 M  1121 spec_guard              battlemaster
 M  1122 spec_thief              youth
-M  1132 spec_guard              shiriff
+M  1132 spec_guard              sheriff
 S
 
 

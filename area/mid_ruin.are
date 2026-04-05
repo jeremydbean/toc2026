@@ -1577,7 +1577,7 @@ bushes blueberry blueberry~
 the blueberry bushes~
 Rare blueberry bushes are growing here.~
 organic~
-15 G 0
+15 0 0
 30 0 0 0 0                                  
 1 30 50 P
 #5776
@@ -1595,7 +1595,7 @@ bushes blackberry~
 the blackberry bushes~
 blackberry bushes are growing here.~
 organic~
-15 G 0
+15 0 0
 30 0 0 0 0                                  
 1 20 50 P
 #5778
@@ -1613,7 +1613,7 @@ bushes berry berries~
 the berry bushes~
 delicious red berried bushes are growing here.~
 organic~
-15 G 0
+15 0 0
 30 0 0 0 0                                  
 1 25 50 P
 #5780
@@ -1631,7 +1631,7 @@ elder-bush elderbush bush~
 an elder-bush~
 An elder-bush grows here, its branches heavy with clusters of dark berries.~
 organic~
-15 G 0
+15 0 0
 5 0 0 0 0                                  
 1 25 100 P
 #5782
@@ -1649,7 +1649,7 @@ raspberry bush~
 a raspberry-bush~
 A thorny raspberry bush is growing here.~
 organic~
-15 G 0
+15 0 0
 5 0 0 0 0                                  
 1 25 75 P
 #5784
@@ -1671,7 +1671,7 @@ rose bushes bush~
 a rose bush~
 a beautiful rose bush is growing here.~
 organic~
-15 G 0
+15 0 0
 10 0 0 0 0                                  
 1 25 75 P
 #5786

@@ -2114,8 +2114,8 @@ monsters, but DON'T attack other players.
 
 If you want to go directly back to the temple at any time, type 'RECALL'.
 
-Don't forget to type save to protect your character.  You won't be saved after
-quitting until you reach level 2, so also type save before you type quit.
+Don't forget to type save to protect your character.  Always type save before
+you type quit to make sure your progress is protected.
 
 If you need more help during the game, type 'HELP'.  If you see something
 wrong or have comments, use 'BUG', 'IDEA', or 'TYPO' to report them.
