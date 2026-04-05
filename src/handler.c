@@ -1930,14 +1930,11 @@ void extract_obj_player( OBJ_DATA *obj )
         if (get_maxload_index(vnum) != NULL)
            add_maxload_index(vnum, +1, 0);
     }
-/* This line added by Eclipse to check for NULL data to function call */
-    else if( obj == NULL)
-        return;
 
     for ( obj_content = obj->contains; obj_content; obj_content = obj_next )
     {
         obj_next = obj_content->next_content;
-        extract_obj_player( obj->contains );
+        extract_obj_player( obj_content );
     }
 
     unregister_object( obj );
@@ -2021,14 +2018,11 @@ void extract_obj( OBJ_DATA *obj )
 	obj_from_char( obj );
     else if ( obj->in_obj != NULL )
 	obj_from_obj( obj );
-/* This line added by Eclipse to check for NULL data to function call */
-    else if( obj == NULL)
-	return;
 
     for ( obj_content = obj->contains; obj_content; obj_content = obj_next )
     {
-	obj_next = obj_content->next_content;
-	extract_obj( obj->contains );
+        obj_next = obj_content->next_content;
+        extract_obj( obj_content );
     }
 
     unregister_object( obj );
