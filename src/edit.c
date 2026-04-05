@@ -151,6 +151,7 @@ void edit_name( CHAR_DATA *ch, char *argument )
 
     free_string(ch->in_room->name);
     ch->in_room->name = str_dup(argument);
+    send_to_char( "Room name set.\n\r", ch);
 }
 
 /* Edit room names -- Modib */
@@ -172,6 +173,7 @@ void edit_desc( CHAR_DATA *ch, char *argument )
     free_string(ch->in_room->description);
     ch->in_room->description = str_dup(ch->pnote->text);
     do_note(ch,"clear");
+    send_to_char( "Room description set.\n\r", ch);
 }
 
 /* Edit the exits around -- Modib */
@@ -222,7 +224,7 @@ void edit_exit( CHAR_DATA *ch, char *argument )
         }
     } else
     {
-        send_to_char("Deleteing exit.\n\r", ch);
+        send_to_char("Deleting exit.\n\r", ch);
         location = get_room_index( -1 );
     }
 
@@ -243,6 +245,10 @@ void edit_exit( CHAR_DATA *ch, char *argument )
         exit_info = EX_ISDOOR;
         if (type == 2)
             exit_info |= EX_PICKPROOF;
+        if (type == 3)
+            exit_info |= EX_WIZLOCKED;
+        if (type == 4)
+            exit_info |= EX_SECRET;
         if ( type == 5)
             exit_info |= EX_CLOSED + EX_LOCKED + EX_TRAPPED;
     }

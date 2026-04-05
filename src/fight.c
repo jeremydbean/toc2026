@@ -155,11 +155,11 @@ bool check_aggrostab( CHAR_DATA *ch, CHAR_DATA *victim)
 /* added by Eclipse */
 void aggrostab( CHAR_DATA *ch, CHAR_DATA *victim )
 {
-  if ( victim->hit < victim->max_hit )
-	{
-	 multi_hit( ch, victim, TYPE_UNDEFINED);
-	 return;
-	}
+  if ( victim->fighting != NULL )
+        {
+         multi_hit( ch, victim, TYPE_UNDEFINED);
+         return;
+        }
 
   if(ch->class == 2 || ch->pcdata->guild == GUILD_THIEF)
 	{

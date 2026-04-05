@@ -356,8 +356,7 @@ void update_wizlist(CHAR_DATA *ch, int level)
                 prev->next = curr->next;
 
             free_wiz(curr);
-	    save_wizlist();
-        }
+	    save_wizlist();            break;        }
     }
     if (level < LEVEL_IMMORTAL)
 	return;
@@ -410,6 +409,7 @@ void change_wizlist(CHAR_DATA *ch, bool add, int level, char *argument)
  
 		free_wiz(curr);
 		save_wizlist();
+		return;
 	    }
 	}
     } else
@@ -446,8 +446,8 @@ void free_wiz(WIZ_DATA *wiz)
 {
     if (wiz == NULL)
       return;
-    if (wiz->valid) {
-      log_string("Trying to free a valid wiz.\n\r");
+    if (!wiz->valid) {
+      log_string("Trying to free an already-freed wiz.\n\r");
       return;
     }
 

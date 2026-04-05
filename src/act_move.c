@@ -2753,7 +2753,7 @@ do_shove( CHAR_DATA *ch, char *argument )
     else if ( !str_cmp( arg1, "sw" ) || !str_cmp( arg1, "southwest"  ) ) door = 9;
     else
     {
-	 send_to_char("That isn't a valid Direction!",ch);
+	 send_to_char("That isn't a valid Direction!\n\r",ch);
 	 return;
     }
 
@@ -2764,7 +2764,7 @@ do_shove( CHAR_DATA *ch, char *argument )
     ||   ( IS_SET(pexit->exit_info, EX_SECRET)
 		 && !IS_AFFECTED(ch, AFF_PASS_DOOR) ) )
     {
-	 send_to_char("There is no eggress in that direction.",ch);
+	 send_to_char("There is no egress in that direction.\n\r",ch);
 	 return;
     }
 /* reiteration of similar code, but was easiest way to do it. */
@@ -2793,7 +2793,7 @@ do_shove( CHAR_DATA *ch, char *argument )
 	   found = false;
 
 
-	   for ( obj = ch->carrying; obj!=NULL && !found; obj = obj->next_content )
+	   for ( obj = victim->carrying; obj!=NULL && !found; obj = obj->next_content )
 	   {
 		  if ( obj->item_type == ITEM_BOAT )
 		  {

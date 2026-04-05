@@ -1537,16 +1537,14 @@ void do_affect( CHAR_DATA *ch, char *argument)
     }
 
     count = 0;
-    if( ch->affected != NULL )
-    {
 
         for( paf = ch->affected; paf != NULL; paf = paf->next )
         {
                count++;
                if (count > 25)
                {
-                 send_to_char("Something is screwed up with your affects, please leave a note to immortal.\n\r",ch);
-                 snprintf(buf, sizeof(buf),"%s affects are fucked up!", ch->name);
+                 send_to_char("Something is screwed up with your affects, please leave a note to an immortal.\n\r",ch);
+                 snprintf(buf, sizeof(buf),"%s has more than 25 active affects.", ch->name);
                  log_string(buf);
                  return;
                }
@@ -1571,8 +1569,6 @@ void do_affect( CHAR_DATA *ch, char *argument)
 
 	}
 	return;
-    }
-
 }
 
 
