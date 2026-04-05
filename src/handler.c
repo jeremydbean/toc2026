@@ -75,6 +75,9 @@ int race_lookup (const char *name)
 {
    int race;
 
+   if ( name == NULL )
+       return 0;
+
    for ( race = 0; race_table[race].name != NULL; race++)
    {
 	if (LOWER(name[0]) == LOWER(race_table[race].name[0])
@@ -89,6 +92,9 @@ int race_lookup (const char *name)
 int class_lookup (const char *name)
 {
    int class;
+
+   if ( name == NULL )
+       return -1;
 
    for ( class = 0; class < MAX_CLASS; class++)
    {
