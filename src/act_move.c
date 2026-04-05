@@ -1342,6 +1342,8 @@ void do_open( CHAR_DATA *ch, char *argument )
 		    act("Didn't anyone ever teach you to KNOCK $N!",rch,NULL,ch,TO_NOTVICT);
 		    act("Didn't anyone ever teach you to KNOCK $N!",rch,NULL,ch,TO_VICT);
 		    one_hit(rch,ch,TYPE_UNDEFINED);
+		    if ( ch->in_room == NULL )
+		        break;  /* ch was killed; ch->in_room is invalid */
 		  }
 		  else
 		  {
