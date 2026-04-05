@@ -406,8 +406,8 @@ def check_objects(fname, section):
 
         # --- WEAPON checks ---
         if item_type == 5:
-            # Must have wield wear flag N
-            if 'N' not in wear_flags:
+            # Must have wield wear flag N (AO = hold-only weapons like rods/staves are OK)
+            if 'N' not in wear_flags and 'O' not in wear_flags and wear_flags != '0':
                 issues.append((vnum, 'object-flags', f'WEAPON (type 5) missing WIELD wear flag (N) in wear_flags: {wear_flags!r}'))
             # Must have TAKE flag A
             if 'A' not in wear_flags:
