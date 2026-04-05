@@ -556,7 +556,8 @@ void interpret( CHAR_DATA *ch, char *argument )
         {
             char * ptr;
             ptr = ch->pcdata->alias[counter].first;
-	    if (  ptr != NULL )
+	    if (  ptr != NULL
+            &&    ch->pcdata->alias[counter].second != NULL )
 		if ( !str_cmp(command, ptr) )
 		{
                     snprintf(buf, sizeof(buf), "%s %s", ch->pcdata->alias[counter].second,

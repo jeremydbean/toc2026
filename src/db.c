@@ -3716,7 +3716,7 @@ char *str_dup( const char *str )
     size_t len;
     int alloc_len;
 
-    if ( str[0] == '\0' )
+    if ( str == NULL || str[0] == '\0' )
         return &str_empty[0];
 
     len = strlen(str) + 1;
