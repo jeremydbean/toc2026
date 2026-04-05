@@ -4385,6 +4385,7 @@ void spell_stinking_cloud( int sn, int level, CHAR_DATA *ch, void *vo )
     UNUSED_PARAM(vo);
     ROOM_AFF_DATA *raf;
     CHAR_DATA *gch;
+    CHAR_DATA *gch_next;
 
     if(ch->in_room->affected != NULL)
     {
@@ -4413,8 +4414,9 @@ void spell_stinking_cloud( int sn, int level, CHAR_DATA *ch, void *vo )
     act("$n shouts out, 'Lords of the Earth! I beseach your aid! Guard my retreat!'",ch,NULL,NULL,TO_ROOM);
     act("$n call is heard, and noxious fumes rise out of the ground!",ch,NULL,NULL,TO_ROOM);
 
-    for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
+    for ( gch = ch->in_room->people; gch != NULL; gch = gch_next )
     {
+       gch_next = gch->next_in_room;
        if(gch == ch)
          continue;
        room_affect(gch, ch->in_room, 10);

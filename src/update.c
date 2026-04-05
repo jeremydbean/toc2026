@@ -1261,7 +1261,14 @@ void char_update( void )
 	}
 
 	if(!IS_NPC(ch) && ch->in_room != NULL && IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
+	{
 	   room_affect(ch,ch->in_room, 10);
+	   /* room_affect() may kill ch via a trap (STINKING_CLOUD/VOLCANIC/SHOCKER).
+	    * char_from_room() sets ch->in_room = NULL on extraction; if NULL now,
+	    * ch is freed — do not touch it further this iteration. */
+	   if ( ch->in_room == NULL )
+	       continue;
+	}
 
 
 	if( IS_AFFECTED2( ch, AFF2_MADNESS ) )

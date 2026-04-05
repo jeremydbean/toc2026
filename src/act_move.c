@@ -799,7 +799,12 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     }
 
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
+    {
       room_affect(ch,ch->in_room, door);
+      /* room_affect may kill ch via a trap; char_from_room sets in_room=NULL */
+      if ( ch->in_room == NULL )
+          return;
+    }
 
     char_from_room( ch );
     char_to_room( ch, to_room );
@@ -841,7 +846,11 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     do_look( ch, "auto" );
 
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
+    {
       room_affect(ch,ch->in_room, rev_dir[door]);
+      if ( ch->in_room == NULL )  /* ch killed by arrival room trap */
+          return;
+    }
 
     /* Check for mob actions (Haiku) */
     for ( fch = to_room->people; fch != NULL; fch = fch_next )
@@ -3804,7 +3813,11 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
       act( "$n rides off $Tward.", temp_ch, NULL, dir_name[door], TO_ROOM );
 
     if(IS_SET(temp_ch->in_room->room_flags, ROOM_AFFECTED_BY) )
+    {
       room_affect(temp_ch,temp_ch->in_room, door);
+      if ( temp_ch->in_room == NULL )  /* temp_ch killed by departure trap */
+          return;
+    }
 
     char_from_room( ch );
     char_to_room( ch, to_room );
@@ -3814,7 +3827,11 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
     ch = temp_ch;
 
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
+    {
       room_affect(ch,ch->in_room, rev_dir[door]);
+      if ( ch->in_room == NULL )  /* ch killed by arrival trap */
+          return;
+    }
 
     if( !IS_SET(ch->act, PLR_WIZINVIS) )
     {
@@ -3826,7 +3843,11 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
     do_look( ch, "auto" );
 
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
+    {
       room_affect(ch,ch->in_room, door);
+      if ( ch->in_room == NULL )  /* ch killed by room trap after look */
+          return;
+    }
 
     if (in_room == to_room) /* no circular follows */
 	return;
