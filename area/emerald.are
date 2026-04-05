@@ -1981,6 +1981,7 @@ A
 #20521
 altar~
 Altar of Sacrifice~
+An altar of sacrifice stands here, its surface stained with ancient offerings.
 ~
 copper~
 15 0 0
@@ -2076,6 +2077,7 @@ An ancient sandstone altar sits here, weathering all time.
 #20528
 bole~
 a bole~
+The massive trunk of an ancient tree stands here.
 ~
 wood~
 15 0 0
@@ -2535,6 +2537,7 @@ A fanciful "G" is nicely embroided in the apron's centre.
 #20556
 cushion cushions~
 a snowy-white cushion~
+A snowy-white cushion rests here upon the floor.
 ~
 cloth~
 15 0 0
@@ -2874,6 +2877,7 @@ A
 #20576
 pool~
 Scrying Pool~
+A shimmering pool serves as a window into distant realms.
 ~
 stone~
 15 0 0
@@ -2904,6 +2908,7 @@ enthusiastic party-goers over the head.
 #20578
 pool water~
 a rock pool~
+A natural pool of water, worn into the rock, glistens here.
 ~
 stone~
 25 0 0
