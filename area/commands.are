@@ -2815,7 +2815,7 @@ Requirements and restrictions:
   - The target player must be OFFLINE.  If they are logged in, ask them
     to use the PASSWORD command themselves.
   - The new password must be at least 5 characters and must not contain
-    the '~' character.
+    the tilde character.
   - You cannot reset the password of a character at or above your own
     level (you cannot reset another immortal's password unless you outrank
     them).
@@ -2898,7 +2898,7 @@ in Dresden's Oak Tree / Christmas Tree Square (room 2401).
   summonevent          -- if no boss is alive, spawn it; if alive, despawn it
   summonevent status   -- show active season and boss state without acting
 
-The boss spawns automatically ~once every 48 hours during active seasonal
+The boss spawns automatically once every 48 hours during active seasonal
 events (Hallows End: Oct 18-Nov 1; Winter Veil: Dec 16-Jan 6).  It
 broadcasts a global shout on arrival, periodically yells taunts, and
 auto-despawns after two real hours if not killed.
