@@ -209,14 +209,34 @@ to everyone listening on that channel so other players can help.
 
 0 BANK BALANCE DEPOSIT WITHDRAW CONVERT~
 Syntax: balance
-Syntax: deposit <amount>
-Syntax: withdraw <amount>
-Syntax: convert <silver/gold amount>
+Syntax: deposit <amount> [platinum|gold|silver|copper]
+Syntax: withdraw <amount> [platinum|gold|silver|copper]
+Syntax: convert
 
-Banking commands allow you to store wealth safely.  BALANCE shows your bank
-holdings.  DEPOSIT moves coins from your inventory into the bank; WITHDRAW
-removes them.  CONVERT exchanges between gold and silver denominations so you
-can carry what you need for purchases.
+Banking commands let you store wealth safely.  All four commands require you
+to be inside a bank room (look for the flag or ask a banker).
+
+  BALANCE   -- Shows your current account balance in all denominations.
+
+  DEPOSIT   -- Moves coins from your inventory into your bank account.
+               Specify an amount and an optional coin type.  Examples:
+                 deposit 100 gold
+                 deposit 500 platinum
+               If no coin type is given, gold is assumed.
+
+  WITHDRAW  -- Retrieves coins from your bank account into your inventory.
+               Same syntax as deposit.  You must have room in your inventory
+               to carry the coins.
+
+  CONVERT   -- Exchanges all your carried coins upward to the highest
+               denomination possible (copper -> silver -> gold -> platinum).
+               Handy before depositing to keep your inventory tidy.
+
+Notes:
+  - The bank charges no fees and earns no interest.  Your balance is kept
+    exactly as deposited, stored as a copper equivalent internally.
+  - Pkiller characters cannot access banking services.
+  - Your bank balance is retained across deaths and remorts.
 ~
 
 0 BREW CONCOCT SCRIBE SHOOT PICK JUNK~

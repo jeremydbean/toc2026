@@ -845,6 +845,10 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 
     do_look( ch, "auto" );
 
+    /* Bank room entry hint */
+    if ( !IS_NPC(ch) && IS_SET(ch->in_room->room_flags2, ROOM2_BANK) )
+        send_to_char( "\n\rThe bank offers: BALANCE, DEPOSIT <amount>, WITHDRAW <amount>, CONVERT.\n\r", ch );
+
     if(IS_SET(ch->in_room->room_flags, ROOM_AFFECTED_BY) )
     {
       room_affect(ch,ch->in_room, rev_dir[door]);
