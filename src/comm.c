@@ -2101,6 +2101,15 @@ case CON_DEFAULT_CHOICE:
                 "Type 'password null <new password>' to fix.\n\r",0);
         }
 
+        /* Clear any pager state left from do_help(motd) — nanny bypasses the
+           pager loop so showstr_point can never be consumed from here. */
+        if (d->showstr_head)
+        {
+            free_mem(d->showstr_head, clamp_size_to_int( strlen(d->showstr_head) + 1u ) );
+            d->showstr_head = NULL;
+        }
+        d->showstr_point = NULL;
+
         d->color = true;
         if ( !IS_NPC(ch) && ch->pcdata != NULL )
         {
@@ -2152,7 +2161,12 @@ case CON_DEFAULT_CHOICE:
 	        do_outfit(ch,"");
 	        char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
 	        send_to_char("\n\r",ch);
-	        do_help(ch,"NEWBIE INFO");
+	        {
+	            int save_lines = ch->lines;
+	            ch->lines = 0; /* bypass pager — player can't press Enter yet */
+	            do_help(ch,"NEWBIE INFO");
+	            ch->lines = save_lines;
+	        }
 	        send_to_char("\n\r",ch);
 	        save_char_obj( ch );
 	    }
