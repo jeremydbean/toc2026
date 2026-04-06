@@ -608,24 +608,27 @@ void interpret( CHAR_DATA *ch, char *argument )
     if (cmd != -1) found = true;
 
     /*
-     * Log and snoop.
+     * Log and snoop.  Guard against cmd == -1 (unknown command).
      */
-    if ( cmd_table[cmd].log == LOG_NEVER )
-        logline[0] = '\0';
-
-    if ( ( !IS_NPC(ch) && IS_SET(ch->act, PLR_LOG) )
-    ||   fLogAll
-    ||   cmd_table[cmd].log == LOG_ALWAYS )
+    if ( found )
     {
-        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s: %s", ch->name, logline );
-	log_string( log_buf );
-    }
+        if ( cmd_table[cmd].log == LOG_NEVER )
+            logline[0] = '\0';
 
-    if ( ch->desc != NULL && ch->desc->snoop_by != NULL )
-    {
-	write_to_buffer( ch->desc->snoop_by, "% ",    2 );
-	write_to_buffer( ch->desc->snoop_by, logline, 0 );
-	write_to_buffer( ch->desc->snoop_by, "\n\r",  2 );
+        if ( ( !IS_NPC(ch) && IS_SET(ch->act, PLR_LOG) )
+        ||   fLogAll
+        ||   cmd_table[cmd].log == LOG_ALWAYS )
+        {
+            snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s: %s", ch->name, logline );
+            log_string( log_buf );
+        }
+
+        if ( ch->desc != NULL && ch->desc->snoop_by != NULL )
+        {
+            write_to_buffer( ch->desc->snoop_by, "% ",    2 );
+            write_to_buffer( ch->desc->snoop_by, logline, 0 );
+            write_to_buffer( ch->desc->snoop_by, "\n\r",  2 );
+        }
     }
 
     if ( !found )

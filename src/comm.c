@@ -708,6 +708,7 @@ void game_loop_unix( int control )
             if (d->character != NULL && d->character->pcdata != NULL
             &&  d->character->pcdata->dcount > 10)
             {
+                save_char_obj(d->character);
                 close_socket(d);
             }
         }
@@ -747,7 +748,7 @@ void game_loop_unix( int control )
 
             stop_idling( ch );
 
-            if ( ch->wait > 0 )
+            if ( ch->wait > 0 && !IS_IMMORTAL(ch) )
             {
                 --ch->wait;
                 if ( ch->wait > 0 )
@@ -1208,7 +1209,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
      * Bust a prompt.
      */
     if ( !merc_down && d->showstr_point )
-	write_to_buffer( d, "[Hit Return to continue]\n\r", 0 );
+	{ /* pager: show_string already wrote [Hit Return to continue] */ }
     else if ( fPrompt && !merc_down && d->connected == CON_PLAYING )
     {
    	CHAR_DATA *ch;

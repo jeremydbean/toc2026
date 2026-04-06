@@ -945,7 +945,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	quest the mob is not used. This is done to assure the level
 	of difficulty for the area isn't too great for the player. */
 
-    for (mcounter = 0; mcounter < 99999; mcounter ++)
+    for (mcounter = 0; mcounter < 500; mcounter ++)  /* Q2: limit iteration to 500 */
     {
 	mob_vnum = number_range(50, 30000);
 
@@ -1017,7 +1017,20 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	    break;
 	}
 
-        questitem = create_object( get_obj_index(objvnum), ch->level );
+	/* Q3: guard against missing quest object vnum */
+	{
+	    OBJ_INDEX_DATA *qidx = get_obj_index(objvnum);
+	    if (qidx == NULL)
+	    {
+		snprintf(buf, sizeof(buf),
+		    "My apologies, %s - the quest item is unavailable right now.",
+		    ch->name);
+		do_say(questman, buf);
+		ch->nextquest = 5;
+		return;
+	    }
+	    questitem = create_object(qidx, ch->level);
+	}
 	obj_to_room(questitem, room);
 	ch->questobj = questitem->pIndexData->vnum;
 

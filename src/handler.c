@@ -693,8 +693,8 @@ int can_carry_n( CHAR_DATA *ch )
     if ( !IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL )
 	return 1000;
 
-   if (ch->pcdata->num_remorts >= 5)
-  return 1000;
+    if (!IS_NPC(ch) && ch->pcdata->num_remorts >= 5)
+        return 1000;
 
     if(IS_SET(ch->act2,ACT2_LYCANTH) )
        return ch->were_shape.can_carry;
@@ -710,8 +710,8 @@ int can_carry_w( CHAR_DATA *ch )
     if ( !IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL )
 	return 1000000;
 
-   if (ch->pcdata->num_remorts >= 5)
-	return 1000000;
+    if (!IS_NPC(ch) && ch->pcdata->num_remorts >= 5)
+        return 1000000;
 
     if(IS_SET(ch->act2,ACT2_LYCANTH) )
       return str_app[get_curr_stat(ch,STAT_STR)].carry + ch->level  * 5 / 2;
@@ -881,8 +881,8 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     case APPLY_SAVING_BREATH: ch->saving_throw          += mod; break;
     case APPLY_SAVING_SPELL:  ch->saving_throw          += mod; break;
     case APPLY_IMMUNITY:
-	if (fAdd) SET_BIT(ch->imm_flags, (long)paf->modifier);
-	else      REMOVE_BIT(ch->imm_flags, (long)paf->modifier);
+	if (fAdd) SET_BIT(ch->imm_flags, (long)(unsigned short)paf->modifier);
+	else      REMOVE_BIT(ch->imm_flags, (long)(unsigned short)paf->modifier);
 	break;
     }
 
@@ -1013,8 +1013,9 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
 	bug( "Affect_remove: no affect.", 0 );
         if (crash_prot > 10)
         {
-        bug( "Affect remove failed 10 times.  Crashing...",0);
-        exit(1);
+            bug( "Affect remove failed 10 times, giving up.", 0 );
+            crash_prot = 0;
+            return;
         }
 	return;
     }
@@ -1511,10 +1512,8 @@ static void do_obj_action(CHAR_DATA *ch, OBJ_DATA *obj)
     {
 	act( action->not_vict_action,ch,obj,NULL,TO_ROOM );
 	act( action->vict_action,ch,obj,NULL,TO_CHAR);
-	return;
+	action = action->next;
     }
-
-    action = action->next;
 }
 
 /*
@@ -3425,8 +3424,6 @@ void extract_room( ROOM_INDEX_DATA *pRoom )
     else
       pPrev->next = pRoomIndex->next;
 
-    pRoom->next        	     = room_index_free;
-    room_index_free          = pRoom->next;
     free_mem( pRoom, sizeof(*pRoom) );
 
     return;

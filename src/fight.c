@@ -339,7 +339,8 @@ void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 
 	 if( IS_AFFECTED2( victim, AFF2_DIVINE_PROT ) && number_percent () > 5)
 	 {
-	 	one_hit(ch,victim,dt);
+	 	/* F3: divine protection counter-attacks the attacker */
+	 	one_hit(victim,ch,dt);
 	 	if (ch->fighting != victim)
 	 	    return;
 	 }
@@ -616,6 +617,7 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 	    }
 
 	    help = create_mobile ( pMobIndex );
+	    if ( help == NULL ) break;  /* F2: guard against missing mob vnum */
 	    char_to_room( help, ch->in_room );
 	    help->level = victim->level - 5;
 	    if(victim->level < 51 )
@@ -663,8 +665,8 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     sn = -1;
 
 
-    /* just in case */
-    if (victim == ch || ch == NULL || victim == NULL)
+    /* F1: NULL checks before any dereference */
+    if ( ch == NULL || victim == NULL || victim == ch )
 	return;
 
     /*
@@ -1030,10 +1032,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
    }
    else
    {
-	if( is_affected(ch,skill_lookup("psionic_armor") )
-	 || is_affected(ch,skill_lookup("psychic_shield") ) )
+	if( is_affected(victim,skill_lookup("psionic_armor") )
+	 || is_affected(victim,skill_lookup("psychic_shield") ) )
 	  dam -= dam / 4;
-	else if( is_affected(ch,skill_lookup("mindbar") ) )
+	else if( is_affected(victim,skill_lookup("mindbar") ) )
 	  dam /= 2;
    }
 
@@ -1192,6 +1194,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
       {
        ch->hit -= dam1;
        dam_message(victim, ch, dam1, dt1, immune);
+       update_pos(ch);        /* F5: update position after reflective damage */
        if(ch->hit <= 0)
          ch->hit = 1;
        if ( dam1 > ch->max_hit / 4 )
@@ -1240,7 +1243,12 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	 send_to_char("!<POOF>!\n\r",victim);
 
 	 char_from_room(victim);
-	 char_to_room(victim,get_room_index(ROOM_VNUM_ALTAR));
+	 /* F4: ALTAR may not exist; fall back to LIMBO */
+	 {
+	     ROOM_INDEX_DATA *dest = get_room_index(ROOM_VNUM_ALTAR);
+	     if (dest == NULL) dest = get_room_index(ROOM_VNUM_LIMBO);
+	     char_to_room(victim, dest);
+	 }
 
 	 while ( victim->affected )
 	   affect_remove( victim, victim->affected );
@@ -2012,7 +2020,9 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
     if (ch->fighting != NULL) {
         CHAR_DATA *victim = ch->fighting;
 
-        if ( !IS_NPC(ch) && !IS_NPC(victim)) {
+        /* F6: guard against ch or victim not being in a room */
+        if ( !IS_NPC(ch) && !IS_NPC(victim)
+        &&   ch->in_room != NULL && victim->in_room != NULL ) {
 	    if( IS_SET(ch->in_room->room_flags, ROOM_ARENA) && IS_SET(victim->in_room->room_flags, ROOM_ARENA) ) {
 		ch->battleticks = 0;
 	 	victim->battleticks = 0;
@@ -2674,7 +2684,7 @@ base_exp = 200 + 50 * (level_range - 4);
 
     else if (align < -500) /* monster is more evil than slayer */
     {
-	change = (align / 100);
+	change = -(align / 100); /* F8: negated so slayer gains good alignment */
 	/*change = UMAX(1,change);*/
 	gch->alignment = (sh_int)(UMIN(1000,gch->alignment + change));
 	if (IS_SET(gch->act,PLR_DAMAGE_NUMBERS))

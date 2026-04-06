@@ -455,7 +455,7 @@ long next_xp_level( CHAR_DATA *ch )
   {
     xp = 10000 * (ch->level+1 - LEVEL_HERO);
     for (i=LEVEL_HERO;i<ch->level;i++)
-      incr += HERO_STEP_XP * (ch->level - LEVEL_HERO);
+      incr += HERO_STEP_XP * (i - LEVEL_HERO + 1); /* U3: use loop var i, not ch->level */
     xp += incr;
     xp += (51 * exp_per_level(ch,ch->pcdata->points) );
   }
@@ -475,9 +475,6 @@ void gain_exp( CHAR_DATA *ch, int gain )
 	     return;
 
     if (ch -> level == 54 + ch->pcdata->num_remorts)
-        return;
-
-    if (ch->level == LEVEL_KING)
         return;
 
      if ( gain > 0 && !IS_NPC(ch) && ch->pcdata->exp_bonus > 0 )
@@ -1717,6 +1714,8 @@ void char_update( void )
 
             if (af->level == 1)
                 continue;  /* no spread at level 1; skip char but keep processing others */
+	    plague.type		= (sh_int)gsn_plague;
+	    plague.level		= (sh_int)(af->level - 1);  /* U2: init before use */
 	    plague.duration 	= (sh_int)(number_range(1,2 * plague.level));
 	    plague.location		= APPLY_STR;
 	    plague.modifier 	= -5;
@@ -2485,7 +2484,10 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
                 /* zero out the remaining slots */
           while( counter < 4)
           {
-	  }
+              /* U1: zero remaining were_shape item slots */
+              ch->desc->original->were_shape.obj[counter] = 0;
+              counter++;
+          }
 
 
 	 do_return(ch,"");
@@ -3321,7 +3323,13 @@ void disaster_update( void )
 	     {
 	       send_to_char("A huge wall of water thunders down on you!\n\r",vch);
 	       char_from_room(vch);
-	       char_to_room(vch,vch->was_in_room);
+	       /* U5: guard against was_in_room being NULL */
+	       {
+	           ROOM_INDEX_DATA *dest = vch->was_in_room;
+	           if (dest == NULL) dest = get_room_index(ROOM_VNUM_TEMPLE);
+	           if (dest == NULL) dest = get_room_index(ROOM_VNUM_LIMBO);
+	           char_to_room(vch, dest);
+	       }
 	       vch->hit -= vch->hit/3;
 	     }
 	   break;
