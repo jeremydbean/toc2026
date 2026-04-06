@@ -264,6 +264,8 @@ void do_look( CHAR_DATA *ch, char *argument )
           }
 
             to_room = get_room_index( obj->value[1] );
+            if ( to_room == NULL )
+                break;
             original = ch->in_room;
             char_from_room( ch );
             char_to_room( ch, to_room );
@@ -3084,6 +3086,11 @@ void do_enter( CHAR_DATA *ch, char *argument )
    }
 
    to_room = get_room_index( obj->value[1] );
+   if ( to_room == NULL )
+   {
+     send_to_char( "The portal leads nowhere.\n\r", ch );
+     return;
+   }
 
    act("You enter $p",ch,obj,NULL,TO_CHAR);
    send_to_char("\nYour stomach flip flops. Everything goes black for a moment.\n\r\n\r",ch);
