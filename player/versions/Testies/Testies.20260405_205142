@@ -1,7 +1,7 @@
 #PLAYER
 Name Testies~
 Id   47466
-LogO 1775437116
+LogO 1775436702
 Vers 3
 Prom ~
 Ignoring ~
@@ -15,7 +15,7 @@ PsiSpec ~
 Cast none
 Levl 22
 Tru  70
-Plyd 165372
+Plyd 165008
 ListRemorts 4  1  1  0  0  2  2  5  2  2 ~
 NumRemorts 5
 Note 1544841593
@@ -33,8 +33,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-SesLogin 1775436755
-SesDur   361
+SesLogin 0
+SesDur   0
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -84,7 +84,7 @@ Pnts 2540
 TSex 1
 LLev 0
 HMVP 330 226 331
-Cond 0 41 41
+Cond 0 47 47
 Alias / who~
 Alias f flee~
 Alias ] recall~
@@ -317,26 +317,26 @@ Sk 100 'smite'
 Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'titanic'   0  -1 1700  13          0          0
-AffD 'titanic'   0  -1 1180  12          0          0
-AffD 'titanic'   0  -1 1530  14          0          0
 AffD 'titanic'   0  -1  50  16          0          0
+AffD 'titanic'   0  -1 1530  14          0          0
+AffD 'titanic'   0  -1 1180  12          0          0
+AffD 'titanic'   0  -1 1700  13          0          0
+AffD 'empower'   0  -1 -100  17          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'empower'   0  -1   0   0          0          0
 End
 
 #O
@@ -444,7 +444,7 @@ End
 Vnum 3092
 Nest 0
 Wear -1
-Time 190
+Time 196
 Cost 150
 Cond 100
 Repd 0
