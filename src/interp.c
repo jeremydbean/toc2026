@@ -907,6 +907,7 @@ char buf[1000];
                       "Oops, a logic error occurred for command: %s\n",
                   cmd_table[i].name);
           bug(" INITIALIZE COMMAND TABLE, INDEX OUT OF RANGE %d", j);
+          continue;
        }
       cmd_list_elem = alloc_perm( sizeof(*cmd_list_elem) );
       cmd_list_elem -> next = NULL;
@@ -999,6 +1000,7 @@ char buf[1000];
                       "Oops, a logic error occurred for command: %.200s\n",
                   social_table[i].name);
           bug(" INITIALIZE SOCIAL TABLE, INDEX OUT OF RANGE %d", j);
+          continue;
        }
       social_list_elem = alloc_perm( sizeof(*social_list_elem) );
       social_list_elem -> next = NULL;

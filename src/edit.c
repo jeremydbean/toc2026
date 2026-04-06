@@ -267,7 +267,10 @@ void edit_exit( CHAR_DATA *ch, char *argument )
     if (ch->in_room->exit[door] == NULL )
         pexit                   = alloc_mem( sizeof(*pexit) );
     else
+    {
         pexit               = ch->in_room->exit[door];
+        free_string( pexit->description );
+    }
 
     pexit->description      = "";
     pexit->keyword          = str_dup(argument);

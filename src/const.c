@@ -4030,7 +4030,7 @@ const   struct  group_type      group_table     [MAX_GROUP]     =
     {
 	"cleric elemental",       { -1, 6, -1, -1, -1, -1 },
 	{
-	  "icicle",     "cone of cold",		"water burst"
+	  "icicle",     "cone of cold",		"water burst",
 	  "geyser",	"dust devil",		"vortex",
 	  "sunray"
 	}
