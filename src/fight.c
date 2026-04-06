@@ -352,8 +352,11 @@ void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	if (IS_IMMORTAL(ch))
 	{
 	    one_hit(ch,victim,dt);
+	    if (ch->fighting != victim) return;
 	    one_hit(ch,victim,dt);
+	    if (ch->fighting != victim) return;
 	    one_hit(ch,victim,dt);
+	    if (ch->fighting != victim) return;
 	}
 
     if ( IS_AFFECTED2(ch,AFF2_FORCE_SWORD) && number_percent () > 70)
@@ -416,6 +419,8 @@ void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
        act("$n tries to hit you with $s tail!",ch,NULL,victim,TO_VICT);
        act("$n tries to hit $N with $s tail!",ch,NULL,victim,TO_NOTVICT);
        one_hit(ch,victim,TYPE_HIT);
+       if (ch->fighting != victim)
+	   return;
     }
 
 
@@ -616,6 +621,7 @@ void mob_hit (CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 		     break;
 	    }
 
+	    if ( pMobIndex == NULL ) break;
 	    help = create_mobile ( pMobIndex );
 	    if ( help == NULL ) break;  /* F2: guard against missing mob vnum */
 	    char_to_room( help, ch->in_room );
@@ -4678,7 +4684,11 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	act( "$N vanishes in a puff of purple smoke.", ch, NULL, victim, TO_CHAR );
 	send_to_char("!<POOF>!\n\r", victim);
 	char_from_room(victim);
-	char_to_room(victim, get_room_index(ROOM_VNUM_ALTAR));
+	{
+	    ROOM_INDEX_DATA *dest = get_room_index(ROOM_VNUM_ALTAR);
+	    if (dest == NULL) dest = get_room_index(ROOM_VNUM_LIMBO);
+	    char_to_room(victim, dest);
+	}
 	while ( victim->affected )
 	    affect_remove( victim, victim->affected );
 	victim->affected_by = 0;
@@ -4703,7 +4713,11 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	act( "$N vanishes in a puff of purple smoke.", ch, NULL, victim, TO_CHAR );
 	send_to_char("!<POOF>!\n\r", victim);
 	char_from_room(victim);
-	char_to_room(victim, get_room_index(ROOM_VNUM_ALTAR));
+	{
+	    ROOM_INDEX_DATA *dest = get_room_index(ROOM_VNUM_ALTAR);
+	    if (dest == NULL) dest = get_room_index(ROOM_VNUM_LIMBO);
+	    char_to_room(victim, dest);
+	}
 	while ( victim->affected )
 	    affect_remove( victim, victim->affected );
 	victim->affected_by = 0;

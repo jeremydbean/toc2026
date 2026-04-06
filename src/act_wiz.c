@@ -480,7 +480,6 @@ void do_warn( CHAR_DATA *ch, char *argument )
 	send_to_char( "Remember its not good to break the rules!\n\r", victim);
 	snprintf(buf, sizeof(buf),"%s no longer has a WARNING flag.\n\r",victim->name);
 	send_to_char( buf,ch );
-	victim->act = 65788;  /* reset victim auto-flags to safe defaults */
 /*	ch->pcdata->jw_timer = 0;*/
     }
     else
@@ -1980,7 +1979,7 @@ void do_mstat( CHAR_DATA *ch, char *argument )
         victim->hit,         victim->max_hit,
         victim->mana,        victim->max_mana,
         victim->move,        victim->max_move,
-        IS_NPC(ch) ? 0 : victim->practice );
+        IS_NPC(victim) ? 0 : victim->practice );
     send_to_char( buf, ch );
 
     snprintf( buf, sizeof(buf),
@@ -3111,6 +3110,12 @@ void do_purge( CHAR_DATA *ch, char *argument )
 	/* 'purge' */
 	CHAR_DATA *vnext;
 	OBJ_DATA  *obj_next;
+
+	if ( ch->in_room == NULL )
+	{
+	    send_to_char( "You aren't in a room.\n\r", ch );
+	    return;
+	}
 
 	for ( victim = ch->in_room->people; victim != NULL; victim = vnext )
 	{
@@ -4681,9 +4686,9 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	do_start_hunting(victim,hunted,0);
 
 	if(victim != ch)
-	  snprintf(buf, sizeof(buf),"%s is now Hunting %s.\n\r",hunted->name,victim->name);
+	  snprintf(buf, sizeof(buf),"%s is now Hunting %s.\n\r",victim->name,hunted->name);
 	else
-	  snprintf(buf, sizeof(buf),"%s is now Hunting you.\n\r",hunted->name);
+	  snprintf(buf, sizeof(buf),"%s is now Hunting you.\n\r",victim->name);
 	send_to_char(buf, ch);
 	return;
     }
@@ -4700,9 +4705,9 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	do_start_hunting(victim,hunted,1);
 
 	if(victim != ch)
-	  snprintf(buf, sizeof(buf),"%s is now Annoying %s.\n\r",hunted->name,victim->name);
+	  snprintf(buf, sizeof(buf),"%s is now Annoying %s.\n\r",victim->name,hunted->name);
 	else
-	  snprintf(buf, sizeof(buf),"%s is now Annoying you.\n\r",hunted->name);
+	  snprintf(buf, sizeof(buf),"%s is now Annoying you.\n\r",victim->name);
 	send_to_char(buf, ch);
 	return;
     }
@@ -6257,6 +6262,12 @@ void do_gkick( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( ch->in_room == NULL )
+    {
+	send_to_char( "You aren't in a room.\n\r", ch );
+	return;
+    }
+
     if ( !str_cmp( arg2, "n") || !str_cmp( arg2, "north" ) ) door = 0;
     else if ( !str_cmp( arg2, "e") || !str_cmp( arg2, "east" ) )  door = 1;
     else if ( !str_cmp( arg2, "s") || !str_cmp( arg2, "south" ) ) door = 2;
@@ -6347,6 +6358,8 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
         snprintf( buf, sizeof(buf), "New Corpse: fopen %s", victim->name );
         bug( buf, 0 );
         perror( strsave );
+        fpReserve = fopen( NULL_FILE, "r" );
+        return;
     }
     else
     {
@@ -6429,8 +6442,9 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 
 	for( c = 1; c < corpse_cont[number][0]+1 ; c++ )
 	{
-	    obj = create_object( get_obj_index( corpse_cont[number][c] ),
-				item_level[number][c] );
+	    OBJ_INDEX_DATA *oi = get_obj_index( corpse_cont[number][c] );
+	    if ( oi == NULL ) continue;
+	    obj = create_object( oi, item_level[number][c] );
 	    obj_to_obj( obj, corpse );
 	}
 
@@ -7001,6 +7015,12 @@ void do_smash( CHAR_DATA *ch, char *argument )
     int count;
 
     UNUSED_PARAM(argument);
+
+    if ( ch->in_room == NULL )
+    {
+        send_to_char( "You aren't in a room.\n\r", ch );
+        return;
+    }
 
     count = 0;
     for ( obj = ch->in_room->contents; obj != NULL; obj = obj_next )

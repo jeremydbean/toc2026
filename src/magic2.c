@@ -2604,7 +2604,7 @@ void do_brew( CHAR_DATA *ch, char *argument )
      case 52:
 	      tea->value[0] = ch->level;
 	      tea->value[1] = skill_lookup("cure light");
-	      tea->value[1] = skill_lookup("cure poison");
+	      tea->value[2] = skill_lookup("cure poison");
 	      free_string( tea->short_descr );
 	      snprintf(buf, sizeof buf,"a sea green container of tea");
 	      tea->short_descr = str_dup( buf );
@@ -3895,13 +3895,13 @@ void spell_shroud( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
-    if( is_affected(ch, skill_lookup("major globe") ) )
+    if( is_affected(victim, skill_lookup("major globe") ) )
     {
       send_to_char("You can't combine this with a globe spell.\n\r",ch);
       return;
     }
 
-    if ( is_affected( ch, sn ) )
+    if ( is_affected( victim, sn ) )
     {
 	if (victim == ch)
 	  send_to_char("You are already cloaked in a shroud of darkness.\n\r",ch);
@@ -4233,8 +4233,8 @@ void spell_frost_shield( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
-  if( is_affected( ch, sn ) || IS_SET(ch->act2, AFF2_FLAMING_HOT) ||
-			       IS_SET(ch->act2, AFF2_FLAMING_COLD) )
+  if( is_affected( victim, sn ) || IS_SET(victim->act2, AFF2_FLAMING_HOT) ||
+			       IS_SET(victim->act2, AFF2_FLAMING_COLD) )
     {
 	if (victim == ch)
 	  send_to_char("You are already enveloped in frost.\n\r",ch);
@@ -4264,8 +4264,8 @@ void spell_death_shroud( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
-  if( is_affected( ch, sn ) || IS_SET(ch->act2, AFF2_FLAMING_HOT) ||
-			       IS_SET(ch->act2, AFF2_FLAMING_COLD) )
+  if( is_affected( victim, sn ) || IS_SET(victim->act2, AFF2_FLAMING_HOT) ||
+			       IS_SET(victim->act2, AFF2_FLAMING_COLD) )
     {
 	if (victim == ch)
 	  send_to_char("You are already surrounded by dark flames.\n\r",ch);
@@ -4764,16 +4764,11 @@ void spell_divine_intervention( int sn, int level, CHAR_DATA *ch, void *vo )
     UNUSED_PARAM(vo);
     CHAR_DATA *gch;
 
-    for( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
+    if( ch->mana < 130 )
     {
-    	if(!is_same_group(gch, ch))
-	  continue;
-
-    	if( ch->mana < 130 )
-    	{
-	    send_to_char("You failed.\n\r",ch);
-	    return;
-    	}
+	send_to_char("You failed.\n\r",ch);
+	return;
+    }
 
     act("$n falls to their knees and gestures at the sky",
 	 ch,NULL,NULL,TO_ROOM);
@@ -4789,15 +4784,21 @@ void spell_divine_intervention( int sn, int level, CHAR_DATA *ch, void *vo )
 	 ch, NULL, NULL, TO_CHAR);
 
     ch->mana = 0;
+
+    for( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
+    {
+    	if(!is_same_group(gch, ch))
+	  continue;
+
     gch->hit = gch->max_hit;
     gch->move = gch->max_move;
-
-    act("You fall to the ground exausted.",ch,NULL,NULL,TO_ROOM);
-    act("You fall to the ground exausted.",ch,NULL,NULL,TO_CHAR);
 
     gch->position = POS_RESTING;
 
     }
+
+    act("You fall to the ground exausted.",ch,NULL,NULL,TO_ROOM);
+    act("You fall to the ground exausted.",ch,NULL,NULL,TO_CHAR);
 
     return;
 
@@ -4935,7 +4936,7 @@ void spell_cause_madness( int sn, int level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-    if( IS_AFFECTED2( ch, AFF2_MADNESS ) )
+    if( IS_AFFECTED2( victim, AFF2_MADNESS ) )
     {
 	if(victim == ch)
 	{

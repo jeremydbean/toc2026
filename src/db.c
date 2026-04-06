@@ -1361,7 +1361,7 @@ void load_rooms( FILE *fp )
                             break;
                         pAffPrev = pRoomAff;
                     }
-                    if (pRoomAff == NULL)
+                    if (pRoomAff != NULL)
                     {
                         if ( pAffPrev == NULL )
                             room_aff_list = pAffNext;
@@ -2749,7 +2749,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
 	if( pObjIndex->level == -1)
         {
           int alter_stat;
-          int safe_level = level < 63 ? level : 63;  /* Arrays have 64 elements (0-63) */
+          int safe_level = level < 62 ? level : 62;  /* cap at 62so [+1]<=63 (last valid index) */
  
 	  alter_stat = number_percent ();
 
@@ -3351,7 +3351,7 @@ char *fread_string( FILE *fp )
         {
             /* temp fix */
             bug( "Fread_string: EOF", 0 );
-            return NULL;
+            return str_empty;
             /* exit( 1 ); */
         }
 
@@ -4343,6 +4343,12 @@ void do_dump( CHAR_DATA *ch, char *argument )
  
     /* start printing out mobile data */
     fp = fopen("mobstat.dmp","w");
+    if (fp == NULL)
+    {
+        fpReserve = fopen( NULL_FILE, "r" );
+        send_to_char( "Could not open mobstat.dmp for writing.\n\r", ch );
+        return;
+    }
  
     fprintf(fp,"\nMobile Stats\n");
     fprintf(fp,  "------------\n");
@@ -4972,7 +4978,11 @@ void do_dump_exits( CHAR_DATA *ch , char *argument )
 
 void load_relics(void)
 {
-    RELIC_1 = create_object(get_obj_index(VNUM_RELIC_1),1);
+    OBJ_INDEX_DATA *oi;
+
+    oi = get_obj_index(VNUM_RELIC_1);
+    if (!oi) { log_string("load_relics: VNUM_RELIC_1 not found."); return; }
+    RELIC_1 = create_object(oi,1);
     RELIC_ROOM_1 = get_room_index(RELIC_1->value[0]);
     if(!RELIC_ROOM_1) {
 	log_string("Failed finding Relic_room_1.");
@@ -4981,7 +4991,9 @@ void load_relics(void)
         obj_to_room(RELIC_1,get_room_index(RELIC_1->value[0]));
     }
 
-    RELIC_2 = create_object(get_obj_index(VNUM_RELIC_2),1);
+    oi = get_obj_index(VNUM_RELIC_2);
+    if (!oi) { log_string("load_relics: VNUM_RELIC_2 not found."); return; }
+    RELIC_2 = create_object(oi,1);
     RELIC_ROOM_2 = get_room_index(RELIC_2->value[0]);
     if(!RELIC_ROOM_2) {
 	log_string("Failed finding Relic_room_2.");
@@ -4990,7 +5002,9 @@ void load_relics(void)
         obj_to_room(RELIC_2,get_room_index(RELIC_2->value[0]));
     }
 
-    RELIC_3 = create_object(get_obj_index(VNUM_RELIC_3),1);
+    oi = get_obj_index(VNUM_RELIC_3);
+    if (!oi) { log_string("load_relics: VNUM_RELIC_3 not found."); return; }
+    RELIC_3 = create_object(oi,1);
     RELIC_ROOM_3 = get_room_index(RELIC_3->value[0]);
     if(!RELIC_ROOM_3) {
 	log_string("Failed finding Relic_room_3.");
@@ -4999,7 +5013,9 @@ void load_relics(void)
         obj_to_room(RELIC_3,get_room_index(RELIC_3->value[0]));
     }
 
-    RELIC_4 = create_object(get_obj_index(VNUM_RELIC_4),1);
+    oi = get_obj_index(VNUM_RELIC_4);
+    if (!oi) { log_string("load_relics: VNUM_RELIC_4 not found."); return; }
+    RELIC_4 = create_object(oi,1);
     RELIC_ROOM_4 = get_room_index(RELIC_4->value[0]);
     if(!RELIC_ROOM_4) {
 	log_string("Failed finding Relic_room_4.");
@@ -5011,6 +5027,9 @@ void load_relics(void)
 
 void update_relics(void)
 {
+    if (RELIC_1 == NULL || RELIC_2 == NULL || RELIC_3 == NULL || RELIC_4 == NULL)
+        return;
+
     	if(RELIC_1->in_room != RELIC_ROOM_1 &&
 	   RELIC_1->in_room != RELIC_ROOM_2 &&
 	   RELIC_1->in_room != RELIC_ROOM_3 &&
@@ -5080,7 +5099,11 @@ void respawn_relic(int i)
                 return;
         }
 
-        RELIC_1 = create_object(get_obj_index(VNUM_RELIC_1),1);
+        {
+            OBJ_INDEX_DATA *ri = get_obj_index(VNUM_RELIC_1);
+            if (!ri) { log_string("respawn_relic: VNUM_RELIC_1 not found."); return; }
+            RELIC_1 = create_object(ri,1);
+        }
         RELIC_ROOM_1 = get_room_index(RELIC_1->value[0]);
         if(!RELIC_ROOM_1) {
             log_string("Failed finding Relic_room_1.(update)");
@@ -5096,7 +5119,11 @@ void respawn_relic(int i)
                 return;
         }
 
-        RELIC_2 = create_object(get_obj_index(VNUM_RELIC_2),1);
+        {
+            OBJ_INDEX_DATA *ri = get_obj_index(VNUM_RELIC_2);
+            if (!ri) { log_string("respawn_relic: VNUM_RELIC_2 not found."); return; }
+            RELIC_2 = create_object(ri,1);
+        }
         RELIC_ROOM_2 = get_room_index(RELIC_2->value[0]);
         if(!RELIC_ROOM_2) {
             log_string("Failed finding Relic_room_2.(update)");
@@ -5112,7 +5139,11 @@ void respawn_relic(int i)
                 return;
         }
 
-        RELIC_3 = create_object(get_obj_index(VNUM_RELIC_3),1);
+        {
+            OBJ_INDEX_DATA *ri = get_obj_index(VNUM_RELIC_3);
+            if (!ri) { log_string("respawn_relic: VNUM_RELIC_3 not found."); return; }
+            RELIC_3 = create_object(ri,1);
+        }
         RELIC_ROOM_3 = get_room_index(RELIC_3->value[0]);
         if(!RELIC_ROOM_3) {
             log_string("Failed finding Relic_room_3.(update)");
@@ -5128,7 +5159,11 @@ void respawn_relic(int i)
                 return;
         }
 
-        RELIC_4 = create_object(get_obj_index(VNUM_RELIC_4),1);
+        {
+            OBJ_INDEX_DATA *ri = get_obj_index(VNUM_RELIC_4);
+            if (!ri) { log_string("respawn_relic: VNUM_RELIC_4 not found."); return; }
+            RELIC_4 = create_object(ri,1);
+        }
         RELIC_ROOM_4 = get_room_index(RELIC_4->value[0]);
         if(!RELIC_ROOM_4) {
             log_string("Failed finding Relic_room_4.(update)");

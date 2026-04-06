@@ -2381,6 +2381,7 @@ void do_where( CHAR_DATA *ch, char *argument )
 	    && ( victim = d->character ) != NULL
 	    &&   !IS_NPC(victim)
 	    &&   victim->in_room != NULL
+	    &&   ch->in_room != NULL
 	    &&   victim->in_room->area == ch->in_room->area
 	    &&   victim != ch
 	    &&   can_see( ch, victim ) )
@@ -2400,6 +2401,7 @@ void do_where( CHAR_DATA *ch, char *argument )
         FOR_EACH_CHARACTER( iter, victim )
         {
             if ( victim->in_room != NULL
+            &&   ch->in_room != NULL
             &&   victim->in_room->area == ch->in_room->area
             &&   !IS_AFFECTED(victim, AFF_HIDE)
 	    &&   !IS_AFFECTED(victim, AFF_SNEAK)

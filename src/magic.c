@@ -3820,7 +3820,7 @@ void spell_power_gloves( int sn, int level, CHAR_DATA *ch, void *vo)
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
-    if ( is_affected( ch, sn ) )
+    if ( is_affected( victim, sn ) )
     {
 	if (victim == ch)
 	  send_to_char("Your hands are already bursting with energy.\n\r",ch);
@@ -4154,10 +4154,6 @@ void spell_slow( int sn, int level, CHAR_DATA *ch, void *vo )
         return;
     }
 
-    if (IS_NPC(victim))
-       one_hit( ch, victim, TYPE_UNDEFINED );
-
-
     if( is_affected( victim, sn) )
 	 {
 	   if (victim == ch)
@@ -4223,7 +4219,7 @@ void spell_stone_skin( int sn, int level, CHAR_DATA *ch, void *vo )
       return;
     }
 
-    if ( is_affected( ch, sn ) )
+    if ( is_affected( victim, sn ) )
     {
 	if (victim == ch)
 	  send_to_char("Your skin is already as hard as a rock.\n\r",ch);
