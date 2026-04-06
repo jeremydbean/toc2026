@@ -1994,20 +1994,11 @@ case CON_GET_ALIGNMENT:
 
 	write_to_buffer(d,"\n\r",0);
 
-	/* Allocate gen_data for customization tracking */
-	if (ch->gen_data == NULL)
-	{
-	    ch->gen_data = alloc_mem(sizeof(*ch->gen_data));
-	    memset(ch->gen_data, 0, sizeof(*ch->gen_data));
-	}
-
 	group_add(ch,"rom basics",FALSE);
 	group_add(ch,class_table[ch->class].base_group,FALSE);
-	list_group_costs(ch);
-	write_to_buffer(d,"You already have the following skills:\n\r",0);
-	list_group_known(ch);
-	write_to_buffer(d,"Enter 'auto' for default customization or your choice: ",0);
-	d->connected = CON_DEFAULT_CHOICE;
+	group_add(ch,class_table[ch->class].default_group,FALSE);
+	do_help(ch,"motd");
+	d->connected = CON_READ_MOTD;
 	break;
 
 case CON_DEFAULT_CHOICE:
