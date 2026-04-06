@@ -522,6 +522,9 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	          count++;
 	          rand_door[count] = pick_door;
 	       }
+	 /* No open exits: confused character cannot move; avoid UB rand_door access */
+	 if ( count < 0 )
+	     return;
 	 pick_door = number_range(0,count);
 	 door = rand_door[pick_door];
     }
@@ -1015,7 +1018,12 @@ void do_run( CHAR_DATA *ch, char *argument )
   argument = one_argument (argument, arg);
   argument = one_argument( argument, arg1 );
 
-
+  /* Guard against being called while ch has no room (e.g. from a trap). */
+  if ( ch->in_room == NULL )
+  {
+      runner = 0;
+      return;
+  }
 
   if (arg[0] == '\0')
     {
@@ -1170,7 +1178,7 @@ void do_speedwalk( CHAR_DATA *ch, char *argument )
         while ( *p >= '0' && *p <= '9' )
             count = count * 10 + (*p++ - '0');
         if ( count == 0 ) count = 1;
-        if ( count > 50 ) count = 50;   /* sanity cap per segment */
+        if ( count > 30 ) count = 30;   /* cap matches do_run's 30-step limit */
 
         /* direction token: up to 2 chars (ne/nw/se/sw) */
         dlen = 0;
