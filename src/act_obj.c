@@ -4096,6 +4096,12 @@ void add_platinum(CHAR_DATA *ch, long amount)
 #define CASINO_PENDING_ROULETTE 2
 #define CASINO_PENDING_POKER    3
 
+/* SEVEN occupies two virtual stops (indices 0 and 1) to double its hit
+ * frequency on each reel.  All payout comparisons MUST use SYM_NORM so
+ * that both stops are treated as the same symbol. */
+#define SYM_NORM(r)  ((r) < 2 ? 0 : (r))
+#define IS_SEVEN(r)  ((r) < 2)
+
 static bool in_casino( CHAR_DATA *ch )
 {
     if ( ch->in_room == NULL ) return false;
@@ -4146,9 +4152,9 @@ void do_slots( CHAR_DATA *ch, char *argument )
         symbols[r1], symbols[r2], symbols[r3] );
     send_to_char( buf, ch );
 
-    if ( r1 == 0 && r2 == 0 && r3 == 0 )
+    if ( IS_SEVEN(r1) && IS_SEVEN(r2) && IS_SEVEN(r3) )
     {
-        /* Three sevens: jackpot */
+        /* Three sevens (either stop): jackpot */
         payout = 100;
         result_msg = "*** JACKPOT! THREE SEVENS! ***\n\r";
     }
@@ -4160,13 +4166,15 @@ void do_slots( CHAR_DATA *ch, char *argument )
     }
     else if ( r1 == r2 && r2 == r3 )
     {
-        /* Any other three of a kind */
+        /* Any other three of a kind (CHERRY/LEMON/ORANGE/GRAPE) */
         payout = 20;
         result_msg = "Three of a kind!  You win!\n\r";
     }
-    else if ( r1 == r2 || r2 == r3 || r1 == r3 )
+    else if (   SYM_NORM(r1) == SYM_NORM(r2)
+             || SYM_NORM(r2) == SYM_NORM(r3)
+             || SYM_NORM(r1) == SYM_NORM(r3) )
     {
-        /* Two matching */
+        /* Two matching symbols (correctly handles cross-index SEVEN pairs) */
         payout = 3;
         result_msg = "Two of a kind -- you recover your bet plus a little extra.\n\r";
     }
@@ -4215,7 +4223,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     long amount;
     int die1, die2, total;
-    bool pick_hi;
+    bool pick_hi = false;
     bool confirming = false;
 
     if ( IS_NPC(ch) )
@@ -4605,6 +4613,9 @@ void do_roulette( CHAR_DATA *ch, char *argument )
  *   Usage: poker <amount>  (min 5 gold, max 200 gold)
  * ----------------------------------------------------------------------- */
 
+/* NOTE: POKER_BET_MAX (200) is intentionally below CASINO_CONFIRM_THRESHOLD (500).
+ * This means the confirm/cancel prompt will never fire for poker.
+ * If the poker limit is raised above 500, confirm will engage automatically. */
 #define POKER_BET_MIN  5L
 #define POKER_BET_MAX  200L
 
