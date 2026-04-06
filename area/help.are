@@ -59,41 +59,52 @@ Share and enjoy.
 -1 SUMMARY~
 MOVEMENT                            GROUP
 north south east west up down       follow group gtell split
-exits recall
+northeast ne northwest nw
+southeast se southwest sw
+run exits recall
 sleep wake rest stand
 
-OBJECTS                             INFORMATION / COMMUNICATION
-get put drop give sacrifice         help credits commands areas
+OBJECTS                             INFORMATION
+get put drop give sacrifice         help credits commands areas socials
 wear wield hold                     report score time weather where who
-recite quaff zap brandish           description password title
-lock unlock open close pick         bug idea typo
-inventory equipment look compare    auction gossip say shout tell yell
-eat drink fill                      emote pose
-list buy sell value                 note
+recite quaff zap brandish           color description password title
+lock unlock open close pick         gainlist teachlist
+inventory equipment look compare
+eat drink fill
+list buy sell value
+move climb flip push pull turn
+
+COMMUNICATION
+gossip leveling music q/a
+shout quiet info yell
+say tell gtell reply
+emote pose note channels
 
 COMBAT                              OTHER
 kill flee kick rescue disarm        ! save quit
-backstab cast wimpy                 practice train
-
+dirt-kick backstab cast wimpy       practice train
+bash
 
 For more help, type 'help <topic>' for any command, skill, or spell.
-Also help on: DAMAGE DEATH EXPERIENCE NEWS STORY TICK WIZLIST
+Type 'help KEYWORD' to see a list of all of the available topics.
+Also help on: DAMAGE DYING EXPERIENCE NEWS STORY TICK WIZLIST GUILDS
+If you are new here, we recommend that you read BEGINNERS.
 ~
 
 
 
 0 DAMAGE~
 When one character attacks another, the severity of the damage is shown in the
-verb used in the damage message.  Here are all the damage verbs listed from
-least damage to most damage:
+verb used in the damage message.  Listed from least damage to most damage:
 
-    miss        wound           MUTILATE        DEMOLISH
-    scratch     maul            DISEMBOWEL      DEVASTATE
-    graze       decimate        DISMEMBER	OBLITERATE
-    hit         devastate       MASSACRE	ANNIHILATE
-    injure      maim  		MANGLE		ERADICATE
+    miss          wound          MUTILATE       *** DEMOLISH ***
+    scratch       maul           DISEMBOWEL     *** DEVASTATE ***
+    graze         decimate       DISMEMBER      ^^^ DESTROY ^^^
+    hit           devastate      MASSACRE       === OBLITERATE ===
+    injure        maim           MANGLE         <<< ERADICATE >>>
+                                                >>> ANNIHILATE <<<
 
-    And, at the far reaches of damaging power, you can do unspeakable things.
+    At the far reaches of damaging power: "do UNSPEAKABLE things to"
 ~
 
 
@@ -117,6 +128,8 @@ damage one victim, whereas gas damages every PC in the room.  Fire and
 frost can break objects, and acid can damage armor.
 
 High level mages may learn and cast these spells as well.
+
+See also: CAST, SPELLS, PRACTICE
 ~
 
 

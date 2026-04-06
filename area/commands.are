@@ -49,6 +49,8 @@ Each direction functions the same way as typing the full diagonal, for
 example "ne" moves northeast and "sw" moves southwest.  If the exit exists
 and is open, you will step through it; otherwise you will be told the way
 is closed or blocked.
+
+See also: NORTH, EXITS, RUN
 ~
 
 0 ENTER~
@@ -82,6 +84,8 @@ Castle chat is the private channel for members of your castle.  Typing
 castle with no arguments toggles whether you hear castle chat.  Supplying a
 message sends it to every logged-in member of your castle.  Synonyms: CC and
 "-".
+
+See also: CHANNELS, CGOS, CC
 ~
 
 0 IGNORE~
@@ -92,21 +96,39 @@ Syntax: ignore <name>
 Adds or removes players from a personal ignore list.  Characters on your
 ignore list cannot contact you via tells or channels.  The LIST option shows
 who you are currently ignoring; NONE clears the entire list.
+
+See also: TELL, REPLY, AFK
 ~
 
 0 LISTEN~
 Syntax: listen
 
-Listen provides a short ambient description of the sounds around you in your
-current room.  It is helpful for spotting nearby activity without moving.
+LISTEN receives a brief ambient sound description of your current room:
+wind through cracks, distant dripping water, faint movement in the
+shadows, and other atmospheric details that add flavor to the environment.
+The description varies by room type and current conditions.
+
+LISTEN is a flavor command, not a tactical warning.  It does not reveal
+hidden characters or notify you of nearby enemies.  Use SEARCH to
+uncover hidden exits or traps, and SCAN to see what mobs are in
+adjacent rooms.
+
+See also: SEARCH, SCAN, LOOK
 ~
 
 0 REPAIR~
 Syntax: repair <object>
 
 Requests repairs from an NPC repair vendor on worn equipment.  The shopkeeper
-will quote and charge a gold cost based on condition and item type before
-restoring durability.  If the item cannot be repaired, you will be told why.
+quotes and charges a gold cost based on the item's current condition and type
+before restoring it to full durability.  If the item cannot be repaired you
+will be told why.
+
+Repair vendors are found in some guild halls, market districts, and weapon or
+armor shops throughout the world.  Not all shopkeepers offer repair services;
+look for vendors who mention repairs in their room description or greeting.
+
+See also: VALUE, BUY, LIST
 ~
 
 0 SECONDARY~
@@ -115,6 +137,30 @@ Syntax: secondary <weapon>
 Equips the specified weapon in your off-hand if you have trained the
 SECONDARY weapon skill.  This toggles dual wielding; to return to a single
 weapon, wield your main-hand weapon normally.
+
+Dual wielding with low skill imposes accuracy penalties to both weapons.
+As your SECONDARY skill improves, the off-hand penalty diminishes.  Smaller
+or lighter weapons are generally better choices for the off hand.
+
+See also: WIELD, DISARM, DUAL WIELD
+~
+
+0 DUAL WIELD~
+Dual wielding is the act of fighting with a weapon in each hand
+simultaneously.  To dual wield you must:
+  1. Have the SECONDARY skill (gain it from a trainer).
+  2. WIELD your main weapon normally.
+  3. Use SECONDARY <weapon> to equip the off-hand weapon.
+
+Off-hand accuracy starts lower than the main hand and improves as your
+SECONDARY skill increases.  Lighter weapons work better in the off hand;
+very heavy or two-handed weapons cannot be used this way.
+
+To return to single-weapon combat, WIELD your main weapon again -- this
+replaces the off-hand weapon.  You can also use REMOVE on the off-hand
+item, but WIELD is faster.
+
+See also: SECONDARY, WIELD, DISARM
 ~
 
 0 TELEKINESIS TK~
@@ -286,11 +332,17 @@ See also: CRAWL, CLIMB, LEVITATE
 
 0 DELET DELETE~
 Syntax: delet
-Syntax: delete
+Syntax: delete <password>
 
-DELET is a safety guard that prepares you for character deletion.  Typing
-DELETE after using DELET fully confirms removal of your character file.  Use
-with caution; deleted characters cannot be recovered without immortal aid.
+DELET is a safety guard for character deletion.  First type DELET alone to
+arm the command, then confirm with DELETE <yourpassword>.  Both steps must be
+done in sequence to complete the deletion.
+
+Deletion is permanent.  The character's name becomes available for other
+players and will not be restored by immortals.  All equipment and bank gold
+are permanently lost.
+
+See also: PASSWORD, QUIT, SAVE
 ~
 
 0 PROMPT~
@@ -302,6 +354,8 @@ Customizes the prompt shown at the bottom of your screen.  PROMPT with no
 arguments shows your current setting; PROMPT ALL sets a detailed default.
 Placeholders such as %h for hit points, %m for mana, %v for movement, %g for
 gold, and %r for room name may be used to build your own display.
+
+See also: COLOR, COMPACT, BRIEF
 ~
 
 0 QUESTION~
@@ -994,6 +1048,41 @@ steadily while active.  It cannot be combined with IRON or ROLL stances.
 See also: PSIONIC, MINDBAR, PSIONICS
 ~
 
+0 PSIONICS~
+Psionics are mental disciplines available to characters who have remorted at
+least twice (remort 2+).  Upon qualifying, you automatically receive 4
+randomly chosen skills from each of 4 psionic disciplines (16 total possible
+skills spread across the disciplines).  At remort 5 (final) all 16 psionic
+skills are granted.
+
+PSIONIC DISCIPLINES
+
+  Telepathy:   clairvoyance, danger (sense), project (astral scout),
+               astral walk, shift (teleport to player)
+
+  Kinesis:     telekinesis (TK), levitate, mindblast, ego whip,
+               mind leech
+
+  Control:     confuse, nightmare, torment, enervate, transfusion
+
+  Defense:     mindbar, psionic armor, psychic shield, psionic (awareness),
+               psychic (resonance mode)
+
+PASSIVE BENEFITS
+  Remort 2+: access to psionic skills; immune to hunger and thirst.
+  Remort 4+: recall always succeeds (no skill check).
+  Remort 5:  all 16 psionic skills granted; unlimited carry capacity.
+
+RESOURCE COST
+  Most psionic skills draw from your mana pool.  Some toggles (MINDBAR,
+  PSIONIC, PSYCHIC, STEALTH, etc.) maintain a small per-tick mana drain while
+  active.
+
+See also: REMORT, MINDBAR, PSIONIC, PSYCHIC, TELEKINESIS, CLAIRVOYANCE,
+          MINDBLAST, CONFUSE, NIGHTMARE, TORMENT, ENERVATE, TRANSFUSION,
+          ASTRAL WALK, EGO WHIP
+~
+
 0 QUIT QUI~
 Syntax: quit
 Syntax: qui
@@ -1209,18 +1298,27 @@ See also: BRANDISH, RECITE, HOLD
 5 TEACHLIST~
 Syntax: teachlist
 
-This will show you a list of guildmasters and what they can teach you for skills/
-spells. Some spells/skills will require that you learn the group they are in.
-So also check out the gainlist command.
+TEACHLIST shows a list of guildmasters and what they can teach you for
+skills and spells.  Each entry shows the trainer, their location, and the
+skill or spell they offer.  Some skills require that you first gain the
+group they belong to before you can practice them.
+
+Use GAINLIST to see which skill groups are available for purchase, and
+PRACTICE to improve skills once you have learned them.
+
+See also: GAINLIST, GAIN, PRACTICE, TRAIN
 ~
 
 5 GAINLIST~
 Syntax: gainlist
 
-This will show you a list of guildmasters and what they will allow you to gain
-for skills/spells. For information on every group you can consult the help.
-The command teachlist will show you where you can learn which spell. So also
-check out the teachlist command.
+GAINLIST shows a list of guildmasters and the skill groups or individual
+skills they will allow you to GAIN.  Gaining a skill or group costs training
+sessions (not practice sessions).  For a description of each group, consult
+HELP GROUPS.  For a list of who teaches individual skills once you have
+gained them, see TEACHLIST.
+
+See also: TEACHLIST, GAIN, GROUPS, TRAIN
 ~
 
 70 DNS~
@@ -1699,7 +1797,6 @@ See also: LOOK, INVENTORY, GET
 ~
 
 51 EXCHANGE~
-
 Syntax: exchange
 
 If you are a hero, you may exchange experience for more practices.  The cost
@@ -1708,6 +1805,8 @@ practices rather than another level, exchange the experience before leveling.
 Otherwise you'll have to get 5000 more experience up and above your new level.
 Exchanging experience for practices gives you 4-6 more; the exact number of
 practices you get is random.  You may exchange only at the guru in Hero Hall.
+
+See also: PRACTICE, GAIN, TRAIN, WORTH
 ~
 
 0 EXITS~
@@ -2294,7 +2393,9 @@ Syntax: scroll <number>
 
 This command changes the number of lines the mud sends you in a page (the
 default is 24 lines).  Change this to a higher number for larger screen
-sizes, or to 0 to disabling paging.
+sizes, or to 0 to disable paging.
+
+See also: BRIEF, COMPACT, PROMPT
 ~
 
 0 SCROLL OF FARSLAY FARSLAY~
@@ -2435,6 +2536,8 @@ area as you are.
 
 WHERE with an argument tells you the location of one character with that name
 within your area, including monsters.
+
+See also: WHO, SCAN, AREAS
 ~
 
 0 WHO WHOIS~
@@ -3153,7 +3256,7 @@ or attribution is shown — the text appears verbatim on every nearby screen.
 Useful for producing custom room flavor text or staging events.  Immortals
 of higher trust will see a faint staff tag prepended to the message.
 
-See also: GECHO, PECHO, RECHO
+See also: GECHO, PECHO
 ~
 
 64 GECHO~
@@ -3500,21 +3603,43 @@ the current components from the world.
 ~
 
 65 EDIT~
-Syntax: edit <field> <arguments>
-Where field is exit
+Syntax: edit exit <direction> <field> <value>
+
+EDIT modifies live room exit data without requiring a full area reload.
+The only currently supported field is 'exit', which lets you adjust exit
+flags, door states, or key vnums on the fly for testing or event purposes.
+
+Use STAT ROOM to inspect current exit values before editing.  Changes made
+with EDIT persist only until the next area reset or reboot; they are not
+written to the area file.
+
+See also: STAT, GOTO, REPOP
 ~
 
 62 SHOWHUNT~
 Syntax: showhunt
 
-Shows the number of hunting mobs in the game.
+SHOWHUNT reports how many mobile NPCs currently have an active hunt target
+set.  Hunting mobs pursue their targets across rooms until the quarry is
+killed, escapes too far, or the hunt expires.  High hunt counts can affect
+server performance; this command helps staff identify if hunting behavior
+is running out of control.
+
+See also: HPARDON, MWHERE
 ~
 
 62 HPARDON~
 Syntax: hpardon <character>
         hpardon all
 
-Stops a hunt.
+HPARDON cancels any active hunts targeting the specified character, causing
+all mobs currently pursuing them to abandon the chase.  HPARDON ALL clears
+every active hunt in the game simultaneously.
+
+Use this when a hunt becomes stuck, when a player is being griefed by
+relentless hunting mobs after a crash or bug, or to clean up testing.
+
+See also: SHOWHUNT
 ~
 
 67 RESTORECHAR~
@@ -3534,9 +3659,18 @@ before you or they leave.
 
 63 WIZINFO~
 Syntax: wizinfo
+Syntax: wizinfo <message>
 
-WIZINFO toggles whether or not you see WIZINFO messages, telling you who
-has logged in, logged out, lost link, etc..
+WIZINFO with no argument toggles whether you receive the stream of automatic
+staff notifications: logins, logouts, link-death events, level-ups, and other
+significant game events flagged with LOG_ALWAYS.  Most immortals keep this
+enabled.
+
+WIZINFO with a message broadcasts that message to all immortals who have
+WIZINFO enabled, similar to an immortal-only announcement channel.  Use it
+to coordinate with staff, warn about reboots, or share important information.
+
+See also: IMMTALK, GODTALK, ANNOUNCE
 ~
 
 68 WHINE~
