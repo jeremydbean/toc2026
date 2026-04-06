@@ -2425,7 +2425,8 @@ async def health() -> dict[str, bool | str]:
 
 
 @app.get("/api/logs")
-async def tail_logs(lines: int = 200) -> HTMLResponse:
+async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> HTMLResponse:
+    lines = max(1, min(lines, 5000))  # clamp to prevent resource exhaustion
     if not DEFAULT_LOG.exists():
         return HTMLResponse("Log file not found.")
     
@@ -3212,7 +3213,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 while True:
                     data = await websocket.receive_text()
                     print(f"WS received: {repr(data)}")
-                    writer.write(data.encode('latin-1'))
+                    writer.write(data.encode('latin-1', errors='replace'))
                     await writer.drain()
             except WebSocketDisconnect:
                 print("WebSocket disconnected")
