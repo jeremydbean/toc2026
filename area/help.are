@@ -99,43 +99,11 @@ least damage to most damage:
 
 
 
-0 !~
-Syntax: !
 
-! repeats the last command you typed.
-~
 
-0 NORTH SOUTH EAST WEST UP DOWN~
-Syntax: north
-Syntax: south
-Syntax: east
-Syntax: west
-Syntax: up
-Syntax: down
 
-Use these commands to walk in a particular direction.
-~
 
-0 CAST~
-Syntax: cast <spell> <target>
 
-Before you can cast a spell, you have to practice it.  The more you practice,
-the higher chance you have of success when casting.  Casting spells costs mana.
-The mana cost decreases as your level increases.
-
-The <target> is optional.  Many spells which need targets will use an
-appropriate default target, especially during combat.
-
-If the spell name is more than one word, then you must quote the spell name.
-Example: cast 'cure critic' frag.  Quoting is optional for single-word spells.
-You can abbreviate the spell name.
-
-When you cast an offensive spell, the victim usually gets a saving throw.
-The effect of the spell is reduced or eliminated if the victim makes the
-saving throw successfully.
-
-See also the help sections for individual spells.
-~
 
 0 'ACID BREATH' 'FIRE BREATH' 'FROST BREATH' 'GAS BREATH' 'LIGHTNING BREATH'~
 Syntax: cast 'acid breath'      <victim>
@@ -151,33 +119,7 @@ frost can break objects, and acid can damage armor.
 High level mages may learn and cast these spells as well.
 ~
 
--1 PROMPT~
-Syntax: prompt
-Syntax: prompt all
-Syntax: prompt <%*>
 
-PROMPT with out an argument will turn your prompt on or off.
-
-PROMPT ALL will give you the standard "<hits mana moves>" prompt.
-
-PROMPT <%*> where the %* are the various variables you may set yourself.
-
-        %h :  Display your current hits
-        %H :  Display your maximum hits
-        %m :  Display your current mana
-        %M :  Display your maximum mana
-        %v :  Display your current moves
-        %V :  Display your maximum moves
-        %x :  Display your current experience
-        %X :  Display experience to level
-        %g :  Display your gold held
-        %a :  Display your alignment
-        %R :  Display the vnum you are in (IMMORTAL ONLY)
-        %z :  Display the area name you are in (IMMORTAL ONLY)
-
-Example:  PROMPT <%hhp %mm %vmv>
-        Will set your prompt to "<10hp 100m 100mv>"
-~
 
 0 $~
 
