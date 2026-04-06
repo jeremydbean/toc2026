@@ -1622,6 +1622,15 @@ struct  pc_data
     int                 last_session_quests;  /* quests completed last session */
 
     long                bank_interest_time;   /* unix timestamp of last interest payment */
+
+    /* Casino stats (persisted) */
+    long                casino_winnings;      /* lifetime net gold won at casino  */
+    long                casino_losses;        /* lifetime gold lost at casino      */
+
+    /* Pending large-bet confirmation (session-only, not saved) */
+    long                casino_pending_amount;
+    int                 casino_pending_game;  /* 1=bet 2=roulette 3=poker          */
+    char                casino_pending_arg[MAX_INPUT_LENGTH]; /* stored second arg  */
 };
 
 struct my_mesg_buf{

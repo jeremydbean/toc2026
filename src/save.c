@@ -455,6 +455,10 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	fprintf( fp, "QuestStrk %d\n",	ch->queststreak );
     if( ch->questgamble_pts != 0 )
 	fprintf( fp, "QuestGmbl %d\n",	ch->questgamble_pts );
+    if ( ch->pcdata->casino_winnings != 0 )
+        fprintf( fp, "CasinoWon  %ld\n", ch->pcdata->casino_winnings );
+    if ( ch->pcdata->casino_losses != 0 )
+        fprintf( fp, "CasinoLost %ld\n", ch->pcdata->casino_losses );
     if( ch->nextquest != 0 )
 	fprintf( fp, "QuestNext %d\n",	ch->nextquest	);
     else if( ch->countdown != 0 )
@@ -1275,6 +1279,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'C':
 	    KEY( "Cast",	ch->pcdata->castle,
 					(sh_int)(castle_lookup(fread_word( fp ) )) );
+	    KEY( "CasinoWon",	ch->pcdata->casino_winnings,	fread_number( fp ) );
+	    KEY( "CasinoLost",	ch->pcdata->casino_losses,	fread_number( fp ) );
 	    KEY( "Class",	ch->class,		(sh_int)(fread_number( fp )) );
 	    KEY( "Cla",		ch->class,		(sh_int)(fread_number( fp )) );
 	  KEY( "ColFlag",	ch->pcdata->color,	fread_number( fp ) );

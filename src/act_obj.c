@@ -4090,7 +4090,11 @@ void add_platinum(CHAR_DATA *ch, long amount)
 #define CASINO_VNUM_LOW  4810
 #define CASINO_VNUM_HIGH 4829
 #define CASINO_BET_MIN   1L
-#define CASINO_BET_MAX   500L
+#define CASINO_BET_MAX   100000L
+#define CASINO_CONFIRM_THRESHOLD 500L
+#define CASINO_PENDING_BET      1
+#define CASINO_PENDING_ROULETTE 2
+#define CASINO_PENDING_POKER    3
 
 static bool in_casino( CHAR_DATA *ch )
 {
@@ -4204,6 +4208,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     long amount;
     int die1, die2, total;
     bool pick_hi;
+    bool confirming = false;
 
     if ( IS_NPC(ch) )
     {
@@ -4220,35 +4225,54 @@ void do_bet( CHAR_DATA *ch, char *argument )
     argument = one_argument( argument, arg1 );
     one_argument( argument, arg2 );
 
-    if ( arg1[0] == '\0' || arg2[0] == '\0' )
+    /* --- confirm branch: execute a previously staged large bet --- */
+    if ( !str_cmp( arg1, "confirm" ) )
     {
-        send_to_char( "Syntax: bet <amount> hi   or   bet <amount> lo\n\r", ch );
-        send_to_char( "  HI wins if the two dice total MORE than 7.\n\r", ch );
-        send_to_char( "  LO wins if the two dice total LESS than 7.\n\r", ch );
-        send_to_char( "  A total of exactly 7 means the HOUSE wins.\n\r", ch );
-        return;
+        if ( ch->pcdata->casino_pending_game != CASINO_PENDING_BET
+          || ch->pcdata->casino_pending_amount <= 0 )
+        {
+            send_to_char( "You have no pending bet to confirm.\n\r", ch );
+            return;
+        }
+        amount    = ch->pcdata->casino_pending_amount;
+        strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
+        ch->pcdata->casino_pending_game        = 0;
+        ch->pcdata->casino_pending_amount      = 0;
+        ch->pcdata->casino_pending_arg[0]      = '\0';
+        confirming = true;
     }
-
-    if ( !is_number(arg1) )
+    else
     {
-        send_to_char( "Specify a numeric amount.  Syntax: bet <amount> hi/lo\n\r", ch );
-        return;
-    }
+        if ( arg1[0] == '\0' || arg2[0] == '\0' )
+        {
+            send_to_char( "Syntax: bet <amount> hi   or   bet <amount> lo\n\r", ch );
+            send_to_char( "  HI wins if the two dice total MORE than 7.\n\r", ch );
+            send_to_char( "  LO wins if the two dice total LESS than 7.\n\r", ch );
+            send_to_char( "  A total of exactly 7 means the HOUSE wins.\n\r", ch );
+            return;
+        }
 
-    amount = (long)atol( arg1 );
+        if ( !is_number(arg1) )
+        {
+            send_to_char( "Specify a numeric amount.  Syntax: bet <amount> hi/lo\n\r", ch );
+            return;
+        }
 
-    if ( amount < CASINO_BET_MIN )
-    {
-        snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", CASINO_BET_MIN );
-        send_to_char( buf, ch );
-        return;
-    }
+        amount = (long)atol( arg1 );
 
-    if ( amount > CASINO_BET_MAX )
-    {
-        snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", CASINO_BET_MAX );
-        send_to_char( buf, ch );
-        return;
+        if ( amount < CASINO_BET_MIN )
+        {
+            snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", CASINO_BET_MIN );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        if ( amount > CASINO_BET_MAX )
+        {
+            snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", CASINO_BET_MAX );
+            send_to_char( buf, ch );
+            return;
+        }
     }
 
     if ( !str_prefix( arg2, "high" ) || !str_cmp( arg2, "hi" ) )
@@ -4267,6 +4291,21 @@ void do_bet( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* --- confirmation prompt for large bets --- */
+    if ( !confirming && amount > CASINO_CONFIRM_THRESHOLD )
+    {
+        ch->pcdata->casino_pending_amount = amount;
+        ch->pcdata->casino_pending_game   = CASINO_PENDING_BET;
+        strlcpy( ch->pcdata->casino_pending_arg, arg2,
+                 sizeof(ch->pcdata->casino_pending_arg) );
+        snprintf( buf, sizeof(buf),
+            "That's a big bet!  You want to wager %ld gold on %s?\n\r"
+            "Type 'bet confirm' to proceed or any other command to cancel.\n\r",
+            amount, pick_hi ? "HI" : "LO" );
+        send_to_char( buf, ch );
+        return;
+    }
+
     die1 = number_range( 1, 6 );
     die2 = number_range( 1, 6 );
     total = die1 + die2;
@@ -4281,6 +4320,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     {
         /* House wins on a 7 */
         add_money( ch, -amount );
+        ch->pcdata->casino_losses += amount;
         snprintf( buf, sizeof(buf),
             "Seven -- the house wins.  You lose %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -4290,6 +4330,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     {
         /* Player wins -- pays 1:1 */
         add_money( ch, amount );
+        ch->pcdata->casino_winnings += amount;
         snprintf( buf, sizeof(buf),
             "You called it!  You win %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -4299,6 +4340,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     {
         /* Player loses */
         add_money( ch, -amount );
+        ch->pcdata->casino_losses += amount;
         snprintf( buf, sizeof(buf),
             "Wrong call.  You lose %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -4330,6 +4372,7 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     long amount, net;
     int  spin;
     bool wins;
+    bool confirming = false;
     const char *color;
 
     if ( IS_NPC(ch) )
@@ -4347,36 +4390,55 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     argument = one_argument( argument, arg1 );
     one_argument( argument, arg2 );
 
-    if ( arg1[0] == '\0' || arg2[0] == '\0' )
+    /* --- confirm branch --- */
+    if ( !str_cmp( arg1, "confirm" ) )
     {
-        send_to_char( "Syntax: roulette <amount> <bet>\n\r", ch );
-        send_to_char( "  Even-money bets  (1:1): red  black  even  odd  low(1-18)  high(19-36)\n\r", ch );
-        send_to_char( "  Dozen bets       (2:1): first(1-12)  second(13-24)  third(25-36)\n\r", ch );
-        send_to_char( "  Straight-up     (35:1): 0  1  2  ...  36\n\r", ch );
-        send_to_char( "  Zero (0) loses all even-money and dozen bets.\n\r", ch );
-        return;
+        if ( ch->pcdata->casino_pending_game != CASINO_PENDING_ROULETTE
+          || ch->pcdata->casino_pending_amount <= 0 )
+        {
+            send_to_char( "You have no pending roulette bet to confirm.\n\r", ch );
+            return;
+        }
+        amount    = ch->pcdata->casino_pending_amount;
+        strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
+        ch->pcdata->casino_pending_game        = 0;
+        ch->pcdata->casino_pending_amount      = 0;
+        ch->pcdata->casino_pending_arg[0]      = '\0';
+        confirming = true;
     }
-
-    if ( !is_number(arg1) )
+    else
     {
-        send_to_char( "Specify a numeric amount.  Syntax: roulette <amount> <bet>\n\r", ch );
-        return;
-    }
+        if ( arg1[0] == '\0' || arg2[0] == '\0' )
+        {
+            send_to_char( "Syntax: roulette <amount> <bet>\n\r", ch );
+            send_to_char( "  Even-money bets  (1:1): red  black  even  odd  low(1-18)  high(19-36)\n\r", ch );
+            send_to_char( "  Dozen bets       (2:1): first(1-12)  second(13-24)  third(25-36)\n\r", ch );
+            send_to_char( "  Straight-up     (35:1): 0  1  2  ...  36\n\r", ch );
+            send_to_char( "  Zero (0) loses all even-money and dozen bets.\n\r", ch );
+            return;
+        }
 
-    amount = (long)atol( arg1 );
+        if ( !is_number(arg1) )
+        {
+            send_to_char( "Specify a numeric amount.  Syntax: roulette <amount> <bet>\n\r", ch );
+            return;
+        }
 
-    if ( amount < CASINO_BET_MIN )
-    {
-        snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", CASINO_BET_MIN );
-        send_to_char( buf, ch );
-        return;
-    }
+        amount = (long)atol( arg1 );
 
-    if ( amount > CASINO_BET_MAX )
-    {
-        snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", CASINO_BET_MAX );
-        send_to_char( buf, ch );
-        return;
+        if ( amount < CASINO_BET_MIN )
+        {
+            snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", CASINO_BET_MIN );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        if ( amount > CASINO_BET_MAX )
+        {
+            snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", CASINO_BET_MAX );
+            send_to_char( buf, ch );
+            return;
+        }
     }
 
     if ( !has_enough_gold( ch, amount ) )
@@ -4385,9 +4447,9 @@ void do_roulette( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* --- validate bet type before deducting --- */
+    /* --- validate bet type --- */
     wins = false;
-    net  = amount; /* net winnings if wins (not counting returned stake) */
+    net  = amount;
 
     if ( is_number(arg2) )
     {
@@ -4407,6 +4469,21 @@ void do_roulette( CHAR_DATA *ch, char *argument )
               str_prefix(arg2,"third")  && str_cmp(arg2,"3rd") )
     {
         send_to_char( "Valid bets: red black even odd low high first second third 0-36\n\r", ch );
+        return;
+    }
+
+    /* --- confirmation prompt for large bets --- */
+    if ( !confirming && amount > CASINO_CONFIRM_THRESHOLD )
+    {
+        ch->pcdata->casino_pending_amount = amount;
+        ch->pcdata->casino_pending_game   = CASINO_PENDING_ROULETTE;
+        strlcpy( ch->pcdata->casino_pending_arg, arg2,
+                 sizeof(ch->pcdata->casino_pending_arg) );
+        snprintf( buf, sizeof(buf),
+            "That's a big bet!  You want to wager %ld gold on %s?\n\r"
+            "Type 'roulette confirm' to proceed or any other command to cancel.\n\r",
+            amount, arg2 );
+        send_to_char( buf, ch );
         return;
     }
 
@@ -4467,12 +4544,14 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     if ( wins )
     {
         add_money( ch, amount + net );
+        ch->pcdata->casino_winnings += net;
         snprintf( buf, sizeof(buf),
             "You win!  Net gain: %ld gold.  (Balance: %ld gold)\n\r",
             net, query_gold(ch) );
     }
     else
     {
+        ch->pcdata->casino_losses += amount;
         snprintf( buf, sizeof(buf),
             "You lose %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -4581,8 +4660,7 @@ void do_poker( CHAR_DATA *ch, char *argument )
     long amount;
     PokerCard hand[5];
     int rank, i;
-
-    UNUSED_PARAM(argument);
+    bool confirming = false;
 
     if ( IS_NPC(ch) )
     {
@@ -4598,50 +4676,82 @@ void do_poker( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
 
-    if ( arg[0] == '\0' )
+    /* --- confirm branch --- */
+    if ( !str_cmp( arg, "confirm" ) )
     {
-        snprintf( buf, sizeof(buf),
-            "Syntax: poker <amount>  (min %ld gold, max %ld gold)\n\r",
-            POKER_BET_MIN, POKER_BET_MAX );
-        send_to_char( buf, ch );
-        send_to_char( "Payouts (net multiple of wager):\n\r", ch );
-        send_to_char( "  Royal Flush    -- 100x\n\r", ch );
-        send_to_char( "  Straight Flush --  20x\n\r", ch );
-        send_to_char( "  Four of a Kind --  10x\n\r", ch );
-        send_to_char( "  Full House     --   7x\n\r", ch );
-        send_to_char( "  Flush          --   5x\n\r", ch );
-        send_to_char( "  Straight       --   3x\n\r", ch );
-        send_to_char( "  Three of a Kind --  2x\n\r", ch );
-        send_to_char( "  Two Pair       --   1x\n\r", ch );
-        send_to_char( "  Jacks or Better -- push\n\r", ch );
-        return;
+        if ( ch->pcdata->casino_pending_game != CASINO_PENDING_POKER
+          || ch->pcdata->casino_pending_amount <= 0 )
+        {
+            send_to_char( "You have no pending poker bet to confirm.\n\r", ch );
+            return;
+        }
+        amount    = ch->pcdata->casino_pending_amount;
+        ch->pcdata->casino_pending_game        = 0;
+        ch->pcdata->casino_pending_amount      = 0;
+        ch->pcdata->casino_pending_arg[0]      = '\0';
+        confirming = true;
     }
-
-    if ( !is_number(arg) )
+    else
     {
-        send_to_char( "Specify a numeric amount.  Syntax: poker <amount>\n\r", ch );
-        return;
-    }
+        if ( arg[0] == '\0' )
+        {
+            snprintf( buf, sizeof(buf),
+                "Syntax: poker <amount>  (min %ld gold, max %ld gold)\n\r",
+                POKER_BET_MIN, POKER_BET_MAX );
+            send_to_char( buf, ch );
+            send_to_char( "Payouts (net multiple of wager):\n\r", ch );
+            send_to_char( "  Royal Flush    -- 100x\n\r", ch );
+            send_to_char( "  Straight Flush --  20x\n\r", ch );
+            send_to_char( "  Four of a Kind --  10x\n\r", ch );
+            send_to_char( "  Full House     --   7x\n\r", ch );
+            send_to_char( "  Flush          --   5x\n\r", ch );
+            send_to_char( "  Straight       --   3x\n\r", ch );
+            send_to_char( "  Three of a Kind --  2x\n\r", ch );
+            send_to_char( "  Two Pair       --   1x\n\r", ch );
+            send_to_char( "  Jacks or Better -- push\n\r", ch );
+            return;
+        }
 
-    amount = (long)atol( arg );
+        if ( !is_number(arg) )
+        {
+            send_to_char( "Specify a numeric amount.  Syntax: poker <amount>\n\r", ch );
+            return;
+        }
 
-    if ( amount < POKER_BET_MIN )
-    {
-        snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", POKER_BET_MIN );
-        send_to_char( buf, ch );
-        return;
-    }
+        amount = (long)atol( arg );
 
-    if ( amount > POKER_BET_MAX )
-    {
-        snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", POKER_BET_MAX );
-        send_to_char( buf, ch );
-        return;
+        if ( amount < POKER_BET_MIN )
+        {
+            snprintf( buf, sizeof(buf), "Minimum bet is %ld gold.\n\r", POKER_BET_MIN );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        if ( amount > POKER_BET_MAX )
+        {
+            snprintf( buf, sizeof(buf), "Maximum bet is %ld gold.\n\r", POKER_BET_MAX );
+            send_to_char( buf, ch );
+            return;
+        }
     }
 
     if ( !has_enough_gold( ch, amount ) )
     {
         send_to_char( "You don't have enough gold for that bet.\n\r", ch );
+        return;
+    }
+
+    /* --- confirmation prompt for large bets --- */
+    if ( !confirming && amount > CASINO_CONFIRM_THRESHOLD )
+    {
+        ch->pcdata->casino_pending_amount = amount;
+        ch->pcdata->casino_pending_game   = CASINO_PENDING_POKER;
+        ch->pcdata->casino_pending_arg[0] = '\0';
+        snprintf( buf, sizeof(buf),
+            "That's a big bet!  You want to wager %ld gold on video poker?\n\r"
+            "Type 'poker confirm' to proceed or any other command to cancel.\n\r",
+            amount );
+        send_to_char( buf, ch );
         return;
     }
 
@@ -4665,6 +4775,7 @@ void do_poker( CHAR_DATA *ch, char *argument )
 
     if ( rank == -1 )
     {
+        ch->pcdata->casino_losses += amount;
         snprintf( buf, sizeof(buf),
             "No winning hand.  You lose %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -4672,7 +4783,7 @@ void do_poker( CHAR_DATA *ch, char *argument )
     }
     else if ( rank == 0 )
     {
-        /* Push: return the stake */
+        /* Push: return the stake — no win, no loss */
         add_money( ch, amount );
         snprintf( buf, sizeof(buf),
             "%s -- push!  Your %ld gold is returned.  (Balance: %ld gold)\n\r",
@@ -4683,6 +4794,7 @@ void do_poker( CHAR_DATA *ch, char *argument )
     {
         long winnings = (long)PAYOUT[rank] * amount;
         add_money( ch, amount + winnings );
+        ch->pcdata->casino_winnings += winnings;
         snprintf( buf, sizeof(buf),
             "%s!  You win %ld gold.  (Balance: %ld gold)\n\r",
             HAND_NAME[rank], winnings, query_gold(ch) );

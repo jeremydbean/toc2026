@@ -1456,6 +1456,14 @@ void do_score( CHAR_DATA *ch, char *argument )
         send_to_char(buf,ch);
       }
 
+      if ( ch->pcdata->casino_winnings > 0 || ch->pcdata->casino_losses > 0 )
+      {
+        snprintf( buf, sizeof(buf), "| %-14s %8ld | %-14s %8ld %8s|\n\r",
+            "Casino Won:", ch->pcdata->casino_winnings,
+            "Casino Lost:", ch->pcdata->casino_losses, " " );
+        send_to_char( buf, ch );
+      }
+
       if ( IS_IMMORTAL(ch))
       {
         send_to_char(kader, ch);
