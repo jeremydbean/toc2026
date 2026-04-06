@@ -1458,9 +1458,9 @@ void do_score( CHAR_DATA *ch, char *argument )
 
       if ( ch->pcdata->casino_winnings > 0 || ch->pcdata->casino_losses > 0 )
       {
-        snprintf( buf, sizeof(buf), "| %-14s %8ld | %-14s %8ld %8s|\n\r",
+        snprintf( buf, sizeof(buf), "| %-11s %8ld | %-14s %18ld |\n\r",
             "Casino Won:", ch->pcdata->casino_winnings,
-            "Casino Lost:", ch->pcdata->casino_losses, " " );
+            "Casino Lost:", ch->pcdata->casino_losses );
         send_to_char( buf, ch );
       }
 

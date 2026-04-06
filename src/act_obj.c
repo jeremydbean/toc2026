@@ -4189,11 +4189,19 @@ void do_slots( CHAR_DATA *ch, char *argument )
         add_money( ch, payout );
         if ( payout > 1 )
         {
+            /* Net win: received payout, paid 1 coin in */
+            ch->pcdata->casino_winnings += (payout - 1);
             snprintf( buf, sizeof(buf),
                 "You receive %ld gold coins.  Your new total is %ld gold.\n\r",
                 payout, query_gold(ch) );
             send_to_char( buf, ch );
         }
+        /* payout == 1: cherry break-even, no net win/loss */
+    }
+    else
+    {
+        /* No match: lost the 1-coin stake */
+        ch->pcdata->casino_losses += 1;
     }
 
     act( "$n pulls the handle on a slot machine.", ch, NULL, NULL, TO_ROOM );
@@ -4224,6 +4232,21 @@ void do_bet( CHAR_DATA *ch, char *argument )
 
     argument = one_argument( argument, arg1 );
     one_argument( argument, arg2 );
+
+    /* --- cancel branch --- */
+    if ( !str_cmp( arg1, "cancel" ) )
+    {
+        if ( ch->pcdata->casino_pending_game == CASINO_PENDING_BET )
+        {
+            ch->pcdata->casino_pending_game   = 0;
+            ch->pcdata->casino_pending_amount = 0;
+            ch->pcdata->casino_pending_arg[0] = '\0';
+            send_to_char( "Bet cancelled.\n\r", ch );
+        }
+        else
+            send_to_char( "You have no pending bet to cancel.\n\r", ch );
+        return;
+    }
 
     /* --- confirm branch: execute a previously staged large bet --- */
     if ( !str_cmp( arg1, "confirm" ) )
@@ -4300,7 +4323,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
                  sizeof(ch->pcdata->casino_pending_arg) );
         snprintf( buf, sizeof(buf),
             "That's a big bet!  You want to wager %ld gold on %s?\n\r"
-            "Type 'bet confirm' to proceed or any other command to cancel.\n\r",
+            "Type 'bet confirm' to proceed, or 'bet cancel' to back out.\n\r",
             amount, pick_hi ? "HI" : "LO" );
         send_to_char( buf, ch );
         return;
@@ -4389,6 +4412,21 @@ void do_roulette( CHAR_DATA *ch, char *argument )
 
     argument = one_argument( argument, arg1 );
     one_argument( argument, arg2 );
+
+    /* --- cancel branch --- */
+    if ( !str_cmp( arg1, "cancel" ) )
+    {
+        if ( ch->pcdata->casino_pending_game == CASINO_PENDING_ROULETTE )
+        {
+            ch->pcdata->casino_pending_game   = 0;
+            ch->pcdata->casino_pending_amount = 0;
+            ch->pcdata->casino_pending_arg[0] = '\0';
+            send_to_char( "Roulette bet cancelled.\n\r", ch );
+        }
+        else
+            send_to_char( "You have no pending roulette bet to cancel.\n\r", ch );
+        return;
+    }
 
     /* --- confirm branch --- */
     if ( !str_cmp( arg1, "confirm" ) )
@@ -4481,7 +4519,7 @@ void do_roulette( CHAR_DATA *ch, char *argument )
                  sizeof(ch->pcdata->casino_pending_arg) );
         snprintf( buf, sizeof(buf),
             "That's a big bet!  You want to wager %ld gold on %s?\n\r"
-            "Type 'roulette confirm' to proceed or any other command to cancel.\n\r",
+            "Type 'roulette confirm' to proceed, or 'roulette cancel' to back out.\n\r",
             amount, arg2 );
         send_to_char( buf, ch );
         return;
@@ -4676,6 +4714,21 @@ void do_poker( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
 
+    /* --- cancel branch --- */
+    if ( !str_cmp( arg, "cancel" ) )
+    {
+        if ( ch->pcdata->casino_pending_game == CASINO_PENDING_POKER )
+        {
+            ch->pcdata->casino_pending_game   = 0;
+            ch->pcdata->casino_pending_amount = 0;
+            ch->pcdata->casino_pending_arg[0] = '\0';
+            send_to_char( "Poker bet cancelled.\n\r", ch );
+        }
+        else
+            send_to_char( "You have no pending poker bet to cancel.\n\r", ch );
+        return;
+    }
+
     /* --- confirm branch --- */
     if ( !str_cmp( arg, "confirm" ) )
     {
@@ -4749,7 +4802,7 @@ void do_poker( CHAR_DATA *ch, char *argument )
         ch->pcdata->casino_pending_arg[0] = '\0';
         snprintf( buf, sizeof(buf),
             "That's a big bet!  You want to wager %ld gold on video poker?\n\r"
-            "Type 'poker confirm' to proceed or any other command to cancel.\n\r",
+            "Type 'poker confirm' to proceed, or 'poker cancel' to back out.\n\r",
             amount );
         send_to_char( buf, ch );
         return;

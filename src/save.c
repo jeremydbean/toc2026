@@ -1279,8 +1279,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'C':
 	    KEY( "Cast",	ch->pcdata->castle,
 					(sh_int)(castle_lookup(fread_word( fp ) )) );
-	    KEY( "CasinoWon",	ch->pcdata->casino_winnings,	fread_number( fp ) );
-	    KEY( "CasinoLost",	ch->pcdata->casino_losses,	fread_number( fp ) );
+	    KEY( "CasinoWon",	ch->pcdata->casino_winnings,	(long)(fread_number( fp )) );
+	    KEY( "CasinoLost",	ch->pcdata->casino_losses,	(long)(fread_number( fp )) );
 	    KEY( "Class",	ch->class,		(sh_int)(fread_number( fp )) );
 	    KEY( "Cla",		ch->class,		(sh_int)(fread_number( fp )) );
 	  KEY( "ColFlag",	ch->pcdata->color,	fread_number( fp ) );
