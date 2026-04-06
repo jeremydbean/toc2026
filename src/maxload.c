@@ -106,6 +106,7 @@ static int get_maxload_with_players(int vnum)
     if ((fp = popen(buf, "r")) == NULL)
     {
         log_string("Failed opening pipe in get_maxload_with_players");
+        fpReserve = fopen(NULL_FILE, "r");
         return 0;
     }
 
@@ -326,11 +327,11 @@ void do_set_maxload(CHAR_DATA *ch, char *argument)
         }
     }
 
-    for (i = 0; arg1[i] != '\0'; i++)
+    for (i = 0; arg2[i] != '\0'; i++)
     {
         if (i == 0)
         {
-            if (!isdigit(arg1[i]) && (arg1[i] != '-'))
+            if (!isdigit(arg2[i]) && (arg2[i] != '-'))
             {
                 send_to_char("The num should be -1, 0 or a positive number.\n\r",
                              ch);
@@ -339,7 +340,7 @@ void do_set_maxload(CHAR_DATA *ch, char *argument)
         }
         else
         {
-            if (!isdigit(arg1[i]))
+            if (!isdigit(arg2[i]))
             {
                 send_to_char("The num should be -1, 0 or a positive number.\n\r",
                              ch);

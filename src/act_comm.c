@@ -1022,6 +1022,7 @@ void do_yell( CHAR_DATA *ch, char *argument )
 	if ( d->connected == CON_PLAYING
 	&&   d->character != ch
 	&&   d->character->in_room != NULL
+	&&   ch->in_room != NULL
 	&&   d->character->in_room->area == ch->in_room->area 
         &&   !IS_SET(d->character->comm,COMM_QUIET) )
 	{

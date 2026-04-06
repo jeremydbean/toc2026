@@ -362,15 +362,9 @@ int get_dual_sn(CHAR_DATA *ch)
 
     wield = get_eq_char( ch, WEAR_SHIELD );
     if (wield == NULL || wield->item_type != ITEM_WEAPON)
+	return -1;
 
-/*      return NULL;*/
-
-/* Above line commented out because it gives a pointer error
-   and replaced with the line shown below - Rico */
-
-    return -1;
-
-    else switch (wield->value[0])
+    switch (wield->value[0])
     {
 	default :               sn = -1;                break;
 	case(WEAPON_SWORD):     sn = gsn_sword;         break;
@@ -1188,6 +1182,12 @@ void char_to_obj( CHAR_DATA *ch, OBJ_DATA *obj)
 void char_from_obj( OBJ_DATA *obj )
 {
 
+   if ( obj->trapped == NULL )
+   {
+       bug( "Char_from_obj: trapped is NULL.", 0 );
+       return;
+   }
+
    if(obj->in_room != NULL)
      char_to_room(obj->trapped,obj->in_room);
    else if(obj->carried_by && obj->carried_by->in_room)
@@ -1548,7 +1548,10 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 	act( "You are zapped by $p and drop it.", ch, obj, NULL, TO_CHAR );
 	act( "$n is zapped by $p and drops it.",  ch, obj, NULL, TO_ROOM );
 	obj_from_char( obj );
-	obj_to_room( obj, ch->in_room );
+	if ( ch->in_room != NULL )
+	    obj_to_room( obj, ch->in_room );
+	else
+	    bug( "Equip_char: character has no room for zap drop.", 0 );
 	return;
     }
 
@@ -3335,6 +3338,9 @@ void room_affect(CHAR_DATA *ch, ROOM_INDEX_DATA *pRoom, int door)
     int dam;
 
     raf = pRoom->affected;
+
+    if ( raf == NULL )
+        return;   /* room flag set but no affect data */
 
     if(raf->aff_exit != 10 && raf->aff_exit != door)
       return;
