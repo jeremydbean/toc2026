@@ -807,11 +807,17 @@ bool spec_executioner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 		snprintf(buf, sizeof(buf), "%s is %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!",
 			victim->name, crime );
 		do_yell( mob, buf );
-		multi_hit( mob, victim, TYPE_UNDEFINED );
-		char_to_room( create_mobile( get_mob_index(MOB_VNUM_CITYGUARD) ),
-			mob->in_room );
-		char_to_room( create_mobile( get_mob_index(MOB_VNUM_CITYGUARD) ),
-			mob->in_room );
+		{
+		    ROOM_INDEX_DATA *spawn_room = mob->in_room;
+		    multi_hit( mob, victim, TYPE_UNDEFINED );
+		    if ( spawn_room != NULL && get_room_index(spawn_room->vnum) != NULL )
+		    {
+			char_to_room( create_mobile( get_mob_index(MOB_VNUM_CITYGUARD) ),
+				spawn_room );
+			char_to_room( create_mobile( get_mob_index(MOB_VNUM_CITYGUARD) ),
+				spawn_room );
+		    }
+		}
 	} else if (victim->hit > 10 && victim->hit < 301)
 	{
 		act("$n knocks you around the room!", mob, NULL, victim, TO_VICT);
@@ -1508,7 +1514,7 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
     UNUSED_PARAM(mob);
     char buf[MAX_STRING_LENGTH];
  
-    if ( (cmd==NULL) || (ch == NULL)
+    if ( (cmd==NULL) || (ch == NULL) || (ch->in_room == NULL)
     || (!IS_SET(ch->in_room->room_flags, ROOM_PET_SHOP) ) )
 	return false;
  
@@ -2372,11 +2378,12 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     while(most_hurt->hit != most_hurt->max_hit);
  
     sn = skill_lookup("restore mana");
-    (*skill_table[sn].spell_fun) (sn,mob->level, mob, most_hurt);
- 
+    if ( sn >= 0 )
+	(*skill_table[sn].spell_fun) (sn,mob->level, mob, most_hurt);
+
     sn = skill_lookup("refresh");
-    (*skill_table[sn].spell_fun) (sn,mob->level,mob, most_hurt);
- 
+    if ( sn >= 0 )
+	(*skill_table[sn].spell_fun) (sn,mob->level,mob, most_hurt);
     act("$n says, 'Well, I have to be off, others to heal ya know.'",mob, NULL,most_hurt,TO_ROOM);
     act("$n says, 'A piece of advice....try getting hit less!' $n smiles.",mob, NULL,most_hurt,TO_ROOM);
     act("With a mighty beating of wings, $e disappears into the sky.",mob,NULL,most_hurt,TO_ROOM);
@@ -2703,7 +2710,6 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
  
    send_to_char("A black dragon swoops down and snatches you into it's claws!\n\r",wch);
    act("A black dragon swoops down, flying off with $n.",wch,NULL,NULL,TO_ROOM);
-   char_from_room(wch);
  
    {
      int attempts;
@@ -2720,14 +2726,22 @@ bool spec_kidnapper( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argument 
          &&   !IS_SET(pRoomTport->room_flags, ROOM_DT)
          &&   pRoomTport->people == NULL )
              break;
+         pRoomTport = NULL;   /* ensure NULL if flags failed */
      }
      if ( pRoomTport == NULL )
      {
-         char_to_room( wch, get_room_index(ROOM_VNUM_TEMPLE) );
+         ROOM_INDEX_DATA *fallback = get_room_index(ROOM_VNUM_TEMPLE);
+         if ( fallback == NULL )
+             fallback = get_room_index(ROOM_VNUM_LIMBO);
+         if ( fallback == NULL )
+             return false;
+         char_from_room(wch);
+         char_to_room( wch, fallback );
          send_to_char("The dragon loses its grip and drops you!\n\r", wch);
          return false;
      }
    }
+   char_from_room(wch);
    char_to_room(wch, pRoomTport);
    send_to_char("You are deposited in a remote site for later consumption.\n\r",wch);
    snprintf(buf, sizeof(buf),"%s has been snatched by the dragon",wch->name);

@@ -65,7 +65,7 @@ bool can_loot(CHAR_DATA *ch, OBJ_DATA *obj)
 
     owner = NULL;
     FOR_EACH_CHARACTER( iter, wch )
-        if (!str_cmp(wch->name,obj->owner))
+        if (!IS_NPC(wch) && !str_cmp(wch->name,obj->owner))
             owner = wch;
 
     if (owner == NULL)
@@ -296,19 +296,19 @@ void do_donate( CHAR_DATA *ch, char *argument )
  *                                                         Stormy 5-26-94
  */
 
-    if (curr_room != location)
-    {
-	   act( "$n donates $p.", ch, obj, NULL, TO_ROOM );
-    }
-
-    act("You donate $p.",ch, obj, NULL, TO_CHAR);
-
     if ((curr_room==NULL) || (location==NULL))
     {
 	send_to_char("Error: Your donation failed, please inform an Immortal.\n\r",
 				ch);
 	return;
    }
+
+    if (curr_room != location)
+    {
+	   act( "$n donates $p.", ch, obj, NULL, TO_ROOM );
+    }
+
+    act("You donate $p.",ch, obj, NULL, TO_CHAR);
 
     char_from_room(ch);
     char_to_room(ch, location);
@@ -1343,6 +1343,9 @@ void do_deposit( CHAR_DATA *ch, char *argument )
     long amount_copper;
     int coin_type;
 
+    if ( IS_NPC(ch) )
+        return;
+
     if (!parse_coin_amount(argument, &amount, &coin_type))
     {
         send_to_char("Syntax is: deposit <amount> [platinum|gold|silver|copper].\n\r", ch);
@@ -1390,6 +1393,9 @@ void do_withdraw( CHAR_DATA *ch, char *argument )
     long amount;
     long amount_copper;
     int coin_type;
+
+    if ( IS_NPC(ch) )
+        return;
 
     if (!parse_coin_amount(argument, &amount, &coin_type))
     {
@@ -1603,7 +1609,7 @@ void do_drink( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( ( liquid = obj->value[2] ) >= LIQ_MAX )
+	if ( ( liquid = obj->value[2] ) < 0 || liquid >= LIQ_MAX )
 	{
 	    bug( "Do_drink: bad liquid number %d.", liquid );
 	    liquid = obj->value[2] = 0;
@@ -1865,7 +1871,7 @@ void do_secondary( CHAR_DATA *ch, char *argument )
 
 
 	if ( ch->size < SIZE_LARGE
-	&&  get_eq_char(ch,ITEM_WEAR_SHIELD) != NULL
+	&&  get_eq_char(ch,WEAR_SHIELD) != NULL
 	&&  IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS) )
 	{
 	    send_to_char("You need two hands free for that weapon.\n\r",ch);
@@ -1873,19 +1879,18 @@ void do_secondary( CHAR_DATA *ch, char *argument )
 	}
 
 	/* reduce the power of dual wield by restricting weapons usable */
+	if ( IS_IMMORTAL(ch) )
+	{
+	    if ( !remove_obj( ch, WEAR_SHIELD, fReplace ) )
+	        return;
+	    act( "$n wields $p as a second weapon.", ch, obj, NULL, TO_ROOM );
+	    act( "You wield $p as your second weapon.", ch, obj, NULL, TO_CHAR );
+	    equip_char( ch, obj, WEAR_SHIELD );
+	    return;
+	}
+
 	for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
 	{
-    if (IS_IMMORTAL(ch))
-    {
-      if ( !remove_obj( ch, WEAR_SHIELD, fReplace ) )
-    	    return;
-        act( "$n wields $p as a second weapon.", ch, obj, NULL, TO_ROOM );
-        act( "You wield $p as your second weapon.", ch, obj, NULL, TO_CHAR );
-        equip_char( ch, obj, WEAR_SHIELD );
-        return;
-    }
-
-
 	  if ( paf->location == APPLY_DAMROLL )
 	  {
 	    if(paf->modifier > 5)
@@ -2329,10 +2334,10 @@ void do_wear( CHAR_DATA *ch, char *argument )
 		    recheck = true;
 		}
 	    }
-	    if (recheck)
-		recheck_sneak(ch);
-
 	}
+	if (recheck)
+	    recheck_sneak(ch);
+
 	return;
     }
     else
@@ -3148,7 +3153,8 @@ int get_cost( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy )
 	cost /= (num_found+1);
     }
 
-    if ( obj->item_type == ITEM_STAFF || obj->item_type == ITEM_WAND )
+    if ( ( obj->item_type == ITEM_STAFF || obj->item_type == ITEM_WAND )
+    &&   obj->value[1] > 0 )
 	cost = cost * obj->value[2] / obj->value[1];
 
     return cost;
@@ -3663,9 +3669,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	    NULL,  obj->short_descr ? obj->short_descr : obj->name, TO_CHAR);
 	  act("$n climbs up $T and disappears into darkness.", ch, NULL,
 	      obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
-	  char_from_room( ch );
-	  char_to_room( ch, get_room_index(obj->value[1]) );
-	  do_look(ch,"auto");
+	  {
+	    ROOM_INDEX_DATA *dest = get_room_index( obj->value[1] );
+	    if ( dest == NULL ) { send_to_char("The way seems to lead nowhere.\n\r",ch); return; }
+	    char_from_room( ch );
+	    char_to_room( ch, dest );
+	    do_look(ch,"auto");
+	  }
 	  act("$n climbs up a $T and stands before you.", ch, NULL,
 	      obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
       return;
@@ -3674,9 +3684,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	    NULL,  obj->short_descr ? obj->short_descr : obj->name, TO_CHAR);
 	  act("$n climbs down $T and disappears into darkness.", ch, NULL,
 	      obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
-	  char_from_room( ch );
-	  char_to_room( ch, get_room_index(obj->value[1]) );
-	  do_look(ch,"auto");
+	  {
+	    ROOM_INDEX_DATA *dest = get_room_index( obj->value[1] );
+	    if ( dest == NULL ) { send_to_char("The way seems to lead nowhere.\n\r",ch); return; }
+	    char_from_room( ch );
+	    char_to_room( ch, dest );
+	    do_look(ch,"auto");
+	  }
 	  act("$n climbs down $T and stands before you.", ch, NULL,
 	      obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
       return;
@@ -3685,9 +3699,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	   NULL, obj->short_descr ? obj->short_descr : obj->name, TO_CHAR);
 	  act("$n crawls thru $T, and dissapears into darkness.",ch, NULL,
 	      obj->short_descr ? obj->short_descr : obj->name, TO_ROOM);
-	  char_from_room( ch );
-	  char_to_room( ch, get_room_index(obj->value[1]) );
-	  do_look(ch,"auto");
+	  {
+	    ROOM_INDEX_DATA *dest = get_room_index( obj->value[1] );
+	    if ( dest == NULL ) { send_to_char("The way seems to lead nowhere.\n\r",ch); return; }
+	    char_from_room( ch );
+	    char_to_room( ch, dest );
+	    do_look(ch,"auto");
+	  }
 	  act("$n crawls out of $T, gets up and dusts themself off",ch,NULL,
 	      obj->short_descr ? obj->short_descr : obj->name, TO_ROOM);
 	  return;
@@ -3699,9 +3717,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 		 NULL, obj->short_descr ? obj->short_descr : obj->name, TO_CHAR);
 	    act("$n jumps down $T and dissapears below.",ch,NULL,
 		 obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
-	    char_from_room( ch );
-	    char_to_room(ch, get_room_index(obj->value[1]) );
-	    do_look(ch,"auto");
+	    {
+	        ROOM_INDEX_DATA *dest = get_room_index( obj->value[1] );
+	        if ( dest == NULL ) { send_to_char("The way seems to lead nowhere.\n\r",ch); return; }
+	        char_from_room( ch );
+	        char_to_room( ch, dest );
+	        do_look(ch,"auto");
+	    }
 	    act("$n plummets in from above and lands with a WHUMP!.",ch,
 		 NULL, NULL, TO_ROOM );
 	}
@@ -3711,9 +3733,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 		 obj->short_descr ? obj->short_descr : obj->name, TO_CHAR );
 	    act("$n takes a running start and jumps high into the air up $T.",
 		 ch,NULL, obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
-	    char_from_room(ch);
-	    char_to_room( ch, get_room_index(obj->value[1]) );
-	    do_look(ch,"auto");
+	    {
+	        ROOM_INDEX_DATA *dest = get_room_index( obj->value[1] );
+	        if ( dest == NULL ) { send_to_char("The way seems to lead nowhere.\n\r",ch); return; }
+	        char_from_room( ch );
+	        char_to_room( ch, dest );
+	        do_look(ch,"auto");
+	    }
 	    act("$n jumps up $T from below!",ch,NULL,
 		 obj->short_descr ? obj->short_descr : obj->name, TO_ROOM);
 	}
@@ -3723,9 +3749,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 		 obj->short_descr ? obj->short_descr : obj->name, TO_CHAR );
 	    act("$n takes a running start and jumps over $T!",ch,NULL,
 		 obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
-	    char_from_room( ch );
-	    char_to_room( ch, get_room_index(obj->value[1]) );
-	    do_look(ch,"auto");
+	    {
+	        ROOM_INDEX_DATA *dest = get_room_index( obj->value[1] );
+	        if ( dest == NULL ) { send_to_char("The way seems to lead nowhere.\n\r",ch); return; }
+	        char_from_room( ch );
+	        char_to_room( ch, dest );
+	        do_look(ch,"auto");
+	    }
 	    act("$n lands in the room after diving across $T!",ch,NULL,
 	  	 obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
 	}
@@ -3735,9 +3765,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 		 obj->short_descr ? obj->short_descr : obj->name, TO_CHAR );
 	    act("$n takes a deep breath and jumps off $T.",ch,NULL,
 	 	 obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
-	    char_from_room( ch );
-	    char_to_room( ch, get_room_index(obj->value[1]) );
-	    do_look(ch,"auto");
+	    {
+	        ROOM_INDEX_DATA *dest = get_room_index( obj->value[1] );
+	        if ( dest == NULL ) { send_to_char("The way seems to lead nowhere.\n\r",ch); return; }
+	        char_from_room( ch );
+	        char_to_room( ch, dest );
+	        do_look(ch,"auto");
+	    }
 	    act("$n lands in the room after jumping off $T.",ch,NULL,
 		 obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
 	}
@@ -3747,9 +3781,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 		 obj->short_descr ? obj->short_descr : obj->name, TO_CHAR );
 	    act("$n takes a deep breath and jumps on $T.",ch,NULL,
 		 obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
-	    char_from_room(ch);
-	    char_to_room(ch, get_room_index(obj->value[1]) );
-	    do_look(ch,"auto");
+	    {
+	        ROOM_INDEX_DATA *dest = get_room_index( obj->value[1] );
+	        if ( dest == NULL ) { send_to_char("The way seems to lead nowhere.\n\r",ch); return; }
+	        char_from_room( ch );
+	        char_to_room( ch, dest );
+	        do_look(ch,"auto");
+	    }
 	    act("$n lands in the room after jumping on $T.",ch,NULL,
 		 obj->short_descr ? obj->short_descr : obj->name, TO_ROOM );
 	}
@@ -3763,7 +3801,17 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
    {
 
      to_room = get_room_index( obj->value[1] );
+     if ( to_room == NULL )
+     {
+       send_to_char( "Nothing seems to happen.\n\r", ch );
+       return;
+     }
      pexit   = to_room->exit[ obj->value[2] ];
+     if ( pexit == NULL )
+     {
+       send_to_char( "Nothing seems to happen.\n\r", ch );
+       return;
+     }
 
      REMOVE_BIT( pexit->exit_info, EX_CLOSED );
 
@@ -3779,8 +3827,18 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      }
 
     to_room   = pexit->u1.to_room;
+    if ( to_room == NULL )
+    {
+      send_to_char( "Nothing seems to happen.\n\r", ch );
+      return;
+    }
     pexit_rev = to_room->exit[rev_dir[obj->value[2]]];
 
+    if ( pexit_rev == NULL )
+    {
+      send_to_char( "Nothing seems to happen.\n\r", ch );
+      return;
+    }
     REMOVE_BIT( pexit_rev->exit_info, EX_CLOSED );
 
     if ( IS_SET(pexit_rev->exit_info, EX_SECRET) )
@@ -3812,6 +3870,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      default: return;
 
      case 1:  /* open a container with no key */
+        found = false;   /* reset stale flag from door mechanism */
         FOR_EACH_OBJECT( iter, find_obj )
         {
           if ( find_obj->pIndexData == get_obj_index(obj->value[1])  )
@@ -3829,10 +3888,12 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	    find_obj->value[4] = 0;
 
           snprintf(buf, sizeof(buf), "%s mysteriously opens.\n\r", capitalize(find_obj->short_descr) );
-          send_to_room(buf,find_obj->in_room->vnum);
+          if ( find_obj->in_room != NULL )
+              send_to_room(buf,find_obj->in_room->vnum);
      break;
      case 2:    /* let the genie out of the bottle */
 
+        found = false;   /* reset stale flag from door mechanism */
         FOR_EACH_OBJECT( iter, find_obj )
         {
           if ( find_obj->pIndexData == get_obj_index( obj->value[1])  )
@@ -3847,6 +3908,8 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 	 if(ch->in_room == find_obj->in_room)
 	 {
 	   bottled = obj->trapped;
+	   if ( bottled == NULL )
+	     break;
 
 	   if(find_obj->trapped != NULL)
 	      char_from_obj(find_obj);
@@ -3861,21 +3924,22 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      case 3:      /* kill everyone in the room! What fun!!!*/
        which_trap = number_percent ();
 
+       /* Send trap trigger message once to the whole room before the kill loop */
+       if(which_trap < 33)
+       act("All the exits seal themselves off, and the room fills with water!",
+	   ch, NULL, NULL, TO_ROOM);
+       else if( which_trap < 66)
+       act("All the exits seal themselves off, and the room fills with poison gas!",
+	   ch, NULL, NULL, TO_ROOM);
+       else
+       act("All the exits seal themselves off, and the walls close in on you!",
+	   ch, NULL, NULL, TO_ROOM);
+
        for ( gch = ch->in_room->people; gch; gch = gch_next )
        {
 	  gch_next = gch->next_in_room;
 	  if(gch != ch && !IS_NPC(gch) )
 	  {
-	    if(which_trap < 33)
-	    act("All the exits seal themselves off, and the room fills with water!",
-		ch, NULL, NULL, TO_ROOM);
-	    else if( which_trap < 66)
-	    act("All the exits seal themselves off, and the room fills with poison gas!",
-		ch, NULL, NULL, TO_ROOM);
-	    else
-	    act("All the exits seal themselves off, and the walls close in on you!",
-		ch, NULL, NULL, TO_ROOM);
-
 	    act( "$n just killed you. $e obviously doesn't pay attention to warnings.",
 		ch, NULL, gch, TO_VICT );
 	    send_to_char("You have been KILLED!\n\r",gch);

@@ -569,6 +569,12 @@ void do_track( CHAR_DATA *ch, char *argument )
     }
 	    
 
+    if ( ch->in_room == NULL || vict->in_room == NULL )
+    {
+	send_to_char("You can't track from here.\n\r", ch);
+	return;
+    }
+
     dir = find_first_step(ch, ch->in_room, vict->in_room, &distance);
 
     switch(dir)
@@ -665,6 +671,12 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
 	     ch, NULL, NULL, TO_ROOM );
 	do_say(ch, "Damn!  My prey is gone!!");
 	do_stop_hunting(ch,"target is gone");
+	return;
+    }
+
+    if ( ch->in_room == NULL )
+    {
+	do_stop_hunting(ch, "hunter has no room");
 	return;
     }
 

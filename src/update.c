@@ -2177,6 +2177,8 @@ free_string(obj->description);
 
 	  ch = obj->carried_by;
 
+	  if ( ch != NULL )
+	  {
 	  if(IS_SET(obj->extra_flags2, ITEM2_ADD_INVIS) &&
 	    !is_affected(ch,skill_lookup("invis") ) )
 	  {
@@ -2198,6 +2200,7 @@ free_string(obj->description);
 	    send_to_char("You float back down to the ground.\n\r",ch);
 	    REMOVE_BIT(ch->affected_by, AFF_FLYING);
 	  }
+	  } /* end if (ch != NULL) */
 	}
 
 	if (obj->item_type == ITEM_CORPSE_PC && obj->contains)
@@ -2272,6 +2275,9 @@ void room_update( void )
 		ROOM_INDEX_DATA * to_room;
 
 		to_room = get_room_index(pRoom->to_room);
+
+		if ( to_room == NULL )
+		    break;   /* misconfigured teleport room — skip this tick */
 
 		for (pChar = pRoom->room->people; pChar != NULL;
 			pChar = pCharNext)
@@ -2928,7 +2934,7 @@ void component_update( void )
           break;
       }
       
-      if (component_room == NULL)  /* Skip if no room found */
+      if (component_room == NULL || component_room->area != component_area->area)
         continue;
 
 
@@ -3063,6 +3069,7 @@ void disaster_update( void )
        if ( vch->in_room->area == pArea
 	 && pArea->disaster_type != 0)
        {
+	 hit = true;   /* reset before processing each character */
 	 switch(pArea->disaster_type)
 	 {
 	   case 1:

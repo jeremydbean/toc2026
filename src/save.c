@@ -2304,8 +2304,6 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
 	return;
     }
 
-    fclose( fpReserve );
-
     if( !(fp = fopen( strsave, "r" ) ) )
     {
         snprintf( buf, sizeof(buf), "Corpse back: fopen %s: ", ch->name );

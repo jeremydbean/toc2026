@@ -728,6 +728,8 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    case 1: do_say(questman, "Splendid - you've returned victorious!"); break;
 		    case 2: do_say(questman, "Well done! I knew you were right for the job."); break;
 		}
+		if (!IS_NPC(ch))
+		    ch->pcdata->session_quests++;
 		if (ch->questrush)
 		    do_say(questman, "Rush contract fulfilled - your double reward is well earned!");
 		if (ch->queststreak > 0)
@@ -799,7 +801,12 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    /* Track quest completion for session stats */
 	    if (!IS_NPC(ch))
 		ch->pcdata->session_quests++;
-		    do_say(questman,buf);
+		    switch (number_range(0, 2))
+		    {
+			case 0: do_say(questman, "Excellent work! The realm is in your debt!"); break;
+			case 1: do_say(questman, "Splendid - you've returned victorious!"); break;
+			case 2: do_say(questman, "Well done! I knew you were right for the job."); break;
+		    }
 		    if (ch->questrush)
 		        do_say(questman, "Rush contract fulfilled - your double reward is well earned!");
 		    if (ch->queststreak > 0)

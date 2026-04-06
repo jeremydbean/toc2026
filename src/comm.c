@@ -910,6 +910,7 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
 
     if (fcntl(desc, F_SETFL, FNDELAY) == -1) {
         perror("New_descriptor: fcntl: FNDELAY");
+        close(desc);
         return NULL;
     }
 
@@ -1216,6 +1217,8 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 	CHAR_DATA *victim;
 
 	ch = d->character;
+	if ( ch == NULL )
+	    return FALSE;
 
         /* battle prompt */
         if ((victim = ch->fighting) != NULL && can_see(ch,victim))
