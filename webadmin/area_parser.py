@@ -1381,6 +1381,8 @@ class AreaParser:
                         i += 1
                     
                     # Parse type/flags line
+                    if i >= len(lines):
+                        continue
                     type_line = lines[i].split()
                     item_type_num = int(type_line[0])
                     extra_flags = type_line[1] if len(type_line) > 1 else "0"
@@ -1544,6 +1546,8 @@ class AreaParser:
                     
                     # Parse area/flags/sector line
                     while i < len(lines) and not lines[i].strip(): i += 1
+                    if i >= len(lines):
+                        continue
                     afs_line = lines[i].split()
                     area_prefix = afs_line[0] if len(afs_line) > 0 else ""
                     room_flags = afs_line[1] if len(afs_line) > 1 else "0"
@@ -1563,7 +1567,7 @@ class AreaParser:
                         if line.startswith('D'):
                             try:
                                 direction = int(line[1])
-                            except ValueError:
+                            except (ValueError, IndexError):
                                 # Handle cases like 'D' without number? Or 'D~'?
                                 i += 1
                                 continue
@@ -1578,6 +1582,8 @@ class AreaParser:
                             # Skip blank lines before lock_line
                             while i < len(lines) and not lines[i].strip(): i += 1
                             
+                            if i >= len(lines):
+                                break
                             # print(f"DEBUG: lock_line='{lines[i]}'")
                             lock_line = lines[i].split()
                             locks = int(lock_line[0]) if len(lock_line) > 0 else 0
