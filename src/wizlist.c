@@ -50,6 +50,8 @@ void save_wizlist(void)
     if ( ( fp = fopen( WIZ_FILE, "w" ) ) == NULL )
     {
         perror( WIZ_FILE );
+        fpReserve = fopen( NULL_FILE, "r" );
+        return;
     }
 
     for (pwiz = wiz_list; pwiz != NULL; pwiz = pwiz->next)
