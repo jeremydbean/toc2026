@@ -1,7 +1,7 @@
 #PLAYER
 Name Testies~
 Id   27326
-LogO 1775441243
+LogO 1775441092
 Vers 3
 Prom ~
 Ignoring  ~
@@ -15,7 +15,7 @@ PsiSpec ~
 Cast none
 Levl 1
 Tru  70
-Plyd 466
+Plyd 315
 ListRemorts ~
 NumRemorts 0
 Note 0
@@ -33,11 +33,11 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-SesLogin 1775440792
-SesDur   451
-SesExpG  2075
-SesLvlG  1
-SesKill  1
+SesLogin 0
+SesDur   0
+SesExpG  0
+SesLvlG  0
+SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -85,7 +85,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 20 100 100
-Cond 0 42 42
+Cond 0 44 44
 Sk 1 'dodge'
 Sk 1 'hand to hand'
 Sk 1 'kick'
@@ -125,7 +125,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 193 0 0
+Val  0 0 195 0 0
 End
 
 #O
