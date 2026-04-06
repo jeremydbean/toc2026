@@ -346,6 +346,7 @@ DECLARE_DO_FUN(	do_rset		);
 DECLARE_DO_FUN(	do_rstat	);
 DECLARE_DO_FUN( do_rules	);
 DECLARE_DO_FUN( do_run          );
+DECLARE_DO_FUN( do_speedwalk    );
 DECLARE_DO_FUN( do_rchat	);
 DECLARE_DO_FUN( do_rtell	);
 DECLARE_DO_FUN( do_rreply	);

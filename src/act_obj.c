@@ -3970,10 +3970,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
     }
 }
 
-
-
-long query_gold(CHAR_DATA *ch)
-{
+long query_gold(CHAR_DATA *ch){
   long total;
 
   if (ch == NULL) return 0;

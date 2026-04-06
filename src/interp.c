@@ -70,6 +70,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "sw",     	do_southwest,	POS_STANDING,    0,  LOG_NEVER,  0 },
     { "put",            do_put,         POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "run",		do_run,  	POS_STANDING,    0,  LOG_NORMAL, 1 },
+    { "speedwalk",      do_speedwalk,   POS_STANDING,    0,  LOG_NORMAL, 1 },
     { "astral walk",    do_astral_walk, POS_RESTING,    15,  LOG_NORMAL, 0 },
     { "project",        do_project,     POS_RESTING,    15,  LOG_NORMAL, 0 },
     { "shift",          do_shift,       POS_RESTING,    15,  LOG_NORMAL, 0 },

@@ -2190,102 +2190,164 @@ void do_equipment( CHAR_DATA *ch, char *argument )
 
 
 
+/*
+ * Compare two items and report which has better overall stats.
+ * Usage: compare <item1> [item2]
+ * If item2 is omitted, item1 is compared against whatever is currently
+ * worn in the same slot.
+ *
+ * Scoring weights: hitroll/damroll x3, primary stats x2,
+ * hp/mana/move x1, AC and saves negated (lower = better).
+ */
+static int obj_score( OBJ_DATA *obj )
+{
+    AFFECT_DATA *paf;
+    int score = 0;
+
+    if ( obj == NULL ) return 0;
+
+    for ( paf = obj->affected; paf != NULL; paf = paf->next )
+    {
+	switch ( paf->location )
+	{
+	case APPLY_HITROLL:      score += paf->modifier * 3; break;
+	case APPLY_DAMROLL:      score += paf->modifier * 3; break;
+	case APPLY_STR:          score += paf->modifier * 2; break;
+	case APPLY_DEX:          score += paf->modifier * 2; break;
+	case APPLY_INT:          score += paf->modifier * 2; break;
+	case APPLY_WIS:          score += paf->modifier * 2; break;
+	case APPLY_CON:          score += paf->modifier * 2; break;
+	case APPLY_HIT:          score += paf->modifier;     break;
+	case APPLY_MANA:         score += paf->modifier;     break;
+	case APPLY_MOVE:         score += paf->modifier;     break;
+	case APPLY_AC:           score -= paf->modifier;     break;
+	case APPLY_SAVING_PARA:
+	case APPLY_SAVING_ROD:
+	case APPLY_SAVING_PETRI:
+	case APPLY_SAVING_BREATH:
+	case APPLY_SAVING_SPELL: score -= paf->modifier;     break;
+	default: break;
+	}
+    }
+
+    if ( obj->pIndexData != NULL )
+    {
+	for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
+	{
+	    switch ( paf->location )
+	    {
+	    case APPLY_HITROLL:      score += paf->modifier * 3; break;
+	    case APPLY_DAMROLL:      score += paf->modifier * 3; break;
+	    case APPLY_STR:          score += paf->modifier * 2; break;
+	    case APPLY_DEX:          score += paf->modifier * 2; break;
+	    case APPLY_INT:          score += paf->modifier * 2; break;
+	    case APPLY_WIS:          score += paf->modifier * 2; break;
+	    case APPLY_CON:          score += paf->modifier * 2; break;
+	    case APPLY_HIT:          score += paf->modifier;     break;
+	    case APPLY_MANA:         score += paf->modifier;     break;
+	    case APPLY_MOVE:         score += paf->modifier;     break;
+	    case APPLY_AC:           score -= paf->modifier;     break;
+	    case APPLY_SAVING_PARA:
+	    case APPLY_SAVING_ROD:
+	    case APPLY_SAVING_PETRI:
+	    case APPLY_SAVING_BREATH:
+	    case APPLY_SAVING_SPELL: score -= paf->modifier;     break;
+	    default: break;
+	    }
+	}
+    }
+
+    return score;
+}
+
 void do_compare( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
     OBJ_DATA *obj1;
     OBJ_DATA *obj2;
-    int value1;
-    int value2;
-    char *msg;
+    int score1, score2;
+    char buf[MAX_STRING_LENGTH];
 
     argument = one_argument( argument, arg1 );
-    argument = one_argument( argument, arg2 );
+    one_argument( argument, arg2 );
+
     if ( arg1[0] == '\0' )
     {
-	send_to_char( "Compare what to what?\n\r", ch );
+	send_to_char( "Compare what?\n\r", ch );
+	send_to_char( "Usage: compare <item1> [item2]\n\r", ch );
 	return;
     }
 
-    if ( ( obj1 = get_obj_carry( ch, arg1 ) ) == NULL )
+    obj1 = get_obj_carry( ch, arg1 );
+    if ( obj1 == NULL )
+	obj1 = get_obj_wear( ch, arg1 );
+    if ( obj1 == NULL )
     {
 	send_to_char( "You do not have that item.\n\r", ch );
 	return;
     }
 
-    if (arg2[0] == '\0')
+    if ( arg2[0] != '\0' )
     {
-	for (obj2 = ch->carrying; obj2 != NULL; obj2 = obj2->next_content)
+	obj2 = get_obj_carry( ch, arg2 );
+	if ( obj2 == NULL )
+	    obj2 = get_obj_wear( ch, arg2 );
+	if ( obj2 == NULL )
 	{
-	    if (obj2->wear_loc != WEAR_NONE
-	    &&  can_see_obj(ch,obj2)
-	    &&  obj1->item_type == obj2->item_type
-	    &&  (obj1->wear_flags & obj2->wear_flags & ~ITEM_TAKE) != 0 )
-		break;
+	    send_to_char( "You do not have the second item.\n\r", ch );
+	    return;
+	}
+    }
+    else
+    {
+	OBJ_DATA *worn;
+	obj2 = NULL;
+
+	if ( obj1->wear_flags == 0 || obj1->item_type == ITEM_LIGHT )
+	{
+	    send_to_char( "You need to specify a second item to compare against.\n\r", ch );
+	    return;
 	}
 
-	if (obj2 == NULL)
+	for ( worn = ch->carrying; worn != NULL; worn = worn->next_content )
 	{
-	    send_to_char("You aren't wearing anything comparable.\n\r",ch);
+	    if ( worn == obj1 ) continue;
+	    if ( worn->wear_loc != WEAR_NONE
+	      && can_see_obj( ch, worn )
+	      && ( worn->wear_flags & obj1->wear_flags ) )
+	    {
+		obj2 = worn;
+		break;
+	    }
+	}
+
+	if ( obj2 == NULL )
+	{
+	    send_to_char( "You aren't wearing anything comparable.\n\r", ch );
 	    return;
 	}
     }
 
-    else if ( (obj2 = get_obj_carry(ch,arg2) ) == NULL )
+    if ( obj1 == obj2 )
     {
-	send_to_char("You do not have that item.\n\r",ch);
+	act( "You compare $p to itself.  It looks about the same.", ch, obj1, NULL, TO_CHAR );
 	return;
     }
 
-    msg		= NULL;
-    value1	= 0;
-    value2	= 0;
+    score1 = obj_score( obj1 );
+    score2 = obj_score( obj2 );
 
-    if ( obj1 == obj2 )
-    {
-	msg = "You compare $p to itself.  It looks about the same.";
-    }
-    else if ( obj1->item_type != obj2->item_type )
-    {
-	msg = "You can't compare $p and $P.";
-    }
+    snprintf( buf, sizeof(buf), "Comparing %s (score %d) vs %s (score %d):\n\r",
+	obj1->short_descr, score1, obj2->short_descr, score2 );
+    send_to_char( buf, ch );
+
+    if ( score1 > score2 )
+	act( "$p appears to be the better choice.", ch, obj1, NULL, TO_CHAR );
+    else if ( score2 > score1 )
+	act( "$p appears to be the better choice.", ch, obj2, NULL, TO_CHAR );
     else
-    {
-	switch ( obj1->item_type )
-	{
-	default:
-	    msg = "You can't compare $p and $P.";
-	    break;
-
-	case ITEM_ARMOR:
-	    value1 = obj1->value[0] + obj1->value[1] + obj1->value[2];
-	    value2 = obj2->value[0] + obj2->value[1] + obj2->value[2];
-	    break;
-
-	case ITEM_WEAPON:
-	    if (obj1->pIndexData->new_format)
-		value1 = (1 + obj1->value[2]) * obj1->value[1];
-	    else
-	    	value1 = obj1->value[1] + obj1->value[2];
-
-	    if (obj2->pIndexData->new_format)
-		value2 = (1 + obj2->value[2]) * obj2->value[1];
-	    else
-	    	value2 = obj2->value[1] + obj2->value[2];
-	    break;
-	}
-    }
-
-    if ( msg == NULL )
-    {
-	     if ( value1 == value2 ) msg = "$p and $P look about the same.";
-	else if ( value1  > value2 ) msg = "$p looks better than $P.";
-	else                         msg = "$p looks worse than $P.";
-    }
-
-    act( msg, ch, obj1, obj2, TO_CHAR );
-    return;
+	send_to_char( "Both items appear roughly equal.\n\r", ch );
 }
 
 

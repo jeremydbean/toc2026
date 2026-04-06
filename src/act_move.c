@@ -1134,6 +1134,85 @@ void do_run( CHAR_DATA *ch, char *argument )
 
 }
 
+/*
+ * Speedwalk: parse compact direction strings like 5n2e3s into sequential moves.
+ * Accepts any mix of [count][dir] tokens where dir is n/e/s/w/u/d/ne/nw/se/sw.
+ * Example: "speedwalk 3n2e1s" moves north 3, east 2, south 1.
+ * The individual steps use do_run internally so confusion/maze checks still apply.
+ */
+void do_speedwalk( CHAR_DATA *ch, char *argument )
+{
+    char runarg[16];
+    const char *p;
+    int count;
+    char dir[4];
+    int dlen;
+
+    if ( IS_NPC(ch) )
+        return;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Speedwalk where?  Example: speedwalk 3n2esw\n\r", ch );
+        return;
+    }
+
+    p = argument;
+
+    while ( *p != '\0' )
+    {
+        /* skip whitespace between tokens */
+        while ( *p == ' ' ) p++;
+        if ( *p == '\0' ) break;
+
+        /* optional leading count */
+        count = 0;
+        while ( *p >= '0' && *p <= '9' )
+            count = count * 10 + (*p++ - '0');
+        if ( count == 0 ) count = 1;
+        if ( count > 50 ) count = 50;   /* sanity cap per segment */
+
+        /* direction token: up to 2 chars (ne/nw/se/sw) */
+        dlen = 0;
+        while ( dlen < 3 && *p != '\0'
+                && ( *p == 'n' || *p == 'e' || *p == 's'
+                  || *p == 'w' || *p == 'u' || *p == 'd' ) )
+        {
+            dir[dlen++] = *p++;
+            /* two-char diagonal: consume second char only if it completes one */
+            if ( dlen == 1
+              && ( dir[0] == 'n' || dir[0] == 's' )
+              && ( *p == 'e' || *p == 'w' ) )
+            {
+                dir[dlen++] = *p++;
+            }
+            break;
+        }
+        dir[dlen] = '\0';
+
+        if ( dlen == 0 )
+        {
+            /* unrecognised character — skip it */
+            p++;
+            continue;
+        }
+
+        /* build the argument for do_run: "<dir> <count>" */
+        snprintf( runarg, sizeof(runarg), "%s %d", dir, count );
+
+        /* do_run handles multi-step movement internally */
+        do_run( ch, runarg );
+
+        /* stop if killed/extracted */
+        if ( ch->in_room == NULL )
+            return;
+
+        /* stop if combat broke out */
+        if ( ch->fighting != NULL )
+            return;
+    }
+}
+
 
 int find_door( CHAR_DATA *ch, char *arg )
 {
