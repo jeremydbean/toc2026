@@ -113,7 +113,7 @@ Times of Chaos (ToC) is a MUD (Multi-User Dungeon) — a real-time, text-based m
 
 Docker Desktop is the easiest path on Windows. It runs Linux containers in a lightweight VM.
 
-**Automated setup:**
+**Automated setup** (uses [Chocolatey](https://chocolatey.org) to install Git, Docker Desktop, and VS Code):
 ```powershell
 # Run PowerShell as Administrator
 .\scripts\setup_windows.ps1
@@ -142,16 +142,17 @@ Docker Desktop is the easiest path on Windows. It runs Linux containers in a lig
    ```powershell
    docker build -t toc .
    docker run -it --rm -p 9000:9000 -p 9001:9001 `
-     -v "${PWD}\player:/app/player" `
-     -v "${PWD}\log:/app/log" `
+     -v "${PWD}/player:/app/player" `
+     -v "${PWD}/log:/app/log" `
      toc
    ```
 
 **Notes for Windows:**
 - Keep Docker Desktop running in the system tray whenever you want to use the game
 - Use Windows Terminal for the best experience
-- If you see `exec format error`, make sure Docker is using the Linux engine (not Windows containers)
-- The `docker run` command uses backtick (`` ` ``) for line continuation in PowerShell
+- If you see `exec format error`, make sure Docker is using the Linux engine (not Windows containers) — right-click the Docker Desktop tray icon and select **Switch to Linux containers**
+- Volume paths use **forward slashes** in the container half (`:/app/player`) even on Windows
+- The `docker run` command uses backtick (`` ` ``) for line continuation in PowerShell; use `^` in `cmd.exe`
 
 ---
 
@@ -212,6 +213,19 @@ cd area
 ```
 
 > **Note:** macOS provides `strlcpy`/`strlcat` natively. The `string_safe.c` module includes `#ifndef __APPLE__` guards to avoid symbol conflicts. The `<crypt.h>` include in `merc.h` is also guarded for macOS.
+
+**Docker run example (macOS):**
+```bash
+git clone https://github.com/jeremydbean/toc2026.git
+cd toc2026
+docker build -t toc .
+docker run -it --rm \
+  -p 9000:9000 \
+  -p 9001:9001 \
+  -v "$(pwd)/player:/app/player" \
+  -v "$(pwd)/log:/app/log" \
+  toc
+```
 
 **Web admin on macOS (without Docker):**
 ```bash
@@ -410,6 +424,7 @@ docker run -d \
   -p 9001:9001 \
   -v $(pwd)/player:/app/player \
   -v $(pwd)/log:/app/log \
+  -v $(pwd)/backups:/app/backups \
   toc
 
 # View logs
@@ -421,6 +436,19 @@ docker stop toc
 # Start again
 docker start toc
 ```
+
+### Auto-Restart Behaviour
+
+The container entrypoint runs `merc` in an automatic restart loop:
+
+| Event | Behaviour |
+|-------|-----------|
+| `merc` crashes or exits non-zero | Waits 5 seconds, restarts `merc` automatically |
+| Immortal `shutdown` command | Writes `shutdown.txt`; entrypoint detects it and exits cleanly (container stops) |
+| Immortal `reboot` command | Exits without `shutdown.txt`; entrypoint restarts `merc` |
+| `docker stop toc` | Sends SIGTERM to container; container stops immediately |
+
+The web admin (port 9001) starts once at container entry and stays up across `merc` restarts.
 
 ### Useful Docker Commands
 
@@ -687,19 +715,26 @@ docker exec toc sh -c "cp -r /app/player /app/backups/backup_$(date +%Y%m%d_%H%M
 
 ## Docker Compose (Multi-Service)
 
-A `docker-compose.yml` is included for running the full stack:
+A `docker-compose.yml` is included for running the full stack with a single command:
 
 ```bash
-docker compose up --build
-docker compose up -d          # detached / background
-docker compose down           # stop and remove containers
-docker compose logs -f game   # follow game container logs
+docker compose up --build           # build and start (foreground)
+docker compose up --build -d        # build and start in background
+docker compose down                 # stop and remove containers
+docker compose logs -f game         # follow the game container logs
+docker compose restart game         # restart after a code change
 ```
 
-The compose file maps:
-- Port `9000` → MUD game
-- Port `9001` → Web admin  
-- Volumes for `player/`, `log/`, and `area/`
+The compose file (`docker-compose.yml`) defines one service:
+- **`game`** — builds the image, exposes ports `9000` (MUD) and `9001` (web admin), mounts `player/`, `log/`, and `backups/` volumes, and restarts automatically unless explicitly stopped
+
+To enable web admin authentication, uncomment and set `WEB_ADMIN_TOKEN` in `docker-compose.yml`:
+```yaml
+environment:
+  - WEB_ADMIN_TOKEN=your-strong-secret-here
+```
+
+> **Windows users:** Compose uses the same `$(pwd)` volume resolution. Run `docker compose` commands from the repository root in PowerShell or Windows Terminal.
 
 ---
 

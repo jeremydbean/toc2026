@@ -50,6 +50,7 @@ RUN addgroup --system toc \
 USER toc
 
 EXPOSE 9000
+EXPOSE 9001
 ENV PORT=9000
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

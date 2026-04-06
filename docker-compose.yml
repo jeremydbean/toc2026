@@ -5,31 +5,18 @@ services:
     build: .
     container_name: toc2026_game
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - "9000:9000"   # MUD game (telnet)
+      - "9001:9001"   # Web admin dashboard
     volumes:
-      - ./log:/opt/toc/log
-      - ./player:/opt/toc/player
-      - ./area:/opt/toc/area
-    # unless-stopped: restart the container if it exits unexpectedly (crash /
-    # OOM), but do NOT restart if the entrypoint exits 0 (immortal shutdown)
-    # or if explicitly stopped with 'docker stop'.
+      - ./player:/app/player       # Player save files (persistent)
+      - ./log:/app/log             # Server logs (persistent)
+      - ./backups:/app/backups     # Backup archives (persistent)
+    environment:
+      - PORT=9000
+      - WEB_ADMIN_PORT=9001
+      - WEB_ADMIN_HOST=0.0.0.0
+      # Uncomment and set a strong token to protect the web admin API:
+      # - WEB_ADMIN_TOKEN=change-this-to-a-strong-secret
+    # unless-stopped: restart on unexpected exit (crash/OOM) but NOT on
+    # clean immortal 'shutdown' (exit 0) or explicit 'docker stop'.
     restart: unless-stopped
-
-  middleware:
-    image: python:3.9-slim
-    container_name: toc2026_web
-    working_dir: /app
-    command: sh -c "pip install fastapi uvicorn websockets aiofiles python-multipart && uvicorn middleware:app --host 0.0.0.0 --port 8000"
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./middleware.py:/app/middleware.py
-      - ./log:/app/log
-      # CRITICAL: Mount game data so the web app can read it
-      - ./area:/app/area
-      - ./player:/app/player
-      # Mount the image to serve it
-      - ./ToCBG.png:/app/static/background.jpg
-    depends_on:
-      - game
