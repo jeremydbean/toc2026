@@ -127,7 +127,7 @@ void do_delete( CHAR_DATA *ch, char *argument)
     send_to_char("Type delete again with your password to confirm.\n\r",ch);
     send_to_char("WARNING: this command is irreversible.\n\r",ch);
     send_to_char("Syntax: delete <password>\n\r",ch);
-    send_to_char("Typing delete with no argument will cancel.\n\r",ch);
+    send_to_char("Provide an incorrect password to cancel.\n\r",ch);
     ch->pcdata->confirm_delete = TRUE;
     log_string("[DELETE] Character is contemplating deletion.");
 }

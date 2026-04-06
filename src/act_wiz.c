@@ -3744,9 +3744,14 @@ void do_peace( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
     CHAR_DATA *rch;
+    CHAR_DATA *rch_next;
 
-    for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
+    if ( ch->in_room == NULL )
+	return;
+
+    for ( rch = ch->in_room->people; rch != NULL; rch = rch_next )
     {
+	rch_next = rch->next_in_room;
 	if ( rch->fighting != NULL )
 	    stop_fighting( rch, true );
 	if (IS_NPC(rch))
