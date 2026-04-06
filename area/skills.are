@@ -391,8 +391,15 @@ Trainer: Breark (?/W)
 ~
 
 25 DESPAIR~
+Despair is a passive combat skill available at level 25.  When a character
+with this skill is actively hunting or fighting an opponent, there is a
+chance that the opponent will be overcome by a wave of hopelessness and
+flee the battle involuntarily.  The trigger chance scales with skill level.
 
-no help available yet
+This skill cannot be activated manually; it fires automatically during
+combat or pursuit.
+
+Number of trains: 1  (available to all classes at level 25)
 ~
 
 -1 DESTRUCTION~
@@ -944,8 +951,16 @@ Trainer: Quickfingers (?/T)
 ~
 
 25 PHASE~
+Phase is a passive movement skill available at level 25.  When moving from
+room to room, a character with the phase skill has a chance to automatically
+enter stealth upon arrival, vanishing from sight in the new room.  The
+chance of phasing successfully improves with skill level.
 
-no help available yet
+This skill triggers automatically on movement; no command is required.
+
+Number of trains: 1  (available to all classes at level 25)
+
+See also: STEALTH, SNEAK, HIDE
 ~
 
 -1 PICK 'PICK LOCK'~

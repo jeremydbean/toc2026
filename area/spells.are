@@ -113,10 +113,16 @@ Mage:9  Cleric:6  Thief:12   Warrior:11   Monk: N/A   Necromancer:N/A
 0 BLINDNESS~
 Syntax: cast blindness <victim>
 
-This spell renders the target character blind.
+This spell renders the target blind.  A blinded character cannot read room
+descriptions, see the contents of containers, or clearly make out other
+characters and objects.  Combat accuracy is significantly penalised.
+The effect wears off naturally after a short time, or can be removed
+immediately with the CURE BLINDNESS spell.
 
 Minimum level depends on your primary class and is:
 Mage:10  Cleric:8  Thief:15  Warrior:13  Monk: N/A   Necromancer:N/A
+
+See also: CURE BLINDNESS, DIRT KICKING
 ~
 
 0 BUTCHER~
@@ -131,11 +137,16 @@ Butcher is a necromancer only spell, useable at Level 10.
 0 CALM~
 Syntax: cast calm
 
-This is a powerful spell, which can be used to stop all fighting in the
-room.
+This powerful spell arrests all combat in the room, forcing every fighting
+character to cease attacking.  It is useful for breaking up dangerous mob
+battles or preventing accidental group-wide aggression.  Characters may
+resume fighting after the effect wears off.  Calm does not prevent
+characters from re-initiating combat immediately.
 
 Minimum level depends on your primary class and is:
 Mage:22  Cleric:20  Thief:28  Warrior:30  Monk: N/A   Necromancer:N/A
+
+See also: BENEDICTIONS, BLESS, FRENZY
 ~
 
 0 'CAUSE LIGHT' 'CAUSE SERIOUS' 'CAUSE CRITICAL' HARM~
@@ -354,13 +365,17 @@ Mage:21  Cleric:19  Thief:25  Warrior:23  Monk: N/A  Necromancer:N/A
 ~
 
 0 'DEMONFIRE'~
-Syntax: cast demonfire <target>
+Syntax: cast 'demonfire' <target>
 
-This spell calls the fires of hell to strike down your opponent. This
-spell is very very evil and should be used sparingly.
+This spell calls the fires of hell to strike down a single opponent.
+Demonfire inflicts unholy (negative-energy) damage, making it especially
+potent against good-aligned creatures.  It is one of the primary offensive
+spells available to full clerics through the ATTACK spell group.
 
 Minimum level depends on your primary class and is:
 Mage:36   Cleric:34   Thief:39   Warrior:37   Monk: N/A   Necromancer:N/A
+
+See also: DISPEL EVIL, DISPEL GOOD, ATTACK, HARMFUL
 ~
 
 0 'DETECT EVIL'~
@@ -459,7 +474,7 @@ Syntax: cast 'dispel magic' <character>
         cast 'neutrality field'
 
 All of these spells remove magical effects from the target.  Dispel magic
-has a reduced chance of working and is considering an attack spell.  Neutrality
+has a reduced chance of working and is considered an attack spell.  Neutrality
 field works the same way as dispel magic, except that it affects everything in
 the room instead of a specific target. Cancellation can only be used on allies, but
 is much more effective and does not provoke attack.  Unfortunately, the spells do
@@ -467,7 +482,7 @@ not discriminate between harmful and benign spells.
 
 The chance of dispelling is based on the level of the spell. Permanent spells
 (such as mobile sanctuary) are much harder to remove.  Not all spells may
-be dispelled, Notable examples are poison and plague.
+be dispelled; notable examples are poison and plague.
 
 In order to cast cancellation on a character, they must have NOSUMMON off.
 
@@ -981,9 +996,11 @@ Only Necromancers may use skeletal hands, at a minimum level of 13.
 0 SLEEPSPELL~
 Syntax: cast sleep <victim>
 
-This spell puts its victim to sleep.
+This spell puts its victim to sleep.  A sleeping character cannot act
+and will not wake until disturbed or until the spell expires.
 
-For help on the sleep command, see REST.
+Note: typing 'sleep' without casting puts your own character to sleep.
+For help on the rest/sleep/stand commands, see HELP REST or HELP SLEEP.
 
 Minimum level depends on your primary class and is:
 Mage:12   Cleric:11   Thief:12   Warrior:14   Monk: N/A   Necromancer:N/A
@@ -992,10 +1009,15 @@ Mage:12   Cleric:11   Thief:12   Warrior:14   Monk: N/A   Necromancer:N/A
 0 SLOW~
 Syntax: cast 'slow' <victim>
 
-This spell will slow down the targeted victim.
+This spell reduces the movement and attack speed of the targeted victim.
+Slowed characters attack less frequently and lose some of their natural
+dodging ability.  Slow is the direct counter to the HASTE spell; casting
+slow on a hasted target will cancel the haste effect.
 
 Minimum level depends on your primary class and is:
 Mage:21   Cleric:29   Thief:26   Warrior:29   Monk: N/A   Necromancer:N/A
+
+See also: HASTE, ENHANCEMENT, MALADICTIONS
 ~
 
 0 'SPIRITUAL HAMMER'~
@@ -1011,8 +1033,14 @@ Mage:21   Cleric:15   Thief:26   Warrior:29   Monk: N/A   Necromancer:N/A
 ~
 
 62 'STINKING CLOUD'~
+Syntax: cast 'stinking cloud'
 
-This is a placeholder for help on stinking cloud.
+This earth magic calls forth noxious fumes from the ground, filling the
+entire room with a poisonous cloud.  All other characters in the room
+suffer continuous damage and a reduction to their hit rolls for as long
+as they remain.  The cloud lingers for a short time before dissipating.
+
+Stinking cloud is currently restricted to immortal use (level 62 minimum).
 ~
 
 0 SUMMON~
@@ -1026,7 +1054,7 @@ Mage:24   Cleric:12   Thief:29   Warrior:26   Monk: N/A   Necromancer:N/A
 ~
 
 0 TELEPORT~
-Syntax: cast <teleport>
+Syntax: cast teleport
 
 This spell takes you from your current location to a random location
 somewhere in the world. This can be a risky thing to do, since it's

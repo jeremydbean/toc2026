@@ -237,8 +237,19 @@ Please type HELP RULES, ignorance of the rules is not an excuse.
 62 IMOTD~
 Welcome Immortal!
 
+Essential reading for new immortals:
+  help COMMANDMENTS  - rules governing all immortal conduct
+  help JOBS          - duties and responsibilities by immortal level
+  help QUESTS        - guidelines for running player quests
 
+Communication:
+  wiznet             - immortal broadcast channel (on by default)
+  wizinfo            - send a message to all immortals
 
+Remember: your duty is to serve and improve gameplay for mortals.
+Do not use immortal powers to benefit your own mortal characters.
+
+[Hit Return to continue]
 ~
 
 62 JOBS~
@@ -253,7 +264,19 @@ to be read by all immortals is: help commandments.
 ~
 
 62 QUESTS~
-Sorry not in yet.
+The following guidelines apply to all quests run by immortals on ToC:
+
+  - Quests should be fun and accessible to the target audience.
+  - Prize items must not be dramatically overpowered for their level.
+    Do not load an item more than 4 levels below its normal level
+    (e.g. level 5 ogre gauntlets are prohibited).
+  - Larger prizes require greater group effort or problem-solving.
+  - Announce quest start on the INFO channel so all players may attend.
+  - Have at least 10 interested players before beginning a quest.
+  - Do not use reboot as a reset mechanism mid-quest.
+  - Leave a note summarising the quest and prizes awarded.
+
+See also: HEROQUEST, COMMANDMENTS, JOBS
 ~
 0 HEROQUEST~
 When you embark on a hero quest, the following commands can be used
@@ -280,7 +303,18 @@ that PC and your Hero will SUFFER SEVERE PENALTIES, NO EXCEPTIONS!!!
 ~
 
 51 HEROLEVELS~
-See help on exchange. More help on herolevels will be added later.
+Hero status is reached when a character attains level 51.  At that point
+normal experience leveling stops; experience is accumulated for other uses.
+
+The primary use of accumulated hero experience is exchanging it for
+additional practice sessions.  Each exchange costs 5,000 experience points
+and grants between 4 and 6 practices at random.  Exchanges must be made
+with the guru located in Hero Hall.
+
+Heroes may also embark on special quests through the Questmaster to earn
+additional rewards.  See HELP HEROQUEST for full details.
+
+See also: EXCHANGE, PRACTICE, HEROQUEST, GAIN
 ~
 
 62 MARTYR~
@@ -542,11 +576,18 @@ disease.
 ~
 
 -1 WEB~
-REMOVED
+Times of Chaos is hosted at toc.jeremybean.com on port 9000.
+
+Connect with any MUD client, or via telnet:
+  telnet toc.jeremybean.com 9000
 ~
 -1 STORY~
-The story of ToC is told in the diaries of Judicandus Bramsheer.  See
-the Aaron's Time of Chaos Web page (see help WEB for address) to read them.
+The story of ToC revolves around the diaries of Judicandus Bramsheer,
+a scholar who chronicled the tumultuous Times of Chaos that shaped this
+world's history.  Read room descriptions carefully as you explore -- many
+areas contain fragments of this history woven into their descriptions.
+
+See also: WEB, DIKU, MERC, ROM
 ~
 
 -1 TAX TAXES~
@@ -1096,17 +1137,16 @@ Trainer: Vladamir (W/W)
 
 0 DAMAGE~
 When one character attacks another, the severity of the damage is shown in the
-verb used in the damage message.  Here are all the damage verbs listed from
-least damage to most damage:
+verb used in the damage message.  Listed from least damage to most damage:
 
-    miss        wound           MUTILATE        DEMOLISH
-    scratch     maul            DISEMBOWEL      DEVASTATE
-    graze       decimate        DISMEMBER       DESTROY
-    hit         devastate       MASSACRE        OBLITERATE
-    injure      maim            MANGLE          ERADICATE
-						ANNIHILATE
+    miss          wound          MUTILATE       *** DEMOLISH ***
+    scratch       maul           DISEMBOWEL     *** DEVASTATE ***
+    graze         decimate       DISMEMBER      ^^^ DESTROY ^^^
+    hit           devastate      MASSACRE       === OBLITERATE ===
+    injure        maim           MANGLE         <<< ERADICATE >>>
+                                                >>> ANNIHILATE <<<
 
-And, at the far reaches of damaging power, you can do UNSPEAKABLE things.
+    At the far reaches of damaging power: "do UNSPEAKABLE things to"
 ~
 
 0 DYING~
