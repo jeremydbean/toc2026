@@ -51,6 +51,7 @@ set(SRC_FILES
     src/save.c
     src/skills.c
     src/script_event.c
+    src/season.c
     src/special.c
     src/string_safe.c
     src/stubs.c
@@ -91,5 +92,8 @@ target_link_options(
         $<$<AND:$<BOOL:${ENABLE_SANITIZERS}>,$<CONFIG:Debug>>:${SANITIZER_FLAGS}>
 )
 
-# Link against math (m), compression (z), and crypto (crypt)
-target_link_libraries(${TARGET_NAME} PRIVATE m z crypt)
+# Link against math (m) and crypto (crypt, Linux only — macOS provides it in libc)
+target_link_libraries(${TARGET_NAME} PRIVATE m)
+if(NOT APPLE)
+    target_link_libraries(${TARGET_NAME} PRIVATE crypt)
+endif()
