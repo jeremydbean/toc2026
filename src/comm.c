@@ -1994,6 +1994,13 @@ case CON_GET_ALIGNMENT:
 
 	write_to_buffer(d,"\n\r",0);
 
+	/* Allocate gen_data for customization tracking */
+	if (ch->gen_data == NULL)
+	{
+	    ch->gen_data = alloc_mem(sizeof(*ch->gen_data));
+	    memset(ch->gen_data, 0, sizeof(*ch->gen_data));
+	}
+
 	group_add(ch,"rom basics",FALSE);
 	group_add(ch,class_table[ch->class].base_group,FALSE);
 	list_group_costs(ch);
@@ -2108,6 +2115,13 @@ case CON_DEFAULT_CHOICE:
         {
             ch->pcdata->color = true;
             color_update_defaults( ch, false );
+        }
+
+        /* Free gen_data now that character creation customization is done */
+        if (!IS_NPC(ch) && ch->gen_data != NULL)
+        {
+            free_mem(ch->gen_data, sizeof(*ch->gen_data));
+            ch->gen_data = NULL;
         }
 
         write_to_buffer( d, "\n\rWelcome to ROM 2.4.  Please do not feed the mobiles.\n\r", 0 );

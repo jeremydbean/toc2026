@@ -96,21 +96,26 @@ void do_delete( CHAR_DATA *ch, char *argument)
 
     if (ch->pcdata->confirm_delete)
     {
-	if (argument[0] != '\0')
+	if (argument[0] == '\0')
 	{
-	    send_to_char("Delete status removed.\n\r",ch);
+	    send_to_char("You must provide your password to confirm deletion.\n\r",ch);
+	    send_to_char("Syntax: delete <password>\n\r",ch);
+	    return;
+	}
+
+	if (strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ))
+	{
+	    send_to_char("Wrong password. Delete cancelled.\n\r",ch);
 	    ch->pcdata->confirm_delete = FALSE;
 	    return;
 	}
-	else
-	{
-            snprintf( strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
-            log_string("[DELETE] Character self-deleted.");
-	    stop_fighting(ch,TRUE);
-	    do_quit(ch,"");
-	    unlink(strsave);
-	    return;
-	}
+
+        snprintf( strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize( ch->name ) );
+        log_string("[DELETE] Character self-deleted.");
+	stop_fighting(ch,TRUE);
+	do_quit(ch,"");
+	unlink(strsave);
+	return;
     }
 
     if (argument[0] != '\0')
@@ -119,10 +124,10 @@ void do_delete( CHAR_DATA *ch, char *argument)
 	return;
     }
 
-    send_to_char("Type delete again to confirm this command.\n\r",ch);
+    send_to_char("Type delete again with your password to confirm.\n\r",ch);
     send_to_char("WARNING: this command is irreversible.\n\r",ch);
-    send_to_char("Typing delete with an argument will undo the delete status.\n\r",
-	ch);
+    send_to_char("Syntax: delete <password>\n\r",ch);
+    send_to_char("Typing delete with no argument will cancel.\n\r",ch);
     ch->pcdata->confirm_delete = TRUE;
     log_string("[DELETE] Character is contemplating deletion.");
 }
