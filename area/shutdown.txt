@@ -47,3 +47,5 @@
 [*****] [*****] FILE: haon.are LINE: 47
 [*****] [*****] FILE: froboz.are LINE: 45
 [*****] [*****] FILE: chess.are LINE: 2330
+[*****] [*****] FILE: casino.are LINE: 89
+[*****] [*****] FILE: casino.are LINE: 147

@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1775433778
+LogO 1775430551
 Vers 3
 Desc You see something very special about him.
 ~
@@ -17,19 +17,19 @@ PsiSpec ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 5919435
+Plyd 5916231
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 0
-Room 4812
-HMV  30000 30000 30000 30000 30000 30000
-NewGold 94
-NewPlat 2508564
+Room 4811
+HMV  10000 10010 -4950 10050 -5025 9975
+NewGold 72
+NewPlat 2508569
 NewCopp 22
 NewSilv 53
 BankCP 7500000000000
-IntTime 1775430576
+IntTime 0
 Dcount 0
 SavedOnce 1
 Corpses	0
@@ -46,8 +46,7 @@ SesQuest 0
 QuestPnts 24
 Exp  1927300
 Act  287948
-AfBy 3678848
-AfBy2 4104
+AfBy 512
 Comm 155648
 Invi 70
 Mounted 0
@@ -78,11 +77,11 @@ Prac 265
 Trai 73
 Save  7500
 Alig  -64
-Hit   7524
-Dam   7524
-ACs 10000 10000 10000 10000
+Hit   7504
+Dam   7504
+ACs 10100 10100 10100 10100
 Attr 25 21 18 18 18
-AMod 1016 1015 1015 1015 1015
+AMod 1001 1000 1000 1000 1000
 Pass Kilrpis9ggekI~
 Bin  Killuminati appears before you.~
 Bout Killuminati raises into the sky, and is gone.~
@@ -247,13 +246,11 @@ Sk 100 'confuse'
 Sk 100 'ego whip'
 Sk 100 'mindbar'
 Sk 100 'mindblast'
-Sk 100 'mind leech'
 Sk 100 'nightmare'
 Sk 100 'project'
 Sk 100 'psionic armor'
 Sk 100 'psychic shield'
 Sk 100 'pyrotechnics'
-Sk 100 'enervate'
 Sk 100 'shift'
 Sk 100 'telekinesis'
 Sk 100 'torment'
@@ -325,32 +322,9 @@ Sk 100 'wands'
 Sk 100 'recall'
 Sk 100 'enchant item'
 Sk 100 'smite'
-Sk 100 'empower'
-Sk 100 'titanic'
-Sk 100 'petrify'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'titanic'   0  -1 19990  13          0          0
-AffD 'titanic'   0  -1 19950  12          0          0
-AffD 'titanic'   0  -1 20025  14          0          0
-AffD 'titanic'   0  -1  50  16          0          0
 End
 
 #O
