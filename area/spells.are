@@ -436,6 +436,8 @@ This spell enables the caster to detect magical objects.
 
 Minimum level depends on your primary class and is:
 Mage:2  Cleric:2  Thief:5  Warrior:5  Monk: N/A   Necromancer:62
+
+See also: DETECT EVIL, DETECT HIDDEN, DETECT INVIS, IDENTIFY
 ~
 
 0 'DETECT POISON'~
@@ -556,6 +558,8 @@ effects.  Each successful enchant increases the plus of the armor by 1 or 2
 points, and raises its level by one.
 
 Enchant armor is for M/M only and minimum level is 16.
+
+See also: ENCHANT WEAPON, IDENTIFY
 ~
 
 0 'ENCHANT WEAPON'~
@@ -568,6 +572,8 @@ destroyed by the magic.  Also, every successful enchant increases the level
 of the weapon by one ... and there is no turning back.
 
 Enchant weapon is for M/M only and minimum level is 18.
+
+See also: ENCHANT ARMOR, IDENTIFY
 ~
 
 0 'ENERGY DRAIN' 'VAMPIRIC TOUCH'~
@@ -780,6 +786,8 @@ This spell reveals information about the object.
 
 Minimum level depends on your primary class and is:
 Mage:15  Cleric:16   Thief:18   Warrior:20   Monk: N/A   Necromancer:N/A
+
+See also: ENCHANT WEAPON, ENCHANT ARMOR, LORE
 ~
 
 0 INFRAVISION~
@@ -1070,6 +1078,8 @@ or other players.
 
 Minimum level depends on your primary class and is:
 Mage:13  Cleric:22   Thief:25   Warrior:36   Monk: N/A   Necromancer:N/A
+
+See also: WORD OF RECALL, RECALL, PORTAL
 ~
 
 0 TENTACLES~
