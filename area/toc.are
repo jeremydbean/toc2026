@@ -456,6 +456,8 @@ performance I guess.
     your immortal to get even, in any way shape or form.  Keep your mortals
     and your immortal disassociated from one another.
 
+See also: IMMORTAL, RULES, WIZLIST
+
 ~
 
 -1 HERBIE ANGEL~
@@ -502,6 +504,8 @@ by breaking a rule.
 * Do not bring aggressive mobs to lower level areas other than the ones they
   belong in.  Charming aggressive mobs and bringing them to Dresden is
   looked on particularly strongly.
+
+See also: COMMANDMENTS, PUNISHED, PKILL
 
 
 
@@ -578,6 +582,8 @@ Date           Name(s)            Offense                Punishment
 - Stats have changed a bit, some races are now able to go beyond the
   original 25 max, depending on their base stat and possible magical
   enhancement.
+
+See also: CHANGES, MOTD
 ~
 
 -1 LYCANTHROPY~
@@ -613,6 +619,8 @@ of Dresden against killers and thieves, and furnishing the mayor's office
 in high style are all expensive.  In order to keep everything running
 smoothly, ToC taxes the wealthiest citizens.  This tax amounts to 50% of
 all gold above 1 million coins, each and every time you log on.
+
+See also: BANK, GUILDS
 ~
 
 -1 CHANGES~
@@ -771,6 +779,8 @@ so are very vulnerable to drowning.  They receive the bash skill for free.
 The experience needed per level for dwarves is:
 
 Mage:2200  Cleric:2150  Thief:2150  Warrior:2125  Monk:2400
+
+See also: RACES, ELF, HUMAN, HOBBIT
 ~
 
 -1 ELF ELVES~
@@ -787,6 +797,8 @@ hard to spot, and so receive the sneak skill automatically.
 The experience needed per level for elves is:
 
 Mage:2100  Cleric:2125  Thief:2150  Warrior:2200  Necro:2300
+
+See also: RACES, DWARF, HUMAN, HOBBIT
 ~
 
 -1 HUMAN HUMANS MAN~
@@ -799,6 +811,8 @@ gain more benefit from magical devices.
 The experience needed per level for humans is:
 
 Mage:2000  Cleric:2000  Thief:2000  Warrior:2000  Monk:2300  Necro:2000
+
+See also: RACES, DWARF, ELF, HOBBIT
 ~
 
 -1 HOBBIT HALFLING~
@@ -811,6 +825,8 @@ to duck under attacks.
 The experience needed per level for hobbits is:
 
 Mage:2200  Cleric:2150  Thief:2125  Warrior:2150
+
+See also: RACES, DWARF, ELF, HUMAN
 ~
 
 -1 SAURIAN~
@@ -826,6 +842,8 @@ also have a chance of getting a bonus attack with their tail in combat.
 The experience needed per level for saurians is:
 
 Mage:2200  Cleric:2150  Thief:2250  Warrior:2200
+
+See also: RACES, DWARF, ELF, HUMAN
 ~
 
 -1 SPELLGROUP~
@@ -865,6 +883,8 @@ Cost is 4 trains for mages, 5 for thieves and warriors
 
 
 Trainer for C/C is Dominic. Trainer for ?/C, Fredar.
+
+See also: SPELLGROUP, GAIN, COMBAT
 ~
 
 -1 BEGUILING~
@@ -881,6 +901,8 @@ Charm Person, Sleep, Invisibility
 at a cost of 3 trains.
 
 Trainer for M/M is Danko. Trainer for ?/M is Creole
+
+See also: SPELLGROUP, GAIN, MALADICTIONS
 ~
 
 -1 BENEDICTIONS~
@@ -898,6 +920,8 @@ Bless, Calm, Holy Word, Remove Curse, Aid, Mana Convert
 at a cost of 4 trains.
 
 Trainer for C/C is Tempora.  Trainer for ?/C is Grill.
+
+See also: SPELLGROUP, GAIN, HEALING
 ~
 
 -1 COMBAT~
@@ -915,6 +939,8 @@ Color Spray, Fireball, Shocking Grasp
 at a cost of 4 trains.
 
 Trainer for M/M is Flame.  Trainer for ?/M is Kilar.
+
+See also: SPELLGROUP, GAIN, HARMFUL
 ~
 
 -1 CREATION~
@@ -926,6 +952,8 @@ Cost is 4 for mage and cleric, 5 for warrior and thief.
 Only full clerics or members of the cleric guild can gain this.
 
 Trainer is Silius.
+
+See also: SPELLGROUP, GAIN
 ~
 
 -1 CURATIVE~
@@ -936,6 +964,8 @@ Cure Blindness, Cure Disease, Cure Poison, Cure Nightmare
 Cost is 4 for clerics, 5 for mages, and 6 for warriors and thieves.
 
 Trainer is Qualo.
+
+See also: SPELLGROUP, GAIN, HEALING
 ~
 
 -1 DETECTION~
@@ -950,6 +980,8 @@ Cost is 4 for mage, 4 for cleric, 5 for warrior and thief.
 
 Trainers are Silius for ?/C (including C/C)
 	 and Diemos for ?/M (including M/M)
+
+See also: SPELLGROUP, GAIN
 ~
 
 -1 DRACONIAN~
@@ -961,6 +993,8 @@ Acid Breath, Fire Breath, Frost Breath, Gas Breath, Lightning Breath.
 The lowest level spell in this group is level 34.
 
 Trainer is Drixt.
+
+See also: SPELLGROUP, GAIN, ELEMENTAL
 ~
 
 -1 ELEMENTAL~
@@ -985,6 +1019,8 @@ Trainers are:  Tempora for C/C
 	       Drixt for M/M
 	       Kilar for ?/M
 	 and   Marilith for Necro
+
+See also: SPELLGROUP, GAIN, DRACONIAN
 ~
 
 -1 ENCHANTMENT~
@@ -995,6 +1031,8 @@ Enchant Armor, Enchant Weapon.
 Cost is 5 trains.
 
 Trainer is Danko.
+
+See also: SPELLGROUP, GAIN
 ~
 
 -1 ENHANCEMENT~
@@ -1018,6 +1056,8 @@ Trainers are:  Tranis for M/M
 	       Creole for ?/M
 	 and   Marilith for Necro
 
+See also: SPELLGROUP, GAIN
+
 ~
 
 -1 HARMFUL~
@@ -1030,6 +1070,8 @@ Guild members gain all of the above except Harm.
 Cost: 3 Trains both for full clerics, 2 for guild members
 
 Trainer for C/C is Eriak.  Trainer for ?/C is Lunk.
+
+See also: SPELLGROUP, GAIN, COMBAT
 ~
 
 -1 HEALING~
@@ -1042,6 +1084,8 @@ Guild members gain all but Mass Healing.
 Cost: 4 trains both for full clerics and guild members
 
 Trainer for C/C is Dominic.  Trainer for ?/C is Grill.
+
+See also: SPELLGROUP, GAIN, CURATIVE
 ~
 
 -1 LIFE-UNDEATH~
@@ -1054,6 +1098,8 @@ Raise Dead, Trap the Soul, Haven, Ghostly Presence
 Cost: 7 trains
 
 Trainer is the Soul Trapper.
+
+See also: SPELLGROUP, GAIN, ANIMATE PARTS
 ~
 
 -1 MALADICTIONS~
@@ -1079,6 +1125,8 @@ Trainers are: Eriak for C/C
 	      Flame for M/M
 	      Kilar for ?/M
          and  Necro Guild Master for Necro
+
+See also: SPELLGROUP, GAIN, BEGUILING
 ~
 
 -1 PROTECTIVE~
@@ -1104,6 +1152,8 @@ Trainers are: Dominic for C/C
 	      Chamis for ?/M
 	 and  Soul Trapper for Necro
 
+See also: SPELLGROUP, GAIN
+
 ~
 
 -1 TRANSPORT~
@@ -1128,6 +1178,8 @@ Trainers are: Eriak for C/C
 	      Tranis for M/M
 	      Chamis for ?/M
 	 and  Undead Spirit for Necro
+
+See also: SPELLGROUP, GAIN
 ~
 
 -1 WEATHERSPELLS~
@@ -1145,6 +1197,8 @@ Mage:14  Cleric:6  Thief:8  Warrior:8
 
 Trainers are Silius for ?/C (including C/C)
 	 and Diemos for ?/M (including M/M)
+
+See also: SPELLGROUP, GAIN, ELEMENTAL
 ~
 
 0 DOORBASH~

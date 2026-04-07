@@ -47,6 +47,8 @@ This spell will temporarily turn you into a ghost.  While as a ghost you cannot 
 attacked and you can't attack anything.
 
 Ghostly presence is only available to necromancers at level 25 and higher.
+
+See also: ANIMATE PARTS, LIFE-UNDEATH, PASS DOOR
 ~
 
 0 'ANIMATE PARTS'~
@@ -59,6 +61,8 @@ who you are fighting, then disappear.  You must be fighting someone for this
 spell to work.
 
 This spell is necro only, minimum level 5.
+
+See also: BUTCHER, EMBALM, LIFE-UNDEATH
 ~
 
 0 ARMOR SHIELD 'STONE SKIN' SHROUD 'MAJOR GLOBE'~
@@ -104,6 +108,8 @@ This spell will curse a weapon, rendering it non-removable when wielded.
 The bewitch spell's affects can be nullified by the remove curse spell.
 
 Bewitch Weapon is a necromancer only spell and is gainable at level 25.
+
+See also: CURSE, MALADICTIONS, ENCHANTMENT
 ~
 
 0 BLESS~
@@ -140,6 +146,8 @@ This spell will "butcher" a corpse into 5 body parts, for use with
 the animate parts spell.
 
 Butcher is a necromancer only spell, useable at Level 10.
+
+See also: ANIMATE PARTS, EMBALM, LIFE-UNDEATH
 ~
 
 0 CALM~
@@ -189,6 +197,8 @@ caster's level (approximately 2 ticks per level).  The victim may resist
 the spell with a saving throw.  The effect is purely cosmetic and wears
 off naturally.  A second application has no effect while the first is
 still active.
+
+See also: BENEDICTIONS
 ~
 
 0 'CHARM PERSON'~
@@ -245,6 +255,8 @@ The ball of light will last indefinitely.
 
 Minimum level depends on your primary class and is:
 Mage:5  Cleric:4  Thief:7  Warrior:6  Monk: N/A   Necromancer:N/A
+
+See also: INFRAVISION, LIGHT SPELLS, CREATION
 ~
 
 0 'CONTROL WEATHER'~
@@ -256,6 +268,8 @@ weather does not take effect until the next tick.
 
 Minimum level depends on your primary class and is:
 Mage:27  Cleric:28  Thief:32  Warrior:32  Monk: N/A   Necromancer:N/A
+
+See also: WEATHERSPELLS, ELEMENTAL
 ~
 
 0 'CREATE FOOD'~
@@ -265,6 +279,8 @@ This spell creates a Magic Mushroom, which you or anyone else can eat.
 
 Minimum level depends on your primary class and is:
 Mage:10  Cleric:5  Thief:12  Warrior:11  Monk: N/A   Necromancer:N/A
+
+See also: CREATE WATER, CREATE SPRING, CREATION
 ~
 
 0 'CREATE SPRING'~
@@ -275,6 +291,8 @@ same properties as a fountain.
 
 Minimum level depends on your primary class and is:
 Mage:16  Cleric:14  Thief:20   Warrior:18  Monk: N/A   Necromancer:N/A
+
+See also: CREATE FOOD, CREATE WATER, CREATION
 ~
 
 0 'CREATE SKELETON' 'CREATE WRAITH' 'CREATE VAMPIRE'~
@@ -294,6 +312,8 @@ These spells are for necromancers only.  Minimum levels are:
 create skeleton - 15
 create wraith - 30
 create vampire - 45
+
+See also: ANIMATE PARTS, BUTCHER, LIFE-UNDEATH
 ~
 
 0 'CREATE WATER'~
@@ -303,6 +323,8 @@ This spell replenishes a drink container with water.
 
 Minimum level depends on your primary class and is:
 Mage:8  Cleric:3  Thief:11  Warrior:12  Monk: N/A   Necromancer:N/A
+
+See also: CREATE FOOD, CREATE SPRING, CREATION
 ~
 
 0 'CURE BLINDNESS'~
@@ -598,6 +620,8 @@ part will stay in existence before decaying. You can only increase the time
 to a certain extent, at which time the spell will fail.
 
 Embalm is for necromancers only, with a minimum level of 7.
+
+See also: ANIMATE PARTS, BUTCHER, LIFE-UNDEATH
 ~
 
 0 'ENCHANT ARMOR'~
@@ -650,6 +674,8 @@ This spell makes the caster's gaze a deadly weapon. While not inherently
 evil, it has become known as such because of the damage that is inflicted.
 
 Evil eye is for necromancers only and has a minimum level of 19.
+
+See also: BLINDNESS, ENERGY DRAIN, MALADICTIONS
 ~
 
 0 'FAERIE FIRE'~
@@ -746,6 +772,8 @@ as being (Guarded).
 
 This spell is for full mages (M/M) with a minimum level of 32 and for
 necromancers with a minimum level of 34.
+
+See also: POWER GLOVES, ENCHANTMENT, ENHANCEMENT
 ~
 
 0 FRENZY~
@@ -806,6 +834,8 @@ catch is that it also takes all of your mana.  The more mana you have the
 greater chance of the spell being successful.
 
 This spell is only available to C/C at level 43 and higher.
+
+See also: AID, HOLY WORD, BENEDICTIONS
 ~
 
 0 HAVEN 'ROPE TRICK'~
@@ -824,6 +854,8 @@ Rope trick is limited to M/M (minimum level 31), C/C (minimum level 31) and
 Necromancer (minimum level 33).
 
 Haven is only available for M/M and C/C with a minimum level of 44.
+
+See also: MAZE, PROTECTIVE, TRANSPORT
 ~
 
 0 'HEAT METAL'~
@@ -834,6 +866,8 @@ up. This will naturally burn the victim, and if the victim is unable
 to remove the object, it will burn that much more.
 
 Heat metal is only for M/M at level 17 or up and C/C at level 19 and up.
+
+See also: FIRE SPELLS, ELEMENTAL, HARMFUL
 ~
 
 0 'HOLY WORD'~
@@ -846,6 +880,8 @@ of the clerical spells.
 
 Minimum level depends on your primary class and is:
 Mage:35   Cleric:32   Thief:37   Warrior:39   Monk: N/A   Necromancer:N/A
+
+See also: DISPEL EVIL, DIVINE INTERVENTION, BENEDICTIONS
 ~
 
 0 IDENTIFY~
@@ -937,6 +973,8 @@ cast more spells.
 
 Minimum level depends on your primary class and is:
 Mage:13   Cleric:12   Thief:16   Warrior:16   Monk: N/A   Necromancer:14
+
+See also: REFRESH, MEDITATION, CREATION
 ~
 
 0 MAZE~
@@ -947,6 +985,8 @@ so affected might try to move north, but end up moving in some other
 direction, if other exits are present.
 
 This spell is available to M/M and C/C with a minimum level of 38.
+
+See also: HAVEN, TRAP THE SOUL, TRANSPORT
 ~
 
 0 'PASS DOOR'~
@@ -956,6 +996,8 @@ This spell enables the caster to pass through closed doors.
 
 Minimum level depends on your primary class and is:
 Mage:24   Cleric:22   Thief:28   Warrior:26   Monk: N/A   Necromancer:24
+
+See also: FLY, TRANSPORT, GHOSTLY PRESENCE
 ~
 
 0 PLAGUE~
@@ -1039,6 +1081,8 @@ also is transferred to a weapon if one is wielded.  This aura will
 increase the damage the mage does to foes.
 
 The power gloves spell is limited to M/M with a minimum level of 25.
+
+See also: FORCE SWORD, GIANT STRENGTH, ENCHANTMENT
 ~
 
 0 'RAISE DEAD'~
@@ -1051,6 +1095,8 @@ in being resurrected.  The spell will fail if the player has nosummon on.
 
 Only C/C of level 31 or higher and necromancers of level 29 or higher can
 raise the dead.
+
+See also: ANIMATE PARTS, LIFE-UNDEATH, HEALING
 ~
 
 0 REFRESH~
@@ -1060,12 +1106,16 @@ This spell refreshes the movement points of a character.
 
 Minimum level depends on your primary class and is:
 Mage:6  Cleric:4  Thief:8  Warrior:7  Monk: N/A   Necromancer:N/A
+
+See also: MANA CONVERT, AID, CREATION
 ~
 62 'REMOVE ALIGN'~
 Syntax: cast 'remove align' <object>
 
 If you are lucky, this removes alignment restrictions on an object.  If you
 are unlucky, you may blow the object up.
+
+See also: REMOVE CURSE, ENCHANTMENT
 ~
 0 'REMOVE CURSE'~
 Syntax: cast 'remove curse' <character>
@@ -1086,6 +1136,8 @@ Syntax: c 'restore mana'
 Restore mana replenishes a small amount of mana (5 to 50 points) for the
 caster or a chosen target.  It can be cast at any time while standing and
 is useful for topping off mana between fights.
+
+See also: MANA CONVERT, MEDITATION
 ~
 
 0 'SKELETAL HANDS'~
@@ -1095,6 +1147,8 @@ This spell causes the dead to awake from their sleep, reaching up from where
 they were buried to claw at the victim.
 
 Only Necromancers may use skeletal hands, at a minimum level of 13.
+
+See also: ANIMATE PARTS, LIFE-UNDEATH, HARMFUL
 ~
 
 0 SLEEPSPELL~
@@ -1108,6 +1162,8 @@ For help on the rest/sleep/stand commands, see HELP REST or HELP SLEEP.
 
 Minimum level depends on your primary class and is:
 Mage:12   Cleric:11   Thief:12   Warrior:14   Monk: N/A   Necromancer:N/A
+
+See also: CHARM PERSON, BEWITCH, MALADICTIONS
 ~
 
 0 SLOW~
@@ -1134,6 +1190,8 @@ the victim.
 
 Minimum level depends on your primary class and is:
 Mage:21   Cleric:15   Thief:26   Warrior:29   Monk: N/A   Necromancer:N/A
+
+See also: FORCE SWORD, BENEFICIAL, HARMFUL
 ~
 
 62 'STINKING CLOUD'~
@@ -1180,6 +1238,8 @@ This spell calls on the powers of the earth to create massive tentacles out
 of the ground itself, striking at all attackable characters in the room.
 
 Only necromancers can use tentacles, at a minimum level of 42.
+
+See also: ANIMATE PARTS, LIFE-UNDEATH, HARMFUL
 ~
 
 0 'TRAP THE SOUL'~
@@ -1191,6 +1251,8 @@ the container. NPC's stuck in these containers will remain in them until
 you open the container.  PC's cannot be affected at this time.
 
 Only necromancers who have attained hero level may use this spell.
+
+See also: MAZE, ANIMATE PARTS, LIFE-UNDEATH
 ~
 
 0 VENTRILOQUATE~
