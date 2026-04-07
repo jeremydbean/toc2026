@@ -397,7 +397,7 @@ async def index() -> str:
                             <i class="fa-solid fa-terminal"></i> CONNECT NOW
                             <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </button>
-                        <a href="https://github.com/jeremydbean/tocgpt" target="_blank" class="px-8 py-4 rounded border border-gray-600 hover:border-white bg-transparent text-white text-lg font-bold flex items-center justify-center gap-2 transition-all hover:bg-white/5">
+                        <a href="https://github.com/jeremydbean/toc2026" target="_blank" class="px-8 py-4 rounded border border-gray-600 hover:border-white bg-transparent text-white text-lg font-bold flex items-center justify-center gap-2 transition-all hover:bg-white/5">
                             <i class="fa-brands fa-github"></i> VIEW SOURCE
                         </a>
                     </div>
@@ -460,7 +460,10 @@ async def index() -> str:
                             </div>
                             <div class="mt-4 flex justify-between text-gray-400 text-sm">
                                 <div>Status: <span id="connection-status" class="text-gray-500">Not connected</span></div>
-                                <div>Host: localhost:9000</div>
+                                <div class="flex items-center gap-3">
+                                    <span>Host: localhost:9000</span>
+                                    <button onclick="if(ws) ws.close();" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors"><i class="fas fa-plug mr-1"></i>Reconnect</button>
+                                </div>
                             </div>
                         </div>
 
@@ -800,6 +803,17 @@ async def index() -> str:
             <section class="py-10 bg-[#0a0a0a] min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Server Administration</h2>
+
+                    <!-- Auth Token -->
+                    <div class="bg-[#151515] p-4 rounded border border-yellow-900/20 mb-8 flex items-center gap-4">
+                        <i class="fas fa-key text-yellow-700 text-lg shrink-0"></i>
+                        <div class="flex-1">
+                            <label class="block text-xs text-gray-500 uppercase tracking-wider mb-1">API Token <span class="normal-case text-gray-600">(required if WEB_ADMIN_TOKEN is set)</span></label>
+                            <input type="password" id="admin-token" placeholder="Leave blank if not configured"
+                                   class="w-full bg-black border border-gray-700 rounded px-3 py-1.5 text-white text-sm focus:border-yellow-500 outline-none"
+                                   oninput="localStorage.setItem('toc_admin_token', this.value)">
+                        </div>
+                    </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                         <!-- WizInfo -->
@@ -886,7 +900,7 @@ async def index() -> str:
                             </div>
                             <div>
                                 <label class="block text-sm text-gray-400 mb-1">Max Level</label>
-                                <input type="number" id="bg-level" value="50" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none">
+                                <input type="number" id="bg-level" value="50" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none" onkeydown="if(event.key==='Enter') loadBestGear()">
                             </div>
                             <button onclick="loadBestGear()" class="px-4 py-2 rounded bg-yellow-600 hover:bg-yellow-500 text-black font-bold transition-colors">
                                 Find Gear
@@ -1260,10 +1274,6 @@ async def index() -> str:
 
         // ============ NAVIGATION ============
         
-        // Ensure DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-        });
-        
         // Global Escape key handler for modals
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
@@ -1307,8 +1317,13 @@ async def index() -> str:
                     mobileMenu.classList.add('hidden');
                 }
 
+                window.scrollTo(0, 0);
                 if(id === 'play') initTerminal();
-                if(id === 'admin') refreshLogs();
+                if(id === 'admin') {
+                    refreshLogs();
+                    const tokenInput = document.getElementById('admin-token');
+                    if(tokenInput) tokenInput.value = localStorage.getItem('toc_admin_token') || '';
+                }
             } catch(e) {
                 console.error("Error in showSection:", e);
             }
@@ -1442,6 +1457,14 @@ async def index() -> str:
         // ============ DATABASE ============
         let currentDb = 'mobs';
         let dbData = { mobs: [], objects: [], areas: [] };
+        let _dbSortKey = null;
+        let _dbSortAsc = true;
+
+        function sortDb(key) {
+            if (_dbSortKey === key) { _dbSortAsc = !_dbSortAsc; }
+            else { _dbSortKey = key; _dbSortAsc = true; }
+            renderDb(dbData[currentDb]);
+        }
 
         async function loadStats() {
             try {
@@ -1475,6 +1498,8 @@ async def index() -> str:
 
         async function loadDb(type, forceRefresh = false) {
             currentDb = type;
+            // Reset sort when switching categories
+            if (_dbSortKey) { _dbSortKey = null; _dbSortAsc = true; }
             const content = document.getElementById('db-content');
             const headers = document.getElementById('db-headers');
             const filterContainer = document.getElementById('obj-filter-container');
@@ -1555,8 +1580,25 @@ async def index() -> str:
             let headerHtml = '';
             let rowsHtml = '';
 
+            // Apply sort if active
+            if (_dbSortKey && currentDb !== 'areas') {
+                data = [...data].sort((a, b) => {
+                    const av = a[_dbSortKey]; const bv = b[_dbSortKey];
+                    const ai = isNaN(av) ? String(av||'').toLowerCase() : Number(av);
+                    const bi = isNaN(bv) ? String(bv||'').toLowerCase() : Number(bv);
+                    if (ai < bi) return _dbSortAsc ? -1 : 1;
+                    if (ai > bi) return _dbSortAsc ? 1 : -1;
+                    return 0;
+                });
+            }
+
+            function sortHdr(label, key) {
+                const arrow = _dbSortKey === key ? (_dbSortAsc ? ' &#9650;' : ' &#9660;') : ' <span class="text-gray-700">&#9650;</span>';
+                return `<th class="p-4 cursor-pointer hover:text-white select-none" onclick="sortDb('${key}')">${label}${arrow}</th>`;
+            }
+
             if(currentDb === 'mobs') {
-                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Level</th><th class="p-4">Race</th><th class="p-4">Area</th><th class="p-4">Actions</th>';
+                headerHtml = sortHdr('Vnum','vnum') + sortHdr('Name','short_desc') + sortHdr('Level','level') + sortHdr('Race','race') + sortHdr('Area','area') + '<th class="p-4">Actions</th>';
                 rowsHtml = data.map(m => `
                     <tr class="hover:bg-[#151515] transition-colors">
                         <td class="p-4 font-mono text-sm text-gray-500">#${escHtml(m.vnum)}</td>
@@ -1570,7 +1612,7 @@ async def index() -> str:
                     </tr>
                 `).join('');
             } else if(currentDb === 'objects') {
-                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Type</th><th class="p-4">Level</th><th class="p-4">Details</th><th class="p-4">Actions</th>';
+                headerHtml = sortHdr('Vnum','vnum') + sortHdr('Name','short_desc') + sortHdr('Type','item_type') + sortHdr('Level','level') + '<th class="p-4">Details</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(o => {
                     // Build affects display
                     let affectsHtml = '';
@@ -1739,7 +1781,7 @@ async def index() -> str:
                     </tr>
                 `).join('');
             } else if(currentDb === 'rooms') {
-                headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Area</th><th class="p-4">Sector</th><th class="p-4">Flags</th><th class="p-4">Actions</th>';
+                headerHtml = sortHdr('Vnum','vnum') + sortHdr('Name','name') + sortHdr('Area','area') + sortHdr('Sector','sector_type') + '<th class="p-4">Flags</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(r => `
                     <tr class="hover:bg-[#151515] transition-colors">
                         <td class="p-4 font-mono text-sm text-gray-500">#${escHtml(r.vnum)}</td>
@@ -1759,14 +1801,23 @@ async def index() -> str:
         }
 
         function filterDb() {
-            const q = document.getElementById('db-search').value.toLowerCase();
-            const filtered = dbData[currentDb].filter(item => 
-                JSON.stringify(item).toLowerCase().includes(q)
-            );
+            const q = document.getElementById('db-search').value.toLowerCase().trim();
+            if (!q) { renderDb(dbData[currentDb]); return; }
+            const filtered = dbData[currentDb].filter(item => {
+                const fields = [item.vnum, item.short_desc, item.name, item.area,
+                    item.race, item.item_type, item.sector_type, item.builder,
+                    item.filename, item.material, item.dam_type];
+                return fields.some(f => f != null && String(f).toLowerCase().includes(q));
+            });
             renderDb(filtered);
         }
 
         // ============ ADMIN ============
+        function getAuthHeaders() {
+            const token = localStorage.getItem('toc_admin_token') || '';
+            return token ? { 'X-Admin-Token': token } : {};
+        }
+
         let actionPendingTimers = {};
         async function action(type) {
             const btn = event.currentTarget;
@@ -1778,7 +1829,8 @@ async def index() -> str:
                 btn.innerHTML = btn.dataset.origHtml;
                 btn.classList.remove('border-yellow-500', 'text-yellow-300');
                 try {
-                    await fetch('/api/' + type, { method: 'POST' });
+                    const res = await fetch('/api/' + type, { method: 'POST', headers: getAuthHeaders() });
+                    if (res.status === 403) { showToast('Forbidden — check your API token in Admin settings.', 'error'); return; }
                     showToast(type.charAt(0).toUpperCase() + type.slice(1) + ' queued successfully.', 'success');
                 } catch(e) { showToast('Error: ' + e, 'error'); }
             } else {
@@ -1800,11 +1852,12 @@ async def index() -> str:
             const msg = document.getElementById('wizinfo-msg').value;
             const level = document.getElementById('wizinfo-level').value;
             try {
-                await fetch('/api/wizinfo', {
+                const res = await fetch('/api/wizinfo', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: {'Content-Type': 'application/json', ...getAuthHeaders()},
                     body: JSON.stringify({message: msg, level: parseInt(level)})
                 });
+                if (res.status === 403) { showToast('Forbidden — check your API token.', 'error'); return; }
                 showToast('Broadcast queued.', 'success');
                 e.target.reset();
             } catch(e) { showToast('Error: ' + e, 'error'); }
@@ -1814,11 +1867,12 @@ async def index() -> str:
             e.preventDefault();
             const cmd = document.getElementById('server-cmd').value;
             try {
-                await fetch('/api/command', {
+                const res = await fetch('/api/command', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: {'Content-Type': 'application/json', ...getAuthHeaders()},
                     body: JSON.stringify({command: cmd})
                 });
+                if (res.status === 403) { showToast('Forbidden — check your API token.', 'error'); return; }
                 showToast('Command queued.', 'success');
                 e.target.reset();
             } catch(e) { showToast('Error: ' + e, 'error'); }
@@ -1913,6 +1967,15 @@ async def index() -> str:
 
         // Room Modal Functions
         async function showRoomDetail(vnum) {
+            // Show modal immediately with loading state
+            document.getElementById('room-modal-title').textContent = 'Loading...';
+            document.getElementById('room-modal-vnum').textContent = '';
+            document.getElementById('room-modal-desc').textContent = '';
+            document.getElementById('room-modal-exits').innerHTML = '<div class="col-span-full text-gray-500 text-sm"><i class="fas fa-spinner fa-spin mr-2"></i>Loading...</div>';
+            document.getElementById('room-modal-mobs').innerHTML = '';
+            document.getElementById('room-modal-objects').innerHTML = '';
+            document.getElementById('room-modal-extras').innerHTML = '';
+            document.getElementById('room-modal').classList.remove('hidden');
             try {
                 const res = await fetch(`/api/rooms/${vnum}`);
                 if(!res.ok) throw new Error('Failed to fetch room: ' + res.status);
@@ -1980,6 +2043,7 @@ async def index() -> str:
                 
                 document.getElementById('room-modal').classList.remove('hidden');
             } catch(e) {
+                document.getElementById('room-modal').classList.add('hidden');
                 showToast('Error loading room details: ' + e, 'error');
             }
         }
@@ -1990,6 +2054,13 @@ async def index() -> str:
 
         // Mob Modal Functions
         async function showMobDetail(vnum) {
+            // Show modal immediately with loading state
+            document.getElementById('mob-modal-title').textContent = 'Loading...';
+            document.getElementById('mob-modal-vnum').textContent = '';
+            document.getElementById('mob-modal-desc').textContent = '';
+            document.getElementById('mob-modal-drops').innerHTML = '<li class="text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading...</li>';
+            document.getElementById('mob-modal-spawns').innerHTML = '';
+            document.getElementById('mob-modal').classList.remove('hidden');
             try {
                 const res = await fetch(`/api/mobs/${vnum}`);
                 if(!res.ok) throw new Error('Failed to fetch mob: ' + res.status);
@@ -2056,6 +2127,7 @@ async def index() -> str:
                 
                 document.getElementById('mob-modal').classList.remove('hidden');
             } catch(e) {
+                document.getElementById('mob-modal').classList.add('hidden');
                 showToast('Error loading mob details: ' + e, 'error');
             }
         }
@@ -2071,6 +2143,14 @@ async def index() -> str:
                 showToast('Error: Object vnum is undefined.', 'error');
                 return;
             }
+            // Show modal immediately with loading state
+            document.getElementById('obj-modal-title').textContent = 'Loading...';
+            document.getElementById('obj-modal-vnum').textContent = '';
+            document.getElementById('obj-modal-desc').textContent = '';
+            document.getElementById('obj-modal-affects').innerHTML = '<li class="text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading...</li>';
+            document.getElementById('obj-modal-carried').innerHTML = '';
+            document.getElementById('obj-modal-extras').innerHTML = '';
+            document.getElementById('obj-modal').classList.remove('hidden');
             try {
                 const res = await fetch(`/api/objects/${vnum}`);
                 if(!res.ok) throw new Error('Failed to fetch object: ' + res.status);
@@ -2150,6 +2230,7 @@ async def index() -> str:
                 
                 document.getElementById('obj-modal').classList.remove('hidden');
             } catch(e) {
+                document.getElementById('obj-modal').classList.add('hidden');
                 showToast('Error loading object details: ' + e, 'error');
             }
         }
@@ -2163,6 +2244,8 @@ async def index() -> str:
             showSection('best-gear');
         }
 
+        const _bgBreakdownMap = new Map();
+
         async function loadBestGear() {
             const cls = document.getElementById('bg-class').value;
             const race = document.getElementById('bg-race').value;
@@ -2170,6 +2253,7 @@ async def index() -> str:
             const container = document.getElementById('bg-results');
             
             container.innerHTML = '<div class="text-center text-gray-500 py-12">Finding best gear...</div>';
+            _bgBreakdownMap.clear();
             
             try {
                 const res = await fetch(`/api/best_gear?class_name=${cls}&race_name=${race}&level=${level}&limit=5`);
@@ -2193,8 +2277,8 @@ async def index() -> str:
                     `;
                     
                     for(const item of data[slot]) {
-                        const breakdown = item.score_breakdown ? item.score_breakdown.join('\\n') : 'No breakdown';
-                        const breakdownEscaped = breakdown.split("'").join("\\\\'").split('\\n').join('\\\\n');
+                        // Store breakdown in Map keyed by vnum — avoids fragile inline string escaping
+                        _bgBreakdownMap.set(item.vnum, item.score_breakdown || []);
                         html += `
                             <div class="p-3 hover:bg-[#151515] transition-colors flex justify-between items-center group">
                                 <div class="flex items-center gap-3 overflow-hidden">
@@ -2204,7 +2288,7 @@ async def index() -> str:
                                         <div class="text-xs text-gray-500">Lvl ${escHtml(item.level)} &bull; ${escHtml(item.area || 'Unknown Area')}</div>
                                     </div>
                                 </div>
-                                <div class="text-right pl-4 shrink-0 cursor-pointer" onclick="showScoreBreakdown('${breakdownEscaped}')">
+                                <div class="text-right pl-4 shrink-0 cursor-pointer" onclick="showScoreBreakdown(${item.vnum})">
                                     <div class="text-green-400 font-bold text-lg">${escHtml(item.score)}</div>
                                     <div class="text-[10px] text-gray-600 uppercase tracking-wider">Score</div>
                                 </div>
@@ -2225,10 +2309,12 @@ async def index() -> str:
             }
         }
 
-        function showScoreBreakdown(breakdown) {
-            const lines = breakdown.split('\\\\n').map(l => l.trim()).filter(l => l);
+        function showScoreBreakdown(vnum) {
+            const lines = (_bgBreakdownMap.get(vnum) || []).filter(l => String(l).trim());
             const content = document.getElementById('score-modal-content');
-            content.innerHTML = lines.map(l => `<div class="py-0.5 border-b border-gray-800">${escHtml(l)}</div>`).join('');
+            content.innerHTML = lines.length
+                ? lines.map(l => `<div class="py-0.5 border-b border-gray-800">${escHtml(l)}</div>`).join('')
+                : '<div class="text-gray-500 italic">No breakdown available</div>';
             document.getElementById('score-modal').classList.remove('hidden');
         }
 
