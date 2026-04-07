@@ -228,6 +228,7 @@ async def index() -> str:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Times of Chaos - MUD</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F409;</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.css" />
@@ -318,6 +319,15 @@ async def index() -> str:
             background: #555;
         }
         
+        @keyframes hero-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .hero-cursor {
+            display: inline-block;
+            animation: hero-blink 0.75s step-end infinite;
+            color: #22c55e;
+        }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         
@@ -340,6 +350,10 @@ async def index() -> str:
                 <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('home')">
                     <i class="fa-solid fa-dragon text-3xl text-red-700"></i>
                     <span class="text-2xl font-bold text-white tracking-wider font-cinzel">TIMES OF CHAOS</span>
+                </div>
+                <div class="hidden md:flex items-center gap-2 font-mono text-xs">
+                    <span id="nav-dot" class="h-2 w-2 rounded-full bg-green-500 inline-block transition-colors duration-500"></span>
+                    <span id="nav-dot-text" class="text-green-400 transition-colors duration-500">LIVE</span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
@@ -376,68 +390,113 @@ async def index() -> str:
         
         <!-- HOME SECTION -->
         <div id="home-section" class="tab-content active">
-            <!-- Hero Section -->
-            <section class="hero-pattern relative h-screen flex items-center justify-center">
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-[#0a0a0a]"></div>
-                <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                    <div class="mb-6 inline-block">
-                        <span class="py-1 px-3 rounded-full bg-red-900/30 border border-red-800/50 text-red-400 text-xs font-bold tracking-widest uppercase">
-                            Legacy MUD Engine Reborn
-                        </span>
+            <!-- Hero Section - Terminal Login Aesthetic (art from original ROM greeting) -->
+            <section class="hero-pattern relative min-h-screen flex items-center justify-center overflow-hidden">
+                <!-- ASCII art filled by JS from #ascii-art-src -->
+                <pre id="ascii-hero-art" class="absolute inset-0 text-red-900 select-none pointer-events-none overflow-hidden" style="opacity:0.08;font-size:0.54rem;line-height:1.2;font-family:'Roboto Mono',monospace;padding:7rem 2rem 2rem;z-index:0;white-space:pre;"></pre>
+                <!-- CRT scanlines overlay -->
+                <div class="absolute inset-0 pointer-events-none" style="background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.06) 3px,rgba(0,0,0,0.06) 6px);z-index:1;"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-[#0a0a0a]" style="z-index:1;"></div>
+                <div class="relative text-center px-4 max-w-4xl mx-auto" style="z-index:2;">
+                    <div class="mb-4 font-mono text-red-900/50 text-xs tracking-widest select-none">
+                        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
-                        ENTER THE <span class="text-red-600">CHAOS</span>
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight drop-shadow-2xl font-cinzel">
+                        TIMES <span class="text-red-600">OF</span> CHAOS
                     </h1>
-                    <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                        A text-based MMORPG experience powered by the classic ROM codebase. 
-                        Explore persistent realms, battle legendary monsters, and forge your legacy in pure text.
+                    <div class="font-mono text-base mb-3">
+                        <span class="text-gray-600">&gt;</span>&nbsp;<span class="text-green-400">By what name do you go by?</span>&nbsp;<span class="hero-cursor">_</span>
+                    </div>
+                    <p class="text-gray-600 font-mono text-sm mb-10 italic">
+                        May your stay here be... Interesting...
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button onclick="showSection('play')" class="btn-primary px-8 py-4 rounded text-lg font-bold flex items-center justify-center gap-2 group">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+                        <button onclick="showSection('play')" class="btn-primary px-8 py-4 rounded text-lg font-bold flex items-center justify-center gap-2 group font-mono">
                             <i class="fa-solid fa-terminal"></i> CONNECT NOW
                             <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                         </button>
-                        <a href="https://github.com/jeremydbean/toc2026" target="_blank" class="px-8 py-4 rounded border border-gray-600 hover:border-white bg-transparent text-white text-lg font-bold flex items-center justify-center gap-2 transition-all hover:bg-white/5">
+                        <a href="https://github.com/jeremydbean/toc2026" target="_blank" class="px-8 py-4 rounded border border-gray-700 hover:border-red-800 bg-transparent text-gray-400 hover:text-white text-lg font-bold flex items-center justify-center gap-2 transition-all hover:bg-red-900/10 font-mono">
                             <i class="fa-brands fa-github"></i> VIEW SOURCE
                         </a>
                     </div>
+                    <div class="font-mono text-red-900/50 text-xs tracking-widest select-none">
+                        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                    </div>
                 </div>
             </section>
+            <!-- ASCII Art data from original ROM login greeting (injected into #ascii-hero-art by JS) -->
+            <script id="ascii-art-src" type="text/plain">
+                            ==(W{==========-      /===-   _________
+                              ||  (.--.)         /===-_---         ------____
+                              | \\_,|**|,__      |===--___               __,-'
+                 -==\\\\        ` ' `--'   ),    `//=\\\\   ----`---.___.--
+             ______-==|        /`\\_.  .__/\\ \\    | |  \\\\           _--`
+      ___----   ,-/-==\\\\      (   | .  |----|   | |   `\\        ,'
+    _-        /'    |  \\\\     )__/==0==-\\<>/   / /      \\      /
+  .'        /       |   \\\\      /-\\___/--\\/  /' /        \\   /'
+ /  ____  /         |    \\`\\.__/---   \\  |_/'  /          \\/'
+/-'-    --------__  |     --/-         ( )   /'       __---`
+                  \\_|      /       __) | ;  ),   __---
+                    '----_/      _- /- |/ \\   '- \\
+ IMPs:              {\\__--_/}   _/ \\\\_>-|)<__\\     \\       TIMES
+ Eclipse            /'   (_/ __-   | |__>--<__|     |        OF
+ Gravestone        |  __/) )-      | |__>--<__|     |      CHAOS!
+ Soulcrusher       / /  ,_/       / /__>---<__/     |
+                 o-o _//        /--_>---<__--   _ /  May your stay here be...
+                 (^(-          /-_>---<__-    /      Interesting...
+               ( '))          |__>--<__|    /
+            ' )) (            \\__>--<__\\    \\
+        ,/,'//( (              --<__>--<--   \\
+      ,( ( ((, ))               --_->--<_--_/
+            </script>
 
             <!-- Features Grid -->
-            <section class="py-20 bg-[#0f0f0f]">
+            <section class="py-16 bg-[#0f0f0f]">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-16">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">A World of Text</h2>
-                        <p class="text-gray-400 max-w-2xl mx-auto">Features derived from the legendary ROM architecture, enhanced for the modern era.</p>
+                    <div class="text-center mb-12">
+                        <div class="font-mono text-red-900/40 text-xs mb-3 tracking-widest">=-=-=-=-=-=- FEATURES =-=-=-=-=-=-</div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 font-mono tracking-wider">A WORLD OF TEXT</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto font-mono text-sm">ROM architecture &mdash; enhanced for the modern era.</p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="stat-card p-8 rounded-lg text-center">
-                            <div class="w-16 h-16 bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-red-500">
-                                <i class="fa-solid fa-skull-crossbones text-2xl"></i>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="stat-card p-6 rounded-lg">
+                            <div class="font-mono text-gray-700 text-xs mb-3 tracking-widest">[ 01 / 03 ]</div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 bg-red-900/20 rounded border border-red-900/30 flex items-center justify-center text-red-500 shrink-0">
+                                    <i class="fa-solid fa-skull-crossbones"></i>
+                                </div>
+                                <h3 class="text-sm font-bold text-white font-mono tracking-wider uppercase">Tactical Combat</h3>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3">Tactical Combat</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                Real-time text combat based on THAC0 mechanics. Manage your skills, spells, and equipment weight to survive against legendary mobs.
+                            <div class="font-mono text-red-900/30 text-xs mb-3">=====================================</div>
+                            <p class="text-gray-500 text-xs leading-relaxed font-mono">
+                                Real-time combat using THAC0 mechanics. Manage skills, spells, gear weight &mdash; survive legendary mobs.
                             </p>
                         </div>
-                        <div class="stat-card p-8 rounded-lg text-center">
-                            <div class="w-16 h-16 bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-500">
-                                <i class="fa-solid fa-hat-wizard text-2xl"></i>
+                        <div class="stat-card p-6 rounded-lg">
+                            <div class="font-mono text-gray-700 text-xs mb-3 tracking-widest">[ 02 / 03 ]</div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 bg-blue-900/20 rounded border border-blue-900/30 flex items-center justify-center text-blue-500 shrink-0">
+                                    <i class="fa-solid fa-hat-wizard"></i>
+                                </div>
+                                <h3 class="text-sm font-bold text-white font-mono tracking-wider uppercase">Complex Magic</h3>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3">Complex Magic</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                Hundreds of spells across distinct schools of magic. From simple heals to room-clearing chaos storms. Mana management is key.
+                            <div class="font-mono text-red-900/30 text-xs mb-3">=====================================</div>
+                            <p class="text-gray-500 text-xs leading-relaxed font-mono">
+                                Hundreds of spells across distinct magic schools. From simple heals to room-clearing chaos storms.
                             </p>
                         </div>
-                        <div class="stat-card p-8 rounded-lg text-center">
-                            <div class="w-16 h-16 bg-yellow-900/20 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-500">
-                                <i class="fa-solid fa-scroll text-2xl"></i>
+                        <div class="stat-card p-6 rounded-lg">
+                            <div class="font-mono text-gray-700 text-xs mb-3 tracking-widest">[ 03 / 03 ]</div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 bg-yellow-900/20 rounded border border-yellow-900/30 flex items-center justify-center text-yellow-500 shrink-0">
+                                    <i class="fa-solid fa-scroll"></i>
+                                </div>
+                                <h3 class="text-sm font-bold text-white font-mono tracking-wider uppercase"><span id="hero-area-count">100+</span> Areas</h3>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-3">50+ Custom Areas</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">
-                                Explore thousands of unique rooms defined in our `.are` files. Visit Midgaard, Moria, or the dangerous realm of Thalos.
+                            <div class="font-mono text-red-900/30 text-xs mb-3">=====================================</div>
+                            <p class="text-gray-500 text-xs leading-relaxed font-mono">
+                                Explore thousands of rooms across unique `.are` files. Midgaard, Moria, the Ashen Wastes, and beyond.
                             </p>
                         </div>
                     </div>
@@ -463,6 +522,8 @@ async def index() -> str:
                                 <div class="flex items-center gap-3">
                                     <span>Host: localhost:9000</span>
                                     <button onclick="if(ws) ws.close();" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors"><i class="fas fa-plug mr-1"></i>Reconnect</button>
+                                    <button onclick="termFontSize(-1)" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors" title="Decrease font size"><i class="fas fa-minus"></i></button>
+                                    <button onclick="termFontSize(1)" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors" title="Increase font size"><i class="fas fa-plus"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -536,9 +597,13 @@ async def index() -> str:
                         <button onclick="loadDb('areas')" class="px-4 py-2 rounded bg-yellow-900/20 text-yellow-400 hover:bg-yellow-900/40 border border-yellow-900/50 transition-colors">Areas</button>
                     </div>
 
-                    <div class="flex gap-4 mb-6">
-                        <input type="text" id="db-search" placeholder="Search loaded data..." class="flex-1 bg-[#151515] border border-gray-800 rounded px-4 py-3 text-white focus:border-red-700 outline-none" onkeyup="filterDb()">
+                    <div class="flex gap-4 mb-2">
+                        <input type="text" id="db-search" placeholder="Search loaded data..." class="flex-1 bg-[#151515] border border-gray-800 rounded px-4 py-3 text-white focus:border-red-700 outline-none" oninput="debouncedFilterDb()">
+                        <button onclick="exportCsv()" class="shrink-0 px-4 py-2 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors text-sm flex items-center gap-2" title="Export current results as CSV">
+                            <i class="fas fa-download"></i><span class="hidden sm:inline">Export</span>
+                        </button>
                     </div>
+                    <div id="db-result-count" class="text-xs text-gray-600 font-mono mb-4"></div>
 
                     <!-- Advanced Filters (Objects Only) -->
                     <div id="obj-filter-container" class="hidden w-full mb-6">
@@ -845,9 +910,12 @@ async def index() -> str:
                             
                             <div class="mt-8 pt-8 border-t border-gray-800">
                                 <h4 class="text-white font-bold mb-4">Quick Actions</h4>
-                                <div class="flex gap-4">
+                                <div class="flex gap-4 flex-wrap">
                                     <button onclick="action('backup')" class="flex-1 px-4 py-2 rounded bg-blue-900/30 text-blue-400 hover:bg-blue-900/50 border border-blue-900 transition-colors">
                                         <i class="fa-solid fa-save mr-2"></i> Backup
+                                    </button>
+                                    <button onclick="action('reload')" class="flex-1 px-4 py-2 rounded bg-green-900/30 text-green-400 hover:bg-green-900/50 border border-green-900 transition-colors">
+                                        <i class="fa-solid fa-rotate mr-2"></i> Reload Areas
                                     </button>
                                     <button onclick="action('shutdown')" class="flex-1 px-4 py-2 rounded bg-red-900/30 text-red-400 hover:bg-red-900/50 border border-red-900 transition-colors">
                                         <i class="fa-solid fa-power-off mr-2"></i> Shutdown
@@ -922,7 +990,7 @@ async def index() -> str:
                     <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
                         <div>
                             <h3 id="room-modal-title" class="text-2xl font-bold text-white font-cinzel">Room Name</h3>
-                            <div class="text-gray-500 font-mono text-sm mt-1">Vnum: <span id="room-modal-vnum" class="text-gray-300">#1234</span></div>
+                            <div class="text-gray-500 font-mono text-sm mt-1 flex items-center gap-2">Vnum: <span id="room-modal-vnum" class="text-gray-300">#1234</span><button onclick="copyToClipboard(document.getElementById('room-modal-vnum').textContent.replace('#',''))" class="text-gray-600 hover:text-white transition-colors" title="Copy vnum"><i class="fa-regular fa-copy text-xs"></i></button></div>
                         </div>
                         <button onclick="closeRoomModal()" class="text-gray-400 hover:text-white">
                             <i class="fa-solid fa-times text-xl"></i>
@@ -1002,7 +1070,7 @@ async def index() -> str:
                     <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
                         <div>
                             <h3 id="mob-modal-title" class="text-2xl font-bold text-white font-cinzel">Mob Name</h3>
-                            <div class="text-gray-500 font-mono text-sm mt-1">Vnum: <span id="mob-modal-vnum" class="text-gray-300">#1234</span></div>
+                            <div class="text-gray-500 font-mono text-sm mt-1 flex items-center gap-2">Vnum: <span id="mob-modal-vnum" class="text-gray-300">#1234</span><button onclick="copyToClipboard(document.getElementById('mob-modal-vnum').textContent.replace('#',''))" class="text-gray-600 hover:text-white transition-colors" title="Copy vnum"><i class="fa-regular fa-copy text-xs"></i></button></div>
                         </div>
                         <button onclick="closeMobModal()" class="text-gray-400 hover:text-white">
                             <i class="fa-solid fa-times text-xl"></i>
@@ -1089,7 +1157,7 @@ async def index() -> str:
                     <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
                         <div>
                             <h3 id="obj-modal-title" class="text-2xl font-bold text-white font-cinzel">Object Name</h3>
-                            <div class="text-gray-500 font-mono text-sm mt-1">Vnum: <span id="obj-modal-vnum" class="text-gray-300">#1234</span></div>
+                            <div class="text-gray-500 font-mono text-sm mt-1 flex items-center gap-2">Vnum: <span id="obj-modal-vnum" class="text-gray-300">#1234</span><button onclick="copyToClipboard(document.getElementById('obj-modal-vnum').textContent.replace('#',''))" class="text-gray-600 hover:text-white transition-colors" title="Copy vnum"><i class="fa-regular fa-copy text-xs"></i></button></div>
                         </div>
                         <button onclick="closeObjModal()" class="text-gray-400 hover:text-white">
                             <i class="fa-solid fa-times text-xl"></i>
@@ -1319,6 +1387,7 @@ async def index() -> str:
 
                 window.scrollTo(0, 0);
                 if(id === 'play') initTerminal();
+                if(id === 'database' && !dbData.mobs.length) loadDb('mobs');
                 if(id === 'admin') {
                     refreshLogs();
                     const tokenInput = document.getElementById('admin-token');
@@ -1474,6 +1543,8 @@ async def index() -> str:
                 document.getElementById('stat-objs').textContent = data.objects;
                 document.getElementById('stat-rooms').textContent = data.rooms;
                 document.getElementById('stat-areas').textContent = data.areas;
+                const heroCount = document.getElementById('hero-area-count');
+                if (heroCount) heroCount.textContent = data.areas;
             } catch(e) {
                 console.error("Error loading stats:", e);
             }
@@ -1481,6 +1552,13 @@ async def index() -> str:
         
         // Call on load
         loadStats();
+
+        // Inject ASCII hero art from data script element
+        (function() {
+            const src = document.getElementById('ascii-art-src');
+            const bg = document.getElementById('ascii-hero-art');
+            if (src && bg) bg.textContent = src.textContent.trim();
+        })();
 
         function toggleFilters() {
             const el = document.getElementById('advanced-filters');
@@ -1798,6 +1876,15 @@ async def index() -> str:
 
             headers.innerHTML = headerHtml;
             content.innerHTML = rowsHtml || '<tr><td colspan="6" class="p-4 text-center">No results found</td></tr>';
+
+            const countEl = document.getElementById('db-result-count');
+            if (countEl) countEl.textContent = data.length ? `Showing ${data.length.toLocaleString()} result${data.length !== 1 ? 's' : ''}` : '';
+        }
+
+        let _filterDbTimer = null;
+        function debouncedFilterDb() {
+            clearTimeout(_filterDbTimer);
+            _filterDbTimer = setTimeout(filterDb, 300);
         }
 
         function filterDb() {
@@ -1816,6 +1903,36 @@ async def index() -> str:
         function getAuthHeaders() {
             const token = localStorage.getItem('toc_admin_token') || '';
             return token ? { 'X-Admin-Token': token } : {};
+        }
+
+        function termFontSize(delta) {
+            if (!term) return;
+            const sz = Math.max(8, Math.min(24, (term.options.fontSize || 12) + delta));
+            term.options.fontSize = sz;
+            if (fitAddon) fitAddon.fit();
+        }
+
+        function exportCsv() {
+            const data = dbData[currentDb];
+            if (!data || data.length === 0) { showToast('No data loaded to export.', 'warning'); return; }
+            const hdrs = currentDb === 'mobs' ? ['vnum','short_desc','level','race','area']
+                : currentDb === 'objects' ? ['vnum','short_desc','item_type','level','area']
+                : currentDb === 'rooms' ? ['vnum','name','area','sector_type','room_flags']
+                : ['filename','name','builder'];
+            const rows = [hdrs.join(',')];
+            data.forEach(r => {
+                rows.push(hdrs.map(h => {
+                    const v = String(r[h] ?? '');
+                    return (v.includes(',') || v.includes('"') || v.includes('\n')) ? '"' + v.replace(/"/g, '""') + '"' : v;
+                }).join(','));
+            });
+            const blob = new Blob([rows.join('\n')], {type: 'text/csv'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `toc_${currentDb}_${new Date().toISOString().slice(0,10)}.csv`;
+            a.click();
+            URL.revokeObjectURL(a.href);
+            showToast(`Exported ${data.length.toLocaleString()} rows as CSV.`, 'success');
         }
 
         let actionPendingTimers = {};
@@ -1956,6 +2073,13 @@ async def index() -> str:
                     statusPing.className = "";
                     statusText.className = "text-red-400 font-mono";
                     statusText.textContent = "OFFLINE";
+                }
+                const navDot = document.getElementById('nav-dot');
+                const navDotText = document.getElementById('nav-dot-text');
+                if (navDot && navDotText) {
+                    navDot.className = 'h-2 w-2 rounded-full inline-block transition-colors duration-500 ' + (data.merc ? 'bg-green-500' : 'bg-red-500');
+                    navDotText.className = 'transition-colors duration-500 ' + (data.merc ? 'text-green-400' : 'text-red-400');
+                    navDotText.textContent = data.merc ? 'LIVE' : 'OFFLINE';
                 }
             } catch (e) {
                 console.error("Status check failed", e);
@@ -2592,6 +2716,19 @@ async def index() -> str:
                 };
             });
         }
+
+        // ============ HASH ROUTING ============
+        function parseHash() {
+            const m = location.hash.match(/^#(mob|room|obj|section)\\/(.+)/);
+            if (!m) return;
+            const [, type, val] = m;
+            if (type === 'section') { showSection(val); return; }
+            if (type === 'mob') showMobDetail(parseInt(val));
+            else if (type === 'room') showRoomDetail(parseInt(val));
+            else if (type === 'obj') showObjDetail(parseInt(val));
+        }
+        window.addEventListener('hashchange', parseHash);
+        if (location.hash) parseHash();
     </script>
 </body>
 </html>
@@ -2694,6 +2831,28 @@ async def run_backup(_: None = Depends(verify_token)) -> str:
 async def run_shutdown(_: None = Depends(verify_token)) -> str:
     queue_writer.append("shutdown")
     return "queued"
+
+
+@app.post("/api/reload")
+async def reload_areas(_: None = Depends(verify_token)) -> Dict[str, Any]:
+    """Reload all area files from disk without restarting the server."""
+    try:
+        new_parser = AreaParser(AREA_PATH)
+        new_parser.parse_all()
+        # Swap in new data atomically
+        parser.areas = new_parser.areas
+        parser.mobiles = new_parser.mobiles
+        parser.objects = new_parser.objects
+        parser.rooms = new_parser.rooms
+        return {
+            "status": "ok",
+            "areas": len(parser.areas),
+            "mobiles": len(parser.mobiles),
+            "objects": len(parser.objects),
+            "rooms": len(parser.rooms),
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Reload failed: {e}")
 
 
 @app.get("/api/objects/{vnum}")
@@ -3393,11 +3552,10 @@ async def websocket_endpoint(websocket: WebSocket):
             try:
                 while True:
                     data = await websocket.receive_text()
-                    print(f"WS received: {repr(data)}")
                     writer.write(data.encode('latin-1', errors='replace'))
                     await writer.drain()
             except WebSocketDisconnect:
-                print("WebSocket disconnected")
+                pass
             except Exception as e:
                 print(f"ws_to_mud error: {e}")
 

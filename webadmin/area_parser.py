@@ -1021,7 +1021,6 @@ class AreaParser:
     
     def _build_cross_references(self) -> None:
         """Build relationships between mobs, objects, and rooms based on resets"""
-        print(f"DEBUG: Building cross references. Total areas with resets: {len(self.resets)}")
         for area_file, resets in self.resets.items():
             current_mob_vnum = None
             # print(f"DEBUG: Processing {area_file} with {len(resets)} resets")
