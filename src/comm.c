@@ -752,10 +752,7 @@ void game_loop_unix( int control )
             {
                 --ch->wait;
                 if ( ch->wait > 0 )
-                {
-                    d->incomm[0] = '\0';
                     continue;
-                }
             }
 
             /* Handle pager continuation */
