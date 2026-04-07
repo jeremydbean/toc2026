@@ -4385,17 +4385,17 @@ void do_slay( CHAR_DATA *ch, char *argument )
             "$n points at $N — and $E simply ceases to exist."
         },
         {
-            "With a contemptuous wave of your hand, $M is torn apart at the seams!",
+            "With a contemptuous wave of your hand, $N is torn apart at the seams!",
             "With a contemptuous wave of $s hand, $n tears you apart at the seams!",
             "With a contemptuous wave of $s hand, $n tears $N apart at the seams!"
         },
         {
-            "You utter a single word of power and $M explodes in a shower of gore!",
+            "You utter a single word of power and $N explodes in a shower of gore!",
             "$n utters a single word of power — you explode in a shower of gore!",
             "$n utters a single word of power and $N explodes in a shower of gore!"
         },
         {
-            "You snap your fingers and $M is instantly vaporized!",
+            "You snap your fingers and $N is instantly vaporized!",
             "$n snaps $s fingers — you are instantly vaporized!",
             "$n snaps $s fingers and $N is instantly vaporized!"
         },
@@ -4425,17 +4425,17 @@ void do_slay( CHAR_DATA *ch, char *argument )
             "A pillar of holy fire descends from the heavens and consumes $N entirely!"
         },
         {
-            "You clench your fist and $M crumples to the ground, every bone crushed to powder.",
+            "You clench your fist and $N crumples to the ground, every bone crushed to powder.",
             "$n clenches $s fist and you crumple to the ground, every bone crushed to powder.",
             "$n clenches $s fist and $N crumples to the ground, every bone crushed to powder."
         },
         {
-            "Reality itself recoils from your touch as $M is unmade from the inside out.",
+            "Reality itself recoils from your touch as $N is unmade from the inside out.",
             "Reality itself recoils as $n unmakes you from the inside out.",
             "Reality itself recoils as $n unmakes $N from the inside out."
         },
         {
-            "You breathe a quiet word and $M withers away to dust and memory.",
+            "You breathe a quiet word and $N withers away to dust and memory.",
             "$n breathes a quiet word and you wither away to dust and memory.",
             "$n breathes a quiet word and $N withers away to dust and memory."
         },
