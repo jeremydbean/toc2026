@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1775589572
+LogO 1775588699
 Vers 3
 Desc You see something very special about him.
 ~
@@ -17,7 +17,7 @@ PsiSpec ~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 5922613
+Plyd 5922604
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
@@ -35,8 +35,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-SesLogin 1775589568
-SesDur   4
+SesLogin 1775430505
+SesDur   46
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -329,10 +329,10 @@ Sk 100 'petrify'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'titanic'   0  -1 20025  14          0          0
-AffD 'titanic'   0  -1 19950  12          0          0
 AffD 'titanic'   0  -1 19990  13          0          0
+AffD 'titanic'   0  -1 19950  12          0          0
+AffD 'titanic'   0  -1 20025  14          0          0
+AffD 'titanic'   0  -1  50  16          0          0
 End
 
 #O
@@ -804,10 +804,10 @@ Lev  52
 Cost 1900
 Cond 100
 Repd 0
-Affect -1 52 -1 13 12 0 0
-Affect -1 52 -1 -1 14 0 0
-Affect -1 52 -1 1 24 0 0
 Affect -1 52 -1 -4 19 0 0
+Affect -1 52 -1 1 24 0 0
+Affect -1 52 -1 -1 14 0 0
+Affect -1 52 -1 13 12 0 0
 End
 
 #O

@@ -113,27 +113,36 @@ void list_foreach( const LIST *list, void (*callback)( void *data, void *ctx ), 
     }
 }
 
-void list_iterator_start( LIST_ITERATOR *iter, const LIST *list )
+void list_iterator_start( LIST_ITERATOR *iter, LIST *list )
 {
     if ( iter == NULL )
     {
         return;
     }
 
-    iter->list = list;
-    iter->next = ( list != NULL ) ? list->head : NULL;
+    iter->pnext = ( list != NULL ) ? &list->head : NULL;
 }
 
 void *list_iterator_next( LIST_ITERATOR *iter )
 {
     LIST_NODE *node;
 
-    if ( iter == NULL || iter->next == NULL )
+    if ( iter == NULL || iter->pnext == NULL )
     {
         return NULL;
     }
 
-    node = iter->next;
-    iter->next = node->next;
+    node = *iter->pnext;
+    if ( node == NULL )
+    {
+        return NULL;
+    }
+
+    /*
+     * Advance the cursor to point at node->next.  If list_remove() later
+     * unlinks node->next, it will update node->next to skip the removed
+     * entry, which is exactly the field our cursor now aliases.
+     */
+    iter->pnext = &node->next;
     return node->data;
 }

@@ -752,7 +752,10 @@ void game_loop_unix( int control )
             {
                 --ch->wait;
                 if ( ch->wait > 0 )
+                {
+                    d->fcommand = FALSE;  /* No command executed; don't trigger prompt */
                     continue;
+                }
             }
 
             /* Handle pager continuation */
@@ -1212,39 +1215,74 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 	if ( ch == NULL )
 	    return FALSE;
 
-        /* battle prompt */
-        if ((victim = ch->fighting) != NULL && can_see(ch,victim))
+        /* battle prompt — inserted BEFORE existing combat output so it
+         * appears above the damage messages from this round. */
+        if ((victim = ch->fighting) != NULL && can_see(ch,victim) && d->outtop > 0)
         {
             int percent;
             char wound[100];
+            char wound2[100];
 	    char buf[MAX_STRING_LENGTH];
- 
+            int blen;
+
             if (victim->max_hit > 0)
                 percent = victim->hit * 100 / victim->max_hit;
             else
                 percent = -1;
- 
-            if (percent >= 100)
-                snprintf(wound,sizeof(wound),"is in excellent condition.");
-            else if (percent >= 90)
-                snprintf(wound,sizeof(wound),"has a few scratches.");
-            else if (percent >= 75)
-                snprintf(wound,sizeof(wound),"has some small wounds and bruises.");
-            else if (percent >= 50)
-                snprintf(wound,sizeof(wound),"has quite a few wounds.");
-            else if (percent >= 30)
-                snprintf(wound,sizeof(wound),"has some big nasty wounds and scratches.");
-            else if (percent >= 15)
-                snprintf(wound,sizeof(wound),"looks pretty hurt.");
-            else if (percent >= 0)
-                snprintf(wound,sizeof(wound),"is in awful condition.");
-            else
-                snprintf(wound,sizeof(wound),"is bleeding to death.");
 
-            snprintf(buf,sizeof(buf),"%s %s \n\r",
-                    IS_NPC(victim) ? victim->short_descr : victim->name,wound);
+            if (percent >= 100)      snprintf(wound,sizeof(wound),"excellent");
+            else if (percent >= 90)  snprintf(wound,sizeof(wound),"bruised");
+            else if (percent >= 80)  snprintf(wound,sizeof(wound),"battered");
+            else if (percent >= 70)  snprintf(wound,sizeof(wound),"injured");
+            else if (percent >= 60)  snprintf(wound,sizeof(wound),"wounded");
+            else if (percent >= 50)  snprintf(wound,sizeof(wound),"nasty wounds");
+            else if (percent >= 40)  snprintf(wound,sizeof(wound),"bleeding");
+            else if (percent >= 30)  snprintf(wound,sizeof(wound),"pretty hurt");
+            else if (percent >= 20)  snprintf(wound,sizeof(wound),"bloody mess");
+            else if (percent >= 10)  snprintf(wound,sizeof(wound),"critical condition");
+            else                     snprintf(wound,sizeof(wound),"DYING");
+
+            /* attacker (ch) condition */
+            if (ch->max_hit > 0)
+                percent = ch->hit * 100 / ch->max_hit;
+            else
+                percent = -1;
+
+            if (percent >= 100)      snprintf(wound2,sizeof(wound2),"excellent");
+            else if (percent >= 90)  snprintf(wound2,sizeof(wound2),"bruised");
+            else if (percent >= 80)  snprintf(wound2,sizeof(wound2),"battered");
+            else if (percent >= 70)  snprintf(wound2,sizeof(wound2),"injured");
+            else if (percent >= 60)  snprintf(wound2,sizeof(wound2),"wounded");
+            else if (percent >= 50)  snprintf(wound2,sizeof(wound2),"nasty wounds");
+            else if (percent >= 40)  snprintf(wound2,sizeof(wound2),"bleeding");
+            else if (percent >= 30)  snprintf(wound2,sizeof(wound2),"pretty hurt");
+            else if (percent >= 20)  snprintf(wound2,sizeof(wound2),"bloody mess");
+            else if (percent >= 10)  snprintf(wound2,sizeof(wound2),"critical condition");
+            else                     snprintf(wound2,sizeof(wound2),"DYING");
+
+            if (IS_SET(ch->act, PLR_DAMAGE_NUMBERS))
+                snprintf(buf, sizeof(buf), "[ %s: [%d/%d hp] <*> You: %s ]\n\r",
+                    PERS(victim, ch), victim->hit, victim->max_hit, wound2);
+            else
+                snprintf(buf, sizeof(buf), "[ %s: %s <*> You: %s ]\n\r",
+                    PERS(victim, ch), wound, wound2);
             buf[0] = UPPER(buf[0]);
-            write_to_buffer( d, buf, 0);
+            blen = (int)strlen(buf);
+
+            /* Expand buffer if needed before shifting */
+            while ( d->outtop + blen >= d->outsize )
+            {
+                char *outbuf = alloc_mem( 2 * d->outsize );
+                strncpy( outbuf, d->outbuf, (size_t)d->outtop );
+                free_mem( d->outbuf, d->outsize );
+                d->outbuf  = outbuf;
+                d->outsize *= 2;
+            }
+            /* Shift existing content right, insert battle prompt at front */
+            memmove( d->outbuf + blen, d->outbuf, (size_t)d->outtop );
+            memcpy( d->outbuf, buf, (size_t)blen );
+            d->outtop += blen;
+            d->outbuf[d->outtop] = '\0';
         }
 
 
