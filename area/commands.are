@@ -39,6 +39,8 @@ The COMMANDS topic shows only the commands that your current trust level
 allows you to use.  Mortals and heroes will see only mortal commands here.
 Immortal-only commands are documented under WIZHELP and will not appear to
 non-immortals.
+
+See also: COMMANDS, WIZHELP
 ~
 
 0 NE NORTHEAST NW NORTHWEST SE SOUTHEAST SW SOUTHWEST~
@@ -1329,6 +1331,8 @@ Syntax: dns
 This command will turn DNS lookups on and off.  Remember that with DNS lookups
 turned off, sitebans on name hosts will be ignored.
 
+See also: BAN, ALLOW BAN
+
 ~
 
 70 GRANTPSI~
@@ -1343,6 +1347,8 @@ away. Valid picks include: psionic armor, psychic shield, mindbar, torment,
 ego whip, enervate, mindblast, clairvoyance, astral walk, shift, project,
 telekinesis, transfusion, nightmare, mind leech, and confuse.
 
+See also: PSIONICS, ADVANCE
+
 ~
 
 67 FSAVE~
@@ -1350,6 +1356,8 @@ Syntax: fsave
 
 This command will force all the players to save, but doesn't send them a message
 when you do it.  This command is also invoked on reboots and shutdowns.
+
+See also: SOCKETS, RESTORECHAR
 
 ~
 
@@ -1423,7 +1431,7 @@ When you cast an offensive spell, the victim usually gets a saving throw.
 The effect of the spell is reduced or eliminated if the victim makes the
 saving throw successfully.
 
-See also the help sections for individual spells.
+See also: SPELLGROUP, SPELLS, GAIN
 ~
 
 0 CLIMB~
@@ -1568,6 +1576,8 @@ See also: WHO, WHERE
 Syntax: credits
 
 This command shows the list of the original Diku Mud implementors.
+
+See also: DIKU, MERC, ROM
 ~
 
 0 DELETE~
@@ -2608,6 +2618,8 @@ See also: FLEE, RECALL, SCORE
 Syntax: !
 
 ! repeats the last command you typed.
+
+See also: COMMANDS
 ~
 
 0 NORTH SOUTH EAST WEST UP DOWN NORTHEAST NORTHWEST SOUTHEAST SOUTHWEST~
@@ -2833,6 +2845,8 @@ Revised 7/19/96 - Soul.
 290 Korzath   291 korzath      292 korzath2     293 world      294 world
 295 lud       296 reserved     297 reserved     298 reserved   299 reserved
 300 abbeyrd   301 abbeyrd      302 finalj       303 finalj
+
+See also: VNUM, MEMORY
 ~
 
 
@@ -2848,6 +2862,8 @@ the same room as you, or in your possession.  Strung and set information is
 preserved by clone, as well as any spell effects and container contents or
 mobile inventory, except for items which are too high for you to clone.
 Strung extended descriptions on objects are not kept, however.
+
+See also: LOAD, VNUM, STRING
 ~
 
 69 ADVANCE~
@@ -2856,6 +2872,8 @@ Syntax: advance <character> <level>
 ADVANCE sets a character's level to the specified value.  It is the
 only way to create new immortal characters within the game.  ADVANCE
 may also be used to demote characters.
+
+See also: TRUST, WIZLIST
 ~
 
 70 TRUST~
@@ -2869,6 +2887,8 @@ the character.  You can also restrict a player's trust to less than their
 natural level.
 
 A trust of 0 means to use the character's natural level again.
+
+See also: ADVANCE, WIZLIST
 ~
 
 67 ALLOW BAN~
@@ -2885,6 +2905,8 @@ all sites within 'foo.edu' are banned as well.
 
 Site bans are not saved; every time the server is rebooted, the site
 ban list is cleared.
+
+See also: BAN, DNS
 ~
 
 65 GATHER~
@@ -3032,6 +3054,8 @@ unavailable.  You also cannot 'force orc murder hugo', for example.
 
 FORCE 'all' forces all player characters to execute a command.
 This is typically used for 'force all save'.
+
+See also: TRANSFER, AT, SOCKETS
 ~
 
 68 MAXLOAD~
@@ -3051,6 +3075,8 @@ Remember to check, because if the maxload is lower as the sum of in_game
 and with the players, the item will not load anymore, until enough items
 got extracted so that the sum of the items with the players and in the game
 is LESS as the maxload value specified. Which can take a while....
+
+See also: MEMORY, VNUM
 ~
 
 63 SOCKETS~
@@ -3089,6 +3115,8 @@ into an orc).
 You can also use the IP argument to list only the players from a certain site.
 Example:  socket ip nowhere.com
 
+See also: TRANSFER, STAT, MEMORY
+
 ~
 
 65 LOAD~
@@ -3103,13 +3131,16 @@ Load puts objects in inventory if they can be carried.  Otherwise they are
 put in the room.  Mobiles are always put into the same room as the god. Old
 format objects must be given a level argument to determine their power, new
 format objects have a preset level that cannot be changed without set.
-(see also clone, vnum, stat)
+
+See also: CLONE, VNUM, STAT
 ~
 
 67 SLOOKUP~
 This command will show the slot number, and skill number used by the
 system. It is useful for finding out numbers to use when 'setting'
 a potion or scroll, and various other items.
+
+See also: LOAD, BREW, SCRIBE
 ~
 
 66 SET~
@@ -3160,6 +3191,8 @@ For the action_to_room and action_to_char strings.  Use $p for the object
 name and $n for the player name if you want those in the message.
 
 DO NOT USE ANY OTHER VARIABLES, DOING SO WILL CAUSE THE MUD TO CRASH.
+
+See also: STAT, LOAD, CLONE
 ~
 
 63 NOCHANNEL~
@@ -3210,6 +3243,8 @@ character from anywhere in the world.
 Purge will not get rid of PC's, or objects or mobiles with a NOPURGE flag
 set (i.e. the pit, the fountain, shopkeepers).  Mobiles may be
 purged if they are called directly by name.
+
+See also: SLAY, RESTORE, LOAD
 ~
 
 
@@ -3225,6 +3260,8 @@ Restore room (or restore with no argument) performs a restore on every player
 in the room, restore all does the same for all connected players. Restore all
 is only usable by creators and implementors.  Restore should be used sparingly
 or not at all.
+
+See also: PURGE, SLAY
 ~
 
 61 HERBIE~
@@ -3248,6 +3285,8 @@ Syntax: slay <character>
 
 Slay kills a character in cold blood, no saving throw.  Best not to use this
 command on players if you enjoy being a god.
+
+See also: PURGE, RESTORE, KILL
 ~
 
 63 TRANSFER TELEPORT~
@@ -3260,6 +3299,8 @@ Transfer transfers the target character, or ALL player characters,
 to your current location (default) or to a specified location. Trans all
 should almost never be used, as 100 players popping into one room can have
 horrible effects on slow links. Teleport is a synonym for transfer.
+
+See also: GOTO, AT, FORCE
 ~
 
 63 AT~
@@ -3272,6 +3313,8 @@ a mobile, or as the name of an object.
 At works by temporarily moving you to that location, executing the
 command, and then moving you back (if the command didn't change your
 location).
+
+See also: GOTO, TRANSFER, FORCE
 ~
 
 64 ECHO~
@@ -3315,6 +3358,8 @@ You may not Goto a room if it is PRIVATE and has two (or more) characters
 already present, or if it is SOLITARY and has one (or more) characters
 already present. Some other rooms are barred to players below a certain
 god level.
+
+See also: TRANSFER, AT, STAT
 ~
 
 63 EXPLODE~
@@ -3325,6 +3370,8 @@ This command will scatter mobs in rooms, or items in containers in your
 inventory all over the MUD. Its main use is to simplify placing quest
 oriented stuff into the game. Item 26 is a generic item with a no_locate
 flag on it that can be used as a quest item.
+
+See also: PURGE, LOAD, VNUM
 ~
 
 62 HOLYLIGHT~
@@ -3374,6 +3421,8 @@ a maximum limit, which is also shown.
 
 The 'Perms' line shows permanently allocated memory blocks.  There is no limit
 on the number and size of these blocks.
+
+See also: SOCKETS, STAT
 ~
 
 65 VNUM~
@@ -3385,7 +3434,8 @@ Vnum finds all objects and mobiles with a particular name, and prints out
 the results.  Use vnum obj or vnum mob to limit the search.  This vnum is
 very useful for loading. Vnum skill returns the skill number (for set) and
 the slot number (for making new zones) of a skill name.
-(see also load)
+
+See also: LOAD, STAT, AREAVNUMS
 ~
 
 63 STAT~
@@ -3399,7 +3449,8 @@ within the game.  Without a class argument, the command will return an object
 (if found), a mobile (if no object exists, but a mobile does), or a room
 (if a number is  given).  Stat room with no argument stats the room you are
 standing in.  Stat can be used to find room vnums for goto.
-(see also goto, transfer)
+
+See also: GOTO, TRANSFER, VNUM
 ~
 
 62 CLOAK~
@@ -3407,6 +3458,8 @@ Syntax: cloak <level>
 
 Cloak will make you invisible to anyone not in the same room with you.  Anyone
 is higher level than the level you set your cloak at can see you anywhere though.
+
+See also: WIZHELP, IMMORTAL
 ~
 
 69 BACKUP~
@@ -3416,12 +3469,16 @@ Syntax: backup
 This command will perform a backup on all of the pfiles.  Typing backup by itself
 will show when the next scheduled backup will take place.
 
+See also: MEMORY, SOCKETS
+
 ~
 
 69 PSTAT~
 Syntax: pstat
 
 Pstat shows you various statistics of all the players connected to the mud.
+
+See also: SOCKETS, MEMORY
 ~
 
 62 MWHERE~
@@ -3483,6 +3540,8 @@ experience or equipment during quests.  Remember to remove the quest flag from
 the player after the quest is over.  The flag will automatically be removed when
 the player quits otherwise.
 
+See also: WIZHELP, IMMORTAL
+
 ~
 
 64 PEACE~
@@ -3490,6 +3549,8 @@ Syntax: peace
 
 Peace causes all characters in a room to stop fighting. It also strips the
 AGGRESSIVE bit from mobiles.
+
+See also: SLAY, RESTORE, FORCE
 ~
 
 62 POOFIN~
@@ -3615,6 +3676,8 @@ See also: WIZINFO, GODTALK (@), BEEP
 Syntax: wizhelp
 
 Wizhelp provides a list of all the immortal commands available to you.
+
+See also: COMMANDS, SUMMARY
 ~
 
 69 COMPONENT~
@@ -3626,6 +3689,8 @@ This was added to restore components after reboots or crashes that wipe
 the current components from the world.
 
 (do 'owhere component' to see the current components in the world.)
+
+See also: LOAD, VNUM
 ~
 
 65 EDIT~
@@ -3674,6 +3739,8 @@ Syntax: restorechar <player> <date>
 Restores a character's pfile as of the specified date.  Date format is,
 for example, Jun.1.  Restorechar is intended for use in restoring characters
 with bad pfiles, not those who have deleted themselves.
+
+See also: RESTORE, PURGE
 ~
 
 67 SWEDISH~
@@ -3681,6 +3748,8 @@ Syntax: swedish <character>
 
 Makes the victim talk like a swede.  Remember to remove it from the player
 before you or they leave.
+
+See also: WIZHELP
 ~
 
 63 WIZINFO~
@@ -3705,6 +3774,8 @@ Syntax: whine <character>
 Flags target character as a "WHINER", this prevents them from noting to
 all or immortal, and causes cityguards to taunt them incessantly. This
 command is NOT to be abused!
+
+See also: WIZHELP, PUNISHED
 ~
 
 68 NONOTE~
@@ -3713,6 +3784,8 @@ Syntax: nonote <character>
 This command completely removes target character's noting privileges.
 This is to be used only as a last resort for players that have
 consistently abused their note privilege.
+
+See also: NOTE, WIZHELP
 ~
 
 0 ' SAY~
@@ -3727,6 +3800,8 @@ is identical to:
 SAY speaks aloud to everyone in your current room.  Only people in the same
 room can hear you.  Use TELL for private messages to individuals, or GOSSIP
 for world-wide chat.
+
+See also: TELL, GOSSIP, YELL
 ~
 
 0 ; GTELL~
@@ -3742,6 +3817,8 @@ GTELL sends a message privately to all members of your current group,
 regardless of where they are in the world.  Use GROUP to see who is in your
 party.  Note that you must have no space between the semicolon and your
 message.
+
+See also: TELL, GOSSIP, GROUP
 ~
 
 0 'ASTRAL WALK' ASTRAL~
@@ -3803,6 +3880,8 @@ Syntax: imotd
 Displays the Immortal Message of the Day, which contains important notices
 and updates specifically for immortal staff members.  This message is shown
 automatically when an immortal logs in.
+
+See also: MOTD, NEWS, JOBS
 ~
 
 64 IPORTAL~
@@ -3824,6 +3903,8 @@ Examples:
   iportal Brak 0 A swirling vortex of energy crackles here.
 
 Note: This is a powerful tool; use responsibly.
+
+See also: PORTAL, GOTO, TRANSFER
 ~
 
 69 @ GODTALK~
@@ -3849,6 +3930,8 @@ command used for debugging area connectivity or verifying exit data.
 
 The dump includes source room vnum, destination vnum, and exit direction
 for every exit defined in the loaded areas.
+
+See also: AREAVNUMS, STAT, VNUM
 ~
 
 64 ANNOUNCE~
@@ -3870,6 +3953,8 @@ objects according to the area's reset data.  The area age is randomized
 after the reset so the normal timer continues from a low value.
 
 Useful for testing area resets or quickly restocking a cleared zone.
+
+See also: LOAD, VNUM
 ~
 
 64 STASIS~
@@ -3903,6 +3988,8 @@ cannot be renamed.
 
 Use with caution — the old player file is deleted and replaced with a new
 one under the new name immediately.
+
+See also: STAT, PURGE
 ~
 
 63 MUTE~
