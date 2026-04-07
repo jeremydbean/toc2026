@@ -4449,6 +4449,47 @@ void do_slay( CHAR_DATA *ch, char *argument )
             "$n lays a single finger against your temple — you drop like a puppet with cut strings.",
             "$n lays a single finger against $S temple — $E drops like a puppet with cut strings."
         },
+        /* Mortal Kombat fatalities */
+        {
+            "FINISH HIM!  You rip $S spine clean from $S body and hold it aloft in triumph!",
+            "FINISH HIM!  $n rips your spine clean from your body!  FATALITY.",
+            "FINISH HIM!  $n rips $N's spine clean from $S body and holds it aloft!  FATALITY."
+        },
+        {
+            "You grab $M by the skull and tear $S head free — spine dangling — then raise it high.  FATALITY.",
+            "$n grabs you by the skull and wrenches your head free!  FATALITY.",
+            "$n tears $N's head clean off and raises it high, spine dangling.  FATALITY."
+        },
+        {
+            "FLAWLESS VICTORY!  You reach into $S chest, rip out $S still-beating heart, and crush it in your fist.",
+            "FLAWLESS VICTORY!  $n reaches into your chest and tears out your still-beating heart!",
+            "FLAWLESS VICTORY!  $n tears $N's still-beating heart from $S chest and crushes it."
+        },
+        {
+            "You freeze $M solid with an icy blast, then shatter $M into a hundred frozen chunks.  FATALITY.",
+            "$n encases you in ice and shatters you into a hundred frozen chunks!  FATALITY.",
+            "$n encases $N in ice, then shatters $M into frozen chunks.  FATALITY."
+        },
+        {
+            "Searing hellfire erupts beneath $N's feet, and when the flames die only a charred skeleton remains.  FATALITY.",
+            "Searing hellfire erupts beneath your feet — you are incinerated to the bone!  FATALITY.",
+            "Searing hellfire erupts beneath $N's feet, leaving only a charred skeleton.  FATALITY."
+        },
+        {
+            "You hurl $M skyward on a rising pillar of flame, then detonate $M in a spectacular explosion.  TOASTY!",
+            "$n hurls you skyward on a pillar of flame and detonates you!  TOASTY!",
+            "$n hurls $N skyward on a pillar of flame and detonates $M in a ball of fire!  TOASTY!"
+        },
+        {
+            "BRUTALITY!  A relentless flurry of blows reduces $N to a pile of gibs at your feet.",
+            "BRUTALITY!  $n unleashes a relentless flurry that reduces you to nothing!",
+            "BRUTALITY!  $n's relentless assault reduces $N to a pile of gibs!"
+        },
+        {
+            "YOUR SOUL IS MINE!  You tear $S very soul from $S body and devour it whole.",
+            "YOUR SOUL IS MINE!  $n tears your soul from your body and devours it!",
+            "YOUR SOUL IS MINE!  $n tears $N's soul free and devours it whole!"
+        },
     };
     static const int num_msgs = (int)(sizeof(slay_msg) / sizeof(slay_msg[0]));
 
