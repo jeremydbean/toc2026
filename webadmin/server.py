@@ -180,6 +180,247 @@ RACE_FLAGS = {
     "saurian": "saurian-only",
 }
 
+# Player file constants
+PLAYER_PATH: Path = Path(os.getenv("PLAYER_PATH", "player"))
+
+CLASS_NAMES = ["mage", "cleric", "thief", "warrior", "monk", "necromancer"]
+GUILD_NAMES = ["mage", "cleric", "thief", "warrior", "monk", "necromancer",
+               "?", "?", "?", "?", "any", "none"]
+RACE_NAMES  = ["human", "elf", "dwarf", "hobbit", "saurian"]
+WEAR_SLOT_NAMES = {
+    0:  "Light",       1:  "Left Finger",  2:  "Right Finger",
+    3:  "Neck (1st)",  4:  "Neck (2nd)",   5:  "Body",
+    6:  "Head",        7:  "Legs",         8:  "Feet",
+    9:  "Hands",       10: "Arms",         11: "Shield",
+    12: "About Body",  13: "Waist",        14: "Left Wrist",
+    15: "Right Wrist", 16: "Wielded",      17: "Held",
+}
+
+SEX_NAMES = ["neutral", "male", "female"]
+ALIGN_NAMES = [
+    (-1000, -700, "Diabolic"),
+    (-700,  -350, "Evil"),
+    (-350,  -100, "Mean"),
+    (-100,   100, "Neutral"),
+    ( 100,   350, "Kind"),
+    ( 350,   700, "Good"),
+    ( 700,  1000, "Angelic"),
+]
+
+def align_str(alig: int) -> str:
+    for lo, hi, label in ALIGN_NAMES:
+        if lo <= alig < hi:
+            return label
+    return "Angelic" if alig >= 700 else "Diabolic"
+
+
+def parse_player_file(name: str) -> dict | None:
+    """Parse a MUD player file and return a structured dict."""
+    cname = name.capitalize()
+    # Reject names with path-separator chars or dots to prevent traversal
+    if "/" in cname or "\\" in cname or "." in cname:
+        return None
+    path = PLAYER_PATH / cname
+    if not path.exists():
+        return None
+
+    data: dict = {
+        "name": cname, "race": "human", "sex": 1,
+        "class_num": 0, "class_name": "mage",
+        "guild_num": 11, "guild_name": "none",
+        "level": 1,
+        "hp_cur": 0, "hp_max": 0,
+        "mana_cur": 0, "mana_max": 0,
+        "mv_cur": 0, "mv_max": 0,
+        "str_base": 13, "int_base": 13, "wis_base": 13, "dex_base": 13, "con_base": 13,
+        "str_mod": 0,  "int_mod": 0,  "wis_mod": 0,  "dex_mod": 0,  "con_mod": 0,
+        "ac_pierce": 0, "ac_slash": 0, "ac_bash": 0, "ac_exotic": 0,
+        "hitroll": 0, "damroll": 0, "exp": 0,
+        "practices": 0, "trains": 0, "quest_points": 0,
+        "alignment": 0, "title": "", "description": "",
+        "gold": 0, "platinum": 0, "num_remorts": 0,
+        "skills": [], "affects": [],
+        "equipment": [],  # worn items (Wear >= 0)
+        "inventory": [],  # carried items (Wear == -1)
+    }
+
+    try:
+        text = path.read_text(encoding="latin-1")
+    except Exception:
+        return None
+
+    in_player = False
+    in_object = False
+    cur_obj: dict[str, Any] = {}
+    collecting_desc = False
+    desc_lines: list[str] = []
+
+    for line in text.splitlines():
+        ls = line.strip()
+
+        if ls == "#PLAYER":
+            in_player = True
+            in_object = False
+            continue
+
+        if ls == "#END":
+            if in_object and cur_obj:
+                target = data["equipment"] if cur_obj.get("wear", -1) >= 0 else data["inventory"]
+                target.append(cur_obj)
+            break
+
+        if ls == "#O":
+            if in_object and cur_obj:
+                target = data["equipment"] if cur_obj.get("wear", -1) >= 0 else data["inventory"]
+                target.append(cur_obj)
+            cur_obj = {}
+            in_object = True
+            in_player = False
+            continue
+
+        if in_object:
+            parts = ls.split()
+            if not parts:
+                continue
+            k = parts[0]
+            if k == "Vnum"   and len(parts) >= 2: cur_obj["vnum"] = int(parts[1])
+            elif k == "Wear" and len(parts) >= 2: cur_obj["wear"] = int(parts[1])
+            elif k == "Lev"  and len(parts) >= 2: cur_obj["level"] = int(parts[1])
+            elif k == "End":
+                if cur_obj:
+                    target = data["equipment"] if cur_obj.get("wear", -1) >= 0 else data["inventory"]
+                    target.append(cur_obj)
+                cur_obj = {}
+                in_object = False
+            continue
+
+        if in_player:
+            if collecting_desc:
+                if ls.endswith("~"):
+                    # Don't append the terminator line; just strip trailing ~
+                    tail = line.rstrip()
+                    if tail.rstrip("~").strip():  # non-empty content before ~
+                        desc_lines.append(tail.rstrip().rstrip("~"))
+                    # Strip trailing blank lines caused by bare \r in CRLF files
+                    while desc_lines and not desc_lines[-1].strip():
+                        desc_lines.pop()
+                    data["description"] = "\n".join(desc_lines)
+                    collecting_desc = False
+                    desc_lines = []
+                else:
+                    desc_lines.append(line.rstrip())
+                continue
+
+            parts = ls.split()
+            if not parts:
+                continue
+            k = parts[0]
+
+            try:
+                if   k == "Name"      and len(parts) >= 2: data["name"] = parts[1].rstrip("~")
+                elif k == "Race"      and len(parts) >= 2: data["race"] = parts[1].rstrip("~").lower()
+                elif k == "Sex"       and len(parts) >= 2: data["sex"] = int(parts[1])
+                elif k == "Cla"       and len(parts) >= 2:
+                    cn = int(parts[1])
+                    data["class_num"] = cn
+                    data["class_name"] = CLASS_NAMES[cn] if 0 <= cn < len(CLASS_NAMES) else "unknown"
+                elif k == "Gui"       and len(parts) >= 2:
+                    gn = int(parts[1])
+                    data["guild_num"] = gn
+                    data["guild_name"] = GUILD_NAMES[gn] if 0 <= gn < len(GUILD_NAMES) else "unknown"
+                elif k == "Levl"      and len(parts) >= 2: data["level"] = int(parts[1])
+                elif k == "HMV"       and len(parts) >= 7:
+                    data["hp_cur"]   = int(parts[1]); data["hp_max"]   = int(parts[2])
+                    data["mana_cur"] = int(parts[3]); data["mana_max"] = int(parts[4])
+                    data["mv_cur"]   = int(parts[5]); data["mv_max"]   = int(parts[6])
+                elif k == "Attr"      and len(parts) >= 6:
+                    data["str_base"] = int(parts[1]); data["int_base"] = int(parts[2])
+                    data["wis_base"] = int(parts[3]); data["dex_base"] = int(parts[4])
+                    data["con_base"] = int(parts[5])
+                elif k == "AMod"      and len(parts) >= 6:
+                    data["str_mod"]  = int(parts[1]); data["int_mod"]  = int(parts[2])
+                    data["wis_mod"]  = int(parts[3]); data["dex_mod"]  = int(parts[4])
+                    data["con_mod"]  = int(parts[5])
+                elif k == "ACs"       and len(parts) >= 5:
+                    data["ac_pierce"] = int(parts[1]); data["ac_slash"]  = int(parts[2])
+                    data["ac_bash"]   = int(parts[3]); data["ac_exotic"] = int(parts[4])
+                elif k == "Hit"       and len(parts) >= 2: data["hitroll"]     = int(parts[1])
+                elif k == "Dam"       and len(parts) >= 2: data["damroll"]     = int(parts[1])
+                elif k == "Exp"       and len(parts) >= 2: data["exp"]         = int(parts[1])
+                elif k == "Prac"      and len(parts) >= 2: data["practices"]   = int(parts[1])
+                elif k == "Trai"      and len(parts) >= 2: data["trains"]      = int(parts[1])
+                elif k == "QuestPnts" and len(parts) >= 2: data["quest_points"] = int(parts[1])
+                elif k == "Alig"      and len(parts) >= 2: data["alignment"]   = int(parts[1])
+                elif k == "NewGold"   and len(parts) >= 2: data["gold"]       = int(parts[1])
+                elif k == "NewPlat"   and len(parts) >= 2: data["platinum"]   = int(parts[1])
+                elif k == "NumRemorts" and len(parts) >= 2: data["num_remorts"] = int(parts[1])
+                elif k == "Titl":
+                    data["title"] = ls[5:].strip().rstrip("~")
+                elif k == "Desc":
+                    rest = ls[5:].strip()
+                    if rest.endswith("~"):
+                        data["description"] = rest[:-1]
+                    elif rest:
+                        desc_lines = [line[5:].rstrip()]  # preserve original indentation
+                        collecting_desc = True
+                    else:
+                        desc_lines = []
+                        collecting_desc = True
+                elif k == "Sk" and len(parts) >= 3:
+                    skill_pct = int(parts[1])
+                    skill_name = " ".join(parts[2:]).strip("'")
+                    data["skills"].append({"name": skill_name, "pct": skill_pct})
+                elif k == "AffD":
+                    aff_line = ls[5:].strip()
+                    if aff_line.startswith("'"):
+                        end_q = aff_line.find("'", 1)
+                        spell_name = aff_line[1:end_q] if end_q > 0 else aff_line
+                        rest_parts = aff_line[end_q+2:].split() if end_q > 0 else []
+                    else:
+                        sp = aff_line.split()
+                        spell_name = sp[0] if sp else ""
+                        rest_parts = sp[1:]
+                    # save.c format: 'name' level duration modifier location bitvec bitvec2
+                    # rest_parts[0]=level  [1]=duration  [2]=modifier  [3]=location
+                    aff: dict[str, Any] = {"spell": spell_name}
+                    if len(rest_parts) >= 4:
+                        aff["level"]    = int(rest_parts[0])
+                        aff["duration"] = int(rest_parts[1])
+                        aff["modifier"] = int(rest_parts[2])
+                        loc_id = int(rest_parts[3])
+                        aff["location"] = APPLY_LOCATIONS.get(loc_id, str(loc_id))
+                    data["affects"].append(aff)
+            except (ValueError, IndexError):
+                pass  # Silently skip malformed lines
+
+    # Compute totals
+    data["str_total"] = data["str_base"] + data["str_mod"]
+    data["int_total"] = data["int_base"] + data["int_mod"]
+    data["wis_total"] = data["wis_base"] + data["wis_mod"]
+    data["dex_total"] = data["dex_base"] + data["dex_mod"]
+    data["con_total"] = data["con_base"] + data["con_mod"]
+
+    # Enrich equipment items with area parser data
+    for item in data["equipment"]:
+        vnum = item.get("vnum", 0)
+        obj = parser.objects.get(vnum)
+        if obj:
+            item["name"]      = obj.short_desc
+            item["item_type"] = obj.item_type
+            item["area"]      = obj.area_name
+            item["affects"]   = decode_applies(obj.affects)
+        else:
+            item["name"]      = f"Unknown Item #{vnum}"
+            item["item_type"] = "?"
+            item["area"]      = "Unknown"
+            item["affects"]   = []
+
+    # Don't expose inventory — can be 500+ items and is not used by the UI
+    del data["inventory"]
+
+    return data
+
+
 # Initialize parser and load area files
 parser = AreaParser(AREA_PATH)
 try:
@@ -351,6 +592,7 @@ async def index() -> str:
                         <span data-nav="play" onclick="showSection('play')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Play Now</span>
                         <span data-nav="database" onclick="showSection('database')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Database</span>
                         <span data-nav="guide" onclick="showSection('guide')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">How to Play</span>
+                        <span data-nav="players" onclick="showSection('players')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Players</span>
                         <span data-nav="admin" onclick="showSection('admin')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Admin</span>
                         <span data-nav="best-gear" onclick="showBestGear()" class="nav-link px-4 py-2 rounded hover:bg-gray-800 transition-colors text-yellow-500 hover:text-yellow-300 cursor-pointer"><i class="fas fa-khanda mr-2"></i>Best Gear</span>
                     </div>
@@ -369,6 +611,7 @@ async def index() -> str:
                 <span data-nav="play" onclick="showSection('play')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Play Now</span>
                 <span data-nav="database" onclick="showSection('database')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Database</span>
                 <span data-nav="guide" onclick="showSection('guide')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">How to Play</span>
+                <span data-nav="players" onclick="showSection('players')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Players</span>
                 <span data-nav="admin" onclick="showSection('admin')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Admin</span>
                 <span data-nav="best-gear" onclick="showBestGear()" class="nav-link text-yellow-500 hover:text-yellow-300 block px-3 py-2 rounded-md text-base font-medium cursor-pointer"><i class="fas fa-khanda mr-2"></i>Best Gear</span>
             </div>
@@ -927,11 +1170,89 @@ async def index() -> str:
             </section>
         </div>
 
+        <!-- Players Section -->
+        <div id="players-section" class="tab-content">
+            <section class="py-10 bg-[#0a0a0a] min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Player Lookup</h2>
+
+                    <!-- Search bar -->
+                    <div class="bg-[#151515] p-6 rounded border border-gray-800 mb-8">
+                        <div class="flex gap-3 items-end">
+                            <div class="flex-1">
+                                <label class="block text-sm text-gray-400 mb-1">Player Name</label>
+                                <input id="pl-search" type="text" list="pl-datalist"
+                                    placeholder="Type a name..."
+                                    class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none font-mono"
+                                    onkeydown="if(event.key==='Enter') lookupPlayer()">
+                                <datalist id="pl-datalist"></datalist>
+                            </div>
+                            <button onclick="lookupPlayer()" class="px-6 py-2 rounded bg-red-700 hover:bg-red-600 text-white font-bold transition-colors whitespace-nowrap">
+                                Look Up
+                            </button>
+                            <button id="pl-gear-btn" onclick="playerToGear()" class="hidden px-4 py-2 rounded bg-yellow-700 hover:bg-yellow-600 text-black font-bold transition-colors whitespace-nowrap">
+                                <i class="fas fa-khanda mr-1"></i>Find Best Gear
+                            </button>
+                        </div>
+                        <div id="pl-error" class="hidden mt-3 text-red-400 text-sm"></div>
+                    </div>
+
+                    <!-- Profile display -->
+                    <div id="pl-profile" class="hidden">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Left: Score -->
+                            <div class="space-y-6">
+                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
+                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-red-400 uppercase text-xs tracking-wider font-mono">Score</div>
+                                    <div class="p-4 font-mono text-sm space-y-1" id="pl-score-body"></div>
+                                </div>
+                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
+                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-red-400 uppercase text-xs tracking-wider font-mono">Stats</div>
+                                    <div class="p-4 font-mono text-sm" id="pl-stats-body"></div>
+                                </div>
+                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden" id="pl-affects-card">
+                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-red-400 uppercase text-xs tracking-wider font-mono">Active Affects</div>
+                                    <div class="p-4 font-mono text-sm" id="pl-affects-body"></div>
+                                </div>
+                            </div>
+                            <!-- Right: Look / Equipment -->
+                            <div class="space-y-6">
+                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
+                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-blue-400 uppercase text-xs tracking-wider font-mono">Look</div>
+                                    <div class="p-4 text-gray-300 text-sm italic whitespace-pre-wrap font-serif" id="pl-look-body"></div>
+                                </div>
+                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
+                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-blue-400 uppercase text-xs tracking-wider font-mono">Equipment</div>
+                                    <div class="divide-y divide-gray-800" id="pl-equip-body"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
         <!-- Best Gear Section -->
         <div id="best-gear-section" class="tab-content">
             <section class="py-10 bg-[#0a0a0a] min-h-screen">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Best Gear Finder</h2>
+
+                    <!-- Load from Player row -->
+                    <div class="bg-[#151515] p-4 rounded border border-gray-800 mb-4 flex gap-3 items-end">
+                        <div class="flex-1">
+                            <label class="block text-xs text-gray-500 mb-1">Load settings from player</label>
+                            <input id="bg-player-name" type="text" list="bg-player-datalist"
+                                placeholder="Type player name..."
+                                class="w-full bg-black border border-gray-700 rounded p-2 text-sm text-white focus:border-yellow-500 outline-none font-mono"
+                                onkeydown="if(event.key==='Enter') bgLoadFromPlayer()">
+                            <datalist id="bg-player-datalist"></datalist>
+                        </div>
+                        <button onclick="bgLoadFromPlayer()" class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white text-sm font-bold transition-colors whitespace-nowrap">
+                            Load Player
+                        </button>
+                        <div id="bg-player-msg" class="text-xs text-gray-500 self-center"></div>
+                    </div>
                     
                     <div class="bg-[#151515] p-6 rounded border border-gray-800 mb-8">
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
@@ -1378,6 +1699,8 @@ async def index() -> str:
                 window.scrollTo(0, 0);
                 if(id === 'play') initTerminal();
                 if(id === 'database' && !dbData.mobs.length) loadDb('mobs');
+                if(id === 'players') initPlayerList();
+                if(id === 'best-gear') initPlayerList();
                 if(id === 'admin') {
                     refreshLogs();
                     const tokenInput = document.getElementById('admin-token');
@@ -2362,12 +2685,210 @@ async def index() -> str:
             document.getElementById('obj-modal').classList.add('hidden');
         }
 
+        // ============ PLAYER LOOKUP ============
+        let _allPlayerNames = [];
+        let _currentPlayer  = null;
+
+        const WEAR_SLOT_NAMES = {
+            0:"Light", 1:"Left Finger", 2:"Right Finger",
+            3:"Neck (1st)", 4:"Neck (2nd)", 5:"Body",
+            6:"Head", 7:"Legs", 8:"Feet",
+            9:"Hands", 10:"Arms", 11:"Shield",
+            12:"About Body", 13:"Waist", 14:"Left Wrist",
+            15:"Right Wrist", 16:"Wielded", 17:"Held"
+        };
+
+        async function initPlayerList() {
+            if (_allPlayerNames.length) return;
+            try {
+                const res = await fetch('/api/players');
+                if (!res.ok) return;
+                _allPlayerNames = await res.json();
+                const dl = document.getElementById('pl-datalist');
+                const bgDl = document.getElementById('bg-player-datalist');
+                _allPlayerNames.forEach(n => {
+                    [dl, bgDl].forEach(list => {
+                        if (list) {
+                            const opt = document.createElement('option');
+                            opt.value = n;
+                            list.appendChild(opt);
+                        }
+                    });
+                });
+            } catch(e) { /* silent */ }
+        }
+
+        async function lookupPlayer() {
+            const name = document.getElementById('pl-search').value.trim();
+            if (!name) return;
+            const errEl = document.getElementById('pl-error');
+            errEl.classList.add('hidden');
+            document.getElementById('pl-profile').classList.add('hidden');
+            document.getElementById('pl-gear-btn').classList.add('hidden');
+
+            try {
+                const res = await fetch('/api/player/' + encodeURIComponent(name));
+                if (!res.ok) {
+                    errEl.textContent = 'Player "' + escHtml(name) + '" not found.';
+                    errEl.classList.remove('hidden');
+                    return;
+                }
+                _currentPlayer = await res.json();
+                renderPlayerProfile(_currentPlayer);
+                document.getElementById('pl-profile').classList.remove('hidden');
+                document.getElementById('pl-gear-btn').classList.remove('hidden');
+            } catch(e) {
+                errEl.textContent = 'Error: ' + e.message;
+                errEl.classList.remove('hidden');
+            }
+        }
+
+        function alignStr(a) {
+            if (a < -700) return 'Diabolic'; if (a < -350) return 'Evil';
+            if (a < -100) return 'Mean';     if (a <  100) return 'Neutral';
+            if (a <  350) return 'Kind';     if (a <  700) return 'Good';
+            return 'Angelic';
+        }
+
+        function statBar(cur, max, cls) {
+            const pct = max > 0 ? Math.min(100, Math.round(cur / max * 100)) : 0;
+            return `<div class="flex items-center gap-2">
+                <div class="flex-1 bg-gray-900 rounded-full h-2">
+                    <div class="h-2 rounded-full ${cls}" style="width:${pct}%"></div>
+                </div>
+                <span class="text-xs text-gray-400 w-24 text-right">${cur}/${max}</span>
+            </div>`;
+        }
+
+        function renderPlayerProfile(p) {
+            const sexStr = p.sex === 1 ? 'Male' : p.sex === 2 ? 'Female' : 'Neutral';
+            const remStr = p.num_remorts > 0 ? ` (${p.num_remorts}x remort)` : '';
+            const titleFull = p.name + ' ' + (p.title || '');
+
+            // ---- Score ----
+            document.getElementById('pl-score-body').innerHTML = `
+                <div class="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
+                    <div><span class="text-gray-500">Name:</span> <span class="text-white font-bold">${escHtml(titleFull)}</span></div>
+                    <div><span class="text-gray-500">Race:</span> <span class="text-gray-300">${escHtml(p.race.charAt(0).toUpperCase()+p.race.slice(1))}</span></div>
+                    <div><span class="text-gray-500">Class:</span> <span class="text-yellow-400">${escHtml(p.class_name.charAt(0).toUpperCase()+p.class_name.slice(1))}</span></div>
+                    <div><span class="text-gray-500">Guild:</span> <span class="text-gray-300">${escHtml(p.guild_name)}</span></div>
+                    <div><span class="text-gray-500">Level:</span> <span class="text-green-400 font-bold">${escHtml(p.level)}${remStr}</span></div>
+                    <div><span class="text-gray-500">Sex:</span> <span class="text-gray-300">${sexStr}</span></div>
+                    <div><span class="text-gray-500">Align:</span> <span class="text-gray-300">${alignStr(p.alignment)} (${p.alignment})</span></div>
+                    <div><span class="text-gray-500">XP:</span> <span class="text-gray-300">${p.exp.toLocaleString()}</span></div>
+                    <div><span class="text-gray-500">Gold:</span> <span class="text-yellow-300">${p.gold.toLocaleString()}</span></div>
+                    <div><span class="text-gray-500">Platinum:</span> <span class="text-yellow-400">${p.platinum.toLocaleString()}</span></div>
+                    <div><span class="text-gray-500">Practices:</span> <span class="text-gray-300">${p.practices}</span></div>
+                    <div><span class="text-gray-500">Trains:</span> <span class="text-gray-300">${p.trains}</span></div>
+                    <div><span class="text-gray-500">QP:</span> <span class="text-purple-400">${p.quest_points}</span></div>
+                    <div><span class="text-gray-500">Hitroll:</span> <span class="text-orange-400">${p.hitroll}</span></div>
+                    <div><span class="text-gray-500">Damroll:</span> <span class="text-orange-400">${p.damroll}</span></div>
+                </div>
+                <div class="mt-4 space-y-2">
+                    <div><span class="text-gray-500 text-xs">HP</span>${statBar(p.hp_cur, p.hp_max, 'bg-red-600')}</div>
+                    <div><span class="text-gray-500 text-xs">Mana</span>${statBar(p.mana_cur, p.mana_max, 'bg-blue-600')}</div>
+                    <div><span class="text-gray-500 text-xs">Move</span>${statBar(p.mv_cur, p.mv_max, 'bg-green-700')}</div>
+                </div>`;
+
+            // ---- Stats ----
+            const statRow = (name, base, mod) => {
+                const total = base + mod;
+                const modStr = mod !== 0 ? ` <span class="text-gray-600">(${base}${mod >= 0 ? '+' : ''}${mod})</span>` : '';
+                const col = total >= 20 ? 'text-green-400' : total >= 16 ? 'text-yellow-400' : total >= 12 ? 'text-gray-300' : 'text-red-400';
+                return `<tr><td class="pr-4 text-gray-500">${name}</td><td class="${col} font-bold">${total}</td><td>${modStr}</td></tr>`;
+            };
+            document.getElementById('pl-stats-body').innerHTML = `
+                <table class="w-full"><tbody>
+                    ${statRow('Strength', p.str_base, p.str_mod)}
+                    ${statRow('Intelligence', p.int_base, p.int_mod)}
+                    ${statRow('Wisdom', p.wis_base, p.wis_mod)}
+                    ${statRow('Dexterity', p.dex_base, p.dex_mod)}
+                    ${statRow('Constitution', p.con_base, p.con_mod)}
+                </tbody></table>
+                <div class="mt-3 border-t border-gray-800 pt-2 text-xs grid grid-cols-2 gap-1">
+                    <div><span class="text-gray-500">AC Pierce:</span> <span class="text-cyan-400">${p.ac_pierce}</span></div>
+                    <div><span class="text-gray-500">AC Slash:</span>  <span class="text-cyan-400">${p.ac_slash}</span></div>
+                    <div><span class="text-gray-500">AC Bash:</span>   <span class="text-cyan-400">${p.ac_bash}</span></div>
+                    <div><span class="text-gray-500">AC Exotic:</span> <span class="text-cyan-400">${p.ac_exotic}</span></div>
+                </div>`;
+
+            // ---- Affects ----
+            const aff = p.affects || [];
+            const affCard = document.getElementById('pl-affects-card');
+            if (aff.length) {
+                affCard.classList.remove('hidden');
+                document.getElementById('pl-affects-body').innerHTML = aff.map(a => {
+                    let extra = '';
+                    if (a.location && a.modifier != null) extra = ` (${a.modifier >= 0 ? '+' : ''}${a.modifier} ${escHtml(String(a.location))})`;
+                    return `<div class="py-0.5 text-purple-300">${escHtml(a.spell)}${extra}<span class="text-gray-600 ml-2 text-xs">${a.duration ? a.duration+'t' : ''}</span></div>`;
+                }).join('');
+            } else {
+                affCard.classList.add('hidden');
+            }
+
+            // ---- Look ----
+            document.getElementById('pl-look-body').textContent = p.description || '(no description)';
+
+            // ---- Equipment ----
+            const equip = p.equipment || [];
+            const equipEl = document.getElementById('pl-equip-body');
+            if (!equip.length) {
+                equipEl.innerHTML = '<div class="p-4 text-gray-600 italic text-sm">Nothing worn.</div>';
+            } else {
+                // Sort by wear slot
+                const sorted = [...equip].sort((a, b) => (a.wear||0) - (b.wear||0));
+                equipEl.innerHTML = sorted.map(item => {
+                    const slotName = WEAR_SLOT_NAMES[item.wear] || ('Slot '+item.wear);
+                    const affStr = (item.affects||[]).slice(0,3).map(a =>
+                        `<span class="text-xs text-gray-500">${escHtml(String(a))}</span>`
+                    ).join(' ');
+                    return `<div class="p-3 hover:bg-[#1a1a1a] transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1 min-w-0">
+                                <div class="text-xs text-gray-600 font-mono uppercase tracking-wider">${escHtml(slotName)}</div>
+                                <div class="text-gray-200 cursor-pointer hover:text-white hover:underline mt-0.5" onclick="showObjDetail(${item.vnum})">${escHtml(item.name)}</div>
+                                <div class="mt-0.5">${affStr}</div>
+                            </div>
+                            <div class="text-gray-700 text-xs font-mono ml-3 shrink-0">#${item.vnum}</div>
+                        </div>
+                    </div>`;
+                }).join('');
+            }
+        }
+
+        function playerToGear() {
+            if (!_currentPlayer) return;
+            document.getElementById('bg-class').value = _currentPlayer.class_name || 'warrior';
+            document.getElementById('bg-race').value  = _currentPlayer.race || 'human';
+            document.getElementById('bg-level').value = _currentPlayer.level || 50;
+            showBestGear();
+        }
+
         // Best Gear Functions
         function showBestGear() {
             showSection('best-gear');
         }
 
         const _bgBreakdownMap = new Map();
+
+        async function bgLoadFromPlayer() {
+            const name = document.getElementById('bg-player-name').value.trim();
+            if (!name) return;
+            const msg = document.getElementById('bg-player-msg');
+            msg.textContent = 'Loading...';
+            try {
+                const res = await fetch('/api/player/' + encodeURIComponent(name));
+                if (!res.ok) { msg.textContent = 'Player not found'; return; }
+                const p = await res.json();
+                document.getElementById('bg-class').value = p.class_name || 'warrior';
+                document.getElementById('bg-race').value  = p.race      || 'human';
+                document.getElementById('bg-level').value = p.level     || 50;
+                msg.textContent = `Loaded ${p.name} (${p.class_name} lv${p.level})`;
+                loadBestGear();
+            } catch(e) {
+                msg.textContent = 'Error: ' + e.message;
+            }
+        }
 
         async function loadBestGear() {
             const cls = document.getElementById('bg-class').value;
@@ -2918,6 +3439,34 @@ async def get_stats() -> Dict[str, int]:
         "rooms": len(parser.rooms),
         "areas": len(parser.areas)
     }
+
+
+# Validate player names: letters only, 1-20 chars (matches MUD naming rules)
+import re as _re
+_PLAYER_NAME_RE = _re.compile(r'^[A-Za-z]{1,20}$')
+
+
+@app.get("/api/players")
+async def list_players() -> list[str]:
+    """Return sorted list of all player names (extension-less files only)."""
+    try:
+        return sorted(
+            p.name for p in PLAYER_PATH.iterdir()
+            if p.is_file() and p.suffix == "" and not p.name.startswith(".")
+        )
+    except Exception:
+        return []
+
+
+@app.get("/api/player/{name}")
+async def get_player(name: str) -> Dict[str, Any]:
+    """Return full parsed player profile."""
+    if not _PLAYER_NAME_RE.match(name):
+        raise HTTPException(status_code=400, detail="Invalid player name")
+    data = parse_player_file(name)
+    if data is None:
+        raise HTTPException(status_code=404, detail=f"Player '{name}' not found")
+    return data
 
 
 @app.get("/api/mobs")
