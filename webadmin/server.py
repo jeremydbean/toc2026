@@ -1473,20 +1473,26 @@ async def index() -> str:
 
                 ws.onmessage = (event) => {
                     let data = event.data;
-                    
-                    // Telnet Negotiation for Echo - filter out telnet control sequences
-                    // IAC WILL ECHO (255 251 1) -> Server will echo, turn local echo OFF
+                    const wasEcho = localEcho;
+
+                    // Telnet Negotiation for Echo - detect BEFORE stripping
+                    // IAC WILL ECHO (255 251 1) -> Server handles echo, turn local echo OFF
                     const iacWillEcho = String.fromCharCode(255, 251, 1);
-                    if (data.includes(iacWillEcho)) {
-                        localEcho = false;
-                        data = data.split(iacWillEcho).join('');
-                    }
-                    
+                    if (data.includes(iacWillEcho)) localEcho = false;
+
                     // IAC WONT ECHO (255 252 1) -> Server won't echo, turn local echo ON
                     const iacWontEcho = String.fromCharCode(255, 252, 1);
-                    if (data.includes(iacWontEcho)) {
-                        localEcho = true;
-                        data = data.split(iacWontEcho).join('');
+                    if (data.includes(iacWontEcho)) localEcho = true;
+
+                    // Strip all 3-byte telnet options (IAC+type+option), 2-byte commands,
+                    // and lone IAC bytes so control sequences never appear in the terminal.
+                    data = data.replace(/\xff[\xfb-\xfe]./gs, '');
+                    data = data.replace(/\xff[\xf0-\xfa]/g, '');
+                    data = data.replace(/\xff/g, '');
+
+                    // When entering password mode, ensure prompt is on its own line
+                    if (wasEcho && !localEcho) {
+                        term.write('\\r\\n');
                     }
 
                     term.write(data);
@@ -1507,11 +1513,14 @@ async def index() -> str:
 
             // Handle input
             term.onData(data => {
-                // Normalize all line endings to \\n
+                // Normalize all line endings to \\n before sending to MUD
                 let sendData = data.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n');
-                
+
                 if (localEcho) {
-                    term.write(data);
+                    // For Enter key (CR=\\r): echo CR+LF so the cursor advances to the next line.
+                    // Without LF the cursor returns to column 0 on the SAME line, causing
+                    // subsequent MUD output (like "Password: ") to overwrite the typed username.
+                    term.write(data === '\\r' ? '\\r\\n' : data);
                 }
                 if (ws && ws.readyState === WebSocket.OPEN) {
                     ws.send(sendData);
