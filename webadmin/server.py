@@ -320,6 +320,15 @@ async def index() -> str:
         
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+        
+        .nav-link.active-nav { font-weight: bold; }
+        
+        /* Toast animation */
+        #toast-container > div {
+            opacity: 1;
+            transform: translateX(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -334,12 +343,12 @@ async def index() -> str:
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <span onclick="showSection('home')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Home</span>
-                        <span onclick="showSection('play')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Play Now</span>
-                        <span onclick="showSection('database')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Database</span>
-                        <span onclick="showSection('guide')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">How to Play</span>
-                        <span onclick="showSection('admin')" class="text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Admin</span>
-                        <button onclick="showBestGear()" class="px-4 py-2 rounded hover:bg-gray-800 transition-colors text-yellow-500 hover:text-yellow-300"><i class="fas fa-khanda mr-2"></i>Best Gear</button>
+                        <span data-nav="home" onclick="showSection('home')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Home</span>
+                        <span data-nav="play" onclick="showSection('play')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Play Now</span>
+                        <span data-nav="database" onclick="showSection('database')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Database</span>
+                        <span data-nav="guide" onclick="showSection('guide')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">How to Play</span>
+                        <span data-nav="admin" onclick="showSection('admin')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Admin</span>
+                        <span data-nav="best-gear" onclick="showBestGear()" class="nav-link px-4 py-2 rounded hover:bg-gray-800 transition-colors text-yellow-500 hover:text-yellow-300 cursor-pointer"><i class="fas fa-khanda mr-2"></i>Best Gear</span>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -352,11 +361,12 @@ async def index() -> str:
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-red-900/30">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <span onclick="showSection('home')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Home</span>
-                <span onclick="showSection('play')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Play Now</span>
-                <span onclick="showSection('database')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Database</span>
-                <span onclick="showSection('guide')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">How to Play</span>
-                <span onclick="showSection('admin')" class="text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Admin</span>
+                <span data-nav="home" onclick="showSection('home')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Home</span>
+                <span data-nav="play" onclick="showSection('play')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Play Now</span>
+                <span data-nav="database" onclick="showSection('database')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Database</span>
+                <span data-nav="guide" onclick="showSection('guide')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">How to Play</span>
+                <span data-nav="admin" onclick="showSection('admin')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Admin</span>
+                <span data-nav="best-gear" onclick="showBestGear()" class="nav-link text-yellow-500 hover:text-yellow-300 block px-3 py-2 rounded-md text-base font-medium cursor-pointer"><i class="fas fa-khanda mr-2"></i>Best Gear</span>
             </div>
         </div>
     </nav>
@@ -449,7 +459,7 @@ async def index() -> str:
                                 </div>
                             </div>
                             <div class="mt-4 flex justify-between text-gray-400 text-sm">
-                                <div>Status: <span id="connection-status" class="text-yellow-500">Connecting...</span></div>
+                                <div>Status: <span id="connection-status" class="text-gray-500">Not connected</span></div>
                                 <div>Host: localhost:9000</div>
                             </div>
                         </div>
@@ -1192,39 +1202,103 @@ async def index() -> str:
     </div>
 
     <!-- Footer -->
+    <!-- Toast container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-[200] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Score Breakdown Modal -->
+    <div id="score-modal" class="fixed inset-0 bg-black/80 hidden z-[150] flex items-center justify-center p-4">
+        <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-md w-full shadow-2xl">
+            <div class="p-4 border-b border-gray-800 flex justify-between items-center">
+                <h3 class="text-lg font-bold text-yellow-400 font-cinzel">Score Breakdown</h3>
+                <button onclick="closeScoreModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-times text-xl"></i></button>
+            </div>
+            <div id="score-modal-content" class="p-4 font-mono text-sm text-gray-300 space-y-1 max-h-96 overflow-y-auto">
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-black border-t border-gray-900 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-gray-500 text-sm">
-                &copy; 2023 tocGPT Project. Based on Merc/ROM Codebase.
+                &copy; 2026 Times of Chaos. Based on Merc/ROM Codebase.
             </div>
             <div class="flex gap-6">
                 <a href="#" class="text-gray-500 hover:text-white"><i class="fa-brands fa-discord text-xl"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white"><i class="fa-brands fa-twitter text-xl"></i></a>
-                <a href="https://github.com/jeremydbean/tocgpt" class="text-gray-500 hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="https://github.com/jeremydbean/toc2026" target="_blank" class="text-gray-500 hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Navigation
-        console.log("Script loading...");
+        // ============ HELPERS ============
+        function escHtml(str) {
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function showToast(msg, type = 'info') {
+            const colors = { success: 'bg-green-900 border-green-700', error: 'bg-red-900 border-red-700', info: 'bg-gray-800 border-gray-600', warning: 'bg-yellow-900 border-yellow-700' };
+            const icons = { success: 'fa-check-circle text-green-400', error: 'fa-exclamation-circle text-red-400', info: 'fa-info-circle text-blue-400', warning: 'fa-exclamation-triangle text-yellow-400' };
+            const toast = document.createElement('div');
+            toast.className = `${colors[type] || colors.info} border text-white text-sm px-4 py-3 rounded shadow-2xl flex items-start gap-3 pointer-events-auto max-w-sm transition-all duration-300`;
+            toast.innerHTML = `<i class="fas ${icons[type] || icons.info} mt-0.5 shrink-0"></i><span>${escHtml(msg)}</span>`;
+            const container = document.getElementById('toast-container');
+            container.appendChild(toast);
+            // Animate in
+            requestAnimationFrame(() => { toast.style.opacity = '1'; });
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => toast.remove(), 300);
+            }, 4500);
+        }
+
+        // ============ NAVIGATION ============
         
         // Ensure DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
-            console.log("DOM Content Loaded");
+        });
+        
+        // Global Escape key handler for modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('room-modal').classList.add('hidden');
+                document.getElementById('mob-modal').classList.add('hidden');
+                document.getElementById('obj-modal').classList.add('hidden');
+                document.getElementById('map-modal').classList.add('hidden');
+                document.getElementById('score-modal').classList.add('hidden');
+            }
         });
         
         function showSection(id) {
-            console.log("showSection called with id:", id);
             try {
                 document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
                 const targetSection = document.getElementById(id + '-section');
-                console.log("Target section:", targetSection);
                 if(targetSection) {
                     targetSection.classList.add('active');
-                    console.log("Section activated successfully");
                 } else {
                     console.error("Section not found:", id + '-section');
+                }
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link[data-nav]').forEach(el => {
+                    el.classList.remove('text-red-500', 'text-yellow-300');
+                    if (el.dataset.nav === 'best-gear') {
+                        el.classList.add('text-yellow-500');
+                    } else {
+                        el.classList.add('text-gray-300');
+                    }
+                });
+                const activeLink = document.querySelector(`.nav-link[data-nav="${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.remove('text-gray-300', 'text-yellow-500');
+                    activeLink.classList.add(id === 'best-gear' ? 'text-yellow-300' : 'text-red-500');
+                    activeLink.style.fontWeight = 'bold';
                 }
                 
                 // Close mobile menu if open
@@ -1246,9 +1320,24 @@ async def index() -> str:
         }
 
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Port copied to clipboard!');
-            });
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('Copied to clipboard!', 'success');
+                }).catch(() => {
+                    showToast('Copy failed — try manual copy.', 'error');
+                });
+            } else {
+                // Fallback for non-HTTPS
+                const el = document.createElement('textarea');
+                el.value = text;
+                el.style.position = 'fixed';
+                el.style.opacity = '0';
+                document.body.appendChild(el);
+                el.select();
+                try { document.execCommand('copy'); showToast('Copied to clipboard!', 'success'); }
+                catch(e) { showToast('Copy failed — try manual copy.', 'error'); }
+                document.body.removeChild(el);
+            }
         }
 
         // ============ TERMINAL / WEBSOCKET ============
@@ -1334,25 +1423,14 @@ async def index() -> str:
 
             // Handle input
             term.onData(data => {
-                console.log('Terminal input received:', data, 'charCodes:', Array.from(data).map(c => c.charCodeAt(0)));
-                
                 // Normalize all line endings to \n
-                // The MUD server (comm.c) accepts \n, \r, or \r\n as line terminators
-                // and consumes consecutive terminators.
-                // Sending just \n avoids potential double-newline issues where \r\n might be
-                // interpreted as two lines if processed in chunks, or if the client sends
-                // mixed signals.
                 let sendData = data.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
                 
-                console.log('Sending to server:', sendData, 'charCodes:', Array.from(sendData).map(c => c.charCodeAt(0)));
-                
                 if (localEcho) {
-                    // Echo locally
-                    term.write(data);  // Echo original data, not converted
+                    term.write(data);
                 }
                 if (ws && ws.readyState === WebSocket.OPEN) {
                     ws.send(sendData);
-                    console.log('WebSocket send complete');
                 } else {
                     console.error('WebSocket not ready:', ws ? ws.readyState : 'null');
                 }
@@ -1383,7 +1461,16 @@ async def index() -> str:
 
         function toggleFilters() {
             const el = document.getElementById('advanced-filters');
-            el.classList.toggle('hidden');
+            const btn = event.currentTarget;
+            const isHidden = el.classList.toggle('hidden');
+            const icon = btn.querySelector('i');
+            if (isHidden) {
+                icon.className = 'fa-solid fa-filter';
+                btn.classList.remove('bg-blue-900/30', 'border-blue-700');
+            } else {
+                icon.className = 'fa-solid fa-filter-circle-xmark';
+                btn.classList.add('bg-blue-900/30', 'border-blue-700');
+            }
         }
 
         async function loadDb(type, forceRefresh = false) {
@@ -1472,11 +1559,11 @@ async def index() -> str:
                 headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Level</th><th class="p-4">Race</th><th class="p-4">Area</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(m => `
                     <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-mono text-sm text-gray-500">#${m.vnum}</td>
-                        <td class="p-4 font-bold text-gray-300">${m.short_desc || 'Unnamed'}</td>
-                        <td class="p-4 text-yellow-500">${m.level}</td>
-                        <td class="p-4 text-gray-400">${m.race}</td>
-                        <td class="p-4 text-gray-500 text-sm">${m.area || '-'}</td>
+                        <td class="p-4 font-mono text-sm text-gray-500">#${escHtml(m.vnum)}</td>
+                        <td class="p-4 font-bold text-gray-300">${escHtml(m.short_desc || 'Unnamed')}</td>
+                        <td class="p-4 text-yellow-500">${escHtml(m.level)}</td>
+                        <td class="p-4 text-gray-400">${escHtml(m.race)}</td>
+                        <td class="p-4 text-gray-500 text-sm">${escHtml(m.area || '-')}</td>
                         <td class="p-4">
                             <button onclick="showMobDetail(${m.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
                         </td>
@@ -1489,7 +1576,7 @@ async def index() -> str:
                     let affectsHtml = '';
                     if(o.affects && o.affects.length > 0) {
                         affectsHtml = '<div class="mt-2"><strong class="text-green-400">Affects:</strong> ' + 
-                            o.affects.map(a => `<span class="text-green-300">${a}</span>`).join(', ') + '</div>';
+                            o.affects.map(a => `<span class="text-green-300">${escHtml(a)}</span>`).join(', ') + '</div>';
                     }
                     
                     // Build flags display
@@ -1497,14 +1584,14 @@ async def index() -> str:
                     if((o.flags && o.flags.length > 0) || (o.flags2 && o.flags2.length > 0)) {
                         let allFlags = [...(o.flags || []), ...(o.flags2 || [])];
                         flagsHtml = '<div class="mt-1"><strong class="text-purple-400">Flags:</strong> ' + 
-                            allFlags.map(f => `<span class="text-purple-300">${f}</span>`).join(', ') + '</div>';
+                            allFlags.map(f => `<span class="text-purple-300">${escHtml(f)}</span>`).join(', ') + '</div>';
                     }
                     
                     // Build wear locations
                     let wearHtml = '';
                     if(o.wear_locations && o.wear_locations.length > 0) {
                         wearHtml = '<div class="mt-1"><strong class="text-blue-400">Wear:</strong> ' + 
-                            o.wear_locations.map(w => `<span class="text-blue-300">${w}</span>`).join(', ') + '</div>';
+                            o.wear_locations.map(w => `<span class="text-blue-300">${escHtml(w)}</span>`).join(', ') + '</div>';
                     }
                     
                     // Build detailed stats based on item type
@@ -1603,7 +1690,7 @@ async def index() -> str:
                     let carriersHtml = '';
                     if(o.carried_by && o.carried_by.length > 0) {
                         carriersHtml = '<div class="mt-2"><strong class="text-yellow-400">Found on:</strong> ' + 
-                            o.carried_by.slice(0, 3).map(m => `<span class="text-yellow-300 cursor-pointer hover:underline" onclick="showMobDetail(${m.vnum})">${m.name} (${m.level})</span>`).join(', ');
+                            o.carried_by.slice(0, 3).map(m => `<span class="text-yellow-300 cursor-pointer hover:underline" onclick="showMobDetail(${m.vnum})">${escHtml(m.name)} (${escHtml(m.level)})</span>`).join(', ');
                         if(o.carried_by.length > 3) {
                             carriersHtml += ` <span class="text-gray-500">+${o.carried_by.length - 3} more</span>`;
                         }
@@ -1612,16 +1699,16 @@ async def index() -> str:
                     
                     return `
                     <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-mono text-sm text-gray-500 align-top">#${o.vnum}</td>
+                        <td class="p-4 font-mono text-sm text-gray-500 align-top">#${escHtml(o.vnum)}</td>
                         <td class="p-4 font-bold text-gray-300 align-top">
-                            ${o.short_desc || 'Unnamed'}
-                            <div class="text-xs text-gray-500 mt-1">${o.material || 'unknown'}</div>
+                            ${escHtml(o.short_desc || 'Unnamed')}
+                            <div class="text-xs text-gray-500 mt-1">${escHtml(o.material || 'unknown')}</div>
                         </td>
-                        <td class="p-4 text-blue-400 align-top">${o.item_type}</td>
+                        <td class="p-4 text-blue-400 align-top">${escHtml(o.item_type)}</td>
                         <td class="p-4 text-yellow-500 align-top">
-                            ${o.level}
+                            ${escHtml(o.level)}
                             <div class="text-xs text-gray-500 mt-1">
-                                ${o.weight}lb / ${o.cost}g
+                                ${escHtml(o.weight)}lb / ${escHtml(o.cost)}g
                             </div>
                         </td>
                         <td class="p-4 text-sm align-top">
@@ -1630,7 +1717,7 @@ async def index() -> str:
                             ${flagsHtml}
                             ${wearHtml}
                             ${carriersHtml}
-                            <div class="mt-1 text-xs text-gray-600">${o.area || '-'}</div>
+                            <div class="mt-1 text-xs text-gray-600">${escHtml(o.area || '-')}</div>
                         </td>
                         <td class="p-4 align-top">
                             <button onclick="showObjDetail(${o.vnum}); return false;" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
@@ -1642,12 +1729,12 @@ async def index() -> str:
                 headerHtml = '<th class="p-4">Name</th><th class="p-4">Builder</th><th class="p-4">Filename</th><th class="p-4">Vnums</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(a => `
                     <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-bold text-gray-300">${a.name}</td>
-                        <td class="p-4 text-gray-400">${a.builder || '-'}</td>
-                        <td class="p-4 font-mono text-sm text-gray-500">${a.filename}</td>
-                        <td class="p-4 text-gray-500 text-sm">${a.vnums || '-'}</td>
+                        <td class="p-4 font-bold text-gray-300">${escHtml(a.name)}</td>
+                        <td class="p-4 text-gray-400">${escHtml(a.builder || '-')}</td>
+                        <td class="p-4 font-mono text-sm text-gray-500">${escHtml(a.filename)}</td>
+                        <td class="p-4 text-gray-500 text-sm">${escHtml(a.vnums || '-')}</td>
                         <td class="p-4">
-                            <button onclick="showAreaMap('${a.filename}')" class="text-xs bg-green-900/30 hover:bg-green-900/50 text-green-400 px-2 py-1 rounded border border-green-900/50"><i class="fas fa-map mr-1"></i>Map</button>
+                            <button onclick="showAreaMap('${escHtml(a.filename)}')" class="text-xs bg-green-900/30 hover:bg-green-900/50 text-green-400 px-2 py-1 rounded border border-green-900/50"><i class="fas fa-map mr-1"></i>Map</button>
                         </td>
                     </tr>
                 `).join('');
@@ -1655,11 +1742,11 @@ async def index() -> str:
                 headerHtml = '<th class="p-4">Vnum</th><th class="p-4">Name</th><th class="p-4">Area</th><th class="p-4">Sector</th><th class="p-4">Flags</th><th class="p-4">Actions</th>';
                 rowsHtml = data.map(r => `
                     <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-mono text-sm text-gray-500">#${r.vnum}</td>
-                        <td class="p-4 font-bold text-gray-300">${r.name}</td>
-                        <td class="p-4 text-gray-500 text-sm">${r.area || '-'}</td>
-                        <td class="p-4 text-gray-400 capitalize">${r.sector_type}</td>
-                        <td class="p-4 text-gray-500 text-xs">${r.room_flags || '-'}</td>
+                        <td class="p-4 font-mono text-sm text-gray-500">#${escHtml(r.vnum)}</td>
+                        <td class="p-4 font-bold text-gray-300">${escHtml(r.name)}</td>
+                        <td class="p-4 text-gray-500 text-sm">${escHtml(r.area || '-')}</td>
+                        <td class="p-4 text-gray-400 capitalize">${escHtml(r.sector_type)}</td>
+                        <td class="p-4 text-gray-500 text-xs">${escHtml(r.room_flags || '-')}</td>
                         <td class="p-4">
                             <button onclick="showRoomDetail(${r.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
                         </td>
@@ -1680,12 +1767,32 @@ async def index() -> str:
         }
 
         // ============ ADMIN ============
+        let actionPendingTimers = {};
         async function action(type) {
-            if(!confirm('Are you sure?')) return;
-            try {
-                await fetch('/api/' + type, { method: 'POST' });
-                alert(type + ' queued successfully');
-            } catch(e) { alert('Error: ' + e); }
+            const btn = event.currentTarget;
+            if (btn.dataset.confirmPending === 'true') {
+                // Second click
+                clearTimeout(actionPendingTimers[type]);
+                delete actionPendingTimers[type];
+                btn.dataset.confirmPending = 'false';
+                btn.innerHTML = btn.dataset.origHtml;
+                btn.classList.remove('border-yellow-500', 'text-yellow-300');
+                try {
+                    await fetch('/api/' + type, { method: 'POST' });
+                    showToast(type.charAt(0).toUpperCase() + type.slice(1) + ' queued successfully.', 'success');
+                } catch(e) { showToast('Error: ' + e, 'error'); }
+            } else {
+                // First click - show confirm state
+                btn.dataset.confirmPending = 'true';
+                btn.dataset.origHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> Click again to confirm';
+                btn.classList.add('border-yellow-500', 'text-yellow-300');
+                actionPendingTimers[type] = setTimeout(() => {
+                    btn.dataset.confirmPending = 'false';
+                    btn.innerHTML = btn.dataset.origHtml;
+                    btn.classList.remove('border-yellow-500', 'text-yellow-300');
+                }, 3000);
+            }
         }
 
         async function sendWizInfo(e) {
@@ -1698,9 +1805,9 @@ async def index() -> str:
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({message: msg, level: parseInt(level)})
                 });
-                alert('Broadcast queued');
+                showToast('Broadcast queued.', 'success');
                 e.target.reset();
-            } catch(e) { alert('Error: ' + e); }
+            } catch(e) { showToast('Error: ' + e, 'error'); }
         }
 
         async function sendCommand(e) {
@@ -1712,9 +1819,9 @@ async def index() -> str:
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({command: cmd})
                 });
-                alert('Command queued');
+                showToast('Command queued.', 'success');
                 e.target.reset();
-            } catch(e) { alert('Error: ' + e); }
+            } catch(e) { showToast('Error: ' + e, 'error'); }
         }
 
         let logWs = null;
@@ -1806,12 +1913,8 @@ async def index() -> str:
 
         // Room Modal Functions
         async function showRoomDetail(vnum) {
-            console.log('showRoomDetail called with vnum:', vnum);
             try {
-                const url = `/api/rooms/${vnum}`;
-                console.log('Fetching URL:', url);
-                const res = await fetch(url);
-                console.log('Response status:', res.status);
+                const res = await fetch(`/api/rooms/${vnum}`);
                 if(!res.ok) throw new Error('Failed to fetch room: ' + res.status);
                 const room = await res.json();
                 
@@ -1827,9 +1930,9 @@ async def index() -> str:
                 if(room.exits && room.exits.length > 0) {
                     exitsContainer.innerHTML = room.exits.map(ex => `
                         <div onclick="showRoomDetail(${ex.to_room})" class="bg-[#222] p-2 rounded border border-gray-700 text-center cursor-pointer hover:bg-[#333] transition-colors">
-                            <div class="text-yellow-500 font-bold uppercase text-xs">${ex.direction}</div>
-                            <div class="text-gray-400 text-xs truncate" title="${ex.to_room_name}">${ex.to_room_name}</div>
-                            <div class="text-gray-600 text-[10px] font-mono">#${ex.to_room}</div>
+                            <div class="text-yellow-500 font-bold uppercase text-xs">${escHtml(ex.direction)}</div>
+                            <div class="text-gray-400 text-xs truncate" title="${escHtml(ex.to_room_name)}">${escHtml(ex.to_room_name)}</div>
+                            <div class="text-gray-600 text-[10px] font-mono">#${escHtml(ex.to_room)}</div>
                         </div>
                     `).join('');
                 } else {
@@ -1841,8 +1944,8 @@ async def index() -> str:
                 if(room.mobs && room.mobs.length > 0) {
                     mobsContainer.innerHTML = room.mobs.map(m => `
                         <li class="flex justify-between items-center">
-                            <span class="text-red-300 truncate" title="${m.name}">${m.name}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${m.vnum}</span>
+                            <span class="text-red-300 truncate" title="${escHtml(m.name)}">${escHtml(m.name)}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${escHtml(m.vnum)}</span>
                         </li>
                     `).join('');
                 } else {
@@ -1854,8 +1957,8 @@ async def index() -> str:
                 if(room.objects && room.objects.length > 0) {
                     objsContainer.innerHTML = room.objects.map(o => `
                         <li class="flex justify-between items-center">
-                            <span class="text-blue-300 truncate" title="${o.name}">${o.name}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${o.vnum}</span>
+                            <span class="text-blue-300 truncate" title="${escHtml(o.name)}">${escHtml(o.name)}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${escHtml(o.vnum)}</span>
                         </li>
                     `).join('');
                 } else {
@@ -1867,8 +1970,8 @@ async def index() -> str:
                 if(room.extra_descr && room.extra_descr.length > 0) {
                     extrasContainer.innerHTML = room.extra_descr.map(ed => `
                         <div class="bg-[#151515] p-2 rounded border border-gray-800">
-                            <span class="text-green-400 font-bold text-xs">${ed.keyword}:</span>
-                            <span class="text-gray-400 text-xs">${ed.description}</span>
+                            <span class="text-green-400 font-bold text-xs">${escHtml(ed.keyword)}:</span>
+                            <span class="text-gray-400 text-xs">${escHtml(ed.description)}</span>
                         </div>
                     `).join('');
                 } else {
@@ -1877,7 +1980,7 @@ async def index() -> str:
                 
                 document.getElementById('room-modal').classList.remove('hidden');
             } catch(e) {
-                alert('Error loading room details: ' + e);
+                showToast('Error loading room details: ' + e, 'error');
             }
         }
         
@@ -1887,15 +1990,10 @@ async def index() -> str:
 
         // Mob Modal Functions
         async function showMobDetail(vnum) {
-            console.log('showMobDetail called with vnum:', vnum);
             try {
-                const url = `/api/mobs/${vnum}`;
-                console.log('Fetching URL:', url);
-                const res = await fetch(url);
-                console.log('Response status:', res.status);
+                const res = await fetch(`/api/mobs/${vnum}`);
                 if(!res.ok) throw new Error('Failed to fetch mob: ' + res.status);
                 const mob = await res.json();
-                console.log('Mob data:', mob);
                 
                 document.getElementById('mob-modal-title').textContent = mob.short_desc;
                 document.getElementById('mob-modal-vnum').textContent = '#' + mob.vnum;
@@ -1935,8 +2033,8 @@ async def index() -> str:
                 if(mob.drops && mob.drops.length > 0) {
                     dropsContainer.innerHTML = mob.drops.map(d => `
                         <li class="flex justify-between items-center">
-                            <span class="text-red-300 truncate" title="${d.name}">${d.name}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${d.vnum}</span>
+                            <span class="text-red-300 truncate" title="${escHtml(d.name)}">${escHtml(d.name)}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${escHtml(d.vnum)}</span>
                         </li>
                     `).join('');
                 } else {
@@ -1948,8 +2046,8 @@ async def index() -> str:
                 if(mob.spawn_rooms && mob.spawn_rooms.length > 0) {
                     spawnsContainer.innerHTML = mob.spawn_rooms.map(r => `
                         <li onclick="closeMobModal(); showRoomDetail(${r.vnum})" class="flex justify-between items-center cursor-pointer hover:bg-[#222] p-1 rounded transition-colors">
-                            <span class="text-gray-300 truncate text-xs">${r.name}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${r.vnum}</span>
+                            <span class="text-gray-300 truncate text-xs">${escHtml(r.name)}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${escHtml(r.vnum)}</span>
                         </li>
                     `).join('');
                 } else {
@@ -1958,7 +2056,7 @@ async def index() -> str:
                 
                 document.getElementById('mob-modal').classList.remove('hidden');
             } catch(e) {
-                alert('Error loading mob details: ' + e);
+                showToast('Error loading mob details: ' + e, 'error');
             }
         }
         
@@ -1968,21 +2066,15 @@ async def index() -> str:
 
         // Object Modal Functions
         async function showObjDetail(vnum) {
-            console.log('showObjDetail called with vnum:', vnum, 'type:', typeof vnum);
-            console.trace('Call stack for showObjDetail');
             if(vnum === undefined || vnum === null || vnum === 'undefined') {
                 console.error('showObjDetail called with invalid vnum!');
-                alert('Error: Object vnum is undefined. Check console for stack trace.');
+                showToast('Error: Object vnum is undefined.', 'error');
                 return;
             }
             try {
-                const url = `/api/objects/${vnum}`;
-                console.log('Fetching URL:', url);
-                const res = await fetch(url);
-                console.log('Response status:', res.status);
+                const res = await fetch(`/api/objects/${vnum}`);
                 if(!res.ok) throw new Error('Failed to fetch object: ' + res.status);
                 const obj = await res.json();
-                console.log('Object data:', obj);
                 
                 document.getElementById('obj-modal-title').textContent = obj.short_desc;
                 document.getElementById('obj-modal-vnum').textContent = '#' + obj.vnum;
@@ -2017,16 +2109,16 @@ async def index() -> str:
                 let valHtml = '';
                 const v = obj.values_interpreted;
                 
-                if(v.damage_text) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Damage:</span> <span class="text-red-300">${v.damage_text}</span></div>`;
-                if(v.damage_type) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Type:</span> <span class="text-gray-300">${v.damage_type}</span></div>`;
-                if(v.weapon_class) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Class:</span> <span class="text-gray-300">${v.weapon_class}</span></div>`;
-                if(v.ac_summary) valHtml += `<div class="flex justify-between"><span class="text-gray-500">AC:</span> <span class="text-cyan-300">${v.ac_summary}</span></div>`;
-                if(v.capacity) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Capacity:</span> <span class="text-gray-300">${v.capacity}</span></div>`;
-                if(v.liquid_type) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Liquid:</span> <span class="text-blue-300">${v.liquid_type}</span></div>`;
-                if(v.spell_level) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell Lvl:</span> <span class="text-pink-300">${v.spell_level}</span></div>`;
-                if(v.spell1) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 1:</span> <span class="text-pink-300">${v.spell1}</span></div>`;
-                if(v.spell2) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 2:</span> <span class="text-pink-300">${v.spell2}</span></div>`;
-                if(v.spell3) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 3:</span> <span class="text-pink-300">${v.spell3}</span></div>`;
+                if(v.damage_text) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Damage:</span> <span class="text-red-300">${escHtml(v.damage_text)}</span></div>`;
+                if(v.damage_type) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Type:</span> <span class="text-gray-300">${escHtml(v.damage_type)}</span></div>`;
+                if(v.weapon_class) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Class:</span> <span class="text-gray-300">${escHtml(v.weapon_class)}</span></div>`;
+                if(v.ac_summary) valHtml += `<div class="flex justify-between"><span class="text-gray-500">AC:</span> <span class="text-cyan-300">${escHtml(v.ac_summary)}</span></div>`;
+                if(v.capacity) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Capacity:</span> <span class="text-gray-300">${escHtml(v.capacity)}</span></div>`;
+                if(v.liquid_type) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Liquid:</span> <span class="text-blue-300">${escHtml(v.liquid_type)}</span></div>`;
+                if(v.spell_level) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell Lvl:</span> <span class="text-pink-300">${escHtml(v.spell_level)}</span></div>`;
+                if(v.spell1) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 1:</span> <span class="text-pink-300">${escHtml(v.spell1)}</span></div>`;
+                if(v.spell2) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 2:</span> <span class="text-pink-300">${escHtml(v.spell2)}</span></div>`;
+                if(v.spell3) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 3:</span> <span class="text-pink-300">${escHtml(v.spell3)}</span></div>`;
                 
                 valContainer.innerHTML = valHtml || '<div class="text-gray-500 italic">None</div>';
                 
@@ -2035,8 +2127,8 @@ async def index() -> str:
                 if(obj.carried_by && obj.carried_by.length > 0) {
                     carriedContainer.innerHTML = obj.carried_by.map(m => `
                         <li onclick="closeObjModal(); showMobDetail(${m.vnum})" class="flex justify-between items-center cursor-pointer hover:bg-[#222] p-1 rounded transition-colors">
-                            <span class="text-yellow-300 truncate text-xs">${m.name}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${m.vnum}</span>
+                            <span class="text-yellow-300 truncate text-xs">${escHtml(m.name)}</span>
+                            <span class="text-gray-600 text-xs font-mono">#${escHtml(m.vnum)}</span>
                         </li>
                     `).join('');
                 } else {
@@ -2048,8 +2140,8 @@ async def index() -> str:
                 if(obj.extra_descr && obj.extra_descr.length > 0) {
                     extrasContainer.innerHTML = obj.extra_descr.map(ed => `
                         <div class="bg-[#151515] p-2 rounded border border-gray-800">
-                            <span class="text-green-400 font-bold text-xs">${ed.keyword}:</span>
-                            <span class="text-gray-400 text-xs">${ed.description}</span>
+                            <span class="text-green-400 font-bold text-xs">${escHtml(ed.keyword)}:</span>
+                            <span class="text-gray-400 text-xs">${escHtml(ed.description)}</span>
                         </div>
                     `).join('');
                 } else {
@@ -2058,7 +2150,7 @@ async def index() -> str:
                 
                 document.getElementById('obj-modal').classList.remove('hidden');
             } catch(e) {
-                alert('Error loading object details: ' + e);
+                showToast('Error loading object details: ' + e, 'error');
             }
         }
         
@@ -2106,14 +2198,14 @@ async def index() -> str:
                         html += `
                             <div class="p-3 hover:bg-[#151515] transition-colors flex justify-between items-center group">
                                 <div class="flex items-center gap-3 overflow-hidden">
-                                    <div class="bg-gray-900 text-gray-500 text-xs font-mono px-2 py-1 rounded">#${item.vnum}</div>
+                                    <div class="bg-gray-900 text-gray-500 text-xs font-mono px-2 py-1 rounded">#${escHtml(item.vnum)}</div>
                                     <div class="truncate">
-                                        <div class="text-gray-300 font-bold group-hover:text-white cursor-pointer hover:underline" onclick="showObjDetail(${item.vnum})">${item.name}</div>
-                                        <div class="text-xs text-gray-500">Lvl ${item.level} • ${item.area || 'Unknown Area'}</div>
+                                        <div class="text-gray-300 font-bold group-hover:text-white cursor-pointer hover:underline" onclick="showObjDetail(${item.vnum})">${escHtml(item.name)}</div>
+                                        <div class="text-xs text-gray-500">Lvl ${escHtml(item.level)} &bull; ${escHtml(item.area || 'Unknown Area')}</div>
                                     </div>
                                 </div>
-                                <div class="text-right pl-4 shrink-0 cursor-help" title="${breakdown.split('"').join('&quot;')}" onclick="showScoreBreakdown('${breakdownEscaped}')">
-                                    <div class="text-green-400 font-bold text-lg">${item.score}</div>
+                                <div class="text-right pl-4 shrink-0 cursor-pointer" onclick="showScoreBreakdown('${breakdownEscaped}')">
+                                    <div class="text-green-400 font-bold text-lg">${escHtml(item.score)}</div>
                                     <div class="text-[10px] text-gray-600 uppercase tracking-wider">Score</div>
                                 </div>
                             </div>
@@ -2134,8 +2226,14 @@ async def index() -> str:
         }
 
         function showScoreBreakdown(breakdown) {
-            const msg = 'Score Breakdown:\\n\\n' + breakdown.split('\\\\n').join('\\n');
-            alert(msg);
+            const lines = breakdown.split('\\\\n').map(l => l.trim()).filter(l => l);
+            const content = document.getElementById('score-modal-content');
+            content.innerHTML = lines.map(l => `<div class="py-0.5 border-b border-gray-800">${escHtml(l)}</div>`).join('');
+            document.getElementById('score-modal').classList.remove('hidden');
+        }
+
+        function closeScoreModal() {
+            document.getElementById('score-modal').classList.add('hidden');
         }
 
         // ============ AREA MAP ============
@@ -2147,19 +2245,15 @@ async def index() -> str:
         
         async function showAreaMap(filename) {
             try {
-                console.log('Fetching map for:', filename);
                 const res = await fetch('/api/areas/' + encodeURIComponent(filename) + '/map');
-                console.log('Response status:', res.status);
                 if(!res.ok) throw new Error('Failed to fetch map data (HTTP ' + res.status + ')');
                 
                 const text = await res.text();
-                console.log('Response length:', text.length);
                 if(!text || text.length === 0) {
                     throw new Error('Empty response from server - server may have crashed');
                 }
                 
                 mapData = JSON.parse(text);
-                console.log('Parsed mapData, rooms:', mapData?.rooms?.length);
                 
                 if(!mapData || !mapData.rooms || !Array.isArray(mapData.rooms)) {
                     throw new Error('Invalid map data received - missing rooms array');
@@ -2180,7 +2274,7 @@ async def index() -> str:
                 setupMapDrag();
             } catch(e) {
                 console.error('Map loading error:', e);
-                alert('Error loading map: ' + e.message);
+                showToast('Error loading map: ' + e.message, 'error');
             }
         }
         
@@ -2538,8 +2632,9 @@ async def get_object(vnum: int) -> Dict[str, Any]:
     decoded_affects = decode_applies(obj.affects)
     item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
     decoded_item_type = ITEM_TYPES.get(item_type_num, obj.item_type)
-    decoded_extra_flags = decode_flags(obj.extraFlags, ITEM_FLAGS)
-    decoded_wear_flags = decode_flags(obj.wearFlags, WEAR_FLAGS)
+    decoded_extra_flags = decode_flags(obj.extra_flags, ITEM_FLAGS)
+    decoded_extra_flags2 = decode_flags(obj.extra_flags2, ITEM_FLAGS2)
+    decoded_wear_flags = decode_flags(obj.wear_flags, WEAR_FLAGS)
     
     # Interpret values
     values_interpreted = interpret_values(item_type_num, obj.values, obj.level)
@@ -2556,10 +2651,10 @@ async def get_object(vnum: int) -> Dict[str, Any]:
         "weight": obj.weight,
         "cost": obj.cost,
         "condition": obj.condition,
-        "extra_flags": decoded_extra_flags,
-        "extra_flags_raw": obj.extraFlags,
+        "extra_flags": decoded_extra_flags + decoded_extra_flags2,
+        "extra_flags_raw": obj.extra_flags,
         "wear_flags": decoded_wear_flags,
-        "wear_flags_raw": obj.wearFlags,
+        "wear_flags_raw": obj.wear_flags,
         "values": obj.values,
         "values_interpreted": values_interpreted,
         "affects": decoded_affects,
