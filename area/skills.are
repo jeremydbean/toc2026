@@ -11,6 +11,8 @@ read help on SALIR.  For information on individual skills, see helps on
 ASTRAL WALK, CLAIRVOYANCE, CONFUSE, EGO WHIP, MINDBAR, MINDBLAST, NIGHTMARE,
 PROJECT, PSIONIC ARMOR, PSYCHIC SHIELD, PYROTECHNICS, SHIFT, TELEKINESIS,
 TORMENT, and TRANSFUSION.
+
+See also: GAIN, SALIR
 ~
 
 15 'ASTRAL WALK'~
@@ -20,6 +22,8 @@ This psionic skill is similar to the GATE spell, with the only difference
 being that fewer restrictions are applied to its use.
 
 Minimum level: 25
+
+See also: PSIONICS, GATE, SHIFT
 ~
 
 15 CLAIRVOYANCE~
@@ -30,6 +34,8 @@ character is in the world, what is in the room, and what the room looks
 like.
 
 Minimum level: 18
+
+See also: PSIONICS, TORMENT
 ~
 
 15 CONFUSE~
@@ -41,6 +47,8 @@ be fighting, and will only defend themselves while they try to figure out
 why they are being attacked.
 
 Minimum level: 21
+
+See also: PSIONICS, EGO WHIP, TORMENT
 ~
 
 15 'EGO WHIP'~
@@ -51,6 +59,8 @@ used it makes victims feel less confident about themselves and damages
 blood vessels and synapses in the brain.
 
 Minimum level: 19
+
+See also: PSIONICS, MINDBLAST, TORMENT
 ~
 
 15 MINDBAR~
@@ -62,6 +72,8 @@ attacks.  Due to the nature of this skill, it is usable only on the
 psionicist.
 
 Minimum level: 22
+
+See also: PSIONICS, PSIONIC ARMOR, PSYCHIC SHIELD
 ~
 
 15 MINDBLAST~
@@ -72,6 +84,8 @@ attackable victims in the room of the user will be overwhelmed by mental
 energies, causing brain hemorrhages.
 
 Minimum level: 23
+
+See also: PSIONICS, EGO WHIP, TORMENT
 ~
 
 15 NIGHTMARE~
@@ -81,6 +95,8 @@ This psionic skill gives victims horrifying visions, preventing them from
 sleeping.  It also has adverse affects on magical abilities.
 
 Minimum level: 21
+
+See also: PSIONICS, TORMENT, CONFUSE
 ~
 
 15 PROJECT~
@@ -92,6 +108,8 @@ direction specified.  In this form, you are able to pass through most
 obstructions, such as doors, and are immune to attack.
 
 Minimum level: 19
+
+See also: PSIONICS, ASTRAL WALK, SHIFT
 ~
 
 15 'PSIONIC ARMOR'~
@@ -103,6 +121,8 @@ that of the PROTECTION EVIL spell.  This spell can be cast on
 others.
 
 Minimum level: 17
+
+See also: PSIONICS, MINDBAR, PSYCHIC SHIELD
 ~
 
 15 'PSYCHIC SHIELD'~
@@ -112,6 +132,8 @@ Psychic Shield is a mental defense that is as strong as Psionic Armor,
 but it affects everyone who is grouped with the user.
 
 Minimum level: 19
+
+See also: PSIONICS, PSIONIC ARMOR, MINDBAR
 ~
 
 15 PYROTECHNICS~
@@ -123,6 +145,8 @@ when this skill is used.  The more powerful the light source, the
 more damage is inflicted on the victim.
 
 Minimum level: 20
+
+See also: PSIONICS, FIRE SPELLS, HARMFUL
 ~
 
 15 SHIFT~
@@ -133,6 +157,8 @@ psionicist.  If the target character has nosummon on, he or she cannot be
 shifted.
 
 Minimum level: 25
+
+See also: PSIONICS, ASTRAL WALK, SUMMON
 ~
 
 15 TELEKINESIS TK~
@@ -143,6 +169,8 @@ Telekinesis is the psionic skill that allows the user to translocate
 items scattered about the world to his or her possession.
 
 Minimum level: 21
+
+See also: PSIONICS, DISARM, STEAL
 ~
 
 15 TORMENT~
@@ -152,6 +180,8 @@ This skill causes the victim to re-live painful experiences from the past,
 causing real damage to the victim.
 
 Minimum level: 18
+
+See also: PSIONICS, EGO WHIP, CONFUSE
 ~
 
 15 TRANSFUSION~
@@ -160,6 +190,8 @@ Syntax: transfusion <character>
 This skill transfers physical stamina from the user to the target character.
 
 Minimum level: 28
+
+See also: PSIONICS, AID, FAST HEALING
 ~
 
 -1 EXOTIC WEAPONS WEAPON WEAPONSMASTER AXE DAGGER FLAIL MACE POLEARM SPEAR SWORD
@@ -216,6 +248,8 @@ Trainer: Quickfingers (?/T)
 
 Monks and necromancers cannot learn aggrostab, since they cannot join the
 thieves' guild.
+
+See also: BACKSTAB, HIDE, STEALTH
 ~
 
 -1 ARCHERY BOW SHOOT~
@@ -238,6 +272,8 @@ Mage:5  Cleric:5  Thief:3  Warrior:2  Monk:3
 Necromancers cannot learn archery.
 
 Trainer: Rakar (all)
+
+See also: DUAL WIELD, SECOND ATTACK, FATALITY
 ~
 
 -1 BACKSTAB~
@@ -327,6 +363,8 @@ and amazing agility to use this martial art.
 
 Number of trains: 3
 Trainer: Master of Movement (Monk)
+
+See also: FISTS OF FURY, CRANE DANCE, IRON SKIN
 ~
 
 0 BREW 'HERBAL BREWING~
@@ -339,6 +377,8 @@ only monks may brew and may not do so until they have reached level 12.
 
 Number of trains: 3
 Trainer: Master of Movement (Monk)
+
+See also: CONCOCT, SCRIBE, LORE
 ~
 
 0 CONCOCT~
@@ -357,6 +397,8 @@ Mages and Clerics require 4 trains to learn concoct.  Necromancers require
 5 trains.
 
 Trainer:  Flame (M/M), Tempora (C/C), Marilith (Necro)
+
+See also: BREW, SCRIBE, LORE
 ~
 
 0 'CRANE DANCE'~
@@ -371,6 +413,8 @@ This skill is exclusively for the use of monks of level 35 and up.
 
 Number of trains: 5
 Trainer: Master of Movement (Monk)
+
+See also: BLINDING FISTS, FISTS OF FURY, IRON SKIN
 
 ~
 
@@ -394,6 +438,8 @@ Monks and necromancers may not gain this skill, since they may not join
 the warrior guild.
 
 Trainer: Breark (?/W)
+
+See also: DODGE, PARRY, FAST HEALING
 ~
 
 25 DESPAIR~
@@ -406,6 +452,8 @@ This skill cannot be activated manually; it fires automatically during
 combat or pursuit.
 
 Number of trains: 1  (available to all classes at level 25)
+
+See also: BERSERK, FATALITY, SECOND ATTACK
 ~
 
 -1 DESTRUCTION~
@@ -416,6 +464,8 @@ level 25.
 
 Number of trains needed: 4
 Trainer: Vladamir (W/W)
+
+See also: BASH, SMITE, DISARM
 ~
 
 -1 DIRT 'DIRT KICKING'~
@@ -520,6 +570,8 @@ Mage:7  Cleric:7  Thief:6  Warrior:3  Monk:5
 Necromancers may not learn enhanced damage.
 
 Trainer:  Dolonar (?/W), Silent Master (monk)
+
+See also: SECOND ATTACK, THIRD ATTACK, FATALITY
 ~
 
 -1 FATALITY~
@@ -543,6 +595,8 @@ mental discipline that is found only in monks of level 30 and above.
 
 Number of trains: 4
 Trainer: Master of Movement (Monk)
+
+See also: BLINDING FISTS, CRANE DANCE, STUNNING BLOW
 ~
 
 -1 'HAND TO HAND'~
@@ -564,6 +618,8 @@ learning hand to hand combat.
 
 Trainer: Breark (W/W, T/W), Silent Master (monk), mud school adept (practice
          only, no gain)
+
+See also: DUAL WIELD, SECOND ATTACK, BASH
 ~
 
 0 'IRON SKIN'~
@@ -576,6 +632,8 @@ steel.  Monks must reach level 22 in order to use iron skin.
 
 Number of trains: 2
 Trainer: Master of Movement (monk)
+
+See also: BLINDING FISTS, FISTS OF FURY, CRANE DANCE
 ~
 
 -1 KICK~
@@ -610,6 +668,8 @@ concentration needed to levitate.
 
 Number of trains: 2
 Trainer: Master of Movement (Monk)
+
+See also: FLY, TRANSPORT
 ~
 
 0 'NERVE DAMAGE'~
@@ -622,6 +682,8 @@ damage.  Monks receive this skill for free but must study until level 15
 before they can use it.
 
 Trainer: Silent Master (Monk)
+
+See also: STUNNING BLOW, BLINDING FISTS
 ~
 
 -1 PARRY~
@@ -670,6 +732,8 @@ Mage:5 Cleric:5  Thief:5  Warrior:free
 Monks and Necromancers may not learn rescue.
 
 Trainer: Dolonar (?/W), Kalak (W/?), mud school adept (practice only, no gain)
+
+See also: BASH, SHIELD BLOCK
 ~
 
 -1 'SLEIGHT OF HAND'~
@@ -689,6 +753,8 @@ Monks and necromancers cannot learn this skill, as they cannot join the
 thief guild.
 
 Trainer: Suma (?/T)
+
+See also: STEAL, PEEK, PICK LOCK
 ~
 -1 STEAL~
 Syntax: steal <object> <character>
@@ -737,6 +803,8 @@ increasing their damage roll and may be used starting at level 25.
 
 Number of trains: 3
 Trainer: Silent Master (Monk)
+
+See also: BLINDING FISTS, FISTS OF FURY, IRON SKIN
 ~
 
 0 'STUNNING BLOW'~
@@ -749,6 +817,8 @@ above.
 
 Number of trains: 3
 Trainer: Silent Master (Monk)
+
+See also: NERVE DAMAGE, BASH, KICK
 ~
 
 -1 TRIP~
@@ -868,6 +938,8 @@ Monks and Necromancers cannot learn haggle, since they cannot join the
 monk guild.
 
 Trainer: Suma (?/T)
+
+See also: SLEIGHT OF HAND, SKILLS
 ~
 
 -1 HIDE SNEAK~
@@ -922,6 +994,8 @@ Monks and necromancers may not gain this skill, as they cannot join the
 thief guild.
 
 Trainer: Warder (?/T)
+
+See also: PEEK, SEARCH, STEALTH
 ~
 
 -1 LORE~
@@ -1025,6 +1099,8 @@ Monks and necromancers cannot learn pick lock, since they cannot join the
 thieves' guild.
 
 Trainer: Picky (?/T), Tia (T/?), mud school adept (practice only, no gain)
+
+See also: SLEIGHT OF HAND, STEAL, SNEAK
 ~
 
 0 RIDE RIDING MOUNT DISMOUNT~
@@ -1043,6 +1119,8 @@ Mage:6  Cleric:6  Thief:5  Warrior:4  Monk:5  Necromancer:6
 
 Number of trains required is 3 for all classes.
 Trainer: Seraloi (any)
+
+See also: LEVITATE, FLY
 ~
 
 0 SCRIBE~
@@ -1056,6 +1134,8 @@ Only full mages above level 20 may use this skill.
 
 Number of trains: 4
 Trainer: Drixt (M/M)
+
+See also: BREW, CONCOCT, LORE
 ~
 
 -1 SEARCH~
@@ -1095,6 +1175,8 @@ Mage:16  Cleric:15  Thief:13  Warrior:10  Monk:11  Necromancer:16
 Number of trains required is 1 for W/* and Monk and 2 for all others.
 
 Trainer: Rakar (any), Jazair (any)
+
+See also: BASH, TRIP, KICK
 ~
 
 -1 SMITE~
@@ -1107,6 +1189,8 @@ in the process.
 
 Number of trains needed: 2
 Trainer: Vladamir (W/W)
+
+See also: BASH, DESTRUCTION, DISARM
 ~
 
 
@@ -1164,6 +1248,8 @@ Members of the mage guild receive this skill for free.
 Trainer: Dawn (?/M - practice only, no gain), Diemos (?/M), Gioli (M/?),
          Silius (?/C), Soul Trapper (necro), mud school adept (practice
          only, no gain)
+
+See also: LORE, BREW, CONCOCT
 ~
 
 0 RECALL /~
@@ -1184,6 +1270,8 @@ RECALL doesn't work in certain god-forsaken rooms.  Characters afflicted by a
 curse may not recall at all.
 
 Trainer: mud school adept, Fingers (any)
+
+See also: WORD OF RECALL, SUMMON, TRANSPORT
 ~
 
 -1 'SHIELD BLOCK'~
