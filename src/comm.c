@@ -1048,16 +1048,11 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
     int iStart;
 
     /* Hold horses if pending command already. */
-    if ( d->incomm[0] == '\0' )
-        iStart = 0;
-    else if ( d->inbuf[0] == '\0' )
-        iStart = 0;
-    else
-    {
-        if ( d->outtop > 0 )
-            return TRUE;
-        iStart = strlen_to_int( d->inbuf );
-    }
+    if ( d->incomm[0] != '\0' )
+        return TRUE;
+
+    /* Append to any partial input already accumulated in inbuf. */
+    iStart = strlen_to_int( d->inbuf );
 
     if ( iStart >= MAX_INPUT_LENGTH - 2 )
     {

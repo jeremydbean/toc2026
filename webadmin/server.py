@@ -189,29 +189,19 @@ except Exception as e:
 
 
 def read_process_health() -> dict[str, bool]:
-    # Check if processes are running by looking at /proc filesystem
-    merc_running = False
-    webadmin_running = False
-    
-    try:
-        # Check /proc for running processes
-        result = subprocess.run(
-            ["sh", "-c", r"cat /proc/*/cmdline 2>/dev/null | tr '\000' '\n'"],
-            capture_output=True,
-            text=True,
-            check=False,
-            timeout=2,
-        )
-        if result.returncode == 0:
-            output = result.stdout.lower()
-            merc_running = "merc" in output
-            webadmin_running = "webadmin.server" in output
-    except Exception:
-        pass
-    
+    # Check if services are reachable by probing their ports (works cross-platform)
+    import socket
+
+    def _port_open(port: int) -> bool:
+        try:
+            with socket.create_connection(("127.0.0.1", port), timeout=1):
+                return True
+        except OSError:
+            return False
+
     return {
-        "merc": merc_running,
-        "webadmin": webadmin_running,
+        "merc": _port_open(MUD_PORT),
+        "webadmin": _port_open(int(os.getenv("WEB_ADMIN_PORT", 9001))),
     }
 
 
