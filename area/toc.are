@@ -51,6 +51,7 @@ Typing ignore by itself will show you a list of the people that you are ignoring
 Putting someone on your ignore list will prevent them from telling to you.  Typing
 ignore nobody will clear your ignore list.
 
+See also: TELL, CHANNELS
 ~
 
 
@@ -150,6 +151,21 @@ provocation) like Dwarven Day Care.
 
 There's a Newbie Train, up from the Entrance to Mud School, which can
 take you to these places and more.
+
+
+Dresden Services
+================
+
+The starting city of Dresden has several useful services:
+
+Bank        - Deposit and withdraw gold.  Your balance earns 1% interest
+              per real day and survives death and remort.  See help BANK.
+
+Casino      - The Lucky Dragon Casino in Market Plaza offers slots and
+              card games for those feeling lucky.  See help CASINO.
+
+Psionics    - Some characters can develop psionic abilities.  The PSIONIC
+              channel alerts you to nearby mental activity.  See help PSIONICS.
 
 
 General MUD Terms
@@ -568,9 +584,9 @@ the afflicted being that on the Full Moon, the diseased person turns into
 a Were-Creature. The most commonly known form is the Were-Wolf. The
 disease is transmitted by being bitten by a being that is already
 afflicted with Lycanthropy. The first Were-Creature was probably created
-by some kind of Curse long ago, and has mutated into it's current form.
-Were-Creatures typically carry 1-4 items, depending on there size, and
-have no worries about death. There is currently know known cure for this
+by some kind of Curse long ago, and has mutated into its current form.
+Were-Creatures typically carry 1-4 items, depending on their size, and
+have no worries about death. There is currently no known cure for this
 disease.
 ~
 
@@ -591,7 +607,7 @@ See also: WEB, DIKU, MERC, ROM
 
 -1 TAX TAXES~
 Providing subissue equipment to newbies, training guards to protect the city
-of Dresden against killers and thieves, and furnishing the mayors office
+of Dresden against killers and thieves, and furnishing the mayor's office
 in high style are all expensive.  In order to keep everything running
 smoothly, ToC taxes the wealthiest citizens.  This tax amounts to 50% of
 all gold above 1 million coins, each and every time you log on.

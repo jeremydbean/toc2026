@@ -3296,7 +3296,7 @@ Syntax: explode container <container name>
         explode room
 
 This command will scatter mobs in rooms, or items in containers in your
-inventory all over the MUD. It's main use is to simplify placing quest
+inventory all over the MUD. Its main use is to simplify placing quest
 oriented stuff into the game. Item 26 is a generic item with a no_locate
 flag on it that can be used as a quest item.
 ~

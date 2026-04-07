@@ -174,7 +174,11 @@ Mage:25  Cleric:24  Thief:32  Warrior:28  Monk: N/A   Necromancer:N/A
 62 'CHANGE SEX'~
 Syntax: cast 'change sex' <victim>
 
-This spell changes the sex of the victim (temporarily).
+Change sex alters the gender of the victim for a duration based on the
+caster's level (approximately 2 ticks per level).  The victim may resist
+the spell with a saving throw.  The effect is purely cosmetic and wears
+off naturally.  A second application has no effect while the first is
+still active.
 ~
 
 0 'CHARM PERSON'~
@@ -200,7 +204,7 @@ Syntax: cast 'icicle' <victim>
 
 These spells inflict cold damage on the victim. Cone of cold shoots out a cone
 of frozen air that can strike more than one victim, or none at all, depending
-on if the victim makes his saving throw or not.  Blizzard is an area affect
+on if the victim makes his saving throw or not.  Blizzard is an area-effect
 spell that hits all attackable characters in the room.  Icicle is a single
 attack.
 
@@ -980,8 +984,11 @@ Mage:20   Cleric:18   Thief:24   Warrior:22   Monk: N/A   Necromancer:20
 
 62 'RESTORE MANA'~
 Syntax: c 'restore mana'
+       c 'restore mana' <target>
 
-This spell restores the mana of the spellcaster.
+Restore mana replenishes a small amount of mana (5 to 50 points) for the
+caster or a chosen target.  It can be cast at any time while standing and
+is useful for topping off mana between fights.
 ~
 
 0 'SKELETAL HANDS'~
