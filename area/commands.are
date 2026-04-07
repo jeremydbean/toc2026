@@ -4060,7 +4060,7 @@ Syntax: petrify <player> [duration]
 PETRIFY applies a stone affect to a player, completely blocking all commands
 for the duration (in ticks).  Default duration is 50 ticks.  Petrified
 players cannot act at all.  Toggling petrify on an already-petrified player
-removes the effect immediately.  The affect is saved across logins.
+removes the effect immediately.  The effect is saved across logins.
 
 See also: FREEZE, STASIS
 ~

@@ -297,7 +297,7 @@ See also: HEROQUEST, COMMANDMENTS, JOBS
 When you embark on a hero quest, the following commands can be used
 at the Questmaster:
 
-heroquest: This wil start the quest.
+heroquest: This will start the quest.
 listclue: This will relist the clue you are on.
 retrieved <item name>: This will make the Questmaster tell you if the clue
 		       is correct or not. If it is, the next clue will be
@@ -542,7 +542,7 @@ Date           Name(s)            Offense                Punishment
         abilities and when they were granted.
 
 - Smite now no longer destroys your weapon randomly, but has the same
-        chance to drop it, and set it's durability to 1.  Repair it at any
+        chance to drop it, and set its durability to 1.  Repair it at any
         weaponsmith before using it, or risk breaking it forever!
 
 - Blinding Fists damage has been increased significantly.
@@ -752,6 +752,8 @@ those being:
 
 Monk       : Human and Dwarf only
 Necromancer: Human and elf only
+
+See also: CLASS, REMORT, STATS
 ~
 
 -1 DWARF DWARVES~
@@ -1143,7 +1145,7 @@ Trainers are Silius for ?/C (including C/C)
 
 0 DOORBASH~
 Using this skill will allow you to bash open closed and locked doors.
-The mimimum level to use this skill is 10.
+The minimum level to use this skill is 10.
 
 Number of trains needed: 1
 Trainer: Vladamir (W/W)
@@ -1190,6 +1192,8 @@ retrieve objects from a player's corpse.  However, the noloot flag may be
 turned off to allow others to retrieve items from your corpse; read help
 NOLOOT for more information.  In addition, the corpses of those who have a
 KILLER, THIEF or TRAITOR flag may be looted by anyone.
+
+See also: NOLOOT, KILLER, THIEF, TRAITOR
 ~
 
 0 EXPERIENCE LEVEL XP~
@@ -1213,6 +1217,8 @@ The experience you get from a kill depends on several things: how many players
 are in your group; your level versus the level of the monster; your alignment
 versus the monster's alignment; how many of this monster have been killed
 lately; your age in hours; and some random variation.
+
+See also: SCORE, LEVEL, DYING
 ~
 
 -1 GUILDS~
@@ -1266,6 +1272,7 @@ After you have joined a guild, you can type gainlist to show where you
 can gain which skill/group. You can then also type teachlist where you
 can learn your new skills/spells.
 
+See also: GAINLIST, TEACHLIST, SKILLS, SPELLS, MULTICLASS
 ~
 
 
