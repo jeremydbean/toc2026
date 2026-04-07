@@ -24,6 +24,8 @@ And: Mads Haar and Stephan Dahl for additional locations.
 Developed at: DIKU -- The Department of Computer Science
                       at the University of Copenhagen.
 
+See also: MERC, ROM
+
 ~
 
 
@@ -52,6 +54,8 @@ Thanks to ...
       and hours of enjoyment.
 
 Share and enjoy.
+
+See also: DIKU, ROM
 ~
 
 
@@ -89,6 +93,8 @@ For more help, type 'help <topic>' for any command, skill, or spell.
 Type 'help KEYWORD' to see a list of all of the available topics.
 Also help on: DAMAGE DYING EXPERIENCE NEWS STORY TICK WIZLIST GUILDS
 If you are new here, we recommend that you read BEGINNERS.
+
+See also: COMMANDS, WIZHELP, BEGINNERS
 ~
 
 
@@ -105,6 +111,8 @@ verb used in the damage message.  Listed from least damage to most damage:
                                                 >>> ANNIHILATE <<<
 
     At the far reaches of damaging power: "do UNSPEAKABLE things to"
+
+See also: COMBAT, SKILLS, SPELLS
 ~
 
 
