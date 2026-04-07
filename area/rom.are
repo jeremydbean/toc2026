@@ -3,6 +3,8 @@
 -1 WIZLIST~
 .
 We don't have a spiffy wizlist yet. Check back later :)
+
+See also: IMMORTAL, LEVELS, WHO
 ~
 
 
@@ -43,10 +45,17 @@ whistle      wiggle      wince        wink          wonder      worry
 worship      yawn        yeehaw       yodel
 
 (list and many of the socials written by Sara)
+
+See also: EMOTE, CHANNELS, SAY
 ~
 
 -1 'NEWBIE INFO'~
-hi.
+New players should begin with HELP BEGINNERS and HELP RULES.
+
+If you are unsure where to train, use HELP GAIN and ask on INFO for
+a trainer for your class or guild path.
+
+See also: BEGINNERS, RULES, GAIN
 ~
 
 -1 GREETING~
@@ -99,6 +108,8 @@ Welcome Immortal!
 * Enter Valhalla up from the Temple Altar (where the healer is)
 
 [Hit Return to continue]
+
+See also: MOTD, JOBS, COMMANDMENTS
 ~
 
 51 JOBS~
@@ -136,6 +147,8 @@ purge, freeze, and ban (but be careful with these commands!)  Gods are expected
 to help make the mud run more smoothly, power trips are strictly verbotten.
 
 Not fufilling the roles of your office can result in demotion or deletion.
+
+See also: COMMANDMENTS, QUESTS, WIZHELP
 ~
 
 
@@ -179,6 +192,7 @@ Not fufilling the roles of your office can result in demotion or deletion.
 10) Trusted mortals:  Do not use your god powers to help your mortal
     character.  If you do, your trust will be taken away.
 
+See also: JOBS, IMOTD, WIZHELP
 ~
 -1 PUFF~
 No plain fanfold paper could hold that fractal Puff --
@@ -200,6 +214,8 @@ The operator killed Puff's job -- he didn't seem to care.
 A gloom fell on the hackers; it seemed to be the end,
 But Puff trapped the exception, and grew from naught again!
                 (chorus)
+
+See also: ROM, STORY, CREDITS
 ~
 
 -1 RULES~
@@ -221,13 +237,18 @@ This are the rules of TOC.  For other matters, use commom sense.
 
 * cheating will not be tolerated.  This includes accepting favors from gods
   and exploiting bugs. If you find a bug, report it, then do not use it.
+
+See also: BEGINNERS, PKILL, THIEF
 ~
 
 
 
 -1 NEWS~
+Use HELP NEWS for current updates and patch notes.
 
-This space intentionally left blank.
+This ROM legacy entry is kept for compatibility with older help sets.
+
+See also: CHANGES, MOTD, IMOTD
 ~
 -1 STORY~
 
@@ -238,6 +259,8 @@ an end, and in a mighty flash of write heads, ROM I was taken from this earth.
 Now there is ROM II, the mightier of the two, and many mortals eager to
 perish in the quest for glory. In further development, ROM II was released,
 and here we are.
+
+See also: DIKU, MERC, ROM
 ~
 
 0 DELETE~
@@ -246,6 +269,8 @@ available for use.  This command must be typed twice to delete a character,
 and you cannot be forced to delete.  Typing delete with an argument will
 return your character to 'safe' status if you change your mind after the
 first delete.
+
+See also: QUIT, SAVE, PASSWORD
 ~
 
 0 HEALER~
@@ -253,12 +278,16 @@ The healer decided to grab a quick buck, and now charges for his heals.  Some
 services are still free to players of level 10 or below, however.  To see
 a full listing of the healer's services, type 'heal' at his residence. To
 receive healing, bring plenty of momey, and type 'heal spell'.
+
+See also: HEAL, SHOPS, REPAIR
 ~
 
 -1 TAX TAXES~
 TOC charges a tax on the wealthiest players, to help pay for all the sub
 issue equipment and guard death benefits.  This tax amounts to 50% of all
 gold above 250,000 coins, each and every time you log on.
+
+See also: BANK, GOLD, BALANCE
 ~
 
 -1 GAIN~
@@ -273,6 +302,8 @@ gain convert: turns 10 practices into one training session
 Gain uses training sessions, not practices. (see 'help train')
 Gained skills and groups do NOT increase your experience per level or total
 number of creation points.
+
+See also: TRAIN, PRACTICE, GUILDS
 ~
 
 51 CLONE~
@@ -287,6 +318,8 @@ the same room as you, or in your possession.  Strung and set information is
 preserved by clone, as well as any spell effects and container contents or
 mobile inventory, except for items which are too high for you to clone.
 Strung extended descriptions on objects are not kept, however.
+
+See also: MLOAD, OLOAD, PURGE
 ~
 
 
@@ -295,6 +328,8 @@ The skills and spells commands are used to display your character's list
 of available skills (or spells, as the case may be).  They are listed in
 order of level, with mana cost (for spells) or percentage (for skills)
 listed where applicable.
+
+See also: PRACTICE, GAIN, SPELLGROUP
 ~
 
 
@@ -302,6 +337,8 @@ listed where applicable.
 The outfit command, usable by levels 5 and below, equips your character with
 a new set of sub issue gear (banner, weapon, helmet, shield, and vest),
 courtesy of the Mayor's warehouses.  Only empty equipment slots are affected.
+
+See also: EQUIPMENT, WEAR, BEGINNERS
 ~
 
 0 AUTO AUTOLIST AUTOLOOT AUTOGOLD AUTOSAC AUTOEXIT AUTOASSIST AUTOSPLIT~
@@ -318,16 +355,24 @@ autoassit : makes you help group members in combat
 
 Typing a command sets the action (except for autolist), typing it again removes
 it.
+
+See also: CONFIG, SPLIT, SACRIFICE
 ~
 
 -1 COUNT~
 The count command displays the number of people (that you can see) logged
 into the mud.  It also displays the highest number observed that day, if
 it is higher.
+
+See also: WHO, USERS, SCORE
 ~
 
 -1 CHANGES~
-Changes from stock ROM code should be listed here.
+Use HELP NEWS for current gameplay and system changes.
+
+This ROM legacy entry is preserved for compatibility.
+
+See also: NEWS, MOTD, IMOTD
 ~
 
 -1 GATE~
@@ -339,6 +384,8 @@ monster or players s more than 3 levels higher than you can not be gated to at
 all.  God rooms, private rooms, and no recall rooms cannot be gated to, and
 no recall rooms cannot be gated out of.  Finally, any god or hero is also
 immune to gate, as well as in player who has no summon set.
+
+See also: SUMMON, RECALL, IPORTAL
 ~
 
 -1 IPORTAL~
@@ -347,6 +394,8 @@ Syntax: iportal <target> [timer] [description]
 Creates a portal to the target (room vnum or character name).
 Timer is in ticks (0 for permanent until reboot).
 Description is optional (defaults to "(Shimmering) ...").
+
+See also: GATE, TRANSFER, RECALL
 ~
 
 0 $~
