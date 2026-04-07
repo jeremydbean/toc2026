@@ -263,6 +263,8 @@ Monks and necromancers cannot use backstab.
 
 Trainer:  Ni Hi the Ninja Master (?/T), Tia (T/?)
            and mud school adept (practice only, no gain)
+
+See also: HIDE SNEAK, STEALTH, FATALITY
 ~
 
 -1 BASH~
@@ -287,6 +289,8 @@ of their class.
 
 Trainer: Geko (?/W), Jazair (any with skill but no gain),
          Master of Movement (Monk)
+
+See also: KICK, TRIP, SHOVE
 ~
 
 -1 BERSERK~
@@ -306,10 +310,12 @@ class and is:
 
 Mage:7  Cleric:6  Thief:6  Warrior:4
 
-Monks and necromancers may not learn bash since they cannot join the
+Monks and necromancers may not learn berserk since they cannot join the
 warrior guild.
 
 Trainer: Geko (?/W)
+
+See also: ENHANCED DAMAGE, BASH
 ~
 
 0 'BLINDING FISTS'~
@@ -432,6 +438,8 @@ Mage:5  Cleric:5  Thief:4  Warrior:4
 Necromancers cannot use dirt kicking.
 
 Trainer: Geko (?/W), Ni Hi (?/T), Silent Master (monk)
+
+See also: BASH, KICK
 ~
 
 -1 DISARM~
@@ -453,6 +461,8 @@ Mage:5  Cleric:5  Thief:5  Warrior:free  Monk:5
 Necromancers cannot learn to disarm.
 
 Trainer: Kalak (W/?), Dolonar (?/W), Master of Movement (Monk)
+
+See also: BASH, SHOVE
 ~
 
 -1 DODGE~
@@ -475,6 +485,7 @@ Trainer: Geko (?/W), Dolonar (?/W), Suma (?/T), Qualo (?/C), Diemos (?/M),
           mud school adept (practice only, no gain), Silent Master (monk)
           Necromantic Knight (necro),
 
+See also: PARRY, SHIELD BLOCK
 ~
 
 -1 'DUAL WIELD'~
@@ -487,6 +498,8 @@ dual wield is 17.
 
 Number of trains: 3
 Trainer: Mizry (T/T)
+
+See also: SECOND ATTACK, THIRD ATTACK
 ~
 
 -1 'ENHANCED DAMAGE'~
@@ -517,6 +530,8 @@ have the knowledge of anatomy and the dexterity to cause fatality.
 
 Number of trains: 5
 Trainer: Mizry (T/T)
+
+See also: BACKSTAB, DESTRUCTION
 ~
 
 0 'FISTS OF FURY'~
@@ -581,6 +596,8 @@ Necromancers cannot learn to kick.
 
 Trainer: Breark (*/W), Kalak (W/?), Silent Master (Monk),
          mud school adept (practice only, no gain),
+
+See also: BASH, TRIP, DIRT KICKING
 ~
 
 0 'LEVITATE'~
@@ -626,6 +643,8 @@ Necromancers cannot learn to parry.
 
 Trainer: Dolonar (?/W), Stout(?/T), Kalak (W/?), Silent Master (Monk),
          mud school adept (practice only, no gain)
+
+See also: DODGE, SHIELD BLOCK
 ~
 
 -1 RESCUE~
@@ -691,6 +710,8 @@ learn to steal.
 
 Trainer: Quickfingers (?/T), Tia (T/?), mud school adept (practice only,
          no gain)
+
+See also: PEEK, HIDE SNEAK, SLEIGHT OF HAND
 ~
 
 -1 STEALTH~
@@ -703,6 +724,8 @@ Minimum level is 18 to use stealth.
 
 Number of trains required: 5
 Trainer: Mizry (T/T)
+
+See also: HIDE SNEAK, BACKSTAB
 ~
 
 0 'STEEL FIST'~
@@ -750,6 +773,8 @@ Necromancers cannot learn to trip.
 
 Trainer: Ni Hi (?/T), Silent Master (Monk), mud school adept (practice only,
          no gain)
+
+See also: BASH, KICK
 ~
 
 -1 'SECOND ATTACK'~
@@ -772,6 +797,8 @@ Necromancers cannot learn second attack.
 Trainer: Breark (?/W), Ni Hi (?/T), Dominic (C/C), Fredar (?/C),
          Kilar (?/M), Master of Movement (Monk), Flame the fire
          Mage (M/M)
+
+See also: THIRD ATTACK, DUAL WIELD
 ~
 
 -1 'THIRD ATTACK'~
@@ -782,6 +809,8 @@ third attack does NOT assure three attacks per round.  Only full warriors
 
 Number of trains: 4
 Trainer: Vladamir (W/W)
+
+See also: SECOND ATTACK, DUAL WIELD
 ~
 
 -1 TRACK~
@@ -794,6 +823,8 @@ the track skill is 25.
 
 Number of trains required: 1
 Trainer: Mizry, the Assassin
+
+See also: DANGER SENSE, SEARCH
 ~
 
 -1 'FAST HEALING'~
@@ -813,6 +844,8 @@ Mage:6  Thief:4  Warrior:3  Monk:4
 Necromancers and Clerics cannot learn fast healing.
 
 Trainer: Breark (?/W), Silent Master (Monk)
+
+See also: MEDITATION
 ~
 
 -1 HAGGLE HAGGLING~
@@ -865,6 +898,8 @@ Trainer: Warder (?/T), Tia (T/?), Fingers (practice only, no gain), mud
          school adept (practice only, no gain)
 
 Monks and Necromancers cannot learn to hide or sneak.
+
+See also: BACKSTAB, STEAL, PEEK, STEALTH
 ~
 
 0 'LISTEN AT DOOR'~
@@ -910,6 +945,8 @@ Monks and necromancers may not learn lore, since they may not join the
 thieves' guild.
 
 Trainer: Stout (?/T)
+
+See also: IDENTIFY, DETECT MAGIC
 ~
 
 -1 MEDITATION~
@@ -928,6 +965,8 @@ Mage:4  Cleric:4  Thief:5  Warrior:6  Monk:free  Necro:4
 
 Trainer: Silius (?/C), Diemos (?/M), Necromantic Knight (necro),
          Master of Movement (Monk)
+
+See also: FAST HEALING
 ~
 
 -1 PEEK~
@@ -948,6 +987,8 @@ Monks and necromancers cannot learn to peek, since they cannot join the
 thieves' guild.
 
 Trainer: Quickfingers (?/T)
+
+See also: STEAL, HIDE SNEAK, SEARCH
 ~
 
 25 PHASE~
@@ -1033,6 +1074,8 @@ and necromancers cannot learn search as they cannot join the thieves' guild.
 
 Trainer: Quickfingers (?/T), Tia (T/?), mud school adept (practice only,
          no gain)
+
+See also: PEEK, DETECT HIDDEN
 ~
 
 -1 SHOVE~
@@ -1160,6 +1203,8 @@ class and is:
 Mage:5  Cleric:3  Thief:5  Warrior:free
 
 Trainer: Kalak (W/?), Geko (?/W), mud school adept (practice only, no gain)
+
+See also: PARRY, DODGE
 ~
 
 

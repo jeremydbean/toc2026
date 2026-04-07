@@ -90,6 +90,8 @@ Shroud is limited to Necromancers, with a minimum level of 26.
 
 For major globe, minimum level depends on your primary class and is:
 Mage:30   Cleric:30   Thief:35   Warrior:40   Monk: N/A   Necromancer:32
+
+See also: PROTECTION EVIL, ENCHANT ARMOR, PROTECTIVE
 ~
 0 BEWITCH~
 Syntax: cast bewitch <item>
@@ -108,6 +110,8 @@ target character by an amount depending on the level of the spell caster.
 
 Minimum level depends on your primary class and is:
 Mage:9  Cleric:6  Thief:12   Warrior:11   Monk: N/A   Necromancer:N/A
+
+See also: CURSE, KNOW ALIGNMENT, BENEDICTIONS
 ~
 
 0 BLINDNESS~
@@ -169,6 +173,8 @@ Mage:18  Cleric:14  Thief:22  Warrior:19  Monk: N/A   Necromancer:N/A
 
 For harm, minimum level depends on your primary class and is:
 Mage:25  Cleric:24  Thief:32  Warrior:28  Monk: N/A   Necromancer:N/A
+
+See also: CURE LIGHT, CURE CRITICAL, HARMFUL
 ~
 
 62 'CHANGE SEX'~
@@ -325,6 +331,8 @@ For heal, minimum level depends on your primary class and is:
 Mage:25  Cleric:23   Thief:32   Warrior:30   Monk: N/A   Necromancer:N/A
 
 Mass healing is for C/C only with a minimum level of 38.
+
+See also: AID, CAUSE LIGHT, HEALING
 ~
 
 0 'CURE DISEASE'~
@@ -366,6 +374,8 @@ unable to RECALL.
 
 Minimum level depends on your primary class and is:
 Mage:21  Cleric:19  Thief:25  Warrior:23  Monk: N/A  Necromancer:N/A
+
+See also: BLESS, DISPEL MAGIC, MALADICTIONS
 ~
 
 0 'DEMONFIRE'~
@@ -390,6 +400,8 @@ reveal a characteristic red aura.
 
 Minimum level depends on your primary class and is:
 Mage:10   Cleric:10  Thief:13   Warrior:13   Monk: N/A   Necromancer:N/A
+
+See also: DETECT GOOD, DETECT MAGIC, KNOW ALIGNMENT
 ~
 
 0 'DETECT GOOD'~
@@ -400,6 +412,8 @@ a characteristic silver aura.
 
 Minimum level depends on your primary class and is:
 Mage:10  Cleric:10  Thief:13   Warrior:13   Monk: N/A   Necromancer:N/A
+
+See also: DETECT EVIL, DETECT MAGIC, KNOW ALIGNMENT
 ~
 
 0 'DETECT STEALTH'~
@@ -409,6 +423,8 @@ This spell enables the caster to detect stealthy creatures.
 
 Minimum level depends on your primary class and is:
 Mage:9  Cleric:9  Thief:14   Warrior:14   Monk: N/A   Necromancer:N/A
+
+See also: DETECT HIDDEN, DETECT INVIS, DETECTION
 ~
 
 0 'DETECT HIDDEN'~
@@ -418,6 +434,8 @@ This spell enables the caster to detect hidden creatures.
 
 Minimum level depends on your primary class and is:
 Mage:9  Cleric:9  Thief:14   Warrior:14   Monk: N/A   Necromancer:N/A
+
+See also: DETECT STEALTH, DETECT INVIS, DETECTION
 ~
 
 0 'DETECT INVIS'~
@@ -427,6 +445,8 @@ This spell enables the caster to detect invisible objects and characters.
 
 Minimum level depends on your primary class and is:
 Mage:8  Cleric:7  Thief:11   Warrior:11   Monk: N/A   Necromancer:N/A
+
+See also: DETECT HIDDEN, DETECT STEALTH, INVIS
 ~
 
 0 'DETECT MAGIC'~
@@ -447,6 +467,8 @@ This spell detects the presence of poison in food or drink.
 
 Minimum level depends on your primary class and is:
 Mage:12   Cleric:7   Thief:9   Warrior:15   Monk: N/A   Necromancer:N/A
+
+See also: CURE POISON, DETECT MAGIC
 ~
 
 0 'DETECT TRAPS'~
@@ -454,6 +476,8 @@ This spell will reveal any traps that might be in the room, whether they are
 on an object or on a door.
 
 This spell is available only to mages and clerics.  Minimum level is 11.
+
+See also: DETECT HIDDEN, DETECT MAGIC, DETECTION
 ~
 
 0 'DISPEL EVIL'~
@@ -463,6 +487,8 @@ This spell invokes the wrath of Mota on an evil victim.
 
 Minimum level depends on your primary class and is:
 Mage:23   Cleric:23   Thief:29   Warrior:29   Monk: N/A   Necromancer:N/A
+
+See also: DISPEL GOOD, DISPEL MAGIC, ALIGNMENT
 ~
 
 0 'DISPEL GOOD'~
@@ -472,6 +498,8 @@ This spell invokes the wrath of the demons from hell on a victim.
 
 Minimum level depends on your primary class and is:
 Mage:23   Cleric:23   Thief:29   Warrior:29   Monk: N/A   Necromancer:
+
+See also: DISPEL EVIL, DISPEL MAGIC, ALIGNMENT
 ~
 
 0 'DISPEL MAGIC' CANCELLATION 'NEUTRALITY FIELD'~
@@ -499,6 +527,8 @@ For cancellation, minimum level depends on your primary class and is:
 Mage:18  Cleric:16  Thief:22  Warrior:20  Monk: N/A   Necromancer:N/A
 
 Neutrality field is only available to Necromancer at level 40 and higher.
+
+See also: DISPEL EVIL, DISPEL GOOD, REMOVE CURSE
 ~
 
 0 EARTHQUAKE~

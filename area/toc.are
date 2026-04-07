@@ -315,6 +315,8 @@ is a SERIOUS offense, and will be enforced. If you have another Player Char
 and are caught discussing the clues/items that your Hero PC encountered, or
 are caught using that PC to communicate in any way for your Hero PC, both
 that PC and your Hero will SUFFER SEVERE PENALTIES, NO EXCEPTIONS!!!
+
+See also: HERO, HEROLEVELS, QUESTS
 ~
 
 51 HEROLEVELS~
@@ -843,6 +845,8 @@ not available to members of your class at mortal levels.  This is done
 for future flexibility.  The helps on the individual spells tell you
 what level they are for each class.  If the spell is not available to
 mortals, it is listed as N/A.
+
+See also: GAIN, GAINLIST, GROUPS
 ~
 
 -1 ATTACK~
@@ -1164,6 +1168,8 @@ verb used in the damage message.  Listed from least damage to most damage:
                                                 >>> ANNIHILATE <<<
 
     At the far reaches of damaging power: "do UNSPEAKABLE things to"
+
+See also: COMBAT, ATTACK, WIMPY
 ~
 
 0 DYING~
@@ -1288,6 +1294,8 @@ amount varies randomly from 40 seconds to 80 seconds.
 Area resetting happens roughly every 3 minutes if no one is in the area, less
 often (15 minutes) if some one is.  Also note that objects lying on the ground
 will not be regenerated if anyone is in the area when it resets.
+
+See also: FAST HEALING, MEDITATION, RESTING
 ~
 
 -1 KEYWORDS~
@@ -1407,6 +1415,8 @@ who              whois                wield              wimpy
 wind spells      wizlist              word of recall     worth
 xp               yell                 zap
 animate parts    shield block         track
+
+See also: HELP, COMMANDS
 ~
 
 -1 PROMPT~
@@ -1436,6 +1446,7 @@ PROMPT <%*> where the %* are the various variables you may set yourself.
 Example:  PROMPT <%hhp %mm %vmv>
         Will set your prompt to "<10hp 100m 100mv>"
 
+See also: SCORE, AFFECTS
 ~
 
 0$~
