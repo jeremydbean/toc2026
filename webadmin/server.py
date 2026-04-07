@@ -1507,8 +1507,8 @@ async def index() -> str:
 
             // Handle input
             term.onData(data => {
-                // Normalize all line endings to \n
-                let sendData = data.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+                // Normalize all line endings to \\n
+                let sendData = data.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n');
                 
                 if (localEcho) {
                     term.write(data);
@@ -1923,10 +1923,10 @@ async def index() -> str:
             data.forEach(r => {
                 rows.push(hdrs.map(h => {
                     const v = String(r[h] ?? '');
-                    return (v.includes(',') || v.includes('"') || v.includes('\n')) ? '"' + v.replace(/"/g, '""') + '"' : v;
+                    return (v.includes(',') || v.includes('"') || v.includes('\\n')) ? '"' + v.replace(/"/g, '""') + '"' : v;
                 }).join(','));
             });
-            const blob = new Blob([rows.join('\n')], {type: 'text/csv'});
+            const blob = new Blob([rows.join('\\n')], {type: 'text/csv'});
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = `toc_${currentDb}_${new Date().toISOString().slice(0,10)}.csv`;
