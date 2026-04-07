@@ -2814,9 +2814,9 @@ Revised 7/19/96 - Soul.
 
 00  limbo     20  catacomb     40  moria        60  haon       80  mega1
 01  smurf     21  hood         41  moria        61  haon       81  -
-02  -         22  draconia     42  dresden      62  -          82  -
+02  -         22  draconia     42  dresden      62  arac       82  -
 03  plains    23  mahntor      43  dresden      63  arachnos   83  marsh
-04  -         24  dresden      44  dresden      64  -          84  -
+04  -         24  dresden      44  dresden      64  sea        84  -
 05  -         25  dresden      45  dresden      65  dwarven    85  -
 06  ofcol     26  arena        46  dresden      66  daycare    86  -
 07  camelot   27  horde        47  dresden      67  northsea   87  kerofk
@@ -2828,7 +2828,7 @@ Revised 7/19/96 - Soul.
 13  htower    33  -            53  mirror       73  sewer      93  galaxy
 14  htower    34  -            54  -            74  sewer      94  mobfact
 15  gnome     35  midennir     55  ofcol        75  astral     95  newthalo
-16  wyvern    36  -            56  tarin        76  ultima     96  newthalo
+16  wyvern    36  dkforest     56  tarin        76  ultima     96  newthalo
 17  wyvern    37  school       57  zoo          77  ultima     97  newthalo
 18  haven     38  ratslair     58  mid_ruin     78  valley     98  -
 19  rand      39  dresden      59  abyss        79  redferne   99  valhalla
@@ -2836,15 +2836,19 @@ Revised 7/19/96 - Soul.
 132 solace    133 solace       134 hell         135 hell       140 whouse
 150 campus    160 pirate       170 AG           171 highland4  172 highland
 173 highland  174 istari       175 consortium   176 dominion   177 landoz
-178 landoz    180 gelidia      190 -            191 rome       201 prison
+178 landoz    180 thcult       182 gelidia      190 acult       191 rome
 203 quest1    210 -	       215 -            220 -          225 -
 230 gcult     240 faerie       241 coven        242 crypt      243 chess
-244 parinn    245 -            246 -            247 -          248 -
+244 parinn    245 abyss        246 -            247 -          248 -
 250 mountain  251 mushroom     252 underdrk     253 Nethril    254 Nethril
 255 Nethril   280 pyramid      281 dkrealm      282 dkrealm    283 dkrealm
 290 Korzath   291 korzath      292 korzath2     293 world      294 world
 295 lud       296 reserved     297 reserved     298 reserved   299 reserved
 300 abbeyrd   301 abbeyrd      302 finalj       303 finalj
+
+Areas added after original table:
+102 tritia    111 ringfort     154 forsaken     155 sinistra    200 hcult
+201 prison    205 emerald      260 scult        267 ashen       270 trcult
 
 See also: VNUM, MEMORY
 ~
