@@ -1507,6 +1507,8 @@ See also: INVENTORY, COMPACT, BRIEF
 Syntax: commands
 
 COMMANDS shows you all the commands in the game.
+
+See also: KEYWORDS, HELP, SOCIALS
 ~
 
 0 COMPACT~
@@ -2280,6 +2282,8 @@ NOTES
   All affects, immunities, resistances, and flags are cleared on remort.
   Your pk_state is reset; the title is set to match your new class.
   Remort history is saved; HELP SCORE shows your remort count.
+
+See also: HERO, HEROLEVELS, GAIN, GROUPS
 ~
 
 0 AFFECT~
@@ -2579,6 +2583,8 @@ who elf cleric  lists all elven clerics
 who <castle>    lists all members of a specified castle
 
 Classes and races may be abbreviated.
+
+See also: WHERE, FINGER, SCORE
 ~
 
 0 WIMPY~
@@ -2625,6 +2631,8 @@ are usually abbreviated as N, S, E, W, U and D.   The diagonal directions
 may be abbreviated as NE, NW, SE and SW.  If you are using a mud client to
 access the game, you may need to alter some of the files to allow for the
 abbreviated directions.
+
+See also: EXITS, OPEN, MOVEMENT
 ~
 
 0 BUG IDEA TYPO~
@@ -2762,6 +2770,8 @@ CC is used to send  message only to members of your castle.  The dash, '-'
 is a synonym for CC.
 
 Type a channel name without a message to turn that channel off.
+
+See also: CHANNELS, GOSSIP, TELL
 ~
 
 51 HERO =~
@@ -2904,6 +2914,8 @@ specific character.
 
 The third version will gather all objects that have a corresponding
 vnum.
+
+See also: SPLIT, GIVE, GET
 ~
 
 69 REBOOT SHUTDOWN~

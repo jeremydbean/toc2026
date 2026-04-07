@@ -12,6 +12,8 @@ possible for when the spell expires.
 
 Minimum level depends on your primary class and is:
 Mage:15  Cleric:13  Thief:18  Warrior:20  Monk: N/A   Necromancer:N/A
+
+See also: CURE LIGHT, CURE CRITICAL, HEALING
 ~
 
 0 'ACID BLAST' 'Color SPRAY' 'MAGIC MISSILE' 'SHOCK SPHERE'~
@@ -34,6 +36,8 @@ Mage:16  Cleric:18  Thief:20  Warrior:22   Monk: N/A   Necromancer:N/A
 
 For magic missile, minimum level depends on your primary class and is:
 Mage:1  Cleric:3  Thief:4  Warrior:5  Monk: N/A   Necromancer:N/A
+
+See also: FIRE SPELLS, COLD SPELLS, HARMFUL
 ~
 
 0 'GHOSTLY PRESENCE'~
@@ -200,6 +204,8 @@ will gain a killer flag for it.
 
 Minimum level depends on your primary class and is:
 Mage:20  Cleric:22  Thief:24  Warrior:26  Monk: N/A   Necromancer:N/A
+
+See also: SUMMON, GATE, BEWITCH
 ~
 
 0 'COLD SPELLS' 'CHILL TOUCH' 'CONE OF COLD' BLIZZARD ICICLE~
@@ -228,6 +234,7 @@ Blizzard is available only to M/M at level 37 or higher.
 For icicle, minimum level depends on your primary class and is:
 Mage:24  Cleric:16  Thief:27  Warrior:27  Monk: N/A   Necromancer:21
 
+See also: FIRE SPELLS, ELECTRIC SPELLS, ELEMENTAL
 ~
 
 0 'CONTINUAL LIGHT'~
@@ -305,6 +312,8 @@ This spell cures blindness in one so unfortunate.
 
 Minimum level depends on your primary class and is:
 Mage:8  Cleric:6  Thief:12  Warrior:10  Monk: N/A   Necromancer:N/A
+
+See also: BLINDNESS, DETECT MAGIC, CURATIVE
 ~
 
 0 'CURE LIGHT' 'CURE SERIOUS' 'CURE CRITICAL' HEALSPELL 'MASS HEALING'~
@@ -343,6 +352,8 @@ some chance, affected by a dreadful disease.
 
 Minimum level depends on your primary class and is:
 Mage:15  Cleric:13  Thief:18   Warrior:16  Monk: N/A  Necromancer:N/A
+
+See also: PLAGUE, CURE POISON, CURATIVE
 ~
 
 0 'CURE NIGHTMARE'~
@@ -354,6 +365,8 @@ letting them sleep peacefully once more.
 This spell has a minimum level of 20 and is not available to monks and
 necromancers as they cannot join the clerics' guild and, therefore, cannot
 gain the curative spellgroup.
+
+See also: NIGHTMARE, CURATIVE
 ~
 
 0 'CURE POISON'~
@@ -363,6 +376,8 @@ This spell cures poison in one so unfortunate as to have been poisoned..
 
 Minimum level depends on your primary class and is:
 Mage:15  Cleric:14  Thief:17  Warrior:16  Monk: N/A   Necromancer:N/A
+
+See also: POISON, CURE DISEASE, CURATIVE
 ~
 
 0 CURSE~
@@ -540,6 +555,8 @@ you as a result!
 
 Minimum level depends on your primary class and is:
 Mage:14   Cleric:14   Thief:17   Warrior:17   Monk: N/A   Necromancer:N/A
+
+See also: MALADICTIONS, ELEMENTAL, HARMFUL
 ~
 
 0 'ELECTRIC SPELLS' 'SHOCKING GRASP' 'LIGHTNING BOLT' 'CHAIN LIGHTNING'
@@ -569,6 +586,8 @@ Chain lightning is only usable by mages of level 38 and above.
 
 For call lightning, minimum level depends on your primary class and is:
 Mage:26  Cleric:26  Thief:30  Warrior:30   Monk: N/A   Necromancer:N/A
+
+See also: FIRE SPELLS, COLD SPELLS, ELEMENTAL
 ~
 
 0 EMBALM~
@@ -620,6 +639,8 @@ For energy drain, minimum level depends on your primary class and is:
 Mage:35 Cleric:36   Thief:40   Warrior:40   Monk: N/A   Necromancer:28
 
 Vampiric touch is limited to necromancers, with a minimum level of 15.
+
+See also: MALADICTIONS, LIFE-UNDEATH
 ~
 
 0 'EVIL EYE'~
@@ -640,6 +661,8 @@ start of a faerie fire spell will be 10 points reduction in AC. For each
 
 Minimum level depends on your primary class and is:
 Mage:5  Cleric:6  Thief:8  Warrior:8  Monk: N/A   Necromancer:N/A
+
+See also: FAERIE FOG, DETECT INVIS, INVIS
 ~
 
 0 'FAERIE FOG'~
@@ -650,6 +673,8 @@ the same room as you.
 
 Minimum level depends on your primary class and is:
 Mage:14   Cleric:16   Thief:20   Warrior:18  Monk: N/A   Necromancer:N/A
+
+See also: FAERIE FIRE, DETECT STEALTH, DETECT HIDDEN
 ~
 
 0 'FIRE SPELLS' 'BURNING HANDS' 'FIREBALL' 'METEOR SWARM' 'FLAMESTRIKE'~
@@ -675,6 +700,8 @@ Meteor swarm is limited to M/M and has a minimum level of 46.
 
 For flamestrike, minimum level depends on your primary class and is:
 Mage:23  Cleric:20  Thief:27  Warrior:25   Monk: N/A   Necromancer:N/A
+
+See also: COLD SPELLS, ELECTRIC SPELLS, ELEMENTAL
 ~
 
 0 FIRESHIELD FROSTSHIELD 'DEATHSHROUD'~
@@ -695,6 +722,8 @@ be cold.
 Fire and frost shield are for M/M only with a minimum level of 19.
 
 Death shroud is for necromancers only and has a minimum level of 22.
+
+See also: ARMOR, PROTECTIVE, ENHANCEMENT
 ~
 
 0 FLY~
@@ -704,6 +733,8 @@ This spell enables the target character to fly.
 
 Minimum level depends on your primary class and is:
 Mage:10  Cleric:11  Thief:12   Warrior:13   Monk: N/A   Necromancer:13
+
+See also: LEVITATE, PASS DOOR, TRANSPORT
 ~
 
 0 'FORCE SWORD'~
@@ -725,6 +756,8 @@ hitroll and damage.  It also increases (makes worse) their armor class.
 
 Minimum level depends on your primary class and is:
 Mage:N/A  Cleric:27   Thief:N/A   Warrior:N/A   Monk: N/A   Necromancer:N/A
+
+See also: HASTE, BERSERK, ENHANCEMENT
 ~
 
 0 GATE 'EARTH TRAVEL'~
@@ -738,6 +771,8 @@ For gate, minimum level depends on your primary class and is:
 Mage:20   Cleric:19   Thief:22   Warrior:23   Monk: N/A   Necromancer:N/A
 
 Earth travel is for necromancers only, with a minimum level of 25.
+
+See also: PORTAL, SUMMON, TRANSPORT
 ~
 
 0 'GIANT STRENGTH'~
@@ -747,6 +782,8 @@ This spell increases the strength of the target character.
 
 Minimum level depends on your primary class and is:
 Mage:11   Cleric:13   Thief:14   Warrior:15   Monk: N/A   Necromancer:N/A
+
+See also: WEAKEN, HASTE, ENHANCEMENT
 ~
 
 0 HASTE~
@@ -757,6 +794,8 @@ also slows healing and mana regeneration.
 
 Minimum level depends on your primary class and is:
 Mage:21  Cleric:25  Thief:27  Warrior:29  Monk: N/A   Necromancer:N/A
+
+See also: SLOW, FRENZY, ENHANCEMENT
 ~
 
 0 'DIVINE INTERVENTION'~
@@ -827,6 +866,8 @@ This spell enables the target character to see in the dark.
 
 Minimum level depends on your primary class and is:
 Mage:8  Cleric:10   Thief:13   Warrior:16   Monk: N/A   Necromancer:9
+
+See also: DETECT HIDDEN, CONTINUAL LIGHT, DETECTION
 ~
 
 0 INVIS 'MASS INVIS'~
@@ -843,6 +884,8 @@ For invis, minimum level depends on your primary class and is:
 Mage:5   Cleric:7  Thief:9  Warrior:11   Monk: N/A   Necromancer:N/A
 
 Mass invis is for M/M only, with a minimum level of 22.
+
+See also: DETECT INVIS, FAERIE FOG, FAERIE FIRE
 ~
 
 0 'KNOW ALIGNMENT'~
@@ -852,6 +895,8 @@ This spell reveals the alignment of the target character.
 
 Minimum level depends on your primary class and is:
 Mage:12  Cleric:9  Thief:20   Warrior:15   Monk: N/A   Necromancer:N/A
+
+See also: DETECT EVIL, DETECT GOOD, BLESS, CURSE
 ~
 
 0 'LIGHT SPELLS' 'MOONBEAM' 'SUNRAY'~
@@ -868,6 +913,8 @@ MOONBEAM is only for necromancers with a minimum level of 27.
 
 For SUNRAY, minimum level depends on your primary class and is:
 Mage:31   Cleric:31   Thief:46   Warrior:49   Monk: N/A   Necromancer:N/A
+
+See also: CONTINUAL LIGHT, ELEMENTAL, HARMFUL
 ~
 
 0 'LOCATE OBJECT'~
@@ -877,6 +924,8 @@ This spell reveals the location of all objects with the given name.
 
 Minimum level depends on your primary class and is:
 Mage:9  Cleric:13  Thief:15   Warrior:18   Monk: N/A   Necromancer:N/A
+
+See also: IDENTIFY, DETECT MAGIC, DETECTION
 ~
 
 0 'MANA CONVERT'~
@@ -918,6 +967,8 @@ The plague is highly contagious.
 
 Minimum level depends on your primary class and is:
 Mage:23   Cleric:17   Thief:29   Warrior:26   Monk: N/A   Necromancer:N/A
+
+See also: CURE DISEASE, POISON, MALADICTIONS
 ~
 
 0 POISON~
@@ -928,6 +979,8 @@ victim's regeneration rate.
 
 Minimum level depends on your primary class and is:
 Mage:17   Cleric:12   Thief:13  Warrior:21   Monk: N/A   Necromancer:N/A
+
+See also: CURE POISON, DETECT POISON, PLAGUE
 ~
 
 0 'PROTECTION EVIL' SANCTUARY 'MASS SANCTUARY'~
@@ -953,6 +1006,8 @@ For sanctuary, minimum level depends on your primary class and is:
 Mage:33   Cleric:21   Thief:45   Warrior:40   Monk: N/A   Necromancer:37
 
 Mass sanctuary is for C/C only with a minimum level of 35.
+
+See also: ARMOR, BLESS, PROTECTIVE
 ~
 
 0 'PORTAL'~
@@ -972,6 +1027,8 @@ portals (including those created using the spell) are called just 'portal',
 but there may be portals of other names in certain rooms..
 
 Portal is limited to M/M (minimum level 29) and C/C (minimum level 30).
+
+See also: GATE, TELEPORT, RECALL, TRANSPORT
 ~
 
 0 'POWER GLOVES'~
@@ -1018,6 +1075,8 @@ cursed object, the curse may be removed from it.
 
 Minimum level depends on your primary class and is:
 Mage:20   Cleric:18   Thief:24   Warrior:22   Monk: N/A   Necromancer:20
+
+See also: CURSE, DISPEL MAGIC, CURATIVE
 ~
 
 62 'RESTORE MANA'~
@@ -1096,6 +1155,8 @@ uses up all its magic when a single PC enters it.
 
 Minimum level depends on your primary class and is:
 Mage:24   Cleric:12   Thief:29   Warrior:26   Monk: N/A   Necromancer:N/A
+
+See also: GATE, CHARM PERSON, TRANSPORT
 ~
 
 0 TELEPORT~
@@ -1165,6 +1226,8 @@ For water burst, minimum level depends on your primary class and is:
 Mage:19  Cleric:19  Thief:24  Warrior:24  Monk: N/A   Necromancer:N/A
 
 Geyser is only available to M/M and C/C, with a minimum level of 43.
+
+See also: FIRE SPELLS, COLD SPELLS, ELEMENTAL
 ~
 
 0 WEAKEN~
@@ -1176,6 +1239,8 @@ the level of the spellcaster.
 Minimum level depends on your primary class and is:
 
 Mage:11   Cleric:14   Thief:16   Warrior:17   Monk: N/A   Necromancer:N/A
+
+See also: GIANT STRENGTH, CURSE, MALADICTIONS
 ~
 
 0 'WIND SPELLS' 'DUST DEVIL' 'VORTEX'~
@@ -1190,6 +1255,8 @@ Mage:15   Cleric:17   Thief:21   Warrior:21   Monk: N/A   Necromancer:19
 
 For vortex, minimum level depends on your primary class and is:
 Mage:40   Cleric:42   Thief:48   Warrior:48   Monk: N/A   Necromancer:44
+
+See also: ELECTRIC SPELLS, ELEMENTAL, HARMFUL
 ~
 
 0 'WORD OF RECALL'~
@@ -1199,6 +1266,7 @@ This spell duplicates the built-in RECALL ability.  It is available to
 full clerics (C/C) of level 28 or higher, but is not generally considered
 useful since the recall skill is free and costs no mana.
 
+See also: RECALL, TELEPORT, PORTAL, TRANSPORT
 ~
 
 0 'DRACONIAN SPELLS' 'ACID BREATH' 'FIRE BREATH' 'FROST BREATH' 'GAS BREATH'
@@ -1221,6 +1289,8 @@ fire breath - 39
 frost breath - 34
 gas breath - 44
 lightning breath - 36
+
+See also: FIRE SPELLS, COLD SPELLS, ELEMENTAL
 ~
 
 0 $~
