@@ -1695,6 +1695,27 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	else
 	{
 	    /* New player */
+	    /* Prevent new characters from taking an NPC's name. */
+	    {
+		extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
+		MOB_INDEX_DATA *pMobIndex;
+		int iHash;
+		for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
+		{
+		    for ( pMobIndex = mob_index_hash[iHash];
+			  pMobIndex != NULL;
+			  pMobIndex = pMobIndex->next )
+		    {
+			if ( is_name( argument, pMobIndex->player_name ) )
+			{
+			    write_to_buffer( d, "That name belongs to an NPC, try another.\n\rName: ", 0 );
+			    free_char( d->character );
+			    d->character = NULL;
+			    return;
+			}
+		    }
+		}
+	    }
 	    if (newlock)
 	    {
                 write_to_buffer( d, "The game is newlocked.\n\r", 0 );
@@ -2278,26 +2299,6 @@ bool check_parse_name( char *name )
             if (cleancaps || ((size_t) total_caps > name_len / 2 && name_len < 3))
                 return FALSE;
         }
-    }
-
-    /*
-     * Prevent players from naming themselves after mobs.
-     */
-    {
-	extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
-	MOB_INDEX_DATA *pMobIndex;
-	int iHash;
-
-	for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
-	{
-	    for ( pMobIndex  = mob_index_hash[iHash];
-		  pMobIndex != NULL;
-		  pMobIndex  = pMobIndex->next )
-	    {
-		if ( is_name( name, pMobIndex->player_name ) )
-		    return FALSE;
-	    }
-	}
     }
 
     return TRUE;
