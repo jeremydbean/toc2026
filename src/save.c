@@ -96,14 +96,14 @@ void player_snapshot( const char *name )
     int  c;
 
     /* Source: live player file */
-    snprintf( src, sizeof(src), "%s%s", PLAYER_DIR, capitalize( (char *)name ) );
+    snprintf( src, sizeof(src), "%s%s", PLAYER_DIR, capitalize( name ) );
 
     /* Does the file exist yet? If not, nothing to snapshot */
     if ( ( in = fopen( src, "rb" ) ) == NULL )
         return;
 
     /* Ensure per-player version directory exists */
-    snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capitalize( (char *)name ) );
+    snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capitalize( name ) );
 
     /* Throttle: skip if a snapshot was written within PLAYER_SNAPSHOT_MIN_INTERVAL.
      * This prevents routine autosaves from creating a snapshot every 30 minutes;
@@ -115,7 +115,7 @@ void player_snapshot( const char *name )
         {
             char newest[64] = "";
             struct dirent *ent;
-            const char *cap = capitalize( (char *)name );
+            const char *cap = capitalize( name );
             size_t nlen = strlen( cap );
             while ( (ent = readdir( dp )) != NULL )
             {
@@ -153,7 +153,7 @@ void player_snapshot( const char *name )
     /* Build timestamped destination filename */
     tm_now = localtime( &now );
     strftime( ts, sizeof(ts), "%Y%m%d_%H%M%S", tm_now );
-    snprintf( dest, sizeof(dest), "%s/%s.%s", vdir, capitalize( (char *)name ), ts );
+    snprintf( dest, sizeof(dest), "%s/%s.%s", vdir, capitalize( name ), ts );
 
     /* Don't create a duplicate if snapshot already exists for this second */
     {
@@ -189,7 +189,7 @@ void player_snapshot( const char *name )
             char  entries[VER_SCAN_MAX][64];
             int   count = 0;
             struct dirent *ent;
-            const char *cap_name = capitalize( (char *)name );
+            const char *cap_name = capitalize( name );
             size_t nlen = strlen( cap_name );
 
             while ( ( ent = readdir( dp ) ) != NULL && count < VER_SCAN_MAX )

@@ -3,3 +3,14 @@
 merc
 *.ini
 *.driveupload
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Runtime / generated files
+backups/
+area/webadmin.queue
+area/*.dmp
+log/
