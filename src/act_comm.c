@@ -849,6 +849,18 @@ void do_tell( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
 
+    /* If the sender is AFK, sending a tell means they're back — auto-clear */
+    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_AFK) )
+    {
+        send_to_char( "AFK mode removed.\n\r", ch );
+        REMOVE_BIT(ch->act, PLR_AFK);
+        if ( ch->pcdata->afk_msg != NULL )
+        {
+            free_string( ch->pcdata->afk_msg );
+            ch->pcdata->afk_msg = NULL;
+        }
+    }
+
     if ( IS_SET(ch->comm, COMM_NOTELL) || IS_SET(ch->comm,COMM_DEAF))
     {
 	send_to_char( "Your message didn't get through.\n\r", ch );
@@ -931,6 +943,18 @@ void do_reply( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     char buf[MAX_STRING_LENGTH];
 
+    /* If the sender is AFK, replying means they're back — auto-clear */
+    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_AFK) )
+    {
+        send_to_char( "AFK mode removed.\n\r", ch );
+        REMOVE_BIT(ch->act, PLR_AFK);
+        if ( ch->pcdata->afk_msg != NULL )
+        {
+            free_string( ch->pcdata->afk_msg );
+            ch->pcdata->afk_msg = NULL;
+        }
+    }
+
     if ( IS_SET(ch->comm, COMM_NOTELL) || IS_SET(ch->comm, COMM_DEAF) )
     {
 	send_to_char( "Your message didn't get through.\n\r", ch );
@@ -962,7 +986,7 @@ void do_reply( CHAR_DATA *ch, char *argument )
     }
 
     if ((IS_SET(victim->comm,COMM_QUIET) || IS_SET(victim->comm,COMM_DEAF))
-    &&  !IS_IMMORTAL(ch) && !IS_IMMORTAL(victim))
+    &&  !IS_IMMORTAL(ch))
     {
         act( "$E is not receiving tells.", ch, 0, victim, TO_CHAR );
         return;

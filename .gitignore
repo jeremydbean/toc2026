@@ -14,3 +14,4 @@ backups/
 area/webadmin.queue
 area/*.dmp
 log/
+player/versions/

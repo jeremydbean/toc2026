@@ -1426,11 +1426,17 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	    if (IS_SET(ch->act,PLR_AUTOGOLD) &&
 		corpse && corpse->contains  && /* exists and not empty */
 		!IS_SET(ch->act,PLR_AUTOLOOT))
-             { do_get(ch, "gold corpse");
-                do_get(ch, "platinum corpse");
-                do_get(ch, "silver corpse");
-                do_get(ch, "copper corpse");
-             }
+            {
+                /* Only take ITEM_MONEY objects — keyword matching
+                 * (e.g. "gold corpse") would also grab gold weapons, rings, etc. */
+                OBJ_DATA *coin, *coin_next;
+                for (coin = corpse->contains; coin != NULL; coin = coin_next)
+                {
+                    coin_next = coin->next_content;
+                    if (coin->item_type == ITEM_MONEY)
+                        do_get(ch, coin->name);
+                }
+            }
 
 	    if ( IS_SET(ch->act, PLR_AUTOSAC) ) {
 	      if ( IS_SET(ch->act,PLR_AUTOLOOT) && corpse && corpse->contains)
@@ -4859,11 +4865,17 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	    if (IS_SET(ch->act,PLR_AUTOGOLD) &&
 		corpse && corpse->contains  && /* exists and not empty */
 		!IS_SET(ch->act,PLR_AUTOLOOT))
-	      { do_get(ch, "gold corpse");
-                do_get(ch, "platinum corpse");
-                do_get(ch, "silver corpse");
-                do_get(ch, "copper corpse");
-             }
+            {
+                /* Only take ITEM_MONEY objects — keyword matching
+                 * (e.g. "gold corpse") would also grab gold weapons, rings, etc. */
+                OBJ_DATA *coin, *coin_next;
+                for (coin = corpse->contains; coin != NULL; coin = coin_next)
+                {
+                    coin_next = coin->next_content;
+                    if (coin->item_type == ITEM_MONEY)
+                        do_get(ch, coin->name);
+                }
+            }
 
 	    if ( IS_SET(ch->act, PLR_AUTOSAC) ) {
 	      if ( IS_SET(ch->act,PLR_AUTOLOOT) && corpse && corpse->contains)
