@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 
 from fastapi import Depends, FastAPI, Header, HTTPException, WebSocket, WebSocketDisconnect, Query
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse
 from pydantic import BaseModel
 import asyncio
 
@@ -52,6 +52,12 @@ class QueueWriter:
 
 
 queue_writer: Optional[QueueWriter] = None
+
+
+def require_queue_writer() -> QueueWriter:
+    if queue_writer is None:
+        raise HTTPException(status_code=503, detail="Queue writer is not ready")
+    return queue_writer
 
 
 from contextlib import asynccontextmanager
@@ -754,7 +760,7 @@ async def index() -> str:
                                 <div>Status: <span id="connection-status" class="text-gray-500">Not connected</span></div>
                                 <div class="flex items-center gap-3">
                                     <span>Host: localhost:9000</span>
-                                    <button onclick="if(ws) ws.close();" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors"><i class="fas fa-plug mr-1"></i>Reconnect</button>
+                                    <button onclick="if(ws) ws.close(); connectTerminal();" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors"><i class="fas fa-plug mr-1"></i>Reconnect</button>
                                     <button onclick="termFontSize(-1)" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors" title="Decrease font size"><i class="fas fa-minus"></i></button>
                                     <button onclick="termFontSize(1)" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors" title="Increase font size"><i class="fas fa-plus"></i></button>
                                 </div>
@@ -841,7 +847,7 @@ async def index() -> str:
                     <!-- Advanced Filters (Objects Only) -->
                     <div id="obj-filter-container" class="hidden w-full mb-6">
                         <div class="flex justify-end mb-2">
-                            <button onclick="toggleFilters()" class="px-4 py-2 rounded bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-600 transition-colors flex items-center gap-2">
+                            <button onclick="toggleFilters(this)" class="px-4 py-2 rounded bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-600 transition-colors flex items-center gap-2">
                                 <i class="fa-solid fa-filter"></i> Filters
                             </button>
                         </div>
@@ -948,7 +954,10 @@ async def index() -> str:
                             </div>
 
                             <!-- Apply Button -->
-                            <div class="md:col-span-3 flex justify-end">
+                            <div class="md:col-span-3 flex justify-end gap-2">
+                                <button onclick="resetObjectFilters()" class="px-4 py-2 rounded bg-gray-700 text-gray-200 hover:bg-gray-600 font-bold transition-colors">
+                                    Reset Filters
+                                </button>
                                 <button onclick="loadDb('objects', true)" class="px-6 py-2 rounded bg-blue-600 text-white hover:bg-blue-500 font-bold transition-colors">
                                     Apply Filters
                                 </button>
@@ -1144,13 +1153,13 @@ async def index() -> str:
                             <div class="mt-8 pt-8 border-t border-gray-800">
                                 <h4 class="text-white font-bold mb-4">Quick Actions</h4>
                                 <div class="flex gap-4 flex-wrap">
-                                    <button onclick="action('backup')" class="flex-1 px-4 py-2 rounded bg-blue-900/30 text-blue-400 hover:bg-blue-900/50 border border-blue-900 transition-colors">
+                                    <button onclick="action('backup', this)" class="flex-1 px-4 py-2 rounded bg-blue-900/30 text-blue-400 hover:bg-blue-900/50 border border-blue-900 transition-colors">
                                         <i class="fa-solid fa-save mr-2"></i> Backup
                                     </button>
-                                    <button onclick="action('reload')" class="flex-1 px-4 py-2 rounded bg-green-900/30 text-green-400 hover:bg-green-900/50 border border-green-900 transition-colors">
+                                    <button onclick="action('reload', this)" class="flex-1 px-4 py-2 rounded bg-green-900/30 text-green-400 hover:bg-green-900/50 border border-green-900 transition-colors">
                                         <i class="fa-solid fa-rotate mr-2"></i> Reload Areas
                                     </button>
-                                    <button onclick="action('shutdown')" class="flex-1 px-4 py-2 rounded bg-red-900/30 text-red-400 hover:bg-red-900/50 border border-red-900 transition-colors">
+                                    <button onclick="action('shutdown', this)" class="flex-1 px-4 py-2 rounded bg-red-900/30 text-red-400 hover:bg-red-900/50 border border-red-900 transition-colors">
                                         <i class="fa-solid fa-power-off mr-2"></i> Shutdown
                                     </button>
                                 </div>
@@ -1187,7 +1196,7 @@ async def index() -> str:
                                     onkeydown="if(event.key==='Enter') lookupPlayer()">
                                 <datalist id="pl-datalist"></datalist>
                             </div>
-                            <button onclick="lookupPlayer()" class="px-6 py-2 rounded bg-red-700 hover:bg-red-600 text-white font-bold transition-colors whitespace-nowrap">
+                            <button id="pl-lookup-btn" onclick="lookupPlayer()" class="px-6 py-2 rounded bg-red-700 hover:bg-red-600 text-white font-bold transition-colors whitespace-nowrap">
                                 Look Up
                             </button>
                             <button id="pl-gear-btn" onclick="playerToGear()" class="hidden px-4 py-2 rounded bg-yellow-700 hover:bg-yellow-600 text-black font-bold transition-colors whitespace-nowrap">
@@ -1248,7 +1257,7 @@ async def index() -> str:
                                 onkeydown="if(event.key==='Enter') bgLoadFromPlayer()">
                             <datalist id="bg-player-datalist"></datalist>
                         </div>
-                        <button onclick="bgLoadFromPlayer()" class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white text-sm font-bold transition-colors whitespace-nowrap">
+                        <button id="bg-load-player-btn" onclick="bgLoadFromPlayer()" class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white text-sm font-bold transition-colors whitespace-nowrap">
                             Load Player
                         </button>
                         <div id="bg-player-msg" class="text-xs text-gray-500 self-center"></div>
@@ -1281,7 +1290,7 @@ async def index() -> str:
                                 <label class="block text-sm text-gray-400 mb-1">Max Level</label>
                                 <input type="number" id="bg-level" value="50" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none" onkeydown="if(event.key==='Enter') loadBestGear()">
                             </div>
-                            <button onclick="loadBestGear()" class="px-4 py-2 rounded bg-yellow-600 hover:bg-yellow-500 text-black font-bold transition-colors">
+                            <button id="bg-load-gear-btn" onclick="loadBestGear()" class="px-4 py-2 rounded bg-yellow-600 hover:bg-yellow-500 text-black font-bold transition-colors">
                                 Find Gear
                             </button>
                         </div>
@@ -1663,9 +1672,51 @@ async def index() -> str:
                 document.getElementById('score-modal').classList.add('hidden');
             }
         });
+
+        function isTypingTarget(el) {
+            if (!el) return false;
+            const tag = (el.tagName || '').toLowerCase();
+            return tag === 'input' || tag === 'textarea' || tag === 'select' || el.isContentEditable;
+        }
+
+        // Keyboard shortcuts:
+        // - / focuses DB search
+        // - Cmd/Ctrl+K also focuses DB search
+        document.addEventListener('keydown', function(e) {
+            if (isTypingTarget(e.target)) return;
+
+            if (e.key === '/') {
+                e.preventDefault();
+                showSection('database');
+                const dbSearch = document.getElementById('db-search');
+                if (dbSearch) {
+                    dbSearch.focus();
+                    dbSearch.select();
+                }
+                return;
+            }
+
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                showSection('database');
+                const dbSearch = document.getElementById('db-search');
+                if (dbSearch) {
+                    dbSearch.focus();
+                    dbSearch.select();
+                }
+            }
+        });
         
-        function showSection(id) {
+        function showSection(id, updateHash = true) {
             try {
+                const validSections = ['home', 'play', 'database', 'guide', 'players', 'admin', 'best-gear'];
+                if (!validSections.includes(id)) {
+                    id = 'home';
+                }
+
+                if (id !== 'play') stopTerminal();
+                if (id !== 'admin') stopLogs();
+
                 document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
                 const targetSection = document.getElementById(id + '-section');
                 if(targetSection) {
@@ -1677,6 +1728,7 @@ async def index() -> str:
                 // Update active nav link
                 document.querySelectorAll('.nav-link[data-nav]').forEach(el => {
                     el.classList.remove('text-red-500', 'text-yellow-300');
+                    el.style.fontWeight = 'normal';
                     if (el.dataset.nav === 'best-gear') {
                         el.classList.add('text-yellow-500');
                     } else {
@@ -1705,6 +1757,14 @@ async def index() -> str:
                     refreshLogs();
                     const tokenInput = document.getElementById('admin-token');
                     if(tokenInput) tokenInput.value = localStorage.getItem('toc_admin_token') || '';
+                }
+
+                localStorage.setItem('toc_last_section', id);
+                if (updateHash) {
+                    const targetHash = '#section/' + id;
+                    if (location.hash !== targetHash) {
+                        location.hash = targetHash;
+                    }
                 }
             } catch(e) {
                 console.error("Error in showSection:", e);
@@ -1737,14 +1797,110 @@ async def index() -> str:
             }
         }
 
+        function setButtonLoading(btn, loading, loadingLabel) {
+            if (!btn) return;
+            if (loading) {
+                if (!btn.dataset.origLabel) btn.dataset.origLabel = btn.innerHTML;
+                btn.disabled = true;
+                btn.classList.add('opacity-70', 'cursor-not-allowed');
+                btn.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i>${escHtml(loadingLabel || 'Loading...')}`;
+            } else {
+                btn.disabled = false;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                if (btn.dataset.origLabel) btn.innerHTML = btn.dataset.origLabel;
+            }
+        }
+
         // ============ TERMINAL / WEBSOCKET ============
         let ws = null;
         let term = null;
         let fitAddon = null;
         let termInitialized = false;
+        let termShouldReconnect = false;
+        let localEcho = true;
+
+        function stopTerminal() {
+            termShouldReconnect = false;
+            if (ws) {
+                ws.onclose = null;
+                ws.close();
+                ws = null;
+            }
+            const status = document.getElementById('connection-status');
+            if (status) {
+                status.textContent = 'Disconnected';
+                status.className = 'text-red-500';
+            }
+        }
+
+        function connectTerminal() {
+            if (!term || !termShouldReconnect) return;
+            if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) return;
+
+            const status = document.getElementById('connection-status');
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            ws = new WebSocket(protocol + '//' + window.location.host + '/ws');
+
+            ws.onopen = () => {
+                if (status) {
+                    status.textContent = 'Connected';
+                    status.className = 'text-green-500';
+                }
+                term.writeln('\x1b[32mConnected to server.\x1b[0m');
+            };
+
+            ws.onmessage = (event) => {
+                let data = event.data;
+                const wasEcho = localEcho;
+
+                // Telnet Negotiation for Echo - detect BEFORE stripping
+                // IAC WILL ECHO (255 251 1) -> Server handles echo, turn local echo OFF
+                const iacWillEcho = String.fromCharCode(255, 251, 1);
+                if (data.includes(iacWillEcho)) localEcho = false;
+
+                // IAC WONT ECHO (255 252 1) -> Server won't echo, turn local echo ON
+                const iacWontEcho = String.fromCharCode(255, 252, 1);
+                if (data.includes(iacWontEcho)) localEcho = true;
+
+                // Strip all 3-byte telnet options (IAC+type+option), 2-byte commands,
+                // and lone IAC bytes so control sequences never appear in the terminal.
+                data = data.replace(/\xff[\xfb-\xfe]./gs, '');
+                data = data.replace(/\xff[\xf0-\xfa]/g, '');
+                data = data.replace(/\xff/g, '');
+
+                // When entering password mode, ensure prompt is on its own line
+                if (wasEcho && !localEcho) {
+                    term.write('\\r\\n');
+                }
+
+                term.write(data);
+            };
+
+            ws.onclose = () => {
+                ws = null;
+                if (!termShouldReconnect) return;
+                if (status) {
+                    status.textContent = 'Disconnected';
+                    status.className = 'text-red-500';
+                }
+                term.writeln('\x1b[31mConnection lost. Reconnecting in 3s...\x1b[0m');
+                setTimeout(() => {
+                    if (termShouldReconnect) connectTerminal();
+                }, 3000);
+            };
+
+            ws.onerror = (err) => {
+                console.error('WebSocket error:', err);
+                if (ws) ws.close();
+            };
+        }
 
         function initTerminal() {
-            if(termInitialized) return;
+            termShouldReconnect = true;
+            if(termInitialized) {
+                connectTerminal();
+                return;
+            }
             termInitialized = true;
 
             const container = document.getElementById('terminal-container');
@@ -1772,58 +1928,6 @@ async def index() -> str:
             // Handle resize
             window.addEventListener('resize', () => fitAddon.fit());
 
-            let localEcho = true; // Default to true as most MUDs expect client echo unless negotiated
-
-            function connect() {
-                const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-                ws = new WebSocket(protocol + '//' + window.location.host + '/ws');
-
-                ws.onopen = () => {
-                    status.textContent = 'Connected';
-                    status.className = 'text-green-500';
-                    term.writeln('\x1b[32mConnected to server.\x1b[0m');
-                };
-
-                ws.onmessage = (event) => {
-                    let data = event.data;
-                    const wasEcho = localEcho;
-
-                    // Telnet Negotiation for Echo - detect BEFORE stripping
-                    // IAC WILL ECHO (255 251 1) -> Server handles echo, turn local echo OFF
-                    const iacWillEcho = String.fromCharCode(255, 251, 1);
-                    if (data.includes(iacWillEcho)) localEcho = false;
-
-                    // IAC WONT ECHO (255 252 1) -> Server won't echo, turn local echo ON
-                    const iacWontEcho = String.fromCharCode(255, 252, 1);
-                    if (data.includes(iacWontEcho)) localEcho = true;
-
-                    // Strip all 3-byte telnet options (IAC+type+option), 2-byte commands,
-                    // and lone IAC bytes so control sequences never appear in the terminal.
-                    data = data.replace(/\xff[\xfb-\xfe]./gs, '');
-                    data = data.replace(/\xff[\xf0-\xfa]/g, '');
-                    data = data.replace(/\xff/g, '');
-
-                    // When entering password mode, ensure prompt is on its own line
-                    if (wasEcho && !localEcho) {
-                        term.write('\\r\\n');
-                    }
-
-                    term.write(data);
-                };
-
-                ws.onclose = () => {
-                    status.textContent = 'Disconnected';
-                    status.className = 'text-red-500';
-                    term.writeln('\x1b[31mConnection lost. Reconnecting in 3s...\x1b[0m');
-                    setTimeout(connect, 3000);
-                };
-
-                ws.onerror = (err) => {
-                    console.error('WebSocket error:', err);
-                    ws.close();
-                };
-            }
-
             // Handle input
             term.onData(data => {
                 // Normalize all line endings to \\n before sending to MUD
@@ -1842,7 +1946,7 @@ async def index() -> str:
                 }
             });
 
-            connect();
+            connectTerminal();
         }
 
         // ============ DATABASE ============
@@ -1882,9 +1986,10 @@ async def index() -> str:
             if (src && bg) bg.textContent = src.textContent.trim();
         })();
 
-        function toggleFilters() {
+        function toggleFilters(btnEl) {
             const el = document.getElementById('advanced-filters');
-            const btn = event.currentTarget;
+            const btn = btnEl || (typeof event !== 'undefined' ? event.currentTarget : null);
+            if (!btn) return;
             const isHidden = el.classList.toggle('hidden');
             const icon = btn.querySelector('i');
             if (isHidden) {
@@ -1945,7 +2050,7 @@ async def index() -> str:
                 }
                 renderDb(dbData[type]);
             } catch(e) {
-                content.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500">Error loading data: ${e}</td></tr>`;
+                content.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500">Error loading data: ${escHtml(String(e))}</td></tr>`;
             }
         }
 
@@ -2209,6 +2314,18 @@ async def index() -> str:
             _filterDbTimer = setTimeout(filterDb, 300);
         }
 
+        function resetObjectFilters() {
+            const ids = ['filter-type', 'filter-wear', 'filter-min-level', 'filter-max-level', 'filter-stat'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+            document.querySelectorAll('.filter-flag').forEach(cb => {
+                cb.checked = false;
+            });
+            loadDb('objects', true);
+        }
+
         function filterDb() {
             const q = document.getElementById('db-search').value.toLowerCase().trim();
             if (!q) { renderDb(dbData[currentDb]); return; }
@@ -2258,8 +2375,9 @@ async def index() -> str:
         }
 
         let actionPendingTimers = {};
-        async function action(type) {
-            const btn = event.currentTarget;
+        async function action(type, btnEl) {
+            const btn = btnEl || (typeof event !== 'undefined' ? event.currentTarget : null);
+            if (!btn) return;
             if (btn.dataset.confirmPending === 'true') {
                 // Second click
                 clearTimeout(actionPendingTimers[type]);
@@ -2320,8 +2438,19 @@ async def index() -> str:
         let logWs = null;
         let logTerm = null;
         let logFitAddon = null;
+        let logsShouldReconnect = false;
+
+        function stopLogs() {
+            logsShouldReconnect = false;
+            if (logWs) {
+                logWs.onclose = null;
+                logWs.close();
+                logWs = null;
+            }
+        }
 
         function initLogs() {
+            logsShouldReconnect = true;
             const container = document.getElementById('log-terminal');
             if (!logTerm) {
                 container.innerHTML = ''; // Clear "Loading logs..." text
@@ -2351,12 +2480,17 @@ async def index() -> str:
         }
 
         function connectLogs() {
+            if (!logsShouldReconnect) return;
             if (logWs) {
+                logWs.onclose = null;
                 logWs.close();
+                logWs = null;
             }
 
             const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            logWs = new WebSocket(protocol + '//' + window.location.host + '/ws/logs');
+            const token = localStorage.getItem('toc_admin_token') || '';
+            const tokenQuery = token ? ('?x_admin_token=' + encodeURIComponent(token)) : '';
+            logWs = new WebSocket(protocol + '//' + window.location.host + '/ws/logs' + tokenQuery);
 
             logWs.onopen = () => {
                 logTerm.writeln('\x1b[32mConnected to log stream.\x1b[0m');
@@ -2366,9 +2500,22 @@ async def index() -> str:
                 logTerm.write(event.data);
             };
 
-            logWs.onclose = () => {
+            logWs.onclose = (event) => {
+                logWs = null;
+                if (!logsShouldReconnect) return;
+                if (event.code === 4003) {
+                    logsShouldReconnect = false;
+                    logTerm.writeln('\x1b[31mLog stream forbidden. Set a valid Admin token to view logs.\x1b[0m');
+                    return;
+                }
                 logTerm.writeln('\x1b[31mLog stream disconnected. Reconnecting...\x1b[0m');
-                setTimeout(connectLogs, 3000);
+                setTimeout(() => {
+                    if (logsShouldReconnect) connectLogs();
+                }, 3000);
+            };
+
+            logWs.onerror = () => {
+                logTerm.writeln('\x1b[31mLog stream error.\x1b[0m');
             };
         }
 
@@ -2721,6 +2868,8 @@ async def index() -> str:
         async function lookupPlayer() {
             const name = document.getElementById('pl-search').value.trim();
             if (!name) return;
+            const lookupBtn = document.getElementById('pl-lookup-btn');
+            setButtonLoading(lookupBtn, true, 'Looking up...');
             const errEl = document.getElementById('pl-error');
             errEl.classList.add('hidden');
             document.getElementById('pl-profile').classList.add('hidden');
@@ -2740,6 +2889,8 @@ async def index() -> str:
             } catch(e) {
                 errEl.textContent = 'Error: ' + e.message;
                 errEl.classList.remove('hidden');
+            } finally {
+                setButtonLoading(lookupBtn, false);
             }
         }
 
@@ -2874,6 +3025,8 @@ async def index() -> str:
         async function bgLoadFromPlayer() {
             const name = document.getElementById('bg-player-name').value.trim();
             if (!name) return;
+            const loadPlayerBtn = document.getElementById('bg-load-player-btn');
+            setButtonLoading(loadPlayerBtn, true, 'Loading...');
             const msg = document.getElementById('bg-player-msg');
             msg.textContent = 'Loading...';
             try {
@@ -2887,10 +3040,14 @@ async def index() -> str:
                 loadBestGear();
             } catch(e) {
                 msg.textContent = 'Error: ' + e.message;
+            } finally {
+                setButtonLoading(loadPlayerBtn, false);
             }
         }
 
         async function loadBestGear() {
+            const loadGearBtn = document.getElementById('bg-load-gear-btn');
+            setButtonLoading(loadGearBtn, true, 'Finding...');
             const cls = document.getElementById('bg-class').value;
             const race = document.getElementById('bg-race').value;
             const level = document.getElementById('bg-level').value;
@@ -2949,7 +3106,10 @@ async def index() -> str:
                 container.innerHTML = html || '<div class="text-center text-gray-500 py-12">No gear found matching criteria</div>';
                 
             } catch(e) {
-                container.innerHTML = `<div class="text-center text-red-500 py-12">Error: ${e.message}</div>`;
+                const errMsg = (e && e.message) ? e.message : String(e);
+                container.innerHTML = `<div class="text-center text-red-500 py-12">Error: ${escHtml(errMsg)}</div>`;
+            } finally {
+                setButtonLoading(loadGearBtn, false);
             }
         }
 
@@ -3242,13 +3402,18 @@ async def index() -> str:
             const m = location.hash.match(/^#(mob|room|obj|section)\\/(.+)/);
             if (!m) return;
             const [, type, val] = m;
-            if (type === 'section') { showSection(val); return; }
+            if (type === 'section') { showSection(val, false); return; }
             if (type === 'mob') showMobDetail(parseInt(val));
             else if (type === 'room') showRoomDetail(parseInt(val));
             else if (type === 'obj') showObjDetail(parseInt(val));
         }
         window.addEventListener('hashchange', parseHash);
-        if (location.hash) parseHash();
+        if (location.hash) {
+            parseHash();
+        } else {
+            const savedSection = localStorage.getItem('toc_last_section') || 'home';
+            showSection(savedSection, false);
+        }
     </script>
 </body>
 </html>
@@ -3262,24 +3427,31 @@ async def health() -> dict[str, bool | str]:
 
 
 @app.get("/api/logs")
-async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> HTMLResponse:
+async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> PlainTextResponse:
     lines = max(1, min(lines, 5000))  # clamp to prevent resource exhaustion
     if not DEFAULT_LOG.exists():
-        return HTMLResponse("Log file not found.")
+        return PlainTextResponse("Log file not found.", status_code=404)
     
     try:
         # Use tail command for efficiency if available (Linux/Mac)
         if os.name == 'posix':
-            proc = subprocess.Popen(['tail', '-n', str(lines), str(DEFAULT_LOG)], stdout=subprocess.PIPE)
-            output, _ = proc.communicate()
-            return HTMLResponse(output.decode('utf-8', errors='replace'))
+            proc = subprocess.run(
+                ['tail', '-n', str(lines), str(DEFAULT_LOG)],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+            )
+            if proc.returncode != 0:
+                err = proc.stderr.decode('utf-8', errors='replace')
+                return PlainTextResponse(f"Error reading log: {err}", status_code=500)
+            return PlainTextResponse(proc.stdout.decode('utf-8', errors='replace'))
         else:
             # Fallback for Windows or if tail fails
             with open(DEFAULT_LOG, "r", encoding="utf-8", errors="replace") as f:
-                all_lines = f.readlines();
-                return HTMLResponse("".join(all_lines[-lines:]))
+                all_lines = f.readlines()
+                return PlainTextResponse("".join(all_lines[-lines:]))
     except Exception as e:
-        return HTMLResponse(f"Error reading log: {e}")
+        return PlainTextResponse(f"Error reading log: {e}", status_code=500)
 
 @app.websocket("/ws/logs")
 async def websocket_logs(websocket: WebSocket, x_admin_token: str = Query(default="")):
@@ -3329,7 +3501,7 @@ async def send_wizinfo(request: WizinfoRequest, _: None = Depends(verify_token))
     if not request.message.strip():
         raise HTTPException(status_code=400, detail="Message cannot be empty")
     level = request.level if request.level and request.level > 0 else 62
-    queue_writer.append(f"wizinfo|{level}|{request.message.strip()}")
+    require_queue_writer().append(f"wizinfo|{level}|{request.message.strip()}")
     return "queued"
 
 
@@ -3337,19 +3509,19 @@ async def send_wizinfo(request: WizinfoRequest, _: None = Depends(verify_token))
 async def run_command(request: CommandRequest, _: None = Depends(verify_token)) -> str:
     if not request.command.strip():
         raise HTTPException(status_code=400, detail="Command required")
-    queue_writer.append(f"command|{request.command.strip()}")
+    require_queue_writer().append(f"command|{request.command.strip()}")
     return "queued"
 
 
 @app.post("/api/backup")
 async def run_backup(_: None = Depends(verify_token)) -> str:
-    queue_writer.append("backup")
+    require_queue_writer().append("backup")
     return "queued"
 
 
 @app.post("/api/shutdown")
 async def run_shutdown(_: None = Depends(verify_token)) -> str:
-    queue_writer.append("shutdown")
+    require_queue_writer().append("shutdown")
     return "queued"
 
 
@@ -3471,8 +3643,9 @@ async def get_player(name: str) -> Dict[str, Any]:
 
 @app.get("/api/mobs")
 async def get_mobs(limit: int = 10000) -> list:
+    limit = max(1, min(limit, 50000))
     result = []
-    for i, (vnum, mob) in enumerate(parser.mobiles.items()):
+    for i, (vnum, mob) in enumerate(sorted(parser.mobiles.items())):
         if i >= limit:
             break
         result.append({
@@ -3490,8 +3663,9 @@ async def get_mobs(limit: int = 10000) -> list:
 
 @app.get("/api/rooms")
 async def get_rooms(limit: int = 10000) -> list:
+    limit = max(1, min(limit, 50000))
     result = []
-    for i, (vnum, room) in enumerate(parser.rooms.items()):
+    for i, (vnum, room) in enumerate(sorted(parser.rooms.items())):
         if i >= limit:
             break
             
@@ -3585,6 +3759,7 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
     
     room_vnums = {r.vnum for r in area_rooms}
     positions = {}
+    occupied_positions = set()
     visited = set()
     
     # Start BFS from first room
@@ -3592,6 +3767,7 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
     queue = deque()
     start_room = area_rooms[0]
     positions[start_room.vnum] = (0, 0)
+    occupied_positions.add((0, 0))
     visited.add(start_room.vnum)
     queue.append(start_room.vnum)
     
@@ -3612,7 +3788,7 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
                     # Try to place near current room
                     for test_dx, test_dy in [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1)]:
                         test_pos = (current_pos[0] + test_dx, current_pos[1] + test_dy)
-                        if test_pos not in positions.values():
+                        if test_pos not in occupied_positions:
                             dx, dy = test_dx, test_dy
                             break
                 
@@ -3620,7 +3796,7 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
                 
                 # Handle collisions - find nearest free spot
                 attempts = 0
-                while new_pos in positions.values() and attempts < 50:
+                while new_pos in occupied_positions and attempts < 50:
                     # Spiral outward to find free spot
                     attempts += 1
                     spiral_x = (attempts % 7) - 3
@@ -3628,6 +3804,7 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
                     new_pos = (current_pos[0] + dx + spiral_x, current_pos[1] + dy + spiral_y)
                 
                 positions[ex.to_room] = new_pos
+                occupied_positions.add(new_pos)
                 visited.add(ex.to_room)
                 queue.append(ex.to_room)
     
@@ -3636,7 +3813,10 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
     disconnected_x = 0
     for room in area_rooms:
         if room.vnum not in positions:
+            while (disconnected_x, max_y + 2) in occupied_positions:
+                disconnected_x += 1
             positions[room.vnum] = (disconnected_x, max_y + 2)
+            occupied_positions.add((disconnected_x, max_y + 2))
             disconnected_x += 1
     
     # Build result
@@ -3688,10 +3868,11 @@ async def get_objects(
     extra_flags: Optional[str] = None,
     stat_filter: Optional[str] = None
 ) -> list:
+    limit = max(1, min(limit, 50000))
     result = []
     count = 0
     
-    for vnum, obj in parser.objects.items():
+    for vnum, obj in sorted(parser.objects.items()):
         if count >= limit:
             break
             
@@ -3971,6 +4152,7 @@ async def get_best_gear(
     
     if class_name not in CLASS_WEIGHTS:
         raise HTTPException(status_code=400, detail=f"Unknown class: {class_name}")
+    limit = max(1, min(limit, 50))
         
     weights = CLASS_WEIGHTS[class_name]
     race_flag = RACE_FLAGS.get(race_name)
