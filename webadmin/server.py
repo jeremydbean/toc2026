@@ -434,6 +434,8 @@ try:
 except Exception as e:
     print(f"Warning: Failed to parse areas: {e}")
 
+AREA_MAP_CACHE: Dict[str, Dict[str, Any]] = {}
+
 
 def read_process_health() -> dict[str, bool]:
     # Check if services are reachable by probing their ports (works cross-platform)
@@ -1118,7 +1120,7 @@ async def index() -> str:
                             <label class="block text-xs text-gray-500 uppercase tracking-wider mb-1">API Token <span class="normal-case text-gray-600">(required if WEB_ADMIN_TOKEN is set)</span></label>
                             <input type="password" id="admin-token" placeholder="Leave blank if not configured"
                                    class="w-full bg-black border border-gray-700 rounded px-3 py-1.5 text-white text-sm focus:border-yellow-500 outline-none"
-                                   oninput="localStorage.setItem('toc_admin_token', this.value)">
+                                oninput="setAdminToken(this.value)">
                         </div>
                     </div>
                     
@@ -1797,6 +1799,22 @@ async def index() -> str:
             }
         }
 
+        function getPreferredFontSize() {
+            const raw = parseInt(localStorage.getItem('toc_term_font_size') || '12', 10);
+            if (Number.isNaN(raw)) return 12;
+            return Math.max(8, Math.min(24, raw));
+        }
+
+        let _adminTokenRefreshTimer = null;
+        function setAdminToken(token) {
+            localStorage.setItem('toc_admin_token', token || '');
+            const adminActive = document.getElementById('admin-section')?.classList.contains('active');
+            if (adminActive) {
+                clearTimeout(_adminTokenRefreshTimer);
+                _adminTokenRefreshTimer = setTimeout(() => refreshLogs(), 300);
+            }
+        }
+
         function setButtonLoading(btn, loading, loadingLabel) {
             if (!btn) return;
             if (loading) {
@@ -1910,7 +1928,7 @@ async def index() -> str:
             term = new Terminal({
                 cursorBlink: true,
                 fontFamily: '"Roboto Mono", monospace',
-                fontSize: 12,
+                fontSize: getPreferredFontSize(),
                 theme: {
                     background: '#000000',
                     foreground: '#e0e0e0',
@@ -2348,7 +2366,12 @@ async def index() -> str:
             if (!term) return;
             const sz = Math.max(8, Math.min(24, (term.options.fontSize || 12) + delta));
             term.options.fontSize = sz;
+            localStorage.setItem('toc_term_font_size', String(sz));
             if (fitAddon) fitAddon.fit();
+            if (logTerm) {
+                logTerm.options.fontSize = sz;
+                if (logFitAddon) logFitAddon.fit();
+            }
         }
 
         function exportCsv() {
@@ -2459,7 +2482,7 @@ async def index() -> str:
                 logTerm = new Terminal({
                     cursorBlink: false,
                     fontFamily: '"Roboto Mono", monospace',
-                    fontSize: 12,
+                    fontSize: getPreferredFontSize(),
                     theme: {
                         background: '#000000',
                         foreground: '#00ff00',
@@ -3536,6 +3559,7 @@ async def reload_areas(_: None = Depends(verify_token)) -> Dict[str, Any]:
         parser.mobiles = new_parser.mobiles
         parser.objects = new_parser.objects
         parser.rooms = new_parser.rooms
+        AREA_MAP_CACHE.clear()
         return {
             "status": "ok",
             "areas": len(parser.areas),
@@ -3623,8 +3647,11 @@ async def list_players() -> list[str]:
     """Return sorted list of all player names (extension-less files only)."""
     try:
         return sorted(
-            p.name for p in PLAYER_PATH.iterdir()
-            if p.is_file() and p.suffix == "" and not p.name.startswith(".")
+            (
+                p.name for p in PLAYER_PATH.iterdir()
+                if p.is_file() and p.suffix == "" and not p.name.startswith(".")
+            ),
+            key=str.lower,
         )
     except Exception:
         return []
@@ -3735,6 +3762,9 @@ async def get_areas() -> list:
 @app.get("/api/areas/{filename}/map")
 async def get_area_map(filename: str) -> Dict[str, Any]:
     """Generate map data for an area with room positions calculated using BFS layout."""
+    cached = AREA_MAP_CACHE.get(filename)
+    if cached is not None:
+        return cached
     
     # Find the area
     area = parser.areas.get(filename)
@@ -3850,11 +3880,14 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
             "obj_names": obj_names[:3],
         })
     
-    return {
+    map_result = {
         "area_name": area.name,
         "filename": filename,
         "rooms": result_rooms
     }
+
+    AREA_MAP_CACHE[filename] = map_result
+    return map_result
 
 
 @app.get("/api/objects")
