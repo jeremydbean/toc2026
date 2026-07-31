@@ -17,7 +17,14 @@ static bool dstring_reserve( DString *str, size_t needed )
 
     new_capacity = str->capacity == 0 ? DSTRING_INITIAL_CAPACITY : str->capacity;
     while (new_capacity < needed)
+    {
+        if (new_capacity > (size_t)-1 / 2)
+        {
+            new_capacity = needed;
+            break;
+        }
         new_capacity *= 2;
+    }
 
     new_data = realloc( str->data, new_capacity );
     if (new_data == NULL)
@@ -47,7 +54,7 @@ void dstring_init_copy( DString *str, const char *cstr )
         return;
 
     len = strlen( cstr );
-    if (!dstring_reserve( str, len + 1 ))
+    if (!dstring_reserve( str, len + 1 ) || str->data == NULL)
         return;
 
     memcpy( str->data, cstr, len + 1 );

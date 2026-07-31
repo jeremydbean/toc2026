@@ -543,6 +543,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
     }
 
     if ( skill_table[sn].target == TAR_CHAR_OFFENSIVE
+    &&   victim != NULL
     &&   victim != ch
     &&   victim->master != ch)
     {

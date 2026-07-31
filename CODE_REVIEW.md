@@ -1,12 +1,45 @@
-# Code review findings
+# Code Review Status
 
-## Web admin queue never processed on Unix builds
-- The FastAPI web admin service writes actions to `/app/area/webadmin.queue`, but the main Unix game loop never calls `process_web_admin_queue()`. The hook exists only in the Mac/MSDOS loop, so Linux deployments (including Docker) will ignore all queued admin requests, leaving the dashboard nonfunctional.
-  - Mac/MSDOS loop processes the queue after `update_handler()`.【F:src/comm.c†L614-L618】
-  - Unix loop omits the call and immediately proceeds to output handling.【F:src/comm.c†L820-L843】
+This file records high-signal review findings and their current status. Use it for bug-hunt context, not as a replacement for the full validation suite in `scripts/validate.ps1` and `scripts/validate.sh`.
 
-## Double fclose in area loading
-- `do_areaload` closes `fp` immediately after the existence check and then calls `fclose(fp)` again after `load_area_file`, invoking `fclose` on an invalid pointer and invoking undefined behavior during area reloads.【F:src/edit.c†L90-L100】
+## Current Status
 
-## Flood disaster movement check is broken
-- In `disaster_update`, the code compares the `rand_door` array name to zero instead of verifying the chosen index. The condition is always true, so the code can try to move characters with an uninitialized `door` when no exits were collected, risking out-of-bounds access during floods.【F:src/update.c†L2966-L2984】
+No open P1/P2 review findings are documented here.
+
+Before opening a change, run:
+
+```bash
+bash scripts/validate.sh
+```
+
+On Windows, run:
+
+```powershell
+.\scripts\validate.ps1
+```
+
+See `wiki/validation-and-area-health.md` for the full validation and area-health runbook.
+
+## Resolved Findings
+
+### Web admin queue processing on Unix builds
+
+- **Previous finding**: the FastAPI web admin queued actions into `area/webadmin.queue`, but the Unix game loop did not process the queue.
+- **Current status**: resolved. `game_loop_unix()` now calls `process_web_admin_queue()` before descriptor polling, so Linux and Docker deployments handle queued dashboard commands.
+
+### Double `fclose()` in area loading
+
+- **Previous finding**: `do_areaload()` closed the existence-check handle, loaded the area, then closed the same pointer again.
+- **Current status**: resolved. The function now closes only the existence-check handle before calling `load_area_file()`.
+
+### Flood disaster movement guard
+
+- **Previous finding**: flood movement checked the `rand_door` array object instead of verifying that any exits had been collected.
+- **Current status**: resolved. The movement code now breaks when no open exits are found and only selects from populated indexes.
+
+## Review Priorities
+
+- Treat `player/` and `gods/` as live data. Do not edit them without explicit permission.
+- For C changes, prioritize save/load paths, update loops, command interpretation, combat death paths, and area loading.
+- For web-admin changes, check token boundaries, queue-writing behavior, parser reload behavior, and large-file/log handling.
+- For area-data changes, run `merc --check-area`, the legacy reference checkers, and `scripts/area_lint.py --fail-on critical`.

@@ -353,6 +353,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "cloak",          do_cloak,       POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "clone",          do_clone,       POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "deny",           do_deny,        POS_DEAD,       L3,  LOG_ALWAYS, 1 },
+    { "diagnostics",    do_diagnostics, POS_DEAD,       L1,  LOG_NORMAL, 1 },
 /*    { "disconnect",     do_disconnect,  POS_DEAD,       L3,  LOG_ALWAYS, 1 },*/
     { "dns",            do_dns,         POS_DEAD,       ML,  LOG_ALWAYS, 1 },
     { "dump",		do_disconnect,	POS_DEAD,	L3,  LOG_ALWAYS, 1 },

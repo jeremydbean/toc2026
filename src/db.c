@@ -3532,7 +3532,10 @@ void fread_to_eol( FILE *fp )
     {
         c = getc( fp );
     }
-    while ( c != '\n' && c != '\r' );
+    while ( c != '\n' && c != '\r' && c != EOF );
+
+    if ( c == EOF )
+        return;
 
     do
     {
@@ -3540,7 +3543,8 @@ void fread_to_eol( FILE *fp )
     }
     while ( c == '\n' || c == '\r' );
 
-    ungetc( c, fp );
+    if ( c != EOF )
+        ungetc( c, fp );
     return;
 }
  
@@ -3554,12 +3558,19 @@ char *fread_word( FILE *fp )
     static char word[MAX_INPUT_LENGTH];
     char *pword;
     int cEnd;
+    int c;
  
     do
     {
         cEnd = getc( fp );
     }
-    while ( isspace( cEnd ) );
+    while ( cEnd != EOF && isspace( (unsigned char)cEnd ) );
+
+    if ( cEnd == EOF )
+    {
+        word[0] = '\0';
+        return word;
+    }
 
     if ( cEnd == '\'' || cEnd == '"' )
     {
@@ -3574,11 +3585,17 @@ char *fread_word( FILE *fp )
 
     for ( ; pword < word + MAX_INPUT_LENGTH; pword++ )
     {
-        *pword = (char) getc( fp );
-        if ( cEnd == ' ' ? isspace(*pword) : *pword == cEnd )
+        c = getc( fp );
+        if ( c == EOF )
+        {
+            *pword = '\0';
+            return word;
+        }
+        *pword = (char)c;
+        if ( cEnd == ' ' ? isspace((unsigned char)c) : c == cEnd )
         {
             if ( cEnd == ' ' )
-                ungetc( *pword, fp );
+                ungetc( c, fp );
             *pword = '\0';
             return word;
         }
@@ -3588,7 +3605,7 @@ char *fread_word( FILE *fp )
     /* Recover: drain the rest of the oversized token instead of crashing */
     while ( TRUE )
     {
-        int c = getc( fp );
+        c = getc( fp );
         if ( c == EOF || ( cEnd == ' ' ? isspace(c) : c == cEnd ) )
             break;
     }
@@ -5028,9 +5045,11 @@ void load_relics(void)
 void update_relics(void)
 {
     if (RELIC_1 == NULL || RELIC_2 == NULL || RELIC_3 == NULL || RELIC_4 == NULL)
+    {
         return;
+    }
 
-    	if(RELIC_1->in_room != RELIC_ROOM_1 &&
+    if(RELIC_1->in_room != RELIC_ROOM_1 &&
 	   RELIC_1->in_room != RELIC_ROOM_2 &&
 	   RELIC_1->in_room != RELIC_ROOM_3 &&
 	   RELIC_1->in_room != RELIC_ROOM_4) {

@@ -160,6 +160,7 @@ DECLARE_DO_FUN( do_create_relic );
 DECLARE_DO_FUN( do_damagenumbers	);
 DECLARE_DO_FUN( do_danger_sense );
 DECLARE_DO_FUN( do_deaf		);
+DECLARE_DO_FUN( do_diagnostics );
 DECLARE_DO_FUN( do_delet	);
 DECLARE_DO_FUN( do_delete	);
 DECLARE_DO_FUN(	do_deny		);

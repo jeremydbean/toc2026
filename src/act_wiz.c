@@ -1252,6 +1252,7 @@ void do_gather( CHAR_DATA *ch, char *argument )
     char arg2[MAX_INPUT_LENGTH];
     char message[MAX_STRING_LENGTH];
     bool found = false;
+    bool by_vnum;
     OBJ_DATA *obj;
     OBJ_INDEX_DATA *search = NULL;
     OBJ_DATA *search1 = NULL;
@@ -1309,7 +1310,8 @@ void do_gather( CHAR_DATA *ch, char *argument )
       return;
     }
 
-    if(is_number( arg ) )
+    by_vnum = is_number( arg );
+    if(by_vnum)
     {
       if( ( search = get_obj_index( atoi( arg ) ) ) == NULL)
       {
@@ -1370,7 +1372,7 @@ void do_gather( CHAR_DATA *ch, char *argument )
       send_to_char("Nothing like that in hell, earth, or heaven.\n\r" , ch );
     else
     {
-       if(is_number( arg) )
+       if(by_vnum)
        {
          snprintf(message, sizeof(message), "All objects with vnum %d have been gathered.", search->vnum);
          act(message,ch, NULL, NULL, TO_CHAR);
@@ -2453,6 +2455,64 @@ void do_mwhere( CHAR_DATA *ch, char *argument )
 	    send_to_char(buffer,ch);
 
     return;
+}
+
+void do_diagnostics( CHAR_DATA *ch, char *argument )
+{
+    extern char str_boot_time[];
+    extern long backup;
+    extern long dailybackup;
+    DESCRIPTOR_DATA *d;
+    char buf[MAX_STRING_LENGTH];
+    char boot_ts[MAX_INPUT_LENGTH];
+    char backup_ts[32];
+    char daily_ts[32];
+    char *nl;
+    int descriptors = 0;
+
+    UNUSED_PARAM(argument);
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+        descriptors++;
+
+    toc_strlcpy( boot_ts, str_boot_time, sizeof(boot_ts) );
+    nl = strchr( boot_ts, '\n' );
+    if ( nl != NULL )
+        *nl = '\0';
+
+    toc_strlcpy( backup_ts, ctime(&backup), sizeof(backup_ts) );
+    nl = strchr( backup_ts, '\n' );
+    if ( nl != NULL )
+        *nl = '\0';
+
+    toc_strlcpy( daily_ts, ctime(&dailybackup), sizeof(daily_ts) );
+    nl = strchr( daily_ts, '\n' );
+    if ( nl != NULL )
+        *nl = '\0';
+
+    send_to_char( "Server diagnostics:\n\r", ch );
+
+    snprintf( buf, sizeof(buf), "  Boot time: %s\n\r", boot_ts );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+              "  Areas: %d  Rooms: %d  Mob indexes: %d  Object indexes: %d\n\r",
+              top_area, top_room, top_mob_index, top_obj_index );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+              "  Active descriptors: %d  Characters: %lu  Objects: %lu  Active mobs: %d\n\r",
+              descriptors,
+              (unsigned long)character_list.size,
+              (unsigned long)object_list.size,
+              mobile_count );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "  Next pfile backup: %s\n\r", backup_ts );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "  Next daily backup: %s\n\r", daily_ts );
+    send_to_char( buf, ch );
 }
 
 void do_owhere( CHAR_DATA *ch, char *argument )
@@ -7853,9 +7913,10 @@ void do_prestore( CHAR_DATA *ch, char *argument )
     char capname[MAX_INPUT_LENGTH];
     char srcpath[MAX_STRING_LENGTH];
     char dstpath[MAX_STRING_LENGTH];
+    char tmppath[MAX_STRING_LENGTH];
     char cpbuf[MAX_STRING_LENGTH];
     char datebuf[64];
-    char *versions[PLAYER_VER_MAX + 64];
+    char versions[PLAYER_VER_MAX + 64][MAX_INPUT_LENGTH];
     const char *ts;
     FILE *fsrc;
     FILE *fdst;
@@ -7868,6 +7929,7 @@ void do_prestore( CHAR_DATA *ch, char *argument )
     int c;
     int found_online;
     int namelen;
+    bool copy_failed;
     DIR *dp;
     struct dirent *de;
 
@@ -7903,7 +7965,8 @@ void do_prestore( CHAR_DATA *ch, char *argument )
             continue;
         if ( de->d_name[namelen] != '.' )
             continue;
-        versions[count++] = strdup( de->d_name );
+        strlcpy( versions[count], de->d_name, sizeof(versions[count]) );
+        count++;
     }
     closedir( dp );
 
@@ -7917,10 +7980,11 @@ void do_prestore( CHAR_DATA *ch, char *argument )
     /* Sort newest-first (reverse-lexicographic) via insertion sort */
     for ( i = 1; i < count; i++ )
     {
-        char *key = versions[i];
+        char key[MAX_INPUT_LENGTH];
+        strlcpy( key, versions[i], sizeof(key) );
         for ( j = i - 1; j >= 0 && strcmp( versions[j], key ) < 0; j-- )
-            versions[j + 1] = versions[j];
-        versions[j + 1] = key;
+            strlcpy( versions[j + 1], versions[j], sizeof(versions[j + 1]) );
+        strlcpy( versions[j + 1], key, sizeof(versions[j + 1]) );
     }
 
     if ( arg2[0] == '\0' || !str_cmp( arg2, "list" ) )
@@ -7995,7 +8059,6 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                       "Invalid number. Choose 1-%d (use 'prestore %s' to list).\n\r",
                       count, capname );
             send_to_char( buf, ch );
-            for ( i = 0; i < count; i++ ) free( versions[i] );
             return;
         }
 
@@ -8003,6 +8066,7 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                   PLAYER_VER_DIR, capname, versions[n - 1] );
         snprintf( dstpath, sizeof(dstpath), "%s%s",
                   PLAYER_DIR, capname );
+        snprintf( tmppath, sizeof(tmppath), "%s.restore.tmp", dstpath );
 
         /* If the player is online, save and disconnect first */
         found_online = 0;
@@ -8013,14 +8077,12 @@ void do_prestore( CHAR_DATA *ch, char *argument )
             if ( victim == ch )
             {
                 send_to_char( "You cannot prestore yourself.\n\r", ch );
-                for ( i = 0; i < count; i++ ) free( versions[i] );
                 return;
             }
 
             if ( get_trust( victim ) >= get_trust( ch ) )
             {
                 send_to_char( "You failed.\n\r", ch );
-                for ( i = 0; i < count; i++ ) free( versions[i] );
                 return;
             }
 
@@ -8047,35 +8109,55 @@ void do_prestore( CHAR_DATA *ch, char *argument )
 
         /* Copy the snapshot over the live player file */
 
-        /* Safety: if the player was offline, their current file may not be in
-           the snapshot set (e.g., manually edited outside the game).  Take a
-           snapshot now so the pre-restore state is always recoverable. */
-        if ( !found_online )
-            player_snapshot( capname );
+        /* Capture the exact pre-restore state even when normal save snapshots
+           are currently throttled. */
+        player_snapshot_force( capname );
 
         fsrc = fopen( srcpath, "rb" );
         if ( fsrc == NULL )
         {
             bug( "do_prestore: cannot open source snapshot", 0 );
             send_to_char( "Error: cannot read snapshot file.\n\r", ch );
-            for ( i = 0; i < count; i++ ) free( versions[i] );
             return;
         }
 
-        fdst = fopen( dstpath, "wb" );
+        fdst = fopen( tmppath, "wb" );
         if ( fdst == NULL )
         {
             bug( "do_prestore: cannot open dest player file", 0 );
-            send_to_char( "Error: cannot write player file.\n\r", ch );
+            send_to_char( "Error: cannot create temporary restore file.\n\r", ch );
             fclose( fsrc );
-            for ( i = 0; i < count; i++ ) free( versions[i] );
             return;
         }
 
+        copy_failed = false;
         while ( (c = fgetc(fsrc)) != EOF )
-            fputc( (unsigned char) c, fdst );
+        {
+            if ( fputc( (unsigned char) c, fdst ) == EOF )
+            {
+                copy_failed = true;
+                break;
+            }
+        }
+        if ( ferror(fsrc) )
+            copy_failed = true;
         fclose( fsrc );
-        fclose( fdst );
+        if ( fclose( fdst ) != 0 )
+            copy_failed = true;
+        if ( copy_failed )
+        {
+            remove( tmppath );
+            bug( "do_prestore: snapshot copy failed", 0 );
+            send_to_char( "Error: restore copy failed; the live file is unchanged.\n\r", ch );
+            return;
+        }
+        if ( rename( tmppath, dstpath ) != 0 )
+        {
+            remove( tmppath );
+            bug( "do_prestore: atomic replace failed", 0 );
+            send_to_char( "Error: restore replace failed; the live file is unchanged.\n\r", ch );
+            return;
+        }
 
         /* Format the restored date for display and logging */
         ts = versions[n - 1] + namelen + 1;
@@ -8111,8 +8193,6 @@ void do_prestore( CHAR_DATA *ch, char *argument )
             send_to_char( "Player was online and has been disconnected.\n\r", ch );
     }
 
-    for ( i = 0; i < count; i++ )
-        free( versions[i] );
     return;
 }
 

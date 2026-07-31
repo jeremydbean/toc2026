@@ -2,7 +2,7 @@
 
 **Times of Chaos** is a text-based MUD (Multi-User Dungeon) server based on the Merc 2.1 / ROM 2.4 lineage, running the ToC custom codebase. It features 132 hand-crafted areas, 70 levels, 6 player classes, 5 playable races, a full remort system, player-kill zones, seasonal events, and a modern Docker deployment with a Python web administration panel.
 
-> **Quick links:** [Connect now](#connecting-to-the-game) · [Docker quick start](#docker-quickest-path) · [Manual build](#building-natively-without-docker) · [Web Admin](#web-administration-panel) · [Troubleshooting](#troubleshooting)
+> **Quick links:** [Connect now](#connecting-to-the-game) · [Docker quick start](#docker-quickest-path) · [Manual build](#building-natively-without-docker) · [Web Admin](#web-administration-panel) · [Validation](#validation) · [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -47,7 +47,8 @@ Times of Chaos (ToC) is a MUD (Multi-User Dungeon) — a real-time, text-based m
 - **Seasonal content** — special holiday areas for Halloween, Christmas, and more
 - **Player-kill** system with PKill data tracking
 - **Remort system** — reincarnate at max level for bonuses
-- String-safety hardened (OpenBSD `strlcpy`/`strlcat` throughout)
+- String-safety hardened with bounded copy/concatenation helpers (`toc_strlcpy`/`toc_strlcat`)
+- Local and CI validation covering C builds, area loading, Python parsers, area-health linting, and unit tests
 - Fully containerized with **Docker** for one-command deployment
 
 ---
@@ -380,7 +381,7 @@ docker logs -f toc
 ```
 
 **Security for public servers:**
-- Set `WEB_ADMIN_TOKEN` to a strong secret — this protects the web admin API
+- Set `WEB_ADMIN_TOKEN` to a strong secret to enable protected admin operations; they return HTTP 503 while no token is configured
 - Consider putting Nginx or Caddy in front of port 9001 with HTTPS
 - Port 9000 (MUD) is plain telnet — expected for a MUD, but advise players accordingly
 - Firewall port 9001 to your IP if you don't need public web admin access
@@ -522,12 +523,14 @@ cd area
 
 ### Web Admin (Native)
 ```bash
-pip3 install fastapi "uvicorn[standard]"
+python3 -m pip install -r webadmin/requirements.txt -r scripts/requirements.txt
 python3 -m webadmin.server \
   --host 0.0.0.0 \
   --port 9001 \
   --queue area/webadmin.queue \
-  --log-file log/toc.log
+  --log-file log/toc.log \
+  --area-path area \
+  --backup-path backups
 ```
 
 ---
@@ -543,7 +546,11 @@ python3 -m webadmin.server \
 | `WEB_ADMIN_ENABLED` | `1` | Set to `0` to disable web admin |
 | `WEB_ADMIN_PORT` | `9001` | Web admin HTTP port |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Web admin bind address |
-| `WEB_ADMIN_TOKEN` | _(unset)_ | Shared secret for API auth (recommended for public servers) |
+| `WEB_ADMIN_TOKEN` | _(unset)_ | Shared secret for operational API auth; admin operations are disabled while unset |
+| `QUEUE_PATH` | `area/webadmin.queue` | Queue file used by the web admin to send actions to the game loop |
+| `LOG_FILE` | `log/toc.log` | Log file tailed by the web admin |
+| `AREA_PATH` | `area` | Area directory parsed by the web admin and area-health checker |
+| `BACKUP_PATH` | `backups` | Directory listed by the backup browser |
 
 ### Entrypoint Modes
 
@@ -621,10 +628,12 @@ Access the web admin at [http://localhost:9001](http://localhost:9001) after sta
 - **Live Log Viewer** — Real-time log stream via WebSocket; shows the last 200 lines of `toc.log`
 - **Player Browser** — Browse and inspect saved player files
 - **Area Browser** — Browse Mobs, Objects, Rooms, and Shops parsed from `.are` files
+- **Area Health** — Scan area files for parse errors, duplicate vnums, broken exits, disconnected room groups, and cleanup candidates
 - **Best Gear Finder** — Select a class, get the optimal gear set from all object data
 - **Wizinfo Broadcast** — Send a message to all players online
 - **Immortal Command** — Execute any immortal-level game command (sent via queue file)
-- **Backup** — Trigger a live player-file backup
+- **Backup** — Trigger a live player-file archive and review recent `.tar.gz` backups
+- **Area Reload** — Reparse web-admin area data without restarting the dashboard
 - **Shutdown** — Gracefully shut down the game server
 
 ### API Endpoints
@@ -635,6 +644,10 @@ The web admin exposes a RESTful JSON API:
 |--------|----------|-------------|
 | GET | `/api/health` | Health check — merc process status |
 | GET | `/api/logs?lines=200` | Last N lines of toc.log |
+| GET | `/api/stats` | Parsed area/mob/object/room counts |
+| GET | `/api/area_health` | Area-health summary and issue list |
+| GET | `/api/backups` | Recent backup archive list |
+| POST | `/api/reload` | Reparse web-admin area data |
 | POST | `/api/command` | Execute an immortal command |
 | POST | `/api/wizinfo` | Broadcast a message |
 | POST | `/api/backup` | Trigger player backup |
@@ -648,12 +661,12 @@ The web admin exposes a RESTful JSON API:
 
 ### API Authentication
 
-When `WEB_ADMIN_TOKEN` is set in the environment, mutating endpoints require the header:
+Protected endpoints require `WEB_ADMIN_TOKEN` to be configured and the matching header:
 ```
 X-Admin-Token: your-token-here
 ```
 
-Read-only endpoints (health, areas, mobs, objects, rooms) remain public.
+Operational endpoints such as logs, live log WebSocket, backups, reload, commands, broadcasts, backup, and shutdown return HTTP 503 when no server token is configured and require the token when enabled. General browsing endpoints such as health, stats, area health, areas, mobs, objects, and rooms remain public.
 
 ---
 
@@ -705,10 +718,16 @@ Player files and logs live outside the container. Always mount these volumes or 
 
 ### Backup
 
-The web admin's **Backup** button copies the contents of `player/` into `backups/` with a timestamp. You can also run:
+The web admin's **Backup** button queues the in-game backup command. The game creates timestamped `backups/*.tar.gz` archives from `player/`, logs success only after the archive command succeeds, and prunes archives older than 30 days.
+
+Player saves also maintain per-character snapshots under `player/versions/<Name>/`. These snapshots are written after successful saves, throttled to avoid autosave churn, and pruned to the newest 30 snapshots per player.
+
+The immortal `prestore` command forces one final snapshot of the live player file, copies the selected version to a temporary file, and atomically replaces the live file only after the copy closes successfully.
+
+For a one-off manual archive from inside a running container:
 
 ```bash
-docker exec toc sh -c "cp -r /app/player /app/backups/backup_$(date +%Y%m%d_%H%M%S)"
+docker exec toc sh -c "tar cfz /app/backups/manual_$(date +%Y%m%d_%H%M%S).tar.gz /app/player"
 ```
 
 ---
@@ -728,10 +747,10 @@ docker compose restart game         # restart after a code change
 The compose file (`docker-compose.yml`) defines one service:
 - **`game`** — builds the image, exposes ports `9000` (MUD) and `9001` (web admin), mounts `player/`, `log/`, and `backups/` volumes, and restarts automatically unless explicitly stopped
 
-To enable web admin authentication, uncomment and set `WEB_ADMIN_TOKEN` in `docker-compose.yml`:
-```yaml
-environment:
-  - WEB_ADMIN_TOKEN=your-strong-secret-here
+Set `WEB_ADMIN_TOKEN` in the host environment before starting Compose:
+```powershell
+$env:WEB_ADMIN_TOKEN = "your-strong-secret-here"
+docker compose up --build -d
 ```
 
 > **Windows users:** Compose uses the same `$(pwd)` volume resolution. Run `docker compose` commands from the repository root in PowerShell or Windows Terminal.
@@ -761,14 +780,61 @@ environment:
 4. For web admin development:
    ```bash
    cd toc2026
-   pip3 install fastapi "uvicorn[standard]"
+   python3 -m pip install -r webadmin/requirements.txt -r scripts/requirements.txt
    python3 -m webadmin.server --host 0.0.0.0 --port 9001 \
-     --queue area/webadmin.queue --log-file log/toc.log
+     --queue area/webadmin.queue --log-file log/toc.log \
+     --area-path area --backup-path backups
    ```
    Uvicorn auto-reloads on file changes in development mode:
    ```bash
    uvicorn webadmin.server:app --reload --host 0.0.0.0 --port 9001
    ```
+
+### Validation
+
+Run the full local validation suite before pushing changes:
+
+```powershell
+# From PowerShell on Windows
+.\scripts\validate.ps1
+```
+
+```bash
+# From Linux, macOS, or inside WSL
+bash scripts/validate.sh
+```
+
+The suite runs the normal C build, a strict-warning C build, `merc --check-area`, Python syntax checks, area reference checks, area-health linting, unit tests, and `git diff --check`. To run a short live startup smoke test as well:
+
+```powershell
+.\scripts\validate.ps1 -RunSmoke
+```
+
+```bash
+RUN_SMOKE=1 bash scripts/validate.sh
+```
+
+The PowerShell script uses WSL for the C build and area-load checks, then runs Python checks from Windows. The Bash script is the same path used by GitHub Actions in `.github/workflows/validate.yml`.
+
+Useful focused checks:
+
+```bash
+# Load all areas and exit without opening a listening socket
+cd area && ../merc --check-area
+
+# Area-health lint, failing only on critical issues
+python scripts/area_lint.py --fail-on critical --limit 20
+
+# Full JSON output for tooling or deeper review
+python scripts/area_lint.py --json > area-health.json
+```
+
+Area-health severities are intentional:
+- **critical**: should block builds or deployment, such as parse failures, missing listed area files, duplicate vnums, or exits to positive missing room vnums
+- **warning**: likely bad data or design drift, such as disconnected travel groups, unparsed areas, invalid zero-valued exit targets, or unusual takeable-item levels
+- **info**: intentional sentinels and cleanup candidates, such as descriptive `-1` exits, one-way exits, unspawned mobs, or objects with no reset source
+
+See [wiki/validation-and-area-health.md](wiki/validation-and-area-health.md) for the full validation runbook, issue-code reference, and CI notes.
 
 ### Code Conventions
 
@@ -794,6 +860,9 @@ Area files (`.are`) use the ROM 2.4 format. They are plain text with `#SECTION` 
 ### Running Tests
 
 ```bash
+# Python unit tests
+python -m unittest discover -s tests
+
 # Sanitizer build (catches memory errors and UB)
 cmake -B build -DENABLE_SANITIZERS=ON -DCMAKE_BUILD_TYPE=Debug
 cmake --build build
@@ -819,6 +888,8 @@ A set of immortal commands provides in-game server management:
 | `seal` | L65 | Wizard-lock a room exit direction |
 | `finger` | L65 | Look up player info (online or offline) |
 | `trail` | L67 | Show last 10 rooms a player visited |
+| `backup` | L69 | Show backup schedule or trigger pfile/daily backups |
+| `diagnostics` | L69 | Show boot time, world totals, descriptor count, list sizes, active mobs, and backup schedule |
 | `petrify` | L65 | Apply timed stone affect blocking all commands |
 | `empower` | L64 | Apply sanctuary+haste+fly+regen+stat boosts |
 | `colossus` | L64 | Apply 500% HP/mana/move boost |
@@ -859,13 +930,19 @@ toc2026/
 │   └── *.are             # 129 other zones
 ├── webadmin/             # Web administration (Python/FastAPI)
 │   ├── server.py         # FastAPI routes, WebSocket, HTML dashboard
-│   └── area_parser.py    # .are file parser for web display
+│   ├── area_parser.py    # .are file parser for web display
+│   └── area_health.py    # Shared area-health linting logic
 ├── scripts/              # Setup and utility scripts
 │   ├── setup_windows.ps1 # Automated Windows setup
 │   ├── setup_mac.sh      # Automated macOS setup
 │   ├── setup_linux.sh    # Automated Linux setup
+│   ├── area_lint.py      # CLI wrapper around area-health checks
+│   ├── validate.ps1      # Windows/WSL validation suite
+│   ├── validate.sh       # Linux/macOS/CI validation suite
 │   └── run_valgrind.sh   # Valgrind memory check helper
-├── wiki/                 # Game documentation (area refs, mob stats, etc.)
+├── tests/                # Python unit tests for webadmin and area health
+├── .github/workflows/    # GitHub Actions validation workflow
+├── wiki/                 # Game and operations documentation
 ├── notes/                # Development notes and scratchpads
 ├── player/               # Player save files (not committed to git)
 ├── log/                  # Server logs (not committed to git)
@@ -891,7 +968,7 @@ toc2026/
 
 ### Web Admin Authentication
 
-Set `WEB_ADMIN_TOKEN` to protect mutating API endpoints. Without it, anyone who can reach port 9001 can send immortal commands, trigger backups, or shut down the server.
+Set `WEB_ADMIN_TOKEN` to enable operational API endpoints. Without it, those endpoints are disabled with HTTP 503, while public world-browsing endpoints remain available.
 
 ```bash
 # Generate a good token
@@ -957,6 +1034,44 @@ Common causes:
 2. Check `docker logs toc` for Python/uvicorn startup errors
 3. Disable your firewall temporarily to test: `sudo ufw disable`
 4. Test locally first: `curl http://localhost:9001/api/health`
+
+### Web admin returns 403 or 503
+
+HTTP 503 means the server has no `WEB_ADMIN_TOKEN`; configure one and restart the web admin. HTTP 403 means the supplied token did not match. Send the configured token as `X-Admin-Token`:
+
+```bash
+curl -H "X-Admin-Token: your-token" http://localhost:9001/api/logs
+```
+
+The live log WebSocket uses the same token as the `x_admin_token` query parameter.
+
+### Area-health check fails
+
+Run the focused linter first:
+
+```bash
+python scripts/area_lint.py --fail-on critical --limit 50
+```
+
+Critical findings should be fixed before deployment. Warnings and info findings are useful cleanup targets, but the current validation suite only fails on critical area-health issues.
+
+### Validation script fails on Windows
+
+`scripts/validate.ps1` expects WSL to build and run the Linux-only C server:
+
+```powershell
+.\scripts\validate.ps1 -Distro Ubuntu
+```
+
+If your WSL distro has a different name, pass it with `-Distro`. Make sure the Windows Python environment has both requirement files installed:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r webadmin\requirements.txt -r scripts\requirements.txt
+```
+
+### Backup list is empty
+
+The backup browser lists `*.tar.gz` files under `BACKUP_PATH` (default `backups`). Trigger a backup from the web admin, or run the immortal command `backup now`, then refresh the Admin panel. In Docker, make sure `/app/backups` is mounted if you want archives to survive container removal.
 
 ### Players can't connect from outside
 

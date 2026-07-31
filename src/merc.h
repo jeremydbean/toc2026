@@ -2063,6 +2063,11 @@ extern          KILL_DATA               kill_table      [];
 extern          char                    log_buf         [];
 extern          TIME_INFO_DATA          time_info;
 extern          WEATHER_DATA            weather_info;
+extern          int                     top_area;
+extern          int                     top_mob_index;
+extern          int                     top_obj_index;
+extern          int                     top_room;
+extern          int                     mobile_count;
 
 extern          OBJ_DATA* RELIC_1;
 extern          OBJ_DATA* RELIC_2;
@@ -2398,6 +2403,7 @@ void    save_char_obj   ( CHAR_DATA *ch );
 bool    load_char_obj   ( DESCRIPTOR_DATA *d, char *name );
 void    corpse_back     ( CHAR_DATA *ch, OBJ_DATA *corpse );
 void    player_snapshot ( const char *name );  /* versioned snapshot of player file */
+void    player_snapshot_force ( const char *name ); /* unthrottled pre-restore snapshot */
 
 /* skills.c */
 bool    parse_gen_groups ( CHAR_DATA *ch,char *argument );

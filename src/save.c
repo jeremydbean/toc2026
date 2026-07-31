@@ -15,6 +15,7 @@
 #include <dirent.h>
 #endif
 #include <ctype.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -49,9 +50,19 @@ void	fwrite_pet	args( ( CHAR_DATA *pet, FILE *fp) );
 void	fread_char	args( ( CHAR_DATA *ch,  FILE *fp ) );
 void    fread_pet	args( ( CHAR_DATA *ch,  FILE *fp ) );
 void	fread_obj	args( ( CHAR_DATA *ch,  FILE *fp ) );
+static bool snapshot_capitalize_name args( ( char *dst, size_t dst_size,
+                                             const char *name ) );
+static bool snapshot_join_path args( ( char *dst, size_t dst_size,
+                                       const char *dir, const char *file ) );
+static bool snapshot_build_file args( ( char *dst, size_t dst_size,
+                                        const char *dir, const char *name,
+                                        const char *suffix ) );
+static bool snapshot_ensure_dir args( ( const char *path ) );
+static void player_snapshot_internal args( ( const char *name, bool force ) );
 
 #if defined(unix) && defined(CHGRP_TO)
 static bool can_chgrp      args( ( void ) );
+static bool apply_chgrp    args( ( const char *path ) );
 #endif
 
 
@@ -63,75 +74,182 @@ static bool can_chgrp( void )
 
     if (!checked)
     {
+        struct group *grp;
+
         checked = 1;
-        if (getgrnam(CHGRP_TO) != NULL)
+        grp = getgrnam(CHGRP_TO);
+        if (grp != NULL)
             available = true;
-        /* else: group absent — silently skip chgrp on this system */
+        /* else: group absent - silently skip chgrp on this system */
     }
 
     return available;
 }
+
+
+static bool apply_chgrp( const char *path )
+{
+    static int checked = 0;
+    static gid_t chgrp_gid = 0;
+    struct group *grp;
+
+    if (!checked)
+    {
+        checked = 1;
+        grp = getgrnam(CHGRP_TO);
+        if (grp != NULL)
+            chgrp_gid = grp->gr_gid;
+    }
+
+    if (chgrp_gid == 0 && !can_chgrp())
+        return true;
+
+    return chown(path, (uid_t)-1, chgrp_gid) == 0;
+}
 #endif
 
 
+static bool snapshot_capitalize_name( char *dst, size_t dst_size,
+                                      const char *name )
+{
+    size_t i;
+
+    if ( name == NULL || toc_strlcpy( dst, name, dst_size ) >= dst_size )
+        return false;
+
+    for ( i = 0; dst[i] != '\0'; i++ )
+        dst[i] = ( i == 0 ) ? UPPER( dst[i] ) : LOWER( dst[i] );
+
+    return true;
+}
+
+
+static bool snapshot_join_path( char *dst, size_t dst_size,
+                                const char *dir, const char *file )
+{
+    if ( toc_strlcpy( dst, dir, dst_size ) >= dst_size )
+        return false;
+    if ( toc_strlcat( dst, "/", dst_size ) >= dst_size )
+        return false;
+    if ( toc_strlcat( dst, file, dst_size ) >= dst_size )
+        return false;
+
+    return true;
+}
+
+
+static bool snapshot_build_file( char *dst, size_t dst_size,
+                                 const char *dir, const char *name,
+                                 const char *suffix )
+{
+    if ( !snapshot_join_path( dst, dst_size, dir, name ) )
+        return false;
+    if ( toc_strlcat( dst, ".", dst_size ) >= dst_size )
+        return false;
+    if ( toc_strlcat( dst, suffix, dst_size ) >= dst_size )
+        return false;
+
+    return true;
+}
+
+
+static bool snapshot_ensure_dir( const char *path )
+{
+    struct stat st;
+
+    if ( mkdir( path, 0755 ) == 0 )
+        return true;
+
+    if ( errno != EEXIST )
+        return false;
+
+    if ( stat( path, &st ) != 0 )
+        return false;
+
+    return S_ISDIR( st.st_mode );
+}
+
+
 /*
- * player_snapshot -- copy the current player file into the versioned backup
- * directory before it is overwritten.
+ * Copy the current player file into the versioned backup directory.
  *
  * Layout: PLAYER_VER_DIR/<Name>/<Name>.YYYYMMDD_HHMMSS
  *
  * The PLAYER_VER_MAX most recent versions are kept; older ones are pruned.
  * Safe to call even if the player file does not yet exist (first save).
  */
-void player_snapshot( const char *name )
+static void player_snapshot_internal( const char *name, bool force )
 {
-    char src[MAX_INPUT_LENGTH];
-    char vdir[MAX_INPUT_LENGTH];
-    char dest[MAX_INPUT_LENGTH];
-    char mkdircmd[MAX_INPUT_LENGTH * 2];
+    char cap_name[MAX_INPUT_LENGTH];
+    char src[MAX_STRING_LENGTH];
+    char vdir[MAX_STRING_LENGTH];
+    char dest[MAX_STRING_LENGTH];
     FILE *in, *out;
     time_t now = current_time;
     struct tm *tm_now;
     char ts[32];
     int  c;
+    bool copy_failed = false;
+
+    if ( !snapshot_capitalize_name( cap_name, sizeof(cap_name), name ) )
+    {
+        bug( "player_snapshot: player name too long", 0 );
+        return;
+    }
 
     /* Source: live player file */
-    snprintf( src, sizeof(src), "%s%s", PLAYER_DIR, capitalize( name ) );
+    if ( toc_strlcpy( src, PLAYER_DIR, sizeof(src) ) >= sizeof(src)
+      || toc_strlcat( src, cap_name, sizeof(src) ) >= sizeof(src) )
+    {
+        bug( "player_snapshot: source path too long", 0 );
+        return;
+    }
 
     /* Does the file exist yet? If not, nothing to snapshot */
     if ( ( in = fopen( src, "rb" ) ) == NULL )
         return;
 
     /* Ensure per-player version directory exists */
-    snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capitalize( name ) );
+    if ( toc_strlcpy( vdir, PLAYER_VER_DIR, sizeof(vdir) ) >= sizeof(vdir)
+      || toc_strlcat( vdir, cap_name, sizeof(vdir) ) >= sizeof(vdir) )
+    {
+        fclose( in );
+        bug( "player_snapshot: version path too long", 0 );
+        return;
+    }
 
     /* Throttle: skip if a snapshot was written within PLAYER_SNAPSHOT_MIN_INTERVAL.
      * This prevents routine autosaves from creating a snapshot every 30 minutes;
      * snapshots are still captured on level-up, quit, and other high-value saves
      * once the interval has elapsed. */
+    if (!force)
     {
         DIR *dp = opendir( vdir );
         if ( dp != NULL )
         {
-            char newest[64] = "";
+            char newest[MAX_INPUT_LENGTH] = "";
             struct dirent *ent;
-            const char *cap = capitalize( name );
-            size_t nlen = strlen( cap );
+            size_t nlen = strlen( cap_name );
             while ( (ent = readdir( dp )) != NULL )
             {
-                if ( strncmp( ent->d_name, cap, nlen ) == 0
+                if ( strncmp( ent->d_name, cap_name, nlen ) == 0
                   && ent->d_name[nlen] == '.' )
                 {
                     if ( strcmp( ent->d_name, newest ) > 0 )
-                        strlcpy( newest, ent->d_name, sizeof(newest) );
+                        toc_strlcpy( newest, ent->d_name, sizeof(newest) );
                 }
             }
             closedir( dp );
             if ( newest[0] != '\0' )
             {
-                char fpath[MAX_INPUT_LENGTH];
+                char fpath[MAX_STRING_LENGTH];
                 struct stat fst;
-                snprintf( fpath, sizeof(fpath), "%s/%s", vdir, newest );
+                if ( !snapshot_join_path( fpath, sizeof(fpath), vdir, newest ) )
+                {
+                    fclose( in );
+                    bug( "player_snapshot: newest path too long", 0 );
+                    return;
+                }
                 if ( stat( fpath, &fst ) == 0
                   && difftime( now, fst.st_mtime ) < PLAYER_SNAPSHOT_MIN_INTERVAL )
                 {
@@ -142,8 +260,8 @@ void player_snapshot( const char *name )
         }
     }
 
-    snprintf( mkdircmd, sizeof(mkdircmd), "mkdir -p %s", vdir );
-    if ( system( mkdircmd ) == -1 )
+    if ( !snapshot_ensure_dir( PLAYER_VER_DIR )
+      || !snapshot_ensure_dir( vdir ) )
     {
         fclose( in );
         bug( "player_snapshot: mkdir failed", 0 );
@@ -152,8 +270,19 @@ void player_snapshot( const char *name )
 
     /* Build timestamped destination filename */
     tm_now = localtime( &now );
-    strftime( ts, sizeof(ts), "%Y%m%d_%H%M%S", tm_now );
-    snprintf( dest, sizeof(dest), "%s/%s.%s", vdir, capitalize( name ), ts );
+    if ( tm_now == NULL
+      || strftime( ts, sizeof(ts), "%Y%m%d_%H%M%S", tm_now ) == 0 )
+    {
+        fclose( in );
+        bug( "player_snapshot: could not format timestamp", 0 );
+        return;
+    }
+    if ( !snapshot_build_file( dest, sizeof(dest), vdir, cap_name, ts ) )
+    {
+        fclose( in );
+        bug( "player_snapshot: destination path too long", 0 );
+        return;
+    }
 
     /* Don't create a duplicate if snapshot already exists for this second */
     {
@@ -166,7 +295,7 @@ void player_snapshot( const char *name )
         }
     }
 
-    /* Copy src → dest byte-by-byte (avoids shell dependency) */
+    /* Copy src -> dest byte-by-byte (avoids shell dependency) */
     if ( ( out = fopen( dest, "wb" ) ) == NULL )
     {
         fclose( in );
@@ -174,9 +303,24 @@ void player_snapshot( const char *name )
         return;
     }
     while ( ( c = fgetc( in ) ) != EOF )
-        fputc( c, out );
+    {
+        if ( fputc( c, out ) == EOF )
+        {
+            copy_failed = true;
+            break;
+        }
+    }
+    if ( ferror( in ) )
+        copy_failed = true;
     fclose( in );
-    fclose( out );
+    if ( fclose( out ) != 0 )
+        copy_failed = true;
+    if ( copy_failed )
+    {
+        remove( dest );
+        bug( "player_snapshot: snapshot copy failed", 0 );
+        return;
+    }
 
     /* Prune: keep only the PLAYER_VER_MAX most recent versions */
     {
@@ -186,10 +330,9 @@ void player_snapshot( const char *name )
             /* Collect matching filenames into a simple sorted array */
             /* Use a fixed-max buffer: PLAYER_VER_MAX + 10 entries */
 #define VER_SCAN_MAX (PLAYER_VER_MAX + 64)
-            char  entries[VER_SCAN_MAX][64];
+            char  entries[VER_SCAN_MAX][MAX_INPUT_LENGTH];
             int   count = 0;
             struct dirent *ent;
-            const char *cap_name = capitalize( name );
             size_t nlen = strlen( cap_name );
 
             while ( ( ent = readdir( dp ) ) != NULL && count < VER_SCAN_MAX )
@@ -198,29 +341,30 @@ void player_snapshot( const char *name )
                 if ( strncmp( ent->d_name, cap_name, nlen ) == 0
                   && ent->d_name[nlen] == '.' )
                 {
-                    snprintf( entries[count], sizeof(entries[count]),
-                              "%s", ent->d_name );
-                    count++;
+                    if ( toc_strlcpy( entries[count], ent->d_name,
+                                      sizeof(entries[count]) )
+                       < sizeof(entries[count]) )
+                        count++;
                 }
             }
             closedir( dp );
 
-            /* Sort ascending (oldest first) — simple insertion sort on name,
+            /* Sort ascending (oldest first) - simple insertion sort on name,
                which is lexicographic == chronological for YYYYMMDD_HHMMSS */
             {
                 int i, j;
-                char tmp[64];
+                char tmp[MAX_INPUT_LENGTH];
                 for ( i = 1; i < count; i++ )
                 {
-                    snprintf( tmp, sizeof(tmp), "%s", entries[i] );
+                    toc_strlcpy( tmp, entries[i], sizeof(tmp) );
                     j = i - 1;
                     while ( j >= 0 && strcmp( entries[j], tmp ) > 0 )
                     {
-                        snprintf( entries[j+1], sizeof(entries[j+1]),
-                                  "%s", entries[j] );
+                        toc_strlcpy( entries[j+1], entries[j],
+                                     sizeof(entries[j+1]) );
                         j--;
                     }
-                    snprintf( entries[j+1], sizeof(entries[j+1]), "%s", tmp );
+                    toc_strlcpy( entries[j+1], tmp, sizeof(entries[j+1]) );
                 }
             }
 
@@ -229,14 +373,27 @@ void player_snapshot( const char *name )
                 int i;
                 for ( i = 0; i < count - PLAYER_VER_MAX; i++ )
                 {
-                    char to_del[MAX_INPUT_LENGTH];
-                    snprintf( to_del, sizeof(to_del), "%s/%s", vdir, entries[i] );
-                    remove( to_del );
+                    char to_del[MAX_STRING_LENGTH];
+                    if ( snapshot_join_path( to_del, sizeof(to_del), vdir,
+                                             entries[i] ) )
+                        remove( to_del );
                 }
             }
 #undef VER_SCAN_MAX
         }
     }
+}
+
+
+void player_snapshot( const char *name )
+{
+    player_snapshot_internal(name, false);
+}
+
+
+void player_snapshot_force( const char *name )
+{
+    player_snapshot_internal(name, true);
 }
 
 
@@ -248,8 +405,10 @@ void player_snapshot( const char *name )
 void save_char_obj( CHAR_DATA *ch )
 {
     char strsave[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
     FILE *fp;
+    bool previous_has_saved;
+    bool previous_confirm_unsaved_quit;
+    bool save_succeeded = false;
 
     if ( IS_NPC(ch) )
 	return;
@@ -260,6 +419,8 @@ void save_char_obj( CHAR_DATA *ch )
     if ( ch->desc != NULL && ch->desc->original != NULL )
         ch = ch->desc->original;
 
+    previous_has_saved = ch->pcdata->has_saved;
+    previous_confirm_unsaved_quit = ch->pcdata->confirm_unsaved_quit;
     ch->pcdata->has_saved = true;
     ch->pcdata->confirm_unsaved_quit = false;
 
@@ -267,7 +428,8 @@ void save_char_obj( CHAR_DATA *ch )
     /* create god log */
     if (get_trust(ch) > 59 || IS_IMMORTAL(ch))
     {
-	fclose(fpReserve);
+        if (fpReserve != NULL)
+            fclose(fpReserve);
         snprintf(strsave, sizeof(strsave), "%s%s", GOD_DIR, capitalize(ch->name));
 	if ((fp = fopen(strsave,"w")) == NULL)
 	{
@@ -280,11 +442,8 @@ void save_char_obj( CHAR_DATA *ch )
 	        ch->level, get_trust(ch), ch->name, ch->pcdata->title);
 	    fclose( fp );
 #if defined(unix) && defined(CHGRP_TO)
-        if (can_chgrp()) {
-            snprintf(buf, sizeof(buf), "chgrp %s %s", CHGRP_TO, strsave);
-            if (system(buf) == -1)
-                bug("save_char_obj: system backup failed.", 0);
-        }
+            if (!apply_chgrp(strsave))
+                bug("save_char_obj: god log chgrp failed.", 0);
 #endif
 	}
 	fpReserve = fopen( NULL_FILE, "r" );
@@ -300,7 +459,8 @@ void save_char_obj( CHAR_DATA *ch )
     /* create hero log */
     if (IS_HERO(ch) && get_trust(ch) < 60)
     {
-        fclose(fpReserve);
+        if (fpReserve != NULL)
+            fclose(fpReserve);
         snprintf(strsave, sizeof(strsave), "%s%s", HERO_DIR, capitalize(ch->name));
         if ((fp = fopen(strsave,"w")) == NULL)
         {
@@ -313,11 +473,8 @@ void save_char_obj( CHAR_DATA *ch )
                 ch->level, get_trust(ch), ch->name, ch->pcdata->title);
             fclose( fp );
 #if defined(unix) && defined(CHGRP_TO)
-            if (can_chgrp()) {
-                snprintf(buf, sizeof(buf), "chgrp %s %s", CHGRP_TO, strsave);
-                if (system(buf) == -1)
-                    bug("save_char_obj: player backup failed.", 0);
-            }
+            if (!apply_chgrp(strsave))
+                bug("save_char_obj: hero log chgrp failed.", 0);
 #endif
         }
         fpReserve = fopen( NULL_FILE, "r" );
@@ -331,7 +488,8 @@ void save_char_obj( CHAR_DATA *ch )
 
 
 
-    fclose( fpReserve );
+    if (fpReserve != NULL)
+        fclose( fpReserve );
     snprintf(strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize(ch->name));
     if ( ( fp = fopen( PLAYER_TEMP, "w" ) ) == NULL )
     {
@@ -347,22 +505,34 @@ void save_char_obj( CHAR_DATA *ch )
 	if (ch->pet != NULL && ch->pet->in_room == ch->in_room
         && ch->pet->carrying == NULL )
 	    fwrite_pet(ch->pet,fp);
-	fprintf( fp, "#END\n" );
-	fclose( fp );
-	/* move the file only when write succeeded */
+        fprintf( fp, "#END\n" );
+        if (fclose( fp ) != 0)
+        {
+            bug("save_char_obj: player file write failed.", 0);
+            perror(PLAYER_TEMP);
+            remove(PLAYER_TEMP);
+        }
+	/* Move the file only after buffered data reached the filesystem. */
+	else if (rename( PLAYER_TEMP, strsave ) != 0)
+        {
+	    bug("save_char_obj: rename failed.", 0);
+            perror(strsave);
+        }
+        else
+        {
+            save_succeeded = true;
 #if defined(unix) && defined(CHGRP_TO)
-	if (can_chgrp())
-	    snprintf(buf, sizeof(buf), "mv %s %s; chgrp %s %s", PLAYER_TEMP, strsave, CHGRP_TO, strsave);
-	else
-	    snprintf(buf, sizeof(buf), "mv %s %s", PLAYER_TEMP, strsave);
-#else
-	snprintf(buf, sizeof(buf), "mv %s %s", PLAYER_TEMP, strsave);
+            if (!apply_chgrp(strsave))
+                bug("save_char_obj: player file chgrp failed.", 0);
 #endif
-	if (system(buf) == -1)
-	    bug("save_char_obj: mv failed.", 0);
-	/* Snapshot the freshly-written file so every save captures the
-	   state that actually landed on disk, not the pre-overwrite version. */
-	player_snapshot( ch->name );
+	    /* Snapshot only the state that actually landed on disk. */
+	    player_snapshot( ch->name );
+        }
+    }
+    if (!save_succeeded)
+    {
+        ch->pcdata->has_saved = previous_has_saved;
+        ch->pcdata->confirm_unsaved_quit = previous_confirm_unsaved_quit;
     }
     fpReserve = fopen( NULL_FILE, "r" );
     if (fpReserve == NULL)
@@ -2214,27 +2384,39 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 
 void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
 {
+    enum { CORPSE_ROWS = 6, CORPSE_VALUES = 1024,
+           CORPSE_MAX_ITEMS = CORPSE_VALUES - 3 };
     FILE 	*fp;
     OBJ_DATA	*obj, *obj_next;
     OBJ_DATA	*obj_nest, *objn_next;
     char	strsave[MAX_INPUT_LENGTH];
     char 	buf[MAX_STRING_LENGTH];
-    int		corpse_cont[6][1024];
-    int		item_level[6][1024];
+    int		corpse_cont[CORPSE_ROWS][CORPSE_VALUES];
+    int		item_level[CORPSE_ROWS][CORPSE_VALUES];
     int		c = 1, i;
     int		checksum1 = 0;
     int 	checksum2 = 0;
+    int         previous_corpses;
     bool	first;
+    bool        malformed = false;
 
-    if(!corpse->contains)
+    if(corpse == NULL || !corpse->contains)
 	return;
 
     if( IS_NPC( ch ) )
 	return;
 
+    memset(corpse_cont, 0, sizeof(corpse_cont));
+    memset(item_level, 0, sizeof(item_level));
+
     for( obj = corpse->contains; obj; obj = obj_next )
     {
 	obj_next = obj->next_content;
+        if (c > CORPSE_MAX_ITEMS || obj->pIndexData == NULL)
+        {
+            bug("corpse_back: invalid or oversized corpse contents.", 0);
+            return;
+        }
 	corpse_cont[5][c] = obj->pIndexData->vnum;
 	item_level[5][c] = obj->level;
 	checksum1 += corpse_cont[5][c];
@@ -2245,6 +2427,11 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
 	    for( obj_nest = obj->contains; obj_nest; obj_nest = objn_next )
 	    {
 		objn_next = obj_nest->next_content;
+                if (c > CORPSE_MAX_ITEMS || obj_nest->pIndexData == NULL)
+                {
+                    bug("corpse_back: invalid or oversized nested contents.", 0);
+                    return;
+                }
 		corpse_cont[5][c] = obj_nest->pIndexData->vnum;
 		item_level[5][c] = obj_nest->level;
 		checksum1 += corpse_cont[5][c];
@@ -2254,7 +2441,7 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
 	}
     }
 
-    if( c <= 2 )
+    if( c <= 1 )
 	return;
 
     corpse_cont[5][0] = c - 1;
@@ -2262,7 +2449,8 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
     corpse_cont[5][c+1] = checksum1;
     item_level[5][c+1] = checksum2;
 
-    if( ch->pcdata->corpses == 0 )
+    previous_corpses = ch->pcdata->corpses;
+    if( previous_corpses == 0 )
 	first = true;
     else
 	first = false;
@@ -2272,9 +2460,10 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
     else
 	++ch->pcdata->corpses;
 
-    fclose( fpReserve );
+    if (fpReserve != NULL)
+        fclose( fpReserve );
 
-#if !defined( machintosh) && !defined( MSDOS )
+#if !defined( macintosh) && !defined( MSDOS )
     snprintf(strsave, sizeof(strsave), "%s%s.cps", CORPSE_DIR, ch->name);
 #else
     snprintf(strsave, sizeof(strsave), "%s%s.cps", PLAYER_DIR, ( ch->name ));
@@ -2287,19 +2476,24 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
             snprintf( buf, sizeof(buf), "Corpses back: fopen %s: ", ch->name );
 	    bug( buf, 0 );
 	    perror( strsave );
+	    ch->pcdata->corpses = previous_corpses;
+	    fpReserve = fopen( NULL_FILE, "r" );
+	    return;
    	}
-	else
+	for( i = 0; i < c ; i++ )
 	{
-	    for( i = 0; i < c ; i++ )
-	    {
-		fprintf( fp, "%d ", corpse_cont[5][i] );
-		fprintf( fp, "%d ", item_level[5][i] );
-	    }
-	    fprintf( fp, "%d ", corpse_cont[5][i+1] );
-	    fprintf( fp, "%d ", item_level[5][i+1] );
-	    fprintf( fp, "99 99" );
+	    fprintf( fp, "%d ", corpse_cont[5][i] );
+	    fprintf( fp, "%d ", item_level[5][i] );
 	}
-	fclose(fp);
+	fprintf( fp, "%d ", corpse_cont[5][i+1] );
+	fprintf( fp, "%d ", item_level[5][i+1] );
+	fprintf( fp, "99 99" );
+	if (fclose(fp) != 0)
+        {
+            bug("corpse_back: failed to finish corpse history file.", 0);
+            perror(strsave);
+            ch->pcdata->corpses = previous_corpses;
+        }
 	fpReserve = fopen( NULL_FILE, "r" );
 	return;
     }
@@ -2309,57 +2503,77 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
         snprintf( buf, sizeof(buf), "Corpse back: fopen %s: ", ch->name );
 	bug( buf, 0 );
 	perror( strsave );
+	ch->pcdata->corpses = previous_corpses;
+	fpReserve = fopen( NULL_FILE, "r" );
+	return;
     }
-    else
+    for( i = 4; i > 0; i-- )
     {
-	for( i = 4; i > 0; i-- )
+	corpse_cont[i][0] = fread_number( fp );
+	item_level[i][0] = fread_number( fp );
+
+	if ( corpse_cont[i][0] == 99 )
+	    break;
+
+	if ( corpse_cont[i][0] < 0
+	  || corpse_cont[i][0] > CORPSE_MAX_ITEMS )
 	{
-	    corpse_cont[i][0] = fread_number( fp );
-	    item_level[i][0] = fread_number( fp );
+	    malformed = true;
+	    break;
+	}
 
-	    if ( corpse_cont[i][0] == 99 )
-		break;
-
-	    for( c = 1; c < corpse_cont[i][0] +2 ; c++ )
-	    {
-		corpse_cont[i][c] = fread_number( fp );
-		item_level[i][c] = fread_number( fp );
-	    }
+	for( c = 1; c < corpse_cont[i][0] +2 ; c++ )
+	{
+	    corpse_cont[i][c] = fread_number( fp );
+	    item_level[i][c] = fread_number( fp );
 	}
     }
     fclose( fp );
+
+    if (malformed)
+    {
+	bug("corpse_back: invalid item count in corpse history.", 0);
+	ch->pcdata->corpses = previous_corpses;
+	fpReserve = fopen( NULL_FILE, "r" );
+	return;
+    }
 
     if( !( fp = fopen( strsave, "w" ) ) )
     {
         snprintf( buf, sizeof(buf), "Corpse back: fopen %s: ", ch->name );
 	bug( buf, 0 );
 	perror( strsave );
+	ch->pcdata->corpses = previous_corpses;
+	fpReserve = fopen( NULL_FILE, "r" );
+	return;
     }
-    else
+    for( i = 5; i > 0 ; i-- )
     {
-	for( i = 5; i > 0 ; i-- )
+	if( corpse_cont[i][0] == 99 )
+	    break;
+
+	fprintf( fp, "%d ", corpse_cont[i][0] );
+	fprintf( fp, "%d ", item_level[i][0] );
+	checksum1 = 0;
+	checksum2 = 0;
+
+	for( c = 1; c < corpse_cont[i][0] +1 ; c++ )
 	{
-	    if( corpse_cont[i][0] == 99 )
-		break;
-
-	    fprintf( fp, "%d ", corpse_cont[i][0] );
-	    fprintf( fp, "%d ", item_level[i][0] );
-	    checksum1 = 0;
-	    checksum2 = 0;
-
-	    for( c = 1; c < corpse_cont[i][0] +1 ; c++ )
-	    {
-		fprintf( fp, "%d ", corpse_cont[i][c] );
-		fprintf( fp, "%d ", item_level[i][c] );
-		checksum1 += corpse_cont[i][c];
-		checksum2 += item_level[i][c];
-	    }
-	    fprintf( fp, "%d ", checksum1 );
-	    fprintf( fp, "%d ", checksum2 );
+	    fprintf( fp, "%d ", corpse_cont[i][c] );
+	    fprintf( fp, "%d ", item_level[i][c] );
+	    checksum1 += corpse_cont[i][c];
+	    checksum2 += item_level[i][c];
 	}
-	fprintf( fp, "99 99" );
+	fprintf( fp, "%d ", checksum1 );
+	fprintf( fp, "%d ", checksum2 );
     }
-    fclose( fp );
+    fprintf( fp, "99 99" );
+    if (fclose( fp ) != 0)
+    {
+	bug("corpse_back: failed to finish corpse history file.", 0);
+	perror(strsave);
+	ch->pcdata->corpses = previous_corpses;
+    }
     fpReserve = fopen( NULL_FILE, "r" );
     return;
 }

@@ -46,7 +46,8 @@ void save_wizlist(void)
     FILE *fp;
     bool found = false;
 
-    fclose( fpReserve ); 
+    if (fpReserve != NULL)
+        fclose( fpReserve );
     if ( ( fp = fopen( WIZ_FILE, "w" ) ) == NULL )
     {
         perror( WIZ_FILE );
@@ -70,6 +71,7 @@ void load_wizlist(void)
 {
     FILE *fp;
     WIZ_DATA *wiz_last;
+    WIZ_DATA *wiz_next;
  
     if ( ( fp = fopen( WIZ_FILE, "r" ) ) == NULL )
     {
@@ -77,6 +79,12 @@ void load_wizlist(void)
         return;
     }
  
+    while (wiz_list != NULL)
+    {
+        wiz_next = wiz_list->next;
+        free_wiz(wiz_list);
+        wiz_list = wiz_next;
+    }
     wiz_last = NULL;
 
     for ( ; ; )
@@ -95,7 +103,7 @@ void load_wizlist(void)
         pwiz->level = (sh_int)(fread_number(fp));
 	fread_to_eol(fp);
 
-        if (wiz_list == NULL)
+        if (wiz_last == NULL)
             wiz_list = pwiz;
 	else
             wiz_last->next = pwiz;
