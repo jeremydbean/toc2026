@@ -17,6 +17,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   candle bushes, cracked walls, Recorder interactions, and the hungry Goriya.
 - Added Hyrule progression tests for every gear level, dungeon entrances,
   boss drops, shard sources, canonical items, puzzles, and room reachability.
+- Added a unique readable map and functional boss compass to each Hyrule
+  dungeon, including route guidance through legacy portal and stair links.
 - Added `merc --check-area` / `merc --validate` startup mode for loading the full area database and exiting without opening a listening socket.
 - Added reusable area-health linting in `webadmin/area_health.py`, the `scripts/area_lint.py` CLI, a web admin Area Health view, and the `/api/area_health` endpoint.
 - Added cross-platform validation runners: `scripts/validate.ps1` for Windows/WSL and `scripts/validate.sh` for Linux, macOS, WSL, and CI.

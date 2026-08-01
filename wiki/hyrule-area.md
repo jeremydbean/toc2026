@@ -66,6 +66,41 @@ Puzzle objects use `ITEM_MANIPULATION` (`31`) with this value layout:
 Successful puzzle objects are extracted and can return on the next area reset,
 which keeps reset doors and repeatable boss encounters synchronized.
 
+## Dungeon Maps And Compasses
+
+Every labyrinth has its own collectible map and compass. Use
+`read <dungeon> map` to display a route chart with the entrance, major item
+vaults, boss, and Triforce chamber. Use `read <dungeon> compass` anywhere
+inside that same labyrinth to receive the first general direction toward the
+boss and a rough distance estimate. A short form such as `read compass` works
+when only one matching item is present.
+
+| Level | Map location | Compass location | Boss target |
+| --- | --- | --- | --- |
+| 1: Eagle | `30480` in `30347` | `30489` in `30344` | `30353` |
+| 2: Moon | `30481` in `30362` | `30490` in `30369` | `30376` |
+| 3: Manji | `30482` in `30611` | `30491` in `30602` | `30613` |
+| 4: Snake | `30483` in `30631` | `30492` in `30622` | `30633` |
+| 5: Lizard | `30484` in `30651` | `30493` in `30645` | `30653` |
+| 6: Dragon | `30485` in `30670` | `30494` in `30663` | `30673` |
+| 7: Demon | `30486` in `30683` | `30495` in `30692` | `30693` |
+| 8: Lion | `30487` in `30706` | `30496` in `30712` | `30713` |
+| 9: Death Mountain | `30488` in `30400` | `30497` in `30398` | `30436` |
+
+Both use `ITEM_MAP` (`28`). Their values are data-driven:
+
+| Value | Meaning |
+| --- | --- |
+| `value[0]` | `90` for a readable dungeon map, `91` for a boss compass |
+| `value[1]` | Boss-room vnum |
+| `value[2]` | First room vnum in the matching dungeon |
+| `value[3]` | Last room vnum in the matching dungeon |
+| `value[4]` | Dungeon level number (`1-9`) |
+
+Compass routing ignores closed-door state but remains inside the recorded
+dungeon bounds. It also understands permanent portal lights and climbable
+stairs, which are required to follow the Moon and Death Mountain layouts.
+
 ## Equipment Curve
 
 Every level from 1 through 70 has at least one sourced weapon or armor item.
@@ -86,7 +121,8 @@ dungeons fit below Ganon at level 70:
 
 The progression test in `tests/test_hyrule_progression.py` verifies continuous
 gear coverage, cache placement, boss rooms and drops, shard sources, canonical
-items, puzzle locations, and structural reachability of every Hyrule room.
+items, dungeon-specific map and compass metadata, puzzle locations, and
+structural reachability of every Hyrule room.
 
 ## Ganon And Return Travel
 

@@ -131,6 +131,100 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn(30235, master_sword.contained_by)
         self.assertEqual(self.parser.objects[30235].values[2], "30405")
 
+    def test_each_dungeon_has_its_own_map_and_compass(self) -> None:
+        dungeon_items = {
+            1: (30480, 30347, 30489, 30344, 30353, 30339, 30354),
+            2: (30481, 30362, 30490, 30369, 30376, 30355, 30377),
+            3: (30482, 30611, 30491, 30602, 30613, 30600, 30614),
+            4: (30483, 30631, 30492, 30622, 30633, 30620, 30634),
+            5: (30484, 30651, 30493, 30645, 30653, 30640, 30654),
+            6: (30485, 30670, 30494, 30663, 30673, 30660, 30674),
+            7: (30486, 30683, 30495, 30692, 30693, 30680, 30694),
+            8: (30487, 30706, 30496, 30712, 30713, 30700, 30714),
+            9: (30488, 30400, 30497, 30398, 30436, 30378, 30437),
+        }
+
+        for level, (
+            map_vnum,
+            map_room,
+            compass_vnum,
+            compass_room,
+            boss_room,
+            first_room,
+            last_room,
+        ) in dungeon_items.items():
+            dungeon_map = self.parser.objects[map_vnum]
+            compass = self.parser.objects[compass_vnum]
+            expected_path = [str(boss_room), str(first_room), str(last_room), str(level)]
+
+            with self.subTest(level=level, item="map"):
+                self.assertEqual(dungeon_map.item_type, "28")
+                self.assertEqual(dungeon_map.values, ["90", *expected_path])
+                self.assertIn(map_vnum, self.parser.rooms[map_room].objects)
+                self.assertTrue(
+                    any("map" in description["keyword"].split()
+                        for description in dungeon_map.extra_descr)
+                )
+
+            with self.subTest(level=level, item="compass"):
+                self.assertEqual(compass.item_type, "28")
+                self.assertEqual(compass.values, ["91", *expected_path])
+                self.assertIn(compass_vnum, self.parser.rooms[compass_room].objects)
+
+        self.assertNotIn(30418, self.parser.objects)
+        self.assertNotIn(30419, self.parser.objects)
+
+    def test_compass_can_route_to_each_boss_from_nonlethal_rooms(self) -> None:
+        for compass_vnum in range(30489, 30498):
+            compass = self.parser.objects[compass_vnum]
+            boss_room, first_room, last_room, level = map(int, compass.values[1:])
+            dungeon_rooms = {
+                room_vnum
+                for room_vnum in self.hyrule_rooms
+                if first_room <= room_vnum <= last_room
+            }
+            routes = {
+                room_vnum: {
+                    exit_data.to_room
+                    for exit_data in self.parser.rooms[room_vnum].exits
+                    if exit_data.to_room in dungeon_rooms
+                }
+                for room_vnum in dungeon_rooms
+            }
+
+            for room_vnum in dungeon_rooms:
+                for object_vnum in self.parser.rooms[room_vnum].objects:
+                    obj = self.parser.objects.get(object_vnum)
+                    if obj is None:
+                        continue
+                    if obj.item_type == "30" or (
+                        obj.item_type == "31" and int(obj.values[0]) in {6, 7}
+                    ):
+                        destination = int(obj.values[1])
+                        if destination in dungeon_rooms:
+                            routes[room_vnum].add(destination)
+
+            can_reach_boss = {boss_room}
+            changed = True
+            while changed:
+                changed = False
+                for room_vnum, destinations in routes.items():
+                    if room_vnum not in can_reach_boss and destinations & can_reach_boss:
+                        can_reach_boss.add(room_vnum)
+                        changed = True
+
+            lethal_teleports = {
+                room_vnum
+                for room_vnum in dungeon_rooms
+                if self.parser.rooms[room_vnum].teleport_to_room is not None
+                and self.parser.rooms[room_vnum].teleport_to_room not in dungeon_rooms
+            }
+            with self.subTest(level=level):
+                self.assertEqual(
+                    dungeon_rooms - can_reach_boss - lethal_teleports,
+                    set(),
+                )
+
     def test_shards_and_data_driven_puzzles_have_sources(self) -> None:
         for shard_vnum in range(30400, 30408):
             with self.subTest(shard_vnum=shard_vnum):

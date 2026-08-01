@@ -1808,13 +1808,18 @@ Syntax: look <direction>
 Syntax: look <keyword>
 Syntax: look in <container>
 Syntax: look in <corpse>
+Syntax: read <map or compass>
 
 LOOK examines whatever you specify.  Looking at a character shows their
 description and equipment.  LOOK alone describes the room you are in;
 with BRIEF on, only the short description is shown.  Use 'look room' to
 see the full, unbriefed room description.
 
-READ is a synonym for LOOK.
+READ normally behaves like LOOK. Some magical maps have a readable route
+chart. A dungeon compass can be read while inside its matching labyrinth to
+show the first general direction toward the boss and whether the chamber feels
+close or far away. If you carry several, include the dungeon name, such as
+'read eagle compass'.
 
 See also: EXAMINE, SEARCH, INVENTORY
 ~

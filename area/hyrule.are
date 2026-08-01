@@ -2499,24 +2499,6 @@ meat~
 H 0 0 0 0
 60 3 6000 P
 
-#30418
-dungeon map~
-a dungeon map~
-A map sketches the shape of this numbered labyrinth.~
-gold~
-18 G AO
-0 0 0 0 0
-1 1 100 P
-
-#30419
-dungeon compass~
-a dungeon compass~
-A compass needle points toward this labyrinth's Triforce chamber.~
-gold~
-18 G AO
-0 0 0 0 0
-1 1 100 P
-
 #30420
 bush bramble secret~
 a dry bramble bush~
@@ -2984,6 +2966,284 @@ energy~
 30 GOV 0
 5 30295 0 0 0
 0 0 0 P
+
+#30480
+eagle dungeon map parchment~
+the Eagle dungeon map~
+A folded map of the Eagle lies here.~
+paper~
+28 G AO
+90 30353 30339 30354 1
+11 1 1100 P
+E
+eagle map parchment~
+Level 1 - The Eagle
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north Circular Room -> north Fork
+Fork -> east C
+Fork -> west Trap -> north Oily Hall -> east M
+M -> north Waterway -> north Waterway -> west I: Bow Vault
+M -> east Goriya Guard -> east Burned Hall -> north B -> east T
+~
+
+#30481
+moon dungeon map parchment~
+the Moon dungeon map~
+A folded map of the Moon lies here.~
+paper~
+28 G AO
+90 30376 30355 30377 2
+21 1 2100 P
+E
+moon map parchment~
+Level 2 - The Moon
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> east Stone Room -> north I: Magical Boomerang
+E -> west Oily Hall -> north Junction -> north Trap -> north M
+M -> north Hot Fork -> follow either upper branch until the halls rejoin
+Rejoined halls -> C -> south Hall -> east Passage -> north Black Room
+Black Room -> enter the white light -> Lower Floor
+Lower Floor -> south Flooded Room -> west Trap -> north Hall -> north B -> north T
+~
+
+#30482
+manji dungeon map parchment~
+the Manji dungeon map~
+A folded map of the Manji lies here.~
+paper~
+28 G AO
+90 30613 30600 30614 3
+31 1 3100 P
+E
+manji map parchment~
+Level 3 - The Manji
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> west C
+E -> north Zol Hall -> north Bubble Crossing -> north Darknut Court
+Darknut Court -> east Eastern Arm -> north Block Room -> north Hidden Stair
+Hidden Stair -> down I: Raft Vault
+Darknut Court -> west Western Arm -> north Crossing of Blades -> east M
+M -> north Boss Antechamber -> east B -> north T
+~
+
+#30483
+snake dungeon map parchment~
+the Snake dungeon map~
+A folded map of the Snake lies here.~
+paper~
+28 G AO
+90 30633 30620 30634 4
+41 1 4100 P
+E
+snake map parchment~
+Level 4 - The Snake
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> west C
+E -> north Vire Hall -> north Flooded Junction
+Flooded Junction -> north I: Stepladder Vault
+Flooded Junction -> east Like Like Gallery -> east Water Gap -> north Upper Coil
+Upper Coil -> down Lower Cellar, or north Vire Crossing -> north Block Room
+Block Room -> west M
+Block Room -> east Boss Antechamber -> north B -> north T
+~
+
+#30484
+lizard dungeon map parchment~
+the Lizard dungeon map~
+A folded map of the Lizard lies here.~
+paper~
+28 G AO
+90 30653 30640 30654 5
+51 1 5100 P
+E
+lizard map parchment~
+Level 5 - The Lizard
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north Gibdo Hall -> north Darknut Junction
+Gibdo Hall -> east Old Man's Warning
+Darknut Junction -> east C
+Darknut Junction -> west Cracked Wall -> north Hundred-Rupee Room
+Darknut Junction -> north Pols Voice Hall -> east I: Recorder Vault
+Pols Voice Hall -> north Upper Spine -> north Bomb Fork
+Bomb Fork -> west M
+Bomb Fork -> east Resonant Eye Room -> north B -> north T
+~
+
+#30485
+dragon dungeon map parchment~
+the Dragon dungeon map~
+A folded map of the Dragon lies here.~
+paper~
+28 G AO
+90 30673 30660 30674 6
+56 1 5600 P
+E
+dragon map parchment~
+Level 6 - The Dragon
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north Wizzrobe Hall
+Wizzrobe Hall -> west C, or east Eye Hint
+Wizzrobe Hall -> north Like Like Gallery -> north False Wall
+False Wall -> east Hidden Passage -> east Block Room
+Block Room -> down I: Magical Wand Vault
+Block Room -> north Wizzrobe Gauntlet -> west M
+Wizzrobe Gauntlet -> east Eastern Turn -> north Arrow Slit -> north B -> north T
+~
+
+#30486
+demon dungeon map parchment~
+the Demon dungeon map~
+A folded map of the Demon lies here.~
+paper~
+28 G AO
+90 30693 30680 30694 7
+61 1 6100 P
+E
+demon map parchment~
+Level 7 - The Demon
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north Supply Room -> east Goriya Hall
+Goriya Hall -> north M, or east Elder Digdogger -> north Bomb Junction
+Bomb Junction -> west Bomb Cache, or east Hungry Goriya -> north Upper Face
+Upper Face -> west I: Red Candle Vault
+Upper Face -> north Cracked Nose -> east Movable Block -> down C
+C -> north B -> north T
+~
+
+#30487
+lion dungeon map parchment~
+the Lion dungeon map~
+A folded map of the Lion lies here.~
+paper~
+28 G AO
+90 30713 30700 30714 8
+65 1 6500 P
+E
+lion map parchment~
+Level 8 - The Lion
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north First Seal -> north Mixed Guard Room
+First Seal -> east Manhandla Ambush
+Mixed Guard Room -> down I: Magic Book Cellar
+Mixed Guard Room -> north Darknut Hall -> west M
+Darknut Hall -> east Crossroads -> north I: Magical Key Vault
+Magical Key Vault -> north Hidden Route -> east Cracked Wall -> north Approach
+Approach -> west C, or north B -> north T
+~
+
+#30488
+death mountain dungeon map parchment~
+the Death Mountain dungeon map~
+A folded map of Death Mountain lies here.~
+paper~
+28 G AO
+90 30436 30378 30437 9
+68 1 6800 P
+E
+death mountain map parchment~
+Level 9 - Death Mountain
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = Triforce
+
+E -> north through the circular loop -> Hidden Room -> climb stairs
+Next Floor -> east Intersection; south then south reaches M
+East branch -> dark halls -> Hidden Hallway; south then south reaches C
+Hidden Hallway -> north three times reaches I: Red Ring Vault
+Next Floor -> south Main Hall -> west Wet Room -> north Twist -> west Narrow Hall
+Narrow Hall -> south, west, then south through the long halls to Lower Junction
+Lower Junction -> south Intersection -> east Stone Room -> east Junction
+Junction -> south Oily Room -> east, climb stairs -> north I: Silver Arrow Vault
+Junction -> north Dead End -> up Golden Hall -> north Lanmola -> north Antechamber
+Antechamber -> north B -> north T
+~
+
+#30489
+eagle dungeon compass~
+the Eagle dungeon compass~
+The Eagle's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30353 30339 30354 1
+11 1 1100 P
+
+#30490
+moon dungeon compass~
+the Moon dungeon compass~
+The Moon's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30376 30355 30377 2
+21 1 2100 P
+
+#30491
+manji dungeon compass~
+the Manji dungeon compass~
+The Manji's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30613 30600 30614 3
+31 1 3100 P
+
+#30492
+snake dungeon compass~
+the Snake dungeon compass~
+The Snake's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30633 30620 30634 4
+41 1 4100 P
+
+#30493
+lizard dungeon compass~
+the Lizard dungeon compass~
+The Lizard's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30653 30640 30654 5
+51 1 5100 P
+
+#30494
+dragon dungeon compass~
+the Dragon dungeon compass~
+The Dragon's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30673 30660 30674 6
+56 1 5600 P
+
+#30495
+demon dungeon compass~
+the Demon dungeon compass~
+The Demon's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30693 30680 30694 7
+61 1 6100 P
+
+#30496
+lion dungeon compass~
+the Lion dungeon compass~
+The Lion's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30713 30700 30714 8
+65 1 6500 P
+
+#30497
+death mountain dungeon compass~
+the Death Mountain dungeon compass~
+Death Mountain's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30436 30378 30437 9
+68 1 6800 P
 #0
 
 
@@ -9602,8 +9862,8 @@ P 0 30275 1 30441
 O 0 30442 0 30354
 P 0 30400 1 30442
 O 0 30205 0 30354
-O 0 30418 0 30347
-O 0 30419 0 30344
+O 0 30480 0 30347
+O 0 30489 0 30344
 M 0 30302 28 30358
 M 0 30302 28 30358
 M 0 30302 28 30359
@@ -9643,8 +9903,8 @@ P 0 30214 1 30444
 O 0 30204 0 30377
 O 0 30247 0 30371
 O 0 30263 0 30361
-O 0 30418 0 30362
-O 0 30419 0 30369
+O 0 30481 0 30362
+O 0 30490 0 30369
 M 0 30213 16 30601
 M 0 30304 10 30601
 M 0 30213 16 30603
@@ -9675,8 +9935,8 @@ O 0 30446 0 30614
 P 0 30402 1 30446
 P 0 30228 1 30446
 O 0 30472 0 30614
-O 0 30418 0 30611
-O 0 30419 0 30602
+O 0 30482 0 30611
+O 0 30491 0 30602
 M 0 30306 12 30621
 M 0 30306 12 30621
 M 0 30306 12 30629
@@ -9705,8 +9965,8 @@ P 0 30230 1 30447
 O 0 30448 0 30634
 P 0 30403 1 30448
 O 0 30473 0 30634
-O 0 30418 0 30631
-O 0 30419 0 30622
+O 0 30483 0 30631
+O 0 30492 0 30622
 M 0 30219 12 30641
 M 0 30219 12 30643
 M 0 30219 12 30646
@@ -9726,8 +9986,8 @@ P 0 30216 1 30449
 O 0 30450 0 30654
 P 0 30404 1 30450
 O 0 30474 0 30654
-O 0 30418 0 30651
-O 0 30419 0 30645
+O 0 30484 0 30651
+O 0 30493 0 30645
 O 0 30280 0 30647
 M 0 30310 16 30661
 M 0 30310 16 30661
@@ -9750,8 +10010,8 @@ P 0 30245 1 30451
 O 0 30452 0 30674
 P 0 30405 1 30452
 O 0 30475 0 30674
-O 0 30418 0 30670
-O 0 30419 0 30663
+O 0 30485 0 30670
+O 0 30494 0 30663
 M 0 30333 8 30681
 M 0 30312 18 30682
 M 0 30312 18 30682
@@ -9776,8 +10036,8 @@ O 0 30454 0 30694
 P 0 30406 1 30454
 O 0 30476 0 30694
 O 0 30417 0 30686
-O 0 30418 0 30683
-O 0 30419 0 30692
+O 0 30486 0 30683
+O 0 30495 0 30692
 M 0 30319 1 30702
 M 0 30315 14 30703
 M 0 30315 14 30703
@@ -9800,8 +10060,8 @@ P 0 30416 1 30455
 O 0 30456 0 30714
 P 0 30407 1 30456
 O 0 30477 0 30714
-O 0 30418 0 30706
-O 0 30419 0 30712
+O 0 30487 0 30706
+O 0 30496 0 30712
 M 0 30315 28 30379
 G 0 30249 1
 G 0 30250 1
@@ -9853,8 +10113,8 @@ O 0 30217 0 30437
 O 0 30233 0 30437
 P 0 30286 1 30233
 P 0 30281 1 30233
-O 0 30418 0 30400
-O 0 30419 0 30398
+O 0 30488 0 30400
+O 0 30497 0 30398
 M 0 30224 1 30465
 E 0 30257 1 12
 S

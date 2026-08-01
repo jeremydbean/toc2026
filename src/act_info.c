@@ -29,6 +29,7 @@ DECLARE_DO_FUN( do_help		);
 
 bool scan = false;
 extern const char       *       dir_name[];
+extern ROOM_INDEX_DATA  *       room_index_hash[MAX_KEY_HASH];
 
 static size_t bounded_strlen( const char *text, size_t limit )
 {
@@ -1051,9 +1052,304 @@ void do_nosummon(CHAR_DATA *ch, char *argument)
 }
 
 
+enum
+{
+    HYRULE_DUNGEON_MAP = 90,
+    HYRULE_DUNGEON_COMPASS = 91,
+    COMPASS_TRANSPORT_STEP = 6,
+    COMPASS_DIRECTION_COUNT = 6
+};
+
+typedef struct compass_path_node COMPASS_PATH_NODE;
+struct compass_path_node
+{
+    COMPASS_PATH_NODE *next;
+    ROOM_INDEX_DATA *room;
+    OBJ_DATA *first_transport;
+    int first_step;
+    int distance;
+};
+
+static void compass_clear_marks( void )
+{
+    ROOM_INDEX_DATA *room;
+    int bucket;
+
+    for ( bucket = 0; bucket < MAX_KEY_HASH; bucket++ )
+        for ( room = room_index_hash[bucket]; room != NULL; room = room->next )
+            REMOVE_BIT( room->room_flags, ROOM_BFS_MARK );
+}
+
+static void compass_free_queue( COMPASS_PATH_NODE *head )
+{
+    COMPASS_PATH_NODE *next;
+
+    while ( head != NULL )
+    {
+        next = head->next;
+        free_mem( head, sizeof( *head ) );
+        head = next;
+    }
+}
+
+static void compass_enqueue( COMPASS_PATH_NODE **head,
+                             COMPASS_PATH_NODE **tail,
+                             ROOM_INDEX_DATA *room,
+                             int first_step,
+                             OBJ_DATA *first_transport,
+                             int distance )
+{
+    COMPASS_PATH_NODE *node;
+
+    node = alloc_mem( sizeof( *node ) );
+    node->next = NULL;
+    node->room = room;
+    node->first_step = first_step;
+    node->first_transport = first_transport;
+    node->distance = distance;
+
+    if ( *tail == NULL )
+        *head = node;
+    else
+        (*tail)->next = node;
+    *tail = node;
+}
+
+static bool compass_room_allowed( ROOM_INDEX_DATA *room, AREA_DATA *area,
+                                  int low_vnum, int high_vnum )
+{
+    return room != NULL
+        && room->area == area
+        && room->vnum >= low_vnum
+        && room->vnum <= high_vnum;
+}
+
+/*
+ * Dungeon compasses include permanent portals and climbable stairs in their
+ * route graph. The normal hunting pathfinder cannot return those actions as
+ * a first step, so it is intentionally kept separate.
+ */
+static int compass_find_first_step( ROOM_INDEX_DATA *source,
+                                    ROOM_INDEX_DATA *target,
+                                    int low_vnum, int high_vnum,
+                                    int *distance,
+                                    OBJ_DATA **first_transport )
+{
+    COMPASS_PATH_NODE *head = NULL;
+    COMPASS_PATH_NODE *tail = NULL;
+    COMPASS_PATH_NODE *current;
+    ROOM_INDEX_DATA *destination;
+    OBJ_DATA *obj;
+    int direction;
+    int result;
+
+    *distance = 0;
+    *first_transport = NULL;
+
+    if ( source == target )
+        return -2;
+
+    compass_clear_marks();
+    SET_BIT( source->room_flags, ROOM_BFS_MARK );
+    compass_enqueue( &head, &tail, source, -1, NULL, 0 );
+
+    while ( head != NULL )
+    {
+        current = head;
+
+        if ( current->room == target )
+        {
+            result = current->first_step;
+            *distance = current->distance;
+            *first_transport = current->first_transport;
+            compass_free_queue( head );
+            compass_clear_marks();
+            return result;
+        }
+
+        for ( direction = 0; direction < COMPASS_DIRECTION_COUNT; direction++ )
+        {
+            if ( current->room->exit[direction] == NULL )
+                continue;
+
+            destination = current->room->exit[direction]->u1.to_room;
+            if ( !compass_room_allowed( destination, target->area,
+                                        low_vnum, high_vnum )
+                || IS_SET( destination->room_flags, ROOM_BFS_MARK ) )
+                continue;
+
+            SET_BIT( destination->room_flags, ROOM_BFS_MARK );
+            compass_enqueue(
+                &head,
+                &tail,
+                destination,
+                current->distance == 0 ? direction : current->first_step,
+                current->distance == 0 ? NULL : current->first_transport,
+                current->distance + 1 );
+        }
+
+        for ( obj = current->room->contents; obj != NULL; obj = obj->next_content )
+        {
+            if ( obj->item_type != ITEM_PORTAL
+                && !(obj->item_type == ITEM_MANIPULATION
+                     && (obj->value[0] == 6 || obj->value[0] == 7)) )
+                continue;
+
+            destination = get_room_index( obj->value[1] );
+            if ( !compass_room_allowed( destination, target->area,
+                                        low_vnum, high_vnum )
+                || IS_SET( destination->room_flags, ROOM_BFS_MARK ) )
+                continue;
+
+            SET_BIT( destination->room_flags, ROOM_BFS_MARK );
+            compass_enqueue(
+                &head,
+                &tail,
+                destination,
+                current->distance == 0
+                    ? COMPASS_TRANSPORT_STEP : current->first_step,
+                current->distance == 0 ? obj : current->first_transport,
+                current->distance + 1 );
+        }
+
+        head = current->next;
+        if ( head == NULL )
+            tail = NULL;
+        free_mem( current, sizeof( *current ) );
+    }
+
+    compass_clear_marks();
+    return -1;
+}
+
+static const char *compass_distance_phrase( int distance )
+{
+    if ( distance <= 2 )
+        return "very close";
+    if ( distance <= 5 )
+        return "nearby";
+    if ( distance <= 9 )
+        return "some distance away";
+    return "far away";
+}
+
+static void read_dungeon_map( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    char *map_text;
+
+    map_text = get_extra_descr( "map", obj->extra_descr );
+    if ( map_text == NULL && obj->pIndexData != NULL )
+        map_text = get_extra_descr( "map", obj->pIndexData->extra_descr );
+
+    if ( map_text != NULL )
+    {
+        send_to_char( map_text, ch );
+        return;
+    }
+
+    send_to_char( obj->description, ch );
+    send_to_char( "\n\r", ch );
+}
+
+static void read_dungeon_compass( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    ROOM_INDEX_DATA *target;
+    OBJ_DATA *transport;
+    char buf[MAX_STRING_LENGTH];
+    int direction;
+    int distance;
+    int low_vnum = obj->value[2];
+    int high_vnum = obj->value[3];
+
+    target = get_room_index( obj->value[1] );
+    if ( target == NULL || low_vnum <= 0 || high_vnum < low_vnum )
+    {
+        send_to_char( "The compass needle hangs loose and lifeless.\n\r", ch );
+        return;
+    }
+
+    if ( ch->in_room == NULL
+        || ch->in_room->area != target->area
+        || ch->in_room->vnum < low_vnum
+        || ch->in_room->vnum > high_vnum )
+    {
+        snprintf( buf, sizeof( buf ),
+                  "The compass needle circles without settling. It only knows the paths of dungeon Level %d.\n\r",
+                  obj->value[4] );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( ch->in_room == target )
+    {
+        snprintf( buf, sizeof( buf ),
+                  "The compass needle spins once, then settles. %s is here.\n\r",
+                  target->name );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    direction = compass_find_first_step( ch->in_room, target,
+                                         low_vnum, high_vnum,
+                                         &distance, &transport );
+    if ( direction >= 0 && direction < COMPASS_DIRECTION_COUNT )
+    {
+        snprintf( buf, sizeof( buf ),
+                  "The compass needle swings %s, toward %s.\n\r",
+                  dir_name[direction], target->name );
+        send_to_char( buf, ch );
+    }
+    else if ( direction == COMPASS_TRANSPORT_STEP && transport != NULL )
+    {
+        if ( transport->item_type == ITEM_PORTAL )
+            act( "The compass needle points straight into $p.",
+                 ch, transport, NULL, TO_CHAR );
+        else if ( transport->value[0] == 6 )
+            act( "The compass needle tilts upward toward $p.",
+                 ch, transport, NULL, TO_CHAR );
+        else
+            act( "The compass needle tilts downward toward $p.",
+                 ch, transport, NULL, TO_CHAR );
+    }
+    else
+    {
+        send_to_char( "The compass needle trembles, but the labyrinth's magic obscures a complete route.\n\r",
+                      ch );
+        return;
+    }
+
+    snprintf( buf, sizeof( buf ), "The boss chamber feels %s.\n\r",
+              compass_distance_phrase( distance ) );
+    send_to_char( buf, ch );
+}
+
 /* RT added back for the hell of it */
 void do_read (CHAR_DATA *ch, char *argument )
 {
+    OBJ_DATA *obj;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Read what?\n\r", ch );
+        return;
+    }
+
+    obj = get_obj_here( ch, argument );
+    if ( obj != NULL && obj->item_type == ITEM_MAP )
+    {
+        if ( obj->value[0] == HYRULE_DUNGEON_MAP )
+        {
+            read_dungeon_map( ch, obj );
+            return;
+        }
+
+        if ( obj->value[0] == HYRULE_DUNGEON_COMPASS )
+        {
+            read_dungeon_compass( ch, obj );
+            return;
+        }
+    }
+
     do_look(ch,argument);
 }
 
