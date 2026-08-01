@@ -17,7 +17,7 @@ lock unlock open close pick         gainlist teachlist
 inventory equipment look compare
 eat drink fill
 list buy sell value
-move climb flip push pull turn
+move climb flip push pull turn burn bomb feed play
 
 COMMUNICATION
 gossip leveling music q/a
@@ -1432,6 +1432,24 @@ The effect of the spell is reduced or eliminated if the victim makes the
 saving throw successfully.
 
 See also: SPELLGROUP, SPELLS, GAIN
+~
+
+0 BOMB BURN FEED PLAY~
+Syntax: bomb <target>
+        burn <target>
+        feed <guardian>
+        play <instrument>
+
+Some area puzzles react to a specific tool. BURN requires a lit candle and
+can reveal passages hidden by vegetation. BOMB requires a carried bomb bag
+and opens specially marked cracked surfaces. PLAY uses a Recorder, whistle,
+or ocarina to trigger a nearby musical puzzle. FEED consumes suitable enemy
+bait when a hungry guardian blocks the way.
+
+These commands only affect objects designed for that interaction. Examine
+the room and its objects for clues.
+
+See also: FLIP, MOVE, PULL, PUSH, TURN, LOOK
 ~
 
 0 CLIMB~

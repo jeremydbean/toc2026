@@ -24,10 +24,15 @@ function Invoke-Step {
 }
 
 function Invoke-Wsl {
-    param([string]$Command)
+    param(
+        [string]$Command,
+        [int[]]$AllowedExitCodes = @(0)
+    )
+
     wsl -d $Distro -- bash -lc $Command
-    if ($LASTEXITCODE -ne 0) {
-        throw "WSL command failed with exit code $LASTEXITCODE"
+    $ExitCode = $LASTEXITCODE
+    if ($ExitCode -notin $AllowedExitCodes) {
+        throw "WSL command failed with exit code $ExitCode"
     }
 }
 
@@ -54,7 +59,7 @@ Invoke-Step "C area validation mode" {
 
 if ($RunSmoke) {
     Invoke-Step "C startup smoke on port $SmokePort" {
-        Invoke-Wsl "cd '$WslRepo/area' && timeout 25s ../merc $SmokePort || test `$? -eq 124"
+        Invoke-Wsl "cd '$WslRepo/area' && timeout 25s ../merc $SmokePort" @(0, 124, 143)
     }
 }
 

@@ -10,8 +10,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- Added the remastered Hyrule area (`30200-30550`) with a Campus arcade entry,
-  repaired dungeon progression, the Triforce reward chain, and two return portals.
+- Added the remastered Hyrule area (`30200-30799`) with a teleport-only Campus
+  arcade entry, all nine original Zelda labyrinths, a complete level 1-70 gear
+  curve, the Triforce reward chain, and two return portals.
+- Added data-driven `burn`, `bomb`, `play`, and `feed` puzzle commands for
+  candle bushes, cracked walls, Recorder interactions, and the hungry Goriya.
+- Added Hyrule progression tests for every gear level, dungeon entrances,
+  boss drops, shard sources, canonical items, puzzles, and room reachability.
 - Added `merc --check-area` / `merc --validate` startup mode for loading the full area database and exiting without opening a listening socket.
 - Added reusable area-health linting in `webadmin/area_health.py`, the `scripts/area_lint.py` CLI, a web admin Area Health view, and the `/api/area_health` endpoint.
 - Added cross-platform validation runners: `scripts/validate.ps1` for Windows/WSL and `scripts/validate.sh` for Linux, macOS, WSL, and CI.
@@ -32,6 +37,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed the PowerShell startup smoke test treating a healthy timeout-driven
+  server shutdown as a validation failure.
 - Fixed Unix game-loop web-admin queue processing so queued dashboard actions are handled on Linux/Docker builds.
 - Fixed a web-admin queue race that could lose actions appended while the game loop read and deleted the queue file.
 - Fixed player saves reporting success and creating snapshots after failed writes or failed atomic replacement.

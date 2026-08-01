@@ -3557,6 +3557,258 @@ return;
 }
 
 
+enum puzzle_manipulation_type
+{
+    PUZZLE_BURN = 11,
+    PUZZLE_BOMB = 12,
+    PUZZLE_PLAY = 13,
+    PUZZLE_FEED = 14
+};
+
+static OBJ_DATA *find_carried_puzzle_tool( CHAR_DATA *ch, const char *keyword,
+                                           int item_type )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( is_name( keyword, obj->name )
+        &&   ( item_type < 0 || obj->item_type == item_type ) )
+            return obj;
+    }
+
+    return NULL;
+}
+
+static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    ROOM_INDEX_DATA *room;
+    EXIT_DATA *pexit;
+    EXIT_DATA *reverse;
+    CHAR_DATA *victim;
+    bool changed = false;
+
+    if ( obj->value[3] == 2 )
+    {
+        send_to_char( "That puzzle has already been solved.\n\r", ch );
+        return false;
+    }
+
+    if ( obj->value[1] != 0 )
+    {
+        room = get_room_index( obj->value[1] );
+        if ( room == NULL || obj->value[2] < 0 || obj->value[2] > 5
+        ||   ( pexit = room->exit[obj->value[2]] ) == NULL
+        ||   pexit->u1.to_room == NULL )
+        {
+            send_to_char( "Nothing seems to happen.\n\r", ch );
+            return false;
+        }
+
+        REMOVE_BIT( pexit->exit_info, EX_CLOSED );
+        REMOVE_BIT( pexit->exit_info, EX_LOCKED );
+        REMOVE_BIT( pexit->exit_info, EX_SECRET );
+
+        reverse = pexit->u1.to_room->exit[rev_dir[obj->value[2]]];
+        if ( reverse != NULL && reverse->u1.to_room == room )
+        {
+            REMOVE_BIT( reverse->exit_info, EX_CLOSED );
+            REMOVE_BIT( reverse->exit_info, EX_LOCKED );
+            REMOVE_BIT( reverse->exit_info, EX_SECRET );
+        }
+        changed = true;
+    }
+
+    if ( obj->value[4] == 1 )
+    {
+        for ( victim = ch->in_room->people; victim != NULL;
+              victim = victim->next_in_room )
+        {
+            if ( !IS_NPC(victim) || victim == ch )
+                continue;
+
+            victim->hit = UMAX( 1, victim->hit / 3 );
+            act( "$n shudders as the sound tears through $s defenses!",
+                 victim, NULL, NULL, TO_ROOM );
+            act( "The sound tears through your defenses!",
+                 victim, NULL, NULL, TO_CHAR );
+            changed = true;
+        }
+    }
+
+    if ( !changed )
+    {
+        send_to_char( "Nothing seems to happen.\n\r", ch );
+        return false;
+    }
+
+    obj->value[3] = 2;
+    return true;
+}
+
+static OBJ_DATA *get_puzzle_target( CHAR_DATA *ch, char *argument,
+                                    int puzzle_type )
+{
+    OBJ_DATA *obj;
+
+    if ( argument[0] == '\0' )
+        return NULL;
+
+    obj = get_obj_here( ch, argument );
+    if ( obj == NULL || obj->item_type != ITEM_MANIPULATION
+    ||   obj->value[0] != puzzle_type )
+        return NULL;
+
+    return obj;
+}
+
+void do_burn( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *target;
+    OBJ_DATA *candle;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Burn what?\n\r", ch );
+        return;
+    }
+
+    target = get_puzzle_target( ch, argument, PUZZLE_BURN );
+    if ( target == NULL )
+    {
+        send_to_char( "You find nothing there that a candle can burn.\n\r", ch );
+        return;
+    }
+
+    candle = find_carried_puzzle_tool( ch, "candle", ITEM_LIGHT );
+    if ( candle == NULL || candle->value[2] == 0 )
+    {
+        send_to_char( "You need a burning candle to do that.\n\r", ch );
+        return;
+    }
+
+    if ( trigger_puzzle_manipulation( ch, target ) )
+    {
+        act( "You touch $p with the candle flame, revealing a hidden passage!",
+             ch, target, NULL, TO_CHAR );
+        act( "$n burns away $p, revealing a hidden passage!",
+             ch, target, NULL, TO_ROOM );
+        extract_obj( target );
+    }
+}
+
+void do_bomb( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *target;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Bomb what?\n\r", ch );
+        return;
+    }
+
+    target = get_puzzle_target( ch, argument, PUZZLE_BOMB );
+    if ( target == NULL )
+    {
+        send_to_char( "You find no cracked surface to bomb there.\n\r", ch );
+        return;
+    }
+
+    if ( find_carried_puzzle_tool( ch, "bomb", -1 ) == NULL )
+    {
+        send_to_char( "You need a bomb bag to do that.\n\r", ch );
+        return;
+    }
+
+    if ( trigger_puzzle_manipulation( ch, target ) )
+    {
+        act( "You set a bomb beside $p and dive aside. The blast opens a passage!",
+             ch, target, NULL, TO_CHAR );
+        act( "$n bombs $p, and the blast opens a passage!",
+             ch, target, NULL, TO_ROOM );
+        extract_obj( target );
+    }
+}
+
+void do_play( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *instrument;
+    OBJ_DATA *target;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Play what?\n\r", ch );
+        return;
+    }
+
+    instrument = get_obj_carry( ch, argument );
+    if ( instrument == NULL
+    || ( !is_name( "recorder", instrument->name )
+      && !is_name( "whistle", instrument->name )
+      && !is_name( "ocarina", instrument->name ) ) )
+    {
+        send_to_char( "You are not carrying an instrument that can play that melody.\n\r", ch );
+        return;
+    }
+
+    for ( target = ch->in_room->contents; target != NULL;
+          target = target->next_content )
+    {
+        if ( target->item_type == ITEM_MANIPULATION
+        &&   target->value[0] == PUZZLE_PLAY )
+            break;
+    }
+
+    if ( target == NULL )
+    {
+        send_to_char( "The melody fades without an answer.\n\r", ch );
+        return;
+    }
+
+    act( "You play $p, and an ancient melody fills the room.",
+         ch, instrument, NULL, TO_CHAR );
+    act( "$n plays $p, and an ancient melody fills the room.",
+         ch, instrument, NULL, TO_ROOM );
+    if ( trigger_puzzle_manipulation( ch, target ) )
+        extract_obj( target );
+}
+
+void do_feed( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *target;
+    OBJ_DATA *bait;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Feed whom?\n\r", ch );
+        return;
+    }
+
+    target = get_puzzle_target( ch, argument, PUZZLE_FEED );
+    if ( target == NULL )
+    {
+        send_to_char( "Nobody here seems interested in your provisions.\n\r", ch );
+        return;
+    }
+
+    bait = find_carried_puzzle_tool( ch, "bait", ITEM_FOOD );
+    if ( bait == NULL )
+    {
+        send_to_char( "You need food suitable for bait.\n\r", ch );
+        return;
+    }
+
+    if ( trigger_puzzle_manipulation( ch, target ) )
+    {
+        act( "You offer $p. The hungry guardian devours it and steps aside.",
+             ch, bait, NULL, TO_CHAR );
+        act( "$n feeds the hungry guardian, who steps aside.",
+             ch, NULL, NULL, TO_ROOM );
+        extract_obj( bait );
+        extract_obj( target );
+    }
+}
+
 void do_manipulate( CHAR_DATA *ch, char *argument )
 {
 

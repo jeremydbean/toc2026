@@ -222,7 +222,9 @@ const	struct	cmd_type	cmd_table	[] =
      * Object manipulation commands.
      */
     { "brandish",	do_brandish,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "bomb",            do_bomb,        POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "brew",	        do_brew,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "burn",            do_burn,        POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "close",		do_close,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "climb",          do_climb,       POS_STANDING,    0,  LOG_NORMAL, 1 },
     { "drink",		do_drink,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
@@ -230,6 +232,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "drop",		do_drop,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
     { "eat",		do_eat,		POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "fill",		do_fill,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "feed",            do_feed,        POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "flip",		do_flip,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "give",		do_give,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "jump",		do_jump,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
@@ -248,6 +251,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "move",		do_move,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "open",		do_open,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "pick",		do_pick,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
+    { "play",            do_play,        POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "pull",		do_pull,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "push",		do_push,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
 /*    { "put",		do_put,		POS_RESTING,	 0,  LOG_NORMAL, 1 },*/

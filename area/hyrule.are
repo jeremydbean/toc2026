@@ -1,4 +1,4 @@
-#AREA   {10 70} Astarte Hyrule~
+#AREA   {1 70} Astarte Hyrule~
 
 #MOBILES
 #30200
@@ -170,7 +170,7 @@ A Keese hangs here upside down, it's small red eyes peering at you.
 ~
 bat~
 ABF AJQT -100 S
-25 12 7d10+540 1d1+0 3d5+18 10
+13 6 4d10+202 1d10+0 2d4+9 7
 0 0 0 0
 FH 0 0 S
 8 8 0 0
@@ -184,7 +184,7 @@ This large white skeleton paces about the room, moaning.  It seems to be the rem
 ~
 undead~
 ABT CEF -350 S
-45 22 12d10+1740 1d1+0 5d7+33 21
+16 8 5d10+307 1d10+0 2d5+11 7
 0 0 0 0
 BCEU BLQ FG EHJN
 8 8 0 0
@@ -198,7 +198,7 @@ This small puddle resembles oil, or a similar substance.  It seems to actually h
 ~
 human~
 ABF A -100 S
-15 7 4d10+195 1d1+0 2d4+11 14
+31 15 10d10+1153 1d10+0 4d6+22 7
 0 0 0 0
 CHK KS 0 H
 8 8 0 0
@@ -212,7 +212,7 @@ This Goriya is dressed in orange, and holding a small boomerang.  It doesn't see
 ~
 goblin~
 ABFT J -150 S
-40 20 12d10+1570 1d1+0 4d7+30 7
+18 9 6d10+388 1d10+0 2d5+12 7
 0 0 0 0
 EFKU 0 Q C
 8 8 1 0
@@ -226,7 +226,7 @@ This Like Like is little more then slime.  It seems to push itself along quite w
 ~
 human~
 ABF 0 -150 S
-40 20 12d10+1570 1d1+0 4d7+30 14
+43 21 14d10+2218 1d10+0 5d6+30 7
 0 0 0 0
 U 0 D C
 8 8 0 0
@@ -269,7 +269,7 @@ This Dodongo is HUGE!  Its body nearly takes up the entire room, making it hard 
 ~
 lizard~
 ABFMV DEFV -750 S
-65 32 25d12+10500 1d1+0 8d10+50 6
+30 15 10d10+2250 1d10+0 4d6+21 7
 0 0 0 0
 0 H L I
 8 8 0 0
@@ -283,7 +283,7 @@ This mummy appears to be alive and moving towards you.  The cloth wrapped around
 ~
 undead~
 AFO CEFHV -650 S
-55 27 16d10+5000 18d10+900 6d8+41 18
+51 25 17d10+3121 12d10+612 6d7+36 7
 0 0 0 0
 FGK BLQ FG EHJN
 8 8 0 0
@@ -297,7 +297,7 @@ You can see the power of this knight even below it's armor.  He has a very large
 ~
 dwarf~
 AFT CDFHJV -250 S
-55 27 16d10+5000 1d1+0 6d8+41 1
+36 18 12d10+1555 1d10+0 4d6+25 7
 0 0 0 0
 CDEFK 0 CDQ CR
 8 8 0 0
@@ -325,7 +325,7 @@ This three-headed dragon stands nearly 25 feet tall.  He is immediately aware of
 ~
 dragon~
 ABFMV DFHJ -450 S
-60 30 24d12+9000 1d1+0 7d10+45 10
+20 10 6d10+1000 1d10+0 3d5+14 7
 0 0 0 0
 CMO BHL HQ I
 8 8 0 0
@@ -339,7 +339,7 @@ The Gohma is a very large spider.  It has only one eye, which darts back and for
 ~
 insect~
 ABFMV CDFHJTV -750 S
-60 30 24d12+9000 1d1+0 7d10+45 10
+60 30 20d10+9000 15d10+720 7d8+43 7
 0 0 0 0
 H BG 0 HL
 8 8 0 0
@@ -367,7 +367,7 @@ Ganon stands here, dressed only in a black robe, and holding a staff which he tw
 ~
 pig~
 ABFMRV CDFHJQUV -800 S
-70 35 30d12+16000 30d10+1800 10d12+60 18
+70 35 23d10+12250 17d10+840 8d8+50 7
 0 0 0 0
 BCDE BDEFGN CP Y
 8 8 0 0
@@ -444,6 +444,530 @@ ABMV CDEFJOV 1000 S
 CEFGHKM ABC DEP R
 6 6 0 150000
 AHMV ABCDEFGHIJK S 0
+#30300
+gel slime~
+a gel~
+A quivering gel slides across the stones.
+~
+This tiny dungeon slime shivers before springing forward.
+~
+human~
+AF 0 -200 S
+13 6 4d10+202 1d10+0 2d4+9 7
+0 0 0 0
+0 0 0 0
+8 8 0 338
+AHMV ABCDEFGHIJK M 0
+
+#30301
+wallmaster hand~
+a Wallmaster~
+A disembodied Wallmaster crawls from the wall.
+~
+A pale hand large enough to seize an adventurer claws at the floor.
+~
+undead~
+AF 0 -200 S
+19 9 6d10+433 1d10+0 2d5+13 7
+0 0 0 0
+0 0 0 0
+8 8 0 722
+AHMV ABCDEFGHIJK M 0
+
+#30302
+rope snake~
+a Rope~
+A Rope coils here, ready to charge.
+~
+This small dungeon snake watches for a straight line to its prey.
+~
+snake~
+AF 0 -200 S
+22 11 7d10+580 1d10+0 3d5+15 7
+0 0 0 0
+0 0 0 0
+8 8 0 968
+AHMV ABCDEFGHIJK M 0
+
+#30303
+moldorm worm~
+a Moldorm~
+A segmented Moldorm circles the room.
+~
+The armored worm turns in tight, relentless circles.
+~
+insect~
+AF 0 -200 S
+25 12 8d10+750 1d10+0 3d5+18 7
+0 0 0 0
+0 0 0 0
+8 8 0 1250
+AHMV ABCDEFGHIJK M 0
+
+#30304
+bubble spirit~
+a Bubble~
+A crackling Bubble ricochets through the chamber.
+~
+The cursed spirit flashes between the walls in an erratic orbit.
+~
+undead~
+AF 0 -200 S
+32 16 10d10+1228 1d10+0 4d6+23 7
+0 0 0 0
+0 0 0 0
+8 8 0 2048
+AHMV ABCDEFGHIJK M 0
+
+#30305
+manhandla plant boss~
+Manhandla~
+The four-mouthed Manhandla blocks the chamber.
+~
+Four snapping heads grow from a single armored heart of vines.
+~
+tree~
+ABFMV 0 -200 S
+40 20 13d10+4000 1d10+0 5d6+28 7
+0 0 0 0
+0 0 0 0
+8 8 0 3200
+AHMV ABCDEFGHIJK H 0
+
+#30306
+vire demon~
+a Vire~
+A horned Vire bounds between the shadows.
+~
+The winged demon crouches, ready to split into smaller terrors.
+~
+demon~
+AF 0 -200 S
+43 21 14d10+2218 1d10+0 5d6+30 7
+0 0 0 0
+0 0 0 0
+8 8 0 3698
+AHMV ABCDEFGHIJK M 0
+
+#30307
+gleeok dragon boss~
+Gleeok~
+The many-headed Gleeok fills the chamber.
+~
+Several dragon heads weave above a single scarred body, breathing furnace heat.
+~
+dragon~
+ABFMV 0 -200 S
+50 25 16d10+6250 12d10+600 6d7+36 7
+0 0 0 0
+0 0 0 0
+8 8 0 5000
+AHMV ABCDEFGHIJK H 0
+
+#30308
+pols voice rabbit~
+a Pols Voice~
+A long-eared Pols Voice hops here.
+~
+Its enormous ears twitch at every sound while its jaws work hungrily.
+~
+rabbit~
+AF 0 -200 S
+53 26 17d10+3370 13d10+636 6d7+38 7
+0 0 0 0
+0 0 0 0
+8 8 0 5618
+AHMV ABCDEFGHIJK M 0
+
+#30309
+digdogger eye boss~
+Digdogger~
+The enormous eye of Digdogger rolls toward you.
+~
+A living eye wrapped in hardened flesh trembles at the faintest melody.
+~
+human~
+ABFMV 0 -200 S
+55 27 18d10+7562 13d10+660 6d7+39 7
+0 0 0 0
+0 0 0 0
+8 8 0 6050
+AHMV ABCDEFGHIJK H 0
+
+#30310
+orange wizzrobe wizard~
+an orange Wizzrobe~
+An orange Wizzrobe fades into view.
+~
+The robed sorcerer gathers a burning spell between hidden hands.
+~
+elf~
+AF 0 -200 S
+57 28 19d10+3898 14d10+684 6d7+41 7
+0 0 0 0
+0 0 0 0
+8 8 0 6498
+AHMV ABCDEFGHIJK M 0
+
+#30311
+hungry goriya guardian~
+a hungry Goriya~
+A hungry Goriya watches the passage.
+~
+The Goriya looks more interested in food than battle and refuses to move.
+~
+goblin~
+AF 0 -200 S
+1 1 3d10+1 1d10+0 1d4+1 7
+0 0 0 0
+0 0 0 0
+8 8 0 2
+AHMV ABCDEFGHIJK M 0
+
+#30312
+blue goriya demon~
+a blue Goriya~
+A veteran blue Goriya raises its blade.
+~
+This veteran guardian knows every turn of the Demon labyrinth.
+~
+goblin~
+AF 0 -200 S
+61 30 20d10+4465 15d10+732 7d8+43 7
+0 0 0 0
+0 0 0 0
+8 8 0 7442
+AHMV ABCDEFGHIJK M 0
+
+#30313
+digdogger elder eye~
+an elder Digdogger~
+An elder Digdogger shakes the dungeon.
+~
+The enormous eye has survived countless heroes, but still fears music.
+~
+human~
+ABFMV 0 -200 S
+63 31 21d10+9922 15d10+756 7d8+45 7
+0 0 0 0
+0 0 0 0
+8 8 0 7938
+AHMV ABCDEFGHIJK H 0
+
+#30314
+aquamentus ancient dragon~
+ancient Aquamentus~
+Ancient Aquamentus guards the Demon's heart.
+~
+The old dragon bears the scars of the first labyrinth and far greater power.
+~
+dragon~
+ABFMV 0 -200 S
+64 32 21d10+10240 16d10+768 7d8+46 7
+0 0 0 0
+0 0 0 0
+8 8 0 8192
+AHMV ABCDEFGHIJK H 0
+
+#30315
+blue darknut knight~
+a blue Darknut~
+A blue Darknut seals the corridor.
+~
+Heavy blue plate turns the knight into a walking fortress.
+~
+dwarf~
+AF 0 -200 S
+66 33 22d10+5227 16d10+792 7d8+47 7
+0 0 0 0
+0 0 0 0
+8 8 0 8712
+AHMV ABCDEFGHIJK M 0
+
+#30316
+gleeok ashen dragon~
+ashen Gleeok~
+Ashen Gleeok roars from the Lion's heart.
+~
+The elder dragon's severed heads continue to fight in wreaths of fire.
+~
+dragon~
+ABFMV 0 -200 S
+67 33 22d10+11222 16d10+804 7d8+48 7
+0 0 0 0
+0 0 0 0
+8 8 0 8978
+AHMV ABCDEFGHIJK H 0
+
+#30317
+lanmola crimson worm~
+a crimson Lanmola~
+A crimson Lanmola erupts through the floor.
+~
+The segmented Death Mountain worm moves like a living avalanche.
+~
+snake~
+AF 0 -200 S
+68 34 22d10+5548 17d10+816 7d8+48 7
+0 0 0 0
+0 0 0 0
+8 8 0 9248
+AHMV ABCDEFGHIJK M 0
+
+#30318
+patra eye swarm boss~
+Patra~
+Patra watches from within a spinning ring of eyes.
+~
+A great central eye hides behind an orbiting wall of smaller, hateful eyes.
+~
+human~
+ABFMV 0 -200 S
+69 34 23d10+11902 17d10+828 7d8+49 7
+0 0 0 0
+0 0 0 0
+8 8 0 9522
+AHMV ABCDEFGHIJK H 0
+
+#30319
+manhandla ancient plant~
+an ancient Manhandla~
+An ancient Manhandla tears at the Lion's walls.
+~
+The old four-headed plant has rooted itself through the dungeon floor.
+~
+tree~
+ABFMV 0 -200 S
+65 32 21d10+10562 16d10+780 7d8+46 7
+0 0 0 0
+0 0 0 0
+8 8 0 8450
+AHMV ABCDEFGHIJK H 0
+
+#30320
+field octorok red~
+a field octorok~
+A young red octorok patrols the trail.
+~
+A small rock-spitting creature tests new arrivals to Hyrule.
+~
+human~
+AF 0 -200 S
+3 1 3d10+10 1d10+0 1d4+2 7
+0 0 0 0
+0 0 0 0
+8 8 0 18
+AHMV ABCDEFGHIJK M 0
+
+#30321
+river zora young~
+a young Zora~
+A young Zora rises from the shallows.
+~
+The scaled scout darts between the water and the bank.
+~
+fish~
+AF 0 -200 S
+8 4 3d10+76 1d10+0 1d4+5 7
+0 0 0 0
+0 0 0 0
+8 8 0 128
+AHMV ABCDEFGHIJK M 0
+
+#30322
+eastern tektite~
+an eastern tektite~
+An eastern tektite bounds across the path.
+~
+The bright spider has learned to hunt travelers nearing the Moon.
+~
+insect~
+AF 0 -200 S
+13 6 4d10+202 1d10+0 2d4+9 7
+0 0 0 0
+0 0 0 0
+8 8 0 338
+AHMV ABCDEFGHIJK M 0
+
+#30323
+eastern leever~
+an eastern leever~
+An eastern leever churns through the soil.
+~
+Its armored body erupts from the earth without warning.
+~
+insect~
+AF 0 -200 S
+18 9 6d10+388 1d10+0 2d5+12 7
+0 0 0 0
+0 0 0 0
+8 8 0 648
+AHMV ABCDEFGHIJK M 0
+
+#30324
+western moblin~
+a western moblin~
+A western moblin guards the forest trail.
+~
+This disciplined raider watches the road to the Manji.
+~
+pig~
+AF 0 -200 S
+23 11 7d10+634 1d10+0 3d5+16 7
+0 0 0 0
+0 0 0 0
+8 8 0 1058
+AHMV ABCDEFGHIJK M 0
+
+#30325
+western zora~
+a western Zora~
+A western Zora stalks the lakeside.
+~
+The veteran river fighter is far stronger than its eastern kin.
+~
+fish~
+AF 0 -200 S
+28 14 9d10+940 1d10+0 3d5+20 7
+0 0 0 0
+0 0 0 0
+8 8 0 1568
+AHMV ABCDEFGHIJK M 0
+
+#30326
+shoreline leever~
+a shoreline leever~
+A shoreline leever bursts from the sand.
+~
+Salt has hardened this creature's shell into natural armor.
+~
+insect~
+AF 0 -200 S
+33 16 11d10+1306 1d10+0 4d6+23 7
+0 0 0 0
+0 0 0 0
+8 8 0 2178
+AHMV ABCDEFGHIJK M 0
+
+#30327
+shoreline lynel~
+a shoreline Lynel~
+A shoreline Lynel lowers its blade.
+~
+The centaur warrior controls the road to the island dungeon.
+~
+horse~
+AF 0 -200 S
+38 19 12d10+1732 1d10+0 4d6+27 7
+0 0 0 0
+0 0 0 0
+8 8 0 2888
+AHMV ABCDEFGHIJK M 0
+
+#30328
+mountain lynel~
+a mountain Lynel~
+A mountain Lynel challenges the ascent.
+~
+This massive warrior has survived the heat and stone of Death Mountain.
+~
+horse~
+AF 0 -200 S
+45 22 15d10+2430 1d10+0 5d7+32 7
+0 0 0 0
+0 0 0 0
+8 8 0 4050
+AHMV ABCDEFGHIJK M 0
+
+#30329
+stone octorok mountain~
+a stone octorok~
+A stone octorok spits gravel from the cliff.
+~
+Its granite shell blends perfectly into the mountain path.
+~
+human~
+AF 0 -200 S
+48 24 16d10+2764 1d10+0 5d7+34 7
+0 0 0 0
+0 0 0 0
+8 8 0 4608
+AHMV ABCDEFGHIJK M 0
+
+#30330
+graveyard ghini~
+a graveyard Ghini~
+A graveyard Ghini rises through a marker.
+~
+The old spirit circles the road toward the Dragon labyrinth.
+~
+undead~
+AF 0 -200 S
+53 26 17d10+3370 13d10+636 6d7+38 7
+0 0 0 0
+0 0 0 0
+8 8 0 5618
+AHMV ABCDEFGHIJK M 0
+
+#30331
+dead forest guardian tree~
+a Dead Forest guardian~
+A gnarled guardian tree tears free of its roots.
+~
+Ancient magic drives this tree to defend the final eastern paths.
+~
+tree~
+AF 0 -200 S
+63 31 21d10+4762 15d10+756 7d8+45 7
+0 0 0 0
+0 0 0 0
+8 8 0 7938
+AHMV ABCDEFGHIJK M 0
+
+#30332
+blue like like slime~
+a blue Like Like~
+A blue Like Like slides forward, hungry for enchanted equipment.
+~
+This stronger dungeon predator has adapted to the magic surrounding the Dragon labyrinth.
+~
+human~
+ABF 0 -300 S
+58 29 19d10+4070 14d10+696 6d7+42 7
+0 0 0 0
+U 0 D C
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+
+#30333
+elder moldorm worm~
+an elder Moldorm~
+An elder Moldorm coils across the Demon's opening chamber.
+~
+Age and the seventh labyrinth's magic have hardened every segment of this enormous worm.
+~
+snake~
+ABF 0 -300 S
+61 30 20d10+4465 15d10+732 7d8+43 7
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+
+#30334
+red wizzrobe wizard~
+a red Wizzrobe~
+A red Wizzrobe flickers between the shadows of Death Mountain.
+~
+This master of the final labyrinth disappears between volleys of searing magic.
+~
+elf~
+ABFR CDFHJTV -500 S
+68 34 22d10+5548 17d10+816 7d8+48 2
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
 #0
 
 
@@ -611,7 +1135,7 @@ A single silver arrow lies here.~
 unknown~
 5 ABGUV AN
 0 4 14 2 0
-45 1 5000 P
+68 1 5000 P
 #30219
 wooden wood sword~
 a wooden sword~
@@ -643,7 +1167,7 @@ A small bow lies here.~
 unknown~
 5 BV AN
 9 6 4 6 0
-23 3 2500 P
+18 3 2500 P
 #30223
 blue potion~
 a blue potion~
@@ -725,7 +1249,7 @@ A small boomerang lies here.~
 unknown~
 5 AB AN
 0 9 6 0 0
-40 2 0 P
+17 2 0 P
 #30233
 golden chest~
 a golden chest~
@@ -748,12 +1272,12 @@ the Master Sword's stone pedestal~
 The Master Sword stands sealed within an ancient stone pedestal.~
 stone~
 15 O 0
-200 ABCD 30286 0 0
+200 ABCD 30405 0 0
 0 100 0 P
 E
 pedestal stone recess~
-A triangular recess in the pedestal matches the complete Triforce. The
-seal is beyond any ordinary lockpick.
+A triangular recess in the pedestal matches the sixth Triforce shard,
+claimed from Level 6: The Dragon. The seal is beyond any ordinary lockpick.
 ~
 E
 sword master blade~
@@ -830,7 +1354,7 @@ A large staff of power lies here.~
 wood~
 4 ABGUV AO
 60 5 5 568 0
-60 15 10000 P
+70 15 10000 P
 A
 12 50
 #30245
@@ -839,8 +1363,8 @@ a small wand~
 A small acid-etched wand lies here.~
 wood~
 3 BG AO
-45 5 5 70 0
-45 5 2500 P
+57 5 5 70 0
+57 5 2500 P
 #30246
 burnt key~
 a burnt key~
@@ -891,7 +1415,7 @@ The White Sword shines with a clean, silver light here.~
 silver~
 5 ABGUV AN
 1 13 5 20 D
-50 15 15000 P
+35 15 15000 P
 A
 18 2
 A
@@ -979,7 +1503,7 @@ A red ring glows softly here.~
 gold~
 9 ABGKUV AB
 8 8 8 6 0
-35 1 8000 P
+69 1 8000 P
 A
 13 35
 #30262
@@ -1109,7 +1633,7 @@ A golden bracelet engraved with a triangle rests here.~
 gold~
 9 ABUV AM
 8 8 8 5 0
-35 2 5000 P
+50 2 5000 P
 A
 1 2
 #30277
@@ -1210,6 +1734,1256 @@ E
 triforce triangles~
 Three golden triangles join as one, embodying Power, Wisdom, and Courage.
 ~
+#30320
+a green travelers cap hyrule gear~
+a green traveler's cap~
+A green traveler's cap rests here, ready for another hero.~
+steel~
+9 G AE
+1 1 1 1 0
+1 1 5 P
+
+#30321
+a wooden buckler hyrule gear~
+a wooden buckler~
+A wooden buckler rests here, ready for another hero.~
+steel~
+9 G AD
+1 1 1 1 0
+2 1 20 P
+
+#30322
+a homespun green tunic hyrule gear~
+a homespun green tunic~
+A homespun green tunic rests here, ready for another hero.~
+steel~
+9 G AF
+1 1 1 1 0
+3 1 45 P
+
+#30323
+a pair of trailworn boots hyrule gear~
+a pair of trail-worn boots~
+A pair of trail-worn boots rests here, ready for another hero.~
+steel~
+9 G AG
+1 1 1 1 0
+4 1 80 P
+
+#30324
+a wooden practice blade hyrule gear~
+a wooden practice blade~
+A wooden practice blade rests here, ready for another hero.~
+steel~
+5 G AN
+1 1 4 3 0
+5 2 125 P
+
+#30325
+an octorokhide wristguard hyrule gear~
+an Octorok-hide wristguard~
+An octorok-hide wristguard rests here, ready for another hero.~
+steel~
+9 G AI
+1 1 1 1 0
+6 2 180 P
+
+#30326
+a leevershell belt hyrule gear~
+a Leever-shell belt~
+A leever-shell belt rests here, ready for another hero.~
+steel~
+9 G AJ
+1 1 1 1 0
+7 2 245 P
+
+#30327
+a keesewing cloak hyrule gear~
+a Keese-wing cloak~
+A keese-wing cloak rests here, ready for another hero.~
+steel~
+9 G AK
+2 2 2 1 0
+8 2 320 P
+
+#30328
+a moblin leather jerkin hyrule gear~
+a Moblin leather jerkin~
+A moblin leather jerkin rests here, ready for another hero.~
+steel~
+9 G AL
+2 2 2 1 0
+9 3 405 P
+
+#30329
+a heros practice sword hyrule gear~
+a hero's practice sword~
+A hero's practice sword rests here, ready for another hero.~
+steel~
+5 G AN
+1 2 4 3 0
+10 3 500 P
+
+#30330
+an eaglecarved bracer hyrule gear~
+an eagle-carved bracer~
+An eagle-carved bracer rests here, ready for another hero.~
+steel~
+9 G AC
+2 2 2 1 0
+11 3 605 P
+
+#30331
+a dungeon delvers cap hyrule gear~
+a dungeon delver's cap~
+A dungeon delver's cap rests here, ready for another hero.~
+steel~
+9 G AB
+3 3 3 2 0
+12 4 720 P
+
+#30332
+a candlekeepers mantle hyrule gear~
+a candlekeeper's mantle~
+A candlekeeper's mantle rests here, ready for another hero.~
+steel~
+9 G AE
+3 3 3 2 0
+13 4 845 P
+
+#30333
+a stalfos bone guard hyrule gear~
+a Stalfos bone guard~
+A stalfos bone guard rests here, ready for another hero.~
+steel~
+9 G AD
+3 3 3 2 0
+14 4 980 P
+
+#30334
+a goriya crescent blade hyrule gear~
+a Goriya crescent blade~
+A goriya crescent blade rests here, ready for another hero.~
+steel~
+5 G AN
+1 3 4 3 0
+15 5 1125 P
+
+#30335
+a pair of traprunners boots hyrule gear~
+a pair of trap-runner's boots~
+A pair of trap-runner's boots rests here, ready for another hero.~
+steel~
+9 G AG
+4 4 4 2 0
+16 5 1280 P
+
+#30336
+a boomerangers wristguard hyrule gear~
+a boomeranger's wristguard~
+A boomeranger's wristguard rests here, ready for another hero.~
+steel~
+9 G AH
+4 4 4 2 0
+17 5 1445 P
+
+#30337
+an eagle archers bow hyrule gear~
+an Eagle archer's bow~
+An eagle archer's bow rests here, ready for another hero.~
+steel~
+5 G AN
+9 4 4 3 0
+18 6 1620 P
+
+#30338
+an aquamentusscale hauberk hyrule gear~
+an Aquamentus-scale hauberk~
+An aquamentus-scale hauberk rests here, ready for another hero.~
+steel~
+9 G AJ
+4 4 4 3 0
+19 6 1805 P
+
+#30339
+heart guard of eagle hyrule gear~
+the Heart Guard of the Eagle~
+The heart guard of the eagle rests here, ready for another hero.~
+steel~
+9 G AK
+5 5 5 3 0
+20 6 2000 P
+
+#30340
+a pair of ropehide boots hyrule gear~
+a pair of Rope-hide boots~
+A pair of rope-hide boots rests here, ready for another hero.~
+steel~
+9 G AL
+5 5 5 3 0
+21 7 2205 P
+
+#30341
+a pair of moonstone bracers hyrule gear~
+a pair of moonstone bracers~
+A pair of moonstone bracers rests here, ready for another hero.~
+steel~
+9 G AM
+5 5 5 3 0
+22 7 2420 P
+
+#30342
+a crescentmoon helm hyrule gear~
+a crescent-moon helm~
+A crescent-moon helm rests here, ready for another hero.~
+steel~
+9 G AC
+5 5 5 3 0
+23 7 2645 P
+
+#30343
+a moldorm spine blade hyrule gear~
+a Moldorm spine blade~
+A moldorm spine blade rests here, ready for another hero.~
+steel~
+5 G AN
+1 5 5 3 0
+24 8 2880 P
+
+#30344
+a moon labyrinth cuirass hyrule gear~
+a Moon labyrinth cuirass~
+A moon labyrinth cuirass rests here, ready for another hero.~
+steel~
+9 G AE
+6 6 6 4 0
+25 8 3125 P
+
+#30345
+a smokebomb bandolier hyrule gear~
+a smoke-bomb bandolier~
+A smoke-bomb bandolier rests here, ready for another hero.~
+steel~
+9 G AD
+6 6 6 4 0
+26 8 3380 P
+
+#30346
+an enchanted returning blade hyrule gear~
+an enchanted returning blade~
+An enchanted returning blade rests here, ready for another hero.~
+steel~
+5 G AN
+1 6 5 3 0
+27 9 3645 P
+
+#30347
+a pair of dodongohide leggings hyrule gear~
+a pair of Dodongo-hide leggings~
+A pair of dodongo-hide leggings rests here, ready for another hero.~
+steel~
+9 G AG
+7 7 7 4 0
+28 9 3920 P
+
+#30348
+a dodongofang sword hyrule gear~
+a Dodongo-fang sword~
+A dodongo-fang sword rests here, ready for another hero.~
+steel~
+5 G AN
+1 6 5 3 0
+29 9 4205 P
+
+#30349
+heart guard of moon hyrule gear~
+the Heart Guard of the Moon~
+The heart guard of the moon rests here, ready for another hero.~
+steel~
+9 G AI
+7 7 7 5 0
+30 10 4500 P
+
+#30350
+a pair of zolslick boots hyrule gear~
+a pair of Zol-slick boots~
+A pair of zol-slick boots rests here, ready for another hero.~
+steel~
+9 G AJ
+7 7 7 5 0
+31 10 4805 P
+
+#30351
+a bubble ward pendant hyrule gear~
+a Bubble ward pendant~
+A bubble ward pendant rests here, ready for another hero.~
+steel~
+9 G AK
+8 8 8 5 0
+32 10 5120 P
+
+#30352
+a pair of red darknut gauntlets hyrule gear~
+a pair of red Darknut gauntlets~
+A pair of red darknut gauntlets rests here, ready for another hero.~
+steel~
+9 G AL
+8 8 8 5 0
+33 11 5445 P
+
+#30353
+a red darknut shield hyrule gear~
+a red Darknut shield~
+A red darknut shield rests here, ready for another hero.~
+steel~
+9 G AM
+8 8 8 5 0
+34 11 5780 P
+
+#30354
+a raftmasters cutlass hyrule gear~
+a raftmaster's cutlass~
+A raftmaster's cutlass rests here, ready for another hero.~
+steel~
+5 G AN
+1 7 5 3 0
+35 11 6125 P
+
+#30355
+a red darknut breastplate hyrule gear~
+a red Darknut breastplate~
+A red darknut breastplate rests here, ready for another hero.~
+steel~
+9 G AB
+9 9 9 6 0
+36 12 6480 P
+
+#30356
+a labyrinth crossblade hyrule gear~
+a labyrinth crossblade~
+A labyrinth crossblade rests here, ready for another hero.~
+steel~
+5 G AN
+1 8 5 3 0
+37 12 6845 P
+
+#30357
+a manji knights shield hyrule gear~
+a Manji knight's shield~
+A manji knight's shield rests here, ready for another hero.~
+steel~
+9 G AD
+9 9 9 6 0
+38 12 7220 P
+
+#30358
+a manhandla thorn lash hyrule gear~
+a Manhandla thorn lash~
+A manhandla thorn lash rests here, ready for another hero.~
+steel~
+5 G AN
+1 8 5 3 0
+39 13 7605 P
+
+#30359
+heart guard of manji hyrule gear~
+the Heart Guard of the Manji~
+The heart guard of the manji rests here, ready for another hero.~
+steel~
+9 G AG
+10 10 10 6 0
+40 13 8000 P
+
+#30360
+a pair of virewing boots hyrule gear~
+a pair of Vire-wing boots~
+A pair of vire-wing boots rests here, ready for another hero.~
+steel~
+9 G AH
+10 10 10 6 0
+41 13 8405 P
+
+#30361
+a pair of watercrossing greaves hyrule gear~
+a pair of water-crossing greaves~
+A pair of water-crossing greaves rests here, ready for another hero.~
+steel~
+9 G AI
+10 10 10 7 0
+42 14 8820 P
+
+#30362
+a like likehide cloak hyrule gear~
+a Like Like-hide cloak~
+A like like-hide cloak rests here, ready for another hero.~
+steel~
+9 G AJ
+10 10 10 7 0
+43 14 9245 P
+
+#30363
+a serpentcrested shield hyrule gear~
+a serpent-crested shield~
+A serpent-crested shield rests here, ready for another hero.~
+steel~
+9 G AK
+11 11 11 7 0
+44 14 9680 P
+
+#30364
+a pair of stepladder sabatons hyrule gear~
+a pair of stepladder sabatons~
+A pair of stepladder sabatons rests here, ready for another hero.~
+steel~
+9 G AL
+11 11 11 7 0
+45 15 10125 P
+
+#30365
+a pair of gleeokscale bracers hyrule gear~
+a pair of Gleeok-scale bracers~
+A pair of gleeok-scale bracers rests here, ready for another hero.~
+steel~
+9 G AM
+11 11 11 7 0
+46 15 10580 P
+
+#30366
+a dragonfire helm hyrule gear~
+a dragonfire helm~
+A dragonfire helm rests here, ready for another hero.~
+steel~
+9 G AC
+11 11 11 7 0
+47 15 11045 P
+
+#30367
+a gleeokfang spear hyrule gear~
+a Gleeok-fang spear~
+A gleeok-fang spear rests here, ready for another hero.~
+steel~
+5 G AN
+1 10 6 3 0
+48 16 11520 P
+
+#30368
+a coat of gleeok scale mail hyrule gear~
+a coat of Gleeok scale mail~
+A coat of gleeok scale mail rests here, ready for another hero.~
+steel~
+9 G AE
+12 12 12 8 0
+49 16 12005 P
+
+#30369
+heart guard of snake hyrule gear~
+the Heart Guard of the Snake~
+The heart guard of the snake rests here, ready for another hero.~
+steel~
+9 G AD
+12 12 12 8 0
+50 16 12500 P
+
+#30370
+a suit of gibdo wrappings hyrule gear~
+a suit of Gibdo wrappings~
+A suit of gibdo wrappings rests here, ready for another hero.~
+steel~
+9 G AF
+12 12 12 8 0
+51 17 13005 P
+
+#30371
+a pair of pols voice ear guards hyrule gear~
+a pair of Pols Voice ear guards~
+A pair of pols voice ear guards rests here, ready for another hero.~
+steel~
+9 G AG
+13 13 13 8 0
+52 17 13520 P
+
+#30372
+a lizard labyrinth breastplate hyrule gear~
+a Lizard labyrinth breastplate~
+A lizard labyrinth breastplate rests here, ready for another hero.~
+steel~
+9 G AH
+13 13 13 8 0
+53 17 14045 P
+
+#30373
+a digdoggereye mace hyrule gear~
+a Digdogger-eye mace~
+A digdogger-eye mace rests here, ready for another hero.~
+steel~
+5 G AN
+1 11 6 3 0
+54 18 14580 P
+
+#30374
+heart guard of lizard hyrule gear~
+the Heart Guard of the Lizard~
+The heart guard of the lizard rests here, ready for another hero.~
+steel~
+9 G AJ
+13 13 13 9 0
+55 18 15125 P
+
+#30375
+a pair of orange wizzrobe gloves hyrule gear~
+a pair of orange Wizzrobe gloves~
+A pair of orange wizzrobe gloves rests here, ready for another hero.~
+steel~
+9 G AK
+14 14 14 9 0
+56 18 15680 P
+
+#30376
+a dragonmages wandblade hyrule gear~
+a dragon-mage's wandblade~
+A dragon-mage's wandblade rests here, ready for another hero.~
+steel~
+5 G AN
+1 12 6 3 0
+57 19 16245 P
+
+#30377
+shield of gohmas eye hyrule gear~
+the shield of Gohma's eye~
+The shield of gohma's eye rests here, ready for another hero.~
+steel~
+9 G AC
+14 14 14 9 0
+59 19 17405 P
+
+#30378
+heart guard of dragon hyrule gear~
+the Heart Guard of the Dragon~
+The heart guard of the dragon rests here, ready for another hero.~
+steel~
+9 G AB
+15 15 15 10 0
+60 20 18000 P
+
+#30379
+a pair of demon maze boots hyrule gear~
+a pair of Demon maze boots~
+A pair of demon maze boots rests here, ready for another hero.~
+steel~
+9 G AE
+15 15 15 10 0
+61 20 18605 P
+
+#30380
+a goriya provisioners belt hyrule gear~
+a Goriya provisioner's belt~
+A goriya provisioner's belt rests here, ready for another hero.~
+steel~
+9 G AD
+15 15 15 10 0
+62 20 19220 P
+
+#30381
+an ancient dragonscale mantle hyrule gear~
+an ancient dragon-scale mantle~
+An ancient dragon-scale mantle rests here, ready for another hero.~
+steel~
+9 G AF
+15 15 15 10 0
+63 21 19845 P
+
+#30382
+heart guard of demon hyrule gear~
+the Heart Guard of the Demon~
+The heart guard of the demon rests here, ready for another hero.~
+steel~
+9 G AG
+16 16 16 10 0
+64 21 20480 P
+
+#30383
+a pair of spellbook bracers hyrule gear~
+a pair of spellbook bracers~
+A pair of spellbook bracers rests here, ready for another hero.~
+steel~
+9 G AH
+16 16 16 10 0
+65 21 21125 P
+
+#30384
+a magical key pendant hyrule gear~
+a Magical Key pendant~
+A magical key pendant rests here, ready for another hero.~
+steel~
+9 G AI
+16 16 16 11 0
+66 22 21780 P
+
+#30385
+heart guard of lion hyrule gear~
+the Heart Guard of the Lion~
+The heart guard of the lion rests here, ready for another hero.~
+steel~
+9 G AJ
+16 16 16 11 0
+67 22 22445 P
+
+#30386
+a silverarrow spear hyrule gear~
+a silver-arrow spear~
+A silver-arrow spear rests here, ready for another hero.~
+steel~
+5 G AN
+1 14 6 3 0
+68 22 23120 P
+
+#30387
+a coat of redring mail hyrule gear~
+a coat of red-ring mail~
+A coat of red-ring mail rests here, ready for another hero.~
+steel~
+9 G AL
+17 17 17 11 0
+69 23 23805 P
+
+#30388
+ganons shadow crown hyrule gear~
+Ganon's shadow crown~
+Ganon's shadow crown rests here, ready for another hero.~
+steel~
+9 G AM
+17 17 17 11 0
+70 23 24500 P
+
+#30400
+triforce shard 1~
+the first Triforce shard~
+The 1th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+20 1 2000 P
+
+#30401
+triforce shard 2~
+the second Triforce shard~
+The 2th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+30 1 3000 P
+
+#30402
+triforce shard 3~
+the third Triforce shard~
+The 3th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+40 1 4000 P
+
+#30403
+triforce shard 4~
+the fourth Triforce shard~
+The 4th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+50 1 5000 P
+
+#30404
+triforce shard 5~
+the fifth Triforce shard~
+The 5th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+55 1 5500 P
+
+#30405
+triforce shard 6~
+the sixth Triforce shard~
+The 6th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+60 1 6000 P
+
+#30406
+triforce shard 7~
+the seventh Triforce shard~
+The 7th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+64 1 6400 P
+
+#30407
+triforce shard 8~
+the eighth Triforce shard~
+The 8th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+67 1 6700 P
+
+#30410
+magical boomerang hyrule gear~
+the Magical Boomerang~
+The magical boomerang rests here, ready for another hero.~
+steel~
+5 G AN
+1 6 5 3 0
+27 9 3645 P
+
+#30411
+raft wooden dungeon~
+the dungeon raft~
+A sturdy wooden raft waits to carry a hero over deep water.~
+wood~
+9 G AK
+7 7 7 3 0
+35 5 6125 P
+
+#30412
+stepladder ladder dungeon~
+the stepladder~
+A compact stepladder bridges gaps no stride could cross.~
+wood~
+9 G AG
+9 9 9 4 0
+45 5 10125 P
+
+#30413
+recorder whistle instrument~
+the Recorder~
+A little Recorder hums with a melody that moves water and monsters.~
+wood~
+9 G AO
+10 10 10 5 0
+54 5 14580 P
+
+#30414
+red candle flame dungeon~
+the Red Candle~
+The Red Candle burns with a steady, reusable flame.~
+wax~
+1 G AO
+0 0 999 0 0
+63 2 12000 P
+
+#30415
+magic book spellbook~
+the Magic Book~
+The Magic Book crackles with fire around its ancient pages.~
+wood~
+9 G AO
+13 13 13 6 0
+65 5 21125 P
+
+#30416
+magical key lion~
+the Magical Key~
+The Magical Key glows with the memory of every lock it has opened.~
+gold~
+18 G AO
+0 0 0 0 0
+66 1 6600 P
+
+#30417
+bait meat food goriya~
+enemy bait~
+A ration of strongly scented enemy bait lies here.~
+meat~
+19 0 A
+H 0 0 0 0
+60 3 6000 P
+
+#30418
+dungeon map~
+a dungeon map~
+A map sketches the shape of this numbered labyrinth.~
+gold~
+18 G AO
+0 0 0 0 0
+1 1 100 P
+
+#30419
+dungeon compass~
+a dungeon compass~
+A compass needle points toward this labyrinth's Triforce chamber.~
+gold~
+18 G AO
+0 0 0 0 0
+1 1 100 P
+
+#30420
+bush bramble secret~
+a dry bramble bush~
+A dry bush hides a hollow in the rock below.~
+stone~
+31 UV 0
+11 30204 5 1 0
+0 0 0 P
+
+#30421
+bush healing secret~
+a broad green bush~
+A broad bush grows too neatly against the southern bank.~
+stone~
+31 UV 0
+11 30254 2 1 0
+0 0 0 P
+
+#30422
+bush lion dungeon secret~
+a solitary dark bush~
+A solitary bush blocks what might once have been a northern path.~
+stone~
+31 UV 0
+11 30295 0 1 0
+0 0 0 P
+
+#30423
+wall rock cracked death mountain~
+a cracked face of Spectacle Rock~
+Hairline fractures outline a doorway in the northern rock.~
+stone~
+31 UV 0
+12 30323 0 1 0
+0 0 0 P
+
+#30424
+wall cracked eagle shortcut~
+a cracked northern wall~
+Loose blocks in the north wall could not survive a bomb blast.~
+stone~
+31 UV 0
+12 30343 0 1 0
+0 0 0 P
+
+#30425
+block stone eagle~
+a movable stone block~
+One block sits slightly out of line with the others.~
+stone~
+31 UV 0
+4 30351 0 1 0
+0 0 0 P
+
+#30426
+wall cracked moon shortcut~
+a cracked eastern wall~
+The eastern wall has been weakened by old explosions.~
+stone~
+31 UV 0
+12 30360 1 1 0
+0 0 0 P
+
+#30427
+block stone manji~
+a movable Manji block~
+The block's worn base suggests that it can be pushed.~
+stone~
+31 UV 0
+4 30606 0 1 0
+0 0 0 P
+
+#30428
+block stone snake~
+a movable Snake block~
+This block can be pushed away from a hidden stairwell.~
+stone~
+31 UV 0
+4 30630 3 1 0
+0 0 0 P
+
+#30429
+wall cracked lizard~
+a cracked Lizard wall~
+A hollow draft leaks through the cracked northern wall.~
+stone~
+31 UV 0
+12 30644 0 1 0
+0 0 0 P
+
+#30430
+resonance digdogger lizard~
+Digdogger's resonant shell~
+The giant eye's shell vibrates at the thought of music.~
+stone~
+31 UV 0
+13 0 0 1 1
+0 0 0 P
+
+#30431
+wall false dragon~
+a false eastern wall~
+The mortar on the eastern wall is loose enough for a bomb.~
+stone~
+31 UV 0
+12 30665 1 1 0
+0 0 0 P
+
+#30432
+pond recorder resonance~
+the still center of the pool~
+The water trembles as though waiting for a particular melody.~
+stone~
+31 UV 0
+13 30238 5 1 0
+0 0 0 P
+
+#30433
+resonance digdogger demon~
+an elder Digdogger's resonant shell~
+The vast eye quivers whenever a musical note rings out.~
+stone~
+31 UV 0
+13 0 0 1 1
+0 0 0 P
+
+#30434
+hungry goriya guardian~
+a hungry Goriya guardian~
+A hungry Goriya sits squarely in the northern doorway.~
+stone~
+31 UV 0
+14 30687 0 1 0
+0 0 0 P
+
+#30435
+wall cracked demon~
+a cracked wall at the Demon's nose~
+A fault runs through the eastern wall at the tip of the map.~
+stone~
+31 UV 0
+12 30690 1 1 0
+0 0 0 P
+
+#30436
+block stone demon nose~
+the middle nose block~
+The middle block bears handprints from an earlier hero.~
+stone~
+31 UV 0
+4 30691 5 1 0
+0 0 0 P
+
+#30437
+block stone lion~
+a movable Lion block~
+The left block has a deep groove worn beneath it.~
+stone~
+31 UV 0
+4 30703 5 1 0
+0 0 0 P
+
+#30438
+wall cracked lion~
+a cracked Lion wall~
+The eastern wall sounds hollow behind its cracked surface.~
+stone~
+31 UV 0
+12 30709 1 1 0
+0 0 0 P
+
+#30440
+starter armory chest~
+a cedar starter armory~
+A cedar armory holds practical equipment for Hyrule's first ten levels.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30441
+eagle gear chest~
+the Eagle's equipment chest~
+An eagle-carved chest holds equipment earned within Level 1.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30442
+eagle triforce chest~
+the Eagle's Triforce chest~
+A golden chest waits beyond Aquamentus.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30443
+moon gear chest~
+the Moon's equipment chest~
+A crescent-carved chest holds equipment earned within Level 2.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30444
+moon triforce chest~
+the Moon's Triforce chest~
+A silver chest waits beyond Dodongo.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30445
+manji gear chest~
+the Manji's equipment chest~
+A cross-shaped chest holds equipment earned within Level 3.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30446
+manji triforce chest~
+the Manji's Triforce chest~
+A vine-bound chest waits beyond Manhandla.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30447
+snake gear chest~
+the Snake's equipment chest~
+A serpentine chest holds equipment earned within Level 4.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30448
+snake triforce chest~
+the Snake's Triforce chest~
+A scaled chest waits beyond Gleeok.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30449
+lizard gear chest~
+the Lizard's equipment chest~
+A lizard-carved chest holds equipment earned within Level 5.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30450
+lizard triforce chest~
+the Lizard's Triforce chest~
+A round chest waits beyond Digdogger.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30451
+dragon gear chest~
+the Dragon's equipment chest~
+A dragon-carved chest holds equipment earned within Level 6.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30452
+dragon triforce chest~
+the Dragon's Triforce chest~
+An eye-shaped chest waits beyond Gohma.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30453
+demon gear chest~
+the Demon's equipment chest~
+A horned chest holds equipment earned within Level 7.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30454
+demon triforce chest~
+the Demon's Triforce chest~
+An ancient chest waits beyond Aquamentus.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30455
+lion gear chest~
+the Lion's equipment chest~
+A lion-crested chest holds equipment earned within Level 8.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30456
+lion triforce chest~
+the Lion's Triforce chest~
+A fire-scarred chest waits beyond Gleeok.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30457
+secret rupee chest~
+a secret rupee chest~
+A little chest of gold waits beneath the burned bush.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30458
+secret healing chest~
+a secret healing chest~
+A green chest of restorative supplies waits beneath the burned bush.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30460
+boss key level 3~
+the Level 3 boss key~
+The key won from Level 3's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+40 1 4000 P
+
+#30461
+boss key level 4~
+the Level 4 boss key~
+The key won from Level 4's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+50 1 5000 P
+
+#30462
+boss key level 5~
+the Level 5 boss key~
+The key won from Level 5's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+55 1 5500 P
+
+#30463
+boss key level 6~
+the Level 6 boss key~
+The key won from Level 6's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+60 1 6000 P
+
+#30464
+boss key level 7~
+the Level 7 boss key~
+The key won from Level 7's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+64 1 6400 P
+
+#30465
+boss key level 8~
+the Level 8 boss key~
+The key won from Level 8's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+67 1 6700 P
+
+#30470
+raft waiting island~
+a waiting wooden raft~
+A raft bobs beside the northern shoreline.~
+energy~
+30 GOV 0
+5 30500 0 0 0
+0 0 0 P
+
+#30471
+raft returning shore~
+a returning wooden raft~
+A raft waits to carry you back to the mainland.~
+energy~
+30 GOV 0
+5 30299 0 0 0
+0 0 0 P
+
+#30472
+light manji return~
+the Manji's returning light~
+A triangular light offers a path out of Level 3.~
+energy~
+30 GOV 0
+5 30217 0 0 0
+0 0 0 P
+
+#30473
+light snake return~
+the Snake's returning light~
+A triangular light offers a path out of Level 4.~
+energy~
+30 GOV 0
+5 30500 0 0 0
+0 0 0 P
+
+#30474
+light lizard return~
+the Lizard's returning light~
+A triangular light offers a path out of Level 5.~
+energy~
+30 GOV 0
+5 30325 0 0 0
+0 0 0 P
+
+#30475
+light dragon return~
+the Dragon's returning light~
+A triangular light offers a path out of Level 6.~
+energy~
+30 GOV 0
+5 30337 0 0 0
+0 0 0 P
+
+#30476
+light demon return~
+the Demon's returning light~
+A triangular light offers a path out of Level 7.~
+energy~
+30 GOV 0
+5 30238 0 0 0
+0 0 0 P
+
+#30477
+light lion return~
+the Lion's returning light~
+A triangular light offers a path out of Level 8.~
+energy~
+30 GOV 0
+5 30295 0 0 0
+0 0 0 P
 #0
 
 
@@ -1312,6 +3086,10 @@ D3
 ~
 ~
 0 0 30205
+D5
+~
+burned hollow~
+4 0 30510
 S
 #30205
 Before a large river~
@@ -1537,6 +3315,10 @@ D3
 ~
 ~
 0 0 30216
+D5
+~
+second shard seal~
+5 30401 30600
 S
 #30218
 Before Lake Zora~
@@ -1918,6 +3700,10 @@ D2
 ~
 ~
 0 0 30235
+D5
+~
+drained stair~
+4 0 30680
 S
 #30240
 The Dead Forest~
@@ -2177,6 +3963,10 @@ D3
 ~
 ~
 0 0 30233
+D2
+~
+burned hollow~
+4 0 30511
 S
 #30255
 Beside a small pool~
@@ -3035,6 +4825,10 @@ D3
 ~
 ~
 0 0 30294
+D0
+~
+burned entrance~
+4 0 30700
 S
 #30296
 A break in the trees~
@@ -3520,6 +5314,10 @@ D5
 ~
 ~
 0 0 30322
+D0
+~
+bombed opening~
+4 0 30378
 S
 #30324
 A path high in Death Mountain~
@@ -3538,15 +5336,14 @@ D3
 0 0 30325
 S
 #30325
-The end of the path~
-The path comes to an abrupt end here.  To the north, you notice a huge
-steel door...  There seems to be no way to unlock it...  Hmm...
+Before Level 5: The Lizard~
+The high path ends at a lizard-shaped seal cut into the mountain. The fourth Triforce shard unlocks the northern descent into Level 5.
 ~
 0 ACN 4
 D0
 ~
-~
-4 0 30378
+fourth shard seal~
+5 30403 30640
 D1
 ~
 ~
@@ -3796,6 +5593,10 @@ D2
 ~
 ~
 0 0 30336
+D5
+~
+fifth shard seal~
+5 30404 30660
 S
 #30338
 A small hidden room~
@@ -3808,11 +5609,8 @@ tombstone~
 4 0 30330
 S
 #30339
-The Entrance to a Dungeon~
-You are standing at the entrance of a very dark dungeon.  There are
-several large statues of strange-looking heads filling the room here.  To
-the north, you see a large steel door blocking the exit...  You also see
-open doors to the east and west.
+Level 1: The Eagle - Entrance~
+The first labyrinth spreads north from twelve silent stone faces. The western and eastern rooms hold the first keys, while the sealed northern door begins the Eagle proper.
 ~
 0 ACD 0
 D0
@@ -3886,6 +5684,10 @@ D3
 ~
 ~
 0 0 30345
+D0
+~
+bombed shortcut~
+4 0 30352
 S
 #30344
 A Dead End~
@@ -3980,11 +5782,8 @@ D3
 0 0 30350
 S
 #30350
-A brighter room~
-The path seems to come to a dead-end here...  All along the walls there
-are large scrapes in the stone...  Like something large was dragging in a
-very straight line across them.  This room seems much brighter then the
-other rooms of the dungeon...  And you feel a burden released.
+Level 1: The Eagle - Bow Cellar~
+A side-view cellar runs beneath the Eagle. Keese flutter above an old equipment chest where the dungeon's bow was hidden.
 ~
 0 CDKX 0
 D1
@@ -3993,11 +5792,8 @@ D1
 0 0 30349
 S
 #30351
-A small room~
-There are four large stones rising from the floor of this room, forming a
-perfect square.  The path continues east and west.  As you sit quiet for a
-moment, you swear you hear a loud roaring coming from somewhere to the
-east...  Hmm...
+Level 1: The Eagle - Goriya Guard~
+Goriyas defend this crossing with returning blades. One central block is worn smooth from being pushed aside to reveal the bow cellar.
 ~
 0 ADN 0
 D1
@@ -4008,6 +5804,10 @@ D3
 ~
 ~
 0 0 30347
+D0
+~
+block stair~
+4 0 30350
 S
 #30352
 A burned room~
@@ -4026,14 +5826,14 @@ D3
 ~
 ~
 0 0 30351
+D2
+~
+block stair~
+4 0 30351
 S
 #30353
-A Fiery Room~
-As you step into this room, the heat overwhelms you.  The door to the
-south SLAMS shut...  To the east, a HUGE Three-Headed Dragon stands...
-Guarding what appears to be the only exit.  As you glance at the Dragon, one
-of the heads seems to notice you, and it ROARS in anger!  Well, looks like
-this is the end.
+Level 1: Aquamentus's Lair~
+The eastern wing of the Eagle opens into a scorched lair. Aquamentus guards the final door with fire and armored scales.
 ~
 0 ACDHN 0
 3 25 0 0 0 0 0 10 15
@@ -4043,21 +5843,8 @@ this is the end.
 5 30234 30354
 S
 #30354
-The Golden Room~
-.
-                             /^\
-                            /   \
-                           /     \
-                          <------->
-                         /^\     /^\
-                        /   \   /   \
-                       /     \ /     \
-                      <-------'------->
-
-
-You've destroyed the Aquamentus, and find yourself in a beautiful room.
-This room is bathed in a golden light, and in the center stands a small
-chest on a pedestal.  Engraved on the floor is the symbol of the Triforce.
+Level 1: Triforce Chamber~
+Golden light fills the eastern tip of the Eagle. The first Triforce shard rests here beside a passage back to the island.
 ~
 0 BCDKNX 0
 D3
@@ -4066,10 +5853,8 @@ D3
 5 30234 30353
 S
 #30355
-The Entrance to a Dungeon~
-You are standing at the entrance to a very dark dungeon.  There are
-several strange-looking statues rising out of the stone ground here...
-Pretty eerie.  There are doors in the wall to the east and the west.
+Level 2: The Moon - Entrance~
+The Moon labyrinth curves away in two directions. A seal attuned to the first Triforce shard bars the western route.
 ~
 0 ACD 0
 D1
@@ -4078,8 +5863,8 @@ D1
 0 0 30356
 D3
 ~
-~
-0 0 30358
+first shard seal~
+5 30400 30358
 S
 #30356
 A stone room~
@@ -4097,9 +5882,8 @@ D3
 0 0 30355
 S
 #30357
-A pitch-black room~
-This room is totally dark, except for two candles sitting in the center
-of the room.
+Level 2: Magical Boomerang Vault~
+The dark vault contains the long-ranged Magical Boomerang and equipment suited to the Moon's deeper halls.
 ~
 0 ACDN 0
 D2
@@ -4120,8 +5904,8 @@ D0
 0 0 30359
 D1
 ~
-~
-0 0 30355
+first shard seal~
+5 30400 30355
 S
 #30359
 An oily room~
@@ -4155,6 +5939,10 @@ D2
 ~
 ~
 0 0 30359
+D1
+~
+bombed shortcut~
+4 0 30363
 S
 #30361
 Trapped room!~
@@ -4210,6 +5998,10 @@ D2
 ~
 ~
 0 0 30362
+D3
+~
+bombed shortcut~
+4 0 30360
 S
 #30364
 A fiery room!~
@@ -4402,10 +6194,8 @@ D2
 0 0 30374
 S
 #30376
-Floating in nothingness~
-As you opened the curtin, and stepped north, you find yourself floating
-in nothingness.  Standing here is the master of this dungeon, the mighty
-wizard Agahnim.  There seems to be a door floating in mid-air to the north.
+Level 2: Dodongo's Lair~
+Smoke stains cover every wall of this round chamber. Dodongo bellows from the center, its armored hide nearly immune to ordinary blows.
 ~
 0 ADN 9
 D0
@@ -4414,21 +6204,8 @@ D0
 5 30248 30377
 S
 #30377
-The Golden Room~
-.
-                             /^\
-                            /   \
-                           /     \
-                          <------->
-                         /^\     /^\
-                        /   \   /   \
-                       /     \ /     \
-                      <-------'------->
-
-
-You've destroyed Agahnim, and find yourself in a beautiful room.  This room is
-bathed in a golden light, and in the center stands a small chest on a
-pedestal.  Engraved on the floor is the symbol of the Triforce.
+Level 2: Triforce Chamber~
+Silver moonlight falls across the second Triforce shard and a returning portal.
 ~
 0 BCDKNX 0
 D2
@@ -4437,11 +6214,8 @@ D2
 5 30248 30376
 S
 #30378
-The Entrance to a Dungeon~
-You have entered the largest and most dangerous dungeon in the land of
-Hyrule.  The walls of this dungeon are made of an extremely red stone, and
-it seems as if the walls are bleeding.  There is a small plaque on the wall
-here.
+Level 9: Death Mountain - Entrance~
+The final labyrinth yawns beneath Spectacle Rock. The eighth shard answers the northern seal; without the full journey behind you, Death Mountain goes no farther.
 ~
 0 ACD 0
 E
@@ -4452,12 +6226,12 @@ caution, and AT YOUR OWN RISK!
 ~
 D0
 ~
-gate~
-1 0 30379
+eighth shard seal~
+5 30407 30379
 D2
 ~
-~
-4 0 30325
+bombed opening~
+4 0 30323
 S
 #30379
 A circular room~
@@ -4799,11 +6573,8 @@ D2
 0 0 30394
 S
 #30396
-A Secret Room~
-You've stepped into one of the most secret rooms in all of Hyrule.  The
-room is filled with a bright golden light.  The floor is covered by a large
-rug bearing the symbol of the Triforce.  On a large pedestal in the center
-of the room, is a small chest.
+Level 9: Red Ring Vault~
+A secret chamber in Death Mountain protects the Red Ring and armor made for the last ascent.
 ~
 0 DNX 0
 D2
@@ -5265,11 +7036,8 @@ link~
 4 0 30432
 S
 #30430
-A circular room~
-You climb the stairs, and seem to have stumbled into the room of a HUGE
-blue-colored spider.  There are several skeletons laying around the room,
-broken into several pieces.  The only exit to the north seems to be guarded
-by this huge spider...  Maybe it's best if you left him alone.
+Level 9: Patra's Orbit~
+A ring of lesser eyes circles Patra in a dizzying defensive orbit. Beyond it waits the chest of the Silver Arrow.
 ~
 0 ADN 0
 D0
@@ -5278,10 +7046,8 @@ D0
 5 30236 30431
 S
 #30431
-A Golden Room~
-This room is filled with a bright golden light.  The floor is covered by
-a large rug bearing the symbol of the Triforce.  On a large pedestal in the
-center of the room, is a small chest.
+Level 9: Silver Arrow Vault~
+A narrow golden vault protects the Silver Arrow, the weapon needed to end Ganon's darkness.
 ~
 0 X 0
 D2
@@ -5321,10 +7087,8 @@ D2
 0 0 30432
 S
 #30434
-Dodongo's Lair~
-As you step into this room, the sound of the Dodongo's angry roars is
-unthinkable...  It's so loud you can't even hear yourself think!  Two large
-Dodongo's pace the room, spot you, and ATTACK!
+Level 9: Lanmola's Lair~
+The floor erupts in waves as a crimson Lanmola guards the colored key to Ganon's inner halls.
 ~
 0 ADNX 0
 D0
@@ -5353,12 +7117,8 @@ D2
 5 30242 30434
 S
 #30436
-Ganon's Lair~
-You have entered the most dangerous room in all of Hyrule.  The room is
-made totally of red stone, with drawings and symbols etched on all the
-walls.  In the darkness, you can see two HUGE eyes peering at you in anger.
-The only door is to the north, and is blocked by Ganon.  There's only one
-way in there...  Right through him.
+Level 9: Ganon's Lair~
+Darkness gathers around Ganon and the Staff of Power. Only a hero carrying Death Mountain's relics can hope to reveal and defeat him.
 ~
 0 DN 0
 D0
@@ -6063,11 +7823,1383 @@ Your Fate~
 ~
 0 ACINX 0
 S
+#30500
+The Island of the Snake~
+A waiting raft has carried you to a low island surrounded by deep water. The third Triforce shard opens the stair descending into Level 4.
+~
+0 N 6
+D5
+~
+third shard seal~
+5 30402 30620
+S
+
+#30510
+A Secret to Everybody~
+The burned bush concealed a snug stone hollow. Rupees glitter in a little chest, a reward for testing the Blue Candle on the overworld.
+~
+0 DN 0
+D4
+~
+burned hollow~
+4 0 30204
+S
+
+#30511
+A Hidden Healing Grotto~
+Cool green light and clean water fill the grotto beneath the bush. Restorative supplies wait here for an observant traveler.
+~
+0 DNTU 0
+D0
+~
+burned hollow~
+4 0 30254
+S
+
+#30600
+Level 3 - The Manji: Entrance~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30601
+D3
+~
+~
+0 0 30602
+D4
+~
+second shard seal~
+5 30401 30217
+S
+
+#30601
+Level 3 - The Manji: Zol Hall~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30603
+D1
+~
+~
+0 0 30602
+D2
+~
+~
+0 0 30600
+S
+
+#30602
+Level 3 - The Manji: Western Key Alcove~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30600
+D3
+~
+~
+0 0 30601
+S
+
+#30603
+Level 3 - The Manji: Bubble Crossing~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30604
+D2
+~
+~
+0 0 30601
+S
+
+#30604
+Level 3 - The Manji: Darknut Court~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30605
+D2
+~
+~
+0 0 30603
+D3
+~
+~
+0 0 30609
+S
+
+#30605
+Level 3 - The Manji: Eastern Arm~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30606
+D3
+~
+~
+0 0 30604
+S
+
+#30606
+Level 3 - The Manji: Movable Block Room~
+A single block sits off-center after the Zols fall. Pushing it reveals the northern stair used in the original Manji trick.
+~
+0 ADN 0
+D0
+~
+block stair~
+4 0 30607
+D2
+~
+~
+0 0 30605
+S
+
+#30607
+Level 3 - The Manji: Hidden Stair~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D2
+~
+block stair~
+4 0 30606
+D5
+~
+~
+0 0 30608
+S
+
+#30608
+Level 3 - The Manji: Raft Vault~
+The dungeon raft rests in a low side-view vault with equipment for levels 31 through 38.
+~
+0 ADN 0
+D4
+~
+~
+0 0 30607
+S
+
+#30609
+Level 3 - The Manji: Western Arm~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30610
+D1
+~
+~
+0 0 30604
+S
+
+#30610
+Level 3 - The Manji: Crossing of Blades~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30611
+D2
+~
+~
+0 0 30609
+S
+
+#30611
+Level 3 - The Manji: Upper Turn~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30612
+D3
+~
+~
+0 0 30610
+S
+
+#30612
+Level 3 - The Manji: Boss Antechamber~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30613
+D2
+~
+~
+0 0 30611
+S
+
+#30613
+Level 3 - The Manji: Manhandla's Heart~
+Manhandla's four snapping heads fill the room while its armored heart guards the boss key.
+~
+0 ADN 0
+D0
+~
+Manhandla key~
+5 30460 30614
+D3
+~
+~
+0 0 30612
+S
+
+#30614
+Level 3 - The Manji: Triforce Chamber~
+The third Triforce shard shines beyond Manhandla beside a portal back to the western woods.
+~
+0 ADN 0
+D2
+~
+Manhandla key~
+5 30460 30613
+S
+
+#30620
+Level 4 - The Snake: Entrance~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30621
+D3
+~
+~
+0 0 30622
+D4
+~
+third shard seal~
+5 30402 30500
+S
+
+#30621
+Level 4 - The Snake: Dark Vire Hall~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30623
+D2
+~
+~
+0 0 30620
+S
+
+#30622
+Level 4 - The Snake: Western Key Room~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30620
+S
+
+#30623
+Level 4 - The Snake: Flooded Junction~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30624
+D1
+~
+~
+0 0 30625
+D2
+~
+~
+0 0 30621
+S
+
+#30624
+Level 4 - The Snake: Stepladder Vault~
+The dungeon's Stepladder lies beside equipment for levels 41 through 48. It is the only safe way across the single-width water gap ahead.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30623
+S
+
+#30625
+Level 4 - The Snake: Like Like Gallery~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30626
+D3
+~
+~
+0 0 30623
+S
+
+#30626
+Level 4 - The Snake: Water Gap~
+Deep water cuts the room in half. Carrying the Stepladder allows the sealed crossing to be unlocked and opened.
+~
+0 ADN 0
+D0
+~
+water gap~
+5 30412 30627
+D3
+~
+~
+0 0 30625
+S
+
+#30627
+Level 4 - The Snake: Upper Coil~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30629
+D2
+~
+water gap~
+5 30412 30626
+D5
+~
+~
+0 0 30628
+S
+
+#30628
+Level 4 - The Snake: Lower Cellar~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D4
+~
+~
+0 0 30627
+S
+
+#30629
+Level 4 - The Snake: Vire Crossing~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30630
+D2
+~
+~
+0 0 30627
+S
+
+#30630
+Level 4 - The Snake: Movable Block Room~
+A groove beneath the left block marks the Snake's hidden-room trick. Push the block to reveal the western map room.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30632
+D2
+~
+~
+0 0 30629
+D3
+~
+block stair~
+4 0 30631
+S
+
+#30631
+Level 4 - The Snake: Hidden Map Room~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+block stair~
+4 0 30630
+S
+
+#30632
+Level 4 - The Snake: Boss Antechamber~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30633
+D3
+~
+~
+0 0 30630
+S
+
+#30633
+Level 4 - The Snake: Gleeok's Coil~
+Gleeok's heads weave over the chamber, continuing to attack even after they are severed.
+~
+0 ADN 0
+D0
+~
+Gleeok key~
+5 30461 30634
+D2
+~
+~
+0 0 30632
+S
+
+#30634
+Level 4 - The Snake: Triforce Chamber~
+The fourth Triforce shard rests at the end of the Snake beside a portal to the island.
+~
+0 ADN 0
+D2
+~
+Gleeok key~
+5 30461 30633
+S
+
+#30640
+Level 5 - The Lizard: Entrance~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30641
+D2
+~
+fourth shard seal~
+5 30403 30325
+S
+
+#30641
+Level 5 - The Lizard: Gibdo Hall~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30643
+D1
+~
+~
+0 0 30642
+D2
+~
+~
+0 0 30640
+S
+
+#30642
+Level 5 - The Lizard: Old Man's Warning~
+An old inscription reads: DIGDOGGER HATES CERTAIN KIND OF SOUND. The words point toward the dungeon Recorder.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30641
+S
+
+#30643
+Level 5 - The Lizard: Darknut Junction~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30646
+D1
+~
+~
+0 0 30645
+D2
+~
+~
+0 0 30641
+D3
+~
+~
+0 0 30644
+S
+
+#30644
+Level 5 - The Lizard: Cracked Northern Wall~
+The northern wall is visibly cracked. Bombing it reveals the Lizard's hidden rupee chamber.
+~
+0 ADN 0
+D0
+~
+bombed wall~
+4 0 30647
+D1
+~
+~
+0 0 30643
+S
+
+#30645
+Level 5 - The Lizard: Rupee Side Room~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30643
+S
+
+#30646
+Level 5 - The Lizard: Pols Voice Hall~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30649
+D1
+~
+~
+0 0 30648
+D2
+~
+~
+0 0 30643
+S
+
+#30647
+Level 5 - The Lizard: Secret Hundred-Rupee Room~
+A cache of old Hyrule rupees fills the secret room behind the bombed wall.
+~
+0 ADN 0
+D2
+~
+bombed wall~
+4 0 30644
+S
+
+#30648
+Level 5 - The Lizard: Recorder Vault~
+The Recorder hums inside an equipment chest prepared for levels 51 through 53.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30646
+S
+
+#30649
+Level 5 - The Lizard: Upper Spine~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30650
+D2
+~
+~
+0 0 30646
+S
+
+#30650
+Level 5 - The Lizard: Bomb Fork~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30652
+D2
+~
+~
+0 0 30649
+D3
+~
+~
+0 0 30651
+S
+
+#30651
+Level 5 - The Lizard: Map Alcove~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30650
+S
+
+#30652
+Level 5 - The Lizard: Resonant Eye Room~
+The walls hum with Digdogger's pulse. The old inscription points north and warns that the Recorder must be played in the creature's presence.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30653
+D3
+~
+~
+0 0 30650
+S
+
+#30653
+Level 5 - The Lizard: Digdogger's Eye~
+The weakened eye of Digdogger guards the final key and equipment for levels 54 and 55.
+~
+0 ADN 0
+D0
+~
+Digdogger key~
+5 30462 30654
+D2
+~
+~
+0 0 30652
+S
+
+#30654
+Level 5 - The Lizard: Triforce Chamber~
+The fifth Triforce shard waits beyond Digdogger beside a portal to Death Mountain's high path.
+~
+0 ADN 0
+D2
+~
+Digdogger key~
+5 30462 30653
+S
+
+#30660
+Level 6 - The Dragon: Entrance~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30661
+D4
+~
+fifth shard seal~
+5 30404 30337
+S
+
+#30661
+Level 6 - The Dragon: Wizzrobe Hall~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30664
+D1
+~
+~
+0 0 30662
+D2
+~
+~
+0 0 30660
+D3
+~
+~
+0 0 30663
+S
+
+#30662
+Level 6 - The Dragon: Aim at the Eye~
+An old man has scratched one surviving warning into the stone: AIM AT THE EYES OF GOHMA.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30661
+S
+
+#30663
+Level 6 - The Dragon: Compass Alcove~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30661
+S
+
+#30664
+Level 6 - The Dragon: Like Like Gallery~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30665
+D2
+~
+~
+0 0 30661
+S
+
+#30665
+Level 6 - The Dragon: False Wall~
+The eastern wall is false and cracked. A bomb opens the hidden Dragon passage.
+~
+0 ADN 0
+D1
+~
+bombed wall~
+4 0 30666
+D2
+~
+~
+0 0 30664
+S
+
+#30666
+Level 6 - The Dragon: Hidden Passage~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30667
+D3
+~
+bombed wall~
+4 0 30665
+S
+
+#30667
+Level 6 - The Dragon: Movable Block Room~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30669
+D3
+~
+~
+0 0 30666
+D5
+~
+~
+0 0 30668
+S
+
+#30668
+Level 6 - The Dragon: Magical Wand Vault~
+The Magical Wand rests with equipment for levels 56 and 57.
+~
+0 ADN 0
+D4
+~
+~
+0 0 30667
+S
+
+#30669
+Level 6 - The Dragon: Wizzrobe Gauntlet~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30671
+D2
+~
+~
+0 0 30667
+D3
+~
+~
+0 0 30670
+S
+
+#30670
+Level 6 - The Dragon: Map Room~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30669
+S
+
+#30671
+Level 6 - The Dragon: Eastern Turn~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30672
+D3
+~
+~
+0 0 30669
+S
+
+#30672
+Level 6 - The Dragon: Arrow Slit~
+A narrow arrow slit looks directly into Gohma's chamber. A hero wielding the Eagle Bow can shoot north and aim at the giant eye before entering.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30673
+D2
+~
+~
+0 0 30671
+S
+
+#30673
+Level 6 - The Dragon: Gohma's Eye~
+Gohma's single eye opens and closes behind an armored shell, guarding equipment for levels 59 and 60.
+~
+0 ADN 0
+D0
+~
+Gohma key~
+5 30463 30674
+D2
+~
+~
+0 0 30672
+S
+
+#30674
+Level 6 - The Dragon: Triforce Chamber~
+The sixth Triforce shard waits beside a portal to the graveyard. It also unlocks the level-58 Master Sword pedestal in the Temple of Time.
+~
+0 ADN 0
+D2
+~
+Gohma key~
+5 30463 30673
+S
+
+#30680
+Level 7 - The Demon: Drained Entrance~
+The Recorder has drained the overworld pool and exposed this stair. The sixth shard opens the northern Demon seal.
+~
+0 ADN 0
+D0
+~
+sixth shard seal~
+5 30405 30681
+D4
+~
+drained stair~
+4 0 30238
+S
+
+#30681
+Level 7 - The Demon: Moldorm Supply Room~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30682
+D2
+~
+sixth shard seal~
+5 30405 30680
+S
+
+#30682
+Level 7 - The Demon: Goriya Hall~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30683
+D1
+~
+~
+0 0 30684
+D3
+~
+~
+0 0 30681
+S
+
+#30683
+Level 7 - The Demon: Tip of the Nose Hint~
+An inscription repeats the original clue: THERE'S A SECRET IN THE TIP OF THE NOSE.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30682
+S
+
+#30684
+Level 7 - The Demon: Elder Digdogger~
+An elder Digdogger shakes the chamber. Playing the Recorder strips away most of its strength.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30685
+D3
+~
+~
+0 0 30682
+S
+
+#30685
+Level 7 - The Demon: Bomb Junction~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30687
+D2
+~
+~
+0 0 30684
+D3
+~
+~
+0 0 30686
+S
+
+#30686
+Level 7 - The Demon: Optional Bomb Cache~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30685
+S
+
+#30687
+Level 7 - The Demon: Hungry Goriya~
+A hungry Goriya refuses to leave the northern doorway. Feed the guardian enemy bait to continue.
+~
+0 ADN 0
+D0
+~
+guardian passage~
+4 0 30689
+D3
+~
+~
+0 0 30685
+S
+
+#30688
+Level 7 - The Demon: Red Candle Vault~
+The Red Candle burns beside equipment for levels 61 and 62.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30689
+S
+
+#30689
+Level 7 - The Demon: Upper Face~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30690
+D2
+~
+guardian passage~
+4 0 30687
+D3
+~
+~
+0 0 30688
+S
+
+#30690
+Level 7 - The Demon: Cracked Nose Wall~
+This is the map's narrow nose. Bomb the cracked eastern wall to reach its tip.
+~
+0 ADN 0
+D1
+~
+bombed wall~
+4 0 30691
+D2
+~
+~
+0 0 30689
+S
+
+#30691
+Level 7 - The Demon: Movable Nose Block~
+The middle block at the nose can be pushed, revealing the hidden tunnel below.
+~
+0 ADN 0
+D3
+~
+bombed wall~
+4 0 30690
+D5
+~
+block stair~
+4 0 30692
+S
+
+#30692
+Level 7 - The Demon: Hidden Tunnel~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30693
+D4
+~
+block stair~
+4 0 30691
+S
+
+#30693
+Level 7 - The Demon: Ancient Aquamentus~
+Ancient Aquamentus returns as the Demon's final guardian with equipment for levels 63 and 64.
+~
+0 ADN 0
+D0
+~
+Aquamentus key~
+5 30464 30694
+D2
+~
+~
+0 0 30692
+S
+
+#30694
+Level 7 - The Demon: Triforce Chamber~
+The seventh Triforce shard waits beside a portal back to the drained pool.
+~
+0 ADN 0
+D2
+~
+Aquamentus key~
+5 30464 30693
+S
+
+#30700
+Level 8 - The Lion: Burned Entrance~
+The solitary overworld bush has burned away, uncovering Level 8. The seventh shard opens the northern Lion seal.
+~
+0 ADN 0
+D0
+~
+seventh shard seal~
+5 30406 30701
+D2
+~
+burned entrance~
+4 0 30295
+S
+
+#30701
+Level 8 - The Lion: First Seal~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30703
+D1
+~
+~
+0 0 30702
+D2
+~
+seventh shard seal~
+5 30406 30700
+S
+
+#30702
+Level 8 - The Lion: Manhandla Ambush~
+An ancient Manhandla attacks immediately, matching the Lion's original opening ambush.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30701
+S
+
+#30703
+Level 8 - The Lion: Mixed Guard Room~
+A mixed company of dungeon monsters guards a movable left block. Push it to expose the Magic Book cellar.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30705
+D2
+~
+~
+0 0 30701
+D5
+~
+block stair~
+4 0 30704
+S
+
+#30704
+Level 8 - The Lion: Magic Book Cellar~
+The Magic Book rests beneath the pushed block and upgrades the Magical Wand with fire.
+~
+0 ADN 0
+D4
+~
+block stair~
+4 0 30703
+S
+
+#30705
+Level 8 - The Lion: Darknut Hall~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30707
+D2
+~
+~
+0 0 30703
+D3
+~
+~
+0 0 30706
+S
+
+#30706
+Level 8 - The Lion: Map Alcove~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30705
+S
+
+#30707
+Level 8 - The Lion: Lion Crossroads~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30708
+D3
+~
+~
+0 0 30705
+S
+
+#30708
+Level 8 - The Lion: Magical Key Vault~
+The reusable Magical Key hangs beside equipment for levels 65 and 66.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30709
+D2
+~
+~
+0 0 30707
+S
+
+#30709
+Level 8 - The Lion: Hidden Route~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+bombed wall~
+4 0 30710
+D2
+~
+~
+0 0 30708
+S
+
+#30710
+Level 8 - The Lion: Cracked Eastern Wall~
+A cracked eastern wall hides the Lion's direct route toward Gleeok.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30711
+D3
+~
+bombed wall~
+4 0 30709
+S
+
+#30711
+Level 8 - The Lion: Gleeok Approach~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30713
+D2
+~
+~
+0 0 30710
+D3
+~
+~
+0 0 30712
+S
+
+#30712
+Level 8 - The Lion: Compass Alcove~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30711
+S
+
+#30713
+Level 8 - The Lion: Ashen Gleeok~
+Ashen Gleeok guards the final boss key and level-67 equipment.
+~
+0 ADN 0
+D0
+~
+Gleeok key~
+5 30465 30714
+D2
+~
+~
+0 0 30711
+S
+
+#30714
+Level 8 - The Lion: Triforce Chamber~
+The eighth Triforce shard completes the journey to Death Mountain. A portal returns to the burned forest entrance.
+~
+0 ADN 0
+D2
+~
+Gleeok key~
+5 30465 30713
+S
 #0
 
 
 
 #SPECIALS
+M 30307 spec_breath_fire Load to: Gleeok
+M 30310 spec_cast_mage Load to: an orange Wizzrobe
+M 30314 spec_breath_fire Load to: ancient Aquamentus
+M 30316 spec_breath_fire Load to: ashen Gleeok
+M 30332 spec_breath_acid Load to: a blue Like Like
+M 30334 spec_cast_mage Load to: a red Wizzrobe
 M 30203 spec_janitor Load to: a green moblin
 M 30209 spec_cast_undead Load to: a ghost
 M 30215 spec_breath_acid Load to: A Like Like
@@ -6092,7 +9224,6 @@ D 0 30309 0 1
 D 0 30310 2 1
 D 0 30317 0 1
 D 0 30318 2 1
-D 0 30325 0 1
 D 0 30326 2 1
 D 0 30330 5 1
 D 0 30334 1 1
@@ -6104,7 +9235,6 @@ D 0 30345 0 2
 D 0 30346 2 2
 D 0 30353 1 2
 D 0 30354 3 2
-D 0 30363 1 1
 D 0 30364 1 2
 D 0 30365 3 1
 D 0 30366 3 2
@@ -6112,8 +9242,6 @@ D 0 30367 1 1
 D 0 30369 3 1
 D 0 30376 0 2
 D 0 30377 2 2
-D 0 30378 0 1
-D 0 30378 2 1
 D 0 30379 2 1
 D 0 30384 1 1
 D 0 30387 3 1
@@ -6137,48 +9265,39 @@ D 0 30440 0 1
 D 0 30441 2 1
 D 0 30468 4 1
 D 0 30469 5 1
-M 0 30200 15 30201
-M 0 30200 15 30201
+M 0 30321 15 30201
+M 0 30321 15 30201
 O 0 30219 0 30202
 O 0 30220 0 30203
 O 0 30280 0 30203
-M 0 30205 10 30204
-M 0 30205 10 30204
-M 0 30204 20 30205
-E 0 30214 0 8
-M 0 30204 20 30205
-E 0 30214 0 8
-M 0 30204 20 30205
-E 0 30214 0 8
-M 0 30204 20 30205
-E 0 30214 0 8
-M 0 30200 15 30206
-M 0 30200 15 30206
-M 0 30200 15 30206
+M 0 30321 10 30204
+M 0 30321 10 30204
+M 0 30321 20 30205
+M 0 30321 20 30205
+M 0 30321 20 30205
+M 0 30321 20 30205
+M 0 30320 15 30206
+M 0 30320 15 30206
+M 0 30320 15 30206
 M 0 30226 1 30207
 G 1 30221 50
 G 1 30222 50
 G 1 30254 50
 G 1 30259 50
 G 1 30274 50
-M 0 30200 15 30208
-M 0 30204 20 30208
-M 0 30200 15 30210
-M 0 30204 20 30210
-M 0 30201 15 30210
+M 0 30320 15 30208
+M 0 30320 20 30208
+M 0 30320 15 30210
+M 0 30320 20 30210
+M 0 30321 15 30210
 M 0 30227 1 30211
 G 1 30224 50
 G 1 30223 50
 G 1 30207 10
-M 0 30204 20 30212
-E 0 30214 0 8
-M 0 30203 10 30214
-E 0 30212 0 16
-M 0 30203 10 30214
-E 0 30212 0 16
-M 0 30202 10 30214
-E 0 30213 0 5
-E 0 30212 0 16
+M 0 30320 20 30212
+M 0 30321 10 30214
+M 0 30321 10 30214
+M 0 30320 10 30214
 O 0 30225 0 30215
 M 0 30216 20 30215
 E 0 30210 0 17
@@ -6210,48 +9329,38 @@ E 0 30252 0 0
 M 0 30216 20 30215
 E 0 30210 0 17
 E 0 30252 0 0
-M 0 30204 20 30218
-E 0 30214 0 8
-M 0 30204 20 30219
-E 0 30214 0 8
-M 0 30204 20 30221
-E 0 30214 0 8
-M 0 30204 20 30222
-E 0 30214 0 8
-M 0 30204 20 30223
-E 0 30214 0 8
-M 0 30204 20 30224
-E 0 30214 0 8
-M 0 30207 10 30224
-M 0 30206 10 30224
-M 0 30200 15 30225
-M 0 30201 15 30225
-M 0 30201 15 30225
-M 0 30200 15 30225
-M 0 30204 20 30225
-E 0 30214 0 8
+M 0 30320 20 30218
+M 0 30321 20 30219
+M 0 30321 20 30221
+M 0 30320 20 30222
+M 0 30321 20 30223
+M 0 30320 20 30224
+M 0 30321 10 30224
+M 0 30320 10 30224
+M 0 30321 15 30225
+M 0 30320 15 30225
+M 0 30320 15 30225
+M 0 30321 15 30225
+M 0 30321 20 30225
 O 0 30201 0 30229
-M 0 30200 15 30229
+M 0 30321 15 30229
 O 0 30226 0 30238
 O 0 30208 0 30240
-M 0 30205 10 30242
-M 0 30205 10 30242
-M 0 30205 10 30243
-M 0 30205 10 30243
-M 0 30204 20 30244
-E 0 30214 0 8
-M 0 30206 10 30244
-M 0 30206 10 30244
-M 0 30204 20 30245
-E 0 30214 0 8
-M 0 30206 10 30245
-M 0 30206 10 30245
-M 0 30204 20 30246
-E 0 30214 0 8
-M 0 30207 10 30246
-M 0 30207 10 30246
-M 0 30207 10 30247
-M 0 30207 10 30247
+M 0 30325 10 30242
+M 0 30325 10 30242
+M 0 30324 10 30243
+M 0 30324 10 30243
+M 0 30326 20 30244
+M 0 30326 10 30244
+M 0 30326 10 30244
+M 0 30327 20 30245
+M 0 30327 10 30245
+M 0 30327 10 30245
+M 0 30326 20 30246
+M 0 30327 10 30246
+M 0 30327 10 30246
+M 0 30326 10 30247
+M 0 30326 10 30247
 O 0 30258 0 30253
 O 0 30225 0 30257
 M 0 30216 20 30257
@@ -6296,35 +9405,29 @@ O 0 30208 0 30267
 O 0 30208 0 30268
 O 0 30208 0 30269
 O 0 30211 0 30270
-M 0 30210 4 30271
-M 0 30210 4 30272
-M 0 30210 4 30273
-M 0 30210 4 30274
-M 0 30207 10 30277
-M 0 30206 10 30277
-M 0 30206 10 30277
-M 0 30206 10 30278
-M 0 30206 10 30278
-M 0 30207 10 30278
-M 0 30206 10 30279
-M 0 30206 10 30279
-M 0 30206 10 30280
-M 0 30206 10 30280
-M 0 30207 10 30282
-M 0 30207 10 30282
-M 0 30205 10 30283
-M 0 30205 10 30283
-M 0 30203 10 30294
-E 0 30213 0 5
-E 0 30212 0 16
-M 0 30203 10 30296
-E 0 30212 0 16
-E 0 30213 0 5
+M 0 30331 4 30271
+M 0 30331 4 30272
+M 0 30331 4 30273
+M 0 30331 4 30274
+M 0 30322 10 30277
+M 0 30323 10 30277
+M 0 30323 10 30277
+M 0 30322 10 30278
+M 0 30322 10 30278
+M 0 30323 10 30278
+M 0 30323 10 30279
+M 0 30323 10 30279
+M 0 30322 10 30280
+M 0 30322 10 30280
+M 0 30323 10 30282
+M 0 30323 10 30282
+M 0 30322 10 30283
+M 0 30322 10 30283
+M 0 30323 10 30294
+M 0 30323 10 30296
 O 0 30202 0 30297
-M 0 30204 20 30298
-E 0 30214 0 8
-M 0 30204 20 30305
-E 0 30214 0 8
+M 0 30322 20 30298
+M 0 30323 20 30305
 M 0 30228 1 30310
 G 1 30264 50
 G 1 30265 50
@@ -6336,204 +9439,31 @@ G 1 30270 50
 G 1 30271 50
 G 1 30272 50
 G 1 30273 50
-M 0 30208 5 30314
-E 0 30215 0 8
-M 0 30208 5 30319
-E 0 30215 0 8
-M 0 30208 5 30321
-M 0 30208 5 30321
-E 0 30215 0 8
-M 0 30208 5 30322
-M 0 30208 5 30322
-E 0 30215 0 8
+M 0 30328 5 30314
+M 0 30329 5 30319
+M 0 30329 5 30321
+M 0 30329 5 30321
+M 0 30328 5 30322
+M 0 30328 5 30322
 O 0 30203 0 30323
-M 0 30208 5 30324
-E 0 30215 0 8
-M 0 30209 10 30326
-E 0 30216 0 17
-M 0 30209 10 30327
-M 0 30209 10 30327
-E 0 30216 0 17
-M 0 30209 10 30328
-E 0 30216 0 17
-M 0 30209 10 30329
-E 0 30216 0 17
-M 0 30209 10 30330
-M 0 30209 10 30330
-E 0 30216 0 17
-M 0 30209 10 30331
-M 0 30209 10 30331
-E 0 30216 0 17
-M 0 30209 10 30332
-E 0 30216 0 17
-M 0 30209 10 30333
-E 0 30216 0 17
-M 0 30209 10 30334
-E 0 30216 0 17
-M 0 30208 5 30337
-E 0 30215 0 8
+M 0 30328 5 30324
+M 0 30330 10 30326
+M 0 30330 10 30327
+M 0 30330 10 30327
+M 0 30330 10 30328
+M 0 30330 10 30329
+M 0 30330 10 30330
+M 0 30330 10 30330
+M 0 30330 10 30331
+M 0 30330 10 30331
+M 0 30330 10 30332
+M 0 30330 10 30333
+M 0 30330 10 30334
+M 0 30330 5 30337
 O 0 30276 0 30337
 O 0 30251 0 30338
 O 0 30206 0 30338
-M 0 30211 25 30340
-M 0 30211 25 30340
-M 0 30211 25 30340
-M 0 30211 25 30340
-M 0 30211 25 30340
-G 1 30227 50
-M 0 30212 20 30341
-M 0 30212 20 30341
-M 0 30212 20 30341
-E 0 30228 0 5
-E 0 30229 0 16
-E 0 30230 0 11
-M 0 30212 20 30342
-M 0 30212 20 30342
-E 0 30230 0 11
-E 0 30229 0 16
-E 0 30228 0 5
-M 0 30212 20 30343
-M 0 30212 20 30343
-E 0 30228 0 5
-E 0 30229 0 16
-E 0 30230 0 11
-M 0 30211 25 30344
-M 0 30211 25 30344
-M 0 30211 25 30344
-M 0 30211 25 30344
-M 0 30211 25 30345
-M 0 30211 25 30345
-M 0 30211 25 30345
-M 0 30211 25 30345
-M 0 30211 25 30345
-M 0 30211 25 30345
-G 1 30231 50
-M 0 30213 15 30346
-M 0 30213 15 30346
-M 0 30213 15 30346
-M 0 30213 15 30347
-M 0 30213 15 30347
-M 0 30213 15 30347
-O 0 30275 0 30350
-M 0 30214 2 30351
-E 0 30232 0 16
-M 0 30222 2 30353
-E 0 30234 0 17
-O 0 30205 0 30354
-O 0 30233 0 30354
-O 0 30279 0 30357
-O 0 30263 1 30361
-M 0 30221 15 30358
-M 0 30221 15 30358
-M 0 30221 15 30358
-E 0 30245 0 17
-M 0 30221 15 30359
-E 0 30245 0 17
-M 0 30213 15 30359
-M 0 30211 25 30360
-M 0 30211 25 30360
-M 0 30211 25 30360
-M 0 30211 25 30360
-M 0 30211 25 30360
-M 0 30222 2 30364
-E 0 30246 0 17
-M 0 30204 20 30366
-M 0 30204 20 30366
-E 0 30214 0 8
-M 0 30204 20 30368
-M 0 30204 20 30368
-E 0 30214 0 8
-O 0 30247 0 30371
-M 0 30204 20 30373
-M 0 30204 20 30373
-E 0 30214 0 8
-M 0 30224 1 30376
-E 0 30248 0 17
-E 0 30257 0 12
-O 0 30233 0 30377
-O 0 30204 0 30377
-M 0 30219 15 30379
-M 0 30219 15 30379
-M 0 30220 15 30379
-E 0 30249 0 16
-E 0 30250 0 5
-M 0 30220 15 30381
-M 0 30220 15 30381
-E 0 30250 0 5
-E 0 30249 0 16
-M 0 30220 15 30383
-E 0 30249 0 16
-E 0 30250 0 5
-M 0 30219 2 30385
-M 0 30219 15 30385
-M 0 30219 15 30385
-O 0 30238 0 30387
-O 0 30239 0 30388
-M 0 30211 25 30388
-M 0 30211 25 30388
-M 0 30211 25 30388
-M 0 30211 25 30388
-M 0 30211 25 30388
-M 0 30219 15 30390
-M 0 30219 15 30390
-M 0 30221 15 30391
-M 0 30221 15 30391
-E 0 30245 0 17
-O 0 30260 1 30396
-P 0 30261 1 30260
-P 0 30282 1 30260
-M 0 30220 15 30399
-E 0 30250 0 5
-E 0 30249 0 16
-M 0 30204 20 30403
-M 0 30204 20 30403
-E 0 30214 0 8
-O 0 30262 0 30406
-M 0 30215 5 30406
 P 0 30278 0 30262
-M 0 30221 15 30410
-M 0 30221 15 30410
-M 0 30221 15 30410
-E 0 30245 0 17
-M 0 30213 15 30411
-M 0 30213 15 30411
-M 0 30213 15 30411
-M 0 30213 15 30411
-M 0 30221 15 30412
-E 0 30245 0 17
-M 0 30215 5 30413
-M 0 30215 5 30413
-M 0 30219 15 30413
-M 0 30219 15 30413
-M 0 30219 15 30414
-M 0 30219 15 30414
-M 0 30220 15 30419
-E 0 30249 0 16
-E 0 30250 0 5
-M 0 30221 15 30420
-E 0 30245 0 17
-M 0 30219 15 30421
-M 0 30219 15 30421
-M 0 30213 15 30422
-M 0 30213 15 30422
-M 0 30213 15 30422
-M 0 30213 15 30422
-O 0 30240 0 30423
-M 0 30223 1 30430
-E 0 30236 0 17
-O 0 30241 0 30430
-O 0 30237 0 30431
-P 0 30218 0 30237
-M 0 30217 2 30432
-M 0 30218 2 30434
-E 0 30242 0 17
-M 0 30225 1 30436
-E 0 30244 0 17
-G 0 30243 1
-O 0 30217 1 30437
-O 0 30233 1 30437
-P 0 30286 1 30233
-P 0 30281 1 30233
 O 0 30235 0 30466
 P 0 30200 0 30235
 O 0 30277 0 30466
@@ -6546,8 +9476,388 @@ O 0 30255 0 30469
 O 0 30256 0 30469
 O 0 30256 0 30469
 O 0 30267 0 30469
+D 0 30204 5 4
+D 0 30510 4 4
+D 0 30217 5 2
+D 0 30600 4 2
+D 0 30238 5 4
+D 0 30680 4 4
+D 0 30254 2 4
+D 0 30511 0 4
+D 0 30295 0 4
+D 0 30700 2 4
+D 0 30323 0 4
+D 0 30378 2 4
+D 0 30325 0 2
+D 0 30640 2 2
+D 0 30337 5 2
+D 0 30660 4 2
+D 0 30343 0 4
+D 0 30352 2 4
+D 0 30351 0 4
+D 0 30360 1 4
+D 0 30363 3 4
+D 0 30355 3 2
+D 0 30358 1 2
+D 0 30378 0 2
+D 0 30379 2 2
+D 0 30500 5 2
+D 0 30620 4 2
+D 0 30606 0 4
+D 0 30607 2 4
+D 0 30613 0 2
+D 0 30614 2 2
+D 0 30626 0 2
+D 0 30627 2 2
+D 0 30630 3 4
+D 0 30631 1 4
+D 0 30633 0 2
+D 0 30634 2 2
+D 0 30644 0 4
+D 0 30647 2 4
+D 0 30653 0 2
+D 0 30654 2 2
+D 0 30665 1 4
+D 0 30666 3 4
+D 0 30673 0 2
+D 0 30674 2 2
+D 0 30680 0 2
+D 0 30681 2 2
+D 0 30687 0 4
+D 0 30689 2 4
+D 0 30690 1 4
+D 0 30691 3 4
+D 0 30691 5 4
+D 0 30692 4 4
+D 0 30693 0 2
+D 0 30694 2 2
+D 0 30700 0 2
+D 0 30701 2 2
+D 0 30703 5 4
+D 0 30704 4 4
+D 0 30709 1 4
+D 0 30710 3 4
+D 0 30713 0 2
+D 0 30714 2 2
+O 0 30420 0 30204
+O 0 30421 0 30254
+O 0 30422 0 30295
+O 0 30423 0 30323
+O 0 30432 0 30238
+O 0 30457 0 30510
+P 0 30280 1 30457
+O 0 30458 0 30511
+P 0 30210 1 30458
+O 0 30470 0 30299
+O 0 30471 0 30500
+O 0 30440 0 30202
+P 0 30320 1 30440
+P 0 30321 1 30440
+P 0 30322 1 30440
+P 0 30323 1 30440
+P 0 30324 1 30440
+P 0 30325 1 30440
+P 0 30326 1 30440
+P 0 30327 1 30440
+P 0 30328 1 30440
+P 0 30329 1 30440
+M 0 30211 30 30340
+G 0 30227 1
+M 0 30211 30 30340
+M 0 30211 30 30340
+M 0 30212 20 30341
+M 0 30212 20 30341
+M 0 30212 20 30342
+M 0 30212 20 30342
+M 0 30300 24 30343
+M 0 30300 24 30343
+M 0 30300 24 30346
+M 0 30300 24 30346
+M 0 30300 24 30347
+M 0 30300 24 30347
+M 0 30301 8 30345
+G 0 30231 1
+M 0 30301 8 30345
+M 0 30214 8 30351
+G 0 30232 1
+M 0 30214 8 30351
+M 0 30214 8 30351
+M 0 30222 1 30353
+G 0 30338 1
+G 0 30339 1
+G 0 30234 1
+O 0 30424 0 30343
+O 0 30425 0 30351
+O 0 30441 0 30350
+P 0 30330 1 30441
+P 0 30331 1 30441
+P 0 30332 1 30441
+P 0 30333 1 30441
+P 0 30334 1 30441
+P 0 30335 1 30441
+P 0 30336 1 30441
+P 0 30337 1 30441
+P 0 30222 1 30441
+P 0 30275 1 30441
+O 0 30442 0 30354
+P 0 30400 1 30442
+O 0 30205 0 30354
+O 0 30418 0 30347
+O 0 30419 0 30344
+M 0 30302 28 30358
+M 0 30302 28 30358
+M 0 30302 28 30359
+M 0 30302 28 30359
+M 0 30302 28 30360
+M 0 30302 28 30360
+M 0 30302 28 30366
+M 0 30302 28 30366
+M 0 30302 28 30368
+M 0 30302 28 30368
+M 0 30303 10 30364
+G 0 30246 1
+M 0 30303 10 30364
+M 0 30303 10 30373
+M 0 30303 10 30373
+M 0 30218 1 30376
+G 0 30348 1
+G 0 30349 1
+G 0 30248 1
+O 0 30426 0 30360
+O 0 30443 0 30357
+P 0 30340 1 30443
+P 0 30341 1 30443
+P 0 30342 1 30443
+P 0 30343 1 30443
+P 0 30344 1 30443
+P 0 30345 1 30443
+P 0 30346 1 30443
+P 0 30347 1 30443
+P 0 30410 1 30443
+P 0 30212 1 30443
+P 0 30213 1 30443
+P 0 30279 1 30443
+O 0 30444 0 30377
+P 0 30401 1 30444
+P 0 30214 1 30444
+O 0 30204 0 30377
+O 0 30247 0 30371
+O 0 30263 0 30361
+O 0 30418 0 30362
+O 0 30419 0 30369
+M 0 30213 16 30601
+M 0 30304 10 30601
+M 0 30213 16 30603
+M 0 30304 10 30603
+M 0 30220 16 30604
+M 0 30220 16 30604
+M 0 30220 16 30609
+M 0 30220 16 30609
+M 0 30220 16 30610
+M 0 30220 16 30610
+M 0 30305 1 30613
+G 0 30358 1
+G 0 30359 1
+G 0 30460 1
+O 0 30427 0 30606
+O 0 30445 0 30608
+P 0 30350 1 30445
+P 0 30351 1 30445
+P 0 30352 1 30445
+P 0 30353 1 30445
+P 0 30354 1 30445
+P 0 30355 1 30445
+P 0 30356 1 30445
+P 0 30357 1 30445
+P 0 30411 1 30445
+P 0 30229 1 30445
+O 0 30446 0 30614
+P 0 30402 1 30446
+P 0 30228 1 30446
+O 0 30472 0 30614
+O 0 30418 0 30611
+O 0 30419 0 30602
+M 0 30306 12 30621
+M 0 30306 12 30621
+M 0 30306 12 30629
+M 0 30306 12 30629
+M 0 30215 10 30625
+M 0 30215 10 30625
+M 0 30215 10 30632
+M 0 30215 10 30632
+M 0 30307 1 30633
+G 0 30368 1
+G 0 30369 1
+G 0 30461 1
+O 0 30428 0 30630
+O 0 30447 0 30624
+P 0 30360 1 30447
+P 0 30361 1 30447
+P 0 30362 1 30447
+P 0 30363 1 30447
+P 0 30364 1 30447
+P 0 30365 1 30447
+P 0 30366 1 30447
+P 0 30367 1 30447
+P 0 30412 1 30447
+P 0 30215 1 30447
+P 0 30230 1 30447
+O 0 30448 0 30634
+P 0 30403 1 30448
+O 0 30473 0 30634
+O 0 30418 0 30631
+O 0 30419 0 30622
+M 0 30219 12 30641
+M 0 30219 12 30643
+M 0 30219 12 30646
+M 0 30308 8 30646
+M 0 30309 1 30653
+G 0 30373 1
+G 0 30374 1
+G 0 30462 1
+O 0 30429 0 30644
+O 0 30430 0 30653
+O 0 30449 0 30648
+P 0 30370 1 30449
+P 0 30371 1 30449
+P 0 30372 1 30449
+P 0 30413 1 30449
+P 0 30216 1 30449
+O 0 30450 0 30654
+P 0 30404 1 30450
+O 0 30474 0 30654
+O 0 30418 0 30651
+O 0 30419 0 30645
+O 0 30280 0 30647
+M 0 30310 16 30661
+M 0 30310 16 30661
+M 0 30310 16 30664
+M 0 30310 16 30664
+M 0 30310 16 30669
+M 0 30310 16 30669
+M 0 30310 16 30671
+M 0 30310 16 30671
+M 0 30332 8 30664
+M 0 30223 1 30673
+G 0 30377 1
+G 0 30378 1
+G 0 30463 1
+O 0 30431 0 30665
+O 0 30451 0 30668
+P 0 30375 1 30451
+P 0 30376 1 30451
+P 0 30245 1 30451
+O 0 30452 0 30674
+P 0 30405 1 30452
+O 0 30475 0 30674
+O 0 30418 0 30670
+O 0 30419 0 30663
+M 0 30333 8 30681
+M 0 30312 18 30682
+M 0 30312 18 30682
+M 0 30312 18 30689
+M 0 30312 18 30689
+M 0 30312 18 30690
+M 0 30312 18 30690
+M 0 30313 1 30684
+M 0 30314 1 30693
+G 0 30381 1
+G 0 30382 1
+G 0 30464 1
+O 0 30433 0 30684
+O 0 30434 0 30687
+O 0 30435 0 30690
+O 0 30436 0 30691
+O 0 30453 0 30688
+P 0 30379 1 30453
+P 0 30380 1 30453
+P 0 30414 1 30453
+O 0 30454 0 30694
+P 0 30406 1 30454
+O 0 30476 0 30694
+O 0 30417 0 30686
+O 0 30418 0 30683
+O 0 30419 0 30692
+M 0 30319 1 30702
+M 0 30315 14 30703
+M 0 30315 14 30703
+M 0 30315 14 30705
+M 0 30315 14 30705
+M 0 30315 14 30707
+M 0 30315 14 30707
+M 0 30315 14 30711
+M 0 30315 14 30711
+M 0 30316 1 30713
+G 0 30385 1
+G 0 30465 1
+O 0 30437 0 30703
+O 0 30438 0 30709
+O 0 30455 0 30708
+P 0 30383 1 30455
+P 0 30384 1 30455
+P 0 30415 1 30455
+P 0 30416 1 30455
+O 0 30456 0 30714
+P 0 30407 1 30456
+O 0 30477 0 30714
+O 0 30418 0 30706
+O 0 30419 0 30712
+M 0 30315 28 30379
+G 0 30249 1
+G 0 30250 1
+M 0 30315 28 30379
+M 0 30315 28 30381
+M 0 30315 28 30381
+M 0 30315 28 30383
+M 0 30315 28 30383
+M 0 30315 28 30385
+M 0 30315 28 30385
+M 0 30334 28 30390
+M 0 30334 28 30390
+M 0 30315 28 30391
+M 0 30315 28 30391
+M 0 30315 28 30399
+M 0 30315 28 30399
+M 0 30334 28 30410
+M 0 30334 28 30410
+M 0 30334 28 30412
+M 0 30334 28 30412
+M 0 30315 28 30419
+M 0 30315 28 30419
+M 0 30334 28 30420
+M 0 30334 28 30420
+M 0 30315 28 30421
+M 0 30315 28 30421
+M 0 30317 8 30432
+M 0 30317 8 30434
+G 0 30242 1
+M 0 30318 1 30430
+G 0 30236 1
+M 0 30225 1 30436
+G 0 30243 1
+G 0 30388 1
+E 0 30244 1 17
+O 0 30238 0 30387
+O 0 30239 0 30388
+O 0 30260 0 30396
+P 0 30261 1 30260
+P 0 30387 1 30260
+P 0 30282 1 30260
+O 0 30240 0 30423
+O 0 30241 0 30430
+O 0 30262 0 30406
+O 0 30237 0 30431
+P 0 30218 1 30237
+P 0 30386 1 30237
+O 0 30217 0 30437
+O 0 30233 0 30437
+P 0 30286 1 30233
+P 0 30281 1 30233
+O 0 30418 0 30400
+O 0 30419 0 30398
+M 0 30224 1 30465
+E 0 30257 1 12
 S
-
 
 
 #SHOPS
