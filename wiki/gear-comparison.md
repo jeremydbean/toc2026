@@ -34,7 +34,7 @@ skills.
   avoidance, armor damage reduction, saves, regeneration, immunities, parry,
   dodge, shield block, sanctuary, and divine protection.
 - **Leveling** combines combat pace, survival, recovery, movement, skill
-  learning, and the exact `APPLY_EXP` bonus active in the projected loadout.
+  learning, and the positive `APPLY_EXP` bonus the engine applies to gains.
 - **Utility** values movement capacity and recovery, dexterity, constitution,
   immunities, flight, invisibility, and detect invisibility.
 

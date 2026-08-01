@@ -59,9 +59,9 @@ Puzzle objects use `ITEM_MANIPULATION` (`31`) with this value layout:
 | --- | --- |
 | `value[0]` | Action type: `11` burn, `12` bomb, `13` play, `14` feed |
 | `value[1]` | Room containing the exit to reveal, or `0` for an encounter-only effect |
-| `value[2]` | Exit direction, using the normal `0-5` direction numbers |
+| `value[2]` | Exit direction (`0-5`), or the target mobile vnum when `value[1]` is `0` |
 | `value[3]` | Puzzle state: `1` ready, `2` solved |
-| `value[4]` | `1` weakens NPCs in the player's room to one-third current hit points |
+| `value[4]` | `1` weakens the selected NPC prototype to one-third current hit points |
 
 Successful puzzle objects are extracted and can return on the next area reset,
 which keeps reset doors and repeatable boss encounters synchronized.
@@ -119,10 +119,18 @@ dungeons fit below Ganon at level 70:
 - Level `69`: Red Ring vault gear
 - Level `70`: Ganon's shadow crown and Staff of Power
 
+Armor wear locations follow their descriptions rather than a generated slot
+rotation: boots and greaves use feet, mail and tunics use body, shields use the
+off hand, and the recurring Heart Guards form a neck-slot upgrade series.
+
+The Level 3 Raft (`30411`) is a real `ITEM_BOAT`, so it also works with the
+engine's deep-water movement rules. The waiting raft portal at `30299` is type
+`6` and requires the player to carry `30411`; its return trip remains open.
+
 The progression test in `tests/test_hyrule_progression.py` verifies continuous
-gear coverage, cache placement, boss rooms and drops, shard sources, canonical
-items, dungeon-specific map and compass metadata, puzzle locations, and
-structural reachability of every Hyrule room.
+gear coverage, semantic wear slots, cache placement, boss rooms and drops,
+shard sources, canonical item gates, dungeon map and compass metadata, puzzle
+targets, room reachability, and a return route from every nonlethal room.
 
 ## Ganon And Return Travel
 
@@ -135,7 +143,9 @@ structural reachability of every Hyrule room.
 
 The secret hollow tree in Dead Forest room `30270` is the second supported
 return route to Campus. The Temple of Time quiz fallback in `30455` returns to
-the Temple entrance (`30438`) instead of another game area.
+the Temple entrance (`30438`) instead of another game area. The Master Sword
+altar in `30466` has the same return light, so completing the trial never
+strands the player behind its one-way entrance.
 
 ## Intentional Hazards
 

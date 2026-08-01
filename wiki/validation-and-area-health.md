@@ -162,7 +162,7 @@ Info findings are cleanup candidates and are not deployment blockers by default.
 | `restricted-isolated-rooms` | A disconnected group is entirely protected by jail/private/solitary/staff-only room flags and is intentionally kept visible for review without warning severity |
 | `one-way-exit` | A room exits to another room without a direct reverse exit |
 | `mob-has-no-spawn` | A mob exists in area data but has no reset spawn room |
-| `object-has-no-source` | An object has no room reset and is not carried by a mob |
+| `object-has-no-source` | An object has no room or spawned-mobile source, including through its full container-reset chain |
 | `static-object-level-outlier` | A non-takeable scenery object has an unusual but gameplay-irrelevant level |
 
 ## Current Disconnected-Room Review

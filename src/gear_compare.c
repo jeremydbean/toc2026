@@ -629,13 +629,8 @@ static double gear_weapon_hit_damage( CHAR_DATA *ch,
             minimum = 1 + 4 * skill / 100.0;
             maximum = 2 * ch->level * skill / 300.0;
         }
-        if ( maximum < minimum )
-        {
-            damage = minimum;
-            minimum = maximum;
-            maximum = damage;
-        }
-        damage = (minimum + maximum) / 2.0;
+        damage = maximum <= minimum
+            ? minimum : (minimum + maximum) / 2.0;
     }
 
     damroll = loadout->damroll
@@ -717,7 +712,7 @@ static double gear_melee_output( CHAR_DATA *ch, const GEAR_LOADOUT *loadout,
         off_chance = (gear_skill( ch, gsn_dual_wield ) + off_skill) / 500.0;
         off_chance = UMIN( 1.0, off_chance );
         off_damage = gear_weapon_hit_damage( ch, loadout, off_weapon,
-                                             main_skill, false );
+                                             off_skill, false );
         /* one_hit deliberately skips the normal hit roll for dual attacks. */
         output += off_damage * off_chance;
     }
@@ -834,7 +829,7 @@ static void gear_calculate_metrics( CHAR_DATA *ch,
     metrics->max_mana = UMAX( 0, loadout->max_mana );
     metrics->max_move = UMAX( 0, loadout->max_move );
     metrics->saving_throw = loadout->saving_throw;
-    metrics->exp_bonus = loadout->exp_bonus;
+    metrics->exp_bonus = UMAX( 0, loadout->exp_bonus );
 
     effective_ac = 0;
     for ( i = 0; i < 4; i++ )
@@ -912,7 +907,7 @@ static void gear_calculate_metrics( CHAR_DATA *ch,
         / UMAX( 0.1, focus_total );
     learning_score = int_app[intelligence].learn * 0.5
         + wis_app[wisdom].practice * 12.0;
-    exp_multiplier = UMAX( 0.1, 1.0 + metrics->exp_bonus / 100.0 );
+    exp_multiplier = 1.0 + metrics->exp_bonus / 100.0;
     metrics->leveling = (100.0 + combat_score * 2.0
         + metrics->survival / 45.0 + metrics->utility / 8.0
         + mana_regen * profile->spell_weight + hp_regen
@@ -1068,6 +1063,19 @@ static bool gear_item_usable( CHAR_DATA *ch, OBJ_DATA *obj, int slot,
             && IS_WEAPON_STAT( blocker, WEAPON_TWO_HANDS ) )
         {
             snprintf( reason, reason_size, "conflicts with your two-handed weapon" );
+            return false;
+        }
+    }
+    if ( slot == WEAR_WIELD && obj->item_type == ITEM_WEAPON
+        && IS_WEAPON_STAT( obj, WEAPON_TWO_HANDS ) )
+    {
+        blocker = get_eq_char( ch, WEAR_SHIELD );
+        if ( blocker != NULL && blocker != obj
+            && !IS_IMMORTAL( ch )
+            && IS_OBJ_STAT( blocker, ITEM_NOREMOVE ) )
+        {
+            snprintf( reason, reason_size,
+                      "cannot free both hands from the off-hand item" );
             return false;
         }
     }

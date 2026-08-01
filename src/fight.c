@@ -712,7 +712,7 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	dam_type = DAM_BASH;
 
     /* get the weapon skill */
-    sn = get_weapon_sn(ch);
+    sn = dt == gsn_dual_wield ? get_dual_sn(ch) : get_weapon_sn(ch);
     skill = get_weapon_skill(ch,sn);
 
     /*

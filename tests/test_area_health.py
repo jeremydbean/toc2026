@@ -192,6 +192,59 @@ S
             )
         )
 
+    def test_unsourced_container_does_not_source_its_contents(self) -> None:
+        content = """#AREA { 1 1 } Unrooted Container Test~
+#OBJECTS
+#10
+chest~
+a chest~
+An unreachable chest rests nowhere.~
+wood~
+15 0 0
+10 A 0 0 0
+0 1 0 P
+#11
+gem~
+a gem~
+A gem is trapped in an unreachable chest.~
+glass~
+8 0 A
+0 0 0 0 0
+1 1 1 P
+#0
+#ROOMS
+#1
+Test Room~
+A test room.~
+0 0 0
+S
+#0
+#RESETS
+P 0 11 1 10
+S
+#$
+"""
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            area_path = Path(temporary_directory)
+            (area_path / "area.lst").write_text(
+                "unrooted.are\n$\n", encoding="latin-1"
+            )
+            (area_path / "unrooted.are").write_text(content, encoding="latin-1")
+            parser = AreaParser(area_path)
+            parser.parse_all()
+            # A missing carrier must not make an unreachable container obtainable.
+            parser.objects[10].carried_by.append(999)
+            result = build_area_health(parser, area_path)
+
+        unsourced_vnums = {
+            issue.get("vnum")
+            for issue in result["issues"]
+            if issue["code"] == "object-has-no-source"
+        }
+        self.assertEqual(parser.objects[11].contained_by, [10])
+        self.assertTrue({10, 11}.issubset(unsourced_vnums))
+
     def test_area_health_has_expected_summary_shape(self) -> None:
         area_path = Path("area")
         parser = AreaParser(area_path)

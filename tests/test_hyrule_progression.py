@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
-from webadmin.area_parser import AreaParser
+from webadmin.area_parser import AreaParser, ROOM_FLAGS, decode_flags
 
 
 class HyruleProgressionTests(unittest.TestCase):
@@ -34,11 +34,10 @@ class HyruleProgressionTests(unittest.TestCase):
         seen = set() if seen is None else seen
         if object_vnum in seen:
             return False
-        seen.add(object_vnum)
 
         obj = cls.parser.objects[object_vnum]
         return any(
-            cls.object_is_sourced(container_vnum, seen)
+            cls.object_is_sourced(container_vnum, seen | {object_vnum})
             for container_vnum in obj.contained_by
         )
 
@@ -52,6 +51,31 @@ class HyruleProgressionTests(unittest.TestCase):
         }
 
         self.assertEqual(set(range(1, 71)) - sourced_gear_levels, set())
+
+    def test_generated_armor_uses_the_slot_described_by_its_name(self) -> None:
+        expected_wear_flags = {
+            30320: "AE", 30321: "AJ", 30322: "AD", 30323: "AG",
+            30325: "AM", 30326: "AL", 30327: "AK", 30328: "AD",
+            30330: "AM", 30331: "AE", 30332: "AK", 30333: "AI",
+            30335: "AG", 30336: "AM", 30338: "AD", 30339: "AC",
+            30340: "AG", 30341: "AM", 30342: "AE", 30344: "AD",
+            30345: "AK", 30347: "AF", 30349: "AC", 30350: "AG",
+            30351: "AC", 30352: "AH", 30353: "AJ", 30355: "AD",
+            30357: "AJ", 30359: "AC", 30360: "AG", 30361: "AG",
+            30362: "AK", 30363: "AJ", 30364: "AG", 30365: "AM",
+            30366: "AE", 30368: "AD", 30369: "AC", 30370: "AD",
+            30371: "AE", 30372: "AD", 30374: "AC", 30375: "AH",
+            30377: "AJ", 30378: "AC", 30379: "AG", 30380: "AL",
+            30381: "AK", 30382: "AC", 30383: "AM", 30384: "AC",
+            30385: "AC", 30387: "AD", 30388: "AE",
+        }
+
+        for object_vnum, expected_flags in expected_wear_flags.items():
+            with self.subTest(object_vnum=object_vnum):
+                self.assertEqual(
+                    self.parser.objects[object_vnum].wear_flags,
+                    expected_flags,
+                )
 
     def test_gear_is_staged_in_the_matching_dungeon_band(self) -> None:
         chest_levels = {
@@ -130,6 +154,19 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertEqual(master_sword.level, 58)
         self.assertIn(30235, master_sword.contained_by)
         self.assertEqual(self.parser.objects[30235].values[2], "30405")
+
+        raft = self.parser.objects[30411]
+        self.assertEqual(raft.item_type, "22")
+        self.assertEqual(raft.wear_flags, "A")
+        self.assertEqual(raft.values, ["0", "0", "0", "0", "0"])
+        self.assertEqual(
+            self.parser.objects[30470].values,
+            ["6", "30500", "0", "0", "30411"],
+        )
+
+        temple_return = self.parser.objects[30478]
+        self.assertEqual(temple_return.values, ["5", "30438", "0", "0", "0"])
+        self.assertIn(30478, self.parser.rooms[30466].objects)
 
     def test_each_dungeon_has_its_own_map_and_compass(self) -> None:
         dungeon_items = {
@@ -252,6 +289,9 @@ class HyruleProgressionTests(unittest.TestCase):
                 self.assertEqual(int(obj.values[0]), puzzle_type)
                 self.assertIn(object_vnum, self.parser.rooms[source_room].objects)
 
+        self.assertEqual(self.parser.objects[30430].values[2], "30309")
+        self.assertEqual(self.parser.objects[30433].values[2], "30313")
+
     def test_hyrule_specials_section_is_loaded(self) -> None:
         expected_specials = {
             30222: "spec_breath_fire",
@@ -308,6 +348,53 @@ class HyruleProgressionTests(unittest.TestCase):
                     pending.append(destination)
 
         self.assertEqual(set(self.hyrule_rooms) - reachable, set())
+
+    def test_every_nonlethal_hyrule_room_has_a_route_home(self) -> None:
+        routes = {room_vnum: set() for room_vnum in self.hyrule_rooms}
+        exit_rooms = set()
+        external_rooms = self.parser.rooms.keys() - self.hyrule_rooms.keys()
+
+        for room_vnum, room in self.hyrule_rooms.items():
+            destinations = {exit_data.to_room for exit_data in room.exits}
+            if room.teleport_to_room is not None:
+                destinations.add(room.teleport_to_room)
+
+            for object_vnum in room.objects:
+                obj = self.parser.objects.get(object_vnum)
+                if obj is None or len(obj.values) < 2:
+                    continue
+                if obj.item_type == "30" or (
+                    obj.item_type == "31" and int(obj.values[0]) in range(6, 10)
+                ):
+                    destinations.add(int(obj.values[1]))
+
+            routes[room_vnum].update(destinations & self.hyrule_rooms.keys())
+            if destinations & external_rooms:
+                exit_rooms.add(room_vnum)
+
+        can_escape = set(exit_rooms)
+        changed = True
+        while changed:
+            changed = False
+            for room_vnum, destinations in routes.items():
+                if room_vnum not in can_escape and destinations & can_escape:
+                    can_escape.add(room_vnum)
+                    changed = True
+
+        deathtraps = {
+            room_vnum
+            for room_vnum, room in self.hyrule_rooms.items()
+            if "deathtrap" in decode_flags(room.room_flags, ROOM_FLAGS)
+        }
+        forced_death_routes = {
+            room_vnum
+            for room_vnum, room in self.hyrule_rooms.items()
+            if room.teleport_to_room in deathtraps
+        }
+        expected_to_escape = (
+            self.hyrule_rooms.keys() - deathtraps - forced_death_routes
+        )
+        self.assertEqual(set(expected_to_escape) - can_escape, set())
 
 
 if __name__ == "__main__":

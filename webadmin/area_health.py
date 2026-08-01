@@ -438,18 +438,39 @@ def build_area_health(parser: AreaParser, area_directory: Optional[Path] = None)
                 )
             )
 
-    room_object_vnums = {obj_vnum for room in parser.rooms.values() for obj_vnum in room.objects}
+    sourced_object_vnums = {
+        obj_vnum for room in parser.rooms.values() for obj_vnum in room.objects
+    }
+    sourced_object_vnums.update(
+        obj.vnum
+        for obj in parser.objects.values()
+        if any(
+            mobile_vnum in parser.mobiles
+            and parser.mobiles[mobile_vnum].spawn_rooms
+            for mobile_vnum in obj.carried_by
+        )
+    )
+
+    changed = True
+    while changed:
+        changed = False
+        for obj in parser.objects.values():
+            if obj.vnum in sourced_object_vnums:
+                continue
+            if any(
+                container_vnum in sourced_object_vnums
+                for container_vnum in obj.contained_by
+            ):
+                sourced_object_vnums.add(obj.vnum)
+                changed = True
+
     for obj in parser.objects.values():
-        if (
-            obj.vnum not in room_object_vnums
-            and not obj.carried_by
-            and not obj.contained_by
-        ):
+        if obj.vnum not in sourced_object_vnums:
             issues.append(
                 _issue(
                     "info",
                     "object-has-no-source",
-                    f"Object {obj.vnum} has no room, mobile, or container reset source.",
+                    f"Object {obj.vnum} has no rooted room, mobile, or container reset source.",
                     obj.area_file,
                     obj.vnum,
                 )

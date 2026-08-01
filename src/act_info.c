@@ -1334,6 +1334,19 @@ void do_read (CHAR_DATA *ch, char *argument )
         return;
     }
 
+    if ( !check_blind( ch ) )
+        return;
+
+    if ( !IS_NPC(ch)
+        && !IS_SET(ch->act, PLR_HOLYLIGHT)
+        && room_is_dark( ch->in_room )
+        && !IS_AFFECTED(ch, AFF_INFRARED) )
+    {
+        send_to_char( "It is pitch black ... \n\r", ch );
+        show_char_to_char( ch->in_room->people, ch );
+        return;
+    }
+
     obj = get_obj_here( ch, argument );
     if ( obj != NULL && obj->item_type == ITEM_MAP )
     {

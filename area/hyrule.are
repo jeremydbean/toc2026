@@ -1748,7 +1748,7 @@ a wooden buckler hyrule gear~
 a wooden buckler~
 A wooden buckler rests here, ready for another hero.~
 steel~
-9 G AD
+9 G AJ
 1 1 1 1 0
 2 1 20 P
 
@@ -1757,7 +1757,7 @@ a homespun green tunic hyrule gear~
 a homespun green tunic~
 A homespun green tunic rests here, ready for another hero.~
 steel~
-9 G AF
+9 G AD
 1 1 1 1 0
 3 1 45 P
 
@@ -1784,7 +1784,7 @@ an octorokhide wristguard hyrule gear~
 an Octorok-hide wristguard~
 An octorok-hide wristguard rests here, ready for another hero.~
 steel~
-9 G AI
+9 G AM
 1 1 1 1 0
 6 2 180 P
 
@@ -1793,7 +1793,7 @@ a leevershell belt hyrule gear~
 a Leever-shell belt~
 A leever-shell belt rests here, ready for another hero.~
 steel~
-9 G AJ
+9 G AL
 1 1 1 1 0
 7 2 245 P
 
@@ -1811,7 +1811,7 @@ a moblin leather jerkin hyrule gear~
 a Moblin leather jerkin~
 A moblin leather jerkin rests here, ready for another hero.~
 steel~
-9 G AL
+9 G AD
 2 2 2 1 0
 9 3 405 P
 
@@ -1829,7 +1829,7 @@ an eaglecarved bracer hyrule gear~
 an eagle-carved bracer~
 An eagle-carved bracer rests here, ready for another hero.~
 steel~
-9 G AC
+9 G AM
 2 2 2 1 0
 11 3 605 P
 
@@ -1838,7 +1838,7 @@ a dungeon delvers cap hyrule gear~
 a dungeon delver's cap~
 A dungeon delver's cap rests here, ready for another hero.~
 steel~
-9 G AB
+9 G AE
 3 3 3 2 0
 12 4 720 P
 
@@ -1847,7 +1847,7 @@ a candlekeepers mantle hyrule gear~
 a candlekeeper's mantle~
 A candlekeeper's mantle rests here, ready for another hero.~
 steel~
-9 G AE
+9 G AK
 3 3 3 2 0
 13 4 845 P
 
@@ -1856,7 +1856,7 @@ a stalfos bone guard hyrule gear~
 a Stalfos bone guard~
 A stalfos bone guard rests here, ready for another hero.~
 steel~
-9 G AD
+9 G AI
 3 3 3 2 0
 14 4 980 P
 
@@ -1883,7 +1883,7 @@ a boomerangers wristguard hyrule gear~
 a boomeranger's wristguard~
 A boomeranger's wristguard rests here, ready for another hero.~
 steel~
-9 G AH
+9 G AM
 4 4 4 2 0
 17 5 1445 P
 
@@ -1901,7 +1901,7 @@ an aquamentusscale hauberk hyrule gear~
 an Aquamentus-scale hauberk~
 An aquamentus-scale hauberk rests here, ready for another hero.~
 steel~
-9 G AJ
+9 G AD
 4 4 4 3 0
 19 6 1805 P
 
@@ -1910,7 +1910,7 @@ heart guard of eagle hyrule gear~
 the Heart Guard of the Eagle~
 The heart guard of the eagle rests here, ready for another hero.~
 steel~
-9 G AK
+9 G AC
 5 5 5 3 0
 20 6 2000 P
 
@@ -1919,7 +1919,7 @@ a pair of ropehide boots hyrule gear~
 a pair of Rope-hide boots~
 A pair of rope-hide boots rests here, ready for another hero.~
 steel~
-9 G AL
+9 G AG
 5 5 5 3 0
 21 7 2205 P
 
@@ -1937,7 +1937,7 @@ a crescentmoon helm hyrule gear~
 a crescent-moon helm~
 A crescent-moon helm rests here, ready for another hero.~
 steel~
-9 G AC
+9 G AE
 5 5 5 3 0
 23 7 2645 P
 
@@ -1955,7 +1955,7 @@ a moon labyrinth cuirass hyrule gear~
 a Moon labyrinth cuirass~
 A moon labyrinth cuirass rests here, ready for another hero.~
 steel~
-9 G AE
+9 G AD
 6 6 6 4 0
 25 8 3125 P
 
@@ -1964,7 +1964,7 @@ a smokebomb bandolier hyrule gear~
 a smoke-bomb bandolier~
 A smoke-bomb bandolier rests here, ready for another hero.~
 steel~
-9 G AD
+9 G AK
 6 6 6 4 0
 26 8 3380 P
 
@@ -1982,7 +1982,7 @@ a pair of dodongohide leggings hyrule gear~
 a pair of Dodongo-hide leggings~
 A pair of dodongo-hide leggings rests here, ready for another hero.~
 steel~
-9 G AG
+9 G AF
 7 7 7 4 0
 28 9 3920 P
 
@@ -2000,7 +2000,7 @@ heart guard of moon hyrule gear~
 the Heart Guard of the Moon~
 The heart guard of the moon rests here, ready for another hero.~
 steel~
-9 G AI
+9 G AC
 7 7 7 5 0
 30 10 4500 P
 
@@ -2009,7 +2009,7 @@ a pair of zolslick boots hyrule gear~
 a pair of Zol-slick boots~
 A pair of zol-slick boots rests here, ready for another hero.~
 steel~
-9 G AJ
+9 G AG
 7 7 7 5 0
 31 10 4805 P
 
@@ -2018,7 +2018,7 @@ a bubble ward pendant hyrule gear~
 a Bubble ward pendant~
 A bubble ward pendant rests here, ready for another hero.~
 steel~
-9 G AK
+9 G AC
 8 8 8 5 0
 32 10 5120 P
 
@@ -2027,7 +2027,7 @@ a pair of red darknut gauntlets hyrule gear~
 a pair of red Darknut gauntlets~
 A pair of red darknut gauntlets rests here, ready for another hero.~
 steel~
-9 G AL
+9 G AH
 8 8 8 5 0
 33 11 5445 P
 
@@ -2036,7 +2036,7 @@ a red darknut shield hyrule gear~
 a red Darknut shield~
 A red darknut shield rests here, ready for another hero.~
 steel~
-9 G AM
+9 G AJ
 8 8 8 5 0
 34 11 5780 P
 
@@ -2054,7 +2054,7 @@ a red darknut breastplate hyrule gear~
 a red Darknut breastplate~
 A red darknut breastplate rests here, ready for another hero.~
 steel~
-9 G AB
+9 G AD
 9 9 9 6 0
 36 12 6480 P
 
@@ -2072,7 +2072,7 @@ a manji knights shield hyrule gear~
 a Manji knight's shield~
 A manji knight's shield rests here, ready for another hero.~
 steel~
-9 G AD
+9 G AJ
 9 9 9 6 0
 38 12 7220 P
 
@@ -2090,7 +2090,7 @@ heart guard of manji hyrule gear~
 the Heart Guard of the Manji~
 The heart guard of the manji rests here, ready for another hero.~
 steel~
-9 G AG
+9 G AC
 10 10 10 6 0
 40 13 8000 P
 
@@ -2099,7 +2099,7 @@ a pair of virewing boots hyrule gear~
 a pair of Vire-wing boots~
 A pair of vire-wing boots rests here, ready for another hero.~
 steel~
-9 G AH
+9 G AG
 10 10 10 6 0
 41 13 8405 P
 
@@ -2108,7 +2108,7 @@ a pair of watercrossing greaves hyrule gear~
 a pair of water-crossing greaves~
 A pair of water-crossing greaves rests here, ready for another hero.~
 steel~
-9 G AI
+9 G AG
 10 10 10 7 0
 42 14 8820 P
 
@@ -2117,7 +2117,7 @@ a like likehide cloak hyrule gear~
 a Like Like-hide cloak~
 A like like-hide cloak rests here, ready for another hero.~
 steel~
-9 G AJ
+9 G AK
 10 10 10 7 0
 43 14 9245 P
 
@@ -2126,7 +2126,7 @@ a serpentcrested shield hyrule gear~
 a serpent-crested shield~
 A serpent-crested shield rests here, ready for another hero.~
 steel~
-9 G AK
+9 G AJ
 11 11 11 7 0
 44 14 9680 P
 
@@ -2135,7 +2135,7 @@ a pair of stepladder sabatons hyrule gear~
 a pair of stepladder sabatons~
 A pair of stepladder sabatons rests here, ready for another hero.~
 steel~
-9 G AL
+9 G AG
 11 11 11 7 0
 45 15 10125 P
 
@@ -2153,7 +2153,7 @@ a dragonfire helm hyrule gear~
 a dragonfire helm~
 A dragonfire helm rests here, ready for another hero.~
 steel~
-9 G AC
+9 G AE
 11 11 11 7 0
 47 15 11045 P
 
@@ -2171,7 +2171,7 @@ a coat of gleeok scale mail hyrule gear~
 a coat of Gleeok scale mail~
 A coat of gleeok scale mail rests here, ready for another hero.~
 steel~
-9 G AE
+9 G AD
 12 12 12 8 0
 49 16 12005 P
 
@@ -2180,7 +2180,7 @@ heart guard of snake hyrule gear~
 the Heart Guard of the Snake~
 The heart guard of the snake rests here, ready for another hero.~
 steel~
-9 G AD
+9 G AC
 12 12 12 8 0
 50 16 12500 P
 
@@ -2189,7 +2189,7 @@ a suit of gibdo wrappings hyrule gear~
 a suit of Gibdo wrappings~
 A suit of gibdo wrappings rests here, ready for another hero.~
 steel~
-9 G AF
+9 G AD
 12 12 12 8 0
 51 17 13005 P
 
@@ -2198,7 +2198,7 @@ a pair of pols voice ear guards hyrule gear~
 a pair of Pols Voice ear guards~
 A pair of pols voice ear guards rests here, ready for another hero.~
 steel~
-9 G AG
+9 G AE
 13 13 13 8 0
 52 17 13520 P
 
@@ -2207,7 +2207,7 @@ a lizard labyrinth breastplate hyrule gear~
 a Lizard labyrinth breastplate~
 A lizard labyrinth breastplate rests here, ready for another hero.~
 steel~
-9 G AH
+9 G AD
 13 13 13 8 0
 53 17 14045 P
 
@@ -2225,7 +2225,7 @@ heart guard of lizard hyrule gear~
 the Heart Guard of the Lizard~
 The heart guard of the lizard rests here, ready for another hero.~
 steel~
-9 G AJ
+9 G AC
 13 13 13 9 0
 55 18 15125 P
 
@@ -2234,7 +2234,7 @@ a pair of orange wizzrobe gloves hyrule gear~
 a pair of orange Wizzrobe gloves~
 A pair of orange wizzrobe gloves rests here, ready for another hero.~
 steel~
-9 G AK
+9 G AH
 14 14 14 9 0
 56 18 15680 P
 
@@ -2252,7 +2252,7 @@ shield of gohmas eye hyrule gear~
 the shield of Gohma's eye~
 The shield of gohma's eye rests here, ready for another hero.~
 steel~
-9 G AC
+9 G AJ
 14 14 14 9 0
 59 19 17405 P
 
@@ -2261,7 +2261,7 @@ heart guard of dragon hyrule gear~
 the Heart Guard of the Dragon~
 The heart guard of the dragon rests here, ready for another hero.~
 steel~
-9 G AB
+9 G AC
 15 15 15 10 0
 60 20 18000 P
 
@@ -2270,7 +2270,7 @@ a pair of demon maze boots hyrule gear~
 a pair of Demon maze boots~
 A pair of demon maze boots rests here, ready for another hero.~
 steel~
-9 G AE
+9 G AG
 15 15 15 10 0
 61 20 18605 P
 
@@ -2279,7 +2279,7 @@ a goriya provisioners belt hyrule gear~
 a Goriya provisioner's belt~
 A goriya provisioner's belt rests here, ready for another hero.~
 steel~
-9 G AD
+9 G AL
 15 15 15 10 0
 62 20 19220 P
 
@@ -2288,7 +2288,7 @@ an ancient dragonscale mantle hyrule gear~
 an ancient dragon-scale mantle~
 An ancient dragon-scale mantle rests here, ready for another hero.~
 steel~
-9 G AF
+9 G AK
 15 15 15 10 0
 63 21 19845 P
 
@@ -2297,7 +2297,7 @@ heart guard of demon hyrule gear~
 the Heart Guard of the Demon~
 The heart guard of the demon rests here, ready for another hero.~
 steel~
-9 G AG
+9 G AC
 16 16 16 10 0
 64 21 20480 P
 
@@ -2306,7 +2306,7 @@ a pair of spellbook bracers hyrule gear~
 a pair of spellbook bracers~
 A pair of spellbook bracers rests here, ready for another hero.~
 steel~
-9 G AH
+9 G AM
 16 16 16 10 0
 65 21 21125 P
 
@@ -2315,7 +2315,7 @@ a magical key pendant hyrule gear~
 a Magical Key pendant~
 A magical key pendant rests here, ready for another hero.~
 steel~
-9 G AI
+9 G AC
 16 16 16 11 0
 66 22 21780 P
 
@@ -2324,7 +2324,7 @@ heart guard of lion hyrule gear~
 the Heart Guard of the Lion~
 The heart guard of the lion rests here, ready for another hero.~
 steel~
-9 G AJ
+9 G AC
 16 16 16 11 0
 67 22 22445 P
 
@@ -2342,7 +2342,7 @@ a coat of redring mail hyrule gear~
 a coat of red-ring mail~
 A coat of red-ring mail rests here, ready for another hero.~
 steel~
-9 G AL
+9 G AD
 17 17 17 11 0
 69 23 23805 P
 
@@ -2351,7 +2351,7 @@ ganons shadow crown hyrule gear~
 Ganon's shadow crown~
 Ganon's shadow crown rests here, ready for another hero.~
 steel~
-9 G AM
+9 G AE
 17 17 17 11 0
 70 23 24500 P
 
@@ -2441,8 +2441,8 @@ raft wooden dungeon~
 the dungeon raft~
 A sturdy wooden raft waits to carry a hero over deep water.~
 wood~
-9 G AK
-7 7 7 3 0
+22 G A
+0 0 0 0 0
 35 5 6125 P
 
 #30412
@@ -2595,7 +2595,7 @@ Digdogger's resonant shell~
 The giant eye's shell vibrates at the thought of music.~
 stone~
 31 UV 0
-13 0 0 1 1
+13 0 30309 1 1
 0 0 0 P
 
 #30431
@@ -2622,7 +2622,7 @@ an elder Digdogger's resonant shell~
 The vast eye quivers whenever a musical note rings out.~
 stone~
 31 UV 0
-13 0 0 1 1
+13 0 30313 1 1
 0 0 0 P
 
 #30434
@@ -2901,7 +2901,7 @@ a waiting wooden raft~
 A raft bobs beside the northern shoreline.~
 energy~
 30 GOV 0
-5 30500 0 0 0
+6 30500 0 0 30411
 0 0 0 P
 
 #30471
@@ -2965,6 +2965,15 @@ A triangular light offers a path out of Level 8.~
 energy~
 30 GOV 0
 5 30295 0 0 0
+0 0 0 P
+
+#30478
+light temple return~
+the Temple's returning light~
+A triangular light offers a path back to the Temple entrance.~
+energy~
+30 GOV 0
+5 30438 0 0 0
 0 0 0 P
 
 #30480
@@ -5486,7 +5495,7 @@ a little more careful before you go exploring...
 D2
 ~
 ~
-4 0 30317
+4 0 30316
 S
 #30319
 A path in Death Mountain~
@@ -9727,6 +9736,7 @@ P 0 30278 0 30262
 O 0 30235 0 30466
 P 0 30200 0 30235
 O 0 30277 0 30466
+O 0 30478 0 30466
 M 0 30229 1 30468
 E 0 30283 0 17
 O 0 30284 1 30468

@@ -31,8 +31,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
-- Area-health source tracking now recognizes objects loaded inside containers by
-  `P` resets, avoiding false orphan reports for nested rewards.
+- Area-health source tracking now follows `P` reset chains back to a real room
+  or mobile source, without hiding objects inside unreachable containers.
 - Expanded web admin configuration with `AREA_PATH`, `BACKUP_PATH`, `--area-path`, and `--backup-path`.
 - Web admin reloads now validate a complete replacement parser, reject critical issues with HTTP 422, preserve the last known-good data on failure, and list recent backup archives.
 - Operational web-admin endpoints are disabled until `WEB_ADMIN_TOKEN` is configured; queue payloads are bounded and restricted to one protocol-safe line.
@@ -42,6 +42,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed off-hand attacks using main-hand proficiency, secondary wield bypassing
+  item restrictions, and failed weapon swaps removing the equipped weapon.
+- Fixed comparison estimates for off-hand proficiency, low-skill unarmed damage,
+  two-handed no-remove conflicts, and engine-applied experience bonuses.
+- Fixed Hyrule's inactive Raft gate, two nonlethal dead ends, mismatched armor
+  slots, held Recorder use, and Recorder effects weakening unrelated NPCs.
+- Fixed dungeon maps and compasses remaining readable while blind or in darkness.
 - Fixed single-item gear comparisons matching unrelated worn objects through
   the universal `ITEM_TAKE` flag instead of an actual shared equipment slot.
 - Fixed the CMake/C17 build using unavailable BSD `strlcpy`/`strlcat` calls

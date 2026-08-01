@@ -3018,7 +3018,9 @@ do_shove( CHAR_DATA *ch, char *argument )
 void do_enter( CHAR_DATA *ch, char *argument )
 {
   char arg[MAX_INPUT_LENGTH];
+  char buf[MAX_STRING_LENGTH];
   ROOM_INDEX_DATA *to_room;
+  OBJ_INDEX_DATA *required;
   OBJ_DATA *obj;
   bool found = false;
 
@@ -3081,7 +3083,21 @@ void do_enter( CHAR_DATA *ch, char *argument )
      return;
    break;
    case 5:
+   break;
    case 6:
+     if ( obj->value[4] > 0 && !has_key( ch, obj->value[4] ) )
+     {
+       required = get_obj_index( obj->value[4] );
+       if ( required == NULL )
+         send_to_char( "You lack the item required to enter it.\n\r", ch );
+       else
+       {
+         snprintf( buf, sizeof(buf), "You need %s to enter %s.\n\r",
+                   required->short_descr, obj->short_descr );
+         send_to_char( buf, ch );
+       }
+       return;
+     }
    break;
    }
 

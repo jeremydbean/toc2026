@@ -1018,7 +1018,7 @@ If a value is unused, use `0` — never leave blank.
 | 1 | Hall of Heroes-style; to_room and timer unused |
 | 4 | Crystal ball; timer optional |
 | 5 | Teleport-pad style (berry→smurf, clown→froboz) |
-| 6 | Closeable/lockable portal, otherwise type 5 behavior |
+| 6 | Required-item portal; `value[4]` is a carried object vnum (`0` means no requirement) |
 
 **Manipulation types:**
 | Value | Type | Value | Type |

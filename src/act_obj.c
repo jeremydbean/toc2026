@@ -1800,11 +1800,78 @@ bool remove_obj( CHAR_DATA *ch, int iWear, bool fReplace )
     return true;
 }
 
+static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
+    {
+        act( "$p is still scorching hot -- you can't wear it yet!", ch, obj, NULL, TO_CHAR );
+        return false;
+    }
+
+    if ( ch->level < obj->level )
+    {
+        snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
+            obj->level );
+        send_to_char( buf, ch );
+        act( "$n tries to use $p, but is too inexperienced.",
+            ch, obj, NULL, TO_ROOM );
+        return false;
+    }
+
+    if ( IS_OBJ_STAT(obj, ITEM_DAMAGED) )
+    {
+        send_to_char( "This item is damaged and cannot be used again until repaired.\n\r", ch );
+        return false;
+    }
+
+    if ( !IS_SET(obj->extra_flags, ITEM_RACE_RESTRICTED) )
+        return true;
+
+    if ( IS_SET(obj->extra_flags2, ITEM2_HUMAN_ONLY) && ch->race != 1 )
+    {
+        snprintf( buf, sizeof(buf), "The %s can only be worn by the %s race.\n\r",
+                  obj->short_descr, race_table[1].name );
+        send_to_char( buf, ch );
+        return false;
+    }
+    if ( IS_SET(obj->extra_flags2, ITEM2_ELF_ONLY) && ch->race != 2 )
+    {
+        snprintf( buf, sizeof(buf), "%s can only be worn by the %sen race.\n\r",
+                  obj->short_descr, race_table[2].name );
+        send_to_char( buf, ch );
+        return false;
+    }
+    if ( IS_SET(obj->extra_flags2, ITEM2_DWARF_ONLY) && ch->race != 3 )
+    {
+        snprintf( buf, sizeof(buf), "Only %s's can wear %s.\n\r",
+                  race_table[3].name, obj->short_descr );
+        send_to_char( buf, ch );
+        return false;
+    }
+    if ( IS_SET(obj->extra_flags2, ITEM2_HALFLING_ONLY) && ch->race != 4 )
+    {
+        snprintf( buf, sizeof(buf), "%s can only be worn by %s's.\n\r",
+                  obj->short_descr, race_table[4].name );
+        send_to_char( buf, ch );
+        return false;
+    }
+    if ( IS_SET(obj->extra_flags2, ITEM2_SAURIAN_ONLY) && ch->race != 5 )
+    {
+        snprintf( buf, sizeof(buf), "%s can only be worn by Saurians.\n\r",
+                  obj->short_descr );
+        send_to_char( buf, ch );
+        return false;
+    }
+
+    return true;
+}
+
 /* function for use with dual wield skill */
 void do_secondary( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
     OBJ_DATA *obj;
     bool fReplace = true;
     AFFECT_DATA *paf;
@@ -1832,21 +1899,13 @@ void do_secondary( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( !wear_requirements_met( ch, obj ) )
+        return;
+
     if (get_eq_char( ch, WEAR_WIELD ) == NULL)
     {
         send_to_char("Try wielding a weapon first.\n\r",ch);
         return;
-    }
-
-
-    if ( ch->level < obj->level )
-    {
-        snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
-            obj->level );
-	send_to_char( buf, ch );
-	act( "$n tries to use $p, but is too inexperienced.",
-	    ch, obj, NULL, TO_ROOM );
-	return;
     }
 
     if ( CAN_WEAR( obj, ITEM_WIELD ) )
@@ -1939,78 +1998,8 @@ void do_secondary( CHAR_DATA *ch, char *argument )
  */
 void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 {
-    char buf[MAX_STRING_LENGTH];
-
-    if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
-    {
-        act( "$p is still scorching hot -- you can't wear it yet!", ch, obj, NULL, TO_CHAR );
+    if ( !wear_requirements_met( ch, obj ) )
         return;
-    }
-
-    if ( ch->level < obj->level )
-    {
-        snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
-            obj->level );
-	send_to_char( buf, ch );
-	act( "$n tries to use $p, but is too inexperienced.",
-	    ch, obj, NULL, TO_ROOM );
-	return;
-    }
-
-
-    if( IS_SET(obj->extra_flags, ITEM_RACE_RESTRICTED) )
-    {
-       if(IS_SET(obj->extra_flags2, ITEM2_HUMAN_ONLY) )
-       {
-	   if(ch->race != 1)
-	   {
-              snprintf(buf, sizeof(buf), "The %s can only be worn by the %s race.\n\r",
-                      obj->short_descr, race_table[1].name);
-	     send_to_char(buf,ch);
-	     return;
-	   }
-       }
-       if(IS_SET(obj->extra_flags2, ITEM2_ELF_ONLY) )
-       {
-	   if(ch->race != 2)
-	   {
-              snprintf(buf, sizeof(buf), "%s can only be worn by the %sen race.\n\r",
-                      obj->short_descr, race_table[2].name);
-	     send_to_char(buf,ch);
-	     return;
-	   }
-       }
-       if(IS_SET(obj->extra_flags2, ITEM2_DWARF_ONLY) )
-       {
-	   if(ch->race != 3)
-	   {
-              snprintf(buf, sizeof(buf), "Only %s's can wear %s.\n\r",
-                      race_table[3].name, obj->short_descr );
-	     send_to_char(buf,ch);
-	     return;
-	   }
-       }
-       if(IS_SET(obj->extra_flags2, ITEM2_HALFLING_ONLY) )
-       {
-	   if(ch->race != 4)
-	   {
-              snprintf(buf, sizeof(buf), "%s can only be worn by %s's.\n\r",
-                      obj->short_descr, race_table[4].name);
-	     send_to_char(buf,ch);
-	     return;
-	   }
-       }
-       if(IS_SET(obj->extra_flags2, ITEM2_SAURIAN_ONLY) )
-       {
-           if(ch->race != 5)
-           {
-              snprintf(buf, sizeof(buf), "%s can only be worn by Saurians.\n\r", obj->short_descr);
-             send_to_char(buf,ch);
-             return;
-           }
-       }
-
-    }
 
 
     if ( obj->item_type == ITEM_LIGHT )
@@ -2223,9 +2212,7 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
     if ( CAN_WEAR( obj, ITEM_WIELD ) )
     {
 	int sn,skill;
-
-	if ( !remove_obj( ch, WEAR_WIELD, fReplace ) )
-	    return;
+	OBJ_DATA *offhand;
 
 	if ( !IS_NPC(ch)
 	&& get_obj_weight( obj ) > str_app[get_curr_stat(ch,STAT_STR)].wield )
@@ -2242,11 +2229,21 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 	    send_to_char("You need two hands free for that weapon.\n\r",ch);
 	    return;
 	}
-  if ( IS_OBJ_STAT(obj, ITEM_DAMAGED))
-    {
-        send_to_char("This item is damaged and cannot be used again until repaired.\n\r",ch);
-        return;
-    }
+
+	offhand = get_eq_char(ch,WEAR_SHIELD);
+	if ( IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS)
+	&&   offhand != NULL
+	&&   !IS_IMMORTAL(ch)
+	&&   IS_OBJ_STAT(offhand,ITEM_NOREMOVE) )
+	{
+	    act( "You can't free both hands while using $p.",
+	         ch, offhand, NULL, TO_CHAR );
+	    return;
+	}
+
+	if ( !remove_obj( ch, WEAR_WIELD, fReplace ) )
+	    return;
+
 	act( "$n wields $p.", ch, obj, NULL, TO_ROOM );
 	act( "You wield $p.", ch, obj, NULL, TO_CHAR );
 	equip_char( ch, obj, WEAR_WIELD );
@@ -3626,6 +3623,10 @@ static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
         {
             if ( !IS_NPC(victim) || victim == ch )
                 continue;
+            if ( obj->value[1] == 0 && obj->value[2] > 0
+            &&   (victim->pIndexData == NULL
+               || victim->pIndexData->vnum != obj->value[2]) )
+                continue;
 
             victim->hit = UMAX( 1, victim->hit / 3 );
             act( "$n shudders as the sound tears through $s defenses!",
@@ -3742,6 +3743,8 @@ void do_play( CHAR_DATA *ch, char *argument )
     }
 
     instrument = get_obj_carry( ch, argument );
+    if ( instrument == NULL )
+        instrument = get_obj_wear( ch, argument );
     if ( instrument == NULL
     || ( !is_name( "recorder", instrument->name )
       && !is_name( "whistle", instrument->name )
