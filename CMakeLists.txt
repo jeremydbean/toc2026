@@ -38,6 +38,7 @@ set(SRC_FILES
     src/dstring.c
     src/edit.c
     src/fight.c
+    src/gear_compare.c
     src/handler.c
     src/hunt.c
     src/interp.c

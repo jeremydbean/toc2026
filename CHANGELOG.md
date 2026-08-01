@@ -10,6 +10,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added an advanced in-game `compare` command with player-specific gear
+  profiles, focus modes for damage, spells, defense, leveling, and utility,
+  full-loadout projections, usability warnings, and percentage recommendations.
 - Added the remastered Hyrule area (`30200-30799`) with a teleport-only Campus
   arcade entry, all nine original Zelda labyrinths, a complete level 1-70 gear
   curve, the Triforce reward chain, and two return portals.
@@ -39,6 +42,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed single-item gear comparisons matching unrelated worn objects through
+  the universal `ITEM_TAKE` flag instead of an actual shared equipment slot.
+- Fixed the CMake/C17 build using unavailable BSD `strlcpy`/`strlcat` calls
+  instead of the repository's portable bounded string helpers.
 - Fixed the PowerShell startup smoke test treating a healthy timeout-driven
   server shutdown as a validation failure.
 - Fixed Unix game-loop web-admin queue processing so queued dashboard actions are handled on Linux/Docker builds.

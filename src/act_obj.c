@@ -4579,7 +4579,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
             return;
         }
         amount    = ch->pcdata->casino_pending_amount;
-        strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
+        toc_strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
         ch->pcdata->casino_pending_game        = 0;
         ch->pcdata->casino_pending_amount      = 0;
         ch->pcdata->casino_pending_arg[0]      = '\0';
@@ -4640,7 +4640,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     {
         ch->pcdata->casino_pending_amount = amount;
         ch->pcdata->casino_pending_game   = CASINO_PENDING_BET;
-        strlcpy( ch->pcdata->casino_pending_arg, arg2,
+        toc_strlcpy( ch->pcdata->casino_pending_arg, arg2,
                  sizeof(ch->pcdata->casino_pending_arg) );
         snprintf( buf, sizeof(buf),
             "That's a big bet!  You want to wager %ld gold on %s?\n\r"
@@ -4759,7 +4759,7 @@ void do_roulette( CHAR_DATA *ch, char *argument )
             return;
         }
         amount    = ch->pcdata->casino_pending_amount;
-        strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
+        toc_strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
         ch->pcdata->casino_pending_game        = 0;
         ch->pcdata->casino_pending_amount      = 0;
         ch->pcdata->casino_pending_arg[0]      = '\0';
@@ -4836,7 +4836,7 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     {
         ch->pcdata->casino_pending_amount = amount;
         ch->pcdata->casino_pending_game   = CASINO_PENDING_ROULETTE;
-        strlcpy( ch->pcdata->casino_pending_arg, arg2,
+        toc_strlcpy( ch->pcdata->casino_pending_arg, arg2,
                  sizeof(ch->pcdata->casino_pending_arg) );
         snprintf( buf, sizeof(buf),
             "That's a big bet!  You want to wager %ld gold on %s?\n\r"
@@ -5143,8 +5143,8 @@ void do_poker( CHAR_DATA *ch, char *argument )
     {
         char card[8];
         snprintf( card, sizeof(card), "%s%c", PRANK[hand[i].rank], PSUIT[hand[i].suit] );
-        strlcat( hand_str, card, sizeof(hand_str) );
-        if ( i < 4 ) strlcat( hand_str, " ", sizeof(hand_str) );
+        toc_strlcat( hand_str, card, sizeof(hand_str) );
+        if ( i < 4 ) toc_strlcat( hand_str, " ", sizeof(hand_str) );
     }
 
     snprintf( buf, sizeof(buf), "Your hand: [ %s ]\n\r", hand_str );

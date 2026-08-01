@@ -614,6 +614,7 @@ telnet localhost 9000
 | `score` | View your character stats |
 | `inventory` | View your items |
 | `equipment` | View worn equipment |
+| `compare <item> [item]` | Get a class-aware, full-loadout gear comparison ([guide](wiki/gear-comparison.md)) |
 | `help <topic>` | In-game help |
 | `quit` | Safely log out (saves your character) |
 

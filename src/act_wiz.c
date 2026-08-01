@@ -7693,11 +7693,11 @@ void do_finger( CHAR_DATA *ch, char *argument )
             char *nl;
 
             if ( p_logoff ) {
-                strlcpy( logoff_str, ctime( &logoff_time ), sizeof(logoff_str) );
+                toc_strlcpy( logoff_str, ctime( &logoff_time ), sizeof(logoff_str) );
                 nl = strchr( logoff_str, '\n' );
                 if ( nl ) *nl = '\0';
             } else {
-                strlcpy( logoff_str, "Unknown", sizeof(logoff_str) );
+                toc_strlcpy( logoff_str, "Unknown", sizeof(logoff_str) );
             }
 
             snprintf( buf, sizeof(buf),
@@ -7943,7 +7943,7 @@ void do_prestore( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    strlcpy( capname, capitalize( arg1 ), sizeof(capname) );
+    toc_strlcpy( capname, capitalize( arg1 ), sizeof(capname) );
     snprintf( vdir, sizeof(vdir), "%s%s", PLAYER_VER_DIR, capname );
 
     dp = opendir( vdir );
@@ -7965,7 +7965,7 @@ void do_prestore( CHAR_DATA *ch, char *argument )
             continue;
         if ( de->d_name[namelen] != '.' )
             continue;
-        strlcpy( versions[count], de->d_name, sizeof(versions[count]) );
+        toc_strlcpy( versions[count], de->d_name, sizeof(versions[count]) );
         count++;
     }
     closedir( dp );
@@ -7981,10 +7981,10 @@ void do_prestore( CHAR_DATA *ch, char *argument )
     for ( i = 1; i < count; i++ )
     {
         char key[MAX_INPUT_LENGTH];
-        strlcpy( key, versions[i], sizeof(key) );
+        toc_strlcpy( key, versions[i], sizeof(key) );
         for ( j = i - 1; j >= 0 && strcmp( versions[j], key ) < 0; j-- )
-            strlcpy( versions[j + 1], versions[j], sizeof(versions[j + 1]) );
-        strlcpy( versions[j + 1], key, sizeof(versions[j + 1]) );
+            toc_strlcpy( versions[j + 1], versions[j], sizeof(versions[j + 1]) );
+        toc_strlcpy( versions[j + 1], key, sizeof(versions[j + 1]) );
     }
 
     if ( arg2[0] == '\0' || !str_cmp( arg2, "list" ) )
@@ -8019,7 +8019,7 @@ void do_prestore( CHAR_DATA *ch, char *argument )
             }
             else
             {
-                strlcpy( datebuf, ts, sizeof(datebuf) );
+                toc_strlcpy( datebuf, ts, sizeof(datebuf) );
             }
 
             /* Scan this snapshot file for "Levl <n>" */
@@ -8177,7 +8177,7 @@ void do_prestore( CHAR_DATA *ch, char *argument )
         }
         else
         {
-            strlcpy( datebuf, ts, sizeof(datebuf) );
+            toc_strlcpy( datebuf, ts, sizeof(datebuf) );
         }
 
         snprintf( cpbuf, sizeof(cpbuf),

@@ -272,9 +272,9 @@ void show_backup( CHAR_DATA *ch, char *argument )
       {
         char ts1[32], ts2[32];
         char *nl;
-        strlcpy( ts1, ctime(&backup),      sizeof(ts1) );
+        toc_strlcpy( ts1, ctime(&backup),      sizeof(ts1) );
         nl = strchr(ts1, '\n'); if (nl) *nl = '\0';
-        strlcpy( ts2, ctime(&dailybackup), sizeof(ts2) );
+        toc_strlcpy( ts2, ctime(&dailybackup), sizeof(ts2) );
         nl = strchr(ts2, '\n'); if (nl) *nl = '\0';
         snprintf( buf, sizeof(buf), "Next pfile backup scheduled for %s\n\r", ts1);
         send_to_char(buf,ch);

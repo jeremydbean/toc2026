@@ -6,6 +6,7 @@ Start here:
 
 - [Area Building Guide](area-building-guide.md) - modern, comprehensive `.are` file reference
 - [Validation and Area Health](validation-and-area-health.md) - local validation, CI, issue codes, and troubleshooting
+- [Advanced Gear Comparison](gear-comparison.md) - player syntax, category estimates, and scoring model
 - [MOBS](MOBS.md), [OBJECTS](OBJECTS.md), [ROOMS](ROOMS.md), [RESETS](RESETS.md), [SHOPS](SHOPS.md), and [SPECIALS](SPECIALS.md) - historical area-format references
 
 Please contact j@jeremybean.com with any issues.
