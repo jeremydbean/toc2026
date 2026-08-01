@@ -142,6 +142,56 @@ S
         self.assertNotIn(-1, parser.rooms)
         self.assertEqual(parser.errors, [])
 
+    def test_container_reset_counts_as_object_source(self) -> None:
+        content = """#AREA { 1 1 } Container Test~
+#OBJECTS
+#10
+chest~
+a chest~
+A chest rests here.~
+wood~
+15 0 0
+10 A 0 0 0
+0 1 0 P
+#11
+gem~
+a gem~
+A gem sparkles here.~
+glass~
+8 0 A
+0 0 0 0 0
+1 1 1 P
+#0
+#ROOMS
+#1
+Test Room~
+A test room.~
+0 0 0
+S
+#0
+#RESETS
+O 0 10 1 1
+P 0 11 1 10
+S
+#$
+"""
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            area_path = Path(temporary_directory)
+            (area_path / "area.lst").write_text("container.are\n$\n", encoding="latin-1")
+            (area_path / "container.are").write_text(content, encoding="latin-1")
+            parser = AreaParser(area_path)
+            parser.parse_all()
+            result = build_area_health(parser, area_path)
+
+        self.assertEqual(parser.objects[11].contained_by, [10])
+        self.assertFalse(
+            any(
+                issue["code"] == "object-has-no-source" and issue.get("vnum") == 11
+                for issue in result["issues"]
+            )
+        )
+
     def test_area_health_has_expected_summary_shape(self) -> None:
         area_path = Path("area")
         parser = AreaParser(area_path)

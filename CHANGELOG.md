@@ -10,6 +10,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added the remastered Hyrule area (`30200-30550`) with a Campus arcade entry,
+  repaired dungeon progression, the Triforce reward chain, and two return portals.
 - Added `merc --check-area` / `merc --validate` startup mode for loading the full area database and exiting without opening a listening socket.
 - Added reusable area-health linting in `webadmin/area_health.py`, the `scripts/area_lint.py` CLI, a web admin Area Health view, and the `/api/area_health` endpoint.
 - Added cross-platform validation runners: `scripts/validate.ps1` for Windows/WSL and `scripts/validate.sh` for Linux, macOS, WSL, and CI.
@@ -19,6 +21,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Area-health source tracking now recognizes objects loaded inside containers by
+  `P` resets, avoiding false orphan reports for nested rewards.
 - Expanded web admin configuration with `AREA_PATH`, `BACKUP_PATH`, `--area-path`, and `--backup-path`.
 - Web admin reloads now validate a complete replacement parser, reject critical issues with HTTP 422, preserve the last known-good data on failure, and list recent backup archives.
 - Operational web-admin endpoints are disabled until `WEB_ADMIN_TOKEN` is configured; queue payloads are bounded and restricted to one protocol-safe line.

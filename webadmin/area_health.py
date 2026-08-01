@@ -440,12 +440,16 @@ def build_area_health(parser: AreaParser, area_directory: Optional[Path] = None)
 
     room_object_vnums = {obj_vnum for room in parser.rooms.values() for obj_vnum in room.objects}
     for obj in parser.objects.values():
-        if obj.vnum not in room_object_vnums and not obj.carried_by:
+        if (
+            obj.vnum not in room_object_vnums
+            and not obj.carried_by
+            and not obj.contained_by
+        ):
             issues.append(
                 _issue(
                     "info",
                     "object-has-no-source",
-                    f"Object {obj.vnum} has no room reset and is not carried by a mob.",
+                    f"Object {obj.vnum} has no room, mobile, or container reset source.",
                     obj.area_file,
                     obj.vnum,
                 )

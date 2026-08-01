@@ -992,6 +992,7 @@ class Object:
     area_file: str = ""
     area_name: str = ""
     carried_by: List[int] = field(default_factory=list)  # Mob vnums that carry this
+    contained_by: List[int] = field(default_factory=list)  # Container reset vnums
 
 
 @dataclass
@@ -1125,6 +1126,12 @@ class AreaParser:
                             self.mobiles[current_mob_vnum].drops.append(obj_vnum)
                         if current_mob_vnum not in self.objects[obj_vnum].carried_by:
                             self.objects[obj_vnum].carried_by.append(current_mob_vnum)
+                elif reset.command == 'P':  # Put object in container
+                    obj_vnum = reset.arg1
+                    container_vnum = reset.arg3
+                    if obj_vnum in self.objects and container_vnum in self.objects:
+                        if container_vnum not in self.objects[obj_vnum].contained_by:
+                            self.objects[obj_vnum].contained_by.append(container_vnum)
     
     def parse_area_file(self, filepath: Path) -> None:
         """Parse a single .are file"""
