@@ -3054,6 +3054,24 @@ void do_steal( CHAR_DATA *ch, char *argument )
 /*
  * Shopping commands.
  */
+#define HYRULE_POTION_KEEPER_VNUM 30343
+#define HYRULE_LETTER_VNUM        30500
+
+static bool object_list_has_vnum( OBJ_DATA *list, int vnum )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = list; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->pIndexData != NULL && obj->pIndexData->vnum == vnum )
+            return true;
+        if ( obj->contains != NULL && object_list_has_vnum( obj->contains, vnum ) )
+            return true;
+    }
+
+    return false;
+}
+
 CHAR_DATA *find_keeper( CHAR_DATA *ch )
 {
     CHAR_DATA *keeper;
@@ -3070,6 +3088,16 @@ CHAR_DATA *find_keeper( CHAR_DATA *ch )
     {
 	send_to_char( "You can't do that here.\n\r", ch );
 	return NULL;
+    }
+
+    if ( !IS_NPC(ch)
+    &&   keeper->pIndexData != NULL
+    &&   keeper->pIndexData->vnum == HYRULE_POTION_KEEPER_VNUM
+    &&   !object_list_has_vnum( ch->carrying, HYRULE_LETTER_VNUM ) )
+    {
+        act( "$n silently points to a royal seal. You need Princess Zelda's letter.",
+             keeper, NULL, ch, TO_VICT );
+        return NULL;
     }
 
 /*  Undesirables.
@@ -3562,6 +3590,8 @@ enum puzzle_manipulation_type
     PUZZLE_FEED = 14
 };
 
+#define PUZZLE_CURRENT_ROOM 9
+
 static OBJ_DATA *find_carried_puzzle_tool( CHAR_DATA *ch, const char *keyword,
                                            int item_type )
 {
@@ -3591,9 +3621,10 @@ static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
         return false;
     }
 
-    if ( obj->value[1] != 0 )
+    if ( obj->value[1] != 0 || obj->value[4] == PUZZLE_CURRENT_ROOM )
     {
-        room = get_room_index( obj->value[1] );
+        room = obj->value[4] == PUZZLE_CURRENT_ROOM
+             ? ch->in_room : get_room_index( obj->value[1] );
         if ( room == NULL || obj->value[2] < 0 || obj->value[2] > 5
         ||   ( pexit = room->exit[obj->value[2]] ) == NULL
         ||   pexit->u1.to_room == NULL )
@@ -3701,10 +3732,31 @@ void do_burn( CHAR_DATA *ch, char *argument )
 void do_bomb( CHAR_DATA *ch, char *argument )
 {
     OBJ_DATA *target;
+    OBJ_DATA *bomb_bag;
+    CHAR_DATA *victim;
 
     if ( argument[0] == '\0' )
     {
         send_to_char( "Bomb what?\n\r", ch );
+        return;
+    }
+
+    bomb_bag = find_carried_puzzle_tool( ch, "bomb", -1 );
+    victim = get_char_room( ch, argument );
+    if ( victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
+    &&   victim->pIndexData->vnum == 30218 )
+    {
+        if ( bomb_bag == NULL )
+        {
+            send_to_char( "You need a bomb bag to do that.\n\r", ch );
+            return;
+        }
+        act( "You roll a bomb beneath $N. The explosion tears through its hide!",
+             ch, NULL, victim, TO_CHAR );
+        act( "$n rolls a bomb beneath $N. The explosion fills the chamber!",
+             ch, NULL, victim, TO_ROOM );
+        damage( ch, victim, UMAX( 1, victim->max_hit / 2 ),
+                TYPE_UNDEFINED, DAM_FIRE );
         return;
     }
 
@@ -3715,7 +3767,7 @@ void do_bomb( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( find_carried_puzzle_tool( ch, "bomb", -1 ) == NULL )
+    if ( bomb_bag == NULL )
     {
         send_to_char( "You need a bomb bag to do that.\n\r", ch );
         return;
@@ -3843,6 +3895,13 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
    if( obj->item_type != ITEM_MANIPULATION )
    {
       act( "You can't do that to the $T.", ch, NULL, arg, TO_CHAR );
+      return;
+   }
+
+   if ( obj->pIndexData != NULL && obj->pIndexData->vnum == 30564
+   &&   !object_list_has_vnum( ch->carrying, 30276 ) )
+   {
+      send_to_char( "The stone will not move without the Power Bracelet.\n\r", ch );
       return;
    }
 
@@ -4052,10 +4111,12 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      break;
    }
 
-   if( obj->value[1] != 0 && obj->value[0] != 10)
+   if( ( obj->value[1] != 0 || obj->value[4] == PUZZLE_CURRENT_ROOM )
+   &&  obj->value[0] != 10)
    {
 
-     to_room = get_room_index( obj->value[1] );
+     to_room = obj->value[4] == PUZZLE_CURRENT_ROOM
+             ? ch->in_room : get_room_index( obj->value[1] );
      if ( to_room == NULL )
      {
        send_to_char( "Nothing seems to happen.\n\r", ch );
@@ -4069,6 +4130,11 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
      }
 
      REMOVE_BIT( pexit->exit_info, EX_CLOSED );
+     if ( obj->value[4] == PUZZLE_CURRENT_ROOM )
+     {
+       REMOVE_BIT( pexit->exit_info, EX_LOCKED );
+       found = true;
+     }
 
      if ( IS_SET(pexit->exit_info, EX_SECRET) )
      {
@@ -4095,6 +4161,8 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
       return;
     }
     REMOVE_BIT( pexit_rev->exit_info, EX_CLOSED );
+    if ( obj->value[4] == PUZZLE_CURRENT_ROOM )
+      REMOVE_BIT( pexit_rev->exit_info, EX_LOCKED );
 
     if ( IS_SET(pexit_rev->exit_info, EX_SECRET) )
     {
@@ -4119,6 +4187,12 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
    }
    else
      send_to_char("Nothing seems to happen.\n\r",ch);
+
+   if ( obj->value[4] == PUZZLE_CURRENT_ROOM )
+   {
+     extract_obj( obj );
+     return;
+   }
 
    switch(obj->value[4])   /* special procedures */
    {
@@ -4411,6 +4485,8 @@ void add_platinum(CHAR_DATA *ch, long amount)
 #define CASINO_PENDING_BET      1
 #define CASINO_PENDING_ROULETTE 2
 #define CASINO_PENDING_POKER    3
+#define HYRULE_GAMBLE_LOW       30710
+#define HYRULE_GAMBLE_HIGH      30714
 
 /* SEVEN occupies two virtual stops (indices 0 and 1) to double its hit
  * frequency on each reel.  All payout comparisons MUST use SYM_NORM so
@@ -4423,6 +4499,58 @@ static bool in_casino( CHAR_DATA *ch )
     if ( ch->in_room == NULL ) return false;
     return ( ch->in_room->vnum >= CASINO_VNUM_LOW
           && ch->in_room->vnum <= CASINO_VNUM_HIGH );
+}
+
+void do_gamble( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    int result;
+    long loss;
+
+    UNUSED_PARAM(argument);
+
+    if ( IS_NPC(ch) )
+    {
+        send_to_char( "NPCs cannot gamble.\n\r", ch );
+        return;
+    }
+    if ( ch->in_room == NULL
+    ||   ch->in_room->vnum < HYRULE_GAMBLE_LOW
+    ||   ch->in_room->vnum > HYRULE_GAMBLE_HIGH )
+    {
+        send_to_char( "There is no Hyrule money-making game here.\n\r", ch );
+        return;
+    }
+    if ( !has_enough_gold( ch, 10 ) )
+    {
+        send_to_char( "You need 10 rupees to play.\n\r", ch );
+        return;
+    }
+
+    add_money( ch, -10 );
+    result = number_range( 0, 3 );
+    if ( result == 0 || result == 1 )
+    {
+        long payout = result == 0 ? 50 : 20;
+        add_money( ch, payout );
+        ch->pcdata->casino_winnings += payout - 10;
+        snprintf( buf, sizeof(buf),
+                  "You choose a hidden rupee sign and win %ld rupees!\n\r", payout );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        long requested_loss = result == 2 ? 20 : 40;
+        loss = UMIN( query_gold(ch), requested_loss );
+        if ( loss > 0 )
+            add_money( ch, -loss );
+        ch->pcdata->casino_losses += 10 + loss;
+        snprintf( buf, sizeof(buf),
+                  "You choose a hidden rupee sign and lose %ld more rupees.\n\r", loss );
+        send_to_char( buf, ch );
+    }
+    act( "$n chooses one of the old man's concealed rupee signs.",
+         ch, NULL, NULL, TO_ROOM );
 }
 
 void do_slots( CHAR_DATA *ch, char *argument )

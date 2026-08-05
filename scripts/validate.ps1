@@ -70,7 +70,12 @@ Invoke-Step "Python syntax" {
         (Join-Path $RepoRoot "webadmin\area_health.py") `
         (Join-Path $RepoRoot "scripts\player_watcher.py") `
         (Join-Path $RepoRoot "scripts\web_server.py") `
-        (Join-Path $RepoRoot "scripts\area_lint.py")
+        (Join-Path $RepoRoot "scripts\area_lint.py") `
+        (Join-Path $RepoRoot "scripts\extract_zelda_reference.py") `
+        (Join-Path $RepoRoot "scripts\extract_zelda_entities.py") `
+        (Join-Path $RepoRoot "scripts\extract_zelda_doors.py") `
+        (Join-Path $RepoRoot "scripts\build_hyrule_manifest.py") `
+        (Join-Path $RepoRoot "scripts\build_hyrule_area.py")
 }
 
 Invoke-Step "Area data checks" {

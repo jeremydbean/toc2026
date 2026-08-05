@@ -1442,14 +1442,26 @@ Syntax: bomb <target>
 
 Some area puzzles react to a specific tool. BURN requires a lit candle and
 can reveal passages hidden by vegetation. BOMB requires a carried bomb bag
-and opens specially marked cracked surfaces. PLAY uses a Recorder, whistle,
+and opens specially marked cracked surfaces or damages Dodongo. PLAY uses a Recorder, whistle,
 or ocarina to trigger a nearby musical puzzle. FEED consumes suitable enemy
 bait when a hungry guardian blocks the way.
 
 These commands only affect objects designed for that interaction. Examine
-the room and its objects for clues.
+the room and its objects for clues. Some Hyrule stones also require the Power
+Bracelet before PUSH can move them.
 
 See also: FLIP, MOVE, PULL, PUSH, TURN, LOOK
+~
+
+0 GAMBLE~
+Syntax: gamble
+
+GAMBLE plays the money-making game inside one of Hyrule's five gambling
+caves. It costs 10 rupees to choose a concealed sign. The result may award 20
+or 50 rupees, or demand another 20 or 40. The command only works in those
+First Quest rooms.
+
+See also: BET, SLOTS
 ~
 
 0 CLIMB~

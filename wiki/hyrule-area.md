@@ -1,172 +1,250 @@
-# Hyrule Area
+# Hyrule: First Quest
 
-## Overview
+## Status
 
-- File: `area/hyrule.are`
-- Builder: Astarte
-- Remastered vnum allocation: `30200-30799`
-- Intended level range: `1-70`
-- Primary entry: Hyrule arcade cabinet in Campus room `15068`
-- Arrival room: Hyrule room `30200`
-- Entry model: teleport only; Hyrule has no walking link to the main world
+Hyrule is a generated level 1-70 campaign based on the First Quest from the
+original *Legend of Zelda*. It replaces the old ToC2 room layout while retaining
+the useful Hyrule mobile and object catalog.
 
-Hyrule is a remastered import of the original ToC2 area. The remaster keeps
-the recognizable overworld, old personal spaces, secrets, and intentional
-hazards while rebuilding the playable arc around all nine labyrinths from the
-original *Legend of Zelda*. Combat, equipment, gates, and boss rewards now
-form one continuous level 1 through 70 campaign.
-
-## Progression Map
-
-| Stage | Levels | Entrance and gate | Major item | Boss and completion reward |
-| --- | ---: | --- | --- | --- |
-| Overworld opening | 1-10 | Teleport to `30200`; starter cache in `30202` | Blue Candle and bomb bag are available before the first labyrinth | Route reaches the island statue at `30229` |
-| Level 1: The Eagle | 11-20 | Portal from `30229` to `30339` | Boomerang and Bow | Aquamentus in `30353`; level 19-20 gear, boss key, shard `30400` |
-| Level 2: The Moon | 21-30 | Portal at `30297`; shard `30400` opens the first seal | Magical Boomerang | Dodongo in `30376`; level 29-30 gear, boss key, shard `30401` |
-| Level 3: The Manji | 31-40 | Stair at `30217`; shard `30401` opens the seal | Raft | Manhandla in `30613`; level 39-40 gear, boss key, shard `30402` |
-| Level 4: The Snake | 41-50 | Use the Raft at `30299` to reach `30500`; shard `30402` opens the stair | Stepladder | Gleeok in `30633`; level 49-50 gear, boss key, shard `30403` |
-| Level 5: The Lizard | 51-55 | Northern route from `30325`; shard `30403` opens the seal | Recorder | Digdogger in `30653`; level 54-55 gear, boss key, shard `30404` |
-| Level 6: The Dragon | 56-60 | Stair at `30337`; shard `30404` opens the seal | Magical Wand | Gohma in `30673`; level 59-60 gear, boss key, shard `30405` |
-| Level 7: The Demon | 61-64 | Play the Recorder at pool `30238`; shard `30405` opens the exposed stair | Red Candle | Elder Digdogger miniboss, hungry Goriya, ancient Aquamentus; level 63-64 gear and shard `30406` |
-| Level 8: The Lion | 65-67 | Burn the solitary bush at `30295`; shard `30406` opens the seal | Magic Book and Magical Key | Ashen Gleeok in `30713`; level 67 gear and shard `30407` |
-| Level 9: Death Mountain | 68-70 | Bomb Spectacle Rock at `30323`; shard `30407` opens the final seal | Silver Arrow and Red Ring | Ganon in `30436`; level 70 gear, Staff of Power, and Golden Key |
-
-The level 58 Master Sword (`30200`) remains intentionally fixed at the level
-requested for the remaster. It is sealed in pedestal `30235` in room `30466`;
-the sixth shard (`30405`) is its unpickable key.
-
-## Zelda Puzzle Rules
-
-The remaster adds reusable, data-driven verbs for recognizable Zelda puzzle
-interactions:
-
-- `burn <target>` requires a lit candle and reveals burnable bush passages.
-- `bomb <target>` requires a carried bomb bag and opens cracked walls.
-- `play <instrument>` accepts the Recorder, whistle, or ocarina. It drains the
-  Level 7 pool and weakens Digdogger encounters.
-- `feed <guardian>` consumes bait and moves the hungry Goriya out of the way.
-- `push <block>` uses the existing manipulation command for block passages.
-
-Implemented tricks include the Eagle bomb shortcut and movable block, the
-Moon bomb wall, the Manji and Snake block stairs, the Recorder weakness in the
-Lizard, the Dragon false wall, the Demon's drained entrance, bait gate, nose
-wall and nose block, the Lion's burned entrance and hidden passages, and the
-Spectacle Rock entrance to Death Mountain.
-
-Puzzle objects use `ITEM_MANIPULATION` (`31`) with this value layout:
-
-| Value | Meaning |
+| Property | Value |
 | --- | --- |
-| `value[0]` | Action type: `11` burn, `12` bomb, `13` play, `14` feed |
-| `value[1]` | Room containing the exit to reveal, or `0` for an encounter-only effect |
-| `value[2]` | Exit direction (`0-5`), or the target mobile vnum when `value[1]` is `0` |
-| `value[3]` | Puzzle state: `1` ready, `2` solved |
-| `value[4]` | `1` weakens the selected NPC prototype to one-third current hit points |
+| Area file | `area/hyrule.are` |
+| Reserved vnums | `30200-30799` |
+| Entry object | Hyrule arcade cabinet `30285` in Campus room `15068` |
+| Arrival | Overworld screen `H1`, room `30200` |
+| Exit model | Secret return tree and post-Ganon return light |
+| Recall | Disabled in every Hyrule room |
+| Level range | `1-70` |
+| Canonical geometry | 128 overworld screens plus 246 dungeon rooms and cellars |
+| Generated area size | 443 rooms and 2,265 reset records |
 
-Successful puzzle objects are extracted and can return on the next area reset,
-which keeps reset doors and repeatable boss encounters synchronized.
+There is no walking exit from the main world into Hyrule. Players arrive by
+entering the arcade cabinet, matching the intended "teleported into Zelda"
+opening. They can leave through the burned secret tree at `E2` or the return
+light in Zelda's room after Ganon.
 
-## Dungeon Maps And Compasses
+## Sources Of Truth
 
-Every labyrinth has its own collectible map and compass. Use
-`read <dungeon> map` to display a route chart with the entrance, major item
-vaults, boss, and Triforce chamber. Use `read <dungeon> compass` anywhere
-inside that same labyrinth to receive the first general direction toward the
-boss and a rough distance estimate. A short form such as `read compass` works
-when only one matching item is present.
+Do not hand-edit generated rooms or resets in `area/hyrule.are`. The checked-in
+source chain is:
 
-| Level | Map location | Compass location | Boss target |
+1. `data/hyrule_first_quest.json` stores normalized screen, room, encounter,
+   door, landmark, shop, secret, and progression data.
+2. `scripts/build_hyrule_area.py` combines that manifest with the retained area
+   catalog and writes `area/hyrule.are`.
+3. `tests/test_hyrule_progression.py` checks geometry, placement, progression,
+   reachability, resets, services, and generation idempotence.
+
+The manifest itself is built by `scripts/build_hyrule_manifest.py`. Its image
+diagnostics come from:
+
+- [NESMaps First Quest maps](https://www.nesmaps.com/maps/Zelda/Zelda.html)
+- [Nintendo's Zelda manual](https://www.nintendo.co.jp/clv/manuals/en/pdf/CLV-P-NAANE_en.pdf)
+- [The Video Game Level Corpus](https://github.com/TheVGLC/TheVGLC)
+- [zelda1-disassembly](https://github.com/aldonunez/zelda1-disassembly)
+- [GameFAQs First Quest guide](https://gamefaqs.gamespot.com/nes/563433-the-legend-of-zelda/faqs/75987/quick-guide)
+
+Reference images and sprite sheets are audit inputs and are deliberately not
+committed. The normalized JSON contains the data needed for ordinary builds.
+
+## Coordinate System
+
+The manifest uses columns `A-P` and rows `1-8`, with `H1` as the southern
+starting screen. Printed Zelda guides usually number from north to south, so a
+guide coordinate `(column, row)` becomes `(column, 9 - row)` in the manifest.
+
+Examples:
+
+| First Quest guide | Manifest | Landmark |
+| --- | --- | --- |
+| `H8` | `H1` | Starting cave |
+| `N7` | `N2` | Level 8 |
+| `F1` | `F8` | Level 9 |
+| `K1` | `K8` | White Sword |
+| `B3` | `B6` | Master Sword |
+| `O1` | `O8` | Letter |
+| `E3` | `E6` | Power Bracelet |
+
+Service landmarks also retain a `zelda_coordinate` field so reviewers can
+compare them directly with a printed guide.
+
+## Dungeon Progression
+
+Each overworld movement crosses one original screen. Each dungeon movement
+crosses one original room edge. Locked doors and shutters come from the
+background door graphics. Bomb walls come from the matching 16x16 bomb markers
+drawn on both adjoining rooms in the labeled maps, and lettered stair passages
+come from the First Quest route references.
+
+| Level | Player levels | Overworld | Entry | Rooms | Boss | Goal |
+| --- | ---: | --- | ---: | --- | ---: | ---: |
+| 1: The Eagle | 11-20 | `H5` | `30401` | `30400-30417` | `30413` | `30414` |
+| 2: The Moon | 21-30 | `M5` | `30418` | `30418-30435` | `30435` | `30434` |
+| 3: The Manji | 31-40 | `E1` | `30437` | `30436-30454` | `30449` | `30451` |
+| 4: The Snake | 41-50 | `F4` | `30456` | `30455-30475` | `30470` | `30474` |
+| 5: The Lizard | 51-55 | `L8` | `30476` | `30476-30499` | `30489` | `30493` |
+| 6: The Dragon | 56-60 | `C6` | `30501` | `30500-30525` | `30519` | `30524` |
+| 7: The Demon | 61-64 | `C4` | `30527` | `30526-30559` | `30546` | `30547` |
+| 8: The Lion | 65-67 | `N2` | `30562` | `30560-30586` | `30574` | `30578` |
+| 9: Death Mountain | 68-70 | `F8` | `30590` | `30587-30645` | `30607` | `30615` |
+
+Dungeon 1 starts after the level 1-10 overworld opening. Equipment chests cover
+every player level through 70. Bosses carry the top gear for their band, while
+maps, cellars, and intermediate rooms source the rest. The Master Sword remains
+fixed at level 58 as requested.
+
+Death Mountain requires all eight Triforce shards before its bombed entrance
+can be used. Ganon drops Golden Key `30243`; that key opens Zelda's room, which
+contains the complete Triforce `30286` and return portal `30217`.
+
+## Maps And Compasses
+
+Every dungeon contains one generated map and compass:
+
+| Level | Map object and room | Compass object and room |
+| --- | --- | --- |
+| 1 | `30480` in `30409` | `30489` in `30406` |
+| 2 | `30481` in `30425` | `30490` in `30423` |
+| 3 | `30482` in `30448` | `30491` in `30441` |
+| 4 | `30483` in `30466` | `30492` in `30458` |
+| 5 | `30484` in `30485` | `30493` in `30488` |
+| 6 | `30485` in `30516` | `30494` in `30503` |
+| 7 | `30486` in `30548` | `30495` in `30537` |
+| 8 | `30487` in `30580` | `30496` in `30568` |
+| 9 | `30488` in `30628` | `30497` in `30618` |
+
+`read <map>` prints the dungeon silhouette and marks the entrance, map,
+compass, item cellars, boss, and goal. `read <compass>` reports the first
+general direction and approximate route distance to the boss. Routing stays
+inside that dungeon's generated vnum range and understands stair passages.
+
+Map values use opcode `90`; compass values use opcode `91`. Values 1-4 contain
+the boss vnum, first room, last room, and dungeon level.
+
+## Overworld Secrets And Services
+
+The generated overworld includes the complete major First Quest service set:
+
+- 14 secret rupee caves with their original 10, 30, or 100 rupee rewards
+- 7 regular item shops and 5 hidden deluxe shops
+- 7 potion shops, gated by Princess Zelda's Letter
+- 9 one-time 20-rupee door-repair charges
+- 5 money-making games using the `gamble` command
+- 4 Power Bracelet warp halls with the original west, center, and east routes
+- 5 overworld Heart Containers and 2 Fairy Fountains
+- Wooden, White, and Master Sword caves, the Letter, and the Power Bracelet
+
+The regular shops source bombs and the Blue Candle inside Hyrule, so early
+secrets do not depend on equipment imported from another area. Shop inventory
+uses the original item groupings and prices. Potion shops offer the 40-rupee
+Life Potion and 68-rupee 2nd Potion only while the character carries the Letter.
+
+Door-repair rooms charge at most 20 rupees on the first visit. A hidden,
+non-droppable receipt records payment separately for each location and survives
+normal player saves. The gambling rooms charge 10 rupees and choose among the
+First Quest-style positive and negative outcomes.
+
+Warp stones require the Power Bracelet. Their route permutations are:
+
+| Hall | West | Center | East |
 | --- | --- | --- | --- |
-| 1: Eagle | `30480` in `30347` | `30489` in `30344` | `30353` |
-| 2: Moon | `30481` in `30362` | `30490` in `30369` | `30376` |
-| 3: Manji | `30482` in `30611` | `30491` in `30602` | `30613` |
-| 4: Snake | `30483` in `30631` | `30492` in `30622` | `30633` |
-| 5: Lizard | `30484` in `30651` | `30493` in `30645` | `30653` |
-| 6: Dragon | `30485` in `30670` | `30494` in `30663` | `30673` |
-| 7: Demon | `30486` in `30683` | `30495` in `30692` | `30693` |
-| 8: Lion | `30487` in `30706` | `30496` in `30712` | `30713` |
-| 9: Death Mountain | `30488` in `30400` | `30497` in `30398` | `30436` |
+| `D6` | `J4` | `J1` | `N7` |
+| `J4` | `J1` | `N7` | `D6` |
+| `J1` | `N7` | `D6` | `J4` |
+| `N7` | `D6` | `J4` | `J1` |
 
-Both use `ITEM_MAP` (`28`). Their values are data-driven:
+## Puzzle Commands
 
-| Value | Meaning |
-| --- | --- |
-| `value[0]` | `90` for a readable dungeon map, `91` for a boss compass |
-| `value[1]` | Boss-room vnum |
-| `value[2]` | First room vnum in the matching dungeon |
-| `value[3]` | Last room vnum in the matching dungeon |
-| `value[4]` | Dungeon level number (`1-9`) |
+| Command | Requirement | First Quest use |
+| --- | --- | --- |
+| `burn <target>` | Blue or Red Candle | Bushes, shops, hearts, repairs, Level 8 |
+| `bomb <target>` | Bomb satchel or bomb bag | Rock walls, caves, Dodongo, Level 9 |
+| `play <instrument>` | Recorder, whistle, or ocarina | Level 7 entrance and Digdogger |
+| `feed <guardian>` | Enemy bait | Hungry Goriya |
+| `push <target>` | Context dependent | Blocks, Armos, sword grave, warp stones |
+| `gamble` | 10 rupees in a money game | First Quest gambling caves |
 
-Compass routing ignores closed-door state but remains inside the recorded
-dungeon bounds. It also understands permanent portal lights and climbable
-stairs, which are required to follow the Moon and Death Mountain layouts.
+Puzzle objects use `ITEM_MANIPULATION` type `31`. Generated overworld targets
+use a zero destination plus dynamic-target flag `value[4] = 9`, allowing one
+prototype to reveal the current room's exit. Bomb, burn, play, and feed use
+opcodes 12, 11, 13, and 14 respectively.
 
-## Equipment Curve
+Runtime rules add the behaviors the area format cannot express alone:
 
-Every level from 1 through 70 has at least one sourced weapon or armor item.
-General caches cover the interior levels of each band, while bosses carry the
-top gear for their labyrinth. The high-level curve is compressed so all nine
-dungeons fit below Ganon at level 70:
+- Hyrule small keys are consumed; the Magical Key is reusable.
+- Shutters open when aggressive room guardians are defeated.
+- Dodongo takes bomb damage.
+- Gohma requires a bow or Silver Arrow for the finishing hit.
+- Ganon requires the Silver Arrow for the finishing hit.
+- Like Likes can swallow equipped shields; Bubbles can disarm weapons.
+- Wallmasters can return a player to that dungeon's entrance.
+- Raft and Stepladder crossings verify the corresponding item.
+- Warp stones verify the Power Bracelet.
 
-- Levels `1-10`: overworld starter equipment
-- Levels `11-18`, `21-28`, `31-38`, `41-48`: dungeon exploration caches
-- Levels `19-20`, `29-30`, `39-40`, `49-50`: first four boss pairs
-- Levels `51-57`: Lizard and Dragon caches, with boss gear at `54-55`
-- Level `58`: Master Sword
-- Levels `59-60`: Gohma rewards
-- Levels `61-67`: Demon and Lion caches and boss rewards
-- Level `68`: Silver Arrow vault gear
-- Level `69`: Red Ring vault gear
-- Level `70`: Ganon's shadow crown and Staff of Power
+## Regeneration
 
-Armor wear locations follow their descriptions rather than a generated slot
-rotation: boots and greaves use feet, mail and tunics use body, shields use the
-off hand, and the recurring Heart Guards form a neck-slot upgrade series.
+For normal work, regenerate from the checked-in manifest:
 
-The Level 3 Raft (`30411`) is a real `ITEM_BOAT`, so it also works with the
-engine's deep-water movement rules. The waiting raft portal at `30299` is type
-`6` and requires the player to carry `30411`; its return trip remains open.
+```bash
+python scripts/build_hyrule_area.py
+python -m unittest tests.test_hyrule_progression
+```
 
-The progression test in `tests/test_hyrule_progression.py` verifies continuous
-gear coverage, semantic wear slots, cache placement, boss rooms and drops,
-shard sources, canonical item gates, dungeon map and compass metadata, puzzle
-targets, room reachability, and a return route from every nonlethal room.
+The generator is idempotent. Running it twice must produce byte-identical area
+files.
 
-## Ganon And Return Travel
+To rebuild the manifest from external reference assets, install Pillow and put
+the labeled/background map pairs and sprite references under
+`../zelda-reference`. Then run:
 
-1. The Silver Arrow and Red Ring are found within Level 9 before Ganon.
-2. Ganon in `30436` drops the Golden Key (`30243`), the Staff of Power
-   (`30244`), and level 70 gear (`30388`).
-3. The Golden Key opens the northern door to the Golden Room (`30437`).
-4. The chest in `30437` contains the complete Triforce (`30286`) and treasure.
-5. The golden light in `30437` returns to Campus room `15068`.
+```bash
+python scripts/extract_zelda_reference.py ../zelda-reference ../zelda-reference/extracted
+python scripts/extract_zelda_entities.py ../zelda-reference/extracted/cells ../zelda-reference/sprites-complete ../zelda-reference/extracted/entities.json
+python scripts/extract_zelda_doors.py ../zelda-reference ../zelda-reference/extracted/diagnostics.json ../zelda-reference/extracted
+python scripts/build_hyrule_manifest.py --reference ../zelda-reference/extracted
+python scripts/build_hyrule_area.py
+```
 
-The secret hollow tree in Dead Forest room `30270` is the second supported
-return route to Campus. The Temple of Time quiz fallback in `30455` returns to
-the Temple entrance (`30438`) instead of another game area. The Master Sword
-altar in `30466` has the same return light, so completing the trial never
-strands the player behind its one-way entrance.
+Review extraction diagnostics and unmatched sprite composites before accepting
+a rebuilt manifest. They are evidence for a human audit, not generated files to
+commit.
 
-## Intentional Hazards
+## Validation
 
-The old `NO_RECALL` flags remain intentional. The following lethal routes are
-also preserved and warned in nearby room text:
+Run the focused test while editing Hyrule:
 
-- Rooms `30316` and `30408` lead to death room `30467`.
-- A wrong final Temple answer can lead through `30463` to death room `30470`.
-- The red button in trapped room `30361` is labeled `DO NOT PUSH` and remains
-  a lethal interaction.
+```bash
+python -m unittest tests.test_hyrule_progression -v
+```
 
-Do not remove these hazards or flags as generic area-health cleanup. The
-arcade, post-Ganon portal, and secret tree portal are the supported exits.
+Before publishing, run the complete repository suite:
 
-## Migration Notes
+```powershell
+.\scripts\validate.ps1
+```
 
-- Original range `15200-15550` was shifted by `+15000` before expansion.
-- Six rooms and two objects copied from the active Forsaken clan hall were
-  omitted, along with their Tarrasque reset.
-- Empty legacy room `15500` was omitted.
-- All retained mobiles received current-world hit, mana, damage, and boss
-  tuning; reused enemies were split into dungeon-appropriate level variants.
-- Legacy containers and rewards were repaired, including the Golden Room
-  chest, Gohma's Silver Arrow chest, and the Master Sword pedestal.
+The Hyrule tests verify:
+
+- all 128 overworld screens and every canonical dungeon room
+- reciprocal topology, non-overlapping ranges, and complete reachability
+- all 56 marked bomb walls, including Death Mountain's exact 19 wall pairs
+- exact reset counts for source-derived encounters
+- locked-door solvability using keys found in each dungeon
+- Death Mountain passages, encounters, Ganon key, and Triforce gate
+- every level from 1 through 70 having sourced weapon or armor
+- maps, compasses, shops, rupees, repairs, gambling, and warp routes
+- teleport-only entry, no recall, and a path back from every Hyrule room
+- area-generator idempotence
+
+The full validator also performs clean and strict-warning C builds, boots the
+engine in area-check mode, validates all area references, runs area health, and
+executes the complete Python test suite.
+
+## Fidelity Boundary
+
+The canonical topology, room counts, cardinal adjacency, dungeon silhouettes,
+door classes, encounter counts, major item locations, services, and route
+permutations are data-derived. MUD combat is real-time rather than tile-based,
+and one Zelda screen is represented by one text room rather than a pixel map.
+Area resets make enemies and rewards replayable. These are intentional engine
+adaptations; they do not alter the crossing count or progression route.

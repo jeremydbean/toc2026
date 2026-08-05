@@ -42,7 +42,7 @@ Times of Chaos (ToC) is a MUD (Multi-User Dungeon) — a real-time, text-based m
 **Key characteristics:**
 - Based on **Merc 2.1 / ROM 2.4** — a classic 1990s open-source lineage
 - **Heavily customized** over years of active development
-- **132 unique areas** with ~338,000 lines of world data
+- **99 loaded areas** selected from 134 area files, with ~338,000 lines of world data
 - Comprehensive **web admin dashboard** (Python/FastAPI, port 9001)
 - **Seasonal content** — special holiday areas for Halloween, Christmas, and more
 - **Player-kill** system with PKill data tracking
@@ -60,13 +60,25 @@ Times of Chaos (ToC) is a MUD (Multi-User Dungeon) — a real-time, text-based m
 | Max level | 70 (Level 60 = Hero, Level 61+ = Immortal) |
 | Playable classes | Mage, Cleric, Thief, Warrior, Monk, Necromancer |
 | Playable races | Human, Elf, Dwarf, Hobbit, Saurian |
-| World areas | 132 (ranging from starter school to end-game zones) |
+| World areas | 99 loaded from 134 area files (starter school through end game) |
 | Game port | 9000 (TCP, telnet protocol) |
 | Web admin port | 9001 (HTTP/WebSocket) |
 | Ticks per second | 4 pulses/sec (0.25s world tick) |
 | Save system | ASCII flat-file per-player saves in `player/` |
 | Combat system | Round-based, multi-attack, spell memorization |
 | Special features | Quests, player kills, remort, seasonal events, crafting components |
+
+### Hyrule First Quest
+
+The Hyrule arcade cabinet in Campus room `15068` teleports players into a
+generated level 1-70 First Quest campaign. It includes the 128-screen
+overworld, all nine dungeon layouts, source-derived encounter counts, major
+items and secrets, maps and boss compasses, the original shop and warp
+networks, and a complete gear curve. Recall is disabled; the secret return tree
+and post-Ganon light are the supported ways home.
+
+See [wiki/hyrule-area.md](wiki/hyrule-area.md) for player rules, coordinates,
+fidelity boundaries, source provenance, regeneration, and focused validation.
 
 ### Classes
 
@@ -828,6 +840,10 @@ python scripts/area_lint.py --fail-on critical --limit 20
 
 # Full JSON output for tooling or deeper review
 python scripts/area_lint.py --json > area-health.json
+
+# Regenerate Hyrule from its checked-in First Quest manifest
+python scripts/build_hyrule_area.py
+python -m unittest tests.test_hyrule_progression -v
 ```
 
 Area-health severities are intentional:
