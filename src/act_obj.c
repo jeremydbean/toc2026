@@ -3711,6 +3711,32 @@ enum puzzle_manipulation_type
 
 #define PUZZLE_CURRENT_ROOM 9
 
+/*
+ * is_name matches keyword prefixes, so asking it for "bomb" also accepts
+ * anything keyworded "bomber" -- Trinidad's Boob Bomber, for one.  A puzzle
+ * tool has to own the whole keyword, not merely start with it.
+ */
+static bool puzzle_tool_has_keyword( const OBJ_DATA *obj, const char *keyword )
+{
+    char list[MAX_STRING_LENGTH];
+    char name[MAX_INPUT_LENGTH];
+    char *list_ptr;
+
+    if ( obj->name == NULL )
+        return false;
+
+    toc_strlcpy( list, obj->name, sizeof(list) );
+    list_ptr = list;
+    for ( ; ; )
+    {
+        list_ptr = one_argument( list_ptr, name );
+        if ( name[0] == '\0' )
+            return false;
+        if ( !str_cmp( keyword, name ) )
+            return true;
+    }
+}
+
 static OBJ_DATA *find_carried_puzzle_tool( CHAR_DATA *ch, const char *keyword,
                                            int item_type )
 {
@@ -3718,7 +3744,7 @@ static OBJ_DATA *find_carried_puzzle_tool( CHAR_DATA *ch, const char *keyword,
 
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
-        if ( is_name( keyword, obj->name )
+        if ( puzzle_tool_has_keyword( obj, keyword )
         &&   ( item_type < 0 || obj->item_type == item_type ) )
             return obj;
     }
@@ -3831,10 +3857,17 @@ void do_burn( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    candle = find_carried_puzzle_tool( ch, "candle", ITEM_LIGHT );
-    if ( candle == NULL || candle->value[2] == 0 )
+    /*
+     * The help text promises a *lit* candle, which means one held in the
+     * light slot with fuel left -- not merely a candle somewhere in the pack.
+     */
+    candle = get_eq_char( ch, WEAR_LIGHT );
+    if ( candle == NULL
+    ||   candle->item_type != ITEM_LIGHT
+    ||   !puzzle_tool_has_keyword( candle, "candle" )
+    ||   candle->value[2] == 0 )
     {
-        send_to_char( "You need a burning candle to do that.\n\r", ch );
+        send_to_char( "You need a lit candle in hand to do that.\n\r", ch );
         return;
     }
 
@@ -3860,7 +3893,7 @@ void do_bomb( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    bomb_bag = find_carried_puzzle_tool( ch, "bomb", -1 );
+    bomb_bag = find_carried_puzzle_tool( ch, "bomb", ITEM_CONTAINER );
     victim = get_char_room( ch, argument );
     if ( victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
     &&   victim->pIndexData->vnum == 30218 )

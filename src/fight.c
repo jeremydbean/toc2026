@@ -1153,6 +1153,77 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
       }
     }
 
+    /*
+     * Weapon type flags (value[4]).  These are folded into dam here rather
+     * than applied as a second damage() call the way stock ROM does it:
+     * damage() has no clean "victim survived" return value, and raw_kill may
+     * free the victim struct, so a follow-up call is a use-after-free waiting
+     * to happen.  One damage() call also means check_immune still gets the
+     * final damage type for free.
+     *
+     * Applied before damroll so an enchantment scales with the weapon's own
+     * dice rather than with the wielder's damroll gear.
+     */
+    if ( wield != NULL && wield->item_type == ITEM_WEAPON )
+    {
+	/*
+	 * Both elemental flags add damage, but only one can own the damage
+	 * school.  Each converts a physical school only, so on a weapon
+	 * flagged both ways (25022, 29250) flaming wins and frost still
+	 * contributes its damage.
+	 */
+	if ( IS_WEAPON_STAT(wield,WEAPON_FLAMING) )
+	{
+	    dam += dam/10;
+	    if ( dam_type == DAM_BASH || dam_type == DAM_PIERCE
+	      || dam_type == DAM_SLASH )
+		dam_type = DAM_FIRE;
+	}
+
+	if ( IS_WEAPON_STAT(wield,WEAPON_FROST) )
+	{
+	    dam += dam/10;
+	    if ( dam_type == DAM_BASH || dam_type == DAM_PIERCE
+	      || dam_type == DAM_SLASH )
+		dam_type = DAM_COLD;
+	}
+
+	/*
+	 * Vampiric drains rather than changing the damage school, so a
+	 * vampiric weapon is not defeated by negative-energy immunity.
+	 */
+	if ( IS_WEAPON_STAT(wield,WEAPON_VAMPIRIC) )
+	{
+	    dam += dam/10;
+	    if ( dam > 0 )
+		ch->hit = UMIN( ch->max_hit, ch->hit + dam/20 );
+	    if ( !IS_NPC(ch) )
+		ch->alignment = UMAX( -1000, ch->alignment - 1 );
+	}
+
+	/* Sharp: frequent, modest.  Vorpal: rare, spiky. */
+	if ( IS_WEAPON_STAT(wield,WEAPON_SHARP)
+	&&   number_percent() <= skill/8 )
+	{
+	    dam += dam;
+	    act( "$p bites deep into $N!", ch, wield, victim, TO_CHAR );
+	    act( "$p bites deep into $N!", ch, wield, victim, TO_NOTVICT );
+	    act( "$p bites deep into you!", ch, wield, victim, TO_VICT );
+	}
+
+	if ( IS_WEAPON_STAT(wield,WEAPON_VORPAL)
+	&&   number_percent() <= skill/20 )
+	{
+	    dam += 2 * dam;
+	    act( "$p shears through $N with terrible force!",
+		 ch, wield, victim, TO_CHAR );
+	    act( "$p shears through $N with terrible force!",
+		 ch, wield, victim, TO_NOTVICT );
+	    act( "$p shears through you with terrible force!",
+		 ch, wield, victim, TO_VICT );
+	}
+    }
+
     dam += GET_DAMROLL(ch) * UMIN(100,skill) /100;
 
     if ( dam <= 0 )

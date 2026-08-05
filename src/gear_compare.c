@@ -511,8 +511,20 @@ static void gear_apply_affect( GEAR_LOADOUT *loadout, AFFECT_DATA *paf,
     }
 }
 
-static void gear_apply_item( GEAR_LOADOUT *loadout, OBJ_DATA *obj,
-                             int slot, int sign )
+/*
+ * unequip_char only clears an item-granted bit when no spell is supplying
+ * the same effect, so a projected removal has to ask the same question.
+ */
+static void gear_clear_item_affect( CHAR_DATA *ch, GEAR_LOADOUT *loadout,
+                                    const char *spell, int bit )
+{
+    if ( is_affected( ch, skill_lookup( spell ) ) )
+        return;
+    REMOVE_BIT( loadout->affected_by, bit );
+}
+
+static void gear_apply_item( CHAR_DATA *ch, GEAR_LOADOUT *loadout,
+                             OBJ_DATA *obj, int slot, int sign )
 {
     AFFECT_DATA *paf;
     int i;
@@ -536,17 +548,18 @@ static void gear_apply_item( GEAR_LOADOUT *loadout, OBJ_DATA *obj,
         if ( IS_OBJ_STAT2( obj, ITEM2_ADD_INVIS ) )
         {
             if ( sign > 0 ) SET_BIT( loadout->affected_by, AFF_INVISIBLE );
-            else REMOVE_BIT( loadout->affected_by, AFF_INVISIBLE );
+            else gear_clear_item_affect( ch, loadout, "invis", AFF_INVISIBLE );
         }
         if ( IS_OBJ_STAT2( obj, ITEM2_ADD_DETECT_INVIS ) )
         {
             if ( sign > 0 ) SET_BIT( loadout->affected_by, AFF_DETECT_INVIS );
-            else REMOVE_BIT( loadout->affected_by, AFF_DETECT_INVIS );
+            else gear_clear_item_affect( ch, loadout, "detect invis",
+                                        AFF_DETECT_INVIS );
         }
         if ( IS_OBJ_STAT2( obj, ITEM2_ADD_FLY ) )
         {
             if ( sign > 0 ) SET_BIT( loadout->affected_by, AFF_FLYING );
-            else REMOVE_BIT( loadout->affected_by, AFF_FLYING );
+            else gear_clear_item_affect( ch, loadout, "fly", AFF_FLYING );
         }
     }
 
@@ -721,16 +734,46 @@ static double gear_fists_burst( CHAR_DATA *ch, int skill )
     return expected_hits * ch->level * 1.5;
 }
 
-static double gear_weapon_hit_damage( CHAR_DATA *ch,
-                                      const GEAR_LOADOUT *loadout,
-                                      OBJ_DATA *weapon, int skill,
-                                      bool main_hand )
+/*
+ * Expected value of the value[4] weapon flag bonuses that one_hit folds into
+ * the dice.  Must stay in step with the weapon flag block in one_hit; the
+ * integer proc thresholds are reproduced deliberately.
+ */
+static double gear_weapon_flag_multiplier( OBJ_DATA *weapon, int skill )
+{
+    double multiplier = 1.0;
+
+    if ( weapon == NULL || weapon->item_type != ITEM_WEAPON )
+        return multiplier;
+
+    if ( IS_WEAPON_STAT( weapon, WEAPON_FLAMING ) )
+        multiplier *= 1.1;
+    if ( IS_WEAPON_STAT( weapon, WEAPON_FROST ) )
+        multiplier *= 1.1;
+    if ( IS_WEAPON_STAT( weapon, WEAPON_VAMPIRIC ) )
+        multiplier *= 1.1;
+    if ( IS_WEAPON_STAT( weapon, WEAPON_SHARP ) )
+        multiplier *= 1.0 + (skill / 8) / 100.0;
+    if ( IS_WEAPON_STAT( weapon, WEAPON_VORPAL ) )
+        multiplier *= 1.0 + 2.0 * (skill / 20) / 100.0;
+
+    return multiplier;
+}
+
+/*
+ * Weapon (or unarmed) dice only: no damroll and no enhanced damage.
+ * one_hit assembles a hit as dice -> enhanced damage -> weapon flags ->
+ * damroll.  Enhanced damage and the flag bonuses are both multiplicative, so
+ * folding the flags in here is equivalent and keeps damroll outside both.
+ */
+static double gear_weapon_base_damage( CHAR_DATA *ch,
+                                       const GEAR_LOADOUT *loadout,
+                                       OBJ_DATA *weapon, int skill,
+                                       bool main_hand )
 {
     double damage;
     double minimum;
     double maximum;
-    double enhanced;
-    int damroll;
 
     if ( weapon != NULL && weapon->item_type == ITEM_WEAPON )
     {
@@ -755,12 +798,42 @@ static double gear_weapon_hit_damage( CHAR_DATA *ch,
             ? minimum : (minimum + maximum) / 2.0;
     }
 
+    return damage * gear_weapon_flag_multiplier( weapon, skill );
+}
+
+/*
+ * one_hit adds damroll last, after enhanced damage and after any backstab
+ * multiplier, so damroll is never scaled by either one.
+ */
+static double gear_weapon_damroll( CHAR_DATA *ch, const GEAR_LOADOUT *loadout,
+                                   int skill )
+{
+    int damroll;
+
     damroll = loadout->damroll
         + str_app[gear_loadout_stat( ch, loadout, STAT_STR )].todam;
-    damage += damroll * UMIN( 100, skill ) / 100.0;
+    return damroll * UMIN( 100, skill ) / 100.0;
+}
+
+/* Expected value of one_hit's "dam += dam * diceroll/200" roll. */
+static double gear_enhanced_multiplier( CHAR_DATA *ch )
+{
+    double enhanced;
 
     enhanced = gear_skill( ch, gsn_enhanced_damage );
-    damage *= 1.0 + enhanced * (enhanced + 1) / 40000.0;
+    return 1.0 + enhanced * (enhanced + 1) / 40000.0;
+}
+
+static double gear_weapon_hit_damage( CHAR_DATA *ch,
+                                      const GEAR_LOADOUT *loadout,
+                                      OBJ_DATA *weapon, int skill,
+                                      bool main_hand )
+{
+    double damage;
+
+    damage = gear_weapon_base_damage( ch, loadout, weapon, skill, main_hand );
+    damage *= gear_enhanced_multiplier( ch );
+    damage += gear_weapon_damroll( ch, loadout, skill );
     return UMAX( 1.0, damage );
 }
 
@@ -776,7 +849,6 @@ static double gear_melee_output( CHAR_DATA *ch, const GEAR_LOADOUT *loadout,
     double off_damage;
     double off_chance;
     double opener;
-    double enhanced_multiplier;
     double base_damage;
     double normal_round;
     double special_round;
@@ -839,18 +911,22 @@ static double gear_melee_output( CHAR_DATA *ch, const GEAR_LOADOUT *loadout,
         output += off_damage * off_chance;
     }
 
-    enhanced_multiplier = 1.0 + gear_skill( ch, gsn_enhanced_damage )
-        * (gear_skill( ch, gsn_enhanced_damage ) + 1) / 40000.0;
-    base_damage = main_damage / enhanced_multiplier;
     backstab = gear_skill( ch, gsn_backstab );
     if ( backstab > 0 && main_weapon != NULL )
     {
+        /*
+         * one_hit skips enhanced damage entirely on a backstab and applies
+         * the multiplier to the dice alone, then adds damroll afterwards.
+         */
+        base_damage = gear_weapon_base_damage( ch, loadout, main_weapon,
+                                               main_skill, true );
         multiplier = main_weapon->value[0] == WEAPON_DAGGER
             ? 2 + ch->level / 10 : 2 + ch->level / 15;
         special_accuracy = gear_hit_chance(
             threshold - 10 * (100 - backstab) );
-        opener = 2.0 * base_damage * multiplier * special_accuracy
-            * backstab / 100.0;
+        opener = (2.0 * base_damage * multiplier
+                  + gear_weapon_damroll( ch, loadout, main_skill ))
+            * special_accuracy * backstab / 100.0;
         output += UMAX( 0.0, opener - 2.0 * main_damage * main_accuracy )
             / 5.0;
     }
@@ -1161,6 +1237,14 @@ static bool gear_item_usable( CHAR_DATA *ch, OBJ_DATA *obj, int slot,
     }
     if ( obj->wear_loc == slot )
         return true;
+    /* do_wear refuses to arm a monk whose hands are already steel. */
+    if ( ch->class == CLASS_MONK
+        && obj->item_type == ITEM_WEAPON
+        && is_affected( ch, skill_lookup( "steel fist" ) ) )
+    {
+        snprintf( reason, reason_size, "cannot be wielded during steel fist" );
+        return false;
+    }
     if ( obj->item_type == ITEM_WEAPON
         && get_obj_weight( obj ) > str_app[get_curr_stat( ch, STAT_STR )].wield )
     {
@@ -1231,7 +1315,8 @@ static bool gear_item_usable( CHAR_DATA *ch, OBJ_DATA *obj, int slot,
     return true;
 }
 
-static void gear_remove_once( GEAR_LOADOUT *loadout, OBJ_DATA *obj,
+static void gear_remove_once( CHAR_DATA *ch, GEAR_LOADOUT *loadout,
+                              OBJ_DATA *obj,
                               OBJ_DATA **removed, int *removed_count )
 {
     int i;
@@ -1241,7 +1326,7 @@ static void gear_remove_once( GEAR_LOADOUT *loadout, OBJ_DATA *obj,
     for ( i = 0; i < *removed_count; i++ )
         if ( removed[i] == obj )
             return;
-    gear_apply_item( loadout, obj, obj->wear_loc, -1 );
+    gear_apply_item( ch, loadout, obj, obj->wear_loc, -1 );
     removed[*removed_count] = obj;
     (*removed_count)++;
 }
@@ -1255,17 +1340,18 @@ static void gear_build_base_loadout( CHAR_DATA *ch, OBJ_DATA *obj1,
     int removed_count = 0;
 
     gear_loadout_from_char( ch, base );
-    gear_remove_once( base, obj1, removed, &removed_count );
-    gear_remove_once( base, obj2, removed, &removed_count );
+    gear_remove_once( ch, base, obj1, removed, &removed_count );
+    gear_remove_once( ch, base, obj2, removed, &removed_count );
     if ( removed_count == 0 )
     {
         equipped = get_eq_char( ch, slot );
-        gear_remove_once( base, equipped, removed, &removed_count );
+        gear_remove_once( ch, base, equipped, removed, &removed_count );
     }
     gear_project_equipped_flags( ch, obj1, obj2, base );
 }
 
-static void gear_build_candidate_loadout( const GEAR_LOADOUT *base,
+static void gear_build_candidate_loadout( CHAR_DATA *ch,
+                                          const GEAR_LOADOUT *base,
                                           OBJ_DATA *candidate, int slot,
                                           GEAR_LOADOUT *result )
 {
@@ -1273,8 +1359,8 @@ static void gear_build_candidate_loadout( const GEAR_LOADOUT *base,
     if ( slot == WEAR_WIELD && candidate->item_type == ITEM_WEAPON
         && IS_WEAPON_STAT( candidate, WEAPON_TWO_HANDS )
         && result->offhand != NULL )
-        gear_apply_item( result, result->offhand, WEAR_SHIELD, -1 );
-    gear_apply_item( result, candidate, slot, 1 );
+        gear_apply_item( ch, result, result->offhand, WEAR_SHIELD, -1 );
+    gear_apply_item( ch, result, candidate, slot, 1 );
 }
 
 static void gear_send_metric( CHAR_DATA *ch, const char *label,
@@ -1605,8 +1691,8 @@ void do_compare( CHAR_DATA *ch, char *argument )
 
     gear_build_profile( ch, &profile );
     gear_build_base_loadout( ch, obj1, obj2, slot, &base );
-    gear_build_candidate_loadout( &base, obj1, slot, &loadout1 );
-    gear_build_candidate_loadout( &base, obj2, slot, &loadout2 );
+    gear_build_candidate_loadout( ch, &base, obj1, slot, &loadout1 );
+    gear_build_candidate_loadout( ch, &base, obj2, slot, &loadout2 );
     gear_calculate_metrics( ch, &profile, &base, &base_metrics );
     gear_calculate_metrics( ch, &profile, &loadout1, &metrics1 );
     gear_calculate_metrics( ch, &profile, &loadout2, &metrics2 );

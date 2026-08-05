@@ -10,6 +10,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed `compare` overvaluing damroll and Strength by applying enhanced damage
+  after damroll and by multiplying damroll into the backstab estimate; `one_hit`
+  adds damroll last, after both. This could invert weapon recommendations,
+  most sharply for thieves.
+- Fixed projected equipment removal in `compare` erasing flight, invisibility,
+  and detect-invisibility even when a spell still supplied the effect, where
+  `unequip_char` preserves it.
+- Fixed `compare` reporting weapons as usable by a monk under `steel fist`,
+  which `wear` refuses.
+- Fixed `bomb` accepting any object whose keyword merely began with "bomb",
+  and `burn` accepting a candle carried unlit in inventory rather than the lit
+  candle the help text documents.
 - Hoisted a NULL check in `spell_cause_madness()` that sat after three
   dereferences of the pointer it guarded, so it could never have fired.
   `TAR_CHAR_DEFENSIVE` targeting means the pointer is the caster when no
@@ -85,6 +97,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added combat effects for the `flaming`, `frost`, `vampiric`, `sharp`, and
+  `vorpal` weapon flags, which 135 of 623 weapons carried with no mechanical
+  effect. Elemental flags add damage and convert the damage school so immunity
+  and resistance apply; vampiric drains to the wielder; sharp and vorpal are
+  damage procs scaled by weapon skill. Effects are folded into the single
+  `damage()` call rather than added as a second call, and `compare` credits
+  them. See `notes/weapon_flags_plan.md` for the balance notes.
 - Added money-conservation and persistence tests to the live suite. Currency
   is four denominations backed by a single copper total plus a bank balance,
   so every operation is a conversion and a chance to lose or duplicate value;
