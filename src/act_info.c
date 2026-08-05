@@ -1846,6 +1846,7 @@ void do_affect( CHAR_DATA *ch, char *argument)
     char buf[MAX_STRING_LENGTH];
     AFFECT_DATA *paf;
     int count;
+    const int max_affect_nodes = 1024;
 
     if( ch->affected == NULL )
     {
@@ -1858,10 +1859,12 @@ void do_affect( CHAR_DATA *ch, char *argument)
         for( paf = ch->affected; paf != NULL; paf = paf->next )
         {
                count++;
-               if (count > 25)
+               if (count > max_affect_nodes)
                {
-                 send_to_char("Something is screwed up with your affects, please leave a note to an immortal.\n\r",ch);
-                 snprintf(buf, sizeof(buf),"%s has more than 25 active affects.", ch->name);
+                 send_to_char("Your affect list appears corrupted; please leave a note to an immortal.\n\r",ch);
+                 snprintf(buf, sizeof(buf),
+                     "%s has more than %d active affects.",
+                     ch->name, max_affect_nodes);
                  log_string(buf);
                  return;
                }
