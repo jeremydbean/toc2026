@@ -123,7 +123,8 @@ static void apply_hyrule_contact_effect( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( ( attacker_vnum == HYRULE_LIKE_LIKE_VNUM
         || attacker_vnum == HYRULE_BLUE_LIKE_LIKE_VNUM )
     &&   number_percent() <= 8
-    &&   ( equipment = get_eq_char(victim, WEAR_SHIELD) ) != NULL )
+    &&   ( equipment = get_eq_char(victim, WEAR_SHIELD) ) != NULL
+    &&   equipment->item_type == ITEM_ARMOR )
     {
         act( "$n engulfs $p and dissolves it!", ch, equipment, victim, TO_ROOM );
         act( "$n engulfs and dissolves your $p!", ch, equipment, victim, TO_VICT );
