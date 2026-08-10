@@ -1826,6 +1826,14 @@ static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
         return false;
     }
 
+    if ( ( IS_OBJ_STAT(obj, ITEM_ANTI_EVIL) && IS_EVIL(ch) )
+        || ( IS_OBJ_STAT(obj, ITEM_ANTI_GOOD) && IS_GOOD(ch) )
+        || ( IS_OBJ_STAT(obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL(ch) ) )
+    {
+        act( "$p rejects your alignment.", ch, obj, NULL, TO_CHAR );
+        return false;
+    }
+
     if ( !IS_SET(obj->extra_flags, ITEM_RACE_RESTRICTED) )
         return true;
 
@@ -2192,9 +2200,6 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
     {
 	OBJ_DATA *weapon;
 
-	if ( !remove_obj( ch, WEAR_SHIELD, fReplace ) )
-	    return;
-
 	weapon = get_eq_char(ch,WEAR_WIELD);
 	if (weapon != NULL && ch->size < SIZE_LARGE
 	&&  IS_WEAPON_STAT(weapon,WEAPON_TWO_HANDS))
@@ -2202,6 +2207,9 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 	    send_to_char("Not gonna happen. Find a smaller weapon.\n\r",ch);
 	    return;
 	}
+
+	if ( !remove_obj( ch, WEAR_SHIELD, fReplace ) )
+	    return;
 
 	act( "$n wears $p as a shield.", ch, obj, NULL, TO_ROOM );
 	act( "You wear $p as a shield.", ch, obj, NULL, TO_CHAR );
@@ -2218,15 +2226,6 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 	&& get_obj_weight( obj ) > str_app[get_curr_stat(ch,STAT_STR)].wield )
 	{
 	    send_to_char( "It is too heavy for you to wield.\n\r", ch );
-	    return;
-	}
-
-	if (!IS_NPC(ch) && ch->size < SIZE_LARGE
-	&&  IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS)
- 	&&  get_eq_char(ch,WEAR_SHIELD) != NULL
-  	&&  obj->pIndexData->action != NULL)
-	{
-	    send_to_char("You need two hands free for that weapon.\n\r",ch);
 	    return;
 	}
 
