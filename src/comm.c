@@ -96,15 +96,6 @@ const   char    go_ahead_str    [] = { '\0' };
 const   char    echo_off_str    [] = { (char)IAC, (char)WILL, (char)TELOPT_ECHO, '\0' };
 const   char    echo_on_str     [] = { (char)IAC, (char)WONT, (char)TELOPT_ECHO, '\0' };
 const   char    go_ahead_str    [] = { (char)IAC, (char)GA, '\0' };
-/* TELOPT option 46 is used by some legacy MUD clients (e.g. ZMud) as an informal
- * de-facto signal for ANSI color capability.  It is NOT an IANA-standardised
- * option for color (RFC 1408 assigns 46 to Data Entry Terminal).  Modern clients
- * ignore it or respond with IAC DONT 46; the server already enables color by default
- * for all connections, so this negotiation is purely advisory for old clients. */
-#ifndef TELOPT_ANSI
-#define TELOPT_ANSI 46
-#endif
-static const char ansi_color_advertise[] = { (char)IAC, (char)WILL, (char)TELOPT_ANSI, '\0' };
 #endif
 
 static int clamp_size_to_int( size_t value );
@@ -978,12 +969,6 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
         snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s", inet_ntoa(sock.sin_addr));
         log_string(log_buf);
     }
-
-    /*
-     * Advertise ANSI color capability to legacy MUD clients that check
-     * telnet option 46.  Modern clients ignore this; color is on by default.
-     */
-    write_to_descriptor( dnew, ansi_color_advertise, 0 );
 
     return dnew;
 }
