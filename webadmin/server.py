@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import argparse
 import os
+import secrets
 import subprocess
+import threading
 from pathlib import Path
 from typing import Optional, Dict, Any
 
@@ -11,23 +13,28 @@ from fastapi.responses import HTMLResponse, PlainTextResponse
 from pydantic import BaseModel
 import asyncio
 
-# Optional shared-secret authentication.
-# Set WEB_ADMIN_TOKEN in the environment to require the X-Admin-Token header
-# on mutating / sensitive endpoints.  Leave unset (or empty) to allow
-# unauthenticated access (backward-compatible default).
+# Shared-secret authentication for operational endpoints. An unset token
+# disables those endpoints instead of exposing immortal commands anonymously.
 _WEB_ADMIN_TOKEN: str = os.environ.get("WEB_ADMIN_TOKEN", "")
 
 
 async def verify_token(x_admin_token: str = Header(default="")) -> None:
-    """FastAPI dependency that enforces the WEB_ADMIN_TOKEN when configured."""
-    if _WEB_ADMIN_TOKEN and x_admin_token != _WEB_ADMIN_TOKEN:
+    """Require a configured WEB_ADMIN_TOKEN and a matching request header."""
+    if not _WEB_ADMIN_TOKEN:
+        raise HTTPException(
+            status_code=503,
+            detail="Admin API disabled: configure WEB_ADMIN_TOKEN",
+        )
+    if not secrets.compare_digest(x_admin_token, _WEB_ADMIN_TOKEN):
         raise HTTPException(status_code=403, detail="Forbidden")
 
 try:
+    from webadmin.area_health import build_area_health
     from webadmin.area_parser import AreaParser, APPLY_LOCATIONS
     from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
 except ImportError:
+    from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
     from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
@@ -36,19 +43,42 @@ except ImportError:
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
 DEFAULT_LOG: Path = Path(os.getenv("LOG_FILE", "log/toc.log"))
 AREA_PATH: Path = Path(os.getenv("AREA_PATH", "area"))
+BACKUP_PATH: Path = Path(os.getenv("BACKUP_PATH", "backups"))
 
 MUD_HOST = "127.0.0.1"
 MUD_PORT = int(os.getenv("MUD_PORT", 9000))
+QUEUE_LINE_MAX_BYTES = 4094
+COMMAND_MAX_LENGTH = 255
+
+try:
+    import fcntl as _fcntl
+except ImportError:  # Windows development; the game server runs on POSIX.
+    _fcntl = None
 
 # QueueWriter for inter-process communication with the MUD server
 class QueueWriter:
     def __init__(self, queue_path: Path) -> None:
         self.queue_path = queue_path
+        self.queue_path.parent.mkdir(parents=True, exist_ok=True)
         self.queue_path.touch(exist_ok=True)
+        self._thread_lock = threading.Lock()
 
     def append(self, line: str) -> None:
-        with self.queue_path.open("a", encoding="utf-8") as queue_file:
-            queue_file.write(line.rstrip("\n") + "\n")
+        if "\n" in line or "\r" in line or "\0" in line:
+            raise ValueError("Queue actions must fit on one line")
+        if len(line.encode("utf-8")) > QUEUE_LINE_MAX_BYTES:
+            raise ValueError("Queue action is too long")
+
+        with self._thread_lock:
+            with self.queue_path.open("a", encoding="utf-8") as queue_file:
+                if _fcntl is not None:
+                    _fcntl.lockf(queue_file.fileno(), _fcntl.LOCK_EX)
+                try:
+                    queue_file.write(line + "\n")
+                    queue_file.flush()
+                finally:
+                    if _fcntl is not None:
+                        _fcntl.lockf(queue_file.fileno(), _fcntl.LOCK_UN)
 
 
 queue_writer: Optional[QueueWriter] = None
@@ -81,6 +111,34 @@ class CommandRequest(BaseModel):
 class WizinfoRequest(BaseModel):
     message: str
     level: Optional[int] = None
+
+
+def validated_queue_payload(value: str, label: str, max_length: int) -> str:
+    """Validate one payload field for the line-oriented queue protocol."""
+    value = value.strip()
+    if not value:
+        raise HTTPException(status_code=400, detail=f"{label} cannot be empty")
+    if len(value) > max_length:
+        raise HTTPException(
+            status_code=400,
+            detail=f"{label} cannot exceed {max_length} characters",
+        )
+    if "|" in value or any(ord(char) < 32 or ord(char) == 127 for char in value):
+        raise HTTPException(
+            status_code=400,
+            detail=f"{label} contains unsupported control characters",
+        )
+    return value
+
+
+def append_queue_action(line: str) -> None:
+    """Append a validated action and translate filesystem errors for the API."""
+    try:
+        require_queue_writer().append(line)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except OSError as exc:
+        raise HTTPException(status_code=503, detail="Command queue unavailable") from exc
 
 
 # Class stat weights for gear optimization
@@ -427,12 +485,18 @@ def parse_player_file(name: str) -> dict | None:
     return data
 
 
+def load_area_parser(area_path: Path) -> AreaParser:
+    """Create and populate an AreaParser for the configured area directory."""
+    loaded_parser = AreaParser(area_path)
+    try:
+        loaded_parser.parse_all()
+    except Exception as e:
+        print(f"Warning: Failed to parse areas from {area_path}: {e}")
+    return loaded_parser
+
+
 # Initialize parser and load area files
-parser = AreaParser(AREA_PATH)
-try:
-    parser.parse_all()
-except Exception as e:
-    print(f"Warning: Failed to parse areas: {e}")
+parser = load_area_parser(AREA_PATH)
 
 AREA_MAP_CACHE: Dict[str, Dict[str, Any]] = {}
 
@@ -599,6 +663,7 @@ async def index() -> str:
                         <span data-nav="home" onclick="showSection('home')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Home</span>
                         <span data-nav="play" onclick="showSection('play')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Play Now</span>
                         <span data-nav="database" onclick="showSection('database')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Database</span>
+                        <span data-nav="health" onclick="showSection('health')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Health</span>
                         <span data-nav="guide" onclick="showSection('guide')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">How to Play</span>
                         <span data-nav="players" onclick="showSection('players')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Players</span>
                         <span data-nav="admin" onclick="showSection('admin')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Admin</span>
@@ -618,6 +683,7 @@ async def index() -> str:
                 <span data-nav="home" onclick="showSection('home')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Home</span>
                 <span data-nav="play" onclick="showSection('play')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Play Now</span>
                 <span data-nav="database" onclick="showSection('database')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Database</span>
+                <span data-nav="health" onclick="showSection('health')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Health</span>
                 <span data-nav="guide" onclick="showSection('guide')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">How to Play</span>
                 <span data-nav="players" onclick="showSection('players')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Players</span>
                 <span data-nav="admin" onclick="showSection('admin')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Admin</span>
@@ -985,6 +1051,69 @@ async def index() -> str:
             </section>
         </div>
 
+        <!-- HEALTH SECTION -->
+        <div id="health-section" class="tab-content">
+            <section class="py-10 bg-[#0a0a0a] min-h-screen">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between gap-4 mb-8 border-b border-gray-800 pb-4">
+                        <h2 class="text-3xl font-bold text-white">Area Health</h2>
+                        <button onclick="loadAreaHealth(true)" class="px-4 py-2 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-rotate"></i><span>Refresh</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Critical</div>
+                            <div id="health-critical" class="text-2xl font-bold text-red-500">-</div>
+                        </div>
+                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Warnings</div>
+                            <div id="health-warning" class="text-2xl font-bold text-yellow-500">-</div>
+                        </div>
+                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Info</div>
+                            <div id="health-info" class="text-2xl font-bold text-blue-500">-</div>
+                        </div>
+                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
+                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">World Size</div>
+                            <div id="health-world" class="text-lg font-bold text-green-500">-</div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3 mb-4">
+                        <select id="health-severity-filter" onchange="renderAreaHealth()" class="bg-[#151515] border border-gray-800 rounded px-3 py-2 text-white focus:border-red-700 outline-none">
+                            <option value="">All severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="warning">Warnings</option>
+                            <option value="info">Info</option>
+                        </select>
+                        <input type="text" id="health-search" placeholder="Filter by file, code, vnum, or text..." oninput="renderAreaHealth()" class="flex-1 bg-[#151515] border border-gray-800 rounded px-4 py-2 text-white focus:border-red-700 outline-none">
+                    </div>
+                    <div id="health-result-count" class="text-xs text-gray-600 font-mono mb-4"></div>
+
+                    <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-gray-400">
+                                <thead class="bg-[#0a0a0a] text-gray-200 uppercase text-xs font-bold">
+                                    <tr>
+                                        <th class="p-4">Severity</th>
+                                        <th class="p-4">Code</th>
+                                        <th class="p-4">File</th>
+                                        <th class="p-4">Vnum</th>
+                                        <th class="p-4">Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="health-content" class="divide-y divide-gray-800">
+                                    <tr><td colspan="5" class="p-4 text-center">Open this view to scan area health.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
         <!-- GUIDE SECTION -->
         <div id="guide-section" class="tab-content">
             <section class="py-10 bg-[#0a0a0a] min-h-screen">
@@ -1117,8 +1246,8 @@ async def index() -> str:
                     <div class="bg-[#151515] p-4 rounded border border-yellow-900/20 mb-8 flex items-center gap-4">
                         <i class="fas fa-key text-yellow-700 text-lg shrink-0"></i>
                         <div class="flex-1">
-                            <label class="block text-xs text-gray-500 uppercase tracking-wider mb-1">API Token <span class="normal-case text-gray-600">(required if WEB_ADMIN_TOKEN is set)</span></label>
-                            <input type="password" id="admin-token" placeholder="Leave blank if not configured"
+                            <label class="block text-xs text-gray-500 uppercase tracking-wider mb-1">API Token <span class="normal-case text-gray-600">(required for admin operations)</span></label>
+                            <input type="password" id="admin-token" placeholder="Enter WEB_ADMIN_TOKEN"
                                    class="w-full bg-black border border-gray-700 rounded px-3 py-1.5 text-white text-sm focus:border-yellow-500 outline-none"
                                 oninput="setAdminToken(this.value)">
                         </div>
@@ -1131,11 +1260,11 @@ async def index() -> str:
                             <form onsubmit="sendWizInfo(event)" class="space-y-4">
                                 <div>
                                     <label class="block text-sm text-gray-400 mb-1">Message</label>
-                                    <textarea id="wizinfo-msg" rows="3" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none" required></textarea>
+                                    <textarea id="wizinfo-msg" rows="3" maxlength="4000" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none" required></textarea>
                                 </div>
                                 <div>
                                     <label class="block text-sm text-gray-400 mb-1">Min Level</label>
-                                    <input type="number" id="wizinfo-level" value="62" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none">
+                                    <input type="number" id="wizinfo-level" value="62" min="1" max="70" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none">
                                 </div>
                                 <button type="submit" class="btn-primary px-4 py-2 rounded font-bold w-full">Send Broadcast</button>
                             </form>
@@ -1147,7 +1276,7 @@ async def index() -> str:
                             <form onsubmit="sendCommand(event)" class="space-y-4">
                                 <div>
                                     <label class="block text-sm text-gray-400 mb-1">Command</label>
-                                    <input type="text" id="server-cmd" placeholder="e.g. copyover" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none" required>
+                                    <input type="text" id="server-cmd" maxlength="255" placeholder="e.g. copyover" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none" required>
                                 </div>
                                 <button type="submit" class="px-4 py-2 rounded font-bold w-full bg-red-900 hover:bg-red-800 text-white transition-colors">Execute Command</button>
                             </form>
@@ -1166,6 +1295,28 @@ async def index() -> str:
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Backup Preview -->
+                    <div class="bg-[#151515] rounded border border-gray-800 mb-8">
+                        <div class="p-4 border-b border-gray-800 flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-white">Backup Preview</h3>
+                            <button onclick="refreshBackups()" class="text-sm text-gray-400 hover:text-white"><i class="fa-solid fa-sync mr-1"></i> Refresh</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-gray-400">
+                                <thead class="bg-[#0a0a0a] text-gray-200 uppercase text-xs font-bold">
+                                    <tr>
+                                        <th class="p-4">Archive</th>
+                                        <th class="p-4">Size</th>
+                                        <th class="p-4">Modified</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="backup-content" class="divide-y divide-gray-800">
+                                    <tr><td colspan="3" class="p-4 text-center">Refresh to list available backups.</td></tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
@@ -1711,7 +1862,7 @@ async def index() -> str:
         
         function showSection(id, updateHash = true) {
             try {
-                const validSections = ['home', 'play', 'database', 'guide', 'players', 'admin', 'best-gear'];
+                const validSections = ['home', 'play', 'database', 'health', 'guide', 'players', 'admin', 'best-gear'];
                 if (!validSections.includes(id)) {
                     id = 'home';
                 }
@@ -1753,10 +1904,12 @@ async def index() -> str:
                 window.scrollTo(0, 0);
                 if(id === 'play') initTerminal();
                 if(id === 'database' && !dbData.mobs.length) loadDb('mobs');
+                if(id === 'health') loadAreaHealth();
                 if(id === 'players') initPlayerList();
                 if(id === 'best-gear') initPlayerList();
                 if(id === 'admin') {
                     refreshLogs();
+                    refreshBackups();
                     const tokenInput = document.getElementById('admin-token');
                     if(tokenInput) tokenInput.value = localStorage.getItem('toc_admin_token') || '';
                 }
@@ -1970,6 +2123,7 @@ async def index() -> str:
         // ============ DATABASE ============
         let currentDb = 'mobs';
         let dbData = { mobs: [], objects: [], areas: [] };
+        let areaHealthData = null;
         let _dbSortKey = null;
         let _dbSortAsc = true;
 
@@ -1996,6 +2150,82 @@ async def index() -> str:
         
         // Call on load
         loadStats();
+
+        function severityClass(severity) {
+            if (severity === 'critical') return 'text-red-400 bg-red-950/40 border-red-900/60';
+            if (severity === 'warning') return 'text-yellow-400 bg-yellow-950/30 border-yellow-900/50';
+            return 'text-blue-400 bg-blue-950/30 border-blue-900/50';
+        }
+
+        async function loadAreaHealth(force = false) {
+            if (areaHealthData && !force) {
+                renderAreaHealth();
+                return;
+            }
+            const content = document.getElementById('health-content');
+            if (content) {
+                content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Scanning area data...</td></tr>';
+            }
+            try {
+                const res = await fetch('/api/area_health');
+                if (!res.ok) throw new Error('Area health request failed: ' + res.status);
+                areaHealthData = await res.json();
+                renderAreaHealth();
+            } catch (e) {
+                console.error('Area health failed:', e);
+                if (content) {
+                    content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-red-400">Area health scan failed.</td></tr>';
+                }
+            }
+        }
+
+        function renderAreaHealth() {
+            if (!areaHealthData) return;
+
+            const summary = areaHealthData.summary || {};
+            const counts = summary.by_severity || {};
+            document.getElementById('health-critical').textContent = counts.critical ?? 0;
+            document.getElementById('health-warning').textContent = counts.warning ?? 0;
+            document.getElementById('health-info').textContent = counts.info ?? 0;
+            document.getElementById('health-world').textContent = `${summary.areas || 0} / ${summary.rooms || 0}`;
+
+            const severity = document.getElementById('health-severity-filter').value;
+            const search = (document.getElementById('health-search').value || '').toLowerCase();
+            let issues = areaHealthData.issues || [];
+            if (severity) {
+                issues = issues.filter(issue => issue.severity === severity);
+            }
+            if (search) {
+                issues = issues.filter(issue => {
+                    const haystack = [
+                        issue.severity, issue.code, issue.area_file, issue.vnum, issue.message
+                    ].join(' ').toLowerCase();
+                    return haystack.includes(search);
+                });
+            }
+
+            const resultCount = document.getElementById('health-result-count');
+            if (resultCount) {
+                resultCount.textContent = `${issues.length} of ${(areaHealthData.issues || []).length} issues shown`;
+            }
+
+            const content = document.getElementById('health-content');
+            if (!content) return;
+            if (!issues.length) {
+                content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-green-400">No matching area health issues.</td></tr>';
+                return;
+            }
+
+            content.innerHTML = issues.slice(0, 500).map(issue => `
+                <tr class="hover:bg-[#181818]">
+                    <td class="p-4"><span class="px-2 py-1 rounded border text-xs uppercase ${severityClass(issue.severity)}">${escHtml(issue.severity)}</span></td>
+                    <td class="p-4 font-mono text-xs text-gray-300">${escHtml(issue.code)}</td>
+                    <td class="p-4 font-mono text-xs text-gray-500">${escHtml(issue.area_file || '-')}</td>
+                    <td class="p-4 font-mono text-xs text-gray-500">${issue.vnum == null ? '-' : escHtml(issue.vnum)}</td>
+                    <td class="p-4 text-sm">${escHtml(issue.message)}</td>
+                </tr>
+            `).join('');
+        }
 
         // Inject ASCII hero art from data script element
         (function() {
@@ -2362,6 +2592,41 @@ async def index() -> str:
             return token ? { 'X-Admin-Token': token } : {};
         }
 
+        function formatBytes(bytes) {
+            const value = Number(bytes || 0);
+            if (value < 1024) return value + ' B';
+            if (value < 1024 * 1024) return (value / 1024).toFixed(1) + ' KB';
+            return (value / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        async function refreshBackups() {
+            const content = document.getElementById('backup-content');
+            if (!content) return;
+            content.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading backups...</td></tr>';
+            try {
+                const res = await fetch('/api/backups', { headers: getAuthHeaders() });
+                if (res.status === 403) {
+                    content.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-red-400">Forbidden. Set a valid Admin token.</td></tr>';
+                    return;
+                }
+                if (!res.ok) throw new Error('Backup request failed: ' + res.status);
+                const backups = await res.json();
+                if (!backups.length) {
+                    content.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-500">No backup archives found.</td></tr>';
+                    return;
+                }
+                content.innerHTML = backups.map(backup => `
+                    <tr class="hover:bg-[#181818]">
+                        <td class="p-4 font-mono text-sm text-gray-300">${escHtml(backup.name)}</td>
+                        <td class="p-4 font-mono text-xs text-gray-500">${escHtml(formatBytes(backup.size_bytes))}</td>
+                        <td class="p-4 font-mono text-xs text-gray-500">${escHtml(new Date((backup.modified || 0) * 1000).toLocaleString())}</td>
+                    </tr>
+                `).join('');
+            } catch (e) {
+                content.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-red-400">Backup list failed.</td></tr>';
+            }
+        }
+
         function termFontSize(delta) {
             if (!term) return;
             const sz = Math.max(8, Math.min(24, (term.options.fontSize || 12) + delta));
@@ -2397,6 +2662,20 @@ async def index() -> str:
             showToast(`Exported ${data.length.toLocaleString()} rows as CSV.`, 'success');
         }
 
+        async function showApiFailure(res, fallback) {
+            let detail = null;
+            try {
+                const body = await res.json();
+                detail = body.detail;
+            } catch (_) {
+                // Keep the caller's fallback for non-JSON failures.
+            }
+            if (detail && typeof detail === 'object') {
+                detail = detail.message || JSON.stringify(detail);
+            }
+            showToast(detail || fallback, 'error');
+        }
+
         let actionPendingTimers = {};
         async function action(type, btnEl) {
             const btn = btnEl || (typeof event !== 'undefined' ? event.currentTarget : null);
@@ -2410,7 +2689,10 @@ async def index() -> str:
                 btn.classList.remove('border-yellow-500', 'text-yellow-300');
                 try {
                     const res = await fetch('/api/' + type, { method: 'POST', headers: getAuthHeaders() });
-                    if (res.status === 403) { showToast('Forbidden — check your API token in Admin settings.', 'error'); return; }
+                    if (!res.ok) {
+                        await showApiFailure(res, 'Admin action failed (' + res.status + ').');
+                        return;
+                    }
                     showToast(type.charAt(0).toUpperCase() + type.slice(1) + ' queued successfully.', 'success');
                 } catch(e) { showToast('Error: ' + e, 'error'); }
             } else {
@@ -2437,7 +2719,10 @@ async def index() -> str:
                     headers: {'Content-Type': 'application/json', ...getAuthHeaders()},
                     body: JSON.stringify({message: msg, level: parseInt(level)})
                 });
-                if (res.status === 403) { showToast('Forbidden — check your API token.', 'error'); return; }
+                if (!res.ok) {
+                    await showApiFailure(res, 'Broadcast failed (' + res.status + ').');
+                    return;
+                }
                 showToast('Broadcast queued.', 'success');
                 e.target.reset();
             } catch(e) { showToast('Error: ' + e, 'error'); }
@@ -2452,7 +2737,10 @@ async def index() -> str:
                     headers: {'Content-Type': 'application/json', ...getAuthHeaders()},
                     body: JSON.stringify({command: cmd})
                 });
-                if (res.status === 403) { showToast('Forbidden — check your API token.', 'error'); return; }
+                if (!res.ok) {
+                    await showApiFailure(res, 'Command failed (' + res.status + ').');
+                    return;
+                }
                 showToast('Command queued.', 'success');
                 e.target.reset();
             } catch(e) { showToast('Error: ' + e, 'error'); }
@@ -3478,7 +3766,10 @@ async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> PlainT
 
 @app.websocket("/ws/logs")
 async def websocket_logs(websocket: WebSocket, x_admin_token: str = Query(default="")):
-    if _WEB_ADMIN_TOKEN and x_admin_token != _WEB_ADMIN_TOKEN:
+    if (
+        not _WEB_ADMIN_TOKEN
+        or not secrets.compare_digest(x_admin_token, _WEB_ADMIN_TOKEN)
+    ):
         await websocket.close(code=4003)
         return
     await websocket.accept()
@@ -3521,54 +3812,102 @@ async def websocket_logs(websocket: WebSocket, x_admin_token: str = Query(defaul
 
 @app.post("/api/wizinfo")
 async def send_wizinfo(request: WizinfoRequest, _: None = Depends(verify_token)) -> str:
-    if not request.message.strip():
-        raise HTTPException(status_code=400, detail="Message cannot be empty")
-    level = request.level if request.level and request.level > 0 else 62
-    require_queue_writer().append(f"wizinfo|{level}|{request.message.strip()}")
+    message = validated_queue_payload(request.message, "Message", 4000)
+    level = request.level if request.level is not None else 62
+    if level < 1 or level > 70:
+        raise HTTPException(status_code=400, detail="Level must be between 1 and 70")
+    append_queue_action(f"wizinfo|{level}|{message}")
     return "queued"
 
 
 @app.post("/api/command")
 async def run_command(request: CommandRequest, _: None = Depends(verify_token)) -> str:
-    if not request.command.strip():
-        raise HTTPException(status_code=400, detail="Command required")
-    require_queue_writer().append(f"command|{request.command.strip()}")
+    command = validated_queue_payload(
+        request.command,
+        "Command",
+        COMMAND_MAX_LENGTH,
+    )
+    append_queue_action(f"command|{command}")
     return "queued"
 
 
 @app.post("/api/backup")
 async def run_backup(_: None = Depends(verify_token)) -> str:
-    require_queue_writer().append("backup")
+    append_queue_action("backup")
     return "queued"
+
+
+@app.get("/api/backups")
+async def list_backups(_: None = Depends(verify_token)) -> list[Dict[str, Any]]:
+    if not BACKUP_PATH.is_dir():
+        return []
+
+    backups: list[Dict[str, Any]] = []
+    for path in BACKUP_PATH.glob("*.tar.gz"):
+        try:
+            if not path.is_file():
+                continue
+            stat = path.stat()
+        except OSError:
+            # A backup can be pruned between directory enumeration and stat.
+            continue
+        backups.append(
+            {
+                "name": path.name,
+                "size_bytes": stat.st_size,
+                "modified": stat.st_mtime,
+            }
+        )
+
+    backups.sort(key=lambda item: item["modified"], reverse=True)
+    return backups[:100]
 
 
 @app.post("/api/shutdown")
 async def run_shutdown(_: None = Depends(verify_token)) -> str:
-    require_queue_writer().append("shutdown")
+    append_queue_action("shutdown")
     return "queued"
 
 
 @app.post("/api/reload")
 async def reload_areas(_: None = Depends(verify_token)) -> Dict[str, Any]:
     """Reload all area files from disk without restarting the server."""
+    global parser
+
     try:
         new_parser = AreaParser(AREA_PATH)
         new_parser.parse_all()
-        # Swap in new data atomically
-        parser.areas = new_parser.areas
-        parser.mobiles = new_parser.mobiles
-        parser.objects = new_parser.objects
-        parser.rooms = new_parser.rooms
-        AREA_MAP_CACHE.clear()
-        return {
-            "status": "ok",
-            "areas": len(parser.areas),
-            "mobiles": len(parser.mobiles),
-            "objects": len(parser.objects),
-            "rooms": len(parser.rooms),
-        }
+        health = build_area_health(new_parser, AREA_PATH)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Reload failed: {e}")
+
+    critical_issues = [
+        issue
+        for issue in health["issues"]
+        if issue.get("severity") == "critical"
+    ]
+    if critical_issues:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": "Reload rejected; the current area data remains active",
+                "summary": health["summary"],
+                "issues": critical_issues[:100],
+            },
+        )
+
+    # A single assignment preserves the last known-good parser until validation
+    # succeeds and includes resets/errors as well as the primary dictionaries.
+    parser = new_parser
+    AREA_MAP_CACHE.clear()
+    return {
+        "status": "ok",
+        "areas": len(parser.areas),
+        "mobiles": len(parser.mobiles),
+        "objects": len(parser.objects),
+        "rooms": len(parser.rooms),
+        "parse_errors": parser.errors,
+    }
 
 
 @app.get("/api/objects/{vnum}")
@@ -3635,6 +3974,11 @@ async def get_stats() -> Dict[str, int]:
         "rooms": len(parser.rooms),
         "areas": len(parser.areas)
     }
+
+
+@app.get("/api/area_health")
+async def get_area_health() -> Dict[str, Any]:
+    return build_area_health(parser, AREA_PATH)
 
 
 # Validate player names: letters only, 1-20 chars (matches MUD naming rules)
@@ -4356,6 +4700,7 @@ if __name__ == "__main__":
     arg_parser.add_argument("--queue", type=Path, default=QUEUE_PATH, help="Path to command queue file")
     arg_parser.add_argument("--log-file", type=Path, default=DEFAULT_LOG, help="Path to log file")
     arg_parser.add_argument("--area-path", type=Path, default=AREA_PATH, help="Path to area files")
+    arg_parser.add_argument("--backup-path", type=Path, default=BACKUP_PATH, help="Path to backup archive directory")
     
     args = arg_parser.parse_args()
     
@@ -4363,5 +4708,8 @@ if __name__ == "__main__":
     QUEUE_PATH = args.queue
     DEFAULT_LOG = args.log_file
     AREA_PATH = args.area_path
+    BACKUP_PATH = args.backup_path
+    parser = load_area_parser(AREA_PATH)
+    AREA_MAP_CACHE.clear()
     
     uvicorn.run(app, host=args.host, port=args.port)

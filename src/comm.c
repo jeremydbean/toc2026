@@ -319,6 +319,7 @@ char * crypt                   ( const char *key, const char *salt );
 void    log_auth                ( DESCRIPTOR_DATA *d );
 void    process_web_admin_queue ( void );
 void    run_web_command         ( char *argument );
+static void process_web_admin_action ( char *line );
 void    write_prompt            ( DESCRIPTOR_DATA *d );
 static const char default_prompt[] = "%C<%hhp %mm %vmv>%c ";
 static void prompt_append_text( char *buf, size_t buflen, const char *text );
@@ -343,6 +344,7 @@ int main( int argc, char **argv )
     time_t now_time;
     int port;
     int control;
+    bool validate_only;
 
     /*
      * Init time.
@@ -373,11 +375,22 @@ int main( int argc, char **argv )
      * Get the port number.
      */
     port = 9000;
+    validate_only = false;
     if ( argc > 1 )
     {
-	if ( !is_number( argv[1] ) )
+        if ( !strcmp( argv[1], "--check-area" )
+          || !strcmp( argv[1], "--validate" ) )
+        {
+            validate_only = true;
+            if ( argc > 2 )
+            {
+                fprintf( stderr, "Usage: %s [port #|--check-area|--validate]\n", argv[0] );
+                exit( 1 );
+            }
+        }
+	else if ( !is_number( argv[1] ) )
 	{
-	    fprintf( stderr, "Usage: %s [port #]\n", argv[0] );
+	    fprintf( stderr, "Usage: %s [port #|--check-area|--validate]\n", argv[0] );
 	    exit( 1 );
 	}
 	else if ( ( port = atoi( argv[1] ) ) <= 1024 )
@@ -385,6 +398,17 @@ int main( int argc, char **argv )
 	    fprintf( stderr, "Port number must be above 1024.\n" );
 	    exit( 1 );
 	}
+    }
+
+    if ( validate_only )
+    {
+        boot_db( );
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+                  "Validation OK: areas=%d mobs=%d objects=%d rooms=%d active_mobs=%d.",
+                  top_area, top_mob_index, top_obj_index, top_room,
+                  mobile_count );
+        log_string( log_buf );
+        exit( 0 );
     }
 
     /*
@@ -2989,51 +3013,156 @@ void run_web_command(char *argument) {
     extract_char(ch, TRUE);
 }
 
-void process_web_admin_queue(void) {
+static void process_web_admin_action(char *line)
+{
+    char *cmd;
+
+    if (line == NULL || line[0] == '\0')
+        return;
+
+    /* Queue format: action|arg1|arg2. Payload delimiters are rejected by
+       the writer so each physical line always represents one action. */
+    cmd = strtok(line, "|");
+    if (cmd == NULL)
+        return;
+
+    if (!strcmp(cmd, "wizinfo"))
+    {
+        char *level_str = strtok(NULL, "|");
+        char *msg = strtok(NULL, "|");
+        char *end = NULL;
+        long level;
+
+        if (level_str == NULL || msg == NULL)
+            return;
+
+        errno = 0;
+        level = strtol(level_str, &end, 10);
+        if (errno != 0 || end == level_str || *end != '\0'
+          || level < 1 || level > MAX_LEVEL)
+        {
+            bug("process_web_admin_action: invalid wizinfo level.", 0);
+            return;
+        }
+        wizinfo(msg, (int)level);
+    }
+    else if (!strcmp(cmd, "command"))
+    {
+        char *game_cmd = strtok(NULL, "|");
+        if (game_cmd != NULL)
+            run_web_command(game_cmd);
+    }
+    else if (!strcmp(cmd, "backup"))
+    {
+        do_backup();
+    }
+    else if (!strcmp(cmd, "shutdown"))
+    {
+        merc_down = TRUE;
+    }
+    else
+    {
+        bug("process_web_admin_action: unknown queue action.", 0);
+    }
+}
+
+
+void process_web_admin_queue(void)
+{
     FILE *fp;
+    FILE *pending;
     char buf[MAX_STRING_LENGTH];
     struct stat fst;
+#if defined(unix) || defined(__unix__) || defined(__APPLE__)
+    struct flock lock;
+#endif
 
-    /* Check if file exists and has content before attempting to open */
-    if (stat(QUEUE_FILE, &fst) == -1 || fst.st_size == 0) {
+    /* Leave an empty queue alone; this check runs every game-loop pulse. */
+    if (stat(QUEUE_FILE, &fst) == -1 || fst.st_size == 0)
+        return;
+
+    fp = fopen(QUEUE_FILE, "r+");
+    if (fp == NULL)
+        return;
+
+#if defined(unix) || defined(__unix__) || defined(__APPLE__)
+    memset(&lock, 0, sizeof(lock));
+    lock.l_type = F_WRLCK;
+    lock.l_whence = SEEK_SET;
+    if (fcntl(fileno(fp), F_SETLK, &lock) == -1)
+    {
+        fclose(fp);
+        return;
+    }
+#endif
+
+    pending = tmpfile();
+    if (pending == NULL)
+    {
+        bug("process_web_admin_queue: tmpfile failed.", 0);
+        fclose(fp);
         return;
     }
 
-    if ((fp = fopen(QUEUE_FILE, "r")) != NULL) {
-        while (fgets(buf, sizeof(buf), fp) != NULL) {
-            /* Remove trailing newline */
-            size_t len = strlen(buf);
-            if (len > 0 && buf[len - 1] == '\n') {
-                buf[len - 1] = '\0';
-            }
-
-            if (buf[0] == '\0') continue;
-
-            /* Parse format: action|arg1|arg2... */
-            char *cmd = strtok(buf, "|");
-            if (!cmd) continue;
-
-            if (!strcmp(cmd, "wizinfo")) {
-                char *level_str = strtok(NULL, "|");
-                char *msg = strtok(NULL, "|");
-                if (level_str && msg) {
-                    wizinfo(msg, atoi(level_str));
-                }
-            } else if (!strcmp(cmd, "command")) {
-                char *game_cmd = strtok(NULL, "|");
-                if (game_cmd) {
-                    run_web_command(game_cmd);
-                }
-            } else if (!strcmp(cmd, "backup")) {
-                do_backup();
-            } else if (!strcmp(cmd, "shutdown")) {
-                merc_down = TRUE;
-            }
-        }
-        fclose(fp);
-        /* Delete file after processing so we don't loop on it */
-        unlink(QUEUE_FILE); 
+    while (fgets(buf, sizeof(buf), fp) != NULL)
+    {
+        if (fputs(buf, pending) == EOF)
+            break;
     }
+
+    if (ferror(fp) || ferror(pending) || fflush(pending) != 0)
+    {
+        bug("process_web_admin_queue: could not stage queue.", 0);
+        fclose(pending);
+        fclose(fp);
+        return;
+    }
+
+#if defined(unix) || defined(__unix__) || defined(__APPLE__)
+    if (ftruncate(fileno(fp), 0) != 0)
+    {
+        bug("process_web_admin_queue: could not clear queue.", 0);
+        fclose(pending);
+        fclose(fp);
+        return;
+    }
+#else
+    {
+        FILE *clear = freopen(QUEUE_FILE, "w", fp);
+        if (clear == NULL)
+        {
+            bug("process_web_admin_queue: could not clear queue.", 0);
+            fclose(pending);
+            return;
+        }
+        fp = clear;
+    }
+#endif
+
+    /* Closing releases the advisory lock before actions such as backup run. */
+    fclose(fp);
+    rewind(pending);
+
+    while (fgets(buf, sizeof(buf), pending) != NULL)
+    {
+        size_t len = strlen(buf);
+
+        if (len > 0 && buf[len - 1] != '\n' && !feof(pending))
+        {
+            int c;
+            while ((c = fgetc(pending)) != '\n' && c != EOF)
+                ;
+            bug("process_web_admin_queue: overlong queue line ignored.", 0);
+            continue;
+        }
+
+        while (len > 0 && (buf[len - 1] == '\n' || buf[len - 1] == '\r'))
+            buf[--len] = '\0';
+
+        process_web_admin_action(buf);
+    }
+
+    fclose(pending);
 }
 
 static const char *wizinfo_possessive(const CHAR_DATA *ch)

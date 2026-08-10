@@ -8,6 +8,62 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- Added an advanced in-game `compare` command with player-specific gear
+  profiles, focus modes for damage, spells, defense, leveling, and utility,
+  full-loadout projections, usability warnings, and percentage recommendations.
+- Added the remastered Hyrule area (`30200-30799`) with a teleport-only Campus
+  arcade entry, all nine original Zelda labyrinths, a complete level 1-70 gear
+  curve, the Triforce reward chain, and two return portals.
+- Added data-driven `burn`, `bomb`, `play`, and `feed` puzzle commands for
+  candle bushes, cracked walls, Recorder interactions, and the hungry Goriya.
+- Added Hyrule progression tests for every gear level, dungeon entrances,
+  boss drops, shard sources, canonical items, puzzles, and room reachability.
+- Added a unique readable map and functional boss compass to each Hyrule
+  dungeon, including route guidance through legacy portal and stair links.
+- Added `merc --check-area` / `merc --validate` startup mode for loading the full area database and exiting without opening a listening socket.
+- Added reusable area-health linting in `webadmin/area_health.py`, the `scripts/area_lint.py` CLI, a web admin Area Health view, and the `/api/area_health` endpoint.
+- Added cross-platform validation runners: `scripts/validate.ps1` for Windows/WSL and `scripts/validate.sh` for Linux, macOS, WSL, and CI.
+- Added GitHub Actions validation in `.github/workflows/validate.yml`.
+- Added Python unit tests for area-health summaries and key web-admin API behavior.
+- Added the immortal `diagnostics` command for boot time, world totals, descriptor/list counts, active mobs, and backup schedule visibility.
+
+### Changed
+
+- Area-health source tracking now follows `P` reset chains back to a real room
+  or mobile source, without hiding objects inside unreachable containers.
+- Expanded web admin configuration with `AREA_PATH`, `BACKUP_PATH`, `--area-path`, and `--backup-path`.
+- Web admin reloads now validate a complete replacement parser, reject critical issues with HTTP 422, preserve the last known-good data on failure, and list recent backup archives.
+- Operational web-admin endpoints are disabled until `WEB_ADMIN_TOKEN` is configured; queue payloads are bounded and restricted to one protocol-safe line.
+- Player-save snapshots now use bounded native path construction and directory creation instead of shell-built `mkdir` commands.
+- Backup archive creation now verifies shell command return codes, creates the backup directory when needed, and logs success only after archive creation succeeds.
+- Documentation now covers validation, CI, area-health severities, backup behavior, web-admin authentication, and operational troubleshooting.
+
+### Fixed
+
+- Fixed off-hand attacks using main-hand proficiency, secondary wield bypassing
+  item restrictions, and failed weapon swaps removing the equipped weapon.
+- Fixed comparison estimates for off-hand proficiency, low-skill unarmed damage,
+  two-handed no-remove conflicts, and engine-applied experience bonuses.
+- Fixed Hyrule's inactive Raft gate, two nonlethal dead ends, mismatched armor
+  slots, held Recorder use, and Recorder effects weakening unrelated NPCs.
+- Fixed dungeon maps and compasses remaining readable while blind or in darkness.
+- Fixed single-item gear comparisons matching unrelated worn objects through
+  the universal `ITEM_TAKE` flag instead of an actual shared equipment slot.
+- Fixed the CMake/C17 build using unavailable BSD `strlcpy`/`strlcat` calls
+  instead of the repository's portable bounded string helpers.
+- Fixed the PowerShell startup smoke test treating a healthy timeout-driven
+  server shutdown as a validation failure.
+- Fixed Unix game-loop web-admin queue processing so queued dashboard actions are handled on Linux/Docker builds.
+- Fixed a web-admin queue race that could lose actions appended while the game loop read and deleted the queue file.
+- Fixed player saves reporting success and creating snapshots after failed writes or failed atomic replacement.
+- Fixed player restore overwriting the live file before its snapshot copy completed; restores now force a pre-change snapshot and atomically replace from a temporary file.
+- Fixed null-stream crashes in corpse history and `areasave` failure paths, and bounded corpse-history item counts read from disk.
+- Fixed shared text readers hanging or mishandling EOF when a data file ends without a newline.
+- Fixed repeated area-parser and wizlist loads retaining stale state or using an invalid list tail.
+- Fixed stale review/documentation notes for the previously resolved `areaload` double-close and flood movement checks.
+
 ---
 
 ## [2026.04 (April 2026)] — Area Content & Stability

@@ -1800,11 +1800,86 @@ bool remove_obj( CHAR_DATA *ch, int iWear, bool fReplace )
     return true;
 }
 
+static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
+    {
+        act( "$p is still scorching hot -- you can't wear it yet!", ch, obj, NULL, TO_CHAR );
+        return false;
+    }
+
+    if ( ch->level < obj->level )
+    {
+        snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
+            obj->level );
+        send_to_char( buf, ch );
+        act( "$n tries to use $p, but is too inexperienced.",
+            ch, obj, NULL, TO_ROOM );
+        return false;
+    }
+
+    if ( IS_OBJ_STAT(obj, ITEM_DAMAGED) )
+    {
+        send_to_char( "This item is damaged and cannot be used again until repaired.\n\r", ch );
+        return false;
+    }
+
+    if ( ( IS_OBJ_STAT(obj, ITEM_ANTI_EVIL) && IS_EVIL(ch) )
+        || ( IS_OBJ_STAT(obj, ITEM_ANTI_GOOD) && IS_GOOD(ch) )
+        || ( IS_OBJ_STAT(obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL(ch) ) )
+    {
+        act( "$p rejects your alignment.", ch, obj, NULL, TO_CHAR );
+        return false;
+    }
+
+    if ( !IS_SET(obj->extra_flags, ITEM_RACE_RESTRICTED) )
+        return true;
+
+    if ( IS_SET(obj->extra_flags2, ITEM2_HUMAN_ONLY) && ch->race != 1 )
+    {
+        snprintf( buf, sizeof(buf), "The %s can only be worn by the %s race.\n\r",
+                  obj->short_descr, race_table[1].name );
+        send_to_char( buf, ch );
+        return false;
+    }
+    if ( IS_SET(obj->extra_flags2, ITEM2_ELF_ONLY) && ch->race != 2 )
+    {
+        snprintf( buf, sizeof(buf), "%s can only be worn by the %sen race.\n\r",
+                  obj->short_descr, race_table[2].name );
+        send_to_char( buf, ch );
+        return false;
+    }
+    if ( IS_SET(obj->extra_flags2, ITEM2_DWARF_ONLY) && ch->race != 3 )
+    {
+        snprintf( buf, sizeof(buf), "Only %s's can wear %s.\n\r",
+                  race_table[3].name, obj->short_descr );
+        send_to_char( buf, ch );
+        return false;
+    }
+    if ( IS_SET(obj->extra_flags2, ITEM2_HALFLING_ONLY) && ch->race != 4 )
+    {
+        snprintf( buf, sizeof(buf), "%s can only be worn by %s's.\n\r",
+                  obj->short_descr, race_table[4].name );
+        send_to_char( buf, ch );
+        return false;
+    }
+    if ( IS_SET(obj->extra_flags2, ITEM2_SAURIAN_ONLY) && ch->race != 5 )
+    {
+        snprintf( buf, sizeof(buf), "%s can only be worn by Saurians.\n\r",
+                  obj->short_descr );
+        send_to_char( buf, ch );
+        return false;
+    }
+
+    return true;
+}
+
 /* function for use with dual wield skill */
 void do_secondary( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
-    char buf[MAX_STRING_LENGTH];
     OBJ_DATA *obj;
     bool fReplace = true;
     AFFECT_DATA *paf;
@@ -1832,21 +1907,13 @@ void do_secondary( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( !wear_requirements_met( ch, obj ) )
+        return;
+
     if (get_eq_char( ch, WEAR_WIELD ) == NULL)
     {
         send_to_char("Try wielding a weapon first.\n\r",ch);
         return;
-    }
-
-
-    if ( ch->level < obj->level )
-    {
-        snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
-            obj->level );
-	send_to_char( buf, ch );
-	act( "$n tries to use $p, but is too inexperienced.",
-	    ch, obj, NULL, TO_ROOM );
-	return;
     }
 
     if ( CAN_WEAR( obj, ITEM_WIELD ) )
@@ -1939,78 +2006,8 @@ void do_secondary( CHAR_DATA *ch, char *argument )
  */
 void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 {
-    char buf[MAX_STRING_LENGTH];
-
-    if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
-    {
-        act( "$p is still scorching hot -- you can't wear it yet!", ch, obj, NULL, TO_CHAR );
+    if ( !wear_requirements_met( ch, obj ) )
         return;
-    }
-
-    if ( ch->level < obj->level )
-    {
-        snprintf( buf, sizeof(buf), "You must be level %d to use this object.\n\r",
-            obj->level );
-	send_to_char( buf, ch );
-	act( "$n tries to use $p, but is too inexperienced.",
-	    ch, obj, NULL, TO_ROOM );
-	return;
-    }
-
-
-    if( IS_SET(obj->extra_flags, ITEM_RACE_RESTRICTED) )
-    {
-       if(IS_SET(obj->extra_flags2, ITEM2_HUMAN_ONLY) )
-       {
-	   if(ch->race != 1)
-	   {
-              snprintf(buf, sizeof(buf), "The %s can only be worn by the %s race.\n\r",
-                      obj->short_descr, race_table[1].name);
-	     send_to_char(buf,ch);
-	     return;
-	   }
-       }
-       if(IS_SET(obj->extra_flags2, ITEM2_ELF_ONLY) )
-       {
-	   if(ch->race != 2)
-	   {
-              snprintf(buf, sizeof(buf), "%s can only be worn by the %sen race.\n\r",
-                      obj->short_descr, race_table[2].name);
-	     send_to_char(buf,ch);
-	     return;
-	   }
-       }
-       if(IS_SET(obj->extra_flags2, ITEM2_DWARF_ONLY) )
-       {
-	   if(ch->race != 3)
-	   {
-              snprintf(buf, sizeof(buf), "Only %s's can wear %s.\n\r",
-                      race_table[3].name, obj->short_descr );
-	     send_to_char(buf,ch);
-	     return;
-	   }
-       }
-       if(IS_SET(obj->extra_flags2, ITEM2_HALFLING_ONLY) )
-       {
-	   if(ch->race != 4)
-	   {
-              snprintf(buf, sizeof(buf), "%s can only be worn by %s's.\n\r",
-                      obj->short_descr, race_table[4].name);
-	     send_to_char(buf,ch);
-	     return;
-	   }
-       }
-       if(IS_SET(obj->extra_flags2, ITEM2_SAURIAN_ONLY) )
-       {
-           if(ch->race != 5)
-           {
-              snprintf(buf, sizeof(buf), "%s can only be worn by Saurians.\n\r", obj->short_descr);
-             send_to_char(buf,ch);
-             return;
-           }
-       }
-
-    }
 
 
     if ( obj->item_type == ITEM_LIGHT )
@@ -2203,9 +2200,6 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
     {
 	OBJ_DATA *weapon;
 
-	if ( !remove_obj( ch, WEAR_SHIELD, fReplace ) )
-	    return;
-
 	weapon = get_eq_char(ch,WEAR_WIELD);
 	if (weapon != NULL && ch->size < SIZE_LARGE
 	&&  IS_WEAPON_STAT(weapon,WEAPON_TWO_HANDS))
@@ -2213,6 +2207,9 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 	    send_to_char("Not gonna happen. Find a smaller weapon.\n\r",ch);
 	    return;
 	}
+
+	if ( !remove_obj( ch, WEAR_SHIELD, fReplace ) )
+	    return;
 
 	act( "$n wears $p as a shield.", ch, obj, NULL, TO_ROOM );
 	act( "You wear $p as a shield.", ch, obj, NULL, TO_CHAR );
@@ -2223,9 +2220,7 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
     if ( CAN_WEAR( obj, ITEM_WIELD ) )
     {
 	int sn,skill;
-
-	if ( !remove_obj( ch, WEAR_WIELD, fReplace ) )
-	    return;
+	OBJ_DATA *offhand;
 
 	if ( !IS_NPC(ch)
 	&& get_obj_weight( obj ) > str_app[get_curr_stat(ch,STAT_STR)].wield )
@@ -2234,19 +2229,20 @@ void wear_obj( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace )
 	    return;
 	}
 
-	if (!IS_NPC(ch) && ch->size < SIZE_LARGE
-	&&  IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS)
- 	&&  get_eq_char(ch,WEAR_SHIELD) != NULL
-  	&&  obj->pIndexData->action != NULL)
+	offhand = get_eq_char(ch,WEAR_SHIELD);
+	if ( IS_WEAPON_STAT(obj,WEAPON_TWO_HANDS)
+	&&   offhand != NULL
+	&&   !IS_IMMORTAL(ch)
+	&&   IS_OBJ_STAT(offhand,ITEM_NOREMOVE) )
 	{
-	    send_to_char("You need two hands free for that weapon.\n\r",ch);
+	    act( "You can't free both hands while using $p.",
+	         ch, offhand, NULL, TO_CHAR );
 	    return;
 	}
-  if ( IS_OBJ_STAT(obj, ITEM_DAMAGED))
-    {
-        send_to_char("This item is damaged and cannot be used again until repaired.\n\r",ch);
-        return;
-    }
+
+	if ( !remove_obj( ch, WEAR_WIELD, fReplace ) )
+	    return;
+
 	act( "$n wields $p.", ch, obj, NULL, TO_ROOM );
 	act( "You wield $p.", ch, obj, NULL, TO_CHAR );
 	equip_char( ch, obj, WEAR_WIELD );
@@ -3557,6 +3553,264 @@ return;
 }
 
 
+enum puzzle_manipulation_type
+{
+    PUZZLE_BURN = 11,
+    PUZZLE_BOMB = 12,
+    PUZZLE_PLAY = 13,
+    PUZZLE_FEED = 14
+};
+
+static OBJ_DATA *find_carried_puzzle_tool( CHAR_DATA *ch, const char *keyword,
+                                           int item_type )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( is_name( keyword, obj->name )
+        &&   ( item_type < 0 || obj->item_type == item_type ) )
+            return obj;
+    }
+
+    return NULL;
+}
+
+static bool trigger_puzzle_manipulation( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    ROOM_INDEX_DATA *room;
+    EXIT_DATA *pexit;
+    EXIT_DATA *reverse;
+    CHAR_DATA *victim;
+    bool changed = false;
+
+    if ( obj->value[3] == 2 )
+    {
+        send_to_char( "That puzzle has already been solved.\n\r", ch );
+        return false;
+    }
+
+    if ( obj->value[1] != 0 )
+    {
+        room = get_room_index( obj->value[1] );
+        if ( room == NULL || obj->value[2] < 0 || obj->value[2] > 5
+        ||   ( pexit = room->exit[obj->value[2]] ) == NULL
+        ||   pexit->u1.to_room == NULL )
+        {
+            send_to_char( "Nothing seems to happen.\n\r", ch );
+            return false;
+        }
+
+        REMOVE_BIT( pexit->exit_info, EX_CLOSED );
+        REMOVE_BIT( pexit->exit_info, EX_LOCKED );
+        REMOVE_BIT( pexit->exit_info, EX_SECRET );
+
+        reverse = pexit->u1.to_room->exit[rev_dir[obj->value[2]]];
+        if ( reverse != NULL && reverse->u1.to_room == room )
+        {
+            REMOVE_BIT( reverse->exit_info, EX_CLOSED );
+            REMOVE_BIT( reverse->exit_info, EX_LOCKED );
+            REMOVE_BIT( reverse->exit_info, EX_SECRET );
+        }
+        changed = true;
+    }
+
+    if ( obj->value[4] == 1 )
+    {
+        for ( victim = ch->in_room->people; victim != NULL;
+              victim = victim->next_in_room )
+        {
+            if ( !IS_NPC(victim) || victim == ch )
+                continue;
+            if ( obj->value[1] == 0 && obj->value[2] > 0
+            &&   (victim->pIndexData == NULL
+               || victim->pIndexData->vnum != obj->value[2]) )
+                continue;
+
+            victim->hit = UMAX( 1, victim->hit / 3 );
+            act( "$n shudders as the sound tears through $s defenses!",
+                 victim, NULL, NULL, TO_ROOM );
+            act( "The sound tears through your defenses!",
+                 victim, NULL, NULL, TO_CHAR );
+            changed = true;
+        }
+    }
+
+    if ( !changed )
+    {
+        send_to_char( "Nothing seems to happen.\n\r", ch );
+        return false;
+    }
+
+    obj->value[3] = 2;
+    return true;
+}
+
+static OBJ_DATA *get_puzzle_target( CHAR_DATA *ch, char *argument,
+                                    int puzzle_type )
+{
+    OBJ_DATA *obj;
+
+    if ( argument[0] == '\0' )
+        return NULL;
+
+    obj = get_obj_here( ch, argument );
+    if ( obj == NULL || obj->item_type != ITEM_MANIPULATION
+    ||   obj->value[0] != puzzle_type )
+        return NULL;
+
+    return obj;
+}
+
+void do_burn( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *target;
+    OBJ_DATA *candle;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Burn what?\n\r", ch );
+        return;
+    }
+
+    target = get_puzzle_target( ch, argument, PUZZLE_BURN );
+    if ( target == NULL )
+    {
+        send_to_char( "You find nothing there that a candle can burn.\n\r", ch );
+        return;
+    }
+
+    candle = find_carried_puzzle_tool( ch, "candle", ITEM_LIGHT );
+    if ( candle == NULL || candle->value[2] == 0 )
+    {
+        send_to_char( "You need a burning candle to do that.\n\r", ch );
+        return;
+    }
+
+    if ( trigger_puzzle_manipulation( ch, target ) )
+    {
+        act( "You touch $p with the candle flame, revealing a hidden passage!",
+             ch, target, NULL, TO_CHAR );
+        act( "$n burns away $p, revealing a hidden passage!",
+             ch, target, NULL, TO_ROOM );
+        extract_obj( target );
+    }
+}
+
+void do_bomb( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *target;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Bomb what?\n\r", ch );
+        return;
+    }
+
+    target = get_puzzle_target( ch, argument, PUZZLE_BOMB );
+    if ( target == NULL )
+    {
+        send_to_char( "You find no cracked surface to bomb there.\n\r", ch );
+        return;
+    }
+
+    if ( find_carried_puzzle_tool( ch, "bomb", -1 ) == NULL )
+    {
+        send_to_char( "You need a bomb bag to do that.\n\r", ch );
+        return;
+    }
+
+    if ( trigger_puzzle_manipulation( ch, target ) )
+    {
+        act( "You set a bomb beside $p and dive aside. The blast opens a passage!",
+             ch, target, NULL, TO_CHAR );
+        act( "$n bombs $p, and the blast opens a passage!",
+             ch, target, NULL, TO_ROOM );
+        extract_obj( target );
+    }
+}
+
+void do_play( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *instrument;
+    OBJ_DATA *target;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Play what?\n\r", ch );
+        return;
+    }
+
+    instrument = get_obj_carry( ch, argument );
+    if ( instrument == NULL )
+        instrument = get_obj_wear( ch, argument );
+    if ( instrument == NULL
+    || ( !is_name( "recorder", instrument->name )
+      && !is_name( "whistle", instrument->name )
+      && !is_name( "ocarina", instrument->name ) ) )
+    {
+        send_to_char( "You are not carrying an instrument that can play that melody.\n\r", ch );
+        return;
+    }
+
+    for ( target = ch->in_room->contents; target != NULL;
+          target = target->next_content )
+    {
+        if ( target->item_type == ITEM_MANIPULATION
+        &&   target->value[0] == PUZZLE_PLAY )
+            break;
+    }
+
+    if ( target == NULL )
+    {
+        send_to_char( "The melody fades without an answer.\n\r", ch );
+        return;
+    }
+
+    act( "You play $p, and an ancient melody fills the room.",
+         ch, instrument, NULL, TO_CHAR );
+    act( "$n plays $p, and an ancient melody fills the room.",
+         ch, instrument, NULL, TO_ROOM );
+    if ( trigger_puzzle_manipulation( ch, target ) )
+        extract_obj( target );
+}
+
+void do_feed( CHAR_DATA *ch, char *argument )
+{
+    OBJ_DATA *target;
+    OBJ_DATA *bait;
+
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "Feed whom?\n\r", ch );
+        return;
+    }
+
+    target = get_puzzle_target( ch, argument, PUZZLE_FEED );
+    if ( target == NULL )
+    {
+        send_to_char( "Nobody here seems interested in your provisions.\n\r", ch );
+        return;
+    }
+
+    bait = find_carried_puzzle_tool( ch, "bait", ITEM_FOOD );
+    if ( bait == NULL )
+    {
+        send_to_char( "You need food suitable for bait.\n\r", ch );
+        return;
+    }
+
+    if ( trigger_puzzle_manipulation( ch, target ) )
+    {
+        act( "You offer $p. The hungry guardian devours it and steps aside.",
+             ch, bait, NULL, TO_CHAR );
+        act( "$n feeds the hungry guardian, who steps aside.",
+             ch, NULL, NULL, TO_ROOM );
+        extract_obj( bait );
+        extract_obj( target );
+    }
+}
+
 void do_manipulate( CHAR_DATA *ch, char *argument )
 {
 
@@ -4327,7 +4581,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
             return;
         }
         amount    = ch->pcdata->casino_pending_amount;
-        strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
+        toc_strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
         ch->pcdata->casino_pending_game        = 0;
         ch->pcdata->casino_pending_amount      = 0;
         ch->pcdata->casino_pending_arg[0]      = '\0';
@@ -4388,7 +4642,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     {
         ch->pcdata->casino_pending_amount = amount;
         ch->pcdata->casino_pending_game   = CASINO_PENDING_BET;
-        strlcpy( ch->pcdata->casino_pending_arg, arg2,
+        toc_strlcpy( ch->pcdata->casino_pending_arg, arg2,
                  sizeof(ch->pcdata->casino_pending_arg) );
         snprintf( buf, sizeof(buf),
             "That's a big bet!  You want to wager %ld gold on %s?\n\r"
@@ -4507,7 +4761,7 @@ void do_roulette( CHAR_DATA *ch, char *argument )
             return;
         }
         amount    = ch->pcdata->casino_pending_amount;
-        strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
+        toc_strlcpy( arg2, ch->pcdata->casino_pending_arg, sizeof(arg2) );
         ch->pcdata->casino_pending_game        = 0;
         ch->pcdata->casino_pending_amount      = 0;
         ch->pcdata->casino_pending_arg[0]      = '\0';
@@ -4584,7 +4838,7 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     {
         ch->pcdata->casino_pending_amount = amount;
         ch->pcdata->casino_pending_game   = CASINO_PENDING_ROULETTE;
-        strlcpy( ch->pcdata->casino_pending_arg, arg2,
+        toc_strlcpy( ch->pcdata->casino_pending_arg, arg2,
                  sizeof(ch->pcdata->casino_pending_arg) );
         snprintf( buf, sizeof(buf),
             "That's a big bet!  You want to wager %ld gold on %s?\n\r"
@@ -4891,8 +5145,8 @@ void do_poker( CHAR_DATA *ch, char *argument )
     {
         char card[8];
         snprintf( card, sizeof(card), "%s%c", PRANK[hand[i].rank], PSUIT[hand[i].suit] );
-        strlcat( hand_str, card, sizeof(hand_str) );
-        if ( i < 4 ) strlcat( hand_str, " ", sizeof(hand_str) );
+        toc_strlcat( hand_str, card, sizeof(hand_str) );
+        if ( i < 4 ) toc_strlcat( hand_str, " ", sizeof(hand_str) );
     }
 
     snprintf( buf, sizeof(buf), "Your hand: [ %s ]\n\r", hand_str );

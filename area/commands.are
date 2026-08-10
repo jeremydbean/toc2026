@@ -17,7 +17,7 @@ lock unlock open close pick         gainlist teachlist
 inventory equipment look compare
 eat drink fill
 list buy sell value
-move climb flip push pull turn
+move climb flip push pull turn burn bomb feed play
 
 COMMUNICATION
 gossip leveling music q/a
@@ -1434,6 +1434,24 @@ saving throw successfully.
 See also: SPELLGROUP, SPELLS, GAIN
 ~
 
+0 BOMB BURN FEED PLAY~
+Syntax: bomb <target>
+        burn <target>
+        feed <guardian>
+        play <instrument>
+
+Some area puzzles react to a specific tool. BURN requires a lit candle and
+can reveal passages hidden by vegetation. BOMB requires a carried bomb bag
+and opens specially marked cracked surfaces. PLAY uses a Recorder, whistle,
+or ocarina to trigger a nearby musical puzzle. FEED consumes suitable enemy
+bait when a hungry guardian blocks the way.
+
+These commands only affect objects designed for that interaction. Examine
+the room and its objects for clues.
+
+See also: FLIP, MOVE, PULL, PUSH, TURN, LOOK
+~
+
 0 CLIMB~
 Syntax: climb <object>
 
@@ -1533,22 +1551,31 @@ See also: BRIEF, COLOR, COMBINE
 ~
 
 0 COMPARE~
-Syntax: compare <object-1> <object-2>
-Syntax: compare <object>
+Syntax: compare <object> [object]
+Syntax: compare <focus> <object> [object]
+Syntax: compare profile
 
-COMPARE compares two objects in your inventory.  If both objects are weapons,
-it will report the one with the better average damage.  If both objects are
-armor, it will report the one with the better armor class.
+COMPARE evaluates two complete hypothetical equipment sets without changing
+what you wear. With one object, it finds the item equipped in the same exact
+slot. With two objects, both must be able to occupy a common slot.
 
-COMPARE with one argument compares an object in your inventory to the object
-you are currently wearing or wielding of the same type.
+The default OVERALL result adapts to your level, class, guild, learned spells,
+weapon proficiency, and trained combat and defensive skills. It reports the
+estimated edge in weapon damage, spellcasting readiness, survivability,
+leveling efficiency, and utility. COMPARE PROFILE shows the priorities used.
 
-COMPARE doesn't consider any special modifiers of the objects.  You may
-wish to wear, wield or hold an item which compares as worse if it has
-bonuses, such as additions to attributes.  These modifiers can be determined
-by using the IDENTIFY spell or the LORE skill.
+Choose a focus to make that category the recommendation:
+  DAMAGE   - weapon dice, accuracy, attacks, and relevant combat moves
+  SPELLS   - mana, recovery, casting stats, and learning capacity
+  DEFENSE  - hp, armor, saves, immunities, dodge, parry, and block
+  LEVELING - combat pace, recovery, learning, travel, and experience bonuses
+  UTILITY  - movement, recovery, useful affects, stats, and immunities
 
-See also: LORE, INVENTORY, EQUIPMENT
+Results are estimates against an equal-level standard opponent over five
+combat rounds. They include item affects and warn when an item cannot be used
+yet, but unusual opponents and tactics can still change the best choice.
+
+See also: LORE, IDENTIFY, INVENTORY, EQUIPMENT, SCORE
 ~
 
 0 CONSIDER~
@@ -1790,13 +1817,18 @@ Syntax: look <direction>
 Syntax: look <keyword>
 Syntax: look in <container>
 Syntax: look in <corpse>
+Syntax: read <map or compass>
 
 LOOK examines whatever you specify.  Looking at a character shows their
 description and equipment.  LOOK alone describes the room you are in;
 with BRIEF on, only the short description is shown.  Use 'look room' to
 see the full, unbriefed room description.
 
-READ is a synonym for LOOK.
+READ normally behaves like LOOK. Some magical maps have a readable route
+chart. A dungeon compass can be read while inside its matching labyrinth to
+show the first general direction toward the boss and whether the chamber feels
+close or far away. If you carry several, include the dungeon name, such as
+'read eagle compass'.
 
 See also: EXAMINE, SEARCH, INVENTORY
 ~

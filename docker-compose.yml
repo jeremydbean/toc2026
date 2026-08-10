@@ -15,8 +15,8 @@ services:
       - PORT=9000
       - WEB_ADMIN_PORT=9001
       - WEB_ADMIN_HOST=0.0.0.0
-      # Uncomment and set a strong token to protect the web admin API:
-      # - WEB_ADMIN_TOKEN=change-this-to-a-strong-secret
+      # Admin operations remain disabled when this host variable is empty.
+      - WEB_ADMIN_TOKEN=${WEB_ADMIN_TOKEN:-}
     # unless-stopped: restart on unexpected exit (crash/OOM) but NOT on
     # clean immortal 'shutdown' (exit 0) or explicit 'docker stop'.
     restart: unless-stopped

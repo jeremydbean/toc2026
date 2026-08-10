@@ -1,0 +1,10141 @@
+#AREA   {1 70} Astarte Hyrule~
+
+#MOBILES
+#30200
+red octorok~
+a red octorok~
+A small red octorok scurries up to you and attacks!
+~
+This small red animal slightly resembles an octopus on legs.  His mouth seems quite
+large for his body size.  You soon realize why as a large rock shoots straight out of
+his mouth, right toward you!
+~
+human~
+AF 0 0 S
+10 5 3d10+105 1d1+0 1d4+7 6
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#30201
+blue octorok~
+a blue octorok~
+A small blue octorok scurries up to you and attacks!
+~
+This small blue animal slightly resembles an octopus on legs.  His mouth seems quite
+large for his body size.  You soon realize why as a large rock shoots straight out of his mouth, right toward you!
+~
+human~
+AF 0 0 S
+20 10 5d10+325 1d1+0 2d5+15 6
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#30202
+pig moblin~
+a moblin~
+A brownish pig-like animal walks around muttering.
+~
+The Moblin looks very strong, but stupid.  He swings his sword about, and mutters
+to himself.  You can't make out what it says.
+~
+pig~
+AT 0 -200 S
+25 12 7d10+540 1d1+0 3d5+18 27
+0 0 0 0
+CDEU 0 0 I
+8 8 1 0
+AGV ABCDEFHJK M 0
+#30203
+pig moblin green~
+a green moblin~
+A greenish pig-like animal stands here scanning the area.
+~
+The Green Moblin is huge, and has a hint of intelligence in its eyes.  He says
+nothing, and glares back at you.
+~
+pig~
+AFT 0 -250 S
+30 15 8d10+850 1d1+0 3d6+22 27
+0 0 0 0
+CDEU 0 0 0
+8 8 0 0
+AGV ACDEFHJK M 0
+#30204
+zora fish~
+a zora~
+A fish-like creature hops from the water and ATTACKS!
+~
+This fish-like creature seems to spend most of it's time underwater... occasionally rising to the surface to peer around.  It doesn't seem to be at all afraid by your presence... and you actually seem to anger it.
+~
+fish~
+ABCFHM JL -100 S
+30 15 8d10+850 1d1+0 3d6+22 5
+0 0 0 0
+FHU R I 0
+8 8 2 0
+AGV ADEFKOQX M 0
+#30205
+spider tektite~
+a tektite~
+An orange spider jumps about here.
+~
+This large tektite is nearly twice your size, but seems terrified of you.  As it jumps about, it never seems to stop looking at you.
+~
+insect~
+AFH JT -100 S
+35 17 10d10+1300 1d1+0 4d6+26 10
+0 0 0 0
+H G 0 IL
+8 8 0 0
+ABHMV ABCDEFGHIJKQ L 0
+#30206
+red leever~
+a red leever~
+A red leever spins here.
+~
+A red leever just sits here, spinning in place.  You can make out no eyes or ears, and it's covered with dirt.  It appears it spends a lot of time burrowing underground.
+~
+insect~
+AFH JT -200 S
+30 15 8d10+850 1d1+0 3d6+22 8
+0 0 0 0
+H G 0 LS
+8 8 0 0
+ABHMV ABCDEFGHIJKQ M 0
+#30207
+blue leever~
+a blue leever~
+A blue leever spins here, borrowing in and out of the ground.
+~
+A blue leever just sits here, spinning in place.  You can make out no eyes or ears, and it's covered with dirt.  It appears it spends a lot of time burrowing underground.
+~
+insect~
+AFH JT -300 S
+40 20 12d10+1570 1d1+0 4d7+30 8
+0 0 0 0
+H G 0 LS
+8 8 0 0
+ABHMV ABCDEFGHIJKQ M 0
+#30208
+horse lynel~
+a Lynel~
+A large horse-type creature is here.
+~
+The Lynel is quite odd-looking.  It has the body of a horse, and a head not quite human or horse.  It stands totally on it's hind legs, and it has two stubby arms equipped with blades.
+~
+horse~
+A 0 -350 S
+50 25 15d10+4400 1d1+0 5d8+37 1
+0 0 0 0
+CIO 0 0 0
+8 8 0 0
+AGNV ACDEFJK M 0
+#30209
+ghost~
+a ghost~
+A large white ghost floats here.
+~
+This large ghost doesn't look to happy to see you here.  It's moans are unearthly...
+~
+undead~
+AF BCEFHJQU -300 S
+55 27 16d10+5000 18d10+900 6d8+41 18
+0 0 0 0
+0 BLQ FG EHJN
+8 8 0 0
+M ABCDGHIJK L 0
+#30210
+living tree~
+a living tree~
+A large tree stands here.
+~
+A large tree stands here.  Upon closer examination, you notice what looks like arms
+and eyes... how odd...
+~
+tree~
+ABFM DEFJV -350 S
+55 27 16d10+5000 1d1+0 6d8+41 7
+0 0 0 0
+CEO EQS I HIJ
+8 8 0 0
+AGHMV ABCDEFGHIJK H 0
+#30211
+bat keese~
+a keese~
+A small bat hangs here.
+~
+A Keese hangs here upside down, it's small red eyes peering at you.
+~
+bat~
+ABF AJQT -100 S
+13 6 4d10+202 1d10+0 2d4+9 7
+0 0 0 0
+FH 0 0 S
+8 8 0 0
+AGW ACDEFHJKP S 0
+#30212
+stalfos skeleton~
+a stalfos~
+A large skeleton stands here.
+~
+This large white skeleton paces about the room, moaning.  It seems to be the remains of an old, powerful warrior.  It's wearing old, tattered clothing, and holding a shield and rather large sword bearing the symbol of the Triforce.
+~
+undead~
+ABT CEF -350 S
+16 8 5d10+307 1d10+0 2d5+11 7
+0 0 0 0
+BCEU BLQ FG EHJN
+8 8 0 0
+M ABCDGHIJK M 0
+#30213
+zol oil puddle~
+a zol~
+A small black puddle is here.
+~
+This small puddle resembles oil, or a similar substance.  It seems to actually have some intelligence to it...
+~
+human~
+ABF A -100 S
+31 15 10d10+1153 1d10+0 4d6+22 7
+0 0 0 0
+CHK KS 0 H
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#30214
+goriya goblin~
+a goriya~
+A small goblin stands here, holding a boomerang.  It runs over and ATTACKS!
+~
+This Goriya is dressed in orange, and holding a small boomerang.  It doesn't seem impressed by your presence.
+~
+goblin~
+ABFT J -150 S
+18 9 6d10+388 1d10+0 2d5+12 7
+0 0 0 0
+EFKU 0 Q C
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#30215
+like slime blob~
+A Like Like~
+A large orange blob moves slowly toward you.
+~
+This Like Like is little more then slime.  It seems to push itself along quite well, but very slowly.  It's rumored these creatures will eat anything they can get ahold of... including your equipment.
+~
+human~
+ABF 0 -150 S
+43 21 14d10+2218 1d10+0 5d6+30 7
+0 0 0 0
+U 0 D C
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#30216
+small faerie~
+a faerie~
+A small faerie floats here, looking for something to heal.
+~
+This tiny faerie stands about 4 inches tall, with wings nearly the size of her body.
+She holds a tiny little wand that she waves about as she flies.
+~
+elf~
+ABMQ HJT 250 S
+10 5 3d10+105 5d10+75 1d4+7 16
+0 0 0 0
+H 0 CL U
+8 8 2 0
+AHMV ABCDEFGHIJK T 0
+#30217
+lanmola worm black~
+A Lanmola~
+A HUGE black worm is here.
+~
+This GIGANTIC black worm is nearly 100 feet long, and 20 feet tall.  It doesn't seem to notice you as it goes about it's business.  It doesn't look like something you'd want to mess with.
+~
+snake~
+ABFMV CDFV -500 S
+65 32 25d12+10500 1d1+0 8d10+50 13
+0 0 0 0
+0 S DL I
+8 8 0 0
+AGRXYc ADEFKLQVX H 0
+#30218
+dodongo lizard~
+The Dodongo~
+A huge lizard stands here... looks once at you, and thunders over to attack!
+~
+This Dodongo is HUGE!  Its body nearly takes up the entire room, making it hard to see anything except it.  It has a huge mouth, and as it looks at you, it roars in anger!
+~
+lizard~
+ABFMV DEFV -750 S
+30 15 10d10+2250 1d10+0 4d6+21 7
+0 0 0 0
+0 H L I
+8 8 0 0
+AGXc ACDEFHKQV H 0
+#30219
+mummy~
+A mummy~
+A mummy wanders about the room here.
+~
+This mummy appears to be alive and moving towards you.  The cloth wrapped around it's entire body seems to be soaked dark red in places... it's moans are unearthly.
+~
+undead~
+AFO CEFHV -650 S
+51 25 17d10+3121 12d10+612 6d7+36 7
+0 0 0 0
+FGK BLQ FG EHJN
+8 8 0 0
+M ABCDGHIJK M 0
+#30220
+knight Darknut~
+a Darknut~
+A knight totally dressed in armor stands ready to protect it's master at all costs!
+~
+You can see the power of this knight even below it's armor.  He has a very large mace he swings wildly over his head, awaiting your attack.
+~
+dwarf~
+AFT CDFHJV -250 S
+36 18 12d10+1555 1d10+0 4d6+25 7
+0 0 0 0
+CDEFK 0 CDQ CR
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#30221
+wizard wizzrobe~
+A Wizzrobe~
+A wizard stands here.
+~
+Although you cannot see his face, this Wizzrobe seems very angered by your presence.  His hands glow with a magical light, and he floats about the room... looks like he's getting an attack ready.
+~
+elf~
+ABFR CDFHJTV -250 S
+50 25 15d10+4400 18d10+900 5d8+37 2
+0 0 0 0
+0 0 CL DU
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#30222
+aquamentus dragon green~
+Three-headed Aquamentus~
+A HUGE three-headed green dragon snarls and attacks!
+~
+This three-headed dragon stands nearly 25 feet tall.  He is immediately aware of your presence, and is angered greatly.  A massive cloud of fire and smoke erupt from its mouths as all its heads roar in anger!
+~
+dragon~
+ABFMV DFHJ -450 S
+20 10 6d10+1000 1d10+0 3d5+14 7
+0 0 0 0
+CMO BHL HQ I
+8 8 0 0
+BZc ACDEFHJKQVX L 0
+#30223
+gohma spider~
+Gohma~
+A very large one-eyed spider stands here... peering at you.
+~
+The Gohma is a very large spider.  It has only one eye, which darts back and forth quickly, scanning the room.  It's much larger then you... but seems hesistant to attack.
+~
+insect~
+ABFMV CDFHJTV -750 S
+60 30 20d10+9000 15d10+720 7d8+43 7
+0 0 0 0
+H BG 0 HL
+8 8 0 0
+ABHMV ABCDEFGHIJKQ L 0
+#30224
+wizard agahnim~
+Agahnim~
+The mighty wizard Agahnim stands here.
+~
+Agahnim watches you as you enter, and gives a little smirk.  He seems unimpressed by you, as his eyes start to glow a bright blue.  The entire room crackles with his power, and then goes quiet.  Oh, boy.
+~
+elf~
+ABFMRV CDFHJT -500 S
+65 32 28d12+11500 24d10+1400 8d10+50 2
+0 0 0 0
+0 B CL U
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#30225
+ganon~
+Ganon~
+The All-Mighty Ganon stands here in the shadows.
+~
+Ganon stands here, dressed only in a black robe, and holding a staff which he twirls around in the air.  He resembles a pig in several ways... althought quite large.  Before you know what happened, he attacks!
+~
+pig~
+ABFMRV CDFHJQUV -800 S
+70 35 23d10+12250 17d10+840 8d8+50 7
+0 0 0 0
+BCDE BDEFGN CP Y
+8 8 0 0
+AGV ACDEFHJK L 0
+#30226
+moblin~
+a moblin~
+A large moblin stands behind a counter here.
+~
+There is an obvious intelligence about this Moblin, and he looks much different than the others you've come across.  He never takes his eyes off you... even for a second.  His stare makes you uncomfortable.
+~
+pig~
+ABMV DF 500 S
+1 0 1d10+8 1d1+0 1d2+0 7
+0 0 0 0
+0 CDP 0 0
+8 8 1 0
+AGV ACDEFHJK M 0
+#30227
+old woman~
+an old woman~
+An old woman stands here, mixing potions.
+~
+As you walk in, the old woman doesn't even seem to notice you.  She's dressed all in red, with long grey hair.  She stands toward the back of the room, bent over a small stove, mixing potions.
+~
+human~
+ABV DF 500 S
+50 25 15d10+4400 1d1+0 5d8+37 16
+0 0 0 0
+0 0 0 0
+8 8 2 0
+AHMV ABCDEFGHIJK M 0
+#30228
+old man~
+An old man~
+An old man stands at a counter here, selling drinks.
+~
+This old man glances at you step into the waterfall.  He seems to be going through a small cooler in the back of the room... hmm...
+~
+human~
+ABMV DF 0 S
+50 25 15d10+4400 1d1+0 5d8+37 16
+0 0 0 0
+0 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0
+#30229
+pikachu~
+Pikachu~
+A small stuffed Pikachu sits here.
+~
+.
+     `:-.          ___,
+       `.`\_...._/`.-"`
+         \        /      ,
+         /()   () \    .' `-._
+        |)  .    ()\  /   _.'
+        \  -'-     ,: '. <
+         :.__     ,:|   > \
+        / ,    / ,  |.-'.-'
+       (_/    (_/ ,:|.<`
+         \    ,     :-`
+          >   \    /
+         (_,-'`> .'
+              (_,'
+
+
+This small stuffed Pikachu was stolen from Sephiroth's house.
+~
+human~
+ABMV CDEFJOV 1000 S
+70 35 20d10+10700 1d1+0 8d10+52 0
+0 0 0 0
+CEFGHKM ABC DEP R
+6 6 0 150000
+AHMV ABCDEFGHIJK S 0
+#30300
+gel slime~
+a gel~
+A quivering gel slides across the stones.
+~
+This tiny dungeon slime shivers before springing forward.
+~
+human~
+AF 0 -200 S
+13 6 4d10+202 1d10+0 2d4+9 7
+0 0 0 0
+0 0 0 0
+8 8 0 338
+AHMV ABCDEFGHIJK M 0
+
+#30301
+wallmaster hand~
+a Wallmaster~
+A disembodied Wallmaster crawls from the wall.
+~
+A pale hand large enough to seize an adventurer claws at the floor.
+~
+undead~
+AF 0 -200 S
+19 9 6d10+433 1d10+0 2d5+13 7
+0 0 0 0
+0 0 0 0
+8 8 0 722
+AHMV ABCDEFGHIJK M 0
+
+#30302
+rope snake~
+a Rope~
+A Rope coils here, ready to charge.
+~
+This small dungeon snake watches for a straight line to its prey.
+~
+snake~
+AF 0 -200 S
+22 11 7d10+580 1d10+0 3d5+15 7
+0 0 0 0
+0 0 0 0
+8 8 0 968
+AHMV ABCDEFGHIJK M 0
+
+#30303
+moldorm worm~
+a Moldorm~
+A segmented Moldorm circles the room.
+~
+The armored worm turns in tight, relentless circles.
+~
+insect~
+AF 0 -200 S
+25 12 8d10+750 1d10+0 3d5+18 7
+0 0 0 0
+0 0 0 0
+8 8 0 1250
+AHMV ABCDEFGHIJK M 0
+
+#30304
+bubble spirit~
+a Bubble~
+A crackling Bubble ricochets through the chamber.
+~
+The cursed spirit flashes between the walls in an erratic orbit.
+~
+undead~
+AF 0 -200 S
+32 16 10d10+1228 1d10+0 4d6+23 7
+0 0 0 0
+0 0 0 0
+8 8 0 2048
+AHMV ABCDEFGHIJK M 0
+
+#30305
+manhandla plant boss~
+Manhandla~
+The four-mouthed Manhandla blocks the chamber.
+~
+Four snapping heads grow from a single armored heart of vines.
+~
+tree~
+ABFMV 0 -200 S
+40 20 13d10+4000 1d10+0 5d6+28 7
+0 0 0 0
+0 0 0 0
+8 8 0 3200
+AHMV ABCDEFGHIJK H 0
+
+#30306
+vire demon~
+a Vire~
+A horned Vire bounds between the shadows.
+~
+The winged demon crouches, ready to split into smaller terrors.
+~
+demon~
+AF 0 -200 S
+43 21 14d10+2218 1d10+0 5d6+30 7
+0 0 0 0
+0 0 0 0
+8 8 0 3698
+AHMV ABCDEFGHIJK M 0
+
+#30307
+gleeok dragon boss~
+Gleeok~
+The many-headed Gleeok fills the chamber.
+~
+Several dragon heads weave above a single scarred body, breathing furnace heat.
+~
+dragon~
+ABFMV 0 -200 S
+50 25 16d10+6250 12d10+600 6d7+36 7
+0 0 0 0
+0 0 0 0
+8 8 0 5000
+AHMV ABCDEFGHIJK H 0
+
+#30308
+pols voice rabbit~
+a Pols Voice~
+A long-eared Pols Voice hops here.
+~
+Its enormous ears twitch at every sound while its jaws work hungrily.
+~
+rabbit~
+AF 0 -200 S
+53 26 17d10+3370 13d10+636 6d7+38 7
+0 0 0 0
+0 0 0 0
+8 8 0 5618
+AHMV ABCDEFGHIJK M 0
+
+#30309
+digdogger eye boss~
+Digdogger~
+The enormous eye of Digdogger rolls toward you.
+~
+A living eye wrapped in hardened flesh trembles at the faintest melody.
+~
+human~
+ABFMV 0 -200 S
+55 27 18d10+7562 13d10+660 6d7+39 7
+0 0 0 0
+0 0 0 0
+8 8 0 6050
+AHMV ABCDEFGHIJK H 0
+
+#30310
+orange wizzrobe wizard~
+an orange Wizzrobe~
+An orange Wizzrobe fades into view.
+~
+The robed sorcerer gathers a burning spell between hidden hands.
+~
+elf~
+AF 0 -200 S
+57 28 19d10+3898 14d10+684 6d7+41 7
+0 0 0 0
+0 0 0 0
+8 8 0 6498
+AHMV ABCDEFGHIJK M 0
+
+#30311
+hungry goriya guardian~
+a hungry Goriya~
+A hungry Goriya watches the passage.
+~
+The Goriya looks more interested in food than battle and refuses to move.
+~
+goblin~
+AF 0 -200 S
+1 1 3d10+1 1d10+0 1d4+1 7
+0 0 0 0
+0 0 0 0
+8 8 0 2
+AHMV ABCDEFGHIJK M 0
+
+#30312
+blue goriya demon~
+a blue Goriya~
+A veteran blue Goriya raises its blade.
+~
+This veteran guardian knows every turn of the Demon labyrinth.
+~
+goblin~
+AF 0 -200 S
+61 30 20d10+4465 15d10+732 7d8+43 7
+0 0 0 0
+0 0 0 0
+8 8 0 7442
+AHMV ABCDEFGHIJK M 0
+
+#30313
+digdogger elder eye~
+an elder Digdogger~
+An elder Digdogger shakes the dungeon.
+~
+The enormous eye has survived countless heroes, but still fears music.
+~
+human~
+ABFMV 0 -200 S
+63 31 21d10+9922 15d10+756 7d8+45 7
+0 0 0 0
+0 0 0 0
+8 8 0 7938
+AHMV ABCDEFGHIJK H 0
+
+#30314
+aquamentus ancient dragon~
+ancient Aquamentus~
+Ancient Aquamentus guards the Demon's heart.
+~
+The old dragon bears the scars of the first labyrinth and far greater power.
+~
+dragon~
+ABFMV 0 -200 S
+64 32 21d10+10240 16d10+768 7d8+46 7
+0 0 0 0
+0 0 0 0
+8 8 0 8192
+AHMV ABCDEFGHIJK H 0
+
+#30315
+blue darknut knight~
+a blue Darknut~
+A blue Darknut seals the corridor.
+~
+Heavy blue plate turns the knight into a walking fortress.
+~
+dwarf~
+AF 0 -200 S
+66 33 22d10+5227 16d10+792 7d8+47 7
+0 0 0 0
+0 0 0 0
+8 8 0 8712
+AHMV ABCDEFGHIJK M 0
+
+#30316
+gleeok ashen dragon~
+ashen Gleeok~
+Ashen Gleeok roars from the Lion's heart.
+~
+The elder dragon's severed heads continue to fight in wreaths of fire.
+~
+dragon~
+ABFMV 0 -200 S
+67 33 22d10+11222 16d10+804 7d8+48 7
+0 0 0 0
+0 0 0 0
+8 8 0 8978
+AHMV ABCDEFGHIJK H 0
+
+#30317
+lanmola crimson worm~
+a crimson Lanmola~
+A crimson Lanmola erupts through the floor.
+~
+The segmented Death Mountain worm moves like a living avalanche.
+~
+snake~
+AF 0 -200 S
+68 34 22d10+5548 17d10+816 7d8+48 7
+0 0 0 0
+0 0 0 0
+8 8 0 9248
+AHMV ABCDEFGHIJK M 0
+
+#30318
+patra eye swarm boss~
+Patra~
+Patra watches from within a spinning ring of eyes.
+~
+A great central eye hides behind an orbiting wall of smaller, hateful eyes.
+~
+human~
+ABFMV 0 -200 S
+69 34 23d10+11902 17d10+828 7d8+49 7
+0 0 0 0
+0 0 0 0
+8 8 0 9522
+AHMV ABCDEFGHIJK H 0
+
+#30319
+manhandla ancient plant~
+an ancient Manhandla~
+An ancient Manhandla tears at the Lion's walls.
+~
+The old four-headed plant has rooted itself through the dungeon floor.
+~
+tree~
+ABFMV 0 -200 S
+65 32 21d10+10562 16d10+780 7d8+46 7
+0 0 0 0
+0 0 0 0
+8 8 0 8450
+AHMV ABCDEFGHIJK H 0
+
+#30320
+field octorok red~
+a field octorok~
+A young red octorok patrols the trail.
+~
+A small rock-spitting creature tests new arrivals to Hyrule.
+~
+human~
+AF 0 -200 S
+3 1 3d10+10 1d10+0 1d4+2 7
+0 0 0 0
+0 0 0 0
+8 8 0 18
+AHMV ABCDEFGHIJK M 0
+
+#30321
+river zora young~
+a young Zora~
+A young Zora rises from the shallows.
+~
+The scaled scout darts between the water and the bank.
+~
+fish~
+AF 0 -200 S
+8 4 3d10+76 1d10+0 1d4+5 7
+0 0 0 0
+0 0 0 0
+8 8 0 128
+AHMV ABCDEFGHIJK M 0
+
+#30322
+eastern tektite~
+an eastern tektite~
+An eastern tektite bounds across the path.
+~
+The bright spider has learned to hunt travelers nearing the Moon.
+~
+insect~
+AF 0 -200 S
+13 6 4d10+202 1d10+0 2d4+9 7
+0 0 0 0
+0 0 0 0
+8 8 0 338
+AHMV ABCDEFGHIJK M 0
+
+#30323
+eastern leever~
+an eastern leever~
+An eastern leever churns through the soil.
+~
+Its armored body erupts from the earth without warning.
+~
+insect~
+AF 0 -200 S
+18 9 6d10+388 1d10+0 2d5+12 7
+0 0 0 0
+0 0 0 0
+8 8 0 648
+AHMV ABCDEFGHIJK M 0
+
+#30324
+western moblin~
+a western moblin~
+A western moblin guards the forest trail.
+~
+This disciplined raider watches the road to the Manji.
+~
+pig~
+AF 0 -200 S
+23 11 7d10+634 1d10+0 3d5+16 7
+0 0 0 0
+0 0 0 0
+8 8 0 1058
+AHMV ABCDEFGHIJK M 0
+
+#30325
+western zora~
+a western Zora~
+A western Zora stalks the lakeside.
+~
+The veteran river fighter is far stronger than its eastern kin.
+~
+fish~
+AF 0 -200 S
+28 14 9d10+940 1d10+0 3d5+20 7
+0 0 0 0
+0 0 0 0
+8 8 0 1568
+AHMV ABCDEFGHIJK M 0
+
+#30326
+shoreline leever~
+a shoreline leever~
+A shoreline leever bursts from the sand.
+~
+Salt has hardened this creature's shell into natural armor.
+~
+insect~
+AF 0 -200 S
+33 16 11d10+1306 1d10+0 4d6+23 7
+0 0 0 0
+0 0 0 0
+8 8 0 2178
+AHMV ABCDEFGHIJK M 0
+
+#30327
+shoreline lynel~
+a shoreline Lynel~
+A shoreline Lynel lowers its blade.
+~
+The centaur warrior controls the road to the island dungeon.
+~
+horse~
+AF 0 -200 S
+38 19 12d10+1732 1d10+0 4d6+27 7
+0 0 0 0
+0 0 0 0
+8 8 0 2888
+AHMV ABCDEFGHIJK M 0
+
+#30328
+mountain lynel~
+a mountain Lynel~
+A mountain Lynel challenges the ascent.
+~
+This massive warrior has survived the heat and stone of Death Mountain.
+~
+horse~
+AF 0 -200 S
+45 22 15d10+2430 1d10+0 5d7+32 7
+0 0 0 0
+0 0 0 0
+8 8 0 4050
+AHMV ABCDEFGHIJK M 0
+
+#30329
+stone octorok mountain~
+a stone octorok~
+A stone octorok spits gravel from the cliff.
+~
+Its granite shell blends perfectly into the mountain path.
+~
+human~
+AF 0 -200 S
+48 24 16d10+2764 1d10+0 5d7+34 7
+0 0 0 0
+0 0 0 0
+8 8 0 4608
+AHMV ABCDEFGHIJK M 0
+
+#30330
+graveyard ghini~
+a graveyard Ghini~
+A graveyard Ghini rises through a marker.
+~
+The old spirit circles the road toward the Dragon labyrinth.
+~
+undead~
+AF 0 -200 S
+53 26 17d10+3370 13d10+636 6d7+38 7
+0 0 0 0
+0 0 0 0
+8 8 0 5618
+AHMV ABCDEFGHIJK M 0
+
+#30331
+dead forest guardian tree~
+a Dead Forest guardian~
+A gnarled guardian tree tears free of its roots.
+~
+Ancient magic drives this tree to defend the final eastern paths.
+~
+tree~
+AF 0 -200 S
+63 31 21d10+4762 15d10+756 7d8+45 7
+0 0 0 0
+0 0 0 0
+8 8 0 7938
+AHMV ABCDEFGHIJK M 0
+
+#30332
+blue like like slime~
+a blue Like Like~
+A blue Like Like slides forward, hungry for enchanted equipment.
+~
+This stronger dungeon predator has adapted to the magic surrounding the Dragon labyrinth.
+~
+human~
+ABF 0 -300 S
+58 29 19d10+4070 14d10+696 6d7+42 7
+0 0 0 0
+U 0 D C
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+
+#30333
+elder moldorm worm~
+an elder Moldorm~
+An elder Moldorm coils across the Demon's opening chamber.
+~
+Age and the seventh labyrinth's magic have hardened every segment of this enormous worm.
+~
+snake~
+ABF 0 -300 S
+61 30 20d10+4465 15d10+732 7d8+43 7
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+
+#30334
+red wizzrobe wizard~
+a red Wizzrobe~
+A red Wizzrobe flickers between the shadows of Death Mountain.
+~
+This master of the final labyrinth disappears between volleys of searing magic.
+~
+elf~
+ABFR CDFHJTV -500 S
+68 34 22d10+5548 17d10+816 7d8+48 2
+0 0 0 0
+0 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK M 0
+#0
+
+
+
+#OBJECTS
+#30200
+master sword blade triforce~
+the Master Sword~
+The Master Sword rests here, its sacred blade shining with golden light.~
+steel~
+5 ABGHKUV AN
+1 13 8 3 AD
+58 20 50000 P
+A
+18 3
+A
+19 4
+E
+sword blade triforce~
+Forged to oppose the darkest powers of Hyrule, the Master Sword shines
+with the courage of every hero who has carried it.
+~
+#30201
+statue mouth~
+a HUGE statue's mouth~
+A HUGE statue stands here, its mouth wide open.~
+unknown~
+30 UV 0
+5 30339 0 0 0
+
+0 0 0 P
+#30202
+statue mouth~
+a HUGE statue's mouth~
+A HUGE statue stands here, its mouth wide open.~
+unknown~
+30 UV 0
+5 30355 0 0 0
+
+0 0 0 P
+#30203
+statue~
+the statue of the owl~
+A small statue of an owl sits here.~
+unknown~
+31 UV 0
+4 30325 0 2 0
+ 0 0 0 P
+#30204
+light golden portal~
+a bright golden light~
+A bright golden light shimmers here, forming a passage through space.~
+energy~
+30 GOV 0
+5 30297 0 0 0
+0 0 0 P
+#30205
+light golden portal~
+a bright golden light~
+A bright golden light shimmers here, forming a passage through space.~
+energy~
+30 GOV 0
+5 30229 0 0 0
+0 0 0 P
+#30206
+potion jet black~
+a jet-black potion~
+A curious little potion lies here.~
+unknown~
+10 UV A
+30 17 4 2 0
+30 1 100 P
+#30207
+black potion~
+a black potion~
+A black potion glitters faintly on a nearby shelf.~
+glass~
+10 GUV AO
+50 502 515 568 0
+50 1 10000 P
+#30208
+tree~
+the tree~
+A large tree stands here.~
+unknown~
+12 V 0
+0 0 0 0 0
+0 0 0 P
+#30210
+faerie potion~
+a faerie potion~
+A small glowing potion lies here.~
+unknown~
+10 0 AO
+20 61 61 3 0
+10 1 0 P
+#30211
+tree hollow secret portal~
+an ancient hollow tree~
+An ancient tree stands here, its shadowed hollow deeper than it should be.~
+wood~
+30 GOV 0
+5 15068 0 0 0
+0 0 0 P
+E
+hollow shadow~
+Beyond the hollow, colored lights blink in a room impossibly far away.
+~
+#30212
+moblin sword~
+a moblin's sword~
+A small sword is stuck in the ground here.~
+steel~
+5 G AN
+1 7 5 3 0
+25 5 500 P
+#30213
+tattered cloth~
+a small tattered cloth~
+A small piece of battered cloth lies here in a pile.~
+cloth~
+9 0 AD
+7 6 7 3 0
+28 1 500 P
+#30214
+zora flippers~
+zora's flippers~
+A small set of blue flippers lies here.~
+unknown~
+29 AB AG
+0 0 0 0 0
+30 2 300 P
+#30215
+horseshoes shoes~
+a pair of horseshoes~
+A small pair of enchanted horseshoes lies here.~
+steel~
+9 BGUV AG
+10 10 10 6 0
+45 7 2500 P
+A
+2 2
+A
+14 40
+#30216
+ghostly potion white~
+a ghostly white potion~
+A small white potion shakes here.~
+unknown~
+10 ABUV AO
+50 562 33 17 0
+50 8 1000 P
+#30217
+light golden portal return~
+a bright golden light~
+A bright golden light fills an archway here, offering a way home.~
+energy~
+30 GOV 0
+5 15068 0 0 0
+0 0 0 P
+#30218
+silver arrow~
+a silver arrow~
+A single silver arrow lies here.~
+unknown~
+5 ABGUV AN
+0 4 14 2 0
+68 1 5000 P
+#30219
+wooden wood sword~
+a wooden sword~
+A small wooden sword lies here.~
+unknown~
+5 AV AN
+1 3 7 1 0
+15 3 50 P
+#30220
+gold money coins~
+gold coins~
+A small pile of gold coins lies here.~
+unknown~
+20 0 A
+CEHIM 0 0 0 0
+1 5 1000 P
+#30221
+blue candle~
+a blue candle~
+A small blue candle lies here, casting a steady flame.~
+wax~
+1 AG AO
+0 0 999 0 0
+13 5 1000 P
+#30222
+short bow~
+a short bow~
+A small bow lies here.~
+unknown~
+5 BV AN
+9 6 4 6 0
+18 3 2500 P
+#30223
+blue potion~
+a blue potion~
+A small, glowing blue potion is here.~
+unknown~
+10 ABV AO
+30 28 28 81 0
+5 5 10000 P
+#30224
+red potion~
+a red potion~
+A small, glowing red potion is here.~
+unknown~
+10 ABV AO
+30 81 81 81 0
+5 3 4500 P
+#30225
+fountain faerie~
+a fountain~
+A large faerie fountain is here, full of life.~
+unknown~
+25 0 0
+0 0 0 0 0
+0 0 0 P
+#30226
+fountain~
+a fountain~
+A small fountain is here.~
+unknown~
+25 V 0
+0 0 0 0 0
+0 1500 0 P
+#30227
+small key~
+a small key~
+A small key lies here.~
+unknown~
+18 0 A
+0 0 0 0 0
+1 0 0 P
+#30228
+tattered shirt cloth~
+a small tattered shirt~
+A small tattered shirt lies here in a pile.~
+cloth~
+9 0 AD
+9 9 9 5 0
+40 1 750 P
+#30229
+bone sword~
+a bone sword~
+A small sword, carved completely out of bone, lies here.~
+unknown~
+5 ABG AN
+1 7 8 8 0
+35 10 0 P
+#30230
+steel shield triforce~
+a steel shield~
+A steel shield bearing the symbol of the Triforce lies here.~
+steel~
+9 G AJ
+12 12 12 8 0
+45 20 4000 P
+A
+17 -8
+#30231
+black key~
+a black key~
+A small black key lies here.~
+unknown~
+18 0 A
+0 0 0 0 0
+0 1 0 P
+#30232
+small boomerang~
+a small boomerang~
+A small boomerang lies here.~
+unknown~
+5 AB AN
+0 9 6 0 0
+17 2 0 P
+#30233
+golden chest~
+a golden chest~
+An ornate golden chest rests here.~
+gold~
+15 V 0
+500 AC 0 0 0
+0 50 0 P
+#30234
+fiery key~
+a fiery key~
+A small burning key lies here.~
+unknown~
+18 AB AO
+0 0 0 0 0
+0 0 0 P
+#30235
+stone pedestal sword~
+the Master Sword's stone pedestal~
+The Master Sword stands sealed within an ancient stone pedestal.~
+stone~
+15 O 0
+200 ABCD 30405 0 0
+0 100 0 P
+E
+pedestal stone recess~
+A triangular recess in the pedestal matches the sixth Triforce shard,
+claimed from Level 6: The Dragon. The seal is beyond any ordinary lockpick.
+~
+E
+sword master blade~
+A large, glowing sword bearing the symbol of the Triforce waits within.
+~
+#30236
+large key~
+a large key~
+A large key lies here.~
+unknown~
+18 0 AO
+0 0 0 0 0
+0 0 0 P
+#30237
+small gold chest~
+a small gold chest~
+A small gold chest sits here, sealed by an ornate lock.~
+gold~
+15 0 0
+100 ABCD 30236 0 0
+0 20 0 P
+#30238
+stairs~
+stairs~
+Stairs are here~
+unknown~
+31 0 0
+6 30388 0 1 0
+ 0 0 0 P
+#30239
+stairs~
+stairs~
+(no description)~
+unknown~
+31 0 0
+7 30387 0 1 0
+ 0 0 0 P
+#30240
+stairs~
+stairs~
+(no description)~
+unknown~
+31 0 0
+6 30430 0 1 0
+ 0 0 0 P
+#30241
+stairs~
+stairs~
+(no description)~
+unknown~
+31 0 0
+7 30423 0 1 0
+ 0 0 0 P
+#30242
+key colored~
+a colored key~
+A small, colorful key lies here.~
+unknown~
+18 AB AO
+0 0 0 0 0
+0 0 0 P
+#30243
+golden key~
+a Golden Key~
+A golden key of power lies here.~
+unknown~
+18 ABGH AHO
+0 0 0 0 0
+0 0 0 P
+#30244
+power staff~
+a Staff of Power~
+A large staff of power lies here.~
+wood~
+4 ABGUV AO
+60 5 5 568 0
+70 15 10000 P
+A
+12 50
+#30245
+wand small~
+a small wand~
+A small acid-etched wand lies here.~
+wood~
+3 BG AO
+57 5 5 70 0
+57 5 2500 P
+#30246
+burnt key~
+a burnt key~
+A small charred key lies here.~
+unknown~
+18 B AO
+0 0 0 0 0
+1 0 0 P
+#30247
+light white~
+the white light.~
+A small white light emits from nowhere here.~
+unknown~
+30 0 0
+5 30372 0 0 0
+
+0 0 0 P
+#30248
+powerful key~
+a powerful key~
+A powerful key trembles here.~
+unknown~
+18 ABG AO
+0 0 0 0 0
+0 1 0 P
+#30249
+mace darknut~
+a Darknut's Mace~
+A huge mace lies here.~
+unknown~
+5 ABHUV AN
+4 16 4 21 0
+50 25 0 P
+#30250
+darknut armor plate~
+Darknut armor~
+A heavy suit of Darknut armor lies here.~
+steel~
+9 ABGV AD
+13 13 13 9 0
+52 35 9000 P
+A
+5 2
+#30251
+white sword blade~
+the White Sword~
+The White Sword shines with a clean, silver light here.~
+silver~
+5 ABGUV AN
+1 13 5 20 D
+35 15 15000 P
+A
+18 2
+A
+19 2
+#30252
+ray light~
+a ray of light~
+A warm ray of light shines here.~
+energy~
+1 ABGV AO
+0 0 999 0 0
+15 0 0 P
+#30253
+beautiful red rose~
+a beautiful red rose~
+A beautiful red rose rests here, glowing softly.~
+plant~
+1 ABGUV AO
+0 0 999 0 0
+1 1 0 P
+#30254
+piece meat~
+a piece of meat~
+A small piece of meat lies here.~
+unknown~
+19 0 A
+ADE 0 0 0 0
+1 1 45 P
+#30255
+fountain~
+a magical fountain~
+A magicial fountain sits here, overflowing with water.~
+unknown~
+25 V 0
+0 0 0 0 0
+0 0 0 P
+#30256
+spaghetti O's bowl~
+a bowl of cold spaghetti O's~
+A HUGE bowl of cold spaghetti O's sits here... ready to be eaten.~
+unknown~
+19 V A
+BEF 0 0 0 0
+1 1 0 P
+#30257
+darklight robe magus~
+the Darklight Robe of the Magus~
+A robe woven from darkness and starlight lies here.~
+cloth~
+9 GUV AK
+16 16 16 12 0
+60 8 15000 P
+A
+3 2
+A
+12 75
+#30258
+statue warrior~
+a warrior statue~
+A small statue of a warrior stands here.~
+unknown~
+31 0 0
+4 30253 5 2 0
+ 0 0 0 P
+#30259
+bomb bag~
+a bomb bag~
+A huge bag lies here... it seems to have been used to tote many bombs.~
+unknown~
+15 BGH AO
+BCEFHIJ A 0 0 0
+15 2 5000 P
+#30260
+small golden chest~
+a small golden chest~
+A small golden chest sits here.~
+gold~
+15 0 0
+100 AC 0 0 0
+0 15 0 P
+#30261
+red ring~
+a red ring~
+A red ring glows softly here.~
+gold~
+9 ABGKUV AB
+8 8 8 6 0
+69 1 8000 P
+A
+13 35
+#30262
+skeleton corpse~
+a skeleton~
+A human skeleton lies here, its legs torn from its body.~
+unknown~
+23 0 0
+0 0 0 0 0
+0 500 0 P
+E
+skeleton~
+This skeleton is totally ripped apart.  It seems that someone... or something really mangled this poor guy...
+~
+#30263
+red button warning~
+a red button~
+A red button labeled "DO NOT PUSH" protrudes from the wall here.~
+metal~
+31 O 0
+4 30361 0 1 3
+0 0 0 P
+#30264
+pepsi can~
+a can of Pepsi~
+A small can of Pepsi lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30265
+can coca cola~
+a can of Coca-Cola~
+A small can of Coca-Cola lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30266
+can diet pepsi~
+a can of Diet Pepsi~
+A small can of Diet Pepsi lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30267
+can dr pepper~
+a can of Dr. Pepper~
+A small can of Dr. Pepper lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30268
+can mountain dew~
+a can of Mt. Dew~
+A small can of Mt. Dew lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30269
+can diet coke~
+a can of Diet Coke~
+A small can of Diet Coke lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30270
+7 up 7up can~
+a can of 7-up~
+A small can of 7-up lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30271
+mug root beer can~
+a can of Mug Root Beer~
+A small can of Mug lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30272
+can sprite~
+a can of Sprite~
+A small can of Sprite lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30273
+can surge~
+a can of Surge~
+A small can of Surge lies here.~
+unknown~
+17 0 AO
+ABF ABF ABCD 0 0
+5 2 500 P
+#30274
+drop water~
+a drop of water~
+A small container of seemingly endless water lies here.~
+unknown~
+17 ABHV A
+BDEFGH BDEFGH 0 0 0
+1 2 17500 P
+#30275
+roc feather~
+a Roc's Feather~
+A great white feather floats just above the ground.~
+feather~
+9 ABV AO
+3 3 3 2 0
+10 1 1000 P
+A
+2 1
+A
+14 20
+#30276
+power bracelet~
+a Power Bracelet~
+A golden bracelet engraved with a triangle rests here.~
+gold~
+9 ABUV AM
+8 8 8 5 0
+50 2 5000 P
+A
+1 2
+#30277
+ocarina~
+an ocarina~
+A small blue ocarina lies here.~
+unknown~
+9 ABUV AO
+0 0 0 0 0
+2 2 0 P
+E
+ocarina~
+Written on the side of this ocarina is: "I am the secret...  Open me at
+the Triforce plaque..."
+~
+#30278
+pegasus boots~
+Pegasus Boots~
+A pair of winged boots rests here.~
+leather~
+9 ABGUV AG
+8 8 8 5 0
+35 4 6000 P
+A
+2 2
+A
+14 50
+#30279
+hookshot chain~
+a hookshot~
+A small chain with a hook on the end lies here.~
+unknown~
+5 ABGHUV AN
+4 8 5 4 0
+27 0 1000 P
+#30280
+gold money coins~
+gold coins~
+A small pile of gold coins lies here.~
+unknown~
+20 0 A
+CEHIM 0 0 0 0
+1 5 0 P
+#30281
+gold money coins~
+gold coins~
+A small pile of gold coins lies here.~
+unknown~
+20 0 A
+CEHIM 0 0 0 0
+1 0 0 P
+#30282
+gold money coins~
+gold coins~
+A small pile of gold coins lies here.~
+unknown~
+20 0 A
+CEHIM 0 0 0 0
+1 0 0 P
+#30283
+master ball poke~
+a Master Ball~
+A small ball hovers here.~
+unknown~
+9 ABGHUV AO
+0 0 0 0 0
+70 15 150000 P
+#30284
+delicious beef jerky meat~
+(Delicious) Beef Jerky~
+A strip of delicious beef jerky lies here.~
+meat~
+19 UV A
+H 0 0 0 0
+1 1 25 P
+#30285
+hyrule arcade cabinet game screen portal~
+a flickering Hyrule arcade cabinet~
+A weathered Hyrule arcade cabinet flickers here, its screen opening onto another world.~
+metal~
+30 ABGOV 0
+5 30200 0 0 0
+0 500 0 P
+E
+cabinet screen hyrule~
+The painted cabinet shows a green-clad hero beneath three golden triangles.
+The screen ripples like deep water.
+~
+#30286
+triforce complete golden triangles~
+the complete Triforce~
+The complete Triforce floats here, radiant with golden power.~
+gold~
+18 ABGIV AO
+0 0 0 0 0
+58 1 50000 P
+E
+triforce triangles~
+Three golden triangles join as one, embodying Power, Wisdom, and Courage.
+~
+#30320
+a green travelers cap hyrule gear~
+a green traveler's cap~
+A green traveler's cap rests here, ready for another hero.~
+steel~
+9 G AE
+1 1 1 1 0
+1 1 5 P
+
+#30321
+a wooden buckler hyrule gear~
+a wooden buckler~
+A wooden buckler rests here, ready for another hero.~
+steel~
+9 G AJ
+1 1 1 1 0
+2 1 20 P
+
+#30322
+a homespun green tunic hyrule gear~
+a homespun green tunic~
+A homespun green tunic rests here, ready for another hero.~
+steel~
+9 G AD
+1 1 1 1 0
+3 1 45 P
+
+#30323
+a pair of trailworn boots hyrule gear~
+a pair of trail-worn boots~
+A pair of trail-worn boots rests here, ready for another hero.~
+steel~
+9 G AG
+1 1 1 1 0
+4 1 80 P
+
+#30324
+a wooden practice blade hyrule gear~
+a wooden practice blade~
+A wooden practice blade rests here, ready for another hero.~
+steel~
+5 G AN
+1 1 4 3 0
+5 2 125 P
+
+#30325
+an octorokhide wristguard hyrule gear~
+an Octorok-hide wristguard~
+An octorok-hide wristguard rests here, ready for another hero.~
+steel~
+9 G AM
+1 1 1 1 0
+6 2 180 P
+
+#30326
+a leevershell belt hyrule gear~
+a Leever-shell belt~
+A leever-shell belt rests here, ready for another hero.~
+steel~
+9 G AL
+1 1 1 1 0
+7 2 245 P
+
+#30327
+a keesewing cloak hyrule gear~
+a Keese-wing cloak~
+A keese-wing cloak rests here, ready for another hero.~
+steel~
+9 G AK
+2 2 2 1 0
+8 2 320 P
+
+#30328
+a moblin leather jerkin hyrule gear~
+a Moblin leather jerkin~
+A moblin leather jerkin rests here, ready for another hero.~
+steel~
+9 G AD
+2 2 2 1 0
+9 3 405 P
+
+#30329
+a heros practice sword hyrule gear~
+a hero's practice sword~
+A hero's practice sword rests here, ready for another hero.~
+steel~
+5 G AN
+1 2 4 3 0
+10 3 500 P
+
+#30330
+an eaglecarved bracer hyrule gear~
+an eagle-carved bracer~
+An eagle-carved bracer rests here, ready for another hero.~
+steel~
+9 G AM
+2 2 2 1 0
+11 3 605 P
+
+#30331
+a dungeon delvers cap hyrule gear~
+a dungeon delver's cap~
+A dungeon delver's cap rests here, ready for another hero.~
+steel~
+9 G AE
+3 3 3 2 0
+12 4 720 P
+
+#30332
+a candlekeepers mantle hyrule gear~
+a candlekeeper's mantle~
+A candlekeeper's mantle rests here, ready for another hero.~
+steel~
+9 G AK
+3 3 3 2 0
+13 4 845 P
+
+#30333
+a stalfos bone guard hyrule gear~
+a Stalfos bone guard~
+A stalfos bone guard rests here, ready for another hero.~
+steel~
+9 G AI
+3 3 3 2 0
+14 4 980 P
+
+#30334
+a goriya crescent blade hyrule gear~
+a Goriya crescent blade~
+A goriya crescent blade rests here, ready for another hero.~
+steel~
+5 G AN
+1 3 4 3 0
+15 5 1125 P
+
+#30335
+a pair of traprunners boots hyrule gear~
+a pair of trap-runner's boots~
+A pair of trap-runner's boots rests here, ready for another hero.~
+steel~
+9 G AG
+4 4 4 2 0
+16 5 1280 P
+
+#30336
+a boomerangers wristguard hyrule gear~
+a boomeranger's wristguard~
+A boomeranger's wristguard rests here, ready for another hero.~
+steel~
+9 G AM
+4 4 4 2 0
+17 5 1445 P
+
+#30337
+an eagle archers bow hyrule gear~
+an Eagle archer's bow~
+An eagle archer's bow rests here, ready for another hero.~
+steel~
+5 G AN
+9 4 4 3 0
+18 6 1620 P
+
+#30338
+an aquamentusscale hauberk hyrule gear~
+an Aquamentus-scale hauberk~
+An aquamentus-scale hauberk rests here, ready for another hero.~
+steel~
+9 G AD
+4 4 4 3 0
+19 6 1805 P
+
+#30339
+heart guard of eagle hyrule gear~
+the Heart Guard of the Eagle~
+The heart guard of the eagle rests here, ready for another hero.~
+steel~
+9 G AC
+5 5 5 3 0
+20 6 2000 P
+
+#30340
+a pair of ropehide boots hyrule gear~
+a pair of Rope-hide boots~
+A pair of rope-hide boots rests here, ready for another hero.~
+steel~
+9 G AG
+5 5 5 3 0
+21 7 2205 P
+
+#30341
+a pair of moonstone bracers hyrule gear~
+a pair of moonstone bracers~
+A pair of moonstone bracers rests here, ready for another hero.~
+steel~
+9 G AM
+5 5 5 3 0
+22 7 2420 P
+
+#30342
+a crescentmoon helm hyrule gear~
+a crescent-moon helm~
+A crescent-moon helm rests here, ready for another hero.~
+steel~
+9 G AE
+5 5 5 3 0
+23 7 2645 P
+
+#30343
+a moldorm spine blade hyrule gear~
+a Moldorm spine blade~
+A moldorm spine blade rests here, ready for another hero.~
+steel~
+5 G AN
+1 5 5 3 0
+24 8 2880 P
+
+#30344
+a moon labyrinth cuirass hyrule gear~
+a Moon labyrinth cuirass~
+A moon labyrinth cuirass rests here, ready for another hero.~
+steel~
+9 G AD
+6 6 6 4 0
+25 8 3125 P
+
+#30345
+a smokebomb bandolier hyrule gear~
+a smoke-bomb bandolier~
+A smoke-bomb bandolier rests here, ready for another hero.~
+steel~
+9 G AK
+6 6 6 4 0
+26 8 3380 P
+
+#30346
+an enchanted returning blade hyrule gear~
+an enchanted returning blade~
+An enchanted returning blade rests here, ready for another hero.~
+steel~
+5 G AN
+1 6 5 3 0
+27 9 3645 P
+
+#30347
+a pair of dodongohide leggings hyrule gear~
+a pair of Dodongo-hide leggings~
+A pair of dodongo-hide leggings rests here, ready for another hero.~
+steel~
+9 G AF
+7 7 7 4 0
+28 9 3920 P
+
+#30348
+a dodongofang sword hyrule gear~
+a Dodongo-fang sword~
+A dodongo-fang sword rests here, ready for another hero.~
+steel~
+5 G AN
+1 6 5 3 0
+29 9 4205 P
+
+#30349
+heart guard of moon hyrule gear~
+the Heart Guard of the Moon~
+The heart guard of the moon rests here, ready for another hero.~
+steel~
+9 G AC
+7 7 7 5 0
+30 10 4500 P
+
+#30350
+a pair of zolslick boots hyrule gear~
+a pair of Zol-slick boots~
+A pair of zol-slick boots rests here, ready for another hero.~
+steel~
+9 G AG
+7 7 7 5 0
+31 10 4805 P
+
+#30351
+a bubble ward pendant hyrule gear~
+a Bubble ward pendant~
+A bubble ward pendant rests here, ready for another hero.~
+steel~
+9 G AC
+8 8 8 5 0
+32 10 5120 P
+
+#30352
+a pair of red darknut gauntlets hyrule gear~
+a pair of red Darknut gauntlets~
+A pair of red darknut gauntlets rests here, ready for another hero.~
+steel~
+9 G AH
+8 8 8 5 0
+33 11 5445 P
+
+#30353
+a red darknut shield hyrule gear~
+a red Darknut shield~
+A red darknut shield rests here, ready for another hero.~
+steel~
+9 G AJ
+8 8 8 5 0
+34 11 5780 P
+
+#30354
+a raftmasters cutlass hyrule gear~
+a raftmaster's cutlass~
+A raftmaster's cutlass rests here, ready for another hero.~
+steel~
+5 G AN
+1 7 5 3 0
+35 11 6125 P
+
+#30355
+a red darknut breastplate hyrule gear~
+a red Darknut breastplate~
+A red darknut breastplate rests here, ready for another hero.~
+steel~
+9 G AD
+9 9 9 6 0
+36 12 6480 P
+
+#30356
+a labyrinth crossblade hyrule gear~
+a labyrinth crossblade~
+A labyrinth crossblade rests here, ready for another hero.~
+steel~
+5 G AN
+1 8 5 3 0
+37 12 6845 P
+
+#30357
+a manji knights shield hyrule gear~
+a Manji knight's shield~
+A manji knight's shield rests here, ready for another hero.~
+steel~
+9 G AJ
+9 9 9 6 0
+38 12 7220 P
+
+#30358
+a manhandla thorn lash hyrule gear~
+a Manhandla thorn lash~
+A manhandla thorn lash rests here, ready for another hero.~
+steel~
+5 G AN
+1 8 5 3 0
+39 13 7605 P
+
+#30359
+heart guard of manji hyrule gear~
+the Heart Guard of the Manji~
+The heart guard of the manji rests here, ready for another hero.~
+steel~
+9 G AC
+10 10 10 6 0
+40 13 8000 P
+
+#30360
+a pair of virewing boots hyrule gear~
+a pair of Vire-wing boots~
+A pair of vire-wing boots rests here, ready for another hero.~
+steel~
+9 G AG
+10 10 10 6 0
+41 13 8405 P
+
+#30361
+a pair of watercrossing greaves hyrule gear~
+a pair of water-crossing greaves~
+A pair of water-crossing greaves rests here, ready for another hero.~
+steel~
+9 G AG
+10 10 10 7 0
+42 14 8820 P
+
+#30362
+a like likehide cloak hyrule gear~
+a Like Like-hide cloak~
+A like like-hide cloak rests here, ready for another hero.~
+steel~
+9 G AK
+10 10 10 7 0
+43 14 9245 P
+
+#30363
+a serpentcrested shield hyrule gear~
+a serpent-crested shield~
+A serpent-crested shield rests here, ready for another hero.~
+steel~
+9 G AJ
+11 11 11 7 0
+44 14 9680 P
+
+#30364
+a pair of stepladder sabatons hyrule gear~
+a pair of stepladder sabatons~
+A pair of stepladder sabatons rests here, ready for another hero.~
+steel~
+9 G AG
+11 11 11 7 0
+45 15 10125 P
+
+#30365
+a pair of gleeokscale bracers hyrule gear~
+a pair of Gleeok-scale bracers~
+A pair of gleeok-scale bracers rests here, ready for another hero.~
+steel~
+9 G AM
+11 11 11 7 0
+46 15 10580 P
+
+#30366
+a dragonfire helm hyrule gear~
+a dragonfire helm~
+A dragonfire helm rests here, ready for another hero.~
+steel~
+9 G AE
+11 11 11 7 0
+47 15 11045 P
+
+#30367
+a gleeokfang spear hyrule gear~
+a Gleeok-fang spear~
+A gleeok-fang spear rests here, ready for another hero.~
+steel~
+5 G AN
+1 10 6 3 0
+48 16 11520 P
+
+#30368
+a coat of gleeok scale mail hyrule gear~
+a coat of Gleeok scale mail~
+A coat of gleeok scale mail rests here, ready for another hero.~
+steel~
+9 G AD
+12 12 12 8 0
+49 16 12005 P
+
+#30369
+heart guard of snake hyrule gear~
+the Heart Guard of the Snake~
+The heart guard of the snake rests here, ready for another hero.~
+steel~
+9 G AC
+12 12 12 8 0
+50 16 12500 P
+
+#30370
+a suit of gibdo wrappings hyrule gear~
+a suit of Gibdo wrappings~
+A suit of gibdo wrappings rests here, ready for another hero.~
+steel~
+9 G AD
+12 12 12 8 0
+51 17 13005 P
+
+#30371
+a pair of pols voice ear guards hyrule gear~
+a pair of Pols Voice ear guards~
+A pair of pols voice ear guards rests here, ready for another hero.~
+steel~
+9 G AE
+13 13 13 8 0
+52 17 13520 P
+
+#30372
+a lizard labyrinth breastplate hyrule gear~
+a Lizard labyrinth breastplate~
+A lizard labyrinth breastplate rests here, ready for another hero.~
+steel~
+9 G AD
+13 13 13 8 0
+53 17 14045 P
+
+#30373
+a digdoggereye mace hyrule gear~
+a Digdogger-eye mace~
+A digdogger-eye mace rests here, ready for another hero.~
+steel~
+5 G AN
+1 11 6 3 0
+54 18 14580 P
+
+#30374
+heart guard of lizard hyrule gear~
+the Heart Guard of the Lizard~
+The heart guard of the lizard rests here, ready for another hero.~
+steel~
+9 G AC
+13 13 13 9 0
+55 18 15125 P
+
+#30375
+a pair of orange wizzrobe gloves hyrule gear~
+a pair of orange Wizzrobe gloves~
+A pair of orange wizzrobe gloves rests here, ready for another hero.~
+steel~
+9 G AH
+14 14 14 9 0
+56 18 15680 P
+
+#30376
+a dragonmages wandblade hyrule gear~
+a dragon-mage's wandblade~
+A dragon-mage's wandblade rests here, ready for another hero.~
+steel~
+5 G AN
+1 12 6 3 0
+57 19 16245 P
+
+#30377
+shield of gohmas eye hyrule gear~
+the shield of Gohma's eye~
+The shield of gohma's eye rests here, ready for another hero.~
+steel~
+9 G AJ
+14 14 14 9 0
+59 19 17405 P
+
+#30378
+heart guard of dragon hyrule gear~
+the Heart Guard of the Dragon~
+The heart guard of the dragon rests here, ready for another hero.~
+steel~
+9 G AC
+15 15 15 10 0
+60 20 18000 P
+
+#30379
+a pair of demon maze boots hyrule gear~
+a pair of Demon maze boots~
+A pair of demon maze boots rests here, ready for another hero.~
+steel~
+9 G AG
+15 15 15 10 0
+61 20 18605 P
+
+#30380
+a goriya provisioners belt hyrule gear~
+a Goriya provisioner's belt~
+A goriya provisioner's belt rests here, ready for another hero.~
+steel~
+9 G AL
+15 15 15 10 0
+62 20 19220 P
+
+#30381
+an ancient dragonscale mantle hyrule gear~
+an ancient dragon-scale mantle~
+An ancient dragon-scale mantle rests here, ready for another hero.~
+steel~
+9 G AK
+15 15 15 10 0
+63 21 19845 P
+
+#30382
+heart guard of demon hyrule gear~
+the Heart Guard of the Demon~
+The heart guard of the demon rests here, ready for another hero.~
+steel~
+9 G AC
+16 16 16 10 0
+64 21 20480 P
+
+#30383
+a pair of spellbook bracers hyrule gear~
+a pair of spellbook bracers~
+A pair of spellbook bracers rests here, ready for another hero.~
+steel~
+9 G AM
+16 16 16 10 0
+65 21 21125 P
+
+#30384
+a magical key pendant hyrule gear~
+a Magical Key pendant~
+A magical key pendant rests here, ready for another hero.~
+steel~
+9 G AC
+16 16 16 11 0
+66 22 21780 P
+
+#30385
+heart guard of lion hyrule gear~
+the Heart Guard of the Lion~
+The heart guard of the lion rests here, ready for another hero.~
+steel~
+9 G AC
+16 16 16 11 0
+67 22 22445 P
+
+#30386
+a silverarrow spear hyrule gear~
+a silver-arrow spear~
+A silver-arrow spear rests here, ready for another hero.~
+steel~
+5 G AN
+1 14 6 3 0
+68 22 23120 P
+
+#30387
+a coat of redring mail hyrule gear~
+a coat of red-ring mail~
+A coat of red-ring mail rests here, ready for another hero.~
+steel~
+9 G AD
+17 17 17 11 0
+69 23 23805 P
+
+#30388
+ganons shadow crown hyrule gear~
+Ganon's shadow crown~
+Ganon's shadow crown rests here, ready for another hero.~
+steel~
+9 G AE
+17 17 17 11 0
+70 23 24500 P
+
+#30400
+triforce shard 1~
+the first Triforce shard~
+The 1th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+20 1 2000 P
+
+#30401
+triforce shard 2~
+the second Triforce shard~
+The 2th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+30 1 3000 P
+
+#30402
+triforce shard 3~
+the third Triforce shard~
+The 3th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+40 1 4000 P
+
+#30403
+triforce shard 4~
+the fourth Triforce shard~
+The 4th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+50 1 5000 P
+
+#30404
+triforce shard 5~
+the fifth Triforce shard~
+The 5th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+55 1 5500 P
+
+#30405
+triforce shard 6~
+the sixth Triforce shard~
+The 6th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+60 1 6000 P
+
+#30406
+triforce shard 7~
+the seventh Triforce shard~
+The 7th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+64 1 6400 P
+
+#30407
+triforce shard 8~
+the eighth Triforce shard~
+The 8th shard of the Triforce of Wisdom gleams here.~
+gold~
+18 G AO
+0 0 0 0 0
+67 1 6700 P
+
+#30410
+magical boomerang hyrule gear~
+the Magical Boomerang~
+The magical boomerang rests here, ready for another hero.~
+steel~
+5 G AN
+1 6 5 3 0
+27 9 3645 P
+
+#30411
+raft wooden dungeon~
+the dungeon raft~
+A sturdy wooden raft waits to carry a hero over deep water.~
+wood~
+22 G A
+0 0 0 0 0
+35 5 6125 P
+
+#30412
+stepladder ladder dungeon~
+the stepladder~
+A compact stepladder bridges gaps no stride could cross.~
+wood~
+9 G AG
+9 9 9 4 0
+45 5 10125 P
+
+#30413
+recorder whistle instrument~
+the Recorder~
+A little Recorder hums with a melody that moves water and monsters.~
+wood~
+9 G AO
+10 10 10 5 0
+54 5 14580 P
+
+#30414
+red candle flame dungeon~
+the Red Candle~
+The Red Candle burns with a steady, reusable flame.~
+wax~
+1 G AO
+0 0 999 0 0
+63 2 12000 P
+
+#30415
+magic book spellbook~
+the Magic Book~
+The Magic Book crackles with fire around its ancient pages.~
+wood~
+9 G AO
+13 13 13 6 0
+65 5 21125 P
+
+#30416
+magical key lion~
+the Magical Key~
+The Magical Key glows with the memory of every lock it has opened.~
+gold~
+18 G AO
+0 0 0 0 0
+66 1 6600 P
+
+#30417
+bait meat food goriya~
+enemy bait~
+A ration of strongly scented enemy bait lies here.~
+meat~
+19 0 A
+H 0 0 0 0
+60 3 6000 P
+
+#30420
+bush bramble secret~
+a dry bramble bush~
+A dry bush hides a hollow in the rock below.~
+stone~
+31 UV 0
+11 30204 5 1 0
+0 0 0 P
+
+#30421
+bush healing secret~
+a broad green bush~
+A broad bush grows too neatly against the southern bank.~
+stone~
+31 UV 0
+11 30254 2 1 0
+0 0 0 P
+
+#30422
+bush lion dungeon secret~
+a solitary dark bush~
+A solitary bush blocks what might once have been a northern path.~
+stone~
+31 UV 0
+11 30295 0 1 0
+0 0 0 P
+
+#30423
+wall rock cracked death mountain~
+a cracked face of Spectacle Rock~
+Hairline fractures outline a doorway in the northern rock.~
+stone~
+31 UV 0
+12 30323 0 1 0
+0 0 0 P
+
+#30424
+wall cracked eagle shortcut~
+a cracked northern wall~
+Loose blocks in the north wall could not survive a bomb blast.~
+stone~
+31 UV 0
+12 30343 0 1 0
+0 0 0 P
+
+#30425
+block stone eagle~
+a movable stone block~
+One block sits slightly out of line with the others.~
+stone~
+31 UV 0
+4 30351 0 1 0
+0 0 0 P
+
+#30426
+wall cracked moon shortcut~
+a cracked eastern wall~
+The eastern wall has been weakened by old explosions.~
+stone~
+31 UV 0
+12 30360 1 1 0
+0 0 0 P
+
+#30427
+block stone manji~
+a movable Manji block~
+The block's worn base suggests that it can be pushed.~
+stone~
+31 UV 0
+4 30606 0 1 0
+0 0 0 P
+
+#30428
+block stone snake~
+a movable Snake block~
+This block can be pushed away from a hidden stairwell.~
+stone~
+31 UV 0
+4 30630 3 1 0
+0 0 0 P
+
+#30429
+wall cracked lizard~
+a cracked Lizard wall~
+A hollow draft leaks through the cracked northern wall.~
+stone~
+31 UV 0
+12 30644 0 1 0
+0 0 0 P
+
+#30430
+resonance digdogger lizard~
+Digdogger's resonant shell~
+The giant eye's shell vibrates at the thought of music.~
+stone~
+31 UV 0
+13 0 30309 1 1
+0 0 0 P
+
+#30431
+wall false dragon~
+a false eastern wall~
+The mortar on the eastern wall is loose enough for a bomb.~
+stone~
+31 UV 0
+12 30665 1 1 0
+0 0 0 P
+
+#30432
+pond recorder resonance~
+the still center of the pool~
+The water trembles as though waiting for a particular melody.~
+stone~
+31 UV 0
+13 30238 5 1 0
+0 0 0 P
+
+#30433
+resonance digdogger demon~
+an elder Digdogger's resonant shell~
+The vast eye quivers whenever a musical note rings out.~
+stone~
+31 UV 0
+13 0 30313 1 1
+0 0 0 P
+
+#30434
+hungry goriya guardian~
+a hungry Goriya guardian~
+A hungry Goriya sits squarely in the northern doorway.~
+stone~
+31 UV 0
+14 30687 0 1 0
+0 0 0 P
+
+#30435
+wall cracked demon~
+a cracked wall at the Demon's nose~
+A fault runs through the eastern wall at the tip of the map.~
+stone~
+31 UV 0
+12 30690 1 1 0
+0 0 0 P
+
+#30436
+block stone demon nose~
+the middle nose block~
+The middle block bears handprints from an earlier hero.~
+stone~
+31 UV 0
+4 30691 5 1 0
+0 0 0 P
+
+#30437
+block stone lion~
+a movable Lion block~
+The left block has a deep groove worn beneath it.~
+stone~
+31 UV 0
+4 30703 5 1 0
+0 0 0 P
+
+#30438
+wall cracked lion~
+a cracked Lion wall~
+The eastern wall sounds hollow behind its cracked surface.~
+stone~
+31 UV 0
+12 30709 1 1 0
+0 0 0 P
+
+#30440
+starter armory chest~
+a cedar starter armory~
+A cedar armory holds practical equipment for Hyrule's first ten levels.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30441
+eagle gear chest~
+the Eagle's equipment chest~
+An eagle-carved chest holds equipment earned within Level 1.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30442
+eagle triforce chest~
+the Eagle's Triforce chest~
+A golden chest waits beyond Aquamentus.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30443
+moon gear chest~
+the Moon's equipment chest~
+A crescent-carved chest holds equipment earned within Level 2.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30444
+moon triforce chest~
+the Moon's Triforce chest~
+A silver chest waits beyond Dodongo.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30445
+manji gear chest~
+the Manji's equipment chest~
+A cross-shaped chest holds equipment earned within Level 3.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30446
+manji triforce chest~
+the Manji's Triforce chest~
+A vine-bound chest waits beyond Manhandla.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30447
+snake gear chest~
+the Snake's equipment chest~
+A serpentine chest holds equipment earned within Level 4.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30448
+snake triforce chest~
+the Snake's Triforce chest~
+A scaled chest waits beyond Gleeok.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30449
+lizard gear chest~
+the Lizard's equipment chest~
+A lizard-carved chest holds equipment earned within Level 5.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30450
+lizard triforce chest~
+the Lizard's Triforce chest~
+A round chest waits beyond Digdogger.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30451
+dragon gear chest~
+the Dragon's equipment chest~
+A dragon-carved chest holds equipment earned within Level 6.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30452
+dragon triforce chest~
+the Dragon's Triforce chest~
+An eye-shaped chest waits beyond Gohma.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30453
+demon gear chest~
+the Demon's equipment chest~
+A horned chest holds equipment earned within Level 7.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30454
+demon triforce chest~
+the Demon's Triforce chest~
+An ancient chest waits beyond Aquamentus.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30455
+lion gear chest~
+the Lion's equipment chest~
+A lion-crested chest holds equipment earned within Level 8.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30456
+lion triforce chest~
+the Lion's Triforce chest~
+A fire-scarred chest waits beyond Gleeok.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30457
+secret rupee chest~
+a secret rupee chest~
+A little chest of gold waits beneath the burned bush.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30458
+secret healing chest~
+a secret healing chest~
+A green chest of restorative supplies waits beneath the burned bush.~
+wood~
+15 0 0
+250 A 0 0 0
+0 25 0 P
+
+#30460
+boss key level 3~
+the Level 3 boss key~
+The key won from Level 3's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+40 1 4000 P
+
+#30461
+boss key level 4~
+the Level 4 boss key~
+The key won from Level 4's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+50 1 5000 P
+
+#30462
+boss key level 5~
+the Level 5 boss key~
+The key won from Level 5's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+55 1 5500 P
+
+#30463
+boss key level 6~
+the Level 6 boss key~
+The key won from Level 6's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+60 1 6000 P
+
+#30464
+boss key level 7~
+the Level 7 boss key~
+The key won from Level 7's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+64 1 6400 P
+
+#30465
+boss key level 8~
+the Level 8 boss key~
+The key won from Level 8's guardian lies here.~
+gold~
+18 G AO
+0 0 0 0 0
+67 1 6700 P
+
+#30470
+raft waiting island~
+a waiting wooden raft~
+A raft bobs beside the northern shoreline.~
+energy~
+30 GOV 0
+6 30500 0 0 30411
+0 0 0 P
+
+#30471
+raft returning shore~
+a returning wooden raft~
+A raft waits to carry you back to the mainland.~
+energy~
+30 GOV 0
+5 30299 0 0 0
+0 0 0 P
+
+#30472
+light manji return~
+the Manji's returning light~
+A triangular light offers a path out of Level 3.~
+energy~
+30 GOV 0
+5 30217 0 0 0
+0 0 0 P
+
+#30473
+light snake return~
+the Snake's returning light~
+A triangular light offers a path out of Level 4.~
+energy~
+30 GOV 0
+5 30500 0 0 0
+0 0 0 P
+
+#30474
+light lizard return~
+the Lizard's returning light~
+A triangular light offers a path out of Level 5.~
+energy~
+30 GOV 0
+5 30325 0 0 0
+0 0 0 P
+
+#30475
+light dragon return~
+the Dragon's returning light~
+A triangular light offers a path out of Level 6.~
+energy~
+30 GOV 0
+5 30337 0 0 0
+0 0 0 P
+
+#30476
+light demon return~
+the Demon's returning light~
+A triangular light offers a path out of Level 7.~
+energy~
+30 GOV 0
+5 30238 0 0 0
+0 0 0 P
+
+#30477
+light lion return~
+the Lion's returning light~
+A triangular light offers a path out of Level 8.~
+energy~
+30 GOV 0
+5 30295 0 0 0
+0 0 0 P
+
+#30478
+light temple return~
+the Temple's returning light~
+A triangular light offers a path back to the Temple entrance.~
+energy~
+30 GOV 0
+5 30438 0 0 0
+0 0 0 P
+
+#30480
+eagle dungeon map parchment~
+the Eagle dungeon map~
+A folded map of the Eagle lies here.~
+paper~
+28 G AO
+90 30353 30339 30354 1
+11 1 1100 P
+E
+eagle map parchment~
+Level 1 - The Eagle
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north Circular Room -> north Fork
+Fork -> east C
+Fork -> west Trap -> north Oily Hall -> east M
+M -> north Waterway -> north Waterway -> west I: Bow Vault
+M -> east Goriya Guard -> east Burned Hall -> north B -> east T
+~
+
+#30481
+moon dungeon map parchment~
+the Moon dungeon map~
+A folded map of the Moon lies here.~
+paper~
+28 G AO
+90 30376 30355 30377 2
+21 1 2100 P
+E
+moon map parchment~
+Level 2 - The Moon
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> east Stone Room -> north I: Magical Boomerang
+E -> west Oily Hall -> north Junction -> north Trap -> north M
+M -> north Hot Fork -> follow either upper branch until the halls rejoin
+Rejoined halls -> C -> south Hall -> east Passage -> north Black Room
+Black Room -> enter the white light -> Lower Floor
+Lower Floor -> south Flooded Room -> west Trap -> north Hall -> north B -> north T
+~
+
+#30482
+manji dungeon map parchment~
+the Manji dungeon map~
+A folded map of the Manji lies here.~
+paper~
+28 G AO
+90 30613 30600 30614 3
+31 1 3100 P
+E
+manji map parchment~
+Level 3 - The Manji
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> west C
+E -> north Zol Hall -> north Bubble Crossing -> north Darknut Court
+Darknut Court -> east Eastern Arm -> north Block Room -> north Hidden Stair
+Hidden Stair -> down I: Raft Vault
+Darknut Court -> west Western Arm -> north Crossing of Blades -> east M
+M -> north Boss Antechamber -> east B -> north T
+~
+
+#30483
+snake dungeon map parchment~
+the Snake dungeon map~
+A folded map of the Snake lies here.~
+paper~
+28 G AO
+90 30633 30620 30634 4
+41 1 4100 P
+E
+snake map parchment~
+Level 4 - The Snake
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> west C
+E -> north Vire Hall -> north Flooded Junction
+Flooded Junction -> north I: Stepladder Vault
+Flooded Junction -> east Like Like Gallery -> east Water Gap -> north Upper Coil
+Upper Coil -> down Lower Cellar, or north Vire Crossing -> north Block Room
+Block Room -> west M
+Block Room -> east Boss Antechamber -> north B -> north T
+~
+
+#30484
+lizard dungeon map parchment~
+the Lizard dungeon map~
+A folded map of the Lizard lies here.~
+paper~
+28 G AO
+90 30653 30640 30654 5
+51 1 5100 P
+E
+lizard map parchment~
+Level 5 - The Lizard
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north Gibdo Hall -> north Darknut Junction
+Gibdo Hall -> east Old Man's Warning
+Darknut Junction -> east C
+Darknut Junction -> west Cracked Wall -> north Hundred-Rupee Room
+Darknut Junction -> north Pols Voice Hall -> east I: Recorder Vault
+Pols Voice Hall -> north Upper Spine -> north Bomb Fork
+Bomb Fork -> west M
+Bomb Fork -> east Resonant Eye Room -> north B -> north T
+~
+
+#30485
+dragon dungeon map parchment~
+the Dragon dungeon map~
+A folded map of the Dragon lies here.~
+paper~
+28 G AO
+90 30673 30660 30674 6
+56 1 5600 P
+E
+dragon map parchment~
+Level 6 - The Dragon
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north Wizzrobe Hall
+Wizzrobe Hall -> west C, or east Eye Hint
+Wizzrobe Hall -> north Like Like Gallery -> north False Wall
+False Wall -> east Hidden Passage -> east Block Room
+Block Room -> down I: Magical Wand Vault
+Block Room -> north Wizzrobe Gauntlet -> west M
+Wizzrobe Gauntlet -> east Eastern Turn -> north Arrow Slit -> north B -> north T
+~
+
+#30486
+demon dungeon map parchment~
+the Demon dungeon map~
+A folded map of the Demon lies here.~
+paper~
+28 G AO
+90 30693 30680 30694 7
+61 1 6100 P
+E
+demon map parchment~
+Level 7 - The Demon
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north Supply Room -> east Goriya Hall
+Goriya Hall -> north M, or east Elder Digdogger -> north Bomb Junction
+Bomb Junction -> west Bomb Cache, or east Hungry Goriya -> north Upper Face
+Upper Face -> west I: Red Candle Vault
+Upper Face -> north Cracked Nose -> east Movable Block -> down C
+C -> north B -> north T
+~
+
+#30487
+lion dungeon map parchment~
+the Lion dungeon map~
+A folded map of the Lion lies here.~
+paper~
+28 G AO
+90 30713 30700 30714 8
+65 1 6500 P
+E
+lion map parchment~
+Level 8 - The Lion
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = shard
+
+E -> north First Seal -> north Mixed Guard Room
+First Seal -> east Manhandla Ambush
+Mixed Guard Room -> down I: Magic Book Cellar
+Mixed Guard Room -> north Darknut Hall -> west M
+Darknut Hall -> east Crossroads -> north I: Magical Key Vault
+Magical Key Vault -> north Hidden Route -> east Cracked Wall -> north Approach
+Approach -> west C, or north B -> north T
+~
+
+#30488
+death mountain dungeon map parchment~
+the Death Mountain dungeon map~
+A folded map of Death Mountain lies here.~
+paper~
+28 G AO
+90 30436 30378 30437 9
+68 1 6800 P
+E
+death mountain map parchment~
+Level 9 - Death Mountain
+E = entrance, M = map, C = compass, I = item vault, B = boss, T = Triforce
+
+E -> north through the circular loop -> Hidden Room -> climb stairs
+Next Floor -> east Intersection; south then south reaches M
+East branch -> dark halls -> Hidden Hallway; south then south reaches C
+Hidden Hallway -> north three times reaches I: Red Ring Vault
+Next Floor -> south Main Hall -> west Wet Room -> north Twist -> west Narrow Hall
+Narrow Hall -> south, west, then south through the long halls to Lower Junction
+Lower Junction -> south Intersection -> east Stone Room -> east Junction
+Junction -> south Oily Room -> east, climb stairs -> north I: Silver Arrow Vault
+Junction -> north Dead End -> up Golden Hall -> north Lanmola -> north Antechamber
+Antechamber -> north B -> north T
+~
+
+#30489
+eagle dungeon compass~
+the Eagle dungeon compass~
+The Eagle's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30353 30339 30354 1
+11 1 1100 P
+
+#30490
+moon dungeon compass~
+the Moon dungeon compass~
+The Moon's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30376 30355 30377 2
+21 1 2100 P
+
+#30491
+manji dungeon compass~
+the Manji dungeon compass~
+The Manji's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30613 30600 30614 3
+31 1 3100 P
+
+#30492
+snake dungeon compass~
+the Snake dungeon compass~
+The Snake's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30633 30620 30634 4
+41 1 4100 P
+
+#30493
+lizard dungeon compass~
+the Lizard dungeon compass~
+The Lizard's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30653 30640 30654 5
+51 1 5100 P
+
+#30494
+dragon dungeon compass~
+the Dragon dungeon compass~
+The Dragon's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30673 30660 30674 6
+56 1 5600 P
+
+#30495
+demon dungeon compass~
+the Demon dungeon compass~
+The Demon's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30693 30680 30694 7
+61 1 6100 P
+
+#30496
+lion dungeon compass~
+the Lion dungeon compass~
+The Lion's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30713 30700 30714 8
+65 1 6500 P
+
+#30497
+death mountain dungeon compass~
+the Death Mountain dungeon compass~
+Death Mountain's golden compass waits to guide an adventurer.~
+gold~
+28 G AO
+91 30436 30378 30437 9
+68 1 6800 P
+#0
+
+
+
+#ROOMS
+#30200
+Entrance to Hyrule~
+You find yourself standing at the Entrance to the land known as Hyrule.
+To all sides, you are surrounded by large rocks.  Each has a small path cut
+in them, just big enough for you to squeeze thru...  Off to the northwest,
+you eye a small hole in one of the rocks.
+~
+0 C 2
+D0
+~
+~
+0 0 30201
+D1
+~
+~
+0 0 30234
+D3
+~
+~
+0 0 30204
+D7
+~
+~
+0 0 30202
+S
+#30201
+A small rocky path~
+You are standing in a small, rocky field.  The path continues to the east
+and west here...  With a large rock wall blocking the north...
+~
+0 0 2
+D0
+~
+rock~
+4 0 30203
+D1
+~
+~
+0 0 30233
+D2
+~
+~
+0 0 30200
+D3
+~
+~
+0 0 30206
+S
+#30202
+A small cave~
+This small cave is lit only by two large candles in the center of the
+room.  There is a small plaque on the wall.
+~
+0 ACDN 0
+E
+plaque~
+It is dangerous to go alone...  Take this.
+~
+D4
+~
+brenda~
+4 0 30469
+D8
+~
+~
+0 0 30200
+S
+#30203
+A Secret to Everybody~
+You seem to have stumbled into a small, dark cave.  On the wall is
+written: "It's a secret to everybody."
+~
+0 ACDJ 0
+D2
+~
+~
+4 0 30201
+S
+#30204
+A small rocky path~
+You are standing in a small rocky path.  To the north and east, there are
+small paths cut in the rocks.  To the west, you hear the sound of rushing
+water.
+~
+0 0 2
+D0
+~
+~
+0 0 30206
+D1
+~
+~
+0 0 30200
+D3
+~
+~
+0 0 30205
+D5
+~
+burned hollow~
+4 0 30510
+S
+#30205
+Before a large river~
+You are standing before a large river.  The river looks much to wide to
+cross.  As you glance around, you sense some movement under the water.  Oh
+boy...  You seem to have stumbled upon the home of some rather angry Zoras.
+~
+0 0 2
+D1
+~
+~
+0 0 30204
+S
+#30206
+A small rocky path~
+The small rocky path continues.  To the north, there is a small hole cut
+in the side of the rocky wall.  To the west, you hear the sound of rushing
+water.
+~
+0 0 2
+D0
+~
+~
+0 0 30207
+D1
+~
+~
+0 0 30201
+D2
+~
+~
+0 0 30204
+D3
+~
+~
+0 0 30208
+S
+#30207
+A small cave~
+You are standing inside a small, dark cave.  As you enter the room, a
+large moblin eyes you uneaisly...
+~
+0 ACK 0
+D2
+~
+~
+0 0 30206
+S
+#30208
+Before a large river~
+You are standing before a large river.  There are huge boulders
+everywhere, making travel rather difficult.  To the west, a small, poorly
+made bridge forms your only path to cross the river.
+~
+0 0 2
+D0
+~
+~
+0 0 30218
+D1
+~
+~
+0 0 30206
+D3
+~
+~
+0 0 30209
+S
+#30209
+On a small wooden bridge~
+This small bridge shakes back and forth in the wind.  The small bridge
+seems to hold up quite well under your weight, and you feel quite confident
+at it's strength despite it's apperance.
+~
+0 C 2
+D1
+~
+~
+0 0 30208
+D3
+~
+~
+0 0 30210
+S
+#30210
+Before a large river~
+You are standing before a large river.  To the north, you see another
+hole cut into the rocky wall.  To the east, a small, poorly made bridge
+forms your only path across the large river.
+~
+0 0 2
+D0
+~
+~
+0 0 30211
+D1
+~
+~
+0 0 30209
+D3
+~
+~
+0 0 30213
+D6
+~
+~
+0 0 30212
+S
+#30211
+A Potion Shop~
+You are standing inside a small, dark cave.  Before you an old lady sits,
+mixing some potions.
+~
+0 ACDK 0
+D2
+~
+~
+0 0 30210
+S
+#30212
+The mouth of the river.~
+You are standing at the point where the large river empties into Lake
+Zora.  The water is just swimming with life under the surface.  Hope the
+Zoras' don't catch a glimpse of you...  They don't take too kindly to
+intruders.
+~
+0 0 2
+D3
+~
+~
+0 0 30251
+D9
+~
+~
+0 0 30210
+S
+#30213
+The Entrance to the Dead Forest~
+The large trees around you seem to be totally void of all leaves.
+The path continues west into the forest.
+~
+0 0 3
+D0
+~
+~
+0 0 30214
+D1
+~
+~
+0 0 30210
+D2
+~
+~
+0 0 30216
+S
+#30214
+A path outside the Dead Forest~
+The path along the forest continues along.  To the west, there is a small
+path cut in the trees.  To the north, you see an amazing entrance cut in the
+trees, laced with all types of colorful flowers and vines.  Wonder what's in
+there...
+~
+0 0 3
+D0
+~
+~
+0 0 30215
+D1
+~
+~
+0 0 30251
+D2
+~
+~
+0 0 30213
+D3
+~
+~
+0 0 30235
+S
+#30215
+A Faerie Fountain~
+You enter an amazing room with the trees cut in a perfect circle around a
+large fountain in the center.  All around are small faeries, who immediately
+fly right up to you and circle you, giggling.
+~
+0 CDTU 0
+D2
+~
+~
+0 0 30214
+S
+#30216
+A path outside the Dead Forest~
+The path along the trees continues.  There is a small path cut in the
+trees to the west, but the path looks quite untravelled...  To the east,
+there is a large rock wall, with a path carved into it.
+~
+0 0 3
+D0
+~
+~
+0 0 30213
+D1
+~
+~
+0 0 30217
+D3
+~
+~
+0 0 30237
+S
+#30217
+The former Entrance to a Dungeon~
+This large clearing is surrounded by rock walls on all sides except for
+the path cut leading west.  There is a large statue here, with a wide open
+mouth.  It appears to have been the entrance to a dungeon some time ago.
+The mouth has crumbled shut, and as far as you can see, there's no way to
+enter.
+~
+0 AC 2
+D3
+~
+~
+0 0 30216
+D5
+~
+second shard seal~
+5 30401 30600
+S
+#30218
+Before Lake Zora~
+You are standing at the point where the river flows into Lake Zora.  The
+water seems to be full of motion under the surface.  The Zoras' don't think
+too kindly of intruders...  I'd watch my step.
+~
+0 0 2
+D1
+~
+~
+0 0 30219
+D2
+~
+~
+0 0 30208
+S
+#30219
+A path along Lake Zora~
+This path leads along the shoreline of Lake Zora, into a large forest
+full of large, healthy trees.  Off to the north, the shoreline path
+continues.
+~
+0 0 2
+D0
+~
+~
+0 0 30221
+D1
+~
+~
+0 0 30220
+D3
+~
+~
+0 0 30218
+S
+#30220
+The Entrance to the Forest~
+A path is cut in the tall trees that surround you.  The path continues to
+the east.
+~
+0 0 3
+D1
+~
+~
+0 0 30230
+D3
+~
+~
+0 0 30219
+S
+#30221
+A path along Lake Zora~
+The path along Lake Zora continues.  There are several Zoras around
+you...  And they notice you now, and they don't seem pleased.  The path
+continues to the east.
+~
+0 0 4
+D1
+~
+~
+0 0 30222
+D2
+~
+~
+0 0 30219
+S
+#30222
+A path along Lake Zora~
+The path continues east and west along the shoreline of Lake Zora.  There
+are still Zoras everywhere in the water...  Glaring at you.  You have a
+feeling they don't enjoy your presence.
+~
+0 0 4
+D1
+~
+~
+0 0 30223
+D3
+~
+~
+0 0 30221
+S
+#30223
+A path along Lake Zora~
+The path continues east and west along the shoreline of Lake Zora.  You
+are approaching the edge of the lake, and start to see more and more trees
+before you.  To the south, you see a dense forest forming, but no path is
+visable through the dense trees.
+~
+0 0 4
+D1
+~
+~
+0 0 30224
+D3
+~
+~
+0 0 30222
+S
+#30224
+A fork in the road~
+The path along the lake leads off to the north, and this path into the
+forest leads to the south.  Better make a decision before the Zoras get more
+angered your presence.
+~
+0 0 4
+D0
+~
+~
+0 0 30225
+D2
+~
+~
+0 0 30232
+D3
+~
+~
+0 0 30223
+S
+#30225
+A path along Lake Hyrule~
+The path along the lake continues northward.  The Zoras have disappeared
+from the water around this point.  To the west, you see a long wooden bridge
+leading to an island in Lake Hyrule.  Looks interesting...
+~
+0 0 4
+D0
+~
+~
+0 0 30276
+D2
+~
+~
+0 0 30224
+D3
+~
+~
+0 0 30226
+S
+#30226
+The beginning of the bridge~
+As you step on this bridge, you can instantly feel it's strength.  You
+are quite comfortable with walking on it.  It seems to stand solid as a rock
+with each timid step.
+~
+0 C 4
+D1
+~
+~
+0 0 30225
+D3
+~
+~
+0 0 30227
+S
+#30227
+The center of the bridge~
+The bridge begins to sway back and forth a tad as you walk, but it seems
+to be holding up quite well under your weight.  You glance below you and see
+that the lake seems to be quite deep at this point.  Man, you better not
+lose your footing here.
+~
+0 C 4
+D1
+~
+~
+0 0 30226
+D3
+~
+~
+0 0 30228
+S
+#30228
+The end of the bridge~
+The bridge is less shaky here, as you approach the end.  It seems like
+you made it across just fine.  You can already see from here a large statue
+standing on the island to the west.  It towers above you, its mouth wide
+open.
+~
+0 C 4
+D1
+~
+~
+0 0 30227
+D3
+~
+~
+0 0 30229
+S
+#30229
+On a small island~
+You are standing on a small island on Lake Zora.  Before you stands a
+HUGE statue, with its mouth wide open.  It seems to be beckoning you to
+enter...  Wonder if that's such a good idea?
+~
+0 0 4
+E
+statue~
+This statue is HUGE!  Its mouth is wide open...  Looks like a doorway.
+Hmm...
+~
+D1
+~
+~
+0 0 30228
+S
+#30230
+A small path in the forest~
+A small path is cut in the trees leading east and west.  The sky is cut
+off above you from the crisscrossing branches, making the travel quite
+dark.  You have the feeling you are being watched from the trees...
+~
+0 A 3
+D1
+~
+~
+0 0 30231
+D3
+~
+~
+0 0 30220
+S
+#30231
+A small path in the forest~
+A small path is cut in the trees leading east and west.  The sky is cut
+off above you from the crisscrossing branches, making the travel quite
+dark.
+~
+0 A 3
+D1
+~
+~
+0 0 30232
+D3
+~
+~
+0 0 30230
+S
+#30232
+A crossroads in the forest~
+The trees here seem very large, and they sway back and forth in the wind.
+To the north, you see a break in the trees leading back to Lake Zora.  The
+southern path leads deeper into the forest, and the east leads to another
+break in the trees.  You hear the unmistakable sound of water...
+~
+0 0 3
+D0
+~
+~
+0 0 30224
+D1
+~
+~
+0 0 30255
+D2
+~
+~
+0 0 30233
+D3
+~
+~
+0 0 30231
+S
+#30233
+A path in the forest~
+The path in the forest leads north and south from here, and to the east
+you see a break in the trees, leading to what looks like an open plain.  You
+hear the sounds of water.  To the west, there is a large rock wall, with a
+path cut into it.
+~
+0 0 3
+D0
+~
+~
+0 0 30232
+D1
+~
+~
+0 0 30254
+D2
+~
+~
+0 0 30234
+D3
+~
+~
+0 0 30201
+S
+#30234
+A path in the forest~
+You are standing at the edge of the forest.  To the north, there is a
+small path leading into the trees.  The east and west, you see large rock
+walls with paths cut into them.
+~
+0 0 3
+D0
+~
+~
+0 0 30233
+D1
+~
+~
+0 0 30242
+D3
+~
+~
+0 0 30200
+S
+#30235
+In the Dead Forest~
+You walk along a path cut among the lifeless trees surrounding you.  The
+path continues to the south.  There is a large rock wall to the north, with
+a path cut into it.
+~
+0 A 3
+D0
+~
+~
+0 0 30238
+D1
+~
+~
+0 0 30214
+D2
+~
+~
+0 0 30236
+S
+#30236
+In the Dead Forest~
+The path comes to a fork here, leading north, west, and south.  You seem
+to catch a glipse of sunlight to the south...  That path may lead you out.
+To the west, the path darkens, leading deeper into the forest.
+~
+0 A 3
+D0
+~
+~
+0 0 30235
+D2
+~
+~
+0 0 30237
+D3
+~
+~
+0 0 30240
+S
+#30237
+In the Dead Forest~
+The path continues to the north and east.  The north path seems to move
+deeper into the forest, and the east seems to be much brighter...  A break
+in the trees is visable in that direction.  To the west, there seems to be a
+small open area.
+~
+0 A 3
+D0
+~
+~
+0 0 30236
+D1
+~
+~
+0 0 30216
+D3
+~
+~
+0 0 30241
+S
+#30238
+A small pool~
+There is a small fountain here, in the middle of a circle of trees.  It
+seems disturbingly quiet here...
+~
+0 CK 0
+D2
+~
+~
+0 0 30235
+D5
+~
+drained stair~
+4 0 30680
+S
+#30240
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30271
+D1
+~
+~
+0 0 30236
+D2
+~
+~
+0 0 30271
+D3
+~
+~
+0 0 30259
+S
+#30241
+A small clearing~
+You are standing in a small, rocky clearing.  There doesn't seem to be
+much going on here.
+~
+0 0 3
+D1
+~
+~
+0 0 30237
+S
+#30242
+A rocky path~
+This path is very jagged and hard to walk on.  There are several rocks
+around, from small pebbles to large boulders in the way.  The path
+continues...  Painfully...  To the east and west.
+~
+0 0 4
+D1
+~
+~
+0 0 30243
+D3
+~
+~
+0 0 30234
+S
+#30243
+A rocky path~
+The path seems to narrow here, and there are several rocks in your way to
+make your travelling even more difficult.  Luckily, there seems to be a break
+in the path to the east, and you hear the sound of rushing water.
+~
+0 0 4
+D1
+~
+~
+0 0 30244
+D3
+~
+~
+0 0 30242
+S
+#30244
+The Shoreline~
+You are walking along the shoreline of the ocean.  There is a large rock
+wall leading parallel with the shore here, but you can make out a small
+trail cut into the rock to the north.  The path along the shore continues
+east.
+~
+0 0 4
+D0
+~
+~
+0 0 30288
+D1
+~
+~
+0 0 30245
+D3
+~
+~
+0 0 30243
+S
+#30245
+Along the Shoreline~
+The path continues along the shore east and west here.  As you are
+walking, you sense some movement in the sand at your feet.  It looks like
+there's something pretty big underneath there...
+~
+0 0 4
+D1
+~
+~
+0 0 30246
+D3
+~
+~
+0 0 30244
+S
+#30246
+Along the Shoreline~
+The path continues east and west here.  To the north is a large rock
+wall, and to the south is the ocean.  The sandy ground is very loose here,
+making it difficult to walk...
+~
+0 0 4
+D1
+~
+~
+0 0 30247
+D3
+~
+~
+0 0 30245
+S
+#30247
+Along the Shoreline~
+The path along the shoreline continues east and west here.  This sand is
+really loose...  You almost sink down in it as you walk.  It seems these
+Leevers live underground here, and the tunnels they make while burrowing is
+making the sand above them weaker.
+~
+0 0 4
+D1
+~
+~
+0 0 30248
+D3
+~
+~
+0 0 30246
+S
+#30248
+The path narrows~
+The path along the shore seems to narrow here...  The rocky wall to the
+north protrudes down almost to the ocean.  There is just enough path for you
+to squeeze through if you try...  Good thing the tide is low.
+~
+0 0 4
+D1
+~
+~
+0 0 30249
+D3
+~
+~
+0 0 30247
+S
+#30249
+The edge of the Shoreline~
+The path takes an abrupt turn to the north here, continuing along the
+shoreline.
+~
+0 0 4
+D0
+~
+~
+0 0 30250
+D3
+~
+~
+0 0 30248
+S
+#30250
+A Crossroads in the Shoreline~
+The path is split up here.  The path along the shoreline continues north
+and south.  To the west, there is a large path cut into the trees, allowing
+you to enter the forest.  The sand feels mushy here under your feet...
+~
+0 0 4
+D0
+~
+~
+0 0 30298
+D2
+~
+~
+0 0 30249
+D3
+~
+~
+0 0 30291
+S
+#30251
+A path by the Lake~
+The path here leads you westward into the forest, or northward on a small
+path along the shore of the lake.
+~
+0 0 3
+D0
+~
+~
+0 0 30252
+D1
+~
+~
+0 0 30212
+D3
+~
+~
+0 0 30214
+S
+#30252
+A small valley beside Lake Zora~
+The path leads into this small valley surrounded by rocks on the west,
+and Lake Zora to the east.  There are bushes growing everwhere here, and it
+seems rather peaceful.  You see a small path continuing north.
+~
+0 0 2
+D0
+~
+~
+0 0 30253
+D2
+~
+~
+0 0 30251
+S
+#30253
+A small valley beside Lake Zora~
+What an odd sight!  Sitting here in the middle of this field is several
+small statues in the shapes of warriors.  They don't seem to serve much of a
+purpose at all...  Why would they just be sitting here in this field?
+~
+0 C 2
+D2
+~
+~
+0 0 30252
+D5
+~
+~
+4 0 30468
+S
+#30254
+Beside a small pool~
+There is a small pool here in the forest.  The sunlight breaks through
+the trees here, making this part of the forest seem very beautiful.  The
+path continues into a deeper part of the forest east from here.
+~
+0 0 3
+D0
+~
+~
+0 0 30255
+D1
+~
+~
+0 0 30287
+D3
+~
+~
+0 0 30233
+D2
+~
+burned hollow~
+4 0 30511
+S
+#30255
+Beside a small pool~
+There is a small pool here in the forest.  The sunlight breaks through
+the trees here, making this part of the forest seem very beautiful.  The
+path leads east from here, deeper into the forest, and north into a small
+path into a less dense cluster of trees, with what appears to be an opening
+on the other side.
+~
+0 0 3
+D0
+~
+~
+0 0 30256
+D1
+~
+~
+0 0 30285
+D2
+~
+~
+0 0 30254
+D3
+~
+~
+0 0 30232
+S
+#30256
+A cleanly cut path~
+The path forks here, one path leading north into a beautiful entrance
+into a field, the southern path leading to a small break in the trees, and
+the west leading into a path cut into a rock wall...  A path out of the
+forest.
+~
+0 0 3
+D0
+~
+~
+0 0 30257
+D1
+~
+~
+0 0 30258
+D2
+~
+~
+0 0 30255
+S
+#30257
+A Faerie Fountain~
+You enter an amazing room with the trees cut in a perfect circle around a
+large fountain in the center.  All around are small faeries, who immediately
+fly right up to you and circle you, giggling.
+~
+0 CDTU 0
+D2
+~
+~
+0 0 30256
+S
+#30258
+The Entrance to the Forest~
+You are standing in a small, open field surrounded by rock.  To the north
+is the entrance to the Desert.  To the east and west are the entrances to
+the Forest.
+~
+0 0 2
+D0
+~
+~
+0 0 30280
+D1
+~
+~
+0 0 30284
+D3
+~
+~
+0 0 30256
+S
+#30259
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30273
+D1
+~
+~
+0 0 30240
+D2
+~
+~
+0 0 30260
+D3
+~
+~
+0 0 30272
+S
+#30260
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30272
+D1
+~
+~
+0 0 30272
+D2
+~
+~
+0 0 30273
+D3
+~
+~
+0 0 30261
+S
+#30261
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30261
+D1
+~
+~
+0 0 30262
+D2
+~
+~
+0 0 30261
+D3
+~
+~
+0 0 30272
+S
+#30262
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30260
+D1
+~
+~
+0 0 30262
+D2
+~
+~
+0 0 30260
+D3
+~
+~
+0 0 30263
+S
+#30263
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30264
+D1
+~
+~
+0 0 30262
+D2
+~
+~
+0 0 30261
+D3
+~
+~
+0 0 30271
+S
+#30264
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30262
+D1
+~
+~
+0 0 30260
+D2
+~
+~
+0 0 30261
+D3
+~
+~
+0 0 30265
+S
+#30265
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30266
+D1
+~
+~
+0 0 30263
+D2
+~
+~
+0 0 30261
+D3
+~
+~
+0 0 30264
+S
+#30266
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30267
+D1
+~
+~
+0 0 30266
+D2
+~
+~
+0 0 30262
+D3
+~
+~
+0 0 30264
+S
+#30267
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30275
+D1
+~
+~
+0 0 30268
+D2
+~
+~
+0 0 30262
+D3
+~
+~
+0 0 30261
+S
+#30268
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30438
+D1
+~
+~
+0 0 30262
+D2
+~
+~
+0 0 30269
+D3
+~
+~
+0 0 30261
+S
+#30269
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30270
+D1
+~
+~
+0 0 30263
+D2
+~
+~
+0 0 30266
+D3
+~
+~
+0 0 30262
+S
+#30270
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30271
+D1
+~
+~
+0 0 30261
+D2
+~
+~
+0 0 30265
+D3
+~
+~
+0 0 30266
+S
+#30271
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30261
+D1
+~
+~
+0 0 30262
+D2
+~
+~
+0 0 30271
+D3
+~
+~
+0 0 30272
+S
+#30272
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30265
+D1
+~
+~
+0 0 30273
+D2
+~
+~
+0 0 30263
+D3
+~
+~
+0 0 30264
+S
+#30273
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30261
+D1
+~
+~
+0 0 30274
+D2
+~
+~
+0 0 30265
+D3
+~
+~
+0 0 30259
+S
+#30274
+The Dead Forest~
+The path leads in several directions here, and you quickly lose your
+direction sense!  You cannot remember which direction you came from,
+everything looks exactly the same!
+~
+0 ACN 3
+D0
+~
+~
+0 0 30274
+D1
+~
+~
+0 0 30271
+D2
+~
+~
+0 0 30261
+D3
+~
+~
+0 0 30264
+S
+#30275
+The Entrance to the Cemetery~
+You found your way through the maze of trees, and stumble into the
+Entrance of the Cemetery of Hyrule.  To the north, you hear the moans of the
+undead...  Are you sure you really want to go in there?  Maybe you should
+turn around while you still can.
+~
+0 AC 2
+E
+gate~
+These are quite heavy metal gates guarding the entrance to the cemetery.
+~
+D0
+~
+gate~
+1 0 30326
+D2
+~
+~
+0 0 30267
+S
+#30276
+A fork in the path~
+The path forks here, to the west leading along the edge of the Lake Zora
+to what appears to be a small river, and the east into the Desert of Hyrule.
+~
+0 0 4
+D1
+~
+~
+0 0 30277
+D2
+~
+~
+0 0 30225
+D3
+~
+~
+0 0 30305
+S
+#30277
+Hyrule Desert~
+You have stumbled into the Desert of Hyrule.  The sand below your feet is
+very loose, and you almost sink to your knees with every step you take.  The
+heat is really starting to get to you here...
+~
+0 N 10
+D1
+~
+~
+0 0 30278
+D3
+~
+~
+0 0 30276
+S
+#30278
+Hyrule Desert~
+You continue into the Desert of Hyrule.  The sand below your feet is very
+loose, and you almost sink to your knees with every step you take.  The heat
+is really starting to get to you here...
+~
+0 N 10
+D1
+~
+~
+0 0 30279
+D3
+~
+~
+0 0 30277
+S
+#30279
+Hyrule Desert~
+You continue into the Desert of Hyrule.  The sand below your feet is very
+loose, and you almost sink to your knees with every step you take.  The heat
+is really starting to get to you here...  The path continues east and south.
+~
+0 N 10
+D1
+~
+~
+0 0 30282
+D2
+~
+~
+0 0 30280
+D3
+~
+~
+0 0 30278
+S
+#30280
+Hyrule Desert~
+You continue into the Desert of Hyrule.  The sand below your feet is very
+loose, and you almost sink to your knees with every step you take.  The heat
+is really starting to get to you here...  There appears to be a large forest
+to the south...  Better get out of this heat!
+~
+0 N 10
+D0
+~
+~
+0 0 30279
+D1
+~
+~
+0 0 30281
+D2
+~
+~
+0 0 30258
+S
+#30281
+Hyrule Desert~
+You continue into the Desert of Hyrule.  The sand below your feet is very
+loose, and you almost sink to your knees with every step you take.  The heat
+is really starting to get to you here...  There appears to be a large forest
+to the south...  Better get out of this heat!
+~
+0 N 10
+D0
+~
+~
+0 0 30282
+D3
+~
+~
+0 0 30280
+S
+#30282
+Hyrule Desert~
+You continue into the Desert of Hyrule.  The sand below your feet is very
+loose, and you almost sink to your knees with every step you take.  The heat
+is really starting to get to you here...
+~
+0 N 10
+D1
+~
+~
+0 0 30283
+D2
+~
+~
+0 0 30281
+D3
+~
+~
+0 0 30279
+S
+#30283
+A small rocky path~
+This small path is full of rocks, making travelling quite difficult.  To
+the west is the entrance to the Desert of Hyrule.
+~
+0 0 4
+D1
+~
+~
+0 0 30303
+D3
+~
+~
+0 0 30282
+S
+#30284
+A path in the forest~
+The path continues here.  The southern path leads deeper into the forest,
+and the west leads to a path cut into a large rock wall.
+~
+0 0 3
+D2
+~
+~
+0 0 30286
+D3
+~
+~
+0 0 30258
+S
+#30285
+A dense path in the forest~
+You are standing in a rather dense part of the forest.  There appears to
+be a break in the trees to the west, and there is some sunlight breaking
+through in that direction.  You hear the sounds of rushing water.
+~
+0 A 3
+D1
+~
+~
+0 0 30286
+D2
+~
+~
+0 0 30287
+D3
+~
+~
+0 0 30255
+S
+#30286
+A dense path in the forest~
+You are standing in a rather dense part of the forest.  The dense forest
+path continues south.  To the north, there seems to be a less dense part of
+the forest.
+~
+0 A 3
+D0
+~
+~
+0 0 30284
+D1
+~
+~
+0 0 30292
+D2
+~
+~
+0 0 30288
+D3
+~
+~
+0 0 30285
+S
+#30287
+A dense path in the forest~
+You are standing in a rather dense part of the forest.  There appears to
+be a break in the trees to the west, and there is some sunlight breaking
+through in that direction.  You hear the sounds of rushing water.
+~
+0 A 3
+D0
+~
+~
+0 0 30285
+D1
+~
+~
+0 0 30288
+D3
+~
+~
+0 0 30254
+S
+#30288
+A dense path in the forest~
+You are standing in a rather dense part of the forest.  The dense forest
+path continues east and west.  To the south, there is a path cut into a
+large rock wall.
+~
+0 A 3
+D0
+~
+~
+0 0 30286
+D1
+~
+~
+0 0 30289
+D2
+~
+~
+0 0 30244
+D3
+~
+~
+0 0 30287
+S
+#30289
+Inside the Forest~
+The path continues deeper into the forest here. The trees block out
+nearly all the sunlight at this point, making travel very difficult.
+The path continues east and west from here.
+~
+0 A 3
+D1
+~
+~
+0 0 30290
+D3
+~
+~
+0 0 30288
+S
+#30290
+Inside the Forest~
+The path continues deeper into the forest here. The trees block out
+nearly all the sunlight at this point, making travel very difficult.
+The path branches off to the north here.
+~
+0 A 3
+D0
+~
+~
+0 0 30293
+D1
+~
+~
+0 0 30291
+D3
+~
+~
+0 0 30289
+S
+#30291
+Inside the Forest~
+The path continues east and west here, with a branching off to the
+north.  To the east, you see a break in the trees, and hear the
+unmistakeable sound of water.
+~
+0 A 3
+D0
+~
+~
+0 0 30294
+D1
+~
+~
+0 0 30250
+D3
+~
+~
+0 0 30290
+S
+#30292
+Inside the Forest~
+The path continues deeper into the forest here. The trees block out
+nearly all the sunlight at this point, making travel very difficult.
+The path leads east and west.
+~
+0 A 3
+D1
+~
+~
+0 0 30293
+D3
+~
+~
+0 0 30286
+S
+#30293
+Inside the Forest~
+The path continues deeper into the forest here. The trees block out
+nearly all the sunlight at this point, making travel very difficult.
+The path branches off to the south here.
+~
+0 A 3
+D1
+~
+~
+0 0 30294
+D2
+~
+~
+0 0 30290
+D3
+~
+~
+0 0 30292
+S
+#30294
+Inside the Forest~
+You have reached a crossroads in the forest.  To the north, there is a
+large break in the trees.  The path south continues deeper into the
+forest...  To the east is a path cut into the trees, leading into what
+appears to be an empty field.
+~
+0 A 3
+D0
+~
+~
+0 0 30296
+D1
+~
+~
+0 0 30295
+D2
+~
+~
+0 0 30291
+D3
+~
+~
+0 0 30293
+S
+#30295
+A small clearing~
+You are standing in a small clearing in the forest.
+~
+0 0 2
+D3
+~
+~
+0 0 30294
+D0
+~
+burned entrance~
+4 0 30700
+S
+#30296
+A break in the trees~
+The trees above you part here, letting sunshine in to the forest floor.
+The path splits several directions here, south leading deep into the forest,
+north leading out of the forest.  The eastern exit leads into a large circle
+of trees...  How intresting...
+~
+0 0 3
+D0
+~
+~
+0 0 30303
+D1
+~
+~
+0 0 30297
+D2
+~
+~
+0 0 30294
+S
+#30297
+A large circle of trees~
+You are standing in a large circle of trees in the forest.  Before you
+stands a HUGE statue, with its mouth wide open.  It seems to be beckoning
+you to enter...  Wonder if that's such a good idea?
+~
+0 0 4
+D3
+~
+~
+0 0 30296
+S
+#30298
+Along the shoreline~
+The path along the shoreline continues north and south here.  The tide
+looks particularly high here...  Better be careful...  Wouldn't want to get
+swept out to sea.
+~
+0 0 4
+D0
+~
+~
+0 0 30299
+D2
+~
+~
+0 0 30250
+S
+#30299
+Along the shoreline~
+The path along the shoreline continues north and south here.  To the
+west, there is a rather large rock cliff...  Much to steep to scale.  The
+sand below your feet is quite loose, and it makes travelling a rather
+difficult task.
+~
+0 0 4
+D0
+~
+~
+0 0 30300
+D2
+~
+~
+0 0 30298
+S
+#30300
+A curve in the path~
+The shoreline takes a rather abrupt turn to the west here.
+~
+0 0 4
+D2
+~
+~
+0 0 30299
+D3
+~
+~
+0 0 30301
+S
+#30301
+A curve in the path~
+The path continues along to the north here.
+~
+0 0 4
+D0
+~
+~
+0 0 30302
+D1
+~
+~
+0 0 30300
+S
+#30302
+A curve in the path~
+The path takes a curve away from the ocean to the west here.  The sand
+below your feet feels more and more study here as it changes to solid
+ground.
+~
+0 0 4
+D2
+~
+~
+0 0 30301
+D3
+~
+~
+0 0 30303
+S
+#30303
+A Crossroads~
+There is several paths here to choose from.  To the west, the entrance to
+the desert...  To the south, an entrance to a forest...  To the east, a path
+along the shoreline...  And to the north, a path leading into the mountains.
+~
+0 0 4
+D0
+~
+~
+0 0 30304
+D1
+~
+~
+0 0 30302
+D2
+~
+~
+0 0 30296
+D3
+~
+~
+0 0 30283
+S
+#30304
+A pathway in the hills~
+You are standing in a path in the foothills of Death Mountain.  The path
+turns south here, leading out of the foothills...
+~
+0 0 4
+D2
+~
+~
+0 0 30303
+D3
+~
+~
+0 0 30312
+S
+#30305
+A path along the river~
+The path takes a turn north here, following a small river flowing into
+Lake Zora.
+~
+0 0 4
+D0
+~
+~
+0 0 30306
+D1
+~
+~
+0 0 30276
+S
+#30306
+A path along the river~
+The path along the river curves to the east, with cliffs rising up to the
+south...  You see a path to the west, but the river seems uncrossable at
+this point.
+~
+0 0 4
+D1
+~
+~
+0 0 30307
+D2
+~
+~
+0 0 30305
+S
+#30307
+A path along the river~
+The path continues east and west, here.  The sound of rushing water is
+very noticable to the east...
+~
+0 0 4
+D1
+~
+~
+0 0 30308
+D3
+~
+~
+0 0 30306
+S
+#30308
+A path along the river~
+The path continues east and west, here.  The sound of rushing water is
+now very loud to the east...
+~
+0 0 4
+D1
+~
+~
+0 0 30309
+D3
+~
+~
+0 0 30307
+S
+#30309
+Before a waterfall~
+The river seems to be originating from a waterfall falling from the
+mountains north of here.  The sound of water is almost ear-splitting here...
+The path continues to the east here, leading into a path in the foothills of
+Death Mountain.
+~
+0 0 4
+D0
+~
+waterfall~
+4 0 30310
+D1
+~
+~
+0 0 30311
+D3
+~
+~
+0 0 30308
+S
+#30310
+Inside the Waterfall~
+You are standing inside the waterfall.
+~
+0 ADK 0
+D2
+~
+waterfall~
+4 0 30309
+S
+#30311
+A path in the foothills~
+You are walking along a small path in the foothills of Death Mountain.
+The path leads east and west here, and you hear the sound of rushing water
+to the west...
+~
+0 0 4
+D1
+~
+~
+0 0 30312
+D3
+~
+~
+0 0 30309
+S
+#30312
+A crossroads in the foothills~
+You are standing in a crossroads in the foothills of Death Mountain.  The
+path to the north seems to lead further up into the mountain...  East and
+west continues along the foothills.
+~
+0 0 4
+D0
+~
+~
+0 0 30313
+D1
+~
+~
+0 0 30304
+D3
+~
+~
+0 0 30311
+S
+#30313
+The Entrance to Death Mountain~
+You have stumbled upon the entrance to Death Mountain, one of the most
+dangerous places in all of Hyrule.  There is a small, tattered sign here.
+~
+0 AN 4
+E
+sign~
+*-----------------------------------------------------------------*
+|   WARNING!  YOU ARE ABOUT TO ENTER DEATH MOUNTAIN!              |
+|   THE PATHWAYS IN THIS MOUNTAIN ARE NOT GUARANTEED SAFE         |
+|   BY THE KING OF HYRULE, AND TRAVEL IS NOT SUGGESTED            |
+|   HERE WITHOUT A TRAINED GUIDE!                                 |
+|                                                                 |
+|       TURN BACK NOW WHILE YOU STILL CAN!                        |
+|                                                                 |
+|                              - King of Hyrule                   |
+|                                                                 |
+*-----------------------------------------------------------------*
+~
+D0
+~
+~
+0 0 30314
+D2
+~
+~
+0 0 30312
+S
+#30314
+A path in Death Mountain~
+The path here is very rough...  It seems quite untraveled and unsafe.  It
+splits here, leading east and west.
+~
+0 AN 4
+D1
+~
+~
+0 0 30315
+D2
+~
+~
+0 0 30313
+D3
+~
+~
+0 0 30319
+S
+#30315
+A Deadly Path~
+The path narrows here, and the rocks below your feet are very unstable...
+The high winds seem to nearly pick you up off the ground...  You try not to
+look down, but can't help yourself.  The ground seems very far away, with
+several spiked rocks below you...  Better not lose your footing!  Maybe this
+isn't the safest path to walk on...
+~
+0 AN 4
+D1
+~
+~
+0 0 30316
+D3
+~
+~
+0 0 30314
+S
+#30316
+A Deadly Path~
+The path here narrows once again...  And you can now barely squeeze along
+here.  You look down at the ground far below you, and nearly lose your
+footing...  Those rocks below you seem very uninviting.  Maybe you should
+turn back...  This doesn't look like it's going to get much better.  There
+is a small sign here.
+~
+0 AN 4
+E
+sign~
+*-----------------------------------------------------------------*
+|                                                                 |
+|   WARNING!  THE PATH HERE HAS BEEN DEEMED UNSAFE FOR            |
+|   TRAVEL!  PLEASE TURN BACK NOW!                                |
+|                                                                 |
+|                              - King of Hyrule                   |
+|                                                                 |
+*-----------------------------------------------------------------*
+~
+D1
+~
+~
+0 0 30317
+D3
+~
+~
+0 0 30315
+S
+#30317
+A DEAD end~
+Oh boy...  The path ends here, leaving you with nowhere to go.  As you
+enter, the path to the west becomes blocked by falling rocks!  You peer
+below you at the spiked rocks, and wish you'd listened to the warnings you'd
+been given...  Well, it'll all be over soon.
+~
+0 ACFN 4
+30467 3 1
+D0
+~
+crevice~
+4 0 30318
+S
+#30318
+A small crevice~
+*WHEW* You found a small crevice in the cliffside, and you manage to
+crawl inside, and save you from a quite nasty death.  Maybe you'd better be
+a little more careful before you go exploring...
+~
+0 ADJ 0
+D2
+~
+~
+4 0 30316
+S
+#30319
+A path in Death Mountain~
+The rocky path continues here, leading up...  Higher into the mountains.
+~
+0 AN 4
+D1
+~
+~
+0 0 30314
+D4
+~
+~
+0 0 30320
+S
+#30320
+Higher in Death Mountain...~
+The path climbs higher into Death Mountain, here.  The wind really picks
+up, now...  Making it hard to keep your footing on the path.  The rocks
+below your feet are very loose...  You are very high now...  Losing your
+footing would not be good.
+~
+0 AN 4
+D3
+~
+~
+0 0 30321
+D5
+~
+~
+0 0 30319
+S
+#30321
+A path high in Death Mountain~
+This path continues high in Death Mountain.  The ground starts to become
+firmer here.  Looking down, you can see most of Hyrule from this point...
+It looks quite amazing.
+~
+0 AN 4
+D0
+~
+~
+0 0 30322
+D1
+~
+~
+0 0 30320
+D3
+~
+~
+0 0 30324
+S
+#30322
+A path high in Death Mountain~
+The path leads away from the edge of the mountain, here...  The path
+seems to continue up here, to the highest peak in the mountain.
+~
+0 AN 4
+D2
+~
+~
+0 0 30321
+D4
+~
+~
+0 0 30323
+S
+#30323
+Spectacle Rock~
+You have found your way to the highest point in the land of Hyrule...
+The peak of Death Mountain...  Spectacle Rock.  There is a small statue of
+an owl here...  All this way to a dead end?  I hope not...
+~
+0 ACN 4
+E
+owl~
+This Owl seems rather majestic.  It seems as if he's almost watching over
+the entire land of Hyrule from this point.  There seems to be some writing
+on a small plaque on his chest: To the Finder...  The Isle of Koholint is
+but an illusion...  Human, Monster, Sea, Sky...  A scene on the lid of the
+sleeper's eye...  Awake the dreamer, and Koholint will vanish much like a
+bubble on a needle...  Cast-away, you should know the truth!
+~
+D5
+~
+~
+0 0 30322
+D0
+~
+bombed opening~
+4 0 30378
+S
+#30324
+A path high in Death Mountain~
+The path continues here, high in Death Mountain.  The wind seems quite
+strong here, nearly picking you up off your feet.  Maybe you'd better keep
+moving!
+~
+0 AN 4
+D1
+~
+~
+0 0 30321
+D3
+~
+~
+0 0 30325
+S
+#30325
+Before Level 5: The Lizard~
+The high path ends at a lizard-shaped seal cut into the mountain. The fourth Triforce shard unlocks the northern descent into Level 5.
+~
+0 ACN 4
+D0
+~
+fourth shard seal~
+5 30403 30640
+D1
+~
+~
+0 0 30324
+S
+#30326
+The Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several gravestones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D0
+~
+~
+0 0 30327
+D1
+~
+~
+0 0 30331
+D2
+~
+~
+1 0 30275
+S
+#30327
+The Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several gravestones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D0
+~
+~
+0 0 30328
+D1
+~
+~
+0 0 30330
+D2
+~
+~
+0 0 30326
+S
+#30328
+The Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several gravestones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D1
+~
+~
+0 0 30329
+D2
+~
+~
+0 0 30327
+S
+#30329
+The Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several gravestones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D1
+~
+~
+0 0 30334
+D2
+~
+~
+0 0 30330
+D3
+~
+~
+0 0 30328
+S
+#30330
+The Center of the Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several tombstones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D0
+~
+~
+0 0 30329
+D1
+~
+~
+0 0 30333
+D2
+~
+~
+0 0 30331
+D3
+~
+~
+0 0 30327
+D5
+~
+tombstone~
+4 0 30338
+S
+#30331
+The Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several gravestones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D0
+~
+~
+0 0 30330
+D1
+~
+~
+0 0 30332
+D3
+~
+~
+0 0 30326
+S
+#30332
+The Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several gravestones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D0
+~
+~
+0 0 30333
+D3
+~
+~
+0 0 30331
+S
+#30333
+The Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several gravestones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D0
+~
+~
+0 0 30334
+D2
+~
+~
+0 0 30332
+D3
+~
+~
+0 0 30330
+S
+#30334
+The Cemetery~
+You are standing in a small part of the Cemetery of Hyrule.  There are
+several gravestones all around, here...  Each quite weathered and etched
+through time.  The room is filled with the sounds of moans and groans, but
+you cannot figure out just where they are coming from...  Hmm...  Maybe you
+should get out of here.
+~
+0 AN 4
+D1
+~
+~
+1 0 30335
+D2
+~
+~
+0 0 30333
+D3
+~
+~
+0 0 30329
+S
+#30335
+A path outside the cemetery~
+You are walking along a small path leading out of the cemetery.  The path
+continues to the east and west here.  The large metal gates to the west lead
+into the cemetery.
+~
+0 ACN 4
+E
+gate~
+These are quite heavy metal gates guarding the entrance to the cemetery.
+~
+D1
+~
+~
+0 0 30336
+D3
+~
+gates~
+1 0 30334
+S
+#30336
+A path outside the cemetery~
+This small dark path takes a turn north here, to what seems like a much
+brighter clearing...  It seems much more inviting than the cemetery.
+~
+0 AN 4
+D0
+~
+~
+0 0 30337
+D3
+~
+~
+0 0 30335
+S
+#30337
+The former Entrance to a Dungeon~
+There is a large statue here, with a wide open mouth.  It appears to have
+been the entrance to a dungeon some time ago.  The mouth has crumbled shut,
+and as far as you can see, there's no way to enter.
+~
+0 0 2
+D2
+~
+~
+0 0 30336
+D5
+~
+fifth shard seal~
+5 30404 30660
+S
+#30338
+A small hidden room~
+You pushed aside a gravestone, and stumbled upon a small hidden room!
+~
+0 ACDJN 0
+D4
+~
+tombstone~
+4 0 30330
+S
+#30339
+Level 1: The Eagle - Entrance~
+The first labyrinth spreads north from twelve silent stone faces. The western and eastern rooms hold the first keys, while the sealed northern door begins the Eagle proper.
+~
+0 ACD 0
+D0
+~
+~
+5 30227 30342
+D1
+~
+~
+0 0 30341
+D3
+~
+~
+0 0 30340
+S
+#30340
+A small room~
+This room appears to be quite empty...  But as you look above in the
+small, dark corners of the room you see little red eyes glaring at you...
+Oh boy.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30339
+S
+#30341
+A small room~
+This room has two very large platforms rising out of the ground.  The
+room appears to be inhabited by some rather unhappy Stalfos.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30339
+S
+#30342
+A circular room~
+This room has a very large platform rising out of the ground.  The room
+appears to be inhabited by some rather unhappy Stalfos...  There are only
+two obvious exits...  North and south.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30343
+D2
+~
+~
+5 30227 30339
+S
+#30343
+A fork in the path~
+The path forks here, leading off to the east and west.  The large Stalfos
+here seem quite unhappy to see you...  Better make a decison on which way to
+go before they can get to you!
+~
+0 ADN 0
+D1
+~
+~
+0 0 30344
+D2
+~
+~
+0 0 30342
+D3
+~
+~
+0 0 30345
+D0
+~
+bombed shortcut~
+4 0 30352
+S
+#30344
+A Dead End~
+The path ends here, leading only back to the west.  A large one-eyed
+statue stands on the north wall...  As you peer around the room, you notice
+several Keese watching you from the corners of the ceiling...  They don't
+seem to enjoy your presence...  Maybe it would be best if you exited the way
+you came.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30343
+S
+#30345
+Trap!~
+As you enter, the door SLAMS shut behind you!  The only exit to the north
+is locked, and it seems one of the many Keese in this room has the key you
+are looking for...
+~
+0 ADN 0
+D0
+~
+~
+5 30231 30346
+S
+#30346
+An oily room~
+As you enter this room, you are suddenly overcome by the smell of oil.
+You notice some small oily spots on the floor here...  Wait a minute...  Did
+one of them just move?
+~
+0 ADN 0
+D1
+~
+~
+0 0 30347
+D2
+~
+~
+5 30231 30345
+S
+#30347
+An oily room~
+This room smells extremely of oil...  You notice it is covered in small
+oil spots on the ground and walls.  They seem to almost be moving...  Or are
+the fumes just getting to you?
+~
+0 ADN 0
+D0
+~
+~
+0 0 30348
+D1
+~
+~
+0 0 30351
+D3
+~
+~
+0 0 30346
+S
+#30348
+A watery room~
+This room is filled with water, except for a small curving walkway rising
+above the water.  The walkway curves its way to the north...
+~
+0 ADN 0
+D0
+~
+~
+0 0 30349
+D2
+~
+~
+0 0 30347
+S
+#30349
+A watery room~
+This room is filled with water, except for a small curving walkway rising
+above the water.  The walkway continues to the south and west.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30348
+D3
+~
+~
+0 0 30350
+S
+#30350
+Level 1: The Eagle - Bow Cellar~
+A side-view cellar runs beneath the Eagle. Keese flutter above an old equipment chest where the dungeon's bow was hidden.
+~
+0 CDKX 0
+D1
+~
+~
+0 0 30349
+S
+#30351
+Level 1: The Eagle - Goriya Guard~
+Goriyas defend this crossing with returning blades. One central block is worn smooth from being pushed aside to reveal the bow cellar.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30352
+D3
+~
+~
+0 0 30347
+D0
+~
+block stair~
+4 0 30350
+S
+#30352
+A burned room~
+This room is filled by stones rising out of the floor.  They appear to
+almost be platforms of some type, but they become rounded at the top...
+Akward to climb on.  The door to the north seems quite burned and etched...
+You sit quiet for a moment, and you swear you hear a deep growl coming from
+the north...  Maybe you'd better not go in.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30353
+D3
+~
+~
+0 0 30351
+D2
+~
+block stair~
+4 0 30351
+S
+#30353
+Level 1: Aquamentus's Lair~
+The eastern wing of the Eagle opens into a scorched lair. Aquamentus guards the final door with fire and armored scales.
+~
+0 ACDHN 0
+3 25 0 0 0 0 0 10 15
+ D1
+~
+~
+5 30234 30354
+S
+#30354
+Level 1: Triforce Chamber~
+Golden light fills the eastern tip of the Eagle. The first Triforce shard rests here beside a passage back to the island.
+~
+0 BCDKNX 0
+D3
+~
+~
+5 30234 30353
+S
+#30355
+Level 2: The Moon - Entrance~
+The Moon labyrinth curves away in two directions. A seal attuned to the first Triforce shard bars the western route.
+~
+0 ACD 0
+D1
+~
+~
+0 0 30356
+D3
+~
+first shard seal~
+5 30400 30358
+S
+#30356
+A stone room~
+The room here is made totally of stone, with stone blocks rising out of
+the ground here, as well.  The path continues north.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30357
+D3
+~
+~
+0 0 30355
+S
+#30357
+Level 2: Magical Boomerang Vault~
+The dark vault contains the long-ranged Magical Boomerang and equipment suited to the Moon's deeper halls.
+~
+0 ACDN 0
+D2
+~
+~
+0 0 30356
+S
+#30358
+A small room~
+The path takes a turn to the north here.  There are rather large stone
+blocks sticking out of the stone floor of this room.  Standing around are
+several robed beings...  They don't seem very happy to see you.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30359
+D1
+~
+first shard seal~
+5 30400 30355
+S
+#30359
+An oily room~
+As you walk into this room, you almost fall down...  The floor is
+extremely slippery!  There is a very strong smell of oil in this room...
+And as you glance around you notice several rather large puddles of oil on
+the ground.  Wait a minute...  Did that puddle just move?!
+~
+0 ADN 0
+D0
+~
+~
+0 0 30360
+D2
+~
+~
+0 0 30358
+S
+#30360
+A small room~
+As you walk into this small room, you hear several loud squeaks.  As you
+peer around the dark room, you can see several sets of little red eyes
+watching you from the shadows...  Oh boy.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30361
+D2
+~
+~
+0 0 30359
+D1
+~
+bombed shortcut~
+4 0 30363
+S
+#30361
+Trapped room!~
+As you walk into this room, the door to the south immediately SLAMS shut
+behind you!  On all sides of the room, hugging the walls, are some very
+large jagged metal objects, sliding back and forth rapidly.  You'd better
+get out of here quick!
+~
+0 ADN 0
+D0
+~
+~
+0 0 30362
+S
+#30362
+A light-filled room~
+This room is very bright compared to the other rooms of the dungeon.  It
+seems a burden has been taken off your shoulders when you enter here.  The
+path continues to the north.
+~
+0 CDKX 0
+D0
+~
+~
+0 0 30363
+D2
+~
+~
+0 0 30361
+S
+#30363
+A very hot room!~
+As you walk into this room, you are amazed by it's incredible heat!  The
+door to the north is quite etched and burned...  And there is a very
+noticable roaring sound coming from behind it.  There seems to be a small
+crack in the wall to the east.
+~
+0 ADN 0
+E
+crack~
+There is a crack in the eastern wall here...  There seems to be some
+light shining through from the other side.
+~
+D0
+~
+~
+0 0 30364
+D1
+~
+crack~
+4 0 30365
+D2
+~
+~
+0 0 30362
+D3
+~
+bombed shortcut~
+4 0 30360
+S
+#30364
+A fiery room!~
+As you step into this room, the head overwhelms you!  Standing before you
+is a HUGE dragon!  There is a large steel door to the east, which is etched
+from the heat of the room...  It seems to be the only other exit.
+~
+0 ADHN 0
+3 25 0 0 0 0 0 10 15
+ D1
+~
+~
+5 30246 30366
+D2
+~
+~
+0 0 30363
+S
+#30365
+A hidden pathway~
+You opened the crack in the wall, and continue deeper into the dungeon,
+avoiding the Aquamentus!  The path continues to the north, here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30366
+D3
+~
+~
+4 0 30363
+S
+#30366
+A small room~
+This room has a small pathway of water swirling in the floor, here.  It
+seems to just form out of nowhere.  The path leads north and east from here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30367
+D1
+~
+~
+0 0 30368
+D3
+~
+~
+5 30246 30364
+S
+#30367
+A small room~
+This room is rather plain.  There is a small block rising out of the
+ground, here...  Looking around, you see a small crack in the wall to the
+east.
+~
+0 ADN 0
+E
+crack~
+There is a crack in the eastern wall here...  There seems to be some
+light shining through from the other side.
+~
+D1
+~
+crack~
+4 0 30369
+D2
+~
+~
+0 0 30366
+S
+#30368
+A small room~
+This room has a small pathway of water swirling in the floor, here.  It
+seems to just form out of nowhere.  The path leads north and east from here.
+~
+0 0 0
+D0
+~
+~
+0 0 30369
+D1
+~
+~
+0 0 30370
+D3
+~
+~
+0 0 30366
+S
+#30369
+A small room~
+This room is quite plain.
+~
+0 AD 0
+D2
+~
+~
+0 0 30368
+D3
+~
+~
+4 0 30367
+S
+#30370
+A small room~
+This room looks quite plain.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30371
+D3
+~
+~
+0 0 30368
+S
+#30371
+A black room~
+This room is completely black, except for a small, white light emitting
+from nowhere in the center of the room.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30370
+S
+#30372
+Deeper in the Dungeon~
+You find yourself in a small room filled with blocks.  There is an exit
+to the south.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30373
+S
+#30373
+A small, water-filled room~
+This room is filled totally with water.  There must be some barrier
+preventing the water from leaking out the doors to the west and north...
+Odd.
+~
+0 ADN 7
+D0
+~
+~
+0 0 30372
+D3
+~
+~
+0 0 30374
+S
+#30374
+Trapped room!~
+Open north all sides of the room, hugging the walls, are some very large
+jagged metal objects, sliding back and forth rapidly.  You'd better get out
+of here quick.  There is an exit to the north.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30375
+D1
+~
+~
+0 0 30373
+S
+#30375
+A beautiful room~
+As you enter this room, you are amazed at how different it seems from the
+rest of the dungeon.  It is decorated, with beaufiful candles and curtins on
+every wall.  On the floor, there is a large red carpet...  This room is
+really quite beautiful...  And quite out of place.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30376
+D2
+~
+~
+0 0 30374
+S
+#30376
+Level 2: Dodongo's Lair~
+Smoke stains cover every wall of this round chamber. Dodongo bellows from the center, its armored hide nearly immune to ordinary blows.
+~
+0 ADN 9
+D0
+~
+~
+5 30248 30377
+S
+#30377
+Level 2: Triforce Chamber~
+Silver moonlight falls across the second Triforce shard and a returning portal.
+~
+0 BCDKNX 0
+D2
+~
+~
+5 30248 30376
+S
+#30378
+Level 9: Death Mountain - Entrance~
+The final labyrinth yawns beneath Spectacle Rock. The eighth shard answers the northern seal; without the full journey behind you, Death Mountain goes no farther.
+~
+0 ACD 0
+E
+plaque~
+The small bloody plaque reads as follows: WARNING!  DANGER!  CAUTION!
+This contents of this dungeon are unknown.  Please proceed with EXTREME
+caution, and AT YOUR OWN RISK!
+~
+D0
+~
+eighth shard seal~
+5 30407 30379
+D2
+~
+bombed opening~
+4 0 30323
+S
+#30379
+A circular room~
+The walls of this room are made of a red stone, and is totally circular,
+with exits on the north, west, and south walls.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30380
+D2
+~
+~
+1 0 30378
+D3
+~
+~
+0 0 30386
+S
+#30380
+A circular room~
+The walls of this room are made of a red stone, and is totally circular.
+The exits continue north and south here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30381
+D2
+~
+~
+0 0 30379
+S
+#30381
+A circular room~
+The walls of this room are made of a red stone, and is totally circular.
+The exits continue west and south here.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30380
+D3
+~
+~
+0 0 30382
+S
+#30382
+A circular room~
+The walls of this room are made of a red stone, and is totally circular.
+The exits continue east and west here.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30381
+D3
+~
+~
+0 0 30383
+S
+#30383
+A circular room~
+The walls of this room are made of a red stone, and is totally circular.
+The exits continue east and south here.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30382
+D2
+~
+~
+0 0 30384
+S
+#30384
+A circular room~
+The walls of this room are made of a red stone, but it seems a little
+less perfect in shape then the rest of the surrounding rooms.  The east wall
+seems to be a bit faded in color...  The exits continue north and south
+here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30383
+D1
+~
+wall~
+4 0 30387
+D2
+~
+~
+0 0 30385
+S
+#30385
+A circular room~
+The walls of this room are made of a red stone, and is totally circular.
+The exits continue north and east here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30384
+D1
+~
+~
+0 0 30386
+S
+#30386
+A circular room~
+The walls of this room are made of a red stone, and is totally circular.
+The exits continue east and west here.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30379
+D3
+~
+~
+0 0 30385
+S
+#30387
+A hidden room~
+The wall seemed to open quite eaisly, and you enter this small, hidden
+room.  This room is quite plain, except for a small set of stairs just
+waiting to be climbed.
+~
+0 ADN 0
+D3
+~
+~
+4 0 30384
+S
+#30388
+The next floor~
+You have climbed the stairs, and continued deeper into the dungeon.  It
+seems that this room is quite a bit darker then the rooms before...  But you
+can make out exits to the east and south.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30389
+D2
+~
+~
+0 0 30401
+S
+#30389
+An Intersection~
+You have come to an intersection of several hallways.  There are large
+rugs covering the floor here, and the walls are painted in a swirl of
+multicolored patterns.  The path continues to the east, west, and south
+here.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30390
+D2
+~
+~
+0 0 30399
+D3
+~
+~
+0 0 30388
+S
+#30390
+A darkened hallway~
+This hallway is quite dark, and branches off in several directions.  The
+floor here is lined with large red rugs, which seem to give a bit with each
+step.  The walls are painted in a swirl of colors, and is quite beautiful.
+The exits lead south and west here.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30391
+D3
+~
+~
+0 0 30389
+S
+#30391
+A darkened hallway~
+This hallway is quite dark, and branches off in several directions.  The
+floor here is lined with large red rugs, which seem to give a bit with each
+step.  The walls are painted in a swirl of colors, and is quite beautiful.
+The hallway branches north, south, and west.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30390
+D2
+~
+~
+0 0 30392
+D3
+~
+~
+0 0 30399
+S
+#30392
+A darkened hallway~
+The hallway comes to a end here.  The walls around you are lined with
+paintings of strange places.
+~
+0 ADN 0
+E
+painting~
+There is a small painting of an island with a large spotted egg sitting
+on top of a mountain peak...  How odd.
+~
+D0
+~
+~
+0 0 30391
+D1
+~
+windfish~
+4 0 30393
+S
+#30393
+A hidden hallway~
+You have stumbled into a hidden hallway in the dungeon.  The floor here
+is lined with a plush red carpet that sinks with each step.  The walls are
+painted a beautiful swirl of colors.  The hallway continues north and south.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30394
+D2
+~
+~
+0 0 30397
+D3
+~
+windfish~
+4 0 30392
+S
+#30394
+A hidden hallway~
+You have stumbled into a hidden hallway in the dungeon.  The floor here
+is lined with a plush red carpet that sinks with each step.  The walls are
+painted a beautiful swirl of colors.  The hallway continues north and south.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30395
+D2
+~
+~
+0 0 30393
+S
+#30395
+A hidden hallway~
+You have stumbled into a hidden hallway in the dungeon.  The floor here
+is lined with a plush red carpet that sinks with each step.  The walls are
+painted a beautiful swirl of colors.  The hallway ends here...  There is a
+small plaque on the wall, with the symbol of the Triforce on it.
+~
+0 ADN 0
+E
+plaque~
+.
+                             * THE TRIFORCE *
+                             ----------------
+
+The greatest and most magical artifact in Hyrule's history
+was the Triforce.  The Triforce is shaped like three triangles and are
+connected into the shape of a bigger triangle.  The same three gods who
+created Hyrule created the Triforce.
+
+Not wishing to leave Hyrule without some kind of mystic protection, the gods
+created a parallel world known as the Golden Land, and there the gods hid the
+Triforce, the great artifact granted any and all wishes of anyone's.  There was
+a flaw in the design of the Triforce however- it could not judge good wishes
+from bad.  The Hylians, being greedy and vain as most mortals tend to be,
+desperately searched for the Power of Gold, but most never returned or came
+back empty-handed.
+
+Finally Ganondorf Dragmire, King of Thieves, found the Triforce.  He wished
+to rule the world, but the Triforce knew of only one world- the Golden Land.
+So, Ganon (which Ganondorf came to be known) twisted the Golden Land into
+the Dark World, a place of pure evil.  When Ganon started to try to take
+over Hyrule, it was harder than he expected.  Soon a young lad, Link,
+arrived and defeated the Prince of Darkness and claimed the Triforce.  He
+brought the Triforce to Hyrule and restored her to her former glory, and the
+Dark World disappeared without the artifact.
+
+Over the years, it was decided to split the Triforce into three separate
+triangles- the Triforce of Wisdom, the Triforce of Power, and the Triforce
+of Courage (they were named after the gods who created them).  His was most
+likely done to distribute the power so no one held supreme power.  The Triforce pieces'
+names described their attributes- Wisdom gave the holder supreme power of
+attributes.  Power gave the holder the power to do much more damage then normally
+possible.  Courage gave the holder the power to withstand fights much longer then
+usually possible.  When combined, the Triforce has all the separate powers in one,
+along with new powers of its own.  Nevertheless, the Triforces did have
+their drawbacks- if misused they would bring many evils.  So, if Power were
+used without the Wisdom to control it the user would be corrupt and slowly
+turn satanic.  This transformation is called "The Price of Power".
+
+It is said that only the holder of the complete Triforce can gain access to the
+Temple of Time and attain the most powerful weapon in Hyrule, the Master
+Sword.
+
+
+- There are some small symbols carved in the plaque by hand...  VII...
+III...  IX.
+~
+D0
+~
+ocarina~
+4 0 30396
+D2
+~
+~
+0 0 30394
+S
+#30396
+Level 9: Red Ring Vault~
+A secret chamber in Death Mountain protects the Red Ring and armor made for the last ascent.
+~
+0 DNX 0
+D2
+~
+ocarina~
+4 0 30395
+S
+#30397
+A hidden hallway~
+You have stumbled into a hidden hallway in the dungeon.  The floor here
+is lined with a plush red carpet that sinks with each step.  The walls are
+painted a beautiful swirl of colors.  The hallway continues north and south.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30393
+D2
+~
+~
+0 0 30398
+S
+#30398
+A hidden hallway~
+You have stumbled into a hidden hallway in the dungeon.  The floor here
+is lined with a plush red carpet that sinks with each step.  The walls are
+painted a beautiful swirl of colors.  The hallway comes to an end here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30397
+S
+#30399
+A darkened hallway~
+This hallway is quite dark, and branches off in several directions.  The
+floor here is lined with large red rugs, which seem to give a bit with each
+step.  The walls are painted in a swirl of colors, and is quite beautiful.
+The hallway branches north, south, and east.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30389
+D1
+~
+~
+0 0 30391
+D2
+~
+~
+0 0 30400
+S
+#30400
+A darkened hallway~
+This hallway is quite dark, and branches off in several directions.  The
+floor here is lined with large red rugs, which seem to give a bit with each
+step.  The walls are painted in a swirl of colors, and is quite beautiful.
+The hallway seems to end here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30399
+S
+#30401
+A small hallway~
+The hallway narrows here as it continues north and south.  There is a
+small painting on the wall here.
+~
+0 ADN 0
+E
+painting~
+This painting is of a beautiful young woman wearing a ruffled dress which
+bears the symbol of the Triforce.  Her ears seem to come to a point at the
+end...  So you deduct she is either Hylian or an Elf.  There seems to be a
+small light emitting from the wall behind the painting.
+~
+D0
+~
+~
+0 0 30388
+D2
+~
+~
+0 0 30402
+D3
+~
+zelda~
+4 0 30403
+S
+#30402
+A small hallway~
+The hallway comes to an end here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30401
+S
+#30403
+A wet room~
+As you step into this room, you're clothes instantly become soaked.
+There seems to be a large source of water above this room leaking water in
+through the cracks in the ceiling like a waterfall.  There are exits to the
+north and south.
+~
+0 ADN 6
+D0
+~
+~
+0 0 30405
+D1
+~
+zelda~
+4 0 30401
+D2
+~
+~
+0 0 30404
+S
+#30404
+A Bright Room~
+This room seems much brigher compared to the other rooms of the dungeon.
+As you walk into the room, it feels as if a burden was almost released from
+your body...
+~
+0 CDKX 0
+D0
+~
+~
+0 0 30403
+S
+#30405
+A twist in the hallway~
+The floor of this hallway is soaking wet...  Water creeps slowly in from
+the south.  The hallway takes a turn to the west here.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30403
+D3
+~
+~
+0 0 30406
+S
+#30406
+A narrow hallway~
+You find yourself standing in a quite narrow hallway, leading north and
+south from here.  On the floor here is the skeleton of a human, with no legs
+attached.  A large blood trail leads north from here...  It looks like he
+dragged himself into this room and died here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30408
+D1
+~
+~
+0 0 30405
+D2
+~
+~
+0 0 30407
+S
+#30407
+The end of a hallway~
+The narrow hallway comes to an end here.  The west wall of this room
+seems to be illuminated from an unseen light source.  The wall glimmers and
+shines in the light...  Odd.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30406
+D3
+~
+wall~
+4 0 30411
+S
+#30408
+A Bloody Room~
+This room is totally covered from wall to wall with blood.  The only exit
+to the west is almost black from the blood that covers it.  Maybe this isn't
+the best pathway to take.  There is some writing on the wall in blood.
+~
+0 ADN 0
+E
+wall~
+YOU MAY NOT TRAVEL ANY FURTHER... YOU WILL DIE!
+~
+D2
+~
+~
+0 0 30406
+D3
+~
+~
+0 0 30409
+S
+#30409
+A Bloody Room~
+Oh boy...  You've ignored the warnings, and stepped into an extremely
+bloody room.  As you enter, the door behind you SLAMS shut, trapping you
+here.  Slowly, the floor below you opens to reveal a deep open pit, full of
+spikes!
+~
+0 ACDF 0
+30467 3 1
+S
+#30410
+A long hallway~
+The hallway continues here, leading north and south.  The walls seem to
+moving themselves...  Shifting and changing before your eyes...
+~
+0 0 0
+D0
+~
+~
+0 0 30411
+D2
+~
+~
+0 0 30413
+S
+#30411
+A long hallway~
+The wall slid open with ease, and you find yourself in a long hallway
+leading north and south.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30412
+D1
+~
+~
+4 0 30407
+D2
+~
+~
+0 0 30410
+S
+#30412
+The end of a hallway~
+The hallway ends here, but continues to the south as far as you can see,
+then disappearing into the darkness.  It's quite an eerie site.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30411
+S
+#30413
+A long hallway~
+As you continue down the long hallway, an exit to the west appears in the
+darkness...  The hallway also continues to the north and south.  The hallway
+continues here, leading north and south.  The walls seem to moving
+themselves...  Shifting and changing before your eyes...
+~
+0 ADN 0
+D0
+~
+~
+0 0 30410
+D2
+~
+~
+0 0 30414
+S
+#30414
+An Intersection~
+As you continue down the long hallway, an exit to the west appears in the
+darkness...  The hallway also continues to the north and south.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30413
+D2
+~
+~
+0 0 30418
+D3
+~
+~
+0 0 30415
+S
+#30415
+A small room~
+You are standing in a small room.  The room is filled with large stone
+blocks, rising out of the stone floor.  All the walls are made of a redish
+stone...  Much like the stone used at the entrance.  It really gives the
+room an eerie feeling.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30416
+D1
+~
+~
+0 0 30414
+S
+#30416
+A small room~
+You are standing in a small room.  The room is filled with large stone
+blocks, rising out of the stone floor.  All the walls are made of a redish
+stone...  Much like the stone used at the entrance.  There is an exit to the
+north, and there seems to be a golden light emitting from the room there...
+~
+0 ADN 0
+D0
+~
+~
+0 0 30417
+D2
+~
+~
+0 0 30415
+S
+#30417
+A Bright Room~
+This room seems much brigher compared to the other rooms of the dungeon.
+As you walk into the room, it feels as if a burden was almost released from
+your body...
+~
+0 CDKX 0
+D2
+~
+~
+0 0 30416
+S
+#30418
+An Intersection~
+As you continue down the long hallway, an exit to the east appears in the
+darkness...  The hallway also continues to the north and south.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30414
+D1
+~
+~
+0 0 30420
+D2
+~
+~
+0 0 30419
+S
+#30419
+The end of a hallway~
+The hallway ends here...  The room seems to shift and change as you
+glance around...  Colors swirling and changing in the blink of an eye.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30418
+S
+#30420
+A Stone Room~
+The room here is totally made of a red stone.  Walls, floor, ceiling...
+It gives the room an evil and eerie feeling.  The path continues east and
+west.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30421
+D3
+~
+~
+0 0 30418
+S
+#30421
+An Intersection~
+You are standing in a dim-lit intersection.  The path continues north and
+south from here.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30424
+D2
+~
+~
+0 0 30422
+D3
+~
+~
+0 0 30420
+S
+#30422
+An oily room~
+As you walk into this room, you smell the very strong odor of oil.  There
+are small puddles of oil all over on the floor...  Wait...  Did that puddle
+just move?!
+~
+0 ADN 0
+D0
+~
+~
+0 0 30421
+D1
+~
+~
+0 0 30423
+S
+#30423
+A circular room~
+This room is built in a perfect circle...  There is a small flight of
+stairs in the center of the room.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30422
+S
+#30424
+A Dead End~
+The path ends here.  Glancing around the room, you spot a small painting
+on the ceiling!  How odd!
+~
+0 ADN 0
+E
+painting~
+This painting seems to show a small boy, dressed all in green and
+wielding the all-mighty Master Sword.  His ears come to a point at the
+end...  Wait a minute...  Could that be...?
+~
+D2
+~
+~
+0 0 30421
+D4
+~
+link~
+4 0 30432
+S
+#30430
+Level 9: Patra's Orbit~
+A ring of lesser eyes circles Patra in a dizzying defensive orbit. Beyond it waits the chest of the Silver Arrow.
+~
+0 ADN 0
+D0
+~
+~
+5 30236 30431
+S
+#30431
+Level 9: Silver Arrow Vault~
+A narrow golden vault protects the Silver Arrow, the weapon needed to end Ganon's darkness.
+~
+0 X 0
+D2
+~
+~
+5 0 30430
+S
+#30432
+A Golden Hallway~
+This entire hallway is basked in a beautiful golden light.  The walls are
+covered in beautiful tapestries, and the floor has a large red carpet
+leading north...  It seems you're on the right track...
+~
+0 DN 0
+D0
+~
+~
+0 0 30433
+D5
+~
+~
+4 0 30424
+S
+#30433
+A Loud Room~
+This room is booming with roars from the north...  There seems to be
+something in there...  It sounds quite large and quite angry...
+~
+0 DN 0
+D0
+~
+~
+0 0 30434
+D2
+~
+~
+0 0 30432
+S
+#30434
+Level 9: Lanmola's Lair~
+The floor erupts in waves as a crimson Lanmola guards the colored key to Ganon's inner halls.
+~
+0 ADNX 0
+D0
+~
+~
+5 30242 30435
+D2
+~
+~
+0 0 30433
+S
+#30435
+An Evil Room~
+This room is covered with all kinds of weird symbols and drawings.  There
+is a door to the north...  Above it is a large symbol of the Triforce...
+Are you ready?
+~
+0 ADN 0
+D0
+~
+~
+0 0 30436
+D2
+~
+~
+5 30242 30434
+S
+#30436
+Level 9: Ganon's Lair~
+Darkness gathers around Ganon and the Staff of Power. Only a hero carrying Death Mountain's relics can hope to reveal and defeat him.
+~
+0 DN 0
+D0
+~
+~
+5 30243 30437
+D2
+~
+~
+0 0 30435
+S
+#30437
+The Golden Room~
+.
+                             /^\
+                            /   \
+                           /     \
+                          <------->
+                         /^\     /^\
+                        /   \   /   \
+                       /     \ /     \
+                      <-------'------->
+
+
+Ganon has fallen, and beyond his locked door waits a beautiful chamber.
+Golden light bathes the room. At its center, the complete Triforce rests
+inside a small chest on a pedestal, and a bright archway offers a path home.
+~
+0 BCDKNX 0
+D2
+~
+~
+5 30243 30436
+S
+#30438
+Before the Temple of Time~
+You've wandered through the Dead Forest, and came across the entrance to
+the Temple of Time.  The Temple is amazingly tall and beautiful...  It's
+bright shining golden color is really amazing in the light.
+~
+0 A 3
+D0
+~
+~
+0 0 30439
+D2
+~
+~
+0 0 30268
+S
+#30439
+The Entrance to the Temple of Time~
+You are standing at the Entrance to the Temple of Time.  There is a small
+plaque on the wall here.
+~
+0 DN 0
+E
+plaque~
+Welcome to the Temple of Time, the resting place of the Master Sword.  Be
+warned...  This Temple is full of Traps and Secrets to prevent the wrong
+hands from attaining the most powerful weapon in Hyrule.  Only the holder of
+the complete Triforce can break the seal around the Master Sword's resting
+place.  Please proceed with caution.
+~
+D0
+~
+~
+0 0 30440
+D2
+~
+~
+0 0 30438
+S
+#30440
+The Temple of Time~
+The room around you is quite amazing.  All the walls are covered with red
+tapestries bearing the symbol of the Triforce.  There is a door on the north
+wall with a large door with the symbol of the Triforce on it.
+~
+0 DN 0
+D0
+~
+~
+1 0 30441
+D2
+~
+~
+0 0 30439
+S
+#30441
+The First Hallway~
+You are standing at the beginning of a long hallway.  Lining the walls on
+both sides are several doors...  Each with a number on the door.  There is a
+plaque on the wall here.
+~
+0 DN 0
+E
+plaque~
+Warning!  You are in the first of three hallways designed to prevent the
+wrong person from attaining the Master Sword.  There is only one correct
+exit in each hallway, and picking the wrong door will be punished in an
+increasing manner for each hallway.  PROCEED AT YOUR OWN RISK!
+~
+D0
+~
+~
+0 0 30442
+D2
+~
+~
+1 0 30440
+S
+#30442
+The First Hallway~
+The hallway continues...  The room to the west is marked with a large "1"...
+The one to the east with a large "2".
+~
+0 DN 0
+D0
+~
+~
+0 0 30443
+D1
+~
+~
+0 0 30447
+D2
+~
+~
+0 0 30441
+D3
+~
+~
+0 0 30447
+S
+#30443
+The First Hallway~
+The hallway continues...  The room to the west is marked with a large "3"...
+The one to the east with a large "4".
+~
+0 DN 0
+D0
+~
+~
+0 0 30444
+D1
+~
+~
+0 0 30447
+D2
+~
+~
+0 0 30442
+D3
+~
+~
+0 0 30447
+S
+#30444
+The First Hallway~
+The hallway continues...  The room to the west is marked with a large "5"...
+The one to the east with a large "6".
+~
+0 DN 0
+D0
+~
+~
+0 0 30445
+D1
+~
+~
+0 0 30447
+D2
+~
+~
+0 0 30443
+D3
+~
+~
+0 0 30447
+S
+#30445
+The First Hallway~
+The hallway continues...  The room to the west is marked with a large "7"...
+The one to the east with a large "8".
+~
+0 DN 0
+D0
+~
+~
+0 0 30446
+D1
+~
+~
+0 0 30447
+D2
+~
+~
+0 0 30444
+D3
+~
+~
+0 0 30448
+S
+#30446
+The First Hallway~
+The hallway continues...  The room to the west is marked with a large "9"...
+The one to the east with a large "10".
+~
+0 DN 0
+D1
+~
+~
+0 0 30447
+D2
+~
+~
+0 0 30445
+D3
+~
+~
+0 0 30447
+S
+#30447
+Awaiting your fate...~
+You stand here...  Awaiting your fate.
+~
+0 CDFN 0
+30438 2 1
+S
+#30448
+Awaiting your fate...~
+You stand here...  Awaiting your fate.
+~
+0 CDFN 0
+30449 2 1
+S
+#30449
+The Second Hallway~
+You are standing at the beginning of a long hallway.  Lining the walls on
+both sides are several doors...  Each with a number on the door.  There is a
+plaque on the wall here.
+~
+0 DN 0
+E
+plaque~
+Warning!  You are in the second of three hallways designed to prevent the
+wrong person from attaining the Master Sword.  There is only one correct
+exit in each hallway, and picking the wrong door will be punished in an
+increasing manner for each hallway.  PROCEED AT YOUR OWN RISK!
+~
+D0
+~
+~
+0 0 30450
+S
+#30450
+The Second Hallway~
+The hallway continues...  The room to the west is marked with a large
+"1"...  The one to the east with a large "2".
+~
+0 DN 0
+D0
+~
+~
+0 0 30451
+D1
+~
+~
+0 0 30455
+D2
+~
+~
+0 0 30449
+D3
+~
+~
+0 0 30455
+S
+#30451
+The Second Hallway~
+The hallway continues...  The room to the west is marked with a large "3"...
+The one to the east with a large "4".
+~
+0 DN 0
+D0
+~
+~
+0 0 30452
+D1
+~
+~
+0 0 30455
+D2
+~
+~
+0 0 30450
+D3
+~
+~
+0 0 30456
+S
+#30452
+The Second Hallway~
+The hallway continues...  The room to the west is marked with a large "5"...
+The one to the east with a large "6".
+~
+0 DN 0
+D0
+~
+~
+0 0 30453
+D1
+~
+~
+0 0 30455
+D2
+~
+~
+0 0 30451
+D3
+~
+~
+0 0 30455
+S
+#30453
+The Second Hallway~
+The hallway continues...  The room to the west is marked with a large "7"...
+The one to the east with a large "8".
+~
+0 DN 0
+D0
+~
+~
+0 0 30454
+D1
+~
+~
+0 0 30455
+D2
+~
+~
+0 0 30452
+D3
+~
+~
+0 0 30455
+S
+#30454
+The Second Hallway~
+The hallway continues...  The room to the west is marked with a large "9"...
+The one to the east with a large "10".
+~
+0 DN 0
+D1
+~
+~
+0 0 30455
+D2
+~
+~
+0 0 30453
+D3
+~
+~
+0 0 30455
+S
+#30455
+Awaiting your fate...~
+You stand here...  Awaiting your fate.
+~
+0 CDFN 0
+30438 2 1
+S
+#30456
+Awaiting your fate...~
+You stand here...  Awaiting your fate.
+~
+0 CDFN 0
+30457 2 1
+S
+#30457
+The Final Hallway~
+You are standing at the beginning of a long hallway.  Lining the walls on
+both sides are several doors...  Each with a number on the door.  There is a
+plaque on the wall here...  It seems to be glowing red.
+~
+0 DN 0
+E
+plaque~
+Warning!  You are in the third and final of three hallways designed to
+prevent the wrong person from attaining the Master Sword.  There is only one
+correct exit in each hallway, and picking the wrong door will be punished in
+an increasing manner for each hallway.  PROCEED AT YOUR OWN RISK!  THE
+DANGER IS REAL HERE!
+~
+D0
+~
+~
+0 0 30458
+S
+#30458
+The Final Hallway~
+The hallway continues...  The room to the west is marked with a large "1"...
+The one to the east with a large "2".
+~
+0 DN 0
+D0
+~
+~
+0 0 30459
+D1
+~
+~
+0 0 30463
+D2
+~
+~
+0 0 30457
+D3
+~
+~
+0 0 30463
+S
+#30459
+The Final Hallway~
+The hallway continues...  The room to the west is marked with a large "3"...
+The one to the east with a large "4".
+~
+0 DN 0
+D0
+~
+~
+0 0 30460
+D1
+~
+~
+0 0 30463
+D2
+~
+~
+0 0 30458
+D3
+~
+~
+0 0 30463
+S
+#30460
+The Final Hallway~
+The hallway continues...  The room to the west is marked with a large "5"...
+The one to the east with a large "6".
+~
+0 DN 0
+D0
+~
+~
+0 0 30461
+D1
+~
+~
+0 0 30463
+D2
+~
+~
+0 0 30459
+D3
+~
+~
+0 0 30463
+S
+#30461
+The Final Hallway~
+The hallway continues...  The room to the west is marked with a large "7"...
+The one to the east with a large "8".
+~
+0 DN 0
+D0
+~
+~
+0 0 30462
+D1
+~
+~
+0 0 30463
+D2
+~
+~
+0 0 30460
+D3
+~
+~
+0 0 30463
+S
+#30462
+The Final Hallway~
+The hallway continues...  The room to the west is marked with a large "9"...
+The one to the east with a large "10".
+~
+0 DN 0
+D1
+~
+~
+0 0 30463
+D2
+~
+~
+0 0 30461
+D3
+~
+~
+0 0 30464
+S
+#30463
+Awaiting your fate...~
+You stand here...  Awaiting your fate.
+~
+0 CDFN 0
+30470 2 1
+S
+#30464
+Awaiting your fate...~
+You stand here...  Awaiting your fate.
+~
+0 CDFN 0
+30465 2 1
+S
+#30465
+Before a great golden light~
+You did it!  The path continues north.
+~
+0 DX 0
+D0
+~
+~
+0 0 30466
+S
+#30466
+A Golden Altar~
+You are standing in the most sacred room in all of Hyrule.  This room is
+lit brightly by sunlight beaming in through the windows in the ceiling...
+Sunlight falls directly on the Master Sword, sealed within a stone
+pedestal in the center of the room. A triangular recess marks the seal.
+~
+0 DNX 0
+E
+stone~
+This is the Master Sword...  The most powerful weapon in the land of
+Hyrule.  Only the bearer of the complete Triforce can break the pedestal's seal.
+~
+D2
+~
+~
+0 0 30465
+S
+#30467
+A Nasty Death~
+.
+                             ud$$$**$$$$$$$bc.
+                          u@**"        4$$$$$$$Nu
+                        J                ""#$$$$$$r
+                       @                       $$$$b
+                     .F                        ^*3$$$
+                    :% 4                         J$$$N
+                    $  :F                       :$$$$$
+                   4F  9                       J$$$$$$$
+                   4$   k             4$$$$bed$$$$$$$$$
+                   $$r  'F            $$$$$$$$$$$$$$$$$r
+                   $$$   b.           $$$$$$$$$$$$$$$$$N
+                   $$$$$k 3eeed$$b    $$$Euec."$$$$$$$$$
+    .@$**N.        $$$$$" $$$$$$F'L $$$$$$$$$$$  $$$$$$$
+    :$$L  'L       $$$$$ 4$$$$$$  * $$$$$$$$$$F  $$$$$$F         edNc
+   @$$$$N  ^k      $$$$$  3$$$$*%   $F4$$$$$$$   $$$$$"        d"  z$N
+   $$$$$$   ^k     '$$$"   #$$$F   .$  $$$$$c.u@$$$          J"  @$$$$r
+   $$$$$$$b   *u    ^$L            $$  $$$$$$$$$$$$u@       $$  d$$$$$$
+    ^$$$$$$.    "NL   "N. z@*     $$$  $$$$$$$$$$$$$P      $P  d$$$$$$$
+       ^"*$$$$b   '*L   9$E      4$$$  d$$$$$$$$$$$"     d*   J$$$$$r
+            ^$$$$u  '$.  $$$L     "#" d$$$$$$".@$$    .@$"  z$$$$*"
+              ^$$$$. ^$N.3$$$       4u$$$$$$$ 4$$$  u$*" z$$$"
+                '*$$$$$$$$ *$b      J$$$$$$$b u$$P $"  d$$P
+                   #$$$$$$ 4$ 3*$"$*$ $"$'c@@$$$$ .u@$$$P
+                     "$$$$  ""F-$ $uNr$$$^&J$$$$F $$$$#
+                       "$$    "$$$bd$.$W$$$$$$$$F $$"
+                         ?k         ?$$$$$$$$$$$F'*
+                          9$$bL     z$$$$$$$$$$$F
+                           $$$$    $$$$$$$$$$$$$
+                            '#$$c  '$$$$$$$$$"
+                             .@"#$$$$$$$$$$$$b
+                           z*      $$$$$$$$$$$$N.
+                         e"      z$$"  #$$$k  '*$$.
+                     .u*      u@$P"      '#$$c   "$$c
+              u@$*"""       d$$"            "$$$u  ^*$$b.
+            :$F           J$P"                ^$$$c   '"$$$$$$bL
+           d$$  ..      @$#                      #$$b         '#$
+           9$$$$$$b   4$$                          ^$$k         '$
+            "$$6""$b u$$                             '$    d$$$$$P
+              '$F $$$$$"                              ^b  ^$$$$b$
+               '$W$$$$"                                'b@$$$$"
+                                                        ^$$$*
+
+~
+0 ACINX 0
+S
+#30468
+Astarte's Haven~
+.
+                                         /:    :\
+                                    __  \\____//
+                                   /{_\_/   `'\____
+                                   \___   (o)  (o  }
+        _____________________________/          :--'   MOOO!
+    ,-,'`@@@@@@@@       @@@@@@         \_    `__\
+   ::(  @@@@@@@@@        @@@             \___(o'o)
+   :: )  @@@@          @@@@@@        ,'@@(  `===='
+   :: : @@@@@:          @@@@         `@@@:
+   :: \  @@@@@:       @@@@@@@)    (  '@@@'
+   :: /\      /`,    @@@@@@@@@\   :@@@@@)
+   ::/  )    {_----------------:  :-`,--:
+  ::'`: :   )                  :  / `: :
+ :::: : :   :                  :  :  : :
+ `'`' / :  :                   :  :  : :
+     )_ \__:      ":"          :_ :  \_\       `,','
+     :__\  \    * `,'*         \  \  :  \   *  8`:'*  *
+         `^'     \ :/           `^'  `-^-'   \v/ :  \/
+
+~
+0 CDNPTU 0
+D4
+~
+~
+4 0 30253
+D5
+~
+~
+0 0 30200
+S
+#30469
+The Enchanted Courtyard~
+You are standing in the most beautiful room in Hyrule.  The colors in
+this room seem to shift and change with the blink of an eye.  As you look
+upward, the night sky is perfectly clear, and it seems as if you can see
+forever up into the stars.  As you are watching, a shooting star flies by,
+and you make a wish...  Knowing it will come true.  You feel so secure and
+safe here...  You never want to leave.  Behind a small bench, there is a
+plaque...  Covered by beautiful roses.  A single rose lies on the ground
+here, glowing brightly.
+~
+0 CDJKTU 0
+E
+plaque~
+$$$'`$$$$$$$$$$$$$'`$$$$$
+$$$$  $$$$$$$$$$$  $$$$$$
+$$$$. `$' \' \$`  $$$$$$$
+$$$$$. !\  i  i .$$$$$$$$
+$$$$$$   `--`--.$$$$$$$$$
+$$$$$$L        `$$$$$^^$$
+$$$$$$$.   .'   ""-   $$$
+$$$$$$$$.  :      .e$$$$$
+$$$$$$$$$   `.$$$$$$$$$$$
+$$$$$$$$    .$$$JB + BF$$
+$$$$$$$     $$$$$$$$$$$$$
+~
+D5
+~
+brenda~
+4 0 30202
+S
+#30470
+Your Fate~
+.
+                       .ed"""" """$$$$be.
+                     -"           ^""**$$$e.
+                   ."                   '$$$c
+                  /                      "4$$b
+                 d  3                     $$$$
+                 $  *                   .$$$$$$
+                .$  ^c           $$$$$e$$$$$$$$.
+                d$L  4.         4$$$$$$$$$$$$$$b
+                $$$$b ^ceeeee.  4$$ECL.F*$$$$$$$
+    e$""=.      $$$$P d$$$$F $ $$$$$$$$$- $$$$$$
+   z$$b. ^c     3$$$F "$$$$b   $"$$$$$$$  $$$$*"      .=""$c
+  4$$$$L   \     $$P"  "$$b   .$ $$$$$...e$$        .=  e$$$.
+  ^*$$$$$c  %..   *c    ..    $$ 3$$$$$$$$$$eF     zP  d$$$$$
+    "**$$$ec   "\   %ce""    $$$  $$$$$$$$$$*    .r" =$$$$P""
+          "*$b.  "c  *$e.    *** d$$$$$"L$$    .d"  e$$***"
+            ^*$$c ^$c $$$      4J$$$$$% $$$ .e*".eeP"
+               "$$$$$$"'$=e....$*$$**$cz$$" "..d$*"
+                 "*$$$  *=%4.$ L L$ P3$$$F $$$P"
+                    "$   "%*ebJLzb$e$$$$$b $P"
+                      %..      4$$$$$$$$$$ "
+                       $$$e   z$$$$$$$$$$%
+                        "*$c  "$$$$$$$P"
+                         ."""*$$$$$$$$bc
+                      .-"    .$***$$$"""*e.
+                   .-"    .e$"     "*$c  ^*b.
+            .-*""""    .e$*"          "*bc  "*$e..
+          .$"        .z*"               ^*$e.   "*****e.
+          $$ee$c   .d"                     "*$.        3.
+          ^*$E")$..$"                         *   .ee==d%
+             $.d$$$*                           *  J$$$e*
+              """""                             "$$$"
+
+~
+0 ACINX 0
+S
+#30500
+The Island of the Snake~
+A waiting raft has carried you to a low island surrounded by deep water. The third Triforce shard opens the stair descending into Level 4.
+~
+0 N 6
+D5
+~
+third shard seal~
+5 30402 30620
+S
+
+#30510
+A Secret to Everybody~
+The burned bush concealed a snug stone hollow. Rupees glitter in a little chest, a reward for testing the Blue Candle on the overworld.
+~
+0 DN 0
+D4
+~
+burned hollow~
+4 0 30204
+S
+
+#30511
+A Hidden Healing Grotto~
+Cool green light and clean water fill the grotto beneath the bush. Restorative supplies wait here for an observant traveler.
+~
+0 DNTU 0
+D0
+~
+burned hollow~
+4 0 30254
+S
+
+#30600
+Level 3 - The Manji: Entrance~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30601
+D3
+~
+~
+0 0 30602
+D4
+~
+second shard seal~
+5 30401 30217
+S
+
+#30601
+Level 3 - The Manji: Zol Hall~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30603
+D1
+~
+~
+0 0 30602
+D2
+~
+~
+0 0 30600
+S
+
+#30602
+Level 3 - The Manji: Western Key Alcove~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30600
+D3
+~
+~
+0 0 30601
+S
+
+#30603
+Level 3 - The Manji: Bubble Crossing~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30604
+D2
+~
+~
+0 0 30601
+S
+
+#30604
+Level 3 - The Manji: Darknut Court~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30605
+D2
+~
+~
+0 0 30603
+D3
+~
+~
+0 0 30609
+S
+
+#30605
+Level 3 - The Manji: Eastern Arm~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30606
+D3
+~
+~
+0 0 30604
+S
+
+#30606
+Level 3 - The Manji: Movable Block Room~
+A single block sits off-center after the Zols fall. Pushing it reveals the northern stair used in the original Manji trick.
+~
+0 ADN 0
+D0
+~
+block stair~
+4 0 30607
+D2
+~
+~
+0 0 30605
+S
+
+#30607
+Level 3 - The Manji: Hidden Stair~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D2
+~
+block stair~
+4 0 30606
+D5
+~
+~
+0 0 30608
+S
+
+#30608
+Level 3 - The Manji: Raft Vault~
+The dungeon raft rests in a low side-view vault with equipment for levels 31 through 38.
+~
+0 ADN 0
+D4
+~
+~
+0 0 30607
+S
+
+#30609
+Level 3 - The Manji: Western Arm~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30610
+D1
+~
+~
+0 0 30604
+S
+
+#30610
+Level 3 - The Manji: Crossing of Blades~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30611
+D2
+~
+~
+0 0 30609
+S
+
+#30611
+Level 3 - The Manji: Upper Turn~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30612
+D3
+~
+~
+0 0 30610
+S
+
+#30612
+Level 3 - The Manji: Boss Antechamber~
+Ancient stonework shapes this chamber of Level 3 - The Manji. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30613
+D2
+~
+~
+0 0 30611
+S
+
+#30613
+Level 3 - The Manji: Manhandla's Heart~
+Manhandla's four snapping heads fill the room while its armored heart guards the boss key.
+~
+0 ADN 0
+D0
+~
+Manhandla key~
+5 30460 30614
+D3
+~
+~
+0 0 30612
+S
+
+#30614
+Level 3 - The Manji: Triforce Chamber~
+The third Triforce shard shines beyond Manhandla beside a portal back to the western woods.
+~
+0 ADN 0
+D2
+~
+Manhandla key~
+5 30460 30613
+S
+
+#30620
+Level 4 - The Snake: Entrance~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30621
+D3
+~
+~
+0 0 30622
+D4
+~
+third shard seal~
+5 30402 30500
+S
+
+#30621
+Level 4 - The Snake: Dark Vire Hall~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30623
+D2
+~
+~
+0 0 30620
+S
+
+#30622
+Level 4 - The Snake: Western Key Room~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30620
+S
+
+#30623
+Level 4 - The Snake: Flooded Junction~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30624
+D1
+~
+~
+0 0 30625
+D2
+~
+~
+0 0 30621
+S
+
+#30624
+Level 4 - The Snake: Stepladder Vault~
+The dungeon's Stepladder lies beside equipment for levels 41 through 48. It is the only safe way across the single-width water gap ahead.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30623
+S
+
+#30625
+Level 4 - The Snake: Like Like Gallery~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30626
+D3
+~
+~
+0 0 30623
+S
+
+#30626
+Level 4 - The Snake: Water Gap~
+Deep water cuts the room in half. Carrying the Stepladder allows the sealed crossing to be unlocked and opened.
+~
+0 ADN 0
+D0
+~
+water gap~
+5 30412 30627
+D3
+~
+~
+0 0 30625
+S
+
+#30627
+Level 4 - The Snake: Upper Coil~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30629
+D2
+~
+water gap~
+5 30412 30626
+D5
+~
+~
+0 0 30628
+S
+
+#30628
+Level 4 - The Snake: Lower Cellar~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D4
+~
+~
+0 0 30627
+S
+
+#30629
+Level 4 - The Snake: Vire Crossing~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30630
+D2
+~
+~
+0 0 30627
+S
+
+#30630
+Level 4 - The Snake: Movable Block Room~
+A groove beneath the left block marks the Snake's hidden-room trick. Push the block to reveal the western map room.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30632
+D2
+~
+~
+0 0 30629
+D3
+~
+block stair~
+4 0 30631
+S
+
+#30631
+Level 4 - The Snake: Hidden Map Room~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+block stair~
+4 0 30630
+S
+
+#30632
+Level 4 - The Snake: Boss Antechamber~
+Ancient stonework shapes this chamber of Level 4 - The Snake. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30633
+D3
+~
+~
+0 0 30630
+S
+
+#30633
+Level 4 - The Snake: Gleeok's Coil~
+Gleeok's heads weave over the chamber, continuing to attack even after they are severed.
+~
+0 ADN 0
+D0
+~
+Gleeok key~
+5 30461 30634
+D2
+~
+~
+0 0 30632
+S
+
+#30634
+Level 4 - The Snake: Triforce Chamber~
+The fourth Triforce shard rests at the end of the Snake beside a portal to the island.
+~
+0 ADN 0
+D2
+~
+Gleeok key~
+5 30461 30633
+S
+
+#30640
+Level 5 - The Lizard: Entrance~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30641
+D2
+~
+fourth shard seal~
+5 30403 30325
+S
+
+#30641
+Level 5 - The Lizard: Gibdo Hall~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30643
+D1
+~
+~
+0 0 30642
+D2
+~
+~
+0 0 30640
+S
+
+#30642
+Level 5 - The Lizard: Old Man's Warning~
+An old inscription reads: DIGDOGGER HATES CERTAIN KIND OF SOUND. The words point toward the dungeon Recorder.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30641
+S
+
+#30643
+Level 5 - The Lizard: Darknut Junction~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30646
+D1
+~
+~
+0 0 30645
+D2
+~
+~
+0 0 30641
+D3
+~
+~
+0 0 30644
+S
+
+#30644
+Level 5 - The Lizard: Cracked Northern Wall~
+The northern wall is visibly cracked. Bombing it reveals the Lizard's hidden rupee chamber.
+~
+0 ADN 0
+D0
+~
+bombed wall~
+4 0 30647
+D1
+~
+~
+0 0 30643
+S
+
+#30645
+Level 5 - The Lizard: Rupee Side Room~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30643
+S
+
+#30646
+Level 5 - The Lizard: Pols Voice Hall~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30649
+D1
+~
+~
+0 0 30648
+D2
+~
+~
+0 0 30643
+S
+
+#30647
+Level 5 - The Lizard: Secret Hundred-Rupee Room~
+A cache of old Hyrule rupees fills the secret room behind the bombed wall.
+~
+0 ADN 0
+D2
+~
+bombed wall~
+4 0 30644
+S
+
+#30648
+Level 5 - The Lizard: Recorder Vault~
+The Recorder hums inside an equipment chest prepared for levels 51 through 53.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30646
+S
+
+#30649
+Level 5 - The Lizard: Upper Spine~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30650
+D2
+~
+~
+0 0 30646
+S
+
+#30650
+Level 5 - The Lizard: Bomb Fork~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30652
+D2
+~
+~
+0 0 30649
+D3
+~
+~
+0 0 30651
+S
+
+#30651
+Level 5 - The Lizard: Map Alcove~
+Ancient stonework shapes this chamber of Level 5 - The Lizard. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30650
+S
+
+#30652
+Level 5 - The Lizard: Resonant Eye Room~
+The walls hum with Digdogger's pulse. The old inscription points north and warns that the Recorder must be played in the creature's presence.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30653
+D3
+~
+~
+0 0 30650
+S
+
+#30653
+Level 5 - The Lizard: Digdogger's Eye~
+The weakened eye of Digdogger guards the final key and equipment for levels 54 and 55.
+~
+0 ADN 0
+D0
+~
+Digdogger key~
+5 30462 30654
+D2
+~
+~
+0 0 30652
+S
+
+#30654
+Level 5 - The Lizard: Triforce Chamber~
+The fifth Triforce shard waits beyond Digdogger beside a portal to Death Mountain's high path.
+~
+0 ADN 0
+D2
+~
+Digdogger key~
+5 30462 30653
+S
+
+#30660
+Level 6 - The Dragon: Entrance~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30661
+D4
+~
+fifth shard seal~
+5 30404 30337
+S
+
+#30661
+Level 6 - The Dragon: Wizzrobe Hall~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30664
+D1
+~
+~
+0 0 30662
+D2
+~
+~
+0 0 30660
+D3
+~
+~
+0 0 30663
+S
+
+#30662
+Level 6 - The Dragon: Aim at the Eye~
+An old man has scratched one surviving warning into the stone: AIM AT THE EYES OF GOHMA.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30661
+S
+
+#30663
+Level 6 - The Dragon: Compass Alcove~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30661
+S
+
+#30664
+Level 6 - The Dragon: Like Like Gallery~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30665
+D2
+~
+~
+0 0 30661
+S
+
+#30665
+Level 6 - The Dragon: False Wall~
+The eastern wall is false and cracked. A bomb opens the hidden Dragon passage.
+~
+0 ADN 0
+D1
+~
+bombed wall~
+4 0 30666
+D2
+~
+~
+0 0 30664
+S
+
+#30666
+Level 6 - The Dragon: Hidden Passage~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30667
+D3
+~
+bombed wall~
+4 0 30665
+S
+
+#30667
+Level 6 - The Dragon: Movable Block Room~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30669
+D3
+~
+~
+0 0 30666
+D5
+~
+~
+0 0 30668
+S
+
+#30668
+Level 6 - The Dragon: Magical Wand Vault~
+The Magical Wand rests with equipment for levels 56 and 57.
+~
+0 ADN 0
+D4
+~
+~
+0 0 30667
+S
+
+#30669
+Level 6 - The Dragon: Wizzrobe Gauntlet~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30671
+D2
+~
+~
+0 0 30667
+D3
+~
+~
+0 0 30670
+S
+
+#30670
+Level 6 - The Dragon: Map Room~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30669
+S
+
+#30671
+Level 6 - The Dragon: Eastern Turn~
+Ancient stonework shapes this chamber of Level 6 - The Dragon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30672
+D3
+~
+~
+0 0 30669
+S
+
+#30672
+Level 6 - The Dragon: Arrow Slit~
+A narrow arrow slit looks directly into Gohma's chamber. A hero wielding the Eagle Bow can shoot north and aim at the giant eye before entering.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30673
+D2
+~
+~
+0 0 30671
+S
+
+#30673
+Level 6 - The Dragon: Gohma's Eye~
+Gohma's single eye opens and closes behind an armored shell, guarding equipment for levels 59 and 60.
+~
+0 ADN 0
+D0
+~
+Gohma key~
+5 30463 30674
+D2
+~
+~
+0 0 30672
+S
+
+#30674
+Level 6 - The Dragon: Triforce Chamber~
+The sixth Triforce shard waits beside a portal to the graveyard. It also unlocks the level-58 Master Sword pedestal in the Temple of Time.
+~
+0 ADN 0
+D2
+~
+Gohma key~
+5 30463 30673
+S
+
+#30680
+Level 7 - The Demon: Drained Entrance~
+The Recorder has drained the overworld pool and exposed this stair. The sixth shard opens the northern Demon seal.
+~
+0 ADN 0
+D0
+~
+sixth shard seal~
+5 30405 30681
+D4
+~
+drained stair~
+4 0 30238
+S
+
+#30681
+Level 7 - The Demon: Moldorm Supply Room~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30682
+D2
+~
+sixth shard seal~
+5 30405 30680
+S
+
+#30682
+Level 7 - The Demon: Goriya Hall~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30683
+D1
+~
+~
+0 0 30684
+D3
+~
+~
+0 0 30681
+S
+
+#30683
+Level 7 - The Demon: Tip of the Nose Hint~
+An inscription repeats the original clue: THERE'S A SECRET IN THE TIP OF THE NOSE.
+~
+0 ADN 0
+D2
+~
+~
+0 0 30682
+S
+
+#30684
+Level 7 - The Demon: Elder Digdogger~
+An elder Digdogger shakes the chamber. Playing the Recorder strips away most of its strength.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30685
+D3
+~
+~
+0 0 30682
+S
+
+#30685
+Level 7 - The Demon: Bomb Junction~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30687
+D2
+~
+~
+0 0 30684
+D3
+~
+~
+0 0 30686
+S
+
+#30686
+Level 7 - The Demon: Optional Bomb Cache~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30685
+S
+
+#30687
+Level 7 - The Demon: Hungry Goriya~
+A hungry Goriya refuses to leave the northern doorway. Feed the guardian enemy bait to continue.
+~
+0 ADN 0
+D0
+~
+guardian passage~
+4 0 30689
+D3
+~
+~
+0 0 30685
+S
+
+#30688
+Level 7 - The Demon: Red Candle Vault~
+The Red Candle burns beside equipment for levels 61 and 62.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30689
+S
+
+#30689
+Level 7 - The Demon: Upper Face~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30690
+D2
+~
+guardian passage~
+4 0 30687
+D3
+~
+~
+0 0 30688
+S
+
+#30690
+Level 7 - The Demon: Cracked Nose Wall~
+This is the map's narrow nose. Bomb the cracked eastern wall to reach its tip.
+~
+0 ADN 0
+D1
+~
+bombed wall~
+4 0 30691
+D2
+~
+~
+0 0 30689
+S
+
+#30691
+Level 7 - The Demon: Movable Nose Block~
+The middle block at the nose can be pushed, revealing the hidden tunnel below.
+~
+0 ADN 0
+D3
+~
+bombed wall~
+4 0 30690
+D5
+~
+block stair~
+4 0 30692
+S
+
+#30692
+Level 7 - The Demon: Hidden Tunnel~
+Ancient stonework shapes this chamber of Level 7 - The Demon. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30693
+D4
+~
+block stair~
+4 0 30691
+S
+
+#30693
+Level 7 - The Demon: Ancient Aquamentus~
+Ancient Aquamentus returns as the Demon's final guardian with equipment for levels 63 and 64.
+~
+0 ADN 0
+D0
+~
+Aquamentus key~
+5 30464 30694
+D2
+~
+~
+0 0 30692
+S
+
+#30694
+Level 7 - The Demon: Triforce Chamber~
+The seventh Triforce shard waits beside a portal back to the drained pool.
+~
+0 ADN 0
+D2
+~
+Aquamentus key~
+5 30464 30693
+S
+
+#30700
+Level 8 - The Lion: Burned Entrance~
+The solitary overworld bush has burned away, uncovering Level 8. The seventh shard opens the northern Lion seal.
+~
+0 ADN 0
+D0
+~
+seventh shard seal~
+5 30406 30701
+D2
+~
+burned entrance~
+4 0 30295
+S
+
+#30701
+Level 8 - The Lion: First Seal~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30703
+D1
+~
+~
+0 0 30702
+D2
+~
+seventh shard seal~
+5 30406 30700
+S
+
+#30702
+Level 8 - The Lion: Manhandla Ambush~
+An ancient Manhandla attacks immediately, matching the Lion's original opening ambush.
+~
+0 ADN 0
+D3
+~
+~
+0 0 30701
+S
+
+#30703
+Level 8 - The Lion: Mixed Guard Room~
+A mixed company of dungeon monsters guards a movable left block. Push it to expose the Magic Book cellar.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30705
+D2
+~
+~
+0 0 30701
+D5
+~
+block stair~
+4 0 30704
+S
+
+#30704
+Level 8 - The Lion: Magic Book Cellar~
+The Magic Book rests beneath the pushed block and upgrades the Magical Wand with fire.
+~
+0 ADN 0
+D4
+~
+block stair~
+4 0 30703
+S
+
+#30705
+Level 8 - The Lion: Darknut Hall~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30707
+D2
+~
+~
+0 0 30703
+D3
+~
+~
+0 0 30706
+S
+
+#30706
+Level 8 - The Lion: Map Alcove~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30705
+S
+
+#30707
+Level 8 - The Lion: Lion Crossroads~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30708
+D3
+~
+~
+0 0 30705
+S
+
+#30708
+Level 8 - The Lion: Magical Key Vault~
+The reusable Magical Key hangs beside equipment for levels 65 and 66.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30709
+D2
+~
+~
+0 0 30707
+S
+
+#30709
+Level 8 - The Lion: Hidden Route~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+bombed wall~
+4 0 30710
+D2
+~
+~
+0 0 30708
+S
+
+#30710
+Level 8 - The Lion: Cracked Eastern Wall~
+A cracked eastern wall hides the Lion's direct route toward Gleeok.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30711
+D3
+~
+bombed wall~
+4 0 30709
+S
+
+#30711
+Level 8 - The Lion: Gleeok Approach~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D0
+~
+~
+0 0 30713
+D2
+~
+~
+0 0 30710
+D3
+~
+~
+0 0 30712
+S
+
+#30712
+Level 8 - The Lion: Compass Alcove~
+Ancient stonework shapes this chamber of Level 8 - The Lion. Torchlight catches on worn blocks, old doorways, and the marks of battles fought by heroes who came before. The dungeon's shape is deliberate; every branch may hide a key, a tool, or a dangerous way forward.
+~
+0 ADN 0
+D1
+~
+~
+0 0 30711
+S
+
+#30713
+Level 8 - The Lion: Ashen Gleeok~
+Ashen Gleeok guards the final boss key and level-67 equipment.
+~
+0 ADN 0
+D0
+~
+Gleeok key~
+5 30465 30714
+D2
+~
+~
+0 0 30711
+S
+
+#30714
+Level 8 - The Lion: Triforce Chamber~
+The eighth Triforce shard completes the journey to Death Mountain. A portal returns to the burned forest entrance.
+~
+0 ADN 0
+D2
+~
+Gleeok key~
+5 30465 30713
+S
+#0
+
+
+
+#SPECIALS
+M 30307 spec_breath_fire Load to: Gleeok
+M 30310 spec_cast_mage Load to: an orange Wizzrobe
+M 30314 spec_breath_fire Load to: ancient Aquamentus
+M 30316 spec_breath_fire Load to: ashen Gleeok
+M 30332 spec_breath_acid Load to: a blue Like Like
+M 30334 spec_cast_mage Load to: a red Wizzrobe
+M 30203 spec_janitor Load to: a green moblin
+M 30209 spec_cast_undead Load to: a ghost
+M 30215 spec_breath_acid Load to: A Like Like
+M 30216 spec_cast_cleric Load to: a faerie
+M 30219 spec_cast_undead Load to: A mummy
+M 30221 spec_cast_mage Load to: A Wizzrobe
+M 30222 spec_breath_fire Load to: Three-headed Aquamentus
+M 30224 spec_cast_mage Load to: Agahnim
+M 30225 spec_cast_necro Load to: Ganon
+M 30229 spec_breath_lightning Load to: Pikachu
+S
+
+
+
+#RESETS
+D 0 30201 0 1
+D 0 30202 4 1
+D 0 30203 2 1
+D 0 30253 5 1
+D 0 30275 0 1
+D 0 30309 0 1
+D 0 30310 2 1
+D 0 30317 0 1
+D 0 30318 2 1
+D 0 30326 2 1
+D 0 30330 5 1
+D 0 30334 1 1
+D 0 30335 3 1
+D 0 30338 4 1
+D 0 30339 0 2
+D 0 30342 2 2
+D 0 30345 0 2
+D 0 30346 2 2
+D 0 30353 1 2
+D 0 30354 3 2
+D 0 30364 1 2
+D 0 30365 3 1
+D 0 30366 3 2
+D 0 30367 1 1
+D 0 30369 3 1
+D 0 30376 0 2
+D 0 30377 2 2
+D 0 30379 2 1
+D 0 30384 1 1
+D 0 30387 3 1
+D 0 30392 1 1
+D 0 30393 3 1
+D 0 30395 0 1
+D 0 30396 2 1
+D 0 30401 3 1
+D 0 30403 1 1
+D 0 30407 3 1
+D 0 30411 1 1
+D 0 30424 4 1
+D 0 30430 0 2
+D 0 30431 2 2
+D 0 30432 5 1
+D 0 30434 0 2
+D 0 30435 2 2
+D 0 30436 0 2
+D 0 30437 2 2
+D 0 30440 0 1
+D 0 30441 2 1
+D 0 30468 4 1
+D 0 30469 5 1
+M 0 30321 15 30201
+M 0 30321 15 30201
+O 0 30219 0 30202
+O 0 30220 0 30203
+O 0 30280 0 30203
+M 0 30321 10 30204
+M 0 30321 10 30204
+M 0 30321 20 30205
+M 0 30321 20 30205
+M 0 30321 20 30205
+M 0 30321 20 30205
+M 0 30320 15 30206
+M 0 30320 15 30206
+M 0 30320 15 30206
+M 0 30226 1 30207
+G 1 30221 50
+G 1 30222 50
+G 1 30254 50
+G 1 30259 50
+G 1 30274 50
+M 0 30320 15 30208
+M 0 30320 20 30208
+M 0 30320 15 30210
+M 0 30320 20 30210
+M 0 30321 15 30210
+M 0 30227 1 30211
+G 1 30224 50
+G 1 30223 50
+G 1 30207 10
+M 0 30320 20 30212
+M 0 30321 10 30214
+M 0 30321 10 30214
+M 0 30320 10 30214
+O 0 30225 0 30215
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30215
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30320 20 30218
+M 0 30321 20 30219
+M 0 30321 20 30221
+M 0 30320 20 30222
+M 0 30321 20 30223
+M 0 30320 20 30224
+M 0 30321 10 30224
+M 0 30320 10 30224
+M 0 30321 15 30225
+M 0 30320 15 30225
+M 0 30320 15 30225
+M 0 30321 15 30225
+M 0 30321 20 30225
+O 0 30201 0 30229
+M 0 30321 15 30229
+O 0 30226 0 30238
+O 0 30208 0 30240
+M 0 30325 10 30242
+M 0 30325 10 30242
+M 0 30324 10 30243
+M 0 30324 10 30243
+M 0 30326 20 30244
+M 0 30326 10 30244
+M 0 30326 10 30244
+M 0 30327 20 30245
+M 0 30327 10 30245
+M 0 30327 10 30245
+M 0 30326 20 30246
+M 0 30327 10 30246
+M 0 30327 10 30246
+M 0 30326 10 30247
+M 0 30326 10 30247
+O 0 30258 0 30253
+O 0 30225 0 30257
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+M 0 30216 20 30257
+E 0 30210 0 17
+E 0 30252 0 0
+O 0 30208 0 30259
+O 0 30208 0 30260
+O 0 30208 0 30261
+O 0 30208 0 30262
+O 0 30208 0 30263
+O 0 30208 0 30264
+O 0 30208 0 30265
+O 0 30208 0 30266
+O 0 30208 0 30267
+O 0 30208 0 30268
+O 0 30208 0 30269
+O 0 30211 0 30270
+M 0 30331 4 30271
+M 0 30331 4 30272
+M 0 30331 4 30273
+M 0 30331 4 30274
+M 0 30322 10 30277
+M 0 30323 10 30277
+M 0 30323 10 30277
+M 0 30322 10 30278
+M 0 30322 10 30278
+M 0 30323 10 30278
+M 0 30323 10 30279
+M 0 30323 10 30279
+M 0 30322 10 30280
+M 0 30322 10 30280
+M 0 30323 10 30282
+M 0 30323 10 30282
+M 0 30322 10 30283
+M 0 30322 10 30283
+M 0 30323 10 30294
+M 0 30323 10 30296
+O 0 30202 0 30297
+M 0 30322 20 30298
+M 0 30323 20 30305
+M 0 30228 1 30310
+G 1 30264 50
+G 1 30265 50
+G 1 30266 50
+G 1 30267 50
+G 1 30268 50
+G 1 30269 50
+G 1 30270 50
+G 1 30271 50
+G 1 30272 50
+G 1 30273 50
+M 0 30328 5 30314
+M 0 30329 5 30319
+M 0 30329 5 30321
+M 0 30329 5 30321
+M 0 30328 5 30322
+M 0 30328 5 30322
+O 0 30203 0 30323
+M 0 30328 5 30324
+M 0 30330 10 30326
+M 0 30330 10 30327
+M 0 30330 10 30327
+M 0 30330 10 30328
+M 0 30330 10 30329
+M 0 30330 10 30330
+M 0 30330 10 30330
+M 0 30330 10 30331
+M 0 30330 10 30331
+M 0 30330 10 30332
+M 0 30330 10 30333
+M 0 30330 10 30334
+M 0 30330 5 30337
+O 0 30276 0 30337
+O 0 30251 0 30338
+O 0 30206 0 30338
+P 0 30278 0 30262
+O 0 30235 0 30466
+P 0 30200 0 30235
+O 0 30277 0 30466
+O 0 30478 0 30466
+M 0 30229 1 30468
+E 0 30283 0 17
+O 0 30284 1 30468
+O 0 30285 1 15068
+O 0 30253 0 30469
+O 0 30255 0 30469
+O 0 30256 0 30469
+O 0 30256 0 30469
+O 0 30267 0 30469
+D 0 30204 5 4
+D 0 30510 4 4
+D 0 30217 5 2
+D 0 30600 4 2
+D 0 30238 5 4
+D 0 30680 4 4
+D 0 30254 2 4
+D 0 30511 0 4
+D 0 30295 0 4
+D 0 30700 2 4
+D 0 30323 0 4
+D 0 30378 2 4
+D 0 30325 0 2
+D 0 30640 2 2
+D 0 30337 5 2
+D 0 30660 4 2
+D 0 30343 0 4
+D 0 30352 2 4
+D 0 30351 0 4
+D 0 30360 1 4
+D 0 30363 3 4
+D 0 30355 3 2
+D 0 30358 1 2
+D 0 30378 0 2
+D 0 30379 2 2
+D 0 30500 5 2
+D 0 30620 4 2
+D 0 30606 0 4
+D 0 30607 2 4
+D 0 30613 0 2
+D 0 30614 2 2
+D 0 30626 0 2
+D 0 30627 2 2
+D 0 30630 3 4
+D 0 30631 1 4
+D 0 30633 0 2
+D 0 30634 2 2
+D 0 30644 0 4
+D 0 30647 2 4
+D 0 30653 0 2
+D 0 30654 2 2
+D 0 30665 1 4
+D 0 30666 3 4
+D 0 30673 0 2
+D 0 30674 2 2
+D 0 30680 0 2
+D 0 30681 2 2
+D 0 30687 0 4
+D 0 30689 2 4
+D 0 30690 1 4
+D 0 30691 3 4
+D 0 30691 5 4
+D 0 30692 4 4
+D 0 30693 0 2
+D 0 30694 2 2
+D 0 30700 0 2
+D 0 30701 2 2
+D 0 30703 5 4
+D 0 30704 4 4
+D 0 30709 1 4
+D 0 30710 3 4
+D 0 30713 0 2
+D 0 30714 2 2
+O 0 30420 0 30204
+O 0 30421 0 30254
+O 0 30422 0 30295
+O 0 30423 0 30323
+O 0 30432 0 30238
+O 0 30457 0 30510
+P 0 30280 1 30457
+O 0 30458 0 30511
+P 0 30210 1 30458
+O 0 30470 0 30299
+O 0 30471 0 30500
+O 0 30440 0 30202
+P 0 30320 1 30440
+P 0 30321 1 30440
+P 0 30322 1 30440
+P 0 30323 1 30440
+P 0 30324 1 30440
+P 0 30325 1 30440
+P 0 30326 1 30440
+P 0 30327 1 30440
+P 0 30328 1 30440
+P 0 30329 1 30440
+M 0 30211 30 30340
+G 0 30227 1
+M 0 30211 30 30340
+M 0 30211 30 30340
+M 0 30212 20 30341
+M 0 30212 20 30341
+M 0 30212 20 30342
+M 0 30212 20 30342
+M 0 30300 24 30343
+M 0 30300 24 30343
+M 0 30300 24 30346
+M 0 30300 24 30346
+M 0 30300 24 30347
+M 0 30300 24 30347
+M 0 30301 8 30345
+G 0 30231 1
+M 0 30301 8 30345
+M 0 30214 8 30351
+G 0 30232 1
+M 0 30214 8 30351
+M 0 30214 8 30351
+M 0 30222 1 30353
+G 0 30338 1
+G 0 30339 1
+G 0 30234 1
+O 0 30424 0 30343
+O 0 30425 0 30351
+O 0 30441 0 30350
+P 0 30330 1 30441
+P 0 30331 1 30441
+P 0 30332 1 30441
+P 0 30333 1 30441
+P 0 30334 1 30441
+P 0 30335 1 30441
+P 0 30336 1 30441
+P 0 30337 1 30441
+P 0 30222 1 30441
+P 0 30275 1 30441
+O 0 30442 0 30354
+P 0 30400 1 30442
+O 0 30205 0 30354
+O 0 30480 0 30347
+O 0 30489 0 30344
+M 0 30302 28 30358
+M 0 30302 28 30358
+M 0 30302 28 30359
+M 0 30302 28 30359
+M 0 30302 28 30360
+M 0 30302 28 30360
+M 0 30302 28 30366
+M 0 30302 28 30366
+M 0 30302 28 30368
+M 0 30302 28 30368
+M 0 30303 10 30364
+G 0 30246 1
+M 0 30303 10 30364
+M 0 30303 10 30373
+M 0 30303 10 30373
+M 0 30218 1 30376
+G 0 30348 1
+G 0 30349 1
+G 0 30248 1
+O 0 30426 0 30360
+O 0 30443 0 30357
+P 0 30340 1 30443
+P 0 30341 1 30443
+P 0 30342 1 30443
+P 0 30343 1 30443
+P 0 30344 1 30443
+P 0 30345 1 30443
+P 0 30346 1 30443
+P 0 30347 1 30443
+P 0 30410 1 30443
+P 0 30212 1 30443
+P 0 30213 1 30443
+P 0 30279 1 30443
+O 0 30444 0 30377
+P 0 30401 1 30444
+P 0 30214 1 30444
+O 0 30204 0 30377
+O 0 30247 0 30371
+O 0 30263 0 30361
+O 0 30481 0 30362
+O 0 30490 0 30369
+M 0 30213 16 30601
+M 0 30304 10 30601
+M 0 30213 16 30603
+M 0 30304 10 30603
+M 0 30220 16 30604
+M 0 30220 16 30604
+M 0 30220 16 30609
+M 0 30220 16 30609
+M 0 30220 16 30610
+M 0 30220 16 30610
+M 0 30305 1 30613
+G 0 30358 1
+G 0 30359 1
+G 0 30460 1
+O 0 30427 0 30606
+O 0 30445 0 30608
+P 0 30350 1 30445
+P 0 30351 1 30445
+P 0 30352 1 30445
+P 0 30353 1 30445
+P 0 30354 1 30445
+P 0 30355 1 30445
+P 0 30356 1 30445
+P 0 30357 1 30445
+P 0 30411 1 30445
+P 0 30229 1 30445
+O 0 30446 0 30614
+P 0 30402 1 30446
+P 0 30228 1 30446
+O 0 30472 0 30614
+O 0 30482 0 30611
+O 0 30491 0 30602
+M 0 30306 12 30621
+M 0 30306 12 30621
+M 0 30306 12 30629
+M 0 30306 12 30629
+M 0 30215 10 30625
+M 0 30215 10 30625
+M 0 30215 10 30632
+M 0 30215 10 30632
+M 0 30307 1 30633
+G 0 30368 1
+G 0 30369 1
+G 0 30461 1
+O 0 30428 0 30630
+O 0 30447 0 30624
+P 0 30360 1 30447
+P 0 30361 1 30447
+P 0 30362 1 30447
+P 0 30363 1 30447
+P 0 30364 1 30447
+P 0 30365 1 30447
+P 0 30366 1 30447
+P 0 30367 1 30447
+P 0 30412 1 30447
+P 0 30215 1 30447
+P 0 30230 1 30447
+O 0 30448 0 30634
+P 0 30403 1 30448
+O 0 30473 0 30634
+O 0 30483 0 30631
+O 0 30492 0 30622
+M 0 30219 12 30641
+M 0 30219 12 30643
+M 0 30219 12 30646
+M 0 30308 8 30646
+M 0 30309 1 30653
+G 0 30373 1
+G 0 30374 1
+G 0 30462 1
+O 0 30429 0 30644
+O 0 30430 0 30653
+O 0 30449 0 30648
+P 0 30370 1 30449
+P 0 30371 1 30449
+P 0 30372 1 30449
+P 0 30413 1 30449
+P 0 30216 1 30449
+O 0 30450 0 30654
+P 0 30404 1 30450
+O 0 30474 0 30654
+O 0 30484 0 30651
+O 0 30493 0 30645
+O 0 30280 0 30647
+M 0 30310 16 30661
+M 0 30310 16 30661
+M 0 30310 16 30664
+M 0 30310 16 30664
+M 0 30310 16 30669
+M 0 30310 16 30669
+M 0 30310 16 30671
+M 0 30310 16 30671
+M 0 30332 8 30664
+M 0 30223 1 30673
+G 0 30377 1
+G 0 30378 1
+G 0 30463 1
+O 0 30431 0 30665
+O 0 30451 0 30668
+P 0 30375 1 30451
+P 0 30376 1 30451
+P 0 30245 1 30451
+O 0 30452 0 30674
+P 0 30405 1 30452
+O 0 30475 0 30674
+O 0 30485 0 30670
+O 0 30494 0 30663
+M 0 30333 8 30681
+M 0 30312 18 30682
+M 0 30312 18 30682
+M 0 30312 18 30689
+M 0 30312 18 30689
+M 0 30312 18 30690
+M 0 30312 18 30690
+M 0 30313 1 30684
+M 0 30314 1 30693
+G 0 30381 1
+G 0 30382 1
+G 0 30464 1
+O 0 30433 0 30684
+O 0 30434 0 30687
+O 0 30435 0 30690
+O 0 30436 0 30691
+O 0 30453 0 30688
+P 0 30379 1 30453
+P 0 30380 1 30453
+P 0 30414 1 30453
+O 0 30454 0 30694
+P 0 30406 1 30454
+O 0 30476 0 30694
+O 0 30417 0 30686
+O 0 30486 0 30683
+O 0 30495 0 30692
+M 0 30319 1 30702
+M 0 30315 14 30703
+M 0 30315 14 30703
+M 0 30315 14 30705
+M 0 30315 14 30705
+M 0 30315 14 30707
+M 0 30315 14 30707
+M 0 30315 14 30711
+M 0 30315 14 30711
+M 0 30316 1 30713
+G 0 30385 1
+G 0 30465 1
+O 0 30437 0 30703
+O 0 30438 0 30709
+O 0 30455 0 30708
+P 0 30383 1 30455
+P 0 30384 1 30455
+P 0 30415 1 30455
+P 0 30416 1 30455
+O 0 30456 0 30714
+P 0 30407 1 30456
+O 0 30477 0 30714
+O 0 30487 0 30706
+O 0 30496 0 30712
+M 0 30315 28 30379
+G 0 30249 1
+G 0 30250 1
+M 0 30315 28 30379
+M 0 30315 28 30381
+M 0 30315 28 30381
+M 0 30315 28 30383
+M 0 30315 28 30383
+M 0 30315 28 30385
+M 0 30315 28 30385
+M 0 30334 28 30390
+M 0 30334 28 30390
+M 0 30315 28 30391
+M 0 30315 28 30391
+M 0 30315 28 30399
+M 0 30315 28 30399
+M 0 30334 28 30410
+M 0 30334 28 30410
+M 0 30334 28 30412
+M 0 30334 28 30412
+M 0 30315 28 30419
+M 0 30315 28 30419
+M 0 30334 28 30420
+M 0 30334 28 30420
+M 0 30315 28 30421
+M 0 30315 28 30421
+M 0 30317 8 30432
+M 0 30317 8 30434
+G 0 30242 1
+M 0 30318 1 30430
+G 0 30236 1
+M 0 30225 1 30436
+G 0 30243 1
+G 0 30388 1
+E 0 30244 1 17
+O 0 30238 0 30387
+O 0 30239 0 30388
+O 0 30260 0 30396
+P 0 30261 1 30260
+P 0 30387 1 30260
+P 0 30282 1 30260
+O 0 30240 0 30423
+O 0 30241 0 30430
+O 0 30262 0 30406
+O 0 30237 0 30431
+P 0 30218 1 30237
+P 0 30386 1 30237
+O 0 30217 0 30437
+O 0 30233 0 30437
+P 0 30286 1 30233
+P 0 30281 1 30233
+O 0 30488 0 30400
+O 0 30497 0 30398
+M 0 30224 1 30465
+E 0 30257 1 12
+S
+
+
+#SHOPS
+30226 0 0 0 0 0 150 75 8 22
+30227 0 0 0 0 0 150 75 8 22
+30228 0 0 0 0 0 150 75 1 23
+0
+
+
+
+#$

@@ -64,6 +64,8 @@ void do_areasave( CHAR_DATA *ch, char *argument )
     {
         bug("area_save: fopen",0);
         perror(strsave);
+        send_to_char( "Area save failed; the file could not be opened.\n\r", ch);
+        return;
     }
 
     /* Write the area line */
@@ -71,7 +73,13 @@ void do_areasave( CHAR_DATA *ch, char *argument )
     save_rooms(fp, start, end);
 
     fprintf( fp, "\n\n#$\n" );
-    fclose( fp );
+    if (fclose( fp ) != 0)
+    {
+        bug("area_save: write failed", 0);
+        perror(strsave);
+        send_to_char( "Area save failed while writing the file.\n\r", ch);
+        return;
+    }
     send_to_char( "Area saved.\n\r", ch);
 }
 

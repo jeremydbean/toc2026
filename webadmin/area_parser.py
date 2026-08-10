@@ -123,6 +123,12 @@ ROOM_FLAGS = {
     'Z': 'flags2',
 }
 
+ROOM_FLAGS2 = {
+    'A': 'no_tport',
+    'B': 'unused',
+    'C': 'bank',
+}
+
 # Sector types
 SECTOR_TYPES = {
     0: 'inside',
@@ -668,11 +674,49 @@ DICE_SIZE = [
 ]
 
 
+def flag_bit(letter: str) -> int:
+    """Return the bit represented by a ROM flag letter."""
+    if len(letter) != 1 or not letter.isalpha():
+        return 0
+    if letter.isupper():
+        return 1 << (ord(letter) - ord('A'))
+    return 1 << (26 + ord(letter) - ord('a'))
+
+
+def parse_flag_value(flag_string: str) -> int:
+    """Parse the letter, decimal, and pipe syntax accepted by fread_flag()."""
+    if not flag_string:
+        return 0
+
+    total = 0
+    for raw_part in flag_string.split('|'):
+        part = raw_part.strip()
+        if not part:
+            continue
+
+        index = 0
+        value = 0
+        if not part[0].isdigit():
+            while index < len(part) and part[index].isalpha():
+                value += flag_bit(part[index])
+                index += 1
+
+        while index < len(part) and part[index].isdigit():
+            value = value * 10 + int(part[index])
+            index += 1
+        total += value
+
+    return total
+
+
 def decode_flags(flag_string: str, flag_map: Dict[str, str]) -> List[str]:
-    """Convert flag letters to human-readable names."""
-    if not flag_string or flag_string == '0':
-        return []
-    return [flag_map.get(char, char) for char in flag_string if char in flag_map]
+    """Convert ROM letter or numeric bitvectors to human-readable names."""
+    flag_value = parse_flag_value(flag_string)
+    return [
+        name
+        for letter, name in flag_map.items()
+        if flag_bit(letter) and flag_value & flag_bit(letter)
+    ]
 
 
 def decode_applies(affects: List[Dict[str, int]]) -> List[str]:
@@ -948,6 +992,7 @@ class Object:
     area_file: str = ""
     area_name: str = ""
     carried_by: List[int] = field(default_factory=list)  # Mob vnums that carry this
+    contained_by: List[int] = field(default_factory=list)  # Container reset vnums
 
 
 @dataclass
@@ -968,8 +1013,11 @@ class Room:
     area_prefix: str
     room_flags: str
     sector_type: str
+    room_flags2: str = "0"
     exits: List[Exit] = field(default_factory=list)
     extra_descr: List[Dict[str, str]] = field(default_factory=list)
+    teleport_to_room: Optional[int] = None
+    river_direction: Optional[int] = None
     area_file: str = ""
     area_name: str = ""
     mobs: List[int] = field(default_factory=list)
@@ -1005,13 +1053,25 @@ class AreaParser:
         self.rooms: Dict[int, Room] = {}
         self.areas: Dict[str, Area] = {}
         self.resets: Dict[str, List[Reset]] = {}
+        self.mob_specials: Dict[int, str] = {}
+        self.errors: List[Dict[str, str]] = []
         
     def parse_all(self) -> None:
         """Parse all .are files in the directory"""
         area_list_file = self.area_directory / "area.lst"
         if not area_list_file.exists():
             raise FileNotFoundError(f"area.lst not found in {self.area_directory}")
-            
+
+        # Re-parsing the same instance must not retain deleted records, stale
+        # cross-references, or errors from an earlier scan.
+        self.mobiles.clear()
+        self.objects.clear()
+        self.rooms.clear()
+        self.areas.clear()
+        self.resets.clear()
+        self.mob_specials.clear()
+        self.errors.clear()
+
         with open(area_list_file, 'r', encoding='latin-1', errors='ignore') as f:
             for line in f:
                 line = line.strip()
@@ -1021,6 +1081,7 @@ class AreaParser:
                         try:
                             self.parse_area_file(area_file)
                         except Exception as e:
+                            self.errors.append({"file": line, "error": str(e)})
                             print(f"Error parsing {line}: {e}")
         
         # Build cross-references
@@ -1065,6 +1126,12 @@ class AreaParser:
                             self.mobiles[current_mob_vnum].drops.append(obj_vnum)
                         if current_mob_vnum not in self.objects[obj_vnum].carried_by:
                             self.objects[obj_vnum].carried_by.append(current_mob_vnum)
+                elif reset.command == 'P':  # Put object in container
+                    obj_vnum = reset.arg1
+                    container_vnum = reset.arg3
+                    if obj_vnum in self.objects and container_vnum in self.objects:
+                        if container_vnum not in self.objects[obj_vnum].contained_by:
+                            self.objects[obj_vnum].contained_by.append(container_vnum)
     
     def parse_area_file(self, filepath: Path) -> None:
         """Parse a single .are file"""
@@ -1086,6 +1153,7 @@ class AreaParser:
         self._parse_objects(content, filepath.name, area_name)
         self._parse_rooms(content, filepath.name, area_name)
         self._parse_resets(content, filepath.name)
+        self._parse_specials(content)
         
         # Calculate vnum range for this area
         vnums = []
@@ -1557,9 +1625,36 @@ class AreaParser:
                     afs_line = lines[i].split()
                     area_prefix = afs_line[0] if len(afs_line) > 0 else ""
                     room_flags = afs_line[1] if len(afs_line) > 1 else "0"
-                    sector_type = afs_line[2] if len(afs_line) > 2 else "0"
+                    room_flag_value = parse_flag_value(room_flags)
+                    has_flags2 = bool(room_flag_value & flag_bit('Z'))
+                    room_flags2 = afs_line[2] if has_flags2 and len(afs_line) > 2 else "0"
+                    sector_index = 3 if has_flags2 else 2
+                    sector_type = afs_line[sector_index] if len(afs_line) > sector_index else "0"
                     i += 1
-                    
+
+                    teleport_to_room = None
+                    river_direction = None
+                    if room_flag_value & (flag_bit('E') | flag_bit('F')):
+                        while i < len(lines) and not lines[i].strip():
+                            i += 1
+                        if i >= len(lines):
+                            raise ValueError(f"Room {vnum} is missing river/teleport data")
+                        travel_fields = lines[i].split()
+                        if len(travel_fields) < 3:
+                            raise ValueError(f"Room {vnum} has invalid river/teleport data")
+                        if room_flag_value & flag_bit('F'):
+                            teleport_to_room = int(travel_fields[0])
+                        else:
+                            river_direction = int(travel_fields[0])
+                        i += 1
+
+                    if room_flag_value & flag_bit('H'):
+                        while i < len(lines) and not lines[i].strip():
+                            i += 1
+                        if i >= len(lines):
+                            raise ValueError(f"Room {vnum} is missing room-affect data")
+                        i += 1
+
                     exits = []
                     extra_descr = []
                     
@@ -1569,14 +1664,12 @@ class AreaParser:
                         if not line:
                             i += 1
                             continue
-                            
-                        if line.startswith('D'):
-                            try:
-                                direction = int(line[1])
-                            except (ValueError, IndexError):
-                                # Handle cases like 'D' without number? Or 'D~'?
-                                i += 1
-                                continue
+
+                        direction_match = re.fullmatch(r'D\s*(\d+)', line)
+                        if direction_match:
+                            direction = int(direction_match.group(1))
+                            if direction > 9:
+                                raise ValueError(f"Room {vnum} has invalid exit direction {direction}")
                                 
                             i += 1
                             # print(f"DEBUG: Room {vnum} Exit D{direction} parsing...")
@@ -1617,8 +1710,11 @@ class AreaParser:
                         area_prefix=area_prefix,
                         room_flags=room_flags,
                         sector_type=sector_type,
+                        room_flags2=room_flags2,
                         exits=exits,
                         extra_descr=extra_descr,
+                        teleport_to_room=teleport_to_room,
+                        river_direction=river_direction,
                         area_file=area_file,
                         area_name=area_name
                     )
@@ -1667,6 +1763,28 @@ class AreaParser:
                     continue
         
         self.resets[area_file] = resets
+
+    def _parse_specials(self, content: str) -> None:
+        """Parse mobile special-function assignments."""
+        specials_match = re.search(
+            r'^#SPECIALS\s*$(.*?)(?=^S\s*$)',
+            content,
+            re.MULTILINE | re.DOTALL,
+        )
+        if not specials_match:
+            return
+
+        for raw_line in specials_match.group(1).splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith('*'):
+                continue
+            fields = line.split()
+            if len(fields) < 3 or fields[0] != 'M':
+                continue
+            try:
+                self.mob_specials[int(fields[1])] = fields[2]
+            except ValueError:
+                continue
 
 def interpret_mob_values(mob: Mobile) -> Dict[str, Any]:
     """Interpret mobile flags and values."""

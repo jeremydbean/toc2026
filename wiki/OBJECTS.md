@@ -1248,7 +1248,7 @@ how much is left in it and normally should be the same value as
 <p><font size="3"><strong>ITEM_PORTAL:</strong></font></p>
 
 <p><font size="3">&lt;portal type&gt; &lt;to_room&gt;
-&lt;timer&gt; &lt;closeable/lockable&gt; &lt;key vnum&gt;</font></p>
+&lt;timer&gt; &lt;unused&gt; &lt;required object vnum&gt;</font></p>
 
 <p><strong>NOTE:</strong><font size="4"><br>
 </font><strong>&lt;to_room&gt;</strong> is the room VNUM that
@@ -1256,13 +1256,10 @@ portal leads to.<font size="4"><br>
 </font><strong>&lt;timer&gt;</strong> is the amount of ticks
 until the portal activates, otherwise use a ZERO (0) for its
 value.<font size="4"><br>
-</font><strong>&lt;closeable/lockable&gt;</strong> only applies
-to portals that you want to be able to close and/or lock the
-portal. Otherwise, use a ZERO (0) for its value . Don't forget,
-to create and load an ITEM_KEY object.<font size="4"><br>
-</font><strong>&lt;key vnum&gt;</strong> is only used if
-closeable/lockable values were used, otherwise use a ZERO (0) for
-its value.</p>
+</font><strong>&lt;unused&gt;</strong> should be ZERO (0).<font size="4"><br>
+</font><strong>&lt;required object vnum&gt;</strong> is checked by a
+type 6 portal. The character must carry that object; use ZERO (0)
+for no requirement.</p>
 
 <p><font size="4">Portal type Values:</font></p>
 
@@ -1284,8 +1281,9 @@ its value.</p>
     </tr>
     <tr>
         <td>6 </td>
-        <td><font size="2">Portal is Closeable/Lockable, but
-        functions like type 5 portal otherwise</font></td>
+        <td><font size="2">Required-item portal. Value 4 names
+        the object a character must carry; otherwise it functions
+        like a type 5 portal.</font></td>
     </tr>
 </table>
 

@@ -11,7 +11,9 @@
 #include <types.h>
 #else
 #include <sys/types.h>
+#include <sys/stat.h>
 #endif
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
@@ -68,6 +70,7 @@ void    do_backup          args( ( void ) );
 void    do_dailybackup     args( ( void ) );
 void    btick_update    args( ( void ) );
 void	save_pkills	args( ( void ) );
+static bool backup_ensure_dir args( ( const char *path ) );
 
 extern  AREA_DATA *		area_first;
 extern  AREA_DATA *		area_last;
@@ -168,18 +171,54 @@ const struct component_type component_table [] =
 int	save_number = 0;
 
 
+static bool backup_ensure_dir( const char *path )
+{
+    struct stat st;
+
+    if ( mkdir( path, 0755 ) == 0 )
+        return true;
+
+    if ( errno != EEXIST )
+        return false;
+
+    if ( stat( path, &st ) != 0 )
+        return false;
+
+    return S_ISDIR( st.st_mode );
+}
+
+
 /* Pfile backup command fixed on 12/17/97 - Ricochet */
 void do_backup( void )
 {
     extern long backup;
+    char buf[MAX_STRING_LENGTH];
+
+    backup = current_time + (60*60*4);
+
+    if ( !backup_ensure_dir( BACKUP_DIR ) )
+    {
+        bug("do_backup: could not create backup directory.", 0);
+        return;
+    }
+
+    snprintf( buf, sizeof(buf),
+              "tar cfz %s`date +%%b.%%d.%%Y-%%H.%%M.%%S`.tar.gz ../player",
+              BACKUP_DIR );
+    if (system(buf) != 0)
+    {
+        bug("do_backup: archive creation failed.", 0);
+        return;
+    }
+
+    /* Prune backups older than 30 days */
+    snprintf( buf, sizeof(buf), "find %s -name '*.tar.gz' -mtime +30 -delete",
+              BACKUP_DIR );
+    if (system(buf) != 0)
+        bug("do_backup: backup pruning failed.", 0);
+
     wizinfo("Automated backup complete.",62);
     log_string("Automated backup complete.");
-    backup = current_time + (60*60*4);
-    if (system("tar cfz ../backups/`date +%b.%d.%Y-%H.%M.%S`.tar.gz ../player") == -1)
-        bug("do_backup: archive creation failed.", 0);
-    /* Prune backups older than 30 days */
-    if (system("find ../backups -name '*.tar.gz' -mtime +30 -delete") == -1)
-        bug("do_backup: backup pruning failed.", 0);
     return;
 
 }
@@ -187,14 +226,32 @@ void do_backup( void )
 /* Pfile backup command fixed on 12/17/97 - Ricochet */
 void do_dailybackup( void )
 {
+    char buf[MAX_STRING_LENGTH];
+
+    dailybackup = current_time + (60*60*24);
+
+    if ( !backup_ensure_dir( BACKUP_DIR ) )
+    {
+        bug("do_dailybackup: could not create backup directory.", 0);
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "tar cfz %s`date +%%b.%%d`.tar.gz ../player",
+              BACKUP_DIR );
+    if (system(buf) != 0)
+    {
+        bug("do_dailybackup: archive creation failed.", 0);
+        return;
+    }
+
+    /* Prune backups older than 30 days */
+    snprintf( buf, sizeof(buf), "find %s -name '*.tar.gz' -mtime +30 -delete",
+              BACKUP_DIR );
+    if (system(buf) != 0)
+        bug("do_dailybackup: backup pruning failed.", 0);
+
     wizinfo("Daily backup complete.",62);
     log_string("Daily backup complete.");
-    dailybackup = current_time + (60*60*24);
-    if (system("tar cfz ../backups/`date +%b.%d`.tar.gz ../player") == -1)
-        bug("do_dailybackup: archive creation failed.", 0);
-    /* Prune backups older than 30 days */
-    if (system("find ../backups -name '*.tar.gz' -mtime +30 -delete") == -1)
-        bug("do_dailybackup: backup pruning failed.", 0);
     return;
 
 }
@@ -215,9 +272,9 @@ void show_backup( CHAR_DATA *ch, char *argument )
       {
         char ts1[32], ts2[32];
         char *nl;
-        strlcpy( ts1, ctime(&backup),      sizeof(ts1) );
+        toc_strlcpy( ts1, ctime(&backup),      sizeof(ts1) );
         nl = strchr(ts1, '\n'); if (nl) *nl = '\0';
-        strlcpy( ts2, ctime(&dailybackup), sizeof(ts2) );
+        toc_strlcpy( ts2, ctime(&dailybackup), sizeof(ts2) );
         nl = strchr(ts2, '\n'); if (nl) *nl = '\0';
         snprintf( buf, sizeof(buf), "Next pfile backup scheduled for %s\n\r", ts1);
         send_to_char(buf,ch);

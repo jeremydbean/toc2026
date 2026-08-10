@@ -1018,7 +1018,7 @@ If a value is unused, use `0` — never leave blank.
 | 1 | Hall of Heroes-style; to_room and timer unused |
 | 4 | Crystal ball; timer optional |
 | 5 | Teleport-pad style (berry→smurf, clown→froboz) |
-| 6 | Closeable/lockable portal, otherwise type 5 behavior |
+| 6 | Required-item portal; `value[4]` is a carried object vnum (`0` means no requirement) |
 
 **Manipulation types:**
 | Value | Type | Value | Type |
@@ -1169,7 +1169,7 @@ S
 | `area_prefix` | Two-letter area code (e.g., `QQ`, `AC`); informational only |
 | `ROOM_FLAGS` | Letter bitmask; see Room Flags table |
 | `sector_type` | Integer; see Sector Types table |
-| `D<direction>` | Exit section; `D0`=north, `D1`=east, ..., `D9`=southwest |
+| `D<direction>` | Exit section; `D0` or `D 0`=north, `D1` or `D 1`=east, ..., `D9`=southwest |
 | `exit description` | Text player sees when typing `look north`, etc. |
 | `door keyword~` | Keyword(s) for the door; empty line followed by `~` if no door |
 | `door type` | 0=open passage, 1=door, 2=locked door, etc. (see Door Types) |
@@ -1182,6 +1182,7 @@ S
 - Every room **must** end with `S` — forgetting this is the most common area file error
 - Exits must be bidirectional unless you deliberately want a one-way passage
 - Use `-1` for key VNUM when no key exists (never use `0`)
+- Use destination `-1` only for a descriptive, non-traversable direction; the game retains its look text but does not let players move through it
 - Multiple `D`, `E` sections are allowed before the `S`
 - The `#ROOMS` section ends with `#0` after the final room's `S`
 
@@ -1215,11 +1216,12 @@ S
 
 ### Room Flags
 
-Second field on the `<area_prefix> <ROOM_FLAGS> <sector_type>` line. Letter bitmask.
+Second field on the `<area_prefix> <ROOM_FLAGS> [ROOM_FLAGS2] <sector_type>` line. The loader accepts letter bitmasks, decimal masks, and additive pipe syntax such as `8|4096`, although letters are preferred for new rooms.
 
 | Flag | Letter | Description |
 |---|---|---|
 | ROOM_DARK | A | Room is dark; light source required to see |
+| ROOM_JAIL | B | Configured jail or related holding room |
 | ROOM_NO_MOB | C | Mobs cannot wander into this room |
 | ROOM_INDOORS | D | Room is inside; immune to weather |
 | ROOM_RIVER | E | Room is a river; pushes players in the exit direction |
@@ -1231,10 +1233,27 @@ Second field on the `<area_prefix> <ROOM_FLAGS> <sector_type>` line. Letter bitm
 | ROOM_SOLITARY | L | Maximum 1 occupant |
 | ROOM_PET_SHOP | M | Pet shop designation. **Requires permission** |
 | ROOM_NO_RECALL | N | Players cannot recall, word of recall, or scroll from this room |
+| ROOM_IMP_ONLY | O | Only implementors can enter |
+| ROOM_GODS_ONLY | P | Only immortals can enter |
+| ROOM_HEROES_ONLY | Q | Only heroes and immortals can enter |
+| ROOM_NEWBIES_ONLY | R | Only levels 1-5 and immortals can enter |
+| ROOM_LAW | S | Law-enforcement room behavior |
+| ROOM_HP_REGEN | T | Increased hit-point regeneration |
+| ROOM_MANA_REGEN | U | Increased mana regeneration |
+| ROOM_ARENA | V | Arena room behavior |
+| ROOM_CASTLE_JOIN | W | Castle joining room |
 | ROOM_SILENT | X | No spells can be cast in this room |
-| ROOM_FLAGS2 | Z | Signals ROOM_FLAGS2 follow (*none currently implemented*) |
+| ROOM_FLAGS2 | Z | Signals that a ROOM_FLAGS2 token follows |
 
-**Note:** `B` (ROOM_JAIL) and `S` (ROOM_LAW) also exist in the source but are not listed in the original wiki.
+`ROOM_JAIL` (`B`) is reserved for the configured jail and related holding rooms.
+
+When `Z` is present, place a ROOM_FLAGS2 token between ROOM_FLAGS and the sector type:
+
+| Flag | Letter | Description |
+|---|---|---|
+| ROOM2_NO_TPORT | A | Excludes the room from the teleport spell's random destinations |
+| ROOM2_B_UNUSED | B | Reserved; do not use |
+| ROOM2_BANK | C | Enables room-based banking commands |
 
 ---
 
