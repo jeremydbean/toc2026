@@ -13,15 +13,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added an advanced in-game `compare` command with player-specific gear
   profiles, focus modes for damage, spells, defense, leveling, and utility,
   full-loadout projections, usability warnings, and percentage recommendations.
-- Added the remastered Hyrule area (`30200-30799`) with a teleport-only Campus
-  arcade entry, all nine original Zelda labyrinths, a complete level 1-70 gear
-  curve, the Triforce reward chain, and two return portals.
+- Added a generated Hyrule First Quest area (`30200-30799`) with a teleport-only
+  Campus entry, the 128-screen overworld, all nine source-derived dungeon
+  layouts, a complete level 1-70 gear curve, and two return routes.
 - Added data-driven `burn`, `bomb`, `play`, and `feed` puzzle commands for
   candle bushes, cracked walls, Recorder interactions, and the hungry Goriya.
 - Added Hyrule progression tests for every gear level, dungeon entrances,
   boss drops, shard sources, canonical items, puzzles, and room reachability.
 - Added a unique readable map and functional boss compass to each Hyrule
   dungeon, including route guidance through legacy portal and stair links.
+- Added all First Quest regular, deluxe, and Letter-gated potion shops; 14
+  rupee secrets; nine one-time door-repair charges; five money-making games;
+  and the four-location Power Bracelet warp network.
+- Added the Hyrule `gamble` command, bomb combat against Dodongo, reusable
+  Magical Key behavior, consumable dungeon keys, automatic shutters, and
+  signature Like Like, Bubble, Wallmaster, Gohma, and Ganon mechanics.
 - Added `merc --check-area` / `merc --validate` startup mode for loading the full area database and exiting without opening a listening socket.
 - Added reusable area-health linting in `webadmin/area_health.py`, the `scripts/area_lint.py` CLI, a web admin Area Health view, and the `/api/area_health` endpoint.
 - Added cross-platform validation runners: `scripts/validate.ps1` for Windows/WSL and `scripts/validate.sh` for Linux, macOS, WSL, and CI.
@@ -39,6 +45,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Player-save snapshots now use bounded native path construction and directory creation instead of shell-built `mkdir` commands.
 - Backup archive creation now verifies shell command return codes, creates the backup directory when needed, and logs success only after archive creation succeeds.
 - Documentation now covers validation, CI, area-health severities, backup behavior, web-admin authentication, and operational troubleshooting.
+- Hyrule documentation now records source provenance, coordinate conversion,
+  generated vnum ranges, progression, secrets, runtime rules, fidelity limits,
+  regeneration, and regression coverage.
 
 ### Fixed
 
@@ -48,7 +57,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   two-handed no-remove conflicts, and engine-applied experience bonuses.
 - Fixed Hyrule's inactive Raft gate, two nonlethal dead ends, mismatched armor
   slots, held Recorder use, and Recorder effects weakening unrelated NPCs.
+- Fixed incorrect overworld locations for Levels 8 and 9, the White and Master
+  Swords, Princess Zelda's Letter, and the Power Bracelet.
+- Fixed legacy Hyrule shopkeeper vnums being shared with dungeon elders and
+  combat mobiles; generated vendors now use dedicated prototypes and stock.
 - Fixed dungeon maps and compasses remaining readable while blind or in darkness.
+- Fixed inferred dungeon wall links by deriving all 56 First Quest bomb walls
+  from the paired NESMaps room markers, including Death Mountain's 19 pairs.
 - Fixed single-item gear comparisons matching unrelated worn objects through
   the universal `ITEM_TAKE` flag instead of an actual shared equipment slot.
 - Fixed the CMake/C17 build using unavailable BSD `strlcpy`/`strlcat` calls

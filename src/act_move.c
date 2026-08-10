@@ -81,12 +81,126 @@ void    show_char_to_char_1     args( ( CHAR_DATA *victim, CHAR_DATA *ch ) );
 void    show_char_to_char       args( ( CHAR_DATA *list, CHAR_DATA *ch ) );
 bool    check_blind             args( ( CHAR_DATA *ch ) );
 
+#define HYRULE_ROOM_MIN             30200
+#define HYRULE_ROOM_MAX             30799
+#define HYRULE_SMALL_KEY_VNUM       30227
+#define HYRULE_RAFT_VNUM            30411
+#define HYRULE_STEPLADDER_VNUM      30412
+#define HYRULE_MAGICAL_KEY_VNUM     30416
+#define HYRULE_TRIFORCE_FIRST_VNUM  30400
+#define HYRULE_TRIFORCE_LAST_VNUM   30407
+#define HYRULE_REPAIR_ROOM_FIRST    30700
+#define HYRULE_REPAIR_ROOM_LAST     30708
+#define HYRULE_REPAIR_TOKEN_FIRST   30555
+
 
 /*
  * Global to this procedure only variables
  */
 static int runner = 0; /* used for function do_run and move_char */
 static bool shove = false;   /* used for shove in move_char */
+
+static bool is_hyrule_room( ROOM_INDEX_DATA *room )
+{
+    return room != NULL
+        && room->vnum >= HYRULE_ROOM_MIN
+        && room->vnum <= HYRULE_ROOM_MAX;
+}
+
+static bool has_complete_hyrule_triforce( CHAR_DATA *ch )
+{
+    int vnum;
+
+    for ( vnum = HYRULE_TRIFORCE_FIRST_VNUM;
+          vnum <= HYRULE_TRIFORCE_LAST_VNUM; vnum++ )
+    {
+        if ( !has_key( ch, vnum ) )
+            return false;
+    }
+    return true;
+}
+
+static bool hyrule_object_list_has_vnum( OBJ_DATA *list, int vnum )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = list; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->pIndexData != NULL && obj->pIndexData->vnum == vnum )
+            return true;
+        if ( obj->contains != NULL
+        &&   hyrule_object_list_has_vnum( obj->contains, vnum ) )
+            return true;
+    }
+    return false;
+}
+
+static void charge_hyrule_door_repair( CHAR_DATA *ch )
+{
+    OBJ_INDEX_DATA *receipt_index;
+    OBJ_DATA *receipt;
+    long charge;
+    int receipt_vnum;
+
+    if ( IS_NPC(ch) || IS_IMMORTAL(ch) || ch->in_room == NULL
+    ||   ch->in_room->vnum < HYRULE_REPAIR_ROOM_FIRST
+    ||   ch->in_room->vnum > HYRULE_REPAIR_ROOM_LAST )
+        return;
+
+    receipt_vnum = HYRULE_REPAIR_TOKEN_FIRST
+                 + ch->in_room->vnum - HYRULE_REPAIR_ROOM_FIRST;
+    if ( hyrule_object_list_has_vnum( ch->carrying, receipt_vnum ) )
+        return;
+
+    charge = UMIN( 20, query_gold(ch) );
+    if ( charge > 0 )
+        add_money( ch, -charge );
+
+    receipt_index = get_obj_index( receipt_vnum );
+    if ( receipt_index != NULL )
+    {
+        receipt = create_object( receipt_index, 0 );
+        obj_to_char( receipt, ch );
+    }
+
+    if ( charge == 20 )
+        send_to_char( "The old man collects 20 rupees for the door repair.\n\r", ch );
+    else if ( charge > 0 )
+        send_to_char( "The old man takes your remaining rupees for the door repair.\n\r", ch );
+    else
+        send_to_char( "The old man marks the repair charge paid, though you have no rupees.\n\r", ch );
+}
+
+static bool hyrule_room_has_guardian( ROOM_INDEX_DATA *room )
+{
+    CHAR_DATA *victim;
+
+    for ( victim = room->people; victim != NULL; victim = victim->next_in_room )
+    {
+        if ( IS_NPC(victim) && IS_SET(victim->act, ACT_AGGRESSIVE)
+        &&   !IS_AFFECTED(victim, AFF_CHARM) )
+            return true;
+    }
+    return false;
+}
+
+static void open_hyrule_shutter( ROOM_INDEX_DATA *room, EXIT_DATA *pexit,
+                                 int door )
+{
+    EXIT_DATA *reverse;
+
+    REMOVE_BIT( pexit->exit_info, EX_CLOSED );
+    REMOVE_BIT( pexit->exit_info, EX_LOCKED );
+    if ( pexit->u1.to_room == NULL )
+        return;
+
+    reverse = pexit->u1.to_room->exit[rev_dir[door]];
+    if ( reverse != NULL && reverse->u1.to_room == room )
+    {
+        REMOVE_BIT( reverse->exit_info, EX_CLOSED );
+        REMOVE_BIT( reverse->exit_info, EX_LOCKED );
+    }
+}
 
 /* Random room generation by gravestone */
 
@@ -636,6 +750,38 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
         }
     }
 
+    if ( is_hyrule_room(in_room) && pexit->keyword != NULL )
+    {
+        if ( is_name( "raft", pexit->keyword )
+        &&   !has_key( ch, HYRULE_RAFT_VNUM ) )
+        {
+            send_to_char( "You need the Raft to cross that water.\n\r", ch );
+            return;
+        }
+        if ( is_name( "stepladder", pexit->keyword )
+        &&   !has_key( ch, HYRULE_STEPLADDER_VNUM ) )
+        {
+            send_to_char( "You need the Stepladder to cross that gap.\n\r", ch );
+            return;
+        }
+        if ( is_name( "triforce", pexit->keyword )
+        &&   !has_complete_hyrule_triforce( ch ) )
+        {
+            send_to_char( "Only the complete Triforce of Wisdom can open the way.\n\r", ch );
+            return;
+        }
+        if ( IS_SET(pexit->exit_info, EX_CLOSED)
+        &&   is_name( "shutter", pexit->keyword )
+        &&   !hyrule_room_has_guardian(in_room) )
+        {
+            open_hyrule_shutter( in_room, pexit, door );
+            act( "The $d opens now that the chamber is clear.",
+                 ch, NULL, pexit->keyword, TO_CHAR );
+            act( "The $d opens with a heavy stone scrape.",
+                 ch, NULL, pexit->keyword, TO_ROOM );
+        }
+    }
+
     if ( IS_SET(pexit->exit_info, EX_CLOSED)
     &&   !IS_AFFECTED(ch, AFF_PASS_DOOR)
     &&   !IS_AFFECTED2(ch, AFF2_GHOST) )
@@ -847,6 +993,8 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     if(shove)
 	 act( "$n has been shoved into the room from the $t.", ch,
 		  dir_name[rev_dir[door]], NULL, TO_ROOM );
+
+    charge_hyrule_door_repair( ch );
 
     do_look( ch, "auto" );
 
@@ -1565,9 +1713,31 @@ bool has_key( CHAR_DATA *ch, int key )
     {
 	if ( obj->pIndexData->vnum == key )
 	    return true;
+	if ( key == HYRULE_SMALL_KEY_VNUM
+	&&   obj->pIndexData->vnum == HYRULE_MAGICAL_KEY_VNUM )
+	    return true;
     }
 
     return false;
+}
+
+static void consume_hyrule_small_key( CHAR_DATA *ch, int key )
+{
+    OBJ_DATA *obj;
+
+    if ( key != HYRULE_SMALL_KEY_VNUM || !is_hyrule_room(ch->in_room)
+    ||   has_key( ch, HYRULE_MAGICAL_KEY_VNUM ) )
+        return;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->pIndexData->vnum == HYRULE_SMALL_KEY_VNUM )
+        {
+            extract_obj( obj );
+            send_to_char( "The small key vanishes into the dungeon lock.\n\r", ch );
+            return;
+        }
+    }
 }
 
 
@@ -1821,6 +1991,8 @@ void do_unlock( CHAR_DATA *ch, char *argument )
 	    if ( IS_SET( pexit_rev->exit_info, EX_TRAPPED) )
 		REMOVE_BIT( pexit_rev->exit_info, EX_TRAPPED);
 	}
+
+	consume_hyrule_small_key( ch, pexit->key );
     }
 
     return;

@@ -36,7 +36,12 @@ step "Python syntax"
   webadmin/area_health.py \
   scripts/player_watcher.py \
   scripts/web_server.py \
-  scripts/area_lint.py
+  scripts/area_lint.py \
+  scripts/extract_zelda_reference.py \
+  scripts/extract_zelda_entities.py \
+  scripts/extract_zelda_doors.py \
+  scripts/build_hyrule_manifest.py \
+  scripts/build_hyrule_area.py
 
 step "Area data checks"
 "$python_bin" check_parser.py

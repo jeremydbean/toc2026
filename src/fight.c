@@ -19,6 +19,14 @@
 #include "interp.h"
 
 #define MAX_DAMAGE_MESSAGE 32
+#define HYRULE_GOHMA_VNUM       30223
+#define HYRULE_GANON_VNUM       30225
+#define HYRULE_BOW_VNUM         30222
+#define HYRULE_SILVER_ARROW_VNUM 30218
+#define HYRULE_LIKE_LIKE_VNUM   30215
+#define HYRULE_BLUE_LIKE_LIKE_VNUM 30332
+#define HYRULE_BUBBLE_VNUM      30304
+#define HYRULE_WALLMASTER_VNUM  30301
 
 /* command procedures needed */
 DECLARE_DO_FUN(do_emote         );
@@ -35,6 +43,7 @@ DECLARE_DO_FUN(do_yell          );
 DECLARE_DO_FUN(do_sacrifice     );
 DECLARE_DO_FUN(do_backstab      );
 DECLARE_DO_FUN(do_smite         );
+DECLARE_DO_FUN(do_look          );
 
 /*
  * Local functions.
@@ -73,6 +82,81 @@ extern const    int16_t  rev_dir[];
 extern const    char *  dir_name[];
 extern void     do_start_hunting args( ( CHAR_DATA *hunter, CHAR_DATA *target, int ANNOY ) );
 extern void     do_stop_hunting  args( ( CHAR_DATA *ch, char *args) );
+
+static bool wields_object_vnum( CHAR_DATA *ch, int vnum )
+{
+    OBJ_DATA *weapon;
+
+    weapon = get_eq_char( ch, WEAR_WIELD );
+    return weapon != NULL && weapon->pIndexData != NULL
+        && weapon->pIndexData->vnum == vnum;
+}
+
+static int hyrule_dungeon_entrance( int room_vnum )
+{
+    static const int first_rooms[] =
+        { 30400, 30418, 30436, 30455, 30476, 30500, 30526, 30560, 30587 };
+    static const int last_rooms[] =
+        { 30417, 30435, 30454, 30475, 30499, 30525, 30559, 30586, 30645 };
+    static const int entrances[] =
+        { 30401, 30418, 30437, 30456, 30476, 30501, 30527, 30562, 30590 };
+    int index;
+
+    for ( index = 0; index < 9; index++ )
+        if ( room_vnum >= first_rooms[index] && room_vnum <= last_rooms[index] )
+            return entrances[index];
+    return 0;
+}
+
+static void apply_hyrule_contact_effect( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    OBJ_DATA *equipment;
+    ROOM_INDEX_DATA *destination;
+    int attacker_vnum;
+    int entrance_vnum;
+
+    if ( !IS_NPC(ch) || IS_NPC(victim) || ch->pIndexData == NULL
+    ||   victim->in_room == NULL || victim->hit < 1 )
+        return;
+
+    attacker_vnum = ch->pIndexData->vnum;
+    if ( ( attacker_vnum == HYRULE_LIKE_LIKE_VNUM
+        || attacker_vnum == HYRULE_BLUE_LIKE_LIKE_VNUM )
+    &&   number_percent() <= 8
+    &&   ( equipment = get_eq_char(victim, WEAR_SHIELD) ) != NULL )
+    {
+        act( "$n engulfs $p and dissolves it!", ch, equipment, victim, TO_ROOM );
+        act( "$n engulfs and dissolves your $p!", ch, equipment, victim, TO_VICT );
+        extract_obj( equipment );
+        return;
+    }
+
+    if ( attacker_vnum == HYRULE_BUBBLE_VNUM && number_percent() <= 12
+    &&   ( equipment = get_eq_char(victim, WEAR_WIELD) ) != NULL )
+    {
+        unequip_char( victim, equipment );
+        act( "$n's touch numbs your hands, knocking $p out of use!",
+             ch, equipment, victim, TO_VICT );
+        act( "$n's touch knocks $N's $p out of use!",
+             ch, equipment, victim, TO_NOTVICT );
+        return;
+    }
+
+    if ( attacker_vnum != HYRULE_WALLMASTER_VNUM || number_percent() > 10 )
+        return;
+
+    entrance_vnum = hyrule_dungeon_entrance( victim->in_room->vnum );
+    destination = get_room_index( entrance_vnum );
+    if ( destination == NULL )
+        return;
+
+    act( "$n seizes $N and drags $M into the ceiling!", ch, NULL, victim, TO_NOTVICT );
+    act( "$n seizes you and drags you back through the labyrinth!", ch, NULL, victim, TO_VICT );
+    stop_fighting( victim, true );
+    char_from_room( victim );
+    char_to_room( victim, destination );
+    do_look( victim, "auto" );
+}
 /*
  * Control the fights going on.
  * Called periodically by update_handler.
@@ -1122,6 +1206,30 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
      * Inform the victim of his new state.
      */
     victim->hit -= dam;
+    if ( IS_NPC(victim) && victim->pIndexData != NULL && victim->hit < 1 )
+    {
+        if ( victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
+        &&   !wields_object_vnum(ch, HYRULE_BOW_VNUM)
+        &&   !wields_object_vnum(ch, HYRULE_SILVER_ARROW_VNUM) )
+        {
+            victim->hit = 1;
+            act( "$N's armored eye closes; only an arrow can finish the blow.",
+                 ch, NULL, victim, TO_CHAR );
+            act( "$N's armored eye closes against $n's finishing blow.",
+                 ch, NULL, victim, TO_ROOM );
+        }
+        if ( victim->pIndexData->vnum == HYRULE_GANON_VNUM
+        &&   !wields_object_vnum(ch, HYRULE_SILVER_ARROW_VNUM) )
+        {
+            victim->hit = 1;
+            act( "$N dissolves into shadow. Only the Silver Arrow can end this fight.",
+                 ch, NULL, victim, TO_CHAR );
+            act( "$N dissolves into shadow and reforms before $n.",
+                 ch, NULL, victim, TO_ROOM );
+        }
+    }
+    if ( dam > 0 )
+        apply_hyrule_contact_effect( ch, victim );
     if ( !IS_NPC(victim)
     &&   victim->level >= LEVEL_IMMORTAL
     &&   victim->hit < 1 )

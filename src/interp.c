@@ -240,6 +240,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "deposit",	do_deposit,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
     { "withdraw",	do_withdraw,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
     { "balance",	do_balance,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
+    { "gamble",        do_gamble,      POS_STANDING,    0,  LOG_NORMAL, 1 },
     { "slots",		do_slots,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
     { "bet",		do_bet,		POS_STANDING,	 0,  LOG_NORMAL, 1 },
     { "roulette",	do_roulette,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
