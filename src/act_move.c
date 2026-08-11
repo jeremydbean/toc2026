@@ -426,7 +426,8 @@ void do_look( CHAR_DATA *ch, char *argument )
             act( "$p contains:", ch, obj, NULL, TO_CHAR );
             argument = one_argument( argument, key_type );
             argument = one_argument( argument, key_word );
-            if (obj->pIndexData->vnum == OBJ_VNUM_PIT) {
+            if (obj->pIndexData != NULL
+            &&  obj->pIndexData->vnum == OBJ_VNUM_PIT) {
                 show_pit_list_to_char( obj->contains, ch, key_type, key_word,
                          true, true );
             }
@@ -459,7 +460,10 @@ void do_look( CHAR_DATA *ch, char *argument )
                 else continue;
 	    }
 
-            pdesc = get_extra_descr( arg3, obj->pIndexData->extra_descr );
+            if ( obj->pIndexData == NULL )
+                pdesc = NULL;
+            else
+                pdesc = get_extra_descr( arg3, obj->pIndexData->extra_descr );
             if ( pdesc != NULL ) {
                 if (++count == number)
                 {
@@ -492,7 +496,10 @@ void do_look( CHAR_DATA *ch, char *argument )
                     return;
                 }
 
-            pdesc = get_extra_descr( arg3, obj->pIndexData->extra_descr );
+            if ( obj->pIndexData == NULL )
+                pdesc = NULL;
+            else
+                pdesc = get_extra_descr( arg3, obj->pIndexData->extra_descr );
             if ( pdesc != NULL )
                 if (++count == number)
                 {
@@ -1716,9 +1723,10 @@ bool has_key( CHAR_DATA *ch, int key )
 
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
-	if ( obj->pIndexData->vnum == key )
+	if ( obj->pIndexData != NULL && obj->pIndexData->vnum == key )
 	    return true;
 	if ( key == HYRULE_SMALL_KEY_VNUM
+	&&   obj->pIndexData != NULL
 	&&   obj->pIndexData->vnum == HYRULE_MAGICAL_KEY_VNUM )
 	    return true;
     }
@@ -1736,7 +1744,8 @@ static void consume_hyrule_small_key( CHAR_DATA *ch, int key )
 
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
-        if ( obj->pIndexData->vnum == HYRULE_SMALL_KEY_VNUM )
+        if ( obj->pIndexData != NULL
+        &&   obj->pIndexData->vnum == HYRULE_SMALL_KEY_VNUM )
         {
             extract_obj( obj );
             send_to_char( "The small key vanishes into the dungeon lock.\n\r", ch );
