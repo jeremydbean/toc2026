@@ -207,25 +207,30 @@ static void open_hyrule_shutter( ROOM_INDEX_DATA *room, EXIT_DATA *pexit,
 ROOM_INDEX_DATA *get_random_room(CHAR_DATA *ch)
 {
     ROOM_INDEX_DATA *room;
+    ROOM_INDEX_DATA *candidate;
 
-        {
+    room = NULL;
+    {
 	int attempts;
 	for ( attempts = 0; attempts < 200; attempts++ )
 	{
-	    room = get_room_index( number_range(0, 65535) );
-	    if ( room != NULL
-	    &&   can_see_room(ch, room)
-	    &&   !IS_SET(room->room_flags, ROOM_PRIVATE )
-	    &&   !IS_SET(room->room_flags, ROOM_SOLITARY )
-	    &&   !IS_SET(room->room_flags, ROOM_JAIL )
-	    &&   !IS_SET(room->room_flags, ROOM_SAFE )
-	    &&   !IS_SET(room->room_flags, ROOM_NO_RECALL ) )
+	    candidate = get_room_index( number_range(0, 65535) );
+	    if ( candidate != NULL
+	    &&   can_see_room(ch, candidate)
+	    &&   !IS_SET(candidate->room_flags, ROOM_PRIVATE )
+	    &&   !IS_SET(candidate->room_flags, ROOM_SOLITARY )
+	    &&   !IS_SET(candidate->room_flags, ROOM_JAIL )
+	    &&   !IS_SET(candidate->room_flags, ROOM_SAFE )
+	    &&   !IS_SET(candidate->room_flags, ROOM_NO_RECALL ) )
+	    {
+		room = candidate;
 		break;
+	    }
 	}
 	if ( room == NULL )
 	    room = get_room_index( ROOM_VNUM_TEMPLE );
     }
-  return room;
+    return room;
 }
 
 /* Mob is type M - Haiku */
