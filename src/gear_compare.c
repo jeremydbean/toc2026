@@ -45,8 +45,8 @@ struct gear_loadout
     int armor[4];
     int saving_throw;
     int exp_bonus;
-    int affected_by;
-    int affected_by2;
+    long affected_by;
+    long affected_by2;
     long imm_flags;
     OBJ_DATA *main_weapon;
     OBJ_DATA *offhand;
@@ -514,6 +514,82 @@ static void gear_apply_item( GEAR_LOADOUT *loadout, OBJ_DATA *obj,
         if ( sign > 0 ) loadout->offhand = obj;
         else if ( loadout->offhand == obj ) loadout->offhand = NULL;
     }
+}
+
+/* Rebuild flag contributions without losing duplicate bonuses from gear. */
+static void gear_collect_item_flags( OBJ_DATA *obj, long *affected_by,
+                                     long *affected_by2, long *imm_flags )
+{
+    AFFECT_DATA *paf;
+
+    if ( obj == NULL )
+        return;
+
+    if ( obj->pIndexData != NULL )
+        for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
+        {
+            if ( paf->bitvector != 0 )
+                SET_BIT( *affected_by, (long)(unsigned int)paf->bitvector );
+            else if ( paf->bitvector2 != 0 )
+                SET_BIT( *affected_by2, (long)(unsigned int)paf->bitvector2 );
+            if ( paf->location == APPLY_IMMUNITY )
+                SET_BIT( *imm_flags, (long)(unsigned short)paf->modifier );
+        }
+
+    for ( paf = obj->affected; paf != NULL; paf = paf->next )
+    {
+        if ( paf->bitvector != 0 )
+            SET_BIT( *affected_by, (long)(unsigned int)paf->bitvector );
+        else if ( paf->bitvector2 != 0 )
+            SET_BIT( *affected_by2, (long)(unsigned int)paf->bitvector2 );
+        if ( paf->location == APPLY_IMMUNITY )
+            SET_BIT( *imm_flags, (long)(unsigned short)paf->modifier );
+    }
+
+    if ( IS_OBJ_STAT( obj, ITEM_ADD_AFFECT ) )
+    {
+        if ( IS_OBJ_STAT2( obj, ITEM2_ADD_INVIS ) )
+            SET_BIT( *affected_by, AFF_INVISIBLE );
+        if ( IS_OBJ_STAT2( obj, ITEM2_ADD_DETECT_INVIS ) )
+            SET_BIT( *affected_by, AFF_DETECT_INVIS );
+        if ( IS_OBJ_STAT2( obj, ITEM2_ADD_FLY ) )
+            SET_BIT( *affected_by, AFF_FLYING );
+    }
+}
+
+static void gear_project_equipped_flags( CHAR_DATA *ch, OBJ_DATA *exclude1,
+                                         OBJ_DATA *exclude2,
+                                         GEAR_LOADOUT *loadout )
+{
+    OBJ_DATA *obj;
+    long all_affected_by = 0;
+    long all_affected_by2 = 0;
+    long all_imm_flags = 0;
+    long remaining_affected_by = 0;
+    long remaining_affected_by2 = 0;
+    long remaining_imm_flags = 0;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( obj->wear_loc != WEAR_NONE )
+            gear_collect_item_flags( obj, &all_affected_by,
+                                      &all_affected_by2, &all_imm_flags );
+
+    /* Remove item-provided bits from the live aggregate, retaining spell,
+     * race, and class effects that are not supplied by equipped items. */
+    loadout->affected_by = ch->affected_by & ~all_affected_by;
+    loadout->affected_by2 = ch->affected_by2 & ~all_affected_by2;
+    loadout->imm_flags = ch->imm_flags & ~all_imm_flags;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( obj->wear_loc != WEAR_NONE && obj != exclude1
+            && obj != exclude2 )
+            gear_collect_item_flags( obj, &remaining_affected_by,
+                                      &remaining_affected_by2,
+                                      &remaining_imm_flags );
+
+    loadout->affected_by |= remaining_affected_by;
+    loadout->affected_by2 |= remaining_affected_by2;
+    loadout->imm_flags |= remaining_imm_flags;
 }
 
 static int gear_weapon_sn( OBJ_DATA *weapon )
@@ -1121,6 +1197,7 @@ static void gear_build_base_loadout( CHAR_DATA *ch, OBJ_DATA *obj1,
         equipped = get_eq_char( ch, slot );
         gear_remove_once( base, equipped, removed, &removed_count );
     }
+    gear_project_equipped_flags( ch, obj1, obj2, base );
 }
 
 static void gear_build_candidate_loadout( const GEAR_LOADOUT *base,
