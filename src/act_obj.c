@@ -125,13 +125,15 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     }
 
     if(container) {
-	if (container->pIndexData->vnum == OBJ_VNUM_PIT
+	if (container->pIndexData != NULL
+	&&  container->pIndexData->vnum == OBJ_VNUM_PIT
 	&&  get_trust(ch) < obj->level) {
 	    send_to_char("You are not powerful enough to use it.\n\r",ch);
 	    return;
 	}
 
-	if (container->pIndexData->vnum == OBJ_VNUM_PIT
+	if (container->pIndexData != NULL
+	&&  container->pIndexData->vnum == OBJ_VNUM_PIT
 	&&  !CAN_WEAR(container, ITEM_TAKE) && obj->timer)
 	    obj->timer = 0;
 
@@ -546,7 +548,8 @@ void do_get( CHAR_DATA *ch, char *argument )
 		&&   can_see_obj( ch, obj ) )
 		{
 		    found = true;
-		    if (container->pIndexData->vnum == OBJ_VNUM_PIT
+		    if (container->pIndexData != NULL
+		    &&  container->pIndexData->vnum == OBJ_VNUM_PIT
 		    &&  !IS_IMMORTAL(ch))
 		    {
 			send_to_char("Don't be so greedy!\n\r",ch);
@@ -648,7 +651,8 @@ void do_put( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if (container->pIndexData->vnum == OBJ_VNUM_PIT
+		if (container->pIndexData != NULL
+		&&  container->pIndexData->vnum == OBJ_VNUM_PIT
 	&&  !CAN_WEAR(container,ITEM_TAKE)) {
 	    if (obj->timer)
 	    {
@@ -687,7 +691,8 @@ void do_put( CHAR_DATA *ch, char *argument )
 	    &&   get_obj_weight( obj ) + get_obj_weight( container )
 		 <= container->value[0] )
 	    {
-                if (container->pIndexData->vnum == OBJ_VNUM_PIT
+                if (container->pIndexData != NULL
+                &&  container->pIndexData->vnum == OBJ_VNUM_PIT
                 &&  !CAN_WEAR(obj, ITEM_TAKE) )
                 {
                     if (obj->timer)
@@ -756,7 +761,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		for(obj = ch->in_room->contents;obj;obj = obj_next) {
 		    obj_next = obj->next_content;
 
-                    switch(obj->pIndexData->vnum) {
+                    switch(obj->pIndexData != NULL ? obj->pIndexData->vnum : -1) {
                     case OBJ_VNUM_MONEY_ONE:
                         if(obj->value[1] == TYPE_PLATINUM) {
                             amount += 1;
@@ -796,7 +801,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		for(obj = ch->in_room->contents;obj;obj = obj_next) {
 		    obj_next = obj->next_content;
 
-                    switch(obj->pIndexData->vnum) {
+                    switch(obj->pIndexData != NULL ? obj->pIndexData->vnum : -1) {
                     case OBJ_VNUM_MONEY_ONE:
                         if(obj->value[1] == TYPE_GOLD) {
                             amount += 1;
@@ -836,7 +841,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		for(obj = ch->in_room->contents;obj;obj = obj_next) {
 		    obj_next = obj->next_content;
 
-                    switch(obj->pIndexData->vnum) {
+                    switch(obj->pIndexData != NULL ? obj->pIndexData->vnum : -1) {
                     case OBJ_VNUM_MONEY_ONE:
                         if(obj->value[1] == TYPE_SILVER) {
                             amount += 1;
@@ -869,7 +874,7 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		for(obj = ch->in_room->contents;obj;obj = obj_next) {
 		    obj_next = obj->next_content;
 
-                    switch(obj->pIndexData->vnum) {
+                    switch(obj->pIndexData != NULL ? obj->pIndexData->vnum : -1) {
                     case OBJ_VNUM_MONEY_ONE:
                         if(obj->value[1] == TYPE_COPPER) {
                             amount += 1;
@@ -925,7 +930,8 @@ void do_drop( CHAR_DATA *ch, char *argument )
 	act( "You drop $p.", ch, obj, NULL, TO_CHAR );
 
 	/* Get rid of sub issue stuff *HAIKU*/
-	if ( (obj->pIndexData->vnum >= 3700)
+	if ( obj->pIndexData != NULL
+	&&   (obj->pIndexData->vnum >= 3700)
 	&&   (obj->pIndexData->vnum <= 3713) )
 	{
 	    act( "$p burst into flames as it hits the ground.",
@@ -960,7 +966,8 @@ void do_drop( CHAR_DATA *ch, char *argument )
 		act( "You drop $p.", ch, obj, NULL, TO_CHAR );
 
 		/* Get rid of sub issue stuff *HAIKU*/
-		if ( (obj->pIndexData->vnum >= 3700)
+		if ( obj->pIndexData != NULL
+		&&   (obj->pIndexData->vnum >= 3700)
 		&&   (obj->pIndexData->vnum <= 3713) )
 		{
 		    act( "$p burst into flames as it hits the ground.",
@@ -1956,6 +1963,7 @@ void do_secondary( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
+	if ( obj->pIndexData != NULL )
 	for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
 	{
 	  if ( paf->location == APPLY_DAMROLL )
@@ -2667,7 +2675,7 @@ void do_brandish( CHAR_DATA *ch, char *argument )
 
     chance = ( 20 + get_skill(ch,gsn_staves) * 4/5);
 
-    if (staff->pIndexData->vnum == 4513)
+    if ( staff->pIndexData != NULL && staff->pIndexData->vnum == 4513 )
         chance = 100;
 
 
