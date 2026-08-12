@@ -4343,6 +4343,7 @@ void spell_teleport( int sn, int level, CHAR_DATA *ch, void *vo )
     UNUSED_PARAM(sn);
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     ROOM_INDEX_DATA *pRoomIndex;
+    ROOM_INDEX_DATA *candidate;
 
     if ( victim->in_room == NULL
     ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
@@ -4357,18 +4358,22 @@ void spell_teleport( int sn, int level, CHAR_DATA *ch, void *vo )
 
     {
 	int attempts;
+	pRoomIndex = NULL;
 	for ( attempts = 0; attempts < 200; attempts++ )
 	{
-	    pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-	    if ( pRoomIndex != NULL
-	    &&   can_see_room(ch,pRoomIndex)
-	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
-	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
-	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_JAIL)
-	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_DT)
-	    &&   !IS_SET(pRoomIndex->room_flags2, ROOM2_NO_TPORT)
-	    &&   !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) )
+	    candidate = get_room_index( number_range( 0, 65535 ) );
+	    if ( candidate != NULL
+	    &&   can_see_room(ch,candidate)
+	    &&   !IS_SET(candidate->room_flags, ROOM_PRIVATE)
+	    &&   !IS_SET(candidate->room_flags, ROOM_NO_RECALL)
+	    &&   !IS_SET(candidate->room_flags, ROOM_JAIL)
+	    &&   !IS_SET(candidate->room_flags, ROOM_DT)
+	    &&   !IS_SET(candidate->room_flags2, ROOM2_NO_TPORT)
+	    &&   !IS_SET(candidate->room_flags, ROOM_SOLITARY) )
+	    {
+	        pRoomIndex = candidate;
 	        break;
+	    }
 	}
 	if ( pRoomIndex == NULL )
 	{

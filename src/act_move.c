@@ -1847,33 +1847,31 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
       return;
     }
 
-        WAIT_STATE( ch, skill_table[gsn_pick_lock].beats );
-
-    if ( !IS_NPC(ch) && number_percent( ) > ch->pcdata->learned[gsn_doorbash] )
-    {
-        send_to_char( "You slam into the door but it refuses to budge.\n\r", ch);
-        act( "$n slams into a door but nothing happens.", ch, NULL, NULL, TO_ROOM );
-        ch->position = POS_RESTING;
-        check_improve(ch,gsn_doorbash,false,2);
+    if ( ( door = find_door( ch, arg ) ) < 0 )
         return;
-    }
 
-
-    if ( ( door = find_door( ch, arg ) ) >= 0 )
+    /* Find and validate the door before committing the skill attempt. */
     {
-        /* find the door and bash it open */
         ROOM_INDEX_DATA *to_room;
         EXIT_DATA *pexit;
         EXIT_DATA *pexit_rev;
 
         pexit = ch->in_room->exit[door];
-        if ( !IS_SET(pexit->exit_info, EX_CLOSED) && !IS_IMMORTAL(ch))
-            { send_to_char( "It's not closed.\n\r",        ch ); return; }
+        if ( !IS_SET(pexit->exit_info, EX_CLOSED) )
+            { send_to_char( "It's not closed.\n\r", ch ); return; }
         if ( IS_SET(pexit->exit_info, EX_WIZLOCKED) )
-            { send_to_char( "This lock is magical. You can't bash it open.\n\r", ch);
-              return;
-            }
-        if ( IS_SET(pexit->exit_info, EX_LOCKED) )
+            { send_to_char( "This lock is magical. You can't bash it open.\n\r", ch); return; }
+
+        WAIT_STATE( ch, skill_table[gsn_doorbash].beats );
+        if ( number_percent( ) > ch->pcdata->learned[gsn_doorbash] )
+        {
+            send_to_char( "You slam into the door but it refuses to budge.\n\r", ch);
+            act( "$n slams into a door but nothing happens.", ch, NULL, NULL, TO_ROOM );
+            ch->position = POS_RESTING;
+            check_improve(ch,gsn_doorbash,false,2);
+            return;
+        }
+
         REMOVE_BIT(pexit->exit_info, EX_LOCKED);
         REMOVE_BIT(pexit->exit_info, EX_CLOSED);
         send_to_char( "You slam into the door and it shatters!!\n\r", ch );
@@ -1886,8 +1884,7 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
         &&   pexit_rev->u1.to_room == ch->in_room )
         {
             REMOVE_BIT(pexit_rev->exit_info, EX_CLOSED);
-            if ( IS_SET(pexit_rev->exit_info, EX_LOCKED) )
-            REMOVE_BIT( pexit_rev->exit_info, EX_LOCKED );
+            REMOVE_BIT(pexit_rev->exit_info, EX_LOCKED);
         }
     }
 
@@ -3809,7 +3806,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 	send_to_char( "You disarm a trap.\n\r", ch );
 	act( "$n examines the $d, then whispers, 'Yes!'",
 	      ch, NULL, pexit->keyword, TO_ROOM );
-	check_improve(ch,gsn_pick_lock,true,3);
+	check_improve(ch,gsn_search,true,3);
 
 	/* remove trap on the other side */
 	if ( ( to_room   = pexit->u1.to_room            ) != NULL
