@@ -1943,6 +1943,19 @@ void do_split( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Validate every recipient before moving any coins. */
+    for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
+    {
+        if ( gch != ch && is_same_group( gch, ch )
+        &&   !IS_AFFECTED( gch, AFF_CHARM )
+        &&   query_carry_coins( gch, share ) > can_carry_w( gch ) )
+        {
+            act( "$N cannot carry a share that heavy.",
+                 ch, NULL, gch, TO_CHAR );
+            return;
+        }
+    }
+
     /* Deduct from splitter, credit their own share back. */
     switch ( coin_type )
     {

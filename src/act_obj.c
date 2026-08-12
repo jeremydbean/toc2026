@@ -696,7 +696,7 @@ void do_put( CHAR_DATA *ch, char *argument )
 	    {
                 if (container->pIndexData != NULL
                 &&  container->pIndexData->vnum == OBJ_VNUM_PIT
-                &&  !CAN_WEAR(obj, ITEM_TAKE) )
+                &&  !CAN_WEAR(container, ITEM_TAKE) )
                 {
                     if (obj->timer)
                         continue;
