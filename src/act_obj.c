@@ -118,6 +118,14 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	return;
     }
 
+    if ( obj->item_type == ITEM_MONEY
+    &&   query_carry_coins( ch, obj->value[0] ) > can_carry_w( ch ) )
+    {
+        act( "$d: you can't carry that much weight.",
+             ch, NULL, obj->name, TO_CHAR );
+        return;
+    }
+
     chance = get_skill(ch,gsn_sleight_of_hand);
     if(number_percent () < chance - 5 || IS_IMMORTAL(ch) ) {
       check_improve( ch, gsn_sleight_of_hand, true, 8 );
@@ -149,11 +157,6 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     }
 
     if(obj->item_type == ITEM_MONEY) {
-        if (query_carry_coins(ch,obj->value[0]) > can_carry_w(ch)) {
-            act( "$d: you can't carry that much weight.",
-                  ch, NULL, obj->name, TO_CHAR );
-        return;
-        }
 	switch(obj->value[1]) {
 	case TYPE_PLATINUM:
 	  ch->new_platinum += obj->value[0];
