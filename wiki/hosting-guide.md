@@ -31,77 +31,96 @@ Read [SECURITY.md](../SECURITY.md) before opening firewall ports. At minimum:
 - Protect `player/`, `gods/`, `backups/`, and logs as sensitive data.
 - Keep encrypted off-host backups and test restoration.
 
-## Docker Compose Quick Start
+## Automated Installation
 
-### Requirements
+The maintained installer is the recommended Docker Compose path. It installs
+prerequisites, creates private configuration, starts Docker, builds the image,
+launches the service, and waits for the game health check.
 
-- Git
-- Docker Engine with the Compose plugin, or Docker Desktop
+From an existing checkout:
+
+```powershell
+# Windows; omit -Network Public for a local-only game.
+.\install.ps1 -Network Public -NoBrowser
+```
+
+```bash
+# macOS, Debian/Ubuntu, or Raspberry Pi OS.
+./install.sh --public --no-start
+./toc.sh build
+```
+
+Windows and macOS also provide `Install-ToC.cmd` and `Install-ToC.command` for
+interactive desktop installs. Fresh-machine bootstrap commands and all options
+are in the [Installation Guide](INSTALLING-ToC-ON-A-RASPBERRY-PI-UBUNTU-WIN10-BASH-SHELL.md).
+
+The automatic prerequisites are:
+
+- Windows: `winget`, Git, current WSL 2, and Docker Desktop
+- macOS: Apple Command Line Tools, Homebrew, Git, and Docker Desktop
+- Debian-family Linux: Git, OpenSSL, Docker Engine, and Compose v2
 - Approximately 2 GB free disk for build layers, image, logs, and backups
-- Ports 9000 and 9001 free on the host, unless you change them
 
-### Linux Or macOS
+Docker Desktop may require a host to accept its own subscription terms. Windows
+may require one restart after first enabling WSL 2. macOS may display Apple's
+Command Line Tools installer. Rerun the same idempotent ToC installer after an
+operating-system handoff.
+
+After installation:
+
+```text
+MUD client: localhost:9000
+Dashboard:  http://127.0.0.1:9001
+Health:     http://127.0.0.1:9001/api/health
+```
+
+The generated `.env` is ignored by Git. On a shared host, restrict its
+permissions and never paste its token into tickets or chat.
+
+## Manual Compose Installation
+
+Hosts that manage their own prerequisites can use the same configuration path
+without package installation:
 
 ```bash
 git clone https://github.com/jeremydbean/toc2026.git
 cd toc2026
-
-umask 077
-printf 'WEB_ADMIN_TOKEN=%s\n' "$(openssl rand -hex 32)" > .env
-
-docker compose up --build -d
-docker compose ps
-docker compose logs -f game
+./install.sh --skip-prerequisites --no-start --public
+./toc.sh build
 ```
 
-### Windows PowerShell
+On Windows, the equivalent is:
 
 ```powershell
 git clone https://github.com/jeremydbean/toc2026.git
 Set-Location toc2026
-
-$tokenBytes = New-Object byte[] 32
-[Security.Cryptography.RandomNumberGenerator]::Fill($tokenBytes)
-$token = [Convert]::ToHexString($tokenBytes)
-Set-Content -LiteralPath .env -Value "WEB_ADMIN_TOKEN=$token" -Encoding ascii
-
-docker compose up --build -d
-docker compose ps
-docker compose logs -f game
+.\install.ps1 -SkipPrerequisites -NoStart -Network Public
+.\toc.ps1 build
 ```
 
-Test locally:
+## Network Binding
 
-```text
-MUD client: localhost:9000
-Dashboard:  http://localhost:9001
-Health:     http://localhost:9001/api/health
-```
-
-The `.env` file is ignored by Git. On a shared host, restrict its permissions
-and do not paste its token into tickets or chat.
-
-## Production Port Binding
-
-The checked-in Compose file maps both ports on every host interface:
+The checked-in Compose file is private by default:
 
 ```yaml
 ports:
-  - "9000:9000"
-  - "9001:9001"
+  - "${MUD_BIND:-127.0.0.1}:${MUD_PORT:-9000}:9000"
+  - "${WEB_ADMIN_BIND:-127.0.0.1}:${WEB_ADMIN_PORT:-9001}:9001"
 ```
 
-For a typical public server, leave the game port public but change the
-dashboard mapping to loopback:
+The installer writes host-facing values to `.env`. A typical public game uses:
 
-```yaml
-ports:
-  - "9000:9000"
-  - "127.0.0.1:9001:9001"
+```dotenv
+MUD_BIND=0.0.0.0
+MUD_PORT=9000
+WEB_ADMIN_BIND=127.0.0.1
+WEB_ADMIN_PORT=9001
+WEB_ADMIN_ENABLED=1
 ```
 
-Then reach the dashboard through an SSH tunnel, VPN, or authenticated HTTPS
-reverse proxy. Example SSH tunnel from an administrator workstation:
+Do not set `WEB_ADMIN_BIND=0.0.0.0` merely to make remote administration
+convenient. Reach the loopback dashboard through an SSH tunnel, VPN, or an
+authenticated HTTPS reverse proxy. Example SSH tunnel:
 
 ```bash
 ssh -L 9001:127.0.0.1:9001 user@mud-host
@@ -109,15 +128,25 @@ ssh -L 9001:127.0.0.1:9001 user@mud-host
 
 Open `http://127.0.0.1:9001` locally while the tunnel is active.
 
-If the dashboard is not needed, set this in Compose and remove its published
-port:
-
-```yaml
-environment:
-  - WEB_ADMIN_ENABLED=0
-```
+To disable the dashboard process, set `WEB_ADMIN_ENABLED=0`. Remove or comment
+its published port as defense in depth when maintaining a custom Compose file.
 
 ## Compose Lifecycle
+
+The launchers are the normal interface because they start Docker when needed,
+preserve configuration, and wait for health:
+
+```bash
+./toc.sh start
+./toc.sh status
+./toc.sh logs
+./toc.sh restart
+./toc.sh stop
+./toc.sh update
+```
+
+Windows uses the same command names through `.\toc.ps1`. Raw Compose remains
+available for automation and troubleshooting:
 
 ```bash
 # Build and start/recreate as needed.
@@ -184,12 +213,16 @@ consistent.
 
 | Variable | Default | Used by | Meaning |
 |---|---:|---|---|
-| `PORT` | `9000` | Docker entrypoint | Primary game port; takes precedence |
-| `MUD_PORT` | `9000` | Entry point/dashboard | Fallback game port and WebSocket bridge target |
+| `MUD_BIND` | `127.0.0.1` | Compose host | Published game interface; `0.0.0.0` accepts remote players |
+| `MUD_PORT` | `9000` | Compose host | Published host game port |
+| `WEB_ADMIN_BIND` | `127.0.0.1` | Compose host | Published dashboard interface |
+| `WEB_ADMIN_PORT` | `9001` | Compose host | Published host dashboard port |
+| `PORT` | `9000` | Docker entrypoint | Internal game port for direct image use |
 | `WEB_ADMIN_ENABLED` | `1` | Docker entrypoint | `0` prevents dashboard startup |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Docker entrypoint | Dashboard bind address |
-| `WEB_ADMIN_PORT` | `9001` | Dashboard | Dashboard port and health check target |
 | `WEB_ADMIN_TOKEN` | unset | Dashboard | Shared secret; protected routes return 503 when unset |
+| `TOC_UID` | host user/`1000` | Docker entrypoint | Runtime UID for writable bind mounts |
+| `TOC_GID` | host group/`1000` | Docker entrypoint | Runtime GID for writable bind mounts |
 | `QUEUE_PATH` | `area/webadmin.queue` | Dashboard | Queue used to communicate with `merc` |
 | `LOG_FILE` | `log/toc.log` | Dashboard | Log file used by tail endpoints |
 | `AREA_PATH` | `area` | Dashboard | Area data parsed for browsing and health |
@@ -199,10 +232,10 @@ consistent.
 The Docker entrypoint supplies absolute queue and log paths on its command line.
 Command-line arguments override the matching dashboard environment defaults.
 
-When changing the game port, set both `PORT` and `MUD_PORT` to the same
-container port and update the Compose mapping. The entrypoint listens according
-to `PORT`, while the dashboard bridge reads `MUD_PORT`; changing only one leaves
-the browser bridge pointed at the wrong socket.
+With the checked-in Compose file, changing `MUD_PORT` or `WEB_ADMIN_PORT` in
+`.env` changes only the host-facing port; internal ports remain 9000/9001 so the
+dashboard bridge stays aligned. Hosts running the image directly without
+Compose must keep internal `PORT` and `MUD_PORT` aligned.
 
 ### Dashboard Command-Line Arguments
 
@@ -222,34 +255,31 @@ also resolves correctly.
 
 ## Persistent Data And Permissions
 
-The runtime image currently includes the repository's tracked legacy player,
-god, and hero files. Those hashes are present in public Git history and must not
-be treated as private credentials. Use a private image registry, rotate reused
-passwords, and plan a sanitized initialization model before distributing an
-image. Container-local changes disappear when the container is replaced. The
-checked-in Compose file persists:
+The Docker build context excludes player, god, hero, corpse, log, backup, and
+`.env` data. Runtime images therefore contain empty state directories rather
+than the host's private files. Legacy hashes still exist in public Git history
+and must not be treated as private credentials. Container-local changes
+disappear when a container is replaced, so the checked-in Compose file persists
+every mutable game directory:
 
 ```text
-./player  -> /app/player
-./log     -> /app/log
-./backups -> /app/backups
+./player   -> /app/player
+./gods     -> /app/gods
+./heroes   -> /app/heroes
+./corpse   -> /app/corpse
+./log      -> /app/log
+./backups  -> /app/backups
 ```
 
-If the host relies on mutable immortal/hero files, add:
+Do not mount the entire repository over `/app`; that can hide the built image
+and create confusing version skew.
 
-```yaml
-volumes:
-  - ./gods:/app/gods
-  - ./heroes:/app/heroes
-```
-
-Consider persisting `corpse/` only if the local gameplay policy requires corpse
-state to survive container replacement. Do not mount the entire repository over
-`/app`; that can hide the built image and create confusing version skew.
-
-The container runs as the non-root `toc` user. If bind mounts are not writable,
-fix ownership/ACLs on the host rather than running the game as root. On Linux,
-inspect the image user ID before applying ownership:
+The entrypoint starts as root only long enough to align the image's `toc`
+account with `TOC_UID`/`TOC_GID` and prepare bind mounts, then immediately
+re-executes through `gosu` as that unprivileged account. The Unix installers
+record `id -u` and `id -g`; Windows uses Docker Desktop-compatible `1000:1000`
+defaults. If mounts remain unwritable, fix host ownership/ACLs instead of
+running the game process as root. Inspect effective IDs with:
 
 ```bash
 docker run --rm toc2026 id
@@ -292,6 +322,7 @@ or accidental deletion of the whole project. Back up at least:
 player/
 gods/
 heroes/
+corpse/
 backups/
 area/ and data/ if the host has unpublished world changes
 .env or a separately managed replacement secret
@@ -351,7 +382,7 @@ to the maintained root `startup.sh`. Use `startup.sh` directly in new service
 definitions.
 
 Other retired root names are now safe compatibility helpers: `install`
-delegates to `scripts/setup_linux.sh`, `cleanup` only runs `make clean`, and
+delegates to cross-platform `install.sh`, `cleanup` only runs `make clean`, and
 `refresh` performs a clean build plus native area validation without killing or
 restarting any process. Files under `zStartup/` are archived history and must
 not be used on a current host.

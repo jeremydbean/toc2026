@@ -25,8 +25,8 @@ objects.
   reboot, player restore, moderation, incidents, and maintenance records
 - [Security Policy](../SECURITY.md) - Telnet/DES limitations, dashboard exposure,
   token handling, hardening, reporting, and incident response
-- [Legacy installation URL](INSTALLING-ToC-ON-A-RASPBERRY-PI-UBUNTU-WIN10-BASH-SHELL.md)
-  - retained for old links and redirected to current platform instructions
+- [Installation Guide](INSTALLING-ToC-ON-A-RASPBERRY-PI-UBUNTU-WIN10-BASH-SHELL.md)
+  - automated Windows, macOS, Linux, and Raspberry Pi setup and launchers
 
 ## Developers
 

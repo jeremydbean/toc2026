@@ -13,6 +13,25 @@
 #   server               alias for 'merc $PORT'
 #   any other command    exec directly (e.g. bash)
 
+# Begin as root only to make the image's toc account match the host owner of
+# bind-mounted state. Refuse root IDs, then re-exec this script unprivileged.
+if [ "$(id -u)" -eq 0 ]; then
+  TOC_UID="${TOC_UID:-1000}"
+  TOC_GID="${TOC_GID:-1000}"
+  case "$TOC_UID" in ''|*[!0-9]*|0) TOC_UID=1000 ;; esac
+  case "$TOC_GID" in ''|*[!0-9]*|0) TOC_GID=1000 ;; esac
+
+  if ! groupmod -o -g "$TOC_GID" toc \
+      || ! usermod -o -u "$TOC_UID" -g "$TOC_GID" toc; then
+    echo "Unable to configure the unprivileged toc account" >&2
+    exit 1
+  fi
+  chown -R toc:toc \
+    /app/area /app/player /app/gods /app/heroes /app/corpse /app/log /app/backups \
+    || echo "Warning: one or more bind-mount ownership updates were rejected" >&2
+  exec gosu toc "$0" "$@"
+fi
+
 cd /app/area
 
 DEFAULT_PORT="${PORT:-${MUD_PORT:-9000}}"

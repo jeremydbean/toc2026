@@ -10,6 +10,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added idempotent one-command installers and fresh-machine bootstraps for
+  Windows, macOS, Debian/Ubuntu, and Raspberry Pi OS; installers now obtain
+  prerequisites, generate private configuration, start Docker, build, launch,
+  health-check, and preserve completed work across required OS restarts.
+- Added PowerShell/Bash lifecycle launchers with start, build, stop, restart,
+  status, logs, doctor, update, and dashboard-open actions, plus double-click
+  Windows and macOS install/start entry points.
 - Added an advanced in-game `compare` command with player-specific gear
   profiles, focus modes for damage, spells, defense, leveling, and utility,
   full-loadout projections, usability warnings, and percentage recommendations.
@@ -37,6 +44,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Docker Compose now binds both ports to loopback by default, supports explicit
+  host bind/port variables, persists god/hero/corpse state, and reports game
+  readiness through a container health check. Public install mode exposes only
+  the game port.
+- Docker image builds now exclude private runtime state, logs, backups, and
+  `.env` from their context and create empty runtime mount points instead.
+- Container startup now maps its unprivileged `toc` account to configured host
+  UID/GID values before dropping privileges, allowing fresh Linux bind mounts
+  to remain writable without running the game or dashboard as root.
 - Area-health source tracking now follows `P` reset chains back to a real room
   or mobile source, without hiding objects inside unreachable containers.
 - Expanded web admin configuration with `AREA_PATH`, `BACKUP_PATH`, `--area-path`, and `--backup-path`.

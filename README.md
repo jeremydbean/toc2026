@@ -51,64 +51,114 @@ documentation.
 - Docker, Docker Compose, Make, CMake, Windows/WSL validation, and GitHub Actions
   workflows.
 
-## Quick Start With Docker
+## Easy Install
 
-Docker is the most predictable way to run ToC. Install Git and Docker Desktop
-or Docker Engine with Compose support first.
+The automatic installer is now the recommended path. It installs missing host
+prerequisites, creates private configuration and persistent data directories,
+starts Docker, builds ToC, waits for the game to become healthy, and opens the
+local dashboard. It is idempotent: rerunning it preserves the admin token and
+runtime data.
 
-Current prerequisite helpers are `scripts/setup_windows.ps1`,
-`scripts/setup_linux.sh`, and `scripts/setup_mac.sh`. Review a helper before
-running it with administrative privileges; each creates `.env` only when one
-does not already exist.
+The default installation is local-only. The game and dashboard bind to
+`127.0.0.1`; remote players cannot connect until the host explicitly selects
+public-game mode. Public-game mode exposes only the Telnet game port by default.
+The dashboard remains local.
 
-### Linux or macOS
+### Existing Checkout: One Click
 
-```bash
-git clone https://github.com/jeremydbean/toc2026.git
-cd toc2026
-export WEB_ADMIN_TOKEN="$(openssl rand -hex 32)"
-docker compose up --build -d
-docker compose logs -f game
-```
+| Platform | Easy button | Terminal equivalent |
+|---|---|---|
+| Windows 10/11 | Double-click `Install-ToC.cmd` | `.\install.ps1` |
+| macOS | Double-click `Install-ToC.command` | `./install.sh` |
+| Debian, Ubuntu, Raspberry Pi OS | Run `./install.sh` | `./install.sh` |
 
-### Windows PowerShell
+To accept remote game connections during installation:
 
 ```powershell
-git clone https://github.com/jeremydbean/toc2026.git
-Set-Location toc2026
-
-$tokenBytes = New-Object byte[] 32
-[Security.Cryptography.RandomNumberGenerator]::Fill($tokenBytes)
-$env:WEB_ADMIN_TOKEN = [Convert]::ToHexString($tokenBytes)
-
-docker compose up --build -d
-docker compose logs -f game
+# Windows
+.\install.ps1 -Network Public
 ```
-
-Connect a MUD client to `localhost` port `9000`. Open the dashboard at
-`http://localhost:9001`. Protected dashboard actions require the value of
-`WEB_ADMIN_TOKEN` in the `X-Admin-Token` header or the dashboard token field.
-
-The Compose file publishes both ports on all host interfaces. That is useful
-for local testing but is not a production security boundary. Bind port 9001 to
-loopback, firewall it, or put it behind an authenticated TLS reverse proxy
-before using ToC on an Internet host.
 
 ```bash
-# Stop without deleting persistent host data.
-docker compose stop
-
-# Start again.
-docker compose start
-
-# Remove containers and the private Compose network; bind-mounted data remains.
-docker compose down
+# macOS or Linux
+./install.sh --public
 ```
 
-The Compose service uses `restart: unless-stopped`. Use `docker compose stop`
-or `docker compose down` when the server must remain stopped; Docker can restart
-the container after an in-game shutdown because the restart policy applies to
-clean process exits too.
+### Fresh Windows Machine
+
+Open PowerShell, paste this block, and approve the normal Windows installer
+prompts:
+
+```powershell
+$bootstrap = Join-Path $env:TEMP 'toc-bootstrap.ps1'
+Invoke-WebRequest `
+  'https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_windows.ps1' `
+  -OutFile $bootstrap
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $bootstrap
+```
+
+The bootstrap installs Git with `winget`, clones ToC to
+`$HOME\TimesOfChaos`, and runs the full installer. Add `-Public` to the final
+command to expose the game port. Windows may require one restart after enabling
+WSL 2. If so, rerun the same block or double-click `Install-ToC.cmd` afterward;
+the first pass is preserved.
+
+### Fresh Mac
+
+Open Terminal and paste:
+
+```bash
+bootstrap="$(mktemp /tmp/toc-bootstrap.XXXXXX)"
+curl -fsSL \
+  https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_macos.sh \
+  -o "$bootstrap"
+bash "$bootstrap"
+```
+
+The bootstrap starts Apple's Command Line Tools installer when necessary,
+installs Homebrew and Docker Desktop, clones ToC to `~/TimesOfChaos`, and starts
+the game. Run the last line as `bash "$bootstrap" --public` for a public game.
+If macOS opens an Apple or Docker first-run agreement, complete it and rerun the
+same command; no completed step is repeated destructively.
+
+### Fresh Debian, Ubuntu, Or Raspberry Pi OS
+
+Download and run the maintained bootstrap:
+
+```bash
+bootstrap="$(mktemp /tmp/toc-bootstrap.XXXXXX)"
+curl -fsSL \
+  https://raw.githubusercontent.com/jeremydbean/toc2026/main/scripts/bootstrap_linux.sh \
+  -o "$bootstrap"
+bash "$bootstrap"
+```
+
+Use `bash "$bootstrap" --public` on an intended Internet/LAN host. Review
+[SECURITY.md](SECURITY.md) and firewall the game port before inviting players.
+
+### Day-To-Day Launcher
+
+After installation, double-click `Start-ToC.cmd` on Windows or
+`Start-ToC.command` on macOS. Terminal users have the same controls:
+
+| Purpose | Windows | macOS/Linux |
+|---|---|---|
+| Start | `.\toc.ps1 start` | `./toc.sh start` |
+| Stop and keep data | `.\toc.ps1 stop` | `./toc.sh stop` |
+| Restart | `.\toc.ps1 restart` | `./toc.sh restart` |
+| Status/health | `.\toc.ps1 status` | `./toc.sh status` |
+| Follow logs | `.\toc.ps1 logs` | `./toc.sh logs` |
+| Diagnose setup | `.\toc.ps1 doctor` | `./toc.sh doctor` |
+| Update/rebuild | `.\toc.ps1 update` | `./toc.sh update` |
+
+Connect a MUD client to `localhost:9000`. The dashboard is
+`http://127.0.0.1:9001`. Protected actions use the generated token in `.env`;
+the installers never print or replace an existing token.
+
+Docker Desktop can require acceptance of its own subscription terms on first
+launch. The project cannot accept those terms for the host. Docker documents
+its current [Windows installation requirements](https://docs.docker.com/desktop/setup/install/windows-install/)
+and [macOS requirements](https://docs.docker.com/desktop/setup/install/mac-install/).
 
 ## Native Build
 
@@ -204,23 +254,25 @@ Docker or WSL.
 
 | Variable | Default | Purpose |
 |---|---:|---|
-| `PORT` | `9000` | Preferred game port used by the container entrypoint |
-| `MUD_PORT` | `9000` | Fallback game port and dashboard bridge destination |
+| `MUD_BIND` | `127.0.0.1` | Host interface for the published game port; use `0.0.0.0` for remote players |
+| `MUD_PORT` | `9000` | Game port published on the host |
+| `WEB_ADMIN_BIND` | `127.0.0.1` | Host interface for the dashboard; keep private |
+| `WEB_ADMIN_PORT` | `9001` | Dashboard port published on the host |
 | `WEB_ADMIN_ENABLED` | `1` | Set to `0` to skip the dashboard in Docker |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Dashboard bind address in Docker |
-| `WEB_ADMIN_PORT` | `9001` | Dashboard port |
 | `WEB_ADMIN_TOKEN` | unset | Shared secret for operational API routes; unset disables them |
+| `TOC_UID` | host user/`1000` | Numeric user ID used for writable container state |
+| `TOC_GID` | host group/`1000` | Numeric group ID used for writable container state |
 | `QUEUE_PATH` | `area/webadmin.queue` | Dashboard-to-game command queue |
 | `LOG_FILE` | `log/toc.log` | Dashboard log source |
 | `AREA_PATH` | `area` | Dashboard area-parser source |
 | `BACKUP_PATH` | `backups` | Dashboard backup archive directory |
 | `PLAYER_PATH` | `player` | Dashboard player-file directory |
 
-`PORT` takes precedence over `MUD_PORT` in the Docker entrypoint. When changing
-the game from port 9000, set both variables to the same container port so the
-dashboard WebSocket bridge follows the game, and update the Compose port
-mapping. The Hosting Guide documents entrypoint modes, bind mounts, firewalls,
-reverse proxies, service management, upgrades, and rollback procedures.
+Compose always runs the game and dashboard internally on ports 9000 and 9001;
+`MUD_PORT` and `WEB_ADMIN_PORT` change only the host-facing ports. The Hosting
+Guide documents direct-image entrypoint modes, bind mounts, firewalls, reverse
+proxies, service management, upgrades, and rollback procedures.
 
 ## Persistent Data
 
@@ -231,13 +283,13 @@ These paths contain mutable runtime state:
 | `player/` | Character files and `versions/` snapshots | Yes, sensitive |
 | `gods/` | Immortal state | Yes, sensitive |
 | `heroes/` | Hero state | Yes |
+| `corpse/` | Recoverable player corpses | Yes |
 | `backups/` | Compressed player archives | Yes, sensitive |
 | `log/` | Server logs | As required |
 | `area/webadmin.queue` | Transient dashboard command queue | No |
 
-The Compose file bind-mounts `player/`, `backups/`, and `log/`. If the instance
-uses mutable `gods/`, `heroes/`, or other local state, add explicit mounts or an
-external backup for those paths.
+The Compose file bind-mounts all six mutable directories in this table. Keep
+them with `.env` when moving or restoring an installation.
 
 The game creates a player archive every four hours and a daily archive every 24
 hours, pruning archives older than 30 days. Player saves also retain up to 30

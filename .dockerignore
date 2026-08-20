@@ -3,6 +3,16 @@
 .env
 .env.*
 !.env.example
+.venv
+__pycache__
+backups
+corpse
+gods
+heroes
+log
+player
+area/webadmin.queue
+area/*.dmp
 *.o
 merc
 src/*.o

@@ -107,15 +107,16 @@ and must not be used as current launchers.
 Docker:
 
 ```bash
-docker compose up --build -d
-docker compose logs -f game
-docker compose stop
+./install.sh --skip-prerequisites
+./toc.sh status
+./toc.sh logs
+./toc.sh stop
 ```
 
-Docker Compose publishes ports 9000 and 9001 on all interfaces by default and
-uses `restart: unless-stopped`. Production documentation must tell hosts to
-restrict port 9001 and use `docker compose stop` when the container must remain
-off.
+Windows uses `install.ps1` and `toc.ps1`. Docker Compose binds both ports to
+loopback by default; `--public`/`-Network Public` exposes only the game port.
+Compose uses `restart: unless-stopped`, so use the launcher `stop` command when
+the container must remain off.
 
 ## Validation
 

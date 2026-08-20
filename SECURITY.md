@@ -153,16 +153,29 @@ The dashboard should not be directly reachable from the public Internet.
 
 ### Compose Binding
 
-For a public game/private dashboard, use:
+The repository defaults both published ports to loopback. The automatic
+installer writes the same safe defaults to `.env`. For a public game/private
+dashboard, use:
 
-```yaml
-ports:
-  - "9000:9000"
-  - "127.0.0.1:9001:9001"
+```dotenv
+MUD_BIND=0.0.0.0
+MUD_PORT=9000
+WEB_ADMIN_BIND=127.0.0.1
+WEB_ADMIN_PORT=9001
 ```
 
-The repository default currently publishes both ports on all interfaces for
-ease of local use. Change it before production deployment.
+Running `.\install.ps1 -Network Public` or `./install.sh --public` applies this
+game-only exposure. Do not set `WEB_ADMIN_BIND=0.0.0.0` without a separate
+authenticated and encrypted access layer.
+
+`.dockerignore` excludes `.env`, player, god, hero, corpse, log, and backup
+data from the image build context. Do not override those exclusions in a
+private deployment; use the checked-in bind mounts for runtime state.
+
+The container entrypoint begins as root only to map the `toc` account to the
+configured `TOC_UID`/`TOC_GID` and adjust mounted runtime directories. It then
+re-executes through `gosu`; the game and dashboard do not run as root. Never set
+either ID to zero or replace this with a permanently root container.
 
 ### UFW Example
 
@@ -186,14 +199,18 @@ umask 077
 printf 'WEB_ADMIN_TOKEN=%s\n' "$(openssl rand -hex 32)" > .env
 ```
 
-PowerShell 7:
+Windows PowerShell 5.1 or newer:
 
 ```powershell
 $bytes = New-Object byte[] 32
-[Security.Cryptography.RandomNumberGenerator]::Fill($bytes)
-$token = [Convert]::ToHexString($bytes)
+$rng = [Security.Cryptography.RandomNumberGenerator]::Create()
+try { $rng.GetBytes($bytes) } finally { $rng.Dispose() }
+$token = -join ($bytes | ForEach-Object { $_.ToString('x2') })
 Set-Content -LiteralPath .env -Value "WEB_ADMIN_TOKEN=$token" -Encoding ascii
 ```
+
+The automatic installers perform this generation without displaying the token
+and preserve an existing nonempty value.
 
 Do not use an example value from documentation. Recreate the dashboard/container
 after changing the environment.

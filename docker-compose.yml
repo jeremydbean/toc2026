@@ -3,19 +3,37 @@ services:
     build: .
     container_name: toc2026_game
     ports:
-      - "9000:9000"   # MUD game (telnet)
-      - "9001:9001"   # Web admin dashboard
+      # The generated .env keeps both services local by default. Set
+      # MUD_BIND=0.0.0.0 when remote players should be able to connect.
+      - "${MUD_BIND:-127.0.0.1}:${MUD_PORT:-9000}:9000"
+      - "${WEB_ADMIN_BIND:-127.0.0.1}:${WEB_ADMIN_PORT:-9001}:9001"
     volumes:
       - ./player:/app/player       # Player save files (persistent)
       - ./log:/app/log             # Server logs (persistent)
       - ./backups:/app/backups     # Backup archives (persistent)
+      - ./gods:/app/gods           # Immortal state (persistent)
+      - ./heroes:/app/heroes       # Hero state (persistent)
+      - ./corpse:/app/corpse       # Recoverable player corpses (persistent)
     environment:
       - PORT=9000
       - MUD_PORT=9000
       - WEB_ADMIN_PORT=9001
       - WEB_ADMIN_HOST=0.0.0.0
+      - WEB_ADMIN_ENABLED=${WEB_ADMIN_ENABLED:-1}
+      - TOC_UID=${TOC_UID:-1000}
+      - TOC_GID=${TOC_GID:-1000}
       # Admin operations remain disabled when this host variable is empty.
       - WEB_ADMIN_TOKEN=${WEB_ADMIN_TOKEN:-}
+    healthcheck:
+      test:
+        - CMD
+        - python3
+        - -c
+        - "import socket; s = socket.create_connection(('127.0.0.1', 9000), 2); s.close()"
+      interval: 10s
+      timeout: 3s
+      retries: 12
+      start_period: 30s
     # unless-stopped applies after any container-process exit, including a clean
     # in-game shutdown. Use `docker compose stop`/`down` to keep it stopped.
     restart: unless-stopped
