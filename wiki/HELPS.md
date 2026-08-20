@@ -1,5 +1,9 @@
 
 
+> **Historical reference:** This page preserves the original ToC wiki text. Use
+> the maintained [Area Building Guide](area-building-guide.md) and active help
+> files for current formatting and behavior.
+
 <p><font size="3">This section is rarely used. It is simply for
 placing keywords and a help section about your area for
 players/immortals to read and to get help about your area or its

@@ -1,4 +1,8 @@
 
+> **Historical reference:** This page preserves the original ToC wiki text. Use
+> the maintained [Area Building Guide](area-building-guide.md) for current
+> mobile formats, flags, balancing, examples, and validation requirements.
+
 <p align="left"><font size="3"><strong><u>Definitions</u></strong></font></p>
 
 <table border="2">

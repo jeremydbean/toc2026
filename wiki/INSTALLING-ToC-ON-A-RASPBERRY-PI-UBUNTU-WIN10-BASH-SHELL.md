@@ -1,157 +1,146 @@
-**NOTE: HIGHLY recommend using Ubuntu 18.04 LTS - it seems to be the build that works the best for this.  For more modern Ubuntu, check out tocGPT - https://github.com/jeremydbean/tocGPT**
+# Current Installation Instructions
 
-### PRE-INSTALL APP REQUIREMENTS:
+This filename is retained because old wiki links point here. The former Ubuntu
+18.04, `sudo git clone`, world-writable permission, copied-binary, and
+machine-specific startup instructions were obsolete and unsafe.
 
-Open terminal (Ctrl + Alt + T) and do the following: <br> <br>
->       sudo apt update
->       sudo apt upgrade /y
->       sudo apt-get update
->       sudo apt install csh build-essential telnet git lnav libcurl4-openssl-dev
-<br>
+Use the maintained [Hosting Guide](hosting-guide.md) for the complete setup,
+configuration, persistence, security, backup, upgrade, and troubleshooting
+reference. The short paths below cover common platforms.
 
-### COPYING OVER TOC FROM GITHUB:
+## Recommended: Docker Compose
 
-Open terminal<br> <br>
->       cd ~
->       sudo git clone http://www.github.com/jeremydbean/toc.git
->       cd toc
->       sudo git pull
+Install Git and Docker with Compose support, then:
 
+### Linux, macOS, Or Raspberry Pi OS 64-bit
 
+```bash
+git clone https://github.com/jeremydbean/toc2026.git
+cd toc2026
+umask 077
+printf 'WEB_ADMIN_TOKEN=%s\n' "$(openssl rand -hex 32)" > .env
+docker compose up --build -d
+docker compose logs -f game
+```
 
-### STARTING THE MUD:
-_Note: This is assuming you have the username toc as your login.  If not, change the "toc:toc" in the command below to whatever your username is._
+### Windows 11 PowerShell With Docker Desktop
 
->       cd ~
->       sudo chown -R toc:toc toc
->       sudo chmod -R 755 toc
->       cd toc
->       cd src
->       rm *.o
->       make
->       cp merc ../area
->       cd ../area
->       ./merc 9000 &
-   
+```powershell
+git clone https://github.com/jeremydbean/toc2026.git
+Set-Location toc2026
 
-<br>- NOTE: Don't forget the  **&** at the end of the command above, or the MUD will shut down if you log off!  If it still closes out when you log off/disconnect from the host - try using `nohup ./merc 9000 &`<p><p>
+$bytes = New-Object byte[] 32
+[Security.Cryptography.RandomNumberGenerator]::Fill($bytes)
+$token = [Convert]::ToHexString($bytes)
+Set-Content -LiteralPath .env -Value "WEB_ADMIN_TOKEN=$token" -Encoding ascii
 
+docker compose up --build -d
+docker compose logs -f game
+```
 
-### TESTING THE MUD:
+Connect to `localhost:9000`. The dashboard is at
+`http://localhost:9001`.
 
-Open a new terminal window <br>
->       telnet localhost 9000
+Before putting the server on the Internet, edit the dashboard port mapping to
+bind only to loopback:
 
+```yaml
+- "127.0.0.1:9001:9001"
+```
 
+To keep the service stopped:
 
-### WAYS TO MAKE MUD OPEN EASILY:
+```bash
+docker compose stop
+```
 
->       sudo nano ~/.bashrc
-<br> * Scroll all the way to the bottom, hit enter a couple times, and add the following line:
->       cd /home/pi/ToC/area
-<br> * Hit: Ctrl + X, Y, ENTER
+## Ubuntu Or Debian Native Build
 
-* Every time you open a terminal window, you will be in the areas directory.
-Simply type **./merc 9000 &** (or, hit the "Up" key and it's usually the last command used), and hit ENTER.<p><p>
+```bash
+sudo apt update
+sudo apt install build-essential libcrypt-dev python3 python3-venv git
 
-NOTE: To both view the MUD log on the terminal, AND log to file, add the following command to the ~/.bashsrc file:
+git clone https://github.com/jeremydbean/toc2026.git
+cd toc2026
+make clean
+make
 
->       cd area
->       ./merc 9000 2>&1 | tee -a ../log/logfile_$(date '+%Y-%m-%d-%H').txt
+cd area
+../merc --check-area
+cd ..
+./startup.sh 9000
+```
 
+Do not copy `merc` into `area/`. The supported Make output stays at the
+repository root and is launched as `../merc` while `area/` is the working
+directory.
 
+## Windows 11 With WSL 2
 
-### OTHER COMMANDS:
+Install WSL and an Ubuntu distribution from an elevated PowerShell session:
 
-* ps ux : views all running processes. First number listed after pi is the 'Process ID' last line is the description.<p> 
+```powershell
+wsl --install -d Ubuntu
+```
 
-* If you need to force kill the MUD,<br>
-     Type:<br> 
->       ps ux
+Restart if Windows requests it. In the Ubuntu shell:
 
-**The MUD looks something like:**
+```bash
+sudo apt update
+sudo apt install build-essential libcrypt-dev python3 python3-venv git
+git clone https://github.com/jeremydbean/toc2026.git
+cd toc2026
+make
+cd area
+../merc --check-area
+../merc 9000
+```
 
+For repository development from a Windows checkout, the checked-in validator
+translates the path and uses WSL:
 
-<table border="1" cellpadding="0">
-    <tr>
-        <td><font size="2"><b><u>USER</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>PID</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>%CPU</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>%MEM</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>VSZ</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>RSS</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>TTY</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>STAT</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>START</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>TIME</u></b><b> </b></font></td>
-        <td><font size="2"><b><u>COMMAND</u></b><b> </b></font></td>
-    <tr>
-        <td><font size="2">pi</font></td>
-        <td><font size="2"><b>1652</b></font></td>
-        <td><font size="2">.07</font></td>
-        <td><font size="2">1.0</font></td>
-        <td><font size="2">12528</font></td>
-        <td><font size="2">10024</font></td>
-        <td><font size="2">pts/0</font></td>
-        <td><font size="2">S</font></td>
-        <td><font size="2">11:21</font></td>
-        <td><font size="2">0:02</font></td>
-        <td><font size="2">./merc 9000</font></td>
-    </tr>
-</table><p>
+```powershell
+.\scripts\validate.ps1
+.\scripts\validate.ps1 -RunSmoke
+```
 
-* Find the **PID** (the 1652 number in the example) for **COMMAND**  "./merc 9000"
-     * Type: 
-         `kill 1652`
-     * _NOTE: The PID will be different each time, so be sure to ps ux to ensure it's the MUD you kill._
+Direct native Win32 compilation is not a supported runtime path.
 
+## Raspberry Pi
 
+Use a currently supported 64-bit Raspberry Pi OS or Ubuntu release. Docker is
+recommended because it supplies the expected Linux runtime and builds for the
+Pi architecture locally.
 
-### NOTE: 
-### Monit is a great app to monitor and automatically restart the MUD in the event it crashes.  More instructions on configuring this soon.
+1. Install Docker Engine and the Compose plugin from the current Docker/Raspberry
+   Pi OS instructions.
+2. Use the Docker Compose commands above.
+3. Keep `player/`, `backups/`, and `log/` on reliable writable storage.
+4. Maintain an encrypted backup on another device.
+5. Monitor disk space, SD-card wear, memory, and temperature during builds.
 
->       sudo apt-get install monit
->       sudo nano /etc/monit/conf.d/merc
-<br>
+The project does not require Ubuntu 18.04 and should not be installed with
+recursive `chmod 755` or broad root ownership.
 
-Type the following in the script that opens, and save:
+## Setup Helper Scripts
 
->       check host localhost with address 127.0.0.1
->       start program = "/bin/bash -c '/home/toc/startup.sh'" 
->       stop program = "/bin/bash -c '/home/toc/toc_kill.sh'"
->       if failed port 9000 then exec "/bin/bash -c '/home/toc/startup.sh'" 
-<br>
-After saving:
+The repository contains convenience scripts:
 
->       sudo monit reload
->       sudo monit validate
+```text
+scripts/setup_windows.ps1
+scripts/setup_linux.sh
+scripts/setup_mac.sh
+```
 
+These install or assist with host prerequisites; they do not replace the
+repository clone, token generation, build, validation, security review, or
+backup setup. Read a script before running it with administrator privileges.
 
-***
-### Updating Github with changes (players, fixes, etc.)<br>
-_[Confirms files changed]_<br>
->       git show
-_[Adds all files changed]_<br>
->       git add * 
- _[Type change notes, save, close]_<br>
->       git commit -a  
-_[Enter username/[personal access token](https://github.com/settings/tokens)]_ <br>
->       git push -u origin master
+## Required Security Notice
 
+The game port is plain Telnet and player passwords use traditional DES hashes,
+where only the first eight bytes are effective. Players must use unique
+game-only passwords. Port 9001 should remain private even with an admin token
+because player browsing routes are not all token-protected.
 
-***
-
-OLD (no longer used) Monit Config: <br>
->       sudo apt-get install monit
->       sudo nano /etc/monit/conf.d/merc
->       check process merc
->       matching "merc"
->       start program = "/home/toc/toc/startup.sh" as uid 1000
->       stop program = "/home/toc/toc_kill.sh" as uid 1000
->       if does not exist then restart
-
-Then After saving, type:
->       sudo service monit restart
->       sudo monit -t       
-
-
+See [Security](../SECURITY.md) and [Hosting Guide](hosting-guide.md).

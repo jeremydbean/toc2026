@@ -1,4 +1,8 @@
 
+> **Historical reference:** This page preserves the original balancing notes.
+> Use the maintained [Area Building Guide](area-building-guide.md) and current
+> source tables when the values differ.
+
 <p align="center"><font size="5"><strong><u>How to assign HP and
 DAMDICE values to Mobs</u></strong></font></p>
 

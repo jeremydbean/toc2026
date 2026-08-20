@@ -1,4 +1,8 @@
 
+> **Historical reference:** This page preserves the original ToC wiki text. Use
+> the maintained [Area Building Guide](area-building-guide.md) for current
+> object types, values, flags, applies, examples, and validation requirements.
+
 <p><font size="3">The #OBJECTS section is similar to the #MOBILES
 section. However, the main difference is that the values in the
 #OBJECTS section depend on the TYPE of object being described,

@@ -1,4 +1,8 @@
 
+> **Historical reference:** This page preserves the original ToC wiki text. Use
+> the maintained [Area Building Guide](area-building-guide.md) for current room,
+> exit, sector, room-affect, and validation rules.
+
 <p><font size="3">This section should be fairly self-explanatory.
 Here is an example of a room from the #ROOMS section of an area:</font></p>
 

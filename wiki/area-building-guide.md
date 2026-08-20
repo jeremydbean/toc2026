@@ -1801,7 +1801,9 @@ M QQ01 spec_guard                         ; Gate guard
 ### Room Design
 - `ROOM_SAFE` rooms **require permission** — use very sparingly.
 - `ROOM_DEATHTRAP` rooms **require permission** — every entrance must clearly hint at danger.
-- `ROOM_NO_RECALL` rooms should be area-climax or boss rooms only — don't apply to an entire area.
+- `ROOM_NO_RECALL` should be deliberate and documented. If an entire campaign
+  disables recall, as Hyrule does, provide validated return routes from every
+  reachable room.
 - `ROOM_PET_SHOP` rooms **require permission**.
 - Provide logical connectivity — all rooms should be reachable and exits should make geographic sense.
 - Write a minimum of 3–5 sentences per room description.
@@ -1837,4 +1839,13 @@ M QQ01 spec_guard                         ; Gate guard
 
 ---
 
-*Document generated from the ToC wiki HTML files, source code (`merc.h`, `db.c`, `const.c`), and real area files. Last updated: 2025.*
+## Related Documentation
+
+- [Validation And Area Health](validation-and-area-health.md)
+- [Developer Guide](developer-guide.md)
+- [Operator Guide](operator-guide.md)
+- [Hyrule: First Quest](hyrule-area.md)
+
+*Maintained from the historical ToC wiki, current source code (`merc.h`,
+`db.c`, `const.c`), parser behavior, and active area files. Last reviewed:
+August 2026.*

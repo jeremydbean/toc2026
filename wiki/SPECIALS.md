@@ -1,4 +1,8 @@
 
+> **Historical reference:** This page preserves the original ToC wiki text. Use
+> the maintained [Area Building Guide](area-building-guide.md) and current
+> `src/special.c` registrations for available special functions.
+
 <p><font size="3">Like the #RESETS section, the #SPECIALS section
 has one command per line.</font></p>
 

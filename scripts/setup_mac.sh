@@ -1,51 +1,43 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Install ToC prerequisites on a current macOS host with Homebrew.
+# Review wiki/hosting-guide.md and SECURITY.md before running a public server.
 
-echo "Setting up Times of Chaos development environment..."
+set -euo pipefail
 
-# 1. Install Homebrew
-if ! command -v brew &> /dev/null; then
-    echo "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    
-    # Add brew to path for immediate use (standard locations)
-    if [ -f "/opt/homebrew/bin/brew" ]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    elif [ -f "/usr/local/bin/brew" ]; then
-        eval "$(/usr/local/bin/brew shellenv)"
-    fi
-else
-    echo "Homebrew is already installed."
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+if ! command -v brew >/dev/null 2>&1; then
+    echo "Homebrew is required by this helper." >&2
+    echo "Install it from https://brew.sh, review its installer, then rerun." >&2
+    exit 1
 fi
 
-# 2. Install Git
-if ! command -v git &> /dev/null; then
-    echo "Installing Git..."
-    brew install git
-else
-    echo "Git is already installed."
+if ! xcode-select -p >/dev/null 2>&1; then
+    echo "Xcode Command Line Tools are required for native builds." >&2
+    echo "Run: xcode-select --install" >&2
+    exit 1
 fi
 
-# 3. Install Docker
-if ! command -v docker &> /dev/null; then
-    echo "Installing Docker..."
+brew install git cmake python
+
+if ! command -v docker >/dev/null 2>&1; then
     brew install --cask docker
-    echo "Docker installed. Please open 'Docker' from your Applications folder to finish setup."
-else
-    echo "Docker is already installed."
+    echo "Docker Desktop was installed. Open it once and complete its setup."
 fi
 
-# 4. Install VS Code
-if ! command -v code &> /dev/null; then
-    echo "Installing VS Code..."
-    brew install --cask visual-studio-code
+cd "$REPO_ROOT"
+mkdir -p player log backups gods heroes
+
+if [ ! -f .env ]; then
+    umask 077
+    printf 'WEB_ADMIN_TOKEN=%s\n' "$(openssl rand -hex 32)" > .env
+    echo "Created a private .env with a random WEB_ADMIN_TOKEN."
 else
-    echo "VS Code is already installed."
+    echo "Kept the existing .env unchanged."
 fi
 
-echo "----------------------------------------------------------------"
-echo "Setup Complete!"
-echo "1. Open 'Docker' from Applications if not running."
-echo "2. Open Terminal and navigate to this folder."
-echo "3. Run: docker build -t toc ."
-echo "4. Run: docker run -it -p 9000:9000 -p 9001:9001 -v \$(pwd)/player:/app/player -v \$(pwd)/log:/app/log toc"
-echo "----------------------------------------------------------------"
+echo
+echo "Prerequisite setup complete."
+echo "Start Docker Desktop, then run: docker compose up --build -d"
+echo "Connect to localhost:9000 after startup."
+echo "Before production, bind dashboard port 9001 to loopback as documented."

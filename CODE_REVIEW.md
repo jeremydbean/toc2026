@@ -1,10 +1,17 @@
 # Code Review Status
 
-This file records high-signal review findings and their current status. Use it for bug-hunt context, not as a replacement for the full validation suite in `scripts/validate.ps1` and `scripts/validate.sh`.
+This file records high-signal review findings and their current status. Use it
+for bug-hunt context, not as a replacement for the full validation suite in
+`scripts/validate.ps1` and `scripts/validate.sh`. The maintained review workflow
+and risk checklist are in `wiki/developer-guide.md`; security findings follow
+`SECURITY.md`.
 
 ## Current Status
 
-No open P1/P2 review findings are documented here.
+No release-blocking review finding is currently tracked in this file. That is a
+recordkeeping statement, not proof that the legacy code has no defects. New
+findings should include severity, player impact, reproduction, affected
+revision, fix status, and regression coverage.
 
 Before opening a change, run:
 
@@ -20,7 +27,21 @@ On Windows, run:
 
 See `wiki/validation-and-area-health.md` for the full validation and area-health runbook.
 
+The August 2026 parsed-world baseline is 99 listed area entries, 2,336 mobiles,
+3,551 objects, and 7,781 rooms, with 0 critical, 11 warning, and 1,565
+informational area-health findings.
+
 ## Resolved Findings
+
+### Password-bearing command logging
+
+- **Previous finding**: `remort` and immortal `resetpwd` were registered as
+  `LOG_ALWAYS`, exposing plaintext password arguments to command logs and snoop
+  output. The incomplete `delet` guard could also log an accidentally supplied
+  password.
+- **Current status**: resolved. Every password-bearing command and deletion
+  guard is `LOG_NEVER`, with a regression test in
+  `tests/test_sensitive_command_logging.py`.
 
 ### Web admin queue processing on Unix builds
 

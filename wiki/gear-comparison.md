@@ -65,3 +65,9 @@ hiding the decision behind one universal item score.
 
 The implementation lives in `src/gear_compare.c`; the command registration and
 public function declaration remain in `src/interp.c` and `src/interp.h`.
+
+## Related Documentation
+
+- [Player Guide](player-guide.md)
+- [Player Command Reference](player-command-reference.md)
+- [Developer Guide](developer-guide.md)

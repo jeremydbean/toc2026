@@ -1,5 +1,9 @@
 
 
+> **Historical reference:** This conversion page is retained for provenance.
+> Use the maintained [Area Building Guide](area-building-guide.md) for active
+> values and do not migrate current data from this page alone.
+
 <p align="center"><font color="#000000" size="5"><strong><u>Old
 Numeric to New Alpha Value Conversion Table</u></strong></font></p>
 <div align="center">

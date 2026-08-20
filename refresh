@@ -1,17 +1,17 @@
-#!/bin/bash -x
-# By Killuminati
+#!/usr/bin/env bash
+# Safe compatibility replacement for the old rebuild-and-pkill script.
+# It builds and validates, but deliberately leaves the running service alone.
 
-cd /mnt/e/ToC/src
-rm *.o
-rm merc
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
+cd "$REPO_ROOT"
+
+make clean
 make
-rm *.o
-rm ../area/merc
-cp merc ../area
-rm merc
-cd ..
-pkill -e merc
-pkill -e immortal
-pkill -e startup
-sleep 1
-./startup &
+
+cd area
+../merc --check-area
+
+echo "Build and area validation passed."
+echo "Use an announced in-game reboot or the documented service procedure to deploy it."

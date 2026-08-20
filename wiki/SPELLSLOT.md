@@ -1,5 +1,9 @@
 
 
+> **Historical reference:** Verify spell slots against the maintained
+> [Area Building Guide](area-building-guide.md) and current `src/const.c` before
+> creating spell-bearing objects.
+
 <table border="1">
     <tr>
         <td valign="bottom"><font face="Arial"><strong>SPELL NAME</strong></font></td>

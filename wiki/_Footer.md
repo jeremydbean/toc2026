@@ -1,1 +1,1 @@
-Please contact j@jeremybean.com with any issues regarding this!
+[Home](Home.md) | [Player Guide](player-guide.md) | [Hosting Guide](hosting-guide.md) | [Operator Guide](operator-guide.md) | [Developer Guide](developer-guide.md) | [Area Building](area-building-guide.md) | [Security](../SECURITY.md) | [README](../README.md)

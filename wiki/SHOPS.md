@@ -1,5 +1,9 @@
 
 
+> **Historical reference:** This page preserves the original ToC wiki text. Use
+> the maintained [Area Building Guide](area-building-guide.md) for current shop
+> format, item types, keeper rules, and validation.
+
 <p><font size="3">If you intend on having shops in your area,
 then you will need a #SHOPS section. This section, in fact, is
 the easiest of all the sections in an area to do, and takes very

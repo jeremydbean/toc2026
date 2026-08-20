@@ -182,7 +182,7 @@ const	struct	cmd_type	cmd_table	[] =
 	  { "damagenumbers",	do_damagenumbers,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "depart",		do_depart,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "description",	do_description,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
-    { "delet",		do_delet,	POS_DEAD,	 0,  LOG_ALWAYS, 0 },
+    { "delet",		do_delet,	POS_DEAD,	 0,  LOG_NEVER,  0 },
     { "delete",		do_delete,	POS_DEAD,	 0,  LOG_NEVER, 1 },
     { "maxloads",       do_lst_maxload, POS_DEAD,       L2,  LOG_NORMAL, 1 },
     { "nofollow",	do_nofollow,	POS_DEAD,        0,  LOG_NORMAL, 1 },
@@ -438,7 +438,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "empower",        do_empower,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "titanic",        do_titanic,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "summonevent",    do_summonevent, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
-    { "resetpwd",       do_resetpwd,    POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "resetpwd",       do_resetpwd,    POS_DEAD,       L5,  LOG_NEVER,  1 },
     { "snoop",          do_snoop,       POS_DEAD,       L3,  LOG_ALWAYS, 1 },
     { "stat",           do_stat,        POS_DEAD,       L7,  LOG_NORMAL, 1 },
     { "string",         do_string,      POS_DEAD,       L7,  LOG_ALWAYS, 1 },
@@ -464,7 +464,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "listclue",       do_listclue,    POS_DEAD,       50,  LOG_NORMAL, 1 },*/
     { "=",		do_hero,	POS_DEAD,	HE,  LOG_NORMAL, 0 },
     { ":",		do_immtalk,	POS_DEAD,	IM,  LOG_NORMAL, 0 },
-    { "remort",         do_remort,      POS_STANDING,   54,  LOG_ALWAYS, 1 },
+    { "remort",         do_remort,      POS_STANDING,   54,  LOG_NEVER,  1 },
 /* End of list. */
     { "",		0,		POS_DEAD,	 0,  LOG_NORMAL, 0 }
 };

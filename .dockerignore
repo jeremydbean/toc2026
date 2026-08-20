@@ -1,5 +1,8 @@
 .git
 .gitignore
+.env
+.env.*
+!.env.example
 *.o
 merc
 src/*.o

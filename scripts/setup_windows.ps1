@@ -1,52 +1,71 @@
-# Check for Administrator privileges
-if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-    Write-Warning "This script requires Administrator privileges. Please run PowerShell as Administrator."
-    exit 1
+# Install ToC prerequisites on Windows 11 with winget.
+# Review wiki/hosting-guide.md and SECURITY.md before running a public server.
+
+[CmdletBinding()]
+param()
+
+$ErrorActionPreference = 'Stop'
+
+$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = [Security.Principal.WindowsPrincipal]::new($identity)
+$isAdministrator = $principal.IsInRole(
+    [Security.Principal.WindowsBuiltInRole]::Administrator
+)
+
+if (-not $isAdministrator) {
+    throw 'Run this setup helper from an Administrator PowerShell session.'
 }
 
-Write-Host "Setting up Times of Chaos development environment..." -ForegroundColor Cyan
+if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+    throw 'winget is required. Install or update Microsoft App Installer first.'
+}
 
-# 1. Install Chocolatey (Package Manager)
-if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
-    Write-Host "Installing Chocolatey..." -ForegroundColor Yellow
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+Write-Host 'Setting up Times of Chaos prerequisites...' -ForegroundColor Cyan
+
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    winget install --exact --id Git.Git --source winget `
+        --accept-package-agreements --accept-source-agreements
 } else {
-    Write-Host "Chocolatey is already installed." -ForegroundColor Green
+    Write-Host 'Git is already installed.' -ForegroundColor Green
 }
 
-# Refresh env vars
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-
-# 2. Install Git
-if (!(Get-Command git -ErrorAction SilentlyContinue)) {
-    Write-Host "Installing Git..." -ForegroundColor Yellow
-    choco install git -y
+if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
+    winget install --exact --id Docker.DockerDesktop --source winget `
+        --accept-package-agreements --accept-source-agreements
+    Write-Warning 'Restart Windows if requested, then open Docker Desktop and finish setup.'
 } else {
-    Write-Host "Git is already installed." -ForegroundColor Green
+    Write-Host 'Docker is already installed.' -ForegroundColor Green
 }
 
-# 3. Install Docker Desktop
-if (!(Get-Command docker -ErrorAction SilentlyContinue)) {
-    Write-Host "Installing Docker Desktop..." -ForegroundColor Yellow
-    choco install docker-desktop -y
-    Write-Host "Docker Desktop installed. You MUST restart your computer and launch Docker Desktop manually after reboot." -ForegroundColor Red
+if (Get-Command wsl -ErrorAction SilentlyContinue) {
+    & wsl --status | Out-Null
+}
+
+if (-not (Get-Command wsl -ErrorAction SilentlyContinue) -or $LASTEXITCODE -ne 0) {
+    Write-Warning 'WSL is not ready. Run "wsl --install -d Ubuntu" and restart Windows.'
+}
+
+$repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+Set-Location $repoRoot
+
+foreach ($directory in 'player', 'log', 'backups', 'gods', 'heroes') {
+    New-Item -ItemType Directory -Path $directory -Force | Out-Null
+}
+
+if (-not (Test-Path -LiteralPath '.env')) {
+    $bytes = New-Object byte[] 32
+    [Security.Cryptography.RandomNumberGenerator]::Fill($bytes)
+    $token = [Convert]::ToHexString($bytes)
+    Set-Content -LiteralPath '.env' -Value "WEB_ADMIN_TOKEN=$token" -Encoding ascii
+    Write-Host 'Created .env with a random WEB_ADMIN_TOKEN.' -ForegroundColor Green
 } else {
-    Write-Host "Docker is already installed." -ForegroundColor Green
+    Write-Host 'Kept the existing .env unchanged.' -ForegroundColor Green
 }
 
-# 4. Install VS Code
-if (!(Get-Command code -ErrorAction SilentlyContinue)) {
-    Write-Host "Installing Visual Studio Code..." -ForegroundColor Yellow
-    choco install vscode -y
-} else {
-    Write-Host "VS Code is already installed." -ForegroundColor Green
-}
-
-Write-Host "----------------------------------------------------------------" -ForegroundColor Cyan
-Write-Host "Setup Complete!" -ForegroundColor Cyan
-Write-Host "1. If Docker was just installed, RESTART YOUR COMPUTER."
-Write-Host "2. After restart, launch 'Docker Desktop' from the Start Menu."
-Write-Host "3. Open PowerShell and navigate to this folder."
-Write-Host "4. Run: docker build -t toc ."
-Write-Host "5. Run: docker run -it -p 9000:9000 -p 9001:9001 -v ${PWD}/player:/app/player -v ${PWD}/log:/app/log toc"
-Write-Host "----------------------------------------------------------------" -ForegroundColor Cyan
+Write-Host ''
+Write-Host 'Prerequisite setup complete.' -ForegroundColor Cyan
+Write-Host '1. Restart Windows if an installer requested it.'
+Write-Host '2. Start Docker Desktop and wait for the engine to become ready.'
+Write-Host '3. Return to this repository and run: docker compose up --build -d'
+Write-Host '4. Connect to localhost:9000.'
+Write-Host '5. Before production, bind dashboard port 9001 to loopback as documented.'

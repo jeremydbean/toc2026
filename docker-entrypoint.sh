@@ -3,8 +3,9 @@
 #
 # Default behaviour (no args): run merc in an auto-restart loop.
 #   - Crashes / exits without shutdown.txt  → wait 5 s, restart
-#   - Immortal 'shutdown' writes shutdown.txt → exit 0 (container stops cleanly)
-#   - Immortal 'reboot'  exits without shutdown.txt → loop restarts merc
+#   - Immortal 'shutdown' writes shutdown.txt -> exit 0 (the container process
+#     stops cleanly; an outer Docker restart policy may start it again)
+#   - Immortal 'reboot' exits without shutdown.txt -> loop restarts merc
 #
 # Explicit args still work:
 #   merc 9000            one-shot foreground run

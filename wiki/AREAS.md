@@ -1,4 +1,8 @@
 
+> **Historical reference:** This page preserves the original ToC wiki text. Use
+> the maintained [Area Building Guide](area-building-guide.md) for current
+> formats, flags, examples, and validation requirements.
+
 <p><font size="3">This is the easiest section to do. The format
 is as follows:</font></p>
 

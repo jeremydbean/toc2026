@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   game:
     build: .
@@ -13,10 +11,11 @@ services:
       - ./backups:/app/backups     # Backup archives (persistent)
     environment:
       - PORT=9000
+      - MUD_PORT=9000
       - WEB_ADMIN_PORT=9001
       - WEB_ADMIN_HOST=0.0.0.0
       # Admin operations remain disabled when this host variable is empty.
       - WEB_ADMIN_TOKEN=${WEB_ADMIN_TOKEN:-}
-    # unless-stopped: restart on unexpected exit (crash/OOM) but NOT on
-    # clean immortal 'shutdown' (exit 0) or explicit 'docker stop'.
+    # unless-stopped applies after any container-process exit, including a clean
+    # in-game shutdown. Use `docker compose stop`/`down` to keep it stopped.
     restart: unless-stopped

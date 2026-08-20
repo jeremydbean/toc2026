@@ -557,11 +557,11 @@ See also: BREW, RECITE
 0 SHOOT~
 Syntax: shoot <target>
 
-SHOOT fires a loaded projectile weapon (bow, crossbow, etc.) at a target.
-You must have ammunition loaded or available.  Missile weapons deal ranged
-damage; effectiveness depends on your SHOOT skill and the weapon's stats.
+SHOOT fires a wielded bow at a visible target in an adjacent room.  You must
+know the ARCHERY skill and cannot shoot while already fighting.  The current
+bow system does not require or consume a separate ammunition object.
 
-See also: WIELD, KICK, BACKSTAB
+See also: ARCHERY, WIELD, SCAN
 ~
 
 0 PICK~
@@ -2426,14 +2426,29 @@ See also: SLEEP, FLEE, WIMPY
 ~
 
 0 RUN~
-Syntax: run <direction> <distance>
+Syntax: run <direction> [distance]
 
-This command allows you to move through multiple rooms.  Specifying
-the distance is optional, and will default to 15 rooms, or until
-your run into a wall. Max distance that can be traveled is 25 rooms.
-Direction must be specified.
+RUN moves repeatedly in one direction.  Distance is optional; it defaults to
+30 and is capped at 30.  Movement can stop early at a wall, closed exit, trap,
+combat, or any other condition that prevents normal movement.  All ten normal
+directions and their abbreviations are accepted.
 
-See also: RECALL, AUTOEXIT, EXITS
+See also: SPEEDWALK, RECALL, AUTOEXIT, EXITS
+~
+
+0 SPEEDWALK~
+Syntax: speedwalk <route>
+
+SPEEDWALK follows compact lowercase direction tokens.  Put an optional count
+before each direction; each count defaults to 1 and is capped at 30.
+
+Examples: speedwalk 3n2e1s
+          speedwalk 2ne4w1d
+
+Valid tokens are n, e, s, w, u, d, ne, nw, se, and sw.  Movement still uses
+normal exits and costs, and stops if combat begins or you cannot continue.
+
+See also: RUN, EXITS, AUTOEXIT
 ~
 
 0 SACRIFICE~
@@ -4196,7 +4211,7 @@ RESETPWD resets the password of an OFFLINE player to the specified new
 password.  This is the "forgot password" rescue tool for when a player
 cannot log in and contacts an immortal for help.
 
-  resetpwd Bob secret99
+  resetpwd Bob K7p4N2xQ
 
 Requirements and restrictions:
   - The target player must be OFFLINE.  If they are logged in, ask them
@@ -4206,11 +4221,12 @@ Requirements and restrictions:
   - You cannot reset the password of a character at or above your own
     level (you cannot reset another immortal's password unless you outrank
     them).
-  - Password resets are always logged to the system log and broadcast on
-    WIZINFO to all online immortals.
+  - The reset event is logged and broadcast on WIZINFO, but the password
+    argument is suppressed from command logs and snoop output.
 
 The command rewrites only the hashed password field in the player save
-file, leaving all other character data untouched.
+file, leaving all other character data untouched.  ToC currently uses
+traditional DES hashes, so only the first eight password bytes are effective.
 
 See also: FINGER, TRAIL
 ~

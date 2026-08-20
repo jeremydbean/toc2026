@@ -1,13 +1,75 @@
-# Times of Chaos Wiki
+# Times of Chaos Documentation
 
-Welcome to the ToC wiki.
+Welcome to the maintained documentation for Times of Chaos. The current world
+inventory is 99 listed area entries, 7,781 rooms, 2,336 mobiles, and 3,551
+objects.
 
-Start here:
+## Players
 
-- [Area Building Guide](area-building-guide.md) - modern, comprehensive `.are` file reference
-- [Validation and Area Health](validation-and-area-health.md) - local validation, CI, issue codes, and troubleshooting
-- [Advanced Gear Comparison](gear-comparison.md) - player syntax, category estimates, and scoring model
-- [Hyrule: First Quest](hyrule-area.md) - player progression, canonical layout, secrets, generation, and validation
-- [MOBS](MOBS.md), [OBJECTS](OBJECTS.md), [ROOMS](ROOMS.md), [RESETS](RESETS.md), [SHOPS](SHOPS.md), and [SPECIALS](SPECIALS.md) - historical area-format references
+- [Player Guide](player-guide.md) - connection, creation, classes, races,
+  movement, combat, leveling, guilds, remorts, equipment, economy, groups,
+  quests, Hyrule, saving, and troubleshooting
+- [Player Command Reference](player-command-reference.md) - commands grouped by
+  purpose with important syntax and restrictions
+- [Advanced Gear Comparison](gear-comparison.md) - `compare` focuses,
+  percentages, profile inference, modeled stats, and limitations
+- [Hyrule: First Quest](hyrule-area.md) - entry/exit, level bands, overworld,
+  dungeons, maps, compasses, secrets, bosses, and generated content
 
-Please contact j@jeremybean.com with any issues.
+## Hosts And Staff
+
+- [Hosting Guide](hosting-guide.md) - Docker/native setup, configuration,
+  persistence, web API, firewalling, service management, upgrades, backups, and
+  troubleshooting
+- [Operator Guide](operator-guide.md) - daily checks, diagnostics, planned
+  reboot, player restore, moderation, incidents, and maintenance records
+- [Security Policy](../SECURITY.md) - Telnet/DES limitations, dashboard exposure,
+  token handling, hardening, reporting, and incident response
+- [Legacy installation URL](INSTALLING-ToC-ON-A-RASPBERRY-PI-UBUNTU-WIN10-BASH-SHELL.md)
+  - retained for old links and redirected to current platform instructions
+
+## Developers
+
+- [Developer Guide](developer-guide.md) - architecture, modules, builds, tests,
+  extension points, persistence, generated content, debugging, and release
+  checklist
+- [Contributing](../CONTRIBUTING.md) - focused contribution and review rules
+- [Validation And Area Health](validation-and-area-health.md) - full validation,
+  linter issue codes, CI, current warning review, and troubleshooting
+- [Changelog](../CHANGELOG.md) - notable repository changes
+- [Agent Instructions](../AGENTS.md) - repository rules for coding agents
+
+## Area Builders
+
+- [Area Building Guide](area-building-guide.md) - authoritative modern `.are`
+  reference, all sections/flags/values, complete template, and validation
+- [Hyrule: First Quest](hyrule-area.md) - manifest/generator contract and
+  campaign-specific validation
+- [Validation And Area Health](validation-and-area-health.md) - parser/reference
+  checks and topology/source findings
+
+## Historical Area References
+
+These pages preserve older builder documentation and examples. The modern
+[Area Building Guide](area-building-guide.md) is authoritative wherever the
+pages disagree.
+
+- [AREAS](AREAS.md)
+- [MOBS](MOBS.md)
+- [MOB HP And Damage](MOBS-HP-&-DAMAGE.md)
+- [OBJECTS](OBJECTS.md)
+- [ROOMS](ROOMS.md)
+- [RESETS](RESETS.md)
+- [SHOPS](SHOPS.md)
+- [SPECIALS](SPECIALS.md)
+- [HELPS](HELPS.md)
+- [Spell Slots](SPELLSLOT.md)
+- [Old And New Values](OLD---NEW-VALUES.md)
+
+## Getting Help
+
+Players should use in-game `help`, `commands`, `bug`, `typo`, and `idea` first.
+For repository problems, open a GitHub issue with the revision, platform,
+reproduction, expected/actual result, and sanitized logs. Report security issues
+privately as described in [SECURITY.md](../SECURITY.md); never post passwords,
+hashes, tokens, player files, or private logs.

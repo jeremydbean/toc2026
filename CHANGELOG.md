@@ -44,13 +44,27 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Operational web-admin endpoints are disabled until `WEB_ADMIN_TOKEN` is configured; queue payloads are bounded and restricted to one protocol-safe line.
 - Player-save snapshots now use bounded native path construction and directory creation instead of shell-built `mkdir` commands.
 - Backup archive creation now verifies shell command return codes, creates the backup directory when needed, and logs success only after archive creation succeeds.
-- Documentation now covers validation, CI, area-health severities, backup behavior, web-admin authentication, and operational troubleshooting.
+- Rebuilt the repository documentation around dedicated player, command,
+  hosting, operator, developer, contributing, and security guides; the README
+  is now an accurate project front door instead of a mixed-audience manual.
+- Corrected documented build paths, player/immortal level boundaries, remort
+  thresholds, current world totals, web API routes, Docker restart behavior,
+  dashboard exposure, legacy DES/Telnet limitations, and bow/run/speedwalk help.
+- Replaced obsolete install/startup/cleanup/refresh instructions that used
+  hard-coded paths, permissive modes, binary copies, and broad process kills
+  with current prerequisite helpers and safe compatibility wrappers.
+- Added `.env` Git/Docker exclusions, a safe `.env.example`, and ignore rules
+  that prevent newly created player/god/hero files from being staged by
+  accident; documented that already tracked legacy hashes remain exposed.
 - Hyrule documentation now records source provenance, coordinate conversion,
   generated vnum ranges, progression, secrets, runtime rules, fidelity limits,
   regeneration, and regression coverage.
 
 ### Fixed
 
+- Fixed `remort <password> ...` and `resetpwd <player> <newpassword>` being
+  registered as `LOG_ALWAYS`, which wrote plaintext password arguments to game
+  logs and snoop output; added a regression test for all credential commands.
 - Fixed off-hand attacks using main-hand proficiency, secondary wield bypassing
   item restrictions, and failed weapon swaps removing the equipped weapon.
 - Fixed comparison estimates for off-hand proficiency, low-skill unarmed damage,

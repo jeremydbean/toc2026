@@ -1,4 +1,8 @@
 
+> **Historical reference:** This page preserves the original ToC wiki text. Use
+> the maintained [Area Building Guide](area-building-guide.md) for current reset
+> commands, context rules, wear locations, limits, and validation.
+
 <p><font size="3">This is the section that installs all the
 mobiles in their various locations, equips the mobiles, locks and
 closes any necessary doors, randomizes any random room exits, and
