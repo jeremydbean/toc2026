@@ -1,17 +1,22 @@
 from __future__ import annotations
 
 import argparse
+import asyncio
+import json
 import os
+import re
 import secrets
-import subprocess
+import socket
 import threading
+from collections import deque
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Optional, Dict, Any
 
-from fastapi import Depends, FastAPI, Header, HTTPException, WebSocket, WebSocketDisconnect, Query
-from fastapi.responses import HTMLResponse, PlainTextResponse
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Response, WebSocket, WebSocketDisconnect
+from fastapi.responses import FileResponse, PlainTextResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-import asyncio
 
 # Shared-secret authentication for operational endpoints. An unset token
 # disables those endpoints instead of exposing immortal commands anonymously.
@@ -44,11 +49,20 @@ QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
 DEFAULT_LOG: Path = Path(os.getenv("LOG_FILE", "log/toc.log"))
 AREA_PATH: Path = Path(os.getenv("AREA_PATH", "area"))
 BACKUP_PATH: Path = Path(os.getenv("BACKUP_PATH", "backups"))
+PLAYER_PATH: Path = Path(os.getenv("PLAYER_PATH", "player"))
+STATIC_PATH = Path(__file__).resolve().parent / "static"
 
-MUD_HOST = "127.0.0.1"
+MUD_HOST = os.getenv("MUD_HOST", "127.0.0.1")
 MUD_PORT = int(os.getenv("MUD_PORT", 9000))
+WEB_ADMIN_PORT = int(os.getenv("WEB_ADMIN_PORT", 9001))
 QUEUE_LINE_MAX_BYTES = 4094
 COMMAND_MAX_LENGTH = 255
+TELNET_IAC = 255
+TELNET_WILL = 251
+TELNET_WONT = 252
+TELNET_DO = 253
+TELNET_DONT = 254
+TELNET_SUPPORTED_SERVER_OPTIONS = {1, 3}  # ECHO and SUPPRESS-GO-AHEAD
 
 try:
     import fcntl as _fcntl
@@ -90,18 +104,45 @@ def require_queue_writer() -> QueueWriter:
     return queue_writer
 
 
-from contextlib import asynccontextmanager
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
-    global queue_writer
+    global AREA_HEALTH_CACHE, parser, queue_writer
     queue_writer = QueueWriter(QUEUE_PATH)
-    yield
-    # Shutdown (nothing needed)
+    parser = await asyncio.to_thread(load_area_parser, AREA_PATH)
+    AREA_MAP_CACHE.clear()
+    AREA_HEALTH_CACHE = None
+    try:
+        yield
+    finally:
+        queue_writer = None
 
 
-app = FastAPI(title="ToC Web Admin", version="1.0", lifespan=lifespan)
+app = FastAPI(
+    title="ToC Web Admin",
+    version="2.0",
+    lifespan=lifespan,
+    docs_url=None,
+    redoc_url=None,
+)
+app.mount("/static", StaticFiles(directory=STATIC_PATH), name="static")
+
+
+@app.middleware("http")
+async def add_security_headers(request, call_next):
+    response = await call_next(request)
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "script-src 'self'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data:; "
+        "connect-src 'self' ws: wss:; "
+        "object-src 'none'; base-uri 'none'; frame-ancestors 'none'; "
+        "form-action 'self'"
+    )
+    response.headers["Referrer-Policy"] = "no-referrer"
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    return response
 
 
 class CommandRequest(BaseModel):
@@ -139,6 +180,30 @@ def append_queue_action(line: str) -> None:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     except OSError as exc:
         raise HTTPException(status_code=503, detail="Command queue unavailable") from exc
+
+
+def telnet_negotiation_responses(data: bytes) -> bytes:
+    """Build minimal Telnet replies for the browser-to-MUD bridge."""
+    replies = bytearray()
+    index = 0
+    while index + 2 < len(data):
+        if data[index] != TELNET_IAC:
+            index += 1
+            continue
+        command = data[index + 1]
+        option = data[index + 2]
+        if command == TELNET_WILL:
+            reply = TELNET_DO if option in TELNET_SUPPORTED_SERVER_OPTIONS else TELNET_DONT
+        elif command == TELNET_WONT:
+            reply = TELNET_DONT
+        elif command in (TELNET_DO, TELNET_DONT):
+            reply = TELNET_WONT
+        else:
+            index += 2
+            continue
+        replies.extend((TELNET_IAC, reply, option))
+        index += 3
+    return bytes(replies)
 
 
 # Class stat weights for gear optimization
@@ -244,9 +309,6 @@ RACE_FLAGS = {
     "saurian": "saurian-only",
 }
 
-# Player file constants
-PLAYER_PATH: Path = Path(os.getenv("PLAYER_PATH", "player"))
-
 CLASS_NAMES = ["mage", "cleric", "thief", "warrior", "monk", "necromancer"]
 GUILD_NAMES = ["mage", "cleric", "thief", "warrior", "monk", "necromancer",
                "?", "?", "?", "?", "any", "none"]
@@ -261,6 +323,7 @@ WEAR_SLOT_NAMES = {
 }
 
 SEX_NAMES = ["neutral", "male", "female"]
+PLAYER_NAME_RE = re.compile(r"^[A-Za-z]{1,20}$")
 ALIGN_NAMES = [
     (-1000, -700, "Diabolic"),
     (-700,  -350, "Evil"),
@@ -278,15 +341,34 @@ def align_str(alig: int) -> str:
     return "Angelic" if alig >= 700 else "Diabolic"
 
 
+def resolve_player_path(name: str) -> Path | None:
+    """Resolve a valid player name without changing its filename casing."""
+    if not PLAYER_NAME_RE.fullmatch(name):
+        return None
+    try:
+        direct = PLAYER_PATH / name
+        if direct.is_file() and not direct.is_symlink():
+            return direct
+        folded = name.casefold()
+        for candidate in PLAYER_PATH.iterdir():
+            if (
+                candidate.name.casefold() == folded
+                and PLAYER_NAME_RE.fullmatch(candidate.name)
+                and candidate.is_file()
+                and not candidate.is_symlink()
+            ):
+                return candidate
+    except OSError:
+        return None
+    return None
+
+
 def parse_player_file(name: str) -> dict | None:
     """Parse a MUD player file and return a structured dict."""
-    cname = name.capitalize()
-    # Reject names with path-separator chars or dots to prevent traversal
-    if "/" in cname or "\\" in cname or "." in cname:
+    path = resolve_player_path(name)
+    if path is None:
         return None
-    path = PLAYER_PATH / cname
-    if not path.exists():
-        return None
+    cname = path.name
 
     data: dict = {
         "name": cname, "race": "human", "sex": 1,
@@ -467,6 +549,7 @@ def parse_player_file(name: str) -> dict | None:
     # Enrich equipment items with area parser data
     for item in data["equipment"]:
         vnum = item.get("vnum", 0)
+        item["wear_slot"] = WEAR_SLOT_NAMES.get(item.get("wear", -1), "Unknown")
         obj = parser.objects.get(vnum)
         if obj:
             item["name"]      = obj.short_desc
@@ -495,3319 +578,163 @@ def load_area_parser(area_path: Path) -> AreaParser:
     return loaded_parser
 
 
-# Initialize parser and load area files
-parser = load_area_parser(AREA_PATH)
-
+# The lifespan loads this parser once startup arguments and environment values
+# are final. Keeping import side effects light also makes tests and tooling fast.
+parser = AreaParser(AREA_PATH)
 AREA_MAP_CACHE: Dict[str, Dict[str, Any]] = {}
+AREA_HEALTH_CACHE: Optional[Dict[str, Any]] = None
+
+
+def current_area_health() -> Dict[str, Any]:
+    global AREA_HEALTH_CACHE
+    if AREA_HEALTH_CACHE is None:
+        AREA_HEALTH_CACHE = build_area_health(parser, AREA_PATH)
+    return AREA_HEALTH_CACHE
 
 
 def read_process_health() -> dict[str, bool]:
-    # Check if services are reachable by probing their ports (works cross-platform)
-    import socket
-
-    def _port_open(port: int) -> bool:
-        try:
-            with socket.create_connection(("127.0.0.1", port), timeout=1):
-                return True
-        except OSError:
-            return False
-
+    """Return runtime reachability without probing the dashboard itself."""
+    try:
+        with socket.create_connection((MUD_HOST, MUD_PORT), timeout=0.5):
+            mud_online = True
+    except OSError:
+        mud_online = False
     return {
-        "merc": _port_open(MUD_PORT),
-        "webadmin": _port_open(int(os.getenv("WEB_ADMIN_PORT", 9001))),
+        "merc": mud_online,
+        # Serving this request proves the web process is available. Probing a
+        # separately configured port gave false negatives for --port launches.
+        "webadmin": True,
     }
 
 
-# ============ Frontend - Part 1 ============
-
-
-
-@app.get("/", response_class=HTMLResponse)
-async def index() -> str:
-    return """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Times of Chaos - MUD</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F409;</text></svg>">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@5.3.0/css/xterm.css" />
-    <script src="https://cdn.jsdelivr.net/npm/xterm@5.3.0/lib/xterm.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.8.0/lib/xterm-addon-fit.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto+Mono:wght@400;500&family=Lato:wght@400;700&display=swap');
-
-        :root {
-            --primary-color: #4a0404;
-            --secondary-color: #1a1a1a;
-            --accent-color: #d4af37;
-            --text-color: #e0e0e0;
-        }
-
-        body {
-            background-color: #0a0a0a;
-            color: var(--text-color);
-            font-family: 'Lato', sans-serif;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Cinzel', serif;
-        }
-
-        .terminal-font {
-            font-family: 'Roboto Mono', monospace;
-        }
-
-        .hero-pattern {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .parchment {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #6b0606;
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .stat-card {
-            background: rgba(20, 20, 20, 0.9);
-            border: 1px solid #333;
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-        }
-
-        .blinking-cursor::after {
-            content: '█';
-            animation: blink 1s step-end infinite;
-            color: var(--accent-color);
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f0f0f;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        @keyframes hero-blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        .hero-cursor {
-            display: inline-block;
-            animation: hero-blink 0.75s step-end infinite;
-            color: #22c55e;
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        
-        .nav-link.active-nav { font-weight: bold; }
-        
-        /* Toast animation */
-        #toast-container > div {
-            opacity: 1;
-            transform: translateX(0);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-    </style>
-</head>
-<body class="min-h-screen flex flex-col">
-
-    <!-- Navigation -->
-    <nav class="bg-black/90 border-b border-red-900/30 fixed w-full z-50 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center gap-3 cursor-pointer" onclick="showSection('home')">
-                    <i class="fa-solid fa-dragon text-3xl text-red-700"></i>
-                    <span class="text-2xl font-bold text-white tracking-wider font-cinzel">TIMES OF CHAOS</span>
-                </div>
-                <div class="hidden md:flex items-center gap-2 font-mono text-xs">
-                    <span id="nav-dot" class="h-2 w-2 rounded-full bg-green-500 inline-block transition-colors duration-500"></span>
-                    <span id="nav-dot-text" class="text-green-400 transition-colors duration-500">LIVE</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <span data-nav="home" onclick="showSection('home')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Home</span>
-                        <span data-nav="play" onclick="showSection('play')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Play Now</span>
-                        <span data-nav="database" onclick="showSection('database')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Database</span>
-                        <span data-nav="health" onclick="showSection('health')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Health</span>
-                        <span data-nav="guide" onclick="showSection('guide')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">How to Play</span>
-                        <span data-nav="players" onclick="showSection('players')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Players</span>
-                        <span data-nav="admin" onclick="showSection('admin')" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">Admin</span>
-                        <span data-nav="best-gear" onclick="showBestGear()" class="nav-link px-4 py-2 rounded hover:bg-gray-800 transition-colors text-yellow-500 hover:text-yellow-300 cursor-pointer"><i class="fas fa-khanda mr-2"></i>Best Gear</span>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white p-2">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-red-900/30">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <span data-nav="home" onclick="showSection('home')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Home</span>
-                <span data-nav="play" onclick="showSection('play')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Play Now</span>
-                <span data-nav="database" onclick="showSection('database')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Database</span>
-                <span data-nav="health" onclick="showSection('health')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Health</span>
-                <span data-nav="guide" onclick="showSection('guide')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">How to Play</span>
-                <span data-nav="players" onclick="showSection('players')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Players</span>
-                <span data-nav="admin" onclick="showSection('admin')" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">Admin</span>
-                <span data-nav="best-gear" onclick="showBestGear()" class="nav-link text-yellow-500 hover:text-yellow-300 block px-3 py-2 rounded-md text-base font-medium cursor-pointer"><i class="fas fa-khanda mr-2"></i>Best Gear</span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content Container -->
-    <div class="pt-20 flex-grow">
-        
-        <!-- HOME SECTION -->
-        <div id="home-section" class="tab-content active">
-            <!-- Hero Section - Terminal Login Aesthetic (art from original ROM greeting) -->
-            <section class="hero-pattern relative min-h-screen flex items-center justify-center overflow-hidden">
-                <!-- ASCII art filled by JS from #ascii-art-src -->
-                <pre id="ascii-hero-art" class="absolute inset-0 text-red-900 select-none pointer-events-none overflow-hidden" style="opacity:0.08;font-size:0.54rem;line-height:1.2;font-family:'Roboto Mono',monospace;padding:7rem 2rem 2rem;z-index:0;white-space:pre;"></pre>
-                <!-- CRT scanlines overlay -->
-                <div class="absolute inset-0 pointer-events-none" style="background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.06) 3px,rgba(0,0,0,0.06) 6px);z-index:1;"></div>
-                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-[#0a0a0a]" style="z-index:1;"></div>
-                <div class="relative text-center px-4 max-w-4xl mx-auto" style="z-index:2;">
-                    <div class="mb-4 font-mono text-red-900/50 text-xs tracking-widest select-none">
-                        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                    </div>
-                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight drop-shadow-2xl font-cinzel">
-                        TIMES <span class="text-red-600">OF</span> CHAOS
-                    </h1>
-                    <div class="font-mono text-base mb-3">
-                        <span class="text-gray-600">&gt;</span>&nbsp;<span class="text-green-400">By what name do you go by?</span>&nbsp;<span class="hero-cursor">_</span>
-                    </div>
-                    <p class="text-gray-600 font-mono text-sm mb-10 italic">
-                        May your stay here be... Interesting...
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-                        <button onclick="showSection('play')" class="btn-primary px-8 py-4 rounded text-lg font-bold flex items-center justify-center gap-2 group font-mono">
-                            <i class="fa-solid fa-terminal"></i> CONNECT NOW
-                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                        </button>
-                        <a href="https://github.com/jeremydbean/toc2026" target="_blank" class="px-8 py-4 rounded border border-gray-700 hover:border-red-800 bg-transparent text-gray-400 hover:text-white text-lg font-bold flex items-center justify-center gap-2 transition-all hover:bg-red-900/10 font-mono">
-                            <i class="fa-brands fa-github"></i> VIEW SOURCE
-                        </a>
-                    </div>
-                    <div class="font-mono text-red-900/50 text-xs tracking-widest select-none">
-                        =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                    </div>
-                </div>
-            </section>
-            <!-- ASCII Art data from original ROM login greeting (injected into #ascii-hero-art by JS) -->
-            <script id="ascii-art-src" type="text/plain">
-                            ==(W{==========-      /===-   _________
-                              ||  (.--.)         /===-_---         ------____
-                              | \\_,|**|,__      |===--___               __,-'
-                 -==\\\\        ` ' `--'   ),    `//=\\\\   ----`---.___.--
-             ______-==|        /`\\_.  .__/\\ \\    | |  \\\\           _--`
-      ___----   ,-/-==\\\\      (   | .  |----|   | |   `\\        ,'
-    _-        /'    |  \\\\     )__/==0==-\\<>/   / /      \\      /
-  .'        /       |   \\\\      /-\\___/--\\/  /' /        \\   /'
- /  ____  /         |    \\`\\.__/---   \\  |_/'  /          \\/'
-/-'-    --------__  |     --/-         ( )   /'       __---`
-                  \\_|      /       __) | ;  ),   __---
-                    '----_/      _- /- |/ \\   '- \\
- IMPs:              {\\__--_/}   _/ \\\\_>-|)<__\\     \\       TIMES
- Eclipse            /'   (_/ __-   | |__>--<__|     |        OF
- Gravestone        |  __/) )-      | |__>--<__|     |      CHAOS!
- Soulcrusher       / /  ,_/       / /__>---<__/     |
-                 o-o _//        /--_>---<__--   _ /  May your stay here be...
-                 (^(-          /-_>---<__-    /      Interesting...
-               ( '))          |__>--<__|    /
-            ' )) (            \\__>--<__\\    \\
-        ,/,'//( (              --<__>--<--   \\
-      ,( ( ((, ))               --_->--<_--_/
-            </script>
-
-            <!-- Features Grid -->
-            <section class="py-16 bg-[#0f0f0f]">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <div class="font-mono text-red-900/40 text-xs mb-3 tracking-widest">=-=-=-=-=-=- FEATURES =-=-=-=-=-=-</div>
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 font-mono tracking-wider">A WORLD OF TEXT</h2>
-                        <p class="text-gray-600 max-w-2xl mx-auto font-mono text-sm">ROM architecture &mdash; enhanced for the modern era.</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="stat-card p-6 rounded-lg">
-                            <div class="font-mono text-gray-700 text-xs mb-3 tracking-widest">[ 01 / 03 ]</div>
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 bg-red-900/20 rounded border border-red-900/30 flex items-center justify-center text-red-500 shrink-0">
-                                    <i class="fa-solid fa-skull-crossbones"></i>
-                                </div>
-                                <h3 class="text-sm font-bold text-white font-mono tracking-wider uppercase">Tactical Combat</h3>
-                            </div>
-                            <div class="font-mono text-red-900/30 text-xs mb-3">=====================================</div>
-                            <p class="text-gray-500 text-xs leading-relaxed font-mono">
-                                Real-time combat using THAC0 mechanics. Manage skills, spells, gear weight &mdash; survive legendary mobs.
-                            </p>
-                        </div>
-                        <div class="stat-card p-6 rounded-lg">
-                            <div class="font-mono text-gray-700 text-xs mb-3 tracking-widest">[ 02 / 03 ]</div>
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 bg-blue-900/20 rounded border border-blue-900/30 flex items-center justify-center text-blue-500 shrink-0">
-                                    <i class="fa-solid fa-hat-wizard"></i>
-                                </div>
-                                <h3 class="text-sm font-bold text-white font-mono tracking-wider uppercase">Complex Magic</h3>
-                            </div>
-                            <div class="font-mono text-red-900/30 text-xs mb-3">=====================================</div>
-                            <p class="text-gray-500 text-xs leading-relaxed font-mono">
-                                Hundreds of spells across distinct magic schools. From simple heals to room-clearing chaos storms.
-                            </p>
-                        </div>
-                        <div class="stat-card p-6 rounded-lg">
-                            <div class="font-mono text-gray-700 text-xs mb-3 tracking-widest">[ 03 / 03 ]</div>
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-10 h-10 bg-yellow-900/20 rounded border border-yellow-900/30 flex items-center justify-center text-yellow-500 shrink-0">
-                                    <i class="fa-solid fa-scroll"></i>
-                                </div>
-                                <h3 class="text-sm font-bold text-white font-mono tracking-wider uppercase"><span id="hero-area-count">100+</span> Areas</h3>
-                            </div>
-                            <div class="font-mono text-red-900/30 text-xs mb-3">=====================================</div>
-                            <p class="text-gray-500 text-xs leading-relaxed font-mono">
-                                Explore thousands of rooms across unique `.are` files. Midgaard, Moria, the Ashen Wastes, and beyond.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- PLAY SECTION -->
-        <div id="play-section" class="tab-content">
-            <section class="py-10 bg-[#0a0a0a] min-h-screen">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        
-                        <!-- Terminal Window -->
-                        <div class="lg:col-span-2">
-                            <div class="parchment p-1 rounded-lg bg-[#111]">
-                                <div class="bg-black p-4 rounded border border-gray-800 h-[600px] font-mono text-sm relative" id="terminal-container">
-                                    <!-- xterm.js will be injected here -->
-                                </div>
-                            </div>
-                            <div class="mt-4 flex justify-between text-gray-400 text-sm">
-                                <div>Status: <span id="connection-status" class="text-gray-500">Not connected</span></div>
-                                <div class="flex items-center gap-3">
-                                    <span>Host: localhost:9000</span>
-                                    <button onclick="if(ws) ws.close(); connectTerminal();" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors"><i class="fas fa-plug mr-1"></i>Reconnect</button>
-                                    <button onclick="termFontSize(-1)" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors" title="Decrease font size"><i class="fas fa-minus"></i></button>
-                                    <button onclick="termFontSize(1)" class="text-xs px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors" title="Increase font size"><i class="fas fa-plus"></i></button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Server Details -->
-                        <div class="space-y-8">
-                            <div>
-                                <h2 class="text-3xl font-bold text-white mb-4">Live Server Status</h2>
-                                <div class="flex items-center gap-3 mb-6">
-                                    <span class="flex h-3 w-3 relative">
-                                        <span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                        <span id="status-dot" class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                                    </span>
-                                    <span id="status-text" class="text-green-400 font-mono">ONLINE</span>
-                                </div>
-                                <p class="text-gray-400 mb-6">
-                                    Connect directly via Telnet if you prefer a dedicated client like Mudlet or Tintin++.
-                                </p>
-                            </div>
-
-                            <div class="grid grid-cols-1 gap-4">
-                                <div class="bg-[#151515] p-4 rounded border-l-2 border-red-700">
-                                    <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Host</div>
-                                    <div class="text-white font-mono text-xl">localhost</div>
-                                </div>
-                                <div class="bg-[#151515] p-4 rounded border-l-2 border-red-700">
-                                    <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Port</div>
-                                    <div class="text-white font-mono text-xl flex items-center gap-2">
-                                        9000 
-                                        <button onclick="copyToClipboard('9000')" class="text-xs text-gray-600 hover:text-white"><i class="fa-regular fa-copy"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- DATABASE SECTION -->
-        <div id="database-section" class="tab-content">
-            <section class="py-10 bg-[#0a0a0a] min-h-screen">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">World Database</h2>
-                    
-                    <!-- Stats Grid -->
-                    <div id="db-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Mobiles</div>
-                            <div id="stat-mobs" class="text-2xl font-bold text-red-500">-</div>
-                        </div>
-                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Objects</div>
-                            <div id="stat-objs" class="text-2xl font-bold text-blue-500">-</div>
-                        </div>
-                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Rooms</div>
-                            <div id="stat-rooms" class="text-2xl font-bold text-green-500">-</div>
-                        </div>
-                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Areas</div>
-                            <div id="stat-areas" class="text-2xl font-bold text-yellow-500">-</div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex gap-4 mb-8">
-                        <button onclick="loadDb('mobs')" class="px-4 py-2 rounded bg-red-900/20 text-red-400 hover:bg-red-900/40 border border-red-900/50 transition-colors">Mobiles</button>
-                        <button onclick="loadDb('objects')" class="px-4 py-2 rounded bg-blue-900/20 text-blue-400 hover:bg-blue-900/40 border border-blue-900/50 transition-colors">Objects</button>
-                        <button onclick="loadDb('rooms')" class="px-4 py-2 rounded bg-green-900/20 text-green-400 hover:bg-green-900/40 border border-green-900/50 transition-colors">Rooms</button>
-                        <button onclick="loadDb('areas')" class="px-4 py-2 rounded bg-yellow-900/20 text-yellow-400 hover:bg-yellow-900/40 border border-yellow-900/50 transition-colors">Areas</button>
-                    </div>
-
-                    <div class="flex gap-4 mb-2">
-                        <input type="text" id="db-search" placeholder="Search loaded data..." class="flex-1 bg-[#151515] border border-gray-800 rounded px-4 py-3 text-white focus:border-red-700 outline-none" oninput="debouncedFilterDb()">
-                        <button onclick="exportCsv()" class="shrink-0 px-4 py-2 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors text-sm flex items-center gap-2" title="Export current results as CSV">
-                            <i class="fas fa-download"></i><span class="hidden sm:inline">Export</span>
-                        </button>
-                    </div>
-                    <div id="db-result-count" class="text-xs text-gray-600 font-mono mb-4"></div>
-
-                    <!-- Advanced Filters (Objects Only) -->
-                    <div id="obj-filter-container" class="hidden w-full mb-6">
-                        <div class="flex justify-end mb-2">
-                            <button onclick="toggleFilters(this)" class="px-4 py-2 rounded bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-600 transition-colors flex items-center gap-2">
-                                <i class="fa-solid fa-filter"></i> Filters
-                            </button>
-                        </div>
-                        
-                        <div id="advanced-filters" class="hidden bg-[#151515] p-4 rounded border border-gray-800 grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <!-- Type -->
-                            <div>
-                                <label class="block text-xs text-gray-500 uppercase mb-1">Item Type</label>
-                                <select id="filter-type" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
-                                    <option value="">Any</option>
-                                    <option value="weapon">Weapon</option>
-                                    <option value="armor">Armor</option>
-                                    <option value="light">Light</option>
-                                    <option value="container">Container</option>
-                                    <option value="drink container">Drink Container</option>
-                                    <option value="food">Food</option>
-                                    <option value="potion">Potion</option>
-                                    <option value="scroll">Scroll</option>
-                                    <option value="wand">Wand</option>
-                                    <option value="staff">Staff</option>
-                                    <option value="pill">Pill</option>
-                                    <option value="clothing">Clothing</option>
-                                    <option value="money">Money</option>
-                                    <option value="boat">Boat</option>
-                                    <option value="fountain">Fountain</option>
-                                    <option value="portal">Portal</option>
-                                    <option value="key">Key</option>
-                                    <option value="map">Map</option>
-                                    <option value="treasure">Treasure</option>
-                                </select>
-                            </div>
-
-                            <!-- Wear -->
-                            <div>
-                                <label class="block text-xs text-gray-500 uppercase mb-1">Wear Location</label>
-                                <select id="filter-wear" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
-                                    <option value="">Any</option>
-                                    <option value="take">Take</option>
-                                    <option value="finger">Finger</option>
-                                    <option value="neck">Neck</option>
-                                    <option value="body">Body</option>
-                                    <option value="head">Head</option>
-                                    <option value="legs">Legs</option>
-                                    <option value="feet">Feet</option>
-                                    <option value="hands">Hands</option>
-                                    <option value="arms">Arms</option>
-                                    <option value="shield">Shield</option>
-                                    <option value="about">About Body</option>
-                                    <option value="waist">Waist</option>
-                                    <option value="wrist">Wrist</option>
-                                    <option value="wield">Wield</option>
-                                    <option value="hold">Hold</option>
-                                    <option value="two-hands">Two Hands</option>
-                                </select>
-                            </div>
-
-                            <!-- Level -->
-                            <div>
-                                <label class="block text-xs text-gray-500 uppercase mb-1">Level Range</label>
-                                <div class="flex gap-2">
-                                    <input type="number" id="filter-min-level" placeholder="Min" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
-                                    <input type="number" id="filter-max-level" placeholder="Max" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
-                                </div>
-                            </div>
-
-                            <!-- Stat Filter -->
-                            <div class="md:col-span-3">
-                                <label class="block text-xs text-gray-500 uppercase mb-1">Stat Filter (e.g. hitroll>5)</label>
-                                <input type="text" id="filter-stat" placeholder="hitroll>5" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-blue-500 outline-none">
-                            </div>
-
-                            <!-- Flags -->
-                            <div class="md:col-span-3">
-                                <label class="block text-xs text-gray-500 uppercase mb-2">Flags</label>
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="glow"> Glow
-                                    </label>
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="hum"> Hum
-                                    </label>
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="magic"> Magic
-                                    </label>
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="invis"> Invis
-                                    </label>
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="nodrop"> NoDrop
-                                    </label>
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="noremove"> NoRemove
-                                    </label>
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="anti-good"> Anti-Good
-                                    </label>
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="anti-evil"> Anti-Evil
-                                    </label>
-                                    <label class="flex items-center gap-2 text-sm text-gray-300 cursor-pointer">
-                                        <input type="checkbox" class="filter-flag" value="anti-neutral"> Anti-Neutral
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Apply Button -->
-                            <div class="md:col-span-3 flex justify-end gap-2">
-                                <button onclick="resetObjectFilters()" class="px-4 py-2 rounded bg-gray-700 text-gray-200 hover:bg-gray-600 font-bold transition-colors">
-                                    Reset Filters
-                                </button>
-                                <button onclick="loadDb('objects', true)" class="px-6 py-2 rounded bg-blue-600 text-white hover:bg-blue-500 font-bold transition-colors">
-                                    Apply Filters
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-gray-400">
-                                <thead class="bg-[#0a0a0a] text-gray-200 uppercase text-xs font-bold">
-                                    <tr id="db-headers">
-                                        <!-- Headers injected via JS -->
-                                    </tr>
-                                </thead>
-                                <tbody id="db-content" class="divide-y divide-gray-800">
-                                    <tr><td colspan="5" class="p-4 text-center">Select a category to load data</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- HEALTH SECTION -->
-        <div id="health-section" class="tab-content">
-            <section class="py-10 bg-[#0a0a0a] min-h-screen">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex items-center justify-between gap-4 mb-8 border-b border-gray-800 pb-4">
-                        <h2 class="text-3xl font-bold text-white">Area Health</h2>
-                        <button onclick="loadAreaHealth(true)" class="px-4 py-2 rounded bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 transition-colors text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-rotate"></i><span>Refresh</span>
-                        </button>
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Critical</div>
-                            <div id="health-critical" class="text-2xl font-bold text-red-500">-</div>
-                        </div>
-                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Warnings</div>
-                            <div id="health-warning" class="text-2xl font-bold text-yellow-500">-</div>
-                        </div>
-                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Info</div>
-                            <div id="health-info" class="text-2xl font-bold text-blue-500">-</div>
-                        </div>
-                        <div class="bg-[#151515] p-4 rounded border border-gray-800 text-center">
-                            <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">World Size</div>
-                            <div id="health-world" class="text-lg font-bold text-green-500">-</div>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-3 mb-4">
-                        <select id="health-severity-filter" onchange="renderAreaHealth()" class="bg-[#151515] border border-gray-800 rounded px-3 py-2 text-white focus:border-red-700 outline-none">
-                            <option value="">All severities</option>
-                            <option value="critical">Critical</option>
-                            <option value="warning">Warnings</option>
-                            <option value="info">Info</option>
-                        </select>
-                        <input type="text" id="health-search" placeholder="Filter by file, code, vnum, or text..." oninput="renderAreaHealth()" class="flex-1 bg-[#151515] border border-gray-800 rounded px-4 py-2 text-white focus:border-red-700 outline-none">
-                    </div>
-                    <div id="health-result-count" class="text-xs text-gray-600 font-mono mb-4"></div>
-
-                    <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-gray-400">
-                                <thead class="bg-[#0a0a0a] text-gray-200 uppercase text-xs font-bold">
-                                    <tr>
-                                        <th class="p-4">Severity</th>
-                                        <th class="p-4">Code</th>
-                                        <th class="p-4">File</th>
-                                        <th class="p-4">Vnum</th>
-                                        <th class="p-4">Message</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="health-content" class="divide-y divide-gray-800">
-                                    <tr><td colspan="5" class="p-4 text-center">Open this view to scan area health.</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- GUIDE SECTION -->
-        <div id="guide-section" class="tab-content">
-            <section class="py-10 bg-[#0a0a0a] min-h-screen">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Adventurer's Guide</h2>
-                    
-                    <div class="space-y-12">
-                        <!-- Introduction -->
-                        <div>
-                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Welcome to Times of Chaos</h3>
-                            <div class="prose prose-invert max-w-none text-gray-300">
-                                <p>Times of Chaos is a text-based Multiplayer Online Role-Playing Game (MUD) set in a fantasy world. You will explore vast realms, fight dangerous monsters, solve quests, and grow in power.</p>
-                                <p>You can play directly from your browser using the "Play Now" tab, or connect using a dedicated MUD client (like Mudlet or Tintin++) to <strong>localhost:9000</strong>.</p>
-                            </div>
-                        </div>
-
-                        <!-- Character Creation -->
-                        <div>
-                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Character Creation</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Races</h4>
-                                    <ul class="space-y-2 text-gray-300">
-                                        <li><strong class="text-yellow-500">Human:</strong> Versatile and balanced. No specific weaknesses.</li>
-                                        <li><strong class="text-yellow-500">Elf:</strong> Agile and magical. Innate <em>Infrared</em> and <em>Sneak</em>.</li>
-                                        <li><strong class="text-yellow-500">Dwarf:</strong> Tough and sturdy. Innate <em>Infrared</em> and <em>Bash</em>.</li>
-                                        <li><strong class="text-yellow-500">Hobbit:</strong> Small and stealthy. Innate <em>Hide</em>.</li>
-                                        <li><strong class="text-yellow-500">Saurian:</strong> Lizard-like humanoids. Innate <em>Infrared</em>.</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-white mb-2">Classes</h4>
-                                    <ul class="space-y-2 text-gray-300">
-                                        <li><strong class="text-blue-400">Warrior:</strong> Masters of weapons and combat. Primary Stat: <strong>Strength</strong>.</li>
-                                        <li><strong class="text-blue-400">Mage:</strong> Wielders of arcane magic. Primary Stat: <strong>Intelligence</strong>.</li>
-                                        <li><strong class="text-blue-400">Cleric:</strong> Healers and divine casters. Primary Stat: <strong>Wisdom</strong>.</li>
-                                        <li><strong class="text-blue-400">Thief:</strong> Experts in stealth and trickery. Primary Stat: <strong>Dexterity</strong>.</li>
-                                        <li><strong class="text-blue-400">Monk:</strong> Unarmed fighters and disciplinarians. Primary Stat: <strong>Constitution</strong>.</li>
-                                        <li><strong class="text-blue-400">Necromancer:</strong> Masters of death and dark arts. Primary Stat: <strong>Intelligence</strong>.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Web Features -->
-                        <div>
-                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Web Features</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <h4 class="text-lg font-bold text-white mb-2"><i class="fas fa-map text-green-500 mr-2"></i>Interactive Maps</h4>
-                                    <p class="text-sm text-gray-400">In the <strong>Database</strong> section, click "Areas" and then the "Map" button next to any area to view a live, generated map of the zone. You can see room connections, mobs, and objects.</p>
-                                </div>
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <h4 class="text-lg font-bold text-white mb-2"><i class="fas fa-khanda text-yellow-500 mr-2"></i>Best Gear Finder</h4>
-                                    <p class="text-sm text-gray-400">Use the <strong>Best Gear</strong> tool to automatically calculate the best equipment for your class and level. It analyzes item stats and suggests the optimal loadout.</p>
-                                </div>
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <h4 class="text-lg font-bold text-white mb-2"><i class="fas fa-database text-blue-500 mr-2"></i>Database</h4>
-                                    <p class="text-sm text-gray-400">Search the entire game world for Mobs, Objects, and Rooms. Find out where items drop or where specific monsters spawn.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Basic Commands -->
-                        <div>
-                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Essential Commands</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <h4 class="text-white font-bold mb-2">Movement & Looking</h4>
-                                    <ul class="text-sm text-gray-400 space-y-1">
-                                        <li><code class="text-yellow-500">north, south, east, west</code> - Move</li>
-                                        <li><code class="text-yellow-500">up, down</code> - Change elevation</li>
-                                        <li><code class="text-yellow-500">look</code> - See room description</li>
-                                        <li><code class="text-yellow-500">exits</code> - See available exits</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <h4 class="text-white font-bold mb-2">Combat</h4>
-                                    <ul class="text-sm text-gray-400 space-y-1">
-                                        <li><code class="text-yellow-500">kill &lt;target&gt;</code> - Attack a monster</li>
-                                        <li><code class="text-yellow-500">cast '&lt;spell&gt;' &lt;target&gt;</code> - Cast magic</li>
-                                        <li><code class="text-yellow-500">flee</code> - Run away from combat</li>
-                                        <li><code class="text-yellow-500">consider &lt;target&gt;</code> - Check difficulty</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <h4 class="text-white font-bold mb-2">Information</h4>
-                                    <ul class="text-sm text-gray-400 space-y-1">
-                                        <li><code class="text-yellow-500">score</code> - Check stats/exp/hp</li>
-                                        <li><code class="text-yellow-500">inventory</code> - Check carried items</li>
-                                        <li><code class="text-yellow-500">equipment</code> - Check worn items</li>
-                                        <li><code class="text-yellow-500">who</code> - See online players</li>
-                                    </ul>
-                                </div>
-                                <div class="bg-[#151515] p-4 rounded border border-gray-800">
-                                    <h4 class="text-white font-bold mb-2">Communication</h4>
-                                    <ul class="text-sm text-gray-400 space-y-1">
-                                        <li><code class="text-yellow-500">say &lt;message&gt;</code> - Talk to room</li>
-                                        <li><code class="text-yellow-500">tell &lt;player&gt; &lt;msg&gt;</code> - Private message</li>
-                                        <li><code class="text-yellow-500">gossip &lt;message&gt;</code> - Global chat</li>
-                                        <li><code class="text-yellow-500">group</code> - Manage party</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tips -->
-                        <div>
-                            <h3 class="text-2xl font-cinzel text-red-500 mb-4">Survival Tips</h3>
-                            <ul class="list-disc list-inside text-gray-300 space-y-2">
-                                <li><strong>Resting:</strong> Type <code class="text-yellow-500">sleep</code> to regenerate Health and Mana faster. Type <code class="text-yellow-500">wake</code> to stand up.</li>
-                                <li><strong>Leveling:</strong> Gain experience by killing monsters. When you have enough, find your Guildmaster to <code class="text-yellow-500">train</code> stats and <code class="text-yellow-500">practice</code> skills.</li>
-                                <li><strong>Light:</strong> Some areas are dark. Make sure to carry a light source or you won't be able to see!</li>
-                                <li><strong>Food & Drink:</strong> Your character gets hungry and thirsty. Buy food at the inn or find a water source.</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- ADMIN SECTION -->
-        <div id="admin-section" class="tab-content">
-            <section class="py-10 bg-[#0a0a0a] min-h-screen">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Server Administration</h2>
-
-                    <!-- Auth Token -->
-                    <div class="bg-[#151515] p-4 rounded border border-yellow-900/20 mb-8 flex items-center gap-4">
-                        <i class="fas fa-key text-yellow-700 text-lg shrink-0"></i>
-                        <div class="flex-1">
-                            <label class="block text-xs text-gray-500 uppercase tracking-wider mb-1">API Token <span class="normal-case text-gray-600">(required for admin operations)</span></label>
-                            <input type="password" id="admin-token" placeholder="Enter WEB_ADMIN_TOKEN"
-                                   class="w-full bg-black border border-gray-700 rounded px-3 py-1.5 text-white text-sm focus:border-yellow-500 outline-none"
-                                oninput="setAdminToken(this.value)">
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                        <!-- WizInfo -->
-                        <div class="bg-[#151515] p-6 rounded border border-gray-800">
-                            <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-bullhorn text-red-500 mr-2"></i> Broadcast WizInfo</h3>
-                            <form onsubmit="sendWizInfo(event)" class="space-y-4">
-                                <div>
-                                    <label class="block text-sm text-gray-400 mb-1">Message</label>
-                                    <textarea id="wizinfo-msg" rows="3" maxlength="4000" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none" required></textarea>
-                                </div>
-                                <div>
-                                    <label class="block text-sm text-gray-400 mb-1">Min Level</label>
-                                    <input type="number" id="wizinfo-level" value="62" min="1" max="70" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none">
-                                </div>
-                                <button type="submit" class="btn-primary px-4 py-2 rounded font-bold w-full">Send Broadcast</button>
-                            </form>
-                        </div>
-
-                        <!-- Server Command -->
-                        <div class="bg-[#151515] p-6 rounded border border-gray-800">
-                            <h3 class="text-xl font-bold text-white mb-4"><i class="fa-solid fa-terminal text-red-500 mr-2"></i> Server Command</h3>
-                            <form onsubmit="sendCommand(event)" class="space-y-4">
-                                <div>
-                                    <label class="block text-sm text-gray-400 mb-1">Command</label>
-                                    <input type="text" id="server-cmd" maxlength="255" placeholder="e.g. copyover" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none" required>
-                                </div>
-                                <button type="submit" class="px-4 py-2 rounded font-bold w-full bg-red-900 hover:bg-red-800 text-white transition-colors">Execute Command</button>
-                            </form>
-                            
-                            <div class="mt-8 pt-8 border-t border-gray-800">
-                                <h4 class="text-white font-bold mb-4">Quick Actions</h4>
-                                <div class="flex gap-4 flex-wrap">
-                                    <button onclick="action('backup', this)" class="flex-1 px-4 py-2 rounded bg-blue-900/30 text-blue-400 hover:bg-blue-900/50 border border-blue-900 transition-colors">
-                                        <i class="fa-solid fa-save mr-2"></i> Backup
-                                    </button>
-                                    <button onclick="action('reload', this)" class="flex-1 px-4 py-2 rounded bg-green-900/30 text-green-400 hover:bg-green-900/50 border border-green-900 transition-colors">
-                                        <i class="fa-solid fa-rotate mr-2"></i> Reload Areas
-                                    </button>
-                                    <button onclick="action('shutdown', this)" class="flex-1 px-4 py-2 rounded bg-red-900/30 text-red-400 hover:bg-red-900/50 border border-red-900 transition-colors">
-                                        <i class="fa-solid fa-power-off mr-2"></i> Shutdown
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Backup Preview -->
-                    <div class="bg-[#151515] rounded border border-gray-800 mb-8">
-                        <div class="p-4 border-b border-gray-800 flex justify-between items-center">
-                            <h3 class="text-xl font-bold text-white">Backup Preview</h3>
-                            <button onclick="refreshBackups()" class="text-sm text-gray-400 hover:text-white"><i class="fa-solid fa-sync mr-1"></i> Refresh</button>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left text-gray-400">
-                                <thead class="bg-[#0a0a0a] text-gray-200 uppercase text-xs font-bold">
-                                    <tr>
-                                        <th class="p-4">Archive</th>
-                                        <th class="p-4">Size</th>
-                                        <th class="p-4">Modified</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="backup-content" class="divide-y divide-gray-800">
-                                    <tr><td colspan="3" class="p-4 text-center">Refresh to list available backups.</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Logs -->
-                    <div class="bg-[#151515] rounded border border-gray-800">
-                        <div class="p-4 border-b border-gray-800 flex justify-between items-center">
-                            <h3 class="text-xl font-bold text-white">Server Logs</h3>
-                            <button onclick="refreshLogs()" class="text-sm text-gray-400 hover:text-white"><i class="fa-solid fa-sync mr-1"></i> Refresh</button>
-                        </div>
-                        <div id="log-terminal" class="bg-black p-4 font-mono text-xs text-green-500 h-96 overflow-y-auto whitespace-pre-wrap">Loading logs...</div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Players Section -->
-        <div id="players-section" class="tab-content">
-            <section class="py-10 bg-[#0a0a0a] min-h-screen">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Player Lookup</h2>
-
-                    <!-- Search bar -->
-                    <div class="bg-[#151515] p-6 rounded border border-gray-800 mb-8">
-                        <div class="flex gap-3 items-end">
-                            <div class="flex-1">
-                                <label class="block text-sm text-gray-400 mb-1">Player Name</label>
-                                <input id="pl-search" type="text" list="pl-datalist"
-                                    placeholder="Type a name..."
-                                    class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-red-500 outline-none font-mono"
-                                    onkeydown="if(event.key==='Enter') lookupPlayer()">
-                                <datalist id="pl-datalist"></datalist>
-                            </div>
-                            <button id="pl-lookup-btn" onclick="lookupPlayer()" class="px-6 py-2 rounded bg-red-700 hover:bg-red-600 text-white font-bold transition-colors whitespace-nowrap">
-                                Look Up
-                            </button>
-                            <button id="pl-gear-btn" onclick="playerToGear()" class="hidden px-4 py-2 rounded bg-yellow-700 hover:bg-yellow-600 text-black font-bold transition-colors whitespace-nowrap">
-                                <i class="fas fa-khanda mr-1"></i>Find Best Gear
-                            </button>
-                        </div>
-                        <div id="pl-error" class="hidden mt-3 text-red-400 text-sm"></div>
-                    </div>
-
-                    <!-- Profile display -->
-                    <div id="pl-profile" class="hidden">
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <!-- Left: Score -->
-                            <div class="space-y-6">
-                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
-                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-red-400 uppercase text-xs tracking-wider font-mono">Score</div>
-                                    <div class="p-4 font-mono text-sm space-y-1" id="pl-score-body"></div>
-                                </div>
-                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
-                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-red-400 uppercase text-xs tracking-wider font-mono">Stats</div>
-                                    <div class="p-4 font-mono text-sm" id="pl-stats-body"></div>
-                                </div>
-                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden" id="pl-affects-card">
-                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-red-400 uppercase text-xs tracking-wider font-mono">Active Affects</div>
-                                    <div class="p-4 font-mono text-sm" id="pl-affects-body"></div>
-                                </div>
-                            </div>
-                            <!-- Right: Look / Equipment -->
-                            <div class="space-y-6">
-                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
-                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-blue-400 uppercase text-xs tracking-wider font-mono">Look</div>
-                                    <div class="p-4 text-gray-300 text-sm italic whitespace-pre-wrap font-serif" id="pl-look-body"></div>
-                                </div>
-                                <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
-                                    <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-blue-400 uppercase text-xs tracking-wider font-mono">Equipment</div>
-                                    <div class="divide-y divide-gray-800" id="pl-equip-body"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Best Gear Section -->
-        <div id="best-gear-section" class="tab-content">
-            <section class="py-10 bg-[#0a0a0a] min-h-screen">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-white mb-8 border-b border-gray-800 pb-4">Best Gear Finder</h2>
-
-                    <!-- Load from Player row -->
-                    <div class="bg-[#151515] p-4 rounded border border-gray-800 mb-4 flex gap-3 items-end">
-                        <div class="flex-1">
-                            <label class="block text-xs text-gray-500 mb-1">Load settings from player</label>
-                            <input id="bg-player-name" type="text" list="bg-player-datalist"
-                                placeholder="Type player name..."
-                                class="w-full bg-black border border-gray-700 rounded p-2 text-sm text-white focus:border-yellow-500 outline-none font-mono"
-                                onkeydown="if(event.key==='Enter') bgLoadFromPlayer()">
-                            <datalist id="bg-player-datalist"></datalist>
-                        </div>
-                        <button id="bg-load-player-btn" onclick="bgLoadFromPlayer()" class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white text-sm font-bold transition-colors whitespace-nowrap">
-                            Load Player
-                        </button>
-                        <div id="bg-player-msg" class="text-xs text-gray-500 self-center"></div>
-                    </div>
-                    
-                    <div class="bg-[#151515] p-6 rounded border border-gray-800 mb-8">
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-1">Class</label>
-                                <select id="bg-class" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none">
-                                    <option value="mage">Mage</option>
-                                    <option value="cleric">Cleric</option>
-                                    <option value="thief">Thief</option>
-                                    <option value="warrior">Warrior</option>
-                                    <option value="monk">Monk</option>
-                                    <option value="necromancer">Necromancer</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-1">Race</label>
-                                <select id="bg-race" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none">
-                                    <option value="human">Human</option>
-                                    <option value="elf">Elf</option>
-                                    <option value="dwarf">Dwarf</option>
-                                    <option value="hobbit">Hobbit</option>
-                                    <option value="saurian">Saurian</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm text-gray-400 mb-1">Max Level</label>
-                                <input type="number" id="bg-level" value="50" class="w-full bg-black border border-gray-700 rounded p-2 text-white focus:border-yellow-500 outline-none" onkeydown="if(event.key==='Enter') loadBestGear()">
-                            </div>
-                            <button id="bg-load-gear-btn" onclick="loadBestGear()" class="px-4 py-2 rounded bg-yellow-600 hover:bg-yellow-500 text-black font-bold transition-colors">
-                                Find Gear
-                            </button>
-                        </div>
-                    </div>
-
-                    <div id="bg-results" class="space-y-8">
-                        <div class="text-center text-gray-500 py-12">Select options and click Find Gear</div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Room Detail Modal -->
-        <div id="room-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
-            <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
-                        <div>
-                            <h3 id="room-modal-title" class="text-2xl font-bold text-white font-cinzel">Room Name</h3>
-                            <div class="text-gray-500 font-mono text-sm mt-1 flex items-center gap-2">Vnum: <span id="room-modal-vnum" class="text-gray-300">#1234</span><button onclick="copyToClipboard(document.getElementById('room-modal-vnum').textContent.replace('#',''))" class="text-gray-600 hover:text-white transition-colors" title="Copy vnum"><i class="fa-regular fa-copy text-xs"></i></button></div>
-                        </div>
-                        <button onclick="closeRoomModal()" class="text-gray-400 hover:text-white">
-                            <i class="fa-solid fa-times text-xl"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Main Info -->
-                        <div class="lg:col-span-2 space-y-6">
-                            <div>
-                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Description</h4>
-                                <p id="room-modal-desc" class="text-gray-300 leading-relaxed whitespace-pre-wrap font-serif"></p>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Exits</h4>
-                                <div id="room-modal-exits" class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                                    <!-- Exits injected here -->
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Extra Descriptions</h4>
-                                <div id="room-modal-extras" class="space-y-2">
-                                    <!-- Extras injected here -->
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Sidebar -->
-                        <div class="space-y-6">
-                            <div class="bg-[#111] p-4 rounded border border-gray-800">
-                                <h4 class="text-blue-400 font-bold mb-3 uppercase text-xs tracking-wider">Contents</h4>
-                                
-                                <div class="mb-4">
-                                    <div class="text-xs text-gray-500 mb-1">Mobiles</div>
-                                    <ul id="room-modal-mobs" class="space-y-1 text-sm">
-                                        <!-- Mobs injected here -->
-                                    </ul>
-                                </div>
-                                
-                                <div>
-                                    <div class="text-xs text-gray-500 mb-1">Objects</div>
-                                    <ul id="room-modal-objects" class="space-y-1 text-sm">
-                                        <!-- Objects injected here -->
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="bg-[#111] p-4 rounded border border-gray-800">
-                                <h4 class="text-yellow-400 font-bold mb-3 uppercase text-xs tracking-wider">Details</h4>
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-500">Area:</span>
-                                        <span id="room-modal-area" class="text-gray-300 text-right"></span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-500">Sector:</span>
-                                        <span id="room-modal-sector" class="text-gray-300 text-right"></span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-500">Flags:</span>
-                                        <span id="room-modal-flags" class="text-gray-300 text-right"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mob Detail Modal -->
-        <div id="mob-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
-            <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
-                        <div>
-                            <h3 id="mob-modal-title" class="text-2xl font-bold text-white font-cinzel">Mob Name</h3>
-                            <div class="text-gray-500 font-mono text-sm mt-1 flex items-center gap-2">Vnum: <span id="mob-modal-vnum" class="text-gray-300">#1234</span><button onclick="copyToClipboard(document.getElementById('mob-modal-vnum').textContent.replace('#',''))" class="text-gray-600 hover:text-white transition-colors" title="Copy vnum"><i class="fa-regular fa-copy text-xs"></i></button></div>
-                        </div>
-                        <button onclick="closeMobModal()" class="text-gray-400 hover:text-white">
-                            <i class="fa-solid fa-times text-xl"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Main Info -->
-                        <div class="lg:col-span-2 space-y-6">
-                            <div>
-                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Description</h4>
-                                <p id="mob-modal-desc" class="text-gray-300 leading-relaxed whitespace-pre-wrap font-serif"></p>
-                            </div>
-                            
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Combat</h4>
-                                    <div class="bg-[#111] p-3 rounded border border-gray-800 text-sm space-y-1">
-                                        <div class="flex justify-between"><span class="text-gray-500">Level:</span> <span id="mob-modal-level" class="text-yellow-400"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Hitroll:</span> <span id="mob-modal-hitroll" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Hit Dice:</span> <span id="mob-modal-hitdice" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Mana Dice:</span> <span id="mob-modal-manadice" class="text-blue-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Dam Dice:</span> <span id="mob-modal-damdice" class="text-red-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Dam Type:</span> <span id="mob-modal-damtype" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">AC:</span> <span id="mob-modal-ac" class="text-cyan-300"></span></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Details</h4>
-                                    <div class="bg-[#111] p-3 rounded border border-gray-800 text-sm space-y-1">
-                                        <div class="flex justify-between"><span class="text-gray-500">Race:</span> <span id="mob-modal-race" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Sex:</span> <span id="mob-modal-sex" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Size:</span> <span id="mob-modal-size" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Align:</span> <span id="mob-modal-align" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Wealth:</span> <span id="mob-modal-wealth" class="text-yellow-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Material:</span> <span id="mob-modal-material" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Start Pos:</span> <span id="mob-modal-startpos" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Def Pos:</span> <span id="mob-modal-defpos" class="text-gray-300"></span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 class="text-red-400 font-bold mb-2 uppercase text-xs tracking-wider">Flags</h4>
-                                <div class="space-y-2 text-sm">
-                                    <div id="mob-modal-act" class="text-gray-400"><span class="text-purple-400 font-bold">ACT:</span> <span></span></div>
-                                    <div id="mob-modal-off" class="text-gray-400"><span class="text-red-400 font-bold">OFF:</span> <span></span></div>
-                                    <div id="mob-modal-aff" class="text-gray-400"><span class="text-green-400 font-bold">AFF:</span> <span></span></div>
-                                    <div id="mob-modal-imm" class="text-gray-400"><span class="text-blue-400 font-bold">IMM:</span> <span></span></div>
-                                    <div id="mob-modal-res" class="text-gray-400"><span class="text-cyan-400 font-bold">RES:</span> <span></span></div>
-                                    <div id="mob-modal-vuln" class="text-gray-400"><span class="text-orange-400 font-bold">VULN:</span> <span></span></div>
-                                    <div id="mob-modal-form" class="text-gray-400"><span class="text-gray-400 font-bold">FORM:</span> <span></span></div>
-                                    <div id="mob-modal-parts" class="text-gray-400"><span class="text-gray-400 font-bold">PARTS:</span> <span></span></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Sidebar -->
-                        <div class="space-y-6">
-                            <div class="bg-[#111] p-4 rounded border border-gray-800">
-                                <h4 class="text-yellow-400 font-bold mb-3 uppercase text-xs tracking-wider">Drops</h4>
-                                <ul id="mob-modal-drops" class="space-y-2 text-sm">
-                                    <!-- Drops injected here -->
-                                </ul>
-                            </div>
-
-                            <div class="bg-[#111] p-4 rounded border border-gray-800">
-                                <h4 class="text-blue-400 font-bold mb-3 uppercase text-xs tracking-wider">Spawn Locations</h4>
-                                <div class="text-xs text-gray-500 mb-2">Rooms where this mob loads:</div>
-                                <ul id="mob-modal-spawns" class="space-y-1 text-sm max-h-60 overflow-y-auto">
-                                    <!-- Spawns injected here -->
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Object Detail Modal -->
-        <div id="obj-modal" class="fixed inset-0 bg-black/80 hidden z-50 flex items-center justify-center p-4">
-            <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-6 border-b border-gray-800 pb-4">
-                        <div>
-                            <h3 id="obj-modal-title" class="text-2xl font-bold text-white font-cinzel">Object Name</h3>
-                            <div class="text-gray-500 font-mono text-sm mt-1 flex items-center gap-2">Vnum: <span id="obj-modal-vnum" class="text-gray-300">#1234</span><button onclick="copyToClipboard(document.getElementById('obj-modal-vnum').textContent.replace('#',''))" class="text-gray-600 hover:text-white transition-colors" title="Copy vnum"><i class="fa-regular fa-copy text-xs"></i></button></div>
-                        </div>
-                        <button onclick="closeObjModal()" class="text-gray-400 hover:text-white">
-                            <i class="fa-solid fa-times text-xl"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Main Info -->
-                        <div class="lg:col-span-2 space-y-6">
-                            <div>
-                                <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Description</h4>
-                                <p id="obj-modal-desc" class="text-gray-300 leading-relaxed whitespace-pre-wrap font-serif"></p>
-                            </div>
-                            
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Stats</h4>
-                                    <div class="bg-[#111] p-3 rounded border border-gray-800 text-sm space-y-1">
-                                        <div class="flex justify-between"><span class="text-gray-500">Type:</span> <span id="obj-modal-type" class="text-blue-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Level:</span> <span id="obj-modal-level" class="text-yellow-400"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Weight:</span> <span id="obj-modal-weight" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Cost:</span> <span id="obj-modal-cost" class="text-yellow-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Material:</span> <span id="obj-modal-material" class="text-gray-300"></span></div>
-                                        <div class="flex justify-between"><span class="text-gray-500">Condition:</span> <span id="obj-modal-condition" class="text-gray-300"></span></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Affects</h4>
-                                    <ul id="obj-modal-affects" class="bg-[#111] p-3 rounded border border-gray-800 text-sm space-y-1 min-h-[100px]">
-                                        <!-- Affects injected here -->
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Flags</h4>
-                                <div class="space-y-2 text-sm">
-                                    <div id="obj-modal-extra" class="text-gray-400"><span class="text-purple-400 font-bold">EXTRA:</span> <span></span></div>
-                                    <div id="obj-modal-wear" class="text-gray-400"><span class="text-blue-400 font-bold">WEAR:</span> <span></span></div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">Values</h4>
-                                <div id="obj-modal-values" class="bg-[#111] p-3 rounded border border-gray-800 text-sm">
-                                    <!-- Values injected here -->
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Sidebar -->
-                        <div class="space-y-6">
-                            <div class="bg-[#111] p-4 rounded border border-gray-800">
-                                <h4 class="text-yellow-400 font-bold mb-3 uppercase text-xs tracking-wider">Carried By</h4>
-                                <div class="text-xs text-gray-500 mb-2">Mobs that load this item:</div>
-                                <ul id="obj-modal-carried" class="space-y-2 text-sm max-h-60 overflow-y-auto">
-                                    <!-- Carried by injected here -->
-                                </ul>
-                            </div>
-
-                            <div class="bg-[#111] p-4 rounded border border-gray-800">
-                                <h4 class="text-green-400 font-bold mb-3 uppercase text-xs tracking-wider">Extra Descriptions</h4>
-                                <div id="obj-modal-extras" class="space-y-2 text-sm">
-                                    <!-- Extras injected here -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Area Map Modal -->
-        <div id="map-modal" class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4">
-            <div class="bg-[#0a0a0a] border border-gray-700 rounded-lg w-full h-full max-w-[95vw] max-h-[95vh] overflow-hidden shadow-2xl flex flex-col">
-                <div class="p-4 border-b border-gray-800 flex justify-between items-center shrink-0">
-                    <div>
-                        <h3 id="map-modal-title" class="text-xl font-bold text-white font-cinzel">Area Map</h3>
-                        <div class="text-gray-500 text-sm mt-1"><span id="map-modal-rooms">0</span> rooms</div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center gap-2 text-sm text-gray-400">
-                            <span>Zoom:</span>
-                            <button onclick="mapZoom(-0.2)" class="px-2 py-1 bg-gray-800 rounded hover:bg-gray-700">-</button>
-                            <span id="map-zoom-level">100%</span>
-                            <button onclick="mapZoom(0.2)" class="px-2 py-1 bg-gray-800 rounded hover:bg-gray-700">+</button>
-                            <button onclick="mapZoom(0, true)" class="px-2 py-1 bg-gray-800 rounded hover:bg-gray-700 ml-2">Reset</button>
-                        </div>
-                        <button onclick="closeMapModal()" class="text-gray-400 hover:text-white">
-                            <i class="fa-solid fa-times text-xl"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div id="map-container" class="flex-1 overflow-auto relative bg-[#050505]" style="cursor: grab;">
-                    <svg id="map-svg" class="absolute" style="min-width: 100%; min-height: 100%;"></svg>
-                </div>
-                
-                <!-- Legend -->
-                <div class="p-2 border-t border-gray-800 flex flex-wrap gap-4 text-xs text-gray-400 shrink-0 bg-[#0a0a0a]">
-                    <span class="font-bold text-gray-300">Legend:</span>
-                    <span><span class="inline-block w-4 h-0.5 bg-gray-500 mr-1 align-middle"></span> N/S/E/W</span>
-                    <span><span class="inline-block w-4 h-0.5 bg-[#4477aa] mr-1 align-middle" style="border-bottom: 2px dashed #4477aa; background: transparent;"></span> Up</span>
-                    <span><span class="inline-block w-4 h-0.5 bg-[#aa5544] mr-1 align-middle" style="border-bottom: 2px dashed #aa5544; background: transparent;"></span> Down</span>
-                    <span><span class="inline-block w-4 h-0.5 bg-[#7a7] mr-1 align-middle" style="border-bottom: 2px dashed #7a7; background: transparent;"></span> Special (climb, enter, etc)</span>
-                    <span class="ml-4"><span class="inline-block w-3 h-3 bg-[#2a1a1a] border border-[#633] rounded mr-1 align-middle"></span> Has Mobs</span>
-                    <span><span class="inline-block w-3 h-3 bg-[#1a1a2a] border border-[#336] rounded mr-1 align-middle"></span> Has Objects</span>
-                    <span><span class="inline-block w-3 h-3 bg-[#2a1a2a] border border-[#636] rounded mr-1 align-middle"></span> Both</span>
-                </div>
-                
-                <!-- Room tooltip -->
-                <div id="map-tooltip" class="fixed hidden bg-[#1a1a1a] border border-gray-600 rounded-lg p-3 shadow-xl z-[60] max-w-xs pointer-events-none">
-                    <div id="map-tooltip-name" class="font-bold text-white text-sm"></div>
-                    <div id="map-tooltip-vnum" class="text-gray-500 text-xs font-mono mb-2"></div>
-                    <div id="map-tooltip-desc" class="text-gray-400 text-xs line-clamp-3 mb-2"></div>
-                    <div id="map-tooltip-exits" class="text-green-400 text-xs mb-1"></div>
-                    <div id="map-tooltip-mobs" class="text-yellow-400 text-xs"></div>
-                    <div id="map-tooltip-objects" class="text-blue-400 text-xs"></div>
-                    <div class="text-gray-600 text-[10px] mt-2 italic">Click to view details</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Footer -->
-    <!-- Toast container -->
-    <div id="toast-container" class="fixed bottom-4 right-4 z-[200] flex flex-col gap-2 pointer-events-none"></div>
-
-    <!-- Score Breakdown Modal -->
-    <div id="score-modal" class="fixed inset-0 bg-black/80 hidden z-[150] flex items-center justify-center p-4">
-        <div class="bg-[#1a1a1a] border border-gray-700 rounded-lg max-w-md w-full shadow-2xl">
-            <div class="p-4 border-b border-gray-800 flex justify-between items-center">
-                <h3 class="text-lg font-bold text-yellow-400 font-cinzel">Score Breakdown</h3>
-                <button onclick="closeScoreModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-times text-xl"></i></button>
-            </div>
-            <div id="score-modal-content" class="p-4 font-mono text-sm text-gray-300 space-y-1 max-h-96 overflow-y-auto">
-            </div>
-        </div>
-    </div>
-
-    <footer class="bg-black border-t border-gray-900 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-gray-500 text-sm">
-                &copy; 2026 Times of Chaos. Based on Merc/ROM Codebase.
-            </div>
-            <div class="flex gap-6">
-                <a href="#" class="text-gray-500 hover:text-white"><i class="fa-brands fa-discord text-xl"></i></a>
-                <a href="https://github.com/jeremydbean/toc2026" target="_blank" class="text-gray-500 hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // ============ HELPERS ============
-        function escHtml(str) {
-            if (str == null) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        function showToast(msg, type = 'info') {
-            const colors = { success: 'bg-green-900 border-green-700', error: 'bg-red-900 border-red-700', info: 'bg-gray-800 border-gray-600', warning: 'bg-yellow-900 border-yellow-700' };
-            const icons = { success: 'fa-check-circle text-green-400', error: 'fa-exclamation-circle text-red-400', info: 'fa-info-circle text-blue-400', warning: 'fa-exclamation-triangle text-yellow-400' };
-            const toast = document.createElement('div');
-            toast.className = `${colors[type] || colors.info} border text-white text-sm px-4 py-3 rounded shadow-2xl flex items-start gap-3 pointer-events-auto max-w-sm transition-all duration-300`;
-            toast.innerHTML = `<i class="fas ${icons[type] || icons.info} mt-0.5 shrink-0"></i><span>${escHtml(msg)}</span>`;
-            const container = document.getElementById('toast-container');
-            container.appendChild(toast);
-            // Animate in
-            requestAnimationFrame(() => { toast.style.opacity = '1'; });
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                toast.style.transform = 'translateX(100%)';
-                setTimeout(() => toast.remove(), 300);
-            }, 4500);
-        }
-
-        // ============ NAVIGATION ============
-        
-        // Global Escape key handler for modals
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.getElementById('room-modal').classList.add('hidden');
-                document.getElementById('mob-modal').classList.add('hidden');
-                document.getElementById('obj-modal').classList.add('hidden');
-                document.getElementById('map-modal').classList.add('hidden');
-                document.getElementById('score-modal').classList.add('hidden');
-            }
-        });
-
-        function isTypingTarget(el) {
-            if (!el) return false;
-            const tag = (el.tagName || '').toLowerCase();
-            return tag === 'input' || tag === 'textarea' || tag === 'select' || el.isContentEditable;
-        }
-
-        // Keyboard shortcuts:
-        // - / focuses DB search
-        // - Cmd/Ctrl+K also focuses DB search
-        document.addEventListener('keydown', function(e) {
-            if (isTypingTarget(e.target)) return;
-
-            if (e.key === '/') {
-                e.preventDefault();
-                showSection('database');
-                const dbSearch = document.getElementById('db-search');
-                if (dbSearch) {
-                    dbSearch.focus();
-                    dbSearch.select();
-                }
-                return;
-            }
-
-            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-                e.preventDefault();
-                showSection('database');
-                const dbSearch = document.getElementById('db-search');
-                if (dbSearch) {
-                    dbSearch.focus();
-                    dbSearch.select();
-                }
-            }
-        });
-        
-        function showSection(id, updateHash = true) {
-            try {
-                const validSections = ['home', 'play', 'database', 'health', 'guide', 'players', 'admin', 'best-gear'];
-                if (!validSections.includes(id)) {
-                    id = 'home';
-                }
-
-                if (id !== 'play') stopTerminal();
-                if (id !== 'admin') stopLogs();
-
-                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-                const targetSection = document.getElementById(id + '-section');
-                if(targetSection) {
-                    targetSection.classList.add('active');
-                } else {
-                    console.error("Section not found:", id + '-section');
-                }
-                
-                // Update active nav link
-                document.querySelectorAll('.nav-link[data-nav]').forEach(el => {
-                    el.classList.remove('text-red-500', 'text-yellow-300');
-                    el.style.fontWeight = 'normal';
-                    if (el.dataset.nav === 'best-gear') {
-                        el.classList.add('text-yellow-500');
-                    } else {
-                        el.classList.add('text-gray-300');
-                    }
-                });
-                const activeLink = document.querySelector(`.nav-link[data-nav="${id}"]`);
-                if (activeLink) {
-                    activeLink.classList.remove('text-gray-300', 'text-yellow-500');
-                    activeLink.classList.add(id === 'best-gear' ? 'text-yellow-300' : 'text-red-500');
-                    activeLink.style.fontWeight = 'bold';
-                }
-                
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobile-menu');
-                if(mobileMenu) {
-                    mobileMenu.classList.add('hidden');
-                }
-
-                window.scrollTo(0, 0);
-                if(id === 'play') initTerminal();
-                if(id === 'database' && !dbData.mobs.length) loadDb('mobs');
-                if(id === 'health') loadAreaHealth();
-                if(id === 'players') initPlayerList();
-                if(id === 'best-gear') initPlayerList();
-                if(id === 'admin') {
-                    refreshLogs();
-                    refreshBackups();
-                    const tokenInput = document.getElementById('admin-token');
-                    if(tokenInput) tokenInput.value = localStorage.getItem('toc_admin_token') || '';
-                }
-
-                localStorage.setItem('toc_last_section', id);
-                if (updateHash) {
-                    const targetHash = '#section/' + id;
-                    if (location.hash !== targetHash) {
-                        location.hash = targetHash;
-                    }
-                }
-            } catch(e) {
-                console.error("Error in showSection:", e);
-            }
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        function copyToClipboard(text) {
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showToast('Copied to clipboard!', 'success');
-                }).catch(() => {
-                    showToast('Copy failed — try manual copy.', 'error');
-                });
-            } else {
-                // Fallback for non-HTTPS
-                const el = document.createElement('textarea');
-                el.value = text;
-                el.style.position = 'fixed';
-                el.style.opacity = '0';
-                document.body.appendChild(el);
-                el.select();
-                try { document.execCommand('copy'); showToast('Copied to clipboard!', 'success'); }
-                catch(e) { showToast('Copy failed — try manual copy.', 'error'); }
-                document.body.removeChild(el);
-            }
-        }
-
-        function getPreferredFontSize() {
-            const raw = parseInt(localStorage.getItem('toc_term_font_size') || '12', 10);
-            if (Number.isNaN(raw)) return 12;
-            return Math.max(8, Math.min(24, raw));
-        }
-
-        let _adminTokenRefreshTimer = null;
-        function setAdminToken(token) {
-            localStorage.setItem('toc_admin_token', token || '');
-            const adminActive = document.getElementById('admin-section')?.classList.contains('active');
-            if (adminActive) {
-                clearTimeout(_adminTokenRefreshTimer);
-                _adminTokenRefreshTimer = setTimeout(() => refreshLogs(), 300);
-            }
-        }
-
-        function setButtonLoading(btn, loading, loadingLabel) {
-            if (!btn) return;
-            if (loading) {
-                if (!btn.dataset.origLabel) btn.dataset.origLabel = btn.innerHTML;
-                btn.disabled = true;
-                btn.classList.add('opacity-70', 'cursor-not-allowed');
-                btn.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i>${escHtml(loadingLabel || 'Loading...')}`;
-            } else {
-                btn.disabled = false;
-                btn.classList.remove('opacity-70', 'cursor-not-allowed');
-                if (btn.dataset.origLabel) btn.innerHTML = btn.dataset.origLabel;
-            }
-        }
-
-        // ============ TERMINAL / WEBSOCKET ============
-        let ws = null;
-        let term = null;
-        let fitAddon = null;
-        let termInitialized = false;
-        let termShouldReconnect = false;
-        let localEcho = true;
-
-        function stopTerminal() {
-            termShouldReconnect = false;
-            if (ws) {
-                ws.onclose = null;
-                ws.close();
-                ws = null;
-            }
-            const status = document.getElementById('connection-status');
-            if (status) {
-                status.textContent = 'Disconnected';
-                status.className = 'text-red-500';
-            }
-        }
-
-        function connectTerminal() {
-            if (!term || !termShouldReconnect) return;
-            if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) return;
-
-            const status = document.getElementById('connection-status');
-            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            ws = new WebSocket(protocol + '//' + window.location.host + '/ws');
-
-            ws.onopen = () => {
-                if (status) {
-                    status.textContent = 'Connected';
-                    status.className = 'text-green-500';
-                }
-                term.writeln('\x1b[32mConnected to server.\x1b[0m');
-            };
-
-            ws.onmessage = (event) => {
-                let data = event.data;
-                const wasEcho = localEcho;
-
-                // Telnet Negotiation for Echo - detect BEFORE stripping
-                // IAC WILL ECHO (255 251 1) -> Server handles echo, turn local echo OFF
-                const iacWillEcho = String.fromCharCode(255, 251, 1);
-                if (data.includes(iacWillEcho)) localEcho = false;
-
-                // IAC WONT ECHO (255 252 1) -> Server won't echo, turn local echo ON
-                const iacWontEcho = String.fromCharCode(255, 252, 1);
-                if (data.includes(iacWontEcho)) localEcho = true;
-
-                // Strip all 3-byte telnet options (IAC+type+option), 2-byte commands,
-                // and lone IAC bytes so control sequences never appear in the terminal.
-                data = data.replace(/\xff[\xfb-\xfe]./gs, '');
-                data = data.replace(/\xff[\xf0-\xfa]/g, '');
-                data = data.replace(/\xff/g, '');
-
-                // When entering password mode, ensure prompt is on its own line
-                if (wasEcho && !localEcho) {
-                    term.write('\\r\\n');
-                }
-
-                term.write(data);
-            };
-
-            ws.onclose = () => {
-                ws = null;
-                if (!termShouldReconnect) return;
-                if (status) {
-                    status.textContent = 'Disconnected';
-                    status.className = 'text-red-500';
-                }
-                term.writeln('\x1b[31mConnection lost. Reconnecting in 3s...\x1b[0m');
-                setTimeout(() => {
-                    if (termShouldReconnect) connectTerminal();
-                }, 3000);
-            };
-
-            ws.onerror = (err) => {
-                console.error('WebSocket error:', err);
-                if (ws) ws.close();
-            };
-        }
-
-        function initTerminal() {
-            termShouldReconnect = true;
-            if(termInitialized) {
-                connectTerminal();
-                return;
-            }
-            termInitialized = true;
-
-            const container = document.getElementById('terminal-container');
-            const status = document.getElementById('connection-status');
-
-            // Initialize xterm.js
-            term = new Terminal({
-                cursorBlink: true,
-                fontFamily: '"Roboto Mono", monospace',
-                fontSize: getPreferredFontSize(),
-                theme: {
-                    background: '#000000',
-                    foreground: '#e0e0e0',
-                    cursor: '#00ff00'
-                },
-                convertEol: false,
-                lineHeight: 1.0
-            });
-            
-            fitAddon = new FitAddon.FitAddon();
-            term.loadAddon(fitAddon);
-            term.open(container);
-            fitAddon.fit();
-            
-            // Handle resize
-            window.addEventListener('resize', () => fitAddon.fit());
-
-            // Handle input
-            term.onData(data => {
-                // Normalize all line endings to \\n before sending to MUD
-                let sendData = data.replace(/\\r\\n/g, '\\n').replace(/\\r/g, '\\n');
-
-                if (localEcho) {
-                    // For Enter key (CR=\\r): echo CR+LF so the cursor advances to the next line.
-                    // Without LF the cursor returns to column 0 on the SAME line, causing
-                    // subsequent MUD output (like "Password: ") to overwrite the typed username.
-                    term.write(data === '\\r' ? '\\r\\n' : data);
-                }
-                if (ws && ws.readyState === WebSocket.OPEN) {
-                    ws.send(sendData);
-                } else {
-                    console.error('WebSocket not ready:', ws ? ws.readyState : 'null');
-                }
-            });
-
-            connectTerminal();
-        }
-
-        // ============ DATABASE ============
-        let currentDb = 'mobs';
-        let dbData = { mobs: [], objects: [], areas: [] };
-        let areaHealthData = null;
-        let _dbSortKey = null;
-        let _dbSortAsc = true;
-
-        function sortDb(key) {
-            if (_dbSortKey === key) { _dbSortAsc = !_dbSortAsc; }
-            else { _dbSortKey = key; _dbSortAsc = true; }
-            renderDb(dbData[currentDb]);
-        }
-
-        async function loadStats() {
-            try {
-                const res = await fetch('/api/stats');
-                const data = await res.json();
-                document.getElementById('stat-mobs').textContent = data.mobiles;
-                document.getElementById('stat-objs').textContent = data.objects;
-                document.getElementById('stat-rooms').textContent = data.rooms;
-                document.getElementById('stat-areas').textContent = data.areas;
-                const heroCount = document.getElementById('hero-area-count');
-                if (heroCount) heroCount.textContent = data.areas;
-            } catch(e) {
-                console.error("Error loading stats:", e);
-            }
-        }
-        
-        // Call on load
-        loadStats();
-
-        function severityClass(severity) {
-            if (severity === 'critical') return 'text-red-400 bg-red-950/40 border-red-900/60';
-            if (severity === 'warning') return 'text-yellow-400 bg-yellow-950/30 border-yellow-900/50';
-            return 'text-blue-400 bg-blue-950/30 border-blue-900/50';
-        }
-
-        async function loadAreaHealth(force = false) {
-            if (areaHealthData && !force) {
-                renderAreaHealth();
-                return;
-            }
-            const content = document.getElementById('health-content');
-            if (content) {
-                content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Scanning area data...</td></tr>';
-            }
-            try {
-                const res = await fetch('/api/area_health');
-                if (!res.ok) throw new Error('Area health request failed: ' + res.status);
-                areaHealthData = await res.json();
-                renderAreaHealth();
-            } catch (e) {
-                console.error('Area health failed:', e);
-                if (content) {
-                    content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-red-400">Area health scan failed.</td></tr>';
-                }
-            }
-        }
-
-        function renderAreaHealth() {
-            if (!areaHealthData) return;
-
-            const summary = areaHealthData.summary || {};
-            const counts = summary.by_severity || {};
-            document.getElementById('health-critical').textContent = counts.critical ?? 0;
-            document.getElementById('health-warning').textContent = counts.warning ?? 0;
-            document.getElementById('health-info').textContent = counts.info ?? 0;
-            document.getElementById('health-world').textContent = `${summary.areas || 0} / ${summary.rooms || 0}`;
-
-            const severity = document.getElementById('health-severity-filter').value;
-            const search = (document.getElementById('health-search').value || '').toLowerCase();
-            let issues = areaHealthData.issues || [];
-            if (severity) {
-                issues = issues.filter(issue => issue.severity === severity);
-            }
-            if (search) {
-                issues = issues.filter(issue => {
-                    const haystack = [
-                        issue.severity, issue.code, issue.area_file, issue.vnum, issue.message
-                    ].join(' ').toLowerCase();
-                    return haystack.includes(search);
-                });
-            }
-
-            const resultCount = document.getElementById('health-result-count');
-            if (resultCount) {
-                resultCount.textContent = `${issues.length} of ${(areaHealthData.issues || []).length} issues shown`;
-            }
-
-            const content = document.getElementById('health-content');
-            if (!content) return;
-            if (!issues.length) {
-                content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-green-400">No matching area health issues.</td></tr>';
-                return;
-            }
-
-            content.innerHTML = issues.slice(0, 500).map(issue => `
-                <tr class="hover:bg-[#181818]">
-                    <td class="p-4"><span class="px-2 py-1 rounded border text-xs uppercase ${severityClass(issue.severity)}">${escHtml(issue.severity)}</span></td>
-                    <td class="p-4 font-mono text-xs text-gray-300">${escHtml(issue.code)}</td>
-                    <td class="p-4 font-mono text-xs text-gray-500">${escHtml(issue.area_file || '-')}</td>
-                    <td class="p-4 font-mono text-xs text-gray-500">${issue.vnum == null ? '-' : escHtml(issue.vnum)}</td>
-                    <td class="p-4 text-sm">${escHtml(issue.message)}</td>
-                </tr>
-            `).join('');
-        }
-
-        // Inject ASCII hero art from data script element
-        (function() {
-            const src = document.getElementById('ascii-art-src');
-            const bg = document.getElementById('ascii-hero-art');
-            if (src && bg) bg.textContent = src.textContent.trim();
-        })();
-
-        function toggleFilters(btnEl) {
-            const el = document.getElementById('advanced-filters');
-            const btn = btnEl || (typeof event !== 'undefined' ? event.currentTarget : null);
-            if (!btn) return;
-            const isHidden = el.classList.toggle('hidden');
-            const icon = btn.querySelector('i');
-            if (isHidden) {
-                icon.className = 'fa-solid fa-filter';
-                btn.classList.remove('bg-blue-900/30', 'border-blue-700');
-            } else {
-                icon.className = 'fa-solid fa-filter-circle-xmark';
-                btn.classList.add('bg-blue-900/30', 'border-blue-700');
-            }
-        }
-
-        async function loadDb(type, forceRefresh = false) {
-            currentDb = type;
-            // Reset sort when switching categories
-            if (_dbSortKey) { _dbSortKey = null; _dbSortAsc = true; }
-            const content = document.getElementById('db-content');
-            const headers = document.getElementById('db-headers');
-            const filterContainer = document.getElementById('obj-filter-container');
-            
-            // Toggle filter visibility
-            if(type === 'objects') {
-                filterContainer.classList.remove('hidden');
-            } else {
-                filterContainer.classList.add('hidden');
-            }
-            
-            content.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-gray-500">Loading...</td></tr>';
-
-            try {
-                let url = '/api/' + type + (type === 'areas' ? '' : '?limit=10000');
-                
-                // Add filters for objects
-                if(type === 'objects') {
-                    const typeFilter = document.getElementById('filter-type').value;
-                    const wearFilter = document.getElementById('filter-wear').value;
-                    const minLevel = document.getElementById('filter-min-level').value;
-                    const maxLevel = document.getElementById('filter-max-level').value;
-                    const statFilter = document.getElementById('filter-stat').value;
-                    
-                    // Collect flags
-                    const flags = Array.from(document.querySelectorAll('.filter-flag:checked')).map(cb => cb.value);
-                    
-                    if(typeFilter) url += '&item_type=' + encodeURIComponent(typeFilter);
-                    if(wearFilter) url += '&wear_flag=' + encodeURIComponent(wearFilter);
-                    if(minLevel) url += '&min_level=' + minLevel;
-                    if(maxLevel) url += '&max_level=' + maxLevel;
-                    if(statFilter) url += '&stat_filter=' + encodeURIComponent(statFilter);
-                    if(flags.length > 0) url += '&extra_flags=' + encodeURIComponent(flags.join(','));
-                    
-                    if(typeFilter || wearFilter || minLevel || maxLevel || statFilter || flags.length > 0) {
-                        forceRefresh = true;
-                    }
-                }
-
-                if(forceRefresh || !dbData[type] || dbData[type].length === 0) {
-                    const res = await fetch(url);
-                    dbData[type] = await res.json();
-                }
-                renderDb(dbData[type]);
-            } catch(e) {
-                content.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-500">Error loading data: ${escHtml(String(e))}</td></tr>`;
-            }
-        }
-
-        function renderDb(data) {
-            const headers = document.getElementById('db-headers');
-            const content = document.getElementById('db-content');
-            
-            // Update stats card with loaded count
-            if(currentDb === 'mobs') {
-                const total = parseInt(document.getElementById('stat-mobs').textContent.split('/')[1] || document.getElementById('stat-mobs').textContent);
-                const loaded = data.length;
-                const el = document.getElementById('stat-mobs');
-                el.textContent = `${loaded} / ${total}`;
-                if(loaded < total) el.classList.add('text-orange-400');
-                else el.classList.remove('text-orange-400');
-            } else if(currentDb === 'objects') {
-                const total = parseInt(document.getElementById('stat-objs').textContent.split('/')[1] || document.getElementById('stat-objs').textContent);
-                const loaded = data.length;
-                const el = document.getElementById('stat-objs');
-                el.textContent = `${loaded} / ${total}`;
-                if(loaded < total) el.classList.add('text-orange-400');
-                else el.classList.remove('text-orange-400');
-            } else if(currentDb === 'rooms') {
-                const total = parseInt(document.getElementById('stat-rooms').textContent.split('/')[1] || document.getElementById('stat-rooms').textContent);
-                const loaded = data.length;
-                const el = document.getElementById('stat-rooms');
-                el.textContent = `${loaded} / ${total}`;
-                if(loaded < total) el.classList.add('text-orange-400');
-                else el.classList.remove('text-orange-400');
-            }
-
-            let headerHtml = '';
-            let rowsHtml = '';
-
-            // Apply sort if active
-            if (_dbSortKey && currentDb !== 'areas') {
-                data = [...data].sort((a, b) => {
-                    const av = a[_dbSortKey]; const bv = b[_dbSortKey];
-                    const ai = isNaN(av) ? String(av||'').toLowerCase() : Number(av);
-                    const bi = isNaN(bv) ? String(bv||'').toLowerCase() : Number(bv);
-                    if (ai < bi) return _dbSortAsc ? -1 : 1;
-                    if (ai > bi) return _dbSortAsc ? 1 : -1;
-                    return 0;
-                });
-            }
-
-            function sortHdr(label, key) {
-                const arrow = _dbSortKey === key ? (_dbSortAsc ? ' &#9650;' : ' &#9660;') : ' <span class="text-gray-700">&#9650;</span>';
-                return `<th class="p-4 cursor-pointer hover:text-white select-none" onclick="sortDb('${key}')">${label}${arrow}</th>`;
-            }
-
-            if(currentDb === 'mobs') {
-                headerHtml = sortHdr('Vnum','vnum') + sortHdr('Name','short_desc') + sortHdr('Level','level') + sortHdr('Race','race') + sortHdr('Area','area') + '<th class="p-4">Actions</th>';
-                rowsHtml = data.map(m => `
-                    <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-mono text-sm text-gray-500">#${escHtml(m.vnum)}</td>
-                        <td class="p-4 font-bold text-gray-300">${escHtml(m.short_desc || 'Unnamed')}</td>
-                        <td class="p-4 text-yellow-500">${escHtml(m.level)}</td>
-                        <td class="p-4 text-gray-400">${escHtml(m.race)}</td>
-                        <td class="p-4 text-gray-500 text-sm">${escHtml(m.area || '-')}</td>
-                        <td class="p-4">
-                            <button onclick="showMobDetail(${m.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
-                        </td>
-                    </tr>
-                `).join('');
-            } else if(currentDb === 'objects') {
-                headerHtml = sortHdr('Vnum','vnum') + sortHdr('Name','short_desc') + sortHdr('Type','item_type') + sortHdr('Level','level') + '<th class="p-4">Details</th><th class="p-4">Actions</th>';
-                rowsHtml = data.map(o => {
-                    // Build affects display
-                    let affectsHtml = '';
-                    if(o.affects && o.affects.length > 0) {
-                        affectsHtml = '<div class="mt-2"><strong class="text-green-400">Affects:</strong> ' + 
-                            o.affects.map(a => `<span class="text-green-300">${escHtml(a)}</span>`).join(', ') + '</div>';
-                    }
-                    
-                    // Build flags display
-                    let flagsHtml = '';
-                    if((o.flags && o.flags.length > 0) || (o.flags2 && o.flags2.length > 0)) {
-                        let allFlags = [...(o.flags || []), ...(o.flags2 || [])];
-                        flagsHtml = '<div class="mt-1"><strong class="text-purple-400">Flags:</strong> ' + 
-                            allFlags.map(f => `<span class="text-purple-300">${escHtml(f)}</span>`).join(', ') + '</div>';
-                    }
-                    
-                    // Build wear locations
-                    let wearHtml = '';
-                    if(o.wear_locations && o.wear_locations.length > 0) {
-                        wearHtml = '<div class="mt-1"><strong class="text-blue-400">Wear:</strong> ' + 
-                            o.wear_locations.map(w => `<span class="text-blue-300">${escHtml(w)}</span>`).join(', ') + '</div>';
-                    }
-                    
-                    // Build detailed stats based on item type
-                    let statsHtml = '';
-                    if(o.values_interpreted) {
-                        const v = o.values_interpreted;
-                        
-                        // Weapon
-                        if(v.damage_text) {
-                            statsHtml += `<div class="mt-1"><strong class="text-red-400">Damage:</strong> <span class="text-red-300">${v.damage_text}</span>`;
-                            if(v.damage_type) statsHtml += ` <span class="text-gray-400">(${v.damage_type})</span>`;
-                            if(v.weapon_class) statsHtml += ` <span class="text-gray-400">[${v.weapon_class}]</span>`;
-                            if(v.weapon_flags && v.weapon_flags.length > 0) statsHtml += ` <span class="text-orange-400">{${v.weapon_flags.join(', ')}}</span>`;
-                            statsHtml += '</div>';
-                        }
-                        
-                        // Armor
-                        if(v.ac_summary) {
-                            statsHtml += `<div class="mt-1"><strong class="text-cyan-400">AC:</strong> <span class="text-cyan-300">${v.ac_summary}</span></div>`;
-                        }
-                        
-                        // Container
-                        if(v.capacity) {
-                            statsHtml += `<div class="mt-1"><strong class="text-orange-400">Container:</strong> <span class="text-gray-300">Cap: ${v.weight_capacity || v.capacity}</span>`;
-                            if(v.container_flags && v.container_flags.length > 0) statsHtml += ` <span class="text-orange-300">[${v.container_flags.join(', ')}]</span>`;
-                            if(v.key_vnum && v.key_vnum !== '0') statsHtml += ` <span class="text-gray-500">Key: #${v.key_vnum}</span>`;
-                            statsHtml += '</div>';
-                        }
-                        
-                        // Drink Container
-                        if(v.liquid_type) {
-                            statsHtml += `<div class="mt-1"><strong class="text-blue-400">Drink:</strong> <span class="text-blue-300">${v.liquid_type}</span>`;
-                            statsHtml += ` <span class="text-gray-400">(${v.current_quantity}/${v.capacity})</span>`;
-                            if(v.poisoned) statsHtml += ` <span class="text-green-500 font-bold">[POISONED]</span>`;
-                            statsHtml += '</div>';
-                        }
-                        
-                        // Fountain
-                        if(v.capacity_text) {
-                            statsHtml += `<div class="mt-1"><strong class="text-blue-400">Fountain:</strong> <span class="text-blue-300">${v.capacity_text}</span></div>`;
-                        }
-                        
-                        // Food
-                        if(o.item_type === 'food' && v.hours_text) {
-                            statsHtml += `<div class="mt-1"><strong class="text-green-400">Food:</strong> <span class="text-green-300">${v.hours_text}</span></div>`;
-                        }
-
-                        // Light
-                        if(o.item_type === 'light' && v.hours_text) {
-                            statsHtml += `<div class="mt-1"><strong class="text-yellow-200">Light:</strong> <span class="text-yellow-100">${v.hours_text}</span></div>`;
-                        }
-                        
-                        // Money
-                        if(v.gold_text) {
-                            statsHtml += `<div class="mt-1"><strong class="text-yellow-400">Value:</strong> <span class="text-yellow-300">${v.gold_text}</span></div>`;
-                        }
-                        
-                        // Manipulation
-                        if(v.manip_type) {
-                             statsHtml += `<div class="mt-1"><strong class="text-gray-400">Manip:</strong> <span class="text-gray-300">${v.manip_type}</span>`;
-                             if(v.room_goes_to) statsHtml += ` -> Room #${v.room_goes_to}`;
-                             statsHtml += '</div>';
-                        }
-
-                        // Action
-                        if(v.action_type) {
-                             statsHtml += `<div class="mt-1"><strong class="text-gray-400">Action:</strong> <span class="text-gray-300">${v.action_type}</span></div>`;
-                        }
-                        
-                        // Spells (Scroll, Potion, Pill, Wand, Staff)
-                        if(v.spell_level) {
-                            statsHtml += `<div class="mt-1"><strong class="text-pink-400">Spells (Lvl ${v.spell_level}):</strong> `;
-                            let spells = [];
-                            if(v.spell1) spells.push(v.spell1);
-                            if(v.spell2) spells.push(v.spell2);
-                            if(v.spell3) spells.push(v.spell3);
-                            if(v.spell_num) spells.push(v.spell_num);
-                            statsHtml += `<span class="text-pink-300">${spells.join(', ')}</span>`;
-                            
-                            if(v.max_charges) {
-                                statsHtml += ` <span class="text-gray-400">(${v.current_charges}/${v.max_charges} charges)</span>`;
-                            }
-                            statsHtml += '</div>';
-                        }
-                        
-                        // Portal
-                        if(v.portal_type) {
-                            statsHtml += `<div class="mt-1"><strong class="text-indigo-400">Portal:</strong> <span class="text-indigo-300">${v.portal_type}</span>`;
-                            if(v.to_room) statsHtml += ` <span class="text-gray-400">-> Room #${v.to_room}</span>`;
-                            if(v.portal_flags && v.portal_flags.length > 0) statsHtml += ` <span class="text-indigo-300">[${v.portal_flags.join(', ')}]</span>`;
-                            statsHtml += '</div>';
-                        }
-                    }
-                    
-                    // Build mob carriers list
-                    let carriersHtml = '';
-                    if(o.carried_by && o.carried_by.length > 0) {
-                        carriersHtml = '<div class="mt-2"><strong class="text-yellow-400">Found on:</strong> ' + 
-                            o.carried_by.slice(0, 3).map(m => `<span class="text-yellow-300 cursor-pointer hover:underline" onclick="showMobDetail(${m.vnum})">${escHtml(m.name)} (${escHtml(m.level)})</span>`).join(', ');
-                        if(o.carried_by.length > 3) {
-                            carriersHtml += ` <span class="text-gray-500">+${o.carried_by.length - 3} more</span>`;
-                        }
-                        carriersHtml += '</div>';
-                    }
-                    
-                    return `
-                    <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-mono text-sm text-gray-500 align-top">#${escHtml(o.vnum)}</td>
-                        <td class="p-4 font-bold text-gray-300 align-top">
-                            ${escHtml(o.short_desc || 'Unnamed')}
-                            <div class="text-xs text-gray-500 mt-1">${escHtml(o.material || 'unknown')}</div>
-                        </td>
-                        <td class="p-4 text-blue-400 align-top">${escHtml(o.item_type)}</td>
-                        <td class="p-4 text-yellow-500 align-top">
-                            ${escHtml(o.level)}
-                            <div class="text-xs text-gray-500 mt-1">
-                                ${escHtml(o.weight)}lb / ${escHtml(o.cost)}g
-                            </div>
-                        </td>
-                        <td class="p-4 text-sm align-top">
-                            ${affectsHtml}
-                            ${statsHtml}
-                            ${flagsHtml}
-                            ${wearHtml}
-                            ${carriersHtml}
-                            <div class="mt-1 text-xs text-gray-600">${escHtml(o.area || '-')}</div>
-                        </td>
-                        <td class="p-4 align-top">
-                            <button onclick="showObjDetail(${o.vnum}); return false;" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
-                        </td>
-                    </tr>
-                `;
-                }).join('');
-            } else if(currentDb === 'areas') {
-                headerHtml = '<th class="p-4">Name</th><th class="p-4">Builder</th><th class="p-4">Filename</th><th class="p-4">Vnums</th><th class="p-4">Actions</th>';
-                rowsHtml = data.map(a => `
-                    <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-bold text-gray-300">${escHtml(a.name)}</td>
-                        <td class="p-4 text-gray-400">${escHtml(a.builder || '-')}</td>
-                        <td class="p-4 font-mono text-sm text-gray-500">${escHtml(a.filename)}</td>
-                        <td class="p-4 text-gray-500 text-sm">${escHtml(a.vnums || '-')}</td>
-                        <td class="p-4">
-                            <button onclick="showAreaMap('${escHtml(a.filename)}')" class="text-xs bg-green-900/30 hover:bg-green-900/50 text-green-400 px-2 py-1 rounded border border-green-900/50"><i class="fas fa-map mr-1"></i>Map</button>
-                        </td>
-                    </tr>
-                `).join('');
-            } else if(currentDb === 'rooms') {
-                headerHtml = sortHdr('Vnum','vnum') + sortHdr('Name','name') + sortHdr('Area','area') + sortHdr('Sector','sector_type') + '<th class="p-4">Flags</th><th class="p-4">Actions</th>';
-                rowsHtml = data.map(r => `
-                    <tr class="hover:bg-[#151515] transition-colors">
-                        <td class="p-4 font-mono text-sm text-gray-500">#${escHtml(r.vnum)}</td>
-                        <td class="p-4 font-bold text-gray-300">${escHtml(r.name)}</td>
-                        <td class="p-4 text-gray-500 text-sm">${escHtml(r.area || '-')}</td>
-                        <td class="p-4 text-gray-400 capitalize">${escHtml(r.sector_type)}</td>
-                        <td class="p-4 text-gray-500 text-xs">${escHtml(r.room_flags || '-')}</td>
-                        <td class="p-4">
-                            <button onclick="showRoomDetail(${r.vnum})" class="text-xs bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded border border-gray-600">View</button>
-                        </td>
-                    </tr>
-                `).join('');
-            }
-
-            headers.innerHTML = headerHtml;
-            content.innerHTML = rowsHtml || '<tr><td colspan="6" class="p-4 text-center">No results found</td></tr>';
-
-            const countEl = document.getElementById('db-result-count');
-            if (countEl) countEl.textContent = data.length ? `Showing ${data.length.toLocaleString()} result${data.length !== 1 ? 's' : ''}` : '';
-        }
-
-        let _filterDbTimer = null;
-        function debouncedFilterDb() {
-            clearTimeout(_filterDbTimer);
-            _filterDbTimer = setTimeout(filterDb, 300);
-        }
-
-        function resetObjectFilters() {
-            const ids = ['filter-type', 'filter-wear', 'filter-min-level', 'filter-max-level', 'filter-stat'];
-            ids.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '';
-            });
-            document.querySelectorAll('.filter-flag').forEach(cb => {
-                cb.checked = false;
-            });
-            loadDb('objects', true);
-        }
-
-        function filterDb() {
-            const q = document.getElementById('db-search').value.toLowerCase().trim();
-            if (!q) { renderDb(dbData[currentDb]); return; }
-            const filtered = dbData[currentDb].filter(item => {
-                const fields = [item.vnum, item.short_desc, item.name, item.area,
-                    item.race, item.item_type, item.sector_type, item.builder,
-                    item.filename, item.material, item.dam_type];
-                return fields.some(f => f != null && String(f).toLowerCase().includes(q));
-            });
-            renderDb(filtered);
-        }
-
-        // ============ ADMIN ============
-        function getAuthHeaders() {
-            const token = localStorage.getItem('toc_admin_token') || '';
-            return token ? { 'X-Admin-Token': token } : {};
-        }
-
-        function formatBytes(bytes) {
-            const value = Number(bytes || 0);
-            if (value < 1024) return value + ' B';
-            if (value < 1024 * 1024) return (value / 1024).toFixed(1) + ' KB';
-            return (value / (1024 * 1024)).toFixed(1) + ' MB';
-        }
-
-        async function refreshBackups() {
-            const content = document.getElementById('backup-content');
-            if (!content) return;
-            content.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading backups...</td></tr>';
-            try {
-                const res = await fetch('/api/backups', { headers: getAuthHeaders() });
-                if (res.status === 403) {
-                    content.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-red-400">Forbidden. Set a valid Admin token.</td></tr>';
-                    return;
-                }
-                if (!res.ok) throw new Error('Backup request failed: ' + res.status);
-                const backups = await res.json();
-                if (!backups.length) {
-                    content.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-gray-500">No backup archives found.</td></tr>';
-                    return;
-                }
-                content.innerHTML = backups.map(backup => `
-                    <tr class="hover:bg-[#181818]">
-                        <td class="p-4 font-mono text-sm text-gray-300">${escHtml(backup.name)}</td>
-                        <td class="p-4 font-mono text-xs text-gray-500">${escHtml(formatBytes(backup.size_bytes))}</td>
-                        <td class="p-4 font-mono text-xs text-gray-500">${escHtml(new Date((backup.modified || 0) * 1000).toLocaleString())}</td>
-                    </tr>
-                `).join('');
-            } catch (e) {
-                content.innerHTML = '<tr><td colspan="3" class="p-4 text-center text-red-400">Backup list failed.</td></tr>';
-            }
-        }
-
-        function termFontSize(delta) {
-            if (!term) return;
-            const sz = Math.max(8, Math.min(24, (term.options.fontSize || 12) + delta));
-            term.options.fontSize = sz;
-            localStorage.setItem('toc_term_font_size', String(sz));
-            if (fitAddon) fitAddon.fit();
-            if (logTerm) {
-                logTerm.options.fontSize = sz;
-                if (logFitAddon) logFitAddon.fit();
-            }
-        }
-
-        function exportCsv() {
-            const data = dbData[currentDb];
-            if (!data || data.length === 0) { showToast('No data loaded to export.', 'warning'); return; }
-            const hdrs = currentDb === 'mobs' ? ['vnum','short_desc','level','race','area']
-                : currentDb === 'objects' ? ['vnum','short_desc','item_type','level','area']
-                : currentDb === 'rooms' ? ['vnum','name','area','sector_type','room_flags']
-                : ['filename','name','builder'];
-            const rows = [hdrs.join(',')];
-            data.forEach(r => {
-                rows.push(hdrs.map(h => {
-                    const v = String(r[h] ?? '');
-                    return (v.includes(',') || v.includes('"') || v.includes('\\n')) ? '"' + v.replace(/"/g, '""') + '"' : v;
-                }).join(','));
-            });
-            const blob = new Blob([rows.join('\\n')], {type: 'text/csv'});
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = `toc_${currentDb}_${new Date().toISOString().slice(0,10)}.csv`;
-            a.click();
-            URL.revokeObjectURL(a.href);
-            showToast(`Exported ${data.length.toLocaleString()} rows as CSV.`, 'success');
-        }
-
-        async function showApiFailure(res, fallback) {
-            let detail = null;
-            try {
-                const body = await res.json();
-                detail = body.detail;
-            } catch (_) {
-                // Keep the caller's fallback for non-JSON failures.
-            }
-            if (detail && typeof detail === 'object') {
-                detail = detail.message || JSON.stringify(detail);
-            }
-            showToast(detail || fallback, 'error');
-        }
-
-        let actionPendingTimers = {};
-        async function action(type, btnEl) {
-            const btn = btnEl || (typeof event !== 'undefined' ? event.currentTarget : null);
-            if (!btn) return;
-            if (btn.dataset.confirmPending === 'true') {
-                // Second click
-                clearTimeout(actionPendingTimers[type]);
-                delete actionPendingTimers[type];
-                btn.dataset.confirmPending = 'false';
-                btn.innerHTML = btn.dataset.origHtml;
-                btn.classList.remove('border-yellow-500', 'text-yellow-300');
-                try {
-                    const res = await fetch('/api/' + type, { method: 'POST', headers: getAuthHeaders() });
-                    if (!res.ok) {
-                        await showApiFailure(res, 'Admin action failed (' + res.status + ').');
-                        return;
-                    }
-                    showToast(type.charAt(0).toUpperCase() + type.slice(1) + ' queued successfully.', 'success');
-                } catch(e) { showToast('Error: ' + e, 'error'); }
-            } else {
-                // First click - show confirm state
-                btn.dataset.confirmPending = 'true';
-                btn.dataset.origHtml = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> Click again to confirm';
-                btn.classList.add('border-yellow-500', 'text-yellow-300');
-                actionPendingTimers[type] = setTimeout(() => {
-                    btn.dataset.confirmPending = 'false';
-                    btn.innerHTML = btn.dataset.origHtml;
-                    btn.classList.remove('border-yellow-500', 'text-yellow-300');
-                }, 3000);
-            }
-        }
-
-        async function sendWizInfo(e) {
-            e.preventDefault();
-            const msg = document.getElementById('wizinfo-msg').value;
-            const level = document.getElementById('wizinfo-level').value;
-            try {
-                const res = await fetch('/api/wizinfo', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json', ...getAuthHeaders()},
-                    body: JSON.stringify({message: msg, level: parseInt(level)})
-                });
-                if (!res.ok) {
-                    await showApiFailure(res, 'Broadcast failed (' + res.status + ').');
-                    return;
-                }
-                showToast('Broadcast queued.', 'success');
-                e.target.reset();
-            } catch(e) { showToast('Error: ' + e, 'error'); }
-        }
-
-        async function sendCommand(e) {
-            e.preventDefault();
-            const cmd = document.getElementById('server-cmd').value;
-            try {
-                const res = await fetch('/api/command', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json', ...getAuthHeaders()},
-                    body: JSON.stringify({command: cmd})
-                });
-                if (!res.ok) {
-                    await showApiFailure(res, 'Command failed (' + res.status + ').');
-                    return;
-                }
-                showToast('Command queued.', 'success');
-                e.target.reset();
-            } catch(e) { showToast('Error: ' + e, 'error'); }
-        }
-
-        let logWs = null;
-        let logTerm = null;
-        let logFitAddon = null;
-        let logsShouldReconnect = false;
-
-        function stopLogs() {
-            logsShouldReconnect = false;
-            if (logWs) {
-                logWs.onclose = null;
-                logWs.close();
-                logWs = null;
-            }
-        }
-
-        function initLogs() {
-            logsShouldReconnect = true;
-            const container = document.getElementById('log-terminal');
-            if (!logTerm) {
-                container.innerHTML = ''; // Clear "Loading logs..." text
-                container.className = "bg-black p-1 h-96 overflow-hidden"; // Remove overflow-y-auto, let xterm handle it
-
-                logTerm = new Terminal({
-                    cursorBlink: false,
-                    fontFamily: '"Roboto Mono", monospace',
-                    fontSize: getPreferredFontSize(),
-                    theme: {
-                        background: '#000000',
-                        foreground: '#00ff00',
-                    },
-                    disableStdin: true,
-                    convertEol: true
-                });
-                
-                logFitAddon = new FitAddon.FitAddon();
-                logTerm.loadAddon(logFitAddon);
-                logTerm.open(container);
-                logFitAddon.fit();
-                
-                window.addEventListener('resize', () => logFitAddon.fit());
-            }
-            
-            connectLogs();
-        }
-
-        function connectLogs() {
-            if (!logsShouldReconnect) return;
-            if (logWs) {
-                logWs.onclose = null;
-                logWs.close();
-                logWs = null;
-            }
-
-            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const token = localStorage.getItem('toc_admin_token') || '';
-            const tokenQuery = token ? ('?x_admin_token=' + encodeURIComponent(token)) : '';
-            logWs = new WebSocket(protocol + '//' + window.location.host + '/ws/logs' + tokenQuery);
-
-            logWs.onopen = () => {
-                logTerm.writeln('\x1b[32mConnected to log stream.\x1b[0m');
-            };
-
-            logWs.onmessage = (event) => {
-                logTerm.write(event.data);
-            };
-
-            logWs.onclose = (event) => {
-                logWs = null;
-                if (!logsShouldReconnect) return;
-                if (event.code === 4003) {
-                    logsShouldReconnect = false;
-                    logTerm.writeln('\x1b[31mLog stream forbidden. Set a valid Admin token to view logs.\x1b[0m');
-                    return;
-                }
-                logTerm.writeln('\x1b[31mLog stream disconnected. Reconnecting...\x1b[0m');
-                setTimeout(() => {
-                    if (logsShouldReconnect) connectLogs();
-                }, 3000);
-            };
-
-            logWs.onerror = () => {
-                logTerm.writeln('\x1b[31mLog stream error.\x1b[0m');
-            };
-        }
-
-        function refreshLogs() {
-             initLogs();
-        }
-
-        // ============ STATUS ============
-        async function checkStatus() {
-            try {
-                const res = await fetch('/api/health');
-                const data = await res.json();
-                const statusPing = document.getElementById('status-ping');
-                const statusDot = document.getElementById('status-dot');
-                const statusText = document.getElementById('status-text');
-                
-                if (data.merc) {
-                    statusDot.className = "relative inline-flex rounded-full h-3 w-3 bg-green-500";
-                    statusPing.className = "animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75";
-                    statusText.className = "text-green-400 font-mono";
-                    statusText.textContent = "ONLINE";
-                } else {
-                    statusDot.className = "relative inline-flex rounded-full h-3 w-3 bg-red-500";
-                    statusPing.className = "";
-                    statusText.className = "text-red-400 font-mono";
-                    statusText.textContent = "OFFLINE";
-                }
-                const navDot = document.getElementById('nav-dot');
-                const navDotText = document.getElementById('nav-dot-text');
-                if (navDot && navDotText) {
-                    navDot.className = 'h-2 w-2 rounded-full inline-block transition-colors duration-500 ' + (data.merc ? 'bg-green-500' : 'bg-red-500');
-                    navDotText.className = 'transition-colors duration-500 ' + (data.merc ? 'text-green-400' : 'text-red-400');
-                    navDotText.textContent = data.merc ? 'LIVE' : 'OFFLINE';
-                }
-            } catch (e) {
-                console.error("Status check failed", e);
-            }
-        }
-        
-        setInterval(checkStatus, 30000);
-        checkStatus();
-
-        // Room Modal Functions
-        async function showRoomDetail(vnum) {
-            // Show modal immediately with loading state
-            document.getElementById('room-modal-title').textContent = 'Loading...';
-            document.getElementById('room-modal-vnum').textContent = '';
-            document.getElementById('room-modal-desc').textContent = '';
-            document.getElementById('room-modal-exits').innerHTML = '<div class="col-span-full text-gray-500 text-sm"><i class="fas fa-spinner fa-spin mr-2"></i>Loading...</div>';
-            document.getElementById('room-modal-mobs').innerHTML = '';
-            document.getElementById('room-modal-objects').innerHTML = '';
-            document.getElementById('room-modal-extras').innerHTML = '';
-            document.getElementById('room-modal').classList.remove('hidden');
-            try {
-                const res = await fetch(`/api/rooms/${vnum}`);
-                if(!res.ok) throw new Error('Failed to fetch room: ' + res.status);
-                const room = await res.json();
-                
-                document.getElementById('room-modal-title').textContent = room.name;
-                document.getElementById('room-modal-vnum').textContent = '#' + room.vnum;
-                document.getElementById('room-modal-desc').textContent = room.description;
-                document.getElementById('room-modal-area').textContent = room.area;
-                document.getElementById('room-modal-sector').textContent = room.sector_type;
-                document.getElementById('room-modal-flags').textContent = room.room_flags;
-                
-                // Exits
-                const exitsContainer = document.getElementById('room-modal-exits');
-                if(room.exits && room.exits.length > 0) {
-                    exitsContainer.innerHTML = room.exits.map(ex => `
-                        <div onclick="showRoomDetail(${ex.to_room})" class="bg-[#222] p-2 rounded border border-gray-700 text-center cursor-pointer hover:bg-[#333] transition-colors">
-                            <div class="text-yellow-500 font-bold uppercase text-xs">${escHtml(ex.direction)}</div>
-                            <div class="text-gray-400 text-xs truncate" title="${escHtml(ex.to_room_name)}">${escHtml(ex.to_room_name)}</div>
-                            <div class="text-gray-600 text-[10px] font-mono">#${escHtml(ex.to_room)}</div>
-                        </div>
-                    `).join('');
-                } else {
-                    exitsContainer.innerHTML = '<div class="col-span-full text-gray-500 italic text-sm">No exits</div>';
-                }
-                
-                // Mobs
-                const mobsContainer = document.getElementById('room-modal-mobs');
-                if(room.mobs && room.mobs.length > 0) {
-                    mobsContainer.innerHTML = room.mobs.map(m => `
-                        <li class="flex justify-between items-center">
-                            <span class="text-red-300 truncate" title="${escHtml(m.name)}">${escHtml(m.name)}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${escHtml(m.vnum)}</span>
-                        </li>
-                    `).join('');
-                } else {
-                    mobsContainer.innerHTML = '<li class="text-gray-500 italic">None</li>';
-                }
-                
-                // Objects
-                const objsContainer = document.getElementById('room-modal-objects');
-                if(room.objects && room.objects.length > 0) {
-                    objsContainer.innerHTML = room.objects.map(o => `
-                        <li class="flex justify-between items-center">
-                            <span class="text-blue-300 truncate" title="${escHtml(o.name)}">${escHtml(o.name)}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${escHtml(o.vnum)}</span>
-                        </li>
-                    `).join('');
-                } else {
-                    objsContainer.innerHTML = '<li class="text-gray-500 italic">None</li>';
-                }
-
-                // Extras
-                const extrasContainer = document.getElementById('room-modal-extras');
-                if(room.extra_descr && room.extra_descr.length > 0) {
-                    extrasContainer.innerHTML = room.extra_descr.map(ed => `
-                        <div class="bg-[#151515] p-2 rounded border border-gray-800">
-                            <span class="text-green-400 font-bold text-xs">${escHtml(ed.keyword)}:</span>
-                            <span class="text-gray-400 text-xs">${escHtml(ed.description)}</span>
-                        </div>
-                    `).join('');
-                } else {
-                    extrasContainer.innerHTML = '<div class="text-gray-500 italic text-sm">None</div>';
-                }
-                
-                document.getElementById('room-modal').classList.remove('hidden');
-            } catch(e) {
-                document.getElementById('room-modal').classList.add('hidden');
-                showToast('Error loading room details: ' + e, 'error');
-            }
-        }
-        
-        function closeRoomModal() {
-            document.getElementById('room-modal').classList.add('hidden');
-        }
-
-        // Mob Modal Functions
-        async function showMobDetail(vnum) {
-            // Show modal immediately with loading state
-            document.getElementById('mob-modal-title').textContent = 'Loading...';
-            document.getElementById('mob-modal-vnum').textContent = '';
-            document.getElementById('mob-modal-desc').textContent = '';
-            document.getElementById('mob-modal-drops').innerHTML = '<li class="text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading...</li>';
-            document.getElementById('mob-modal-spawns').innerHTML = '';
-            document.getElementById('mob-modal').classList.remove('hidden');
-            try {
-                const res = await fetch(`/api/mobs/${vnum}`);
-                if(!res.ok) throw new Error('Failed to fetch mob: ' + res.status);
-                const mob = await res.json();
-                
-                document.getElementById('mob-modal-title').textContent = mob.short_desc;
-                document.getElementById('mob-modal-vnum').textContent = '#' + mob.vnum;
-                document.getElementById('mob-modal-desc').textContent = mob.description;
-                
-                // Combat
-                document.getElementById('mob-modal-level').textContent = mob.level;
-                document.getElementById('mob-modal-hitroll').textContent = mob.hitroll;
-                document.getElementById('mob-modal-hitdice').textContent = mob.hitp_dice;
-                document.getElementById('mob-modal-manadice').textContent = mob.mana_dice;
-                document.getElementById('mob-modal-damdice').textContent = mob.dam_dice;
-                document.getElementById('mob-modal-damtype').textContent = mob.dam_type;
-                document.getElementById('mob-modal-ac').textContent = mob.ac.join(' / ');
-                
-                // Details
-                document.getElementById('mob-modal-race').textContent = mob.race;
-                document.getElementById('mob-modal-sex').textContent = mob.sex;
-                document.getElementById('mob-modal-size').textContent = mob.size;
-                document.getElementById('mob-modal-align').textContent = mob.alignment;
-                document.getElementById('mob-modal-wealth').textContent = mob.wealth;
-                document.getElementById('mob-modal-material').textContent = mob.material;
-                document.getElementById('mob-modal-startpos').textContent = mob.start_pos;
-                document.getElementById('mob-modal-defpos').textContent = mob.default_pos;
-                
-                // Flags
-                document.getElementById('mob-modal-act').querySelector('span:last-child').textContent = mob.act_flags.join(', ') || 'None';
-                document.getElementById('mob-modal-off').querySelector('span:last-child').textContent = mob.off_flags.join(', ') || 'None';
-                document.getElementById('mob-modal-aff').querySelector('span:last-child').textContent = mob.affected_by.join(', ') || 'None';
-                document.getElementById('mob-modal-imm').querySelector('span:last-child').textContent = mob.imm_flags.join(', ') || 'None';
-                document.getElementById('mob-modal-res').querySelector('span:last-child').textContent = mob.res_flags.join(', ') || 'None';
-                document.getElementById('mob-modal-vuln').querySelector('span:last-child').textContent = mob.vuln_flags.join(', ') || 'None';
-                document.getElementById('mob-modal-form').querySelector('span:last-child').textContent = mob.form.join(', ') || 'None';
-                document.getElementById('mob-modal-parts').querySelector('span:last-child').textContent = mob.parts.join(', ') || 'None';
-                
-                // Drops
-                const dropsContainer = document.getElementById('mob-modal-drops');
-                if(mob.drops && mob.drops.length > 0) {
-                    dropsContainer.innerHTML = mob.drops.map(d => `
-                        <li class="flex justify-between items-center">
-                            <span class="text-red-300 truncate" title="${escHtml(d.name)}">${escHtml(d.name)}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${escHtml(d.vnum)}</span>
-                        </li>
-                    `).join('');
-                } else {
-                    dropsContainer.innerHTML = '<li class="text-gray-500 italic">No drops</li>';
-                }
-                
-                // Spawns
-                const spawnsContainer = document.getElementById('mob-modal-spawns');
-                if(mob.spawn_rooms && mob.spawn_rooms.length > 0) {
-                    spawnsContainer.innerHTML = mob.spawn_rooms.map(r => `
-                        <li onclick="closeMobModal(); showRoomDetail(${r.vnum})" class="flex justify-between items-center cursor-pointer hover:bg-[#222] p-1 rounded transition-colors">
-                            <span class="text-gray-300 truncate text-xs">${escHtml(r.name)}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${escHtml(r.vnum)}</span>
-                        </li>
-                    `).join('');
-                } else {
-                    spawnsContainer.innerHTML = '<li class="text-gray-500 italic">No spawn locations found</li>';
-                }
-                
-                document.getElementById('mob-modal').classList.remove('hidden');
-            } catch(e) {
-                document.getElementById('mob-modal').classList.add('hidden');
-                showToast('Error loading mob details: ' + e, 'error');
-            }
-        }
-        
-        function closeMobModal() {
-            document.getElementById('mob-modal').classList.add('hidden');
-        }
-
-        // Object Modal Functions
-        async function showObjDetail(vnum) {
-            if(vnum === undefined || vnum === null || vnum === 'undefined') {
-                console.error('showObjDetail called with invalid vnum!');
-                showToast('Error: Object vnum is undefined.', 'error');
-                return;
-            }
-            // Show modal immediately with loading state
-            document.getElementById('obj-modal-title').textContent = 'Loading...';
-            document.getElementById('obj-modal-vnum').textContent = '';
-            document.getElementById('obj-modal-desc').textContent = '';
-            document.getElementById('obj-modal-affects').innerHTML = '<li class="text-gray-500"><i class="fas fa-spinner fa-spin mr-2"></i>Loading...</li>';
-            document.getElementById('obj-modal-carried').innerHTML = '';
-            document.getElementById('obj-modal-extras').innerHTML = '';
-            document.getElementById('obj-modal').classList.remove('hidden');
-            try {
-                const res = await fetch(`/api/objects/${vnum}`);
-                if(!res.ok) throw new Error('Failed to fetch object: ' + res.status);
-                const obj = await res.json();
-                
-                document.getElementById('obj-modal-title').textContent = obj.short_desc;
-                document.getElementById('obj-modal-vnum').textContent = '#' + obj.vnum;
-                document.getElementById('obj-modal-desc').textContent = obj.long_desc;
-                
-                // Stats
-                document.getElementById('obj-modal-type').textContent = obj.item_type;
-                document.getElementById('obj-modal-level').textContent = obj.level;
-                document.getElementById('obj-modal-weight').textContent = obj.weight;
-                document.getElementById('obj-modal-cost').textContent = obj.cost;
-                document.getElementById('obj-modal-material').textContent = obj.material;
-                document.getElementById('obj-modal-condition').textContent = obj.condition;
-                
-                // Flags
-                document.getElementById('obj-modal-extra').querySelector('span:last-child').textContent = obj.extra_flags.join(', ') || 'None';
-                document.getElementById('obj-modal-wear').querySelector('span:last-child').textContent = obj.wear_flags.join(', ') || 'None';
-                
-                // Affects
-                const affContainer = document.getElementById('obj-modal-affects');
-                if(obj.affects && obj.affects.length > 0) {
-                    affContainer.innerHTML = obj.affects.map(a => `
-                        <li class="flex justify-between">
-                            <span class="text-gray-400">${a}</span>
-                        </li>
-                    `).join('');
-                } else {
-                    affContainer.innerHTML = '<li class="text-gray-500 italic">None</li>';
-                }
-                
-                // Values
-                const valContainer = document.getElementById('obj-modal-values');
-                let valHtml = '';
-                const v = obj.values_interpreted;
-                
-                if(v.damage_text) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Damage:</span> <span class="text-red-300">${escHtml(v.damage_text)}</span></div>`;
-                if(v.damage_type) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Type:</span> <span class="text-gray-300">${escHtml(v.damage_type)}</span></div>`;
-                if(v.weapon_class) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Class:</span> <span class="text-gray-300">${escHtml(v.weapon_class)}</span></div>`;
-                if(v.ac_summary) valHtml += `<div class="flex justify-between"><span class="text-gray-500">AC:</span> <span class="text-cyan-300">${escHtml(v.ac_summary)}</span></div>`;
-                if(v.capacity) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Capacity:</span> <span class="text-gray-300">${escHtml(v.capacity)}</span></div>`;
-                if(v.liquid_type) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Liquid:</span> <span class="text-blue-300">${escHtml(v.liquid_type)}</span></div>`;
-                if(v.spell_level) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell Lvl:</span> <span class="text-pink-300">${escHtml(v.spell_level)}</span></div>`;
-                if(v.spell1) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 1:</span> <span class="text-pink-300">${escHtml(v.spell1)}</span></div>`;
-                if(v.spell2) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 2:</span> <span class="text-pink-300">${escHtml(v.spell2)}</span></div>`;
-                if(v.spell3) valHtml += `<div class="flex justify-between"><span class="text-gray-500">Spell 3:</span> <span class="text-pink-300">${escHtml(v.spell3)}</span></div>`;
-                
-                valContainer.innerHTML = valHtml || '<div class="text-gray-500 italic">None</div>';
-                
-                // Carried By
-                const carriedContainer = document.getElementById('obj-modal-carried');
-                if(obj.carried_by && obj.carried_by.length > 0) {
-                    carriedContainer.innerHTML = obj.carried_by.map(m => `
-                        <li onclick="closeObjModal(); showMobDetail(${m.vnum})" class="flex justify-between items-center cursor-pointer hover:bg-[#222] p-1 rounded transition-colors">
-                            <span class="text-yellow-300 truncate text-xs">${escHtml(m.name)}</span>
-                            <span class="text-gray-600 text-xs font-mono">#${escHtml(m.vnum)}</span>
-                        </li>
-                    `).join('');
-                } else {
-                    carriedContainer.innerHTML = '<li class="text-gray-500 italic">Not found on any mobs</li>';
-                }
-                
-                // Extras
-                const extrasContainer = document.getElementById('obj-modal-extras');
-                if(obj.extra_descr && obj.extra_descr.length > 0) {
-                    extrasContainer.innerHTML = obj.extra_descr.map(ed => `
-                        <div class="bg-[#151515] p-2 rounded border border-gray-800">
-                            <span class="text-green-400 font-bold text-xs">${escHtml(ed.keyword)}:</span>
-                            <span class="text-gray-400 text-xs">${escHtml(ed.description)}</span>
-                        </div>
-                    `).join('');
-                } else {
-                    extrasContainer.innerHTML = '<div class="text-gray-500 italic">None</div>';
-                }
-                
-                document.getElementById('obj-modal').classList.remove('hidden');
-            } catch(e) {
-                document.getElementById('obj-modal').classList.add('hidden');
-                showToast('Error loading object details: ' + e, 'error');
-            }
-        }
-        
-        function closeObjModal() {
-            document.getElementById('obj-modal').classList.add('hidden');
-        }
-
-        // ============ PLAYER LOOKUP ============
-        let _allPlayerNames = [];
-        let _currentPlayer  = null;
-
-        const WEAR_SLOT_NAMES = {
-            0:"Light", 1:"Left Finger", 2:"Right Finger",
-            3:"Neck (1st)", 4:"Neck (2nd)", 5:"Body",
-            6:"Head", 7:"Legs", 8:"Feet",
-            9:"Hands", 10:"Arms", 11:"Shield",
-            12:"About Body", 13:"Waist", 14:"Left Wrist",
-            15:"Right Wrist", 16:"Wielded", 17:"Held"
-        };
-
-        async function initPlayerList() {
-            if (_allPlayerNames.length) return;
-            try {
-                const res = await fetch('/api/players');
-                if (!res.ok) return;
-                _allPlayerNames = await res.json();
-                const dl = document.getElementById('pl-datalist');
-                const bgDl = document.getElementById('bg-player-datalist');
-                _allPlayerNames.forEach(n => {
-                    [dl, bgDl].forEach(list => {
-                        if (list) {
-                            const opt = document.createElement('option');
-                            opt.value = n;
-                            list.appendChild(opt);
-                        }
-                    });
-                });
-            } catch(e) { /* silent */ }
-        }
-
-        async function lookupPlayer() {
-            const name = document.getElementById('pl-search').value.trim();
-            if (!name) return;
-            const lookupBtn = document.getElementById('pl-lookup-btn');
-            setButtonLoading(lookupBtn, true, 'Looking up...');
-            const errEl = document.getElementById('pl-error');
-            errEl.classList.add('hidden');
-            document.getElementById('pl-profile').classList.add('hidden');
-            document.getElementById('pl-gear-btn').classList.add('hidden');
-
-            try {
-                const res = await fetch('/api/player/' + encodeURIComponent(name));
-                if (!res.ok) {
-                    errEl.textContent = 'Player "' + escHtml(name) + '" not found.';
-                    errEl.classList.remove('hidden');
-                    return;
-                }
-                _currentPlayer = await res.json();
-                renderPlayerProfile(_currentPlayer);
-                document.getElementById('pl-profile').classList.remove('hidden');
-                document.getElementById('pl-gear-btn').classList.remove('hidden');
-            } catch(e) {
-                errEl.textContent = 'Error: ' + e.message;
-                errEl.classList.remove('hidden');
-            } finally {
-                setButtonLoading(lookupBtn, false);
-            }
-        }
-
-        function alignStr(a) {
-            if (a < -700) return 'Diabolic'; if (a < -350) return 'Evil';
-            if (a < -100) return 'Mean';     if (a <  100) return 'Neutral';
-            if (a <  350) return 'Kind';     if (a <  700) return 'Good';
-            return 'Angelic';
-        }
-
-        function statBar(cur, max, cls) {
-            const pct = max > 0 ? Math.min(100, Math.round(cur / max * 100)) : 0;
-            return `<div class="flex items-center gap-2">
-                <div class="flex-1 bg-gray-900 rounded-full h-2">
-                    <div class="h-2 rounded-full ${cls}" style="width:${pct}%"></div>
-                </div>
-                <span class="text-xs text-gray-400 w-24 text-right">${cur}/${max}</span>
-            </div>`;
-        }
-
-        function renderPlayerProfile(p) {
-            const sexStr = p.sex === 1 ? 'Male' : p.sex === 2 ? 'Female' : 'Neutral';
-            const remStr = p.num_remorts > 0 ? ` (${p.num_remorts}x remort)` : '';
-            const titleFull = p.name + ' ' + (p.title || '');
-
-            // ---- Score ----
-            document.getElementById('pl-score-body').innerHTML = `
-                <div class="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
-                    <div><span class="text-gray-500">Name:</span> <span class="text-white font-bold">${escHtml(titleFull)}</span></div>
-                    <div><span class="text-gray-500">Race:</span> <span class="text-gray-300">${escHtml(p.race.charAt(0).toUpperCase()+p.race.slice(1))}</span></div>
-                    <div><span class="text-gray-500">Class:</span> <span class="text-yellow-400">${escHtml(p.class_name.charAt(0).toUpperCase()+p.class_name.slice(1))}</span></div>
-                    <div><span class="text-gray-500">Guild:</span> <span class="text-gray-300">${escHtml(p.guild_name)}</span></div>
-                    <div><span class="text-gray-500">Level:</span> <span class="text-green-400 font-bold">${escHtml(p.level)}${remStr}</span></div>
-                    <div><span class="text-gray-500">Sex:</span> <span class="text-gray-300">${sexStr}</span></div>
-                    <div><span class="text-gray-500">Align:</span> <span class="text-gray-300">${alignStr(p.alignment)} (${p.alignment})</span></div>
-                    <div><span class="text-gray-500">XP:</span> <span class="text-gray-300">${p.exp.toLocaleString()}</span></div>
-                    <div><span class="text-gray-500">Gold:</span> <span class="text-yellow-300">${p.gold.toLocaleString()}</span></div>
-                    <div><span class="text-gray-500">Platinum:</span> <span class="text-yellow-400">${p.platinum.toLocaleString()}</span></div>
-                    <div><span class="text-gray-500">Practices:</span> <span class="text-gray-300">${p.practices}</span></div>
-                    <div><span class="text-gray-500">Trains:</span> <span class="text-gray-300">${p.trains}</span></div>
-                    <div><span class="text-gray-500">QP:</span> <span class="text-purple-400">${p.quest_points}</span></div>
-                    <div><span class="text-gray-500">Hitroll:</span> <span class="text-orange-400">${p.hitroll}</span></div>
-                    <div><span class="text-gray-500">Damroll:</span> <span class="text-orange-400">${p.damroll}</span></div>
-                </div>
-                <div class="mt-4 space-y-2">
-                    <div><span class="text-gray-500 text-xs">HP</span>${statBar(p.hp_cur, p.hp_max, 'bg-red-600')}</div>
-                    <div><span class="text-gray-500 text-xs">Mana</span>${statBar(p.mana_cur, p.mana_max, 'bg-blue-600')}</div>
-                    <div><span class="text-gray-500 text-xs">Move</span>${statBar(p.mv_cur, p.mv_max, 'bg-green-700')}</div>
-                </div>`;
-
-            // ---- Stats ----
-            const statRow = (name, base, mod) => {
-                const total = base + mod;
-                const modStr = mod !== 0 ? ` <span class="text-gray-600">(${base}${mod >= 0 ? '+' : ''}${mod})</span>` : '';
-                const col = total >= 20 ? 'text-green-400' : total >= 16 ? 'text-yellow-400' : total >= 12 ? 'text-gray-300' : 'text-red-400';
-                return `<tr><td class="pr-4 text-gray-500">${name}</td><td class="${col} font-bold">${total}</td><td>${modStr}</td></tr>`;
-            };
-            document.getElementById('pl-stats-body').innerHTML = `
-                <table class="w-full"><tbody>
-                    ${statRow('Strength', p.str_base, p.str_mod)}
-                    ${statRow('Intelligence', p.int_base, p.int_mod)}
-                    ${statRow('Wisdom', p.wis_base, p.wis_mod)}
-                    ${statRow('Dexterity', p.dex_base, p.dex_mod)}
-                    ${statRow('Constitution', p.con_base, p.con_mod)}
-                </tbody></table>
-                <div class="mt-3 border-t border-gray-800 pt-2 text-xs grid grid-cols-2 gap-1">
-                    <div><span class="text-gray-500">AC Pierce:</span> <span class="text-cyan-400">${p.ac_pierce}</span></div>
-                    <div><span class="text-gray-500">AC Slash:</span>  <span class="text-cyan-400">${p.ac_slash}</span></div>
-                    <div><span class="text-gray-500">AC Bash:</span>   <span class="text-cyan-400">${p.ac_bash}</span></div>
-                    <div><span class="text-gray-500">AC Exotic:</span> <span class="text-cyan-400">${p.ac_exotic}</span></div>
-                </div>`;
-
-            // ---- Affects ----
-            const aff = p.affects || [];
-            const affCard = document.getElementById('pl-affects-card');
-            if (aff.length) {
-                affCard.classList.remove('hidden');
-                document.getElementById('pl-affects-body').innerHTML = aff.map(a => {
-                    let extra = '';
-                    if (a.location && a.modifier != null) extra = ` (${a.modifier >= 0 ? '+' : ''}${a.modifier} ${escHtml(String(a.location))})`;
-                    return `<div class="py-0.5 text-purple-300">${escHtml(a.spell)}${extra}<span class="text-gray-600 ml-2 text-xs">${a.duration ? a.duration+'t' : ''}</span></div>`;
-                }).join('');
-            } else {
-                affCard.classList.add('hidden');
-            }
-
-            // ---- Look ----
-            document.getElementById('pl-look-body').textContent = p.description || '(no description)';
-
-            // ---- Equipment ----
-            const equip = p.equipment || [];
-            const equipEl = document.getElementById('pl-equip-body');
-            if (!equip.length) {
-                equipEl.innerHTML = '<div class="p-4 text-gray-600 italic text-sm">Nothing worn.</div>';
-            } else {
-                // Sort by wear slot
-                const sorted = [...equip].sort((a, b) => (a.wear||0) - (b.wear||0));
-                equipEl.innerHTML = sorted.map(item => {
-                    const slotName = WEAR_SLOT_NAMES[item.wear] || ('Slot '+item.wear);
-                    const affStr = (item.affects||[]).slice(0,3).map(a =>
-                        `<span class="text-xs text-gray-500">${escHtml(String(a))}</span>`
-                    ).join(' ');
-                    return `<div class="p-3 hover:bg-[#1a1a1a] transition-colors">
-                        <div class="flex justify-between items-start">
-                            <div class="flex-1 min-w-0">
-                                <div class="text-xs text-gray-600 font-mono uppercase tracking-wider">${escHtml(slotName)}</div>
-                                <div class="text-gray-200 cursor-pointer hover:text-white hover:underline mt-0.5" onclick="showObjDetail(${item.vnum})">${escHtml(item.name)}</div>
-                                <div class="mt-0.5">${affStr}</div>
-                            </div>
-                            <div class="text-gray-700 text-xs font-mono ml-3 shrink-0">#${item.vnum}</div>
-                        </div>
-                    </div>`;
-                }).join('');
-            }
-        }
-
-        function playerToGear() {
-            if (!_currentPlayer) return;
-            document.getElementById('bg-class').value = _currentPlayer.class_name || 'warrior';
-            document.getElementById('bg-race').value  = _currentPlayer.race || 'human';
-            document.getElementById('bg-level').value = _currentPlayer.level || 50;
-            showBestGear();
-        }
-
-        // Best Gear Functions
-        function showBestGear() {
-            showSection('best-gear');
-        }
-
-        const _bgBreakdownMap = new Map();
-
-        async function bgLoadFromPlayer() {
-            const name = document.getElementById('bg-player-name').value.trim();
-            if (!name) return;
-            const loadPlayerBtn = document.getElementById('bg-load-player-btn');
-            setButtonLoading(loadPlayerBtn, true, 'Loading...');
-            const msg = document.getElementById('bg-player-msg');
-            msg.textContent = 'Loading...';
-            try {
-                const res = await fetch('/api/player/' + encodeURIComponent(name));
-                if (!res.ok) { msg.textContent = 'Player not found'; return; }
-                const p = await res.json();
-                document.getElementById('bg-class').value = p.class_name || 'warrior';
-                document.getElementById('bg-race').value  = p.race      || 'human';
-                document.getElementById('bg-level').value = p.level     || 50;
-                msg.textContent = `Loaded ${p.name} (${p.class_name} lv${p.level})`;
-                loadBestGear();
-            } catch(e) {
-                msg.textContent = 'Error: ' + e.message;
-            } finally {
-                setButtonLoading(loadPlayerBtn, false);
-            }
-        }
-
-        async function loadBestGear() {
-            const loadGearBtn = document.getElementById('bg-load-gear-btn');
-            setButtonLoading(loadGearBtn, true, 'Finding...');
-            const cls = document.getElementById('bg-class').value;
-            const race = document.getElementById('bg-race').value;
-            const level = document.getElementById('bg-level').value;
-            const container = document.getElementById('bg-results');
-            
-            container.innerHTML = '<div class="text-center text-gray-500 py-12">Finding best gear...</div>';
-            _bgBreakdownMap.clear();
-            
-            try {
-                const res = await fetch(`/api/best_gear?class_name=${cls}&race_name=${race}&level=${level}&limit=5`);
-                if(!res.ok) throw new Error(await res.text());
-                const data = await res.json();
-                
-                let html = '';
-                
-                // Order of slots to display
-                const slots = ['light', 'finger', 'neck', 'body', 'head', 'legs', 'feet', 'hands', 'arms', 'shield', 'about', 'waist', 'wrist', 'wield', 'hold'];
-                
-                for(const slot of slots) {
-                    if(!data[slot] || data[slot].length === 0) continue;
-                    
-                    html += `
-                        <div class="bg-[#111] rounded border border-gray-800 overflow-hidden">
-                            <div class="bg-[#1a1a1a] px-4 py-2 border-b border-gray-800 font-bold text-yellow-500 uppercase text-sm tracking-wider">
-                                ${slot}
-                            </div>
-                            <div class="divide-y divide-gray-800">
-                    `;
-                    
-                    for(const item of data[slot]) {
-                        // Store breakdown in Map keyed by vnum — avoids fragile inline string escaping
-                        _bgBreakdownMap.set(item.vnum, item.score_breakdown || []);
-                        html += `
-                            <div class="p-3 hover:bg-[#151515] transition-colors flex justify-between items-center group">
-                                <div class="flex items-center gap-3 overflow-hidden">
-                                    <div class="bg-gray-900 text-gray-500 text-xs font-mono px-2 py-1 rounded">#${escHtml(item.vnum)}</div>
-                                    <div class="truncate">
-                                        <div class="text-gray-300 font-bold group-hover:text-white cursor-pointer hover:underline" onclick="showObjDetail(${item.vnum})">${escHtml(item.name)}</div>
-                                        <div class="text-xs text-gray-500">Lvl ${escHtml(item.level)} &bull; ${escHtml(item.area || 'Unknown Area')}</div>
-                                    </div>
-                                </div>
-                                <div class="text-right pl-4 shrink-0 cursor-pointer" onclick="showScoreBreakdown(${item.vnum})">
-                                    <div class="text-green-400 font-bold text-lg">${escHtml(item.score)}</div>
-                                    <div class="text-[10px] text-gray-600 uppercase tracking-wider">Score</div>
-                                </div>
-                            </div>
-                        `;
-                    }
-                    
-                    html += `
-                            </div>
-                        </div>
-                    `;
-                }
-                
-                container.innerHTML = html || '<div class="text-center text-gray-500 py-12">No gear found matching criteria</div>';
-                
-            } catch(e) {
-                const errMsg = (e && e.message) ? e.message : String(e);
-                container.innerHTML = `<div class="text-center text-red-500 py-12">Error: ${escHtml(errMsg)}</div>`;
-            } finally {
-                setButtonLoading(loadGearBtn, false);
-            }
-        }
-
-        function showScoreBreakdown(vnum) {
-            const lines = (_bgBreakdownMap.get(vnum) || []).filter(l => String(l).trim());
-            const content = document.getElementById('score-modal-content');
-            content.innerHTML = lines.length
-                ? lines.map(l => `<div class="py-0.5 border-b border-gray-800">${escHtml(l)}</div>`).join('')
-                : '<div class="text-gray-500 italic">No breakdown available</div>';
-            document.getElementById('score-modal').classList.remove('hidden');
-        }
-
-        function closeScoreModal() {
-            document.getElementById('score-modal').classList.add('hidden');
-        }
-
-        // ============ AREA MAP ============
-        let mapData = null;
-        let mapScale = 1;
-        let mapPan = { x: 0, y: 0 };
-        let isDragging = false;
-        let dragStart = { x: 0, y: 0 };
-        
-        async function showAreaMap(filename) {
-            try {
-                const res = await fetch('/api/areas/' + encodeURIComponent(filename) + '/map');
-                if(!res.ok) throw new Error('Failed to fetch map data (HTTP ' + res.status + ')');
-                
-                const text = await res.text();
-                if(!text || text.length === 0) {
-                    throw new Error('Empty response from server - server may have crashed');
-                }
-                
-                mapData = JSON.parse(text);
-                
-                if(!mapData || !mapData.rooms || !Array.isArray(mapData.rooms)) {
-                    throw new Error('Invalid map data received - missing rooms array');
-                }
-                
-                document.getElementById('map-modal-title').textContent = (mapData.area_name || 'Unknown') + ' Map';
-                document.getElementById('map-modal-rooms').textContent = mapData.rooms.length;
-                
-                // Reset view
-                mapScale = 1;
-                mapPan = { x: 0, y: 0 };
-                document.getElementById('map-zoom-level').textContent = '100%';
-                
-                renderMap();
-                document.getElementById('map-modal').classList.remove('hidden');
-                
-                // Setup pan/drag
-                setupMapDrag();
-            } catch(e) {
-                console.error('Map loading error:', e);
-                showToast('Error loading map: ' + e.message, 'error');
-            }
-        }
-        
-        function closeMapModal() {
-            document.getElementById('map-modal').classList.add('hidden');
-            mapData = null;
-        }
-        
-        function mapZoom(delta, reset = false) {
-            if(reset) {
-                mapScale = 1;
-                mapPan = { x: 0, y: 0 };
-            } else {
-                mapScale = Math.max(0.3, Math.min(3, mapScale + delta));
-            }
-            document.getElementById('map-zoom-level').textContent = Math.round(mapScale * 100) + '%';
-            renderMap();
-        }
-        
-        function setupMapDrag() {
-            const container = document.getElementById('map-container');
-            
-            container.onmousedown = (e) => {
-                isDragging = true;
-                dragStart = { x: e.clientX - mapPan.x, y: e.clientY - mapPan.y };
-                container.style.cursor = 'grabbing';
-            };
-            
-            container.onmousemove = (e) => {
-                if(isDragging) {
-                    mapPan.x = e.clientX - dragStart.x;
-                    mapPan.y = e.clientY - dragStart.y;
-                    renderMap();
-                }
-            };
-            
-            container.onmouseup = () => {
-                isDragging = false;
-                container.style.cursor = 'grab';
-            };
-            
-            container.onmouseleave = () => {
-                isDragging = false;
-                container.style.cursor = 'grab';
-            };
-            
-            // Scroll wheel zoom
-            container.onwheel = (e) => {
-                e.preventDefault();
-                mapZoom(e.deltaY > 0 ? -0.1 : 0.1);
-            };
-        }
-        
-        function renderMap() {
-            if(!mapData || !mapData.rooms || !Array.isArray(mapData.rooms)) {
-                console.error('renderMap called with invalid mapData');
-                return;
-            }
-            
-            const svg = document.getElementById('map-svg');
-            const container = document.getElementById('map-container');
-            const tooltip = document.getElementById('map-tooltip');
-            
-            const CELL_SIZE = 80 * mapScale;
-            const ROOM_SIZE = 60 * mapScale;
-            const PADDING = 100;
-            
-            // Calculate bounds
-            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-            mapData.rooms.forEach(r => {
-                minX = Math.min(minX, r.x);
-                maxX = Math.max(maxX, r.x);
-                minY = Math.min(minY, r.y);
-                maxY = Math.max(maxY, r.y);
-            });
-            
-            const width = (maxX - minX + 1) * CELL_SIZE + PADDING * 2;
-            const height = (maxY - minY + 1) * CELL_SIZE + PADDING * 2;
-            
-            svg.setAttribute('width', width);
-            svg.setAttribute('height', height);
-            svg.style.transform = `translate(${mapPan.x}px, ${mapPan.y}px)`;
-            
-            let html = '';
-            
-            // Direction names for labels
-            const DIR_NAMES = ['north', 'east', 'south', 'west', 'up', 'down'];
-            
-            // Draw grid
-            html += '<defs><pattern id="grid" width="' + CELL_SIZE + '" height="' + CELL_SIZE + '" patternUnits="userSpaceOnUse">';
-            html += '<path d="M ' + CELL_SIZE + ' 0 L 0 0 0 ' + CELL_SIZE + '" fill="none" stroke="#1a1a1a" stroke-width="1"/>';
-            html += '</pattern></defs>';
-            html += '<rect width="100%" height="100%" fill="url(#grid)"/>';
-            
-            // Draw connections first (so rooms appear on top)
-            mapData.rooms.forEach(room => {
-                const x1 = (room.x - minX) * CELL_SIZE + PADDING + CELL_SIZE/2;
-                const y1 = (room.y - minY) * CELL_SIZE + PADDING + CELL_SIZE/2;
-                
-                const exits = room.exits || [];
-                exits.forEach(ex => {
-                    const targetRoom = mapData.rooms.find(r => r.vnum === ex.to_room);
-                    if(targetRoom) {
-                        const x2 = (targetRoom.x - minX) * CELL_SIZE + PADDING + CELL_SIZE/2;
-                        const y2 = (targetRoom.y - minY) * CELL_SIZE + PADDING + CELL_SIZE/2;
-                        
-                        // Color and style based on direction
-                        let color = '#444';
-                        let dashArray = '';
-                        let strokeWidth = 3 * mapScale;
-                        
-                        if(ex.direction === 4) { // up
-                            color = '#4477aa';
-                            dashArray = '5,3';
-                        } else if(ex.direction === 5) { // down
-                            color = '#aa5544';
-                            dashArray = '5,3';
-                        }
-                        
-                        // Check if this is a non-cardinal exit (has keyword like climb, enter, etc)
-                        const hasKeyword = ex.keyword && ex.keyword.trim().length > 0;
-                        if(hasKeyword) {
-                            color = '#7a7';
-                            dashArray = '3,3';
-                        }
-                        
-                        html += '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + color + '" stroke-width="' + strokeWidth + '"' + (dashArray ? ' stroke-dasharray="' + dashArray + '"' : '') + '/>';
-                        
-                        // Add label for up/down/keyword exits at midpoint
-                        if(ex.direction >= 4 || hasKeyword) {
-                            const midX = (x1 + x2) / 2;
-                            const midY = (y1 + y2) / 2;
-                            let label = hasKeyword ? ex.keyword : (DIR_NAMES[ex.direction] || '?');
-                            if(label && label.length > 8) label = label.substring(0, 6) + '..';
-                            html += '<rect x="' + (midX - 20) + '" y="' + (midY - 8) + '" width="40" height="16" fill="#111" rx="3"/>';
-                            html += '<text x="' + midX + '" y="' + (midY + 3) + '" text-anchor="middle" fill="' + color + '" font-size="' + (9 * mapScale) + '" font-family="monospace">' + (label || '?') + '</text>';
-                        }
-                    }
-                });
-            });
-            
-            // Draw rooms
-            mapData.rooms.forEach(room => {
-                const x = (room.x - minX) * CELL_SIZE + PADDING + (CELL_SIZE - ROOM_SIZE)/2;
-                const y = (room.y - minY) * CELL_SIZE + PADDING + (CELL_SIZE - ROOM_SIZE)/2;
-                
-                // Room color based on content
-                let fillColor = '#1a1a1a';
-                let strokeColor = '#444';
-                if(room.mob_count > 0) {
-                    fillColor = '#2a1a1a';
-                    strokeColor = '#633';
-                }
-                if(room.obj_count > 0) {
-                    fillColor = '#1a1a2a';
-                    strokeColor = '#336';
-                }
-                if(room.mob_count > 0 && room.obj_count > 0) {
-                    fillColor = '#2a1a2a';
-                    strokeColor = '#636';
-                }
-                
-                html += '<g class="map-room" data-vnum="' + room.vnum + '" style="cursor:pointer">';
-                html += '<rect x="' + x + '" y="' + y + '" width="' + ROOM_SIZE + '" height="' + ROOM_SIZE + '" fill="' + fillColor + '" stroke="' + strokeColor + '" stroke-width="2" rx="4"/>';
-                
-                // Room name (truncated)
-                const fontSize = Math.max(8, 10 * mapScale);
-                const maxChars = Math.floor(ROOM_SIZE / (fontSize * 0.6));
-                let name = room.name.length > maxChars ? room.name.substring(0, maxChars-2) + '..' : room.name;
-                html += '<text x="' + (x + ROOM_SIZE/2) + '" y="' + (y + ROOM_SIZE/2) + '" text-anchor="middle" dominant-baseline="middle" fill="#aaa" font-size="' + fontSize + '" font-family="sans-serif">' + name.split('&').join('&amp;').split('<').join('&lt;') + '</text>';
-                
-                // Vnum label
-                html += '<text x="' + (x + ROOM_SIZE/2) + '" y="' + (y + ROOM_SIZE - 4) + '" text-anchor="middle" fill="#555" font-size="' + (fontSize * 0.7) + '" font-family="monospace">#' + room.vnum + '</text>';
-                
-                // Direction indicators for up/down
-                const roomExits = room.exits || [];
-                const hasUp = roomExits.some(e => e.direction === 4);
-                const hasDown = roomExits.some(e => e.direction === 5);
-                if(hasUp) {
-                    html += '<text x="' + (x + ROOM_SIZE - 8) + '" y="' + (y + 12) + '" fill="#88f" font-size="' + (fontSize * 0.8) + '">↑</text>';
-                }
-                if(hasDown) {
-                    html += '<text x="' + (x + ROOM_SIZE - 8) + '" y="' + (y + ROOM_SIZE - 4) + '" fill="#f88" font-size="' + (fontSize * 0.8) + '">↓</text>';
-                }
-                
-                html += '</g>';
-            });
-            
-            svg.innerHTML = html;
-            
-            // Setup room interactions
-            document.querySelectorAll('.map-room').forEach(el => {
-                el.onmouseenter = (e) => {
-                    const vnum = parseInt(el.dataset.vnum);
-                    const room = mapData.rooms.find(r => r.vnum === vnum);
-                    if(room) {
-                        document.getElementById('map-tooltip-name').textContent = room.name;
-                        document.getElementById('map-tooltip-vnum').textContent = '#' + room.vnum;
-                        document.getElementById('map-tooltip-desc').textContent = room.description.substring(0, 150) + (room.description.length > 150 ? '...' : '');
-                        
-                        // Format exits
-                        const tooltipExits = room.exits || [];
-                        const exitStr = tooltipExits.map(e => {
-                            const dirName = DIR_NAMES[e.direction] || 'special';
-                            const kw = e.keyword && e.keyword.trim() ? ' (' + e.keyword + ')' : '';
-                            return dirName + kw;
-                        }).join(', ');
-                        document.getElementById('map-tooltip-exits').textContent = tooltipExits.length > 0 ? 'Exits: ' + exitStr : 'No exits';
-                        
-                        document.getElementById('map-tooltip-mobs').textContent = room.mob_count > 0 ? 'Mobs: ' + room.mob_names.join(', ') : '';
-                        document.getElementById('map-tooltip-objects').textContent = room.obj_count > 0 ? 'Objects: ' + room.obj_names.join(', ') : '';
-                        tooltip.classList.remove('hidden');
-                    }
-                };
-                
-                el.onmousemove = (e) => {
-                    tooltip.style.left = (e.clientX + 15) + 'px';
-                    tooltip.style.top = (e.clientY + 15) + 'px';
-                };
-                
-                el.onmouseleave = () => {
-                    tooltip.classList.add('hidden');
-                };
-                
-                el.onclick = () => {
-                    const vnum = parseInt(el.dataset.vnum);
-                    closeMapModal();
-                    showRoomDetail(vnum);
-                };
-            });
-        }
-
-        // ============ HASH ROUTING ============
-        function parseHash() {
-            const m = location.hash.match(/^#(mob|room|obj|section)\\/(.+)/);
-            if (!m) return;
-            const [, type, val] = m;
-            if (type === 'section') { showSection(val, false); return; }
-            if (type === 'mob') showMobDetail(parseInt(val));
-            else if (type === 'room') showRoomDetail(parseInt(val));
-            else if (type === 'obj') showObjDetail(parseInt(val));
-        }
-        window.addEventListener('hashchange', parseHash);
-        if (location.hash) {
-            parseHash();
-        } else {
-            const savedSection = localStorage.getItem('toc_last_section') || 'home';
-            showSection(savedSection, false);
-        }
-    </script>
-</body>
-</html>
-    """
+@app.get("/", response_class=FileResponse, include_in_schema=False)
+async def index() -> FileResponse:
+    return FileResponse(STATIC_PATH / "index.html")
 
 
 @app.get("/api/health")
 async def health() -> dict[str, bool | str]:
-    status = read_process_health()
+    status = await asyncio.to_thread(read_process_health)
     return {"status": "ok", **status}
+
+
+@app.get("/api/config")
+async def get_config() -> Dict[str, Any]:
+    return {
+        "version": app.version,
+        "admin_token_configured": bool(_WEB_ADMIN_TOKEN),
+        "mud_endpoint": f"{MUD_HOST}:{MUD_PORT}",
+        "player_data_protected": True,
+        "log_websocket_auth": "first-message",
+    }
+
+
+@app.get("/api/auth/check")
+async def check_auth(_: None = Depends(verify_token)) -> Dict[str, bool]:
+    return {"authenticated": True}
+
+
+def tail_log_file(path: Path, lines: int) -> str:
+    """Read a bounded number of trailing lines without loading a large log."""
+    block_size = 64 * 1024
+    with path.open("rb") as log_file:
+        log_file.seek(0, os.SEEK_END)
+        position = log_file.tell()
+        chunks: deque[bytes] = deque()
+        newline_count = 0
+        while position > 0 and newline_count <= lines:
+            size = min(block_size, position)
+            position -= size
+            log_file.seek(position)
+            chunk = log_file.read(size)
+            chunks.appendleft(chunk)
+            newline_count += chunk.count(b"\n")
+    data = b"".join(chunks).decode("utf-8", errors="replace")
+    return "".join(data.splitlines(keepends=True)[-lines:])
 
 
 @app.get("/api/logs")
 async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> PlainTextResponse:
-    lines = max(1, min(lines, 5000))  # clamp to prevent resource exhaustion
+    lines = max(1, min(lines, 5000))
     if not DEFAULT_LOG.exists():
         return PlainTextResponse("Log file not found.", status_code=404)
-    
     try:
-        # Use tail command for efficiency if available (Linux/Mac)
-        if os.name == 'posix':
-            proc = subprocess.run(
-                ['tail', '-n', str(lines), str(DEFAULT_LOG)],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                check=False,
-            )
-            if proc.returncode != 0:
-                err = proc.stderr.decode('utf-8', errors='replace')
-                return PlainTextResponse(f"Error reading log: {err}", status_code=500)
-            return PlainTextResponse(proc.stdout.decode('utf-8', errors='replace'))
-        else:
-            # Fallback for Windows or if tail fails
-            with open(DEFAULT_LOG, "r", encoding="utf-8", errors="replace") as f:
-                all_lines = f.readlines()
-                return PlainTextResponse("".join(all_lines[-lines:]))
-    except Exception as e:
-        return PlainTextResponse(f"Error reading log: {e}", status_code=500)
+        return PlainTextResponse(await asyncio.to_thread(tail_log_file, DEFAULT_LOG, lines))
+    except OSError:
+        return PlainTextResponse("Error reading log file.", status_code=500)
+
 
 @app.websocket("/ws/logs")
-async def websocket_logs(websocket: WebSocket, x_admin_token: str = Query(default="")):
-    if (
-        not _WEB_ADMIN_TOKEN
-        or not secrets.compare_digest(x_admin_token, _WEB_ADMIN_TOKEN)
-    ):
-        await websocket.close(code=4003)
-        return
+async def websocket_logs(websocket: WebSocket) -> None:
     await websocket.accept()
     try:
-        # Send last 200 lines first
-        if DEFAULT_LOG.exists():
-            # Use tail for initial load
-            if os.name == 'posix':
-                proc = subprocess.Popen(['tail', '-n', '200', str(DEFAULT_LOG)], stdout=subprocess.PIPE)
-                output, _ = proc.communicate()
-                await websocket.send_text(output.decode('utf-8', errors='replace'))
-            else:
-                with open(DEFAULT_LOG, "r", encoding="utf-8", errors="replace") as f:
-                    lines = f.readlines()
-                    await websocket.send_text("".join(lines[-200:]))
-        
-        # Tail the file
-        last_pos = DEFAULT_LOG.stat().st_size if DEFAULT_LOG.exists() else 0
-        
+        auth_message = await asyncio.wait_for(websocket.receive_text(), timeout=5)
+        auth_payload = json.loads(auth_message)
+        supplied_token = auth_payload.get("token", "") if isinstance(auth_payload, dict) else ""
+        if (
+            not isinstance(auth_payload, dict)
+            or auth_payload.get("type") != "auth"
+            or not _WEB_ADMIN_TOKEN
+            or not secrets.compare_digest(str(supplied_token), _WEB_ADMIN_TOKEN)
+        ):
+            await websocket.close(code=4003)
+            return
+    except (asyncio.TimeoutError, json.JSONDecodeError, WebSocketDisconnect):
+        try:
+            await websocket.close(code=4003)
+        except RuntimeError:
+            pass
+        return
+
+    async def watch_disconnect() -> None:
         while True:
-            await asyncio.sleep(1);
-            if DEFAULT_LOG.exists():
-                current_pos = DEFAULT_LOG.stat().st_size
-                if current_pos > last_pos:
-                    with open(DEFAULT_LOG, "r", encoding="utf-8", errors="replace") as f:
-                        f.seek(last_pos)
-                        new_data = f.read();
-                        if new_data:
-                            await websocket.send_text(new_data);
-                    
-                    last_pos = current_pos
-                elif current_pos < last_pos:
-                    # File truncated/rotated
-                    last_pos = 0
-    except WebSocketDisconnect:
-        pass
-    except Exception as e:
-        print(f"WebSocket error: {e}")
+            message = await websocket.receive()
+            if message["type"] == "websocket.disconnect":
+                return
+
+    async def follow_log() -> None:
+        initial = ""
+        if DEFAULT_LOG.exists():
+            initial = await asyncio.to_thread(tail_log_file, DEFAULT_LOG, 200)
+        await websocket.send_text(initial)
+        last_pos = DEFAULT_LOG.stat().st_size if DEFAULT_LOG.exists() else 0
+
+        while True:
+            await asyncio.sleep(1)
+            if not DEFAULT_LOG.exists():
+                last_pos = 0
+                continue
+            current_pos = DEFAULT_LOG.stat().st_size
+            if current_pos < last_pos:
+                rotated = await asyncio.to_thread(tail_log_file, DEFAULT_LOG, 200)
+                if rotated:
+                    await websocket.send_text(rotated)
+                last_pos = current_pos
+            elif current_pos > last_pos:
+                with DEFAULT_LOG.open("rb") as log_file:
+                    log_file.seek(last_pos)
+                    new_data = log_file.read(current_pos - last_pos)
+                if new_data:
+                    await websocket.send_text(new_data.decode("utf-8", errors="replace"))
+                last_pos = current_pos
+
+    tasks = {
+        asyncio.create_task(watch_disconnect()),
+        asyncio.create_task(follow_log()),
+    }
+    try:
+        await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+    finally:
+        for task in tasks:
+            task.cancel()
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        for result in results:
+            if isinstance(result, OSError):
+                print(f"Log WebSocket error: {result}")
+        try:
+            await websocket.close()
+        except RuntimeError:
+            pass
 
 
 @app.post("/api/wizinfo")
@@ -3871,13 +798,16 @@ async def run_shutdown(_: None = Depends(verify_token)) -> str:
 
 @app.post("/api/reload")
 async def reload_areas(_: None = Depends(verify_token)) -> Dict[str, Any]:
-    """Reload all area files from disk without restarting the server."""
-    global parser
+    """Refresh the dashboard's area snapshot without changing the game state."""
+    global AREA_HEALTH_CACHE, parser
+
+    def build_snapshot() -> tuple[AreaParser, Dict[str, Any]]:
+        candidate = AreaParser(AREA_PATH)
+        candidate.parse_all()
+        return candidate, build_area_health(candidate, AREA_PATH)
 
     try:
-        new_parser = AreaParser(AREA_PATH)
-        new_parser.parse_all()
-        health = build_area_health(new_parser, AREA_PATH)
+        new_parser, health = await asyncio.to_thread(build_snapshot)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Reload failed: {e}")
 
@@ -3899,6 +829,7 @@ async def reload_areas(_: None = Depends(verify_token)) -> Dict[str, Any]:
     # A single assignment preserves the last known-good parser until validation
     # succeeds and includes resets/errors as well as the primary dictionaries.
     parser = new_parser
+    AREA_HEALTH_CACHE = health
     AREA_MAP_CACHE.clear()
     return {
         "status": "ok",
@@ -3977,34 +908,32 @@ async def get_stats() -> Dict[str, int]:
 
 
 @app.get("/api/area_health")
-async def get_area_health() -> Dict[str, Any]:
-    return build_area_health(parser, AREA_PATH)
-
-
-# Validate player names: letters only, 1-20 chars (matches MUD naming rules)
-import re as _re
-_PLAYER_NAME_RE = _re.compile(r'^[A-Za-z]{1,20}$')
+async def get_area_health(include_issues: bool = True) -> Dict[str, Any]:
+    report = await asyncio.to_thread(current_area_health)
+    if include_issues:
+        return report
+    return {"summary": report["summary"]}
 
 
 @app.get("/api/players")
-async def list_players() -> list[str]:
+async def list_players(_: None = Depends(verify_token)) -> list[str]:
     """Return sorted list of all player names (extension-less files only)."""
     try:
         return sorted(
             (
                 p.name for p in PLAYER_PATH.iterdir()
-                if p.is_file() and p.suffix == "" and not p.name.startswith(".")
+                if PLAYER_NAME_RE.fullmatch(p.name) and p.is_file() and not p.is_symlink()
             ),
             key=str.lower,
         )
-    except Exception:
+    except OSError:
         return []
 
 
 @app.get("/api/player/{name}")
-async def get_player(name: str) -> Dict[str, Any]:
+async def get_player(name: str, _: None = Depends(verify_token)) -> Dict[str, Any]:
     """Return full parsed player profile."""
-    if not _PLAYER_NAME_RE.match(name):
+    if not PLAYER_NAME_RE.fullmatch(name):
         raise HTTPException(status_code=400, detail="Invalid player name")
     data = parse_player_file(name)
     if data is None:
@@ -4013,12 +942,28 @@ async def get_player(name: str) -> Dict[str, Any]:
 
 
 @app.get("/api/mobs")
-async def get_mobs(limit: int = 10000) -> list:
+async def get_mobs(
+    response: Response,
+    limit: int = 10000,
+    offset: int = 0,
+    q: Optional[str] = None,
+) -> list:
     limit = max(1, min(limit, 50000))
+    offset = max(0, offset)
+    query = (q or "").strip().casefold()
+    matching = [
+        mob
+        for _, mob in sorted(parser.mobiles.items())
+        if not query
+        or query in str(mob.vnum)
+        or query in mob.short_desc.casefold()
+        or query in mob.keywords.casefold()
+        or query in mob.race.casefold()
+        or query in mob.area_name.casefold()
+    ]
+    response.headers["X-Total-Count"] = str(len(matching))
     result = []
-    for i, (vnum, mob) in enumerate(sorted(parser.mobiles.items())):
-        if i >= limit:
-            break
+    for mob in matching[offset:offset + limit]:
         result.append({
             "vnum": mob.vnum,
             "short_desc": mob.short_desc,
@@ -4033,13 +978,27 @@ async def get_mobs(limit: int = 10000) -> list:
 
 
 @app.get("/api/rooms")
-async def get_rooms(limit: int = 10000) -> list:
+async def get_rooms(
+    response: Response,
+    limit: int = 10000,
+    offset: int = 0,
+    q: Optional[str] = None,
+) -> list:
     limit = max(1, min(limit, 50000))
+    offset = max(0, offset)
+    query = (q or "").strip().casefold()
+    matching = [
+        room
+        for _, room in sorted(parser.rooms.items())
+        if not query
+        or query in str(room.vnum)
+        or query in room.name.casefold()
+        or query in room.description.casefold()
+        or query in room.area_name.casefold()
+    ]
+    response.headers["X-Total-Count"] = str(len(matching))
     result = []
-    for i, (vnum, room) in enumerate(sorted(parser.rooms.items())):
-        if i >= limit:
-            break
-            
+    for room in matching[offset:offset + limit]:
         # Decode room flags
         decoded_flags = decode_flags(room.room_flags, ROOM_FLAGS)
         
@@ -4236,7 +1195,9 @@ async def get_area_map(filename: str) -> Dict[str, Any]:
 
 @app.get("/api/objects")
 async def get_objects(
+    response: Response,
     limit: int = 10000,
+    offset: int = 0,
     name: Optional[str] = None,
     min_level: Optional[int] = None,
     max_level: Optional[int] = None,
@@ -4246,13 +1207,11 @@ async def get_objects(
     stat_filter: Optional[str] = None
 ) -> list:
     limit = max(1, min(limit, 50000))
+    offset = max(0, offset)
     result = []
-    count = 0
+    total = 0
     
-    for vnum, obj in sorted(parser.objects.items()):
-        if count >= limit:
-            break
-            
+    for _, obj in sorted(parser.objects.items()):
         # Filters
         if name and name.lower() not in obj.short_desc.lower() and name.lower() not in obj.keywords.lower():
             continue
@@ -4293,9 +1252,6 @@ async def get_objects(
             if not all(rf in all_obj_flags for rf in req_flags):
                 continue
         
-        # Decode affects
-        affects_decoded = decode_applies(obj.affects)
-        
         # Stat filter (e.g. "hitroll>5")
         if stat_filter:
             try:
@@ -4312,6 +1268,12 @@ async def get_objects(
                         continue
             except:
                 pass
+
+        total += 1
+        if total <= offset or len(result) >= limit:
+            continue
+
+        affects_decoded = decode_applies(obj.affects)
         
         # Interpret values based on item type
         values_interpreted = interpret_values(item_type_num, obj.values, obj.level)
@@ -4352,8 +1314,7 @@ async def get_objects(
             "area": obj.area_name,
             "area_file": obj.area_file
         })
-        count += 1
-    
+    response.headers["X-Total-Count"] = str(total)
     return result
 
 
@@ -4529,6 +1490,10 @@ async def get_best_gear(
     
     if class_name not in CLASS_WEIGHTS:
         raise HTTPException(status_code=400, detail=f"Unknown class: {class_name}")
+    if race_name not in RACE_FLAGS:
+        raise HTTPException(status_code=400, detail=f"Unknown race: {race_name}")
+    if level < 1 or level > 70:
+        raise HTTPException(status_code=400, detail="Level must be between 1 and 70")
     limit = max(1, min(limit, 50))
         
     weights = CLASS_WEIGHTS[class_name]
@@ -4637,57 +1602,62 @@ async def get_best_gear(
 
 
 @app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
+async def websocket_endpoint(websocket: WebSocket) -> None:
     await websocket.accept()
     writer = None
     try:
-        # Connect to the C Game Server
-        reader, writer = await asyncio.open_connection(MUD_HOST, MUD_PORT)
+        reader, writer = await asyncio.wait_for(
+            asyncio.open_connection(MUD_HOST, MUD_PORT),
+            timeout=5,
+        )
+        await websocket.send_text("\0TOC_CONNECTED")
         
-        async def mud_to_ws():
+        async def mud_to_ws() -> None:
             try:
                 while True:
                     data = await reader.read(4096)
-                    if not data: 
+                    if not data:
                         break
-                    # Decode Latin-1 (standard for MUDs) to send to Browser (UTF-8 auto handled by websocket lib)
-                    await websocket.send_text(data.decode('latin-1', errors='replace'))
-            except Exception as e:
-                print(f"mud_to_ws error: {e}")
+                    negotiation = telnet_negotiation_responses(data)
+                    if negotiation:
+                        writer.write(negotiation)
+                        await writer.drain()
+                    await websocket.send_text(data.decode("latin-1", errors="replace"))
+            except (ConnectionError, WebSocketDisconnect):
+                pass
 
-        async def ws_to_mud():
+        async def ws_to_mud() -> None:
             try:
                 while True:
                     data = await websocket.receive_text()
-                    writer.write(data.encode('latin-1', errors='replace'))
+                    writer.write(data.encode("latin-1", errors="replace"))
                     await writer.drain()
-            except WebSocketDisconnect:
+            except (ConnectionError, WebSocketDisconnect):
                 pass
-            except Exception as e:
-                print(f"ws_to_mud error: {e}")
 
-        # Run both tasks until one fails
-        done, pending = await asyncio.wait(
-            [asyncio.create_task(mud_to_ws()), asyncio.create_task(ws_to_mud())],
-            return_when=asyncio.FIRST_COMPLETED
+        tasks = [asyncio.create_task(mud_to_ws()), asyncio.create_task(ws_to_mud())]
+        _, pending = await asyncio.wait(
+            tasks,
+            return_when=asyncio.FIRST_COMPLETED,
         )
-        
-        # Cancel pending tasks
         for task in pending:
             task.cancel()
-            
-    except Exception as e:
-        print(f"Connection Error: {e}")
+        await asyncio.gather(*tasks, return_exceptions=True)
+    except (asyncio.TimeoutError, ConnectionError, OSError):
+        try:
+            await websocket.send_text("\0TOC_ERROR:Game server is unavailable.")
+        except (RuntimeError, WebSocketDisconnect):
+            pass
     finally:
-        if writer:
+        if writer is not None:
             writer.close()
             try:
                 await writer.wait_closed()
-            except Exception:
+            except (ConnectionError, OSError):
                 pass
         try:
             await websocket.close()
-        except Exception:
+        except RuntimeError:
             pass
     
 
@@ -4696,11 +1666,14 @@ if __name__ == "__main__":
     
     arg_parser = argparse.ArgumentParser(description="ToC Web Admin Server")
     arg_parser.add_argument("--host", default="0.0.0.0", help="Host to bind to")
-    arg_parser.add_argument("--port", type=int, default=9001, help="Port to bind to")
+    arg_parser.add_argument("--port", type=int, default=WEB_ADMIN_PORT, help="Port to bind to")
+    arg_parser.add_argument("--mud-host", default=MUD_HOST, help="Game server host for health and console connections")
+    arg_parser.add_argument("--mud-port", type=int, default=MUD_PORT, help="Game server port for health and console connections")
     arg_parser.add_argument("--queue", type=Path, default=QUEUE_PATH, help="Path to command queue file")
     arg_parser.add_argument("--log-file", type=Path, default=DEFAULT_LOG, help="Path to log file")
     arg_parser.add_argument("--area-path", type=Path, default=AREA_PATH, help="Path to area files")
     arg_parser.add_argument("--backup-path", type=Path, default=BACKUP_PATH, help="Path to backup archive directory")
+    arg_parser.add_argument("--player-path", type=Path, default=PLAYER_PATH, help="Path to player save files")
     
     args = arg_parser.parse_args()
     
@@ -4709,7 +1682,9 @@ if __name__ == "__main__":
     DEFAULT_LOG = args.log_file
     AREA_PATH = args.area_path
     BACKUP_PATH = args.backup_path
-    parser = load_area_parser(AREA_PATH)
-    AREA_MAP_CACHE.clear()
+    PLAYER_PATH = args.player_path
+    MUD_HOST = args.mud_host
+    MUD_PORT = args.mud_port
+    WEB_ADMIN_PORT = args.port
     
     uvicorn.run(app, host=args.host, port=args.port)

@@ -153,7 +153,9 @@ After installation, double-click `Start-ToC.cmd` on Windows or
 
 Connect a MUD client to `localhost:9000`. The dashboard is
 `http://127.0.0.1:9001`. Protected actions use the generated token in `.env`;
-the installers never print or replace an existing token.
+the installers never print or replace an existing token. The dashboard ships
+all of its browser assets locally and does not require internet access after
+installation.
 
 Docker Desktop can require acceptance of its own subscription terms on first
 launch. The project cannot accept those terms for the host. Docker documents
@@ -240,10 +242,13 @@ export WEB_ADMIN_TOKEN="$(openssl rand -hex 32)"
 python -m webadmin.server \
   --host 127.0.0.1 \
   --port 9001 \
+  --mud-host 127.0.0.1 \
+  --mud-port 9000 \
   --queue area/webadmin.queue \
   --log-file log/toc.log \
   --area-path area \
-  --backup-path backups
+  --backup-path backups \
+  --player-path player
 ```
 
 Windows users can activate with `.\.venv\Scripts\Activate.ps1` and use the
@@ -256,6 +261,7 @@ Docker or WSL.
 |---|---:|---|
 | `MUD_BIND` | `127.0.0.1` | Host interface for the published game port; use `0.0.0.0` for remote players |
 | `MUD_PORT` | `9000` | Game port published on the host |
+| `MUD_HOST` | `127.0.0.1` | Game host used by the dashboard health check and browser console |
 | `WEB_ADMIN_BIND` | `127.0.0.1` | Host interface for the dashboard; keep private |
 | `WEB_ADMIN_PORT` | `9001` | Dashboard port published on the host |
 | `WEB_ADMIN_ENABLED` | `1` | Set to `0` to skip the dashboard in Docker |
@@ -319,17 +325,18 @@ quests, guilds, remorts, Hyrule, death, saving, and troubleshooting.
 
 The dashboard can browse areas, maps, rooms, mobiles, objects, gear, player
 files, live game status, logs, backups, and area-health findings. It also has a
-WebSocket bridge to the game port.
+WebSocket bridge to the game port. Large world tables use server-side search
+and pagination instead of rendering the entire database at once.
 
 Operational routes such as log access, command queueing, backup, reload,
-wizinfo, and shutdown require `X-Admin-Token`. Browsing routes, including the
-player list and player detail endpoints, are currently public to anyone who can
-reach port 9001. Dashboard `reload` refreshes the Python parser's view of area
-files; it does not hot-reload the live C game world.
+wizinfo, shutdown, and player-save access require `X-Admin-Token`. Dashboard
+`reload` refreshes the Python parser's view of area files; it does not
+hot-reload the live C game world.
 
-See the [Hosting Guide](wiki/hosting-guide.md) for the complete endpoint and
-authentication matrix and the [Operator Guide](wiki/operator-guide.md) for
-normal operating procedures.
+See the [Web Admin Guide](wiki/web-admin-guide.md) for interface workflows, the
+[Hosting Guide](wiki/hosting-guide.md) for the endpoint and authentication
+matrix, and the [Operator Guide](wiki/operator-guide.md) for normal operating
+procedures.
 
 ## Development And Validation
 

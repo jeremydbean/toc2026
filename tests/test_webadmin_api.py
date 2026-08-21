@@ -5,198 +5,294 @@ import os
 import sys
 import tempfile
 import unittest
+from contextlib import contextmanager
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
 try:
     from fastapi.testclient import TestClient
+    from starlette.websockets import WebSocketDisconnect
 except Exception:  # pragma: no cover - local C-only environments can skip this
     TestClient = None
+    WebSocketDisconnect = Exception
+
+
+PLAYER_FIXTURE = """#PLAYER
+Name MiXeD~
+Race elf~
+Sex 2
+Cla 3
+Gui 3
+Levl 12
+HMV 100 200 150 250 75 100
+Attr 14 15 16 17 18
+AMod 1 2 3 4 5
+ACs -10 -20 -30 -40
+Hit 7
+Dam 8
+Exp 12345
+Prac 4
+Trai 2
+QuestPnts 9
+Alig 250
+NewGold 500
+NewPlat 12
+NumRemorts 1
+Titl the Test Hero~
+Desc
+A deliberately mixed-case player.
+~
+Sk 75 'sword'
+#O
+Vnum 1
+Wear 6
+Lev 10
+End
+#END
+"""
 
 
 class WebAdminApiTests(unittest.TestCase):
-    def test_area_health_and_token_protected_command(self) -> None:
+    @contextmanager
+    def webadmin_client(self):
         if TestClient is None:
             self.skipTest("fastapi is not installed")
 
+        repo_root = Path(__file__).resolve().parents[1]
         with tempfile.TemporaryDirectory() as tmp:
-            queue_path = Path(tmp) / "webadmin.queue"
-            old_env = {
-                "QUEUE_PATH": os.environ.get("QUEUE_PATH"),
-                "WEB_ADMIN_TOKEN": os.environ.get("WEB_ADMIN_TOKEN"),
-                "AREA_PATH": os.environ.get("AREA_PATH"),
-                "BACKUP_PATH": os.environ.get("BACKUP_PATH"),
-            }
-            os.environ["QUEUE_PATH"] = str(queue_path)
-            os.environ["WEB_ADMIN_TOKEN"] = "secret"
-            os.environ["AREA_PATH"] = "area"
-            os.environ["BACKUP_PATH"] = tmp
+            temp_root = Path(tmp)
+            player_path = temp_root / "players"
+            backup_path = temp_root / "backups"
+            log_path = temp_root / "toc.log"
+            queue_path = temp_root / "webadmin.queue"
+            player_path.mkdir()
+            backup_path.mkdir()
+            (player_path / "MiXeD").write_text(PLAYER_FIXTURE, encoding="latin-1")
+            (player_path / "notes").mkdir()
+            (player_path / "invalid-name").write_text("ignored", encoding="ascii")
+            log_path.write_text("first line\nsecond line\nthird line\n", encoding="utf-8")
 
-            try:
+            env = {
+                "QUEUE_PATH": str(queue_path),
+                "WEB_ADMIN_TOKEN": "secret",
+                "AREA_PATH": str(repo_root / "area"),
+                "BACKUP_PATH": str(backup_path),
+                "PLAYER_PATH": str(player_path),
+                "LOG_FILE": str(log_path),
+                "MUD_HOST": "127.0.0.1",
+                "MUD_PORT": "65534",
+            }
+            with patch.dict(os.environ, env, clear=False):
                 sys.modules.pop("webadmin.server", None)
                 server = importlib.import_module("webadmin.server")
+                try:
+                    with TestClient(server.app) as client:
+                        yield server, client, temp_root
+                finally:
+                    sys.modules.pop("webadmin.server", None)
 
-                with TestClient(server.app) as client:
-                    health = client.get("/api/area_health")
-                    self.assertEqual(health.status_code, 200)
-                    self.assertEqual(health.json()["summary"]["by_severity"]["critical"], 0)
+    def test_self_contained_interface_and_paginated_catalogs(self) -> None:
+        with self.webadmin_client() as (server, client, _):
+            page = client.get("/")
+            self.assertEqual(page.status_code, 200)
+            self.assertIn("Times of Chaos Admin", page.text)
+            self.assertIn('/static/app.js', page.text)
+            self.assertNotIn("cdn.", page.text)
+            self.assertNotIn("tailwind", page.text.lower())
+            self.assertIn("default-src 'self'", page.headers["Content-Security-Policy"])
+            self.assertEqual(page.headers["X-Frame-Options"], "DENY")
+            self.assertEqual(client.get("/docs").status_code, 404)
 
-                    forbidden = client.post("/api/command", json={"command": "look"})
-                    self.assertEqual(forbidden.status_code, 403)
+            stylesheet = client.get("/static/app.css")
+            script = client.get("/static/app.js")
+            self.assertEqual(stylesheet.status_code, 200)
+            self.assertEqual(script.status_code, 200)
+            self.assertIn('type: "auth", token: state.token', script.text)
 
-                    accepted = client.post(
-                        "/api/command",
-                        json={"command": "look"},
-                        headers={"X-Admin-Token": "secret"},
-                    )
-                    self.assertEqual(accepted.status_code, 200)
-                    self.assertIn("command|look", queue_path.read_text(encoding="utf-8"))
+            config = client.get("/api/config")
+            self.assertEqual(config.status_code, 200)
+            self.assertTrue(config.json()["admin_token_configured"])
+            self.assertEqual(config.json()["log_websocket_auth"], "first-message")
 
-                    original_queue = queue_path.read_text(encoding="utf-8")
-                    for invalid_command in (
-                        "look\nshutdown",
-                        "look|shutdown",
-                        "x" * 256,
-                    ):
-                        rejected = client.post(
-                            "/api/command",
-                            json={"command": invalid_command},
-                            headers={"X-Admin-Token": "secret"},
-                        )
-                        self.assertEqual(rejected.status_code, 400)
+            health = client.get("/api/health")
+            self.assertEqual(health.status_code, 200)
+            self.assertTrue(health.json()["webadmin"])
+
+            summary = client.get("/api/area_health?include_issues=false")
+            self.assertEqual(summary.status_code, 200)
+            self.assertNotIn("issues", summary.json())
+            self.assertEqual(summary.json()["summary"]["by_severity"]["critical"], 0)
+
+            mobs = client.get("/api/mobs", params={"limit": 2, "offset": 1})
+            self.assertEqual(mobs.status_code, 200)
+            self.assertEqual(len(mobs.json()), 2)
+            self.assertGreater(int(mobs.headers["X-Total-Count"]), 2)
+
+            first_mob = mobs.json()[0]
+            search = client.get("/api/mobs", params={"q": first_mob["vnum"], "limit": 25})
+            self.assertTrue(any(item["vnum"] == first_mob["vnum"] for item in search.json()))
+
+            objects = client.get("/api/objects", params={"limit": 1, "offset": 1})
+            rooms = client.get("/api/rooms", params={"limit": 1, "offset": 1})
+            self.assertEqual(len(objects.json()), 1)
+            self.assertEqual(len(rooms.json()), 1)
+            self.assertGreater(int(objects.headers["X-Total-Count"]), 1)
+            self.assertGreater(int(rooms.headers["X-Total-Count"]), 1)
+
+            bad_gear_level = client.get(
+                "/api/best_gear",
+                params={"class_name": "warrior", "race_name": "human", "level": 71},
+            )
+            self.assertEqual(bad_gear_level.status_code, 400)
+
+            self.assertEqual(
+                server.telnet_negotiation_responses(bytes([255, 251, 1, 255, 253, 31])),
+                bytes([255, 253, 1, 255, 252, 31]),
+            )
+
+            with patch.object(server.asyncio, "open_connection", side_effect=ConnectionRefusedError):
+                with client.websocket_connect("/ws") as websocket:
                     self.assertEqual(
-                        queue_path.read_text(encoding="utf-8"),
-                        original_queue,
+                        websocket.receive_text(),
+                        "\0TOC_ERROR:Game server is unavailable.",
                     )
 
-                    bad_level = client.post(
-                        "/api/wizinfo",
-                        json={"message": "Test", "level": 71},
-                        headers={"X-Admin-Token": "secret"},
-                    )
-                    self.assertEqual(bad_level.status_code, 400)
+            self.assertGreater(len(server.parser.rooms), 7000)
 
-                    backups = client.get("/api/backups", headers={"X-Admin-Token": "secret"})
-                    self.assertEqual(backups.status_code, 200)
-                    self.assertEqual(backups.json(), [])
+    def test_player_privacy_case_preservation_and_log_auth(self) -> None:
+        with self.webadmin_client() as (_, client, _):
+            self.assertEqual(client.get("/api/players").status_code, 403)
+            self.assertEqual(client.get("/api/player/MiXeD").status_code, 403)
+            self.assertEqual(client.get("/api/auth/check").status_code, 403)
 
-                    with patch.object(server, "_WEB_ADMIN_TOKEN", ""):
-                        disabled = client.post(
-                            "/api/backup",
-                            headers={"X-Admin-Token": "secret"},
-                        )
-                    self.assertEqual(disabled.status_code, 503)
+            headers = {"X-Admin-Token": "secret"}
+            auth = client.get("/api/auth/check", headers=headers)
+            self.assertEqual(auth.status_code, 200)
+            self.assertTrue(auth.json()["authenticated"])
 
-                    original_parser = server.parser
-                    broken_parser = SimpleNamespace(
-                        areas={},
-                        mobiles={},
-                        objects={},
-                        rooms={},
-                        resets={},
-                        errors=[{"file": "broken.are", "error": "bad data"}],
-                        parse_all=Mock(),
-                    )
-                    critical_health = {
-                        "summary": {
-                            "areas": 0,
-                            "mobiles": 0,
-                            "objects": 0,
-                            "rooms": 0,
-                            "listed_area_files": 1,
-                            "parse_errors": 1,
-                            "issues": 1,
-                            "by_severity": {
-                                "critical": 1,
-                                "warning": 0,
-                                "info": 0,
-                            },
-                        },
-                        "issues": [
-                            {
-                                "severity": "critical",
-                                "code": "area-parse-error",
-                                "message": "broken.are failed to parse",
-                            }
-                        ],
-                    }
-                    with (
-                        patch.object(server, "AreaParser", return_value=broken_parser),
-                        patch.object(
-                            server,
-                            "build_area_health",
-                            return_value=critical_health,
-                        ),
-                    ):
-                        rejected_reload = client.post(
-                            "/api/reload",
-                            headers={"X-Admin-Token": "secret"},
-                        )
-                    self.assertEqual(rejected_reload.status_code, 422)
-                    self.assertIs(server.parser, original_parser)
+            players = client.get("/api/players", headers=headers)
+            self.assertEqual(players.json(), ["MiXeD"])
 
-                    healthy_parser = SimpleNamespace(
-                        areas={"test.are": object()},
-                        mobiles={1: object()},
-                        objects={2: object()},
-                        rooms={3: object()},
-                        resets={"test.are": []},
-                        errors=[],
-                        parse_all=Mock(),
-                    )
-                    healthy_health = {
-                        "summary": {
-                            "areas": 1,
-                            "mobiles": 1,
-                            "objects": 1,
-                            "rooms": 1,
-                            "listed_area_files": 1,
-                            "parse_errors": 0,
-                            "issues": 0,
-                            "by_severity": {
-                                "critical": 0,
-                                "warning": 0,
-                                "info": 0,
-                            },
-                        },
-                        "issues": [],
-                    }
-                    try:
-                        with (
-                            patch.object(server, "AreaParser", return_value=healthy_parser),
-                            patch.object(
-                                server,
-                                "build_area_health",
-                                return_value=healthy_health,
-                            ),
-                        ):
-                            accepted_reload = client.post(
-                                "/api/reload",
-                                headers={"X-Admin-Token": "secret"},
-                            )
-                        self.assertEqual(accepted_reload.status_code, 200)
-                        self.assertIs(server.parser, healthy_parser)
-                        self.assertEqual(accepted_reload.json()["rooms"], 1)
-                    finally:
-                        server.parser = original_parser
+            # Case-insensitive lookup must preserve the actual save filename and
+            # must not use str.capitalize(), which broke mixed-case filenames.
+            player = client.get("/api/player/mixed", headers=headers)
+            self.assertEqual(player.status_code, 200)
+            self.assertEqual(player.json()["name"], "MiXeD")
+            self.assertEqual(player.json()["equipment"][0]["wear_slot"], "Head")
+            self.assertEqual(client.get("/api/player/bad.name", headers=headers).status_code, 400)
 
-                nested_queue = Path(tmp) / "nested" / "admin.queue"
-                writer = server.QueueWriter(nested_queue)
-                writer.append("backup")
-                self.assertEqual(
-                    nested_queue.read_text(encoding="utf-8"),
-                    "backup\n",
+            logs = client.get("/api/logs", params={"lines": 2}, headers=headers)
+            self.assertEqual(logs.status_code, 200)
+            self.assertEqual(logs.text.splitlines(), ["second line", "third line"])
+
+            with client.websocket_connect("/ws/logs") as websocket:
+                websocket.send_json({"type": "auth", "token": "secret"})
+                self.assertIn("third line", websocket.receive_text())
+
+            with self.assertRaises(WebSocketDisconnect) as rejected:
+                with client.websocket_connect("/ws/logs") as websocket:
+                    websocket.send_json({"type": "auth", "token": "wrong"})
+                    websocket.receive_text()
+            self.assertEqual(rejected.exception.code, 4003)
+
+    def test_commands_reload_and_queue_validation(self) -> None:
+        with self.webadmin_client() as (server, client, temp_root):
+            queue_path = temp_root / "webadmin.queue"
+            headers = {"X-Admin-Token": "secret"}
+
+            accepted = client.post(
+                "/api/command",
+                json={"command": "look"},
+                headers=headers,
+            )
+            self.assertEqual(accepted.status_code, 200)
+            self.assertIn("command|look", queue_path.read_text(encoding="utf-8"))
+
+            original_queue = queue_path.read_text(encoding="utf-8")
+            for invalid_command in ("look\nshutdown", "look|shutdown", "x" * 256):
+                rejected = client.post(
+                    "/api/command",
+                    json={"command": invalid_command},
+                    headers=headers,
                 )
-                with self.assertRaises(ValueError):
-                    writer.append("backup\nshutdown")
+                self.assertEqual(rejected.status_code, 400)
+            self.assertEqual(queue_path.read_text(encoding="utf-8"), original_queue)
+
+            bad_level = client.post(
+                "/api/wizinfo",
+                json={"message": "Test", "level": 71},
+                headers=headers,
+            )
+            self.assertEqual(bad_level.status_code, 400)
+
+            backups = client.get("/api/backups", headers=headers)
+            self.assertEqual(backups.status_code, 200)
+            self.assertEqual(backups.json(), [])
+
+            with patch.object(server, "_WEB_ADMIN_TOKEN", ""):
+                disabled = client.post("/api/backup", headers=headers)
+            self.assertEqual(disabled.status_code, 503)
+
+            original_parser = server.parser
+            original_health = server.AREA_HEALTH_CACHE
+            broken_parser = SimpleNamespace(
+                areas={}, mobiles={}, objects={}, rooms={}, resets={},
+                errors=[{"file": "broken.are", "error": "bad data"}],
+                parse_all=Mock(),
+            )
+            critical_health = {
+                "summary": {
+                    "areas": 0, "mobiles": 0, "objects": 0, "rooms": 0,
+                    "listed_area_files": 1, "parse_errors": 1, "issues": 1,
+                    "by_severity": {"critical": 1, "warning": 0, "info": 0},
+                },
+                "issues": [{
+                    "severity": "critical", "code": "area-parse-error",
+                    "message": "broken.are failed to parse",
+                }],
+            }
+            with (
+                patch.object(server, "AreaParser", return_value=broken_parser),
+                patch.object(server, "build_area_health", return_value=critical_health),
+            ):
+                rejected_reload = client.post("/api/reload", headers=headers)
+            self.assertEqual(rejected_reload.status_code, 422)
+            self.assertIs(server.parser, original_parser)
+
+            healthy_parser = SimpleNamespace(
+                areas={"test.are": object()}, mobiles={1: object()},
+                objects={2: object()}, rooms={3: object()}, resets={"test.are": []},
+                errors=[], parse_all=Mock(),
+            )
+            healthy_health = {
+                "summary": {
+                    "areas": 1, "mobiles": 1, "objects": 1, "rooms": 1,
+                    "listed_area_files": 1, "parse_errors": 0, "issues": 0,
+                    "by_severity": {"critical": 0, "warning": 0, "info": 0},
+                },
+                "issues": [],
+            }
+            try:
+                with (
+                    patch.object(server, "AreaParser", return_value=healthy_parser),
+                    patch.object(server, "build_area_health", return_value=healthy_health),
+                ):
+                    accepted_reload = client.post("/api/reload", headers=headers)
+                self.assertEqual(accepted_reload.status_code, 200)
+                self.assertIs(server.parser, healthy_parser)
+                self.assertIs(server.AREA_HEALTH_CACHE, healthy_health)
+                self.assertEqual(accepted_reload.json()["rooms"], 1)
             finally:
-                sys.modules.pop("webadmin.server", None)
-                for key, value in old_env.items():
-                    if value is None:
-                        os.environ.pop(key, None)
-                    else:
-                        os.environ[key] = value
+                server.parser = original_parser
+                server.AREA_HEALTH_CACHE = original_health
+
+            nested_queue = temp_root / "nested" / "admin.queue"
+            writer = server.QueueWriter(nested_queue)
+            writer.append("backup")
+            self.assertEqual(nested_queue.read_text(encoding="utf-8"), "backup\n")
+            with self.assertRaises(ValueError):
+                writer.append("backup\nshutdown")
 
 
 if __name__ == "__main__":

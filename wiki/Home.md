@@ -18,6 +18,8 @@ objects.
 
 ## Hosts And Staff
 
+- [Web Admin Guide](web-admin-guide.md) - dashboard authentication, world and
+  player inspection, maps, logs, game console, operations, API use, and fixes
 - [Hosting Guide](hosting-guide.md) - Docker/native setup, configuration,
   persistence, web API, firewalling, service management, upgrades, backups, and
   troubleshooting

@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>Times of Chaos Admin</title>
+    <link rel="stylesheet" href="/static/app.css">
+    <script src="/static/app.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <div class="brand-mark" aria-hidden="true">TC</div>
+                <div>
+                    <strong>Times of Chaos</strong>
+                    <span>Server administration</span>
+                </div>
+            </div>
+
+            <nav class="primary-nav" aria-label="Admin sections">
+                <button class="nav-item is-active" type="button" data-view="overview">Overview</button>
+                <button class="nav-item" type="button" data-view="world">World database</button>
+                <button class="nav-item" type="button" data-view="areas">Areas and health</button>
+                <button class="nav-item" type="button" data-view="players">Players</button>
+                <button class="nav-item" type="button" data-view="gear">Gear finder</button>
+                <button class="nav-item" type="button" data-view="console">Game console</button>
+                <button class="nav-item" type="button" data-view="logs">Live logs</button>
+                <button class="nav-item" type="button" data-view="operations">Operations</button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="auth-button" class="auth-button" type="button">
+                    <span class="status-dot status-locked" id="auth-dot"></span>
+                    <span id="auth-label">Admin locked</span>
+                </button>
+                <span class="version-label" id="version-label">Web admin</span>
+            </div>
+        </aside>
+
+        <header class="topbar">
+            <button class="icon-button menu-button" id="menu-button" type="button" aria-label="Open navigation" title="Open navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="page-heading">
+                <span class="eyebrow">Operations console</span>
+                <h1 id="page-title">Overview</h1>
+            </div>
+            <div class="service-pills" aria-label="Service status">
+                <span class="service-pill"><span class="status-dot status-pending" id="admin-status-dot"></span>Admin</span>
+                <span class="service-pill"><span class="status-dot status-pending" id="mud-status-dot"></span>Game</span>
+            </div>
+            <button class="button button-secondary compact" id="refresh-view" type="button">Refresh</button>
+        </header>
+
+        <main class="workspace" id="workspace">
+            <section class="view is-active" id="overview-view" data-title="Overview">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">Current world</span>
+                        <h2>Server overview</h2>
+                    </div>
+                    <span class="timestamp" id="overview-updated">Not refreshed</span>
+                </div>
+
+                <div class="metric-grid" aria-label="World totals">
+                    <article class="metric"><span>Areas</span><strong id="metric-areas">-</strong></article>
+                    <article class="metric"><span>Rooms</span><strong id="metric-rooms">-</strong></article>
+                    <article class="metric"><span>Mobiles</span><strong id="metric-mobs">-</strong></article>
+                    <article class="metric"><span>Objects</span><strong id="metric-objects">-</strong></article>
+                </div>
+
+                <div class="overview-grid">
+                    <section class="panel status-panel">
+                        <div class="panel-heading">
+                            <h3>Runtime</h3>
+                        </div>
+                        <dl class="status-list">
+                            <div><dt>Dashboard</dt><dd id="runtime-admin">Checking</dd></div>
+                            <div><dt>Game server</dt><dd id="runtime-mud">Checking</dd></div>
+                            <div><dt>Game endpoint</dt><dd class="mono" id="runtime-endpoint">-</dd></div>
+                            <div><dt>Admin API</dt><dd id="runtime-auth">Checking</dd></div>
+                        </dl>
+                    </section>
+
+                    <section class="panel health-panel">
+                        <div class="panel-heading">
+                            <h3>Area health</h3>
+                            <button class="text-button" type="button" data-go-view="areas">Open report</button>
+                        </div>
+                        <div class="health-counts">
+                            <div><strong class="critical" id="health-critical">-</strong><span>Critical</span></div>
+                            <div><strong class="warning" id="health-warning">-</strong><span>Warnings</span></div>
+                            <div><strong class="muted" id="health-info">-</strong><span>Info</span></div>
+                        </div>
+                        <p class="health-summary" id="health-summary">Area report has not loaded.</p>
+                    </section>
+                </div>
+
+                <section class="panel quick-panel">
+                    <div class="panel-heading"><h3>Quick access</h3></div>
+                    <div class="quick-actions">
+                        <button class="quick-action" type="button" data-go-view="world"><strong>Inspect world</strong></button>
+                        <button class="quick-action" type="button" data-go-view="players"><strong>Find player</strong></button>
+                        <button class="quick-action" type="button" data-go-view="operations"><strong>Operate server</strong></button>
+                    </div>
+                </section>
+            </section>
+
+            <section class="view" id="world-view" data-title="World Database">
+                <div class="section-heading">
+                    <div><span class="eyebrow">Parsed area data</span><h2>World database</h2></div>
+                    <span class="result-count" id="world-count">0 results</span>
+                </div>
+
+                <div class="toolbar toolbar-wrap">
+                    <div class="segmented" role="group" aria-label="World record type">
+                        <button class="is-active" type="button" data-world-type="mobs">Mobiles</button>
+                        <button type="button" data-world-type="objects">Objects</button>
+                        <button type="button" data-world-type="rooms">Rooms</button>
+                    </div>
+                    <label class="search-field">
+                        <span class="sr-only">Search world records</span>
+                        <input id="world-search" type="search" placeholder="Search name, vnum, or area" autocomplete="off">
+                    </label>
+                    <select id="world-page-size" aria-label="Rows per page">
+                        <option value="25">25 rows</option>
+                        <option value="50" selected>50 rows</option>
+                        <option value="100">100 rows</option>
+                    </select>
+                </div>
+
+                <div class="table-frame">
+                    <table id="world-table">
+                        <thead></thead>
+                        <tbody><tr><td class="empty-state">Select a record type.</td></tr></tbody>
+                    </table>
+                </div>
+                <div class="pagination">
+                    <button class="button button-secondary compact" id="world-prev" type="button">Previous</button>
+                    <span id="world-page-label">Page 1</span>
+                    <button class="button button-secondary compact" id="world-next" type="button">Next</button>
+                </div>
+            </section>
+
+            <section class="view" id="areas-view" data-title="Areas and Health">
+                <div class="section-heading">
+                    <div><span class="eyebrow">Validation and navigation</span><h2>Areas and health</h2></div>
+                    <span class="result-count" id="issue-count">0 issues</span>
+                </div>
+
+                <div class="health-strip">
+                    <div><span class="status-dot status-critical"></span><strong id="area-critical-count">-</strong><span>Critical</span></div>
+                    <div><span class="status-dot status-warning"></span><strong id="area-warning-count">-</strong><span>Warnings</span></div>
+                    <div><span class="status-dot status-info"></span><strong id="area-info-count">-</strong><span>Info</span></div>
+                    <div><span class="status-dot status-ok"></span><strong id="area-parse-count">-</strong><span>Parse errors</span></div>
+                </div>
+
+                <div class="subnav" role="tablist" aria-label="Area views">
+                    <button class="is-active" type="button" data-area-tab="issues">Health issues</button>
+                    <button type="button" data-area-tab="catalog">Area catalog</button>
+                </div>
+
+                <div id="area-issues-panel">
+                    <div class="toolbar toolbar-wrap">
+                        <label class="search-field"><span class="sr-only">Search health issues</span><input id="issue-search" type="search" placeholder="Search code, area, or message"></label>
+                        <select id="issue-severity" aria-label="Issue severity">
+                            <option value="all">All severities</option>
+                            <option value="critical">Critical</option>
+                            <option value="warning">Warning</option>
+                            <option value="info">Info</option>
+                        </select>
+                    </div>
+                    <div class="table-frame">
+                        <table id="issues-table">
+                            <thead><tr><th>Severity</th><th>Code</th><th>Location</th><th>Message</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <button class="button button-secondary compact" id="issues-prev" type="button">Previous</button>
+                        <span id="issues-page-label">Page 1</span>
+                        <button class="button button-secondary compact" id="issues-next" type="button">Next</button>
+                    </div>
+                </div>
+
+                <div id="area-catalog-panel" hidden>
+                    <div class="toolbar"><label class="search-field"><span class="sr-only">Search areas</span><input id="area-search" type="search" placeholder="Search area, builder, or filename"></label></div>
+                    <div class="table-frame">
+                        <table id="areas-table">
+                            <thead><tr><th>Area</th><th>Builder</th><th>File</th><th>Vnums</th><th></th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view" id="players-view" data-title="Players">
+                <div class="section-heading">
+                    <div><span class="eyebrow">Private save data</span><h2>Player lookup</h2></div>
+                    <span class="lock-note" id="players-lock-note">Admin token required</span>
+                </div>
+                <form class="toolbar player-search" id="player-form">
+                    <label class="search-field"><span class="sr-only">Player name</span><input id="player-search" list="player-names" placeholder="Player name" autocomplete="off"></label>
+                    <datalist id="player-names"></datalist>
+                    <button class="button button-primary" type="submit">Open player</button>
+                </form>
+                <div id="player-profile" class="player-profile">
+                    <div class="empty-state large">No player selected.</div>
+                </div>
+            </section>
+
+            <section class="view" id="gear-view" data-title="Gear Finder">
+                <div class="section-heading">
+                    <div><span class="eyebrow">Class-weighted equipment</span><h2>Best gear finder</h2></div>
+                </div>
+                <form class="filter-grid" id="gear-form">
+                    <label>Class<select id="gear-class"><option>mage</option><option>cleric</option><option>thief</option><option>warrior</option><option>monk</option><option>necromancer</option></select></label>
+                    <label>Race<select id="gear-race"><option>human</option><option>elf</option><option>dwarf</option><option>hobbit</option><option>saurian</option></select></label>
+                    <label>Level<input id="gear-level" type="number" min="1" max="70" value="50"></label>
+                    <label>Per slot<input id="gear-limit" type="number" min="1" max="20" value="5"></label>
+                    <button class="button button-primary" type="submit">Find gear</button>
+                </form>
+                <div id="gear-results" class="gear-results"><div class="empty-state large">Choose a class, race, and level.</div></div>
+            </section>
+
+            <section class="view" id="console-view" data-title="Game Console">
+                <div class="section-heading">
+                    <div><span class="eyebrow">Direct game connection</span><h2>Game console</h2></div>
+                    <span class="connection-label" id="console-status">Disconnected</span>
+                </div>
+                <div class="terminal-shell">
+                    <div class="terminal-toolbar">
+                        <button class="button button-primary compact" id="console-connect" type="button">Connect</button>
+                        <button class="button button-secondary compact" id="console-disconnect" type="button" disabled>Disconnect</button>
+                        <button class="text-button" id="console-clear" type="button">Clear</button>
+                    </div>
+                    <pre class="terminal" id="game-terminal" tabindex="0" aria-label="Game output"></pre>
+                    <form class="terminal-input-row" id="console-form">
+                        <label class="sr-only" for="console-input">Game command</label>
+                        <input id="console-input" type="text" autocomplete="off" spellcheck="false" placeholder="Command" disabled>
+                        <button class="button button-primary" type="submit" disabled>Send</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="view" id="logs-view" data-title="Live Logs">
+                <div class="section-heading">
+                    <div><span class="eyebrow">Protected server output</span><h2>Live logs</h2></div>
+                    <span class="connection-label" id="log-status">Disconnected</span>
+                </div>
+                <div class="terminal-shell">
+                    <div class="terminal-toolbar">
+                        <button class="button button-primary compact" id="logs-connect" type="button">Connect</button>
+                        <button class="button button-secondary compact" id="logs-refresh" type="button">Read latest</button>
+                        <button class="text-button" id="logs-clear" type="button">Clear</button>
+                        <label class="line-count">Lines<input id="log-lines" type="number" min="1" max="5000" value="300"></label>
+                    </div>
+                    <pre class="terminal log-terminal" id="log-terminal" tabindex="0" aria-label="Server logs"></pre>
+                </div>
+            </section>
+
+            <section class="view" id="operations-view" data-title="Operations">
+                <div class="section-heading">
+                    <div><span class="eyebrow">Authenticated controls</span><h2>Server operations</h2></div>
+                    <span class="lock-note" id="operations-lock-note">Admin token required</span>
+                </div>
+
+                <div class="operation-bar">
+                    <button class="button button-primary" type="button" data-operation="backup">Create backup</button>
+                    <button class="button button-secondary" type="button" data-operation="reload">Refresh dashboard data</button>
+                    <button class="button button-danger" type="button" data-operation="shutdown">Shut down game</button>
+                </div>
+
+                <div class="operation-grid">
+                    <form class="panel form-panel" id="broadcast-form">
+                        <div class="panel-heading"><h3>WizInfo broadcast</h3></div>
+                        <label>Minimum level<input id="broadcast-level" type="number" min="1" max="70" value="62"></label>
+                        <label>Message<textarea id="broadcast-message" rows="5" maxlength="4000" required></textarea></label>
+                        <button class="button button-primary" type="submit">Queue broadcast</button>
+                    </form>
+
+                    <form class="panel form-panel" id="command-form">
+                        <div class="panel-heading"><h3>Immortal command</h3></div>
+                        <label>Command<input id="admin-command" type="text" maxlength="255" autocomplete="off" required></label>
+                        <button class="button button-danger" type="submit">Queue command</button>
+                    </form>
+                </div>
+
+                <section class="panel backup-panel">
+                    <div class="panel-heading"><h3>Recent backups</h3><button class="text-button" id="backups-refresh" type="button">Refresh</button></div>
+                    <div class="table-frame borderless">
+                        <table id="backups-table">
+                            <thead><tr><th>Archive</th><th>Size</th><th>Modified</th></tr></thead>
+                            <tbody><tr><td colspan="3" class="empty-state">Not loaded.</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <div class="sidebar-scrim" id="sidebar-scrim"></div>
+
+    <dialog id="auth-dialog" class="dialog compact-dialog">
+        <form method="dialog" id="auth-form">
+            <div class="dialog-heading"><div><span class="eyebrow">Authentication</span><h2>Admin token</h2></div><button class="icon-button" value="cancel" aria-label="Close" title="Close">x</button></div>
+            <label>WEB_ADMIN_TOKEN<input id="auth-token" type="password" autocomplete="current-password" required></label>
+            <label class="checkbox-row"><input id="auth-remember" type="checkbox"><span>Remember on this browser</span></label>
+            <p class="form-error" id="auth-error" role="alert"></p>
+            <div class="dialog-actions"><button class="button button-secondary" value="cancel">Cancel</button><button class="button button-secondary" id="auth-clear" type="button">Lock</button><button class="button button-primary" id="auth-submit" type="submit" value="default">Unlock</button></div>
+        </form>
+    </dialog>
+
+    <dialog id="detail-dialog" class="dialog detail-dialog">
+        <div class="dialog-heading"><div><span class="eyebrow" id="detail-eyebrow">Record</span><h2 id="detail-title">Details</h2></div><button class="icon-button" id="detail-close" type="button" aria-label="Close" title="Close">x</button></div>
+        <div class="detail-body" id="detail-body"></div>
+    </dialog>
+
+    <dialog id="map-dialog" class="dialog map-dialog">
+        <div class="dialog-heading"><div><span class="eyebrow">Area layout</span><h2 id="map-title">Area map</h2></div><button class="icon-button" id="map-close" type="button" aria-label="Close" title="Close">x</button></div>
+        <div class="map-meta"><span id="map-room-count">0 rooms</span></div>
+        <div class="map-canvas" id="map-canvas"><svg id="area-map" role="img" aria-label="Area room map"></svg></div>
+    </dialog>
+
+    <dialog id="confirm-dialog" class="dialog compact-dialog">
+        <form method="dialog" id="confirm-form">
+            <div class="dialog-heading"><div><span class="eyebrow">Confirmation</span><h2 id="confirm-title">Confirm action</h2></div></div>
+            <p id="confirm-message"></p>
+            <label id="confirm-phrase-row" hidden>Type <strong id="confirm-phrase-label"></strong><input id="confirm-phrase" autocomplete="off"></label>
+            <div class="dialog-actions"><button class="button button-secondary" value="cancel">Cancel</button><button class="button button-danger" id="confirm-submit" value="confirm">Confirm</button></div>
+        </form>
+    </dialog>
+
+    <div class="toast-region" id="toast-region" aria-live="polite"></div>
+</body>
+</html>

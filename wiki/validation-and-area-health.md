@@ -206,7 +206,7 @@ Useful related endpoints:
 | `POST /api/reload` | Yes | Reparse dashboard area data |
 | `GET /api/backups` | Yes | List recent `*.tar.gz` backup archives |
 | `GET /api/logs` | Yes | Tail the configured log file |
-| `WebSocket /ws/logs?x_admin_token=<token>` | Yes | Stream live logs |
+| `WebSocket /ws/logs` | Yes | Stream live logs after a JSON auth message |
 
 Operational endpoints are disabled with HTTP 503 until `WEB_ADMIN_TOKEN` is configured. Once enabled, send it as:
 
@@ -281,11 +281,15 @@ The web admin lists `*.tar.gz` files under `BACKUP_PATH`, defaulting to `backups
 
 ### Logs endpoint returns 403
 
-`WEB_ADMIN_TOKEN` is set. Include `X-Admin-Token` for `GET /api/logs` and `GET /api/backups`; include `x_admin_token` in the live log WebSocket query string.
+`WEB_ADMIN_TOKEN` is set. Include `X-Admin-Token` for HTTP log, backup, player,
+and operational routes. For `/ws/logs`, send
+`{"type":"auth","token":"your-token"}` as the first WebSocket message; do not
+place the token in the URL.
 
 ## Related Documentation
 
 - [Developer Guide](developer-guide.md)
 - [Area Building Guide](area-building-guide.md)
+- [Web Admin Guide](web-admin-guide.md)
 - [Hosting Guide](hosting-guide.md)
 - [Operator Guide](operator-guide.md)

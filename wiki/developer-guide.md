@@ -407,11 +407,17 @@ Development rules:
 - Add API tests for success, missing token, wrong token, malformed input,
   boundary limits, filesystem races, and parser failure.
 - Document whether a route is public or protected whenever adding one.
-- Treat player parsing as sensitive even if the route is read-only.
+- Keep player-list and player-detail routes token-protected.
+- Authenticate protected WebSockets in their first message; never put tokens in
+  URLs.
+- Keep browser assets local and dependency-free unless a dependency is vendored
+  with its license and validation coverage.
+- Render untrusted area/player strings with DOM `textContent`, not HTML strings.
 
-The dashboard is currently one large server module with an embedded HTML UI.
-Follow existing patterns for focused changes; do not combine a feature fix with
-an unrelated frontend rewrite.
+`webadmin/server.py` owns FastAPI routes, parser snapshots, queue I/O, and
+WebSocket bridges. `webadmin/static/index.html`, `app.css`, and `app.js` own the
+browser interface. `scripts/web_server.py` is only a compatibility launcher;
+do not add a second server implementation there.
 
 ## C Coding Guidance
 

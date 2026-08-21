@@ -235,7 +235,9 @@ Protected dashboard routes require `X-Admin-Token`:
 
 ```text
 GET  /api/logs
-WS   /ws/logs?x_admin_token=...
+WS   /ws/logs (token in first JSON message)
+GET  /api/players
+GET  /api/player/{name}
 POST /api/wizinfo
 POST /api/command
 POST /api/backup
@@ -256,12 +258,12 @@ Important distinctions:
   still restart the container.
 - The token is a shared secret without individual operator identity. Rotate it
   when staff access changes and keep separate host-level audit records.
-- Browsing and player-detail endpoints are not token-protected. Network-restrict
-  the whole dashboard.
+- World browsing and the browser game bridge are not token-protected.
+  Network-restrict the whole dashboard.
 
 Never place the admin token in a screenshot, command history shared with
-others, issue report, or URL except where the log WebSocket currently requires
-its query parameter. Configure the reverse proxy not to log that query string.
+others, issue report, or URL. The log WebSocket sends it in the first JSON
+message rather than the URL.
 
 ## Area And World Changes
 

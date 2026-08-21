@@ -48,8 +48,13 @@ if [ "${WEB_ADMIN_ENABLED:-1}" != "0" ]; then
   cd /app && python3 -m webadmin.server \
       --host "$WEB_ADMIN_HOST" \
       --port "$WEB_ADMIN_PORT" \
+      --mud-host 127.0.0.1 \
+      --mud-port "$DEFAULT_PORT" \
       --queue /app/area/webadmin.queue \
-      --log-file /app/log/toc.log &
+      --log-file /app/log/toc.log \
+      --area-path /app/area \
+      --backup-path /app/backups \
+      --player-path /app/player &
   cd /app/area
 fi
 

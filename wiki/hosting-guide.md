@@ -25,8 +25,8 @@ Read [SECURITY.md](../SECURITY.md) before opening firewall ports. At minimum:
 
 - Use a unique, random `WEB_ADMIN_TOKEN`.
 - Bind the dashboard to `127.0.0.1` or restrict port 9001 by firewall/VPN.
-- Do not assume the admin token protects every dashboard route. Player list and
-  player detail endpoints are public to any client that can reach the port.
+- Do not assume the admin token protects every dashboard route. World browsing
+  and the browser game bridge remain public to clients that can reach the port.
 - Remember that game login uses unencrypted Telnet and legacy DES hashes.
 - Protect `player/`, `gods/`, `backups/`, and logs as sensitive data.
 - Keep encrypted off-host backups and test restoration.
@@ -244,14 +244,16 @@ python -m webadmin.server [options]
 
 --host <address>          default 0.0.0.0
 --port <number>           default 9001
+--mud-host <address>      default MUD_HOST or 127.0.0.1
+--mud-port <number>       default MUD_PORT or 9000
 --queue <path>            default area/webadmin.queue
 --log-file <path>         default log/toc.log
 --area-path <path>        default area
 --backup-path <path>      default backups
+--player-path <path>      default player
 ```
 
-Run the module from the repository root so the default `PLAYER_PATH=player`
-also resolves correctly.
+Run the module from the repository root when using relative defaults.
 
 ## Persistent Data And Permissions
 
@@ -440,10 +442,13 @@ export WEB_ADMIN_TOKEN="$(openssl rand -hex 32)"
 python -m webadmin.server \
   --host 127.0.0.1 \
   --port 9001 \
+  --mud-host 127.0.0.1 \
+  --mud-port 9000 \
   --queue area/webadmin.queue \
   --log-file log/toc.log \
   --area-path area \
-  --backup-path backups
+  --backup-path backups \
+  --player-path player
 ```
 
 Use a process supervisor for production. Ensure the dashboard and game share
@@ -461,8 +466,14 @@ X-Admin-Token: <WEB_ADMIN_TOKEN>
 ```
 
 If no token is configured, protected HTTP routes return `503`. A wrong token
-returns `403`. The protected log WebSocket uses the query parameter
-`x_admin_token`; keep reverse-proxy access logs from recording that URL.
+returns `403`. The protected log WebSocket accepts a connection and requires
+this JSON authentication message within five seconds:
+
+```json
+{"type":"auth","token":"<WEB_ADMIN_TOKEN>"}
+```
+
+The token is never placed in the WebSocket URL or reverse-proxy access log.
 
 Example:
 
@@ -479,10 +490,9 @@ These routes do not check the admin token:
 |---|---|
 | `GET /` | Dashboard application |
 | `GET /api/health` | Game/dashboard process and port health |
+| `GET /api/config` | Dashboard version and non-secret capability flags |
 | `GET /api/stats` | Parsed world totals |
 | `GET /api/area_health` | Area-health summary and findings |
-| `GET /api/players` | Parsed player list |
-| `GET /api/player/{name}` | Parsed player detail |
 | `GET /api/mobs` | Mobile list/search |
 | `GET /api/mobs/{vnum}` | Mobile detail |
 | `GET /api/rooms` | Room list/search |
@@ -502,15 +512,24 @@ maximum `50`). Example:
 /api/best_gear?class_name=warrior&race_name=dwarf&level=40&limit=10
 ```
 
-Because player endpoints and the game bridge are public at the application
-layer, restrict the entire dashboard listener at the network/proxy layer.
+List endpoints accept bounded pagination. `GET /api/mobs` and
+`GET /api/rooms` accept `limit`, `offset`, and `q`; `GET /api/objects` accepts
+`limit`, `offset`, and its existing filters, including `name`. The response
+header `X-Total-Count` contains the full matching count.
+
+The game bridge is public at the application layer, so restrict the entire
+dashboard listener at the network/proxy layer unless browser game access is
+intentionally available to players.
 
 ### Token-Protected Operational Routes
 
 | Method and path | Purpose |
 |---|---|
+| `GET /api/auth/check` | Validate the supplied token |
 | `GET /api/logs?lines=200` | Tail 1-5,000 log lines |
-| `WS /ws/logs?x_admin_token=...` | Stream logs |
+| `WS /ws/logs` | Stream logs after first-message authentication |
+| `GET /api/players` | List valid player save files |
+| `GET /api/player/{name}` | Parse a player score, affects, skills, and equipment |
 | `POST /api/wizinfo` | Queue an in-game staff broadcast |
 | `POST /api/command` | Queue an immortal command |
 | `POST /api/backup` | Queue a player archive backup |

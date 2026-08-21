@@ -72,8 +72,7 @@ rollback and old-file compatibility during that work.
 public at the application layer, including:
 
 ```text
-/api/players
-/api/player/{name}
+/api/config
 /api/areas
 /api/rooms
 /api/mobs
@@ -83,21 +82,22 @@ public at the application layer, including:
 /ws
 ```
 
-The player routes parse persistent character data. Do not expose port 9001 to
-untrusted networks even when an admin token is configured. Use firewall,
-loopback binding, VPN, or proxy authentication for the entire dashboard.
+Player-list and player-detail routes require the admin token. World data and
+the browser-to-MUD bridge remain public at the application layer. Do not expose
+port 9001 to untrusted networks even when an admin token is configured. Use
+firewall, loopback binding, VPN, or proxy authentication for the entire
+dashboard.
 
 ### Shared Admin Token
 
 The dashboard uses one shared `WEB_ADMIN_TOKEN` in `X-Admin-Token` for protected
 HTTP routes. It does not provide per-user identity, roles, expiration, or an
-operator audit trail. The log WebSocket currently accepts the token in the
-`x_admin_token` query string, which can be recorded by reverse-proxy access
-logs.
+operator audit trail. The log WebSocket accepts the token only as its first
+message, keeping it out of URLs and ordinary reverse-proxy access logs.
 
 Treat the token as an immortal credential. Generate at least 32 random bytes,
-store it outside Git, limit who can read it, prevent query-string logging, and
-rotate it when staff access changes or exposure is suspected.
+store it outside Git, limit who can read it, and rotate it when staff access
+changes or exposure is suspected.
 
 ### Local Command Queue
 
@@ -258,17 +258,16 @@ legacy compatibility when implemented carefully:
 
 1. Versioned Argon2id password hashes with successful-login migration from DES.
 2. A TLS-capable player endpoint or a documented maintained TLS proxy path.
-3. Authentication and authorization for every dashboard route, especially
-   player detail and the MUD WebSocket bridge.
+3. Authentication and authorization for every dashboard route, especially the
+   MUD WebSocket bridge and detailed world data.
 4. Per-operator accounts, roles, expiration, CSRF protection where applicable,
    and an immutable audit trail for dashboard actions.
-5. Remove secrets from WebSocket query strings.
-6. Rate limiting and login abuse controls.
-7. Replace shell-based archive creation/pruning with argument-safe process or
+5. Rate limiting and login abuse controls.
+6. Replace shell-based archive creation/pruning with argument-safe process or
    library APIs and explicit path validation.
-8. Minimize player/API fields and redact hashes, addresses, and private data.
-9. Automated dependency and static security scanning in CI.
-10. Documented secret rotation, data retention, breach notification, and secure
+7. Minimize player/API fields and redact hashes, addresses, and private data.
+8. Automated dependency and static security scanning in CI.
+9. Documented secret rotation, data retention, breach notification, and secure
     deletion procedures for each production host.
 
 These are roadmap recommendations, not claims about current implementation.
