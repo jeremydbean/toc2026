@@ -23,6 +23,14 @@ function Invoke-Step {
     & $Script
 }
 
+function Assert-NativeSuccess {
+    param([string]$Label)
+
+    if ($LASTEXITCODE -ne 0) {
+        throw "$Label failed with exit code $LASTEXITCODE"
+    }
+}
+
 function Invoke-Wsl {
     param(
         [string]$Command,
@@ -76,16 +84,22 @@ Invoke-Step "Python syntax" {
         (Join-Path $RepoRoot "scripts\extract_zelda_doors.py") `
         (Join-Path $RepoRoot "scripts\build_hyrule_manifest.py") `
         (Join-Path $RepoRoot "scripts\build_hyrule_area.py")
+    Assert-NativeSuccess "Python syntax"
 }
 
 Invoke-Step "Area data checks" {
     Push-Location $RepoRoot
     try {
         & $Python check_parser.py
+        Assert-NativeSuccess "Area parser check"
         & $Python check_exits.py
+        Assert-NativeSuccess "Exit check"
         & $Python check_resets.py
+        Assert-NativeSuccess "Reset check"
         & $Python check_shops.py
+        Assert-NativeSuccess "Shop check"
         & $Python scripts\area_lint.py --fail-on critical --limit 20
+        Assert-NativeSuccess "Area health check"
     }
     finally {
         Pop-Location
@@ -96,6 +110,7 @@ Invoke-Step "Unit tests" {
     Push-Location $RepoRoot
     try {
         & $Python -m unittest discover -s tests
+        Assert-NativeSuccess "Unit tests"
     }
     finally {
         Pop-Location
@@ -106,6 +121,7 @@ Invoke-Step "Git whitespace check" {
     Push-Location $RepoRoot
     try {
         git diff --check
+        Assert-NativeSuccess "Git whitespace check"
     }
     finally {
         Pop-Location

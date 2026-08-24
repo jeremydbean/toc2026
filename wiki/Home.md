@@ -9,6 +9,8 @@ objects.
 - [Player Guide](player-guide.md) - connection, creation, classes, races,
   movement, combat, leveling, guilds, remorts, equipment, economy, groups,
   quests, Hyrule, saving, and troubleshooting
+- [Game Client Guide](game-client-guide.md) - browser play, ANSI terminal,
+  aliases, transcripts, mobile controls, and embedded administration
 - [Player Command Reference](player-command-reference.md) - commands grouped by
   purpose with important syntax and restrictions
 - [Advanced Gear Comparison](gear-comparison.md) - `compare` focuses,

@@ -276,9 +276,15 @@ function Write-TocEndpoints {
 
     Write-Host ''
     Write-Host 'Times of Chaos is running.' -ForegroundColor Green
-    Write-Host "MUD client: ${mudBind}:$mudPort"
-    Write-Host "Dashboard:  http://127.0.0.1:$webPort"
-    Write-Host 'Commands:   .\toc.ps1 status | logs | stop | restart | update'
+    Write-Host "MUD port:   ${mudBind}:$mudPort"
+    Write-Host "Web client: http://127.0.0.1:$webPort/client"
+    Write-Host "Admin:      http://127.0.0.1:$webPort"
+    Write-Host 'Commands:   .\toc.ps1 play | admin | status | logs | stop | restart | update'
+}
+
+function Open-TocClient {
+    $webPort = Get-TocEnvValue -Name 'WEB_ADMIN_PORT' -Default '9001'
+    Start-Process "http://127.0.0.1:$webPort/client"
 }
 
 function Open-TocDashboard {

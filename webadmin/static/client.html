@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <title>Times of Chaos Client</title>
+    <link rel="stylesheet" href="/static/client.css?v=1">
+    <script src="/static/client.js?v=1" defer></script>
+</head>
+<body>
+    <div class="client-app">
+        <header class="client-bar">
+            <a class="client-brand" href="/client" aria-label="Times of Chaos client">
+                <span class="brand-mark" aria-hidden="true">TC</span>
+                <span><strong>Times of Chaos</strong><small>Game client</small></span>
+            </a>
+            <div class="connection-state" aria-live="polite">
+                <span class="status-dot status-offline" id="game-status-dot"></span>
+                <span id="game-status">Disconnected</span>
+                <small id="session-duration">00:00:00</small>
+            </div>
+            <div class="bar-actions">
+                <button class="button button-primary compact" id="connect-button" type="button">Connect</button>
+                <button class="button button-secondary compact" id="disconnect-button" type="button" disabled>Disconnect</button>
+                <button class="icon-button mobile-connection" id="mobile-connection" type="button" aria-label="Connect" title="Connect">&#9211;</button>
+                <button class="icon-button" id="download-button" type="button" aria-label="Download transcript" title="Download transcript">&#8595;</button>
+                <button class="icon-button panel-toggle" id="panel-toggle" type="button" aria-label="Open command panel" title="Open command panel">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </header>
+
+        <main class="client-workspace">
+            <section class="terminal-pane" aria-label="Game session">
+                <div class="terminal-banner" id="terminal-banner">
+                    <strong>Ready</strong>
+                    <span>127.0.0.1</span>
+                </div>
+                <div class="game-terminal" id="game-terminal" role="log" aria-label="Game output" tabindex="0"></div>
+                <div class="macro-strip" id="macro-strip" aria-label="Pinned aliases"></div>
+                <form class="command-form" id="command-form">
+                    <label class="sr-only" for="command-input">Game command</label>
+                    <span class="command-prompt" aria-hidden="true">&gt;</span>
+                    <input id="command-input" type="text" maxlength="8191" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Command" disabled>
+                    <button class="button button-primary send-button" type="submit" disabled>Send</button>
+                </form>
+                <nav class="mobile-actions" aria-label="Movement commands">
+                    <button type="button" data-command="look">Look</button>
+                    <button type="button" data-command="north">N</button>
+                    <button type="button" data-command="up">Up</button>
+                    <button type="button" data-command="west">W</button>
+                    <button type="button" data-command="south">S</button>
+                    <button type="button" data-command="east">E</button>
+                    <button type="button" data-command="inventory">Inv</button>
+                    <button type="button" data-command="down">Down</button>
+                    <button type="button" data-command="flee">Flee</button>
+                </nav>
+            </section>
+
+            <aside class="utility-panel" id="utility-panel" aria-label="Client tools">
+                <div class="utility-heading">
+                    <div class="segmented-control" role="tablist" aria-label="Client panels">
+                        <button class="is-active" id="session-tab" type="button" role="tab" aria-selected="true" data-panel="session">Session</button>
+                        <button id="admin-tab" type="button" role="tab" aria-selected="false" data-panel="admin">Admin</button>
+                    </div>
+                    <button class="icon-button close-panel" id="panel-close" type="button" aria-label="Close command panel" title="Close command panel">x</button>
+                </div>
+
+                <div class="utility-content is-active" id="session-panel" role="tabpanel" aria-labelledby="session-tab">
+                    <section class="utility-section movement-section">
+                        <div class="section-title"><h2>Movement</h2><button class="text-button" type="button" data-command="look">Look</button></div>
+                        <div class="direction-pad" aria-label="Movement pad">
+                            <button type="button" class="north" data-command="north">N</button>
+                            <button type="button" class="up" data-command="up">Up</button>
+                            <button type="button" class="west" data-command="west">W</button>
+                            <button type="button" class="center" data-command="look">Look</button>
+                            <button type="button" class="east" data-command="east">E</button>
+                            <button type="button" class="south" data-command="south">S</button>
+                            <button type="button" class="down" data-command="down">Down</button>
+                        </div>
+                    </section>
+
+                    <section class="utility-section">
+                        <div class="section-title"><h2>Character</h2></div>
+                        <div class="command-grid">
+                            <button type="button" data-command="score">Score</button>
+                            <button type="button" data-command="equipment">Equipment</button>
+                            <button type="button" data-command="inventory">Inventory</button>
+                            <button type="button" data-command="affects">Affects</button>
+                            <button type="button" data-command="skills">Skills</button>
+                            <button type="button" data-command="who">Who</button>
+                        </div>
+                    </section>
+
+                    <section class="utility-section">
+                        <div class="section-title"><h2>Combat</h2></div>
+                        <div class="command-grid">
+                            <button type="button" data-command="consider">Consider</button>
+                            <button type="button" data-command="flee">Flee</button>
+                            <button type="button" data-command="rescue">Rescue</button>
+                            <button type="button" data-command="rest">Rest</button>
+                            <button type="button" data-command="stand">Stand</button>
+                            <button type="button" data-command="scan">Scan</button>
+                        </div>
+                    </section>
+
+                    <section class="utility-section aliases-section">
+                        <div class="section-title"><h2>Aliases</h2><button class="text-button" id="add-alias" type="button">Add</button></div>
+                        <div class="alias-list" id="alias-list"></div>
+                    </section>
+
+                    <section class="utility-section settings-section">
+                        <div class="section-title"><h2>Display</h2></div>
+                        <label class="range-row"><span>Text size</span><input id="font-size" type="range" min="12" max="22" step="1" value="15"><output id="font-size-value">15px</output></label>
+                        <label class="toggle-row"><span>Line wrap</span><input id="line-wrap" type="checkbox" checked></label>
+                        <label class="toggle-row"><span>Timestamps</span><input id="timestamps" type="checkbox"></label>
+                        <label class="toggle-row"><span>Local echo</span><input id="local-echo" type="checkbox" checked></label>
+                        <label class="toggle-row"><span>Reconnect</span><input id="auto-reconnect" type="checkbox" checked></label>
+                    </section>
+
+                    <section class="utility-section session-actions">
+                        <button class="button button-secondary" id="clear-terminal" type="button">Clear terminal</button>
+                        <button class="button button-secondary" id="reset-settings" type="button">Reset client</button>
+                    </section>
+                </div>
+
+                <div class="utility-content" id="admin-panel" role="tabpanel" aria-labelledby="admin-tab">
+                    <div class="admin-locked" id="admin-locked">
+                        <span class="status-dot status-locked"></span>
+                        <h2>Admin locked</h2>
+                        <button class="button button-primary" id="admin-unlock" type="button">Unlock</button>
+                        <a class="text-link" href="/">Full dashboard</a>
+                    </div>
+
+                    <div class="admin-workspace" id="admin-workspace" hidden>
+                        <div class="admin-bar">
+                            <div><span class="status-dot status-online"></span><strong>Admin unlocked</strong></div>
+                            <div><a class="text-link" href="/">Dashboard</a><button class="text-button" id="admin-lock" type="button">Lock</button></div>
+                        </div>
+
+                        <section class="utility-section admin-summary">
+                            <div class="section-title"><h2>Server</h2><button class="text-button" id="admin-refresh" type="button">Refresh</button></div>
+                            <div class="admin-metrics">
+                                <div><span>Game</span><strong id="admin-game-state">-</strong></div>
+                                <div><span>Players</span><strong id="admin-player-count">-</strong></div>
+                                <div><span>Warnings</span><strong id="admin-warning-count">-</strong></div>
+                                <div><span>Rooms</span><strong id="admin-room-count">-</strong></div>
+                            </div>
+                        </section>
+
+                        <details class="admin-section" open>
+                            <summary>Player lookup</summary>
+                            <form class="inline-form" id="player-form">
+                                <label class="sr-only" for="player-name">Player name</label>
+                                <input id="player-name" list="player-names" placeholder="Player name" autocomplete="off">
+                                <datalist id="player-names"></datalist>
+                                <button class="button button-secondary compact" type="submit">Find</button>
+                            </form>
+                            <div class="player-summary" id="player-summary"><span class="muted">No player selected.</span></div>
+                        </details>
+
+                        <details class="admin-section">
+                            <summary>Announcement</summary>
+                            <form class="stack-form" id="wizinfo-form">
+                                <label>Minimum level<input id="wizinfo-level" type="number" min="1" max="70" value="1"></label>
+                                <label>Message<textarea id="wizinfo-message" maxlength="4000" rows="3" required></textarea></label>
+                                <button class="button button-primary" type="submit">Send announcement</button>
+                            </form>
+                        </details>
+
+                        <details class="admin-section">
+                            <summary>Server command</summary>
+                            <form class="inline-form" id="admin-command-form">
+                                <label class="sr-only" for="admin-command">Server command</label>
+                                <input id="admin-command" maxlength="255" placeholder="Command" autocomplete="off" required>
+                                <button class="button button-secondary compact" type="submit">Queue</button>
+                            </form>
+                        </details>
+
+                        <details class="admin-section">
+                            <summary>Live logs</summary>
+                            <div class="log-actions">
+                                <button class="button button-secondary compact" id="log-connect" type="button">Connect</button>
+                                <button class="text-button" id="log-snapshot" type="button">Latest</button>
+                                <button class="text-button" id="log-clear" type="button">Clear</button>
+                                <span id="log-status">Disconnected</span>
+                            </div>
+                            <pre class="admin-log" id="admin-log" tabindex="0"></pre>
+                        </details>
+
+                        <details class="admin-section">
+                            <summary>Operations</summary>
+                            <div class="operation-list">
+                                <button class="button button-secondary" type="button" data-operation="backup">Create backup</button>
+                                <button class="button button-secondary" type="button" data-operation="reload">Refresh dashboard data</button>
+                                <button class="button button-danger" type="button" data-operation="shutdown">Shut down game</button>
+                            </div>
+                            <div class="backup-list" id="backup-list"></div>
+                        </details>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <div class="panel-scrim" id="panel-scrim"></div>
+
+    <dialog class="dialog" id="auth-dialog">
+        <form method="dialog" id="auth-form">
+            <div class="dialog-heading"><div><span class="eyebrow">Administration</span><h2>Admin token</h2></div><button class="icon-button" value="cancel" aria-label="Close" title="Close">x</button></div>
+            <label>WEB_ADMIN_TOKEN<input id="auth-token" type="password" autocomplete="current-password" required></label>
+            <label class="toggle-row"><span>Remember on this browser</span><input id="auth-remember" type="checkbox"></label>
+            <p class="form-error" id="auth-error" role="alert"></p>
+            <div class="dialog-actions"><button class="button button-secondary" value="cancel">Cancel</button><button class="button button-primary" id="auth-submit" type="submit" value="default">Unlock</button></div>
+        </form>
+    </dialog>
+
+    <dialog class="dialog" id="alias-dialog">
+        <form method="dialog" id="alias-form">
+            <div class="dialog-heading"><div><span class="eyebrow">Command shortcut</span><h2 id="alias-dialog-title">New alias</h2></div><button class="icon-button" value="cancel" aria-label="Close" title="Close">x</button></div>
+            <input id="alias-original" type="hidden">
+            <label>Alias<input id="alias-key" maxlength="24" pattern="[A-Za-z0-9_-]+" autocomplete="off" required></label>
+            <label>Command<input id="alias-command" maxlength="255" autocomplete="off" placeholder="cast 'armor' {args}" required></label>
+            <label class="toggle-row"><span>Pin above command line</span><input id="alias-pinned" type="checkbox"></label>
+            <p class="form-error" id="alias-error" role="alert"></p>
+            <div class="dialog-actions"><button class="button button-secondary" value="cancel">Cancel</button><button class="button button-primary" type="submit" value="default">Save</button></div>
+        </form>
+    </dialog>
+
+    <dialog class="dialog" id="confirm-dialog">
+        <form method="dialog" id="confirm-form">
+            <div class="dialog-heading"><div><span class="eyebrow">Confirmation</span><h2 id="confirm-title">Confirm action</h2></div><button class="icon-button" value="cancel" aria-label="Close" title="Close">x</button></div>
+            <p id="confirm-message"></p>
+            <label id="confirm-phrase-row" hidden>Type <strong id="confirm-phrase-label"></strong><input id="confirm-phrase" autocomplete="off"></label>
+            <div class="dialog-actions"><button class="button button-secondary" value="cancel">Cancel</button><button class="button button-danger" id="confirm-submit" value="confirm">Confirm</button></div>
+        </form>
+    </dialog>
+
+    <div class="toast-region" id="toast-region" aria-live="polite"></div>
+</body>
+</html>

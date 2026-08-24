@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Shell launchers must remain directly executable on Linux, macOS, and WSL.
+*.sh text eol=lf

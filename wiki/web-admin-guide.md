@@ -9,6 +9,9 @@ The interface is self-contained. CSS and JavaScript are served from
 `webadmin/static/`; a running dashboard does not download fonts, frameworks,
 icons, images, or terminal code from third-party CDNs.
 
+The play-first browser client is available at `/client` and includes a compact
+authenticated administration panel. See the [Game Client Guide](game-client-guide.md).
+
 ## Open The Dashboard
 
 The automated installers start the dashboard with Docker and bind it to the

@@ -214,7 +214,8 @@ toc_print_endpoints() {
 
     echo
     echo "Times of Chaos is running."
-    echo "MUD client: $mud_bind:$mud_port"
-    echo "Dashboard:  http://127.0.0.1:$web_port"
-    echo "Commands:   ./toc.sh status | logs | stop | restart | update"
+    echo "MUD port:   $mud_bind:$mud_port"
+    echo "Web client: http://127.0.0.1:$web_port/client"
+    echo "Admin:      http://127.0.0.1:$web_port"
+    echo "Commands:   ./toc.sh play | admin | status | logs | stop | restart | update"
 }

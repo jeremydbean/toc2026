@@ -604,6 +604,7 @@ select {
     border-radius: var(--radius);
     font-weight: 650;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .button.compact {

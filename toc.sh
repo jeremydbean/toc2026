@@ -22,7 +22,9 @@ Usage: ./toc.sh [command]
   logs       Follow the latest game and dashboard logs
   doctor     Check the local installation without changing it
   update     Fast-forward from GitHub, rebuild, and restart
-  open       Open the local web dashboard
+  open       Open the web game client (alias for play)
+  play       Open the web game client
+  admin      Open the administration dashboard
   help       Show this command list
 EOF
 }
@@ -128,7 +130,20 @@ case "$action" in
         git -C "$REPO_ROOT" pull --ff-only
         start_game 1
         ;;
-    open)
+    open|play)
+        web_port="$(toc_env_get WEB_ADMIN_PORT 9001)"
+        case "$(uname -s)" in
+            Darwin) open "http://127.0.0.1:$web_port/client" ;;
+            Linux)
+                if command -v xdg-open >/dev/null 2>&1; then
+                    xdg-open "http://127.0.0.1:$web_port/client" >/dev/null 2>&1
+                else
+                    echo "Open http://127.0.0.1:$web_port/client in a browser."
+                fi
+                ;;
+        esac
+        ;;
+    admin)
         web_port="$(toc_env_get WEB_ADMIN_PORT 9001)"
         case "$(uname -s)" in
             Darwin) open "http://127.0.0.1:$web_port" ;;

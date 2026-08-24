@@ -446,9 +446,10 @@ files: they contain the password hash and persistent game state.
 
 ### I Cannot Connect
 
-Confirm the host, port, and protocol. Test whether the server is online, check
-local firewall or VPN rules, and make sure a web URL was not entered as the MUD
-host. The game port is normally 9000; the dashboard port is normally 9001.
+Confirm the host, port, and protocol. The first-party browser client is normally
+`http://127.0.0.1:9001/client`; a traditional MUD client normally uses game port
+9000. Test whether the server is online and check local firewall or VPN rules.
+Do not enter the web-client URL as the host in a traditional MUD client.
 
 ### My Password Is Rejected
 

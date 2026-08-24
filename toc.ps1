@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Position = 0)]
-    [ValidateSet('start', 'build', 'stop', 'restart', 'status', 'logs', 'doctor', 'update', 'open', 'help')]
+    [ValidateSet('start', 'build', 'stop', 'restart', 'status', 'logs', 'doctor', 'update', 'open', 'play', 'admin', 'help')]
     [string]$Action = 'start'
 )
 
@@ -125,7 +125,9 @@ switch ($Action) {
         }
         Start-TocGame -Build
     }
-    'open' { Open-TocDashboard }
+    'open' { Open-TocClient }
+    'play' { Open-TocClient }
+    'admin' { Open-TocDashboard }
     'help' {
         @'
 Usage: .\toc.ps1 [command]
@@ -138,7 +140,9 @@ Usage: .\toc.ps1 [command]
   logs       Follow the latest game and dashboard logs
   doctor     Check the local installation without changing it
   update     Fast-forward from GitHub, rebuild, and restart
-  open       Open the local web dashboard
+  open       Open the web game client (alias for play)
+  play       Open the web game client
+  admin      Open the administration dashboard
   help       Show this command list
 '@ | Write-Host
     }

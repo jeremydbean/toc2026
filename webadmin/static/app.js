@@ -895,7 +895,7 @@
         byId("console-input").placeholder = state.terminal.secretInput ? "Password" : "Command";
         return output
             .replace(/\x1b\[[0-?]*[ -/]*[@-~]/g, "")
-            .replace(/\r\n/g, "\n")
+            .replace(/\r\n|\n\r/g, "\n")
             .replace(/\r/g, "\n");
     }
 
@@ -957,6 +957,9 @@
         window.clearTimeout(state.logs.reconnectTimer);
         if (state.logs.socket) {
             state.logs.socket.onclose = null;
+            if (state.logs.socket.readyState === WebSocket.OPEN) {
+                state.logs.socket.send(JSON.stringify({ type: "close" }));
+            }
             state.logs.socket.close();
             state.logs.socket = null;
         }
@@ -1255,7 +1258,6 @@
         await loadConfig();
         await validateToken(true);
         navigate(location.hash.slice(1) || "overview", false);
-        window.setInterval(loadRuntimeStatus, 15000);
     }
 
     void init();

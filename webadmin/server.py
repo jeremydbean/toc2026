@@ -12,6 +12,7 @@ from collections import deque
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Optional, Dict, Any
+from urllib.parse import urlparse
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Response, WebSocket, WebSocketDisconnect
 from fastapi.responses import FileResponse, PlainTextResponse
@@ -63,6 +64,12 @@ TELNET_WONT = 252
 TELNET_DO = 253
 TELNET_DONT = 254
 TELNET_SUPPORTED_SERVER_OPTIONS = {1, 3}  # ECHO and SUPPRESS-GO-AHEAD
+MAX_GAME_FRAME_BYTES = 8192
+WEB_ALLOWED_ORIGINS = {
+    origin.strip().rstrip("/").lower()
+    for origin in os.getenv("WEB_ALLOWED_ORIGINS", "").split(",")
+    if origin.strip()
+}
 
 try:
     import fcntl as _fcntl
@@ -119,7 +126,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="ToC Web Admin",
-    version="2.0",
+    version="2.1",
     lifespan=lifespan,
     docs_url=None,
     redoc_url=None,
@@ -204,6 +211,19 @@ def telnet_negotiation_responses(data: bytes) -> bytes:
         replies.extend((TELNET_IAC, reply, option))
         index += 3
     return bytes(replies)
+
+
+def websocket_origin_allowed(websocket: WebSocket) -> bool:
+    """Allow native clients and same-origin browsers, plus explicit origins."""
+    origin = websocket.headers.get("origin")
+    if not origin:
+        return True
+    normalized_origin = origin.rstrip("/").lower()
+    if normalized_origin in WEB_ALLOWED_ORIGINS:
+        return True
+    parsed = urlparse(origin)
+    request_host = websocket.headers.get("host", "").lower()
+    return parsed.scheme in {"http", "https"} and parsed.netloc.lower() == request_host
 
 
 # Class stat weights for gear optimization
@@ -612,6 +632,12 @@ async def index() -> FileResponse:
     return FileResponse(STATIC_PATH / "index.html")
 
 
+@app.get("/client", response_class=FileResponse, include_in_schema=False)
+@app.get("/client/", response_class=FileResponse, include_in_schema=False)
+async def game_client() -> FileResponse:
+    return FileResponse(STATIC_PATH / "client.html")
+
+
 @app.get("/api/health")
 async def health() -> dict[str, bool | str]:
     status = await asyncio.to_thread(read_process_health)
@@ -624,6 +650,8 @@ async def get_config() -> Dict[str, Any]:
         "version": app.version,
         "admin_token_configured": bool(_WEB_ADMIN_TOKEN),
         "mud_endpoint": f"{MUD_HOST}:{MUD_PORT}",
+        "client_path": "/client",
+        "game_websocket_auth": "same-origin",
         "player_data_protected": True,
         "log_websocket_auth": "first-message",
     }
@@ -666,6 +694,9 @@ async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> PlainT
 
 @app.websocket("/ws/logs")
 async def websocket_logs(websocket: WebSocket) -> None:
+    if not websocket_origin_allowed(websocket):
+        await websocket.close(code=1008)
+        return
     await websocket.accept()
     try:
         auth_message = await asyncio.wait_for(websocket.receive_text(), timeout=5)
@@ -691,6 +722,13 @@ async def websocket_logs(websocket: WebSocket) -> None:
             message = await websocket.receive()
             if message["type"] == "websocket.disconnect":
                 return
+            if message.get("text"):
+                try:
+                    payload = json.loads(message["text"])
+                except json.JSONDecodeError:
+                    continue
+                if isinstance(payload, dict) and payload.get("type") == "close":
+                    return
 
     async def follow_log() -> None:
         initial = ""
@@ -724,6 +762,10 @@ async def websocket_logs(websocket: WebSocket) -> None:
     }
     try:
         await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+    except asyncio.CancelledError:
+        # Test clients and ASGI servers can cancel the endpoint instead of
+        # delivering a final disconnect frame. Treat that as a normal close.
+        pass
     finally:
         for task in tasks:
             task.cancel()
@@ -1603,6 +1645,9 @@ async def get_best_gear(
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket) -> None:
+    if not websocket_origin_allowed(websocket):
+        await websocket.close(code=1008)
+        return
     await websocket.accept()
     writer = None
     try:
@@ -1629,8 +1674,18 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
         async def ws_to_mud() -> None:
             try:
                 while True:
-                    data = await websocket.receive_text()
-                    writer.write(data.encode("latin-1", errors="replace"))
+                    message = await websocket.receive()
+                    if message["type"] == "websocket.disconnect":
+                        break
+                    data = message.get("text")
+                    if data is None:
+                        await websocket.close(code=1003)
+                        break
+                    encoded = data.encode("latin-1", errors="replace")
+                    if len(encoded) > MAX_GAME_FRAME_BYTES:
+                        await websocket.close(code=1009)
+                        break
+                    writer.write(encoded)
                     await writer.drain()
             except (ConnectionError, WebSocketDisconnect):
                 pass

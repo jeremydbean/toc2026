@@ -69,8 +69,9 @@ operating-system handoff.
 After installation:
 
 ```text
-MUD client: localhost:9000
-Dashboard:  http://127.0.0.1:9001
+MUD port:   localhost:9000
+Web client: http://127.0.0.1:9001/client
+Admin:      http://127.0.0.1:9001
 Health:     http://127.0.0.1:9001/api/health
 ```
 
@@ -221,6 +222,7 @@ consistent.
 | `WEB_ADMIN_ENABLED` | `1` | Docker entrypoint | `0` prevents dashboard startup |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Docker entrypoint | Dashboard bind address |
 | `WEB_ADMIN_TOKEN` | unset | Dashboard | Shared secret; protected routes return 503 when unset |
+| `WEB_ALLOWED_ORIGINS` | unset | Dashboard | Additional comma-separated origins allowed to open browser WebSockets |
 | `TOC_UID` | host user/`1000` | Docker entrypoint | Runtime UID for writable bind mounts |
 | `TOC_GID` | host group/`1000` | Docker entrypoint | Runtime GID for writable bind mounts |
 | `QUEUE_PATH` | `area/webadmin.queue` | Dashboard | Queue used to communicate with `merc` |
@@ -630,8 +632,11 @@ sudo ufw allow 9000/tcp
 sudo ufw enable
 ```
 
-Do not add a public 9001 rule. If a specific administration network must reach
-it directly, scope the allow rule to that source and still use TLS.
+Do not add a public 9001 rule merely to expose administration. If remote users
+need the browser client, publish it through an HTTPS reverse proxy that forwards
+WebSocket upgrades and applies suitable access controls. If a specific
+administration network must reach it directly, scope the allow rule to that
+source and still use TLS.
 
 ## Raspberry Pi And ARM
 

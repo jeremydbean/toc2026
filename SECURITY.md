@@ -83,10 +83,13 @@ public at the application layer, including:
 ```
 
 Player-list and player-detail routes require the admin token. World data and
-the browser-to-MUD bridge remain public at the application layer. Do not expose
-port 9001 to untrusted networks even when an admin token is configured. Use
-firewall, loopback binding, VPN, or proxy authentication for the entire
-dashboard.
+the browser-to-MUD bridge remain public at the application layer. Browser
+WebSockets must be same-origin unless their complete origin is listed in
+`WEB_ALLOWED_ORIGINS`; native clients without an Origin header remain
+compatible. Binary and oversized browser-to-game frames are rejected. Do not
+expose port 9001 to untrusted networks even when an admin token is configured.
+Use firewall, loopback binding, VPN, or proxy authentication for the entire web
+service.
 
 ### Shared Admin Token
 
@@ -143,7 +146,7 @@ present in Git history.
 ```text
 Internet players ---- TCP 9000 ----> merc (plain Telnet; disclose risk)
 
-Administrators ---- VPN/SSH/HTTPS ----> 127.0.0.1:9001 dashboard
+Players/staff ----- VPN/SSH/HTTPS ----> 127.0.0.1:9001 web client/dashboard
                                            |
                                            +--> 127.0.0.1:9000 bridge
                                            +--> local queue/log/data
@@ -217,14 +220,17 @@ after changing the environment.
 
 ## HTTPS Reverse Proxy
 
-If the dashboard must be available beyond loopback, use a maintained reverse
-proxy with TLS and an additional identity layer. Requirements:
+If the web client or dashboard must be available beyond loopback, use a
+maintained reverse proxy with TLS and an additional identity layer.
+Requirements:
 
 - valid HTTPS certificate
 - WebSocket upgrade support for `/ws` and `/ws/logs`
 - proxy or VPN authentication before the request reaches FastAPI
 - request body and connection limits
 - no query-string logging for the protected log WebSocket
+- same-origin public page and WebSocket URLs, or a narrowly scoped
+  `WEB_ALLOWED_ORIGINS` value
 - security updates and restrictive firewall rules
 - dashboard listener still bound to loopback or a private network
 

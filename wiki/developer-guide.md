@@ -416,8 +416,10 @@ Development rules:
 
 `webadmin/server.py` owns FastAPI routes, parser snapshots, queue I/O, and
 WebSocket bridges. `webadmin/static/index.html`, `app.css`, and `app.js` own the
-browser interface. `scripts/web_server.py` is only a compatibility launcher;
-do not add a second server implementation there.
+full dashboard. `client.html`, `client.css`, and `client.js` own the play-first
+client at `/client`; both interfaces share the same APIs and bridges.
+`scripts/web_server.py` is only a compatibility launcher; do not add a second
+server implementation there.
 
 ## C Coding Guidance
 

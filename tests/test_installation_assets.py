@@ -61,8 +61,25 @@ class InstallationAssetsTests(unittest.TestCase):
                     "doctor",
                     "update",
                     "open",
+                    "play",
+                    "admin",
                 ):
                     self.assertIn(command, launcher)
+
+    def test_launchers_expose_player_and_admin_urls(self):
+        powershell_common = read("scripts/toc_common.ps1")
+        shell_common = read("scripts/toc_common.sh")
+        self.assertIn("/client", powershell_common)
+        self.assertIn("/client", shell_common)
+        self.assertIn("Open-TocClient", powershell_common)
+        self.assertIn("open|play)", read("toc.sh"))
+
+    def test_shell_scripts_are_kept_with_unix_line_endings(self):
+        self.assertIn("*.sh text eol=lf", read(".gitattributes"))
+        paths = [*ROOT.glob("*.sh"), *(ROOT / "scripts").glob("*.sh"), *(ROOT / "area").glob("*.sh")]
+        for path in paths:
+            with self.subTest(path=path.relative_to(ROOT)):
+                self.assertNotIn(b"\r\n", path.read_bytes())
 
     def test_bootstraps_do_not_pipe_downloads_to_a_shell(self):
         pattern = re.compile(r"curl[^\n|]*\|\s*(?:ba)?sh\b")

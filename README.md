@@ -150,12 +150,14 @@ After installation, double-click `Start-ToC.cmd` on Windows or
 | Follow logs | `.\toc.ps1 logs` | `./toc.sh logs` |
 | Diagnose setup | `.\toc.ps1 doctor` | `./toc.sh doctor` |
 | Update/rebuild | `.\toc.ps1 update` | `./toc.sh update` |
+| Open game client | `.\toc.ps1 play` | `./toc.sh play` |
+| Open administration | `.\toc.ps1 admin` | `./toc.sh admin` |
 
-Connect a MUD client to `localhost:9000`. The dashboard is
+Open the first-party web client at `http://127.0.0.1:9001/client`, or connect a
+traditional MUD client to `localhost:9000`. The administration dashboard is
 `http://127.0.0.1:9001`. Protected actions use the generated token in `.env`;
-the installers never print or replace an existing token. The dashboard ships
-all of its browser assets locally and does not require internet access after
-installation.
+the installers never print or replace an existing token. Both interfaces ship
+all browser assets locally and do not require internet access after installation.
 
 Docker Desktop can require acceptance of its own subscription terms on first
 launch. The project cannot accept those terms for the host. Docker documents
@@ -230,7 +232,7 @@ The Make build writes `merc` at the repository root. CMake writes `bin/rom`.
 Both must be launched with `area/` as the current directory because legacy data
 paths are relative to that directory.
 
-## Native Web Dashboard
+## Native Web Client And Dashboard
 
 Run this in a second terminal from the repository root:
 
@@ -252,8 +254,8 @@ python -m webadmin.server \
 ```
 
 Windows users can activate with `.\.venv\Scripts\Activate.ps1` and use the
-same `python -m webadmin.server` arguments. The game itself should still run in
-Docker or WSL.
+same `python -m webadmin.server` arguments. Open `/client` to play and `/` to
+administer. The game itself should still run in Docker or WSL.
 
 ## Runtime Configuration
 
@@ -267,6 +269,7 @@ Docker or WSL.
 | `WEB_ADMIN_ENABLED` | `1` | Set to `0` to skip the dashboard in Docker |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Dashboard bind address in Docker |
 | `WEB_ADMIN_TOKEN` | unset | Shared secret for operational API routes; unset disables them |
+| `WEB_ALLOWED_ORIGINS` | unset | Additional comma-separated origins allowed to open game/log WebSockets |
 | `TOC_UID` | host user/`1000` | Numeric user ID used for writable container state |
 | `TOC_GID` | host group/`1000` | Numeric group ID used for writable container state |
 | `QUEUE_PATH` | `area/webadmin.queue` | Dashboard-to-game command queue |
@@ -321,22 +324,26 @@ Use in-game `help`, `commands`, `skills`, `spells`, `groups`, `gainlist`, and
 creation, movement, combat, leveling, equipment, economy, social systems,
 quests, guilds, remorts, Hyrule, death, saving, and troubleshooting.
 
-## Web Dashboard And API
+## Web Client, Dashboard, And API
 
-The dashboard can browse areas, maps, rooms, mobiles, objects, gear, player
-files, live game status, logs, backups, and area-health findings. It also has a
-WebSocket bridge to the game port. Large world tables use server-side search
-and pagination instead of rendering the entire database at once.
+The play-first web client provides an ANSI terminal, safe password entry,
+history, aliases, quick movement controls, transcripts, and an authenticated
+administration panel. The full dashboard can browse areas, maps, rooms,
+mobiles, objects, gear, player files, live game status, logs, backups, and
+area-health findings. Both use the same WebSocket bridge to the game port.
+Large world tables use server-side search and pagination instead of rendering
+the entire database at once.
 
 Operational routes such as log access, command queueing, backup, reload,
 wizinfo, shutdown, and player-save access require `X-Admin-Token`. Dashboard
 `reload` refreshes the Python parser's view of area files; it does not
 hot-reload the live C game world.
 
-See the [Web Admin Guide](wiki/web-admin-guide.md) for interface workflows, the
-[Hosting Guide](wiki/hosting-guide.md) for the endpoint and authentication
-matrix, and the [Operator Guide](wiki/operator-guide.md) for normal operating
-procedures.
+See the [Game Client Guide](wiki/game-client-guide.md) for play and embedded
+administration, the [Web Admin Guide](wiki/web-admin-guide.md) for the full
+operations interface, the [Hosting Guide](wiki/hosting-guide.md) for the
+endpoint and authentication matrix, and the [Operator Guide](wiki/operator-guide.md)
+for normal operating procedures.
 
 ## Development And Validation
 

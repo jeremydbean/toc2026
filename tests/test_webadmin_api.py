@@ -98,6 +98,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(page.status_code, 200)
             self.assertIn("Times of Chaos Admin", page.text)
             self.assertIn('/static/app.js', page.text)
+            self.assertIn('href="/client"', page.text)
             self.assertNotIn("cdn.", page.text)
             self.assertNotIn("tailwind", page.text.lower())
             self.assertIn("default-src 'self'", page.headers["Content-Security-Policy"])
@@ -110,9 +111,32 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(script.status_code, 200)
             self.assertIn('type: "auth", token: state.token', script.text)
 
+            game_client = client.get("/client")
+            self.assertEqual(game_client.status_code, 200)
+            self.assertIn("Times of Chaos Client", game_client.text)
+            self.assertIn('/static/client.css', game_client.text)
+            self.assertIn('/static/client.js', game_client.text)
+            self.assertNotIn("cdn.", game_client.text)
+            self.assertNotIn("http://", game_client.text)
+            self.assertNotIn("https://", game_client.text)
+            self.assertIn("default-src 'self'", game_client.headers["Content-Security-Policy"])
+
+            client_stylesheet = client.get("/static/client.css")
+            client_script = client.get("/static/client.js")
+            self.assertEqual(client_stylesheet.status_code, 200)
+            self.assertEqual(client_script.status_code, 200)
+            self.assertIn('new WebSocket(`${protocol}//${location.host}/ws`)', client_script.text)
+            self.assertIn('type: "auth", token: state.token', client_script.text)
+            self.assertIn(r"/\r\n|\n\r/g", client_script.text)
+            self.assertIn(r"/\r\n|\n\r/g", script.text)
+            self.assertNotIn("innerHTML", client_script.text)
+            self.assertIn('maxlength="8191"', game_client.text)
+
             config = client.get("/api/config")
             self.assertEqual(config.status_code, 200)
             self.assertTrue(config.json()["admin_token_configured"])
+            self.assertEqual(config.json()["client_path"], "/client")
+            self.assertEqual(config.json()["game_websocket_auth"], "same-origin")
             self.assertEqual(config.json()["log_websocket_auth"], "first-message")
 
             health = client.get("/api/health")
@@ -158,6 +182,24 @@ class WebAdminApiTests(unittest.TestCase):
                         "\0TOC_ERROR:Game server is unavailable.",
                     )
 
+            with self.assertRaises(WebSocketDisconnect) as rejected_origin:
+                with client.websocket_connect(
+                    "/ws",
+                    headers={"origin": "https://untrusted.example"},
+                ) as websocket:
+                    websocket.receive_text()
+            self.assertEqual(rejected_origin.exception.code, 1008)
+
+            with self.assertRaises(WebSocketDisconnect) as rejected_log_origin:
+                with client.websocket_connect(
+                    "/ws/logs",
+                    headers={"origin": "https://untrusted.example"},
+                ) as websocket:
+                    websocket.receive_text()
+            self.assertEqual(rejected_log_origin.exception.code, 1008)
+
+            self.assertEqual(server.MAX_GAME_FRAME_BYTES, 8192)
+
             self.assertGreater(len(server.parser.rooms), 7000)
 
     def test_player_privacy_case_preservation_and_log_auth(self) -> None:
@@ -189,6 +231,10 @@ class WebAdminApiTests(unittest.TestCase):
             with client.websocket_connect("/ws/logs") as websocket:
                 websocket.send_json({"type": "auth", "token": "secret"})
                 self.assertIn("third line", websocket.receive_text())
+                websocket.send_json({"type": "close"})
+                with self.assertRaises(WebSocketDisconnect) as closed:
+                    websocket.receive_text()
+                self.assertEqual(closed.exception.code, 1000)
 
             with self.assertRaises(WebSocketDisconnect) as rejected:
                 with client.websocket_connect("/ws/logs") as websocket:
