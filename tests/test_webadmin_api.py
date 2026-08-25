@@ -137,6 +137,10 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertIn('if (typeof command !== "string") return false;', client_script.text)
             self.assertNotIn("if (!command) return false;", client_script.text)
             self.assertNotIn("if (!command || !state.terminal.socket", script.text)
+            self.assertIn('addEventListener("click", focusCommandFromTerminal)', client_script.text)
+            self.assertIn('addEventListener("click", focusConsoleFromTerminal)', script.text)
+            self.assertIn("selection && !selection.isCollapsed", client_script.text)
+            self.assertIn("selection && !selection.isCollapsed", script.text)
             self.assertNotIn("innerHTML", client_script.text)
             self.assertIn('maxlength="8191"', game_client.text)
 

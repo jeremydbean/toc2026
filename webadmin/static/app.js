@@ -967,6 +967,13 @@
         input.value = "";
     }
 
+    function focusConsoleFromTerminal() {
+        const selection = window.getSelection();
+        if (selection && !selection.isCollapsed) return;
+        const input = byId("console-input");
+        if (!input.disabled) input.focus();
+    }
+
     function stopLogs() {
         state.logs.shouldReconnect = false;
         window.clearTimeout(state.logs.reconnectTimer);
@@ -1210,6 +1217,7 @@
                 event.target.value = state.terminal.history[state.terminal.historyIndex] || "";
             }
         });
+        byId("game-terminal").addEventListener("click", focusConsoleFromTerminal);
 
         byId("logs-connect").addEventListener("click", () => void connectLogs());
         byId("logs-refresh").addEventListener("click", () => void readLatestLogs());

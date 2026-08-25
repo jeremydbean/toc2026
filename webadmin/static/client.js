@@ -444,6 +444,13 @@
         if (sendCommand(input.value)) input.value = "";
     }
 
+    function focusCommandFromTerminal() {
+        const selection = window.getSelection();
+        if (selection && !selection.isCollapsed) return;
+        const input = byId("command-input");
+        if (!input.disabled) input.focus();
+    }
+
     function handleCommandHistory(event) {
         if (state.secretInput) return;
         const input = event.currentTarget;
@@ -916,6 +923,7 @@
         byId("download-button").addEventListener("click", downloadTranscript);
         byId("command-form").addEventListener("submit", submitCommand);
         byId("command-input").addEventListener("keydown", handleCommandHistory);
+        byId("game-terminal").addEventListener("click", focusCommandFromTerminal);
         byId("clear-terminal").addEventListener("click", clearTerminal);
         byId("reset-settings").addEventListener("click", () => void resetClient());
 
