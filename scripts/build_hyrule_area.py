@@ -42,6 +42,7 @@ BOSS_GEAR = {
     1: 30339, 2: 30349, 3: 30359, 4: 30369, 5: 30374,
     6: 30378, 7: 30382, 8: 30385, 9: 30388,
 }
+GANON_GOLDEN_KEY_VNUM = 30243
 ENEMY_MOBS = {
     "aquamentus": 30222,
     "blade_trap": 30337,
@@ -796,7 +797,10 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
 
     level_nine = manifest["dungeons"][8]
     boss_vnum, goal_vnum = level_nine["boss_vnum"], level_nine["goal_vnum"]
-    add_two_way_exit(rooms, boss_vnum, "north", goal_vnum, locks=5, key_vnum=30243, keyword="golden door")
+    add_two_way_exit(
+        rooms, boss_vnum, "north", goal_vnum,
+        locks=5, key_vnum=GANON_GOLDEN_KEY_VNUM, keyword="golden door",
+    )
     rooms[goal_vnum].flags = "ADKN"
     rooms[goal_vnum].objects.extend([30286, 30217])
 
@@ -841,7 +845,7 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
                     level = boss_room_to_level[room.vnum]
                     lines.append(f"G 1 {BOSS_GEAR[level]} 100")
                     if level == 9:
-                        lines.append("G 1 30243 100")
+                        lines.append(f"G 1 {GANON_GOLDEN_KEY_VNUM} 100")
         for object_vnum in room.objects:
             lines.append(f"O 0 {object_vnum} 0 {room.vnum}")
         for puzzle_vnum in room.puzzles:
@@ -851,7 +855,13 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
 
         for direction, exit_spec in sorted(room.exits.items(), key=lambda item: DIRECTION_NUMBERS[item[0]]):
             if exit_spec.locks:
-                state = 2 if exit_spec.locks == 5 else 1
+                if exit_spec.key_vnum == GANON_GOLDEN_KEY_VNUM:
+                    # The Golden Key gate is magical: keyed players may unlock
+                    # it, while random area-reset traps and doorbash cannot
+                    # turn the final progression gate into a dead end.
+                    state = 3
+                else:
+                    state = 2 if exit_spec.locks == 5 else 1
                 lines.append(f"D 0 {room.vnum} {DIRECTION_NUMBERS[direction]} {state}")
                 if exit_spec.locks == 4 and exit_spec.keyword.startswith("cracked"):
                     puzzle_vnum = PUZZLE_OBJECTS["bomb"].get(direction)

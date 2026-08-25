@@ -591,6 +591,20 @@ class HyruleProgressionTests(unittest.TestCase):
         )
         self.assertEqual(golden_exit.key_vnum, 30243)
         self.assertNotEqual(golden_exit.locks, 0)
+        golden_door_reset_keys = {
+            (level_nine["boss_vnum"], 0),
+            (level_nine["goal_vnum"], 2),
+        }
+        golden_door_resets = {
+            (reset.arg1, reset.arg2): reset.arg3
+            for reset in self.resets
+            if reset.command == "D"
+            and (reset.arg1, reset.arg2) in golden_door_reset_keys
+        }
+        self.assertEqual(golden_door_resets, {
+            (level_nine["boss_vnum"], 0): 3,
+            (level_nine["goal_vnum"], 2): 3,
+        })
 
     def test_silver_arrow_explains_how_to_finish_ganon(self) -> None:
         silver_arrow = self.parser.objects[30218]
