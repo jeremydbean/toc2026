@@ -134,6 +134,9 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertIn('/api/auth/local', client_script.text)
             self.assertIn(r"/\r\n|\n\r/g", client_script.text)
             self.assertIn(r"/\r\n|\n\r/g", script.text)
+            self.assertIn('if (typeof command !== "string") return false;', client_script.text)
+            self.assertNotIn("if (!command) return false;", client_script.text)
+            self.assertNotIn("if (!command || !state.terminal.socket", script.text)
             self.assertNotIn("innerHTML", client_script.text)
             self.assertIn('maxlength="8191"', game_client.text)
 

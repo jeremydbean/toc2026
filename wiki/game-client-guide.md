@@ -55,6 +55,8 @@ The terminal supports:
 The command line sends one command at a time. Up and Down move through the
 current session's command history. Password input is masked and is never added
 to history, local echo, aliases, or the downloaded transcript.
+Submitting an empty command sends a single terminal newline without adding a
+blank command to local echo, history, or the transcript.
 
 The desktop command panel includes movement, character, and combat actions.
 Mobile layouts keep a compact command strip beneath the input. Every quick

@@ -420,16 +420,18 @@
             toast("The game is not connected.", "error");
             return false;
         }
-        if (!command) return false;
+        if (typeof command !== "string") return false;
         const resolved = resolveAlias(command);
         state.socket.send(`${resolved}\n`);
         if (!state.secretInput) {
-            if (state.settings.localEcho) {
-                appendTerminalSegment(`> ${resolved}\n`, "terminal-local");
-                recordTranscript(`> ${resolved}\n`);
+            if (command) {
+                if (state.settings.localEcho) {
+                    appendTerminalSegment(`> ${resolved}\n`, "terminal-local");
+                    recordTranscript(`> ${resolved}\n`);
+                }
+                if (state.history[state.history.length - 1] !== command) state.history.push(command);
+                state.history = state.history.slice(-200);
             }
-            if (state.history[state.history.length - 1] !== command) state.history.push(command);
-            state.history = state.history.slice(-200);
             state.historyIndex = state.history.length;
             state.draft = "";
         }

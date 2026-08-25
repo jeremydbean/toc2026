@@ -954,12 +954,14 @@
         event.preventDefault();
         const input = byId("console-input");
         const command = input.value;
-        if (!command || !state.terminal.socket || state.terminal.socket.readyState !== WebSocket.OPEN) return;
+        if (!state.terminal.socket || state.terminal.socket.readyState !== WebSocket.OPEN) return;
         state.terminal.socket.send(`${command}\n`);
         if (!state.terminal.secretInput) {
-            appendTerminal(byId("game-terminal"), `> ${command}\n`);
-            if (state.terminal.history.at(-1) !== command) state.terminal.history.push(command);
-            state.terminal.history = state.terminal.history.slice(-100);
+            if (command) {
+                appendTerminal(byId("game-terminal"), `> ${command}\n`);
+                if (state.terminal.history.at(-1) !== command) state.terminal.history.push(command);
+                state.terminal.history = state.terminal.history.slice(-100);
+            }
         }
         state.terminal.historyIndex = state.terminal.history.length;
         input.value = "";
