@@ -12,7 +12,10 @@ void handle_web( void )
 
 void send_info( char *argument )
 {
-    UNUSED_PARAM(argument);
+    if ( argument == NULL || argument[0] == '\0' )
+        return;
+
+    write_web_admin_event( "info", argument, 0 );
 }
 
 void die_follower( CHAR_DATA *ch )

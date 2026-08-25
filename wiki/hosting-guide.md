@@ -228,6 +228,7 @@ consistent.
 | `TOC_GID` | host group/`1000` | Docker entrypoint | Runtime GID for writable bind mounts |
 | `QUEUE_PATH` | `area/webadmin.queue` | Dashboard | Queue used to communicate with `merc` |
 | `LOG_FILE` | `log/toc.log` | Dashboard | Log file used by tail endpoints |
+| `EVENT_LOG_FILE` | `log/webadmin-events.tsv` | Dashboard | Server Info and WizInfo activity file |
 | `AREA_PATH` | `area` | Dashboard | Area data parsed for browsing and health |
 | `BACKUP_PATH` | `backups` | Dashboard | Archive directory listed by the API |
 | `PLAYER_PATH` | `player` | Dashboard | Player files parsed by player endpoints |
@@ -449,6 +450,7 @@ python -m webadmin.server \
   --mud-port 9000 \
   --queue area/webadmin.queue \
   --log-file log/toc.log \
+  --event-log-file log/webadmin-events.tsv \
   --area-path area \
   --backup-path backups \
   --player-path player
@@ -469,8 +471,8 @@ X-Admin-Token: <WEB_ADMIN_TOKEN>
 ```
 
 If no token is configured, protected HTTP routes return `503`. A wrong token
-returns `403`. The protected log WebSocket accepts a connection and requires
-this JSON authentication message within five seconds:
+returns `403`. The protected log and server-activity WebSockets accept a
+connection and require this JSON authentication message within five seconds:
 
 ```json
 {"type":"auth","token":"<WEB_ADMIN_TOKEN>"}
@@ -531,6 +533,8 @@ intentionally available to players.
 | `GET /api/auth/check` | Validate the supplied token |
 | `GET /api/logs?lines=200` | Tail 1-5,000 log lines |
 | `WS /ws/logs` | Stream logs after first-message authentication |
+| `GET /api/events?limit=200` | Return 1-1,000 Server Info and WizInfo events |
+| `WS /ws/events` | Stream Server Info and WizInfo events after authentication |
 | `GET /api/players` | List valid player save files |
 | `GET /api/player/{name}` | Parse a player score, affects, skills, and equipment |
 | `POST /api/wizinfo` | Queue an in-game staff broadcast |

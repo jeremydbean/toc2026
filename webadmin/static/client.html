@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="color-scheme" content="dark">
     <title>Times of Chaos Client</title>
-    <link rel="stylesheet" href="/static/client.css?v=2">
-    <script src="/static/client.js?v=2" defer></script>
+    <link rel="stylesheet" href="/static/client.css?v=3">
+    <script src="/static/client.js?v=3" defer></script>
 </head>
 <body>
     <div class="client-app">
@@ -148,6 +148,25 @@
                                 <div><span>Rooms</span><strong id="admin-room-count">-</strong></div>
                             </div>
                         </section>
+
+                        <details class="admin-section" open>
+                            <summary>Server activity</summary>
+                            <div class="activity-toolbar">
+                                <div class="segmented-control event-filter" role="group" aria-label="Server activity filter">
+                                    <button class="is-active" type="button" data-event-filter="all">All</button>
+                                    <button type="button" data-event-filter="info">Info</button>
+                                    <button type="button" data-event-filter="wizinfo">WizInfo</button>
+                                </div>
+                                <div class="activity-actions">
+                                    <button class="text-button" id="event-latest" type="button">Latest</button>
+                                    <button class="text-button" id="event-clear" type="button">Clear</button>
+                                    <span id="event-status">Disconnected</span>
+                                </div>
+                            </div>
+                            <div class="server-events" id="server-events" role="log" aria-label="Server Info and WizInfo activity" tabindex="0">
+                                <span class="event-empty">No server activity captured yet.</span>
+                            </div>
+                        </details>
 
                         <details class="admin-section" open>
                             <summary>Player lookup</summary>

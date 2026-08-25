@@ -248,6 +248,7 @@ python -m webadmin.server \
   --mud-port 9000 \
   --queue area/webadmin.queue \
   --log-file log/toc.log \
+  --event-log-file log/webadmin-events.tsv \
   --area-path area \
   --backup-path backups \
   --player-path player
@@ -275,6 +276,7 @@ administer. The game itself should still run in Docker or WSL.
 | `TOC_GID` | host group/`1000` | Numeric group ID used for writable container state |
 | `QUEUE_PATH` | `area/webadmin.queue` | Dashboard-to-game command queue |
 | `LOG_FILE` | `log/toc.log` | Dashboard log source |
+| `EVENT_LOG_FILE` | `log/webadmin-events.tsv` | Structured Server Info and WizInfo activity source |
 | `AREA_PATH` | `area` | Dashboard area-parser source |
 | `BACKUP_PATH` | `backups` | Dashboard backup archive directory |
 | `PLAYER_PATH` | `player` | Dashboard player-file directory |
@@ -329,7 +331,8 @@ quests, guilds, remorts, Hyrule, death, saving, and troubleshooting.
 
 The play-first web client provides an ANSI terminal, safe password entry,
 history, aliases, quick movement controls, transcripts, and an authenticated
-administration panel. The full dashboard can browse areas, maps, rooms,
+administration panel with a live, filterable Server Info and WizInfo feed. The
+full dashboard can browse areas, maps, rooms,
 mobiles, objects, gear, player files, live game status, logs, backups, and
 area-health findings. Both use the same WebSocket bridge to the game port.
 Large world tables use server-side search and pagination instead of rendering

@@ -107,6 +107,7 @@ installations with `WEB_ADMIN_LOCAL_UNLOCK=0` use the server's
 The embedded admin workspace provides:
 
 - game reachability, player-save count, area warnings, and room totals
+- live, filterable Server Info and WizInfo activity with bounded history
 - protected player lookup with character, resource, combat, and equipment data
 - level-targeted WizInfo announcements
 - validated immortal command queueing
@@ -116,7 +117,8 @@ The embedded admin workspace provides:
 - confirmed game shutdown
 
 Manual tokens are sent in `X-Admin-Token` headers or as the first message on the
-protected log WebSocket. Local auto-unlock uses an HttpOnly, SameSite=Strict
+protected log and server-activity WebSockets. Local auto-unlock uses an
+HttpOnly, SameSite=Strict
 cookie. Neither form is included in a URL. Select **Lock** to clear the current
 session and browser token storage. Reloading a loopback page can establish a
 new local session while local auto-unlock remains enabled.
@@ -149,7 +151,8 @@ container and use internal port `9000`.
 
 ### The Page Loads But The WebSocket Fails
 
-Confirm the reverse proxy forwards WebSocket upgrades for `/ws` and `/ws/logs`.
+Confirm the reverse proxy forwards WebSocket upgrades for `/ws`, `/ws/logs`,
+and `/ws/events`.
 The public page and WebSocket must use the same host. Add a deliberately
 different trusted origin to `WEB_ALLOWED_ORIGINS` only when the deployment
 requires it.

@@ -31,6 +31,7 @@ python -m webadmin.server \
   --mud-port 9000 \
   --queue area/webadmin.queue \
   --log-file log/toc.log \
+  --event-log-file log/webadmin-events.tsv \
   --area-path area \
   --backup-path backups \
   --player-path player
@@ -47,6 +48,7 @@ readable without an admin token. These capabilities require
 
 - player save names and parsed player profiles
 - server logs and live log streaming
+- Server Info and WizInfo activity history and live streaming
 - backup archive listing and backup requests
 - dashboard area-data refreshes
 - WizInfo broadcasts
@@ -147,6 +149,11 @@ of 1 to 5,000 lines.
 The stream follows appends and detects truncation or rotation. The browser caps
 retained terminal text so a long-running tab does not grow without bound.
 
+The embedded `/client` administration panel also opens `/ws/events`, a
+dedicated Server Info and WizInfo stream. It loads a bounded snapshot first,
+then follows new game events and can filter the view by channel. These records
+come directly from the game process rather than relying on terminal-log text.
+
 ### Operations
 
 Operations contains the queue-backed administrative controls:
@@ -182,7 +189,8 @@ curl -H "X-Admin-Token: $WEB_ADMIN_TOKEN" \
   http://127.0.0.1:9001/api/auth/check
 ```
 
-The log WebSocket connects to `/ws/logs`, then sends this within five seconds:
+The protected WebSockets connect to `/ws/logs` or `/ws/events`, then send this
+within five seconds:
 
 ```json
 {"type":"auth","token":"<WEB_ADMIN_TOKEN>"}
@@ -255,6 +263,11 @@ nonletters, and symlinks are intentionally hidden.
 Verify `LOG_FILE` points to the same log written by the game and that the
 dashboard process can read it. In Docker the standard path is
 `/app/log/toc.log`.
+
+If the Server activity panel is empty after new activity occurs, verify
+`EVENT_LOG_FILE` points to `log/webadmin-events.tsv` and that the game can write
+that shared `log/` directory. Existing messages from before this feature was
+started are not reconstructed.
 
 ### World changes do not appear
 

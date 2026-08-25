@@ -65,6 +65,7 @@ class WebAdminApiTests(unittest.TestCase):
             player_path = temp_root / "players"
             backup_path = temp_root / "backups"
             log_path = temp_root / "toc.log"
+            event_path = temp_root / "webadmin-events.tsv"
             queue_path = temp_root / "webadmin.queue"
             player_path.mkdir()
             backup_path.mkdir()
@@ -72,6 +73,11 @@ class WebAdminApiTests(unittest.TestCase):
             (player_path / "notes").mkdir()
             (player_path / "invalid-name").write_text("ignored", encoding="ascii")
             log_path.write_text("first line\nsecond line\nthird line\n", encoding="utf-8")
+            event_path.write_text(
+                "1787680000\tinfo\t0\tA player reached level 20.\n"
+                "1787680001\twizinfo\t62\tAutomated backup complete.\n",
+                encoding="utf-8",
+            )
 
             env = {
                 "QUEUE_PATH": str(queue_path),
@@ -80,6 +86,7 @@ class WebAdminApiTests(unittest.TestCase):
                 "BACKUP_PATH": str(backup_path),
                 "PLAYER_PATH": str(player_path),
                 "LOG_FILE": str(log_path),
+                "EVENT_LOG_FILE": str(event_path),
                 "MUD_HOST": "127.0.0.1",
                 "MUD_PORT": "65534",
                 "WEB_ADMIN_BIND": web_bind,
@@ -131,6 +138,8 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(client_script.status_code, 200)
             self.assertIn('new WebSocket(`${protocol}//${location.host}/ws`)', client_script.text)
             self.assertIn('type: "auth", token: state.token', client_script.text)
+            self.assertIn('/ws/events', client_script.text)
+            self.assertIn('Server activity', game_client.text)
             self.assertIn('/api/auth/local', client_script.text)
             self.assertIn(r"/\r\n|\n\r/g", client_script.text)
             self.assertIn(r"/\r\n|\n\r/g", script.text)
@@ -151,6 +160,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(config.json()["client_path"], "/client")
             self.assertEqual(config.json()["game_websocket_auth"], "same-origin")
             self.assertEqual(config.json()["log_websocket_auth"], "cookie-or-first-message")
+            self.assertEqual(config.json()["event_websocket_auth"], "cookie-or-first-message")
 
             health = client.get("/api/health")
             self.assertEqual(health.status_code, 200)
@@ -211,15 +221,30 @@ class WebAdminApiTests(unittest.TestCase):
                     websocket.receive_text()
             self.assertEqual(rejected_log_origin.exception.code, 1008)
 
+            with self.assertRaises(WebSocketDisconnect) as rejected_event_origin:
+                with client.websocket_connect(
+                    "/ws/events",
+                    headers={"origin": "https://untrusted.example"},
+                ) as websocket:
+                    websocket.receive_json()
+            self.assertEqual(rejected_event_origin.exception.code, 1008)
+
+            comm_source = (Path(__file__).resolve().parents[1] / "src" / "comm.c").read_text(encoding="latin-1")
+            stubs_source = (Path(__file__).resolve().parents[1] / "src" / "stubs.c").read_text(encoding="latin-1")
+            self.assertIn('write_web_admin_event( "wizinfo", info, level )', comm_source)
+            self.assertIn('write_web_admin_event( "info", argument, 0 )', stubs_source)
+
             self.assertEqual(server.MAX_GAME_FRAME_BYTES, 8192)
 
             self.assertGreater(len(server.parser.rooms), 7000)
 
     def test_player_privacy_case_preservation_and_log_auth(self) -> None:
-        with self.webadmin_client() as (_, client, _):
+        with self.webadmin_client() as (server, client, temp_root):
+            event_path = temp_root / "webadmin-events.tsv"
             self.assertEqual(client.get("/api/players").status_code, 403)
             self.assertEqual(client.get("/api/player/MiXeD").status_code, 403)
             self.assertEqual(client.get("/api/auth/check").status_code, 403)
+            self.assertEqual(client.get("/api/events").status_code, 403)
 
             headers = {"X-Admin-Token": "secret"}
             auth = client.get("/api/auth/check", headers=headers)
@@ -240,6 +265,31 @@ class WebAdminApiTests(unittest.TestCase):
             logs = client.get("/api/logs", params={"lines": 2}, headers=headers)
             self.assertEqual(logs.status_code, 200)
             self.assertEqual(logs.text.splitlines(), ["second line", "third line"])
+
+            events = client.get("/api/events", params={"limit": 10}, headers=headers)
+            self.assertEqual(events.status_code, 200)
+            self.assertEqual([event["channel"] for event in events.json()], ["info", "wizinfo"])
+            self.assertIsNone(events.json()[0]["level"])
+            self.assertEqual(events.json()[1]["level"], 62)
+            self.assertEqual(client.get("/api/events", params={"limit": 0}, headers=headers).status_code, 422)
+
+            self.assertIsNone(server.parse_server_event_line("not-an-event"))
+            self.assertIsNone(server.parse_server_event_line("1787680002\tprivate\t70\tHidden"))
+            self.assertIsNone(server.parse_server_event_line("1787680002\twizinfo\t71\tToo high"))
+
+            with client.websocket_connect("/ws/events") as websocket:
+                websocket.send_json({"type": "auth", "token": "secret"})
+                snapshot = websocket.receive_json()
+                self.assertEqual(snapshot["type"], "snapshot")
+                self.assertEqual(len(snapshot["events"]), 2)
+                with event_path.open("a", encoding="utf-8") as event_file:
+                    event_file.write("1787680002\twizinfo\t70\tLive event.\n")
+                live_update = websocket.receive_json()
+                self.assertEqual(live_update["type"], "events")
+                self.assertEqual(live_update["events"][0]["message"], "Live event.")
+                websocket.send_json({"type": "close"})
+                with self.assertRaises(WebSocketDisconnect):
+                    websocket.receive_json()
 
             with client.websocket_connect("/ws/logs") as websocket:
                 websocket.send_json({"type": "auth", "token": "secret"})
@@ -287,6 +337,15 @@ class WebAdminApiTests(unittest.TestCase):
                 websocket.send_json({"type": "close"})
                 with self.assertRaises(WebSocketDisconnect):
                     websocket.receive_text()
+
+            with client.websocket_connect(
+                "ws://127.0.0.1:9001/ws/events",
+                headers={"cookie": f"toc_admin_session={session_cookie}"},
+            ) as websocket:
+                self.assertEqual(websocket.receive_json()["type"], "snapshot")
+                websocket.send_json({"type": "close"})
+                with self.assertRaises(WebSocketDisconnect):
+                    websocket.receive_json()
 
             self.assertEqual(client.post("/api/auth/logout").status_code, 200)
             self.assertEqual(client.get("/api/auth/check").status_code, 403)

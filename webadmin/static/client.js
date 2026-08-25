@@ -7,6 +7,7 @@
     const MAX_TERMINAL_CHARS = 350000;
     const MAX_TRANSCRIPT_CHARS = 750000;
     const MAX_LOG_CHARS = 120000;
+    const MAX_EVENT_ITEMS = 500;
     const DEFAULT_SETTINGS = {
         fontSize: 15,
         lineWrap: true,
@@ -40,6 +41,11 @@
         authenticated: false,
         players: [],
         logSocket: null,
+        eventSocket: null,
+        eventReconnectTimer: null,
+        eventShouldReconnect: false,
+        events: [],
+        eventFilter: "all",
         config: null,
     };
 
@@ -640,7 +646,10 @@
         state.authenticated = authenticated;
         byId("admin-locked").hidden = authenticated;
         byId("admin-workspace").hidden = !authenticated;
-        if (!authenticated) stopLogs();
+        if (!authenticated) {
+            stopLogs();
+            stopServerEvents();
+        }
         if (clearToken) {
             state.token = "";
             clearStoredToken();
@@ -749,6 +758,7 @@
 
     async function loadAdmin() {
         if (!state.authenticated) return;
+        connectServerEvents();
         try {
             const [health, stats, areaHealth, players, backups] = await Promise.all([
                 api("/api/health"),
@@ -806,6 +816,134 @@
         } catch (error) {
             toast(error.message, "error");
         }
+    }
+
+    function isServerEvent(value) {
+        return Boolean(
+            value
+            && ["info", "wizinfo"].includes(value.channel)
+            && Number.isFinite(Number(value.timestamp))
+            && typeof value.message === "string"
+            && value.message.length
+        );
+    }
+
+    function renderServerEvents() {
+        const feed = byId("server-events");
+        const nearBottom = feed.scrollHeight - feed.scrollTop - feed.clientHeight < 60;
+        const visible = state.eventFilter === "all"
+            ? state.events
+            : state.events.filter((event) => event.channel === state.eventFilter);
+        if (!visible.length) {
+            feed.replaceChildren(node("span", {
+                className: "event-empty",
+                text: state.events.length ? "No activity matches this filter." : "No server activity captured yet.",
+            }));
+            return;
+        }
+        feed.replaceChildren(...visible.map((event) => {
+            const date = new Date(Number(event.timestamp) * 1000);
+            const validDate = !Number.isNaN(date.getTime());
+            const level = event.channel === "wizinfo" && Number.isFinite(Number(event.level))
+                ? ` L${Number(event.level)}`
+                : "";
+            return node("div", { className: `server-event event-${event.channel}` }, [
+                node("time", {
+                    text: validDate
+                        ? date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })
+                        : "Unknown",
+                    attrs: validDate
+                        ? { datetime: date.toISOString(), title: date.toLocaleString() }
+                        : {},
+                }),
+                node("span", {
+                    className: "event-channel",
+                    text: event.channel === "wizinfo" ? `WizInfo${level}` : "Server Info",
+                }),
+                node("p", { text: event.message }),
+            ]);
+        }));
+        if (nearBottom) feed.scrollTop = feed.scrollHeight;
+    }
+
+    function applyServerEvents(events, replace = false) {
+        const accepted = Array.isArray(events) ? events.filter(isServerEvent) : [];
+        state.events = (replace ? accepted : [...state.events, ...accepted]).slice(-MAX_EVENT_ITEMS);
+        renderServerEvents();
+    }
+
+    function stopServerEvents() {
+        state.eventShouldReconnect = false;
+        window.clearTimeout(state.eventReconnectTimer);
+        state.eventReconnectTimer = null;
+        if (state.eventSocket) {
+            state.eventSocket.onclose = null;
+            if (state.eventSocket.readyState === WebSocket.OPEN) {
+                state.eventSocket.send(JSON.stringify({ type: "close" }));
+            }
+            state.eventSocket.close();
+            state.eventSocket = null;
+        }
+        byId("event-status").textContent = "Disconnected";
+    }
+
+    function connectServerEvents() {
+        if (!state.authenticated) return;
+        if (state.eventSocket && state.eventSocket.readyState < WebSocket.CLOSING) return;
+        window.clearTimeout(state.eventReconnectTimer);
+        state.eventShouldReconnect = true;
+        const protocol = location.protocol === "https:" ? "wss:" : "ws:";
+        const socket = new WebSocket(`${protocol}//${location.host}/ws/events`);
+        state.eventSocket = socket;
+        byId("event-status").textContent = "Connecting";
+        socket.addEventListener("open", () => {
+            socket.send(JSON.stringify({ type: "auth", token: state.token }));
+        });
+        socket.addEventListener("message", (message) => {
+            let payload;
+            try {
+                payload = JSON.parse(String(message.data));
+            } catch (_error) {
+                return;
+            }
+            if (payload?.type === "snapshot") applyServerEvents(payload.events, true);
+            else if (payload?.type === "events") applyServerEvents(payload.events);
+            byId("event-status").textContent = "Live";
+        });
+        socket.addEventListener("close", (event) => {
+            if (state.eventSocket === socket) state.eventSocket = null;
+            if (event.code === 4003) {
+                setAdminAuthenticated(false, true);
+                return;
+            }
+            byId("event-status").textContent = "Disconnected";
+            if (state.eventShouldReconnect && state.authenticated) {
+                state.eventReconnectTimer = window.setTimeout(connectServerEvents, 3000);
+            }
+        });
+        socket.addEventListener("error", () => {
+            byId("event-status").textContent = "Error";
+        });
+    }
+
+    async function loadLatestServerEvents() {
+        if (!state.authenticated) return openAuthDialog();
+        try {
+            applyServerEvents(await api("/api/events?limit=300", { auth: true }), true);
+            if (!state.eventSocket || state.eventSocket.readyState !== WebSocket.OPEN) {
+                byId("event-status").textContent = "Snapshot";
+            }
+        } catch (error) {
+            toast(error.message, "error");
+        }
+    }
+
+    function setServerEventFilter(filter) {
+        state.eventFilter = ["info", "wizinfo"].includes(filter) ? filter : "all";
+        all("[data-event-filter]").forEach((button) => {
+            button.classList.toggle("is-active", button.dataset.eventFilter === state.eventFilter);
+        });
+        renderServerEvents();
     }
 
     function appendLog(text) {
@@ -951,6 +1089,14 @@
         byId("player-form").addEventListener("submit", (event) => void findPlayer(event));
         byId("wizinfo-form").addEventListener("submit", (event) => void sendAnnouncement(event));
         byId("admin-command-form").addEventListener("submit", (event) => void queueAdminCommand(event));
+        all("[data-event-filter]").forEach((button) => {
+            button.addEventListener("click", () => setServerEventFilter(button.dataset.eventFilter));
+        });
+        byId("event-latest").addEventListener("click", () => void loadLatestServerEvents());
+        byId("event-clear").addEventListener("click", () => {
+            state.events = [];
+            renderServerEvents();
+        });
         byId("log-connect").addEventListener("click", connectLogs);
         byId("log-snapshot").addEventListener("click", () => void snapshotLogs());
         byId("log-clear").addEventListener("click", () => { byId("admin-log").textContent = ""; });
@@ -972,6 +1118,8 @@
             state.manualDisconnect = true;
             state.socket?.close();
             state.logSocket?.close();
+            state.eventShouldReconnect = false;
+            state.eventSocket?.close();
         });
     }
 

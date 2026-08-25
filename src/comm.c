@@ -3163,11 +3163,62 @@ static const char *wizinfo_possessive(const CHAR_DATA *ch)
     }
 }
 
+
+void write_web_admin_event(const char *channel, const char *message, int level)
+{
+    FILE *fp;
+    char clean[MAX_STRING_LENGTH];
+    const char *source;
+    size_t length;
+    time_t event_time;
+
+    if ( channel == NULL || message == NULL || message[0] == '\0' )
+        return;
+    if ( strcmp(channel, "info") && strcmp(channel, "wizinfo") )
+        return;
+
+    length = 0;
+    for ( source = message; *source != '\0' && length + 1 < sizeof(clean); source++ )
+    {
+        unsigned char value = (unsigned char)*source;
+
+        if ( value == '\x02' && source[1] != '\0' )
+        {
+            source++;
+            continue;
+        }
+        if ( value == '{' && isxdigit((unsigned char)source[1])
+          && isxdigit((unsigned char)source[2]) )
+        {
+            source += 2;
+            continue;
+        }
+        clean[length++] = value == '\r' || value == '\n' || value == '\t'
+            || value < 32 || value == 127 ? ' ' : (char)value;
+    }
+    while ( length > 0 && clean[length - 1] == ' ' )
+        length--;
+    clean[length] = '\0';
+    if ( length == 0 )
+        return;
+
+    fp = fopen( "../log/webadmin-events.tsv", "a" );
+    if ( fp == NULL )
+        return;
+
+    event_time = current_time > 0 ? current_time : time(NULL);
+    fprintf( fp, "%ld\t%s\t%d\t%s\n",
+             (long)event_time, channel, level, clean );
+    fclose( fp );
+}
+
+
 void wizinfo(const char *info, int level)
 {
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
 
+    write_web_admin_event( "wizinfo", info, level );
     snprintf(buf,sizeof(buf),"{%02X[WIZINFO] %s\n\r",COL_WIZINFO,info);
 
     for ( d = descriptor_list; d != NULL; d = d->next )

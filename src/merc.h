@@ -2131,6 +2131,8 @@ void    die_follower    ( CHAR_DATA *ch );
 bool    is_same_group   ( CHAR_DATA *ach, CHAR_DATA *bch );
 void    wizinfo         ( const char *info, int level );
 void    send_info       ( char *argument );
+void    write_web_admin_event ( const char *channel, const char *message,
+                                int level );
 
 /* act_info.c */
 void    set_title       ( CHAR_DATA *ch, char *title );

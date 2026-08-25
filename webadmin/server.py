@@ -90,6 +90,7 @@ except ImportError:
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
 DEFAULT_LOG: Path = Path(os.getenv("LOG_FILE", "log/toc.log"))
+EVENT_LOG: Path = Path(os.getenv("EVENT_LOG_FILE", "log/webadmin-events.tsv"))
 AREA_PATH: Path = Path(os.getenv("AREA_PATH", "area"))
 BACKUP_PATH: Path = Path(os.getenv("BACKUP_PATH", "backups"))
 PLAYER_PATH: Path = Path(os.getenv("PLAYER_PATH", "player"))
@@ -107,6 +108,7 @@ TELNET_DO = 253
 TELNET_DONT = 254
 TELNET_SUPPORTED_SERVER_OPTIONS = {1, 3}  # ECHO and SUPPRESS-GO-AHEAD
 MAX_GAME_FRAME_BYTES = 8192
+MAX_EVENT_HISTORY = 1000
 WEB_ALLOWED_ORIGINS = {
     origin.strip().rstrip("/").lower()
     for origin in os.getenv("WEB_ALLOWED_ORIGINS", "").split(",")
@@ -697,6 +699,7 @@ async def get_config(request: Request) -> Dict[str, Any]:
         "game_websocket_auth": "same-origin",
         "player_data_protected": True,
         "log_websocket_auth": "cookie-or-first-message",
+        "event_websocket_auth": "cookie-or-first-message",
     }
 
 
@@ -750,6 +753,58 @@ def tail_log_file(path: Path, lines: int) -> str:
     return "".join(data.splitlines(keepends=True)[-lines:])
 
 
+def parse_server_event_line(line: str) -> Optional[Dict[str, Any]]:
+    """Parse one tab-separated event emitted by the game process."""
+    parts = line.rstrip("\r\n").split("\t", 3)
+    if len(parts) != 4:
+        return None
+    timestamp_text, channel, level_text, message = parts
+    if channel not in {"info", "wizinfo"} or not message:
+        return None
+    try:
+        timestamp = int(timestamp_text)
+        level = int(level_text)
+    except ValueError:
+        return None
+    if timestamp <= 0 or level < 0 or level > 70:
+        return None
+    return {
+        "timestamp": timestamp,
+        "channel": channel,
+        "level": level if channel == "wizinfo" else None,
+        "message": message,
+    }
+
+
+def snapshot_server_events(path: Path, limit: int) -> tuple[list[Dict[str, Any]], int]:
+    """Read a bounded snapshot and the exact file position it represents."""
+    block_size = 64 * 1024
+    try:
+        with path.open("rb") as event_file:
+            event_file.seek(0, os.SEEK_END)
+            end_position = event_file.tell()
+            position = end_position
+            chunks: deque[bytes] = deque()
+            newline_count = 0
+            while position > 0 and newline_count <= limit:
+                size = min(block_size, position)
+                position -= size
+                event_file.seek(position)
+                chunk = event_file.read(size)
+                chunks.appendleft(chunk)
+                newline_count += chunk.count(b"\n")
+    except FileNotFoundError:
+        return [], 0
+
+    text = b"".join(chunks).decode("utf-8", errors="replace")
+    events = [parse_server_event_line(line) for line in text.splitlines()]
+    return [event for event in events if event is not None][-limit:], end_position
+
+
+def tail_server_events(path: Path, limit: int) -> list[Dict[str, Any]]:
+    return snapshot_server_events(path, limit)[0]
+
+
 @app.get("/api/logs")
 async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> PlainTextResponse:
     lines = max(1, min(lines, 5000))
@@ -761,32 +816,51 @@ async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> PlainT
         return PlainTextResponse("Error reading log file.", status_code=500)
 
 
+@app.get("/api/events")
+async def server_events(
+    limit: int = Query(default=200, ge=1, le=MAX_EVENT_HISTORY),
+    _: None = Depends(verify_token),
+) -> list[Dict[str, Any]]:
+    try:
+        return await asyncio.to_thread(tail_server_events, EVENT_LOG, limit)
+    except OSError:
+        raise HTTPException(status_code=500, detail="Error reading server activity")
+
+
+async def accept_admin_websocket(websocket: WebSocket) -> bool:
+    """Accept a protected WebSocket using a local session or shared token."""
+    local_session = local_admin_websocket_authenticated(websocket)
+    await websocket.accept()
+    if local_session:
+        return True
+    try:
+        auth_message = await asyncio.wait_for(websocket.receive_text(), timeout=5)
+        auth_payload = json.loads(auth_message)
+        supplied_token = auth_payload.get("token", "") if isinstance(auth_payload, dict) else ""
+        if (
+            not isinstance(auth_payload, dict)
+            or auth_payload.get("type") != "auth"
+            or not _WEB_ADMIN_TOKEN
+            or not secrets.compare_digest(str(supplied_token), _WEB_ADMIN_TOKEN)
+        ):
+            await websocket.close(code=4003)
+            return False
+    except (asyncio.TimeoutError, json.JSONDecodeError, WebSocketDisconnect):
+        try:
+            await websocket.close(code=4003)
+        except RuntimeError:
+            pass
+        return False
+    return True
+
+
 @app.websocket("/ws/logs")
 async def websocket_logs(websocket: WebSocket) -> None:
     if not websocket_origin_allowed(websocket):
         await websocket.close(code=1008)
         return
-    local_session = local_admin_websocket_authenticated(websocket)
-    await websocket.accept()
-    if not local_session:
-        try:
-            auth_message = await asyncio.wait_for(websocket.receive_text(), timeout=5)
-            auth_payload = json.loads(auth_message)
-            supplied_token = auth_payload.get("token", "") if isinstance(auth_payload, dict) else ""
-            if (
-                not isinstance(auth_payload, dict)
-                or auth_payload.get("type") != "auth"
-                or not _WEB_ADMIN_TOKEN
-                or not secrets.compare_digest(str(supplied_token), _WEB_ADMIN_TOKEN)
-            ):
-                await websocket.close(code=4003)
-                return
-        except (asyncio.TimeoutError, json.JSONDecodeError, WebSocketDisconnect):
-            try:
-                await websocket.close(code=4003)
-            except RuntimeError:
-                pass
-            return
+    if not await accept_admin_websocket(websocket):
+        return
 
     async def watch_disconnect() -> None:
         while True:
@@ -844,6 +918,78 @@ async def websocket_logs(websocket: WebSocket) -> None:
         for result in results:
             if isinstance(result, OSError):
                 print(f"Log WebSocket error: {result}")
+        try:
+            await websocket.close()
+        except RuntimeError:
+            pass
+
+
+@app.websocket("/ws/events")
+async def websocket_events(websocket: WebSocket) -> None:
+    if not websocket_origin_allowed(websocket):
+        await websocket.close(code=1008)
+        return
+    if not await accept_admin_websocket(websocket):
+        return
+
+    async def watch_disconnect() -> None:
+        while True:
+            message = await websocket.receive()
+            if message["type"] == "websocket.disconnect":
+                return
+            if message.get("text"):
+                try:
+                    payload = json.loads(message["text"])
+                except json.JSONDecodeError:
+                    continue
+                if isinstance(payload, dict) and payload.get("type") == "close":
+                    return
+
+    async def follow_events() -> None:
+        initial, last_pos = await asyncio.to_thread(
+            snapshot_server_events, EVENT_LOG, min(300, MAX_EVENT_HISTORY)
+        )
+        await websocket.send_json({"type": "snapshot", "events": initial})
+
+        while True:
+            await asyncio.sleep(1)
+            if not EVENT_LOG.exists():
+                last_pos = 0
+                continue
+            current_pos = EVENT_LOG.stat().st_size
+            if current_pos < last_pos:
+                rotated, last_pos = await asyncio.to_thread(
+                    snapshot_server_events, EVENT_LOG, min(300, MAX_EVENT_HISTORY)
+                )
+                await websocket.send_json({"type": "snapshot", "events": rotated})
+            elif current_pos > last_pos:
+                with EVENT_LOG.open("rb") as event_file:
+                    event_file.seek(last_pos)
+                    new_data = event_file.read(current_pos - last_pos)
+                events = [
+                    parse_server_event_line(line)
+                    for line in new_data.decode("utf-8", errors="replace").splitlines()
+                ]
+                parsed = [event for event in events if event is not None][-MAX_EVENT_HISTORY:]
+                if parsed:
+                    await websocket.send_json({"type": "events", "events": parsed})
+                last_pos = current_pos
+
+    tasks = {
+        asyncio.create_task(watch_disconnect()),
+        asyncio.create_task(follow_events()),
+    }
+    try:
+        await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+    except asyncio.CancelledError:
+        pass
+    finally:
+        for task in tasks:
+            task.cancel()
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        for result in results:
+            if isinstance(result, OSError):
+                print(f"Event WebSocket error: {result}")
         try:
             await websocket.close()
         except RuntimeError:
@@ -1797,6 +1943,7 @@ if __name__ == "__main__":
     arg_parser.add_argument("--mud-port", type=int, default=MUD_PORT, help="Game server port for health and console connections")
     arg_parser.add_argument("--queue", type=Path, default=QUEUE_PATH, help="Path to command queue file")
     arg_parser.add_argument("--log-file", type=Path, default=DEFAULT_LOG, help="Path to log file")
+    arg_parser.add_argument("--event-log-file", type=Path, default=EVENT_LOG, help="Path to server activity file")
     arg_parser.add_argument("--area-path", type=Path, default=AREA_PATH, help="Path to area files")
     arg_parser.add_argument("--backup-path", type=Path, default=BACKUP_PATH, help="Path to backup archive directory")
     arg_parser.add_argument("--player-path", type=Path, default=PLAYER_PATH, help="Path to player save files")
@@ -1806,6 +1953,7 @@ if __name__ == "__main__":
     # Update globals
     QUEUE_PATH = args.queue
     DEFAULT_LOG = args.log_file
+    EVENT_LOG = args.event_log_file
     AREA_PATH = args.area_path
     BACKUP_PATH = args.backup_path
     PLAYER_PATH = args.player_path
