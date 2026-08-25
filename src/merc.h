@@ -2148,6 +2148,7 @@ void    add_money          (CHAR_DATA *ch, long amount);
 long    query_gold         (CHAR_DATA *ch);
 long    coins_to_copper    (const CHAR_DATA *ch);
 bool    has_enough_gold    (const CHAR_DATA *ch, long gold_cost);
+void    format_coins       (long copper_amount, char *buf, size_t buf_size);
 int     query_carry_weight ( CHAR_DATA *ch);
 int     query_carry_coins  ( CHAR_DATA *ch, long amount);
 void    add_gold           (CHAR_DATA *ch, long amount);

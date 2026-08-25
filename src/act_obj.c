@@ -1337,7 +1337,7 @@ static bool parse_coin_amount(char *argument, long *amount, int *coin_type)
     return true;
 }
 
-static void format_coins(long copper_amount, char *buf, size_t buf_size)
+void format_coins(long copper_amount, char *buf, size_t buf_size)
 {
     long platinum, gold, silver, copper;
 

@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 #endif
 #include <errno.h>
+#include <limits.h>
 #include <stdio.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
@@ -1230,12 +1231,11 @@ void weather_update( void )
 
 static void bank_interest( CHAR_DATA *ch )
 {
-    long elapsed, days, gain;
+    long elapsed, elapsed_days, days, gain;
     char buf[MAX_STRING_LENGTH];
+    char coins_buf[160];
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
-        return;
-    if ( ch->pcdata->bank < BANK_INTEREST_MIN )
         return;
 
     /* First login ever: seed the timestamp and wait for tomorrow */
@@ -1249,21 +1249,35 @@ static void bank_interest( CHAR_DATA *ch )
     if ( elapsed < BANK_INTEREST_SECS )
         return;
 
-    days = elapsed / BANK_INTEREST_SECS;
+    elapsed_days = elapsed / BANK_INTEREST_SECS;
+    days = elapsed_days;
     if ( days > BANK_INTEREST_MAX_DAYS )
         days = BANK_INTEREST_MAX_DAYS;
+
+    /* Consume every complete elapsed day, including days beyond the payout
+     * cap and days during which the balance was below the minimum. */
+    ch->pcdata->bank_interest_time =
+        current_time - (elapsed % BANK_INTEREST_SECS);
+
+    if ( ch->pcdata->bank < BANK_INTEREST_MIN )
+        return;
 
     /* 1% per day, rounded down to nearest copper */
     gain = (ch->pcdata->bank / 100L) * days;
     if ( gain < 1 )
         gain = 1;
 
+    if ( gain > LONG_MAX - ch->pcdata->bank )
+        gain = LONG_MAX - ch->pcdata->bank;
+    if ( gain < 1 )
+        return;
+
     ch->pcdata->bank += gain;
-    ch->pcdata->bank_interest_time += days * BANK_INTEREST_SECS;
+    format_coins( gain, coins_buf, sizeof(coins_buf) );
 
     snprintf( buf, sizeof(buf),
-        "\n\rYour bank account earned %ld copper in interest (%ld day%s at 1%% daily).\n\r",
-        gain, days, days == 1 ? "" : "s" );
+        "\n\rYour bank account earned %s in interest (%ld day%s at 1%% daily).\n\r",
+        coins_buf, days, days == 1 ? "" : "s" );
     send_to_char( buf, ch );
 }
 
