@@ -93,8 +93,11 @@ download buffer.
 
 ## Administration
 
-Open the command panel and select **Admin**. Enter the server's
-`WEB_ADMIN_TOKEN` to unlock protected tools. Session storage is the default;
+Open the command panel and select **Admin**. Default local installations unlock
+this panel automatically through an HttpOnly browser session; the permanent
+admin token is not exposed to client JavaScript. Remote deployments and local
+installations with `WEB_ADMIN_LOCAL_UNLOCK=0` use the server's
+`WEB_ADMIN_TOKEN`. Manual token entry uses session storage by default;
 **Remember on this browser** uses local storage until the token is cleared.
 
 The embedded admin workspace provides:
@@ -108,9 +111,11 @@ The embedded admin workspace provides:
 - atomic dashboard area-data refresh
 - confirmed game shutdown
 
-The admin token is sent in `X-Admin-Token` headers or as the first message on
-the protected log WebSocket. It is never included in a URL. Select **Lock** to
-clear it from the client and browser storage.
+Manual tokens are sent in `X-Admin-Token` headers or as the first message on the
+protected log WebSocket. Local auto-unlock uses an HttpOnly, SameSite=Strict
+cookie. Neither form is included in a URL. Select **Lock** to clear the current
+session and browser token storage. Reloading a loopback page can establish a
+new local session while local auto-unlock remains enabled.
 
 Use **Dashboard** inside the admin panel for full world search, area maps,
 health findings, gear analysis, and the complete operations interface.
@@ -149,7 +154,9 @@ requires it.
 
 Read `WEB_ADMIN_TOKEN` from the host's private `.env` file. Restart the web
 service after changing it. A missing token disables protected administration;
-an incorrect token is rejected.
+an incorrect token is rejected. For local automatic access, also confirm
+`WEB_ADMIN_LOCAL_UNLOCK=1`, `WEB_ADMIN_BIND=127.0.0.1`, and that the page was
+opened with a loopback hostname rather than a LAN address.
 
 ### Colors Look Wrong
 

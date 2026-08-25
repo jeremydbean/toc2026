@@ -53,10 +53,15 @@ readable without an admin token. These capabilities require
 - immortal commands
 - game shutdown
 
-Select **Admin locked** in the lower-left corner, enter the token, and select
-**Unlock**. The token is kept in session storage by default and disappears
-when that browser session ends. **Remember on this browser** stores it in local
-storage until it is replaced or browser storage is cleared.
+The generated loopback-only installation automatically exchanges that secret
+for an HttpOnly local browser session, so the dashboard opens authenticated on
+`localhost` or `127.0.0.1`. Remote hosts still require manual token entry. Set
+`WEB_ADMIN_LOCAL_UNLOCK=0` when local operators should also enter the token.
+
+For manual access, select **Admin locked** in the lower-left corner, enter the
+token, and select **Unlock**. The token is kept in session storage by default
+and disappears when that browser session ends. **Remember on this browser**
+stores it in local storage until it is replaced or browser storage is cleared.
 
 An unset server-side token disables protected routes with HTTP `503`. An
 incorrect token returns HTTP `403`.

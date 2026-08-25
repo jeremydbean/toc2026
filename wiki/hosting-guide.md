@@ -222,6 +222,7 @@ consistent.
 | `WEB_ADMIN_ENABLED` | `1` | Docker entrypoint | `0` prevents dashboard startup |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Docker entrypoint | Dashboard bind address |
 | `WEB_ADMIN_TOKEN` | unset | Dashboard | Shared secret; protected routes return 503 when unset |
+| `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Dashboard | Issues a local browser session only when the configured bind and page host are loopback |
 | `WEB_ALLOWED_ORIGINS` | unset | Dashboard | Additional comma-separated origins allowed to open browser WebSockets |
 | `TOC_UID` | host user/`1000` | Docker entrypoint | Runtime UID for writable bind mounts |
 | `TOC_GID` | host group/`1000` | Docker entrypoint | Runtime GID for writable bind mounts |

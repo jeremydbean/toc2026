@@ -99,6 +99,7 @@ function Initialize-TocInstance {
             'WEB_ADMIN_BIND=127.0.0.1'
             'WEB_ADMIN_PORT=9001'
             'WEB_ADMIN_ENABLED=1'
+            'WEB_ADMIN_LOCAL_UNLOCK=1'
             'TOC_UID=1000'
             'TOC_GID=1000'
             "WEB_ADMIN_TOKEN=$(New-TocToken)"
@@ -116,6 +117,7 @@ function Initialize-TocInstance {
             WEB_ADMIN_BIND = '127.0.0.1'
             WEB_ADMIN_PORT = '9001'
             WEB_ADMIN_ENABLED = '1'
+            WEB_ADMIN_LOCAL_UNLOCK = '1'
             TOC_UID = '1000'
             TOC_GID = '1000'
         }

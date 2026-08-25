@@ -98,6 +98,14 @@ HTTP routes. It does not provide per-user identity, roles, expiration, or an
 operator audit trail. The log WebSocket accepts the token only as its first
 message, keeping it out of URLs and ordinary reverse-proxy access logs.
 
+Generated local installations also set `WEB_ADMIN_LOCAL_UNLOCK=1`. While
+`WEB_ADMIN_BIND` is loopback and the page is opened through `localhost`,
+`127.0.0.1`, or `::1`, the server can issue an HttpOnly, SameSite=Strict session
+cookie derived from the admin token. The token itself is not exposed to page
+JavaScript. This path is unavailable for non-loopback page hosts and is
+disabled when the configured web bind is not loopback. Set
+`WEB_ADMIN_LOCAL_UNLOCK=0` to require manual token entry even locally.
+
 Treat the token as an immortal credential. Generate at least 32 random bytes,
 store it outside Git, limit who can read it, and rotate it when staff access
 changes or exposure is suspected.

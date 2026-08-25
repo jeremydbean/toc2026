@@ -33,6 +33,7 @@ class InstallationAssetsTests(unittest.TestCase):
         compose = read("docker-compose.yml")
         self.assertIn("${MUD_BIND:-127.0.0.1}", compose)
         self.assertIn("${WEB_ADMIN_BIND:-127.0.0.1}", compose)
+        self.assertIn("WEB_ADMIN_LOCAL_UNLOCK=${WEB_ADMIN_LOCAL_UNLOCK:-1}", compose)
         self.assertIn("healthcheck:", compose)
         for directory in ("player", "gods", "heroes", "corpse", "log", "backups"):
             with self.subTest(directory=directory):
@@ -73,6 +74,8 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("/client", shell_common)
         self.assertIn("Open-TocClient", powershell_common)
         self.assertIn("open|play)", read("toc.sh"))
+        self.assertIn("WEB_ADMIN_LOCAL_UNLOCK", powershell_common)
+        self.assertIn("WEB_ADMIN_LOCAL_UNLOCK", shell_common)
 
     def test_shell_scripts_are_kept_with_unix_line_endings(self):
         self.assertIn("*.sh text eol=lf", read(".gitattributes"))

@@ -55,7 +55,7 @@ End
 
 class WebAdminApiTests(unittest.TestCase):
     @contextmanager
-    def webadmin_client(self):
+    def webadmin_client(self, local_unlock: bool = False, web_bind: str = "127.0.0.1"):
         if TestClient is None:
             self.skipTest("fastapi is not installed")
 
@@ -82,12 +82,15 @@ class WebAdminApiTests(unittest.TestCase):
                 "LOG_FILE": str(log_path),
                 "MUD_HOST": "127.0.0.1",
                 "MUD_PORT": "65534",
+                "WEB_ADMIN_BIND": web_bind,
+                "WEB_ADMIN_LOCAL_UNLOCK": "1" if local_unlock else "0",
             }
             with patch.dict(os.environ, env, clear=False):
                 sys.modules.pop("webadmin.server", None)
                 server = importlib.import_module("webadmin.server")
                 try:
-                    with TestClient(server.app) as client:
+                    base_url = "http://127.0.0.1:9001" if local_unlock else "http://testserver"
+                    with TestClient(server.app, base_url=base_url) as client:
                         yield server, client, temp_root
                 finally:
                     sys.modules.pop("webadmin.server", None)
@@ -110,6 +113,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(stylesheet.status_code, 200)
             self.assertEqual(script.status_code, 200)
             self.assertIn('type: "auth", token: state.token', script.text)
+            self.assertIn('/api/auth/local', script.text)
 
             game_client = client.get("/client")
             self.assertEqual(game_client.status_code, 200)
@@ -127,6 +131,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(client_script.status_code, 200)
             self.assertIn('new WebSocket(`${protocol}//${location.host}/ws`)', client_script.text)
             self.assertIn('type: "auth", token: state.token', client_script.text)
+            self.assertIn('/api/auth/local', client_script.text)
             self.assertIn(r"/\r\n|\n\r/g", client_script.text)
             self.assertIn(r"/\r\n|\n\r/g", script.text)
             self.assertNotIn("innerHTML", client_script.text)
@@ -135,9 +140,10 @@ class WebAdminApiTests(unittest.TestCase):
             config = client.get("/api/config")
             self.assertEqual(config.status_code, 200)
             self.assertTrue(config.json()["admin_token_configured"])
+            self.assertFalse(config.json()["local_admin_unlock"])
             self.assertEqual(config.json()["client_path"], "/client")
             self.assertEqual(config.json()["game_websocket_auth"], "same-origin")
-            self.assertEqual(config.json()["log_websocket_auth"], "first-message")
+            self.assertEqual(config.json()["log_websocket_auth"], "cookie-or-first-message")
 
             health = client.get("/api/health")
             self.assertEqual(health.status_code, 200)
@@ -241,6 +247,46 @@ class WebAdminApiTests(unittest.TestCase):
                     websocket.send_json({"type": "auth", "token": "wrong"})
                     websocket.receive_text()
             self.assertEqual(rejected.exception.code, 4003)
+
+    def test_loopback_client_can_open_and_close_a_local_admin_session(self) -> None:
+        with self.webadmin_client(local_unlock=True) as (_, client, _):
+            remote_config = client.get("/api/config", headers={"host": "mud.example.com"})
+            self.assertFalse(remote_config.json()["local_admin_unlock"])
+            self.assertEqual(
+                client.post("/api/auth/local", headers={"host": "mud.example.com"}).status_code,
+                403,
+            )
+
+            config = client.get("/api/config")
+            self.assertTrue(config.json()["local_admin_unlock"])
+            self.assertEqual(client.get("/api/auth/check").status_code, 403)
+
+            unlocked = client.post("/api/auth/local")
+            self.assertEqual(unlocked.status_code, 200)
+            self.assertEqual(unlocked.json()["mode"], "local")
+            cookie = unlocked.headers["set-cookie"].lower()
+            self.assertIn("httponly", cookie)
+            self.assertIn("samesite=strict", cookie)
+
+            self.assertEqual(client.get("/api/auth/check").status_code, 200)
+            self.assertEqual(client.get("/api/players").json(), ["MiXeD"])
+
+            session_cookie = client.cookies.get("toc_admin_session")
+            with client.websocket_connect(
+                "ws://127.0.0.1:9001/ws/logs",
+                headers={"cookie": f"toc_admin_session={session_cookie}"},
+            ) as websocket:
+                self.assertIn("third line", websocket.receive_text())
+                websocket.send_json({"type": "close"})
+                with self.assertRaises(WebSocketDisconnect):
+                    websocket.receive_text()
+
+            self.assertEqual(client.post("/api/auth/logout").status_code, 200)
+            self.assertEqual(client.get("/api/auth/check").status_code, 403)
+
+        with self.webadmin_client(local_unlock=True, web_bind="0.0.0.0") as (_, client, _):
+            self.assertFalse(client.get("/api/config").json()["local_admin_unlock"])
+            self.assertEqual(client.post("/api/auth/local").status_code, 403)
 
     def test_commands_reload_and_queue_validation(self) -> None:
         with self.webadmin_client() as (server, client, temp_root):

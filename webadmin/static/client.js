@@ -640,13 +640,34 @@
 
     async function validateStoredToken() {
         state.token = readStoredToken();
-        if (!state.token) return;
-        try {
-            await api("/api/auth/check", { auth: true });
-            setAdminAuthenticated(true);
-        } catch (_error) {
-            setAdminAuthenticated(false, true);
+        if (state.token) {
+            try {
+                await api("/api/auth/check", { auth: true });
+                setAdminAuthenticated(true);
+                return;
+            } catch (_error) {
+                setAdminAuthenticated(false, true);
+            }
         }
+        if (state.config?.local_admin_unlock) {
+            try {
+                await api("/api/auth/local", { method: "POST" });
+                await api("/api/auth/check");
+                setAdminAuthenticated(true);
+            } catch (_error) {
+                setAdminAuthenticated(false);
+            }
+        }
+    }
+
+    async function lockAdmin() {
+        try {
+            await api("/api/auth/logout", { method: "POST" });
+        } catch (_error) {
+            // Clearing browser storage still locks manual token sessions.
+        }
+        setAdminAuthenticated(false, true);
+        toast("Admin locked.");
     }
 
     function openAuthDialog() {
@@ -915,7 +936,7 @@
         byId("alias-form").addEventListener("submit", saveAlias);
         byId("admin-unlock").addEventListener("click", openAuthDialog);
         byId("auth-form").addEventListener("submit", (event) => void unlockAdmin(event));
-        byId("admin-lock").addEventListener("click", () => { setAdminAuthenticated(false, true); toast("Admin locked."); });
+        byId("admin-lock").addEventListener("click", () => void lockAdmin());
         byId("admin-refresh").addEventListener("click", () => void loadAdmin());
         byId("player-form").addEventListener("submit", (event) => void findPlayer(event));
         byId("wizinfo-form").addEventListener("submit", (event) => void sendAnnouncement(event));
@@ -954,7 +975,8 @@
         applySettings();
         renderAliases();
         bindEvents();
-        await Promise.all([refreshPublicStatus(), validateStoredToken()]);
+        await refreshPublicStatus();
+        await validateStoredToken();
         connectGame();
         window.setInterval(updateSessionDuration, 1000);
     }

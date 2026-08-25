@@ -269,6 +269,7 @@ administer. The game itself should still run in Docker or WSL.
 | `WEB_ADMIN_ENABLED` | `1` | Set to `0` to skip the dashboard in Docker |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Dashboard bind address in Docker |
 | `WEB_ADMIN_TOKEN` | unset | Shared secret for operational API routes; unset disables them |
+| `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Auto-unlock local browser sessions only while `WEB_ADMIN_BIND` and the page host are loopback |
 | `WEB_ALLOWED_ORIGINS` | unset | Additional comma-separated origins allowed to open game/log WebSockets |
 | `TOC_UID` | host user/`1000` | Numeric user ID used for writable container state |
 | `TOC_GID` | host group/`1000` | Numeric group ID used for writable container state |

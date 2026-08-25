@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
+import hmac
 import json
 import os
 import re
@@ -14,7 +16,7 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 from urllib.parse import urlparse
 
-from fastapi import Depends, FastAPI, Header, HTTPException, Query, Response, WebSocket, WebSocketDisconnect
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, WebSocket, WebSocketDisconnect
 from fastapi.responses import FileResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -22,17 +24,57 @@ from pydantic import BaseModel
 # Shared-secret authentication for operational endpoints. An unset token
 # disables those endpoints instead of exposing immortal commands anonymously.
 _WEB_ADMIN_TOKEN: str = os.environ.get("WEB_ADMIN_TOKEN", "")
+_WEB_ADMIN_BIND: str = os.environ.get("WEB_ADMIN_BIND", "127.0.0.1").strip().lower()
+_LOCAL_ADMIN_UNLOCK: bool = (
+    os.environ.get("WEB_ADMIN_LOCAL_UNLOCK", "0").strip().lower()
+    in {"1", "true", "yes", "on"}
+    and _WEB_ADMIN_BIND in {"127.0.0.1", "localhost", "::1"}
+)
+LOCAL_ADMIN_COOKIE = "toc_admin_session"
+LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
 
 
-async def verify_token(x_admin_token: str = Header(default="")) -> None:
-    """Require a configured WEB_ADMIN_TOKEN and a matching request header."""
+def local_admin_session_value() -> str:
+    if not _WEB_ADMIN_TOKEN:
+        return ""
+    return hmac.new(
+        _WEB_ADMIN_TOKEN.encode("utf-8"),
+        b"toc-local-admin-session-v1",
+        hashlib.sha256,
+    ).hexdigest()
+
+
+def loopback_hostname(hostname: Optional[str]) -> bool:
+    return bool(hostname and hostname.rstrip(".").lower() in LOOPBACK_HOSTS)
+
+
+def local_admin_request_allowed(request: Request) -> bool:
+    return bool(_WEB_ADMIN_TOKEN) and _LOCAL_ADMIN_UNLOCK and loopback_hostname(request.url.hostname)
+
+
+def local_admin_websocket_authenticated(websocket: WebSocket) -> bool:
+    if not _LOCAL_ADMIN_UNLOCK or not loopback_hostname(websocket.url.hostname):
+        return False
+    supplied = websocket.cookies.get(LOCAL_ADMIN_COOKIE, "")
+    expected = local_admin_session_value()
+    return bool(supplied and expected and secrets.compare_digest(supplied, expected))
+
+
+async def verify_token(request: Request, x_admin_token: str = Header(default="")) -> None:
+    """Require the shared token or a valid loopback-only browser session."""
     if not _WEB_ADMIN_TOKEN:
         raise HTTPException(
             status_code=503,
             detail="Admin API disabled: configure WEB_ADMIN_TOKEN",
         )
-    if not secrets.compare_digest(x_admin_token, _WEB_ADMIN_TOKEN):
-        raise HTTPException(status_code=403, detail="Forbidden")
+    if x_admin_token and secrets.compare_digest(x_admin_token, _WEB_ADMIN_TOKEN):
+        return
+    if local_admin_request_allowed(request):
+        supplied = request.cookies.get(LOCAL_ADMIN_COOKIE, "")
+        expected = local_admin_session_value()
+        if supplied and expected and secrets.compare_digest(supplied, expected):
+            return
+    raise HTTPException(status_code=403, detail="Forbidden")
 
 try:
     from webadmin.area_health import build_area_health
@@ -645,16 +687,43 @@ async def health() -> dict[str, bool | str]:
 
 
 @app.get("/api/config")
-async def get_config() -> Dict[str, Any]:
+async def get_config(request: Request) -> Dict[str, Any]:
     return {
         "version": app.version,
         "admin_token_configured": bool(_WEB_ADMIN_TOKEN),
+        "local_admin_unlock": local_admin_request_allowed(request),
         "mud_endpoint": f"{MUD_HOST}:{MUD_PORT}",
         "client_path": "/client",
         "game_websocket_auth": "same-origin",
         "player_data_protected": True,
-        "log_websocket_auth": "first-message",
+        "log_websocket_auth": "cookie-or-first-message",
     }
+
+
+@app.post("/api/auth/local")
+async def start_local_admin_session(request: Request, response: Response) -> Dict[str, str | bool]:
+    if not _WEB_ADMIN_TOKEN:
+        raise HTTPException(
+            status_code=503,
+            detail="Admin API disabled: configure WEB_ADMIN_TOKEN",
+        )
+    if not local_admin_request_allowed(request):
+        raise HTTPException(status_code=403, detail="Local admin unlock is unavailable")
+    response.set_cookie(
+        key=LOCAL_ADMIN_COOKIE,
+        value=local_admin_session_value(),
+        httponly=True,
+        secure=request.url.scheme == "https",
+        samesite="strict",
+        path="/",
+    )
+    return {"authenticated": True, "mode": "local"}
+
+
+@app.post("/api/auth/logout")
+async def end_local_admin_session(response: Response) -> Dict[str, bool]:
+    response.delete_cookie(key=LOCAL_ADMIN_COOKIE, path="/")
+    return {"authenticated": False}
 
 
 @app.get("/api/auth/check")
@@ -697,25 +766,27 @@ async def websocket_logs(websocket: WebSocket) -> None:
     if not websocket_origin_allowed(websocket):
         await websocket.close(code=1008)
         return
+    local_session = local_admin_websocket_authenticated(websocket)
     await websocket.accept()
-    try:
-        auth_message = await asyncio.wait_for(websocket.receive_text(), timeout=5)
-        auth_payload = json.loads(auth_message)
-        supplied_token = auth_payload.get("token", "") if isinstance(auth_payload, dict) else ""
-        if (
-            not isinstance(auth_payload, dict)
-            or auth_payload.get("type") != "auth"
-            or not _WEB_ADMIN_TOKEN
-            or not secrets.compare_digest(str(supplied_token), _WEB_ADMIN_TOKEN)
-        ):
-            await websocket.close(code=4003)
-            return
-    except (asyncio.TimeoutError, json.JSONDecodeError, WebSocketDisconnect):
+    if not local_session:
         try:
-            await websocket.close(code=4003)
-        except RuntimeError:
-            pass
-        return
+            auth_message = await asyncio.wait_for(websocket.receive_text(), timeout=5)
+            auth_payload = json.loads(auth_message)
+            supplied_token = auth_payload.get("token", "") if isinstance(auth_payload, dict) else ""
+            if (
+                not isinstance(auth_payload, dict)
+                or auth_payload.get("type") != "auth"
+                or not _WEB_ADMIN_TOKEN
+                or not secrets.compare_digest(str(supplied_token), _WEB_ADMIN_TOKEN)
+            ):
+                await websocket.close(code=4003)
+                return
+        except (asyncio.TimeoutError, json.JSONDecodeError, WebSocketDisconnect):
+            try:
+                await websocket.close(code=4003)
+            except RuntimeError:
+                pass
+            return
 
     async def watch_disconnect() -> None:
         while True:

@@ -178,12 +178,8 @@
     }
 
     async function validateToken(silent = false) {
-        if (!state.token) {
-            setAuthenticated(false);
-            return false;
-        }
         try {
-            await api("/api/auth/check", { auth: true });
+            await api("/api/auth/check", { auth: Boolean(state.token) });
             setAuthenticated(true);
             return true;
         } catch (error) {
@@ -193,9 +189,21 @@
         }
     }
 
+    async function unlockLocalAdmin() {
+        if (!state.config?.local_admin_unlock) return false;
+        try {
+            await api("/api/auth/local", { method: "POST" });
+            return await validateToken(true);
+        } catch (_error) {
+            setAuthenticated(false);
+            return false;
+        }
+    }
+
     async function ensureAuth() {
-        if (state.authenticated && state.token) return true;
-        if (state.token && await validateToken(true)) return true;
+        if (state.authenticated) return true;
+        if (await validateToken(true)) return true;
+        if (await unlockLocalAdmin()) return true;
         openAuthDialog();
         return false;
     }
@@ -231,7 +239,12 @@
         await refreshCurrentView();
     }
 
-    function clearAuth() {
+    async function clearAuth() {
+        try {
+            await api("/api/auth/logout", { method: "POST" });
+        } catch (_error) {
+            // Local cookie cleanup is best effort; browser token storage is cleared below.
+        }
         saveToken("", false);
         setAuthenticated(false);
         stopLogs();
@@ -1256,7 +1269,7 @@
         loadSavedToken();
         bindEvents();
         await loadConfig();
-        await validateToken(true);
+        if (!await validateToken(true)) await unlockLocalAdmin();
         navigate(location.hash.slice(1) || "overview", false);
     }
 

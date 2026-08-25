@@ -84,6 +84,7 @@ MUD_PORT=9000
 WEB_ADMIN_BIND=127.0.0.1
 WEB_ADMIN_PORT=9001
 WEB_ADMIN_ENABLED=1
+WEB_ADMIN_LOCAL_UNLOCK=1
 TOC_UID=$(id -u)
 TOC_GID=$(id -g)
 WEB_ADMIN_TOKEN=$token
@@ -95,6 +96,7 @@ EOF
         [ -n "$(toc_env_get WEB_ADMIN_BIND)" ] || toc_set_env WEB_ADMIN_BIND 127.0.0.1
         [ -n "$(toc_env_get WEB_ADMIN_PORT)" ] || toc_set_env WEB_ADMIN_PORT 9001
         [ -n "$(toc_env_get WEB_ADMIN_ENABLED)" ] || toc_set_env WEB_ADMIN_ENABLED 1
+        [ -n "$(toc_env_get WEB_ADMIN_LOCAL_UNLOCK)" ] || toc_set_env WEB_ADMIN_LOCAL_UNLOCK 1
         [ -n "$(toc_env_get TOC_UID)" ] || toc_set_env TOC_UID "$(id -u)"
         [ -n "$(toc_env_get TOC_GID)" ] || toc_set_env TOC_GID "$(id -g)"
         if [ -z "$(toc_env_get WEB_ADMIN_TOKEN)" ]; then
