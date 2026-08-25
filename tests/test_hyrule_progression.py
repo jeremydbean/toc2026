@@ -586,6 +586,18 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertEqual(golden_exit.key_vnum, 30243)
         self.assertNotEqual(golden_exit.locks, 0)
 
+    def test_silver_arrow_explains_how_to_finish_ganon(self) -> None:
+        silver_arrow = self.parser.objects[30218]
+        guidance = " ".join(
+            description["description"] for description in silver_arrow.extra_descr
+            if "silver" in description["keyword"].lower()
+        ).lower()
+        self.assertIn("primary weapon slot", guidance)
+        self.assertIn("final blow", guidance)
+        self.assertIn("not ammunition", guidance)
+        fight_source = Path("src/fight.c").read_text(encoding="utf-8").lower()
+        self.assertIn("wield the silver arrow for the final blow", fight_source)
+
     def test_hyrule_has_teleport_only_entry_and_no_walking_world_link(self) -> None:
         arcade = self.parser.objects[30285]
         self.assertEqual(arcade.values[1], "30200")

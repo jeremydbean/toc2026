@@ -175,7 +175,9 @@ Runtime rules add the behaviors the area format cannot express alone:
 - Shutters open when aggressive room guardians are defeated.
 - Dodongo takes bomb damage.
 - Gohma requires a bow or Silver Arrow for the finishing hit.
-- Ganon requires the Silver Arrow for the finishing hit.
+- Ganon requires the Silver Arrow in the attacker's primary wield slot for the
+  finishing hit. There is no separate fire or use command: wield it, fight
+  normally, and keep it equipped when the final blow lands.
 - Like Likes can swallow equipped shields; Bubbles can disarm weapons.
 - Wallmasters can return a player to that dungeon's entrance.
 - Raft and Stepladder crossings verify the corresponding item.

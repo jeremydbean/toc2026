@@ -410,6 +410,9 @@ return portals.
 - A dungeon compass gives the general direction toward that dungeon's boss.
 - Candles, bombs, arrows, keys, rafts, ladders, recorders, and room actions are
   part of progression. Read descriptions and inspect inventory carefully.
+- To finish Ganon, `wield silver` in your primary weapon slot and attack
+  normally. There is no separate Silver Arrow `use` or `fire` command; it must
+  be wielded when the final blow lands.
 
 The full level bands, dungeon order, commands, generated-data workflow, and
 spoiler-conscious mechanics are in [Hyrule: First Quest](hyrule-area.md).

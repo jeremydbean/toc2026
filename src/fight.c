@@ -1223,7 +1223,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
         &&   !wields_object_vnum(ch, HYRULE_SILVER_ARROW_VNUM) )
         {
             victim->hit = 1;
-            act( "$N dissolves into shadow. Only the Silver Arrow can end this fight.",
+            act( "$N dissolves into shadow. Wield the Silver Arrow for the final blow!",
                  ch, NULL, victim, TO_CHAR );
             act( "$N dissolves into shadow and reforms before $n.",
                  ch, NULL, victim, TO_ROOM );
