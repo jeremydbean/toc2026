@@ -414,6 +414,10 @@ return portals.
   from the Silver Arrow can kill him. Use `wield silver` in your primary
   weapon slot and attack normally. There is no separate Silver Arrow `use` or
   `fire` command, and casting a spell while merely holding it does not count.
+  Against Ganon, every landed Silver Arrow strike uses full weapon mastery and
+  deals at least 10% of his maximum health after defenses. At one hit point he
+  collapses, stops attacking, and remains stunned until the Silver Arrow lands
+  the final blow.
 
 The full level bands, dungeon order, commands, generated-data workflow, and
 spoiler-conscious mechanics are in [Hyrule: First Quest](hyrule-area.md).

@@ -605,6 +605,9 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("not ammunition", guidance)
         self.assertIn("spells, poison, and lingering effects can wound", guidance)
         self.assertIn("other attack is not enough", guidance)
+        self.assertIn("full weapon mastery", guidance)
+        self.assertIn("one tenth", guidance)
+        self.assertIn("stunned and cannot fight back", guidance)
         self.assertEqual(ganon.imm_flags, "B")
         self.assertEqual(ganon.res_flags, "CP")
         self.assertIn("silver", decode_flags(ganon.vuln_flags, VULN_FLAGS))
@@ -614,6 +617,15 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("other attacks can wound", fight_source)
         self.assertIn("!bypass_hyrule_ganon && is_hyrule_ganon(victim)", fight_source)
         self.assertIn("raw_kill_internal( ch, victim, true )", fight_source)
+        self.assertIn("hyrule_silver_arrow_ganon_skill 100", fight_source)
+        self.assertIn("skill = umax(skill, hyrule_silver_arrow_ganon_skill)", fight_source)
+        self.assertIn("hyrule_silver_arrow_ganon_damage_divisor 10", fight_source)
+        self.assertIn("hyrule_silver_arrow_hit = dam > 0", fight_source)
+        self.assertIn("victim->max_hit", fight_source)
+        self.assertIn("set_bit( victim->affected_by2, aff2_no_recover )", fight_source)
+        self.assertIn("is_stunned_hyrule_ganon(victim)", fight_source)
+        self.assertIn("victim->position = pos_stunned", fight_source)
+        self.assertIn("victim->hit <= 1", fight_source)
 
     def test_hyrule_has_teleport_only_entry_and_no_walking_world_link(self) -> None:
         arcade = self.parser.objects[30285]

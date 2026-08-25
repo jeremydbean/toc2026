@@ -23,6 +23,8 @@
 #define HYRULE_GANON_VNUM       30225
 #define HYRULE_BOW_VNUM         30222
 #define HYRULE_SILVER_ARROW_VNUM 30218
+#define HYRULE_SILVER_ARROW_GANON_SKILL 100
+#define HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR 10
 #define HYRULE_LIKE_LIKE_VNUM   30215
 #define HYRULE_BLUE_LIKE_LIKE_VNUM 30332
 #define HYRULE_BUBBLE_VNUM      30304
@@ -114,21 +116,39 @@ static bool is_silver_arrow_finishing_hit( CHAR_DATA *ch, int dt )
         && dt == TYPE_HIT + weapon->value[3];
 }
 
+static bool is_stunned_hyrule_ganon( CHAR_DATA *victim )
+{
+    return is_hyrule_ganon(victim) && victim->hit == 1
+        && IS_AFFECTED2(victim, AFF2_NO_RECOVER);
+}
+
 static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
 {
+    bool already_stunned;
+
+    already_stunned = is_stunned_hyrule_ganon( victim )
+        && victim->position == POS_STUNNED;
     victim->hit = 1;
-    update_pos( victim );
+    SET_BIT( victim->affected_by2, AFF2_NO_RECOVER );
+    victim->position = POS_STUNNED;
+
+    if ( victim->fighting != NULL )
+        stop_fighting( victim, false );
+    victim->position = POS_STUNNED;
+
+    if ( already_stunned )
+        return;
 
     if ( ch != NULL && ch != victim )
     {
-        act( "$N dissolves into shadow and reforms at one hit point. Other attacks can wound $M, but only a direct strike from the wielded Silver Arrow can finish $M!",
+        act( "$N collapses at one hit point, stunned and unable to fight back. Other attacks can wound $M, but only a direct strike from the wielded Silver Arrow can finish $M!",
              ch, NULL, victim, TO_CHAR );
-        act( "$N dissolves into shadow and reforms at one hit point before $n. Only a direct strike from the Silver Arrow can finish $M.",
+        act( "$N collapses at one hit point before $n, stunned and unable to fight back. Only a direct strike from the Silver Arrow can finish $M.",
              ch, NULL, victim, TO_NOTVICT );
     }
     else
     {
-        act( "$n dissolves into shadow and reforms at one hit point. Only a direct strike from the Silver Arrow can finish $m.",
+        act( "$n collapses at one hit point, stunned and unable to fight back. Only a direct strike from the Silver Arrow can finish $m.",
              victim, NULL, NULL, TO_ROOM );
     }
 }
@@ -840,6 +860,9 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     /* get the weapon skill */
     sn = dt == gsn_dual_wield ? get_dual_sn(ch) : get_weapon_sn(ch);
     skill = get_weapon_skill(ch,sn);
+    if ( is_hyrule_ganon(victim)
+    &&   is_silver_arrow_finishing_hit(ch, dt) )
+        skill = UMAX(skill, HYRULE_SILVER_ARROW_GANON_SKILL);
 
     /*
      * Calculate to-hit-armor-class-0 versus armor.
@@ -1030,11 +1053,15 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     CHAR_DATA *vch;
     OBJ_DATA *corpse;
     bool immune;
+    bool hyrule_silver_arrow_hit;
     int shield = 0,i,num=0;
     LIST_ITERATOR iter;
 
     if ( victim->position == POS_DEAD )
 	return false;
+
+    hyrule_silver_arrow_hit = dam > 0 && is_hyrule_ganon(victim)
+        && is_silver_arrow_finishing_hit(ch, dt);
 
     if(IS_AFFECTED2(victim,AFF2_FLAMING_HOT) )
       shield = 1;
@@ -1235,6 +1262,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
     if (dam < 0) dam = 0;
 
+    if ( hyrule_silver_arrow_hit )
+        dam = UMAX(dam, UMAX(1, victim->max_hit
+            / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR));
+
     dam_message( ch, victim, dam, dt, immune );
 
     if (dam == 0)
@@ -1248,9 +1279,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
      * Inform the victim of his new state.
      */
     victim->hit -= dam;
-    if ( IS_NPC(victim) && victim->pIndexData != NULL && victim->hit < 1 )
+    if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
-        if ( victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
+        if ( victim->hit < 1
+        &&   victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
         &&   !wields_object_vnum(ch, HYRULE_BOW_VNUM)
         &&   !wields_object_vnum(ch, HYRULE_SILVER_ARROW_VNUM) )
         {
@@ -1261,7 +1293,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
                  ch, NULL, victim, TO_ROOM );
         }
         if ( victim->pIndexData->vnum == HYRULE_GANON_VNUM
-        &&   !is_silver_arrow_finishing_hit(ch, dt) )
+        &&   victim->hit <= 1
+        && ( victim->hit == 1 || !is_silver_arrow_finishing_hit(ch, dt) ) )
         {
             reform_hyrule_ganon( ch, victim );
         }
@@ -1293,6 +1326,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	break;
 
     case POS_STUNNED:
+	if ( is_stunned_hyrule_ganon(victim) )
+	    break;
 	act( "$n is stunned, but will probably recover.",
 	    victim, NULL, NULL, TO_ROOM );
 	send_to_char("You are stunned, but will probably recover.\n\r",
@@ -2115,6 +2150,11 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
 void update_pos( CHAR_DATA *victim )
 		{
 
+    if ( is_stunned_hyrule_ganon(victim) )
+    {
+       victim->position = POS_STUNNED;
+       return;
+    }
 
     if ( victim->hit > 0 )
     {
