@@ -363,13 +363,17 @@ ganon~
 Ganon~
 The All-Mighty Ganon stands here in the shadows.
 ~
-Ganon stands here, dressed only in a black robe, and holding a staff which he twirls around in the air.  He resembles a pig in several ways... althought quite large.  Before you know what happened, he attacks!
+Ganon stands here, dressed only in a black robe, holding a staff which he
+twirls through the air.  He resembles a pig in several ways, although he is
+quite large.  His shadowy body yields when struck, but every mortal wound
+begins to close around a cold glint of silver.  Before you can make sense of
+the omen, he attacks!
 ~
 pig~
 ABFMRV CDFHJQUV -800 S
 70 35 23d10+12250 17d10+840 8d8+50 7
 0 0 0 0
-BCDE BDEFGN CP Y
+BCDE B CP Y
 8 8 0 0
 AGV ACDEFHJK L 0
 #30226
@@ -1284,17 +1288,19 @@ energy~
 silver arrow~
 a silver arrow~
 A single silver arrow lies here.~
-unknown~
+silver~
 5 ABGUV AN
 0 4 14 2 0
 68 1 5000 P
 E
 silver arrow~
-The silver metal shines with a light that does not fade.  This is a weapon,
-not ammunition for a separate fire or use command.  Wield the Silver Arrow in
-your primary weapon slot, fight Ganon normally, and keep it wielded when you
-land the final blow.  Without it, Ganon will dissolve into shadow and reform
-at one hit point.
+The silver metal shines with a light that does not fade.  Other weapons,
+spells, poison, and lingering effects can wound Ganon, but none can kill him.
+This is a weapon, not ammunition for a separate fire or use command.  Wield
+the Silver Arrow in your primary weapon slot and strike Ganon normally with
+the arrow itself to land the final blow.  Merely holding it while using some
+other attack is not enough; without its direct strike, Ganon will dissolve
+into shadow and reform at one hit point.
 ~
 #30219
 wooden wood sword~

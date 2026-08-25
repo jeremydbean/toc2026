@@ -16,7 +16,13 @@ from scripts.build_hyrule_area import (
     choose_world_mob,
     build_area,
 )
-from webadmin.area_parser import AreaParser, ITEM_FLAGS, ROOM_FLAGS, decode_flags
+from webadmin.area_parser import (
+    AreaParser,
+    ITEM_FLAGS,
+    ROOM_FLAGS,
+    VULN_FLAGS,
+    decode_flags,
+)
 
 
 OPPOSITE = {
@@ -588,15 +594,26 @@ class HyruleProgressionTests(unittest.TestCase):
 
     def test_silver_arrow_explains_how_to_finish_ganon(self) -> None:
         silver_arrow = self.parser.objects[30218]
+        ganon = self.parser.mobiles[30225]
         guidance = " ".join(
             description["description"] for description in silver_arrow.extra_descr
             if "silver" in description["keyword"].lower()
         ).lower()
+        self.assertEqual(silver_arrow.material, "silver")
         self.assertIn("primary weapon slot", guidance)
         self.assertIn("final blow", guidance)
         self.assertIn("not ammunition", guidance)
+        self.assertIn("spells, poison, and lingering effects can wound", guidance)
+        self.assertIn("other attack is not enough", guidance)
+        self.assertEqual(ganon.imm_flags, "B")
+        self.assertEqual(ganon.res_flags, "CP")
+        self.assertIn("silver", decode_flags(ganon.vuln_flags, VULN_FLAGS))
         fight_source = Path("src/fight.c").read_text(encoding="utf-8").lower()
-        self.assertIn("wield the silver arrow for the final blow", fight_source)
+        self.assertIn("is_silver_arrow_finishing_hit(ch, dt)", fight_source)
+        self.assertIn("dt == type_hit + weapon->value[3]", fight_source)
+        self.assertIn("other attacks can wound", fight_source)
+        self.assertIn("!bypass_hyrule_ganon && is_hyrule_ganon(victim)", fight_source)
+        self.assertIn("raw_kill_internal( ch, victim, true )", fight_source)
 
     def test_hyrule_has_teleport_only_entry_and_no_walking_world_link(self) -> None:
         arcade = self.parser.objects[30285]

@@ -541,6 +541,7 @@ IMM_FLAGS = {
     'Q': 'disease',
     'R': 'drowning',
     'S': 'light',
+    'T': 'wind',
     'Z': 'flags2',
 }
 
@@ -566,8 +567,10 @@ VULN_FLAGS = {
     'Q': 'disease',
     'R': 'drowning',
     'S': 'light',
-    'T': 'wood',
-    'U': 'silver',
+    'T': 'wind',
+    'U': 'iron',
+    'X': 'wood',
+    'Y': 'silver',
     'Z': 'flags2',
 }
 

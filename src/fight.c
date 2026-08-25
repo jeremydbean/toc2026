@@ -54,6 +54,8 @@ bool    check_dodge     args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 void    check_killer    args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 bool    check_parry     args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 bool    check_shield_block      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+static void raw_kill_internal   args( ( CHAR_DATA *ch, CHAR_DATA *victim,
+                                        bool bypass_hyrule_ganon ) );
 void    dam_message     args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam,
 			    int dt, bool immune ) );
 void    death_cry       args( ( CHAR_DATA *ch ) );
@@ -90,6 +92,45 @@ static bool wields_object_vnum( CHAR_DATA *ch, int vnum )
     weapon = get_eq_char( ch, WEAR_WIELD );
     return weapon != NULL && weapon->pIndexData != NULL
         && weapon->pIndexData->vnum == vnum;
+}
+
+static bool is_hyrule_ganon( CHAR_DATA *victim )
+{
+    return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
+        && victim->pIndexData->vnum == HYRULE_GANON_VNUM;
+}
+
+static bool is_silver_arrow_finishing_hit( CHAR_DATA *ch, int dt )
+{
+    OBJ_DATA *weapon;
+
+    if ( ch == NULL )
+        return false;
+
+    weapon = get_eq_char( ch, WEAR_WIELD );
+    return weapon != NULL && weapon->pIndexData != NULL
+        && weapon->item_type == ITEM_WEAPON
+        && weapon->pIndexData->vnum == HYRULE_SILVER_ARROW_VNUM
+        && dt == TYPE_HIT + weapon->value[3];
+}
+
+static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    victim->hit = 1;
+    update_pos( victim );
+
+    if ( ch != NULL && ch != victim )
+    {
+        act( "$N dissolves into shadow and reforms at one hit point. Other attacks can wound $M, but only a direct strike from the wielded Silver Arrow can finish $M!",
+             ch, NULL, victim, TO_CHAR );
+        act( "$N dissolves into shadow and reforms at one hit point before $n. Only a direct strike from the Silver Arrow can finish $M.",
+             ch, NULL, victim, TO_NOTVICT );
+    }
+    else
+    {
+        act( "$n dissolves into shadow and reforms at one hit point. Only a direct strike from the Silver Arrow can finish $m.",
+             victim, NULL, NULL, TO_ROOM );
+    }
 }
 
 static int hyrule_dungeon_entrance( int room_vnum )
@@ -1220,13 +1261,9 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
                  ch, NULL, victim, TO_ROOM );
         }
         if ( victim->pIndexData->vnum == HYRULE_GANON_VNUM
-        &&   !wields_object_vnum(ch, HYRULE_SILVER_ARROW_VNUM) )
+        &&   !is_silver_arrow_finishing_hit(ch, dt) )
         {
-            victim->hit = 1;
-            act( "$N dissolves into shadow. Wield the Silver Arrow for the final blow!",
-                 ch, NULL, victim, TO_CHAR );
-            act( "$N dissolves into shadow and reforms before $n.",
-                 ch, NULL, victim, TO_ROOM );
+            reform_hyrule_ganon( ch, victim );
         }
     }
     if ( dam > 0 )
@@ -1495,7 +1532,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 
 	  if(IS_NPC(victim) && IS_SET(victim->off_flags,OFF_SUMMONER) )
 	  {
-	    raw_kill( ch, victim );
+	    raw_kill_internal( ch, victim, is_hyrule_ganon(victim) );
 
             FOR_EACH_CHARACTER( iter, vch )
             {
@@ -1520,7 +1557,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	    }
 	  }
 	  else
-	    raw_kill( ch, victim );
+	    raw_kill_internal( ch, victim, is_hyrule_ganon(victim) );
 
 	  /* RT new auto commands */
 
@@ -2475,9 +2512,21 @@ void death_cry( CHAR_DATA *ch )
 
 void raw_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 {
+    raw_kill_internal( ch, victim, false );
+}
+
+static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
+                               bool bypass_hyrule_ganon )
+{
     int i;
     OBJ_DATA *obj;
     OBJ_DATA *obj_next;
+
+    if ( !bypass_hyrule_ganon && is_hyrule_ganon(victim) )
+    {
+        reform_hyrule_ganon( ch, victim );
+        return;
+    }
 
     stop_fighting( victim, true );
 
@@ -4639,7 +4688,7 @@ void do_slay( CHAR_DATA *ch, char *argument )
         act( slay_msg[idx].to_vict, ch, NULL, victim, TO_VICT    );
         act( slay_msg[idx].to_room, ch, NULL, victim, TO_NOTVICT );
     }
-    raw_kill( ch, victim );
+    raw_kill_internal( ch, victim, true );
     return;
 }
 
@@ -4812,6 +4861,12 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
   char buf[MAX_STRING_LENGTH];
   CHAR_DATA *vch;
   LIST_ITERATOR iter;
+
+    if ( is_hyrule_ganon(victim) )
+    {
+        reform_hyrule_ganon( ch, victim );
+        return;
+    }
 
     act( "$n's attack has pierced a vital organ, killing you instantly!",
 	 ch, NULL, victim, TO_VICT    );
@@ -5128,6 +5183,11 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 
       if (victim->position == POS_DEAD)
       {
+          if ( is_hyrule_ganon(victim) )
+          {
+              reform_hyrule_ganon( ch, victim );
+              return;
+          }
           group_gain(ch, victim);
           raw_kill(ch, victim);
           return;
