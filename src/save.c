@@ -419,6 +419,9 @@ void save_char_obj( CHAR_DATA *ch )
     if ( ch->desc != NULL && ch->desc->original != NULL )
         ch = ch->desc->original;
 
+    achievement_check_state(ch,
+        ch->desc != NULL && ch->desc->connected == CON_PLAYING);
+
     previous_has_saved = ch->pcdata->has_saved;
     previous_confirm_unsaved_quit = ch->pcdata->confirm_unsaved_quit;
     ch->pcdata->has_saved = true;
@@ -611,6 +614,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Corpses	%d\n",	ch->pcdata->corpses	);
     fprintf( fp, "PkRec %ld\n",ch->pcdata->pkills_received );
     fprintf( fp, "PkGiv %ld\n",ch->pcdata->pkills_given );
+    achievement_write_char( ch, fp );
     fprintf( fp, "SesLogin %ld\n", ch->pcdata->last_session_login );
     fprintf( fp, "SesDur   %ld\n", ch->pcdata->last_session_dur );
     fprintf( fp, "SesExpG  %ld\n", ch->pcdata->last_session_exp_gain );
@@ -1328,6 +1332,15 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'A':
+	    KEY( "AchKills", ch->pcdata->achievement_mob_kills, fread_long( fp ) );
+	    KEY( "AchQuests", ch->pcdata->achievement_quests_completed, fread_long( fp ) );
+	    KEY( "AchExplore", ch->pcdata->achievement_hyrule_dungeons,
+		 fread_long( fp ) );
+	    KEY( "AchMaps", ch->pcdata->achievement_hyrule_maps, fread_long( fp ) );
+	    KEY( "AchCompass", ch->pcdata->achievement_hyrule_compasses,
+		 fread_long( fp ) );
+	    KEY( "AchTriforce", ch->pcdata->achievement_triforce_shards,
+		 fread_long( fp ) );
 	    KEY( "Act",		ch->act,		fread_number( fp ) );
 	    KEY( "AffectedBy",	ch->affected_by,	fread_number( fp ) );
 	    KEY( "AfBy",	ch->affected_by,	fread_number( fp ) );
@@ -1336,6 +1349,16 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Alig",	ch->alignment,		(sh_int)(fread_number( fp )) );
 	    KEY( "Arrive",	ch->pcdata->arrive,	fread_string( fp ) );
 	    KEY( "Ariv",	ch->pcdata->arrive,	fread_string( fp ) );
+
+	    if ( !str_cmp( word, "Achv" ) )
+	    {
+		char *achievement_key = fread_word( fp );
+		time_t earned = (time_t)fread_long( fp );
+
+		achievement_load_earned( ch, achievement_key, earned );
+		fMatch = true;
+		break;
+	    }
 
 	    if (!str_cmp( word, "AC") || !str_cmp(word,"Armor"))
 	    {

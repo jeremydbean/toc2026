@@ -181,6 +181,7 @@ typedef struct script_loop_prepoll_payload
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
 #define MAX_HUNTERS             50
+#define MAX_ACHIEVEMENTS        64
 #define MAX_LEVEL               70
 #define LEVEL_IMMORTAL          (MAX_LEVEL - 10)
 #define LEVEL_KING              (MAX_LEVEL - 11)
@@ -1597,6 +1598,13 @@ struct  pc_data
     char * afk_msg;             /* optional message shown to tellers while AFK */
     long                pkills_given;
     long                pkills_received;
+    time_t              achievement_earned[MAX_ACHIEVEMENTS];
+    long                achievement_mob_kills;
+    long                achievement_quests_completed;
+    unsigned long       achievement_hyrule_dungeons;
+    unsigned long       achievement_hyrule_maps;
+    unsigned long       achievement_hyrule_compasses;
+    unsigned long       achievement_triforce_shards;
     int                 trail[TRAIL_LEN];
     sh_int              trail_head;
     sh_int              exp_bonus;       /* cumulative % bonus to exp gains (e.g. 50 = +50%) */
@@ -2136,6 +2144,18 @@ void    write_web_admin_event ( const char *channel, const char *message,
 
 /* act_info.c */
 void    set_title       ( CHAR_DATA *ch, char *title );
+
+/* achievements.c */
+void    achievement_check_state ( CHAR_DATA *ch, bool announce );
+void    achievement_record_kill ( CHAR_DATA *killer, CHAR_DATA *victim );
+void    achievement_record_quest ( CHAR_DATA *ch );
+void    achievement_record_room ( CHAR_DATA *ch, int room_vnum, bool announce );
+void    achievement_record_object ( CHAR_DATA *ch, int object_vnum, bool announce );
+void    achievement_write_char ( CHAR_DATA *ch, FILE *fp );
+void    achievement_load_earned ( CHAR_DATA *ch, const char *key, time_t earned );
+int     achievement_earned_count ( const CHAR_DATA *ch );
+int     achievement_catalog_count ( void );
+int     achievement_points ( const CHAR_DATA *ch );
 
 /* act_move.c */
 void    move_char       ( CHAR_DATA *ch, int door, bool follow );

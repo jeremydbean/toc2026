@@ -82,6 +82,7 @@ The parsers have different purposes and both must pass.
 | `interp.c`, `interp.h` | Command table, dispatch, command declarations |
 | `act_move.c` | Movement, exits, doors, recall, mounts, run/speedwalk |
 | `act_info.c` | Player information, help-facing displays, leveling/remort UI |
+| `achievements.c` | Achievement catalog, progress, events, display, and persistence helpers |
 | `act_obj.c` | Inventory, equipment, consumables, shops, banks, item actions |
 | `act_comm.c` | Channels, tells, socials, notes, and communication state |
 | `act_wiz.c` | Immortal operations, diagnostics, restoration, moderation |
@@ -280,6 +281,7 @@ native and Python area totals are expected to use different counting models.
 | `tests/test_area_health.py` | Parser/health issue detection and severity behavior |
 | `tests/test_webadmin_api.py` | API authentication, queueing, reload, parsing, and limits |
 | `tests/test_hyrule_progression.py` | Generated Hyrule topology, progression, bosses, items, and routes |
+| `tests/test_achievements.py` | Catalog stability, event hooks, save fields, and Hyrule boss mappings |
 
 Add focused regression tests for fixed bugs. Expand to integration/smoke testing
 when a change crosses C/Python, parser/runtime, persistence, or world boundaries.

@@ -9,8 +9,8 @@ Quest.
 The current checked-in world parses as **99 listed area files, 7,781 rooms,
 2,336 mobiles, and 3,551 objects**. Player progression spans six classes, five
 playable races, four optional cross-class guilds, five remorts, questing, group
-play, player killing, advanced equipment comparison, and a large collection of
-hand-built areas.
+play, player killing, permanent achievements, advanced equipment comparison,
+and a large collection of hand-built areas.
 
 > **Before hosting or playing:** ToC uses plain Telnet and legacy DES `crypt(3)`
 > password hashes. Traffic is not encrypted, and only the first eight password
@@ -30,6 +30,7 @@ hand-built areas.
 | Developer | [Developer Guide](wiki/developer-guide.md) and [CONTRIBUTING.md](CONTRIBUTING.md) |
 | Area builder | [Area Building Guide](wiki/area-building-guide.md) |
 | Hyrule player or builder | [Hyrule: First Quest](wiki/hyrule-area.md) |
+| Achievement hunter | [Achievement System](wiki/achievements.md) |
 | Security reviewer | [Security Policy and Deployment Guide](SECURITY.md) |
 
 The [wiki home page](wiki/Home.md) indexes all current and historical
@@ -44,6 +45,9 @@ documentation.
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.
+- A permanent 43-achievement progression system with points, earned dates,
+  hidden discoveries, live progress, retroactive milestones, group boss credit,
+  and complete Hyrule dungeon, map, compass, shard, and boss tracking.
 - A FastAPI dashboard for world browsing, area health, maps, player inspection,
   logs, backups, server commands, and a browser-to-MUD WebSocket bridge.
 - Automated player snapshots, scheduled archive backups, diagnostics, native

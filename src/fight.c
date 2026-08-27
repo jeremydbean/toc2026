@@ -1514,6 +1514,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
                  victim->pcdata->pkills_received += 1;
                  update_pkills(ch);
                  update_pkills(victim);
+		 achievement_check_state(ch, true);
 	       }
             }
 	}
@@ -2633,6 +2634,7 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
 	/* Track mob kill for session stats */
 	if (!IS_NPC(ch))
 	    ch->pcdata->session_kills++;
+	achievement_record_kill(ch, victim);
 	extract_char( victim, true );
 	return;
     }
@@ -4995,6 +4997,7 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	    {
 		ch->pcdata->pkills_given += 1;
 		update_pkills(ch);
+		achievement_check_state(ch, true);
 	    }
 	    victim->pcdata->pkills_received += 1;
 	    update_pkills(victim);

@@ -85,6 +85,7 @@ look
 score
 equipment
 inventory
+achievements
 autoexit
 autogold
 autoloot
@@ -284,6 +285,33 @@ bonuses change, and status effects are cleared. Current code keeps items on the
 final remort path, but always read `help remort`, save, and confirm the host has
 a recent backup before committing. The password entered in the command crosses
 the same unencrypted Telnet connection as every other command.
+
+## Achievements
+
+Achievements provide permanent, noncombat progression for a character. They
+award points, an earned date, and a nearby-player announcement, but no stats or
+equipment power. Start with:
+
+```text
+achievements
+achievements character
+achievements incomplete
+achievements hyrule
+```
+
+The catalog covers character levels and remorts, play time, mobile and player
+kills, quest completions and streaks, exploration, and the full Hyrule
+campaign. Hidden achievements show neither title nor requirement until earned.
+Dungeon-boss credit in Hyrule is shared with grouped players present in the
+boss room, so healers and support characters do not need the final hit.
+
+Existing characters receive credit for facts the old save format already
+knows: level, remorts, play time, qualifying player kills, current quest
+streak, and qualifying Hyrule items still carried, including items inside
+containers. Lifetime mobile-kill and quest-completion totals start when the
+new system begins recording them; old saves did not preserve those totals.
+`score` shows a compact total, while `achievements` shows dates and progress.
+See [Achievement System](achievements.md) for the full behavior.
 
 ## Equipment And Items
 

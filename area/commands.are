@@ -11,10 +11,10 @@ sleep wake rest stand
 
 OBJECTS                             INFORMATION
 get put drop give sacrifice         help credits commands areas socials
-wear wield hold                     report score time weather where who
+wear wield hold                     report score achievements time weather
 recite quaff zap brandish           color description password title
 lock unlock open close pick         gainlist teachlist
-inventory equipment look compare
+inventory equipment look compare    where who
 eat drink fill
 list buy sell value
 move climb flip push pull turn burn bomb feed play
@@ -1539,6 +1539,37 @@ If combine is on, typing combine again turns it off, showing you the long
 inventory again.  The default is for combine to be on.
 
 See also: INVENTORY, COMPACT, BRIEF
+~
+
+0 ACHIEVEMENT ACHIEVEMENTS~
+Syntax: achievements
+Syntax: achievements <category>
+Syntax: achievements earned
+Syntax: achievements incomplete
+Syntax: achievements all
+Syntax: achievements <word or phrase>
+
+ACHIEVEMENTS are permanent character accomplishments. They award achievement
+points, an earned date, and recognition to nearby players, but do not provide
+combat power. The summary shows your total points, category completion, and
+five most recent achievements.
+
+Categories are CHARACTER, COMBAT, QUESTS, EXPLORATION, and HYRULE. Category
+views show each requirement and your current progress. EARNED and INCOMPLETE
+filter the full catalog; ALL shows everything. You may also search by a title,
+description, or achievement key. An unearned hidden achievement conceals its
+title and requirements until you discover it.
+
+Level, remort, play-time, player-kill, current quest-streak, and currently
+owned Hyrule-item milestones are checked retroactively. Lifetime mobile-kill
+and completed-quest counters begin when the achievement system first records
+them because older player files did not retain those totals. Hyrule dungeon
+boss credit is shared with grouped players who are present in the boss room.
+
+Achievement progress and earned dates are saved with your character. Use
+SCORE for a compact points total.
+
+See also: SCORE, QUEST, GROUP, HYRULE
 ~
 
 0 COMMANDS~

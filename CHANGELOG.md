@@ -10,6 +10,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added a WoW-style permanent character achievement system with 43 cataloged
+  accomplishments, points, earned dates, categories, hidden discoveries,
+  progress views, nearby unlock announcements, retroactive state checks, and
+  save-compatible stable keys.
+- Added complete Hyrule achievement tracking for dungeon discovery, maps,
+  compasses, Triforce shards, signature items, all nine bosses, grouped boss
+  credit, Ganon, Princess Zelda, and campaign-wide meta achievements.
 - Added idempotent one-command installers and fresh-machine bootstraps for
   Windows, macOS, Debian/Ubuntu, and Raspberry Pi OS; installers now obtain
   prerequisites, generate private configuration, start Docker, build, launch,

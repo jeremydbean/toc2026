@@ -70,10 +70,10 @@ sleep wake rest stand
 
 OBJECTS                             INFORMATION
 get put drop give sacrifice         help credits commands areas socials
-wear wield hold                     report score time weather where who
+wear wield hold                     report score achievements time weather
 recite quaff zap brandish           color description password title
 lock unlock open close pick         gainlist teachlist
-inventory equipment look compare
+inventory equipment look compare    where who
 eat drink fill
 list buy sell value
 move climb flip push pull turn

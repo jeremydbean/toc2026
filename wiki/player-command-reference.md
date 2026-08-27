@@ -57,6 +57,7 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 |---|---|
 | `look`, `examine`, `read`, `listen` | Inspect the room, targets, text, or sound |
 | `score`, `attribute`, `affect` | Level, stats, resources, and active effects |
+| `achievements [view]` | Achievement points, earned dates, categories, and progress |
 | `equipment`, `inventory`, `worth` | Worn items, carried items, and money |
 | `consider <target>`, `danger` | Estimate nearby danger |
 | `compare ...`, `compare profile` | Analyze equipment and inferred playstyle |

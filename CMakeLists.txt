@@ -25,6 +25,7 @@ endif()
 
 # Explicitly list all source files to avoid globbing.
 set(SRC_FILES
+    src/achievements.c
     src/act_comm.c
     src/act_info.c
     src/act_move.c

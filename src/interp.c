@@ -121,6 +121,7 @@ const	struct	cmd_type	cmd_table	[] =
 	  /*
 	* Informational commands.
 	*/
+    { "achievements",	do_achievements,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "areas",		do_areas,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "bug",		do_bug,		POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "changes",	do_changes,	POS_DEAD,	 0,  LOG_NORMAL, 1 },

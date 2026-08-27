@@ -2260,6 +2260,27 @@ case CON_DEFAULT_CHOICE:
 	        login_payload.is_reconnect     = is_reconnect;
 	        script_event_emit( SCRIPT_EVENT_CHAR_LOGIN, &login_payload );
 	    }
+
+	    {
+		int earned_before = achievement_earned_count(ch);
+		int points_before = achievement_points(ch);
+		int earned_after;
+		int points_after;
+
+		achievement_check_state(ch, false);
+		earned_after = achievement_earned_count(ch);
+		points_after = achievement_points(ch);
+		if (earned_after > earned_before)
+		{
+		    snprintf(buf, sizeof(buf),
+			"\n\rYour existing progress unlocked {0F%d{00 achievement%s "
+			"worth {0D%d{00 points. Type {0FACHIEVEMENTS{00 to review them.\n\r",
+			earned_after - earned_before,
+			earned_after - earned_before == 1 ? "" : "s",
+			points_after - points_before);
+		    send_to_char(buf, ch);
+		}
+	    }
 	}
 	break;
     }

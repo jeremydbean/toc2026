@@ -121,6 +121,20 @@ inside that dungeon's generated vnum range and understands stair passages.
 Map values use opcode `90`; compass values use opcode `91`. Values 1-4 contain
 the boss vnum, first room, last room, and dungeon level.
 
+## Hyrule Achievements
+
+The permanent achievement catalog tracks arrival at screen `H1`, discovery of
+all nine dungeon entrances, all maps and compasses, all eight Triforce shards,
+the Master Sword, the Silver Arrow, the complete Triforce, each principal
+dungeon boss, Ganon, and reaching Princess Zelda. Finishing all nine boss
+achievements awards the `Hero of Hyrule` meta achievement.
+
+Boss credit is shared with grouped player characters present in the boss room.
+The final hit still controls ordinary lifetime-kill credit, but healers and
+support characters receive the dungeon achievement. Collection bits remain
+earned after an item leaves the inventory. See [Achievement System](achievements.md)
+for command syntax, migration rules, and save behavior.
+
 ## Overworld Secrets And Services
 
 The generated overworld includes the complete major First Quest service set:

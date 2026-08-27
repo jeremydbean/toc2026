@@ -1508,6 +1508,9 @@ void do_score( CHAR_DATA *ch, char *argument )
     char kader[MAX_STRING_LENGTH];
     int i = 0;
 
+    if (!IS_NPC(ch))
+        achievement_check_state(ch, true);
+
     snprintf(kader, sizeof(kader),"%60s\n\r",
     "--------------------------------------------------------------");
     send_to_char(kader, ch);
@@ -1595,6 +1598,15 @@ void do_score( CHAR_DATA *ch, char *argument )
              "Coins carried:",ch->new_platinum + ch->new_gold +
                               ch->new_silver + ch->new_copper);
     send_to_char(buf, ch);
+
+    if (!IS_NPC(ch))
+    {
+        snprintf(buf, sizeof(buf), "| %-11s %3d/%-3d | %-14s %18d |\n\r",
+            "Achievements:", achievement_earned_count(ch),
+            achievement_catalog_count(), "Achv points:",
+            achievement_points(ch));
+        send_to_char(buf, ch);
+    }
 
     snprintf(buf, sizeof(buf), "| %-11s %8d | %-14s %7d (%8d) |\n\r",
              "Wimpy Points:",ch->wimpy,
@@ -4752,5 +4764,6 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->new_silver = 50;
    */
 
+   achievement_check_state(ch, true);
    save_char_obj(ch);
 }

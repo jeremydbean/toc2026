@@ -497,6 +497,7 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
 	send_info(buf);
     log_string( buf );
     }
+    achievement_check_state(ch, true);
     return;
 }
 

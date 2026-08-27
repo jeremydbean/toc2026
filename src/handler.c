@@ -1283,6 +1283,8 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 	    ch->in_room->area->age = 0;
 	}
 	++ch->in_room->area->nplayer;
+	achievement_record_room(ch, pRoomIndex->vnum,
+	    ch->desc != NULL && ch->desc->connected == CON_PLAYING);
     }
 
     if ( ( obj = get_eq_char( ch, WEAR_LIGHT ) ) != NULL
@@ -1374,6 +1376,10 @@ void obj_to_char( OBJ_DATA *obj, CHAR_DATA *ch )
          }
        }
     }
+
+    if (!IS_NPC(ch) && obj->pIndexData != NULL)
+        achievement_record_object(ch, obj->pIndexData->vnum,
+            ch->desc != NULL && ch->desc->connected == CON_PLAYING);
 
 }
 

@@ -745,6 +745,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		ch->questobj = 0;
 		ch->questrush = false;
 		ch->queststreak++;
+		achievement_record_quest(ch);
                 add_money(ch,reward);
 		/* double-or-nothing gamble offer */
 		ch->questgamble_pts = (sh_int)(pointreward);
@@ -822,6 +823,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    ch->questobj = 0;
 		    ch->questrush = false;
 		    ch->queststreak++;
+		    achievement_record_quest(ch);
                     add_money(ch,reward);
 		    extract_obj(obj);
 		    /* double-or-nothing gamble offer */
