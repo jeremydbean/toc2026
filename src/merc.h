@@ -124,6 +124,21 @@ typedef enum
     SCRIPT_EVENT_AFTER_COMMAND
 } script_event_type;
 
+typedef enum
+{
+    ACHIEVEMENT_EVENT_BREW = 1,
+    ACHIEVEMENT_EVENT_CONCOCT,
+    ACHIEVEMENT_EVENT_SCRIBE,
+    ACHIEVEMENT_EVENT_FARSLAY_SCROLL,
+    ACHIEVEMENT_EVENT_DEATH_TRAP,
+    ACHIEVEMENT_EVENT_PUZZLE_TRAP,
+    ACHIEVEMENT_EVENT_DEATH_ITEM,
+    ACHIEVEMENT_EVENT_FARSLAYED,
+    ACHIEVEMENT_EVENT_FARSLAY_BACKFIRE,
+    ACHIEVEMENT_EVENT_FARSLAY_KILL,
+    ACHIEVEMENT_EVENT_DEATH_RAY
+} achievement_event_type;
+
 typedef void (*script_event_callback)( script_event_type type, void *payload, void *context );
 
 typedef struct script_timer_tick_payload
@@ -181,7 +196,7 @@ typedef struct script_loop_prepoll_payload
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
 #define MAX_HUNTERS             50
-#define MAX_ACHIEVEMENTS        64
+#define MAX_ACHIEVEMENTS        128
 #define MAX_LEVEL               70
 #define LEVEL_IMMORTAL          (MAX_LEVEL - 10)
 #define LEVEL_KING              (MAX_LEVEL - 11)
@@ -1601,6 +1616,7 @@ struct  pc_data
     time_t              achievement_earned[MAX_ACHIEVEMENTS];
     long                achievement_mob_kills;
     long                achievement_quests_completed;
+    long                achievement_deaths;
     unsigned long       achievement_hyrule_dungeons;
     unsigned long       achievement_hyrule_maps;
     unsigned long       achievement_hyrule_compasses;
@@ -2149,6 +2165,9 @@ void    set_title       ( CHAR_DATA *ch, char *title );
 void    achievement_check_state ( CHAR_DATA *ch, bool announce );
 void    achievement_record_kill ( CHAR_DATA *killer, CHAR_DATA *victim );
 void    achievement_record_quest ( CHAR_DATA *ch );
+void    achievement_record_death ( CHAR_DATA *ch );
+void    achievement_record_event ( CHAR_DATA *ch, achievement_event_type event,
+                                    bool announce );
 void    achievement_record_room ( CHAR_DATA *ch, int room_vnum, bool announce );
 void    achievement_record_object ( CHAR_DATA *ch, int object_vnum, bool announce );
 void    achievement_write_char ( CHAR_DATA *ch, FILE *fp );

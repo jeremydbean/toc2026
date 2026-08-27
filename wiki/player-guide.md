@@ -296,20 +296,24 @@ equipment power. Start with:
 achievements
 achievements character
 achievements incomplete
+achievements encounters
+achievements collection
 achievements hyrule
 ```
 
-The catalog covers character levels and remorts, play time, mobile and player
-kills, quest completions and streaks, exploration, and the full Hyrule
-campaign. Hidden achievements show neither title nor requirement until earned.
-Dungeon-boss credit in Hyrule is shared with grouped players present in the
-boss room, so healers and support characters do not need the final hit.
+The 105-entry catalog covers character levels and remorts, play time, mobile
+and player kills, named world bosses, rare relics, crafting, unusual deaths,
+quest completions and streaks, exploration, and the full Hyrule campaign.
+Hidden achievements show neither title nor requirement until earned. Credit
+for every listed boss is shared with grouped players present in the boss room,
+so healers and support characters do not need the final hit.
 
 Existing characters receive credit for facts the old save format already
 knows: level, remorts, play time, qualifying player kills, current quest
-streak, and qualifying Hyrule items still carried, including items inside
-containers. Lifetime mobile-kill and quest-completion totals start when the
-new system begins recording them; old saves did not preserve those totals.
+streak, and qualifying rare or Hyrule items still carried, including items
+inside containers. Lifetime mobile-kill, quest-completion, and all-cause death
+totals start when the new system begins recording them; old saves did not
+preserve those totals.
 `score` shows a compact total, while `achievements` shows dates and progress.
 See [Achievement System](achievements.md) for the full behavior.
 

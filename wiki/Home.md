@@ -13,8 +13,8 @@ objects.
   aliases, transcripts, mobile controls, and embedded administration
 - [Player Command Reference](player-command-reference.md) - commands grouped by
   purpose with important syntax and restrictions
-- [Achievement System](achievements.md) - points, categories, progress,
-  hidden achievements, retroactive credit, and Hyrule completion
+- [Achievement System](achievements.md) - 105 accomplishments covering points,
+  levels, bosses, relics, crafting, unusual deaths, and Hyrule completion
 - [Advanced Gear Comparison](gear-comparison.md) - `compare` focuses,
   percentages, profile inference, modeled stats, and limitations
 - [Hyrule: First Quest](hyrule-area.md) - entry/exit, level bands, overworld,

@@ -2633,6 +2633,7 @@ void do_brew( CHAR_DATA *ch, char *argument )
    check_improve(ch,gsn_brew,true,5);
    extract_obj( pObj );
    obj_to_char(tea, ch);
+   achievement_record_event(ch, ACHIEVEMENT_EVENT_BREW, true);
    return;
 
 }
@@ -2889,6 +2890,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      if(slot_three > 0)
 	potion->value[3] = slot_three;
      obj_to_char(potion,ch);
+     achievement_record_event(ch, ACHIEVEMENT_EVENT_CONCOCT, true);
    }
    else
    {
@@ -2914,6 +2916,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
    char arg3[MAX_INPUT_LENGTH];
    char buf[MAX_STRING_LENGTH];
    bool found = false;
+   bool farslay_scroll = false;
 
    if(IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
       return;
@@ -3043,7 +3046,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
       && pObj_three->pIndexData->vnum == 88)
       {
         scroll = create_object(get_obj_index(90), ch->level);
-        spell_one = skill_lookup("csst");
+        spell_one = skill_lookup("vengence");
         free_string( scroll->short_descr );
         snprintf(buf, sizeof buf,"a deadly black scroll");
         scroll->short_descr = str_dup( buf );
@@ -3051,6 +3054,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
         snprintf(buf, sizeof buf,"deadly black scroll");
         scroll->name = str_dup( buf );
         found = true;
+        farslay_scroll = true;
         snprintf(buf, sizeof buf,"Vengence may soon fall upon you from %s!", ch->name);
         log_string(buf);
         wizinfo(buf,LEVEL_IMMORTAL);
@@ -3094,6 +3098,9 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      if(spell_three > 0)
        scroll->value[3] = spell_three;
      obj_to_char(scroll,ch);
+     achievement_record_event(ch, ACHIEVEMENT_EVENT_SCRIBE, true);
+     if (farslay_scroll)
+       achievement_record_event(ch, ACHIEVEMENT_EVENT_FARSLAY_SCROLL, true);
    }
    else
    {
@@ -3215,6 +3222,11 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     log_string(buf);
     SET_BIT(ch->act, PLR_WANTED);
     send_to_char("You are now WANTED!!\n\r",ch);
+    if (!IS_NPC(victim))
+    {
+      achievement_record_event(victim, ACHIEVEMENT_EVENT_FARSLAYED, true);
+      achievement_record_event(ch, ACHIEVEMENT_EVENT_FARSLAY_KILL, true);
+    }
     raw_kill(ch,victim);
     }
     else
@@ -3229,6 +3241,7 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     snprintf(buf, sizeof buf,"%s got hit by their own farslay *tee-hee*",ch->name);
     wizinfo(buf,LEVEL_IMMORTAL);
     log_string(buf);
+    achievement_record_event(ch, ACHIEVEMENT_EVENT_FARSLAY_BACKFIRE, true);
     raw_kill(ch,ch);
     }
 
@@ -4921,6 +4934,7 @@ void spell_death_ray( int sn, int level, CHAR_DATA *ch, void *vo )
     act("A sickly ray of green light flys from $n's hand and strikes $N!",
 	 ch,NULL,victim,TO_ROOM);
     act("$n screams and dies!",victim,NULL,NULL,TO_ROOM);
+    achievement_record_event(victim, ACHIEVEMENT_EVENT_DEATH_RAY, true);
     raw_kill(ch,victim);
     return;
 }

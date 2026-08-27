@@ -1628,6 +1628,8 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 		return;  /* obj freed; skip do_obj_action below */
 	    case 2:
 		/* raw_kill disposes obj via make_corpse; don't extract again */
+		achievement_record_event(ch,
+		    ACHIEVEMENT_EVENT_DEATH_ITEM, true);
 		raw_kill(ch,ch);
 		return;  /* ch and obj may be freed; skip do_obj_action below */
 	    case 3:

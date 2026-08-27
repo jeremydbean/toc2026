@@ -45,9 +45,10 @@ documentation.
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.
-- A permanent 43-achievement progression system with points, earned dates,
+- A permanent 105-achievement progression system with points, earned dates,
   hidden discoveries, live progress, retroactive milestones, group boss credit,
-  and complete Hyrule dungeon, map, compass, shard, and boss tracking.
+  world bosses, rare relics, crafting, unusual deaths, and complete Hyrule
+  dungeon, map, compass, shard, and boss tracking.
 - A FastAPI dashboard for world browsing, area health, maps, player inspection,
   logs, backups, server commands, and a browser-to-MUD WebSocket bridge.
 - Automated player snapshots, scheduled archive backups, diagnostics, native

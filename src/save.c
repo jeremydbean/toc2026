@@ -1334,6 +1334,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'A':
 	    KEY( "AchKills", ch->pcdata->achievement_mob_kills, fread_long( fp ) );
 	    KEY( "AchQuests", ch->pcdata->achievement_quests_completed, fread_long( fp ) );
+	    KEY( "AchDeaths", ch->pcdata->achievement_deaths, fread_long( fp ) );
 	    KEY( "AchExplore", ch->pcdata->achievement_hyrule_dungeons,
 		 fread_long( fp ) );
 	    KEY( "AchMaps", ch->pcdata->achievement_hyrule_maps, fread_long( fp ) );

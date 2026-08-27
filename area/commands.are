@@ -1554,16 +1554,17 @@ points, an earned date, and recognition to nearby players, but do not provide
 combat power. The summary shows your total points, category completion, and
 five most recent achievements.
 
-Categories are CHARACTER, COMBAT, QUESTS, EXPLORATION, and HYRULE. Category
-views show each requirement and your current progress. EARNED and INCOMPLETE
-filter the full catalog; ALL shows everything. You may also search by a title,
-description, or achievement key. An unearned hidden achievement conceals its
-title and requirements until you discover it.
+Categories are CHARACTER, COMBAT, ENCOUNTERS, QUESTS, EXPLORATION, COLLECTION,
+CRAFTING, MISADVENTURE, and HYRULE. Category views show each requirement and
+your current progress. EARNED and INCOMPLETE filter the full catalog; ALL shows
+everything. You may also search by a title, description, or achievement key.
+An unearned hidden achievement conceals its title and requirements until you
+discover it.
 
 Level, remort, play-time, player-kill, current quest-streak, and currently
-owned Hyrule-item milestones are checked retroactively. Lifetime mobile-kill
-and completed-quest counters begin when the achievement system first records
-them because older player files did not retain those totals. Hyrule dungeon
+owned collection-item milestones are checked retroactively. Lifetime mobile
+kills, completed quests, and deaths begin when the achievement system first
+records them because older player files did not retain those totals. Listed
 boss credit is shared with grouped players who are present in the boss room.
 
 Achievement progress and earned dates are saved with your character. Use

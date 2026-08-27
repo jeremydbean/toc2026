@@ -4283,6 +4283,8 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 		ch, NULL, gch, TO_VICT );
 	    send_to_char("You have been KILLED!\n\r",gch);
 	    act("$n has been KILLED!",gch,NULL,NULL,TO_ROOM);
+	    achievement_record_event(gch,
+	        ACHIEVEMENT_EVENT_PUZZLE_TRAP, true);
 	    raw_kill(gch, gch);
 	  }
        }
@@ -4297,6 +4299,7 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 		ch, NULL, NULL, TO_CHAR);
 	send_to_char("Obviously you don't pay attention to warnings.\n\r",ch);
 	send_to_char("You have been KILLED!\n\r",ch);
+	achievement_record_event(ch, ACHIEVEMENT_EVENT_PUZZLE_TRAP, true);
 	raw_kill(ch, ch);
      break;
    }

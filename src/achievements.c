@@ -13,8 +13,12 @@ typedef enum
 {
     ACH_CAT_CHARACTER = 0,
     ACH_CAT_COMBAT,
+    ACH_CAT_ENCOUNTERS,
     ACH_CAT_QUESTS,
     ACH_CAT_EXPLORATION,
+    ACH_CAT_COLLECTION,
+    ACH_CAT_CRAFTING,
+    ACH_CAT_MISADVENTURE,
     ACH_CAT_HYRULE,
     ACH_CAT_COUNT
 } ACHIEVEMENT_CATEGORY;
@@ -28,15 +32,21 @@ typedef enum
     ACH_REQ_PKILLS,
     ACH_REQ_QUESTS,
     ACH_REQ_QUEST_STREAK,
+    ACH_REQ_DEATHS,
     ACH_REQ_ROOM,
     ACH_REQ_OBJECT,
+    ACH_REQ_EVENT,
     ACH_REQ_HYRULE_DUNGEONS,
     ACH_REQ_HYRULE_MAPS,
     ACH_REQ_HYRULE_COMPASSES,
     ACH_REQ_HYRULE_KIT,
     ACH_REQ_TRIFORCE_SHARDS,
     ACH_REQ_BOSS,
-    ACH_REQ_HYRULE_BOSSES
+    ACH_REQ_HYRULE_BOSSES,
+    ACH_REQ_WORLD_BOSSES,
+    ACH_REQ_RARE_ITEMS,
+    ACH_REQ_CRAFTING_FEATS,
+    ACH_REQ_MISADVENTURES
 } ACHIEVEMENT_REQUIREMENT;
 
 typedef struct achievement_definition
@@ -56,8 +66,12 @@ static const char *const achievement_category_names[ACH_CAT_COUNT] =
 {
     "Character",
     "Combat",
+    "Encounters",
     "Quests",
     "Exploration",
+    "Collection",
+    "Crafting",
+    "Misadventure",
     "Hyrule"
 };
 
@@ -69,9 +83,16 @@ static const int hyrule_dungeon_entrances[9] =
 
 static const ACHIEVEMENT_DEFINITION achievement_table[] =
 {
+    { "level-5", "Out of the Nest", "Reach level 5.", ACH_CAT_CHARACTER, 5, false, ACH_REQ_LEVEL, 5, 0 },
     { "level-10", "Finding Your Feet", "Reach level 10.", ACH_CAT_CHARACTER, 5, false, ACH_REQ_LEVEL, 10, 0 },
+    { "level-15", "Road Tested", "Reach level 15.", ACH_CAT_CHARACTER, 5, false, ACH_REQ_LEVEL, 15, 0 },
+    { "level-20", "Coming Into Your Own", "Reach level 20.", ACH_CAT_CHARACTER, 5, false, ACH_REQ_LEVEL, 20, 0 },
     { "level-25", "Seasoned Adventurer", "Reach level 25.", ACH_CAT_CHARACTER, 10, false, ACH_REQ_LEVEL, 25, 0 },
+    { "level-30", "Halfway to Immortality", "Reach level 30.", ACH_CAT_CHARACTER, 10, false, ACH_REQ_LEVEL, 30, 0 },
+    { "level-40", "Veteran of Chaos", "Reach level 40.", ACH_CAT_CHARACTER, 15, false, ACH_REQ_LEVEL, 40, 0 },
     { "level-50", "A Hero Rises", "Reach level 50.", ACH_CAT_CHARACTER, 20, false, ACH_REQ_LEVEL, 50, 0 },
+    { "level-55", "Beyond Heroic", "Reach level 55.", ACH_CAT_CHARACTER, 25, false, ACH_REQ_LEVEL, 55, 0 },
+    { "level-58", "One Step from the Summit", "Reach level 58.", ACH_CAT_CHARACTER, 35, false, ACH_REQ_LEVEL, 58, 0 },
     { "level-59", "Pinnacle of Mortal Power", "Reach level 59.", ACH_CAT_CHARACTER, 40, false, ACH_REQ_LEVEL, 59, 0 },
     { "first-remort", "Begin Again", "Complete your first remort.", ACH_CAT_CHARACTER, 15, false, ACH_REQ_REMORTS, 1, 0 },
     { "five-remorts", "Five Lives, One Legend", "Complete five remorts.", ACH_CAT_CHARACTER, 50, false, ACH_REQ_REMORTS, 5, 0 },
@@ -85,6 +106,27 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "first-pkill", "A Worthy Opponent", "Earn your first qualifying player kill.", ACH_CAT_COMBAT, 10, false, ACH_REQ_PKILLS, 1, 0 },
     { "twenty-five-pkills", "Battle Tested", "Earn 25 qualifying player kills.", ACH_CAT_COMBAT, 30, false, ACH_REQ_PKILLS, 25, 0 },
     { "hundred-pkills", "Nemesis", "Earn 100 qualifying player kills.", ACH_CAT_COMBAT, 60, false, ACH_REQ_PKILLS, 100, 0 },
+    { "farslay-kill", "Death from Afar", "Farslay another player without suffering the rite's backlash.", ACH_CAT_COMBAT, 25, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FARSLAY_KILL, 0 },
+
+    { "boss-tarrasque", "The World Still Stands", "Defeat the Tarrasque in the Forsaken Lands.", ACH_CAT_ENCOUNTERS, 75, false, ACH_REQ_BOSS, 15475, 15480 },
+    { "boss-borg", "Resistance Was Not Futile", "Defeat the Borg at the end of the World.", ACH_CAT_ENCOUNTERS, 75, false, ACH_REQ_BOSS, 29410, 29498 },
+    { "boss-korzath", "Cause and Effect", "Defeat Korzath in his throne room.", ACH_CAT_ENCOUNTERS, 75, false, ACH_REQ_BOSS, 29229, 29321 },
+    { "boss-master-guardian", "No Master Above Me", "Defeat the Master Guardian beside Korzath.", ACH_CAT_ENCOUNTERS, 75, false, ACH_REQ_BOSS, 29228, 29321 },
+    { "boss-white-light", "Into the Light", "Defeat the brilliant white light deep in the Crypt.", ACH_CAT_ENCOUNTERS, 60, false, ACH_REQ_BOSS, 24216, 24257 },
+    { "boss-smaug", "There and Back Again", "Defeat Smaug beneath the Lonely Mountain.", ACH_CAT_ENCOUNTERS, 50, false, ACH_REQ_BOSS, 25001, 25022 },
+    { "boss-minotaur-god", "No Thread Required", "Defeat the minotaur god in Tarin.", ACH_CAT_ENCOUNTERS, 50, false, ACH_REQ_BOSS, 5616, 5687 },
+    { "boss-zeus", "Storm Warning", "Defeat Zeus on Mount Olympus.", ACH_CAT_ENCOUNTERS, 45, false, ACH_REQ_BOSS, 901, 910 },
+    { "boss-odin", "Allfather, All Fallen", "Defeat Odin in Valhalla.", ACH_CAT_ENCOUNTERS, 45, false, ACH_REQ_BOSS, 914, 929 },
+    { "boss-ra", "Sunset", "Defeat Ra the Sun God on Mount Olympus.", ACH_CAT_ENCOUNTERS, 45, false, ACH_REQ_BOSS, 919, 931 },
+    { "boss-dagahze", "Dawn Goes Dark", "Defeat Dagahze of Lathander in Tritia.", ACH_CAT_ENCOUNTERS, 50, false, ACH_REQ_BOSS, 10204, 10270 },
+    { "boss-lolth", "Web Cut", "Defeat Lolth in the Drow stronghold.", ACH_CAT_ENCOUNTERS, 45, false, ACH_REQ_BOSS, 5112, 5151 },
+    { "boss-eilistraee", "Last Dance", "Defeat Eilistraee beneath the Mushroom Kingdom.", ACH_CAT_ENCOUNTERS, 50, false, ACH_REQ_BOSS, 25209, 25265 },
+    { "boss-dracolich", "Dust to Dust", "Defeat the Dracolich in Azeroth.", ACH_CAT_ENCOUNTERS, 45, false, ACH_REQ_BOSS, 28124, 28127 },
+    { "boss-ashen-herald", "Silence the Herald", "Defeat the Ashen Herald in the Ashen Wastes.", ACH_CAT_ENCOUNTERS, 50, false, ACH_REQ_BOSS, 26719, 26709 },
+    { "boss-lord-british", "Regicide in Britannia", "Defeat Lord British in Ultima.", ACH_CAT_ENCOUNTERS, 50, false, ACH_REQ_BOSS, 7664, 7767 },
+    { "boss-lanatir", "Icebreaker", "Defeat Lanatir in the Ice Keep.", ACH_CAT_ENCOUNTERS, 40, false, ACH_REQ_BOSS, 18002, 18073 },
+    { "five-world-bosses", "Boss Hunter", "Defeat five listed world bosses.", ACH_CAT_ENCOUNTERS, 100, false, ACH_REQ_WORLD_BOSSES, 5, 0 },
+    { "all-world-bosses", "Conqueror of Chaos", "Defeat every listed world boss.", ACH_CAT_ENCOUNTERS, 200, false, ACH_REQ_WORLD_BOSSES, 17, 0 },
 
     { "first-quest", "Answering the Call", "Complete your first quest.", ACH_CAT_QUESTS, 5, false, ACH_REQ_QUESTS, 1, 0 },
     { "ten-quests", "Reliable Help", "Complete 10 quests.", ACH_CAT_QUESTS, 10, false, ACH_REQ_QUESTS, 10, 0 },
@@ -96,6 +138,44 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
 
     { "hyrule-arrival", "A Hero Awakens", "Be teleported into the First Quest entrance of Hyrule.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 30200, 0 },
     { "hyrule-cartographer", "Across Hyrule", "Discover the entrance to all nine Hyrule dungeons.", ACH_CAT_EXPLORATION, 30, false, ACH_REQ_HYRULE_DUNGEONS, 9, 0 },
+
+    { "relic-power-of-world", "The World in Your Hands", "Acquire the Power of the world from the Crypt.", ACH_CAT_COLLECTION, 50, false, ACH_REQ_OBJECT, 24225, 0 },
+    { "relic-lifetaker", "Take a Life, Leave a Legacy", "Acquire the Satanic Lifetaker.", ACH_CAT_COLLECTION, 50, false, ACH_REQ_OBJECT, 29246, 0 },
+    { "relic-starlight-sword", "Starlight, Star Bright", "Acquire Korzath's Starlight Sword.", ACH_CAT_COLLECTION, 50, false, ACH_REQ_OBJECT, 29250, 0 },
+    { "relic-minotaur-claws", "By the Horns", "Acquire the claws of the minotaur god.", ACH_CAT_COLLECTION, 35, false, ACH_REQ_OBJECT, 5619, 0 },
+    { "relic-aegis", "Under the Aegis", "Acquire the Aegis of Zeus.", ACH_CAT_COLLECTION, 35, false, ACH_REQ_OBJECT, 900, 0 },
+    { "relic-thunder-bolt", "Lightning in a Bottle", "Acquire the Thunder Bolt of Zeus.", ACH_CAT_COLLECTION, 35, false, ACH_REQ_OBJECT, 901, 0 },
+    { "relic-amulet-of-ra", "Eye of the Sun", "Acquire the Amulet of Ra.", ACH_CAT_COLLECTION, 35, false, ACH_REQ_OBJECT, 922, 0 },
+    { "relic-sword-of-sun", "Daybreak", "Acquire the Sword of the Sun.", ACH_CAT_COLLECTION, 35, false, ACH_REQ_OBJECT, 923, 0 },
+    { "relic-elfbane", "A Pointed Argument", "Acquire Elfbane from Lolth.", ACH_CAT_COLLECTION, 35, false, ACH_REQ_OBJECT, 5116, 0 },
+    { "relic-lanatir-sphere", "Cold Comfort", "Acquire the Sphere of Lanatir.", ACH_CAT_COLLECTION, 30, false, ACH_REQ_OBJECT, 18008, 0 },
+    { "relic-hammer-of-wrath", "Wrath Made Solid", "Acquire Lanatir's Hammer of Wrath.", ACH_CAT_COLLECTION, 35, false, ACH_REQ_OBJECT, 18010, 0 },
+    { "relic-angels-heart", "Heart of an Angel", "Acquire an Angel's Heart from the Dracolich.", ACH_CAT_COLLECTION, 35, false, ACH_REQ_OBJECT, 28112, 0 },
+    { "relic-british-crown", "Heavy Is the Head", "Acquire Lord British's crown.", ACH_CAT_COLLECTION, 40, false, ACH_REQ_OBJECT, 7664, 0 },
+    { "relic-british-sceptre", "By Royal Decree", "Acquire Lord British's sceptre.", ACH_CAT_COLLECTION, 40, false, ACH_REQ_OBJECT, 7665, 0 },
+    { "relic-british-amulet", "Royal Appointment", "Acquire Lord British's amulet.", ACH_CAT_COLLECTION, 40, false, ACH_REQ_OBJECT, 7666, 0 },
+    { "relic-farslayer", "The Howl Before the Storm", "Acquire the black-hilted sword Farslayer.", ACH_CAT_COLLECTION, 40, false, ACH_REQ_OBJECT, 13404, 0 },
+    { "relic-farslay-scroll", "Vengeance, Sealed", "Acquire a quest-master Scroll of Farslay.", ACH_CAT_COLLECTION, 25, false, ACH_REQ_OBJECT, 20305, 0 },
+    { "five-rare-items", "Curio Collector", "Acquire five listed rare relics.", ACH_CAT_COLLECTION, 40, false, ACH_REQ_RARE_ITEMS, 5, 0 },
+    { "ten-rare-items", "Relic Hunter", "Acquire ten listed rare relics.", ACH_CAT_COLLECTION, 100, false, ACH_REQ_RARE_ITEMS, 10, 0 },
+    { "all-rare-items", "Museum of Chaos", "Acquire every listed rare relic.", ACH_CAT_COLLECTION, 200, false, ACH_REQ_RARE_ITEMS, 17, 0 },
+
+    { "first-brew", "Steep Learning Curve", "Successfully brew an herbal tea.", ACH_CAT_CRAFTING, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_BREW, 0 },
+    { "first-concoction", "Something Is Bubbling", "Successfully concoct a potion.", ACH_CAT_CRAFTING, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_CONCOCT, 0 },
+    { "first-scroll", "First Draft", "Successfully scribe a scroll.", ACH_CAT_CRAFTING, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_SCRIBE, 0 },
+    { "scribe-farslay-scroll", "Ink Blacker Than Night", "Successfully scribe a deadly black Farslay scroll.", ACH_CAT_CRAFTING, 50, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FARSLAY_SCROLL, 0 },
+    { "master-artisan", "Artisan of Chaos", "Complete every listed crafting feat.", ACH_CAT_CRAFTING, 75, false, ACH_REQ_CRAFTING_FEATS, 4, 0 },
+
+    { "first-death", "Not Quite Immortal", "Suffer your first true death.", ACH_CAT_MISADVENTURE, 5, false, ACH_REQ_DEATHS, 1, 0 },
+    { "ten-deaths", "Frequent Visitor", "Suffer ten true deaths.", ACH_CAT_MISADVENTURE, 15, false, ACH_REQ_DEATHS, 10, 0 },
+    { "hundred-deaths", "Death Knows Your Name", "Suffer one hundred true deaths.", ACH_CAT_MISADVENTURE, 40, false, ACH_REQ_DEATHS, 100, 0 },
+    { "death-by-deathtrap", "Mind the Step", "Die in a room marked as a death trap.", ACH_CAT_MISADVENTURE, 15, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DEATH_TRAP, 0 },
+    { "death-by-puzzle-trap", "Read the Warning", "Die when a room-wide puzzle trap is triggered.", ACH_CAT_MISADVENTURE, 15, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_PUZZLE_TRAP, 0 },
+    { "death-by-item", "Do Not Touch", "Die by activating a lethal action item.", ACH_CAT_MISADVENTURE, 15, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DEATH_ITEM, 0 },
+    { "death-by-farslay", "Long-Distance Relationship", "Be killed by another player's Farslay rite.", ACH_CAT_MISADVENTURE, 25, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FARSLAYED, 0 },
+    { "death-by-farslay-backfire", "Return to Sender", "Die when your own Farslay rite turns against you.", ACH_CAT_MISADVENTURE, 30, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FARSLAY_BACKFIRE, 0 },
+    { "death-by-death-ray", "A Sickly Shade of Green", "Die to a death ray.", ACH_CAT_MISADVENTURE, 20, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DEATH_RAY, 0 },
+    { "all-misadventures", "Death Becomes You", "Experience every listed unusual death.", ACH_CAT_MISADVENTURE, 75, true, ACH_REQ_MISADVENTURES, 6, 0 },
 
     { "master-sword", "The Blade of Evil's Bane", "Claim the Master Sword.", ACH_CAT_HYRULE, 20, false, ACH_REQ_OBJECT, 30200, 0 },
     { "silver-arrow", "A Cold Glint of Silver", "Claim the Silver Arrow hidden in Death Mountain.", ACH_CAT_HYRULE, 20, false, ACH_REQ_OBJECT, 30218, 0 },
@@ -225,7 +305,9 @@ static long achievement_played_seconds(const CHAR_DATA *ch)
     return UMAX(0, played);
 }
 
-static int achievement_hyrule_boss_count(const CHAR_DATA *ch)
+static int achievement_earned_requirement_count(
+    const CHAR_DATA *ch, ACHIEVEMENT_CATEGORY category,
+    ACHIEVEMENT_REQUIREMENT requirement)
 {
     int count = 0;
     int index;
@@ -235,8 +317,8 @@ static int achievement_hyrule_boss_count(const CHAR_DATA *ch)
 
     for (index = 0; index < achievement_table_count(); index++)
     {
-        if (achievement_table[index].requirement == ACH_REQ_BOSS
-            && achievement_table[index].category == ACH_CAT_HYRULE
+        if (achievement_table[index].requirement == requirement
+            && achievement_table[index].category == category
             && ch->pcdata->achievement_earned[index] != 0)
             count++;
     }
@@ -273,6 +355,8 @@ static long achievement_progress(const CHAR_DATA *ch, int index)
             return ch->pcdata->achievement_quests_completed;
         case ACH_REQ_QUEST_STREAK:
             return ch->queststreak;
+        case ACH_REQ_DEATHS:
+            return ch->pcdata->achievement_deaths;
         case ACH_REQ_OBJECT:
             return achievement_has_object(ch, (int)definition->target) ? 1 : 0;
         case ACH_REQ_HYRULE_DUNGEONS:
@@ -287,9 +371,23 @@ static long achievement_progress(const CHAR_DATA *ch, int index)
         case ACH_REQ_TRIFORCE_SHARDS:
             return achievement_bit_count(ch->pcdata->achievement_triforce_shards);
         case ACH_REQ_HYRULE_BOSSES:
-            return achievement_hyrule_boss_count(ch);
+            return achievement_earned_requirement_count(ch, ACH_CAT_HYRULE,
+                ACH_REQ_BOSS);
+        case ACH_REQ_WORLD_BOSSES:
+            return achievement_earned_requirement_count(ch, ACH_CAT_ENCOUNTERS,
+                ACH_REQ_BOSS);
+        case ACH_REQ_RARE_ITEMS:
+            return achievement_earned_requirement_count(ch, ACH_CAT_COLLECTION,
+                ACH_REQ_OBJECT);
+        case ACH_REQ_CRAFTING_FEATS:
+            return achievement_earned_requirement_count(ch, ACH_CAT_CRAFTING,
+                ACH_REQ_EVENT);
+        case ACH_REQ_MISADVENTURES:
+            return achievement_earned_requirement_count(ch,
+                ACH_CAT_MISADVENTURE, ACH_REQ_EVENT);
         case ACH_REQ_ROOM:
         case ACH_REQ_BOSS:
+        case ACH_REQ_EVENT:
             return 0;
     }
 
@@ -308,7 +406,8 @@ static bool achievement_requirement_met(const CHAR_DATA *ch, int index)
     if (definition->requirement == ACH_REQ_OBJECT)
         return achievement_progress(ch, index) > 0;
     if (definition->requirement == ACH_REQ_ROOM
-        || definition->requirement == ACH_REQ_BOSS)
+        || definition->requirement == ACH_REQ_BOSS
+        || definition->requirement == ACH_REQ_EVENT)
         return false;
 
     return achievement_progress(ch, index) >= definition->target;
@@ -439,6 +538,8 @@ void achievement_check_state(CHAR_DATA *ch, bool announce)
         ch->pcdata->achievement_mob_kills = 0;
     if (ch->pcdata->achievement_quests_completed < 0)
         ch->pcdata->achievement_quests_completed = 0;
+    if (ch->pcdata->achievement_deaths < 0)
+        ch->pcdata->achievement_deaths = 0;
     ch->pcdata->achievement_hyrule_dungeons &= HYRULE_DUNGEON_MASK;
     ch->pcdata->achievement_hyrule_maps &= HYRULE_DUNGEON_MASK;
     ch->pcdata->achievement_hyrule_compasses &= HYRULE_DUNGEON_MASK;
@@ -455,7 +556,8 @@ void achievement_check_state(CHAR_DATA *ch, bool announce)
             if (ch->pcdata->achievement_earned[index] != 0)
                 continue;
             if (definition->requirement == ACH_REQ_ROOM
-                || definition->requirement == ACH_REQ_BOSS)
+                || definition->requirement == ACH_REQ_BOSS
+                || definition->requirement == ACH_REQ_EVENT)
                 continue;
             if (achievement_requirement_met(ch, index))
             {
@@ -536,6 +638,39 @@ void achievement_record_quest(CHAR_DATA *ch)
     achievement_check_requirement_type(ch, ACH_REQ_QUEST_STREAK, true);
 }
 
+void achievement_record_death(CHAR_DATA *ch)
+{
+    if (!achievement_is_player(ch))
+        return;
+
+    if (ch->pcdata->achievement_deaths < LONG_MAX)
+        ch->pcdata->achievement_deaths++;
+    achievement_check_requirement_type(ch, ACH_REQ_DEATHS, true);
+}
+
+void achievement_record_event(CHAR_DATA *ch, achievement_event_type event,
+                              bool announce)
+{
+    bool changed = false;
+    int index;
+
+    if (!achievement_is_player(ch))
+        return;
+
+    for (index = 0; index < achievement_table_count(); index++)
+    {
+        if (achievement_table[index].requirement != ACH_REQ_EVENT
+            || achievement_table[index].target != (long)event)
+            continue;
+
+        if (achievement_unlock(ch, index, announce))
+            changed = true;
+    }
+
+    if (changed)
+        achievement_check_state(ch, announce);
+}
+
 void achievement_record_room(CHAR_DATA *ch, int room_vnum, bool announce)
 {
     int index;
@@ -610,6 +745,7 @@ void achievement_write_char(CHAR_DATA *ch, FILE *fp)
 
     fprintf(fp, "AchKills %ld\n", ch->pcdata->achievement_mob_kills);
     fprintf(fp, "AchQuests %ld\n", ch->pcdata->achievement_quests_completed);
+    fprintf(fp, "AchDeaths %ld\n", ch->pcdata->achievement_deaths);
     fprintf(fp, "AchExplore %lu\n", ch->pcdata->achievement_hyrule_dungeons);
     fprintf(fp, "AchMaps %lu\n", ch->pcdata->achievement_hyrule_maps);
     fprintf(fp, "AchCompass %lu\n", ch->pcdata->achievement_hyrule_compasses);
@@ -699,7 +835,8 @@ static void achievement_append_entry(char *output, size_t size,
     target = definition->target;
     if (definition->requirement == ACH_REQ_OBJECT
         || definition->requirement == ACH_REQ_ROOM
-        || definition->requirement == ACH_REQ_BOSS)
+        || definition->requirement == ACH_REQ_BOSS
+        || definition->requirement == ACH_REQ_EVENT)
         target = 1;
     else if (definition->requirement == ACH_REQ_PLAYED)
     {
@@ -826,7 +963,8 @@ static void achievement_show_summary(CHAR_DATA *ch)
     toc_strlcat(output,
         "\n\rUse {0FACHIEVEMENTS <category>{00, {0FEARNED{00, "
         "{0FINCOMPLETE{00, or {0FALL{00.\n\r"
-        "Categories: Character, Combat, Quests, Exploration, Hyrule.\n\r",
+        "Categories: Character, Combat, Encounters, Quests, Exploration,\n\r"
+        "Collection, Crafting, Misadventure, Hyrule.\n\r",
         sizeof(output));
     page_to_char(output, ch);
 }

@@ -281,7 +281,7 @@ native and Python area totals are expected to use different counting models.
 | `tests/test_area_health.py` | Parser/health issue detection and severity behavior |
 | `tests/test_webadmin_api.py` | API authentication, queueing, reload, parsing, and limits |
 | `tests/test_hyrule_progression.py` | Generated Hyrule topology, progression, bosses, items, and routes |
-| `tests/test_achievements.py` | Catalog stability, event hooks, save fields, and Hyrule boss mappings |
+| `tests/test_achievements.py` | Catalog stability, persistence, event hooks, world/Hyrule boss-room contracts, rare-item vnums, and Farslay crafting |
 
 Add focused regression tests for fixed bugs. Expand to integration/smoke testing
 when a change crosses C/Python, parser/runtime, persistence, or world boundaries.

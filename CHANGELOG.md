@@ -10,10 +10,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- Added a WoW-style permanent character achievement system with 43 cataloged
-  accomplishments, points, earned dates, categories, hidden discoveries,
+- Added a WoW-style permanent character achievement system with 105 cataloged
+  accomplishments, points, earned dates, nine categories, hidden discoveries,
   progress views, nearby unlock announcements, retroactive state checks, and
   save-compatible stable keys.
+- Added verified world-boss, rare-relic, crafting, unusual-death, Farslay, and
+  expanded level achievements, including group boss credit and collection,
+  crafting, encounter, and misadventure meta achievements.
+- Fixed the player-scribed deadly black Farslay scroll recipe so it contains
+  the Vengence spell instead of an invalid legacy skill name.
 - Added complete Hyrule achievement tracking for dungeon discovery, maps,
   compasses, Triforce shards, signature items, all nine bosses, grouped boss
   credit, Ganon, Princess Zelda, and campaign-wide meta achievements.

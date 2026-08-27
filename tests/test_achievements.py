@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from scripts.build_hyrule_area import BOSS_MOBS
+from webadmin.area_parser import AreaParser
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,7 +18,7 @@ ENTRY_RE = re.compile(
     r'(?P<points>\d+),\s*'
     r'(?P<hidden>true|false),\s*'
     r'(?P<requirement>ACH_REQ_[A-Z_]+),\s*'
-    r'(?P<target>\d+)L?,\s*'
+    r'(?P<target>\d+L?|ACHIEVEMENT_EVENT_[A-Z_]+),\s*'
     r'(?P<auxiliary>\d+)\s*\},?\s*$',
     re.MULTILINE,
 )
@@ -30,6 +31,8 @@ class AchievementSystemTests(unittest.TestCase):
         cls.merc = (ROOT / "src" / "merc.h").read_text(encoding="utf-8")
         cls.save = (ROOT / "src" / "save.c").read_text(encoding="utf-8")
         cls.entries = [match.groupdict() for match in ENTRY_RE.finditer(cls.source)]
+        cls.area_parser = AreaParser(ROOT / "area")
+        cls.area_parser.parse_all()
         cls.manifest = json.loads(
             (ROOT / "data" / "hyrule_first_quest.json").read_text(encoding="utf-8")
         )
@@ -37,7 +40,7 @@ class AchievementSystemTests(unittest.TestCase):
     def test_catalog_has_stable_unique_keys_and_fits_reserved_capacity(self) -> None:
         catalog_lines = re.findall(r'^[ \t]*\{[ \t]*"', self.source, re.MULTILINE)
         self.assertEqual(len(self.entries), len(catalog_lines))
-        self.assertEqual(len(self.entries), 43)
+        self.assertEqual(len(self.entries), 105)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))
@@ -52,8 +55,12 @@ class AchievementSystemTests(unittest.TestCase):
             {
                 "ACH_CAT_CHARACTER",
                 "ACH_CAT_COMBAT",
+                "ACH_CAT_ENCOUNTERS",
                 "ACH_CAT_QUESTS",
                 "ACH_CAT_EXPLORATION",
+                "ACH_CAT_COLLECTION",
+                "ACH_CAT_CRAFTING",
+                "ACH_CAT_MISADVENTURE",
                 "ACH_CAT_HYRULE",
             },
         )
@@ -69,6 +76,7 @@ class AchievementSystemTests(unittest.TestCase):
             int(entry["auxiliary"]): int(entry["target"])
             for entry in self.entries
             if entry["requirement"] == "ACH_REQ_BOSS"
+            and entry["category"] == "ACH_CAT_HYRULE"
         }
         expected = {
             dungeon["boss_vnum"]: BOSS_MOBS[dungeon["level"]]
@@ -77,11 +85,39 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertEqual(actual, expected)
         self.assertIn("is_same_group(member, credit)", self.source)
 
+    def test_world_bosses_exist_at_their_catalog_rooms(self) -> None:
+        entries = [
+            entry
+            for entry in self.entries
+            if entry["requirement"] == "ACH_REQ_BOSS"
+            and entry["category"] == "ACH_CAT_ENCOUNTERS"
+        ]
+        self.assertEqual(len(entries), 17)
+
+        for entry in entries:
+            with self.subTest(key=entry["key"]):
+                mob = self.area_parser.mobiles[int(entry["target"])]
+                self.assertIn(int(entry["auxiliary"]), mob.spawn_rooms)
+                self.assertGreaterEqual(mob.level, 57)
+
+    def test_rare_collection_items_exist(self) -> None:
+        entries = [
+            entry
+            for entry in self.entries
+            if entry["requirement"] == "ACH_REQ_OBJECT"
+            and entry["category"] == "ACH_CAT_COLLECTION"
+        ]
+        self.assertEqual(len(entries), 17)
+        for entry in entries:
+            with self.subTest(key=entry["key"]):
+                self.assertIn(int(entry["target"]), self.area_parser.objects)
+
     def test_save_format_uses_stable_keys_and_persistent_progress_fields(self) -> None:
         for keyword in (
             "Achv",
             "AchKills",
             "AchQuests",
+            "AchDeaths",
             "AchExplore",
             "AchMaps",
             "AchCompass",
@@ -99,17 +135,37 @@ class AchievementSystemTests(unittest.TestCase):
         fight = (ROOT / "src" / "fight.c").read_text(encoding="utf-8")
         quest = (ROOT / "src" / "quest.c").read_text(encoding="utf-8")
         handler = (ROOT / "src" / "handler.c").read_text(encoding="utf-8")
+        act_obj = (ROOT / "src" / "act_obj.c").read_text(encoding="utf-8")
+        magic2 = (ROOT / "src" / "magic2.c").read_text(encoding="utf-8")
         update = (ROOT / "src" / "update.c").read_text(encoding="utf-8")
         comm = (ROOT / "src" / "comm.c").read_text(encoding="utf-8")
         interp = (ROOT / "src" / "interp.c").read_text(encoding="utf-8")
         cmake = (ROOT / "CMakeLists.txt").read_text(encoding="utf-8")
 
         self.assertIn("achievement_record_kill(ch, victim)", fight)
+        self.assertIn("achievement_record_death( victim )", fight)
         self.assertGreaterEqual(fight.count("achievement_check_state(ch, true)"), 2)
         self.assertEqual(quest.count("achievement_record_quest(ch)"), 2)
         self.assertIn("achievement_record_room(ch, pRoomIndex->vnum", handler)
         self.assertIn("achievement_record_object(ch, obj->pIndexData->vnum", handler)
+        self.assertIn("ACHIEVEMENT_EVENT_DEATH_ITEM", handler)
+        self.assertIn("ACHIEVEMENT_EVENT_PUZZLE_TRAP", act_obj)
+        for event in (
+            "ACHIEVEMENT_EVENT_BREW",
+            "ACHIEVEMENT_EVENT_CONCOCT",
+            "ACHIEVEMENT_EVENT_SCRIBE",
+            "ACHIEVEMENT_EVENT_FARSLAY_SCROLL",
+            "ACHIEVEMENT_EVENT_FARSLAYED",
+            "ACHIEVEMENT_EVENT_FARSLAY_BACKFIRE",
+            "ACHIEVEMENT_EVENT_FARSLAY_KILL",
+            "ACHIEVEMENT_EVENT_DEATH_RAY",
+        ):
+            with self.subTest(event=event):
+                self.assertIn(event, magic2)
+        self.assertIn('spell_one = skill_lookup("vengence")', magic2)
+        self.assertNotIn('skill_lookup("csst")', magic2)
         self.assertIn("achievement_check_state(ch, true)", update)
+        self.assertIn("ACHIEVEMENT_EVENT_DEATH_TRAP", update)
         self.assertIn("achievement_check_state(ch, false)", comm)
         self.assertRegex(interp, r'"achievements"\s*,\s*do_achievements')
         self.assertIn("src/achievements.c", cmake)

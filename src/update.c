@@ -2446,6 +2446,8 @@ void dtrap_update( void )
                     wizinfo(buf, LEVEL_IMMORTAL);
                     log_string(buf);
 
+		    achievement_record_event(ch,
+		        ACHIEVEMENT_EVENT_DEATH_TRAP, true);
 		    raw_kill(ch, ch);
 		}
 	}

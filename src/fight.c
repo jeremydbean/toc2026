@@ -2614,6 +2614,8 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
     }
     else
     {
+      if ( !IS_NPC(victim) )
+        achievement_record_death( victim );
       death_cry( victim );
       make_corpse( victim );
     }
