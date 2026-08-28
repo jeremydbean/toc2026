@@ -98,6 +98,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Ganon's one-hit-point phase now ends combat for every attacker, turns his
+  room appearance bright red, announces the Silver Arrow opening, and repeats
+  that instruction when players look at him.
 - Lowered Hyrule's required Silver Arrow from the immortal-only level 68 range
   to the maximum mortal level 59, restoring a mortal path to defeating Ganon.
 - Fixed paged commands exposing raw `{0D` color tokens instead of terminal

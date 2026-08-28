@@ -132,8 +132,7 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
     SET_BIT( victim->affected_by2, AFF2_NO_RECOVER );
     victim->position = POS_STUNNED;
 
-    if ( victim->fighting != NULL )
-        stop_fighting( victim, false );
+    stop_fighting( victim, true );
     victim->position = POS_STUNNED;
 
     if ( already_stunned )
@@ -141,14 +140,14 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( ch != NULL && ch != victim )
     {
-        act( "$N collapses at one hit point, stunned and unable to fight back. Other attacks can wound $M, but only a direct strike from the wielded Silver Arrow can finish $M!",
+        act( "{0C}$N flashes bright red as the darkness around $M shatters!{00} The fight breaks off at one hit point. Other attacks can wound $M, but only a direct strike from the wielded Silver Arrow can finish $M!",
              ch, NULL, victim, TO_CHAR );
-        act( "$N collapses at one hit point before $n, stunned and unable to fight back. Only a direct strike from the Silver Arrow can finish $M.",
+        act( "{0C}$N flashes bright red as the darkness around $M shatters!{00} The fight breaks off. Only a direct strike from the Silver Arrow can finish $M.",
              ch, NULL, victim, TO_NOTVICT );
     }
     else
     {
-        act( "$n collapses at one hit point, stunned and unable to fight back. Only a direct strike from the Silver Arrow can finish $m.",
+        act( "{0C}$n flashes bright red as the darkness around $m shatters!{00} The fight breaks off at one hit point. Only a direct strike from the Silver Arrow can finish $m.",
              victim, NULL, NULL, TO_ROOM );
     }
 }

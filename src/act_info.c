@@ -22,6 +22,8 @@
 #include "interp.h"
 #pragma GCC diagnostic ignored "-Wformat-truncation"
 
+#define HYRULE_GANON_VNUM 30225
+
 /* command procedures needed */
 DECLARE_DO_FUN(	do_exits	);
 DECLARE_DO_FUN( do_look		);
@@ -42,6 +44,14 @@ static size_t bounded_strlen( const char *text, size_t limit )
         length++;
 
     return length;
+}
+
+static bool is_red_hyrule_ganon( CHAR_DATA *victim )
+{
+    return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
+        && victim->pIndexData->vnum == HYRULE_GANON_VNUM
+        && victim->hit == 1
+        && IS_AFFECTED2(victim, AFF2_NO_RECOVER);
 }
 
 
@@ -251,8 +261,10 @@ void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, bool fShowNo
 void show_char_to_char_0( CHAR_DATA *victim, CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
+    bool red_ganon;
 
     buf[0] = '\0';
+    red_ganon = is_red_hyrule_ganon( victim );
 
     if(victim->ridden)
       return;
@@ -331,6 +343,8 @@ if(!scan)
 
   }
 
+  if ( red_ganon )
+      toc_strlcat( buf, "{0C}", sizeof(buf) );
   toc_strlcat( buf, PERS( victim, ch ), sizeof(buf) );
 
 /*   if(IS_NPC(victim)&&ch->questmob > 0 && victim->pIndexData->vnum == ch->questmob)
@@ -390,6 +404,8 @@ if(!scan)
 	break;
    }
   }
+    if ( red_ganon )
+        toc_strlcat( buf, "{00}", sizeof(buf) );
     toc_strlcat( buf, "\n\r", sizeof(buf) );
     buf[0] = UPPER(buf[0]);
     send_to_char( buf, ch );
@@ -414,7 +430,14 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
 	{
 	    act( "$n looks at you.", ch, NULL, victim, TO_VICT    );
 	    act( "$n looks at $N.",  ch, NULL, victim, TO_NOTVICT );
-	}
+        }
+    }
+
+    if ( is_red_hyrule_ganon( victim ) )
+    {
+        send_to_char(
+            "{0C}Ganon's body is blazing bright red, and he no longer fights back. Wield the Silver Arrow and strike him directly now!{00}\n\r",
+            ch );
     }
 
     if ( victim->description[0] != '\0' )

@@ -462,8 +462,9 @@ return portals.
   does not require immortal status.
   Against Ganon, every landed Silver Arrow strike uses full weapon mastery and
   deals at least 10% of his maximum health after defenses. At one hit point he
-  collapses, stops attacking, and remains stunned until the Silver Arrow lands
-  the final blow.
+  turns bright red, all combat with him stops, and he remains stunned until the
+  Silver Arrow lands the final blow. `Look ganon` repeats the instruction in
+  this vulnerable phase.
 
 The full level bands, dungeon order, commands, generated-data workflow, and
 spoiler-conscious mechanics are in [Hyrule: First Quest](hyrule-area.md).

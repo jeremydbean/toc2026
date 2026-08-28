@@ -200,8 +200,10 @@ Runtime rules add the behaviors the area format cannot express alone:
   override. Against Ganon only, the Silver Arrow attacks with full weapon
   mastery and deals at least 10% of his maximum health after defenses on every
   landed strike. When protected from any other lethal damage, Ganon remains at
-  one hit point, becomes stunned, stops attacking, and cannot recover while he
-  waits for the final arrow strike.
+  one hit point, becomes stunned, and cannot recover. Combat immediately ends
+  for everyone targeting him, his room-list appearance turns bright red, and
+  `look ganon` repeats the Silver Arrow instruction while he waits for the
+  final strike.
 - Like Likes can swallow equipped shields; Bubbles can disarm weapons.
 - Wallmasters can return a player to that dungeon's entrance.
 - Raft and Stepladder crossings verify the corresponding item.

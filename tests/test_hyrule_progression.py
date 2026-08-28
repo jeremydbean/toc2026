@@ -644,6 +644,22 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("is_stunned_hyrule_ganon(victim)", fight_source)
         self.assertIn("victim->position = pos_stunned", fight_source)
         self.assertIn("victim->hit <= 1", fight_source)
+        reform_source = fight_source.split(
+            "static void reform_hyrule_ganon", 1
+        )[1].split("static int hyrule_dungeon_entrance", 1)[0]
+        self.assertIn("stop_fighting( victim, true )", reform_source)
+        self.assertNotIn("stop_fighting( victim, false )", reform_source)
+        self.assertLess(
+            reform_source.index("stop_fighting( victim, true )"),
+            reform_source.index("if ( already_stunned )"),
+        )
+        self.assertIn("flashes bright red", reform_source)
+
+        look_source = Path("src/act_info.c").read_text(encoding="utf-8").lower()
+        self.assertIn("is_red_hyrule_ganon", look_source)
+        self.assertIn("ganon's body is blazing bright red", look_source)
+        self.assertIn("wield the silver arrow and strike him directly", look_source)
+        self.assertIn('toc_strlcat( buf, "{0c}"', look_source)
 
     def test_hyrule_has_teleport_only_entry_and_no_walking_world_link(self) -> None:
         arcade = self.parser.objects[30285]
