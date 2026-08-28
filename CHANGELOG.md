@@ -10,6 +10,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added bounded semicolon command chaining to both browser game consoles, with
+  ordered sends, quote and escape handling, single-entry history, and password
+  protection.
 - Added a WoW-style permanent character achievement system with 111 cataloged
   accomplishments, points, earned dates, nine categories, hidden discoveries,
   progress views, nearby unlock announcements, retroactive state checks, and

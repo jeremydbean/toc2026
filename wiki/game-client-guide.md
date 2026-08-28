@@ -53,11 +53,17 @@ The terminal supports:
 - adjustable fixed terminal text size
 - local command echo
 
-The command line sends one command at a time. Up and Down move through the
-current session's command history. Password input is masked and is never added
-to history, local echo, aliases, or the downloaded transcript.
+The command line sends normal input when Enter is pressed. Up and Down move
+through the current session's command history. Password input is masked and is
+never added to history, local echo, aliases, or the downloaded transcript.
 Submitting an empty command sends a single terminal newline without adding a
 blank command to local echo, history, or the transcript.
+Separate normal commands with semicolons to send them individually in order,
+for example `look; north; get sword`. Empty segments are ignored, and a chain
+may contain up to 50 commands. Semicolons inside matching single or double
+quotes remain part of that command; use `\;` for a literal unquoted semicolon.
+Password fields are never split. Command history stores the original chain as
+one entry, while local echo shows each command actually sent.
 Clicking the terminal focuses the command line for immediate typing. Selecting
 terminal text keeps the selection active so it can still be copied.
 

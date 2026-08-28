@@ -443,7 +443,10 @@ Development rules:
 `webadmin/server.py` owns FastAPI routes, parser snapshots, queue I/O, and
 WebSocket bridges. `webadmin/static/index.html`, `app.css`, and `app.js` own the
 full dashboard. `client.html`, `client.css`, and `client.js` own the play-first
-client at `/client`; both interfaces share the same APIs and bridges.
+client at `/client`; `command-sequence.js` supplies their shared bounded,
+quote-aware semicolon parser. Both consoles send parsed commands in order and
+store the original chain as one history entry. Password input must always
+bypass splitting. Both interfaces share the same APIs and bridges.
 `scripts/web_server.py` is only a compatibility launcher; do not add a second
 server implementation there.
 

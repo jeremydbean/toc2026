@@ -421,33 +421,62 @@
         return args ? `${alias.command} ${args}` : alias.command;
     }
 
+    function transmitCommand(command) {
+        const resolved = resolveAlias(command);
+        state.socket.send(`${resolved}\n`);
+        if (!state.secretInput && command && state.settings.localEcho) {
+            appendTerminalSegment(`> ${resolved}\n`, "terminal-local");
+            recordTranscript(`> ${resolved}\n`);
+        }
+    }
+
+    function finishCommandEntry(command) {
+        if (state.secretInput) return;
+        if (command) {
+            if (state.history[state.history.length - 1] !== command) state.history.push(command);
+            state.history = state.history.slice(-200);
+        }
+        state.historyIndex = state.history.length;
+        state.draft = "";
+    }
+
     function sendCommand(command) {
+        if (typeof command !== "string") return false;
         if (!state.socket || state.socket.readyState !== WebSocket.OPEN || !state.connected) {
             toast("The game is not connected.", "error");
             return false;
         }
+        transmitCommand(command);
+        finishCommandEntry(command);
+        return true;
+    }
+
+    function sendCommandSequence(command) {
         if (typeof command !== "string") return false;
-        const resolved = resolveAlias(command);
-        state.socket.send(`${resolved}\n`);
-        if (!state.secretInput) {
-            if (command) {
-                if (state.settings.localEcho) {
-                    appendTerminalSegment(`> ${resolved}\n`, "terminal-local");
-                    recordTranscript(`> ${resolved}\n`);
-                }
-                if (state.history[state.history.length - 1] !== command) state.history.push(command);
-                state.history = state.history.slice(-200);
-            }
-            state.historyIndex = state.history.length;
-            state.draft = "";
+        if (state.secretInput || !command.includes(";")) return sendCommand(command);
+        if (!state.socket || state.socket.readyState !== WebSocket.OPEN || !state.connected) {
+            toast("The game is not connected.", "error");
+            return false;
         }
+        if (!window.TocCommandSequence) {
+            toast("Command chaining is unavailable. Reload the client.", "error");
+            return false;
+        }
+
+        const sequence = window.TocCommandSequence.parse(command);
+        if (sequence.overflow) {
+            toast(`A command chain can contain at most ${window.TocCommandSequence.MAX_COMMANDS} commands.`, "error");
+            return false;
+        }
+        sequence.commands.forEach(transmitCommand);
+        finishCommandEntry(sequence.commands.length ? command : "");
         return true;
     }
 
     function submitCommand(event) {
         event.preventDefault();
         const input = byId("command-input");
-        if (sendCommand(input.value)) input.value = "";
+        if (sendCommandSequence(input.value)) input.value = "";
     }
 
     function focusCommandFromTerminal() {

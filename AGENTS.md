@@ -187,7 +187,8 @@ manual gameplay checks.
 - `src/update.c`: ticks, advancement, scheduled archives
 - `src/const.c`: class/race/skill/group/title tables
 - `webadmin/server.py`: dashboard UI/API/queue/WebSockets
-- `webadmin/static/client.*`: play-first browser terminal and client controls
+- `webadmin/static/client.*`, `command-sequence.js`: play-first browser
+  terminal, client controls, and shared bounded command chaining
 - `webadmin/area_parser.py`: independent Python area parser
 - `webadmin/area_health.py`: shared lint engine
 
@@ -278,6 +279,9 @@ python3 scripts/area_lint.py --fail-on critical --limit 100
 - Bound payloads and result limits; reject newlines/control data that can split
   queue records.
 - Preserve the last known-good parser when reload validation fails.
+- Keep semicolon command parsing shared across both browser consoles. Preserve
+  quoted and escaped semicolons, cap batches, store one history entry, and
+  never split password input.
 - Add tests for no/wrong/correct token, malformed bodies, boundaries,
   filesystem races, and failed parser reload.
 - Document authentication status for every new route.
