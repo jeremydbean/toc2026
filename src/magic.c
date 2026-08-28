@@ -2639,7 +2639,7 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
 	victim->mana	= (sh_int)(victim->mana - victim->mana * .15);
 	victim->move	= (sh_int)(victim->move - victim->move * .15);
 	dam		 = dice(3, ch->level/3);
-	ch->hit		+= dam/2;
+	ch->hit = (sh_int)UMIN( ch->max_hit, ch->hit + dam / 2 );
     }
 
     send_to_char("You feel your life slipping away!\n\r",victim);

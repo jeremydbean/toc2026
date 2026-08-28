@@ -532,24 +532,26 @@ See also: CASINO, SLOTS, BET, ROULETTE
 ~
 
 0 BREW CONCOCT~
-Syntax: brew <potion recipe>
-Syntax: concoct <component list>
+Syntax: brew <herb>
+Syntax: concoct <component> <component>
 
-BREW creates a magical potion from a recipe if you have the required
-components in your inventory.  CONCOCT is a related command that combines
-a specific list of components into a potion using your alchemical knowledge
-directly.  Both require alchemical skill and the right materials.
+BREW turns one carried herb into an herbal tea. CONCOCT combines two carried
+spell components into a potion when they form a valid recipe. Component order
+does not matter. Failed work on a valid recipe consumes its ingredients;
+unknown combinations are left untouched. Both commands require the matching
+crafting skill.
 
 See also: SCRIBE, QUAFF
 ~
 
 0 SCRIBE~
-Syntax: scribe <scroll recipe>
+Syntax: scribe <component> <component> <component>
 
-SCRIBE copies a spell you know onto a blank scroll, creating a single-use
-magical item.  You must have a blank scroll, a quill, and sufficient
-knowledge of the target spell.  The spell is inscribed at your current
-level of mastery.
+SCRIBE combines three carried spell components into a single-use magical
+scroll when they form a valid recipe. Component order does not matter, and
+you do not need a separate blank scroll or quill. Failed work on a valid
+recipe consumes its ingredients; unknown combinations are left untouched.
+The resulting scroll is cast at your current level.
 
 See also: BREW, RECITE
 ~

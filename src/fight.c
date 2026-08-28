@@ -2250,6 +2250,19 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
 /*
  * Make a corpse out of a character.
  */
+static bool add_event_loot_to_corpse( OBJ_DATA *corpse, int object_vnum )
+{
+    OBJ_INDEX_DATA *index;
+    OBJ_DATA *drop;
+
+    if ( corpse == NULL || ( index = get_obj_index(object_vnum) ) == NULL )
+        return false;
+
+    drop = create_object( index, 0 );
+    obj_to_obj( drop, corpse );
+    return true;
+}
+
 void make_corpse( CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
@@ -2351,11 +2364,7 @@ void make_corpse( CHAR_DATA *ch )
         if ( season != NULL && !str_cmp( season, "Hallows End"  ) ) drop_vnum = OBJ_VNUM_SEASONAL_CANDY;
         if ( season != NULL && !str_cmp( season, "Winter Veil"  ) ) drop_vnum = OBJ_VNUM_SEASONAL_GIFT;
         if ( drop_vnum != 0 && number_percent() <= 15 )
-        {
-            OBJ_DATA *drop = create_object( get_obj_index( drop_vnum ), 0 );
-            if ( drop != NULL )
-                obj_to_room( drop, ch->in_room );
-        }
+            add_event_loot_to_corpse( corpse, drop_vnum );
     }
 
     /* Event boss drops: guaranteed rare loot + small chance of training cake. */
@@ -2367,6 +2376,7 @@ void make_corpse( CHAR_DATA *ch )
         {
             /* Determine which drop pool to use based on which boss died. */
             int weapon_vnum, armor_vnum, trinket_vnum, cake_vnum;
+            bool primary_drop = false;
 
             if ( vnum == MOB_VNUM_EVENT_HORSEMAN )
             {
@@ -2385,41 +2395,28 @@ void make_corpse( CHAR_DATA *ch )
 
             /* 50% chance: drop the weapon */
             if ( number_percent() <= 50 )
-            {
-                OBJ_INDEX_DATA *oi = get_obj_index( weapon_vnum );
-                if ( oi != NULL )
-                    obj_to_room( create_object( oi, 0 ), ch->in_room );
-            }
+                if ( add_event_loot_to_corpse(corpse, weapon_vnum) )
+                    primary_drop = true;
 
             /* 50% chance: drop the armor */
             if ( number_percent() <= 50 )
-            {
-                OBJ_INDEX_DATA *oi = get_obj_index( armor_vnum );
-                if ( oi != NULL )
-                    obj_to_room( create_object( oi, 0 ), ch->in_room );
-            }
+                if ( add_event_loot_to_corpse(corpse, armor_vnum) )
+                    primary_drop = true;
 
             /* 75% chance: drop a trinket */
             if ( number_percent() <= 75 )
-            {
-                OBJ_INDEX_DATA *oi = get_obj_index( trinket_vnum );
-                if ( oi != NULL )
-                    obj_to_room( create_object( oi, 0 ), ch->in_room );
-            }
+                if ( add_event_loot_to_corpse(corpse, trinket_vnum) )
+                    primary_drop = true;
+
+            /* A two-day event boss should never leave an empty rare table. */
+            if ( !primary_drop )
+                add_event_loot_to_corpse( corpse, trinket_vnum );
 
             /* 5% chance: drop a training cake (very rare) */
             if ( number_percent() <= 5 )
-            {
-                OBJ_INDEX_DATA *oi = get_obj_index( cake_vnum );
-                if ( oi != NULL )
-                    obj_to_room( create_object( oi, 0 ), ch->in_room );
-            }
+                add_event_loot_to_corpse( corpse, cake_vnum );
 
-            /* Clear the global boss pointer as the mob is now dead. */
-            if ( event_boss_mob == ch )
-            {
-                event_boss_mob = NULL;
-            }
+            record_event_boss_defeat( ch );
         }
     }
 

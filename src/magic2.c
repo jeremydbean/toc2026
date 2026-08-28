@@ -2316,7 +2316,7 @@ void spell_vampiric_touch( int sn, int level, CHAR_DATA *ch, void *vo )
     }
 
     dam		 = dice(5, ch->level/3);
-    ch->hit		+= dam/2;
+    ch->hit = (sh_int)UMIN( ch->max_hit, ch->hit + dam / 2 );
 
     act("$n's hand touches you, devouring your life force.",ch,
        NULL,victim,TO_VICT);
@@ -2380,6 +2380,7 @@ void do_brew( CHAR_DATA *ch, char *argument )
 	NULL,NULL,TO_ROOM);
       extract_obj( pObj );
       check_improve(ch,gsn_brew,false,3);
+      save_char_obj(ch);
       return;
    }
 
@@ -2634,8 +2635,41 @@ void do_brew( CHAR_DATA *ch, char *argument )
    extract_obj( pObj );
    obj_to_char(tea, ch);
    achievement_record_event(ch, ACHIEVEMENT_EVENT_BREW, true);
+   save_char_obj(ch);
    return;
 
+}
+
+static int crafting_component_vnum( const OBJ_DATA *obj )
+{
+   return obj != NULL && obj->pIndexData != NULL
+        ? obj->pIndexData->vnum : -1;
+}
+
+static bool crafting_pair_matches( const OBJ_DATA *one, const OBJ_DATA *two,
+                                   int first_vnum, int second_vnum )
+{
+   int one_vnum = crafting_component_vnum( one );
+   int two_vnum = crafting_component_vnum( two );
+
+   return ( one_vnum == first_vnum && two_vnum == second_vnum )
+       || ( one_vnum == second_vnum && two_vnum == first_vnum );
+}
+
+static bool crafting_trio_matches( const OBJ_DATA *one, const OBJ_DATA *two,
+                                   const OBJ_DATA *three, int first_vnum,
+                                   int second_vnum, int third_vnum )
+{
+   int one_vnum = crafting_component_vnum( one );
+   int two_vnum = crafting_component_vnum( two );
+   int three_vnum = crafting_component_vnum( three );
+
+   return ( one_vnum == first_vnum || two_vnum == first_vnum
+         || three_vnum == first_vnum )
+       && ( one_vnum == second_vnum || two_vnum == second_vnum
+         || three_vnum == second_vnum )
+       && ( one_vnum == third_vnum || two_vnum == third_vnum
+         || three_vnum == third_vnum );
 }
 
 void do_concoct( CHAR_DATA *ch, char *argument )
@@ -2695,8 +2729,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
    }
 
 
-   if(pObj_one->pIndexData->vnum == 60
-   && pObj_two->pIndexData->vnum == 64)
+   if(crafting_pair_matches(pObj_one, pObj_two, 60, 64))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("fire shield");
@@ -2709,8 +2742,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 63
-   && pObj_two->pIndexData->vnum == 66)
+   if(crafting_pair_matches(pObj_one, pObj_two, 63, 66))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("cancellation");
@@ -2725,8 +2757,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 61
-   && pObj_two->pIndexData->vnum == 73)
+   if(crafting_pair_matches(pObj_one, pObj_two, 61, 73))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("restore mana");
@@ -2741,8 +2772,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 55
-   && pObj_two->pIndexData->vnum == 59)
+   if(crafting_pair_matches(pObj_one, pObj_two, 55, 59))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("sanctuary");
@@ -2756,8 +2786,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 62
-   && pObj_two->pIndexData->vnum == 56)
+   if(crafting_pair_matches(pObj_one, pObj_two, 62, 56))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("heal");
@@ -2771,8 +2800,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 54
-   && pObj_two->pIndexData->vnum == 69)
+   if(crafting_pair_matches(pObj_one, pObj_two, 54, 69))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("heal");
@@ -2786,8 +2814,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 67
-   && pObj_two->pIndexData->vnum == 65)
+   if(crafting_pair_matches(pObj_one, pObj_two, 67, 65))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("heal");
@@ -2802,8 +2829,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 70
-   && pObj_two->pIndexData->vnum == 71)
+   if(crafting_pair_matches(pObj_one, pObj_two, 70, 71))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("cure critical");
@@ -2818,8 +2844,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 55
-   && pObj_two->pIndexData->vnum == 68)
+   if(crafting_pair_matches(pObj_one, pObj_two, 55, 68))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("heal");
@@ -2834,8 +2859,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 58
-   && pObj_two->pIndexData->vnum == 72)
+   if(crafting_pair_matches(pObj_one, pObj_two, 58, 72))
    {
      potion = create_object(get_obj_index(75), ch->level);
      slot_one = skill_lookup("mass heal");
@@ -2872,11 +2896,14 @@ void do_concoct( CHAR_DATA *ch, char *argument )
        send_to_char("Uh oh. Something isn't right.\n\r",ch);
        act("The cauldron explodes it's noxious contents all over $n!",ch,
 	NULL,NULL,TO_ROOM);
+       extract_obj( potion );
+       potion = NULL;
        if (!damage( ch, ch, dice(2,10), gsn_concoct, DAM_FIRE ))
        {
            /* ch survived; extract the spent ingredients */
            extract_obj( pObj_one );
            extract_obj( pObj_two );
+           save_char_obj(ch);
        }
        /* if ch was killed, make_corpse already moved objects to corpse */
        return;
@@ -2900,6 +2927,7 @@ void do_concoct( CHAR_DATA *ch, char *argument )
 
    extract_obj( pObj_one );
    extract_obj( pObj_two );
+   save_char_obj(ch);
    return;
 }
 
@@ -2971,9 +2999,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
    }
 
 
-   if(pObj_one->pIndexData->vnum == 80
-   && pObj_two->pIndexData->vnum == 84
-   && pObj_three->pIndexData->vnum == 76)
+   if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 80, 84, 76))
    {
      scroll = create_object(get_obj_index(90), ch->level);
      spell_one = skill_lookup("remove align");
@@ -2989,9 +3015,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      wizinfo(buf,LEVEL_IMMORTAL);
    }
 
-   if(pObj_one->pIndexData->vnum == 83
-   && pObj_two->pIndexData->vnum == 88
-   && pObj_three->pIndexData->vnum == 77)
+   if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 83, 88, 77))
    {
      scroll = create_object(get_obj_index(90), ch->level);
      spell_one = skill_lookup("fire shield");
@@ -3006,9 +3030,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 78
-   && pObj_two->pIndexData->vnum == 81
-   && pObj_three->pIndexData->vnum == 79)
+   if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 78, 81, 79))
    {
      scroll = create_object(get_obj_index(90), ch->level);
      spell_one = skill_lookup("power gloves");
@@ -3023,9 +3045,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
      found = true;
    }
 
-   if(pObj_one->pIndexData->vnum == 84
-   && pObj_two->pIndexData->vnum == 78
-   && pObj_three->pIndexData->vnum == 87)
+   if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 84, 78, 87))
    {
      scroll = create_object(get_obj_index(90), ch->level);
      spell_one = skill_lookup("restore mana");
@@ -3041,9 +3061,7 @@ void do_scribe( CHAR_DATA *ch, char *argument )
    }
 
 
-      if(pObj_one->pIndexData->vnum == 77
-      && pObj_two->pIndexData->vnum == 76
-      && pObj_three->pIndexData->vnum == 88)
+      if(crafting_trio_matches(pObj_one, pObj_two, pObj_three, 77, 76, 88))
       {
         scroll = create_object(get_obj_index(90), ch->level);
         spell_one = skill_lookup("vengence");
@@ -3081,9 +3099,12 @@ void do_scribe( CHAR_DATA *ch, char *argument )
        send_to_char("You measured out the wrong amount of liquids.\n\r",ch);
        act("$n throws the mix on the ground, cussing about random chance!",ch,
 	NULL,NULL,TO_ROOM);
+       extract_obj( scroll );
+       scroll = NULL;
        extract_obj( pObj_one );
        extract_obj( pObj_two );
        extract_obj( pObj_three);
+       save_char_obj(ch);
        return;
      }
      send_to_char("Success!!! The ink will work!\n\r",ch);
@@ -3105,11 +3126,13 @@ void do_scribe( CHAR_DATA *ch, char *argument )
    else
    {
      send_to_char("Combining those ingredients won't make a useable ink.\n\r",ch);
+     return;
    }
 
    extract_obj( pObj_one );
    extract_obj( pObj_two );
    extract_obj( pObj_three );
+   save_char_obj(ch);
    return;
 }
 
@@ -4231,15 +4254,15 @@ void spell_fire_shield( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
-  if( is_affected( ch, sn ) || IS_SET(ch->act2, AFF2_FLAMING_HOT) ||
-			       IS_SET(ch->act2, AFF2_FLAMING_COLD) )
+  if( is_affected( victim, sn )
+  ||  IS_AFFECTED2(victim, AFF2_FLAMING_HOT)
+  ||  IS_AFFECTED2(victim, AFF2_FLAMING_COLD) )
     {
 	if (victim == ch)
 	  send_to_char("You are already enveloped in flames.\n\r",ch);
-/*	else
+	else
 	  act("You can't cast this spell on $N.",ch,NULL,victim,TO_CHAR);
-      */
-
+	return;
     }
     af.type      = (sh_int)(sn);
     af.level     = (sh_int)(level);
@@ -4263,8 +4286,9 @@ void spell_frost_shield( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
-  if( is_affected( victim, sn ) || IS_SET(victim->act2, AFF2_FLAMING_HOT) ||
-			       IS_SET(victim->act2, AFF2_FLAMING_COLD) )
+  if( is_affected( victim, sn )
+  ||  IS_AFFECTED2(victim, AFF2_FLAMING_HOT)
+  ||  IS_AFFECTED2(victim, AFF2_FLAMING_COLD) )
     {
 	if (victim == ch)
 	  send_to_char("You are already enveloped in frost.\n\r",ch);
@@ -4294,8 +4318,9 @@ void spell_death_shroud( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
-  if( is_affected( victim, sn ) || IS_SET(victim->act2, AFF2_FLAMING_HOT) ||
-			       IS_SET(victim->act2, AFF2_FLAMING_COLD) )
+  if( is_affected( victim, sn )
+  ||  IS_AFFECTED2(victim, AFF2_FLAMING_HOT)
+  ||  IS_AFFECTED2(victim, AFF2_FLAMING_COLD) )
     {
 	if (victim == ch)
 	  send_to_char("You are already surrounded by dark flames.\n\r",ch);
@@ -4950,6 +4975,14 @@ void spell_death_ray( int sn, int level, CHAR_DATA *ch, void *vo )
 	 ch,NULL,NULL,TO_VICT);
     act("A sickly ray of green light flys from $n's hand and strikes $N!",
 	 ch,NULL,victim,TO_ROOM);
+    if ( IS_NPC(victim) && victim->pIndexData != NULL
+    &&   victim->pIndexData->vnum == 30225 )
+    {
+        act("$n staggers in the green light, but the ancient darkness refuses to let $m die!",
+            victim,NULL,NULL,TO_ROOM);
+        raw_kill(ch,victim);
+        return;
+    }
     act("$n screams and dies!",victim,NULL,NULL,TO_ROOM);
     achievement_record_event(victim, ACHIEVEMENT_EVENT_DEATH_RAY, true);
     raw_kill(ch,victim);

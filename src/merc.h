@@ -2498,6 +2498,7 @@ const char *get_seasonal_area( const char *area_file );
 bool        verify_event_boss       ( void );
 void        spawn_event_boss        ( int forced_vnum );
 void        despawn_event_boss      ( void );
+void        record_event_boss_defeat( CHAR_DATA *boss );
 void        tick_event_boss         ( void );
 int         get_event_boss_vnum     ( void );
 void        spawn_seasonal_vendors  ( void );

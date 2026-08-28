@@ -165,6 +165,45 @@ const struct quest_type quest_table [] =
      */
   { 0, ""  }
 };
+
+static int hero_quest_table_count( void )
+{
+  return (int)(sizeof(quest_table) / sizeof(quest_table[0])) - 1;
+}
+
+static int hero_quest_index_for_item( int item_vnum )
+{
+  int index;
+
+  for ( index = 0; index < hero_quest_table_count(); index++ )
+    if ( quest_table[index].quest_item == item_vnum )
+      return index;
+
+  return -1;
+}
+
+static bool send_hero_quest_clue( CHAR_DATA *ch, int item_vnum,
+                                  bool include_heading )
+{
+  char buf[MAX_STRING_LENGTH];
+  int index = hero_quest_index_for_item( item_vnum );
+
+  if ( index < 0 )
+  {
+    snprintf(buf, sizeof(buf),
+        "Hero quest item %d for %s has no clue entry.",
+        item_vnum, ch != NULL ? ch->name : "(null)");
+    log_string(buf);
+    if ( ch != NULL )
+      send_to_char("Your Hero Quest data is invalid; an immortal has been notified.\n\r", ch);
+    return false;
+  }
+
+  if ( include_heading )
+    send_to_char("Your clue is:\n\r\n\r", ch);
+  send_to_char(quest_table[index].quest_clue, ch);
+  return true;
+}
  
 /* New spec structure by Jason Dinkel */
 struct spec_type
@@ -596,8 +635,8 @@ bool spec_cast_mage( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	case  9: min_level = 25; spell = "blizzard";       break;
 	case 10: min_level = 30;
 		  if(mob->level >= min_level 
-		  && (!IS_SET(mob->act2, AFF2_FLAMING_COLD)
-		  && !IS_SET(mob->act2, AFF2_FLAMING_HOT) ) ) 
+		  && !IS_AFFECTED2(mob, AFF2_FLAMING_COLD)
+		  && !IS_AFFECTED2(mob, AFF2_FLAMING_HOT) )
 		  {
 		    victim = mob;
 		    shield = ( number_percent () );
@@ -2402,15 +2441,13 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
   bool found = false;
  
    if( cmd == NULL) return false;
+   if( IS_NPC(ch) ) return false;
  
    if(ch->level < 50 || ch->level >= 51) return false;
  
    if( (cmd != do_heroquest) && (cmd != do_retrieved) && (cmd != do_endquest) &&
 	  (cmd != do_listclue) && (ch->pcdata->on_quest) )
        return false;
- 
-   if( IS_NPC(ch) )
-      return false;
  
    if( cmd == do_heroquest )
    {
@@ -2456,7 +2493,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      /* assign quest items, give first clue */
      for(holder_1 = 0; holder_1 < 10; holder_1++)
      {
-       assign = dice(1,77) - 1;
+       assign = number_range(0, hero_quest_table_count() - 1);
  
        for(holder_2 = 0; holder_2 < 10; holder_2++)
 	 if( ch->pcdata->questor[holder_2] == quest_table[assign].quest_item)
@@ -2470,18 +2507,11 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
        found = false;
      }
 
- 
       for(holder_1 = 0; holder_1 < 10; holder_1++)
 	  if(ch->pcdata->questor[holder_1] > 0)
 	    break;
- 
-	for(holder_2 = 0; holder_2 < 77; holder_2++)
-	  if(ch->pcdata->questor[holder_1] == quest_table[holder_2].quest_item)
-	    break;
- 
-       send_to_char("Your clue is:\n\r\n\r",ch);
-       snprintf(buf, MAX_STRING_LENGTH, "%s", quest_table[holder_2].quest_clue);
-       send_to_char(buf,ch);
+
+       send_hero_quest_clue(ch, ch->pcdata->questor[holder_1], true);
        save_char_obj(ch);
        return true;
    }
@@ -2539,17 +2569,13 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	  ch->level = 51;
 	  advance_level(ch,false);
  	  REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
+	  REMOVE_BIT(ch->act, PLR_NOFOLLOW);
 	  save_char_obj(ch);
 	  return true;
 	}
  
-	for(holder_2 = 0; holder_2 < 77; holder_2++)
-	  if(ch->pcdata->questor[holder_1 + 1] == quest_table[holder_2].quest_item)
-	    break;
- 
-	snprintf(buf, MAX_STRING_LENGTH, "%s", quest_table[holder_2].quest_clue);
-	send_to_char(buf,ch);
- 
+	send_hero_quest_clue(ch, ch->pcdata->questor[holder_1 + 1], false);
+	save_char_obj(ch);
 	return true;
      }
      else
@@ -2578,13 +2604,7 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      }
      else
      {
-	for(holder_2 = 0; holder_2 < 77; holder_2++)
-	  if(ch->pcdata->questor[holder_1] == quest_table[holder_2].quest_item)
-	    break;
- 
-       send_to_char("Your clue is:\n\r\n\r",ch);
-       snprintf(buf, sizeof(buf), "%s",quest_table[holder_2].quest_clue);
-       send_to_char(buf,ch);
+       send_hero_quest_clue(ch, ch->pcdata->questor[holder_1], true);
        return true;
      }
    }
@@ -2637,14 +2657,16 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
 	  int lost;
 
 	  lost = number_range(0, MAX_STATS - 1);
-	  ch->perm_stat[lost] -= 2;
+	  ch->perm_stat[lost] = (sh_int)UMAX(3, ch->perm_stat[lost] - 2);
 	  send_to_char("One of your stats has been reduced.\n\r",ch);
 	  found = true;
 	 }
 	 else
 	 {
-	   ch->pcdata->perm_hit -= 20;
-	   ch->hit -= 20;
+	   ch->pcdata->perm_hit = (sh_int)UMAX(1,
+	       ch->pcdata->perm_hit - 20);
+	   ch->max_hit = (sh_int)UMAX(1, ch->max_hit - 20);
+	   ch->hit = (sh_int)URANGE(1, ch->hit - 20, ch->max_hit);
 	   send_to_char("You have lost some hit points.\n\r",ch);
 	   found = true;
 	 }
@@ -2662,8 +2684,9 @@ bool spec_quest_master( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *argume
      send_info(buf);
      free_string(ch->pcdata->title);
      ch->pcdata->title = str_dup(" has not lived up to the challenge!");
-     save_char_obj(ch);
      REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
+     REMOVE_BIT(ch->act, PLR_NOFOLLOW);
+     save_char_obj(ch);
      return true;
    }
 

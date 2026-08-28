@@ -90,6 +90,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed fire, frost, and death-shroud shield state checks so mutually exclusive
+  shields cannot stack, and capped energy-drain healing at maximum hit points.
+- Made `concoct` and `scribe` recipes ingredient-order independent, removed
+  failed-craft object leaks, preserved ingredients for unknown recipes, saved
+  consumed rare components immediately, and corrected their player help.
+- Fixed stale seasonal-vendor pointers that could crash timed despawns, restored
+  event-boss defeat announcements, moved holiday rewards into corpses, and
+  guaranteed each event boss awards at least one primary rare item.
+- Bounded Hero Quest item lookups, saved each recovered relic, removed temporary
+  magic immunity and no-follow state on every exit, and safely floored abandon
+  penalties while keeping current and maximum health consistent.
+- Fixed death ray falsely announcing Ganon's death before his protected reform,
+  and documented the permanent training reward on the two rare holiday foods.
 - Fixed the advertised quest-shop Potion of Power, Potion of the Giant, and
   Scroll of Farslay never appearing in `AQUEST LIST` or being purchasable.
 - Fixed Farslay scrolls consuming themselves without a target, leaking or

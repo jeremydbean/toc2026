@@ -139,6 +139,21 @@ static time_t vendor_spawn_time   = 0;
 /* Average ticks before vendors spawn: 6 hours × 60 ticks/hour = 360. */
 #define VENDOR_SPAWN_ODDS  360
 
+static bool seasonal_character_exists( const CHAR_DATA *target )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *ch;
+
+    if ( target == NULL )
+        return FALSE;
+
+    FOR_EACH_CHARACTER( iter, ch )
+        if ( ch == target )
+            return TRUE;
+
+    return FALSE;
+}
+
 
 /* -----------------------------------------------------------
  * Yell messages broadcast to the boss's area.
@@ -211,6 +226,21 @@ bool verify_event_boss( void )
     event_boss_mob        = NULL;
     event_boss_spawn_time = 0;
     return FALSE;
+}
+
+void record_event_boss_defeat( CHAR_DATA *boss )
+{
+    char msg[MAX_STRING_LENGTH];
+
+    if ( boss == NULL || event_boss_mob != boss )
+        return;
+
+    snprintf( msg, sizeof(msg),
+        "%s has been defeated! Dresden breathes again.",
+        boss->short_descr != NULL ? boss->short_descr : "The event boss" );
+    event_boss_mob = NULL;
+    event_boss_spawn_time = 0;
+    boss_global_shout( msg );
 }
 
 
@@ -488,6 +518,13 @@ void spawn_seasonal_vendors( void )
 
 void despawn_seasonal_vendors( void )
 {
+    if ( event_vendor_halloween != NULL
+    &&   !seasonal_character_exists(event_vendor_halloween) )
+        event_vendor_halloween = NULL;
+    if ( event_vendor_winter != NULL
+    &&   !seasonal_character_exists(event_vendor_winter) )
+        event_vendor_winter = NULL;
+
     if ( event_vendor_halloween != NULL )
     {
         act( "$N calls out 'Come find me again next year!' and vanishes into the shadows.",
@@ -510,44 +547,24 @@ void tick_seasonal_vendors( void )
 {
     SEASON_TYPE season;
 
-    /* Despawn if either vendor has overstayed their welcome. */
+    /* Clear stale pointers before any timed path dereferences a vendor. */
+    if ( event_vendor_halloween != NULL
+    &&   !seasonal_character_exists(event_vendor_halloween) )
+        event_vendor_halloween = NULL;
+    if ( event_vendor_winter != NULL
+    &&   !seasonal_character_exists(event_vendor_winter) )
+        event_vendor_winter = NULL;
+
+    if ( event_vendor_halloween == NULL && event_vendor_winter == NULL )
+        vendor_spawn_time = 0;
+
+    /* Despawn if either live vendor has overstayed their welcome. */
     if ( ( event_vendor_halloween != NULL || event_vendor_winter != NULL )
-         && vendor_spawn_time > 0
-         && ( time(NULL) - vendor_spawn_time ) >= VENDOR_DURATION )
+    &&   vendor_spawn_time > 0
+    &&   ( time(NULL) - vendor_spawn_time ) >= VENDOR_DURATION )
     {
         despawn_seasonal_vendors();
         return;
-    }
-
-    /* Clear stale pointers if the mob was killed or extracted.
-     * Scan character_list rather than testing ->in_room == NULL;
-     * that field is freed before the pointer reaches us and could
-     * be non-NULL if the slot was reused for a new character. */
-    if ( event_vendor_halloween != NULL )
-    {
-        LIST_ITERATOR iter;
-        CHAR_DATA    *vc;
-        bool found = FALSE;
-        FOR_EACH_CHARACTER( iter, vc )
-            if ( vc == event_vendor_halloween ) { found = TRUE; break; }
-        if ( !found )
-        {
-            event_vendor_halloween = NULL;
-            vendor_spawn_time      = 0;
-        }
-    }
-    if ( event_vendor_winter != NULL )
-    {
-        LIST_ITERATOR iter;
-        CHAR_DATA    *vc;
-        bool found = FALSE;
-        FOR_EACH_CHARACTER( iter, vc )
-            if ( vc == event_vendor_winter ) { found = TRUE; break; }
-        if ( !found )
-        {
-            event_vendor_winter = NULL;
-            vendor_spawn_time   = 0;
-        }
     }
 
     /* Roll for a new spawn if none active. */
