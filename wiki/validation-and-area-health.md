@@ -167,7 +167,7 @@ Info findings are cleanup candidates and are not deployment blockers by default.
 
 ## Current Disconnected-Room Review
 
-The August 2026 baseline is 99 listed area entries, 2,336 mobiles, 3,551 objects, and 7,781 rooms, with 0 critical, 11 warning, and 1,565 informational findings. The topology review reduced the warning-level baseline from 21 areas to 11 without hiding unexplained rooms. Operational pet storage, hardcoded/private rooms, jails, staff quest staging, and solitary rooms are now inferred or reported at info severity. The broken `#65` self-loop was repaired between `connect.are` and Hell room `#13418`, and Marilyn now uses the pet-shop special required by Solace's bird factory.
+The August 2026 baseline is 99 listed area entries, 2,336 mobiles, 3,552 objects, and 7,781 rooms, with 0 critical, 11 warning, and 1,566 informational findings. The topology review reduced the warning-level baseline from 21 areas to 11 without hiding unexplained rooms. Operational pet storage, hardcoded/private rooms, jails, staff quest staging, and solitary rooms are now inferred or reported at info severity. The broken `#65` self-loop was repaired between `connect.are` and Hell room `#13418`, and Marilyn now uses the pet-shop special required by Solace's bird factory.
 
 The Python tools report 99 entries from `area.lst`, while the native validator reports 94 indexed areas. This is expected: six list entries are help/social data files with no `#AREA` record, leaving 93 world areas, and the C loader adds one generated online-building area at boot.
 

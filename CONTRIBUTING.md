@@ -26,6 +26,8 @@ more boundaries than their diff suggests.
 - Preserve save-file, vnum, flag, spell-slot, and enum compatibility unless the
   change includes a reviewed migration.
 - Add or update in-game help whenever player syntax or behavior changes.
+- Route formatted player output through `send_to_char()` or `page_to_char()`;
+  test color-on, color-off, paged, and unpaged display paths.
 - Document deployment, API, persistence, or security changes in the appropriate
   maintained guide.
 
@@ -72,12 +74,13 @@ Before requesting review:
    end.
 4. Test invalid input and interrupted/error paths, not only success.
 5. Verify player-facing text, in-game help, and documentation agree with code.
-6. Explain save/API/world-format compatibility and deployment impact.
-7. Include manual verification steps and their result.
-8. Note any test that could not run and why.
-9. Keep secrets, hashes, player data, and machine-specific paths out of the
+6. Verify formatted output with color and paging both enabled and disabled.
+7. Explain save/API/world-format compatibility and deployment impact.
+8. Include manual verification steps and their result.
+9. Note any test that could not run and why.
+10. Keep secrets, hashes, player data, and machine-specific paths out of the
    patch.
-10. Ensure `git diff --check` is clean.
+11. Ensure `git diff --check` is clean.
 
 ## Commit And Review Guidance
 

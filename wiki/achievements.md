@@ -9,7 +9,7 @@ but never combat stats or economic rewards.
 
 | Command | Result |
 |---|---|
-| `achievements` | Summary, category totals, points, and five newest unlocks |
+| `achievements` | Compact two-column category totals, points, and five newest unlocks |
 | `achievements <category>` | One category with requirements and live progress |
 | `achievements earned` | Every earned achievement and date |
 | `achievements incomplete` | Remaining visible goals and hidden entries |
@@ -20,6 +20,10 @@ Categories are `character`, `combat`, `encounters`, `quests`, `exploration`,
 `collection`, `crafting`, `misadventure`, and `hyrule`. The command accepts
 normal unambiguous command prefixes, but full category names are clearest.
 `score` also shows earned count and achievement points.
+
+The normal summary is sized to fit the default page length. Longer category,
+filter, and search results use the standard game pager and honor each player's
+color and scroll settings.
 
 An unlock displays its title, description, points, and new total. Other players
 in the room see a short announcement. Hidden achievements display a generic
@@ -106,6 +110,11 @@ The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 128
 timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 111. Add
 a new entry only with a unique key that will never be repurposed.
 
+Achievement views use canonical `{HH}` game-color tokens and
+`page_to_char()`. The pager converts those tokens to the recipient's ANSI
+sequences, or removes them when color is disabled, before retaining the text
+between pages. Do not bypass that path with raw `write_to_buffer()` calls.
+
 Event hooks are intentionally central:
 
 - `fight.c` records NPC deaths, true player deaths, named bosses, and qualifying
@@ -127,4 +136,5 @@ back to the current runtime index.
 Run the normal native build, CMake build, area validation, and
 `python -m unittest tests.test_achievements -v` after changing the catalog or
 hooks. The test verifies key uniqueness, catalog capacity, persistence wiring,
-and the generated Hyrule boss-to-room contract.
+the generated Hyrule boss-to-room contract, compact summary layout, and paged
+color conversion.

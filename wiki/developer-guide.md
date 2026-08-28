@@ -76,7 +76,8 @@ The parsers have different purposes and both must pass.
 
 | Module | Main responsibility |
 |---|---|
-| `comm.c` | Process startup, sockets, descriptors, login flow, main loop |
+| `comm.c` | Process startup, sockets, descriptors, login flow, output, pager, main loop |
+| `color.c` | Canonical color tokens, per-player color settings, ANSI conversion |
 | `db.c` | World boot, area parsing, indexes, allocation, database helpers |
 | `merc.h` | Shared types, constants, flags, macros, and function declarations |
 | `interp.c`, `interp.h` | Command table, dispatch, command declarations |
@@ -264,9 +265,9 @@ August 2026 parser baseline:
 ```text
 99 listed area entries
 2,336 mobiles
-3,551 objects
+3,552 objects
 7,781 rooms
-0 critical, 11 warning, 1,565 information area-health findings
+0 critical, 11 warning, 1,566 information area-health findings
 ```
 
 Six `area.lst` entries (`commands.are`, `skills.are`, `spells.are`,
@@ -281,7 +282,7 @@ native and Python area totals are expected to use different counting models.
 | `tests/test_area_health.py` | Parser/health issue detection and severity behavior |
 | `tests/test_webadmin_api.py` | API authentication, queueing, reload, parsing, and limits |
 | `tests/test_hyrule_progression.py` | Generated Hyrule topology, progression, bosses, items, and routes |
-| `tests/test_achievements.py` | Catalog stability, persistence, event hooks, world/Hyrule boss-room contracts, rare-item vnums, and Farslay crafting |
+| `tests/test_achievements.py` | Catalog stability, persistence, event hooks, world/Hyrule boss-room contracts, rare-item vnums, Farslay crafting, summary layout, and pager color conversion |
 
 Add focused regression tests for fixed bugs. Expand to integration/smoke testing
 when a change crosses C/Python, parser/runtime, persistence, or world boundaries.
@@ -304,6 +305,29 @@ when a change crosses C/Python, parser/runtime, persistence, or world boundaries
 Command-table order matters because prefix matching selects the first eligible
 match. Place aliases deliberately and use `LOG_NEVER` for password-bearing
 commands.
+
+## Player Output, Color, And Paging
+
+Game source uses canonical three-byte `{HH}` color tokens, where `HH` is a
+hexadecimal color slot. Player-facing output must use one of the normal paths:
+
+- `send_to_char()` color-converts immediate output for the recipient.
+- `page_to_char()` color-converts once, then stores the converted text in the
+  descriptor pager for `show_string()` to send a page at a time.
+- A player with color disabled receives the same text with color markers
+  removed.
+
+`write_to_buffer()` is a descriptor/protocol primitive. Do not pass raw
+player-facing color tokens to it or to `show_string()`; those layers expect
+plain text, protocol bytes, or text already converted for that descriptor.
+Likewise, do not HTML-encode spaces for the web client. The browser bridge
+transports Latin-1 text, and `client.js` renders it through text nodes while
+parsing ANSI into fixed CSS classes.
+
+For formatted command changes, test color on and off, `scroll 0` and a finite
+page length, continuation prompts, narrow terminal wrapping, and both summary
+and long-list views. Keep frequently used summaries within the default page
+length when doing so does not hide useful information.
 
 ## Skills, Spells, Classes, And Races
 
@@ -432,6 +456,8 @@ server implementation there.
   size. Avoid new `sprintf`, `strcpy`, or unbounded `strcat` calls.
 - Use `UNUSED_PARAM(x)` for intentionally unused parameters.
 - Preserve `\n\r` game-client line endings in C output.
+- Route player-facing text through `send_to_char()` or `page_to_char()` rather
+  than writing raw canonical color tokens to descriptors.
 - Check allocation and file/network results where recovery is possible.
 - Be explicit when narrowing to `sh_int`, `int16_t`, bit fields, vnums, ports,
   sizes, or timestamps.

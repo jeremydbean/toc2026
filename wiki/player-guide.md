@@ -309,12 +309,16 @@ achievements collection
 achievements hyrule
 ```
 
-The 105-entry catalog covers character levels and remorts, play time, mobile
+The 111-entry catalog covers character levels and remorts, play time, mobile
 and player kills, named world bosses, rare relics, crafting, unusual deaths,
 quest completions and streaks, exploration, and the full Hyrule campaign.
 Hidden achievements show neither title nor requirement until earned. Credit
 for every listed boss is shared with grouped players present in the boss room,
 so healers and support characters do not need the final hit.
+
+The default summary pairs categories in two columns and shows the five newest
+unlocks without normally interrupting the overview with a paging prompt.
+Category, earned, incomplete, all, and search views remain scrollable.
 
 Existing characters receive credit for facts the old save format already
 knows: level, remorts, play time, qualifying player kills, current quest

@@ -28,7 +28,7 @@ On Windows, run:
 See `wiki/validation-and-area-health.md` for the full validation and area-health runbook.
 
 The August 2026 parsed-world baseline is 99 listed area entries, 2,336 mobiles,
-3,551 objects, and 7,781 rooms, with 0 critical, 11 warning, and 1,565
+3,552 objects, and 7,781 rooms, with 0 critical, 11 warning, and 1,566
 informational area-health findings.
 
 ## Resolved Findings
@@ -57,6 +57,16 @@ informational area-health findings.
 
 - **Previous finding**: flood movement checked the `rand_door` array object instead of verifying that any exits had been collected.
 - **Current status**: resolved. The movement code now breaks when no open exits are found and only selects from populated indexes.
+
+### Paged output exposed raw color tokens
+
+- **Previous finding**: `page_to_char()` stored canonical `{HH}` game-color
+  tokens and `show_string()` wrote them directly, bypassing the conversion used
+  by immediate output. Commands such as `achievements` displayed raw `{0D` and
+  `{0F` text whenever paging was enabled.
+- **Current status**: resolved. Paged text is color-converted once before it is
+  stored, color-disabled players receive plain text, and achievement regression
+  coverage verifies the pager path and compact default summary.
 
 ## Review Priorities
 

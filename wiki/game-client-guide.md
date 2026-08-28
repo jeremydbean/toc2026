@@ -47,6 +47,7 @@ The terminal supports:
 - classic ANSI background colors and text attributes
 - Telnet ECHO negotiation for password fields
 - output split across network frames
+- server-driven paging for long command output
 - bounded display and transcript buffers
 - optional line wrapping and timestamps
 - adjustable fixed terminal text size
@@ -170,6 +171,12 @@ opened with a loopback hostname rather than a LAN address.
 Use the game's color settings to enable ANSI output. The client accepts the
 classic 16-color palette; unsupported terminal cursor-control sequences are
 ignored.
+
+The C server converts its internal `{HH}` color markers before sending output;
+the browser client intentionally parses ANSI only. Seeing literal markers such
+as `{0D` or `{0F` indicates an outdated server binary or a server output path
+that bypassed `send_to_char()`/`page_to_char()`. Rebuild and restart first, then
+report the exact command if the markers remain.
 
 ## Related Guides
 

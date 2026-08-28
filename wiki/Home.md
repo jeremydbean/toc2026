@@ -1,7 +1,7 @@
 # Times of Chaos Documentation
 
 Welcome to the maintained documentation for Times of Chaos. The current world
-inventory is 99 listed area entries, 7,781 rooms, 2,336 mobiles, and 3,551
+inventory is 99 listed area entries, 7,781 rooms, 2,336 mobiles, and 3,552
 objects.
 
 ## Players
@@ -15,7 +15,7 @@ objects.
   purpose with important syntax and restrictions
 - [Psionics Guide](psionics.md) - all 17 powers, costs, defenses, travel
   restrictions, and remort granting rules
-- [Achievement System](achievements.md) - 105 accomplishments covering points,
+- [Achievement System](achievements.md) - 111 accomplishments covering points,
   levels, bosses, relics, crafting, unusual deaths, and Hyrule completion
 - [Advanced Gear Comparison](gear-comparison.md) - `compare` focuses,
   percentages, profile inference, modeled stats, and limitations

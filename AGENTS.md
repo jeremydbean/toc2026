@@ -20,6 +20,8 @@ Maintained documentation:
 - `README.md`: project front door and quick starts
 - `wiki/player-guide.md`: player progression and systems
 - `wiki/player-command-reference.md`: player command map
+- `wiki/achievements.md`: achievement catalog, command views, persistence, and hooks
+- `wiki/game-client-guide.md`: browser terminal, ANSI, paging, and client controls
 - `wiki/hosting-guide.md`: deployment/configuration/persistence
 - `wiki/operator-guide.md`: immortal and incident procedures
 - `wiki/developer-guide.md`: architecture and development workflow
@@ -152,9 +154,9 @@ Current August 2026 Python baseline:
 ```text
 99 listed area entries
 2,336 mobiles
-3,551 objects
+3,552 objects
 7,781 rooms
-0 critical, 11 warning, 1,565 information findings
+0 critical, 11 warning, 1,566 information findings
 ```
 
 Six list entries are help/social files without `#AREA`; native boot creates one
@@ -167,7 +169,9 @@ manual gameplay checks.
 
 ## Source Ownership Map
 
-- `src/comm.c`: sockets, descriptors, login, main loop
+- `src/comm.c`: sockets, descriptors, login, main loop, output, and paging
+- `src/color.c`: canonical game-color parsing and terminal color conversion
+- `src/achievements.c`: achievement catalog, progress, display, and persistence helpers
 - `src/db.c`: world boot and native area parser
 - `src/interp.c`: command registration/order/trust/logging
 - `src/act_move.c`: movement, exits, traps, recall, run/speedwalk
@@ -183,6 +187,7 @@ manual gameplay checks.
 - `src/update.c`: ticks, advancement, scheduled archives
 - `src/const.c`: class/race/skill/group/title tables
 - `webadmin/server.py`: dashboard UI/API/queue/WebSockets
+- `webadmin/static/client.*`: play-first browser terminal and client controls
 - `webadmin/area_parser.py`: independent Python area parser
 - `webadmin/area_health.py`: shared lint engine
 
@@ -196,6 +201,12 @@ manual gameplay checks.
   size. Do not add `sprintf`, `strcpy`, or unbounded `strcat`.
 - Use `UNUSED_PARAM(x)` for intentionally unused parameters.
 - Preserve game output line endings (`\n\r`).
+- Use `send_to_char()` for immediate player text and `page_to_char()` for
+  scrollable output. Both paths convert canonical `{HH}` color tokens; do not
+  send raw player-facing color markup through `write_to_buffer()`.
+- Test formatted output with color enabled and disabled, and with paging both
+  enabled and disabled. Keep normal summary views within the default page size
+  when practical.
 - Validate player-controlled numbers before conversion, multiplication, loops,
   indexing, allocation, or narrowing.
 - Revalidate pointers after calls that can kill, extract, move, or free a
@@ -224,6 +235,7 @@ For each changed command or gameplay path, check:
 - early returns that leave global state or room pointers changed
 - save/reload behavior and old player files
 - help text and actual behavior agreement
+- color enabled/disabled, paging enabled/disabled, and narrow terminal layout
 
 Do not label deliberate random recall as a bug. It can choose any room that is
 eligible and not protected. Some areas, including Hyrule, intentionally disable
