@@ -811,6 +811,59 @@ bool is_full_name ( char *str, char *namelist )
 
 
 
+static void restore_character_affect_bits( CHAR_DATA *ch,
+                                           int primary_bits,
+                                           int secondary_bits )
+{
+    AFFECT_DATA *paf;
+    OBJ_DATA *obj;
+    int restore_primary = 0;
+    int restore_secondary = 0;
+
+    if ( ch == NULL )
+        return;
+
+    restore_primary |= (int)race_table[ch->race].aff;
+
+    for ( paf = ch->affected; paf != NULL; paf = paf->next )
+    {
+        restore_primary |= paf->bitvector;
+        restore_secondary |= paf->bitvector2;
+    }
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->wear_loc == WEAR_NONE )
+            continue;
+
+        if ( obj->pIndexData != NULL )
+            for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
+            {
+                restore_primary |= paf->bitvector;
+                restore_secondary |= paf->bitvector2;
+            }
+
+        for ( paf = obj->affected; paf != NULL; paf = paf->next )
+        {
+            restore_primary |= paf->bitvector;
+            restore_secondary |= paf->bitvector2;
+        }
+
+        if ( IS_OBJ_STAT(obj, ITEM_ADD_AFFECT) )
+        {
+            if ( IS_OBJ_STAT2(obj, ITEM2_ADD_INVIS) )
+                restore_primary |= AFF_INVISIBLE;
+            if ( IS_OBJ_STAT2(obj, ITEM2_ADD_DETECT_INVIS) )
+                restore_primary |= AFF_DETECT_INVIS;
+            if ( IS_OBJ_STAT2(obj, ITEM2_ADD_FLY) )
+                restore_primary |= AFF_FLYING;
+        }
+    }
+
+    SET_BIT( ch->affected_by, restore_primary & primary_bits );
+    SET_BIT( ch->affected_by2, restore_secondary & secondary_bits );
+}
+
 /*
  * Apply or remove an affect to a character.
  */
@@ -999,6 +1052,9 @@ void affect_to_obj(OBJ_DATA *obj, AFFECT_DATA *paf)
  */
 void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
 {
+    int removed_primary = paf != NULL ? paf->bitvector : 0;
+    int removed_secondary = paf != NULL ? paf->bitvector2 : 0;
+
     if ( ch->affected == NULL )
     {
 
@@ -1043,6 +1099,7 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
 	}
     }
     free_affect(paf);
+    restore_character_affect_bits( ch, removed_primary, removed_secondary );
     return;
 
 /* Blackbird
@@ -1055,6 +1112,10 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
 
 void affect_remove_obj( OBJ_DATA *obj, AFFECT_DATA *paf)
 {
+    CHAR_DATA *wearer = obj != NULL ? obj->carried_by : NULL;
+    int removed_primary = paf != NULL ? paf->bitvector : 0;
+    int removed_secondary = paf != NULL ? paf->bitvector2 : 0;
+
     if ( obj->affected == NULL )
     {
 	bug( "Affect_remove_object: no affect.", 0 );
@@ -1088,6 +1149,9 @@ void affect_remove_obj( OBJ_DATA *obj, AFFECT_DATA *paf)
 	}
     }
     free_affect(paf);
+    if ( wearer != NULL )
+        restore_character_affect_bits( wearer, removed_primary,
+                                       removed_secondary );
     return;
 
 /* Blackbird
@@ -1680,6 +1744,8 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
 {
     AFFECT_DATA *paf;
     int i;
+    int removed_primary = 0;
+    int removed_secondary = 0;
 
     if ( obj->wear_loc == WEAR_NONE )
     {
@@ -1693,39 +1759,57 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
 /* BB
     if (!obj->enchanted)
 */  for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
-	    affect_modify( ch, paf, false );
+    {
+        removed_primary |= paf->bitvector;
+        removed_secondary |= paf->bitvector2;
+        affect_modify( ch, paf, false );
+    }
     for ( paf = obj->affected; paf != NULL; paf = paf->next )
-	affect_modify( ch, paf, false );
+	{
+	    removed_primary |= paf->bitvector;
+	    removed_secondary |= paf->bitvector2;
+	    affect_modify( ch, paf, false );
+	}
 
     if( IS_SET(obj->extra_flags, ITEM_ADD_AFFECT) )
     {
        if(IS_SET(obj->extra_flags2, ITEM2_ADD_INVIS) )
        {
-	  if(!is_affected(ch,skill_lookup("invis") ) )
-	  {
-            send_to_char("You slowly fade into existence.\n\r",ch);
-            REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
-            act("$n fades into existence.",ch,NULL,NULL,TO_ROOM);
-          }
+	  removed_primary |= AFF_INVISIBLE;
+	  REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
        }
 
        if(IS_SET(obj->extra_flags2, ITEM2_ADD_DETECT_INVIS) )
        {
-	  if(!is_affected(ch,skill_lookup("detect invis") ) )
-	  {
-	    send_to_char("You lose the ability to see the invisible.\n\r",ch);
-	    REMOVE_BIT(ch->affected_by, AFF_DETECT_INVIS);
-	  }
+	  removed_primary |= AFF_DETECT_INVIS;
+	  REMOVE_BIT(ch->affected_by, AFF_DETECT_INVIS);
        }
 
        if(IS_SET(obj->extra_flags2, ITEM2_ADD_FLY) )
        {
-	  if(!is_affected(ch,skill_lookup("fly") ) )
-	  {
-	    send_to_char("You float back down to the ground.\n\r",ch);
-	    REMOVE_BIT(ch->affected_by, AFF_FLYING);
-	  }
+	  removed_primary |= AFF_FLYING;
+	  REMOVE_BIT(ch->affected_by, AFF_FLYING);
        }
+    }
+
+    restore_character_affect_bits( ch, removed_primary, removed_secondary );
+
+    if( IS_SET(obj->extra_flags, ITEM_ADD_AFFECT) )
+    {
+       if(IS_SET(obj->extra_flags2, ITEM2_ADD_INVIS)
+       && !IS_AFFECTED(ch, AFF_INVISIBLE) )
+       {
+          send_to_char("You slowly fade into existence.\n\r",ch);
+          act("$n fades into existence.",ch,NULL,NULL,TO_ROOM);
+       }
+
+       if(IS_SET(obj->extra_flags2, ITEM2_ADD_DETECT_INVIS)
+       && !IS_AFFECTED(ch, AFF_DETECT_INVIS) )
+	  send_to_char("You lose the ability to see the invisible.\n\r",ch);
+
+       if(IS_SET(obj->extra_flags2, ITEM2_ADD_FLY)
+       && !IS_AFFECTED(ch, AFF_FLYING) )
+	  send_to_char("You float back down to the ground.\n\r",ch);
     }
 
     if ( obj->item_type == ITEM_LIGHT

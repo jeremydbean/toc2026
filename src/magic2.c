@@ -43,6 +43,14 @@ extern ROOM_INDEX_DATA *	room_index_hash		[MAX_KEY_HASH];
 extern int top_room;
 extern AREA_DATA * new_area;
 
+static int lore_estimate( int value )
+{
+    int half = value / 2;
+    int twice = value * 2;
+
+    return number_range( UMIN(half, twice), UMAX(half, twice) );
+}
+
 /* Temp version of Lore. Needs work. */
 void do_lore( CHAR_DATA *ch, char *argument )
 {
@@ -54,6 +62,8 @@ void do_lore( CHAR_DATA *ch, char *argument )
     int check = 0;
     int stat1 = 0;
     int stat2 = 0;
+    int research_cost;
+    int i;
 
     if(IS_NPC(ch) )
        return;
@@ -83,24 +93,31 @@ void do_lore( CHAR_DATA *ch, char *argument )
     if( (chance = ch->pcdata->learned[gsn_lore]) < 1)
        return;
 
-    if (!has_enough_gold(ch, obj->level * 20 - (chance * 2 + ch->level/2)))
+    research_cost = UMAX( 0,
+        obj->level * 20 - ( chance * 2 + ch->level / 2 ) );
+    if (!has_enough_gold(ch, research_cost))
     {
       send_to_char("You don't have enough gold for the research.\n\r",ch);
       return;
     }
 
-    add_money(ch,-1 * (obj->level * 20 - (chance * 2 + ch->level/2)));
+    if ( research_cost > 0 )
+    {
+      add_money(ch, -research_cost);
+      save_char_obj(ch);
+    }
 
     WAIT_STATE( ch, skill_table[gsn_lore].beats );
 
     snprintf( buf, sizeof(buf), "The %s is a %s of some sort, and weights around %d stone.\n\r",
         obj->name,
         item_type_name( obj ),
-        number_range(obj->weight/2,obj->weight*2) );
+        lore_estimate(obj->weight) );
     send_to_char( buf, ch );
 
     snprintf( buf, sizeof(buf), "Looking it over closely, you estimate it's worth about %d gold.\n\r",
-        number_range(obj->cost/2,obj->cost*2) );
+        lore_estimate(obj->cost) );
+    send_to_char( buf, ch );
 
 
     switch ( obj->item_type )
@@ -109,40 +126,21 @@ void do_lore( CHAR_DATA *ch, char *argument )
     case ITEM_POTION:
     case ITEM_PILL:
         snprintf( buf, sizeof(buf), "Level %d spells of:",
-        number_range(obj->value[0]/2,obj->value[0]*2) );
+        lore_estimate(obj->value[0]) );
         send_to_char( buf, ch );
 
-	if( number_percent () < chance )
-	{
-	  check += 1;
-	  if ( obj->value[1] >= 0 && obj->value[1] < MAX_SKILL )
-	  {
-	    send_to_char( " '", ch );
-	    send_to_char( skill_table[obj->value[1]].name, ch );
-	    send_to_char( "'", ch );
-	  }
-	}
-	else if( number_percent () < chance )
-	{
-	  check += 1;
-	  if ( obj->value[2] >= 0 && obj->value[2] < MAX_SKILL )
-	  {
-	    send_to_char( " '", ch );
-	    send_to_char( skill_table[obj->value[2]].name, ch );
-	    send_to_char( "'", ch );
-	  }
-	}
-	else if( number_percent () < chance )
-	{
-	  check += 1;
-	  if ( obj->value[3] >= 0 && obj->value[3] < MAX_SKILL )
-	  {
-	    send_to_char( " '", ch );
-	    send_to_char( skill_table[obj->value[3]].name, ch );
-	    send_to_char( "'", ch );
-	  }
-	}
-        else if( check < 1)
+        for ( i = 1; i <= 3; i++ )
+        {
+          if ( obj->value[i] >= 0 && obj->value[i] < MAX_SKILL
+          &&   number_percent() <= chance )
+          {
+            send_to_char( " '", ch );
+            send_to_char( skill_table[obj->value[i]].name, ch );
+            send_to_char( "'", ch );
+            check++;
+          }
+        }
+        if( check < 1)
             send_to_char("Unknown",ch);
 
         send_to_char( ".\n\r", ch );
@@ -150,10 +148,11 @@ void do_lore( CHAR_DATA *ch, char *argument )
 
     case ITEM_WAND:
     case ITEM_STAFF:
-        snprintf( buf, sizeof(buf), "The staff has %d(%d) charges of level %d,",
-            number_range(obj->value[1]/2,obj->value[1]*2),
-            number_range(obj->value[2]/2,obj->value[2]*2),
-            number_range(obj->value[0]/2,obj->value[0]*2) );
+        snprintf( buf, sizeof(buf), "The %s has %d(%d) charges of level %d,",
+            obj->item_type == ITEM_WAND ? "wand" : "staff",
+            lore_estimate(obj->value[1]),
+            lore_estimate(obj->value[2]),
+            lore_estimate(obj->value[0]) );
 	send_to_char( buf, ch );
 
 	if( number_percent () < chance )
@@ -196,7 +195,7 @@ void do_lore( CHAR_DATA *ch, char *argument )
 	    snprintf(buf, sizeof buf,"Damage is %dd%d (average %d).\n\r",
 		stat1,
 		stat2,
-		( (1 + stat1) + stat2 )/2);
+		stat1 * ( stat2 + 1 ) / 2);
 	}
 
 	if( check > 0)
@@ -208,10 +207,10 @@ void do_lore( CHAR_DATA *ch, char *argument )
     case ITEM_ARMOR:
         snprintf( buf, sizeof(buf),
         "Armor class is %d pierce, %d bash, %d slash, and %d vs. magic.\n\r",
-            number_range(obj->value[0]/2, 15),
-            number_range(obj->value[1]/2, 15),
-            number_range(obj->value[2]/2, 15),
-            number_range(obj->value[3]/2, 15) );
+            lore_estimate(obj->value[0]),
+            lore_estimate(obj->value[1]),
+            lore_estimate(obj->value[2]),
+            lore_estimate(obj->value[3]) );
         send_to_char( buf, ch );
         break;
     }
@@ -224,7 +223,7 @@ void do_lore( CHAR_DATA *ch, char *argument )
 	{
             snprintf( buf, sizeof(buf), "Affects %s by %d.\n\r",
                 affect_loc_name( paf->location ),
-                number_range(paf->modifier/2, paf->modifier*2) );
+                lore_estimate(paf->modifier) );
             send_to_char( buf, ch );
         }
     }
@@ -235,7 +234,7 @@ void do_lore( CHAR_DATA *ch, char *argument )
 	{
             snprintf( buf, sizeof(buf), "Affects %s by %d.\n\r",
                 affect_loc_name( paf->location ),
-                number_range(paf->modifier/2, paf->modifier*2) );
+                lore_estimate(paf->modifier) );
             send_to_char( buf, ch );
         }
     }
@@ -1971,9 +1970,9 @@ void do_transfusion( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
-	 if ( ch->hit < 50 )
+	 if ( ch->hit <= 50 )
 	 {
-	   send_to_char("You don't have the energy.\n\r",ch);
+	   send_to_char("You need more than 50 hit points to transfuse safely.\n\r",ch);
 	   return;
 	 }
 
@@ -3288,6 +3287,21 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     return;
 }
 
+static CHAR_DATA *find_online_player_exact( const char *name )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *victim;
+
+    if ( name == NULL || name[0] == '\0' )
+        return NULL;
+
+    FOR_EACH_CHARACTER( iter, victim )
+        if ( !IS_NPC(victim) && !str_cmp(victim->name, name) )
+            return victim;
+
+    return NULL;
+}
+
 void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
@@ -3307,9 +3321,9 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
 
     one_argument(corpse->name, arg);
 
-    if(( victim = get_char_world(ch,arg) ) == NULL)
+    if(( victim = find_online_player_exact(arg) ) == NULL)
     {
-      send_to_char("There spirit is adrift on another plane right now.\n\r",ch);
+      send_to_char("Their spirit is adrift on another plane right now.\n\r",ch);
       return;
     }
 
@@ -3355,16 +3369,24 @@ void spell_raise_dead( int sn, int level, CHAR_DATA *ch, void *vo )
       obj_next = obj->next_content;
 
       if( victim->carry_number + get_obj_number( obj ) > can_carry_n( victim ) )
-	break;
+	continue;
 
       if( query_carry_weight(victim) + get_obj_weight( obj ) > can_carry_w( victim ) )
-	break;
+	continue;
 
       obj_from_obj( obj );
       obj_to_char(obj, victim);
     }
 
-    extract_obj(corpse);
+    if ( corpse->contains == NULL )
+      extract_obj(corpse);
+    else
+    {
+      send_to_char("Some belongings were too heavy to return and remain in the corpse.\n\r",victim);
+      act("Some of $N's belongings remain in the corpse.",ch,NULL,victim,TO_CHAR);
+    }
+
+    save_char_obj(victim);
 
     if(ch->class == CLASS_CLERIC)
     {
@@ -3402,42 +3424,38 @@ void spell_vortex( int sn, int level, CHAR_DATA *ch, void *vo )
     return;
 }
 
+static OBJ_DATA *find_water_catalyst( CHAR_DATA *ch, int amount )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->wear_loc == WEAR_NONE
+        &&   can_see_obj(ch, obj)
+        &&   obj->item_type == ITEM_DRINK_CON
+        &&   obj->value[2] == LIQ_WATER
+        &&   obj->value[1] >= amount )
+            return obj;
+    }
+
+    return NULL;
+}
+
 void spell_water_burst( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     OBJ_DATA *obj;
-    bool found = false;
 
-    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    obj = find_water_catalyst( ch, 20 );
+    if( obj == NULL )
     {
-	if ( obj->wear_loc == WEAR_NONE
-	&&   can_see_obj( ch, obj )
-	&&   obj->item_type == ITEM_DRINK_CON )
-	{
-	  found = true;
-	  break;
-	}
-    }
-
-    if( !found )
-    {
-      send_to_char("You must have a container of water as a catalyst.\n\r",ch);
+      send_to_char("You need a carried water container holding at least 20 units.\n\r",ch);
       return;
     }
 
-    if ( obj->value[2] != LIQ_WATER && obj->value[1] != 0 )
-    {
-	send_to_char( "It contains some other liquid.\n\r", ch );
-	return;
-    }
-
-    if( obj->value[1] < 20 )
-    {
-      send_to_char("You don't have enough water to generate the spell affect.\n\r",ch);
-      return;
-    }
-
-    obj->value[1] = 0;
+    obj->value[1] -= 20;
+    if ( !IS_NPC(ch) )
+        save_char_obj(ch);
     act("Water jets out of $p and slams into $N!",ch,obj,victim,TO_ROOM);
     act("Water jets out of $p and slams into $N!",ch,obj,victim,TO_CHAR);
     act("Water jets out of $n's $p and slams into you!",ch,obj,victim,TO_VICT);
@@ -3449,34 +3467,11 @@ void spell_geyser( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     OBJ_DATA *obj;
-    bool found = false;
 
-    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    obj = find_water_catalyst( ch, 45 );
+    if( obj == NULL )
     {
-	if ( obj->wear_loc == WEAR_NONE
-	&&   can_see_obj( ch, obj )
-	&&   obj->item_type == ITEM_DRINK_CON )
-	{
-	  found = true;
-	  break;
-	}
-    }
-
-    if( !found )
-    {
-      send_to_char("You must have a container of water as a catalyst.\n\r",ch);
-      return;
-    }
-
-    if ( obj->value[2] != LIQ_WATER && obj->value[1] != 0 )
-    {
-	send_to_char( "It contains some other liquid.\n\r", ch );
-	return;
-    }
-
-    if( obj->value[1] < 45 )
-    {
-      send_to_char("You don't have enough water to generate the spell affect.\n\r",ch);
+      send_to_char("You need a carried water container holding at least 45 units.\n\r",ch);
       return;
     }
 
@@ -3487,7 +3482,9 @@ void spell_geyser( int sn, int level, CHAR_DATA *ch, void *vo )
     act("$n pours water out of $p onto the ground.",ch,obj,NULL,TO_VICT);
     act("Seconds later, a geyser of water erupts under YOU!",ch,obj,victim,TO_VICT);
 
-    extract_obj(obj);
+    obj->value[1] -= 45;
+    if ( !IS_NPC(ch) )
+        save_char_obj(ch);
 
     if (!damage( ch, victim, dice(10, 10) + level, sn, DAM_DROWNING ))
         victim->position = POS_RESTING;  /* victim survived; knock them down */
@@ -3674,7 +3671,7 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
     victim->leader = ch;
     af.type      = (sh_int)(skill_lookup("charm person"));
     af.level	 = ch->level;
-    af.duration  = (sh_int)(number_fuzzy( ch->level ));
+    af.duration  = victim->timer;
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = AFF_CHARM;
@@ -3753,7 +3750,7 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
     victim->leader = ch;
     af.type      = (sh_int)(skill_lookup("charm person"));
     af.level	 = ch->level;
-    af.duration  = (sh_int)(number_fuzzy( ch->level ));
+    af.duration  = victim->timer;
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = AFF_CHARM;
@@ -3832,7 +3829,7 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
     victim->leader = ch;
     af.type      = (sh_int)(skill_lookup("charm person"));
     af.level	 = ch->level;
-    af.duration  = (sh_int)(number_fuzzy( ch->level ));
+    af.duration  = victim->timer;
     af.location  = 0;
     af.modifier  = 0;
     af.bitvector = AFF_CHARM;
@@ -4138,7 +4135,8 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
         if ( obj->wear_loc == WEAR_NONE
         &&   can_see_obj( ch, obj )
         &&   obj->item_type == ITEM_SOUL_CONTAINER
-        &&   obj->trapped == NULL )
+        &&   obj->trapped == NULL
+        &&   obj->value[3] == 0 )
         {
           found = true;
           break;
@@ -4147,13 +4145,7 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
 
     if (!found)
     {
-        send_to_char("You have no soul container to put them in.\n\r",ch);
-        return;
-    }
-
-    if (obj->value[3] != 0)
-    {
-        send_to_char("There is already something in the bottle.\n\r",ch);
+        send_to_char("You have no empty soul container to put them in.\n\r",ch);
         return;
     }
 
@@ -4189,6 +4181,8 @@ void spell_trap_the_soul_fixed(int sn,int level, CHAR_DATA *ch, void *vo)
       snprintf(buf, sizeof buf,"A bottle containing essence of %s is here.",victim->name);
       obj->description = str_dup(buf);
       extract_char(victim, true);
+      if ( !IS_NPC(ch) )
+        save_char_obj(ch);
      }
     else
       send_to_char("Nothing happens.\n\r",ch);

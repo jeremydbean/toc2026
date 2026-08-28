@@ -306,7 +306,8 @@ of servants you can create with this spell: 5 skeletons, 2 wraiths,
 1 vampire, or various combinations of the three.  The higher level the spell
 the more power the servant will have.  These spells can only hold the spirit
 on the mortal plane for certain amount of time, at the end of which the
-spirit will return from whence it came.
+spirit will return from whence it came. The servant remains under the
+necromancer's control for that full summoned lifetime.
 
 These spells are for necromancers only.  Minimum levels are:
 create skeleton - 15
@@ -1089,9 +1090,9 @@ See also: FORCE SWORD, GIANT STRENGTH, ENCHANTMENT
 Syntax: cast 'raise dead' corpse
 
 This spell will bring back to life a player who has had the misfortune of
-dying.  There is a random chance that the resurrected player may lose none,
-some, or most of their eq, so they should be made aware of the risk involved
-in being resurrected.  The spell will fail if the player has nosummon on.
+dying. It returns each corpse item the player can currently carry; anything
+too heavy remains safely in the corpse instead of being destroyed. The spell
+will fail if the player is offline or has nosummon on.
 
 Only C/C of level 31 or higher and necromancers of level 29 or higher can
 raise the dead.
@@ -1246,9 +1247,9 @@ See also: ANIMATE PARTS, LIFE-UNDEATH, HARMFUL
 Syntax: cast 'trap the soul' <victim>
 
 This spell requires a material component, a soul container.  If one is in
-your possession, you can cast the spell, and it will suck your victim into
-the container. NPC's stuck in these containers will remain in them until
-you open the container.  PC's cannot be affected at this time.
+your possession and empty, you can cast the spell, and it will suck your
+victim into the container. NPCs stuck in these containers will remain in
+them until you open the container. PCs cannot be affected at this time.
 
 Only necromancers who have attained hero level may use this spell.
 
@@ -1281,8 +1282,9 @@ Syntax: cast 'geyser' <victim>
 Each of these spells inflicts water damage on the victim.  A material
 component is required to cast either of them - namely, water from a
 container.  Geyser requires more water than 'water burst', as it is a more
-powerful spell.  The amount of liquid needed will be extracted from the
-container to fuel the spell.
+powerful spell. Water burst consumes 20 units and Geyser consumes 45 units
+from a suitable carried water container; neither spell destroys the
+container or wastes the rest of its contents.
 
 For water burst, minimum level depends on your primary class and is:
 Mage:19  Cleric:19  Thief:24  Warrior:24  Monk: N/A   Necromancer:N/A

@@ -278,9 +278,11 @@ See also: CHANGES, NEWS
 0 LORE~
 Syntax: lore <object>
 
-Analyzes an object to reveal its type, magical properties, level, and any
-special effects.  Higher lore skill gives more detailed information and a
-better chance to identify cursed or hidden attributes.
+Researches a carried object and gives approximate weight, value, combat
+properties, magical effects, and spell charges. Higher Lore skill improves
+the chance of recognizing every spell on a multi-spell item. Research may
+cost gold based on item level; skill and character level reduce that fee,
+possibly to zero for simple items.
 
 See also: COMPARE, IDENTIFY, INVENTORY
 ~
@@ -868,6 +870,10 @@ when you are next eligible to receive one.
 Quest objectives are assigned automatically by the quest system and vary
 by character level.  Complete them for experience and quest points that
 can be spent on special rewards.
+
+Use AQUEST REQUEST, COMPLETE, LIST, BUY, ABORT, and GAMBLE at a questmaster.
+After completing a quest, resolve its pending double-or-nothing offer before
+requesting another so the earned points cannot be replaced by a later offer.
 
 See also: QUEST, TOPTEN
 ~
@@ -1897,7 +1903,7 @@ If you are a hero, you may exchange experience for more practices.  The cost
 is 5000 experience points.  This means that if you would rather get more
 practices rather than another level, exchange the experience before leveling.
 Otherwise you'll have to get 5000 more experience up and above your new level.
-Exchanging experience for practices gives you 4-6 more; the exact number of
+Exchanging experience for practices gives you 5-7 more; the exact number of
 practices you get is random.  You may exchange only at the guru in Hero Hall.
 
 See also: PRACTICE, GAIN, TRAIN, WORTH

@@ -1485,6 +1485,7 @@ void do_open( CHAR_DATA *ch, char *argument )
             MOB_INDEX_DATA *pMobIndex;
             CHAR_DATA *temp_ch;
             char buf[MAX_STRING_LENGTH];
+            bool attacks_opener;
             pMobIndex = get_mob_index( obj->value[3]);
             if (pMobIndex == NULL)
             {
@@ -1501,10 +1502,13 @@ void do_open( CHAR_DATA *ch, char *argument )
             act("$N has been let out of $p!",ch,obj,temp_ch,TO_CHAR);
             act("$N has been let out of $p!",ch,obj,temp_ch,TO_ROOM);
 
-              if (number_percent() > 70 && !IS_SET(ch->in_room->room_flags,ROOM_SAFE))
-              one_hit(temp_ch,ch,TYPE_UNDEFINED);
-
+            attacks_opener = number_percent() > 70
+                && !IS_SET(ch->in_room->room_flags, ROOM_SAFE);
             extract_obj(obj);
+            if ( !IS_NPC(ch) )
+                save_char_obj(ch);
+            if ( attacks_opener )
+                one_hit(temp_ch,ch,TYPE_UNDEFINED);
             return;
         }
 

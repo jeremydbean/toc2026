@@ -14,6 +14,7 @@
  
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <time.h>
@@ -2039,24 +2040,31 @@ bool spec_xp_converter( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
    if( cmd != do_exchange) return false;
    if(ch->level < LEVEL_HERO) return false;
 
+   if( ch->practice >= SHRT_MAX )
+   {
+     send_to_char("You cannot retain any more practices.\n\r",ch);
+     return true;
+   }
+
    ch->level -= 1;
    xp = (int)(next_xp_level(ch) + 5000); 
    ch->level += 1;
 
-   if( ch->exp - xp > 0 )
+   if( ch->exp >= xp )
    {
-     practices = dice(1,3) + 4;
+     practices = UMIN(dice(1,3) + 4, SHRT_MAX - ch->practice);
      snprintf(buf, sizeof(buf),"$N gives you %d practices for your experience.",practices);
      act( buf, ch, NULL, mob, TO_CHAR    );
-     ch->practice += practices;
+     ch->practice = (sh_int)(ch->practice + practices);
      ch->exp -= 5000;
+     save_char_obj(ch);
    }
    else
    {
      snprintf(buf, sizeof(buf), "You need %ld experience points for an exchange.\n\r",
 	      xp - ch->exp );
      send_to_char( buf, ch );
-     return false;
+     return true;
    }
  
    return true;

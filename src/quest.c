@@ -24,6 +24,7 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <time.h>
@@ -553,12 +554,22 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
         {
             if (ch->questpoints >= 500)
             {
+                int gained;
+
+                if ( ch->practice >= SHRT_MAX )
+                {
+                    do_say(questman, "You cannot retain any more practices.");
+                    return;
+                }
+
+                gained = UMIN(dice(1,2) + 1, SHRT_MAX - ch->practice);
                 ch->questpoints -= 500;
-                ch->practice += dice(1,2) + 1;
+                ch->practice = (sh_int)(ch->practice + gained);
                 act( "$N gives some practices to $n.", ch, NULL, questman, TO_ROOM );
                 act( "$N gives you some practices.",   ch, NULL, questman, TO_CHAR );
                 snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "%s gained pracs from quest.", ch->name);
                 log_string(log_buf);
+                save_char_obj(ch);
                 return;
             }
             else
@@ -582,13 +593,15 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                 int boon_pracs = number_range(2,4);
                 int boon_gold = number_range(8000,15000);
 
+                boon_pracs = UMIN(boon_pracs, SHRT_MAX - ch->practice);
                 ch->questpoints -= QUEST_ENDGAME_BOON_COST;
-                ch->practice += boon_pracs;
+                ch->practice = (sh_int)(ch->practice + boon_pracs);
                 add_money(ch, boon_gold);
 
                 snprintf(buf, sizeof(buf), "$N calls in favors and grants you %d practices and %d gold!", boon_pracs, boon_gold);
                 act(buf, ch, NULL, questman, TO_CHAR);
                 act("$N whispers ancient secrets to $n and hands over a hefty purse.", ch, NULL, questman, TO_ROOM);
+                save_char_obj(ch);
                 return;
             }
 
@@ -666,6 +679,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                 }
 
                 act("$N seals a chest and hands it to $n with a knowing grin.", ch, NULL, questman, TO_ROOM);
+                save_char_obj(ch);
                 return;
             }
 
@@ -689,6 +703,14 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
     }
     else if (!strcmp(arg1, "request"))
     {
+        if ( ch->questgamble_pts > 0 )
+        {
+            send_to_char(
+                "Resolve your pending AQUEST GAMBLE offer before requesting another quest.\n\r",
+                ch);
+            return;
+        }
+
         act( "$n approaches $N seeking a quest.", ch, NULL, questman, TO_ROOM);
 	act ("You approach $N and ask for a quest.",ch, NULL, questman, TO_CHAR);
 	if (IS_SET(ch->act, PLR_QUESTOR))
@@ -760,6 +782,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    }
 	    SET_BIT(ch->act, PLR_QUESTOR);
 	}
+	save_char_obj(ch);
 	return;
     }
     else if (!strcmp(arg1, "complete"))
@@ -815,7 +838,8 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	        ch->questmob = 0;
 		ch->questobj = 0;
 		ch->questrush = false;
-		ch->queststreak++;
+		if ( ch->queststreak < SHRT_MAX )
+		    ch->queststreak++;
 		achievement_record_quest(ch);
                 add_money(ch,reward);
 		/* double-or-nothing gamble offer */
@@ -836,6 +860,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    ch->nextquest = 5;
 		else
 		    ch->nextquest = 15;
+		save_char_obj(ch);
 	        return;
 	    }
 	    else if (ch->questobj > 0 && ch->countdown > 0)
@@ -893,7 +918,8 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	            ch->questmob = 0;
 		    ch->questobj = 0;
 		    ch->questrush = false;
-		    ch->queststreak++;
+		    if ( ch->queststreak < SHRT_MAX )
+			ch->queststreak++;
 		    achievement_record_quest(ch);
                     add_money(ch,reward);
 		    extract_obj(obj);
@@ -915,6 +941,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 			ch->nextquest = 6;
 		    else
 			ch->nextquest = 15;
+		    save_char_obj(ch);
 		    return;
 		}
 		else
@@ -984,10 +1011,12 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    ch->countdown  = 0;
 	    ch->questmob   = 0;
 	    ch->questobj   = 0;
+	    ch->questrush  = false;
 	    if( ch->level == 50 )
 		ch->nextquest = 7;
 	    else
 		ch->nextquest = 15;
+	    save_char_obj(ch);
 	    return;
 	}
     }

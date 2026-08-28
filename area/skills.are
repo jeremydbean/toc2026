@@ -188,6 +188,8 @@ See also: PSIONICS, EGO WHIP, CONFUSE
 Syntax: transfusion <character>
 
 This skill transfers physical stamina from the user to the target character.
+It costs 50 hit points and cannot be used when doing so would reduce the user
+to zero hit points.
 
 Minimum level: 28
 
@@ -1003,9 +1005,10 @@ Syntax: lore <name of item>
 
 Lore is a general skill, consisting of knowledge of myths and legends. Use
 of the lore skill gives a chance of obtaining information on an object,
-concerning its power and uses.  It also may occasionally increase the value
-of an object, because more will be known about its worth.   This skill is
-only available to members of the thieves' guild.
+concerning its power and uses. Lore reports estimates rather than exact
+figures and may require a research fee based on the item's level. Greater
+skill and character level reduce that fee. This skill is only available to
+members of the thieves' guild.
 
 The minimum level to use this skill depends on your primary class and is:
 

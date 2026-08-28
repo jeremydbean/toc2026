@@ -1832,6 +1832,8 @@ bool remove_obj( CHAR_DATA *ch, int iWear, bool fReplace )
 static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
 {
     char buf[MAX_STRING_LENGTH];
+    int allowed_races;
+    int wearer_race_flag;
 
     if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
     {
@@ -1866,38 +1868,26 @@ static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
     if ( !IS_SET(obj->extra_flags, ITEM_RACE_RESTRICTED) )
         return true;
 
-    if ( IS_SET(obj->extra_flags2, ITEM2_HUMAN_ONLY) && ch->race != 1 )
+    allowed_races = obj->extra_flags2
+        & ( ITEM2_HUMAN_ONLY | ITEM2_ELF_ONLY | ITEM2_DWARF_ONLY
+          | ITEM2_HALFLING_ONLY | ITEM2_SAURIAN_ONLY );
+    wearer_race_flag = 0;
+    switch ( ch->race )
     {
-        snprintf( buf, sizeof(buf), "The %s can only be worn by the %s race.\n\r",
-                  obj->short_descr, race_table[1].name );
-        send_to_char( buf, ch );
-        return false;
+        case 1: wearer_race_flag = ITEM2_HUMAN_ONLY; break;
+        case 2: wearer_race_flag = ITEM2_ELF_ONLY; break;
+        case 3: wearer_race_flag = ITEM2_DWARF_ONLY; break;
+        case 4: wearer_race_flag = ITEM2_HALFLING_ONLY; break;
+        case 5: wearer_race_flag = ITEM2_SAURIAN_ONLY; break;
+        default: break;
     }
-    if ( IS_SET(obj->extra_flags2, ITEM2_ELF_ONLY) && ch->race != 2 )
+
+    if ( allowed_races != 0
+    && ( wearer_race_flag == 0
+      || !IS_SET(allowed_races, wearer_race_flag) ) )
     {
-        snprintf( buf, sizeof(buf), "%s can only be worn by the %sen race.\n\r",
-                  obj->short_descr, race_table[2].name );
-        send_to_char( buf, ch );
-        return false;
-    }
-    if ( IS_SET(obj->extra_flags2, ITEM2_DWARF_ONLY) && ch->race != 3 )
-    {
-        snprintf( buf, sizeof(buf), "Only %s's can wear %s.\n\r",
-                  race_table[3].name, obj->short_descr );
-        send_to_char( buf, ch );
-        return false;
-    }
-    if ( IS_SET(obj->extra_flags2, ITEM2_HALFLING_ONLY) && ch->race != 4 )
-    {
-        snprintf( buf, sizeof(buf), "%s can only be worn by %s's.\n\r",
-                  obj->short_descr, race_table[4].name );
-        send_to_char( buf, ch );
-        return false;
-    }
-    if ( IS_SET(obj->extra_flags2, ITEM2_SAURIAN_ONLY) && ch->race != 5 )
-    {
-        snprintf( buf, sizeof(buf), "%s can only be worn by Saurians.\n\r",
-                  obj->short_descr );
+        snprintf( buf, sizeof(buf), "%s was not fashioned for your race.\n\r",
+                  capitalize(obj->short_descr) );
         send_to_char( buf, ch );
         return false;
     }

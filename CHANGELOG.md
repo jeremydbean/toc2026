@@ -90,6 +90,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed `lore` allowing negative research fees to pay repeatable gold, omitting
+  its value estimate, hiding later spells, and miscalculating negative affects
+  and weapon averages.
+- Fixed Raise Dead destroying belongings the revived player could not carry,
+  ambiguous player matching, and unsaved recoveries; heavy items now remain in
+  the corpse and the spell requires the exact online owner.
+- Fixed soul trapping overlooking later empty bottles, unsaved soul capture and
+  release, Water Burst wasting all water, Geyser destroying its container, and
+  Transfusion allowing its user to remain standing at zero hit points.
+- Kept skeletons, wraiths, and vampires charmed for their full summoned lives,
+  rather than allowing them to roam uncontrolled after an early charm expiry.
+- Fixed multi-race equipment being wearable by no race, repaired the slots and
+  advertised powers of five signature relics, and preserved invisibility,
+  detect-invisibility, and flight when another worn, racial, or spell source
+  still grants the effect.
+- Prevented pending automatic-quest gamble rewards from being overwritten,
+  bounded practice and quest-streak rewards, persisted quest state promptly,
+  cleared rush state on abort, and allowed the hero experience exchange at the
+  exact required experience threshold.
 - Fixed fire, frost, and death-shroud shield state checks so mutually exclusive
   shields cannot stack, and capped energy-drain healing at maximum hit points.
 - Made `concoct` and `scribe` recipes ingredient-order independent, removed
