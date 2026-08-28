@@ -302,6 +302,35 @@ def object_record(
     return record
 
 
+def silver_arrow_object_record() -> str:
+    description = """E
+silver arrow~
+The silver metal shines with a light that does not fade.  The Silver Arrow
+requires level 54; any character level 54 or higher can wield and use it, and
+immortal status is not required.
+Against Ganon, normal strikes with the wielded Silver Arrow use full weapon
+mastery and tear away at least one tenth of his full vitality.  Other weapons,
+spells, poison, and lingering effects can wound him, but no normal attack can
+kill him.
+When Ganon collapses at one hit point and flashes bright red, keep the Silver
+Arrow wielded and type SHOOT GANON.  That final shot always finds him, does not
+require the ARCHERY skill, and does not consume the Silver Arrow.
+~"""
+    return object_record(
+        30218,
+        "silver arrow",
+        "a silver arrow",
+        "A single silver arrow lies here.",
+        "silver",
+        "5 ABGUV AN",
+        "0 4 14 2 0",
+        54,
+        1,
+        5000,
+        description,
+    )
+
+
 def map_art(dungeon: dict[str, Any]) -> str:
     rooms = {room["coordinate"]: room for room in dungeon["rooms"]}
     major_sources = {cellar["source_coordinate"] for cellar in dungeon["cellars"]}
@@ -897,6 +926,7 @@ def build_area(manifest_path: Path, area_path: Path) -> None:
 
     mobile_body = remove_records(mobile_body, NEW_MOBILE_VNUMS)
     object_body = remove_records(object_body, NEW_OBJECT_VNUMS)
+    object_body = replace_record(object_body, 30218, silver_arrow_object_record())
     for dungeon in manifest["dungeons"]:
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))

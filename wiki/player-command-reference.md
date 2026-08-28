@@ -84,10 +84,13 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `fill`, `drink`, `eat`, `feed` | Food, drink, and containers |
 | `quaff`, `recite`, `brandish`, `zap` | Activate potions, scrolls, staves, and wands |
 | `brew`, `concoct`, `scribe` | Create class-supported consumables |
-| `shoot` | Fire a wielded bow with archery skill at an adjacent target |
+| `shoot` | Fire a bow at an adjacent target, or use Hyrule's Silver Arrow finisher |
 | `bomb`, `burn`, `flip`, `play`, `pull`, `push`, `move`, `turn` | Item or area-specific interactions |
 
-Current `shoot` does not use a separate ammunition item.
+Normal bow shooting requires Archery and does not use a separate ammunition
+item. In Hyrule, a level 54 or higher character wielding the Silver Arrow can
+use `shoot ganon` in the same room after Ganon flashes red. That special shot
+requires no Archery skill and does not consume the Arrow.
 
 ## Shops, Services, Money, And Games
 

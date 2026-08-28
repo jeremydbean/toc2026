@@ -992,6 +992,10 @@ struct  kill_data
 #define OBJ_VNUM_SCHOOL_BANNER     3716
 #define OBJ_VNUM_MAP               3162
 
+/* Hyrule progression items. */
+#define OBJ_VNUM_HYRULE_SILVER_ARROW 30218
+#define HYRULE_SILVER_ARROW_LEVEL      54
+
 /* Player-bound automatic quest recovery tokens (mountain.are). */
 #define OBJ_VNUM_QUEST_TOKEN_FIRST 25038
 #define OBJ_VNUM_QUEST_TOKEN_LAST  25042

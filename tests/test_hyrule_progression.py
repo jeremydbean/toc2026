@@ -615,23 +615,28 @@ class HyruleProgressionTests(unittest.TestCase):
             if "silver" in description["keyword"].lower()
         ).lower()
         self.assertEqual(silver_arrow.material, "silver")
-        self.assertEqual(silver_arrow.level, 59)
-        self.assertIn("highest mortal level", guidance)
+        self.assertEqual(silver_arrow.level, 54)
+        self.assertIn("level 54 or higher", guidance)
         self.assertIn("immortal status is not required", guidance)
-        self.assertIn("primary weapon slot", guidance)
-        self.assertIn("final blow", guidance)
-        self.assertIn("not ammunition", guidance)
         self.assertIn("spells, poison, and lingering effects can wound", guidance)
-        self.assertIn("other attack is not enough", guidance)
         self.assertIn("full weapon mastery", guidance)
         self.assertIn("one tenth", guidance)
-        self.assertIn("stunned and cannot fight back", guidance)
+        self.assertIn("shoot ganon", guidance)
+        self.assertIn("does not require the archery skill", guidance)
+        self.assertIn("does not consume the silver arrow", guidance)
+        self.assertIn("no normal attack can kill", guidance)
         self.assertEqual(ganon.imm_flags, "B")
         self.assertEqual(ganon.res_flags, "CP")
         self.assertIn("silver", decode_flags(ganon.vuln_flags, VULN_FLAGS))
         fight_source = Path("src/fight.c").read_text(encoding="utf-8").lower()
         self.assertIn("is_silver_arrow_finishing_hit(ch, dt)", fight_source)
+        self.assertIn("is_silver_arrow_attack(ch, dt)", fight_source)
         self.assertIn("dt == type_hit + weapon->value[3]", fight_source)
+        finishing_source = fight_source.split(
+            "static bool is_silver_arrow_finishing_hit", 1
+        )[1].split("static bool is_stunned_hyrule_ganon", 1)[0]
+        self.assertIn("dt == gsn_archery", finishing_source)
+        self.assertNotIn("type_hit", finishing_source)
         self.assertIn("other attacks can wound", fight_source)
         self.assertIn("!bypass_hyrule_ganon && is_hyrule_ganon(victim)", fight_source)
         self.assertIn("raw_kill_internal( ch, victim, true )", fight_source)
@@ -654,11 +659,28 @@ class HyruleProgressionTests(unittest.TestCase):
             reform_source.index("if ( already_stunned )"),
         )
         self.assertIn("flashes bright red", reform_source)
+        self.assertIn("shoot ganon", reform_source)
+
+        shoot_source = fight_source.split(
+            "void do_shoot", 1
+        )[1].split("void do_steel_fist", 1)[0]
+        self.assertIn("is_silver_arrow_weapon(obj)", shoot_source)
+        self.assertIn("ch->level < hyrule_silver_arrow_level", shoot_source)
+        self.assertIn("!is_stunned_hyrule_ganon(victim)", shoot_source)
+        self.assertIn("gsn_archery, dam_pierce", shoot_source)
+        self.assertLess(
+            shoot_source.index("is_silver_arrow_weapon(obj)"),
+            shoot_source.index("obj->value[0] != weapon_bow"),
+        )
+
+        object_source = Path("src/act_obj.c").read_text(encoding="utf-8").lower()
+        self.assertIn("obj_vnum_hyrule_silver_arrow", object_source)
+        self.assertIn("obj->level = hyrule_silver_arrow_level", object_source)
 
         look_source = Path("src/act_info.c").read_text(encoding="utf-8").lower()
         self.assertIn("is_red_hyrule_ganon", look_source)
         self.assertIn("ganon's body is blazing bright red", look_source)
-        self.assertIn("wield the silver arrow and strike him directly", look_source)
+        self.assertIn("wield the silver arrow and type shoot ganon", look_source)
         self.assertIn('toc_strlcat( buf, "{0c}"', look_source)
 
     def test_hyrule_has_teleport_only_entry_and_no_walking_world_link(self) -> None:

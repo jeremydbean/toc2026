@@ -436,7 +436,7 @@ void show_char_to_char_1( CHAR_DATA *victim, CHAR_DATA *ch )
     if ( is_red_hyrule_ganon( victim ) )
     {
         send_to_char(
-            "{0C}Ganon's body is blazing bright red, and he no longer fights back. Wield the Silver Arrow and strike him directly now!{00}\n\r",
+            "{0C}Ganon's body is blazing bright red, and he no longer fights back. Wield the Silver Arrow and type SHOOT GANON now!{00}\n\r",
             ch );
     }
 

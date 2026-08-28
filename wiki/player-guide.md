@@ -454,17 +454,15 @@ return portals.
 - A dungeon compass gives the general direction toward that dungeon's boss.
 - Candles, bombs, arrows, keys, rafts, ladders, recorders, and room actions are
   part of progression. Read descriptions and inspect inventory carefully.
-- Other weapons and spells can wound Ganon, but only a direct normal strike
-  from the Silver Arrow can kill him. Use `wield silver` in your primary
-  weapon slot and attack normally. There is no separate Silver Arrow `use` or
-  `fire` command, and casting a spell while merely holding it does not count.
-  The Silver Arrow requires level 59, the highest attainable mortal level; it
-  does not require immortal status.
-  Against Ganon, every landed Silver Arrow strike uses full weapon mastery and
-  deals at least 10% of his maximum health after defenses. At one hit point he
-  turns bright red, all combat with him stops, and he remains stunned until the
-  Silver Arrow lands the final blow. `Look ganon` repeats the instruction in
-  this vulnerable phase.
+- Other weapons and spells can wound Ganon, but no normal attack can kill him.
+  Normal strikes with the wielded Silver Arrow still use full weapon mastery
+  and deal at least 10% of his maximum health after defenses.
+- The Silver Arrow requires level 54. It does not require immortal status.
+- At one hit point Ganon turns bright red, all combat with him stops, and he
+  remains stunned. Keep the Silver Arrow wielded and type `shoot ganon` in his
+  room to deliver the final blow. This special shot always lands, requires no
+  Archery skill, and does not consume the Arrow. `Look ganon` repeats the
+  instruction during this vulnerable phase.
 
 The full level bands, dungeon order, commands, generated-data workflow, and
 spoiler-conscious mechanics are in [Hyrule: First Quest](hyrule-area.md).

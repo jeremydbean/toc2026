@@ -1291,20 +1291,19 @@ A single silver arrow lies here.~
 silver~
 5 ABGUV AN
 0 4 14 2 0
-59 1 5000 P
+54 1 5000 P
 E
 silver arrow~
-The silver metal shines with a light that does not fade.  Other weapons,
-spells, poison, and lingering effects can wound Ganon, but none can kill him.
-The Silver Arrow requires level 59, the highest mortal level; immortal status
-is not required to wield it.
-Against Ganon, the Silver Arrow grants full weapon mastery and every landed
-strike tears away at least one tenth of his full vitality.  Once he collapses
-at one hit point, he is stunned and cannot fight back.
-This is a weapon, not ammunition for a separate fire or use command.  Wield
-the Silver Arrow in your primary weapon slot and strike Ganon normally with
-the arrow itself to land the final blow.  Merely holding it while using some
-other attack is not enough; Ganon waits at one hit point for its direct strike.
+The silver metal shines with a light that does not fade.  The Silver Arrow
+requires level 54; any character level 54 or higher can wield and use it, and
+immortal status is not required.
+Against Ganon, normal strikes with the wielded Silver Arrow use full weapon
+mastery and tear away at least one tenth of his full vitality.  Other weapons,
+spells, poison, and lingering effects can wound him, but no normal attack can
+kill him.
+When Ganon collapses at one hit point and flashes bright red, keep the Silver
+Arrow wielded and type SHOOT GANON.  That final shot always finds him, does not
+require the ARCHERY skill, and does not consume the Silver Arrow.
 ~
 #30219
 wooden wood sword~

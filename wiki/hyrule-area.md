@@ -91,10 +91,9 @@ come from the First Quest route references.
 Dungeon 1 starts after the level 1-10 overworld opening. Equipment chests cover
 every player level through 70. Bosses carry the top gear for their band, while
 maps, cellars, and intermediate rooms source the rest. The Master Sword remains
-fixed at level 58 as requested. The required Silver Arrow is level 59, the
-highest attainable mortal level, so a fully remorted mortal can wield it
-without immortal status even though Death Mountain's enemies extend into the
-administrative level range.
+fixed at level 58 as requested. The required Silver Arrow is level 54, so
+characters level 54 or higher can wield it without immortal status even though
+Death Mountain's enemies extend into the administrative level range.
 
 Death Mountain requires all eight Triforce shards before its bombed entrance
 can be used. Ganon drops Golden Key `30243`; that key opens Zelda's room, which
@@ -193,17 +192,16 @@ Runtime rules add the behaviors the area format cannot express alone:
 - Dodongo takes bomb damage.
 - Gohma requires a bow or Silver Arrow for the finishing hit.
 - Ganon can be wounded by ordinary weapons, spells, poison, and lingering
-  damage, but those effects cannot kill him. The finishing hit must be a
-  direct normal strike from the Silver Arrow in the attacker's primary wield
-  slot. Merely holding it while casting another spell does not count. There is
-  no separate fire or use command; immortal `slay` remains an administrative
-  override. Against Ganon only, the Silver Arrow attacks with full weapon
-  mastery and deals at least 10% of his maximum health after defenses on every
-  landed strike. When protected from any other lethal damage, Ganon remains at
-  one hit point, becomes stunned, and cannot recover. Combat immediately ends
-  for everyone targeting him, his room-list appearance turns bright red, and
-  `look ganon` repeats the Silver Arrow instruction while he waits for the
-  final strike.
+  damage, but those effects and normal weapon attacks cannot kill him. Against
+  Ganon only, normal Silver Arrow strikes use full weapon mastery and deal at
+  least 10% of his maximum health after defenses. When protected from lethal
+  damage, Ganon remains at one hit point, becomes stunned, and cannot recover.
+  Combat immediately ends for everyone targeting him and his room-list
+  appearance turns bright red. A level 54 or higher character must keep the
+  Silver Arrow wielded and use `shoot ganon` in the same room. This dedicated
+  finishing shot always lands, requires no Archery skill, and does not consume
+  the Arrow. `Look ganon` repeats that instruction. Immortal `slay` remains an
+  administrative override.
 - Like Likes can swallow equipped shields; Bubbles can disarm weapons.
 - Wallmasters can return a player to that dungeon's entrance.
 - Raft and Stepladder crossings verify the corresponding item.

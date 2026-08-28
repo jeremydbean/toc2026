@@ -98,6 +98,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Made Ganon's Silver Arrow finale an explicit `shoot ganon` action, available
+  at level 54 without Archery skill, while preserving the Arrow's boosted
+  normal damage and preventing normal attacks from delivering the final blow.
 - Ganon's one-hit-point phase now ends combat for every attacker, turns his
   room appearance bright red, announces the Silver Arrow opening, and repeats
   that instruction when players look at him.

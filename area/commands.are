@@ -565,6 +565,12 @@ SHOOT fires a wielded bow at a visible target in an adjacent room.  You must
 know the ARCHERY skill and cannot shoot while already fighting.  The current
 bow system does not require or consume a separate ammunition object.
 
+Hyrule's Silver Arrow is a special exception.  A level 54 or higher character
+who has it wielded can use SHOOT GANON in Ganon's room after he reaches one hit
+point and flashes bright red.  This finishing shot does not require ARCHERY
+and does not consume the Silver Arrow.  Normal attacks can wound Ganon but
+cannot deliver the final blow.
+
 See also: ARCHERY, WIELD, SCAN
 ~
 

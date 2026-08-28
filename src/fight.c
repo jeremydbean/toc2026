@@ -22,7 +22,6 @@
 #define HYRULE_GOHMA_VNUM       30223
 #define HYRULE_GANON_VNUM       30225
 #define HYRULE_BOW_VNUM         30222
-#define HYRULE_SILVER_ARROW_VNUM 30218
 #define HYRULE_SILVER_ARROW_GANON_SKILL 100
 #define HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR 10
 #define HYRULE_LIKE_LIKE_VNUM   30215
@@ -102,6 +101,25 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
         && victim->pIndexData->vnum == HYRULE_GANON_VNUM;
 }
 
+static bool is_silver_arrow_weapon( OBJ_DATA *weapon )
+{
+    return weapon != NULL && weapon->pIndexData != NULL
+        && weapon->item_type == ITEM_WEAPON
+        && weapon->pIndexData->vnum == OBJ_VNUM_HYRULE_SILVER_ARROW;
+}
+
+static bool is_silver_arrow_attack( CHAR_DATA *ch, int dt )
+{
+    OBJ_DATA *weapon;
+
+    if ( ch == NULL )
+        return false;
+
+    weapon = get_eq_char( ch, WEAR_WIELD );
+    return is_silver_arrow_weapon( weapon )
+        && ( dt == gsn_archery || dt == TYPE_HIT + weapon->value[3] );
+}
+
 static bool is_silver_arrow_finishing_hit( CHAR_DATA *ch, int dt )
 {
     OBJ_DATA *weapon;
@@ -110,10 +128,7 @@ static bool is_silver_arrow_finishing_hit( CHAR_DATA *ch, int dt )
         return false;
 
     weapon = get_eq_char( ch, WEAR_WIELD );
-    return weapon != NULL && weapon->pIndexData != NULL
-        && weapon->item_type == ITEM_WEAPON
-        && weapon->pIndexData->vnum == HYRULE_SILVER_ARROW_VNUM
-        && dt == TYPE_HIT + weapon->value[3];
+    return is_silver_arrow_weapon( weapon ) && dt == gsn_archery;
 }
 
 static bool is_stunned_hyrule_ganon( CHAR_DATA *victim )
@@ -140,14 +155,14 @@ static void reform_hyrule_ganon( CHAR_DATA *ch, CHAR_DATA *victim )
 
     if ( ch != NULL && ch != victim )
     {
-        act( "{0C}$N flashes bright red as the darkness around $M shatters!{00} The fight breaks off at one hit point. Other attacks can wound $M, but only a direct strike from the wielded Silver Arrow can finish $M!",
+        act( "{0C}$N flashes bright red as the darkness around $M shatters!{00} The fight breaks off at one hit point. Other attacks can wound $M, but now you must wield the Silver Arrow and type SHOOT GANON!",
              ch, NULL, victim, TO_CHAR );
-        act( "{0C}$N flashes bright red as the darkness around $M shatters!{00} The fight breaks off. Only a direct strike from the Silver Arrow can finish $M.",
+        act( "{0C}$N flashes bright red as the darkness around $M shatters!{00} The fight breaks off. Only SHOOT GANON with the wielded Silver Arrow can finish $M.",
              ch, NULL, victim, TO_NOTVICT );
     }
     else
     {
-        act( "{0C}$n flashes bright red as the darkness around $m shatters!{00} The fight breaks off at one hit point. Only a direct strike from the Silver Arrow can finish $m.",
+        act( "{0C}$n flashes bright red as the darkness around $m shatters!{00} The fight breaks off at one hit point. Wield the Silver Arrow and type SHOOT GANON to finish $m.",
              victim, NULL, NULL, TO_ROOM );
     }
 }
@@ -860,7 +875,7 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     sn = dt == gsn_dual_wield ? get_dual_sn(ch) : get_weapon_sn(ch);
     skill = get_weapon_skill(ch,sn);
     if ( is_hyrule_ganon(victim)
-    &&   is_silver_arrow_finishing_hit(ch, dt) )
+    &&   is_silver_arrow_attack(ch, dt) )
         skill = UMAX(skill, HYRULE_SILVER_ARROW_GANON_SKILL);
 
     /*
@@ -1060,7 +1075,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	return false;
 
     hyrule_silver_arrow_hit = dam > 0 && is_hyrule_ganon(victim)
-        && is_silver_arrow_finishing_hit(ch, dt);
+        && is_silver_arrow_attack(ch, dt);
 
     if(IS_AFFECTED2(victim,AFF2_FLAMING_HOT) )
       shield = 1;
@@ -1283,7 +1298,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
         if ( victim->hit < 1
         &&   victim->pIndexData->vnum == HYRULE_GOHMA_VNUM
         &&   !wields_object_vnum(ch, HYRULE_BOW_VNUM)
-        &&   !wields_object_vnum(ch, HYRULE_SILVER_ARROW_VNUM) )
+        &&   !wields_object_vnum(ch, OBJ_VNUM_HYRULE_SILVER_ARROW) )
         {
             victim->hit = 1;
             act( "$N's armored eye closes; only an arrow can finish the blow.",
@@ -5107,6 +5122,65 @@ void do_shoot( CHAR_DATA *ch, char *argument )
     {
 	send_to_char( "You need to wield a bow to shoot.\n\r", ch );
 	return;
+    }
+
+    if ( is_silver_arrow_weapon(obj) )
+    {
+        obj->level = HYRULE_SILVER_ARROW_LEVEL;
+
+        if ( arg[0] == '\0' )
+        {
+            send_to_char( "Shoot whom with the Silver Arrow? Try SHOOT GANON.\n\r", ch );
+            return;
+        }
+
+        if ( !IS_NPC(ch) && ch->level < HYRULE_SILVER_ARROW_LEVEL )
+        {
+            send_to_char( "You must be level 54 to command the Silver Arrow.\n\r", ch );
+            return;
+        }
+
+        victim = get_char_room( ch, arg );
+        if ( victim == NULL || !is_hyrule_ganon(victim) )
+        {
+            send_to_char( "The Silver Arrow can only be shot at Ganon while he is here.\n\r", ch );
+            return;
+        }
+
+        if ( victim == ch )
+        {
+            send_to_char( "You cannot turn the Silver Arrow upon yourself.\n\r", ch );
+            return;
+        }
+
+        if ( !is_stunned_hyrule_ganon(victim) )
+        {
+            send_to_char( "Ganon is not vulnerable yet. Wound him until he flashes bright red.\n\r", ch );
+            return;
+        }
+
+        if ( ch->fighting != NULL && ch->fighting != victim )
+        {
+            send_to_char( "You are too busy fighting someone else to aim the Silver Arrow.\n\r", ch );
+            return;
+        }
+
+        if ( is_safe(ch, victim) )
+            return;
+
+        stop_fighting( victim, true );
+        WAIT_STATE( ch, skill_table[gsn_archery].beats );
+        act( "{0F}You aim $p at $N and release its silver light!{00}",
+             ch, obj, victim, TO_CHAR );
+        act( "{0F}$n aims $p at $N and releases its silver light!{00}",
+             ch, obj, victim, TO_NOTVICT );
+        act( "{0F}$n aims $p at you and releases its silver light!{00}",
+             ch, obj, victim, TO_VICT );
+        damage( ch, victim,
+                UMAX(1, victim->max_hit
+                    / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR),
+                gsn_archery, DAM_PIERCE );
+        return;
     }
 
     if( obj->value[0] != WEAPON_BOW)

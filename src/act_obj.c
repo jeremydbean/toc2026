@@ -1851,6 +1851,11 @@ static bool wear_requirements_met( CHAR_DATA *ch, OBJ_DATA *obj )
     int allowed_races;
     int wearer_race_flag;
 
+    /* Normalize copies saved before the Silver Arrow requirement became 54. */
+    if ( obj->pIndexData != NULL
+    &&   obj->pIndexData->vnum == OBJ_VNUM_HYRULE_SILVER_ARROW )
+        obj->level = HYRULE_SILVER_ARROW_LEVEL;
+
     if ( IS_OBJ_STAT(obj, ITEM_HEATED) )
     {
         act( "$p is still scorching hot -- you can't wear it yet!", ch, obj, NULL, TO_CHAR );
