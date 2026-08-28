@@ -644,11 +644,9 @@ cmd_content = replace_once(cmd_content, OLD_ECHO_SA, NEW_ECHO_SA, "ECHO remove R
 OLD_PSYCHIC_END = """0 PSYCHIC~
 Syntax: psychic
 
-Toggle psychic resonance mode.  An advanced psionic state that enhances
-all active mental abilities: MINDBAR becomes stronger, psionic attack
-spells deal more damage, and your saves against mental effects improve.
-PSYCHIC mode requires substantial psionic training and drains mana
-steadily while active.  It cannot be combined with IRON or ROLL stances.
+Raise a temporary Psychic Shield around every unprotected member of your
+group in the room.  The shield reduces incoming mental damage by one quarter.
+It does not replace an existing Mindbar, Psionic Armor, or Psychic Shield.
 
 See also: PSIONIC, MINDBAR, PSIONICS
 ~"""
@@ -656,44 +654,37 @@ See also: PSIONIC, MINDBAR, PSIONICS
 NEW_PSYCHIC_WITH_PSIONICS = """0 PSYCHIC~
 Syntax: psychic
 
-Toggle psychic resonance mode.  An advanced psionic state that enhances
-all active mental abilities: MINDBAR becomes stronger, psionic attack
-spells deal more damage, and your saves against mental effects improve.
-PSYCHIC mode requires substantial psionic training and drains mana
-steadily while active.  It cannot be combined with IRON or ROLL stances.
+Raise a temporary Psychic Shield around every unprotected member of your
+group in the room.  The shield reduces incoming mental damage by one quarter.
+It does not replace an existing Mindbar, Psionic Armor, or Psychic Shield.
 
 See also: PSIONIC, MINDBAR, PSIONICS
 ~
 
 0 PSIONICS~
 Psionics are mental disciplines available to characters who have remorted at
-least twice (remort 2+).  Upon qualifying, you automatically receive 4
-randomly chosen skills from each of 4 psionic disciplines (16 total possible
-skills spread across the disciplines).  At remort 5 (final) all 16 psionic
-skills are granted.
+least twice (remort 2+).  Upon qualifying, you receive one randomly selected
+skill from each of four disciplines, for four skills total.  At remort 5
+(final), all 17 psionic skills are granted.
 
 PSIONIC DISCIPLINES
 
-  Telepathy:   clairvoyance, danger (sense), project (astral scout),
-               astral walk, shift (teleport to player)
+  Assault:     ego whip, torment, nightmare, mindblast
 
-  Kinesis:     telekinesis (TK), levitate, mindblast, ego whip,
-               mind leech
+  Astral:      astral walk, shift, project, telekinesis (TK)
 
-  Control:     confuse, nightmare, torment, enervate, transfusion
+  Defense:     mindbar, psionic armor, psychic shield, transfusion
 
-  Defense:     mindbar, psionic armor, psychic shield, psionic (awareness),
-               psychic (resonance mode)
+  Control:     clairvoyance, confuse, mind leech, enervate, pyrotechnics
 
 PASSIVE BENEFITS
   Remort 2+: access to psionic skills; immune to hunger and thirst.
   Remort 4+: recall always succeeds (no skill check).
-  Remort 5:  all 16 psionic skills granted; unlimited carry capacity.
+  Remort 5:  all 17 psionic skills granted; unlimited carry capacity.
 
 RESOURCE COST
-  Most psionic skills draw from your mana pool.  Some toggles (MINDBAR,
-  PSIONIC, PSYCHIC, STEALTH, etc.) maintain a small per-tick mana drain while
-  active.
+  Psionic skills draw from your mana pool when used.  Defensive powers last
+  for a limited duration; they are not toggles and do not drain mana per tick.
 
 See also: REMORT, MINDBAR, PSIONIC, PSYCHIC, TELEKINESIS, CLAIRVOYANCE,
           MINDBLAST, CONFUSE, NIGHTMARE, TORMENT, ENERVATE, TRANSFUSION,

@@ -38,10 +38,86 @@ bool    check_dispel    args( ( int dis_level, CHAR_DATA *victim, int sn) );
 extern char *target_name;
 
 extern void say_spell   args( ( CHAR_DATA *ch, int sn ) );
+extern void set_fighting args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 extern  const char * dir_name	[];
 extern ROOM_INDEX_DATA *	room_index_hash		[MAX_KEY_HASH];
 extern int top_room;
 extern AREA_DATA * new_area;
+
+#define MOB_VNUM_PSIONIC_PROJECTION 7550
+
+static bool psionic_defense_active( CHAR_DATA *victim )
+{
+    return is_affected( victim, gsn_psionic_armor )
+        || is_affected( victim, gsn_psychic_shield )
+        || is_affected( victim, gsn_mindbar );
+}
+
+static int psionic_reduce_mental_drain( CHAR_DATA *victim, int amount )
+{
+    if ( is_affected( victim, gsn_psionic_armor )
+    ||   is_affected( victim, gsn_psychic_shield ) )
+        amount -= amount / 4;
+    else if ( is_affected( victim, gsn_mindbar ) )
+        amount /= 2;
+
+    return UMAX( 0, amount );
+}
+
+static bool psionic_remote_room_blocked( CHAR_DATA *ch,
+                                         ROOM_INDEX_DATA *room,
+                                         bool block_safe,
+                                         bool block_no_recall )
+{
+    if ( room == NULL
+    ||   !can_see_room( ch, room )
+    ||   room_is_private( room )
+    ||   IS_SET( room->room_flags, ROOM_PRIVATE )
+    ||   IS_SET( room->room_flags, ROOM_SOLITARY )
+    ||   IS_SET( room->room_flags, ROOM_JAIL )
+    ||   IS_SET( room->room_flags, ROOM_DT )
+    ||   IS_SET( room->room_flags, ROOM_GODS_ONLY )
+    ||   IS_SET( room->room_flags, ROOM_IMP_ONLY )
+    ||   IS_SET( room->room_flags, ROOM_NEWBIES_ONLY )
+    ||   IS_SET( room->room_flags2, ROOM2_NO_TPORT ) )
+        return true;
+
+    if ( block_safe && IS_SET( room->room_flags, ROOM_SAFE ) )
+        return true;
+
+    if ( block_no_recall && IS_SET( room->room_flags, ROOM_NO_RECALL ) )
+        return true;
+
+    return false;
+}
+
+static bool psionic_switch_into( CHAR_DATA *ch, CHAR_DATA *projection )
+{
+    if ( ch == NULL || projection == NULL || ch->desc == NULL
+    ||   ch->desc->original != NULL || projection->desc != NULL )
+        return false;
+
+    ch->desc->character = projection;
+    ch->desc->original  = ch;
+    projection->desc    = ch->desc;
+    ch->desc             = NULL;
+    projection->comm     = ch->comm;
+    projection->lines    = ch->lines;
+    return true;
+}
+
+static void psionic_start_combat( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    if ( ch == NULL || victim == NULL || ch == victim )
+        return;
+
+    check_killer( ch, victim );
+
+    if ( ch->fighting == NULL && ch->position > POS_STUNNED )
+        set_fighting( ch, victim );
+    if ( victim->fighting == NULL && victim->position > POS_STUNNED )
+        set_fighting( victim, ch );
+}
 
 static int lore_estimate( int value )
 {
@@ -257,18 +333,18 @@ void do_project( CHAR_DATA *ch, char *argument )
     int move;
 
 
-    if(IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ) )
-	 return;
+    if ( IS_NPC(ch) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+        return;
 
     argument = one_argument (argument, arg);
 
-    if((chance = get_skill(ch,gsn_project)) == 0)
+    if ( (chance = get_skill(ch, gsn_project)) == 0 )
     {
 	send_to_char("Do what?\n\r",ch);
 	return;
     }
 
-    if (arg[0] == '\0')
+    if ( arg[0] == '\0' )
     {
 	 send_to_char( "Specify a direction.\n\r", ch);
 	 return;
@@ -289,24 +365,35 @@ void do_project( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if(ch->mana < 25)
+    if ( ch->desc == NULL || ch->desc->original != NULL )
+    {
+        send_to_char( "Your spirit cannot leave your body right now.\n\r", ch );
+        return;
+    }
+
+    if ( (pMobIndex = get_mob_index(MOB_VNUM_PSIONIC_PROJECTION)) == NULL )
+    {
+        bug( "Do_project: projection mobile %d is missing.",
+             MOB_VNUM_PSIONIC_PROJECTION );
+        send_to_char( "The astral plane is unavailable right now.\n\r", ch );
+        return;
+    }
+
+    if ( ch->mana < 25 )
     {
 	 send_to_char("You don't have enough mana.\n\r",ch);
 	 return;
     }
 
-    if( number_percent( ) > chance )
-	 {
-	   send_to_char("You lost your concentration.\n\r",ch);
-	   ch->mana -= 5;
-	   check_improve(ch,gsn_project,false,4);
-	   return;
-	 }
+    if ( number_percent() > chance )
+    {
+        send_to_char( "You lost your concentration.\n\r", ch );
+        ch->mana -= 5;
+        check_improve( ch, gsn_project, false, 4 );
+        return;
+    }
 
     ch->mana -= 25;
-
-    if ( ( pMobIndex = get_mob_index( 7550 ) ) == NULL )
-	return;
 
     victim = create_mobile( pMobIndex );
     char_to_room( victim, ch->in_room );
@@ -321,43 +408,51 @@ void do_project( CHAR_DATA *ch, char *argument )
 	 act( "A glowing aura rises out of $n and drifts off to the $t.", ch,
 		 dir_name[door], NULL, TO_ROOM );
 
-    do_switch(ch,"ghost");
+    if ( !psionic_switch_into(ch, victim) )
+    {
+        extract_char( victim, true );
+        ch->mana = (sh_int)(UMIN(ch->max_mana, ch->mana + 25));
+        send_to_char( "Your spirit cannot separate from your body.\n\r", ch );
+        return;
+    }
 
-	for ( move = 0; move <= level; move++ )
-	 {
-	    EXIT_DATA *pexit;
+    for ( move = 0; move <= level; move++ )
+    {
+        EXIT_DATA *pexit;
 
-	    if ( ( pexit   = in_room->exit[door] ) == NULL
-	    || ( to_room = pexit->u1.to_room   ) == NULL
-	    ||   IS_SET(pexit->exit_info, EX_SECRET)
-	    ||   IS_SET(pexit->exit_info, EX_WIZLOCKED) )
-	    {
-		 send_to_char("Your spirit has run into an impassable barrier.\n\r",victim);
-		 send_to_char( "You return to your body.\n\r", victim );
-		 do_return(victim,"");
-		 extract_char( victim, true );
-		 check_improve(ch,gsn_project,true,4);
-		 return;
-	    }
-	    else
-	    {
-		  char_from_room( victim );
-		  char_to_room( victim, to_room );
-		  do_look(victim,"auto");
-		  if(number_percent() > 50)
-		    act("You notice a ghostly figure out of the corner of your eye",
-			    victim,NULL,NULL,TO_ROOM);
-		  send_to_char("\n\r",victim);
-	    }
-	   in_room = victim->in_room;
-	 }
+        if ( (pexit = in_room->exit[door]) == NULL
+        ||   (to_room = pexit->u1.to_room) == NULL
+        ||   IS_SET(pexit->exit_info, EX_SECRET)
+        ||   IS_SET(pexit->exit_info, EX_WIZLOCKED)
+        ||   psionic_remote_room_blocked(ch, to_room, false, false) )
+        {
+            send_to_char( "Your spirit has run into an impassable barrier.\n\r",
+                          victim );
+            send_to_char( "You return to your body.\n\r", victim );
+            do_return( victim, "" );
+            extract_char( victim, true );
+            check_improve( ch, gsn_project, true, 4 );
+            WAIT_STATE( ch, skill_table[gsn_project].beats );
+            return;
+        }
+
+        char_from_room( victim );
+        char_to_room( victim, to_room );
+        do_look( victim, "auto" );
+        if ( number_percent() > 50 )
+            act( "You notice a ghostly figure out of the corner of your eye.",
+                 victim, NULL, NULL, TO_ROOM );
+        send_to_char( "\n\r", victim );
+        in_room = victim->in_room;
+    }
 
     send_to_char("You reach the end of your astral endurance.\n\r",victim );
     send_to_char( "You return to your body.\n\r", victim );
 
-    do_return(victim,"");
+    do_return( victim, "" );
     extract_char( victim, true );
-    check_improve(ch,gsn_project,true,4);
+    check_improve( ch, gsn_project, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_project].beats );
     return;
 
 }
@@ -369,6 +464,7 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     int chance;
     int drain;
+    bool resisted;
 
     one_argument( argument, arg );
 
@@ -448,14 +544,24 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
 
         if ( victim == ch )
             return;
+
+        if ( is_safe_spell(ch, victim, false)
+        ||   IS_AFFECTED2(victim, AFF2_GHOST)
+        ||   IS_AFFECTED2(ch, AFF2_GHOST) )
+            return;
     }
 
     /* Amount to drain scales with caster level. */
     drain = number_range( ch->level * 2, ch->level * 3 );
+    resisted = saves_spell( ch->level, victim );
+    if ( resisted )
+        drain /= 2;
+    drain = psionic_reduce_mental_drain( victim, drain );
     drain = UMIN( drain, victim->mana );
 
     if ( drain > 0 )
     {
+        psionic_start_combat( ch, victim );
         victim->mana -= drain;
         /* Caster absorbs half the drained mana. */
         ch->mana = (sh_int)(UMIN( ch->max_mana, ch->mana + drain / 2 ));
@@ -465,10 +571,12 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
     }
     else
     {
-        /* Target has no mana — deal mental damage instead. */
+        /* Target has no mana, so the failed drain becomes mental damage. */
         drain = number_range( ch->level, ch->level * 2 );
-        act( "You probe $N's empty mind and find nothing to drain — the shock damages $M!", ch, NULL, victim, TO_CHAR );
-        act( "$n probes your mind and finds it empty — the backlash hurts!", ch, NULL, victim, TO_VICT );
+        if ( resisted )
+            drain /= 2;
+        act( "You probe $N's empty mind and the shock damages $M!", ch, NULL, victim, TO_CHAR );
+        act( "$n probes your empty mind and the backlash hurts!", ch, NULL, victim, TO_VICT );
         if (damage( ch, victim, drain, gsn_mindleech, DAM_MENTAL ))
         {
             /* victim was killed — skip the fight-start block */
@@ -481,14 +589,6 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
     check_improve(ch, gsn_mindleech, true, 4);
     WAIT_STATE(ch, skill_table[gsn_mindleech].beats);
 
-    if ( ch->fighting == NULL && victim->fighting == NULL )
-    {
-        ch->fighting = victim;
-        victim->fighting = ch;
-        ch->position = POS_FIGHTING;
-        victim->position = POS_FIGHTING;
-    }
-
     return;
 }
 
@@ -500,6 +600,9 @@ void do_enervate( CHAR_DATA *ch, char *argument )
     int chance;
     int hp_drain;
     int move_drain;
+    int victim_hit_before;
+    int actual_damage;
+    bool resisted;
 
     one_argument( argument, arg );
 
@@ -579,10 +682,19 @@ void do_enervate( CHAR_DATA *ch, char *argument )
 
         if ( victim == ch )
             return;
+
+        if ( is_safe_spell(ch, victim, false)
+        ||   IS_AFFECTED2(victim, AFF2_GHOST)
+        ||   IS_AFFECTED2(ch, AFF2_GHOST) )
+            return;
     }
 
     /* Drain endurance (move) and absorb half back. */
+    resisted = saves_spell( ch->level, victim );
     move_drain = number_range( ch->level, ch->level * 2 );
+    if ( resisted )
+        move_drain /= 2;
+    move_drain = psionic_reduce_mental_drain( victim, move_drain );
     move_drain = UMIN( move_drain, victim->move );
     if ( move_drain > 0 )
     {
@@ -592,11 +704,14 @@ void do_enervate( CHAR_DATA *ch, char *argument )
 
     /* Deal HP damage and absorb half as healing. */
     hp_drain = number_range( ch->level, ch->level * 2 );
+    if ( resisted )
+        hp_drain /= 2;
 
     act( "You tear the life force from $N, drinking in $S vitality!", ch, NULL, victim, TO_CHAR );
     act( "$n tears your life force away, leaving you weakened and spent!", ch, NULL, victim, TO_VICT );
     act( "$n's eyes dim as $e drains $N's very life and endurance.", ch, NULL, victim, TO_NOTVICT );
 
+    victim_hit_before = victim->hit;
     if (damage( ch, victim, hp_drain, gsn_enervate, DAM_MENTAL ))
     {
         /* victim was killed — skip healing and fight-start */
@@ -605,19 +720,12 @@ void do_enervate( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Heal the caster for half the HP damage. */
-    ch->hit = (sh_int)(UMIN( ch->max_hit, ch->hit + hp_drain / 2 ));
+    /* Heal only from damage that actually passed saves, defenses, and immunity. */
+    actual_damage = UMAX( 0, victim_hit_before - victim->hit );
+    ch->hit = (sh_int)(UMIN( ch->max_hit, ch->hit + actual_damage / 2 ));
 
     check_improve(ch, gsn_enervate, true, 4);
     WAIT_STATE(ch, skill_table[gsn_enervate].beats);
-
-    if ( ch->fighting == NULL && victim->fighting == NULL )
-    {
-        ch->fighting = victim;
-        victim->fighting = ch;
-        ch->position = POS_FIGHTING;
-        victim->position = POS_FIGHTING;
-    }
 
     return;
 }
@@ -645,6 +753,13 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
 
+    if ( IS_AFFECTED2(ch, AFF2_GHOST) )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "You cannot attack while in this form.\n\r", ch );
+        return;
+    }
+
     if(!IS_NPC(ch))
     {
 	 if( (chance = get_skill(ch,gsn_mindblast)) == 0)
@@ -671,9 +786,6 @@ void do_mindblast( CHAR_DATA *ch, char *argument )
 	if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
 	    (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
 		 return;
-
-    if ( IS_AFFECTED2(ch, AFF2_GHOST ) )
-        return;
 
     level = ch->level;
 
@@ -785,6 +897,13 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
 	   return;
 	 }
 
+         if ( is_affected(victim, gsn_nightmare) )
+         {
+             act( "$N is already trapped in a nightmare.",
+                  ch, NULL, victim, TO_CHAR );
+             return;
+         }
+
 	 if( number_percent( ) > chance )
 	 {
 	   send_to_char("You lost your concentration.\n\r",ch);
@@ -818,11 +937,21 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
 	    return;
     }
 
-    if ( is_affected( victim, skill_lookup("nightmare" ) )
-	 || saves_spell( level, victim ) )
+    if ( is_affected(victim, gsn_nightmare) )
     {
-	send_to_char("You failed.\n\r",ch);
-	return;
+        if ( !IS_NPC(ch) )
+            act( "$N is already trapped in a nightmare.",
+                 ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
+    if ( saves_spell(level, victim) )
+    {
+        send_to_char( "You failed.\n\r", ch );
+        psionic_start_combat( ch, victim );
+        check_improve( ch, gsn_nightmare, false, 4 );
+        WAIT_STATE( ch, skill_table[gsn_nightmare].beats );
+        return;
     }
 
     dream = number_range( level/2, level * 3 );
@@ -851,9 +980,7 @@ void do_nightmare( CHAR_DATA *ch, char *argument )
     send_to_char( "Your victim is now seeing horrible visions.\n\r",ch);
     check_improve(ch,gsn_nightmare,true,4);
     WAIT_STATE( ch,skill_table[gsn_nightmare].beats);
-
-    if(ch->fighting == NULL)
-	damage(ch,victim,1,gsn_nightmare,DAM_MENTAL);
+    psionic_start_combat( ch, victim );
 
     return;
 }
@@ -894,59 +1021,75 @@ void spell_cure_nightmare( int sn, int level, CHAR_DATA *ch, void *vo )
 /* psi */
 void do_astral_walk( CHAR_DATA *ch, char *argument )
 {
-  char arg[MAX_INPUT_LENGTH];
-  CHAR_DATA *victim;
-  bool trans_pet;
-  int chance;
+    char arg[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+    bool trans_pet;
+    int chance = 0;
 
     one_argument( argument, arg );
 
-    if( !IS_NPC(ch))
+    if ( !IS_NPC(ch) )
     {
-	 if(( chance = get_skill(ch,gsn_astral_walk)) == 0)
-	 {
-	  send_to_char("Do what?\n\r",ch);
-	  return;
-	 }
-
-	 if( ch->mana < 70)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
-
-	 if( number_percent () > chance  )
-	 {
-	   send_to_char("You lost your concentration.\n\r",ch);
-	   ch->mana -= 5;
-	   check_improve(ch,gsn_astral_walk,false,4);
-	   return;
-	 }
-	 ch->mana -= 70;
+        if ( (chance = get_skill(ch, gsn_astral_walk)) == 0 )
+        {
+            send_to_char( "Do what?\n\r", ch );
+            return;
+        }
     }
-    else if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
-	     (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		 return;
+    else if ( IS_SET(ch->act, ACT_PET)
+         ||   IS_SET(ch->affected_by, AFF_CHARM)
+         ||   (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+        return;
 
-    if ( ( victim = get_char_world( ch, arg ) ) == NULL
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Whose mind do you want to walk toward?\n\r", ch );
+        return;
+    }
+
+    victim = get_char_world( ch, arg );
+    if ( victim == NULL
     ||   victim == ch
     ||   IS_IMMORTAL(victim)
-    ||   victim->in_room == NULL
-    ||   IS_SET(victim->in_room->room_flags,ROOM_JAIL)
-    ||   IS_SET(ch->in_room->room_flags,ROOM_JAIL)
-    ||   !can_see_room(ch,victim->in_room)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_SAFE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_PRIVATE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_GODS_ONLY)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_IMP_ONLY)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_NEWBIES_ONLY)
-    ||   (IS_NPC(victim) && IS_SET(victim->imm_flags,IMM_SUMMON))
-    ||   (IS_NPC(victim) && saves_spell(ch->level,victim))
-    ||   (!IS_NPC(victim) && IS_SET(victim->act,PLR_NOSUMMON) ) )
+    ||   (victim != NULL && victim->in_room == ch->in_room)
+    ||   psionic_remote_room_blocked(ch, ch->in_room, false, true)
+    ||   psionic_remote_room_blocked(ch, victim != NULL ? victim->in_room : NULL,
+                                     true, true)
+    ||   (victim != NULL
+      && IS_SET(victim->in_room->room_flags, ROOM_NEWBIES_ONLY))
+    ||   (victim != NULL && IS_NPC(victim)
+      && IS_SET(victim->imm_flags, IMM_SUMMON))
+    ||   (victim != NULL && !IS_NPC(victim)
+      && IS_SET(victim->act, PLR_NOSUMMON)) )
     {
-	   check_improve(ch,gsn_astral_walk,true,4);
-	   send_to_char( "You failed.\n\r", ch );
-	   return;
+        send_to_char( "You cannot find a safe astral path to that target.\n\r", ch );
+        return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+        if ( ch->mana < 70 )
+        {
+            send_to_char( "You don't have enough mana.\n\r", ch );
+            return;
+        }
+
+        if ( number_percent() > chance )
+        {
+            send_to_char( "You lost your concentration.\n\r", ch );
+            ch->mana -= 5;
+            check_improve( ch, gsn_astral_walk, false, 4 );
+            return;
+        }
+        ch->mana -= 70;
+    }
+
+    if ( IS_NPC(victim) && saves_spell(ch->level, victim) )
+    {
+        send_to_char( "The target resists your astral pull.\n\r", ch );
+        check_improve( ch, gsn_astral_walk, false, 4 );
+        WAIT_STATE( ch, skill_table[gsn_astral_walk].beats );
+        return;
     }
 
     if (ch->pet != NULL && ch->in_room == ch->pet->in_room)
@@ -975,10 +1118,11 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
 	do_look(ch->pet,"auto");
     }
 
-  if(!IS_IMMORTAL(ch) )
-    ch->position = POS_STUNNED;
-  check_improve(ch,gsn_astral_walk,true,4);
-  return;
+    if ( !IS_IMMORTAL(ch) )
+        ch->position = POS_STUNNED;
+    check_improve( ch, gsn_astral_walk, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_astral_walk].beats );
+    return;
 }
 
 /*  psi  */
@@ -993,57 +1137,42 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 
     one_argument( argument, arg );
 
-    if (IS_NPC(ch))
-       return;
+    if ( IS_NPC(ch) )
+        return;
 
-    if(!IS_NPC(ch))
+    if ( ch->pcdata->on_quest )
     {
-
-      if(ch->pcdata->on_quest)
-      {
-	send_to_char("You must prove that you know the game. TK will not\n\r",ch);
-	send_to_char("function while you are a Hero Quest.\n\r",ch);
-	return;
-      }
-	 if(( chance = get_skill(ch,gsn_telekinesis)) == 0)
-	 {
-	  send_to_char("Do what?",ch);
-	  return;
-	 }
-
-	 if( arg[0] == '\0' )
-	 {
-	  send_to_char( "You must specify an object.\n\r", ch );
-	  return;
-	 }
-
-	 if( ch->mana < 50)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
-
-	 if( number_percent( ) > chance/2 && !IS_IMMORTAL(ch) )
-	 {
-	   send_to_char("You lost your concentration.\n\r",ch);
-	   ch->mana -= (dice(1,5) +3);
-	   check_improve(ch,gsn_telekinesis,false,4);
-	   return;
-	 }
-	 ch->mana -= 50;
+        send_to_char( "You must prove that you know the game. TK will not\n\r", ch );
+        send_to_char( "function while you are on a Hero Quest.\n\r", ch );
+        return;
     }
-    else
+
+    if ( (chance = get_skill(ch, gsn_telekinesis)) == 0 )
     {
-	if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
-	    (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		 return;
-
-	   if( arg[0] == '\0' )
-	   {
-		send_to_char( "You must specify an object.\n\r", ch );
-		return;
-	   }
+        send_to_char( "Do what?\n\r", ch );
+        return;
     }
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "You must specify an object.\n\r", ch );
+        return;
+    }
+
+    if ( ch->mana < 50 )
+    {
+        send_to_char( "You don't have enough mana.\n\r", ch );
+        return;
+    }
+
+    if ( number_percent() > chance / 2 && !IS_IMMORTAL(ch) )
+    {
+        send_to_char( "You lost your concentration.\n\r", ch );
+        ch->mana -= (dice(1,5) + 3);
+        check_improve( ch, gsn_telekinesis, false, 4 );
+        return;
+    }
+    ch->mana -= 50;
 
         FOR_EACH_OBJECT( iter, obj )
         {
@@ -1063,28 +1192,33 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 		|| obj->item_type == ITEM_TREASURE
 		|| obj->item_type == ITEM_MONEY
 		|| IS_OBJ_STAT(obj, ITEM_NOLOCATE)
+		|| IS_SET(obj->extra_flags2, ITEM2_NO_TPORT)
 		|| !can_see_obj(ch,obj)
-		|| obj->wear_flags < ITEM_TAKE
-                || obj->level > ch->level)
+		|| !CAN_WEAR(obj, ITEM_TAKE)
+                || obj->level > ch->level
+                || obj->carried_by != NULL
+                || obj->in_obj != NULL
+                || obj->in_room == NULL
+                || psionic_remote_room_blocked(ch, obj->in_room, true, true)
+                || !can_loot(ch, obj)
+                || (obj->pIndexData != NULL
+                 && obj->pIndexData->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
+                 && obj->pIndexData->vnum <= OBJ_VNUM_QUEST_TOKEN_LAST
+                 && obj->value[4] != 0
+                 && (!IS_IMMORTAL(ch)
+                  && (ch->pcdata == NULL
+                   || obj->value[4] != ch->pcdata->id + 1
+                   || obj->owner == NULL
+                   || str_cmp(obj->owner, ch->name)))) )
 		   continue;
 
-		  else
-	    {
-		 if ( obj->carried_by != NULL )
-		    continue;
-		else if( obj->in_obj != NULL )
-		    continue;
-		else if( obj->in_room != NULL)
-		  {
-		   found = true;
-		   snprintf(buf, sizeof buf,"%s has TK'd %s from room %d",ch->name,
-			obj->name,obj->in_room->vnum);
-		   wizinfo(buf, LEVEL_IMMORTAL);
-		   obj_from_room( obj );
-		   obj_to_char( obj, ch );
-		  }
-		break;
-	    }
+           found = true;
+           snprintf(buf, sizeof buf,"%s has TK'd %s from room %d",ch->name,
+                    obj->name,obj->in_room->vnum);
+           wizinfo(buf, LEVEL_IMMORTAL);
+           obj_from_room( obj );
+           obj_to_char( obj, ch );
+	   break;
 	 }
 
     if ( !found )
@@ -1097,7 +1231,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 	 act("$n bows $s head and $T flies to $s hand.",ch, NULL,
 		obj->short_descr, TO_ROOM);
 	 }
-    check_improve(ch,gsn_telekinesis,true,4);
+    check_improve(ch,gsn_telekinesis,found,4);
     WAIT_STATE(ch,skill_table[gsn_telekinesis].beats);
     return;
 }
@@ -1108,136 +1242,122 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 void do_confuse( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
-    CHAR_DATA *victim;
+    CHAR_DATA *victim = NULL;
     AFFECT_DATA af;
-    int chance;
+    int chance = 0;
+    int mana_cost;
 
     one_argument(argument,arg);
 
-    if(!IS_NPC(ch))
+    if ( !IS_NPC(ch) )
     {
-	 if ( (chance = get_skill(ch,gsn_confuse)) == 0 )
-	 {
-	  send_to_char("Do what?\n\r",ch);
-	  return;
-	 }
-
-	 if( arg[0] == '\0' && ch->fighting == NULL)
-	 {
-	  send_to_char( "Who do you want to confuse?\n\r", ch );
-	  return;
-	 }
-	 else if(arg[0] == '\0' && ch->fighting != NULL)
-	   victim = ch->fighting;
-	 else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
-	 {
-	  send_to_char( "They aren't here.\n\r", ch );
-	  return;
-	 }
-
-	 if(victim == ch)
-	   return;
-
-	 if( ch->mana < 139)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
-
-	 if(is_safe_spell(ch,victim,false))
-	 {
-	   act("$N cannot be harmed by you.",ch,NULL,victim,TO_CHAR);
-		return;
-	 }
-
-    if ( IS_AFFECTED2(victim, AFF2_GHOST ) )
-    {
-        act("Your attack passes right thru $N!",ch,NULL,victim,TO_CHAR);
-        act("$n's attack passes right thru $N!",ch,NULL,victim,TO_ROOM);
-        return;
-    }
-
-    if ( IS_AFFECTED2(ch, AFF2_GHOST ) )
-    {
-        send_to_char("You cannot attack while in this form.\n\r",ch);
-        return;
-    }
-
-	if ( victim->fighting != NULL && !is_same_group(ch,victim->fighting))
+        if ( (chance = get_skill(ch, gsn_confuse)) == 0 )
         {
-	   send_to_char("Kill stealing is not permitted.\n\r",ch);
-	   return;
+            send_to_char( "Do what?\n\r", ch );
+            return;
+        }
+    }
+    else if ( IS_SET(ch->act, ACT_PET)
+         ||   IS_SET(ch->affected_by, AFF_CHARM)
+         ||   (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+        return;
+
+    if ( arg[0] == '\0' && ch->fighting == NULL )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "Who do you want to confuse?\n\r", ch );
+        return;
+    }
+    else if ( arg[0] == '\0' )
+        victim = ch->fighting;
+    else if ( (victim = get_char_room(ch, arg)) == NULL )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( victim == ch )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "You cannot confuse yourself.\n\r", ch );
+        return;
+    }
+
+    if ( is_safe_spell(ch, victim, false) )
+    {
+        if ( !IS_NPC(ch) )
+            act( "$N cannot be harmed by you.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
+    if ( IS_AFFECTED2(victim, AFF2_GHOST) || IS_AFFECTED2(ch, AFF2_GHOST) )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "Ghosts cannot be affected by this power.\n\r", ch );
+        return;
+    }
+
+    if ( victim->fighting != NULL && !is_same_group(ch, victim->fighting) )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "Kill stealing is not permitted.\n\r", ch );
+        return;
+    }
+
+    if ( is_affected(victim, gsn_confuse) )
+    {
+        act( "$N is already pretty confused.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
+    mana_cost = ch->level + 50;
+    if ( !IS_NPC(ch) )
+    {
+        if ( ch->mana < mana_cost )
+        {
+            send_to_char( "You don't have enough mana.\n\r", ch );
+            return;
         }
 
-	 if ( number_percent( ) > chance)
-	 {
-	   send_to_char("You lost your concentration.\n\r",ch);
-	   ch->mana -= (dice(1,5) + 3);
-	   check_improve(ch,gsn_confuse,false,4);
-	   return;
-	 }
-
-
+        if ( number_percent() > chance )
+        {
+            send_to_char( "You lost your concentration.\n\r", ch );
+            ch->mana -= (dice(1,5) + 3);
+            check_improve( ch, gsn_confuse, false, 4 );
+            return;
+        }
+        ch->mana -= mana_cost;
     }
-    else
+
+    if ( saves_spell(ch->level, victim) )
     {
-	if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
-	    (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		 return;
-
-	 if( arg[0] == '\0' && ch->fighting == NULL)
-	 {
-	  send_to_char( "Who do you want to confuse?\n\r", ch );
-	  return;
-	 }
-	 else if(arg[0] == '\0' && ch->fighting != NULL)
-	   victim = ch->fighting;
-	 else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
-	 {
-	  send_to_char( "They aren't here.\n\r", ch );
-	  return;
-	 }
-
-	 if(victim == ch)
-	    return;
+        act( "$N resists your attempt to cloud $S mind.",
+             ch, NULL, victim, TO_CHAR );
+        act( "You push $n's confusing presence out of your mind.",
+             ch, NULL, victim, TO_VICT );
+        psionic_start_combat( ch, victim );
+        check_improve( ch, gsn_confuse, false, 4 );
+        WAIT_STATE( ch, skill_table[gsn_confuse].beats );
+        return;
     }
 
-    if(!is_affected(victim, skill_lookup("confuse") ) )
-    {
-	 af.type      = gsn_confuse;
-	 af.level     = ch->level;
-	 af.duration  = 4 + (ch->level >= 30) + (ch->level >= 40);
-	 af.modifier  = 0;
-	 af.location  = 0;
-	 af.modifier  = 0;
-	 af.bitvector = 0;
-	 af.bitvector2 = AFF2_STUNNED;
-	 affect_to_char( victim, &af );
-	 act("You feel very confused.",victim,NULL,NULL,TO_CHAR);
-	 act("$n looks very confused.",victim,NULL,NULL,TO_NOTVICT);
-   ch->mana -= ch->level + 50;
+    af.type       = gsn_confuse;
+    af.level      = (sh_int)(ch->level);
+    af.duration   = (sh_int)(4 + (ch->level >= 30) + (ch->level >= 40));
+    af.modifier   = 0;
+    af.location   = APPLY_NONE;
+    af.bitvector  = 0;
+    af.bitvector2 = AFF2_STUNNED;
+    affect_to_char( victim, &af );
+    act( "You feel very confused.", victim, NULL, NULL, TO_CHAR );
+    act( "$n looks very confused.", victim, NULL, NULL, TO_NOTVICT );
 
-
-    }
-    else
-    {
-	 act("$N is already pretty confused.",ch,NULL,victim,TO_CHAR);
-	 ch->mana -= (dice(1,5) + 3);
-	 return;
-    }
-
-    check_improve(ch,gsn_confuse,true,4);
-    WAIT_STATE( ch, skill_table[gsn_confuse].beats);
-    if(ch->fighting == NULL)
-	ch->fighting = victim;
-    if(victim->fighting == NULL)
-	victim->fighting = ch;
-
-    ch->position = POS_FIGHTING;
-    victim->position = POS_FIGHTING;
+    psionic_start_combat( ch, victim );
+    check_improve( ch, gsn_confuse, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_confuse].beats );
 
     return;
-
 }
 /* psi */
 void do_clairvoyance( CHAR_DATA *ch, char *argument )
@@ -1264,7 +1384,7 @@ void do_clairvoyance( CHAR_DATA *ch, char *argument )
 	 }
 
 	 if ( ( victim = get_char_world( ch, arg ) ) == NULL
-	    ||  !can_see_room(ch,victim->in_room) )
+	    ||  psionic_remote_room_blocked(ch, victim->in_room, false, false) )
 	 {
 	   send_to_char( "They aren't here.\n\r", ch );
 	   return;
@@ -1273,6 +1393,12 @@ void do_clairvoyance( CHAR_DATA *ch, char *argument )
          if( IS_IMMORTAL(victim) && !IS_NPC(victim) )
          {
            send_to_char( "Scrying Immortals is not a good idea.\n\r", ch );
+           return;
+         }
+
+         if ( victim == ch )
+         {
+           send_to_char( "You get an image of yourself.\n\r", ch );
            return;
          }
 
@@ -1304,7 +1430,7 @@ void do_clairvoyance( CHAR_DATA *ch, char *argument )
 	 }
 
 	 if ( ( victim = get_char_world( ch, arg ) ) == NULL
-	    ||  !can_see_room(ch,victim->in_room) )
+	    ||  psionic_remote_room_blocked(ch, victim->in_room, false, false) )
 	 {
 	   send_to_char( "They aren't here.\n\r", ch );
 	   return;
@@ -1322,13 +1448,11 @@ void do_clairvoyance( CHAR_DATA *ch, char *argument )
     send_to_char("\n\r",ch);
 
     was_in_room = ch->in_room;
-    char_from_room(ch);
-    char_to_room( ch, victim->in_room );
+    ch->in_room = victim->in_room;
     do_look( ch, "auto" );
     if( number_percent () > 50)
 	 send_to_char("You feel as if someone is watching you.\n\r",victim);
-    char_from_room(ch);
-    char_to_room( ch, was_in_room );
+    ch->in_room = was_in_room;
     check_improve(ch,gsn_clairvoyance,true,4);
     WAIT_STATE(ch,skill_table[gsn_clairvoyance].beats);
     return;
@@ -1394,6 +1518,13 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
             return;
         }
 
+        if ( victim->fighting != NULL
+        &&   !is_same_group(ch, victim->fighting) )
+        {
+            send_to_char("Kill stealing is not permitted.\n\r", ch);
+            return;
+        }
+
         if ( number_percent() > chance )
         {
             send_to_char("You lost your concentration.\n\r", ch);
@@ -1454,6 +1585,7 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
     int chance;
     int level;
     int dam;
+    bool resisted;
 
     one_argument(argument,arg);
 
@@ -1467,7 +1599,7 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
 
 	 if( arg[0] == '\0' && ch->fighting == NULL)
 	 {
-	  send_to_char( "Who's mind do you wish to warp?\n\r", ch );
+	  send_to_char( "Whose mind do you wish to warp?\n\r", ch );
 	  return;
 	 }
 	 else if(arg[0] == '\0' && ch->fighting != NULL)
@@ -1531,7 +1663,7 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
 
 	 if( arg[0] == '\0' && ch->fighting == NULL)
 	 {
-	  send_to_char( "Who's mind do you wish to warp?\n\r", ch );
+	  send_to_char( "Whose mind do you wish to warp?\n\r", ch );
 	  return;
 	 }
 	 else if(arg[0] == '\0' && ch->fighting != NULL)
@@ -1548,8 +1680,9 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
 
     level = ch->level;
     dam = dice(level/2, 4) + level/2;
+    resisted = saves_spell( level, victim );
 
-    if ( !is_affected( victim, gsn_ego_whip ) )
+    if ( !resisted && !is_affected( victim, gsn_ego_whip ) )
     {
 	af.type      = gsn_ego_whip;
 	af.level	   = (sh_int)(level);
@@ -1587,7 +1720,7 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
 	 }
     }
 
-    if ( saves_spell( level, victim ) )
+    if ( resisted )
 	 dam /= 2;
     damage( ch, victim, dam, gsn_ego_whip, DAM_MENTAL );
     check_improve(ch,gsn_ego_whip,true,4);
@@ -1598,223 +1731,223 @@ void do_ego_whip( CHAR_DATA *ch, char *argument )
 void do_psionic_armor( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
-    CHAR_DATA *victim;
+    CHAR_DATA *victim = NULL;
     AFFECT_DATA af;
-    int chance;
+    int chance = 0;
     int level;
 
     one_argument(argument,arg);
     level = ch->level;
 
-    if(!IS_NPC(ch) )
+    if ( IS_NPC(ch) )
     {
-	 if ( (chance = get_skill(ch,gsn_psionic_armor)) == 0 )
-	 {
-	  send_to_char("Do what?\n\r",ch);
-	  return;
-	 }
-
-	 if( arg[0] == '\0')
-	   victim = ch;
-	 else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
-	 {
-	  send_to_char( "They aren't here.\n\r", ch );
-	  return;
-	 }
-
-	 if( ch->mana < 20)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
-
-	 if ( number_percent( ) > chance)
-	 {
-	   send_to_char("You lost your concentration.\n\r",ch);
-	   ch->mana -= (dice(1,5) + 3);
-	   check_improve(ch,gsn_psionic_armor,false,4);
-	   return;
-	 }
-	ch->mana -= 20;
+        if ( IS_SET(ch->act, ACT_PET)
+        ||   IS_SET(ch->affected_by, AFF_CHARM)
+        ||   (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+            return;
     }
-	if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
-	    (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		return;
     else
     {
-	 if( arg[0] == '\0')
-	   victim = ch;
-	 else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
-	 {
-	  send_to_char( "They aren't here.\n\r", ch );
-	  return;
-	 }
+        if ( (chance = get_skill(ch, gsn_psionic_armor)) == 0 )
+        {
+            send_to_char( "Do what?\n\r", ch );
+            return;
+        }
     }
 
-    if(!is_affected( victim, skill_lookup("psionic armor") )
-    && !is_affected( victim, skill_lookup("psychic shield") )
-    && !is_affected( victim, skill_lookup("mindbar") ) )
+    if ( arg[0] == '\0' )
+        victim = ch;
+    else if ( (victim = get_char_room(ch, arg)) == NULL )
     {
+        if ( !IS_NPC(ch) )
+            send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( psionic_defense_active(victim) )
+    {
+        if ( victim == ch )
+            send_to_char( "You are already protected.\n\r", ch );
+        else
+            act( "$N is already protected.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+        if ( ch->mana < 20 )
+        {
+            send_to_char( "You don't have enough mana.\n\r", ch );
+            return;
+        }
+
+        if ( number_percent() > chance )
+        {
+            send_to_char( "You lost your concentration.\n\r", ch );
+            ch->mana -= (dice(1,5) + 3);
+            check_improve( ch, gsn_psionic_armor, false, 4 );
+            return;
+        }
+        ch->mana -= 20;
+    }
+
     af.type      = gsn_psionic_armor;
     af.level	  = (sh_int)(level);
     af.duration  = (sh_int)(level/2);
-    af.modifier =  0;
-    af.location  = 0;
+    af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = 0;
     af.bitvector2 = 0;
     affect_to_char( victim, &af );
-    send_to_char("You feel mentally defensive.\n\r",victim);
-    }
-    else
-    {
-	 if( victim != ch)
-	   act("$n is already protected.",victim,NULL,NULL,TO_CHAR);
-	 else
-	   send_to_char("You are already protected.\n\r",ch);
-	 return;
-    }
+    send_to_char( "You feel mentally defensive.\n\r", victim );
 
-    check_improve(ch,gsn_psionic_armor,true,4);
-    WAIT_STATE( ch, skill_table[gsn_psionic_armor].beats);
+    check_improve( ch, gsn_psionic_armor, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_psionic_armor].beats );
     return;
 }
 
 void do_psychic_shield( CHAR_DATA *ch, char *argument )
 {
-    char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *gch;
     AFFECT_DATA af;
-    int chance;
+    int chance = 0;
     int level;
+    int recipients = 0;
 
-    one_argument(argument,arg);
+    UNUSED_PARAM(argument);
     level = ch->level;
 
-    if(!IS_NPC(ch) )
+    if ( IS_NPC(ch) )
     {
-	 if ( (chance = get_skill(ch,gsn_psychic_shield)) == 0 )
-	 {
-	  send_to_char("Do what?\n\r",ch);
-	  return;
-	 }
-
-	 if( ch->mana < 50)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
-
-	 if ( number_percent( ) > chance)
-	 {
-	   send_to_char("You lost your concentration.\n\r",ch);
-	   ch->mana -= (dice(1,5) + 3);
-	   check_improve(ch,gsn_psychic_shield,false,4);
-	   return;
-	 }
-	ch->mana -= 50;
+        if ( IS_SET(ch->act, ACT_PET)
+        ||   IS_SET(ch->affected_by, AFF_CHARM)
+        ||   (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+            return;
     }
-	if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
-	    (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		 return;
+    else if ( (chance = get_skill(ch, gsn_psychic_shield)) == 0 )
+    {
+        send_to_char( "Do what?\n\r", ch );
+        return;
+    }
+
+    if ( ch->in_room == NULL )
+        return;
+
+    for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
+        if ( is_same_group(gch, ch) && !psionic_defense_active(gch) )
+            recipients++;
+
+    if ( recipients == 0 )
+    {
+        send_to_char( "Everyone in your group is already protected.\n\r", ch );
+        return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+        if ( ch->mana < 50 )
+        {
+            send_to_char( "You don't have enough mana.\n\r", ch );
+            return;
+        }
+
+        if ( number_percent() > chance )
+        {
+            send_to_char( "You lost your concentration.\n\r", ch );
+            ch->mana -= (dice(1,5) + 3);
+            check_improve( ch, gsn_psychic_shield, false, 4 );
+            return;
+        }
+        ch->mana -= 50;
+    }
 
     for ( gch = ch->in_room->people; gch != NULL; gch = gch->next_in_room )
     {
-	if ( !is_same_group( gch, ch )
-	  || is_affected( gch, skill_lookup("psionic armor") )
-	  || is_affected( gch, skill_lookup("psychic shield") )
-	  || is_affected( gch, skill_lookup("mindbar") ) )
-		 continue;
+        if ( !is_same_group(gch, ch) || psionic_defense_active(gch) )
+            continue;
 
-	 af.type      = gsn_psychic_shield;
-	 af.level	  = (sh_int)(level);
-	 af.duration  = (sh_int)(level/2);
-	 af.modifier  =  0;
-	 af.location  =  0;
-	 af.modifier  =  0;
-	 af.bitvector =  0;
-	 af.bitvector2 = 0;
-	 affect_to_char( gch, &af );
-	 send_to_char("You feel a barrier surround your mind.\n\r",gch);
-
+        af.type       = gsn_psychic_shield;
+        af.level      = (sh_int)(level);
+        af.duration   = (sh_int)(level/2);
+        af.location   = APPLY_NONE;
+        af.modifier   = 0;
+        af.bitvector  = 0;
+        af.bitvector2 = 0;
+        affect_to_char( gch, &af );
+        send_to_char( "You feel a barrier surround your mind.\n\r", gch );
     }
-    send_to_char("Ok.\n\r",ch);
-    check_improve(ch,gsn_psychic_shield,true,4);
-    WAIT_STATE( ch, skill_table[gsn_psychic_shield].beats);
+    send_to_char( "You raise a psychic shield around your group.\n\r", ch );
+    check_improve( ch, gsn_psychic_shield, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_psychic_shield].beats );
     return;
 }
 
 void do_mindbar( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
-    CHAR_DATA *victim;
     AFFECT_DATA af;
-    int chance;
+    int chance = 0;
     int level;
 
     one_argument(argument,arg);
     level = ch->level;
 
-    if( !IS_NPC(ch) )
+    if ( IS_NPC(ch) )
     {
-	 if ( (chance = get_skill(ch,gsn_mindbar)) == 0 )
-	 {
-	  send_to_char("Do what?\n\r",ch);
-	  return;
-	 }
-
-	 if( arg[0] != '\0')
-	 {
-	  send_to_char( "You can only use this on yourself.\n\r", ch );
-	  return;
-	 }
-
-	 victim = ch;
-
-	 if( ch->mana < 50)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
-
-	 if ( number_percent( ) > chance)
-	 {
-	   send_to_char("You lost your concentration.\n\r",ch);
-	   ch->mana -= (dice(1,5) +3);
-	   check_improve(ch,gsn_mindbar,false,4);
-	   return;
-	 }
-	ch->mana -= 50;
+        if ( IS_SET(ch->act, ACT_PET)
+        ||   IS_SET(ch->affected_by, AFF_CHARM)
+        ||   (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+            return;
     }
-	if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
-	    (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		 return;
-    else
-	 victim = ch;
+    else if ( (chance = get_skill(ch, gsn_mindbar)) == 0 )
+    {
+        send_to_char( "Do what?\n\r", ch );
+        return;
+    }
 
-   if(!is_affected( victim, skill_lookup("psionic armor") )
-    && !is_affected( victim, skill_lookup("psychic shield") )
-    && !is_affected( victim, skill_lookup("mindbar") ) )
-	{
+    if ( arg[0] != '\0' )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "You can only use this on yourself.\n\r", ch );
+        return;
+    }
+
+    if ( psionic_defense_active(ch) )
+    {
+        send_to_char( "You are already protected.\n\r", ch );
+        return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+        if ( ch->mana < 50 )
+        {
+            send_to_char( "You don't have enough mana.\n\r", ch );
+            return;
+        }
+
+        if ( number_percent() > chance )
+        {
+            send_to_char( "You lost your concentration.\n\r", ch );
+            ch->mana -= (dice(1,5) + 3);
+            check_improve( ch, gsn_mindbar, false, 4 );
+            return;
+        }
+        ch->mana -= 50;
+    }
+
     af.type      = gsn_mindbar;
     af.level	  = (sh_int)(level);
     af.duration  = (sh_int)(number_fuzzy( level / 6 ));
-    af.modifier  = 0;
-    af.location  = 0;
+    af.location  = APPLY_NONE;
     af.modifier  = 0;
     af.bitvector = 0;
     af.bitvector2 = 0;
-    affect_to_char( victim, &af );
-    send_to_char("A mental fortress protects your mind.\n\r",ch);
-    }
-    else
-    {
-	 send_to_char("You are already protected.\n\r",ch);
-	 return;
-    }
+    affect_to_char( ch, &af );
+    send_to_char( "A mental fortress protects your mind.\n\r", ch );
 
-    check_improve(ch,gsn_mindbar,true,4);
-    WAIT_STATE( ch, skill_table[gsn_mindbar].beats);
+    check_improve( ch, gsn_mindbar, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_mindbar].beats );
     return;
 }
 
@@ -1839,7 +1972,7 @@ void do_torment( CHAR_DATA *ch, char *argument )
 
 	 if( arg[0] == '\0' && ch->fighting == NULL)
 	 {
-	  send_to_char( "Who do you to inflict pain on?\n\r", ch );
+	  send_to_char( "Who do you want to inflict pain on?\n\r", ch );
 	  return;
 	 }
 	 else if(arg[0] == '\0' && ch->fighting != NULL)
@@ -1940,77 +2073,90 @@ void do_torment( CHAR_DATA *ch, char *argument )
 void do_transfusion( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
-    CHAR_DATA *victim;
-    int chance;
+    CHAR_DATA *victim = NULL;
+    int chance = 0;
 
     one_argument(argument, arg);
 
-    if(!IS_NPC(ch))
+    if ( IS_NPC(ch) )
     {
-	 if ( (chance = get_skill(ch,gsn_transfusion)) == 0 )
-	 {
-	  send_to_char("Do what?\n\r",ch);
-	  return;
-	 }
-
-	 if( arg[0] == '\0')
-	 {
-	  send_to_char( "Who do you wish to give energy to?\n\r", ch );
-	  return;
-	 }
-	 else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
-	 {
-	  send_to_char( "They aren't here.\n\r", ch );
-	  return;
-	 }
-
-	 if( ch->mana < 20)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
-
-	 if ( ch->hit <= 50 )
-	 {
-	   send_to_char("You need more than 50 hit points to transfuse safely.\n\r",ch);
-	   return;
-	 }
-
-	 if ( number_percent( ) > chance )
-	 {
-	  send_to_char("You lost your concentration.\n\r",ch);
-	  ch->mana -= (dice(1,5) + 3);
-	  check_improve(ch,gsn_transfusion,false,4);
-	  return;
-	 }
-	ch->mana -= 20;
+        if ( IS_SET(ch->act, ACT_PET)
+        ||   IS_SET(ch->affected_by, AFF_CHARM)
+        ||   (IS_SWITCHED(ch) && !IS_IMMORTAL(ch)) )
+            return;
     }
     else
     {
-	if( IS_SET(ch->act,ACT_PET) || IS_SET(ch->affected_by,AFF_CHARM) ||
-	    (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		 return;
-
-	 if( arg[0] == '\0')
-	 {
-	  send_to_char( "Who's do you wish to give energy to?\n\r", ch );
-	  return;
-	 }
-	 else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
-	 {
-	  send_to_char( "They aren't here.\n\r", ch );
-	  return;
-	 }
+        if ( (chance = get_skill(ch, gsn_transfusion)) == 0 )
+        {
+            send_to_char( "Do what?\n\r", ch );
+            return;
+        }
     }
 
-    send_to_char("You feel weary as energy leaves your body.\n\r",ch);
-    send_to_char("Some of your wounds disappear.\n\r",victim);
+    if ( arg[0] == '\0' )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "Who do you wish to give energy to?\n\r", ch );
+        return;
+    }
+
+    if ( (victim = get_char_room(ch, arg)) == NULL )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( victim == ch )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "You cannot transfuse energy into yourself.\n\r", ch );
+        return;
+    }
+
+    if ( victim->hit >= victim->max_hit )
+    {
+        if ( !IS_NPC(ch) )
+            act( "$N is already at full health.", ch, NULL, victim, TO_CHAR );
+        return;
+    }
+
+    if ( ch->hit <= 50 )
+    {
+        if ( !IS_NPC(ch) )
+            send_to_char( "You need more than 50 hit points to transfuse safely.\n\r", ch );
+        return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+        if ( ch->mana < 20 )
+        {
+            send_to_char( "You don't have enough mana.\n\r", ch );
+            return;
+        }
+
+        if ( number_percent() > chance )
+        {
+            send_to_char( "You lost your concentration.\n\r", ch );
+            ch->mana -= (dice(1,5) + 3);
+            check_improve( ch, gsn_transfusion, false, 4 );
+            return;
+        }
+        ch->mana -= 20;
+    }
+
+    send_to_char( "You feel weary as energy leaves your body.\n\r", ch );
+    send_to_char( "Some of your wounds disappear.\n\r", victim );
     act( "A strange aura envelopes $N and $n.", ch, NULL, victim,
 	  TO_NOTVICT );
 
     ch->hit -= 50;
-    /* Note: PC mana cost already deducted above in the !IS_NPC block. */
     victim->hit = UMIN( victim->hit + 50, victim->max_hit);
+    update_pos( victim );
+    check_improve( ch, gsn_transfusion, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_transfusion].beats );
     return;
 
 }
@@ -2018,72 +2164,71 @@ void do_transfusion( CHAR_DATA *ch, char *argument )
 /* psi */
 void do_shift( CHAR_DATA *ch, char *argument )
 {
-  char buf[MAX_STRING_LENGTH];
-  char arg[MAX_INPUT_LENGTH];
-  CHAR_DATA *victim;
-  int chance;
+    char buf[MAX_STRING_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+    int chance;
 
     one_argument( argument, arg );
 
-    if (IS_NPC(ch))
-      return;
+    if ( IS_NPC(ch) )
+        return;
 
-    if( !IS_NPC(ch))
+    if ( (chance = get_skill(ch, gsn_shift)) == 0 )
     {
-	 if(( chance = get_skill(ch,gsn_shift)) == 0)
-	 {
-	  send_to_char("Do what?\n\r",ch);
-	  return;
-	 }
-
-	 if( ch->mana < 70)
-	 {
-	   send_to_char("You don't have enough mana.\n\r",ch);
-	   return;
-	 }
-
-	 if( number_percent () > chance  )
-	 {
-	   send_to_char("You lost your concentration.\n\r",ch);
-	   ch->mana -= (dice(1,5) + 3 );
-	   check_improve(ch,gsn_shift,false,4);
-	   return;
-	 }
-	 ch->mana -= 70;
+        send_to_char( "Do what?\n\r", ch );
+        return;
     }
-    else if( IS_SET(ch->act,ACT_PET) || (IS_SWITCHED(ch) && !IS_IMMORTAL(ch) ))
-		 return;
 
-    if ( ( victim = get_char_world( ch, arg ) ) == NULL
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Who do you want to shift?\n\r", ch );
+        return;
+    }
+
+    victim = get_char_world( ch, arg );
+    if ( victim == NULL
     ||   victim == ch
     ||   IS_IMMORTAL(victim)
-    ||   victim->in_room == NULL
+    ||   (victim != NULL && victim->in_room == ch->in_room)
     ||   victim->fighting != NULL
-    ||   IS_SET(victim->in_room->room_flags,ROOM_JAIL)
-    ||   IS_SET(ch->in_room->room_flags,ROOM_JAIL)
     ||   ch->fighting != NULL
     ||   (IS_NPC(victim) && IS_SET(victim->act,ACT_AGGRESSIVE))
-    ||   !can_see_room(ch,victim->in_room)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_SAFE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_PRIVATE)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_JAIL)
-    ||   IS_SET(ch->in_room->room_flags, ROOM_DT)
+    ||   psionic_remote_room_blocked(ch, ch->in_room, false, true)
+    ||   psionic_remote_room_blocked(ch, victim != NULL ? victim->in_room : NULL,
+                                     true, true)
     ||   IS_SET(ch->in_room->room_flags, ROOM_TELEPORT)
     ||   IS_SET(ch->in_room->room_flags, ROOM_RIVER)
     ||   IS_SET(ch->in_room->room_flags, ROOM_ARENA)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_GODS_ONLY)
-    ||   IS_SET(victim->in_room->room_flags, ROOM_IMP_ONLY)
     ||   IS_SET(victim->in_room->room_flags, ROOM_NEWBIES_ONLY)
     ||   (IS_NPC(victim) && IS_SET(victim->imm_flags,IMM_SUMMON))
-    ||   (IS_NPC(victim) && saves_spell(ch->level,victim))
     ||   (!IS_NPC(victim) && IS_SET(victim->act,PLR_NOSUMMON) ) )
     {
-	   check_improve(ch,gsn_shift,true,4);
-	   send_to_char( "You failed.\n\r", ch );
-	   return;
+        send_to_char( "You cannot form a safe spatial path to that target.\n\r", ch );
+        return;
+    }
+
+    if ( ch->mana < 70 )
+    {
+        send_to_char( "You don't have enough mana.\n\r", ch );
+        return;
+    }
+
+    if ( number_percent() > chance )
+    {
+        send_to_char( "You lost your concentration.\n\r", ch );
+        ch->mana -= (dice(1,5) + 3);
+        check_improve( ch, gsn_shift, false, 4 );
+        return;
+    }
+    ch->mana -= 70;
+
+    if ( IS_NPC(victim) && saves_spell(ch->level, victim) )
+    {
+        send_to_char( "The target resists your spatial pull.\n\r", ch );
+        check_improve( ch, gsn_shift, false, 4 );
+        WAIT_STATE( ch, skill_table[gsn_shift].beats );
+        return;
     }
     snprintf(buf, sizeof buf,"%s has shifted %s to room %d",ch->name,
 	(IS_NPC(victim) ? victim->short_descr : victim->name), ch->in_room->vnum);
@@ -2098,11 +2243,13 @@ void do_shift( CHAR_DATA *ch, char *argument )
     send_to_char("\n\r",victim);
     do_look( victim, "auto" );
 
-    if(!IS_IMMORTAL(ch) )
-	 ch->position = POS_STUNNED;
+    if ( !IS_IMMORTAL(ch) )
+        ch->position = POS_STUNNED;
 
-    if(IS_NPC(victim) )
-      victim->timer = 400;
+    if ( IS_NPC(victim) )
+        victim->timer = 400;
+    check_improve( ch, gsn_shift, true, 4 );
+    WAIT_STATE( ch, skill_table[gsn_shift].beats );
     return;
 
 }

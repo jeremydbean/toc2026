@@ -1,5 +1,93 @@
+#include <ctype.h>
 #include "merc.h"
 #include "interp.h"
+
+static const char * const psionic_skill_names[] =
+{
+    "astral walk",
+    "clairvoyance",
+    "confuse",
+    "ego whip",
+    "enervate",
+    "mind leech",
+    "mindbar",
+    "mindblast",
+    "nightmare",
+    "project",
+    "psionic armor",
+    "psychic shield",
+    "pyrotechnics",
+    "shift",
+    "telekinesis",
+    "torment",
+    "transfusion",
+    NULL
+};
+
+static char *trim_psionic_selection( char *text )
+{
+    char *end;
+
+    while ( *text != '\0' && isspace((unsigned char)*text) )
+        text++;
+
+    end = text + strlen(text);
+    while ( end > text && isspace((unsigned char)end[-1]) )
+        end--;
+    *end = '\0';
+    return text;
+}
+
+static const char *canonical_psionic_selection( const char *selection )
+{
+    int i;
+
+    for ( i = 0; psionic_skill_names[i] != NULL; i++ )
+        if ( !str_cmp(selection, psionic_skill_names[i]) )
+            return psionic_skill_names[i];
+
+    if ( !str_cmp(selection, "astral") )
+        return "astral walk";
+    if ( !str_cmp(selection, "ego") )
+        return "ego whip";
+    if ( !str_cmp(selection, "mindleech") )
+        return "mind leech";
+    if ( !str_cmp(selection, "psionic") )
+        return "psionic armor";
+    if ( !str_cmp(selection, "psychic") )
+        return "psychic shield";
+    if ( !str_cmp(selection, "tk") )
+        return "telekinesis";
+
+    return NULL;
+}
+
+static bool psionic_spec_contains( const char *spec, const char *name )
+{
+    const char *start;
+    const char *end;
+    size_t name_length;
+
+    if ( spec == NULL || name == NULL )
+        return false;
+
+    name_length = strlen(name);
+    for ( start = spec; *start != '\0'; start = *end == ',' ? end + 1 : end )
+    {
+        end = strchr( start, ',' );
+        if ( end == NULL )
+            end = start + strlen(start);
+
+        if ( (size_t)(end - start) == name_length
+        &&   !strncmp(start, name, name_length) )
+            return true;
+
+        if ( *end == '\0' )
+            break;
+    }
+
+    return false;
+}
 
 void init_web( int port )
 {
@@ -38,19 +126,72 @@ void do_check_psi( CHAR_DATA *ch, char *argument )
 
 bool normalize_psionic_arguments( const char *argument, char *output, size_t length, char *invalid )
 {
-    UNUSED_PARAM(invalid);
+    char work[MAX_STRING_LENGTH];
+    char *cursor;
+    char *comma;
+    char *selection;
+    const char *canonical;
 
     if ( output == NULL || length == 0 )
         return FALSE;
 
-    toc_strlcpy( output, argument != NULL ? argument : "", length );
+    toc_strlcpy( work, argument != NULL ? argument : "", sizeof(work) );
+    output[0] = '\0';
+    if ( invalid != NULL )
+        invalid[0] = '\0';
+
+    selection = trim_psionic_selection( work );
+    if ( selection[0] == '\0' )
+        return TRUE;
+
+    if ( selection != work )
+        memmove( work, selection, strlen(selection) + 1 );
+
+    cursor = work;
+    while ( cursor != NULL )
+    {
+        comma = strchr( cursor, ',' );
+        if ( comma != NULL )
+            *comma = '\0';
+
+        selection = trim_psionic_selection( cursor );
+        canonical = canonical_psionic_selection( selection );
+        if ( selection[0] == '\0' || canonical == NULL )
+        {
+            if ( invalid != NULL )
+                toc_strlcpy( invalid,
+                    selection[0] != '\0' ? selection : "<empty selection>",
+                    MAX_INPUT_LENGTH );
+            output[0] = '\0';
+            return FALSE;
+        }
+
+        if ( !psionic_spec_contains(output, canonical) )
+        {
+            if ( strlen(output) + strlen(canonical) + 2 > length )
+            {
+                if ( invalid != NULL )
+                    toc_strlcpy( invalid, "selection list is too long",
+                                 MAX_INPUT_LENGTH );
+                output[0] = '\0';
+                return FALSE;
+            }
+
+            if ( output[0] != '\0' )
+                toc_strlcat( output, ",", length );
+            toc_strlcat( output, canonical, length );
+        }
+
+        cursor = comma != NULL ? comma + 1 : NULL;
+    }
+
     return TRUE;
 }
 
 void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 {
     /* 4 thematic psionic skill sets.  Normal remorts (2-4): 1 random skill
-     * per set (4 total).  Final remort (num_remorts == 5): all 15 skills.
+     * per set (4 total).  Final remort (num_remorts >= 5): all 17 skills.
      * Immortal grantpsi with a spec: honours the spec and bypasses sets.
      *
      * Set 0  Assault:  ego_whip, torment, nightmare, mindblast
@@ -67,6 +208,9 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     static const int psi_set_sizes[4] = { 4, 4, 4, 5 };
 
     int i, s;
+    int selected = 0;
+    char normalized_spec[MAX_STRING_LENGTH];
+    char invalid[MAX_INPUT_LENGTH];
     bool spec_only;
     bool is_final;
 
@@ -84,16 +228,36 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 
     if ( spec_only )
     {
+        if ( !normalize_psionic_arguments(ch->pcdata->psionic_grant_spec,
+                                          normalized_spec,
+                                          sizeof(normalized_spec), invalid)
+        ||   normalized_spec[0] == '\0' )
+        {
+            bug( "Grant_psionics: discarded an invalid saved grant list.", 0 );
+            free_string( ch->pcdata->psionic_grant_spec );
+            ch->pcdata->psionic_grant_spec = str_dup( "" );
+            spec_only = false;
+        }
+        else
+        {
+            free_string( ch->pcdata->psionic_grant_spec );
+            ch->pcdata->psionic_grant_spec = str_dup( normalized_spec );
+        }
+    }
+
+    if ( spec_only )
+    {
         /* Grant only the skills matching the immortal-supplied spec string. */
         for ( s = 0; s < 4; s++ )
         {
             for ( i = 0; psi_sets[s][i] != NULL; i++ )
             {
                 sh_int sn = *psi_sets[s][i];
-                if ( sn >= 0 &&
-                     strstr( ch->pcdata->psionic_grant_spec,
-                             skill_table[(int)sn].name ) != NULL )
+                if ( sn >= 0 && psionic_spec_contains(
+                         ch->pcdata->psionic_grant_spec,
+                         skill_table[(int)sn].name ) )
                 {
+                    selected++;
                     if ( ch->pcdata->learned[(int)sn] < 75 )
                         ch->pcdata->learned[(int)sn] = 75;
                 }
@@ -102,14 +266,18 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     }
     else if ( is_final )
     {
-        /* Final remort: award all 15 psionic skills. */
+        /* Final remort: award all 17 psionic skills. */
         for ( s = 0; s < 4; s++ )
         {
             for ( i = 0; psi_sets[s][i] != NULL; i++ )
             {
                 sh_int sn = *psi_sets[s][i];
-                if ( sn >= 0 && ch->pcdata->learned[(int)sn] < 75 )
-                    ch->pcdata->learned[(int)sn] = 75;
+                if ( sn >= 0 )
+                {
+                    selected++;
+                    if ( ch->pcdata->learned[(int)sn] < 75 )
+                        ch->pcdata->learned[(int)sn] = 75;
+                }
             }
         }
     }
@@ -120,9 +288,19 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
         {
             int pick = number_range( 0, psi_set_sizes[s] - 1 );
             sh_int sn = *psi_sets[s][pick];
-            if ( sn >= 0 && ch->pcdata->learned[(int)sn] < 75 )
-                ch->pcdata->learned[(int)sn] = 75;
+            if ( sn >= 0 )
+            {
+                selected++;
+                if ( ch->pcdata->learned[(int)sn] < 75 )
+                    ch->pcdata->learned[(int)sn] = 75;
+            }
         }
+    }
+
+    if ( selected == 0 )
+    {
+        bug( "Grant_psionics: no valid skills were selected.", 0 );
+        return;
     }
 
     ch->pcdata->psionic               = 1;

@@ -13,6 +13,8 @@ objects.
   aliases, transcripts, mobile controls, and embedded administration
 - [Player Command Reference](player-command-reference.md) - commands grouped by
   purpose with important syntax and restrictions
+- [Psionics Guide](psionics.md) - all 17 powers, costs, defenses, travel
+  restrictions, and remort granting rules
 - [Achievement System](achievements.md) - 105 accomplishments covering points,
   levels, bosses, relics, crafting, unusual deaths, and Hyrule completion
 - [Advanced Gear Comparison](gear-comparison.md) - `compare` focuses,

@@ -1030,23 +1030,20 @@ See also: ROLL, BASH, CRANE
 0 MINDBAR~
 Syntax: mindbar
 
-Toggle the mental barrier that shields you from psionic and magical
-intrusion.  While MINDBAR is active, targeted mental effects such as
-CONFUSE, NIGHTMARE, and charm spells have a reduced chance to
-penetrate.  The barrier does not protect against physical attacks or
-area-effect spells.  Maintaining it costs a small mana drain per tick.
+Build a powerful, temporary fortress around your own mind.  Mindbar halves
+incoming mental damage.  It does not reduce physical or elemental damage and
+does not make you immune to non-damaging mental effects.  Mindbar cannot be
+combined with Psionic Armor or Psychic Shield.
 
 See also: PSIONIC, PSYCHIC, PSIONICS, TRANSFUSION
 ~
 
 0 PSIONIC~
-Syntax: psionic
+Syntax: psionic [character]
 
-Toggle the psionic awareness channel.  When active you receive passive
-mental impressions from nearby sources of psionic activity, alerting
-you to hidden psionicists, active mind-affecting spells, or psionic
-creatures in adjacent rooms.  The sensitivity and range scale with your
-psionic skill level.
+Create temporary Psionic Armor around yourself or a character in the same
+room.  The armor reduces incoming mental damage by one quarter.  It cannot be
+combined with Mindbar or Psychic Shield.
 
 See also: PSYCHIC, MINDBAR, PSIONICS
 ~
@@ -1054,44 +1051,37 @@ See also: PSYCHIC, MINDBAR, PSIONICS
 0 PSYCHIC~
 Syntax: psychic
 
-Toggle psychic resonance mode.  An advanced psionic state that enhances
-all active mental abilities: MINDBAR becomes stronger, psionic attack
-spells deal more damage, and your saves against mental effects improve.
-PSYCHIC mode requires substantial psionic training and drains mana
-steadily while active.  It cannot be combined with IRON or ROLL stances.
+Raise a temporary Psychic Shield around every unprotected member of your
+group in the room.  The shield reduces incoming mental damage by one quarter.
+It does not replace an existing Mindbar, Psionic Armor, or Psychic Shield.
 
 See also: PSIONIC, MINDBAR, PSIONICS
 ~
 
 0 PSIONICS~
 Psionics are mental disciplines available to characters who have remorted at
-least twice (remort 2+).  Upon qualifying, you automatically receive 4
-randomly chosen skills from each of 4 psionic disciplines (16 total possible
-skills spread across the disciplines).  At remort 5 (final) all 16 psionic
-skills are granted.
+least twice (remort 2+).  Upon qualifying, you receive one randomly selected
+skill from each of four disciplines, for four skills total.  At remort 5
+(final), all 17 psionic skills are granted.
 
 PSIONIC DISCIPLINES
 
-  Telepathy:   clairvoyance, danger (sense), project (astral scout),
-               astral walk, shift (teleport to player)
+  Assault:     ego whip, torment, nightmare, mindblast
 
-  Kinesis:     telekinesis (TK), levitate, mindblast, ego whip,
-               mind leech
+  Astral:      astral walk, shift, project, telekinesis (TK)
 
-  Control:     confuse, nightmare, torment, enervate, transfusion
+  Defense:     mindbar, psionic armor, psychic shield, transfusion
 
-  Defense:     mindbar, psionic armor, psychic shield, psionic (awareness),
-               psychic (resonance mode)
+  Control:     clairvoyance, confuse, mind leech, enervate, pyrotechnics
 
 PASSIVE BENEFITS
   Remort 2+: access to psionic skills; immune to hunger and thirst.
   Remort 4+: recall always succeeds (no skill check).
-  Remort 5:  all 16 psionic skills granted; unlimited carry capacity.
+  Remort 5:  all 17 psionic skills granted; unlimited carry capacity.
 
 RESOURCE COST
-  Most psionic skills draw from your mana pool.  Some toggles (MINDBAR,
-  PSIONIC, PSYCHIC, STEALTH, etc.) maintain a small per-tick mana drain while
-  active.
+  Psionic skills draw from your mana pool when used.  Defensive powers last
+  for a limited duration; they are not toggles and do not drain mana per tick.
 
 See also: REMORT, MINDBAR, PSIONIC, PSYCHIC, TELEKINESIS, CLAIRVOYANCE,
           MINDBLAST, CONFUSE, NIGHTMARE, TORMENT, ENERVATE, TRANSFUSION,
@@ -1356,7 +1346,7 @@ the check fires (default behavior rolls normally). Using "now" grants psionics
 immediately, sends the unlock messaging, and applies the chosen skills right
 away. Valid picks include: psionic armor, psychic shield, mindbar, torment,
 ego whip, enervate, mindblast, clairvoyance, astral walk, shift, project,
-telekinesis, transfusion, nightmare, mind leech, and confuse.
+telekinesis, transfusion, nightmare, mind leech, pyrotechnics, and confuse.
 
 See also: PSIONICS, ADVANCE
 
@@ -2326,12 +2316,13 @@ BENEFITS PER REMORT
     5th       58        59          1000 each          25      18       +5
 
   Starting at remort 1 you are immune to hunger and thirst forever.
-  Starting at remort 2 you gain psionic powers: you receive 4 randomly chosen
-  skills from each of 4 psionic disciplines (16 total possible: ego whip,
-  mindblast, nightmare, torment, clairvoyance, mindbar, psionic armor, psychic
-  shield, telekinesis, astral walk, shift, confuse, project, transfusion, mind
-  leech, enervate).  These are re-granted on each subsequent remort since
-  skills are wiped.  At the final (5th) remort all 16 psionic skills are given.
+  Starting at remort 2 you gain psionic powers: one random skill from each of
+  4 disciplines, for 4 skills total.  The full pool contains 17 skills: ego
+  whip, mindblast, nightmare, torment, clairvoyance, mindbar, psionic armor,
+  psychic shield, telekinesis, astral walk, shift, confuse, project,
+  transfusion, mind leech, enervate, and pyrotechnics.  These are re-granted on
+  each subsequent remort since skills are wiped.  At the final (5th) remort all
+  17 psionic skills are given.
   Starting at remort 4 your recall always succeeds (no skill check, no
   random-room mishap).  Recall from combat still costs experience.
   On the 5th (final) remort you carry unlimited items and weight and may

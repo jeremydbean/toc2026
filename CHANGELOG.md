@@ -56,6 +56,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Psionic travel, scouting, retrieval, control, draining, healing, and defense
+  powers now share consistent room protection, saving throw, mana, lag, skill
+  improvement, and combat-start behavior.
+- Replaced contradictory psionics help with an accurate 17-power player guide,
+  real remort selection rules, command costs, defense values, and restrictions.
 - Docker Compose now binds both ports to loopback by default, supports explicit
   host bind/port variables, persists god/hero/corpse state, and reports game
   readiness through a container health check. Public install mode exposes only
@@ -90,6 +95,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed Telekinesis bypassing take, corpse-looting, bound quest-item, and
+  no-teleport rules; Confuse requiring 139 mana instead of its actual cost;
+  Clairvoyance counting remote views as physical exploration; astral travel
+  charging before target validation; and Project possessing the wrong ghost.
+- Fixed Enervate healing from resisted damage, empty or duplicate defensive
+  casts consuming full mana, Transfusion allowing ineffective casts without
+  lag or skill improvement, and invalid `grantpsi` lists unlocking no powers.
+- Fixed psionic special mobiles overwhelmingly selecting Torment, restored
+  reliable self-defense casting, and added fair use of newer combat powers.
 - Reworked automatic quests to choose suitable live targets, credit nearby
   group members and pet-assisted kills, accept turn-ins at any questmaster,
   bind and clean up recovery tokens, find tokens inside containers, and save

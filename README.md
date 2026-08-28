@@ -422,6 +422,7 @@ then regenerate and test instead of hand-editing generated output.
 
 - [Player Guide](wiki/player-guide.md)
 - [Player Command Reference](wiki/player-command-reference.md)
+- [Psionics Guide](wiki/psionics.md)
 - [Hosting Guide](wiki/hosting-guide.md)
 - [Operator Guide](wiki/operator-guide.md)
 - [Developer Guide](wiki/developer-guide.md)

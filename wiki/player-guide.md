@@ -286,6 +286,14 @@ final remort path, but always read `help remort`, save, and confirm the host has
 a recent backup before committing. The password entered in the command crosses
 the same unencrypted Telnet connection as every other command.
 
+### Psionics
+
+Beginning at remort 2, a character receives one random power from each of four
+psionic disciplines. The final remort grants all 17 powers. These abilities use
+mana and include mental attacks, temporary defenses, healing, scouting,
+teleportation, and item retrieval. See the [Psionics Guide](psionics.md) for the
+complete power list, costs, defensive interactions, and protected-room rules.
+
 ## Achievements
 
 Achievements provide permanent, noncombat progression for a character. They

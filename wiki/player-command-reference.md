@@ -46,7 +46,7 @@ Many character and object lookups support a numbered keyword such as
 | `search` | Search the current room |
 | `recall`, `/` | Attempt random recall to an eligible room |
 | `where`, `areas`, `scan` | Orient within the world |
-| `astral walk`, `project`, `shift` | Specialized class/skill travel when learned |
+| `astral walk`, `project`, `shift`, `telekinesis`, `tk` | Specialized psionic travel, scouting, and retrieval when learned |
 
 Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 `flip`, `burn`, or a specific noun described in the room.
@@ -120,11 +120,12 @@ bank commands require the appropriate NPC or room.
 | `berserk`, `smite`, `shove`, `stunning`, `nerve` | Specialized physical abilities |
 | `blinding`, `fists`, `steel`, `crane`, `iron` | Monk and martial abilities |
 | `confuse`, `ego whip`, `mindblast`, `nightmare`, `pyrotechnics`, `torment` | Specialized magical or psionic combat |
-| `mindbar`, `mindleech`, `enervate`, `psionic`, `psychic` | Specialized psionic abilities |
+| `mindbar`, `mindleech`, `enervate`, `psionic`, `psychic`, `transfusion` | Specialized psionic defense, draining, and healing abilities |
 | `topten` | Show supported combat or PK ranking information |
 
 This is not a skill list. `skills` and `spells` are authoritative for the
 character because learned commands and level gates vary by build.
+See the [Psionics Guide](psionics.md) for all 17 powers and their costs.
 
 ## Rest, Visibility, And Position
 

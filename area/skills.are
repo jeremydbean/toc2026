@@ -2,15 +2,13 @@
 
 15 PSIONICS~
 
-Psionics are mental abilities that are awarded to some players.  They can
-be obtained only through a random draw at certain levels and cannot be
-gained.  Individuals who are given psionics will get only a few of the
-mental skills and which ones they get is also random.  For information on
-training any psionic skills you may have been so fortunate as to learn,
-read help on SALIR.  For information on individual skills, see helps on
-ASTRAL WALK, CLAIRVOYANCE, CONFUSE, EGO WHIP, MINDBAR, MINDBLAST, NIGHTMARE,
-PROJECT, PSIONIC ARMOR, PSYCHIC SHIELD, PYROTECHNICS, SHIFT, TELEKINESIS,
-TORMENT, and TRANSFUSION.
+Psionics are mental abilities unlocked beginning at remort 2.  A qualifying
+character receives one random skill from each of four disciplines, for four
+skills total.  The final remort grants all 17 skills.  For information on
+training a learned psionic skill, read help on SALIR.  Individual skills are
+ASTRAL WALK, CLAIRVOYANCE, CONFUSE, EGO WHIP, ENERVATE, MIND LEECH, MINDBAR,
+MINDBLAST, NIGHTMARE, PROJECT, PSIONIC ARMOR, PSYCHIC SHIELD, PYROTECHNICS,
+SHIFT, TELEKINESIS, TORMENT, and TRANSFUSION.
 
 See also: GAIN, SALIR
 ~
@@ -18,8 +16,9 @@ See also: GAIN, SALIR
 15 'ASTRAL WALK'~
 Syntax: astral <target>
 
-This psionic skill is similar to the GATE spell, with the only difference
-being that fewer restrictions are applied to its use.
+This psionic skill carries you to another character much like GATE.  It cannot
+cross into private, deadly, jailed, no-recall, or no-teleport rooms, and
+targets protected by NOSUMMON cannot be followed.
 
 Minimum level: 25
 
@@ -42,9 +41,8 @@ See also: PSIONICS, TORMENT
 Syntax: confuse <victim>
 
 This psionic skill makes the targeted victim confused.  In the confused
-state, victims who are fighting will sometimes forget they are supposed to
-be fighting, and will only defend themselves while they try to figure out
-why they are being attacked.
+state, a fighting victim may lose actions while trying to understand what is
+happening.  A successful mental save prevents the effect.
 
 Minimum level: 21
 
@@ -54,9 +52,10 @@ See also: PSIONICS, EGO WHIP, TORMENT
 15 'EGO WHIP'~
 Syntax: ego <victim>
 
-This psionic skill is a direct attack on the victims ego and mind.  When
+This psionic skill is a direct attack on the victim's ego and mind.  When
 used it makes victims feel less confident about themselves and damages
-blood vessels and synapses in the brain.
+blood vessels and synapses in the brain.  A successful mental save halves the
+damage and prevents the temporary attribute penalty.
 
 Minimum level: 19
 
@@ -66,10 +65,9 @@ See also: PSIONICS, MINDBLAST, TORMENT
 15 MINDBAR~
 Syntax: mindbar
 
-Mindbar is the strongest mental defense a psionicist can have. Its
-strength is similar to the spell sanctuary, but works against mental
-attacks.  Due to the nature of this skill, it is usable only on the
-psionicist.
+Mindbar is the strongest mental defense a psionicist can have.  It halves
+incoming mental damage and is usable only on the psionicist.  It cannot be
+combined with Psionic Armor or Psychic Shield.
 
 Minimum level: 22
 
@@ -79,13 +77,37 @@ See also: PSIONICS, PSIONIC ARMOR, PSYCHIC SHIELD
 15 MINDBLAST~
 Syntax: mindblast
 
-This is the most powerful of the mental (psionic) attacks.  When used, all
-attackable victims in the room of the user will be overwhelmed by mental
-energies, causing brain hemorrhages.
+This is a room-wide mental attack.  When used, every attackable victim in the
+user's room is overwhelmed by mental energy.  Characters elsewhere in the
+area feel a brief wave of vertigo but take no damage.
 
 Minimum level: 23
 
 See also: PSIONICS, EGO WHIP, TORMENT
+~
+
+15 'MIND LEECH' MINDLEECH~
+Syntax: mindleech <victim>
+
+Mind Leech drains mental energy from a victim and restores half of the mana
+actually taken to the user.  If the victim has no mana, the probe deals mental
+damage instead.  Mental saves and psionic defenses reduce the drain.
+
+Minimum level: 22
+
+See also: PSIONICS, ENERVATE, MINDBAR
+~
+
+15 ENERVATE~
+Syntax: enervate <victim>
+
+Enervate tears away a victim's health and movement, returning part of the
+energy actually drained to the user.  Saves and psionic defenses reduce the
+effect, and resisted or immune damage cannot be converted into healing.
+
+Minimum level: 21
+
+See also: PSIONICS, MIND LEECH, TORMENT
 ~
 
 15 NIGHTMARE~
@@ -103,9 +125,9 @@ See also: PSIONICS, TORMENT, CONFUSE
 Syntax: project <direction>
 
 This psionic skill allows you to project your astral form in the
-direction specified, allowing you to see everything in the path of the
-direction specified.  In this form, you are able to pass through most
-obstructions, such as doors, and are immune to attack.
+specified direction, allowing you to see each room along the path.  The astral
+form can pass through ordinary closed doors but not secret exits or protected
+rooms.  Your physical body remains behind.
 
 Minimum level: 19
 
@@ -115,10 +137,9 @@ See also: PSIONICS, ASTRAL WALK, SHIFT
 15 'PSIONIC ARMOR'~
 Syntax: psionic <victim>
 
-Psionic armor is a mental defense against psionic skills and mental type
-spells that can damage the victim.  It offers protection similar to
-that of the PROTECTION EVIL spell.  This spell can be cast on
-others.
+Psionic Armor is a temporary defense against mental damage.  It reduces that
+damage by one quarter and can protect another character in the room.  It
+cannot be combined with Mindbar or Psychic Shield.
 
 Minimum level: 17
 
@@ -128,8 +149,9 @@ See also: PSIONICS, MINDBAR, PSYCHIC SHIELD
 15 'PSYCHIC SHIELD'~
 Syntax: psychic
 
-Psychic Shield is a mental defense that is as strong as Psionic Armor,
-but it affects everyone who is grouped with the user.
+Psychic Shield reduces mental damage by one quarter for every currently
+unprotected group member in the room.  It does not replace Mindbar, Psionic
+Armor, or another Psychic Shield.
 
 Minimum level: 19
 
@@ -139,10 +161,10 @@ See also: PSIONICS, PSIONIC ARMOR, MINDBAR
 15 PYROTECHNICS~
 Syntax: pyrotechnics <victim>
 
-This psionic skill takes the energy from a light source and transforms it
-into a figure of fire that attacks the victim.  The light source is used up
-when this skill is used.  The more powerful the light source, the
-more damage is inflicted on the victim.
+This psionic skill ignites the air around a victim.  Its damage scales with
+the user's current vitality, can be reduced by a saving throw, and may heat a
+piece of the victim's equipment until it temporarily cannot be worn.  It does
+not consume a light source.
 
 Minimum level: 20
 
@@ -153,8 +175,8 @@ See also: PSIONICS, FIRE SPELLS, HARMFUL
 Syntax: shift <character>
 
 This psionic skill causes the target player or mob to be transported to the
-psionicist.  If the target character has nosummon on, he or she cannot be
-shifted.
+psionicist.  NOSUMMON and protected-room flags prevent the transfer, as do
+combat and several unstable room types.
 
 Minimum level: 25
 
@@ -165,8 +187,10 @@ See also: PSIONICS, ASTRAL WALK, SUMMON
 Syntax: telekinesis <object name>
 Syntax: tk <object name>
 
-Telekinesis is the psionic skill that allows the user to translocate
-items scattered about the world to his or her possession.
+Telekinesis allows the user to translocate a visible, takeable ground item
+from elsewhere in the world.  It respects carry limits, ownership, quest-item
+binding, and protected or no-teleport rooms.  Money, treasure, hidden
+containers, carried items, and NOLOCATE items cannot be retrieved this way.
 
 Minimum level: 21
 
@@ -189,7 +213,8 @@ Syntax: transfusion <character>
 
 This skill transfers physical stamina from the user to the target character.
 It costs 50 hit points and cannot be used when doing so would reduce the user
-to zero hit points.
+to zero hit points.  It cannot target the user or someone already at full
+health.
 
 Minimum level: 28
 

@@ -3153,7 +3153,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	"project",
 	{ 19, 19, 19, 19, 19, 19 },      { 5, 5, 5, 5, 5, 5},
 	spell_null,              TAR_IGNORE,             POS_RESTING,
-	&gsn_project,            SLOT( 0),       0,      0,
+	&gsn_project,            SLOT( 0),       0,      4,
 	"",                      "!Project!"
     },
 
@@ -3216,7 +3216,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	"transfusion",
 	{ 28, 28, 28, 28, 28, 28 },     {  5, 5, 5, 5, 5, 5},
 	spell_null,             TAR_CHAR_DEFENSIVE,     POS_FIGHTING,
-	&gsn_transfusion,       SLOT( 0),        0,      0,
+	&gsn_transfusion,       SLOT( 0),        0,      12,
 	"",                     "!Transfusion!"
     },
 

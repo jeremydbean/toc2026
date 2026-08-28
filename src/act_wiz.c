@@ -6222,8 +6222,7 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     if ( arg[0] == '\0' )
     {
         send_to_char( "Syntax: grantpsi <player> [now] [skill1,skill2,...]\n\r", ch );
-        send_to_char( "  Target: Room vnum or mob name.\n\r", ch );
-        send_to_char( "  Timer:  0 for permanent, or number of ticks.\n\r", ch );
+        send_to_char( "Separate multiple skill names with commas.\n\r", ch );
         return;
     }
 
@@ -6270,8 +6269,12 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
 
     if ( !normalize_psionic_arguments( list_buf, list_buf, sizeof(list_buf), invalid ) )
     {
-        snprintf( arg, sizeof(arg), "Invalid psionic selection: %s. Valid options are: astral walk, clairvoyance, confuse, ego whip, mindbar, mindblast, nightmare, project, psionic armor, psychic shield, pyrotechnics, shift, telekinesis, torment, transfusion.\n\r", invalid );
+        snprintf( arg, sizeof(arg), "Invalid psionic selection: %.180s.\n\r", invalid );
         send_to_char( arg, ch );
+        send_to_char( "Valid options: astral walk, clairvoyance, confuse, ego whip,\n\r", ch );
+        send_to_char( "enervate, mind leech, mindbar, mindblast, nightmare, project,\n\r", ch );
+        send_to_char( "psionic armor, psychic shield, pyrotechnics, shift, telekinesis,\n\r", ch );
+        send_to_char( "torment, and transfusion.\n\r", ch );
         return;
     }
 
