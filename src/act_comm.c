@@ -1488,6 +1488,8 @@ void do_quit( CHAR_DATA *ch, char *argument )
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s has quit.", ch->name );
     log_string( log_buf );
     log_string("[QUIT] Player rejoined the real world.");
+
+    quest_handle_logout(ch);
     
     /* Snapshot session stats so they can be viewed offline */
     {

@@ -135,7 +135,7 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         assignment = quest.index("generate_quest(ch, questman)")
         self.assertLess(pending, assignment)
         self.assertIn("SHRT_MAX - ch->practice", quest)
-        self.assertIn("ch->queststreak < SHRT_MAX", quest)
+        self.assertIn("ch->queststreak < SHRT_MAX", self.quest)
         self.assertIn("ch->questrush  = false", quest)
         self.assertGreaterEqual(quest.count("save_char_obj(ch)"), 8)
 
@@ -177,7 +177,7 @@ class AdditionalRareMechanicTests(unittest.TestCase):
 
     def test_help_matches_the_repaired_mechanics(self) -> None:
         self.assertIn("possibly to zero for simple items", self.command_help)
-        self.assertIn("pending double-or-nothing offer", self.command_help)
+        self.assertIn("pending quest-point reward", self.command_help)
         self.assertIn("5-7 more", self.command_help)
         self.assertIn("cannot be used when doing so would reduce", self.skill_help)
         self.assertIn("too heavy remains safely in the corpse", self.spell_help)

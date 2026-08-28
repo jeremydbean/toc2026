@@ -136,7 +136,10 @@ typedef enum
     ACHIEVEMENT_EVENT_FARSLAYED,
     ACHIEVEMENT_EVENT_FARSLAY_BACKFIRE,
     ACHIEVEMENT_EVENT_FARSLAY_KILL,
-    ACHIEVEMENT_EVENT_DEATH_RAY
+    ACHIEVEMENT_EVENT_DEATH_RAY,
+    ACHIEVEMENT_EVENT_QUEST_RUSH,
+    ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE,
+    ACHIEVEMENT_EVENT_QUEST_GAMBLE_WIN
 } achievement_event_type;
 
 typedef void (*script_event_callback)( script_event_type type, void *payload, void *context );
@@ -988,6 +991,10 @@ struct  kill_data
 #define OBJ_VNUM_SCHOOL_SHIELD     3704
 #define OBJ_VNUM_SCHOOL_BANNER     3716
 #define OBJ_VNUM_MAP               3162
+
+/* Player-bound automatic quest recovery tokens (mountain.are). */
+#define OBJ_VNUM_QUEST_TOKEN_FIRST 25038
+#define OBJ_VNUM_QUEST_TOKEN_LAST  25042
 
 /* Seasonal event drop items (seasonal.are) */
 #define OBJ_VNUM_SEASONAL_CANDY    29900  /* Hallows End trick-or-treat candy */
@@ -2175,6 +2182,10 @@ void    achievement_load_earned ( CHAR_DATA *ch, const char *key, time_t earned 
 int     achievement_earned_count ( const CHAR_DATA *ch );
 int     achievement_catalog_count ( void );
 int     achievement_points ( const CHAR_DATA *ch );
+
+/* quest.c */
+void    quest_record_kill ( CHAR_DATA *killer, CHAR_DATA *victim );
+void    quest_handle_logout ( CHAR_DATA *ch );
 
 /* act_move.c */
 void    move_char       ( CHAR_DATA *ch, int door, bool follow );

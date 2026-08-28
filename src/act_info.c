@@ -4470,6 +4470,14 @@ void do_remort( CHAR_DATA *ch, char *arg)
    if (IS_NPC(ch))
         return;
 
+   if (IS_SET(ch->act, PLR_QUESTOR))
+   {
+     send_to_char(
+         "Finish or abort your active automatic quest before remorting.\n\r",
+         ch);
+     return;
+   }
+
    to_strip = one_argument(arg,arg1);
    to_strip = one_argument(to_strip,arg2);
    to_strip = one_argument(to_strip,arg3);

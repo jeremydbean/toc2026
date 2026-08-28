@@ -915,6 +915,14 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
     if ( obj->next_content != NULL )
 	fwrite_obj( ch, obj->next_content, fp, iNest );
 
+    /* Active recovery tokens belong to a timed world quest. Saving one while
+       the QUESTOR flag is intentionally stripped would strand it after login. */
+    if ( obj->pIndexData != NULL
+    &&   obj->pIndexData->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
+    &&   obj->pIndexData->vnum <= OBJ_VNUM_QUEST_TOKEN_LAST
+    &&   obj->value[4] != 0 )
+	return;
+
     /*
      * Castrate storage characters.
      */

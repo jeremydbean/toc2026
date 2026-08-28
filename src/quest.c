@@ -34,11 +34,10 @@
 DECLARE_DO_FUN( do_say );
 /* Object vnums for Quest Rewards */
 
-#define QUEST_ITEM1 29031
 #define QUEST_ITEM2 4639
 #define QUEST_ITEM3 24
 #define QUEST_ITEM4 3081
-#define QUEST_ITEM5 29203
+#define QUEST_ITEM5 20306
 #define QUEST_ITEM_POWER 20303
 #define QUEST_ITEM_GIANT 20304
 #define QUEST_ITEM_FARSLAY 20305
@@ -53,11 +52,11 @@ DECLARE_DO_FUN( do_say );
    items are worthless and have the rot-death flag, as they are placed
    into the world when a player receives an object quest. */
 
-#define QUEST_OBJQUEST1 25038
-#define QUEST_OBJQUEST2 25039
-#define QUEST_OBJQUEST3 25040
-#define QUEST_OBJQUEST4 25041
-#define QUEST_OBJQUEST5 25042
+#define QUEST_OBJQUEST1 OBJ_VNUM_QUEST_TOKEN_FIRST
+#define QUEST_OBJQUEST2 (OBJ_VNUM_QUEST_TOKEN_FIRST + 1)
+#define QUEST_OBJQUEST3 (OBJ_VNUM_QUEST_TOKEN_FIRST + 2)
+#define QUEST_OBJQUEST4 (OBJ_VNUM_QUEST_TOKEN_FIRST + 3)
+#define QUEST_OBJQUEST5 OBJ_VNUM_QUEST_TOKEN_LAST
 
 /* Local functions */
 
@@ -65,7 +64,6 @@ void generate_quest	args(( CHAR_DATA *ch, CHAR_DATA *questman ));
 void quest_update	args(( void ));
 bool chance		args(( int num ));
 void advance_level	args(( CHAR_DATA *ch, bool is_advance ));
-ROOM_INDEX_DATA *find_location	args( ( CHAR_DATA *ch, char *arg ) );
 
 /* CHANCE function. I use this everywhere in my code, very handy :> */
 
@@ -75,12 +73,229 @@ bool chance(int num)
     else return false;
 }
 
+static bool is_automatic_quest_token( const OBJ_DATA *obj )
+{
+    int vnum;
+
+    if ( obj == NULL || obj->pIndexData == NULL )
+        return false;
+
+    vnum = obj->pIndexData->vnum;
+    return vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
+        && vnum <= OBJ_VNUM_QUEST_TOKEN_LAST;
+}
+
+static int quest_token_owner_tag( const CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return 0;
+    return ch->pcdata->id + 1;
+}
+
+static bool quest_token_belongs_to( const OBJ_DATA *obj, const CHAR_DATA *ch )
+{
+    if ( !is_automatic_quest_token(obj)
+    ||   obj->value[4] != quest_token_owner_tag(ch) )
+        return false;
+
+    return obj->owner != NULL && obj->owner[0] != '\0'
+        && !str_cmp(obj->owner, ch->name);
+}
+
+static void remove_automatic_quest_tokens( CHAR_DATA *ch )
+{
+    LIST_ITERATOR iter;
+    OBJ_DATA *obj;
+
+    FOR_EACH_OBJECT( iter, obj )
+        if ( quest_token_belongs_to(obj, ch) )
+            extract_obj(obj);
+}
+
+static OBJ_DATA *find_automatic_quest_token( OBJ_DATA *objects,
+                                             CHAR_DATA *ch, int vnum )
+{
+    OBJ_DATA *obj;
+    OBJ_DATA *found;
+
+    for ( obj = objects; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->pIndexData != NULL
+        &&   obj->pIndexData->vnum == vnum
+        &&   quest_token_belongs_to(obj, ch) )
+            return obj;
+
+        found = find_automatic_quest_token(obj->contains, ch, vnum);
+        if ( found != NULL )
+            return found;
+    }
+
+    return NULL;
+}
+
+static int add_quest_points( CHAR_DATA *ch, int amount )
+{
+    int granted;
+
+    if ( ch == NULL || amount <= 0 )
+        return 0;
+    if ( ch->questpoints < 0 )
+        ch->questpoints = 0;
+    if ( ch->questpoints >= INT_MAX )
+        return 0;
+
+    granted = UMIN(amount, INT_MAX - ch->questpoints);
+    ch->questpoints += granted;
+    return granted;
+}
+
+static int quest_streak_bonus( const CHAR_DATA *ch )
+{
+    if ( ch == NULL )
+        return 0;
+    return URANGE(0, ch->queststreak, 5) * 10;
+}
+
+static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
+                                      int gold_min, int gold_max )
+{
+    char buf[MAX_STRING_LENGTH];
+    bool completed_rush = ch->questrush;
+    bool completed_last_minute = ch->countdown == 1;
+    int pointreward = number_range(10,40);
+    int reward = number_range(gold_min, gold_max);
+    int streak_bonus = quest_streak_bonus(ch);
+
+    if ( completed_rush )
+        pointreward *= 2;
+    pointreward += (pointreward * streak_bonus) / 100;
+
+    switch (number_range(0, 2))
+    {
+        case 0: do_say(questman, "Excellent work! The realm is in your debt!"); break;
+        case 1: do_say(questman, "Splendid - you've returned victorious!"); break;
+        default: do_say(questman, "Well done! I knew you were right for the job."); break;
+    }
+
+    if ( !IS_NPC(ch) && ch->pcdata->session_quests < INT_MAX )
+        ch->pcdata->session_quests++;
+    if ( completed_rush )
+        do_say(questman,
+            "Rush contract fulfilled - your double reward is well earned!");
+    if ( ch->queststreak > 0 )
+    {
+        snprintf(buf, sizeof(buf),
+            "Streak of %d in a row! A +%d%% bonus has been added!",
+            ch->queststreak + 1, streak_bonus);
+        do_say(questman, buf);
+    }
+
+    REMOVE_BIT(ch->act, PLR_QUESTOR);
+    ch->questgiver = NULL;
+    ch->countdown = 0;
+    ch->questmob = 0;
+    ch->questobj = 0;
+    ch->questrush = false;
+    if ( ch->queststreak < 0 )
+        ch->queststreak = 0;
+    if ( ch->queststreak < SHRT_MAX )
+        ch->queststreak++;
+
+    achievement_record_quest(ch);
+    if ( completed_rush )
+        achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_RUSH, true);
+    if ( completed_last_minute )
+        achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE, true);
+
+    add_money(ch, reward);
+    ch->questgamble_pts = (sh_int)pointreward;
+    snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
+    do_say(questman, buf);
+    send_to_char(
+        "{09.-[ Double-or-Nothing Gamble Offer ]-------------------------.{00\n\r", ch);
+    snprintf(buf, sizeof(buf),
+        "{09|{00 {04Earned :{00 {0D%d{00 quest points\n\r"
+        "{09|{00 {06Win     :{00 50%% chance to earn {0D%d{00 pts\n\r"
+        "{09|{00 {07Lose    :{00 50%% chance to earn {0D0{00 pts\n\r"
+        "{09|{00  Type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r"
+        "{09'---------------------------------------------------------------'{00\n\r",
+        pointreward, pointreward * 2);
+    send_to_char(buf, ch);
+
+    ch->nextquest = ch->level == 50 ? 5 : 15;
+    save_char_obj(ch);
+}
+
+static void credit_automatic_quest_kill( CHAR_DATA *ch, int target_vnum )
+{
+    if ( ch == NULL || IS_NPC(ch)
+    ||   !IS_SET(ch->act, PLR_QUESTOR)
+    ||   ch->questmob != target_vnum )
+        return;
+
+    send_to_char("You have almost finished your QUEST!\n\r", ch);
+    send_to_char(
+        "Return to any questmaster before it is too late!\n\r", ch);
+    ch->questmob = -1;
+    save_char_obj(ch);
+}
+
+void quest_record_kill( CHAR_DATA *killer, CHAR_DATA *victim )
+{
+    CHAR_DATA *credit;
+    CHAR_DATA *member;
+    int target_vnum;
+
+    if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL
+    ||   victim->in_room == NULL )
+        return;
+
+    credit = killer;
+    if ( credit != NULL && IS_NPC(credit) && credit->master != NULL
+    &&   !IS_NPC(credit->master) )
+        credit = credit->master;
+    if ( credit == NULL || IS_NPC(credit) )
+        return;
+
+    target_vnum = victim->pIndexData->vnum;
+    credit_automatic_quest_kill(credit, target_vnum);
+    for ( member = victim->in_room->people; member != NULL;
+          member = member->next_in_room )
+    {
+        if ( IS_NPC(member)
+	||   member == credit
+	||   !is_same_group(member, credit) )
+            continue;
+
+	credit_automatic_quest_kill(member, target_vnum);
+    }
+}
+
+void quest_handle_logout( CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || !IS_SET(ch->act, PLR_QUESTOR) )
+        return;
+
+    remove_automatic_quest_tokens(ch);
+    REMOVE_BIT(ch->act, PLR_QUESTOR);
+    ch->questgiver = NULL;
+    ch->countdown = 0;
+    ch->questmob = 0;
+    ch->questobj = 0;
+    ch->questrush = false;
+    ch->queststreak = 0;
+    ch->nextquest = ch->level == 50 ? 5 : 15;
+    send_to_char(
+        "Leaving the game abandons your active quest and breaks its streak.\n\r",
+        ch);
+}
+
 /* The main quest function */
 
 void do_quest(CHAR_DATA *ch, char *argument)
 {
     CHAR_DATA *questman;
-    OBJ_DATA *obj=NULL, *obj_next;
+    OBJ_DATA *obj=NULL;
     OBJ_INDEX_DATA *questinfoobj;
     OBJ_INDEX_DATA *reward_index;
     MOB_INDEX_DATA *questinfo;
@@ -98,13 +313,11 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	    /* Active quest status panel */
 	    send_to_char(
 		"{09.-[ Quest Status ]--------------------------------------------.{00\n\r", ch);
-	    if (ch->questmob == -1 && ch->questgiver != NULL
-	    &&  ch->questgiver->short_descr != NULL)
+	    if (ch->questmob == -1)
 	    {
 		snprintf(buf, sizeof(buf),
 		    "{09|{00 {04Type  :{00 Quest nearly done!\n\r"
-		    "{09|{00 {04Return:{00 {06Get back to %s right away!{00\n\r",
-		    ch->questgiver->short_descr);
+		    "{09|{00 {04Return:{00 {06Report to any questmaster right away!{00\n\r");
 		send_to_char(buf, ch);
 	    }
 	    else if (ch->questobj > 0)
@@ -115,7 +328,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		    snprintf(buf, sizeof(buf),
 			"{09|{00 {04Type  :{00 Recovery Quest\n\r"
 			"{09|{00 {04Target:{00 {0DRecover {01%s{00\n\r",
-			questinfoobj->name);
+			questinfoobj->short_descr);
 		    send_to_char(buf, ch);
 		}
 	    }
@@ -145,7 +358,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		    "{09|{00 {0C** RUSH CONTRACT - double reward for finishing on time! **{00\n\r", ch);
 	    if (ch->queststreak > 0)
 	    {
-		int bonus_pct = UMIN(ch->queststreak, 5) * 10;
+		int bonus_pct = quest_streak_bonus(ch);
 		snprintf(buf, sizeof(buf),
 		    "{09|{00 {06Streak:{00 {0D%d{00 win%s in a row"
 		    " ({0D+%d%%{00 bonus on completion)\n\r",
@@ -189,7 +402,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	}
 	if (ch->queststreak > 0)
 	{
-	    int bonus_pct = UMIN(ch->queststreak, 5) * 10;
+	    int bonus_pct = quest_streak_bonus(ch);
 	    snprintf(buf, sizeof(buf),
 		"{09|{00 {06Win Streak  :{00 {0D%d{00 win%s in a row"
 		" (next quest earns {0D+%d%%{00 bonus)\n\r",
@@ -281,14 +494,17 @@ void do_quest(CHAR_DATA *ch, char *argument)
             ch->questgamble_pts = 0;
             if (chance(50))
             {
-                ch->questpoints += wagered * 2;
+		int awarded = add_quest_points(ch, wagered * 2);
+
                 snprintf(buf, sizeof(buf),
 		    "\n\r{0D** Fortune SMILES upon you!"
 		    " You WIN %d quest points! **{00\n\r\n\r",
-		    wagered * 2);
+		    awarded);
                 send_to_char(buf, ch);
                 act("{0DFortune{00 shines on $n - they won the gamble!",
 		    ch, NULL, NULL, TO_ROOM);
+		achievement_record_event(
+		    ch, ACHIEVEMENT_EVENT_QUEST_GAMBLE_WIN, true);
             }
             else
             {
@@ -306,11 +522,13 @@ void do_quest(CHAR_DATA *ch, char *argument)
         /* arg2 == "no" or "n" */
         {
             int claimed = ch->questgamble_pts;
+	    int awarded;
+
             ch->questgamble_pts = 0;
-            ch->questpoints += claimed;
+	    awarded = add_quest_points(ch, claimed);
             snprintf(buf, sizeof(buf),
 		"{06Wise choice. You safely collect {0D%d{00{06 quest points.{00\n\r",
-		claimed);
+		awarded);
             send_to_char(buf, ch);
             save_char_obj(ch);
             return;
@@ -344,8 +562,6 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	send_to_char("Wait until the fighting stops.\n\r",ch);
         return;
     }
-
-    ch->questgiver = questman;
 
 /* And, of course, you will need to change the following lines for YOUR
    quest item information. Quest items on Moongate are unbalanced, very
@@ -510,10 +726,17 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	}
 	else if (is_name(arg2, "heal"))
 	{
+	    reward_index = get_obj_index(QUEST_ITEM2);
+	    if ( reward_index == NULL )
+	    {
+		bug("Do_quest: missing extra-heal reward vnum %d.", QUEST_ITEM2);
+		do_say(questman, "That reward is temporarily unavailable.");
+		return;
+	    }
 	    if (ch->questpoints >= 450)
 	    {
 		ch->questpoints -= 450;
-	        obj = create_object(get_obj_index(QUEST_ITEM2),ch->level);
+	        obj = create_object(reward_index,ch->level);
 	    }
 	    else
 	    {
@@ -524,10 +747,17 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	}
 	else if (is_name(arg2, "moonshine"))
 	{
+	    reward_index = get_obj_index(QUEST_ITEM3);
+	    if ( reward_index == NULL )
+	    {
+		bug("Do_quest: missing moonshine reward vnum %d.", QUEST_ITEM3);
+		do_say(questman, "That reward is temporarily unavailable.");
+		return;
+	    }
 	    if (ch->questpoints >= 450)
 	    {
 		ch->questpoints -= 450;
-	        obj = create_object(get_obj_index(QUEST_ITEM3),ch->level);
+	        obj = create_object(reward_index,ch->level);
 	    }
 	    else
 	    {
@@ -538,10 +768,17 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	}
 	else if (is_name(arg2, "sanctuary"))
 	{
+	    reward_index = get_obj_index(QUEST_ITEM4);
+	    if ( reward_index == NULL )
+	    {
+		bug("Do_quest: missing sanctuary reward vnum %d.", QUEST_ITEM4);
+		do_say(questman, "That reward is temporarily unavailable.");
+		return;
+	    }
 	    if (ch->questpoints >= 150)
 	    {
 		ch->questpoints -= 150;
-	        obj = create_object(get_obj_index(QUEST_ITEM4),ch->level);
+	        obj = create_object(reward_index,ch->level);
 	    }
 	    else
 	    {
@@ -562,7 +799,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                     return;
                 }
 
-                gained = UMIN(dice(1,2) + 1, SHRT_MAX - ch->practice);
+                gained = UMIN(number_range(1,3), SHRT_MAX - ch->practice);
                 ch->questpoints -= 500;
                 ch->practice = (sh_int)(ch->practice + gained);
                 act( "$N gives some practices to $n.", ch, NULL, questman, TO_ROOM );
@@ -583,10 +820,18 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
         {
             if (ch->level < LEVEL_HERO)
             {
-                snprintf(buf, sizeof(buf), "That favor is reserved for maxed heroes, %s.", ch->name);
+                snprintf(buf, sizeof(buf),
+		    "That favor is reserved for heroes, %s.", ch->name);
                 do_say(questman, buf);
                 return;
             }
+
+	    if ( ch->practice >= SHRT_MAX )
+	    {
+		do_say(questman,
+		    "You cannot retain the practices included in that boon.");
+		return;
+	    }
 
             if (ch->questpoints >= QUEST_ENDGAME_BOON_COST)
             {
@@ -642,12 +887,28 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
         }
         else if (is_name(arg2, "cache"))
         {
+	    OBJ_INDEX_DATA *cache_rewards[3];
+	    int cache_index;
+
             if (ch->level < LEVEL_HERO)
             {
                 snprintf(buf, sizeof(buf), "That cache is sealed to all but the greatest heroes, %s.", ch->name);
                 do_say(questman, buf);
                 return;
             }
+
+	    cache_rewards[0] = get_obj_index(QUEST_ITEM2);
+	    cache_rewards[1] = get_obj_index(QUEST_ITEM3);
+	    cache_rewards[2] = get_obj_index(QUEST_ITEM4);
+	    for ( cache_index = 0; cache_index < 3; cache_index++ )
+	    {
+		if ( cache_rewards[cache_index] != NULL )
+		    continue;
+		bug("Do_quest: missing surprise-cache reward index %d.",
+		    cache_index);
+		do_say(questman, "That reward is temporarily unavailable.");
+		return;
+	    }
 
             if (ch->questpoints >= QUEST_ENDGAME_CACHE_COST)
             {
@@ -661,13 +922,13 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                     switch(number_range(0,2))
                     {
                         case 0:
-                            obj = create_object(get_obj_index(QUEST_ITEM2), ch->level);
+			    obj = create_object(cache_rewards[0], ch->level);
                             break;
                         case 1:
-                            obj = create_object(get_obj_index(QUEST_ITEM3), ch->level);
+			    obj = create_object(cache_rewards[1], ch->level);
                             break;
                         default:
-                            obj = create_object(get_obj_index(QUEST_ITEM4), ch->level);
+			    obj = create_object(cache_rewards[2], ch->level);
                             break;
                     }
 
@@ -729,6 +990,13 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    return;
 	}
 
+	remove_automatic_quest_tokens(ch);
+	ch->questgiver = NULL;
+	ch->questmob = 0;
+	ch->questobj = 0;
+	ch->countdown = 0;
+	ch->questrush = false;
+
 	switch (number_range(0, 3))
 	{
 	    case 0:
@@ -789,159 +1057,24 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
     {
         act( "$n informs $N $e has completed $s quest.", ch, NULL, questman, TO_ROOM);
 	act ("You inform $N you have completed $s quest.",ch, NULL, questman, TO_CHAR);
-	if (ch->questgiver != questman)
-	{
-	    snprintf(buf, sizeof(buf),
-		"I don't recall sending you on a quest, %s. Wrong person!",
-		ch->name);
-	    do_say(questman,buf);
-	    return;
-	}
 
 	if (IS_SET(ch->act, PLR_QUESTOR))
 	{
 	    if (ch->questmob == -1 && ch->countdown > 0)
 	    {
-		int reward, pointreward;
-		int streak_bonus;
-
-		reward = number_range(1,30);
-		pointreward = number_range(10,40);
-
-		/* rush contract: 2x base reward */
-		if (ch->questrush)
-		    pointreward *= 2;
-
-		/* streak bonus: +10% per streak level, capped at +50% */
-		streak_bonus = UMIN(ch->queststreak, 5) * 10;
-		pointreward = pointreward + (pointreward * streak_bonus) / 100;
-
-		switch (number_range(0, 2))
-		{
-		    case 0: do_say(questman, "Excellent work! The realm is in your debt!"); break;
-		    case 1: do_say(questman, "Splendid - you've returned victorious!"); break;
-		    case 2: do_say(questman, "Well done! I knew you were right for the job."); break;
-		}
-		if (!IS_NPC(ch))
-		    ch->pcdata->session_quests++;
-		if (ch->questrush)
-		    do_say(questman, "Rush contract fulfilled - your double reward is well earned!");
-		if (ch->queststreak > 0)
-		{
-		    snprintf(buf, sizeof(buf), "Streak of %d in a row! A +%d%% bonus has been added!",
-			    ch->queststreak + 1, streak_bonus);
-		    do_say(questman, buf);
-		}
-	        REMOVE_BIT(ch->act, PLR_QUESTOR);
-	        ch->questgiver = NULL;
-	        ch->countdown = 0;
-	        ch->questmob = 0;
-		ch->questobj = 0;
-		ch->questrush = false;
-		if ( ch->queststreak < SHRT_MAX )
-		    ch->queststreak++;
-		achievement_record_quest(ch);
-                add_money(ch,reward);
-		/* double-or-nothing gamble offer */
-		ch->questgamble_pts = (sh_int)(pointreward);
-		snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
-		do_say(questman,buf);
-		send_to_char(
-		    "{09.-[ Double-or-Nothing Gamble Offer ]-------------------------.{00\n\r", ch);
-		snprintf(buf, sizeof(buf),
-		    "{09|{00 {04Earned :{00 {0D%d{00 quest points\n\r"
-		    "{09|{00 {06Win     :{00 50%%%% chance to earn {0D%d{00 pts\n\r"
-		    "{09|{00 {07Lose    :{00 50%%%% chance to earn {0D0{00 pts\n\r"
-		    "{09|{00  Type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r"
-		    "{09'---------------------------------------------------------------'{00\n\r",
-		    pointreward, pointreward * 2);
-		send_to_char(buf, ch);
-		if( ch->level == 50 )
-		    ch->nextquest = 5;
-		else
-		    ch->nextquest = 15;
-		save_char_obj(ch);
+		complete_automatic_quest(ch, questman, 1, 30);
 	        return;
 	    }
 	    else if (ch->questobj > 0 && ch->countdown > 0)
 	    {
-		bool obj_found = false;
-
-    		for (obj = ch->carrying; obj != NULL; obj= obj_next)
-    		{
-        	    obj_next = obj->next_content;
-
-		    if (obj != NULL && obj->pIndexData->vnum == ch->questobj)
-		    {
-			obj_found = true;
-            	        break;
-		    }
-        	}
-		if (obj_found == true)
+		obj = find_automatic_quest_token(
+		    ch->carrying, ch, ch->questobj);
+		if (obj != NULL)
 		{
-		    int reward, pointreward;
-		    int streak_bonus;
-
-		    reward = number_range(15,30);
-		    pointreward = number_range(10,40);
-
-		    /* rush contract: 2x base reward */
-		    if (ch->questrush)
-		        pointreward *= 2;
-
-		    /* streak bonus: +10% per streak level, capped at +50% */
-		    streak_bonus = UMIN(ch->queststreak, 5) * 10;
-		    pointreward = pointreward + (pointreward * streak_bonus) / 100;
-
 		    act("You hand $p to $N.",ch, obj, questman, TO_CHAR);
 		    act("$n hands $p to $N.",ch, obj, questman, TO_ROOM);
-	    /* Track quest completion for session stats */
-	    if (!IS_NPC(ch))
-		ch->pcdata->session_quests++;
-		    switch (number_range(0, 2))
-		    {
-			case 0: do_say(questman, "Excellent work! The realm is in your debt!"); break;
-			case 1: do_say(questman, "Splendid - you've returned victorious!"); break;
-			case 2: do_say(questman, "Well done! I knew you were right for the job."); break;
-		    }
-		    if (ch->questrush)
-		        do_say(questman, "Rush contract fulfilled - your double reward is well earned!");
-		    if (ch->queststreak > 0)
-		    {
-		        snprintf(buf, sizeof(buf), "Streak of %d in a row! A +%d%% bonus has been added!",
-			     ch->queststreak + 1, streak_bonus);
-		        do_say(questman, buf);
-		    }
-	            REMOVE_BIT(ch->act, PLR_QUESTOR);
-	            ch->questgiver = NULL;
-	            ch->countdown = 0;
-	            ch->questmob = 0;
-		    ch->questobj = 0;
-		    ch->questrush = false;
-		    if ( ch->queststreak < SHRT_MAX )
-			ch->queststreak++;
-		    achievement_record_quest(ch);
-                    add_money(ch,reward);
-		    extract_obj(obj);
-		    /* double-or-nothing gamble offer */
-		    ch->questgamble_pts = (sh_int)(pointreward);
-		    snprintf(buf, sizeof(buf), "Here's your %d gold - well earned!", reward);
-		    do_say(questman, buf);
-		    send_to_char(
-			"{09.-[ Double-or-Nothing Gamble Offer ]-------------------------.{00\n\r", ch);
-		    snprintf(buf, sizeof(buf),
-			"{09|{00 {04Earned :{00 {0D%d{00 quest points\n\r"
-			"{09|{00 {06Win     :{00 50%%%% chance to earn {0D%d{00 pts\n\r"
-			"{09|{00 {07Lose    :{00 50%%%% chance to earn {0D0{00 pts\n\r"
-			"{09|{00  Type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r"
-			"{09'---------------------------------------------------------------'{00\n\r",
-			pointreward, pointreward * 2);
-		    send_to_char(buf, ch);
-		    if( ch->level == 50 )
-			ch->nextquest = 6;
-		    else
-			ch->nextquest = 15;
-		    save_char_obj(ch);
+		    remove_automatic_quest_tokens(ch);
+		    complete_automatic_quest(ch, questman, 15, 30);
 		    return;
 		}
 		else
@@ -971,18 +1104,6 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	act( "$n approaches $N to abandon $s quest.",ch,NULL,questman,TO_ROOM );
 	act( "You tell $N that you are abandoning your quest.",ch,NULL,questman,TO_CHAR);
 
-	if( ch->questgiver != questman )
-	{
-	    do_say(questman, "I never assigned you a quest, friend. Wrong person!");
-	    return;
-	}
-
-        if ( IS_HERO(ch) )
-        {
-            snprintf(buf, sizeof(buf),"Heroes cannot abandon quests, %s!", ch->name);
-            do_say(questman,buf);
-            return;
-        }
         if( IS_SET(ch->act, PLR_QUESTOR) )
         {
             snprintf(buf, sizeof(buf),
@@ -994,8 +1115,8 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    "You had a streak of %d in a row - all gone now!", ch->queststreak);
 		do_say(questman, buf);
 		send_to_char("{07Your winning streak has been broken!{00\n\r", ch);
-		ch->queststreak = 0;
 	    }
+	    ch->queststreak = 0;
 	    switch (number_range(0, 2))
 	    {
 		case 0: do_say(questman,
@@ -1006,6 +1127,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    "May your next quest go better!"); break;
 	    }
 
+	    remove_automatic_quest_tokens(ch);
 	    REMOVE_BIT(ch->act, PLR_QUESTOR);
 	    ch->questgiver = NULL;
 	    ch->countdown  = 0;
@@ -1037,45 +1159,69 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
     return;
 }
 
+static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
+                                                CHAR_DATA *questman,
+                                                CHAR_DATA *victim )
+{
+    MOB_INDEX_DATA *index;
+    ROOM_INDEX_DATA *room;
+
+    if ( victim == NULL || !IS_NPC(victim) || victim == questman
+    ||   victim->pIndexData == NULL || victim->in_room == NULL
+    ||   ch->level > 59 )
+        return false;
+
+    index = victim->pIndexData;
+    room = victim->in_room;
+    if ( index->level <= 2 || index->level >= ch->level
+    ||   IS_SET(index->imm_flags, IMM_SUMMON)
+    ||   index->pShop != NULL
+    ||   IS_SET(index->act, ACT_GAIN)
+    ||   IS_SET(index->act, ACT_TRAIN)
+    ||   IS_SET(index->act, ACT_PRACTICE)
+    ||   IS_SET(index->act, ACT_IS_HEALER)
+    ||   IS_SET(index->act, ACT_NOKILL)
+    ||   IS_SET(index->act, ACT_QUESTM)
+    ||   IS_SET(index->act, ACT_PET)
+    ||   IS_SET(index->affected_by, AFF_CHARM)
+    ||   IS_SET(index->affected_by2, AFF2_GHOST)
+    ||   IS_AFFECTED(victim, AFF_CHARM)
+    ||   IS_AFFECTED2(victim, AFF2_GHOST)
+    ||   !can_see(ch, victim)
+    ||   !can_see_room(ch, room)
+    ||   room_is_private(room)
+    ||   IS_SET(room->room_flags, ROOM_SAFE)
+    ||   IS_SET(room->room_flags, ROOM_DT)
+    ||   IS_SET(room->room_flags, ROOM_JAIL) )
+        return false;
+
+    return true;
+}
+
 void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 {
     CHAR_DATA *victim;
-    MOB_INDEX_DATA *vsearch;
+    CHAR_DATA *candidate;
     ROOM_INDEX_DATA *room;
     OBJ_DATA *questitem;
     char buf [MAX_STRING_LENGTH];
-    long mcounter;
-    int mob_vnum;
+    LIST_ITERATOR iter;
+    int candidate_count = 0;
 
-    /*  Randomly selects a mob from the world mob list. If you don't
-	want a mob to be selected, make sure it is immune to summon.
-	Or, you could add a new mob flag called ACT_NOQUEST. The mob
-	is selected for both mob and obj quests, even tho in the obj
-	quest the mob is not used. This is done to assure the level
-	of difficulty for the area isn't too great for the player. */
+    /* Choose uniformly from suitable live mobiles. The same target pool is
+       used for kill and recovery quests so the destination remains level-
+       appropriate and accessible to the requesting player. */
 
-    for (mcounter = 0; mcounter < 500; mcounter ++)  /* Q2: limit iteration to 500 */
+    victim = NULL;
+    FOR_EACH_CHARACTER( iter, candidate )
     {
-	mob_vnum = number_range(50, 30000);
-
-	if ( (vsearch = get_mob_index(mob_vnum) ) != NULL )
-	{
-
-		if( vsearch->level > 2
-		&& vsearch->level < ch->level
-		&& !IS_SET(vsearch->imm_flags, IMM_SUMMON)
-		&& vsearch->pShop == NULL
-		&& ch->level <= 59
-    		&& !IS_SET(vsearch->act,ACT_TRAIN)
-    		&& !IS_SET(vsearch->act,ACT_PRACTICE)
-    		&& !IS_SET(vsearch->act,ACT_IS_HEALER)
-		&& !IS_SET(vsearch->affected_by, AFF_CHARM )
-		&& chance(35)) break;
-		else vsearch = NULL;
-	}
+	if ( !automatic_quest_target_is_suitable(ch, questman, candidate) )
+	    continue;
+	if ( number_range(1, ++candidate_count) == 1 )
+	    victim = candidate;
     }
 
-    if ( vsearch == NULL || ( victim = get_char_world( ch, vsearch->player_name ) ) == NULL )
+    if ( victim == NULL )
     {
 	snprintf(buf, sizeof(buf),
 	    "My apologies, %s - there are no suitable quests at the moment.",
@@ -1086,16 +1232,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
         return;
     }
 
-    if ( ( room = find_location( ch, victim->name ) ) == NULL )
-    {
-	snprintf(buf, sizeof(buf),
-	    "My apologies, %s - there are no suitable quests at the moment.",
-	    ch->name);
-	do_say(questman, buf);
-	do_say(questman, "Please try again shortly.");
-	ch->nextquest = 5;
-        return;
-    }
+    room = victim->in_room;
 
     /*  40% chance it will send the player on a 'recover item' quest. */
 
@@ -1140,6 +1277,9 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	    }
 	    questitem = create_object(qidx, ch->level);
 	}
+	questitem->value[4] = quest_token_owner_tag(ch);
+	questitem->timer = 120;
+	questitem->owner = str_dup(ch->name);
 	obj_to_room(questitem, room);
 	ch->questobj = questitem->pIndexData->vnum;
 
@@ -1247,6 +1387,7 @@ void quest_update(void)
             if (ch->nextquest == 0)
             {
                 send_to_char("You may now quest again.\n\r",ch);
+		save_char_obj(ch);
                 continue;
             }
         }
@@ -1268,13 +1409,16 @@ void quest_update(void)
                         "Your winning streak of %d is lost from failing to complete in time!\n\r",
                         ch->queststreak);
                     send_to_char(buf, ch);
-                    ch->queststreak = 0;
                 }
+		ch->queststreak = 0;
+		remove_automatic_quest_tokens(ch);
                 REMOVE_BIT(ch->act, PLR_QUESTOR);
                 ch->questgiver = NULL;
                 ch->countdown = 0;
                 ch->questmob = 0;
                 ch->questobj = 0;
+		ch->questrush = false;
+		save_char_obj(ch);
             }
             if (ch->countdown > 0 && ch->countdown < 6)
             {

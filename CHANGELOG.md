@@ -10,7 +10,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- Added a WoW-style permanent character achievement system with 105 cataloged
+- Added a WoW-style permanent character achievement system with 111 cataloged
   accomplishments, points, earned dates, nine categories, hidden discoveries,
   progress views, nearby unlock announcements, retroactive state checks, and
   save-compatible stable keys.
@@ -90,6 +90,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Reworked automatic quests to choose suitable live targets, credit nearby
+  group members and pet-assisted kills, accept turn-ins at any questmaster,
+  bind and clean up recovery tokens, find tokens inside containers, and save
+  cooldown and timeout transitions immediately. Protected service mobiles,
+  explicitly unkillable targets, and ghosts are no longer selected.
+- Fixed active-quest logout preserving streaks, heroes being unable to abort,
+  object quests having a different cooldown, practice rewards disagreeing with
+  their advertised range, malformed gamble percentages, reward additions
+  overflowing the quest-point balance, and remort preserving a high-level
+  quest after returning the player to level 3.
+- Replaced the quest shop's mislabeled translucent-key "trophy" with a real
+  questmaster keepsake, hardened missing reward prototypes, and added quest
+  achievements for 250 completions, a 25-win streak, rushes, final-minute
+  turn-ins, gamble wins, and acquiring the keepsake.
 - Fixed `lore` allowing negative research fees to pay repeatable gold, omitting
   its value estimate, hiding later spells, and miscalculating negative affects
   and weapon averages.

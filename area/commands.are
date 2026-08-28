@@ -860,20 +860,23 @@ See also: BASH, KICK, NERVE
 ~
 
 0 AQUEST~
-Syntax: aquest
+Syntax: aquest <info|points|time>
+Syntax: aquest <request|complete|list|buy|abort|gamble> [option]
 
-Shows the status of the automatic quest system.  If a quest is currently
-active, AQUEST displays the objective, the target mob or object, the
-reward, and the time remaining.  If no quest is running you will be told
-when you are next eligible to receive one.
+AQUEST INFO shows the active objective and time remaining, or your cooldown,
+quest points, pending gamble, and win streak. Suitable targets are selected
+from live, level-appropriate mobiles in rooms your character may enter.
 
-Quest objectives are assigned automatically by the quest system and vary
-by character level.  Complete them for experience and quest points that
-can be spent on special rewards.
+Kill credit includes eligible group members present with the final attacker,
+including kills finished by a controlled pet. Recovery items are bound to the
+assigned player, may be carried inside a container, and disappear when the
+quest ends. Completed quests may be turned in to any questmaster for gold and
+a pending quest-point reward.
 
-Use AQUEST REQUEST, COMPLETE, LIST, BUY, ABORT, and GAMBLE at a questmaster.
-After completing a quest, resolve its pending double-or-nothing offer before
-requesting another so the earned points cannot be replaced by a later offer.
+Resolve that reward with AQUEST GAMBLE YES for a 50% double-or-nothing chance,
+or AQUEST GAMBLE NO to collect it safely. Rush contracts double the base point
+reward, while consecutive completions add up to a 50% streak bonus. Aborting,
+timing out, or quitting during an active quest breaks the streak.
 
 See also: QUEST, TOPTEN
 ~
@@ -2372,6 +2375,7 @@ CLASS, GUILD, AND RACE OPTIONS
            Necromancers are restricted to: elf, human.
 
 NOTES
+  Finish or abort any active automatic quest before remorting.
   If you supply a class with no guild (monk or necro), type 'none' for guild.
   All affects, immunities, resistances, and flags are cleared on remort.
   Your pk_state is reset; the title is set to match your new class.

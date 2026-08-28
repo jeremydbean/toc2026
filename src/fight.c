@@ -2719,13 +2719,7 @@ void group_gain( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( !IS_NPC(victim) || victim == ch )
 	return;
 
-    if( IS_SET( ch->act, PLR_QUESTOR ) && IS_NPC(victim) ) {
-	if( ch->questmob == victim->pIndexData->vnum ) {
-	    send_to_char("You have almost finished your QUEST!\n\r",ch);
-	    send_to_char("Return to the questmaster before it is too late!\n\r",ch);
-	    ch->questmob = -1;
-	}
-    }
+    quest_record_kill(ch, victim);
 
     members = 0;
     group_levels = 0;

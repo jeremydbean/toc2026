@@ -99,6 +99,22 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	return;
     }
 
+    if ( obj->pIndexData != NULL
+    &&   obj->pIndexData->vnum >= OBJ_VNUM_QUEST_TOKEN_FIRST
+    &&   obj->pIndexData->vnum <= OBJ_VNUM_QUEST_TOKEN_LAST
+    &&   obj->value[4] != 0
+    && ( IS_NPC(ch)
+      || ( !IS_IMMORTAL(ch)
+        && ( ch->pcdata == NULL
+          || obj->value[4] != ch->pcdata->id + 1
+          || obj->owner == NULL
+          || str_cmp(obj->owner, ch->name) ) ) ) )
+    {
+	act("$p was entrusted to another adventurer and rejects your touch.",
+	    ch, obj, NULL, TO_CHAR);
+	return;
+    }
+
     if(obj->item_type != ITEM_MONEY) {
         if(ch->carry_number + get_obj_number(obj) > can_carry_n(ch)) {
 	    act("$d: you can't carry that many items.",

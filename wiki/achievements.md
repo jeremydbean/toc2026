@@ -32,7 +32,7 @@ placeholder until earned.
 | Character | Levels 5, 10, 15, 20, 25, 30, 40, 50, 55, 58, and 59; first and fifth remorts; 24 hours and seven days played |
 | Combat | 1, 100, 1,000, and 10,000 mobile kills; 1, 25, and 100 qualifying player kills; a hidden Farslay feat |
 | Encounters | Seventeen named endgame bosses plus five-boss and full-catalog meta achievements |
-| Quests | 1, 10, 50, 100, and 500 completions; streaks of 5 and 10 |
+| Quests | 1, 10, 50, 100, 250, and 500 completions; streaks of 5, 10, and 25; rush, final-minute, gamble-win, and keepsake feats |
 | Exploration | Arrival in Hyrule and discovery of all nine dungeon entrances |
 | Collection | Seventeen rare or special-source relics plus 5, 10, and 17-relic metas |
 | Crafting | Brewing, concocting, scribing, the hidden Farslay-scroll recipe, and a crafting meta |
@@ -53,6 +53,12 @@ the Sun, Elfbane, Lanatir's sphere and Hammer of Wrath, an Angel's Heart, Lord
 British's crown/sceptre/amulet, Farslayer, and the quest-master Scroll of
 Farslay. Acquiring one is enough; the achievement remains after the object is
 used, lost, stored, or destroyed.
+
+Automatic-quest achievements also recognize completing a rush contract,
+turning in a quest during its final minute, winning double-or-nothing, and
+acquiring the questmaster's keepsake. Kill objectives award progress to
+eligible group members present for the kill, including when a controlled pet
+lands the final blow.
 
 Unusual-death achievements distinguish a flagged room death trap, a room-wide
 puzzle trap, a lethal action item, another player's Farslay, a self-inflicted
@@ -97,14 +103,15 @@ character save, quit, autosave, snapshot, backup, and restore behavior.
 ## Developer Notes
 
 The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 128
-timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 105. Add
+timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 111. Add
 a new entry only with a unique key that will never be repurposed.
 
 Event hooks are intentionally central:
 
 - `fight.c` records NPC deaths, true player deaths, named bosses, and qualifying
   player-kill milestones.
-- `quest.c` records successful quest completions after streak advancement.
+- `quest.c` records successful quest completions after streak advancement,
+  plus rush, final-minute, gamble-win, and keepsake-related progress.
 - `handler.c` records room entry, item acquisition, and lethal action items.
 - `magic2.c` records crafting, Farslay outcomes, and death rays; `act_obj.c` and
   `update.c` distinguish puzzle traps and flagged death-trap rooms.

@@ -40,7 +40,7 @@ class AchievementSystemTests(unittest.TestCase):
     def test_catalog_has_stable_unique_keys_and_fits_reserved_capacity(self) -> None:
         catalog_lines = re.findall(r'^[ \t]*\{[ \t]*"', self.source, re.MULTILINE)
         self.assertEqual(len(self.entries), len(catalog_lines))
-        self.assertEqual(len(self.entries), 105)
+        self.assertEqual(len(self.entries), 111)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))
@@ -145,7 +145,14 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertIn("achievement_record_kill(ch, victim)", fight)
         self.assertIn("achievement_record_death( victim )", fight)
         self.assertGreaterEqual(fight.count("achievement_check_state(ch, true)"), 2)
-        self.assertEqual(quest.count("achievement_record_quest(ch)"), 2)
+        self.assertEqual(quest.count("achievement_record_quest(ch)"), 1)
+        for event in (
+            "ACHIEVEMENT_EVENT_QUEST_RUSH",
+            "ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE",
+            "ACHIEVEMENT_EVENT_QUEST_GAMBLE_WIN",
+        ):
+            with self.subTest(event=event):
+                self.assertIn(event, quest)
         self.assertIn("achievement_record_room(ch, pRoomIndex->vnum", handler)
         self.assertIn("achievement_record_object(ch, obj->pIndexData->vnum", handler)
         self.assertIn("ACHIEVEMENT_EVENT_DEATH_ITEM", handler)
