@@ -28,7 +28,7 @@ On Windows, run:
 See `wiki/validation-and-area-health.md` for the full validation and area-health runbook.
 
 The August 2026 parsed-world baseline is 99 listed area entries, 2,336 mobiles,
-3,552 objects, and 7,781 rooms, with 0 critical, 11 warning, and 1,566
+3,557 objects, and 7,781 rooms, with 0 critical, 11 warning, and 1,571
 informational area-health findings.
 
 ## Resolved Findings

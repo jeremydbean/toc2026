@@ -99,6 +99,26 @@ Death Mountain requires all eight Triforce shards before its bombed entrance
 can be used. Ganon drops Golden Key `30243`; that key opens Zelda's room, which
 contains the complete Triforce `30286` and return portal `30217`.
 
+### Ganon Relics
+
+Ganon's corpse contains his fixed crown and Golden Key plus exactly one random
+relic from this table. All five random rewards are usable below the immortal
+level boundary:
+
+| Relic | Vnum | Level | Slot | Unique effect |
+| --- | ---: | ---: | --- | --- |
+| Hero's Tunic | `30577` | 54 | Body | Restores up to 5% maximum hp after the wearer personally kills an NPC, capped at twice the victim's level |
+| Blue Ring of Hyrule | `30578` | 54 | Finger | Reduces all incoming damage by 10% |
+| Pegasus Boots | `30581` | 55 | Feet | Reduces movement spent traveling on foot by 25%, with a minimum cost of one |
+| Mirror Shield | `30580` | 56 | Shield | Reduces nonphysical damage by 15% |
+| Red Ring of Hyrule | `30579` | 58 | Finger | Reduces all incoming damage by 20% |
+
+Blue and Red Ring wards use the strongest single value; wearing two does not
+stack their percentage reduction. The Mirror Shield is a separate ward and can
+combine with one Ring. Pegasus Boots do not reduce a mount's movement cost.
+The advanced `compare` model includes every relic passive and lists active
+relic effects in its projected loadouts.
+
 ## Maps And Compasses
 
 Every dungeon contains one generated map and compass:

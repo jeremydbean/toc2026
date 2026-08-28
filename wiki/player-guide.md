@@ -463,6 +463,13 @@ return portals.
   room to deliver the final blow. This special shot always lands, requires no
   Archery skill, and does not consume the Arrow. `Look ganon` repeats the
   instruction during this vulnerable phase.
+- Ganon's corpse always contains the Golden Key and one random mortal relic:
+  the Hero's Tunic, Blue Ring, Red Ring, Mirror Shield, or Pegasus Boots. Their
+  levels range from 54 through 58, and each has a real defensive, recovery, or
+  travel passive described by `examine` and modeled by `compare`.
+- Blue and Red Ring damage wards do not stack with each other; only the
+  strongest applies. The Mirror Shield's nonphysical ward can stack with one
+  Ring ward.
 
 The full level bands, dungeon order, commands, generated-data workflow, and
 spoiler-conscious mechanics are in [Hyrule: First Quest](hyrule-area.md).

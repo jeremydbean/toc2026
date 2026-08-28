@@ -574,6 +574,27 @@ cannot deliver the final blow.
 See also: ARCHERY, WIELD, SCAN
 ~
 
+0 GANON HYRULE RELICS~
+Hyrule is entered through the arcade cabinet and cannot be left with recall.
+Ganon can be wounded normally, but at one hit point he flashes red, becomes
+stunned, and can only be finished by a level 54 or higher character wielding
+the Silver Arrow and typing SHOOT GANON.
+
+Defeating Ganon puts the Golden Key and one random mortal relic in his corpse:
+
+  Hero's Tunic, level 54 - heals after personally killing an NPC
+  Blue Ring of Hyrule, level 54 - reduces all incoming damage by 10 percent
+  Pegasus Boots, level 55 - reduce movement spent traveling on foot by 25 percent
+  Mirror Shield, level 56 - reduces nonphysical damage by 15 percent
+  Red Ring of Hyrule, level 58 - reduces all incoming damage by 20 percent
+
+Only the strongest Blue or Red Ring ward applies, even if two rings are worn.
+The Mirror Shield can combine with one Ring ward. EXAMINE each relic for its
+exact limits, and COMPARE understands these special effects.
+
+See also: SHOOT, COMPARE, EXAMINE, RECALL
+~
+
 0 PICK~
 Syntax: pick <direction>
 Syntax: pick <container>

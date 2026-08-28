@@ -50,6 +50,11 @@ struct gear_loadout
     long imm_flags;
     OBJ_DATA *main_weapon;
     OBJ_DATA *offhand;
+    int hyrule_hero_tunic_count;
+    int hyrule_blue_ring_count;
+    int hyrule_red_ring_count;
+    int hyrule_mirror_shield_count;
+    int hyrule_pegasus_boots_count;
 };
 
 struct gear_metrics
@@ -70,6 +75,10 @@ struct gear_metrics
     int saving_throw;
     int exp_bonus;
     int weapon_skill;
+    int relic_damage_reduction;
+    int relic_nonphysical_reduction;
+    int relic_movement_reduction;
+    int relic_kill_heal;
 };
 
 static int gear_skill( CHAR_DATA *ch, int sn )
@@ -385,8 +394,40 @@ static int gear_loadout_stat( CHAR_DATA *ch, const GEAR_LOADOUT *loadout,
     return URANGE( 3, loadout->raw_stat[stat], gear_stat_cap( ch, stat ) );
 }
 
+static void gear_apply_hyrule_relic( GEAR_LOADOUT *loadout, OBJ_DATA *obj,
+                                     int sign )
+{
+    int vnum;
+
+    if ( obj == NULL || obj->pIndexData == NULL )
+        return;
+
+    vnum = obj->pIndexData->vnum;
+    switch ( vnum )
+    {
+    case OBJ_VNUM_HYRULE_HEROS_TUNIC:
+        loadout->hyrule_hero_tunic_count += sign;
+        break;
+    case OBJ_VNUM_HYRULE_BLUE_RING:
+        loadout->hyrule_blue_ring_count += sign;
+        break;
+    case OBJ_VNUM_HYRULE_RED_RING:
+        loadout->hyrule_red_ring_count += sign;
+        break;
+    case OBJ_VNUM_HYRULE_MIRROR_SHIELD:
+        loadout->hyrule_mirror_shield_count += sign;
+        break;
+    case OBJ_VNUM_HYRULE_PEGASUS_BOOTS:
+        loadout->hyrule_pegasus_boots_count += sign;
+        break;
+    default:
+        break;
+    }
+}
+
 static void gear_loadout_from_char( CHAR_DATA *ch, GEAR_LOADOUT *loadout )
 {
+    OBJ_DATA *obj;
     int i;
 
     memset( loadout, 0, sizeof( *loadout ) );
@@ -406,6 +447,9 @@ static void gear_loadout_from_char( CHAR_DATA *ch, GEAR_LOADOUT *loadout )
     loadout->imm_flags = ch->imm_flags;
     loadout->main_weapon = get_eq_char( ch, WEAR_WIELD );
     loadout->offhand = get_eq_char( ch, WEAR_SHIELD );
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( obj->wear_loc != WEAR_NONE )
+            gear_apply_hyrule_relic( loadout, obj, 1 );
 }
 
 static void gear_apply_affect( GEAR_LOADOUT *loadout, AFFECT_DATA *paf,
@@ -475,6 +519,8 @@ static void gear_apply_item( GEAR_LOADOUT *loadout, OBJ_DATA *obj,
 
     if ( obj == NULL )
         return;
+
+    gear_apply_hyrule_relic( loadout, obj, sign );
 
     for ( i = 0; i < 4; i++ )
         loadout->armor[i] -= sign * apply_ac( obj, slot, i );
@@ -876,6 +922,7 @@ static void gear_calculate_metrics( CHAR_DATA *ch,
     double focus_total;
     double learning_score;
     double exp_multiplier;
+    double movement_efficiency;
     int intelligence;
     int wisdom;
     int constitution;
@@ -906,6 +953,17 @@ static void gear_calculate_metrics( CHAR_DATA *ch,
     metrics->max_move = UMAX( 0, loadout->max_move );
     metrics->saving_throw = loadout->saving_throw;
     metrics->exp_bonus = UMAX( 0, loadout->exp_bonus );
+    if ( loadout->hyrule_red_ring_count > 0 )
+        metrics->relic_damage_reduction = 20;
+    else if ( loadout->hyrule_blue_ring_count > 0 )
+        metrics->relic_damage_reduction = 10;
+    if ( loadout->hyrule_mirror_shield_count > 0 )
+        metrics->relic_nonphysical_reduction = 15;
+    if ( loadout->hyrule_pegasus_boots_count > 0 )
+        metrics->relic_movement_reduction = 25;
+    if ( loadout->hyrule_hero_tunic_count > 0 )
+        metrics->relic_kill_heal = UMAX( 1,
+            UMIN(metrics->max_hit / 20, ch->level * 2) );
 
     effective_ac = 0;
     for ( i = 0; i < 4; i++ )
@@ -956,6 +1014,9 @@ static void gear_calculate_metrics( CHAR_DATA *ch,
     if ( IS_SET( loadout->affected_by2, AFF2_DIVINE_PROT ) )
         damage_factor *= IS_SET( loadout->affected_by, AFF_SANCTUARY )
             ? 0.9375 : 0.75;
+    damage_factor *= (100.0 - metrics->relic_damage_reduction) / 100.0;
+    /* Half of the neutral benchmark is nonphysical. */
+    damage_factor *= 1.0 - metrics->relic_nonphysical_reduction / 200.0;
     save_chance = URANGE( 5, 50 - metrics->saving_throw * 5, 95 ) / 100.0;
     hp_regen = UMAX( 6.0, constitution + ch->level / 2.0 )
         + class_table[ch->class].hp_max;
@@ -967,8 +1028,12 @@ static void gear_calculate_metrics( CHAR_DATA *ch,
         * (1.0 + gear_count_bits( loadout->imm_flags ) * 0.04);
 
     move_regen = UMAX( 25.0, (double)ch->level ) + dexterity / 2.0;
-    metrics->utility = 100.0 + metrics->max_move * 0.7
-        + move_regen * 4.0 + dexterity * 3.0 + constitution * 2.0
+    movement_efficiency = metrics->relic_movement_reduction > 0
+        ? 100.0 / (100.0 - metrics->relic_movement_reduction) : 1.0;
+    metrics->utility = 100.0
+        + (metrics->max_move * 0.7 + move_regen * 4.0)
+            * movement_efficiency
+        + dexterity * 3.0 + constitution * 2.0
         + gear_count_bits( loadout->imm_flags ) * 25.0;
     if ( IS_SET( loadout->affected_by, AFF_FLYING ) )
         metrics->utility += 35.0;
@@ -987,7 +1052,7 @@ static void gear_calculate_metrics( CHAR_DATA *ch,
     metrics->leveling = (100.0 + combat_score * 2.0
         + metrics->survival / 45.0 + metrics->utility / 8.0
         + mana_regen * profile->spell_weight + hp_regen
-        + learning_score) * exp_multiplier;
+        + learning_score + metrics->relic_kill_heal * 1.5) * exp_multiplier;
 }
 
 static double gear_metric_index( double value, double reference )
@@ -1243,6 +1308,49 @@ static void gear_send_metric( CHAR_DATA *ch, const char *label,
     send_to_char( buf, ch );
 }
 
+static void gear_send_relic_facts( CHAR_DATA *ch, char label,
+                                   const GEAR_METRICS *metrics )
+{
+    char buf[MAX_STRING_LENGTH];
+    char detail[128];
+    const char *separator;
+
+    snprintf( buf, sizeof(buf), "  %c relics: ", label );
+    separator = "";
+    if ( metrics->relic_damage_reduction > 0 )
+    {
+        snprintf( detail, sizeof(detail), "%sall damage -%d%%", separator,
+                  metrics->relic_damage_reduction );
+        toc_strlcat( buf, detail, sizeof(buf) );
+        separator = " | ";
+    }
+    if ( metrics->relic_nonphysical_reduction > 0 )
+    {
+        snprintf( detail, sizeof(detail), "%snonphysical -%d%%", separator,
+                  metrics->relic_nonphysical_reduction );
+        toc_strlcat( buf, detail, sizeof(buf) );
+        separator = " | ";
+    }
+    if ( metrics->relic_movement_reduction > 0 )
+    {
+        snprintf( detail, sizeof(detail), "%sfoot travel -%d%%", separator,
+                  metrics->relic_movement_reduction );
+        toc_strlcat( buf, detail, sizeof(buf) );
+        separator = " | ";
+    }
+    if ( metrics->relic_kill_heal > 0 )
+    {
+        snprintf( detail, sizeof(detail), "%skill heal about %d hp", separator,
+                  metrics->relic_kill_heal );
+        toc_strlcat( buf, detail, sizeof(buf) );
+        separator = " | ";
+    }
+    if ( separator[0] == '\0' )
+        toc_strlcat( buf, "none", sizeof(buf) );
+    toc_strlcat( buf, "\n\r", sizeof(buf) );
+    send_to_char( buf, ch );
+}
+
 static void gear_send_loadout_facts( CHAR_DATA *ch,
                                      const GEAR_PROFILE *profile,
                                      const GEAR_METRICS *a,
@@ -1283,6 +1391,17 @@ static void gear_send_loadout_facts( CHAR_DATA *ch,
               b->stat[STAT_STR], b->stat[STAT_INT], b->stat[STAT_WIS],
               b->stat[STAT_DEX], b->stat[STAT_CON] );
     send_to_char( buf, ch );
+    if ( a->relic_damage_reduction > 0
+        || a->relic_nonphysical_reduction > 0
+        || a->relic_movement_reduction > 0 || a->relic_kill_heal > 0
+        || b->relic_damage_reduction > 0
+        || b->relic_nonphysical_reduction > 0
+        || b->relic_movement_reduction > 0 || b->relic_kill_heal > 0 )
+    {
+        send_to_char( "  Unique relic effects:\n\r", ch );
+        gear_send_relic_facts( ch, 'A', a );
+        gear_send_relic_facts( ch, 'B', b );
+    }
 }
 
 static void gear_send_profile( CHAR_DATA *ch, const GEAR_PROFILE *profile )

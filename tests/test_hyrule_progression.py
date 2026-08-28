@@ -606,6 +606,97 @@ class HyruleProgressionTests(unittest.TestCase):
             (level_nine["goal_vnum"], 2): 3,
         })
 
+    def test_ganon_guarantees_one_random_mortal_relic(self) -> None:
+        relics = {
+            30577: (54, "D", {(5, 2), (13, 100), (24, -2)}, "5 percent"),
+            30578: (54, "B", {(13, 60), (12, 40), (24, -1)}, "10 percent"),
+            30579: (58, "B", {(5, 2), (13, 100), (24, -3)}, "20 percent"),
+            30580: (56, "J", {(24, -4), (17, -5)}, "15 percent"),
+            30581: (55, "G", {(2, 2), (14, 150)}, "25 percent"),
+        }
+        for vnum, (level, wear_flag, affects, effect_text) in relics.items():
+            relic = self.parser.objects[vnum]
+            guidance = " ".join(
+                " ".join(description["description"].split())
+                for description in relic.extra_descr
+            ).lower()
+            with self.subTest(vnum=vnum):
+                self.assertEqual(relic.item_type, "9")
+                self.assertEqual(relic.level, level)
+                self.assertLess(relic.level, 60)
+                self.assertIn(wear_flag, relic.wear_flags)
+                self.assertEqual(
+                    {(affect["location"], affect["modifier"])
+                     for affect in relic.affects},
+                    affects,
+                )
+                self.assertIn(effect_text, guidance)
+
+        fight_source = Path("src/fight.c").read_text(encoding="utf-8").lower()
+        loot_table = fight_source.split(
+            "static const int hyrule_ganon_loot_vnums[]", 1
+        )[1].split("};", 1)[0]
+        for constant in (
+            "obj_vnum_hyrule_heros_tunic",
+            "obj_vnum_hyrule_blue_ring",
+            "obj_vnum_hyrule_red_ring",
+            "obj_vnum_hyrule_mirror_shield",
+            "obj_vnum_hyrule_pegasus_boots",
+        ):
+            self.assertEqual(loot_table.count(constant), 1)
+        corpse_source = fight_source.split(
+            "void make_corpse( char_data *ch )", 1
+        )[1].split("void death_cry", 1)[0]
+        self.assertIn("if ( is_hyrule_ganon(ch) )", corpse_source)
+        self.assertIn("loot_index = number_range", corpse_source)
+        self.assertIn("add_loot_to_corpse(corpse, loot_vnum)", corpse_source)
+        self.assertNotIn("for ( loot_index", corpse_source)
+
+    def test_ganon_relic_passives_are_active_and_compared(self) -> None:
+        fight_source = Path("src/fight.c").read_text(encoding="utf-8").lower()
+        damage_source = fight_source.split(
+            "static int apply_hyrule_relic_damage_reduction", 1
+        )[1].split("static void reward_hyrule_hero_tunic", 1)[0]
+        self.assertIn("obj_vnum_hyrule_red_ring", damage_source)
+        self.assertIn("dam = dam * 80 / 100", damage_source)
+        self.assertIn("else if", damage_source)
+        self.assertIn("obj_vnum_hyrule_blue_ring", damage_source)
+        self.assertIn("dam = dam * 90 / 100", damage_source)
+        self.assertIn("obj_vnum_hyrule_mirror_shield", damage_source)
+        self.assertIn("dam = dam * 85 / 100", damage_source)
+        self.assertIn("dam_type != dam_bash", damage_source)
+        self.assertIn("dam_type != dam_pierce", damage_source)
+        self.assertIn("dam_type != dam_slash", damage_source)
+
+        tunic_source = fight_source.split(
+            "static void reward_hyrule_hero_tunic", 1
+        )[1].split("static bool is_hyrule_ganon", 1)[0]
+        self.assertIn("obj_vnum_hyrule_heros_tunic", tunic_source)
+        self.assertIn("ch->max_hit / 20", tunic_source)
+        self.assertIn("victim->level * 2", tunic_source)
+        self.assertIn("reward_hyrule_hero_tunic( ch, victim )", fight_source)
+
+        move_source = Path("src/act_move.c").read_text(encoding="utf-8").lower()
+        self.assertIn("obj_vnum_hyrule_pegasus_boots", move_source)
+        self.assertIn("move = umax( 1, move * 3 / 4 )", move_source)
+
+        compare_source = Path("src/gear_compare.c").read_text(
+            encoding="utf-8"
+        ).lower()
+        for constant in (
+            "obj_vnum_hyrule_heros_tunic",
+            "obj_vnum_hyrule_blue_ring",
+            "obj_vnum_hyrule_red_ring",
+            "obj_vnum_hyrule_mirror_shield",
+            "obj_vnum_hyrule_pegasus_boots",
+        ):
+            self.assertIn(constant, compare_source)
+        self.assertIn("relic_damage_reduction = 20", compare_source)
+        self.assertIn("else if ( loadout->hyrule_blue_ring_count > 0 )", compare_source)
+        self.assertIn("relic_nonphysical_reduction = 15", compare_source)
+        self.assertIn("relic_movement_reduction = 25", compare_source)
+        self.assertIn("unique relic effects", compare_source)
+
     def test_silver_arrow_explains_how_to_finish_ganon(self) -> None:
         silver_arrow = self.parser.objects[30218]
         ganon = self.parser.mobiles[30225]

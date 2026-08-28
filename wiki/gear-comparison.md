@@ -38,6 +38,13 @@ skills.
 - **Utility** values movement capacity and recovery, dexterity, constitution,
   immunities, flight, invisibility, and detect invisibility.
 
+The model also understands Hyrule's unique Ganon relics. It applies the
+strongest Blue or Red Ring ward, estimates the Mirror Shield against a mixed
+physical/nonphysical benchmark, values the Hero's Tunic as between-fight
+recovery, and converts the Pegasus Boots' movement discount into effective
+travel capacity. Projected loadouts print these effects on dedicated relic
+lines so their contribution is visible rather than hidden in the final score.
+
 The overall recommendation normalizes each category against the loadout with
 the compared slot empty, then combines them using the displayed player-profile
 priorities. A focused comparison uses the selected category for its final
@@ -52,8 +59,8 @@ all five current stats so the reason is inspectable.
 
 Items above the player's level are still modeled, but are marked theoretical.
 The command also checks heated or damaged gear, alignment and race gates,
-weapon weight, no-remove conflicts, two-handed conflicts, and the game's
-special restrictions on secondary weapons.
+weapon weight, no-remove conflicts, two-handed conflicts, the game's special
+restrictions on secondary weapons, and the nonstacking Blue/Red Ring rule.
 
 ## Limits of the estimate
 

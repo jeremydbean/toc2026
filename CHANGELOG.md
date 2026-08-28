@@ -10,6 +10,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added a guaranteed random Ganon relic drop alongside his fixed progression
+  loot: the level 54-58 Hero's Tunic, Blue Ring, Red Ring, Mirror Shield, and
+  Pegasus Boots. Their unique kill-healing, damage-ward, magic-ward, and travel
+  effects are implemented in gameplay and modeled explicitly by `compare`.
 - Added bounded semicolon command chaining to both browser game consoles, with
   ordered sends, quote and escape handling, single-entry history, and password
   protection.

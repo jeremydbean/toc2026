@@ -55,7 +55,7 @@ Confirm:
 - Dashboard health agrees with a real MUD client connection.
 
 Current checked-in parser inventory is 99 listed area files, 7,781 rooms, 2,336
-mobiles, and 3,552 objects. Native boot also creates an online-building area,
+mobiles, and 3,557 objects. Native boot also creates an online-building area,
 and native/Python area totals differ because six listed help/social files have
 no `#AREA` record. Investigate unexpected deltas, not the known counting model.
 

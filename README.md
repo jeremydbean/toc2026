@@ -7,7 +7,7 @@ validation tools, tests, and the source data used to generate Hyrule: First
 Quest.
 
 The current checked-in world parses as **99 listed area files, 7,781 rooms,
-2,336 mobiles, and 3,552 objects**. Player progression spans six classes, five
+2,336 mobiles, and 3,557 objects**. Player progression spans six classes, five
 playable races, four optional cross-class guilds, five remorts, questing, group
 play, player killing, permanent achievements, advanced equipment comparison,
 and a large collection of hand-built areas.
@@ -392,7 +392,7 @@ python3 -m unittest discover -s tests
 git diff --check
 ```
 
-The August 2026 baseline is 0 critical, 11 warning, and 1,566 informational
+The August 2026 baseline is 0 critical, 11 warning, and 1,571 informational
 area-health findings. The warnings are reviewed disconnected room groups; the
 informational backlog includes intentional and reviewable one-way exits,
 unspawned definitions, and objects without reset sources. Do not suppress a

@@ -1,7 +1,7 @@
 # Times of Chaos Documentation
 
 Welcome to the maintained documentation for Times of Chaos. The current world
-inventory is 99 listed area entries, 7,781 rooms, 2,336 mobiles, and 3,552
+inventory is 99 listed area entries, 7,781 rooms, 2,336 mobiles, and 3,557
 objects.
 
 ## Players

@@ -120,6 +120,15 @@ static bool has_complete_hyrule_triforce( CHAR_DATA *ch )
     return true;
 }
 
+static bool wears_hyrule_pegasus_boots( CHAR_DATA *ch )
+{
+    OBJ_DATA *boots;
+
+    boots = get_eq_char( ch, WEAR_FEET );
+    return boots != NULL && boots->pIndexData != NULL
+        && boots->pIndexData->vnum == OBJ_VNUM_HYRULE_PEGASUS_BOOTS;
+}
+
 static bool hyrule_object_list_has_vnum( OBJ_DATA *list, int vnum )
 {
     OBJ_DATA *obj;
@@ -928,6 +937,9 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 
     if (IS_AFFECTED(ch, AFF_FLYING))
 	move = 1;
+
+    if ( wears_hyrule_pegasus_boots(ch) )
+        move = UMAX( 1, move * 3 / 4 );
 
     if ( ch->move < move )
     {

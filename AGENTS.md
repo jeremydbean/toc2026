@@ -154,9 +154,9 @@ Current August 2026 Python baseline:
 ```text
 99 listed area entries
 2,336 mobiles
-3,552 objects
+3,557 objects
 7,781 rooms
-0 critical, 11 warning, 1,566 information findings
+0 critical, 11 warning, 1,571 information findings
 ```
 
 Six list entries are help/social files without `#AREA`; native boot creates one

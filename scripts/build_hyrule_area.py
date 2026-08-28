@@ -31,7 +31,7 @@ NEW_MOBILE_VNUMS = set(range(30335, 30346))
 NEW_OBJECT_VNUMS = (
     set(range(30500, 30515))
     | {30520}
-    | set(range(30530, 30577))
+    | set(range(30530, 30582))
 )
 
 BOSS_MOBS = {
@@ -379,6 +379,127 @@ def map_object_record(dungeon: dict[str, Any], compass: bool) -> str:
     )
 
 
+def ganon_relic_records() -> list[str]:
+    return [
+        object_record(
+            30577,
+            "heros hero tunic green courage ganon relic",
+            "the Hero's Tunic",
+            "The Hero's Tunic rests here, bright as Hyrule Field.",
+            "cloth",
+            "9 G AD",
+            "15 15 15 11 0",
+            54,
+            8,
+            18000,
+            """E
+hero tunic green courage~
+This green tunic carries the courage of every hero who stood against darkness.
+While worn, it restores up to 5 percent of your maximum health after you
+personally kill an NPC, capped at twice that foe's level.
+~
+A
+5 2
+A
+13 100
+A
+24 -2""",
+        ),
+        object_record(
+            30578,
+            "blue ring hyrule wisdom ganon relic",
+            "the Blue Ring of Hyrule",
+            "A blue ring shines here with a cool protective light.",
+            "gold",
+            "9 G AB",
+            "8 8 8 6 0",
+            54,
+            1,
+            16000,
+            """E
+blue ring hyrule wisdom~
+The sapphire band turns danger aside with quiet wisdom. While worn, it reduces
+all damage you take by 10 percent. Its ward does not stack with the Red Ring or
+a second Blue Ring; only the strongest ring ward applies.
+~
+A
+13 60
+A
+12 40
+A
+24 -1""",
+        ),
+        object_record(
+            30579,
+            "red ring hyrule power ganon relic",
+            "the Red Ring of Hyrule",
+            "A red ring burns here with a fierce protective light.",
+            "gold",
+            "9 G AB",
+            "12 12 12 9 0",
+            58,
+            1,
+            24000,
+            """E
+red ring hyrule power~
+The ruby band holds the hard-won power of Death Mountain. While worn, it
+reduces all damage you take by 20 percent. Its ward does not stack with the
+Blue Ring or a second Red Ring; only the strongest ring ward applies.
+~
+A
+5 2
+A
+13 100
+A
+24 -3""",
+        ),
+        object_record(
+            30580,
+            "mirror shield hyrule light ganon relic",
+            "the Mirror Shield",
+            "A polished Mirror Shield reflects an impossible point of light.",
+            "silver",
+            "9 G AJ",
+            "16 16 16 14 0",
+            56,
+            12,
+            22000,
+            """E
+mirror shield hyrule light~
+The shield's flawless face turns sorcery and elemental force back toward the
+dark. While worn, it reduces nonphysical damage by 15 percent. This protection
+can combine with one Blue or Red Ring ward.
+~
+A
+24 -4
+A
+17 -5""",
+        ),
+        object_record(
+            30581,
+            "pegasus boots hyrule speed ganon relic",
+            "the Pegasus Boots",
+            "A pair of wing-crested boots waits here, light as air.",
+            "leather",
+            "9 G AG",
+            "12 12 12 8 0",
+            55,
+            5,
+            19000,
+            """E
+pegasus boots hyrule speed~
+These wing-crested boots make the road race beneath their wearer. While worn,
+they reduce movement spent traveling on foot by 25 percent, to a minimum cost
+of one movement point. They do not reduce a mount's movement cost.
+~
+A
+2 2
+A
+14 150""",
+        ),
+    ]
+
+
 def new_object_records(manifest: dict[str, Any]) -> str:
     objects = [
         object_record(30500, "letter parchment zelda", "Princess Zelda's letter", "A sealed royal letter lies here.", "paper", "8 G AO", "0 0 0 0 0", 1, 1, 100),
@@ -464,6 +585,7 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30553, "blue life potion medicine shop", "a blue Life Potion", "A blue Life Potion is displayed for 40 rupees.", "glass", "10 N AO", "30 28 28 81 0", 1, 2, 40),
         object_record(30554, "red second potion medicine shop", "a red 2nd Potion", "A red 2nd Potion is displayed for 68 rupees.", "glass", "10 N AO", "30 81 81 81 0", 1, 2, 68),
     ])
+    objects.extend(ganon_relic_records())
     return "\n".join(objects)
 
 

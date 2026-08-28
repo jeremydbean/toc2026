@@ -995,6 +995,11 @@ struct  kill_data
 /* Hyrule progression items. */
 #define OBJ_VNUM_HYRULE_SILVER_ARROW 30218
 #define HYRULE_SILVER_ARROW_LEVEL      54
+#define OBJ_VNUM_HYRULE_HEROS_TUNIC  30577
+#define OBJ_VNUM_HYRULE_BLUE_RING     30578
+#define OBJ_VNUM_HYRULE_RED_RING      30579
+#define OBJ_VNUM_HYRULE_MIRROR_SHIELD 30580
+#define OBJ_VNUM_HYRULE_PEGASUS_BOOTS 30581
 
 /* Player-bound automatic quest recovery tokens (mountain.are). */
 #define OBJ_VNUM_QUEST_TOKEN_FIRST 25038

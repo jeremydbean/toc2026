@@ -265,9 +265,9 @@ August 2026 parser baseline:
 ```text
 99 listed area entries
 2,336 mobiles
-3,552 objects
+3,557 objects
 7,781 rooms
-0 critical, 11 warning, 1,566 information area-health findings
+0 critical, 11 warning, 1,571 information area-health findings
 ```
 
 Six `area.lst` entries (`commands.are`, `skills.are`, `spells.are`,

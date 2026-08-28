@@ -29,6 +29,15 @@
 #define HYRULE_BUBBLE_VNUM      30304
 #define HYRULE_WALLMASTER_VNUM  30301
 
+static const int hyrule_ganon_loot_vnums[] =
+{
+    OBJ_VNUM_HYRULE_HEROS_TUNIC,
+    OBJ_VNUM_HYRULE_BLUE_RING,
+    OBJ_VNUM_HYRULE_RED_RING,
+    OBJ_VNUM_HYRULE_MIRROR_SHIELD,
+    OBJ_VNUM_HYRULE_PEGASUS_BOOTS
+};
+
 /* command procedures needed */
 DECLARE_DO_FUN(do_emote         );
 DECLARE_DO_FUN(do_berserk       );
@@ -93,6 +102,65 @@ static bool wields_object_vnum( CHAR_DATA *ch, int vnum )
     weapon = get_eq_char( ch, WEAR_WIELD );
     return weapon != NULL && weapon->pIndexData != NULL
         && weapon->pIndexData->vnum == vnum;
+}
+
+static bool wears_object_vnum( CHAR_DATA *ch, int vnum )
+{
+    OBJ_DATA *obj;
+    int wear;
+
+    if ( ch == NULL )
+        return false;
+
+    for ( wear = 0; wear < MAX_WEAR; wear++ )
+    {
+        obj = get_eq_char( ch, wear );
+        if ( obj != NULL && obj->pIndexData != NULL
+            && obj->pIndexData->vnum == vnum )
+            return true;
+    }
+    return false;
+}
+
+static int apply_hyrule_relic_damage_reduction( CHAR_DATA *victim, int dam,
+                                                  int dam_type )
+{
+    int original_damage;
+
+    if ( victim == NULL || IS_NPC(victim) || dam <= 0 )
+        return dam;
+
+    original_damage = dam;
+    if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_RED_RING) )
+        dam = dam * 80 / 100;
+    else if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_BLUE_RING) )
+        dam = dam * 90 / 100;
+
+    if ( wears_object_vnum(victim, OBJ_VNUM_HYRULE_MIRROR_SHIELD)
+        && dam_type != DAM_NONE && dam_type != DAM_BASH
+        && dam_type != DAM_PIERCE && dam_type != DAM_SLASH )
+        dam = dam * 85 / 100;
+
+    return original_damage > 0 ? UMAX(1, dam) : dam;
+}
+
+static void reward_hyrule_hero_tunic( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    char buf[MAX_STRING_LENGTH];
+    int healing;
+
+    if ( ch == NULL || victim == NULL || IS_NPC(ch) || !IS_NPC(victim)
+        || ch == victim || ch->hit <= 0 || ch->hit >= ch->max_hit
+        || !wears_object_vnum(ch, OBJ_VNUM_HYRULE_HEROS_TUNIC) )
+        return;
+
+    healing = UMAX( 1, UMIN(ch->max_hit / 20, victim->level * 2) );
+    healing = UMIN( healing, ch->max_hit - ch->hit );
+    ch->hit += healing;
+    snprintf( buf, sizeof(buf),
+              "The Hero's Tunic glows, restoring %d of your vitality.\n\r",
+              healing );
+    send_to_char( buf, ch );
 }
 
 static bool is_hyrule_ganon( CHAR_DATA *victim )
@@ -1280,6 +1348,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
         dam = UMAX(dam, UMAX(1, victim->max_hit
             / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR));
 
+    dam = apply_hyrule_relic_damage_reduction( victim, dam, dam_type );
+
     dam_message( ch, victim, dam, dt, immune );
 
     if (dam == 0)
@@ -2264,7 +2334,7 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
 /*
  * Make a corpse out of a character.
  */
-static bool add_event_loot_to_corpse( OBJ_DATA *corpse, int object_vnum )
+static bool add_loot_to_corpse( OBJ_DATA *corpse, int object_vnum )
 {
     OBJ_INDEX_DATA *index;
     OBJ_DATA *drop;
@@ -2370,6 +2440,20 @@ void make_corpse( CHAR_DATA *ch )
 
     obj_to_room( corpse, ch->in_room );
 
+    if ( is_hyrule_ganon(ch) )
+    {
+        int loot_index;
+        int loot_vnum;
+
+        loot_index = number_range( 0,
+            (int)(sizeof(hyrule_ganon_loot_vnums)
+                / sizeof(hyrule_ganon_loot_vnums[0])) - 1 );
+        loot_vnum = hyrule_ganon_loot_vnums[loot_index];
+        if ( !add_loot_to_corpse(corpse, loot_vnum) )
+            bug( "Make_corpse: missing Hyrule Ganon loot vnum %d.",
+                 loot_vnum );
+    }
+
     /* Seasonal event drops: 15% chance a killed NPC drops a seasonal item. */
     if ( IS_NPC(ch) )
     {
@@ -2378,7 +2462,7 @@ void make_corpse( CHAR_DATA *ch )
         if ( season != NULL && !str_cmp( season, "Hallows End"  ) ) drop_vnum = OBJ_VNUM_SEASONAL_CANDY;
         if ( season != NULL && !str_cmp( season, "Winter Veil"  ) ) drop_vnum = OBJ_VNUM_SEASONAL_GIFT;
         if ( drop_vnum != 0 && number_percent() <= 15 )
-            add_event_loot_to_corpse( corpse, drop_vnum );
+            add_loot_to_corpse( corpse, drop_vnum );
     }
 
     /* Event boss drops: guaranteed rare loot + small chance of training cake. */
@@ -2409,26 +2493,26 @@ void make_corpse( CHAR_DATA *ch )
 
             /* 50% chance: drop the weapon */
             if ( number_percent() <= 50 )
-                if ( add_event_loot_to_corpse(corpse, weapon_vnum) )
+                if ( add_loot_to_corpse(corpse, weapon_vnum) )
                     primary_drop = true;
 
             /* 50% chance: drop the armor */
             if ( number_percent() <= 50 )
-                if ( add_event_loot_to_corpse(corpse, armor_vnum) )
+                if ( add_loot_to_corpse(corpse, armor_vnum) )
                     primary_drop = true;
 
             /* 75% chance: drop a trinket */
             if ( number_percent() <= 75 )
-                if ( add_event_loot_to_corpse(corpse, trinket_vnum) )
+                if ( add_loot_to_corpse(corpse, trinket_vnum) )
                     primary_drop = true;
 
             /* A two-day event boss should never leave an empty rare table. */
             if ( !primary_drop )
-                add_event_loot_to_corpse( corpse, trinket_vnum );
+                add_loot_to_corpse( corpse, trinket_vnum );
 
             /* 5% chance: drop a training cake (very rare) */
             if ( number_percent() <= 5 )
-                add_event_loot_to_corpse( corpse, cake_vnum );
+                add_loot_to_corpse( corpse, cake_vnum );
 
             record_event_boss_defeat( ch );
         }
@@ -2629,6 +2713,8 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         achievement_record_death( victim );
       death_cry( victim );
       make_corpse( victim );
+      if ( IS_NPC(victim) )
+        reward_hyrule_hero_tunic( ch, victim );
     }
 
     victim->battleticks = 0;
