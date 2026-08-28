@@ -1291,11 +1291,13 @@ A single silver arrow lies here.~
 silver~
 5 ABGUV AN
 0 4 14 2 0
-68 1 5000 P
+59 1 5000 P
 E
 silver arrow~
 The silver metal shines with a light that does not fade.  Other weapons,
 spells, poison, and lingering effects can wound Ganon, but none can kill him.
+The Silver Arrow requires level 59, the highest mortal level; immortal status
+is not required to wield it.
 Against Ganon, the Silver Arrow grants full weapon mastery and every landed
 strike tears away at least one tenth of his full vitality.  Once he collapses
 at one hit point, he is stunned and cannot fight back.

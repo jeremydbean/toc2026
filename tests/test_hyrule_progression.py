@@ -610,10 +610,14 @@ class HyruleProgressionTests(unittest.TestCase):
         silver_arrow = self.parser.objects[30218]
         ganon = self.parser.mobiles[30225]
         guidance = " ".join(
-            description["description"] for description in silver_arrow.extra_descr
+            " ".join(description["description"].split())
+            for description in silver_arrow.extra_descr
             if "silver" in description["keyword"].lower()
         ).lower()
         self.assertEqual(silver_arrow.material, "silver")
+        self.assertEqual(silver_arrow.level, 59)
+        self.assertIn("highest mortal level", guidance)
+        self.assertIn("immortal status is not required", guidance)
         self.assertIn("primary weapon slot", guidance)
         self.assertIn("final blow", guidance)
         self.assertIn("not ammunition", guidance)

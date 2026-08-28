@@ -458,6 +458,8 @@ return portals.
   from the Silver Arrow can kill him. Use `wield silver` in your primary
   weapon slot and attack normally. There is no separate Silver Arrow `use` or
   `fire` command, and casting a spell while merely holding it does not count.
+  The Silver Arrow requires level 59, the highest attainable mortal level; it
+  does not require immortal status.
   Against Ganon, every landed Silver Arrow strike uses full weapon mastery and
   deals at least 10% of his maximum health after defenses. At one hit point he
   collapses, stops attacking, and remains stunned until the Silver Arrow lands

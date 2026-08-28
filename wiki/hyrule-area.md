@@ -91,7 +91,10 @@ come from the First Quest route references.
 Dungeon 1 starts after the level 1-10 overworld opening. Equipment chests cover
 every player level through 70. Bosses carry the top gear for their band, while
 maps, cellars, and intermediate rooms source the rest. The Master Sword remains
-fixed at level 58 as requested.
+fixed at level 58 as requested. The required Silver Arrow is level 59, the
+highest attainable mortal level, so a fully remorted mortal can wield it
+without immortal status even though Death Mountain's enemies extend into the
+administrative level range.
 
 Death Mountain requires all eight Triforce shards before its bombed entrance
 can be used. Ganon drops Golden Key `30243`; that key opens Zelda's room, which
