@@ -2731,7 +2731,7 @@ char *item_type_name( OBJ_DATA *obj )
     case ITEM_SPELL_COMPONENT:  return "spell component";
     case ITEM_SOUL_CONTAINER:   return "soul container";
     case ITEM_ACTION:		return "action";
-    case ITEM_CAKE:		return "weedding cake";
+    case ITEM_CAKE:		return "training food";
     }
 
     bug( "Item_type_name: unknown type %d.", obj->item_type );

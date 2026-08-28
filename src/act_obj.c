@@ -1685,6 +1685,7 @@ void do_eat( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
+    bool save_reward = false;
 
     one_argument( argument, arg );
     if ( arg[0] == '\0' )
@@ -1711,6 +1712,21 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	if ( !IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > 40 )
 	{
 	    send_to_char( "You are too full to eat more.\n\r", ch );
+	    return;
+	}
+    }
+
+    if ( obj->item_type == ITEM_CAKE )
+    {
+	if ( IS_NPC(ch) )
+	{
+	    send_to_char( "Only players can benefit from training food.\n\r", ch );
+	    return;
+	}
+
+	if ( ch->train >= SHRT_MAX )
+	{
+	    send_to_char( "You cannot hold any more training sessions.\n\r", ch );
 	    return;
 	}
     }
@@ -1772,11 +1788,14 @@ void do_eat( CHAR_DATA *ch, char *argument )
     case ITEM_CAKE:
 	send_to_char("Your stomach is filled with a warm feeling.\n\r",ch);
 	send_to_char("You are awarded 1 train.\n\r",ch);
-	ch->train += 1;
+	ch->train = (sh_int)(ch->train + 1);
+	save_reward = true;
 	break;
     }
 
     extract_obj( obj );
+    if ( save_reward )
+	save_char_obj( ch );
     return;
 }
 
@@ -2553,6 +2572,9 @@ void do_recite( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     OBJ_DATA *scroll;
     OBJ_DATA *obj;
+    int farslay_sn;
+    bool farslay_scroll;
+    bool added_holylight;
 
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
@@ -2576,24 +2598,39 @@ void do_recite( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    farslay_sn = skill_lookup("vengence");
+    farslay_scroll = farslay_sn >= 0
+        && ( scroll->value[1] == farslay_sn
+          || scroll->value[2] == farslay_sn
+          || scroll->value[3] == farslay_sn );
+    added_holylight = false;
+
     obj = NULL;
-    if ( arg2[0] == '\0' )
+    if ( farslay_scroll && arg2[0] == '\0' )
+    {
+	send_to_char( "Recite the Farslay scroll at whom?\n\r", ch );
+	return;
+    }
+    else if ( arg2[0] == '\0' )
     {
 	victim = ch;
     }
-    else if(scroll->value[1] == skill_lookup("vengence") )
+    else if ( farslay_scroll )
     {
-      if(!IS_SET(ch->act, PLR_HOLYLIGHT) )
+      if ( !IS_NPC(ch) && !IS_SET(ch->act, PLR_HOLYLIGHT) )
+      {
 	SET_BIT(ch->act, PLR_HOLYLIGHT);
+	added_holylight = true;
+      }
 
       if ( ( victim = get_char_world( ch, arg2 ) ) == NULL )
       {
 	send_to_char( "They aren't here.\n\r", ch );
-	if(IS_SET(ch->act, PLR_HOLYLIGHT) )
+	if ( added_holylight )
 	  REMOVE_BIT(ch->act, PLR_HOLYLIGHT);
 	return;
       }
-	if( IS_SET(ch->act, PLR_HOLYLIGHT) && !IS_IMMORTAL(ch) )
+	if ( added_holylight )
 	  REMOVE_BIT(ch->act, PLR_HOLYLIGHT);
     }
     else
@@ -2625,6 +2662,15 @@ void do_recite( CHAR_DATA *ch, char *argument )
 
 	extract_obj( scroll );
 	scroll = NULL;
+
+	/* Farslay resolves a complete kill-or-backfire event in one cast. */
+	if ( farslay_scroll )
+	{
+	    obj_cast_spell( farslay_sn, slevel, ch, victim, NULL );
+	    if ( ch->in_room != NULL )
+		check_improve(ch,gsn_scrolls,true,2);
+	    return;
+	}
 
 	obj_cast_spell( sn1, slevel, ch, victim, obj );
 	if ( ch->in_room == NULL ) return;

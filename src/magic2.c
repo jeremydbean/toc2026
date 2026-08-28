@@ -3121,6 +3121,7 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     int nuke = 0;
     char buf[MAX_STRING_LENGTH];
     int chance;
+    int penalty;
 
     if(victim == NULL)
       return;
@@ -3182,34 +3183,47 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     act("You hear a whistling sound, then a SWORD plunges into $n's heart!",ch,NULL,NULL,TO_ROOM);
     }
 
-    if(!IS_IMMORTAL(ch) )
+    if ( !IS_IMMORTAL(ch) )
     {
       ch->hit = 1;
       ch->mana = 1;
       ch->move = 1;
       ch->position = POS_STUNNED;
-      ch->max_hit -= UMAX(25,2 * ch->level);
-      ch->max_mana -= UMAX(25,2 * ch->level);
-      ch->max_move -= UMAX(25,2 * ch->level);
-      ch->pcdata->perm_hit -= UMAX(25,2 * ch->level);
-      ch->pcdata->perm_mana -= UMAX(25,2 * ch->level);
-      ch->pcdata->perm_move -= UMAX(25,2 * ch->level);
-      nuke = dice(1,5);
-      switch( nuke )
+
+      if ( !IS_NPC(ch) && ch->pcdata != NULL )
       {
-	case 1: ch->perm_stat[nuke - 1] -= 3; break;
-	case 2: ch->perm_stat[nuke - 1] -= 3; break;
-	case 3: ch->perm_stat[nuke - 1] -= 3; break;
-	case 4: ch->perm_stat[nuke - 1] -= 3; break;
-	case 5: ch->perm_stat[nuke - 1] -= 3; break;
+	penalty = UMAX(25, 2 * ch->level);
+	ch->max_hit = (sh_int)UMAX(1, ch->max_hit - penalty);
+	ch->max_mana = (sh_int)UMAX(1, ch->max_mana - penalty);
+	ch->max_move = (sh_int)UMAX(1, ch->max_move - penalty);
+	ch->pcdata->perm_hit = (sh_int)UMAX(1, ch->pcdata->perm_hit - penalty);
+	ch->pcdata->perm_mana = (sh_int)UMAX(1, ch->pcdata->perm_mana - penalty);
+	ch->pcdata->perm_move = (sh_int)UMAX(1, ch->pcdata->perm_move - penalty);
+
+	nuke = number_range(0, MAX_STATS - 1);
+	ch->perm_stat[nuke] = (sh_int)UMAX(3, ch->perm_stat[nuke] - 3);
+	save_char_obj( ch );
       }
-      save_char_obj( ch );
-
-
     }
 
     if (chance > 50)
     {
+    if ( IS_NPC(victim) && victim->pIndexData != NULL
+    &&   victim->pIndexData->vnum == 30225 )
+    {
+      act("Farslayer tears through $n, but ancient darkness binds $m to life!",
+	  victim,NULL,NULL,TO_ROOM);
+      act("Farslayer tears through you, but ancient darkness binds you to life!",
+	  victim,NULL,NULL,TO_CHAR);
+      if ( !IS_NPC(ch) )
+      {
+	SET_BIT(ch->act, PLR_WANTED);
+	send_to_char("You are now WANTED!!\n\r",ch);
+      }
+      raw_kill(ch,victim);
+      return;
+    }
+
     act("Farslayer does UNSPEAKABLE things to $n!",victim,NULL,NULL,TO_ROOM);
     act("Farslayer does UNSPEAKABLE things to you!",victim,NULL,NULL,TO_CHAR);
     act( "$n is DEAD!!", victim, NULL, NULL, TO_ROOM );
@@ -3220,8 +3234,11 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     snprintf(buf, sizeof buf,"%s got farslayed by %s.",victim->name,ch->name);
     wizinfo(buf, LEVEL_IMMORTAL);
     log_string(buf);
-    SET_BIT(ch->act, PLR_WANTED);
-    send_to_char("You are now WANTED!!\n\r",ch);
+    if ( !IS_NPC(ch) )
+    {
+      SET_BIT(ch->act, PLR_WANTED);
+      send_to_char("You are now WANTED!!\n\r",ch);
+    }
     if (!IS_NPC(victim))
     {
       achievement_record_event(victim, ACHIEVEMENT_EVENT_FARSLAYED, true);

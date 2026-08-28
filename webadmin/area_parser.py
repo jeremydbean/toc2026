@@ -67,6 +67,7 @@ ITEM_TYPES = {
     31: 'manipulation',
     33: 'saddle',
     37: 'action',
+    38: 'training food',
 }
 
 # Weapon class mappings
@@ -934,6 +935,10 @@ def interpret_values(item_type_num: int, values: List[str], level: int = 0) -> D
         except (ValueError, IndexError):
             pass
         result['poison_duration'] = values[2]
+
+    elif item_type_num == 38:  # TRAINING FOOD
+        result['training_sessions'] = 1
+        result['training_text'] = '+1 train when eaten'
     
     return result
 

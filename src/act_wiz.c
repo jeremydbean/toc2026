@@ -3516,7 +3516,8 @@ void do_herbie( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC(victim) )
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC(victim)
+    ||   victim->desc == NULL || victim->desc->connected != CON_PLAYING )
     {
         send_to_char( "That player is not online.\n\r", ch );
         return;

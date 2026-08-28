@@ -90,6 +90,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed the advertised quest-shop Potion of Power, Potion of the Giant, and
+  Scroll of Farslay never appearing in `AQUEST LIST` or being purchasable.
+- Fixed Farslay scrolls consuming themselves without a target, leaking or
+  removing the reader's holy-light setting, and resolving duplicate Farslay
+  slots as repeated deaths and permanent penalties.
+- Bounded Farslay's permanent resource and attribute costs, protected NPC
+  casters from player-data access, and stopped protected Ganon attempts from
+  falsely announcing and logging his death.
+- Fixed Herbie's automatic rescue choosing an arbitrary wounded player due to
+  integer division, being blocked by invalid or link-dead candidates, moving
+  away while fighting, flooding recipients with hundreds of heal messages,
+  and returning to a hard-coded room instead of his actual origin.
+- Fixed ordinary seasonal candy corn and spiced cider using the rare training-
+  food type, which let inexpensive vendor snacks grant permanent trains.
+- Prevented training-food rewards from overflowing the 16-bit train counter,
+  saved them immediately after consumption, corrected their displayed type,
+  and exposed the type accurately in the web area browser.
 - Fixed `remort <password> ...` and `resetpwd <player> <newpassword>` being
   registered as `LOG_ALWAYS`, which wrote plaintext password arguments to game
   logs and snoop output; added a regression test for all credential commands.

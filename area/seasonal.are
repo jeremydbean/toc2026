@@ -283,7 +283,7 @@ candy corn bag trick treat halloween~
 a bag of candy corn~
 A rustling paper bag of tricolored candy corn sits here.~
 food~
-38 A A
+19 A A
 4 0 0 0 0
 0 1 25 P
 E
@@ -297,7 +297,7 @@ cider spiced hot cup mulled~
 a cup of hot spiced cider~
 A small clay cup steaming with fragrant mulled cider rests here.~
 pottery~
-38 A A
+19 A A
 4 0 0 0 0
 0 1 25 P
 E
@@ -310,7 +310,7 @@ and nutmeg.  A cinnamon stick rests across the rim.
 
 #SHOPS
 29930 9 0 0 0 0 120 60 0 23
-29931 38 0 0 0 0 120 60 0 23
+29931 19 0 0 0 0 120 60 0 23
 0
 
 

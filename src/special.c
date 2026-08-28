@@ -2280,22 +2280,23 @@ bool spec_club_dj( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
 bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
-    UNUSED_PARAM(ch);
-    UNUSED_PARAM(arg);
-    char *spell __attribute__((unused)) = NULL;
+  UNUSED_PARAM(ch);
+  UNUSED_PARAM(arg);
   CHAR_DATA *vch;
   CHAR_DATA *most_hurt = NULL;
+  ROOM_INDEX_DATA *home_room;
   LIST_ITERATOR iter;
-
-  float hp_check = 0;
-  int hp_hold = 0;
+  int health_percent;
+  int lowest_health_percent = 101;
+  int missing_hit;
+  int most_missing_hit = -1;
   int sn;
   int chance;
   int chancez;
-
   char buf[MAX_STRING_LENGTH];
  
-  if ( cmd != NULL)
+  if ( cmd != NULL || mob == NULL || mob->in_room == NULL
+  ||   mob->fighting != NULL )
 	return false;
  
   chancez = number_percent();
@@ -2306,35 +2307,34 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 
   FOR_EACH_CHARACTER( iter, vch )
   {
-     if(IS_NPC(vch) || IS_IMMORTAL(vch) || vch->battleticks > 0)
+     if ( IS_NPC(vch) || IS_IMMORTAL(vch)
+     ||   vch->desc == NULL || vch->desc->connected != CON_PLAYING
+     ||   vch->in_room == NULL
+     ||   IS_SET(vch->in_room->room_flags, ROOM_DT)
+     ||   vch->battleticks > 0 || vch->position == POS_FIGHTING
+     ||   vch->position == POS_DEAD || IS_AFFECTED2(vch, AFF2_GHOST)
+     ||   vch->max_hit <= 0 )
        continue;
- 
-     if(vch->hit < vch->max_hit/2)
+
+     health_percent = 100 * UMAX(0, vch->hit) / vch->max_hit;
+     if ( health_percent >= 50 )
+       continue;
+
+     missing_hit = vch->max_hit - vch->hit;
+     if ( health_percent < lowest_health_percent
+     || ( health_percent == lowest_health_percent
+       && missing_hit > most_missing_hit ) )
      {
-	hp_check = vch->max_hit - vch->hit;
-	hp_check = vch->max_hit / hp_check;
- 
-	if(hp_check > hp_hold)
-	{
-	  hp_hold = (int)(hp_check);
-	  most_hurt = vch;
-	}
+	lowest_health_percent = health_percent;
+	most_missing_hit = missing_hit;
+	most_hurt = vch;
      }
-     else
-       continue;
   }
 
   chance=0; 
 
   if(most_hurt != NULL)
   {
-     if(most_hurt->position == POS_FIGHTING)
-	 return false;
-
-     if(most_hurt->in_room == NULL
-     || IS_SET(most_hurt->in_room->room_flags, ROOM_DT) )
-	 return false; 
-
      if (most_hurt->level > 15)
          chance = 97;
 
@@ -2347,16 +2347,14 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      if( chancez < chance )
          return false;
 
-     if(most_hurt->position == POS_SLEEPING)
-       do_wake(mob,most_hurt->name);
- 
+     home_room = mob->in_room;
      act("$n says, 'I am needed!' and takes to the sky.",mob,NULL,NULL,TO_ROOM);
      char_from_room(mob);
      char_to_room(mob, most_hurt->in_room);
      snprintf(buf, sizeof(buf),"%s has been touched by an angel.",most_hurt->name);
      wizinfo(buf,65);
      act("You hear the beating of mighty wings. Looking up you see...",mob,NULL,NULL,TO_ROOM);
-     act("An angelic figure with beautiful white wings land in front of $N.",mob,NULL,most_hurt,TO_NOTVICT);
+     act("An angelic figure with beautiful white wings lands in front of $N.",mob,NULL,most_hurt,TO_NOTVICT);
      if(most_hurt->position == POS_SLEEPING)
        do_wake(mob,most_hurt->name);
      act("An angelic figure with beautiful white wings lands in front of you.",mob,NULL,most_hurt,TO_VICT);
@@ -2367,15 +2365,10 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      act("$n says, 'Someone eventually has to clean up the mess!'",mob, NULL,most_hurt,TO_VICT);
      act("$n says, 'Can't have that now, can we.'",mob, NULL,most_hurt,TO_VICT);
      act("$n says to $N, 'Can't have you bleeding all over the place like that.'",mob, NULL,most_hurt,TO_NOTVICT);
- 
-      spell = "heal";
-    if ( ( sn = skill_lookup( spell ) ) < 0 )
-	return false;
-    do
-    {
-    (*skill_table[sn].spell_fun) ( sn, mob->level, mob, most_hurt );
-    }
-    while(most_hurt->hit != most_hurt->max_hit);
+
+    most_hurt->hit = most_hurt->max_hit;
+    update_pos( most_hurt );
+    send_to_char("A warm feeling fills your body.\n\r", most_hurt);
  
     sn = skill_lookup("restore mana");
     if ( sn >= 0 )
@@ -2388,7 +2381,7 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     act("$n says, 'A piece of advice....try getting hit less!' $n smiles.",mob, NULL,most_hurt,TO_ROOM);
     act("With a mighty beating of wings, $e disappears into the sky.",mob,NULL,most_hurt,TO_ROOM);
     char_from_room(mob);
-    char_to_room(mob,get_room_index(4911) );
+    char_to_room(mob,home_room);
     act("$n says, 'Ahhh. Another mortal patched up. Tis a good feeling.'",mob,NULL,NULL,TO_ROOM);
   }
   else

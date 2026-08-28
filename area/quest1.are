@@ -76,13 +76,14 @@ scroll farslay black vengence vengeance~
 a Scroll of Farslay~
 A black scroll crackles with terrible, smoldering power.~
 paper~
-17 GUV A
-70 532 532 532 0
+2 GUV A
+70 532 0 0 0
 1 20 60000 P
 E
 scroll farslay~
-This scroll is inscribed with the ancient rite of Farslay, calling down
-divine vengeance upon all enemies within reach.  Handle with care.
+This scroll is inscribed with the ancient rite of Farslay. Recite it at one
+named target anywhere in the world. The rite may strike its target or turn
+back upon its reader, and it always exacts a permanent price. Handle with care.
 ~
 
 #0

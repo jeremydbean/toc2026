@@ -2335,22 +2335,22 @@ HERO QUEST COST
 QUEST SHOP ITEMS
   These items can be purchased from the quest master (AQUEST BUY <item>):
 
-  POTION OF POWER (450 qp)  — buy: AQUI BUY EMPOWER  or  AQUI BUY POWER
+  POTION OF POWER (450 qp)  — buy: AQUEST BUY EMPOWER  or  AQUEST BUY POWER
     Bestows Sanctuary, Haste (+DEX), and Flight for the duration of the
     cast.  A single vial of extraordinary divine energy.
 
-  POTION OF THE GIANT (450 qp)  — buy: AQUI BUY GIANT
+  POTION OF THE GIANT (450 qp)  — buy: AQUEST BUY GIANT
     Grants Giant Strength, Stone Skin fortification, and the ability to
     Pass Door.  Brewed from ancient mountain earth and raw elemental force.
 
-  SCROLL OF FARSLAY (600 qp)  — buy: AQUI BUY FARSLAY  or  AQUI BUY SCROLL
-    A black scroll inscribed with the ancient rite of Farslay.  Calls
-    divine vengeance down upon all enemies in the room.  One use only.
+  SCROLL OF FARSLAY (600 qp)  — buy: AQUEST BUY FARSLAY  or  AQUEST BUY SCROLL
+    A black scroll inscribed with the ancient rite of Farslay. Targets one
+    named character anywhere in the world. One use only, with grave risks.
 
-  POTION OF SANCTUARY (150 qp)  — buy: AQUI BUY SANCTUARY
+  POTION OF SANCTUARY (150 qp)  — buy: AQUEST BUY SANCTUARY
     A more modest blessing that wraps the drinker in a protective aura.
 
-  PRACTICES (500 qp)  — buy: AQUI BUY PRAC
+  PRACTICES (500 qp)  — buy: AQUEST BUY PRAC
     Awards 1-3 extra practice sessions for training skills.
 
 CLASS, GUILD, AND RACE OPTIONS
@@ -2517,13 +2517,20 @@ See also: BRIEF, COMPACT, PROMPT
 The Scroll of Farslay is purchasable from the quest master for 600 quest
 points (AQUEST BUY FARSLAY).
 
-When read, it calls down the ancient rite of divine vengeance upon all
-enemies within range.  The scroll delivers three successive castings of the
-Vengence spell for massive area damage.  One use only.
+Syntax: recite farslay <character>
+        recite scroll <character>
 
-To use: hold the scroll in your inventory and type READ SCROLL.
+The rite seeks one named character anywhere in the world. After a successful
+recitation, Farslayer has an even chance to kill the target or turn back and
+kill the reader. Either outcome leaves a mortal reader stunned at one hit,
+mana, and movement point; permanently reduces maximum hit points, mana, and
+movement; and permanently reduces one attribute. If the target is struck,
+the reader becomes wanted. The scroll is consumed even if recitation fails,
+but a missing target or omitted target does not consume it.
 
-See also: AQUEST, POTION OF POWER, POTION OF THE GIANT
+Farslay cannot finish Ganon; the Silver Arrow is still required.
+
+See also: AQUEST, RECITE, POTION OF POWER, POTION OF THE GIANT
 ~
 
 0 POTION OF POWER~

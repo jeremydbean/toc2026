@@ -38,6 +38,9 @@ DECLARE_DO_FUN( do_say );
 #define QUEST_ITEM3 24
 #define QUEST_ITEM4 3081
 #define QUEST_ITEM5 29203
+#define QUEST_ITEM_POWER 20303
+#define QUEST_ITEM_GIANT 20304
+#define QUEST_ITEM_FARSLAY 20305
 #define QUEST_HERO_COST_BASE 7000
 #define QUEST_HERO_COST_REMORT 5000
 #define QUEST_ENDGAME_BOON_COST 750
@@ -78,6 +81,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
     CHAR_DATA *questman;
     OBJ_DATA *obj=NULL, *obj_next;
     OBJ_INDEX_DATA *questinfoobj;
+    OBJ_INDEX_DATA *reward_index;
     MOB_INDEX_DATA *questinfo;
     char buf [MAX_STRING_LENGTH];
     char arg1 [MAX_INPUT_LENGTH];
@@ -173,12 +177,12 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	else
 	    send_to_char(
 		"{09|{00 {04Next Quest  :{00 {06Ready!{00 Find a questmaster and type"
-		" {0DAQUÉST REQUEST{00.\n\r", ch);
+		" {0DAQUEST REQUEST{00.\n\r", ch);
 	if (ch->questgamble_pts > 0)
 	{
 	    snprintf(buf, sizeof(buf),
 		"{09|{00 {0CGamble Offer:{00 {0D%d{00 pts pending -"
-		" type {0DAQUÉST GAMBLE YES{00 or {0DAQUÉST GAMBLE NO{00\n\r",
+		" type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r",
 		ch->questgamble_pts);
 	    send_to_char(buf, ch);
 	}
@@ -263,8 +267,8 @@ void do_quest(CHAR_DATA *ch, char *argument)
                 "{09|{00 {06Win  :{00 {0D%d{00 quest points  {01(50%% chance){00\n\r"
                 "{09|{00 {07Lose :{00 {0D0{00 quest points  {01(50%% chance){00\n\r"
                 "{09|{00\n\r"
-		"{09|{00  Type {0DAQUÉST GAMBLE YES{00 to risk it all!\n\r"
-		"{09|{00  Type {0DAQUÉST GAMBLE NO{00  to collect {0D%d{00 pts safely.\n\r"
+		"{09|{00  Type {0DAQUEST GAMBLE YES{00 to risk it all!\n\r"
+		"{09|{00  Type {0DAQUEST GAMBLE NO{00  to collect {0D%d{00 pts safely.\n\r"
 		"{09'---------------------------------------------------------------'{00\n\r",
                 ch->questgamble_pts, ch->questgamble_pts * 2, ch->questgamble_pts);
             send_to_char(buf, ch);
@@ -376,6 +380,9 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    "{09|{00  Potion of Sanctuary              {0D150 qp{00\n\r"
 	    "{09|{00  Potion of Extra Heal             {0D450 qp{00\n\r"
 	    "{09|{00  Jug O' Moonshine                 {0D450 qp{00\n\r"
+	    "{09|{00  Potion of Power                  {0D450 qp{00\n\r"
+	    "{09|{00  Potion of the Giant              {0D450 qp{00\n\r"
+	    "{09|{00  Scroll of Farslay                {0D600 qp{00\n\r"
 	    "{09|{00  1-3 Practices                    {0D500 qp{00\n\r"
 	    "{09|{00  Level 51 Hero  (non-remort)     {0D7000 qp{00\n\r"
 	    "{09|{00  Level 51 Hero  (remort)         {0D5000 qp{00\n\r"
@@ -385,7 +392,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    "{09|{00  {0CRush Contract  {0020%% chance: 2x reward, 5-8 minute timer\n\r"
 	    "{09|{00  {0DGamble Offer   {00Double-or-nothing after every completion\n\r"
 	    "{09|{00\n\r"
-	    "{09|{00  Type {0DAQUÉST BUY <item>{00 to purchase.\n\r"
+	    "{09|{00  Type {0DAQUEST BUY <item>{00 to purchase.\n\r"
 	    "{09'---------------------------------------------------------------'{00\n\r",
 	    ch);
 
@@ -430,6 +437,69 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
                 advance_level(ch,false);
                 save_char_obj(ch);
             }
+	    else
+	    {
+		snprintf(buf, sizeof(buf), "Sorry, %s, but you don't have enough quest points for that.",ch->name);
+		do_say(questman,buf);
+		return;
+	    }
+	}
+	else if (is_name(arg2, "power empower"))
+	{
+	    reward_index = get_obj_index(QUEST_ITEM_POWER);
+	    if ( reward_index == NULL )
+	    {
+		bug("Do_quest: missing Potion of Power vnum %d.", QUEST_ITEM_POWER);
+		do_say(questman,"That reward is temporarily unavailable.");
+		return;
+	    }
+	    if (ch->questpoints >= 450)
+	    {
+		ch->questpoints -= 450;
+		obj = create_object(reward_index,ch->level);
+	    }
+	    else
+	    {
+		snprintf(buf, sizeof(buf), "Sorry, %s, but you don't have enough quest points for that.",ch->name);
+		do_say(questman,buf);
+		return;
+	    }
+	}
+	else if (is_name(arg2, "giant strength"))
+	{
+	    reward_index = get_obj_index(QUEST_ITEM_GIANT);
+	    if ( reward_index == NULL )
+	    {
+		bug("Do_quest: missing Potion of the Giant vnum %d.", QUEST_ITEM_GIANT);
+		do_say(questman,"That reward is temporarily unavailable.");
+		return;
+	    }
+	    if (ch->questpoints >= 450)
+	    {
+		ch->questpoints -= 450;
+		obj = create_object(reward_index,ch->level);
+	    }
+	    else
+	    {
+		snprintf(buf, sizeof(buf), "Sorry, %s, but you don't have enough quest points for that.",ch->name);
+		do_say(questman,buf);
+		return;
+	    }
+	}
+	else if (is_name(arg2, "farslay scroll"))
+	{
+	    reward_index = get_obj_index(QUEST_ITEM_FARSLAY);
+	    if ( reward_index == NULL )
+	    {
+		bug("Do_quest: missing Scroll of Farslay vnum %d.", QUEST_ITEM_FARSLAY);
+		do_say(questman,"That reward is temporarily unavailable.");
+		return;
+	    }
+	    if (ch->questpoints >= 600)
+	    {
+		ch->questpoints -= 600;
+		obj = create_object(reward_index,ch->level);
+	    }
 	    else
 	    {
 		snprintf(buf, sizeof(buf), "Sorry, %s, but you don't have enough quest points for that.",ch->name);
@@ -613,6 +683,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
     	    act( "$N gives $p to $n.", ch, obj, questman, TO_ROOM );
     	    act( "$N gives you $p.",   ch, obj, questman, TO_CHAR );
 	    obj_to_char(obj, ch);
+	    save_char_obj(ch);
 	}
 	return;
     }
@@ -757,7 +828,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 		    "{09|{00 {04Earned :{00 {0D%d{00 quest points\n\r"
 		    "{09|{00 {06Win     :{00 50%%%% chance to earn {0D%d{00 pts\n\r"
 		    "{09|{00 {07Lose    :{00 50%%%% chance to earn {0D0{00 pts\n\r"
-		    "{09|{00  Type {0DAQUÉST GAMBLE YES{00 or {0DAQUÉST GAMBLE NO{00\n\r"
+		    "{09|{00  Type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r"
 		    "{09'---------------------------------------------------------------'{00\n\r",
 		    pointreward, pointreward * 2);
 		send_to_char(buf, ch);
@@ -836,7 +907,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 			"{09|{00 {04Earned :{00 {0D%d{00 quest points\n\r"
 			"{09|{00 {06Win     :{00 50%%%% chance to earn {0D%d{00 pts\n\r"
 			"{09|{00 {07Lose    :{00 50%%%% chance to earn {0D0{00 pts\n\r"
-			"{09|{00  Type {0DAQUÉST GAMBLE YES{00 or {0DAQUÉST GAMBLE NO{00\n\r"
+			"{09|{00  Type {0DAQUEST GAMBLE YES{00 or {0DAQUEST GAMBLE NO{00\n\r"
 			"{09'---------------------------------------------------------------'{00\n\r",
 			pointreward, pointreward * 2);
 		    send_to_char(buf, ch);
