@@ -895,6 +895,9 @@ static void achievement_show_summary(CHAR_DATA *ch)
     char output[MAX_STRING_LENGTH * 4];
     char line[MAX_STRING_LENGTH];
     bool selected[MAX_ACHIEVEMENTS] = { false };
+    int category_counts[ACH_CAT_COUNT] = { 0 };
+    int category_earned[ACH_CAT_COUNT] = { 0 };
+    int category_points[ACH_CAT_COUNT] = { 0 };
     int category;
     int index;
     int shown;
@@ -907,27 +910,42 @@ static void achievement_show_summary(CHAR_DATA *ch)
         achievement_earned_count(ch), achievement_table_count());
     toc_strlcat(output, line, sizeof(output));
 
-    for (category = 0; category < ACH_CAT_COUNT; category++)
+    for (index = 0; index < achievement_table_count(); index++)
     {
-        int category_count = 0;
-        int category_earned = 0;
-        int category_points = 0;
-
-        for (index = 0; index < achievement_table_count(); index++)
+        category = (int)achievement_table[index].category;
+        category_counts[category]++;
+        if (ch->pcdata->achievement_earned[index] != 0)
         {
-            if ((int)achievement_table[index].category != category)
-                continue;
-            category_count++;
-            if (ch->pcdata->achievement_earned[index] != 0)
-            {
-                category_earned++;
-                category_points += achievement_table[index].points;
-            }
+            category_earned[category]++;
+            category_points[category] += achievement_table[index].points;
         }
+    }
 
-        snprintf(line, sizeof(line), "  {0F%-12s{00 %2d/%-2d earned  %4d points\n\r",
-            achievement_category_names[category], category_earned,
-            category_count, category_points);
+    toc_strlcat(output, "{0DProgress by category (earned/total, points):{00\n\r",
+        sizeof(output));
+    for (category = 0; category < ACH_CAT_COUNT; category += 2)
+    {
+        int right = category + 1;
+
+        if (right < ACH_CAT_COUNT)
+        {
+            snprintf(line, sizeof(line),
+                "  {0F%-12s{00 %2d/%-2d  %4d pts    "
+                "{0F%-12s{00 %2d/%-2d  %4d pts\n\r",
+                achievement_category_names[category],
+                category_earned[category], category_counts[category],
+                category_points[category], achievement_category_names[right],
+                category_earned[right], category_counts[right],
+                category_points[right]);
+        }
+        else
+        {
+            snprintf(line, sizeof(line),
+                "  {0F%-12s{00 %2d/%-2d  %4d pts\n\r",
+                achievement_category_names[category],
+                category_earned[category], category_counts[category],
+                category_points[category]);
+        }
         toc_strlcat(output, line, sizeof(output));
     }
 
@@ -967,10 +985,9 @@ static void achievement_show_summary(CHAR_DATA *ch)
         toc_strlcat(output, "  None yet. Your first one is waiting.\n\r", sizeof(output));
 
     toc_strlcat(output,
-        "\n\rUse {0FACHIEVEMENTS <category>{00, {0FEARNED{00, "
-        "{0FINCOMPLETE{00, or {0FALL{00.\n\r"
-        "Categories: Character, Combat, Encounters, Quests, Exploration,\n\r"
-        "Collection, Crafting, Misadventure, Hyrule.\n\r",
+        "\n\rTry {0FACHIEVEMENTS <category>{00, {0FEARNED{00, "
+        "{0FINCOMPLETE{00,\n\r"
+        "    {0FALL{00, or {0FACHIEVEMENTS <search>{00.\n\r",
         sizeof(output));
     page_to_char(output, ch);
 }

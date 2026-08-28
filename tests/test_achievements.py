@@ -30,6 +30,7 @@ class AchievementSystemTests(unittest.TestCase):
         cls.source = (ROOT / "src" / "achievements.c").read_text(encoding="utf-8")
         cls.merc = (ROOT / "src" / "merc.h").read_text(encoding="utf-8")
         cls.save = (ROOT / "src" / "save.c").read_text(encoding="utf-8")
+        cls.comm = (ROOT / "src" / "comm.c").read_text(encoding="utf-8")
         cls.entries = [match.groupdict() for match in ENTRY_RE.finditer(cls.source)]
         cls.area_parser = AreaParser(ROOT / "area")
         cls.area_parser.parse_all()
@@ -70,6 +71,18 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertTrue(all(int(entry["points"]) > 0 for entry in self.entries))
         self.assertIn("achievement_progress", self.source)
         self.assertIn("achievement_format_date", self.source)
+
+    def test_summary_is_compact_and_paged_colors_are_converted(self) -> None:
+        pager = self.comm.split("void page_to_char", 1)[1].split(
+            "void show_string", 1
+        )[0]
+
+        self.assertIn("color_convert( txt, ch, color_is_enabled( ch ), &colorized )", pager)
+        self.assertIn("page_text = dstring_cstr( &colorized )", pager)
+        self.assertIn("safe_strcat(ptr, total_len, page_text)", pager)
+        self.assertIn("category += 2", self.source)
+        self.assertIn("Progress by category (earned/total, points)", self.source)
+        self.assertNotIn("Categories: Character", self.source)
 
     def test_hyrule_boss_achievements_match_generated_dungeon_contract(self) -> None:
         actual = {

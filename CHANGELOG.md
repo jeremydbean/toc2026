@@ -95,6 +95,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed paged commands exposing raw `{0D` color tokens instead of terminal
+  colors, and compacted the achievement summary into paired category columns
+  so its normal overview fits within the default page length.
 - Fixed Telekinesis bypassing take, corpse-looting, bound quest-item, and
   no-teleport rules; Confuse requiring 139 mana instead of its actual cost;
   Clairvoyance counting remote views as physical exploration; astral travel

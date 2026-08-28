@@ -2558,6 +2558,9 @@ void send_to_room( const char *txt, int vnum )
  */
 void page_to_char( const char *txt, CHAR_DATA *ch )
 {
+    DString colorized;
+    const char *page_text;
+
     if ( txt == NULL || ch->desc == NULL)
         return;
 
@@ -2567,9 +2570,13 @@ void page_to_char( const char *txt, CHAR_DATA *ch )
         return;
     }
 
+    dstring_init( &colorized );
+    color_convert( txt, ch, color_is_enabled( ch ), &colorized );
+    page_text = dstring_cstr( &colorized );
+
     if (ch->desc->showstr_head)
     {
-        const size_t txt_len = strlen( txt );
+        const size_t txt_len = strlen( page_text );
         const size_t head_len = strlen( ch->desc->showstr_head );
         const size_t total_len = txt_len + head_len + 1u;
 
@@ -2579,7 +2586,7 @@ void page_to_char( const char *txt, CHAR_DATA *ch )
             char *ptr = alloc_mem( clamp_size_to_int( total_len ) );
 
             safe_strcpy(ptr, total_len, ch->desc->showstr_head);
-            safe_strcat(ptr, total_len, txt);
+            safe_strcat(ptr, total_len, page_text);
             ch->desc->showstr_point = ptr + point_offset;
             free_mem(ch->desc->showstr_head, clamp_size_to_int( head_len + 1u ) );
             ch->desc->showstr_head = ptr;
@@ -2593,15 +2600,17 @@ void page_to_char( const char *txt, CHAR_DATA *ch )
 
     if (ch->desc->showstr_head == NULL)
     {
-        const size_t txt_len = strlen( txt );
+        const size_t txt_len = strlen( page_text );
 
         ch->desc->showstr_head = alloc_mem( clamp_size_to_int( txt_len + 1u ) );
-        safe_strcpy(ch->desc->showstr_head, txt_len + 1u, txt);
+        safe_strcpy(ch->desc->showstr_head, txt_len + 1u, page_text);
         ch->desc->showstr_point = ch->desc->showstr_head;
     }
 
     if (ch->desc->showstr_point)
         show_string(ch->desc,"");
+
+    dstring_free( &colorized );
 }
 
 
