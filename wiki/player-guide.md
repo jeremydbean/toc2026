@@ -195,11 +195,12 @@ Common combat controls:
 | `rescue <ally>` | Attempt to take over an ally's opponent |
 | `report` | Report current resources to the group |
 | `autoassist` | Toggle automatic entry into supported allied combat |
-| `shoot <target>` | Fire a wielded bow at a visible target in an adjacent room |
+| `shoot <target>` | Fire a wielded bow at a visible mobile through an open adjacent exit |
 
 Current bow combat requires a bow and the archery skill. It does **not** consume
-or require a separate ammunition object. On a successful hostile shot, an NPC
-may move toward the archer and retaliate.
+or require a separate ammunition object, and normal ranged attacks cannot
+target players. Successful and missed shots can improve Archery. On a
+successful hostile shot, an NPC may move toward the archer and retaliate.
 
 `murder` is the explicit player-hostile form of attack and can carry PK
 consequences. Read `help pkill`, `help murder`, and the server rules before
@@ -486,6 +487,10 @@ Useful preference commands include:
 - `prompt` for prompt formatting.
 - `description` and `title` for character presentation where allowed.
 - `nosummon`, `nofollow`, `noloot`, and `wimpy` for safety preferences.
+
+`AUTOGOLD` collects currency even when `AUTOLOOT` is off. `AUTOSAC` only
+sacrifices empty corpses, so boss drops and anything you cannot carry remain in
+the room instead of being destroyed.
 
 Avoid aliases or triggers that spam movement or combat without checking game
 state. A compact route still passes through every room and can trigger every

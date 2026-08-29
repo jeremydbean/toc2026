@@ -102,6 +102,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed `AUTOGOLD` searching the room instead of the defeated mobile's corpse,
+  and made `AUTOSAC` preserve every corpse that still contains money, boss
+  drops, or loot the player could not carry.
+- Repaired normal bow shooting through closed or secret exits, silent immunity
+  on `NOPURGE` mobiles, unsupported player targeting, missing Archery skill
+  improvement, unsafe pursuit through one-way/transport exits, and potentially
+  lethal anti-cheese backlash.
+- Restored city guards' unreachable innocent-protection behavior, prevented an
+  NPC cleric using Mana Convert from dereferencing player-only data, and fixed
+  shield reflection leaving a one-hit-point attacker marked dead.
+- Applied the Red Ring, Blue Ring, and Mirror Shield wards to reflected fire and
+  frost damage so those effects match their player-facing descriptions.
 - Made Ganon's Silver Arrow finale an explicit `shoot ganon` action, available
   at level 54 without Archery skill, while preserving the Arrow's boosted
   normal damage and preventing normal attacks from delivering the final blow.

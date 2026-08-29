@@ -87,10 +87,12 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `shoot` | Fire a bow at an adjacent target, or use Hyrule's Silver Arrow finisher |
 | `bomb`, `burn`, `flip`, `play`, `pull`, `push`, `move`, `turn` | Item or area-specific interactions |
 
-Normal bow shooting requires Archery and does not use a separate ammunition
-item. In Hyrule, a level 54 or higher character wielding the Silver Arrow can
-use `shoot ganon` in the same room after Ganon flashes red. That special shot
-requires no Archery skill and does not consume the Arrow.
+Normal bow shooting requires Archery, targets visible mobiles through open
+adjacent exits, and does not use a separate ammunition item. Shots can improve
+Archery, and normal ranged attacks cannot target players. In Hyrule, a level 54
+or higher character wielding the Silver Arrow can use `shoot ganon` in the same
+room after Ganon flashes red. That special shot requires no Archery skill and
+does not consume the Arrow.
 
 ## Shops, Services, Money, And Games
 
@@ -216,6 +218,10 @@ an irreversible action.
 | `alias` | Manage server-side aliases |
 | `description`, `title` | Customize character presentation |
 | `afk` | Toggle away status |
+
+`AUTOGOLD` takes currency directly from a defeated mobile's corpse when
+`AUTOLOOT` is off. `AUTOSAC` sacrifices only empty corpses; anything that was
+not selected or could not be carried remains safely in the corpse.
 
 ## Character And Session Management
 

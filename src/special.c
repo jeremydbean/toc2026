@@ -1070,8 +1070,16 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	}
     }
  
-    if ( victim == NULL)
-	return false;
+    if ( victim == NULL )
+    {
+	if ( ech == NULL )
+	    return false;
+
+	act( "$n screams 'PROTECT THE INNOCENT!!  BANZAI!!'",
+	    mob, NULL, NULL, TO_ROOM );
+	multi_hit( mob, ech, TYPE_UNDEFINED );
+	return true;
+    }
  
     if ( victim->level < mob->level - 5)
     {
@@ -1093,24 +1101,11 @@ bool spec_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	return true;
     }
  
-    if ( victim != NULL )
-    {
-      snprintf(buf, sizeof(buf), "%s is %s!  PROTECT THE INNOCENT!!  BANZAI!!",
-	    victim->name, crime );
-	do_yell( mob, buf );
-	multi_hit( mob, victim, TYPE_UNDEFINED );
-	return true;
-    }
- 
-    if ( ech != NULL )
-    {
-	act( "$n screams 'PROTECT THE INNOCENT!!  BANZAI!!",
-	    mob, NULL, NULL, TO_ROOM );
-	multi_hit( mob, ech, TYPE_UNDEFINED );
-	return true;
-    }
- 
-    return false;
+    snprintf(buf, sizeof(buf), "%s is %s!  PROTECT THE INNOCENT!!  BANZAI!!",
+	  victim->name, crime );
+    do_yell( mob, buf );
+    multi_hit( mob, victim, TYPE_UNDEFINED );
+    return true;
 }
  
  

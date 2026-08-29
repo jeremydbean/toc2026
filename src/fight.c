@@ -163,6 +163,63 @@ static void reward_hyrule_hero_tunic( CHAR_DATA *ch, CHAR_DATA *victim )
     send_to_char( buf, ch );
 }
 
+static bool character_is_active( CHAR_DATA *target )
+{
+    CHAR_DATA *candidate;
+    LIST_ITERATOR iter;
+
+    if ( target == NULL )
+        return false;
+
+    FOR_EACH_CHARACTER( iter, candidate )
+        if ( candidate == target )
+            return true;
+
+    return false;
+}
+
+static void handle_automatic_corpse_commands( CHAR_DATA *ch )
+{
+    OBJ_DATA *coin;
+    OBJ_DATA *coin_next;
+    OBJ_DATA *corpse;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->in_room == NULL )
+        return;
+
+    corpse = get_obj_list( ch, "corpse", ch->in_room->contents );
+    if ( corpse == NULL )
+        return;
+
+    if ( IS_SET(ch->act, PLR_AUTOLOOT) && corpse->contains != NULL )
+        do_get( ch, "all corpse" );
+
+    if ( IS_SET(ch->act, PLR_AUTOGOLD)
+    &&  !IS_SET(ch->act, PLR_AUTOLOOT)
+    &&   corpse->contains != NULL )
+    {
+        for ( coin = corpse->contains; coin != NULL; coin = coin_next )
+        {
+            coin_next = coin->next_content;
+            if ( coin->item_type == ITEM_MONEY )
+                get_obj( ch, coin, corpse );
+        }
+    }
+
+    if ( !IS_SET(ch->act, PLR_AUTOSAC) )
+        return;
+
+    if ( corpse->contains != NULL )
+    {
+        send_to_char(
+            "Autosac leaves the corpse because it still contains loot.\n\r",
+            ch );
+        return;
+    }
+
+    do_sacrifice( ch, "corpse" );
+}
+
 static bool is_hyrule_ganon( CHAR_DATA *victim )
 {
     return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
@@ -1133,7 +1190,6 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 {
     CHAR_DATA *vch;
-    OBJ_DATA *corpse;
     bool immune;
     bool hyrule_silver_arrow_hit;
     int shield = 0,i,num=0;
@@ -1461,13 +1517,15 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	    break;
       }
 
+      dam1 = apply_hyrule_relic_damage_reduction( ch, dam1, dam_type1 );
+
       if(dam1 > 0)
       {
        ch->hit -= dam1;
-       dam_message(victim, ch, dam1, dt1, immune);
-       update_pos(ch);        /* F5: update position after reflective damage */
        if(ch->hit <= 0)
          ch->hit = 1;
+       dam_message(victim, ch, dam1, dt1, immune);
+       update_pos(ch);        /* F5: update position after reflective damage */
        if ( dam1 > ch->max_hit / 4 )
 	    send_to_char( "That really did HURT!\n\r", ch );
        if ( ch->hit < ch->max_hit / 4 )
@@ -1679,38 +1737,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	  else
 	    raw_kill_internal( ch, victim, is_hyrule_ganon(victim) );
 
-	  /* RT new auto commands */
-
-	  if ( !IS_NPC(ch) && victim_was_npc )
-	  {
-	    corpse = get_obj_list( ch, "corpse", ch->in_room->contents );
-
-	    if ( IS_SET(ch->act, PLR_AUTOLOOT) &&
-		 corpse && corpse->contains) /* exists and not empty */
-		do_get( ch, "all corpse" );
-
-	    if (IS_SET(ch->act,PLR_AUTOGOLD) &&
-		corpse && corpse->contains  && /* exists and not empty */
-		!IS_SET(ch->act,PLR_AUTOLOOT))
-            {
-                /* Only take ITEM_MONEY objects — keyword matching
-                 * (e.g. "gold corpse") would also grab gold weapons, rings, etc. */
-                OBJ_DATA *coin, *coin_next;
-                for (coin = corpse->contains; coin != NULL; coin = coin_next)
-                {
-                    coin_next = coin->next_content;
-                    if (coin->item_type == ITEM_MONEY)
-                        do_get(ch, coin->name);
-                }
-            }
-
-	    if ( IS_SET(ch->act, PLR_AUTOSAC) ) {
-	      if ( IS_SET(ch->act,PLR_AUTOLOOT) && corpse && corpse->contains)
-		return true;  /* leave if corpse has treasure */
-	      else
-		do_sacrifice( ch, "corpse" );
-	    }
-	  }
+	  if ( victim_was_npc )
+	    handle_automatic_corpse_commands( ch );
 	}
 
 	return true;
@@ -4992,7 +5020,6 @@ bool destroy(CHAR_DATA *ch, CHAR_DATA *victim)
 
 void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 {
-  OBJ_DATA *corpse;
   char buf[MAX_STRING_LENGTH];
   CHAR_DATA *vch;
   LIST_ITERATOR iter;
@@ -5152,38 +5179,8 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 	  else
 	    raw_kill( ch, victim );
 
-	  /* RT new auto commands */
-
-	  if ( !IS_NPC(ch) && victim_was_npc )
-	  {
-	    corpse = get_obj_list( ch, "corpse", ch->in_room->contents );
-
-	    if ( IS_SET(ch->act, PLR_AUTOLOOT) &&
-		 corpse && corpse->contains) /* exists and not empty */
-		do_get( ch, "all corpse" );
-
-	    if (IS_SET(ch->act,PLR_AUTOGOLD) &&
-		corpse && corpse->contains  && /* exists and not empty */
-		!IS_SET(ch->act,PLR_AUTOLOOT))
-            {
-                /* Only take ITEM_MONEY objects — keyword matching
-                 * (e.g. "gold corpse") would also grab gold weapons, rings, etc. */
-                OBJ_DATA *coin, *coin_next;
-                for (coin = corpse->contains; coin != NULL; coin = coin_next)
-                {
-                    coin_next = coin->next_content;
-                    if (coin->item_type == ITEM_MONEY)
-                        do_get(ch, coin->name);
-                }
-            }
-
-	    if ( IS_SET(ch->act, PLR_AUTOSAC) ) {
-	      if ( IS_SET(ch->act,PLR_AUTOLOOT) && corpse && corpse->contains)
-		return;  /* leave if corpse has treasure */
-	      else
-		do_sacrifice( ch, "corpse" );
-	    }
-	  }
+	  if ( victim_was_npc )
+	    handle_automatic_corpse_commands( ch );
 	}
    return;
 }
@@ -5191,12 +5188,10 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
 void do_shoot( CHAR_DATA *ch, char *argument )
 {
   ROOM_INDEX_DATA *was_in_room;
-  ROOM_INDEX_DATA *was_in_room2;
   char arg[MAX_INPUT_LENGTH];
   CHAR_DATA *victim = NULL;
-  CHAR_DATA *rch, *list;
   OBJ_DATA *obj;
-  int chance = 0;
+  int chance;
   int door;
   int door1 = 0;
   int door2 = 0;
@@ -5275,7 +5270,8 @@ void do_shoot( CHAR_DATA *ch, char *argument )
       return;
     }
 
-    if( !IS_NPC(ch) && (chance = ch->pcdata->learned[gsn_archery]) < 2)
+    chance = get_skill( ch, gsn_archery );
+    if( !IS_NPC(ch) && chance < 2)
     {
        send_to_char("You need to know archery to shoot.\n\r",ch);
        return;
@@ -5293,29 +5289,20 @@ void do_shoot( CHAR_DATA *ch, char *argument )
     {
        if ( ( pexit = was_in_room->exit[door] ) != NULL
        &&   pexit->u1.to_room != NULL
-       &&   pexit->u1.to_room != was_in_room )
+       &&   pexit->u1.to_room != was_in_room
+       &&   can_see_room(ch, pexit->u1.to_room)
+       &&  !IS_SET(pexit->exit_info, EX_CLOSED)
+       &&  !IS_SET(pexit->exit_info, EX_SECRET) )
        {
 	  ch->in_room = pexit->u1.to_room;
-	  list = ch->in_room->people;
+	  victim = get_char_room( ch, arg );
+	  ch->in_room = was_in_room;
 
-	  for ( rch = list; rch != NULL; rch = rch->next_in_room )
+	  if ( victim != NULL )
 	  {
-	    if ( rch == ch )
-	      continue;
-
-	    if ( !IS_NPC(rch)
-		 &&   IS_SET(rch->act, PLR_WIZINVIS)
-		 &&   get_trust( ch ) < get_trust( rch ) )
-		   continue;
-
-	    if ( can_see( ch, rch ) )
-	      if( rch == get_char_room( ch, arg )  )
-	      {
-		victim = rch;
-		door1 = door;
-		door2 = rev_dir[door];
-		break;
-	      }
+	    door1 = door;
+	    door2 = rev_dir[door];
+	    break;
 	  }
        }
     }
@@ -5333,6 +5320,12 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( !IS_NPC(victim) )
+    {
+	send_to_char( "You cannot shoot at players from another room.\n\r", ch );
+	return;
+    }
+
     if ( is_safe( ch, victim ) )
       return;
 
@@ -5344,7 +5337,7 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 
     if(ch->fighting != NULL )
     {
-      send_to_char("Your too busy fighting to shoot anyone!\n\r",ch);
+      send_to_char("You're too busy fighting to shoot anyone!\n\r",ch);
       return;
     }
 
@@ -5357,14 +5350,14 @@ void do_shoot( CHAR_DATA *ch, char *argument )
 
     act( "$n lets fly an arrow to the $T.",ch,NULL,dir_name[door1],TO_ROOM);
 
-    if(number_percent () < chance
-    && (IS_NPC(victim) && !IS_SET(victim->act, ACT_NOPURGE) ) )
+    if(number_percent () < chance)
     {
       if(victim->position < POS_STANDING)
 	victim->position = POS_STANDING;
 
       victim->hit -= dice(2,4);
       update_pos(victim);
+      check_improve( ch, gsn_archery, true, 4 );
 
       if(number_percent () > 25)
       {
@@ -5391,25 +5384,29 @@ void do_shoot( CHAR_DATA *ch, char *argument )
       if(IS_NPC(victim) && number_percent () < 50)
       {
 	victim->position = POS_STANDING;
-	was_in_room2 = victim->in_room;
 	move_char(victim,door2,false);
-	if(was_in_room2 != victim->in_room)
+	if ( !character_is_active(victim) )
+	  return;
+	if(victim->in_room == was_in_room)
 	{
 	  act("I think this belongs to you $N! You'll pay now!",victim,NULL,
 	      ch, TO_ROOM);
-	  act("$n throws down a broken arrow. Your gonna pay $N.",
+	  act("$n throws down a broken arrow. You're going to pay, $N.",
 	      victim,NULL,ch,TO_ROOM);
 	 one_hit(victim,ch,TYPE_UNDEFINED);
 	}
 	else
 	{
 	  send_to_char("Not nice to shoot someone who can't get to you.\n\r",ch);
-	  ch->hit -= 4;
+	  ch->hit = UMAX(1, ch->hit - 4);
 	}
       }
     }
     else
+    {
+      check_improve( ch, gsn_archery, false, 4 );
       act("An arrow skids off the ground nearby.",victim,NULL,NULL,TO_ROOM);
+    }
 
     return;
 }

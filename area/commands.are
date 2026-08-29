@@ -561,9 +561,11 @@ See also: BREW, RECITE
 0 SHOOT~
 Syntax: shoot <target>
 
-SHOOT fires a wielded bow at a visible target in an adjacent room.  You must
-know the ARCHERY skill and cannot shoot while already fighting.  The current
-bow system does not require or consume a separate ammunition object.
+SHOOT fires a wielded bow at a visible mobile through an open adjacent exit.
+You must know the ARCHERY skill and cannot shoot while already fighting.
+Successful and missed shots can improve ARCHERY.  The current bow system does
+not require or consume a separate ammunition object, and it does not support
+ranged attacks against players.
 
 Hyrule's Silver Arrow is a special exception.  A level 54 or higher character
 who has it wielded can use SHOOT GANON in Ganon's room after he reaches one hit
@@ -1230,9 +1232,9 @@ See also: AUTOLOOT, AUTOGOLD, AUTOSAC, AUTOEXIT, AUTOASSIST, AUTOSPLIT
 0 AUTOLOOT~
 Syntax: autoloot
 
-Toggle automatic looting.  When on, you automatically pick up all equipment
-from mobiles you kill.  When AUTOLOOT is on, AUTOSAC will only sacrifice
-corpses that have already been fully looted.
+Toggle automatic looting.  When on, you automatically try to pick up all loot
+from mobiles you kill.  Anything you cannot carry remains in the corpse, and
+AUTOSAC will not sacrifice a corpse while it still contains loot.
 
 See also: AUTO, AUTOGOLD, AUTOSAC
 ~
@@ -1240,8 +1242,8 @@ See also: AUTO, AUTOGOLD, AUTOSAC
 0 AUTOGOLD~
 Syntax: autogold
 
-Toggle automatic gold collection.  When on, all gold is automatically
-taken from mobiles you kill.
+Toggle automatic currency collection.  When on without AUTOLOOT, all money is
+automatically taken from mobiles you kill.  Other objects remain in the corpse.
 
 See also: AUTO, AUTOLOOT, AUTOSPLIT
 ~
@@ -1250,8 +1252,9 @@ See also: AUTO, AUTOLOOT, AUTOSPLIT
 Syntax: autosac
 
 Toggle automatic corpse sacrifice.  When on, dead monster corpses are
-automatically sacrificed after looting.  If AUTOLOOT is also on, only
-empty corpses are sacrificed.
+automatically sacrificed after automatic looting.  Only empty corpses are
+sacrificed; a corpse containing money, equipment, or anything you could not
+carry is left in the room and you are told why.
 
 See also: AUTO, AUTOLOOT, SACRIFICE
 ~

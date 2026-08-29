@@ -283,9 +283,10 @@ See also: BACKSTAB, HIDE, STEALTH
 Syntax: shoot <victim>
 
 This skill allows you to use missile weapons that shoot arrows, i.e. bows or
-crossbows.  With it you can shoot into an adjoining room and hit a target
-there.  By using this skill, you may inflict damage onto your victim, but
-be aware that your victim may figure out where you are and come attack you.
+crossbows.  With it you can shoot a visible mobile through an open exit into
+an adjoining room.  Ranged attacks against players are not supported.  Both
+successful and missed shots can improve ARCHERY, but be aware that a wounded
+mobile may figure out where you are and come attack you.
 
 The minimum level to use this skill depends on your primary class and is:
 

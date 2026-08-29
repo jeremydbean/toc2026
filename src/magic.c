@@ -3563,7 +3563,8 @@ void spell_mana_convert( int sn, int level, CHAR_DATA *ch, void *vo )
        counter = 1;  /* Then the guy uses mage mana convert */
 
     /* Special case for the C/M, so they use the mage mana convert*/
-    if (ch->class == CLASS_CLERIC && ch->pcdata->guild == GUILD_MAGE)
+    if (!IS_NPC(ch) && ch->class == CLASS_CLERIC
+    &&  ch->pcdata->guild == GUILD_MAGE)
        counter = 1;
 
     if (counter == 1)
