@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
     <title>Times of Chaos Admin</title>
-    <link rel="stylesheet" href="/static/app.css?v=2">
+    <link rel="stylesheet" href="/static/app.css?v=3">
     <script src="/static/command-sequence.js?v=1" defer></script>
-    <script src="/static/app.js?v=3" defer></script>
+    <script src="/static/app.js?v=5" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -99,6 +99,19 @@
                         <p class="health-summary" id="health-summary">Area report has not loaded.</p>
                     </section>
                 </div>
+
+                <section class="panel operator-summary-panel">
+                    <div class="panel-heading">
+                        <h3>Operations health</h3>
+                        <button class="text-button" type="button" data-go-view="operations">Open operations</button>
+                    </div>
+                    <div class="operator-summary-grid">
+                        <div><span>Command queue</span><strong id="overview-queue">Locked</strong><small id="overview-queue-detail">Admin access required</small></div>
+                        <div><span>Latest backup</span><strong id="overview-backup">Locked</strong><small id="overview-backup-detail">Admin access required</small></div>
+                        <div><span>Latest player save</span><strong id="overview-player-save">Locked</strong><small id="overview-player-save-detail">Admin access required</small></div>
+                        <div><span>Server activity</span><strong id="overview-activity">Locked</strong><small id="overview-activity-detail">Admin access required</small></div>
+                    </div>
+                </section>
 
                 <section class="panel quick-panel">
                     <div class="panel-heading"><h3>Quick access</h3></div>
@@ -275,6 +288,23 @@
                     <button class="button button-danger" type="button" data-operation="shutdown">Shut down game</button>
                 </div>
 
+                <section class="panel operation-status-panel">
+                    <div class="panel-heading">
+                        <h3>Operational status</h3>
+                        <span class="timestamp" id="operations-updated">Not refreshed</span>
+                    </div>
+                    <div class="operation-status-grid">
+                        <div><span>Game server</span><strong id="operations-game">Checking</strong></div>
+                        <div><span>Pending actions</span><strong id="operations-queue">-</strong></div>
+                        <div><span>Latest backup</span><strong id="operations-backup">-</strong></div>
+                        <div><span>Player saves</span><strong id="operations-players">-</strong></div>
+                    </div>
+                    <div class="recent-saves">
+                        <span>Recently saved players</span>
+                        <div id="recent-player-saves" class="recent-save-list"><span class="muted">Not loaded.</span></div>
+                    </div>
+                </section>
+
                 <div class="operation-grid">
                     <form class="panel form-panel" id="broadcast-form">
                         <div class="panel-heading"><h3>WizInfo broadcast</h3></div>
@@ -290,8 +320,20 @@
                     </form>
                 </div>
 
+                <section class="panel activity-panel">
+                    <div class="panel-heading">
+                        <h3>Server Info and WizInfo</h3>
+                        <div class="panel-heading-actions"><span class="connection-label" id="activity-status">Not loaded</span><button class="text-button" id="activity-refresh" type="button">Refresh</button></div>
+                    </div>
+                    <div class="activity-toolbar">
+                        <label>Channel<select id="activity-channel"><option value="all">All activity</option><option value="info">Server Info</option><option value="wizinfo">WizInfo</option></select></label>
+                        <label>Filter<input id="activity-search" type="search" placeholder="Message text" autocomplete="off"></label>
+                    </div>
+                    <div class="activity-feed" id="activity-feed" aria-live="polite"><p class="empty-state">Not loaded.</p></div>
+                </section>
+
                 <section class="panel backup-panel">
-                    <div class="panel-heading"><h3>Recent backups</h3><button class="text-button" id="backups-refresh" type="button">Refresh</button></div>
+                    <div class="panel-heading"><div><h3>Recent backups</h3><span class="panel-subtitle" id="backups-summary">Not loaded</span></div><div class="panel-heading-actions"><button class="text-button" id="backups-toggle" type="button" hidden>Show all</button><button class="text-button" id="backups-refresh" type="button">Refresh</button></div></div>
                     <div class="table-frame borderless">
                         <table id="backups-table">
                             <thead><tr><th>Archive</th><th>Size</th><th>Modified</th></tr></thead>

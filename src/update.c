@@ -1204,19 +1204,17 @@ void weather_update( void )
 	break;
     }
 
-    if ( buf[0] != '\0' )
+    for ( d = descriptor_list; d != NULL; d = d->next )
     {
-	for ( d = descriptor_list; d != NULL; d = d->next )
-	{
-	    if ( d->connected == CON_PLAYING
+	if ( d->connected != CON_PLAYING )
+	    continue;
+
+	if ( buf[0] != '\0'
 	    &&   IS_OUTSIDE(d->character)
 	    &&   IS_AWAKE(d->character) )
-		send_to_char( buf, d->character );
+	    send_to_char( buf, d->character );
 
-	    if(d->connected == CON_PLAYING  )
-		 do_lycanthropy(d->character,"");
-
-	}
+	do_lycanthropy(d->character,"");
     }
 
     return;
@@ -1346,7 +1344,8 @@ void char_update( void )
 
 	}
 
-	if(IS_NPC(ch) && number_range(1,2000) == 2000
+	if(IS_NPC(ch) && !IS_SET(ch->act2, ACT2_LYCANTH)
+	   && number_range(1,2000) == 2000
 	   && dice(1,50) == 50
 	   && ch->in_room !=NULL)
 	{
@@ -2482,10 +2481,11 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
 {
      UNUSED_PARAM(argument);
      OBJ_DATA *pObj, *obj_next;
+     OBJ_INDEX_DATA *pObjIndex;
      CHAR_DATA * mob = NULL;
      int primer = 0, tracker = 0, counter = 0, ac = 0;
 /*     char buf[MAX_STRING_LENGTH];*/
-    if( IS_IMMORTAL(ch) || ch->desc == NULL)
+    if( IS_IMMORTAL(ch) || ch->desc == NULL || ch->in_room == NULL)
       return;
 
     if(weather_info.moon_place == MOON_UP &&
@@ -2527,12 +2527,9 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
 
       SET_BIT(mob->act2, ACT2_LYCANTH);
 
-      if(ch->were_shape.obj != NULL)
+      primer = UMAX(0, UMIN(ch->were_shape.can_carry, 4));
+      for(tracker = 0; tracker < primer; tracker++)
       {
-	primer = ch->were_shape.can_carry;
-	for(tracker = 0; tracker < primer; tracker++)
-	{
-
 /*	  if(ch->were_shape.obj[tracker] == NULL)*/
 
 /* Above line commented out because it gives a pointer error
@@ -2541,10 +2538,16 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
           if (!ch->were_shape.obj[tracker])
 	     break;
 
-	  pObj = create_object( get_obj_index(ch->were_shape.obj[tracker]),
-		0 );
+	  pObjIndex = get_obj_index(ch->were_shape.obj[tracker]);
+	  if (pObjIndex == NULL)
+	  {
+	    bug("do_lycanthropy: missing stored object vnum %d.",
+		ch->were_shape.obj[tracker]);
+	    continue;
+	  }
+
+	  pObj = create_object(pObjIndex, 0);
 	  obj_to_char(pObj,mob);
-	}
       }
 
 	/* need to alter handler.c can_carry_n for were_shape can_carry */

@@ -272,9 +272,14 @@ python3 scripts/area_lint.py --fail-on critical --limit 100
 - The C server is authoritative. Dashboard parser reload is dashboard-only.
 - Protected routes use `WEB_ADMIN_TOKEN` in `X-Admin-Token`; an unset token
   disables them with 503.
-- `/ws/logs` currently receives the token in a query parameter.
-- Read routes including player list/detail and `/ws` are public at the app layer.
-  Do not claim the token protects the entire dashboard.
+- Protected WebSockets use an authenticated local cookie or a first JSON auth
+  message. Never place the token in a WebSocket URL or query parameter.
+- Player list/detail, logs, structured events, backups, and operational status
+  are protected. World data, health, configuration flags, gear analysis, and
+  the browser-to-game `/ws` bridge are public at the app layer. Do not claim
+  the token protects the entire dashboard.
+- `/api/admin/status` may expose queue depth and file metadata, but never queue
+  payloads, player-file contents, tokens, or log messages.
 - Treat queue writing as immortal command execution.
 - Bound payloads and result limits; reject newlines/control data that can split
   queue records.

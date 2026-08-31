@@ -4794,8 +4794,8 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
     if( !str_prefix(arg2, "were") )
     {
-      if(value > 6)
-      { send_to_char("Value must be 6 or less\n\r",ch); return;}
+      if(value < 0 || value > 6)
+      { send_to_char("Value must be between 0 and 6.\n\r",ch); return;}
 
       victim->were_shape.were_type  = value;
       victim->were_shape.name       = were_types[value].name;

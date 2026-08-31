@@ -531,6 +531,7 @@ intentionally available to players.
 | Method and path | Purpose |
 |---|---|
 | `GET /api/auth/check` | Validate the supplied token |
+| `GET /api/admin/status` | Read runtime, queue-count, backup, save, and activity-file metadata |
 | `GET /api/logs?lines=200` | Tail 1-5,000 log lines |
 | `WS /ws/logs` | Stream logs after first-message authentication |
 | `GET /api/events?limit=200` | Return 1-1,000 Server Info and WizInfo events |

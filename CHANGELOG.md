@@ -10,6 +10,9 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added an authenticated dashboard operations snapshot with game reachability,
+  queue depth, backup freshness, recent player saves, runtime-file activity,
+  searchable Server Info/WizInfo history, and a compact expandable backup list.
 - Added a guaranteed random Ganon relic drop alongside his fixed progression
   loot: the level 54-58 Hero's Tunic, Blue Ring, Red Ring, Mirror Shield, and
   Pegasus Boots. Their unique kill-healing, damage-ward, magic-ward, and travel
@@ -102,6 +105,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Invalid portals no longer consume gold or charges, crystal-ball entry now
+  replies to the player, successful Riding improves correctly, saddles use
+  normal equipment hooks, and stale or invisible mount state no longer crashes
+  or broadcasts uninitialized text.
+- Monk buffs no longer consume mana when already active, ghost-blocked attacks
+  no longer consume mana or movement, and a failed Crane Dance now uses its
+  documented 30 mana while recording a failed skill attempt.
+- Bulk `put` now rolls concealment independently for every item and reports an
+  empty match; lycanthropy checks every weather tick, avoids reinfecting tagged
+  mobiles, bounds restored were-form inventory, and skips stale object vnums.
+- Immortal were-form editing now rejects negative indexes instead of reading
+  before the form table.
+- Dashboard view changes now return to the top instead of carrying a long
+  Operations-page scroll offset into Overview or another section.
 - Fixed `AUTOGOLD` searching the room instead of the defeated mobile's corpse,
   and made `AUTOSAC` preserve every corpse that still contains money, boss
   drops, or loot the player could not carry.

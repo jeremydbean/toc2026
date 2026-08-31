@@ -236,6 +236,9 @@ Protected dashboard routes require `X-Admin-Token`:
 ```text
 GET  /api/logs
 WS   /ws/logs (token in first JSON message)
+GET  /api/events
+WS   /ws/events (token in first JSON message)
+GET  /api/admin/status
 GET  /api/players
 GET  /api/player/{name}
 POST /api/wizinfo
@@ -251,7 +254,13 @@ Important distinctions:
 - `/api/command` writes a command to `area/webadmin.queue`; it is not a shell.
   The C server consumes and executes the queued immortal command.
 - Queue acknowledgement means queued, not necessarily completed. Confirm the
-  resulting game/log state.
+  resulting game/log state. The Operations page and `/api/admin/status` expose
+  a pending line count without exposing the privileged command text.
+- The operational snapshot also reports game reachability, latest backup age,
+  recent player-save timestamps, and log/event file activity. Use it to notice
+  stale protection or a stuck queue, then verify with the underlying service.
+- The main Operations page has a bounded, filterable Server Info/WizInfo event
+  view. Routine activity is useful context but is not a durable audit log.
 - `/api/reload` reparses area files for the dashboard and rejects a parser swap
   if critical area-health findings exist. It does not reload the live game.
 - `/api/shutdown` queues an in-game shutdown request. Compose restart policy may

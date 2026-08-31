@@ -49,6 +49,7 @@ readable without an admin token. These capabilities require
 - player save names and parsed player profiles
 - server logs and live log streaming
 - Server Info and WizInfo activity history and live streaming
+- operational status, command-queue depth, backup freshness, and recent saves
 - backup archive listing and backup requests
 - dashboard area-data refreshes
 - WizInfo broadcasts
@@ -78,7 +79,9 @@ control. Do not publish port `9001` directly to the internet.
 
 Overview shows parsed area, room, mobile, and object totals; dashboard and game
 reachability; the configured game endpoint; authentication state; and the
-current area-health severity totals.
+current area-health severity totals. When authenticated, **Operations health**
+also summarizes pending queue actions, the newest backup, the newest player
+save, and the most recent log or structured server activity.
 
 The dashboard status is always online when `/api/health` answers. Game status
 is a short TCP reachability check against `MUD_HOST:MUD_PORT`; it does not prove
@@ -174,6 +177,22 @@ Immortal commands have maximum trust and can alter live state. Queue payloads
 reject newlines, control characters, and the `|` protocol delimiter, but the
 meaning of an accepted command remains as powerful as entering it in game.
 
+The **Operational status** panel reports live game reachability, pending queue
+line count, backup age, player-save count, and the most recently modified
+player files. Player names link directly to their protected dashboard profile.
+Queue contents are deliberately never returned to the browser. A queued count
+is a moment-in-time observation, not proof that an action completed; confirm
+important operations through the resulting game state and logs.
+
+**Server Info and WizInfo** reads the game's structured event file, supports
+channel and text filters, and shows the newest 100 matching events from a
+bounded 300-event snapshot. This keeps routine lycanthropy or backup messages
+searchable without allowing a noisy channel to make the page unmanageable.
+
+**Recent backups** initially shows ten rows. **Show all** expands the bounded
+list of up to 100 archives, while the status summary reports the complete
+archive count and age of the newest file.
+
 ## HTTP And WebSocket Authentication
 
 Protected HTTP requests send:
@@ -188,6 +207,17 @@ Validate a token without performing an operation:
 curl -H "X-Admin-Token: $WEB_ADMIN_TOKEN" \
   http://127.0.0.1:9001/api/auth/check
 ```
+
+Read the protected operations snapshot without exposing queue command text:
+
+```text
+GET /api/admin/status
+```
+
+Its response contains runtime reachability, queue count and file metadata,
+backup count/latest metadata, player-save count/recent names and timestamps,
+and log/event file metadata. It does not contain player-file contents, tokens,
+queued command payloads, or log messages.
 
 The protected WebSockets connect to `/ws/logs` or `/ws/events`, then send this
 within five seconds:
@@ -290,5 +320,6 @@ Run all repository validation before publishing:
 ```
 
 The focused suite checks self-contained assets, API pagination, player privacy,
-mixed-case save resolution, log authentication, bounded log tailing, queue
-validation, and last-known-good parser reload behavior.
+mixed-case save resolution, log authentication, bounded log tailing, protected
+operations metadata, queue-payload privacy, queue validation, and
+last-known-good parser reload behavior.

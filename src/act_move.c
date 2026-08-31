@@ -3256,6 +3256,19 @@ void do_enter( CHAR_DATA *ch, char *argument )
      return;
    }
 
+   if ( obj->value[0] == 4 )       /* crystal ball */
+   {
+     act("You can not enter the $p.",ch,obj,NULL,TO_CHAR);
+     return;
+   }
+
+   to_room = get_room_index( obj->value[1] );
+   if ( to_room == NULL )
+   {
+     send_to_char( "The portal leads nowhere.\n\r", ch );
+     return;
+   }
+
    switch( obj->value[0])
    {
    case 1:               /* for windows in hall of hero's */
@@ -3277,9 +3290,7 @@ void do_enter( CHAR_DATA *ch, char *argument )
    case 3:                /* for portal spell */
      obj->value[2] -= 1;
    break;
-   case 4:                 /* crystal ball */
-     act("You can not enter the $p.",ch,obj,NULL,TO_ROOM);
-     return;
+   case 4:                 /* handled above */
    break;
    case 5:
    break;
@@ -3298,13 +3309,6 @@ void do_enter( CHAR_DATA *ch, char *argument )
        return;
      }
    break;
-   }
-
-   to_room = get_room_index( obj->value[1] );
-   if ( to_room == NULL )
-   {
-     send_to_char( "The portal leads nowhere.\n\r", ch );
-     return;
    }
 
    act("You enter $p",ch,obj,NULL,TO_CHAR);
@@ -3952,7 +3956,12 @@ void do_ride( CHAR_DATA *ch, char *argument)
      obj_to_char(obj,victim);
      snprintf(buf, sizeof(buf), "%s saddles %s and mounts $m.",ch->name,
                   victim->short_descr ? victim->short_descr: victim->name);
-     obj->wear_loc = WEAR_BODY;
+     equip_char(victim,obj,WEAR_BODY);
+     if(get_eq_char(victim, WEAR_BODY) != obj)
+     {
+       send_to_char("The saddle will not stay on that mount.\n\r",ch);
+       return;
+     }
    }
    else
      snprintf(buf, sizeof(buf), "%s mounts %s.",ch->name,
@@ -3961,7 +3970,7 @@ void do_ride( CHAR_DATA *ch, char *argument)
      act( buf, ch, NULL, NULL, TO_ROOM );
    send_to_char("You mount your steed.\n\r",ch);
 
-    check_improve(ch,gsn_ride,false,6);
+    check_improve(ch,gsn_ride,true,6);
 
     SET_BIT(victim->act, ACT_PET);
     victim->master = ch;
@@ -3989,25 +3998,28 @@ void do_dismount(CHAR_DATA *ch, char *argument)
      return;
    }
 
-   if(!IS_SET(ch->act,PLR_WIZINVIS) )
-     snprintf(buf, sizeof(buf), "%s dismounts from %s.",ch->name,
-       ch->pet->short_descr ? ch->pet->short_descr : ch->pet->name);
-   act( buf, ch, NULL, NULL, TO_ROOM );
-   send_to_char("You dismount.\n\r",ch);
-
-   if(ch->pet != NULL)
-     mount = ch->pet;
-   else
+   if(ch->pet == NULL)
    {
      ch->pcdata->mounted = false;
+     send_to_char("Your mount is no longer here.\n\r",ch);
      return;
    }
+
+   if(!IS_SET(ch->act,PLR_WIZINVIS) )
+   {
+     snprintf(buf, sizeof(buf), "%s dismounts from %s.",ch->name,
+       ch->pet->short_descr ? ch->pet->short_descr : ch->pet->name);
+     act( buf, ch, NULL, NULL, TO_ROOM );
+   }
+   send_to_char("You dismount.\n\r",ch);
+
+   mount = ch->pet;
 
    mount->ridden = false;
 
    ch->pcdata->mounted = false;
 
-    if (mount->master->pet == mount)
+    if (mount->master != NULL && mount->master->pet == mount)
 	mount->master->pet = NULL;
 
     mount->master = NULL;

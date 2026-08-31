@@ -257,6 +257,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(client.get("/api/player/MiXeD").status_code, 403)
             self.assertEqual(client.get("/api/auth/check").status_code, 403)
             self.assertEqual(client.get("/api/events").status_code, 403)
+            self.assertEqual(client.get("/api/admin/status").status_code, 403)
 
             headers = {"X-Admin-Token": "secret"}
             auth = client.get("/api/auth/check", headers=headers)
@@ -309,13 +310,37 @@ class WebAdminApiTests(unittest.TestCase):
                 websocket.send_json({"type": "close"})
                 with self.assertRaises(WebSocketDisconnect) as closed:
                     websocket.receive_text()
-                self.assertEqual(closed.exception.code, 1000)
+            self.assertEqual(closed.exception.code, 1000)
 
             with self.assertRaises(WebSocketDisconnect) as rejected:
                 with client.websocket_connect("/ws/logs") as websocket:
                     websocket.send_json({"type": "auth", "token": "wrong"})
                     websocket.receive_text()
             self.assertEqual(rejected.exception.code, 4003)
+
+    def test_admin_status_reports_operations_without_exposing_queue_payloads(self) -> None:
+        with self.webadmin_client() as (_, client, temp_root):
+            headers = {"X-Admin-Token": "secret"}
+            queue_path = temp_root / "webadmin.queue"
+            queue_path.write_text("backup\n\ncommand|look\n", encoding="utf-8")
+            backup_path = temp_root / "backups" / "toc-test.tar.gz"
+            backup_path.write_bytes(b"backup data")
+
+            response = client.get("/api/admin/status", headers=headers)
+            self.assertEqual(response.status_code, 200)
+            status = response.json()
+
+            self.assertTrue(status["runtime"]["webadmin"])
+            self.assertEqual(status["queue"]["pending_actions"], 2)
+            self.assertFalse(status["queue"]["truncated"])
+            self.assertTrue(status["queue"]["readable"])
+            self.assertNotIn("command|look", response.text)
+            self.assertEqual(status["backups"]["count"], 1)
+            self.assertEqual(status["backups"]["latest"]["name"], "toc-test.tar.gz")
+            self.assertEqual(status["players"]["count"], 1)
+            self.assertEqual(status["players"]["recent"][0]["name"], "MiXeD")
+            self.assertTrue(status["activity"]["log"]["exists"])
+            self.assertTrue(status["activity"]["events"]["exists"])
 
     def test_loopback_client_can_open_and_close_a_local_admin_session(self) -> None:
         with self.webadmin_client(local_unlock=True) as (_, client, _):

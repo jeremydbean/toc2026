@@ -10,6 +10,7 @@ import re
 import secrets
 import socket
 import threading
+import time
 from collections import deque
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -671,6 +672,108 @@ def read_process_health() -> dict[str, bool]:
     }
 
 
+def file_status(path: Path) -> Dict[str, Any]:
+    """Return non-sensitive metadata for an operator-visible runtime file."""
+    try:
+        stat = path.stat()
+    except OSError:
+        return {"exists": False, "size_bytes": 0, "modified": None}
+    return {
+        "exists": path.is_file(),
+        "size_bytes": stat.st_size,
+        "modified": stat.st_mtime,
+    }
+
+
+def pending_queue_status(path: Path, max_bytes: int = 1024 * 1024) -> Dict[str, Any]:
+    """Count queued actions without exposing their privileged payloads."""
+    metadata = file_status(path)
+    if not metadata["exists"]:
+        return {**metadata, "pending_actions": 0, "truncated": False, "readable": True}
+
+    try:
+        with path.open("rb") as queue_file:
+            payload = queue_file.read(max_bytes + 1)
+    except OSError:
+        return {**metadata, "pending_actions": 0, "truncated": False, "readable": False}
+
+    truncated = len(payload) > max_bytes
+    visible = payload[:max_bytes]
+    pending = sum(1 for line in visible.splitlines() if line.strip())
+    return {
+        **metadata,
+        "pending_actions": pending,
+        "truncated": truncated,
+        "readable": True,
+    }
+
+
+def backup_records() -> list[Dict[str, Any]]:
+    if not BACKUP_PATH.is_dir():
+        return []
+
+    backups: list[Dict[str, Any]] = []
+    for path in BACKUP_PATH.glob("*.tar.gz"):
+        try:
+            if path.is_symlink() or not path.is_file():
+                continue
+            stat = path.stat()
+        except OSError:
+            # A backup can be pruned between directory enumeration and stat.
+            continue
+        backups.append(
+            {
+                "name": path.name,
+                "size_bytes": stat.st_size,
+                "modified": stat.st_mtime,
+            }
+        )
+
+    backups.sort(key=lambda item: item["modified"], reverse=True)
+    return backups
+
+
+def player_save_summary(limit: int = 8) -> Dict[str, Any]:
+    players: list[Dict[str, Any]] = []
+    try:
+        candidates = PLAYER_PATH.iterdir()
+        for path in candidates:
+            try:
+                if (
+                    not PLAYER_NAME_RE.fullmatch(path.name)
+                    or path.is_symlink()
+                    or not path.is_file()
+                ):
+                    continue
+                stat = path.stat()
+            except OSError:
+                continue
+            players.append({"name": path.name, "modified": stat.st_mtime})
+    except OSError:
+        return {"count": 0, "recent": []}
+
+    players.sort(key=lambda item: item["modified"], reverse=True)
+    return {"count": len(players), "recent": players[:limit]}
+
+
+def admin_status_snapshot() -> Dict[str, Any]:
+    backups = backup_records()
+    return {
+        "generated": time.time(),
+        "runtime": read_process_health(),
+        "queue": pending_queue_status(QUEUE_PATH),
+        "backups": {
+            "count": len(backups),
+            "latest": backups[0] if backups else None,
+        },
+        "players": player_save_summary(),
+        "activity": {
+            "log": file_status(DEFAULT_LOG),
+            "events": file_status(EVENT_LOG),
+        },
+    }
+
+
 @app.get("/", response_class=FileResponse, include_in_schema=False)
 async def index() -> FileResponse:
     return FileResponse(STATIC_PATH / "index.html")
@@ -686,6 +789,11 @@ async def game_client() -> FileResponse:
 async def health() -> dict[str, bool | str]:
     status = await asyncio.to_thread(read_process_health)
     return {"status": "ok", **status}
+
+
+@app.get("/api/admin/status")
+async def admin_status(_: None = Depends(verify_token)) -> Dict[str, Any]:
+    return await asyncio.to_thread(admin_status_snapshot)
 
 
 @app.get("/api/config")
@@ -1025,28 +1133,7 @@ async def run_backup(_: None = Depends(verify_token)) -> str:
 
 @app.get("/api/backups")
 async def list_backups(_: None = Depends(verify_token)) -> list[Dict[str, Any]]:
-    if not BACKUP_PATH.is_dir():
-        return []
-
-    backups: list[Dict[str, Any]] = []
-    for path in BACKUP_PATH.glob("*.tar.gz"):
-        try:
-            if not path.is_file():
-                continue
-            stat = path.stat()
-        except OSError:
-            # A backup can be pruned between directory enumeration and stat.
-            continue
-        backups.append(
-            {
-                "name": path.name,
-                "size_bytes": stat.st_size,
-                "modified": stat.st_mtime,
-            }
-        )
-
-    backups.sort(key=lambda item: item["modified"], reverse=True)
-    return backups[:100]
+    return (await asyncio.to_thread(backup_records))[:100]
 
 
 @app.post("/api/shutdown")

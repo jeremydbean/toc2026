@@ -21,6 +21,7 @@
         issues: { page: 1, severity: "all", query: "" },
         terminal: { socket: null, connected: false, failed: false, secretInput: false, history: [], historyIndex: 0 },
         logs: { socket: null, shouldReconnect: false, reconnectTimer: null },
+        operations: { status: null, backups: [], showAllBackups: false, events: [] },
         map: { data: null, scale: 1, x: 0, y: 0, dragging: false, startX: 0, startY: 0 },
     };
 
@@ -60,6 +61,18 @@
         if (bytes < 1024 ** 2) return `${(bytes / 1024).toFixed(1)} KB`;
         if (bytes < 1024 ** 3) return `${(bytes / 1024 ** 2).toFixed(1)} MB`;
         return `${(bytes / 1024 ** 3).toFixed(1)} GB`;
+    }
+
+    function formatRelativeTime(value) {
+        const timestamp = Number(value);
+        if (!Number.isFinite(timestamp) || timestamp <= 0) return "Never";
+        const elapsed = Math.max(0, Math.floor(Date.now() / 1000 - timestamp));
+        if (elapsed < 10) return "Just now";
+        const relative = (amount, unit) => `${amount} ${unit}${amount === 1 ? "" : "s"} ago`;
+        if (elapsed < 60) return relative(elapsed, "second");
+        if (elapsed < 3600) return relative(Math.floor(elapsed / 60), "minute");
+        if (elapsed < 86400) return relative(Math.floor(elapsed / 3600), "hour");
+        return relative(Math.floor(elapsed / 86400), "day");
     }
 
     function stripMudColor(value) {
@@ -175,6 +188,7 @@
             : state.config?.admin_token_configured ? "Locked" : "Disabled";
         byId("players-lock-note").textContent = value ? "Authenticated" : "Admin token required";
         byId("operations-lock-note").textContent = value ? "Authenticated" : "Admin token required";
+        if (!value) clearProtectedOperations();
     }
 
     async function validateToken(silent = false) {
@@ -259,6 +273,7 @@
 
     function navigate(view, updateHash = true) {
         if (!VIEW_NAMES.has(view)) view = "overview";
+        const viewChanged = state.view !== view;
         if (state.view === "logs" && view !== "logs") stopLogs();
         state.view = view;
         all(".view").forEach((item) => item.classList.toggle("is-active", item.id === `${view}-view`));
@@ -266,6 +281,7 @@
         const active = byId(`${view}-view`);
         byId("page-title").textContent = active?.dataset.title || "Web Admin";
         closeNavigation();
+        if (viewChanged) window.scrollTo({ top: 0, left: 0, behavior: "auto" });
         if (updateHash && location.hash !== `#${view}`) history.replaceState(null, "", `#${view}`);
         void loadView(view);
     }
@@ -276,7 +292,7 @@
         else if (view === "areas") await loadAreasAndHealth();
         else if (view === "players") await loadPlayerNames();
         else if (view === "logs") await connectLogs();
-        else if (view === "operations") await loadBackups();
+        else if (view === "operations") await loadOperations();
     }
 
     async function refreshCurrentView() {
@@ -339,7 +355,123 @@
             byId("health-info").textContent = formatNumber(severities.info || 0);
             byId("health-summary").textContent = `${formatNumber(summary.issues || 0)} findings across ${formatNumber(summary.areas || 0)} parsed areas; ${formatNumber(summary.parse_errors || 0)} parse errors.`;
         }
+        if (state.authenticated) {
+            try {
+                const status = await api("/api/admin/status", { auth: true });
+                state.operations.status = status;
+                renderOverviewOperations(status);
+            } catch (error) {
+                renderOverviewOperations(null, error.message);
+            }
+        } else {
+            renderOverviewOperations(null);
+        }
         byId("overview-updated").textContent = `Updated ${new Date().toLocaleTimeString()}`;
+    }
+
+    function renderOverviewOperations(status, errorMessage = "Admin access required") {
+        const queue = status?.queue;
+        const backup = status?.backups?.latest;
+        const player = status?.players?.recent?.[0];
+        const activityModified = Math.max(
+            Number(status?.activity?.log?.modified || 0),
+            Number(status?.activity?.events?.modified || 0),
+        );
+
+        byId("overview-queue").textContent = queue
+            ? queue.readable === false ? "Unavailable" : queue.pending_actions ? `${formatNumber(queue.pending_actions)}${queue.truncated ? "+" : ""} pending` : "Clear"
+            : "Locked";
+        byId("overview-queue-detail").textContent = queue
+            ? queue.readable === false ? "Queue file could not be read" : queue.modified ? `Queue updated ${formatRelativeTime(queue.modified)}` : "No queue file"
+            : errorMessage;
+        byId("overview-backup").textContent = backup ? formatRelativeTime(backup.modified) : status ? "None found" : "Locked";
+        byId("overview-backup-detail").textContent = backup
+            ? `${backup.name} - ${formatBytes(backup.size_bytes)}`
+            : status ? "No backup archives found" : errorMessage;
+        byId("overview-player-save").textContent = player ? player.name : status ? "None found" : "Locked";
+        byId("overview-player-save-detail").textContent = player
+            ? `${formatRelativeTime(player.modified)} - ${formatNumber(status.players.count)} player files`
+            : status ? "No player saves found" : errorMessage;
+        byId("overview-activity").textContent = activityModified ? formatRelativeTime(activityModified) : status ? "No activity" : "Locked";
+        byId("overview-activity-detail").textContent = status
+            ? `Events ${formatBytes(status.activity.events.size_bytes)} - log ${formatBytes(status.activity.log.size_bytes)}`
+            : errorMessage;
+    }
+
+    function clearProtectedOperations() {
+        state.operations = { status: null, backups: [], showAllBackups: false, events: [] };
+        renderOverviewOperations(null);
+        byId("operations-game").textContent = "Locked";
+        byId("operations-queue").textContent = "-";
+        byId("operations-backup").textContent = "-";
+        byId("operations-players").textContent = "-";
+        byId("operations-updated").textContent = "Admin access required";
+        byId("recent-player-saves").replaceChildren(node("span", { className: "muted", text: "Admin access required." }));
+        byId("activity-status").textContent = "Locked";
+        byId("activity-feed").replaceChildren(node("p", { className: "empty-state", text: "Admin access required." }));
+        byId("backups-summary").textContent = "Admin access required";
+        byId("backups-toggle").hidden = true;
+        byId("backups-table").querySelector("tbody").replaceChildren(node("tr", {}, [
+            node("td", { className: "empty-state", text: "Admin access required.", attrs: { colspan: 3 } }),
+        ]));
+    }
+
+    function renderOperationalStatus(status) {
+        state.operations.status = status;
+        const queue = status.queue;
+        const backup = status.backups.latest;
+        byId("operations-game").textContent = status.runtime.merc ? "Online" : "Offline";
+        byId("operations-game").className = status.runtime.merc ? "status-text-ok" : "status-text-critical";
+        byId("operations-queue").textContent = queue.readable === false
+            ? "Unavailable"
+            : `${formatNumber(queue.pending_actions)}${queue.truncated ? "+" : ""}`;
+        byId("operations-backup").textContent = backup ? formatRelativeTime(backup.modified) : "None found";
+        byId("operations-backup").title = backup ? `${backup.name} - ${new Date(backup.modified * 1000).toLocaleString()}` : "";
+        byId("operations-players").textContent = formatNumber(status.players.count);
+        byId("operations-updated").textContent = `Updated ${new Date(status.generated * 1000).toLocaleTimeString()}`;
+
+        const recent = status.players.recent || [];
+        const container = byId("recent-player-saves");
+        if (!recent.length) {
+            container.replaceChildren(node("span", { className: "muted", text: "No player saves found." }));
+            return;
+        }
+        container.replaceChildren(...recent.map((player) => {
+            const button = node("button", {
+                className: "recent-save-item",
+                attrs: { type: "button", title: `Saved ${new Date(player.modified * 1000).toLocaleString()}` },
+            }, [
+                node("strong", { text: player.name }),
+                node("span", { text: formatRelativeTime(player.modified) }),
+            ]);
+            button.addEventListener("click", () => {
+                navigate("players");
+                byId("player-search").value = player.name;
+                void loadPlayer(player.name);
+            });
+            return button;
+        }));
+    }
+
+    async function loadOperationalStatus() {
+        if (!await ensureAuth()) return;
+        try {
+            const status = await api("/api/admin/status", { auth: true });
+            renderOperationalStatus(status);
+            renderOverviewOperations(status);
+            renderBackups();
+        } catch (error) {
+            byId("operations-updated").textContent = error.message;
+        }
+    }
+
+    async function loadOperations() {
+        if (!await ensureAuth()) return;
+        await Promise.allSettled([
+            loadOperationalStatus(),
+            loadBackups(),
+            loadServerActivity(),
+        ]);
     }
 
     function setTableLoading(tableId, columnCount) {
@@ -1088,9 +1220,33 @@
                 state.areaHealth = null;
                 await loadOverview();
             }
+            await loadOperationalStatus();
         } catch (error) {
             toast(error.message, "error");
         }
+    }
+
+    function renderBackups() {
+        const backups = state.operations.backups;
+        const body = byId("backups-table").querySelector("tbody");
+        const total = state.operations.status?.backups?.count ?? backups.length;
+        if (!backups.length) {
+            byId("backups-summary").textContent = "No archives found";
+            byId("backups-toggle").hidden = true;
+            body.replaceChildren(node("tr", {}, [node("td", { className: "empty-state", text: "No backup archives found.", attrs: { colspan: 3 } })]));
+            return;
+        }
+
+        const visible = state.operations.showAllBackups ? backups : backups.slice(0, 10);
+        byId("backups-summary").textContent = `${formatNumber(total)} archive${total === 1 ? "" : "s"}; latest ${formatRelativeTime(backups[0].modified)}`;
+        const toggle = byId("backups-toggle");
+        toggle.hidden = backups.length <= 10;
+        toggle.textContent = state.operations.showAllBackups ? "Show recent 10" : `Show all ${formatNumber(backups.length)}`;
+        body.replaceChildren(...visible.map((backup) => node("tr", {}, [
+            tableCell(backup.name, "mono"),
+            tableCell(formatBytes(backup.size_bytes)),
+            tableCell(new Date(backup.modified * 1000).toLocaleString()),
+        ])));
     }
 
     async function loadBackups() {
@@ -1098,16 +1254,57 @@
         setTableLoading("backups-table", 3);
         try {
             const backups = await api("/api/backups", { auth: true });
-            const body = byId("backups-table").querySelector("tbody");
-            if (!backups.length) {
-                body.replaceChildren(node("tr", {}, [node("td", { className: "empty-state", text: "No backup archives found.", attrs: { colspan: 3 } })]));
-                return;
-            }
-            body.replaceChildren(...backups.map((backup) => node("tr", {}, [
-                tableCell(backup.name, "mono"), tableCell(formatBytes(backup.size_bytes)), tableCell(new Date(backup.modified * 1000).toLocaleString()),
-            ])));
+            state.operations.backups = backups;
+            renderBackups();
         } catch (error) {
             byId("backups-table").querySelector("tbody").replaceChildren(node("tr", {}, [node("td", { className: "empty-state", text: error.message, attrs: { colspan: 3 } })]));
+            byId("backups-summary").textContent = "Unavailable";
+        }
+    }
+
+    function renderServerActivity() {
+        const channel = byId("activity-channel").value;
+        const query = byId("activity-search").value.trim().toLowerCase();
+        const matching = state.operations.events.filter((event) => {
+            if (channel !== "all" && event.channel !== channel) return false;
+            return !query || event.message.toLowerCase().includes(query);
+        });
+        const visible = matching.slice(-100).reverse();
+        byId("activity-status").textContent = matching.length > visible.length
+            ? `${formatNumber(visible.length)} of ${formatNumber(matching.length)} shown`
+            : `${formatNumber(matching.length)} event${matching.length === 1 ? "" : "s"}`;
+        const feed = byId("activity-feed");
+        if (!visible.length) {
+            feed.replaceChildren(node("p", { className: "empty-state", text: "No activity matches this filter." }));
+            return;
+        }
+        feed.replaceChildren(...visible.map((event) => {
+            const channelLabel = event.channel === "wizinfo" ? "WizInfo" : "Server Info";
+            const badgeText = event.level === null || event.level === undefined
+                ? channelLabel
+                : `${channelLabel} L${event.level}`;
+            return node("article", { className: "activity-row" }, [
+                node("div", { className: "activity-row-meta" }, [
+                    node("span", { className: `activity-badge ${event.channel}`, text: badgeText }),
+                    node("time", {
+                        text: formatRelativeTime(event.timestamp),
+                        attrs: { datetime: new Date(event.timestamp * 1000).toISOString(), title: new Date(event.timestamp * 1000).toLocaleString() },
+                    }),
+                ]),
+                node("p", { text: stripMudColor(event.message) }),
+            ]);
+        }));
+    }
+
+    async function loadServerActivity() {
+        if (!await ensureAuth()) return;
+        byId("activity-status").textContent = "Loading";
+        try {
+            state.operations.events = await api("/api/events?limit=300", { auth: true });
+            renderServerActivity();
+        } catch (error) {
+            byId("activity-status").textContent = "Unavailable";
+            byId("activity-feed").replaceChildren(node("p", { className: "empty-state", text: error.message }));
         }
     }
 
@@ -1121,6 +1318,7 @@
             await api("/api/wizinfo", { method: "POST", auth: true, body: { message, level } });
             byId("broadcast-message").value = "";
             toast("Broadcast queued.", "success");
+            await loadOperationalStatus();
         } catch (error) {
             toast(error.message, "error");
         }
@@ -1136,6 +1334,7 @@
             await api("/api/command", { method: "POST", auth: true, body: { command } });
             byId("admin-command").value = "";
             toast("Command queued.", "success");
+            await loadOperationalStatus();
         } catch (error) {
             toast(error.message, "error");
         }
@@ -1240,6 +1439,13 @@
         byId("logs-clear").addEventListener("click", () => { byId("log-terminal").textContent = ""; });
         all("[data-operation]").forEach((button) => button.addEventListener("click", () => void runOperation(button.dataset.operation)));
         byId("backups-refresh").addEventListener("click", () => void loadBackups());
+        byId("backups-toggle").addEventListener("click", () => {
+            state.operations.showAllBackups = !state.operations.showAllBackups;
+            renderBackups();
+        });
+        byId("activity-refresh").addEventListener("click", () => void loadServerActivity());
+        byId("activity-channel").addEventListener("change", renderServerActivity);
+        byId("activity-search").addEventListener("input", renderServerActivity);
         byId("broadcast-form").addEventListener("submit", submitBroadcast);
         byId("command-form").addEventListener("submit", submitAdminCommand);
 

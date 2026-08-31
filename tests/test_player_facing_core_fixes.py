@@ -23,8 +23,12 @@ class PlayerFacingCoreFixTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.fight = (ROOT / "src" / "fight.c").read_text(encoding="utf-8")
+        cls.act_move = (ROOT / "src" / "act_move.c").read_text(encoding="utf-8")
+        cls.act_obj = (ROOT / "src" / "act_obj.c").read_text(encoding="utf-8")
+        cls.act_wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="utf-8")
         cls.magic = (ROOT / "src" / "magic.c").read_text(encoding="utf-8")
         cls.special = (ROOT / "src" / "special.c").read_text(encoding="utf-8")
+        cls.update = (ROOT / "src" / "update.c").read_text(encoding="utf-8")
         cls.command_help = (ROOT / "area" / "commands.are").read_text(
             encoding="latin-1"
         )
@@ -120,6 +124,82 @@ class PlayerFacingCoreFixTests(unittest.TestCase):
         self.assertIn("only empty corpses are sacrificed", command_help)
         self.assertIn("open adjacent exit", command_help)
         self.assertIn("visible mobile through an open exit", skill_help)
+
+    def test_invalid_portals_do_not_spend_money_or_charges(self) -> None:
+        enter = function_body(self.act_move, "void do_enter", "void trapped")
+
+        destination = enter.index("to_room = get_room_index( obj->value[1] )")
+        self.assertLess(destination, enter.index("add_money(ch,-500)"))
+        self.assertLess(destination, enter.index("obj->value[2] -= 1"))
+        self.assertIn('act("You can not enter the $p.",ch,obj,NULL,TO_CHAR)', enter)
+
+    def test_riding_uses_equipment_hooks_and_survives_stale_mount_state(self) -> None:
+        ride = function_body(self.act_move, "void do_ride", "void do_dismount")
+        dismount = function_body(self.act_move, "void do_dismount", "void do_riding")
+
+        self.assertIn("equip_char(victim,obj,WEAR_BODY)", ride)
+        self.assertIn("get_eq_char(victim, WEAR_BODY) != obj", ride)
+        self.assertIn("check_improve(ch,gsn_ride,true,6)", ride)
+        self.assertLess(
+            dismount.index("if(ch->pet == NULL)"),
+            dismount.index("ch->pet->short_descr"),
+        )
+        self.assertIn("mount->master != NULL && mount->master->pet == mount", dismount)
+
+    def test_monk_abilities_do_not_charge_for_impossible_actions(self) -> None:
+        steel = function_body(self.fight, "void do_steel_fist", "void do_crane_dance")
+        crane = function_body(self.fight, "void do_crane_dance", "void do_nerve_damage")
+        iron = function_body(self.fight, "void do_iron_skin", "void damage_eq")
+
+        self.assertLess(
+            steel.index("is_affected(ch,gsn_steel_fist)"),
+            steel.index("ch->mana -= 15"),
+        )
+        self.assertLess(
+            iron.index("is_affected(ch,gsn_iron_skin)"),
+            iron.index("ch->mana -= 45"),
+        )
+        self.assertNotIn("ch->mana -= 50", crane)
+        self.assertIn("check_improve(ch,gsn_crane_dance,false,4)", crane)
+
+        attacks = (
+            ("void do_nerve_damage", "void do_blinding_fists", "ch->mana -= 15"),
+            ("void do_blinding_fists", "void do_fists_of_fury", "ch->mana -= 20"),
+            ("void do_fists_of_fury", "void do_stunning_blow", "ch->mana -= 30"),
+            ("void do_stunning_blow", "void do_iron_skin", "ch->mana -= 15"),
+        )
+        for start, end, cost in attacks:
+            body = function_body(self.fight, start, end)
+            self.assertLess(body.index("IS_AFFECTED2( victim, AFF2_GHOST )"), body.index(cost))
+            self.assertLess(body.index("IS_AFFECTED2( ch, AFF2_GHOST )"), body.index(cost))
+
+    def test_bulk_put_rolls_concealment_per_item_and_reports_no_match(self) -> None:
+        put = function_body(self.act_obj, "void do_put", "void do_drop")
+        bulk = put.split("/* 'put all container' or 'put all.obj container' */", 1)[1]
+
+        self.assertLess(bulk.index("hidden = false"), bulk.index("number_percent"))
+        self.assertIn("You have nothing suitable to put in $P.", bulk)
+        self.assertIn("check_improve(ch,gsn_sleight_of_hand,true,8)", put)
+
+    def test_lycanthropy_ticks_consistently_and_handles_stale_saved_items(self) -> None:
+        weather = function_body(self.update, "void weather_update", "static void bank_interest")
+        char_update = function_body(self.update, "void char_update", "void obj_update")
+        lycanthropy = function_body(self.update, "void do_lycanthropy", "void sanity_check")
+
+        descriptor_loop = weather.index("for ( d = descriptor_list")
+        self.assertLess(descriptor_loop, weather.index("if ( buf[0] != '\\0'", descriptor_loop))
+        self.assertLess(descriptor_loop, weather.index("do_lycanthropy(d->character", descriptor_loop))
+        self.assertIn("!IS_SET(ch->act2, ACT2_LYCANTH)", char_update)
+        self.assertIn("UMIN(ch->were_shape.can_carry, 4)", lycanthropy)
+        self.assertIn("if (pObjIndex == NULL)", lycanthropy)
+        self.assertLess(
+            lycanthropy.index("if (pObjIndex == NULL)"),
+            lycanthropy.index("create_object(pObjIndex, 0)"),
+        )
+
+    def test_were_form_admin_input_rejects_negative_indexes(self) -> None:
+        mset = function_body(self.act_wiz, "void do_mset", "void do_string")
+        self.assertIn("if(value < 0 || value > 6)", mset)
 
 
 if __name__ == "__main__":

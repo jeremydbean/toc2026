@@ -339,7 +339,9 @@ history, aliases, quick movement controls, transcripts, and an authenticated
 administration panel with a live, filterable Server Info and WizInfo feed. The
 full dashboard can browse areas, maps, rooms,
 mobiles, objects, gear, player files, live game status, logs, backups, and
-area-health findings. Both use the same WebSocket bridge to the game port.
+area-health findings. Its Operations view also reports command-queue depth,
+backup freshness, recent player saves, and searchable Server Info/WizInfo
+activity. Both interfaces use the same WebSocket bridge to the game port.
 Large world tables use server-side search and pagination instead of rendering
 the entire database at once.
 

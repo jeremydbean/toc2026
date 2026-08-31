@@ -599,6 +599,7 @@ void do_put( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
+    bool found = false;
     bool hidden = false;
     OBJ_DATA *container;
     OBJ_DATA *obj;
@@ -686,7 +687,10 @@ void do_put( CHAR_DATA *ch, char *argument )
 
 	chance = get_skill(ch,gsn_sleight_of_hand);
 	if(number_percent () < chance - 5 || IS_IMMORTAL (ch) )
+        {
 	   hidden = true;
+          check_improve(ch,gsn_sleight_of_hand,true,8);
+        }
 
 	obj_from_char( obj );
 	obj_to_obj( obj, container );
@@ -720,16 +724,32 @@ void do_put( CHAR_DATA *ch, char *argument )
                         obj->timer = (int16_t)number_range(100,200);
                 }
 
+		found = true;
+		hidden = false;
+		chance = get_skill(ch,gsn_sleight_of_hand);
+		if(number_percent () < chance - 5 || IS_IMMORTAL (ch) )
+		{
+		  hidden = true;
+		  check_improve(ch,gsn_sleight_of_hand,true,8);
+		}
+
 		obj_from_char( obj );
 		obj_to_obj( obj, container );
 
-		chance = get_skill(ch,gsn_sleight_of_hand);
-		if(number_percent () < chance - 5 || IS_IMMORTAL (ch) )
-		  hidden = true;
 		if(!hidden)
 		   act( "$n puts $p in $P.", ch, obj, container, TO_ROOM );
 		act( "You put $p in $P.", ch, obj, container, TO_CHAR );
 	    }
+	}
+
+	if ( !found )
+	{
+	    if ( arg1[3] == '\0' )
+		act( "You have nothing suitable to put in $P.",
+		    ch, NULL, container, TO_CHAR );
+	    else
+		act( "You have nothing like that to put in $P.",
+		    ch, NULL, container, TO_CHAR );
 	}
     }
 

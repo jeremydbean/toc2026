@@ -5436,6 +5436,12 @@ void do_steel_fist( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
+	if( is_affected(ch,gsn_steel_fist) )
+	{
+	  send_to_char("Your hands can't get any harder.\n\r",ch);
+	  return;
+	}
+
 	if( ( obj = get_eq_char(ch, WEAR_WIELD) ) != NULL )
 	{
 	  send_to_char("You cannot hold a weapon and do this.\n\r",ch);
@@ -5596,8 +5602,9 @@ void do_crane_dance( CHAR_DATA *ch, char *argument )
     else if( !IS_NPC(ch) && !hit )
     {
       send_to_char("Your attack was clumsy grasshopper. Go practice some more.\n\r",ch);
-      ch->mana -= 50;
+      ch->mana -= 30;
       ch->move -= ch->move/4;
+      check_improve(ch,gsn_crane_dance,false,4);
     }
     WAIT_STATE(ch,skill_table[gsn_crane_dance].beats);
 
@@ -5611,7 +5618,7 @@ void do_nerve_damage( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim = NULL;
     OBJ_DATA     *obj;
     AFFECT_DATA  af;
-    int chance;
+    int chance = 0;
 
     one_argument(argument,arg);
 
@@ -5660,18 +5667,6 @@ void do_nerve_damage( CHAR_DATA *ch, char *argument )
 	  send_to_char("Your not skilled enough to use this.\n\r",ch);
 	  return;
 	}
-
-	if( number_percent( ) > chance )
-	{
-	   send_to_char("You missed the nerve.\n\r",ch);
-	   damage( ch, victim, dice(4,4) , gsn_nerve_damage, DAM_PIERCE );
-	   ch->mana -= 10;
-	   ch->move -= 5;
-	   check_improve(ch,gsn_nerve_damage,false,4);
-	    return;
-	}
-	ch->mana -= 15;
-	ch->move -= 10;
     }
     else
     {
@@ -5707,6 +5702,21 @@ void do_nerve_damage( CHAR_DATA *ch, char *argument )
     {
 	send_to_char("You cannot attack while in this form.\n\r",ch);
 	return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+	if( number_percent( ) > chance )
+	{
+	   send_to_char("You missed the nerve.\n\r",ch);
+	   damage( ch, victim, dice(4,4) , gsn_nerve_damage, DAM_PIERCE );
+	   ch->mana -= 10;
+	   ch->move -= 5;
+	   check_improve(ch,gsn_nerve_damage,false,4);
+	   return;
+	}
+	ch->mana -= 15;
+	ch->move -= 10;
     }
 
     if(!is_affected( victim, skill_lookup("nerve damage") ) )
@@ -5783,8 +5793,6 @@ void do_blinding_fists( CHAR_DATA *ch, char *argument )
 	  send_to_char("Your not skilled enough to use this.\n\r",ch);
 	  return;
 	}
-	ch->mana -= 20;
-	ch->move -= 10;
     }
     else
     {
@@ -5821,6 +5829,12 @@ void do_blinding_fists( CHAR_DATA *ch, char *argument )
     {
 	send_to_char("You cannot attack while in this form.\n\r",ch);
 	return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+	ch->mana -= 20;
+	ch->move -= 10;
     }
 
     act("$n blurs into motion.",ch,NULL,victim,TO_ROOM);
@@ -5903,8 +5917,6 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
 	  send_to_char("Your not skilled enough to use this.\n\r",ch);
 	  return;
 	}
-	ch->mana -= 30;
-	ch->move -= 15;
     }
     else
     {
@@ -5941,6 +5953,12 @@ void do_fists_of_fury( CHAR_DATA *ch, char *argument )
     {
 	send_to_char("You cannot attack while in this form.\n\r",ch);
 	return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+	ch->mana -= 30;
+	ch->move -= 15;
     }
 
     act("$n errupts in a fury of flying fists!",ch,NULL,victim,TO_ROOM);
@@ -6029,8 +6047,6 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
 	  send_to_char("Your not skilled enough to use this.\n\r",ch);
 	  return;
 	}
-	ch->mana -= 15;
-	ch->move -= 5;
     }
     else
     {
@@ -6067,6 +6083,12 @@ void do_stunning_blow( CHAR_DATA *ch, char *argument )
     {
 	send_to_char("You cannot attack while in this form.\n\r",ch);
 	return;
+    }
+
+    if ( !IS_NPC(ch) )
+    {
+	ch->mana -= 15;
+	ch->move -= 5;
     }
 
     if(number_percent () < 1 + (chance / 2) + ch->level - victim->level)
@@ -6125,6 +6147,12 @@ void do_iron_skin( CHAR_DATA *ch, char *argument )
 	if( arg[0] != '\0' )
 	{
 	  send_to_char("You cannot do this to others.\n\r",ch);
+	  return;
+	}
+
+	if( is_affected(ch,gsn_iron_skin) )
+	{
+	  send_to_char("Your skin is already as hard as iron.\n\r",ch);
 	  return;
 	}
 
