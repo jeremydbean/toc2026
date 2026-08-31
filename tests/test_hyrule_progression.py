@@ -606,6 +606,29 @@ class HyruleProgressionTests(unittest.TestCase):
             (level_nine["goal_vnum"], 2): 3,
         })
 
+    def test_mobile_reset_limits_prevent_duplicate_spawns(self) -> None:
+        mobile_resets = [reset for reset in self.resets if reset.command == "M"]
+        intended_population = Counter(reset.arg1 for reset in mobile_resets)
+
+        for reset in mobile_resets:
+            with self.subTest(mob_vnum=reset.arg1, room_vnum=reset.arg3):
+                self.assertEqual(reset.arg2, intended_population[reset.arg1])
+
+        live_population: Counter[int] = Counter()
+        spawned_by_pass: list[Counter[int]] = []
+        for _ in range(2):
+            spawned: Counter[int] = Counter()
+            for reset in mobile_resets:
+                if live_population[reset.arg1] >= reset.arg2:
+                    continue
+                live_population[reset.arg1] += 1
+                spawned[reset.arg1] += 1
+            spawned_by_pass.append(spawned)
+
+        self.assertEqual(spawned_by_pass[0], intended_population)
+        self.assertFalse(spawned_by_pass[1])
+        self.assertEqual(intended_population[30225], 1)
+
     def test_ganon_guarantees_one_random_mortal_relic(self) -> None:
         relics = {
             30577: (54, "D", {(5, 2), (13, 100), (24, -2)}, "5 percent"),

@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -985,11 +986,19 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
     lines: list[str] = []
     boss_room_to_level = {dungeon["boss_vnum"]: dungeon["level"] for dungeon in manifest["dungeons"]}
     resonance_rooms = {manifest["dungeons"][4]["boss_vnum"]: 30430}
+    mobile_limits = Counter(
+        int(entity_vnum)
+        for room in rooms.values()
+        for entity_vnum, count in room.entities.items()
+        for _ in range(count)
+    )
 
     for room in sorted(rooms.values(), key=lambda item: item.vnum):
         for entity_vnum, count in sorted(room.entities.items(), key=lambda item: int(item[0])):
             for _ in range(count):
-                lines.append(f"M 0 {entity_vnum} 1000 {room.vnum}")
+                lines.append(
+                    f"M 0 {entity_vnum} {mobile_limits[int(entity_vnum)]} {room.vnum}"
+                )
                 for stock_vnum in SHOP_INVENTORY.get(int(entity_vnum), []):
                     lines.append(f"G 1 {stock_vnum} 100")
                 if room.vnum in boss_room_to_level and int(entity_vnum) == BOSS_MOBS[boss_room_to_level[room.vnum]]:

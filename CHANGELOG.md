@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixed Hyrule mobile resets using a population cap of 1,000, which could
+  duplicate Ganon and every other surviving NPC whenever an empty area reset
+  ran after a player disconnected. Generated limits now match each mobile's
+  intended population.
+
 ### Added
 
 - Added an authenticated dashboard operations snapshot with game reachability,

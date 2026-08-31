@@ -275,6 +275,7 @@ The Hyrule tests verify:
 - reciprocal topology, non-overlapping ranges, and complete reachability
 - all 56 marked bomb walls, including Death Mountain's exact 19 wall pairs
 - exact reset counts for source-derived encounters
+- live-population reset caps, including a single Ganon across empty-area resets
 - locked-door solvability using keys found in each dungeon
 - Death Mountain passages, encounters, Ganon key, and Triforce gate
 - every level from 1 through 70 having sourced weapon or armor
