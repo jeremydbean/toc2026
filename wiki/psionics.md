@@ -26,7 +26,7 @@ Use `skills` to see which powers the current character knows and `help
 | Project | 19 | 25 mana | Sends an astral scout through several rooms in one direction. |
 | Psychic Shield (`psychic`) | 19 | 50 mana | Gives eligible group members in the room 25% mental-damage reduction. |
 | Pyrotechnics | 20 | 20 mana | Deals vitality-scaled fire damage and may temporarily heat worn gear. |
-| Confuse | 21 | level + 50 mana | Makes a target intermittently lose combat actions if it fails a mental save. |
+| Confuse | 21 | level + 50 mana | Makes a target intermittently lose combat actions. Lands whenever the caster keeps concentration, unless the target is immune or resistant to mental damage. |
 | Nightmare | 21 | 20 mana | Reduces maximum mana and prevents normal recovery until cured or expired. |
 | Enervate | 21 | 35 mana | Drains health and movement and returns part of the actual drain to the user. |
 | Telekinesis (`tk`) | 21 | 50 mana | Retrieves an eligible ground item from elsewhere in the world. |
@@ -42,8 +42,24 @@ Use `skills` to see which powers the current character knows and `help
 Mindbar, Psionic Armor, and Psychic Shield are mutually exclusive. Armor and
 Shield reduce mental damage by one quarter; Mindbar reduces it by one half.
 They do not reduce physical or elemental damage. Mental saves can separately
-reduce or prevent powers such as Confuse, Nightmare, Mind Leech, Enervate,
-Torment, and Ego Whip.
+reduce or prevent powers such as Nightmare, Mind Leech, Enervate, Torment,
+and Ego Whip.
+
+Confuse deliberately does not use the generic saving-throw curve. Its only
+caster-side gate is the skill roll, so a psion at 100% Confuse never loses
+concentration. Target-side, the power consults mental immunity and
+resistance (`DAM_MENTAL`) instead:
+
+| Target ward | Result |
+|---|---|
+| Immune to mental damage (`IMM_MENTAL`, or `IMM_MAGIC`) | Never confused |
+| Resistant to mental damage (`RES_MENTAL`, or `RES_MAGIC`) | One bounded resist roll: 25% base, shifted by the level difference, clamped to 5-50% |
+| Normal or vulnerable | Always confused |
+
+The generic `saves_spell()` curve clamps to a 95% resist rate against the
+negative saving throws most mobiles carry, which is why it is not used for
+this power. Tune the resist band with `CONFUSE_RESIST_BASE`,
+`CONFUSE_RESIST_MIN`, and `CONFUSE_RESIST_MAX` in `src/magic2.c`.
 
 ## Travel And Retrieval Safety
 

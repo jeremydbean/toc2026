@@ -125,15 +125,68 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertIn("OBJ_VNUM_QUEST_TOKEN_FIRST", telekinesis)
         self.assertIn("check_improve(ch,gsn_telekinesis,found,4)", telekinesis)
 
-    def test_confuse_uses_its_real_cost_and_allows_a_save(self) -> None:
+    def test_confuse_uses_its_real_cost(self) -> None:
         confuse = function_body(self.magic2, "void do_confuse", "void do_clairvoyance")
 
         self.assertIn("mana_cost = ch->level + 50", confuse)
         self.assertIn("if ( ch->mana < mana_cost )", confuse)
         self.assertNotIn("ch->mana < 139", confuse)
-        self.assertIn("saves_spell(ch->level, victim)", confuse)
         self.assertLess(confuse.index("is_affected(victim, gsn_confuse)"), confuse.index("ch->mana -= mana_cost"))
         self.assertIn("psionic_start_combat", confuse)
+
+    def test_confuse_only_fails_on_psionic_wards_not_a_generic_save(self) -> None:
+        """A mastered Confuse must land unless the mind is specifically warded.
+
+        The generic saves_spell() curve clamps to a 95% resist rate against the
+        negative saving throws most mobiles carry, so its presence here made a
+        100%-skill power fail almost every attempt.
+        """
+        confuse = function_body(self.magic2, "void do_confuse", "void do_clairvoyance")
+
+        # The blanket saving throw must not come back.
+        self.assertNotIn("saves_spell", confuse)
+
+        # Target-side gating is mental immunity / resistance only.
+        self.assertIn("check_immune( victim, DAM_MENTAL )", confuse)
+        self.assertIn("psi_ward == IS_IMMUNE", confuse)
+        self.assertIn("psi_ward == IS_RESISTANT", confuse)
+
+        # Caster-side gating is still just the skill roll, so 100% never fails.
+        self.assertIn("number_percent() > chance", confuse)
+
+        # A resistant target gets one bounded roll, never a near-certain block.
+        self.assertIn("CONFUSE_RESIST_BASE", confuse)
+        self.assertIn("number_percent() <= resist_chance", confuse)
+
+        # Both ward outcomes still start combat and record a failed attempt.
+        immune_branch = confuse[confuse.index("psi_ward == IS_IMMUNE"):]
+        self.assertIn("psionic_start_combat", immune_branch)
+        self.assertIn("check_improve( ch, gsn_confuse, false, 4 )", immune_branch)
+
+    def test_confuse_resist_band_stays_well_under_the_generic_save(self) -> None:
+        base, low, high = (
+            int(
+                re.search(rf"#define {name}\s+(\d+)", self.magic2).group(1)
+            )
+            for name in (
+                "CONFUSE_RESIST_BASE",
+                "CONFUSE_RESIST_MIN",
+                "CONFUSE_RESIST_MAX",
+            )
+        )
+
+        self.assertLess(low, base)
+        self.assertLess(base, high)
+        # saves_spell() clamps at 95; a resistant mind must stay far below that.
+        self.assertLessEqual(high, 50)
+
+    def test_confuse_help_matches_the_implemented_ward_rules(self) -> None:
+        entry = function_body(self.command_help, "0 CONFUSE~", "0 CRANE~")
+
+        self.assertIn("immune to mental damage can never be", entry)
+        self.assertIn("mentally resistant", entry)
+        # The old text blamed Intelligence, which never affected the power.
+        self.assertNotIn("Intelligence", entry)
 
     def test_clairvoyance_does_not_physically_move_or_count_exploration(self) -> None:
         clairvoyance = function_body(

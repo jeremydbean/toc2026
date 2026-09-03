@@ -674,10 +674,15 @@ See also: DIRT, CONFUSE, STUNNING
 0 CONFUSE~
 Syntax: confuse <victim>
 
-A psionic or magical assault that muddles the target's thoughts, causing
-them to act erratically.  A confused foe may attack random targets, forget
-commands, or simply stand dazed for the duration.  Intelligence and mental
-resistance affect whether the target can shake the effect.
+A psionic assault that muddles the target's thoughts, causing them to act
+erratically.  A confused foe may attack random targets, forget commands,
+or simply stand dazed for the duration.
+
+Holding your concentration is the only limit on a practiced psion.  At
+full skill the intrusion reaches any mind that is not specifically warded
+against mental attack.  A target immune to mental damage can never be
+confused, and a mentally resistant target gets a single bounded chance to
+throw the intrusion off.  A normal mind cannot resist it at all.
 
 See also: BLINDING, NIGHTMARE, TORMENT
 ~

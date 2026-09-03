@@ -1238,6 +1238,19 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 
 
 
+/*
+ * Confuse is a focused mental intrusion rather than a broad spell, so a psion
+ * who holds concentration reaches any mind that is not specifically warded
+ * against mental attack. A DAM_MENTAL-resistant target gets one bounded roll
+ * to throw the intrusion off, scaled by level difference. These stay well
+ * under the generic saves_spell() curve on purpose: that curve clamps to a 95%
+ * resist rate against the negative saving throws most mobiles carry, which
+ * made a mastered power fail nearly every attempt.
+ */
+#define CONFUSE_RESIST_BASE     25
+#define CONFUSE_RESIST_MIN       5
+#define CONFUSE_RESIST_MAX      50
+
 /*  psi  */
 void do_confuse( CHAR_DATA *ch, char *argument )
 {
@@ -1246,6 +1259,7 @@ void do_confuse( CHAR_DATA *ch, char *argument )
     AFFECT_DATA af;
     int chance = 0;
     int mana_cost;
+    int psi_ward;
 
     one_argument(argument,arg);
 
@@ -1330,16 +1344,40 @@ void do_confuse( CHAR_DATA *ch, char *argument )
         ch->mana -= mana_cost;
     }
 
-    if ( saves_spell(ch->level, victim) )
+    psi_ward = check_immune( victim, DAM_MENTAL );
+
+    if ( psi_ward == IS_IMMUNE )
     {
-        act( "$N resists your attempt to cloud $S mind.",
+        act( "$N's mind is sealed against psionic intrusion.",
              ch, NULL, victim, TO_CHAR );
-        act( "You push $n's confusing presence out of your mind.",
+        act( "You feel $n groping at your thoughts and shrug it off.",
              ch, NULL, victim, TO_VICT );
         psionic_start_combat( ch, victim );
         check_improve( ch, gsn_confuse, false, 4 );
         WAIT_STATE( ch, skill_table[gsn_confuse].beats );
         return;
+    }
+
+    if ( psi_ward == IS_RESISTANT )
+    {
+        int resist_chance;
+
+        resist_chance = URANGE( CONFUSE_RESIST_MIN,
+                                CONFUSE_RESIST_BASE
+                                    + (victim->level - ch->level),
+                                CONFUSE_RESIST_MAX );
+
+        if ( number_percent() <= resist_chance )
+        {
+            act( "$N resists your attempt to cloud $S mind.",
+                 ch, NULL, victim, TO_CHAR );
+            act( "You push $n's confusing presence out of your mind.",
+                 ch, NULL, victim, TO_VICT );
+            psionic_start_combat( ch, victim );
+            check_improve( ch, gsn_confuse, false, 4 );
+            WAIT_STATE( ch, skill_table[gsn_confuse].beats );
+            return;
+        }
     }
 
     af.type       = gsn_confuse;

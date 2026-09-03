@@ -10,6 +10,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed Confuse failing almost every attempt. The psionics pass added the
+  generic `saves_spell()` curve as a second gate, and that curve clamps to a
+  95% resist rate against the negative saving throws most mobiles carry, so a
+  100%-skill power was blocked nearly every cast. Confuse now gates only on
+  the caster's concentration roll and the target's mental ward: a mind immune
+  to mental damage is never confused, a mentally resistant mind gets one
+  bounded resist roll (25% base, shifted by level difference, clamped to
+  5-50%), and a normal or vulnerable mind cannot resist at all.
 - Fixed Hyrule mobile resets using a population cap of 1,000, which could
   duplicate Ganon and every other surviving NPC whenever an empty area reset
   ran after a player disconnected. Generated limits now match each mobile's
