@@ -174,6 +174,22 @@ class MudClient:
         if rest:
             self._absorb(self._decomp.decompress(rest))
 
+    def wait_closed(self, timeout: float = 20.0) -> bool:
+        """Block until the server closes the connection.
+
+        Quitting is the only reliable way to get a character out of the world,
+        and the socket closing is the only reliable signal that it happened.
+        Without waiting for it, a test that edits the player file can be
+        racing a character that is still in memory -- and `login` answers the
+        "already playing" prompt automatically, so the stale character comes
+        back and the edit looks like it was ignored.
+        """
+        deadline = time.monotonic() + timeout
+        while time.monotonic() < deadline:
+            if not self._pump():
+                return True
+        return False
+
     def send_raw(self, data: bytes) -> None:
         """Send bytes verbatim, for telnet negotiation."""
         self.sock.sendall(data)
@@ -356,68 +372,184 @@ CREATION_STEPS = (
 )
 
 
-def create_character(client: MudClient, name: str, password: str) -> None:
-    """Walk a brand new character from the greeting into the game.
+def _enter_game(client: MudClient, password: str | None = None) -> None:
+    """Answer whatever the login/creation flow asks until the game responds.
 
-    Returns only once the game prompt has appeared. That matters: the MOTD
-    screens wait for a keypress, and a caller that returned early would have
-    its first real command swallowed as that keypress.
+    Detection is a positive probe rather than a prompt match. Waiting for the
+    default prompt's "mv>" breaks for a character with a custom prompt or with
+    `prompt` toggled off, and returning early is worse: the MOTD screens wait
+    for a keypress, so the caller's first real command gets swallowed as that
+    keypress.
+
+    Exactly one line is sent per round. The server interprets roughly one
+    command per player per pulse, so sending more than that per round builds a
+    backlog that delays whatever the caller does next -- which showed up as a
+    `quit` appearing not to run at all.
     """
-    client.expect("by what name", "name:", "what is your name")
-    client.send(name)
+    idle_rounds = 0
 
     for _ in range(60):
-        client.drain(0.4)
+        client.drain(0.5)
         haystack = client.buffer.lower()
 
-        # The default prompt ends in "...mv>"; seeing it means we are in.
-        if "mv>" in haystack:
+        if "you have" in haystack:          # `worth` answered: we are in.
             return
+        if "wrong password" in haystack:
+            raise AssertionError("login rejected the password")
 
-        for needle, reply in CREATION_STEPS:
-            if needle in haystack:
-                client.buffer = ""
-                client.send(password if reply is None else reply)
-                break
+        answered = False
+        if password is not None:
+            for needle, reply in CREATION_STEPS:
+                if needle in haystack:
+                    client.buffer = ""
+                    client.send(password if reply is None else reply)
+                    answered = True
+                    idle_rounds = 0
+                    break
+
+        if answered:
+            continue
+
+        idle_rounds += 1
+        client.buffer = ""
+        if idle_rounds <= 3:
+            client.send("")             # dismiss a pending screen
         else:
-            # Any other screen (MOTD, pager, "hit return") just wants a key.
-            client.buffer = ""
-            client.send("")
+            client.send("worth")        # then probe for the game itself
 
     raise AssertionError(
-        "character creation never reached the game prompt.\n"
-        f"--- transcript ---\n{client.transcript[-4000:]}"
+        "never reached the game."
+        + chr(10) + "--- transcript ---" + chr(10) + client.transcript[-4000:]
     )
 
 
+def create_character(client: MudClient, name: str, password: str) -> None:
+    """Walk a brand new character from the greeting into the game."""
+    client.expect("by what name", "name:", "what is your name")
+    client.send(name)
+    _enter_game(client, password)
+
+
 def login(client: MudClient, name: str, password: str) -> None:
-    """Log an existing character in, and wait for the game prompt.
+    """Log an existing character in and wait until the game responds.
 
     Handles the "already playing, connect anyway?" prompt, which arrives
-    *after* the password: a client socket closing races the server noticing,
-    so a reconnect straight after a quit can still see the old descriptor.
+    after the password: a client socket closing races the server noticing, so
+    a reconnect straight after a quit can still see the old descriptor.
     """
     client.expect("by what name", "name:")
     client.send(name)
     client.expect("password")
     client.send(password)
 
-    for _ in range(60):
-        client.drain(0.4)
-        haystack = client.buffer.lower()
-
-        if "mv>" in haystack:
-            return
-        if "wrong password" in haystack:
-            raise AssertionError("login rejected the correct password")
-
+    # Clear the reconnect confirmation if it appears, then hand off.
+    client.drain(0.6)
+    if "y or n" in client.buffer.lower() or "connect anyway" in client.buffer.lower():
         client.buffer = ""
-        if "y or n" in haystack or "connect anyway" in haystack:
-            client.send("Y")
-        else:
-            client.send("")
+        client.send("Y")
 
-    raise AssertionError(
-        "login never reached the game prompt."
-        + chr(10) + client.transcript[-3000:]
+    _enter_game(client)
+
+
+def patch_player_file(mud: "LiveMud", name: str, **fields: object) -> None:
+    """Rewrite fields in a saved character file.
+
+    Used to set up state a fresh character cannot reach -- coins, a bank
+    balance, an immortal level, a starting room. Editing the character's own
+    saved file rather than writing one from scratch means the password hash is
+    already correct, so no host crypt(3) binding is needed (Python removed the
+    `crypt` module in 3.13). The character must have saved and quit first.
+
+    Only ever touches the throwaway tree; see the module docstring.
+    """
+    path = mud.player_dir / name
+    if not path.is_file():
+        raise AssertionError("no saved player file for " + name)
+
+    lines = path.read_text(encoding="latin-1").split("\n")
+    for key, value in fields.items():
+        replacement = "%s %s" % (key, value)
+        for i, line in enumerate(lines):
+            if line.split(" ")[0] == key:
+                lines[i] = replacement
+                break
+        else:
+            # Keys live before the terminating "End" of the player section.
+            end = next(
+                (i for i, line in enumerate(lines) if line.strip() == "End"),
+                len(lines),
+            )
+            lines.insert(end, replacement)
+
+    path.write_text("\n".join(lines), encoding="latin-1", newline="")
+
+
+# A bank room, so deposit/withdraw are reachable. Rooms 4 and 9621 are the
+# two carrying ROOM2_BANK in the shipped world.
+BANK_ROOM_VNUM = 4
+
+
+def make_funded_character(
+    mud: "LiveMud",
+    name: str,
+    password: str,
+    platinum: int = 10,
+    gold: int = 20,
+    silver: int = 30,
+    copper: int = 40,
+    bank_copper: int = 1000000,
+) -> None:
+    """Create a character, then fund it and stand it in a bank."""
+    with mud.connect(timeout=120) as client:
+        create_character(client, name, password)
+        client.send("quit")
+        if not client.wait_closed():
+            raise AssertionError(
+                "character did not leave the world; editing its file now would "
+                "race the copy still in memory"
+            )
+
+    patch_player_file(
+        mud,
+        name,
+        NewPlat=platinum,
+        NewGold=gold,
+        NewSilv=silver,
+        NewCopp=copper,
+        BankCP=bank_copper,
+        Room=BANK_ROOM_VNUM,
     )
+
+
+COIN_VALUE = {"platinum": 1000000, "gold": 10000, "silver": 100, "copper": 1}
+
+
+def coin_total(text: str) -> int:
+    """Sum every '<n> <denomination>' pair in a fragment of game output."""
+    return sum(
+        int(count) * COIN_VALUE[unit]
+        for count, unit in re.findall(
+            r"(\d+) (platinum|gold|silver|copper)", text
+        )
+    )
+
+
+def read_coins(client: MudClient, command: str, marker: str) -> int:
+    """Run a money command and total the sentence it prints.
+
+    Reads the buffer *after* the marker rather than scanning the transcript:
+    the transcript still holds earlier money lines, and matching one of those
+    is how a money test quietly measures the wrong thing.
+    """
+    client.send(command)
+    client.expect(marker)
+    client.drain(1.0)
+    return coin_total(client.buffer.split(".")[0])
+
+
+def carried_copper(client: MudClient) -> int:
+    return read_coins(client, "worth", "You have")
+
+
+def banked_copper(client: MudClient) -> int:
+    return read_coins(client, "balance", "current balance is")

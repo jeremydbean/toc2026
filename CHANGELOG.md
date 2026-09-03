@@ -10,6 +10,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Hoisted a NULL check in `spell_cause_madness()` that sat after three
+  dereferences of the pointer it guarded, so it could never have fired.
+  `TAR_CHAR_DEFENSIVE` targeting means the pointer is the caster when no
+  target is named, so NULL was not reachable, but a guard placed after the
+  dereferences it protects is worse than no guard. Found by `-fanalyzer`.
+- `coins_to_copper()` now saturates instead of overflowing. The obvious
+  formulation multiplies the platinum count by 1,000,000 unguarded, which is
+  undefined behaviour above roughly 9.2 trillion platinum. Normal play cannot
+  reach that because `copper_to_breakdown()` only distributes totals that
+  already fit, but a hand-edited or corrupted player file can, and pfile
+  numbers are exactly what AGENTS.md requires validating before multiplying.
 - Strengthened Telekinesis, which was capped at a 50% success rate even at
   100% skill because it rolled against `chance / 2`; no other psionic power
   halves its own learned percentage. It now rolls against the full skill.
@@ -74,6 +85,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added money-conservation and persistence tests to the live suite. Currency
+  is four denominations backed by a single copper total plus a bank balance,
+  so every operation is a conversion and a chance to lose or duplicate value;
+  the tests assert that convert, deposit, withdraw, and drop/get all conserve
+  it exactly, and that hostile amounts (zero, negative, overflowing, and
+  non-numeric) move nothing. Persistence is checked by round trip rather than
+  by reading the save code: every autolist toggle is flipped, saved, and
+  re-read after a reconnect.
+- Added `patch_player_file()` and `make_funded_character()` test helpers for
+  state a fresh character cannot reach (coins, a bank balance, a starting
+  room). They edit a character's own saved file, so no host `crypt(3)`
+  binding is needed -- Python removed the `crypt` module in 3.13.
 - Added MCCP2 output compression, negotiated per client and off by default.
   Compression is applied in `write_to_descriptor()`, the single choke point
   for descriptor output, so every existing caller benefits without knowing

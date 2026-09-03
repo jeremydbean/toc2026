@@ -11,6 +11,7 @@ game is not natively runnable. Run them from WSL, Linux, macOS, or CI.
 
 from __future__ import annotations
 
+import re
 import unittest
 from pathlib import Path
 
@@ -25,8 +26,12 @@ from live_mud import (
     TELOPT_NAWS,
     WILL,
     LiveMud,
+    banked_copper,
+    carried_copper,
     create_character,
     login,
+    make_funded_character,
+    patch_player_file,
     naws,
     parse_mssp,
     skip_reason,
@@ -382,3 +387,162 @@ class CompressionTests(unittest.TestCase):
             self.assertFalse(client.compressed)
             client.send("score")
             client.expect("level")
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class MoneyConservationTests(unittest.TestCase):
+    """Coins must never be created or destroyed by moving them around.
+
+    Currency here is four denominations backed by a single copper total, with
+    a bank balance beside it, so every operation is a conversion and each one
+    is a chance to lose or duplicate value.
+    """
+
+    NAME, PW = "Zipcoin", "harnesspw"
+
+    def test_bank_and_purse_operations_conserve_value(self) -> None:
+        with LiveMud() as mud:
+            make_funded_character(mud, self.NAME, self.PW)
+
+            with mud.connect(timeout=120) as c:
+                login(c, self.NAME, self.PW)
+
+                purse = carried_copper(c)
+                vault = banked_copper(c)
+                self.assertEqual(purse, 10_203_040, "fixture funding changed")
+                total = purse + vault
+
+                # Redistributing denominations must not change the total.
+                c.send("convert")
+                c.drain(1.2)
+                self.assertEqual(carried_copper(c), purse, "convert lost value")
+
+                # Deposit, then withdraw the same amount.
+                c.send("deposit 5 platinum")
+                c.drain(1.2)
+                self.assertEqual(
+                    carried_copper(c) + banked_copper(c), total, "deposit lost value"
+                )
+
+                c.send("withdraw 5 platinum")
+                c.drain(1.2)
+                self.assertEqual(carried_copper(c), purse, "withdraw lost value")
+                self.assertEqual(banked_copper(c), vault, "withdraw lost value")
+
+                # Dropping money makes an object; picking it up must restore it.
+                c.send("drop 20 gold")
+                c.drain(1.2)
+                c.send("get all")
+                c.drain(1.5)
+                self.assertEqual(
+                    carried_copper(c), purse, "drop/get money changed the purse"
+                )
+
+    def test_hostile_amounts_are_rejected_without_moving_value(self) -> None:
+        with LiveMud() as mud:
+            make_funded_character(mud, self.NAME, self.PW)
+
+            with mud.connect(timeout=120) as c:
+                login(c, self.NAME, self.PW)
+                purse = carried_copper(c)
+                vault = banked_copper(c)
+
+                for bad in (
+                    "deposit 0",
+                    "deposit -1",
+                    "withdraw -5",
+                    "deposit 99999999999999999999",
+                    "withdraw 99999999999999999999",
+                    "withdraw 999999999999",
+                    "deposit abc",
+                    "deposit 1 dubloons",
+                ):
+                    with self.subTest(command=bad):
+                        c.send(bad)
+                        c.drain(0.5)
+
+                self.assertEqual(carried_copper(c), purse, "purse moved")
+                self.assertEqual(banked_copper(c), vault, "balance moved")
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class PersistenceTests(unittest.TestCase):
+    """Player files are an external compatibility contract.
+
+    A setting that silently fails to save is invisible in review and shows up
+    as lost progress, so check the round trip rather than the save code.
+    """
+
+    NAME, PW = "Zipsave", "harnesspw"
+
+    @staticmethod
+    def _toggles(client) -> dict:
+        client.buffer = ""
+        client.send("autolist")
+        client.drain(1.5)
+        return dict(
+            re.findall(r"^(\w+)\s+(ON|OFF)\s*$", client.buffer, re.MULTILINE)
+        )
+
+    def test_toggles_survive_a_save_and_reconnect(self) -> None:
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as c:
+                create_character(c, self.NAME, self.PW)
+
+                before = self._toggles(c)
+                self.assertIn("autoloot", before, f"unexpected autolist: {before}")
+
+                # `prompt` is excluded deliberately: turning it off removes the
+                # prompt entirely, which is a valid player choice but leaves
+                # nothing for a test to synchronise on.
+                names = [n for n in sorted(before) if n != "prompt"]
+                expected = {
+                    n: ("OFF" if before[n] == "ON" else "ON") for n in names
+                }
+
+                for name in names:
+                    c.send(name)
+                    c.drain(0.4)
+
+                mid = self._toggles(c)
+                for name in names:
+                    with self.subTest(toggle=name, phase="flip"):
+                        self.assertEqual(mid.get(name), expected[name])
+
+                c.send("wimpy 5")
+                c.drain(0.6)
+                c.send("scroll 40")
+                c.drain(0.6)
+                c.send("save")
+                c.drain(2.0)
+                c.send("quit")
+                c.drain(2.0)
+
+            with mud.connect(timeout=120) as c:
+                login(c, self.NAME, self.PW)
+                after = self._toggles(c)
+                for name in names:
+                    with self.subTest(toggle=name, phase="reconnect"):
+                        self.assertEqual(
+                            after.get(name),
+                            expected[name],
+                            f"{name} did not survive the round trip",
+                        )
+
+            # Numeric settings have no read-only command, so read the file.
+            saved = (mud.player_dir / self.NAME).read_text(
+                encoding="latin-1", errors="replace"
+            )
+            # Note the field is written as "Wimp  25" with two spaces.
+            self.assertRegex(saved, r"(?m)^Wimp\s+5$")
+            self.assertRegex(saved, r"(?m)^Scro\s+38$")   # do_scroll stores lines - 2
+
+    def test_patched_state_loads_back_intact(self) -> None:
+        """Guards the fixture helper itself, which other tests depend on."""
+        with LiveMud() as mud:
+            make_funded_character(mud, self.NAME, self.PW, platinum=7, gold=3)
+            with mud.connect(timeout=120) as c:
+                login(c, self.NAME, self.PW)
+                self.assertEqual(
+                    carried_copper(c), 7 * 1_000_000 + 3 * 10_000 + 30 * 100 + 40
+                )

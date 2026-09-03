@@ -1258,15 +1258,47 @@ static void copper_to_breakdown(long total_copper, long *platinum, long *gold,
         *copper = total_copper % COPPER_PER_SILVER;
 }
 
+/*
+ * Saturating sum of a purse in copper.
+ *
+ * The multiplications here are unguarded in the obvious formulation, and
+ * COPPER_PER_PLATINUM is 1,000,000, so a purse above roughly 9.2 trillion
+ * platinum overflows a signed long -- undefined behaviour, not a wrap. Normal
+ * play cannot reach that, because copper_to_breakdown() only ever distributes
+ * a total that already fit in a long. A hand-edited or corrupted player file
+ * can, though, and pfiles are exactly the kind of player-controlled number
+ * AGENTS.md requires validating before multiplication. Saturate instead.
+ */
+static long coin_add_saturating(long total, long count, long unit)
+{
+    long scaled;
+
+    if (count <= 0 || unit <= 0)
+        return total;
+
+    if (count > LONG_MAX / unit)
+        return LONG_MAX;
+
+    scaled = count * unit;
+    if (total > LONG_MAX - scaled)
+        return LONG_MAX;
+
+    return total + scaled;
+}
+
 long coins_to_copper(const CHAR_DATA *ch)
 {
+    long total;
+
     if (ch == NULL)
         return 0;
 
-    return ch->new_copper
-        + (ch->new_silver * COPPER_PER_SILVER)
-        + (ch->new_gold * COPPER_PER_GOLD)
-        + (ch->new_platinum * COPPER_PER_PLATINUM);
+    total = ch->new_copper > 0 ? ch->new_copper : 0;
+    total = coin_add_saturating(total, ch->new_silver, COPPER_PER_SILVER);
+    total = coin_add_saturating(total, ch->new_gold, COPPER_PER_GOLD);
+    total = coin_add_saturating(total, ch->new_platinum, COPPER_PER_PLATINUM);
+
+    return total;
 }
 
 static void normalize_coins(CHAR_DATA *ch, long total_copper)

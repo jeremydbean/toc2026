@@ -5325,6 +5325,16 @@ void spell_cause_madness( int sn, int level, CHAR_DATA *ch, void *vo )
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     AFFECT_DATA af;
 
+    /*
+     * Hoisted from further down, where it sat after three dereferences of
+     * this same pointer and so could never have fired. TAR_CHAR_DEFENSIVE
+     * targeting means vo is the caster when no target is named, so NULL is
+     * not reachable today -- but a guard placed after the dereferences it is
+     * meant to protect is worse than no guard at all.
+     */
+    if ( victim == NULL )
+        return;
+
     if( IS_NPC(victim) )
     {
 	send_to_char("You cannot cast this on NPC's.\n\r",ch);
@@ -5350,9 +5360,6 @@ void spell_cause_madness( int sn, int level, CHAR_DATA *ch, void *vo )
 	    send_to_char("You cannot cast this spell on yourself.\n\r",ch);
 	    return;
 	}
-
-	if(victim == NULL)
-		return;
 
     af.type		= (sh_int)(sn);
     af.level		= (sh_int)(level);
