@@ -632,6 +632,13 @@ void game_loop_unix( int control )
 #endif
 
         /*
+         * Reclaim list nodes that were removed while an iteration was walking
+         * them. Safe here and only here: no FOR_EACH_CHARACTER/FOR_EACH_OBJECT
+         * walk spans a pass of this loop.
+         */
+        flush_container_lists();
+
+        /*
          * Process any queued web-admin actions before polling descriptors.
          */
         process_web_admin_queue();

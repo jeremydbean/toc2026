@@ -24,6 +24,16 @@ make "WARNFLAGS=$strict_warnings"
 step "C area validation mode"
 (cd area && ../merc --check-area)
 
+step "C list iterator sanitizer test"
+# Guards the deferred-free contract in src/list.c. extract_char() removes the
+# element a FOR_EACH_CHARACTER loop is standing on, so freeing nodes eagerly
+# left the iterator cursor dangling. Run under ASan/UBSan so a regression
+# fails loudly instead of corrupting memory once in a blue moon.
+iterator_test_bin="$(mktemp)"
+gcc -g -fsanitize=address,undefined -Isrc -o "$iterator_test_bin" tests/test_list_iterator.c src/list.c
+ASAN_OPTIONS=detect_leaks=1 "$iterator_test_bin"
+rm -f "$iterator_test_bin"
+
 if [ "$run_smoke" = "1" ]; then
   step "C startup smoke on port $smoke_port"
   (cd area && timeout 25s ../merc "$smoke_port") || test "$?" -eq 124

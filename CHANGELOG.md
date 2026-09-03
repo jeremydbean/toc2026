@@ -10,6 +10,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed a use-after-free in the character/object list iterator that could
+  corrupt memory or crash the server whenever something died inside a
+  world-list loop. `extract_char()` removes the very element a
+  `FOR_EACH_CHARACTER` loop is standing on, but `list_remove()` freed the
+  node immediately while the iterator cursor still aliased that node's
+  `next` field. Sixteen loops were exposed, including `violence_update()`,
+  `aggr_update()`, `char_update()`, `mobile_update()`, `do_mindblast()`,
+  `spell_earthquake()`, `spell_blizzard()` and `spell_call_lightning()`.
+  Because `next` is the last field of `LIST_NODE`, a freed chunk usually
+  still held a readable pointer, so the defect surfaced as rare
+  unreproducible corruption rather than a dependable crash - which is why it
+  survived a previous iterator fix. Removal now tombstones the node and
+  defers the free until `flush_container_lists()` runs at the top of the game
+  loop, where no iteration is in progress, and the iterator skips tombstones
+  so an already extracted element is never handed back to a caller.
+  AddressSanitizer confirms the old code faulted and the new code is clean;
+  `tests/test_list_iterator.c` reproduces all four removal orderings and now
+  runs under ASan/UBSan as part of both validation suites.
 - Fixed Mind Leech and Enervate being silently halved against most targets.
   The same psionics pass that broke Confuse added the generic `saves_spell()`
   curve to both drains, and because that curve is driven by the target's

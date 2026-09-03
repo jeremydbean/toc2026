@@ -83,3 +83,15 @@ OBJ_DATA *find_object_by_name( const char *name )
 {
     return list_find_first( &object_list, object_name_matches, (void *)(uintptr_t) name );
 }
+
+/*
+ * Reclaim list nodes that list_remove() tombstoned while an iteration was in
+ * progress.  Call this only where no FOR_EACH_CHARACTER/FOR_EACH_OBJECT walk
+ * is active; the top of the game loop is the one such point, since every
+ * LIST_ITERATOR in the tree is a function-local that cannot outlive a pass.
+ */
+void flush_container_lists( void )
+{
+    list_flush_pending( &character_list );
+    list_flush_pending( &object_list );
+}

@@ -65,6 +65,13 @@ Invoke-Step "C area validation mode" {
     Invoke-Wsl "cd '$WslRepo/area' && ../merc --check-area"
 }
 
+Invoke-Step "C list iterator sanitizer test" {
+    # Guards the deferred-free contract in src/list.c: extract_char() removes
+    # the element a FOR_EACH_CHARACTER loop is standing on, so freeing nodes
+    # eagerly left the iterator cursor dangling.
+    Invoke-Wsl "cd '$WslRepo' && bin=\$(mktemp) && gcc -g -fsanitize=address,undefined -Isrc -o \$bin tests/test_list_iterator.c src/list.c && ASAN_OPTIONS=detect_leaks=1 \$bin; rc=\$?; rm -f \$bin; exit \$rc"
+}
+
 if ($RunSmoke) {
     Invoke-Step "C startup smoke on port $SmokePort" {
         Invoke-Wsl "cd '$WslRepo/area' && timeout 25s ../merc $SmokePort" @(0, 124, 143)

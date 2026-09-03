@@ -2361,6 +2361,7 @@ void    register_character( CHAR_DATA *ch );
 void    unregister_character( CHAR_DATA *ch );
 void    register_object ( OBJ_DATA *obj );
 void    unregister_object ( OBJ_DATA *obj );
+void    flush_container_lists ( void );
 CD * get_char_room   ( CHAR_DATA *ch, char *argument );
 CD * get_char_world  ( CHAR_DATA *ch, char *argument );
 CHAR_DATA * find_char_by_name( const char *name );
