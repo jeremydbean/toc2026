@@ -29,3 +29,52 @@ jobs:
 
       - name: Run validation suite
         run: bash scripts/validate.sh
+
+  sanitize:
+    # AddressSanitizer/UndefinedBehaviorSanitizer build. The normal suite
+    # cannot see memory errors, and this codebase inherits legacy pointer
+    # handling around extraction, combat, and world loading, so boot the whole
+    # world under sanitizers on every push.
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential gcc make cmake libcrypt-dev
+
+      - name: Configure sanitizer build
+        run: cmake -S . -B build-sanitize -DCMAKE_BUILD_TYPE=Debug -DENABLE_SANITIZERS=ON
+
+      - name: Build
+        run: cmake --build build-sanitize --parallel
+
+      - name: Boot the full world under sanitizers
+        working-directory: area
+        env:
+          # Leak detection is deliberately off: the world database is
+          # intentionally allocated for process lifetime and never freed, so
+          # leak reports here would be pure noise. Memory errors still fail.
+          ASAN_OPTIONS: detect_leaks=0:halt_on_error=1
+          UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+        run: ../bin/rom --check-area
+
+      - name: List iterator regression test
+        env:
+          ASAN_OPTIONS: detect_leaks=1
+        run: |
+          gcc -g -fsanitize=address,undefined -Isrc \
+            -o /tmp/test_list_iterator tests/test_list_iterator.c src/list.c
+          /tmp/test_list_iterator
+
+      - name: Live startup smoke under sanitizers
+        working-directory: area
+        env:
+          ASAN_OPTIONS: detect_leaks=0:halt_on_error=1
+          UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+        run: |
+          # Exit 124 is the expected "still healthy when the timer fired".
+          timeout 45s ../bin/rom 9999 || test "$?" -eq 124

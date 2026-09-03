@@ -74,6 +74,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added end-to-end gameplay tests that boot a real server, connect over
+  Telnet, create a character, play, save, and reconnect. Every other test in
+  the suite asserts on source text, so this is the first layer that can catch
+  a change which compiles and reads correctly but does not actually work.
+  Data is fully isolated: the game resolves its mutable paths relative to the
+  working directory, so the harness runs each server from a throwaway `area/`
+  copy and real `player/`, `gods/`, and `heroes/` data is never touched.
+  Skipped automatically where there is no built binary or on Windows.
+- Added an AddressSanitizer/UndefinedBehaviorSanitizer CI job that boots the
+  full world, runs the list-iterator regression test, and performs a live
+  startup smoke run. The normal suite cannot see memory errors, which is how
+  the iterator use-after-free survived a previous fix.
 - Added an authenticated dashboard operations snapshot with game reachability,
   queue depth, backup freshness, recent player saves, runtime-file activity,
   searchable Server Info/WizInfo history, and a compact expandable backup list.
