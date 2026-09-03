@@ -66,6 +66,28 @@ should use a versioned password field and a slow, memory-hard password KDF such
 as Argon2id, with transparent upgrade after a successful legacy login. Preserve
 rollback and old-file compatibility during that work.
 
+### Login Rate Limiting
+
+Failed password attempts are counted per source address. After five failures
+the address is refused at accept() time, before the greeting, with an
+escalating backoff starting at 30 seconds and capped at 15 minutes. A
+successful login clears the address, and history older than ten minutes
+decays, so an honest player who mistypes is clear again shortly. The table is
+a fixed 64 entries, so it cannot be used to exhaust memory; the least recently
+active entry is recycled.
+
+Blocks are logged and sent to WizInfo.
+
+**Loopback is exempt by default.** The browser client bridges through the
+dashboard on the same host, so every web player shares `127.0.0.1`.
+Throttling it would let one fumbled web login lock out every web player,
+which is a worse denial of service than the problem being solved, and a local
+attacker already has host access. Set `TOC_THROTTLE_LOOPBACK=1` to include
+loopback; the test suite uses this to exercise the code.
+
+This bounds online guessing. It does nothing for an attacker who has already
+stolen a player file, which remains the reason the DES hashes above matter.
+
 ### Dashboard Read Endpoints
 
 `WEB_ADMIN_TOKEN` protects operational routes, but several read routes are

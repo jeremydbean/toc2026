@@ -881,11 +881,183 @@ void game_loop_unix( int control )
 
 
 
+/*
+ * Login throttling.
+ *
+ * Game transport is plain Telnet and supported player files use traditional
+ * DES crypt(3), where only the first eight password bytes are effective, so
+ * an unthrottled login is the weakest point in the whole deployment. A wrong
+ * password closes the socket, which costs an attacker a reconnect and nothing
+ * more; nothing counted attempts.
+ *
+ * Failures are tracked per source address in a small fixed table, so this
+ * cannot be used to exhaust memory. Once an address passes the threshold it is
+ * refused at accept() time with an escalating, capped backoff. History decays,
+ * so an honest player who mistypes a few times is clear again shortly.
+ *
+ * Loopback is exempt by default and that is deliberate: the browser client
+ * bridges through the dashboard on the same host, so every web player shares
+ * 127.0.0.1. Throttling it would let one fumbled web login lock out every
+ * other web player -- a denial of service worse than the problem being
+ * solved. A local attacker already has host access. Set
+ * TOC_THROTTLE_LOOPBACK=1 to include loopback anyway, which is how the test
+ * suite exercises this code.
+ */
+#define LOGIN_FAIL_SLOTS        64
+#define LOGIN_FAIL_THRESHOLD     5
+#define LOGIN_FAIL_WINDOW      600      /* seconds of memory per address */
+#define LOGIN_BLOCK_BASE        30      /* first block, in seconds       */
+#define LOGIN_BLOCK_MAX        900      /* cap, 15 minutes               */
+
+typedef struct login_fail_entry
+{
+    uint32_t    ip;
+    bool        used;
+    int         failures;
+    time_t      last_fail;
+    time_t      blocked_until;
+} LOGIN_FAIL_ENTRY;
+
+static LOGIN_FAIL_ENTRY login_fail_table[LOGIN_FAIL_SLOTS];
+
+static bool login_throttle_applies( const DESCRIPTOR_DATA *d )
+{
+    const char *opt;
+
+    if ( d == NULL || d->ip == 0 )
+        return false;
+
+    /* 127.0.0.0/8 in network byte order. */
+    if ( (ntohl(d->ip) >> 24) == 127 )
+    {
+        opt = getenv( "TOC_THROTTLE_LOOPBACK" );
+        return opt != NULL && opt[0] == '1';
+    }
+
+    return true;
+}
+
+static LOGIN_FAIL_ENTRY *login_fail_lookup( uint32_t ip )
+{
+    int i;
+
+    for ( i = 0; i < LOGIN_FAIL_SLOTS; i++ )
+    {
+        if ( login_fail_table[i].used && login_fail_table[i].ip == ip )
+            return &login_fail_table[i];
+    }
+
+    return NULL;
+}
+
+/* Find or claim a slot, recycling whichever entry is least recently active. */
+static LOGIN_FAIL_ENTRY *login_fail_claim( uint32_t ip )
+{
+    LOGIN_FAIL_ENTRY *entry;
+    LOGIN_FAIL_ENTRY *oldest;
+    int i;
+
+    if ( (entry = login_fail_lookup(ip)) != NULL )
+        return entry;
+
+    oldest = &login_fail_table[0];
+    for ( i = 0; i < LOGIN_FAIL_SLOTS; i++ )
+    {
+        if ( !login_fail_table[i].used )
+        {
+            oldest = &login_fail_table[i];
+            break;
+        }
+
+        if ( login_fail_table[i].last_fail < oldest->last_fail )
+            oldest = &login_fail_table[i];
+    }
+
+    oldest->ip            = ip;
+    oldest->used          = true;
+    oldest->failures      = 0;
+    oldest->last_fail     = 0;
+    oldest->blocked_until = 0;
+    return oldest;
+}
+
+/* Seconds remaining on a block, or 0 when the address may proceed. */
+static long login_block_remaining( const DESCRIPTOR_DATA *d )
+{
+    LOGIN_FAIL_ENTRY *entry;
+
+    if ( !login_throttle_applies(d) )
+        return 0;
+
+    if ( (entry = login_fail_lookup(d->ip)) == NULL )
+        return 0;
+
+    if ( entry->blocked_until > current_time )
+        return (long)(entry->blocked_until - current_time);
+
+    return 0;
+}
+
+static void login_note_failure( DESCRIPTOR_DATA *d )
+{
+    LOGIN_FAIL_ENTRY *entry;
+    long block;
+    int over;
+
+    if ( !login_throttle_applies(d) )
+        return;
+
+    entry = login_fail_claim( d->ip );
+
+    /* Forget stale history so honest mistakes do not accumulate forever. */
+    if ( entry->last_fail != 0
+    &&   current_time - entry->last_fail > LOGIN_FAIL_WINDOW )
+        entry->failures = 0;
+
+    entry->failures++;
+    entry->last_fail = current_time;
+
+    if ( entry->failures < LOGIN_FAIL_THRESHOLD )
+        return;
+
+    /*
+     * Escalate geometrically, capped. Shift on a long and bound the exponent
+     * so a long-lived attacker cannot overflow the shift.
+     */
+    over = entry->failures - LOGIN_FAIL_THRESHOLD;
+    if ( over > 8 )
+        over = 8;
+
+    block = (long)LOGIN_BLOCK_BASE << over;
+    if ( block > LOGIN_BLOCK_MAX )
+        block = LOGIN_BLOCK_MAX;
+
+    entry->blocked_until = current_time + block;
+
+    snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+              "Login throttle: %s blocked for %ld seconds after %d failures.",
+              d->host != NULL ? d->host : "(unknown)", block, entry->failures );
+    log_string( log_buf );
+    wizinfo( log_buf, LEVEL_IMMORTAL );
+}
+
+static void login_note_success( DESCRIPTOR_DATA *d )
+{
+    LOGIN_FAIL_ENTRY *entry;
+
+    if ( d == NULL || d->ip == 0 )
+        return;
+
+    if ( (entry = login_fail_lookup(d->ip)) != NULL )
+        entry->used = false;
+}
+
 void init_descriptor( int control )
 {
     DESCRIPTOR_DATA *dnew;
     struct sockaddr_in sock;
     socklen_t size;
+    long block;
 
     size = sizeof(sock);
     getsockname( control, (struct sockaddr *) &sock, &size );
@@ -894,6 +1066,22 @@ void init_descriptor( int control )
 
     dnew->next      = descriptor_list;
     descriptor_list = dnew;
+
+    /*
+     * Refuse a throttled address before the greeting, so a guessing script
+     * gets no oracle and no free work out of us.
+     */
+    if ( (block = login_block_remaining(dnew)) > 0 )
+    {
+        char throttle_buf[MAX_INPUT_LENGTH];
+
+        snprintf( throttle_buf, sizeof(throttle_buf),
+                  "Too many failed login attempts. Try again in %ld second%s.\n\r",
+                  block, block == 1 ? "" : "s" );
+        write_to_buffer( dnew, throttle_buf, 0 );
+        close_socket( dnew );
+        return;
+    }
 
     /*
      * Send the greeting.
@@ -1791,11 +1979,14 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
 	if ( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
 	{
+	    login_note_failure( d );
 	    write_to_buffer( d, "Wrong password.\n\r", 0 );
 	    close_socket( d );
 	    return;
 	}
- 
+
+	login_note_success( d );
+
 	write_to_buffer( d, echo_on_str, 0 );
 
 	if (check_playing(d,ch->name))

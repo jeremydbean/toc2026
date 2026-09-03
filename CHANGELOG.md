@@ -74,6 +74,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added per-address login throttling. Nothing counted failed password
+  attempts before: a wrong password closed the socket, which cost an attacker
+  only a reconnect, against hashes where just the first eight password bytes
+  are effective. Five failures now refuse the address at accept() time with an
+  escalating backoff from 30 seconds to a 15-minute cap; a success clears it
+  and old history decays. The table is a fixed 64 entries so it cannot be used
+  to exhaust memory. Loopback is exempt by default because the browser client
+  bridges through the dashboard and every web player shares 127.0.0.1;
+  `TOC_THROTTLE_LOOPBACK=1` opts it in.
 - Added end-to-end gameplay tests that boot a real server, connect over
   Telnet, create a character, play, save, and reconnect. Every other test in
   the suite asserts on source text, so this is the first layer that can catch
