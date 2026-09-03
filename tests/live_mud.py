@@ -25,6 +25,36 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
+# Telnet control bytes and the options the server implements.
+IAC, DONT, DO, WONT, WILL, SB, SE = 255, 254, 253, 252, 251, 250, 240
+TELOPT_NAWS, TELOPT_MSSP, TELOPT_GMCP = 31, 70, 201
+MSSP_VAR, MSSP_VAL = 1, 2
+
+
+def parse_mssp(payload: bytes) -> dict[str, str]:
+    """Decode an MSSP subnegotiation body into a plain dict."""
+    fields: dict[str, str] = {}
+    # Body is a run of MSSP_VAR name MSSP_VAL value pairs.
+    for chunk in payload.split(bytes([MSSP_VAR])):
+        if not chunk:
+            continue
+        if bytes([MSSP_VAL]) not in chunk:
+            continue
+        name, _, value = chunk.partition(bytes([MSSP_VAL]))
+        fields[name.decode("latin-1")] = value.decode("latin-1")
+    return fields
+
+
+def naws(width: int, height: int) -> bytes:
+    """A client NAWS subnegotiation announcing a window size."""
+    return (
+        bytes([IAC, WILL, TELOPT_NAWS])
+        + bytes([IAC, SB, TELOPT_NAWS])
+        + width.to_bytes(2, "big")
+        + height.to_bytes(2, "big")
+        + bytes([IAC, SE])
+    )
+
 # The Make build writes ./merc; CMake writes ./bin/rom. Either will do.
 CANDIDATE_BINARIES = (ROOT / "merc", ROOT / "bin" / "rom")
 
@@ -77,6 +107,7 @@ class MudClient:
         self.timeout = timeout
         self.buffer = ""
         self.transcript = ""
+        self.raw = b""
         self.sock = socket.create_connection(("127.0.0.1", port), timeout=timeout)
         self.sock.settimeout(0.5)
 
@@ -102,10 +133,35 @@ class MudClient:
             return False
         if not chunk:
             return False
+        self.raw += chunk
         text = clean(chunk)
         self.buffer += text
         self.transcript += text
         return True
+
+    def send_raw(self, data: bytes) -> None:
+        """Send bytes verbatim, for telnet negotiation."""
+        self.sock.sendall(data)
+
+    def subnegotiations(self, option: int) -> list[bytes]:
+        """Every complete IAC SB <option> ... IAC SE payload seen so far."""
+        found = []
+        marker = bytes([IAC, SB, option])
+        start = 0
+        while True:
+            index = self.raw.find(marker, start)
+            if index == -1:
+                return found
+            body = index + len(marker)
+            end = self.raw.find(bytes([IAC, SE]), body)
+            if end == -1:
+                return found
+            found.append(self.raw[body:end])
+            start = end
+
+    def negotiated(self, verb: int, option: int) -> bool:
+        """True if the server sent IAC <verb> <option>."""
+        return bytes([IAC, verb, option]) in self.raw
 
     def expect(self, *patterns: str, timeout: float | None = None) -> str:
         """Wait until any pattern appears (case-insensitive substring).
@@ -141,7 +197,13 @@ class MudClient:
         self.sock.sendall(line.encode("latin-1") + b"\n")
 
     def command(self, line: str, settle: float = 0.5) -> str:
-        """Send a command and return the output it produced."""
+        """Send a command and return the output it produced.
+
+        Drains anything still in flight first. Login and room descriptions
+        arrive in bursts, and without this the returned slice can be the tail
+        of the previous screen rather than the reply to this command.
+        """
+        self.drain(0.4)
         self.buffer = ""
         mark = len(self.transcript)
         self.send(line)
@@ -260,19 +322,22 @@ CREATION_STEPS = (
 
 
 def create_character(client: MudClient, name: str, password: str) -> None:
-    """Walk a brand new character from the greeting into the game."""
+    """Walk a brand new character from the greeting into the game.
+
+    Returns only once the game prompt has appeared. That matters: the MOTD
+    screens wait for a keypress, and a caller that returned early would have
+    its first real command swallowed as that keypress.
+    """
     client.expect("by what name", "name:", "what is your name")
     client.send(name)
 
-    # Bounded prompt-driven loop: answer whatever is asked until the game
-    # starts sending normal play output.
-    for _ in range(40):
+    for _ in range(60):
         client.drain(0.4)
         haystack = client.buffer.lower()
 
-        if not haystack.strip():
-            client.send("")
-            continue
+        # The default prompt ends in "...mv>"; seeing it means we are in.
+        if "mv>" in haystack:
+            return
 
         for needle, reply in CREATION_STEPS:
             if needle in haystack:
@@ -280,9 +345,44 @@ def create_character(client: MudClient, name: str, password: str) -> None:
                 client.send(password if reply is None else reply)
                 break
         else:
-            # No creation prompt outstanding: assume we are in the game.
-            return
+            # Any other screen (MOTD, pager, "hit return") just wants a key.
+            client.buffer = ""
+            client.send("")
+
     raise AssertionError(
-        "character creation did not finish.\n"
+        "character creation never reached the game prompt.\n"
         f"--- transcript ---\n{client.transcript[-4000:]}"
+    )
+
+
+def login(client: MudClient, name: str, password: str) -> None:
+    """Log an existing character in, and wait for the game prompt.
+
+    Handles the "already playing, connect anyway?" prompt, which arrives
+    *after* the password: a client socket closing races the server noticing,
+    so a reconnect straight after a quit can still see the old descriptor.
+    """
+    client.expect("by what name", "name:")
+    client.send(name)
+    client.expect("password")
+    client.send(password)
+
+    for _ in range(60):
+        client.drain(0.4)
+        haystack = client.buffer.lower()
+
+        if "mv>" in haystack:
+            return
+        if "wrong password" in haystack:
+            raise AssertionError("login rejected the correct password")
+
+        client.buffer = ""
+        if "y or n" in haystack or "connect anyway" in haystack:
+            client.send("Y")
+        else:
+            client.send("")
+
+    raise AssertionError(
+        "login never reached the game prompt."
+        + chr(10) + client.transcript[-3000:]
     )

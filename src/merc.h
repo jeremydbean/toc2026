@@ -181,6 +181,10 @@ typedef struct script_loop_prepoll_payload
 /* String and memory management parameters. */
 #define MAX_KEY_HASH             2048
 #define MAX_STRING_LENGTH        4096
+/* Largest telnet subnegotiation payload we will buffer (GMCP JSON is the
+ * biggest realistic consumer). Anything longer is discarded rather than
+ * truncated into a malformed message. */
+#define MAX_TELNET_SUBNEG        2048
 #define MAX_INPUT_LENGTH         256
 #define PAGELEN                  22
 #define MAX_MSGS                 100
@@ -413,6 +417,18 @@ struct  descriptor_data
     char * showstr_head;
     char * showstr_point;
     bool                color;
+    /*
+     * Telnet negotiation state. Sequences can split across reads, so the
+     * parser state has to live on the descriptor rather than on the stack.
+     * See src/telnet_proto.c.
+     */
+    sh_int              telnet_state;
+    unsigned char       telnet_option;
+    sh_int              telnet_sb_len;
+    char                telnet_sb       [MAX_TELNET_SUBNEG];
+    sh_int              term_width;
+    sh_int              term_height;
+    bool                gmcp_enabled;
 };
 
 struct were_form

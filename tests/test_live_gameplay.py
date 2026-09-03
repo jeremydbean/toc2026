@@ -14,7 +14,22 @@ from __future__ import annotations
 import unittest
 from pathlib import Path
 
-from live_mud import LiveMud, create_character, skip_reason
+from live_mud import (
+    DO,
+    IAC,
+    SB,
+    SE,
+    TELOPT_GMCP,
+    TELOPT_MSSP,
+    TELOPT_NAWS,
+    WILL,
+    LiveMud,
+    create_character,
+    login,
+    naws,
+    parse_mssp,
+    skip_reason,
+)
 
 
 SKIP = skip_reason()
@@ -73,15 +88,9 @@ class LiveGameplayTests(unittest.TestCase):
 
             # Reconnect with the same credentials.
             with mud.connect() as client:
-                client.expect("by what name")
-                client.send("Ziptestthree")
-                client.expect("password")
-                client.send("harnesspw")
-                client.drain(2.5)
-                self.assertNotIn("Wrong password", client.transcript)
-
-                output = client.command("score", settle=2.0).lower()
-                self.assertIn("level", output)
+                login(client, "Ziptestthree", "harnesspw")
+                client.send("score")
+                client.expect("level")
 
     def test_wrong_password_is_rejected(self) -> None:
         with LiveMud() as mud:
@@ -157,12 +166,7 @@ class LoginThrottleTests(unittest.TestCase):
 
             # A correct login must reset the counter.
             with mud.connect() as client:
-                client.expect("by what name")
-                client.send("Ziptestsix")
-                client.expect("password")
-                client.send("harnesspw")
-                client.drain(2.0)
-                self.assertNotIn("Wrong password", client.transcript)
+                login(client, "Ziptestsix", "harnesspw")
                 client.command("quit", settle=2.0)
 
             # So four more failures still must not trip the block.
@@ -190,3 +194,119 @@ class LoginThrottleTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class TelnetProtocolTests(unittest.TestCase):
+    """MSSP, NAWS, and GMCP.
+
+    The input path previously had no IAC handling at all, so negotiation
+    bytes reached the command interpreter as garbage. These tests cover both
+    halves: the options work, and a client that negotiates nothing is
+    unaffected.
+    """
+
+    def test_server_offers_its_options(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            client.expect("by what name")
+            self.assertTrue(
+                client.negotiated(WILL, TELOPT_MSSP), "no WILL MSSP"
+            )
+            self.assertTrue(
+                client.negotiated(WILL, TELOPT_GMCP), "no WILL GMCP"
+            )
+            self.assertTrue(
+                client.negotiated(DO, TELOPT_NAWS), "no DO NAWS"
+            )
+
+    def test_mssp_reports_status_to_a_crawler(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            client.expect("by what name")
+            client.send_raw(bytes([IAC, DO, TELOPT_MSSP]))
+            client.drain(2.0)
+
+            blocks = client.subnegotiations(TELOPT_MSSP)
+            self.assertTrue(blocks, "server sent no MSSP subnegotiation")
+
+            fields = parse_mssp(blocks[-1])
+            self.assertEqual(fields.get("NAME"), "Times of Chaos")
+            self.assertEqual(fields.get("CODEBASE"), "ROM 2.4")
+            self.assertEqual(fields.get("FAMILY"), "DikuMUD")
+
+            # Required numeric fields must actually be numbers.
+            self.assertTrue(fields.get("PLAYERS", "").isdigit(), fields)
+            self.assertTrue(fields.get("UPTIME", "").isdigit(), fields)
+            # Uptime is a boot timestamp, so it must be a plausible epoch.
+            self.assertGreater(int(fields["UPTIME"]), 1_000_000_000)
+
+    def test_mssp_counts_a_logged_in_player(self) -> None:
+        with LiveMud() as mud:
+            with mud.connect() as player:
+                create_character(player, "Zipeight", "harnesspw")
+                # Confirm the character is actually in the game before
+                # asserting on the player count.
+                self.assertIn("level", player.command("score", settle=2.0).lower())
+
+                with mud.connect() as crawler:
+                    crawler.expect("by what name")
+                    crawler.send_raw(bytes([IAC, DO, TELOPT_MSSP]))
+                    crawler.drain(2.0)
+                    fields = parse_mssp(crawler.subnegotiations(TELOPT_MSSP)[-1])
+                    self.assertEqual(fields.get("PLAYERS"), "1")
+
+    def test_naws_is_recorded_and_opt_in(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            # Sent before reading anything, so the greeting stays unconsumed
+            # for create_character().
+            client.send_raw(naws(100, 42))
+            create_character(client, "Zipnine", "harnesspw")
+
+            # The negotiation must not have leaked into the command stream.
+            self.assertNotIn("Huh?", client.transcript)
+
+            # The size is reported, but not applied behind the player's back:
+            # in do_scroll(), lines == 0 means they turned paging off on
+            # purpose, so NAWS must not silently override it.
+            client.send("scroll")
+            client.expect("100x42")
+
+            # Opting in applies it.
+            client.send("scroll auto")
+            client.expect("42 lines")
+
+            client.send("scroll")
+            client.expect("42 lines per page")
+
+    def test_gmcp_vitals_arrive_only_after_the_client_enables_gmcp(self) -> None:
+        with LiveMud() as mud:
+            # Without enabling GMCP, no GMCP subnegotiation should ever arrive.
+            with mud.connect() as quiet:
+                create_character(quiet, "Zipten", "harnesspw")
+                quiet.command("look", settle=1.0)
+                self.assertEqual(quiet.subnegotiations(TELOPT_GMCP), [])
+
+            with mud.connect() as client:
+                client.send_raw(bytes([IAC, DO, TELOPT_GMCP]))
+                create_character(client, "Zipelev", "harnesspw")
+                client.command("look", settle=1.5)
+
+                blocks = client.subnegotiations(TELOPT_GMCP)
+                self.assertTrue(blocks, "no GMCP data after enabling it")
+
+                payload = blocks[-1].decode("latin-1")
+                self.assertTrue(payload.startswith("Char.Vitals "), payload)
+
+                import json
+
+                vitals = json.loads(payload[len("Char.Vitals "):])
+                for key in ("hp", "maxhp", "mana", "maxmana", "move", "maxmove", "level"):
+                    self.assertIn(key, vitals)
+                self.assertGreater(vitals["maxhp"], 0)
+
+    def test_a_client_that_negotiates_nothing_is_unaffected(self) -> None:
+        """Regression guard for the plain-Telnet majority."""
+        with LiveMud() as mud, mud.connect() as client:
+            create_character(client, "Ziptwelve", "harnesspw")
+            output = client.command("score", settle=1.5).lower()
+            self.assertIn("level", output)
+            self.assertNotIn("huh?", output)

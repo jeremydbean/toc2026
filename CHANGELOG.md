@@ -74,6 +74,22 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added telnet option handling. The input path had no IAC handling at all,
+  so any client that negotiated options fed protocol bytes to the command
+  interpreter as garbage, which is why none of the modern MUD options were
+  supported. A single state machine in `src/telnet_proto.c` now consumes
+  negotiation and subnegotiation, and three options are built on it:
+  - **MSSP** reports name, player count, uptime, and codebase to crawlers, so
+    the game can be indexed and kept current on MUD listing sites. Only
+    already-public facts are exposed; nothing operational.
+  - **NAWS** records the client's window size. It deliberately does not
+    change the page length on its own, because `lines == 0` means the player
+    turned paging off on purpose; `scroll` now reports the detected size and
+    `scroll auto` opts in to it.
+  - **GMCP** sends `Char.Vitals` alongside the prompt for clients that ask
+    for it, so Mudlet-style gauges track without scraping prompt text.
+  A plain Telnet client that negotiates nothing is unaffected, which is
+  covered by its own test.
 - Added per-address login throttling. Nothing counted failed password
   attempts before: a wrong password closed the socket, which cost an attacker
   only a reconnect, against hashes where just the first eight password bytes

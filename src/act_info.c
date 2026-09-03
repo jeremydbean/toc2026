@@ -586,6 +586,35 @@ void do_scroll(CHAR_DATA *ch, char *argument)
 		    ch->lines + 2);
 	    send_to_char(buf,ch);
 	}
+
+	/* Mention a client-reported window size, if we were told one. */
+	if (ch->desc != NULL && ch->desc->term_height > 0)
+	{
+	    snprintf(buf, sizeof(buf),
+		"Your client reports a %dx%d window; use SCROLL AUTO to match it.\n\r",
+		ch->desc->term_width, ch->desc->term_height);
+	    send_to_char(buf,ch);
+	}
+	return;
+    }
+
+    /*
+     * Opt in to the size the client negotiated over NAWS. This is a request
+     * rather than something applied automatically, because lines == 0 means
+     * the player turned paging off on purpose.
+     */
+    if (!str_prefix(arg,"auto"))
+    {
+	if (ch->desc == NULL || ch->desc->term_height <= 0)
+	{
+	    send_to_char("Your client has not told us its window size.\n\r",ch);
+	    return;
+	}
+
+	ch->lines = (sh_int)(ch->desc->term_height - 2);
+	snprintf(buf, sizeof(buf),"Scroll set to %d lines to match your window.\n\r",
+		ch->desc->term_height);
+	send_to_char(buf,ch);
 	return;
     }
 

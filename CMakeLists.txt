@@ -56,6 +56,7 @@ set(SRC_FILES
     src/season.c
     src/special.c
     src/string_safe.c
+    src/telnet_proto.c
     src/stubs.c
     src/update.c
     src/wizlist.c

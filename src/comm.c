@@ -58,6 +58,7 @@
 
 #include "merc.h"
 #include "interp.h"
+#include "telnet_proto.h"
 #include "db.h"
 
 #ifndef NI_MAXHOST
@@ -283,6 +284,8 @@ bool                merc_down;
 bool                wizlock;
 bool                newlock;
 char                str_boot_time[MAX_INPUT_LENGTH];
+/* Numeric boot time; MSSP reports uptime as a Unix timestamp. */
+time_t              boot_time_stamp;
 time_t              current_time;
 
 
@@ -343,6 +346,7 @@ int main( int argc, char **argv )
     time( &now_time );
     current_time = now_time;
     toc_strlcpy( str_boot_time, ctime( &current_time ), sizeof(str_boot_time) );
+    boot_time_stamp = current_time;
 
     /*
      * Macintosh console initialization.
@@ -1083,6 +1087,9 @@ void init_descriptor( int control )
         return;
     }
 
+    /* Offer the telnet options we support before any text goes out. */
+    telnet_offer_options( dnew );
+
     /*
      * Send the greeting.
      */
@@ -1269,17 +1276,35 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
     for ( ; ; )
     {
         ssize_t nRead;
+        char raw[MAX_INPUT_LENGTH];
         int space_left = MAX_INPUT_LENGTH - 1 - iStart;
 
         if ( space_left <= 0 )
             break;
 
-        nRead = read( d->descriptor, d->inbuf + iStart,
-            (size_t)space_left );
+        /*
+         * Read into a staging buffer and run it through the telnet filter
+         * before it reaches the command buffer. Negotiation used to land in
+         * the interpreter as garbage; see src/telnet_proto.c.
+         */
+        nRead = read( d->descriptor, raw,
+            (size_t)UMIN( space_left, (int)sizeof(raw) ) );
         if ( nRead > 0 )
         {
-            iStart += (int)nRead;
-            if ( d->inbuf[iStart-1] == '\n' || d->inbuf[iStart-1] == '\r' )
+            size_t kept = telnet_filter_input( d, raw, (size_t)nRead,
+                                               d->inbuf + iStart,
+                                               (size_t)space_left );
+            iStart += (int)kept;
+
+            /*
+             * A read that was pure negotiation yields no application bytes.
+             * Keep looping rather than treating it as a completed line.
+             */
+            if ( kept > 0
+            &&   (d->inbuf[iStart-1] == '\n' || d->inbuf[iStart-1] == '\r') )
+                break;
+
+            if ( kept == 0 )
                 break;
         }
         else if ( nRead == 0 )
@@ -1644,6 +1669,25 @@ void write_prompt( DESCRIPTOR_DATA *d )
     pattern = ( owner != NULL && owner->prompt != NULL && owner->prompt[0] != '\0' )
         ? owner->prompt
         : default_prompt;
+
+    /*
+     * Mirror the prompt's vitals out of band for clients that asked for GMCP,
+     * so gauges and health bars track without scraping the prompt text. A
+     * no-op unless the client negotiated GMCP.
+     */
+    if ( d->gmcp_enabled )
+    {
+        char gmcp_buf[MAX_INPUT_LENGTH];
+
+        snprintf( gmcp_buf, sizeof(gmcp_buf),
+                  "{\"hp\":%d,\"maxhp\":%d,\"mana\":%d,\"maxmana\":%d,"
+                  "\"move\":%d,\"maxmove\":%d,\"level\":%d}",
+                  (int)display->hit,  (int)display->max_hit,
+                  (int)display->mana, (int)display->max_mana,
+                  (int)display->move, (int)display->max_move,
+                  (int)display->level );
+        telnet_send_gmcp( d, "Char.Vitals", gmcp_buf );
+    }
 
     prompt_buf[0] = '\0';
 
