@@ -10,6 +10,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed Mind Leech and Enervate being silently halved against most targets.
+  The same psionics pass that broke Confuse added the generic `saves_spell()`
+  curve to both drains, and because that curve is driven by the target's
+  (usually negative) saving throw rather than by any psionic defense, a
+  mastered drain gave up half its effect on nearly every use. Both now share
+  the Confuse ward model through a single `psionic_ward_check()` helper:
+  mental immunity blocks the drain outright, mental resistance halves it on a
+  bounded roll, and an ordinary mind cannot resist. Mindbar, Psionic Armor,
+  and Psychic Shield still apply on top through
+  `psionic_reduce_mental_drain()`, so real psionic defenses keep working.
+  Confuse was refactored onto the same helper, so the resist band is tuned in
+  one place (`PSI_RESIST_BASE`/`MIN`/`MAX`).
 - Fixed Confuse failing almost every attempt. The psionics pass added the
   generic `saves_spell()` curve as a second gate, and that curve clamps to a
   95% resist rate against the negative saving throws most mobiles carry, so a

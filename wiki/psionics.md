@@ -28,10 +28,10 @@ Use `skills` to see which powers the current character knows and `help
 | Pyrotechnics | 20 | 20 mana | Deals vitality-scaled fire damage and may temporarily heat worn gear. |
 | Confuse | 21 | level + 50 mana | Makes a target intermittently lose combat actions. Lands whenever the caster keeps concentration, unless the target is immune or resistant to mental damage. |
 | Nightmare | 21 | 20 mana | Reduces maximum mana and prevents normal recovery until cured or expired. |
-| Enervate | 21 | 35 mana | Drains health and movement and returns part of the actual drain to the user. |
+| Enervate | 21 | 35 mana | Drains health and movement and returns part of the actual drain to the user. Blocked by mental immunity, halved by mental resistance. |
 | Telekinesis (`tk`) | 21 | 50 mana | Retrieves an eligible ground item from elsewhere in the world. |
 | Mindbar | 22 | 50 mana | Gives the user 50% mental-damage reduction. |
-| Mind Leech (`mindleech`) | 22 | 30 mana | Drains mana and restores half; deals mental damage to a target with no mana. |
+| Mind Leech (`mindleech`) | 22 | 30 mana | Drains mana and restores half; deals mental damage to a target with no mana. Blocked by mental immunity, halved by mental resistance. |
 | Mindblast | 23 | 50 mana | Deals mental damage to every attackable target in the room. |
 | Astral Walk (`astral`) | 25 | 70 mana | Moves the user and a present pet to another character. |
 | Shift | 25 | 70 mana | Pulls a non-fighting character to the user. |
@@ -45,21 +45,26 @@ They do not reduce physical or elemental damage. Mental saves can separately
 reduce or prevent powers such as Nightmare, Mind Leech, Enervate, Torment,
 and Ego Whip.
 
-Confuse deliberately does not use the generic saving-throw curve. Its only
-caster-side gate is the skill roll, so a psion at 100% Confuse never loses
-concentration. Target-side, the power consults mental immunity and
-resistance (`DAM_MENTAL`) instead:
+Confuse, Mind Leech, and Enervate deliberately do not use the generic
+saving-throw curve. Their only caster-side gate is the skill roll, so a psion
+at 100% never loses concentration. Target-side, they consult mental immunity
+and resistance (`DAM_MENTAL`) through the shared `psionic_ward_check()`
+helper instead:
 
-| Target ward | Result |
-|---|---|
-| Immune to mental damage (`IMM_MENTAL`, or `IMM_MAGIC`) | Never confused |
-| Resistant to mental damage (`RES_MENTAL`, or `RES_MAGIC`) | One bounded resist roll: 25% base, shifted by the level difference, clamped to 5-50% |
-| Normal or vulnerable | Always confused |
+| Target ward | Confuse | Mind Leech / Enervate |
+|---|---|---|
+| Immune to mental damage (`IMM_MENTAL`, or `IMM_MAGIC`) | Never confused | Nothing drained |
+| Resistant to mental damage (`RES_MENTAL`, or `RES_MAGIC`) | One bounded resist roll: 25% base, shifted by the level difference, clamped to 5-50%; on a success the power is blocked | Same roll; on a success the drain is halved |
+| Normal or vulnerable | Always confused | Full drain |
+
+Mindbar, Psionic Armor, and Psychic Shield still apply on top of a drain
+through `psionic_reduce_mental_drain()`, so a warded and shielded target
+benefits from both.
 
 The generic `saves_spell()` curve clamps to a 95% resist rate against the
-negative saving throws most mobiles carry, which is why it is not used for
-this power. Tune the resist band with `CONFUSE_RESIST_BASE`,
-`CONFUSE_RESIST_MIN`, and `CONFUSE_RESIST_MAX` in `src/magic2.c`.
+negative saving throws most mobiles carry, which is why these powers do not
+use it. Tune the shared resist band with `PSI_RESIST_BASE`,
+`PSI_RESIST_MIN`, and `PSI_RESIST_MAX` in `src/magic2.c`.
 
 ## Travel And Retrieval Safety
 

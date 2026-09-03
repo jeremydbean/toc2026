@@ -91,7 +91,11 @@ Syntax: mindleech <victim>
 
 Mind Leech drains mental energy from a victim and restores half of the mana
 actually taken to the user.  If the victim has no mana, the probe deals mental
-damage instead.  Mental saves and psionic defenses reduce the drain.
+damage instead.
+
+A mind immune to mental attack gives up nothing at all, and a mentally
+resistant mind may surrender only half.  Psionic defenses such as Mindbar
+reduce whatever is left.  An ordinary mind cannot resist the drain.
 
 Minimum level: 22
 
@@ -102,8 +106,12 @@ See also: PSIONICS, ENERVATE, MINDBAR
 Syntax: enervate <victim>
 
 Enervate tears away a victim's health and movement, returning part of the
-energy actually drained to the user.  Saves and psionic defenses reduce the
-effect, and resisted or immune damage cannot be converted into healing.
+energy actually drained to the user.  Resisted or immune damage cannot be
+converted into healing.
+
+A mind immune to mental attack cannot be drained this way, and a mentally
+resistant mind may lose only half.  Psionic defenses such as Mindbar reduce
+whatever is left.  An ordinary mind cannot resist the drain.
 
 Minimum level: 21
 

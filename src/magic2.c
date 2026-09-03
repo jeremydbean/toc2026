@@ -119,6 +119,59 @@ static void psionic_start_combat( CHAR_DATA *ch, CHAR_DATA *victim )
         set_fighting( victim, ch );
 }
 
+/*
+ * Psionic ward model.
+ *
+ * Psionic powers are focused mental intrusions rather than broad spells, so
+ * they deliberately do not use the generic saves_spell() curve against a
+ * target's mind. That curve is
+ *
+ *     save = 50 + (victim->level - level - victim->saving_throw) * 5
+ *
+ * clamped to 5..95. Because a good saving throw is negative in ROM, the
+ * subtraction raises the save, and the negative saving throws most mobiles
+ * carry push it straight to the 95 ceiling. Layering it behind a skill roll
+ * made mastered powers fail or land at half strength on nearly every use.
+ *
+ * Instead a power consults the target's actual mental ward, the same
+ * IMM/RES/VULN mechanism the damage code uses via check_immune(). A mind that
+ * is immune to mental damage stops the intrusion outright; a resistant mind
+ * gets one bounded roll to throw it off; a normal or vulnerable mind cannot
+ * resist at all. Tune the resist band here and every power follows.
+ */
+#define PSI_RESIST_BASE         25
+#define PSI_RESIST_MIN           5
+#define PSI_RESIST_MAX          50
+
+#define PSI_WARD_NONE            0      /* power lands at full strength */
+#define PSI_WARD_REDUCED         1      /* resistant mind threw it off  */
+#define PSI_WARD_BLOCKED         2      /* immune mind: nothing gets in */
+
+static int psionic_ward_check( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    int resist_chance;
+
+    if ( ch == NULL || victim == NULL )
+        return PSI_WARD_NONE;
+
+    switch ( check_immune( victim, DAM_MENTAL ) )
+    {
+    case IS_IMMUNE:
+        return PSI_WARD_BLOCKED;
+
+    case IS_RESISTANT:
+        resist_chance = URANGE( PSI_RESIST_MIN,
+                                PSI_RESIST_BASE + (victim->level - ch->level),
+                                PSI_RESIST_MAX );
+        if ( number_percent() <= resist_chance )
+            return PSI_WARD_REDUCED;
+        return PSI_WARD_NONE;
+
+    default:
+        return PSI_WARD_NONE;
+    }
+}
+
 static int lore_estimate( int value )
 {
     int half = value / 2;
@@ -464,6 +517,7 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     int chance;
     int drain;
+    int psi_ward;
     bool resisted;
 
     one_argument( argument, arg );
@@ -551,9 +605,30 @@ void do_mindleech( CHAR_DATA *ch, char *argument )
             return;
     }
 
+    /*
+     * A mind immune to mental attack has nothing the leech can reach, so the
+     * power finds no purchase at all. A resistant mind gives up half. See the
+     * psionic ward model above; the generic saving throw is not used here.
+     */
+    psi_ward = psionic_ward_check( ch, victim );
+
+    if ( psi_ward == PSI_WARD_BLOCKED )
+    {
+        act( "$N's mind is sealed against psionic intrusion.",
+             ch, NULL, victim, TO_CHAR );
+        act( "You feel $n reaching for your thoughts and find nothing to give.",
+             ch, NULL, victim, TO_VICT );
+        psionic_start_combat( ch, victim );
+        if ( !IS_NPC(ch) )
+            check_improve( ch, gsn_mindleech, false, 4 );
+        WAIT_STATE( ch, skill_table[gsn_mindleech].beats );
+        return;
+    }
+
+    resisted = (psi_ward == PSI_WARD_REDUCED);
+
     /* Amount to drain scales with caster level. */
     drain = number_range( ch->level * 2, ch->level * 3 );
-    resisted = saves_spell( ch->level, victim );
     if ( resisted )
         drain /= 2;
     drain = psionic_reduce_mental_drain( victim, drain );
@@ -602,6 +677,7 @@ void do_enervate( CHAR_DATA *ch, char *argument )
     int move_drain;
     int victim_hit_before;
     int actual_damage;
+    int psi_ward;
     bool resisted;
 
     one_argument( argument, arg );
@@ -689,8 +765,28 @@ void do_enervate( CHAR_DATA *ch, char *argument )
             return;
     }
 
+    /*
+     * A mind immune to mental attack cannot have its vitality torn out this
+     * way; a resistant one loses half. See the psionic ward model above.
+     */
+    psi_ward = psionic_ward_check( ch, victim );
+
+    if ( psi_ward == PSI_WARD_BLOCKED )
+    {
+        act( "$N's mind is sealed against psionic intrusion.",
+             ch, NULL, victim, TO_CHAR );
+        act( "You feel $n clawing at your life force and shrug it off.",
+             ch, NULL, victim, TO_VICT );
+        psionic_start_combat( ch, victim );
+        if ( !IS_NPC(ch) )
+            check_improve( ch, gsn_enervate, false, 4 );
+        WAIT_STATE( ch, skill_table[gsn_enervate].beats );
+        return;
+    }
+
+    resisted = (psi_ward == PSI_WARD_REDUCED);
+
     /* Drain endurance (move) and absorb half back. */
-    resisted = saves_spell( ch->level, victim );
     move_drain = number_range( ch->level, ch->level * 2 );
     if ( resisted )
         move_drain /= 2;
@@ -1238,19 +1334,6 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 
 
 
-/*
- * Confuse is a focused mental intrusion rather than a broad spell, so a psion
- * who holds concentration reaches any mind that is not specifically warded
- * against mental attack. A DAM_MENTAL-resistant target gets one bounded roll
- * to throw the intrusion off, scaled by level difference. These stay well
- * under the generic saves_spell() curve on purpose: that curve clamps to a 95%
- * resist rate against the negative saving throws most mobiles carry, which
- * made a mastered power fail nearly every attempt.
- */
-#define CONFUSE_RESIST_BASE     25
-#define CONFUSE_RESIST_MIN       5
-#define CONFUSE_RESIST_MAX      50
-
 /*  psi  */
 void do_confuse( CHAR_DATA *ch, char *argument )
 {
@@ -1344,9 +1427,13 @@ void do_confuse( CHAR_DATA *ch, char *argument )
         ch->mana -= mana_cost;
     }
 
-    psi_ward = check_immune( victim, DAM_MENTAL );
+    /*
+     * Confuse is all-or-nothing, so a warded mind blocks it entirely while a
+     * normal one cannot resist. See the psionic ward model above.
+     */
+    psi_ward = psionic_ward_check( ch, victim );
 
-    if ( psi_ward == IS_IMMUNE )
+    if ( psi_ward == PSI_WARD_BLOCKED )
     {
         act( "$N's mind is sealed against psionic intrusion.",
              ch, NULL, victim, TO_CHAR );
@@ -1358,26 +1445,16 @@ void do_confuse( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( psi_ward == IS_RESISTANT )
+    if ( psi_ward == PSI_WARD_REDUCED )
     {
-        int resist_chance;
-
-        resist_chance = URANGE( CONFUSE_RESIST_MIN,
-                                CONFUSE_RESIST_BASE
-                                    + (victim->level - ch->level),
-                                CONFUSE_RESIST_MAX );
-
-        if ( number_percent() <= resist_chance )
-        {
-            act( "$N resists your attempt to cloud $S mind.",
-                 ch, NULL, victim, TO_CHAR );
-            act( "You push $n's confusing presence out of your mind.",
-                 ch, NULL, victim, TO_VICT );
-            psionic_start_combat( ch, victim );
-            check_improve( ch, gsn_confuse, false, 4 );
-            WAIT_STATE( ch, skill_table[gsn_confuse].beats );
-            return;
-        }
+        act( "$N resists your attempt to cloud $S mind.",
+             ch, NULL, victim, TO_CHAR );
+        act( "You push $n's confusing presence out of your mind.",
+             ch, NULL, victim, TO_VICT );
+        psionic_start_combat( ch, victim );
+        check_improve( ch, gsn_confuse, false, 4 );
+        WAIT_STATE( ch, skill_table[gsn_confuse].beats );
+        return;
     }
 
     af.type       = gsn_confuse;

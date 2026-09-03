@@ -147,19 +147,17 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertNotIn("saves_spell", confuse)
 
         # Target-side gating is mental immunity / resistance only.
-        self.assertIn("check_immune( victim, DAM_MENTAL )", confuse)
-        self.assertIn("psi_ward == IS_IMMUNE", confuse)
-        self.assertIn("psi_ward == IS_RESISTANT", confuse)
+        self.assertIn("psi_ward == PSI_WARD_BLOCKED", confuse)
+        self.assertIn("psi_ward == PSI_WARD_REDUCED", confuse)
 
         # Caster-side gating is still just the skill roll, so 100% never fails.
         self.assertIn("number_percent() > chance", confuse)
 
         # A resistant target gets one bounded roll, never a near-certain block.
-        self.assertIn("CONFUSE_RESIST_BASE", confuse)
-        self.assertIn("number_percent() <= resist_chance", confuse)
+        self.assertIn("psionic_ward_check( ch, victim )", confuse)
 
         # Both ward outcomes still start combat and record a failed attempt.
-        immune_branch = confuse[confuse.index("psi_ward == IS_IMMUNE"):]
+        immune_branch = confuse[confuse.index("psi_ward == PSI_WARD_BLOCKED"):]
         self.assertIn("psionic_start_combat", immune_branch)
         self.assertIn("check_improve( ch, gsn_confuse, false, 4 )", immune_branch)
 
@@ -169,9 +167,9 @@ class PsionicsSystemTests(unittest.TestCase):
                 re.search(rf"#define {name}\s+(\d+)", self.magic2).group(1)
             )
             for name in (
-                "CONFUSE_RESIST_BASE",
-                "CONFUSE_RESIST_MIN",
-                "CONFUSE_RESIST_MAX",
+                "PSI_RESIST_BASE",
+                "PSI_RESIST_MIN",
+                "PSI_RESIST_MAX",
             )
         )
 
@@ -198,16 +196,60 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertIn("ch->in_room = victim->in_room", clairvoyance)
         self.assertIn("ch->in_room = was_in_room", clairvoyance)
 
-    def test_drains_respect_saves_defenses_and_actual_damage(self) -> None:
+    def test_drains_respect_wards_defenses_and_actual_damage(self) -> None:
         mindleech = function_body(self.magic2, "void do_mindleech", "void do_enervate")
         enervate = function_body(self.magic2, "void do_enervate", "void do_mindblast")
 
-        self.assertIn("saves_spell( ch->level, victim )", mindleech)
         self.assertIn("psionic_reduce_mental_drain", mindleech)
         self.assertIn("psionic_start_combat", mindleech)
         self.assertIn("psionic_reduce_mental_drain", enervate)
         self.assertIn("victim_hit_before - victim->hit", enervate)
         self.assertIn("actual_damage / 2", enervate)
+
+    def test_drains_gate_on_mental_wards_not_the_generic_save(self) -> None:
+        """The drains must not use the saves_spell() curve either.
+
+        The psionics pass added it to both, which silently halved a mastered
+        drain against most mobiles because that curve is driven by the
+        target's (usually negative) saving throw rather than by any psionic
+        defense. Mental immunity now blocks the drain outright and mental
+        resistance halves it; psionic_reduce_mental_drain() still applies
+        Mindbar/Armor/Shield on top.
+        """
+        for name, end in (
+            ("do_mindleech", "void do_enervate"),
+            ("do_enervate", "void do_mindblast"),
+        ):
+            body = function_body(self.magic2, f"void {name}", end)
+            with self.subTest(power=name):
+                self.assertNotIn("saves_spell", body)
+                self.assertIn("psionic_ward_check( ch, victim )", body)
+                self.assertIn("psi_ward == PSI_WARD_BLOCKED", body)
+                self.assertIn("resisted = (psi_ward == PSI_WARD_REDUCED)", body)
+                # A blocked drain must not fall through and still drain.
+                blocked = body[body.index("psi_ward == PSI_WARD_BLOCKED"):]
+                self.assertIn("return;", blocked)
+
+    def test_psionic_ward_helper_is_shared_and_bounded(self) -> None:
+        helper = function_body(
+            self.magic2, "static int psionic_ward_check", "static int lore_estimate"
+        )
+
+        self.assertIn("check_immune( victim, DAM_MENTAL )", helper)
+        self.assertIn("case IS_IMMUNE:", helper)
+        self.assertIn("case IS_RESISTANT:", helper)
+        self.assertIn("PSI_WARD_BLOCKED", helper)
+        self.assertIn("URANGE( PSI_RESIST_MIN", helper)
+        # A normal or vulnerable mind must fall through to no ward at all.
+        self.assertIn("default:", helper)
+        self.assertIn("return PSI_WARD_NONE;", helper)
+        # Null-safety, since psionic mob AI can invoke these powers.
+        self.assertIn("ch == NULL || victim == NULL", helper)
+
+        # Every power that consults a ward must use the shared helper.
+        for power in ("do_confuse", "do_mindleech", "do_enervate"):
+            with self.subTest(power=power):
+                self.assertIn(power, self.magic2)
 
     def test_ego_whip_save_prevents_the_attribute_penalty(self) -> None:
         ego_whip = function_body(
