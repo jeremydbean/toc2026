@@ -81,6 +81,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- Moved 25 unreferenced one-off scripts out of the repository root into
+  `archive/tools/` with a README explaining each group. They were retired
+  help-rewriting passes, bulk area fixers, typo sweeps, and abandoned
+  dashboard prototypes that nothing in the runtime, build, validation suite,
+  or CI referenced, and they sat beside the four checkers validation does
+  run. Several perform the unbounded global `.are` replacement the area
+  guide warns against, so they should not be mistaken for current tooling.
+- Added ignore rules for CMake/build output (`bin/`, `build/`,
+  `build-sanitize/`) and Python virtual environments (`.venv/`, `venv/`), so
+  a documented `python3 -m venv .venv` no longer shows up as untracked work.
+- Web-admin API tests now report why the test client is unavailable instead
+  of always blaming a missing `fastapi`. starlette raises a `RuntimeError`
+  when `httpx2` is absent, and these tests need both
+  `webadmin/requirements.txt` and `scripts/requirements.txt`.
 - Psionic travel, scouting, retrieval, control, draining, healing, and defense
   powers now share consistent room protection, saving throw, mana, lag, skill
   improvement, and combat-start behavior.

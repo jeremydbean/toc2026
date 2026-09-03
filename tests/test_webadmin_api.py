@@ -13,9 +13,20 @@ from unittest.mock import Mock, patch
 try:
     from fastapi.testclient import TestClient
     from starlette.websockets import WebSocketDisconnect
-except Exception:  # pragma: no cover - local C-only environments can skip this
+
+    TESTCLIENT_UNAVAILABLE_REASON = None
+except Exception as exc:  # pragma: no cover - local C-only environments can skip this
     TestClient = None
     WebSocketDisconnect = Exception
+    # Report why the client is missing. starlette's TestClient raises a
+    # RuntimeError (not ImportError) when httpx2 is absent, so a blanket
+    # "fastapi is not installed" message sends readers after the wrong
+    # package. Both webadmin/requirements.txt and scripts/requirements.txt
+    # are needed for these tests; CI installs both.
+    TESTCLIENT_UNAVAILABLE_REASON = (
+        f"web test client unavailable ({type(exc).__name__}: {exc}). "
+        "Install both webadmin/requirements.txt and scripts/requirements.txt."
+    )
 
 
 PLAYER_FIXTURE = """#PLAYER
@@ -57,7 +68,7 @@ class WebAdminApiTests(unittest.TestCase):
     @contextmanager
     def webadmin_client(self, local_unlock: bool = False, web_bind: str = "127.0.0.1"):
         if TestClient is None:
-            self.skipTest("fastapi is not installed")
+            self.skipTest(TESTCLIENT_UNAVAILABLE_REASON)
 
         repo_root = Path(__file__).resolve().parents[1]
         with tempfile.TemporaryDirectory() as tmp:

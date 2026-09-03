@@ -1,8 +1,16 @@
 # Prerequisites
 *.o
 merc
+# CMake writes bin/rom at the repository root.
+bin/
+build/
+build-sanitize/
 *.ini
 *.driveupload
+
+# Python virtual environments
+.venv/
+venv/
 
 # Python cache
 __pycache__/
