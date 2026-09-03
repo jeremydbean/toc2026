@@ -10,6 +10,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Strengthened Telekinesis, which was capped at a 50% success rate even at
+  100% skill because it rolled against `chance / 2`; no other psionic power
+  halves its own learned percentage. It now rolls against the full skill.
+  It also charged its whole 50-mana cost before searching, so a mistyped
+  item name cost a full casting: the full cost is now paid only when an item
+  is actually retrieved, and a fruitless search costs only the effort. A
+  match that is merely too heavy to carry is now reported as such instead of
+  being folded into "you couldn't find it".
+- Astral Walk no longer uses the generic `saves_spell()` curve against
+  mobiles, which pinned its resist roll at the 95 ceiling for the
+  high-level targets the power exists to reach. It now uses the shared
+  psionic ward check: an immune mind cannot be fixed upon, a resistant mind
+  may shrug off the pull, and an ordinary mind cannot resist.
+- Astral Walk and Shift now tell the caster that the crossing leaves them
+  stunned. The stun itself is deliberate balance -- it denies a free opening
+  turn so neither power can be used to jump a player and act first -- but it
+  previously happened silently, with nothing explaining why the character
+  could not act. Documented in help and the psionics guide, and pinned by a
+  test so it is not softened by mistake.
 - Fixed a use-after-free in the character/object list iterator that could
   corrupt memory or crash the server whenever something died inside a
   world-list loop. `extract_char()` removes the very element a

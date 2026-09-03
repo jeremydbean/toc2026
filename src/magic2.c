@@ -1121,6 +1121,7 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     bool trans_pet;
     int chance = 0;
+    int psi_ward;
 
     one_argument( argument, arg );
 
@@ -1180,12 +1181,33 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
         ch->mana -= 70;
     }
 
-    if ( IS_NPC(victim) && saves_spell(ch->level, victim) )
+    /*
+     * Homing in on a mind is a psionic act, so gate it on the target's mental
+     * ward rather than the generic saving throw. saves_spell() is driven by
+     * the target's saving throw, which is negative on most mobiles and pins
+     * the roll at its 95 ceiling, so a mastered Astral Walk could not reach
+     * the high-level targets it exists to reach. See the psionic ward model.
+     */
+    if ( IS_NPC(victim) )
     {
-        send_to_char( "The target resists your astral pull.\n\r", ch );
-        check_improve( ch, gsn_astral_walk, false, 4 );
-        WAIT_STATE( ch, skill_table[gsn_astral_walk].beats );
-        return;
+        psi_ward = psionic_ward_check( ch, victim );
+
+        if ( psi_ward == PSI_WARD_BLOCKED )
+        {
+            act( "$N's mind is sealed against psionic intrusion; you cannot "
+                 "fix on $M.", ch, NULL, victim, TO_CHAR );
+            check_improve( ch, gsn_astral_walk, false, 4 );
+            WAIT_STATE( ch, skill_table[gsn_astral_walk].beats );
+            return;
+        }
+
+        if ( psi_ward == PSI_WARD_REDUCED )
+        {
+            send_to_char( "The target resists your astral pull.\n\r", ch );
+            check_improve( ch, gsn_astral_walk, false, 4 );
+            WAIT_STATE( ch, skill_table[gsn_astral_walk].beats );
+            return;
+        }
     }
 
     if (ch->pet != NULL && ch->in_room == ch->pet->in_room)
@@ -1214,8 +1236,20 @@ void do_astral_walk( CHAR_DATA *ch, char *argument )
 	do_look(ch->pet,"auto");
     }
 
+    /*
+     * Arriving stunned is deliberate balance, not an oversight: it denies the
+     * caster a free opening turn and stops Astral Walk being used to jump a
+     * player and act immediately. The stun is cleared by char_update(), i.e.
+     * on the next tick. Do not soften this without also solving the
+     * player-killing abuse it exists to prevent.
+     */
     if ( !IS_IMMORTAL(ch) )
+    {
         ch->position = POS_STUNNED;
+        send_to_char( "The crossing leaves you stunned; you need a moment to "
+                      "recover.\n\r", ch );
+    }
+
     check_improve( ch, gsn_astral_walk, true, 4 );
     WAIT_STATE( ch, skill_table[gsn_astral_walk].beats );
     return;
@@ -1228,6 +1262,7 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     OBJ_DATA *obj;
     bool found = false;
+    bool too_heavy = false;
     int chance;
     LIST_ITERATOR iter;
 
@@ -1261,29 +1296,22 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( number_percent() > chance / 2 && !IS_IMMORTAL(ch) )
+    /*
+     * The concentration roll used to be chance/2, which capped Telekinesis at
+     * a 50% success rate even at 100% skill -- no other psionic power halves
+     * its own skill, and mastery could never make this one reliable. Use the
+     * learned percentage like every other power.
+     */
+    if ( number_percent() > chance && !IS_IMMORTAL(ch) )
     {
         send_to_char( "You lost your concentration.\n\r", ch );
         ch->mana -= (dice(1,5) + 3);
         check_improve( ch, gsn_telekinesis, false, 4 );
         return;
     }
-    ch->mana -= 50;
 
         FOR_EACH_OBJECT( iter, obj )
         {
-
-
-      /* item weight and item count fixes - Rico 9/9/98 */
-      if (obj->item_type != ITEM_CORPSE_PC)
-       {
-    if ( ch->carry_number + get_obj_number( obj ) > can_carry_n( ch ) )
-        continue;
-
-    if ( query_carry_weight(ch) + get_obj_weight( obj ) > can_carry_w( ch ) )
-        continue;
-       }
-
 	   if ( !is_full_name( arg, obj->name )
 		|| obj->item_type == ITEM_TREASURE
 		|| obj->item_type == ITEM_MONEY
@@ -1308,6 +1336,30 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
                    || str_cmp(obj->owner, ch->name)))) )
 		   continue;
 
+      /*
+       * The object is eligible; the only thing left is whether it can be
+       * carried. Checked after the match, not before, so a match that is
+       * merely too heavy can be reported as such instead of being folded
+       * into "you couldn't find it". Keep searching in case another copy
+       * exists that does fit.
+       *
+       * item weight and item count fixes - Rico 9/9/98
+       */
+      if (obj->item_type != ITEM_CORPSE_PC)
+       {
+    if ( ch->carry_number + get_obj_number( obj ) > can_carry_n( ch ) )
+    {
+        too_heavy = true;
+        continue;
+    }
+
+    if ( query_carry_weight(ch) + get_obj_weight( obj ) > can_carry_w( ch ) )
+    {
+        too_heavy = true;
+        continue;
+    }
+       }
+
            found = true;
            snprintf(buf, sizeof buf,"%s has TK'd %s from room %d",ch->name,
                     obj->name,obj->in_room->vnum);
@@ -1318,10 +1370,24 @@ void do_telekinesis( CHAR_DATA *ch, char *argument )
 	 }
 
     if ( !found )
-	 act("Either you couldn't find the $T, or you aren't able to TK it.",ch,
-		 NULL, arg, TO_CHAR);
+    {
+        /*
+         * Nothing was retrieved, so charge only the effort, not the full
+         * casting cost. Losing 50 mana to a mistyped name made the power
+         * needlessly punishing to use at range.
+         */
+        ch->mana -= (dice(1,5) + 3);
+
+        if ( too_heavy )
+            act("You find the $T, but you cannot carry it.", ch,
+                NULL, arg, TO_CHAR);
+        else
+            act("Either you couldn't find the $T, or you aren't able to TK it.",ch,
+                NULL, arg, TO_CHAR);
+    }
     else
 	 {
+	 ch->mana -= 50;
 	 act("You concentrate and $T flies to your hand.",ch, NULL,
 		obj->short_descr, TO_CHAR);
 	 act("$n bows $s head and $T flies to $s hand.",ch, NULL,
@@ -2358,8 +2424,17 @@ void do_shift( CHAR_DATA *ch, char *argument )
     send_to_char("\n\r",victim);
     do_look( victim, "auto" );
 
+    /*
+     * Same deliberate anti-abuse stun as Astral Walk: pulling a target to you
+     * must not also hand you the first move. Cleared on the next tick by
+     * char_update().
+     */
     if ( !IS_IMMORTAL(ch) )
+    {
         ch->position = POS_STUNNED;
+        send_to_char( "Opening the rift leaves you stunned; you need a moment "
+                      "to recover.\n\r", ch );
+    }
 
     if ( IS_NPC(victim) )
         victim->timer = 400;

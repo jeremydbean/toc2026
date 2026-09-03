@@ -8,6 +8,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def strip_comments(source: str) -> str:
+    """Drop C comments so assertions test code, not the prose describing it."""
+    return re.sub(r"/\*.*?\*/", "", source, flags=re.DOTALL)
+
+
 def function_body(source: str, start: str, end: str) -> str:
     match = re.search(
         rf"{re.escape(start)}(?P<body>.*?){re.escape(end)}",
@@ -124,6 +129,88 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertIn("!can_loot(ch, obj)", telekinesis)
         self.assertIn("OBJ_VNUM_QUEST_TOKEN_FIRST", telekinesis)
         self.assertIn("check_improve(ch,gsn_telekinesis,found,4)", telekinesis)
+
+    def test_telekinesis_is_not_capped_at_half_skill(self) -> None:
+        """TK used chance/2, capping it at 50% success even at 100% skill.
+
+        No other psionic power halves its own learned percentage, so mastery
+        could never make this one reliable.
+        """
+        telekinesis = strip_comments(
+            function_body(self.magic2, "void do_telekinesis", "void do_confuse")
+        )
+
+        self.assertNotIn("chance / 2", telekinesis)
+        self.assertNotIn("chance/2", telekinesis)
+        self.assertIn("number_percent() > chance && !IS_IMMORTAL(ch)", telekinesis)
+
+    def test_telekinesis_charges_full_cost_only_when_it_retrieves(self) -> None:
+        telekinesis = strip_comments(
+            function_body(self.magic2, "void do_telekinesis", "void do_confuse")
+        )
+
+        # Still gated on being able to afford the power.
+        self.assertIn("if ( ch->mana < 50 )", telekinesis)
+
+        # The full cost must be paid inside the success branch, after the
+        # search, not unconditionally before it.
+        self.assertLess(
+            telekinesis.index("found = true"),
+            telekinesis.index("ch->mana -= 50"),
+            "full TK cost is charged before the object is found",
+        )
+
+        # A fruitless search costs effort, not the whole casting cost. Slice
+        # only the !found arm, stopping at the else that handles success.
+        start = telekinesis.index("if ( !found )")
+        not_found = telekinesis[start:telekinesis.index("else", start)]
+        self.assertIn("ch->mana -= (dice(1,5) + 3)", not_found)
+        self.assertNotIn("ch->mana -= 50", not_found)
+
+    def test_telekinesis_reports_an_uncarryable_match_distinctly(self) -> None:
+        telekinesis = function_body(self.magic2, "void do_telekinesis", "void do_confuse")
+
+        self.assertIn("too_heavy = true", telekinesis)
+        self.assertIn("you cannot carry it", telekinesis)
+
+        # Carry limits are checked after the name match, so a too-heavy hit is
+        # distinguishable from no hit at all.
+        self.assertLess(
+            telekinesis.index("is_full_name( arg, obj->name )"),
+            telekinesis.index("too_heavy = true"),
+        )
+
+    def test_astral_walk_gates_npcs_on_wards_not_the_generic_save(self) -> None:
+        astral = strip_comments(
+            function_body(self.magic2, "void do_astral_walk", "void do_telekinesis")
+        )
+
+        self.assertNotIn("saves_spell", astral)
+        self.assertIn("psionic_ward_check( ch, victim )", astral)
+        self.assertIn("psi_ward == PSI_WARD_BLOCKED", astral)
+        self.assertIn("psi_ward == PSI_WARD_REDUCED", astral)
+        # Players are still never blocked by a ward roll here; only NPCs.
+        self.assertIn("if ( IS_NPC(victim) )", astral)
+
+    def test_travel_powers_keep_their_deliberate_arrival_stun(self) -> None:
+        """The arrival stun is anti-player-killing balance, not an oversight.
+
+        Astral Walk and Shift must not hand the caster a free opening turn,
+        or they become a way to jump a player and act first. char_update()
+        clears the stun on the next tick. This test exists so the stun is not
+        quietly softened again.
+        """
+        for name, end in (
+            ("do_astral_walk", "void do_telekinesis"),
+            ("do_shift", "void spell_major_globe"),
+        ):
+            body = function_body(self.magic2, f"void {name}", end)
+            with self.subTest(power=name):
+                self.assertIn("ch->position = POS_STUNNED", body)
+                self.assertNotIn("ch->position = POS_RESTING", body)
+                self.assertIn("!IS_IMMORTAL(ch)", body)
+                # The player should be told why they cannot act.
+                self.assertIn("stunned", body)
 
     def test_confuse_uses_its_real_cost(self) -> None:
         confuse = function_body(self.magic2, "void do_confuse", "void do_clairvoyance")

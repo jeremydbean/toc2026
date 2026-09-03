@@ -20,6 +20,14 @@ This psionic skill carries you to another character much like GATE.  It cannot
 cross into private, deadly, jailed, no-recall, or no-teleport rooms, and
 targets protected by NOSUMMON cannot be followed.
 
+A mobile whose mind is immune to mental attack cannot be fixed upon at all,
+and a mentally resistant one may shrug off the pull.  Ordinary minds cannot
+resist it, so a practiced walker reaches the target reliably.
+
+The crossing leaves you stunned until you recover on the next tick.  Plan
+for that: you arrive unable to act, so arriving beside something hostile is
+dangerous, and the skill cannot be used to strike first.
+
 Minimum level: 25
 
 See also: PSIONICS, GATE, SHIFT
@@ -186,6 +194,9 @@ This psionic skill causes the target player or mob to be transported to the
 psionicist.  NOSUMMON and protected-room flags prevent the transfer, as do
 combat and several unstable room types.
 
+Opening the rift leaves you stunned until you recover on the next tick, so
+Shift cannot be used to pull a victim in and attack them first.
+
 Minimum level: 25
 
 See also: PSIONICS, ASTRAL WALK, SUMMON
@@ -199,6 +210,13 @@ Telekinesis allows the user to translocate a visible, takeable ground item
 from elsewhere in the world.  It respects carry limits, ownership, quest-item
 binding, and protected or no-teleport rooms.  Money, treasure, hidden
 containers, carried items, and NOLOCATE items cannot be retrieved this way.
+
+Your skill governs whether you hold concentration, so a fully practiced
+telekinesis rarely slips.  You must have the full mana to attempt it, but
+you are only charged the full cost when an item actually reaches your hand;
+a search that finds nothing costs only the effort.  If a matching item is
+found but you cannot carry it, you are told so instead of being left to
+guess.
 
 Minimum level: 21
 
