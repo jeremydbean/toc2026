@@ -100,3 +100,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE m)
 if(NOT APPLE)
     target_link_libraries(${TARGET_NAME} PRIVATE crypt)
 endif()
+
+# zlib backs MCCP2 output compression (src/telnet_proto.c).
+find_package(ZLIB REQUIRED)
+target_link_libraries(${TARGET_NAME} PRIVATE ZLIB::ZLIB)

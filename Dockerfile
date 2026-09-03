@@ -25,6 +25,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     libcrypt1 \
+    zlib1g \
     gosu \
     python3 \
     python3-pip \

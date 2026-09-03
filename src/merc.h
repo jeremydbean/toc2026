@@ -429,6 +429,12 @@ struct  descriptor_data
     sh_int              term_width;
     sh_int              term_height;
     bool                gmcp_enabled;
+    /*
+     * MCCP2 output compression. Held as void * so <zlib.h> does not have to
+     * be pulled into merc.h, which every translation unit includes.
+     */
+    void *              out_compress;       /* z_stream *, NULL when off */
+    unsigned char *     out_compress_buf;
 };
 
 struct were_form
@@ -2378,6 +2384,8 @@ void    unregister_character( CHAR_DATA *ch );
 void    register_object ( OBJ_DATA *obj );
 void    unregister_object ( OBJ_DATA *obj );
 void    flush_container_lists ( void );
+bool    write_to_descriptor ( DESCRIPTOR_DATA *d, const char *txt, int length );
+bool    write_raw_to_descriptor ( DESCRIPTOR_DATA *d, const char *txt, int length );
 CD * get_char_room   ( CHAR_DATA *ch, char *argument );
 CD * get_char_world  ( CHAR_DATA *ch, char *argument );
 CHAR_DATA * find_char_by_name( const char *name );

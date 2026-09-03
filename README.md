@@ -178,7 +178,7 @@ Windows builds are not a supported path.
 
 ```bash
 sudo apt update
-sudo apt install build-essential libcrypt-dev python3 python3-venv
+sudo apt install build-essential libcrypt-dev zlib1g-dev python3 python3-venv
 
 git clone https://github.com/jeremydbean/toc2026.git
 cd toc2026
@@ -196,7 +196,8 @@ in-game `shutdown`.
 
 ### Fedora, RHEL, or Rocky Linux
 
-Install `gcc`, `make`, `libxcrypt-devel`, `python3`, and `python3-pip`, then use
+Install `gcc`, `make`, `libxcrypt-devel`, `zlib-devel`, `python3`, and
+`python3-pip`, then use
 the same `make`, validation, and `startup.sh` commands.
 
 ### macOS

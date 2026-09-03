@@ -5,6 +5,8 @@
 #include <string.h>
 #include <time.h>
 #include <arpa/telnet.h>
+#include <stdlib.h>
+#include <zlib.h>
 
 #include "merc.h"
 #include "telnet_proto.h"
@@ -26,20 +28,137 @@ extern time_t   boot_time_stamp;
  */
 static void telnet_send_raw( DESCRIPTOR_DATA *d, const char *data, size_t length )
 {
-    size_t written = 0;
-
     if ( d == NULL || d->descriptor < 0 || data == NULL || length == 0 )
         return;
 
-    while ( written < length )
+    /*
+     * Goes through write_to_descriptor() rather than write() so protocol
+     * output is compressed once MCCP is running. It must not go through
+     * write_to_buffer(), which is the player-text path and performs colour
+     * conversion that would corrupt these bytes.
+     */
+    write_to_descriptor( d, data, (int)length );
+}
+
+/* Bypass compression: used only for the MCCP handshake itself. */
+static void telnet_send_uncompressed( DESCRIPTOR_DATA *d, const char *data,
+                                      size_t length )
+{
+    if ( d == NULL || d->descriptor < 0 || data == NULL || length == 0 )
+        return;
+
+    write_raw_to_descriptor( d, data, (int)length );
+}
+
+#define MCCP_BUFFER_SIZE        8192
+
+/*
+ * Begin MCCP2. The acknowledgement sequence has to reach the client
+ * uncompressed, because everything after it is deflate output; the stream is
+ * therefore only armed once that sequence is on the wire.
+ */
+static void telnet_start_compression( DESCRIPTOR_DATA *d )
+{
+    z_stream *stream;
+    char ack[5];
+
+    if ( d == NULL || d->out_compress != NULL )
+        return;
+
+    stream = calloc( 1, sizeof(*stream) );
+    if ( stream == NULL )
+        return;
+
+    d->out_compress_buf = malloc( MCCP_BUFFER_SIZE );
+    if ( d->out_compress_buf == NULL )
     {
-        ssize_t chunk = write( d->descriptor, data + written, length - written );
-
-        if ( chunk <= 0 )
-            return;     /* Dead or blocked socket; the main loop will notice. */
-
-        written += (size_t)chunk;
+        free( stream );
+        return;
     }
+
+    /* Default level: compression here is about bandwidth, not CPU time. */
+    if ( deflateInit( stream, Z_DEFAULT_COMPRESSION ) != Z_OK )
+    {
+        free( d->out_compress_buf );
+        d->out_compress_buf = NULL;
+        free( stream );
+        return;
+    }
+
+    ack[0] = (char)(unsigned char)IAC;
+    ack[1] = (char)(unsigned char)SB;
+    ack[2] = (char)TELOPT_COMPRESS2;
+    ack[3] = (char)(unsigned char)IAC;
+    ack[4] = (char)(unsigned char)SE;
+    telnet_send_uncompressed( d, ack, sizeof(ack) );
+
+    d->out_compress = stream;
+}
+
+void telnet_end_compression( DESCRIPTOR_DATA *d )
+{
+    z_stream *stream;
+
+    if ( d == NULL || d->out_compress == NULL )
+        return;
+
+    stream = (z_stream *) d->out_compress;
+
+    /*
+     * Clear the pointer first: deflateEnd() must not re-enter the compressed
+     * write path, and the socket is going away regardless.
+     */
+    d->out_compress = NULL;
+    deflateEnd( stream );
+    free( stream );
+
+    free( d->out_compress_buf );
+    d->out_compress_buf = NULL;
+}
+
+bool telnet_write_compressed( DESCRIPTOR_DATA *d, const char *txt, int length )
+{
+    z_stream *stream;
+    size_t remaining;
+
+    if ( d == NULL || txt == NULL )
+        return true;
+
+    stream = (z_stream *) d->out_compress;
+    if ( stream == NULL )
+        return write_raw_to_descriptor( d, txt, length );
+
+    remaining = ( length <= 0 ) ? strlen( txt ) : (size_t)length;
+    if ( remaining == 0 )
+        return true;
+
+    stream->next_in  = (Bytef *) txt;
+    stream->avail_in = (uInt) remaining;
+
+    while ( stream->avail_in > 0 )
+    {
+        stream->next_out  = (Bytef *) d->out_compress_buf;
+        stream->avail_out = MCCP_BUFFER_SIZE;
+
+        if ( deflate( stream, Z_SYNC_FLUSH ) != Z_OK )
+        {
+            /* Stream is unusable; drop back to plain output rather than
+             * silently losing the player's session. */
+            telnet_end_compression( d );
+            return write_raw_to_descriptor( d, txt, length );
+        }
+
+        {
+            size_t produced = MCCP_BUFFER_SIZE - stream->avail_out;
+
+            if ( produced > 0
+            &&   !write_raw_to_descriptor( d, (const char *) d->out_compress_buf,
+                                           (int) produced ) )
+                return false;
+        }
+    }
+
+    return true;
 }
 
 static void telnet_command( DESCRIPTOR_DATA *d, unsigned char verb,
@@ -64,9 +183,10 @@ void telnet_offer_options( DESCRIPTOR_DATA *d )
     d->term_height   = 0;
     d->gmcp_enabled  = false;
 
-    /* We are willing to report status and to speak GMCP. */
+    /* We are willing to report status, speak GMCP, and compress output. */
     telnet_command( d, WILL, TELOPT_MSSP );
     telnet_command( d, WILL, TELOPT_GMCP );
+    telnet_command( d, WILL, TELOPT_COMPRESS2 );
 
     /* And we would like to know the client's window size. */
     telnet_command( d, DO,   TELOPT_NAWS );
@@ -140,7 +260,7 @@ static void telnet_send_mssp( DESCRIPTOR_DATA *d )
     mssp_pair( buf, sizeof(buf), &len, "CHARSET", "ISO-8859-1" );
     mssp_pair( buf, sizeof(buf), &len, "ANSI", "1" );
     mssp_pair( buf, sizeof(buf), &len, "GMCP", "1" );
-    mssp_pair( buf, sizeof(buf), &len, "MCCP", "0" );
+    mssp_pair( buf, sizeof(buf), &len, "MCCP", "1" );
     mssp_pair( buf, sizeof(buf), &len, "PAY TO PLAY", "0" );
     mssp_pair( buf, sizeof(buf), &len, "PAY FOR PERKS", "0" );
 
@@ -298,6 +418,12 @@ size_t telnet_filter_input( DESCRIPTOR_DATA *d, const char *raw, size_t length,
                     break;
                 case TELOPT_GMCP:
                     d->gmcp_enabled = wanted;
+                    break;
+                case TELOPT_COMPRESS2:
+                    if ( wanted )
+                        telnet_start_compression( d );
+                    else
+                        telnet_end_compression( d );
                     break;
                 default:
                     /* Refuse anything we do not implement, once. */

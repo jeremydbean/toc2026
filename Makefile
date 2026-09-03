@@ -9,9 +9,9 @@ WARNFLAGS?= -Wall -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-	LDFLAGS := -lm
+	LDFLAGS := -lm -lz
 else
-	LDFLAGS := -lcrypt -lm
+	LDFLAGS := -lcrypt -lm -lz
 endif
 
 SRC_DIR  := src

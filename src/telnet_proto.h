@@ -30,6 +30,9 @@ struct descriptor_data;
 #ifndef TELOPT_GMCP
 #define TELOPT_GMCP     201
 #endif
+#ifndef TELOPT_COMPRESS2
+#define TELOPT_COMPRESS2 86
+#endif
 
 /* MSSP in-band markers. */
 #define MSSP_VAR        1
@@ -50,5 +53,14 @@ void    telnet_offer_options    ( struct descriptor_data *d );
 /* Send one GMCP message, ignored unless the client enabled GMCP. */
 void    telnet_send_gmcp        ( struct descriptor_data *d,
                                   const char *package, const char *json );
+
+/*
+ * MCCP2 output compression. telnet_write_compressed() is the deflating half
+ * of write_to_descriptor(); telnet_end_compression() must be called when a
+ * descriptor closes so the zlib stream is released.
+ */
+bool    telnet_write_compressed ( struct descriptor_data *d,
+                                  const char *txt, int length );
+void    telnet_end_compression  ( struct descriptor_data *d );
 
 #endif

@@ -74,6 +74,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added MCCP2 output compression, negotiated per client and off by default.
+  Compression is applied in `write_to_descriptor()`, the single choke point
+  for descriptor output, so every existing caller benefits without knowing
+  about it; GMCP and other protocol writes go through the same path and are
+  compressed too. The handshake is sent uncompressed and the deflate stream
+  armed only afterwards, since everything following the acknowledgement is
+  deflate output. A failed deflate falls back to plain output rather than
+  dropping the session, and the stream is released when the descriptor
+  closes. Builds now link `libz`: `zlib1g-dev` to build, `zlib1g` at runtime
+  (the Docker runtime stage previously shipped neither).
 - Added telnet option handling. The input path had no IAC handling at all,
   so any client that negotiated options fed protocol bytes to the command
   interpreter as garbage, which is why none of the modern MUD options were

@@ -1184,6 +1184,9 @@ void close_socket( DESCRIPTOR_DATA *dclose )
     if ( dclose->outtop > 0 )
 	process_output( dclose, FALSE );
 
+    /* Release the MCCP stream after the last buffer has gone out. */
+    telnet_end_compression( dclose );
+
     if ( dclose->snoop_by != NULL )
     {
 	write_to_buffer( dclose->snoop_by,
@@ -1847,7 +1850,24 @@ void write_to_buffer( DESCRIPTOR_DATA *d, const char *txt, int length )
     return;
 }
 
+/*
+ * Front door for all descriptor output. When MCCP is running the payload is
+ * deflated first; everything else goes straight out. Keeping the split here
+ * means every existing caller gets compression for free and none of them need
+ * to know about it.
+ */
 bool write_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
+{
+    if ( d == NULL || txt == NULL )
+        return TRUE;
+
+    if ( d->out_compress != NULL )
+        return telnet_write_compressed( d, txt, length );
+
+    return write_raw_to_descriptor( d, txt, length );
+}
+
+bool write_raw_to_descriptor( DESCRIPTOR_DATA *d, const char *txt, int length )
 {
     ssize_t nWrite;
     const char *p;

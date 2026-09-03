@@ -36,7 +36,6 @@ DECLARE_DO_FUN( do_look );
 extern  int     _filbuf         args( (FILE *) );
 #endif
  
-bool write_to_descriptor	args( ( int desc, char *txt, int length ) );
 extern bool merc_down;
 
 static int16_t clamp_sh_int_from_long( long value )

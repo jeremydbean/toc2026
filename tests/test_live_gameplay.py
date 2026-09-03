@@ -21,6 +21,7 @@ from live_mud import (
     SE,
     TELOPT_GMCP,
     TELOPT_MSSP,
+    TELOPT_COMPRESS2,
     TELOPT_NAWS,
     WILL,
     LiveMud,
@@ -127,7 +128,12 @@ class LoginThrottleTests(unittest.TestCase):
             client.command("quit", settle=2.0)
 
     def _attempt(self, mud, name: str, password: str) -> str:
-        """One full login attempt. Returns the transcript."""
+        """One full login attempt. Returns the transcript.
+
+        Waits for a definite outcome rather than draining for a fixed time:
+        under full-suite load the server can take longer than any fixed
+        window to answer, which made this flaky.
+        """
         with mud.connect() as client:
             first = client.expect("by what name", "too many failed login")
             if first == "too many failed login":
@@ -135,7 +141,7 @@ class LoginThrottleTests(unittest.TestCase):
             client.send(name)
             client.expect("password")
             client.send(password)
-            client.drain(1.0)
+            client.expect("wrong password", "mv>", timeout=30)
             return client.transcript
 
     def test_repeated_wrong_passwords_eventually_refuse_the_address(self) -> None:
@@ -310,3 +316,69 @@ class TelnetProtocolTests(unittest.TestCase):
             output = client.command("score", settle=1.5).lower()
             self.assertIn("level", output)
             self.assertNotIn("huh?", output)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class CompressionTests(unittest.TestCase):
+    """MCCP2 output compression.
+
+    This wraps every byte the server sends, so the important cases are that
+    it works end to end and that not asking for it changes nothing.
+    """
+
+    def test_server_offers_compression(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            client.expect("by what name")
+            self.assertTrue(
+                client.negotiated(WILL, TELOPT_COMPRESS2), "no WILL COMPRESS2"
+            )
+
+    def test_gameplay_works_over_a_compressed_stream(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            # Ask for compression before reading, so the greeting itself is
+            # already compressed and the handshake is exercised at the very
+            # start of the stream.
+            client.send_raw(bytes([IAC, DO, TELOPT_COMPRESS2]))
+
+            create_character(client, "Zipzip", "harnesspw")
+            self.assertTrue(
+                client.compressed,
+                "server never acknowledged COMPRESS2",
+            )
+
+            # Everything below arrived deflated and was decompressed here.
+            client.send("score")
+            client.expect("level")
+
+            client.send("look")
+            client.expect("mv>")
+
+            # A long, highly compressible screen round-trips intact.
+            client.send("commands")
+            client.expect("mv>")
+            self.assertIn("commands", client.transcript.lower())
+
+    def test_compression_and_gmcp_coexist(self) -> None:
+        """GMCP is written through the same path, so it must compress too."""
+        with LiveMud() as mud, mud.connect() as client:
+            client.send_raw(
+                bytes([IAC, DO, TELOPT_COMPRESS2]) + bytes([IAC, DO, TELOPT_GMCP])
+            )
+            create_character(client, "Zipgz", "harnesspw")
+            self.assertTrue(client.compressed)
+
+            client.send("look")
+            client.expect("mv>")
+
+            blocks = client.subnegotiations(TELOPT_GMCP)
+            self.assertTrue(blocks, "no GMCP inside the compressed stream")
+            self.assertTrue(
+                blocks[-1].decode("latin-1").startswith("Char.Vitals ")
+            )
+
+    def test_declining_compression_leaves_the_stream_plain(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            create_character(client, "Zipplain", "harnesspw")
+            self.assertFalse(client.compressed)
+            client.send("score")
+            client.expect("level")

@@ -16,6 +16,7 @@ import os
 import re
 import shutil
 import socket
+import zlib
 import subprocess
 import sys
 import tempfile
@@ -27,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 # Telnet control bytes and the options the server implements.
 IAC, DONT, DO, WONT, WILL, SB, SE = 255, 254, 253, 252, 251, 250, 240
-TELOPT_NAWS, TELOPT_MSSP, TELOPT_GMCP = 31, 70, 201
+TELOPT_NAWS, TELOPT_MSSP, TELOPT_GMCP, TELOPT_COMPRESS2 = 31, 70, 201, 86
 MSSP_VAR, MSSP_VAL = 1, 2
 
 
@@ -108,6 +109,11 @@ class MudClient:
         self.buffer = ""
         self.transcript = ""
         self.raw = b""
+        # MCCP2: everything after the IAC SB COMPRESS2 IAC SE acknowledgement
+        # is a raw deflate stream, so the client has to switch mid-connection.
+        self.compressed = False
+        self._decomp = None
+        self._pending = b""
         self.sock = socket.create_connection(("127.0.0.1", port), timeout=timeout)
         self.sock.settimeout(0.5)
 
@@ -133,11 +139,40 @@ class MudClient:
             return False
         if not chunk:
             return False
-        self.raw += chunk
-        text = clean(chunk)
+        self._feed(chunk)
+        return True
+
+    def _absorb(self, data: bytes) -> None:
+        if not data:
+            return
+        self.raw += data
+        text = clean(data)
         self.buffer += text
         self.transcript += text
-        return True
+
+    def _feed(self, chunk: bytes) -> None:
+        """Route bytes, switching to decompression at the MCCP handshake."""
+        if self._decomp is not None:
+            self._absorb(self._decomp.decompress(chunk))
+            return
+
+        self._pending += chunk
+        ack = bytes([IAC, SB, TELOPT_COMPRESS2, IAC, SE])
+        index = self._pending.find(ack)
+        if index == -1:
+            plain, self._pending = self._pending, b""
+            self._absorb(plain)
+            return
+
+        # Plain up to the acknowledgement, deflate after it.
+        self._absorb(self._pending[:index])
+        self.raw += ack          # keep it visible for protocol assertions
+        rest = self._pending[index + len(ack):]
+        self._pending = b""
+        self.compressed = True
+        self._decomp = zlib.decompressobj()
+        if rest:
+            self._absorb(self._decomp.decompress(rest))
 
     def send_raw(self, data: bytes) -> None:
         """Send bytes verbatim, for telnet negotiation."""
