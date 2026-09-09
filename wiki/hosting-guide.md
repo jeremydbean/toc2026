@@ -8,6 +8,10 @@ for development and controlled hosts; Windows should use Docker Desktop or WSL
 
 ## Deployment Model
 
+For Oracle's free Ampere instances, see [ARM compatibility and Oracle
+hosting](oracle-arm-hosting.md). It records the emulated build/login checks,
+their limits, and an initial configuration within the documented free tier.
+
 ToC has two cooperating processes:
 
 1. `merc`, the single C game server, listens on the MUD Telnet port (default
