@@ -2,8 +2,9 @@
 
 ## Compatibility Status
 
-On September 9, 2026, the local working tree passed an ARM64 compatibility
-check using Ubuntu 24.04's AArch64 GCC 13 toolchain and QEMU user-mode emulation.
+On September 9, 2026, the published game source at `d31d074` passed the ARM64
+build and smoke checks below using Ubuntu 24.04's AArch64 GCC 13 toolchain and
+QEMU user-mode emulation. An older local working tree was checked separately.
 No game-source changes were required for the checks that passed.
 
 - The Make/GNU89 and CMake/C17 builds produced Linux AArch64 executables.
@@ -14,11 +15,19 @@ No game-source changes were required for the checks that passed.
 - A disposable character exercised password hashing, rejection of a mismatched
   confirmation, and successful confirmation through to race selection.
 - The Make executable remained running for another 25 seconds after login tests.
+- All 22 existing live gameplay tests passed against the published-source ARM
+  Make executable under QEMU (311.7 seconds total). Coverage included character
+  creation, core commands, save/reconnect, password rejection, login throttling,
+  money conservation, hostile amounts, persistent settings, MCCP2 compression,
+  and MSSP/GMCP/NAWS protocol handling. The test harness used a local QEMU
+  launcher in place of its native binary; characters and saves were disposable.
 - Linux ARM64 binary dependencies resolved for the dashboard and auxiliary
   scripts on Python 3.11 and 3.12, including Pydantic Core, uvloop, httptools,
   watchfiles, watchdog, PyYAML, and websockets.
+- All nine installation-asset tests passed. Whitespace validation also passed.
 
-The source uses a POSIX C game process and a Python/FastAPI dashboard. The
+The source uses a POSIX C game process, zlib for MCCP2 compression, and a
+Python/FastAPI dashboard. The
 Debian Bookworm Docker base supports ARM64 and the installer chooses host-native
 Debian/Ubuntu packages. Build from source on the ARM host; do not copy an x86
 `merc` executable or its object files there.
@@ -27,8 +36,8 @@ These are emulated build and startup results, not a hardware performance test
 or certification of every gameplay path. The full Docker image, dashboard
 runtime on ARM, sustained player load, and real Oracle networking still need
 verification on the chosen host. No live accounts were used or changed, and no
-cloud instance was provisioned. The working tree included pending gameplay
-changes; these results do not certify a particular published Git commit.
+cloud instance was provisioned. The published-source check was performed in a
+separate checkout to preserve the older checkout's pending gameplay changes.
 
 ## Free Instance Configuration
 
@@ -102,10 +111,11 @@ On a disposable native ARM development host, install the build dependencies and
 run from the repository root:
 
 ```bash
-sudo apt-get install -y build-essential libcrypt-dev python3
+sudo apt-get install -y build-essential libcrypt-dev zlib1g-dev python3
 make clean
 make
 python3 scripts/smoke_game.py --binary ./merc
+python3 -m unittest discover -s tests -p test_live_gameplay.py -v
 ```
 
 The script copies only world `.are` definitions and `area.lst` into a temporary
@@ -126,6 +136,7 @@ python3 scripts/smoke_game.py \
 ```
 
 The emulator sysroot must supply any dynamic ARM libraries required by the
-binary, including `libcrypt.so.1` when crypt is dynamically linked. The local
-Make audit linked Ubuntu's ARM `libcrypt.a` and used the cross-toolchain's
-ARM libc at runtime. Emulation timings should not be used to size a cloud VM.
+binary, including `libcrypt.so.1` and `libz.so.1` when dynamically linked. The
+Make audit linked Ubuntu's ARM `libcrypt.a` and `libz.a` and used the
+cross-toolchain's ARM libc at runtime. The CMake audit used ARM shared crypt
+and static zlib. Emulation timings should not be used to size a cloud VM.
