@@ -40,6 +40,7 @@ set(SRC_FILES
     src/edit.c
     src/fight.c
     src/gear_compare.c
+    src/gmcp.c
     src/handler.c
     src/hunt.c
     src/interp.c

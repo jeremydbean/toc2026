@@ -429,6 +429,22 @@ struct  descriptor_data
     sh_int              term_width;
     sh_int              term_height;
     bool                gmcp_enabled;
+    bool                gmcp_initial_sent;
+    bool                gmcp_vitals_valid;
+    bool                gmcp_status_valid;
+    CHAR_DATA *         gmcp_last_character;
+    long                gmcp_last_hit;
+    long                gmcp_last_max_hit;
+    long                gmcp_last_mana;
+    long                gmcp_last_max_mana;
+    long                gmcp_last_move;
+    long                gmcp_last_max_move;
+    long                gmcp_last_exp;
+    long                gmcp_last_max_exp;
+    sh_int              gmcp_last_level;
+    sh_int              gmcp_last_class;
+    sh_int              gmcp_last_race;
+    int                 gmcp_last_room;
     /*
      * MCCP2 output compression. Held as void * so <zlib.h> does not have to
      * be pulled into merc.h, which every translation unit includes.
@@ -2258,6 +2274,13 @@ void    act_new_cstr    ( const char *format, CHAR_DATA *ch, const void *arg1, c
 char * speak_filter    (CHAR_DATA *ch, const char *str);
 char * drunk_speak     (const char *str);
 void    make_descriptor ( DESCRIPTOR_DATA *dnew, int desc );
+
+/* gmcp.c */
+void    gmcp_on_enabled      ( DESCRIPTOR_DATA *d );
+void    gmcp_on_disabled     ( DESCRIPTOR_DATA *d );
+void    gmcp_handle_message  ( DESCRIPTOR_DATA *d, const char *message );
+void    gmcp_send_character  ( DESCRIPTOR_DATA *d );
+void    gmcp_send_room       ( DESCRIPTOR_DATA *d );
 
 /* db.c */
 void    boot_db         ( void );

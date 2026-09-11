@@ -25,6 +25,7 @@ and a large collection of hand-built areas.
 |---|---|
 | New player | [Player Guide](wiki/player-guide.md) |
 | Returning player | [Player Command Reference](wiki/player-command-reference.md) |
+| Mudlet player | [Official Mudlet package](mudlet/README.md) |
 | Server host | [Hosting Guide](wiki/hosting-guide.md) |
 | Immortal/operator | [Operator Guide](wiki/operator-guide.md) |
 | Developer | [Developer Guide](wiki/developer-guide.md) and [CONTRIBUTING.md](CONTRIBUTING.md) |
@@ -51,6 +52,8 @@ documentation.
   dungeon, map, compass, shard, and boss tracking.
 - A FastAPI dashboard for world browsing, area health, maps, player inspection,
   logs, backups, server commands, and a browser-to-MUD WebSocket bridge.
+- First-class Mudlet support with GA-framed prompts, GMCP vitals and room data,
+  an automatically installed interface, and a mapped Mud School tutorial.
 - Automated player snapshots, scheduled archive backups, diagnostics, native
   area validation, Python reference checks, area-health linting, and unit tests.
 - Docker, Docker Compose, Make, CMake, Windows/WSL validation, and GitHub Actions
@@ -163,6 +166,20 @@ traditional MUD client to `localhost:9000`. The administration dashboard is
 `http://127.0.0.1:9001`. Protected actions use the generated token in `.env`;
 the installers never print or replace an existing token. Both interfaces ship
 all browser assets locally and do not require internet access after installation.
+
+### Mudlet (Recommended Desktop Client)
+
+Leave **Enable GMCP** and **Allow server to install script packages** enabled,
+then connect to `toc.jeremybean.com` port `9000` (or `localhost:9000` for a
+local server). The server automatically supplies the official package and Mud
+School map. The interface includes live health, mana, movement, and experience
+gauges plus an embedded mapper; `Room.Info` continues mapping as the character
+explores beyond the tutorial.
+
+Inside Mudlet, `tocgui off` hides the interface, `tocgui on` restores it, and
+`tocgui status` reports its version and GMCP state. Package sources, manual
+installation notes, and reproducible build instructions are in
+[`mudlet/README.md`](mudlet/README.md).
 
 Docker Desktop can require acceptance of its own subscription terms on first
 launch. The project cannot accept those terms for the host. Docker documents

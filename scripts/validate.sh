@@ -31,7 +31,12 @@ step "C list iterator sanitizer test"
 # fails loudly instead of corrupting memory once in a blue moon.
 iterator_test_bin="$(mktemp)"
 gcc -g -fsanitize=address,undefined -Isrc -o "$iterator_test_bin" tests/test_list_iterator.c src/list.c
-ASAN_OPTIONS=detect_leaks=1 "$iterator_test_bin"
+asan_options="detect_leaks=1"
+if [ "$(uname -s)" = "Darwin" ]; then
+  # Apple's AddressSanitizer runtime aborts when LeakSanitizer is requested.
+  asan_options="detect_leaks=0"
+fi
+ASAN_OPTIONS="$asan_options" "$iterator_test_bin"
 rm -f "$iterator_test_bin"
 
 if [ "$run_smoke" = "1" ]; then
@@ -51,7 +56,12 @@ step "Python syntax"
   scripts/extract_zelda_entities.py \
   scripts/extract_zelda_doors.py \
   scripts/build_hyrule_manifest.py \
-  scripts/build_hyrule_area.py
+  scripts/build_hyrule_area.py \
+  scripts/build_mudlet_package.py \
+  scripts/test_mudlet_handshake.py
+
+step "Mudlet package and starter map"
+"$python_bin" scripts/build_mudlet_package.py --check
 
 step "Area data checks"
 "$python_bin" check_parser.py

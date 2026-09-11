@@ -181,7 +181,7 @@ void telnet_offer_options( DESCRIPTOR_DATA *d )
     d->telnet_sb_len = 0;
     d->term_width    = 0;
     d->term_height   = 0;
-    d->gmcp_enabled  = false;
+    gmcp_on_disabled( d );
 
     /* We are willing to report status, speak GMCP, and compress output. */
     telnet_command( d, WILL, TELOPT_MSSP );
@@ -345,6 +345,14 @@ static void telnet_handle_subneg( DESCRIPTOR_DATA *d )
         telnet_send_mssp( d );
         break;
 
+    case TELOPT_GMCP:
+        if ( d->telnet_sb_len < MAX_TELNET_SUBNEG )
+        {
+            d->telnet_sb[d->telnet_sb_len] = '\0';
+            gmcp_handle_message( d, d->telnet_sb );
+        }
+        break;
+
     default:
         break;
     }
@@ -417,7 +425,10 @@ size_t telnet_filter_input( DESCRIPTOR_DATA *d, const char *raw, size_t length,
                         telnet_send_mssp( d );
                     break;
                 case TELOPT_GMCP:
-                    d->gmcp_enabled = wanted;
+                    if ( wanted )
+                        gmcp_on_enabled( d );
+                    else
+                        gmcp_on_disabled( d );
                     break;
                 case TELOPT_COMPRESS2:
                     if ( wanted )

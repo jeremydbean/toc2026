@@ -304,8 +304,11 @@ class TelnetProtocolTests(unittest.TestCase):
                 blocks = client.subnegotiations(TELOPT_GMCP)
                 self.assertTrue(blocks, "no GMCP data after enabling it")
 
-                payload = blocks[-1].decode("latin-1")
-                self.assertTrue(payload.startswith("Char.Vitals "), payload)
+                payloads = [block.decode("latin-1") for block in blocks]
+                payload = next(
+                    item for item in reversed(payloads)
+                    if item.startswith("Char.Vitals ")
+                )
 
                 import json
 
@@ -313,6 +316,52 @@ class TelnetProtocolTests(unittest.TestCase):
                 for key in ("hp", "maxhp", "mana", "maxmana", "move", "maxmove", "level"):
                     self.assertIn(key, vitals)
                 self.assertGreater(vitals["maxhp"], 0)
+
+    def test_mudlet_receives_gui_map_status_rooms_and_ping(self) -> None:
+        import json
+
+        with LiveMud() as mud, mud.connect() as client:
+            client.send_raw(bytes([IAC, DO, TELOPT_GMCP]))
+            create_character(client, "Zipmudlet", "harnesspw")
+            client.command("look", settle=1.5)
+
+            payloads = [
+                block.decode("latin-1")
+                for block in client.subnegotiations(TELOPT_GMCP)
+            ]
+            map_index = next(
+                index for index, item in enumerate(payloads)
+                if item.startswith("Client.Map ")
+            )
+            gui_index = next(
+                index for index, item in enumerate(payloads)
+                if item.startswith("Client.GUI ")
+            )
+            self.assertLess(map_index, gui_index)
+
+            status_payload = next(
+                item for item in payloads if item.startswith("Char.Status ")
+            )
+            status = json.loads(status_payload[len("Char.Status "):])
+            for key in ("name", "level", "class", "race"):
+                self.assertIn(key, status)
+
+            room_payload = next(
+                item for item in payloads if item.startswith("Room.Info ")
+            )
+            room = json.loads(room_payload[len("Room.Info "):])
+            for key in ("num", "name", "area", "environment", "exits"):
+                self.assertIn(key, room)
+            self.assertIsInstance(room["exits"], dict)
+
+            ping = bytes([IAC, SB, TELOPT_GMCP]) + b"Core.Ping 42" + bytes([IAC, SE])
+            client.send_raw(ping)
+            client.drain(1.0)
+            payloads = [
+                block.decode("latin-1")
+                for block in client.subnegotiations(TELOPT_GMCP)
+            ]
+            self.assertIn("Core.Ping 42", payloads)
 
     def test_a_client_that_negotiates_nothing_is_unaffected(self) -> None:
         """Regression guard for the plain-Telnet majority."""
@@ -378,7 +427,10 @@ class CompressionTests(unittest.TestCase):
             blocks = client.subnegotiations(TELOPT_GMCP)
             self.assertTrue(blocks, "no GMCP inside the compressed stream")
             self.assertTrue(
-                blocks[-1].decode("latin-1").startswith("Char.Vitals ")
+                any(
+                    block.decode("latin-1").startswith("Char.Vitals ")
+                    for block in blocks
+                )
             )
 
     def test_declining_compression_leaves_the_stream_plain(self) -> None:

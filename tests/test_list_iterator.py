@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -127,7 +128,12 @@ class ListIteratorContractTests(unittest.TestCase):
                 [str(binary)],
                 capture_output=True,
                 text=True,
-                env={"ASAN_OPTIONS": "detect_leaks=1"},
+                env={
+                    "ASAN_OPTIONS": (
+                        "detect_leaks=0" if sys.platform == "darwin"
+                        else "detect_leaks=1"
+                    )
+                },
             )
             self.assertEqual(
                 run.returncode,

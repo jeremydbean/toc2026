@@ -465,7 +465,8 @@ int init_socket( int port )
 	struct linger ld;
 
 	ld.l_onoff  = 1;
-	ld.l_linger = 1000;
+	/* Darwin rejects excessively large linger values. */
+	ld.l_linger = 30;
 
 	if ( setsockopt( fd, SOL_SOCKET, SO_LINGER,
 	(char *) &ld, sizeof(ld) ) < 0 )
@@ -1526,9 +1527,13 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
         if ( IS_SET(ch->comm, COMM_PROMPT) )
             write_prompt( d );
 
-	if ( IS_SET(ch->comm, COMM_TELNET_GA) )
-	    write_to_buffer( d, go_ahead_str, 0 );
+	gmcp_send_room( d );
+	gmcp_send_character( d );
     }
+
+    /* Mudlet's isPrompt() uses IAC GA. Frame login and pager prompts too. */
+    if ( fPrompt && !merc_down && d->outtop > 0 && go_ahead_str[0] != '\0' )
+	write_to_buffer( d, go_ahead_str, 2 );
 
     /*
      * Short-circuit if nothing to write.
@@ -1672,25 +1677,6 @@ void write_prompt( DESCRIPTOR_DATA *d )
     pattern = ( owner != NULL && owner->prompt != NULL && owner->prompt[0] != '\0' )
         ? owner->prompt
         : default_prompt;
-
-    /*
-     * Mirror the prompt's vitals out of band for clients that asked for GMCP,
-     * so gauges and health bars track without scraping the prompt text. A
-     * no-op unless the client negotiated GMCP.
-     */
-    if ( d->gmcp_enabled )
-    {
-        char gmcp_buf[MAX_INPUT_LENGTH];
-
-        snprintf( gmcp_buf, sizeof(gmcp_buf),
-                  "{\"hp\":%d,\"maxhp\":%d,\"mana\":%d,\"maxmana\":%d,"
-                  "\"move\":%d,\"maxmove\":%d,\"level\":%d}",
-                  (int)display->hit,  (int)display->max_hit,
-                  (int)display->mana, (int)display->max_mana,
-                  (int)display->move, (int)display->max_move,
-                  (int)display->level );
-        telnet_send_gmcp( d, "Char.Vitals", gmcp_buf );
-    }
 
     prompt_buf[0] = '\0';
 

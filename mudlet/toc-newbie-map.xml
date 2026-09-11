@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+ <areas>
+  <area id="1" name="Hatchet Mud School" />
+ </areas>
+ <rooms>
+  <room id="3700" area="1" title="Entrance to Mud School" environment="1">
+   <coord x="0" y="0" z="0" />
+   <exit direction="north" target="3757" />
+  </room>
+  <room id="3701" area="1" title="A Room in Mud School" environment="1">
+   <coord x="0" y="2" z="0" />
+   <exit direction="south" target="3757" />
+   <exit direction="west" target="3702" />
+  </room>
+  <room id="3702" area="1" title="The Center Room" environment="1">
+   <coord x="-1" y="2" z="0" />
+   <exit direction="north" target="3703" />
+   <exit direction="east" target="3701" />
+   <exit direction="south" target="3705" />
+   <exit direction="west" target="3704" />
+   <exit direction="up" target="3708" />
+   <exit direction="down" target="3707" />
+  </room>
+  <room id="3703" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-1" y="3" z="0" />
+   <exit direction="north" target="3709" />
+   <exit direction="south" target="3702" />
+  </room>
+  <room id="3704" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-2" y="2" z="0" />
+   <exit direction="east" target="3702" />
+  </room>
+  <room id="3705" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-2" y="1" z="0" />
+   <exit direction="north" target="3702" />
+  </room>
+  <room id="3707" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-1" y="2" z="-1" />
+   <exit direction="up" target="3702" />
+  </room>
+  <room id="3708" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-1" y="2" z="1" />
+   <exit direction="down" target="3702" />
+  </room>
+  <room id="3709" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-1" y="4" z="0" />
+   <exit direction="west" target="3711" />
+   <exit direction="down" target="3710" />
+  </room>
+  <room id="3710" area="1" title="The Amorphous Shapes Cage" environment="1">
+   <coord x="-1" y="4" z="-1" />
+   <exit direction="up" target="3709" />
+  </room>
+  <room id="3711" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-2" y="4" z="0" />
+   <exit direction="east" target="3709" />
+   <exit direction="down" target="3712" />
+  </room>
+  <room id="3712" area="1" title="The Cage Room" environment="1">
+   <coord x="-2" y="4" z="-1" />
+   <exit direction="north" target="3713" />
+   <exit direction="east" target="3716" />
+   <exit direction="south" target="3715" />
+   <exit direction="west" target="3714" />
+   <exit direction="down" target="3717" />
+  </room>
+  <room id="3713" area="1" title="A Cage" environment="1">
+   <coord x="-2" y="5" z="-1" />
+   <exit direction="south" target="3712" />
+  </room>
+  <room id="3714" area="1" title="A Cage" environment="1">
+   <coord x="-3" y="4" z="-1" />
+   <exit direction="east" target="3712" />
+  </room>
+  <room id="3715" area="1" title="A Cage" environment="1">
+   <coord x="-2" y="3" z="-1" />
+   <exit direction="north" target="3712" />
+  </room>
+  <room id="3716" area="1" title="A Cage" environment="1">
+   <coord x="0" y="4" z="-1" />
+   <exit direction="west" target="3712" />
+  </room>
+  <room id="3717" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-2" y="4" z="-2" />
+   <exit direction="east" target="3719" />
+   <exit direction="south" target="3718" />
+   <exit direction="up" target="3712" />
+  </room>
+  <room id="3718" area="1" title="The Store in Mud School" environment="1">
+   <coord x="-2" y="3" z="-2" />
+   <exit direction="north" target="3717" />
+  </room>
+  <room id="3719" area="1" title="A Room in Mud School" environment="1">
+   <coord x="-1" y="4" z="-2" />
+   <exit direction="north" target="3720" />
+   <exit direction="east" target="3721" />
+   <exit direction="west" target="3717" />
+  </room>
+  <room id="3720" area="1" title="The Darkened Room" environment="1">
+   <coord x="-1" y="5" z="-2" />
+   <exit direction="south" target="3719" />
+  </room>
+  <room id="3721" area="1" title="The End of Mud School!" environment="1">
+   <coord x="0" y="4" z="-2" />
+   <exit direction="north" target="3722" />
+  </room>
+  <room id="3722" area="1" title="South Wall of Arena" environment="1">
+   <coord x="0" y="5" z="-2" />
+  </room>
+  <room id="3757" area="1" title="A Room in Mud School" environment="2">
+   <coord x="0" y="1" z="0" />
+   <exit direction="north" target="3701" />
+   <exit direction="east" target="3759" />
+   <exit direction="south" target="3700" />
+   <exit direction="west" target="3758" />
+  </room>
+  <room id="3758" area="1" title="Eclipse's Training Room" environment="2">
+   <coord x="-1" y="1" z="0" />
+   <exit direction="east" target="3757" />
+  </room>
+  <room id="3759" area="1" title="Soulcrusher's Guild Room" environment="2">
+   <coord x="1" y="1" z="0" />
+   <exit direction="west" target="3757" />
+  </room>
+ </rooms>
+ <environments>
+  <environment id="1" name="Inside" color="8" />
+  <environment id="2" name="City" color="7" />
+  <environment id="3" name="Field" color="10" />
+  <environment id="4" name="Forest" color="2" />
+  <environment id="5" name="Hills" color="11" />
+  <environment id="6" name="Mountains" color="15" />
+  <environment id="7" name="Water" color="12" />
+  <environment id="8" name="Deep water" color="4" />
+  <environment id="9" name="Underwater" color="6" />
+  <environment id="10" name="Air" color="14" />
+  <environment id="11" name="Desert" color="3" />
+  <environment id="12" name="Underground" color="8" />
+ </environments>
+</map>

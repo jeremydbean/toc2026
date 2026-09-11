@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE MudletPackage>
+<MudletPackage version="1.001">
+ <TriggerPackage></TriggerPackage>
+ <TimerPackage></TimerPackage>
+ <AliasPackage>
+  <Alias isActive="yes" isFolder="no">
+   <name>Times of Chaos GUI controls</name>
+   <script><![CDATA[
+if tocMudlet and tocMudlet.command then
+  tocMudlet.command(matches[2])
+end
+]]></script>
+   <command></command>
+   <packageName>TimesOfChaos</packageName>
+   <regex>^tocgui(?:\s+(on|off|status))?$</regex>
+  </Alias>
+ </AliasPackage>
+ <ActionPackage></ActionPackage>
+ <ScriptPackage>
+  <ScriptGroup isActive="yes" isFolder="yes">
+   <name>TimesOfChaos</name>
+   <packageName>TimesOfChaos</packageName>
+   <script></script>
+   <eventHandlerList />
+   <Script isActive="yes" isFolder="no">
+    <name>tocMudlet.core</name>
+    <packageName>TimesOfChaos</packageName>
+    <script><![CDATA[
+-- Times of Chaos official Mudlet package
+-- https://github.com/jeremydbean/toc2026/tree/main/mudlet
+
+tocMudlet = tocMudlet or {}
+if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
+
+tocMudlet.version = "1.0.0"
+tocMudlet.handlers = {}
+tocMudlet.ui = {}
+tocMudlet.lastRoom = nil
+tocMudlet.lastExits = nil
+tocMudlet.enabled = true
+
+local P = {
+  background = "#11131f",
+  panel = "#191d2d",
+  border = "#343a56",
+  text = "#e7e9f2",
+  muted = "#a5abc0",
+  hp1 = "#7f1d1d", hp2 = "#dc2626",
+  mana1 = "#1e3a8a", mana2 = "#3b82f6",
+  move1 = "#14532d", move2 = "#22c55e",
+  exp1 = "#713f12", exp2 = "#eab308",
+}
+
+local DIR_OFFSET = {
+  n  = { 0,  1,  0}, e  = { 1,  0,  0},
+  s  = { 0, -1,  0}, w  = {-1,  0,  0},
+  u  = { 0,  0,  1}, d  = { 0,  0, -1},
+  ne = { 1,  1,  0}, nw = {-1,  1,  0},
+  se = { 1, -1,  0}, sw = {-1, -1,  0},
+}
+
+local ENVIRONMENT = {
+  inside = 201, city = 202, field = 203, forest = 204,
+  hills = 205, mountains = 206, water = 207,
+  ["deep-water"] = 208, underwater = 209, air = 210,
+  desert = 211, underground = 212,
+}
+
+local function html(text)
+  text = tostring(text or "")
+  return text:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;")
+end
+
+local function number(value, fallback)
+  local parsed = tonumber(value)
+  if parsed == nil then return fallback or 0 end
+  return parsed
+end
+
+local function roomExistsSafe(roomId)
+  if not roomExists then return false end
+  local ok, exists = pcall(roomExists, roomId)
+  return ok and exists and true or false
+end
+
+local function setupEnvironmentColours()
+  if not setCustomEnvColor then return end
+  local colours = {
+    [201] = {75, 78, 95}, [202] = {145, 150, 165},
+    [203] = {104, 159, 92}, [204] = {38, 113, 68},
+    [205] = {126, 145, 74}, [206] = {113, 105, 101},
+    [207] = {48, 145, 196}, [208] = {28, 90, 151},
+    [209] = {24, 73, 110}, [210] = {125, 211, 252},
+    [211] = {202, 151, 71}, [212] = {90, 75, 62},
+  }
+  for environment, rgb in pairs(colours) do
+    pcall(setCustomEnvColor, environment, rgb[1], rgb[2], rgb[3])
+  end
+end
+
+local function ensureArea(name)
+  name = tostring(name or "Unknown Area")
+  if getAreaTable then
+    local ok, areas = pcall(getAreaTable)
+    if ok and type(areas) == "table" and tonumber(areas[name]) then
+      return tonumber(areas[name])
+    end
+  end
+  if addAreaName then
+    local ok, areaId = pcall(addAreaName, name)
+    if ok and tonumber(areaId) and tonumber(areaId) > 0 then
+      return tonumber(areaId)
+    end
+  end
+  return -1
+end
+
+local function directionTo(roomInfo, target)
+  if type(roomInfo) ~= "table" or type(roomInfo.exits) ~= "table" then
+    return nil
+  end
+  for direction, destination in pairs(roomInfo.exits) do
+    if tonumber(destination) == tonumber(target) and DIR_OFFSET[direction] then
+      return direction
+    end
+  end
+  return nil
+end
+
+local function placeNearPrevious(roomId, areaId)
+  local x, y, z = 0, 0, 0
+  local direction = directionTo(tocMudlet.lastExits, roomId)
+  if direction and tocMudlet.lastRoom and getRoomCoordinates
+     and roomExistsSafe(tocMudlet.lastRoom) then
+    local ok, px, py, pz = pcall(getRoomCoordinates, tocMudlet.lastRoom)
+    if ok and px ~= nil then
+      local offset = DIR_OFFSET[direction]
+      x, y, z = number(px) + offset[1], number(py) + offset[2],
+                  number(pz) + offset[3]
+    end
+  end
+  if setRoomCoordinates then pcall(setRoomCoordinates, roomId, x, y, z) end
+  if areaId > 0 and setRoomArea then pcall(setRoomArea, roomId, areaId) end
+end
+
+local function ensureRoom(roomId, info)
+  local created = false
+  local areaId = ensureArea(info.area)
+  if not roomExistsSafe(roomId) and addRoom then
+    local ok, result = pcall(addRoom, roomId)
+    created = ok and result ~= false
+  end
+  if not roomExistsSafe(roomId) then return false end
+
+  if created then placeNearPrevious(roomId, areaId) end
+  if areaId > 0 and setRoomArea then pcall(setRoomArea, roomId, areaId) end
+  if setRoomName then pcall(setRoomName, roomId, tostring(info.name or roomId)) end
+  if setRoomEnv then
+    pcall(setRoomEnv, roomId, ENVIRONMENT[tostring(info.environment)] or 201)
+  end
+  return true
+end
+
+local function linkKnownExits(roomId, exits)
+  if type(exits) ~= "table" or not setExit then return end
+  for direction, target in pairs(exits) do
+    local targetId = tonumber(target)
+    if targetId and DIR_OFFSET[direction] then
+      if roomExistsSafe(targetId) then
+        pcall(setExit, roomId, targetId, direction)
+        if setExitStub then pcall(setExitStub, roomId, direction, false) end
+      elseif setExitStub then
+        pcall(setExitStub, roomId, direction, true)
+      end
+    end
+  end
+end
+
+function tocMudlet.onRoomInfo()
+  local info = gmcp and gmcp.Room and gmcp.Room.Info
+  if type(info) ~= "table" then return end
+  local roomId = tonumber(info.num or info.id)
+  if not roomId then return end
+
+  if ensureRoom(roomId, info) then
+    linkKnownExits(roomId, info.exits)
+    if tocMudlet.lastRoom and roomExistsSafe(tocMudlet.lastRoom) then
+      linkKnownExits(tocMudlet.lastRoom,
+        type(tocMudlet.lastExits) == "table" and tocMudlet.lastExits.exits or nil)
+    end
+    if centerview then pcall(centerview, roomId) end
+  end
+
+  tocMudlet.lastRoom = roomId
+  tocMudlet.lastExits = info
+  if tocMudlet.ui.location then
+    tocMudlet.ui.location:echo(string.format(
+      [[<span style="color:%s"><b>%s</b></span>  <span style="color:%s">%s · #%d</span>]],
+      P.text, html(info.name or "Unknown room"), P.muted,
+      html(info.area or "Unknown Area"), roomId))
+  end
+end
+
+local function setGauge(gauge, current, maximum, label)
+  if not gauge then return end
+  current, maximum = number(current), math.max(1, number(maximum, 1))
+  gauge:setValue(current, maximum,
+    string.format("%s  %d / %d", label, current, maximum))
+end
+
+function tocMudlet.onVitals()
+  local vitals = gmcp and gmcp.Char and gmcp.Char.Vitals
+  if type(vitals) ~= "table" then return end
+  setGauge(tocMudlet.ui.hp, vitals.hp or vitals.health,
+    vitals.maxhp or vitals.maxhealth, "HP")
+  setGauge(tocMudlet.ui.mana, vitals.mana, vitals.maxmana, "MANA")
+  setGauge(tocMudlet.ui.move, vitals.moves or vitals.move,
+    vitals.maxmoves or vitals.maxmove, "MOVE")
+  local exp, maxexp = number(vitals.exp), number(vitals.maxexp, 1)
+  local toLevel = number(vitals.tnl)
+  if tocMudlet.ui.exp then
+    tocMudlet.ui.exp:setValue(exp, math.max(1, maxexp),
+      string.format("EXP  %d to level", toLevel))
+  end
+end
+
+function tocMudlet.onStatus()
+  local status = gmcp and gmcp.Char and gmcp.Char.Status
+  if type(status) ~= "table" or not tocMudlet.ui.identity then return end
+  tocMudlet.ui.identity:echo(string.format(
+    [[<div style="color:%s;font-size:13pt"><b>%s</b></div>]] ..
+    [[<div style="color:%s">Level %s %s · %s</div>]],
+    P.text, html(status.name or "Times of Chaos"), P.muted,
+    html(status.level or "?"), html(status.race or ""), html(status.class or "")))
+end
+
+local function styleGauge(gauge, first, second)
+  gauge.front:setStyleSheet(string.format([[
+    background: qlineargradient(x1:0,y1:0,x2:1,y2:0,stop:0 %s,stop:1 %s);
+    border: 1px solid #090a10; border-radius: 4px;]], first, second))
+  gauge.back:setStyleSheet(string.format([[
+    background: %s; border: 1px solid %s; border-radius: 4px;]],
+    P.background, P.border))
+  gauge.text:setStyleSheet(string.format([[
+    color: %s; font-family: "DejaVu Sans Mono", monospace;
+    font-size: 10pt; font-weight: 600; qproperty-alignment: 'AlignCenter';]], P.text))
+end
+
+function tocMudlet.buildUI()
+  setBorderTop(58)
+  setBorderRight(360)
+  setBorderBottom(34)
+
+  tocMudlet.ui.topBackground = Geyser.Label:new({
+    name = "tocMudlet.topBackground", x = 0, y = 0,
+    width = "100%-360px", height = 58,
+  })
+  tocMudlet.ui.topBackground:setStyleSheet(string.format(
+    "background:%s;border-bottom:1px solid %s;", P.panel, P.border))
+
+  tocMudlet.ui.gauges = Geyser.HBox:new({
+    name = "tocMudlet.gauges", x = 8, y = 8,
+    width = "100%-376px", height = 42,
+  })
+  tocMudlet.ui.hp = Geyser.Gauge:new({name = "tocMudlet.hp"}, tocMudlet.ui.gauges)
+  tocMudlet.ui.mana = Geyser.Gauge:new({name = "tocMudlet.mana"}, tocMudlet.ui.gauges)
+  tocMudlet.ui.move = Geyser.Gauge:new({name = "tocMudlet.move"}, tocMudlet.ui.gauges)
+  tocMudlet.ui.exp = Geyser.Gauge:new({name = "tocMudlet.exp"}, tocMudlet.ui.gauges)
+  styleGauge(tocMudlet.ui.hp, P.hp1, P.hp2)
+  styleGauge(tocMudlet.ui.mana, P.mana1, P.mana2)
+  styleGauge(tocMudlet.ui.move, P.move1, P.move2)
+  styleGauge(tocMudlet.ui.exp, P.exp1, P.exp2)
+  setGauge(tocMudlet.ui.hp, 0, 1, "HP")
+  setGauge(tocMudlet.ui.mana, 0, 1, "MANA")
+  setGauge(tocMudlet.ui.move, 0, 1, "MOVE")
+  tocMudlet.ui.exp:setValue(0, 1, "EXP")
+
+  tocMudlet.ui.rightBackground = Geyser.Label:new({
+    name = "tocMudlet.rightBackground", x = -360, y = 0,
+    width = 360, height = "100%",
+  })
+  tocMudlet.ui.rightBackground:setStyleSheet(string.format(
+    "background:%s;border-left:1px solid %s;", P.panel, P.border))
+
+  tocMudlet.ui.identity = Geyser.Label:new({
+    name = "tocMudlet.identity", x = -350, y = 8,
+    width = 340, height = 48,
+  })
+  tocMudlet.ui.identity:setStyleSheet(string.format([[
+    background:%s;color:%s;border:1px solid %s;border-radius:5px;
+    padding:4px 8px;qproperty-alignment:'AlignVCenter';]],
+    P.background, P.text, P.border))
+  tocMudlet.ui.identity:echo("<b>Times of Chaos</b><br><span style='color:#a5abc0'>Connecting...</span>")
+
+  tocMudlet.ui.mapper = Geyser.Mapper:new({
+    name = "tocMudlet.mapper", x = -350, y = 64,
+    width = 340, height = "100%-112px",
+  })
+
+  tocMudlet.ui.mapHint = Geyser.Label:new({
+    name = "tocMudlet.mapHint", x = -350, y = -42,
+    width = 340, height = 32,
+  })
+  tocMudlet.ui.mapHint:setStyleSheet(string.format([[
+    background:%s;color:%s;border:1px solid %s;border-radius:5px;
+    qproperty-alignment:'AlignCenter';]], P.background, P.muted, P.border))
+  tocMudlet.ui.mapHint:echo("GMCP mapper · <b>tocgui off</b> hides this interface")
+
+  tocMudlet.ui.location = Geyser.Label:new({
+    name = "tocMudlet.location", x = 0, y = -34,
+    width = "100%-360px", height = 34,
+  })
+  tocMudlet.ui.location:setStyleSheet(string.format([[
+    background:%s;color:%s;border-top:1px solid %s;padding:6px 12px;
+    qproperty-alignment:'AlignVCenter';]], P.panel, P.text, P.border))
+  tocMudlet.ui.location:echo("Waiting for room information...")
+end
+
+function tocMudlet.teardownUI()
+  for _, widget in pairs(tocMudlet.ui or {}) do
+    if type(widget) == "table" and widget.hide then pcall(function() widget:hide() end) end
+    if type(widget) == "table" and widget.delete then pcall(function() widget:delete() end) end
+  end
+  tocMudlet.ui = {}
+  if setBorderSizes then pcall(setBorderSizes, 0, 0, 0, 0) end
+end
+
+function tocMudlet.subscribe()
+  if not sendGMCP then return end
+  sendGMCP('Core.Hello {"client":"Mudlet","version":"TimesOfChaos ' ..
+    tocMudlet.version .. '"}')
+  sendGMCP('Core.Supports.Add ["Char 1","Char.Vitals 1","Char.Status 1",' ..
+    '"Room 1","Room.Info 1"]')
+end
+
+function tocMudlet.refresh()
+  if gmcp and gmcp.Char and gmcp.Char.Vitals then tocMudlet.onVitals() end
+  if gmcp and gmcp.Char and gmcp.Char.Status then tocMudlet.onStatus() end
+  if gmcp and gmcp.Room and gmcp.Room.Info then tocMudlet.onRoomInfo() end
+end
+
+function tocMudlet.command(action)
+  action = action or "status"
+  if action == "off" then
+    tocMudlet.enabled = false
+    tocMudlet.teardownUI()
+    cecho("\n<yellow>Times of Chaos GUI hidden. Type <white>tocgui on<yellow> to restore it.<reset>\n")
+  elseif action == "on" then
+    if not tocMudlet.enabled or not tocMudlet.ui.mapper then
+      tocMudlet.enabled = true
+      tocMudlet.buildUI()
+      tocMudlet.refresh()
+    end
+    cecho("\n<green>Times of Chaos GUI enabled.<reset>\n")
+  else
+    cecho(string.format("\n<cyan>Times of Chaos Mudlet package %s: GUI %s, GMCP %s.<reset>\n",
+      tocMudlet.version, tocMudlet.enabled and "on" or "off",
+      (gmcp and gmcp.Char) and "active" or "waiting"))
+  end
+end
+
+local function register(event, callback)
+  if registerAnonymousEventHandler then
+    local id = registerAnonymousEventHandler(event, callback)
+    table.insert(tocMudlet.handlers, id)
+  end
+end
+
+function tocMudlet.install()
+  setupEnvironmentColours()
+  tocMudlet.buildUI()
+  register("gmcp.Char.Vitals", function() tocMudlet.onVitals() end)
+  register("gmcp.Char.Status", function() tocMudlet.onStatus() end)
+  register("gmcp.Room.Info", function() tocMudlet.onRoomInfo() end)
+  register("sysConnectionEvent", function() tocMudlet.subscribe() end)
+  register("sysUninstallPackage", function(_, packageName)
+    if packageName == "TimesOfChaos" then tocMudlet.teardown() end
+  end)
+  if isConnected and isConnected() then tocMudlet.subscribe() end
+  tempTimer(0.1, tocMudlet.refresh)
+  cecho("\n<cyan>Times of Chaos Mudlet interface ready.<reset> " ..
+    "Type <white>tocgui<reset> for status or <white>tocgui off<reset> to hide it.\n")
+end
+
+function tocMudlet.teardown()
+  for _, handler in ipairs(tocMudlet.handlers or {}) do
+    if killAnonymousEventHandler then pcall(killAnonymousEventHandler, handler) end
+  end
+  tocMudlet.handlers = {}
+  tocMudlet.teardownUI()
+end
+
+tocMudlet.install()
+]]></script>
+    <eventHandlerList>
+     <string>sysLoadEvent</string>
+     <string>sysInstall</string>
+    </eventHandlerList>
+   </Script>
+  </ScriptGroup>
+ </ScriptPackage>
+ <KeyPackage></KeyPackage>
+ <HelpPackage></HelpPackage>
+</MudletPackage>

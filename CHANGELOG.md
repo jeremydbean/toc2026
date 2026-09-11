@@ -10,6 +10,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed native macOS startup failing at `SO_LINGER` with "Numerical argument
+  out of domain" by using a portable, bounded 30-second linger interval, and
+  stopped the validator from requesting unsupported LeakSanitizer behavior on
+  Darwin.
 - Fixed `compare` overvaluing damroll and Strength by applying enhanced damage
   after damroll and by multiplying damroll into the backstab estimate; `one_hit`
   adds damroll last, after both. This could invert weapon recommendations,
@@ -97,6 +101,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added first-class Mudlet support: `IAC GA` prompt framing, `Char.Vitals`,
+  `Char.Status`, and `Room.Info` GMCP messages, automatic `Client.Map` and
+  `Client.GUI` delivery, a 25-room Mud School MMP map, and a self-updating
+  Mudlet package with gauges and an embedded mapper.
+- Added deterministic Mudlet asset generation and tests plus a live handshake
+  probe that verifies negotiation, package/map advertisement, ping handling,
+  prompt framing, and isolation of GMCP data from login names.
 - Added combat effects for the `flaming`, `frost`, `vampiric`, `sharp`, and
   `vorpal` weapon flags, which 135 of 623 weapons carried with no mechanical
   effect. Elemental flags add damage and convert the damage school so immunity
