@@ -20,10 +20,8 @@ if command -v nmcli >/dev/null 2>&1; then
             case "$connection_type" in
                 802-3-ethernet|802-11-wireless)
                     nmcli connection modify uuid "$connection_uuid" \
-                        ipv4.dhcp-fqdn "" \
                         ipv4.dhcp-hostname "$LOCAL_HOSTNAME" \
                         ipv4.dhcp-send-hostname yes \
-                        ipv6.dhcp-fqdn "" \
                         ipv6.dhcp-hostname "$LOCAL_HOSTNAME" \
                         ipv6.dhcp-send-hostname yes
                     ;;

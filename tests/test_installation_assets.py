@@ -159,6 +159,7 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn('ipv4.dhcp-send-hostname yes', discovery)
         self.assertIn('ipv6.dhcp-hostname "$LOCAL_HOSTNAME"', discovery)
         self.assertIn('ipv6.dhcp-send-hostname yes', discovery)
+        self.assertNotIn("dhcp-fqdn", discovery)
         self.assertNotIn("connection down", discovery)
         self.assertNotIn("connection up", discovery)
         self.assertIn("Before=toc2026-game.service toc2026-web.service", service)
