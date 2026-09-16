@@ -102,3 +102,28 @@ generic mapper's login-prompt probing triggers. The prompt is now reissued.
 A clean Mudlet profile should be retried against the public host; the
 authenticated in-game map/gauge check and review screenshot are still
 outstanding, and the review request has still not been sent.
+
+## Deployment: 2026-09-16, commit a16edb9
+
+The login-probe fix is live on the public server. Cutover followed the
+Windows production runbook: stopped-state backup
+(`state-20260916T180038Z.tar.gz`, with SHA-256 sidecar), a code rollback copy
+of the previous binary, maintenance marker, service stop, binary install,
+state comparison, then restart.
+
+Only the compiled `merc` binary changed. The three commits since the previous
+deployment touch `src/` alone; no area data, dashboard, or Mudlet asset was
+altered. Player state was byte-identical across the swap: 1,209 files, the
+same combined SHA-256 before and after.
+
+Verified against the public host afterwards: a bare newline and a
+whitespace-only line both answer `Name:` instead of dropping the connection,
+prompts still carry `IAC GA`, and `scripts/test_mudlet_handshake.py` passes
+end to end. check-host.net reached port 9000 from five of six nodes; the one
+timeout was Saint Petersburg, a routing path that also fails to other US
+residential addresses, and eight of eight nodes succeeded earlier.
+
+Still outstanding: retry a clean Mudlet profile now that the disconnect is
+fixed, capture the authenticated in-game map and gauge screenshot, and send
+the review request. Installing the interface is not the same as a completed
+client review.
