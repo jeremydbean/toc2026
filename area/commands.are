@@ -49,15 +49,15 @@ Times of Chaos has an automatic client-side map in its official Mudlet
 interface.  There is no MAP game command: the mapper is a window in Mudlet
 that follows your character as you move.
 
-The server supplies a complete Mud School starter map.  Beyond the school,
-each room you visit is added automatically from GMCP Room.Info data.  Revisited
-rooms refresh their name, area, terrain, and visible directional exits.  If a
+The server supplies a complete world atlas, so the surrounding rooms are
+already drawn before you take a step.  Rooms you visit refresh themselves from
+GMCP Room.Info data: name, area, terrain, and visible directional exits.  If a
 visible exit is removed or points somewhere new after a world update, the
 saved map corrects it when that room is visited again.
 
-The mapper records exploration, not omniscience.  Secret exits are not sent
-until the game reveals them.  Portals, ENTER routes, teleports, scripted
-movement, and other non-directional travel may not draw a normal map line.
+The atlas draws rooms and visible exits, not omniscience.  Secret exits
+are not sent until the game reveals them.  Portals, ENTER routes, teleports,
+scripted movement, and other non-directional travel may not draw a map line.
 Deleted rooms that can no longer be visited may remain in Mudlet's saved map.
 Room descriptions, EXITS, and SEARCH remain authoritative.
 
