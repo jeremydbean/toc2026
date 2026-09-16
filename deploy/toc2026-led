@@ -9,10 +9,15 @@ if [ ! -d "$led_path" ]; then
 fi
 
 case "${1:-}" in
-    on)
+    on|healthy)
+        printf '%s\n' timer >"$led_path/trigger"
+        printf '%s\n' 3000 >"$led_path/delay_on"
+        printf '%s\n' 1000 >"$led_path/delay_off"
+        ;;
+    failed)
         printf '%s\n' timer >"$led_path/trigger"
         printf '%s\n' 100 >"$led_path/delay_on"
-        printf '%s\n' 1900 >"$led_path/delay_off"
+        printf '%s\n' 100 >"$led_path/delay_off"
         ;;
     off)
         printf '%s\n' none >"$led_path/trigger"
@@ -25,7 +30,7 @@ case "${1:-}" in
         cat "$led_path/brightness"
         ;;
     *)
-        echo "Usage: toc2026-led {on|off|status}" >&2
+        echo "Usage: toc2026-led {on|healthy|failed|off|status}" >&2
         exit 2
         ;;
 esac

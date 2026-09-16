@@ -702,6 +702,8 @@ The reproducible assets are under `deploy/`:
 | `install-pi.sh` | Installs units, tmpfiles, journald limits, and boot enablement |
 | `systemd/toc2026-game.service` | Runs `merc`, saves on SIGTERM, and restarts crashes |
 | `systemd/toc2026-web.service` | Runs one Uvicorn worker and restarts crashes |
+| `systemd/toc2026-recovery.service` | Escalates persistent failures through capped reboot and forced-update stages |
+| `systemd/toc2026-stable.service` | Clears persistent recovery state after ten healthy minutes |
 | `systemd/toc2026-player-backup.*` | Six-hour encrypted player snapshot timer/service |
 | `systemd/toc2026-update.*` | Weekly update timer and admin-request path/service |
 | `toc2026-update` | Root-owned guarded fetch/build/validate/restart implementation |
@@ -709,7 +711,9 @@ The reproducible assets are under `deploy/`:
 | `toc2026-namecheap-ddns` | Validates and submits the detected public IPv4 without a resident daemon |
 | `namecheap-ddns.env.example` | Non-secret template for the private DDNS configuration |
 | `systemd/toc2026-led.service` | Binds the onboard ACT LED indicator to the game service lifecycle |
-| `toc2026-led` | Selects the slow status blink or turns the indicator off |
+| `toc2026-led` | Selects the healthy or failure blink pattern, or turns the indicator off |
+| `toc2026-recover` | Persists and caps recovery attempts across reboots |
+| `toc2026-stable` | Clears the recovery counter only after a stable run |
 
 Build with one compiler process and use binary Python packages to control peak
 memory:
@@ -741,6 +745,16 @@ services remain available, then gracefully restarts and health-checks both. A
 failed build leaves the old processes running and the deployed marker unchanged
 so a later scheduled or dashboard-requested run can retry.
 
+The game unit uses `Type=notify` and a 45-second systemd watchdog. The MUD sends
+`READY=1` only after the listening socket and world database are ready, then
+sends watchdog heartbeats from the main game loop. A crash or missed heartbeat
+is killed and restarted after ten seconds. Persistent failures trigger a
+root-owned recovery unit: the first stage reboots, the second forces the same
+backup/fetch/build/validate/deploy workflow even when the commit is unchanged,
+and the third stops automatic reboots so a bad source revision or hardware
+fault cannot create an infinite boot loop. Ten continuously healthy minutes
+clear the persisted recovery count.
+
 The dashboard **Update ToC** action writes only a volatile request file. The
 root-owned systemd unit performs the update after the web request returns, so
 the task survives the dashboard restart. Follow it with:
@@ -769,9 +783,10 @@ the dashboard's TCP 9001 port; use a VPN or an authenticated HTTPS reverse proxy
 if remote browser administration is required.
 
 On Raspberry Pi boards that expose `/sys/class/leds/ACT`, the appliance also
-binds `toc2026-led.service` to `toc2026-game.service`. A 100 ms flash followed
-by 1.9 seconds off means the MUD process is running; the LED goes dark when the
-game stops and returns after systemd restarts it. This deliberately replaces
+binds `toc2026-led.service` to `toc2026-game.service`. Three seconds on followed
+by one second off means the MUD is healthy. A rapid 100 ms on/off blink means
+escalated recovery is active or exhausted; the LED goes dark during an ordinary
+stop and returns after systemd restarts the game. This deliberately replaces
 the normal `actpwr` LED trigger. Disabling the indicator service and writing
 `actpwr` back to `/sys/class/leds/ACT/trigger` restores the board default.
 

@@ -30,6 +30,10 @@ install -m 0755 /home/toc/toc2026/deploy/toc2026-namecheap-ddns \
     /usr/local/sbin/toc2026-namecheap-ddns
 install -m 0755 /home/toc/toc2026/deploy/toc2026-led \
     /usr/local/sbin/toc2026-led
+install -m 0755 /home/toc/toc2026/deploy/toc2026-recover \
+    /usr/local/sbin/toc2026-recover
+install -m 0755 /home/toc/toc2026/deploy/toc2026-stable \
+    /usr/local/sbin/toc2026-stable
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-game.service \
     /etc/systemd/system/toc2026-game.service
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-web.service \
@@ -50,6 +54,10 @@ install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-namecheap-ddns.timer \
     /etc/systemd/system/toc2026-namecheap-ddns.timer
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-led.service \
     /etc/systemd/system/toc2026-led.service
+install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-recovery.service \
+    /etc/systemd/system/toc2026-recovery.service
+install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-stable.service \
+    /etc/systemd/system/toc2026-stable.service
 install -m 0644 /home/toc/toc2026/deploy/journald/99-toc2026.conf \
     /etc/systemd/journald.conf.d/99-toc2026.conf
 install -m 0644 /home/toc/toc2026/deploy/tmpfiles/toc2026.conf \
@@ -67,6 +75,7 @@ systemctl daemon-reload
 systemctl restart systemd-journald
 systemctl enable --now toc2026-game.service toc2026-web.service \
     toc2026-update.timer toc2026-update.path
+systemctl enable --now toc2026-stable.service
 if [ -e /sys/class/leds/ACT/trigger ]; then
     systemctl enable --now toc2026-led.service
 else

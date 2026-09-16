@@ -41,6 +41,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <arpa/telnet.h>
+#include <stddef.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,6 +52,9 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
+#if defined(unix)
+#include <sys/un.h>
+#endif
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdarg.h>
@@ -335,10 +339,58 @@ void    game_loop_mac_msdos     ( void );
 void    game_loop_unix          ( int control );
 static void handle_shutdown_signal( int signal_number );
 static void process_shutdown_signal( void );
+static int notify_systemd       ( const char *state );
 #endif
 
 
 #if defined(unix)
+static int notify_systemd( const char *state )
+{
+    const char *socket_path;
+    struct sockaddr_un address;
+    socklen_t address_length;
+    size_t path_length;
+    int fd;
+    int result;
+
+    socket_path = getenv( "NOTIFY_SOCKET" );
+    if ( socket_path == NULL || socket_path[0] == '\0' )
+        return 0;
+
+    path_length = strlen( socket_path );
+    if ( path_length >= sizeof(address.sun_path) )
+    {
+        errno = ENAMETOOLONG;
+        return -1;
+    }
+
+    memset( &address, 0, sizeof(address) );
+    address.sun_family = AF_UNIX;
+    if ( socket_path[0] == '@' )
+    {
+        address.sun_path[0] = '\0';
+        memcpy( address.sun_path + 1, socket_path + 1, path_length - 1 );
+        address_length = (socklen_t)( offsetof( struct sockaddr_un, sun_path )
+                                   + path_length );
+    }
+    else
+    {
+        memcpy( address.sun_path, socket_path, path_length + 1 );
+        address_length = (socklen_t)( offsetof( struct sockaddr_un, sun_path )
+                                   + path_length + 1 );
+    }
+
+    fd = socket( AF_UNIX, SOCK_DGRAM, 0 );
+    if ( fd < 0 )
+        return -1;
+
+    result = (int)sendto( fd, state, strlen(state), 0,
+                          (struct sockaddr *)&address, address_length );
+    close( fd );
+    return result < 0 ? -1 : 1;
+}
+
+
 static void handle_shutdown_signal( int signal_number )
 {
     shutdown_signal_received = signal_number;
@@ -463,8 +515,11 @@ int main( int argc, char **argv )
     boot_db( );
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "ROM is ready to rock on port %d.", port );
     log_string( log_buf );
+    if ( notify_systemd( "READY=1\nSTATUS=Accepting MUD connections" ) < 0 )
+        perror( "systemd ready notification" );
     /* init_web( port + 1 );  REMOVED: Legacy C webserver conflicts with Python server */
     game_loop_unix( control );
+    notify_systemd( "STOPPING=1\nSTATUS=Saving players and shutting down" );
     close ( control );
 #endif
 
@@ -660,6 +715,7 @@ void game_loop_unix( int control )
     static struct timeval null_time;
     struct timeval last_time;
     struct sigaction shutdown_action;
+    time_t last_watchdog_time;
 
     signal( SIGPIPE, SIG_IGN );
     memset( &shutdown_action, 0, sizeof(shutdown_action) );
@@ -669,6 +725,7 @@ void game_loop_unix( int control )
     sigaction( SIGINT, &shutdown_action, NULL );
     gettimeofday( &last_time, NULL );
     time( &current_time );
+    last_watchdog_time = current_time;
 
     /* Main loop */
     while ( !merc_down )
@@ -683,6 +740,12 @@ void game_loop_unix( int control )
         process_shutdown_signal();
         if ( merc_down )
             break;
+
+        if ( current_time - last_watchdog_time >= 10 )
+        {
+            notify_systemd( "WATCHDOG=1" );
+            last_watchdog_time = current_time;
+        }
 
 #if defined(MALLOC_DEBUG)
         if ( malloc_verify( ) != 1 )

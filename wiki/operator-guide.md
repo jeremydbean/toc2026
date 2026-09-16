@@ -65,6 +65,7 @@ no `#AREA` record. Investigate unexpected deltas, not the known counting model.
 ssh toc
 systemctl status toc2026-game toc2026-web
 systemctl status toc2026-player-backup.timer toc2026-update.timer
+systemctl status toc2026-recovery toc2026-stable toc2026-led
 curl -fsS http://127.0.0.1:9001/api/health
 systemctl list-timers toc2026-player-backup.timer toc2026-update.timer
 ```
@@ -108,7 +109,11 @@ sudo systemctl restart toc2026-game toc2026-web
 
 Stopping `toc2026-game` sends SIGTERM. The game saves connected players, closes
 descriptors, and exits; systemd then starts it at boot or after a crash. A
-manual `systemctl stop` remains stopped until explicitly started or rebooted.
+45-second main-loop watchdog also restarts a frozen process. Persistent startup
+failure triggers a capped reboot/forced-update recovery sequence; inspect it
+with `journalctl -u toc2026-recovery -u toc2026-update`. The rapid ACT LED blink
+means that escalation is active or has stopped after its safety cap. A manual
+`systemctl stop` remains stopped until explicitly started or rebooted.
 
 ### Planned Reboot Checklist
 
@@ -311,6 +316,8 @@ Important distinctions:
   commit, then restarts and health-checks the game and dashboard. It first
   requires an encrypted player backup and refuses non-fast-forward or dirty
   source updates. Watch `sudo journalctl -u toc2026-update -f` for completion.
+  Persistent game-start recovery can force the same guarded workflow at the
+  current commit to repair a missing or damaged build.
 - The token is a shared secret without individual operator identity. Rotate it
   when staff access changes and keep separate host-level audit records.
 - World browsing and the browser game bridge are not token-protected.

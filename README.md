@@ -152,7 +152,8 @@ Use `bash "$bootstrap" --public` on an intended Internet/LAN host. Review
 For a dedicated headless Raspberry Pi that runs only ToC, use the native
 systemd appliance instead of Docker. Its checked-in configuration is designed
 for constrained memory, starts both processes during boot, restarts crashes,
-backs up player files off-device, and deploys validated `main` updates. See the
+detects frozen game loops, uses bounded reboot/rebuild recovery, backs up player
+files off-device, and deploys validated `main` updates. See the
 [Raspberry Pi appliance runbook](deploy/README.md) and
 [`deploy/pi.env.example`](deploy/pi.env.example).
 

@@ -17,7 +17,7 @@ ssh toc
 systemctl status toc2026-game toc2026-web
 systemctl status toc2026-player-backup.timer toc2026-update.timer \
   toc2026-namecheap-ddns.timer
-systemctl status toc2026-led.service
+systemctl status toc2026-led.service toc2026-stable.service
 curl http://127.0.0.1:9001/api/health
 ```
 
@@ -29,6 +29,7 @@ sudo journalctl -u toc2026-game -f
 sudo journalctl -u toc2026-player-backup -n 100 --no-pager
 sudo journalctl -u toc2026-update -n 100 --no-pager
 sudo journalctl -u toc2026-namecheap-ddns -n 100 --no-pager
+sudo journalctl -u toc2026-recovery -u toc2026-stable -n 100 --no-pager
 ```
 
 ## Restart
@@ -39,13 +40,16 @@ sudo systemctl restart toc2026-game toc2026-web
 
 Stopping the game sends `SIGTERM`; the game saves connected players before
 exiting. systemd starts it automatically after crashes and during every boot.
+The MUD also sends a main-loop watchdog heartbeat; a process that freezes is
+killed and restarted even if it still exists in the process table.
 
 ## ACT LED status
 
 On a Raspberry Pi with `/sys/class/leds/ACT`, the onboard green ACT LED gives a
-physical game-status signal. A short flash every two seconds means
-`toc2026-game.service` is running. The LED turns off when the game stops and
-resumes automatically after boot or systemd crash recovery.
+physical game-status signal. Three seconds on followed by one second off means
+`toc2026-game.service` is healthy. A rapid 100 ms on/off blink means normal
+systemd restarts did not restore it and host-level recovery is running or has
+stopped for diagnosis. The LED turns off during an ordinary stop.
 
 ```bash
 systemctl status toc2026-led.service
@@ -59,6 +63,34 @@ status light and return to the default trigger with:
 sudo systemctl disable --now toc2026-led.service
 echo actpwr | sudo tee /sys/class/leds/ACT/trigger
 ```
+
+## Automatic failure recovery
+
+The game service restarts a crash after 10 seconds and the 45-second main-loop
+watchdog also recovers a frozen process. If the restarted service still cannot
+become active, `toc2026-recovery.service` escalates in bounded stages:
+
+1. On the first persistent failure, wait briefly for normal restart handling,
+   then reboot the Pi.
+2. If failure returns after that reboot, fetch `origin/main`, make an encrypted
+   player backup, rebuild with one compiler process, validate, and redeploy. If
+   it is still broken, reboot once more.
+3. After the third persistent failure, retry the forced validated deployment,
+   leave the Pi online with the rapid failure blink, and stop automatic reboots
+   so the appliance cannot enter an endless boot loop or thrash the SD card.
+
+After the MUD stays up for ten minutes, `toc2026-stable.service` clears the
+persistent recovery count. Inspect the reason and recovery history with:
+
+```bash
+systemctl status toc2026-game toc2026-recovery toc2026-stable
+sudo journalctl -u toc2026-game -u toc2026-recovery -u toc2026-update \
+  -b --no-pager
+sudo cat /var/lib/toc2026/recovery-count
+```
+
+The count file is absent during normal operation. A failed forced deployment
+does not discard local runtime data or mark an unverified commit as deployed.
 
 ## Deploy an update
 
@@ -78,6 +110,11 @@ validates the world, refreshes binary Python dependencies, then gracefully
 restarts and health-checks both services. A failed build leaves the existing
 processes running and is retried at the next scheduled or manually requested
 run.
+
+Automatic recovery can force this same guarded build even when Git is already
+at the deployed commit, which covers a damaged binary or interrupted local
+build without weakening the backup, fast-forward, dirty-tree, or validation
+checks.
 
 The protected Operations page also has an **Update ToC** button. It writes a
 request under `/run`; a systemd path unit launches the same root-owned updater,

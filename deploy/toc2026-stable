@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+STATE_DIR=${TOC_RECOVERY_STATE_DIR:-/var/lib/toc2026}
+COUNT_FILE="$STATE_DIR/recovery-count"
+LED_COMMAND=${TOC_LED_COMMAND:-/usr/local/sbin/toc2026-led}
+SYSTEMCTL=${TOC_SYSTEMCTL:-/bin/systemctl}
+STABILITY_DELAY=${TOC_STABILITY_DELAY_SEC:-600}
+
+sleep "$STABILITY_DELAY"
+
+if "$SYSTEMCTL" is-active --quiet toc2026-game.service; then
+    rm -f "$COUNT_FILE"
+    "$LED_COMMAND" on || true
+    echo "ToC remained healthy for $STABILITY_DELAY seconds; recovery state cleared."
+fi

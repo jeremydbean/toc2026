@@ -3,11 +3,13 @@ Description=Times of Chaos MUD game server
 Documentation=https://github.com/jeremydbean/toc2026
 Wants=network-online.target
 After=network-online.target
+OnFailure=toc2026-recovery.service
 StartLimitIntervalSec=300
 StartLimitBurst=5
 
 [Service]
-Type=simple
+Type=notify
+NotifyAccess=main
 User=toc
 Group=toc
 WorkingDirectory=/home/toc/toc2026/area
@@ -15,6 +17,9 @@ EnvironmentFile=-/home/toc/toc2026/.env
 ExecStart=/home/toc/toc2026/merc ${MUD_PORT}
 Restart=always
 RestartSec=10s
+WatchdogSec=45s
+WatchdogSignal=SIGKILL
+TimeoutStartSec=2min
 TimeoutStopSec=45s
 KillSignal=SIGTERM
 UMask=0077

@@ -13,6 +13,8 @@ from __future__ import annotations
 
 import re
 import signal
+import socket
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -50,6 +52,24 @@ class LiveGameplayTests(unittest.TestCase):
         with LiveMud() as mud, mud.connect() as client:
             client.expect("by what name")
             self.assertIn("DikuMUD", client.transcript)
+
+    def test_server_notifies_systemd_when_ready_and_while_responsive(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="toc-notify-") as temporary:
+            notify_path = str(Path(temporary) / "notify.sock")
+            with socket.socket(socket.AF_UNIX, socket.SOCK_DGRAM) as notifications:
+                notifications.bind(notify_path)
+                notifications.settimeout(15)
+
+                with LiveMud(extra_env={"NOTIFY_SOCKET": notify_path}):
+                    messages = [notifications.recv(256).decode("ascii")]
+                    while not any(message == "WATCHDOG=1" for message in messages):
+                        messages.append(notifications.recv(256).decode("ascii"))
+
+                self.assertTrue(
+                    any(message.startswith("READY=1\n") for message in messages),
+                    messages,
+                )
+                self.assertIn("WATCHDOG=1", messages)
 
     def test_character_creation_reaches_the_game(self) -> None:
         with LiveMud() as mud, mud.connect() as client:

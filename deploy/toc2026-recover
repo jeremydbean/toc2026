@@ -1,0 +1,91 @@
+#!/bin/sh
+set -eu
+
+STATE_DIR=${TOC_RECOVERY_STATE_DIR:-/var/lib/toc2026}
+COUNT_FILE="$STATE_DIR/recovery-count"
+RECOVERY_LOCK=${TOC_RECOVERY_LOCK_FILE:-/run/lock/toc2026-recovery.lock}
+UPDATE_LOCK=${TOC_UPDATE_LOCK_FILE:-/run/lock/toc2026-update.lock}
+LED_COMMAND=${TOC_LED_COMMAND:-/usr/local/sbin/toc2026-led}
+UPDATE_COMMAND=${TOC_UPDATE_COMMAND:-/usr/local/sbin/toc2026-update}
+SYSTEMCTL=${TOC_SYSTEMCTL:-/bin/systemctl}
+RECOVERY_DELAY=${TOC_RECOVERY_DELAY_SEC:-30}
+RESTART_GRACE=${TOC_RECOVERY_RESTART_GRACE_SEC:-20}
+MAX_ATTEMPTS=${TOC_RECOVERY_MAX_ATTEMPTS:-3}
+
+install -d -m 0755 "$STATE_DIR"
+
+exec 9>"$RECOVERY_LOCK"
+if ! flock -n 9; then
+    echo "Another ToC recovery is already running; skipping."
+    exit 0
+fi
+
+"$LED_COMMAND" failed || true
+echo "Waiting $RESTART_GRACE seconds for normal systemd crash recovery."
+sleep "$RESTART_GRACE"
+
+if "$SYSTEMCTL" is-active --quiet toc2026-game.service; then
+    echo "The MUD recovered without host-level escalation."
+    "$LED_COMMAND" on || true
+    exit 0
+fi
+
+# An updater that has just tried to start the game may still own this lock.
+# Wait for it to finish before deciding whether the host needs recovery.
+exec 8>"$UPDATE_LOCK"
+if ! flock -w 1800 8; then
+    echo "Timed out waiting for the active ToC updater." >&2
+    "$LED_COMMAND" failed || true
+    exit 1
+fi
+flock -u 8
+
+if "$SYSTEMCTL" is-active --quiet toc2026-game.service; then
+    echo "The MUD recovered before escalation was necessary."
+    "$LED_COMMAND" on || true
+    exit 0
+fi
+
+count=0
+if [ -s "$COUNT_FILE" ]; then
+    count="$(cat "$COUNT_FILE")"
+fi
+case "$count" in
+    ''|*[!0-9]*) count=0 ;;
+esac
+count=$((count + 1))
+if [ "$count" -gt "$MAX_ATTEMPTS" ]; then
+    count=$MAX_ATTEMPTS
+fi
+
+count_tmp="$COUNT_FILE.tmp.$$"
+printf '%s\n' "$count" >"$count_tmp"
+chmod 0644 "$count_tmp"
+mv -f "$count_tmp" "$COUNT_FILE"
+
+echo "Starting ToC recovery attempt $count of $MAX_ATTEMPTS."
+
+if [ "$count" -ge 2 ]; then
+    echo "Fetching, rebuilding, validating, and redeploying origin/main."
+    "$SYSTEMCTL" reset-failed toc2026-game.service toc2026-web.service || true
+    if ! TOC_UPDATE_FORCE=1 "$UPDATE_COMMAND"; then
+        echo "The forced ToC deployment command reported a failure." >&2
+    fi
+    if "$SYSTEMCTL" is-active --quiet toc2026-game.service; then
+        echo "The forced ToC deployment restored the MUD."
+        "$LED_COMMAND" on || true
+        exit 0
+    fi
+    echo "The forced ToC deployment did not restore the MUD." >&2
+fi
+
+if [ "$count" -lt "$MAX_ATTEMPTS" ]; then
+    echo "Rebooting the Pi in $RECOVERY_DELAY seconds for the next recovery stage."
+    sleep "$RECOVERY_DELAY"
+    "$SYSTEMCTL" --no-block reboot
+    exit 0
+fi
+
+echo "Automatic recovery limit reached; leaving the Pi online for diagnosis." >&2
+echo "The ACT LED will continue its rapid failure blink." >&2
+exit 1
