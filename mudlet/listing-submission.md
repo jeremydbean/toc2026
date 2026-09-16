@@ -36,11 +36,30 @@ Suggested short description:
       updates from the public repository.
 - [x] Players can hide or restore the interface with the local Mudlet aliases
       `tocgui off` and `tocgui on`.
-- [ ] Deploy this build and restart the public game server.
+- [x] Deploy this build and restart the public game server.
 - [ ] Test a clean Mudlet profile against the public host on Windows, macOS,
       or Linux and capture a screenshot for review.
 - [ ] Contact the Mudlet team through <https://www.mudlet.org/contact/> or its
       Discord and request a default-game review.
+
+## Deployment Verification: 2026-09-16
+
+Commit `6241b8e` was deployed to the Windows-hosted production VM after a
+stopped-state backup. All 1,231 tracked state files matched before and after
+installation. Both services passed health checks, and the public-hostname
+handshake verified GMCP, map/interface advertisements, ping, and clean login
+input. The final Python suite ran 201 tests successfully with two optional
+runtime skips; seven JavaScript console tests also passed separately.
+
+A fresh Windows Mudlet 5.0.1 profile downloaded and displayed the ToC interface.
+However, its first connection disconnected during the bundled generic mapper's
+login-prompt probing. An authenticated in-game map/gauge check and clean review
+screenshot remain outstanding. Do not treat interface installation alone as a
+completed client review. An independent external TCP probe returned no result,
+so the successful public-hostname connection remains a local-network test.
+
+The review request has not been sent. Confirm the sender identity before
+contacting Mudlet; never include credentials, player data, or private logs.
 
 ## Verification commands
 
