@@ -411,6 +411,12 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertTrue(client.get("/api/config").json()["host_status_available"])
             self.assertEqual(client.get("/api/host/status").status_code, 403)
             self.assertIsNone(server.run_host_command(("sh", "-c", "id")))
+            shutdown_entries = server.parse_journal_output(
+                '{"_SYSTEMD_UNIT":"init.scope","SYSLOG_IDENTIFIER":"systemd-shutdown",'
+                '"MESSAGE":"Syncing filesystems.","__REALTIME_TIMESTAMP":"1788000000000000"}',
+                "systemd-shutdown",
+            )
+            self.assertEqual(shutdown_entries[0]["source"], "systemd-shutdown")
             with patch.object(server, "host_status_snapshot", return_value=payload):
                 response = client.get("/api/host/status", headers=headers)
             self.assertEqual(response.status_code, 200)

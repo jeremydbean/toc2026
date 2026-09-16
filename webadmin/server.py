@@ -927,7 +927,7 @@ def parse_journal_output(output: str, default_source: str = "") -> list[Dict[str
             message = " ".join(str(part) for part in message)
         timestamp_text = str(record.get("__REALTIME_TIMESTAMP", ""))
         timestamp = int(timestamp_text) / 1_000_000 if timestamp_text.isdigit() else 0
-        source = record.get("_SYSTEMD_UNIT") or record.get("SYSLOG_IDENTIFIER") or default_source
+        source = default_source or record.get("_SYSTEMD_UNIT") or record.get("SYSLOG_IDENTIFIER")
         entries.append({
             "timestamp": timestamp,
             "source": safe_host_text(source, 100),
