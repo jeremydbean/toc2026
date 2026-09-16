@@ -21,6 +21,17 @@ local machine by default:
 http://127.0.0.1:9001
 ```
 
+The native Raspberry Pi appliance starts it during boot and publishes it only
+to the trusted LAN profile:
+
+```text
+http://toc.local:9001/
+http://PI_ADDRESS:9001/
+```
+
+The first-party client is the same service at `/client`. Port `9001` must be
+present in the URL; the appliance does not listen on HTTP port 80.
+
 Start a native development instance from the repository root with:
 
 ```bash
@@ -52,6 +63,7 @@ readable without an admin token. These capabilities require
 - operational status, command-queue depth, backup freshness, and recent saves
 - backup archive listing and backup requests
 - dashboard area-data refreshes
+- configured host update requests
 - WizInfo broadcasts
 - immortal commands
 - game shutdown
@@ -65,6 +77,19 @@ For manual access, select **Admin locked** in the lower-left corner, enter the
 token, and select **Unlock**. The token is kept in session storage by default
 and disappears when that browser session ends. **Remember on this browser**
 stores it in local storage until it is replaced or browser storage is cleared.
+
+On the Raspberry Pi LAN profile, `WEB_ADMIN_LOCAL_UNLOCK=0` and manual entry is
+intentional. The server token remains stable across reboots, rebuilds, and
+automatic updates because the updater preserves the private `.env`. On macOS,
+copy it directly to the clipboard without displaying it:
+
+```bash
+ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
+```
+
+Paste with Command-V and enable **Remember on this browser**. Selecting
+**Lock**, clearing site storage, rotating the token, or replacing `.env`
+requires authentication again.
 
 An unset server-side token disables protected routes with HTTP `503`. An
 incorrect token returns HTTP `403`.
@@ -159,12 +184,13 @@ come directly from the game process rather than relying on terminal-log text.
 
 ### Operations
 
-Operations contains the queue-backed administrative controls:
+Operations contains protected administrative controls:
 
 | Control | Result |
 |---|---|
 | Create backup | Queues `backup`; the game creates and prunes archives |
 | Refresh dashboard data | Reparses area files and swaps in a validated snapshot |
+| Update ToC | Requests the configured host updater; requires typing `UPDATE` |
 | Shut down game | Queues `shutdown`; requires typing `SHUTDOWN` |
 | WizInfo broadcast | Queues a staff message with a minimum level |
 | Immortal command | Runs one command through the game's WebAdmin actor |
@@ -172,6 +198,16 @@ Operations contains the queue-backed administrative controls:
 **Refresh dashboard data does not reload the running game world.** It updates
 only the dashboard parser after rejecting snapshots with critical area-health
 issues. Reboot or use the appropriate in-game workflow for live world changes.
+
+**Update ToC** is available only when `TOC_UPDATE_REQUEST_PATH` is configured.
+On the Pi appliance it creates a volatile request consumed by a systemd path
+unit. The root-owned job fetches `origin/main`; if the deployed commit is
+already current, it exits without interrupting either service. Otherwise it
+requires a successful encrypted player backup, fast-forwards only, builds with
+one compiler process, validates all area data, refreshes binary Python
+dependencies, gracefully restarts both services, and waits for dashboard/game
+health. The browser can disconnect during the successful restart while the
+systemd job continues independently.
 
 Immortal commands have maximum trust and can alter live state. Queue payloads
 reject newlines, control characters, and the `|` protocol delimiter, but the
@@ -268,6 +304,11 @@ docker compose up -d --force-recreate
 ```
 
 `GET /api/config` reports `admin_token_configured` but never returns the token.
+
+For the Pi LAN profile, confirm `WEB_ADMIN_LOCAL_UNLOCK=0`; seeing the token
+dialog is expected. The saved browser token must match the persistent value in
+`/home/toc/toc2026/.env`. A value such as `x` is not a placeholder accepted by
+the server.
 
 ### Game shows offline
 

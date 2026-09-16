@@ -6,6 +6,9 @@ hardening. Docker Compose is the recommended deployment. Native Linux is useful
 for development and controlled hosts; Windows should use Docker Desktop or WSL
 2 rather than a direct Win32 build.
 
+The exception is the checked-in native Raspberry Pi appliance profile, which
+is preferred over Docker on a dedicated memory-constrained Pi.
+
 ## Deployment Model
 
 For Oracle's free Ampere instances, see [ARM compatibility and Oracle
@@ -133,6 +136,24 @@ ssh -L 9001:127.0.0.1:9001 user@mud-host
 
 Open `http://127.0.0.1:9001` locally while the tunnel is active.
 
+The dedicated Raspberry Pi appliance has an explicit trusted-LAN profile in
+`deploy/pi.env.example`:
+
+```dotenv
+MUD_BIND=0.0.0.0
+MUD_PORT=9000
+MUD_HOST=127.0.0.1
+WEB_ADMIN_BIND=0.0.0.0
+WEB_ADMIN_PORT=9001
+WEB_ADMIN_LOCAL_UNLOCK=0
+```
+
+Use that profile only on a private LAN where every device is trusted, keep the
+admin token enabled, and do not forward port 9001 from the router. Browser play
+is then `http://toc.local:9001/client` and administration is
+`http://toc.local:9001/`. An IP address may replace `toc.local`; `:9001` cannot
+be omitted because ToC does not listen on port 80.
+
 To disable the dashboard process, set `WEB_ADMIN_ENABLED=0`. Remove or comment
 its published port as defense in depth when maintaining a custom Compose file.
 
@@ -227,6 +248,7 @@ consistent.
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Docker entrypoint | Dashboard bind address |
 | `WEB_ADMIN_TOKEN` | unset | Dashboard | Shared secret; protected routes return 503 when unset |
 | `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Dashboard | Issues a local browser session only when the configured bind and page host are loopback |
+| `TOC_UPDATE_REQUEST_PATH` | unset | Dashboard | Volatile host request file used by a configured systemd updater; unset disables `POST /api/update` |
 | `WEB_ALLOWED_ORIGINS` | unset | Dashboard | Additional comma-separated origins allowed to open browser WebSockets |
 | `TOC_UID` | host user/`1000` | Docker entrypoint | Runtime UID for writable bind mounts |
 | `TOC_GID` | host group/`1000` | Docker entrypoint | Runtime GID for writable bind mounts |
@@ -484,6 +506,11 @@ connection and require this JSON authentication message within five seconds:
 
 The token is never placed in the WebSocket URL or reverse-proxy access log.
 
+The Pi LAN appliance requires manual token entry. Its private `.env` survives
+reboots and automatic updates, so the token stays valid until deliberately
+rotated. **Remember on this browser** stores it in that browser profile; it is
+not a server-side token rotation.
+
 Example:
 
 ```bash
@@ -657,16 +684,79 @@ source and still use TLS.
 
 ## Raspberry Pi And ARM
 
-Docker builds locally for the host architecture and is the simplest Raspberry
-Pi path. Use a supported 64-bit Raspberry Pi OS or Ubuntu release, install
-Docker/Compose, clone the repository, generate `.env`, and run the same Compose
-quick start. Build time will be longer than on a desktop, so monitor free disk,
-memory pressure, temperature, and SD-card wear. Store mutable data and backups
-on reliable storage and maintain an off-device copy.
+Docker remains supported on larger ARM systems, but the maintained dedicated
+appliance path is native systemd. It avoids the Docker daemon on memory-limited
+boards such as the Raspberry Pi Zero 2 W and assumes:
+
+- a 64-bit Debian/Raspberry Pi OS host
+- service account `toc`
+- checkout `/home/toc/toc2026`
+- game TCP 9000 and dashboard TCP 9001
+- the Pi is dedicated to ToC and may boot to `multi-user.target`
+
+The reproducible assets are under `deploy/`:
+
+| Asset | Purpose |
+|---|---|
+| `pi.env.example` | Private-LAN game/dashboard settings without a real token |
+| `install-pi.sh` | Installs units, tmpfiles, journald limits, and boot enablement |
+| `systemd/toc2026-game.service` | Runs `merc`, saves on SIGTERM, and restarts crashes |
+| `systemd/toc2026-web.service` | Runs one Uvicorn worker and restarts crashes |
+| `systemd/toc2026-player-backup.*` | Six-hour encrypted player snapshot timer/service |
+| `systemd/toc2026-update.*` | Hourly update timer and admin-request path/service |
+| `toc2026-update` | Root-owned guarded fetch/build/validate/restart implementation |
+
+Build with one compiler process and use binary Python packages to control peak
+memory:
+
+```bash
+cd /home/toc/toc2026
+make -j1
+python3 -m venv .venv
+.venv/bin/python -m pip install --only-binary=:all: \
+  -r webadmin/requirements.txt
+sudo ./deploy/install-pi.sh
+```
+
+Create the private `.env` from `deploy/pi.env.example`, replace its token
+placeholder with a random value, and set mode `0600` before installation. The
+installer does not replace `.env`. The checked-in units cap game, dashboard,
+backup, and update memory; compile updates use `make -j1`; journald is limited
+to 32 MiB and seven days.
+
+At boot, systemd starts game and web services, the backup timer, the hourly
+update timer, and the admin-request path watcher. The updater fetches
+`origin/main` but does nothing when both Git HEAD and the deployed marker are
+current. For a new or previously failed commit it requires a successful
+encrypted player backup, refuses non-runtime dirty files or non-fast-forward
+history, builds and validates while the existing services remain available,
+then gracefully restarts and health-checks both. A failed build leaves the old
+processes running and the deployed marker unchanged so a later timer run can
+retry.
+
+The dashboard **Update ToC** action writes only a volatile request file. The
+root-owned systemd unit performs the update after the web request returns, so
+the task survives the dashboard restart. Follow it with:
+
+```bash
+sudo journalctl -u toc2026-update -f
+```
+
+The player-backup timer encrypts `player/` with an age recipient before pushing
+the latest ciphertext to its dedicated Git remote. Keep the private recovery
+key off the Pi, use a write-limited deploy key, and periodically prove restore
+with `age --decrypt ... | tar -tzf -` without printing player contents.
+
+Removing a desktop environment is optional, but a dedicated headless appliance
+should use `multi-user.target` to reclaim RAM. Never change networking or SSH
+while removing desktop packages, and keep `openssh-server`, the active network
+manager, Avahi if `toc.local` is desired, the compiler, Git, Python/venv, age,
+and required C libraries. The complete operator commands and direct browser
+URLs are in [`deploy/README.md`](../deploy/README.md).
 
 The historical wiki filename for Raspberry Pi/Ubuntu/WSL is retained for old
 links, but its obsolete Ubuntu 18.04 instructions have been replaced by a
-pointer to this guide.
+current installer overview and a pointer to this appliance workflow.
 
 ## Troubleshooting
 

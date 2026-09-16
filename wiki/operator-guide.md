@@ -59,6 +59,21 @@ mobiles, and 3,557 objects. Native boot also creates an online-building area,
 and native/Python area totals differ because six listed help/social files have
 no `#AREA` record. Investigate unexpected deltas, not the known counting model.
 
+### Raspberry Pi Appliance Quick Check
+
+```bash
+ssh toc
+systemctl status toc2026-game toc2026-web
+systemctl status toc2026-player-backup.timer toc2026-update.timer
+curl -fsS http://127.0.0.1:9001/api/health
+systemctl list-timers toc2026-player-backup.timer toc2026-update.timer
+```
+
+The normal state is active game/web services and active timers. The dashboard
+is available on the trusted LAN at `http://toc.local:9001/`; browser play is
+`http://toc.local:9001/client`. Use the Pi's current address when mDNS fails,
+but retain port `9001`.
+
 ## Start, Stop, And Reboot
 
 ### In-Game Commands
@@ -82,6 +97,18 @@ whole container even after a clean in-game shutdown. To keep it stopped, run:
 ```bash
 docker compose stop
 ```
+
+On the native Pi appliance, use systemd instead:
+
+```bash
+sudo systemctl stop toc2026-game toc2026-web
+sudo systemctl start toc2026-game toc2026-web
+sudo systemctl restart toc2026-game toc2026-web
+```
+
+Stopping `toc2026-game` sends SIGTERM. The game saves connected players, closes
+descriptors, and exits; systemd then starts it at boot or after a crash. A
+manual `systemctl stop` remains stopped until explicitly started or rebooted.
 
 ### Planned Reboot Checklist
 
@@ -135,6 +162,18 @@ backup daily
 Verify success in three places: the in-game/log completion message, a new
 nonempty file in `backups/`, and an off-host copy when the operation protects a
 major change.
+
+The Pi adds a six-hour off-host layer through
+`toc2026-player-backup.timer`. It age-encrypts `player/` before Git transport;
+the recovery private key must remain off-device. Check it with:
+
+```bash
+systemctl list-timers toc2026-player-backup.timer
+sudo journalctl -u toc2026-player-backup -n 100 --no-pager
+```
+
+Periodically decrypt and list the archive with the recovery key. A successful
+push alone does not prove the backup can be restored.
 
 ### Player Version Restore
 
@@ -269,7 +308,9 @@ Important distinctions:
 - `/api/update` requests the host-managed updater when
   `TOC_UPDATE_REQUEST_PATH` is configured. On the Raspberry Pi appliance the
   systemd job checks `origin/main`, rebuilds only for a new or not-yet-deployed
-  commit, then restarts and health-checks the game and dashboard.
+  commit, then restarts and health-checks the game and dashboard. It first
+  requires an encrypted player backup and refuses non-fast-forward or dirty
+  source updates. Watch `sudo journalctl -u toc2026-update -f` for completion.
 - The token is a shared secret without individual operator identity. Rotate it
   when staff access changes and keep separate host-level audit records.
 - World browsing and the browser game bridge are not token-protected.
@@ -278,6 +319,15 @@ Important distinctions:
 Never place the admin token in a screenshot, command history shared with
 others, issue report, or URL. The log WebSocket sends it in the first JSON
 message rather than the URL.
+
+The Pi token in `/home/toc/toc2026/.env` is intentionally persistent across
+reboots and updates. Direct LAN access requires manual entry because
+`WEB_ADMIN_LOCAL_UNLOCK=0`; **Remember on this browser** retains it only in that
+browser profile. On a trusted Mac, copy it without echoing it:
+
+```bash
+ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
+```
 
 ## Area And World Changes
 

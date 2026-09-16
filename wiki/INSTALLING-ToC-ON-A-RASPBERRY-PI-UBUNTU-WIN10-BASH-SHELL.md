@@ -143,6 +143,45 @@ Do not install ToC with `sudo git clone`, recursive `chmod 755`, or broad root
 ownership. Those old instructions damaged ownership and exposed sensitive
 character data.
 
+### Dedicated Headless Raspberry Pi Appliance
+
+The generic bootstrap above installs Docker. For a small Pi dedicated only to
+ToC, the maintained native profile avoids Docker and runs the game and one
+dashboard worker directly under systemd. It is especially appropriate for a
+64-bit Pi Zero 2 W with limited RAM.
+
+The appliance assumes user `toc` and checkout `/home/toc/toc2026`. Build with
+one compiler job, create a venv, install binary wheels, create the private
+`.env` from `deploy/pi.env.example`, configure the age recipient and Git backup
+deploy key, then run:
+
+```bash
+cd /home/toc/toc2026
+sudo ./deploy/install-pi.sh
+```
+
+That installer enables and starts:
+
+- `toc2026-game.service` and `toc2026-web.service` at boot
+- crash restarts with bounded memory and task counts
+- graceful SIGTERM player saves during shutdown/reboot
+- capped persistent journald storage
+- six-hour encrypted off-host player backups
+- hourly randomized Git checks and guarded rebuild/restart updates
+- the path watcher used by **Operations → Update ToC**
+
+The updater only accepts a fast-forward from `origin/main`, backs up first,
+uses `make -j1`, runs native area validation, installs only binary Python
+packages, and health-checks both processes after restart. If there is no new
+deployed commit, it does not rebuild or interrupt play.
+
+The Pi may boot to `multi-user.target`; a desktop is not required. Keep SSH,
+the active network manager, compiler/runtime dependencies, Git, Python/venv,
+age, and Avahi when `toc.local` is desired. See the
+[appliance runbook](../deploy/README.md) and the
+[Hosting Guide](hosting-guide.md#raspberry-pi-and-arm) for the complete
+configuration and recovery rules.
+
 ## Launcher Commands
 
 Double-click `Start-ToC.cmd` on Windows or `Start-ToC.command` on macOS. The
@@ -199,6 +238,18 @@ Dashboard:  http://127.0.0.1:9001
 Health API: http://127.0.0.1:9001/api/health
 ```
 
+The dedicated Pi private-LAN profile instead uses:
+
+```text
+MUD client: toc.local:9000
+Browser:    http://toc.local:9001/client
+Dashboard:  http://toc.local:9001/
+Health API: http://toc.local:9001/api/health
+```
+
+Substitute the Pi's address when mDNS is unavailable. Always include `:9001`;
+ToC does not install an HTTP service on port 80.
+
 The generated `.env` is ignored by Git. It controls host bindings/ports and the
 admin token. Persistent data lives beside the source in `player/`, `gods/`,
 `heroes/`, `corpse/`, `log/`, and `backups/`.
@@ -210,8 +261,10 @@ can otherwise restart a container after an in-game shutdown.
 
 The game protocol is unencrypted Telnet and player passwords use traditional
 DES hashes, where only the first eight bytes are effective. Players must use a
-unique game-only password. Keep the dashboard bound to loopback even with an
-admin token because not every read route requires that token.
+unique game-only password. Keep the dashboard bound to loopback by default
+because not every read route requires the token. The dedicated Pi LAN profile
+is acceptable only on a trusted private network with
+`WEB_ADMIN_LOCAL_UNLOCK=0`, no router port-forward for 9001, and a strong token.
 
 Read [Security](../SECURITY.md) before exposing the game port and the
 [Hosting Guide](hosting-guide.md) before operating a public server.

@@ -13,6 +13,16 @@ The automated installation starts the client at:
 http://127.0.0.1:9001/client
 ```
 
+The dedicated Raspberry Pi LAN appliance starts the same client automatically
+with `toc2026-web.service`. From another device on that private LAN, open:
+
+```text
+http://toc.local:9001/client
+```
+
+If mDNS is unavailable, use `http://PI_ADDRESS:9001/client`. Port `9001` is
+required; a bare Pi address selects port 80 and will be refused.
+
 The launchers can open it directly:
 
 ```powershell
@@ -131,7 +141,8 @@ session and browser token storage. Reloading a loopback page can establish a
 new local session while local auto-unlock remains enabled.
 
 Use **Dashboard** inside the admin panel for full world search, area maps,
-health findings, gear analysis, and the complete operations interface.
+health findings, gear analysis, and the complete operations interface,
+including **Update ToC** on configured appliances.
 
 ## Client Security
 
@@ -171,6 +182,32 @@ service after changing it. A missing token disables protected administration;
 an incorrect token is rejected. For local automatic access, also confirm
 `WEB_ADMIN_LOCAL_UNLOCK=1`, `WEB_ADMIN_BIND=127.0.0.1`, and that the page was
 opened with a loopback hostname rather than a LAN address.
+
+The Raspberry Pi LAN profile deliberately sets `WEB_ADMIN_LOCAL_UNLOCK=0`, so
+manual token entry is expected. The token survives reboot and automatic update
+because `/home/toc/toc2026/.env` is preserved. On macOS, copy it without
+printing it to the terminal:
+
+```bash
+ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
+```
+
+Paste it into the authentication dialog. **Remember on this browser** keeps it
+in that browser profile until **Lock**, browser-data clearing, or token rotation.
+
+### The Pi Address Refuses The Browser
+
+Use `http://PI_ADDRESS:9001/` for the dashboard or
+`http://PI_ADDRESS:9001/client` for play. If those fail, confirm the service and
+listener on the Pi:
+
+```bash
+systemctl status toc2026-web
+ss -ltn 'sport = :9001'
+```
+
+The LAN profile should show `0.0.0.0:9001`. The generic Docker/default profile
+shows `127.0.0.1:9001` and requires a local browser or SSH tunnel.
 
 ### Colors Look Wrong
 

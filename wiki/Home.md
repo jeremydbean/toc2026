@@ -34,7 +34,8 @@ objects.
 - [Security Policy](../SECURITY.md) - Telnet/DES limitations, dashboard exposure,
   token handling, hardening, reporting, and incident response
 - [Installation Guide](INSTALLING-ToC-ON-A-RASPBERRY-PI-UBUNTU-WIN10-BASH-SHELL.md)
-  - automated Windows, macOS, Linux, and Raspberry Pi setup and launchers
+  - automated desktop/server setup plus the native headless Raspberry Pi
+    appliance, systemd lifecycle, browser access, backups, and updates
 
 ## Developers
 

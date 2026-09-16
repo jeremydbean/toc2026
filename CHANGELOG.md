@@ -101,6 +101,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added a native, low-memory Raspberry Pi appliance deployment with headless
+  systemd boot, game/dashboard crash recovery, graceful SIGTERM player saves,
+  capped journald storage, encrypted six-hour GitHub player snapshots, and an
+  hourly guarded `origin/main` updater. The protected dashboard now includes
+  **Update ToC**, which requests the same backup, fast-forward, one-job build,
+  native area validation, restart, and health-check workflow. A private-LAN
+  profile publishes the browser client and dashboard on port 9001 while keeping
+  operational routes behind the persistent admin token.
+
 - Added first-class Mudlet support: `IAC GA` prompt framing, `Char.Vitals`,
   `Char.Status`, and `Room.Info` GMCP messages, automatic `Client.Map` and
   `Client.GUI` delivery, a 25-room Mud School MMP map, and a self-updating

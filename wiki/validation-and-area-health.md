@@ -215,12 +215,34 @@ Operational endpoints are disabled with HTTP 503 until `WEB_ADMIN_TOKEN` is conf
 X-Admin-Token: your-token
 ```
 
+`POST /api/update` validates only that authentication succeeds and the
+configured request file can be touched. On the Pi, verify the separate host
+contract after deployment:
+
+```bash
+sudo systemd-analyze verify \
+  /etc/systemd/system/toc2026-update.service \
+  /etc/systemd/system/toc2026-update.timer \
+  /etc/systemd/system/toc2026-update.path
+systemctl is-active toc2026-update.timer toc2026-update.path
+sudo systemctl start toc2026-update.service
+sudo journalctl -u toc2026-update -n 100 --no-pager
+```
+
+An already-current run must exit successfully without changing game or web
+PIDs. A real update must show the encrypted backup, fast-forward, `make -j1`,
+native area validation, graceful restart, and successful `/api/health` check.
+
 ## Backups And Diagnostics
 
-The game has two backup layers:
+The maintained deployment has three backup layers:
 
 - Scheduled/admin archives: `backup` and web-admin backup actions create `backups/*.tar.gz` archives from `player/`, then prune archives older than 30 days.
 - Per-player snapshots: successful saves write snapshots under `player/versions/<Name>/`, throttled by `PLAYER_SNAPSHOT_MIN_INTERVAL` and capped by `PLAYER_VER_MAX`. `prestore` bypasses throttling for its pre-change safety snapshot and atomically replaces the live file.
+- Pi off-host snapshots: `toc2026-player-backup.timer` age-encrypts the complete
+  player directory before updating its dedicated Git remote. Validate both the
+  timer/push and an actual decrypt/list operation with the off-device recovery
+  key; never print player archive contents during the check.
 
 The `diagnostics` immortal command shows:
 

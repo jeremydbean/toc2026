@@ -58,6 +58,9 @@ documentation.
   area validation, Python reference checks, area-health linting, and unit tests.
 - Docker, Docker Compose, Make, CMake, Windows/WSL validation, and GitHub Actions
   workflows.
+- A low-memory native Raspberry Pi appliance profile with headless systemd
+  startup, crash recovery, encrypted off-host player snapshots, hourly guarded
+  Git updates, and direct private-LAN browser play and administration.
 
 ## Easy Install
 
@@ -70,7 +73,8 @@ runtime data.
 The default installation is local-only. The game and dashboard bind to
 `127.0.0.1`; remote players cannot connect until the host explicitly selects
 public-game mode. Public-game mode exposes only the Telnet game port by default.
-The dashboard remains local.
+The dashboard remains local. The dedicated trusted-LAN Pi appliance documented
+below is an explicit separate profile, not a change to these generic defaults.
 
 ### Existing Checkout: One Click
 
@@ -144,6 +148,13 @@ bash "$bootstrap"
 Use `bash "$bootstrap" --public` on an intended Internet/LAN host. Review
 [SECURITY.md](SECURITY.md) and firewall the game port before inviting players.
 
+For a dedicated headless Raspberry Pi that runs only ToC, use the native
+systemd appliance instead of Docker. Its checked-in configuration is designed
+for constrained memory, starts both processes during boot, restarts crashes,
+backs up player files off-device, and deploys validated `main` updates. See the
+[Raspberry Pi appliance runbook](deploy/README.md) and
+[`deploy/pi.env.example`](deploy/pi.env.example).
+
 ### Day-To-Day Launcher
 
 After installation, double-click `Start-ToC.cmd` on Windows or
@@ -166,6 +177,11 @@ traditional MUD client to `localhost:9000`. The administration dashboard is
 `http://127.0.0.1:9001`. Protected actions use the generated token in `.env`;
 the installers never print or replace an existing token. Both interfaces ship
 all browser assets locally and do not require internet access after installation.
+
+The dedicated Pi LAN profile uses `http://toc.local:9001/client` and
+`http://toc.local:9001/` instead. If mDNS is unavailable, substitute the Pi's
+IP address and keep the required `:9001` port. A bare `http://PI_ADDRESS` URL
+targets port 80, where ToC does not listen.
 
 ### Mudlet (Recommended Desktop Client)
 
@@ -288,7 +304,7 @@ administer. The game itself should still run in Docker or WSL.
 | `MUD_BIND` | `127.0.0.1` | Host interface for the published game port; use `0.0.0.0` for remote players |
 | `MUD_PORT` | `9000` | Game port published on the host |
 | `MUD_HOST` | `127.0.0.1` | Game host used by the dashboard health check and browser console |
-| `WEB_ADMIN_BIND` | `127.0.0.1` | Host interface for the dashboard; keep private |
+| `WEB_ADMIN_BIND` | `127.0.0.1` | Host interface for the dashboard; keep loopback or on a trusted private network |
 | `WEB_ADMIN_PORT` | `9001` | Dashboard port published on the host |
 | `WEB_ADMIN_ENABLED` | `1` | Set to `0` to skip the dashboard in Docker |
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Dashboard bind address in Docker |
@@ -309,6 +325,11 @@ Compose always runs the game and dashboard internally on ports 9000 and 9001;
 `MUD_PORT` and `WEB_ADMIN_PORT` change only the host-facing ports. The Hosting
 Guide documents direct-image entrypoint modes, bind mounts, firewalls, reverse
 proxies, service management, upgrades, and rollback procedures.
+
+The Raspberry Pi appliance is deliberately different from the Compose default:
+it runs natively under systemd and uses the private-LAN values in
+`deploy/pi.env.example`. Its admin token survives reboots and automatic updates
+because the private `.env` is not replaced.
 
 ## Persistent Data
 

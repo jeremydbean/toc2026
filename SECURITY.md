@@ -132,6 +132,14 @@ Treat the token as an immortal credential. Generate at least 32 random bytes,
 store it outside Git, limit who can read it, and rotate it when staff access
 changes or exposure is suspected.
 
+The Raspberry Pi LAN appliance uses manual token entry because its dashboard
+bind is not loopback. Its private `.env` is preserved across reboots, rebuilds,
+and guarded Git updates, so the token remains stable until an operator rotates
+it or replaces the file. **Remember on this browser** stores the supplied token
+in that browser profile's local storage; **Lock**, clearing site data, or token
+rotation removes or invalidates that convenience. Never include the token in a
+URL, screenshot, repository file, issue, or chat transcript.
+
 ### Local Command Queue
 
 The dashboard writes immortal actions to `area/webadmin.queue`, and the game
@@ -161,6 +169,12 @@ area/webadmin.queue
 Do not commit real character data, attach it to public issues, or use it as a
 test fixture. Encrypt off-host backups and restrict backup restore access.
 
+The native Pi appliance implements this by encrypting the complete `player/`
+snapshot with an age public recipient before pushing it to its dedicated
+backup repository. The private recovery key stays off the Pi and outside Git.
+The six-hour timer, successful remote push, and a periodic decrypt/list test
+should all be checked; a ciphertext file alone is not proof of restorable data.
+
 This repository currently tracks a large legacy set of player, god, and hero
 files, and the Dockerfile copies those tracked files into the runtime image.
 Their password hashes must be considered publicly exposed. Character owners
@@ -184,6 +198,21 @@ Players/staff ----- VPN/SSH/HTTPS ----> 127.0.0.1:9001 web client/dashboard
 
 The dashboard should not be directly reachable from the public Internet.
 
+A dedicated appliance on a trusted, non-guest home LAN may instead use this
+private-network layout:
+
+```text
+Trusted LAN browsers ---- TCP 9001 ----> Pi web client/dashboard
+                                            |
+                                            +--> 127.0.0.1:9000 bridge
+Internet/router ---------- no forward ----X
+```
+
+This deliberately exposes the public world-read APIs and game bridge to every
+device on that LAN. Keep `WEB_ADMIN_LOCAL_UNLOCK=0`, require the admin token for
+operations, do not forward port 9001 on the router, and do not use this profile
+on guest, campus, hotel, or other untrusted networks.
+
 ### Compose Binding
 
 The repository defaults both published ports to loopback. The automatic
@@ -198,8 +227,10 @@ WEB_ADMIN_PORT=9001
 ```
 
 Running `.\install.ps1 -Network Public` or `./install.sh --public` applies this
-game-only exposure. Do not set `WEB_ADMIN_BIND=0.0.0.0` without a separate
-authenticated and encrypted access layer.
+game-only exposure. Do not set `WEB_ADMIN_BIND=0.0.0.0` on an Internet-facing
+or untrusted host. The checked-in `deploy/pi.env.example` is a narrow exception
+for a dedicated trusted-LAN appliance; it still requires a strong token,
+disables local auto-unlock, and assumes the router does not forward port 9001.
 
 `.dockerignore` excludes `.env`, player, god, hero, corpse, log, and backup
 data from the image build context. Do not override those exclusions in a
@@ -223,6 +254,15 @@ sudo ufw enable
 Do not allow port 9001 globally. Scope any direct rule to a trusted source
 network.
 
+For a private appliance whose trusted LAN is `192.168.1.0/24`, a scoped rule is:
+
+```bash
+sudo ufw allow from 192.168.1.0/24 to any port 9001 proto tcp
+```
+
+Use the appliance's real LAN prefix; do not copy that example onto a different
+network without checking it.
+
 ## Admin Token Generation
 
 Linux/macOS:
@@ -244,6 +284,17 @@ Set-Content -LiteralPath .env -Value "WEB_ADMIN_TOKEN=$token" -Encoding ascii
 
 The automatic installers perform this generation without displaying the token
 and preserve an existing nonempty value.
+
+The native Pi updater likewise never replaces `.env`, so automatic updates do
+not rotate the token. On a trusted Mac used to administer that Pi, the operator
+can transfer it straight to the clipboard without echoing it:
+
+```bash
+ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
+```
+
+This still places the credential in the macOS clipboard; paste it promptly and
+do not run the command on an untrusted workstation.
 
 Do not use an example value from documentation. Recreate the dashboard/container
 after changing the environment.

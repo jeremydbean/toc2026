@@ -34,6 +34,7 @@ It:
 - parses player files for browsing
 - reads logs and backup metadata
 - writes high-impact actions to `area/webadmin.queue`
+- touches a configured host-update request file without running privileged code
 - bridges a browser WebSocket to the local game port
 
 Dashboard `reload` swaps the Python parser after critical validation succeeds.
@@ -49,6 +50,7 @@ area/*.are + area/area.lst -----> merc boot -----> live game state
 player/* -------------->+--> dashboard +-- area/webadmin.queue
 log/toc.log ------------>+
 backups/*.tar.gz -------->+
+/run/toc2026/update.request --> systemd updater --> Git/build/restart
 ```
 
 Do not mistake a successful dashboard parse for a successful native world boot.
@@ -63,6 +65,7 @@ The parsers have different purposes and both must pass.
 | `webadmin/` | FastAPI app, area parser, and health engine |
 | `tests/` | Python unit/API/progression tests |
 | `scripts/` | Validation, setup, Hyrule generation, and utilities |
+| `deploy/` | Native Raspberry Pi systemd, update, backup, and runbook assets |
 | `data/` | Structured source manifests |
 | `wiki/` | Maintained user and technical documentation |
 | `notes/` | Design records and audits, not the primary user docs |
@@ -434,6 +437,9 @@ Development rules:
 - Add API tests for success, missing token, wrong token, malformed input,
   boundary limits, filesystem races, and parser failure.
 - Document whether a route is public or protected whenever adding one.
+- Keep host operations request-based. The web process may touch the configured
+  update request path, but must not receive general sudo or execute user-supplied
+  shell commands.
 - Keep player-list and player-detail routes token-protected.
 - Authenticate protected WebSockets in their first message; never put tokens in
   URLs.
@@ -450,6 +456,13 @@ store the original chain as one history entry. Password input must always
 bypass splitting. Both interfaces share the same APIs and bridges.
 `scripts/web_server.py` is only a compatibility launcher; do not add a second
 server implementation there.
+
+The Pi update contract spans `POST /api/update`,
+`TOC_UPDATE_REQUEST_PATH`, `deploy/systemd/toc2026-update.path`, the root-owned
+installed copy of `deploy/toc2026-update`, and its service/timer units. Changes
+must preserve no-op behavior when the deployed marker equals `origin/main`,
+fast-forward-only Git updates, pre-update encrypted backup, single-job builds,
+native area validation, service health checks, and retry after a failed build.
 
 ## C Coding Guidance
 

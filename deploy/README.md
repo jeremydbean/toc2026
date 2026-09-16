@@ -6,6 +6,10 @@ profile in `deploy/pi.env.example` also publishes the browser client and admin
 dashboard on TCP 9001. Keep the Pi on a trusted private network and do not
 forward TCP 9001 from the router.
 
+Both pages are served by `toc2026-web.service`; there are no separate browser
+processes to launch on the headless Pi. Enabling that service makes the client
+and dashboard available automatically after every boot.
+
 ## Status
 
 ```bash
@@ -67,6 +71,25 @@ On the same LAN, open:
 Use the Pi's current IP address if mDNS is unavailable, for example
 `http://192.168.1.235:9001/client`. The protected admin operations require the
 `WEB_ADMIN_TOKEN` stored in the Pi's private `.env`.
+
+Do not omit `:9001`: `http://192.168.1.235` uses port 80, where the appliance
+does not run a web server.
+
+### Admin token
+
+The random token in `/home/toc/toc2026/.env` remains unchanged across service
+restarts, reboots, Git updates, and rebuilds. It changes only when an operator
+rotates it or replaces the private `.env`. On a Mac, copy it directly from the
+Pi to the clipboard without printing it:
+
+```bash
+ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
+```
+
+Paste it into **Admin token** and enable **Remember on this browser** to retain
+it in that browser profile. Clearing browser storage, selecting **Lock**, or
+rotating the server token requires entering it again. Direct LAN access uses
+`WEB_ADMIN_LOCAL_UNLOCK=0`; only loopback deployments may auto-unlock.
 
 An SSH tunnel remains available when direct LAN access is disabled:
 

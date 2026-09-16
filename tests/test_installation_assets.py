@@ -129,6 +129,20 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("WEB_ADMIN_PORT=9001", pi_environment)
         self.assertIn("WEB_ADMIN_LOCAL_UNLOCK=0", pi_environment)
 
+    def test_pi_documentation_covers_access_auth_backup_and_updates(self):
+        runbook = read("deploy/README.md")
+        hosting = read("wiki/hosting-guide.md")
+        security = read("SECURITY.md")
+        admin = read("wiki/web-admin-guide.md")
+
+        self.assertIn("http://toc.local:9001/client", runbook)
+        self.assertIn("Remember on this browser", runbook)
+        self.assertIn("toc2026-player-backup.timer", runbook)
+        self.assertIn("toc2026-update", runbook)
+        self.assertIn("make -j1", hosting)
+        self.assertIn("do not forward port 9001", security)
+        self.assertIn("Update ToC", admin)
+
 
 if __name__ == "__main__":
     unittest.main()
