@@ -7,13 +7,34 @@ Do not run the Pi installer or Pi automatic updater on this VM.
 ## Connections And Boundaries
 
 - Public game: `toc.jeremybean.com`, TCP port `9000`, plain Telnet.
-- Private browser client: `http://172.28.90.2:9001/client`, from the Windows host.
-- Private dashboard: `http://172.28.90.2:9001/`, from the Windows host.
-- Only forward TCP 9000 through the router. Do not publish SSH or port 9001.
+- Public browser client: `http://toc.jeremybean.com:9001/client`.
+- Dashboard: `http://toc.jeremybean.com:9001/`, on the same public port, with
+  every operational route behind the admin token.
+- Do not publish SSH.
 - Reserve the Windows host's LAN address in router DHCP settings.
 - Protected dashboard actions require the production admin token stored in
   `C:\ProgramData\ToC\secrets\web-admin-token.txt`. Do not put it in Git,
   screenshots, URLs, tickets, or public listing submissions.
+
+Publishing 9001 was a deliberate decision, taken with these consequences
+understood:
+
+- The port carries no TLS. The admin token travels as a plaintext header and
+  player passwords travel over plaintext `ws://`. Anyone between a player and
+  this host can read both. Players must use game-only passwords.
+- The browser client bridges to the game from `127.0.0.1`, and the game's
+  login throttle exempts loopback on purpose, since every web player shares
+  that address. Password guessing through `/client` is therefore unthrottled,
+  while the same guessing against port 9000 is blocked after five failures.
+- World data is public on this port and needs no token: `/api/mobs`,
+  `/api/objects`, `/api/rooms`, `/api/areas`, `/api/best_gear`.
+- Keep `WEB_ADMIN_LOCAL_UNLOCK=0` in `/etc/toc/web.env`. The unlock now gates
+  on the peer address rather than the `Host` header, but it exists for a
+  loopback-bound service and this one is not.
+
+Host-side publication is `deploy/windows-vm/Publish-ToCWeb.ps1`, run elevated:
+it adds the `TOC-NAT` static mapping and the inbound firewall rule, and
+`-Remove` withdraws both. The router forward is separate and manual.
 
 Mudlet connects directly to port 9000. It does not need access to the dashboard.
 See the [Mudlet guide](../mudlet/README.md) and
