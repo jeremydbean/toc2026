@@ -28,7 +28,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 # Telnet control bytes and the options the server implements.
 IAC, DONT, DO, WONT, WILL, SB, SE = 255, 254, 253, 252, 251, 250, 240
-TELOPT_NAWS, TELOPT_MSSP, TELOPT_GMCP, TELOPT_COMPRESS2 = 31, 70, 201, 86
+TELOPT_ECHO, TELOPT_NAWS, TELOPT_MSSP, TELOPT_GMCP, TELOPT_COMPRESS2 = (
+    1, 31, 70, 201, 86
+)
 MSSP_VAR, MSSP_VAL = 1, 2
 
 

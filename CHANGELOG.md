@@ -10,6 +10,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed password input becoming visible in Telnet and browser clients. The
+  modern option parser rejected the client's acknowledgement of the server's
+  echo-suppression request, immediately cancelling it; the acknowledgement is
+  now accepted and normal echo resumes only after password entry finishes.
 - Fixed native macOS startup failing at `SO_LINGER` with "Numerical argument
   out of domain" by using a portable, bounded 30-second linger interval, and
   stopped the validator from requesting unsupported LeakSanitizer behavior on

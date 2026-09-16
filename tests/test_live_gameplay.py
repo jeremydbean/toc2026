@@ -21,11 +21,13 @@ from live_mud import (
     IAC,
     SB,
     SE,
+    TELOPT_COMPRESS2,
+    TELOPT_ECHO,
     TELOPT_GMCP,
     TELOPT_MSSP,
-    TELOPT_COMPRESS2,
     TELOPT_NAWS,
     WILL,
+    WONT,
     LiveMud,
     banked_copper,
     carried_copper,
@@ -242,6 +244,34 @@ class TelnetProtocolTests(unittest.TestCase):
             )
             self.assertTrue(
                 client.negotiated(DO, TELOPT_NAWS), "no DO NAWS"
+            )
+
+    def test_password_echo_stays_disabled_after_client_acknowledges(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            client.expect("by what name")
+            client.send("Zipecho")
+            client.expect("did i get that right")
+            client.send("Y")
+            client.expect("give me a password")
+
+            self.assertTrue(
+                client.negotiated(WILL, TELOPT_ECHO),
+                "server did not request password echo suppression",
+            )
+            client.send_raw(bytes([IAC, DO, TELOPT_ECHO]))
+            client.drain(0.5)
+            self.assertFalse(
+                client.negotiated(WONT, TELOPT_ECHO),
+                "server cancelled echo suppression after the client accepted it",
+            )
+
+            client.send("harnesspw")
+            client.expect("retype password")
+            client.send("harnesspw")
+            client.expect("following races")
+            self.assertTrue(
+                client.negotiated(WONT, TELOPT_ECHO),
+                "server did not restore normal input echo after password entry",
             )
 
     def test_mssp_reports_status_to_a_crawler(self) -> None:

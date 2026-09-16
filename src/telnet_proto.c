@@ -420,6 +420,17 @@ size_t telnet_filter_input( DESCRIPTOR_DATA *d, const char *raw, size_t length,
 
                 switch ( option )
                 {
+                case TELOPT_ECHO:
+                    /*
+                     * Login sends WILL ECHO while reading a password. MUDs
+                     * conventionally do not echo the input themselves; the
+                     * negotiation tells the client to disable its local
+                     * echo. DO ECHO is the required acknowledgement, not an
+                     * unsupported option to reject with WONT ECHO. Sending
+                     * that rejection immediately makes the password visible.
+                     * DONT ECHO merely means the client declined the request.
+                     */
+                    break;
                 case TELOPT_MSSP:
                     if ( wanted )
                         telnet_send_mssp( d );
