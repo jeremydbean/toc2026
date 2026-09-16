@@ -47,7 +47,9 @@ function Get-Mapping {
 if ($Remove) {
     $mapping = Get-Mapping
     if ($mapping) {
-        $mapping | Remove-NetNatStaticMapping -Confirm:$false
+        # Address it by id rather than relying on pipeline binding.
+        Remove-NetNatStaticMapping -NatName $NatName `
+            -StaticMappingID $mapping.StaticMappingID -Confirm:$false
         Write-Host "Removed NAT mapping for TCP $Port."
     } else {
         Write-Host "No NAT mapping for TCP $Port."
@@ -69,7 +71,8 @@ if ($Remove) {
 if (Get-Mapping) {
     Write-Host "NAT mapping for TCP $Port already exists."
 } else {
-    New-NetNatStaticMapping -NatName $NatName -Protocol TCP `
+    # Add-, not New-: the NetNat module has no New-NetNatStaticMapping.
+    Add-NetNatStaticMapping -NatName $NatName -Protocol TCP `
         -ExternalIPAddress '0.0.0.0' -ExternalPort $Port `
         -InternalIPAddress $VmAddress -InternalPort $Port | Out-Null
     Write-Host "Added NAT mapping: external TCP $Port -> ${VmAddress}:$Port."
