@@ -1629,18 +1629,34 @@ void do_score( CHAR_DATA *ch, char *argument )
             "Copper:",  ch->new_copper);
     send_to_char(buf, ch);
 
-    {
-        long bank_copper = IS_NPC(ch) ? 0 : ch->pcdata->bank;
-        long bank_platinum = bank_copper / COPPER_PER_PLATINUM;
-        bank_copper %= COPPER_PER_PLATINUM;
-        snprintf(buf, sizeof(buf),
-            "| %-4s %2d (%2d) | %-5s %-5s  %-5s  | %-9s %3ldp %3ldg %3lds %4ldc |\n\r",
+    snprintf(buf, sizeof(buf), "| %-4s %2d (%2d) | %-5s %5s  %5s  | %-9s %11s |\n\r",
             "Con:"  , ch->perm_stat[STAT_CON], get_curr_stat(ch,STAT_CON),
             " " , " ", " ",
-            "Bank:", bank_platinum,
+            "", "");
+    send_to_char(buf, ch);
+
+    /*
+     * The bank gets a full-width row of its own. It used to share the Con row,
+     * where the four denominations needed 9 more columns than the carried-coin
+     * cell beside them even at their minimum field widths, and a balance past
+     * 999 platinum widened it further still -- a real account at 1,078,289
+     * platinum pushed the right border 13 columns past every other row. A
+     * whole row keeps all four denominations and cannot be widened out of the
+     * box: the largest balance a long can hold still leaves room to spare.
+     */
+    {
+        char bank_buf[MAX_INPUT_LENGTH];
+        long bank_copper = IS_NPC(ch) ? 0 : ch->pcdata->bank;
+        long bank_platinum = bank_copper / COPPER_PER_PLATINUM;
+
+        bank_copper %= COPPER_PER_PLATINUM;
+        snprintf(bank_buf, sizeof(bank_buf), "%ldp %ldg %lds %ldc",
+            bank_platinum,
             bank_copper / COPPER_PER_GOLD,
             (bank_copper % COPPER_PER_GOLD) / COPPER_PER_SILVER,
             bank_copper % COPPER_PER_SILVER);
+
+        snprintf(buf, sizeof(buf), "| %-9s %48s |\n\r", "Bank:", bank_buf);
     }
     send_to_char(buf, ch);
     send_to_char(kader, ch);
@@ -1653,7 +1669,7 @@ void do_score( CHAR_DATA *ch, char *argument )
 
     if (!IS_NPC(ch))
     {
-        snprintf(buf, sizeof(buf), "| %-11s %3d/%-3d | %-14s %18d |\n\r",
+        snprintf(buf, sizeof(buf), "| %-11s %4d/%-3d | %-14s %18d |\n\r",
             "Achievements:", achievement_earned_count(ch),
             achievement_catalog_count(), "Achv points:",
             achievement_points(ch));
@@ -1813,7 +1829,7 @@ void do_score( CHAR_DATA *ch, char *argument )
       }
       {
         size_t len = strlen(buf);
-        snprintf(buf + len, sizeof(buf) - len, "%13s |\n\r"," ");
+        snprintf(buf + len, sizeof(buf) - len, "%15s |\n\r"," ");
       }
       send_to_char(buf, ch);
 

@@ -202,16 +202,20 @@ class LoginThrottleTests(unittest.TestCase):
 
         Waits for a definite outcome rather than draining for a fixed time:
         under full-suite load the server can take longer than any fixed
-        window to answer, which made this flaky.
+        window to answer, which made this flaky. The timeouts are generous
+        for the same reason -- each of these attempts is a fresh connection
+        to a freshly booted world, and the suite runs several servers.
         """
-        with mud.connect() as client:
-            first = client.expect("by what name", "too many failed login")
+        with mud.connect(timeout=90) as client:
+            first = client.expect(
+                "by what name", "too many failed login", timeout=90
+            )
             if first == "too many failed login":
                 return client.transcript
             client.send(name)
-            client.expect("password")
+            client.expect("password", timeout=90)
             client.send(password)
-            client.expect("wrong password", "mv>", timeout=30)
+            client.expect("wrong password", "mv>", timeout=90)
             return client.transcript
 
     def test_repeated_wrong_passwords_eventually_refuse_the_address(self) -> None:
@@ -691,3 +695,75 @@ class PersistenceTests(unittest.TestCase):
                 self.assertEqual(
                     carried_copper(c), 7 * 1_000_000 + 3 * 10_000 + 30 * 100 + 40
                 )
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class ScoreLayoutTests(unittest.TestCase):
+    """The score sheet is a fixed-width box; every row must close at 62.
+
+    Rows are built from independent snprintf format strings, so a field that
+    is one column out, or a value wider than its field, silently ragged-edges
+    the box. A real account holding 1,078,289 platinum in the bank pushed that
+    row 13 columns past the border.
+    """
+
+    BOX_WIDTH = 62
+    NAME, PW = "Zipbox", "harnesspw"
+
+    def _score_rows(self, client) -> list:
+        client.send("scroll 0")          # no pager: it would split long rows
+        client.drain(1.0)
+        client.buffer = ""
+        client.send("score")
+        client.drain(2.5)
+        return [
+            line
+            for line in client.buffer.split("\n")
+            if line.startswith("|") or line.startswith("-")
+        ]
+
+    def test_every_row_is_exactly_box_width(self) -> None:
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as c:
+                create_character(c, self.NAME, self.PW)
+                c.send("quit")
+                self.assertTrue(c.wait_closed())
+
+            # Magnitudes from a real level 54 character, including the bank
+            # balance that exposed the original misalignment.
+            patch_player_file(
+                mud,
+                self.NAME,
+                Levl=54,
+                Exp=177312,
+                NewPlat=5206,
+                NewGold=308,
+                NewSilv=593,
+                NewCopp=845,
+                BankCP=1078289129500,
+            )
+
+            with mud.connect(timeout=120) as c:
+                login(c, self.NAME, self.PW)
+                rows = self._score_rows(c)
+
+                self.assertGreater(len(rows), 20, "score sheet looks truncated")
+
+                ragged = [
+                    (len(row), row) for row in rows if len(row) != self.BOX_WIDTH
+                ]
+                self.assertEqual(
+                    ragged,
+                    [],
+                    "rows not %d columns wide:\n%s"
+                    % (
+                        self.BOX_WIDTH,
+                        "\n".join("  %3d  %s" % item for item in ragged),
+                    ),
+                )
+
+                # The balance must still be reported in full, not truncated
+                # away to make it fit.
+                joined = "\n".join(rows)
+                self.assertIn("1078289p", joined)
+                self.assertIn("12g", joined)

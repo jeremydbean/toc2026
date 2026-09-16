@@ -10,6 +10,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed three ragged rows in the `score` sheet, which is a fixed 62-column
+  box built from independent format strings. The bank shared the Constitution
+  row, where its four denominations needed nine more columns than the
+  carried-coin cell beside them even at minimum field widths, and a balance
+  past 999 platinum widened it further -- a real account holding 1,078,289
+  platinum pushed that border thirteen columns past every other row. The bank
+  now has a full-width row of its own, which keeps all four denominations and
+  cannot be widened out of the box by any balance a long can hold. The
+  achievements row was one column short and the Pkiller flag row two. A live
+  test now asserts every row closes at exactly 62 columns, using the same
+  balance that exposed the misalignment.
 - Preserve link-dead characters and switched immortals during SIGTERM/SIGINT
   shutdown by saving all live player characters, not only connected descriptors.
 - Preserve streaming ANSI colors and Telnet password state in the admin console;
