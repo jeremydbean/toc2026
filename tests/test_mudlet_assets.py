@@ -102,12 +102,30 @@ class MudletAssetTests(unittest.TestCase):
             self.assertIn(heading, help_text)
         for detail in (
             "tocgui status",
+            "tocgui atlas",
             "Room.Info",
             "Secret exits are not sent",
             "removed or points somewhere new",
             "browser client and plain Telnet do not currently show",
         ):
             self.assertIn(detail, help_text)
+
+    def test_atlas_can_be_pulled_into_an_already_mapped_profile(self) -> None:
+        """Mudlet only auto-downloads a map into a profile that has none.
+
+        Every profile that connected before the atlas shipped therefore keeps
+        its old partial map forever, which is most of the profiles that exist.
+        The package has to offer a way to ask for it.
+        """
+        script = self.package_script()
+        self.assertIn("function tocMudlet.loadAtlas()", script)
+        self.assertIn("pcall(loadMap, file)", script)
+        self.assertIn("downloadFile(tocMudlet.atlasPath(), url)", script)
+
+        alias = (ROOT / "mudlet" / "package" / "TimesOfChaos.xml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("(on|off|status|atlas)", alias)
 
     def test_world_map_covers_every_room_without_overlaps(self) -> None:
         """The shipped atlas is what makes the Mudlet map look deliberate.

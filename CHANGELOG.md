@@ -178,6 +178,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   area names are generated to match exactly what `Room.Info` sends, since the
   package looks areas up by name and a mismatch would silently duplicate
   every one of them. Package version 1.0.3 delivers it automatically.
+- `tocgui atlas` pulls that world map into a profile on demand (package
+  version 1.0.4). Mudlet only downloads the server's map into a profile
+  that does not already have one, so every profile that connected before
+  the atlas shipped would otherwise keep its old partial map forever. The
+  command replaces the profile's saved map, so it is never automatic.
 - Added boot-time local discovery for the Raspberry Pi appliance. Every
   NetworkManager Ethernet and Wi-Fi profile now explicitly sends `toc` as its
   IPv4 and IPv6 DHCP hostname, while Avahi publishes `toc.local` over mDNS.

@@ -15,7 +15,10 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential gcc make libcrypt-dev zlib1g-dev
+          sudo apt-get install -y build-essential gcc make libcrypt-dev zlib1g-dev lua5.4
+          # lua5.4 is what makes the Mudlet package's Lua actually compile
+          # here; without it that test skips and ships unparsed script.
+          sudo ln -sf "$(command -v lua5.4)" /usr/local/bin/lua
 
       - name: Set up Python
         uses: actions/setup-python@v5

@@ -80,12 +80,16 @@ updates are offered automatically when the server advertises a new version.
 
 These are local Mudlet aliases, not game commands:
   tocgui status  - show the package version and GMCP state
+  tocgui atlas   - download the world map into this profile
   tocgui off     - hide the gauges and mapper
   tocgui on      - restore the interface
 
-Mapping continues while the interface is hidden.  Your explored map is saved
-in the Mudlet profile.  If the interface says GMCP is waiting, enable GMCP and
-server packages, then reconnect.  Manual package files and source are at:
+Mapping continues while the interface is hidden.  Your map is saved in the
+Mudlet profile.  A profile that was mapped before the world atlas shipped
+keeps its old map; tocgui atlas replaces it with the full world.
+
+If the interface says GMCP is waiting, enable GMCP and server packages in
+the profile, then reconnect.  Manual package files and source are at:
   github.com/jeremydbean/toc2026/tree/main/mudlet
 
 See also: MAP, GMCP, WEB, WEBCLIENT

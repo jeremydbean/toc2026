@@ -13,7 +13,7 @@ end
 ]]></script>
    <command></command>
    <packageName>TimesOfChaos</packageName>
-   <regex>^tocgui(?:\s+(on|off|status))?$</regex>
+   <regex>^tocgui(?:\s+(on|off|status|atlas))?$</regex>
   </Alias>
  </AliasPackage>
  <ActionPackage></ActionPackage>
@@ -33,7 +33,7 @@ end
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.3"
+tocMudlet.version = "1.0.4"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -391,12 +391,63 @@ function tocMudlet.refresh()
   if gmcp and gmcp.Room and gmcp.Room.Info then tocMudlet.onRoomInfo() end
 end
 
+-- Mudlet only downloads the server's map into a profile that does not already
+-- have one, so a profile mapped before the atlas shipped never sees it. This
+-- pulls it on demand. It replaces the profile's saved map, which is the point,
+-- so it is never automatic.
+tocMudlet.atlasUrl =
+  "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/toc-world-map.xml"
+
+function tocMudlet.atlasPath()
+  return getMudletHomeDir() .. "/toc-world-map.xml"
+end
+
+function tocMudlet.loadAtlas()
+  -- loadMap() needs an open mapper, so put the interface back first.
+  if not tocMudlet.enabled or not tocMudlet.ui.mapper then
+    tocMudlet.enabled = true
+    tocMudlet.buildUI()
+    tocMudlet.refresh()
+  end
+  local url = tocMudlet.atlasUrl
+  if gmcp and gmcp.Client and gmcp.Client.Map and gmcp.Client.Map.url then
+    url = gmcp.Client.Map.url
+  end
+  tocMudlet.atlasPending = tocMudlet.atlasPath()
+  cecho("\n<cyan>Downloading the Times of Chaos world map...<reset>\n")
+  downloadFile(tocMudlet.atlasPath(), url)
+end
+
+function tocMudlet.onDownloadDone(file)
+  if file ~= tocMudlet.atlasPending then return end
+  tocMudlet.atlasPending = nil
+  local ok, loaded = pcall(loadMap, file)
+  if ok and loaded then
+    cecho("\n<green>World map loaded.<reset> Every room is on the map now.\n")
+    if centerview and gmcp and gmcp.Room and gmcp.Room.Info and gmcp.Room.Info.num then
+      pcall(centerview, tonumber(gmcp.Room.Info.num))
+    end
+  else
+    cecho("\n<red>The world map downloaded but would not load.<reset> " ..
+      "Make sure the mapper is showing, then try <white>tocgui atlas<reset> again.\n")
+  end
+end
+
+function tocMudlet.onDownloadError(file)
+  if file ~= tocMudlet.atlasPending then return end
+  tocMudlet.atlasPending = nil
+  cecho("\n<red>Could not download the world map.<reset> " ..
+    "Check the connection and try <white>tocgui atlas<reset> again.\n")
+end
+
 function tocMudlet.command(action)
   action = action or "status"
   if action == "off" then
     tocMudlet.enabled = false
     tocMudlet.teardownUI()
     cecho("\n<yellow>Times of Chaos GUI hidden. Type <white>tocgui on<yellow> to restore it.<reset>\n")
+  elseif action == "atlas" then
+    tocMudlet.loadAtlas()
   elseif action == "on" then
     if not tocMudlet.enabled or not tocMudlet.ui.mapper then
       tocMudlet.enabled = true
@@ -425,13 +476,15 @@ function tocMudlet.install()
   register("gmcp.Char.Status", function() tocMudlet.onStatus() end)
   register("gmcp.Room.Info", function() tocMudlet.onRoomInfo() end)
   register("sysConnectionEvent", function() tocMudlet.subscribe() end)
+  register("sysDownloadDone", function(_, file) tocMudlet.onDownloadDone(file) end)
+  register("sysDownloadError", function(_, _, file) tocMudlet.onDownloadError(file) end)
   register("sysUninstallPackage", function(_, packageName)
     if packageName == "TimesOfChaos" then tocMudlet.teardown() end
   end)
   if isConnected and isConnected() then tocMudlet.subscribe() end
   tempTimer(0.1, tocMudlet.refresh)
   cecho("\n<cyan>Times of Chaos Mudlet interface ready.<reset> " ..
-    "Type <white>tocgui<reset> for status or <white>tocgui off<reset> to hide it.\n")
+    "Type <white>tocgui<reset> for status, <white>tocgui atlas<reset> for the world map, or <white>tocgui off<reset> to hide it.\n")
 end
 
 function tocMudlet.teardown()
