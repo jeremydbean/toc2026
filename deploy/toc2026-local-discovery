@@ -1,0 +1,34 @@
+#!/bin/sh
+set -eu
+
+LOCAL_HOSTNAME=${TOC_LOCAL_HOSTNAME:-toc}
+
+case "$LOCAL_HOSTNAME" in
+    ''|*[!a-zA-Z0-9-]*|-*|*-)
+        echo "Invalid local hostname: $LOCAL_HOSTNAME" >&2
+        exit 2
+        ;;
+esac
+
+if command -v hostnamectl >/dev/null 2>&1; then
+    hostnamectl set-hostname "$LOCAL_HOSTNAME"
+fi
+
+if command -v nmcli >/dev/null 2>&1; then
+    nmcli -t -f UUID,TYPE connection show \
+        | while IFS=: read -r connection_uuid connection_type; do
+            case "$connection_type" in
+                802-3-ethernet|802-11-wireless)
+                    nmcli connection modify uuid "$connection_uuid" \
+                        ipv4.dhcp-fqdn "" \
+                        ipv4.dhcp-hostname "$LOCAL_HOSTNAME" \
+                        ipv4.dhcp-send-hostname yes \
+                        ipv6.dhcp-fqdn "" \
+                        ipv6.dhcp-hostname "$LOCAL_HOSTNAME" \
+                        ipv6.dhcp-send-hostname yes
+                    ;;
+            esac
+        done
+fi
+
+echo "Local discovery configured for $LOCAL_HOSTNAME and $LOCAL_HOSTNAME.local."

@@ -725,6 +725,8 @@ The reproducible assets are under `deploy/`:
 | `systemd/toc2026-maintenance.*` | Weekly unattended OS update and required-reboot window |
 | `toc2026-maintenance` | Serializes OS maintenance, snapshots players, and requests a clean required reboot |
 | `systemd/99-toc2026-watchdog.conf` | Enables userspace and shutdown hardware-watchdog coverage |
+| `systemd/toc2026-local-discovery.service` | Publishes `toc` through DHCP and keeps `toc.local` available through Avahi |
+| `toc2026-local-discovery` | Persists the appliance hostname on every NetworkManager LAN profile |
 | `systemd/toc2026-namecheap-ddns.*` | Ten-minute public IPv4 refresh for the Namecheap host record |
 | `toc2026-namecheap-ddns` | Validates and submits the detected public IPv4 without a resident daemon |
 | `namecheap-ddns.env.example` | Non-secret template for the private DDNS configuration |
@@ -806,6 +808,13 @@ The player-backup timer encrypts `player/` with an age recipient before pushing
 the latest ciphertext to its dedicated Git remote. Keep the private recovery
 key off the Pi, use a write-limited deploy key, and periodically prove restore
 with `age --decrypt ... | tar -tzf -` without printing player contents.
+
+The Pi publishes the stable appliance hostname `toc` through two independent
+LAN discovery paths. NetworkManager sends it to the DHCP server on every wired
+and wireless profile, allowing compatible gateways to register `toc` in their
+local DNS domain. Avahi publishes `toc.local` over mDNS regardless of the
+current DHCP address. `toc2026-local-discovery.service` reapplies the persistent
+profile settings at boot without cycling an active network connection.
 
 For the public game hostname, enable Namecheap Dynamic DNS on the domain and
 configure `toc` as an **A + Dynamic DNS Record**. Store the domain-specific

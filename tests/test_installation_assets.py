@@ -147,6 +147,24 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("TOC_UPDATE_REQUEST_PATH=/run/toc2026/update.request", web_unit)
         self.assertIn("toc2026-update.timer toc2026-update.path", installer)
 
+    def test_pi_registers_a_stable_local_hostname_without_reconnecting(self):
+        discovery = read("deploy/toc2026-local-discovery")
+        service = read("deploy/systemd/toc2026-local-discovery.service")
+        installer = read("deploy/install-pi.sh")
+
+        self.assertIn("TOC_LOCAL_HOSTNAME:-toc", discovery)
+        self.assertIn('hostnamectl set-hostname "$LOCAL_HOSTNAME"', discovery)
+        self.assertIn("802-3-ethernet|802-11-wireless", discovery)
+        self.assertIn('ipv4.dhcp-hostname "$LOCAL_HOSTNAME"', discovery)
+        self.assertIn('ipv4.dhcp-send-hostname yes', discovery)
+        self.assertIn('ipv6.dhcp-hostname "$LOCAL_HOSTNAME"', discovery)
+        self.assertIn('ipv6.dhcp-send-hostname yes', discovery)
+        self.assertNotIn("connection down", discovery)
+        self.assertNotIn("connection up", discovery)
+        self.assertIn("Before=toc2026-game.service toc2026-web.service", service)
+        self.assertIn("toc2026-local-discovery.service", installer)
+        self.assertIn("avahi-daemon.service", installer)
+
     def test_pi_lan_profile_publishes_the_browser_without_local_unlock(self):
         pi_environment = read("deploy/pi.env.example")
         web_unit = read("deploy/systemd/toc2026-web.service")

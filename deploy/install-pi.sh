@@ -50,7 +50,8 @@ fi
 install -d -m 0755 /etc/toc2026 /etc/systemd/journald.conf.d \
     /etc/systemd/system.conf.d /etc/apt/apt.conf.d /var/lib/toc2026
 install -d -m 0755 /usr/local/sbin
-for command_name in update namecheap-ddns led recover stable healthcheck maintenance; do
+for command_name in update namecheap-ddns led recover stable healthcheck maintenance \
+    local-discovery; do
     install_asset "/home/toc/toc2026/deploy/toc2026-$command_name" \
         "/usr/local/sbin/toc2026-$command_name" 0755
 done
@@ -80,6 +81,13 @@ if [ ! -s /var/lib/toc2026/deployed-commit ]; then
 fi
 systemctl daemon-reload
 systemctl restart systemd-journald
+if systemctl list-unit-files avahi-daemon.service --no-legend \
+   | grep -q '^avahi-daemon.service'; then
+    systemctl enable --now avahi-daemon.service
+else
+    echo "Avahi is unavailable; DHCP hostname registration remains enabled."
+fi
+systemctl enable --now toc2026-local-discovery.service
 systemctl enable --now toc2026-game.service toc2026-web.service \
     toc2026-healthcheck.timer toc2026-update.timer toc2026-update.path
 systemctl enable --now toc2026-stable.service

@@ -116,6 +116,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Added boot-time local discovery for the Raspberry Pi appliance. Every
+  NetworkManager Ethernet and Wi-Fi profile now explicitly sends `toc` as its
+  IPv4 and IPv6 DHCP hostname, while Avahi publishes `toc.local` over mDNS.
+  The configuration never cycles an active connection, so applying an update
+  cannot interrupt SSH.
+
 - Added in-game `MAP`, `MUDLET`, `GMCP`, and `WEBCLIENT` help covering automatic
   mapping, package controls, protocol data, browser capabilities, update
   behavior, persistence, troubleshooting, and intentional mapping limits.

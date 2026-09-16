@@ -182,6 +182,14 @@ On the same LAN, open:
 - Browser client: `http://toc.local:9001/client`
 - Admin dashboard: `http://toc.local:9001/`
 
+The appliance hostname is `toc`. At every boot,
+`toc2026-local-discovery.service` explicitly advertises that hostname in DHCP
+requests from every NetworkManager Ethernet and Wi-Fi profile. Routers that
+publish DHCP lease names can therefore resolve `toc` (with the router's local
+search suffix). Avahi independently publishes `toc.local` over mDNS, so local
+clients can still find the Pi when the router does not provide local DNS.
+Neither mechanism depends on the Pi keeping the same DHCP address.
+
 Use the Pi's current IP address if mDNS is unavailable, for example
 `http://192.168.1.235:9001/client`. The protected admin operations require the
 `WEB_ADMIN_TOKEN` stored in the Pi's private `.env`.
