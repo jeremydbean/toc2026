@@ -1,0 +1,12 @@
+[Unit]
+Description=Periodically synchronize encrypted ToC player files to GitHub
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=6h
+RandomizedDelaySec=15min
+Persistent=true
+Unit=toc2026-player-backup.service
+
+[Install]
+WantedBy=timers.target

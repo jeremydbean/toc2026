@@ -288,6 +288,10 @@ char                str_boot_time[MAX_INPUT_LENGTH];
 time_t              boot_time_stamp;
 time_t              current_time;
 
+#if defined(unix)
+static volatile sig_atomic_t shutdown_signal_received = 0;
+#endif
+
 
 
 /*
@@ -329,6 +333,45 @@ void    game_loop_mac_msdos     ( void );
 
 #if defined(unix)
 void    game_loop_unix          ( int control );
+static void handle_shutdown_signal( int signal_number );
+static void process_shutdown_signal( void );
+#endif
+
+
+#if defined(unix)
+static void handle_shutdown_signal( int signal_number )
+{
+    shutdown_signal_received = signal_number;
+}
+
+
+static void process_shutdown_signal( void )
+{
+    DESCRIPTOR_DATA *d;
+    DESCRIPTOR_DATA *d_next_local;
+    char buf[MAX_STRING_LENGTH];
+    int signal_number;
+
+    signal_number = (int)shutdown_signal_received;
+    if ( signal_number == 0 )
+        return;
+
+    shutdown_signal_received = 0;
+    snprintf( buf, sizeof(buf),
+              "Received signal %d; saving players and shutting down.",
+              signal_number );
+    log_string( buf );
+
+    for ( d = descriptor_list; d != NULL; d = d_next_local )
+    {
+        d_next_local = d->next;
+        if ( d->character != NULL && d->character->level >= 1 )
+            save_char_obj( d->character );
+        close_socket( d );
+    }
+
+    merc_down = TRUE;
+}
 #endif
 
 
@@ -616,8 +659,14 @@ void game_loop_unix( int control )
 {
     static struct timeval null_time;
     struct timeval last_time;
+    struct sigaction shutdown_action;
 
     signal( SIGPIPE, SIG_IGN );
+    memset( &shutdown_action, 0, sizeof(shutdown_action) );
+    shutdown_action.sa_handler = handle_shutdown_signal;
+    sigemptyset( &shutdown_action.sa_mask );
+    sigaction( SIGTERM, &shutdown_action, NULL );
+    sigaction( SIGINT, &shutdown_action, NULL );
     gettimeofday( &last_time, NULL );
     time( &current_time );
 
@@ -630,6 +679,10 @@ void game_loop_unix( int control )
         DESCRIPTOR_DATA *d;
         int maxdesc;
         struct timeval loop_start = last_time;
+
+        process_shutdown_signal();
+        if ( merc_down )
+            break;
 
 #if defined(MALLOC_DEBUG)
         if ( malloc_verify( ) != 1 )

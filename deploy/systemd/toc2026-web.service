@@ -1,0 +1,39 @@
+[Unit]
+Description=Times of Chaos web client and administration dashboard
+Documentation=https://github.com/jeremydbean/toc2026
+Wants=network-online.target toc2026-game.service
+After=network-online.target toc2026-game.service
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=toc
+Group=toc
+WorkingDirectory=/home/toc/toc2026
+EnvironmentFile=/home/toc/toc2026/.env
+ExecStart=/home/toc/toc2026/.venv/bin/python -m webadmin.server --host ${WEB_ADMIN_BIND} --port ${WEB_ADMIN_PORT} --mud-host 127.0.0.1 --mud-port ${MUD_PORT} --queue area/webadmin.queue --log-file log/toc.log --event-log-file log/webadmin-events.tsv --area-path area --backup-path backups --player-path player
+Restart=always
+RestartSec=10s
+TimeoutStopSec=30s
+UMask=0077
+LimitNOFILE=1024
+TasksMax=64
+MemoryMax=160M
+MemorySwapMax=128M
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=full
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=toc2026-web
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,40 @@
+[Unit]
+Description=Times of Chaos MUD game server
+Documentation=https://github.com/jeremydbean/toc2026
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=toc
+Group=toc
+WorkingDirectory=/home/toc/toc2026/area
+EnvironmentFile=-/home/toc/toc2026/.env
+ExecStart=/home/toc/toc2026/merc ${MUD_PORT}
+Restart=always
+RestartSec=10s
+TimeoutStopSec=45s
+KillSignal=SIGTERM
+UMask=0077
+LimitNOFILE=4096
+TasksMax=64
+MemoryMax=128M
+MemorySwapMax=96M
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=full
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=toc2026-game
+
+[Install]
+WantedBy=multi-user.target

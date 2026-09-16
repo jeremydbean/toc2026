@@ -12,6 +12,7 @@ game is not natively runnable. Run them from WSL, Linux, macOS, or CI.
 from __future__ import annotations
 
 import re
+import signal
 import unittest
 from pathlib import Path
 
@@ -112,6 +113,19 @@ class LiveGameplayTests(unittest.TestCase):
                 client.send("definitelywrong")
                 client.drain(2.0)
                 self.assertIn("Wrong password", client.transcript)
+
+    def test_sigterm_saves_players_and_exits_cleanly(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            create_character(client, "Ziptermsave", "harnesspw")
+            player_file = mud.player_dir / "Ziptermsave"
+            if player_file.exists():
+                player_file.unlink()
+
+            assert mud.proc is not None
+            mud.proc.send_signal(signal.SIGTERM)
+            self.assertEqual(mud.proc.wait(timeout=15), 0)
+            self.assertTrue(player_file.is_file())
+            self.assertIn("saving players and shutting down", mud.server_output())
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
