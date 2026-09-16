@@ -71,6 +71,7 @@ class WebAdminApiTests(unittest.TestCase):
         local_unlock: bool = False,
         web_bind: str = "127.0.0.1",
         host_status: bool = False,
+        peer: tuple[str, int] = ("127.0.0.1", 40000),
     ):
         if TestClient is None:
             self.skipTest(TESTCLIENT_UNAVAILABLE_REASON)
@@ -115,7 +116,8 @@ class WebAdminApiTests(unittest.TestCase):
                 server = importlib.import_module("webadmin.server")
                 try:
                     base_url = "http://127.0.0.1:9001" if local_unlock else "http://testserver"
-                    with TestClient(server.app, base_url=base_url) as client:
+                    server.set_bind_address(web_bind)
+                    with TestClient(server.app, base_url=base_url, client=peer) as client:
                         yield server, client, temp_root
                 finally:
                     sys.modules.pop("webadmin.server", None)
@@ -465,13 +467,6 @@ class WebAdminApiTests(unittest.TestCase):
 
     def test_loopback_client_can_open_and_close_a_local_admin_session(self) -> None:
         with self.webadmin_client(local_unlock=True) as (_, client, _):
-            remote_config = client.get("/api/config", headers={"host": "mud.example.com"})
-            self.assertFalse(remote_config.json()["local_admin_unlock"])
-            self.assertEqual(
-                client.post("/api/auth/local", headers={"host": "mud.example.com"}).status_code,
-                403,
-            )
-
             config = client.get("/api/config")
             self.assertTrue(config.json()["local_admin_unlock"])
             self.assertEqual(client.get("/api/auth/check").status_code, 403)
@@ -511,6 +506,50 @@ class WebAdminApiTests(unittest.TestCase):
         with self.webadmin_client(local_unlock=True, web_bind="0.0.0.0") as (_, client, _):
             self.assertFalse(client.get("/api/config").json()["local_admin_unlock"])
             self.assertEqual(client.post("/api/auth/local").status_code, 403)
+
+    def test_local_unlock_ignores_a_spoofed_loopback_host_header(self) -> None:
+        """The unlock must read the connection, not the request.
+
+        It used to gate on the Host header, which the caller writes: a request
+        from anywhere carrying `Host: 127.0.0.1` was handed an admin session
+        cookie, and that cookie opens every protected endpoint. The peer
+        address is the one part of a request a remote caller cannot choose.
+        """
+        remote = ("203.0.113.9", 51000)
+        with self.webadmin_client(local_unlock=True, peer=remote) as (server, client, _):
+            self.assertFalse(
+                client.get("/api/config", headers={"host": "127.0.0.1"}).json()[
+                    "local_admin_unlock"
+                ]
+            )
+            denied = client.post("/api/auth/local", headers={"host": "127.0.0.1"})
+            self.assertEqual(denied.status_code, 403)
+            self.assertIsNone(denied.cookies.get(server.LOCAL_ADMIN_COOKIE))
+
+            # Nor by presenting the cookie the loopback path would have set.
+            client.cookies.set(
+                server.LOCAL_ADMIN_COOKIE, server.local_admin_session_value()
+            )
+            self.assertEqual(
+                client.get("/api/auth/check", headers={"host": "127.0.0.1"}).status_code,
+                403,
+            )
+
+    def test_local_unlock_is_off_whenever_the_bound_address_is_not_loopback(self) -> None:
+        """The gate reads the address that was actually bound.
+
+        It used to read WEB_ADMIN_BIND while uvicorn bound whatever --host
+        said, and the production unit passes --host 0.0.0.0 with no such
+        variable set, so the gate believed it was loopback-bound.
+        """
+        with self.webadmin_client(local_unlock=True) as (server, client, _):
+            self.assertTrue(server.local_admin_unlock_enabled())
+            self.assertEqual(client.post("/api/auth/local").status_code, 200)
+
+            server.set_bind_address("0.0.0.0")
+            self.assertFalse(server.local_admin_unlock_enabled())
+            self.assertEqual(client.post("/api/auth/local").status_code, 403)
+            self.assertEqual(client.get("/api/auth/check").status_code, 403)
 
     def test_commands_reload_and_queue_validation(self) -> None:
         with self.webadmin_client() as (server, client, temp_root):

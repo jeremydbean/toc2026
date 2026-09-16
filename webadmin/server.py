@@ -4,6 +4,7 @@ import argparse
 import asyncio
 import hashlib
 import hmac
+import ipaddress
 import json
 import os
 import re
@@ -20,6 +21,7 @@ from typing import Optional, Dict, Any
 from urllib.parse import urlparse
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, WebSocket, WebSocketDisconnect
+from starlette.datastructures import Address
 from fastapi.responses import FileResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -28,10 +30,9 @@ from pydantic import BaseModel
 # disables those endpoints instead of exposing immortal commands anonymously.
 _WEB_ADMIN_TOKEN: str = os.environ.get("WEB_ADMIN_TOKEN", "")
 _WEB_ADMIN_BIND: str = os.environ.get("WEB_ADMIN_BIND", "127.0.0.1").strip().lower()
-_LOCAL_ADMIN_UNLOCK: bool = (
+_LOCAL_ADMIN_UNLOCK_REQUESTED: bool = (
     os.environ.get("WEB_ADMIN_LOCAL_UNLOCK", "0").strip().lower()
     in {"1", "true", "yes", "on"}
-    and _WEB_ADMIN_BIND in {"127.0.0.1", "localhost", "::1"}
 )
 HOST_STATUS_ENABLED: bool = (
     os.environ.get("WEB_ADMIN_HOST_STATUS", "0").strip().lower()
@@ -39,6 +40,39 @@ HOST_STATUS_ENABLED: bool = (
 )
 LOCAL_ADMIN_COOKIE = "toc_admin_session"
 LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
+
+
+def set_bind_address(host: str) -> None:
+    """Record the address actually bound, so the unlock gate can see it.
+
+    The gate used to read WEB_ADMIN_BIND while uvicorn bound whatever --host
+    said. Nothing reconciled the two, so a service started with --host 0.0.0.0
+    and no WEB_ADMIN_BIND -- which is exactly how the production unit runs --
+    still looked loopback-bound to the gate.
+    """
+    global _WEB_ADMIN_BIND
+    _WEB_ADMIN_BIND = (host or "").strip().lower()
+
+
+def bound_to_loopback() -> bool:
+    return _WEB_ADMIN_BIND in LOOPBACK_HOSTS
+
+
+def local_admin_unlock_enabled() -> bool:
+    return _LOCAL_ADMIN_UNLOCK_REQUESTED and bound_to_loopback()
+
+
+def loopback_peer(client: Optional[Address]) -> bool:
+    """Is the far end of this connection actually on the loopback interface?
+
+    The peer address is the only part of a request the caller cannot choose.
+    """
+    if client is None or not client.host:
+        return False
+    try:
+        return ipaddress.ip_address(client.host).is_loopback
+    except ValueError:
+        return False
 
 
 def local_admin_session_value() -> str:
@@ -51,16 +85,22 @@ def local_admin_session_value() -> str:
     ).hexdigest()
 
 
-def loopback_hostname(hostname: Optional[str]) -> bool:
-    return bool(hostname and hostname.rstrip(".").lower() in LOOPBACK_HOSTS)
-
-
 def local_admin_request_allowed(request: Request) -> bool:
-    return bool(_WEB_ADMIN_TOKEN) and _LOCAL_ADMIN_UNLOCK and loopback_hostname(request.url.hostname)
+    """Loopback unlock, decided by the connection rather than by the request.
+
+    This used to trust the Host header, which any client sets to anything it
+    likes: `Host: 127.0.0.1` from the far side of the internet was enough to
+    be issued an admin session cookie. Gate on the peer address instead.
+    """
+    return (
+        bool(_WEB_ADMIN_TOKEN)
+        and local_admin_unlock_enabled()
+        and loopback_peer(request.client)
+    )
 
 
 def local_admin_websocket_authenticated(websocket: WebSocket) -> bool:
-    if not _LOCAL_ADMIN_UNLOCK or not loopback_hostname(websocket.url.hostname):
+    if not local_admin_unlock_enabled() or not loopback_peer(websocket.client):
         return False
     supplied = websocket.cookies.get(LOCAL_ADMIN_COOKIE, "")
     expected = local_admin_session_value()
@@ -2508,5 +2548,8 @@ if __name__ == "__main__":
     MUD_HOST = args.mud_host
     MUD_PORT = args.mud_port
     WEB_ADMIN_PORT = args.port
-    
+    # The unlock gate has to know what was really bound, not what an
+    # environment variable guessed.
+    set_bind_address(args.host)
+
     uvicorn.run(app, host=args.host, port=args.port)

@@ -10,6 +10,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- The dashboard's local-admin unlock no longer trusts the `Host` header. It
+  gated on `request.url.hostname`, which the caller writes, so a request from
+  anywhere carrying `Host: 127.0.0.1` was issued an admin session cookie that
+  opens every protected endpoint. It now gates on the peer address, the one
+  part of a request a remote caller cannot choose. The unlock's other guard
+  read `WEB_ADMIN_BIND` while uvicorn bound whatever `--host` said, and the
+  production unit passes `--host 0.0.0.0` with no such variable set, so the
+  guard believed it was loopback-bound; the bound address is now recorded at
+  startup. Not exploitable in production, where the unlock is off, but one
+  environment variable away from being so.
+
 - Fixed the Python area parser losing a line on the seven shipped area files
   written with a blank line between every record line (hood, haven, wyvern,
   arena, firenewt, valley, trollden). It skipped blanks before the
