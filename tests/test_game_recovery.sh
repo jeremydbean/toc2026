@@ -197,6 +197,27 @@ check "in-game shutdown is respected" "$rc" "0"
 check "in-game shutdown suppresses restarts" "$(count_calls start)" "0"
 teardown
 
+# 8. No such service account. A CI runner has no toc user and is not root, so
+# scenario 3 quietly exercises a different install path there than on a
+# developer box that does. Force the missing-account case everywhere: the
+# binary still has to land, ownership or not.
+setup
+cat > "$WORK/bin/systemctl" <<'STUB'
+#!/bin/bash
+case "$1" in
+  is-active) [ -f "$WORK/up" ] && exit 0 || exit 1 ;;
+  start) echo start >> "$WORK/calls"
+         grep -q NEW-BINARY "$TOC_LIVE_ROOT/merc" 2>/dev/null && touch "$WORK/up" ;;
+  reset-failed) echo reset >> "$WORK/calls" ;;
+esac
+exit 0
+STUB
+chmod +x "$WORK/bin/systemctl"
+rc=$(PATH="$WORK/bin:$PATH" WORK="$WORK" TOC_SERVICE=test-game.service      TOC_LIVE_ROOT="$WORK/live" TOC_BUILD_ROOT="$WORK/build"      TOC_STATE_DIR="$WORK/state" TOC_BACKUP_DIR="$WORK/backups"      TOC_RECOVERY_LOCK="$WORK/lock" TOC_START_GRACE_SEC=0      TOC_MAX_PLAIN_ATTEMPTS=1 TOC_REBUILD_COOLDOWN_SEC=0 TOC_MIN_FREE_MB=0      TOC_OWNER=toc-no-such-account TOC_GROUP=toc-no-such-account      bash "$SCRIPT" >"$WORK/out" 2>&1; echo $?)
+check "missing service account still recovers" "$rc" "0"
+check "missing service account still installs" "$(binary_id)" "NEW-BINARY"
+teardown
+
 echo
 if [ "$failures" -eq 0 ]; then
     echo "ALL PASS (0 failures)"

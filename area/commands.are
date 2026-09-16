@@ -55,11 +55,12 @@ GMCP Room.Info data: name, area, terrain, and visible directional exits.  If a
 visible exit is removed or points somewhere new after a world update, the
 saved map corrects it when that room is visited again.
 
-The atlas draws rooms and visible exits, not omniscience.  Secret exits
-are not sent until the game reveals them.  Portals, ENTER routes, teleports,
-scripted movement, and other non-directional travel may not draw a map line.
-Deleted rooms that can no longer be visited may remain in Mudlet's saved map.
-Room descriptions, EXITS, and SEARCH remain authoritative.
+The atlas draws rooms and their visible exits, and nothing more.
+Secret exits are not sent until the game reveals them.  Portals, ENTER
+routes, teleports, scripted movement, and other non-directional travel may
+not draw a normal map line.  Deleted rooms that can no longer be visited
+may remain in Mudlet's saved map.  Room descriptions, EXITS, and SEARCH
+remain authoritative.
 
 The map belongs to your local Mudlet profile, not your character file.  The
 browser client and plain Telnet do not currently show this automatic map.

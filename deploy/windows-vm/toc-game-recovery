@@ -31,6 +31,13 @@ MAINTENANCE_MARKER=${TOC_MAINTENANCE_MARKER:-/etc/toc/maintenance}
 # machine without a toc account, such as a CI runner.
 OWNER=${TOC_OWNER:-toc}
 GROUP=${TOC_GROUP:-toc}
+# install(1) can only set ownership as root, and only to an account that
+# exists. Getting the binary back in place matters more than its owner, so
+# drop the flags rather than fail the whole recovery when either is untrue.
+own_flags=()
+if [ "$(id -u)" -eq 0 ] && id -u "$OWNER" >/dev/null 2>&1 \n   && getent group "$GROUP" >/dev/null 2>&1; then
+    own_flags=(-o "$OWNER" -g "$GROUP")
+fi
 
 COUNT_FILE="$STATE_DIR/recovery-failures"
 LAST_REBUILD_FILE="$STATE_DIR/recovery-last-rebuild"
@@ -179,7 +186,7 @@ if [ -f "$LIVE_ROOT/merc" ]; then
     log "previous binary saved as $rollback."
 fi
 
-install -o "$OWNER" -g "$GROUP" -m 0755 "$BUILD_ROOT/merc" "$LIVE_ROOT/merc"
+install ${own_flags[@]+"${own_flags[@]}"} -m 0755 "$BUILD_ROOT/merc" "$LIVE_ROOT/merc"
 systemctl reset-failed "$SERVICE" 2>/dev/null || true
 systemctl start "$SERVICE" 2>/dev/null || true
 sleep "$START_GRACE"
@@ -194,7 +201,7 @@ fi
 # ------------------------------------------------------------- stage three
 log "$new_commit also fails to run; rolling the previous binary back."
 if [ -f "$rollback" ]; then
-    install -o "$OWNER" -g "$GROUP" -m 0755 "$rollback" "$LIVE_ROOT/merc"
+    install ${own_flags[@]+"${own_flags[@]}"} -m 0755 "$rollback" "$LIVE_ROOT/merc"
     systemctl reset-failed "$SERVICE" 2>/dev/null || true
     systemctl start "$SERVICE" 2>/dev/null || true
     sleep "$START_GRACE"
