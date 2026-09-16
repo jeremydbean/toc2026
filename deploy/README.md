@@ -45,13 +45,16 @@ cd /home/toc/toc2026
 ./deploy/update-pi.sh
 ```
 
-The same check runs automatically about once per hour, with a randomized delay.
-It does nothing when the deployed commit already matches `origin/main`. When an
-update exists, it first pushes an encrypted player snapshot, refuses to discard
-non-runtime changes, fast-forwards, rebuilds with one compiler process,
+The same check runs automatically once per week on Sunday at about 4:00 AM in
+the Pi's local time, with a randomized delay of up to 30 minutes. If the Pi is
+off at that time, the persistent timer runs the missed check after the next
+boot. It does nothing when the deployed commit already matches `origin/main`.
+When an update exists, it first pushes an encrypted player snapshot, refuses to
+discard non-runtime changes, fast-forwards, rebuilds with one compiler process,
 validates the world, refreshes binary Python dependencies, then gracefully
 restarts and health-checks both services. A failed build leaves the existing
-processes running and is retried later.
+processes running and is retried at the next scheduled or manually requested
+run.
 
 The protected Operations page also has an **Update ToC** button. It writes a
 request under `/run`; a systemd path unit launches the same root-owned updater,

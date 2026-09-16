@@ -167,7 +167,8 @@ That installer enables and starts:
 - graceful SIGTERM player saves during shutdown/reboot
 - capped persistent journald storage
 - six-hour encrypted off-host player backups
-- hourly randomized Git checks and guarded rebuild/restart updates
+- weekly Sunday Git checks with a randomized delay and guarded rebuild/restart
+  updates
 - the path watcher used by **Operations → Update ToC**
 
 The updater only accepts a fast-forward from `origin/main`, backs up first,

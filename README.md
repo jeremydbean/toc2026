@@ -59,7 +59,7 @@ documentation.
 - Docker, Docker Compose, Make, CMake, Windows/WSL validation, and GitHub Actions
   workflows.
 - A low-memory native Raspberry Pi appliance profile with headless systemd
-  startup, crash recovery, encrypted off-host player snapshots, hourly guarded
+  startup, crash recovery, encrypted off-host player snapshots, weekly guarded
   Git updates, and direct private-LAN browser play and administration.
 
 ## Easy Install

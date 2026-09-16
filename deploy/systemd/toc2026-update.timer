@@ -2,9 +2,8 @@
 Description=Periodically check GitHub for Times of Chaos updates
 
 [Timer]
-OnBootSec=10min
-OnUnitActiveSec=1h
-RandomizedDelaySec=10min
+OnCalendar=Sun *-*-* 04:00:00
+RandomizedDelaySec=30min
 Persistent=true
 Unit=toc2026-update.service
 

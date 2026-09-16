@@ -703,7 +703,7 @@ The reproducible assets are under `deploy/`:
 | `systemd/toc2026-game.service` | Runs `merc`, saves on SIGTERM, and restarts crashes |
 | `systemd/toc2026-web.service` | Runs one Uvicorn worker and restarts crashes |
 | `systemd/toc2026-player-backup.*` | Six-hour encrypted player snapshot timer/service |
-| `systemd/toc2026-update.*` | Hourly update timer and admin-request path/service |
+| `systemd/toc2026-update.*` | Weekly update timer and admin-request path/service |
 | `toc2026-update` | Root-owned guarded fetch/build/validate/restart implementation |
 
 Build with one compiler process and use binary Python packages to control peak
@@ -724,15 +724,17 @@ installer does not replace `.env`. The checked-in units cap game, dashboard,
 backup, and update memory; compile updates use `make -j1`; journald is limited
 to 32 MiB and seven days.
 
-At boot, systemd starts game and web services, the backup timer, the hourly
-update timer, and the admin-request path watcher. The updater fetches
-`origin/main` but does nothing when both Git HEAD and the deployed marker are
-current. For a new or previously failed commit it requires a successful
-encrypted player backup, refuses non-runtime dirty files or non-fast-forward
-history, builds and validates while the existing services remain available,
-then gracefully restarts and health-checks both. A failed build leaves the old
-processes running and the deployed marker unchanged so a later timer run can
-retry.
+At boot, systemd starts game and web services, the backup timer, the weekly
+update timer, and the admin-request path watcher. The scheduled check runs on
+Sunday at about 4:00 AM in the Pi's local time, randomized by up to 30 minutes.
+Because the timer is persistent, a check missed while the Pi was off runs after
+the next boot. The updater fetches `origin/main` but does nothing when both Git
+HEAD and the deployed marker are current. For a new or previously failed commit
+it requires a successful encrypted player backup, refuses non-runtime dirty
+files or non-fast-forward history, builds and validates while the existing
+services remain available, then gracefully restarts and health-checks both. A
+failed build leaves the old processes running and the deployed marker unchanged
+so a later scheduled or dashboard-requested run can retry.
 
 The dashboard **Update ToC** action writes only a volatile request file. The
 root-owned systemd unit performs the update after the web request returns, so
