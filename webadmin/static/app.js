@@ -323,6 +323,13 @@
             state.config = await api("/api/config");
             byId("version-label").textContent = `Web admin ${state.config.version || ""}`.trim();
             byId("runtime-endpoint").textContent = state.config.mud_endpoint || "-";
+            const updateButton = document.querySelector('[data-operation="update"]');
+            if (updateButton) {
+                updateButton.disabled = !state.config.update_available;
+                updateButton.title = state.config.update_available
+                    ? "Check for and deploy updates"
+                    : "Host updates are not configured";
+            }
             if (!state.authenticated) {
                 byId("runtime-auth").textContent = state.config.admin_token_configured ? "Locked" : "Disabled";
             }
@@ -1207,14 +1214,18 @@
         const descriptions = {
             backup: { title: "Create backup", message: "Queue a new server backup?", danger: false },
             reload: { title: "Refresh dashboard data", message: "Reparse area files for the dashboard? The running game is not reloaded.", danger: false },
+            update: { title: "Update ToC", message: "Check origin/main and, if it changed, back up players, rebuild, validate, and restart ToC?", phrase: "UPDATE", danger: true },
             shutdown: { title: "Shut down game", message: "This queues an immediate game-server shutdown.", phrase: "SHUTDOWN", danger: true },
         };
         if (!await confirmAction(descriptions[type])) return;
         try {
             const result = await api(`/api/${type}`, { method: "POST", auth: true });
-            const label = type === "reload" && result && typeof result === "object"
-                ? `Dashboard refreshed: ${formatNumber(result.rooms)} rooms.`
-                : `${type[0].toUpperCase()}${type.slice(1)} queued.`;
+            let label = `${type[0].toUpperCase()}${type.slice(1)} queued.`;
+            if (type === "reload" && result && typeof result === "object") {
+                label = `Dashboard refreshed: ${formatNumber(result.rooms)} rooms.`;
+            } else if (type === "update") {
+                label = "Update check queued. The dashboard will briefly disconnect only if changes are applied.";
+            }
             toast(label, "success");
             if (type === "reload") {
                 state.areaHealth = null;

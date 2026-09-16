@@ -102,6 +102,7 @@ class WebAdminApiTests(unittest.TestCase):
                 "MUD_PORT": "65534",
                 "WEB_ADMIN_BIND": web_bind,
                 "WEB_ADMIN_LOCAL_UNLOCK": "1" if local_unlock else "0",
+                "TOC_UPDATE_REQUEST_PATH": "",
             }
             with patch.dict(os.environ, env, clear=False):
                 sys.modules.pop("webadmin.server", None)
@@ -135,6 +136,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(command_sequence.status_code, 200)
             self.assertIn('type: "auth", token: state.token', script.text)
             self.assertIn('/api/auth/local', script.text)
+            self.assertIn('data-operation="update"', page.text)
             self.assertIn("TocCommandSequence.parse(command)", script.text)
             self.assertIn("const MAX_COMMANDS = 50", command_sequence.text)
             self.assertIn('next === ";"', command_sequence.text)
@@ -184,6 +186,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(config.json()["game_websocket_auth"], "same-origin")
             self.assertEqual(config.json()["log_websocket_auth"], "cookie-or-first-message")
             self.assertEqual(config.json()["event_websocket_auth"], "cookie-or-first-message")
+            self.assertFalse(config.json()["update_available"])
 
             health = client.get("/api/health")
             self.assertEqual(health.status_code, 200)
@@ -439,6 +442,15 @@ class WebAdminApiTests(unittest.TestCase):
             with patch.object(server, "_WEB_ADMIN_TOKEN", ""):
                 disabled = client.post("/api/backup", headers=headers)
             self.assertEqual(disabled.status_code, 503)
+
+            self.assertEqual(client.post("/api/update", headers=headers).status_code, 503)
+            update_request = temp_root / "update.request"
+            with patch.object(server, "UPDATE_REQUEST_PATH", update_request):
+                self.assertEqual(client.post("/api/update").status_code, 403)
+                accepted_update = client.post("/api/update", headers=headers)
+            self.assertEqual(accepted_update.status_code, 200)
+            self.assertEqual(accepted_update.json(), {"status": "queued"})
+            self.assertTrue(update_request.is_file())
 
             original_parser = server.parser
             original_health = server.AREA_HEALTH_CACHE

@@ -95,6 +95,11 @@ EVENT_LOG: Path = Path(os.getenv("EVENT_LOG_FILE", "log/webadmin-events.tsv"))
 AREA_PATH: Path = Path(os.getenv("AREA_PATH", "area"))
 BACKUP_PATH: Path = Path(os.getenv("BACKUP_PATH", "backups"))
 PLAYER_PATH: Path = Path(os.getenv("PLAYER_PATH", "player"))
+UPDATE_REQUEST_PATH: Optional[Path] = (
+    Path(update_request_path)
+    if (update_request_path := os.getenv("TOC_UPDATE_REQUEST_PATH", "").strip())
+    else None
+)
 STATIC_PATH = Path(__file__).resolve().parent / "static"
 
 MUD_HOST = os.getenv("MUD_HOST", "127.0.0.1")
@@ -808,6 +813,7 @@ async def get_config(request: Request) -> Dict[str, Any]:
         "player_data_protected": True,
         "log_websocket_auth": "cookie-or-first-message",
         "event_websocket_auth": "cookie-or-first-message",
+        "update_available": UPDATE_REQUEST_PATH is not None,
     }
 
 
@@ -1129,6 +1135,21 @@ async def run_command(request: CommandRequest, _: None = Depends(verify_token)) 
 async def run_backup(_: None = Depends(verify_token)) -> str:
     append_queue_action("backup")
     return "queued"
+
+
+@app.post("/api/update")
+async def run_update(_: None = Depends(verify_token)) -> Dict[str, str]:
+    """Request the host-managed updater without granting the web process sudo."""
+    if UPDATE_REQUEST_PATH is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Host updates are not configured on this installation",
+        )
+    try:
+        await asyncio.to_thread(UPDATE_REQUEST_PATH.touch, mode=0o600, exist_ok=True)
+    except OSError as exc:
+        raise HTTPException(status_code=503, detail="Unable to request a host update") from exc
+    return {"status": "queued"}
 
 
 @app.get("/api/backups")

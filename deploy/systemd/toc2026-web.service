@@ -12,6 +12,7 @@ User=toc
 Group=toc
 WorkingDirectory=/home/toc/toc2026
 EnvironmentFile=/home/toc/toc2026/.env
+Environment=TOC_UPDATE_REQUEST_PATH=/run/toc2026/update.request
 ExecStart=/home/toc/toc2026/.venv/bin/python -m webadmin.server --host ${WEB_ADMIN_BIND} --port ${WEB_ADMIN_PORT} --mud-host 127.0.0.1 --mud-port ${MUD_PORT} --queue area/webadmin.queue --log-file log/toc.log --event-log-file log/webadmin-events.tsv --area-path area --backup-path backups --player-path player
 Restart=always
 RestartSec=10s

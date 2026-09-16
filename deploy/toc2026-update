@@ -1,0 +1,95 @@
+#!/bin/sh
+set -eu
+
+TOC_ROOT=/home/toc/toc2026
+DEPLOYED_COMMIT_FILE=/var/lib/toc2026/deployed-commit
+REQUEST_FILE=/run/toc2026/update.request
+LOCK_FILE=/run/lock/toc2026-update.lock
+
+install -d -m 0755 /var/lib/toc2026
+rm -f "$REQUEST_FILE"
+
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+    echo "Another ToC update is already running; skipping."
+    exit 0
+fi
+
+run_toc()
+{
+    runuser -u toc -- "$@"
+}
+
+run_toc git -C "$TOC_ROOT" fetch --prune origin main
+remote_commit="$(run_toc git -C "$TOC_ROOT" rev-parse origin/main)"
+current_commit="$(run_toc git -C "$TOC_ROOT" rev-parse HEAD)"
+deployed_commit="$(cat "$DEPLOYED_COMMIT_FILE" 2>/dev/null || true)"
+
+if [ "$current_commit" = "$remote_commit" ] \
+   && [ "$deployed_commit" = "$remote_commit" ]; then
+    echo "ToC is already current at $remote_commit."
+    exit 0
+fi
+
+dirty_paths="$(run_toc git -C "$TOC_ROOT" status --porcelain --untracked-files=normal \
+    | awk '{print $2}' \
+    | grep -Ev '^(player/|gods/|heroes/|backups/|corpse/|log/|area/shutdown\.txt$|area/webadmin\.queue$)' || true)"
+if [ -n "$dirty_paths" ]; then
+    echo "Refusing to update because non-runtime files have local changes:" >&2
+    printf '%s\n' "$dirty_paths" >&2
+    exit 1
+fi
+
+if [ "$current_commit" != "$remote_commit" ]; then
+    if ! run_toc git -C "$TOC_ROOT" merge-base --is-ancestor HEAD origin/main; then
+        echo "Refusing to update: the local branch cannot fast-forward to origin/main." >&2
+        exit 1
+    fi
+fi
+
+if ! systemctl is-enabled --quiet toc2026-player-backup.timer; then
+    echo "Refusing to update because encrypted player backups are not enabled." >&2
+    exit 1
+fi
+systemctl start toc2026-player-backup.service
+
+if [ "$current_commit" != "$remote_commit" ]; then
+    run_toc git -C "$TOC_ROOT" merge --ff-only origin/main
+fi
+
+# Build and validate before interrupting the live services. A failed build leaves
+# the already-running game and dashboard untouched, and the timer retries later.
+run_toc make -C "$TOC_ROOT" clean
+run_toc make -C "$TOC_ROOT" -j1
+(
+    cd "$TOC_ROOT/area"
+    run_toc ../merc --check-area
+)
+run_toc "$TOC_ROOT/.venv/bin/python" -m pip install --only-binary=:all: \
+    -r "$TOC_ROOT/webadmin/requirements.txt"
+
+systemctl stop toc2026-web.service
+systemctl stop toc2026-game.service
+systemctl start toc2026-game.service
+systemctl start toc2026-web.service
+
+attempt=0
+while [ "$attempt" -lt 20 ]; do
+    if curl --fail --silent --max-time 3 \
+        http://127.0.0.1:9001/api/health \
+        | grep -q '"merc":true'; then
+        break
+    fi
+    attempt=$((attempt + 1))
+    sleep 3
+done
+if [ "$attempt" -ge 20 ]; then
+    echo "Updated services did not become healthy within 60 seconds." >&2
+    exit 1
+fi
+
+marker_tmp="$DEPLOYED_COMMIT_FILE.tmp"
+printf '%s\n' "$remote_commit" >"$marker_tmp"
+chmod 0644 "$marker_tmp"
+mv -f "$marker_tmp" "$DEPLOYED_COMMIT_FILE"
+echo "ToC update complete at $remote_commit."

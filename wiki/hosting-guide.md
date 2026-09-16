@@ -548,10 +548,17 @@ intentionally available to players.
 | `GET /api/backups` | List up to 100 backup archives |
 | `POST /api/shutdown` | Queue an intentional shutdown |
 | `POST /api/reload` | Reparse dashboard area data after validation |
+| `POST /api/update` | Request the configured host-managed update job |
 
 `POST /api/reload` swaps the dashboard parser only after the new parse has no
 critical area-health findings. It does **not** reload the live C server's world.
 World changes require the appropriate game reboot/restart procedure.
+
+`POST /api/update` is disabled with HTTP 503 unless
+`TOC_UPDATE_REQUEST_PATH` is configured. The Raspberry Pi appliance units set
+it to a volatile file watched by systemd. The dashboard can request an update,
+but the root-owned updater performs the backup, Git fast-forward, build,
+validation, restart, and health check.
 
 `POST /api/command` is equivalent to a high-impact administrative console.
 Protect the token as an immortal credential and do not expose the route through

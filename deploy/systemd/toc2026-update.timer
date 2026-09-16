@@ -1,0 +1,12 @@
+[Unit]
+Description=Periodically check GitHub for Times of Chaos updates
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=1h
+RandomizedDelaySec=10min
+Persistent=true
+Unit=toc2026-update.service
+
+[Install]
+WantedBy=timers.target

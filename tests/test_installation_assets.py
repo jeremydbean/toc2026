@@ -107,6 +107,22 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("bootstrap_windows.ps1", readme)
         self.assertIn("bootstrap_macos.sh", readme)
 
+    def test_pi_updater_is_periodic_and_portal_triggered(self):
+        updater = read("deploy/toc2026-update")
+        installer = read("deploy/install-pi.sh")
+        timer = read("deploy/systemd/toc2026-update.timer")
+        path_unit = read("deploy/systemd/toc2026-update.path")
+        web_unit = read("deploy/systemd/toc2026-web.service")
+
+        self.assertIn("git -C \"$TOC_ROOT\" fetch --prune origin main", updater)
+        self.assertIn("make -C \"$TOC_ROOT\" -j1", updater)
+        self.assertIn("../merc --check-area", updater)
+        self.assertIn("toc2026-player-backup.service", updater)
+        self.assertIn("OnUnitActiveSec=1h", timer)
+        self.assertIn("PathExists=/run/toc2026/update.request", path_unit)
+        self.assertIn("TOC_UPDATE_REQUEST_PATH=/run/toc2026/update.request", web_unit)
+        self.assertIn("toc2026-update.timer toc2026-update.path", installer)
+
 
 if __name__ == "__main__":
     unittest.main()

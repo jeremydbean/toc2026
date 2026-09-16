@@ -1,0 +1,32 @@
+[Unit]
+Description=Fetch, rebuild, validate, and restart Times of Chaos when updated
+Documentation=https://github.com/jeremydbean/toc2026
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=3600
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/toc2026-update
+TimeoutStartSec=30min
+UMask=0022
+Nice=10
+IOSchedulingClass=idle
+CPUWeight=10
+TasksMax=96
+MemoryMax=256M
+MemorySwapMax=192M
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=full
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=toc2026-update

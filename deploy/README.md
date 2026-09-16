@@ -9,7 +9,7 @@ Pi loopback TCP 9001 and is reached through an SSH tunnel.
 ```bash
 ssh toc
 systemctl status toc2026-game toc2026-web
-systemctl status toc2026-player-backup.timer
+systemctl status toc2026-player-backup.timer toc2026-update.timer
 curl http://127.0.0.1:9001/api/health
 ```
 
@@ -19,6 +19,7 @@ curl http://127.0.0.1:9001/api/health
 sudo journalctl -u toc2026-game -u toc2026-web -n 200 --no-pager
 sudo journalctl -u toc2026-game -f
 sudo journalctl -u toc2026-player-backup -n 100 --no-pager
+sudo journalctl -u toc2026-update -n 100 --no-pager
 ```
 
 ## Restart
@@ -38,10 +39,21 @@ cd /home/toc/toc2026
 ./deploy/update-pi.sh
 ```
 
-The updater first pushes an encrypted player snapshot, refuses to discard
-non-runtime changes, stops the services, fast-forwards from `origin/main`,
-rebuilds with one compiler process, validates the world, refreshes binary
-Python dependencies, and starts the services again.
+The same check runs automatically about once per hour, with a randomized delay.
+It does nothing when the deployed commit already matches `origin/main`. When an
+update exists, it first pushes an encrypted player snapshot, refuses to discard
+non-runtime changes, fast-forwards, rebuilds with one compiler process,
+validates the world, refreshes binary Python dependencies, then gracefully
+restarts and health-checks both services. A failed build leaves the existing
+processes running and is retried later.
+
+The protected Operations page also has an **Update ToC** button. It writes a
+request under `/run`; a systemd path unit launches the same root-owned updater,
+so the job continues while the dashboard restarts. Watch progress with:
+
+```bash
+sudo journalctl -u toc2026-update -f
+```
 
 ## Browser client
 

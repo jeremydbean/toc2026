@@ -247,6 +247,7 @@ POST /api/backup
 GET  /api/backups
 POST /api/shutdown
 POST /api/reload
+POST /api/update
 ```
 
 Important distinctions:
@@ -265,6 +266,10 @@ Important distinctions:
   if critical area-health findings exist. It does not reload the live game.
 - `/api/shutdown` queues an in-game shutdown request. Compose restart policy may
   still restart the container.
+- `/api/update` requests the host-managed updater when
+  `TOC_UPDATE_REQUEST_PATH` is configured. On the Raspberry Pi appliance the
+  systemd job checks `origin/main`, rebuilds only for a new or not-yet-deployed
+  commit, then restarts and health-checks the game and dashboard.
 - The token is a shared secret without individual operator identity. Rotate it
   when staff access changes and keep separate host-level audit records.
 - World browsing and the browser game bridge are not token-protected.
