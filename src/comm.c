@@ -52,9 +52,15 @@
 #include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#if defined(unix)
+/*
+ * Unconditional, like the other POSIX sys/ headers above. It must not be
+ * guarded on `unix`: that macro is predefined by GCC only outside strict ISO
+ * mode, and merc.h's fallback definition of it is 8 lines below this point.
+ * Under the CMake build (-std=c17, no -Dunix) the guard was therefore false
+ * here and true by the time notify_systemd() was compiled, leaving
+ * struct sockaddr_un an incomplete type and breaking that build only.
+ */
 #include <sys/un.h>
-#endif
 #include <sys/wait.h>
 #include <unistd.h>
 #include <stdarg.h>

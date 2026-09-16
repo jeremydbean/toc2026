@@ -70,6 +70,14 @@ target_include_directories(${TARGET_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/src")
 
 target_compile_definitions(${TARGET_NAME} PRIVATE ROM)
 
+# Match the Makefile's -Dunix. CMAKE_C_EXTENSIONS is OFF, so this builds as
+# strict -std=c17, where GCC does not predefine `unix`. merc.h defines it as
+# a fallback, but only from the point merc.h is included, so any `unix` guard
+# above that include behaves differently between the two build systems.
+if(UNIX)
+    target_compile_definitions(${TARGET_NAME} PRIVATE unix)
+endif()
+
 option(ENABLE_SANITIZERS "Enable address and undefined sanitizers for debug validation" OFF)
 
 set(SANITIZER_FLAGS
