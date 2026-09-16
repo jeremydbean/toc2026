@@ -1,8 +1,10 @@
 # Raspberry Pi appliance runbook
 
 This deployment runs the native game and single-worker web dashboard under
-systemd. The game listens on the LAN on TCP 9000. The dashboard remains on
-Pi loopback TCP 9001 and is reached through an SSH tunnel.
+systemd. The game listens on the LAN on TCP 9000. The dedicated LAN appliance
+profile in `deploy/pi.env.example` also publishes the browser client and admin
+dashboard on TCP 9001. Keep the Pi on a trusted private network and do not
+forward TCP 9001 from the router.
 
 ## Status
 
@@ -57,7 +59,16 @@ sudo journalctl -u toc2026-update -f
 
 ## Browser client
 
-From another computer, open a tunnel:
+On the same LAN, open:
+
+- Browser client: `http://toc.local:9001/client`
+- Admin dashboard: `http://toc.local:9001/`
+
+Use the Pi's current IP address if mDNS is unavailable, for example
+`http://192.168.1.235:9001/client`. The protected admin operations require the
+`WEB_ADMIN_TOKEN` stored in the Pi's private `.env`.
+
+An SSH tunnel remains available when direct LAN access is disabled:
 
 ```bash
 ssh -L 9001:127.0.0.1:9001 toc

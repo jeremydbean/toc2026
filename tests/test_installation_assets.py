@@ -123,6 +123,12 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("TOC_UPDATE_REQUEST_PATH=/run/toc2026/update.request", web_unit)
         self.assertIn("toc2026-update.timer toc2026-update.path", installer)
 
+    def test_pi_lan_profile_publishes_the_browser_without_local_unlock(self):
+        pi_environment = read("deploy/pi.env.example")
+        self.assertIn("WEB_ADMIN_BIND=0.0.0.0", pi_environment)
+        self.assertIn("WEB_ADMIN_PORT=9001", pi_environment)
+        self.assertIn("WEB_ADMIN_LOCAL_UNLOCK=0", pi_environment)
+
 
 if __name__ == "__main__":
     unittest.main()
