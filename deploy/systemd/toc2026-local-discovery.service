@@ -3,6 +3,7 @@ Description=Register the Times of Chaos appliance on the local network
 Documentation=https://github.com/jeremydbean/toc2026
 After=NetworkManager.service avahi-daemon.service
 Before=toc2026-game.service toc2026-web.service
+OnFailure=toc2026-mail@discovery-failure.service
 
 [Service]
 Type=oneshot

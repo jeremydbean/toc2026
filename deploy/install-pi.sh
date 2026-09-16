@@ -51,10 +51,12 @@ install -d -m 0755 /etc/toc2026 /etc/systemd/journald.conf.d \
     /etc/systemd/system.conf.d /etc/apt/apt.conf.d /var/lib/toc2026
 install -d -m 0755 /usr/local/sbin
 for command_name in update namecheap-ddns led recover stable healthcheck maintenance \
-    local-discovery; do
+    local-discovery mail; do
     install_asset "/home/toc/toc2026/deploy/toc2026-$command_name" \
         "/usr/local/sbin/toc2026-$command_name" 0755
 done
+install_asset /home/toc/toc2026/deploy/toc2026_mail.py \
+    /usr/local/sbin/toc2026_mail.py 0755
 systemd-analyze verify \
     /home/toc/toc2026/deploy/systemd/*.service \
     /home/toc/toc2026/deploy/systemd/*.timer \
@@ -89,7 +91,9 @@ else
 fi
 systemctl enable --now toc2026-local-discovery.service
 systemctl enable --now toc2026-game.service toc2026-web.service \
-    toc2026-healthcheck.timer toc2026-update.timer toc2026-update.path
+    toc2026-healthcheck.timer toc2026-network-notify.timer \
+    toc2026-update.timer toc2026-update.path
+systemctl enable toc2026-mail@startup.service
 systemctl enable --now toc2026-stable.service
 if [ -e /sys/class/leds/ACT/trigger ]; then
     systemctl enable --now toc2026-led.service

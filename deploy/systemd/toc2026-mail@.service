@@ -1,0 +1,47 @@
+[Unit]
+Description=Email Times of Chaos appliance event %i
+Documentation=https://github.com/jeremydbean/toc2026
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/toc2026/mail.env
+StartLimitIntervalSec=1h
+StartLimitBurst=6
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/toc2026-mail %i
+Restart=on-failure
+RestartSec=2min
+TimeoutStartSec=4min
+UMask=0077
+Nice=10
+IOSchedulingClass=idle
+CPUWeight=10
+TasksMax=24
+MemoryMax=64M
+MemorySwapMax=32M
+OOMPolicy=stop
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectClock=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+ReadWritePaths=/var/lib/toc2026/mail
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=toc2026-mail
+
+[Install]
+WantedBy=multi-user.target

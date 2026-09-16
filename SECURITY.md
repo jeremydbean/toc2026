@@ -147,6 +147,23 @@ Namecheap account password. Rotate it in Namecheap and on the Pi if exposure is
 suspected. Publishing the game hostname does not make the dashboard safe for
 the public internet: forward only TCP 9000, never TCP 9001.
 
+### SMTP Appliance Notifications
+
+The optional Pi notifier keeps its relay credential in
+`/etc/toc2026/mail.env`, requires that file to be inaccessible to group and
+other users, and uses authenticated TLS. The file, SMTP password, dashboard
+token, SSH material, and game passwords must never be committed or included in
+mail. Use a dedicated relay credential with only send permission and rotate it
+if the Pi or mailbox is compromised.
+
+Status messages intentionally disclose the appliance's active SSID, local and
+public addresses, service state, and access endpoints to the configured
+recipient. Failure messages cap their journal window, redact credential-like
+values and IP addresses, and exclude raw game/dashboard output so player data
+is not exported. Email still leaves the host and persists in the recipient's
+mailbox and relay infrastructure; enable it only for a mailbox trusted to hold
+that operational information.
+
 ### Read-Only Host Telemetry
 
 `GET /api/host/status` and `GET /api/host/resources` are token-protected and

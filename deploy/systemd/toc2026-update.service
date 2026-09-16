@@ -3,6 +3,7 @@ Description=Fetch, rebuild, validate, and restart Times of Chaos when updated
 Documentation=https://github.com/jeremydbean/toc2026
 Wants=network-online.target
 After=network-online.target
+OnFailure=toc2026-mail@update-failure.service
 StartLimitIntervalSec=3600
 StartLimitBurst=3
 

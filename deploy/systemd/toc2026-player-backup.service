@@ -3,6 +3,7 @@ Description=Encrypt and synchronize ToC player files to GitHub
 Documentation=https://github.com/jeremydbean/toc2026
 Wants=network-online.target
 After=network-online.target
+OnFailure=toc2026-mail@backup-failure.service
 StartLimitIntervalSec=2h
 StartLimitBurst=4
 

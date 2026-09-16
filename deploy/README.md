@@ -17,9 +17,9 @@ ssh toc
 systemctl status toc2026-game toc2026-web
 systemctl status toc2026-player-backup.timer toc2026-update.timer \
   toc2026-namecheap-ddns.timer toc2026-healthcheck.timer \
-  toc2026-maintenance.timer
+  toc2026-maintenance.timer toc2026-network-notify.timer
 systemctl status toc2026-led.service toc2026-stable.service \
-  toc2026-healthcheck.service
+  toc2026-healthcheck.service toc2026-mail@startup.service
 curl http://127.0.0.1:9001/api/health
 ```
 
@@ -189,6 +189,39 @@ publish DHCP lease names can therefore resolve `toc` (with the router's local
 search suffix). Avahi independently publishes `toc.local` over mDNS, so local
 clients can still find the Pi when the router does not provide local DNS.
 Neither mechanism depends on the Pi keeping the same DHCP address.
+
+## Email status and failure alerts
+
+The appliance can send event-driven status mail through an authenticated SMTP
+relay. Copy `deploy/mail.env.example` to `/etc/toc2026/mail.env`, fill in a
+verified sender, recipient, and SMTP credentials, and leave the file owned by
+root with mode `0600`. The notifier refuses a group- or world-readable
+configuration.
+
+```bash
+sudo install -m 0600 deploy/mail.env.example /etc/toc2026/mail.env
+sudoedit /etc/toc2026/mail.env
+sudo systemctl start toc2026-mail@test.service
+sudo journalctl -u 'toc2026-mail@*' -n 100 --no-pager
+```
+
+`toc2026-mail@startup.service` sends one full report after each boot, waiting
+briefly for the game and dashboard health endpoint. The five-minute network
+watch compares the active interface, Wi-Fi SSID, local IPv4 address, and route
+with its last successful report; it remains silent while they are unchanged
+and only looks up the public address when a change needs mail. Unexpected game,
+dashboard, health-check, recovery, update, backup, DDNS, local-discovery, and OS
+maintenance failures send rate-limited alerts. The first automatic repair also
+sends an alert, and the ten-minute stability check sends a recovery message
+after an unresolved alert.
+
+Reports include local/public addresses, active network, service state, health,
+resource use, Git deployment marker, access hostnames, ports, and URLs. Failure
+mail includes at most 20 minutes of bounded automation and system-manager
+journal context. Raw gameplay logs are excluded; credentials, admin tokens,
+private keys, and journal IP addresses are redacted. Passwords and the admin
+token are never placed in email. The SMTP password remains only in the private
+root-owned configuration file and is not committed to Git.
 
 Use the Pi's current IP address if mDNS is unavailable, for example
 `http://192.168.1.235:9001/client`. The protected admin operations require the

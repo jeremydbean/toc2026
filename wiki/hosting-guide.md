@@ -727,6 +727,10 @@ The reproducible assets are under `deploy/`:
 | `systemd/99-toc2026-watchdog.conf` | Enables userspace and shutdown hardware-watchdog coverage |
 | `systemd/toc2026-local-discovery.service` | Publishes `toc` through DHCP and keeps `toc.local` available through Avahi |
 | `toc2026-local-discovery` | Persists the appliance hostname on every NetworkManager LAN profile |
+| `systemd/toc2026-mail@.service` | Sends startup, network-change, failure, and recovery status through a private SMTP relay |
+| `systemd/toc2026-network-notify.timer` | Checks the LAN identity every five minutes and remains silent while unchanged |
+| `toc2026-mail`, `toc2026_mail.py` | Collect bounded status, redact operational context, and deliver authenticated TLS mail |
+| `mail.env.example` | Placeholder-only template for the root-owned SMTP configuration |
 | `systemd/toc2026-namecheap-ddns.*` | Ten-minute public IPv4 refresh for the Namecheap host record |
 | `toc2026-namecheap-ddns` | Validates and submits the detected public IPv4 without a resident daemon |
 | `namecheap-ddns.env.example` | Non-secret template for the private DDNS configuration |
@@ -815,6 +819,20 @@ and wireless profile, allowing compatible gateways to register `toc` in their
 local DNS domain. Avahi publishes `toc.local` over mDNS regardless of the
 current DHCP address. `toc2026-local-discovery.service` reapplies the persistent
 profile settings at boot without cycling an active network connection.
+
+Optional SMTP notifications are configured in `/etc/toc2026/mail.env` from the
+placeholder-only `deploy/mail.env.example`. Keep that file root-owned and mode
+`0600`; the notifier refuses looser permissions. The startup instance waits for
+the local health endpoint and reports network addresses, access endpoints,
+service/timer state, resource use, and the deployed commit. A five-minute
+network identity check sends only after the active connection, SSID, local
+IPv4, or default route changes. Unexpected service failures and the start of
+automatic health repair generate rate-limited alerts, while the existing
+ten-minute stable-state check sends recovery mail after an unresolved alert.
+Failure context is capped, redacted, and restricted to automation units plus
+system-manager messages; raw gameplay output is never mailed. Access passwords,
+private keys, SMTP credentials, and the dashboard admin token are never included
+in any message. See `deploy/README.md` for configuration and test commands.
 
 For the public game hostname, enable Namecheap Dynamic DNS on the domain and
 configure `toc` as an **A + Dynamic DNS Record**. Store the domain-specific

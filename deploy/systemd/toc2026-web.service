@@ -3,7 +3,7 @@ Description=Times of Chaos web client and administration dashboard
 Documentation=https://github.com/jeremydbean/toc2026
 Wants=toc2026-game.service
 After=toc2026-game.service
-OnFailure=toc2026-recovery.service
+OnFailure=toc2026-recovery.service toc2026-mail@web-failure.service
 StartLimitIntervalSec=300
 StartLimitBurst=5
 
