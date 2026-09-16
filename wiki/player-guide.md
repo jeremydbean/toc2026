@@ -41,7 +41,7 @@ Windows installations do not enable the Telnet client by default.
 
 Mudlet is the recommended desktop client when you want gauges and automatic
 mapping. Enable GMCP and server-installed packages in the profile; the server
-then supplies the interface and Mud School starter map. In game, use `help
+then supplies the interface and the full-world map. In game, use `help
 mudlet`, `help map`, and `help gmcp` for current behavior and limitations.
 
 ## Creating A Character

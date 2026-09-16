@@ -32,7 +32,7 @@ class MudletAssetTests(unittest.TestCase):
 
     def test_generated_assets_are_current(self) -> None:
         self.assertEqual(
-            (ROOT / "mudlet" / "toc-newbie-map.xml").read_bytes(),
+            (ROOT / "mudlet" / "toc-world-map.xml").read_bytes(),
             BUILDER.build_map_bytes(),
         )
         self.assertEqual(
@@ -109,37 +109,104 @@ class MudletAssetTests(unittest.TestCase):
         ):
             self.assertIn(detail, help_text)
 
-    def test_starter_map_is_connected_and_has_unique_coordinates(self) -> None:
+    def test_world_map_covers_every_room_without_overlaps(self) -> None:
+        """The shipped atlas is what makes the Mudlet map look deliberate.
+
+        Placing rooms by walking gives overlapping squares wherever the world
+        is not a grid, which is most of it. The generator lays each area out
+        offline instead, so the contract is: every room present, and no two
+        rooms in an area sharing a square.
+        """
         root = ElementTree.fromstring(BUILDER.build_map_bytes())
-        rooms = root.find("rooms")
-        self.assertIsNotNone(rooms)
-        room_nodes = rooms.findall("room")
+        room_nodes = root.find("rooms").findall("room")
         room_ids = {int(room.attrib["id"]) for room in room_nodes}
-        self.assertEqual(room_ids, set(BUILDER.STARTER_ROOM_IDS))
 
-        coordinates = {
-            tuple(room.find("coord").attrib[key] for key in ("x", "y", "z"))
-            for room in room_nodes
-        }
-        self.assertEqual(len(coordinates), len(room_nodes))
+        rooms, areas = BUILDER.load_world_rooms()
+        self.assertEqual(room_ids, set(rooms), "atlas does not cover every room")
+        self.assertGreater(len(room_ids), 7000)
 
-        graph = {room_id: set() for room_id in room_ids}
+        # Mudlet gives each area its own coordinate space, so uniqueness is
+        # per area, not global.
+        seen = {}
         for room in room_nodes:
+            coord = room.find("coord")
+            key = (
+                room.attrib["area"],
+                coord.attrib["x"],
+                coord.attrib["y"],
+                coord.attrib["z"],
+            )
+            self.assertNotIn(
+                key, seen, f"rooms {seen.get(key)} and {room.attrib['id']} overlap"
+            )
+            seen[key] = room.attrib["id"]
+
+        for room in room_nodes:
+            for room_exit in room.findall("exit"):
+                self.assertIn(int(room_exit.attrib["target"]), room_ids)
+
+        declared = {area.attrib["id"] for area in root.find("areas").findall("area")}
+        self.assertEqual(declared, {str(area_id) for area_id, _, _ in areas})
+
+    def test_world_map_area_names_match_what_gmcp_sends(self) -> None:
+        """A name mismatch would silently duplicate every area.
+
+        The package looks areas up by name, so if the map says one thing and
+        Room.Info says another, Mudlet creates a second area and the prebuilt
+        layout is wasted.
+        """
+        gmcp_source = (ROOT / "src" / "gmcp.c").read_text(encoding="utf-8")
+        self.assertIn("gmcp_area_name", gmcp_source)
+
+        def as_gmcp_sends(raw: str) -> str:
+            # Mirrors gmcp_area_name(): strip a leading {...} and whitespace.
+            name = (raw or "").lstrip()
+            if name.startswith("{"):
+                brace = name.find("}")
+                if brace != -1:
+                    name = name[brace + 1:].lstrip()
+            return name or "Unknown Area"
+
+        rooms, _areas = BUILDER.load_world_rooms()
+        expected = {as_gmcp_sends(room.area_name) for room in rooms.values()}
+
+        root = ElementTree.fromstring(BUILDER.build_map_bytes())
+        declared = {area.attrib["name"] for area in root.find("areas").findall("area")}
+        self.assertEqual(expected - declared, set())
+
+    def test_mud_school_remains_area_one_and_connected(self) -> None:
+        """Mud School keeps area 1 so existing profiles are not reshuffled."""
+        root = ElementTree.fromstring(BUILDER.build_map_bytes())
+        areas = root.find("areas").findall("area")
+        self.assertEqual(areas[0].attrib["id"], "1")
+        self.assertIn("Mud School", areas[0].attrib["name"])
+
+        school = {
+            int(room.attrib["id"])
+            for room in root.find("rooms").findall("room")
+            if room.attrib["area"] == "1"
+        }
+        self.assertTrue(set(BUILDER.STARTER_ROOM_IDS) <= school)
+
+        graph = {room_id: set() for room_id in school}
+        for room in root.find("rooms").findall("room"):
+            if room.attrib["area"] != "1":
+                continue
             source = int(room.attrib["id"])
             for room_exit in room.findall("exit"):
                 target = int(room_exit.attrib["target"])
-                graph[source].add(target)
-                graph[target].add(source)
+                if target in school:
+                    graph[source].add(target)
+                    graph[target].add(source)
 
-        visited = set()
-        pending = [min(room_ids)]
+        visited, pending = set(), [min(BUILDER.STARTER_ROOM_IDS)]
         while pending:
             room_id = pending.pop()
             if room_id in visited:
                 continue
             visited.add(room_id)
             pending.extend(graph[room_id] - visited)
-        self.assertEqual(visited, room_ids)
+        self.assertTrue(set(BUILDER.STARTER_ROOM_IDS) <= visited)
 
 
 if __name__ == "__main__":

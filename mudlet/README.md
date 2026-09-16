@@ -36,4 +36,4 @@ python3 scripts/build_mudlet_package.py --check
 
 The generated `TimesOfChaos.mpackage` is a deterministic ZIP containing
 `config.lua` and `TimesOfChaos.xml`. The generated MMP file is
-`toc-newbie-map.xml`.
+`toc-world-map.xml`.

@@ -33,7 +33,7 @@ end
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.2"
+tocMudlet.version = "1.0.3"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -134,6 +134,36 @@ local function directionTo(roomInfo, target)
   return nil
 end
 
+-- Is anything already drawn on this square of this area?
+local function coordinateFree(areaId, x, y, z)
+  if areaId <= 0 or not getRoomsByPosition then return true end
+  local ok, occupants = pcall(getRoomsByPosition, areaId, x, y, z)
+  if not ok or type(occupants) ~= "table" then return true end
+  return next(occupants) == nil
+end
+
+-- Rooms are placed one step from the room walked in from, but a MUD map is
+-- not a grid: one-way exits, up/down loops and teleports all send two rooms
+-- to the same square, and Mudlet then draws them on top of each other. Spiral
+-- outwards for the first free square instead, which is what the shipped world
+-- map generator does offline.
+local SEARCH_OFFSETS = {
+  {1, 0}, {-1, 0}, {0, 1}, {0, -1},
+  {1, 1}, {-1, -1}, {1, -1}, {-1, 1},
+}
+
+local function freeCoordinate(areaId, x, y, z)
+  if coordinateFree(areaId, x, y, z) then return x, y, z end
+  for radius = 1, 12 do
+    for _, offset in ipairs(SEARCH_OFFSETS) do
+      local cx, cy = x + offset[1] * radius, y + offset[2] * radius
+      if coordinateFree(areaId, cx, cy, z) then return cx, cy, z end
+    end
+  end
+  -- Give up rather than loop forever; an overlap beats a missing room.
+  return x, y, z
+end
+
 local function placeNearPrevious(roomId, areaId)
   local x, y, z = 0, 0, 0
   local direction = directionTo(tocMudlet.lastExits, roomId)
@@ -146,6 +176,7 @@ local function placeNearPrevious(roomId, areaId)
                   number(pz) + offset[3]
     end
   end
+  x, y, z = freeCoordinate(areaId, x, y, z)
   if setRoomCoordinates then pcall(setRoomCoordinates, roomId, x, y, z) end
   if areaId > 0 and setRoomArea then pcall(setRoomArea, roomId, areaId) end
 end

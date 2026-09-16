@@ -12,7 +12,7 @@ Mudlet's opening connection screen after the GMCP build is deployed publicly.
 - **Codebase:** Merc 2.1 / ROM 2.4, heavily customized
 - **Repository:** <https://github.com/jeremydbean/toc2026>
 - **Package:** <https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage>
-- **Starter map:** <https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/toc-newbie-map.xml>
+- **World map:** <https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/toc-world-map.xml>
 
 Suggested short description:
 
@@ -28,7 +28,8 @@ Suggested short description:
       command input.
 - [x] `Room.Info` provides numeric room IDs, names, areas, environments, and
       visible exits for mapper tracking.
-- [x] A 25-room MMP map covers the Mud School path from entry to graduation.
+- [x] A full-world MMP map ships all 7,781 rooms across 92 areas, laid out
+      per area with no two rooms sharing a square.
 - [x] The official package embeds a mapper and HP, mana, movement, and
       experience gauges.
 - [x] `Client.Map` is sent before `Client.GUI` as recommended by Mudlet.

@@ -1612,9 +1612,19 @@ class AreaParser:
                     # Name is on the same line
                     name = rest_of_line.rstrip('~')
                 else:
-                    # Name is on the next line
+                    # Name is on the next line. Skip blank lines first: seven
+                    # shipped area files (hood, haven, wyvern, arena, firenewt,
+                    # valley, trollden) are written with a blank line between
+                    # every record line. The C loader skips whitespace between
+                    # tokens and reads them fine; taking the blank as the name
+                    # shifted this parser by one line for ~300 rooms, which
+                    # then read the first line of the description as the
+                    # area/flags/sector line and stored a word from the prose
+                    # as the sector type.
                     try:
                         i += 1
+                        while i < len(lines) and not lines[i].strip():
+                            i += 1
                         if i >= len(lines):
                             break
                         name = lines[i].rstrip('~')

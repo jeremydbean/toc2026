@@ -9,7 +9,7 @@ automatic exploration map; the browser client prioritizes zero-install play.
 Create a Mudlet profile for the game host on port `9000`. For the public host,
 use `toc.jeremybean.com`; for local development, use `localhost`. Leave
 **Enable GMCP** and **Allow server to install script packages** enabled. The
-server advertises the official interface and Mud School starter map when GMCP
+server advertises the official interface and the full-world map when GMCP
 is negotiated, and a changed package version updates existing installations.
 
 The interface includes HP, mana, movement, and experience gauges, character

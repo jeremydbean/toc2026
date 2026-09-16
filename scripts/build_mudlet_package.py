@@ -15,7 +15,7 @@ from xml.sax.saxutils import quoteattr
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE_SOURCE = ROOT / "mudlet" / "package"
 PACKAGE_OUTPUT = ROOT / "mudlet" / "TimesOfChaos.mpackage"
-MAP_OUTPUT = ROOT / "mudlet" / "toc-newbie-map.xml"
+MAP_OUTPUT = ROOT / "mudlet" / "toc-world-map.xml"
 
 PACKAGE_FILES = ("config.lua", "TimesOfChaos.xml")
 STARTER_ROOM_IDS = (frozenset(range(3700, 3723)) - {3706}) | {3757, 3758, 3759}
@@ -39,17 +39,70 @@ SECTOR_COLOURS = {
 }
 
 
-def load_starter_rooms():
+def load_world_rooms():
+    """Every room in the shipped world, grouped into Mudlet areas.
+
+    One Mudlet area per .are file. Mud School keeps area id 1 so an existing
+    profile that already mapped it does not have its rooms shuffled into a
+    different area; everything else is numbered by file name, which keeps the
+    output byte-identical between runs and between machines.
+    """
     sys.path.insert(0, str(ROOT))
     from webadmin.area_parser import AreaParser  # pylint: disable=import-outside-toplevel
 
     parser = AreaParser(ROOT / "area")
-    parser.parse_area_file(ROOT / "area" / "school.are")
-    rooms = {vnum: room for vnum, room in parser.rooms.items() if vnum in STARTER_ROOM_IDS}
+    parser.parse_all()
+
+    rooms = dict(parser.rooms)
     missing = STARTER_ROOM_IDS - rooms.keys()
     if missing:
         raise RuntimeError(f"Mud School starter rooms are missing: {sorted(missing)}")
-    return rooms
+
+    by_file = {}
+    for vnum, room in rooms.items():
+        by_file.setdefault(room.area_file or "unknown", set()).add(vnum)
+
+    school_file = next(
+        (name for name, members in by_file.items() if 3700 in members), None
+    )
+    ordered = sorted(by_file)
+    if school_file is not None:
+        ordered.remove(school_file)
+        ordered.insert(0, school_file)
+
+    areas = []
+    for index, name in enumerate(ordered, start=1):
+        members = by_file[name]
+        sample = rooms[min(members)]
+        title = (sample.area_name or name).strip() or name
+        areas.append((index, title, sorted(members)))
+
+    return rooms, areas
+
+
+def sector_index(room) -> int:
+    """Best-effort sector number for a room.
+
+    Four rooms in the shipped world do not yield a plain integer: mountain.are
+    25022 uses ROM's bitwise `0|11` notation, valhalla.are 9945 and
+    underdrk.are 25123 have records the C loader tolerates but that leave a
+    word of prose here, and one room carries -1. None of that should stop the
+    map being built, so fall back to Inside and keep the value in range.
+    """
+    raw = str(getattr(room, "sector_type", "0") or "0").strip()
+    value = None
+    if raw.lstrip("-").isdigit():
+        value = int(raw)
+    elif "|" in raw:
+        parts = [part.strip() for part in raw.split("|")]
+        if all(part.lstrip("-").isdigit() for part in parts if part):
+            value = 0
+            for part in parts:
+                if part:
+                    value |= int(part)
+    if value is None or not 0 <= value <= 11:
+        return 0
+    return value
 
 
 def next_free_coordinate(desired, occupied):
@@ -101,27 +154,40 @@ def assign_coordinates(rooms):
 
 
 def build_map_bytes() -> bytes:
-    rooms = load_starter_rooms()
-    coordinates = assign_coordinates(rooms)
+    rooms, areas = load_world_rooms()
+
+    # Each Mudlet area has an independent coordinate space, so lay every area
+    # out on its own. Sharing one space would push later areas thousands of
+    # squares from the origin for no benefit.
+    coordinates = {}
+    area_of = {}
+    for area_id, _title, members in areas:
+        subset = {vnum: rooms[vnum] for vnum in members}
+        coordinates.update(assign_coordinates(subset))
+        for vnum in members:
+            area_of[vnum] = area_id
+
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         "<map>",
         " <areas>",
-        '  <area id="1" name="Hatchet Mud School" />',
-        " </areas>",
-        " <rooms>",
     ]
+    for area_id, title, _members in areas:
+        lines.append(f'  <area id="{area_id}" name={quoteattr(title)} />')
+    lines.extend((" </areas>", " <rooms>"))
 
     for vnum in sorted(rooms):
         room = rooms[vnum]
-        sector = int(room.sector_type)
+        sector = sector_index(room)
         x, y, z = coordinates[vnum]
         lines.append(
-            f"  <room id={quoteattr(str(vnum))} area=\"1\" "
+            f"  <room id={quoteattr(str(vnum))} area=\"{area_of[vnum]}\" "
             f"title={quoteattr(room.name)} environment={quoteattr(str(sector + 1))}>"
         )
         lines.append(f'   <coord x="{x}" y="{y}" z="{z}" />')
         for room_exit in sorted(room.exits, key=lambda item: item.direction):
+            # Cross-area exits are kept: Mudlet links them fine and they are
+            # what makes the atlas navigable as one world.
             if room_exit.to_room not in rooms:
                 continue
             lines.append(

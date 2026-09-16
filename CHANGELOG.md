@@ -10,6 +10,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed the Python area parser losing a line on the seven shipped area files
+  written with a blank line between every record line (hood, haven, wyvern,
+  arena, firenewt, valley, trollden). It skipped blanks before the
+  area/flags/sector line but not before the room name, so the blank became
+  the name and the first line of the description was then read as the flags
+  line. Around 300 rooms had an empty name and a word of prose stored as
+  their sector type, which the dashboard displayed and which would have made
+  the new world map unreadable. The C loader was always fine, so only
+  Python-side consumers were affected. Blank room names go from ~300 to zero;
+  world totals and every area-health baseline are unchanged.
+- The Mudlet mapper now spirals outwards for a free square when the room it
+  would place is already occupied. Placing each new room one step from the
+  room walked in from assumes a grid, and one-way exits, up/down loops and
+  teleports routinely put two rooms on the same square, where Mudlet drew
+  them on top of each other.
 - Fixed a blank line at the name prompt silently closing the connection.
   Stock ROM hangs up there without a word, which drops any player who simply
   presses Enter and any client that probes the login prompt with an empty
@@ -156,6 +171,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- The Mudlet package now ships a full-world map: all 7,781 rooms across 92
+  areas, each area laid out offline with no two rooms sharing a square, and
+  every exit resolved. It replaces the 25-room Mud School starter map.
+  Mud School keeps area id 1 so an existing profile is not reshuffled, and
+  area names are generated to match exactly what `Room.Info` sends, since the
+  package looks areas up by name and a mismatch would silently duplicate
+  every one of them. Package version 1.0.3 delivers it automatically.
 - Added boot-time local discovery for the Raspberry Pi appliance. Every
   NetworkManager Ethernet and Wi-Fi profile now explicitly sends `toc` as its
   IPv4 and IPv6 DHCP hostname, while Avahi publishes `toc.local` over mDNS.
