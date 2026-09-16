@@ -27,6 +27,10 @@ BACKUP_DIR=${TOC_BACKUP_DIR:-/var/backups/toc}
 REPO_URL=${TOC_REPO_URL:-https://github.com/jeremydbean/toc2026}
 REPO_BRANCH=${TOC_REPO_BRANCH:-main}
 MAINTENANCE_MARKER=${TOC_MAINTENANCE_MARKER:-/etc/toc/maintenance}
+# Ownership the game runs as. Overridable so the scenarios can run on a
+# machine without a toc account, such as a CI runner.
+OWNER=${TOC_OWNER:-toc}
+GROUP=${TOC_GROUP:-toc}
 
 COUNT_FILE="$STATE_DIR/recovery-failures"
 LAST_REBUILD_FILE="$STATE_DIR/recovery-last-rebuild"
@@ -175,7 +179,7 @@ if [ -f "$LIVE_ROOT/merc" ]; then
     log "previous binary saved as $rollback."
 fi
 
-install -o toc -g toc -m 0755 "$BUILD_ROOT/merc" "$LIVE_ROOT/merc"
+install -o "$OWNER" -g "$GROUP" -m 0755 "$BUILD_ROOT/merc" "$LIVE_ROOT/merc"
 systemctl reset-failed "$SERVICE" 2>/dev/null || true
 systemctl start "$SERVICE" 2>/dev/null || true
 sleep "$START_GRACE"
@@ -190,7 +194,7 @@ fi
 # ------------------------------------------------------------- stage three
 log "$new_commit also fails to run; rolling the previous binary back."
 if [ -f "$rollback" ]; then
-    install -o toc -g toc -m 0755 "$rollback" "$LIVE_ROOT/merc"
+    install -o "$OWNER" -g "$GROUP" -m 0755 "$rollback" "$LIVE_ROOT/merc"
     systemctl reset-failed "$SERVICE" 2>/dev/null || true
     systemctl start "$SERVICE" 2>/dev/null || true
     sleep "$START_GRACE"

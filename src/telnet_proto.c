@@ -132,7 +132,13 @@ bool telnet_write_compressed( DESCRIPTOR_DATA *d, const char *txt, int length )
     if ( remaining == 0 )
         return true;
 
-    stream->next_in  = (Bytef *) txt;
+    /*
+     * zlib types next_in as a plain Bytef * even though deflate() only reads
+     * it, so a const input cannot be assigned without discarding the
+     * qualifier. Route through uintptr_t so the strict-warning build stays
+     * clean rather than carrying a -Wcast-qual warning for an API wart.
+     */
+    stream->next_in  = (Bytef *)(uintptr_t) txt;
     stream->avail_in = (uInt) remaining;
 
     while ( stream->avail_in > 0 )
