@@ -4,6 +4,11 @@
     const TOKEN_KEY = "toc_webadmin_token";
     const MAX_TERMINAL_CHARS = 250000;
     const ISSUE_PAGE_SIZE = 50;
+    // Views that cannot show anything without the admin token. Hidden while
+    // locked, and not reachable by hash either, so a stale #host bookmark
+    // lands on the overview rather than an empty page.
+    const ADMIN_VIEWS = new Set(["players", "console", "logs", "host", "operations"]);
+
     const VIEW_NAMES = new Set([
         "overview", "world", "areas", "players", "gear", "console", "logs", "host", "operations",
     ]);
@@ -200,15 +205,20 @@
 
     function setAuthenticated(value) {
         state.authenticated = Boolean(value);
+        document.body.classList.toggle("admin-unlocked", state.authenticated);
         byId("auth-dot").className = `status-dot ${value ? "status-unlocked" : "status-locked"}`;
-        byId("auth-label").textContent = value ? "Admin unlocked" : "Admin locked";
+        byId("auth-label").textContent = value ? "Admin unlocked" : "Admin login";
+        byId("topbar-eyebrow").textContent = value ? "Operations console" : "Times of Chaos";
         byId("runtime-auth").textContent = value
             ? "Authenticated"
             : state.config?.admin_token_configured ? "Locked" : "Disabled";
         byId("players-lock-note").textContent = value ? "Authenticated" : "Admin token required";
         byId("operations-lock-note").textContent = value ? "Authenticated" : "Admin token required";
         byId("host-lock-note").textContent = value ? "Authenticated - read only" : "Admin token required";
-        if (!value) clearProtectedOperations();
+        if (!value) {
+            clearProtectedOperations();
+            if (ADMIN_VIEWS.has(state.view)) navigate("overview");
+        }
     }
 
     async function validateToken(silent = false) {
@@ -293,6 +303,7 @@
 
     function navigate(view, updateHash = true) {
         if (!VIEW_NAMES.has(view)) view = "overview";
+        if (ADMIN_VIEWS.has(view) && !state.authenticated) view = "overview";
         const viewChanged = state.view !== view;
         if (state.view === "logs" && view !== "logs") stopLogs();
         if (state.view === "host" && view !== "host") stopHostMonitor();

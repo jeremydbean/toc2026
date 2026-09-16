@@ -224,6 +224,21 @@ code {
     border-color: var(--border-strong);
 }
 
+/* Everything that only has data behind the admin token stays out of the
+   document until the token is accepted. This is presentation, not security:
+   the API refuses these routes regardless. It exists so a visitor is not
+   shown a console of panels that all read "Locked". */
+body:not(.admin-unlocked) [data-admin] {
+    display: none !important;
+}
+
+/* Locked, the sign-in button is the only thing left to do on the page, so
+   it should not read as disabled chrome. */
+body:not(.admin-unlocked) .auth-button {
+    border-color: var(--teal-dark);
+    color: var(--text);
+}
+
 .version-label {
     display: block;
     padding: 8px 10px 0;

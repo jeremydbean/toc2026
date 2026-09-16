@@ -507,6 +507,41 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertFalse(client.get("/api/config").json()["local_admin_unlock"])
             self.assertEqual(client.post("/api/auth/local").status_code, 403)
 
+    def test_admin_only_interface_is_marked_and_hidden_until_unlocked(self) -> None:
+        """The dashboard is on a public port, so the locked view has to be tidy.
+
+        Every section whose data comes only from a token-protected route is
+        marked `data-admin`, the stylesheet hides those until the body carries
+        `admin-unlocked`, and the script sets that class from the auth state
+        alone. A view added later without the marker shows up as a panel of
+        "Locked" rows to anyone who opens the page.
+        """
+        static = Path(__file__).resolve().parents[1] / "webadmin" / "static"
+        markup = (static / "index.html").read_text(encoding="utf-8")
+        styles = (static / "app.css").read_text(encoding="utf-8")
+        script = (static / "app.js").read_text(encoding="utf-8")
+
+        for view in ("players", "console", "logs", "host", "operations"):
+            self.assertIn(
+                f'<button class="nav-item" type="button" data-admin data-view="{view}">',
+                markup,
+                f"{view} nav item is not marked admin-only",
+            )
+            self.assertIn(
+                f'<section class="view" data-admin id="{view}-view"',
+                markup,
+                f"{view} view is not marked admin-only",
+            )
+
+        self.assertIn("body:not(.admin-unlocked) [data-admin]", styles)
+        self.assertIn('classList.toggle("admin-unlocked", state.authenticated)', script)
+
+        # And the locked page must not be reachable into an admin view by hash.
+        self.assertIn(
+            'if (ADMIN_VIEWS.has(view) && !state.authenticated) view = "overview";',
+            script,
+        )
+
     def test_local_unlock_ignores_a_spoofed_loopback_host_header(self) -> None:
         """The unlock must read the connection, not the request.
 

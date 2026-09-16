@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
     <title>Times of Chaos Admin</title>
-    <link rel="stylesheet" href="/static/app.css?v=6">
+    <link rel="stylesheet" href="/static/app.css?v=7">
     <script src="/static/command-sequence.js?v=1" defer></script>
     <script src="/static/console-output.js?v=1" defer></script>
-    <script src="/static/app.js?v=8" defer></script>
+    <script src="/static/app.js?v=9" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -25,18 +25,18 @@
                 <button class="nav-item is-active" type="button" data-view="overview">Overview</button>
                 <button class="nav-item" type="button" data-view="world">World database</button>
                 <button class="nav-item" type="button" data-view="areas">Areas and health</button>
-                <button class="nav-item" type="button" data-view="players">Players</button>
+                <button class="nav-item" type="button" data-admin data-view="players">Players</button>
                 <button class="nav-item" type="button" data-view="gear">Gear finder</button>
-                <button class="nav-item" type="button" data-view="console">Game console</button>
-                <button class="nav-item" type="button" data-view="logs">Live logs</button>
-                <button class="nav-item" type="button" data-view="host">Host status</button>
-                <button class="nav-item" type="button" data-view="operations">Operations</button>
+                <button class="nav-item" type="button" data-admin data-view="console">Game console</button>
+                <button class="nav-item" type="button" data-admin data-view="logs">Live logs</button>
+                <button class="nav-item" type="button" data-admin data-view="host">Host status</button>
+                <button class="nav-item" type="button" data-admin data-view="operations">Operations</button>
             </nav>
 
             <div class="sidebar-footer">
-                <button id="auth-button" class="auth-button" type="button">
+                <button id="auth-button" class="auth-button" type="button" title="Sign in with the admin token">
                     <span class="status-dot status-locked" id="auth-dot"></span>
-                    <span id="auth-label">Admin locked</span>
+                    <span id="auth-label">Admin login</span>
                 </button>
                 <span class="version-label" id="version-label">Web admin</span>
             </div>
@@ -47,7 +47,7 @@
                 <span></span><span></span><span></span>
             </button>
             <div class="page-heading">
-                <span class="eyebrow">Operations console</span>
+                <span class="eyebrow" id="topbar-eyebrow">Operations console</span>
                 <h1 id="page-title">Overview</h1>
             </div>
             <a class="button button-primary compact client-link" href="/client">Play</a>
@@ -84,7 +84,7 @@
                             <div><dt>Dashboard</dt><dd id="runtime-admin">Checking</dd></div>
                             <div><dt>Game server</dt><dd id="runtime-mud">Checking</dd></div>
                             <div><dt>Game endpoint</dt><dd class="mono" id="runtime-endpoint">-</dd></div>
-                            <div><dt>Admin API</dt><dd id="runtime-auth">Checking</dd></div>
+                            <div data-admin><dt>Admin API</dt><dd id="runtime-auth">Checking</dd></div>
                         </dl>
                     </section>
 
@@ -102,7 +102,7 @@
                     </section>
                 </div>
 
-                <section class="panel operator-summary-panel">
+                <section class="panel operator-summary-panel" data-admin>
                     <div class="panel-heading">
                         <h3>Operations health</h3>
                         <button class="text-button" type="button" data-go-view="operations">Open operations</button>
@@ -119,8 +119,8 @@
                     <div class="panel-heading"><h3>Quick access</h3></div>
                     <div class="quick-actions">
                         <button class="quick-action" type="button" data-go-view="world"><strong>Inspect world</strong></button>
-                        <button class="quick-action" type="button" data-go-view="players"><strong>Find player</strong></button>
-                        <button class="quick-action" type="button" data-go-view="operations"><strong>Operate server</strong></button>
+                        <button class="quick-action" type="button" data-admin data-go-view="players"><strong>Find player</strong></button>
+                        <button class="quick-action" type="button" data-admin data-go-view="operations"><strong>Operate server</strong></button>
                     </div>
                 </section>
             </section>
@@ -213,7 +213,7 @@
                 </div>
             </section>
 
-            <section class="view" id="players-view" data-title="Players">
+            <section class="view" data-admin id="players-view" data-title="Players">
                 <div class="section-heading">
                     <div><span class="eyebrow">Private save data</span><h2>Player lookup</h2></div>
                     <span class="lock-note" id="players-lock-note">Admin token required</span>
@@ -242,7 +242,7 @@
                 <div id="gear-results" class="gear-results"><div class="empty-state large">Choose a class, race, and level.</div></div>
             </section>
 
-            <section class="view" id="console-view" data-title="Game Console">
+            <section class="view" data-admin id="console-view" data-title="Game Console">
                 <div class="section-heading">
                     <div><span class="eyebrow">Direct game connection</span><h2>Game console</h2></div>
                     <span class="connection-label" id="console-status">Disconnected</span>
@@ -262,7 +262,7 @@
                 </div>
             </section>
 
-            <section class="view" id="logs-view" data-title="Live Logs">
+            <section class="view" data-admin id="logs-view" data-title="Live Logs">
                 <div class="section-heading">
                     <div><span class="eyebrow">Protected server output</span><h2>Live logs</h2></div>
                     <span class="connection-label" id="log-status">Disconnected</span>
@@ -278,7 +278,7 @@
                 </div>
             </section>
 
-            <section class="view" id="host-view" data-title="Host Status">
+            <section class="view" data-admin id="host-view" data-title="Host Status">
                 <div class="section-heading">
                     <div><span class="eyebrow">Read-only appliance telemetry</span><h2>Host status</h2></div>
                     <span class="lock-note" id="host-lock-note">Admin token required</span>
@@ -394,7 +394,7 @@
                 </section>
             </section>
 
-            <section class="view" id="operations-view" data-title="Operations">
+            <section class="view" data-admin id="operations-view" data-title="Operations">
                 <div class="section-heading">
                     <div><span class="eyebrow">Authenticated controls</span><h2>Server operations</h2></div>
                     <span class="lock-note" id="operations-lock-note">Admin token required</span>
