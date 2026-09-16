@@ -10,6 +10,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Fixed a blank line at the name prompt silently closing the connection.
+  Stock ROM hangs up there without a word, which drops any player who simply
+  presses Enter and any client that probes the login prompt with an empty
+  line -- the reason a clean Mudlet profile could install the interface and
+  then lose its first connection to the bundled generic mapper. The prompt is
+  now reissued instead. The behaviour that made the hangup defensible is
+  kept: a connection that sends nothing but blank lines is still dropped,
+  after `MAX_BLANK_LOGIN_LINES` of them.
 - Fixed three ragged rows in the `score` sheet, which is a fixed 62-column
   box built from independent format strings. The bank shared the Constitution
   row, where its four denominations needed nine more columns than the

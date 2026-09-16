@@ -192,6 +192,11 @@ typedef struct script_loop_prepoll_payload
  * biggest realistic consumer). Anything longer is discarded rather than
  * truncated into a malformed message. */
 #define MAX_TELNET_SUBNEG        2048
+
+/* Blank lines tolerated at the name prompt before the connection is dropped.
+ * Enough for a client probing the login prompt, or a player leaning on Enter,
+ * without leaving a silent connection open to a scanner indefinitely. */
+#define MAX_BLANK_LOGIN_LINES    10
 #define MAX_INPUT_LENGTH         256
 #define PAGELEN                  22
 #define MAX_MSGS                 100

@@ -2051,9 +2051,29 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
     case CON_GET_NAME:
 	if ( argument[0] == '\0' )
 	{
-	    close_socket( d );
+	    /*
+	     * Stock ROM hangs up here without a word. That is fine against a
+	     * port scanner but hostile to everything else: a player who simply
+	     * presses Enter at the prompt is dropped with no explanation, and
+	     * a modern client that probes the login prompt with a blank line
+	     * loses its first connection. Mudlet's bundled generic mapper does
+	     * exactly that, which is why a clean Mudlet profile could install
+	     * the interface and then fail to connect.
+	     *
+	     * Re-prompt instead, but keep it bounded so a connection that only
+	     * ever sends blank lines is still dropped.
+	     */
+	    if ( ++d->login_attempts >= MAX_BLANK_LOGIN_LINES )
+	    {
+		close_socket( d );
+		return;
+	    }
+
+	    write_to_buffer( d, "Name: ", 0 );
 	    return;
 	}
+
+	d->login_attempts = 0;
 
 	argument[0] = UPPER(argument[0]);
 	if ( !check_parse_name( argument ) )

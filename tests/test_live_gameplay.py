@@ -34,6 +34,7 @@ from live_mud import (
     LiveMud,
     banked_copper,
     carried_copper,
+    _enter_game,
     create_character,
     login,
     make_funded_character,
@@ -45,6 +46,9 @@ from live_mud import (
 
 
 SKIP = skip_reason()
+
+# Mirrors MAX_BLANK_LOGIN_LINES in src/merc.h.
+MAX_BLANK_LOGIN_LINES = 10
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
@@ -767,3 +771,58 @@ class ScoreLayoutTests(unittest.TestCase):
                 joined = "\n".join(rows)
                 self.assertIn("1078289p", joined)
                 self.assertIn("12g", joined)
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class BlankLoginLineTests(unittest.TestCase):
+    """A blank line at the name prompt must re-prompt, not hang up.
+
+    Stock ROM closes the socket without a word. That is defensible against a
+    port scanner but it also drops any player who presses Enter at the prompt,
+    and any client that probes the login prompt with a blank line -- which is
+    what cost a clean Mudlet profile its first connection.
+    """
+
+    def test_blank_line_reprompts_and_login_still_works(self) -> None:
+        with LiveMud() as mud, mud.connect(timeout=90) as c:
+            c.expect("by what name")
+            c.buffer = ""
+
+            c.send("")
+            c.expect("name:")
+
+            # Whitespace-only input is the same case: nanny strips it first.
+            c.send("   ")
+            c.expect("name:")
+
+            self.assertFalse(
+                c.wait_closed(timeout=2), "server hung up on a blank name"
+            )
+
+            # The connection is still usable for a real login.
+            c.send("Zipblankok")
+            _enter_game(c, "harnesspw")
+            c.send("score")
+            c.expect("level")
+
+    def test_a_blank_only_connection_is_still_dropped(self) -> None:
+        """The anti-scanner behaviour has to survive the fix."""
+        with LiveMud() as mud, mud.connect(timeout=90) as c:
+            c.expect("by what name")
+
+            dropped_after = None
+            for attempt in range(1, MAX_BLANK_LOGIN_LINES + 10):
+                try:
+                    c.send("")
+                except AssertionError:
+                    dropped_after = attempt
+                    break
+                if c.wait_closed(timeout=1.0):
+                    dropped_after = attempt
+                    break
+
+            self.assertIsNotNone(
+                dropped_after,
+                "a connection sending nothing but blank lines was never dropped",
+            )
+            self.assertLessEqual(dropped_after, MAX_BLANK_LOGIN_LINES)

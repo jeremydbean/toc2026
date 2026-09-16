@@ -84,3 +84,21 @@ against a server built from this revision.
 > gauges and an embedded mapper through Client.GUI. Source and reproducible
 > package assets are in the public toc2026 repository. We would appreciate any
 > review feedback or additional requirements.
+
+## External Reachability And Login Probe: 2026-09-16
+
+An independent external TCP probe now succeeds. check-host.net reached
+`toc.jeremybean.com:9000` from all eight nodes tried -- Miami 25 ms,
+Vancouver 91 ms, Frankfurt 121 ms, Stockholm 126 ms, Chisinau 220 ms, Tel
+Aviv 347 ms, and two in Jakarta around 1.3 s. The same service could not
+reach port 9001 from any of five nodes, which is the intended result: the
+dashboard must not be publicly exposed. Note that a probe from the host
+network proves nothing here, because the site's public address is also the
+A record, so any local connection is hairpin routed.
+
+The cause of the Mudlet disconnect was found and fixed: a blank line at the
+name prompt closed the socket with no message, which is what the bundled
+generic mapper's login-prompt probing triggers. The prompt is now reissued.
+A clean Mudlet profile should be retried against the public host; the
+authenticated in-game map/gauge check and review screenshot are still
+outstanding, and the review request has still not been sent.
