@@ -1,0 +1,5 @@
+// The dedicated ToC maintenance timer invokes unattended-upgrade weekly and
+// owns the decision to reboot after a fresh player snapshot. Keep Debian's
+// generic daily timer from installing or rebooting independently.
+APT::Periodic::Unattended-Upgrade "0";
+Unattended-Upgrade::Automatic-Reboot "false";

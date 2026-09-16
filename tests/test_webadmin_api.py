@@ -418,6 +418,10 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertTrue(client.get("/api/config").json()["host_status_available"])
             self.assertEqual(client.get("/api/host/status").status_code, 403)
             self.assertEqual(client.get("/api/host/resources").status_code, 403)
+            self.assertIn("toc2026-healthcheck.service", server.HOST_SERVICE_UNITS)
+            self.assertIn("toc2026-maintenance.service", server.HOST_SERVICE_UNITS)
+            self.assertIn("toc2026-healthcheck.timer", server.HOST_TIMER_UNITS)
+            self.assertIn("toc2026-maintenance.timer", server.HOST_TIMER_UNITS)
             self.assertIsNone(server.run_host_command(("sh", "-c", "id")))
             self.assertEqual(
                 server.parse_cpu_counters("cpu 10 2 3 80 5 0 0 0\ncpu0 1 1 1 1"),

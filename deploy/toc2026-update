@@ -5,6 +5,8 @@ TOC_ROOT=/home/toc/toc2026
 DEPLOYED_COMMIT_FILE=/var/lib/toc2026/deployed-commit
 REQUEST_FILE=/run/toc2026/update.request
 LOCK_FILE=/run/lock/toc2026-update.lock
+SLEEP=${TOC_SLEEP:-/bin/sleep}
+TIMEOUT=${TOC_TIMEOUT:-/usr/bin/timeout}
 
 install -d -m 0755 /var/lib/toc2026
 rm -f "$REQUEST_FILE"
@@ -20,7 +22,21 @@ run_toc()
     runuser -u toc -- "$@"
 }
 
-run_toc git -C "$TOC_ROOT" fetch --prune origin main
+fetch_attempt=1
+while :; do
+    if run_toc "$TIMEOUT" 2m git -C "$TOC_ROOT" \
+        -c http.lowSpeedLimit=1 -c http.lowSpeedTime=60 \
+        fetch --prune origin main; then
+        break
+    fi
+    if [ "$fetch_attempt" -ge 3 ]; then
+        echo "Unable to fetch origin/main after $fetch_attempt attempts." >&2
+        exit 1
+    fi
+    echo "GitHub fetch attempt $fetch_attempt failed; retrying shortly." >&2
+    fetch_attempt=$((fetch_attempt + 1))
+    "$SLEEP" 15
+done
 remote_commit="$(run_toc git -C "$TOC_ROOT" rev-parse origin/main)"
 current_commit="$(run_toc git -C "$TOC_ROOT" rev-parse HEAD)"
 deployed_commit="$(cat "$DEPLOYED_COMMIT_FILE" 2>/dev/null || true)"
@@ -67,8 +83,28 @@ run_toc make -C "$TOC_ROOT" -j1
     cd "$TOC_ROOT/area"
     run_toc ../merc --check-area
 )
-run_toc "$TOC_ROOT/.venv/bin/python" -m pip install --only-binary=:all: \
+run_toc "$TOC_ROOT/.venv/bin/python" -m pip install \
+    --disable-pip-version-check --timeout 30 --retries 2 --only-binary=:all: \
     -r "$TOC_ROOT/webadmin/requirements.txt"
+
+for script in "$TOC_ROOT"/deploy/toc2026-* \
+    "$TOC_ROOT/deploy/install-pi.sh" \
+    "$TOC_ROOT/deploy/sync-player-backup.sh"; do
+    if [ -f "$script" ]; then
+        run_toc /bin/sh -n "$script"
+    fi
+done
+(
+    cd "$TOC_ROOT"
+    run_toc .venv/bin/python -m compileall -q webadmin
+    run_toc .venv/bin/python -m unittest \
+        tests.test_webadmin_api tests.test_installation_assets
+)
+
+# Refresh root-owned scripts and unit files only after the source, native world,
+# dashboard, and deployment assets have all validated. This makes future
+# resilience fixes self-deploying instead of requiring a separate SSH session.
+"$TOC_ROOT/deploy/install-pi.sh" --refresh
 
 systemctl stop toc2026-web.service
 systemctl stop toc2026-game.service

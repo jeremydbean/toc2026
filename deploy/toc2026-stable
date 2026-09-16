@@ -3,14 +3,25 @@ set -eu
 
 STATE_DIR=${TOC_RECOVERY_STATE_DIR:-/var/lib/toc2026}
 COUNT_FILE="$STATE_DIR/recovery-count"
+LAST_ATTEMPT_FILE="$STATE_DIR/recovery-last-attempt"
+LAST_BOOT_FILE="$STATE_DIR/recovery-last-boot"
+PLANNED_REBOOT_FILE="$STATE_DIR/recovery-planned-reboot"
 LED_COMMAND=${TOC_LED_COMMAND:-/usr/local/sbin/toc2026-led}
 SYSTEMCTL=${TOC_SYSTEMCTL:-/bin/systemctl}
+CURL=${TOC_CURL:-/usr/bin/curl}
+SLEEP=${TOC_SLEEP:-/bin/sleep}
+HEALTH_URL=${TOC_HEALTH_URL:-http://127.0.0.1:9001/api/health}
 STABILITY_DELAY=${TOC_STABILITY_DELAY_SEC:-600}
 
-sleep "$STABILITY_DELAY"
+"$SLEEP" "$STABILITY_DELAY"
 
-if "$SYSTEMCTL" is-active --quiet toc2026-game.service; then
-    rm -f "$COUNT_FILE"
+payload="$($CURL --fail --silent --show-error --max-time 5 \
+    "$HEALTH_URL" 2>/dev/null || true)"
+if "$SYSTEMCTL" is-active --quiet toc2026-game.service \
+   && "$SYSTEMCTL" is-active --quiet toc2026-web.service \
+   && printf '%s\n' "$payload" | grep -q '"merc":true' \
+   && printf '%s\n' "$payload" | grep -q '"webadmin":true'; then
+    rm -f "$COUNT_FILE" "$LAST_ATTEMPT_FILE" "$LAST_BOOT_FILE" "$PLANNED_REBOOT_FILE"
     "$LED_COMMAND" on || true
-    echo "ToC remained healthy for $STABILITY_DELAY seconds; recovery state cleared."
+    echo "The game and dashboard remained healthy for $STABILITY_DELAY seconds; recovery state cleared."
 fi

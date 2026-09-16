@@ -1,0 +1,11 @@
+[Unit]
+Description=Run weekly operating-system maintenance for the ToC appliance
+
+[Timer]
+OnCalendar=Sun *-*-* 05:30:00
+RandomizedDelaySec=15min
+Persistent=true
+Unit=toc2026-maintenance.service
+
+[Install]
+WantedBy=timers.target

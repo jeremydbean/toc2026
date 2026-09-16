@@ -1,0 +1,95 @@
+#!/bin/sh
+set -eu
+
+STATE_DIR=${TOC_HEALTH_STATE_DIR:-/run/toc2026}
+COUNT_FILE="$STATE_DIR/health-failures"
+LOCK_FILE=${TOC_HEALTH_LOCK_FILE:-/run/lock/toc2026-healthcheck.lock}
+SYSTEMCTL=${TOC_SYSTEMCTL:-/bin/systemctl}
+CURL=${TOC_CURL:-/usr/bin/curl}
+SLEEP=${TOC_SLEEP:-/bin/sleep}
+FLOCK=${TOC_FLOCK:-/usr/bin/flock}
+HEALTH_URL=${TOC_HEALTH_URL:-http://127.0.0.1:9001/api/health}
+MAX_FAILURES=${TOC_HEALTH_MAX_FAILURES:-3}
+RESTART_WAIT=${TOC_HEALTH_RESTART_WAIT_SEC:-20}
+
+if [ "$STATE_DIR" = /run/toc2026 ]; then
+    install -d -m 0770 -o toc -g toc "$STATE_DIR"
+else
+    mkdir -p "$STATE_DIR"
+    chmod 0770 "$STATE_DIR"
+fi
+
+exec 9>"$LOCK_FILE"
+if ! "$FLOCK" -n 9; then
+    echo "Another ToC health check is already running; skipping."
+    exit 0
+fi
+
+health_payload=
+probe_health()
+{
+    health_payload="$($CURL --fail --silent --show-error --max-time 5 \
+        "$HEALTH_URL" 2>/dev/null || true)"
+    printf '%s\n' "$health_payload" | grep -q '"merc":true' \
+        && printf '%s\n' "$health_payload" | grep -q '"webadmin":true'
+}
+
+clear_failures()
+{
+    rm -f "$COUNT_FILE"
+}
+
+if probe_health; then
+    clear_failures
+    exit 0
+fi
+
+count=0
+if [ -s "$COUNT_FILE" ]; then
+    count="$(cat "$COUNT_FILE")"
+fi
+case "$count" in
+    ''|*[!0-9]*) count=0 ;;
+esac
+count=$((count + 1))
+
+count_tmp="$COUNT_FILE.tmp.$$"
+printf '%s\n' "$count" >"$count_tmp"
+chmod 0644 "$count_tmp"
+mv -f "$count_tmp" "$COUNT_FILE"
+
+if [ "$count" -lt "$MAX_FAILURES" ]; then
+    echo "ToC health probe failed ($count/$MAX_FAILURES); waiting for the next probe before repair."
+    exit 0
+fi
+
+echo "ToC health probe failed $count consecutive times; attempting service repair."
+"$SYSTEMCTL" reset-failed toc2026-game.service toc2026-web.service || true
+
+if ! "$SYSTEMCTL" is-active --quiet toc2026-game.service \
+   || printf '%s\n' "$health_payload" | grep -q '"merc":false'; then
+    "$SYSTEMCTL" restart toc2026-game.service || true
+fi
+if ! "$SYSTEMCTL" is-active --quiet toc2026-web.service \
+   || [ -z "$health_payload" ]; then
+    "$SYSTEMCTL" restart toc2026-web.service || true
+fi
+
+"$SLEEP" "$RESTART_WAIT"
+if probe_health; then
+    clear_failures
+    echo "The targeted service repair restored ToC."
+    exit 0
+fi
+
+echo "Targeted repair was insufficient; restarting the complete ToC stack."
+"$SYSTEMCTL" restart toc2026-game.service toc2026-web.service || true
+"$SLEEP" "$RESTART_WAIT"
+if probe_health; then
+    clear_failures
+    echo "The complete stack restart restored ToC."
+    exit 0
+fi
+
+echo "ToC remains unhealthy after local repair; escalating to host recovery." >&2
+exit 1

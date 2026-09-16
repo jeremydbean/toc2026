@@ -200,11 +200,12 @@ to disk. Uptime, load, root-disk use, and board temperature update with the same
 lightweight poll. Polling stops when the view is left, the session is locked, or
 the tab is hidden.
 
-Fixed allowlists expose only the ToC game, dashboard, recovery, stability,
-update, player-backup, Dynamic DNS, and LED systemd units plus their three
-timers. Recent boot ranges make clean shutdowns and unexpected reboot windows
-visible. The journal pane is bounded, filterable in the browser, and limited to
-those operational units and `systemd-shutdown` records.
+Fixed allowlists expose only the ToC game, dashboard, health repair, recovery,
+stability, source update, OS maintenance, player-backup, Dynamic DNS, and LED
+systemd units plus their timers. Recent boot ranges make clean shutdowns and
+unexpected reboot windows visible. The journal pane is bounded, filterable in
+the browser, and limited to those operational units and `systemd-shutdown`
+records.
 
 This view is not SSH and cannot run a command, select an arbitrary unit, browse
 the filesystem, or read a caller-supplied path. It does not return environment

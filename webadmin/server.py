@@ -119,13 +119,17 @@ HOST_SERVICE_UNITS = (
     "toc2026-web.service",
     "toc2026-recovery.service",
     "toc2026-stable.service",
+    "toc2026-healthcheck.service",
     "toc2026-update.service",
+    "toc2026-maintenance.service",
     "toc2026-player-backup.service",
     "toc2026-namecheap-ddns.service",
     "toc2026-led.service",
 )
 HOST_TIMER_UNITS = (
     "toc2026-update.timer",
+    "toc2026-healthcheck.timer",
+    "toc2026-maintenance.timer",
     "toc2026-player-backup.timer",
     "toc2026-namecheap-ddns.timer",
 )
@@ -134,7 +138,9 @@ HOST_JOURNAL_UNITS = (
     "toc2026-web.service",
     "toc2026-recovery.service",
     "toc2026-stable.service",
+    "toc2026-healthcheck.service",
     "toc2026-update.service",
+    "toc2026-maintenance.service",
     "toc2026-player-backup.service",
     "toc2026-namecheap-ddns.service",
 )

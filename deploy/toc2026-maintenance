@@ -1,0 +1,44 @@
+#!/bin/sh
+set -eu
+
+LOCK_FILE=${TOC_MAINTENANCE_LOCK_FILE:-/run/lock/toc2026-maintenance.lock}
+UPDATE_LOCK=${TOC_UPDATE_LOCK_FILE:-/run/lock/toc2026-update.lock}
+SYSTEMCTL=${TOC_SYSTEMCTL:-/bin/systemctl}
+APT_GET=${TOC_APT_GET:-/usr/bin/apt-get}
+UNATTENDED_UPGRADE=${TOC_UNATTENDED_UPGRADE:-/usr/bin/unattended-upgrade}
+REBOOT_REQUIRED=${TOC_REBOOT_REQUIRED_FILE:-/run/reboot-required}
+
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+    echo "Another ToC maintenance job is already running; skipping."
+    exit 0
+fi
+
+exec 8>"$UPDATE_LOCK"
+if ! flock -w 1800 8; then
+    echo "Timed out waiting for the active ToC source update." >&2
+    exit 1
+fi
+
+if [ ! -x "$UNATTENDED_UPGRADE" ]; then
+    echo "unattended-upgrades is not installed; skipping operating-system maintenance." >&2
+    exit 1
+fi
+
+export DEBIAN_FRONTEND=noninteractive
+"$APT_GET" -q update
+"$UNATTENDED_UPGRADE" --verbose
+
+if [ ! -e "$REBOOT_REQUIRED" ]; then
+    echo "Operating-system maintenance completed; no reboot is required."
+    exit 0
+fi
+
+echo "The operating-system update requires a reboot; taking a player snapshot first."
+"$SYSTEMCTL" reset-failed toc2026-player-backup.service || true
+if ! "$SYSTEMCTL" start toc2026-player-backup.service; then
+    echo "The pre-reboot off-device player snapshot failed; continuing with the clean reboot." >&2
+fi
+
+echo "Rebooting the ToC appliance to activate operating-system updates."
+"$SYSTEMCTL" --no-block reboot

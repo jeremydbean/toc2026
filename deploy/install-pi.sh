@@ -1,6 +1,31 @@
 #!/bin/sh
 set -eu
 
+case "${1:-}" in
+    ''|--refresh) ;;
+    *) echo "Usage: $0 [--refresh]" >&2; exit 2 ;;
+esac
+
+pending_install=
+cleanup()
+{
+    if [ -n "$pending_install" ]; then
+        rm -f -- "$pending_install"
+    fi
+}
+trap cleanup EXIT HUP INT TERM
+
+install_asset()
+{
+    source_path=$1
+    destination_path=$2
+    mode=$3
+    pending_install="$destination_path.new.$$"
+    install -m "$mode" "$source_path" "$pending_install"
+    mv -f "$pending_install" "$destination_path"
+    pending_install=
+}
+
 if [ "$(id -u)" -ne 0 ]; then
     echo "Run this installer with sudo." >&2
     exit 1
@@ -22,46 +47,28 @@ if [ ! -s /home/toc/toc2026/.env ]; then
     exit 1
 fi
 
-install -d -m 0755 /etc/toc2026 /etc/systemd/journald.conf.d /var/lib/toc2026
+install -d -m 0755 /etc/toc2026 /etc/systemd/journald.conf.d \
+    /etc/systemd/system.conf.d /etc/apt/apt.conf.d /var/lib/toc2026
 install -d -m 0755 /usr/local/sbin
-install -m 0755 /home/toc/toc2026/deploy/toc2026-update \
-    /usr/local/sbin/toc2026-update
-install -m 0755 /home/toc/toc2026/deploy/toc2026-namecheap-ddns \
-    /usr/local/sbin/toc2026-namecheap-ddns
-install -m 0755 /home/toc/toc2026/deploy/toc2026-led \
-    /usr/local/sbin/toc2026-led
-install -m 0755 /home/toc/toc2026/deploy/toc2026-recover \
-    /usr/local/sbin/toc2026-recover
-install -m 0755 /home/toc/toc2026/deploy/toc2026-stable \
-    /usr/local/sbin/toc2026-stable
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-game.service \
-    /etc/systemd/system/toc2026-game.service
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-web.service \
-    /etc/systemd/system/toc2026-web.service
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-player-backup.service \
-    /etc/systemd/system/toc2026-player-backup.service
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-player-backup.timer \
-    /etc/systemd/system/toc2026-player-backup.timer
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-update.service \
-    /etc/systemd/system/toc2026-update.service
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-update.timer \
-    /etc/systemd/system/toc2026-update.timer
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-update.path \
-    /etc/systemd/system/toc2026-update.path
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-namecheap-ddns.service \
-    /etc/systemd/system/toc2026-namecheap-ddns.service
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-namecheap-ddns.timer \
-    /etc/systemd/system/toc2026-namecheap-ddns.timer
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-led.service \
-    /etc/systemd/system/toc2026-led.service
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-recovery.service \
-    /etc/systemd/system/toc2026-recovery.service
-install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-stable.service \
-    /etc/systemd/system/toc2026-stable.service
-install -m 0644 /home/toc/toc2026/deploy/journald/99-toc2026.conf \
-    /etc/systemd/journald.conf.d/99-toc2026.conf
-install -m 0644 /home/toc/toc2026/deploy/tmpfiles/toc2026.conf \
-    /etc/tmpfiles.d/toc2026.conf
+for command_name in update namecheap-ddns led recover stable healthcheck maintenance; do
+    install_asset "/home/toc/toc2026/deploy/toc2026-$command_name" \
+        "/usr/local/sbin/toc2026-$command_name" 0755
+done
+systemd-analyze verify \
+    /home/toc/toc2026/deploy/systemd/*.service \
+    /home/toc/toc2026/deploy/systemd/*.timer \
+    /home/toc/toc2026/deploy/systemd/*.path
+for unit_path in /home/toc/toc2026/deploy/systemd/toc2026-*; do
+    install_asset "$unit_path" "/etc/systemd/system/$(basename "$unit_path")" 0644
+done
+install_asset /home/toc/toc2026/deploy/systemd/99-toc2026-watchdog.conf \
+    /etc/systemd/system.conf.d/99-toc2026-watchdog.conf 0644
+install_asset /home/toc/toc2026/deploy/journald/99-toc2026.conf \
+    /etc/systemd/journald.conf.d/99-toc2026.conf 0644
+install_asset /home/toc/toc2026/deploy/tmpfiles/toc2026.conf \
+    /etc/tmpfiles.d/toc2026.conf 0644
+install_asset /home/toc/toc2026/deploy/apt/52toc2026-maintenance \
+    /etc/apt/apt.conf.d/52toc2026-maintenance 0644
 
 install -d -m 0755 /var/log/journal
 systemd-tmpfiles --create --prefix /var/log/journal
@@ -74,7 +81,7 @@ fi
 systemctl daemon-reload
 systemctl restart systemd-journald
 systemctl enable --now toc2026-game.service toc2026-web.service \
-    toc2026-update.timer toc2026-update.path
+    toc2026-healthcheck.timer toc2026-update.timer toc2026-update.path
 systemctl enable --now toc2026-stable.service
 if [ -e /sys/class/leds/ACT/trigger ]; then
     systemctl enable --now toc2026-led.service
@@ -99,6 +106,12 @@ if [ -s /etc/toc2026/namecheap-ddns.env ] \
     systemctl enable --now toc2026-namecheap-ddns.timer
 else
     echo "Namecheap Dynamic DNS credentials are not installed; timer not enabled yet."
+fi
+
+if command -v unattended-upgrade >/dev/null 2>&1; then
+    systemctl enable --now toc2026-maintenance.timer
+else
+    echo "unattended-upgrades is unavailable; weekly OS maintenance not enabled yet."
 fi
 
 echo "ToC systemd configuration installed."

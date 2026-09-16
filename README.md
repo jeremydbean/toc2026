@@ -61,9 +61,11 @@ documentation.
 - Docker, Docker Compose, Make, CMake, Windows/WSL validation, and GitHub Actions
   workflows.
 - A low-memory native Raspberry Pi appliance profile with headless systemd
-  startup, crash recovery, encrypted off-host player snapshots, weekly guarded
-  Git updates, automatic Namecheap Dynamic DNS, an onboard ACT LED status
-  signal, and direct private-LAN browser play and administration.
+  startup, process and hardware watchdogs, end-to-end health repair, bounded
+  reboot/rebuild recovery, encrypted off-host player snapshots, guarded Git and
+  operating-system updates in a weekly maintenance window, automatic Namecheap
+  Dynamic DNS, an onboard ACT LED status signal, and direct private-LAN browser
+  play and administration.
 
 ## Easy Install
 
@@ -154,8 +156,9 @@ Use `bash "$bootstrap" --public` on an intended Internet/LAN host. Review
 For a dedicated headless Raspberry Pi that runs only ToC, use the native
 systemd appliance instead of Docker. Its checked-in configuration is designed
 for constrained memory, starts both processes during boot, restarts crashes,
-detects frozen game loops, uses bounded reboot/rebuild recovery, backs up player
-files off-device, and deploys validated `main` updates. See the
+detects frozen game loops and failed web health, uses bounded local repair and
+reboot/rebuild recovery, backs up player files off-device, deploys validated
+`main` updates, and applies OS updates in a controlled weekly window. See the
 [Raspberry Pi appliance runbook](deploy/README.md) and
 [`deploy/pi.env.example`](deploy/pi.env.example).
 

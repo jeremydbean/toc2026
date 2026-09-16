@@ -1,0 +1,11 @@
+[Unit]
+Description=Continuously verify the Times of Chaos game and dashboard
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+AccuracySec=15s
+Unit=toc2026-healthcheck.service
+
+[Install]
+WantedBy=timers.target

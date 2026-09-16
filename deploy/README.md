@@ -16,8 +16,10 @@ and dashboard available automatically after every boot.
 ssh toc
 systemctl status toc2026-game toc2026-web
 systemctl status toc2026-player-backup.timer toc2026-update.timer \
-  toc2026-namecheap-ddns.timer
-systemctl status toc2026-led.service toc2026-stable.service
+  toc2026-namecheap-ddns.timer toc2026-healthcheck.timer \
+  toc2026-maintenance.timer
+systemctl status toc2026-led.service toc2026-stable.service \
+  toc2026-healthcheck.service
 curl http://127.0.0.1:9001/api/health
 ```
 
@@ -42,6 +44,7 @@ sudo journalctl -u toc2026-player-backup -n 100 --no-pager
 sudo journalctl -u toc2026-update -n 100 --no-pager
 sudo journalctl -u toc2026-namecheap-ddns -n 100 --no-pager
 sudo journalctl -u toc2026-recovery -u toc2026-stable -n 100 --no-pager
+sudo journalctl -u toc2026-healthcheck -u toc2026-maintenance -n 100 --no-pager
 ```
 
 ## Restart
@@ -79,8 +82,13 @@ echo actpwr | sudo tee /sys/class/leds/ACT/trigger
 ## Automatic failure recovery
 
 The game service restarts a crash after 10 seconds and the 45-second main-loop
-watchdog also recovers a frozen process. If the restarted service still cannot
-become active, `toc2026-recovery.service` escalates in bounded stages:
+watchdog also recovers a frozen process. Independently,
+`toc2026-healthcheck.timer` probes the complete browser-to-game health path every
+two minutes. It requires three consecutive failures before acting, tries a
+targeted restart, then a complete game/dashboard restart. Essential local
+services do not wait for Internet or Wi-Fi readiness during boot. If local
+repair still cannot restore both services, `toc2026-recovery.service` escalates
+in bounded stages:
 
 1. On the first persistent failure, wait briefly for normal restart handling,
    then reboot the Pi.
@@ -88,11 +96,16 @@ become active, `toc2026-recovery.service` escalates in bounded stages:
    player backup, rebuild with one compiler process, validate, and redeploy. If
    it is still broken, reboot once more.
 3. After the third persistent failure, retry the forced validated deployment,
-   leave the Pi online with the rapid failure blink, and stop automatic reboots
-   so the appliance cannot enter an endless boot loop or thrash the SD card.
+   leave the Pi online with the rapid failure blink, and enter a six-hour
+   cooldown so the appliance cannot enter an endless boot loop or thrash the SD
+   card. After the cooldown it may begin one new bounded cycle. An actual manual
+   power cycle also authorizes one fresh bounded cycle.
 
-After the MUD stays up for ten minutes, `toc2026-stable.service` clears the
-persistent recovery count. Inspect the reason and recovery history with:
+After the game and dashboard are healthy at the ten-minute stability check,
+`toc2026-stable.service` clears the persistent recovery count. A systemd manager
+watchdog also reboots the Pi if userspace itself stops responding for one minute;
+the reboot watchdog prevents a shutdown from hanging indefinitely. Inspect the
+reason and recovery history with:
 
 ```bash
 systemctl status toc2026-game toc2026-recovery toc2026-stable
@@ -101,8 +114,9 @@ sudo journalctl -u toc2026-game -u toc2026-recovery -u toc2026-update \
 sudo cat /var/lib/toc2026/recovery-count
 ```
 
-The count file is absent during normal operation. A failed forced deployment
-does not discard local runtime data or mark an unverified commit as deployed.
+The recovery state files are absent during normal operation. A failed forced
+deployment does not discard local runtime data or mark an unverified commit as
+deployed.
 
 ## Deploy an update
 
@@ -118,10 +132,12 @@ off at that time, the persistent timer runs the missed check after the next
 boot. It does nothing when the deployed commit already matches `origin/main`.
 When an update exists, it first pushes an encrypted player snapshot, refuses to
 discard non-runtime changes, fast-forwards, rebuilds with one compiler process,
-validates the world, refreshes binary Python dependencies, then gracefully
-restarts and health-checks both services. A failed build leaves the existing
-processes running and is retried at the next scheduled or manually requested
-run.
+validates the world, refreshes binary Python dependencies, compiles the
+dashboard, runs its focused API/deployment tests, atomically refreshes the
+root-owned recovery scripts and units, then gracefully restarts and
+health-checks both services. Git fetches and the update service have bounded
+retries for transient network failures. A failed build leaves the existing
+processes running and the unit retries without waiting until the next Sunday.
 
 Automatic recovery can force this same guarded build even when Git is already
 at the deployed commit, which covers a damaged binary or interrupted local
@@ -135,6 +151,24 @@ so the job continues while the dashboard restarts. Watch progress with:
 ```bash
 sudo journalctl -u toc2026-update -f
 ```
+
+## Weekly operating-system maintenance
+
+Install the Debian unattended-upgrade engine once:
+
+```bash
+sudo apt-get update
+sudo apt-get install unattended-upgrades
+sudo ./deploy/install-pi.sh --refresh
+```
+
+`toc2026-maintenance.timer` then runs on Sunday at about 5:30 AM, after the
+weekly ToC source-update window. Debian's generic daily timer is prevented from
+installing packages or rebooting independently. The ToC maintenance job refreshes
+package metadata, applies the distribution's configured unattended updates, and
+reboots only when the operating system requires it. Before that clean reboot it
+attempts a fresh encrypted player snapshot. Failed maintenance gets bounded
+30-minute retries; it never loops without limit.
 
 ## Browser client
 

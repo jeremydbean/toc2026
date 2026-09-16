@@ -3,6 +3,8 @@ Description=Encrypt and synchronize ToC player files to GitHub
 Documentation=https://github.com/jeremydbean/toc2026
 Wants=network-online.target
 After=network-online.target
+StartLimitIntervalSec=2h
+StartLimitBurst=4
 
 [Service]
 Type=oneshot
@@ -11,6 +13,8 @@ Group=toc
 WorkingDirectory=/home/toc/toc2026
 EnvironmentFile=/etc/toc2026/player-backup.env
 ExecStart=/home/toc/toc2026/deploy/sync-player-backup.sh
+Restart=on-failure
+RestartSec=15min
 UMask=0077
 Nice=10
 IOSchedulingClass=idle
@@ -18,6 +22,7 @@ CPUWeight=10
 TasksMax=32
 MemoryMax=96M
 MemorySwapMax=64M
+OOMPolicy=stop
 NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes

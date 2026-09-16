@@ -1,24 +1,20 @@
 [Unit]
-Description=Fetch, rebuild, validate, and restart Times of Chaos when updated
+Description=End-to-end health check and local repair for Times of Chaos
 Documentation=https://github.com/jeremydbean/toc2026
-Wants=network-online.target
-After=network-online.target
-StartLimitIntervalSec=3600
-StartLimitBurst=3
+After=toc2026-game.service toc2026-web.service
+OnFailure=toc2026-recovery.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/sbin/toc2026-update
-Restart=on-failure
-RestartSec=15min
-TimeoutStartSec=30min
+ExecStart=/usr/local/sbin/toc2026-healthcheck
+TimeoutStartSec=2min
 UMask=0022
 Nice=10
 IOSchedulingClass=idle
 CPUWeight=10
-TasksMax=96
-MemoryMax=256M
-MemorySwapMax=192M
+TasksMax=16
+MemoryMax=32M
+MemorySwapMax=16M
 OOMPolicy=stop
 NoNewPrivileges=yes
 PrivateTmp=yes
@@ -32,4 +28,4 @@ LockPersonality=yes
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=toc2026-update
+SyslogIdentifier=toc2026-healthcheck

@@ -1,0 +1,25 @@
+[Unit]
+Description=Install unattended operating-system updates for the ToC appliance
+Documentation=https://github.com/jeremydbean/toc2026
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=6h
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/toc2026-maintenance
+Restart=on-failure
+RestartSec=30min
+TimeoutStartSec=2h
+UMask=0022
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=5
+TasksMax=128
+MemoryMax=256M
+MemorySwapMax=192M
+OOMPolicy=stop
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=toc2026-maintenance

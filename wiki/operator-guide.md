@@ -65,9 +65,11 @@ no `#AREA` record. Investigate unexpected deltas, not the known counting model.
 ssh toc
 systemctl status toc2026-game toc2026-web
 systemctl status toc2026-player-backup.timer toc2026-update.timer
-systemctl status toc2026-recovery toc2026-stable toc2026-led
+systemctl status toc2026-healthcheck.timer toc2026-maintenance.timer
+systemctl status toc2026-recovery toc2026-stable toc2026-healthcheck toc2026-led
 curl -fsS http://127.0.0.1:9001/api/health
-systemctl list-timers toc2026-player-backup.timer toc2026-update.timer
+systemctl list-timers toc2026-player-backup.timer toc2026-update.timer \
+  toc2026-healthcheck.timer toc2026-maintenance.timer
 ```
 
 The normal state is active game/web services and active timers. The dashboard
@@ -104,18 +106,21 @@ docker compose stop
 On the native Pi appliance, use systemd instead:
 
 ```bash
-sudo systemctl stop toc2026-game toc2026-web
-sudo systemctl start toc2026-game toc2026-web
+sudo systemctl stop toc2026-healthcheck.timer toc2026-game toc2026-web
+sudo systemctl start toc2026-game toc2026-web toc2026-healthcheck.timer
 sudo systemctl restart toc2026-game toc2026-web
 ```
 
 Stopping `toc2026-game` sends SIGTERM. The game saves connected players, closes
 descriptors, and exits; systemd then starts it at boot or after a crash. A
-45-second main-loop watchdog also restarts a frozen process. Persistent startup
-failure triggers a capped reboot/forced-update recovery sequence; inspect it
-with `journalctl -u toc2026-recovery -u toc2026-update`. The rapid ACT LED blink
-means that escalation is active or has stopped after its safety cap. A manual
-`systemctl stop` remains stopped until explicitly started or rebooted.
+45-second main-loop watchdog also restarts a frozen process. Three failed
+end-to-end probes trigger local service repair before persistent game or web
+failure enters the capped reboot/forced-update recovery sequence; inspect it
+with `journalctl -u toc2026-healthcheck -u toc2026-recovery -u toc2026-update`.
+The rapid ACT LED blink means that escalation is active or in its six-hour
+safety cooldown. A manual power cycle permits one new bounded recovery cycle;
+the health timer deliberately repairs a stopped service, so stop that timer
+first when an intentional maintenance outage must remain offline.
 
 ### Planned Reboot Checklist
 
@@ -309,7 +314,8 @@ Important distinctions:
   recent player-save timestamps, and log/event file activity. Use it to notice
   stale protection or a stuck queue, then verify with the underlying service.
 - `/api/host/status` is an opt-in, read-only snapshot. On the Pi it covers a
-  fixed list of ToC services/timers, root filesystem capacity, memory/load/
+  fixed list of ToC services/timers, including health repair and weekly OS
+  maintenance, root filesystem capacity, memory/load/
   temperature, recent journal boots, deployed Git metadata, and bounded ToC
   operational journals. It accepts no arbitrary command, unit, or path and is
   not SSH. An authenticated request receives 503 when

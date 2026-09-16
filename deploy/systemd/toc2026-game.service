@@ -1,8 +1,6 @@
 [Unit]
 Description=Times of Chaos MUD game server
 Documentation=https://github.com/jeremydbean/toc2026
-Wants=network-online.target
-After=network-online.target
 OnFailure=toc2026-recovery.service
 StartLimitIntervalSec=300
 StartLimitBurst=5
@@ -27,6 +25,7 @@ LimitNOFILE=4096
 TasksMax=64
 MemoryMax=128M
 MemorySwapMax=96M
+OOMPolicy=stop
 NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes

@@ -321,6 +321,15 @@ ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
 This still places the credential in the macOS clipboard; paste it promptly and
 do not run the command on an untrusted workstation.
 
+The dedicated Pi profile installs distribution updates through a weekly
+`toc2026-maintenance` systemd job rather than permitting Debian's generic daily
+timer to install packages or reboot independently. It uses the distribution's
+configured unattended-upgrade origins, requests a fresh encrypted player
+snapshot before any required reboot, and relies on bounded systemd retry limits.
+Review changes on `main`: validated updates may refresh the root-owned,
+fixed-scope ToC unit files and recovery commands so resilience fixes do not
+require a later SSH session.
+
 Do not use an example value from documentation. Recreate the dashboard/container
 after changing the environment.
 

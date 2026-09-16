@@ -471,7 +471,11 @@ The Pi update contract spans `POST /api/update`,
 installed copy of `deploy/toc2026-update`, and its service/timer units. Changes
 must preserve no-op behavior when the deployed marker equals `origin/main`,
 fast-forward-only Git updates, pre-update encrypted backup, single-job builds,
-native area validation, service health checks, and retry after a failed build.
+native area validation, focused dashboard/deployment tests, atomic updater
+replacement, checked-in unit refresh, service health checks, and bounded retry
+after a failed fetch or build. The separate healthcheck contract requires three
+consecutive end-to-end failures before it restarts services and must escalate
+through `toc2026-recovery.service` only after local repair fails.
 
 ## C Coding Guidance
 

@@ -716,11 +716,15 @@ The reproducible assets are under `deploy/`:
 | `install-pi.sh` | Installs units, tmpfiles, journald limits, and boot enablement |
 | `systemd/toc2026-game.service` | Runs `merc`, saves on SIGTERM, and restarts crashes |
 | `systemd/toc2026-web.service` | Runs one Uvicorn worker and restarts crashes |
+| `systemd/toc2026-healthcheck.*` | Probes both services every two minutes and performs bounded local repair |
 | `systemd/toc2026-recovery.service` | Escalates persistent failures through capped reboot and forced-update stages |
 | `systemd/toc2026-stable.service` | Clears persistent recovery state after ten healthy minutes |
 | `systemd/toc2026-player-backup.*` | Six-hour encrypted player snapshot timer/service |
 | `systemd/toc2026-update.*` | Weekly update timer and admin-request path/service |
 | `toc2026-update` | Root-owned guarded fetch/build/validate/restart implementation |
+| `systemd/toc2026-maintenance.*` | Weekly unattended OS update and required-reboot window |
+| `toc2026-maintenance` | Serializes OS maintenance, snapshots players, and requests a clean required reboot |
+| `systemd/99-toc2026-watchdog.conf` | Enables userspace and shutdown hardware-watchdog coverage |
 | `systemd/toc2026-namecheap-ddns.*` | Ten-minute public IPv4 refresh for the Namecheap host record |
 | `toc2026-namecheap-ddns` | Validates and submits the detected public IPv4 without a resident daemon |
 | `namecheap-ddns.env.example` | Non-secret template for the private DDNS configuration |
@@ -753,27 +757,42 @@ service and timer state, recent boot/shutdown ranges, deployed Git metadata,
 and a bounded journal limited to ToC operational units. The route remains token
 protected and is intentionally not an SSH terminal or filesystem browser.
 
-At boot, systemd starts game and web services, the backup timer, the weekly
-update timer, and the admin-request path watcher. The scheduled check runs on
+At boot, systemd starts game and web services without waiting for external
+network readiness, plus health, backup, weekly update, weekly OS maintenance,
+DDNS, and admin-request timers/watchers. The scheduled source check runs on
 Sunday at about 4:00 AM in the Pi's local time, randomized by up to 30 minutes.
 Because the timer is persistent, a check missed while the Pi was off runs after
 the next boot. The updater fetches `origin/main` but does nothing when both Git
 HEAD and the deployed marker are current. For a new or previously failed commit
 it requires a successful encrypted player backup, refuses non-runtime dirty
 files or non-fast-forward history, builds and validates while the existing
-services remain available, then gracefully restarts and health-checks both. A
-failed build leaves the old processes running and the deployed marker unchanged
-so a later scheduled or dashboard-requested run can retry.
+services remain available, runs focused dashboard/deployment tests, refreshes
+the checked-in root-owned units and recovery commands, then gracefully restarts
+and health-checks both. Fetch and unit failures use bounded delayed retries. A
+failed build leaves the old processes running and the deployed marker unchanged.
 
 The game unit uses `Type=notify` and a 45-second systemd watchdog. The MUD sends
 `READY=1` only after the listening socket and world database are ready, then
 sends watchdog heartbeats from the main game loop. A crash or missed heartbeat
-is killed and restarted after ten seconds. Persistent failures trigger a
-root-owned recovery unit: the first stage reboots, the second forces the same
-backup/fetch/build/validate/deploy workflow even when the commit is unchanged,
-and the third stops automatic reboots so a bad source revision or hardware
-fault cannot create an infinite boot loop. Ten continuously healthy minutes
-clear the persisted recovery count.
+is killed and restarted after ten seconds. A separate two-minute end-to-end
+probe requires three consecutive failures before it repairs a service; it can
+recover a hung dashboard as well as an unavailable game. Persistent failure of
+either service triggers a root-owned recovery unit: the first stage reboots,
+the second forces the same backup/fetch/build/validate/deploy workflow even when
+the commit is unchanged, and the third enters a six-hour cooldown so a bad
+source revision or hardware fault cannot create an infinite boot loop. The
+cooldown later permits one fresh bounded cycle, and an unplanned/manual power
+cycle does the same while planned recovery reboots remain counted. The systemd
+manager also pets `/dev/watchdog`; a one-minute userspace stall causes a hardware
+reset, while a two-minute reboot watchdog bounds stuck shutdowns. A healthy
+ten-minute stability check clears the persisted recovery state.
+
+The weekly OS-maintenance timer runs Sunday at about 5:30 AM, after the source
+update window. It invokes Debian's `unattended-upgrade`, suppresses independent
+daily package-install/reboot behavior, takes an encrypted player snapshot when a
+reboot is required, and then requests a clean systemd reboot. Install the
+`unattended-upgrades` package once; `install-pi.sh --refresh` enables the timer
+when the command is present.
 
 The dashboard **Update ToC** action writes only a volatile request file. The
 root-owned systemd unit performs the update after the web request returns, so

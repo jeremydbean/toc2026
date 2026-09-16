@@ -114,18 +114,25 @@ class InstallationAssetsTests(unittest.TestCase):
         updater = read("deploy/toc2026-update")
         installer = read("deploy/install-pi.sh")
         timer = read("deploy/systemd/toc2026-update.timer")
+        service = read("deploy/systemd/toc2026-update.service")
         path_unit = read("deploy/systemd/toc2026-update.path")
         web_unit = read("deploy/systemd/toc2026-web.service")
 
-        self.assertIn("git -C \"$TOC_ROOT\" fetch --prune origin main", updater)
+        self.assertIn("fetch --prune origin main", updater)
+        self.assertIn("http.lowSpeedTime=60", updater)
+        self.assertIn("fetch_attempt", updater)
         self.assertIn("make -C \"$TOC_ROOT\" -j1", updater)
         self.assertIn("../merc --check-area", updater)
+        self.assertIn("tests.test_webadmin_api tests.test_installation_assets", updater)
+        self.assertIn('install-pi.sh" --refresh', updater)
         self.assertIn("toc2026-player-backup.service", updater)
         self.assertIn("reset-failed toc2026-player-backup.service", updater)
         self.assertIn("OnCalendar=Sun *-*-* 04:00:00", timer)
         self.assertIn("RandomizedDelaySec=30min", timer)
         self.assertIn("Persistent=true", timer)
         self.assertNotIn("OnUnitActiveSec=", timer)
+        self.assertIn("Restart=on-failure", service)
+        self.assertIn("RestartSec=15min", service)
         self.assertIn("PathExists=/run/toc2026/update.request", path_unit)
         self.assertIn("TOC_UPDATE_REQUEST_PATH=/run/toc2026/update.request", web_unit)
         self.assertIn("toc2026-update.timer toc2026-update.path", installer)
@@ -171,6 +178,7 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn('notify_systemd( "READY=1', comm)
         self.assertIn('notify_systemd( "WATCHDOG=1" )', comm)
         self.assertIn("Type=notify", game_service)
+        self.assertNotIn("network-online.target", game_service)
         self.assertIn("WatchdogSec=45s", game_service)
         self.assertIn("WatchdogSignal=SIGKILL", game_service)
         self.assertIn("OnFailure=toc2026-recovery.service", game_service)
@@ -178,13 +186,163 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("systemctl reset-failed", updater)
         self.assertIn("TOC_UPDATE_FORCE=1", recovery)
         self.assertIn("TOC_RECOVERY_MAX_ATTEMPTS:-3", recovery)
+        self.assertIn("TOC_RECOVERY_COOLDOWN_SEC:-21600", recovery)
+        self.assertIn("recovery-planned-reboot", recovery)
+        self.assertIn("toc2026-web.service", recovery)
+        self.assertIn('"merc":true', recovery)
+        self.assertIn('"webadmin":true', stability)
         self.assertIn('"$SYSTEMCTL" --no-block reboot', recovery)
         self.assertIn("Automatic recovery limit reached", recovery)
         self.assertIn("TOC_STABILITY_DELAY_SEC:-600", stability)
         self.assertIn("BindsTo=toc2026-game.service", stable_service)
         self.assertIn("MemoryMax=256M", recovery_service)
-        self.assertIn("toc2026-recovery.service", installer)
+        self.assertNotIn("network-online.target", recovery_service)
+        self.assertIn("deploy/systemd/toc2026-*", installer)
         self.assertIn("systemctl enable --now toc2026-stable.service", installer)
+
+    def test_pi_healthcheck_repairs_repeated_endpoint_failures(self):
+        healthcheck = ROOT / "deploy/toc2026-healthcheck"
+        service = read("deploy/systemd/toc2026-healthcheck.service")
+        timer = read("deploy/systemd/toc2026-healthcheck.timer")
+        web_service = read("deploy/systemd/toc2026-web.service")
+        installer = read("deploy/install-pi.sh")
+
+        self.assertIn("OnFailure=toc2026-recovery.service", service)
+        self.assertIn("OnUnitActiveSec=2min", timer)
+        self.assertIn("OnFailure=toc2026-recovery.service", web_service)
+        self.assertNotIn("network-online.target", web_service)
+        self.assertIn("toc2026-healthcheck.timer", installer)
+
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            temporary = pathlib.Path(temporary_directory)
+            state = temporary / "state"
+            state.mkdir()
+            (state / "health-failures").write_text("2\n", encoding="ascii")
+            curl_count = temporary / "curl-count"
+            curl_count.write_text("0\n", encoding="ascii")
+            mock_curl = temporary / "curl"
+            mock_curl.write_text(
+                "#!/bin/sh\n"
+                f"count_file='{curl_count}'\n"
+                "count=$(cat \"$count_file\")\n"
+                "count=$((count + 1))\n"
+                "printf '%s\\n' \"$count\" >\"$count_file\"\n"
+                "if [ \"$count\" -eq 1 ]; then exit 22; fi\n"
+                "printf '%s\\n' '{\"status\":\"ok\",\"merc\":true,\"webadmin\":true}'\n",
+                encoding="utf-8",
+            )
+            mock_curl.chmod(0o755)
+            systemctl_log = temporary / "systemctl.log"
+            mock_systemctl = temporary / "systemctl"
+            mock_systemctl.write_text(
+                "#!/bin/sh\n"
+                f"printf '%s\\n' \"$*\" >>'{systemctl_log}'\n"
+                "exit 0\n",
+                encoding="utf-8",
+            )
+            mock_systemctl.chmod(0o755)
+            mock_flock = temporary / "flock"
+            mock_flock.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+            mock_flock.chmod(0o755)
+            environment = os.environ.copy()
+            environment.update(
+                {
+                    "TOC_HEALTH_STATE_DIR": str(state),
+                    "TOC_HEALTH_LOCK_FILE": str(temporary / "health.lock"),
+                    "TOC_CURL": str(mock_curl),
+                    "TOC_SYSTEMCTL": str(mock_systemctl),
+                    "TOC_SLEEP": "/usr/bin/true",
+                    "TOC_FLOCK": str(mock_flock),
+                }
+            )
+
+            result = subprocess.run(
+                [str(healthcheck)],
+                check=False,
+                capture_output=True,
+                text=True,
+                env=environment,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertFalse((state / "health-failures").exists())
+            self.assertIn("restart toc2026-web.service", systemctl_log.read_text())
+
+    def test_pi_has_weekly_os_maintenance_and_hardware_watchdog(self):
+        maintenance = read("deploy/toc2026-maintenance")
+        maintenance_service = read("deploy/systemd/toc2026-maintenance.service")
+        maintenance_timer = read("deploy/systemd/toc2026-maintenance.timer")
+        watchdog = read("deploy/systemd/99-toc2026-watchdog.conf")
+        apt_config = read("deploy/apt/52toc2026-maintenance")
+        installer = read("deploy/install-pi.sh")
+
+        self.assertIn("unattended-upgrade", maintenance)
+        self.assertIn("toc2026-player-backup.service", maintenance)
+        self.assertIn('"$SYSTEMCTL" --no-block reboot', maintenance)
+        self.assertIn("Restart=on-failure", maintenance_service)
+        self.assertIn("OnCalendar=Sun *-*-* 05:30:00", maintenance_timer)
+        self.assertIn("Persistent=true", maintenance_timer)
+        self.assertIn("RuntimeWatchdogSec=1min", watchdog)
+        self.assertIn("RebootWatchdogSec=2min", watchdog)
+        self.assertIn('APT::Periodic::Unattended-Upgrade "0"', apt_config)
+        self.assertIn('Unattended-Upgrade::Automatic-Reboot "false"', apt_config)
+        self.assertIn("toc2026-maintenance.timer", installer)
+
+    def test_pi_recovery_cooldown_prevents_rebuild_thrashing(self):
+        recovery = ROOT / "deploy/toc2026-recover"
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            temporary = pathlib.Path(temporary_directory)
+            state = temporary / "state"
+            state.mkdir()
+            now = "1789500000"
+            boot_id = "test-boot-id"
+            (state / "recovery-count").write_text("3\n", encoding="ascii")
+            (state / "recovery-last-attempt").write_text(f"{now}\n", encoding="ascii")
+            (state / "recovery-last-boot").write_text(f"{boot_id}\n", encoding="ascii")
+            boot_id_file = temporary / "boot-id"
+            boot_id_file.write_text(f"{boot_id}\n", encoding="ascii")
+
+            def executable(name: str, body: str) -> pathlib.Path:
+                path = temporary / name
+                path.write_text(f"#!/bin/sh\n{body}", encoding="utf-8")
+                path.chmod(0o755)
+                return path
+
+            mock_curl = executable("curl", "exit 22\n")
+            mock_flock = executable("flock", "exit 0\n")
+            mock_systemctl = executable("systemctl", "exit 1\n")
+            mock_date = executable("date", f"printf '%s\\n' '{now}'\n")
+            update_log = temporary / "update.log"
+            mock_update = executable("update", f"touch '{update_log}'\n")
+            mock_led = executable("led", "exit 0\n")
+            environment = os.environ.copy()
+            environment.update(
+                {
+                    "TOC_RECOVERY_STATE_DIR": str(state),
+                    "TOC_RECOVERY_LOCK_FILE": str(temporary / "recovery.lock"),
+                    "TOC_UPDATE_LOCK_FILE": str(temporary / "update.lock"),
+                    "TOC_SYSTEMCTL": str(mock_systemctl),
+                    "TOC_CURL": str(mock_curl),
+                    "TOC_SLEEP": "/usr/bin/true",
+                    "TOC_FLOCK": str(mock_flock),
+                    "TOC_DATE": str(mock_date),
+                    "TOC_BOOT_ID_FILE": str(boot_id_file),
+                    "TOC_UPDATE_COMMAND": str(mock_update),
+                    "TOC_LED_COMMAND": str(mock_led),
+                }
+            )
+
+            result = subprocess.run(
+                [str(recovery)],
+                check=False,
+                capture_output=True,
+                text=True,
+                env=environment,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("cooling down", result.stdout)
+            self.assertFalse(update_log.exists())
 
     def test_pi_namecheap_ddns_is_secret_backed_and_periodic(self):
         updater = read("deploy/toc2026-namecheap-ddns")

@@ -3,29 +3,49 @@ set -eu
 
 STATE_DIR=${TOC_RECOVERY_STATE_DIR:-/var/lib/toc2026}
 COUNT_FILE="$STATE_DIR/recovery-count"
+LAST_ATTEMPT_FILE="$STATE_DIR/recovery-last-attempt"
+LAST_BOOT_FILE="$STATE_DIR/recovery-last-boot"
+PLANNED_REBOOT_FILE="$STATE_DIR/recovery-planned-reboot"
 RECOVERY_LOCK=${TOC_RECOVERY_LOCK_FILE:-/run/lock/toc2026-recovery.lock}
 UPDATE_LOCK=${TOC_UPDATE_LOCK_FILE:-/run/lock/toc2026-update.lock}
 LED_COMMAND=${TOC_LED_COMMAND:-/usr/local/sbin/toc2026-led}
 UPDATE_COMMAND=${TOC_UPDATE_COMMAND:-/usr/local/sbin/toc2026-update}
 SYSTEMCTL=${TOC_SYSTEMCTL:-/bin/systemctl}
+CURL=${TOC_CURL:-/usr/bin/curl}
+SLEEP=${TOC_SLEEP:-/bin/sleep}
+FLOCK=${TOC_FLOCK:-/usr/bin/flock}
+DATE=${TOC_DATE:-/bin/date}
+BOOT_ID_FILE=${TOC_BOOT_ID_FILE:-/proc/sys/kernel/random/boot_id}
+HEALTH_URL=${TOC_HEALTH_URL:-http://127.0.0.1:9001/api/health}
 RECOVERY_DELAY=${TOC_RECOVERY_DELAY_SEC:-30}
 RESTART_GRACE=${TOC_RECOVERY_RESTART_GRACE_SEC:-20}
 MAX_ATTEMPTS=${TOC_RECOVERY_MAX_ATTEMPTS:-3}
+RECOVERY_COOLDOWN=${TOC_RECOVERY_COOLDOWN_SEC:-21600}
+
+healthy()
+{
+    payload="$($CURL --fail --silent --show-error --max-time 5 \
+        "$HEALTH_URL" 2>/dev/null || true)"
+    "$SYSTEMCTL" is-active --quiet toc2026-game.service \
+        && "$SYSTEMCTL" is-active --quiet toc2026-web.service \
+        && printf '%s\n' "$payload" | grep -q '"merc":true' \
+        && printf '%s\n' "$payload" | grep -q '"webadmin":true'
+}
 
 install -d -m 0755 "$STATE_DIR"
 
 exec 9>"$RECOVERY_LOCK"
-if ! flock -n 9; then
+if ! "$FLOCK" -n 9; then
     echo "Another ToC recovery is already running; skipping."
     exit 0
 fi
 
 "$LED_COMMAND" failed || true
 echo "Waiting $RESTART_GRACE seconds for normal systemd crash recovery."
-sleep "$RESTART_GRACE"
+"$SLEEP" "$RESTART_GRACE"
 
-if "$SYSTEMCTL" is-active --quiet toc2026-game.service; then
-    echo "The MUD recovered without host-level escalation."
+if healthy; then
+    echo "The game and dashboard recovered without host-level escalation."
     "$LED_COMMAND" on || true
     exit 0
 fi
@@ -33,15 +53,25 @@ fi
 # An updater that has just tried to start the game may still own this lock.
 # Wait for it to finish before deciding whether the host needs recovery.
 exec 8>"$UPDATE_LOCK"
-if ! flock -w 1800 8; then
+if ! "$FLOCK" -w 1800 8; then
     echo "Timed out waiting for the active ToC updater." >&2
     "$LED_COMMAND" failed || true
     exit 1
 fi
-flock -u 8
+"$FLOCK" -u 8
 
-if "$SYSTEMCTL" is-active --quiet toc2026-game.service; then
-    echo "The MUD recovered before escalation was necessary."
+if healthy; then
+    echo "The game and dashboard recovered before escalation was necessary."
+    "$LED_COMMAND" on || true
+    exit 0
+fi
+
+echo "Attempting one complete service repair before host-level escalation."
+"$SYSTEMCTL" reset-failed toc2026-game.service toc2026-web.service || true
+"$SYSTEMCTL" restart toc2026-game.service toc2026-web.service || true
+"$SLEEP" "$RESTART_GRACE"
+if healthy; then
+    echo "The complete service repair restored ToC."
     "$LED_COMMAND" on || true
     exit 0
 fi
@@ -53,6 +83,30 @@ fi
 case "$count" in
     ''|*[!0-9]*) count=0 ;;
 esac
+
+now="$("$DATE" +%s)"
+boot_id="$(cat "$BOOT_ID_FILE" 2>/dev/null || true)"
+last_boot="$(cat "$LAST_BOOT_FILE" 2>/dev/null || true)"
+last_attempt="$(cat "$LAST_ATTEMPT_FILE" 2>/dev/null || true)"
+case "$last_attempt" in
+    ''|*[!0-9]*) last_attempt=0 ;;
+esac
+
+if [ -e "$PLANNED_REBOOT_FILE" ]; then
+    rm -f "$PLANNED_REBOOT_FILE"
+elif [ "$count" -ge "$MAX_ATTEMPTS" ]; then
+    if [ -n "$boot_id" ] && [ -n "$last_boot" ] && [ "$boot_id" != "$last_boot" ]; then
+        echo "An unplanned or manual reboot occurred; starting one fresh bounded recovery cycle."
+        count=1
+    elif [ $((now - last_attempt)) -lt "$RECOVERY_COOLDOWN" ]; then
+        echo "Automatic recovery is cooling down after $MAX_ATTEMPTS attempts; keeping the failure indicator active."
+        exit 0
+    else
+        echo "The recovery cooldown expired; starting one fresh bounded recovery cycle."
+        count=1
+    fi
+fi
+
 count=$((count + 1))
 if [ "$count" -gt "$MAX_ATTEMPTS" ]; then
     count=$MAX_ATTEMPTS
@@ -63,6 +117,17 @@ printf '%s\n' "$count" >"$count_tmp"
 chmod 0644 "$count_tmp"
 mv -f "$count_tmp" "$COUNT_FILE"
 
+attempt_tmp="$LAST_ATTEMPT_FILE.tmp.$$"
+printf '%s\n' "$now" >"$attempt_tmp"
+chmod 0644 "$attempt_tmp"
+mv -f "$attempt_tmp" "$LAST_ATTEMPT_FILE"
+if [ -n "$boot_id" ]; then
+    boot_tmp="$LAST_BOOT_FILE.tmp.$$"
+    printf '%s\n' "$boot_id" >"$boot_tmp"
+    chmod 0644 "$boot_tmp"
+    mv -f "$boot_tmp" "$LAST_BOOT_FILE"
+fi
+
 echo "Starting ToC recovery attempt $count of $MAX_ATTEMPTS."
 
 if [ "$count" -ge 2 ]; then
@@ -71,21 +136,22 @@ if [ "$count" -ge 2 ]; then
     if ! TOC_UPDATE_FORCE=1 "$UPDATE_COMMAND"; then
         echo "The forced ToC deployment command reported a failure." >&2
     fi
-    if "$SYSTEMCTL" is-active --quiet toc2026-game.service; then
-        echo "The forced ToC deployment restored the MUD."
+    if healthy; then
+        echo "The forced ToC deployment restored the game and dashboard."
         "$LED_COMMAND" on || true
         exit 0
     fi
-    echo "The forced ToC deployment did not restore the MUD." >&2
+    echo "The forced ToC deployment did not restore the game and dashboard." >&2
 fi
 
 if [ "$count" -lt "$MAX_ATTEMPTS" ]; then
     echo "Rebooting the Pi in $RECOVERY_DELAY seconds for the next recovery stage."
-    sleep "$RECOVERY_DELAY"
+    : >"$PLANNED_REBOOT_FILE"
+    "$SLEEP" "$RECOVERY_DELAY"
     "$SYSTEMCTL" --no-block reboot
     exit 0
 fi
 
-echo "Automatic recovery limit reached; leaving the Pi online for diagnosis." >&2
-echo "The ACT LED will continue its rapid failure blink." >&2
-exit 1
+echo "Automatic recovery limit reached; entering a $RECOVERY_COOLDOWN-second cooldown." >&2
+echo "The ACT LED will continue its rapid failure blink; a manual power cycle can start one fresh bounded cycle." >&2
+exit 0

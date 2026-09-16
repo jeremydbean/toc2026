@@ -340,7 +340,7 @@
                 </section>
 
                 <section class="panel host-panel">
-                    <div class="panel-heading"><h3>Services</h3><span class="panel-subtitle">Game, dashboard, recovery, update, backup, DDNS, and LED</span></div>
+                    <div class="panel-heading"><h3>Services</h3><span class="panel-subtitle">Game, dashboard, health repair, recovery, maintenance, update, backup, DDNS, and LED</span></div>
                     <div class="table-frame borderless">
                         <table id="host-services-table">
                             <thead><tr><th>Service</th><th>State</th><th>Result</th><th>PID</th><th>Restarts</th><th>Since</th></tr></thead>
@@ -372,7 +372,7 @@
                 </div>
 
                 <section class="panel host-panel">
-                    <div class="panel-heading"><div><h3>Operational journal</h3><span class="panel-subtitle">Bounded ToC service, update, recovery, backup, DDNS, and shutdown records</span></div><span class="result-count" id="host-journal-count">Locked</span></div>
+                    <div class="panel-heading"><div><h3>Operational journal</h3><span class="panel-subtitle">Bounded ToC service, health, recovery, maintenance, backup, DDNS, and shutdown records</span></div><span class="result-count" id="host-journal-count">Locked</span></div>
                     <div class="host-journal-toolbar">
                         <label>Source<select id="host-journal-source">
                             <option value="all">All operational sources</option>
@@ -380,7 +380,9 @@
                             <option value="toc2026-web.service">Dashboard</option>
                             <option value="toc2026-recovery.service">Recovery</option>
                             <option value="toc2026-stable.service">Stability monitor</option>
+                            <option value="toc2026-healthcheck.service">Health repair</option>
                             <option value="toc2026-update.service">Updates</option>
+                            <option value="toc2026-maintenance.service">OS maintenance</option>
                             <option value="toc2026-player-backup.service">Player backups</option>
                             <option value="toc2026-namecheap-ddns.service">Dynamic DNS</option>
                             <option value="systemd-shutdown">Shutdowns</option>
