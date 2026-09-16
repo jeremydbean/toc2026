@@ -139,6 +139,11 @@ health-checks both services. Git fetches and the update service have bounded
 retries for transient network failures. A failed build leaves the existing
 processes running and the unit retries without waiting until the next Sunday.
 
+The updater keeps the rest of the operating system read-only while it runs.
+Its systemd sandbox grants write access only to the service/script installation
+directories required by `install-pi.sh --refresh`; deployment fixes can update
+their own units without broadly disabling `ProtectSystem=full`.
+
 Automatic recovery can force this same guarded build even when Git is already
 at the deployed commit, which covers a damaged binary or interrupted local
 build without weakening the backup, fast-forward, dirty-tree, or validation

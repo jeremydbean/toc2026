@@ -10,6 +10,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Allowed the sandboxed Pi updater to write only the system script and unit
+  directories used by its checked-in self-refresh step. `ProtectSystem=full`
+  previously blocked `/usr/local/sbin` before the validated update could
+  restart either live service.
+
 - The official Mudlet mapper now reconciles every standard direction against
   the latest `Room.Info`: removed exits are deleted, retargeted exits are
   replaced, and obsolete stubs are cleared when a room is revisited. The game

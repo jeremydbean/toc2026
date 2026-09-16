@@ -133,6 +133,16 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertNotIn("OnUnitActiveSec=", timer)
         self.assertIn("Restart=on-failure", service)
         self.assertIn("RestartSec=15min", service)
+        self.assertIn("ProtectSystem=full", service)
+        for writable_path in (
+            "/usr/local/sbin",
+            "/etc/systemd/system",
+            "/etc/systemd/system.conf.d",
+            "/etc/systemd/journald.conf.d",
+            "/etc/tmpfiles.d",
+            "/etc/apt/apt.conf.d",
+        ):
+            self.assertIn(f"ReadWritePaths={writable_path}", service)
         self.assertIn("PathExists=/run/toc2026/update.request", path_unit)
         self.assertIn("TOC_UPDATE_REQUEST_PATH=/run/toc2026/update.request", web_unit)
         self.assertIn("toc2026-update.timer toc2026-update.path", installer)
