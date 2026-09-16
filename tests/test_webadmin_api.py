@@ -145,6 +145,8 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertIn('data-operation="update"', page.text)
             self.assertIn('data-view="host"', page.text)
             self.assertIn("Read-only appliance telemetry", page.text)
+            self.assertIn("Resource monitor", page.text)
+            self.assertIn('/api/host/resources', script.text)
             self.assertIn("TocCommandSequence.parse(command)", script.text)
             self.assertIn("const MAX_COMMANDS = 50", command_sequence.text)
             self.assertIn('next === ";"', command_sequence.text)
@@ -282,6 +284,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(client.get("/api/events").status_code, 403)
             self.assertEqual(client.get("/api/admin/status").status_code, 403)
             self.assertEqual(client.get("/api/host/status").status_code, 403)
+            self.assertEqual(client.get("/api/host/resources").status_code, 403)
 
             headers = {"X-Admin-Token": "secret"}
             auth = client.get("/api/auth/check", headers=headers)
@@ -370,6 +373,7 @@ class WebAdminApiTests(unittest.TestCase):
         headers = {"X-Admin-Token": "secret"}
         with self.webadmin_client() as (_, client, _):
             self.assertEqual(client.get("/api/host/status", headers=headers).status_code, 503)
+            self.assertEqual(client.get("/api/host/resources", headers=headers).status_code, 503)
 
         payload = {
             "generated": 1788000000,
@@ -381,8 +385,11 @@ class WebAdminApiTests(unittest.TestCase):
                 "cpu_count": 4,
                 "load_average": [0.1, 0.2, 0.3],
                 "temperature_c": 40.5,
+                "cpu_percent": 12.5,
                 "memory": {"total_bytes": 1024, "available_bytes": 512, "used_bytes": 512},
+                "swap": {"total_bytes": 1024, "free_bytes": 768, "used_bytes": 256},
                 "root_filesystem": {"total_bytes": 4096, "used_bytes": 1024, "free_bytes": 3072},
+                "network": {"receive_bytes_per_second": 200, "transmit_bytes_per_second": 100},
             },
             "repository": {
                 "head": "abc123",
@@ -410,7 +417,19 @@ class WebAdminApiTests(unittest.TestCase):
         with self.webadmin_client(host_status=True) as (server, client, _):
             self.assertTrue(client.get("/api/config").json()["host_status_available"])
             self.assertEqual(client.get("/api/host/status").status_code, 403)
+            self.assertEqual(client.get("/api/host/resources").status_code, 403)
             self.assertIsNone(server.run_host_command(("sh", "-c", "id")))
+            self.assertEqual(
+                server.parse_cpu_counters("cpu 10 2 3 80 5 0 0 0\ncpu0 1 1 1 1"),
+                (100, 85),
+            )
+            self.assertEqual(
+                server.parse_network_counters(
+                    "lo: 100 0 0 0 0 0 0 0 100 0 0 0 0 0 0 0\n"
+                    "eth0: 200 0 0 0 0 0 0 0 300 0 0 0 0 0 0 0\n"
+                ),
+                (200, 300),
+            )
             shutdown_entries = server.parse_journal_output(
                 '{"_SYSTEMD_UNIT":"init.scope","SYSLOG_IDENTIFIER":"systemd-shutdown",'
                 '"MESSAGE":"Syncing filesystems.","__REALTIME_TIMESTAMP":"1788000000000000"}',
@@ -423,6 +442,16 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertTrue(response.json()["read_only"])
             self.assertEqual(response.json()["services"][0]["unit"], "toc2026-game.service")
             self.assertNotIn("command", response.json())
+            resource_payload = {
+                "generated": payload["generated"],
+                "read_only": True,
+                "host": payload["host"],
+            }
+            with patch.object(server, "host_resource_snapshot", return_value=resource_payload):
+                resources = client.get("/api/host/resources", headers=headers)
+            self.assertEqual(resources.status_code, 200)
+            self.assertEqual(resources.json()["host"]["cpu_percent"], 12.5)
+            self.assertNotIn("journal", resources.json())
 
     def test_loopback_client_can_open_and_close_a_local_admin_session(self) -> None:
         with self.webadmin_client(local_unlock=True) as (_, client, _):

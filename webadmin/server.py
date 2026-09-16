@@ -140,6 +140,14 @@ HOST_JOURNAL_UNITS = (
 )
 HOST_COMMANDS = {"git", "journalctl", "systemctl"}
 HOST_COMMAND_OUTPUT_LIMIT = 1024 * 1024
+HOST_RESOURCE_SAMPLE_MIN_INTERVAL = 0.2
+_HOST_RESOURCE_LOCK = threading.Lock()
+_HOST_RESOURCE_SAMPLE: Optional[Dict[str, float]] = None
+_HOST_RESOURCE_RATES: Dict[str, Optional[float]] = {
+    "cpu_percent": None,
+    "receive_bytes_per_second": None,
+    "transmit_bytes_per_second": None,
+}
 
 MUD_HOST = os.getenv("MUD_HOST", "127.0.0.1")
 MUD_PORT = int(os.getenv("MUD_PORT", 9000))
@@ -1010,6 +1018,77 @@ def repository_status() -> Dict[str, Any]:
     }
 
 
+def parse_cpu_counters(text: str) -> Optional[tuple[int, int]]:
+    for line in text.splitlines():
+        fields = line.split()
+        if not fields or fields[0] != "cpu" or len(fields) < 5:
+            continue
+        try:
+            values = [int(value) for value in fields[1:9]]
+        except ValueError:
+            return None
+        total = sum(values)
+        idle = values[3] + (values[4] if len(values) > 4 else 0)
+        return total, idle
+    return None
+
+
+def parse_network_counters(text: str) -> tuple[int, int]:
+    received = transmitted = 0
+    for line in text.splitlines():
+        interface, separator, values_text = line.partition(":")
+        if not separator or interface.strip() == "lo":
+            continue
+        values = values_text.split()
+        if len(values) < 9:
+            continue
+        try:
+            received += int(values[0])
+            transmitted += int(values[8])
+        except ValueError:
+            continue
+    return received, transmitted
+
+
+def host_rate_status() -> Dict[str, Optional[float]]:
+    global _HOST_RESOURCE_SAMPLE, _HOST_RESOURCE_RATES
+    try:
+        cpu_text = Path("/proc/stat").read_text(encoding="ascii")
+        network_text = Path("/proc/net/dev").read_text(encoding="ascii")
+    except OSError:
+        return dict(_HOST_RESOURCE_RATES)
+    cpu = parse_cpu_counters(cpu_text)
+    if cpu is None:
+        return dict(_HOST_RESOURCE_RATES)
+    received, transmitted = parse_network_counters(network_text)
+    now = time.monotonic()
+    current = {
+        "time": now,
+        "cpu_total": float(cpu[0]),
+        "cpu_idle": float(cpu[1]),
+        "received": float(received),
+        "transmitted": float(transmitted),
+    }
+    with _HOST_RESOURCE_LOCK:
+        previous = _HOST_RESOURCE_SAMPLE
+        elapsed = now - previous["time"] if previous else 0
+        if previous and elapsed >= HOST_RESOURCE_SAMPLE_MIN_INTERVAL:
+            total_delta = current["cpu_total"] - previous["cpu_total"]
+            idle_delta = current["cpu_idle"] - previous["cpu_idle"]
+            cpu_percent = None
+            if total_delta > 0:
+                cpu_percent = max(0.0, min(100.0, (total_delta - idle_delta) * 100 / total_delta))
+            _HOST_RESOURCE_RATES = {
+                "cpu_percent": cpu_percent,
+                "receive_bytes_per_second": max(0.0, current["received"] - previous["received"]) / elapsed,
+                "transmit_bytes_per_second": max(0.0, current["transmitted"] - previous["transmitted"]) / elapsed,
+            }
+            _HOST_RESOURCE_SAMPLE = current
+        elif previous is None:
+            _HOST_RESOURCE_SAMPLE = current
+        return dict(_HOST_RESOURCE_RATES)
+
+
 def host_resource_status() -> Dict[str, Any]:
     uptime = 0.0
     boot_id = ""
@@ -1047,11 +1126,13 @@ def host_resource_status() -> Dict[str, Any]:
         root_filesystem = {"total_bytes": 0, "used_bytes": 0, "free_bytes": 0}
     total_memory = memory.get("MemTotal", 0)
     available_memory = memory.get("MemAvailable", 0)
+    total_swap = memory.get("SwapTotal", 0)
+    free_swap = memory.get("SwapFree", 0)
     try:
         load_average = list(os.getloadavg())
     except OSError:
         load_average = []
-    return {
+    resources = {
         "hostname": safe_host_text(socket.gethostname(), 255),
         "boot_id": boot_id,
         "uptime_seconds": uptime,
@@ -1063,7 +1144,26 @@ def host_resource_status() -> Dict[str, Any]:
             "available_bytes": available_memory,
             "used_bytes": max(0, total_memory - available_memory),
         },
+        "swap": {
+            "total_bytes": total_swap,
+            "free_bytes": free_swap,
+            "used_bytes": max(0, total_swap - free_swap),
+        },
         "root_filesystem": root_filesystem,
+    }
+    resources.update(host_rate_status())
+    resources["network"] = {
+        "receive_bytes_per_second": resources.pop("receive_bytes_per_second"),
+        "transmit_bytes_per_second": resources.pop("transmit_bytes_per_second"),
+    }
+    return resources
+
+
+def host_resource_snapshot() -> Dict[str, Any]:
+    return {
+        "generated": time.time(),
+        "read_only": True,
+        "host": host_resource_status(),
     }
 
 
@@ -1125,6 +1225,13 @@ async def host_status(_: None = Depends(verify_token)) -> Dict[str, Any]:
     if not HOST_STATUS_ENABLED:
         raise HTTPException(status_code=503, detail="Host status is not enabled")
     return await asyncio.to_thread(host_status_snapshot)
+
+
+@app.get("/api/host/resources")
+async def host_resources(_: None = Depends(verify_token)) -> Dict[str, Any]:
+    if not HOST_STATUS_ENABLED:
+        raise HTTPException(status_code=503, detail="Host status is not enabled")
+    return await asyncio.to_thread(host_resource_snapshot)
 
 
 @app.get("/api/config")

@@ -192,6 +192,14 @@ leave it off by default. It reports uptime, CPU load, memory, the actual root
 filesystem's use, board temperature when available, the deployed and checked
 out revisions, and tracked-change count.
 
+While this view is open in a visible, authenticated browser tab, its resource
+monitor samples CPU utilization, physical memory and swap use, and aggregate
+non-loopback network throughput every five seconds. The browser retains at most
+60 samples, giving a rolling view of about five minutes; samples are not written
+to disk. Uptime, load, root-disk use, and board temperature update with the same
+lightweight poll. Polling stops when the view is left, the session is locked, or
+the tab is hidden.
+
 Fixed allowlists expose only the ToC game, dashboard, recovery, stability,
 update, player-backup, Dynamic DNS, and LED systemd units plus their three
 timers. Recent boot ranges make clean shutdowns and unexpected reboot windows
@@ -281,12 +289,15 @@ When explicitly enabled, read the protected host snapshot:
 
 ```text
 GET /api/host/status
+GET /api/host/resources
 ```
 
 Authentication is checked before feature availability: an unauthenticated
 request receives `403`, and an authenticated request receives `503` when
-`WEB_ADMIN_HOST_STATUS` is off. The route accepts no command, unit, path, or
-line-count parameters.
+`WEB_ADMIN_HOST_STATUS` is off. `/api/host/status` includes the fixed systemd,
+Git, boot, and journal snapshot. `/api/host/resources` is the lightweight live
+sample and reads only fixed `/proc`, thermal, and root-filesystem sources.
+Neither route accepts a command, unit, path, or line-count parameter.
 
 The protected WebSockets connect to `/ws/logs` or `/ws/events`, then send this
 within five seconds:

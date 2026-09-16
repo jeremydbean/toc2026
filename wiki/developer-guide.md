@@ -53,6 +53,7 @@ log/toc.log ------------>+
 backups/*.tar.gz -------->+
 /run/toc2026/update.request --> systemd updater --> Git/build/restart
 /proc + fixed systemd/Git queries --> protected read-only host status
+fixed /proc/thermal/disk reads ----> protected live resource sample
 ```
 
 Do not mistake a successful dashboard parse for a successful native world boot.
@@ -445,6 +446,9 @@ Development rules:
 - Keep host telemetry opt-in, authenticated, bounded, and fixed-scope. Never
   accept a browser-supplied executable, argument, systemd unit, journal selector,
   repository, or file path.
+- Keep frequent resource polling separate from the heavier systemd, Git, boot,
+  and journal snapshot. Live history belongs in the browser, must remain
+  bounded, and must stop when its view is inactive or hidden.
 - Keep player-list and player-detail routes token-protected.
 - Authenticate protected WebSockets in their first message; never put tokens in
   URLs.

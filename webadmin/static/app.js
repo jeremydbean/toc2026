@@ -22,7 +22,7 @@
         terminal: { socket: null, connected: false, failed: false, secretInput: false, history: [], historyIndex: 0 },
         logs: { socket: null, shouldReconnect: false, reconnectTimer: null },
         operations: { status: null, backups: [], showAllBackups: false, events: [] },
-        host: { status: null },
+        host: { status: null, resourceSamples: [], monitorTimer: null, monitorLoading: false },
         map: { data: null, scale: 1, x: 0, y: 0, dragging: false, startX: 0, startY: 0 },
     };
 
@@ -62,6 +62,12 @@
         if (bytes < 1024 ** 2) return `${(bytes / 1024).toFixed(1)} KB`;
         if (bytes < 1024 ** 3) return `${(bytes / 1024 ** 2).toFixed(1)} MB`;
         return `${(bytes / 1024 ** 3).toFixed(1)} GB`;
+    }
+
+    function formatRate(value) {
+        if (value === null || value === undefined) return "Sampling";
+        const rate = Number(value);
+        return Number.isFinite(rate) && rate >= 0 ? `${formatBytes(rate)}/s` : "Sampling";
     }
 
     function formatRelativeTime(value) {
@@ -289,6 +295,7 @@
         if (!VIEW_NAMES.has(view)) view = "overview";
         const viewChanged = state.view !== view;
         if (state.view === "logs" && view !== "logs") stopLogs();
+        if (state.view === "host" && view !== "host") stopHostMonitor();
         state.view = view;
         all(".view").forEach((item) => item.classList.toggle("is-active", item.id === `${view}-view`));
         all(".nav-item").forEach((item) => item.classList.toggle("is-active", item.dataset.view === view));
@@ -442,7 +449,10 @@
     }
 
     function clearProtectedHost() {
+        stopHostMonitor();
         state.host.status = null;
+        state.host.resourceSamples = [];
+        state.host.monitorLoading = false;
         byId("host-uptime").textContent = "Locked";
         ["host-load", "host-memory", "host-disk", "host-temperature", "host-revision", "host-name", "host-boot-id", "host-deployment", "host-checkout"].forEach((id) => {
             byId(id).textContent = "-";
@@ -461,6 +471,125 @@
         });
         byId("host-journal-count").textContent = "Locked";
         byId("host-journal").textContent = "Admin access required.";
+        byId("resource-monitor-updated").textContent = "Admin access required";
+        byId("resource-cpu").textContent = "Locked";
+        byId("resource-memory").textContent = "-";
+        byId("resource-network").textContent = "-";
+        byId("resource-memory-detail").textContent = "Used physical memory";
+        byId("resource-swap").textContent = "-";
+        byId("resource-receive").textContent = "-";
+        byId("resource-transmit").textContent = "-";
+        byId("resource-window").textContent = "0 samples";
+        ["resource-cpu-line", "resource-memory-line", "resource-network-line"].forEach((id) => {
+            byId(id).setAttribute("points", "");
+        });
+    }
+
+    function stopHostMonitor() {
+        if (state.host.monitorTimer) window.clearInterval(state.host.monitorTimer);
+        state.host.monitorTimer = null;
+    }
+
+    function renderResourceChart(id, values, fixedMaximum = null) {
+        const numeric = values.map((value) => Number.isFinite(Number(value)) ? Number(value) : null);
+        const valid = numeric.filter((value) => value !== null);
+        if (!valid.length) {
+            byId(id).setAttribute("points", "");
+            return;
+        }
+        const maximum = fixedMaximum || Math.max(1024, ...valid) * 1.1;
+        const denominator = Math.max(1, numeric.length - 1);
+        const points = numeric.map((value, index) => {
+            if (value === null) return null;
+            const x = index * 300 / denominator;
+            const y = 84 - Math.max(0, Math.min(1, value / maximum)) * 78;
+            return `${x.toFixed(1)},${y.toFixed(1)}`;
+        }).filter(Boolean).join(" ");
+        byId(id).setAttribute("points", points);
+    }
+
+    function renderHostResources(host, generated, keepSample = true) {
+        const memory = host.memory || {};
+        const swap = host.swap || {};
+        const disk = host.root_filesystem || {};
+        const network = host.network || {};
+        const memoryPercent = memory.total_bytes ? memory.used_bytes / memory.total_bytes * 100 : null;
+        const swapPercent = swap.total_bytes ? swap.used_bytes / swap.total_bytes * 100 : null;
+        const diskPercent = disk.total_bytes ? Math.round(disk.used_bytes / disk.total_bytes * 100) : 0;
+        const cpuPercent = Number.isFinite(Number(host.cpu_percent)) && host.cpu_percent !== null
+            ? Number(host.cpu_percent)
+            : null;
+        const receiveRate = Number.isFinite(Number(network.receive_bytes_per_second)) && network.receive_bytes_per_second !== null
+            ? Number(network.receive_bytes_per_second)
+            : null;
+        const transmitRate = Number.isFinite(Number(network.transmit_bytes_per_second)) && network.transmit_bytes_per_second !== null
+            ? Number(network.transmit_bytes_per_second)
+            : null;
+        const networkRate = receiveRate === null || transmitRate === null ? null : receiveRate + transmitRate;
+
+        byId("host-uptime").textContent = formatDuration(host.uptime_seconds);
+        byId("host-load").textContent = (host.load_average || []).map((value) => Number(value).toFixed(2)).join(" / ") || "-";
+        byId("host-memory").textContent = memoryPercent === null ? "-" : `${Math.round(memoryPercent)}%`;
+        byId("host-memory").title = memory.total_bytes ? `${formatBytes(memory.used_bytes)} of ${formatBytes(memory.total_bytes)}` : "";
+        byId("host-disk").textContent = disk.total_bytes ? `${diskPercent}%` : "-";
+        byId("host-disk").title = disk.total_bytes ? `${formatBytes(disk.used_bytes)} of ${formatBytes(disk.total_bytes)}` : "";
+        byId("host-temperature").textContent = Number.isFinite(Number(host.temperature_c)) && host.temperature_c !== null
+            ? `${Number(host.temperature_c).toFixed(1)} C`
+            : "Unavailable";
+
+        byId("resource-cpu").textContent = cpuPercent === null ? "Sampling" : `${cpuPercent.toFixed(1)}%`;
+        byId("resource-memory").textContent = memoryPercent === null ? "-" : `${memoryPercent.toFixed(1)}%`;
+        byId("resource-memory-detail").textContent = memory.total_bytes
+            ? `${formatBytes(memory.used_bytes)} of ${formatBytes(memory.total_bytes)}`
+            : "Used physical memory";
+        byId("resource-network").textContent = formatRate(networkRate);
+        byId("resource-swap").textContent = swap.total_bytes
+            ? `${swapPercent.toFixed(1)}% - ${formatBytes(swap.used_bytes)}`
+            : "Disabled";
+        byId("resource-receive").textContent = formatRate(receiveRate);
+        byId("resource-transmit").textContent = formatRate(transmitRate);
+        byId("resource-monitor-updated").textContent = generated
+            ? `Sampled ${new Date(generated * 1000).toLocaleTimeString()}`
+            : "Sampling";
+
+        if (keepSample) {
+            state.host.resourceSamples.push({
+                timestamp: Number(generated) || Date.now() / 1000,
+                cpu: cpuPercent,
+                memory: memoryPercent,
+                network: networkRate,
+            });
+            if (state.host.resourceSamples.length > 60) state.host.resourceSamples.shift();
+        }
+        const samples = state.host.resourceSamples;
+        renderResourceChart("resource-cpu-line", samples.map((sample) => sample.cpu), 100);
+        renderResourceChart("resource-memory-line", samples.map((sample) => sample.memory), 100);
+        renderResourceChart("resource-network-line", samples.map((sample) => sample.network));
+        const windowSeconds = samples.length > 1
+            ? Math.max(0, Math.round(samples[samples.length - 1].timestamp - samples[0].timestamp))
+            : 0;
+        const windowLabel = windowSeconds < 60 ? `${windowSeconds}s` : formatDuration(windowSeconds);
+        byId("resource-window").textContent = `${formatNumber(samples.length)} sample${samples.length === 1 ? "" : "s"} / ${windowLabel}`;
+    }
+
+    async function loadHostResources() {
+        if (state.host.monitorLoading || state.view !== "host" || !state.authenticated || document.hidden) return;
+        state.host.monitorLoading = true;
+        try {
+            const snapshot = await api("/api/host/resources", { auth: true });
+            renderHostResources(snapshot.host || {}, snapshot.generated, true);
+        } catch (error) {
+            byId("resource-monitor-updated").textContent = error.message;
+            if (error.status === 403) setAuthenticated(false);
+        } finally {
+            state.host.monitorLoading = false;
+        }
+    }
+
+    function startHostMonitor() {
+        stopHostMonitor();
+        if (state.view !== "host" || !state.authenticated || document.hidden) return;
+        state.host.monitorTimer = window.setInterval(() => void loadHostResources(), 5000);
     }
 
     function hostUnitLabel(unit) {
@@ -490,20 +619,8 @@
     function renderHostStatus(status) {
         state.host.status = status;
         const host = status.host || {};
-        const memory = host.memory || {};
-        const disk = host.root_filesystem || {};
         const repository = status.repository || {};
-        const memoryPercent = memory.total_bytes ? Math.round(memory.used_bytes / memory.total_bytes * 100) : 0;
-        const diskPercent = disk.total_bytes ? Math.round(disk.used_bytes / disk.total_bytes * 100) : 0;
-        byId("host-uptime").textContent = formatDuration(host.uptime_seconds);
-        byId("host-load").textContent = (host.load_average || []).map((value) => Number(value).toFixed(2)).join(" / ") || "-";
-        byId("host-memory").textContent = memory.total_bytes ? `${memoryPercent}%` : "-";
-        byId("host-memory").title = memory.total_bytes ? `${formatBytes(memory.used_bytes)} of ${formatBytes(memory.total_bytes)}` : "";
-        byId("host-disk").textContent = disk.total_bytes ? `${diskPercent}%` : "-";
-        byId("host-disk").title = disk.total_bytes ? `${formatBytes(disk.used_bytes)} of ${formatBytes(disk.total_bytes)}` : "";
-        byId("host-temperature").textContent = Number.isFinite(Number(host.temperature_c)) && host.temperature_c !== null
-            ? `${Number(host.temperature_c).toFixed(1)} C`
-            : "Unavailable";
+        renderHostResources(host, status.generated, true);
         byId("host-revision").textContent = repository.deployed || repository.head || "-";
         byId("host-name").textContent = `${host.hostname || "-"}${host.cpu_count ? ` - ${host.cpu_count} CPUs` : ""}`;
         byId("host-boot-id").textContent = host.boot_id || "-";
@@ -562,6 +679,7 @@
         byId("host-updated").textContent = "Loading";
         try {
             renderHostStatus(await api("/api/host/status", { auth: true }));
+            startHostMonitor();
         } catch (error) {
             byId("host-updated").textContent = error.message;
         }
@@ -1643,6 +1761,14 @@
         mapCanvas.addEventListener("pointercancel", finishDrag);
 
         window.addEventListener("hashchange", () => navigate(location.hash.slice(1), false));
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                stopHostMonitor();
+            } else if (state.view === "host" && state.authenticated) {
+                void loadHostResources();
+                startHostMonitor();
+            }
+        });
         document.addEventListener("keydown", (event) => {
             const tag = event.target?.tagName?.toLowerCase();
             if (tag === "input" || tag === "textarea" || tag === "select" || event.target?.isContentEditable) return;

@@ -286,6 +286,7 @@ GET  /api/events
 WS   /ws/events (token in first JSON message)
 GET  /api/admin/status
 GET  /api/host/status
+GET  /api/host/resources
 GET  /api/players
 GET  /api/player/{name}
 POST /api/wizinfo
@@ -313,6 +314,10 @@ Important distinctions:
   operational journals. It accepts no arbitrary command, unit, or path and is
   not SSH. An authenticated request receives 503 when
   `WEB_ADMIN_HOST_STATUS` is disabled.
+- `/api/host/resources` is the matching lightweight live sample for CPU,
+  memory, swap, aggregate non-loopback network throughput, root disk, load,
+  uptime, and temperature. Host Status polls it every five seconds only while
+  that view is visible and keeps at most 60 samples in the browser.
 - The main Operations page has a bounded, filterable Server Info/WizInfo event
   view. Routine activity is useful context but is not a durable audit log.
 - `/api/reload` reparses area files for the dashboard and rejects a parser swap

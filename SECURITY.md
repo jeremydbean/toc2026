@@ -149,12 +149,15 @@ the public internet: forward only TCP 9000, never TCP 9001.
 
 ### Read-Only Host Telemetry
 
-`GET /api/host/status` is token-protected and disabled unless
-`WEB_ADMIN_HOST_STATUS=1`. It runs only fixed `systemctl`, `journalctl`, and
-read-only local Git queries selected by server code. The API accepts no command,
-unit, file path, journal scope, or repository selector from the browser. Output
-is bounded and limited to resource totals, ToC unit/timer state, recent boot
-ranges, revision metadata, and allowlisted operational journals.
+`GET /api/host/status` and `GET /api/host/resources` are token-protected and
+disabled unless `WEB_ADMIN_HOST_STATUS=1`. The full status route runs only fixed
+`systemctl`, `journalctl`, and read-only local Git queries selected by server
+code. The lightweight resource route reads only fixed `/proc`, thermal, and
+root-filesystem sources; its rolling history exists only in the browser and is
+bounded to 60 samples. Neither API accepts a command, unit, file path, journal
+scope, or repository selector from the browser. Output is bounded and limited
+to resource totals and rates, ToC unit/timer state, recent boot ranges, revision
+metadata, and allowlisted operational journals.
 
 The Raspberry Pi web service remains the unprivileged `toc` account. Its
 supplementary `systemd-journal` membership permits read-only journal access but

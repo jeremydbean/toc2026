@@ -51,7 +51,8 @@ documentation.
   world bosses, rare relics, crafting, unusual deaths, and complete Hyrule
   dungeon, map, compass, shard, and boss tracking.
 - A FastAPI dashboard for world browsing, area health, maps, player inspection,
-  logs, backups, server commands, protected read-only host telemetry, and a
+  logs, backups, server commands, protected read-only host telemetry with live
+  CPU, memory, swap, network, disk, and temperature monitoring, and a
   browser-to-MUD WebSocket bridge.
 - First-class Mudlet support with GA-framed prompts, GMCP vitals and room data,
   an automatically installed interface, and a mapped Mud School tutorial.
@@ -313,7 +314,7 @@ administer. The game itself should still run in Docker or WSL.
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Dashboard bind address in Docker |
 | `WEB_ADMIN_TOKEN` | unset | Shared secret for operational API routes; unset disables them |
 | `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Auto-unlock local browser sessions only while `WEB_ADMIN_BIND` and the page host are loopback |
-| `WEB_ADMIN_HOST_STATUS` | `0` | Enables the protected read-only host service, timer, boot, resource, repository, and bounded journal view |
+| `WEB_ADMIN_HOST_STATUS` | `0` | Enables the protected read-only host service, timer, boot, live resource, repository, and bounded journal view |
 | `TOC_UPDATE_REQUEST_PATH` | unset | Host-managed request file for the protected update action; unset disables it |
 | `TOC_REPOSITORY_ROOT` | repository root | Checkout inspected by host status; never accepts a browser-supplied path |
 | `TOC_DEPLOYED_COMMIT_FILE` | `/var/lib/toc2026/deployed-commit` | Deployment marker read by host status |

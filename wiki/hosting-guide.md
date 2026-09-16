@@ -567,6 +567,7 @@ intentionally available to players.
 | `GET /api/auth/check` | Validate the supplied token |
 | `GET /api/admin/status` | Read runtime, queue-count, backup, save, and activity-file metadata |
 | `GET /api/host/status` | Read opt-in host resources, allowlisted systemd state, boot history, repository state, and bounded operational journals |
+| `GET /api/host/resources` | Read the lightweight live CPU, memory, swap, network, disk, temperature, load, and uptime sample |
 | `GET /api/logs?lines=200` | Tail 1-5,000 log lines |
 | `WS /ws/logs` | Stream logs after first-message authentication |
 | `GET /api/events?limit=200` | Return 1-1,000 Server Info and WizInfo events |
@@ -591,11 +592,14 @@ it to a volatile file watched by systemd. The dashboard can request an update,
 but the root-owned updater performs the backup, Git fast-forward, build,
 validation, restart, and health check.
 
-`GET /api/host/status` is disabled with HTTP 503 unless
-`WEB_ADMIN_HOST_STATUS=1`. It accepts no browser-selected command, unit, file,
-or journal scope. The Pi profile enables it and grants the unprivileged web
-service read-only `systemd-journal` group membership; it does not grant sudo,
-root file access, or arbitrary shell execution.
+`GET /api/host/status` and `GET /api/host/resources` are disabled with HTTP 503
+unless `WEB_ADMIN_HOST_STATUS=1`. Neither accepts a browser-selected command,
+unit, file, or journal scope. The resource endpoint avoids systemd, Git, and
+journal subprocesses so the visible Host Status page can poll it every five
+seconds; the browser holds only the latest 60 samples and writes no history to
+disk. The Pi profile grants the unprivileged web service read-only
+`systemd-journal` group membership for the full snapshot; it does not grant
+sudo, root file access, or arbitrary shell execution.
 
 `POST /api/command` is equivalent to a high-impact administrative console.
 Protect the token as an immortal credential and do not expose the route through

@@ -25,6 +25,9 @@ After unlocking the dashboard, **Host status** provides the same appliance
 overview without a shell: game/web/recovery/update/backup/DDNS/LED service
 state, scheduled timers, recent boot and shutdown ranges, root filesystem use,
 memory/load/temperature, deployed Git state, and a bounded operational journal.
+Its live resource monitor adds rolling CPU, memory, swap, and aggregate network
+throughput samples every five seconds while the view is open; the browser keeps
+at most five minutes and does not persist the history.
 `WEB_ADMIN_HOST_STATUS=1` in the Pi profile enables the route. The web service
 runs as `toc` with read-only `systemd-journal` group membership; it has no sudo
 permission and cannot execute browser-supplied commands or read arbitrary root
@@ -144,7 +147,8 @@ Use the Pi's current IP address if mDNS is unavailable, for example
 `http://192.168.1.235:9001/client`. The protected admin operations require the
 `WEB_ADMIN_TOKEN` stored in the Pi's private `.env`.
 
-In the dashboard, select **Host status** for read-only appliance telemetry.
+In the dashboard, select **Host status** for read-only appliance telemetry and
+the rolling five-minute resource monitor.
 Select **Operations** only when you intend to queue a state-changing game,
 backup, reload, update, broadcast, or shutdown action.
 

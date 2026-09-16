@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
     <title>Times of Chaos Admin</title>
-    <link rel="stylesheet" href="/static/app.css?v=4">
+    <link rel="stylesheet" href="/static/app.css?v=5">
     <script src="/static/command-sequence.js?v=1" defer></script>
-    <script src="/static/app.js?v=6" defer></script>
+    <script src="/static/app.js?v=7" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -291,6 +291,42 @@
                     <article class="metric"><span>Temperature</span><strong id="host-temperature">-</strong></article>
                     <article class="metric"><span>Revision</span><strong class="mono" id="host-revision">-</strong></article>
                 </div>
+
+                <section class="panel host-panel resource-monitor-panel">
+                    <div class="panel-heading"><div><h3>Resource monitor</h3><span class="panel-subtitle">Rolling five-minute browser view; sampled every five seconds</span></div><span class="timestamp" id="resource-monitor-updated">Not sampling</span></div>
+                    <div class="resource-chart-grid">
+                        <article class="resource-chart-card">
+                            <div class="resource-chart-heading"><span>CPU utilization</span><strong id="resource-cpu">Sampling</strong></div>
+                            <svg class="resource-chart" viewBox="0 0 300 90" preserveAspectRatio="none" role="img" aria-label="CPU utilization history">
+                                <line x1="0" y1="45" x2="300" y2="45"></line>
+                                <polyline class="resource-chart-line cpu" id="resource-cpu-line" points=""></polyline>
+                            </svg>
+                            <small>0-100 percent across all cores</small>
+                        </article>
+                        <article class="resource-chart-card">
+                            <div class="resource-chart-heading"><span>Memory utilization</span><strong id="resource-memory">-</strong></div>
+                            <svg class="resource-chart" viewBox="0 0 300 90" preserveAspectRatio="none" role="img" aria-label="Memory utilization history">
+                                <line x1="0" y1="45" x2="300" y2="45"></line>
+                                <polyline class="resource-chart-line memory" id="resource-memory-line" points=""></polyline>
+                            </svg>
+                            <small id="resource-memory-detail">Used physical memory</small>
+                        </article>
+                        <article class="resource-chart-card">
+                            <div class="resource-chart-heading"><span>Network throughput</span><strong id="resource-network">Sampling</strong></div>
+                            <svg class="resource-chart" viewBox="0 0 300 90" preserveAspectRatio="none" role="img" aria-label="Network throughput history">
+                                <line x1="0" y1="45" x2="300" y2="45"></line>
+                                <polyline class="resource-chart-line network" id="resource-network-line" points=""></polyline>
+                            </svg>
+                            <small>Aggregate non-loopback receive and transmit</small>
+                        </article>
+                    </div>
+                    <div class="resource-detail-grid">
+                        <div><span>Swap</span><strong id="resource-swap">-</strong></div>
+                        <div><span>Receive</span><strong id="resource-receive">-</strong></div>
+                        <div><span>Transmit</span><strong id="resource-transmit">-</strong></div>
+                        <div><span>Window</span><strong id="resource-window">0 samples</strong></div>
+                    </div>
+                </section>
 
                 <section class="panel host-summary-panel">
                     <div class="panel-heading"><h3>Appliance</h3><span class="timestamp" id="host-updated">Not refreshed</span></div>
