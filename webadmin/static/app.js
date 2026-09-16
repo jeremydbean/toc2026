@@ -5,7 +5,7 @@
     const MAX_TERMINAL_CHARS = 250000;
     const ISSUE_PAGE_SIZE = 50;
     const VIEW_NAMES = new Set([
-        "overview", "world", "areas", "players", "gear", "console", "logs", "operations",
+        "overview", "world", "areas", "players", "gear", "console", "logs", "host", "operations",
     ]);
     const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -22,6 +22,7 @@
         terminal: { socket: null, connected: false, failed: false, secretInput: false, history: [], historyIndex: 0 },
         logs: { socket: null, shouldReconnect: false, reconnectTimer: null },
         operations: { status: null, backups: [], showAllBackups: false, events: [] },
+        host: { status: null },
         map: { data: null, scale: 1, x: 0, y: 0, dragging: false, startX: 0, startY: 0 },
     };
 
@@ -73,6 +74,18 @@
         if (elapsed < 3600) return relative(Math.floor(elapsed / 60), "minute");
         if (elapsed < 86400) return relative(Math.floor(elapsed / 3600), "hour");
         return relative(Math.floor(elapsed / 86400), "day");
+    }
+
+    function formatDuration(value) {
+        let seconds = Math.max(0, Math.floor(Number(value) || 0));
+        const days = Math.floor(seconds / 86400);
+        seconds %= 86400;
+        const hours = Math.floor(seconds / 3600);
+        seconds %= 3600;
+        const minutes = Math.floor(seconds / 60);
+        if (days) return `${days}d ${hours}h`;
+        if (hours) return `${hours}h ${minutes}m`;
+        return `${minutes}m`;
     }
 
     function stripMudColor(value) {
@@ -188,6 +201,7 @@
             : state.config?.admin_token_configured ? "Locked" : "Disabled";
         byId("players-lock-note").textContent = value ? "Authenticated" : "Admin token required";
         byId("operations-lock-note").textContent = value ? "Authenticated" : "Admin token required";
+        byId("host-lock-note").textContent = value ? "Authenticated - read only" : "Admin token required";
         if (!value) clearProtectedOperations();
     }
 
@@ -292,6 +306,7 @@
         else if (view === "areas") await loadAreasAndHealth();
         else if (view === "players") await loadPlayerNames();
         else if (view === "logs") await connectLogs();
+        else if (view === "host") await loadHostStatus();
         else if (view === "operations") await loadOperations();
     }
 
@@ -330,6 +345,8 @@
                     ? "Check for and deploy updates"
                     : "Host updates are not configured";
             }
+            const hostNavigation = document.querySelector('[data-view="host"]');
+            if (hostNavigation) hostNavigation.hidden = !state.config.host_status_available;
             if (!state.authenticated) {
                 byId("runtime-auth").textContent = state.config.admin_token_configured ? "Locked" : "Disabled";
             }
@@ -407,6 +424,7 @@
 
     function clearProtectedOperations() {
         state.operations = { status: null, backups: [], showAllBackups: false, events: [] };
+        clearProtectedHost();
         renderOverviewOperations(null);
         byId("operations-game").textContent = "Locked";
         byId("operations-queue").textContent = "-";
@@ -421,6 +439,132 @@
         byId("backups-table").querySelector("tbody").replaceChildren(node("tr", {}, [
             node("td", { className: "empty-state", text: "Admin access required.", attrs: { colspan: 3 } }),
         ]));
+    }
+
+    function clearProtectedHost() {
+        state.host.status = null;
+        byId("host-uptime").textContent = "Locked";
+        ["host-load", "host-memory", "host-disk", "host-temperature", "host-revision", "host-name", "host-boot-id", "host-deployment", "host-checkout"].forEach((id) => {
+            byId(id).textContent = "-";
+        });
+        byId("host-updated").textContent = "Admin access required";
+        byId("host-errors").hidden = true;
+        const lockedRows = [
+            ["host-services-table", 6],
+            ["host-timers-table", 4],
+            ["host-boots-table", 3],
+        ];
+        lockedRows.forEach(([tableId, columns]) => {
+            byId(tableId).querySelector("tbody").replaceChildren(node("tr", {}, [
+                node("td", { className: "empty-state", text: "Admin access required.", attrs: { colspan: columns } }),
+            ]));
+        });
+        byId("host-journal-count").textContent = "Locked";
+        byId("host-journal").textContent = "Admin access required.";
+    }
+
+    function hostUnitLabel(unit) {
+        return String(unit || "-")
+            .replace(/^toc2026-/, "")
+            .replace(/\.(service|timer)$/, "")
+            .replaceAll("-", " ");
+    }
+
+    function renderHostJournal() {
+        const entries = state.host.status?.journal || [];
+        const source = byId("host-journal-source").value;
+        const query = byId("host-journal-search").value.trim().toLowerCase();
+        const matching = entries.filter((entry) => {
+            if (source !== "all" && entry.source !== source) return false;
+            return !query || String(entry.message || "").toLowerCase().includes(query);
+        });
+        byId("host-journal-count").textContent = `${formatNumber(matching.length)} record${matching.length === 1 ? "" : "s"}`;
+        byId("host-journal").textContent = matching.length
+            ? matching.map((entry) => {
+                const timestamp = entry.timestamp ? new Date(entry.timestamp * 1000).toLocaleString() : "Unknown time";
+                return `${timestamp}  [${hostUnitLabel(entry.source)}] ${entry.message}`;
+            }).join("\n")
+            : "No operational records match this filter.";
+    }
+
+    function renderHostStatus(status) {
+        state.host.status = status;
+        const host = status.host || {};
+        const memory = host.memory || {};
+        const disk = host.root_filesystem || {};
+        const repository = status.repository || {};
+        const memoryPercent = memory.total_bytes ? Math.round(memory.used_bytes / memory.total_bytes * 100) : 0;
+        const diskPercent = disk.total_bytes ? Math.round(disk.used_bytes / disk.total_bytes * 100) : 0;
+        byId("host-uptime").textContent = formatDuration(host.uptime_seconds);
+        byId("host-load").textContent = (host.load_average || []).map((value) => Number(value).toFixed(2)).join(" / ") || "-";
+        byId("host-memory").textContent = memory.total_bytes ? `${memoryPercent}%` : "-";
+        byId("host-memory").title = memory.total_bytes ? `${formatBytes(memory.used_bytes)} of ${formatBytes(memory.total_bytes)}` : "";
+        byId("host-disk").textContent = disk.total_bytes ? `${diskPercent}%` : "-";
+        byId("host-disk").title = disk.total_bytes ? `${formatBytes(disk.used_bytes)} of ${formatBytes(disk.total_bytes)}` : "";
+        byId("host-temperature").textContent = Number.isFinite(Number(host.temperature_c)) && host.temperature_c !== null
+            ? `${Number(host.temperature_c).toFixed(1)} C`
+            : "Unavailable";
+        byId("host-revision").textContent = repository.deployed || repository.head || "-";
+        byId("host-name").textContent = `${host.hostname || "-"}${host.cpu_count ? ` - ${host.cpu_count} CPUs` : ""}`;
+        byId("host-boot-id").textContent = host.boot_id || "-";
+        byId("host-deployment").textContent = repository.deployed
+            ? `${repository.deployed}${repository.deployed === repository.head ? " (running checkout)" : " (differs from checkout)"}`
+            : "No deployment marker";
+        const divergence = repository.ahead === null || repository.behind === null
+            ? "remote comparison unavailable"
+            : `${formatNumber(repository.ahead)} ahead / ${formatNumber(repository.behind)} behind last fetched origin/main`;
+        byId("host-checkout").textContent = `${formatNumber(repository.tracked_changes)} tracked change${repository.tracked_changes === 1 ? "" : "s"}; ${divergence}`;
+        byId("host-updated").textContent = `Updated ${new Date(status.generated * 1000).toLocaleTimeString()}`;
+
+        const errors = status.errors || [];
+        byId("host-errors").hidden = !errors.length;
+        byId("host-errors").textContent = errors.join(" ");
+
+        const serviceBody = byId("host-services-table").querySelector("tbody");
+        const services = status.services || [];
+        const serviceRows = services.length ? services.map((service) => node("tr", {}, [
+            tableCell(hostUnitLabel(service.unit)),
+            tableCell(`${service.active_state || "unknown"} / ${service.sub_state || "unknown"}`),
+            tableCell(service.result || "-"),
+            tableCell(service.pid || "-", "numeric"),
+            tableCell(service.restarts || 0, "numeric"),
+            tableCell(service.since || "-"),
+        ])) : [node("tr", {}, [node("td", { className: "empty-state", text: "Service status unavailable.", attrs: { colspan: 6 } })])];
+        serviceBody.replaceChildren(...serviceRows);
+
+        const timerBody = byId("host-timers-table").querySelector("tbody");
+        const timers = status.timers || [];
+        const timerRows = timers.length ? timers.map((timer) => node("tr", {}, [
+            tableCell(hostUnitLabel(timer.unit)),
+            tableCell(`${timer.active_state || "unknown"} / ${timer.sub_state || "unknown"}`),
+            tableCell(timer.last_trigger || "-"),
+            tableCell(timer.next_trigger || "-"),
+        ])) : [node("tr", {}, [node("td", { className: "empty-state", text: "Timer status unavailable.", attrs: { colspan: 4 } })])];
+        timerBody.replaceChildren(...timerRows);
+
+        const bootBody = byId("host-boots-table").querySelector("tbody");
+        const boots = status.boots || [];
+        const bootRows = boots.length ? boots.map((boot) => node("tr", {}, [
+            tableCell(boot.index, "numeric"),
+            tableCell(boot.boot_id, "mono"),
+            tableCell(boot.range),
+        ])) : [node("tr", {}, [node("td", { className: "empty-state", text: "Boot history unavailable.", attrs: { colspan: 3 } })])];
+        bootBody.replaceChildren(...bootRows);
+        renderHostJournal();
+    }
+
+    async function loadHostStatus() {
+        if (!state.config?.host_status_available) {
+            byId("host-updated").textContent = "Host telemetry is not enabled on this server";
+            return;
+        }
+        if (!await ensureAuth()) return;
+        byId("host-updated").textContent = "Loading";
+        try {
+            renderHostStatus(await api("/api/host/status", { auth: true }));
+        } catch (error) {
+            byId("host-updated").textContent = error.message;
+        }
     }
 
     function renderOperationalStatus(status) {
@@ -1448,6 +1592,8 @@
         byId("logs-connect").addEventListener("click", () => void connectLogs());
         byId("logs-refresh").addEventListener("click", () => void readLatestLogs());
         byId("logs-clear").addEventListener("click", () => { byId("log-terminal").textContent = ""; });
+        byId("host-journal-source").addEventListener("change", renderHostJournal);
+        byId("host-journal-search").addEventListener("input", renderHostJournal);
         all("[data-operation]").forEach((button) => button.addEventListener("click", () => void runOperation(button.dataset.operation)));
         byId("backups-refresh").addEventListener("click", () => void loadBackups());
         byId("backups-toggle").addEventListener("click", () => {

@@ -33,6 +33,7 @@ It:
 - computes findings through `webadmin/area_health.py`
 - parses player files for browsing
 - reads logs and backup metadata
+- optionally reads bounded, fixed-scope host/systemd telemetry without a shell
 - writes high-impact actions to `area/webadmin.queue`
 - touches a configured host-update request file without running privileged code
 - bridges a browser WebSocket to the local game port
@@ -51,6 +52,7 @@ player/* -------------->+--> dashboard +-- area/webadmin.queue
 log/toc.log ------------>+
 backups/*.tar.gz -------->+
 /run/toc2026/update.request --> systemd updater --> Git/build/restart
+/proc + fixed systemd/Git queries --> protected read-only host status
 ```
 
 Do not mistake a successful dashboard parse for a successful native world boot.
@@ -440,6 +442,9 @@ Development rules:
 - Keep host operations request-based. The web process may touch the configured
   update request path, but must not receive general sudo or execute user-supplied
   shell commands.
+- Keep host telemetry opt-in, authenticated, bounded, and fixed-scope. Never
+  accept a browser-supplied executable, argument, systemd unit, journal selector,
+  repository, or file path.
 - Keep player-list and player-detail routes token-protected.
 - Authenticate protected WebSockets in their first message; never put tokens in
   URLs.

@@ -8,7 +8,9 @@ import json
 import os
 import re
 import secrets
+import shutil
 import socket
+import subprocess
 import threading
 import time
 from collections import deque
@@ -30,6 +32,10 @@ _LOCAL_ADMIN_UNLOCK: bool = (
     os.environ.get("WEB_ADMIN_LOCAL_UNLOCK", "0").strip().lower()
     in {"1", "true", "yes", "on"}
     and _WEB_ADMIN_BIND in {"127.0.0.1", "localhost", "::1"}
+)
+HOST_STATUS_ENABLED: bool = (
+    os.environ.get("WEB_ADMIN_HOST_STATUS", "0").strip().lower()
+    in {"1", "true", "yes", "on"}
 )
 LOCAL_ADMIN_COOKIE = "toc_admin_session"
 LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
@@ -101,6 +107,39 @@ UPDATE_REQUEST_PATH: Optional[Path] = (
     else None
 )
 STATIC_PATH = Path(__file__).resolve().parent / "static"
+REPOSITORY_ROOT = Path(
+    os.getenv("TOC_REPOSITORY_ROOT", str(Path(__file__).resolve().parents[1]))
+).resolve()
+DEPLOYED_COMMIT_FILE = Path(
+    os.getenv("TOC_DEPLOYED_COMMIT_FILE", "/var/lib/toc2026/deployed-commit")
+)
+
+HOST_SERVICE_UNITS = (
+    "toc2026-game.service",
+    "toc2026-web.service",
+    "toc2026-recovery.service",
+    "toc2026-stable.service",
+    "toc2026-update.service",
+    "toc2026-player-backup.service",
+    "toc2026-namecheap-ddns.service",
+    "toc2026-led.service",
+)
+HOST_TIMER_UNITS = (
+    "toc2026-update.timer",
+    "toc2026-player-backup.timer",
+    "toc2026-namecheap-ddns.timer",
+)
+HOST_JOURNAL_UNITS = (
+    "toc2026-game.service",
+    "toc2026-web.service",
+    "toc2026-recovery.service",
+    "toc2026-stable.service",
+    "toc2026-update.service",
+    "toc2026-player-backup.service",
+    "toc2026-namecheap-ddns.service",
+)
+HOST_COMMANDS = {"git", "journalctl", "systemctl"}
+HOST_COMMAND_OUTPUT_LIMIT = 1024 * 1024
 
 MUD_HOST = os.getenv("MUD_HOST", "127.0.0.1")
 MUD_PORT = int(os.getenv("MUD_PORT", 9000))
@@ -779,6 +818,286 @@ def admin_status_snapshot() -> Dict[str, Any]:
     }
 
 
+def safe_host_text(value: Any, limit: int = 1200) -> str:
+    """Return bounded printable text suitable for the host-status response."""
+    text = str(value or "")
+    printable = "".join(
+        character if character in "\t\n" or ord(character) >= 32 else " "
+        for character in text
+    )
+    return printable[:limit]
+
+
+def run_host_command(
+    arguments: tuple[str, ...], timeout: float = 4.0
+) -> Optional[subprocess.CompletedProcess[str]]:
+    """Run one fixed telemetry command without a shell or caller-controlled arguments."""
+    if not arguments or arguments[0] not in HOST_COMMANDS:
+        return None
+    executable = shutil.which(arguments[0])
+    if not executable:
+        return None
+    environment = os.environ.copy()
+    environment.update({"LANG": "C", "LC_ALL": "C"})
+    try:
+        result = subprocess.run(
+            (executable, *arguments[1:]),
+            cwd=REPOSITORY_ROOT if arguments[0] == "git" else None,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            text=True,
+            timeout=timeout,
+            check=False,
+            env=environment,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if len(result.stdout) > HOST_COMMAND_OUTPUT_LIMIT:
+        result.stdout = result.stdout[:HOST_COMMAND_OUTPUT_LIMIT]
+    return result
+
+
+def parse_systemctl_records(output: str) -> Dict[str, Dict[str, str]]:
+    records: Dict[str, Dict[str, str]] = {}
+    for block in re.split(r"\n\s*\n", output.strip()):
+        values: Dict[str, str] = {}
+        for line in block.splitlines():
+            key, separator, value = line.partition("=")
+            if separator and key:
+                values[key] = safe_host_text(value, 500)
+        unit_id = values.get("Id", "")
+        if unit_id:
+            records[unit_id] = values
+    return records
+
+
+def systemd_unit_status(
+    units: tuple[str, ...], timer: bool = False
+) -> Optional[list[Dict[str, Any]]]:
+    properties = (
+        "Id,Description,LoadState,ActiveState,SubState,Result,LastTriggerUSec,NextElapseUSecRealtime"
+        if timer
+        else "Id,Description,LoadState,ActiveState,SubState,Result,MainPID,NRestarts,ActiveEnterTimestamp,ExecMainStatus"
+    )
+    result = run_host_command((
+        "systemctl", "show", *units, "--no-pager", f"--property={properties}",
+    ))
+    if result is None or (result.returncode != 0 and not result.stdout.strip()):
+        return None
+    records = parse_systemctl_records(result.stdout)
+    statuses: list[Dict[str, Any]] = []
+    for unit in units:
+        values = records.get(unit, {})
+        status: Dict[str, Any] = {
+            "unit": unit,
+            "description": values.get("Description", ""),
+            "load_state": values.get("LoadState", "not-found"),
+            "active_state": values.get("ActiveState", "unknown"),
+            "sub_state": values.get("SubState", "unknown"),
+            "result": values.get("Result", ""),
+        }
+        if timer:
+            status.update({
+                "last_trigger": values.get("LastTriggerUSec", ""),
+                "next_trigger": values.get("NextElapseUSecRealtime", ""),
+            })
+        else:
+            status.update({
+                "pid": int(values.get("MainPID", "0")) if values.get("MainPID", "0").isdigit() else 0,
+                "restarts": int(values.get("NRestarts", "0")) if values.get("NRestarts", "0").isdigit() else 0,
+                "since": values.get("ActiveEnterTimestamp", ""),
+                "exit_status": values.get("ExecMainStatus", ""),
+            })
+        statuses.append(status)
+    return statuses
+
+
+def parse_journal_output(output: str, default_source: str = "") -> list[Dict[str, Any]]:
+    entries: list[Dict[str, Any]] = []
+    for line in output.splitlines():
+        try:
+            record = json.loads(line)
+        except (TypeError, ValueError):
+            continue
+        if not isinstance(record, dict):
+            continue
+        message = record.get("MESSAGE", "")
+        if isinstance(message, list):
+            message = " ".join(str(part) for part in message)
+        timestamp_text = str(record.get("__REALTIME_TIMESTAMP", ""))
+        timestamp = int(timestamp_text) / 1_000_000 if timestamp_text.isdigit() else 0
+        source = record.get("_SYSTEMD_UNIT") or record.get("SYSLOG_IDENTIFIER") or default_source
+        entries.append({
+            "timestamp": timestamp,
+            "source": safe_host_text(source, 100),
+            "priority": safe_host_text(record.get("PRIORITY", ""), 10),
+            "message": safe_host_text(message),
+            "boot_id": safe_host_text(record.get("_BOOT_ID", ""), 40)[:12],
+        })
+    return entries
+
+
+def host_journal_status() -> Optional[list[Dict[str, Any]]]:
+    arguments = [
+        "journalctl", "--output=json", "--no-pager", "--lines=160", "--since=-7 days",
+    ]
+    for unit in HOST_JOURNAL_UNITS:
+        arguments.extend(("--unit", unit))
+    result = run_host_command(tuple(arguments), timeout=6.0)
+    if result is None or result.returncode != 0:
+        return None
+    entries = parse_journal_output(result.stdout)
+
+    shutdowns = run_host_command((
+        "journalctl", "--identifier=systemd-shutdown", "--output=json", "--no-pager",
+        "--lines=20", "--since=-30 days",
+    ))
+    if shutdowns is not None and shutdowns.returncode == 0:
+        entries.extend(parse_journal_output(shutdowns.stdout, "systemd-shutdown"))
+    entries.sort(key=lambda item: item["timestamp"])
+    return entries[-180:]
+
+
+def boot_history_status() -> Optional[list[Dict[str, str]]]:
+    result = run_host_command(("journalctl", "--list-boots", "--no-pager", "--lines=8"))
+    if result is None or result.returncode != 0:
+        return None
+    boots: list[Dict[str, str]] = []
+    for line in result.stdout.splitlines():
+        parts = line.strip().split(None, 2)
+        if len(parts) != 3 or not re.fullmatch(r"-?\d+", parts[0]):
+            continue
+        boots.append({
+            "index": parts[0],
+            "boot_id": safe_host_text(parts[1], 40)[:12],
+            "range": safe_host_text(parts[2], 240),
+        })
+    return boots
+
+
+def repository_status() -> Dict[str, Any]:
+    def git_output(*arguments: str, limit: int = 200) -> str:
+        result = run_host_command(("git", "-C", str(REPOSITORY_ROOT), *arguments))
+        if result is None or result.returncode != 0:
+            return ""
+        return safe_host_text(result.stdout.strip(), limit)
+
+    head = git_output("rev-parse", "--short=12", "HEAD")
+    known_remote = git_output("rev-parse", "--short=12", "origin/main")
+    divergence = git_output("rev-list", "--left-right", "--count", "HEAD...origin/main")
+    dirty = git_output(
+        "status", "--porcelain", "--untracked-files=no",
+        limit=HOST_COMMAND_OUTPUT_LIMIT,
+    )
+    ahead = behind = None
+    divergence_parts = divergence.split()
+    if len(divergence_parts) == 2 and all(part.isdigit() for part in divergence_parts):
+        ahead, behind = (int(part) for part in divergence_parts)
+    deployed = ""
+    try:
+        deployed = safe_host_text(DEPLOYED_COMMIT_FILE.read_text(encoding="ascii").strip(), 40)
+    except (OSError, UnicodeError):
+        pass
+    return {
+        "head": head,
+        "known_origin_main": known_remote,
+        "deployed": deployed[:12],
+        "tracked_changes": len(dirty.splitlines()) if dirty else 0,
+        "ahead": ahead,
+        "behind": behind,
+        "matches_known_origin": bool(head and known_remote and head == known_remote),
+    }
+
+
+def host_resource_status() -> Dict[str, Any]:
+    uptime = 0.0
+    boot_id = ""
+    temperature = None
+    memory: Dict[str, int] = {}
+    try:
+        uptime = float(Path("/proc/uptime").read_text(encoding="ascii").split()[0])
+    except (OSError, ValueError, IndexError):
+        pass
+    try:
+        boot_id = safe_host_text(Path("/proc/sys/kernel/random/boot_id").read_text(encoding="ascii").strip(), 40)[:12]
+    except OSError:
+        pass
+    try:
+        temperature = int(Path("/sys/class/thermal/thermal_zone0/temp").read_text(encoding="ascii").strip()) / 1000
+    except (OSError, ValueError):
+        pass
+    try:
+        for line in Path("/proc/meminfo").read_text(encoding="ascii").splitlines():
+            key, separator, value = line.partition(":")
+            if separator:
+                fields = value.split()
+                if fields and fields[0].isdigit():
+                    memory[key] = int(fields[0]) * 1024
+    except OSError:
+        pass
+    try:
+        disk = shutil.disk_usage("/")
+        root_filesystem = {
+            "total_bytes": disk.total,
+            "used_bytes": disk.used,
+            "free_bytes": disk.free,
+        }
+    except OSError:
+        root_filesystem = {"total_bytes": 0, "used_bytes": 0, "free_bytes": 0}
+    total_memory = memory.get("MemTotal", 0)
+    available_memory = memory.get("MemAvailable", 0)
+    try:
+        load_average = list(os.getloadavg())
+    except OSError:
+        load_average = []
+    return {
+        "hostname": safe_host_text(socket.gethostname(), 255),
+        "boot_id": boot_id,
+        "uptime_seconds": uptime,
+        "cpu_count": os.cpu_count() or 0,
+        "load_average": load_average,
+        "temperature_c": temperature,
+        "memory": {
+            "total_bytes": total_memory,
+            "available_bytes": available_memory,
+            "used_bytes": max(0, total_memory - available_memory),
+        },
+        "root_filesystem": root_filesystem,
+    }
+
+
+def host_status_snapshot() -> Dict[str, Any]:
+    errors: list[str] = []
+    services = systemd_unit_status(HOST_SERVICE_UNITS)
+    timers = systemd_unit_status(HOST_TIMER_UNITS, timer=True)
+    boots = boot_history_status()
+    journal = host_journal_status()
+    if services is None:
+        services = []
+        errors.append("Service status is unavailable.")
+    if timers is None:
+        timers = []
+        errors.append("Timer status is unavailable.")
+    if boots is None:
+        boots = []
+        errors.append("Boot history is unavailable.")
+    if journal is None:
+        journal = []
+        errors.append("Operational journal history is unavailable.")
+    return {
+        "generated": time.time(),
+        "read_only": True,
+        "host": host_resource_status(),
+        "repository": repository_status(),
+        "services": services,
+        "timers": timers,
+        "boots": boots,
+        "journal": journal,
+        "errors": errors,
+    }
+
+
 @app.get("/", response_class=FileResponse, include_in_schema=False)
 async def index() -> FileResponse:
     return FileResponse(STATIC_PATH / "index.html")
@@ -801,6 +1120,13 @@ async def admin_status(_: None = Depends(verify_token)) -> Dict[str, Any]:
     return await asyncio.to_thread(admin_status_snapshot)
 
 
+@app.get("/api/host/status")
+async def host_status(_: None = Depends(verify_token)) -> Dict[str, Any]:
+    if not HOST_STATUS_ENABLED:
+        raise HTTPException(status_code=503, detail="Host status is not enabled")
+    return await asyncio.to_thread(host_status_snapshot)
+
+
 @app.get("/api/config")
 async def get_config(request: Request) -> Dict[str, Any]:
     return {
@@ -814,6 +1140,7 @@ async def get_config(request: Request) -> Dict[str, Any]:
         "log_websocket_auth": "cookie-or-first-message",
         "event_websocket_auth": "cookie-or-first-message",
         "update_available": UPDATE_REQUEST_PATH is not None,
+        "host_status_available": HOST_STATUS_ENABLED,
     }
 
 

@@ -21,6 +21,15 @@ systemctl status toc2026-led.service toc2026-stable.service
 curl http://127.0.0.1:9001/api/health
 ```
 
+After unlocking the dashboard, **Host status** provides the same appliance
+overview without a shell: game/web/recovery/update/backup/DDNS/LED service
+state, scheduled timers, recent boot and shutdown ranges, root filesystem use,
+memory/load/temperature, deployed Git state, and a bounded operational journal.
+`WEB_ADMIN_HOST_STATUS=1` in the Pi profile enables the route. The web service
+runs as `toc` with read-only `systemd-journal` group membership; it has no sudo
+permission and cannot execute browser-supplied commands or read arbitrary root
+paths.
+
 ## Logs
 
 ```bash
@@ -134,6 +143,10 @@ On the same LAN, open:
 Use the Pi's current IP address if mDNS is unavailable, for example
 `http://192.168.1.235:9001/client`. The protected admin operations require the
 `WEB_ADMIN_TOKEN` stored in the Pi's private `.env`.
+
+In the dashboard, select **Host status** for read-only appliance telemetry.
+Select **Operations** only when you intend to queue a state-changing game,
+backup, reload, update, broadcast, or shutdown action.
 
 Do not omit `:9001`: `http://192.168.1.235` uses port 80, where the appliance
 does not run a web server.

@@ -66,7 +66,12 @@ End
 
 class WebAdminApiTests(unittest.TestCase):
     @contextmanager
-    def webadmin_client(self, local_unlock: bool = False, web_bind: str = "127.0.0.1"):
+    def webadmin_client(
+        self,
+        local_unlock: bool = False,
+        web_bind: str = "127.0.0.1",
+        host_status: bool = False,
+    ):
         if TestClient is None:
             self.skipTest(TESTCLIENT_UNAVAILABLE_REASON)
 
@@ -102,6 +107,7 @@ class WebAdminApiTests(unittest.TestCase):
                 "MUD_PORT": "65534",
                 "WEB_ADMIN_BIND": web_bind,
                 "WEB_ADMIN_LOCAL_UNLOCK": "1" if local_unlock else "0",
+                "WEB_ADMIN_HOST_STATUS": "1" if host_status else "0",
                 "TOC_UPDATE_REQUEST_PATH": "",
             }
             with patch.dict(os.environ, env, clear=False):
@@ -137,6 +143,8 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertIn('type: "auth", token: state.token', script.text)
             self.assertIn('/api/auth/local', script.text)
             self.assertIn('data-operation="update"', page.text)
+            self.assertIn('data-view="host"', page.text)
+            self.assertIn("Read-only appliance telemetry", page.text)
             self.assertIn("TocCommandSequence.parse(command)", script.text)
             self.assertIn("const MAX_COMMANDS = 50", command_sequence.text)
             self.assertIn('next === ";"', command_sequence.text)
@@ -187,6 +195,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(config.json()["log_websocket_auth"], "cookie-or-first-message")
             self.assertEqual(config.json()["event_websocket_auth"], "cookie-or-first-message")
             self.assertFalse(config.json()["update_available"])
+            self.assertFalse(config.json()["host_status_available"])
 
             health = client.get("/api/health")
             self.assertEqual(health.status_code, 200)
@@ -272,6 +281,7 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(client.get("/api/auth/check").status_code, 403)
             self.assertEqual(client.get("/api/events").status_code, 403)
             self.assertEqual(client.get("/api/admin/status").status_code, 403)
+            self.assertEqual(client.get("/api/host/status").status_code, 403)
 
             headers = {"X-Admin-Token": "secret"}
             auth = client.get("/api/auth/check", headers=headers)
@@ -355,6 +365,58 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertEqual(status["players"]["recent"][0]["name"], "MiXeD")
             self.assertTrue(status["activity"]["log"]["exists"])
             self.assertTrue(status["activity"]["events"]["exists"])
+
+    def test_host_status_is_opt_in_authenticated_and_read_only(self) -> None:
+        headers = {"X-Admin-Token": "secret"}
+        with self.webadmin_client() as (_, client, _):
+            self.assertEqual(client.get("/api/host/status", headers=headers).status_code, 503)
+
+        payload = {
+            "generated": 1788000000,
+            "read_only": True,
+            "host": {
+                "hostname": "toc",
+                "boot_id": "123456789abc",
+                "uptime_seconds": 3600,
+                "cpu_count": 4,
+                "load_average": [0.1, 0.2, 0.3],
+                "temperature_c": 40.5,
+                "memory": {"total_bytes": 1024, "available_bytes": 512, "used_bytes": 512},
+                "root_filesystem": {"total_bytes": 4096, "used_bytes": 1024, "free_bytes": 3072},
+            },
+            "repository": {
+                "head": "abc123",
+                "known_origin_main": "abc123",
+                "deployed": "abc123",
+                "tracked_changes": 0,
+                "ahead": 0,
+                "behind": 0,
+                "matches_known_origin": True,
+            },
+            "services": [{
+                "unit": "toc2026-game.service", "description": "Times of Chaos",
+                "load_state": "loaded", "active_state": "active", "sub_state": "running",
+                "result": "success", "pid": 123, "restarts": 1,
+                "since": "Tue 2026-09-15 12:00:00 EDT", "exit_status": "0",
+            }],
+            "timers": [],
+            "boots": [{"index": "0", "boot_id": "123456789abc", "range": "Tue 2026-09-15 - Tue 2026-09-15"}],
+            "journal": [{
+                "timestamp": 1788000000, "source": "toc2026-update.service",
+                "priority": "6", "message": "ToC update complete.", "boot_id": "123456789abc",
+            }],
+            "errors": [],
+        }
+        with self.webadmin_client(host_status=True) as (server, client, _):
+            self.assertTrue(client.get("/api/config").json()["host_status_available"])
+            self.assertEqual(client.get("/api/host/status").status_code, 403)
+            self.assertIsNone(server.run_host_command(("sh", "-c", "id")))
+            with patch.object(server, "host_status_snapshot", return_value=payload):
+                response = client.get("/api/host/status", headers=headers)
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue(response.json()["read_only"])
+            self.assertEqual(response.json()["services"][0]["unit"], "toc2026-game.service")
+            self.assertNotIn("command", response.json())
 
     def test_loopback_client_can_open_and_close_a_local_admin_session(self) -> None:
         with self.webadmin_client(local_unlock=True) as (_, client, _):

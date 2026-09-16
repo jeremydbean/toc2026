@@ -147,6 +147,21 @@ Namecheap account password. Rotate it in Namecheap and on the Pi if exposure is
 suspected. Publishing the game hostname does not make the dashboard safe for
 the public internet: forward only TCP 9000, never TCP 9001.
 
+### Read-Only Host Telemetry
+
+`GET /api/host/status` is token-protected and disabled unless
+`WEB_ADMIN_HOST_STATUS=1`. It runs only fixed `systemctl`, `journalctl`, and
+read-only local Git queries selected by server code. The API accepts no command,
+unit, file path, journal scope, or repository selector from the browser. Output
+is bounded and limited to resource totals, ToC unit/timer state, recent boot
+ranges, revision metadata, and allowlisted operational journals.
+
+The Raspberry Pi web service remains the unprivileged `toc` account. Its
+supplementary `systemd-journal` membership permits read-only journal access but
+does not grant sudo, arbitrary root-file access, or a shell. Keep this endpoint
+behind the same private-network boundary as every other protected dashboard
+route; system journals can still reveal operational timing and failure detail.
+
 ### Local Command Queue
 
 The dashboard writes immortal actions to `area/webadmin.queue`, and the game

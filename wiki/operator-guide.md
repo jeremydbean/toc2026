@@ -73,7 +73,9 @@ systemctl list-timers toc2026-player-backup.timer toc2026-update.timer
 The normal state is active game/web services and active timers. The dashboard
 is available on the trusted LAN at `http://toc.local:9001/`; browser play is
 `http://toc.local:9001/client`. Use the Pi's current address when mDNS fails,
-but retain port `9001`.
+but retain port `9001`. After authenticating, **Host status** presents this
+service/timer state plus root-disk use, boot/shutdown history, deployment state,
+and bounded ToC journals without granting shell access.
 
 ## Start, Stop, And Reboot
 
@@ -283,6 +285,7 @@ WS   /ws/logs (token in first JSON message)
 GET  /api/events
 WS   /ws/events (token in first JSON message)
 GET  /api/admin/status
+GET  /api/host/status
 GET  /api/players
 GET  /api/player/{name}
 POST /api/wizinfo
@@ -304,6 +307,12 @@ Important distinctions:
 - The operational snapshot also reports game reachability, latest backup age,
   recent player-save timestamps, and log/event file activity. Use it to notice
   stale protection or a stuck queue, then verify with the underlying service.
+- `/api/host/status` is an opt-in, read-only snapshot. On the Pi it covers a
+  fixed list of ToC services/timers, root filesystem capacity, memory/load/
+  temperature, recent journal boots, deployed Git metadata, and bounded ToC
+  operational journals. It accepts no arbitrary command, unit, or path and is
+  not SSH. An authenticated request receives 503 when
+  `WEB_ADMIN_HOST_STATUS` is disabled.
 - The main Operations page has a bounded, filterable Server Info/WizInfo event
   view. Routine activity is useful context but is not a durable audit log.
 - `/api/reload` reparses area files for the dashboard and rejects a parser swap

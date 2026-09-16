@@ -248,7 +248,10 @@ consistent.
 | `WEB_ADMIN_HOST` | `0.0.0.0` | Docker entrypoint | Dashboard bind address |
 | `WEB_ADMIN_TOKEN` | unset | Dashboard | Shared secret; protected routes return 503 when unset |
 | `WEB_ADMIN_LOCAL_UNLOCK` | `1` in generated `.env` | Dashboard | Issues a local browser session only when the configured bind and page host are loopback |
+| `WEB_ADMIN_HOST_STATUS` | `0` | Dashboard | Enables authenticated, read-only host resources, fixed-unit systemd status, boot history, repository metadata, and bounded operational journals |
 | `TOC_UPDATE_REQUEST_PATH` | unset | Dashboard | Volatile host request file used by a configured systemd updater; unset disables `POST /api/update` |
+| `TOC_REPOSITORY_ROOT` | repository root | Dashboard | Fixed checkout inspected by host status; not controllable through the API |
+| `TOC_DEPLOYED_COMMIT_FILE` | `/var/lib/toc2026/deployed-commit` | Dashboard | Fixed deployment marker read by host status |
 | `WEB_ALLOWED_ORIGINS` | unset | Dashboard | Additional comma-separated origins allowed to open browser WebSockets |
 | `TOC_UID` | host user/`1000` | Docker entrypoint | Runtime UID for writable bind mounts |
 | `TOC_GID` | host group/`1000` | Docker entrypoint | Runtime GID for writable bind mounts |
@@ -563,6 +566,7 @@ intentionally available to players.
 |---|---|
 | `GET /api/auth/check` | Validate the supplied token |
 | `GET /api/admin/status` | Read runtime, queue-count, backup, save, and activity-file metadata |
+| `GET /api/host/status` | Read opt-in host resources, allowlisted systemd state, boot history, repository state, and bounded operational journals |
 | `GET /api/logs?lines=200` | Tail 1-5,000 log lines |
 | `WS /ws/logs` | Stream logs after first-message authentication |
 | `GET /api/events?limit=200` | Return 1-1,000 Server Info and WizInfo events |
@@ -586,6 +590,12 @@ World changes require the appropriate game reboot/restart procedure.
 it to a volatile file watched by systemd. The dashboard can request an update,
 but the root-owned updater performs the backup, Git fast-forward, build,
 validation, restart, and health check.
+
+`GET /api/host/status` is disabled with HTTP 503 unless
+`WEB_ADMIN_HOST_STATUS=1`. It accepts no browser-selected command, unit, file,
+or journal scope. The Pi profile enables it and grants the unprivileged web
+service read-only `systemd-journal` group membership; it does not grant sudo,
+root file access, or arbitrary shell execution.
 
 `POST /api/command` is equivalent to a high-impact administrative console.
 Protect the token as an immortal credential and do not expose the route through
@@ -732,6 +742,12 @@ placeholder with a random value, and set mode `0600` before installation. The
 installer does not replace `.env`. The checked-in units cap game, dashboard,
 backup, and update memory; compile updates use `make -j1`; journald is limited
 to 32 MiB and seven days.
+
+The Pi environment also enables the dashboard's read-only **Host status** view.
+It shows the root filesystem's capacity, memory/load/temperature, fixed ToC
+service and timer state, recent boot/shutdown ranges, deployed Git metadata,
+and a bounded journal limited to ToC operational units. The route remains token
+protected and is intentionally not an SSH terminal or filesystem browser.
 
 At boot, systemd starts game and web services, the backup timer, the weekly
 update timer, and the admin-request path watcher. The scheduled check runs on

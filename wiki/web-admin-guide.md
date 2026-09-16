@@ -61,6 +61,8 @@ readable without an admin token. These capabilities require
 - server logs and live log streaming
 - Server Info and WizInfo activity history and live streaming
 - operational status, command-queue depth, backup freshness, and recent saves
+- opt-in read-only host resources, systemd state, boot history, repository
+  state, and bounded operational journals
 - backup archive listing and backup requests
 - dashboard area-data refreshes
 - configured host update requests
@@ -182,6 +184,26 @@ dedicated Server Info and WizInfo stream. It loads a bounded snapshot first,
 then follows new game events and can filter the view by channel. These records
 come directly from the game process rather than relying on terminal-log text.
 
+### Host Status
+
+Host Status is an authenticated, read-only appliance view enabled with
+`WEB_ADMIN_HOST_STATUS=1`. The Raspberry Pi profile enables it; other installs
+leave it off by default. It reports uptime, CPU load, memory, the actual root
+filesystem's use, board temperature when available, the deployed and checked
+out revisions, and tracked-change count.
+
+Fixed allowlists expose only the ToC game, dashboard, recovery, stability,
+update, player-backup, Dynamic DNS, and LED systemd units plus their three
+timers. Recent boot ranges make clean shutdowns and unexpected reboot windows
+visible. The journal pane is bounded, filterable in the browser, and limited to
+those operational units and `systemd-shutdown` records.
+
+This view is not SSH and cannot run a command, select an arbitrary unit, browse
+the filesystem, or read a caller-supplied path. It does not return environment
+files, tokens, SSH material, player files, or general root logs. On systemd
+hosts, the dashboard service needs read-only journal membership; the checked-in
+Pi unit supplies `SupplementaryGroups=systemd-journal`.
+
 ### Operations
 
 Operations contains protected administrative controls:
@@ -255,6 +277,17 @@ backup count/latest metadata, player-save count/recent names and timestamps,
 and log/event file metadata. It does not contain player-file contents, tokens,
 queued command payloads, or log messages.
 
+When explicitly enabled, read the protected host snapshot:
+
+```text
+GET /api/host/status
+```
+
+Authentication is checked before feature availability: an unauthenticated
+request receives `403`, and an authenticated request receives `503` when
+`WEB_ADMIN_HOST_STATUS` is off. The route accepts no command, unit, path, or
+line-count parameters.
+
 The protected WebSockets connect to `/ws/logs` or `/ws/events`, then send this
 within five seconds:
 
@@ -307,8 +340,9 @@ docker compose up -d --force-recreate
 
 For the Pi LAN profile, confirm `WEB_ADMIN_LOCAL_UNLOCK=0`; seeing the token
 dialog is expected. The saved browser token must match the persistent value in
-`/home/toc/toc2026/.env`. A value such as `x` is not a placeholder accepted by
-the server.
+`/home/toc/toc2026/.env`. The server technically accepts any nonempty value,
+including `x`; such a value is a weak shared secret and should be used only on
+the intentionally trusted LAN.
 
 ### Game shows offline
 
@@ -362,5 +396,6 @@ Run all repository validation before publishing:
 
 The focused suite checks self-contained assets, API pagination, player privacy,
 mixed-case save resolution, log authentication, bounded log tailing, protected
-operations metadata, queue-payload privacy, queue validation, and
+operations and host metadata, host opt-in/authentication, queue-payload privacy,
+queue validation, and
 last-known-good parser reload behavior.

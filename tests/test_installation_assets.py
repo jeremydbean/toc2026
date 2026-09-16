@@ -132,9 +132,12 @@ class InstallationAssetsTests(unittest.TestCase):
 
     def test_pi_lan_profile_publishes_the_browser_without_local_unlock(self):
         pi_environment = read("deploy/pi.env.example")
+        web_unit = read("deploy/systemd/toc2026-web.service")
         self.assertIn("WEB_ADMIN_BIND=0.0.0.0", pi_environment)
         self.assertIn("WEB_ADMIN_PORT=9001", pi_environment)
         self.assertIn("WEB_ADMIN_LOCAL_UNLOCK=0", pi_environment)
+        self.assertIn("WEB_ADMIN_HOST_STATUS=1", pi_environment)
+        self.assertIn("SupplementaryGroups=systemd-journal", web_unit)
 
     def test_pi_act_led_tracks_the_game_service(self):
         indicator = read("deploy/toc2026-led")

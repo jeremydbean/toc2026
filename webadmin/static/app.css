@@ -354,6 +354,18 @@ code {
     margin-bottom: 22px;
 }
 
+.host-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.host-metric-grid .metric strong {
+    font-size: clamp(1rem, 1.8vw, 1.45rem);
+    overflow-wrap: anywhere;
+}
+
 .metric {
     min-width: 0;
     padding: 18px;
@@ -403,6 +415,56 @@ code {
     gap: 12px;
     padding: 12px 16px;
     border-bottom: 1px solid var(--border);
+}
+
+.host-summary-panel,
+.host-panel {
+    margin-bottom: 18px;
+}
+
+.host-summary-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 28px;
+}
+
+.host-two-column {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.host-errors {
+    margin: 0;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    color: var(--amber);
+    font-size: 0.82rem;
+}
+
+.host-journal-toolbar {
+    display: grid;
+    grid-template-columns: minmax(190px, 0.4fr) minmax(240px, 1fr);
+    gap: 12px;
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.host-journal-toolbar label {
+    color: var(--muted);
+    font-size: 0.72rem;
+}
+
+.host-journal-toolbar input,
+.host-journal-toolbar select {
+    margin-top: 5px;
+}
+
+.host-journal {
+    height: min(48vh, 520px);
+    min-height: 300px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    color: #b8d3bd;
 }
 
 .status-list {
@@ -1478,6 +1540,15 @@ label textarea {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .host-metric-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .host-two-column {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
     .operator-summary-grid,
     .operation-status-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1592,8 +1663,14 @@ label textarea {
 
     .overview-grid,
     .operation-grid,
-    .filter-grid {
+    .filter-grid,
+    .host-summary-list,
+    .host-journal-toolbar {
         grid-template-columns: 1fr;
+    }
+
+    .host-metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .operator-summary-grid,

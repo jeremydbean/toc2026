@@ -10,6 +10,7 @@ StartLimitBurst=5
 Type=simple
 User=toc
 Group=toc
+SupplementaryGroups=systemd-journal
 WorkingDirectory=/home/toc/toc2026
 EnvironmentFile=/home/toc/toc2026/.env
 Environment=TOC_UPDATE_REQUEST_PATH=/run/toc2026/update.request

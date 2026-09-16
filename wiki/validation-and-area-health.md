@@ -205,6 +205,7 @@ Useful related endpoints:
 | `GET /api/area_health` | No | Area-health summary and issues |
 | `POST /api/reload` | Yes | Reparse dashboard area data |
 | `POST /api/update` | Yes | Request a configured host-managed update job |
+| `GET /api/host/status` | Yes | Read opt-in, fixed-scope host and ToC service telemetry |
 | `GET /api/backups` | Yes | List recent `*.tar.gz` backup archives |
 | `GET /api/logs` | Yes | Tail the configured log file |
 | `WebSocket /ws/logs` | Yes | Stream live logs after a JSON auth message |
