@@ -708,6 +708,8 @@ The reproducible assets are under `deploy/`:
 | `systemd/toc2026-namecheap-ddns.*` | Ten-minute public IPv4 refresh for the Namecheap host record |
 | `toc2026-namecheap-ddns` | Validates and submits the detected public IPv4 without a resident daemon |
 | `namecheap-ddns.env.example` | Non-secret template for the private DDNS configuration |
+| `systemd/toc2026-led.service` | Binds the onboard ACT LED indicator to the game service lifecycle |
+| `toc2026-led` | Selects the slow status blink or turns the indicator off |
 
 Build with one compiler process and use binary Python packages to control peak
 memory:
@@ -765,6 +767,13 @@ DDNS does not configure the router. Public Telnet access separately requires a
 TCP 9000 port-forward to the Pi and a usable public IPv4 address. Do not forward
 the dashboard's TCP 9001 port; use a VPN or an authenticated HTTPS reverse proxy
 if remote browser administration is required.
+
+On Raspberry Pi boards that expose `/sys/class/leds/ACT`, the appliance also
+binds `toc2026-led.service` to `toc2026-game.service`. A 100 ms flash followed
+by 1.9 seconds off means the MUD process is running; the LED goes dark when the
+game stops and returns after systemd restarts it. This deliberately replaces
+the normal `actpwr` LED trigger. Disabling the indicator service and writing
+`actpwr` back to `/sys/class/leds/ACT/trigger` restores the board default.
 
 Removing a desktop environment is optional, but a dedicated headless appliance
 should use `multi-user.target` to reclaim RAM. Never change networking or SSH

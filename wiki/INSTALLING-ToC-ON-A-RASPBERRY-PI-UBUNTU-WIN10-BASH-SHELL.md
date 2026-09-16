@@ -171,6 +171,7 @@ That installer enables and starts:
   updates
 - ten-minute Namecheap Dynamic DNS refreshes when the private DDNS credential
   is installed
+- a slow onboard ACT LED flash while the game service is running
 - the path watcher used by **Operations → Update ToC**
 
 The updater only accepts a fast-forward from `origin/main`, backs up first,

@@ -135,6 +135,22 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("WEB_ADMIN_PORT=9001", pi_environment)
         self.assertIn("WEB_ADMIN_LOCAL_UNLOCK=0", pi_environment)
 
+    def test_pi_act_led_tracks_the_game_service(self):
+        indicator = read("deploy/toc2026-led")
+        service = read("deploy/systemd/toc2026-led.service")
+        installer = read("deploy/install-pi.sh")
+
+        self.assertIn("printf '%s\\n' timer", indicator)
+        self.assertIn("printf '%s\\n' 100", indicator)
+        self.assertIn("printf '%s\\n' 1900", indicator)
+        self.assertIn("printf '%s\\n' none", indicator)
+        self.assertIn("BindsTo=toc2026-game.service", service)
+        self.assertIn("PartOf=toc2026-game.service", service)
+        self.assertIn("After=toc2026-game.service", service)
+        self.assertIn("WantedBy=toc2026-game.service", service)
+        self.assertIn("MemoryMax=8M", service)
+        self.assertIn("systemctl enable --now toc2026-led.service", installer)
+
     def test_pi_namecheap_ddns_is_secret_backed_and_periodic(self):
         updater = read("deploy/toc2026-namecheap-ddns")
         example = read("deploy/namecheap-ddns.env.example")

@@ -17,6 +17,7 @@ ssh toc
 systemctl status toc2026-game toc2026-web
 systemctl status toc2026-player-backup.timer toc2026-update.timer \
   toc2026-namecheap-ddns.timer
+systemctl status toc2026-led.service
 curl http://127.0.0.1:9001/api/health
 ```
 
@@ -38,6 +39,26 @@ sudo systemctl restart toc2026-game toc2026-web
 
 Stopping the game sends `SIGTERM`; the game saves connected players before
 exiting. systemd starts it automatically after crashes and during every boot.
+
+## ACT LED status
+
+On a Raspberry Pi with `/sys/class/leds/ACT`, the onboard green ACT LED gives a
+physical game-status signal. A short flash every two seconds means
+`toc2026-game.service` is running. The LED turns off when the game stops and
+resumes automatically after boot or systemd crash recovery.
+
+```bash
+systemctl status toc2026-led.service
+sudo /usr/local/sbin/toc2026-led status
+```
+
+This replaces the board's normal `actpwr` activity indication. Disable the
+status light and return to the default trigger with:
+
+```bash
+sudo systemctl disable --now toc2026-led.service
+echo actpwr | sudo tee /sys/class/leds/ACT/trigger
+```
 
 ## Deploy an update
 

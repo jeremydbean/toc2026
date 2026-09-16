@@ -1,0 +1,31 @@
+#!/bin/sh
+set -eu
+
+led_path=${TOC_LED_PATH:-/sys/class/leds/ACT}
+
+if [ ! -d "$led_path" ]; then
+    echo "ACT LED is unavailable at $led_path." >&2
+    exit 1
+fi
+
+case "${1:-}" in
+    on)
+        printf '%s\n' timer >"$led_path/trigger"
+        printf '%s\n' 100 >"$led_path/delay_on"
+        printf '%s\n' 1900 >"$led_path/delay_off"
+        ;;
+    off)
+        printf '%s\n' none >"$led_path/trigger"
+        printf '%s\n' 0 >"$led_path/brightness"
+        ;;
+    status)
+        printf 'trigger='
+        cat "$led_path/trigger"
+        printf 'brightness='
+        cat "$led_path/brightness"
+        ;;
+    *)
+        echo "Usage: toc2026-led {on|off|status}" >&2
+        exit 2
+        ;;
+esac

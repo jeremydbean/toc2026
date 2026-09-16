@@ -120,6 +120,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   its domain-specific credential outside Git, and runs without a resident
   daemon.
 
+- Added a low-duty-cycle Raspberry Pi ACT LED status indicator. It flashes
+  briefly every two seconds while the MUD service is running, turns off when
+  the game stops, and follows systemd boot and crash recovery automatically.
+
 - Added first-class Mudlet support: `IAC GA` prompt framing, `Char.Vitals`,
   `Char.Status`, and `Room.Info` GMCP messages, automatic `Client.Map` and
   `Client.GUI` delivery, a 25-room Mud School MMP map, and a self-updating

@@ -28,6 +28,8 @@ install -m 0755 /home/toc/toc2026/deploy/toc2026-update \
     /usr/local/sbin/toc2026-update
 install -m 0755 /home/toc/toc2026/deploy/toc2026-namecheap-ddns \
     /usr/local/sbin/toc2026-namecheap-ddns
+install -m 0755 /home/toc/toc2026/deploy/toc2026-led \
+    /usr/local/sbin/toc2026-led
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-game.service \
     /etc/systemd/system/toc2026-game.service
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-web.service \
@@ -46,6 +48,8 @@ install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-namecheap-ddns.service 
     /etc/systemd/system/toc2026-namecheap-ddns.service
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-namecheap-ddns.timer \
     /etc/systemd/system/toc2026-namecheap-ddns.timer
+install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-led.service \
+    /etc/systemd/system/toc2026-led.service
 install -m 0644 /home/toc/toc2026/deploy/journald/99-toc2026.conf \
     /etc/systemd/journald.conf.d/99-toc2026.conf
 install -m 0644 /home/toc/toc2026/deploy/tmpfiles/toc2026.conf \
@@ -63,6 +67,11 @@ systemctl daemon-reload
 systemctl restart systemd-journald
 systemctl enable --now toc2026-game.service toc2026-web.service \
     toc2026-update.timer toc2026-update.path
+if [ -e /sys/class/leds/ACT/trigger ]; then
+    systemctl enable --now toc2026-led.service
+else
+    echo "ACT LED is unavailable; game status indicator not enabled."
+fi
 
 if [ -s /etc/toc2026/player-backup.env ] \
    && [ -s /etc/toc2026/player-backup-recipient.txt ] \

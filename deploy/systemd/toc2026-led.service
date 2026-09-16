@@ -1,0 +1,32 @@
+[Unit]
+Description=Times of Chaos ACT LED status indicator
+Documentation=https://github.com/jeremydbean/toc2026
+BindsTo=toc2026-game.service
+PartOf=toc2026-game.service
+After=toc2026-game.service
+ConditionPathExists=/sys/class/leds/ACT/trigger
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/toc2026-led on
+ExecStop=-/usr/local/sbin/toc2026-led off
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+RestrictAddressFamilies=AF_UNIX
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=CAP_DAC_OVERRIDE
+MemoryMax=8M
+TasksMax=4
+TimeoutStartSec=10s
+TimeoutStopSec=10s
+
+[Install]
+WantedBy=toc2026-game.service
