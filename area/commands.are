@@ -71,10 +71,10 @@ See also: MUDLET, GMCP, EXITS, SEARCH, WEBCLIENT
 Mudlet is the recommended desktop client for Times of Chaos.  Create a profile
 for toc.jeremybean.com on port 9000.  In Mudlet's profile settings, leave
 "Enable GMCP" and "Allow server to install script packages" enabled.  The
-server will offer the official interface and Mud School map automatically.
+server will offer the official interface and the world atlas automatically.
 
 The interface provides HP, mana, movement, and experience gauges; character
-and room status; and an automatic mapper that expands as you explore.  Package
+and room status; and a mapper covering the whole world as you explore.  Package
 updates are offered automatically when the server advertises a new version.
 
 These are local Mudlet aliases, not game commands:
@@ -98,7 +98,7 @@ GMCP can receive:
   Char.Vitals  - hit points, mana, movement, experience, and level
   Char.Status  - character name, level, race, and class
   Room.Info    - room number, name, area, terrain, and visible exits
-  Client.Map   - location of the official Mud School starter map
+  Client.Map   - location of the official world atlas
   Client.GUI   - version and location of the official Mudlet package
 
 Core.Ping requests are also answered.  Room.Info excludes secret exits and
