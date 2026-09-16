@@ -3,7 +3,6 @@ Description=Install unattended operating-system updates for the ToC appliance
 Documentation=https://github.com/jeremydbean/toc2026
 Wants=network-online.target
 After=network-online.target
-OnFailure=toc2026-mail@maintenance-failure.service
 StartLimitIntervalSec=6h
 StartLimitBurst=3
 

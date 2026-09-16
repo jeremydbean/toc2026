@@ -3,7 +3,6 @@ Description=Keep the Times of Chaos Namecheap DNS record current
 Wants=network-online.target
 After=network-online.target nss-lookup.target
 ConditionPathExists=/etc/toc2026/namecheap-ddns.env
-OnFailure=toc2026-mail@ddns-failure.service
 
 [Service]
 Type=oneshot

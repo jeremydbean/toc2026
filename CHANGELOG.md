@@ -116,11 +116,6 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- Added event-driven Raspberry Pi SMTP notifications for startup status,
-  network identity changes, unexpected service failures, automatic repair, and
-  confirmed recovery. Credentials remain in a root-only host file; reports are
-  bounded, rate-limited, secret-redacted, and exclude gameplay logs.
-
 - Added boot-time local discovery for the Raspberry Pi appliance. Every
   NetworkManager Ethernet and Wi-Fi profile now explicitly sends `toc` as its
   IPv4 and IPv6 DHCP hostname, while Avahi publishes `toc.local` over mDNS.

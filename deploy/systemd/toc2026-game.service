@@ -1,7 +1,7 @@
 [Unit]
 Description=Times of Chaos MUD game server
 Documentation=https://github.com/jeremydbean/toc2026
-OnFailure=toc2026-recovery.service toc2026-mail@game-failure.service
+OnFailure=toc2026-recovery.service
 StartLimitIntervalSec=300
 StartLimitBurst=5
 

@@ -23,6 +23,5 @@ if "$SYSTEMCTL" is-active --quiet toc2026-game.service \
    && printf '%s\n' "$payload" | grep -q '"webadmin":true'; then
     rm -f "$COUNT_FILE" "$LAST_ATTEMPT_FILE" "$LAST_BOOT_FILE" "$PLANNED_REBOOT_FILE"
     "$LED_COMMAND" on || true
-    "$SYSTEMCTL" start --no-block toc2026-mail@recovered.service || true
     echo "The game and dashboard remained healthy for $STABILITY_DELAY seconds; recovery state cleared."
 fi

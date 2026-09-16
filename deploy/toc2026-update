@@ -98,8 +98,7 @@ done
     cd "$TOC_ROOT"
     run_toc .venv/bin/python -m compileall -q webadmin
     run_toc .venv/bin/python -m unittest \
-        tests.test_webadmin_api tests.test_installation_assets \
-        tests.test_mail_notifier
+        tests.test_webadmin_api tests.test_installation_assets
 )
 
 # Refresh root-owned scripts and unit files only after the source, native world,

@@ -2,7 +2,7 @@
 Description=End-to-end health check and local repair for Times of Chaos
 Documentation=https://github.com/jeremydbean/toc2026
 After=toc2026-game.service toc2026-web.service
-OnFailure=toc2026-recovery.service toc2026-mail@healthcheck-failure.service
+OnFailure=toc2026-recovery.service
 
 [Service]
 Type=oneshot

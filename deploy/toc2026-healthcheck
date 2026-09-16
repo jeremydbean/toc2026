@@ -64,7 +64,6 @@ if [ "$count" -lt "$MAX_FAILURES" ]; then
 fi
 
 echo "ToC health probe failed $count consecutive times; attempting service repair."
-"$SYSTEMCTL" start --no-block toc2026-mail@healthcheck-repair.service || true
 "$SYSTEMCTL" reset-failed toc2026-game.service toc2026-web.service || true
 
 if ! "$SYSTEMCTL" is-active --quiet toc2026-game.service \

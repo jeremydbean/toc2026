@@ -1,7 +1,6 @@
 [Unit]
 Description=Escalated recovery for the Times of Chaos MUD
 Documentation=https://github.com/jeremydbean/toc2026
-OnFailure=toc2026-mail@recovery-failure.service
 StartLimitIntervalSec=300
 StartLimitBurst=10
 
