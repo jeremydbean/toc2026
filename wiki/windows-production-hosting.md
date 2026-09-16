@@ -36,12 +36,20 @@ Host-side publication is `deploy/windows-vm/Publish-ToCWeb.ps1`, run elevated:
 it adds the `TOC-NAT` static mapping and the inbound firewall rule, and
 `-Remove` withdraws both. The router forward is separate and manual.
 
-WinNAT applies the static mappings it had when it started. One added later
-reads back `Active : True` and reserves its port, but nothing is translated
-until `net stop winnat; net start winnat`, which also interrupts the game on
-9000. The firewall rule is not what carries either port: the host has no
-listener on 9000 or 9001, and the mapping is the whole path. The script
-verifies the path with a real connection rather than trusting the object.
+Reaching a guest port from outside crosses three gates, and only one of them
+is on this host. The Windows firewall rule is not what carries the traffic:
+the host has no listener on 9000 or 9001, and the NAT static mapping is the
+whole path through it. The third gate is `ufw` inside the guest, which the
+host cannot see and which defaults to deny.
+
+A guest rule scoped to `172.28.90.1` is the trap: the host can then reach
+the port directly, so every check run from the host passes, while traffic
+arriving through NAT carries its original source address and is dropped.
+That is indistinguishable from a broken mapping until you read
+`sudo ufw status verbose` in the VM. Both published ports want
+`ALLOW IN Anywhere`. The publish script verifies the real path with a
+connection rather than trusting the NAT object, and names the guest
+firewall first when that fails.
 
 Mudlet connects directly to port 9000. It does not need access to the dashboard.
 See the [Mudlet guide](../mudlet/README.md) and

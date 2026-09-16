@@ -101,9 +101,10 @@ if (Get-NetFirewallRule -Name $RuleName -ErrorAction SilentlyContinue) {
     Write-Host "Added firewall rule $RuleName for TCP $Port."
 }
 
-# A recorded mapping is not a working one. WinNAT keeps serving the set it had
-# when it started, so a mapping added afterwards reads back Active while
-# nothing is translated. Prove the path rather than trust the object.
+# A recorded mapping is not a working one, so prove the path with real
+# connections. Note that the guest probe below passes even when the public
+# path is blocked: it originates from 172.28.90.1, which the guest firewall
+# treats differently from the translated traffic that arrives through NAT.
 Write-Host ''
 if (-not (Test-Port -Address $VmAddress -TcpPort $Port)) {
     Write-Warning "The VM is not answering on ${VmAddress}:$Port. Check toc-web inside the guest; nothing on this host can help until it does."
@@ -113,15 +114,20 @@ if (-not (Test-Port -Address $VmAddress -TcpPort $Port)) {
 if (Test-Port -Address '127.0.0.1' -TcpPort $Port) {
     Write-Host "Verified: this host forwards TCP $Port into the VM."
 } else {
-    Write-Warning "The mapping is recorded but WinNAT is not forwarding TCP $Port yet."
+    Write-Warning "TCP $Port is mapped but nothing answers through it."
     Write-Host ''
-    Write-Host '  WinNAT only applies static mappings that existed when it started.'
-    Write-Host '  Restart it to pick this one up:'
+    Write-Host '  Check the guest firewall first. A rule that allows the port only'
+    Write-Host '  from 172.28.90.1 lets the host reach it directly while dropping'
+    Write-Host '  everything that arrives through NAT, which looks exactly like a'
+    Write-Host '  broken mapping. Inside the VM:'
+    Write-Host ''
+    Write-Host "      sudo ufw status verbose        # want: $Port/tcp ALLOW IN Anywhere"
+    Write-Host "      sudo ufw allow $Port/tcp"
+    Write-Host ''
+    Write-Host '  Only if the guest already allows it from anywhere is WinNAT worth'
+    Write-Host '  suspecting; restarting it interrupts the game on 9000 too:'
     Write-Host ''
     Write-Host '      net stop winnat; net start winnat'
-    Write-Host ''
-    Write-Host '  That interrupts the game on 9000 as well, briefly, so do it when'
-    Write-Host '  nobody is connected. Then re-run this script to verify.'
     return
 }
 
