@@ -89,6 +89,9 @@ between 2 people.
 color - You can enable color by typing color on, and color default.
 see help color for more information.
 
+Mudlet - The official Mudlet interface adds gauges and an automatic map.
+See help MUDLET and help MAP for setup and mapping details.
+
 Mud School
 ==========
 
@@ -638,7 +641,15 @@ Times of Chaos is hosted at toc.jeremybean.com on port 9000.
 Connect with any MUD client, or via telnet:
   telnet toc.jeremybean.com 9000
 
-See also: HELP, NEWS
+The first-party browser client is served separately on port 9001.  Local
+installations use http://127.0.0.1:9001/client.  The Raspberry Pi appliance
+uses http://toc.local:9001/client on its private LAN.  A public game listener
+on port 9000 does not make the private administration service public; remote
+players should ask the operator for a secure browser-client address.
+
+For the desktop client with automatic mapping, see help MUDLET.
+
+See also: WEBCLIENT, MUDLET, MAP, HELP, NEWS
 ~
 -1 STORY~
 The story of ToC revolves around the diaries of Judicandus Bramsheer,

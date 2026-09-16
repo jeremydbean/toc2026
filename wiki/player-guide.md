@@ -39,6 +39,11 @@ Mudlet, TinTin++, MUSHclient, and CMUD. Configure:
 Raw `telnet <host> 9000` is useful for a connectivity check, but many current
 Windows installations do not enable the Telnet client by default.
 
+Mudlet is the recommended desktop client when you want gauges and automatic
+mapping. Enable GMCP and server-installed packages in the profile; the server
+then supplies the interface and Mud School starter map. In game, use `help
+mudlet`, `help map`, and `help gmcp` for current behavior and limitations.
+
 ## Creating A Character
 
 Follow the login prompts to choose a new name, password, sex, race, and class.
@@ -537,7 +542,9 @@ class, guild, skill, position, room feature, NPC, or held object. `skills`,
 
 Use `look`, `exits`, `where`, `areas`, `scan`, and room descriptions. Backtrack
 one move at a time. Recall is random among eligible rooms and can be disabled,
-so it should not be the only plan. Ask on a suitable help channel when stuck.
+so it should not be the only plan. In Mudlet, the official mapper records rooms
+as you explore, but it intentionally omits undiscovered secrets and may not draw
+special scripted routes. Ask on a suitable help channel when stuck.
 
 ### My Equipment Looks Worse After A Swap
 

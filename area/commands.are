@@ -18,6 +18,7 @@ inventory equipment look compare    where who
 eat drink fill
 list buy sell value
 move climb flip push pull turn burn bomb feed play
+                                     map mudlet web
 
 COMMUNICATION
 gossip leveling music q/a
@@ -41,6 +42,90 @@ Immortal-only commands are documented under WIZHELP and will not appear to
 non-immortals.
 
 See also: COMMANDS, WIZHELP
+~
+
+0 MAP MAPPER AUTOMAP AUTOMAPPER MAPPING~
+Times of Chaos has an automatic client-side map in its official Mudlet
+interface.  There is no MAP game command: the mapper is a window in Mudlet
+that follows your character as you move.
+
+The server supplies a complete Mud School starter map.  Beyond the school,
+each room you visit is added automatically from GMCP Room.Info data.  Revisited
+rooms refresh their name, area, terrain, and visible directional exits.  If a
+visible exit is removed or points somewhere new after a world update, the
+saved map corrects it when that room is visited again.
+
+The mapper records exploration, not omniscience.  Secret exits are not sent
+until the game reveals them.  Portals, ENTER routes, teleports, scripted
+movement, and other non-directional travel may not draw a normal map line.
+Deleted rooms that can no longer be visited may remain in Mudlet's saved map.
+Room descriptions, EXITS, and SEARCH remain authoritative.
+
+The map belongs to your local Mudlet profile, not your character file.  The
+browser client and plain Telnet do not currently show this automatic map.
+
+See also: MUDLET, GMCP, EXITS, SEARCH, WEBCLIENT
+~
+
+0 MUDLET TOCGUI~
+Mudlet is the recommended desktop client for Times of Chaos.  Create a profile
+for toc.jeremybean.com on port 9000.  In Mudlet's profile settings, leave
+"Enable GMCP" and "Allow server to install script packages" enabled.  The
+server will offer the official interface and Mud School map automatically.
+
+The interface provides HP, mana, movement, and experience gauges; character
+and room status; and an automatic mapper that expands as you explore.  Package
+updates are offered automatically when the server advertises a new version.
+
+These are local Mudlet aliases, not game commands:
+  tocgui status  - show the package version and GMCP state
+  tocgui off     - hide the gauges and mapper
+  tocgui on      - restore the interface
+
+Mapping continues while the interface is hidden.  Your explored map is saved
+in the Mudlet profile.  If the interface says GMCP is waiting, enable GMCP and
+server packages, then reconnect.  Manual package files and source are at:
+  github.com/jeremydbean/toc2026/tree/main/mudlet
+
+See also: MAP, GMCP, WEB, WEBCLIENT
+~
+
+0 GMCP~
+GMCP is the out-of-band protocol used by modern MUD clients.  It is not a game
+command and does not add text to normal Telnet output.  A client that enables
+GMCP can receive:
+
+  Char.Vitals  - hit points, mana, movement, experience, and level
+  Char.Status  - character name, level, race, and class
+  Room.Info    - room number, name, area, terrain, and visible exits
+  Client.Map   - location of the official Mud School starter map
+  Client.GUI   - version and location of the official Mudlet package
+
+Core.Ping requests are also answered.  Room.Info excludes secret exits and
+destinations the character cannot see.  Clients that do not negotiate GMCP
+continue to work normally.
+
+See also: MUDLET, MAP, PROMPT
+~
+
+0 WEBCLIENT BROWSERCLIENT BROWSER~
+The first-party browser client provides ANSI color, masked password entry,
+scrollback, command history, reconnect support, aliases, quick actions,
+semicolon command chains, and transcript download.  It connects through the
+same private web service as the administration dashboard.
+
+On a local installation use:
+  http://127.0.0.1:9001/client
+
+On the dedicated Raspberry Pi's private LAN use:
+  http://toc.local:9001/client
+
+The :9001 port is required.  The hosted public game does not expose its admin
+service merely because the game is reachable on port 9000.  Ask the operator
+for a secure browser-client address when playing remotely.  The browser client
+does not currently include Mudlet's automatic mapper.
+
+See also: WEB, MUDLET, MAP, ALIAS
 ~
 
 0 NE NORTHEAST NW NORTHWEST SE SOUTHEAST SW SOUTHWEST~

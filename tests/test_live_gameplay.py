@@ -108,6 +108,21 @@ class LiveGameplayTests(unittest.TestCase):
                         f"`{command}` output lacked {expected!r}: {output[-600:]}",
                     )
 
+    def test_client_and_mapper_help_is_available_in_game(self) -> None:
+        with LiveMud() as mud, mud.connect() as client:
+            create_character(client, "Zipmaphelp", "harnesspw")
+            client.command("scroll 0", settle=0.5)
+
+            for topic, expected in (
+                ("map", "automatic client-side map"),
+                ("mudlet", "tocgui status"),
+                ("gmcp", "Room.Info"),
+                ("webclient", "127.0.0.1:9001/client"),
+            ):
+                with self.subTest(topic=topic):
+                    output = client.command(f"help {topic}", settle=0.5)
+                    self.assertIn(expected.lower(), output.lower())
+
     def test_character_persists_across_a_reconnect(self) -> None:
         with LiveMud() as mud:
             with mud.connect() as client:

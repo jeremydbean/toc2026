@@ -1,4 +1,42 @@
-# Times of Chaos Web Client Guide
+# Times of Chaos Game Client Guide
+
+Times of Chaos supports traditional Telnet clients, a first-party browser
+client, and an official Mudlet interface. Mudlet is the desktop option with an
+automatic exploration map; the browser client prioritizes zero-install play.
+
+## Mudlet And Automatic Mapping
+
+Create a Mudlet profile for the game host on port `9000`. For the public host,
+use `toc.jeremybean.com`; for local development, use `localhost`. Leave
+**Enable GMCP** and **Allow server to install script packages** enabled. The
+server advertises the official interface and Mud School starter map when GMCP
+is negotiated, and a changed package version updates existing installations.
+
+The interface includes HP, mana, movement, and experience gauges, character
+status, room status, and an embedded mapper. `Room.Info` adds rooms as they are
+visited and refreshes the room name, area, terrain, and visible directional
+exits on later visits. If an exit is removed or retargeted by a world update,
+the mapped room is reconciled the next time the client receives its data.
+Same-room data changes are also sent without requiring the character to move.
+
+The map deliberately does not reveal secret exits or rooms the character
+cannot see. Portals, `enter` routes, teleports, and scripted movement may not
+draw normal directional links. Deleted rooms that cannot be revisited may stay
+in the local map. The game text, `exits`, and `search` remain authoritative.
+Map data is saved in the Mudlet profile rather than the character file.
+
+Mudlet provides these local aliases:
+
+```text
+tocgui status
+tocgui off
+tocgui on
+```
+
+They report package/GMCP status, hide the interface, and restore it. Mapping
+continues while the interface is hidden. If the package does not appear,
+confirm both profile options above and reconnect. Manual assets and build
+instructions are in [the Mudlet directory](../mudlet/README.md).
 
 The Times of Chaos web client is a first-party MUD client served by the same
 private web service as the administration dashboard. It works in current
@@ -43,6 +81,8 @@ proxy; the game WebSocket uses the same origin as the page.
 
 Traditional MUD clients can continue connecting directly to the game host and
 port, normally `localhost:9000`.
+
+The browser client does not currently include the Mudlet automatic mapper.
 
 ## Play Workspace
 

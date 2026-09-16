@@ -197,7 +197,8 @@ then connect to `toc.jeremybean.com` port `9000` (or `localhost:9000` for a
 local server). The server automatically supplies the official package and Mud
 School map. The interface includes live health, mana, movement, and experience
 gauges plus an embedded mapper; `Room.Info` continues mapping as the character
-explores beyond the tutorial.
+explores beyond the tutorial. Revisited rooms refresh their names, areas,
+terrain, and visible exits, so removed or retargeted exits do not remain stale.
 
 Inside Mudlet, `tocgui off` hides the interface, `tocgui on` restores it, and
 `tocgui status` reports its version and GMCP state. Package sources, manual

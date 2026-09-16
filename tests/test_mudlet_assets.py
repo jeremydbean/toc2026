@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import importlib.util
 import io
+import re
+import shutil
+import subprocess
 import unittest
 import zipfile
 from pathlib import Path
@@ -18,6 +21,15 @@ SPEC.loader.exec_module(BUILDER)
 
 
 class MudletAssetTests(unittest.TestCase):
+    @staticmethod
+    def package_script() -> str:
+        root = ElementTree.fromstring(
+            (ROOT / "mudlet" / "package" / "TimesOfChaos.xml").read_bytes()
+        )
+        return "\n".join(
+            node.text or "" for node in root.findall(".//Script/script")
+        )
+
     def test_generated_assets_are_current(self) -> None:
         self.assertEqual(
             (ROOT / "mudlet" / "toc-newbie-map.xml").read_bytes(),
@@ -36,6 +48,62 @@ class MudletAssetTests(unittest.TestCase):
             )
             root = ElementTree.fromstring(archive.read("TimesOfChaos.xml"))
         self.assertEqual(root.tag, "MudletPackage")
+
+    def test_package_versions_match_server_advertisement(self) -> None:
+        sources = (
+            ROOT / "src" / "gmcp.c",
+            ROOT / "mudlet" / "package" / "config.lua",
+            ROOT / "mudlet" / "package" / "TimesOfChaos.xml",
+        )
+        patterns = (
+            r'TOC_MUDLET_PACKAGE_VERSION\s+"([^"]+)"',
+            r'version\s*=\s*"([^"]+)"',
+            r'tocMudlet\.version\s*=\s*"([^"]+)"',
+        )
+        versions = []
+        for source, pattern in zip(sources, patterns):
+            match = re.search(pattern, source.read_text(encoding="utf-8"))
+            self.assertIsNotNone(match, source)
+            versions.append(match.group(1))
+        self.assertEqual(versions, [versions[0]] * len(versions))
+
+    def test_dynamic_mapper_reconciles_changed_exits(self) -> None:
+        script = self.package_script()
+        self.assertIn("getRoomExits", script)
+        self.assertIn("mapped[LONG_DIRECTION[direction]]", script)
+        self.assertIn("pcall(setExit, roomId, -1, direction)", script)
+        self.assertIn("pcall(setExitStub, roomId, direction, false)", script)
+
+    @unittest.skipUnless(shutil.which("lua"), "Lua interpreter is not installed")
+    def test_package_lua_compiles(self) -> None:
+        result = subprocess.run(
+            ["lua", "-e", 'assert(load(io.read("*a")))'],
+            input=self.package_script(),
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_player_help_covers_mapper_and_clients(self) -> None:
+        help_text = (ROOT / "area" / "commands.are").read_text(
+            encoding="latin-1"
+        )
+        for heading in (
+            "0 MAP MAPPER AUTOMAP AUTOMAPPER MAPPING~",
+            "0 MUDLET TOCGUI~",
+            "0 GMCP~",
+            "0 WEBCLIENT BROWSERCLIENT BROWSER~",
+        ):
+            self.assertIn(heading, help_text)
+        for detail in (
+            "tocgui status",
+            "Room.Info",
+            "Secret exits are not sent",
+            "removed or points somewhere new",
+            "browser client and plain Telnet do not currently show",
+        ):
+            self.assertIn(detail, help_text)
 
     def test_starter_map_is_connected_and_has_unique_coordinates(self) -> None:
         root = ElementTree.fromstring(BUILDER.build_map_bytes())

@@ -10,6 +10,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- The official Mudlet mapper now reconciles every standard direction against
+  the latest `Room.Info`: removed exits are deleted, retargeted exits are
+  replaced, and obsolete stubs are cleared when a room is revisited. The game
+  also detects changed room data while a character remains in the same room,
+  and package version 1.0.1 triggers automatic delivery of the fix.
+
 - Fixed password input becoming visible in Telnet and browser clients. The
   modern option parser rejected the client's acknowledgement of the server's
   echo-suppression request, immediately cancelling it; the acknowledgement is
@@ -104,6 +110,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   intended population.
 
 ### Added
+
+- Added in-game `MAP`, `MUDLET`, `GMCP`, and `WEBCLIENT` help covering automatic
+  mapping, package controls, protocol data, browser capabilities, update
+  behavior, persistence, troubleshooting, and intentional mapping limits.
 
 - Added a native, low-memory Raspberry Pi appliance deployment with headless
   systemd boot, game/dashboard crash recovery, graceful SIGTERM player saves,

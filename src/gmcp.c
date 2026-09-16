@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.0.0"
+#define TOC_MUDLET_PACKAGE_VERSION "1.0.1"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -122,6 +122,21 @@ static const char *gmcp_area_name( const char *raw_name )
     return *name != '\0' ? name : "Unknown Area";
 }
 
+static uint32_t gmcp_room_hash( const char *json )
+{
+    const unsigned char *cursor;
+    uint32_t hash;
+
+    hash = UINT32_C(2166136261);
+    for ( cursor = (const unsigned char *)json; *cursor != '\0'; ++cursor )
+    {
+        hash ^= (uint32_t)*cursor;
+        hash *= UINT32_C(16777619);
+    }
+
+    return hash;
+}
+
 static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
 {
     if ( d == NULL )
@@ -131,6 +146,7 @@ static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
     d->gmcp_status_valid = false;
     d->gmcp_last_character = NULL;
     d->gmcp_last_room = -1;
+    d->gmcp_last_room_hash = 0;
 }
 
 static void gmcp_send_initial( DESCRIPTOR_DATA *d )
@@ -292,6 +308,7 @@ void gmcp_send_room( DESCRIPTOR_DATA *d )
     char number[64];
     int direction;
     bool first_exit;
+    uint32_t room_hash;
 
     if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
         return;
@@ -301,8 +318,6 @@ void gmcp_send_room( DESCRIPTOR_DATA *d )
         return;
 
     room = ch->in_room;
-    if ( d->gmcp_last_room == room->vnum )
-        return;
 
     snprintf( json, sizeof(json), "{\"num\":%d,\"name\":", room->vnum );
     gmcp_json_append_quoted( json, sizeof(json), room->name );
@@ -339,7 +354,14 @@ void gmcp_send_room( DESCRIPTOR_DATA *d )
         IS_SET(room->room_flags, ROOM_INDOORS) ? "true" : "false",
         sizeof(json) );
     toc_strlcat( json, "}", sizeof(json) );
+
+    room_hash = gmcp_room_hash( json );
+    if ( d->gmcp_last_room == room->vnum
+      && d->gmcp_last_room_hash == room_hash )
+        return;
+
     telnet_send_gmcp( d, "Room.Info", json );
 
     d->gmcp_last_room = room->vnum;
+    d->gmcp_last_room_hash = room_hash;
 }

@@ -33,7 +33,7 @@ end
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.0"
+tocMudlet.version = "1.0.1"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -58,6 +58,12 @@ local DIR_OFFSET = {
   u  = { 0,  0,  1}, d  = { 0,  0, -1},
   ne = { 1,  1,  0}, nw = {-1,  1,  0},
   se = { 1, -1,  0}, sw = {-1, -1,  0},
+}
+
+local LONG_DIRECTION = {
+  n = "north", e = "east", s = "south", w = "west",
+  u = "up", d = "down", ne = "northeast", nw = "northwest",
+  se = "southeast", sw = "southwest",
 }
 
 local ENVIRONMENT = {
@@ -164,15 +170,29 @@ end
 
 local function linkKnownExits(roomId, exits)
   if type(exits) ~= "table" or not setExit then return end
-  for direction, target in pairs(exits) do
-    local targetId = tonumber(target)
-    if targetId and DIR_OFFSET[direction] then
-      if roomExistsSafe(targetId) then
+
+  local mapped = {}
+  if getRoomExits then
+    local ok, current = pcall(getRoomExits, roomId)
+    if ok and type(current) == "table" then mapped = current end
+  end
+
+  for direction in pairs(DIR_OFFSET) do
+    local targetId = tonumber(exits[direction])
+    local mappedId = tonumber(mapped[direction]
+      or mapped[LONG_DIRECTION[direction]])
+
+    if not targetId then
+      if mappedId then pcall(setExit, roomId, -1, direction) end
+      if setExitStub then pcall(setExitStub, roomId, direction, false) end
+    elseif roomExistsSafe(targetId) then
+      if mappedId ~= targetId then
         pcall(setExit, roomId, targetId, direction)
-        if setExitStub then pcall(setExitStub, roomId, direction, false) end
-      elseif setExitStub then
-        pcall(setExitStub, roomId, direction, true)
       end
+      if setExitStub then pcall(setExitStub, roomId, direction, false) end
+    else
+      if mappedId then pcall(setExit, roomId, -1, direction) end
+      if setExitStub then pcall(setExitStub, roomId, direction, true) end
     end
   end
 end

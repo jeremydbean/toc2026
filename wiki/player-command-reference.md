@@ -223,6 +223,16 @@ an irreversible action.
 `AUTOLOOT` is off. `AUTOSAC` sacrifices only empty corpses; anything that was
 not selected or could not be carried remains safely in the corpse.
 
+## Client Features
+
+`map`, `mudlet`, `gmcp`, and `webclient` are help topics rather than game
+commands. The official Mudlet package provides gauges and an automatic mapper;
+its local `tocgui status`, `tocgui off`, and `tocgui on` aliases inspect or
+toggle that interface. The first-party browser client provides aliases,
+semicolon command chains, quick actions, reconnect support, and transcript
+download, but does not currently include Mudlet's automatic mapper. See the
+[Game Client Guide](game-client-guide.md) and the corresponding live help.
+
 ## Character And Session Management
 
 | Commands | Use |

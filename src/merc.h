@@ -445,6 +445,7 @@ struct  descriptor_data
     sh_int              gmcp_last_class;
     sh_int              gmcp_last_race;
     int                 gmcp_last_room;
+    uint32_t            gmcp_last_room_hash;
     /*
      * MCCP2 output compression. Held as void * so <zlib.h> does not have to
      * be pulled into merc.h, which every translation unit includes.
