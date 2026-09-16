@@ -4,6 +4,9 @@
 # Shell launchers must remain directly executable on Linux, macOS, and WSL.
 *.sh text eol=lf
 deploy/toc2026-* text eol=lf
+# Same for the Windows-VM units and their extensionless script: a CRLF
+# shebang line is rejected outright by the Linux loader.
+deploy/windows-vm/* text eol=lf
 # Keep reproducible Mudlet assets byte-identical on Windows and POSIX.
 mudlet/*.xml text eol=lf
 mudlet/package/*.xml text eol=lf

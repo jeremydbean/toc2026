@@ -1,0 +1,205 @@
+#!/bin/bash
+# Recover toc-game when systemd has given up on it.
+#
+# systemd's own Restart=always handles an ordinary crash, and WatchdogSec
+# handles a hang. Neither covers the case this script exists for: once
+# StartLimitBurst starts happen inside StartLimitIntervalSec, the unit enters
+# `failed` and systemd stops trying entirely. Without something outside
+# systemd the game then stays down until a human notices.
+#
+# Escalation is deliberately staged, because a failing start is usually
+# transient and rebuilding is not free:
+#
+#   1. clear the failure and start the service again
+#   2. if that keeps failing, fetch origin/main, build and validate it in a
+#      throwaway tree, and only install a binary that actually passed
+#   3. if the freshly built binary also fails, roll the old one back
+#
+# Player data is never touched. Only the compiled binary is ever replaced,
+# and the previous one is always kept.
+set -eu
+
+SERVICE=${TOC_SERVICE:-toc-game.service}
+LIVE_ROOT=${TOC_LIVE_ROOT:-/srv/toc/current}
+BUILD_ROOT=${TOC_BUILD_ROOT:-/srv/toc/build}
+STATE_DIR=${TOC_STATE_DIR:-/var/lib/toc}
+BACKUP_DIR=${TOC_BACKUP_DIR:-/var/backups/toc}
+REPO_URL=${TOC_REPO_URL:-https://github.com/jeremydbean/toc2026}
+REPO_BRANCH=${TOC_REPO_BRANCH:-main}
+MAINTENANCE_MARKER=${TOC_MAINTENANCE_MARKER:-/etc/toc/maintenance}
+
+COUNT_FILE="$STATE_DIR/recovery-failures"
+LAST_REBUILD_FILE="$STATE_DIR/recovery-last-rebuild"
+DEPLOYED_COMMIT_FILE="$STATE_DIR/deployed-commit"
+LOCK_FILE=${TOC_RECOVERY_LOCK:-/run/lock/toc-game-recovery.lock}
+
+GAME_PORT=${TOC_GAME_PORT:-9000}
+START_GRACE=${TOC_START_GRACE_SEC:-20}
+# Plain restarts to try before considering a rebuild.
+MAX_PLAIN_ATTEMPTS=${TOC_MAX_PLAIN_ATTEMPTS:-3}
+# Never rebuild more often than this, so a genuinely broken upstream cannot
+# turn into a build loop that pins the CPU of a 2-vCPU VM.
+REBUILD_COOLDOWN=${TOC_REBUILD_COOLDOWN_SEC:-3600}
+# A build needs room; refuse rather than fill the disk.
+MIN_FREE_MB=${TOC_MIN_FREE_MB:-2048}
+
+log() { echo "toc-game-recovery: $*"; }
+
+now() { date +%s; }
+
+read_number()
+{
+    if [ -r "$1" ]; then
+        value="$(cat "$1" 2>/dev/null || echo 0)"
+        case "$value" in
+            ''|*[!0-9]*) echo 0 ;;
+            *) echo "$value" ;;
+        esac
+    else
+        echo 0
+    fi
+}
+
+# systemd says "active" as soon as the process is up; the game is only really
+# back when it answers on its port.
+game_answers()
+{
+    # bash, not sh: /dev/tcp is a bash feature and dash does not have it.
+    timeout 5 bash -c "exec 3<>/dev/tcp/127.0.0.1/$GAME_PORT" 2>/dev/null
+}
+
+healthy()
+{
+    systemctl is-active --quiet "$SERVICE" && game_answers
+}
+
+install -d -m 0755 "$STATE_DIR"
+
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+    log "another recovery run holds the lock; skipping."
+    exit 0
+fi
+
+# Deliberate downtime is not a failure.
+if [ -e "$MAINTENANCE_MARKER" ]; then
+    log "maintenance marker present; leaving the service alone."
+    exit 0
+fi
+
+if [ -e "$LIVE_ROOT/area/shutdown.txt" ]; then
+    log "in-game shutdown marker present; leaving the service alone."
+    exit 0
+fi
+
+if healthy; then
+    # Clear the history so an unrelated failure months later starts fresh.
+    [ "$(read_number "$COUNT_FILE")" -eq 0 ] || echo 0 > "$COUNT_FILE"
+    exit 0
+fi
+
+failures=$(( $(read_number "$COUNT_FILE") + 1 ))
+echo "$failures" > "$COUNT_FILE"
+log "service is not answering (consecutive recovery attempts: $failures)."
+
+# ---------------------------------------------------------------- stage one
+log "clearing any failed state and starting $SERVICE."
+systemctl reset-failed "$SERVICE" 2>/dev/null || true
+systemctl start "$SERVICE" 2>/dev/null || true
+sleep "$START_GRACE"
+
+if healthy; then
+    log "recovered by restarting; no rebuild needed."
+    echo 0 > "$COUNT_FILE"
+    exit 0
+fi
+
+if [ "$failures" -lt "$MAX_PLAIN_ATTEMPTS" ]; then
+    log "still down; will try a plain restart again before rebuilding."
+    exit 0
+fi
+
+# ---------------------------------------------------------------- stage two
+last_rebuild=$(read_number "$LAST_REBUILD_FILE")
+age=$(( $(now) - last_rebuild ))
+if [ "$last_rebuild" -gt 0 ] && [ "$age" -lt "$REBUILD_COOLDOWN" ]; then
+    log "rebuild attempted ${age}s ago; cooling down for $REBUILD_COOLDOWN s."
+    exit 0
+fi
+
+free_mb=$(df -Pm "$(dirname "$BUILD_ROOT")" | awk 'NR==2 {print $4}')
+if [ "${free_mb:-0}" -lt "$MIN_FREE_MB" ]; then
+    log "only ${free_mb}MB free; refusing to build. Free space and retry."
+    exit 1
+fi
+
+log "restarts are not working; fetching $REPO_BRANCH and rebuilding."
+echo "$(now)" > "$LAST_REBUILD_FILE"
+
+if [ -d "$BUILD_ROOT/.git" ]; then
+    timeout 300 git -C "$BUILD_ROOT" fetch --prune origin "$REPO_BRANCH" \
+        || { log "fetch failed; keeping the current binary."; exit 1; }
+    git -C "$BUILD_ROOT" reset --hard "origin/$REPO_BRANCH" >/dev/null
+    git -C "$BUILD_ROOT" clean -fdx >/dev/null
+else
+    rm -rf "$BUILD_ROOT"
+    timeout 300 git clone --branch "$REPO_BRANCH" "$REPO_URL" "$BUILD_ROOT" \
+        || { log "clone failed; keeping the current binary."; exit 1; }
+fi
+
+new_commit="$(git -C "$BUILD_ROOT" rev-parse --short HEAD)"
+old_commit="$(cat "$DEPLOYED_COMMIT_FILE" 2>/dev/null || echo unknown)"
+log "building $new_commit (currently deployed: $old_commit)."
+
+if ! make -C "$BUILD_ROOT" clean >/dev/null 2>&1; then
+    log "make clean failed; continuing anyway."
+fi
+
+if ! timeout 1800 make -C "$BUILD_ROOT" -j"$(nproc)" >/dev/null 2>&1; then
+    log "build of $new_commit FAILED; keeping the current binary."
+    exit 1
+fi
+
+# Prove the new binary can load the world before it goes anywhere near the
+# live tree. This runs against the build tree's own area files.
+if ! ( cd "$BUILD_ROOT/area" && timeout 300 ../merc --check-area >/dev/null 2>&1 ); then
+    log "$new_commit built but failed --check-area; keeping the current binary."
+    exit 1
+fi
+
+log "$new_commit built and validated; installing."
+rollback="$BACKUP_DIR/merc-rollback-$(date -u +%Y%m%dT%H%M%SZ)"
+install -d -m 0700 "$BACKUP_DIR"
+if [ -f "$LIVE_ROOT/merc" ]; then
+    cp -p "$LIVE_ROOT/merc" "$rollback"
+    log "previous binary saved as $rollback."
+fi
+
+install -o toc -g toc -m 0755 "$BUILD_ROOT/merc" "$LIVE_ROOT/merc"
+systemctl reset-failed "$SERVICE" 2>/dev/null || true
+systemctl start "$SERVICE" 2>/dev/null || true
+sleep "$START_GRACE"
+
+if healthy; then
+    log "recovered on $new_commit."
+    echo "$new_commit" > "$DEPLOYED_COMMIT_FILE"
+    echo 0 > "$COUNT_FILE"
+    exit 0
+fi
+
+# ------------------------------------------------------------- stage three
+log "$new_commit also fails to run; rolling the previous binary back."
+if [ -f "$rollback" ]; then
+    install -o toc -g toc -m 0755 "$rollback" "$LIVE_ROOT/merc"
+    systemctl reset-failed "$SERVICE" 2>/dev/null || true
+    systemctl start "$SERVICE" 2>/dev/null || true
+    sleep "$START_GRACE"
+    if healthy; then
+        log "rolled back to the previous binary and recovered."
+        exit 0
+    fi
+fi
+
+log "the game is down and neither the new nor the previous binary starts."
+log "this needs a human: check journalctl -u $SERVICE."
+exit 1

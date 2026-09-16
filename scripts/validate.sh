@@ -24,6 +24,11 @@ make "WARNFLAGS=$strict_warnings"
 step "C area validation mode"
 (cd area && ../merc --check-area)
 
+step "Game recovery script scenarios"
+# The recovery script only matters in failure paths nobody runs by hand,
+# so they are driven against stubbed systemctl/git/make.
+bash tests/test_game_recovery.sh
+
 step "C list iterator sanitizer test"
 # Guards the deferred-free contract in src/list.c. extract_char() removes the
 # element a FOR_EACH_CHARACTER loop is standing on, so freeing nodes eagerly

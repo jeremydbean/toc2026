@@ -1,0 +1,19 @@
+[Unit]
+Description=Recover the Times of Chaos game server, rebuilding from origin/main if needed
+# Never fight a deliberate maintenance window.
+ConditionPathExists=!/etc/toc/maintenance
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/toc-game-recovery
+# A cold rebuild of ~82k lines on two vCPUs, plus a full world validation,
+# comfortably fits in this. The script imposes its own tighter timeouts on
+# each step.
+TimeoutStartSec=2400
+# Recovery only ever competes with a game that is already down, but keep it
+# off the back of the CPU so a rebuild cannot starve the web service.
+Nice=10
+IOSchedulingClass=idle
+CPUSchedulingPolicy=batch

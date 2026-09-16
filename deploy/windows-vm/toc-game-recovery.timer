@@ -1,0 +1,15 @@
+[Unit]
+Description=Check the Times of Chaos game server every two minutes
+
+[Timer]
+# Give the boot sequence room before the first check, so a slow world load is
+# not mistaken for a failure.
+OnBootSec=3min
+OnUnitActiveSec=2min
+AccuracySec=15s
+# A rebuild can outlast the interval; never stack runs. The script also takes
+# an flock, but not starting a second run is cheaper than having it exit.
+RandomizedDelaySec=10
+
+[Install]
+WantedBy=timers.target
