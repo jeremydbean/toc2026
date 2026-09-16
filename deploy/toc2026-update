@@ -52,6 +52,7 @@ if ! systemctl is-enabled --quiet toc2026-player-backup.timer; then
     echo "Refusing to update because encrypted player backups are not enabled." >&2
     exit 1
 fi
+systemctl reset-failed toc2026-player-backup.service
 systemctl start toc2026-player-backup.service
 
 if [ "$current_commit" != "$remote_commit" ]; then

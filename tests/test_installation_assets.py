@@ -121,6 +121,7 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("make -C \"$TOC_ROOT\" -j1", updater)
         self.assertIn("../merc --check-area", updater)
         self.assertIn("toc2026-player-backup.service", updater)
+        self.assertIn("reset-failed toc2026-player-backup.service", updater)
         self.assertIn("OnCalendar=Sun *-*-* 04:00:00", timer)
         self.assertIn("RandomizedDelaySec=30min", timer)
         self.assertIn("Persistent=true", timer)
