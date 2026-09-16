@@ -140,6 +140,13 @@ in that browser profile's local storage; **Lock**, clearing site data, or token
 rotation removes or invalidates that convenience. Never include the token in a
 URL, screenshot, repository file, issue, or chat transcript.
 
+The Pi's Namecheap Dynamic DNS password is a separate domain-level credential.
+Store it only in `/etc/toc2026/namecheap-ddns.env` with mode `0600`; never place
+it in `.env`, a command-line URL, logs, screenshots, or Git. It is not the
+Namecheap account password. Rotate it in Namecheap and on the Pi if exposure is
+suspected. Publishing the game hostname does not make the dashboard safe for
+the public internet: forward only TCP 9000, never TCP 9001.
+
 ### Local Command Queue
 
 The dashboard writes immortal actions to `area/webadmin.queue`, and the game

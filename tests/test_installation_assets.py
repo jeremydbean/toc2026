@@ -1,5 +1,8 @@
+import os
 import pathlib
 import re
+import subprocess
+import tempfile
 import unittest
 
 
@@ -131,6 +134,64 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("WEB_ADMIN_BIND=0.0.0.0", pi_environment)
         self.assertIn("WEB_ADMIN_PORT=9001", pi_environment)
         self.assertIn("WEB_ADMIN_LOCAL_UNLOCK=0", pi_environment)
+
+    def test_pi_namecheap_ddns_is_secret_backed_and_periodic(self):
+        updater = read("deploy/toc2026-namecheap-ddns")
+        example = read("deploy/namecheap-ddns.env.example")
+        service = read("deploy/systemd/toc2026-namecheap-ddns.service")
+        timer = read("deploy/systemd/toc2026-namecheap-ddns.timer")
+        installer = read("deploy/install-pi.sh")
+
+        self.assertIn("https://dynamicdns.park-your-domain.com", updater)
+        self.assertIn("$endpoint/getip", updater)
+        self.assertIn("<ErrCount>0</ErrCount>", updater)
+        self.assertIn("replace-with-the-domain-dynamic-dns-password", example)
+        self.assertIn("EnvironmentFile=/etc/toc2026/namecheap-ddns.env", service)
+        self.assertIn("DynamicUser=yes", service)
+        self.assertIn("MemoryMax=32M", service)
+        self.assertIn("OnUnitActiveSec=10min", timer)
+        self.assertIn("toc2026-namecheap-ddns.timer", installer)
+
+    def test_pi_namecheap_ddns_validates_a_successful_update(self):
+        updater = ROOT / "deploy/toc2026-namecheap-ddns"
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            temporary = pathlib.Path(temporary_directory)
+            mock_curl = temporary / "curl"
+            mock_curl.write_text(
+                "#!/bin/sh\n"
+                "case \"$1\" in\n"
+                "  -4) printf '203.0.113.42\\n' ;;\n"
+                "  *) printf '<interface-response><IP>203.0.113.42</IP>"
+                "<ErrCount>0</ErrCount></interface-response>\\n' ;;\n"
+                "esac\n",
+                encoding="utf-8",
+            )
+            mock_curl.chmod(0o755)
+            runtime_directory = temporary / "run"
+            state_directory = temporary / "state"
+            environment = os.environ.copy()
+            environment.update(
+                {
+                    "PATH": f"{temporary}:/usr/bin:/bin",
+                    "NAMECHEAP_DDNS_HOST": "toc",
+                    "NAMECHEAP_DDNS_DOMAIN": "example.test",
+                    "NAMECHEAP_DDNS_PASSWORD": "testtoken",
+                    "TOC_DDNS_RUNTIME_DIR": str(runtime_directory),
+                    "TOC_DDNS_STATE_DIR": str(state_directory),
+                }
+            )
+
+            result = subprocess.run(
+                [str(updater)],
+                check=False,
+                capture_output=True,
+                text=True,
+                env=environment,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual((state_directory / "last-ip").read_text(), "203.0.113.42\n")
+            self.assertNotIn("testtoken", result.stdout + result.stderr)
 
     def test_pi_documentation_covers_access_auth_backup_and_updates(self):
         runbook = read("deploy/README.md")

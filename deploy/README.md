@@ -15,7 +15,8 @@ and dashboard available automatically after every boot.
 ```bash
 ssh toc
 systemctl status toc2026-game toc2026-web
-systemctl status toc2026-player-backup.timer toc2026-update.timer
+systemctl status toc2026-player-backup.timer toc2026-update.timer \
+  toc2026-namecheap-ddns.timer
 curl http://127.0.0.1:9001/api/health
 ```
 
@@ -26,6 +27,7 @@ sudo journalctl -u toc2026-game -u toc2026-web -n 200 --no-pager
 sudo journalctl -u toc2026-game -f
 sudo journalctl -u toc2026-player-backup -n 100 --no-pager
 sudo journalctl -u toc2026-update -n 100 --no-pager
+sudo journalctl -u toc2026-namecheap-ddns -n 100 --no-pager
 ```
 
 ## Restart
@@ -102,6 +104,40 @@ ssh -L 9001:127.0.0.1:9001 toc
 
 Then open `http://127.0.0.1:9001/client`. A MUD client can connect directly to
 `toc.local:9000` or the Pi's current LAN address on port 9000.
+
+## Public hostname
+
+`toc2026-namecheap-ddns.timer` refreshes `toc.jeremybean.com` through
+Namecheap shortly after boot and approximately every ten minutes. It asks
+Namecheap for the Pi's public IPv4 address and verifies Namecheap's XML success
+response. The small one-shot service uses a dynamic system user, a 32 MiB memory
+limit, and no resident daemon.
+
+Namecheap must use BasicDNS, PremiumDNS, or FreeDNS; Dynamic DNS must be enabled
+for `jeremybean.com`; and host `toc` must be an **A + Dynamic DNS Record**. Copy
+`deploy/namecheap-ddns.env.example` to the Pi without placing the real password
+in Git:
+
+```bash
+sudo install -m 0600 deploy/namecheap-ddns.env.example \
+  /etc/toc2026/namecheap-ddns.env
+sudoedit /etc/toc2026/namecheap-ddns.env
+sudo systemctl enable --now toc2026-namecheap-ddns.timer
+sudo systemctl start toc2026-namecheap-ddns.service
+```
+
+Use the domain's Dynamic DNS password, not the Namecheap account password.
+Confirm the last result without exposing the credential:
+
+```bash
+sudo systemctl status toc2026-namecheap-ddns.service
+sudo journalctl -u toc2026-namecheap-ddns -n 20 --no-pager
+getent ahostsv4 toc.jeremybean.com
+```
+
+DDNS changes only the public DNS record. Internet players still need router/NAT
+forwarding for TCP 9000 to this Pi and a public IPv4 address not blocked by
+carrier-grade NAT. Never forward the admin/dashboard port 9001.
 
 ## Player backups
 

@@ -705,6 +705,9 @@ The reproducible assets are under `deploy/`:
 | `systemd/toc2026-player-backup.*` | Six-hour encrypted player snapshot timer/service |
 | `systemd/toc2026-update.*` | Weekly update timer and admin-request path/service |
 | `toc2026-update` | Root-owned guarded fetch/build/validate/restart implementation |
+| `systemd/toc2026-namecheap-ddns.*` | Ten-minute public IPv4 refresh for the Namecheap host record |
+| `toc2026-namecheap-ddns` | Validates and submits the detected public IPv4 without a resident daemon |
+| `namecheap-ddns.env.example` | Non-secret template for the private DDNS configuration |
 
 Build with one compiler process and use binary Python packages to control peak
 memory:
@@ -748,6 +751,20 @@ The player-backup timer encrypts `player/` with an age recipient before pushing
 the latest ciphertext to its dedicated Git remote. Keep the private recovery
 key off the Pi, use a write-limited deploy key, and periodically prove restore
 with `age --decrypt ... | tar -tzf -` without printing player contents.
+
+For the public game hostname, enable Namecheap Dynamic DNS on the domain and
+configure `toc` as an **A + Dynamic DNS Record**. Store the domain-specific
+Dynamic DNS password, not the Namecheap account password, in
+`/etc/toc2026/namecheap-ddns.env` with mode `0600`. The lightweight timer checks
+shortly after boot and about every ten minutes. Its transient, sandboxed service
+detects the Pi's public IPv4 through Namecheap and rejects an update unless the
+API returns a successful response and confirms the same address. The secret is
+never committed or printed. See `deploy/README.md` for setup and status commands.
+
+DDNS does not configure the router. Public Telnet access separately requires a
+TCP 9000 port-forward to the Pi and a usable public IPv4 address. Do not forward
+the dashboard's TCP 9001 port; use a VPN or an authenticated HTTPS reverse proxy
+if remote browser administration is required.
 
 Removing a desktop environment is optional, but a dedicated headless appliance
 should use `multi-user.target` to reclaim RAM. Never change networking or SSH

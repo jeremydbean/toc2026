@@ -60,7 +60,8 @@ documentation.
   workflows.
 - A low-memory native Raspberry Pi appliance profile with headless systemd
   startup, crash recovery, encrypted off-host player snapshots, weekly guarded
-  Git updates, and direct private-LAN browser play and administration.
+  Git updates, automatic Namecheap Dynamic DNS, and direct private-LAN browser
+  play and administration.
 
 ## Easy Install
 

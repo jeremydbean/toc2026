@@ -169,6 +169,8 @@ That installer enables and starts:
 - six-hour encrypted off-host player backups
 - weekly Sunday Git checks with a randomized delay and guarded rebuild/restart
   updates
+- ten-minute Namecheap Dynamic DNS refreshes when the private DDNS credential
+  is installed
 - the path watcher used by **Operations → Update ToC**
 
 The updater only accepts a fast-forward from `origin/main`, backs up first,

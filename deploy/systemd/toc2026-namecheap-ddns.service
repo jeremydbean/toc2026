@@ -1,0 +1,33 @@
+[Unit]
+Description=Keep the Times of Chaos Namecheap DNS record current
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+ConditionPathExists=/etc/toc2026/namecheap-ddns.env
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/toc2026/namecheap-ddns.env
+ExecStart=/usr/local/sbin/toc2026-namecheap-ddns
+DynamicUser=yes
+RuntimeDirectory=toc2026-ddns
+StateDirectory=toc2026-ddns
+UMask=0077
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=
+MemoryMax=32M
+TasksMax=16
+TimeoutStartSec=45s

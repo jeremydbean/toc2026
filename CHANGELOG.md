@@ -110,6 +110,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   profile publishes the browser client and dashboard on port 9001 while keeping
   operational routes behind the persistent admin token.
 
+- Added a sandboxed, timer-driven Namecheap Dynamic DNS updater for the Pi
+  appliance. It detects and validates the public IPv4 address, keeps the
+  `toc.jeremybean.com` A record current approximately every ten minutes, stores
+  its domain-specific credential outside Git, and runs without a resident
+  daemon.
+
 - Added first-class Mudlet support: `IAC GA` prompt framing, `Char.Vitals`,
   `Char.Status`, and `Room.Info` GMCP messages, automatic `Client.Map` and
   `Client.GUI` delivery, a 25-room Mud School MMP map, and a self-updating

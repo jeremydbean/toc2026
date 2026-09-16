@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically refresh the Times of Chaos Namecheap DNS record
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=10min
+RandomizedDelaySec=30s
+Unit=toc2026-namecheap-ddns.service
+
+[Install]
+WantedBy=timers.target

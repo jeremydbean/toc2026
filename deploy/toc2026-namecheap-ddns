@@ -1,0 +1,113 @@
+#!/bin/sh
+set -eu
+
+endpoint=https://dynamicdns.park-your-domain.com
+runtime_dir=${TOC_DDNS_RUNTIME_DIR:-/run/toc2026-ddns}
+state_dir=${TOC_DDNS_STATE_DIR:-/var/lib/toc2026-ddns}
+request_config=
+state_temp=
+
+cleanup()
+{
+    if [ -n "$request_config" ]; then
+        rm -f -- "$request_config"
+    fi
+    if [ -n "$state_temp" ]; then
+        rm -f -- "$state_temp"
+    fi
+}
+trap cleanup EXIT HUP INT TERM
+
+: "${NAMECHEAP_DDNS_HOST:?NAMECHEAP_DDNS_HOST is required}"
+: "${NAMECHEAP_DDNS_DOMAIN:?NAMECHEAP_DDNS_DOMAIN is required}"
+: "${NAMECHEAP_DDNS_PASSWORD:?NAMECHEAP_DDNS_PASSWORD is required}"
+
+case "$NAMECHEAP_DDNS_HOST" in
+    *[!A-Za-z0-9._-]*|'')
+        echo "NAMECHEAP_DDNS_HOST contains unsupported characters." >&2
+        exit 1
+        ;;
+esac
+case "$NAMECHEAP_DDNS_DOMAIN" in
+    *[!A-Za-z0-9.-]*|'')
+        echo "NAMECHEAP_DDNS_DOMAIN contains unsupported characters." >&2
+        exit 1
+        ;;
+esac
+case "$NAMECHEAP_DDNS_PASSWORD" in
+    *[!A-Za-z0-9]*|'')
+        echo "NAMECHEAP_DDNS_PASSWORD contains unsupported characters." >&2
+        exit 1
+        ;;
+esac
+
+mkdir -p "$runtime_dir" "$state_dir"
+umask 077
+
+if ! public_ip=$(curl -4 --fail --silent --show-error \
+    --connect-timeout 10 --max-time 20 "$endpoint/getip"); then
+    echo "Could not detect the public IPv4 address from Namecheap." >&2
+    exit 1
+fi
+public_ip=$(printf '%s' "$public_ip" | tr -d '\r\n')
+if ! printf '%s\n' "$public_ip" | awk -F. '
+    NF != 4 { exit 1 }
+    {
+        for (i = 1; i <= 4; i++) {
+            if ($i !~ /^[0-9]+$/ || $i < 0 || $i > 255) {
+                exit 1
+            }
+        }
+    }
+'; then
+    echo "Namecheap returned an invalid public IPv4 address." >&2
+    exit 1
+fi
+
+request_config=$(mktemp "$runtime_dir/request.XXXXXX")
+{
+    printf 'url = "%s/update"\n' "$endpoint"
+    printf 'get\n'
+    printf 'fail\n'
+    printf 'silent\n'
+    printf 'show-error\n'
+    printf 'connect-timeout = 10\n'
+    printf 'max-time = 30\n'
+    printf 'data-urlencode = "host=%s"\n' "$NAMECHEAP_DDNS_HOST"
+    printf 'data-urlencode = "domain=%s"\n' "$NAMECHEAP_DDNS_DOMAIN"
+    printf 'data-urlencode = "password=%s"\n' "$NAMECHEAP_DDNS_PASSWORD"
+    printf 'data-urlencode = "ip=%s"\n' "$public_ip"
+} >"$request_config"
+
+if ! response=$(curl --config "$request_config"); then
+    echo "The Namecheap Dynamic DNS request failed." >&2
+    exit 1
+fi
+rm -f -- "$request_config"
+request_config=
+
+if ! printf '%s\n' "$response" | grep -q '<ErrCount>0</ErrCount>'; then
+    echo "Namecheap rejected the Dynamic DNS update." >&2
+    exit 1
+fi
+response_ip=$(printf '%s\n' "$response" \
+    | sed -n 's:.*<IP>\([^<]*\)</IP>.*:\1:p' \
+    | head -n 1)
+if [ "$response_ip" != "$public_ip" ]; then
+    echo "Namecheap did not confirm the requested public IPv4 address." >&2
+    exit 1
+fi
+
+last_ip=
+if [ -r "$state_dir/last-ip" ]; then
+    last_ip=$(cat "$state_dir/last-ip")
+fi
+state_temp=$(mktemp "$state_dir/last-ip.XXXXXX")
+printf '%s\n' "$public_ip" >"$state_temp"
+mv -f -- "$state_temp" "$state_dir/last-ip"
+state_temp=
+
+if [ "$last_ip" != "$public_ip" ]; then
+    printf 'Updated %s.%s to %s.\n' \
+        "$NAMECHEAP_DDNS_HOST" "$NAMECHEAP_DDNS_DOMAIN" "$public_ip"
+fi

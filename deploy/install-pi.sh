@@ -26,6 +26,8 @@ install -d -m 0755 /etc/toc2026 /etc/systemd/journald.conf.d /var/lib/toc2026
 install -d -m 0755 /usr/local/sbin
 install -m 0755 /home/toc/toc2026/deploy/toc2026-update \
     /usr/local/sbin/toc2026-update
+install -m 0755 /home/toc/toc2026/deploy/toc2026-namecheap-ddns \
+    /usr/local/sbin/toc2026-namecheap-ddns
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-game.service \
     /etc/systemd/system/toc2026-game.service
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-web.service \
@@ -40,6 +42,10 @@ install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-update.timer \
     /etc/systemd/system/toc2026-update.timer
 install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-update.path \
     /etc/systemd/system/toc2026-update.path
+install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-namecheap-ddns.service \
+    /etc/systemd/system/toc2026-namecheap-ddns.service
+install -m 0644 /home/toc/toc2026/deploy/systemd/toc2026-namecheap-ddns.timer \
+    /etc/systemd/system/toc2026-namecheap-ddns.timer
 install -m 0644 /home/toc/toc2026/deploy/journald/99-toc2026.conf \
     /etc/systemd/journald.conf.d/99-toc2026.conf
 install -m 0644 /home/toc/toc2026/deploy/tmpfiles/toc2026.conf \
@@ -64,6 +70,17 @@ if [ -s /etc/toc2026/player-backup.env ] \
     systemctl enable --now toc2026-player-backup.timer
 else
     echo "Player backup credentials are not installed; timer not enabled yet."
+fi
+
+if [ -s /etc/toc2026/namecheap-ddns.env ] \
+   && ! grep -q 'replace-with-' /etc/toc2026/namecheap-ddns.env; then
+    if ! command -v curl >/dev/null 2>&1; then
+        echo "curl is required for Namecheap Dynamic DNS." >&2
+        exit 1
+    fi
+    systemctl enable --now toc2026-namecheap-ddns.timer
+else
+    echo "Namecheap Dynamic DNS credentials are not installed; timer not enabled yet."
 fi
 
 echo "ToC systemd configuration installed."
