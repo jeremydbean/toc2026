@@ -15,6 +15,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/time.h>
+#include <errno.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <stdlib.h>
@@ -191,59 +192,94 @@ void do_topten( CHAR_DATA *ch, char *argument )
   send_to_char("--------------------------------------------------\n\r",ch);
 }
 
+static bool parse_pkill_count(const char *text, long *value)
+{
+   char *endptr;
+   long parsed;
+
+   if (text == NULL || text[0] == '\0' || value == NULL)
+      return false;
+
+   errno = 0;
+   parsed = strtol(text, &endptr, 10);
+   if (errno == ERANGE || *endptr != '\0' || parsed < 0)
+      return false;
+
+   *value = parsed;
+   return true;
+}
+
 void load_pkills(void)
-/* Read in the pkill_file, specified in the variable
- * PKILLFILE
- *
- */
-{  FILE *fp;
+/* Read in the pkill_file, specified in the variable PKILLFILE. */
+{
+   FILE *fp;
    int i;
+   int c;
+   int fields;
    PKILL_LIST_DATA *pLoad;
    PKILL_LIST_DATA *pLast;
-
-   char *word;
-   char buf[1000];
+   char line[1000];
+   char command[3];
+   char name[MAX_INPUT_LENGTH];
+   char received_word[1000];
+   char given_word[1000];
+   char extra[2];
+   long received;
+   long given;
+   bool found_end;
 
    pkill_list = NULL;
    pLast = NULL;
 
    if ( (fp = fopen( PKILLFILE, "r" ) ) == NULL )
       return;
+
    i = 0;
-   for ( ; ; ) 
-   { word = fread_word( fp );
-     if (word[0] == '\0') continue;
-     if (word[0] == '$') break;
-     if (strlen(word) != 2) {
-        log_string("Error in pkillfile length command word <> 2");
-        snprintf(buf, sizeof(buf), "Skipping line with word: %s", word);
-        log_string(buf);
-        fread_to_eol( fp );
-        continue;
-     }
-     if ((UPPER(word[0]) != 'P') || (UPPER(word[1]) != 'K')) {
-        log_string("Error in read_max_load_file: UPPER(word) <> PK");
-        snprintf(buf, sizeof(buf), "Skipping line with word: %s", word);
-        log_string(buf);
-        fread_to_eol( fp );
-        continue;
-     }
-     if (i >= MAX_PKILL_LIST) break;
-     pLoad = alloc_perm(sizeof(*pLoad));
-     if (pLoad == NULL) break;
-     pLoad -> name = str_dup(fread_word( fp ));
-     pLoad -> pkills_received = fread_long( fp );
-     pLoad -> pkills_given    = fread_long( fp );
-     if (pLast == NULL) {
-        pLoad -> next = pkill_list;
-        pkill_list = pLoad;
-        pLast = pLoad;
-     }
-     else {
-        pLast -> next = pLoad;
-        pLoad -> next = NULL;
-        pLast = pLoad;
-     }
-     i++;
+   found_end = false;
+   while (fgets(line, sizeof(line), fp) != NULL)
+   {
+      if (strchr(line, '\n') == NULL && !feof(fp))
+      {
+         while ((c = getc(fp)) != '\n' && c != EOF)
+            ;
+         log_string("Skipping oversized line in pkill file.");
+         continue;
+      }
+
+      fields = sscanf(line, " %2s %255s %999s %999s %1s",
+                      command, name, received_word, given_word, extra);
+      if (fields == 1 && !str_cmp(command, "$"))
+      {
+         found_end = true;
+         break;
+      }
+
+      if (fields != 4 || str_cmp(command, "PK")
+      ||  !parse_pkill_count(received_word, &received)
+      ||  !parse_pkill_count(given_word, &given))
+      {
+         log_string("Skipping malformed line in pkill file.");
+         continue;
+      }
+
+      if (i >= MAX_PKILL_LIST)
+         break;
+
+      pLoad = alloc_perm(sizeof(*pLoad));
+      pLoad->name = str_dup(name);
+      pLoad->pkills_received = received;
+      pLoad->pkills_given = given;
+      pLoad->next = NULL;
+
+      if (pLast == NULL)
+         pkill_list = pLoad;
+      else
+         pLast->next = pLoad;
+      pLast = pLoad;
+      i++;
    }
+
+   if (!found_end && feof(fp))
+      log_string("Pkill file ended without a terminator; valid records were retained.");
+   fclose(fp);
 }

@@ -15,6 +15,7 @@ import re
 import signal
 import socket
 import tempfile
+import time
 import unittest
 from pathlib import Path
 
@@ -163,6 +164,19 @@ class LiveGameplayTests(unittest.TestCase):
             self.assertEqual(mud.proc.wait(timeout=15), 0)
             self.assertTrue(player_file.is_file())
             self.assertIn("saving players and shutting down", mud.server_output())
+
+
+    def test_sigterm_also_saves_link_dead_players(self) -> None:
+        with LiveMud() as mud:
+            with mud.connect() as client:
+                create_character(client, "Ziplinksave", "harnesspw")
+            time.sleep(1.0)
+            player_file = mud.player_dir / "Ziplinksave"
+            player_file.unlink(missing_ok=True)
+            assert mud.proc is not None
+            mud.proc.send_signal(signal.SIGTERM)
+            self.assertEqual(mud.proc.wait(timeout=15), 0)
+            self.assertTrue(player_file.is_file())
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

@@ -15,8 +15,8 @@ objects.
   purpose with important syntax and restrictions
 - [Psionics Guide](psionics.md) - all 17 powers, costs, defenses, travel
   restrictions, and remort granting rules
-- [Achievement System](achievements.md) - 111 accomplishments covering points,
-  levels, bosses, relics, crafting, unusual deaths, and Hyrule completion
+- [Achievement System](achievements.md) - 127 accomplishments covering points,
+  levels, bosses, relics, crafting, economy, unusual deaths, and Hyrule completion
 - [Advanced Gear Comparison](gear-comparison.md) - `compare` focuses,
   percentages, profile inference, modeled stats, and limitations
 - [Hyrule: First Quest](hyrule-area.md) - entry/exit, level bands, overworld,
@@ -24,6 +24,10 @@ objects.
 
 ## Hosts And Staff
 
+- [Windows Production Runbook](windows-production-hosting.md) - the live Hyper-V
+  deployment, private administration, player-state safety, recovery, and backups
+- [Mudlet Listing Handoff](../mudlet/listing-submission.md) - readiness checks,
+  clean-profile verification, and default-game review
 - [Web Admin Guide](web-admin-guide.md) - dashboard authentication, world and
   player inspection, maps, logs, game console, operations, API use, and fixes
 - [Hosting Guide](hosting-guide.md) - Docker/native setup, configuration,

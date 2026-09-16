@@ -11,6 +11,7 @@
 #else
 #include <sys/types.h>
 #endif
+#include <limits.h>
 #include <stdio.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
@@ -2446,6 +2447,18 @@ static bool add_loot_to_corpse( OBJ_DATA *corpse, int object_vnum )
     return true;
 }
 
+static void add_coin_piles_to_corpse( OBJ_DATA *corpse, long amount,
+                                      int coin_type )
+{
+    while ( corpse != NULL && amount > 0 )
+    {
+        int pile = amount > INT_MAX ? INT_MAX : (int)amount;
+
+        obj_to_obj( create_money(pile, coin_type), corpse );
+        amount -= pile;
+    }
+}
+
 void make_corpse( CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
@@ -2461,22 +2474,23 @@ void make_corpse( CHAR_DATA *ch )
 	corpse->timer   = (sh_int)(number_range( 5, 7 ));
 	if ( ch->new_gold > 0 )
 	{
-	    obj_to_obj( create_money( (int)(ch->new_gold), TYPE_GOLD ), corpse );
+	    add_coin_piles_to_corpse( corpse, ch->new_gold, TYPE_GOLD );
 	    ch->new_gold = 0;
 	}
         if ( ch->new_copper > 0 )
         {
-            obj_to_obj( create_money( (int)(ch->new_copper), TYPE_COPPER ), corpse );
+            add_coin_piles_to_corpse( corpse, ch->new_copper, TYPE_COPPER );
             ch->new_copper= 0;
         }
         if ( ch->new_silver > 0 )
         {
-            obj_to_obj( create_money( (int)(ch->new_silver), TYPE_SILVER ), corpse );
+            add_coin_piles_to_corpse( corpse, ch->new_silver, TYPE_SILVER );
             ch->new_silver = 0;
         }
         if ( ch->new_platinum > 0 )
         {
-            obj_to_obj( create_money( (int)(ch->new_platinum), TYPE_PLATINUM ), corpse );
+            add_coin_piles_to_corpse( corpse, ch->new_platinum,
+                                      TYPE_PLATINUM );
             ch->new_platinum = 0;
         }
 	corpse->cost = 0;

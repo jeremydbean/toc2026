@@ -1281,6 +1281,15 @@ bool spec_poison( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
  
  
+static long thief_percentage(long balance, int percent)
+{
+    if (balance <= 0 || percent <= 0)
+        return 0;
+
+    return (balance / 100L) * percent
+         + ((balance % 100L) * percent) / 100L;
+}
+
 bool spec_thief( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
     UNUSED_PARAM(ch);
@@ -1288,6 +1297,10 @@ bool spec_thief( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     CHAR_DATA *victim;
     CHAR_DATA *v_next;
     long gold;
+    long balance;
+    long cap;
+    int coin_type;
+    int percent;
     int type;
  
     if ( cmd != NULL)
@@ -1318,34 +1331,38 @@ bool spec_thief( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    return true;
 	}
 	else
-	{   type = number_range(1,4);
+	{
+            type = number_range(1,4);
             switch(type)
-            { case 1:
-	           gold = (victim->new_gold) * UMIN(number_range( 1, 20 ),mob->level) / 100;
-	           gold = UMIN(gold, mob->level * mob->level * 20 );
-	           mob->new_gold     += gold;
-	           victim->new_gold -= gold;
-	           return true;
+            {
+              case 1:
+                balance = victim->new_gold;
+                coin_type = TYPE_GOLD;
+                break;
               case 2:
-                   gold = (victim->new_platinum) * UMIN(number_range( 1, 20 ),mob->level) / 100;
-                   gold = UMIN(gold, mob->level * mob->level * 20 );
-                   mob->new_platinum     += gold;
-                   victim->new_platinum -= gold;
-                   return true;
+                balance = victim->new_platinum;
+                coin_type = TYPE_PLATINUM;
+                break;
               case 3:
-                  gold = (victim->new_silver) * UMIN(number_range( 1, 20 ),mob->level) / 100;
-                   gold = UMIN(gold, mob->level * mob->level * 20 );
-                   mob->new_silver     += gold;
-                   victim->new_silver -= gold;
-                   return true;
-              case 4:
-                  gold = (victim->new_copper) * UMIN(number_range( 1, 20 ),mob->level) / 100;
-                   gold = UMIN(gold, mob->level * mob->level * 20 );
-                   mob->new_copper     += gold;
-                   victim->new_copper -= gold;
-                   return true;
-            };
-            return false;
+                balance = victim->new_silver;
+                coin_type = TYPE_SILVER;
+                break;
+              default:
+                balance = victim->new_copper;
+                coin_type = TYPE_COPPER;
+                break;
+            }
+
+            percent = UMIN(number_range(1, 20), mob->level);
+            gold = thief_percentage(balance, percent);
+            cap = (long)mob->level * (long)mob->level * 20L;
+            gold = UMIN(gold, cap);
+            if (gold > 0 && can_adjust_coin_balance(mob, gold, coin_type))
+            {
+                adjust_coin_balance(mob, gold, coin_type);
+                adjust_coin_balance(victim, -gold, coin_type);
+            }
+            return true;
 
 	}
     }

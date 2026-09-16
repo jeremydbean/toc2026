@@ -23,6 +23,8 @@ Maintained documentation:
 - `wiki/achievements.md`: achievement catalog, command views, persistence, and hooks
 - `wiki/game-client-guide.md`: browser terminal, ANSI, paging, and client controls
 - `wiki/hosting-guide.md`: deployment/configuration/persistence
+- `wiki/windows-production-hosting.md`: current Hyper-V production operations
+- `mudlet/listing-submission.md`: Mudlet listing readiness and review handoff
 - `wiki/operator-guide.md`: immortal and incident procedures
 - `wiki/developer-guide.md`: architecture and development workflow
 - `wiki/area-building-guide.md`: authoritative area format reference
@@ -146,6 +148,7 @@ python3 check_resets.py
 python3 check_shops.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 python3 -m unittest discover -s tests
+python3 -m unittest tests.test_money_safety tests.test_bank_interest tests.test_pkill_persistence tests.test_achievements
 git diff --check
 ```
 
@@ -171,6 +174,7 @@ manual gameplay checks.
 
 - `src/comm.c`: sockets, descriptors, login, main loop, output, and paging
 - `src/color.c`: canonical game-color parsing and terminal color conversion
+- `src/telnet_proto.c`, `src/gmcp.c`: Telnet negotiation and Mudlet protocol data
 - `src/achievements.c`: achievement catalog, progress, display, and persistence helpers
 - `src/db.c`: world boot and native area parser
 - `src/interp.c`: command registration/order/trust/logging
@@ -190,6 +194,7 @@ manual gameplay checks.
 - `webadmin/static/client.*`, `command-sequence.js`: play-first browser
   terminal, client controls, and shared bounded command chaining
 - `webadmin/area_parser.py`: independent Python area parser
+- `webadmin/static/console-output.js`: streaming ANSI/Telnet console decoder
 - `webadmin/area_health.py`: shared lint engine
 
 ## C Change Rules
@@ -219,6 +224,11 @@ manual gameplay checks.
 - Password-bearing commands must not be logged.
 - Keep persisted enum/flag/slot/vnum values stable unless a migration is part of
   the task.
+- Carried denominations, bank copper, and lifetime casino totals are `long`.
+  Route gameplay changes through `add_money()` or
+  `adjust_coin_balance()`; preflight both source and destination before any
+  transfer. Money objects hold an `int` pile size and larger corpse balances
+  must be split into representable piles.
 
 ## Player-Facing Bug Review
 
@@ -313,6 +323,10 @@ See `SECURITY.md` for mitigation and reporting procedures.
 - Preserve historical format pages, but mark the modern area guide as
   authoritative.
 - Correct stale instructions when source behavior changes.
+- Distinguish source availability, verified deployment, submission, and listing
+  acceptance. A GitHub commit alone does not establish any of the latter three.
+- Never deploy a Git checkout over live player directories. Preserve runtime
+  state, graceful saves (including link-dead players), and watchdog heartbeats.
 - Use ASCII for new documentation unless an existing file requires otherwise.
 
 ## Git And Delivery

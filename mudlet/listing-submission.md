@@ -17,7 +17,8 @@ Mudlet's opening connection screen after the GMCP build is deployed publicly.
 Suggested short description:
 
 > Times of Chaos is a long-running fantasy hack-and-slash MUD with more than
-> 7,700 rooms, 70 levels, six classes, five races, remorting, quests,
+> 7,700 rooms, mortal progression through level 59, six classes, five races,
+> remorting, quests,
 > seasonal content, player castles, and a guided Mud School for new players.
 
 ## Mudlet checklist

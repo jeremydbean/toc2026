@@ -139,7 +139,14 @@ typedef enum
     ACHIEVEMENT_EVENT_DEATH_RAY,
     ACHIEVEMENT_EVENT_QUEST_RUSH,
     ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE,
-    ACHIEVEMENT_EVENT_QUEST_GAMBLE_WIN
+    ACHIEVEMENT_EVENT_QUEST_GAMBLE_WIN,
+    ACHIEVEMENT_EVENT_BANK_DEPOSIT,
+    ACHIEVEMENT_EVENT_BANK_INTEREST,
+    ACHIEVEMENT_EVENT_BANK_WEEK_INTEREST,
+    ACHIEVEMENT_EVENT_BANK_EMPTIED,
+    ACHIEVEMENT_EVENT_SLOTS_JACKPOT,
+    ACHIEVEMENT_EVENT_ROULETTE_STRAIGHT,
+    ACHIEVEMENT_EVENT_POKER_ROYAL_FLUSH
 } achievement_event_type;
 
 typedef void (*script_event_callback)( script_event_type type, void *payload, void *context );
@@ -203,7 +210,7 @@ typedef struct script_loop_prepoll_payload
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
 #define MAX_HUNTERS             50
-#define MAX_ACHIEVEMENTS        128
+#define MAX_ACHIEVEMENTS        192
 #define MAX_LEVEL               70
 #define LEVEL_IMMORTAL          (MAX_LEVEL - 10)
 #define LEVEL_KING              (MAX_LEVEL - 11)
@@ -2218,6 +2225,7 @@ void    set_title       ( CHAR_DATA *ch, char *title );
 
 /* achievements.c */
 void    achievement_check_state ( CHAR_DATA *ch, bool announce );
+void    achievement_check_economy ( CHAR_DATA *ch, bool announce );
 void    achievement_record_kill ( CHAR_DATA *killer, CHAR_DATA *victim );
 void    achievement_record_quest ( CHAR_DATA *ch );
 void    achievement_record_death ( CHAR_DATA *ch );
@@ -2248,6 +2256,9 @@ void    add_money          (CHAR_DATA *ch, long amount);
 long    query_gold         (CHAR_DATA *ch);
 long    coins_to_copper    (const CHAR_DATA *ch);
 bool    has_enough_gold    (const CHAR_DATA *ch, long gold_cost);
+bool    can_adjust_coin_balance (const CHAR_DATA *ch, long amount, int coin_type);
+bool    adjust_coin_balance (CHAR_DATA *ch, long amount, int coin_type);
+void    sanitize_carried_money (CHAR_DATA *ch);
 void    format_coins       (long copper_amount, char *buf, size_t buf_size);
 int     query_carry_weight ( CHAR_DATA *ch);
 int     query_carry_coins  ( CHAR_DATA *ch, long amount);

@@ -312,12 +312,14 @@ achievements character
 achievements incomplete
 achievements encounters
 achievements collection
+achievements economy
 achievements hyrule
 ```
 
-The 111-entry catalog covers character levels and remorts, play time, mobile
+The 127-entry catalog covers character levels and remorts, play time, mobile
 and player kills, named world bosses, rare relics, crafting, unusual deaths,
-quest completions and streaks, exploration, and the full Hyrule campaign.
+quest completions and streaks, exploration, banking and casino feats, and the
+full Hyrule campaign.
 Hidden achievements show neither title nor requirement until earned. Credit
 for every listed boss is shared with grouped players present in the boss room,
 so healers and support characters do not need the final hit.
@@ -328,10 +330,10 @@ Category, earned, incomplete, all, and search views remain scrollable.
 
 Existing characters receive credit for facts the old save format already
 knows: level, remorts, play time, qualifying player kills, current quest
-streak, and qualifying rare or Hyrule items still carried, including items
-inside containers. Lifetime mobile-kill, quest-completion, and all-cause death
-totals start when the new system begins recording them; old saves did not
-preserve those totals.
+streak, bank balance, carried money, casino totals, and qualifying rare or
+Hyrule items still carried, including items inside containers. Lifetime
+mobile-kill, quest-completion, and all-cause death totals start when the new
+system begins recording them; old saves did not preserve those totals.
 `score` shows a compact total, while `achievements` shows dates and progress.
 See [Achievement System](achievements.md) for the full behavior.
 
@@ -389,16 +391,22 @@ Banks support:
 
 ```text
 balance
-deposit <amount>
-withdraw <amount>
-exchange ...
-convert ...
+deposit <amount> [platinum|gold|silver|copper]
+withdraw <amount> [platinum|gold|silver|copper]
+convert
 ```
 
-The exact accepted amount syntax is shown by each command's help and local NPC
-messages. The game also contains gambling commands such as `gamble`, `slots`,
-`bet`, `roulette`, and `poker`; use them only where the relevant game operator
-is present.
+If the denomination is omitted, `deposit` and `withdraw` use platinum. The bank
+stores exact copper value, charges no transaction fee, and saves successful
+deposits and withdrawals immediately. Balances of at least 1 platinum earn 1%
+per real day while the character is in the game, with at most seven elapsed
+days paid in one catch-up. `convert` exchanges carried value upward into the
+fewest practical coins.
+
+The game also contains `gamble`, `slots`, `bet`, `roulette`, and `poker`; use
+them only where the relevant game operator is present. Hi/Lo and roulette bets
+range from 1 to 100,000 gold and require confirmation above 500 gold. Video
+poker accepts 5 to 200 gold.
 
 ## Groups And Social Play
 

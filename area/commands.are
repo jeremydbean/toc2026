@@ -467,6 +467,7 @@ Notes:
     applied automatically while you are logged in (catching up for up to
     7 days of offline time).  Accounts below 1 platinum do not earn interest.
   - No fees are charged on deposits or withdrawals.
+  - Successful deposits and withdrawals save your character immediately.
   - Pkiller characters cannot access banking services.
   - Your bank balance is retained across deaths and remorts.
 
@@ -486,7 +487,7 @@ See also: BANK, DEPOSIT, WITHDRAW, WORTH
 Syntax: deposit <amount> [platinum|gold|silver|copper]
 
 Moves coins from your inventory into your bank account.  An optional coin
-type may be specified; if omitted, gold is assumed.  You must be inside
+type may be specified; if omitted, platinum is assumed.  You must be inside
 a bank room.
 
 Examples:
@@ -522,8 +523,8 @@ from the plaza to find the gilded entrance doors.
 
 Games available:
   SLOTS     -- Three-reel slot machine (cost: 1 gold per pull)
-  BET       -- Hi/Lo dice game (1-500 gold per bet)
-  ROULETTE  -- European single-zero roulette wheel (1-500 gold per bet)
+  BET       -- Hi/Lo dice game (1-100,000 gold per bet)
+  ROULETTE  -- European single-zero roulette wheel (1-100,000 gold per bet)
   POKER     -- Video poker, dealt once, paid on hand rank (5-200 gold)
 
 Type the game's name alone for full payout tables and instructions.
@@ -553,8 +554,8 @@ See also: CASINO, BET, ROULETTE, POKER
 Syntax: bet <amount> hi
 Syntax: bet <amount> lo
 
-Hi/Lo dice game at the casino.  Place a wager of 1 to 500 gold on the
-outcome of two dice.
+Hi/Lo dice game at the casino.  Place a wager of 1 to 100,000 gold on the
+outcome of two dice.  Bets above 500 gold require confirmation.
 
   HI: wins if the two-dice total is MORE than 7  (pays 1:1)
   LO: wins if the two-dice total is LESS than 7  (pays 1:1)
@@ -572,7 +573,8 @@ See also: CASINO, SLOTS, ROULETTE, POKER
 0 ROULETTE~
 Syntax: roulette <amount> <bet>
 
-European single-zero roulette at the casino.  Place a bet of 1 to 500 gold.
+European single-zero roulette at the casino.  Place a bet of 1 to 100,000
+gold.  Bets above 500 gold require confirmation.
 
   EVEN-MONEY bets (1:1): red  black  even  odd  low(1-18)  high(19-36)
   DOZEN bets      (2:1): first(1-12)  second(13-24)  third(25-36)
@@ -1676,17 +1678,19 @@ combat power. The summary shows your total points, category completion, and
 five most recent achievements.
 
 Categories are CHARACTER, COMBAT, ENCOUNTERS, QUESTS, EXPLORATION, COLLECTION,
-CRAFTING, MISADVENTURE, and HYRULE. Category views show each requirement and
-your current progress. EARNED and INCOMPLETE filter the full catalog; ALL shows
-everything. You may also search by a title, description, or achievement key.
+CRAFTING, MISADVENTURE, ECONOMY, and HYRULE. Category views show each
+requirement and your current progress. EARNED and INCOMPLETE filter the full
+catalog; ALL shows everything. You may also search by a title, description, or
+achievement key.
 An unearned hidden achievement conceals its title and requirements until you
 discover it.
 
-Level, remort, play-time, player-kill, current quest-streak, and currently
-owned collection-item milestones are checked retroactively. Lifetime mobile
-kills, completed quests, and deaths begin when the achievement system first
-records them because older player files did not retain those totals. Listed
-boss credit is shared with grouped players who are present in the boss room.
+Level, remort, play-time, player-kill, current quest-streak, bank, carried
+money, casino-total, and currently owned collection-item milestones are checked
+retroactively. Lifetime mobile kills, completed quests, and deaths begin when
+the achievement system first records them because older player files did not
+retain those totals. Listed boss credit is shared with grouped players who are
+present in the boss room.
 
 Achievement progress and earned dates are saved with your character. Use
 SCORE for a compact points total.

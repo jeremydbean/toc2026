@@ -1272,49 +1272,43 @@
         if (connected) byId("console-input").focus();
     }
 
-    function appendTerminal(element, text) {
+    function appendTerminal(element, text, className = "") {
         const nearBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 80;
-        element.textContent += text;
-        if (element.textContent.length > MAX_TERMINAL_CHARS) {
-            element.textContent = element.textContent.slice(-MAX_TERMINAL_CHARS);
+        if (element.id === "game-terminal") {
+            if (!text) return;
+            const last = element.lastChild;
+            if (last && last.className === className) last.textContent += text;
+            else element.append(node("span", { className, text }));
+            let overflow = element.textContent.length - MAX_TERMINAL_CHARS;
+            while (element.firstChild && (overflow > 0 || element.childNodes.length > 4000)) {
+                const first = element.firstChild;
+                const length = first.textContent.length;
+                if (overflow >= length || element.childNodes.length > 4000) {
+                    first.remove();
+                    overflow -= length;
+                } else {
+                    first.textContent = first.textContent.slice(overflow);
+                    break;
+                }
+            }
+        } else {
+            element.textContent = (element.textContent + text).slice(-MAX_TERMINAL_CHARS);
         }
         if (nearBottom) element.scrollTop = element.scrollHeight;
     }
 
-    function decodeMudOutput(value) {
-        let output = "";
-        for (let index = 0; index < value.length; index += 1) {
-            const code = value.charCodeAt(index);
-            if (code !== 255) {
-                output += value[index];
-                continue;
-            }
-            const command = value.charCodeAt(index + 1);
-            const option = value.charCodeAt(index + 2);
-            if (command === 251 || command === 252 || command === 253 || command === 254) {
-                if (option === 1 && command === 251) state.terminal.secretInput = true;
-                if (option === 1 && command === 252) state.terminal.secretInput = false;
-                index += 2;
-                continue;
-            }
-            if (command === 250) {
-                index += 2;
-                while (index + 1 < value.length && !(value.charCodeAt(index) === 255 && value.charCodeAt(index + 1) === 240)) index += 1;
-                index += 1;
-                continue;
-            }
-            index += 1;
-        }
-        byId("console-input").type = state.terminal.secretInput ? "password" : "text";
-        byId("console-input").placeholder = state.terminal.secretInput ? "Password" : "Command";
-        return output
-            .replace(/\x1b\[[0-?]*[ -/]*[@-~]/g, "")
-            .replace(/\r\n|\n\r/g, "\n")
-            .replace(/\r/g, "\n");
-    }
+    const consoleOutput = TocConsoleOutput.create(
+        (text, className) => appendTerminal(byId("game-terminal"), text, className),
+        (secret) => {
+            state.terminal.secretInput = secret;
+            byId("console-input").type = secret ? "password" : "text";
+            byId("console-input").placeholder = secret ? "Password" : "Command";
+        },
+    );
 
     function connectConsole() {
         if (state.terminal.socket && state.terminal.socket.readyState < WebSocket.CLOSING) return;
+        consoleOutput.reset();
         state.terminal.failed = false;
         setConsoleConnected(false, "Connecting to game");
         byId("console-connect").disabled = true;
@@ -1337,7 +1331,7 @@
                 appendTerminal(byId("game-terminal"), `[${message.slice(11)}]\n`);
                 return;
             }
-            appendTerminal(byId("game-terminal"), decodeMudOutput(message));
+            consoleOutput.write(message);
         });
         socket.addEventListener("close", () => {
             if (state.terminal.socket === socket) state.terminal.socket = null;

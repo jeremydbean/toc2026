@@ -40,6 +40,19 @@ class BankInterestRegressionTests(unittest.TestCase):
     def test_interest_cannot_overflow_the_bank_balance(self) -> None:
         self.assertIn("LONG_MAX - ch->pcdata->bank", self.body)
 
+    def test_future_timestamp_is_reset_and_persisted(self) -> None:
+        self.assertIn("bank_interest_time > current_time", self.body)
+        reset = self.body.index("bank_interest_time = current_time")
+        save = self.body.index("save_char_obj(ch)", reset)
+        self.assertGreater(save, reset)
+
+    def test_consumed_days_are_saved_even_without_a_payout(self) -> None:
+        self.assertGreaterEqual(self.body.count("save_char_obj(ch)"), 4)
+
+    def test_interest_achievements_are_recorded(self) -> None:
+        self.assertIn("ACHIEVEMENT_EVENT_BANK_INTEREST", self.body)
+        self.assertIn("ACHIEVEMENT_EVENT_BANK_WEEK_INTEREST", self.body)
+
 
 if __name__ == "__main__":
     unittest.main()

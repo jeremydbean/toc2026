@@ -41,7 +41,7 @@ class AchievementSystemTests(unittest.TestCase):
     def test_catalog_has_stable_unique_keys_and_fits_reserved_capacity(self) -> None:
         catalog_lines = re.findall(r'^[ \t]*\{[ \t]*"', self.source, re.MULTILINE)
         self.assertEqual(len(self.entries), len(catalog_lines))
-        self.assertEqual(len(self.entries), 111)
+        self.assertEqual(len(self.entries), 127)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))
@@ -62,6 +62,7 @@ class AchievementSystemTests(unittest.TestCase):
                 "ACH_CAT_COLLECTION",
                 "ACH_CAT_CRAFTING",
                 "ACH_CAT_MISADVENTURE",
+                "ACH_CAT_ECONOMY",
                 "ACH_CAT_HYRULE",
             },
         )
@@ -71,6 +72,10 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertTrue(all(int(entry["points"]) > 0 for entry in self.entries))
         self.assertIn("achievement_progress", self.source)
         self.assertIn("achievement_format_date", self.source)
+        self.assertEqual(
+            sum(entry["category"] == "ACH_CAT_ECONOMY" for entry in self.entries),
+            16,
+        )
 
     def test_summary_is_compact_and_paged_colors_are_converted(self) -> None:
         pager = self.comm.split("void page_to_char", 1)[1].split(
@@ -166,6 +171,21 @@ class AchievementSystemTests(unittest.TestCase):
         ):
             with self.subTest(event=event):
                 self.assertIn(event, quest)
+        for event in (
+            "ACHIEVEMENT_EVENT_BANK_DEPOSIT",
+            "ACHIEVEMENT_EVENT_SLOTS_JACKPOT",
+            "ACHIEVEMENT_EVENT_ROULETTE_STRAIGHT",
+            "ACHIEVEMENT_EVENT_POKER_ROYAL_FLUSH",
+        ):
+            with self.subTest(event=event):
+                self.assertIn(event, act_obj)
+        for event in (
+            "ACHIEVEMENT_EVENT_BANK_INTEREST",
+            "ACHIEVEMENT_EVENT_BANK_WEEK_INTEREST",
+        ):
+            with self.subTest(event=event):
+                self.assertIn(event, update)
+        self.assertIn("achievement_check_economy", self.source)
         self.assertIn("achievement_record_room(ch, pRoomIndex->vnum", handler)
         self.assertIn("achievement_record_object(ch, obj->pIndexData->vnum", handler)
         self.assertIn("ACHIEVEMENT_EVENT_DEATH_ITEM", handler)
@@ -196,7 +216,9 @@ class AchievementSystemTests(unittest.TestCase):
         guide = (ROOT / "wiki" / "achievements.md").read_text(encoding="utf-8")
 
         self.assertIn("0 ACHIEVEMENT ACHIEVEMENTS~", command_help)
+        self.assertIn("MISADVENTURE, ECONOMY, and HYRULE", command_help)
         self.assertIn("wiki/achievements.md", readme)
+        self.assertIn("127-achievement", readme)
         self.assertIn("Existing Characters", guide)
         self.assertIn("lifetime mobile-kill", guide)
 

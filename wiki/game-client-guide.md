@@ -255,6 +255,11 @@ Use the game's color settings to enable ANSI output. The client accepts the
 classic 16-color palette; unsupported terminal cursor-control sequences are
 ignored.
 
+The admin dashboard's **Game console** also renders ANSI colors and text
+attributes, including sequences split across incoming network messages. Refresh
+the admin page after a web asset update. Clear removes visible scrollback without
+changing the current game color; reconnecting resets terminal decoding state.
+
 The C server converts its internal `{HH}` color markers before sending output;
 the browser client intentionally parses ANSI only. Seeing literal markers such
 as `{0D` or `{0F` indicates an outdated server binary or a server output path

@@ -16,6 +16,7 @@
 #endif
 #include <ctype.h>
 #include <errno.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -595,11 +596,10 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 
     fprintf( fp, "HMV  %d %d %d %d %d %d\n",
 	ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move );
-    if (ch->new_gold < 0) ch->new_gold = 0;
-    if (ch->new_silver < 0) ch->new_silver = 0;
-    if (ch->new_platinum < 0) ch->new_platinum = 0;
-    if (ch->new_copper < 0)  ch->new_copper = 0;
+    sanitize_carried_money(ch);
     if (ch->pcdata->bank < 0) ch->pcdata->bank = 0;
+    if (ch->pcdata->casino_winnings < 0) ch->pcdata->casino_winnings = 0;
+    if (ch->pcdata->casino_losses < 0) ch->pcdata->casino_losses = 0;
     fprintf( fp, "NewGold %ld\n",	ch->new_gold		);
     fprintf( fp, "NewPlat %ld\n",	ch->new_platinum	);
     fprintf( fp, "NewCopp %ld\n",	ch->new_copper		);
@@ -1469,7 +1469,14 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Bamfout",	ch->pcdata->bamfout,	fread_string( fp ) );
 	    if ( !str_cmp( word, "Bank" ) )
 	    {
-	        ch->pcdata->bank = fread_long( fp ) * COPPER_PER_PLATINUM;
+	        long legacy_bank = fread_long( fp );
+
+	        if (legacy_bank <= 0)
+	            ch->pcdata->bank = 0;
+	        else if (legacy_bank > LONG_MAX / COPPER_PER_PLATINUM)
+	            ch->pcdata->bank = LONG_MAX;
+	        else
+	            ch->pcdata->bank = legacy_bank * COPPER_PER_PLATINUM;
 	        fMatch = true;
 	        break;
 	    }
@@ -1481,8 +1488,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'C':
 	    KEY( "Cast",	ch->pcdata->castle,
 					(sh_int)(castle_lookup(fread_word( fp ) )) );
-	    KEY( "CasinoWon",	ch->pcdata->casino_winnings,	(long)(fread_number( fp )) );
-	    KEY( "CasinoLost",	ch->pcdata->casino_losses,	(long)(fread_number( fp )) );
+	    KEY( "CasinoWon",	ch->pcdata->casino_winnings,	fread_long( fp ) );
+	    KEY( "CasinoLost",	ch->pcdata->casino_losses,	fread_long( fp ) );
 	    KEY( "Class",	ch->class,		(sh_int)(fread_number( fp )) );
 	    KEY( "Cla",		ch->class,		(sh_int)(fread_number( fp )) );
 	  KEY( "ColFlag",	ch->pcdata->color,	fread_number( fp ) );
@@ -1530,7 +1537,16 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 	case 'E':
 	    if ( !str_cmp( word, "End" ) )
+	    {
+		sanitize_carried_money(ch);
+		if (ch->pcdata->bank < 0)
+		    ch->pcdata->bank = 0;
+		if (ch->pcdata->casino_winnings < 0)
+		    ch->pcdata->casino_winnings = 0;
+		if (ch->pcdata->casino_losses < 0)
+		    ch->pcdata->casino_losses = 0;
 		return;
+	    }
             KEY( "Exp",		ch->exp,		fread_long( fp ) );
 	    break;
 

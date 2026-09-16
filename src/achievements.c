@@ -19,6 +19,7 @@ typedef enum
     ACH_CAT_COLLECTION,
     ACH_CAT_CRAFTING,
     ACH_CAT_MISADVENTURE,
+    ACH_CAT_ECONOMY,
     ACH_CAT_HYRULE,
     ACH_CAT_COUNT
 } ACHIEVEMENT_CATEGORY;
@@ -33,6 +34,11 @@ typedef enum
     ACH_REQ_QUESTS,
     ACH_REQ_QUEST_STREAK,
     ACH_REQ_DEATHS,
+    ACH_REQ_BANK_BALANCE,
+    ACH_REQ_CARRIED_MONEY,
+    ACH_REQ_ALL_DENOMINATIONS,
+    ACH_REQ_CASINO_WINNINGS,
+    ACH_REQ_CASINO_LOSSES,
     ACH_REQ_ROOM,
     ACH_REQ_OBJECT,
     ACH_REQ_EVENT,
@@ -72,6 +78,7 @@ static const char *const achievement_category_names[ACH_CAT_COUNT] =
     "Collection",
     "Crafting",
     "Misadventure",
+    "Economy",
     "Hyrule"
 };
 
@@ -182,6 +189,23 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "death-by-farslay-backfire", "Return to Sender", "Die when your own Farslay rite turns against you.", ACH_CAT_MISADVENTURE, 30, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_FARSLAY_BACKFIRE, 0 },
     { "death-by-death-ray", "A Sickly Shade of Green", "Die to a death ray.", ACH_CAT_MISADVENTURE, 20, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DEATH_RAY, 0 },
     { "all-misadventures", "Death Becomes You", "Experience every listed unusual death.", ACH_CAT_MISADVENTURE, 75, true, ACH_REQ_MISADVENTURES, 6, 0 },
+
+    { "first-deposit", "A Place to Keep It", "Make your first successful bank deposit.", ACH_CAT_ECONOMY, 5, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_BANK_DEPOSIT, 0 },
+    { "bank-one-platinum", "Nest Egg", "Hold at least 1 platinum in the bank.", ACH_CAT_ECONOMY, 10, false, ACH_REQ_BANK_BALANCE, 1000000L, 0 },
+    { "bank-hundred-platinum", "Sound Investment", "Hold at least 100 platinum in the bank.", ACH_CAT_ECONOMY, 20, false, ACH_REQ_BANK_BALANCE, 100000000L, 0 },
+    { "bank-ten-thousand-platinum", "Vault of Plenty", "Hold at least 10,000 platinum in the bank.", ACH_CAT_ECONOMY, 40, false, ACH_REQ_BANK_BALANCE, 10000000000L, 0 },
+    { "first-interest", "Money While You Sleep", "Receive your first bank-interest payment.", ACH_CAT_ECONOMY, 10, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_BANK_INTEREST, 0 },
+    { "week-interest", "Patient Capital", "Receive the maximum seven-day bank-interest catch-up payment.", ACH_CAT_ECONOMY, 15, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_BANK_WEEK_INTEREST, 0 },
+    { "empty-account", "Every Last Copper", "Withdraw the final coin from your bank account.", ACH_CAT_ECONOMY, 5, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_BANK_EMPTIED, 0 },
+    { "carry-one-platinum", "Walking Wallet", "Carry coins worth at least 1 platinum.", ACH_CAT_ECONOMY, 5, false, ACH_REQ_CARRIED_MONEY, 1000000L, 0 },
+    { "carry-hundred-platinum", "Liquid Assets", "Carry coins worth at least 100 platinum.", ACH_CAT_ECONOMY, 20, false, ACH_REQ_CARRIED_MONEY, 100000000L, 0 },
+    { "four-denominations", "Exact Change", "Carry platinum, gold, silver, and copper at the same time.", ACH_CAT_ECONOMY, 10, true, ACH_REQ_ALL_DENOMINATIONS, 1, 0 },
+    { "slots-jackpot", "Lucky Sevens", "Hit three sevens on a casino slot machine.", ACH_CAT_ECONOMY, 20, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_SLOTS_JACKPOT, 0 },
+    { "roulette-straight", "One Number, No Fear", "Win a straight-up roulette bet.", ACH_CAT_ECONOMY, 25, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_ROULETTE_STRAIGHT, 0 },
+    { "poker-royal-flush", "Deal With Destiny", "Draw a royal flush at video poker.", ACH_CAT_ECONOMY, 40, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_POKER_ROYAL_FLUSH, 0 },
+    { "casino-thousand-won", "Ahead of the House", "Accumulate 1,000 gold in casino winnings.", ACH_CAT_ECONOMY, 15, false, ACH_REQ_CASINO_WINNINGS, 1000, 0 },
+    { "casino-hundred-thousand-won", "The House Notices", "Accumulate 100,000 gold in casino winnings.", ACH_CAT_ECONOMY, 50, false, ACH_REQ_CASINO_WINNINGS, 100000, 0 },
+    { "casino-hundred-thousand-lost", "Tuition Paid", "Lose 100,000 gold at the casino.", ACH_CAT_ECONOMY, 20, true, ACH_REQ_CASINO_LOSSES, 100000, 0 },
 
     { "master-sword", "The Blade of Evil's Bane", "Claim the Master Sword.", ACH_CAT_HYRULE, 20, false, ACH_REQ_OBJECT, 30200, 0 },
     { "silver-arrow", "A Cold Glint of Silver", "Claim the Silver Arrow hidden in Death Mountain.", ACH_CAT_HYRULE, 20, false, ACH_REQ_OBJECT, 30218, 0 },
@@ -363,6 +387,17 @@ static long achievement_progress(const CHAR_DATA *ch, int index)
             return ch->queststreak;
         case ACH_REQ_DEATHS:
             return ch->pcdata->achievement_deaths;
+        case ACH_REQ_BANK_BALANCE:
+            return UMAX(0, ch->pcdata->bank);
+        case ACH_REQ_CARRIED_MONEY:
+            return coins_to_copper(ch);
+        case ACH_REQ_ALL_DENOMINATIONS:
+            return ch->new_platinum > 0 && ch->new_gold > 0
+                && ch->new_silver > 0 && ch->new_copper > 0;
+        case ACH_REQ_CASINO_WINNINGS:
+            return UMAX(0, ch->pcdata->casino_winnings);
+        case ACH_REQ_CASINO_LOSSES:
+            return UMAX(0, ch->pcdata->casino_losses);
         case ACH_REQ_OBJECT:
             return achievement_has_object(ch, (int)definition->target) ? 1 : 0;
         case ACH_REQ_HYRULE_DUNGEONS:
@@ -530,6 +565,23 @@ static bool achievement_check_requirement_type(CHAR_DATA *ch,
     }
 
     return changed;
+}
+
+void achievement_check_economy(CHAR_DATA *ch, bool announce)
+{
+    int index;
+
+    if (!achievement_is_player(ch))
+        return;
+
+    for (index = 0; index < achievement_table_count(); index++)
+    {
+        if (achievement_table[index].category != ACH_CAT_ECONOMY
+            || ch->pcdata->achievement_earned[index] != 0)
+            continue;
+        if (achievement_requirement_met(ch, index))
+            achievement_unlock(ch, index, announce);
+    }
 }
 
 void achievement_check_state(CHAR_DATA *ch, bool announce)

@@ -27,6 +27,7 @@
 
 #include <sys/types.h>
 #include <sys/time.h>
+#include <errno.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -1864,6 +1865,7 @@ void do_split( CHAR_DATA *ch, char *argument )
     long amount;
     long share;
     long extra;
+    char *endptr;
     int coin_type;
     const char *coin_name;
 
@@ -1876,7 +1878,14 @@ void do_split( CHAR_DATA *ch, char *argument )
 	return;
     }
     
-    amount = strtol( arg, NULL, 10 );
+    errno = 0;
+    amount = strtol( arg, &endptr, 10 );
+
+    if ( errno == ERANGE || *endptr != '\0' )
+    {
+	send_to_char( "That is not a valid coin amount.\n\r", ch );
+	return;
+    }
 
     if ( amount < 0 )
     {
@@ -1900,7 +1909,10 @@ void do_split( CHAR_DATA *ch, char *argument )
     else if ( !str_prefix( arg2, "copper" ) )
         { coin_type = TYPE_COPPER;   coin_name = "copper";   }
     else
-        { coin_type = TYPE_GOLD;     coin_name = "gold";     }
+    {
+        send_to_char("Choose platinum, gold, silver, or copper.\n\r", ch);
+        return;
+    }
 
     /* Check the player has enough of the right coin type. */
     switch ( coin_type )
@@ -1950,7 +1962,8 @@ void do_split( CHAR_DATA *ch, char *argument )
     {
         if ( gch != ch && is_same_group( gch, ch )
         &&   !IS_AFFECTED( gch, AFF_CHARM )
-        &&   query_carry_coins( gch, share ) > can_carry_w( gch ) )
+        && ( query_carry_coins( gch, share ) > can_carry_w( gch )
+          || !can_adjust_coin_balance(gch, share, coin_type) ) )
         {
             act( "$N cannot carry a share that heavy.",
                  ch, NULL, gch, TO_CHAR );
@@ -1962,20 +1975,16 @@ void do_split( CHAR_DATA *ch, char *argument )
     switch ( coin_type )
     {
     case TYPE_PLATINUM:
-        ch->new_platinum -= amount;
-        ch->new_platinum += share + extra;
+        adjust_coin_balance(ch, share + extra - amount, TYPE_PLATINUM);
         break;
     case TYPE_SILVER:
-        ch->new_silver -= amount;
-        ch->new_silver += share + extra;
+        adjust_coin_balance(ch, share + extra - amount, TYPE_SILVER);
         break;
     case TYPE_COPPER:
-        ch->new_copper -= amount;
-        ch->new_copper += share + extra;
+        adjust_coin_balance(ch, share + extra - amount, TYPE_COPPER);
         break;
     default: /* gold */
-        add_money(ch, -amount);
-        add_money(ch, share + extra);
+        add_money(ch, share + extra - amount);
         break;
     }
 
@@ -1995,9 +2004,12 @@ void do_split( CHAR_DATA *ch, char *argument )
 	    act( buf, ch, NULL, gch, TO_VICT );
             switch ( coin_type )
             {
-            case TYPE_PLATINUM: gch->new_platinum += share; break;
-            case TYPE_SILVER:   gch->new_silver   += share; break;
-            case TYPE_COPPER:   gch->new_copper    += share; break;
+            case TYPE_PLATINUM:
+                adjust_coin_balance(gch, share, TYPE_PLATINUM); break;
+            case TYPE_SILVER:
+                adjust_coin_balance(gch, share, TYPE_SILVER); break;
+            case TYPE_COPPER:
+                adjust_coin_balance(gch, share, TYPE_COPPER); break;
             default:            add_money(gch, share);      break;
             }
         }

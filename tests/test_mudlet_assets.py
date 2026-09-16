@@ -46,6 +46,10 @@ class MudletAssetTests(unittest.TestCase):
             self.assertEqual(
                 set(archive.namelist()), {"config.lua", "TimesOfChaos.xml"}
             )
+            self.assertTrue(all(
+                entry.compress_type == zipfile.ZIP_STORED
+                for entry in archive.infolist()
+            ))
             root = ElementTree.fromstring(archive.read("TimesOfChaos.xml"))
         self.assertEqual(root.tag, "MudletPackage")
 

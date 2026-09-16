@@ -144,11 +144,13 @@ def build_map_bytes() -> bytes:
 
 def build_package_bytes() -> bytes:
     output = io.BytesIO()
-    with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+    # Stored entries avoid zlib-version-dependent bytes across build hosts.
+    with zipfile.ZipFile(output, "w", zipfile.ZIP_STORED) as archive:
         for filename in PACKAGE_FILES:
             source = PACKAGE_SOURCE / filename
             info = zipfile.ZipInfo(filename, date_time=(2026, 9, 11, 0, 0, 0))
-            info.compress_type = zipfile.ZIP_DEFLATED
+            info.create_system = 3
+            info.compress_type = zipfile.ZIP_STORED
             info.external_attr = 0o644 << 16
             archive.writestr(info, source.read_bytes())
     return output.getvalue()

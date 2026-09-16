@@ -1,5 +1,19 @@
 # Times of Chaos Developer Guide
 
+## Release Verification
+
+Public listing work is tracked in [the Mudlet handoff](../mudlet/listing-submission.md).
+Keep generated Mudlet XML/Lua files LF-only so the package is reproducible on
+Windows as well as POSIX. Run `python3 scripts/build_mudlet_package.py --check`
+and `python3 scripts/test_mudlet_handshake.py HOST PORT`; the handshake probe
+does not create a character. Full live tests use disposable worlds and saves.
+Run `node --test tests/test_console_output.js` for the admin console's streaming
+decoder; its Python wrapper skips this check when Node is unavailable.
+
+Production updates must preserve saves and signal/watchdog behavior; see the
+[Windows runbook](windows-production-hosting.md). Never copy tracked legacy
+characters or private working-tree state into a deployment or a publication.
+
 This guide explains the repository architecture, development environment,
 validation workflow, extension points, data rules, debugging tools, and release
 expectations. Read [CONTRIBUTING.md](../CONTRIBUTING.md) for the concise change
@@ -290,6 +304,9 @@ native and Python area totals are expected to use different counting models.
 | `tests/test_webadmin_api.py` | API authentication, queueing, reload, parsing, and limits |
 | `tests/test_hyrule_progression.py` | Generated Hyrule topology, progression, bosses, items, and routes |
 | `tests/test_achievements.py` | Catalog stability, persistence, event hooks, world/Hyrule boss-room contracts, rare-item vnums, Farslay crafting, summary layout, and pager color conversion |
+| `tests/test_bank_interest.py` | Interest catch-up, timestamp persistence, readable payouts, overflow protection, and achievement events |
+| `tests/test_money_safety.py` | Atomic bank transfers, checked currency arithmetic, safe piles, long-width persistence, shops, thieves, corpses, and casino counters |
+| `tests/test_pkill_persistence.py` | Bounded PK leaderboard loading, malformed records, missing terminators, and atomic writer format |
 
 Add focused regression tests for fixed bugs. Expand to integration/smoke testing
 when a change crosses C/Python, parser/runtime, persistence, or world boundaries.

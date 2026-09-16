@@ -1,5 +1,9 @@
 # Times of Chaos Hosting Guide
 
+For the existing `toc.jeremybean.com` Windows-hosted server, use the
+[Windows Production Runbook](windows-production-hosting.md). Its Hyper-V VM
+and service names differ from both Docker Compose and the Pi appliance.
+
 This guide covers installation, configuration, service management,
 persistence, backup, upgrades, monitoring, the web dashboard, and production
 hardening. Docker Compose is the recommended deployment. Native Linux is useful

@@ -3,3 +3,8 @@
 
 # Shell launchers must remain directly executable on Linux, macOS, and WSL.
 *.sh text eol=lf
+deploy/toc2026-* text eol=lf
+# Keep reproducible Mudlet assets byte-identical on Windows and POSIX.
+mudlet/*.xml text eol=lf
+mudlet/package/*.xml text eol=lf
+mudlet/package/*.lua text eol=lf

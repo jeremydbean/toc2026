@@ -25,6 +25,7 @@
 #include <sys/time.h>
 #include <limits.h>
 #endif
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
@@ -47,8 +48,64 @@ bool	remove_obj	args( ( CHAR_DATA *ch, int iWear, bool fReplace ) );
 void	wear_obj	args( ( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace ) );
 CD *	find_keeper	args( ( CHAR_DATA *ch ) );
 int	get_cost	args( ( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy ) );
+static bool coins_to_copper_checked args( ( const CHAR_DATA *ch, long *total ) );
+static void normalize_coins args( ( CHAR_DATA *ch, long total_copper ) );
 extern const	int16_t	rev_dir	[];
 #undef	CD
+
+static bool parse_long_value(const char *text, long *value)
+{
+    char *endptr;
+    long parsed;
+
+    if (text == NULL || text[0] == '\0' || value == NULL)
+        return false;
+
+    errno = 0;
+    parsed = strtol(text, &endptr, 10);
+    if (errno == ERANGE || *endptr != '\0')
+        return false;
+
+    *value = parsed;
+    return true;
+}
+
+static bool parse_positive_int(const char *text, int *value)
+{
+    long parsed;
+
+    if (value == NULL || !parse_long_value(text, &parsed)
+    ||  parsed <= 0 || parsed > INT_MAX)
+        return false;
+
+    *value = (int)parsed;
+    return true;
+}
+
+static void resize_money_pile(OBJ_DATA *obj, int amount)
+{
+    OBJ_DATA *replacement;
+
+    if (obj == NULL)
+        return;
+    if (amount <= 0)
+    {
+        extract_obj(obj);
+        return;
+    }
+
+    replacement = create_money(amount, obj->value[1]);
+    if (obj->in_obj != NULL)
+        obj_to_obj(replacement, obj->in_obj);
+    else if (obj->in_room != NULL)
+        obj_to_room(replacement, obj->in_room);
+    else if (obj->carried_by != NULL)
+        obj_to_char(replacement, obj->carried_by);
+    else
+        extract_obj(replacement);
+
+    extract_obj(obj);
+}
 
 /* RT part of the corpse looting code */
 
@@ -123,7 +180,8 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
         }
     }
 
-    if(query_carry_weight(ch) + get_obj_weight(obj) > can_carry_w(ch)) {
+    if(obj->item_type != ITEM_MONEY
+    && query_carry_weight(ch) + get_obj_weight(obj) > can_carry_w(ch)) {
 	act( "$d: you can't carry that much weight.",
 	    ch, NULL, obj->name, TO_CHAR );
 	return;
@@ -139,6 +197,14 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     {
         act( "$d: you can't carry that much weight.",
              ch, NULL, obj->name, TO_CHAR );
+        return;
+    }
+
+    if ( obj->item_type == ITEM_MONEY
+    && ( obj->value[0] <= 0
+      || !can_adjust_coin_balance(ch, obj->value[0], obj->value[1]) ) )
+    {
+        send_to_char("You cannot safely carry any more of those coins.\n\r", ch);
         return;
     }
 
@@ -175,7 +241,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
     if(obj->item_type == ITEM_MONEY) {
 	switch(obj->value[1]) {
 	case TYPE_PLATINUM:
-	  ch->new_platinum += obj->value[0];
+	  adjust_coin_balance(ch, obj->value[0], TYPE_PLATINUM);
 
 	  if(IS_SET(ch->act,PLR_AUTOSPLIT)) {
 	    members = 0;
@@ -191,7 +257,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	  extract_obj( obj );
 	  break;
 	case TYPE_GOLD:
-	  ch->new_gold += obj->value[0];
+	  adjust_coin_balance(ch, obj->value[0], TYPE_GOLD);
 
 	  if(IS_SET(ch->act,PLR_AUTOSPLIT)) {
 	    members = 0;
@@ -207,7 +273,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	  extract_obj( obj );
 	  break;
 	case TYPE_SILVER:
-	  ch->new_silver += obj->value[0];
+	  adjust_coin_balance(ch, obj->value[0], TYPE_SILVER);
 
 	  if(IS_SET(ch->act,PLR_AUTOSPLIT)) {
 	    members = 0;
@@ -223,7 +289,7 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 	  extract_obj( obj );
 	  break;
 	case TYPE_COPPER:
-	  ch->new_copper += obj->value[0];
+	  adjust_coin_balance(ch, obj->value[0], TYPE_COPPER);
 
 	  if(IS_SET(ch->act,PLR_AUTOSPLIT)) {
 	    members = 0;
@@ -461,8 +527,7 @@ void do_get( CHAR_DATA *ch, char *argument )
              send_to_char("Specify a number of coins you want to get.\n\r",ch);
              return;
           }
-          amount = atoi(arg1);
-          if (amount < 1) {
+          if (!parse_positive_int(arg1, &amount)) {
             send_to_char("How many coins do you want to get?\n\r",ch);
             return;
           }
@@ -474,31 +539,32 @@ void do_get( CHAR_DATA *ch, char *argument )
              send_to_char("but you can't carry that many coins.\n\r",ch);
              return;
           }
+          if (!can_adjust_coin_balance(ch, amount, container->value[1])) {
+             send_to_char("You cannot safely carry any more of those coins.\n\r",ch);
+             return;
+          }
           switch(container->value[1]) {
              case TYPE_PLATINUM:
-                ch->new_platinum += amount;
+                adjust_coin_balance(ch, amount, TYPE_PLATINUM);
                 snprintf(buf, sizeof(buf),"You get %d platinum coins.\n\r",amount);
                 break;
              case TYPE_GOLD:
-                ch->new_gold += amount;
+                adjust_coin_balance(ch, amount, TYPE_GOLD);
                 snprintf(buf, sizeof(buf),"You get %d gold coins.\n\r",amount);
                 break;
              case TYPE_SILVER:
-                ch->new_silver += amount;
+                adjust_coin_balance(ch, amount, TYPE_SILVER);
                 snprintf(buf, sizeof(buf),"You get %d silver coins.\n\r",amount);
                 break;
              case TYPE_COPPER:
-                ch->new_copper += amount;
+                adjust_coin_balance(ch, amount, TYPE_COPPER);
                 snprintf(buf, sizeof(buf),"You get %d copper coins.\n\r",amount);
                 break;
              default:
                 snprintf(buf, sizeof(buf),"You get zippo.\n\r");
           }
           send_to_char(buf,ch);
-          container->value[0] -= amount;
-          if (container->value[0] <= 0) {
-            extract_obj(container);
-          }
+          resize_money_pile(container, container->value[0] - amount);
           return;
 
 	case ITEM_CORPSE_PC:
@@ -758,6 +824,53 @@ void do_put( CHAR_DATA *ch, char *argument )
 
 
 
+static bool room_coin_merge_total(ROOM_INDEX_DATA *room, int amount,
+                                  int coin_type, int *merged_amount)
+{
+    OBJ_DATA *obj;
+    long total = amount;
+
+    if (room == NULL || amount <= 0 || merged_amount == NULL)
+        return false;
+
+    for (obj = room->contents; obj != NULL; obj = obj->next_content)
+    {
+        int pile_amount;
+        int vnum = obj->pIndexData != NULL ? obj->pIndexData->vnum : -1;
+
+        if (obj->item_type != ITEM_MONEY || obj->value[1] != coin_type
+        || (vnum != OBJ_VNUM_MONEY_ONE && vnum != OBJ_VNUM_MONEY_SOME))
+            continue;
+
+        pile_amount = vnum == OBJ_VNUM_MONEY_ONE ? 1 : obj->value[0];
+        if (pile_amount <= 0 || total > INT_MAX - pile_amount)
+            return false;
+        total += pile_amount;
+    }
+
+    *merged_amount = (int)total;
+    return true;
+}
+
+static void extract_room_coin_type(ROOM_INDEX_DATA *room, int coin_type)
+{
+    OBJ_DATA *obj;
+    OBJ_DATA *obj_next;
+
+    if (room == NULL)
+        return;
+
+    for (obj = room->contents; obj != NULL; obj = obj_next)
+    {
+        int vnum = obj->pIndexData != NULL ? obj->pIndexData->vnum : -1;
+
+        obj_next = obj->next_content;
+        if (obj->item_type == ITEM_MONEY && obj->value[1] == coin_type
+        && (vnum == OBJ_VNUM_MONEY_ONE || vnum == OBJ_VNUM_MONEY_SOME))
+            extract_obj(obj);
+    }
+}
+
 void do_drop( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -776,13 +889,13 @@ void do_drop( CHAR_DATA *ch, char *argument )
     }
 
     if(is_number(arg)) {
-	int amount = atoi(arg);
+	int amount;
 
-	argument = one_argument(argument,arg);
-	if(amount<= 0) {
-	    send_to_char("Drop negative coins? Put that bottle down.\n\r",ch);
+	if(!parse_positive_int(arg, &amount)) {
+	    send_to_char("Drop a valid positive number of coins.\n\r",ch);
 	    return;
 	}
+	argument = one_argument(argument,arg);
 
 	if(!str_cmp(arg,"coins") || !str_cmp(arg, "coin" )) {
 	    send_to_char("With the new monetary system, you need to "
@@ -795,32 +908,19 @@ void do_drop( CHAR_DATA *ch, char *argument )
 	    if(amount > ch->new_platinum) {
 		send_to_char("You don't have enough platinum.\n\r",ch);
 		return;
-	    } else {
+	} else {
 		int original_amount = amount;
-		for(obj = ch->in_room->contents;obj;obj = obj_next) {
-		    obj_next = obj->next_content;
-
-                    switch(obj->pIndexData != NULL ? obj->pIndexData->vnum : -1) {
-                    case OBJ_VNUM_MONEY_ONE:
-                        if(obj->value[1] == TYPE_PLATINUM) {
-                            amount += 1;
-                            extract_obj( obj );
-                            break;
-                        }
-                        /* fall through */
-                    case OBJ_VNUM_MONEY_SOME:
-                        if(obj->value[1] == TYPE_PLATINUM) {
-                            amount += obj->value[0];
-                            extract_obj( obj );
-                            break;
-			}
-		    }
+		if (!room_coin_merge_total(ch->in_room, amount, TYPE_PLATINUM,
+		                           &amount)) {
+		    send_to_char("There are too many coins here to merge safely.\n\r", ch);
+		    return;
 		}
+		extract_room_coin_type(ch->in_room, TYPE_PLATINUM);
 
 		obj_to_room( create_money(amount,TYPE_PLATINUM),
 			ch->in_room);
 		act( "$n drops some platinum.", ch, NULL, NULL, TO_ROOM );
-		ch->new_platinum -= original_amount;
+		adjust_coin_balance(ch, -original_amount, TYPE_PLATINUM);
 
                 if(original_amount >= 5000) {
                     snprintf( buf, sizeof(buf), "%s dropped %d platinum. [Room: %d]",
@@ -835,32 +935,19 @@ void do_drop( CHAR_DATA *ch, char *argument )
 	    if(amount > ch->new_gold) {
 		send_to_char("You don't have enough gold.\n\r",ch);
 		return;
-	    } else {
+	} else {
 		int original_amount = amount;
-		for(obj = ch->in_room->contents;obj;obj = obj_next) {
-		    obj_next = obj->next_content;
-
-                    switch(obj->pIndexData != NULL ? obj->pIndexData->vnum : -1) {
-                    case OBJ_VNUM_MONEY_ONE:
-                        if(obj->value[1] == TYPE_GOLD) {
-                            amount += 1;
-                            extract_obj( obj );
-                            break;
-                        }
-                        /* fall through */
-                    case OBJ_VNUM_MONEY_SOME:
-                        if(obj->value[1] == TYPE_GOLD) {
-                            amount += obj->value[0];
-                            extract_obj( obj );
-                            break;
-			}
-		    }
+		if (!room_coin_merge_total(ch->in_room, amount, TYPE_GOLD,
+		                           &amount)) {
+		    send_to_char("There are too many coins here to merge safely.\n\r", ch);
+		    return;
 		}
+		extract_room_coin_type(ch->in_room, TYPE_GOLD);
 
 		obj_to_room( create_money(amount,TYPE_GOLD),
 			ch->in_room);
 		act( "$n drops some gold.", ch, NULL, NULL, TO_ROOM );
-		ch->new_gold -= original_amount;
+		adjust_coin_balance(ch, -original_amount, TYPE_GOLD);
 
                 if(original_amount >= 25000) {
                     snprintf( buf, sizeof(buf), "%s dropped %d gold. [Room: %d]",
@@ -875,32 +962,19 @@ void do_drop( CHAR_DATA *ch, char *argument )
 	    if(amount > ch->new_silver) {
 		send_to_char("You don't have enough silver.\n\r",ch);
 		return;
-	    } else {
+	} else {
 		int original_amount = amount;
-		for(obj = ch->in_room->contents;obj;obj = obj_next) {
-		    obj_next = obj->next_content;
-
-                    switch(obj->pIndexData != NULL ? obj->pIndexData->vnum : -1) {
-                    case OBJ_VNUM_MONEY_ONE:
-                        if(obj->value[1] == TYPE_SILVER) {
-                            amount += 1;
-                            extract_obj( obj );
-                            break;
-                        }
-                        /* fall through */
-                    case OBJ_VNUM_MONEY_SOME:
-                        if(obj->value[1] == TYPE_SILVER) {
-                            amount += obj->value[0];
-                            extract_obj( obj );
-                            break;
-			}
-		    }
+		if (!room_coin_merge_total(ch->in_room, amount, TYPE_SILVER,
+		                           &amount)) {
+		    send_to_char("There are too many coins here to merge safely.\n\r", ch);
+		    return;
 		}
+		extract_room_coin_type(ch->in_room, TYPE_SILVER);
 
 		obj_to_room( create_money(amount,TYPE_SILVER),
 			ch->in_room);
 		act( "$n drops some silver.", ch, NULL, NULL, TO_ROOM );
-		ch->new_silver -= original_amount;
+		adjust_coin_balance(ch, -original_amount, TYPE_SILVER);
 		send_to_char( "OK.\n\r", ch );
 		return;
     	    }
@@ -908,32 +982,19 @@ void do_drop( CHAR_DATA *ch, char *argument )
 	    if(amount > ch->new_copper) {
 		send_to_char("You don't have enough copper.\n\r",ch);
 		return;
-	    } else {
+	} else {
 		int original_amount = amount;
-		for(obj = ch->in_room->contents;obj;obj = obj_next) {
-		    obj_next = obj->next_content;
-
-                    switch(obj->pIndexData != NULL ? obj->pIndexData->vnum : -1) {
-                    case OBJ_VNUM_MONEY_ONE:
-                        if(obj->value[1] == TYPE_COPPER) {
-                            amount += 1;
-                            extract_obj( obj );
-                            break;
-                        }
-                        /* fall through */
-                    case OBJ_VNUM_MONEY_SOME:
-                        if(obj->value[1] == TYPE_COPPER) {
-                            amount += obj->value[0];
-                            extract_obj( obj );
-                            break;
-			}
-		    }
+		if (!room_coin_merge_total(ch->in_room, amount, TYPE_COPPER,
+		                           &amount)) {
+		    send_to_char("There are too many coins here to merge safely.\n\r", ch);
+		    return;
 		}
+		extract_room_coin_type(ch->in_room, TYPE_COPPER);
 
 		obj_to_room( create_money(amount,TYPE_COPPER),
 			ch->in_room);
 		act( "$n drops some copper.", ch, NULL, NULL, TO_ROOM );
-		ch->new_copper -= original_amount;
+		adjust_coin_balance(ch, -original_amount, TYPE_COPPER);
 		send_to_char( "OK.\n\r", ch );
 		return;
     	    }
@@ -1053,8 +1114,7 @@ void do_give( CHAR_DATA *ch, char *argument )
     if(is_number(arg1)) {
 	int amount;
 
-	amount = atoi(arg1);
-	if(amount <= 0) {
+	if(!parse_positive_int(arg1, &amount)) {
 	    send_to_char("Give a negative amount?"
 		" Put that bottle down.\n\r",ch);
 	    return;
@@ -1094,14 +1154,21 @@ void do_give( CHAR_DATA *ch, char *argument )
             return;
         }
 
+        if (!can_adjust_coin_balance(victim, amount, type))
+        {
+            act("$N cannot safely carry any more of those coins.",
+                ch, NULL, victim, TO_CHAR);
+            return;
+        }
+
 	switch(type) {
 	case TYPE_PLATINUM:
 	    if(ch->new_platinum < amount) {
 		send_to_char("You don't have enough platinum.\n\r",ch);
 		return;
 	    } else {
-		ch->new_platinum     -= amount;
-		victim->new_platinum += amount;
+		adjust_coin_balance(ch, -amount, TYPE_PLATINUM);
+		adjust_coin_balance(victim, amount, TYPE_PLATINUM);
                 snprintf(buf, sizeof(buf),"$n gives you %d platinum.",amount);
                 act(buf,ch,NULL,victim,TO_VICT);
                 act("$n gives $N some platinum.",
@@ -1120,8 +1187,8 @@ void do_give( CHAR_DATA *ch, char *argument )
 		send_to_char("You don't have enough gold.\n\r",ch);
 		return;
 	    } else {
-		ch->new_gold     -= amount;
-		victim->new_gold += amount;
+		adjust_coin_balance(ch, -amount, TYPE_GOLD);
+		adjust_coin_balance(victim, amount, TYPE_GOLD);
                 snprintf(buf, sizeof(buf),"$n gives you %d gold.",amount);
                 act(buf,ch,NULL,victim,TO_VICT);
                 act("$n gives $N some gold.",
@@ -1140,8 +1207,8 @@ void do_give( CHAR_DATA *ch, char *argument )
 		send_to_char("You don't have enough silver.\n\r",ch);
 		return;
 	    } else {
-		ch->new_silver     -= amount;
-		victim->new_silver += amount;
+		adjust_coin_balance(ch, -amount, TYPE_SILVER);
+		adjust_coin_balance(victim, amount, TYPE_SILVER);
                 snprintf(buf, sizeof(buf),"$n gives you %d silver.",amount);
                 act(buf,ch,NULL,victim,TO_VICT);
                 act("$n gives $N some silver.",
@@ -1154,8 +1221,8 @@ void do_give( CHAR_DATA *ch, char *argument )
 		send_to_char("You don't have enough copper.\n\r",ch);
 		return;
 	    } else {
-		ch->new_copper     -= amount;
-		victim->new_copper += amount;
+		adjust_coin_balance(ch, -amount, TYPE_COPPER);
+		adjust_coin_balance(victim, amount, TYPE_COPPER);
                 snprintf(buf, sizeof(buf),"$n gives you %d copper.",amount);
                 act(buf,ch,NULL,victim,TO_VICT);
                 act("$n gives $N some copper.",
@@ -1229,8 +1296,20 @@ static long coin_copper_value(int type)
         case TYPE_SILVER:    return COPPER_PER_SILVER;
         case TYPE_GOLD:      return COPPER_PER_GOLD;
         case TYPE_PLATINUM:  return COPPER_PER_PLATINUM;
-        default:             return COPPER_PER_GOLD;
+        default:             return 0;
     }
+}
+
+static bool add_coin_copper_value(long amount, long multiplier, long *total)
+{
+    if (amount < 0 || multiplier <= 0 || total == NULL || *total < 0)
+        return false;
+
+    if (amount > (LONG_MAX - *total) / multiplier)
+        return false;
+
+    *total += amount * multiplier;
+    return true;
 }
 
 static void copper_to_breakdown(long total_copper, long *platinum, long *gold,
@@ -1258,47 +1337,29 @@ static void copper_to_breakdown(long total_copper, long *platinum, long *gold,
         *copper = total_copper % COPPER_PER_SILVER;
 }
 
-/*
- * Saturating sum of a purse in copper.
- *
- * The multiplications here are unguarded in the obvious formulation, and
- * COPPER_PER_PLATINUM is 1,000,000, so a purse above roughly 9.2 trillion
- * platinum overflows a signed long -- undefined behaviour, not a wrap. Normal
- * play cannot reach that, because copper_to_breakdown() only ever distributes
- * a total that already fit in a long. A hand-edited or corrupted player file
- * can, though, and pfiles are exactly the kind of player-controlled number
- * AGENTS.md requires validating before multiplication. Saturate instead.
- */
-static long coin_add_saturating(long total, long count, long unit)
+static bool coins_to_copper_checked(const CHAR_DATA *ch, long *total)
 {
-    long scaled;
+    long value = 0;
 
-    if (count <= 0 || unit <= 0)
-        return total;
+    if (ch == NULL || total == NULL)
+        return false;
 
-    if (count > LONG_MAX / unit)
-        return LONG_MAX;
+    if (!add_coin_copper_value(ch->new_copper, 1, &value)
+        || !add_coin_copper_value(ch->new_silver, COPPER_PER_SILVER, &value)
+        || !add_coin_copper_value(ch->new_gold, COPPER_PER_GOLD, &value)
+        || !add_coin_copper_value(ch->new_platinum, COPPER_PER_PLATINUM,
+                                  &value))
+        return false;
 
-    scaled = count * unit;
-    if (total > LONG_MAX - scaled)
-        return LONG_MAX;
-
-    return total + scaled;
+    *total = value;
+    return true;
 }
 
 long coins_to_copper(const CHAR_DATA *ch)
 {
     long total;
 
-    if (ch == NULL)
-        return 0;
-
-    total = ch->new_copper > 0 ? ch->new_copper : 0;
-    total = coin_add_saturating(total, ch->new_silver, COPPER_PER_SILVER);
-    total = coin_add_saturating(total, ch->new_gold, COPPER_PER_GOLD);
-    total = coin_add_saturating(total, ch->new_platinum, COPPER_PER_PLATINUM);
-
-    return total;
+    return coins_to_copper_checked(ch, &total) ? total : 0;
 }
 
 static void normalize_coins(CHAR_DATA *ch, long total_copper)
@@ -1308,6 +1369,86 @@ static void normalize_coins(CHAR_DATA *ch, long total_copper)
 
     copper_to_breakdown(total_copper, &ch->new_platinum, &ch->new_gold,
         &ch->new_silver, &ch->new_copper);
+}
+
+void sanitize_carried_money(CHAR_DATA *ch)
+{
+    long total;
+
+    if (ch == NULL)
+        return;
+
+    if (ch->new_platinum < 0)
+        ch->new_platinum = 0;
+    if (ch->new_gold < 0)
+        ch->new_gold = 0;
+    if (ch->new_silver < 0)
+        ch->new_silver = 0;
+    if (ch->new_copper < 0)
+        ch->new_copper = 0;
+
+    if (!coins_to_copper_checked(ch, &total))
+        normalize_coins(ch, LONG_MAX);
+}
+
+static long coin_balance(const CHAR_DATA *ch, int coin_type)
+{
+    if (ch == NULL)
+        return -1;
+
+    switch (coin_type)
+    {
+        case TYPE_COPPER:   return ch->new_copper;
+        case TYPE_SILVER:   return ch->new_silver;
+        case TYPE_GOLD:     return ch->new_gold;
+        case TYPE_PLATINUM: return ch->new_platinum;
+    }
+
+    return -1;
+}
+
+bool can_adjust_coin_balance(const CHAR_DATA *ch, long amount, int coin_type)
+{
+    long balance = coin_balance(ch, coin_type);
+    long multiplier;
+    long total;
+
+    if (balance < 0 || amount == LONG_MIN)
+        return false;
+    if (amount > 0)
+    {
+        multiplier = coin_copper_value(coin_type);
+        if (multiplier <= 0 || balance > LONG_MAX - amount
+        ||  amount > LONG_MAX / multiplier
+        ||  !coins_to_copper_checked(ch, &total))
+            return false;
+        return amount * multiplier <= LONG_MAX - total;
+    }
+    if (amount < 0)
+        return balance >= -amount;
+    return coin_copper_value(coin_type) > 0;
+}
+
+bool adjust_coin_balance(CHAR_DATA *ch, long amount, int coin_type)
+{
+    long *balance;
+
+    if (!can_adjust_coin_balance(ch, amount, coin_type))
+        return false;
+
+    switch (coin_type)
+    {
+        case TYPE_COPPER:   balance = &ch->new_copper; break;
+        case TYPE_SILVER:   balance = &ch->new_silver; break;
+        case TYPE_GOLD:     balance = &ch->new_gold; break;
+        case TYPE_PLATINUM: balance = &ch->new_platinum; break;
+        default:            return false;
+    }
+
+    *balance += amount;
+    if (amount != 0)
+        achievement_check_economy(ch, true);
+    return true;
 }
 
 bool has_enough_gold( const CHAR_DATA *ch, long gold_cost )
@@ -1324,7 +1465,8 @@ bool has_enough_gold( const CHAR_DATA *ch, long gold_cost )
     if (gold_cost > LONG_MAX / COPPER_PER_GOLD)
         return false;
 
-    total_copper = coins_to_copper(ch);
+    if (!coins_to_copper_checked(ch, &total_copper))
+        return false;
     required_copper = gold_cost * COPPER_PER_GOLD;
 
     return total_copper >= required_copper;
@@ -1354,11 +1496,10 @@ static bool can_carry_copper(CHAR_DATA *ch, long copper_amount)
     if (ch == NULL || copper_amount < 0)
         return false;
 
-    total_copper = coins_to_copper(ch);
-    if (copper_amount > 0 && total_copper > LONG_MAX - copper_amount)
-        total_copper = LONG_MAX;
-    else
-        total_copper += copper_amount;
+    if (!coins_to_copper_checked(ch, &total_copper)
+        || total_copper > LONG_MAX - copper_amount)
+        return false;
+    total_copper += copper_amount;
 
     copper_to_breakdown(total_copper, &platinum, &gold, &silver, &copper);
     total_coins = platinum + gold + silver + copper;
@@ -1371,18 +1512,21 @@ static bool parse_coin_amount(char *argument, long *amount, int *coin_type)
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
+    char arg3[MAX_INPUT_LENGTH];
     char *endptr;
     long parsed_amount;
     int parsed_type;
 
     argument = one_argument(argument, arg1);
-    one_argument(argument, arg2);
+    argument = one_argument(argument, arg2);
+    one_argument(argument, arg3);
 
-    if (arg1[0] == '\0')
+    if (arg1[0] == '\0' || arg3[0] != '\0')
         return false;
 
+    errno = 0;
     parsed_amount = strtol(arg1, &endptr, 10);
-    if (*endptr != '\0' || parsed_amount <= 0)
+    if (errno == ERANGE || *endptr != '\0' || parsed_amount <= 0)
         return false;
 
     parsed_type = TYPE_PLATINUM;
@@ -1419,6 +1563,7 @@ void do_deposit( CHAR_DATA *ch, char *argument )
     char coins_buf[MAX_STRING_LENGTH];
     long amount;
     long amount_copper;
+    long carried_copper;
     int coin_type;
 
     if ( IS_NPC(ch) )
@@ -1436,22 +1581,30 @@ void do_deposit( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if(!IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
+    if(ch->in_room == NULL
+    || !IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
         send_to_char( "You're not in the bank!\n\r", ch );
         return;
     }
 
-    if (coins_to_copper(ch) < amount_copper) {
-        send_to_char( "You don't have that much money. Convert first?\n\r", ch );
+    if (!coins_to_copper_checked(ch, &carried_copper)) {
+        send_to_char("Your carried money cannot be safely counted. Contact an immortal.\n\r", ch);
         return;
     }
 
-    normalize_coins(ch, coins_to_copper(ch) - amount_copper);
+    if (carried_copper < amount_copper) {
+        send_to_char( "You don't have that much money.\n\r", ch );
+        return;
+    }
 
-    if (amount_copper > LONG_MAX - ch->pcdata->bank)
-        ch->pcdata->bank = LONG_MAX;
-    else
-        ch->pcdata->bank += amount_copper;
+    if (ch->pcdata->bank < 0
+    ||  amount_copper > LONG_MAX - ch->pcdata->bank) {
+        send_to_char("Your account cannot hold that deposit.\n\r", ch);
+        return;
+    }
+
+    normalize_coins(ch, carried_copper - amount_copper);
+    ch->pcdata->bank += amount_copper;
 
     format_coins(amount_copper, coins_buf, sizeof(coins_buf));
     send_to_char("You deposit your coins into the bank.\n\r", ch);
@@ -1463,6 +1616,9 @@ void do_deposit( CHAR_DATA *ch, char *argument )
     send_to_char("New balance: ", ch);
     send_to_char(coins_buf, ch);
     send_to_char(".\n\r", ch);
+    achievement_record_event(ch, ACHIEVEMENT_EVENT_BANK_DEPOSIT, true);
+    achievement_check_economy(ch, true);
+    save_char_obj(ch);
 }
 
 void do_withdraw( CHAR_DATA *ch, char *argument )
@@ -1470,6 +1626,7 @@ void do_withdraw( CHAR_DATA *ch, char *argument )
     char coins_buf[MAX_STRING_LENGTH];
     long amount;
     long amount_copper;
+    long carried_copper;
     int coin_type;
 
     if ( IS_NPC(ch) )
@@ -1487,13 +1644,21 @@ void do_withdraw( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if(!IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
+    if(ch->in_room == NULL
+    || !IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
         send_to_char("You're not in the bank!\n\r",ch);
         return;
     }
 
     if(ch->pcdata->bank < amount_copper) {
         send_to_char ( "You don't have that much in the bank.\n\r", ch);
+        return;
+    }
+
+    if (!coins_to_copper_checked(ch, &carried_copper)
+    ||  carried_copper > LONG_MAX - amount_copper)
+    {
+        send_to_char("You cannot safely carry that much money.\n\r", ch);
         return;
     }
 
@@ -1504,7 +1669,7 @@ void do_withdraw( CHAR_DATA *ch, char *argument )
     }
 
     ch->pcdata->bank -= amount_copper;
-    normalize_coins(ch, coins_to_copper(ch) + amount_copper);
+    normalize_coins(ch, carried_copper + amount_copper);
 
     format_coins(amount_copper, coins_buf, sizeof(coins_buf));
     send_to_char("You withdraw ", ch);
@@ -1515,19 +1680,33 @@ void do_withdraw( CHAR_DATA *ch, char *argument )
     send_to_char("New balance: ", ch);
     send_to_char(coins_buf, ch);
     send_to_char(".\n\r", ch);
+    if (ch->pcdata->bank == 0)
+        achievement_record_event(ch, ACHIEVEMENT_EVENT_BANK_EMPTIED, true);
+    achievement_check_economy(ch, true);
+    save_char_obj(ch);
 }
 
 void do_convert(CHAR_DATA *ch, char *argument)
 {
+    long total_copper;
+
     UNUSED_PARAM(argument);
 
-    if(!IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
+    if(ch->in_room == NULL
+    || !IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
         send_to_char("You're not in the bank!\n\r",ch);
         return;
     }
 
-    normalize_coins(ch, coins_to_copper(ch));
+    if (!coins_to_copper_checked(ch, &total_copper))
+    {
+        send_to_char("Your carried money cannot be safely converted. Contact an immortal.\n\r", ch);
+        return;
+    }
+
+    normalize_coins(ch, total_copper);
     send_to_char("Your money has been converted into platinum as much as possible.\n\r",ch);
+    save_char_obj(ch);
     return;
 }
 
@@ -1539,7 +1718,8 @@ void do_balance( CHAR_DATA *ch, char *argument )
     if(IS_NPC(ch))
         return;
 
-    if(!IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
+    if(ch->in_room == NULL
+    || !IS_SET(ch->in_room->room_flags2, ROOM2_BANK)) {
         send_to_char("You need to be in the bank!\n\r",ch);
         return;
     }
@@ -1548,6 +1728,8 @@ void do_balance( CHAR_DATA *ch, char *argument )
     send_to_char("Your current balance is ", ch);
     send_to_char(coins_buf, ch);
     send_to_char(".\n\r", ch);
+    send_to_char("Interest pays 1% per real day on balances of at least 1 platinum, with up to 7 days of catch-up.\n\r", ch);
+    achievement_check_economy(ch, true);
     return;
 }
 
@@ -2545,6 +2727,13 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
     if(obj->item_type != ITEM_CORPSE_NPC && obj->item_type != ITEM_CORPSE_PC)
 	copper = UMIN(copper,obj->cost);
 
+    if (!can_adjust_coin_balance(ch, copper, TYPE_COPPER)
+    ||  query_carry_coins(ch, copper) > can_carry_w(ch))
+    {
+	send_to_char("You cannot safely carry the sacrificial reward.\n\r", ch);
+	return;
+    }
+
     if(copper == 1)
         send_to_char("The Gods give you one "
 		"copper coin for your sacrifice.\n\r",ch);
@@ -2553,7 +2742,7 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
 	send_to_char(buf,ch);
     }
 
-    ch->new_copper += copper;
+    adjust_coin_balance(ch, copper, TYPE_COPPER);
 
     if (IS_SET(ch->act,PLR_AUTOSPLIT) ) {
     	members = 0;
@@ -3058,13 +3247,14 @@ void do_steal( CHAR_DATA *ch, char *argument )
 
         amount = victim->new_platinum * number_range(1, 10) / 100;
 
-	if ((amount <= 0) || (query_carry_coins(ch,amount) > can_carry_w(ch))) {
+	if ((amount <= 0) || (query_carry_coins(ch,amount) > can_carry_w(ch))
+	||  !can_adjust_coin_balance(ch, amount, TYPE_PLATINUM)) {
 	    send_to_char( "You couldn't get any platinum.\n\r", ch );
 	    return;
 	}
 
-	ch->new_platinum     += amount;
-	victim->new_platinum -= amount;
+	adjust_coin_balance(ch, amount, TYPE_PLATINUM);
+	adjust_coin_balance(victim, -amount, TYPE_PLATINUM);
         snprintf(buf, sizeof(buf), "Bingo! You got %ld platinum coins.\n\r", amount);
 	send_to_char(buf,ch);
 	check_improve(ch,gsn_steal,true,2);
@@ -3076,13 +3266,14 @@ void do_steal( CHAR_DATA *ch, char *argument )
 
         amount = victim->new_gold * number_range(1, 10) / 100;
 
-	if ((amount <= 0) || (query_carry_coins(ch,amount) > can_carry_w(ch))) {
+	if ((amount <= 0) || (query_carry_coins(ch,amount) > can_carry_w(ch))
+	||  !can_adjust_coin_balance(ch, amount, TYPE_GOLD)) {
 	    send_to_char( "You couldn't get any gold.\n\r", ch );
 	    return;
 	}
 
-	ch->new_gold     += amount;
-	victim->new_gold -= amount;
+	adjust_coin_balance(ch, amount, TYPE_GOLD);
+	adjust_coin_balance(victim, -amount, TYPE_GOLD);
         snprintf(buf, sizeof(buf), "Bingo! You got %ld gold coins.\n\r", amount);
 	send_to_char(buf,ch);
 	check_improve(ch,gsn_steal,true,2);
@@ -3094,13 +3285,14 @@ void do_steal( CHAR_DATA *ch, char *argument )
 
         amount = victim->new_silver * number_range(1, 10) / 100;
 
-	if ((amount <= 0) || (query_carry_coins(ch,amount) > can_carry_w(ch))) {
+	if ((amount <= 0) || (query_carry_coins(ch,amount) > can_carry_w(ch))
+	||  !can_adjust_coin_balance(ch, amount, TYPE_SILVER)) {
 	    send_to_char( "You couldn't get any silver.\n\r", ch );
 	    return;
 	}
 
-	ch->new_silver     += amount;
-	victim->new_silver -= amount;
+	adjust_coin_balance(ch, amount, TYPE_SILVER);
+	adjust_coin_balance(victim, -amount, TYPE_SILVER);
         snprintf(buf, sizeof(buf), "Bingo! You got %ld silver coins.\n\r", amount);
 	send_to_char(buf,ch);
 	check_improve(ch,gsn_steal,true,2);
@@ -3112,13 +3304,14 @@ void do_steal( CHAR_DATA *ch, char *argument )
 
         amount = victim->new_copper * number_range(1, 10) / 100;
 
-	if ((amount <= 0) || (query_carry_coins(ch,amount) > can_carry_w(ch))) {
+	if ((amount <= 0) || (query_carry_coins(ch,amount) > can_carry_w(ch))
+	||  !can_adjust_coin_balance(ch, amount, TYPE_COPPER)) {
 	    send_to_char( "You couldn't get any copper.\n\r", ch );
 	    return;
 	}
 
-	ch->new_copper     += amount;
-	victim->new_copper -= amount;
+	adjust_coin_balance(ch, amount, TYPE_COPPER);
+	adjust_coin_balance(victim, -amount, TYPE_COPPER);
         snprintf(buf, sizeof(buf), "Bingo! You got %ld copper coins.\n\r", amount);
 	send_to_char(buf,ch);
 	check_improve(ch,gsn_steal,true,2);
@@ -3365,7 +3558,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
     act( "$n buys $p.", ch, obj, NULL, TO_ROOM );
     act( "You buy $p.", ch, obj, NULL, TO_CHAR );
     add_money(ch,cost*-1);
-    keeper->new_gold += cost;
+    add_money(keeper, cost);
 
     if(IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
         obj = create_object( obj->pIndexData, -1 * obj->level );
@@ -3489,7 +3682,6 @@ void do_sell( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    act( "$n sells $p.", ch, obj, NULL, TO_ROOM );
     /* haggle */
     roll = number_percent();
     if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle])
@@ -3500,13 +3692,20 @@ void do_sell( CHAR_DATA *ch, char *argument )
         cost = (int)UMAX(0L, UMIN((long)cost, keeper->new_gold));
         check_improve(ch,gsn_haggle,true,4);
     }
+    if (!can_adjust_coin_balance(ch, cost, TYPE_GOLD)
+    ||  query_carry_coins(ch, cost) > can_carry_w(ch))
+    {
+	act("$n tells you 'You cannot safely carry that many coins.'",
+	    keeper, NULL, ch, TO_VICT);
+	return;
+    }
+
+    act( "$n sells $p.", ch, obj, NULL, TO_ROOM );
     snprintf( buf, sizeof(buf), "You sell $p for %d gold piece%s.",
         cost, cost == 1 ? "" : "s" );
     act( buf, ch, obj, NULL, TO_CHAR );
-    ch->new_gold     += cost;
-    keeper->new_gold -= cost;
-    if ( keeper->new_gold < 0 )
-	keeper->new_gold = 0;
+    adjust_coin_balance(ch, cost, TYPE_GOLD);
+    adjust_coin_balance(keeper, -cost, TYPE_GOLD);
 
     if ( obj->item_type == ITEM_TRASH )
     {
@@ -4519,26 +4718,33 @@ void do_repair( CHAR_DATA *ch, char *argument )
 }
 
 long query_gold(CHAR_DATA *ch){
-  long total;
+  long total_copper;
 
   if (ch == NULL) return 0;
-
-  total = (ch->new_platinum * GOLD_PER_PLATINUM) + ch->new_gold;
-  total += ch->new_silver / SILVER_PER_GOLD;
-  total += ch->new_copper / COPPER_PER_GOLD;
-  return total;
+  if (!coins_to_copper_checked(ch, &total_copper)) return 0;
+  return total_copper / COPPER_PER_GOLD;
 }
 
 int query_carry_coins(CHAR_DATA *ch, long amount)
 {
+  long coin_count;
   long total_weight;
 
-  if (ch == NULL) return 0;
+  if (ch == NULL || amount < 0) return INT_MAX;
 
-  total_weight = ch->new_platinum + ch->new_gold + ch->new_silver + ch->new_copper + amount;
-  total_weight = ch->carry_weight + (total_weight / 5000);
+  coin_count = 0;
+  if (!add_coin_copper_value(ch->new_platinum, 1, &coin_count)
+  ||  !add_coin_copper_value(ch->new_gold, 1, &coin_count)
+  ||  !add_coin_copper_value(ch->new_silver, 1, &coin_count)
+  ||  !add_coin_copper_value(ch->new_copper, 1, &coin_count)
+  ||  !add_coin_copper_value(amount, 1, &coin_count))
+    return INT_MAX;
 
-  if (total_weight > INT_MAX)
+  if (coin_count / 5000 > LONG_MAX - ch->carry_weight)
+    return INT_MAX;
+  total_weight = ch->carry_weight + (coin_count / 5000);
+
+  if (total_weight > INT_MAX || total_weight < 0)
     return INT_MAX;
 
   return (int)total_weight;
@@ -4546,17 +4752,8 @@ int query_carry_coins(CHAR_DATA *ch, long amount)
 
 int query_carry_weight(CHAR_DATA *ch)
 {
-  long total_weight;
-
   if (ch == NULL) return 0;
-
-  total_weight = ch->new_platinum + ch->new_gold + ch->new_silver + ch->new_copper;
-  total_weight = ch->carry_weight + (total_weight / 5000);
-
-  if (total_weight > INT_MAX)
-    return INT_MAX;
-
-  return (int)total_weight;
+  return query_carry_coins(ch, 0);
 }
 
 void add_money(CHAR_DATA *ch, long amount)
@@ -4568,23 +4765,39 @@ void add_money(CHAR_DATA *ch, long amount)
   if (ch == NULL || amount == 0)
     return;
 
-  delta_copper = amount * COPPER_PER_GOLD;
-  total_copper = coins_to_copper(ch);
-
-  if (delta_copper > 0)
+  if (!coins_to_copper_checked(ch, &total_copper))
   {
-    if (delta_copper > LONG_MAX - total_copper)
+    log_string("[ADD_MONEY] Refusing to alter an unrepresentable coin balance.");
+    return;
+  }
+
+  if (amount > 0)
+  {
+    if (amount > LONG_MAX / COPPER_PER_GOLD)
       total_copper = LONG_MAX;
     else
-      total_copper += delta_copper;
+    {
+      delta_copper = amount * COPPER_PER_GOLD;
+      if (delta_copper > LONG_MAX - total_copper)
+        total_copper = LONG_MAX;
+      else
+        total_copper += delta_copper;
+    }
   }
   else
   {
-    long required = -delta_copper;
+    long requested_gold;
+    long required;
+
+    requested_gold = amount == LONG_MIN ? LONG_MAX : -amount;
+    if (amount < -(LONG_MAX / COPPER_PER_GOLD))
+      required = LONG_MAX;
+    else
+      required = (-amount) * COPPER_PER_GOLD;
 
     if (total_copper < required)
       { snprintf(buf, sizeof(buf), "[ADD_MONEY] Trying to subtract %ld money while char %s has only %ld.\n\r",
-                amount * -1, ch->name, total_copper / COPPER_PER_GOLD);
+                requested_gold, ch->name, total_copper / COPPER_PER_GOLD);
         log_string(buf);
       ch->new_gold = 0;
       ch->new_platinum = 0;
@@ -4597,34 +4810,27 @@ void add_money(CHAR_DATA *ch, long amount)
   }
 
   normalize_coins(ch, total_copper);
+  achievement_check_economy(ch, true);
 }
 
 void add_gold(CHAR_DATA *ch, long amount)
 {
-  if (ch == NULL) return;
-  ch->new_gold += amount;
-  if (ch->new_gold < 0) ch->new_gold = 0;
+  adjust_coin_balance(ch, amount, TYPE_GOLD);
 }
 
 void add_copper(CHAR_DATA *ch, long amount)
 {
-  if (ch == NULL) return;
-  ch->new_copper += amount;
-  if (ch->new_copper < 0) ch->new_copper = 0;
+  adjust_coin_balance(ch, amount, TYPE_COPPER);
 }
 
 void add_silver(CHAR_DATA *ch, long amount)
 {
-  if (ch == NULL) return;
-  ch->new_silver += amount;
-  if (ch->new_silver < 0) ch->new_silver = 0;
+  adjust_coin_balance(ch, amount, TYPE_SILVER);
 }
 
 void add_platinum(CHAR_DATA *ch, long amount)
 {
-  if (ch == NULL) return;
-  ch->new_platinum += amount;
-  if (ch->new_platinum < 0) ch->new_platinum = 0;
+  adjust_coin_balance(ch, amount, TYPE_PLATINUM);
 }
 
 /* ============================================================
@@ -4654,6 +4860,25 @@ static bool in_casino( CHAR_DATA *ch )
     if ( ch->in_room == NULL ) return false;
     return ( ch->in_room->vnum >= CASINO_VNUM_LOW
           && ch->in_room->vnum <= CASINO_VNUM_HIGH );
+}
+
+static void casino_record_total( CHAR_DATA *ch, bool winnings, long amount )
+{
+    long *total;
+
+    if ( ch == NULL || ch->pcdata == NULL || amount <= 0 )
+        return;
+
+    total = winnings ? &ch->pcdata->casino_winnings
+                     : &ch->pcdata->casino_losses;
+    if ( *total < 0 )
+        *total = 0;
+    if ( amount > LONG_MAX - *total )
+        *total = LONG_MAX;
+    else
+        *total += amount;
+
+    achievement_check_economy( ch, true );
 }
 
 void do_gamble( CHAR_DATA *ch, char *argument )
@@ -4688,7 +4913,7 @@ void do_gamble( CHAR_DATA *ch, char *argument )
     {
         long payout = result == 0 ? 50 : 20;
         add_money( ch, payout );
-        ch->pcdata->casino_winnings += payout - 10;
+        casino_record_total( ch, true, payout - 10 );
         snprintf( buf, sizeof(buf),
                   "You choose a hidden rupee sign and win %ld rupees!\n\r", payout );
         send_to_char( buf, ch );
@@ -4699,7 +4924,7 @@ void do_gamble( CHAR_DATA *ch, char *argument )
         loss = UMIN( query_gold(ch), requested_loss );
         if ( loss > 0 )
             add_money( ch, -loss );
-        ch->pcdata->casino_losses += 10 + loss;
+        casino_record_total( ch, false, 10 + loss );
         snprintf( buf, sizeof(buf),
                   "You choose a hidden rupee sign and lose %ld more rupees.\n\r", loss );
         send_to_char( buf, ch );
@@ -4719,6 +4944,7 @@ void do_slots( CHAR_DATA *ch, char *argument )
     char buf[MAX_STRING_LENGTH];
     int r1, r2, r3;
     long payout = 0;
+    bool jackpot = false;
     const char *result_msg;
 
     if ( IS_NPC(ch) )
@@ -4755,6 +4981,7 @@ void do_slots( CHAR_DATA *ch, char *argument )
     {
         /* Three sevens (either stop): jackpot */
         payout = 100;
+        jackpot = true;
         result_msg = "*** JACKPOT! THREE SEVENS! ***\n\r";
     }
     else if ( r1 == 2 && r2 == 2 && r3 == 2 )
@@ -4797,7 +5024,7 @@ void do_slots( CHAR_DATA *ch, char *argument )
         if ( payout > 1 )
         {
             /* Net win: received payout, paid 1 coin in */
-            ch->pcdata->casino_winnings += (payout - 1);
+            casino_record_total( ch, true, payout - 1 );
             snprintf( buf, sizeof(buf),
                 "You receive %ld gold coins.  Your new total is %ld gold.\n\r",
                 payout, query_gold(ch) );
@@ -4808,8 +5035,12 @@ void do_slots( CHAR_DATA *ch, char *argument )
     else
     {
         /* No match: lost the 1-coin stake */
-        ch->pcdata->casino_losses += 1;
+        casino_record_total( ch, false, 1 );
     }
+
+    if ( jackpot )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_SLOTS_JACKPOT,
+                                  true );
 
     act( "$n pulls the handle on a slot machine.", ch, NULL, NULL, TO_ROOM );
     return;
@@ -4882,13 +5113,11 @@ void do_bet( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( !is_number(arg1) )
+        if ( !parse_long_value(arg1, &amount) )
         {
             send_to_char( "Specify a numeric amount.  Syntax: bet <amount> hi/lo\n\r", ch );
             return;
         }
-
-        amount = (long)atol( arg1 );
 
         if ( amount < CASINO_BET_MIN )
         {
@@ -4950,7 +5179,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     {
         /* House wins on a 7 */
         add_money( ch, -amount );
-        ch->pcdata->casino_losses += amount;
+        casino_record_total( ch, false, amount );
         snprintf( buf, sizeof(buf),
             "Seven -- the house wins.  You lose %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -4960,7 +5189,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     {
         /* Player wins -- pays 1:1 */
         add_money( ch, amount );
-        ch->pcdata->casino_winnings += amount;
+        casino_record_total( ch, true, amount );
         snprintf( buf, sizeof(buf),
             "You called it!  You win %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -4970,7 +5199,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     {
         /* Player loses */
         add_money( ch, -amount );
-        ch->pcdata->casino_losses += amount;
+        casino_record_total( ch, false, amount );
         snprintf( buf, sizeof(buf),
             "Wrong call.  You lose %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -5000,8 +5229,10 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     char arg2[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     long amount, net;
+    long straight_pick = -1;
     int  spin;
     bool wins;
+    bool straight_bet = false;
     bool confirming = false;
     const char *color;
 
@@ -5063,13 +5294,11 @@ void do_roulette( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( !is_number(arg1) )
+        if ( !parse_long_value(arg1, &amount) )
         {
             send_to_char( "Specify a numeric amount.  Syntax: roulette <amount> <bet>\n\r", ch );
             return;
         }
-
-        amount = (long)atol( arg1 );
 
         if ( amount < CASINO_BET_MIN )
         {
@@ -5098,12 +5327,13 @@ void do_roulette( CHAR_DATA *ch, char *argument )
 
     if ( is_number(arg2) )
     {
-        int pick = atoi(arg2);
-        if ( pick < 0 || pick > 36 )
+        if ( !parse_long_value(arg2, &straight_pick)
+        ||   straight_pick < 0 || straight_pick > 36 )
         {
             send_to_char( "Straight-up bets must be a number from 0 to 36.\n\r", ch );
             return;
         }
+        straight_bet = true;
         /* Validated OK — spin and evaluate below */
     }
     else if ( str_cmp(arg2,"red")  && str_cmp(arg2,"black") &&
@@ -5141,10 +5371,9 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     send_to_char( buf, ch );
 
     /* --- evaluate --- */
-    if ( is_number(arg2) )
+    if ( straight_bet )
     {
-        int pick = atoi(arg2);
-        if ( spin == pick ) { wins = true; net = 35 * amount; }
+        if ( spin == straight_pick ) { wins = true; net = 35 * amount; }
     }
     else if ( !str_cmp(arg2, "red") )
     {
@@ -5189,14 +5418,17 @@ void do_roulette( CHAR_DATA *ch, char *argument )
     if ( wins )
     {
         add_money( ch, amount + net );
-        ch->pcdata->casino_winnings += net;
+        casino_record_total( ch, true, net );
+        if ( straight_bet )
+            achievement_record_event(
+                ch, ACHIEVEMENT_EVENT_ROULETTE_STRAIGHT, true );
         snprintf( buf, sizeof(buf),
             "You win!  Net gain: %ld gold.  (Balance: %ld gold)\n\r",
             net, query_gold(ch) );
     }
     else
     {
-        ch->pcdata->casino_losses += amount;
+        casino_record_total( ch, false, amount );
         snprintf( buf, sizeof(buf),
             "You lose %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -5375,13 +5607,11 @@ void do_poker( CHAR_DATA *ch, char *argument )
             return;
         }
 
-        if ( !is_number(arg) )
+        if ( !parse_long_value(arg, &amount) )
         {
             send_to_char( "Specify a numeric amount.  Syntax: poker <amount>\n\r", ch );
             return;
         }
-
-        amount = (long)atol( arg );
 
         if ( amount < POKER_BET_MIN )
         {
@@ -5438,7 +5668,7 @@ void do_poker( CHAR_DATA *ch, char *argument )
 
     if ( rank == -1 )
     {
-        ch->pcdata->casino_losses += amount;
+        casino_record_total( ch, false, amount );
         snprintf( buf, sizeof(buf),
             "No winning hand.  You lose %ld gold.  (Balance: %ld gold)\n\r",
             amount, query_gold(ch) );
@@ -5457,7 +5687,10 @@ void do_poker( CHAR_DATA *ch, char *argument )
     {
         long winnings = (long)PAYOUT[rank] * amount;
         add_money( ch, amount + winnings );
-        ch->pcdata->casino_winnings += winnings;
+        casino_record_total( ch, true, winnings );
+        if ( rank == 8 )
+            achievement_record_event(
+                ch, ACHIEVEMENT_EVENT_POKER_ROYAL_FLUSH, true );
         snprintf( buf, sizeof(buf),
             "%s!  You win %ld gold.  (Balance: %ld gold)\n\r",
             HAND_NAME[rank], winnings, query_gold(ch) );

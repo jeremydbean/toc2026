@@ -17,9 +17,9 @@ but never combat stats or economic rewards.
 | `achievements <words>` | Search keys, titles, and descriptions |
 
 Categories are `character`, `combat`, `encounters`, `quests`, `exploration`,
-`collection`, `crafting`, `misadventure`, and `hyrule`. The command accepts
-normal unambiguous command prefixes, but full category names are clearest.
-`score` also shows earned count and achievement points.
+`collection`, `crafting`, `misadventure`, `economy`, and `hyrule`. The command
+accepts normal unambiguous command prefixes, but full category names are
+clearest. `score` also shows earned count and achievement points.
 
 The normal summary is sized to fit the default page length. Longer category,
 filter, and search results use the standard game pager and honor each player's
@@ -41,6 +41,7 @@ placeholder until earned.
 | Collection | Seventeen rare or special-source relics plus 5, 10, and 17-relic metas |
 | Crafting | Brewing, concocting, scribing, the hidden Farslay-scroll recipe, and a crafting meta |
 | Misadventure | 1, 10, and 100 deaths; six unusual death causes; a hidden death meta |
+| Economy | Bank deposits and balances, interest, carried wealth and denominations, casino lifetime totals, and hidden slots, roulette, and poker feats |
 | Hyrule | Signature items, shards, maps, compasses, nine bosses, Ganon, Zelda, and meta completion |
 
 The world-boss list is the Tarrasque, the Borg, Korzath, the Master Guardian,
@@ -75,19 +76,30 @@ are scanned recursively, so items inside bags also count. The Master Sword,
 Silver Arrow, and complete Triforce achievements require possession when the
 state is evaluated.
 
+Economy balance milestones use exact copper value across all denominations.
+Bank deposits and interest, emptying an account, a three-seven slots jackpot,
+a straight-up roulette win, and a royal flush are event achievements. Lifetime
+casino totals record net winnings and actual losses and saturate safely at the
+save format's maximum value.
+
 ## Existing Characters
 
 The first login after upgrading checks facts already present in an old player
 file. Existing characters can immediately receive level, remort, play-time,
-qualifying player-kill, current quest-streak, and currently owned collection or
-Hyrule-item achievements. Their current Hyrule room can also record a matching
-discovery.
+qualifying player-kill, current quest-streak, bank-balance, carried-money,
+casino-total, and currently owned collection or Hyrule-item achievements. Their
+current Hyrule room can also record a matching discovery.
 
 Old player files did not retain lifetime mobile-kill or completed-quest totals.
 They also did not retain a reliable all-cause death total. Those three counters
 therefore begin when this system first records them. They are not estimated
 from session snapshots or the older PK-only death field, because an estimate
 could award progress a character did not earn.
+
+Event-only economy feats are not inferred. An existing high bank balance can
+award its balance milestones, but first deposit, first interest, seven-day
+interest, empty-account, jackpot, straight-up roulette, and royal-flush credit
+must occur after the corresponding hooks are installed.
 
 ## Persistence And Compatibility
 
@@ -106,8 +118,8 @@ character save, quit, autosave, snapshot, backup, and restore behavior.
 
 ## Developer Notes
 
-The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 128
-timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 111. Add
+The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 192
+timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 127. Add
 a new entry only with a unique key that will never be repurposed.
 
 Achievement views use canonical `{HH}` game-color tokens and
@@ -124,6 +136,9 @@ Event hooks are intentionally central:
 - `handler.c` records room entry, item acquisition, and lethal action items.
 - `magic2.c` records crafting, Farslay outcomes, and death rays; `act_obj.c` and
   `update.c` distinguish puzzle traps and flagged death-trap rooms.
+- `act_obj.c` records bank transactions, carried-value state, casino totals,
+  slots jackpots, roulette straight wins, and poker royal flushes; `update.c`
+  records daily and seven-day interest payouts.
 - `update.c`, `act_info.c`, `comm.c`, and `save.c` evaluate state milestones at
   level-up, remort, login, score display, and save.
 
@@ -134,7 +149,8 @@ The save writer serializes earned entries by key. The loader resolves each key
 back to the current runtime index.
 
 Run the normal native build, CMake build, area validation, and
-`python -m unittest tests.test_achievements -v` after changing the catalog or
-hooks. The test verifies key uniqueness, catalog capacity, persistence wiring,
-the generated Hyrule boss-to-room contract, compact summary layout, and paged
-color conversion.
+`python -m unittest tests.test_achievements tests.test_money_safety
+tests.test_bank_interest -v` after changing the catalog, economy, or hooks.
+These tests verify key uniqueness, catalog capacity, persistence wiring,
+currency transaction safety, the generated Hyrule boss-to-room contract,
+compact summary layout, and paged color conversion.

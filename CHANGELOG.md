@@ -10,6 +10,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- Preserve link-dead characters and switched immortals during SIGTERM/SIGINT
+  shutdown by saving all live player characters, not only connected descriptors.
+- Preserve streaming ANSI colors and Telnet password state in the admin console;
+  bound scrollback and render server text without interpreting it as HTML.
+- Keep extensionless Unix deployment scripts LF-only on Windows checkouts.
+- Make Mudlet package 1.0.2 reproducible across operating systems and zlib
+  versions using LF source assets and deterministic stored ZIP entries.
+
 - Allowed the sandboxed Pi updater to write only the system script and unit
   directories used by its checked-in self-refresh step. `ProtectSystem=full`
   previously blocked `/usr/local/sbin` before the validated update could
@@ -109,6 +117,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   to mental damage is never confused, a mentally resistant mind gets one
   bounded resist roll (25% base, shifted by level difference, clamped to
   5-50%), and a normal or vulnerable mind cannot resist at all.
+- Hardened carried-money conversion, bank deposits and withdrawals, shop and
+  sacrifice payouts, group splits, gifts, theft, dropped piles, NPC corpse
+  coins, and casino accounting against signed overflow, narrowing, partial
+  mutation, and silent currency loss.
+- Fixed partial money pickups leaving stale pile descriptions and values,
+  loose piles being treated as 50 times heavier than carried coins,
+  future-dated interest timestamps blocking accrual, consumed no-payout days
+  not being saved, and 64-bit casino totals being truncated while loading.
+- Fixed malformed or unterminated PK leaderboard data making every server boot
+  and native area validation spin forever at end-of-file; valid records now
+  load through a bounded line parser and malformed records are skipped.
+- Corrected bank help to document the actual default platinum denomination and
+  casino help to document the real 100,000-gold Hi/Lo and roulette limits.
 - Fixed Hyrule mobile resets using a population cap of 1,000, which could
   duplicate Ganon and every other surviving NPC whenever an empty area reset
   ran after a player disconnected. Generated limits now match each mobile's
@@ -228,10 +249,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Added bounded semicolon command chaining to both browser game consoles, with
   ordered sends, quote and escape handling, single-entry history, and password
   protection.
-- Added a WoW-style permanent character achievement system with 111 cataloged
-  accomplishments, points, earned dates, nine categories, hidden discoveries,
+- Added a WoW-style permanent character achievement system with 127 cataloged
+  accomplishments, points, earned dates, ten categories, hidden discoveries,
   progress views, nearby unlock announcements, retroactive state checks, and
   save-compatible stable keys.
+- Added sixteen Economy achievements for banking, interest, carried wealth,
+  denominations, lifetime casino results, jackpots, straight-up roulette wins,
+  and royal flushes.
 - Added verified world-boss, rare-relic, crafting, unusual-death, Farslay, and
   expanded level achievements, including group boss credit and collection,
   crafting, encounter, and misadventure meta achievements.

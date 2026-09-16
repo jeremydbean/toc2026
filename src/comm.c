@@ -401,6 +401,8 @@ static void process_shutdown_signal( void )
 {
     DESCRIPTOR_DATA *d;
     DESCRIPTOR_DATA *d_next_local;
+    CHAR_DATA *player;
+    LIST_ITERATOR iter;
     char buf[MAX_STRING_LENGTH];
     int signal_number;
 
@@ -414,11 +416,16 @@ static void process_shutdown_signal( void )
               signal_number );
     log_string( buf );
 
+    /* Link-dead players and switched immortals also need a final save. */
+    FOR_EACH_CHARACTER(iter, player)
+    {
+        if ( !IS_NPC(player) && player->level >= 1 )
+            save_char_obj( player );
+    }
+
     for ( d = descriptor_list; d != NULL; d = d_next_local )
     {
         d_next_local = d->next;
-        if ( d->character != NULL && d->character->level >= 1 )
-            save_char_obj( d->character );
         close_socket( d );
     }
 

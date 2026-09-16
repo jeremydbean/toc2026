@@ -1256,6 +1256,44 @@ label textarea {
     color: #b8d3bd;
 }
 
+#game-terminal .ansi-bold { font-weight: 700; }
+#game-terminal .ansi-dim { opacity: 0.7; }
+#game-terminal .ansi-italic { font-style: italic; }
+#game-terminal .ansi-underline { text-decoration: underline; }
+#game-terminal .ansi-inverse { filter: invert(1); }
+#game-terminal .ansi-fg-black { color: #7b858a; }
+#game-terminal .ansi-fg-red { color: #ef7d7d; }
+#game-terminal .ansi-fg-green { color: #79d89d; }
+#game-terminal .ansi-fg-yellow { color: #e8c66d; }
+#game-terminal .ansi-fg-blue { color: #80adea; }
+#game-terminal .ansi-fg-magenta { color: #cd94dc; }
+#game-terminal .ansi-fg-cyan { color: #6fd0ce; }
+#game-terminal .ansi-fg-white { color: #e7ebed; }
+#game-terminal .ansi-fg-bright-black { color: #9ca5a9; }
+#game-terminal .ansi-fg-bright-red { color: #ff9b9b; }
+#game-terminal .ansi-fg-bright-green { color: #9aebb6; }
+#game-terminal .ansi-fg-bright-yellow { color: #f4db8b; }
+#game-terminal .ansi-fg-bright-blue { color: #a6c8f4; }
+#game-terminal .ansi-fg-bright-magenta { color: #e5b0f0; }
+#game-terminal .ansi-fg-bright-cyan { color: #9be5e2; }
+#game-terminal .ansi-fg-bright-white { color: #ffffff; }
+#game-terminal .ansi-bg-black { background: #141719; }
+#game-terminal .ansi-bg-red { background: #6a3030; }
+#game-terminal .ansi-bg-green { background: #28583b; }
+#game-terminal .ansi-bg-yellow { background: #665329; }
+#game-terminal .ansi-bg-blue { background: #304b70; }
+#game-terminal .ansi-bg-magenta { background: #583663; }
+#game-terminal .ansi-bg-cyan { background: #285a5a; }
+#game-terminal .ansi-bg-white { background: #b8bec1; }
+#game-terminal .ansi-bg-bright-black { background: #9ca5a9; }
+#game-terminal .ansi-bg-bright-red { background: #ff9b9b; }
+#game-terminal .ansi-bg-bright-green { background: #9aebb6; }
+#game-terminal .ansi-bg-bright-yellow { background: #f4db8b; }
+#game-terminal .ansi-bg-bright-blue { background: #a6c8f4; }
+#game-terminal .ansi-bg-bright-magenta { background: #e5b0f0; }
+#game-terminal .ansi-bg-bright-cyan { background: #9be5e2; }
+#game-terminal .ansi-bg-bright-white { background: #ffffff; }
+
 .terminal-input-row {
     display: grid;
     grid-template-columns: 1fr auto;

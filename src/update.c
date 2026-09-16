@@ -1238,9 +1238,11 @@ static void bank_interest( CHAR_DATA *ch )
         return;
 
     /* First login ever: seed the timestamp and wait for tomorrow */
-    if ( ch->pcdata->bank_interest_time == 0 )
+    if ( ch->pcdata->bank_interest_time <= 0
+    ||   ch->pcdata->bank_interest_time > current_time )
     {
         ch->pcdata->bank_interest_time = current_time;
+        save_char_obj(ch);
         return;
     }
 
@@ -1259,7 +1261,10 @@ static void bank_interest( CHAR_DATA *ch )
         current_time - (elapsed % BANK_INTEREST_SECS);
 
     if ( ch->pcdata->bank < BANK_INTEREST_MIN )
+    {
+        save_char_obj(ch);
         return;
+    }
 
     /* 1% per day, rounded down to nearest copper */
     gain = (ch->pcdata->bank / 100L) * days;
@@ -1269,7 +1274,10 @@ static void bank_interest( CHAR_DATA *ch )
     if ( gain > LONG_MAX - ch->pcdata->bank )
         gain = LONG_MAX - ch->pcdata->bank;
     if ( gain < 1 )
+    {
+        save_char_obj(ch);
         return;
+    }
 
     ch->pcdata->bank += gain;
     format_coins( gain, coins_buf, sizeof(coins_buf) );
@@ -1278,6 +1286,12 @@ static void bank_interest( CHAR_DATA *ch )
         "\n\rYour bank account earned %s in interest (%ld day%s at 1%% daily).\n\r",
         coins_buf, days, days == 1 ? "" : "s" );
     send_to_char( buf, ch );
+    achievement_record_event(ch, ACHIEVEMENT_EVENT_BANK_INTEREST, true);
+    if (days == BANK_INTEREST_MAX_DAYS)
+        achievement_record_event(ch, ACHIEVEMENT_EVENT_BANK_WEEK_INTEREST,
+                                 true);
+    achievement_check_economy(ch, true);
+    save_char_obj(ch);
 }
 
 
@@ -2092,7 +2106,7 @@ free_string(obj->description);
              {
                 if (IS_NPC(obj->carried_by)
                 &&  obj->carried_by->pIndexData->pShop != NULL)
-                obj->carried_by->new_gold += obj->cost/5;
+                add_money(obj->carried_by, obj->cost / 5);
                    else
                 act( message, obj->carried_by, obj, NULL, TO_CHAR );
              }
@@ -2165,7 +2179,7 @@ free_string(obj->description);
              {
                 if (IS_NPC(obj->carried_by)
                 &&  obj->carried_by->pIndexData->pShop != NULL)
-                obj->carried_by->new_gold += obj->cost/5;
+                add_money(obj->carried_by, obj->cost / 5);
                    else
                 act( message, obj->carried_by, obj, NULL, TO_CHAR );
              }
@@ -2225,7 +2239,7 @@ free_string(obj->description);
 	{
 	    if (IS_NPC(obj->carried_by)
 	    &&  obj->carried_by->pIndexData->pShop != NULL)
-		obj->carried_by->new_gold += obj->cost/5;
+		add_money(obj->carried_by, obj->cost / 5);
 	    else
 		act( message, obj->carried_by, obj, NULL, TO_CHAR );
 	}

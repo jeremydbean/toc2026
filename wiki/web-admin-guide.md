@@ -162,9 +162,13 @@ rule, or player preference.
 
 Game Console opens a WebSocket bridge to the configured game endpoint. It uses
 a command field with history instead of loading a third-party terminal library.
-Basic Telnet negotiation and ANSI control sequences are removed from display;
-password prompts switch the command field to masked input when the MUD requests
-server-side echo handling.
+The console renders standard and bright ANSI colors, backgrounds, and text
+attributes. Telnet negotiation and unsupported cursor controls are hidden.
+Decoding persists across network messages, including split color sequences and
+password prompts that switch the command field to masked input when requested
+by the MUD. Output is inserted as text, never as server-supplied HTML. Reconnect
+resets the decoder; Clear only removes visible scrollback. Enable color in the
+game itself if the character is configured for plain-text output.
 
 The bridge is not token-protected because it behaves like another route to the
 public game port. Network controls around the dashboard still apply.

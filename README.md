@@ -27,6 +27,8 @@ and a large collection of hand-built areas.
 | Returning player | [Player Command Reference](wiki/player-command-reference.md) |
 | Mudlet player | [Official Mudlet package](mudlet/README.md) |
 | Server host | [Hosting Guide](wiki/hosting-guide.md) |
+| Current Windows production host | [Windows Production Runbook](wiki/windows-production-hosting.md) |
+| Mudlet listing submission | [Listing Handoff](mudlet/listing-submission.md) |
 | Immortal/operator | [Operator Guide](wiki/operator-guide.md) |
 | Developer | [Developer Guide](wiki/developer-guide.md) and [CONTRIBUTING.md](CONTRIBUTING.md) |
 | Area builder | [Area Building Guide](wiki/area-building-guide.md) |
@@ -46,10 +48,10 @@ documentation.
   campaign with all nine First Quest dungeons.
 - Advanced in-game `compare` analysis that models a player's complete loadout,
   class, guild, level, skills, spells, and selected gameplay focus.
-- A permanent 111-achievement progression system with points, earned dates,
+- A permanent 127-achievement progression system with points, earned dates,
   hidden discoveries, live progress, retroactive milestones, group boss credit,
-  world bosses, rare relics, crafting, unusual deaths, and complete Hyrule
-  dungeon, map, compass, shard, and boss tracking.
+  world bosses, rare relics, crafting, banking and casino feats, unusual deaths,
+  and complete Hyrule dungeon, map, compass, shard, and boss tracking.
 - A FastAPI dashboard for world browsing, area health, maps, player inspection,
   logs, backups, server commands, protected read-only host telemetry with live
   CPU, memory, swap, network, disk, and temperature monitoring, and a
