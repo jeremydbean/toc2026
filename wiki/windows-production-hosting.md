@@ -36,6 +36,13 @@ Host-side publication is `deploy/windows-vm/Publish-ToCWeb.ps1`, run elevated:
 it adds the `TOC-NAT` static mapping and the inbound firewall rule, and
 `-Remove` withdraws both. The router forward is separate and manual.
 
+WinNAT applies the static mappings it had when it started. One added later
+reads back `Active : True` and reserves its port, but nothing is translated
+until `net stop winnat; net start winnat`, which also interrupts the game on
+9000. The firewall rule is not what carries either port: the host has no
+listener on 9000 or 9001, and the mapping is the whole path. The script
+verifies the path with a real connection rather than trusting the object.
+
 Mudlet connects directly to port 9000. It does not need access to the dashboard.
 See the [Mudlet guide](../mudlet/README.md) and
 [listing handoff](../mudlet/listing-submission.md). Listing acceptance is a

@@ -39,6 +39,19 @@ if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administra
     throw 'Run this from an elevated PowerShell: it changes NAT and firewall state.'
 }
 
+function Test-Port {
+    param([string]$Address, [int]$TcpPort, [int]$TimeoutMs = 3000)
+    $client = New-Object Net.Sockets.TcpClient
+    try {
+        $handle = $client.BeginConnect($Address, $TcpPort, $null, $null)
+        return $handle.AsyncWaitHandle.WaitOne($TimeoutMs) -and $client.Connected
+    } catch {
+        return $false
+    } finally {
+        $client.Close()
+    }
+}
+
 function Get-Mapping {
     Get-NetNatStaticMapping -NatName $NatName -ErrorAction SilentlyContinue |
         Where-Object { $_.Protocol -eq 'TCP' -and $_.ExternalPort -eq $Port }
@@ -86,6 +99,30 @@ if (Get-NetFirewallRule -Name $RuleName -ErrorAction SilentlyContinue) {
         -Direction Inbound -Action Allow -Protocol TCP -LocalPort $Port `
         -Profile Any | Out-Null
     Write-Host "Added firewall rule $RuleName for TCP $Port."
+}
+
+# A recorded mapping is not a working one. WinNAT keeps serving the set it had
+# when it started, so a mapping added afterwards reads back Active while
+# nothing is translated. Prove the path rather than trust the object.
+Write-Host ''
+if (-not (Test-Port -Address $VmAddress -TcpPort $Port)) {
+    Write-Warning "The VM is not answering on ${VmAddress}:$Port. Check toc-web inside the guest; nothing on this host can help until it does."
+    return
+}
+
+if (Test-Port -Address '127.0.0.1' -TcpPort $Port) {
+    Write-Host "Verified: this host forwards TCP $Port into the VM."
+} else {
+    Write-Warning "The mapping is recorded but WinNAT is not forwarding TCP $Port yet."
+    Write-Host ''
+    Write-Host '  WinNAT only applies static mappings that existed when it started.'
+    Write-Host '  Restart it to pick this one up:'
+    Write-Host ''
+    Write-Host '      net stop winnat; net start winnat'
+    Write-Host ''
+    Write-Host '  That interrupts the game on 9000 as well, briefly, so do it when'
+    Write-Host '  nobody is connected. Then re-run this script to verify.'
+    return
 }
 
 Write-Host ''
