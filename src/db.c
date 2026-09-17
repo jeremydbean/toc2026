@@ -16,6 +16,7 @@
 #include <types.h>
 #else
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <unistd.h>
@@ -4968,11 +4969,33 @@ void bug( const char *str, int param )
  */
 void log_string( const char *str )
 {
+    static bool log_dir_checked = FALSE;
     char *strtime;
- 
+    FILE *fp;
+
     strtime                    = ctime( &current_time );
     strtime[strlen(strtime)-1] = '\0';
+
+    /* stderr keeps the journal copy. */
     fprintf( stderr, "%s :: %s\n", strtime, str );
+
+    /*
+     * And a file, because the dashboard cannot tail the journal. The game
+     * runs from area/, so log/ is a sibling that may not exist yet on a
+     * fresh install.
+     */
+    if ( !log_dir_checked )
+    {
+        mkdir( "../log", 0750 );
+        log_dir_checked = TRUE;
+    }
+
+    if ( ( fp = fopen( GAME_LOG_FILE, "a" ) ) != NULL )
+    {
+        fprintf( fp, "%s :: %s\n", strtime, str );
+        fclose( fp );
+    }
+
     return;
 }
 

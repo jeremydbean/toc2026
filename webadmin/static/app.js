@@ -1675,6 +1675,25 @@
         }
     }
 
+    async function submitAnnouncement(event) {
+        event.preventDefault();
+        if (!await ensureAuth()) return;
+        const message = byId("announce-message").value.trim();
+        if (!message) return;
+        if (!await confirmAction({
+            title: "Announce to everyone",
+            message: `Every player online will see:\n\n${message}`,
+        })) return;
+        try {
+            await api("/api/announce", { method: "POST", auth: true, body: { message } });
+            byId("announce-message").value = "";
+            toast("Announcement sent to everyone online.", "success");
+            await loadOperationalStatus();
+        } catch (error) {
+            toast(error.message, "error");
+        }
+    }
+
     async function submitBroadcast(event) {
         event.preventDefault();
         if (!await ensureAuth()) return;
@@ -1816,6 +1835,7 @@
         byId("activity-refresh").addEventListener("click", () => void loadServerActivity());
         byId("activity-channel").addEventListener("change", renderServerActivity);
         byId("activity-search").addEventListener("input", renderServerActivity);
+        byId("announce-form").addEventListener("submit", submitAnnouncement);
         byId("broadcast-form").addEventListener("submit", submitBroadcast);
         byId("command-form").addEventListener("submit", submitAdminCommand);
 

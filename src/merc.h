@@ -2250,11 +2250,20 @@ void    write_web_admin_event ( const char *channel, const char *message,
 #define VAL_ENDLESS_SLOT        4
 #define VAL_ENDLESS             1
 
+/*
+ * The dashboard tails this file. The game also keeps writing to stderr,
+ * which systemd captures into the journal, so both views work: the
+ * journal keeps timestamps, boot tagging and rotation, and the file is
+ * what the Live Logs page can actually read.
+ */
+#define GAME_LOG_FILE           "../log/toc.log"
+
 #define LOGIN_JOURNAL_FILE      "../log/logins.tsv"
 #define LOGIN_JOURNAL_KEEP      200
 #define LOGIN_JOURNAL_MAX       400
 #define LOGIN_JOURNAL_LINE      192
 bool    proxy_header_accept ( DESCRIPTOR_DATA *d, const char *line );
+void    announce_to_world   ( const char *who, const char *message );
 void    record_login    ( const char *name, const char *host,
                           const char *event );
 void    record_logout   ( const char *name, const char *host,

@@ -302,6 +302,10 @@ class CommandRequest(BaseModel):
     command: str
 
 
+class AnnounceRequest(BaseModel):
+    message: str
+
+
 class WizinfoRequest(BaseModel):
     message: str
     level: Optional[int] = None
@@ -1762,6 +1766,21 @@ async def websocket_events(websocket: WebSocket) -> None:
             await websocket.close()
         except RuntimeError:
             pass
+
+
+@app.post("/api/announce")
+async def send_announcement(
+    request: AnnounceRequest, _: None = Depends(verify_token)
+) -> str:
+    """Send a framed message to every player who is online.
+
+    Distinct from /api/wizinfo, which only reaches immortals at or above a
+    level -- an operator sending one of those sees nothing happen and
+    reasonably concludes the dashboard is broken.
+    """
+    message = validated_queue_payload(request.message, "Announcement", 400)
+    append_queue_action(f"announce|{message}")
+    return "queued"
 
 
 @app.post("/api/wizinfo")

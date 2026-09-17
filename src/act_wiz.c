@@ -7257,30 +7257,14 @@ void do_iportal( CHAR_DATA *ch, char *argument )
  */
 void do_announce( CHAR_DATA *ch, char *argument )
 {
-    DESCRIPTOR_DATA *d;
-    char buf[MAX_STRING_LENGTH];
-
     if ( argument[0] == '\0' )
     {
         send_to_char( "Announce what?\n\r", ch );
         return;
     }
 
-    snprintf( buf, sizeof(buf),
-        "\n\r{Y============================================================{x\n\r"
-        "{W  ANNOUNCEMENT from %s:{x\n\r"
-        "{W  %s{x\n\r"
-        "{Y============================================================{x\n\r\n\r",
-        ch->name, argument );
-
-    for ( d = descriptor_list; d != NULL; d = d->next )
-    {
-        CHAR_DATA *victim;
-        victim = ( d->original != NULL ) ? d->original : d->character;
-        if ( d->connected == CON_PLAYING && victim != NULL )
-            send_to_char( buf, victim );
-    }
-
+    /* One implementation, so the dashboard and this command cannot drift. */
+    announce_to_world( ch->name, argument );
     return;
 }
 

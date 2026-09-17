@@ -1575,10 +1575,30 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
 	{
 	    if ( ++d->repeat >= 25 )
 	    {
-           snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s input spamming!", d->host );
-           log_string( log_buf );
-                write_to_buffer( d, "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
-                safe_strcpy( d->incomm, sizeof(d->incomm), "quit" );
+                CHAR_DATA *actor;
+
+                /*
+                 * Staff repeat commands legitimately and constantly:
+                 * walking a vnum range, loading a hundred objects,
+                 * hammering `repop` while testing an area. Disconnecting
+                 * an immortal for it is never the right answer, and it
+                 * happens in the middle of the work.
+                 */
+                actor = ( d->original != NULL ) ? d->original : d->character;
+                if ( actor != NULL && !IS_NPC(actor)
+                  && get_trust( actor ) >= LEVEL_IMMORTAL )
+                {
+                    d->repeat = 0;
+                }
+                else
+                {
+                    snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+                        "%s input spamming!", d->host );
+                    log_string( log_buf );
+                    write_to_buffer( d,
+                        "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
+                    safe_strcpy( d->incomm, sizeof(d->incomm), "quit" );
+                }
             }
         }
     }
@@ -3519,6 +3539,15 @@ static void process_web_admin_action(char *line)
         }
         wizinfo(msg, (int)level);
     }
+    else if (!strcmp(cmd, "announce"))
+    {
+        char *msg = strtok(NULL, "");
+
+        if (msg != NULL && msg[0] != '\0')
+            announce_to_world("the administration", msg);
+        else
+            bug("process_web_admin_action: empty announcement.", 0);
+    }
     else if (!strcmp(cmd, "command"))
     {
         char *game_cmd = strtok(NULL, "|");
@@ -3819,6 +3848,51 @@ bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
     d->host = str_dup( src );
     d->ip   = parsed.s_addr;
     return TRUE;
+}
+
+
+/*
+ * A message every player sees, framed so it cannot be mistaken for chatter.
+ *
+ * wizinfo only reaches immortals who happen to be online, which is why an
+ * operator sending one from the dashboard sees nothing happen and concludes
+ * the feature is broken. This is the everyone-gets-it channel, shared with
+ * do_announce so a dashboard announcement and an in-game one are identical
+ * to players.
+ */
+void announce_to_world( const char *who, const char *message )
+{
+    DESCRIPTOR_DATA *d;
+    char buf[MAX_STRING_LENGTH];
+
+    if ( message == NULL || message[0] == '\0' )
+        return;
+
+    if ( who == NULL || who[0] == '\0' )
+        who = "the administration";
+
+    snprintf( buf, sizeof(buf),
+        "\n\r{Y============================================================{x\n\r"
+        "{W  ANNOUNCEMENT from %s:{x\n\r"
+        "{W  %s{x\n\r"
+        "{Y============================================================{x\n\r\n\r",
+        who, message );
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *victim;
+
+        victim = ( d->original != NULL ) ? d->original : d->character;
+        if ( d->connected == CON_PLAYING && victim != NULL )
+            send_to_char( buf, victim );
+    }
+
+    {
+        char logbuf[MAX_STRING_LENGTH];
+
+        snprintf( logbuf, sizeof(logbuf), "ANNOUNCE (%s): %s", who, message );
+        log_string( logbuf );
+    }
 }
 
 
