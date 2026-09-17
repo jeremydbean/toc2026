@@ -4423,9 +4423,12 @@ Requirements and restrictions:
     to use the PASSWORD command themselves.
   - The new password must be at least 5 characters and must not contain
     the tilde character.
-  - You cannot reset the password of a character at or above your own
-    level (you cannot reset another immortal's password unless you outrank
-    them).
+  - You cannot reset the password of a character above your own level.
+  - Below level 70 you cannot reset a character at your own level either.
+    Implementors are the exception: a level 70 may reset any other level 70,
+    because there is no higher rank to ask when an implementor is locked out.
+    That means every implementor can take over every other implementor's
+    account, which is why each reset is announced and logged.
   - The reset event is logged and broadcast on WIZINFO, but the password
     argument is suppressed from command logs and snoop output.
 

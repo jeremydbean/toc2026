@@ -8792,7 +8792,29 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
         return;
 
     argument = one_argument( argument, arg_name );
-    one_argument( argument, arg_pwd );
+    /*
+     * Deliberately not one_argument: it lowercases what it extracts, so
+     * every password this command has ever set was silently downcased and
+     * the player was handed one that could not log them in. do_password
+     * hand-rolls its parser for the same reason.
+     */
+    {
+        char *src = argument;
+        char *dst = arg_pwd;
+        char cEnd = ' ';
+        size_t room = sizeof(arg_pwd) - 1;
+
+        while ( isspace(*src) )
+            src++;
+        if ( *src == '\'' || *src == '\"' )
+            cEnd = *src++;
+        while ( *src != '\0' && *src != cEnd && room > 0 )
+        {
+            *dst++ = *src++;
+            room--;
+        }
+        *dst = '\0';
+    }
 
     if ( arg_name[0] == '\0' || arg_pwd[0] == '\0' )
     {
@@ -8845,10 +8867,24 @@ void do_resetpwd( CHAR_DATA *ch, char *argument )
     }
     rewind( fpin );
 
-    if ( target_trust >= get_trust( ch ) )
+    /*
+     * Rank rule: you may never reset someone above you, and below
+     * MAX_LEVEL you may not reset a peer either.
+     *
+     * Implementors are the exception, and deliberately so: they are the
+     * top rank, so there is nobody above them to ask when one of them is
+     * locked out. The cost is that any implementor can take over any
+     * other implementor's account, which is why the reset is announced
+     * to every immortal online and written to the log.
+     */
+    if ( target_trust > get_trust( ch )
+      || ( target_trust == get_trust( ch ) && get_trust( ch ) < MAX_LEVEL ) )
     {
         fclose( fpin );
-        send_to_char( "You cannot reset the password of someone at or above your level.\n\r", ch );
+        if ( target_trust == get_trust( ch ) )
+            send_to_char( "Only an implementor may reset the password of someone at their own level.\n\r", ch );
+        else
+            send_to_char( "You cannot reset the password of someone above your level.\n\r", ch );
         return;
     }
 
