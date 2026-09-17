@@ -2243,6 +2243,7 @@ void    write_web_admin_event ( const char *channel, const char *message,
 #define LOGIN_JOURNAL_KEEP      200
 #define LOGIN_JOURNAL_MAX       400
 #define LOGIN_JOURNAL_LINE      192
+bool    proxy_header_accept ( DESCRIPTOR_DATA *d, const char *line );
 void    record_login    ( const char *name, const char *host,
                           const char *event );
 void    record_logout   ( const char *name, const char *host,

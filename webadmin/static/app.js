@@ -16,6 +16,7 @@
 
     const state = {
         view: "overview",
+        loginsShown: 0,
         token: "",
         authenticated: false,
         config: null,
@@ -347,14 +348,20 @@
         return epoch ? new Date(epoch * 1000).toLocaleString() : "-";
     }
 
-    async function loadLogins() {
+    // How many sessions one page pulls. The journal keeps far more than the
+    // table wants to render at once, so the view pages back through it rather
+    // than capping how far you can look.
+    const LOGIN_PAGE = 200;
+
+    async function loadLogins(append = false) {
         if (!await ensureAuth()) return;
         const sessionBody = byId("logins-table").querySelector("tbody");
         const playtimeBody = byId("playtime-table").querySelector("tbody");
+        const offset = append ? state.loginsShown : 0;
 
         let data;
         try {
-            data = await api("/api/logins", { auth: true });
+            data = await api(`/api/logins?limit=${LOGIN_PAGE}&offset=${offset}`, { auth: true });
         } catch (error) {
             sessionBody.replaceChildren(node("tr", {}, [
                 node("td", { className: "empty-state", text: error.message, attrs: { colspan: 6 } }),
@@ -368,16 +375,34 @@
             : "No logins recorded yet";
 
         const sessions = data.sessions || [];
-        sessionBody.replaceChildren(...(sessions.length ? sessions.map((session) => node("tr", {}, [
+        const rows = sessions.map((session) => node("tr", {}, [
             tableCell(formatWhen(session.login)),
             tableCell(session.name || "-"),
             tableCell(formatDuration(session.duration), "numeric"),
             tableCell(session.event || "-"),
             tableCell(session.ended || (session.login ? "still connected" : "-")),
             tableCell(session.host || "-", "mono"),
-        ])) : [node("tr", {}, [
-            node("td", { className: "empty-state", text: "No logins recorded yet.", attrs: { colspan: 6 } }),
-        ])]));
+        ]));
+
+        if (append) {
+            sessionBody.append(...rows);
+            state.loginsShown += sessions.length;
+        } else {
+            sessionBody.replaceChildren(...(rows.length ? rows : [node("tr", {}, [
+                node("td", { className: "empty-state", text: "No logins recorded yet.", attrs: { colspan: 6 } }),
+            ])]));
+            state.loginsShown = sessions.length;
+        }
+
+        const total = data.total ?? state.loginsShown;
+        byId("logins-count").textContent = total
+            ? `Showing ${state.loginsShown} of ${total}`
+            : "";
+        byId("logins-more").hidden = !data.has_more;
+
+        // The per-character totals do not page; skip rebuilding them when we
+        // are only appending another slice of history.
+        if (append) return;
 
         const players = Object.entries(data.players || {})
             .sort((a, b) => (b[1].played || 0) - (a[1].played || 0));
@@ -1684,6 +1709,7 @@
 
     function bindEvents() {
         all("[data-view]").forEach((button) => button.addEventListener("click", () => navigate(button.dataset.view)));
+        byId("logins-more").addEventListener("click", () => loadLogins(true));
         all("[data-go-view]").forEach((button) => button.addEventListener("click", () => navigate(button.dataset.goView)));
         byId("menu-button").addEventListener("click", () => document.body.classList.toggle("nav-open"));
         byId("sidebar-scrim").addEventListener("click", closeNavigation);

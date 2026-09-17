@@ -39,6 +39,7 @@
 #include <fcntl.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <arpa/inet.h>
 #include <arpa/telnet.h>
 #include <stddef.h>
@@ -1270,6 +1271,39 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
     }
 
     /*
+     * Keep idle sessions alive through NAT.
+     *
+     * The game never times a player out for inactivity above LEVEL_IMMORTAL,
+     * but a session that sends nothing for long enough is silently reaped by
+     * a home router's NAT table, and the player comes back to find they went
+     * link-dead while doing nothing wrong. Probing every couple of minutes
+     * keeps the mapping alive, and still notices a genuinely dead peer within
+     * a few minutes rather than never.
+     */
+    {
+        int keepalive = 1;
+        int idle_secs = 120;
+        int probe_gap = 30;
+        int probe_max = 4;
+
+        if (setsockopt(desc, SOL_SOCKET, SO_KEEPALIVE,
+                       (void *)&keepalive, sizeof(keepalive)) < 0)
+            perror("New_descriptor: SO_KEEPALIVE");
+#if defined(TCP_KEEPIDLE)
+        setsockopt(desc, IPPROTO_TCP, TCP_KEEPIDLE,
+                   (void *)&idle_secs, sizeof(idle_secs));
+#endif
+#if defined(TCP_KEEPINTVL)
+        setsockopt(desc, IPPROTO_TCP, TCP_KEEPINTVL,
+                   (void *)&probe_gap, sizeof(probe_gap));
+#endif
+#if defined(TCP_KEEPCNT)
+        setsockopt(desc, IPPROTO_TCP, TCP_KEEPCNT,
+                   (void *)&probe_max, sizeof(probe_max));
+#endif
+    }
+
+    /*
      * Cons a new descriptor.
      */
     if (descriptor_free == NULL) {
@@ -2062,6 +2096,17 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 	return;
 
     case CON_GET_NAME:
+        /*
+         * The browser client names the real player behind it before
+         * anything else. Consume that and re-prompt: it is not a name,
+         * and it must not count against the blank-line limit.
+         */
+        if ( proxy_header_accept( d, argument ) )
+        {
+            write_to_buffer( d, "Name: ", 0 );
+            return;
+        }
+
 	if ( argument[0] == '\0' )
 	{
 	    /*
@@ -3722,6 +3767,58 @@ static void login_journal_trim( void )
         fputs( kept[slot], fp );
     }
     fclose( fp );
+}
+
+
+/*
+ * Accept a PROXY protocol v1 header so the browser client's players are
+ * recorded as themselves.
+ *
+ * The web client reaches the game through the dashboard on the same host, so
+ * every web player arrived as 127.0.0.1: indistinguishable from each other in
+ * the login history, and exempt from the login throttle, which skips loopback
+ * precisely because it could not tell them apart.
+ *
+ * Only loopback may send this. A header from anywhere else would let a player
+ * choose the address recorded against them, and choose their way out of a
+ * throttle block.
+ *
+ * Format: PROXY TCP4 <src ip> <dst ip> <src port> <dst port>
+ */
+bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
+{
+    char src[64];
+    struct in_addr parsed;
+    const char *p;
+    size_t length;
+
+    if ( d == NULL || line == NULL )
+        return FALSE;
+
+    if ( str_prefix( "PROXY TCP4 ", line ) )
+        return FALSE;
+
+    /* Trust the header only from the loopback interface. */
+    if ( d->ip == 0 || ( ntohl(d->ip) >> 24 ) != 127 )
+        return FALSE;
+
+    p = line + strlen( "PROXY TCP4 " );
+    length = 0;
+    while ( *p != '\0' && *p != ' ' && length + 1 < sizeof(src) )
+        src[length++] = *p++;
+    src[length] = '\0';
+
+    if ( length == 0 || inet_aton( src, &parsed ) == 0 )
+        return FALSE;
+
+    /* A header naming loopback tells us nothing; keep what we had. */
+    if ( ( ntohl(parsed.s_addr) >> 24 ) == 127 )
+        return TRUE;
+
+    free_string( d->host );
+    d->host = str_dup( src );
+    d->ip   = parsed.s_addr;
+    return TRUE;
 }
 
 

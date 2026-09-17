@@ -1328,15 +1328,27 @@ async def end_local_admin_session(response: Response) -> Dict[str, bool]:
 
 @app.get("/api/logins")
 async def logins(
-    limit: int = Query(default=200, ge=1, le=200),
+    limit: int = Query(default=500, ge=1, le=100000),
+    offset: int = Query(default=0, ge=0),
     _: None = Depends(verify_token),
 ) -> Dict[str, Any]:
-    """Login history and playtime. Token-gated: the rows carry player IPs."""
-    rows = parse_login_journal(LOGIN_JOURNAL, limit=limit)
+    """Login history and playtime. Token-gated: the rows carry player IPs.
+
+    Pairing has to run over the whole journal before any window is taken, or
+    a session whose start and end straddle the page boundary loses its
+    duration. So read everything, pair it, then slice.
+    """
+    rows = parse_login_journal(LOGIN_JOURNAL)
+    sessions = pair_login_sessions(rows)
+    window = sessions[offset:offset + limit]
     return {
         "generated": time.time(),
         "journal_present": LOGIN_JOURNAL.exists(),
-        "sessions": pair_login_sessions(rows),
+        "sessions": window,
+        "total": len(sessions),
+        "offset": offset,
+        "limit": limit,
+        "has_more": offset + len(window) < len(sessions),
         "players": player_playtime_totals(),
     }
 
@@ -1350,7 +1362,7 @@ LOGIN_EVENTS_START = {"connect", "new", "reconnect"}
 LOGIN_EVENTS_END = {"quit", "linkdead", "shutdown"}
 
 
-def parse_login_journal(path: Path, limit: int = 200) -> list[Dict[str, Any]]:
+def parse_login_journal(path: Path, limit: Optional[int] = None) -> list[Dict[str, Any]]:
     """Read the game's login journal into rows, newest first.
 
     Written by the game as tab-separated `when, name, host, event` with a
@@ -1388,7 +1400,7 @@ def parse_login_journal(path: Path, limit: int = 200) -> list[Dict[str, Any]]:
         })
 
     rows.sort(key=lambda row: row["when"])
-    return rows[-limit:]
+    return rows[-limit:] if limit else rows
 
 
 def pair_login_sessions(rows: list[Dict[str, Any]]) -> list[Dict[str, Any]]:
@@ -2622,6 +2634,20 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
             asyncio.open_connection(MUD_HOST, MUD_PORT),
             timeout=5,
         )
+
+        # Every web player reaches the game from 127.0.0.1, so without this
+        # they are all recorded as "localhost" and all share one entry in the
+        # login throttle, which skips loopback for exactly that reason.
+        # A PROXY v1 header names the real client; the game accepts it only
+        # over loopback, so a direct player cannot forge their address.
+        peer = websocket.client.host if websocket.client else ""
+        if peer and ":" not in peer:  # IPv4 only; PROXY TCP4 has no v6 form
+            header = "PROXY TCP4 {} {} {} {}\r\n".format(
+                peer, MUD_HOST, websocket.client.port or 0, MUD_PORT
+            )
+            writer.write(header.encode("latin-1"))
+            await writer.drain()
+
         await websocket.send_text("\0TOC_CONNECTED")
         
         async def mud_to_ws() -> None:
