@@ -3857,26 +3857,34 @@ bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
  * wizinfo only reaches immortals who happen to be online, which is why an
  * operator sending one from the dashboard sees nothing happen and concludes
  * the feature is broken. This is the everyone-gets-it channel, shared with
- * do_announce so a dashboard announcement and an in-game one are identical
- * to players.
+ * do_announce so the dashboard and the command cannot drift apart.
+ *
+ * Colour goes through \x02 plus a slot byte, the way act_move.c colours room
+ * names. The brace form this used to carry ({Y, {W, {x) never rendered:
+ * color_convert wants two characters after the brace, so players were shown
+ * the literal markup.
  */
 void announce_to_world( const char *who, const char *message )
 {
     DESCRIPTOR_DATA *d;
     char buf[MAX_STRING_LENGTH];
 
+    UNUSED_PARAM( who );
+
     if ( message == NULL || message[0] == '\0' )
         return;
 
-    if ( who == NULL || who[0] == '\0' )
-        who = "the administration";
-
     snprintf( buf, sizeof(buf),
-        "\n\r{Y============================================================{x\n\r"
-        "{W  ANNOUNCEMENT from %s:{x\n\r"
-        "{W  %s{x\n\r"
-        "{Y============================================================{x\n\r\n\r",
-        who, message );
+        "\n\r"
+        "\x02%c============================================================\x02%c\n\r"
+        "\x02%c                       ANNOUNCEMENT\x02%c\n\r"
+        "\x02%c%s\x02%c\n\r"
+        "\x02%c============================================================\x02%c\n\r"
+        "\n\r",
+        COL_HERO,      COL_REGULAR,
+        COL_HIGHLIGHT, COL_REGULAR,
+        COL_QUESTION,  message, COL_REGULAR,
+        COL_HERO,      COL_REGULAR );
 
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
@@ -3890,7 +3898,7 @@ void announce_to_world( const char *who, const char *message )
     {
         char logbuf[MAX_STRING_LENGTH];
 
-        snprintf( logbuf, sizeof(logbuf), "ANNOUNCE (%s): %s", who, message );
+        snprintf( logbuf, sizeof(logbuf), "ANNOUNCE: %s", message );
         log_string( logbuf );
     }
 }
