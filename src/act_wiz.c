@@ -307,6 +307,20 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 	equip_char( ch, obj, WEAR_WIELD );
     }
 
+    /*
+     * Make the issued weapon usable. Without this the skill sits at the 1%
+     * the class groups leave it at, and a new character misses almost every
+     * swing with the very weapon the game just handed them.
+     */
+    if ( !IS_NPC(ch) && ch->pcdata != NULL )
+    {
+	int weapon_sn = get_weapon_sn( ch );
+
+	if ( weapon_sn > 0
+	  && ch->pcdata->learned[weapon_sn] < STARTING_WEAPON_SKILL )
+	    ch->pcdata->learned[weapon_sn] = STARTING_WEAPON_SKILL;
+    }
+
     send_to_char("You have been equipped by the Gods.\n\r",ch);
     return;
 }
@@ -5869,11 +5883,20 @@ void do_sockets( CHAR_DATA *ch, char *argument )
  */
 static void lastlog_played( char *dest, size_t size, const char *seconds )
 {
+    char digits[24];
     long total;
     long hours;
     long minutes;
 
-    if ( seconds == NULL || seconds[0] == '\0' || !is_number( (char *)seconds ) )
+    if ( seconds == NULL || seconds[0] == '\0' )
+    {
+        toc_strlcpy( dest, "-", size );
+        return;
+    }
+
+    /* is_number takes a mutable string; copy rather than cast const away. */
+    toc_strlcpy( digits, seconds, sizeof(digits) );
+    if ( !is_number( digits ) )
     {
         toc_strlcpy( dest, "-", size );
         return;

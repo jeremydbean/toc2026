@@ -1265,6 +1265,7 @@ Syntax:
 alias <word> <command as a string>     (sets the alias)
 alias delete <alias to delete>         (deletes an alias)
 alias <word>                           (shows an alias)
+unalias <alias to delete>              (same as alias delete)
 
 e.g.: alias mm cast 'magic missile'
       alias delete mm

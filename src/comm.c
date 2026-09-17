@@ -2600,7 +2600,7 @@ case CON_DEFAULT_CHOICE:
             return;
         }
 
-	ch->pcdata->learned[*weapon_table[weapon].gsn] = 40;
+	ch->pcdata->learned[*weapon_table[weapon].gsn] = STARTING_WEAPON_SKILL;
 	write_to_buffer(d,"\n\r",2);
 	do_help(ch,"motd");
 	d->connected = CON_READ_MOTD;

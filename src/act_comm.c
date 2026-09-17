@@ -1461,6 +1461,167 @@ void do_idea( CHAR_DATA *ch, char *argument )
     return;
 }
 
+/*
+ * Aliases.
+ *
+ * The storage, the save format and the substitution in interp.c all survived;
+ * only the command to read and write them was a stub, so players kept the
+ * aliases already in their files and could neither list nor change them.
+ *
+ *   alias                 list them
+ *   alias <name>          show one
+ *   alias <name> <text>   set one
+ *   unalias <name>        remove one
+ */
+void do_alias( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    int slot;
+    int free_slot;
+    size_t length;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    argument = one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        int shown = 0;
+
+        buf[0] = '\0';
+        for ( slot = 0; slot < MAX_ALIASES; slot++ )
+        {
+            if ( ch->pcdata->alias[slot].first == NULL
+              || ch->pcdata->alias[slot].second == NULL )
+                continue;
+
+            length = strlen( buf );
+            snprintf( buf + length, sizeof(buf) - length, "    %-12s %s\n\r",
+                ch->pcdata->alias[slot].first,
+                ch->pcdata->alias[slot].second );
+            shown++;
+        }
+
+        if ( shown == 0 )
+        {
+            send_to_char( "You have no aliases defined.\n\r", ch );
+            return;
+        }
+
+        send_to_char( "Your aliases:\n\r", ch );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    /* The documented removal form; unalias does the same thing. */
+    if ( !str_cmp( arg, "delete" ) && argument[0] != '\0' )
+    {
+        do_unalias( ch, argument );
+        return;
+    }
+
+    if ( !str_cmp( arg, "alias" ) || !str_cmp( arg, "unalias" ) )
+    {
+        send_to_char( "Aliasing that would leave you no way to undo it.\n\r",
+                      ch );
+        return;
+    }
+
+    /* No argument beyond the name: report what it expands to. */
+    if ( argument[0] == '\0' )
+    {
+        for ( slot = 0; slot < MAX_ALIASES; slot++ )
+        {
+            if ( ch->pcdata->alias[slot].first != NULL
+              && !str_cmp( arg, ch->pcdata->alias[slot].first ) )
+            {
+                snprintf( buf, sizeof(buf), "%s aliases to '%s'.\n\r",
+                    ch->pcdata->alias[slot].first,
+                    ch->pcdata->alias[slot].second );
+                send_to_char( buf, ch );
+                return;
+            }
+        }
+
+        send_to_char( "That alias is not defined.\n\r", ch );
+        return;
+    }
+
+    /* Replace an existing one, otherwise take the first free slot. */
+    free_slot = -1;
+    for ( slot = 0; slot < MAX_ALIASES; slot++ )
+    {
+        if ( ch->pcdata->alias[slot].first == NULL )
+        {
+            if ( free_slot == -1 )
+                free_slot = slot;
+            continue;
+        }
+
+        if ( !str_cmp( arg, ch->pcdata->alias[slot].first ) )
+        {
+            free_slot = slot;
+            free_string( ch->pcdata->alias[slot].first );
+            free_string( ch->pcdata->alias[slot].second );
+            ch->pcdata->alias[slot].first  = NULL;
+            ch->pcdata->alias[slot].second = NULL;
+            break;
+        }
+    }
+
+    if ( free_slot == -1 )
+    {
+        send_to_char( "You have too many aliases; remove one first.\n\r", ch );
+        return;
+    }
+
+    ch->pcdata->alias[free_slot].first  = str_dup( arg );
+    ch->pcdata->alias[free_slot].second = str_dup( argument );
+
+    snprintf( buf, sizeof(buf), "%s is now aliased to '%s'.\n\r",
+        arg, argument );
+    send_to_char( buf, ch );
+    return;
+}
+
+
+void do_unalias( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    int slot;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Remove which alias?\n\r", ch );
+        return;
+    }
+
+    for ( slot = 0; slot < MAX_ALIASES; slot++ )
+    {
+        if ( ch->pcdata->alias[slot].first != NULL
+          && !str_cmp( arg, ch->pcdata->alias[slot].first ) )
+        {
+            free_string( ch->pcdata->alias[slot].first );
+            free_string( ch->pcdata->alias[slot].second );
+            ch->pcdata->alias[slot].first  = NULL;
+            ch->pcdata->alias[slot].second = NULL;
+            send_to_char( "Alias removed.\n\r", ch );
+            return;
+        }
+    }
+
+    send_to_char( "That alias is not defined.\n\r", ch );
+    return;
+}
+
+
 void do_quit( CHAR_DATA *ch, char *argument )
 {
     DESCRIPTOR_DATA *d,*d_next;

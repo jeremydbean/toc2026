@@ -216,6 +216,16 @@ class MudClient:
         """True if the server sent IAC <verb> <option>."""
         return bytes([IAC, verb, option]) in self.raw
 
+    def server_state(self) -> str:
+        """What the server process is doing, for a timeout message."""
+        proc = getattr(self, "server_proc", None)
+        if proc is None:
+            return "server: unknown (no handle)"
+        code = proc.poll()
+        if code is None:
+            return "server: still running (so the game loop stalled)"
+        return f"server: exited with code {code} (so it died)"
+
     def expect(self, *patterns: str, timeout: float | None = None) -> str:
         """Wait until any pattern appears (case-insensitive substring).
 
@@ -232,9 +242,19 @@ class MudClient:
                     self.buffer = self.buffer[index + len(pattern):]
                     return pattern
             if not self._pump():
+                # The peer hung up. Whatever it said on the way out is still
+                # in the buffer and still counts -- "Wrong password." arrives
+                # immediately before the close.
+                haystack = self.buffer.lower()
+                for pattern in patterns:
+                    index = haystack.find(pattern.lower())
+                    if index != -1:
+                        self.buffer = self.buffer[index + len(pattern):]
+                        return pattern
                 break
         raise AssertionError(
             f"timed out waiting for {patterns!r}.\n"
+            f"{self.server_state()}\n"
             f"--- transcript ---\n{self.transcript[-4000:]}"
         )
 
@@ -340,7 +360,10 @@ class LiveMud:
             return "<output unavailable>"
 
     def connect(self, timeout: float = 30.0) -> MudClient:
-        return MudClient(self.port, timeout=timeout)
+        client = MudClient(self.port, timeout=timeout)
+        # So a timeout can report whether the server died or stalled.
+        client.server_proc = self.proc
+        return client
 
     def __exit__(self, *exc) -> None:
         if self.proc is not None and self.proc.poll() is None:

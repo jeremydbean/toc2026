@@ -4969,9 +4969,14 @@ void bug( const char *str, int param )
  */
 void log_string( const char *str )
 {
-    static bool log_dir_checked = FALSE;
+    /*
+     * The handle is held open rather than reopened per line: log_string runs
+     * on every connection, command and bug, and an open/close each time is a
+     * synchronous filesystem round trip in the middle of the game loop.
+     */
+    static FILE *log_fp = NULL;
+    static bool  log_tried = FALSE;
     char *strtime;
-    FILE *fp;
 
     strtime                    = ctime( &current_time );
     strtime[strlen(strtime)-1] = '\0';
@@ -4981,19 +4986,21 @@ void log_string( const char *str )
 
     /*
      * And a file, because the dashboard cannot tail the journal. The game
-     * runs from area/, so log/ is a sibling that may not exist yet on a
-     * fresh install.
+     * runs from area/, so log/ is a sibling that may not exist yet.
      */
-    if ( !log_dir_checked )
+    if ( !log_tried )
     {
+        log_tried = TRUE;
         mkdir( "../log", 0750 );
-        log_dir_checked = TRUE;
+        log_fp = fopen( GAME_LOG_FILE, "a" );
+        if ( log_fp != NULL )
+            setvbuf( log_fp, NULL, _IOLBF, 0 );
     }
 
-    if ( ( fp = fopen( GAME_LOG_FILE, "a" ) ) != NULL )
+    if ( log_fp != NULL )
     {
-        fprintf( fp, "%s :: %s\n", strtime, str );
-        fclose( fp );
+        fprintf( log_fp, "%s :: %s\n", strtime, str );
+        fflush( log_fp );
     }
 
     return;

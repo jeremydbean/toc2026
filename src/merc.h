@@ -2256,6 +2256,15 @@ void    write_web_admin_event ( const char *channel, const char *message,
  * journal keeps timestamps, boot tagging and rotation, and the file is
  * what the Live Logs page can actually read.
  */
+/*
+ * A character is handed a weapon at creation, so they should be able to
+ * hit something with it. The class groups leave the matching skill at 1%,
+ * which meant a new mage or necromancer missed a rabbit essentially every
+ * swing -- the customization path already granted 40, and only players who
+ * customized ever got it.
+ */
+#define STARTING_WEAPON_SKILL   40
+
 #define GAME_LOG_FILE           "../log/toc.log"
 
 #define LOGIN_JOURNAL_FILE      "../log/logins.tsv"

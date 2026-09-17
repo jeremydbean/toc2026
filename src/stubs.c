@@ -352,12 +352,6 @@ void do_info( CHAR_DATA *ch, char *argument )
     stub_notify( ch );
 }
 
-void do_alias( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
-
 void do_beep( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);

@@ -473,3 +473,4 @@ DECLARE_DO_FUN( do_titanic      );
 DECLARE_DO_FUN( do_summonevent  );
 DECLARE_DO_FUN( do_resetpwd     );
 DECLARE_DO_FUN( do_newbie       );
+DECLARE_DO_FUN( do_unalias      );

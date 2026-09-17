@@ -167,6 +167,7 @@ const	struct	cmd_type	cmd_table	[] =
 	* Configuration commands.
 	*/
     { "alias",		do_alias,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
+    { "unalias",	do_unalias,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "arrive",		do_arrive,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "autolist",	do_autolist,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "autoassist",	do_autoassist,	POS_DEAD,        0,  LOG_NORMAL, 1 },
