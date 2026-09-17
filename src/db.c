@@ -4999,8 +4999,8 @@ void log_string( const char *str )
 
     if ( log_fp != NULL )
     {
+        /* Line buffered at open, so the newline already flushes it. */
         fprintf( log_fp, "%s :: %s\n", strtime, str );
-        fflush( log_fp );
     }
 
     return;

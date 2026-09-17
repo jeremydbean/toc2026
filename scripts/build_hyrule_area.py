@@ -619,22 +619,266 @@ def world_room_name(room: dict[str, Any]) -> str:
     return f"{region} [{room['coordinate']}]"
 
 
+# --------------------------------------------------------------------------
+# Room prose.
+#
+# The manifest knows the dungeon, the room's role, its occupants and its
+# doors. That is enough to describe a place instead of restating the source
+# data, which is what the old one-line template did.
+# --------------------------------------------------------------------------
+
+# Each dungeon reads differently underfoot. Two openings apiece so a long
+# crawl does not repeat a single sentence twenty-five times; the choice is
+# made from the vnum, so the build stays reproducible.
+DUNGEON_ATMOSPHERE = {
+    1: ("Pale stone walls rise into shadow, dry and cold and very old.",
+        "The air here is still, and every footfall carries too far."),
+    2: ("Moonlight has no business this far underground, yet the walls hold a faint silver cast.",
+        "Grey dust lies undisturbed across the floor of this silent hall."),
+    3: ("Interlocking channels are cut deep into the floor in a rigid pattern.",
+        "The masonry turns at hard right angles, corner after corner."),
+    4: ("Damp seeps between the blocks and pools in the mortar joints.",
+        "Coils of old carving wind along the walls, scale over scale."),
+    5: ("The passage narrows and widens without warning, as if something swallowed this hall whole.",
+        "Loose grit shifts underfoot, worn from the walls by long use."),
+    6: ("Scorch marks fan across the ceiling in long black tongues.",
+        "Heat lingers in the stone here, held from some older fire."),
+    7: ("The walls sweat. Whatever was sealed down here was sealed deep.",
+        "Faint scratching carries from behind the stone, always one room off."),
+    8: ("Heavy pillars carry the weight of the mountain overhead.",
+        "The hall is built broad and proud, and something has made it a den."),
+    9: ("Death Mountain closes in: raw rock, low ceilings, no comfort at all.",
+        "The deepest stone of Hyrule presses close on every side."),
+}
+
+# Readable forms. The manifest uses the NES entity names, which are fine as
+# keys and poor as prose.
+ENTITY_PROSE = {
+    "aquamentus":     ("an aquamentus", "aquamentus"),
+    "blade_trap":     ("a blade trap", "blade traps"),
+    "blue_darknut":   ("a blue darknut", "blue darknuts"),
+    "blue_goriya":    ("a blue goriya", "blue goriyas"),
+    "blue_lanmola":   ("a blue lanmola", "blue lanmolas"),
+    "blue_wizzrobe":  ("a blue wizzrobe", "blue wizzrobes"),
+    "bubble":         ("a bubble", "bubbles"),
+    "digdogger":      ("a digdogger", "digdoggers"),
+    "dodongo":        ("a dodongo", "dodongos"),
+    "ganon":          ("Ganon himself", "Ganon himself"),
+    "gel":            ("a gel", "gels"),
+    "gibdo":          ("a gibdo", "gibdos"),
+    "gleeok":         ("a gleeok", "gleeoks"),
+    "gohma":          ("a gohma", "gohmas"),
+    "keese":          ("a keese", "keese"),
+    "like_like":      ("a like-like", "like-likes"),
+    "manhandla":      ("a manhandla", "manhandlas"),
+    "old_man":        ("an old man", "old men"),
+    "patra":          ("a patra", "patras"),
+    "pols_voice":     ("a pols voice", "pols voices"),
+    "princess_zelda": ("Princess Zelda", "Princess Zelda"),
+    "red_darknut":    ("a red darknut", "red darknuts"),
+    "red_goriya":     ("a red goriya", "red goriyas"),
+    "red_lanmola":    ("a red lanmola", "red lanmolas"),
+    "red_wizzrobe":   ("a red wizzrobe", "red wizzrobes"),
+    "rope":           ("a rope", "ropes"),
+    "stalfos":        ("a stalfos", "stalfos"),
+    "vire":           ("a vire", "vires"),
+    "wallmaster":     ("a wallmaster", "wallmasters"),
+    "zol":            ("a zol", "zols"),
+}
+
+COUNT_WORDS = {2: "a pair of", 3: "three", 4: "four", 5: "five",
+               6: "six", 7: "seven", 8: "eight", 9: "nine"}
+
+
+def entity_phrase(name: str, count: int) -> str:
+    """'a keese', 'a pair of keese', 'three zols'."""
+    singular, plural = ENTITY_PROSE.get(
+        name, ("a " + name.replace("_", " "), name.replace("_", " ") + "s"))
+    if count <= 1:
+        return singular
+    return f"{COUNT_WORDS.get(count, str(count))} {plural}"
+
+
+def subject_is_plural(entities: dict) -> bool:
+    """True when the composed subject needs a plural verb.
+
+    Several kinds of enemy, or more than one of any kind, both read as
+    plural: "a keese waits" but "a pair of keese wait", and "a zol and a
+    keese wait".
+    """
+    present = [(name, count) for name, count in entities.items() if count]
+    if len(present) > 1:
+        return True
+    return bool(present) and present[0][1] > 1
+
+
+def join_prose(parts: list[str]) -> str:
+    if not parts:
+        return ""
+    if len(parts) == 1:
+        return parts[0]
+    return ", ".join(parts[:-1]) + " and " + parts[-1]
+
+
+def occupants_line(entities: dict) -> str:
+    present = [entity_phrase(name, count)
+               for name, count in sorted(entities.items()) if count]
+    if not present:
+        return "Nothing moves."
+    verb = "wait" if subject_is_plural(entities) else "waits"
+    return f"{join_prose(present).capitalize()} {verb} here."
+
+
+def doors_line(exits: dict) -> str:
+    """Mention only the doors worth acting on."""
+    notes = []
+    for direction, data in sorted(exits.items()):
+        kind = data.get("type")
+        if kind == "bombable":
+            notes.append(f"a hairline crack in the {direction} wall")
+        elif kind == "locked":
+            notes.append(f"a locked door {direction}")
+        elif kind == "shutter":
+            notes.append(f"a shutter {direction}")
+    if not notes:
+        return ""
+    return " You notice " + join_prose(notes) + "."
+
+
+def dungeon_room_description(dungeon: dict, room: dict) -> str:
+    level = dungeon["level"]
+    title = dungeon["title"]
+    role = room.get("role", "room")
+    vnum = int(room["vnum"])
+
+    openings = DUNGEON_ATMOSPHERE.get(
+        level, ("Worked stone presses in on every side.",) * 2)
+    opening = openings[vnum % len(openings)]
+
+    if role == "entrance":
+        body = f"This is the way into {title}, and the way back out."
+    elif role == "map":
+        body = "Someone charted these halls once and left the chart behind."
+    elif role == "compass":
+        body = "A sense of direction settles on you, sharper than it should be."
+    elif role == "boss":
+        body = f"The floor opens out. Whatever rules {title} rules from here."
+    elif role == "goal":
+        body = "Light collects in the middle of the room and does not scatter."
+    else:
+        body = ""
+
+    parts = [opening]
+    if body:
+        parts.append(body)
+    parts.append(occupants_line(room.get("entities", {})))
+    text = " ".join(parts) + doors_line(room.get("exits", {}))
+    return text
+
+
+# Hyrule Field alone is 39 screens, so one sentence per region would repeat
+# itself into wallpaper. Four apiece, chosen by vnum for reproducibility.
+REGION_SETTINGS = {
+    "Death Mountain": (
+        "Bare rock and loose scree climb away on every side.",
+        "The path narrows between boulders that have not moved in an age.",
+        "Grey stone, grey sky, and a wind that comes straight off the peak.",
+        "Rubble slides underfoot wherever the trail pretends to level out.",
+    ),
+    "the western highlands": (
+        "High ground and thin grass, with a long view over the country below.",
+        "The wind comes across the uplands unbroken and carries a chill.",
+        "Outcrops of pale rock break through the turf like old bone.",
+        "The ground falls away eastward in a series of long green steps.",
+    ),
+    "the Lost Woods": (
+        "Close-grown trunks cut the light into pieces and hide the way.",
+        "Every direction looks like the one you came from.",
+        "Moss deadens the sound here until your own steps seem far off.",
+        "Branches close overhead and the path forgets itself.",
+    ),
+    "the eastern desert": (
+        "Dry sand drifts against the stones, and the wind never stops.",
+        "Heat stands over the flats in sheets you can almost see through.",
+        "Nothing grows. The sand has buried whatever used to.",
+        "Wind-scoured rock juts from the dunes at broken angles.",
+    ),
+    "Lake Hylia's shore": (
+        "Water lies flat and bright beyond the reeds.",
+        "Wet gravel gives way to shallows that run a long way out.",
+        "Reeds stand in the margin, and the lake is quiet past them.",
+        "The shoreline curves away, patient and very old.",
+    ),
+    "Hyrule Field": (
+        "Open ground rolls away, grass and rock and little else.",
+        "The country here is wide and plain and offers nowhere to hide.",
+        "Grass runs to the horizon, broken by the odd standing stone.",
+        "Cart ruts cross the turf, long grown over and going nowhere.",
+    ),
+}
+
+# What the manifest calls a landmark, and what a player would call it.
+LANDMARK_PROSE = {
+    "rupee": "a moneylender's cave",
+    "gamble": "a gambling den",
+    "cave": "a cave mouth",
+    "potion_shop": "a potion seller",
+    "warp_hall": "a warp hall",
+    "heart": "a heart container",
+    "door_repair": "a door repair man, and his prices",
+    "shop": "a merchant's cave",
+    "fairy_fountain": "a fairy fountain",
+    "secret": "something deliberately hidden",
+    "secret_return": "a way back to the surface",
+    "start": "the place you first set foot in Hyrule",
+}
+
+
+def overworld_description(room: dict, region: str) -> str:
+    """Overworld screens, described as ground rather than as screen IDs."""
+    vnum = int(room["vnum"])
+    settings = REGION_SETTINGS.get(
+        region, ("The land of Hyrule stretches away.",))
+    setting = settings[vnum % len(settings)]
+
+    present = [entity_phrase(name, count)
+               for name, count in sorted(room.get("entities", {}).items())
+               if count]
+    if present:
+        plural = subject_is_plural(room.get("entities", {}))
+        openers = (
+            ("{} hold this ground." if plural else "{} holds this ground."),
+            ("{} are waiting." if plural else "{} is waiting."),
+            ("{} have the run of the place." if plural
+             else "{} has the run of the place."),
+        )
+        threat = openers[vnum % len(openers)].format(
+            join_prose(present).capitalize())
+    else:
+        quiet = ("Nothing stirs but the wind.", "For once, nothing moves.",
+                 "The screen is empty, which is its own kind of warning.")
+        threat = quiet[vnum % len(quiet)]
+
+    landmark_text = ""
+    landmarks = room.get("landmarks") or []
+    if landmarks:
+        names = []
+        for item in landmarks:
+            if item.get("name"):
+                names.append(item["name"])
+            elif "level" in item:
+                names.append(f"the entrance to Level {item['level']}")
+            else:
+                names.append(LANDMARK_PROSE.get(
+                    item["type"], item["type"].replace("_", " ")))
+        landmark_text = " Somewhere here: " + join_prose(names) + "."
+
+    return f"{setting} {threat}{landmark_text}"
+
+
 def world_room_description(room: dict[str, Any]) -> str:
     region, _ = world_region(room["coordinate"])
-    entities = [name.replace("_", " ") for name, count in room["entities"].items() if count]
-    danger = ", ".join(entities[:4]) if entities else "the wind moving over an empty screen"
-    landmark_text = ""
-    if room["landmarks"]:
-        names = [
-            item.get("name")
-            or (f"Level {item['level']}" if "level" in item else item["type"].replace("_", " "))
-            for item in room["landmarks"]
-        ]
-        landmark_text = " The landscape conceals " + ", ".join(names) + "."
-    return (
-        f"This is First Quest screen {room['coordinate']}, one full crossing of {region}. "
-        f"The visible threats are {danger}.{landmark_text}"
-    )
+    return overworld_description(room, region)
 
 
 def choose_world_mob(entity: str, recommended_level: int) -> int | None:
@@ -700,11 +944,9 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
     for dungeon in manifest["dungeons"]:
         level = dungeon["level"]
         for room in dungeon["rooms"]:
-            entity_names = ", ".join(name.replace("_", " ") for name in room["entities"]) or "silence"
             spec = RoomSpec(
                 room["vnum"], room["name"],
-                f"This chamber preserves First Quest room {room['coordinate']} of {dungeon['title']}. "
-                f"Its original encounter is {entity_names}.",
+                dungeon_room_description(dungeon, room),
                 "ADN", 11,
                 objects=list(room["items"]),
                 entities={str(ENEMY_MOBS[name]): count for name, count in room["entities"].items() if name in ENEMY_MOBS},

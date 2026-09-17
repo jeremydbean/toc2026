@@ -1,4 +1,4 @@
-#AREA   {1 70} Astarte Hyrule~
+#AREA   {1 70} Killum Hyrule~
 
 #MOBILES
 #30200
@@ -4040,7 +4040,7 @@ A
 #ROOMS
 #30200
 The First Quest Begins~
-This is First Quest screen H1, one full crossing of Hyrule Field. The visible threats are the wind moving over an empty screen. The landscape conceals First Quest arrival, Wooden Sword Cave.
+Open ground rolls away, grass and rock and little else. The screen is empty, which is its own kind of warning. Somewhere here: First Quest arrival and Wooden Sword Cave.
 ~
 0 N 2
 D0
@@ -4062,7 +4062,7 @@ cave opening~
 S
 #30201
 the Lost Woods [A1]~
-This is First Quest screen A1, one full crossing of the Lost Woods. The visible threats are peahat.
+Every direction looks like the one you came from. A pair of peahats hold this ground.
 ~
 0 N 3
 D1
@@ -4072,7 +4072,7 @@ D1
 S
 #30202
 the Lost Woods [B1]~
-This is First Quest screen B1, one full crossing of the Lost Woods. The visible threats are blue moblin. The landscape conceals rupee.
+Moss deadens the sound here until your own steps seem far off. A pair of blue moblins are waiting. Somewhere here: a moneylender's cave.
 ~
 0 N 3
 D0
@@ -4094,7 +4094,7 @@ bomb rupee grotto~
 S
 #30203
 the Lost Woods [C1]~
-This is First Quest screen C1, one full crossing of the Lost Woods. The visible threats are blue moblin, red moblin.
+Branches close overhead and the path forgets itself. A blue moblin and a red moblin have the run of the place.
 ~
 0 N 3
 D0
@@ -4112,7 +4112,7 @@ D3
 S
 #30204
 the Lost Woods [D1]~
-This is First Quest screen D1, one full crossing of the Lost Woods. The visible threats are blue moblin.
+Close-grown trunks cut the light into pieces and hide the way. A pair of blue moblins hold this ground.
 ~
 0 N 3
 D0
@@ -4130,7 +4130,7 @@ D3
 S
 #30205
 Before Level 3: The Manji~
-This is First Quest screen E1, one full crossing of the Lost Woods. The visible threats are red tektite. The landscape conceals Level 3.
+Every direction looks like the one you came from. A red tektite is waiting. Somewhere here: the entrance to Level 3.
 ~
 0 N 3
 D3
@@ -4144,7 +4144,7 @@ stone dungeon entrance~
 S
 #30206
 the Lost Woods [F1]~
-This is First Quest screen F1, one full crossing of the Lost Woods. The visible threats are blue leever, peahat.
+Moss deadens the sound here until your own steps seem far off. A blue leever and a peahat have the run of the place.
 ~
 0 N 3
 D0
@@ -4158,7 +4158,7 @@ D1
 S
 #30207
 Hyrule Field [G1]~
-This is First Quest screen G1, one full crossing of Hyrule Field. The visible threats are red tektite. The landscape conceals gamble.
+Cart ruts cross the turf, long grown over and going nowhere. A pair of red tektites hold this ground. Somewhere here: a gambling den.
 ~
 0 N 2
 D0
@@ -4180,7 +4180,7 @@ bomb gamble entrance~
 S
 #30208
 Hyrule Field [I1]~
-This is First Quest screen I1, one full crossing of Hyrule Field. The visible threats are red octorok. The landscape conceals potion shop.
+Open ground rolls away, grass and rock and little else. A pair of red octoroks are waiting. Somewhere here: a potion seller.
 ~
 0 N 2
 D0
@@ -4202,7 +4202,7 @@ burn shop entrance~
 S
 #30209
 Hyrule Field [J1]~
-This is First Quest screen J1, one full crossing of Hyrule Field. The visible threats are blue tektite. The landscape conceals warp hall.
+The country here is wide and plain and offers nowhere to hide. A pair of blue tektites have the run of the place. Somewhere here: a warp hall.
 ~
 0 N 2
 D1
@@ -4220,7 +4220,7 @@ bracelet warp hall entrance~
 S
 #30210
 Hyrule Field [K1]~
-This is First Quest screen K1, one full crossing of Hyrule Field. The visible threats are blue tektite.
+Grass runs to the horizon, broken by the odd standing stone. A pair of blue tektites hold this ground.
 ~
 0 N 2
 D1
@@ -4234,7 +4234,7 @@ D3
 S
 #30211
 Hyrule Field [L1]~
-This is First Quest screen L1, one full crossing of Hyrule Field. The visible threats are red leever. The landscape conceals heart.
+Cart ruts cross the turf, long grown over and going nowhere. A pair of red leevers are waiting. Somewhere here: a heart container.
 ~
 0 N 2
 D0
@@ -4256,7 +4256,7 @@ bomb opening~
 S
 #30212
 the eastern desert [M1]~
-This is First Quest screen M1, one full crossing of the eastern desert. The visible threats are red leever. The landscape conceals gamble.
+Dry sand drifts against the stones, and the wind never stops. A pair of red leevers have the run of the place. Somewhere here: a gambling den.
 ~
 0 N 10
 D1
@@ -4274,7 +4274,7 @@ bomb gamble entrance~
 S
 #30213
 the eastern desert [N1]~
-This is First Quest screen N1, one full crossing of the eastern desert. The visible threats are blue octorok. The landscape conceals door repair.
+Heat stands over the flats in sheets you can almost see through. A pair of blue octoroks hold this ground. Somewhere here: a door repair man, and his prices.
 ~
 0 N 10
 D1
@@ -4292,7 +4292,7 @@ bomb door repair entrance~
 S
 #30214
 the eastern desert [O1]~
-This is First Quest screen O1, one full crossing of the eastern desert. The visible threats are red octorok.
+Nothing grows. The sand has buried whatever used to. A pair of red octoroks are waiting.
 ~
 0 N 10
 D1
@@ -4306,7 +4306,7 @@ D3
 S
 #30215
 the eastern desert [P1]~
-This is First Quest screen P1, one full crossing of the eastern desert. The visible threats are blue octorok.
+Wind-scoured rock juts from the dunes at broken angles. A blue octorok has the run of the place.
 ~
 0 N 10
 D0
@@ -4320,7 +4320,7 @@ D3
 S
 #30216
 the Lost Woods [A2]~
-This is First Quest screen A2, one full crossing of the Lost Woods. The visible threats are blue lynel, peahat.
+Close-grown trunks cut the light into pieces and hide the way. A blue lynel and a peahat hold this ground.
 ~
 0 N 3
 D0
@@ -4334,7 +4334,7 @@ D1
 S
 #30217
 the Lost Woods [B2]~
-This is First Quest screen B2, one full crossing of the Lost Woods. The visible threats are blue moblin.
+Every direction looks like the one you came from. A pair of blue moblins are waiting.
 ~
 0 N 3
 D0
@@ -4356,7 +4356,7 @@ D3
 S
 #30218
 the Lost Woods [C2]~
-This is First Quest screen C2, one full crossing of the Lost Woods. The visible threats are blue moblin. The landscape conceals rupee.
+Moss deadens the sound here until your own steps seem far off. A pair of blue moblins have the run of the place. Somewhere here: a moneylender's cave.
 ~
 0 N 3
 D0
@@ -4382,7 +4382,7 @@ burn rupee grotto~
 S
 #30219
 the Lost Woods [D2]~
-This is First Quest screen D2, one full crossing of the Lost Woods. The visible threats are blue moblin, blue octorok. The landscape conceals door repair.
+Branches close overhead and the path forgets itself. A blue moblin and a blue octorok hold this ground. Somewhere here: a door repair man, and his prices.
 ~
 0 N 3
 D0
@@ -4408,7 +4408,7 @@ burn door repair entrance~
 S
 #30220
 the Lost Woods [E2]~
-This is First Quest screen E2, one full crossing of the Lost Woods. The visible threats are blue octorok, red octorok. The landscape conceals secret return, potion shop.
+Close-grown trunks cut the light into pieces and hide the way. A blue octorok and a red octorok are waiting. Somewhere here: a way back to the surface and a potion seller.
 ~
 0 N 3
 D0
@@ -4438,7 +4438,7 @@ burn opening~
 S
 #30221
 the Lost Woods [F2]~
-This is First Quest screen F2, one full crossing of the Lost Woods. The visible threats are red octorok, zora.
+Every direction looks like the one you came from. A red octorok and a zora have the run of the place.
 ~
 0 N 3
 D0
@@ -4460,7 +4460,7 @@ D3
 S
 #30222
 Hyrule Field [G2]~
-This is First Quest screen G2, one full crossing of Hyrule Field. The visible threats are red octorok. The landscape conceals shop.
+Grass runs to the horizon, broken by the odd standing stone. A pair of red octoroks hold this ground. Somewhere here: a merchant's cave.
 ~
 0 N 2
 D1
@@ -4482,7 +4482,7 @@ open shop entrance~
 S
 #30223
 Hyrule Field [H2]~
-This is First Quest screen H2, one full crossing of Hyrule Field. The visible threats are red octorok. The landscape conceals rupee.
+Cart ruts cross the turf, long grown over and going nowhere. A pair of red octoroks are waiting. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D1
@@ -4504,7 +4504,7 @@ bomb rupee grotto~
 S
 #30224
 Hyrule Field [I2]~
-This is First Quest screen I2, one full crossing of Hyrule Field. The visible threats are red octorok. The landscape conceals door repair.
+Open ground rolls away, grass and rock and little else. A pair of red octoroks have the run of the place. Somewhere here: a door repair man, and his prices.
 ~
 0 N 2
 D0
@@ -4530,7 +4530,7 @@ burn door repair entrance~
 S
 #30225
 Hyrule Field [J2]~
-This is First Quest screen J2, one full crossing of Hyrule Field. The visible threats are red octorok, zora.
+The country here is wide and plain and offers nowhere to hide. A red octorok and a zora hold this ground.
 ~
 0 N 2
 D0
@@ -4548,7 +4548,7 @@ D3
 S
 #30226
 Hyrule Field [K2]~
-This is First Quest screen K2, one full crossing of Hyrule Field. The visible threats are red octorok, zora. The landscape conceals door repair.
+Grass runs to the horizon, broken by the odd standing stone. A red octorok and a zora are waiting. Somewhere here: a door repair man, and his prices.
 ~
 0 N 2
 D0
@@ -4570,7 +4570,7 @@ burn door repair entrance~
 S
 #30227
 Hyrule Field [L2]~
-This is First Quest screen L2, one full crossing of Hyrule Field. The visible threats are blue moblin, blue octorok. The landscape conceals rupee.
+Cart ruts cross the turf, long grown over and going nowhere. A blue moblin and a blue octorok have the run of the place. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D0
@@ -4596,7 +4596,7 @@ burn rupee grotto~
 S
 #30228
 the eastern desert [M2]~
-This is First Quest screen M2, one full crossing of the eastern desert. The visible threats are red moblin.
+Dry sand drifts against the stones, and the wind never stops. A pair of red moblins hold this ground.
 ~
 0 N 10
 D0
@@ -4614,7 +4614,7 @@ D3
 S
 #30229
 Before Level 8: The Lion~
-This is First Quest screen N2, one full crossing of the eastern desert. The visible threats are red moblin. The landscape conceals Level 8.
+Heat stands over the flats in sheets you can almost see through. A pair of red moblins are waiting. Somewhere here: the entrance to Level 8.
 ~
 0 N 10
 D0
@@ -4636,7 +4636,7 @@ burn dungeon entrance~
 S
 #30230
 the eastern desert [O2]~
-This is First Quest screen O2, one full crossing of the eastern desert. The visible threats are blue moblin, blue octorok.
+Nothing grows. The sand has buried whatever used to. A blue moblin and a blue octorok have the run of the place.
 ~
 0 N 10
 D1
@@ -4650,7 +4650,7 @@ D3
 S
 #30231
 the eastern desert [P2]~
-This is First Quest screen P2, one full crossing of the eastern desert. The visible threats are blue octorok, red octorok. The landscape conceals shop.
+Wind-scoured rock juts from the dunes at broken angles. A blue octorok and a red octorok hold this ground. Somewhere here: a merchant's cave.
 ~
 0 N 10
 D0
@@ -4672,7 +4672,7 @@ open shop entrance~
 S
 #30232
 the Lost Woods [A3]~
-This is First Quest screen A3, one full crossing of the Lost Woods. The visible threats are red lynel.
+Close-grown trunks cut the light into pieces and hide the way. A pair of red lynels are waiting.
 ~
 0 N 3
 D0
@@ -4686,7 +4686,7 @@ D2
 S
 #30233
 the Lost Woods [B3]~
-This is First Quest screen B3, one full crossing of the Lost Woods. The visible threats are blue moblin. The landscape conceals rupee.
+Every direction looks like the one you came from. A pair of blue moblins have the run of the place. Somewhere here: a moneylender's cave.
 ~
 0 N 3
 D1
@@ -4704,7 +4704,7 @@ burn rupee grotto~
 S
 #30234
 the Lost Woods [C3]~
-This is First Quest screen C3, one full crossing of the Lost Woods. The visible threats are blue moblin, red moblin.
+Moss deadens the sound here until your own steps seem far off. A blue moblin and a red moblin hold this ground.
 ~
 0 N 3
 D0
@@ -4726,7 +4726,7 @@ D3
 S
 #30235
 the Lost Woods [D3]~
-This is First Quest screen D3, one full crossing of the Lost Woods. The visible threats are blue moblin, red moblin.
+Branches close overhead and the path forgets itself. A blue moblin and a red moblin are waiting.
 ~
 0 N 3
 D0
@@ -4748,7 +4748,7 @@ D3
 S
 #30236
 the Lost Woods [E3]~
-This is First Quest screen E3, one full crossing of the Lost Woods. The visible threats are red octorok, zora.
+Close-grown trunks cut the light into pieces and hide the way. A red octorok and a zora have the run of the place.
 ~
 0 N 3
 D0
@@ -4770,7 +4770,7 @@ D3
 S
 #30237
 the Lost Woods [F3]~
-This is First Quest screen F3, one full crossing of the Lost Woods. The visible threats are red octorok, zora.
+Every direction looks like the one you came from. A red octorok and a zora hold this ground.
 ~
 0 N 3
 D0
@@ -4792,7 +4792,7 @@ D3
 S
 #30238
 Hyrule Field [G3]~
-This is First Quest screen G3, one full crossing of Hyrule Field. The visible threats are red octorok, zora. The landscape conceals rupee.
+Grass runs to the horizon, broken by the odd standing stone. A red octorok and a zora are waiting. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D0
@@ -4814,7 +4814,7 @@ burn rupee grotto~
 S
 #30239
 Hyrule Field [H3]~
-This is First Quest screen H3, one full crossing of Hyrule Field. The visible threats are red octorok.
+Cart ruts cross the turf, long grown over and going nowhere. A pair of red octoroks have the run of the place.
 ~
 0 N 2
 D1
@@ -4828,7 +4828,7 @@ D3
 S
 #30240
 Hyrule Field [I3]~
-This is First Quest screen I3, one full crossing of Hyrule Field. The visible threats are red octorok.
+Open ground rolls away, grass and rock and little else. A pair of red octoroks hold this ground.
 ~
 0 N 2
 D0
@@ -4850,7 +4850,7 @@ D3
 S
 #30241
 Hyrule Field [J3]~
-This is First Quest screen J3, one full crossing of Hyrule Field. The visible threats are peahat.
+The country here is wide and plain and offers nowhere to hide. A pair of peahats are waiting.
 ~
 0 N 2
 D0
@@ -4872,7 +4872,7 @@ D3
 S
 #30242
 Hyrule Field [K3]~
-This is First Quest screen K3, one full crossing of Hyrule Field. The visible threats are red octorok.
+Grass runs to the horizon, broken by the odd standing stone. A pair of red octoroks have the run of the place.
 ~
 0 N 2
 D1
@@ -4890,7 +4890,7 @@ D3
 S
 #30243
 Hyrule Field [L3]~
-This is First Quest screen L3, one full crossing of Hyrule Field. The visible threats are blue moblin, red moblin. The landscape conceals rupee.
+Cart ruts cross the turf, long grown over and going nowhere. A blue moblin and a red moblin hold this ground. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D0
@@ -4916,7 +4916,7 @@ burn rupee grotto~
 S
 #30244
 the eastern desert [M3]~
-This is First Quest screen M3, one full crossing of the eastern desert. The visible threats are blue moblin.
+Dry sand drifts against the stones, and the wind never stops. A pair of blue moblins are waiting.
 ~
 0 N 10
 D1
@@ -4934,7 +4934,7 @@ D3
 S
 #30245
 the eastern desert [N3]~
-This is First Quest screen N3, one full crossing of the eastern desert. The visible threats are blue moblin.
+Heat stands over the flats in sheets you can almost see through. A pair of blue moblins have the run of the place.
 ~
 0 N 10
 D0
@@ -4956,7 +4956,7 @@ D3
 S
 #30246
 the eastern desert [O3]~
-This is First Quest screen O3, one full crossing of the eastern desert. The visible threats are blue moblin. The landscape conceals shop.
+Nothing grows. The sand has buried whatever used to. A pair of blue moblins hold this ground. Somewhere here: a merchant's cave.
 ~
 0 N 10
 D3
@@ -4970,7 +4970,7 @@ open shop entrance~
 S
 #30247
 the eastern desert [P3]~
-This is First Quest screen P3, one full crossing of the eastern desert. The visible threats are blue octorok, heart container. The landscape conceals heart.
+Wind-scoured rock juts from the dunes at broken angles. A blue octorok and a heart container are waiting. Somewhere here: a heart container.
 ~
 0 N 10
 D0
@@ -4984,7 +4984,7 @@ D2
 S
 #30248
 the western highlands [A4]~
-This is First Quest screen A4, one full crossing of the western highlands. The visible threats are ghini.
+High ground and thin grass, with a long view over the country below. A ghini has the run of the place.
 ~
 0 N 4
 D0
@@ -5002,7 +5002,7 @@ raft crossing~
 S
 #30249
 the western highlands [B4]~
-This is First Quest screen B4, one full crossing of the western highlands. The visible threats are ghini.
+The wind comes across the uplands unbroken and carries a chill. A ghini holds this ground.
 ~
 0 N 4
 D0
@@ -5016,7 +5016,7 @@ D3
 S
 #30250
 Before Level 7: The Demon~
-This is First Quest screen C4, one full crossing of the western highlands. The visible threats are red moblin. The landscape conceals Level 7.
+Outcrops of pale rock break through the turf like old bone. A red moblin is waiting. Somewhere here: the entrance to Level 7.
 ~
 0 N 4
 D2
@@ -5030,7 +5030,7 @@ recorder dungeon entrance~
 S
 #30251
 A Fairy Fountain~
-This is First Quest screen D4, one full crossing of the western highlands. The visible threats are fairy. The landscape conceals fairy fountain.
+The ground falls away eastward in a series of long green steps. A fairy has the run of the place. Somewhere here: a fairy fountain.
 ~
 0 N 4
 D2
@@ -5040,7 +5040,7 @@ D2
 S
 #30252
 the western highlands [E4]~
-This is First Quest screen E4, one full crossing of the western highlands. The visible threats are red octorok, zora. The landscape conceals shop.
+High ground and thin grass, with a long view over the country below. A red octorok and a zora hold this ground. Somewhere here: a merchant's cave.
 ~
 0 N 4
 D0
@@ -5058,7 +5058,7 @@ open shop entrance~
 S
 #30253
 Before Level 4: The Snake~
-This is First Quest screen F4, one full crossing of Hyrule Field. The visible threats are peahat. The landscape conceals Level 4.
+The country here is wide and plain and offers nowhere to hide. A peahat is waiting. Somewhere here: the entrance to Level 4.
 ~
 0 N 2
 D2
@@ -5068,7 +5068,7 @@ stepladder crossing~
 S
 #30254
 Hyrule Field [G4]~
-This is First Quest screen G4, one full crossing of Hyrule Field. The visible threats are zora. The landscape conceals shop.
+Grass runs to the horizon, broken by the odd standing stone. A zora has the run of the place. Somewhere here: a merchant's cave.
 ~
 0 N 2
 D1
@@ -5086,7 +5086,7 @@ burn shop entrance~
 S
 #30255
 Hyrule Field [H4]~
-This is First Quest screen H4, one full crossing of Hyrule Field. The visible threats are zora. The landscape conceals heart.
+Cart ruts cross the turf, long grown over and going nowhere. A zora holds this ground. Somewhere here: a heart container.
 ~
 0 N 2
 D1
@@ -5104,7 +5104,7 @@ burn opening~
 S
 #30256
 Hyrule Field [I4]~
-This is First Quest screen I4, one full crossing of Hyrule Field. The visible threats are red leever, zora. The landscape conceals rupee.
+Open ground rolls away, grass and rock and little else. A red leever and a zora are waiting. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D0
@@ -5126,7 +5126,7 @@ burn rupee grotto~
 S
 #30257
 Hyrule Field [J4]~
-This is First Quest screen J4, one full crossing of Hyrule Field. The visible threats are blue octorok, red octorok. The landscape conceals warp hall.
+The country here is wide and plain and offers nowhere to hide. A blue octorok and a red octorok have the run of the place. Somewhere here: a warp hall.
 ~
 0 N 2
 D0
@@ -5148,7 +5148,7 @@ bracelet warp hall entrance~
 S
 #30258
 Hyrule Field [K4]~
-This is First Quest screen K4, one full crossing of Hyrule Field. The visible threats are blue tektite. The landscape conceals shop.
+Grass runs to the horizon, broken by the odd standing stone. A pair of blue tektites hold this ground. Somewhere here: a merchant's cave.
 ~
 0 N 2
 D0
@@ -5170,7 +5170,7 @@ open shop entrance~
 S
 #30259
 Hyrule Field [L4]~
-This is First Quest screen L4, one full crossing of Hyrule Field. The visible threats are red moblin. The landscape conceals potion shop.
+Cart ruts cross the turf, long grown over and going nowhere. A pair of red moblins are waiting. Somewhere here: a potion seller.
 ~
 0 N 2
 D0
@@ -5192,7 +5192,7 @@ burn shop entrance~
 S
 #30260
 Lake Hylia's shore [M4]~
-This is First Quest screen M4, one full crossing of Lake Hylia's shore. The visible threats are blue octorok, red octorok.
+Water lies flat and bright beyond the reeds. A blue octorok and a red octorok have the run of the place.
 ~
 0 N 2
 D0
@@ -5206,7 +5206,7 @@ D1
 S
 #30261
 Lake Hylia's shore [N4]~
-This is First Quest screen N4, one full crossing of Lake Hylia's shore. The visible threats are blue moblin. The landscape conceals shop.
+Wet gravel gives way to shallows that run a long way out. A pair of blue moblins hold this ground. Somewhere here: a merchant's cave.
 ~
 0 N 2
 D0
@@ -5232,7 +5232,7 @@ burn shop entrance~
 S
 #30262
 Lake Hylia's shore [O4]~
-This is First Quest screen O4, one full crossing of Lake Hylia's shore. The visible threats are armos, blue moblin. The landscape conceals rupee.
+Reeds stand in the margin, and the lake is quiet past them. A armos and a blue moblin are waiting. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D3
@@ -5246,7 +5246,7 @@ armos rupee grotto~
 S
 #30263
 Lake Hylia's shore [P4]~
-This is First Quest screen P4, one full crossing of Lake Hylia's shore. The visible threats are blue octorok, red octorok.
+The shoreline curves away, patient and very old. A blue octorok and a red octorok have the run of the place.
 ~
 0 N 2
 D0
@@ -5260,7 +5260,7 @@ D2
 S
 #30264
 the western highlands [A5]~
-This is First Quest screen A5, one full crossing of the western highlands. The visible threats are ghini.
+High ground and thin grass, with a long view over the country below. A ghini holds this ground.
 ~
 0 N 4
 D0
@@ -5278,7 +5278,7 @@ D2
 S
 #30265
 the western highlands [B5]~
-This is First Quest screen B5, one full crossing of the western highlands. The visible threats are ghini.
+The wind comes across the uplands unbroken and carries a chill. A ghini is waiting.
 ~
 0 N 4
 D0
@@ -5300,7 +5300,7 @@ D3
 S
 #30266
 the western highlands [C5]~
-This is First Quest screen C5, one full crossing of the western highlands. The visible threats are blue lynel, peahat.
+Outcrops of pale rock break through the turf like old bone. A blue lynel and a peahat have the run of the place.
 ~
 0 N 4
 D0
@@ -5318,7 +5318,7 @@ D3
 S
 #30267
 the western highlands [D5]~
-This is First Quest screen D5, one full crossing of the western highlands. The visible threats are the wind moving over an empty screen. The landscape conceals potion shop.
+The ground falls away eastward in a series of long green steps. Nothing stirs but the wind. Somewhere here: a potion seller.
 ~
 0 N 4
 D0
@@ -5336,7 +5336,7 @@ bomb shop entrance~
 S
 #30268
 the western highlands [E5]~
-This is First Quest screen E5, one full crossing of the western highlands. The visible threats are armos, blue leever. The landscape conceals shop.
+High ground and thin grass, with a long view over the country below. A armos and a blue leever are waiting. Somewhere here: a merchant's cave.
 ~
 0 N 4
 D2
@@ -5350,7 +5350,7 @@ armos shop entrance~
 S
 #30269
 Hyrule Field [F5]~
-This is First Quest screen F5, one full crossing of Hyrule Field. The visible threats are the wind moving over an empty screen.
+The country here is wide and plain and offers nowhere to hide. The screen is empty, which is its own kind of warning.
 ~
 0 N 2
 D0
@@ -5364,7 +5364,7 @@ D1
 S
 #30270
 Hyrule Field [G5]~
-This is First Quest screen G5, one full crossing of Hyrule Field. The visible threats are the wind moving over an empty screen.
+Grass runs to the horizon, broken by the odd standing stone. Nothing stirs but the wind.
 ~
 0 N 2
 D0
@@ -5378,7 +5378,7 @@ D3
 S
 #30271
 Before Level 1: The Eagle~
-This is First Quest screen H5, one full crossing of Hyrule Field. The visible threats are red octorok. The landscape conceals Level 1.
+Cart ruts cross the turf, long grown over and going nowhere. A red octorok is waiting. Somewhere here: the entrance to Level 1.
 ~
 0 N 2
 D1
@@ -5392,7 +5392,7 @@ stone dungeon entrance~
 S
 #30272
 Hyrule Field [I5]~
-This is First Quest screen I5, one full crossing of Hyrule Field. The visible threats are blue octorok, red octorok.
+Open ground rolls away, grass and rock and little else. A blue octorok and a red octorok have the run of the place.
 ~
 0 N 2
 D0
@@ -5410,7 +5410,7 @@ raft crossing~
 S
 #30273
 A Fairy Fountain~
-This is First Quest screen J5, one full crossing of Hyrule Field. The visible threats are fairy. The landscape conceals fairy fountain.
+The country here is wide and plain and offers nowhere to hide. A fairy holds this ground. Somewhere here: a fairy fountain.
 ~
 0 N 2
 D2
@@ -5420,7 +5420,7 @@ D2
 S
 #30274
 Hyrule Field [K5]~
-This is First Quest screen K5, one full crossing of Hyrule Field. The visible threats are blue leever, peahat.
+Grass runs to the horizon, broken by the odd standing stone. A blue leever and a peahat are waiting.
 ~
 0 N 2
 D0
@@ -5438,7 +5438,7 @@ D2
 S
 #30275
 Hyrule Field [L5]~
-This is First Quest screen L5, one full crossing of Hyrule Field. The visible threats are blue leever.
+Cart ruts cross the turf, long grown over and going nowhere. A pair of blue leevers have the run of the place.
 ~
 0 N 2
 D0
@@ -5456,7 +5456,7 @@ D3
 S
 #30276
 Before Level 2: The Moon~
-This is First Quest screen M5, one full crossing of Lake Hylia's shore. The visible threats are blue octorok. The landscape conceals Level 2.
+Water lies flat and bright beyond the reeds. A blue octorok holds this ground. Somewhere here: the entrance to Level 2.
 ~
 0 N 2
 D2
@@ -5470,7 +5470,7 @@ stone dungeon entrance~
 S
 #30277
 Lake Hylia's shore [N5]~
-This is First Quest screen N5, one full crossing of Lake Hylia's shore. The visible threats are armos, blue moblin. The landscape conceals rupee.
+Wet gravel gives way to shallows that run a long way out. A armos and a blue moblin are waiting. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D0
@@ -5488,7 +5488,7 @@ armos rupee grotto~
 S
 #30278
 Lake Hylia's shore [O5]~
-This is First Quest screen O5, one full crossing of Lake Hylia's shore. The visible threats are blue octorok, red octorok.
+Reeds stand in the margin, and the lake is quiet past them. A blue octorok and a red octorok have the run of the place.
 ~
 0 N 2
 D0
@@ -5502,7 +5502,7 @@ D1
 S
 #30279
 Lake Hylia's shore [P5]~
-This is First Quest screen P5, one full crossing of Lake Hylia's shore. The visible threats are blue octorok, zora.
+The shoreline curves away, patient and very old. A blue octorok and a zora hold this ground.
 ~
 0 N 2
 D0
@@ -5520,7 +5520,7 @@ D3
 S
 #30280
 the western highlands [A6]~
-This is First Quest screen A6, one full crossing of the western highlands. The visible threats are ghini.
+High ground and thin grass, with a long view over the country below. A ghini is waiting.
 ~
 0 N 4
 D1
@@ -5534,7 +5534,7 @@ D2
 S
 #30281
 the western highlands [B6]~
-This is First Quest screen B6, one full crossing of the western highlands. The visible threats are ghini. The landscape conceals Master Sword Grave.
+The wind comes across the uplands unbroken and carries a chill. A ghini has the run of the place. Somewhere here: Master Sword Grave.
 ~
 0 N 4
 D2
@@ -5552,7 +5552,7 @@ push opening~
 S
 #30282
 Before Level 6: The Dragon~
-This is First Quest screen C6, one full crossing of the western highlands. The visible threats are red lynel. The landscape conceals Level 6.
+Outcrops of pale rock break through the turf like old bone. A red lynel holds this ground. Somewhere here: the entrance to Level 6.
 ~
 0 N 4
 D2
@@ -5566,7 +5566,7 @@ stone dungeon entrance~
 S
 #30283
 the western highlands [D6]~
-This is First Quest screen D6, one full crossing of the western highlands. The visible threats are red lynel. The landscape conceals warp hall.
+The ground falls away eastward in a series of long green steps. A pair of red lynels are waiting. Somewhere here: a warp hall.
 ~
 0 N 4
 D1
@@ -5584,7 +5584,7 @@ bracelet warp hall entrance~
 S
 #30284
 the western highlands [E6]~
-This is First Quest screen E6, one full crossing of the western highlands. The visible threats are armos. The landscape conceals Power Bracelet Armos.
+High ground and thin grass, with a long view over the country below. A armos has the run of the place. Somewhere here: Power Bracelet Armos.
 ~
 0 N 4
 D0
@@ -5606,7 +5606,7 @@ armos opening~
 S
 #30285
 Hyrule Field [F6]~
-This is First Quest screen F6, one full crossing of Hyrule Field. The visible threats are peahat. The landscape conceals shop.
+The country here is wide and plain and offers nowhere to hide. A pair of peahats hold this ground. Somewhere here: a merchant's cave.
 ~
 0 N 2
 D0
@@ -5628,7 +5628,7 @@ open shop entrance~
 S
 #30286
 Hyrule Field [G6]~
-This is First Quest screen G6, one full crossing of Hyrule Field. The visible threats are peahat. The landscape conceals shop.
+Grass runs to the horizon, broken by the odd standing stone. A pair of peahats are waiting. Somewhere here: a merchant's cave.
 ~
 0 N 2
 D1
@@ -5646,7 +5646,7 @@ bomb shop entrance~
 S
 #30287
 Hyrule Field [H6]~
-This is First Quest screen H6, one full crossing of Hyrule Field. The visible threats are peahat. The landscape conceals potion shop.
+Cart ruts cross the turf, long grown over and going nowhere. A pair of peahats have the run of the place. Somewhere here: a potion seller.
 ~
 0 N 2
 D0
@@ -5668,7 +5668,7 @@ bomb shop entrance~
 S
 #30288
 Hyrule Field [I6]~
-This is First Quest screen I6, one full crossing of Hyrule Field. The visible threats are peahat. The landscape conceals rupee.
+Open ground rolls away, grass and rock and little else. A pair of peahats hold this ground. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D1
@@ -5690,7 +5690,7 @@ burn rupee grotto~
 S
 #30289
 Hyrule Field [J6]~
-This is First Quest screen J6, one full crossing of Hyrule Field. The visible threats are red leever.
+The country here is wide and plain and offers nowhere to hide. A pair of red leevers are waiting.
 ~
 0 N 2
 D1
@@ -5704,7 +5704,7 @@ D3
 S
 #30290
 Hyrule Field [K6]~
-This is First Quest screen K6, one full crossing of Hyrule Field. The visible threats are blue leever.
+Grass runs to the horizon, broken by the odd standing stone. A pair of blue leevers have the run of the place.
 ~
 0 N 2
 D1
@@ -5722,7 +5722,7 @@ D3
 S
 #30291
 Hyrule Field [L6]~
-This is First Quest screen L6, one full crossing of Hyrule Field. The visible threats are blue leever, peahat.
+Cart ruts cross the turf, long grown over and going nowhere. A blue leever and a peahat hold this ground.
 ~
 0 N 2
 D0
@@ -5744,7 +5744,7 @@ D3
 S
 #30292
 Lake Hylia's shore [M6]~
-This is First Quest screen M6, one full crossing of Lake Hylia's shore. The visible threats are red tektite. The landscape conceals heart.
+Water lies flat and bright beyond the reeds. A pair of red tektites are waiting. Somewhere here: a heart container.
 ~
 0 N 2
 D0
@@ -5766,7 +5766,7 @@ bomb opening~
 S
 #30293
 Lake Hylia's shore [N6]~
-This is First Quest screen N6, one full crossing of Lake Hylia's shore. The visible threats are blue octorok, red octorok. The landscape conceals rupee.
+Wet gravel gives way to shallows that run a long way out. A blue octorok and a red octorok have the run of the place. Somewhere here: a moneylender's cave.
 ~
 0 N 2
 D0
@@ -5792,7 +5792,7 @@ bomb rupee grotto~
 S
 #30294
 Lake Hylia's shore [O6]~
-This is First Quest screen O6, one full crossing of Lake Hylia's shore. The visible threats are blue octorok, zora.
+Reeds stand in the margin, and the lake is quiet past them. A blue octorok and a zora hold this ground.
 ~
 0 N 2
 D2
@@ -5806,7 +5806,7 @@ D3
 S
 #30295
 Lake Hylia's shore [P6]~
-This is First Quest screen P6, one full crossing of Lake Hylia's shore. The visible threats are the wind moving over an empty screen. The landscape conceals heart.
+The shoreline curves away, patient and very old. For once, nothing moves. Somewhere here: a heart container.
 ~
 0 N 2
 D2
@@ -5816,7 +5816,7 @@ raft crossing~
 S
 #30296
 Death Mountain [A7]~
-This is First Quest screen A7, one full crossing of Death Mountain. The visible threats are blue lynel. The landscape conceals gamble.
+Bare rock and loose scree climb away on every side. A pair of blue lynels have the run of the place. Somewhere here: a gambling den.
 ~
 0 N 5
 D0
@@ -5834,7 +5834,7 @@ bomb gamble entrance~
 S
 #30297
 Death Mountain [B7]~
-This is First Quest screen B7, one full crossing of Death Mountain. The visible threats are blue lynel, peahat.
+The path narrows between boulders that have not moved in an age. A blue lynel and a peahat hold this ground.
 ~
 0 N 5
 D0
@@ -5848,7 +5848,7 @@ D3
 S
 #30298
 Death Mountain [C7]~
-This is First Quest screen C7, one full crossing of Death Mountain. The visible threats are blue lynel. The landscape conceals shop.
+Grey stone, grey sky, and a wind that comes straight off the peak. A pair of blue lynels are waiting. Somewhere here: a merchant's cave.
 ~
 0 N 5
 D0
@@ -5866,7 +5866,7 @@ bomb shop entrance~
 S
 #30299
 Death Mountain [D7]~
-This is First Quest screen D7, one full crossing of Death Mountain. The visible threats are blue lynel, red lynel. The landscape conceals rupee.
+Rubble slides underfoot wherever the trail pretends to level out. A blue lynel and a red lynel have the run of the place. Somewhere here: a moneylender's cave.
 ~
 0 N 5
 D0
@@ -5888,7 +5888,7 @@ bomb rupee grotto~
 S
 #30300
 Death Mountain [E7]~
-This is First Quest screen E7, one full crossing of Death Mountain. The visible threats are red lynel. The landscape conceals door repair.
+Bare rock and loose scree climb away on every side. A pair of red lynels hold this ground. Somewhere here: a door repair man, and his prices.
 ~
 0 N 5
 D1
@@ -5910,7 +5910,7 @@ bomb door repair entrance~
 S
 #30301
 Death Mountain [F7]~
-This is First Quest screen F7, one full crossing of Death Mountain. The visible threats are blue lynel, peahat.
+The path narrows between boulders that have not moved in an age. A blue lynel and a peahat are waiting.
 ~
 0 N 5
 D1
@@ -5928,7 +5928,7 @@ D3
 S
 #30302
 Death Mountain [G7]~
-This is First Quest screen G7, one full crossing of Death Mountain. The visible threats are falling rock. The landscape conceals gamble.
+Grey stone, grey sky, and a wind that comes straight off the peak. A pair of falling rocks have the run of the place. Somewhere here: a gambling den.
 ~
 0 N 5
 D1
@@ -5946,7 +5946,7 @@ bomb gamble entrance~
 S
 #30303
 Death Mountain [H7]~
-This is First Quest screen H7, one full crossing of Death Mountain. The visible threats are falling rock.
+Rubble slides underfoot wherever the trail pretends to level out. A falling rock holds this ground.
 ~
 0 N 5
 D0
@@ -5968,7 +5968,7 @@ D3
 S
 #30304
 Death Mountain [I7]~
-This is First Quest screen I7, one full crossing of Death Mountain. The visible threats are falling rock.
+Bare rock and loose scree climb away on every side. A pair of falling rocks are waiting.
 ~
 0 N 5
 D1
@@ -5982,7 +5982,7 @@ D3
 S
 #30305
 Death Mountain [J7]~
-This is First Quest screen J7, one full crossing of Death Mountain. The visible threats are falling rock.
+The path narrows between boulders that have not moved in an age. A pair of falling rocks have the run of the place.
 ~
 0 N 5
 D1
@@ -5996,7 +5996,7 @@ D3
 S
 #30306
 Death Mountain [K7]~
-This is First Quest screen K7, one full crossing of Death Mountain. The visible threats are red tektite.
+Grey stone, grey sky, and a wind that comes straight off the peak. A pair of red tektites hold this ground.
 ~
 0 N 5
 D0
@@ -6014,7 +6014,7 @@ D3
 S
 #30307
 Death Mountain [L7]~
-This is First Quest screen L7, one full crossing of Death Mountain. The visible threats are the wind moving over an empty screen.
+Rubble slides underfoot wherever the trail pretends to level out. For once, nothing moves.
 ~
 0 N 5
 D0
@@ -6036,7 +6036,7 @@ D3
 S
 #30308
 Death Mountain [M7]~
-This is First Quest screen M7, one full crossing of Death Mountain. The visible threats are armos.
+Bare rock and loose scree climb away on every side. A armos has the run of the place.
 ~
 0 N 5
 D0
@@ -6058,7 +6058,7 @@ D3
 S
 #30309
 Death Mountain [N7]~
-This is First Quest screen N7, one full crossing of Death Mountain. The visible threats are peahat. The landscape conceals warp hall.
+The path narrows between boulders that have not moved in an age. A pair of peahats hold this ground. Somewhere here: a warp hall.
 ~
 0 N 5
 D0
@@ -6084,7 +6084,7 @@ bracelet warp hall entrance~
 S
 #30310
 Death Mountain [O7]~
-This is First Quest screen O7, one full crossing of Death Mountain. The visible threats are red tektite. The landscape conceals door repair.
+Grey stone, grey sky, and a wind that comes straight off the peak. A pair of red tektites are waiting. Somewhere here: a door repair man, and his prices.
 ~
 0 N 5
 D0
@@ -6106,7 +6106,7 @@ bomb door repair entrance~
 S
 #30311
 Death Mountain [P7]~
-This is First Quest screen P7, one full crossing of Death Mountain. The visible threats are peahat. The landscape conceals gamble.
+Rubble slides underfoot wherever the trail pretends to level out. A pair of peahats have the run of the place. Somewhere here: a gambling den.
 ~
 0 N 5
 D0
@@ -6124,7 +6124,7 @@ open gamble entrance~
 S
 #30312
 Death Mountain [A8]~
-This is First Quest screen A8, one full crossing of Death Mountain. The visible threats are the wind moving over an empty screen.
+Bare rock and loose scree climb away on every side. Nothing stirs but the wind.
 ~
 0 N 5
 D1
@@ -6138,7 +6138,7 @@ stepladder crossing~
 S
 #30313
 Death Mountain [B8]~
-This is First Quest screen B8, one full crossing of Death Mountain. The visible threats are red lynel. The landscape conceals door repair.
+The path narrows between boulders that have not moved in an age. A pair of red lynels are waiting. Somewhere here: a door repair man, and his prices.
 ~
 0 N 5
 D1
@@ -6160,7 +6160,7 @@ bomb door repair entrance~
 S
 #30314
 Death Mountain [C8]~
-This is First Quest screen C8, one full crossing of Death Mountain. The visible threats are red lynel.
+Grey stone, grey sky, and a wind that comes straight off the peak. A pair of red lynels have the run of the place.
 ~
 0 N 5
 D1
@@ -6178,7 +6178,7 @@ D3
 S
 #30315
 Death Mountain [D8]~
-This is First Quest screen D8, one full crossing of Death Mountain. The visible threats are falling rock. The landscape conceals door repair.
+Rubble slides underfoot wherever the trail pretends to level out. A pair of falling rocks hold this ground. Somewhere here: a door repair man, and his prices.
 ~
 0 N 5
 D2
@@ -6196,7 +6196,7 @@ bomb door repair entrance~
 S
 #30316
 Death Mountain [E8]~
-This is First Quest screen E8, one full crossing of Death Mountain. The visible threats are blue lynel. The landscape conceals potion shop.
+Bare rock and loose scree climb away on every side. A pair of blue lynels are waiting. Somewhere here: a potion seller.
 ~
 0 N 5
 D1
@@ -6210,7 +6210,7 @@ open shop entrance~
 S
 #30317
 Before Level 9: Death Mountain~
-This is First Quest screen F8, one full crossing of Death Mountain. The visible threats are blue leever, blue lynel. The landscape conceals Level 9.
+The path narrows between boulders that have not moved in an age. A blue leever and a blue lynel have the run of the place. Somewhere here: the entrance to Level 9.
 ~
 0 N 5
 D1
@@ -6228,7 +6228,7 @@ triforce bomb dungeon entrance~
 S
 #30318
 Death Mountain [G8]~
-This is First Quest screen G8, one full crossing of Death Mountain. The visible threats are blue lynel, peahat.
+Grey stone, grey sky, and a wind that comes straight off the peak. A blue lynel and a peahat hold this ground.
 ~
 0 N 5
 D1
@@ -6242,7 +6242,7 @@ D3
 S
 #30319
 Death Mountain [H8]~
-This is First Quest screen H8, one full crossing of Death Mountain. The visible threats are red lynel. The landscape conceals door repair.
+Rubble slides underfoot wherever the trail pretends to level out. A red lynel is waiting. Somewhere here: a door repair man, and his prices.
 ~
 0 N 5
 D1
@@ -6264,7 +6264,7 @@ bomb door repair entrance~
 S
 #30320
 Death Mountain [I8]~
-This is First Quest screen I8, one full crossing of Death Mountain. The visible threats are falling rock.
+Bare rock and loose scree climb away on every side. A pair of falling rocks have the run of the place.
 ~
 0 N 5
 D1
@@ -6278,7 +6278,7 @@ D3
 S
 #30321
 Death Mountain [J8]~
-This is First Quest screen J8, one full crossing of Death Mountain. The visible threats are the wind moving over an empty screen.
+The path narrows between boulders that have not moved in an age. Nothing stirs but the wind.
 ~
 0 N 5
 D3
@@ -6288,7 +6288,7 @@ D3
 S
 #30322
 Death Mountain [K8]~
-This is First Quest screen K8, one full crossing of Death Mountain. The visible threats are blue lynel, zora. The landscape conceals White Sword Cave.
+Grey stone, grey sky, and a wind that comes straight off the peak. A blue lynel and a zora are waiting. Somewhere here: White Sword Cave.
 ~
 0 N 5
 D2
@@ -6302,7 +6302,7 @@ cave opening~
 S
 #30323
 Before Level 5: The Lizard~
-This is First Quest screen L8, one full crossing of Death Mountain. The visible threats are red leever. The landscape conceals Level 5.
+Rubble slides underfoot wherever the trail pretends to level out. A red leever has the run of the place. Somewhere here: the entrance to Level 5.
 ~
 0 N 5
 D2
@@ -6316,7 +6316,7 @@ stone dungeon entrance~
 S
 #30324
 Death Mountain [M8]~
-This is First Quest screen M8, one full crossing of Death Mountain. The visible threats are red tektite. The landscape conceals shop.
+Bare rock and loose scree climb away on every side. A pair of red tektites hold this ground. Somewhere here: a merchant's cave.
 ~
 0 N 5
 D1
@@ -6334,7 +6334,7 @@ open shop entrance~
 S
 #30325
 Death Mountain [N8]~
-This is First Quest screen N8, one full crossing of Death Mountain. The visible threats are red tektite. The landscape conceals potion shop.
+The path narrows between boulders that have not moved in an age. A pair of red tektites are waiting. Somewhere here: a potion seller.
 ~
 0 N 5
 D2
@@ -6352,7 +6352,7 @@ bomb shop entrance~
 S
 #30326
 Death Mountain [O8]~
-This is First Quest screen O8, one full crossing of Death Mountain. The visible threats are the wind moving over an empty screen. The landscape conceals Letter Cave.
+Grey stone, grey sky, and a wind that comes straight off the peak. The screen is empty, which is its own kind of warning. Somewhere here: Letter Cave.
 ~
 0 N 5
 D2
@@ -6366,7 +6366,7 @@ cave opening~
 S
 #30327
 Death Mountain [P8]~
-This is First Quest screen P8, one full crossing of Death Mountain. The visible threats are the wind moving over an empty screen. The landscape conceals rupee.
+Rubble slides underfoot wherever the trail pretends to level out. Nothing stirs but the wind. Somewhere here: a moneylender's cave.
 ~
 0 N 5
 D2
@@ -6380,7 +6380,7 @@ hidden rupee grotto~
 S
 #30400
 Level 1: The Eagle [B1]~
-This chamber preserves First Quest room B1 of The Eagle. Its original encounter is keese.
+Pale stone walls rise into shadow, dry and cold and very old. A pair of keese wait here.
 ~
 0 ADN 11
 D1
@@ -6390,7 +6390,7 @@ D1
 S
 #30401
 Level 1: The Eagle [C1]~
-This chamber preserves First Quest room C1 of The Eagle. Its original encounter is silence.
+The air here is still, and every footfall carries too far. This is the way into The Eagle, and the way back out. Nothing moves. You notice a locked door north.
 ~
 0 ADN 11
 D0
@@ -6412,7 +6412,7 @@ stone dungeon entrance~
 S
 #30402
 Level 1: The Eagle [D1]~
-This chamber preserves First Quest room D1 of The Eagle. Its original encounter is stalfos.
+Pale stone walls rise into shadow, dry and cold and very old. A pair of stalfos wait here.
 ~
 0 ADN 11
 D3
@@ -6422,7 +6422,7 @@ D3
 S
 #30403
 Level 1: The Eagle [C2]~
-This chamber preserves First Quest room C2 of The Eagle. Its original encounter is stalfos.
+The air here is still, and every footfall carries too far. A pair of stalfos wait here. You notice a locked door south.
 ~
 0 ADN 11
 D0
@@ -6436,7 +6436,7 @@ locked dungeon door~
 S
 #30404
 Level 1: The Eagle [B3]~
-This chamber preserves First Quest room B3 of The Eagle. Its original encounter is keese.
+Pale stone walls rise into shadow, dry and cold and very old. A pair of keese wait here. You notice a shutter east and a locked door north.
 ~
 0 ADN 11
 D0
@@ -6450,7 +6450,7 @@ shutter~
 S
 #30405
 Level 1: The Eagle [C3]~
-This chamber preserves First Quest room C3 of The Eagle. Its original encounter is stalfos.
+The air here is still, and every footfall carries too far. A pair of stalfos wait here. You notice a hairline crack in the north wall and a shutter west.
 ~
 0 ADN 11
 D0
@@ -6472,7 +6472,7 @@ shutter~
 S
 #30406
 Level 1: The Eagle [D3]~
-This chamber preserves First Quest room D3 of The Eagle. Its original encounter is keese.
+Pale stone walls rise into shadow, dry and cold and very old. A sense of direction settles on you, sharper than it should be. Eight keese wait here. You notice a hairline crack in the north wall.
 ~
 0 ADN 11
 D0
@@ -6486,7 +6486,7 @@ D3
 S
 #30407
 Level 1: The Eagle [A4]~
-This chamber preserves First Quest room A4 of The Eagle. Its original encounter is old man.
+The air here is still, and every footfall carries too far. An old man waits here. You notice a shutter east.
 ~
 0 ADN 11
 D1
@@ -6496,7 +6496,7 @@ shutter~
 S
 #30408
 Level 1: The Eagle [B4]~
-This chamber preserves First Quest room B4 of The Eagle. Its original encounter is gel.
+Pale stone walls rise into shadow, dry and cold and very old. A pair of gels wait here. You notice a locked door south and a shutter west.
 ~
 0 ADN 11
 D1
@@ -6514,7 +6514,7 @@ shutter~
 S
 #30409
 Level 1: The Eagle [C4]~
-This chamber preserves First Quest room C4 of The Eagle. Its original encounter is gel.
+The air here is still, and every footfall carries too far. Someone charted these halls once and left the chart behind. Five gels wait here. You notice a locked door east and a hairline crack in the south wall.
 ~
 0 ADN 11
 D0
@@ -6536,7 +6536,7 @@ D3
 S
 #30410
 Level 1: The Eagle [D4]~
-This chamber preserves First Quest room D4 of The Eagle. Its original encounter is red goriya.
+Pale stone walls rise into shadow, dry and cold and very old. A pair of red goriyas wait here. You notice a hairline crack in the south wall and a locked door west.
 ~
 0 ADN 11
 D1
@@ -6554,7 +6554,7 @@ locked dungeon door~
 S
 #30411
 Level 1: The Eagle [E4]~
-This chamber preserves First Quest room E4 of The Eagle. Its original encounter is wallmaster.
+The air here is still, and every footfall carries too far. A pair of wallmasters wait here. You notice a locked door north.
 ~
 0 ADN 11
 D0
@@ -6568,7 +6568,7 @@ D3
 S
 #30412
 Level 1: The Eagle [C5]~
-This chamber preserves First Quest room C5 of The Eagle. Its original encounter is stalfos.
+Pale stone walls rise into shadow, dry and cold and very old. A pair of stalfos wait here. You notice a locked door north.
 ~
 0 ADN 11
 D0
@@ -6582,7 +6582,7 @@ D2
 S
 #30413
 Level 1: The Eagle [E5]~
-This chamber preserves First Quest room E5 of The Eagle. Its original encounter is aquamentus.
+The air here is still, and every footfall carries too far. The floor opens out. Whatever rules The Eagle rules from here. An aquamentus waits here. You notice a shutter east and a locked door south.
 ~
 0 ADN 11
 D1
@@ -6596,7 +6596,7 @@ locked dungeon door~
 S
 #30414
 Level 1: The Eagle [F5]~
-This chamber preserves First Quest room F5 of The Eagle. Its original encounter is silence.
+Pale stone walls rise into shadow, dry and cold and very old. Light collects in the middle of the room and does not scatter. Nothing moves. You notice a shutter west.
 ~
 0 ADN 11
 D3
@@ -6606,7 +6606,7 @@ shutter~
 S
 #30415
 Level 1: The Eagle [B6]~
-This chamber preserves First Quest room B6 of The Eagle. Its original encounter is blade trap.
+The air here is still, and every footfall carries too far. A pair of blade traps wait here. You notice a locked door east.
 ~
 0 ADN 11
 D1
@@ -6620,7 +6620,7 @@ block stair~
 S
 #30416
 Level 1: The Eagle [C6]~
-This chamber preserves First Quest room C6 of The Eagle. Its original encounter is red goriya.
+Pale stone walls rise into shadow, dry and cold and very old. A pair of red goriyas wait here. You notice a locked door south and a locked door west.
 ~
 0 ADN 11
 D2
@@ -6644,7 +6644,7 @@ block stair~
 S
 #30418
 Level 2: The Moon [B1]~
-This chamber preserves First Quest room B1 of The Moon. Its original encounter is silence.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. This is the way into The Moon, and the way back out. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -6662,7 +6662,7 @@ stone dungeon entrance~
 S
 #30419
 Level 2: The Moon [C1]~
-This chamber preserves First Quest room C1 of The Moon. Its original encounter is rope.
+Grey dust lies undisturbed across the floor of this silent hall. A pair of ropes wait here.
 ~
 0 ADN 11
 D0
@@ -6676,7 +6676,7 @@ D3
 S
 #30420
 Level 2: The Moon [A2]~
-This chamber preserves First Quest room A2 of The Moon. Its original encounter is rope.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. A pair of ropes wait here. You notice a shutter east.
 ~
 0 ADN 11
 D1
@@ -6686,7 +6686,7 @@ shutter~
 S
 #30421
 Level 2: The Moon [B2]~
-This chamber preserves First Quest room B2 of The Moon. Its original encounter is rope.
+Grey dust lies undisturbed across the floor of this silent hall. A pair of ropes wait here. You notice a shutter west.
 ~
 0 ADN 11
 D1
@@ -6704,7 +6704,7 @@ shutter~
 S
 #30422
 Level 2: The Moon [C2]~
-This chamber preserves First Quest room C2 of The Moon. Its original encounter is rope.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. A pair of ropes wait here. You notice a locked door east.
 ~
 0 ADN 11
 D0
@@ -6726,7 +6726,7 @@ D3
 S
 #30423
 Level 2: The Moon [D2]~
-This chamber preserves First Quest room D2 of The Moon. Its original encounter is gel.
+Grey dust lies undisturbed across the floor of this silent hall. A sense of direction settles on you, sharper than it should be. Six gels wait here. You notice a hairline crack in the north wall and a locked door west.
 ~
 0 ADN 11
 D0
@@ -6740,7 +6740,7 @@ locked dungeon door~
 S
 #30424
 Level 2: The Moon [C3]~
-This chamber preserves First Quest room C3 of The Moon. Its original encounter is red goriya.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. A pair of red goriyas wait here. You notice a locked door east and a shutter north.
 ~
 0 ADN 11
 D0
@@ -6758,7 +6758,7 @@ D2
 S
 #30425
 Level 2: The Moon [D3]~
-This chamber preserves First Quest room D3 of The Moon. Its original encounter is gel.
+Grey dust lies undisturbed across the floor of this silent hall. Someone charted these halls once and left the chart behind. Five gels wait here. You notice a hairline crack in the north wall, a hairline crack in the south wall and a locked door west.
 ~
 0 ADN 11
 D0
@@ -6776,7 +6776,7 @@ locked dungeon door~
 S
 #30426
 Level 2: The Moon [C4]~
-This chamber preserves First Quest room C4 of The Moon. Its original encounter is rope.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. A pair of ropes wait here. You notice a shutter south.
 ~
 0 ADN 11
 D0
@@ -6794,7 +6794,7 @@ shutter~
 S
 #30427
 Level 2: The Moon [D4]~
-This chamber preserves First Quest room D4 of The Moon. Its original encounter is blue goriya.
+Grey dust lies undisturbed across the floor of this silent hall. A blue goriya waits here. You notice a hairline crack in the north wall and a hairline crack in the south wall.
 ~
 0 ADN 11
 D0
@@ -6812,7 +6812,7 @@ D3
 S
 #30428
 Level 2: The Moon [C5]~
-This chamber preserves First Quest room C5 of The Moon. Its original encounter is silence.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -6830,7 +6830,7 @@ D2
 S
 #30429
 Level 2: The Moon [D5]~
-This chamber preserves First Quest room D5 of The Moon. Its original encounter is blade trap, keese.
+Grey dust lies undisturbed across the floor of this silent hall. A blade trap and a keese wait here. You notice a hairline crack in the north wall and a hairline crack in the south wall.
 ~
 0 ADN 11
 D0
@@ -6848,7 +6848,7 @@ D3
 S
 #30430
 Level 2: The Moon [C6]~
-This chamber preserves First Quest room C6 of The Moon. Its original encounter is rope.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. A pair of ropes wait here. You notice a locked door east and a shutter north.
 ~
 0 ADN 11
 D0
@@ -6866,7 +6866,7 @@ D2
 S
 #30431
 Level 2: The Moon [D6]~
-This chamber preserves First Quest room D6 of The Moon. Its original encounter is gel.
+Grey dust lies undisturbed across the floor of this silent hall. A pair of gels wait here. You notice a hairline crack in the south wall and a locked door west.
 ~
 0 ADN 11
 D0
@@ -6884,7 +6884,7 @@ locked dungeon door~
 S
 #30432
 Level 2: The Moon [C7]~
-This chamber preserves First Quest room C7 of The Moon. Its original encounter is red goriya.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. A pair of red goriyas wait here. You notice a hairline crack in the east wall, a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -6902,7 +6902,7 @@ shutter~
 S
 #30433
 Level 2: The Moon [D7]~
-This chamber preserves First Quest room D7 of The Moon. Its original encounter is gel.
+Grey dust lies undisturbed across the floor of this silent hall. A gel waits here. You notice a hairline crack in the west wall.
 ~
 0 ADN 11
 D2
@@ -6916,7 +6916,7 @@ cracked west wall~
 S
 #30434
 Level 2: The Moon [B8]~
-This chamber preserves First Quest room B8 of The Moon. Its original encounter is silence.
+Moonlight has no business this far underground, yet the walls hold a faint silver cast. Light collects in the middle of the room and does not scatter. Nothing moves.
 ~
 0 ADN 11
 D1
@@ -6926,7 +6926,7 @@ D1
 S
 #30435
 Level 2: The Moon [C8]~
-This chamber preserves First Quest room C8 of The Moon. Its original encounter is dodongo.
+Grey dust lies undisturbed across the floor of this silent hall. The floor opens out. Whatever rules The Moon rules from here. A pair of dodongos wait here. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -6940,7 +6940,7 @@ D3
 S
 #30436
 Level 3: The Manji [C1]~
-This chamber preserves First Quest room C1 of The Manji. Its original encounter is zol.
+Interlocking channels are cut deep into the floor in a rigid pattern. A pair of zols wait here.
 ~
 0 ADN 11
 D0
@@ -6954,7 +6954,7 @@ D1
 S
 #30437
 Level 3: The Manji [D1]~
-This chamber preserves First Quest room D1 of The Manji. Its original encounter is silence.
+The masonry turns at hard right angles, corner after corner. This is the way into The Manji, and the way back out. Nothing moves.
 ~
 0 ADN 11
 D3
@@ -6968,7 +6968,7 @@ stone dungeon entrance~
 S
 #30438
 Level 3: The Manji [A2]~
-This chamber preserves First Quest room A2 of The Manji. Its original encounter is red darknut, zol.
+Interlocking channels are cut deep into the floor in a rigid pattern. A red darknut and a zol wait here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -6982,7 +6982,7 @@ block stair~
 S
 #30439
 Level 3: The Manji [C2]~
-This chamber preserves First Quest room C2 of The Manji. Its original encounter is zol.
+The masonry turns at hard right angles, corner after corner. A pair of zols wait here.
 ~
 0 ADN 11
 D0
@@ -6996,7 +6996,7 @@ D2
 S
 #30440
 Level 3: The Manji [A3]~
-This chamber preserves First Quest room A3 of The Manji. Its original encounter is red darknut.
+Interlocking channels are cut deep into the floor in a rigid pattern. A pair of red darknuts wait here. You notice a locked door east and a shutter south.
 ~
 0 ADN 11
 D0
@@ -7014,7 +7014,7 @@ shutter~
 S
 #30441
 Level 3: The Manji [B3]~
-This chamber preserves First Quest room B3 of The Manji. Its original encounter is blade trap, keese.
+The masonry turns at hard right angles, corner after corner. A sense of direction settles on you, sharper than it should be. Four blade traps and four keese wait here. You notice a locked door west.
 ~
 0 ADN 11
 D0
@@ -7032,7 +7032,7 @@ locked dungeon door~
 S
 #30442
 Level 3: The Manji [C3]~
-This chamber preserves First Quest room C3 of The Manji. Its original encounter is zol.
+Interlocking channels are cut deep into the floor in a rigid pattern. A pair of zols wait here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D0
@@ -7054,7 +7054,7 @@ D3
 S
 #30443
 Level 3: The Manji [D3]~
-This chamber preserves First Quest room D3 of The Manji. Its original encounter is zol.
+The masonry turns at hard right angles, corner after corner. A pair of zols wait here. You notice a shutter east and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -7072,7 +7072,7 @@ cracked west wall~
 S
 #30444
 Level 3: The Manji [E3]~
-This chamber preserves First Quest room E3 of The Manji. Its original encounter is bubble, keese.
+Interlocking channels are cut deep into the floor in a rigid pattern. A bubble and a keese wait here. You notice a shutter north and a shutter west.
 ~
 0 ADN 11
 D0
@@ -7086,7 +7086,7 @@ shutter~
 S
 #30445
 Level 3: The Manji [A4]~
-This chamber preserves First Quest room A4 of The Manji. Its original encounter is bubble, keese.
+The masonry turns at hard right angles, corner after corner. A bubble and a keese wait here.
 ~
 0 ADN 11
 D1
@@ -7100,7 +7100,7 @@ D2
 S
 #30446
 Level 3: The Manji [B4]~
-This chamber preserves First Quest room B4 of The Manji. Its original encounter is keese.
+Interlocking channels are cut deep into the floor in a rigid pattern. A pair of keese wait here. You notice a locked door east.
 ~
 0 ADN 11
 D1
@@ -7118,7 +7118,7 @@ D3
 S
 #30447
 Level 3: The Manji [C4]~
-This chamber preserves First Quest room C4 of The Manji. Its original encounter is zol.
+The masonry turns at hard right angles, corner after corner. A pair of zols wait here. You notice a locked door east, a locked door north and a locked door west.
 ~
 0 ADN 11
 D0
@@ -7140,7 +7140,7 @@ locked dungeon door~
 S
 #30448
 Level 3: The Manji [D4]~
-This chamber preserves First Quest room D4 of The Manji. Its original encounter is blade trap.
+Interlocking channels are cut deep into the floor in a rigid pattern. Someone charted these halls once and left the chart behind. Four blade traps wait here. You notice a hairline crack in the east wall and a locked door west.
 ~
 0 ADN 11
 D1
@@ -7158,7 +7158,7 @@ locked dungeon door~
 S
 #30449
 Level 3: The Manji [E4]~
-This chamber preserves First Quest room E4 of The Manji. Its original encounter is manhandla.
+The masonry turns at hard right angles, corner after corner. The floor opens out. Whatever rules The Manji rules from here. A manhandla waits here. You notice a shutter north, a shutter south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -7176,7 +7176,7 @@ cracked west wall~
 S
 #30450
 Level 3: The Manji [C5]~
-This chamber preserves First Quest room C5 of The Manji. Its original encounter is blade trap.
+Interlocking channels are cut deep into the floor in a rigid pattern. A pair of blade traps wait here. You notice a shutter north and a locked door south.
 ~
 0 ADN 11
 D0
@@ -7190,7 +7190,7 @@ locked dungeon door~
 S
 #30451
 Level 3: The Manji [E5]~
-This chamber preserves First Quest room E5 of The Manji. Its original encounter is silence.
+The masonry turns at hard right angles, corner after corner. Light collects in the middle of the room and does not scatter. Nothing moves. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -7200,7 +7200,7 @@ shutter~
 S
 #30452
 Level 3: The Manji [B6]~
-This chamber preserves First Quest room B6 of The Manji. Its original encounter is keese.
+Interlocking channels are cut deep into the floor in a rigid pattern. A pair of keese wait here. You notice a shutter east.
 ~
 0 ADN 11
 D1
@@ -7210,7 +7210,7 @@ shutter~
 S
 #30453
 Level 3: The Manji [C6]~
-This chamber preserves First Quest room C6 of The Manji. Its original encounter is old man.
+The masonry turns at hard right angles, corner after corner. An old man waits here. You notice a shutter south and a shutter west.
 ~
 0 ADN 11
 D2
@@ -7234,7 +7234,7 @@ block stair~
 S
 #30455
 Level 4: The Snake [A1]~
-This chamber preserves First Quest room A1 of The Snake. Its original encounter is keese.
+Coils of old carving wind along the walls, scale over scale. A pair of keese wait here.
 ~
 0 ADN 11
 D1
@@ -7244,7 +7244,7 @@ D1
 S
 #30456
 Level 4: The Snake [B1]~
-This chamber preserves First Quest room B1 of The Snake. Its original encounter is silence.
+Damp seeps between the blocks and pools in the mortar joints. This is the way into The Snake, and the way back out. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -7262,7 +7262,7 @@ D4
 S
 #30457
 Level 4: The Snake [B2]~
-This chamber preserves First Quest room B2 of The Snake. Its original encounter is blue darknut, vire.
+Coils of old carving wind along the walls, scale over scale. A blue darknut and a vire wait here. You notice a locked door east.
 ~
 0 ADN 11
 D0
@@ -7280,7 +7280,7 @@ D2
 S
 #30458
 Level 4: The Snake [C2]~
-This chamber preserves First Quest room C2 of The Snake. Its original encounter is vire.
+Damp seeps between the blocks and pools in the mortar joints. A sense of direction settles on you, sharper than it should be. A pair of vires wait here. You notice a locked door west.
 ~
 0 ADN 11
 D3
@@ -7290,7 +7290,7 @@ locked dungeon door~
 S
 #30459
 Level 4: The Snake [A3]~
-This chamber preserves First Quest room A3 of The Snake. Its original encounter is vire.
+Coils of old carving wind along the walls, scale over scale. A pair of vires wait here.
 ~
 0 ADN 11
 D0
@@ -7304,7 +7304,7 @@ D1
 S
 #30460
 Level 4: The Snake [B3]~
-This chamber preserves First Quest room B3 of The Snake. Its original encounter is keese.
+Damp seeps between the blocks and pools in the mortar joints. A pair of keese wait here.
 ~
 0 ADN 11
 D2
@@ -7318,7 +7318,7 @@ D3
 S
 #30461
 Level 4: The Snake [A4]~
-This chamber preserves First Quest room A4 of The Snake. Its original encounter is silence.
+Coils of old carving wind along the walls, scale over scale. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -7332,7 +7332,7 @@ D2
 S
 #30462
 Level 4: The Snake [A5]~
-This chamber preserves First Quest room A5 of The Snake. Its original encounter is bubble, vire.
+Damp seeps between the blocks and pools in the mortar joints. A bubble and a vire wait here. You notice a locked door north.
 ~
 0 ADN 11
 D0
@@ -7346,7 +7346,7 @@ D2
 S
 #30463
 Level 4: The Snake [B5]~
-This chamber preserves First Quest room B5 of The Snake. Its original encounter is vire.
+Coils of old carving wind along the walls, scale over scale. A pair of vires wait here. You notice a shutter east and a locked door north.
 ~
 0 ADN 11
 D0
@@ -7360,7 +7360,7 @@ shutter~
 S
 #30464
 Level 4: The Snake [C5]~
-This chamber preserves First Quest room C5 of The Snake. Its original encounter is bubble, like like.
+Damp seeps between the blocks and pools in the mortar joints. A bubble and a like-like wait here. You notice a shutter west.
 ~
 0 ADN 11
 D3
@@ -7374,7 +7374,7 @@ block stair~
 S
 #30465
 Level 4: The Snake [A6]~
-This chamber preserves First Quest room A6 of The Snake. Its original encounter is vire.
+Coils of old carving wind along the walls, scale over scale. A pair of vires wait here. You notice a shutter north and a locked door south.
 ~
 0 ADN 11
 D0
@@ -7392,7 +7392,7 @@ locked dungeon door~
 S
 #30466
 Level 4: The Snake [B6]~
-This chamber preserves First Quest room B6 of The Snake. Its original encounter is gel.
+Damp seeps between the blocks and pools in the mortar joints. Someone charted these halls once and left the chart behind. Four gels wait here. You notice a hairline crack in the north wall and a locked door south.
 ~
 0 ADN 11
 D0
@@ -7410,7 +7410,7 @@ D3
 S
 #30467
 Level 4: The Snake [A7]~
-This chamber preserves First Quest room A7 of The Snake. Its original encounter is silence.
+Coils of old carving wind along the walls, scale over scale. Nothing moves. You notice a hairline crack in the east wall, a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -7428,7 +7428,7 @@ shutter~
 S
 #30468
 Level 4: The Snake [B7]~
-This chamber preserves First Quest room B7 of The Snake. Its original encounter is silence.
+Damp seeps between the blocks and pools in the mortar joints. Nothing moves. You notice a hairline crack in the east wall, a hairline crack in the north wall, a hairline crack in the south wall and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -7450,7 +7450,7 @@ cracked west wall~
 S
 #30469
 Level 4: The Snake [C7]~
-This chamber preserves First Quest room C7 of The Snake. Its original encounter is blue darknut, vire.
+Coils of old carving wind along the walls, scale over scale. A blue darknut and a vire wait here. You notice a shutter east and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -7468,7 +7468,7 @@ cracked west wall~
 S
 #30470
 Level 4: The Snake [D7]~
-This chamber preserves First Quest room D7 of The Snake. Its original encounter is gleeok.
+Damp seeps between the blocks and pools in the mortar joints. The floor opens out. Whatever rules The Snake rules from here. A gleeok waits here. You notice a shutter north and a shutter west.
 ~
 0 ADN 11
 D0
@@ -7482,7 +7482,7 @@ shutter~
 S
 #30471
 Level 4: The Snake [A8]~
-This chamber preserves First Quest room A8 of The Snake. Its original encounter is old man.
+Coils of old carving wind along the walls, scale over scale. An old man waits here. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -7492,7 +7492,7 @@ shutter~
 S
 #30472
 Level 4: The Snake [B8]~
-This chamber preserves First Quest room B8 of The Snake. Its original encounter is keese.
+Damp seeps between the blocks and pools in the mortar joints. A pair of keese wait here. You notice a hairline crack in the south wall.
 ~
 0 ADN 11
 D1
@@ -7506,7 +7506,7 @@ cracked south wall~
 S
 #30473
 Level 4: The Snake [C8]~
-This chamber preserves First Quest room C8 of The Snake. Its original encounter is blade trap.
+Coils of old carving wind along the walls, scale over scale. A pair of blade traps wait here.
 ~
 0 ADN 11
 D2
@@ -7520,7 +7520,7 @@ D3
 S
 #30474
 Level 4: The Snake [D8]~
-This chamber preserves First Quest room D8 of The Snake. Its original encounter is silence.
+Damp seeps between the blocks and pools in the mortar joints. Light collects in the middle of the room and does not scatter. Nothing moves. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -7540,7 +7540,7 @@ block stair~
 S
 #30476
 Level 5: The Lizard [C1]~
-This chamber preserves First Quest room C1 of The Lizard. Its original encounter is silence.
+The passage narrows and widens without warning, as if something swallowed this hall whole. This is the way into The Lizard, and the way back out. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -7558,7 +7558,7 @@ stone dungeon entrance~
 S
 #30477
 Level 5: The Lizard [D1]~
-This chamber preserves First Quest room D1 of The Lizard. Its original encounter is pols voice.
+Loose grit shifts underfoot, worn from the walls by long use. A pair of pols voices wait here. You notice a hairline crack in the north wall.
 ~
 0 ADN 11
 D0
@@ -7572,7 +7572,7 @@ D3
 S
 #30478
 Level 5: The Lizard [A2]~
-This chamber preserves First Quest room A2 of The Lizard. Its original encounter is zol.
+The passage narrows and widens without warning, as if something swallowed this hall whole. A zol waits here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D1
@@ -7586,7 +7586,7 @@ D5
 S
 #30479
 Level 5: The Lizard [B2]~
-This chamber preserves First Quest room B2 of The Lizard. Its original encounter is gibdo.
+Loose grit shifts underfoot, worn from the walls by long use. A pair of gibdos wait here. You notice a hairline crack in the east wall, a shutter north and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -7604,7 +7604,7 @@ cracked west wall~
 S
 #30480
 Level 5: The Lizard [C2]~
-This chamber preserves First Quest room C2 of The Lizard. Its original encounter is gibdo.
+The passage narrows and widens without warning, as if something swallowed this hall whole. A pair of gibdos wait here. You notice a shutter north and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -7626,7 +7626,7 @@ cracked west wall~
 S
 #30481
 Level 5: The Lizard [D2]~
-This chamber preserves First Quest room D2 of The Lizard. Its original encounter is old man.
+Loose grit shifts underfoot, worn from the walls by long use. An old man waits here. You notice a hairline crack in the south wall.
 ~
 0 ADN 11
 D2
@@ -7640,7 +7640,7 @@ D3
 S
 #30482
 Level 5: The Lizard [B3]~
-This chamber preserves First Quest room B3 of The Lizard. Its original encounter is zol.
+The passage narrows and widens without warning, as if something swallowed this hall whole. A pair of zols wait here. You notice a shutter east and a shutter south.
 ~
 0 ADN 11
 D1
@@ -7654,7 +7654,7 @@ shutter~
 S
 #30483
 Level 5: The Lizard [C3]~
-This chamber preserves First Quest room C3 of The Lizard. Its original encounter is dodongo.
+Loose grit shifts underfoot, worn from the walls by long use. A pair of dodongos wait here. You notice a locked door north, a shutter south and a shutter west.
 ~
 0 ADN 11
 D0
@@ -7676,7 +7676,7 @@ shutter~
 S
 #30484
 Level 5: The Lizard [D3]~
-This chamber preserves First Quest room D3 of The Lizard. Its original encounter is zol.
+The passage narrows and widens without warning, as if something swallowed this hall whole. A pair of zols wait here.
 ~
 0 ADN 11
 D0
@@ -7690,7 +7690,7 @@ D3
 S
 #30485
 Level 5: The Lizard [C4]~
-This chamber preserves First Quest room C4 of The Lizard. Its original encounter is silence.
+Loose grit shifts underfoot, worn from the walls by long use. Someone charted these halls once and left the chart behind. Nothing moves. You notice a locked door south.
 ~
 0 ADN 11
 D1
@@ -7704,7 +7704,7 @@ locked dungeon door~
 S
 #30486
 Level 5: The Lizard [D4]~
-This chamber preserves First Quest room D4 of The Lizard. Its original encounter is gibdo.
+The passage narrows and widens without warning, as if something swallowed this hall whole. A pair of gibdos wait here.
 ~
 0 ADN 11
 D0
@@ -7722,7 +7722,7 @@ D3
 S
 #30487
 Level 5: The Lizard [A5]~
-This chamber preserves First Quest room A5 of The Lizard. Its original encounter is gibdo.
+Loose grit shifts underfoot, worn from the walls by long use. A pair of gibdos wait here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -7732,7 +7732,7 @@ shutter~
 S
 #30488
 Level 5: The Lizard [D5]~
-This chamber preserves First Quest room D5 of The Lizard. Its original encounter is zol.
+The passage narrows and widens without warning, as if something swallowed this hall whole. A sense of direction settles on you, sharper than it should be. A zol waits here.
 ~
 0 ADN 11
 D0
@@ -7746,7 +7746,7 @@ D2
 S
 #30489
 Level 5: The Lizard [A6]~
-This chamber preserves First Quest room A6 of The Lizard. Its original encounter is digdogger.
+Loose grit shifts underfoot, worn from the walls by long use. The floor opens out. Whatever rules The Lizard rules from here. A digdogger waits here. You notice a locked door east, a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -7764,7 +7764,7 @@ shutter~
 S
 #30490
 Level 5: The Lizard [B6]~
-This chamber preserves First Quest room B6 of The Lizard. Its original encounter is pols voice.
+The passage narrows and widens without warning, as if something swallowed this hall whole. A pair of pols voices wait here. You notice a hairline crack in the north wall and a locked door west.
 ~
 0 ADN 11
 D0
@@ -7782,7 +7782,7 @@ locked dungeon door~
 S
 #30491
 Level 5: The Lizard [C6]~
-This chamber preserves First Quest room C6 of The Lizard. Its original encounter is gibdo.
+Loose grit shifts underfoot, worn from the walls by long use. A pair of gibdos wait here. You notice a locked door east.
 ~
 0 ADN 11
 D1
@@ -7796,7 +7796,7 @@ D3
 S
 #30492
 Level 5: The Lizard [D6]~
-This chamber preserves First Quest room D6 of The Lizard. Its original encounter is gibdo, keese.
+The passage narrows and widens without warning, as if something swallowed this hall whole. A gibdo and a keese wait here. You notice a locked door west.
 ~
 0 ADN 11
 D2
@@ -7810,7 +7810,7 @@ locked dungeon door~
 S
 #30493
 Level 5: The Lizard [A7]~
-This chamber preserves First Quest room A7 of The Lizard. Its original encounter is silence.
+Loose grit shifts underfoot, worn from the walls by long use. Light collects in the middle of the room and does not scatter. Nothing moves. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -7820,7 +7820,7 @@ shutter~
 S
 #30494
 Level 5: The Lizard [B7]~
-This chamber preserves First Quest room B7 of The Lizard. Its original encounter is old man.
+The passage narrows and widens without warning, as if something swallowed this hall whole. An old man waits here. You notice a hairline crack in the south wall.
 ~
 0 ADN 11
 D2
@@ -7830,7 +7830,7 @@ cracked south wall~
 S
 #30495
 Level 5: The Lizard [C7]~
-This chamber preserves First Quest room C7 of The Lizard. Its original encounter is keese.
+Loose grit shifts underfoot, worn from the walls by long use. A pair of keese wait here. You notice a hairline crack in the east wall and a locked door north.
 ~
 0 ADN 11
 D0
@@ -7844,7 +7844,7 @@ cracked east wall~
 S
 #30496
 Level 5: The Lizard [D7]~
-This chamber preserves First Quest room D7 of The Lizard. Its original encounter is old man.
+The passage narrows and widens without warning, as if something swallowed this hall whole. An old man waits here. You notice a hairline crack in the west wall.
 ~
 0 ADN 11
 D3
@@ -7854,7 +7854,7 @@ cracked west wall~
 S
 #30497
 Level 5: The Lizard [B8]~
-This chamber preserves First Quest room B8 of The Lizard. Its original encounter is zol.
+Loose grit shifts underfoot, worn from the walls by long use. A zol waits here. You notice a locked door east.
 ~
 0 ADN 11
 D1
@@ -7868,7 +7868,7 @@ block stair~
 S
 #30498
 Level 5: The Lizard [C8]~
-This chamber preserves First Quest room C8 of The Lizard. Its original encounter is silence.
+The passage narrows and widens without warning, as if something swallowed this hall whole. Nothing moves. You notice a locked door south and a locked door west.
 ~
 0 ADN 11
 D2
@@ -7896,7 +7896,7 @@ block stair~
 S
 #30500
 Level 6: The Dragon [A1]~
-This chamber preserves First Quest room A1 of The Dragon. Its original encounter is red wizzrobe.
+Scorch marks fan across the ceiling in long black tongues. A pair of red wizzrobes wait here. You notice a locked door east.
 ~
 0 ADN 11
 D0
@@ -7910,7 +7910,7 @@ locked dungeon door~
 S
 #30501
 Level 6: The Dragon [B1]~
-This chamber preserves First Quest room B1 of The Dragon. Its original encounter is silence.
+Heat lingers in the stone here, held from some older fire. This is the way into The Dragon, and the way back out. Nothing moves. You notice a locked door west.
 ~
 0 ADN 11
 D1
@@ -7928,7 +7928,7 @@ stone dungeon entrance~
 S
 #30502
 Level 6: The Dragon [C1]~
-This chamber preserves First Quest room C1 of The Dragon. Its original encounter is red wizzrobe.
+Scorch marks fan across the ceiling in long black tongues. A pair of red wizzrobes wait here. You notice a locked door north.
 ~
 0 ADN 11
 D0
@@ -7942,7 +7942,7 @@ D3
 S
 #30503
 Level 6: The Dragon [A2]~
-This chamber preserves First Quest room A2 of The Dragon. Its original encounter is zol.
+Heat lingers in the stone here, held from some older fire. A sense of direction settles on you, sharper than it should be. Four zols wait here.
 ~
 0 ADN 11
 D0
@@ -7956,7 +7956,7 @@ D2
 S
 #30504
 Level 6: The Dragon [C2]~
-This chamber preserves First Quest room C2 of The Dragon. Its original encounter is gel.
+Scorch marks fan across the ceiling in long black tongues. A gel waits here. You notice a locked door south.
 ~
 0 ADN 11
 D2
@@ -7966,7 +7966,7 @@ locked dungeon door~
 S
 #30505
 Level 6: The Dragon [A3]~
-This chamber preserves First Quest room A3 of The Dragon. Its original encounter is keese.
+Heat lingers in the stone here, held from some older fire. A pair of keese wait here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -7980,7 +7980,7 @@ D2
 S
 #30506
 Level 6: The Dragon [A4]~
-This chamber preserves First Quest room A4 of The Dragon. Its original encounter is blade trap.
+Scorch marks fan across the ceiling in long black tongues. A pair of blade traps wait here. You notice a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -7994,7 +7994,7 @@ shutter~
 S
 #30507
 Level 6: The Dragon [A5]~
-This chamber preserves First Quest room A5 of The Dragon. Its original encounter is blue wizzrobe, bubble.
+Heat lingers in the stone here, held from some older fire. A blue wizzrobe and a bubble wait here. You notice a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -8008,7 +8008,7 @@ shutter~
 S
 #30508
 Level 6: The Dragon [B5]~
-This chamber preserves First Quest room B5 of The Dragon. Its original encounter is vire.
+Scorch marks fan across the ceiling in long black tongues. A pair of vires wait here. You notice a shutter east and a shutter north.
 ~
 0 ADN 11
 D0
@@ -8022,7 +8022,7 @@ shutter~
 S
 #30509
 Level 6: The Dragon [C5]~
-This chamber preserves First Quest room C5 of The Dragon. Its original encounter is blue wizzrobe, bubble.
+Heat lingers in the stone here, held from some older fire. A blue wizzrobe and a bubble wait here. You notice a shutter west.
 ~
 0 ADN 11
 D3
@@ -8036,7 +8036,7 @@ D5
 S
 #30510
 Level 6: The Dragon [E5]~
-This chamber preserves First Quest room E5 of The Dragon. Its original encounter is blue wizzrobe, red wizzrobe.
+Scorch marks fan across the ceiling in long black tongues. A blue wizzrobe and a red wizzrobe wait here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -8046,7 +8046,7 @@ shutter~
 S
 #30511
 Level 6: The Dragon [A6]~
-This chamber preserves First Quest room A6 of The Dragon. Its original encounter is blue wizzrobe, red wizzrobe.
+Heat lingers in the stone here, held from some older fire. A blue wizzrobe and a red wizzrobe wait here. You notice a hairline crack in the east wall, a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -8064,7 +8064,7 @@ shutter~
 S
 #30512
 Level 6: The Dragon [B6]~
-This chamber preserves First Quest room B6 of The Dragon. Its original encounter is blue wizzrobe, red wizzrobe.
+Scorch marks fan across the ceiling in long black tongues. A blue wizzrobe and a red wizzrobe wait here. You notice a locked door north, a shutter south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -8082,7 +8082,7 @@ cracked west wall~
 S
 #30513
 Level 6: The Dragon [E6]~
-This chamber preserves First Quest room E6 of The Dragon. Its original encounter is blade trap, blue wizzrobe.
+Heat lingers in the stone here, held from some older fire. A blade trap and a blue wizzrobe wait here. You notice a locked door north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -8100,7 +8100,7 @@ shutter~
 S
 #30514
 Level 6: The Dragon [F6]~
-This chamber preserves First Quest room F6 of The Dragon. Its original encounter is bubble, vire.
+Scorch marks fan across the ceiling in long black tongues. A bubble and a vire wait here.
 ~
 0 ADN 11
 D0
@@ -8114,7 +8114,7 @@ D3
 S
 #30515
 Level 6: The Dragon [A7]~
-This chamber preserves First Quest room A7 of The Dragon. Its original encounter is silence.
+Heat lingers in the stone here, held from some older fire. Nothing moves. You notice a shutter east and a shutter south.
 ~
 0 ADN 11
 D1
@@ -8128,7 +8128,7 @@ shutter~
 S
 #30516
 Level 6: The Dragon [B7]~
-This chamber preserves First Quest room B7 of The Dragon. Its original encounter is bubble, like like, zol.
+Scorch marks fan across the ceiling in long black tongues. Someone charted these halls once and left the chart behind. A pair of bubbles, a like-like and a zol wait here. You notice a locked door north, a locked door south and a shutter west.
 ~
 0 ADN 11
 D0
@@ -8150,7 +8150,7 @@ shutter~
 S
 #30517
 Level 6: The Dragon [C7]~
-This chamber preserves First Quest room C7 of The Dragon. Its original encounter is red wizzrobe.
+Heat lingers in the stone here, held from some older fire. A pair of red wizzrobes wait here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -8168,7 +8168,7 @@ D3
 S
 #30518
 Level 6: The Dragon [D7]~
-This chamber preserves First Quest room D7 of The Dragon. Its original encounter is blue wizzrobe, bubble.
+Scorch marks fan across the ceiling in long black tongues. A blue wizzrobe and a bubble wait here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -8182,7 +8182,7 @@ D3
 S
 #30519
 Level 6: The Dragon [E7]~
-This chamber preserves First Quest room E7 of The Dragon. Its original encounter is gohma.
+Heat lingers in the stone here, held from some older fire. The floor opens out. Whatever rules The Dragon rules from here. A gohma waits here. You notice a shutter north and a locked door south.
 ~
 0 ADN 11
 D0
@@ -8196,7 +8196,7 @@ locked dungeon door~
 S
 #30520
 Level 6: The Dragon [F7]~
-This chamber preserves First Quest room F7 of The Dragon. Its original encounter is bubble, like like.
+Scorch marks fan across the ceiling in long black tongues. A bubble and a like-like wait here.
 ~
 0 ADN 11
 D2
@@ -8210,7 +8210,7 @@ D4
 S
 #30521
 Level 6: The Dragon [B8]~
-This chamber preserves First Quest room B8 of The Dragon. Its original encounter is blue wizzrobe, red wizzrobe.
+Heat lingers in the stone here, held from some older fire. A blue wizzrobe and a red wizzrobe wait here. You notice a hairline crack in the east wall and a locked door south.
 ~
 0 ADN 11
 D1
@@ -8228,7 +8228,7 @@ block stair~
 S
 #30522
 Level 6: The Dragon [C8]~
-This chamber preserves First Quest room C8 of The Dragon. Its original encounter is bubble, like like.
+Scorch marks fan across the ceiling in long black tongues. A bubble and a like-like wait here. You notice a hairline crack in the east wall, a shutter south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D1
@@ -8246,7 +8246,7 @@ cracked west wall~
 S
 #30523
 Level 6: The Dragon [D8]~
-This chamber preserves First Quest room D8 of The Dragon. Its original encounter is old man.
+Heat lingers in the stone here, held from some older fire. An old man waits here. You notice a shutter south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D2
@@ -8260,7 +8260,7 @@ cracked west wall~
 S
 #30524
 Level 6: The Dragon [E8]~
-This chamber preserves First Quest room E8 of The Dragon. Its original encounter is silence.
+Scorch marks fan across the ceiling in long black tongues. Light collects in the middle of the room and does not scatter. Nothing moves. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -8280,7 +8280,7 @@ block stair~
 S
 #30526
 Level 7: The Demon [A1]~
-This chamber preserves First Quest room A1 of The Demon. Its original encounter is rope.
+The walls sweat. Whatever was sealed down here was sealed deep. A pair of ropes wait here.
 ~
 0 ADN 11
 D0
@@ -8290,7 +8290,7 @@ D0
 S
 #30527
 Level 7: The Demon [B1]~
-This chamber preserves First Quest room B1 of The Demon. Its original encounter is silence.
+Faint scratching carries from behind the stone, always one room off. This is the way into The Demon, and the way back out. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -8308,7 +8308,7 @@ recorder dungeon entrance~
 S
 #30528
 Level 7: The Demon [C1]~
-This chamber preserves First Quest room C1 of The Demon. Its original encounter is silence.
+The walls sweat. Whatever was sealed down here was sealed deep. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -8322,7 +8322,7 @@ D3
 S
 #30529
 Level 7: The Demon [A2]~
-This chamber preserves First Quest room A2 of The Demon. Its original encounter is blade trap, keese.
+Faint scratching carries from behind the stone, always one room off. A blade trap and a keese wait here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D0
@@ -8340,7 +8340,7 @@ D2
 S
 #30530
 Level 7: The Demon [B2]~
-This chamber preserves First Quest room B2 of The Demon. Its original encounter is blue goriya.
+The walls sweat. Whatever was sealed down here was sealed deep. A pair of blue goriyas wait here. You notice a hairline crack in the north wall and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -8362,7 +8362,7 @@ cracked west wall~
 S
 #30531
 Level 7: The Demon [C2]~
-This chamber preserves First Quest room C2 of The Demon. Its original encounter is keese.
+Faint scratching carries from behind the stone, always one room off. A pair of keese wait here. You notice a hairline crack in the north wall.
 ~
 0 ADN 11
 D0
@@ -8384,7 +8384,7 @@ D3
 S
 #30532
 Level 7: The Demon [D2]~
-This chamber preserves First Quest room D2 of The Demon. Its original encounter is blue goriya.
+The walls sweat. Whatever was sealed down here was sealed deep. A pair of blue goriyas wait here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -8402,7 +8402,7 @@ D3
 S
 #30533
 Level 7: The Demon [E2]~
-This chamber preserves First Quest room E2 of The Demon. Its original encounter is digdogger.
+Faint scratching carries from behind the stone, always one room off. A digdogger waits here.
 ~
 0 ADN 11
 D1
@@ -8416,7 +8416,7 @@ D3
 S
 #30534
 Level 7: The Demon [F2]~
-This chamber preserves First Quest room F2 of The Demon. Its original encounter is stalfos.
+The walls sweat. Whatever was sealed down here was sealed deep. A pair of stalfos wait here.
 ~
 0 ADN 11
 D3
@@ -8426,7 +8426,7 @@ D3
 S
 #30535
 Level 7: The Demon [A3]~
-This chamber preserves First Quest room A3 of The Demon. Its original encounter is dodongo.
+Faint scratching carries from behind the stone, always one room off. A pair of dodongos wait here. You notice a locked door north.
 ~
 0 ADN 11
 D0
@@ -8444,7 +8444,7 @@ D2
 S
 #30536
 Level 7: The Demon [B3]~
-This chamber preserves First Quest room B3 of The Demon. Its original encounter is blue goriya, red goriya.
+The walls sweat. Whatever was sealed down here was sealed deep. A blue goriya and a red goriya wait here. You notice a shutter east and a hairline crack in the south wall.
 ~
 0 ADN 11
 D0
@@ -8466,7 +8466,7 @@ D3
 S
 #30537
 Level 7: The Demon [C3]~
-This chamber preserves First Quest room C3 of The Demon. Its original encounter is stalfos.
+Faint scratching carries from behind the stone, always one room off. A sense of direction settles on you, sharper than it should be. Seven stalfos wait here. You notice a hairline crack in the south wall and a shutter west.
 ~
 0 ADN 11
 D2
@@ -8480,7 +8480,7 @@ shutter~
 S
 #30538
 Level 7: The Demon [D3]~
-This chamber preserves First Quest room D3 of The Demon. Its original encounter is old man.
+The walls sweat. Whatever was sealed down here was sealed deep. An old man waits here. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -8490,7 +8490,7 @@ shutter~
 S
 #30539
 Level 7: The Demon [A4]~
-This chamber preserves First Quest room A4 of The Demon. Its original encounter is old man.
+Faint scratching carries from behind the stone, always one room off. An old man waits here. You notice a locked door south.
 ~
 0 ADN 11
 D2
@@ -8500,7 +8500,7 @@ locked dungeon door~
 S
 #30540
 Level 7: The Demon [B4]~
-This chamber preserves First Quest room B4 of The Demon. Its original encounter is blue goriya, bubble.
+The walls sweat. Whatever was sealed down here was sealed deep. A blue goriya and a bubble wait here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -8514,7 +8514,7 @@ D2
 S
 #30541
 Level 7: The Demon [A5]~
-This chamber preserves First Quest room A5 of The Demon. Its original encounter is blue goriya, red goriya.
+Faint scratching carries from behind the stone, always one room off. A blue goriya and a red goriya wait here. You notice a shutter east and a locked door north.
 ~
 0 ADN 11
 D0
@@ -8528,7 +8528,7 @@ shutter~
 S
 #30542
 Level 7: The Demon [B5]~
-This chamber preserves First Quest room B5 of The Demon. Its original encounter is silence.
+The walls sweat. Whatever was sealed down here was sealed deep. Nothing moves. You notice a hairline crack in the east wall, a shutter south and a shutter west.
 ~
 0 ADN 11
 D1
@@ -8546,7 +8546,7 @@ shutter~
 S
 #30543
 Level 7: The Demon [C5]~
-This chamber preserves First Quest room C5 of The Demon. Its original encounter is silence.
+Faint scratching carries from behind the stone, always one room off. Nothing moves. You notice a hairline crack in the west wall.
 ~
 0 ADN 11
 D3
@@ -8556,7 +8556,7 @@ cracked west wall~
 S
 #30544
 Level 7: The Demon [A6]~
-This chamber preserves First Quest room A6 of The Demon. Its original encounter is red goriya.
+The walls sweat. Whatever was sealed down here was sealed deep. A red goriya waits here. You notice a shutter north and a locked door south.
 ~
 0 ADN 11
 D0
@@ -8570,7 +8570,7 @@ locked dungeon door~
 S
 #30545
 Level 7: The Demon [B6]~
-This chamber preserves First Quest room B6 of The Demon. Its original encounter is blue goriya, red goriya.
+Faint scratching carries from behind the stone, always one room off. A blue goriya and a red goriya wait here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D1
@@ -8584,7 +8584,7 @@ D5
 S
 #30546
 Level 7: The Demon [C6]~
-This chamber preserves First Quest room C6 of The Demon. Its original encounter is aquamentus.
+The walls sweat. Whatever was sealed down here was sealed deep. The floor opens out. Whatever rules The Demon rules from here. An aquamentus waits here. You notice a shutter east and a hairline crack in the west wall.
 ~
 0 ADN 11
 D1
@@ -8598,7 +8598,7 @@ cracked west wall~
 S
 #30547
 Level 7: The Demon [D6]~
-This chamber preserves First Quest room D6 of The Demon. Its original encounter is silence.
+Faint scratching carries from behind the stone, always one room off. Light collects in the middle of the room and does not scatter. Nothing moves. You notice a shutter west.
 ~
 0 ADN 11
 D3
@@ -8608,7 +8608,7 @@ shutter~
 S
 #30548
 Level 7: The Demon [A7]~
-This chamber preserves First Quest room A7 of The Demon. Its original encounter is blue goriya, bubble, keese.
+The walls sweat. Whatever was sealed down here was sealed deep. Someone charted these halls once and left the chart behind. Three blue goriyas, a pair of bubbles and three keese wait here. You notice a locked door east, a hairline crack in the north wall and a shutter south.
 ~
 0 ADN 11
 D0
@@ -8626,7 +8626,7 @@ shutter~
 S
 #30549
 Level 7: The Demon [B7]~
-This chamber preserves First Quest room B7 of The Demon. Its original encounter is blue goriya.
+Faint scratching carries from behind the stone, always one room off. A pair of blue goriyas wait here. You notice a hairline crack in the east wall, a shutter north and a locked door west.
 ~
 0 ADN 11
 D0
@@ -8644,7 +8644,7 @@ locked dungeon door~
 S
 #30550
 Level 7: The Demon [C7]~
-This chamber preserves First Quest room C7 of The Demon. Its original encounter is blue goriya, red goriya.
+The walls sweat. Whatever was sealed down here was sealed deep. A blue goriya and a red goriya wait here. You notice a hairline crack in the east wall and a hairline crack in the west wall.
 ~
 0 ADN 11
 D1
@@ -8662,7 +8662,7 @@ block stair~
 S
 #30551
 Level 7: The Demon [D7]~
-This chamber preserves First Quest room D7 of The Demon. Its original encounter is blue goriya.
+Faint scratching carries from behind the stone, always one room off. A pair of blue goriyas wait here. You notice a locked door east, a locked door north and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -8680,7 +8680,7 @@ cracked west wall~
 S
 #30552
 Level 7: The Demon [E7]~
-This chamber preserves First Quest room E7 of The Demon. Its original encounter is digdogger.
+The walls sweat. Whatever was sealed down here was sealed deep. A digdogger waits here. You notice a shutter north and a locked door west.
 ~
 0 ADN 11
 D0
@@ -8694,7 +8694,7 @@ locked dungeon door~
 S
 #30553
 Level 7: The Demon [A8]~
-This chamber preserves First Quest room A8 of The Demon. Its original encounter is silence.
+Faint scratching carries from behind the stone, always one room off. Nothing moves. You notice a hairline crack in the east wall and a hairline crack in the south wall.
 ~
 0 ADN 11
 D1
@@ -8708,7 +8708,7 @@ cracked south wall~
 S
 #30554
 Level 7: The Demon [B8]~
-This chamber preserves First Quest room B8 of The Demon. Its original encounter is blue goriya, red goriya.
+The walls sweat. Whatever was sealed down here was sealed deep. A blue goriya and a red goriya wait here. You notice a shutter east, a shutter south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D1
@@ -8726,7 +8726,7 @@ cracked west wall~
 S
 #30555
 Level 7: The Demon [C8]~
-This chamber preserves First Quest room C8 of The Demon. Its original encounter is blue goriya.
+Faint scratching carries from behind the stone, always one room off. A pair of blue goriyas wait here. You notice a shutter west.
 ~
 0 ADN 11
 D3
@@ -8736,7 +8736,7 @@ shutter~
 S
 #30556
 Level 7: The Demon [D8]~
-This chamber preserves First Quest room D8 of The Demon. Its original encounter is silence.
+The walls sweat. Whatever was sealed down here was sealed deep. Nothing moves. You notice a locked door south.
 ~
 0 ADN 11
 D2
@@ -8746,7 +8746,7 @@ locked dungeon door~
 S
 #30557
 Level 7: The Demon [E8]~
-This chamber preserves First Quest room E8 of The Demon. Its original encounter is dodongo.
+Faint scratching carries from behind the stone, always one room off. A pair of dodongos wait here. You notice a hairline crack in the east wall and a shutter south.
 ~
 0 ADN 11
 D1
@@ -8760,7 +8760,7 @@ shutter~
 S
 #30558
 Level 7: The Demon [F8]~
-This chamber preserves First Quest room F8 of The Demon. Its original encounter is bubble, wallmaster.
+The walls sweat. Whatever was sealed down here was sealed deep. A bubble and a wallmaster wait here. You notice a hairline crack in the west wall.
 ~
 0 ADN 11
 D3
@@ -8784,7 +8784,7 @@ block stair~
 S
 #30560
 Level 8: The Lion [B1]~
-This chamber preserves First Quest room B1 of The Lion. Its original encounter is bubble, gibdo.
+Heavy pillars carry the weight of the mountain overhead. A bubble and a gibdo wait here. You notice a shutter east.
 ~
 0 ADN 11
 D1
@@ -8798,7 +8798,7 @@ block stair~
 S
 #30561
 Level 8: The Lion [C1]~
-This chamber preserves First Quest room C1 of The Lion. Its original encounter is silence.
+The hall is built broad and proud, and something has made it a den. Nothing moves. You notice a shutter west.
 ~
 0 ADN 11
 D1
@@ -8812,7 +8812,7 @@ shutter~
 S
 #30562
 Level 8: The Lion [D1]~
-This chamber preserves First Quest room D1 of The Lion. Its original encounter is silence.
+Heavy pillars carry the weight of the mountain overhead. This is the way into The Lion, and the way back out. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -8834,7 +8834,7 @@ burn dungeon entrance~
 S
 #30563
 Level 8: The Lion [E1]~
-This chamber preserves First Quest room E1 of The Lion. Its original encounter is bubble, keese.
+The hall is built broad and proud, and something has made it a den. A bubble and a keese wait here.
 ~
 0 ADN 11
 D3
@@ -8844,7 +8844,7 @@ D3
 S
 #30564
 Level 8: The Lion [D2]~
-This chamber preserves First Quest room D2 of The Lion. Its original encounter is silence.
+Heavy pillars carry the weight of the mountain overhead. Nothing moves. You notice a hairline crack in the north wall.
 ~
 0 ADN 11
 D0
@@ -8858,7 +8858,7 @@ D2
 S
 #30565
 Level 8: The Lion [B3]~
-This chamber preserves First Quest room B3 of The Lion. Its original encounter is silence.
+The hall is built broad and proud, and something has made it a den. Nothing moves.
 ~
 0 ADN 11
 D1
@@ -8868,7 +8868,7 @@ D1
 S
 #30566
 Level 8: The Lion [C3]~
-This chamber preserves First Quest room C3 of The Lion. Its original encounter is keese, pols voice.
+Heavy pillars carry the weight of the mountain overhead. A keese and a pols voice wait here. You notice a shutter east.
 ~
 0 ADN 11
 D0
@@ -8886,7 +8886,7 @@ D3
 S
 #30567
 Level 8: The Lion [D3]~
-This chamber preserves First Quest room D3 of The Lion. Its original encounter is zol.
+The hall is built broad and proud, and something has made it a den. A pair of zols wait here. You notice a locked door east, a shutter north, a hairline crack in the south wall and a shutter west.
 ~
 0 ADN 11
 D0
@@ -8908,7 +8908,7 @@ shutter~
 S
 #30568
 Level 8: The Lion [E3]~
-This chamber preserves First Quest room E3 of The Lion. Its original encounter is pols voice.
+Heavy pillars carry the weight of the mountain overhead. A sense of direction settles on you, sharper than it should be. Eight pols voices wait here. You notice a locked door west.
 ~
 0 ADN 11
 D3
@@ -8918,7 +8918,7 @@ locked dungeon door~
 S
 #30569
 Level 8: The Lion [A4]~
-This chamber preserves First Quest room A4 of The Lion. Its original encounter is zol.
+The hall is built broad and proud, and something has made it a den. A pair of zols wait here. You notice a shutter east.
 ~
 0 ADN 11
 D0
@@ -8932,7 +8932,7 @@ shutter~
 S
 #30570
 Level 8: The Lion [B4]~
-This chamber preserves First Quest room B4 of The Lion. Its original encounter is pols voice.
+Heavy pillars carry the weight of the mountain overhead. A pair of pols voices wait here. You notice a hairline crack in the north wall and a shutter west.
 ~
 0 ADN 11
 D0
@@ -8950,7 +8950,7 @@ D5
 S
 #30571
 Level 8: The Lion [C4]~
-This chamber preserves First Quest room C4 of The Lion. Its original encounter is silence.
+The hall is built broad and proud, and something has made it a den. Nothing moves. You notice a locked door east and a shutter north.
 ~
 0 ADN 11
 D0
@@ -8968,7 +8968,7 @@ D2
 S
 #30572
 Level 8: The Lion [D4]~
-This chamber preserves First Quest room D4 of The Lion. Its original encounter is bubble, zol.
+Heavy pillars carry the weight of the mountain overhead. A bubble and a zol wait here. You notice a locked door north, a shutter south and a locked door west.
 ~
 0 ADN 11
 D0
@@ -8986,7 +8986,7 @@ locked dungeon door~
 S
 #30573
 Level 8: The Lion [A5]~
-This chamber preserves First Quest room A5 of The Lion. Its original encounter is old man.
+The hall is built broad and proud, and something has made it a den. An old man waits here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D1
@@ -9000,7 +9000,7 @@ D2
 S
 #30574
 Level 8: The Lion [B5]~
-This chamber preserves First Quest room B5 of The Lion. Its original encounter is gleeok.
+Heavy pillars carry the weight of the mountain overhead. The floor opens out. Whatever rules The Lion rules from here. A gleeok waits here. You notice a shutter north, a hairline crack in the south wall and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9018,7 +9018,7 @@ cracked west wall~
 S
 #30575
 Level 8: The Lion [C5]~
-This chamber preserves First Quest room C5 of The Lion. Its original encounter is old man.
+The hall is built broad and proud, and something has made it a den. An old man waits here. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -9028,7 +9028,7 @@ shutter~
 S
 #30576
 Level 8: The Lion [D5]~
-This chamber preserves First Quest room D5 of The Lion. Its original encounter is silence.
+Heavy pillars carry the weight of the mountain overhead. Nothing moves. You notice a shutter east, a hairline crack in the north wall and a locked door south.
 ~
 0 ADN 11
 D0
@@ -9046,7 +9046,7 @@ locked dungeon door~
 S
 #30577
 Level 8: The Lion [E5]~
-This chamber preserves First Quest room E5 of The Lion. Its original encounter is gibdo, red darknut.
+The hall is built broad and proud, and something has made it a den. A gibdo and a red darknut wait here. You notice a shutter west.
 ~
 0 ADN 11
 D3
@@ -9060,7 +9060,7 @@ D4
 S
 #30578
 Level 8: The Lion [B6]~
-This chamber preserves First Quest room B6 of The Lion. Its original encounter is silence.
+Heavy pillars carry the weight of the mountain overhead. Light collects in the middle of the room and does not scatter. Nothing moves. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -9070,7 +9070,7 @@ shutter~
 S
 #30579
 Level 8: The Lion [C6]~
-This chamber preserves First Quest room C6 of The Lion. Its original encounter is silence.
+The hall is built broad and proud, and something has made it a den. Nothing moves. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D0
@@ -9084,7 +9084,7 @@ cracked east wall~
 S
 #30580
 Level 8: The Lion [D6]~
-This chamber preserves First Quest room D6 of The Lion. Its original encounter is silence.
+Heavy pillars carry the weight of the mountain overhead. Someone charted these halls once and left the chart behind. Nothing moves. You notice a locked door north, a hairline crack in the south wall and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9102,7 +9102,7 @@ cracked west wall~
 S
 #30581
 Level 8: The Lion [C7]~
-This chamber preserves First Quest room C7 of The Lion. Its original encounter is pols voice.
+The hall is built broad and proud, and something has made it a den. A pair of pols voices wait here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D1
@@ -9116,7 +9116,7 @@ D2
 S
 #30582
 Level 8: The Lion [D7]~
-This chamber preserves First Quest room D7 of The Lion. Its original encounter is silence.
+Heavy pillars carry the weight of the mountain overhead. Nothing moves. You notice a shutter east, a shutter north, a locked door south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9138,7 +9138,7 @@ cracked west wall~
 S
 #30583
 Level 8: The Lion [E7]~
-This chamber preserves First Quest room E7 of The Lion. Its original encounter is pols voice, zol.
+The hall is built broad and proud, and something has made it a den. A pols voice and a zol wait here. You notice a shutter west.
 ~
 0 ADN 11
 D3
@@ -9152,7 +9152,7 @@ block stair~
 S
 #30584
 Level 8: The Lion [D8]~
-This chamber preserves First Quest room D8 of The Lion. Its original encounter is zol.
+Heavy pillars carry the weight of the mountain overhead. A pair of zols wait here. You notice a shutter south.
 ~
 0 ADN 11
 D2
@@ -9182,7 +9182,7 @@ block stair~
 S
 #30587
 Level 9: Death Mountain [B1]~
-This chamber preserves First Quest room B1 of Death Mountain. Its original encounter is silence.
+The deepest stone of Hyrule presses close on every side. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -9196,7 +9196,7 @@ D4
 S
 #30588
 Level 9: Death Mountain [D1]~
-This chamber preserves First Quest room D1 of Death Mountain. Its original encounter is red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of red wizzrobes wait here. You notice a locked door east and a locked door north.
 ~
 0 ADN 11
 D0
@@ -9210,7 +9210,7 @@ locked dungeon door~
 S
 #30589
 Level 9: Death Mountain [E1]~
-This chamber preserves First Quest room E1 of Death Mountain. Its original encounter is blue lanmola.
+The deepest stone of Hyrule presses close on every side. A pair of blue lanmolas wait here. You notice a locked door west.
 ~
 0 ADN 11
 D3
@@ -9224,7 +9224,7 @@ D5
 S
 #30590
 Level 9: Death Mountain [G1]~
-This chamber preserves First Quest room G1 of Death Mountain. Its original encounter is silence.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. This is the way into Death Mountain, and the way back out. Nothing moves.
 ~
 0 ADN 11
 D0
@@ -9238,7 +9238,7 @@ triforce bomb dungeon entrance~
 S
 #30591
 Level 9: Death Mountain [B2]~
-This chamber preserves First Quest room B2 of Death Mountain. Its original encounter is patra.
+The deepest stone of Hyrule presses close on every side. A patra waits here.
 ~
 0 ADN 11
 D0
@@ -9260,7 +9260,7 @@ D5
 S
 #30592
 Level 9: Death Mountain [C2]~
-This chamber preserves First Quest room C2 of Death Mountain. Its original encounter is keese.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Eight keese wait here. You notice a locked door east.
 ~
 0 ADN 11
 D1
@@ -9274,7 +9274,7 @@ D3
 S
 #30593
 Level 9: Death Mountain [D2]~
-This chamber preserves First Quest room D2 of Death Mountain. Its original encounter is zol.
+The deepest stone of Hyrule presses close on every side. Five zols wait here. You notice a locked door north, a locked door south and a locked door west.
 ~
 0 ADN 11
 D0
@@ -9300,7 +9300,7 @@ D5
 S
 #30594
 Level 9: Death Mountain [E2]~
-This chamber preserves First Quest room E2 of Death Mountain. Its original encounter is like like, red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of like-likes and a pair of red wizzrobes wait here.
 ~
 0 ADN 11
 D0
@@ -9318,7 +9318,7 @@ D3
 S
 #30595
 Level 9: Death Mountain [F2]~
-This chamber preserves First Quest room F2 of Death Mountain. Its original encounter is blue wizzrobe, red wizzrobe.
+The deepest stone of Hyrule presses close on every side. A pair of blue wizzrobes and a pair of red wizzrobes wait here. You notice a shutter east and a hairline crack in the north wall.
 ~
 0 ADN 11
 D0
@@ -9336,7 +9336,7 @@ D3
 S
 #30596
 Level 9: Death Mountain [G2]~
-This chamber preserves First Quest room G2 of Death Mountain. Its original encounter is old man.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. An old man waits here. You notice a shutter north and a shutter west.
 ~
 0 ADN 11
 D0
@@ -9354,7 +9354,7 @@ shutter~
 S
 #30597
 Level 9: Death Mountain [A3]~
-This chamber preserves First Quest room A3 of Death Mountain. Its original encounter is zol.
+The deepest stone of Hyrule presses close on every side. Five zols wait here. You notice a shutter east and a locked door north.
 ~
 0 ADN 11
 D0
@@ -9368,7 +9368,7 @@ shutter~
 S
 #30598
 Level 9: Death Mountain [B3]~
-This chamber preserves First Quest room B3 of Death Mountain. Its original encounter is like like.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Six like-likes wait here. You notice a shutter north and a shutter west.
 ~
 0 ADN 11
 D0
@@ -9386,7 +9386,7 @@ shutter~
 S
 #30599
 Level 9: Death Mountain [C3]~
-This chamber preserves First Quest room C3 of Death Mountain. Its original encounter is patra.
+The deepest stone of Hyrule presses close on every side. A patra waits here. You notice a shutter north.
 ~
 0 ADN 11
 D0
@@ -9404,7 +9404,7 @@ D5
 S
 #30600
 Level 9: Death Mountain [D3]~
-This chamber preserves First Quest room D3 of Death Mountain. Its original encounter is blue wizzrobe, bubble, like like, red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of blue wizzrobes, a bubble, three like-likes and a pair of red wizzrobes wait here. You notice a hairline crack in the north wall and a locked door south.
 ~
 0 ADN 11
 D0
@@ -9422,7 +9422,7 @@ D3
 S
 #30601
 Level 9: Death Mountain [E3]~
-This chamber preserves First Quest room E3 of Death Mountain. Its original encounter is blue wizzrobe, red wizzrobe.
+The deepest stone of Hyrule presses close on every side. A blue wizzrobe and a red wizzrobe wait here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D0
@@ -9440,7 +9440,7 @@ D2
 S
 #30602
 Level 9: Death Mountain [F3]~
-This chamber preserves First Quest room F3 of Death Mountain. Its original encounter is red lanmola.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of red lanmolas wait here. You notice a hairline crack in the east wall, a hairline crack in the north wall, a hairline crack in the south wall and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9466,7 +9466,7 @@ D5
 S
 #30603
 Level 9: Death Mountain [G3]~
-This chamber preserves First Quest room G3 of Death Mountain. Its original encounter is bubble, like like, zol.
+The deepest stone of Hyrule presses close on every side. A pair of bubbles, a pair of like-likes and a pair of zols wait here. You notice a shutter south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9484,7 +9484,7 @@ cracked west wall~
 S
 #30604
 Level 9: Death Mountain [H3]~
-This chamber preserves First Quest room H3 of Death Mountain. Its original encounter is blue wizzrobe, red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Three blue wizzrobes and a pair of red wizzrobes wait here.
 ~
 0 ADN 11
 D0
@@ -9494,7 +9494,7 @@ D0
 S
 #30605
 Level 9: Death Mountain [A4]~
-This chamber preserves First Quest room A4 of Death Mountain. Its original encounter is blue wizzrobe, red wizzrobe.
+The deepest stone of Hyrule presses close on every side. A pair of blue wizzrobes and a pair of red wizzrobes wait here. You notice a locked door north and a locked door south.
 ~
 0 ADN 11
 D0
@@ -9508,7 +9508,7 @@ locked dungeon door~
 S
 #30606
 Level 9: Death Mountain [B4]~
-This chamber preserves First Quest room B4 of Death Mountain. Its original encounter is blade trap, like like.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Four blade traps and four like-likes wait here. You notice a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -9522,7 +9522,7 @@ shutter~
 S
 #30607
 Level 9: Death Mountain [C4]~
-This chamber preserves First Quest room C4 of Death Mountain. Its original encounter is ganon.
+The deepest stone of Hyrule presses close on every side. The floor opens out. Whatever rules Death Mountain rules from here. Ganon himself waits here. You notice a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -9536,7 +9536,7 @@ shutter~
 S
 #30608
 Level 9: Death Mountain [D4]~
-This chamber preserves First Quest room D4 of Death Mountain. Its original encounter is old man.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. An old man waits here. You notice a hairline crack in the south wall.
 ~
 0 ADN 11
 D2
@@ -9546,7 +9546,7 @@ cracked south wall~
 S
 #30609
 Level 9: Death Mountain [E4]~
-This chamber preserves First Quest room E4 of Death Mountain. Its original encounter is red wizzrobe.
+The deepest stone of Hyrule presses close on every side. Six red wizzrobes wait here.
 ~
 0 ADN 11
 D1
@@ -9560,7 +9560,7 @@ D2
 S
 #30610
 Level 9: Death Mountain [F4]~
-This chamber preserves First Quest room F4 of Death Mountain. Its original encounter is blue wizzrobe, bubble, like like, red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A blue wizzrobe, a bubble, three like-likes and a pair of red wizzrobes wait here. You notice a locked door east and a hairline crack in the south wall.
 ~
 0 ADN 11
 D1
@@ -9578,7 +9578,7 @@ D3
 S
 #30611
 Level 9: Death Mountain [G4]~
-This chamber preserves First Quest room G4 of Death Mountain. Its original encounter is blue wizzrobe.
+The deepest stone of Hyrule presses close on every side. Six blue wizzrobes wait here. You notice a locked door west.
 ~
 0 ADN 11
 D2
@@ -9592,7 +9592,7 @@ locked dungeon door~
 S
 #30612
 Level 9: Death Mountain [H4]~
-This chamber preserves First Quest room H4 of Death Mountain. Its original encounter is blue wizzrobe, bubble, red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of blue wizzrobes, three bubbles and a pair of red wizzrobes wait here.
 ~
 0 ADN 11
 D0
@@ -9606,7 +9606,7 @@ D2
 S
 #30613
 Level 9: Death Mountain [A5]~
-This chamber preserves First Quest room A5 of Death Mountain. Its original encounter is blade trap, blue wizzrobe, red wizzrobe.
+The deepest stone of Hyrule presses close on every side. Four blade traps, a pair of blue wizzrobes and a pair of red wizzrobes wait here. You notice a hairline crack in the east wall and a locked door south.
 ~
 0 ADN 11
 D1
@@ -9624,7 +9624,7 @@ D5
 S
 #30614
 Level 9: Death Mountain [B5]~
-This chamber preserves First Quest room B5 of Death Mountain. Its original encounter is blue wizzrobe, bubble, like like, red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of blue wizzrobes, a bubble, three like-likes and a pair of red wizzrobes wait here. You notice a shutter north, a shutter south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9642,7 +9642,7 @@ cracked west wall~
 S
 #30615
 Level 9: Death Mountain [C5]~
-This chamber preserves First Quest room C5 of Death Mountain. Its original encounter is princess zelda.
+The deepest stone of Hyrule presses close on every side. Light collects in the middle of the room and does not scatter. Princess zelda waits here. You notice a shutter south.
 ~
 0 ADKN 11
 D2
@@ -9652,7 +9652,7 @@ golden door~
 S
 #30616
 Level 9: Death Mountain [D5]~
-This chamber preserves First Quest room D5 of Death Mountain. Its original encounter is gel.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Eight gels wait here. You notice a hairline crack in the east wall and a locked door north.
 ~
 0 ADN 11
 D0
@@ -9666,7 +9666,7 @@ cracked east wall~
 S
 #30617
 Level 9: Death Mountain [E5]~
-This chamber preserves First Quest room E5 of Death Mountain. Its original encounter is keese.
+The deepest stone of Hyrule presses close on every side. Eight keese wait here. You notice a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9680,7 +9680,7 @@ cracked west wall~
 S
 #30618
 Level 9: Death Mountain [F5]~
-This chamber preserves First Quest room F5 of Death Mountain. Its original encounter is blue wizzrobe, red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A sense of direction settles on you, sharper than it should be. Three blue wizzrobes and a pair of red wizzrobes wait here. You notice a hairline crack in the north wall.
 ~
 0 ADN 11
 D0
@@ -9690,7 +9690,7 @@ cracked north wall~
 S
 #30619
 Level 9: Death Mountain [G5]~
-This chamber preserves First Quest room G5 of Death Mountain. Its original encounter is bubble, keese, zol.
+The deepest stone of Hyrule presses close on every side. Three bubbles, three keese and a pair of zols wait here. You notice a hairline crack in the east wall and a locked door north.
 ~
 0 ADN 11
 D0
@@ -9704,7 +9704,7 @@ cracked east wall~
 S
 #30620
 Level 9: Death Mountain [H5]~
-This chamber preserves First Quest room H5 of Death Mountain. Its original encounter is vire.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Six vires wait here. You notice a hairline crack in the north wall and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9722,7 +9722,7 @@ cracked west wall~
 S
 #30621
 Level 9: Death Mountain [A6]~
-This chamber preserves First Quest room A6 of Death Mountain. Its original encounter is blue wizzrobe, red wizzrobe.
+The deepest stone of Hyrule presses close on every side. Three blue wizzrobes and a pair of red wizzrobes wait here. You notice a hairline crack in the north wall.
 ~
 0 ADN 11
 D0
@@ -9736,7 +9736,7 @@ D4
 S
 #30622
 Level 9: Death Mountain [B6]~
-This chamber preserves First Quest room B6 of Death Mountain. Its original encounter is patra.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A patra waits here. You notice a hairline crack in the east wall, a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -9754,7 +9754,7 @@ shutter~
 S
 #30623
 Level 9: Death Mountain [C6]~
-This chamber preserves First Quest room C6 of Death Mountain. Its original encounter is bubble, like like, zol.
+The deepest stone of Hyrule presses close on every side. A pair of bubbles, a pair of like-likes and a pair of zols wait here. You notice a locked door east, a locked door north and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9772,7 +9772,7 @@ cracked west wall~
 S
 #30624
 Level 9: Death Mountain [D6]~
-This chamber preserves First Quest room D6 of Death Mountain. Its original encounter is gel.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Eight gels wait here. You notice a hairline crack in the east wall, a locked door north, a locked door south and a locked door west.
 ~
 0 ADN 11
 D0
@@ -9794,7 +9794,7 @@ locked dungeon door~
 S
 #30625
 Level 9: Death Mountain [E6]~
-This chamber preserves First Quest room E6 of Death Mountain. Its original encounter is vire.
+The deepest stone of Hyrule presses close on every side. Six vires wait here. You notice a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9812,7 +9812,7 @@ cracked west wall~
 S
 #30626
 Level 9: Death Mountain [F6]~
-This chamber preserves First Quest room F6 of Death Mountain. Its original encounter is bubble, like like, zol.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of bubbles, a pair of like-likes and a pair of zols wait here. You notice a locked door east, a hairline crack in the north wall and a hairline crack in the south wall.
 ~
 0 ADN 11
 D0
@@ -9830,7 +9830,7 @@ cracked south wall~
 S
 #30627
 Level 9: Death Mountain [G6]~
-This chamber preserves First Quest room G6 of Death Mountain. Its original encounter is gel.
+The deepest stone of Hyrule presses close on every side. Eight gels wait here. You notice a hairline crack in the east wall, a locked door south and a locked door west.
 ~
 0 ADN 11
 D0
@@ -9852,7 +9852,7 @@ locked dungeon door~
 S
 #30628
 Level 9: Death Mountain [H6]~
-This chamber preserves First Quest room H6 of Death Mountain. Its original encounter is patra.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Someone charted these halls once and left the chart behind. A patra waits here. You notice a hairline crack in the north wall, a hairline crack in the south wall and a hairline crack in the west wall.
 ~
 0 ADN 11
 D0
@@ -9870,7 +9870,7 @@ cracked west wall~
 S
 #30629
 Level 9: Death Mountain [A7]~
-This chamber preserves First Quest room A7 of Death Mountain. Its original encounter is blue wizzrobe, bubble, red wizzrobe.
+The deepest stone of Hyrule presses close on every side. Three blue wizzrobes, three bubbles and a pair of red wizzrobes wait here. You notice a hairline crack in the south wall.
 ~
 0 ADN 11
 D2
@@ -9884,7 +9884,7 @@ block stair~
 S
 #30630
 Level 9: Death Mountain [B7]~
-This chamber preserves First Quest room B7 of Death Mountain. Its original encounter is blue lanmola.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of blue lanmolas wait here. You notice a shutter north and a shutter south.
 ~
 0 ADN 11
 D0
@@ -9898,7 +9898,7 @@ shutter~
 S
 #30631
 Level 9: Death Mountain [C7]~
-This chamber preserves First Quest room C7 of Death Mountain. Its original encounter is red lanmola.
+The deepest stone of Hyrule presses close on every side. A pair of red lanmolas wait here. You notice a locked door east, a shutter north and a locked door south.
 ~
 0 ADN 11
 D0
@@ -9916,7 +9916,7 @@ locked dungeon door~
 S
 #30632
 Level 9: Death Mountain [D7]~
-This chamber preserves First Quest room D7 of Death Mountain. Its original encounter is bubble.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A bubble waits here. You notice a locked door south and a locked door west.
 ~
 0 ADN 11
 D2
@@ -9930,7 +9930,7 @@ locked dungeon door~
 S
 #30633
 Level 9: Death Mountain [E7]~
-This chamber preserves First Quest room E7 of Death Mountain. Its original encounter is like like.
+The deepest stone of Hyrule presses close on every side. Five like-likes wait here. You notice a locked door east.
 ~
 0 ADN 11
 D1
@@ -9948,7 +9948,7 @@ D4
 S
 #30634
 Level 9: Death Mountain [F7]~
-This chamber preserves First Quest room F7 of Death Mountain. Its original encounter is blue wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Three blue wizzrobes wait here. You notice a hairline crack in the south wall and a locked door west.
 ~
 0 ADN 11
 D1
@@ -9966,7 +9966,7 @@ locked dungeon door~
 S
 #30635
 Level 9: Death Mountain [G7]~
-This chamber preserves First Quest room G7 of Death Mountain. Its original encounter is patra.
+The deepest stone of Hyrule presses close on every side. A patra waits here. You notice a locked door north.
 ~
 0 ADN 11
 D0
@@ -9984,7 +9984,7 @@ D3
 S
 #30636
 Level 9: Death Mountain [H7]~
-This chamber preserves First Quest room H7 of Death Mountain. Its original encounter is blue wizzrobe, bubble, like like, red wizzrobe.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. A pair of blue wizzrobes, a bubble, three like-likes and a pair of red wizzrobes wait here. You notice a hairline crack in the north wall and a hairline crack in the south wall.
 ~
 0 ADN 11
 D0
@@ -9998,7 +9998,7 @@ cracked south wall~
 S
 #30637
 Level 9: Death Mountain [B8]~
-This chamber preserves First Quest room B8 of Death Mountain. Its original encounter is bubble, keese, zol.
+The deepest stone of Hyrule presses close on every side. Three bubbles, three keese and a pair of zols wait here. You notice a locked door east and a shutter south.
 ~
 0 ADN 11
 D1
@@ -10012,7 +10012,7 @@ shutter~
 S
 #30638
 Level 9: Death Mountain [C8]~
-This chamber preserves First Quest room C8 of Death Mountain. Its original encounter is old man.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. An old man waits here. You notice a shutter south and a locked door west.
 ~
 0 ADN 11
 D2
@@ -10026,7 +10026,7 @@ locked dungeon door~
 S
 #30639
 Level 9: Death Mountain [D8]~
-This chamber preserves First Quest room D8 of Death Mountain. Its original encounter is bubble, like like, zol.
+The deepest stone of Hyrule presses close on every side. A pair of bubbles, a pair of like-likes and a pair of zols wait here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D1
@@ -10040,7 +10040,7 @@ D4
 S
 #30640
 Level 9: Death Mountain [E8]~
-This chamber preserves First Quest room E8 of Death Mountain. Its original encounter is silence.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. Nothing moves. You notice a hairline crack in the west wall.
 ~
 0 ADN 11
 D3
@@ -10054,7 +10054,7 @@ D4
 S
 #30641
 Level 9: Death Mountain [F8]~
-This chamber preserves First Quest room F8 of Death Mountain. Its original encounter is blue wizzrobe, red wizzrobe.
+The deepest stone of Hyrule presses close on every side. Three blue wizzrobes and a pair of red wizzrobes wait here. You notice a hairline crack in the east wall.
 ~
 0 ADN 11
 D1
@@ -10068,7 +10068,7 @@ D4
 S
 #30642
 Level 9: Death Mountain [G8]~
-This chamber preserves First Quest room G8 of Death Mountain. Its original encounter is old man.
+Death Mountain closes in: raw rock, low ceilings, no comfort at all. An old man waits here. You notice a locked door south and a hairline crack in the west wall.
 ~
 0 ADN 11
 D2
@@ -10082,7 +10082,7 @@ cracked west wall~
 S
 #30643
 Level 9: Death Mountain [H8]~
-This chamber preserves First Quest room H8 of Death Mountain. Its original encounter is blue wizzrobe, bubble, red wizzrobe.
+The deepest stone of Hyrule presses close on every side. Three blue wizzrobes, three bubbles and a pair of red wizzrobes wait here. You notice a hairline crack in the south wall.
 ~
 0 ADN 11
 D2

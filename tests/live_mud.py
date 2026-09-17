@@ -217,14 +217,34 @@ class MudClient:
         return bytes([IAC, verb, option]) in self.raw
 
     def server_state(self) -> str:
-        """What the server process is doing, for a timeout message."""
+        """What the server process is doing, for a timeout message.
+
+        A stalled game loop and a dead process look identical from the
+        client, and the difference decides where to look next. When the
+        process is wedged and gdb is available, grab a backtrace while it is
+        still stuck -- that is the only moment the evidence exists.
+        """
         proc = getattr(self, "server_proc", None)
         if proc is None:
             return "server: unknown (no handle)"
         code = proc.poll()
-        if code is None:
-            return "server: still running (so the game loop stalled)"
-        return f"server: exited with code {code} (so it died)"
+        if code is not None:
+            return f"server: exited with code {code} (so it died)"
+
+        state = "server: still running (so the game loop stalled)"
+        gdb = shutil.which("gdb")
+        if gdb is None:
+            return state + "\n(install gdb for a backtrace of the stall)"
+        try:
+            result = subprocess.run(
+                [gdb, "-p", str(proc.pid), "-batch", "-nx",
+                 "-ex", "thread apply all bt 25"],
+                capture_output=True, text=True, timeout=30,
+            )
+            trace = (result.stdout or result.stderr).strip()
+        except (OSError, subprocess.SubprocessError) as exc:
+            trace = f"(gdb failed: {exc})"
+        return state + "\n--- stalled server backtrace ---\n" + trace[-3000:]
 
     def expect(self, *patterns: str, timeout: float | None = None) -> str:
         """Wait until any pattern appears (case-insensitive substring).
