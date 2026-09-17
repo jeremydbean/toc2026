@@ -2245,6 +2245,8 @@ void    write_web_admin_event ( const char *channel, const char *message,
 #define LOGIN_JOURNAL_LINE      192
 void    record_login    ( const char *name, const char *host,
                           const char *event );
+void    record_logout   ( const char *name, const char *host,
+                          const char *event, long duration );
 
 /* act_info.c */
 void    set_title       ( CHAR_DATA *ch, char *title );

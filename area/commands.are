@@ -3321,7 +3321,13 @@ Syntax: lastlog
 
 LASTLOG lists the most recent logins, newest first, with the date and time,
 the character, whether the session was a new character, an ordinary connect,
-or a reconnect, and the host the player came from.
+or a reconnect, how long the session lasted, and the host the player came
+from.
+
+A session has no length until it ends, so the Played column shows a dash for
+a player who is still connected, and for the login half of a finished
+session.  The closing row carries the time.  Sessions that ended in a hard
+crash were never closed and keep the dash.
 
 SOCKETS only sees a descriptor while it is still attached, so it cannot tell
 you who was here an hour ago.  LASTLOG reads a journal the server appends at

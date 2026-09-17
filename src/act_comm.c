@@ -1503,6 +1503,11 @@ void do_quit( CHAR_DATA *ch, char *argument )
         ch->pcdata->last_session_pk_kills = ch->pcdata->session_pk_kills;
         ch->pcdata->last_session_deaths   = ch->pcdata->session_deaths;
         ch->pcdata->last_session_quests   = ch->pcdata->session_quests;
+
+        /* The same value the character sheet shows, so the journal and
+           the sheet cannot disagree about one session. */
+        record_logout( ch->name,
+            ch->desc != NULL ? ch->desc->host : "(unknown)", "quit", dur );
     }
 
     /*

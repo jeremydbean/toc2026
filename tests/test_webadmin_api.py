@@ -36,6 +36,11 @@ Sex 2
 Cla 3
 Gui 3
 Levl 12
+LogO 1700050000
+Plyd 7200
+Room 3001
+SesLogin 1700046400
+SesDur   1800
 HMV 100 200 150 250 75 100
 Attr 14 15 16 17 18
 AMod 1 2 3 4 5
@@ -506,6 +511,89 @@ class WebAdminApiTests(unittest.TestCase):
         with self.webadmin_client(local_unlock=True, web_bind="0.0.0.0") as (_, client, _):
             self.assertFalse(client.get("/api/config").json()["local_admin_unlock"])
             self.assertEqual(client.post("/api/auth/local").status_code, 403)
+
+    def test_login_history_pairs_sessions_and_reports_playtime(self) -> None:
+        """The journal is two half-records per session; the API joins them.
+
+        The game writes a row when a session starts and another when it ends,
+        so a duration only exists once both have been seen. The awkward cases
+        are the ones that actually happen: a session still open, and an end
+        whose start has already been trimmed off the front of the file.
+        """
+        with self.webadmin_client() as (server, client, temp_root):
+            journal = temp_root / "logins.tsv"
+            journal.write_text(
+                "\n".join([
+                    # a complete session, ended by quit
+                    "1700000000\tMixed\t10.0.0.5\tconnect",
+                    "1700003600\tMixed\t10.0.0.5\tquit\t3600",
+                    # a complete session, ended by a dropped link
+                    "1700010000\tOther\t10.0.0.9\tnew",
+                    "1700010090\tOther\t10.0.0.9\tlinkdead\t90",
+                    # still connected: no end row yet
+                    "1700020000\tThird\t10.0.0.7\treconnect",
+                    # an end with no start, as after a journal trim
+                    "1700030000\tOrphan\t10.0.0.3\tquit\t120",
+                    # junk the game could leave behind on a crash mid-write
+                    "not-a-timestamp\tBad\thost\tconnect",
+                    "1700040000\ttruncated",
+                ]) + "\n",
+                encoding="latin-1",
+            )
+
+            with patch.object(server, "LOGIN_JOURNAL", journal):
+                denied = client.get("/api/logins")
+                self.assertEqual(denied.status_code, 403, "IPs must stay behind the token")
+
+                payload = client.get(
+                    "/api/logins", headers={"X-Admin-Token": "secret"}
+                ).json()
+
+            self.assertTrue(payload["journal_present"])
+            sessions = {s["name"]: s for s in payload["sessions"]}
+
+            self.assertEqual(sessions["Mixed"]["duration"], 3600)
+            self.assertEqual(sessions["Mixed"]["ended"], "quit")
+            self.assertEqual(sessions["Mixed"]["host"], "10.0.0.5")
+
+            self.assertEqual(sessions["Other"]["duration"], 90)
+            self.assertEqual(sessions["Other"]["ended"], "linkdead")
+
+            # Open session: reported, but with no invented duration.
+            self.assertIsNone(sessions["Third"]["duration"])
+            self.assertIsNone(sessions["Third"]["ended"])
+            self.assertEqual(sessions["Third"]["login"], 1700020000)
+
+            # Orphaned end: the playtime is kept even though the start is gone.
+            self.assertEqual(sessions["Orphan"]["duration"], 120)
+            self.assertIsNone(sessions["Orphan"]["login"])
+
+            # Malformed rows are skipped, not fatal.
+            self.assertNotIn("Bad", sessions)
+            self.assertEqual(len(payload["sessions"]), 4)
+
+            # Newest first.
+            stamps = [s["logout"] or s["login"] for s in payload["sessions"]]
+            self.assertEqual(stamps, sorted(stamps, reverse=True))
+
+            # Lifetime totals come from the save file, not the journal.
+            saved = payload["players"]["MiXeD"]
+            self.assertEqual(saved["played"], 7200)
+            self.assertEqual(saved["last_session"], 1800)
+            self.assertEqual(saved["last_login"], 1700046400)
+            # The character's level, not the level of an object it carries.
+            self.assertEqual(saved["level"], 12)
+
+    def test_login_history_is_empty_not_broken_before_any_login(self) -> None:
+        """A server that has not been logged into yet still renders."""
+        with self.webadmin_client() as (server, client, temp_root):
+            missing = temp_root / "no-such-logins.tsv"
+            with patch.object(server, "LOGIN_JOURNAL", missing):
+                payload = client.get(
+                    "/api/logins", headers={"X-Admin-Token": "secret"}
+                ).json()
+            self.assertFalse(payload["journal_present"])
+            self.assertEqual(payload["sessions"], [])
 
     def test_admin_only_interface_is_marked_and_hidden_until_unlocked(self) -> None:
         """The dashboard is on a public port, so the locked view has to be tidy.

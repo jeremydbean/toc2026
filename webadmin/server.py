@@ -141,6 +141,9 @@ EVENT_LOG: Path = Path(os.getenv("EVENT_LOG_FILE", "log/webadmin-events.tsv"))
 AREA_PATH: Path = Path(os.getenv("AREA_PATH", "area"))
 BACKUP_PATH: Path = Path(os.getenv("BACKUP_PATH", "backups"))
 PLAYER_PATH: Path = Path(os.getenv("PLAYER_PATH", "player"))
+# The game appends one row per login, and since this release one per logout
+# too. It writes it as ../log/logins.tsv from the area directory.
+LOGIN_JOURNAL: Path = Path(os.getenv("LOGIN_JOURNAL", "log/logins.tsv"))
 UPDATE_REQUEST_PATH: Optional[Path] = (
     Path(update_request_path)
     if (update_request_path := os.getenv("TOC_UPDATE_REQUEST_PATH", "").strip())
@@ -1323,9 +1326,168 @@ async def end_local_admin_session(response: Response) -> Dict[str, bool]:
     return {"authenticated": False}
 
 
+@app.get("/api/logins")
+async def logins(
+    limit: int = Query(default=200, ge=1, le=200),
+    _: None = Depends(verify_token),
+) -> Dict[str, Any]:
+    """Login history and playtime. Token-gated: the rows carry player IPs."""
+    rows = parse_login_journal(LOGIN_JOURNAL, limit=limit)
+    return {
+        "generated": time.time(),
+        "journal_present": LOGIN_JOURNAL.exists(),
+        "sessions": pair_login_sessions(rows),
+        "players": player_playtime_totals(),
+    }
+
+
 @app.get("/api/auth/check")
 async def check_auth(_: None = Depends(verify_token)) -> Dict[str, bool]:
     return {"authenticated": True}
+
+
+LOGIN_EVENTS_START = {"connect", "new", "reconnect"}
+LOGIN_EVENTS_END = {"quit", "linkdead"}
+
+
+def parse_login_journal(path: Path, limit: int = 200) -> list[Dict[str, Any]]:
+    """Read the game's login journal into rows, newest first.
+
+    Written by the game as tab-separated `when, name, host, event` with a
+    fifth `duration` column on the rows that end a session. Anything
+    malformed is skipped rather than failing the whole listing: this is an
+    append-only file a crash can truncate mid-row.
+    """
+    try:
+        raw = path.read_text(encoding="latin-1", errors="replace")
+    except (OSError, ValueError):
+        return []
+
+    rows: list[Dict[str, Any]] = []
+    for line in raw.splitlines():
+        parts = line.split("\t")
+        if len(parts) < 4:
+            continue
+        try:
+            when = int(parts[0])
+        except ValueError:
+            continue
+        event = parts[3].strip().lower()
+        duration: Optional[int] = None
+        if len(parts) >= 5:
+            try:
+                duration = max(0, int(parts[4]))
+            except ValueError:
+                duration = None
+        rows.append({
+            "when": when,
+            "name": parts[1].strip(),
+            "host": parts[2].strip(),
+            "event": event,
+            "duration": duration,
+        })
+
+    rows.sort(key=lambda row: row["when"])
+    return rows[-limit:]
+
+
+def pair_login_sessions(rows: list[Dict[str, Any]]) -> list[Dict[str, Any]]:
+    """Turn the flat journal into sessions, newest first.
+
+    A start row opens a session for that character and the next end row for
+    the same character closes it. A start with no end is still in progress,
+    or was lost to a hard crash, and is reported with a null duration rather
+    than a guess.
+    """
+    open_by_name: Dict[str, Dict[str, Any]] = {}
+    sessions: list[Dict[str, Any]] = []
+
+    for row in rows:
+        name = row["name"]
+        if row["event"] in LOGIN_EVENTS_START:
+            session = {
+                "name": name,
+                "host": row["host"],
+                "login": row["when"],
+                "event": row["event"],
+                "logout": None,
+                "duration": None,
+                "ended": None,
+            }
+            open_by_name[name.lower()] = session
+            sessions.append(session)
+        elif row["event"] in LOGIN_EVENTS_END:
+            session = open_by_name.pop(name.lower(), None)
+            if session is None:
+                # An ending with no beginning: the journal was trimmed past
+                # its start. Report it rather than dropping the playtime.
+                sessions.append({
+                    "name": name,
+                    "host": row["host"],
+                    "login": None,
+                    "event": None,
+                    "logout": row["when"],
+                    "duration": row["duration"],
+                    "ended": row["event"],
+                })
+                continue
+            session["logout"] = row["when"]
+            session["ended"] = row["event"]
+            if row["duration"] is not None:
+                session["duration"] = row["duration"]
+            elif session["login"] is not None:
+                session["duration"] = max(0, row["when"] - session["login"])
+
+    sessions.sort(key=lambda s: s["logout"] or s["login"] or 0, reverse=True)
+    return sessions
+
+
+def player_playtime_totals() -> Dict[str, Dict[str, Any]]:
+    """Lifetime totals straight from the save files.
+
+    The journal only knows about sessions it has seen; `Plyd` is the whole
+    history of the character, and `SesDur` is the last completed session as
+    the game itself recorded it.
+    """
+    totals: Dict[str, Dict[str, Any]] = {}
+    try:
+        entries = sorted(PLAYER_PATH.iterdir())
+    except OSError:
+        return totals
+
+    for entry in entries:
+        if not entry.is_file() or not PLAYER_NAME_RE.fullmatch(entry.name):
+            continue
+        record: Dict[str, Any] = {"played": None, "last_session": None,
+                                  "last_login": None, "level": None}
+        try:
+            with entry.open("r", encoding="latin-1", errors="replace") as handle:
+                for index, line in enumerate(handle):
+                    # The character's own fields run to the first object; every
+                    # #O section after it carries its own Levl and Room.
+                    if index and line.startswith("#"):
+                        break
+                    key, _, value = line.partition(" ")
+                    # "SesDur" is written with padding, so split on the first
+                    # space and strip rather than assuming one separator.
+                    value = value.strip()
+                    try:
+                        if key == "Plyd":
+                            record["played"] = int(value)
+                        elif key == "SesDur":
+                            record["last_session"] = int(value)
+                        elif key == "SesLogin":
+                            record["last_login"] = int(value)
+                        elif key == "Levl":
+                            record["level"] = int(value)
+                        elif key == "LogO":
+                            record["logout"] = int(value)
+                    except ValueError:
+                        continue
+        except OSError:
+            continue
+        totals[entry.name] = record
+    return totals
 
 
 def tail_log_file(path: Path, lines: int) -> str:

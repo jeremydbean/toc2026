@@ -7,10 +7,10 @@
     // Views that cannot show anything without the admin token. Hidden while
     // locked, and not reachable by hash either, so a stale #host bookmark
     // lands on the overview rather than an empty page.
-    const ADMIN_VIEWS = new Set(["players", "console", "logs", "host", "operations"]);
+    const ADMIN_VIEWS = new Set(["players", "console", "logins", "logs", "host", "operations"]);
 
     const VIEW_NAMES = new Set([
-        "overview", "world", "areas", "players", "gear", "console", "logs", "host", "operations",
+        "overview", "world", "areas", "players", "gear", "console", "logins", "logs", "host", "operations",
     ]);
     const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -323,9 +323,73 @@
         else if (view === "world") await loadWorld();
         else if (view === "areas") await loadAreasAndHealth();
         else if (view === "players") await loadPlayerNames();
+        else if (view === "logins") await loadLogins();
         else if (view === "logs") await connectLogs();
         else if (view === "host") await loadHostStatus();
         else if (view === "operations") await loadOperations();
+    }
+
+    // A session only has a length once it ends, and the game records that
+    // length itself. One still open, or one whose end was lost to a hard
+    // crash, has none -- say so rather than show a guess.
+    function formatDuration(seconds) {
+        if (seconds === null || seconds === undefined) return "-";
+        const total = Math.max(0, Math.floor(seconds));
+        const hours = Math.floor(total / 3600);
+        const minutes = Math.floor((total % 3600) / 60);
+        const secs = total % 60;
+        if (hours > 0) return `${hours}h ${String(minutes).padStart(2, "0")}m`;
+        if (minutes > 0) return `${minutes}m ${String(secs).padStart(2, "0")}s`;
+        return `${secs}s`;
+    }
+
+    function formatWhen(epoch) {
+        return epoch ? new Date(epoch * 1000).toLocaleString() : "-";
+    }
+
+    async function loadLogins() {
+        if (!await ensureAuth()) return;
+        const sessionBody = byId("logins-table").querySelector("tbody");
+        const playtimeBody = byId("playtime-table").querySelector("tbody");
+
+        let data;
+        try {
+            data = await api("/api/logins", { auth: true });
+        } catch (error) {
+            sessionBody.replaceChildren(node("tr", {}, [
+                node("td", { className: "empty-state", text: error.message, attrs: { colspan: 6 } }),
+            ]));
+            return;
+        }
+
+        byId("logins-updated").textContent = `Updated ${new Date(data.generated * 1000).toLocaleTimeString()}`;
+        byId("logins-note").textContent = data.journal_present
+            ? "Newest first"
+            : "No logins recorded yet";
+
+        const sessions = data.sessions || [];
+        sessionBody.replaceChildren(...(sessions.length ? sessions.map((session) => node("tr", {}, [
+            tableCell(formatWhen(session.login)),
+            tableCell(session.name || "-"),
+            tableCell(formatDuration(session.duration), "numeric"),
+            tableCell(session.event || "-"),
+            tableCell(session.ended || (session.login ? "still connected" : "-")),
+            tableCell(session.host || "-", "mono"),
+        ])) : [node("tr", {}, [
+            node("td", { className: "empty-state", text: "No logins recorded yet.", attrs: { colspan: 6 } }),
+        ])]));
+
+        const players = Object.entries(data.players || {})
+            .sort((a, b) => (b[1].played || 0) - (a[1].played || 0));
+        playtimeBody.replaceChildren(...(players.length ? players.map(([name, player]) => node("tr", {}, [
+            tableCell(name),
+            tableCell(player.level ?? "-", "numeric"),
+            tableCell(formatDuration(player.played), "numeric"),
+            tableCell(formatDuration(player.last_session), "numeric"),
+            tableCell(formatWhen(player.last_login)),
+        ])) : [node("tr", {}, [
+            node("td", { className: "empty-state", text: "No characters found.", attrs: { colspan: 5 } }),
+        ])]));
     }
 
     async function refreshCurrentView() {

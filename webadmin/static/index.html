@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/theme-dragon.css?v=1">
     <script src="/static/command-sequence.js?v=1" defer></script>
     <script src="/static/console-output.js?v=1" defer></script>
-    <script src="/static/app.js?v=9" defer></script>
+    <script src="/static/app.js?v=10" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -29,6 +29,7 @@
                 <button class="nav-item" type="button" data-admin data-view="players">Players</button>
                 <button class="nav-item" type="button" data-view="gear">Gear finder</button>
                 <button class="nav-item" type="button" data-admin data-view="console">Game console</button>
+                <button class="nav-item" type="button" data-admin data-view="logins">Logins</button>
                 <button class="nav-item" type="button" data-admin data-view="logs">Live logs</button>
                 <button class="nav-item" type="button" data-admin data-view="host">Host status</button>
                 <button class="nav-item" type="button" data-admin data-view="operations">Operations</button>
@@ -261,6 +262,42 @@
                         <button class="button button-primary" type="submit" disabled>Send</button>
                     </form>
                 </div>
+            </section>
+
+            <section class="view" data-admin id="logins-view" data-title="Logins">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">Who has played</span>
+                        <h2>Login history</h2>
+                    </div>
+                    <span class="timestamp" id="logins-updated">Not refreshed</span>
+                </div>
+
+                <section class="panel">
+                    <div class="panel-heading">
+                        <h3>Recent sessions</h3>
+                        <span class="panel-subtitle" id="logins-note">Newest first</span>
+                    </div>
+                    <div class="table-frame borderless">
+                        <table id="logins-table">
+                            <thead><tr><th>Logged in</th><th>Character</th><th>Played for</th><th>Started</th><th>Ended</th><th>Host</th></tr></thead>
+                            <tbody><tr><td colspan="6" class="empty-state">Admin access required.</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-heading">
+                        <h3>Total time per character</h3>
+                        <span class="panel-subtitle">From the save files, not the journal</span>
+                    </div>
+                    <div class="table-frame borderless">
+                        <table id="playtime-table">
+                            <thead><tr><th>Character</th><th>Level</th><th>Total played</th><th>Last session</th><th>Last login</th></tr></thead>
+                            <tbody><tr><td colspan="5" class="empty-state">Admin access required.</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
             </section>
 
             <section class="view" data-admin id="logs-view" data-title="Live Logs">

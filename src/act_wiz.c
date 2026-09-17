@@ -5716,6 +5716,37 @@ void do_sockets( CHAR_DATA *ch, char *argument )
 
 
 /*
+ * Render a session length for the LASTLOG table.
+ *
+ * Only the rows that end a session carry one, so a login on its own, and a
+ * session still in progress, print a dash rather than a misleading zero.
+ */
+static void lastlog_played( char *dest, size_t size, const char *seconds )
+{
+    long total;
+    long hours;
+    long minutes;
+
+    if ( seconds == NULL || seconds[0] == '\0' || !is_number( (char *)seconds ) )
+    {
+        toc_strlcpy( dest, "-", size );
+        return;
+    }
+
+    total   = atol( seconds );
+    hours   = total / 3600;
+    minutes = ( total % 3600 ) / 60;
+
+    if ( hours > 0 )
+        snprintf( dest, size, "%ldh %02ldm", hours, minutes );
+    else if ( minutes > 0 )
+        snprintf( dest, size, "%ldm %02lds", minutes, total % 60 );
+    else
+        snprintf( dest, size, "%lds", total );
+}
+
+
+/*
  * Recent logins, newest first.
  *
  * do_sockets above can only report a host while that descriptor is still
@@ -5734,7 +5765,8 @@ void do_lastlog( CHAR_DATA *ch, char *argument )
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
     char stamp[64];
-    char *fields[4];
+    char played[24];
+    char *fields[5];
     char *point;
     FILE *fp;
     struct tm *when_tm;
@@ -5783,8 +5815,8 @@ void do_lastlog( CHAR_DATA *ch, char *argument )
 
     snprintf( buf, sizeof(buf),
               "Recent logins, newest first:\n\r"
-              "%-20s %-14s %-10s %s\n\r",
-              "Date/Time", "Character", "Event", "Host" );
+              "%-20s %-14s %-10s %-10s %s\n\r",
+              "Date/Time", "Character", "Event", "Played", "Host" );
 
     shown = 0;
     for ( index = count - 1; index >= 0 && shown < limit; index-- )
@@ -5797,7 +5829,7 @@ void do_lastlog( CHAR_DATA *ch, char *argument )
 
         field_count = 0;
         point = work;
-        while ( field_count < 4 )
+        while ( field_count < 5 )
         {
             fields[field_count++] = point;
             if ( ( point = strchr( point, '\t' ) ) == NULL )
@@ -5817,10 +5849,13 @@ void do_lastlog( CHAR_DATA *ch, char *argument )
                        when_tm ) == 0 )
             toc_strlcpy( stamp, "(bad timestamp)", sizeof(stamp) );
 
+        lastlog_played( played, sizeof(played),
+                        field_count >= 5 ? fields[4] : NULL );
+
         length = strlen( buf );
         snprintf( buf + length, sizeof(buf) - length,
-                  "%-20s %-14s %-10s %s\n\r",
-                  stamp, fields[1], fields[3], fields[2] );
+                  "%-20s %-14s %-10s %-10s %s\n\r",
+                  stamp, fields[1], fields[3], played, fields[2] );
         shown++;
     }
 

@@ -50,7 +50,7 @@ class LoginJournalTests(unittest.TestCase):
                 )
 
             rows = journal_rows(mud)
-            self.assertEqual(len(rows), 1, f"expected one row, got {rows}")
+            self.assertEqual(len(rows), 2, f"expected a start and an end, got {rows}")
 
             epoch, who, host, event = rows[0]
             self.assertTrue(epoch.isdigit(), f"bad timestamp {epoch!r}")
@@ -58,6 +58,14 @@ class LoginJournalTests(unittest.TestCase):
             self.assertEqual(event, "new")
             # The harness connects over loopback.
             self.assertTrue(host, "host column was empty")
+
+            # The closing row carries the session length, which is what makes
+            # "how long did they play" answerable at all.
+            end_epoch, end_who, _, end_event, duration = rows[1]
+            self.assertTrue(end_epoch.isdigit(), f"bad timestamp {end_epoch!r}")
+            self.assertEqual(end_who, name)
+            self.assertEqual(end_event, "quit")
+            self.assertTrue(duration.isdigit(), f"bad duration {duration!r}")
 
     def test_lastlog_reports_name_time_and_host(self) -> None:
         name = "Ziplogtwo"
@@ -95,6 +103,19 @@ class LoginJournalTests(unittest.TestCase):
             output,
             f"connect event missing from output:\n{output}",
         )
+        # Recording the end of a session exists to answer how long it ran,
+        # so the column has to reach the operator, and the earlier quit has
+        # to carry a real figure rather than the dash an open session gets.
+        self.assertIn(
+            "Played",
+            output,
+            f"playtime column missing from output:\n{output}",
+        )
+        self.assertRegex(
+            output,
+            r"quit\s+\d+[hms]",
+            f"finished session has no duration:\n{output}",
+        )
 
     def test_journal_survives_a_restart(self) -> None:
         """The point of the file: history outlives the process."""
@@ -107,7 +128,7 @@ class LoginJournalTests(unittest.TestCase):
                 self.assertTrue(client.wait_closed())
 
             before = journal_rows(mud)
-            self.assertEqual(len(before), 1)
+            self.assertEqual(len(before), 2, f"start and end expected, got {before}")
 
             patch_player_file(mud, name, Levl=IMMORTAL_LEVEL)
 
@@ -119,12 +140,12 @@ class LoginJournalTests(unittest.TestCase):
             after = journal_rows(mud)
             self.assertEqual(
                 len(after),
-                2,
-                f"second login was not appended: {after}",
+                4,
+                f"second session was not appended: {after}",
             )
-            self.assertEqual(after[0][3], "new")
-            self.assertEqual(after[1][3], "connect")
-            self.assertEqual(after[1][1], name)
+            self.assertEqual([row[3] for row in after],
+                             ["new", "quit", "connect", "quit"])
+            self.assertEqual(after[2][1], name)
 
 
 if __name__ == "__main__":

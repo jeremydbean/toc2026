@@ -1348,6 +1348,10 @@ void close_socket( DESCRIPTOR_DATA *dclose )
             snprintf(buf, sizeof(buf), "%s has lost %s link.",
                 ch->name, wizinfo_possessive(ch));
             wizinfo( buf, ch->level );
+            if ( !IS_NPC(ch) && ch->pcdata != NULL
+              && ch->pcdata->session_logon > 0 )
+                record_logout( ch->name, dclose->host, "linkdead",
+                    (long)(current_time - ch->pcdata->session_logon) );
 	    ch->desc = NULL;
 	}
 	else
@@ -3712,7 +3716,13 @@ static void login_journal_trim( void )
 }
 
 
-void record_login( const char *name, const char *host, const char *event )
+/*
+ * Shared writer. A duration below zero writes the four-column login form;
+ * anything else appends the session length, so one journal carries both
+ * ends of a session and a reader can pair them.
+ */
+static void record_session_event( const char *name, const char *host,
+                                  const char *event, long duration )
 {
     /*
      * Deliberately smaller than LOGIN_JOURNAL_LINE: a record must always fit
@@ -3738,11 +3748,33 @@ void record_login( const char *name, const char *host, const char *event )
         return;
 
     when = current_time > 0 ? current_time : time(NULL);
-    fprintf( fp, "%ld\t%s\t%s\t%s\n",
-             (long)when, safe_name, safe_host, event );
+    if ( duration < 0 )
+        fprintf( fp, "%ld\t%s\t%s\t%s\n",
+                 (long)when, safe_name, safe_host, event );
+    else
+        fprintf( fp, "%ld\t%s\t%s\t%s\t%ld\n",
+                 (long)when, safe_name, safe_host, event, duration );
     fclose( fp );
 
     login_journal_trim( );
+}
+
+
+void record_login( const char *name, const char *host, const char *event )
+{
+    record_session_event( name, host, event, -1 );
+}
+
+
+/*
+ * A session has no length until it ends, so logins alone cannot answer how
+ * long anyone played. Both endings are recorded: a deliberate quit, and a
+ * dropped link.
+ */
+void record_logout( const char *name, const char *host, const char *event,
+                    long duration )
+{
+    record_session_event( name, host, event, duration < 0 ? 0 : duration );
 }
 
 
