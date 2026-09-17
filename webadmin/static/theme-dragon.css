@@ -1,0 +1,326 @@
+/*
+ * Times of Chaos -- high fantasy theme.
+ *
+ * Loaded after app.css / client.css and works purely by overriding the design
+ * tokens those sheets already expose, plus a layer of ornament. Nothing here
+ * depends on markup changes, so the dashboard and the browser client keep
+ * their structure and only change their skin.
+ *
+ * The hero art is /static/dragon-hero.jpg (cropped above the wordmark, so the
+ * page supplies its own headings). If that file is absent every rule
+ * below still renders -- the gradients carry the look on their own -- so the
+ * theme degrades to "dark gold" rather than breaking.
+ */
+
+:root {
+    /* forge palette */
+    --toc-ink:            #0a0705;
+    --toc-stone:          #130d08;
+    --toc-panel:          #1c1409;
+    --toc-panel-hi:       #261b0e;
+    --toc-gold:           #c9a961;
+    --toc-gold-bright:    #f4e0a6;
+    --toc-gold-dim:       #8a6c2c;
+    --toc-bronze:         #6d5423;
+    --toc-ember:          #e0701f;
+    --toc-ember-bright:   #ffab4a;
+    --toc-parchment:      #ecdfbe;
+    --toc-blood:          #7e2b20;
+
+    /* remap the base sheets' tokens onto the palette */
+    --bg:             var(--toc-ink);
+    --surface:        var(--toc-panel);
+    --terminal-bg:    #080503;
+    --border:         #4a3a18;
+    --border-strong:  var(--toc-gold-dim);
+    --text:           #f0e6d2;
+    --muted:          #b6a586;
+    --faint:          #8a7c63;
+    --teal:           var(--toc-gold);
+    --teal-dark:      var(--toc-bronze);
+    --blue:           #b9935a;
+    --green:          #86c06a;
+    --amber:          var(--toc-ember-bright);
+    --red:            #e07a5f;
+    --red-dark:       var(--toc-blood);
+    --radius:         3px;
+
+    --toc-frame-shadow:
+        inset 0 0 0 1px rgba(201, 169, 97, 0.30),
+        inset 0 1px 0 rgba(244, 224, 166, 0.16),
+        0 10px 26px rgba(0, 0, 0, 0.62);
+}
+
+/* ---------------------------------------------------------------- ground -- */
+
+body {
+    background-color: var(--toc-ink);
+    /* fine leather grain over a warm vignette */
+    background-image:
+        repeating-linear-gradient(
+            122deg,
+            rgba(255, 233, 180, 0.016) 0 2px,
+            rgba(0, 0, 0, 0) 2px 5px),
+        repeating-linear-gradient(
+            32deg,
+            rgba(0, 0, 0, 0.16) 0 3px,
+            rgba(0, 0, 0, 0) 3px 7px),
+        radial-gradient(120% 90% at 50% -10%, #2a1d0e 0%, #140d07 45%, #080503 100%);
+    color: var(--text);
+}
+
+/*
+ * The dragon sits behind the whole interface: fixed, dim, and desaturated so
+ * it reads as atmosphere rather than competing with the content on top.
+ */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("/static/dragon-hero.jpg");
+    background-repeat: no-repeat;
+    background-position: center 12%;
+    background-size: cover;
+    opacity: 0.21;
+    filter: saturate(0.72) contrast(1.05);
+    mask-image: radial-gradient(130% 95% at 50% 18%, #000 25%, transparent 78%);
+    -webkit-mask-image: radial-gradient(130% 95% at 50% 18%, #000 25%, transparent 78%);
+}
+
+/* ember haze across the top */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 420px;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(224, 112, 31, 0.13) 0%,
+        rgba(126, 43, 32, 0.07) 38%,
+        transparent 100%);
+}
+
+.app-shell,
+.client-app {
+    position: relative;
+    z-index: 1;
+}
+
+/* ------------------------------------------------------------ typography -- */
+
+h1, h2, h3,
+.dialog-heading,
+.section-heading,
+#page-title,
+.brand strong,
+.client-brand {
+    font-family: "Trajan Pro", "Cinzel", Georgia, "Times New Roman", serif;
+    letter-spacing: 0.045em;
+    color: var(--toc-gold-bright);
+    text-shadow: 0 1px 0 #000, 0 0 16px rgba(224, 112, 31, 0.22);
+}
+
+#page-title {
+    font-size: 1.42rem;
+    text-transform: uppercase;
+}
+
+.eyebrow {
+    color: var(--toc-gold-dim);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- chrome -- */
+
+.sidebar,
+.client-bar,
+.topbar {
+    background:
+        linear-gradient(180deg, var(--toc-panel-hi) 0%, var(--toc-stone) 100%);
+    border-color: var(--toc-bronze);
+    box-shadow: var(--toc-frame-shadow);
+}
+
+/* the gold rule that separates chrome from content */
+.topbar,
+.client-bar {
+    border-bottom: 1px solid var(--toc-bronze);
+    position: relative;
+}
+.topbar::after,
+.client-bar::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--toc-gold) 18%,
+        var(--toc-gold-bright) 50%,
+        var(--toc-gold) 82%,
+        transparent 100%);
+    opacity: 0.75;
+}
+
+.sidebar {
+    border-right: 1px solid var(--toc-bronze);
+}
+
+/* --------------------------------------------------------------- panels -- */
+
+[class$="-panel"],
+.dialog,
+.detail-dialog,
+.empty-state,
+.form-panel,
+.activity-feed {
+    background:
+        linear-gradient(180deg, var(--toc-panel-hi) 0%, var(--toc-panel) 62%, #15100a 100%);
+    border: 1px solid var(--toc-bronze);
+    border-radius: var(--radius);
+    box-shadow: var(--toc-frame-shadow);
+    position: relative;
+}
+
+/* corner flourishes: four small gold brackets, drawn with gradients only */
+[class$="-panel"]::before,
+.dialog::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    pointer-events: none;
+    border-radius: 2px;
+    background:
+        linear-gradient(var(--toc-gold), var(--toc-gold)) left top / 14px 1px no-repeat,
+        linear-gradient(var(--toc-gold), var(--toc-gold)) left top / 1px 14px no-repeat,
+        linear-gradient(var(--toc-gold), var(--toc-gold)) right top / 14px 1px no-repeat,
+        linear-gradient(var(--toc-gold), var(--toc-gold)) right top / 1px 14px no-repeat,
+        linear-gradient(var(--toc-gold), var(--toc-gold)) left bottom / 14px 1px no-repeat,
+        linear-gradient(var(--toc-gold), var(--toc-gold)) left bottom / 1px 14px no-repeat,
+        linear-gradient(var(--toc-gold), var(--toc-gold)) right bottom / 14px 1px no-repeat,
+        linear-gradient(var(--toc-gold), var(--toc-gold)) right bottom / 1px 14px no-repeat;
+    opacity: 0.40;
+}
+
+/* --------------------------------------------------------------- buttons -- */
+
+.button {
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 0.06em;
+    border-radius: 2px;
+    border: 1px solid var(--toc-bronze);
+    background: linear-gradient(180deg, #33250f 0%, #1d1509 100%);
+    color: var(--toc-parchment);
+    box-shadow:
+        inset 0 1px 0 rgba(244, 224, 166, 0.16),
+        0 2px 6px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.button:hover:not(:disabled) {
+    border-color: var(--toc-gold);
+    color: var(--toc-gold-bright);
+    box-shadow:
+        inset 0 1px 0 rgba(244, 224, 166, 0.28),
+        0 0 16px rgba(224, 112, 31, 0.42);
+}
+
+.button-primary {
+    background: linear-gradient(180deg, #8a5a17 0%, #5c3a0d 100%);
+    border-color: var(--toc-gold-dim);
+    color: #fff4d8;
+}
+.button-primary:hover:not(:disabled) {
+    background: linear-gradient(180deg, #a86c1c 0%, #6d4410 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 233, 180, 0.34),
+        0 0 20px rgba(255, 171, 74, 0.5);
+}
+
+.button-danger {
+    background: linear-gradient(180deg, #7a2c20 0%, #4a1912 100%);
+    border-color: #9b4534;
+}
+
+.button:disabled { opacity: 0.42; }
+
+/* ----------------------------------------------------------------- brand -- */
+
+.brand-mark {
+    background:
+        radial-gradient(circle at 34% 28%, var(--toc-gold-bright) 0%, var(--toc-gold) 40%, var(--toc-bronze) 100%);
+    color: #241806;
+    border: 1px solid var(--toc-gold);
+    border-radius: 3px;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 245, 214, 0.6),
+        0 0 14px rgba(224, 112, 31, 0.4);
+}
+
+/* ------------------------------------------------------------ navigation -- */
+
+.primary-nav a,
+.primary-nav button {
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    color: var(--muted);
+    transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+.primary-nav a:hover,
+.primary-nav button:hover {
+    background: linear-gradient(90deg, rgba(224, 112, 31, 0.16), transparent 72%);
+    color: var(--toc-gold-bright);
+}
+.primary-nav a.is-active,
+.primary-nav button.is-active,
+.primary-nav .is-active {
+    background: linear-gradient(90deg, rgba(224, 112, 31, 0.26), transparent 78%);
+    border-left-color: var(--toc-gold);
+    color: var(--toc-gold-bright);
+}
+
+/* -------------------------------------------------------------- terminal -- */
+
+.terminal,
+#terminal,
+pre {
+    background: #080503;
+    border: 1px solid var(--toc-bronze);
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+/* --------------------------------------------------------------- tables --- */
+
+table thead th {
+    background: linear-gradient(180deg, #2b1f0f, #1a1309);
+    color: var(--toc-gold);
+    border-bottom: 1px solid var(--toc-bronze);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+table tbody tr:hover { background: rgba(224, 112, 31, 0.08); }
+
+/* ---------------------------------------------------------------- status -- */
+
+.status-dot { box-shadow: 0 0 10px currentColor; }
+
+/* ------------------------------------------------------------ motion off -- */
+
+@media (prefers-reduced-motion: reduce) {
+    .button { transition: none; }
+}
+
+/* ----------------------------------------------------------- small views -- */
+
+@media (max-width: 720px) {
+    body::before { opacity: 0.10; background-position: center 6%; }
+    body::after  { height: 240px; }
+}
