@@ -1,0 +1,26 @@
+[Unit]
+Description=Encrypt and synchronize ToC player files to GitHub
+Documentation=https://github.com/jeremydbean/toc2026
+After=network-online.target
+Wants=network-online.target
+# A deliberately stopped game is not a reason to skip the backup, but a
+# half-installed tree is: the script reads the live player directory.
+ConditionPathIsDirectory=/srv/toc/current/player
+
+[Service]
+Type=oneshot
+User=toc
+Group=toc
+EnvironmentFile=/etc/toc/player-backup.env
+ExecStart=/usr/local/sbin/toc-player-backup
+TimeoutStartSec=15min
+# The archive is built in a temp dir and pushed; nothing under the live tree
+# is written, so the service needs no write access to it.
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=false
+NoNewPrivileges=true
+ReadWritePaths=/srv/toc/.ssh
+
+[Install]
+WantedBy=multi-user.target

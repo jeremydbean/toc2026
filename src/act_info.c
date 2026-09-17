@@ -2095,10 +2095,47 @@ void do_weather( CHAR_DATA *ch, char *argument )
 
 
 
+/*
+ * Whole-word match against a help entry's space-separated keyword list.
+ *
+ * is_name treats the argument as a prefix, which is what makes "help sco"
+ * find SCORE -- useful, but it also means a short command name can be
+ * swallowed by a longer, unrelated keyword that happens to start the same
+ * way. do_help uses this for a first, exact pass.
+ */
+static bool help_keyword_exact( const char *argument, const char *keywords )
+{
+    char word[MAX_INPUT_LENGTH];
+    const char *p;
+    size_t length;
+
+    if ( argument == NULL || keywords == NULL || argument[0] == '\0' )
+        return FALSE;
+
+    p = keywords;
+    while ( *p != '\0' )
+    {
+        while ( *p == ' ' )
+            p++;
+
+        length = 0;
+        while ( *p != '\0' && *p != ' ' && length + 1 < sizeof(word) )
+            word[length++] = *p++;
+        word[length] = '\0';
+
+        if ( length > 0 && !str_cmp( argument, word ) )
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+
 void do_help( CHAR_DATA *ch, char *argument )
 {
     HELP_DATA *pHelp;
     char argall[MAX_INPUT_LENGTH],argone[MAX_INPUT_LENGTH];
+    int pass;
 
     if ( argument[0] == '\0' )
 	argument = "summary";
@@ -2113,12 +2150,24 @@ void do_help( CHAR_DATA *ch, char *argument )
         toc_strlcat(argall,argone, sizeof(argall));
     }
 
+    /*
+     * Two passes, because is_name matches on prefixes: "drag" matches the
+     * DRAGON in "CASINO LUCKY DRAGON GAMBLING", and that entry is earlier in
+     * the file than DRAG, so the exact command lost to a partial match on an
+     * unrelated topic. An exact keyword wins if one exists; prefixes still
+     * work for everything else.
+     */
+    for ( pass = 0; pass < 2; pass++ )
+    {
     for ( pHelp = help_first; pHelp != NULL; pHelp = pHelp->next )
     {
 	if ( pHelp->level > get_trust( ch ) )
 	    continue;
 
-	if ( is_name( argall, pHelp->keyword ) )
+	if ( pass == 0 ? !help_keyword_exact( argall, pHelp->keyword )
+	                : !is_name( argall, pHelp->keyword ) )
+	    continue;
+
 	{
 	    if ( pHelp->level >= 0 && str_cmp( argall, "imotd" ) )
 	    {
@@ -2135,6 +2184,7 @@ void do_help( CHAR_DATA *ch, char *argument )
 		page_to_char( pHelp->text  , ch );
 	    return;
 	}
+    }
     }
 
     send_to_char( "No help on that word.\n\r", ch );

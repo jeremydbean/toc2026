@@ -1,0 +1,13 @@
+[Unit]
+Description=Push an encrypted ToC player snapshot to GitHub every six hours
+
+[Timer]
+# Matches the appliance's cadence. Persistent so a snapshot missed while the
+# host was off is taken once it comes back, rather than waiting a full cycle.
+OnBootSec=15min
+OnUnitActiveSec=6h
+RandomizedDelaySec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
