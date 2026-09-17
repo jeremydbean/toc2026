@@ -48,9 +48,14 @@ if [ "${TOC_UPDATE_FORCE:-0}" != "1" ] \
     exit 0
 fi
 
+# Files the game itself rewrites while it runs. They are tracked in git as
+# seed data, so a live server always shows them as modified -- ban lists,
+# the note board, bug and idea reports, PK standings, max-load state. They
+# are not a reason to refuse an update, and reverting them would throw away
+# live state.
 dirty_paths="$(run_toc git -C "$TOC_ROOT" status --porcelain --untracked-files=normal \
     | awk '{print $2}' \
-    | grep -Ev '^(player/|gods/|heroes/|backups/|corpse/|log/|area/shutdown\.txt$|area/webadmin\.queue$)' || true)"
+    | grep -Ev '^(player/|gods/|heroes/|backups/|corpse/|log/|area/(shutdown|webadmin)\.queue$|area/(shutdown|ban|bugs|ideas|typos|notes|maxload|wizlist|offense|relics|not|pkilldata)\.txt$)' || true)"
 if [ -n "$dirty_paths" ]; then
     echo "Refusing to update because non-runtime files have local changes:" >&2
     printf '%s\n' "$dirty_paths" >&2
