@@ -1844,6 +1844,12 @@ struct  reset_data
     sh_int              arg1;
     sh_int              arg2;
     sh_int              arg3;
+    /*
+     * 'M' resets only: how many copies of arg1 this area actually asks for in
+     * room arg3.  arg2 is ROM's world-wide cap on the mob vnum, which says
+     * nothing about any single room; see fix_reset_room_limits.
+     */
+    sh_int              room_max;
 };
 
 /* Area definition. */

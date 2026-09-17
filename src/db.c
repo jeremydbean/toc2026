@@ -306,6 +306,7 @@ void    load_specials   args( ( FILE *fp ) );
 void    load_notes      args( ( void ) );
 void	load_ban	args( ( void ) );
 void    fix_exits       args( ( void ) );
+void    fix_reset_room_limits args( ( void ) );
 void	load_wizlist	args( ( void ) );
 void	load_relics	args( ( void ) );
  
@@ -483,6 +484,7 @@ void boot_db( void )
         fill_comm_table_index();
         fill_social_table_index();
         fix_exits( );
+        fix_reset_room_limits( );
         fBootDb = false;
         area_update( );
         load_notes( );
@@ -1816,6 +1818,59 @@ void fix_exits( void )
  
  
 /*
+ * Work out, for every 'M' reset, how many copies of that mobile its area
+ * actually asks for in that room.
+ *
+ * ROM's reset limit (arg2) is a cap on the mobile vnum across the whole world,
+ * not within the room, and reset_area never clears survivors before
+ * repopulating.  An area that resets while its mobiles are still alive
+ * therefore adds another copy to the same room on every cycle, and keeps doing
+ * so until the world-wide cap is reached: a room stocked with two wolves can
+ * end up holding sixty.  Recording the per-room intent lets reset_area stop
+ * once a room already holds what the builder wrote.
+ *
+ * Every matching reset is counted rather than consecutive runs, because 85 of
+ * the duplicated (mobile, room) pairs in the shipped world are not adjacent
+ * inside their area file.
+ */
+void fix_reset_room_limits( void )
+{
+    AREA_DATA *pArea;
+    RESET_DATA *pReset;
+    RESET_DATA *pOther;
+    sh_int wanted;
+
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        for ( pReset = pArea->reset_first; pReset != NULL;
+              pReset = pReset->next )
+        {
+            if ( pReset->command != 'M' || pReset->room_max > 0 )
+                continue;
+
+            wanted = 0;
+            for ( pOther = pReset; pOther != NULL; pOther = pOther->next )
+            {
+                if ( pOther->command == 'M'
+                &&   pOther->arg1 == pReset->arg1
+                &&   pOther->arg3 == pReset->arg3 )
+                    wanted++;
+            }
+
+            /* Give every twin the same tally so they all stop together. */
+            for ( pOther = pReset; pOther != NULL; pOther = pOther->next )
+            {
+                if ( pOther->command == 'M'
+                &&   pOther->arg1 == pReset->arg1
+                &&   pOther->arg3 == pReset->arg3 )
+                    pOther->room_max = wanted;
+            }
+        }
+    }
+}
+
+
+/*
  * Repopulate areas periodically.
  */
 void area_update( void )
@@ -1900,7 +1955,33 @@ void reset_area( AREA_DATA *pArea )
                 last = false;
                 break;
             }
- 
+
+            /*
+             * The world-wide cap above says nothing about this room, and
+             * survivors are never cleared before a reset, so without this the
+             * room gains another copy every cycle until that cap is hit.
+             * Stop once the room already holds what the area asked for.
+             */
+            if ( pReset->room_max > 0 )
+            {
+                CHAR_DATA *rch;
+                int in_room;
+
+                in_room = 0;
+                for ( rch = pRoomIndex->people; rch != NULL;
+                      rch = rch->next_in_room )
+                {
+                    if ( IS_NPC( rch ) && rch->pIndexData == pMobIndex )
+                        in_room++;
+                }
+
+                if ( in_room >= pReset->room_max )
+                {
+                    last = false;
+                    break;
+                }
+            }
+
             mob = create_mobile( pMobIndex );
  
             /*
