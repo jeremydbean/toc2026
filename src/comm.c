@@ -2196,6 +2196,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s has connected.", ch->name, d->host );
         log_string( log_buf );
+        record_login( ch->name, d->host, "connect" );
         wizinfo(log_buf,LEVEL_IMMORTAL);
 
 	if ( IS_HERO(ch) )
@@ -2434,6 +2435,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
 
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s new player.", ch->name, d->host );
         log_string( log_buf );
+        record_login( ch->name, d->host, "new" );
 	write_to_buffer( d, "\n\r", 2 );
 	write_to_buffer( d, "You may be good, neutral, or evil.\n\r",0);
 	write_to_buffer( d, "Which alignment (G/N/E)? ",0);
@@ -2832,6 +2834,7 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
                 act( "$n has reconnected.", ch, NULL, NULL, TO_ROOM );
                 snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s reconnected.", ch->name, d->host );
                 log_string( log_buf );
+                record_login( ch->name, d->host, "reconnect" );
                 snprintf( buf, sizeof(buf), "%s has reconnected.", ch->name );
                 wizinfo( buf, ch->level );
                 d->connected = CON_PLAYING;
@@ -3637,6 +3640,109 @@ void write_web_admin_event(const char *channel, const char *message, int level)
     fprintf( fp, "%ld\t%s\t%d\t%s\n",
              (long)event_time, channel, level, clean );
     fclose( fp );
+}
+
+
+/*
+ * Collapse anything that would break the tab-separated record, so a crafted
+ * character name or a hostile PROXY/hostname string cannot forge extra
+ * columns or rows in the journal.
+ */
+static void login_journal_sanitize( char *dest, size_t size,
+                                    const char *source )
+{
+    size_t length;
+    unsigned char value;
+
+    length = 0;
+    if ( source == NULL || source[0] == '\0' )
+        source = "(unknown)";
+
+    while ( *source != '\0' && length + 1 < size )
+    {
+        value = (unsigned char)*source++;
+        dest[length++] = ( value == '\t' || value == '\r' || value == '\n'
+            || value < 32 || value == 127 ) ? ' ' : (char)value;
+    }
+    dest[length] = '\0';
+}
+
+
+/*
+ * Keep the journal bounded.  Logins are rare, so rewriting only once the file
+ * has grown past LOGIN_JOURNAL_MAX keeps this off the common path entirely.
+ */
+static void login_journal_trim( void )
+{
+    static char kept[LOGIN_JOURNAL_KEEP][LOGIN_JOURNAL_LINE];
+    char line[LOGIN_JOURNAL_LINE];
+    FILE *fp;
+    long total;
+    int index;
+    int count;
+
+    fp = fopen( LOGIN_JOURNAL_FILE, "r" );
+    if ( fp == NULL )
+        return;
+
+    total = 0;
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+    {
+        toc_strlcpy( kept[total % LOGIN_JOURNAL_KEEP], line,
+                     LOGIN_JOURNAL_LINE );
+        total++;
+    }
+    fclose( fp );
+
+    if ( total <= LOGIN_JOURNAL_MAX )
+        return;
+
+    fp = fopen( LOGIN_JOURNAL_FILE, "w" );
+    if ( fp == NULL )
+        return;
+
+    count = total < LOGIN_JOURNAL_KEEP ? (int)total : LOGIN_JOURNAL_KEEP;
+    for ( index = 0; index < count; index++ )
+    {
+        long slot = ( total - count + index ) % LOGIN_JOURNAL_KEEP;
+
+        fputs( kept[slot], fp );
+    }
+    fclose( fp );
+}
+
+
+void record_login( const char *name, const char *host, const char *event )
+{
+    /*
+     * Deliberately smaller than LOGIN_JOURNAL_LINE: a record must always fit
+     * in one fgets() during the trim, or a long host would be split into two
+     * bogus rows.
+     */
+    char safe_name[40];
+    char safe_host[80];
+    FILE *fp;
+    time_t when;
+
+    if ( name == NULL || name[0] == '\0' )
+        return;
+
+    login_journal_sanitize( safe_name, sizeof(safe_name), name );
+    login_journal_sanitize( safe_host, sizeof(safe_host), host );
+
+    /* The game runs from area/; log/ is a sibling and may not exist yet. */
+    mkdir( "../log", 0750 );
+
+    fp = fopen( LOGIN_JOURNAL_FILE, "a" );
+    if ( fp == NULL )
+        return;
+
+    when = current_time > 0 ? current_time : time(NULL);
+    fprintf( fp, "%ld\t%s\t%s\t%s\n",
+             (long)when, safe_name, safe_host, event );
+    fclose( fp );
+
+    login_journal_trim( );
 }
 
 

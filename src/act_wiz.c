@@ -5715,6 +5715,129 @@ void do_sockets( CHAR_DATA *ch, char *argument )
 }
 
 
+/*
+ * Recent logins, newest first.
+ *
+ * do_sockets above can only report a host while that descriptor is still
+ * connected, so it says nothing about who was here an hour ago.  This reads
+ * the journal comm.c appends at every login, which survives disconnects and
+ * restarts alike.
+ *
+ * Syntax: lastlog [count] [name]
+ */
+void do_lastlog( CHAR_DATA *ch, char *argument )
+{
+    static char kept[LOGIN_JOURNAL_KEEP][LOGIN_JOURNAL_LINE];
+    char buf[MAX_STRING_LENGTH];
+    char work[LOGIN_JOURNAL_LINE];
+    char line[LOGIN_JOURNAL_LINE];
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char stamp[64];
+    char *fields[4];
+    char *point;
+    FILE *fp;
+    struct tm *when_tm;
+    time_t when;
+    long total;
+    long slot;
+    size_t length;
+    int field_count;
+    int limit;
+    int shown;
+    int index;
+    int count;
+
+    argument = one_argument( argument, arg1 );
+    argument = one_argument( argument, arg2 );
+
+    limit = 20;
+    if ( arg1[0] != '\0' && is_number( arg1 ) )
+    {
+        limit = atoi( arg1 );
+        toc_strlcpy( arg1, arg2, sizeof(arg1) );
+    }
+    limit = URANGE( 1, limit, LOGIN_JOURNAL_KEEP );
+
+    if ( ( fp = fopen( LOGIN_JOURNAL_FILE, "r" ) ) == NULL )
+    {
+        send_to_char( "No login history has been recorded yet.\n\r", ch );
+        return;
+    }
+
+    total = 0;
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+    {
+        toc_strlcpy( kept[total % LOGIN_JOURNAL_KEEP], line,
+                     LOGIN_JOURNAL_LINE );
+        total++;
+    }
+    fclose( fp );
+
+    count = total < LOGIN_JOURNAL_KEEP ? (int)total : LOGIN_JOURNAL_KEEP;
+    if ( count == 0 )
+    {
+        send_to_char( "No login history has been recorded yet.\n\r", ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf),
+              "Recent logins, newest first:\n\r"
+              "%-20s %-14s %-10s %s\n\r",
+              "Date/Time", "Character", "Event", "Host" );
+
+    shown = 0;
+    for ( index = count - 1; index >= 0 && shown < limit; index-- )
+    {
+        slot = ( total - count + index ) % LOGIN_JOURNAL_KEEP;
+        toc_strlcpy( work, kept[slot], sizeof(work) );
+
+        if ( ( point = strchr( work, '\n' ) ) != NULL )
+            *point = '\0';
+
+        field_count = 0;
+        point = work;
+        while ( field_count < 4 )
+        {
+            fields[field_count++] = point;
+            if ( ( point = strchr( point, '\t' ) ) == NULL )
+                break;
+            *point++ = '\0';
+        }
+        if ( field_count < 4 )
+            continue;
+
+        if ( arg1[0] != '\0' && str_prefix( arg1, fields[1] ) )
+            continue;
+
+        when = (time_t)atol( fields[0] );
+        when_tm = localtime( &when );
+        if ( when_tm == NULL
+          || strftime( stamp, sizeof(stamp), "%a %b %d %H:%M:%S",
+                       when_tm ) == 0 )
+            toc_strlcpy( stamp, "(bad timestamp)", sizeof(stamp) );
+
+        length = strlen( buf );
+        snprintf( buf + length, sizeof(buf) - length,
+                  "%-20s %-14s %-10s %s\n\r",
+                  stamp, fields[1], fields[3], fields[2] );
+        shown++;
+    }
+
+    if ( shown == 0 )
+    {
+        send_to_char( "No logins match that name.\n\r", ch );
+        return;
+    }
+
+    length = strlen( buf );
+    snprintf( buf + length, sizeof(buf) - length,
+              "%d login%s shown of %ld recorded.\n\r",
+              shown, shown == 1 ? "" : "s", total );
+    page_to_char( buf, ch );
+    return;
+}
+
 
 /*
  * Thanks to Grodyn for pointing out bugs in this function.

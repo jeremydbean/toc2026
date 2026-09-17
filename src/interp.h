@@ -244,6 +244,7 @@ DECLARE_DO_FUN( do_ksock	);
 DECLARE_DO_FUN(	do_kill		);
 DECLARE_DO_FUN(	do_leveling	);
 DECLARE_DO_FUN(	do_levitate	);
+DECLARE_DO_FUN(	do_lastlog	);
 DECLARE_DO_FUN(	do_list		);
 DECLARE_DO_FUN( do_listclue     );
 DECLARE_DO_FUN( do_listen       );

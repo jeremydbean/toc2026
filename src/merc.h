@@ -2225,6 +2225,21 @@ void    send_info       ( char *argument );
 void    write_web_admin_event ( const char *channel, const char *message,
                                 int level );
 
+/*
+ * Recent-login journal, appended by comm.c and read back by do_lastlog.
+ * do_sockets can only report a host while its descriptor is still connected,
+ * and log_string writes to stderr (journald under systemd), which the game
+ * cannot read back, so recent logins are recorded here instead.  The file
+ * lives under log/, which .gitignore excludes, because these records contain
+ * player IP addresses.
+ */
+#define LOGIN_JOURNAL_FILE      "../log/logins.tsv"
+#define LOGIN_JOURNAL_KEEP      200
+#define LOGIN_JOURNAL_MAX       400
+#define LOGIN_JOURNAL_LINE      192
+void    record_login    ( const char *name, const char *host,
+                          const char *event );
+
 /* act_info.c */
 void    set_title       ( CHAR_DATA *ch, char *title );
 

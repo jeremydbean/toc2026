@@ -3313,6 +3313,30 @@ is LESS as the maxload value specified. Which can take a while....
 See also: MEMORY, VNUM
 ~
 
+63 LASTLOG~
+Syntax: lastlog
+        lastlog <count>
+        lastlog <count> <name>
+        lastlog <name>
+
+LASTLOG lists the most recent logins, newest first, with the date and time,
+the character, whether the session was a new character, an ordinary connect,
+or a reconnect, and the host the player came from.
+
+SOCKETS only sees a descriptor while it is still attached, so it cannot tell
+you who was here an hour ago.  LASTLOG reads a journal the server appends at
+every login, so the history survives both disconnects and server restarts.
+
+Without arguments the last 20 logins are shown.  Supply a count to widen or
+narrow that, and a name to restrict the list to one character.  The server
+keeps the most recent 200 entries.
+
+Records contain player IP addresses.  Treat the output as private operational
+data and do not paste it into public channels.
+
+See also: SOCKETS, FINGER, WHOIS
+~
+
 63 SOCKETS~
 Syntax: sockets
         sockets <name>
