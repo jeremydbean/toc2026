@@ -344,7 +344,11 @@ summary:focus-visible,
     color: #d8dedb;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     font-size: var(--terminal-font-size);
-    line-height: 1.48;
+    /* The world is drawn for a terminal, so the character cell has to keep a
+       terminal's proportions. This font advances 0.55em, so 1.48 gave a cell
+       2.7x taller than wide and stretched every piece of ASCII art vertically;
+       1.15 puts the cell near the 0.5 ratio a real terminal has. */
+    line-height: 1.15;
     overflow-wrap: anywhere;
     white-space: pre-wrap;
     scrollbar-color: #424a4e #111416;
