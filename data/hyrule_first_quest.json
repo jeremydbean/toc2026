@@ -33,7 +33,7 @@
           }
         },
         "entities": {
-          "peahat": 4
+          "peahat": 2
         },
         "landmarks": []
       },
@@ -59,7 +59,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 5
+          "blue_moblin": 2
         },
         "landmarks": [
           {
@@ -92,7 +92,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 2,
+          "blue_moblin": 1,
           "red_moblin": 1
         },
         "landmarks": []
@@ -119,7 +119,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 4
+          "blue_moblin": 2
         },
         "landmarks": []
       },
@@ -161,9 +161,8 @@
           }
         },
         "entities": {
-          "blue_leever": 2,
-          "peahat": 3,
-          "red_leever": 1
+          "blue_leever": 1,
+          "peahat": 1
         },
         "landmarks": []
       },
@@ -189,7 +188,7 @@
           }
         },
         "entities": {
-          "red_tektite": 4
+          "red_tektite": 2
         },
         "landmarks": [
           {
@@ -256,7 +255,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4
+          "red_octorok": 2
         },
         "landmarks": [
           {
@@ -285,7 +284,7 @@
           }
         },
         "entities": {
-          "blue_tektite": 5
+          "blue_tektite": 2
         },
         "landmarks": [
           {
@@ -330,7 +329,7 @@
           }
         },
         "entities": {
-          "blue_tektite": 4
+          "blue_tektite": 2
         },
         "landmarks": []
       },
@@ -356,7 +355,7 @@
           }
         },
         "entities": {
-          "red_leever": 6
+          "red_leever": 2
         },
         "landmarks": [
           {
@@ -382,7 +381,7 @@
           }
         },
         "entities": {
-          "red_leever": 6
+          "red_leever": 2
         },
         "landmarks": [
           {
@@ -410,7 +409,7 @@
           }
         },
         "entities": {
-          "blue_octorok": 4
+          "blue_octorok": 2
         },
         "landmarks": [
           {
@@ -439,7 +438,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4
+          "red_octorok": 2
         },
         "landmarks": []
       },
@@ -481,9 +480,8 @@
           }
         },
         "entities": {
-          "blue_lynel": 2,
-          "peahat": 2,
-          "red_lynel": 2
+          "blue_lynel": 1,
+          "peahat": 1
         },
         "landmarks": []
       },
@@ -514,7 +512,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 5
+          "blue_moblin": 2
         },
         "landmarks": []
       },
@@ -545,7 +543,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 5
+          "blue_moblin": 2
         },
         "landmarks": [
           {
@@ -584,8 +582,7 @@
         },
         "entities": {
           "blue_moblin": 1,
-          "blue_octorok": 2,
-          "red_moblin": 3
+          "blue_octorok": 1
         },
         "landmarks": [
           {
@@ -619,8 +616,8 @@
           }
         },
         "entities": {
-          "blue_octorok": 2,
-          "red_octorok": 3
+          "blue_octorok": 1,
+          "red_octorok": 1
         },
         "landmarks": [
           {
@@ -664,7 +661,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4,
+          "red_octorok": 1,
           "zora": 1
         },
         "landmarks": []
@@ -691,7 +688,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4
+          "red_octorok": 2
         },
         "landmarks": [
           {
@@ -724,7 +721,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4
+          "red_octorok": 2
         },
         "landmarks": [
           {
@@ -762,7 +759,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4
+          "red_octorok": 2
         },
         "landmarks": [
           {
@@ -796,7 +793,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4,
+          "red_octorok": 1,
           "zora": 1
         },
         "landmarks": []
@@ -823,7 +820,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4,
+          "red_octorok": 1,
           "zora": 1
         },
         "landmarks": [
@@ -864,8 +861,7 @@
         },
         "entities": {
           "blue_moblin": 1,
-          "blue_octorok": 2,
-          "red_moblin": 3
+          "blue_octorok": 1
         },
         "landmarks": [
           {
@@ -898,7 +894,7 @@
           }
         },
         "entities": {
-          "red_moblin": 4
+          "red_moblin": 2
         },
         "landmarks": []
       },
@@ -924,7 +920,7 @@
           }
         },
         "entities": {
-          "red_moblin": 4
+          "red_moblin": 2
         },
         "landmarks": [
           {
@@ -952,8 +948,7 @@
         },
         "entities": {
           "blue_moblin": 1,
-          "blue_octorok": 2,
-          "red_moblin": 3
+          "blue_octorok": 1
         },
         "landmarks": []
       },
@@ -980,8 +975,7 @@
         },
         "entities": {
           "blue_octorok": 1,
-          "red_octorok": 4,
-          "zora": 1
+          "red_octorok": 1
         },
         "landmarks": [
           {
@@ -1009,7 +1003,7 @@
           }
         },
         "entities": {
-          "red_lynel": 5
+          "red_lynel": 2
         },
         "landmarks": []
       },
@@ -1030,7 +1024,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 4
+          "blue_moblin": 2
         },
         "landmarks": [
           {
@@ -1068,8 +1062,8 @@
           }
         },
         "entities": {
-          "blue_moblin": 2,
-          "red_moblin": 2
+          "blue_moblin": 1,
+          "red_moblin": 1
         },
         "landmarks": []
       },
@@ -1100,8 +1094,8 @@
           }
         },
         "entities": {
-          "blue_moblin": 3,
-          "red_moblin": 2
+          "blue_moblin": 1,
+          "red_moblin": 1
         },
         "landmarks": []
       },
@@ -1132,7 +1126,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4,
+          "red_octorok": 1,
           "zora": 1
         },
         "landmarks": []
@@ -1191,7 +1185,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4,
+          "red_octorok": 1,
           "zora": 1
         },
         "landmarks": [
@@ -1220,7 +1214,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4
+          "red_octorok": 2
         },
         "landmarks": []
       },
@@ -1251,7 +1245,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4
+          "red_octorok": 2
         },
         "landmarks": []
       },
@@ -1282,7 +1276,7 @@
           }
         },
         "entities": {
-          "peahat": 4
+          "peahat": 2
         },
         "landmarks": []
       },
@@ -1308,7 +1302,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4
+          "red_octorok": 2
         },
         "landmarks": []
       },
@@ -1340,7 +1334,7 @@
         },
         "entities": {
           "blue_moblin": 1,
-          "red_moblin": 2
+          "red_moblin": 1
         },
         "landmarks": [
           {
@@ -1373,7 +1367,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 3
+          "blue_moblin": 2
         },
         "landmarks": []
       },
@@ -1404,7 +1398,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 3
+          "blue_moblin": 2
         },
         "landmarks": []
       },
@@ -1420,7 +1414,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 5
+          "blue_moblin": 2
         },
         "landmarks": [
           {
@@ -1448,10 +1442,8 @@
           }
         },
         "entities": {
-          "blue_octorok": 2,
-          "heart_container": 1,
-          "red_octorok": 3,
-          "zora": 1
+          "blue_octorok": 1,
+          "heart_container": 1
         },
         "landmarks": [
           {
@@ -1566,7 +1558,7 @@
           }
         },
         "entities": {
-          "red_octorok": 4,
+          "red_octorok": 1,
           "zora": 1
         },
         "landmarks": [
@@ -1677,7 +1669,7 @@
           }
         },
         "entities": {
-          "red_leever": 4,
+          "red_leever": 1,
           "zora": 1
         },
         "landmarks": [
@@ -1712,7 +1704,7 @@
         },
         "entities": {
           "blue_octorok": 1,
-          "red_octorok": 4
+          "red_octorok": 1
         },
         "landmarks": [
           {
@@ -1762,7 +1754,7 @@
           }
         },
         "entities": {
-          "blue_tektite": 6
+          "blue_tektite": 2
         },
         "landmarks": [
           {
@@ -1795,7 +1787,7 @@
           }
         },
         "entities": {
-          "red_moblin": 6
+          "red_moblin": 2
         },
         "landmarks": [
           {
@@ -1824,8 +1816,8 @@
           }
         },
         "entities": {
-          "blue_octorok": 2,
-          "red_octorok": 3
+          "blue_octorok": 1,
+          "red_octorok": 1
         },
         "landmarks": []
       },
@@ -1856,7 +1848,7 @@
           }
         },
         "entities": {
-          "blue_moblin": 4
+          "blue_moblin": 2
         },
         "landmarks": [
           {
@@ -1881,7 +1873,7 @@
         },
         "entities": {
           "armos": 1,
-          "blue_moblin": 3
+          "blue_moblin": 1
         },
         "landmarks": [
           {
@@ -1909,9 +1901,8 @@
           }
         },
         "entities": {
-          "blue_octorok": 2,
-          "red_octorok": 3,
-          "zora": 1
+          "blue_octorok": 1,
+          "red_octorok": 1
         },
         "landmarks": []
       },
@@ -1994,9 +1985,8 @@
           }
         },
         "entities": {
-          "blue_lynel": 2,
-          "peahat": 2,
-          "red_lynel": 2
+          "blue_lynel": 1,
+          "peahat": 1
         },
         "landmarks": []
       },
@@ -2040,7 +2030,7 @@
         },
         "entities": {
           "armos": 1,
-          "blue_leever": 4
+          "blue_leever": 1
         },
         "landmarks": [
           {
@@ -2134,8 +2124,7 @@
         },
         "entities": {
           "blue_octorok": 1,
-          "red_octorok": 5,
-          "zora": 1
+          "red_octorok": 1
         },
         "landmarks": []
       },
@@ -2181,9 +2170,8 @@
           }
         },
         "entities": {
-          "blue_leever": 2,
-          "peahat": 3,
-          "red_leever": 1
+          "blue_leever": 1,
+          "peahat": 1
         },
         "landmarks": []
       },
@@ -2209,7 +2197,7 @@
           }
         },
         "entities": {
-          "blue_leever": 4
+          "blue_leever": 2
         },
         "landmarks": []
       },
@@ -2252,7 +2240,7 @@
         },
         "entities": {
           "armos": 1,
-          "blue_moblin": 4
+          "blue_moblin": 1
         },
         "landmarks": [
           {
@@ -2280,9 +2268,8 @@
           }
         },
         "entities": {
-          "blue_octorok": 2,
-          "red_octorok": 3,
-          "zora": 1
+          "blue_octorok": 1,
+          "red_octorok": 1
         },
         "landmarks": []
       },
@@ -2399,7 +2386,7 @@
           }
         },
         "entities": {
-          "red_lynel": 3
+          "red_lynel": 2
         },
         "landmarks": [
           {
@@ -2482,7 +2469,7 @@
           }
         },
         "entities": {
-          "peahat": 4
+          "peahat": 2
         },
         "landmarks": [
           {
@@ -2510,7 +2497,7 @@
           }
         },
         "entities": {
-          "peahat": 6
+          "peahat": 2
         },
         "landmarks": [
           {
@@ -2544,7 +2531,7 @@
           }
         },
         "entities": {
-          "peahat": 6
+          "peahat": 2
         },
         "landmarks": [
           {
@@ -2578,7 +2565,7 @@
           }
         },
         "entities": {
-          "peahat": 6
+          "peahat": 2
         },
         "landmarks": [
           {
@@ -2632,7 +2619,7 @@
           }
         },
         "entities": {
-          "blue_leever": 4
+          "blue_leever": 2
         },
         "landmarks": []
       },
@@ -2663,9 +2650,8 @@
           }
         },
         "entities": {
-          "blue_leever": 2,
-          "peahat": 3,
-          "red_leever": 1
+          "blue_leever": 1,
+          "peahat": 1
         },
         "landmarks": []
       },
@@ -2691,7 +2677,7 @@
           }
         },
         "entities": {
-          "red_tektite": 4
+          "red_tektite": 2
         },
         "landmarks": [
           {
@@ -2727,9 +2713,8 @@
           }
         },
         "entities": {
-          "blue_octorok": 2,
-          "red_octorok": 3,
-          "zora": 1
+          "blue_octorok": 1,
+          "red_octorok": 1
         },
         "landmarks": [
           {
@@ -2757,7 +2742,7 @@
           }
         },
         "entities": {
-          "blue_octorok": 4,
+          "blue_octorok": 1,
           "zora": 1
         },
         "landmarks": []
@@ -2798,7 +2783,7 @@
           }
         },
         "entities": {
-          "blue_lynel": 4
+          "blue_lynel": 2
         },
         "landmarks": [
           {
@@ -2826,9 +2811,8 @@
           }
         },
         "entities": {
-          "blue_lynel": 2,
-          "peahat": 2,
-          "red_lynel": 2
+          "blue_lynel": 1,
+          "peahat": 1
         },
         "landmarks": []
       },
@@ -2849,7 +2833,7 @@
           }
         },
         "entities": {
-          "blue_lynel": 6
+          "blue_lynel": 2
         },
         "landmarks": [
           {
@@ -2883,8 +2867,8 @@
           }
         },
         "entities": {
-          "blue_lynel": 2,
-          "red_lynel": 2
+          "blue_lynel": 1,
+          "red_lynel": 1
         },
         "landmarks": [
           {
@@ -2917,7 +2901,7 @@
           }
         },
         "entities": {
-          "red_lynel": 4
+          "red_lynel": 2
         },
         "landmarks": [
           {
@@ -2951,9 +2935,8 @@
           }
         },
         "entities": {
-          "blue_lynel": 2,
-          "peahat": 2,
-          "red_lynel": 2
+          "blue_lynel": 1,
+          "peahat": 1
         },
         "landmarks": []
       },
@@ -2974,7 +2957,7 @@
           }
         },
         "entities": {
-          "falling_rock": 3
+          "falling_rock": 2
         },
         "landmarks": [
           {
@@ -3033,7 +3016,7 @@
           }
         },
         "entities": {
-          "falling_rock": 3
+          "falling_rock": 2
         },
         "landmarks": []
       },
@@ -3054,7 +3037,7 @@
           }
         },
         "entities": {
-          "falling_rock": 3
+          "falling_rock": 2
         },
         "landmarks": []
       },
@@ -3080,7 +3063,7 @@
           }
         },
         "entities": {
-          "red_tektite": 6
+          "red_tektite": 2
         },
         "landmarks": []
       },
@@ -3171,7 +3154,7 @@
           }
         },
         "entities": {
-          "peahat": 6
+          "peahat": 2
         },
         "landmarks": [
           {
@@ -3221,7 +3204,7 @@
           }
         },
         "entities": {
-          "red_tektite": 6
+          "red_tektite": 2
         },
         "landmarks": [
           {
@@ -3250,7 +3233,7 @@
           }
         },
         "entities": {
-          "peahat": 5
+          "peahat": 2
         },
         "landmarks": [
           {
@@ -3301,7 +3284,7 @@
           }
         },
         "entities": {
-          "red_lynel": 3
+          "red_lynel": 2
         },
         "landmarks": [
           {
@@ -3335,7 +3318,7 @@
           }
         },
         "entities": {
-          "red_lynel": 4
+          "red_lynel": 2
         },
         "landmarks": []
       },
@@ -3356,7 +3339,7 @@
           }
         },
         "entities": {
-          "falling_rock": 3
+          "falling_rock": 2
         },
         "landmarks": [
           {
@@ -3380,7 +3363,7 @@
           }
         },
         "entities": {
-          "blue_lynel": 6
+          "blue_lynel": 2
         },
         "landmarks": [
           {
@@ -3409,9 +3392,7 @@
         },
         "entities": {
           "blue_leever": 1,
-          "blue_lynel": 2,
-          "red_leever": 1,
-          "red_lynel": 2
+          "blue_lynel": 1
         },
         "landmarks": [
           {
@@ -3438,9 +3419,8 @@
           }
         },
         "entities": {
-          "blue_lynel": 2,
-          "peahat": 2,
-          "red_lynel": 2
+          "blue_lynel": 1,
+          "peahat": 1
         },
         "landmarks": []
       },
@@ -3495,7 +3475,7 @@
           }
         },
         "entities": {
-          "falling_rock": 3
+          "falling_rock": 2
         },
         "landmarks": []
       },
@@ -3574,7 +3554,7 @@
           }
         },
         "entities": {
-          "red_tektite": 6
+          "red_tektite": 2
         },
         "landmarks": [
           {
@@ -3602,7 +3582,7 @@
           }
         },
         "entities": {
-          "red_tektite": 6
+          "red_tektite": 2
         },
         "landmarks": [
           {
@@ -3690,7 +3670,7 @@
             }
           },
           "entities": {
-            "keese": 3
+            "keese": 2
           },
           "items": [
             30227
@@ -3734,7 +3714,7 @@
             }
           },
           "entities": {
-            "stalfos": 4
+            "stalfos": 2
           },
           "items": [],
           "role": "room"
@@ -3756,7 +3736,7 @@
             }
           },
           "entities": {
-            "stalfos": 3
+            "stalfos": 2
           },
           "items": [],
           "role": "room"
@@ -3778,7 +3758,7 @@
             }
           },
           "entities": {
-            "keese": 6
+            "keese": 2
           },
           "items": [],
           "role": "room"
@@ -3810,7 +3790,7 @@
             }
           },
           "entities": {
-            "stalfos": 5
+            "stalfos": 2
           },
           "items": [
             30227
@@ -3880,7 +3860,7 @@
             }
           },
           "entities": {
-            "gel": 3
+            "gel": 2
           },
           "items": [],
           "role": "room"
@@ -3941,7 +3921,7 @@
             }
           },
           "entities": {
-            "red_goriya": 3
+            "red_goriya": 2
           },
           "items": [
             30232
@@ -3965,7 +3945,7 @@
             }
           },
           "entities": {
-            "wallmaster": 8
+            "wallmaster": 2
           },
           "items": [
             30227
@@ -4045,7 +4025,7 @@
             }
           },
           "entities": {
-            "blade_trap": 4
+            "blade_trap": 2
           },
           "items": [],
           "role": "room"
@@ -4142,7 +4122,7 @@
             }
           },
           "entities": {
-            "rope": 5
+            "rope": 2
           },
           "items": [
             30227
@@ -4161,7 +4141,7 @@
             }
           },
           "entities": {
-            "rope": 6
+            "rope": 2
           },
           "items": [
             30227
@@ -4190,7 +4170,7 @@
             }
           },
           "entities": {
-            "rope": 5
+            "rope": 2
           },
           "items": [],
           "role": "room"
@@ -4222,7 +4202,7 @@
             }
           },
           "entities": {
-            "rope": 3
+            "rope": 2
           },
           "items": [],
           "role": "room"
@@ -4273,7 +4253,7 @@
             }
           },
           "entities": {
-            "red_goriya": 5
+            "red_goriya": 2
           },
           "items": [],
           "role": "room"
@@ -4329,7 +4309,7 @@
             }
           },
           "entities": {
-            "rope": 5
+            "rope": 2
           },
           "items": [
             30227
@@ -4412,8 +4392,8 @@
             }
           },
           "entities": {
-            "blade_trap": 4,
-            "keese": 2
+            "blade_trap": 1,
+            "keese": 1
           },
           "items": [],
           "role": "room"
@@ -4440,7 +4420,7 @@
             }
           },
           "entities": {
-            "rope": 8
+            "rope": 2
           },
           "items": [],
           "role": "room"
@@ -4467,7 +4447,7 @@
             }
           },
           "entities": {
-            "gel": 5
+            "gel": 2
           },
           "items": [],
           "role": "room"
@@ -4494,7 +4474,7 @@
             }
           },
           "entities": {
-            "red_goriya": 5
+            "red_goriya": 2
           },
           "items": [],
           "role": "room"
@@ -4602,7 +4582,7 @@
             }
           },
           "entities": {
-            "zol": 6
+            "zol": 2
           },
           "items": [
             30227
@@ -4636,7 +4616,7 @@
             }
           },
           "entities": {
-            "red_darknut": 3,
+            "red_darknut": 1,
             "zol": 1
           },
           "items": [],
@@ -4659,7 +4639,7 @@
             }
           },
           "entities": {
-            "zol": 5
+            "zol": 2
           },
           "items": [
             30227
@@ -4688,7 +4668,7 @@
             }
           },
           "entities": {
-            "red_darknut": 5
+            "red_darknut": 2
           },
           "items": [],
           "role": "room"
@@ -4799,9 +4779,8 @@
             }
           },
           "entities": {
-            "bubble": 3,
-            "keese": 3,
-            "zol": 2
+            "bubble": 1,
+            "keese": 1
           },
           "items": [],
           "role": "room"
@@ -4823,9 +4802,8 @@
             }
           },
           "entities": {
-            "bubble": 3,
-            "keese": 3,
-            "zol": 2
+            "bubble": 1,
+            "keese": 1
           },
           "items": [
             30227
@@ -4854,7 +4832,7 @@
             }
           },
           "entities": {
-            "keese": 5
+            "keese": 2
           },
           "items": [],
           "role": "room"
@@ -4886,7 +4864,7 @@
             }
           },
           "entities": {
-            "zol": 3
+            "zol": 2
           },
           "items": [
             30227
@@ -4966,7 +4944,7 @@
             }
           },
           "entities": {
-            "blade_trap": 4
+            "blade_trap": 2
           },
           "items": [],
           "role": "room"
@@ -5000,7 +4978,7 @@
             }
           },
           "entities": {
-            "keese": 8
+            "keese": 2
           },
           "items": [
             30227
@@ -5074,7 +5052,7 @@
             }
           },
           "entities": {
-            "keese": 8
+            "keese": 2
           },
           "items": [
             30227
@@ -5123,7 +5101,7 @@
             }
           },
           "entities": {
-            "blue_darknut": 2,
+            "blue_darknut": 1,
             "vire": 1
           },
           "items": [],
@@ -5165,7 +5143,7 @@
             }
           },
           "entities": {
-            "vire": 5
+            "vire": 2
           },
           "items": [],
           "role": "room"
@@ -5187,7 +5165,7 @@
             }
           },
           "entities": {
-            "keese": 8
+            "keese": 2
           },
           "items": [
             30227
@@ -5233,8 +5211,8 @@
             }
           },
           "entities": {
-            "bubble": 2,
-            "vire": 3
+            "bubble": 1,
+            "vire": 1
           },
           "items": [],
           "role": "room"
@@ -5256,7 +5234,7 @@
             }
           },
           "entities": {
-            "vire": 5
+            "vire": 2
           },
           "items": [],
           "role": "room"
@@ -5274,7 +5252,7 @@
           },
           "entities": {
             "bubble": 1,
-            "like_like": 2
+            "like_like": 1
           },
           "items": [],
           "role": "room"
@@ -5301,7 +5279,7 @@
             }
           },
           "entities": {
-            "vire": 5
+            "vire": 2
           },
           "items": [],
           "role": "room"
@@ -5412,8 +5390,8 @@
             }
           },
           "entities": {
-            "blue_darknut": 3,
-            "vire": 2
+            "blue_darknut": 1,
+            "vire": 1
           },
           "items": [],
           "role": "room"
@@ -5474,7 +5452,7 @@
             }
           },
           "entities": {
-            "keese": 8
+            "keese": 2
           },
           "items": [
             30227
@@ -5498,7 +5476,7 @@
             }
           },
           "entities": {
-            "blade_trap": 6
+            "blade_trap": 2
           },
           "items": [],
           "role": "room"
@@ -5590,7 +5568,7 @@
             }
           },
           "entities": {
-            "pols_voice": 5
+            "pols_voice": 2
           },
           "items": [
             30227
@@ -5636,7 +5614,7 @@
             }
           },
           "entities": {
-            "gibdo": 4
+            "gibdo": 2
           },
           "items": [],
           "role": "room"
@@ -5712,7 +5690,7 @@
             }
           },
           "entities": {
-            "zol": 4
+            "zol": 2
           },
           "items": [
             30227
@@ -5768,7 +5746,7 @@
             }
           },
           "entities": {
-            "zol": 5
+            "zol": 2
           },
           "items": [],
           "role": "room"
@@ -5817,7 +5795,7 @@
             }
           },
           "entities": {
-            "gibdo": 5
+            "gibdo": 2
           },
           "items": [
             30227
@@ -5836,7 +5814,7 @@
             }
           },
           "entities": {
-            "gibdo": 6
+            "gibdo": 2
           },
           "items": [],
           "role": "room"
@@ -5914,7 +5892,7 @@
             }
           },
           "entities": {
-            "pols_voice": 5
+            "pols_voice": 2
           },
           "items": [],
           "role": "room"
@@ -5936,7 +5914,7 @@
             }
           },
           "entities": {
-            "gibdo": 4
+            "gibdo": 2
           },
           "items": [],
           "role": "room"
@@ -5958,9 +5936,8 @@
             }
           },
           "entities": {
-            "gibdo": 2,
-            "keese": 2,
-            "pols_voice": 2
+            "gibdo": 1,
+            "keese": 1
           },
           "items": [
             30227
@@ -6018,7 +5995,7 @@
             }
           },
           "entities": {
-            "keese": 6
+            "keese": 2
           },
           "items": [
             30227
@@ -6136,7 +6113,7 @@
             }
           },
           "entities": {
-            "red_wizzrobe": 5
+            "red_wizzrobe": 2
           },
           "items": [],
           "role": "room"
@@ -6178,7 +6155,7 @@
             }
           },
           "entities": {
-            "red_wizzrobe": 5
+            "red_wizzrobe": 2
           },
           "items": [
             30227
@@ -6243,7 +6220,7 @@
             }
           },
           "entities": {
-            "keese": 8
+            "keese": 2
           },
           "items": [
             30227
@@ -6267,7 +6244,7 @@
             }
           },
           "entities": {
-            "blade_trap": 6
+            "blade_trap": 2
           },
           "items": [],
           "role": "room"
@@ -6289,9 +6266,8 @@
             }
           },
           "entities": {
-            "blue_wizzrobe": 2,
-            "bubble": 1,
-            "like_like": 3
+            "blue_wizzrobe": 1,
+            "bubble": 1
           },
           "items": [],
           "role": "room"
@@ -6313,7 +6289,7 @@
             }
           },
           "entities": {
-            "vire": 5
+            "vire": 2
           },
           "items": [],
           "role": "room"
@@ -6330,10 +6306,8 @@
             }
           },
           "entities": {
-            "blue_wizzrobe": 2,
-            "bubble": 1,
-            "like_like": 3,
-            "red_wizzrobe": 2
+            "blue_wizzrobe": 1,
+            "bubble": 1
           },
           "items": [],
           "role": "room"
@@ -6351,7 +6325,7 @@
           },
           "entities": {
             "blue_wizzrobe": 1,
-            "red_wizzrobe": 2
+            "red_wizzrobe": 1
           },
           "items": [],
           "role": "room"
@@ -6378,7 +6352,7 @@
             }
           },
           "entities": {
-            "blue_wizzrobe": 3,
+            "blue_wizzrobe": 1,
             "red_wizzrobe": 1
           },
           "items": [],
@@ -6406,7 +6380,7 @@
             }
           },
           "entities": {
-            "blue_wizzrobe": 3,
+            "blue_wizzrobe": 1,
             "red_wizzrobe": 1
           },
           "items": [
@@ -6436,9 +6410,8 @@
             }
           },
           "entities": {
-            "blade_trap": 4,
-            "blue_wizzrobe": 2,
-            "red_wizzrobe": 2
+            "blade_trap": 1,
+            "blue_wizzrobe": 1
           },
           "items": [],
           "role": "room"
@@ -6460,8 +6433,8 @@
             }
           },
           "entities": {
-            "bubble": 2,
-            "vire": 3
+            "bubble": 1,
+            "vire": 1
           },
           "items": [
             30227
@@ -6546,7 +6519,7 @@
             }
           },
           "entities": {
-            "red_wizzrobe": 4
+            "red_wizzrobe": 2
           },
           "items": [
             30227
@@ -6570,10 +6543,8 @@
             }
           },
           "entities": {
-            "blue_wizzrobe": 2,
-            "bubble": 1,
-            "like_like": 3,
-            "red_wizzrobe": 2
+            "blue_wizzrobe": 1,
+            "bubble": 1
           },
           "items": [],
           "role": "room"
@@ -6612,8 +6583,8 @@
             }
           },
           "entities": {
-            "bubble": 2,
-            "like_like": 2
+            "bubble": 1,
+            "like_like": 1
           },
           "items": [],
           "role": "room"
@@ -6635,7 +6606,7 @@
             }
           },
           "entities": {
-            "blue_wizzrobe": 3,
+            "blue_wizzrobe": 1,
             "red_wizzrobe": 1
           },
           "items": [],
@@ -6663,9 +6634,8 @@
             }
           },
           "entities": {
-            "bubble": 2,
-            "like_like": 2,
-            "zol": 1
+            "bubble": 1,
+            "like_like": 1
           },
           "items": [],
           "role": "room"
@@ -6761,7 +6731,7 @@
             }
           },
           "entities": {
-            "rope": 5
+            "rope": 2
           },
           "items": [
             30227
@@ -6830,8 +6800,8 @@
             }
           },
           "entities": {
-            "blade_trap": 4,
-            "keese": 4
+            "blade_trap": 1,
+            "keese": 1
           },
           "items": [],
           "role": "room"
@@ -6863,7 +6833,7 @@
             }
           },
           "entities": {
-            "blue_goriya": 5
+            "blue_goriya": 2
           },
           "items": [],
           "role": "room"
@@ -6895,7 +6865,7 @@
             }
           },
           "entities": {
-            "keese": 8
+            "keese": 2
           },
           "items": [],
           "role": "room"
@@ -6922,7 +6892,7 @@
             }
           },
           "entities": {
-            "blue_goriya": 6
+            "blue_goriya": 2
           },
           "items": [],
           "role": "room"
@@ -6961,7 +6931,7 @@
             }
           },
           "entities": {
-            "stalfos": 7
+            "stalfos": 2
           },
           "items": [],
           "role": "room"
@@ -7020,8 +6990,8 @@
             }
           },
           "entities": {
-            "blue_goriya": 3,
-            "red_goriya": 3
+            "blue_goriya": 1,
+            "red_goriya": 1
           },
           "items": [],
           "role": "room"
@@ -7101,9 +7071,8 @@
             }
           },
           "entities": {
-            "blue_goriya": 3,
-            "bubble": 2,
-            "keese": 3
+            "blue_goriya": 1,
+            "bubble": 1
           },
           "items": [],
           "role": "room"
@@ -7125,8 +7094,8 @@
             }
           },
           "entities": {
-            "blue_goriya": 3,
-            "red_goriya": 3
+            "blue_goriya": 1,
+            "red_goriya": 1
           },
           "items": [],
           "role": "room"
@@ -7207,8 +7176,8 @@
             }
           },
           "entities": {
-            "blue_goriya": 3,
-            "red_goriya": 3
+            "blue_goriya": 1,
+            "red_goriya": 1
           },
           "items": [],
           "role": "room"
@@ -7305,7 +7274,7 @@
             }
           },
           "entities": {
-            "blue_goriya": 5
+            "blue_goriya": 2
           },
           "items": [],
           "role": "room"
@@ -7327,8 +7296,8 @@
             }
           },
           "entities": {
-            "blue_goriya": 3,
-            "red_goriya": 3
+            "blue_goriya": 1,
+            "red_goriya": 1
           },
           "items": [],
           "role": "room"
@@ -7355,7 +7324,7 @@
             }
           },
           "entities": {
-            "blue_goriya": 6
+            "blue_goriya": 2
           },
           "items": [],
           "role": "room"
@@ -7424,8 +7393,8 @@
             }
           },
           "entities": {
-            "blue_goriya": 3,
-            "red_goriya": 3
+            "blue_goriya": 1,
+            "red_goriya": 1
           },
           "items": [],
           "role": "room"
@@ -7442,7 +7411,7 @@
             }
           },
           "entities": {
-            "blue_goriya": 5
+            "blue_goriya": 2
           },
           "items": [
             30227
@@ -7498,8 +7467,8 @@
             }
           },
           "entities": {
-            "bubble": 3,
-            "wallmaster": 5
+            "bubble": 1,
+            "wallmaster": 1
           },
           "items": [],
           "role": "room"
@@ -7557,7 +7526,7 @@
           },
           "entities": {
             "bubble": 1,
-            "gibdo": 2
+            "gibdo": 1
           },
           "items": [],
           "role": "room"
@@ -7686,8 +7655,8 @@
             }
           },
           "entities": {
-            "keese": 2,
-            "pols_voice": 2
+            "keese": 1,
+            "pols_voice": 1
           },
           "items": [
             30227
@@ -7721,7 +7690,7 @@
             }
           },
           "entities": {
-            "zol": 3
+            "zol": 2
           },
           "items": [
             30227
@@ -7788,7 +7757,7 @@
             }
           },
           "entities": {
-            "pols_voice": 5
+            "pols_voice": 2
           },
           "items": [
             30227
@@ -7842,7 +7811,7 @@
             }
           },
           "entities": {
-            "bubble": 2,
+            "bubble": 1,
             "zol": 1
           },
           "items": [],
@@ -7951,7 +7920,7 @@
             }
           },
           "entities": {
-            "gibdo": 2,
+            "gibdo": 1,
             "red_darknut": 1
           },
           "items": [],
@@ -8038,7 +8007,7 @@
             }
           },
           "entities": {
-            "pols_voice": 5
+            "pols_voice": 2
           },
           "items": [],
           "role": "room"
@@ -8085,7 +8054,7 @@
             }
           },
           "entities": {
-            "pols_voice": 2,
+            "pols_voice": 1,
             "zol": 1
           },
           "items": [],
