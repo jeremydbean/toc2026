@@ -2911,6 +2911,22 @@ glass~
 10 G AO
 10 19 20 44 0
 0 1 150 P
+#3093
+endless water jug bottomless~
+an endless water jug~
+An endless water jug sits here, always full.~
+clay~
+17 G A
+100 100 0 0 1
+1 5 0 P
+#3094
+endless snack pack rations food~
+an endless snack pack~
+An endless snack pack lies here, never quite empty.~
+food~
+19 G A
+24 0 0 0 1
+1 5 0 P
 #3097
 shield small metal~
 a small metal shield~

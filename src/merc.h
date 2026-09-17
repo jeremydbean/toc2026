@@ -2239,6 +2239,17 @@ void    write_web_admin_event ( const char *channel, const char *message,
  * lives under log/, which .gitignore excludes, because these records contain
  * player IP addresses.
  */
+/*
+ * value[4] of a drink container or a food item: 1 means its supply never
+ * runs down. It lives in value[4] because that slot is unused by both
+ * types, whereas value[0] is a drink's capacity and a meal's hours of
+ * nourishment -- marking endlessness there would feed the eater -1 hours.
+ * Keeping it in the object data means a builder can make another endless
+ * item without anyone editing C.
+ */
+#define VAL_ENDLESS_SLOT        4
+#define VAL_ENDLESS             1
+
 #define LOGIN_JOURNAL_FILE      "../log/logins.tsv"
 #define LOGIN_JOURNAL_KEEP      200
 #define LOGIN_JOURNAL_MAX       400

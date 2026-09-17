@@ -1922,7 +1922,9 @@ void do_drink( CHAR_DATA *ch, char *argument )
 	    affect_join( ch, &af );
 	}
 
-	obj->value[1] -= amount;
+	/* An endless vessel refills as fast as it is drunk. */
+	if ( obj->value[VAL_ENDLESS_SLOT] != VAL_ENDLESS )
+	    obj->value[1] -= amount;
 	break;
     }
 
@@ -2043,7 +2045,10 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	break;
     }
 
-    extract_obj( obj );
+    /* An endless meal feeds without being consumed. */
+    if ( !( obj->item_type == ITEM_FOOD
+         && obj->value[VAL_ENDLESS_SLOT] == VAL_ENDLESS ) )
+	extract_obj( obj );
     if ( save_reward )
 	save_char_obj( ch );
     return;

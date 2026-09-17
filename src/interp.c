@@ -441,6 +441,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "titanic",        do_titanic,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "summonevent",    do_summonevent, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "resetpwd",       do_resetpwd,    POS_DEAD,       L5,  LOG_NEVER,  1 },
+    { "newbie",         do_newbie,      POS_DEAD,       L10, LOG_ALWAYS, 1 },
     { "snoop",          do_snoop,       POS_DEAD,       L3,  LOG_ALWAYS, 1 },
     { "stat",           do_stat,        POS_DEAD,       L7,  LOG_NORMAL, 1 },
     { "string",         do_string,      POS_DEAD,       L7,  LOG_ALWAYS, 1 },

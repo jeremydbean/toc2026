@@ -5531,6 +5531,152 @@ void do_tset( CHAR_DATA *ch, char *argument )
     return;
 }
 
+/*
+ * Build a starter kit and hand it over.
+ *
+ *   newbie          - the pack appears in your own hands
+ *   newbie <player> - the pack is handed to them, with a bit of ceremony
+ *
+ * The pack is a metallic container renamed on the spot, so the contents live
+ * here rather than in an area file: the list changes when the game changes,
+ * and a builder editing korzath1.are should not have to know about it.
+ */
+static const struct newbie_item
+{
+    int vnum;
+    int count;
+} newbie_contents[] =
+{
+    {  3715,  1 },   /* a mud school diploma       */
+    { 20301,  5 },   /* A Red Potion               */
+    {  5780,  1 },   /* a string of red berries    */
+    {  3009, 10 },   /* a big pot pie              */
+    {  3081,  2 },   /* a potion of sanctuary      */
+    {  4639,  2 },   /* a potion of extra healing  */
+    {  3605,  2 },   /* An etched signet ring      */
+    {  9224,  1 },   /* a water jug                */
+    { 15011,  1 },   /* a condom                   */
+    { 29009,  1 },   /* a prism cube               */
+    {  5003,  2 },   /* the amulet                 */
+    { 29085,  2 },   /* an ID bracelet             */
+    {   104,  2 },   /* a small necklace           */
+    {  5776,  1 },   /* a string of blueberries    */
+    { 29008,  1 },   /* a cord belt                */
+    {     0,  0 }
+};
+
+#define NEWBIE_PACK_VNUM 29032
+
+static OBJ_DATA *make_newbie_pack( CHAR_DATA *ch )
+{
+    OBJ_INDEX_DATA *index;
+    OBJ_DATA *pack;
+    OBJ_DATA *item;
+    int entry;
+    int copy;
+    int missing;
+
+    if ( ( index = get_obj_index( NEWBIE_PACK_VNUM ) ) == NULL )
+    {
+        send_to_char( "The pack object is missing from the world.\n\r", ch );
+        return NULL;
+    }
+
+    pack = create_object( index, 1 );
+    free_string( pack->name );
+    pack->name = str_dup( "newbie pack starter" );
+    free_string( pack->short_descr );
+    pack->short_descr = str_dup( "A *NEWBIE* pack!" );
+    free_string( pack->description );
+    pack->description = str_dup( "A *NEWBIE* pack! has been left here." );
+
+    missing = 0;
+    for ( entry = 0; newbie_contents[entry].vnum != 0; entry++ )
+    {
+        if ( ( index = get_obj_index( newbie_contents[entry].vnum ) ) == NULL )
+        {
+            missing++;
+            continue;
+        }
+
+        for ( copy = 0; copy < newbie_contents[entry].count; copy++ )
+        {
+            item = create_object( index, 1 );
+            obj_to_obj( item, pack );
+        }
+    }
+
+    if ( missing > 0 )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf),
+            "Warning: %d pack item%s could not be created; the world may have "
+            "changed.\n\r", missing, missing == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+    }
+
+    return pack;
+}
+
+
+void do_newbie( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    OBJ_DATA *pack;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        if ( ( pack = make_newbie_pack( ch ) ) == NULL )
+            return;
+        obj_to_char( pack, ch );
+        act( "You conjure $p into your hands.", ch, pack, NULL, TO_CHAR );
+        act( "$n conjures $p out of thin air.", ch, pack, NULL, TO_ROOM );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    {
+        send_to_char( "They are not here.\n\r", ch );
+        return;
+    }
+
+    if ( IS_NPC(victim) )
+    {
+        send_to_char( "Newbie packs are for players.\n\r", ch );
+        return;
+    }
+
+    if ( ( pack = make_newbie_pack( ch ) ) == NULL )
+        return;
+
+    obj_to_char( pack, victim );
+
+    /* The ceremony: the recipient, their room, and the giver if elsewhere. */
+    act( "$N raises a hand, and $p settles into your arms, full of all the "
+         "gear you need to get started!", victim, pack, ch, TO_CHAR );
+    act( "$N raises a hand, and $p settles into $n's arms!",
+         victim, pack, ch, TO_NOTVICT );
+
+    if ( victim->in_room != ch->in_room )
+    {
+        snprintf( buf, sizeof(buf), "You hand a newbie pack to %s.\n\r",
+            victim->name );
+        send_to_char( buf, ch );
+    }
+
+    snprintf( buf, sizeof(buf), "%s gave a newbie pack to %s.",
+        ch->name, victim->name );
+    log_string( buf );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    return;
+}
+
+
 /* Undeny coded by Ricochet 7/11/98.  Some of the code I borrowed from
    Smaug mud */
 

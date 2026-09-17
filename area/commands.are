@@ -4439,6 +4439,28 @@ traditional DES hashes, so only the first eight password bytes are effective.
 See also: FINGER, TRAIL
 ~
 
+60 NEWBIE~
+Syntax: newbie
+        newbie <player>
+
+NEWBIE builds a starter kit and hands it over.  With no argument the pack
+appears in your own hands; with a player name it is given to them, with a
+message to the recipient and to everyone in the room.
+
+The pack is a renamed container holding a mud school diploma, red potions,
+food and berries, potions of sanctuary and extra healing, a water jug, and
+an assortment of starter jewellery.  Its contents are defined in the server
+rather than in an area file, so they are the same every time regardless of
+what is loaded in the world.
+
+If an item has been renumbered out of the world the command still hands over
+the pack and warns you how many pieces were missing, rather than failing.
+
+The gift is logged and announced on WIZINFO.
+
+See also: LOAD, RESTORE, TRANSFER
+~
+
 63 PETRIFY~
 Syntax: petrify <player> [duration]
 
