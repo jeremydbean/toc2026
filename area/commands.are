@@ -3329,6 +3329,10 @@ a player who is still connected, and for the login half of a finished
 session.  The closing row carries the time.  Sessions that ended in a hard
 crash were never closed and keep the dash.
 
+The Event column says how the session ended as well as how it began:
+quit is a deliberate exit, linkdead a dropped connection, and shutdown a
+server restart.
+
 SOCKETS only sees a descriptor while it is still attached, so it cannot tell
 you who was here an hour ago.  LASTLOG reads a journal the server appends at
 every login, so the history survives both disconnects and server restarts.

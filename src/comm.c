@@ -300,6 +300,13 @@ time_t              current_time;
 
 #if defined(unix)
 static volatile sig_atomic_t shutdown_signal_received = 0;
+/*
+ * A clean shutdown closes every descriptor, and close_socket cannot
+ * otherwise tell that from a player's link dropping. Recording a restart
+ * as 'linkdead' would make every release look like a connection fault in
+ * the login history.
+ */
+static bool shutting_down = FALSE;
 #endif
 
 
@@ -417,6 +424,7 @@ static void process_shutdown_signal( void )
         return;
 
     shutdown_signal_received = 0;
+    shutting_down = TRUE;
     snprintf( buf, sizeof(buf),
               "Received signal %d; saving players and shutting down.",
               signal_number );
@@ -1350,7 +1358,8 @@ void close_socket( DESCRIPTOR_DATA *dclose )
             wizinfo( buf, ch->level );
             if ( !IS_NPC(ch) && ch->pcdata != NULL
               && ch->pcdata->session_logon > 0 )
-                record_logout( ch->name, dclose->host, "linkdead",
+                record_logout( ch->name, dclose->host,
+                    shutting_down ? "shutdown" : "linkdead",
                     (long)(current_time - ch->pcdata->session_logon) );
 	    ch->desc = NULL;
 	}

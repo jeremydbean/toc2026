@@ -1347,7 +1347,7 @@ async def check_auth(_: None = Depends(verify_token)) -> Dict[str, bool]:
 
 
 LOGIN_EVENTS_START = {"connect", "new", "reconnect"}
-LOGIN_EVENTS_END = {"quit", "linkdead"}
+LOGIN_EVENTS_END = {"quit", "linkdead", "shutdown"}
 
 
 def parse_login_journal(path: Path, limit: int = 200) -> list[Dict[str, Any]]:
