@@ -1577,7 +1577,9 @@ void do_rstat( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ch->trust < 65 )
+    /* get_trust(), not ch->trust: trust is 0 unless explicitly set, so the
+       raw read refused every immortal who had never had one assigned. */
+    if ( get_trust(ch) < 65 )
     {
 	send_to_char("You must be level 65 to stat a room.\n\r",ch);
 	return;
@@ -3219,7 +3221,26 @@ void do_purge( CHAR_DATA *ch, char *argument )
 
     if ( ( victim = get_char_world( ch, arg ) ) == NULL )
     {
-	send_to_char( "They aren't here.\n\r", ch );
+	/* Not a character.  Try an object before giving up -- without this,
+	   `purge portal' and every other object answered "They aren't here."
+	   and there was no way to remove one thing from a room short of
+	   emptying the whole room. */
+	OBJ_DATA *target;
+
+	if ( ( target = get_obj_here( ch, arg ) ) == NULL )
+	{
+	    send_to_char( "They aren't here.\n\r", ch );
+	    return;
+	}
+
+	act( "$n disintegrates $p.", ch, target, NULL, TO_ROOM );
+	if ( IS_OBJ_STAT(target, ITEM_NOPURGE) )
+	    snprintf( buf, sizeof(buf), "%s purged (it was flagged nopurge).\n\r",
+		      target->short_descr );
+	else
+	    snprintf( buf, sizeof(buf), "%s purged.\n\r", target->short_descr );
+	send_to_char( buf, ch );
+	extract_obj( target );
 	return;
     }
 
@@ -3240,15 +3261,24 @@ void do_purge( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
-	act("$n disintegrates $N.",ch,0,victim,TO_NOTVICT);
-	act("$N purged.",ch,NULL,victim,TO_CHAR);
+	/* Cut the link rather than extracting the character.  Purging a
+	   player used to destroy them outright, which is a much bigger
+	   hammer than the word suggests; going linkdead is recoverable and
+	   is what the command is actually reached for. */
+	if ( victim->desc == NULL )
+	{
+	    act( "$N has no link to cut.", ch, NULL, victim, TO_CHAR );
+	    return;
+	}
+
+	send_to_char( "The gods sever your link.\n\r", victim );
+	act( "$N purged -- link severed, character left linkdead.",
+	     ch, NULL, victim, TO_CHAR );
         victim->position = POS_STANDING;
 	if (victim->level > 3)
 	    save_char_obj( victim );
 	d = victim->desc;
-	extract_char( victim, true );
-	if ( d != NULL )
-	  close_socket( d );
+	close_socket( d );
 
 	return;
     }

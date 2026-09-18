@@ -317,7 +317,11 @@ void do_look( CHAR_DATA *ch, char *argument )
         {
         snprintf(buf, sizeof(buf), "\x02\x10%s\x02\x01\n\r", ch->in_room->name);
         send_to_char( buf, ch );
-        snprintf(buf, sizeof(buf), "[Sector: %s]     [Flags: %s]\n\r",
+        /* The vnum is the one thing you always want here and the only
+           way to get it used to be a separate `stat room'. */
+        snprintf(buf, sizeof(buf),
+                "[Room: %d]     [Sector: %s]     [Flags: %s]\n\r",
+                ch->in_room->vnum,
                 sector_type[ch->in_room->sector_type],
                 room_flag_name( ch->in_room->room_flags) );
         send_to_char( buf, ch );

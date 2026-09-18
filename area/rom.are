@@ -388,15 +388,5 @@ immune to gate, as well as in player who has no summon set.
 See also: SUMMON, RECALL, IPORTAL
 ~
 
--1 IPORTAL~
-Syntax: iportal <target> [timer] [description]
-
-Creates a portal to the target (room vnum or character name).
-Timer is in ticks (0 for permanent until reboot).
-Description is optional (defaults to "(Shimmering) ...").
-
-See also: GATE, TRANSFER, RECALL
-~
-
 0 $~
 #$

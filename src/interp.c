@@ -1314,28 +1314,67 @@ void do_commands( CHAR_DATA *ch, char *argument )
     return;
 }
 
+/*
+ * Order two cmd_table entries by name, for wizhelp.
+ */
+static int wizhelp_compare( const void *lhs, const void *rhs )
+{
+    int left  = *(const int *) lhs;
+    int right = *(const int *) rhs;
+
+    return strcmp( cmd_table[left].name, cmd_table[right].name );
+}
+
+/*
+ * Every command the character may actually use, in alphabetical order.
+ *
+ * This used to list LEVEL_HERO and above only, straight out of the table.
+ * The table hoists a handful of entries to the front so they win prefix
+ * matching -- `goto', `iportal', `sockets' and friends -- so the listing
+ * opened with those and nothing was where you would look for it.  Sorting
+ * is what makes a list this long usable at all.
+ */
+#define WIZHELP_MAX_CMDS 1024
+
 void do_wizhelp( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);
     char buf[MAX_STRING_LENGTH];
+    int order[WIZHELP_MAX_CMDS];
+    int count = 0;
     int cmd;
     int col;
 
-    col = 0;
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
-	if ( cmd_table[cmd].level >= LEVEL_HERO
-	&&   cmd_table[cmd].level <= get_trust( ch )
-	&&   cmd_table[cmd].show)
-	{
-            snprintf( buf, sizeof(buf), "[%d] %-12s", cmd_table[cmd].level, cmd_table[cmd].name );
-            send_to_char( buf, ch );
-            if ( ++col % 4 == 0 )   /*6*/
-                send_to_char( "\n\r", ch );
-	}
+	if ( cmd_table[cmd].level <= get_trust( ch )
+	&&   cmd_table[cmd].show
+	&&   count < WIZHELP_MAX_CMDS )
+	    order[count++] = cmd;
     }
 
-    if ( col % 6 != 0 )
+    if ( count == 0 )
+    {
+	send_to_char( "You have no commands available.\n\r", ch );
+	return;
+    }
+
+    qsort( order, (size_t) count, sizeof(order[0]), wizhelp_compare );
+
+    snprintf( buf, sizeof(buf), "%d commands available to you:\n\r", count );
+    send_to_char( buf, ch );
+
+    col = 0;
+    for ( cmd = 0; cmd < count; cmd++ )
+    {
+	snprintf( buf, sizeof(buf), "[%2d] %-14s",
+		  cmd_table[order[cmd]].level, cmd_table[order[cmd]].name );
+	send_to_char( buf, ch );
+	if ( ++col % 4 == 0 )
+	    send_to_char( "\n\r", ch );
+    }
+
+    if ( col % 4 != 0 )
 	send_to_char( "\n\r", ch );
     return;
 }

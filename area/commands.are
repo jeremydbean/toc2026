@@ -4201,9 +4201,14 @@ Examples:
   iportal 3001 10            - Portal to room 3001 lasting 10 ticks
   iportal Brak 0 A swirling vortex of energy crackles here.
 
-Note: This is a powerful tool; use responsibly.
+The portal carries 10000 charges and is not locked to you, so anyone who
+finds it can use it.  Treat it as a door you are leaving open in whatever
+room you drop it in.
 
-See also: PORTAL, GOTO, TRANSFER
+To remove one: SMASH clears every object in the room and leaves the mobs
+alone, or PURGE <portal> removes just that one.
+
+See also: SMASH, PURGE, GATE, GOTO, TRANSFER, RECALL
 ~
 
 69 @ GODTALK~
