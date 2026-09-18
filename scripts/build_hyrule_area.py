@@ -181,6 +181,37 @@ def replace_record(body: str, vnum: int, record: str) -> str:
     return pattern.sub(record.rstrip() + "\n", body, count=1)
 
 
+# Words that carry no identity, so they are not worth matching on.
+KEYWORD_STOPWORDS = frozenset({"a", "an", "the", "of", "and", "his", "her"})
+
+
+def merge_keywords(keywords: str, short: str) -> str:
+    """Every word a player can see, plus the ones the builder chose.
+
+    A player types what is in front of them -- `look old man' -- and the
+    hand-written keyword lists routinely did not contain any of it. Folding
+    the short description in means the visible name always works, while the
+    explicit keywords stay first so deliberate aliases still win.
+    """
+    seen = []
+    for word in keywords.split():
+        lowered = word.lower()
+        if lowered not in seen:
+            seen.append(lowered)
+
+    # Split on anything that is not a letter, so "blue-ring" offers both.
+    current = ""
+    for character in short.lower() + " ":
+        if character.isalpha():
+            current += character
+            continue
+        if current and current not in seen and current not in KEYWORD_STOPWORDS:
+            seen.append(current)
+        current = ""
+
+    return " ".join(seen)
+
+
 def mobile_record(
     vnum: int,
     keywords: str,
@@ -191,6 +222,7 @@ def mobile_record(
     race: str = "human",
     act_flags: str = "AF",
 ) -> str:
+    keywords = merge_keywords(keywords, short)
     hit_dice = f"{max(2, level // 4)}d10+{max(20, level * level)}"
     damage_dice = f"{max(1, level // 15 + 1)}d6+{max(2, level // 2)}"
     return f"""#{vnum}
@@ -269,9 +301,16 @@ def new_mobile_records() -> str:
             50, act_flags="ABMV",
         ),
         mobile_record(
-            30345, "hyrule money game elder", "a gambling old man",
+            30345, "hyrule money game elder gambler", "a gambling old man",
             "An old man waits behind three concealed rupee signs.",
-            "He offers the same risky money-making game found across the First Quest.",
+            "He offers the same risky money-making game found across the\n\r"
+            "First Quest: three signs, one choice, and no way to tell them\n\r"
+            "apart.\n\r"
+            "\n\r"
+            "Type GAMBLE to play.  Each go costs 10 rupees, and the sign you\n\r"
+            "pick either pays you 50 or 20 rupees, or takes another 20 or 40\n\r"
+            "off you.  All four outcomes are equally likely, so the house edge\n\r"
+            "is real and patience is not a strategy.",
             50, act_flags="ABMV",
         ),
     ])

@@ -987,7 +987,7 @@ AF 0 0 S
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #30336
-armos statue knight~
+armos statue knight awakened~
 an awakened Armos~
 An Armos statue has awakened and blocks the path.
 ~
@@ -1001,7 +1001,7 @@ AF 0 0 S
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #30337
-blade trap falling rock hazard~
+blade trap falling rock hazard dungeon~
 a dungeon hazard~
 A stone hazard tears across the room.
 ~
@@ -1057,7 +1057,7 @@ ABMV 0 0 S
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #30341
-hyrule merchant deluxe shield~
+hyrule merchant deluxe shield secret~
 a secret Hyrule merchant~
 A secret Hyrule merchant offers hard-won supplies.
 ~
@@ -1085,7 +1085,7 @@ ABMV 0 0 S
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #30343
-hyrule potion woman~
+hyrule potion woman old~
 an old potion woman~
 An old woman waits silently behind two colored potions.
 ~
@@ -1099,7 +1099,7 @@ ABMV 0 0 S
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #30344
-hyrule door repair elder~
+hyrule door repair elder stern old man~
 a stern old man~
 A stern old man waits beside a freshly repaired door.
 ~
@@ -1113,11 +1113,18 @@ ABMV 0 0 S
 8 8 0 0
 AHMV ABCDEFGHIJK M 0
 #30345
-hyrule money game elder~
+hyrule money game elder gambler gambling old man~
 a gambling old man~
 An old man waits behind three concealed rupee signs.
 ~
-He offers the same risky money-making game found across the First Quest.
+He offers the same risky money-making game found across the
+First Quest: three signs, one choice, and no way to tell them
+apart.
+
+Type GAMBLE to play.  Each go costs 10 rupees, and the sign you
+pick either pays you 50 or 20 rupees, or takes another 20 or 40
+off you.  All four outcomes are equally likely, so the house edge
+is real and patience is not a strategy.
 ~
 human~
 ABMV 0 0 S
