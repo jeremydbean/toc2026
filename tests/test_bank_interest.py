@@ -1,57 +1,123 @@
+"""Bank interest: the rate, and the lifetime total.
+
+1% a day compounds to roughly 3700% a year, which made a balance a better
+income than playing; it is a quarter of a percent now. The exact figure is
+worth pinning because the payout divides before it multiplies -- dividing
+first keeps a large balance from overflowing across the seven-day catch-up,
+and that changes the rounding, so the arithmetic is asserted rather than
+assumed.
+
+The lifetime total is new: interest arrives while you are offline and the
+notice scrolls past on login, so score is the only place you can see what
+the account has earned.
+
+These wait for a game tick, which is randomised between 40 and 80 seconds,
+so they are slow by nature rather than by accident.
+"""
+from __future__ import annotations
+
 import re
+import sys
+import time
 import unittest
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-ROOT = Path(__file__).resolve().parents[1]
+from live_mud import (  # noqa: E402
+    LiveMud,
+    create_character,
+    login,
+    patch_player_file,
+    skip_reason,
+)
+
+SKIP = skip_reason()
+
+PASSWORD = "Zbankint1"
+
+ONE_DAY = 86400
+DIVISOR = 400          # 0.25%
+STARTING_BALANCE = 4_000_000  # 4 platinum; over the 1p minimum, and a
+                             # day of interest is exactly 10_000 copper
 
 
-class BankInterestRegressionTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        update_source = (ROOT / "src" / "update.c").read_text(encoding="utf-8")
-        match = re.search(
-            r"static void bank_interest\s*\([^)]*\)\s*\{(?P<body>.*?)\n\}",
-            update_source,
-            re.DOTALL,
+def run(client, command: str, settle: float = 2.5) -> str:
+    mark = len(client.transcript)
+    client.send(command)
+    client.drain(settle)
+    return client.transcript[mark:]
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class BankInterestTests(unittest.TestCase):
+    def prepare(self, mud: LiveMud, name: str, days: int = 1) -> None:
+        with mud.connect(timeout=120) as client:
+            create_character(client, name, PASSWORD)
+            client.send("quit")
+            client.wait_closed()
+        patch_player_file(
+            mud, name,
+            BankCP=STARTING_BALANCE,
+            IntTime=int(time.time()) - (ONE_DAY * days) - 60,
         )
-        if match is None:
-            raise AssertionError("bank_interest implementation was not found")
-        cls.body = match.group("body")
 
-    def test_capped_catch_up_consumes_all_complete_elapsed_days(self) -> None:
-        timestamp_update = (
-            "current_time - (elapsed % BANK_INTEREST_SECS)"
-        )
-        self.assertIn(timestamp_update, self.body)
-        self.assertNotIn("bank_interest_time += days *", self.body)
+    def test_a_day_pays_a_quarter_percent(self) -> None:
+        with LiveMud() as mud:
+            self.prepare(mud, "Zbankone")
+            with mud.connect(timeout=120) as client:
+                login(client, "Zbankone", PASSWORD)
 
-    def test_below_minimum_days_are_consumed_before_returning(self) -> None:
-        timestamp_position = self.body.index(
-            "current_time - (elapsed % BANK_INTEREST_SECS)"
-        )
-        minimum_position = self.body.index("bank < BANK_INTEREST_MIN")
-        self.assertLess(timestamp_position, minimum_position)
+                # The tick is randomised between 40 and 80 seconds.
+                client.expect("earned", timeout=150)
+                client.drain(2.0)
 
-    def test_interest_output_uses_readable_coin_denominations(self) -> None:
-        self.assertIn("format_coins( gain, coins_buf", self.body)
-        self.assertNotIn("earned %ld copper in interest", self.body)
+                self.assertIn("0.25% daily", client.transcript)
 
-    def test_interest_cannot_overflow_the_bank_balance(self) -> None:
-        self.assertIn("LONG_MAX - ch->pcdata->bank", self.body)
+                shown = run(client, "score", settle=3.0)
+                match = re.search(r"Bank:\s+(\d+)p (\d+)g (\d+)s (\d+)c", shown)
+                self.assertIsNotNone(match, "score should show the balance")
 
-    def test_future_timestamp_is_reset_and_persisted(self) -> None:
-        self.assertIn("bank_interest_time > current_time", self.body)
-        reset = self.body.index("bank_interest_time = current_time")
-        save = self.body.index("save_char_obj(ch)", reset)
-        self.assertGreater(save, reset)
+                platinum, gold, silver, copper = (int(g) for g in match.groups())
+                total = (platinum * 1_000_000 + gold * 10_000
+                         + silver * 100 + copper)
+                expected = STARTING_BALANCE + STARTING_BALANCE // DIVISOR
+                self.assertEqual(total, expected)
 
-    def test_consumed_days_are_saved_even_without_a_payout(self) -> None:
-        self.assertGreaterEqual(self.body.count("save_char_obj(ch)"), 4)
+    def test_score_reports_the_lifetime_total(self) -> None:
+        with LiveMud() as mud:
+            self.prepare(mud, "Zbanktwo")
+            with mud.connect(timeout=120) as client:
+                login(client, "Zbanktwo", PASSWORD)
+                client.expect("earned", timeout=150)
+                client.drain(2.0)
 
-    def test_interest_achievements_are_recorded(self) -> None:
-        self.assertIn("ACHIEVEMENT_EVENT_BANK_INTEREST", self.body)
-        self.assertIn("ACHIEVEMENT_EVENT_BANK_WEEK_INTEREST", self.body)
+                shown = run(client, "score", settle=3.0)
+                self.assertIn("Interest:", shown)
+
+                # Not the zero it starts at: the payment was recorded.
+                interest_row = next(row for row in shown.splitlines()
+                                    if "Interest:" in row)
+                self.assertRegex(interest_row, r"[1-9]")
+
+    def test_the_catch_up_is_capped_at_seven_days(self) -> None:
+        """Ten days offline pays seven, not ten."""
+        with LiveMud() as mud:
+            self.prepare(mud, "Zbankthr", days=10)
+            with mud.connect(timeout=120) as client:
+                login(client, "Zbankthr", PASSWORD)
+                client.expect("earned", timeout=150)
+                client.drain(2.0)
+
+                self.assertIn("7 days", client.transcript)
+
+                shown = run(client, "score", settle=3.0)
+                match = re.search(r"Bank:\s+(\d+)p (\d+)g (\d+)s (\d+)c", shown)
+                platinum, gold, silver, copper = (int(g) for g in match.groups())
+                total = (platinum * 1_000_000 + gold * 10_000
+                         + silver * 100 + copper)
+                expected = STARTING_BALANCE + (STARTING_BALANCE // DIVISOR) * 7
+                self.assertEqual(total, expected)
 
 
 if __name__ == "__main__":

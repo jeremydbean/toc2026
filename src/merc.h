@@ -1724,6 +1724,7 @@ struct  pc_data
     int                 last_session_quests;  /* quests completed last session */
 
     long                bank_interest_time;   /* unix timestamp of last interest payment */
+    long                bank_interest_total;  /* lifetime interest earned, in copper */
 
     /* Casino stats (persisted) */
     long                casino_winnings;      /* lifetime net gold won at casino  */

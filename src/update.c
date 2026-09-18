@@ -1222,11 +1222,16 @@ void weather_update( void )
 
 
 
-/* Bank interest: 1% per real day, capped at 7 days of accrual at once.
- * Minimum balance of 1 platinum to earn any interest. */
+/* Bank interest: 0.25% per real day, capped at 7 days of accrual at once.
+ * Minimum balance of 1 platinum to earn any interest.
+ *
+ * It was 1%, which compounds to roughly 3700% a year -- a balance earned
+ * more than playing did. A quarter of a percent is about 150% a year: worth
+ * banking, not worth doing instead of anything else. */
 #define BANK_INTEREST_SECS     86400L   /* one real day */
 #define BANK_INTEREST_MAX_DAYS 7        /* cap catch-up to 7 days */
 #define BANK_INTEREST_MIN      COPPER_PER_PLATINUM  /* 1 platinum minimum */
+#define BANK_INTEREST_DIVISOR  400L     /* 0.25% == balance / 400 */
 
 static void bank_interest( CHAR_DATA *ch )
 {
@@ -1266,8 +1271,10 @@ static void bank_interest( CHAR_DATA *ch )
         return;
     }
 
-    /* 1% per day, rounded down to nearest copper */
-    gain = (ch->pcdata->bank / 100L) * days;
+    /* 0.25% per day, rounded down to the copper.  Dividing before
+       multiplying keeps a large balance from overflowing on the seven-day
+       catch-up, at the cost of sub-copper precision nobody can spend. */
+    gain = (ch->pcdata->bank / BANK_INTEREST_DIVISOR) * days;
     if ( gain < 1 )
         gain = 1;
 
@@ -1280,10 +1287,12 @@ static void bank_interest( CHAR_DATA *ch )
     }
 
     ch->pcdata->bank += gain;
+    if ( gain <= LONG_MAX - ch->pcdata->bank_interest_total )
+        ch->pcdata->bank_interest_total += gain;
     format_coins( gain, coins_buf, sizeof(coins_buf) );
 
     snprintf( buf, sizeof(buf),
-        "\n\rYour bank account earned %s in interest (%ld day%s at 1%% daily).\n\r",
+        "\n\rYour bank account earned %s in interest (%ld day%s at 0.25%% daily).\n\r",
         coins_buf, days, days == 1 ? "" : "s" );
     send_to_char( buf, ch );
     achievement_record_event(ch, ACHIEVEMENT_EVENT_BANK_INTEREST, true);

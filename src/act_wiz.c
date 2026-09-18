@@ -1318,7 +1318,7 @@ void do_gather( CHAR_DATA *ch, char *argument )
       return;
     }
 
-    if(ch->trust < 65)
+    if(get_trust(ch) < 65)
     {
       send_to_char("You can only gather objects from individuals.\n\r",ch);
       return;
@@ -1333,7 +1333,7 @@ void do_gather( CHAR_DATA *ch, char *argument )
 	return;
       }
     }
-    else if( ch->trust < 68)
+    else if( get_trust(ch) < 68)
     {
       send_to_char("You can't gather objects by name at your level.\n\r",ch);
       return;
@@ -3317,7 +3317,7 @@ void do_advance( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if( ch->trust < 69 && victim != ch)
+    if( get_trust(ch) < 69 && victim != ch)
     {
        send_to_char("You can only advance yourself at your current level.\n\r",ch);
        return;
@@ -4697,7 +4697,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( value > 100 && ch->trust < 70 )
+	if ( value > 100 && get_trust(ch) < 70 )
 	    value = 100;
 
 	victim->questpoints += value;
@@ -5328,7 +5328,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if( (obj->item_type == ITEM_PORTAL
       || obj->item_type == ITEM_MANIPULATION )
-    && ch->trust != 70)
+    && get_trust(ch) != 70)
     {
       send_to_char("You can not set this item.\n\r",ch);
       return;
@@ -5444,7 +5444,7 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "type" ) )
     {
-      if(ch->trust != 70)
+      if(get_trust(ch) != 70)
       {
 	send_to_char("Your level isn't high enough to set object types.\n\r",ch);
 	return;

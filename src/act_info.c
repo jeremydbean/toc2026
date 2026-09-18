@@ -1175,21 +1175,6 @@ void do_prompt(CHAR_DATA *ch, char *argument)
     return;
 }
 
-void do_old_prompt(CHAR_DATA *ch, char *argument)
-{
-    UNUSED_PARAM(argument);
-
-    if (IS_SET(ch->comm,COMM_PROMPT))
-    {
-      send_to_char("You will no longer see prompts.\n\r",ch);
-      REMOVE_BIT(ch->comm,COMM_PROMPT);
-    }
-    else
-    {
-      send_to_char("You will now see prompts.\n\r",ch);
-      SET_BIT(ch->comm,COMM_PROMPT);
-    }
-}
 /*
 void do_combine(CHAR_DATA *ch, char *argument)
 {
@@ -1849,6 +1834,19 @@ void do_score( CHAR_DATA *ch, char *argument )
             bank_copper % COPPER_PER_SILVER);
 
         snprintf(buf, sizeof(buf), "| %-9s %48s |\n\r", "Bank:", bank_buf);
+        send_to_char(buf, ch);
+
+        /* Interest lands while you are offline and the notice scrolls past
+           on login, so the running total is the only way to see what the
+           account has actually earned. */
+        {
+            char earned_buf[MAX_INPUT_LENGTH];
+            long earned = IS_NPC(ch) ? 0 : ch->pcdata->bank_interest_total;
+
+            format_coins( earned, earned_buf, sizeof(earned_buf) );
+            snprintf(buf, sizeof(buf), "| %-9s %48s |\n\r",
+                     "Interest:", earned_buf);
+        }
     }
     send_to_char(buf, ch);
     send_to_char(kader, ch);
@@ -2413,7 +2411,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
 
 	wch = ( d->original != NULL ) ? d->original : d->character;
 
-	if(d->original != NULL && ch->trust < 67)
+	if(d->original != NULL && get_trust(ch) < 67)
 	  continue;
 
  	if (!can_see(ch,wch))
@@ -2647,7 +2645,7 @@ void do_who( CHAR_DATA *ch, char *argument )
 
 	wch   = ( d->original != NULL ) ? d->original : d->character;
 
-	if(d->original != NULL && ch->trust < 67)
+	if(d->original != NULL && get_trust(ch) < 67)
 	  continue;
 
 	if ( wch->level < iLevelLower

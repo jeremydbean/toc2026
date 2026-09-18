@@ -310,7 +310,6 @@ DECLARE_DO_FUN(	do_pose		);
 DECLARE_DO_FUN( do_practice     );
 DECLARE_DO_FUN( do_project      );
 DECLARE_DO_FUN( do_prompt       );
-DECLARE_DO_FUN( do_old_prompt   );
 DECLARE_DO_FUN( do_psionic_armor);
 DECLARE_DO_FUN(do_psychic_shield);
 DECLARE_DO_FUN( do_pstat        );

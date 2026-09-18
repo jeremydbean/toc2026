@@ -4295,7 +4295,7 @@ saved across logins.
 See also: FREEZE, JAIL
 ~
 
-63 SMASH~
+65 SMASH~
 Syntax: smash
 
 SMASH removes all purgeable objects from the current room, leaving mobs
