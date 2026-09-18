@@ -3549,6 +3549,36 @@ Cannot be used on players of equal or higher level.  Cannot target mobs.
 See also: RESTORE, EMPOWER
 ~
 
+66 SPELLUP SPELLPURGE HERMIE~
+Syntax: spellup
+Syntax: spellpurge
+
+Spellup places Hermie the Angel -- Herbie's girlfriend -- in your current
+room.  She stays there, taking requests, until somebody removes her.
+
+Players talk to her with SAY.  Saying her name, or 'menu', 'list', 'hello'
+or 'help', makes her read out her list; after that they say either the
+number or the name of what they want and she casts it on them.  Saying
+'all' gets them every entry in one go.
+
+She ignores anything else said in the room, so she can be parked somewhere
+busy without burying every conversation in her menu.
+
+She offers armor, bless, shield, stone skin, sanctuary, haste, fly, pass
+door, protection evil, fire shield, frost shield, divine protection, giant
+strength, frenzy, major globe, infravision, detect invis, detect hidden,
+detect magic, detect good, detect evil, refresh, heal and restore mana
+individually, plus empower and titanic as bundles.
+
+Every spell she hands out lasts 30 ticks, whoever asks for it, and every
+one is written to the game log.
+
+She is a permanent fixture, not a visitor.  Remove the one in front of you
+with PURGE, or remove every copy of her in the world with SPELLPURGE.
+
+See also: HERBIE, EMPOWER, TITANIC, PURGE
+~
+
 66 SLAY~
 Syntax: slay <character>
 

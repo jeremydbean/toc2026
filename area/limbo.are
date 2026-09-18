@@ -787,6 +787,24 @@ AOX DF -750 S
 IK AB 0 NS
 8 8 1 0
 0 0 M 0
+#98
+angel hermie herbie girlfriend spellup~
+Hermie~
+Hermie the Angel is here, taking requests.
+~
+Hermie is the reason Herbie is always running late.  Where he tears around
+the world patching people up one emergency at a time, she picked a spot,
+put her feet down, and started keeping a list.  Talk to her and she will
+read it out; say the word and she will hand you whatever is on it.
+~
+unique~
+ABQ CDFHJT 1000 S
+70 10 1d1+19000 1d1+1000 10d20+100 20
+-5 -5 -5 -5
+0 ABCDEFG 0 0
+8 8 2 0
+0 0 M 0
+
 #99
 angel herbie~
 an angel~

@@ -786,6 +786,10 @@ void do_say( CHAR_DATA *ch, char *argument )
     snprintf( buf, sizeof(buf), "{%02X$n says '$t'{00", COL_SAYS );
     act_new_cstr( buf, ch, argument, NULL, TO_ROOM, POS_RESTING );
 
+    /* Hermie, if she is standing here, is listening. */
+    if ( !IS_NPC(ch) )
+        spellup_listen( ch, argument );
+
     return;
 }
 

@@ -8817,6 +8817,476 @@ void do_titanic( CHAR_DATA *ch, char *argument )
 }
 
 
+extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
+
+/* For the spell_null guard below: some skill_table rows are placeholders. */
+DECLARE_SPELL_FUN( spell_null );
+
+/*
+ * ------------------------------------------------------------------------
+ * Hermie -- Herbie's girlfriend, and a standing spellup desk.
+ *
+ * Herbie glides in, heals, and leaves.  Hermie stays: `spellup' plants her
+ * in the room and she buffs whoever talks to her, one spell at a time, from
+ * a menu she reads out on request.  She keeps standing there until an
+ * immortal purges her -- either with the ordinary `purge', which is why she
+ * deliberately does not carry ACT_NOPURGE, or with `spellpurge', which
+ * clears every copy of her in the world at once.
+ *
+ * Everything she hands out is pinned to SPELLUP_DURATION ticks.  The spell
+ * functions set their own duration from the caster's level, so we cast
+ * first and rewrite the duration afterwards; that keeps the magnitudes she
+ * grants (giant strength scales with level, for instance) while making the
+ * timing uniform, which is the whole point of her.
+ * ------------------------------------------------------------------------
+ */
+
+#define SPELLUP_SPELL       0
+#define SPELLUP_EMPOWER     1
+#define SPELLUP_TITANIC     2
+
+struct spellup_entry
+{
+    const char *keyword;    /* one word a player can say                  */
+    const char *spell;      /* skill_table name; NULL for the two bundles */
+    const char *label;      /* how it reads on her menu                   */
+    int         kind;
+};
+
+/* Every beneficial spell she offers, including each one that `empower'
+ * bundles together, so a player can take just the piece they want. */
+static const struct spellup_entry spellup_table[] =
+{
+    { "armor",      "armor",             "armor",             SPELLUP_SPELL   },
+    { "bless",      "bless",             "bless",             SPELLUP_SPELL   },
+    { "shield",     "shield",            "shield",            SPELLUP_SPELL   },
+    { "stoneskin",  "stone skin",        "stone skin",        SPELLUP_SPELL   },
+    { "sanctuary",  "sanctuary",         "sanctuary",         SPELLUP_SPELL   },
+    { "haste",      "haste",             "haste",             SPELLUP_SPELL   },
+    { "fly",        "fly",               "fly",               SPELLUP_SPELL   },
+    { "passdoor",   "pass door",         "pass door",         SPELLUP_SPELL   },
+    { "protection", "protection evil",   "protection evil",   SPELLUP_SPELL   },
+    { "fireshield", "fire shield",       "fire shield",       SPELLUP_SPELL   },
+    { "frostshield","frost shield",      "frost shield",      SPELLUP_SPELL   },
+    { "divine",     "divine protection", "divine protection", SPELLUP_SPELL   },
+    { "giant",      "giant strength",    "giant strength",    SPELLUP_SPELL   },
+    { "frenzy",     "frenzy",            "frenzy",            SPELLUP_SPELL   },
+    { "globe",      "major globe",       "major globe",       SPELLUP_SPELL   },
+    { "infravision","infravision",       "infravision",       SPELLUP_SPELL   },
+    { "detectinvis","detect invis",      "detect invis",      SPELLUP_SPELL   },
+    { "detecthidden","detect hidden",    "detect hidden",     SPELLUP_SPELL   },
+    { "detectmagic","detect magic",      "detect magic",      SPELLUP_SPELL   },
+    { "detectgood", "detect good",       "detect good",       SPELLUP_SPELL   },
+    { "detectevil", "detect evil",       "detect evil",       SPELLUP_SPELL   },
+    { "refresh",    "refresh",           "refresh",           SPELLUP_SPELL   },
+    { "heal",       "heal",              "heal",              SPELLUP_SPELL   },
+    { "mana",       "restore mana",      "restore mana",      SPELLUP_SPELL   },
+    { "empower",    NULL,                "empower (bundle)",  SPELLUP_EMPOWER },
+    { "titanic",    NULL,                "titanic (bundle)",  SPELLUP_TITANIC },
+    { NULL,         NULL,                NULL,                0               }
+};
+
+static int spellup_count( void )
+{
+    int count = 0;
+    while ( spellup_table[count].keyword != NULL )
+        count++;
+    return count;
+}
+
+/* Find Hermie in a room, if she is standing in it. */
+static CHAR_DATA *spellup_mob_in_room( ROOM_INDEX_DATA *room )
+{
+    CHAR_DATA *mob;
+
+    if ( room == NULL )
+        return NULL;
+
+    for ( mob = room->people; mob != NULL; mob = mob->next_in_room )
+    {
+        if ( IS_NPC(mob) && mob->pIndexData != NULL
+          && mob->pIndexData->vnum == MOB_VNUM_SPELLUP )
+            return mob;
+    }
+
+    return NULL;
+}
+
+/*
+ * Pin a freshly cast affect to the flat duration.
+ *
+ * Safe to apply bluntly: we only ever call this immediately after casting
+ * sn, and the spell functions refuse when the target already carries sn, so
+ * the only affect of that type present is the one we just laid down.
+ * Permanent affects (duration -1) are left alone so this never downgrades
+ * something an immortal made permanent.
+ */
+static void spellup_pin_duration( CHAR_DATA *victim, int sn )
+{
+    AFFECT_DATA *paf;
+
+    for ( paf = victim->affected; paf != NULL; paf = paf->next )
+    {
+        if ( paf->type == sn && paf->duration != -1 )
+            paf->duration = SPELLUP_DURATION;
+    }
+}
+
+/* One menu choice, applied.  Returns TRUE if anything was handed over. */
+static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
+                           const struct spellup_entry *entry )
+{
+    char buf[MAX_INPUT_LENGTH];
+    int sn;
+
+    if ( entry->kind == SPELLUP_EMPOWER )
+    {
+        /* do_empower toggles off when the target is already empowered, and
+         * stripping buffs is the opposite of what she is for. */
+        if ( is_affected( victim, gsn_empower ) )
+        {
+            act( "$n says 'You are already carrying everything I could give you.'",
+                mob, NULL, victim, TO_VICT );
+            return FALSE;
+        }
+        snprintf( buf, sizeof(buf), "%s %d", victim->name, SPELLUP_DURATION );
+        do_empower( mob, buf );
+        return TRUE;
+    }
+
+    if ( entry->kind == SPELLUP_TITANIC )
+    {
+        if ( is_affected( victim, gsn_titanic ) )
+        {
+            act( "$n says 'You are quite large enough already.'",
+                mob, NULL, victim, TO_VICT );
+            return FALSE;
+        }
+        snprintf( buf, sizeof(buf), "%s %d", victim->name, SPELLUP_DURATION );
+        do_titanic( mob, buf );
+        return TRUE;
+    }
+
+    sn = skill_lookup( entry->spell );
+    if ( sn < 0 || skill_table[sn].spell_fun == NULL
+      || skill_table[sn].spell_fun == spell_null )
+    {
+        act( "$n pats her pockets.  'I seem to have misplaced that one.'",
+            mob, NULL, victim, TO_VICT );
+        return FALSE;
+    }
+
+    /* Cast at her level for the magnitude, but with the player as the
+     * caster so the spell's own messages and refusals reach them rather
+     * than vanishing into a mob with no descriptor. */
+    ( *skill_table[sn].spell_fun )( sn, mob->level, victim, (void *) victim );
+    spellup_pin_duration( victim, sn );
+    return TRUE;
+}
+
+static void spellup_show_menu( CHAR_DATA *mob, CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    char line[MAX_STRING_LENGTH];
+    int total = spellup_count();
+    int i;
+
+    act( "$n produces a dog-eared notebook and reads from it.",
+        mob, NULL, ch, TO_VICT );
+
+    snprintf( buf, sizeof(buf),
+        "\n\r{%02XHermie's list -- say the number or the name, and it lasts %d ticks.{00\n\r",
+        COL_SAYS, SPELLUP_DURATION );
+    send_to_char( buf, ch );
+
+    line[0] = '\0';
+    for ( i = 0; i < total; i++ )
+    {
+        char cell[MAX_INPUT_LENGTH];
+
+        snprintf( cell, sizeof(cell), "  %2d) %-20s", i + 1,
+                  spellup_table[i].label );
+        strncat( line, cell, sizeof(line) - strlen(line) - 1 );
+
+        if ( i % 3 == 2 || i == total - 1 )
+        {
+            strncat( line, "\n\r", sizeof(line) - strlen(line) - 1 );
+            send_to_char( line, ch );
+            line[0] = '\0';
+        }
+    }
+
+    snprintf( buf, sizeof(buf),
+        "  Say '{%02Xall{00' for the lot, or '{%02Xmenu{00' to hear this again.\n\r",
+        COL_SAYS, COL_SAYS );
+    send_to_char( buf, ch );
+}
+
+/*
+ * What the player said, normalised: lowercased, and with the punctuation
+ * people put on the end of a question stripped off.
+ */
+static void spellup_normalise( const char *argument, char *out, size_t size )
+{
+    size_t length;
+    size_t i;
+
+    for ( i = 0; i + 1 < size && argument[i] != '\0'; i++ )
+        out[i] = (char) LOWER( argument[i] );
+    out[i] = '\0';
+
+    length = strlen( out );
+    while ( length > 0
+      && ( out[length - 1] == '?' || out[length - 1] == '!'
+        || out[length - 1] == '.' || out[length - 1] == ' ' ) )
+        out[--length] = '\0';
+}
+
+/* Match a normalised request to a menu row, or NULL. */
+static const struct spellup_entry *spellup_match( const char *said )
+{
+    int total = spellup_count();
+    int i;
+
+    if ( said[0] == '\0' )
+        return NULL;
+
+    if ( is_number( (char *) said ) )
+    {
+        int choice = atoi( said );
+        if ( choice >= 1 && choice <= total )
+            return &spellup_table[choice - 1];
+        return NULL;
+    }
+
+    /* Exact first, so "shield" cannot be swallowed by "fire shield" and
+     * "detect invis" does not depend on table order. */
+    for ( i = 0; i < total; i++ )
+    {
+        if ( !str_cmp( said, spellup_table[i].keyword )
+          || ( spellup_table[i].spell != NULL
+            && !str_cmp( said, spellup_table[i].spell ) ) )
+            return &spellup_table[i];
+    }
+
+    for ( i = 0; i < total; i++ )
+    {
+        if ( !str_prefix( said, spellup_table[i].keyword )
+          || ( spellup_table[i].spell != NULL
+            && !str_prefix( said, spellup_table[i].spell ) ) )
+            return &spellup_table[i];
+    }
+
+    return NULL;
+}
+
+/*
+ * Is she being spoken to, as opposed to spoken near?
+ *
+ * Without this she pastes her whole list over every line of any
+ * conversation happening in her room, which makes her unusable anywhere
+ * players actually gather -- which is the only place worth putting her.
+ */
+static bool spellup_addressed( const char *said )
+{
+    static const char * const openers[] =
+    {
+        "hermie", "menu", "list", "hi", "hey", "hello", "greetings",
+        "spellup", "spellups", "buff", "buffs", "help", "please", NULL
+    };
+    char word[MAX_INPUT_LENGTH];
+    const char *p = said;
+    int i;
+
+    while ( *p != '\0' )
+    {
+        size_t n = 0;
+
+        if ( *p == ' ' || *p == ',' )
+        {
+            p++;
+            continue;
+        }
+
+        while ( *p != '\0' && *p != ' ' && *p != ',' )
+        {
+            if ( n + 1 < sizeof(word) )
+                word[n++] = *p;
+            p++;
+        }
+        word[n] = '\0';
+
+        for ( i = 0; openers[i] != NULL; i++ )
+        {
+            if ( !str_cmp( word, openers[i] ) )
+                return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+
+/*
+ * Called from do_say.  spec_funs never see player speech and there is no
+ * script event for it either, so this is the hook.
+ */
+void spellup_listen( CHAR_DATA *ch, const char *argument )
+{
+    char said[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    const struct spellup_entry *entry;
+    CHAR_DATA *mob;
+
+    if ( ch == NULL || IS_NPC(ch) || argument == NULL )
+        return;
+
+    if ( ( mob = spellup_mob_in_room( ch->in_room ) ) == NULL )
+        return;
+
+    spellup_normalise( argument, said, sizeof(said) );
+
+    if ( !str_cmp( said, "all" ) || !str_cmp( said, "everything" ) )
+    {
+        int total = spellup_count();
+        int i;
+
+        act( "$n rolls up her sleeves.  'All of it, then.  Hold still.'",
+            mob, NULL, ch, TO_VICT );
+
+        for ( i = 0; i < total; i++ )
+            spellup_grant( mob, ch, &spellup_table[i] );
+
+        snprintf( buf, sizeof(buf),
+            "Spellup: %s gave %s the full list (%d ticks) in room %d.",
+            mob->short_descr, ch->name, SPELLUP_DURATION,
+            ch->in_room != NULL ? ch->in_room->vnum : 0 );
+        log_string( buf );
+        return;
+    }
+
+    if ( ( entry = spellup_match( said ) ) == NULL )
+    {
+        /* Not a request she can fill.  Read out the list if she was being
+         * addressed, and otherwise stay out of the conversation. */
+        if ( spellup_addressed( said ) )
+            spellup_show_menu( mob, ch );
+        return;
+    }
+
+    act( "$n turns to you with a wink.", mob, NULL, ch, TO_VICT );
+    act( "$n turns to $N with a wink.", mob, NULL, ch, TO_NOTVICT );
+
+    if ( !spellup_grant( mob, ch, entry ) )
+        return;
+
+    snprintf( buf, sizeof(buf), "Spellup: %s gave %s %s (%d ticks) in room %d.",
+        mob->short_descr, ch->name, entry->label, SPELLUP_DURATION,
+        ch->in_room != NULL ? ch->in_room->vnum : 0 );
+    log_string( buf );
+}
+
+
+/*
+ * spellup -- plant Hermie in the current room.
+ */
+void do_spellup( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    MOB_INDEX_DATA *idx;
+    CHAR_DATA *mob;
+
+    if ( ch->in_room == NULL )
+    {
+        send_to_char( "You are nowhere she could stand.\n\r", ch );
+        return;
+    }
+
+    if ( spellup_mob_in_room( ch->in_room ) != NULL )
+    {
+        send_to_char( "She is already standing right here.\n\r", ch );
+        return;
+    }
+
+    if ( ( idx = get_mob_index( MOB_VNUM_SPELLUP ) ) == NULL )
+    {
+        snprintf( buf, sizeof(buf),
+            "Mob %d is missing from the area files, so she has nowhere to come from.\n\r",
+            MOB_VNUM_SPELLUP );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    mob = create_mobile( idx );
+    char_to_room( mob, ch->in_room );
+
+    act( "The air warms, and $n steps out of it with a notebook under $s arm.",
+        mob, NULL, NULL, TO_ROOM );
+    act( "$n says 'Talk to me and I will read you the list.'",
+        mob, NULL, NULL, TO_ROOM );
+
+    snprintf( buf, sizeof(buf), "%s is now taking requests here.\n\r",
+              mob->short_descr );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "Spellup: %s placed in room %d by %s.",
+        mob->short_descr, ch->in_room->vnum, ch->name );
+    log_string( buf );
+}
+
+
+/*
+ * spellpurge -- clear every copy of her in the world.
+ */
+void do_spellpurge( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    ROOM_INDEX_DATA *room;
+    int bucket;
+    int count = 0;
+
+    /* There is no global character list in this codebase, so sweep the room
+     * index the way do_owhere does.  next_in_room is captured before the
+     * extract because extract_char unlinks her from it. */
+    for ( bucket = 0; bucket < MAX_KEY_HASH; bucket++ )
+    {
+        for ( room = room_index_hash[bucket]; room != NULL; room = room->next )
+        {
+            CHAR_DATA *mob;
+            CHAR_DATA *mob_next;
+
+            for ( mob = room->people; mob != NULL; mob = mob_next )
+            {
+                mob_next = mob->next_in_room;
+
+                if ( !IS_NPC(mob) || mob->pIndexData == NULL
+                  || mob->pIndexData->vnum != MOB_VNUM_SPELLUP )
+                    continue;
+
+                act( "$n closes her notebook, blows a kiss to the room, and is gone.",
+                    mob, NULL, NULL, TO_ROOM );
+                extract_char( mob, TRUE );
+                count++;
+            }
+        }
+    }
+
+    if ( count == 0 )
+    {
+        send_to_char( "There are none of her anywhere in the world.\n\r", ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "Removed %d spellup mob%s from the world.\n\r",
+              count, count == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "Spellup: %s purged %d spellup mob%s worldwide.",
+              ch->name, count, count == 1 ? "" : "s" );
+    log_string( buf );
+}
+
+
 /*
  * summonevent — immortal command to manually spawn or despawn the seasonal
  *               event boss.  Works regardless of active season (for testing).

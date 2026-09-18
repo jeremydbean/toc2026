@@ -440,6 +440,8 @@ const	struct	cmd_type	cmd_table	[] =
     { "petrify",        do_petrify,     POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "empower",        do_empower,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "titanic",        do_titanic,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
+    { "spellup",        do_spellup,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
+    { "spellpurge",     do_spellpurge,  POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "summonevent",    do_summonevent, POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "resetpwd",       do_resetpwd,    POS_DEAD,       L5,  LOG_NEVER,  1 },
     { "newbie",         do_newbie,      POS_DEAD,       L10, LOG_ALWAYS, 1 },

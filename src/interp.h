@@ -470,6 +470,8 @@ DECLARE_DO_FUN( do_trail        );
 DECLARE_DO_FUN( do_petrify      );
 DECLARE_DO_FUN( do_empower      );
 DECLARE_DO_FUN( do_titanic      );
+DECLARE_DO_FUN( do_spellup      );
+DECLARE_DO_FUN( do_spellpurge   );
 DECLARE_DO_FUN( do_summonevent  );
 DECLARE_DO_FUN( do_resetpwd     );
 DECLARE_DO_FUN( do_newbie       );

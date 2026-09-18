@@ -690,6 +690,13 @@ struct  kill_data
 #define MOB_VNUM_VAMPIRE           3404
 #define MOB_VNUM_ANIMATE             80
 
+/* Hermie -- Herbie's girlfriend, and the walk-up spellup desk (limbo.are).
+ * Everything she casts lasts SPELLUP_DURATION ticks, level notwithstanding,
+ * so an immortal can park her anywhere without handing out permanent buffs. */
+#define MOB_VNUM_SPELLUP             98
+#define SPELLUP_DURATION             30
+void  spellup_listen  args( ( CHAR_DATA *ch, const char *argument ) );
+
 /* RT ASCII conversions */
 #define A                       0x00000001
 #define B                       0x00000002
