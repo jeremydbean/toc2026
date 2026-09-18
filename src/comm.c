@@ -3997,7 +3997,9 @@ void wizinfo(const char *info, int level)
     DESCRIPTOR_DATA *d;
 
     write_web_admin_event( "wizinfo", info, level );
-    snprintf(buf,sizeof(buf),"{%02X[WIZINFO] %s\n\r",COL_WIZINFO,info);
+    /* {00 closes the colour.  Without it the cyan ran on into whatever
+       printed next, which on a busy staff channel is everything. */
+    snprintf(buf,sizeof(buf),"{%02X[WIZINFO] %s{00\n\r",COL_WIZINFO,info);
 
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
