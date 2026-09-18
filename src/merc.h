@@ -197,7 +197,10 @@ typedef struct script_loop_prepoll_payload
  * Enough for a client probing the login prompt, or a player leaning on Enter,
  * without leaving a silent connection open to a scanner indefinitely. */
 #define MAX_BLANK_LOGIN_LINES    10
-#define MAX_INPUT_LENGTH         256
+/* About six lines at 80 columns: long enough for a real sentence, short
+   enough that nobody can paste a screenful into a channel. Overrunning it
+   trims the line and says so -- it never drops the connection. */
+#define MAX_INPUT_LENGTH         512
 #define PAGELEN                  22
 #define MAX_MSGS                 100
 #define SAVE_FILE               "board%d.msg"
@@ -696,6 +699,7 @@ struct  kill_data
 #define MOB_VNUM_SPELLUP             98
 #define SPELLUP_DURATION             30
 void  spellup_listen  args( ( CHAR_DATA *ch, const char *argument ) );
+const char *default_prompt_text args( ( void ) );
 
 /* RT ASCII conversions */
 #define A                       0x00000001

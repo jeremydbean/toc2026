@@ -33,19 +33,6 @@ bool scan = false;
 extern const char       *       dir_name[];
 extern ROOM_INDEX_DATA  *       room_index_hash[MAX_KEY_HASH];
 
-static size_t bounded_strlen( const char *text, size_t limit )
-{
-    size_t length = 0;
-
-    if ( text == NULL )
-        return 0;
-
-    while ( length < limit && text[length] != '\0' )
-        length++;
-
-    return length;
-}
-
 static bool is_red_hyrule_ganon( CHAR_DATA *victim )
 {
     return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
@@ -945,42 +932,247 @@ void do_compact(CHAR_DATA *ch, char *argument)
     }
 }
 
-void do_prompt(CHAR_DATA *ch, char *argument)
+/*
+ * Everything write_prompt() substitutes, so `prompt codes' can list it
+ * without anyone having to read comm.c.  Keep this in step with the switch
+ * in write_prompt(); it is the only copy players ever see.
+ */
+static const struct prompt_code
 {
-   char buf[MAX_STRING_LENGTH];
+    const char *code;
+    const char *what;
+} prompt_codes[] =
+{
+    { "%h", "current hit points"     }, { "%H", "maximum hit points"    },
+    { "%m", "current mana"           }, { "%M", "maximum mana"          },
+    { "%v", "current movement"       }, { "%V", "maximum movement"      },
+    { "%e", "experience to level"    }, { "%X", "total experience"      },
+    { "%g", "gold"                   }, { "%s", "silver"                },
+    { "%r", "room name"              }, { "%R", "room vnum (staff)"     },
+    { "%c", "your regular colour"    }, { "%C", "your highlight colour" },
+    { "%%", "a literal percent sign" }, { NULL, NULL                    }
+};
 
-   if ( argument[0] == '\0' ) {
-        if (IS_SET(ch->comm,COMM_PROMPT)) {
-            send_to_char("You will no longer see prompts.\n\r",ch);
-            REMOVE_BIT(ch->comm,COMM_PROMPT);
-        } else {
-            send_to_char("You will now see prompts.\n\r",ch);
-            SET_BIT(ch->comm,COMM_PROMPT);
+/* Long enough for anything sensible; the old 50 cut formats in half. */
+#define PROMPT_MAX_LENGTH   160
+
+/* What `prompt room on' appends.  Removed verbatim by `prompt room off'. */
+#define PROMPT_ROOM_TOKEN   " [%R]"
+
+static const char *prompt_current( CHAR_DATA *ch )
+{
+    if ( ch->prompt != NULL && ch->prompt[0] != '\0' )
+        return ch->prompt;
+    return default_prompt_text();
+}
+
+/*
+ * Store a format, tidying it the way the old code did: tildes smashed so
+ * the string survives the player file, and a trailing %c so a colour code
+ * in the prompt does not bleed into whatever prints next.
+ */
+static void prompt_store( CHAR_DATA *ch, const char *format )
+{
+    char buf[MAX_INPUT_LENGTH];
+
+    toc_strlcpy( buf, format, sizeof(buf) );
+    smash_tilde( buf );
+    if ( buf[0] != '\0' && str_suffix( "%c", buf ) )
+        toc_strlcat( buf, "%c", sizeof(buf) );
+
+    free_string( ch->prompt );
+    ch->prompt = str_dup( buf );
+}
+
+static bool prompt_strip( char *buf, const char *token )
+{
+    char *at = strstr( buf, token );
+
+    if ( at == NULL )
+        return FALSE;
+
+    memmove( at, at + strlen(token), strlen( at + strlen(token) ) + 1 );
+    return TRUE;
+}
+
+static void prompt_show( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    snprintf( buf, sizeof(buf), "Your prompt: %s\n\r", prompt_current( ch ) );
+    send_to_char( buf, ch );
+
+    if ( ch->prompt == NULL || ch->prompt[0] == '\0' )
+        send_to_char( "  (that is the default -- you have not set one)\n\r", ch );
+
+    snprintf( buf, sizeof(buf), "Prompt display is %s.\n\r",
+              IS_SET(ch->comm, COMM_PROMPT) ? "on" : "off" );
+    send_to_char( buf, ch );
+
+    send_to_char( "\n\r", ch );
+    send_to_char( "  prompt codes          list what you can put in a prompt\n\r", ch );
+    send_to_char( "  prompt <format>       set it\n\r", ch );
+    send_to_char( "  prompt default        back to the standard one\n\r", ch );
+    send_to_char( "  prompt on | off       show or hide the prompt entirely\n\r", ch );
+    if ( IS_IMMORTAL(ch) )
+        send_to_char( "  prompt room on | off  show the room vnum in your prompt\n\r", ch );
+}
+
+static void prompt_show_codes( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    int i;
+    int col = 0;
+
+    send_to_char( "Codes you can use in a prompt:\n\r", ch );
+    for ( i = 0; prompt_codes[i].code != NULL; i++ )
+    {
+        snprintf( buf, sizeof(buf), "  %-4s %-24s",
+                  prompt_codes[i].code, prompt_codes[i].what );
+        send_to_char( buf, ch );
+        if ( ++col % 2 == 0 )
+            send_to_char( "\n\r", ch );
+    }
+    if ( col % 2 != 0 )
+        send_to_char( "\n\r", ch );
+
+    snprintf( buf, sizeof(buf), "\n\rThe default is:  %s\n\r",
+              default_prompt_text() );
+    send_to_char( buf, ch );
+    send_to_char( "Anything else in the format is printed as you typed it.\n\r", ch );
+}
+
+/*
+ * `prompt room on|off' -- a shortcut for immortals, who want the vnum far
+ * more often than anyone else and should not have to retype a whole format
+ * string to get it.  %R itself stays available to everybody.
+ */
+static void prompt_room_toggle( CHAR_DATA *ch, const char *setting )
+{
+    char base[MAX_INPUT_LENGTH];
+    size_t length;
+
+    if ( !IS_IMMORTAL(ch) )
+    {
+        send_to_char( "That shortcut is for staff.  You can still put %R in a format yourself.\n\r", ch );
+        return;
+    }
+
+    toc_strlcpy( base, prompt_current( ch ), sizeof(base) );
+
+    if ( !str_cmp( setting, "on" ) )
+    {
+        if ( strstr( base, "%R" ) != NULL )
+        {
+            send_to_char( "Your prompt already shows the room vnum.\n\r", ch );
+            return;
         }
 
+        /* Trim the trailing blank the default ends with, so the token does
+           not land after a stray space. */
+        length = strlen( base );
+        while ( length > 0 && base[length - 1] == ' ' )
+            base[--length] = '\0';
+
+        toc_strlcat( base, PROMPT_ROOM_TOKEN, sizeof(base) );
+        toc_strlcat( base, " ", sizeof(base) );
+        prompt_store( ch, base );
+        send_to_char( "Your prompt now shows the room vnum.\n\r", ch );
         return;
-   }
+    }
 
-   if( !strcmp( argument, "all" ) || !strcmp( argument, "default")) {
-        buf[0] = '\0';
-   } else {
-      toc_strlcpy( buf, argument, sizeof(buf) );
-      if ( bounded_strlen(buf, sizeof(buf)) > 50 )
-         buf[49] = '\0';
-      smash_tilde( buf );
-      if (str_suffix("%c",buf))
-        toc_strlcat(buf,"%c", sizeof(buf));
+    if ( !str_cmp( setting, "off" ) )
+    {
+        if ( !prompt_strip( base, PROMPT_ROOM_TOKEN )
+          && !prompt_strip( base, "%R" ) )
+        {
+            send_to_char( "Your prompt does not show the room vnum.\n\r", ch );
+            return;
+        }
 
-   }
+        prompt_store( ch, base );
+        send_to_char( "Your prompt no longer shows the room vnum.\n\r", ch );
+        return;
+    }
 
-   free_string( ch->prompt );
-   ch->prompt = str_dup( buf );
-   if (buf[0] == '\0')
-        snprintf(buf, sizeof(buf),"Prompt set to default prompt\n\r");
-   else
-        snprintf(buf, sizeof(buf),"Prompt set to %s\n\r",ch->prompt );
-   send_to_char(buf,ch);
-   return;
+    send_to_char( "Syntax: prompt room on   or   prompt room off\n\r", ch );
+}
+
+void do_prompt(CHAR_DATA *ch, char *argument)
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char *rest;
+
+    /* Bare `prompt' used to switch prompts off, which made the obvious way
+       to ask what your prompt is also the way to lose it.  The help file
+       has always described this behaviour; now the code matches. */
+    if ( argument[0] == '\0' )
+    {
+        prompt_show( ch );
+        return;
+    }
+
+    rest = one_argument( argument, arg1 );
+
+    if ( !str_cmp( arg1, "codes" ) || !str_cmp( arg1, "help" ) )
+    {
+        prompt_show_codes( ch );
+        return;
+    }
+
+    if ( !str_cmp( arg1, "on" ) )
+    {
+        SET_BIT( ch->comm, COMM_PROMPT );
+        send_to_char( "You will now see prompts.\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg1, "off" ) )
+    {
+        REMOVE_BIT( ch->comm, COMM_PROMPT );
+        send_to_char( "You will no longer see prompts.\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg1, "room" ) )
+    {
+        one_argument( rest, arg2 );
+        prompt_room_toggle( ch, arg2 );
+        return;
+    }
+
+    if ( !str_cmp( arg1, "default" ) || !str_cmp( arg1, "all" ) )
+    {
+        free_string( ch->prompt );
+        ch->prompt = str_dup( "" );
+        snprintf( buf, sizeof(buf), "Prompt set back to the default: %s\n\r",
+                  default_prompt_text() );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    /* Anything else is a format string. */
+    if ( strlen( argument ) > PROMPT_MAX_LENGTH )
+    {
+        char trimmed[PROMPT_MAX_LENGTH + 1];
+
+        toc_strlcpy( trimmed, argument, sizeof(trimmed) );
+        prompt_store( ch, trimmed );
+        snprintf( buf, sizeof(buf),
+            "That was longer than %d characters, so it was trimmed.\n\r",
+            PROMPT_MAX_LENGTH );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        prompt_store( ch, argument );
+    }
+
+    snprintf( buf, sizeof(buf), "Prompt set to %s\n\r", ch->prompt );
+    send_to_char( buf, ch );
+    return;
 }
 
 void do_old_prompt(CHAR_DATA *ch, char *argument)

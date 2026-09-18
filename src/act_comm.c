@@ -775,10 +775,6 @@ void do_say( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Code Safety: Truncate argument if too long to prevent issues downstream */
-    if ( strlen(argument) > MAX_INPUT_LENGTH - 100 )
-        argument[MAX_INPUT_LENGTH - 100] = '\0';
-
     /* Code Safety: snprintf */
     snprintf( buf, sizeof(buf), "{%02XYou say '%s'{00\n\r", COL_SAYS, argument );
     act( buf, ch, NULL, NULL, TO_CHAR );

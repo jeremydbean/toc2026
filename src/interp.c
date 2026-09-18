@@ -1326,13 +1326,15 @@ static int wizhelp_compare( const void *lhs, const void *rhs )
 }
 
 /*
- * Every command the character may actually use, in alphabetical order.
+ * The staff commands this character may use, in alphabetical order.
  *
- * This used to list LEVEL_HERO and above only, straight out of the table.
- * The table hoists a handful of entries to the front so they win prefix
- * matching -- `goto', `iportal', `sockets' and friends -- so the listing
- * opened with those and nothing was where you would look for it.  Sorting
- * is what makes a list this long usable at all.
+ * This used to print straight out of the table, and the table hoists a
+ * handful of entries to the front so they win prefix matching -- `goto',
+ * `iportal', `sockets' and friends.  The listing therefore opened with
+ * those and nothing was where you would look for it, which is why `smash'
+ * and `iportal' both read as missing when they had been there all along.
+ * Sorting is the fix; the LEVEL_HERO floor stays, because the couple of
+ * hundred mortal commands are not what anyone opens wizhelp for.
  */
 #define WIZHELP_MAX_CMDS 1024
 
@@ -1347,7 +1349,8 @@ void do_wizhelp( CHAR_DATA *ch, char *argument )
 
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
-	if ( cmd_table[cmd].level <= get_trust( ch )
+	if ( cmd_table[cmd].level >= LEVEL_HERO
+	&&   cmd_table[cmd].level <= get_trust( ch )
 	&&   cmd_table[cmd].show
 	&&   count < WIZHELP_MAX_CMDS )
 	    order[count++] = cmd;
@@ -1361,7 +1364,7 @@ void do_wizhelp( CHAR_DATA *ch, char *argument )
 
     qsort( order, (size_t) count, sizeof(order[0]), wizhelp_compare );
 
-    snprintf( buf, sizeof(buf), "%d commands available to you:\n\r", count );
+    snprintf( buf, sizeof(buf), "%d staff commands available to you:\n\r", count );
     send_to_char( buf, ch );
 
     col = 0;

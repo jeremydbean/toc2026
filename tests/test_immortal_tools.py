@@ -53,7 +53,7 @@ def immortal(mud: LiveMud, name: str, level: int = IMMORTAL_LEVEL) -> None:
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class WizhelpTests(unittest.TestCase):
-    def test_listing_is_sorted_and_covers_mortal_commands_too(self) -> None:
+    def test_listing_is_sorted_and_lists_staff_commands_only(self) -> None:
         with LiveMud() as mud:
             immortal(mud, "Zwizone")
             with mud.connect(timeout=120) as client:
@@ -62,21 +62,24 @@ class WizhelpTests(unittest.TestCase):
 
             listed = [name for _, name in re.findall(r"\[\s*(\d+)\] (\S+)", output)]
 
-            self.assertGreater(len(listed), 200,
-                               "wizhelp should now cover every usable command")
+            self.assertGreater(len(listed), 80,
+                               "wizhelp should cover the staff commands")
+            self.assertTrue(all(int(lv) >= 51 for lv, _ in
+                                re.findall(r"\[\s*(\d+)\] (\S+)", output)),
+                            "mortal commands do not belong in wizhelp")
             self.assertEqual(listed, sorted(listed),
                              "the listing has to be alphabetical to be usable")
 
-            # The two that prompted this: both were present before but
+            # The ones that prompted this: all present before, but
             # buried in the hoisted block at the top of the table.
             for command in ("smash", "iportal", "spellup", "spellpurge"):
                 self.assertIn(command, listed)
 
-            # Mortal commands are in range now, not just LEVEL_HERO and up.
-            self.assertIn("look", listed)
+            # ...and one command per name, with no handler listed twice.
+            self.assertEqual(len(listed), len(set(listed)))
 
     def test_a_lower_ranked_immortal_sees_less(self) -> None:
-        """The trust ceiling still applies -- the floor is what was removed."""
+        """The trust ceiling still applies, as does the LEVEL_HERO floor."""
         with LiveMud() as mud:
             immortal(mud, "Zwiztwo", level=62)
             with mud.connect(timeout=120) as client:

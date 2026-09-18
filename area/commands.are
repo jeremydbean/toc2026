@@ -441,15 +441,38 @@ See also: PASSWORD, QUIT, SAVE
 
 0 PROMPT~
 Syntax: prompt
+Syntax: prompt codes
 Syntax: prompt <format string>
-Syntax: prompt all
+Syntax: prompt default
+Syntax: prompt on | off
+Syntax: prompt room on | off      (staff)
 
-Customizes the prompt shown at the bottom of your screen.  PROMPT with no
-arguments shows your current setting; PROMPT ALL sets a detailed default.
-Placeholders such as %h for hit points, %m for mana, %v for movement, %g for
-gold, and %r for room name may be used to build your own display.
+Customizes the status line shown at the bottom of your screen.
 
-See also: COLOR, COMPACT, BRIEF
+PROMPT on its own shows the prompt you are using now and what else you can
+do with the command.  PROMPT CODES lists every placeholder, so you do not
+have to come back to this help file to build one.
+
+The codes are %h and %H for current and maximum hit points, %m and %M for
+mana, %v and %V for movement, %e for experience to level, %X for total
+experience, %g for gold, %s for silver, %r for the room name, %c and %C for
+your regular and highlight colours, and %% for a literal percent sign.
+Everything else is printed as you typed it.
+
+%R shows the room vnum and works for staff only; in a mortal's prompt it
+renders as nothing.
+
+  prompt %C<%hhp %mm %vmv>%c     the default
+  prompt <%h/%H hp %m/%M mana>   current and maximum together
+  prompt <%hhp %mm %vmv> [%R]    with the room vnum on the end
+
+PROMPT DEFAULT restores the standard prompt.  PROMPT OFF hides the prompt
+entirely and PROMPT ON brings it back.
+
+Staff can use PROMPT ROOM ON and PROMPT ROOM OFF to add or remove the room
+vnum without retyping the whole format.  Anyone can use %R directly.
+
+See also: COLOR, COMPACT, BRIEF, HOLYLIGHT
 ~
 
 0 QUESTION~

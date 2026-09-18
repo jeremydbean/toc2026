@@ -338,6 +338,12 @@ void    run_web_command         ( char *argument );
 static void process_web_admin_action ( char *line );
 void    write_prompt            ( DESCRIPTOR_DATA *d );
 static const char default_prompt[] = "%C<%hhp %mm %vmv>%c ";
+
+/* do_prompt shows this, and builds on it when extending an unset prompt. */
+const char *default_prompt_text( void )
+{
+    return default_prompt;
+}
 static void prompt_append_text( char *buf, size_t buflen, const char *text );
 static void prompt_append_number( char *buf, size_t buflen, long value );
 static long prompt_exp_to_level( CHAR_DATA *owner );
@@ -1445,19 +1451,27 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
     /* Append to any partial input already accumulated in inbuf. */
     iStart = strlen_to_int( d->inbuf );
 
-    if ( iStart >= MAX_INPUT_LENGTH - 2 )
+    if ( iStart >= (int)sizeof(d->inbuf) - 2 )
     {
-        snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s input overflow!", d->host );
+        /* A full buffer with no line ending anywhere in it. Drop the
+           partial line, not the connection: losing your link because you
+           pasted something long is a worse outcome than losing the paste. */
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+            "%s input overflow, discarding partial line.", d->host );
         log_string( log_buf );
-        write_to_buffer( d, "\n\r*** PUT A LID ON IT!!! ***\n\r", 0 );
-        return FALSE;
+        write_to_buffer( d,
+            "\n\rThat line was too long to read at all.  Try a shorter one.\n\r", 0 );
+        d->inbuf[0] = '\0';
+        iStart = 0;
     }
 
     for ( ; ; )
     {
         ssize_t nRead;
         char raw[MAX_INPUT_LENGTH];
-        int space_left = MAX_INPUT_LENGTH - 1 - iStart;
+        /* inbuf is 4 * MAX_INPUT_LENGTH and the loop used to fill a quarter
+           of it, so a long paste overflowed space that was already there. */
+        int space_left = (int)sizeof(d->inbuf) - 1 - iStart;
 
         if ( space_left <= 0 )
             break;
@@ -1536,7 +1550,15 @@ bool read_from_buffer( DESCRIPTOR_DATA *d )
     {
         if ( k >= MAX_INPUT_LENGTH - 2 )
         {
-            write_to_buffer( d, "Line too long.\n\r", 0 );
+            char notice[MAX_INPUT_LENGTH];
+
+            /* The first k characters are kept and go on to be executed, so
+               say so: a bare "Line too long." reads like the whole thing
+               was thrown away. */
+            snprintf( notice, sizeof(notice),
+                "\n\rThat was longer than %d characters; the rest was not sent.\n\r",
+                MAX_INPUT_LENGTH - 2 );
+            write_to_buffer( d, notice, 0 );
 
 	    /* skip the rest of the line */
 	    for ( ; d->inbuf[i] != '\0'; i++ )
@@ -1937,7 +1959,10 @@ void write_prompt( DESCRIPTOR_DATA *d )
                 prompt_append_text( prompt_buf, sizeof(prompt_buf), display->in_room->name );
             break;
         case 'R':
-            if ( display->in_room != NULL )
+            /* Builder information.  do_exits hides vnums from mortals for
+               the same reason; a mortal's %R renders as nothing rather
+               than an error, so an old prompt keeps working. */
+            if ( display->in_room != NULL && owner != NULL && IS_IMMORTAL(owner) )
                 prompt_append_number( prompt_buf, sizeof(prompt_buf), display->in_room->vnum );
             break;
         case 'c':

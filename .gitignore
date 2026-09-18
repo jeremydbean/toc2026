@@ -1,5 +1,6 @@
 # Prerequisites
 *.o
+*.d
 merc
 # CMake writes bin/rom at the repository root.
 bin/
