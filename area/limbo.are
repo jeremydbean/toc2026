@@ -790,12 +790,23 @@ IK AB 0 NS
 #98
 angel hermie herbie girlfriend spellup~
 Hermie~
-Hermie the Angel is here, taking requests.
+Hermie the Angel stands here with a notebook, taking requests.
 ~
 Hermie is the reason Herbie is always running late.  Where he tears around
 the world patching people up one emergency at a time, she picked a spot,
-put her feet down, and started keeping a list.  Talk to her and she will
-read it out; say the word and she will hand you whatever is on it.
+put her feet down, and started keeping a list.
+
+She casts spells on whoever asks, one at a time, and each one lasts thirty
+ticks.  Talk to her with SAY:
+
+    say hermie        she reads out her list
+    say sanctuary     she casts that one on you
+    say 5             the same thing, chosen by number
+    say all           everything on the list, one after another
+
+She answers to her name, and to 'menu', 'list', 'hello' or 'help'.  Anything
+else said in the room she stays out of, so you can hold a conversation in
+front of her without being interrupted.
 ~
 unique~
 ABQ CDFHJT 1000 S

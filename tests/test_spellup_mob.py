@@ -92,6 +92,23 @@ class SpellupMobTests(unittest.TestCase):
                     self.assertIn(f"for {DURATION} hours", line,
                                   f"{spell} did not get the flat duration")
 
+    def test_looking_at_her_explains_how_to_use_her(self) -> None:
+        """A player's first move is to look at her, so the syntax lives there."""
+        with LiveMud() as mud:
+            immortal(mud, "Zspellsev")
+            with mud.connect(timeout=120) as client:
+                login(client, "Zspellsev", PASSWORD)
+                run(client, "spellup", settle=3.0)
+
+                described = run(client, "look hermie", settle=3.0)
+                self.assertIn("say hermie", described)
+                self.assertIn("say all", described)
+                self.assertIn("thirty", described)
+
+                # And the room line points at her rather than just naming her.
+                room = run(client, "look", settle=2.0)
+                self.assertIn("taking requests", room)
+
     def test_she_stays_out_of_conversations_she_is_not_in(self) -> None:
         """Otherwise she is unusable anywhere players actually gather."""
         with LiveMud() as mud:

@@ -9017,8 +9017,9 @@ static void spellup_show_menu( CHAR_DATA *mob, CHAR_DATA *ch )
     }
 
     snprintf( buf, sizeof(buf),
-        "  Say '{%02Xall{00' for the lot, or '{%02Xmenu{00' to hear this again.\n\r",
-        COL_SAYS, COL_SAYS );
+        "\n\r  Say the number or the name -- '{%02Xsay 5{00' or '{%02Xsay sanctuary{00'.\n\r"
+        "  Say '{%02Xall{00' for the whole list, or '{%02Xmenu{00' to hear it again.\n\r",
+        COL_SAYS, COL_SAYS, COL_SAYS, COL_SAYS );
     send_to_char( buf, ch );
 }
 
@@ -9222,7 +9223,7 @@ void do_spellup( CHAR_DATA *ch, char *argument )
 
     act( "The air warms, and $n steps out of it with a notebook under $s arm.",
         mob, NULL, NULL, TO_ROOM );
-    act( "$n says 'Talk to me and I will read you the list.'",
+    act( "$n says 'Say my name and I will read you the list.  Look at me for the details.'",
         mob, NULL, NULL, TO_ROOM );
 
     snprintf( buf, sizeof(buf), "%s is now taking requests here.\n\r",
