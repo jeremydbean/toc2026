@@ -496,7 +496,10 @@ summary:focus-visible,
 .segmented-control {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Sized from however many tabs are present. It was pinned at two, so
+       adding the Help tab pushed the third one out of the control. */
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
     padding: 3px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -505,6 +508,10 @@ summary:focus-visible,
 
 .segmented-control button {
     min-height: 32px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     border: 0;
     border-radius: 4px;
     background: transparent;
