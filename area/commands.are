@@ -921,7 +921,7 @@ a weapon to attempt it.
 
 Two things stop a disarm outright.  A weapon under BEWITCH WEAPON cannot
 be taken from its owner's hand at all.  A warrior/warrior with HERO'S GRIP
-may hold on to theirs, and at 100% always will.
+may hold on to theirs, and once fully practiced always will.
 
 See also: BASH, TRIP, HERO'S GRIP, BEWITCH WEAPON
 ~
@@ -933,8 +933,8 @@ Warrior/warrior only.  Available from level 35.
 
 A warrior who has spent their whole career with a weapon in hand learns
 to keep it there.  Hero's grip is a chance, every time somebody tries to
-disarm you, that the weapon simply does not leave your hand.  At 100% it
-never does.
+disarm you, that the weapon simply does not leave your hand.  When you are
+fully practiced in it, you cannot be disarmed.
 
   You wrench at Karg's weapon, but he grips it like iron!
 
@@ -949,13 +949,13 @@ follower, or on anyone else, and it does not stack with anything.
 
 Raising it:
 
-  Practice takes it to 75%, ten points at a time, which is far faster
-  than most skills -- eight sessions from scratch.
+  A guildmaster will take you a good way, and quickly -- further per
+  session than most skills.
 
-  The last 25% cannot be taught.  It comes from being disarmed at and
-  holding on, and it comes slowly: this is a hard skill to finish,
-  comparable to CONFUSE.  Every disarm attempt against you is a chance
-  to improve, whether you keep the weapon or lose it.
+  Past that point there is nothing left to teach.  The rest is earned in
+  a fight, by having your weapon grabbed at and keeping hold of it, and
+  it is a long road.  Every attempt against you is a chance to improve,
+  whether you keep the weapon or lose it.
 
 Who trains it:
 
@@ -964,9 +964,9 @@ Who trains it:
   Dolonar the blacksmith -- practice
   Breark the troll       -- practice
 
-Every warrior/warrior has hero's grip at 1% already, including characters
-made before it existed.  You do not need to go and find it; you need to
-go and practice it.
+Every warrior/warrior already has hero's grip, including characters made
+before it existed.  You do not need to go and find it; you need to go and
+practice it.
 
 See also: DISARM, BEWITCH WEAPON, PRACTICE, PRACTICELIST, GAIN
 ~
