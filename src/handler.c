@@ -614,6 +614,29 @@ void reset_char(CHAR_DATA *ch)
 
 
 /*
+ * Is victim shielded from ch by rank?
+ *
+ * The usual test is `get_trust(victim) >= get_trust(ch)', which at
+ * MAX_LEVEL refuses an implementor acting on another implementor, because
+ * 70 >= 70. That left a whole class of command unusable on the people most
+ * likely to need it, so implementors are exempt.
+ *
+ * This answers rank only. Commands that should not be aimed at yourself
+ * keep their own `victim == ch' guard.
+ */
+bool rank_protects( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    if ( ch == NULL || victim == NULL )
+        return false;
+
+    if ( get_trust( ch ) >= MAX_LEVEL )
+        return false;
+
+    return get_trust( victim ) >= get_trust( ch );
+}
+
+
+/*
  * Retrieve a character's trusted level for permission checking.
  */
 int get_trust( CHAR_DATA *ch )

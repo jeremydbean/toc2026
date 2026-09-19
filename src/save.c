@@ -1109,11 +1109,13 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->race				= (sh_int)(race_lookup("human"));
     ch->affected_by			= 0;
     ch->affected_by2			= 0;
+    /* PLR_DAMAGE_NUMBERS is deliberately absent: a new player should not
+       have to work out how to switch off a combat log full of figures they
+       never asked for. `damagenumbers' turns them on. */
     ch->act				= PLR_NOSUMMON
 					| PLR_AUTOASSIST | PLR_AUTOEXIT
 					| PLR_AUTOLOOT   | PLR_AUTOSAC
-					| PLR_AUTOGOLD   | PLR_AUTOSPLIT
-          | PLR_DAMAGE_NUMBERS;
+					| PLR_AUTOGOLD   | PLR_AUTOSPLIT;
     ch->comm				= COMM_COMBINE
 					| COMM_PROMPT;
     ch->invis_level			= 0;

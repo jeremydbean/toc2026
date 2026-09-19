@@ -356,7 +356,7 @@ void do_nochannels( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;
@@ -400,7 +400,7 @@ void do_notitle( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if( get_trust( victim ) >= get_trust(ch ) ) {
+    if( rank_protects( ch, victim ) ) {
 	send_to_char("You Failed.\n\r",ch);
 	return;
     }
@@ -442,7 +442,7 @@ void do_whiner( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( (get_trust( victim ) >= get_trust( ch ) )
+    if ( (rank_protects( ch, victim ) )
 	&& (victim != ch))
     {
 	send_to_char( "You failed.\n\r", ch );
@@ -489,7 +489,7 @@ void do_warn( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( get_trust( victim ) >= get_trust( ch ) )
+    if ( ( rank_protects( ch, victim ) )
 	&& ( victim != ch ))
     {
 	send_to_char( "You Failed.\n\r", ch );
@@ -567,7 +567,7 @@ void do_jail( CHAR_DATA *ch, char *argument )
          return;
     }
 
-    if ( ( get_trust( victim ) >= get_trust( ch ) )
+    if ( ( rank_protects( ch, victim ) )
 	&&( victim != ch ) )
     {
 	send_to_char( "You failed.\n\r",ch );
@@ -636,7 +636,7 @@ void do_nonote( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( (get_trust( victim ) >= get_trust( ch ) )
+    if ( (rank_protects( ch, victim ) )
 	&& (victim != ch))
     {
 	send_to_char( "You failed.\n\r", ch );
@@ -752,7 +752,7 @@ void do_deny( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;
@@ -932,7 +932,7 @@ void do_pardon( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "freeze" ) )
     {
-	if ( get_trust(victim) >= get_trust(ch) )
+	if ( rank_protects( ch, victim ) )
 	{
 	    send_to_char( "You failed.\n\r", ch );
 	    return;
@@ -947,7 +947,7 @@ void do_pardon( CHAR_DATA *ch, char *argument )
 
     if ( !str_cmp( arg2, "deny" ) )
     {
-	if ( get_trust(victim) >= get_trust(ch) )
+	if ( rank_protects( ch, victim ) )
 	{
 	    send_to_char( "You failed.\n\r", ch );
 	    return;
@@ -2771,7 +2771,7 @@ void do_snoop( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;
@@ -3262,7 +3262,7 @@ void do_purge( CHAR_DATA *ch, char *argument )
 	  return;
 	}
 
-	if (get_trust(ch) <= get_trust(victim))
+	if (rank_protects( ch, victim ))
 	{
 	  send_to_char("Maybe that wasn't a good idea...\n\r",ch);
 	  snprintf(buf, sizeof(buf),"%s tried to purge you!\n\r",ch->name);
@@ -3451,6 +3451,27 @@ void do_trust( CHAR_DATA *ch, char *argument )
     snprintf(buf, sizeof(buf),"%s is now trusted at level %d.\n\r",victim->name, level);
     send_to_char(buf,ch);
     victim->trust = clamp_sh_int( level );
+
+    /* Their access just changed; nothing used to say so, to them or to
+       anyone else online. */
+    if ( level == 0 )
+        send_to_char( "Your trust has been reset to your own level.\n\r", victim );
+    else
+    {
+        char note[MAX_STRING_LENGTH];
+
+        snprintf( note, sizeof(note),
+            "You have been trusted at level %d.\n\r", level );
+        send_to_char( note, victim );
+    }
+
+    {
+        char note[MAX_STRING_LENGTH];
+
+        snprintf( note, sizeof(note), "%s set %s's trust to %d.",
+                  ch->name, victim->name, level );
+        wizinfo( note, LEVEL_IMMORTAL );
+    }
     return;
 }
 
@@ -3576,7 +3597,7 @@ void do_herbie( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( victim->level >= ch->level && victim != ch )
+    if ( rank_protects( ch, victim ) && victim != ch )
     {
         send_to_char( "You cannot use herbie on someone of equal or higher level.\n\r", ch );
         return;
@@ -3676,7 +3697,7 @@ void do_freeze( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;
@@ -3784,7 +3805,7 @@ void do_noemote( CHAR_DATA *ch, char *argument )
     }
 
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;
@@ -3834,7 +3855,7 @@ void do_noshout( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
 	send_to_char( "You failed.\n\r", ch );
 	return;
@@ -4962,7 +4983,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( get_trust(victim) >= get_trust(ch) )
+	if ( rank_protects( ch, victim ) )
 	{
 	    send_to_char("You failed.\n\r", ch);
 	    return;
@@ -4997,7 +5018,7 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( get_trust(victim) >= get_trust(ch) )
+	if ( rank_protects( ch, victim ) )
 	{
 	    send_to_char("You failed.\n\r", ch);
 	    return;
@@ -5803,6 +5824,7 @@ static const struct newbie_item
 };
 
 #define NEWBIE_PACK_VNUM 29032
+#define NEWBIE_PACK_PLATINUM 100
 
 static OBJ_DATA *make_newbie_pack( CHAR_DATA *ch )
 {
@@ -5826,6 +5848,7 @@ static OBJ_DATA *make_newbie_pack( CHAR_DATA *ch )
     pack->short_descr = str_dup( "A *NEWBIE* pack!" );
     free_string( pack->description );
     pack->description = str_dup( "A *NEWBIE* pack! has been left here." );
+    pack->level = 1;
 
     missing = 0;
     for ( entry = 0; newbie_contents[entry].vnum != 0; entry++ )
@@ -5848,7 +5871,23 @@ static OBJ_DATA *make_newbie_pack( CHAR_DATA *ch )
             REMOVE_BIT( item->extra_flags, ITEM_NODROP );
             REMOVE_BIT( item->extra_flags, ITEM_NOREMOVE );
 
+            /* And usable on arrival: several of these sit above level 1, so
+               the character the pack is for could carry them and not wear
+               them. */
+            item->level = 1;
+
             obj_to_obj( item, pack );
+        }
+    }
+
+    /* Something to spend before they can earn it. */
+    {
+        OBJ_DATA *coins = create_money( NEWBIE_PACK_PLATINUM, TYPE_PLATINUM );
+
+        if ( coins != NULL )
+        {
+            coins->level = 1;
+            obj_to_obj( coins, pack );
         }
     }
 
@@ -6381,7 +6420,7 @@ void do_force( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( get_trust( victim ) >= get_trust( ch ) )
+	if ( rank_protects( ch, victim ) )
 	{
 	    send_to_char( "Do it yourself!\n\r", ch );
 	    return;
@@ -6842,9 +6881,14 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
 
     if ( immediate )
     {
+        char note[MAX_STRING_LENGTH];
+
         victim->pcdata->psionic_grant_pending = false;
         grant_psionics( victim, 100, true );
         send_to_char( "Psionics granted immediately.\n\r", ch );
+        snprintf( note, sizeof(note), "%s granted %s psionics immediately (%s).",
+                  ch->name, victim->name, list_buf );
+        wizinfo( note, LEVEL_IMMORTAL );
         return;
     }
 
@@ -6853,6 +6897,14 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     victim->pcdata->last_level = 0;
     send_to_char( "Grant flag applied. They will receive psionics on their next level check.\n\r", ch );
     send_to_char( "Your mind tingles with unfamiliar potential.\n\r", victim );
+
+    {
+        char note[MAX_STRING_LENGTH];
+
+        snprintf( note, sizeof(note), "%s flagged %s for psionics (%s).",
+                  ch->name, victim->name, list_buf );
+        wizinfo( note, LEVEL_IMMORTAL );
+    }
 }
 
 
@@ -7105,7 +7157,7 @@ void do_swedish( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if( get_trust( victim ) >= get_trust( ch ) ) {
+    if( rank_protects( ch, victim ) ) {
 	send_to_char("You failed\n\r",ch);
 	return;
     }
@@ -7584,7 +7636,7 @@ void do_stasis( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
         send_to_char( "You failed.\n\r", ch );
         return;
@@ -7683,7 +7735,7 @@ void do_rename( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
         send_to_char( "You failed.\n\r", ch );
         return;
@@ -7787,7 +7839,7 @@ void do_mute( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
         send_to_char( "You failed.\n\r", ch );
         return;
@@ -8627,7 +8679,7 @@ void do_prestore( CHAR_DATA *ch, char *argument )
                 return;
             }
 
-            if ( get_trust( victim ) >= get_trust( ch ) )
+            if ( rank_protects( ch, victim ) )
             {
                 send_to_char( "You failed.\n\r", ch );
                 return;
@@ -8777,7 +8829,7 @@ void do_petrify( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( rank_protects( ch, victim ) )
     {
         send_to_char( "You failed.\n\r", ch );
         return;
@@ -8939,6 +8991,14 @@ void do_empower( CHAR_DATA *ch, char *argument )
 
     act( "$n is surrounded by a blazing divine aura!", victim, NULL, NULL, TO_ROOM );
     send_to_char( "You are filled with divine power -- all buffs applied!\n\r", victim );
+    {
+        char note[MAX_STRING_LENGTH];
+
+        snprintf( note, sizeof(note), "%s empowered %s (%s).",
+            ch->name, victim->name,
+            duration == -1 ? "permanent" : "temporary" );
+        wizinfo( note, LEVEL_IMMORTAL );
+    }
     if ( duration == -1 )
         snprintf( buf, sizeof(buf), "%s has been permanently empowered.\n\r", victim->name );
     else
@@ -9036,6 +9096,14 @@ void do_titanic( CHAR_DATA *ch, char *argument )
     victim->mana = victim->max_mana;
     victim->move = victim->max_move;
 
+    {
+        char note[MAX_STRING_LENGTH];
+
+        snprintf( note, sizeof(note), "%s made %s titanic (%s).",
+            ch->name, victim->name,
+            duration == -1 ? "permanent" : "temporary" );
+        wizinfo( note, LEVEL_IMMORTAL );
+    }
     act( "$n grows to titanic proportions!", victim, NULL, NULL, TO_ROOM );
     send_to_char( "Your body surges with titanic power -- HP, mana, and move multiplied, and you gain 50% bonus experience!\n\r", victim );
     if ( duration == -1 )
@@ -9465,6 +9533,7 @@ void do_spellup( CHAR_DATA *ch, char *argument )
     snprintf( buf, sizeof(buf), "Spellup: %s placed in room %d by %s.",
         mob->short_descr, ch->in_room->vnum, ch->name );
     log_string( buf );
+    wizinfo( buf, LEVEL_IMMORTAL );
 }
 
 
@@ -9517,6 +9586,7 @@ void do_spellpurge( CHAR_DATA *ch, char *argument )
     snprintf( buf, sizeof(buf), "Spellup: %s purged %d spellup mob%s worldwide.",
               ch->name, count, count == 1 ? "" : "s" );
     log_string( buf );
+    wizinfo( buf, LEVEL_IMMORTAL );
 }
 
 

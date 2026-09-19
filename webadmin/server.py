@@ -200,6 +200,14 @@ _HOST_RESOURCE_RATES: Dict[str, Optional[float]] = {
 
 MUD_HOST = os.getenv("MUD_HOST", "127.0.0.1")
 MUD_PORT = int(os.getenv("MUD_PORT", 9000))
+
+# What the dashboard *shows* as the game endpoint. MUD_HOST is where this
+# service dials, which is loopback because both run on the same box -- so
+# displaying it told a reader nothing they could connect to. The DDNS name
+# is the default because it follows the external IP instead of going stale
+# the next time the lease changes.
+MUD_PUBLIC_HOST = os.getenv("MUD_PUBLIC_HOST", "toc.jeremybean.com")
+MUD_PUBLIC_PORT = int(os.getenv("MUD_PUBLIC_PORT", MUD_PORT))
 WEB_ADMIN_PORT = int(os.getenv("WEB_ADMIN_PORT", 9001))
 QUEUE_LINE_MAX_BYTES = 4094
 COMMAND_MAX_LENGTH = 255
@@ -1293,7 +1301,7 @@ async def get_config(request: Request) -> Dict[str, Any]:
         "version": app.version,
         "admin_token_configured": bool(_WEB_ADMIN_TOKEN),
         "local_admin_unlock": local_admin_request_allowed(request),
-        "mud_endpoint": f"{MUD_HOST}:{MUD_PORT}",
+        "mud_endpoint": f"{MUD_PUBLIC_HOST}:{MUD_PUBLIC_PORT}",
         "client_path": "/client",
         "game_websocket_auth": "same-origin",
         "player_data_protected": True,

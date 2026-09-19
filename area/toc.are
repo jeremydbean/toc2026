@@ -43,7 +43,10 @@ type: commands.  To see basic information about yourself type: score.
 
 To see a lot more useful information, type: help beginners
 
-See also: BEGINNERS, RULES, GREETING
+To change how the game looks and behaves for you -- colour, your prompt,
+damage numbers, automatic looting and the rest -- type: help new
+
+See also: NEW, BEGINNERS, RULES, GREETING
 ~
 
 1 IGNORE~

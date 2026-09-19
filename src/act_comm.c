@@ -1898,7 +1898,7 @@ void do_order( CHAR_DATA *ch, char *argument )
 	}
 
 	if ( !IS_AFFECTED(victim, AFF_CHARM) || victim->master != ch 
-	|| (IS_IMMORTAL(victim) && get_trust(victim) >= get_trust(ch)))
+	|| (IS_IMMORTAL(victim) && rank_protects( ch, victim )))
 	{
 	    send_to_char( "Do it yourself!\n\r", ch );
 	    return;

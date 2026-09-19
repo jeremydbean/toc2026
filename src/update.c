@@ -1372,12 +1372,10 @@ void char_update( void )
 	   && dice(1,50) == 50
 	   && ch->in_room !=NULL)
 	{
-	  char buf[MAX_INPUT_LENGTH];
-
+	  /* A mob catching this from a dice roll in the tick is not news,
+	     and it fired often enough to bury what was. */
 	  SET_BIT(ch->act2, ACT2_LYCANTH);
 	  ch->timer = 500;
-	  snprintf( buf, sizeof(buf),"%s is afflicted with Lycanthropy",ch->name);
-	  wizinfo(buf,LEVEL_IMMORTAL);
 	}
 
 	if(IS_AFFECTED2(ch, AFF2_NO_RECOVER) )

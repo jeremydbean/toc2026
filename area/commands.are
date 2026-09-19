@@ -439,6 +439,52 @@ are permanently lost.
 See also: PASSWORD, QUIT, SAVE
 ~
 
+0 DAMAGENUMBERS DAMAGE~
+Syntax: damagenumbers
+
+Toggles the exact damage figure alongside each combat message. With it off
+you see "You slash the goblin hard" and nothing more; with it on you also
+see the number behind that description.
+
+Off for new characters. The wording on its own tells you how hard you hit
+relative to your own attacks, so the numbers are for people who want to
+compare weapons and tune gear rather than read a fight.
+
+See also: NEW, AUTOLIST, CONFIG
+~
+
+0 NEW SETTINGS CUSTOMIZE OPTIONS~
+Everything you can change about how the game reads. None of it affects the
+world -- only what your own screen shows you.
+
+Display
+  COLOR           turn colour on or off, and pick which colours
+  PROMPT          the status line at the bottom; PROMPT CODES lists the
+                  placeholders, PROMPT DEFAULT puts it back
+  BRIEF           short room descriptions once you know your way around
+  COMPACT         drop the blank line between messages
+  DAMAGENUMBERS   exact damage figures in combat (off by default)
+  AUTOEXIT        list the exits every time you enter a room
+
+Automatic actions
+  AUTOLOOT        take from corpses you kill
+  AUTOGOLD        take coins from corpses you kill
+  AUTOSAC         sacrifice the corpse afterwards
+  AUTOSPLIT       share coins with your group
+  AUTOASSIST      join a fight your group is already in
+  WIMPY           flee automatically below a set number of hit points
+
+Channels and privacy
+  CHANNELS        which channels you are listening to
+  NOSUMMON        stop other players summoning you (on by default)
+  NOFOLLOW        stop other players following you
+
+Type HELP followed by any of those for the detail. Your settings are saved
+with your character, so you only need to do this once.
+
+See also: DAMAGENUMBERS, PROMPT, COLOR, CHANNELS, SCORE
+~
+
 0 PROMPT~
 Syntax: prompt
 Syntax: prompt codes

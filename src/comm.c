@@ -1346,8 +1346,15 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
         /* Store numerical IP for possible bans/logging */
         dnew->ip = sock.sin_addr.s_addr;
         
-        snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s", inet_ntoa(sock.sin_addr));
-        log_string(log_buf);
+        /* The healthcheck connects from loopback every two minutes.
+           Logging that pair of lines each time buries the entries that
+           matter under roughly 1,400 a day. */
+        if ( !is_loopback_ip( dnew->ip ) )
+        {
+            snprintf(log_buf, 2 * MAX_INPUT_LENGTH, "Sock.sinaddr:  %s",
+                     inet_ntoa(sock.sin_addr));
+            log_string(log_buf);
+        }
     }
 
     return dnew;
@@ -1503,7 +1510,10 @@ bool read_from_descriptor( DESCRIPTOR_DATA *d )
         }
         else if ( nRead == 0 )
         {
-            log_string( "EOF encountered on read." );
+            /* Same reasoning as the connect line: a loopback probe
+               closing is not news. Anything else still is. */
+            if ( !is_loopback_ip( d->ip ) )
+                log_string( "EOF encountered on read." );
             return FALSE;
         }
         else if ( errno == EWOULDBLOCK )
@@ -1871,6 +1881,18 @@ static void safe_strcat( char *dest, size_t dest_size, const char *src )
 
     strncat( dest, src, dest_size - dest_len - 1 );
 }
+
+/*
+ * Is this address on 127/8?
+ *
+ * Used to keep the healthcheck's two-minute connect/disconnect cycle out of
+ * the log, and to decide whether a PROXY header may be trusted.
+ */
+bool is_loopback_ip( uint32_t ip )
+{
+    return ip != 0 && ( ntohl( ip ) >> 24 ) == 127;
+}
+
 
 void write_prompt( DESCRIPTOR_DATA *d )
 {
@@ -3853,7 +3875,7 @@ bool proxy_header_accept( DESCRIPTOR_DATA *d, const char *line )
         return FALSE;
 
     /* Trust the header only from the loopback interface. */
-    if ( d->ip == 0 || ( ntohl(d->ip) >> 24 ) != 127 )
+    if ( d->ip == 0 || !is_loopback_ip( d->ip ) )
         return FALSE;
 
     p = line + strlen( "PROXY TCP4 " );
