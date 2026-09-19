@@ -4213,6 +4213,9 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	send_to_char( "    train thirst drunk hunger timer hunt annoy\n\r",ch );
 	send_to_char( "    guild castle castlehead mountable were\n\r",	ch );
 	send_to_char( "    pkiller excon wanted freeze deny bank dcount pkills\n\r", ch );
+	send_to_char( "    move maxmove exp hitroll damroll armor wimpy\n\r", ch );
+	send_to_char( "  Carry capacity is computed from str, dex and level;\n\r", ch );
+	send_to_char( "  set those rather than looking for a carry field.\n\r", ch );
 	return;
     }
 
@@ -5081,6 +5084,106 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( !str_cmp( arg2, "move" ) )
+    {
+	if ( value < 0 || value > 30000 )
+	{
+	    send_to_char( "Move range is 0 to 30000.\n\r", ch );
+	    return;
+	}
+	victim->move = clamp_sh_int( value );
+	snprintf(buf, sizeof(buf), "%s movement set to %d.\n\r", victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "maxmove" ) )
+    {
+	if ( value < 1 || value > 30000 )
+	{
+	    send_to_char( "Maximum move range is 1 to 30000.\n\r", ch );
+	    return;
+	}
+	victim->max_move = clamp_sh_int( value );
+	if ( victim->move > victim->max_move )
+	    victim->move = victim->max_move;
+	snprintf(buf, sizeof(buf), "%s maximum movement set to %d.\n\r",
+		 victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "exp" ) )
+    {
+	if ( value < 0 )
+	{
+	    send_to_char( "Experience cannot be negative.\n\r", ch );
+	    return;
+	}
+	victim->exp = value;
+	snprintf(buf, sizeof(buf), "%s experience set to %d.\n\r", victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "hitroll" ) )
+    {
+	if ( value < -500 || value > 500 )
+	{
+	    send_to_char( "Hitroll range is -500 to 500.\n\r", ch );
+	    return;
+	}
+	victim->hitroll = clamp_sh_int( value );
+	snprintf(buf, sizeof(buf), "%s hitroll set to %d.\n\r", victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "damroll" ) )
+    {
+	if ( value < -500 || value > 500 )
+	{
+	    send_to_char( "Damroll range is -500 to 500.\n\r", ch );
+	    return;
+	}
+	victim->damroll = clamp_sh_int( value );
+	snprintf(buf, sizeof(buf), "%s damroll set to %d.\n\r", victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "armor" ) || !str_cmp( arg2, "ac" ) )
+    {
+	int index;
+
+	if ( value < -2000 || value > 2000 )
+	{
+	    send_to_char( "Armour range is -2000 to 2000.\n\r", ch );
+	    return;
+	}
+	/* All four classes together: setting one and not the others is
+	   almost never what is meant, and armour is read per class. */
+	for ( index = 0; index < 4; index++ )
+	    victim->armor[index] = clamp_sh_int( value );
+	snprintf(buf, sizeof(buf), "%s armour set to %d (all four classes).\n\r",
+		 victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "wimpy" ) )
+    {
+	if ( value < 0 || value > 30000 )
+	{
+	    send_to_char( "Wimpy range is 0 to 30000.\n\r", ch );
+	    return;
+	}
+	victim->wimpy = clamp_sh_int( value );
+	snprintf(buf, sizeof(buf), "%s wimpy set to %d.\n\r", victim->name, value);
+	send_to_char(buf, ch);
+	return;
+    }
+
     /*
      * Generate usage message.
      */
@@ -5326,6 +5429,8 @@ void do_oset( CHAR_DATA *ch, char *argument )
 	send_to_char("  Field being one of:\n\r",                               ch );
 	send_to_char("    value0 value1 value2 value3 value4 (v1-v4)\n\r",      ch );
 	send_to_char("    extra wear level weight cost timer type\n\r",              ch );
+	send_to_char("    condition material\n\r",                                 ch );
+	send_to_char("    name short long        (text, not numbers)\n\r",         ch );
 	return;
     }
 
@@ -5464,6 +5569,62 @@ void do_oset( CHAR_DATA *ch, char *argument )
       send_to_char(buf,ch);
       return;
     }
+    if ( !str_cmp( arg2, "name" ) )
+    {
+	free_string( obj->name );
+	obj->name = str_dup( arg3 );
+	snprintf(buf, sizeof(buf),"Keywords on %s set to '%s'.\n\r",
+		 obj->short_descr, arg3);
+	send_to_char(buf,ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "short" ) )
+    {
+	free_string( obj->short_descr );
+	obj->short_descr = str_dup( arg3 );
+	snprintf(buf, sizeof(buf),"Short description set to '%s'.\n\r", arg3);
+	send_to_char(buf,ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "long" ) )
+    {
+	free_string( obj->description );
+	obj->description = str_dup( arg3 );
+	snprintf(buf, sizeof(buf),"Long description set to '%s'.\n\r", arg3);
+	send_to_char(buf,ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "condition" ) )
+    {
+	if ( !is_number( arg3 ) || value < 0 || value > 100 )
+	{
+	    send_to_char( "Condition range is 0 to 100.\n\r", ch );
+	    return;
+	}
+	obj->condition = clamp_sh_int( value );
+	snprintf(buf, sizeof(buf),"Condition on %s set to %d.\n\r",
+		 obj->short_descr, value);
+	send_to_char(buf,ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "material" ) )
+    {
+	if ( !is_number( arg3 ) )
+	{
+	    send_to_char( "Material must be numeric.\n\r", ch );
+	    return;
+	}
+	obj->material = clamp_sh_int( value );
+	snprintf(buf, sizeof(buf),"Material on %s set to %d.\n\r",
+		 obj->short_descr, value);
+	send_to_char(buf,ch);
+	return;
+    }
+
     /*
      * Generate usage message.
      */
@@ -5493,12 +5654,35 @@ void do_rset( CHAR_DATA *ch, char *argument )
 	send_to_char( "  set room <location> <field> <value>\n\r",ch);
 	send_to_char( "  Field being one of:\n\r",                      ch );
 	send_to_char( "    flags sector\n\r",                           ch );
+	send_to_char( "    name description      (text, not numbers)\n\r", ch );
 	return;
     }
 
     if ( ( location = find_location( ch, arg1 ) ) == NULL )
     {
 	send_to_char( "No such location.\n\r", ch );
+	return;
+    }
+
+    /* The text fields go first: everything below this point needs a
+       number, and the check that enforces that would reject them. */
+    if ( !str_cmp( arg2, "name" ) )
+    {
+	free_string( location->name );
+	location->name = str_dup( arg3 );
+	snprintf(buf, sizeof(buf),"Room %d renamed to '%s'.\n\r",
+		 location->vnum, arg3);
+	send_to_char(buf,ch);
+	return;
+    }
+
+    if ( !str_cmp( arg2, "description" ) || !str_cmp( arg2, "desc" ) )
+    {
+	free_string( location->description );
+	location->description = str_dup( arg3 );
+	snprintf(buf, sizeof(buf),"Description of room %d replaced.\n\r",
+		 location->vnum);
+	send_to_char(buf,ch);
 	return;
     }
 

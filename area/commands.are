@@ -3443,32 +3443,57 @@ Syntax: set char  <player> <field> <value>
         set skill <char>   <name>  <rating>
         set skill <char>   all     <rating>
 
-The set command is used to change the numerical values of the various data
-structures. Type set <class> without an argument to see a listing of options.
-Set skill all (pc's only) will set all the character's skills to the value
-given.  Use string to change the strings on an object or mobile.
-(see also string, stat)
+SET changes a live value on a character, object or room. The change takes
+effect immediately and, for a player, is saved with them. Type any of the
+forms above without a field to see what that form accepts.
 
-SET CHAR fields available:
-  Stats:     str int wis dex con sex class level race align
-  Resources: hp mana end practice train
-  Currency:  platinum gold silver copper bank
-  Social:    guild castle castlehead
-  Conditions:thirst drunk hunger timer
-  Combat:    hp mana end hunt annoy mountable were
-  Flags:     pkiller excon wanted freeze deny
-  Records:   dcount pkills
+SET CHAR / SET MOB
+  Stats       str int wis dex con
+  Identity    sex class race level align guild
+  Resources   hp mana end move maxmove practice train exp
+  Combat      hitroll damroll armor wimpy hunt annoy
+  Currency    platinum gold silver copper bank qp
+  Conditions  thirst hunger drunk timer
+  Estates     castle castlehead mountable were
+  Flags       pkiller excon wanted freeze deny
+  Records     dcount pkills
 
-  pkiller  <on|off>   -- toggle PKiller status
-  excon    <on|off>   -- toggle ex-convict (con-death) flag
-  wanted   <on|off>   -- toggle WANTED flag
-  freeze   <on|off>   -- freeze/unfreeze player (saves to file)
-  deny     <on|off>   -- grant/revoke login access (saves to file)
-  bank     <amount>   -- set the player's bank balance
-  dcount   <number>   -- set the player's death count
-  pkills   <number>   -- set pkills given and received to the same value
+  armor sets all four armour classes at once; setting one and not the
+  others is almost never what is meant.
 
-See also: SET, STRING, STAT
+  Carry capacity has no field of its own: it is computed from strength,
+  dexterity and level, so raise those instead. Characters at or below
+  level 5 already carry half again as much.
+
+  pkiller  <on|off>   toggle PKiller status
+  excon    <on|off>   toggle ex-convict (con-death) flag
+  wanted   <on|off>   toggle WANTED flag
+  freeze   <on|off>   freeze or unfreeze a player (saved)
+  deny     <on|off>   grant or revoke login access (saved)
+
+SET OBJ
+  Numbers     level weight cost timer type condition material
+  Values      value0 value1 value2 value3 value4  (v0 to v4)
+  Flags       extra wear
+  Text        name short long
+
+  value0 to value4 mean different things for each item type; STAT OBJ
+  shows what they currently hold. Setting a portal or a manipulation item
+  requires level 70.
+
+SET ROOM
+  Numbers     flags sector
+  Text        name description
+
+SET SKILL
+  set skill <char> <skill or spell> <percent>
+  set skill <char> all <percent>            (players only)
+
+Text fields take the rest of the line, spaces included, and replace what
+was there. They change the one object or room in front of you, not the
+area file, so a copyover or reboot restores the original.
+
+See also: STRING, STAT, MSET, OSET, RSET
 ~
 
 64 STRING~

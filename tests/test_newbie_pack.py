@@ -68,7 +68,9 @@ class NewbiePackTests(unittest.TestCase):
                 self.assertIn("NEWBIE", inventory.upper(), inventory)
 
                 contents = run(client, "look in pack", settle=2.5)
-                for expected in ("diploma", "pot pie", "sanctuary"):
+                # Pot pies and the plain water jug were replaced by the
+                # endless pair, which never run out.
+                for expected in ("diploma", "endless snack pack", "sanctuary"):
                     self.assertIn(
                         expected,
                         contents.lower(),
