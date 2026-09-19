@@ -120,8 +120,26 @@ deployed.
 
 ## Deploy an update
 
+**Check who is connected first.** The update gracefully restarts the game,
+which disconnects everyone playing. On 2026-09-18 a player was dropped twice
+in one afternoon by back-to-back deploys before anyone was checking.
+
 ```bash
 ssh toc
+# Who is actually connected (loopback is the healthcheck):
+ss -tnH state established '( sport = :9000 )' | grep -v 127.0.0.1
+# And who the journal thinks they are -- a name whose most recent event is
+# connect/new/reconnect. Sessions that end without a recorded close leave a
+# stale entry, so this over-reports on its own; trust the socket count for
+# how many and the journal for who.
+awk -F'	' '{ last[$2] = $4 }
+             END { for (n in last)
+                     if (last[n] ~ /^(connect|new|reconnect)$/) print n }'     /home/toc/toc2026/log/logins.tsv
+```
+
+Then:
+
+```bash
 cd /home/toc/toc2026
 ./deploy/update-pi.sh
 ```

@@ -80,6 +80,31 @@ cd area
 The Make build uses GNU89 compatibility, `-fcommon`, ROM definitions, and
 `libcrypt`/`libm` where applicable.
 
+**Build both trees before believing a change works.** They disagree on more
+than warnings:
+
+- The Makefile is `-std=gnu89`; CMake is strict `-std=c17` with
+  `CMAKE_C_EXTENSIONS OFF`. POSIX functions visible under one are hidden
+  under the other. `inet_aton` and `gethostbyname` compile under Make and
+  fail the CMake build outright; `getaddrinfo`, `getnameinfo`, `inet_pton`
+  and `inet_ntop` work in both, and are what new code should use. A file
+  needing them must define `_DEFAULT_SOURCE` and `_POSIX_C_SOURCE` **before
+  any header**, as `src/comm.c` and `src/act_wiz.c` do.
+- `merc.h` defines `unix` as a fallback from its own include point, so a
+  `#if defined(unix)` above that `#include` behaves differently in each
+  build.
+
+**If Make and CMake disagree on runtime behaviour, suspect the build before
+the code.** Until 2026-09-18 the Makefile had no header dependency tracking:
+its pattern rules depended only on the `.c` file, so editing a header
+recompiled nothing. That is not a slow build, it is a silently corrupt one
+-- `MAX_INPUT_LENGTH` sizes three arrays inside `DESCRIPTOR_DATA`, so
+changing it rebuilt only the touched translation units with the new struct
+layout while the rest kept the old, which links cleanly and then reads and
+writes past the fields it thinks it is addressing. It is fixed with
+`-MMD -MP` and `-include`, but `make clean` is still the safe answer to
+anything inexplicable.
+
 CMake:
 
 ```bash
@@ -170,6 +195,35 @@ Run tests proportional to risk. Movement, combat, extraction, persistence,
 world loading, command authorization, and queue changes need the full suite plus
 manual gameplay checks.
 
+**The full suite takes about 35 minutes, and the maintainer does not want it
+run routinely.** Around 109 of its tests each boot a real server that parses
+every area file (the generated Hyrule alone is 443 rooms and 1,706 resets),
+and `tests/live_mud.py`'s `drain(n)` sleeps its whole window rather than
+returning when output arrives -- roughly eight minutes of the total is
+waiting for replies that already landed. `tests/test_bank_interest.py` waits
+on a randomised 40-80 second game tick.
+
+Default to: build both trees, run the one relevant test module, ship. Write
+the regression test and let CI run everything. Reach for the full suite only
+when a change is broad enough that collateral damage is a real risk, and say
+why. Wrap any live probe in `timeout` -- never poll in a shell loop waiting
+for a test to finish.
+
+`tests/test_webadmin_api.py` and `tests/test_web_help_and_paging.py` need
+`fastapi` and `httpx`; without them they skip *silently*, including the
+admin-auth and host-header-spoofing tests. Install into a virtualenv outside
+the repo (`.venv` is not in `.gitignore`).
+
+Live-test gotchas that look like product bugs and are not:
+
+- Character names must be **alphabetic only** and at most 12 characters.
+  A digit makes creation fail and the save file never appears.
+- `stat room` prints both `Number:` (the area-relative number) and
+  `Vnum:`. Only `Vnum:` is what `goto` and `set room` want.
+- `parse_login_journal()` returns **file order, oldest first**.
+- Guildmaster mob vnums are not room vnums. `goto 4701` goes to a room;
+  the Necro Guild Master lives in room 4721.
+
 ## Source Ownership Map
 
 - `src/comm.c`: sockets, descriptors, login, main loop, output, and paging
@@ -196,6 +250,20 @@ manual gameplay checks.
 - `webadmin/area_parser.py`: independent Python area parser
 - `webadmin/static/console-output.js`: streaming ANSI/Telnet console decoder
 - `webadmin/area_health.py`: shared lint engine
+
+Commands added or revived in September 2026, and where they live:
+
+- `spellup` / `spellpurge` (`src/act_wiz.c`) place and clear Hermie, mob
+  vnum 98 in `limbo.are`, who casts from a menu. There is no speech hook in
+  this codebase -- spec_funs run on a pulse and never see player speech --
+  so `do_say` in `src/act_comm.c` calls `spellup_listen()` directly.
+- `dns` (`src/act_wiz.c`) toggles hostname resolution, lists connected
+  descriptors, and resolves one address. It was a stub in `src/stubs.c`.
+- `practicelist` (`src/act_info.c`) lists who can practise the skills you
+  already know; `gainlist` beside it marks what you already have.
+- `alias` / `unalias` live in `src/act_comm.c`; expansion is in
+  `src/interp.c` and must not leave a trailing space, or commands that read
+  their whole argument (`goto`) fail on it.
 
 ## C Change Rules
 
@@ -339,6 +407,50 @@ See `SECURITY.md` for mitigation and reporting procedures.
   explicitly authorized that action for the current task.
 - When publishing is authorized, use a focused branch/review flow and report the
   exact validation result.
+
+## Deploying To The Raspberry Pi
+
+The Pi at `toc.jeremybean.com` is the live server, not a staging box. Real
+players log in; check `log/logins.tsv` for who has been on lately.
+
+**The updater restarts the game, which disconnects whoever is playing.**
+Before triggering `toc2026-update.service`, check for connected players and
+hold unless the only one online is the owner (Killuminati). Two signals are
+needed and neither is sufficient alone: established sockets on port 9000 say
+how many people are really connected, and the login journal says who -- a
+session ending without a recorded close leaves a stale `connect`, so the
+journal over-reports on its own.
+
+The updater does `make clean` first, so production has never been exposed to
+the incremental-build trap described under Build And Run.
+
+Other deploy facts:
+
+- Never run the Pi installer or updater against the Windows VM; that host is
+  a test environment only.
+- Never copy player files, logs, PK standings, max-load state, shutdown
+  markers, or queued commands from Git into production.
+- `MUD_HOST` is where the web service dials (loopback). `MUD_PUBLIC_HOST` is
+  what the dashboard displays, resolved to an address so it follows the DDNS
+  record rather than going stale.
+
+## Permission Helpers
+
+Two helpers exist so a rule is stated once. Prefer them to open-coding a
+comparison:
+
+- `get_trust(ch)` -- **never read `ch->trust` directly.** The field is 0
+  unless somebody explicitly assigned a trust, which is the normal state, so
+  a raw comparison refuses everybody including implementors. Nine gates had
+  this bug.
+- `rank_protects(ch, victim)` -- whether rank stops `ch` acting on `victim`.
+  Implementors are exempt, because `get_trust(victim) >= get_trust(ch)` reads
+  `70 >= 70` at MAX_LEVEL and locked implementors out of twenty-two commands
+  aimed at exactly their peers. Commands that should not target the user
+  keep their own `victim == ch` guard; rank is a separate question.
+- `is_loopback_ip(ip)` -- one place that knows what 127/8 means, used to
+  keep the healthcheck's two-minute probe out of the log and to decide
+  whether a PROXY header may be trusted.
 
 ## Completion Standard
 
