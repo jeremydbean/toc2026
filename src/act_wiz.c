@@ -3596,6 +3596,7 @@ void do_herbie( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     CHAR_DATA *herbie;
     MOB_INDEX_DATA *herbie_idx;
+    bool watching;
 
     one_argument( argument, arg );
 
@@ -3625,6 +3626,10 @@ void do_herbie( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* Standing in the room already means seeing the whole sequence from
+       the room's side; the mirror below is for sending him somewhere else. */
+    watching = ( ch->in_room == victim->in_room );
+
     /* Spawn a fresh Herbie instance at the victim's location */
     herbie_idx = get_mob_index( 99 );
     if ( herbie_idx == NULL )
@@ -3632,6 +3637,14 @@ void do_herbie( CHAR_DATA *ch, char *argument )
         /* Fallback: no mob vnum 99 loaded, deliver silently */
         act( "An angel named Herbie glides down from heaven and cures all your wounds.",
             ch, NULL, victim, TO_VICT );
+
+        if ( !watching && ch != victim )
+        {
+            snprintf( buf, sizeof(buf),
+                "An angel named Herbie glides down from heaven and cures all "
+                "of %s's wounds.\n\r", victim->name );
+            send_to_char( buf, ch );
+        }
     }
     else
     {
@@ -3657,6 +3670,24 @@ void do_herbie( CHAR_DATA *ch, char *argument )
         /* Herbie departs */
         act( "$n rises, folds $s wings, and with a soft rustle of feathers vanishes into the light.",
             herbie, NULL, NULL, TO_ROOM );
+
+        /* The same four beats, for whoever sent him from elsewhere. */
+        if ( !watching && ch != victim )
+        {
+            const char *angel = herbie->short_descr != NULL
+                ? herbie->short_descr : "an angel";
+
+            snprintf( buf, sizeof(buf),
+                "A bright light fills the room as %s descends gracefully from above.\n\r"
+                "%s kneels beside %s, smiling warmly.  'Fear not.  You are watched over.'\n\r"
+                "%s closes his eyes.  A warm golden glow radiates from his hands into %s.\n\r"
+                "%s rises, folds his wings, and with a soft rustle of feathers vanishes into the light.\n\r",
+                angel,
+                angel, victim->name,
+                angel, victim->name,
+                angel );
+            send_to_char( buf, ch );
+        }
 
         /* Remove the temporary Herbie instance */
         extract_char( herbie, TRUE );
