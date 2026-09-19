@@ -3578,7 +3578,20 @@ SET OBJ
   shows what they currently hold. Setting a portal or a manipulation item
   requires level 70.
 
-  EXTRA flags -- give the letters together, as in 'set obj sword extra AG':
+  Flag fields (extra, wear, and SET ROOM's flags) take the same letters
+  the area files and STAT use. Give them together, and lead with + to add
+  to what is already set or - to take away:
+
+    set obj sword extra AG        replace: glow and magic, nothing else
+    set obj sword extra +H        add nodrop, keep the rest
+    set obj sword extra -H        remove nodrop, keep the rest
+    set room 3700 flags +R        make this room newbies-only
+    set room 3700 flags -R        stop it being newbies-only
+
+  Without + or - the whole field is replaced, so a bare list clears every
+  flag you did not name. A plain number still works if you have one.
+
+  EXTRA flags:
     A glow            B hum             C dark            D lock
     E evil            F invis           G magic           H nodrop
     I bless           J anti-good       K anti-evil       L anti-neutral
@@ -3608,7 +3621,7 @@ SET ROOM
   Numbers     flags sector
   Text        name description
 
-  FLAGS -- given together, as in 'set room 3001 flags AJK':
+  FLAGS -- same letters, same + and - rules as above:
     A dark            B jail            C no mobs         D indoors
     E river           F teleport        G cult entrance   H affected by
     I death trap      J private         K safe            L solitary

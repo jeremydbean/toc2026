@@ -2460,6 +2460,7 @@ int     get_age         ( CHAR_DATA *ch );
 void    reset_char      ( CHAR_DATA *ch );
 int     get_trust       ( CHAR_DATA *ch );
 bool    rank_protects   ( CHAR_DATA *ch, CHAR_DATA *victim );
+bool    flags_from_argument ( const char *argument, int current, int *result );
 bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
 int     get_curr_stat   ( CHAR_DATA *ch, int stat );

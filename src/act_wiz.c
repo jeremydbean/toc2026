@@ -5578,18 +5578,41 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "extra" ) )
     {
-   obj->extra_flags = clamp_sh_int( value );
-	snprintf(buf, sizeof(buf),"Extra flags on %s set to %d.\n\r",obj->short_descr,value);
-	send_to_char(buf, ch);
-	return;
+        int updated;
+
+        /* Letters, as area files and STAT write them. clamp_sh_int used to
+           cap this at 32767 while extra_flags is an int, so ITEM_ROT_DEATH
+           at bit P (32768) and everything above it could not be set. */
+        if ( !flags_from_argument( arg3, obj->extra_flags, &updated ) )
+        {
+            send_to_char( "Extra flags are letters: 'extra AGH'.\n\r", ch );
+            send_to_char( "Lead with + to add or - to remove, or give a number.\n\r", ch );
+            return;
+        }
+
+        obj->extra_flags = updated;
+        snprintf(buf, sizeof(buf),"Extra flags on %s are now: %s\n\r",
+                 obj->short_descr, extra_bit_name( obj->extra_flags ));
+        send_to_char(buf, ch);
+        return;
     }
 
     if ( !str_prefix( arg2, "wear" ) )
     {
-   obj->wear_flags = clamp_sh_int( value );
-	snprintf(buf, sizeof(buf),"Wear flags on %s set to %d.\n\r",obj->short_descr,value);
-	send_to_char(buf, ch);
-	return;
+        int updated;
+
+        if ( !flags_from_argument( arg3, obj->wear_flags, &updated ) )
+        {
+            send_to_char( "Wear flags are letters: 'wear AD' for take and body.\n\r", ch );
+            send_to_char( "Lead with + to add or - to remove, or give a number.\n\r", ch );
+            return;
+        }
+
+        obj->wear_flags = clamp_sh_int( updated );
+        snprintf(buf, sizeof(buf),"Wear flags on %s set to %d.\n\r",
+                 obj->short_descr, (int) obj->wear_flags);
+        send_to_char(buf, ch);
+        return;
     }
 
     if ( !str_prefix( arg2, "level" ) )
@@ -5732,6 +5755,25 @@ void do_rset( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    /* Flags take letters now, so they come before the numeric check too. */
+    if ( !str_prefix( arg2, "flags" ) )
+    {
+        int updated;
+
+        if ( !flags_from_argument( arg3, location->room_flags, &updated ) )
+        {
+            send_to_char( "Flags are letters, as STAT shows them: 'flags AJK'.\n\r", ch );
+            send_to_char( "Lead with + to add or - to remove, or give a number.\n\r", ch );
+            return;
+        }
+
+        location->room_flags = updated;
+        snprintf( buf, sizeof(buf), "Room %d flags are now: %s\n\r",
+                  location->vnum, room_flag_name( location->room_flags ) );
+        send_to_char( buf, ch );
+        return;
+    }
+
     /* The text fields go first: everything below this point needs a
        number, and the check that enforces that would reject them. */
     if ( !str_cmp( arg2, "name" ) )
@@ -5767,14 +5809,6 @@ void do_rset( CHAR_DATA *ch, char *argument )
     /*
 	* Set something.
 	*/
-    if ( !str_prefix( arg2, "flags" ) )
-    {
-	location->room_flags    = value;
-	snprintf(buf, sizeof(buf),"Flag set to %d.\n\r",value);
-	send_to_char(buf,ch);
-	return;
-    }
-
     if ( !str_prefix( arg2, "sector" ) )
     {
    location->sector_type   = clamp_sh_int( value );

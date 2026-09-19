@@ -614,6 +614,57 @@ void reset_char(CHAR_DATA *ch)
 
 
 /*
+ * Turn a flag argument into a bitmask.
+ *
+ * Accepts the letters area files and STAT use ("AGH"), optionally led by
+ * `+' to add to what is there or `-' to take away, or a plain decimal for
+ * anyone who has one. Returns false if the argument is neither.
+ *
+ * `current' is the field's present value, so the caller gets the finished
+ * answer rather than having to combine it themselves and risk getting the
+ * add and remove cases the wrong way round.
+ */
+bool flags_from_argument( const char *argument, int current, int *result )
+{
+    const char *p = argument;
+    long parsed = 0;
+    char mode = '=';
+
+    if ( argument == NULL || result == NULL || argument[0] == '\0' )
+        return false;
+
+    if ( *p == '+' || *p == '-' )
+        mode = *p++;
+
+    if ( *p == '\0' )
+        return false;
+
+    if ( is_number( (char *) p ) )
+        parsed = atol( p );
+    else
+    {
+        for ( ; *p != '\0'; p++ )
+        {
+            if ( *p == ' ' )
+                continue;
+            if ( !isalpha( (unsigned char) *p ) )
+                return false;
+            parsed += flag_convert( *p );
+        }
+    }
+
+    if ( mode == '+' )
+        *result = current | (int) parsed;
+    else if ( mode == '-' )
+        *result = current & ~(int) parsed;
+    else
+        *result = (int) parsed;
+
+    return true;
+}
+
+
+/*
  * Is victim shielded from ch by rank?
  *
  * The usual test is `get_trust(victim) >= get_trust(ch)', which at
