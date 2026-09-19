@@ -4672,7 +4672,10 @@ void do_repair( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if(obj->condition >= 100) {
+    /* A flagged item always needs repairing, whatever the number says.
+       Testing condition alone once left items that combat had flagged but
+       not decremented both unwearable and unrepairable. */
+    if(obj->condition >= 100 && !IS_OBJ_STAT(obj, ITEM_DAMAGED)) {
         snprintf(buf, sizeof(buf), "But %s is already in perfect condition!\n\r",
                 obj->short_descr);
         send_to_char(buf,ch);
@@ -4690,6 +4693,11 @@ void do_repair( CHAR_DATA *ch, char *argument )
     }
 
     cost = ((100 - obj->condition) * obj->level) * 5;
+
+    /* Flagged damaged but still reading full condition: the arithmetic
+       gives nothing, and a free repair is not the intent. */
+    if ( cost <= 0 )
+        cost = UMAX( 10, obj->level * 10 );
 
     if(!has_enough_gold(ch, cost)) {
         snprintf(buf, sizeof(buf), "It will cost you %d to repair %s.  This has been repaired %d times now...\n\r", cost,

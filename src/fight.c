@@ -6340,7 +6340,18 @@ void damage_eq(CHAR_DATA *victim, int dam)
 
         if(level < dam)  /* is damage enough to damage the item? */
         {
-            obj->condition -= (dam - level)/5;
+            /* Integer division: a blow under five points over the item's
+               level used to take off nothing, while the code below still
+               flagged it damaged -- leaving it unwearable and, because
+               do_repair tests condition, unrepairable. If it is worth
+               flagging it is worth a point. */
+            {
+                int loss = (dam - level) / 5;
+
+                if ( loss < 1 )
+                    loss = 1;
+                obj->condition -= (sh_int) loss;
+            }
 
             if(obj->condition < 0)
             {

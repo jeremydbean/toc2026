@@ -881,10 +881,15 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	}
     }
 
+    /* The flag, not a vnum range. This used to test 3200-3795, which
+       school.are does span but does not own: midennir.are (3500-3585) and
+       dkforest.are (3601-3649) are interleaved inside it, so 102 rooms of
+       two unrelated areas were closed to anyone past level 10. It also shut
+       level 11+ out of the Arena, which lives in school.are and is
+       deliberately not flagged. */
     if ( !IS_NPC(ch) && !IS_IMMORTAL(ch)
     &&   ch->level > 10
-    &&   to_room->vnum >= 3200
-    &&   to_room->vnum <= 3795 )
+    &&   IS_SET(to_room->room_flags, ROOM_NEWBIES_ONLY) )
     {
 	send_to_char( "The entrance shimmers and repels you -- Mud School is for newbies only.\n\r", ch );
 	runner = 2;
