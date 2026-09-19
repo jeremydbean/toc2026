@@ -2276,6 +2276,7 @@ void    write_web_admin_event ( const char *channel, const char *message,
  * customized ever got it.
  */
 #define STARTING_WEAPON_SKILL   40
+#define STARTING_RECALL_SKILL   50
 
 #define GAME_LOG_FILE           "../log/toc.log"
 

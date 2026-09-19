@@ -308,9 +308,14 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
     }
 
     /*
-     * Make the issued weapon usable. Without this the skill sits at the 1%
-     * the class groups leave it at, and a new character misses almost every
-     * swing with the very weapon the game just handed them.
+     * group_add() grants every starting skill at 1%, which is fine for the
+     * ones a character practises their way into. It is not fine for the two
+     * they need in order to function at all: the weapon the game just put
+     * in their hand, and the recall that gets them out of trouble. Missing
+     * almost every swing, or failing to escape, is not a learning curve.
+     *
+     * Floors, not assignments -- a character who has already practised past
+     * these keeps what they earned, and `outfit' can be run again safely.
      */
     if ( !IS_NPC(ch) && ch->pcdata != NULL )
     {
@@ -319,6 +324,10 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 	if ( weapon_sn > 0
 	  && ch->pcdata->learned[weapon_sn] < STARTING_WEAPON_SKILL )
 	    ch->pcdata->learned[weapon_sn] = STARTING_WEAPON_SKILL;
+
+	if ( gsn_recall > 0
+	  && ch->pcdata->learned[gsn_recall] < STARTING_RECALL_SKILL )
+	    ch->pcdata->learned[gsn_recall] = STARTING_RECALL_SKILL;
     }
 
     send_to_char("You have been equipped by the Gods.\n\r",ch);

@@ -1625,7 +1625,7 @@ void do_unalias( CHAR_DATA *ch, char *argument )
 void do_quit( CHAR_DATA *ch, char *argument )
 {
     DESCRIPTOR_DATA *d,*d_next;
-    int id;
+    char quitter_name[MAX_INPUT_LENGTH];
 
     UNUSED_PARAM(argument);
 
@@ -1678,20 +1678,32 @@ void do_quit( CHAR_DATA *ch, char *argument )
        quit state (with session stats) is always captured without a separate
        call here. */
     save_char_obj( ch );
-    id = ch->id;
+    /* extract_char frees ch, so take the name while it is still there. */
+    toc_strlcpy( quitter_name, ch->name != NULL ? ch->name : "",
+                 sizeof(quitter_name) );
     d = ch->desc;
     extract_char( ch, TRUE );
     if ( d != NULL )
 	close_socket( d );
 
-    /* toast evil cheating bastards */
+    /*
+     * Close any *other* descriptor still holding this same character --
+     * a duplicate login that the reconnect handling in nanny missed.
+     *
+     * This compared CHAR_DATA.id until 2026-09-18. Nothing in the
+     * codebase ever assigns that field; it was only ever read, right
+     * here. So every character's id was 0, the test was 0 == 0, and one
+     * player typing `quit' silently disconnected everyone else online.
+     */
     for (d = descriptor_list; d != NULL; d = d_next)
     {
 	CHAR_DATA *tch;
 
 	d_next = d->next;
 	tch = d->original ? d->original : d->character;
-	if (tch && tch->id == id)
+	if (tch != NULL && !IS_NPC(tch) && tch->name != NULL
+	 && quitter_name[0] != '\0'
+	 && !str_cmp(tch->name, quitter_name))
 	{
 	    extract_char(tch,TRUE);
 	    close_socket(d);
