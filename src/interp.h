@@ -207,6 +207,7 @@ DECLARE_DO_FUN( do_forcesave    );
 DECLARE_DO_FUN(	do_freeze	);
 DECLARE_DO_FUN( do_gain		);
 DECLARE_DO_FUN( do_gainlist     );
+DECLARE_DO_FUN( do_practicelist );
 DECLARE_DO_FUN( do_teachlist    );
 DECLARE_DO_FUN( do_gather       );
 DECLARE_DO_FUN(	do_get		);

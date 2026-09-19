@@ -313,6 +313,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "join",		do_join,	POS_STANDING,	 0,  LOG_ALWAYS, 1 },
     { "gain",		do_gain,	POS_STANDING,	 0,  LOG_NORMAL, 1 },
     { "gainlist",       do_gainlist,    POS_SLEEPING,    5,  LOG_NORMAL, 1 },
+    { "practicelist",   do_practicelist, POS_SLEEPING,   5,  LOG_NORMAL, 1 },
     { "teachlist",      do_teachlist,   POS_SLEEPING,    5,  LOG_NORMAL, 1 },
     { "group",		do_group,	POS_SLEEPING,	 0,  LOG_NORMAL, 1 },
     { "leveling",   	do_leveling,   	POS_SLEEPING,    0,  LOG_NORMAL, 1 },

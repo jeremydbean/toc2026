@@ -10,6 +10,192 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **One player quitting disconnected every other player online.** `do_quit`
+  ends with a loop meant to close a duplicate login of the same character,
+  comparing `CHAR_DATA.id`. Nothing in the codebase ever assigns that field
+  -- the only line touching it was the comparison -- so every character's
+  id was 0, the test was `0 == 0`, and the loop extracted and closed every
+  connected descriptor. `delete` routes through `do_quit`, so it behaved
+  the same way. It was reported as "snooping someone who deletes
+  disconnects the immortal", which was simply the case where somebody was
+  watching closely enough to notice. The loop now matches on name, copied
+  out before `extract_char` frees `ch`.
+
+- **The Makefile never rebuilt anything when a header changed.** Its
+  pattern rules depended only on the `.c` file, so editing `merc.h`
+  recompiled nothing -- not a stale build but a silently corrupt one.
+  `MAX_INPUT_LENGTH` sizes three arrays inside `DESCRIPTOR_DATA`, so
+  changing it rebuilt only the touched translation units with the new
+  struct layout while the rest kept the old; the linker joins that without
+  complaint and the program then reads and writes past the fields it thinks
+  it is addressing. It surfaced as a long paste wedging a connection under
+  `make` while the identical source handled it correctly under CMake, which
+  tracks headers properly. Fixed with `-MMD -MP` and `-include`: touching
+  `merc.h` now schedules 35 recompiles where it scheduled none. Production
+  was never affected -- `deploy/toc2026-update` runs `make clean` first.
+  **When Make and CMake disagree on behaviour, suspect the build.**
+
+- Nine permission gates read `ch->trust` directly instead of calling
+  `get_trust()`. `trust` is 0 unless somebody explicitly assigns one, which
+  is the normal state, so each gate compared 0 against its threshold and
+  refused everybody including implementors: `stat room`, `gather` from the
+  world and by name, `advance`, `mset qp` above 100, `oset` on portals and
+  on item types, switched-immortal visibility in `who`/`whois`, and `order`
+  against a charmed immortal (which compared two raw trusts, so `0 >= 0`
+  refused every such order). The three gated at exactly 70 widen access
+  rather than restore it, which is what the comparison was written to mean.
+
+- Twenty-two immortal commands refused when `get_trust(victim) >=
+  get_trust(ch)`. At MAX_LEVEL that reads `70 >= 70`, so an implementor
+  could not point any of them at another implementor -- the people those
+  commands mostly exist for. `rank_protects()` in `handler.c` now states
+  the exemption once. Below MAX_LEVEL nothing changes, and `victim == ch`
+  guards are untouched: rank is not what those are about.
+
+- `say` truncated itself at `MAX_INPUT_LENGTH - 100`, or 156 characters,
+  silently, and no other channel did. The limit is 510 now, and overrunning
+  it trims the line, delivers it, and says how much was used. Overflowing
+  the accumulation buffer used to return FALSE from `read_from_descriptor`,
+  which the caller treats as a hangup -- so pasting something long cost you
+  the connection and everything you had typed.
+
+- A multi-word alias lost its argument. The expansion joins the alias body
+  to whatever follows as `"%s %s"`, so used bare it produced `"goto 4108 "`
+  with a trailing space; `do_goto` hands its whole argument to
+  `find_location` without tokenising, `is_number("4108 ")` is false because
+  of the space, and it stops treating the argument as a vnum. Single-word
+  aliases were unaffected. The composed line is trimmed now.
+
+- `prompt` with no argument turned prompts *off*, so the obvious way to ask
+  what your prompt was set to was also the way to lose it. The help file
+  has described the opposite for years; the code now matches it.
+
+- `WIZINFO` opened a colour and never closed it, so cyan ran on into
+  whatever printed next. It was the only coloured channel in the codebase
+  missing its `{00`, and it fires on every login.
+
+- Both strings of berries in the newbie pack are `ITEM_NODROP`, so a newbie
+  given the pack could not put them down. Cleared on the copies the pack
+  makes rather than on vnums 5776 and 5780, which exist elsewhere in the
+  world where the flag is deliberate.
+
+- New characters got recall at 1%. `group_add()` grants every starting
+  skill at 1%, which is fine for skills you practise up and wrong for the
+  one that gets a level one character out of trouble. Two other places
+  already set it (50 on a legacy file upgrade, 100 on reroll) and neither
+  covered creation, which is why it went unnoticed.
+
+- Hyrule's hand-written mobs did not answer to the words describing them:
+  `look old` and `look man` both missed "a gambling old man", whose
+  keywords were `hyrule money game elder`. The generator now folds the
+  short description into the keywords, so the rule holds for future mobs
+  rather than for the eleven that were wrong.
+
+- `Sock.sinaddr` and `EOF encountered on read` fired for every connection
+  including the healthcheck's loopback probe every two minutes -- roughly
+  1,400 lines a day burying everything else. Both are now skipped for
+  loopback only.
+
+- The dashboard displayed `127.0.0.1:9000` as the game endpoint. That is
+  where the web service dials, not anywhere a player can reach.
+
+- `parse_login_journal`'s docstring claimed newest-first while the function
+  returns file order, oldest first.
+
+### Added
+
+- **Hermie**, a standing spellup desk and Herbie's girlfriend (mob vnum 98).
+  `spellup` plants her; she casts on whoever talks to her from a menu she
+  reads out, every spell pinned to 30 ticks and logged. `spellpurge` clears
+  every copy in the world; she deliberately carries no `ACT_NOPURGE` so an
+  ordinary `purge` clears the one in front of you. There is no speech hook
+  in this codebase -- spec_funs run on a pulse and never see what a player
+  said -- so `do_say` calls her directly. She answers only when addressed,
+  or she would paste her menu over every conversation in her room.
+
+- `DNS` is implemented; it was a stub answering "not available". It
+  reports and toggles hostname resolution, lists what the resolver made of
+  everyone connected beside their numeric address, and looks up one
+  address. The toggle matters: `getnameinfo` runs in a single-threaded loop
+  on every connection, so a slow resolver stalls the game mid-login.
+
+- `GRANTPSI` works on a character who is not logged in, using the same
+  load / modify / save / extract shape as `do_undeny`. An offline grant is
+  always deferred -- "now" would apply to a copy about to be discarded.
+
+- `SET` reaches the fields it could not: `hitroll damroll armor wimpy move
+  maxmove exp` on characters, `name short long condition material` on
+  objects, `name description` on rooms. The room text fields sit *before*
+  the numeric check, which would otherwise reject them. Its help is
+  rewritten and now lists every room flag, object extra flag, wear flag,
+  item type and sector number -- they previously existed only in `merc.h`.
+
+- `wizhelp` lists every command the character can use, sorted. The table
+  hoists a few entries to the front for prefix matching, so the listing
+  opened with `at`, `goto`, `iportal`, `sockets` and nothing was where you
+  would look for it -- `smash` and `iportal` both read as missing when they
+  had been there all along.
+
+- `purge <object>` works, on portals or anything else, and says when the
+  thing it removed was flagged nopurge. Purging a *player* now severs their
+  link and leaves them linkdead rather than extracting the character.
+
+- `holylight` carries the room vnum, and `prompt room on|off` adds or
+  removes it for staff. `%R` is staff-only: `do_exits` already hid vnums
+  from mortals and the prompt was the one place they leaked.
+
+- `HELP NEW` lists everything a player can change about how the game reads,
+  linked from the text shown at character creation. `damagenumbers` is
+  documented and now **off** by default -- it was on with no help entry at
+  all.
+
+- The player web client has a searchable **Help** tab needing no login. It
+  reads the area files rather than keeping a copy, so the site cannot drift
+  from what the game serves to `HELP`. Only level 0 and below is exposed,
+  filtered at parse time, since that is the whole security model for an
+  unauthenticated endpoint.
+
+- Server activity, the log terminal and login history page 50 at a time
+  with arrows. Activity pages client-side deliberately -- its filters run
+  over the whole history, so paging the fetch would filter within a page.
+  `/api/logs/page` and `/api/events?paged=1` are new.
+
+- The admin panel reports players online by name, and game uptime beside
+  the host's: a deploy restarts the game and not the hardware.
+
+- `WIZINFO` now reports empower, titanic, spellup, spellpurge, grantpsi and
+  trust, saying whether a grant is permanent. Trust also tells the player
+  being trusted. A mob catching lycanthropy from a dice roll no longer
+  reports anything.
+
+- `~/bin/toc-deploy` (developer machine, not in the repo) holds a deploy
+  when a player other than Killuminati is connected. The updater restarts
+  the game; before this existed a real player was disconnected twice in one
+  afternoon.
+
+### Changed
+
+- Bank interest is 0.25% a day, down from 1% -- which compounds to roughly
+  3700% a year and made a balance a better income than playing. `score`
+  shows a lifetime interest total, since the payment arrives while you are
+  offline and the notice scrolls past on login.
+
+- Carry weight is half again the base for every player. It was briefly a
+  newbie-only bonus, which just moved the wall further along.
+
+- The newbie pack carries an endless snack pack and endless water jug in
+  place of ten pot pies and a water jug, everything in it is level 1
+  including the pack, and it holds 100 platinum.
+
+- Every class starts its issued weapon at 40% instead of 1%.
+
+- Announcements are upper-cased regardless of how they were typed, with a
+  blank line and an indent so the text reads as the message rather than as
+  part of the frame.
+
+- `MAX_INPUT_LENGTH` is 512, giving 510 usable characters -- about six
+  lines at 80 columns.
+
 - The dashboard's local-admin unlock no longer trusts the `Host` header. It
   gated on `request.url.hostname`, which the caller writes, so a request from
   anywhere carrying `Host: 127.0.0.1` was issued an admin session cookie that

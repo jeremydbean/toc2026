@@ -3413,6 +3413,105 @@ void do_teachlist(CHAR_DATA *ch, char *argument)
 }
 
 
+/*
+ * Where to raise the skills you already know.
+ *
+ * A skill sits at 1% until somebody practises you, and nothing told you
+ * who. This lists, per guildmaster your class and guild allow, the skills
+ * you hold that they can teach -- the set PRACTICE will accept there.
+ */
+void do_practicelist(CHAR_DATA *ch, char *argument)
+{
+    MOB_INDEX_DATA *pMobIndex;
+    struct guildmaster_type gmdata;
+    char buf[MAX_STRING_LENGTH];
+    int counter, i, sn, col;
+    int trainers = 0;
+
+    UNUSED_PARAM(argument);
+
+    if (IS_NPC(ch) || ch->pcdata == NULL)
+    {
+        send_to_char("You have no need to practice anything.\n\r", ch);
+        return;
+    }
+
+    for (counter = 0; guildmaster_table[counter].vnum != 0; counter++)
+    {
+        gmdata = guildmaster_table[counter];
+
+        /* The same three gates do_gain applies, so this never lists a
+           trainer who would turn you away at the door. */
+        if (gmdata.class == CLASS_OTHER && ch->class == gmdata.guild)
+            continue;
+        if ((gmdata.class != CLASS_ANY && gmdata.class != CLASS_OTHER)
+         && (ch->class != gmdata.class))
+            continue;
+        if ((gmdata.guild != GUILD_ANY)
+         && (ch->pcdata->guild != gmdata.guild))
+            continue;
+
+        pMobIndex = get_mob_index(gmdata.vnum);
+        if (pMobIndex == NULL || gmdata.can_teach[0] == NULL)
+            continue;
+
+        col = 0;
+        for (i = 0; i < MAX_TEACH; i++)
+        {
+            if (gmdata.can_teach[i] == NULL)
+                break;
+
+            sn = skill_lookup(gmdata.can_teach[i]);
+            if (sn < 0)
+                continue;
+
+            /* Only what you already have: practising is raising a skill,
+               not acquiring one. */
+            if (ch->pcdata->learned[sn] <= 0)
+                continue;
+
+            if (col == 0)
+            {
+                snprintf(buf, sizeof(buf), "%s can practice you in:\n\r",
+                         pMobIndex->short_descr);
+                send_to_char(buf, ch);
+                trainers++;
+            }
+
+            snprintf(buf, sizeof(buf), "  %-20s %3d%%",
+                     skill_table[sn].name, ch->pcdata->learned[sn]);
+            send_to_char(buf, ch);
+
+            if (++col % 3 == 0)
+                send_to_char("\n\r", ch);
+        }
+
+        if (col > 0)
+        {
+            if (col % 3 != 0)
+                send_to_char("\n\r", ch);
+            send_to_char("\n\r", ch);
+        }
+    }
+
+    if (trainers == 0)
+    {
+        send_to_char("No guildmaster you can use teaches anything you know "
+                     "yet.\n\r", ch);
+        return;
+    }
+
+    snprintf(buf, sizeof(buf), "You have %d practice session%s left.\n\r",
+             ch->practice, ch->practice == 1 ? "" : "s");
+    send_to_char(buf, ch);
+}
+
+
+/*
+ * What every guildmaster you may use will sell you, and what you already
+ * hold. "have" in the cost column means you have it; a number is the
+ * training cost.
+ */
 void do_gainlist(CHAR_DATA *ch, char *argument)
 {
    UNUSED_PARAM(argument);
@@ -3471,13 +3570,38 @@ void do_gainlist(CHAR_DATA *ch, char *argument)
             if (gn < 0)
                continue;
 
-            if (isgroup)
-               snprintf(buf, sizeof(buf),"%-20s %-5d ",
-                       group_table[gn].name,group_table[gn].rating[ch->class]);
-            else
-               snprintf(buf, sizeof(buf),"%-20s %-5d ",
-                       skill_table[gn].name,skill_table[gn].rating[ch->class]);
-            send_to_char(buf,ch);
+            /* Whether you already have it is the thing you came to find
+               out; printing only the price left you to work it out against
+               GROUPS by hand. */
+            {
+                const char *name;
+                int cost;
+                bool known;
+
+                if (isgroup)
+                {
+                    name  = group_table[gn].name;
+                    cost  = group_table[gn].rating[ch->class];
+                    known = ch->pcdata->group_known[gn];
+                }
+                else
+                {
+                    name  = skill_table[gn].name;
+                    cost  = skill_table[gn].rating[ch->class];
+                    known = ch->pcdata->learned[gn] > 0;
+                }
+
+                if (known)
+                    snprintf(buf, sizeof(buf), "%-20s %-7s ", name, "have");
+                else if (cost <= 0)
+                    /* do_gain refuses a rating of 0 or less, so listing it
+                       as costing nothing invites a request that is always
+                       turned down. */
+                    snprintf(buf, sizeof(buf), "%-20s %-7s ", name, "n/a");
+                else
+                    snprintf(buf, sizeof(buf), "%-20s %-7d ", name, cost);
+                send_to_char(buf,ch);
+            }
             if (++col % 3 == 0)
                 send_to_char("\n\r",ch);
         }

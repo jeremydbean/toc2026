@@ -485,6 +485,32 @@ with your character, so you only need to do this once.
 See also: DAMAGENUMBERS, PROMPT, COLOR, CHANNELS, SCORE
 ~
 
+0 PRACTICELIST~
+Syntax: practicelist
+
+Lists every guildmaster your class and guild allow you to use, and for each
+one the skills you already know that they can practise you in -- which is
+exactly what PRACTICE will accept from them. Your current percentage is
+shown beside each, and your remaining practice sessions at the end.
+
+A skill you have just gained sits at 1% until somebody raises it, and
+nothing else in the game tells you who can.
+
+See also: PRACTICE, GAINLIST, GAIN, GROUPS
+~
+
+0 GAINLIST~
+Syntax: gainlist
+
+Lists every guildmaster your class and guild allow you to use, and what
+each one can sell you. The cost column shows the training cost, or:
+
+  have    you already have it
+  n/a     it cannot be gained at your class
+
+See also: GAIN, PRACTICELIST, TRAIN, GROUPS
+~
+
 0 PROMPT~
 Syntax: prompt
 Syntax: prompt codes
