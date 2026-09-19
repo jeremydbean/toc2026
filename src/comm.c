@@ -2597,6 +2597,10 @@ case CON_GET_ALIGNMENT:
 	group_add(ch,"rom basics",FALSE);
 	group_add(ch,class_table[ch->class].base_group,FALSE);
 	group_add(ch,class_table[ch->class].default_group,FALSE);
+	/* The spread class_table has always described. Only do_remort read
+	   it before, so anyone who had not remorted was stuck with the one
+	   weapon their base group names. */
+	apply_class_weapon_profs(ch);
 	do_help(ch,"motd");
 	d->connected = CON_READ_MOTD;
 	break;
@@ -2660,7 +2664,10 @@ case CON_DEFAULT_CHOICE:
             return;
         }
 
-	ch->pcdata->learned[*weapon_table[weapon].gsn] = STARTING_WEAPON_SKILL;
+	/* A floor: the class proficiency may already be higher than the
+	   newbie starting value, and picking it should not cost you. */
+	if ( ch->pcdata->learned[*weapon_table[weapon].gsn] < STARTING_WEAPON_SKILL )
+	    ch->pcdata->learned[*weapon_table[weapon].gsn] = STARTING_WEAPON_SKILL;
 	write_to_buffer(d,"\n\r",2);
 	do_help(ch,"motd");
 	d->connected = CON_READ_MOTD;

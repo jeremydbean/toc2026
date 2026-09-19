@@ -1310,6 +1310,10 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     /* Characters who were W/W before the skill existed have it now. */
     grant_heros_grip( ch );
 
+    /* And everyone gets the weapon proficiencies their class has always
+       been written to have, which until now only a remort handed out. */
+    apply_class_weapon_profs( ch );
+
     color_update_defaults( ch, !found );
 
     return found;

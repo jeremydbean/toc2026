@@ -5171,42 +5171,8 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->form        = race_table[ch->race].form;
    ch->parts       = race_table[ch->race].parts;
 
-   for (i=1;i<9;i++) {
-     switch(i) {
-       case WEAPON_SWORD:
-         ch->pcdata->learned[gsn_sword] =
-            class_table[ch->class].weapon_prof[i-1];
-         break;
-       case WEAPON_DAGGER:
-         ch->pcdata->learned[gsn_dagger] =
-            class_table[ch->class].weapon_prof[i-1];
-         break;
-       case WEAPON_SPEAR:
-         ch->pcdata->learned[gsn_spear] =
-            class_table[ch->class].weapon_prof[i-1];
-         break;
-       case WEAPON_MACE:
-         ch->pcdata->learned[gsn_mace] =
-            class_table[ch->class].weapon_prof[i-1];
-         break;
-       case WEAPON_AXE:
-         ch->pcdata->learned[gsn_axe] =
-            class_table[ch->class].weapon_prof[i-1];
-         break;
-       case WEAPON_FLAIL:
-         ch->pcdata->learned[gsn_flail] =
-            class_table[ch->class].weapon_prof[i-1];
-         break;
-       case WEAPON_WHIP:
-         ch->pcdata->learned[gsn_whip] =
-            class_table[ch->class].weapon_prof[i-1];
-         break;
-       case WEAPON_POLEARM:
-         ch->pcdata->learned[gsn_polearm] =
-            class_table[ch->class].weapon_prof[i-1];
-         break;
-     }
-   }
+   /* Skills were wiped above, so the floor is the whole grant here. */
+   apply_class_weapon_profs( ch );
    /* Grant psionic powers on 2nd remort and beyond (they are wiped with
     * all other skills and must be re-awarded each time). */
    if ( ch->pcdata->num_remorts >= 2 )

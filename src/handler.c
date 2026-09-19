@@ -632,6 +632,45 @@ bool is_warrior_warrior( const CHAR_DATA *ch )
 
 
 /*
+ * Give a character the weapon proficiencies their class is written to
+ * have.
+ *
+ * A floor, not an assignment: practising a weapon past your class's
+ * competence is meant to stick, and this runs on every load. Applying
+ * it twice does nothing, which is what lets it double as the repair for
+ * characters made while only do_remort granted these.
+ */
+void apply_class_weapon_profs( CHAR_DATA *ch )
+{
+    /* weapon_prof is written in WEAPON_* order. */
+    sh_int *const prof_gsn[8] =
+    {
+        &gsn_sword, &gsn_dagger, &gsn_spear,  &gsn_mace,
+        &gsn_axe,   &gsn_flail,  &gsn_whip,   &gsn_polearm
+    };
+    int i;
+
+    if ( IS_NPC( ch ) || ch->pcdata == NULL )
+        return;
+
+    if ( ch->class < 0 || ch->class >= MAX_CLASS )
+        return;
+
+    for ( i = 0; i < 8; i++ )
+    {
+        int sn      = *prof_gsn[i];
+        int percent = class_table[ch->class].weapon_prof[i];
+
+        if ( sn <= 0 || percent <= 0 )
+            continue;
+
+        if ( ch->pcdata->learned[sn] < percent )
+            ch->pcdata->learned[sn] = (sh_int) percent;
+    }
+}
+
+
+/*
  * Every W/W has the grip at 1%, whether they were made before it
  * existed or joined the guild five minutes ago.  It is what the class
  * combination is, not something to go and find.

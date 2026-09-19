@@ -2474,6 +2474,7 @@ bool    flags_from_argument ( const char *argument, int current, int *result );
 bool    is_warrior_warrior  ( const CHAR_DATA *ch );
 void    grant_heros_grip    ( CHAR_DATA *ch );
 bool    heros_grip_holds    ( CHAR_DATA *victim );
+void    apply_class_weapon_profs ( CHAR_DATA *ch );
 
 /* Practice takes it to 75 in steps of 10.  The rest is earned in a
    fight, by being disarmed at and not letting go. */
