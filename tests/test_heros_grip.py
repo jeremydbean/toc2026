@@ -51,11 +51,11 @@ class HerosGripTests(unittest.TestCase):
                 login(client, "Zgripper", PASSWORD)
 
                 listed = run(client, "skills", settle=4.0)
-                self.assertIn("hero's grip", listed.lower(),
+                self.assertIn("heroic grip", listed.lower(),
                               f"a W/W should already have the skill:\n{listed}")
 
                 # The entry runs past one screen, so page to the end.
-                shown = run(client, "help hero's grip", settle=3.0)
+                shown = run(client, "help heroic grip", settle=3.0)
                 for _ in range(5):
                     if "[Hit Return to continue]" not in shown[-120:]:
                         break
@@ -82,7 +82,7 @@ class PracticeCapTests(unittest.TestCase):
 
                 last = ""
                 for _ in range(12):
-                    last = run(client, "practice hero's grip", settle=1.5)
+                    last = run(client, "practice heroic grip", settle=1.5)
                     if "all I can" in last:
                         break
 
@@ -91,7 +91,7 @@ class PracticeCapTests(unittest.TestCase):
 
                 after = run(client, "practice", settle=3.0)
                 self.assertRegex(
-                    after, r"hero's grip\s+75%",
+                    after, r"heroic grip\s+75%",
                     f"the cap should leave it at exactly 75%:\n{after}")
 
 

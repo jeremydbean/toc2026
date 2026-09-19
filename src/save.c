@@ -1327,6 +1327,45 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 
 #define KEY( literal, field, value )if ( !str_cmp( word, literal ) ){field  = value;fMatch = true;break;}
 
+/*
+ * One skill name from a player file: everything up to the end of the line,
+ * with surrounding whitespace and one layer of quotes removed.
+ */
+static void fread_skill_name( FILE *fp, char *dest, size_t size )
+{
+    char raw[MAX_INPUT_LENGTH];
+    char *start = raw;
+    char *end;
+    size_t len = 0;
+    int c;
+
+    while ( ( c = getc( fp ) ) != EOF && c != '\n' && c != '\r' )
+    {
+        if ( len + 1 < sizeof(raw) )
+            raw[len++] = (char) c;
+    }
+    raw[len] = '\0';
+
+    while ( *start == ' ' || *start == '\t' )
+        start++;
+
+    end = start + strlen( start );
+    while ( end > start && ( end[-1] == ' ' || end[-1] == '\t' ) )
+        end--;
+    *end = '\0';
+
+    /* Drop the quotes the writer puts around every name. */
+    if ( ( *start == '\'' || *start == '"' )
+      && end > start + 1 && end[-1] == *start )
+    {
+        start++;
+        end[-1] = '\0';
+    }
+
+    toc_strlcpy( dest, start, size );
+}
+
+
 void fread_char( CHAR_DATA *ch, FILE *fp )
 {
     char buf[MAX_STRING_LENGTH];
@@ -1737,15 +1776,27 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    {
 		int sn;
                 int value;
-                char *skill_name;
+                char skill_name[MAX_INPUT_LENGTH];
 
                 value = fread_number( fp );
-                skill_name = fread_word( fp ) ;
+
+                /*
+                 * The rest of the line, not fread_word.
+                 *
+                 * Skills are written as  Sk 75 'shield block'  and
+                 * fread_word treats the opening quote as a delimiter, so a
+                 * name containing an apostrophe came back truncated and
+                 * left the remainder of it sitting in the stream as the
+                 * next key.  Every field after that read against the wrong
+                 * offset and the load crashed.  Taking the whole line
+                 * cannot desync whatever the name turns out to contain,
+                 * and it reads the ordinary quoted names identically.
+                 */
+                fread_skill_name( fp, skill_name, sizeof(skill_name) );
                 sn = skill_lookup(skill_name);
-                /* sn    = skill_lookup( fread_word( fp ) ); */
                 if ( sn < 0 )
                 {
-                    fprintf(stderr,"%s",skill_name);
+                    fprintf(stderr,"unknown skill '%s'\n",skill_name);
 		    bug( "Fread_char: unknown skill. ", 0 );
 		}
 		else

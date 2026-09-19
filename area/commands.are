@@ -920,19 +920,19 @@ sizes, and your opponent's dexterity.  You must be in combat and wielding
 a weapon to attempt it.
 
 Two things stop a disarm outright.  A weapon under BEWITCH WEAPON cannot
-be taken from its owner's hand at all.  A warrior/warrior with HERO'S GRIP
+be taken from its owner's hand at all.  A warrior/warrior with HEROIC GRIP
 may hold on to theirs, and once fully practiced always will.
 
-See also: BASH, TRIP, HERO'S GRIP, BEWITCH WEAPON
+See also: BASH, TRIP, HEROIC GRIP, BEWITCH WEAPON
 ~
 
-0 "HERO'S GRIP" HEROSGRIP HEROS GRIP~
+0 "HEROIC GRIP" HEROICGRIP HEROIC GRIP~
 Syntax: (passive -- there is nothing to type)
 
 Warrior/warrior only.  Available from level 35.
 
 A warrior who has spent their whole career with a weapon in hand learns
-to keep it there.  Hero's grip is a chance, every time somebody tries to
+to keep it there.  Heroic grip is a chance, every time somebody tries to
 disarm you, that the weapon simply does not leave your hand.  When you are
 fully practiced in it, you cannot be disarmed.
 
@@ -940,7 +940,7 @@ fully practiced in it, you cannot be disarmed.
 
 This is nothing like BEWITCH WEAPON, and it is worth knowing the
 difference.  Bewitch curses the weapon so it cannot be removed at all --
-by anyone, including you, until the curse is lifted.  Hero's grip does
+by anyone, including you, until the curse is lifted.  Heroic grip does
 nothing to the weapon.  You are just holding on.  REMOVE and WIELD work
 exactly as they always did, and you can change weapons mid-fight.
 
@@ -964,7 +964,7 @@ Who trains it:
   Dolonar the blacksmith -- practice
   Breark the troll       -- practice
 
-Every warrior/warrior already has hero's grip, including characters made
+Every warrior/warrior already has heroic grip, including characters made
 before it existed.  You do not need to go and find it; you need to go and
 practice it.
 

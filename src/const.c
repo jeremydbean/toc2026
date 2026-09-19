@@ -598,7 +598,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	12,     CLASS_WARRIOR,  GUILD_WARRIOR,
 	{
 	  "destruction",   "third attack", "door bash",
-          "smite",         "hero's grip"
+          "smite",         "heroic grip"
 	},
 	{
 	  "destruction",   "third attack", "door bash",
@@ -609,7 +609,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	13,     CLASS_ANY,  GUILD_WARRIOR,
 	{
 	  "disarm",        "dodge",    "enhanced damage",
-	  "rescue",        "parry",    "hero's grip"
+	  "rescue",        "parry",    "heroic grip"
 	},
 	{
 	  "disarm",        "dodge",    "enhanced damage",
@@ -620,7 +620,7 @@ const   struct  guildmaster_type        guildmaster_table       []  =
 	14,     CLASS_ANY,  GUILD_WARRIOR,
 	{
 	  "hand to hand",  "kick", "second attack",
-	  "fast healing",  "danger sense", "hero's grip"
+	  "fast healing",  "danger sense", "heroic grip"
 	},
 	{
 	  "hand to hand",  "kick", "second attack",
@@ -3368,11 +3368,11 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     },
 
     {
-	"hero's grip",
+	"heroic grip",
 	{ 62, 62, 62, 35, 62, 62 },     { 5, 5, 5, 5, 5, 5},
 	spell_null,             TAR_IGNORE,             POS_FIGHTING,
 	&gsn_heros_grip,        SLOT( 0),        0,      0,
-	"",                     "!Hero's Grip!"
+	"",                     "!Heroic Grip!"
     },
 
     {
