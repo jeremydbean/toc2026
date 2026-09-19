@@ -3788,8 +3788,20 @@ void do_practice(CHAR_DATA *ch, char *argument)
 
         adept = IS_NPC(ch) ? 100 : class_table[ch->class].skill_adept;
 
+        if ( sn == gsn_heros_grip )
+            adept = UMIN( adept, HEROS_GRIP_PRACTICE_MAX );
+
         if ( ch->pcdata->learned[sn] >= adept )
         {
+            if ( sn == gsn_heros_grip
+              && ch->pcdata->learned[sn] < 100 )
+            {
+                act( "$N tells you 'I have taught you all I can of that."
+                     "  The rest you take from whoever tries to take your"
+                     " weapon.'", ch, NULL, gm, TO_CHAR );
+                return;
+            }
+
             snprintf(buf, sizeof(buf), "You are already learned at %s.\n\r",
 		skill_table[sn].name );
             send_to_char( buf, ch );
@@ -3800,8 +3812,10 @@ void do_practice(CHAR_DATA *ch, char *argument)
             ch->practice--;
             ch->pcdata->learned[sn] = (int16_t)(
                 ch->pcdata->learned[sn] +
-                int_app[get_curr_stat(ch,STAT_INT)].learn /
-                skill_table[sn].rating[ch->class]);
+                ( sn == gsn_heros_grip
+                    ? HEROS_GRIP_PRACTICE_GAIN
+                    : int_app[get_curr_stat(ch,STAT_INT)].learn /
+                      skill_table[sn].rating[ch->class] ));
             if ( ch->pcdata->learned[sn] < adept )
             {
                 act( "You practice $T.",

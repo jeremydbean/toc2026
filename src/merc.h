@@ -1977,6 +1977,7 @@ extern  sh_int  gsn_sneak;
 extern  sh_int  gsn_steal;
 extern  sh_int  gsn_search;
 extern  sh_int  gsn_disarm;
+extern  sh_int  gsn_heros_grip;
 extern  sh_int  gsn_enhanced_damage;
 extern  sh_int  gsn_kick;
 extern  sh_int  gsn_parry;
@@ -2464,6 +2465,19 @@ void    reset_char      ( CHAR_DATA *ch );
 int     get_trust       ( CHAR_DATA *ch );
 bool    rank_protects   ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    flags_from_argument ( const char *argument, int current, int *result );
+
+/*
+ * Hero's grip belongs to a warrior who took the warrior guild too.
+ * skill_table gates the class; it has no column for the guild, so that
+ * half of the rule lives in code.
+ */
+bool    is_warrior_warrior  ( const CHAR_DATA *ch );
+void    grant_heros_grip    ( CHAR_DATA *ch );
+
+/* Practice takes it to 75 in steps of 10.  The rest is earned in a
+   fight, by being disarmed at and not letting go. */
+#define HEROS_GRIP_PRACTICE_MAX     75
+#define HEROS_GRIP_PRACTICE_GAIN    10
 
 /* In-game building. */
 #define BUILDER_AREA_FILE   "custom.are"

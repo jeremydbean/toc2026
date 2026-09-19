@@ -3435,6 +3435,39 @@ void disarm( CHAR_DATA *ch, CHAR_DATA *victim )
 	return;
     }
 
+    /*
+     * Hero's grip.  Nothing is done to the weapon -- the warrior simply
+     * holds on -- so unlike a bewitched weapon they can still put it down
+     * whenever they like.  At 100 they never lose it.
+     *
+     * The attempt itself is the practice: win or lose, it is a chance to
+     * get better, which is the only way past what a guildmaster teaches.
+     */
+    if ( is_warrior_warrior( victim ) )
+    {
+        int grip = get_skill( victim, gsn_heros_grip );
+
+        if ( grip > 0 )
+        {
+            bool held = number_percent( ) <= grip;
+
+            check_improve( victim, gsn_heros_grip, held, 1 );
+
+            if ( held )
+            {
+                act("You wrench at $N's weapon, but $E grips it like iron!",
+                    ch,NULL,victim,TO_CHAR);
+                act("$n tries to \x02\x0C disarm\x02\x01 you -- you tighten "
+                    "your grip and hold fast!",
+                    ch,NULL,victim,TO_VICT);
+                act("$n tries to \x02\x0C disarm\x02\x01 $N, but $N holds on "
+                    "through sheer strength.",
+                    ch,NULL,victim,TO_NOTVICT);
+                return;
+            }
+        }
+    }
+
     act( "$n DISARMS! you and sends your weapon flying!",
 	 ch, NULL, victim, TO_VICT    );
     act( "You\x02\x0C disarm\x02\x01 $N!",  ch, NULL, victim, TO_CHAR    );

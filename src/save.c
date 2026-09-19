@@ -1307,6 +1307,9 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if ( ch->pcdata->psionic_grant_spec    == NULL ) ch->pcdata->psionic_grant_spec    = str_dup( "" );
     if ( ch->pcdata->list_remorts          == NULL ) ch->pcdata->list_remorts          = str_dup( "" );
 
+    /* Characters who were W/W before the skill existed have it now. */
+    grant_heros_grip( ch );
+
     color_update_defaults( ch, !found );
 
     return found;

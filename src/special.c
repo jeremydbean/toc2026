@@ -1551,6 +1551,8 @@ struct {
     act("$n tells you 'You are now a member of the $t guild.'",
 	mob, get_guildname(guild), ch, TO_VICT);
  
+    grant_heros_grip( ch );
+
     group_add(ch, guild_bonus[guild].mix, false);
     snprintf(buf, sizeof(buf),"You will recieve free introductory training in the %s.",
 		guild_bonus[guild].mix);

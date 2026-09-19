@@ -614,6 +614,42 @@ void reset_char(CHAR_DATA *ch)
 
 
 /*
+ * A warrior who took the warrior guild as well -- "W/W".
+ *
+ * skill_table can gate a skill by class but not by guild, and hero's
+ * grip is meant for the double warrior only.  The trainers that teach it
+ * are all warrior-guild, so in practice nobody else can pick it up, but
+ * SET SKILL can hand out anything, and the grip should not work for
+ * someone it was never meant for.
+ */
+bool is_warrior_warrior( const CHAR_DATA *ch )
+{
+    return !IS_NPC( ch )
+        && ch->pcdata != NULL
+        && ch->class == CLASS_WARRIOR
+        && ch->pcdata->guild == GUILD_WARRIOR;
+}
+
+
+/*
+ * Every W/W has the grip at 1%, whether they were made before it
+ * existed or joined the guild five minutes ago.  It is what the class
+ * combination is, not something to go and find.
+ */
+void grant_heros_grip( CHAR_DATA *ch )
+{
+    if ( !is_warrior_warrior( ch ) )
+        return;
+
+    if ( gsn_heros_grip <= 0 )
+        return;
+
+    if ( ch->pcdata->learned[gsn_heros_grip] < 1 )
+        ch->pcdata->learned[gsn_heros_grip] = 1;
+}
+
+
+/*
  * Turn a flag argument into a bitmask.
  *
  * Accepts the letters area files and STAT use ("AGH"), optionally led by

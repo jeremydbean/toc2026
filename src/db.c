@@ -101,6 +101,7 @@ int16_t                  gsn_steal;
 int16_t                  gsn_search;
  
 int16_t                  gsn_disarm;
+int16_t                  gsn_heros_grip;
 int16_t                  gsn_enhanced_damage;
 int16_t                  gsn_kick;
 int16_t                  gsn_parry;

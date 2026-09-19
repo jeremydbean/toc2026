@@ -104,6 +104,54 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Rooms built in game now survive a reboot.** `goto <unused vnum>` has
+  always made a room and `set room` has always been able to name, describe
+  and flag it, but nothing ever wrote any of it down, so the whole feature
+  was unusable -- and there was no way to connect two rooms together
+  anyway. `AREA_DATA` now records the file it was read from, `rlink` digs
+  exits (both ways, with doors, locks, keys and secret keywords), and
+  `rsave` writes the standing area's rooms back to its `.are`.
+
+  Rooms made in game belong to `area/custom.are`, which is now in
+  `area.lst`, so a saved room is loaded at the next boot and built on
+  rather than overwritten -- `new_area` adopts the loaded area instead of
+  allocating a fresh one.
+
+  Two limits. A room that came out of a shipped area file may only be
+  changed by an implementor; `set room` and `rlink` both refuse below
+  `MAX_LEVEL`, because building in your own rooms and editing Hyrule are
+  not the same act. And saving over an existing `.are` takes a confirmation
+  naming the file (`rsave confirm hyrule.are`), so a stray `rsave` in a
+  room you happened to be standing in cannot rewrite it. The previous file
+  is kept as a dated `.bak`, and the new one is written to a temp name and
+  renamed, so an interrupted save leaves the original intact.
+
+  The writer refuses rooms it cannot round-trip -- a second flag word, a
+  river or teleport destination, a room affect -- and names the room rather
+  than writing a file that has quietly dropped them. Those fields live in
+  lists outside the room and the loader reads them only when the matching
+  flag is set, so writing the flag without the data would make it read the
+  next room's fields as this one's. Help: `BUILDING`, `RLINK`, `RSAVE`.
+
+- **Hero's grip**, a warrior/warrior skill from level 35: a passive chance
+  to keep hold of your weapon when somebody disarms you, reaching certainty
+  at 100%. It is the warrior's own answer to `bewitch weapon`, and
+  deliberately not the same thing -- bewitch curses the weapon so nobody
+  can remove it, including its owner, while the grip does nothing to the
+  weapon at all. `remove` and `wield` keep working, and it cannot be put on
+  a weapon, a follower or anyone else.
+
+  Practice takes it to 75% ten points at a time; the last quarter comes
+  only from having disarms thrown at you, at `confuse`'s rating, so it is a
+  slow finish. Every disarm attempt is a chance to improve whether or not
+  you keep the weapon. Vladamir the veteran teaches it; Dolonar the
+  blacksmith and Breark the troll will practice it. Every W/W already
+  playing has it at 1% from their next login, granted in `load_char_obj`
+  and on joining the guild. `skill_table` can gate by class but has no
+  column for guild, so `is_warrior_warrior()` carries that half of the
+  rule.
+
+
 - **Hermie**, a standing spellup desk and Herbie's girlfriend (mob vnum 98).
   `spellup` plants her; she casts on whoever talks to her from a menu she
   reads out, every spell pinned to 30 ticks and logged. `spellpurge` clears

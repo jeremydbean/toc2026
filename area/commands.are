@@ -919,7 +919,56 @@ chance to succeed is influenced by your disarm skill, relative weapon
 sizes, and your opponent's dexterity.  You must be in combat and wielding
 a weapon to attempt it.
 
-See also: BASH, TRIP
+Two things stop a disarm outright.  A weapon under BEWITCH WEAPON cannot
+be taken from its owner's hand at all.  A warrior/warrior with HERO'S GRIP
+may hold on to theirs, and at 100% always will.
+
+See also: BASH, TRIP, HERO'S GRIP, BEWITCH WEAPON
+~
+
+0 "HERO'S GRIP" HEROSGRIP HEROS GRIP~
+Syntax: (passive -- there is nothing to type)
+
+Warrior/warrior only.  Available from level 35.
+
+A warrior who has spent their whole career with a weapon in hand learns
+to keep it there.  Hero's grip is a chance, every time somebody tries to
+disarm you, that the weapon simply does not leave your hand.  At 100% it
+never does.
+
+  You wrench at Karg's weapon, but he grips it like iron!
+
+This is nothing like BEWITCH WEAPON, and it is worth knowing the
+difference.  Bewitch curses the weapon so it cannot be removed at all --
+by anyone, including you, until the curse is lifted.  Hero's grip does
+nothing to the weapon.  You are just holding on.  REMOVE and WIELD work
+exactly as they always did, and you can change weapons mid-fight.
+
+It works only for you.  There is no way to put it on a weapon, on a
+follower, or on anyone else, and it does not stack with anything.
+
+Raising it:
+
+  Practice takes it to 75%, ten points at a time, which is far faster
+  than most skills -- eight sessions from scratch.
+
+  The last 25% cannot be taught.  It comes from being disarmed at and
+  holding on, and it comes slowly: this is a hard skill to finish,
+  comparable to CONFUSE.  Every disarm attempt against you is a chance
+  to improve, whether you keep the weapon or lose it.
+
+Who trains it:
+
+  Vladamir the veteran   -- the warrior guild's own master, and the only
+                            one who will teach it to you in the first place
+  Dolonar the blacksmith -- practice
+  Breark the troll       -- practice
+
+Every warrior/warrior has hero's grip at 1% already, including characters
+made before it existed.  You do not need to go and find it; you need to
+go and practice it.
+
+See also: DISARM, BEWITCH WEAPON, PRACTICE, PRACTICELIST, GAIN
 ~
 
 0 DISMOUNT~
