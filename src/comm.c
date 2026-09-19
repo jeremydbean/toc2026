@@ -2570,6 +2570,10 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
         snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s new player.", ch->name, d->host );
         log_string( log_buf );
         record_login( ch->name, d->host, "new" );
+        /* An existing character logging in announces itself with its
+           host; a brand new one did not, so the arrival staff would
+           most want to see was the one that never reached them. */
+        wizinfo( log_buf, LEVEL_IMMORTAL );
 	write_to_buffer( d, "\n\r", 2 );
 	write_to_buffer( d, "You may be good, neutral, or evil.\n\r",0);
 	write_to_buffer( d, "Which alignment (G/N/E)? ",0);

@@ -2151,6 +2151,28 @@ void do_quit( CHAR_DATA *ch, char *argument )
            the sheet cannot disagree about one session. */
         record_logout( ch->name,
             ch->desc != NULL ? ch->desc->host : "(unknown)", "quit", dur );
+
+        /* Staff saw them arrive; they should see them go. Connecting,
+           entering, reconnecting and losing link all reach wizinfo, and
+           a clean quit was the one gap, so people appeared to pile up
+           and never leave. The session length comes free here and is
+           the part worth reading. */
+        {
+            char note[MAX_INPUT_LENGTH];
+            char spent[32];
+
+            if ( dur >= 3600 )
+                snprintf( spent, sizeof(spent), "%ldh %02ldm",
+                          dur / 3600, ( dur % 3600 ) / 60 );
+            else if ( dur >= 60 )
+                snprintf( spent, sizeof(spent), "%ldm", dur / 60 );
+            else
+                snprintf( spent, sizeof(spent), "%lds", dur );
+
+            snprintf( note, sizeof(note), "%s has left the game (%s).",
+                      ch->name, spent );
+            wizinfo( note, ch->level );
+        }
     }
 
     /*
