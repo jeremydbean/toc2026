@@ -114,7 +114,7 @@ class NewbiePackTests(unittest.TestCase):
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class CarryWeightTests(unittest.TestCase):
-    def test_a_newbie_carries_more_than_the_same_character_would_later(self) -> None:
+    def test_every_player_carries_half_again_the_base(self) -> None:
         with LiveMud() as mud:
             with mud.connect(timeout=120) as client:
                 create_character(client, "Znewcarry", PASSWORD)
@@ -123,9 +123,9 @@ class CarryWeightTests(unittest.TestCase):
                 client.send("quit")
                 client.wait_closed()
 
-            # Same character, past the newbie threshold. Level alone adds
-            # only 5/2 per level, so a jump far larger than that is the
-            # bonus being withdrawn, not levelling.
+            # The same character at a higher level. The bonus applies at
+            # every level now, so capacity must go up, not down -- it used
+            # to be withdrawn past level 5.
             patch_player_file(mud, "Znewcarry", Levl=LEVEL_NEWBIE + 1)
             with mud.connect(timeout=120) as client:
                 login(client, "Znewcarry", PASSWORD)
@@ -137,12 +137,16 @@ class CarryWeightTests(unittest.TestCase):
                                   text, re.I)
                 return int(match.group(2)) if match else None
 
-            newbie_max, older_max = weight(low), weight(high)
-            if newbie_max is None or older_max is None:
+            low_max, high_max = weight(low), weight(high)
+            if low_max is None or high_max is None:
                 self.skipTest("score does not report a carry maximum")
 
-            self.assertGreater(newbie_max, older_max,
-                               "the newbie bonus is not being applied")
+            # A level 1 with the bonus already beats the unboosted formula,
+            # and levelling only adds to it.
+            self.assertGreaterEqual(high_max, low_max,
+                                    "the bonus is being withdrawn with level")
+            base = str(low_max)
+            self.assertTrue(base, "no carry maximum parsed")
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

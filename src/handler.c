@@ -725,15 +725,15 @@ int can_carry_n( CHAR_DATA *ch )
 /*
  * The carry weight both branches of can_carry_w() arrive at.
  *
- * Newbies get half again as much: a starting kit plus anything worth
- * picking up outweighs a level one character's allowance, and spending the
- * first few levels walking back to a shop is nobody's idea of the game.
+ * Every player carries half again what the stock formula allows. It was
+ * briefly a newbie-only bonus, which just moved the wall further along:
+ * the allowance was tight at every level, not only the first five.
  */
 static int carry_weight_base( CHAR_DATA *ch )
 {
     int weight = str_app[get_curr_stat(ch,STAT_STR)].carry + ch->level * 5 / 2;
 
-    if ( !IS_NPC(ch) && ch->level <= LEVEL_NEWBIE )
+    if ( !IS_NPC(ch) )
         weight += weight / 2;
 
     return weight;

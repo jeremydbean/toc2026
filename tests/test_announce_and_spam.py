@@ -61,11 +61,34 @@ class AnnounceTests(unittest.TestCase):
                     mortal.drain(2.5)
                     seen = mortal.transcript
                     self.assertIn("ANNOUNCEMENT", seen, seen[-600:])
+                    # Shouted regardless of how it was typed, so it does not
+                    # arrive in lower case beside a banner in capitals.
                     self.assertIn(
-                        "the realm is about to reboot",
+                        "THE REALM IS ABOUT TO REBOOT",
                         seen,
                         seen[-600:],
                     )
+
+    def test_the_announcement_is_indented_and_spaced(self) -> None:
+        """Flush against the rule it read as part of the frame."""
+        with LiveMud() as mud:
+            make_immortal(mud, "Zannfmt")
+            with mud.connect(timeout=120) as imm:
+                login(imm, "Zannfmt", PASSWORD)
+                with mud.connect(timeout=120) as mortal:
+                    create_character(mortal, "Zannfmtm", PASSWORD)
+                    run(imm, "announce spacing check", settle=2.5)
+                    mortal.drain(2.5)
+
+                    lines = mortal.transcript.splitlines()
+                    index = next(i for i, line in enumerate(lines)
+                                 if "SPACING CHECK" in line)
+
+                    self.assertTrue(lines[index].startswith("   "),
+                                    repr(lines[index]))
+                    # A blank line above it, separating it from the title.
+                    self.assertEqual(lines[index - 1].strip(), "")
+                    self.assertEqual(lines[index + 1].strip(), "")
 
     def test_an_empty_announcement_is_refused(self) -> None:
         with LiveMud() as mud:

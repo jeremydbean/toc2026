@@ -285,7 +285,9 @@
                         </table>
                     </div>
                     <div class="log-actions">
-                        <button class="button button-secondary compact" id="logins-more" type="button" hidden>Load older sessions</button>
+                        <button class="button button-secondary compact" id="logins-prev" type="button">Previous</button>
+                        <span id="logins-page-label">Page 1</span>
+                        <button class="button button-secondary compact" id="logins-next" type="button">Next</button>
                         <span class="panel-subtitle" id="logins-count"></span>
                     </div>
                 </section>
@@ -315,6 +317,11 @@
                         <button class="button button-secondary compact" id="logs-refresh" type="button">Read latest</button>
                         <button class="text-button" id="logs-clear" type="button">Clear</button>
                         <label class="line-count">Lines<input id="log-lines" type="number" min="1" max="5000" value="300"></label>
+                        <span class="pagination inline">
+                            <button class="button button-secondary compact" id="log-prev" type="button">Older</button>
+                            <span id="log-page-label">Page 1</span>
+                            <button class="button button-secondary compact" id="log-next" type="button">Newer</button>
+                        </span>
                     </div>
                     <pre class="terminal log-terminal" id="log-terminal" tabindex="0" aria-label="Server logs"></pre>
                 </div>
@@ -327,7 +334,8 @@
                 </div>
 
                 <div class="host-metric-grid" aria-label="Host resource status">
-                    <article class="metric"><span>Uptime</span><strong id="host-uptime">Locked</strong></article>
+                    <article class="metric"><span>Pi uptime</span><strong id="host-uptime">Locked</strong></article>
+                    <article class="metric"><span>Game uptime</span><strong id="host-game-uptime">Locked</strong></article>
                     <article class="metric"><span>Load</span><strong id="host-load">-</strong></article>
                     <article class="metric"><span>Memory</span><strong id="host-memory">-</strong></article>
                     <article class="metric"><span>Root disk</span><strong id="host-disk">-</strong></article>
@@ -455,6 +463,8 @@
                         <span class="timestamp" id="operations-updated">Not refreshed</span>
                     </div>
                     <div class="operation-status-grid">
+                        <div><span>Players online</span><strong id="operations-online">-</strong><small id="operations-online-names"></small></div>
+                        <div><span>Game uptime</span><strong id="operations-game-uptime">-</strong></div>
                         <div><span>Game server</span><strong id="operations-game">Checking</strong></div>
                         <div><span>Pending actions</span><strong id="operations-queue">-</strong></div>
                         <div><span>Latest backup</span><strong id="operations-backup">-</strong></div>
@@ -497,6 +507,11 @@
                         <label>Filter<input id="activity-search" type="search" placeholder="Message text" autocomplete="off"></label>
                     </div>
                     <div class="activity-feed" id="activity-feed" aria-live="polite"><p class="empty-state">Not loaded.</p></div>
+                    <div class="pagination">
+                        <button class="button button-secondary compact" id="activity-prev" type="button">Previous</button>
+                        <span id="activity-page-label">Page 1</span>
+                        <button class="button button-secondary compact" id="activity-next" type="button">Next</button>
+                    </div>
                 </section>
 
                 <section class="panel backup-panel">

@@ -1337,7 +1337,11 @@ DESCRIPTOR_DATA *new_descriptor(int control) {
          * Modern networking lookup
          * Attempts to resolve the hostname, falls back to IP string if it fails.
          */
-        if (getnameinfo((struct sockaddr *)&sock, size, host, sizeof(host), NULL, 0, 0) == 0) {
+        /* This is a blocking call in a single-threaded loop: a slow
+           resolver stalls the game while somebody is logging in, which is
+           why `dns off' exists. */
+        if (dns_lookup_enabled
+         && getnameinfo((struct sockaddr *)&sock, size, host, sizeof(host), NULL, 0, 0) == 0) {
             dnew->host = str_dup(host);
         } else {
             dnew->host = str_dup(inet_ntoa(sock.sin_addr));
@@ -1888,6 +1892,11 @@ static void safe_strcat( char *dest, size_t dest_size, const char *src )
  * Used to keep the healthcheck's two-minute connect/disconnect cycle out of
  * the log, and to decide whether a PROXY header may be trusted.
  */
+/* Resolve connecting addresses to host names? Off stores the numeric
+   address instead, which also disables bans written against host names. */
+bool dns_lookup_enabled = TRUE;
+
+
 bool is_loopback_ip( uint32_t ip )
 {
     return ip != 0 && ( ntohl( ip ) >> 24 ) == 127;
@@ -3915,22 +3924,42 @@ void announce_to_world( const char *who, const char *message )
 {
     DESCRIPTOR_DATA *d;
     char buf[MAX_STRING_LENGTH];
+    /* Half the output buffer: the frame around it costs a few hundred
+       characters, so an announcement at full MAX_STRING_LENGTH could not
+       fit alongside it. Far longer than anything anyone types. */
+    char shouted[MAX_STRING_LENGTH / 2];
 
     UNUSED_PARAM( who );
 
     if ( message == NULL || message[0] == '\0' )
         return;
 
+    /* Shout it the same way whoever sent it typed it or not: an
+       announcement that arrives in lower case beside a banner in capitals
+       reads like a mistake. */
+    {
+        size_t index;
+
+        for ( index = 0; message[index] != '\0'
+                      && index + 1 < sizeof(shouted); index++ )
+            shouted[index] = (char) UPPER( message[index] );
+        shouted[index] = '\0';
+    }
+
+    /* A blank line under the title and an indent on the text: flush against
+       the rule it read as part of the frame rather than as the message. */
     snprintf( buf, sizeof(buf),
         "\n\r"
         "\x02%c============================================================\x02%c\n\r"
         "\x02%c                       ANNOUNCEMENT\x02%c\n\r"
-        "\x02%c%s\x02%c\n\r"
+        "\n\r"
+        "\x02%c   %s\x02%c\n\r"
+        "\n\r"
         "\x02%c============================================================\x02%c\n\r"
         "\n\r",
         COL_HERO,      COL_REGULAR,
         COL_HIGHLIGHT, COL_REGULAR,
-        COL_QUESTION,  message, COL_REGULAR,
+        COL_QUESTION,  shouted, COL_REGULAR,
         COL_HERO,      COL_REGULAR );
 
     for ( d = descriptor_list; d != NULL; d = d->next )

@@ -2460,6 +2460,7 @@ void    reset_char      ( CHAR_DATA *ch );
 int     get_trust       ( CHAR_DATA *ch );
 bool    rank_protects   ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    is_loopback_ip  ( uint32_t ip );
+extern bool dns_lookup_enabled;
 int     get_curr_stat   ( CHAR_DATA *ch, int stat );
 int     get_max_train   ( CHAR_DATA *ch, int stat );
 int     can_carry_n     ( CHAR_DATA *ch );

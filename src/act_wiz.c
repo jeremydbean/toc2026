@@ -5,6 +5,17 @@
  * MERC coding team and Russ Taylor for the ROM2.3 code base.             *
  **************************************************************************/
 
+/* do_dns needs getaddrinfo and friends. They are hidden under the strict
+   -std=c17 the CMake build uses unless the feature macros are set before
+   any header is pulled in -- comm.c does the same for the same reason. */
+#ifndef _DEFAULT_SOURCE
+#define _DEFAULT_SOURCE
+#endif
+
+#ifndef _POSIX_C_SOURCE
+#define _POSIX_C_SOURCE 200112L
+#endif
+
 #if defined(macintosh)
 #include <types.h>
 #include <time.h>
@@ -20,6 +31,11 @@
 #include <ctype.h>
 #include <unistd.h>
 #include <limits.h>
+/* do_dns: address parsing and resolver lookups. */
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
 #include "merc.h"
 #include "interp.h"
 #pragma GCC diagnostic ignored "-Wcomment"
@@ -6031,6 +6047,121 @@ void do_undeny(CHAR_DATA *ch, char *argument)
 
 
 
+/*
+ * DNS: the resolver switch, what it made of the people connected, and a
+ * lookup for one address.
+ */
+void do_dns( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    DESCRIPTOR_DATA *d;
+    int count;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        snprintf( buf, sizeof(buf),
+            "Hostname lookups are %s.\n\r"
+            "  dns on | off      resolve connecting addresses, or do not\n\r"
+            "  dns list          what the resolver made of who is connected\n\r"
+            "  dns <address>     look one up now\n\r",
+            dns_lookup_enabled ? "ON" : "OFF" );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "on" ) || !str_cmp( arg, "off" ) )
+    {
+        dns_lookup_enabled = !str_cmp( arg, "on" );
+        snprintf( buf, sizeof(buf), "Hostname lookups are now %s.\n\r",
+                  dns_lookup_enabled ? "ON" : "OFF" );
+        send_to_char( buf, ch );
+
+        if ( !dns_lookup_enabled )
+            send_to_char( "Bans written against host names will not match.\n\r", ch );
+
+        snprintf( buf, sizeof(buf), "%s turned DNS lookups %s.",
+                  ch->name, dns_lookup_enabled ? "on" : "off" );
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+        return;
+    }
+
+    if ( !str_cmp( arg, "list" ) )
+    {
+        count = 0;
+        send_to_char( "Connected descriptors:\n\r", ch );
+        for ( d = descriptor_list; d != NULL; d = d->next )
+        {
+            CHAR_DATA *who = ( d->original != NULL ) ? d->original : d->character;
+            struct in_addr address;
+            char numeric[INET_ADDRSTRLEN];
+
+            address.s_addr = d->ip;
+            if ( inet_ntop( AF_INET, &address, numeric, sizeof(numeric) ) == NULL )
+                toc_strlcpy( numeric, "?", sizeof(numeric) );
+
+            snprintf( buf, sizeof(buf), "  %-14s %-32s %s\n\r",
+                who != NULL && who->name != NULL ? who->name : "(connecting)",
+                d->host != NULL ? d->host : "(none)",
+                numeric );
+            send_to_char( buf, ch );
+            count++;
+        }
+
+        if ( count == 0 )
+            send_to_char( "  Nobody is connected.\n\r", ch );
+        return;
+    }
+
+    /* A lookup of an arbitrary address. Blocking, like every other
+       resolver call here, so it is deliberate rather than on a timer. */
+    {
+        struct sockaddr_in numeric;
+        struct addrinfo hints;
+        struct addrinfo *results;
+        char host[NI_MAXHOST];
+
+        memset( &numeric, 0, sizeof(numeric) );
+        numeric.sin_family = AF_INET;
+
+        /* An address gets a reverse lookup; anything else a forward one. */
+        if ( inet_pton( AF_INET, arg, &numeric.sin_addr ) == 1 )
+        {
+            if ( getnameinfo( (struct sockaddr *) &numeric, sizeof(numeric),
+                              host, sizeof(host), NULL, 0, NI_NAMEREQD ) == 0 )
+                snprintf( buf, sizeof(buf), "%s resolves to %s.\n\r", arg, host );
+            else
+                snprintf( buf, sizeof(buf), "%s has no host name.\n\r", arg );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        memset( &hints, 0, sizeof(hints) );
+        hints.ai_family   = AF_INET;
+        hints.ai_socktype = SOCK_STREAM;
+
+        if ( getaddrinfo( arg, NULL, &hints, &results ) != 0 || results == NULL )
+        {
+            snprintf( buf, sizeof(buf), "%s does not resolve.\n\r", arg );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        if ( getnameinfo( results->ai_addr, results->ai_addrlen,
+                          host, sizeof(host), NULL, 0, NI_NUMERICHOST ) == 0 )
+            snprintf( buf, sizeof(buf), "%s resolves to %s.\n\r", arg, host );
+        else
+            snprintf( buf, sizeof(buf), "%s resolved, but its address could "
+                                        "not be read back.\n\r", arg );
+        send_to_char( buf, ch );
+        freeaddrinfo( results );
+    }
+}
+
+
 void do_sockets( CHAR_DATA *ch, char *argument )
 {
     char buf[2 * MAX_STRING_LENGTH];
@@ -6807,11 +6938,13 @@ void do_pstat( CHAR_DATA *ch, char *argument )
 void do_grantpsi( CHAR_DATA *ch, char *argument )
 {
     CHAR_DATA *victim;
+    DESCRIPTOR_DATA offline_desc;
     char arg[MAX_INPUT_LENGTH];
     char mode[MAX_INPUT_LENGTH];
     char list_buf[MAX_STRING_LENGTH];
     char invalid[MAX_INPUT_LENGTH];
     bool immediate = false;
+    bool offline = false;
 
     list_buf[0] = '\0';
 
@@ -6826,13 +6959,30 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
 
     if ( ( victim = get_char_world( ch, arg ) ) == NULL )
     {
-        send_to_char( "They aren't here.\n\r", ch );
-        return;
+        /* Not connected: work on their save file instead of refusing.
+           Same load / modify / save / extract shape as do_undeny. */
+        arg[0] = UPPER(arg[0]);
+        memset( &offline_desc, 0, sizeof(offline_desc) );
+
+        if ( !load_char_obj( &offline_desc, arg ) )
+        {
+            send_to_char( "No player by that name is online or saved.\n\r", ch );
+            return;
+        }
+
+        victim = offline_desc.character;
+        victim->desc = NULL;
+        register_character( victim );
+        offline_desc.connected = CON_PLAYING;
+        reset_char( victim );
+        offline = true;
     }
 
     if ( IS_NPC( victim ) )
     {
         send_to_char( "Not on NPC's.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
         return;
     }
 
@@ -6873,11 +7023,20 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         send_to_char( "enervate, mind leech, mindbar, mindblast, nightmare, project,\n\r", ch );
         send_to_char( "psionic armor, psychic shield, pyrotechnics, shift, telekinesis,\n\r", ch );
         send_to_char( "torment, and transfusion.\n\r", ch );
+        if ( offline )
+            extract_char( victim, true );
         return;
     }
 
     free_string( victim->pcdata->psionic_grant_spec );
     victim->pcdata->psionic_grant_spec = str_dup( list_buf );
+
+    if ( immediate && offline )
+    {
+        send_to_char( "They are not online, so this is flagged for their "
+                      "next level check instead.\n\r", ch );
+        immediate = false;
+    }
 
     if ( immediate )
     {
@@ -6896,14 +7055,22 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     victim->pcdata->psionic = 0;
     victim->pcdata->last_level = 0;
     send_to_char( "Grant flag applied. They will receive psionics on their next level check.\n\r", ch );
-    send_to_char( "Your mind tingles with unfamiliar potential.\n\r", victim );
+    if ( !offline )
+        send_to_char( "Your mind tingles with unfamiliar potential.\n\r", victim );
 
     {
         char note[MAX_STRING_LENGTH];
 
-        snprintf( note, sizeof(note), "%s flagged %s for psionics (%s).",
-                  ch->name, victim->name, list_buf );
+        snprintf( note, sizeof(note), "%s flagged %s for psionics (%s)%s.",
+                  ch->name, victim->name, list_buf,
+                  offline ? " while offline" : "" );
         wizinfo( note, LEVEL_IMMORTAL );
+    }
+
+    if ( offline )
+    {
+        save_char_obj( victim );
+        extract_char( victim, true );
     }
 }
 

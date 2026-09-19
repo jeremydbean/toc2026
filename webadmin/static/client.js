@@ -559,8 +559,79 @@
             tab.setAttribute("aria-selected", String(active));
         });
         byId("session-panel").classList.toggle("is-active", name === "session");
+        byId("help-panel").classList.toggle("is-active", name === "help");
         byId("admin-panel").classList.toggle("is-active", name === "admin");
         if (name === "admin" && state.authenticated) void loadAdmin();
+        if (name === "help") void loadHelpTopics();
+    }
+
+    // The help text is public, so none of this needs a token.
+    const helpState = { topics: null, loading: false, selected: "" };
+
+    async function loadHelpTopics() {
+        if (helpState.topics || helpState.loading) return;
+        helpState.loading = true;
+        try {
+            const data = await api("/api/help");
+            helpState.topics = data.topics || [];
+            byId("help-count").textContent =
+                `${helpState.topics.length} topics`;
+            renderHelpTopics();
+        } catch (error) {
+            byId("help-topics").replaceChildren(
+                node("p", { className: "empty-state", text: error.message }));
+        } finally {
+            helpState.loading = false;
+        }
+    }
+
+    function renderHelpTopics() {
+        const query = byId("help-search").value.trim().toLowerCase();
+        const list = byId("help-topics");
+        const matching = (helpState.topics || []).filter((topic) => {
+            if (!query) return true;
+            if (topic.title.toLowerCase().includes(query)) return true;
+            if (topic.keywords.some((word) => word.toLowerCase().includes(query))) return true;
+            return (topic.summary || "").toLowerCase().includes(query);
+        });
+
+        if (!matching.length) {
+            list.replaceChildren(node("p", {
+                className: "empty-state",
+                text: query ? "No topic matches that." : "No help available.",
+            }));
+            return;
+        }
+
+        list.replaceChildren(...matching.map((topic) => {
+            const button = node("button", {
+                className: topic.title === helpState.selected ? "help-topic is-active" : "help-topic",
+                text: topic.title,
+                attrs: { type: "button", role: "listitem" },
+            });
+            button.addEventListener("click", () => openHelpTopic(topic.keywords[0], topic.title));
+            return button;
+        }));
+    }
+
+    async function openHelpTopic(keyword, title) {
+        helpState.selected = title;
+        renderHelpTopics();
+        const article = byId("help-article");
+        article.replaceChildren(node("p", { className: "empty-state", text: "Loading" }));
+        try {
+            const data = await api(`/api/help/${encodeURIComponent(keyword)}`);
+            // Set as text, never as markup: help syntax lines are full of
+            // angle brackets and the source is a builder-edited file. A
+            // guard test enforces this across the whole client.
+            article.replaceChildren(
+                node("h3", { text: data.title }),
+                node("pre", { className: "help-body", text: data.body || "(empty)" }),
+            );
+        } catch (error) {
+            article.replaceChildren(
+                node("p", { className: "empty-state", text: error.message }));
+        }
     }
 
     function renderAliases() {
@@ -1099,6 +1170,7 @@
         byId("panel-close").addEventListener("click", closePanel);
         byId("panel-scrim").addEventListener("click", closePanel);
         all("[data-panel]").forEach((tab) => tab.addEventListener("click", () => showUtilityPanel(tab.dataset.panel)));
+        byId("help-search").addEventListener("input", renderHelpTopics);
 
         byId("font-size").addEventListener("input", (event) => {
             state.settings.fontSize = Number(event.target.value);

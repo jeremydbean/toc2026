@@ -16,7 +16,6 @@
 
     const state = {
         view: "overview",
-        loginsShown: 0,
         token: "",
         authenticated: false,
         config: null,
@@ -26,8 +25,10 @@
         world: { type: "mobs", page: 1, pageSize: 50, query: "", total: 0, loading: false },
         issues: { page: 1, severity: "all", query: "" },
         terminal: { socket: null, connected: false, failed: false, secretInput: false, history: [], historyIndex: 0 },
-        logs: { socket: null, shouldReconnect: false, reconnectTimer: null },
-        operations: { status: null, backups: [], showAllBackups: false, events: [] },
+        logs: { socket: null, shouldReconnect: false, reconnectTimer: null, page: 1, total: 0 },
+        operations: { status: null, backups: [], showAllBackups: false, events: [], page: 1 },
+        loginsPage: 1,
+        loginsTotal: 0,
         host: { status: null, resourceSamples: [], monitorTimer: null, monitorLoading: false },
         map: { data: null, scale: 1, x: 0, y: 0, dragging: false, startX: 0, startY: 0 },
     };
@@ -348,20 +349,20 @@
         return epoch ? new Date(epoch * 1000).toLocaleString() : "-";
     }
 
-    // How many sessions one page pulls. The journal keeps far more than the
-    // table wants to render at once, so the view pages back through it rather
-    // than capping how far you can look.
-    const LOGIN_PAGE = 200;
+    // Everything that pages does it fifty at a time, matching the world
+    // browser, so the dashboard reads the same wherever you are in it.
+    const PAGE_SIZE = 50;
 
-    async function loadLogins(append = false) {
+    async function loadLogins(page = 1) {
         if (!await ensureAuth()) return;
         const sessionBody = byId("logins-table").querySelector("tbody");
         const playtimeBody = byId("playtime-table").querySelector("tbody");
-        const offset = append ? state.loginsShown : 0;
+        state.loginsPage = Math.max(1, page);
+        const offset = (state.loginsPage - 1) * PAGE_SIZE;
 
         let data;
         try {
-            data = await api(`/api/logins?limit=${LOGIN_PAGE}&offset=${offset}`, { auth: true });
+            data = await api(`/api/logins?limit=${PAGE_SIZE}&offset=${offset}`, { auth: true });
         } catch (error) {
             sessionBody.replaceChildren(node("tr", {}, [
                 node("td", { className: "empty-state", text: error.message, attrs: { colspan: 6 } }),
@@ -384,25 +385,18 @@
             tableCell(session.host || "-", "mono"),
         ]));
 
-        if (append) {
-            sessionBody.append(...rows);
-            state.loginsShown += sessions.length;
-        } else {
-            sessionBody.replaceChildren(...(rows.length ? rows : [node("tr", {}, [
-                node("td", { className: "empty-state", text: "No logins recorded yet.", attrs: { colspan: 6 } }),
-            ])]));
-            state.loginsShown = sessions.length;
-        }
+        sessionBody.replaceChildren(...(rows.length ? rows : [node("tr", {}, [
+            node("td", { className: "empty-state", text: "No logins recorded yet.", attrs: { colspan: 6 } }),
+        ])]));
 
-        const total = data.total ?? state.loginsShown;
-        byId("logins-count").textContent = total
-            ? `Showing ${state.loginsShown} of ${total}`
+        state.loginsTotal = data.total ?? sessions.length;
+        const pages = Math.max(1, Math.ceil(state.loginsTotal / PAGE_SIZE));
+        byId("logins-count").textContent = state.loginsTotal
+            ? `${formatNumber(state.loginsTotal)} sessions`
             : "";
-        byId("logins-more").hidden = !data.has_more;
-
-        // The per-character totals do not page; skip rebuilding them when we
-        // are only appending another slice of history.
-        if (append) return;
+        byId("logins-page-label").textContent = `Page ${state.loginsPage} of ${pages}`;
+        byId("logins-prev").disabled = state.loginsPage <= 1;
+        byId("logins-next").disabled = !data.has_more;
 
         const players = Object.entries(data.players || {})
             .sort((a, b) => (b[1].played || 0) - (a[1].played || 0));
@@ -534,6 +528,9 @@
         clearProtectedHost();
         renderOverviewOperations(null);
         byId("operations-game").textContent = "Locked";
+        byId("operations-online").textContent = "-";
+        byId("operations-online-names").textContent = "";
+        byId("operations-game-uptime").textContent = "-";
         byId("operations-queue").textContent = "-";
         byId("operations-backup").textContent = "-";
         byId("operations-players").textContent = "-";
@@ -554,6 +551,7 @@
         state.host.resourceSamples = [];
         state.host.monitorLoading = false;
         byId("host-uptime").textContent = "Locked";
+        byId("host-game-uptime").textContent = "Locked";
         ["host-load", "host-memory", "host-disk", "host-temperature", "host-revision", "host-name", "host-boot-id", "host-deployment", "host-checkout"].forEach((id) => {
             byId(id).textContent = "-";
         });
@@ -789,6 +787,21 @@
         state.operations.status = status;
         const queue = status.queue;
         const backup = status.backups.latest;
+        const online = status.online || { names: [], count: 0 };
+        byId("operations-online").textContent = formatNumber(online.count);
+        byId("operations-online-names").textContent = online.names.length
+            ? online.names.join(", ")
+            : "nobody connected";
+
+        byId("operations-game-uptime").textContent =
+            status.game_uptime_seconds == null
+                ? "not running"
+                : formatDuration(status.game_uptime_seconds);
+        byId("host-game-uptime").textContent =
+            status.game_uptime_seconds == null
+                ? "not running"
+                : formatDuration(status.game_uptime_seconds);
+
         byId("operations-game").textContent = status.runtime.merc ? "Online" : "Offline";
         byId("operations-game").className = status.runtime.merc ? "status-text-ok" : "status-text-critical";
         byId("operations-queue").textContent = queue.readable === false
@@ -1533,14 +1546,34 @@
         });
     }
 
-    async function readLatestLogs() {
+    async function readLatestLogs(page = 1) {
         if (!await ensureAuth()) return;
-        const lines = Math.max(1, Math.min(5000, Number(byId("log-lines").value) || 300));
+        state.logs.page = Math.max(1, page);
+        const size = Math.max(1, Math.min(1000, Number(byId("log-lines").value) || PAGE_SIZE));
+        const offset = (state.logs.page - 1) * size;
         try {
-            const text = await api(`/api/logs?lines=${lines}`, { auth: true });
-            byId("log-terminal").textContent = text;
+            const data = await api(
+                `/api/logs/page?limit=${size}&offset=${offset}`, { auth: true });
+
+            if (!data.present) {
+                byId("log-terminal").textContent = "Log file not found.\n";
+                byId("log-status").textContent = "No log file";
+                return;
+            }
+
+            // The endpoint hands back newest first; a log reads oldest at the
+            // top, so flip it for display.
+            const lines = (data.lines || []).slice().reverse();
+            byId("log-terminal").textContent = lines.join("\n") + (lines.length ? "\n" : "");
             byId("log-terminal").scrollTop = byId("log-terminal").scrollHeight;
-            byId("log-status").textContent = "Snapshot";
+
+            state.logs.total = data.total || 0;
+            const pages = Math.max(1, Math.ceil(state.logs.total / size));
+            byId("log-status").textContent =
+                `Snapshot -- ${formatNumber(state.logs.total)} lines`;
+            byId("log-page-label").textContent = `Page ${state.logs.page} of ${pages}`;
+            byId("log-next").disabled = state.logs.page <= 1;
+            byId("log-prev").disabled = !data.has_more;
         } catch (error) {
             if (error.status === 404) {
                 byId("log-terminal").textContent = "Log file not found.\n";
@@ -1636,10 +1669,17 @@
             if (channel !== "all" && event.channel !== channel) return false;
             return !query || event.message.toLowerCase().includes(query);
         });
-        const visible = matching.slice(-100).reverse();
-        byId("activity-status").textContent = matching.length > visible.length
-            ? `${formatNumber(visible.length)} of ${formatNumber(matching.length)} shown`
-            : `${formatNumber(matching.length)} event${matching.length === 1 ? "" : "s"}`;
+        const newestFirst = matching.slice().reverse();
+        const pages = Math.max(1, Math.ceil(newestFirst.length / PAGE_SIZE));
+        if (state.operations.page > pages) state.operations.page = pages;
+        const start = (state.operations.page - 1) * PAGE_SIZE;
+        const visible = newestFirst.slice(start, start + PAGE_SIZE);
+
+        byId("activity-status").textContent =
+            `${formatNumber(matching.length)} event${matching.length === 1 ? "" : "s"}`;
+        byId("activity-page-label").textContent = `Page ${state.operations.page} of ${pages}`;
+        byId("activity-prev").disabled = state.operations.page <= 1;
+        byId("activity-next").disabled = state.operations.page >= pages;
         const feed = byId("activity-feed");
         if (!visible.length) {
             feed.replaceChildren(node("p", { className: "empty-state", text: "No activity matches this filter." }));
@@ -1667,7 +1707,9 @@
         if (!await ensureAuth()) return;
         byId("activity-status").textContent = "Loading";
         try {
-            state.operations.events = await api("/api/events?limit=300", { auth: true });
+            // Everything the server still holds, so the filters below have
+            // the whole history to work over rather than the last 300.
+            state.operations.events = await api("/api/events?limit=1000", { auth: true });
             renderServerActivity();
         } catch (error) {
             byId("activity-status").textContent = "Unavailable";
@@ -1728,7 +1770,19 @@
 
     function bindEvents() {
         all("[data-view]").forEach((button) => button.addEventListener("click", () => navigate(button.dataset.view)));
-        byId("logins-more").addEventListener("click", () => loadLogins(true));
+        byId("logins-prev").addEventListener("click", () => loadLogins(state.loginsPage - 1));
+        byId("logins-next").addEventListener("click", () => loadLogins(state.loginsPage + 1));
+        byId("activity-prev").addEventListener("click", () => {
+            state.operations.page = Math.max(1, state.operations.page - 1);
+            renderServerActivity();
+        });
+        byId("activity-next").addEventListener("click", () => {
+            state.operations.page += 1;
+            renderServerActivity();
+        });
+        // "Older" walks back through history, so it raises the page number.
+        byId("log-prev").addEventListener("click", () => readLatestLogs(state.logs.page + 1));
+        byId("log-next").addEventListener("click", () => readLatestLogs(state.logs.page - 1));
         all("[data-go-view]").forEach((button) => button.addEventListener("click", () => navigate(button.dataset.goView)));
         byId("menu-button").addEventListener("click", () => document.body.classList.toggle("nav-open"));
         byId("sidebar-scrim").addEventListener("click", closeNavigation);

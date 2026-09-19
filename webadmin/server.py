@@ -208,6 +208,41 @@ MUD_PORT = int(os.getenv("MUD_PORT", 9000))
 # the next time the lease changes.
 MUD_PUBLIC_HOST = os.getenv("MUD_PUBLIC_HOST", "toc.jeremybean.com")
 MUD_PUBLIC_PORT = int(os.getenv("MUD_PUBLIC_PORT", MUD_PORT))
+
+# Resolved form of MUD_PUBLIC_HOST, so the dashboard shows the address
+# rather than a name somebody then has to look up. Cached because config is
+# polled and the answer changes a few times a year at most.
+_PUBLIC_IP_CACHE: tuple[float, str] = (0.0, "")
+_PUBLIC_IP_TTL = 300.0
+
+
+def public_game_host() -> str:
+    """The game's address as a player would dial it.
+
+    Resolving the configured name keeps this current through a DDNS update,
+    which a hard-coded address would not. A name that will not resolve is
+    returned unchanged -- still more use than loopback, and the same path a
+    literal IP in MUD_PUBLIC_HOST takes.
+    """
+    global _PUBLIC_IP_CACHE
+
+    host = MUD_PUBLIC_HOST
+    if not host:
+        return MUD_HOST
+
+    cached_at, cached = _PUBLIC_IP_CACHE
+    now = time.monotonic()
+    if cached and now - cached_at < _PUBLIC_IP_TTL:
+        return cached
+
+    resolved = host
+    try:
+        resolved = socket.gethostbyname(host)
+    except OSError:
+        pass
+
+    _PUBLIC_IP_CACHE = (now, resolved)
+    return resolved
 WEB_ADMIN_PORT = int(os.getenv("WEB_ADMIN_PORT", 9001))
 QUEUE_LINE_MAX_BYTES = 4094
 COMMAND_MAX_LENGTH = 255
@@ -785,6 +820,56 @@ def read_process_health() -> dict[str, bool]:
     }
 
 
+def game_process_uptime() -> float | None:
+    """Seconds the game process has been running, or None if not found.
+
+    The host's uptime says when the Pi last rebooted, which is a different
+    question: the game restarts on every deploy and the hardware does not.
+    """
+    try:
+        for entry in Path("/proc").iterdir():
+            if not entry.name.isdigit():
+                continue
+            try:
+                command = (entry / "comm").read_text(encoding="ascii").strip()
+            except OSError:
+                continue
+            if command not in ("merc", "rom"):
+                continue
+            started = entry.stat().st_mtime
+            return max(0.0, time.time() - started)
+    except OSError:
+        pass
+    return None
+
+
+def players_online() -> Dict[str, Any]:
+    """Who the journal thinks is connected, bounded by real connections.
+
+    A session that ends without a recorded close leaves a stale connect in
+    the journal, so the names alone over-report. The socket count is the
+    authority on how many; the names explain who.
+    """
+    names: list[str] = []
+    try:
+        rows = parse_login_journal(LOGIN_JOURNAL)
+    except OSError:
+        rows = []
+
+    # parse_login_journal yields file order, oldest first, so the last row
+    # seen for a name is its most recent event.
+    latest: Dict[str, str] = {}
+    for row in rows:
+        name = row.get("name")
+        event = row.get("event")
+        if name and event:
+            latest[name] = event
+    names = sorted(name for name, event in latest.items()
+                   if event in ("connect", "new", "reconnect"))
+
+    return {"names": names, "count": len(names)}
+
+
 def file_status(path: Path) -> Dict[str, Any]:
     """Return non-sensitive metadata for an operator-visible runtime file."""
     try:
@@ -874,6 +959,8 @@ def admin_status_snapshot() -> Dict[str, Any]:
     return {
         "generated": time.time(),
         "runtime": read_process_health(),
+        "online": players_online(),
+        "game_uptime_seconds": game_process_uptime(),
         "queue": pending_queue_status(QUEUE_PATH),
         "backups": {
             "count": len(backups),
@@ -1270,6 +1357,156 @@ async def game_client() -> FileResponse:
     return FileResponse(STATIC_PATH / "client.html")
 
 
+# --------------------------------------------------------------------------
+# Player help, read out of the area files.
+#
+# The game serves this same text to HELP, so reading the area files rather
+# than keeping a copy means the website cannot drift out of step with it.
+# --------------------------------------------------------------------------
+
+# Above this level an entry is staff documentation and stays off the public
+# page. This filter is the whole security model, so it runs at parse time.
+HELP_PUBLIC_MAX_LEVEL = 0
+
+_HELP_CACHE: tuple[float, list[Dict[str, Any]]] = (0.0, [])
+_HELP_TTL = 60.0
+
+
+def _parse_help_section(text: str) -> list[Dict[str, Any]]:
+    """Entries from one #HELPS block: level, keywords, body."""
+    entries: list[Dict[str, Any]] = []
+    lines = text.splitlines()
+    index = 0
+
+    while index < len(lines):
+        header = lines[index].strip()
+        index += 1
+        if not header:
+            continue
+        if header.startswith("#"):
+            break
+
+        # "<level> <KEYWORDS>~", where a keyword group may be quoted.
+        if not header.endswith("~"):
+            continue
+        header = header[:-1].strip()
+        parts = header.split(None, 1)
+        if len(parts) != 2:
+            continue
+        try:
+            level = int(parts[0])
+        except ValueError:
+            continue
+
+        keywords = parts[1].strip()
+        if keywords == "$":
+            break
+
+        body: list[str] = []
+        while index < len(lines) and lines[index].rstrip() != "~":
+            body.append(lines[index])
+            index += 1
+        index += 1  # step over the closing tilde
+
+        if level > HELP_PUBLIC_MAX_LEVEL:
+            continue
+
+        names = [name.strip("'\"") for name in keywords.split()
+                 if name.strip("'\"")]
+        if not names:
+            continue
+
+        entries.append({
+            "level": level,
+            "keywords": names,
+            "title": names[0].title(),
+            "body": "\n".join(body).strip("\n"),
+        })
+
+    return entries
+
+
+def load_player_help() -> list[Dict[str, Any]]:
+    """Every player-visible help entry, cached briefly."""
+    global _HELP_CACHE
+
+    cached_at, cached = _HELP_CACHE
+    now = time.monotonic()
+    if cached and now - cached_at < _HELP_TTL:
+        return cached
+
+    entries: list[Dict[str, Any]] = []
+    seen: set[str] = set()
+    try:
+        files = sorted(AREA_PATH.glob("*.are"))
+    except OSError:
+        files = []
+
+    for path in files:
+        try:
+            content = path.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        marker = content.find("#HELPS")
+        if marker == -1:
+            continue
+        for entry in _parse_help_section(content[marker + len("#HELPS"):]):
+            # First definition wins, matching how the game resolves a
+            # keyword that more than one file claims.
+            key = entry["keywords"][0].lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            entries.append(entry)
+
+    entries.sort(key=lambda item: item["title"].lower())
+    _HELP_CACHE = (now, entries)
+    return entries
+
+
+@app.get("/api/help")
+async def help_index() -> Dict[str, Any]:
+    """Player help topics. Deliberately unauthenticated: it is public text."""
+    entries = await asyncio.to_thread(load_player_help)
+    return {
+        "topics": [
+            {
+                "title": entry["title"],
+                "keywords": entry["keywords"],
+                "summary": next(
+                    (line.strip() for line in entry["body"].splitlines()
+                     if line.strip()), ""),
+            }
+            for entry in entries
+        ],
+        "total": len(entries),
+    }
+
+
+@app.get("/api/help/{topic}")
+async def help_topic(topic: str) -> Dict[str, Any]:
+    entries = await asyncio.to_thread(load_player_help)
+    wanted = topic.strip().lower()
+
+    for entry in entries:
+        if any(word.lower() == wanted for word in entry["keywords"]):
+            return {
+                "title": entry["title"],
+                "keywords": entry["keywords"],
+                "body": entry["body"],
+            }
+
+    for entry in entries:
+        if any(word.lower().startswith(wanted) for word in entry["keywords"]):
+            return {
+                "title": entry["title"],
+                "keywords": entry["keywords"],
+                "body": entry["body"],
+            }
+
+    raise HTTPException(status_code=404, detail="No help on that topic.")
+
+
 @app.get("/api/health")
 async def health() -> dict[str, bool | str]:
     status = await asyncio.to_thread(read_process_health)
@@ -1301,7 +1538,8 @@ async def get_config(request: Request) -> Dict[str, Any]:
         "version": app.version,
         "admin_token_configured": bool(_WEB_ADMIN_TOKEN),
         "local_admin_unlock": local_admin_request_allowed(request),
-        "mud_endpoint": f"{MUD_PUBLIC_HOST}:{MUD_PUBLIC_PORT}",
+        "mud_endpoint": f"{public_game_host()}:{MUD_PUBLIC_PORT}",
+        "mud_endpoint_host": MUD_PUBLIC_HOST,
         "client_path": "/client",
         "game_websocket_auth": "same-origin",
         "player_data_protected": True,
@@ -1375,7 +1613,7 @@ LOGIN_EVENTS_END = {"quit", "linkdead", "shutdown"}
 
 
 def parse_login_journal(path: Path, limit: Optional[int] = None) -> list[Dict[str, Any]]:
-    """Read the game's login journal into rows, newest first.
+    """Read the game's login journal into rows, in file order: oldest first.
 
     Written by the game as tab-separated `when, name, host, event` with a
     fifth `duration` column on the rows that end a session. Anything
@@ -1596,15 +1834,80 @@ async def tail_logs(lines: int = 200, _: None = Depends(verify_token)) -> PlainT
         return PlainTextResponse("Error reading log file.", status_code=500)
 
 
+@app.get("/api/logs/page")
+async def log_page(
+    limit: int = Query(default=50, ge=1, le=1000),
+    offset: int = Query(default=0, ge=0),
+    _: None = Depends(verify_token),
+) -> Dict[str, Any]:
+    """One page of the game log, counted back from the newest line.
+
+    The plain /api/logs tail caps how far back you can see; this pages
+    instead, so an old entry is reachable rather than merely beyond the
+    ceiling. Offset 0 is the newest page.
+    """
+    if not DEFAULT_LOG.exists():
+        return {
+            "present": False, "lines": [], "total": 0,
+            "offset": offset, "limit": limit, "has_more": False,
+        }
+
+    def read() -> list[str]:
+        with DEFAULT_LOG.open("r", encoding="utf-8", errors="replace") as handle:
+            return handle.read().splitlines()
+
+    try:
+        every = await asyncio.to_thread(read)
+    except OSError:
+        raise HTTPException(status_code=500, detail="Error reading log file")
+
+    # Newest first, so paging forward walks backwards through history.
+    every.reverse()
+    window = every[offset:offset + limit]
+    return {
+        "present": True,
+        "lines": window,
+        "total": len(every),
+        "offset": offset,
+        "limit": limit,
+        "has_more": offset + len(window) < len(every),
+    }
+
+
 @app.get("/api/events")
 async def server_events(
     limit: int = Query(default=200, ge=1, le=MAX_EVENT_HISTORY),
+    offset: int = Query(default=0, ge=0),
+    paged: bool = Query(default=False),
     _: None = Depends(verify_token),
-) -> list[Dict[str, Any]]:
+) -> Any:
+    """Server activity, newest first.
+
+    Returns a bare list by default because that is what the existing
+    callers expect; `paged=1` asks for the envelope with a total, which is
+    what the dashboard needs to show "page 2 of 9" rather than guessing.
+    """
     try:
-        return await asyncio.to_thread(tail_server_events, EVENT_LOG, limit)
+        every = await asyncio.to_thread(
+            tail_server_events, EVENT_LOG, MAX_EVENT_HISTORY)
     except OSError:
         raise HTTPException(status_code=500, detail="Error reading server activity")
+
+    # snapshot_server_events returns file order, oldest first. The bare-list
+    # callers expect the newest `limit` in that order, so preserve it.
+    if not paged:
+        return every[-limit:]
+
+    # Paging counts back from the newest, so offset 0 is the current page.
+    newest_first = list(reversed(every))
+    window = newest_first[offset:offset + limit]
+    return {
+        "events": window,
+        "total": len(every),
+        "offset": offset,
+        "limit": limit,
+        "has_more": offset + len(window) < len(every),
+    }
 
 
 async def accept_admin_websocket(websocket: WebSocket) -> bool:

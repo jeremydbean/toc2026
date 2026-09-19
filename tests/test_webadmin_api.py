@@ -288,6 +288,38 @@ class WebAdminApiTests(unittest.TestCase):
 
             self.assertGreater(len(server.parser.rooms), 7000)
 
+    def test_log_and_event_views_page_instead_of_capping(self) -> None:
+        """Both count back from the newest entry, so offset 0 is current."""
+        with self.webadmin_client() as (server, client, temp_root):
+            headers = {"X-Admin-Token": "secret"}
+
+            self.assertEqual(client.get("/api/logs/page").status_code, 403)
+
+            page = client.get("/api/logs/page?limit=2&offset=0",
+                              headers=headers).json()
+            self.assertTrue(page["present"])
+            self.assertEqual(page["total"], 3)
+            # Newest first: the fixture's last line comes back first.
+            self.assertEqual(page["lines"], ["third line", "second line"])
+            self.assertTrue(page["has_more"])
+
+            older = client.get("/api/logs/page?limit=2&offset=2",
+                               headers=headers).json()
+            self.assertEqual(older["lines"], ["first line"])
+            self.assertFalse(older["has_more"])
+
+            # The bare list keeps its old shape and its old ordering.
+            plain = client.get("/api/events", headers=headers).json()
+            self.assertIsInstance(plain, list)
+            self.assertEqual(plain[0]["channel"], "info")
+
+            paged = client.get("/api/events?paged=1&limit=1&offset=0",
+                               headers=headers).json()
+            self.assertEqual(paged["total"], 2)
+            self.assertTrue(paged["has_more"])
+            # Newest first here too, which is the reverse of file order.
+            self.assertEqual(paged["events"][0]["channel"], "wizinfo")
+
     def test_player_privacy_case_preservation_and_log_auth(self) -> None:
         with self.webadmin_client() as (server, client, temp_root):
             event_path = temp_root / "webadmin-events.tsv"

@@ -1525,12 +1525,32 @@ See also: TEACHLIST, GAIN, GROUPS, TRAIN
 
 70 DNS~
 Syntax: dns
+        dns on | off
+        dns list
+        dns <address or host name>
 
-This command will turn DNS lookups on and off.  Remember that with DNS lookups
-turned off, sitebans on name hosts will be ignored.
+DNS with no argument reports whether hostname lookups are on.
 
-See also: BAN, ALLOW BAN
+DNS ON | OFF controls whether a connecting address is resolved to a host
+name.  The lookup happens while the game is single-threaded, so a slow or
+unreachable resolver stalls everything for as long as it takes -- during a
+login, which is the worst moment for it.  Turning lookups off records the
+numeric address instead and removes that stall.
 
+The cost of off: bans written against host names will not match, because
+there is no host name to match against.  Bans on numeric addresses still
+work.  See BAN.
+
+DNS LIST shows every connected descriptor with the host name the resolver
+produced and the numeric address behind it, which is how you tell a stale
+or spoofed-looking name from the address it really came from.
+
+DNS <address> resolves one thing now: an IPv4 address gets a reverse
+lookup, anything else a forward one.  This blocks the game for the duration
+of the query, exactly as a connection would, so do not point it at
+something you expect to hang.
+
+See also: BAN, ALLOW, SOCKETS
 ~
 
 70 GRANTPSI~
@@ -1547,6 +1567,11 @@ telekinesis, transfusion, nightmare, mind leech, pyrotechnics, and confuse.
 
 See also: PSIONICS, ADVANCE
 
+
+The target does not have to be online.  With nobody connected by that
+name the saved character is loaded, flagged, and written back; an
+offline grant is always deferred to their next level check, because
+"now" would apply to a copy that is discarded a moment later.
 ~
 
 67 FSAVE~
@@ -3508,8 +3533,8 @@ SET CHAR / SET MOB
   others is almost never what is meant.
 
   Carry capacity has no field of its own: it is computed from strength,
-  dexterity and level, so raise those instead. Characters at or below
-  level 5 already carry half again as much.
+  dexterity and level, so raise those instead. Every player already carries
+  half again what that formula alone would allow.
 
   pkiller  <on|off>   toggle PKiller status
   excon    <on|off>   toggle ex-convict (con-death) flag
@@ -3527,9 +3552,49 @@ SET OBJ
   shows what they currently hold. Setting a portal or a manipulation item
   requires level 70.
 
+  EXTRA flags -- give the letters together, as in 'set obj sword extra AG':
+    A glow            B hum             C dark            D lock
+    E evil            F invis           G magic           H nodrop
+    I bless           J anti-good       K anti-evil       L anti-neutral
+    M noremove        N inventory       O nopurge         P rot on death
+    Q vanish on death R metal           S bounce          T teleport
+    U no identify     V no locate       W race restricted X adds affect
+    Y embalmed
+
+  WEAR flags -- where it can go. A is required for anything a player is
+  meant to pick up at all:
+    A take            B finger          C neck            D body
+    E head            F legs            G feet            H hands
+    I arms            J shield          K about body      L waist
+    M wrist           N wield           O hold            P two handed
+
+  TYPE numbers:
+     1 light      2 scroll     3 wand       4 staff      5 weapon
+     8 treasure   9 armor     10 potion    11 clothing  12 furniture
+    13 trash     15 container 17 drink can 18 key       19 food
+    20 money     22 boat      23 npc corpse 24 pc corpse 25 fountain
+    26 pill      27 protect   28 map       29 scuba gear 30 portal
+    31 manipulation           32 castle relic           33 saddle
+    34 herb      35 spell component        36 soul container
+    37 action
+
 SET ROOM
   Numbers     flags sector
   Text        name description
+
+  FLAGS -- given together, as in 'set room 3001 flags AJK':
+    A dark            B jail            C no mobs         D indoors
+    E river           F teleport        G cult entrance   H affected by
+    I death trap      J private         K safe            L solitary
+    M pet shop        N no recall       O implementor only P gods only
+    Q heroes only     R newbies only    S law             T hp regen
+    U mana regen      V arena           W castle join     X silent
+    Y pathfinder mark
+
+  SECTOR numbers:
+     0 inside     1 city       2 field      3 forest     4 hills
+     5 mountain   6 swimmable water         7 unswimmable water
+     8 underwater 9 air       10 desert    11 underground
 
 SET SKILL
   set skill <char> <skill or spell> <percent>

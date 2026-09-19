@@ -376,11 +376,7 @@ void do_roll( CHAR_DATA *ch, char *argument )
     stub_notify( ch );
 }
 
-void do_dns( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
+
 
 void do_godtalk( CHAR_DATA *ch, char *argument )
 {
