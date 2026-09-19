@@ -5603,11 +5603,11 @@ static const struct newbie_item
     {  3715,  1 },   /* a mud school diploma       */
     { 20301,  5 },   /* A Red Potion               */
     {  5780,  1 },   /* a string of red berries    */
-    {  3009, 10 },   /* a big pot pie              */
+    {  3094,  1 },   /* an endless snack pack      */
     {  3081,  2 },   /* a potion of sanctuary      */
     {  4639,  2 },   /* a potion of extra healing  */
     {  3605,  2 },   /* An etched signet ring      */
-    {  9224,  1 },   /* a water jug                */
+    {  3093,  1 },   /* an endless water jug       */
     { 15011,  1 },   /* a condom                   */
     { 29009,  1 },   /* a prism cube               */
     {  5003,  2 },   /* the amulet                 */
@@ -5655,6 +5655,15 @@ static OBJ_DATA *make_newbie_pack( CHAR_DATA *ch )
         for ( copy = 0; copy < newbie_contents[entry].count; copy++ )
         {
             item = create_object( index, 1 );
+
+            /* Both strings of berries are ITEM_NODROP, so a newbie given
+               the pack was stuck with them. Cleared on the copy rather than
+               on the vnum: those items exist elsewhere in the world, where
+               the flag is somebody's deliberate choice. Doing it here also
+               means a later addition to the table cannot reintroduce it. */
+            REMOVE_BIT( item->extra_flags, ITEM_NODROP );
+            REMOVE_BIT( item->extra_flags, ITEM_NOREMOVE );
+
             obj_to_obj( item, pack );
         }
     }

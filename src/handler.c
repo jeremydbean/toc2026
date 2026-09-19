@@ -699,6 +699,23 @@ int can_carry_n( CHAR_DATA *ch )
     return MAX_WEAR +  2 * get_curr_stat(ch,STAT_DEX) + ch->level;
 }
 
+/*
+ * The carry weight both branches of can_carry_w() arrive at.
+ *
+ * Newbies get half again as much: a starting kit plus anything worth
+ * picking up outweighs a level one character's allowance, and spending the
+ * first few levels walking back to a shop is nobody's idea of the game.
+ */
+static int carry_weight_base( CHAR_DATA *ch )
+{
+    int weight = str_app[get_curr_stat(ch,STAT_STR)].carry + ch->level * 5 / 2;
+
+    if ( !IS_NPC(ch) && ch->level <= LEVEL_NEWBIE )
+        weight += weight / 2;
+
+    return weight;
+}
+
 int can_carry_w( CHAR_DATA *ch )
 {
     if ( !IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL )
@@ -708,12 +725,12 @@ int can_carry_w( CHAR_DATA *ch )
         return 1000000;
 
     if(IS_SET(ch->act2,ACT2_LYCANTH) )
-      return str_app[get_curr_stat(ch,STAT_STR)].carry + ch->level  * 5 / 2;
+      return carry_weight_base( ch );
 
     if ( IS_NPC(ch) && IS_SET(ch->act, ACT_PET) )
 	return 0;
 
-    return str_app[get_curr_stat(ch,STAT_STR)].carry + ch->level  * 5 / 2;
+    return carry_weight_base( ch );
 }
 
 

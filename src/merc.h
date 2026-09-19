@@ -2278,6 +2278,10 @@ void    write_web_admin_event ( const char *channel, const char *message,
 #define STARTING_WEAPON_SKILL   40
 #define STARTING_RECALL_SKILL   50
 
+/* Where this game already draws the newbie line: rooms flagged
+   ROOM_NEWBIES_ONLY turn away anyone above it. */
+#define LEVEL_NEWBIE             5
+
 #define GAME_LOG_FILE           "../log/toc.log"
 
 #define LOGIN_JOURNAL_FILE      "../log/logins.tsv"

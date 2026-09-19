@@ -580,6 +580,20 @@ void interpret( CHAR_DATA *ch, char *argument )
 		{
                     snprintf(buf, sizeof(buf), "%s %s", ch->pcdata->alias[counter].second,
                              argument);
+
+		    /* Used bare, `argument' is empty and the join leaves a
+		       trailing space. Commands that read their whole
+		       argument rather than tokenising it then fail on it:
+		       do_goto hands "4108 " to find_location, is_number()
+		       says no because of the space, and an alias for a
+		       room vnum reports "No place like that around." */
+		    {
+			size_t end = strlen( buf );
+
+			while ( end > 0 && isspace((unsigned char)buf[end - 1]) )
+			    buf[--end] = '\0';
+		    }
+
 		    argument = one_argument( buf, command );
 		    break;
                 }
