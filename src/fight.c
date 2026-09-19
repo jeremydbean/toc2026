@@ -336,6 +336,17 @@ static void apply_hyrule_contact_effect( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( attacker_vnum == HYRULE_BUBBLE_VNUM && number_percent() <= 12
     &&   ( equipment = get_eq_char(victim, WEAR_WIELD) ) != NULL )
     {
+        /* This knocks a weapon out of a hand, which is a disarm whatever
+           it is called, so a warrior's grip gets its say. */
+        if ( heros_grip_holds( victim ) )
+        {
+            act( "$n's touch numbs your hands, but you keep your grip on "
+                 "$p!", ch, equipment, victim, TO_VICT );
+            act( "$n's touch numbs $N's hands, but $N does not let go.",
+                 ch, equipment, victim, TO_NOTVICT );
+            return;
+        }
+
         unequip_char( victim, equipment );
         act( "$n's touch numbs your hands, knocking $p out of use!",
              ch, equipment, victim, TO_VICT );
@@ -3419,6 +3430,37 @@ void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
  * Disarm a creature.
  * Caller must check for successful attack.
  */
+/*
+ * Does a warrior's grip hold against something trying to take their
+ * weapon?
+ *
+ * Every attempt is practice, won or lost, which is the only way past
+ * what a guildmaster can teach. Callers emit their own message: losing
+ * a weapon to a disarm and losing one to a numbing touch do not read
+ * the same, and the reply should match what was tried.
+ *
+ * Only the wielding hand needs this. A dual-wielded second weapon is
+ * worn in WEAR_SHIELD and nothing in combat takes a weapon from that
+ * slot, so both hands are covered between them.
+ */
+bool heros_grip_holds( CHAR_DATA *victim )
+{
+    bool held;
+    int grip;
+
+    if ( !is_warrior_warrior( victim ) )
+        return false;
+
+    if ( ( grip = get_skill( victim, gsn_heros_grip ) ) <= 0 )
+        return false;
+
+    held = number_percent( ) <= grip;
+    check_improve( victim, gsn_heros_grip, held, 1 );
+
+    return held;
+}
+
+
 void disarm( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     OBJ_DATA *obj;
@@ -3436,36 +3478,21 @@ void disarm( CHAR_DATA *ch, CHAR_DATA *victim )
     }
 
     /*
-     * Hero's grip.  Nothing is done to the weapon -- the warrior simply
-     * holds on -- so unlike a bewitched weapon they can still put it down
-     * whenever they like.  At 100 they never lose it.
-     *
-     * The attempt itself is the practice: win or lose, it is a chance to
-     * get better, which is the only way past what a guildmaster teaches.
+     * Heroic grip.  Nothing is done to the weapon -- the warrior simply
+     * holds on -- so unlike a bewitched weapon they can still put it
+     * down whenever they like.
      */
-    if ( is_warrior_warrior( victim ) )
+    if ( heros_grip_holds( victim ) )
     {
-        int grip = get_skill( victim, gsn_heros_grip );
-
-        if ( grip > 0 )
-        {
-            bool held = number_percent( ) <= grip;
-
-            check_improve( victim, gsn_heros_grip, held, 1 );
-
-            if ( held )
-            {
-                act("You wrench at $N's weapon, but $E grips it like iron!",
-                    ch,NULL,victim,TO_CHAR);
-                act("$n tries to \x02\x0C disarm\x02\x01 you -- you tighten "
-                    "your grip and hold fast!",
-                    ch,NULL,victim,TO_VICT);
-                act("$n tries to \x02\x0C disarm\x02\x01 $N, but $N holds on "
-                    "through sheer strength.",
-                    ch,NULL,victim,TO_NOTVICT);
-                return;
-            }
-        }
+        act("You wrench at $N's weapon, but $E grips it like iron!",
+            ch,NULL,victim,TO_CHAR);
+        act("$n tries to \x02\x0C disarm\x02\x01 you -- you tighten "
+            "your grip and hold fast!",
+            ch,NULL,victim,TO_VICT);
+        act("$n tries to \x02\x0C disarm\x02\x01 $N, but $N holds on "
+            "through sheer strength.",
+            ch,NULL,victim,TO_NOTVICT);
+        return;
     }
 
     act( "$n DISARMS! you and sends your weapon flying!",
