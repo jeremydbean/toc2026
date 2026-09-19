@@ -322,11 +322,6 @@ static void stub_notify( CHAR_DATA *ch )
         send_to_char( "That command is not available.\n\r", ch );
 }
 
-void do_note( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
 
 void do_castle( CHAR_DATA *ch, char *argument )
 {

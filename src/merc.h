@@ -2232,6 +2232,7 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 /* Function Prototypes */
 /* act_comm.c */
 bool    is_note_to      ( CHAR_DATA *ch, NOTE_DATA *pnote );
+void    save_notes      ( void );
 void    check_sex       ( CHAR_DATA *ch);
 void    add_follower    ( CHAR_DATA *ch, CHAR_DATA *master );
 void    stop_follower   ( CHAR_DATA *ch );

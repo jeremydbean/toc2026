@@ -1679,23 +1679,13 @@ void load_notes( void )
             break;
         pnote->text     = fread_string( fp );
  
-        if (is_name("all", pnote->to_list) )
-            expire_time = 2*24*60*60;  /* Notes to all expire after 2 days */
-        else
-            expire_time = 14*24*60*60; /* Personal notes expire after 2 wks */
- 
-        if ( pnote->date_stamp < current_time - expire_time)
-        {
-            free_string( pnote->text );
-            free_string( pnote->subject );
-            free_string( pnote->to_list );
-            free_string( pnote->date );
-            free_string( pnote->sender );
-	    pnote->next     = note_free;
-            note_free       = pnote;
-            pnote           = NULL;
-            continue;
-        }
+        /* Notes used to expire here -- two days for a note to all, two
+           weeks for a personal one -- so the seventy notes in this file,
+           the newest from 2000, were read and discarded at every boot.
+           Nothing could display them anyway while do_note was a stub.
+           Now that it is not, they are kept: the file is small and the
+           history is worth more than the disk. */
+        (void) expire_time;
  
         if ( note_list == NULL )
             note_list           = pnote;

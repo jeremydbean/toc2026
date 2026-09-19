@@ -759,6 +759,488 @@ void do_immort( CHAR_DATA *ch, char *argument )
     }
 }
 
+/*
+ * ------------------------------------------------------------------------
+ * Notes.
+ *
+ * Only load_notes() survived the port: the struct and the globals were
+ * still here and the game read area/notes.txt at every boot into a list
+ * nothing could reach, while do_note was a stub. This is the rest of it.
+ *
+ * Composition is explicit -- `note to', `note subject', `note +' -- rather
+ * than the editor mode stock ROM drops you into. A draft then survives
+ * anything short of a reboot, and nothing about it depends on the client
+ * behaving well with a raw text-entry mode.
+ * ------------------------------------------------------------------------
+ */
+
+/* Is this note addressed to ch, or from them? */
+bool is_note_to( CHAR_DATA *ch, NOTE_DATA *pnote )
+{
+    if ( ch == NULL || pnote == NULL || pnote->to_list == NULL )
+        return FALSE;
+
+    if ( pnote->sender != NULL && !str_cmp( ch->name, pnote->sender ) )
+        return TRUE;
+
+    if ( is_name( "all", pnote->to_list ) )
+        return TRUE;
+
+    if ( IS_IMMORTAL(ch) && is_name( "immortal", pnote->to_list ) )
+        return TRUE;
+
+    return is_name( ch->name, pnote->to_list );
+}
+
+
+/*
+ * Write the list back out in exactly the shape load_notes() reads.
+ * Called after every change: the file is small and a note lost to a crash
+ * is a note the sender believes was delivered.
+ */
+void save_notes( void )
+{
+    FILE *fp;
+    NOTE_DATA *pnote;
+
+    if ( ( fp = fopen( NOTE_FILE, "w" ) ) == NULL )
+    {
+        bug( "save_notes: cannot open " NOTE_FILE, 0 );
+        return;
+    }
+
+    for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
+    {
+        fprintf( fp, "Sender  %s~\n",  pnote->sender  ? pnote->sender  : "" );
+        fprintf( fp, "Date    %s~\n",  pnote->date    ? pnote->date    : "" );
+        fprintf( fp, "Stamp   %ld\n",  (long) pnote->date_stamp );
+        fprintf( fp, "To      %s~\n",  pnote->to_list ? pnote->to_list : "" );
+        fprintf( fp, "Subject %s~\n",  pnote->subject ? pnote->subject : "" );
+        fprintf( fp, "Text\n%s\n~\n\n", pnote->text   ? pnote->text    : "" );
+    }
+
+    fclose( fp );
+}
+
+
+/* A blank draft on ch, ready for to/subject/text. */
+static void note_start( CHAR_DATA *ch )
+{
+    NOTE_DATA *pnote;
+
+    if ( ch->pnote != NULL )
+        return;
+
+    if ( note_free != NULL )
+    {
+        pnote     = note_free;
+        note_free = pnote->next;
+    }
+    else
+        pnote = alloc_perm( sizeof(*pnote) );
+
+    pnote->next       = NULL;
+    pnote->sender     = str_dup( ch->name );
+    pnote->date       = str_dup( "" );
+    pnote->to_list    = str_dup( "" );
+    pnote->subject    = str_dup( "" );
+    pnote->text       = str_dup( "" );
+    pnote->old_text   = NULL;
+    pnote->date_stamp = 0;
+
+    ch->pnote = pnote;
+}
+
+
+static void note_discard( CHAR_DATA *ch )
+{
+    NOTE_DATA *pnote = ch->pnote;
+
+    if ( pnote == NULL )
+        return;
+
+    free_string( pnote->text );
+    free_string( pnote->subject );
+    free_string( pnote->to_list );
+    free_string( pnote->date );
+    free_string( pnote->sender );
+
+    pnote->text = pnote->subject = pnote->to_list = NULL;
+    pnote->date = pnote->sender = NULL;
+
+    pnote->next = note_free;
+    note_free   = pnote;
+    ch->pnote   = NULL;
+}
+
+
+void do_note( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    NOTE_DATA *pnote;
+    int number;
+    int count;
+
+    if ( IS_NPC(ch) )
+        return;
+
+    argument = one_argument( argument, arg );
+
+    if ( arg[0] == '\0' || !str_cmp( arg, "list" ) )
+    {
+        count = 0;
+        send_to_char( "Notes addressed to you:\n\r", ch );
+
+        for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
+        {
+            if ( !is_note_to( ch, pnote ) )
+                continue;
+
+            count++;
+            snprintf( buf, sizeof(buf), "%3d)%s %-12s %-28s %s\n\r",
+                count,
+                pnote->date_stamp > ch->last_note ? " N" : "  ",
+                pnote->sender  ? pnote->sender  : "(nobody)",
+                pnote->subject ? pnote->subject : "(no subject)",
+                pnote->date    ? pnote->date    : "" );
+            send_to_char( buf, ch );
+        }
+
+        if ( count == 0 )
+            send_to_char( "  There are none.\n\r", ch );
+        else
+        {
+            snprintf( buf, sizeof(buf),
+                "\n\r%d note%s. Read one with 'note read <number>'.\n\r",
+                count, count == 1 ? "" : "s" );
+            send_to_char( buf, ch );
+        }
+        return;
+    }
+
+    if ( !str_cmp( arg, "read" ) )
+    {
+        /* `note read next', or a bare `note read', walks the unread ones --
+           which is how the help has always described it. */
+        if ( argument[0] == '\0' || !str_prefix( argument, "next" ) )
+        {
+            for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
+            {
+                if ( !is_note_to( ch, pnote )
+                  || pnote->date_stamp <= ch->last_note )
+                    continue;
+
+                snprintf( buf, sizeof(buf),
+                    "From:    %s\n\rTo:      %s\n\rDate:    %s\n\rSubject: %s\n\r\n\r",
+                    pnote->sender  ? pnote->sender  : "(nobody)",
+                    pnote->to_list ? pnote->to_list : "",
+                    pnote->date    ? pnote->date    : "",
+                    pnote->subject ? pnote->subject : "(no subject)" );
+                send_to_char( buf, ch );
+                page_to_char( pnote->text ? pnote->text : "", ch );
+                ch->last_note = pnote->date_stamp;
+                return;
+            }
+
+            send_to_char( "You have no unread notes.\n\r", ch );
+            return;
+        }
+
+        if ( !is_number( argument ) )
+        {
+            send_to_char( "Read which note? Use its number from 'note list'.\n\r", ch );
+            return;
+        }
+
+        number = atoi( argument );
+        count  = 0;
+
+        for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
+        {
+            if ( !is_note_to( ch, pnote ) )
+                continue;
+
+            if ( ++count != number )
+                continue;
+
+            snprintf( buf, sizeof(buf),
+                "From:    %s\n\rTo:      %s\n\rDate:    %s\n\rSubject: %s\n\r\n\r",
+                pnote->sender  ? pnote->sender  : "(nobody)",
+                pnote->to_list ? pnote->to_list : "",
+                pnote->date    ? pnote->date    : "",
+                pnote->subject ? pnote->subject : "(no subject)" );
+            send_to_char( buf, ch );
+            page_to_char( pnote->text ? pnote->text : "", ch );
+
+            /* Reading the newest note you have seen is what clears the
+               unread marker; an older one leaves it alone. */
+            if ( pnote->date_stamp > ch->last_note )
+                ch->last_note = pnote->date_stamp;
+            return;
+        }
+
+        send_to_char( "There is no note by that number.\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "to" ) )
+    {
+        if ( argument[0] == '\0' )
+        {
+            send_to_char( "Address the note to whom? 'all' reaches everybody.\n\r", ch );
+            return;
+        }
+
+        note_start( ch );
+        free_string( ch->pnote->to_list );
+        ch->pnote->to_list = str_dup( argument );
+        snprintf( buf, sizeof(buf), "Addressed to: %s\n\r", argument );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "subject" ) )
+    {
+        if ( argument[0] == '\0' )
+        {
+            send_to_char( "Give the note a subject.\n\r", ch );
+            return;
+        }
+
+        note_start( ch );
+        free_string( ch->pnote->subject );
+        ch->pnote->subject = str_dup( argument );
+        snprintf( buf, sizeof(buf), "Subject: %s\n\r", argument );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "+" ) || !str_cmp( arg, "text" ) )
+    {
+        if ( argument[0] == '\0' )
+        {
+            send_to_char( "Add what? 'note + <line of text>'.\n\r", ch );
+            return;
+        }
+
+        note_start( ch );
+
+        /* Bounded: a note is written to a shared file that every player
+           can list, so one person cannot make it unbounded. */
+        if ( strlen( ch->pnote->text ) + strlen( argument ) + 2
+             >= MAX_STRING_LENGTH / 2 )
+        {
+            send_to_char( "This note is already as long as it can be.\n\r", ch );
+            return;
+        }
+
+        snprintf( buf, sizeof(buf), "%s%s\n\r", ch->pnote->text, argument );
+        free_string( ch->pnote->text );
+        ch->pnote->text = str_dup( buf );
+        send_to_char( "Line added.\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "-" ) )
+    {
+        char *cut;
+
+        if ( ch->pnote == NULL || ch->pnote->text[0] == '\0' )
+        {
+            send_to_char( "There is nothing to take back.\n\r", ch );
+            return;
+        }
+
+        toc_strlcpy( buf, ch->pnote->text, sizeof(buf) );
+
+        /* Drop the trailing newline pair, then everything after the one
+           before it -- which is the start of the last line. */
+        {
+            size_t length = strlen( buf );
+
+            while ( length > 0 && ( buf[length - 1] == '\n'
+                                 || buf[length - 1] == '\r' ) )
+                buf[--length] = '\0';
+
+            cut = strrchr( buf, '\n' );
+            if ( cut == NULL )
+                buf[0] = '\0';
+            else
+                *(cut + 1) = '\0';
+        }
+
+        free_string( ch->pnote->text );
+        ch->pnote->text = str_dup( buf );
+        send_to_char( "Last line removed.\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "show" ) )
+    {
+        if ( ch->pnote == NULL )
+        {
+            send_to_char( "You are not writing a note.\n\r", ch );
+            return;
+        }
+
+        snprintf( buf, sizeof(buf), "To:      %s\n\rSubject: %s\n\r\n\r",
+            ch->pnote->to_list[0] != '\0' ? ch->pnote->to_list : "(nobody yet)",
+            ch->pnote->subject[0] != '\0' ? ch->pnote->subject : "(none yet)" );
+        send_to_char( buf, ch );
+        send_to_char( ch->pnote->text[0] != '\0'
+                          ? ch->pnote->text : "(no text yet)\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "clear" ) )
+    {
+        if ( ch->pnote == NULL )
+        {
+            send_to_char( "You are not writing a note.\n\r", ch );
+            return;
+        }
+
+        note_discard( ch );
+        send_to_char( "Note discarded.\n\r", ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "send" ) || !str_cmp( arg, "post" ) )
+    {
+        NOTE_DATA *last;
+
+        if ( ch->pnote == NULL )
+        {
+            send_to_char( "You are not writing a note.\n\r", ch );
+            return;
+        }
+
+        if ( ch->pnote->to_list[0] == '\0' )
+        {
+            send_to_char( "Address it first: 'note to <name>'.\n\r", ch );
+            return;
+        }
+
+        if ( ch->pnote->subject[0] == '\0' )
+        {
+            send_to_char( "Give it a subject first: 'note subject <text>'.\n\r", ch );
+            return;
+        }
+
+        if ( ch->pnote->text[0] == '\0' )
+        {
+            send_to_char( "Write something first: 'note + <line>'.\n\r", ch );
+            return;
+        }
+
+        pnote = ch->pnote;
+        ch->pnote = NULL;
+
+        free_string( pnote->date );
+        pnote->date       = str_dup( ctime( &current_time ) );
+        pnote->date_stamp = current_time;
+
+        /* ctime leaves a newline on the end, which would break the one
+           line per field the file format expects. */
+        {
+            size_t length = strlen( pnote->date );
+
+            while ( length > 0 && ( pnote->date[length - 1] == '\n'
+                                 || pnote->date[length - 1] == '\r' ) )
+                ((char *) pnote->date)[--length] = '\0';
+        }
+
+        pnote->next = NULL;
+        if ( note_list == NULL )
+            note_list = pnote;
+        else
+        {
+            for ( last = note_list; last->next != NULL; last = last->next )
+                ;
+            last->next = pnote;
+        }
+
+        save_notes( );
+        send_to_char( "Note sent.\n\r", ch );
+
+        snprintf( buf, sizeof(buf), "%s posted a note to %s: %s",
+                  ch->name, pnote->to_list, pnote->subject );
+        log_string( buf );
+        return;
+    }
+
+    if ( !str_cmp( arg, "remove" ) )
+    {
+        NOTE_DATA *prev = NULL;
+
+        if ( !is_number( argument ) )
+        {
+            send_to_char( "Remove which note? Use its number from 'note list'.\n\r", ch );
+            return;
+        }
+
+        number = atoi( argument );
+        count  = 0;
+
+        for ( pnote = note_list; pnote != NULL; prev = pnote, pnote = pnote->next )
+        {
+            if ( !is_note_to( ch, pnote ) )
+                continue;
+
+            if ( ++count != number )
+                continue;
+
+            /* Your own note, one addressed to you by name, or staff
+               clearing the board. A note to all is not yours to delete
+               just because you can read it. */
+            if ( !IS_IMMORTAL(ch)
+              && str_cmp( ch->name, pnote->sender )
+              && !is_name( ch->name, pnote->to_list ) )
+            {
+                send_to_char( "That note is not yours to remove.\n\r", ch );
+                return;
+            }
+
+            if ( prev == NULL )
+                note_list = pnote->next;
+            else
+                prev->next = pnote->next;
+
+            free_string( pnote->text );
+            free_string( pnote->subject );
+            free_string( pnote->to_list );
+            free_string( pnote->date );
+            free_string( pnote->sender );
+            pnote->text = pnote->subject = pnote->to_list = NULL;
+            pnote->date = pnote->sender = NULL;
+            pnote->next = note_free;
+            note_free   = pnote;
+
+            save_notes( );
+            send_to_char( "Note removed.\n\r", ch );
+            return;
+        }
+
+        send_to_char( "There is no note by that number.\n\r", ch );
+        return;
+    }
+
+    send_to_char( "Syntax:\n\r", ch );
+    send_to_char( "  note list                 notes addressed to you\n\r", ch );
+    send_to_char( "  note read <number>        read one\n\r", ch );
+    send_to_char( "  note remove <number>      remove one of yours\n\r", ch );
+    send_to_char( "\n\r", ch );
+    send_to_char( "  note to <name|all>        start one, or change who it goes to\n\r", ch );
+    send_to_char( "  note subject <text>       set the subject\n\r", ch );
+    send_to_char( "  note + <line>             add a line of text\n\r", ch );
+    send_to_char( "  note show                 read back your draft\n\r", ch );
+    send_to_char( "  note clear                throw the draft away\n\r", ch );
+    send_to_char( "  note -                    take back the last line\n\r", ch );
+    send_to_char( "  note post                 post it\n\r", ch );
+}
+
+
 void do_say( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
