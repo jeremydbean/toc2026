@@ -1549,6 +1549,98 @@ gained them, see TEACHLIST.
 See also: TEACHLIST, GAIN, GROUPS, TRAIN
 ~
 
+69 BUILDING BUILD OLC~
+Building rooms without leaving the game.
+
+GOTO <vnum> to a number no room uses makes one on the spot.  SET ROOM
+gives it a name, a description, flags and a sector.  RLINK connects it to
+its neighbours, with doors, locks and secret ways.  RSAVE writes the lot
+to disk, and until you type it nothing you built survives a reboot.
+
+  goto 29200                       a room forms out of nothing
+  set room 29200 name The Long Gallery
+  set room 29200 desc A hall of cracked mirrors runs north.
+  set room 29200 flags +AJ         indoors and no-mob
+  set room 29200 sector 0          inside
+  rlink north 29201                dig on, and the way back comes free
+  rsave confirm                    keep it
+
+Rooms you make this way belong to the builder area, which is written to
+area/custom.are.  Anyone from level 69 up may build there freely, and
+saving takes no more than RSAVE CONFIRM.
+
+Rooms that came out of a shipped area file are a different matter.  Only
+an implementor may change one at all, and saving over that area's file
+takes a confirmation naming the file, so a stray RSAVE cannot rewrite
+Hyrule because you happened to be standing in it.  The previous file is
+kept beside it as a dated backup either way.
+
+What will not save yet: rooms with a second flag word, river or teleport
+rooms, and rooms carrying a room affect.  Those hold data outside the room
+itself, and rather than write a file that has quietly lost it, RSAVE stops
+and names the room.  Move your building elsewhere, or ask for the format
+to be finished.
+
+See also: RLINK, RSAVE, SET, GOTO, RSTAT
+~
+
+69 RLINK DIG~
+Syntax: rlink <dir> <vnum>      dig an exit, and the way back
+        rlink <dir> none        take the exit out again
+        rlink <dir> open        a plain doorway, no door
+        rlink <dir> door        a door that can be closed
+        rlink <dir> pick        a door that cannot be picked
+        rlink <dir> secret      a door that does not show in EXITS
+        rlink <dir> key <vnum>  the object that unlocks it
+        rlink <dir> name <word> what to call it: 'door gate'
+        rlink <dir> desc <text> what you see looking that way
+
+Directions: north east south west up down, and the four diagonals.
+
+RLINK works on the room you are standing in.  Digging to a vnum nothing
+uses makes that room as well, so you can lay out a run of rooms without
+stopping.  The matching exit back is dug for you, unless the far room
+already has one that way, or it came out of an area file and you are not
+an implementor -- then the link is one way and RLINK says so.
+
+A secret exit is one the loader recognises by its keyword, so RLINK SECRET
+sets the keyword to 'secret' as well as the lock.  Add more words with
+RLINK <dir> NAME SECRET <word>, keeping 'secret' first; drop it and the
+exit stops being hidden the next time the area loads.
+
+Nothing is written to disk until RSAVE.
+
+See also: BUILDING, RSAVE, SET, RSTAT
+~
+
+69 RSAVE~
+Syntax: rsave
+        rsave confirm
+        rsave confirm <filename>
+
+RSAVE writes the rooms of the area you are standing in back to that area's
+file.  Without it, everything built in game is gone at the next reboot.
+
+RSAVE on its own writes nothing.  It reports the area, the file, and how
+many rooms would be written, and tells you how to confirm.
+
+In the builder area -- the rooms you made yourself, held in custom.are --
+RSAVE CONFIRM is enough.
+
+In an area that shipped with the game, you must be an implementor and you
+must name the file: RSAVE CONFIRM HYRULE.ARE.  That is deliberate.  A room
+you are standing in for some unrelated reason should not be savable by
+reflex.
+
+What gets written is the rooms as they are loaded right now, including
+changes another immortal made this boot.  Mobiles, objects, resets, shops
+and specials in the file are left exactly as they are.  The old file is
+kept beside the new one with a timestamp, so a bad save can be undone from
+the shell.
+
+See also: BUILDING, RLINK, SET
+~
+
 70 DNS~
 Syntax: dns
         dns on | off
@@ -3621,6 +3713,11 @@ SET ROOM
   Numbers     flags sector
   Text        name description
 
+  A room you made yourself with GOTO is yours to change at any staff rank.
+  A room that came out of an area file may only be changed by an
+  implementor, because it is somebody else's work and RSAVE can now make
+  the change permanent.  See BUILDING.
+
   FLAGS -- same letters, same + and - rules as above:
     A dark            B jail            C no mobs         D indoors
     E river           F teleport        G cult entrance   H affected by
@@ -3640,10 +3737,14 @@ SET SKILL
   set skill <char> all <percent>            (players only)
 
 Text fields take the rest of the line, spaces included, and replace what
-was there. They change the one object or room in front of you, not the
-area file, so a copyover or reboot restores the original.
+was there.
 
-See also: STRING, STAT, MSET, OSET, RSET
+Changes to mobiles and objects are to the one in front of you and last
+until it is reset or the game reboots. Changes to rooms are the same until
+you RSAVE, which writes that area's rooms to its file and makes them
+permanent. See BUILDING.
+
+See also: BUILDING, RSAVE, RLINK, STRING, STAT, MSET, OSET, RSET
 ~
 
 64 STRING~

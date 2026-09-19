@@ -418,6 +418,8 @@ const	struct	cmd_type	cmd_table	[] =
     { "reboot",         do_reboot,      POS_DEAD,       L2,  LOG_ALWAYS, 1 },
     { "rename",         do_rename,      POS_DEAD,       L4,  LOG_ALWAYS, 1 },
     { "repop",          do_repop,       POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "rlink",          do_rlink,       POS_DEAD,       L1,  LOG_ALWAYS, 1 },
+    { "rsave",          do_rsave,       POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "restore",        do_restore,     POS_DEAD,       L4,  LOG_ALWAYS, 1 },
 /*  {"restorechar",    do_restorechar, POS_DEAD,       L3,  LOG_ALWAYS, 1 },*/
     { "herbie",         do_herbie,      POS_DEAD,       L9,  LOG_ALWAYS, 1 },

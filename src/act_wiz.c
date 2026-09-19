@@ -57,6 +57,14 @@ DECLARE_DO_FUN(do_rstat         );
 DECLARE_DO_FUN(do_mstat         );
 DECLARE_DO_FUN(do_ostat         );
 DECLARE_DO_FUN(do_rset          );
+DECLARE_DO_FUN(do_rlink         );
+DECLARE_DO_FUN(do_rsave         );
+
+/* The area rooms made with `goto <unused vnum>' land in. */
+extern AREA_DATA *      new_area;
+extern int              top_exit;
+extern char * const     dir_name[];
+extern const int16_t    rev_dir[];
 DECLARE_DO_FUN(do_mset          );
 DECLARE_DO_FUN(do_oset          );
 DECLARE_DO_FUN(do_sset          );
@@ -5725,6 +5733,422 @@ void do_oset( CHAR_DATA *ch, char *argument )
 
 
 
+/*
+ * ------------------------------------------------------------------------
+ * Building rooms in game.
+ * ------------------------------------------------------------------------
+ */
+
+/*
+ * Rooms made in game live in the builder area and are nobody's work but
+ * the builder's. Rooms that came out of a shipped .are file are somebody
+ * else's, and changing one is an implementor's call.
+ */
+bool may_edit_room( CHAR_DATA *ch, ROOM_INDEX_DATA *room )
+{
+    if ( room == NULL )
+        return false;
+
+    if ( room->area == new_area )
+        return true;
+
+    return get_trust( ch ) >= MAX_LEVEL;
+}
+
+
+/*
+ * Turn a lock number into the exit_info bits, the way load_rooms does.
+ * Keeping the two in step matters: lock is what gets written to the file
+ * and exit_info is what the game plays with, so a room that behaved one
+ * way before a save has to behave the same way after a reboot.
+ */
+static void set_exit_lock( EXIT_DATA *pexit, int lock )
+{
+    pexit->lock      = lock;
+    pexit->exit_info = 0;
+
+    switch ( lock )
+    {
+    case 1: pexit->exit_info = EX_ISDOOR;                break;
+    case 2: pexit->exit_info = EX_ISDOOR | EX_PICKPROOF; break;
+    case 3: pexit->exit_info = EX_ISDOOR;                break;
+    case 4: pexit->exit_info = EX_ISDOOR;                break;
+    case 5: pexit->exit_info = EX_ISDOOR | EX_PICKPROOF; break;
+    }
+}
+
+
+static EXIT_DATA *make_exit( ROOM_INDEX_DATA *from, int door,
+                             ROOM_INDEX_DATA *to )
+{
+    EXIT_DATA *pexit = from->exit[door];
+
+    if ( pexit == NULL )
+    {
+        pexit                  = alloc_perm( sizeof(*pexit) );
+        pexit->description     = str_dup( "" );
+        pexit->keyword         = str_dup( "" );
+        pexit->exit_info       = 0;
+        pexit->trap            = 0;
+        pexit->lock            = 0;
+        pexit->key             = 0;
+        from->exit[door]       = pexit;
+        top_exit++;
+    }
+
+    pexit->u1.to_room = to;
+    return pexit;
+}
+
+
+void do_rlink( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    ROOM_INDEX_DATA *here;
+    ROOM_INDEX_DATA *there;
+    EXIT_DATA *pexit;
+    int door;
+
+    if ( IS_NPC( ch ) )
+        return;
+
+    argument = one_argument( argument, arg1 );
+    argument = one_argument( argument, arg2 );
+
+    if ( arg1[0] == '\0' )
+    {
+        send_to_char( "Syntax:\n\r", ch );
+        send_to_char( "  rlink <dir> <vnum>      dig an exit, and the way back\n\r", ch );
+        send_to_char( "  rlink <dir> none        take the exit out again\n\r", ch );
+        send_to_char( "  rlink <dir> open        a plain doorway, no door\n\r", ch );
+        send_to_char( "  rlink <dir> door        a door that can be closed\n\r", ch );
+        send_to_char( "  rlink <dir> pick        a door that cannot be picked\n\r", ch );
+        send_to_char( "  rlink <dir> secret      a door that does not show in exits\n\r", ch );
+        send_to_char( "  rlink <dir> key <vnum>  the object that unlocks it\n\r", ch );
+        send_to_char( "  rlink <dir> name <word> what to call it: 'door gate'\n\r", ch );
+        send_to_char( "  rlink <dir> desc <text> what you see looking that way\n\r", ch );
+        send_to_char( "\n\r", ch );
+        send_to_char( "Directions: north east south west up down\n\r", ch );
+        send_to_char( "            northeast northwest southeast southwest\n\r", ch );
+        send_to_char( "Nothing is written to disk until you RSAVE.\n\r", ch );
+        return;
+    }
+
+    here = ch->in_room;
+
+    if ( !may_edit_room( ch, here ) )
+    {
+        send_to_char( "This room came out of an area file.  Only an "
+                      "implementor may change it.\n\r", ch );
+        return;
+    }
+
+    for ( door = 0; door <= 9; door++ )
+    {
+        if ( !str_prefix( arg1, dir_name[door] ) )
+            break;
+    }
+
+    if ( door > 9 )
+    {
+        send_to_char( "That is not a direction.\n\r", ch );
+        return;
+    }
+
+    if ( arg2[0] == '\0' )
+    {
+        send_to_char( "Link it to what?  Type RLINK for the list.\n\r", ch );
+        return;
+    }
+
+    /* Everything below the dig needs an exit to work on. */
+    if ( str_cmp( arg2, "none" ) && !is_number( arg2 ) )
+    {
+        pexit = here->exit[door];
+
+        if ( pexit == NULL )
+        {
+            snprintf( buf, sizeof(buf),
+                      "There is no exit %s yet.  Dig one first: "
+                      "rlink %s <vnum>\n\r", dir_name[door], dir_name[door] );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        if ( !str_cmp( arg2, "open" ) )
+        {
+            set_exit_lock( pexit, 0 );
+            snprintf( buf, sizeof(buf), "The way %s is open.\n\r",
+                      dir_name[door] );
+        }
+        else if ( !str_cmp( arg2, "door" ) )
+        {
+            set_exit_lock( pexit, 1 );
+            snprintf( buf, sizeof(buf), "There is a door %s now.\n\r",
+                      dir_name[door] );
+        }
+        else if ( !str_prefix( arg2, "pickproof" ) )
+        {
+            set_exit_lock( pexit, 2 );
+            snprintf( buf, sizeof(buf), "The door %s cannot be picked.\n\r",
+                      dir_name[door] );
+        }
+        else if ( !str_cmp( arg2, "secret" ) )
+        {
+            /* load_rooms forces lock 4 on any exit keyworded "secret", so
+               the keyword has to match or a reboot would undo this. */
+            set_exit_lock( pexit, 4 );
+            free_string( pexit->keyword );
+            pexit->keyword = str_dup( "secret" );
+            snprintf( buf, sizeof(buf),
+                      "The way %s is hidden.  Give it more keywords with "
+                      "'rlink %s name secret <word>'.\n\r",
+                      dir_name[door], dir_name[door] );
+        }
+        else if ( !str_cmp( arg2, "key" ) )
+        {
+            if ( !is_number( argument ) )
+            {
+                send_to_char( "Which object vnum is the key?\n\r", ch );
+                return;
+            }
+
+            pexit->key = atoi( argument );
+            snprintf( buf, sizeof(buf), "Object %d unlocks the way %s.\n\r",
+                      (int) pexit->key, dir_name[door] );
+        }
+        else if ( !str_cmp( arg2, "name" ) )
+        {
+            /* The loader reads "secret" as lock 4 whatever the lock field
+               said, so keep the two agreeing here too. */
+            free_string( pexit->keyword );
+            pexit->keyword = str_dup( argument );
+
+            if ( !str_prefix( "secret", argument ) )
+                set_exit_lock( pexit, 4 );
+
+            snprintf( buf, sizeof(buf), "The way %s answers to '%s'.\n\r",
+                      dir_name[door], argument );
+        }
+        else if ( !str_prefix( arg2, "description" ) )
+        {
+            free_string( pexit->description );
+            pexit->description = str_dup( argument );
+            snprintf( buf, sizeof(buf), "Set what you see looking %s.\n\r",
+                      dir_name[door] );
+        }
+        else
+        {
+            send_to_char( "Type RLINK for what it takes.\n\r", ch );
+            return;
+        }
+
+        send_to_char( buf, ch );
+        return;
+    }
+
+    /* Removing an exit. */
+    if ( !str_cmp( arg2, "none" ) )
+    {
+        pexit = here->exit[door];
+
+        if ( pexit == NULL )
+        {
+            send_to_char( "There is no exit that way.\n\r", ch );
+            return;
+        }
+
+        there = pexit->u1.to_room;
+        here->exit[door] = NULL;
+
+        snprintf( buf, sizeof(buf), "The way %s closes up.\n\r",
+                  dir_name[door] );
+        send_to_char( buf, ch );
+
+        /* And the way back, if it led here and we are allowed to touch it. */
+        if ( there != NULL
+          && there->exit[rev_dir[door]] != NULL
+          && there->exit[rev_dir[door]]->u1.to_room == here
+          && may_edit_room( ch, there ) )
+        {
+            there->exit[rev_dir[door]] = NULL;
+            snprintf( buf, sizeof(buf), "So does the way %s out of room %d.\n\r",
+                      dir_name[rev_dir[door]], there->vnum );
+            send_to_char( buf, ch );
+        }
+
+        return;
+    }
+
+    /* Digging. */
+    {
+        int vnum = atoi( arg2 );
+
+        if ( vnum < 1 || vnum > WORLD_SIZE )
+        {
+            snprintf( buf, sizeof(buf), "Room numbers run from 1 to %d.\n\r",
+                      WORLD_SIZE );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        if ( ( there = get_room_index( vnum ) ) == NULL )
+        {
+            create_room( vnum );
+            there = get_room_index( vnum );
+
+            if ( there == NULL )
+            {
+                send_to_char( "That room could not be made.\n\r", ch );
+                return;
+            }
+
+            snprintf( buf, sizeof(buf), "Room %d forms out of nothing.\n\r",
+                      vnum );
+            send_to_char( buf, ch );
+        }
+
+        make_exit( here, door, there );
+        snprintf( buf, sizeof(buf), "Room %d now leads %s to room %d.\n\r",
+                  here->vnum, dir_name[door], there->vnum );
+        send_to_char( buf, ch );
+
+        if ( there->exit[rev_dir[door]] != NULL )
+        {
+            snprintf( buf, sizeof(buf),
+                      "Room %d already has an exit %s, so it was left alone.\n\r",
+                      there->vnum, dir_name[rev_dir[door]] );
+            send_to_char( buf, ch );
+        }
+        else if ( !may_edit_room( ch, there ) )
+        {
+            /* One-way, rather than quietly editing an area file room. */
+            snprintf( buf, sizeof(buf),
+                      "Room %d came out of an area file, so there is no way "
+                      "back.  An implementor can add one.\n\r", there->vnum );
+            send_to_char( buf, ch );
+        }
+        else
+        {
+            make_exit( there, rev_dir[door], here );
+            snprintf( buf, sizeof(buf), "Room %d leads %s back to room %d.\n\r",
+                      there->vnum, dir_name[rev_dir[door]], here->vnum );
+            send_to_char( buf, ch );
+        }
+
+        snprintf( buf, sizeof(buf), "Remember to RSAVE, or this goes away at "
+                                    "the next reboot.\n\r" );
+        send_to_char( buf, ch );
+    }
+
+    return;
+}
+
+
+void do_rsave( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char why[MAX_STRING_LENGTH];
+    AREA_DATA *pArea;
+    const char *base;
+    bool builder;
+    int count = 0;
+    int vnum;
+
+    if ( IS_NPC( ch ) || ch->in_room == NULL )
+        return;
+
+    argument = one_argument( argument, arg1 );
+    argument = one_argument( argument, arg2 );
+
+    pArea = ch->in_room->area;
+
+    if ( pArea == NULL || pArea->file_name == NULL )
+    {
+        send_to_char( "This room belongs to no area file.\n\r", ch );
+        return;
+    }
+
+    builder = ( pArea == new_area );
+
+    if ( !builder && get_trust( ch ) < MAX_LEVEL )
+    {
+        send_to_char( "That area shipped with the game.  Only an implementor "
+                      "may write to it.\n\r", ch );
+        send_to_char( "Build in rooms you made yourself and RSAVE there "
+                      "instead.\n\r", ch );
+        return;
+    }
+
+    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+    {
+        ROOM_INDEX_DATA *room = get_room_index( vnum );
+
+        if ( room != NULL && room->area == pArea )
+            count++;
+    }
+
+    /* The last path element, which is what the confirmation has to name. */
+    base = strrchr( pArea->file_name, '/' );
+    base = base != NULL ? base + 1 : pArea->file_name;
+
+    if ( str_cmp( arg1, "confirm" ) )
+    {
+        snprintf( buf, sizeof(buf),
+            "Area:  %s\n\r"
+            "File:  %s\n\r"
+            "Rooms: %d\n\r"
+            "\n\r"
+            "Saving rewrites the rooms in that file from what is loaded right\n\r"
+            "now, including anything another immortal has changed this boot.\n\r"
+            "Mobiles, objects, resets and shops are left as they are, and the\n\r"
+            "old file is kept alongside it.\n\r"
+            "\n\r",
+            pArea->name != NULL ? pArea->name : "(unnamed)",
+            pArea->file_name, count );
+        send_to_char( buf, ch );
+
+        if ( builder )
+            snprintf( buf, sizeof(buf), "To go ahead: rsave confirm\n\r" );
+        else
+            snprintf( buf, sizeof(buf),
+                      "This area shipped with the game.  To go ahead, name "
+                      "the file:\n\r  rsave confirm %s\n\r", base );
+
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !builder && str_cmp( arg2, base ) )
+    {
+        snprintf( buf, sizeof(buf),
+                  "Name the file to confirm:  rsave confirm %s\n\r", base );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !save_area_rooms( pArea, why, sizeof(why) ) )
+    {
+        snprintf( buf, sizeof(buf), "Nothing was written: %s.\n\r", why );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "Wrote %d rooms to %s.\n\r", count, why );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "%s saved %d rooms to %s.",
+              ch->name, count, why );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    log_string( buf );
+    return;
+}
+
+
 void do_rset( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
@@ -5753,6 +6177,15 @@ void do_rset( CHAR_DATA *ch, char *argument )
     {
 	send_to_char( "No such location.\n\r", ch );
 	return;
+    }
+
+    if ( !may_edit_room( ch, location ) )
+    {
+        send_to_char( "That room came out of an area file.  Only an "
+                      "implementor may change it.\n\r", ch );
+        send_to_char( "Rooms you make yourself with GOTO are yours to "
+                      "edit freely.\n\r", ch );
+        return;
     }
 
     /* Flags take letters now, so they come before the numeric check too. */

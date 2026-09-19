@@ -334,6 +334,10 @@ class LiveMud:
             (self.root / name).mkdir()
         (self.root / "player" / "versions").mkdir()
 
+        self._launch()
+        return self
+
+    def _launch(self) -> None:
         binary = find_binary()
         assert binary is not None, "no server binary; check skip_reason() first"
 
@@ -348,7 +352,23 @@ class LiveMud:
             env=env,
         )
         self._wait_for_port()
-        return self
+
+    def restart(self) -> None:
+        """Stop and boot again on the same tree, for testing persistence."""
+        self._stop()
+        self._launch()
+
+    def _stop(self) -> None:
+        if self.proc is not None and self.proc.poll() is None:
+            self.proc.terminate()
+            try:
+                self.proc.wait(timeout=15)
+            except subprocess.TimeoutExpired:
+                self.proc.kill()
+                self.proc.wait(timeout=15)
+        if self.proc is not None and self.proc.stdout is not None:
+            self.proc.stdout.close()
+        self.proc = None
 
     def _wait_for_port(self, timeout: float = 120.0) -> None:
         """World boot parses ~7,800 rooms, and more under sanitizers."""
@@ -386,15 +406,7 @@ class LiveMud:
         return client
 
     def __exit__(self, *exc) -> None:
-        if self.proc is not None and self.proc.poll() is None:
-            self.proc.terminate()
-            try:
-                self.proc.wait(timeout=15)
-            except subprocess.TimeoutExpired:
-                self.proc.kill()
-                self.proc.wait(timeout=15)
-        if self.proc is not None and self.proc.stdout is not None:
-            self.proc.stdout.close()
+        self._stop()
         if self.tmp is not None:
             self.tmp.cleanup()
 

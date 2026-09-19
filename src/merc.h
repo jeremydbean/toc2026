@@ -1871,6 +1871,9 @@ struct  area_data
     RESET_DATA * reset_first;
     RESET_DATA * reset_last;
     char * name;
+    /* The .are this was read from, so in-game edits know where to save.
+       "custom.are" for rooms built in game, which have no file yet. */
+    char * file_name;
     sh_int              age;
     sh_int              nplayer;
     bool                empty;
@@ -2461,6 +2464,10 @@ void    reset_char      ( CHAR_DATA *ch );
 int     get_trust       ( CHAR_DATA *ch );
 bool    rank_protects   ( CHAR_DATA *ch, CHAR_DATA *victim );
 bool    flags_from_argument ( const char *argument, int current, int *result );
+
+/* In-game building. */
+#define BUILDER_AREA_FILE   "custom.are"
+bool    save_area_rooms ( AREA_DATA *pArea, char *why, size_t why_size );
 bool    is_loopback_ip  ( uint32_t ip );
 extern bool dns_lookup_enabled;
 int     get_curr_stat   ( CHAR_DATA *ch, int stat );

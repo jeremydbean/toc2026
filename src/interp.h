@@ -350,6 +350,8 @@ DECLARE_DO_FUN( do_retrieved    );
 DECLARE_DO_FUN(	do_return	);
 DECLARE_DO_FUN( do_ride         );
 DECLARE_DO_FUN(	do_rset		);
+DECLARE_DO_FUN(	do_rlink	);
+DECLARE_DO_FUN(	do_rsave	);
 DECLARE_DO_FUN(	do_rstat	);
 DECLARE_DO_FUN( do_rules	);
 DECLARE_DO_FUN( do_run          );

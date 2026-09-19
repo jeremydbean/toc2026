@@ -6,6 +6,7 @@ merc
 bin/
 build/
 build-sanitize/
+build-cmake/
 *.ini
 *.driveupload
 
@@ -31,3 +32,8 @@ player/*
 player/versions/
 gods/*
 heroes/*
+
+# RSAVE leaves a backup beside each area it writes, and a temp file
+# mid-write. Both belong to the running server, not to the repository.
+area/*.are.*.bak
+area/*.are.tmp

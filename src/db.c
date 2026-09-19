@@ -287,6 +287,10 @@ int                     sAllocPerm;
 bool                    fBootDb;
 FILE *                  fpArea;
 char                    strArea[MAX_INPUT_LENGTH];
+/* The file load_area_file currently has open, so load_area can record it
+   against the area it is about to build. strArea is the name from area.lst,
+   which is not the same thing once seasonal variants redirect it. */
+char                    current_area_file[MAX_INPUT_LENGTH];
  
  
  
@@ -453,24 +457,43 @@ void boot_db( void )
         fclose( fpList );
  
         /*
-         * Make the area for online created rooms
+         * The area that rooms built in game belong to.
+         *
+         * If area.lst loaded the builder file, everything saved there
+         * last boot is already in it, and that is the area to carry on
+         * building in. Making a second one would mean the first save
+         * of this session writing over the last session's work.
          */
-        new_area                = alloc_perm( sizeof(*new_area) );
-        new_area->reset_first   = NULL;
-        new_area->reset_last    = NULL;
-        new_area->name          = str_dup( "Newly Created Area" );
-        new_area->age           = 15;
-        new_area->nplayer       = 0;
-        new_area->empty = false;
- 
-        if ( area_first == NULL )
-            area_first = new_area;
-        if ( area_last  != NULL )
-            area_last->next = new_area;
-        area_last       = new_area;
-        new_area->next  = NULL;
- 
-        top_area++;
+        for ( new_area = area_first;
+              new_area != NULL;
+              new_area = new_area->next )
+        {
+            if ( new_area->file_name != NULL
+              && !str_cmp( new_area->file_name, BUILDER_AREA_FILE ) )
+                break;
+        }
+
+        if ( new_area == NULL )
+        {
+            new_area                = alloc_perm( sizeof(*new_area) );
+            new_area->reset_first   = NULL;
+            new_area->reset_last    = NULL;
+            new_area->name          = str_dup( "Newly Created Area" );
+            new_area->file_name     = str_dup( BUILDER_AREA_FILE );
+            new_area->age           = 15;
+            new_area->nplayer       = 0;
+            new_area->empty         = false;
+            new_area->disaster_type = 0;
+
+            if ( area_first == NULL )
+                area_first = new_area;
+            if ( area_last  != NULL )
+                area_last->next = new_area;
+            area_last       = new_area;
+            new_area->next  = NULL;
+
+            top_area++;
+        }
  
     }
 
@@ -504,6 +527,8 @@ void boot_db( void )
  */
 void load_area_file( const char *area_filename )
 {
+    toc_strlcpy( current_area_file, area_filename, sizeof(current_area_file) );
+
     if ( area_filename[0] == '-' )
     {
         fpArea = stdin;
@@ -562,6 +587,7 @@ void load_area( FILE *fp )
     pArea->reset_first   = NULL;
     pArea->reset_last    = NULL;
     pArea->name          = fread_string( fp );
+    pArea->file_name     = str_dup( current_area_file );
     pArea->age           = 15;
     pArea->nplayer       = 0;
     pArea->empty         = false;
@@ -2318,6 +2344,270 @@ void create_room( int vnum )
     top_room++;
 }
  
+/*
+ * ------------------------------------------------------------------------
+ * Writing areas back out, so building done in game survives a reboot.
+ * ------------------------------------------------------------------------
+ */
+
+/*
+ * Can this room be written back without losing anything?
+ *
+ * Teleport destinations and room affects are not held in the room; they
+ * hang off teleport_room_list and room_aff_list, and load_rooms reads them
+ * as extra fields only when the matching flag is set. Rather than write a
+ * room whose flags promise fields the writer does not emit -- which would
+ * make the loader read the *next* room's data as this one's -- the save
+ * stops and says which room is in the way.
+ */
+static bool room_is_saveable( ROOM_INDEX_DATA *room, char *why, size_t why_size )
+{
+    if ( IS_SET( room->room_flags, ROOM_FLAGS2 ) )
+    {
+        snprintf( why, why_size,
+            "room %d uses a second flag word, which saving cannot write yet",
+            room->vnum );
+        return false;
+    }
+
+    if ( IS_SET( room->room_flags, ROOM_RIVER )
+      || IS_SET( room->room_flags, ROOM_TELEPORT ) )
+    {
+        snprintf( why, why_size,
+            "room %d is a river or teleport room, and its destination is not "
+            "stored in the room", room->vnum );
+        return false;
+    }
+
+    if ( IS_SET( room->room_flags, ROOM_AFFECTED_BY ) )
+    {
+        snprintf( why, why_size,
+            "room %d carries a room affect, which is not stored in the room",
+            room->vnum );
+        return false;
+    }
+
+    return true;
+}
+
+
+/*
+ * A string terminated the way fread_string expects.
+ *
+ * Text read from an area file ends in "\n\r"; text typed at `set room desc'
+ * does not end in anything. Both have to come out as a line followed by the
+ * tilde, so a missing newline is supplied and a present one is not doubled.
+ */
+static void write_string_block( FILE *fp, const char *text )
+{
+    size_t len;
+
+    if ( text == NULL || text[0] == '\0' )
+    {
+        fprintf( fp, "~\n" );
+        return;
+    }
+
+    fputs( text, fp );
+
+    len = strlen( text );
+    if ( text[len - 1] != '\n' && text[len - 1] != '\r' )
+        fputc( '\n', fp );
+
+    fprintf( fp, "~\n" );
+}
+
+
+/* One room, in the shape load_rooms() reads. */
+static void write_room( FILE *fp, ROOM_INDEX_DATA *room )
+{
+    EXTRA_DESCR_DATA *ed;
+    int door;
+
+    fprintf( fp, "#%d\n", room->vnum );
+    fprintf( fp, "%s~\n", room->name != NULL ? room->name : "" );
+    write_string_block( fp, room->description );
+    fprintf( fp, "%d %d %d\n",
+             (int) room->number, room->room_flags, (int) room->sector_type );
+
+    for ( door = 0; door <= 9; door++ )
+    {
+        EXIT_DATA *pexit = room->exit[door];
+
+        if ( pexit == NULL )
+            continue;
+
+        fprintf( fp, "D%d\n", door );
+        write_string_block( fp, pexit->description );
+        fprintf( fp, "%s~\n", pexit->keyword != NULL ? pexit->keyword : "" );
+        fprintf( fp, "%d %d %d\n",
+                 (int) pexit->lock, (int) pexit->key,
+                 pexit->u1.to_room != NULL
+                     ? (int) pexit->u1.to_room->vnum : -1 );
+    }
+
+    for ( ed = room->extra_descr; ed != NULL; ed = ed->next )
+    {
+        fprintf( fp, "E\n" );
+        fprintf( fp, "%s~\n", ed->keyword != NULL ? ed->keyword : "" );
+        write_string_block( fp, ed->description );
+    }
+
+    fprintf( fp, "S\n" );
+}
+
+
+/* Every room belonging to one area. */
+static void write_area_rooms( FILE *fp, AREA_DATA *pArea )
+{
+    int vnum;
+
+    fprintf( fp, "#ROOMS\n" );
+
+    /* In vnum order rather than hash order, so a saved file stays readable
+       and does not reshuffle itself on every write. */
+    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+    {
+        ROOM_INDEX_DATA *room = get_room_index( vnum );
+
+        if ( room != NULL && room->area == pArea )
+            write_room( fp, room );
+    }
+
+    fprintf( fp, "#0\n\n" );
+}
+
+
+/* Is this line the "#0" that ends a #ROOMS section? */
+static bool is_rooms_terminator( const char *line )
+{
+    if ( line[0] != '#' || line[1] != '0' )
+        return false;
+
+    for ( line += 2; *line != '\0'; line++ )
+    {
+        if ( !isspace( (unsigned char) *line ) )
+            return false;
+    }
+
+    return true;
+}
+
+
+/*
+ * Save one area's rooms to its file. Returns false with a reason in `why',
+ * and on success puts the path written there instead.
+ */
+bool save_area_rooms( AREA_DATA *pArea, char *why, size_t why_size )
+{
+    char path[MAX_INPUT_LENGTH];
+    /* Room for the suffixes below without the compiler fretting. */
+    char temp_path[MAX_INPUT_LENGTH + 32];
+    char backup_path[MAX_INPUT_LENGTH + 32];
+    char line[MAX_STRING_LENGTH];
+    FILE *in;
+    FILE *out;
+    bool existed;
+    int vnum;
+
+    if ( pArea == NULL || pArea->file_name == NULL
+      || pArea->file_name[0] == '\0' )
+    {
+        snprintf( why, why_size, "that area has no file to save to" );
+        return false;
+    }
+
+    /* Check every room before touching the disk, so a refusal leaves the
+       file exactly as it was. */
+    for ( vnum = 0; vnum <= WORLD_SIZE; vnum++ )
+    {
+        ROOM_INDEX_DATA *room = get_room_index( vnum );
+
+        if ( room != NULL && room->area == pArea
+          && !room_is_saveable( room, why, why_size ) )
+            return false;
+    }
+
+    toc_strlcpy( path, pArea->file_name, sizeof(path) );
+    snprintf( temp_path, sizeof(temp_path), "%s.tmp", path );
+
+    if ( ( out = fopen( temp_path, "w" ) ) == NULL )
+    {
+        snprintf( why, why_size, "cannot write %s", temp_path );
+        return false;
+    }
+
+    in      = fopen( path, "r" );
+    existed = ( in != NULL );
+
+    if ( !existed )
+    {
+        /* First save of an area with no file yet. */
+        fprintf( out, "#AREA\n%s~\n\n",
+                 pArea->name != NULL ? pArea->name : "{ 1 70} Builder" );
+        write_area_rooms( out, pArea );
+        fprintf( out, "#$\n" );
+    }
+    else
+    {
+        bool in_rooms = false;
+        bool written  = false;
+
+        while ( fgets( line, sizeof(line), in ) != NULL )
+        {
+            if ( !in_rooms && !strncmp( line, "#ROOMS", 6 ) )
+            {
+                /* Drop the stored section and put the live rooms here. */
+                write_area_rooms( out, pArea );
+                written  = true;
+                in_rooms = true;
+                continue;
+            }
+
+            if ( in_rooms )
+            {
+                /* Everything up to and including the section's "#0" is the
+                   old room data, already replaced. */
+                if ( is_rooms_terminator( line ) )
+                    in_rooms = false;
+                continue;
+            }
+
+            fputs( line, out );
+        }
+
+        fclose( in );
+
+        if ( !written )
+        {
+            bug( "Save_area_rooms: no #ROOMS section found, appending.", 0 );
+            write_area_rooms( out, pArea );
+            fprintf( out, "#$\n" );
+        }
+    }
+
+    fclose( out );
+
+    /* Keep what was there. Whoever breaks a room wants the old file back,
+       and so does whoever notices a week later. */
+    if ( existed )
+    {
+        snprintf( backup_path, sizeof(backup_path), "%s.%ld.bak",
+                  path, (long) current_time );
+        rename( path, backup_path );
+    }
+
+    if ( rename( temp_path, path ) != 0 )
+    {
+        snprintf( why, why_size, "could not replace %s", path );
+        return false;
+    }
+
+    snprintf( why, why_size, "%s", path );
+    return true;
+}
+
+
 /*
  * Create an instance of a mobile.
  */
