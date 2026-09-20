@@ -1393,6 +1393,17 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 	}
     }
 
+    /*
+     * A switched character -- a lycanthrope in were form -- has the mob in
+     * dclose->character and the real player in dclose->original. Everything
+     * below acts on `character', so a disconnect while transformed marked
+     * the *mob* linkdead, left the body standing in the room with no
+     * descriptor, and saved nothing: the player's whole session was rolled
+     * back at their next login. Put them back in their own body first.
+     */
+    if ( dclose->original != NULL && dclose->character != NULL )
+        do_return( dclose->character, "" );
+
     if ( ( ch = dclose->character ) != NULL )
     {
     snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Closing link to %s.", ch->name );

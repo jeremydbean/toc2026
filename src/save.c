@@ -1307,6 +1307,14 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if ( ch->pcdata->psionic_grant_spec    == NULL ) ch->pcdata->psionic_grant_spec    = str_dup( "" );
     if ( ch->pcdata->list_remorts          == NULL ) ch->pcdata->list_remorts          = str_dup( "" );
 
+    /* Nobody stays cursed by a mechanic that no longer runs. */
+    if ( !LYCANTHROPY_ENABLED && ch->were_shape.name != NULL )
+    {
+        ch->were_shape.name      = NULL;
+        ch->were_shape.were_type = 0;
+        ch->were_shape.mob_vnum  = 0;
+    }
+
     /* Characters who were W/W before the skill existed have it now. */
     grant_heros_grip( ch );
 

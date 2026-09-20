@@ -2919,10 +2919,34 @@ void do_return( CHAR_DATA *ch, char *argument )
 
     if(found)
     {
-      char_from_room(ch->desc->character);
-      char_to_room(ch->desc->character,ch->in_room);
-      ch->desc->character->timer = 0;
-      ch->desc                  = NULL;
+      CHAR_DATA *human = ch->desc->character;
+      OBJ_DATA *carried, *carried_next;
+
+      /*
+       * Give back what the beast was holding.
+       *
+       * extract_char below destroys the mob and everything on it, so
+       * anything picked up during the night used to be gone at dawn.
+       * do_lycanthropy remembered up to four object vnums to soften that,
+       * which lost the fifth item, lost every enchantment, charge and
+       * container on the four, and handed none of them to the player
+       * anyway. Moving the objects keeps them whole and keeps all of them.
+       */
+      for ( carried = ch->carrying; carried != NULL; carried = carried_next )
+      {
+        carried_next = carried->next_content;
+
+        if ( carried->wear_loc != WEAR_NONE )
+          unequip_char( ch, carried );
+
+        obj_from_char( carried );
+        obj_to_char( carried, human );
+      }
+
+      char_from_room(human);
+      char_to_room(human,ch->in_room);
+      human->timer               = 0;
+      ch->desc                   = NULL;
       extract_char(ch,true);
       return;
     }

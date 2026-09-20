@@ -2111,6 +2111,19 @@ void do_quit( CHAR_DATA *ch, char *argument )
 
     UNUSED_PARAM(argument);
 
+    /*
+     * A lycanthrope in were form is an NPC as far as every command is
+     * concerned, so quit silently did nothing and the only way out of the
+     * game was to drop the connection. Hand them back their own body and
+     * let them try again.
+     */
+    if ( IS_NPC(ch) && IS_SWITCHED(ch) && IS_SET(ch->act2, ACT2_LYCANTH) )
+    {
+	send_to_char( "You cannot leave while the beast has you.\n\r", ch );
+	do_return( ch, "" );
+	return;
+    }
+
     if ( IS_NPC(ch) )
 	return;
 

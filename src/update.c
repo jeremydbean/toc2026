@@ -1367,7 +1367,8 @@ void char_update( void )
 
 	}
 
-	if(IS_NPC(ch) && !IS_SET(ch->act2, ACT2_LYCANTH)
+	if(LYCANTHROPY_ENABLED
+	   && IS_NPC(ch) && !IS_SET(ch->act2, ACT2_LYCANTH)
 	   && number_range(1,2000) == 2000
 	   && dice(1,50) == 50
 	   && ch->in_room !=NULL)
@@ -2501,13 +2502,20 @@ void ban_update( void )
 void do_lycanthropy(CHAR_DATA *ch, char *argument)
 {
      UNUSED_PARAM(argument);
-     OBJ_DATA *pObj, *obj_next;
-     OBJ_INDEX_DATA *pObjIndex;
      CHAR_DATA * mob = NULL;
-     int primer = 0, tracker = 0, counter = 0, ac = 0;
+     int counter = 0, ac = 0;
 /*     char buf[MAX_STRING_LENGTH];*/
     if( IS_IMMORTAL(ch) || ch->desc == NULL || ch->in_room == NULL)
       return;
+
+    if( !LYCANTHROPY_ENABLED )
+    {
+      /* Anyone caught out in were form when this was switched off still
+         needs putting back into their own body. */
+      if( IS_SWITCHED(ch) && IS_SET(ch->act2, ACT2_LYCANTH) )
+        do_return(ch,"");
+      return;
+    }
 
     if(weather_info.moon_place == MOON_UP &&
        (time_info.hour > 18 || time_info.hour < 7) )
@@ -2548,28 +2556,13 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
 
       SET_BIT(mob->act2, ACT2_LYCANTH);
 
-      primer = UMAX(0, UMIN(ch->were_shape.can_carry, 4));
-      for(tracker = 0; tracker < primer; tracker++)
-      {
-/*	  if(ch->were_shape.obj[tracker] == NULL)*/
-
-/* Above line commented out because it gives a pointer error
-   and replaced with the if statement shown below - Rico */
-
-          if (!ch->were_shape.obj[tracker])
-	     break;
-
-	  pObjIndex = get_obj_index(ch->were_shape.obj[tracker]);
-	  if (pObjIndex == NULL)
-	  {
-	    bug("do_lycanthropy: missing stored object vnum %d.",
-		ch->were_shape.obj[tracker]);
-	    continue;
-	  }
-
-	  pObj = create_object(pObjIndex, 0);
-	  obj_to_char(pObj,mob);
-      }
+      /*
+       * The beast no longer starts the night holding copies of what it
+       * held last time. do_return hands its belongings back to the player
+       * now, so re-creating them here would mint a second set every full
+       * moon. Anything the player wants to take into the night, the beast
+       * can pick up.
+       */
 
 	/* need to alter handler.c can_carry_n for were_shape can_carry */
 
@@ -2578,21 +2571,12 @@ void do_lycanthropy(CHAR_DATA *ch, char *argument)
     else  /* MOON_DOWN */
     {
       if(!IS_IMMORTAL(ch) && IS_SWITCHED(ch) )
-      {          /* save the items held (at most 4 slots in were_shape.obj) */
-         for ( pObj = ch->carrying; pObj != NULL && counter < 4; pObj = obj_next)
-         {
-            obj_next = pObj->next_content;
-            ch->desc->original->were_shape.obj[counter] = pObj->pIndexData->vnum;
-            counter++;
-         }
-                /* zero out the remaining slots */
-          while( counter < 4)
-          {
-              /* U1: zero remaining were_shape item slots */
-              ch->desc->original->were_shape.obj[counter] = 0;
-              counter++;
-          }
-
+      {
+         /* do_return carries the beast's belongings back to the body, so
+            there is nothing to remember by number any more. Clear what
+            older saves left behind so it cannot be re-created. */
+         for ( counter = 0; counter < 4; counter++ )
+            ch->desc->original->were_shape.obj[counter] = 0;
 
 	 do_return(ch,"");
       }

@@ -1242,6 +1242,7 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	dam = 1;
 
     if (!damage( ch, victim, dam, dt, dam_type )
+    &&  LYCANTHROPY_ENABLED
     &&  IS_NPC(ch) && IS_SET(ch->act2,ACT2_LYCANTH)
 	&&  victim->were_shape.name == NULL)
     {
