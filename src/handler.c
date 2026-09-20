@@ -118,6 +118,25 @@ int guild_lookup (const char *name)
 
    return -1;
 }
+/*
+ * The group a guild gives its members, or NULL where there is none.
+ *
+ * Monk and necromancer are classes that imply a guild rather than
+ * guilds anyone joins, and they have no group of their own.
+ */
+const char *guild_group_name( int guild )
+{
+    switch ( guild )
+    {
+    case GUILD_MAGE:    return "mage guild";
+    case GUILD_CLERIC:  return "cleric guild";
+    case GUILD_THIEF:   return "thief guild";
+    case GUILD_WARRIOR: return "warrior guild";
+    }
+
+    return NULL;
+}
+
 /* returns string of guild name */
 char* get_guildname(int guild)
 {
@@ -628,6 +647,52 @@ bool is_warrior_warrior( const CHAR_DATA *ch )
         && ch->pcdata != NULL
         && ch->class == CLASS_WARRIOR
         && ch->pcdata->guild == GUILD_WARRIOR;
+}
+
+
+/*
+ * Everything a character's class, guild and race are supposed to give
+ * them.
+ *
+ * Each piece was granted in one place and never checked again, so a
+ * grant missed at creation or remort was missed for good -- remorting
+ * into a guild skipped the guild's own group, and the clerk who would
+ * otherwise hand it over turns away anyone already in a guild.
+ *
+ * group_add only fills a gap, so this is safe to call as often as you
+ * like and repairs a character who is short without touching one who
+ * is not. Nothing here deducts: the points charged for a default group
+ * are charged once, where the player chooses it.
+ */
+void apply_class_and_guild_skills( CHAR_DATA *ch )
+{
+    const char *guild_group;
+    int i;
+
+    if ( IS_NPC( ch ) || ch->pcdata == NULL )
+        return;
+
+    if ( ch->class < 0 || ch->class >= MAX_CLASS )
+        return;
+
+    group_add( ch, "rom basics", false );
+    group_add( ch, class_table[ch->class].base_group, false );
+    group_add( ch, class_table[ch->class].default_group, false );
+
+    if ( ( guild_group = guild_group_name( ch->pcdata->guild ) ) != NULL )
+        group_add( ch, guild_group, false );
+
+    if ( ch->race >= 0 && ch->race < MAX_PC_RACE )
+    {
+        for ( i = 0; i < 5; i++ )
+        {
+            if ( pc_race_table[ch->race].skills[i] == NULL )
+                break;
+            group_add( ch, pc_race_table[ch->race].skills[i], false );
+        }
+    }
+
+    apply_class_weapon_profs( ch );
 }
 
 

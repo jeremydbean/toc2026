@@ -1310,9 +1310,14 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     /* Characters who were W/W before the skill existed have it now. */
     grant_heros_grip( ch );
 
-    /* And everyone gets the weapon proficiencies their class has always
-       been written to have, which until now only a remort handed out. */
-    apply_class_weapon_profs( ch );
+    /*
+     * Anything the character's class, guild or race owes them that they
+     * do not have. Each grant used to happen in exactly one place and
+     * was never revisited, so a character who missed one -- everybody
+     * who remorted into a guild, for instance -- stayed short of it for
+     * good. This fills gaps only.
+     */
+    apply_class_and_guild_skills( ch );
 
     color_update_defaults( ch, !found );
 

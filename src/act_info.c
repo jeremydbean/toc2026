@@ -5171,8 +5171,11 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->form        = race_table[ch->race].form;
    ch->parts       = race_table[ch->race].parts;
 
-   /* Skills were wiped above, so the floor is the whole grant here. */
-   apply_class_weapon_profs( ch );
+   /* Skills were wiped above, so this grant is the whole of them. The
+      guild group in particular was never given here, and the clerk who
+      normally hands it over refuses anyone already in a guild -- which
+      a remorted character always is. */
+   apply_class_and_guild_skills( ch );
    /* Grant psionic powers on 2nd remort and beyond (they are wiped with
     * all other skills and must be re-awarded each time). */
    if ( ch->pcdata->num_remorts >= 2 )

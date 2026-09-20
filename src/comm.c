@@ -2597,10 +2597,10 @@ case CON_GET_ALIGNMENT:
 	group_add(ch,"rom basics",FALSE);
 	group_add(ch,class_table[ch->class].base_group,FALSE);
 	group_add(ch,class_table[ch->class].default_group,FALSE);
-	/* The spread class_table has always described. Only do_remort read
-	   it before, so anyone who had not remorted was stuck with the one
-	   weapon their base group names. */
-	apply_class_weapon_profs(ch);
+	/* And the rest of what the class is written to give, including the
+	   weapon spread class_table has always described and that only
+	   do_remort ever read. */
+	apply_class_and_guild_skills(ch);
 	do_help(ch,"motd");
 	d->connected = CON_READ_MOTD;
 	break;

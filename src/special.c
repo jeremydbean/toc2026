@@ -1480,17 +1480,6 @@ bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
 bool spec_guild_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
-struct {
-	   char mix[25];
-       } guild_bonus[] =
- 
-       {
-	 { "mage guild"       },  /* Mage */
-	 { "cleric guild"     },  /* Cleric */
-	 { "thief guild"      },  /* Thief */
-	 { "warrior guild"    }   /* Warrior */
-       };
- 
     int guild, cost;
     char buf[255];
  
@@ -1553,10 +1542,20 @@ struct {
  
     grant_heros_grip( ch );
 
-    group_add(ch, guild_bonus[guild].mix, false);
-    snprintf(buf, sizeof(buf),"You will recieve free introductory training in the %s.",
-		guild_bonus[guild].mix);
-    send_to_char(buf, ch);
+    /* One mapping, shared with remort and with the load-time repair,
+       rather than an array indexed by a guild number that can be 5. */
+    {
+        const char *guild_group = guild_group_name( guild );
+
+        if ( guild_group != NULL )
+        {
+            group_add(ch, guild_group, false);
+            snprintf(buf, sizeof(buf),
+                "You will recieve free introductory training in the %s.",
+                guild_group);
+            send_to_char(buf, ch);
+        }
+    }
  
     return true;
 }
