@@ -4471,10 +4471,63 @@ bool we_want_this_obj ( OBJ_DATA *obj, char *key_type, char *key_word)
 
 /* Null functions for use with certain specs */
 
+/* Freddy Krugar, the training guru in the Chamber of Training. */
+#define MOB_VNUM_TRAINING_GURU  59
+#define EXCHANGE_EXP_COST       5000
+
 void do_exchange( CHAR_DATA *ch, char *argument )
 {
-    UNUSED_PARAM(ch);
     UNUSED_PARAM(argument);
+
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *guru;
+    int practices;
+
+    if ( IS_NPC( ch ) || ch->pcdata == NULL )
+        return;
+
+    if ( !IS_HERO( ch ) )
+    {
+        send_to_char( "Only heroes may trade experience for practice.\n\r", ch );
+        return;
+    }
+
+    for ( guru = ch->in_room->people; guru != NULL; guru = guru->next_in_room )
+    {
+        if ( IS_NPC( guru ) && guru->pIndexData != NULL
+          && guru->pIndexData->vnum == MOB_VNUM_TRAINING_GURU
+          && can_see( ch, guru ) )
+            break;
+    }
+
+    if ( guru == NULL )
+    {
+        send_to_char( "The guru in the Chamber of Training does this, "
+                      "not you.\n\r", ch );
+        return;
+    }
+
+    /* Against the experience held above the current level, so this cannot
+       drop anyone back down one. */
+    if ( ch->exp - exp_per_level( ch, ch->pcdata->points ) * ch->level
+         < EXCHANGE_EXP_COST )
+    {
+        act( "$N tells you 'Come back with 5000 experience to spare.'",
+             ch, NULL, guru, TO_CHAR );
+        return;
+    }
+
+    ch->exp   -= EXCHANGE_EXP_COST;
+    practices  = number_range( 5, 7 );
+    ch->practice = (int16_t)( ch->practice + practices );
+
+    snprintf( buf, sizeof(buf),
+              "You trade 5000 experience for %d practice%s.\n\r",
+              practices, practices == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+
+    act( "$N drags his claws across the slate and nods at $n.",
+         ch, NULL, guru, TO_ROOM );
 
     return;
 }
