@@ -1319,6 +1319,12 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
      */
     apply_class_and_guild_skills( ch );
 
+    /* And the psionics a second remort owes them, if that grant was
+       missed. do_check_psi holds the condition; it was only reachable
+       through an immortal advancing somebody. */
+    if ( found )
+        do_check_psi( ch, "" );
+
     color_update_defaults( ch, !found );
 
     return found;
