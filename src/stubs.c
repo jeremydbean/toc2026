@@ -100,10 +100,38 @@ void handle_web( void )
 
 void send_info( char *argument )
 {
+    char buf[MAX_STRING_LENGTH];
+    DESCRIPTOR_DATA *d;
+
     if ( argument == NULL || argument[0] == '\0' )
         return;
 
     write_web_admin_event( "info", argument, 0 );
+
+    /*
+     * And to the people playing.
+     *
+     * This only ever wrote the dashboard event, so every announcement
+     * the game makes -- remorts, and the level notices the INFO help
+     * promises -- reached the web panel and nobody in the game.
+     */
+    snprintf( buf, sizeof(buf), "{%02X[INFO] %s{00\n\r",
+              COL_HIGHLIGHT, argument );
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *victim = d->original != NULL ? d->original
+                                                : d->character;
+
+        if ( d->connected != CON_PLAYING || victim == NULL )
+            continue;
+
+        if ( IS_SET( victim->comm, COMM_NOINFO )
+          || IS_SET( victim->comm, COMM_QUIET ) )
+            continue;
+
+        send_to_char( buf, d->character );
+    }
 }
 
 void die_follower( CHAR_DATA *ch )
@@ -323,17 +351,7 @@ static void stub_notify( CHAR_DATA *ch )
 }
 
 
-void do_castle( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
 
-void do_cgos( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
 
 void do_ignore( CHAR_DATA *ch, char *argument )
 {
@@ -341,61 +359,16 @@ void do_ignore( CHAR_DATA *ch, char *argument )
     stub_notify( ch );
 }
 
-void do_info( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
-
-void do_beep( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
-
-void do_leveling( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
-
-void do_qui( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
-
-void do_roll( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
 
 
 
-void do_godtalk( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
 
-void do_hero( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
 
-void do_immtalk( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
 
-void do_notell( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    stub_notify( ch );
-}
+
+
+
+
 
 void do_wizinfo( CHAR_DATA *ch, char *argument )
 {

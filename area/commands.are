@@ -4323,11 +4323,7 @@ staff can identify the sender.
 Using IMMTALK with no argument toggles your own immortal channel on or off.
 When off, you will neither send nor receive immtalk messages.
 
-Note: IMMTALK is currently implemented as a stub.  Use WIZINFO to toggle
-the immortal info broadcast channel, or @/GODTALK for the high-level
-staff-only channel.
-
-See also: WIZINFO, GODTALK (@), BEEP
+See also: GODTALK (@), HERO (=), WIZINFO, BEEP, CHANNELS
 ~
 
 62 WIZHELP~
@@ -5066,10 +5062,15 @@ See also: MUTE, NOCHANNELS
 ~
 
 65 NOTELL~
-This command is not currently implemented.  Use MUTE to restrict all
-player communication at once.
+Syntax: notell <player>
 
-See also: MUTE
+NOTELL stops one player sending tells, and typing it again lets them send
+again.  Use it when somebody is pestering one person; MUTE takes away every
+channel at once and is the heavier answer.
+
+The player is told either way, and the change is announced on WIZINFO.
+
+See also: MUTE, TELL, SILENCE
 ~
 
 65 NOTITLE~

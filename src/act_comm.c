@@ -453,6 +453,386 @@ void do_auction( CHAR_DATA *ch, char *argument )
     send_to_char("The auction channel is currently unavailable.\n\r", ch);
 }
 
+/*
+ * ------------------------------------------------------------------------
+ * Channels.
+ *
+ * Every channel in the game repeats the same shape: an empty argument
+ * toggles it, quiet and revoked privileges refuse it, speaking turns it
+ * back on, and then it walks the descriptors skipping anyone who has it
+ * off. What differs is the flag, the colour, the wording, and who is
+ * allowed to hear. So that shape lives here once.
+ * ------------------------------------------------------------------------
+ */
+
+static void channel_toggle( CHAR_DATA *ch, int flag, const char *label )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( IS_SET( ch->comm, flag ) )
+    {
+        REMOVE_BIT( ch->comm, flag );
+        snprintf( buf, sizeof(buf), "%s channel is now ON.\n\r", label );
+    }
+    else
+    {
+        SET_BIT( ch->comm, flag );
+        snprintf( buf, sizeof(buf), "%s channel is now OFF.\n\r", label );
+    }
+
+    send_to_char( buf, ch );
+}
+
+
+/*
+ * Can this character speak on a channel at all?
+ */
+static bool channel_may_speak( CHAR_DATA *ch )
+{
+    if ( IS_SET( ch->comm, COMM_QUIET ) )
+    {
+        send_to_char( "You must turn off quiet mode first.\n\r", ch );
+        return false;
+    }
+
+    if ( IS_SET( ch->comm, COMM_NOCHANNELS ) )
+    {
+        send_to_char( "The gods have revoked your channel priviliges.\n\r", ch );
+        return false;
+    }
+
+    return true;
+}
+
+
+/*
+ * Send on a channel heard by everyone of at least `hear_level'.
+ *
+ * `self_verb' and `other_verb' are the words either side of the message --
+ * "immtalk" and "immtalks" -- so the caller can put a rank or a castle
+ * name in them without this needing to know about either.
+ */
+static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
+                         const char *label, const char *self_verb,
+                         const char *other_verb, int hear_level )
+{
+    char buf[MAX_STRING_LENGTH];
+    DESCRIPTOR_DATA *d;
+
+    if ( argument[0] == '\0' )
+    {
+        channel_toggle( ch, flag, label );
+        return;
+    }
+
+    if ( !channel_may_speak( ch ) )
+        return;
+
+    REMOVE_BIT( ch->comm, flag );
+
+    snprintf( buf, sizeof(buf), "{%02XYou %s '%s'{00\n\r",
+              colour, self_verb, argument );
+    send_to_char( buf, ch );
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *victim = d->original != NULL ? d->original : d->character;
+
+        if ( d->connected != CON_PLAYING || d->character == ch
+          || victim == NULL )
+            continue;
+
+        if ( victim->level < hear_level )
+            continue;
+
+        if ( IS_SET( victim->comm, flag )
+          || IS_SET( victim->comm, COMM_QUIET ) )
+            continue;
+
+        snprintf( buf, sizeof(buf), "{%02X$n %s '$t'{00", colour, other_verb );
+        act_new_cstr( buf, ch, argument, d->character, TO_VICT, POS_SLEEPING );
+    }
+}
+
+
+void do_immtalk( CHAR_DATA *ch, char *argument )
+{
+    char verb[64];
+
+    /* The help promises the sender's rank, so staff can tell at a glance
+       who is talking without a WHO. */
+    snprintf( verb, sizeof(verb), "[%d] immtalks", (int) ch->level );
+
+    channel_say( ch, argument, COMM_NOWIZ, COL_IMMTALK,
+                 "Immortal", "immtalk", verb, LEVEL_IMMORTAL );
+}
+
+
+void do_godtalk( CHAR_DATA *ch, char *argument )
+{
+    char verb[64];
+
+    snprintf( verb, sizeof(verb), "[%d] godtalks", (int) ch->level );
+
+    channel_say( ch, argument, COMM_NOGOD, COL_IMMTALK,
+                 "God", "godtalk", verb, MAX_LEVEL - 1 );
+}
+
+
+void do_hero( CHAR_DATA *ch, char *argument )
+{
+    channel_say( ch, argument, COMM_NOHERO, COL_HERO,
+                 "Hero", "hero", "heroes", LEVEL_HERO );
+}
+
+
+void do_leveling( CHAR_DATA *ch, char *argument )
+{
+    channel_say( ch, argument, COMM_NOGRATZ, COL_HIGHLIGHT,
+                 "Leveling", "congratulate", "congratulates", 0 );
+}
+
+
+/*
+ * INFO carries the game's own announcements, so there is nothing to say on
+ * it -- only whether you want to hear it.
+ */
+void do_info( CHAR_DATA *ch, char *argument )
+{
+    if ( argument[0] != '\0' )
+    {
+        send_to_char( "The info channel carries announcements, not "
+                      "conversation.\n\r", ch );
+        send_to_char( "Type INFO on its own to turn it off or on, or use "
+                      "LEVELING to reply.\n\r", ch );
+        return;
+    }
+
+    channel_toggle( ch, COMM_NOINFO, "Info" );
+}
+
+
+/*
+ * Castle chat, and the same across every castle.
+ *
+ * Membership rather than level decides who hears these, so they do their
+ * own walk instead of going through channel_say.
+ */
+static void castle_say( CHAR_DATA *ch, char *argument, int flag,
+                        const char *label, const char *self_verb,
+                        const char *other_verb, bool own_castle_only )
+{
+    char buf[MAX_STRING_LENGTH];
+    DESCRIPTOR_DATA *d;
+
+    if ( argument[0] == '\0' )
+    {
+        channel_toggle( ch, flag, label );
+        return;
+    }
+
+    if ( IS_NPC( ch ) || ch->pcdata == NULL || ch->pcdata->castle <= 0 )
+    {
+        send_to_char( "You belong to no castle.\n\r", ch );
+        return;
+    }
+
+    if ( !channel_may_speak( ch ) )
+        return;
+
+    REMOVE_BIT( ch->comm, flag );
+
+    snprintf( buf, sizeof(buf), "{%02XYou %s '%s'{00\n\r",
+              COL_CASTLE, self_verb, argument );
+    send_to_char( buf, ch );
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *victim = d->original != NULL ? d->original : d->character;
+
+        if ( d->connected != CON_PLAYING || d->character == ch
+          || victim == NULL || IS_NPC( victim ) || victim->pcdata == NULL )
+            continue;
+
+        if ( victim->pcdata->castle <= 0 )
+            continue;
+
+        if ( own_castle_only
+          && victim->pcdata->castle != ch->pcdata->castle )
+            continue;
+
+        if ( IS_SET( victim->comm, flag )
+          || IS_SET( victim->comm, COMM_QUIET ) )
+            continue;
+
+        snprintf( buf, sizeof(buf), "{%02X$n %s '$t'{00",
+                  COL_CASTLE, other_verb );
+        act_new_cstr( buf, ch, argument, d->character, TO_VICT, POS_SLEEPING );
+    }
+}
+
+
+void do_castle( CHAR_DATA *ch, char *argument )
+{
+    castle_say( ch, argument, COMM_NOCASTLE, "Castle",
+                "tell your castle", "tells the castle", true );
+}
+
+
+void do_cgos( CHAR_DATA *ch, char *argument )
+{
+    castle_say( ch, argument, COMM_NOCGOS, "Castle gossip",
+                "gossip to the castles", "gossips to the castles", false );
+}
+
+
+/*
+ * Get one immortal's attention even when they have the staff channel off.
+ * That is the whole point of it, so COMM_NOWIZ is deliberately not checked
+ * -- only the victim's own COMM_NOBEEP.
+ */
+void do_beep( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        channel_toggle( ch, COMM_NOBEEP, "Beep" );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC( victim ) )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( IS_SET( victim->comm, COMM_NOBEEP ) )
+    {
+        send_to_char( "They are not accepting beeps.\n\r", ch );
+        return;
+    }
+
+    snprintf( buf, sizeof(buf), "\a{%02X%s beeps you.{00\n\r",
+              COL_IMMTALK, ch->name );
+    send_to_char( buf, victim );
+
+    snprintf( buf, sizeof(buf), "You beep %s.\n\r", victim->name );
+    send_to_char( buf, ch );
+}
+
+
+/*
+ * Silence one player's tells, rather than MUTE's everything at once.
+ */
+void do_notell( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Syntax: notell <player>\n\r", ch );
+        return;
+    }
+
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL || IS_NPC( victim ) )
+    {
+        send_to_char( "They aren't here.\n\r", ch );
+        return;
+    }
+
+    if ( rank_protects( ch, victim ) )
+    {
+        send_to_char( "They are beyond your reach.\n\r", ch );
+        return;
+    }
+
+    if ( IS_SET( victim->comm, COMM_NOTELL ) )
+    {
+        REMOVE_BIT( victim->comm, COMM_NOTELL );
+        send_to_char( "You may send tells again.\n\r", victim );
+        snprintf( buf, sizeof(buf), "%s may send tells again.\n\r",
+                  victim->name );
+    }
+    else
+    {
+        SET_BIT( victim->comm, COMM_NOTELL );
+        send_to_char( "You cannot send tells any more.\n\r", victim );
+        snprintf( buf, sizeof(buf), "%s can no longer send tells.\n\r",
+                  victim->name );
+    }
+
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "%s changed NOTELL on %s.",
+              ch->name, victim->name );
+    wizinfo( buf, LEVEL_IMMORTAL );
+}
+
+
+/*
+ * "qui" is one keystroke from "quit" and used to be neither.
+ */
+void do_qui( CHAR_DATA *ch, char *argument )
+{
+    UNUSED_PARAM(argument);
+
+    send_to_char( "If you want to QUIT, you have to spell it out.\n\r", ch );
+}
+
+
+void do_roll( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char *sides;
+    int number, faces, total;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Syntax: roll <number>d<sides>, as in 'roll 2d6'.\n\r",
+                      ch );
+        return;
+    }
+
+    if ( ( sides = strchr( arg, 'd' ) ) == NULL
+      && ( sides = strchr( arg, 'D' ) ) == NULL )
+    {
+        send_to_char( "Rolls look like 2d6.\n\r", ch );
+        return;
+    }
+
+    *sides++ = '\0';
+    number = atoi( arg );
+    faces  = atoi( sides );
+
+    if ( number < 1 || number > 20 || faces < 2 || faces > 1000 )
+    {
+        send_to_char( "Between 1 and 20 dice, of 2 to 1000 sides.\n\r", ch );
+        return;
+    }
+
+    total = dice( number, faces );
+
+    snprintf( buf, sizeof(buf), "You roll %dd%d: {%02X%d{00\n\r",
+              number, faces, COL_HIGHLIGHT, total );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf), "$n rolls %dd%d: %d", number, faces, total );
+    act_new_cstr( buf, ch, NULL, NULL, TO_ROOM, POS_RESTING );
+}
+
+
 void do_gossip( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];

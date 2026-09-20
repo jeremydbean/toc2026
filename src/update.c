@@ -496,6 +496,9 @@ EC				  + get_curr_stat(ch,STAT_WIS))/5);
 	    snprintf( buf, sizeof(buf), "%s has achieved level %d!", ch->name, ch->level);
 	send_info(buf);
     log_string( buf );
+    /* Staff watched levels go by for as long as this only reached the log
+       file and the dashboard. */
+    wizinfo( buf, LEVEL_IMMORTAL );
     }
     achievement_check_state(ch, true);
     return;
