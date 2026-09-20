@@ -65,6 +65,7 @@
                     <div class="segmented-control" role="tablist" aria-label="Client panels">
                         <button class="is-active" id="session-tab" type="button" role="tab" aria-selected="true" data-panel="session">Session</button>
                         <button id="help-tab" type="button" role="tab" aria-selected="false" data-panel="help">Help</button>
+                        <button id="routes-tab" type="button" role="tab" aria-selected="false" data-panel="routes">Routes</button>
                         <button id="admin-tab" type="button" role="tab" aria-selected="false" data-panel="admin">Admin</button>
                     </div>
                     <button class="icon-button close-panel" id="panel-close" type="button" aria-label="Close command panel" title="Close command panel">x</button>
@@ -139,6 +140,16 @@
                                 <p class="empty-state">Pick a topic, or search above.</p>
                             </article>
                         </div>
+                    </section>
+                </div>
+
+                <div class="utility-content" id="routes-panel" role="tabpanel" aria-labelledby="routes-tab">
+                    <section class="utility-section">
+                        <div class="section-title"><h2>Routes</h2><span class="panel-subtitle" id="routes-count"></span></div>
+                        <p class="routes-intro" id="routes-intro"></p>
+                        <label class="sr-only" for="routes-search">Search routes</label>
+                        <input id="routes-search" type="search" placeholder="Search destinations" autocomplete="off" spellcheck="false">
+                        <div class="routes-list" id="routes-list" aria-live="polite"></div>
                     </section>
                 </div>
 

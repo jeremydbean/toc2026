@@ -17,7 +17,7 @@ import time
 from collections import deque
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Tuple
 from urllib.parse import urlparse
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, Response, WebSocket, WebSocketDisconnect
@@ -1462,6 +1462,41 @@ def load_player_help() -> list[Dict[str, Any]]:
     entries.sort(key=lambda item: item["title"].lower())
     _HELP_CACHE = (now, entries)
     return entries
+
+
+_DIRECTIONS_PATH = Path(__file__).resolve().parent / "directions.json"
+_DIRECTIONS_CACHE: Tuple[float, Dict[str, Any]] | None = None
+
+
+def load_directions() -> Dict[str, Any]:
+    """The route list, rebuilt from the area files by tools/build_directions.
+
+    Cached on the file's mtime: it changes when somebody regenerates it, not
+    on a timer, and it is read on every open of the Routes tab.
+    """
+    global _DIRECTIONS_CACHE
+
+    try:
+        stamp = _DIRECTIONS_PATH.stat().st_mtime
+    except OSError:
+        return {"start": {}, "counts": {}, "routes": []}
+
+    if _DIRECTIONS_CACHE is not None and _DIRECTIONS_CACHE[0] == stamp:
+        return _DIRECTIONS_CACHE[1]
+
+    try:
+        data = json.loads(_DIRECTIONS_PATH.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {"start": {}, "counts": {}, "routes": []}
+
+    _DIRECTIONS_CACHE = (stamp, data)
+    return data
+
+
+@app.get("/api/directions")
+async def directions_index() -> Dict[str, Any]:
+    """Travel routes from the Oak Tree Square. Public, like the help text."""
+    return await asyncio.to_thread(load_directions)
 
 
 @app.get("/api/help")

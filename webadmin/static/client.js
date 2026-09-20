@@ -560,9 +560,99 @@
         });
         byId("session-panel").classList.toggle("is-active", name === "session");
         byId("help-panel").classList.toggle("is-active", name === "help");
+        byId("routes-panel").classList.toggle("is-active", name === "routes");
         byId("admin-panel").classList.toggle("is-active", name === "admin");
         if (name === "admin" && state.authenticated) void loadAdmin();
         if (name === "help") void loadHelpTopics();
+        if (name === "routes") void loadRoutes();
+    }
+
+    // Travel directions from the Oak Tree Square, checked against the
+    // world when they were generated. Public, like the help text.
+    const routesState = { data: null, loading: false };
+
+    async function loadRoutes() {
+        if (routesState.data || routesState.loading) return;
+        routesState.loading = true;
+        try {
+            const data = await api("/api/directions");
+            routesState.data = data;
+            const counts = data.counts || {};
+            const total = (data.routes || []).length;
+            byId("routes-count").textContent = `${total} routes`;
+            const start = data.start || {};
+            byId("routes-intro").textContent = start.room
+                ? `All of these start at ${start.room} (room ${start.vnum}). `
+                  + `${counts.verified || 0} walk cleanly today.`
+                : "";
+            renderRoutes();
+        } catch (error) {
+            byId("routes-list").replaceChildren(
+                node("p", { className: "empty-state", text: error.message }));
+        } finally {
+            routesState.loading = false;
+        }
+    }
+
+    function renderRoutes() {
+        const query = byId("routes-search").value.trim().toLowerCase();
+        const list = byId("routes-list");
+        const routes = (routesState.data && routesState.data.routes) || [];
+        const matching = routes.filter((route) => {
+            if (!query) return true;
+            return [route.name, route.room, route.area]
+                .some((field) => (field || "").toLowerCase().includes(query));
+        });
+
+        if (!matching.length) {
+            list.replaceChildren(node("p", {
+                className: "empty-state",
+                text: "Nothing matches that.",
+            }));
+            return;
+        }
+
+        list.replaceChildren(...matching.map((route) => {
+            const card = node("article", { className: "route-card" });
+            card.dataset.status = route.status;
+
+            const head = node("div", { className: "route-head" });
+            head.append(node("h3", { text: route.name }));
+            head.append(node("span", {
+                className: `route-badge route-${route.status}`,
+                text: route.status === "verified" ? "checks out"
+                    : route.status === "portal" ? "ends at a portal"
+                    : "needs checking",
+            }));
+            card.append(head);
+
+            if (route.room) {
+                card.append(node("p", {
+                    className: "route-dest",
+                    text: `${route.room} - ${route.area}`,
+                }));
+            }
+
+            const paste = node("button", {
+                className: "route-commands",
+                text: route.commands,
+            });
+            paste.type = "button";
+            paste.title = "Send this";
+            paste.addEventListener("click", () => sendCommandSequence(route.commands));
+            card.append(paste);
+
+            card.append(node("p", {
+                className: "route-steps",
+                text: (route.steps || []).join(", "),
+            }));
+
+            if (route.note) {
+                card.append(node("p", { className: "route-note", text: route.note }));
+            }
+
+            return card;
+        }));
     }
 
     // The help text is public, so none of this needs a token.
@@ -1170,6 +1260,7 @@
         byId("panel-close").addEventListener("click", closePanel);
         byId("panel-scrim").addEventListener("click", closePanel);
         all("[data-panel]").forEach((tab) => tab.addEventListener("click", () => showUtilityPanel(tab.dataset.panel)));
+        byId("routes-search").addEventListener("input", renderRoutes);
         byId("help-search").addEventListener("input", renderHelpTopics);
 
         byId("font-size").addEventListener("input", (event) => {
