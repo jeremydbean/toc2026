@@ -1599,6 +1599,22 @@ E
 portal~
 A portal back to the newbie train station.
 ~
+#15063
+cabinet arcade machine game~
+a flickering arcade cabinet~
+A lone arcade cabinet hums against the far wall, its screen washed in golden light.~
+wood~
+30 ABGO 0
+5 30200 0 0 0
+1 1000 0 P
+E
+cabinet arcade machine game screen~
+The cabinet is an old upright, its paint worn through at the corners where
+a thousand hands have rested.  The screen shows no title and no high score
+table, only a field of grass rendered in a handful of colours, waiting.
+The coin slot has been taped over.  Whoever owns it does not want your
+money; it wants you to ENTER CABINET.
+~
 #0
 
 
@@ -7599,6 +7615,7 @@ P 0 15059 1 15058                 Ledger
 O 0 15060 1 15134         Wooden Chest
 P 0 15061 1 15060                 Bag Of Gold
 O 0 15062 1 15000       * load portal to newbie train station
+O 0 15063 1 15068        Arcade Cabinet (to Hyrule)
 * Doors
 D 0 15002 0 2            Victoria Hall
 D 0 15025 2 2

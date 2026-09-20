@@ -764,7 +764,14 @@ See also: ARCHERY, WIELD, SCAN
 ~
 
 0 GANON HYRULE RELICS~
-Hyrule is entered through the arcade cabinet and cannot be left with recall.
+Hyrule is entered through the arcade cabinet in the Games Room, on the
+university campus.  ENTER CABINET and the screen takes you.
+
+RECALL works in Hyrule's overworld -- the map, the sword caves, the shops,
+the repair rooms and the Lost Woods -- so you are never stranded there.  It
+does not work inside the nine numbered dungeons.  Walk out of those the way
+you came in.
+
 Ganon can be wounded normally, but at one hit point he flashes red, becomes
 stunned, and can only be finished by a level 54 or higher character wielding
 the Silver Arrow and typing SHOOT GANON.

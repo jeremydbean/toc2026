@@ -765,6 +765,20 @@ const char *default_prompt_text args( ( void ) );
 /* Second group of affects */
 #define ACT2_NO_TPORT           (A)
 #define ACT2_LYCANTH            (B)
+
+/*
+ * Lycanthropy is off.
+ *
+ * Catching it took no saving throw of any kind -- one landed blow from
+ * a mob that had picked the flag up on a dice roll, and it was yours for
+ * good, with no cure in the game and nothing to tell you it had
+ * happened. What it then cost was hours of being an NPC who cannot
+ * recall.
+ *
+ * The machinery is all still here. Set this to 1 to bring it back, and
+ * give it a resistance roll and a cure first.
+ */
+#define LYCANTHROPY_ENABLED     0
 #define ACT2_REPAIR             (C)
 
 /* damage classes */
@@ -1290,7 +1304,10 @@ const char *default_prompt_text args( ( void ) );
 #define ROOM_FLAGS2             (Z)
 
 #define ROOM2_NO_TPORT          (A)
-#define ROOM2_B_UNUSED          (B)
+/* Lit whatever the sky is doing.  For places that are outdoors in the
+   fiction but should never go black on the player -- an overworld map,
+   a permanently torchlit courtyard.  ROOM_DARK still wins. */
+#define ROOM2_ALWAYS_LIT        (B)
 #define ROOM2_BANK              (C)
 
 /* Directions. */

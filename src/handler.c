@@ -2819,6 +2819,12 @@ bool room_is_dark( ROOM_INDEX_DATA *pRoomIndex )
     if ( IS_SET(pRoomIndex->room_flags, ROOM_DARK) )
 	return true;
 
+    /* Checked after ROOM_DARK, so a room deliberately made dark stays
+       dark.  This only answers the question of nightfall. */
+    if ( IS_SET(pRoomIndex->room_flags, ROOM_FLAGS2)
+    &&   IS_SET(pRoomIndex->room_flags2, ROOM2_ALWAYS_LIT) )
+	return false;
+
     if ( pRoomIndex->sector_type == SECT_INSIDE
     ||   pRoomIndex->sector_type == SECT_CITY )
 	return false;

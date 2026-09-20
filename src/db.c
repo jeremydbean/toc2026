@@ -2363,14 +2363,6 @@ void create_room( int vnum )
  */
 static bool room_is_saveable( ROOM_INDEX_DATA *room, char *why, size_t why_size )
 {
-    if ( IS_SET( room->room_flags, ROOM_FLAGS2 ) )
-    {
-        snprintf( why, why_size,
-            "room %d uses a second flag word, which saving cannot write yet",
-            room->vnum );
-        return false;
-    }
-
     if ( IS_SET( room->room_flags, ROOM_RIVER )
       || IS_SET( room->room_flags, ROOM_TELEPORT ) )
     {
@@ -2428,8 +2420,17 @@ static void write_room( FILE *fp, ROOM_INDEX_DATA *room )
     fprintf( fp, "#%d\n", room->vnum );
     fprintf( fp, "%s~\n", room->name != NULL ? room->name : "" );
     write_string_block( fp, room->description );
-    fprintf( fp, "%d %d %d\n",
-             (int) room->number, room->room_flags, (int) room->sector_type );
+    /* The second flag word goes between the first and the sector, and
+       only when the first says it is there -- exactly how load_rooms
+       reads it. */
+    if ( IS_SET( room->room_flags, ROOM_FLAGS2 ) )
+        fprintf( fp, "%d %d %d %d\n",
+                 (int) room->number, room->room_flags,
+                 room->room_flags2, (int) room->sector_type );
+    else
+        fprintf( fp, "%d %d %d\n",
+                 (int) room->number, room->room_flags,
+                 (int) room->sector_type );
 
     for ( door = 0; door <= 9; door++ )
     {
