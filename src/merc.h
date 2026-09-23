@@ -696,6 +696,13 @@ struct  kill_data
 /* Hermie -- Herbie's girlfriend, and the walk-up spellup desk (limbo.are).
  * Everything she casts lasts SPELLUP_DURATION ticks, level notwithstanding,
  * so an immortal can park her anywhere without handing out permanent buffs. */
+/* The pieces BUTCHER leaves behind, which ANIMATE PARTS can throw. */
+#define OBJ_VNUM_SEVERED_HEAD        12
+#define OBJ_VNUM_SEVERED_HEART       13
+#define OBJ_VNUM_SEVERED_ARM         14
+#define OBJ_VNUM_SEVERED_LEG         15
+#define OBJ_VNUM_SEVERED_GUTS        16
+
 /* Herbie the angel, who lives in Valhalla and answers spec_paramedic. */
 #define MOB_VNUM_HERBIE              99
 #define MOB_VNUM_SPELLUP             98

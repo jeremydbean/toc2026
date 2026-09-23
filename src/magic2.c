@@ -4212,12 +4212,12 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
 /* TAR_OBJ_HERE */
 void spell_animate_parts( int sn, int level, CHAR_DATA *ch, void *vo )
 {
-  OBJ_DATA *obj = (OBJ_DATA *) vo;
+  UNUSED_PARAM(vo);
+  OBJ_DATA *obj;
+  OBJ_DATA *part_obj = NULL;
   CHAR_DATA *victim;
-  int count;
   int part = 0;
   int dam = 0;
-
 
   if(ch->fighting == NULL)
   {
@@ -4227,52 +4227,72 @@ void spell_animate_parts( int sn, int level, CHAR_DATA *ch, void *vo )
   else
     victim = ch->fighting;
 
-  for( count = 12; count < 17; count++ )
+  /*
+   * A part if there is one, and no complaint if there is not.
+   *
+   * This used to be TAR_OBJ_HERE on one of five vnums that only BUTCHER
+   * produces, so casting it needed a corpse cut up in the room during the
+   * fight. The spell now works either way and the part is what makes it
+   * hurt.
+   */
+  for( obj = ch->in_room->contents; obj != NULL; obj = obj->next_content )
   {
-    if(obj->pIndexData->vnum == count)
+    if( obj->pIndexData == NULL || !can_see_obj( ch, obj ) )
+      continue;
+
+    if( obj->pIndexData->vnum >= OBJ_VNUM_SEVERED_HEAD
+     && obj->pIndexData->vnum <= OBJ_VNUM_SEVERED_GUTS )
     {
-      part = count;
+      part_obj = obj;
+      part     = obj->pIndexData->vnum;
       break;
     }
   }
 
-  if(part == 0 )
-  {
-    send_to_char("There are no body parts here to animate.\n\r",ch);
-    return;
-  }
-
   switch( part )
   {
-    case 12:
+    case OBJ_VNUM_SEVERED_HEAD:
       send_to_char("A head rolls over and bites you on the leg!\n\r",victim);
       act("A head rolls over and bites $N on the leg!",ch,NULL,victim,TO_ROOM);
-      dam = dice(level,4);
+      dam = dice(level,6);
     break;
-    case 13:
+    case OBJ_VNUM_SEVERED_HEART:
       send_to_char("A bleeding heart fly's up and...bleeds on you?\n\r",victim);
       act("A bleeding heart fly's up and...bleeds on $N.",ch,NULL,victim,TO_ROOM);
-      dam = dice(level,8);
+      dam = dice(level,10);
     break;
-    case 14:
+    case OBJ_VNUM_SEVERED_ARM:
       send_to_char("A severed arm leaps into the air and hits you!\n\r",victim);
       act("A severed arm leaps into the air and beats on $N!",ch,NULL,victim,TO_ROOM);
-      dam = dice(level,6);
+      dam = dice(level,8);
     break;
-    case 15:
+    case OBJ_VNUM_SEVERED_LEG:
       send_to_char("A severed leg hops up and kicks you!\n\r",victim);
       act("A severed leg hops up and kicks $N!",ch,NULL,victim,TO_ROOM);
-      dam = dice(level,6);
+      dam = dice(level,8);
     break;
-    case 16:
+    case OBJ_VNUM_SEVERED_GUTS:
       send_to_char("Some guts float over to you and try to strangle you!\n\r",victim);
       act("Some guts float over and try to strangle $N!",ch,NULL,victim,TO_ROOM);
-      dam = dice(level,5);
+      dam = dice(level,7);
+    break;
+    default:
+      send_to_char("Gore gathers out of nothing and claws at you!\n\r",victim);
+      act("Gore gathers out of nothing and claws at $N!",ch,NULL,victim,TO_ROOM);
+      dam = dice(level,4);
     break;
   }
-  send_to_char("The severed part attacks!\n\r",ch);
+
+  if( part_obj != NULL )
+    send_to_char("The severed part attacks!\n\r",ch);
+  else
+    send_to_char("You pull a handful of carrion out of the air.\n\r",ch);
+
   damage( ch, victim, dam, sn, DAM_BASH );
-  extract_obj(obj);
+
+  if( part_obj != NULL )
+    extract_obj(part_obj);
+
   return;
 }
 

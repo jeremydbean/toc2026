@@ -20,9 +20,12 @@ autolist
 
 The interpreter usually accepts unambiguous prefixes, but full command names
 are safer for `quit`, `delete`, `password`, `remort`, PK actions, purchases, and
-staff-assisted recovery. Multiword spell names normally use quotes:
+staff-assisted recovery. Multiword spell names need no quotes - `cast` takes
+the longest run of leading words that names a spell and treats the rest as
+the target - though quoting still works:
 
 ```text
+cast cure light self
 cast 'cure light' self
 ```
 

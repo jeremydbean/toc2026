@@ -52,13 +52,20 @@ See also: ANIMATE PARTS, LIFE-UNDEATH, PASS DOOR
 ~
 
 0 'ANIMATE PARTS'~
-Syntax: cast 'animate parts' <dismembered part>
+Syntax: cast animate parts
 
-This spell allows you to animate a body part that has been dismembered from
-some poor unfortunate soul who happens to have been cut up by one of the
-many wandering adventurers.  The body part that is animated will attack
-who you are fighting, then disappear.  You must be fighting someone for this
-spell to work.
+Something dead throws itself at whoever you are fighting, then falls apart.
+You must be fighting for the spell to work.
+
+If a dismembered body part is lying in the room -- the kind BUTCHER leaves,
+or that a wandering adventurer left behind -- it is what gets thrown, and it
+hurts:
+
+  a heart is worst, then an arm or a leg, then the guts, then a head
+
+With nothing to hand the necromancer pulls a fistful of carrion out of the
+air instead.  That works anywhere and always, and hurts least, so a part is
+worth carrying a corpse for.
 
 This spell is necro only, minimum level 5.
 

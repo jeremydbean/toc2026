@@ -292,6 +292,30 @@ final remort path, but always read `help remort`, save, and confirm the host has
 a recent backup before committing. The password entered in the command crosses
 the same unencrypted Telnet connection as every other command.
 
+### Necromancers And The Undead
+
+A necromancer raises servants that fight alongside them. `create skeleton`
+from level 15, `create wraith` from 30, and `create vampire` from 45.
+
+None of the three needs a corpse. Cast with nothing to hand and the spirit
+arrives thin. Cast where a mobile's corpse is lying and the servant is half
+again as strong, lasts twice as long, and carries part of what the dead
+thing was worth into its own level, so raising something formidable beats
+raising a rat. Name a corpse to pick one, or name nothing and any corpse in
+the room is used.
+
+Servant strength follows your level, not the corpse's. You may have five
+skeletons, two wraiths, or one vampire standing; they share one count.
+
+`animate parts` (level 5) throws something dead at whoever you are fighting.
+A dismembered part in the room - the kind `butcher` leaves - is what gets
+thrown and does the most damage; a heart hurts worst, then an arm or leg,
+then guts, then a head. Without one, gore is pulled out of the air instead:
+weaker, but it always works.
+
+`butcher` and `raise dead` still need a corpse, because cutting up a body
+and resurrecting a dead player are what those spells do.
+
 ### Psionics
 
 Beginning at remort 2, a character receives one random power from each of four
@@ -386,6 +410,10 @@ length, special attacks, and group role can change the practical winner. See
 Shop commands include `list`, `buy`, `sell`, `value`, and `repair`. Healers use
 `heal` to list or purchase services. Currency can exist in multiple
 denominations; `worth` summarizes carried money.
+
+`list` shows each price in the denominations it will actually cost, written
+short: `1g`, `5g 20s`, `3p`. The smallest price any shop can charge is one
+gold.
 
 Banks support:
 

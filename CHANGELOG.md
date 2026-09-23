@@ -104,6 +104,34 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **The necromancer's undead line works.** `create skeleton`, `create
+  wraith`, `create vampire` and `animate parts` were all `TAR_OBJ_HERE`,
+  so each needed a corpse or a dismembered body part lying in the room --
+  and corpses decay, and only `butcher` makes parts. A class whose
+  signature ability only fires in the seconds after a kill does not have
+  one. All four now cast anywhere, and the component makes them stronger
+  instead of being the price of entry: a servant raised over a corpse has
+  half again the hit points, twice the duration, and part of the corpse's
+  level added to its own; `animate parts` throws a real part for full
+  damage and a fistful of carrion otherwise.
+
+  The three create spells also scaled off the *corpse* rather than the
+  caster, so a level 40 necromancer who killed a rat got a level 3
+  skeleton with ten hitroll. The vampire already scaled off the caster,
+  which is why it was the only one anyone used. All three follow the
+  caster now. `butcher` and `raise dead` keep their corpse requirements,
+  because cutting up a body and resurrecting a dead player are what those
+  spells are.
+
+- **`cast` no longer needs quotes.** `one_argument` stops at a space, so
+  every multi-word spell needed `cast 'create wraith' corpse`, and
+  forgetting the quotes answered "You don't know any spells of that name"
+  -- which reads as the spell being missing rather than the syntax being
+  wrong. It now takes the longest leading run of words that names a spell,
+  so `cast cure light dwarf` finds cure light and leaves the dwarf.
+  Quoting and abbreviating both still work.
+
+
 - **Rooms built in game now survive a reboot.** `goto <unused vnum>` has
   always made a room and `set room` has always been able to name, describe
   and flag it, but nothing ever wrote any of it down, so the whole feature

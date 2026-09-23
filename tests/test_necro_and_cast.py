@@ -6,6 +6,7 @@ was unusable because all three spells were TAR_OBJ_HERE and corpses decay.
 """
 from __future__ import annotations
 
+import pathlib
 import unittest
 
 from live_mud import (
@@ -95,6 +96,38 @@ class NecroUndeadTests(unittest.TestCase):
             # It used to be corpse->level/3, so with no corpse at all there
             # would have been nothing to raise.
             self.assertIn("Level", stat, f"no skeleton to stat:\n{stat}")
+
+
+    def test_animate_parts_no_longer_demands_a_body_part(self) -> None:
+        """Read the spell rather than stage a fight for it.
+
+        Casting it live needs a mortal (do_murder returns without a word
+        for immortals), hit points patched in, a room with no safe flag,
+        and a mob carrying none of the four flags is_safe protects. All of
+        that belongs to the combat system, not to this change.
+        """
+        magic2 = (pathlib.Path(__file__).resolve().parents[1]
+                  / "src" / "magic2.c").read_text("latin-1")
+        const = (pathlib.Path(__file__).resolve().parents[1]
+                 / "src" / "const.c").read_text("latin-1")
+
+        start = magic2.index("void spell_animate_parts(")
+        body = magic2[start:magic2.index("\n}\n", start)]
+
+        self.assertNotIn("There are no body parts here to animate", body,
+                         "the spell should no longer refuse without a part")
+        self.assertIn("default:", body,
+                      "there should be a partless branch")
+        self.assertIn("OBJ_VNUM_SEVERED_HEAD", body)
+        self.assertIn("OBJ_VNUM_SEVERED_GUTS", body)
+
+        # Only extract a part if one was actually found.
+        self.assertIn("if( part_obj != NULL )", body)
+
+        # And the spell no longer asks do_cast to resolve an object for it.
+        entry = const[const.index('\t"animate parts",'):]
+        self.assertIn("TAR_IGNORE", entry[:300],
+                      "animate parts should not be TAR_OBJ_HERE any more")
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

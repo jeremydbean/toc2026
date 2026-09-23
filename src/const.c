@@ -1941,7 +1941,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     {
 	"animate parts",
 	{ 62, 62, 62, 62, 62, 5 },     { 2,  2,  2,  2, 2, 1},
-	spell_animate_parts,    TAR_OBJ_HERE,     	POS_FIGHTING,
+	spell_animate_parts,    TAR_IGNORE  ,     	POS_FIGHTING,
 	NULL,                   SLOT(547),       15,     12,
 	"animated part",        "!Animate Parts!"
     },
