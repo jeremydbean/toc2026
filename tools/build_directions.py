@@ -45,9 +45,24 @@ def flag_letters(word):
     return set() if word.isdigit() else set(word)
 
 
+# ITEM_MANIPULATION value[0]. 10 answers to any of them; 9 in value[4]
+# means the object acts on the room it sits in, so it leads nowhere.
+MANIP_VERB = {1: "flip", 2: "move", 3: "pull", 4: "push", 5: "turn",
+              6: "climb", 7: "climb", 8: "crawl", 9: "jump", 10: "enter",
+              11: "burn", 12: "bomb", 13: "play", 14: "feed"}
+MANIP_TOOL = {11: "needs a lit candle", 12: "needs a bomb",
+              13: "needs an instrument", 14: "needs bait"}
+PUZZLE_CURRENT_ROOM = 9
+
+
 def load_portals():
-    """Portals as graph edges: room -> [(keyword, destination, cost)]."""
-    portals = {}      # object vnum -> (keyword, destination, cost)
+    """Ways through: room -> [(verb, keyword, destination, cost, label)].
+
+    Both kinds of door-that-is-an-object live here -- ITEM_PORTAL, which
+    you enter, and ITEM_MANIPULATION, which you climb, jump, crawl, push,
+    pull, turn, burn, bomb, play to or feed.
+    """
+    portals = {}      # object vnum -> edge
     placed = {}       # room vnum -> list of edges
 
     for path in sorted(AREA.glob("*.are")):
@@ -55,18 +70,28 @@ def load_portals():
         m = re.search(r"^#OBJECTS\s*$(.*?)^#0\s*$", text, re.S | re.M)
         if not m:
             continue
-        for blk in re.split(r"\n(?=#\d+\n)", m.group(1)):
-            h = re.match(r"#(\d+)\n(.*?)~\s*\n(.*?)~", blk, re.S)
+        for blk in re.split(r"\n(?=#\d+[ \t]*\n)", m.group(1)):
+            h = re.match(r"#(\d+)[ \t]*\n(.*?)~\s*\n(.*?)~", blk, re.S)
             if not h:
                 continue
-            v = re.search(r"\n(\d+) \S+ \S+\s*\n"
-                          r"(-?\d+) (-?\d+) (-?\d+) (-?\d+) (-?\d+)", blk)
-            if v is None or v.group(1) != "30":
+            v = re.search(r"\n(\d+)\s+\S+\s+\S+[ \t]*\n"
+                          r"\s*(-?\d+)\s+(-?\d+)\s+(-?\d+)\s+(-?\d+)\s+(-?\d+)",
+                          blk)
+            if v is None or v.group(1) not in ("30", "31"):
                 continue
 
             kind = int(v.group(2))
             dest = int(v.group(3))
             need = int(v.group(6))
+            keyword = h.group(2).strip().split()[0]
+
+            if v.group(1) == "31":
+                if dest <= 0 or need == PUZZLE_CURRENT_ROOM:
+                    continue
+                portals[int(h.group(1))] = (
+                    MANIP_VERB.get(kind, "manipulate"), keyword, dest,
+                    MANIP_TOOL.get(kind, ""), h.group(3).strip())
+                continue
 
             if kind == 4 or dest <= 0:   # a crystal ball leads nowhere
                 continue
@@ -77,8 +102,7 @@ def load_portals():
             elif kind == 6 and need > 0:
                 cost = f"needs object {need}"
 
-            keyword = h.group(2).strip().split()[0]
-            portals[int(h.group(1))] = (keyword, dest, cost,
+            portals[int(h.group(1))] = ("enter", keyword, dest, cost,
                                         h.group(3).strip())
 
     for path in sorted(AREA.glob("*.are")):
@@ -87,12 +111,69 @@ def load_portals():
         if not m:
             continue
         for line in m.group(1).splitlines():
-            o = re.match(r"^O 0 (\d+) -?\d+ (\d+)", line.strip())
+            o = re.match(r"^O\s+-?\d+\s+(\d+)\s+-?\d+\s+(\d+)", line.strip())
             if o and int(o.group(1)) in portals:
                 placed.setdefault(int(o.group(2)), []).append(
                     portals[int(o.group(1))])
 
     return placed
+
+
+def load_teleports():
+    """Rooms that move you: room -> [(verb, keyword, dest, cost, label)].
+
+    The three numbers sit after the sector, and a Z in the room flags
+    (ROOM_FLAGS2) pushes everything along by one token.
+    """
+    carried = {}
+    listed = [l.strip() for l in (AREA / "area.lst").read_text("latin-1").splitlines()
+              if l.strip() and not l.strip().startswith("$")]
+
+    for fname in listed:
+        path = AREA / fname
+        if not path.is_file():
+            continue
+        text = path.read_text("latin-1")
+        m = re.search(r"^#ROOMS\s*$(.*?)^#0\s*$", text, re.S | re.M)
+        if not m:
+            continue
+
+        for blk in re.split(r"\n(?=#\d+[ \t]*\n)", m.group(1)):
+            h = re.match(r"#(\d+)[ \t]*\n(.*?)~", blk, re.S)
+            if not h:
+                continue
+            # area, flags, [flags2], sector, then the teleport triple.
+            # The builder may break that line anywhere, so read the
+            # whole tail as tokens rather than one line.
+            fl = re.search(r"\n~\n(.*)", blk, re.S)
+            if not fl:
+                continue
+
+            tok = fl.group(1).split()
+            if len(tok) < 3:
+                continue
+            flags = tok[1]
+            if not (set("EF") & set(flags)):
+                continue
+
+            rest = tok[4:] if "Z" in flags else tok[3:]
+            if not rest:
+                continue
+            try:
+                dest, speed = int(rest[0]), int(rest[1]) if len(rest) > 1 else 0
+            except ValueError:
+                continue
+            if dest <= 0:
+                continue
+
+            name = h.group(2).strip().replace("\n", " ")
+            carried.setdefault(int(h.group(1)), []).append(
+                ("wait", "", dest,
+                 f"the room moves you every {speed} ticks" if speed else
+                 "the room moves you",
+                 name))
+
+    return carried
 
 
 def load_world():
@@ -114,8 +195,8 @@ def load_world():
         if not m:
             continue
 
-        for blk in re.split(r"\n(?=#\d+\n)", m.group(1)):
-            h = re.match(r"#(\d+)\n(.*?)~", blk, re.S)
+        for blk in re.split(r"\n(?=#\d+[ \t]*\n)", m.group(1)):
+            h = re.match(r"#(\d+)[ \t]*\n(.*?)~", blk, re.S)
             if not h:
                 continue
             vnum = int(h.group(1))
@@ -127,8 +208,12 @@ def load_world():
             # "D 0" is as common as "D0": fread_letter takes the D and
             # fread_number skips space before the digit, so the game
             # reads both and the router has to as well.
-            for d in re.finditer(r"^D\s*(\d)\s*\n(.*?)~\s*\n(.*?)~\s*\n"
-                                 r"(-?\d+) (-?\d+) (-?\d+)", blk, re.S | re.M):
+            # "D 0", "D0", and a description that starts on the same
+            # line as the number are all the same token stream to
+            # fread_letter/fread_number/fread_string.
+            for d in re.finditer(r"^D\s*(\d)\s*(.*?)~\s*\n(.*?)~\s*\n"
+                                 r"\s*(-?\d+)\s+(-?\d+)\s+(-?\d+)",
+                                 blk, re.S | re.M):
                 to = int(d.group(6))
                 if to > 0:
                     exits[int(d.group(1))] = (to, int(d.group(4)),
@@ -155,8 +240,8 @@ def passable(room):
 def shortest_paths(rooms, start, portals):
     """BFS from start, walking and stepping through portals.
 
-    A step is (door, from_vnum) for an exit, or (keyword, from_vnum) for
-    a portal -- the type of the first element says which.
+    A step is (door, from_vnum) for an exit, or (edge, from_vnum) for a
+    portal or handhold -- the type of the first element says which.
     """
     seen = {start: []}
     queue = collections.deque([start])
@@ -174,10 +259,10 @@ def shortest_paths(rooms, start, portals):
             seen[to] = seen[here] + [(door, here)]
             queue.append(to)
 
-        for keyword, dest, cost, label in portals.get(here, []):
+        for verb, keyword, dest, cost, label in portals.get(here, []):
             if dest in seen or dest not in rooms or not passable(rooms[dest]):
                 continue
-            seen[dest] = seen[here] + [((keyword, cost, label), here)]
+            seen[dest] = seen[here] + [((verb, keyword, cost, label), here)]
             queue.append(dest)
 
     return seen
@@ -199,7 +284,9 @@ def to_commands(rooms, path):
     for door, from_vnum in path:
         if isinstance(door, tuple):
             flush()
-            out.append(f"enter {door[0]}")
+            # A teleport room needs no command; you stand in it and wait.
+            if door[0] != "wait":
+                out.append(f"{door[0]} {door[1]}")
             continue
 
         _, lock, keyword = rooms[from_vnum]["exits"][door]
@@ -237,9 +324,13 @@ def describe(rooms, path):
     for door, from_vnum in path:
         if isinstance(door, tuple):
             flush()
-            keyword, cost, label = door
-            steps.append(f"enter {label or keyword}"
-                         + (f" ({cost})" if cost else ""))
+            verb, keyword, cost, label = door
+            if verb == "wait":
+                steps.append(f"wait in {label}"
+                             + (f" ({cost})" if cost else ""))
+            else:
+                steps.append(f"{verb} {label or keyword}"
+                             + (f" ({cost})" if cost else ""))
             continue
 
         _, lock, keyword = rooms[from_vnum]["exits"][door]
@@ -277,9 +368,9 @@ def walk_legacy(rooms, portals, script):
 
         parts = step.split()
 
-        if parts[0] == "enter" and len(parts) > 1:
+        if parts[0] in MANIP_VERB.values() and len(parts) > 1:
             wanted = parts[1]
-            for keyword, dest, _cost, _label in portals.get(here, []):
+            for verb, keyword, dest, _cost, _label in portals.get(here, []):
                 if keyword.lower().startswith(wanted):
                     here = dest
                     break
@@ -392,6 +483,8 @@ def area_entrances(rooms, reach):
 def main():
     rooms = load_world()
     portals = load_portals()
+    for room, edges in load_teleports().items():
+        portals.setdefault(room, []).extend(edges)
     reach = shortest_paths(rooms, START, portals)
     entrances = area_entrances(rooms, reach)
 
@@ -458,7 +551,8 @@ def main():
     out = pathlib.Path("webadmin/directions.json")
     out.write_text(json.dumps(payload, indent=1) + "\n", encoding="utf-8")
     print(f"{len(rooms)} rooms, {len(reach)} reachable from {START} "
-          f"({sum(len(v) for v in portals.values())} portals in play)")
+          f"({sum(len(v) for v in portals.values())} portals and "
+          f"handholds in play)")
     print(f"{len(routes)} areas routed, "
           f"{payload['counts']['legacy_ok']} handed-down routes still good, "
           f"{payload['counts']['legacy_repaired']} repaired -> {out}")
