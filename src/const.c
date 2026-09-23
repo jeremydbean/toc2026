@@ -2133,7 +2133,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     {
 	"create skeleton",
 	{ 62, 62, 62, 62, 62, 15 },     { 2,  2,  2,  2, 2, 1},
-	spell_create_skeleton,  TAR_OBJ_HERE,           POS_STANDING,
+	spell_create_skeleton,  TAR_IGNORE  ,           POS_STANDING,
 	NULL,                   SLOT(544),        25,     12,
 	"",                     "!Create Skeleton!"
     },
@@ -2141,7 +2141,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     {
 	"create wraith",
 	{ 62, 62, 62, 62, 62, 30 },     { 2,  2,  2,  2, 2, 2},
-	spell_create_wraith,  TAR_OBJ_HERE,           POS_STANDING,
+	spell_create_wraith,  TAR_IGNORE  ,           POS_STANDING,
 	NULL,                   SLOT(545),       50,     12,
 	"",                     "!Create Wraith!"
     },
@@ -2149,7 +2149,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     {
 	"create vampire",
 	{ 62, 62, 62, 62, 62, 45 },     { 2,  2,  2,  2, 2, 2},
-	spell_create_vampire,   TAR_OBJ_HERE,           POS_STANDING,
+	spell_create_vampire,   TAR_IGNORE  ,           POS_STANDING,
 	NULL,                   SLOT(546),        75,     12,
 	"",                     "!Create Vampire!"
     },

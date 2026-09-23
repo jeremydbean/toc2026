@@ -1521,7 +1521,9 @@ bool spec_guild_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
  
     guild = guild_lookup(arg);
-    if ( guild == -1 || guild == GUILD_ANY || guild == GUILD_NONE )
+    /* Monk and necromancer come with the class; they are not for sale. */
+    if ( guild == -1 || guild == GUILD_ANY || guild == GUILD_NONE
+      || guild == GUILD_MONK || guild == GUILD_NECRO )
     {
 	act("$n tells you 'I am not familiar with that guild.  "
 	    "Are they registered?'", mob, NULL, ch, TO_VICT);

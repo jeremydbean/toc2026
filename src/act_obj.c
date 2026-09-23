@@ -3555,7 +3555,14 @@ void do_buy( CHAR_DATA *ch, char *argument )
     roll = number_percent();
     if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle]) {
 	cost -= obj->cost / 2 * roll / 100;
-    snprintf(buf, sizeof(buf), "You haggle the price down to %d coins.\n\r", cost);
+    {
+        char price_buf[MAX_INPUT_LENGTH];
+
+        format_coins( (long) cost * COPPER_PER_GOLD,
+                      price_buf, sizeof(price_buf) );
+        snprintf(buf, sizeof(buf), "You haggle the price down to %s.\n\r",
+                 price_buf);
+    }
 	send_to_char(buf,ch);
 	check_improve(ch,gsn_haggle,true,4);
     }
@@ -3591,6 +3598,7 @@ void do_list( CHAR_DATA *ch, char *argument )
 	int cost;
 	bool found;
 	char arg[MAX_INPUT_LENGTH];
+	char price_buf[MAX_INPUT_LENGTH];
 
 	if ( ( keeper = find_keeper( ch ) ) == NULL )
 	    return;
@@ -3611,8 +3619,11 @@ void do_list( CHAR_DATA *ch, char *argument )
 		    send_to_char( "[Lv Price] Item\n\r", ch );
 		}
 
-                snprintf( buf, sizeof(buf), "[%2d %5d] %s.\n\r",
-                    obj->level, cost, obj->short_descr);
+                /* cost is gold; the purse is copper. Say which. */
+                format_coins( (long) cost * COPPER_PER_GOLD,
+                              price_buf, sizeof(price_buf) );
+                snprintf( buf, sizeof(buf), "[%2d %-28s] %s.\n\r",
+                    obj->level, price_buf, obj->short_descr);
 		send_to_char( buf, ch );
 	    }
 	}

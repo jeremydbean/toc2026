@@ -3938,37 +3938,165 @@ void spell_force_sword( int sn, int level, CHAR_DATA *ch, void *vo )
 }
 
 /* TAR_OBJ_HERE */
+/*
+ * ------------------------------------------------------------------------
+ * Raising the dead.
+ *
+ * The three create spells differ in grade, not in shape, so the shape is
+ * here and each spell keeps its own chant.
+ * ------------------------------------------------------------------------
+ */
+
+/* How many servants this necromancer already has on their feet. */
+static int undead_servants( CHAR_DATA *ch )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *gch;
+    int count = 0;
+
+    FOR_EACH_CHARACTER( iter, gch )
+    {
+        if ( is_same_group( gch, ch )
+          && IS_NPC( gch ) && gch->pIndexData != NULL
+          && gch->pIndexData->vnum == MOB_VNUM_ANIMATE )
+            count++;
+    }
+
+    return count;
+}
+
+
+/*
+ * A corpse to work with, if there is one.
+ *
+ * Named if the caster named one, otherwise whatever is lying here. Returns
+ * NULL rather than complaining: going without is allowed now, it is just
+ * worse.
+ */
+static OBJ_DATA *raisable_corpse( CHAR_DATA *ch, const char *arg )
+{
+    OBJ_DATA *obj;
+
+    if ( arg != NULL && arg[0] != '\0' )
+    {
+        obj = get_obj_here( ch, (char *) arg );
+        return ( obj != NULL && obj->item_type == ITEM_CORPSE_NPC )
+               ? obj : NULL;
+    }
+
+    for ( obj = ch->in_room->contents; obj != NULL; obj = obj->next_content )
+    {
+        if ( obj->item_type == ITEM_CORPSE_NPC && can_see_obj( ch, obj ) )
+            return obj;
+    }
+
+    return NULL;
+}
+
+
+/*
+ * Build one undead servant and bind it to the caster.
+ *
+ * `grade' scales everything: 40 for a skeleton, 65 for a wraith, 100 for a
+ * vampire. A corpse raises the servant's level, its body and how long it
+ * lasts -- it is the difference between clothing a spirit and calling one
+ * bare.
+ *
+ * The corpse is consumed only if one was used.
+ */
+static CHAR_DATA *raise_undead( CHAR_DATA *ch, OBJ_DATA *corpse,
+                                int grade, int hp_dice, int timer,
+                                const char *keyword,
+                                const char *short_descr )
+{
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+    AFFECT_DATA af;
+    int level;
+
+    victim = create_mobile( get_mob_index( MOB_VNUM_ANIMATE ) );
+    if ( victim == NULL )
+        return NULL;
+
+    char_to_room( victim, ch->in_room );
+
+    /*
+     * The caster's own level is the floor. A corpse adds a quarter of what
+     * it was worth, so raising something formidable is better than raising
+     * a rat, but raising a rat is no longer worse than raising nothing.
+     */
+    level = ch->level * grade / 100;
+    if ( corpse != NULL )
+        level += corpse->level / 4;
+
+    victim->level = (sh_int) URANGE( 1, level, ch->level );
+
+    victim->max_hit = (sh_int)( dice( hp_dice, 8 )
+                              + ch->max_hit * grade / 400 );
+    if ( corpse != NULL )
+        victim->max_hit = (sh_int)( victim->max_hit * 3 / 2 );
+    victim->hit = victim->max_hit;
+
+    victim->armor[AC_PIERCE] = (sh_int)( 100 - victim->level * 2 );
+    victim->armor[AC_BASH]   = victim->armor[AC_PIERCE];
+    victim->armor[AC_SLASH]  = victim->armor[AC_PIERCE];
+    victim->armor[AC_EXOTIC] = victim->armor[AC_PIERCE];
+
+    victim->hitroll = (sh_int)( victim->level * grade / 100 );
+    victim->damroll = (sh_int)( victim->level * grade / 100 );
+    victim->damage[DICE_NUMBER] = (sh_int)( 2 + victim->level / 8 );
+    victim->damage[DICE_TYPE]   = (sh_int)( 4 + victim->level / 6 );
+
+    victim->timer = (sh_int)( corpse != NULL ? timer * 2 : timer );
+
+    if ( corpse != NULL )
+        extract_obj( corpse );
+
+    /* Named before it is bound: add_follower announces the servant by
+       name, and an unnamed one introduces itself as "an undead mob". */
+    free_string( victim->name );
+    victim->name = str_dup( keyword );
+
+    free_string( victim->short_descr );
+    victim->short_descr = str_dup( short_descr );
+
+    snprintf( buf, sizeof buf, "%s is here serving %s.\n\r",
+              capitalize( short_descr ), ch->name );
+    free_string( victim->long_descr );
+    victim->long_descr = str_dup( buf );
+
+    add_follower( victim, ch );
+    victim->leader = ch;
+
+    af.type       = (sh_int)( skill_lookup( "charm person" ) );
+    af.level      = ch->level;
+    af.duration   = victim->timer;
+    af.location   = 0;
+    af.modifier   = 0;
+    af.bitvector  = AFF_CHARM;
+    af.bitvector2 = 0;
+    affect_to_char( victim, &af );
+
+    return victim;
+}
+
+
 void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
     UNUSED_PARAM(level);
-    OBJ_DATA *corpse = (OBJ_DATA *) vo;
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim, *gch;
-    AFFECT_DATA af;
-    int count = 0;
-    LIST_ITERATOR iter;
+    UNUSED_PARAM(vo);
+    CHAR_DATA *victim;
+    OBJ_DATA *corpse;
 
-    if(corpse->item_type != ITEM_CORPSE_NPC)
+    if ( undead_servants( ch ) >= 5 )
     {
-      send_to_char("That's corpse can't be animated.\n\r",ch);
-      return;
+        send_to_char("You can't control any more undead.\n\r",ch);
+        return;
     }
 
-    FOR_EACH_CHARACTER( iter, gch )
-        {
-            if ( is_same_group( gch, ch ) )
-            {
-              if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
-                count++;
-            }
-        }
+    corpse = raisable_corpse( ch, target_name );
 
-    if(count >= 5)
-    {
-      send_to_char("You can't control any more undead.\n\r",ch);
-      return;
-    }
     act("$n chants, 'Oh lost spirit of the damned, come to me from wence thou haunt.",ch,NULL,NULL,TO_ROOM);
     act("You chant, 'Oh lost spirit of the damned, come to me from wence thou haunt.",ch,NULL,NULL,TO_CHAR);
     act("$n chants, 'My offer, the chance for revenge on the living.",ch,NULL,NULL,TO_ROOM);
@@ -3976,44 +4104,24 @@ void spell_create_skeleton( int sn, int level, CHAR_DATA *ch, void *vo )
     act("$n chants, 'My command, POSSESSION!!!",ch,NULL,NULL,TO_ROOM);
     act("You chant, 'My command, POSSESSION!!!",ch,NULL,NULL,TO_CHAR);
 
+    if ( ( victim = raise_undead( ch, corpse, 40, 8, 50,
+                                  "skeleton", "a skeleton" ) ) == NULL )
+    {
+        send_to_char("Nothing answers you.\n\r",ch);
+        return;
+    }
 
-    victim = create_mobile(  get_mob_index(  MOB_VNUM_ANIMATE ) );
-    char_to_room( victim, ch->in_room );
-    victim->level = (sh_int)UMAX(1, corpse->level/3);
-    victim->max_hit = (sh_int)(dice(5,8) + ch->max_hit / 4);
-    victim->hit = victim->max_hit;
-    victim->timer = 75;
-    victim->armor[AC_PIERCE] = 0;
-    victim->armor[AC_BASH]   = 0;
-    victim->armor[AC_SLASH]  = 0;
-    victim->armor[AC_EXOTIC] = 0;
-    victim->hitroll          = 10;
-    victim->damroll          = 10;
-    victim->damage[DICE_NUMBER] = 10;
-    victim->damage[DICE_TYPE]   = 10;
-    snprintf(buf, sizeof buf,"skeleton");
-    free_string(victim->name);
-    victim->name = str_dup(buf);
-    snprintf(buf, sizeof buf,"a skeleton");
-    free_string(victim->short_descr);
-    victim->short_descr = str_dup(buf);
-    snprintf(buf, sizeof buf,"A skeleton is here serving %s.\n\r",ch->name);
-    free_string(victim->long_descr);
-    victim->long_descr = str_dup(buf);
-    victim->timer = 50;
-    extract_obj(corpse);
-    act("Flesh melts from bone, and a skeleton stands up.",ch,NULL,NULL,TO_ROOM);
-    act("Flesh melts from bone, and a skeleton stands up.",ch,NULL,NULL,TO_CHAR);
-    add_follower( victim, ch );
-    victim->leader = ch;
-    af.type      = (sh_int)(skill_lookup("charm person"));
-    af.level	 = ch->level;
-    af.duration  = victim->timer;
-    af.location  = 0;
-    af.modifier  = 0;
-    af.bitvector = AFF_CHARM;
-    af.bitvector2 = 0;
-    affect_to_char( victim, &af );
+    if ( corpse != NULL )
+    {
+        act("Flesh melts from bone, and a skeleton stands up.",ch,NULL,NULL,TO_ROOM);
+        act("Flesh melts from bone, and a skeleton stands up.",ch,NULL,NULL,TO_CHAR);
+    }
+    else
+    {
+        act("Bones drag themselves out of the earth and lock together.",ch,NULL,NULL,TO_ROOM);
+        act("Bones drag themselves out of the earth and lock together.",ch,NULL,NULL,TO_CHAR);
+    }
+
     return;
 }
 /* TAR_OBJ_HERE */
@@ -4021,78 +4129,41 @@ void spell_create_wraith( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
     UNUSED_PARAM(level);
-    OBJ_DATA *corpse = (OBJ_DATA *) vo;
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim, *gch;
-    AFFECT_DATA af;
-    int count = 0;
-    LIST_ITERATOR iter;
+    UNUSED_PARAM(vo);
+    CHAR_DATA *victim;
+    OBJ_DATA *corpse;
 
-    if(corpse->item_type != ITEM_CORPSE_NPC)
+    if ( undead_servants( ch ) >= 2 )
     {
-      send_to_char("That's corpse can't be animated.\n\r",ch);
-      return;
+        send_to_char("You can't control any more undead.\n\r",ch);
+        return;
     }
 
-    FOR_EACH_CHARACTER( iter, gch )
-        {
-            if ( is_same_group( gch, ch ) )
-            {
-              if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
-                count++;
-            }
-        }
+    corpse = raisable_corpse( ch, target_name );
 
-    if(count >= 2)
+    act("$n chants, 'Spirit of shadow, hear me and be bound.",ch,NULL,NULL,TO_ROOM);
+    act("You chant, 'Spirit of shadow, hear me and be bound.",ch,NULL,NULL,TO_CHAR);
+    act("$n chants, 'Take shape, and know my voice for your master's.",ch,NULL,NULL,TO_ROOM);
+    act("You chant, 'Take shape, and know my voice for your master's.",ch,NULL,NULL,TO_CHAR);
+
+    if ( ( victim = raise_undead( ch, corpse, 65, 20, 150,
+                                  "wraith", "a wraith" ) ) == NULL )
     {
-      send_to_char("You can't control any more undead.\n\r",ch);
-      return;
+        send_to_char("Nothing answers you.\n\r",ch);
+        return;
     }
 
-    act("$n chants, 'From the bottom of the Abyss I summon thee spirit.",ch,NULL,NULL,TO_ROOM);
-    act("You chant, 'From the bottom of the Abyss I summon thee spirit.",ch,NULL,NULL,TO_CHAR);
-    act("$n chants, 'Return to the living to tear flesh from bone.",ch,NULL,NULL,TO_ROOM);
-    act("You chant, 'Return to the living to tear flesh from bone.",ch,NULL,NULL,TO_CHAR);
-    act("$n chants, 'Return now, RETURN NOW!!!",ch,NULL,NULL,TO_ROOM);
-    act("You chant, 'Return now, RETURN NOW!!!",ch,NULL,NULL,TO_CHAR);
+    if ( corpse != NULL )
+    {
+        act("The corpse darkens, thins, and rises as a wraith.",ch,NULL,NULL,TO_ROOM);
+        act("The corpse darkens, thins, and rises as a wraith.",ch,NULL,NULL,TO_CHAR);
+    }
+    else
+    {
+        act("The air curdles, and a wraith pulls itself out of it.",ch,NULL,NULL,TO_ROOM);
+        act("The air curdles, and a wraith pulls itself out of it.",ch,NULL,NULL,TO_CHAR);
+    }
 
-    victim = create_mobile(  get_mob_index(  MOB_VNUM_ANIMATE ) );
-    char_to_room( victim, ch->in_room );
-    victim->level = (sh_int)UMAX(1, corpse->level/2);
-    victim->max_hit = (sh_int)(dice(20,8) + ch->max_hit / 2);
-    victim->hit = victim->max_hit;
-    victim->timer = 150;
-    victim->armor[AC_PIERCE]    = ch->armor[AC_PIERCE];
-    victim->armor[AC_BASH]	= ch->armor[AC_BASH];
-    victim->armor[AC_SLASH]     = ch->armor[AC_SLASH];
-    victim->armor[AC_EXOTIC]    = ch->armor[AC_EXOTIC];
-    victim->hitroll             = ch->hitroll;
-    victim->damroll             = GET_DAMROLL(ch)/2;
-    victim->damage[DICE_NUMBER] = ch->damage[DICE_NUMBER] + 1;
-    victim->damage[DICE_TYPE]   =  ch->damage[DICE_TYPE] + 1;
-    snprintf(buf, sizeof buf,"wraith");
-    free_string(victim->name);
-    victim->name = str_dup(buf);
-    snprintf(buf, sizeof buf,"a wraith");
-    free_string(victim->short_descr);
-    victim->short_descr = str_dup(buf);
-    snprintf(buf, sizeof buf,"A wraith is here serving %s.\n\r",ch->name);
-    free_string(victim->long_descr);
-    victim->long_descr = str_dup(buf);
-    victim->timer = 150;
-    extract_obj(corpse);
-    act("Flesh flakes and rots, and a wraith stands up.",ch,NULL,NULL,TO_ROOM);
-    act("Flesh flakes and rots, and a wraith stands up.",ch,NULL,NULL,TO_CHAR);
-    add_follower( victim, ch );
-    victim->leader = ch;
-    af.type      = (sh_int)(skill_lookup("charm person"));
-    af.level	 = ch->level;
-    af.duration  = victim->timer;
-    af.location  = 0;
-    af.modifier  = 0;
-    af.bitvector = AFF_CHARM;
-    af.bitvector2 = 0;
-    affect_to_char( victim, &af );
     return;
 }
 /* TAR_OBJ_HERE */
@@ -4100,78 +4171,41 @@ void spell_create_vampire( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);
     UNUSED_PARAM(level);
-    OBJ_DATA *corpse = (OBJ_DATA *) vo;
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim, *gch;
-    AFFECT_DATA af;
-    int count = 0;
-    LIST_ITERATOR iter;
+    UNUSED_PARAM(vo);
+    CHAR_DATA *victim;
+    OBJ_DATA *corpse;
 
-    if(corpse->item_type != ITEM_CORPSE_NPC)
+    if ( undead_servants( ch ) >= 1 )
     {
-      send_to_char("That's corpse can't be animated.\n\r",ch);
-      return;
+        send_to_char("You can't control any more undead.\n\r",ch);
+        return;
     }
 
-    FOR_EACH_CHARACTER( iter, gch )
-        {
-            if ( is_same_group( gch, ch ) )
-            {
-              if(IS_NPC(gch) && gch->pIndexData->vnum == MOB_VNUM_ANIMATE)
-                count++;
-            }
-        }
+    corpse = raisable_corpse( ch, target_name );
 
-    if(count >= 1)
+    act("$n chants, 'Rise, and hunger, and serve.",ch,NULL,NULL,TO_ROOM);
+    act("You chant, 'Rise, and hunger, and serve.",ch,NULL,NULL,TO_CHAR);
+    act("$n chants, 'The night is long and you will not be full.",ch,NULL,NULL,TO_ROOM);
+    act("You chant, 'The night is long and you will not be full.",ch,NULL,NULL,TO_CHAR);
+
+    if ( ( victim = raise_undead( ch, corpse, 100, 30, 250,
+                                  "vampire", "a vampire" ) ) == NULL )
     {
-      send_to_char("You can't control any more undead.\n\r",ch);
-      return;
+        send_to_char("Nothing answers you.\n\r",ch);
+        return;
     }
 
-    act("$n chants, 'From the depths of hell I summon thee spirit of the damned.",ch,NULL,NULL,TO_ROOM);
-    act("You chant, 'From the depths of hell I summon thee spirit of the damned.",ch,NULL,NULL,TO_CHAR);
-    act("$n chants, 'Return to the living to once again draw blood.",ch,NULL,NULL,TO_ROOM);
-    act("You chant, 'Return to the living to once again draw blood.",ch,NULL,NULL,TO_CHAR);
-    act("$n chants, 'Return now, I COMMAND THEE!!!",ch,NULL,NULL,TO_ROOM);
-    act("You chant, 'Return now, I COMMAND THEE!!!",ch,NULL,NULL,TO_CHAR);
-    victim = create_mobile(  get_mob_index(  MOB_VNUM_ANIMATE ) );
-    char_to_room( victim, ch->in_room );
-    victim->level = ch->level-10;
-    victim->max_hit = (sh_int)(dice(30,8) + ch->max_hit/2);
-    victim->hit = victim->max_hit;
-    victim->timer = 250;
-    victim->armor[AC_PIERCE]    = ch->armor[AC_PIERCE];
-    victim->armor[AC_BASH]	= ch->armor[AC_BASH];
-    victim->armor[AC_SLASH]     = ch->armor[AC_SLASH];
-    victim->armor[AC_EXOTIC]    = ch->armor[AC_EXOTIC];
-    victim->hitroll             = ch->hitroll;
-    victim->damroll             = GET_DAMROLL(ch);
-    victim->damage[DICE_NUMBER] = ch->damage[DICE_NUMBER] + 1;
-    victim->damage[DICE_TYPE]   = ch->damage[DICE_TYPE] + 1;
-    snprintf(buf, sizeof buf,"vampire");
-    free_string(victim->name);
-    victim->name = str_dup(buf);
-    snprintf(buf, sizeof buf,"a vampire");
-    free_string(victim->short_descr);
-    victim->short_descr = str_dup(buf);
-    snprintf(buf, sizeof buf,"A vampire is here serving %s.\n\r",ch->name);
-    free_string(victim->long_descr);
-    victim->long_descr = str_dup(buf);
-    snprintf(buf, sizeof buf,"spec_cast_mage");
-    victim->spec_fun = spec_lookup ( buf );
-    extract_obj(corpse);
-    act("Flesh rejuvenates itself, and a vampire stands up.",ch,NULL,NULL,TO_ROOM);
-    act("Flesh rejuvenates itself, and a vampire stands up.",ch,NULL,NULL,TO_CHAR);
-    add_follower( victim, ch );
-    victim->leader = ch;
-    af.type      = (sh_int)(skill_lookup("charm person"));
-    af.level	 = ch->level;
-    af.duration  = victim->timer;
-    af.location  = 0;
-    af.modifier  = 0;
-    af.bitvector = AFF_CHARM;
-    af.bitvector2 = 0;
-    affect_to_char( victim, &af );
+    if ( corpse != NULL )
+    {
+        act("The corpse opens its eyes, and they are not its own.",ch,NULL,NULL,TO_ROOM);
+        act("The corpse opens its eyes, and they are not its own.",ch,NULL,NULL,TO_CHAR);
+    }
+    else
+    {
+        act("Something steps out of the dark that was not there a moment ago.",ch,NULL,NULL,TO_ROOM);
+        act("Something steps out of the dark that was not there a moment ago.",ch,NULL,NULL,TO_CHAR);
+    }
+
     return;
 }
 

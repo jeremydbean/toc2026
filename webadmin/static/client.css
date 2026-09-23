@@ -569,10 +569,12 @@ summary:focus-visible,
 
 .direction-pad {
     display: grid;
-    width: 222px;
+    width: 226px;
     height: 150px;
     margin: 0 auto;
-    grid-template-columns: repeat(3, 70px);
+    /* Four columns: the three compass ones, plus up and down beside
+       them, so the corners have somewhere to go. */
+    grid-template-columns: repeat(4, 52px);
     grid-template-rows: repeat(3, 46px);
     gap: 6px;
 }
@@ -593,13 +595,17 @@ summary:focus-visible,
     color: var(--text);
 }
 
-.direction-pad .north { grid-column: 2; grid-row: 1; }
-.direction-pad .up { grid-column: 3; grid-row: 1; }
-.direction-pad .west { grid-column: 1; grid-row: 2; }
-.direction-pad .center { grid-column: 2; grid-row: 2; }
-.direction-pad .east { grid-column: 3; grid-row: 2; }
-.direction-pad .south { grid-column: 2; grid-row: 3; }
-.direction-pad .down { grid-column: 3; grid-row: 3; }
+.direction-pad .northwest { grid-column: 1; grid-row: 1; }
+.direction-pad .north     { grid-column: 2; grid-row: 1; }
+.direction-pad .northeast { grid-column: 3; grid-row: 1; }
+.direction-pad .up        { grid-column: 4; grid-row: 1; }
+.direction-pad .west      { grid-column: 1; grid-row: 2; }
+.direction-pad .center    { grid-column: 2; grid-row: 2; }
+.direction-pad .east      { grid-column: 3; grid-row: 2; }
+.direction-pad .down      { grid-column: 4; grid-row: 2; }
+.direction-pad .southwest { grid-column: 1; grid-row: 3; }
+.direction-pad .south     { grid-column: 2; grid-row: 3; }
+.direction-pad .southeast { grid-column: 3; grid-row: 3; }
 
 .command-grid {
     display: grid;

@@ -1824,9 +1824,11 @@ The mana cost decreases as your level increases.
 The <target> is optional.  Many spells which need targets will use an
 appropriate default target, especially during combat.
 
-If the spell name is more than one word, then you must quote the spell name.
-Example: cast 'cure critic' frag.  Quoting is optional for single-word spells.
-You can abbreviate the spell name.
+A spell name of more than one word needs no quotes: cast cure critic frag
+works, and so does cast 'cure critic' frag if you prefer them.  The longest
+run of words that names a spell is taken as the spell, and whatever is left
+is the target, so cast cure light dwarf finds cure light and heals the
+dwarf.  You can abbreviate the spell name.
 
 When you cast an offensive spell, the victim usually gets a saving throw.
 The effect of the spell is reduced or eliminated if the victim makes the

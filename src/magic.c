@@ -291,7 +291,52 @@ void do_cast( CHAR_DATA *ch, char *argument )
       if(IS_SWITCHED(ch) && !IS_IMMORTAL(ch) )
 	return;
 
+    /*
+     * Take the longest leading run of words that names a spell.
+     *
+     * one_argument stops at a space unless the argument is quoted, so
+     * every multi-word spell needed `cast 'create wraith' corpse'.
+     * Forgetting the quotes read as the spell not existing. Quoting
+     * still works -- one_argument handles it and the loop below finds
+     * the same spell on its first pass -- and so do abbreviations,
+     * because skill_lookup is still what decides.
+     *
+     * Greedy matters: `cast cure light dwarf' has to find cure light
+     * and leave the dwarf, not stop at cure.
+     */
     target_name = one_argument( argument, arg1 );
+
+    {
+        char candidate[MAX_INPUT_LENGTH];
+        char word[MAX_INPUT_LENGTH];
+        char *rest = target_name;
+        int found = skill_lookup( arg1 );
+
+        toc_strlcpy( candidate, arg1, sizeof(candidate) );
+
+        while ( rest[0] != '\0' )
+        {
+            char *after = one_argument( rest, word );
+            int longer;
+
+            if ( word[0] == '\0' )
+                break;
+
+            toc_strlcat( candidate, " ", sizeof(candidate) );
+            toc_strlcat( candidate, word, sizeof(candidate) );
+
+            if ( ( longer = skill_lookup( candidate ) ) < 0 )
+                break;
+
+            found       = longer;
+            target_name = after;
+            toc_strlcpy( arg1, candidate, sizeof(arg1) );
+            rest        = after;
+        }
+
+        UNUSED_PARAM(found);
+    }
+
     one_argument( target_name, arg2 );
 
     if ( arg1[0] == '\0' )

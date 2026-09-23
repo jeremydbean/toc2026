@@ -296,18 +296,24 @@ See also: CREATE FOOD, CREATE WATER, CREATION
 ~
 
 0 'CREATE SKELETON' 'CREATE WRAITH' 'CREATE VAMPIRE'~
-Syntax: cast 'create skeleton' corpse
-Syntax: cast 'create wraith' corpse
-Syntax: cast 'create vampire' corpse
+Syntax: cast create skeleton
+Syntax: cast create wraith [corpse]
+Syntax: cast create vampire [corpse]
 
-These spells summon forth a spirit to animate an npc corpse, creating a
-magical servant that can assist you in combat.  There is a limited number
-of servants you can create with this spell: 5 skeletons, 2 wraiths,
-1 vampire, or various combinations of the three.  The higher level the spell
-the more power the servant will have.  These spells can only hold the spirit
-on the mortal plane for certain amount of time, at the end of which the
-spirit will return from whence it came. The servant remains under the
-necromancer's control for that full summoned lifetime.
+These spells call a spirit and give it a shape to wear, making a servant
+that fights for you.  You may cast them anywhere: with no corpse to hand the
+necromancer drags the spirit out of the air and it comes thin.
+
+A corpse makes a better servant.  Name one and it is used; name nothing and
+any npc corpse lying in the room is taken.  A servant raised over a body is
+half again as strong, lasts twice as long, and carries some of what the dead
+thing was worth into what it becomes -- so raising something formidable is
+better than raising a rat, and raising a rat is better than raising nothing.
+
+The servant's strength follows your own level, not the corpse's.  How many
+you may have standing depends on what you raise: 5 skeletons, 2 wraiths, or
+1 vampire, and they share the same count.  Each holds together for a set
+time and then the spirit goes back where it came from.
 
 These spells are for necromancers only.  Minimum levels are:
 create skeleton - 15

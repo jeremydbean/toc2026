@@ -113,6 +113,11 @@ int guild_lookup (const char *name)
    if (!str_prefix( name, "cleric"  ))  return GUILD_CLERIC;
    if (!str_prefix( name, "warrior" ))  return GUILD_WARRIOR;
    if (!str_prefix( name, "thief"   ))  return GUILD_THIEF;
+   /* Monk and necromancer are guilds you are given rather than join,
+      but SET and remort still have to be able to name them. The clerk
+      refuses them on its own. */
+   if (!str_prefix( name, "monk"    ))  return GUILD_MONK;
+   if (!str_prefix( name, "necro"   ))  return GUILD_NECRO;
    if (!str_prefix( name, "none"    ))  return GUILD_NONE;
    if (!str_prefix( name, "any"     ))  return GUILD_ANY;
 
