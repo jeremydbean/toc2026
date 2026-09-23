@@ -1469,6 +1469,15 @@ textarea {
 .route-verified,
 .route-computed { color: var(--teal); border-color: var(--teal-dark); }
 
+/* A handed-down route that had to be re-walked, and one that no longer
+   arrives -- both still worth showing, with the difference visible. */
+.route-repaired { color: var(--amber); border-color: var(--amber); }
+.route-drifted { color: var(--red); border-color: var(--red-dark); }
+
+.route-filter {
+    margin-bottom: 10px;
+}
+
 .route-dest {
     margin: 4px 0 8px;
     font-size: 12px;

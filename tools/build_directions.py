@@ -23,6 +23,7 @@ stays short enough to paste.
 from __future__ import annotations
 
 import collections
+import heapq
 import json
 import pathlib
 import re
@@ -237,33 +238,48 @@ def passable(room):
     return True
 
 
+# What an edge is worth, in rooms walked. A door or a rope is one move you
+# make yourself; a room that carries you is a wait on somebody else's
+# timer, so it has to be dear enough that the router walks instead when
+# walking is possible at all.
+WAIT_COST = 8
+
+
 def shortest_paths(rooms, start, portals):
-    """BFS from start, walking and stepping through portals.
+    """Cheapest route from start, walking and using the ways through.
 
     A step is (door, from_vnum) for an exit, or (edge, from_vnum) for a
-    portal or handhold -- the type of the first element says which.
+    portal, handhold or teleport room -- the type of the first element
+    says which.
     """
     seen = {start: []}
-    queue = collections.deque([start])
+    spent = {start: 0}
+    queue = [(0, start)]
 
     while queue:
-        here = queue.popleft()
+        paid, here = heapq.heappop(queue)
+        if paid > spent.get(here, paid):
+            continue
 
+        moves = []
         for door in range(10):
             step = rooms[here]["exits"].get(door)
-            if step is None:
-                continue
-            to = step[0]
-            if to in seen or to not in rooms or not passable(rooms[to]):
-                continue
-            seen[to] = seen[here] + [(door, here)]
-            queue.append(to)
+            if step is not None:
+                moves.append((1, step[0], (door, here)))
 
         for verb, keyword, dest, cost, label in portals.get(here, []):
-            if dest in seen or dest not in rooms or not passable(rooms[dest]):
+            price = WAIT_COST if verb == "wait" else 1
+            moves.append((price, dest, ((verb, keyword, cost, label), here)))
+
+        for price, to, step in moves:
+            if to not in rooms or not passable(rooms[to]):
                 continue
-            seen[dest] = seen[here] + [((verb, keyword, cost, label), here)]
-            queue.append(dest)
+            total = paid + price
+            if total >= spent.get(to, total + 1):
+                continue
+            spent[to] = total
+            seen[to] = seen[here] + [step]
+            heapq.heappush(queue, (total, to))
 
     return seen
 

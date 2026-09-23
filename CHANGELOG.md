@@ -10,6 +10,41 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The route finder sent everyone to New Thalos by Newbie Train.**
+  Teleport rooms became graph edges when the router learned to read them,
+  and breadth-first search prices every edge at one step -- so eleven
+  stops of standing still on a train that moves every five ticks looked
+  cheaper than walking. 29 of the 89 routes went that way, 191 wait-steps
+  in all. Routing is now Dijkstra: a door, a portal, a rope or a jump
+  still costs one, and a room that carries you costs eight, because you
+  wait on its timer and cannot steer. No route uses a carried room any
+  more, and nothing became unreachable -- the Assassins Guild's
+  transportation chamber is still the only way to its upper floor, and a
+  costly edge is still used where it is the only edge.
+
+### Added
+
+- **The Routes panel in the browser client now shows what it has.** It
+  was reading `counts.verified`, which the file does not contain, so the
+  intro read "0 walk cleanly today"; and its badge logic only knew
+  `verified`, so all 89 worked-out routes rendered as "needs checking".
+  The 81 routes handed down by players were fetched and then ignored
+  entirely, replacements included.
+
+  There is now a Worked out / Handed down / All filter, honest badges
+  (checks out, still walks, repaired, has drifted), and the distance in
+  rooms. Where a handed-down route no longer arrives and the builder
+  worked out a replacement, the card shows the note, the replacement
+  destination and a second one-click route -- 7 of the 10 drifted routes
+  have one.
+
+- **The button in Haze's private study is armed.** Object 29422 in
+  `world.are` loads into room 29498, reached by climbing the colossal oak
+  at the Edge of the Woods and opening the glowing circle in the
+  Treehouse ceiling. Pushing it kills everyone in the room except whoever
+  pushed it, which is what `value[4] == 3` has always meant; the room
+  description has warned about it all along.
+
 - **Whole areas looked unreachable because the route finder could not
   read them, and 175 resets had been deleted on the strength of that.**
   `.are` files are a token stream: `fread_letter`, `fread_number` and

@@ -184,10 +184,10 @@ Current September 2026 Python baseline:
 2,337 mobiles
 3,560 objects
 7,781 rooms
-0 critical, 12 warning, 1,511 information findings
+0 critical, 12 warning, 1,510 information findings
 ```
 
-The information count fell from 1,571 when 175 resets that had been
+The information count fell from 1,571 when 176 resets that had been
 commented out as "(removed: room/obj does not exist)" went back in; every
 vnum they named was present all along. See the changelog entry for the
 parsing mistake behind the claim.

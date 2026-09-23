@@ -2400,7 +2400,7 @@ P  0  29420  1  29418		puts tarot card in fire
 *
 O  0  29421  1  29482		loads hitching post
 *
-* O  0  29422  1  29498		loads death button  (object exists; value[4]=3 kills everyone else in the room -- left off deliberately)
+O  0  29422  1  29498		loads death button  (value[4]=3: kills everyone in the room but the pusher)
 *
 O  0  29423  1  29497		loads rope
 *

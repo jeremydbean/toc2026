@@ -569,7 +569,20 @@
 
     // Travel directions from the Oak Tree Square, checked against the
     // world when they were generated. Public, like the help text.
-    const routesState = { data: null, loading: false };
+    const routesState = { data: null, loading: false, source: "computed" };
+
+    // Two kinds of route share the panel. The worked-out ones are walked
+    // out of the current world every time the file is built, so they are
+    // right by construction. The handed-down ones are what players typed
+    // years ago, kept because they name landmarks and shortcuts nobody
+    // wrote down; those can drift as areas change.
+    function routeSets() {
+        const data = routesState.data || {};
+        return {
+            computed: data.routes || [],
+            legacy: data.legacy || [],
+        };
+    }
 
     async function loadRoutes() {
         if (routesState.data || routesState.loading) return;
@@ -578,12 +591,20 @@
             const data = await api("/api/directions");
             routesState.data = data;
             const counts = data.counts || {};
-            const total = (data.routes || []).length;
-            byId("routes-count").textContent = `${total} routes`;
+            const sets = routeSets();
+            byId("routes-count").textContent =
+                `${sets.computed.length + sets.legacy.length} routes`;
             const start = data.start || {};
+            const drifted = counts.legacy_drifted || 0;
+            const repaired = counts.legacy_repaired || 0;
             byId("routes-intro").textContent = start.room
                 ? `All of these start at ${start.room} (room ${start.vnum}). `
-                  + `${counts.verified || 0} walk cleanly today.`
+                  + `${sets.computed.length} are worked out of the world as it `
+                  + `stands. Of ${sets.legacy.length} handed down by players, `
+                  + `${counts.legacy_ok || 0} still walk and ${drifted} have `
+                  + `drifted`
+                  + (repaired
+                      ? `; ${repaired} of those come with a replacement.` : ".")
                 : "";
             renderRoutes();
         } catch (error) {
@@ -594,11 +615,22 @@
         }
     }
 
+    const ROUTE_BADGE = {
+        computed: "checks out",
+        verified: "still walks",
+        repaired: "repaired",
+        drifted: "has drifted",
+        portal: "ends at a portal",
+    };
+
     function renderRoutes() {
         const query = byId("routes-search").value.trim().toLowerCase();
         const list = byId("routes-list");
-        const routes = (routesState.data && routesState.data.routes) || [];
-        const matching = routes.filter((route) => {
+        const sets = routeSets();
+        const chosen = routesState.source === "legacy" ? sets.legacy
+            : routesState.source === "all" ? sets.computed.concat(sets.legacy)
+            : sets.computed;
+        const matching = chosen.filter((route) => {
             if (!query) return true;
             return [route.name, route.room, route.area]
                 .some((field) => (field || "").toLowerCase().includes(query));
@@ -616,20 +648,23 @@
             const card = node("article", { className: "route-card" });
             card.dataset.status = route.status;
 
+            // A drifted route that came with a worked-out replacement is
+            // more useful than a plain dead one, and says so.
+            const shown = route.fixed_commands ? "repaired" : route.status;
             const head = node("div", { className: "route-head" });
             head.append(node("h3", { text: route.name }));
             head.append(node("span", {
-                className: `route-badge route-${route.status}`,
-                text: route.status === "verified" ? "checks out"
-                    : route.status === "portal" ? "ends at a portal"
-                    : "needs checking",
+                className: `route-badge route-${shown}`,
+                text: ROUTE_BADGE[shown] || "needs checking",
             }));
             card.append(head);
 
             if (route.room) {
+                const away = Number.isFinite(route.rooms_away)
+                    ? ` - ${route.rooms_away} rooms away` : "";
                 card.append(node("p", {
                     className: "route-dest",
-                    text: `${route.room} - ${route.area}`,
+                    text: `${route.room} - ${route.area}${away}`,
                 }));
             }
 
@@ -649,6 +684,31 @@
 
             if (route.note) {
                 card.append(node("p", { className: "route-note", text: route.note }));
+            }
+
+            // Where the handed-down route no longer arrives, the builder
+            // worked one out of the current world. Offer that too.
+            if (route.fixed_commands) {
+                card.append(node("p", {
+                    className: "route-note",
+                    text: route.fixed_room
+                        ? `A way there today, to ${route.fixed_room}`
+                          + (route.fixed_area ? ` - ${route.fixed_area}:` : ":")
+                        : "A way there today:",
+                }));
+                const fixed = node("button", {
+                    className: "route-commands",
+                    text: route.fixed_commands,
+                });
+                fixed.type = "button";
+                fixed.title = "Send this";
+                fixed.addEventListener(
+                    "click", () => sendCommandSequence(route.fixed_commands));
+                card.append(fixed);
+                card.append(node("p", {
+                    className: "route-steps",
+                    text: (route.fixed_steps || []).join(", "),
+                }));
             }
 
             return card;
@@ -1261,6 +1321,17 @@
         byId("panel-scrim").addEventListener("click", closePanel);
         all("[data-panel]").forEach((tab) => tab.addEventListener("click", () => showUtilityPanel(tab.dataset.panel)));
         byId("routes-search").addEventListener("input", renderRoutes);
+        all("[data-route-source]").forEach((button) => {
+            button.addEventListener("click", () => {
+                routesState.source = button.dataset.routeSource;
+                all("[data-route-source]").forEach((other) => {
+                    other.classList.toggle(
+                        "is-active",
+                        other.dataset.routeSource === routesState.source);
+                });
+                renderRoutes();
+            });
+        });
         byId("help-search").addEventListener("input", renderHelpTopics);
 
         byId("font-size").addEventListener("input", (event) => {
