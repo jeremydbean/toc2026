@@ -10,6 +10,60 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **You could not repair the armour you were wearing.** The help for
+  REPAIR says it works "on worn equipment", and that is where damaged gear
+  normally is -- `damage_eq` only strips a piece off once its condition
+  drops below zero, so anything merely dented stays on your body. But
+  `do_repair` looked the item up with `get_obj_carry`, which skips
+  anything whose `wear_loc` is set, and then said **"You aren't carrying
+  that!"** about a sword the character was holding. It now looks in the
+  pack and then at what you have on. Breaking a worn item on the last
+  repair is safe: `obj_from_char` unequips before it unlinks.
+
+- **A repaired shield stayed permanently worse than the one you bought.**
+  When `check_shield_block` dents a shield it takes a point off each of
+  the item's four armour values and cuts its cost to a third. Nothing ever
+  put either back, so the damage was permanent and compounding: ten dents
+  cost ten points of armour class and left the shield worth a fifty-nine
+  thousandth of its price, however many times it had been paid to repair.
+  REPAIR now restores both from the object's prototype -- never above it,
+  so an immortal's tuning and an enchanter's affects are untouched -- and
+  re-seats a worn piece so the wearer's armour is recomputed.
+
+- **Dented armour left the wearer a duplicate armour bonus for good.** The
+  same code did `victim->armor[i] -= apply_ac(...)` before filing the
+  values down, and never re-applied. `equip_char` already subtracts and
+  `unequip_char` adds, so that second subtraction was a free armour-class
+  gift each time a shield was hit, and taking the shield off gave back
+  only the reduced amount -- leaving the character permanently better
+  armoured than their equipment. It now removes the bonus at the old
+  values and re-applies it at the new ones.
+
+- **A repair quote was a bare number after prices moved to copper.** The
+  cost is charged in gold through `has_enough_gold`/`add_money`, but it
+  printed as a naked integer, so "It will cost you 250" sat next to shop
+  prices reading `5g 20s`. Quotes now go through `format_price` and read
+  in denominations. The formula is unchanged. The cost is also computed
+  and clamped as a `long` before being multiplied up into copper, so an
+  immortal-set condition or level cannot overflow the quote.
+
+- **Two smaller things in the same command.** Refusing a repair for want
+  of money printed the price without ever saying you could not afford it;
+  it says so now. And the smith's line when an item finally breaks was
+  passed to `do_say` with `\n\r` inside it, which put a line break in
+  the middle of a speech.
+
+- **REPAIR's help was wrong twice over.** It said the price depends on the
+  item's "condition and type" -- it is condition and level -- and it never
+  mentioned that an item breaks for good after about two dozen repairs,
+  which is a poor thing to discover by losing something. Both corrected,
+  along with the note that the item may be worn or carried.
+
+  `tests/test_repair_gear.py` covers repairing worn and packed gear, the
+  restoration of filed-down armour values and price, the denominated
+  quote, an undamaged item, a missing item and standing nowhere near a
+  smith.
+
 - **The route finder sent everyone to New Thalos by Newbie Train.**
   Teleport rooms became graph edges when the router learned to read them,
   and breadth-first search prices every edge at one step -- so eleven

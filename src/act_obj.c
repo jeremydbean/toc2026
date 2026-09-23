@@ -4717,9 +4717,10 @@ void do_manipulate( CHAR_DATA *ch, char *argument )
 void do_repair( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
+    char price[MAX_INPUT_LENGTH];
     CHAR_DATA *rpr;
     OBJ_DATA *obj;
-    int cost;
+    long cost;
 
     if(IS_NPC(ch))
 	return;
@@ -4729,8 +4730,14 @@ void do_repair( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if(!(obj=get_obj_carry(ch,argument))) {
-        send_to_char("You aren't carrying that!\n\r",ch);
+    /* The help says repairs are done "on worn equipment", and that is
+       where damaged gear normally is: damage_eq only strips a piece off
+       once its condition goes below zero, so anything merely dented is
+       still being worn. Looking in the pack alone answered "You aren't
+       carrying that!" about a sword the character was holding. */
+    if((obj=get_obj_carry(ch,argument)) == NULL
+    && (obj=get_obj_wear(ch,argument)) == NULL) {
+        send_to_char("You aren't carrying or wearing that.\n\r",ch);
         return;
     }
 
@@ -4754,16 +4761,30 @@ void do_repair( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    cost = ((100 - obj->condition) * obj->level) * 5;
+    cost = ((long)(100 - obj->condition) * (long)obj->level) * 5L;
 
     /* Flagged damaged but still reading full condition: the arithmetic
        gives nothing, and a free repair is not the intent. */
     if ( cost <= 0 )
         cost = UMAX( 10, obj->level * 10 );
 
+    /* An immortal can set a condition or a level to anything, and the
+       quote is multiplied up into copper below. Keep it inside what a
+       price can sensibly read, and inside what a long can hold once it
+       is in copper -- which is the tighter of the two where long is 32
+       bits. */
+    if ( cost > 1000000L )
+        cost = 1000000L;
+    if ( cost > LONG_MAX / COPPER_PER_GOLD )
+        cost = LONG_MAX / COPPER_PER_GOLD;
+
+    format_price( cost * (long)COPPER_PER_GOLD, price, sizeof(price) );
+
     if(!has_enough_gold(ch, cost)) {
-        snprintf(buf, sizeof(buf), "It will cost you %d to repair %s.  This has been repaired %d times now...\n\r", cost,
-                obj->short_descr, obj->number_repair);
+        snprintf(buf, sizeof(buf),
+                "Repairing %s costs %s, which is more than you are carrying.  "
+                "It has been repaired %d times now.\n\r",
+                obj->short_descr, price, obj->number_repair);
       send_to_char(buf,ch);
       return;
     }
@@ -4774,15 +4795,55 @@ void do_repair( CHAR_DATA *ch, char *argument )
 		ch, obj, rpr, TO_CHAR );
         act( "$N starts repairing $n's $p and breaks it!",
 		ch, obj, rpr, TO_ROOM );
+        /* obj_from_char unequips first, so this is safe on a worn piece. */
 	extract_obj(obj);
-	do_say(rpr,"Heh, old thing broke apart, guess you don't have to pay.\n\r");
+	do_say(rpr,"Heh, old thing broke apart, guess you don't have to pay.");
 } else {
 	add_money(ch,cost*-1);
         obj->condition = 100;
+
+        /* check_shield_block files a dented shield's armour values down a
+           point and cuts its worth to a third, and nothing ever put
+           either back: a "repaired" shield stayed permanently weaker and
+           cheaper than the one that was bought, however often it was
+           paid for. Undo that, but never raise a piece above the
+           prototype it was made from, so an immortal's deliberate tuning
+           and an enchanter's work are left alone. */
+        if ( obj->pIndexData != NULL )
+        {
+            int  slot    = obj->wear_loc;
+            bool worn    = slot != WEAR_NONE;
+            bool restore = false;
+            int  i;
+
+            if ( obj->item_type == ITEM_ARMOR )
+            {
+                for ( i = 0; i < 4; i++ )
+                    if ( obj->value[i] < obj->pIndexData->value[i] )
+                        restore = true;
+            }
+
+            if ( restore )
+            {
+                /* Re-seat it so the wearer's armour is recomputed from
+                   the restored values rather than the filed-down ones. */
+                if ( worn )
+                    unequip_char( ch, obj );
+                for ( i = 0; i < 4; i++ )
+                    if ( obj->value[i] < obj->pIndexData->value[i] )
+                        obj->value[i] = obj->pIndexData->value[i];
+                if ( worn )
+                    equip_char( ch, obj, slot );
+            }
+
+            if ( obj->cost < obj->pIndexData->cost )
+                obj->cost = obj->pIndexData->cost;
+        }
+
         act( "$N repairs your $p.", ch, obj, rpr, TO_CHAR );
         act( "$N repairs $n's $p.", ch, obj, rpr, TO_ROOM );
-        snprintf(buf, sizeof(buf), "It cost ya %d to repair %s.  It's been repaired %d times now.\n\r", cost,
-                obj->short_descr, obj->number_repair);
+        snprintf(buf, sizeof(buf), "It cost you %s to repair %s.  It's been repaired %d times now.\n\r",
+                price, obj->short_descr, obj->number_repair);
         send_to_char(buf,ch);
         if (IS_OBJ_STAT(obj,ITEM_DAMAGED))
         {

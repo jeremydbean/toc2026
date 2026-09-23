@@ -2297,10 +2297,18 @@ bool check_shield_block( CHAR_DATA *ch, CHAR_DATA *victim )
       }
       else if(obj->level > 5)
       {
+	 /* Take the worn bonus off at the old values, file the shield
+	    down, then put the bonus back at the new ones. This used to
+	    subtract a second time -- equip_char already subtracts, and
+	    unequip_char adds -- and never re-applied, so every dent left
+	    the wearer a duplicate armour bonus that outlived taking the
+	    shield off. */
 	 for (i = 0; i < 4; i ++)
-	   victim->armor[i] -= apply_ac( obj, iWear, i );
+	   victim->armor[i] += apply_ac( obj, iWear, i );
 	 for (i = 0; i < 4; i ++)
 	    obj->value[i] -= 1;
+	 for (i = 0; i < 4; i ++)
+	   victim->armor[i] -= apply_ac( obj, iWear, i );
 	 obj->cost  = obj->cost/3;
 	 damaged = true;
 	 for (i = 0; i < 4; i++)

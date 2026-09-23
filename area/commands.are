@@ -211,10 +211,16 @@ See also: SEARCH, SCAN, LOOK
 0 REPAIR~
 Syntax: repair <object>
 
-Requests repairs from an NPC repair vendor on worn equipment.  The shopkeeper
-quotes and charges a gold cost based on the item's current condition and type
-before restoring it to full durability.  If the item cannot be repaired you
-will be told why.
+Requests repairs from an NPC repair vendor.  The item may be worn or in your
+pack; you do not have to take it off first.  The smith quotes a price from
+how badly worn the item is and how high a level it is, charges you, and
+restores it to full condition.  If the item cannot be repaired you will be
+told why.
+
+An item remembers how often it has been mended.  After about two dozen
+repairs the metal has had enough, and the next attempt breaks it for good --
+the smith will not charge you for that one.  REPAIR tells you the running
+count each time, so you can see it coming.
 
 Repair vendors are found in some guild halls, market districts, and weapon or
 armor shops throughout the world.  Not all shopkeepers offer repair services;
