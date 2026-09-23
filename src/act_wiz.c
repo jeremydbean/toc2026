@@ -3628,7 +3628,7 @@ void do_herbie( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     CHAR_DATA *herbie;
     MOB_INDEX_DATA *herbie_idx;
-    bool watching;
+    bool borrowed;
 
     one_argument( argument, arg );
 
@@ -3658,82 +3658,66 @@ void do_herbie( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    /* Standing in the room already means seeing the whole sequence from
-       the room's side; the mirror below is for sending him somewhere else. */
-    watching = ( ch->in_room == victim->in_room );
-
-    /* Spawn a fresh Herbie instance at the victim's location */
-    herbie_idx = get_mob_index( 99 );
-    if ( herbie_idx == NULL )
+    /*
+     * Send the Herbie who is already standing in his own room, so he
+     * really does leave it to come. Only if none is loaded is one made,
+     * and it still gets the whole visit rather than a short version.
+     */
+    herbie = NULL;
     {
-        /* Fallback: no mob vnum 99 loaded, deliver silently */
-        act( "An angel named Herbie glides down from heaven and cures all your wounds.",
-            ch, NULL, victim, TO_VICT );
+        LIST_ITERATOR iter;
+        CHAR_DATA *wch;
 
-        if ( !watching && ch != victim )
+        FOR_EACH_CHARACTER( iter, wch )
         {
-            snprintf( buf, sizeof(buf),
-                "An angel named Herbie glides down from heaven and cures all "
-                "of %s's wounds.\n\r", victim->name );
-            send_to_char( buf, ch );
+            if ( IS_NPC(wch) && wch->pIndexData != NULL
+              && wch->pIndexData->vnum == MOB_VNUM_HERBIE
+              && wch->in_room != NULL && wch->fighting == NULL )
+            {
+                herbie = wch;
+                break;
+            }
         }
     }
-    else
+
+    borrowed = ( herbie == NULL );
+
+    if ( borrowed )
     {
-        herbie = create_mobile( herbie_idx );
-        char_to_room( herbie, victim->in_room );
+        herbie_idx = get_mob_index( MOB_VNUM_HERBIE );
 
-        /* Herbie arrives */
-        act( "A bright light fills the room as $n descends gracefully from above.",
-            herbie, NULL, NULL, TO_ROOM );
-
-        /* Herbie greets the player */
-        act( "$n kneels beside you, smiling warmly.  'Fear not.  You are watched over.'",
-            herbie, NULL, victim, TO_VICT );
-        act( "$n kneels beside $N and places a gentle hand on $S shoulder.",
-            herbie, NULL, victim, TO_NOTVICT );
-
-        /* Herbie heals */
-        act( "$n closes $s eyes.  A warm golden glow radiates from $s hands into your body.",
-            herbie, NULL, victim, TO_VICT );
-        act( "$n closes $s eyes and a warm golden glow flows between $m and $N.",
-            herbie, NULL, victim, TO_NOTVICT );
-
-        /* Herbie departs */
-        act( "$n rises, folds $s wings, and with a soft rustle of feathers vanishes into the light.",
-            herbie, NULL, NULL, TO_ROOM );
-
-        /* The same four beats, for whoever sent him from elsewhere. */
-        if ( !watching && ch != victim )
+        if ( herbie_idx == NULL )
         {
-            const char *angel = herbie->short_descr != NULL
-                ? herbie->short_descr : "an angel";
-
-            snprintf( buf, sizeof(buf),
-                "A bright light fills the room as %s descends gracefully from above.\n\r"
-                "%s kneels beside %s, smiling warmly.  'Fear not.  You are watched over.'\n\r"
-                "%s closes his eyes.  A warm golden glow radiates from his hands into %s.\n\r"
-                "%s rises, folds his wings, and with a soft rustle of feathers vanishes into the light.\n\r",
-                angel,
-                angel, victim->name,
-                angel, victim->name,
-                angel );
-            send_to_char( buf, ch );
+            /* No Herbie in the world and none to build: heal quietly. */
+            act( "An angel named Herbie glides down from heaven and cures "
+                 "all your wounds.", ch, NULL, victim, TO_VICT );
+            victim->hit  = victim->max_hit;
+            victim->mana = victim->max_mana;
+            victim->move = victim->max_move;
         }
+        else
+        {
+            herbie = create_mobile( herbie_idx );
+            char_to_room( herbie, victim->in_room );
+        }
+    }
 
-        /* Remove the temporary Herbie instance */
+    if ( herbie != NULL )
+        herbie_visit( herbie, victim );
+
+    if ( borrowed && herbie != NULL )
         extract_char( herbie, TRUE );
-    }
 
-    /* Apply the actual healing */
+    /*
+     * What the real Herbie does not do. All of it is silent, so it cannot
+     * give the visit away, and it is what makes the command worth having.
+     */
     affect_strip( victim, gsn_plague );
     affect_strip( victim, gsn_poison );
     affect_strip( victim, gsn_blindness );
     affect_strip( victim, gsn_sleep );
     affect_strip( victim, gsn_curse );
 
-    victim->hit  = victim->max_hit;
-    victim->mana = victim->max_mana;
     victim->move = victim->max_move;
 
     if ( victim->pcdata != NULL )

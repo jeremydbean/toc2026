@@ -2339,19 +2339,111 @@ bool spec_club_dj( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     return false;
 }
  
+/*
+ * Herbie's visit, from the beating of wings to the last word back home.
+ *
+ * spec_paramedic and the immortal HERBIE command both come through here. A
+ * player being able to tell which one they got defeats the point of giving
+ * saints the command, and two copies of a dozen act() lines were never
+ * going to stay identical.
+ */
+void herbie_visit( CHAR_DATA *mob, CHAR_DATA *victim )
+{
+    ROOM_INDEX_DATA *home_room;
+    bool travelled;
+    int pulses;
+    int sn;
+
+    if ( mob == NULL || victim == NULL
+      || mob->in_room == NULL || victim->in_room == NULL )
+        return;
+
+    home_room = mob->in_room;
+    travelled = ( home_room != victim->in_room );
+
+    if ( travelled )
+    {
+        act("$n says, 'I am needed!' and takes to the sky.",
+            mob, NULL, NULL, TO_ROOM);
+        char_from_room(mob);
+        char_to_room(mob, victim->in_room);
+    }
+
+    act("You hear the beating of mighty wings. Looking up you see...",
+        mob, NULL, NULL, TO_ROOM);
+    act("An angelic figure with beautiful white wings lands in front of $N.",
+        mob, NULL, victim, TO_NOTVICT);
+
+    if ( victim->position == POS_SLEEPING )
+        do_wake(mob, victim->name);
+
+    act("An angelic figure with beautiful white wings lands in front of you.",
+        mob, NULL, victim, TO_VICT);
+    act("$n looks at $N.", mob, NULL, victim, TO_NOTVICT);
+    act("$n looks at you.", mob, NULL, victim, TO_VICT);
+    act("$n says, 'Hmm. Ya know, bleeding all over the place isn't very polite.'",
+        mob, NULL, victim, TO_VICT);
+    act("$n says, 'Someone eventually has to clean up the mess!'",
+        mob, NULL, victim, TO_VICT);
+    act("$n says, 'Can't have that now, can we.'",
+        mob, NULL, victim, TO_VICT);
+    act("$n says to $N, 'Can't have you bleeding all over the place like that.'",
+        mob, NULL, victim, TO_NOTVICT);
+
+    victim->hit = victim->max_hit;
+    update_pos( victim );
+    send_to_char("A warm feeling fills your body.\n\r", victim);
+
+    /*
+     * One pulse of restore mana is dice(5,10) and it says so each time, so
+     * how much of the screen this fills follows how empty the caster was.
+     * Capped, because fifteen thousand mana would otherwise scroll for a
+     * very long time; whatever the cap leaves is topped up quietly.
+     */
+    sn = skill_lookup("restore mana");
+    if ( sn >= 0 )
+    {
+        for ( pulses = 0; pulses < 12; pulses++ )
+        {
+            (*skill_table[sn].spell_fun) (sn, mob->level, mob, victim);
+            if ( victim->mana >= victim->max_mana )
+                break;
+        }
+        victim->mana = victim->max_mana;
+    }
+
+    sn = skill_lookup("refresh");
+    if ( sn >= 0 )
+        (*skill_table[sn].spell_fun) (sn, mob->level, mob, victim);
+
+    act("$n says, 'Well, I have to be off, others to heal ya know.'",
+        mob, NULL, victim, TO_ROOM);
+    act("$n says, 'A piece of advice....try getting hit less!' $n smiles.",
+        mob, NULL, victim, TO_ROOM);
+    act("With a mighty beating of wings, $e disappears into the sky.",
+        mob, NULL, victim, TO_ROOM);
+
+    if ( travelled )
+    {
+        char_from_room(mob);
+        char_to_room(mob, home_room);
+        act("$n says, 'Ahhh. Another mortal patched up. Tis a good feeling.'",
+            mob, NULL, NULL, TO_ROOM);
+    }
+}
+
+
 bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
   UNUSED_PARAM(ch);
   UNUSED_PARAM(arg);
   CHAR_DATA *vch;
   CHAR_DATA *most_hurt = NULL;
-  ROOM_INDEX_DATA *home_room;
   LIST_ITERATOR iter;
   int health_percent;
   int lowest_health_percent = 101;
   int missing_hit;
   int most_missing_hit = -1;
-  int sn;
   int chance;
   int chancez;
   char buf[MAX_STRING_LENGTH];
@@ -2408,42 +2500,9 @@ bool spec_paramedic( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
      if( chancez < chance )
          return false;
 
-     home_room = mob->in_room;
-     act("$n says, 'I am needed!' and takes to the sky.",mob,NULL,NULL,TO_ROOM);
-     char_from_room(mob);
-     char_to_room(mob, most_hurt->in_room);
      snprintf(buf, sizeof(buf),"%s has been touched by an angel.",most_hurt->name);
      wizinfo(buf,65);
-     act("You hear the beating of mighty wings. Looking up you see...",mob,NULL,NULL,TO_ROOM);
-     act("An angelic figure with beautiful white wings lands in front of $N.",mob,NULL,most_hurt,TO_NOTVICT);
-     if(most_hurt->position == POS_SLEEPING)
-       do_wake(mob,most_hurt->name);
-     act("An angelic figure with beautiful white wings lands in front of you.",mob,NULL,most_hurt,TO_VICT);
-     act("$n looks at $N.", mob, NULL, most_hurt, TO_NOTVICT);
-     act("$n looks at you.", mob, NULL, most_hurt, TO_VICT);
-     act("$n says, 'Hmm. Ya know, bleeding all over the place isn't very polite.'",
-	  mob,NULL,most_hurt,TO_VICT);
-     act("$n says, 'Someone eventually has to clean up the mess!'",mob, NULL,most_hurt,TO_VICT);
-     act("$n says, 'Can't have that now, can we.'",mob, NULL,most_hurt,TO_VICT);
-     act("$n says to $N, 'Can't have you bleeding all over the place like that.'",mob, NULL,most_hurt,TO_NOTVICT);
-
-    most_hurt->hit = most_hurt->max_hit;
-    update_pos( most_hurt );
-    send_to_char("A warm feeling fills your body.\n\r", most_hurt);
- 
-    sn = skill_lookup("restore mana");
-    if ( sn >= 0 )
-	(*skill_table[sn].spell_fun) (sn,mob->level, mob, most_hurt);
-
-    sn = skill_lookup("refresh");
-    if ( sn >= 0 )
-	(*skill_table[sn].spell_fun) (sn,mob->level,mob, most_hurt);
-    act("$n says, 'Well, I have to be off, others to heal ya know.'",mob, NULL,most_hurt,TO_ROOM);
-    act("$n says, 'A piece of advice....try getting hit less!' $n smiles.",mob, NULL,most_hurt,TO_ROOM);
-    act("With a mighty beating of wings, $e disappears into the sky.",mob,NULL,most_hurt,TO_ROOM);
-    char_from_room(mob);
-    char_to_room(mob,home_room);
-    act("$n says, 'Ahhh. Another mortal patched up. Tis a good feeling.'",mob,NULL,NULL,TO_ROOM);
+     herbie_visit( mob, most_hurt );
   }
   else
     return false;

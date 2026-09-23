@@ -696,6 +696,8 @@ struct  kill_data
 /* Hermie -- Herbie's girlfriend, and the walk-up spellup desk (limbo.are).
  * Everything she casts lasts SPELLUP_DURATION ticks, level notwithstanding,
  * so an immortal can park her anywhere without handing out permanent buffs. */
+/* Herbie the angel, who lives in Valhalla and answers spec_paramedic. */
+#define MOB_VNUM_HERBIE              99
 #define MOB_VNUM_SPELLUP             98
 #define SPELLUP_DURATION             30
 void  spellup_listen  args( ( CHAR_DATA *ch, const char *argument ) );
@@ -2491,6 +2493,7 @@ bool    flags_from_argument ( const char *argument, int current, int *result );
 bool    is_warrior_warrior  ( const CHAR_DATA *ch );
 void    grant_heros_grip    ( CHAR_DATA *ch );
 bool    heros_grip_holds    ( CHAR_DATA *victim );
+void    herbie_visit        ( CHAR_DATA *mob, CHAR_DATA *victim );
 void    apply_class_weapon_profs ( CHAR_DATA *ch );
 void    apply_class_and_guild_skills ( CHAR_DATA *ch );
 const char *guild_group_name ( int guild );
