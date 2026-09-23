@@ -70,8 +70,8 @@ def load_portals():
         m = re.search(r"^#OBJECTS\s*$(.*?)^#0\s*$", text, re.S | re.M)
         if not m:
             continue
-        for blk in re.split(r"\n(?=#\d+[ \t]*\n)", m.group(1)):
-            h = re.match(r"#(\d+)[ \t]*\n(.*?)~\s*\n(.*?)~", blk, re.S)
+        for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
+            h = re.match(r"#(\d+)[ \t]*(.*?)~\s*\n(.*?)~", blk, re.S)
             if not h:
                 continue
             v = re.search(r"\n(\d+)\s+\S+\s+\S+[ \t]*\n"
@@ -138,8 +138,8 @@ def load_teleports():
         if not m:
             continue
 
-        for blk in re.split(r"\n(?=#\d+[ \t]*\n)", m.group(1)):
-            h = re.match(r"#(\d+)[ \t]*\n(.*?)~", blk, re.S)
+        for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
+            h = re.match(r"#(\d+)[ \t]*(.*?)~", blk, re.S)
             if not h:
                 continue
             # area, flags, [flags2], sector, then the teleport triple.
@@ -195,8 +195,8 @@ def load_world():
         if not m:
             continue
 
-        for blk in re.split(r"\n(?=#\d+[ \t]*\n)", m.group(1)):
-            h = re.match(r"#(\d+)[ \t]*\n(.*?)~", blk, re.S)
+        for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
+            h = re.match(r"#(\d+)[ \t]*(.*?)~", blk, re.S)
             if not h:
                 continue
             vnum = int(h.group(1))

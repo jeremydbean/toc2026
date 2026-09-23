@@ -10,6 +10,47 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Whole areas looked unreachable because the route finder could not
+  read them, and 175 resets had been deleted on the strength of that.**
+  `.are` files are a token stream: `fread_letter`, `fread_number` and
+  `fread_string` all skip whitespace, so the game does not care where a
+  builder broke a line. `tools/build_directions.py` cared, in four
+  separate places, and each one silently dropped content:
+
+  - a record header written `#114 ` with a trailing space was skipped.
+    Object 114 is the portal from the Eye of the Storm into Mega-City One,
+    so a 28-room area looked cut off; 22 records are written that way.
+  - a record whose name starts on the same line as its vnum
+    (`#24377 The White Queen's Chamber~`) was skipped entirely.
+  - an exit whose description starts on the same line as its `D3` was
+    dropped -- 2,275 of the world's 19,971 exits, including the west door
+    out of the Assassins Guild's three-way intersection.
+  - `ITEM_MANIPULATION` objects and rooms flagged `ROOM_TELEPORT` or
+    `ROOM_RIVER` were not treated as edges at all, though they are how you
+    reach Dylan's front gate, the top of the Lonely Mountain, the Treehouse
+    in Mid-World, the Mud School chute and the Assassins Guild's upper
+    floor. 95 objects and 103 rooms carry you somewhere.
+
+  Reachable rooms go from 7,399 to 7,568 and the router now agrees with
+  `check_exits.py` that no exit in the world is dangling. 78 of the 81
+  handed-down routes walk, up from 64.
+
+  The same misreading had already been acted on in the world data. 175
+  resets across `chess.are`, `korzath1.are` and `world.are` were commented
+  out with `(removed: room does not exist)` or `(removed: obj does not
+  exist)`; every room, mob and object they named is present. The 38 rooms
+  affected are all reachable and every one of them was standing empty --
+  Korzath's Engineering Department, the Metalworks, The Joker's Throne.
+  All are restored except the button in Haze's private study, object
+  29422, whose `value[4] == 3` kills everyone in the room except whoever
+  pushes it; arming that is a gameplay decision, not a parsing repair, and
+  its comment now says so. Native validation reports 5,703 active mobs
+  before and 5,762 after.
+
+  `tests/test_directions_router.py` pins the router against the
+  dashboard's independent parser and against each record shape that was
+  being missed.
+
 - **One player quitting disconnected every other player online.** `do_quit`
   ends with a loop meant to close a duplicate login of the same character,
   comparing `CHAR_DATA.id`. Nothing in the codebase ever assigns that field

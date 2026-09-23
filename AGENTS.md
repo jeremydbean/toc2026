@@ -177,15 +177,20 @@ python3 -m unittest tests.test_money_safety tests.test_bank_interest tests.test_
 git diff --check
 ```
 
-Current August 2026 Python baseline:
+Current September 2026 Python baseline:
 
 ```text
-99 listed area entries
-2,336 mobiles
-3,557 objects
+100 listed area entries
+2,337 mobiles
+3,560 objects
 7,781 rooms
-0 critical, 11 warning, 1,571 information findings
+0 critical, 12 warning, 1,511 information findings
 ```
+
+The information count fell from 1,571 when 175 resets that had been
+commented out as "(removed: room/obj does not exist)" went back in; every
+vnum they named was present all along. See the changelog entry for the
+parsing mistake behind the claim.
 
 Six list entries are help/social files without `#AREA`; native boot creates one
 online-building area. Do not force native and Python area totals to match by
