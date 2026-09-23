@@ -124,7 +124,10 @@ def load_world():
             flags = flag_letters(fl.group(2)) if fl else set()
 
             exits = {}
-            for d in re.finditer(r"^D(\d)\s*\n(.*?)~\s*\n(.*?)~\s*\n"
+            # "D 0" is as common as "D0": fread_letter takes the D and
+            # fread_number skips space before the digit, so the game
+            # reads both and the router has to as well.
+            for d in re.finditer(r"^D\s*(\d)\s*\n(.*?)~\s*\n(.*?)~\s*\n"
                                  r"(-?\d+) (-?\d+) (-?\d+)", blk, re.S | re.M):
                 to = int(d.group(6))
                 if to > 0:

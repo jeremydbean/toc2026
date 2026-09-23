@@ -5,9 +5,9 @@
   "area": "Drakk City of Dresden"
  },
  "counts": {
-  "computed": 86,
-  "legacy_ok": 62,
-  "legacy_drifted": 19,
+  "computed": 88,
+  "legacy_ok": 63,
+  "legacy_drifted": 18,
   "legacy_repaired": 11
  },
  "routes": [
@@ -1063,6 +1063,35 @@
    "status": "computed"
   },
   {
+   "name": "Haze City Of LUD",
+   "commands": "r w 7;open gate;w;r n 3;r e 2;r n 3;e;r n 3;r u 2;n;d;ne;r w 3;r n 2;r w 2;r s 3;r w 3;n",
+   "steps": [
+    "west x7",
+    "open gate",
+    "west",
+    "north x3",
+    "east x2",
+    "north x3",
+    "east",
+    "north x3",
+    "up x2",
+    "north",
+    "down",
+    "northeast",
+    "west x3",
+    "north x2",
+    "west x2",
+    "south x3",
+    "west x3",
+    "north"
+   ],
+   "room": "The Steel Bridge",
+   "vnum": 29501,
+   "area": "Haze City Of LUD",
+   "rooms_away": 39,
+   "status": "computed"
+  },
+  {
    "name": "Haze Korzath's Fortress",
    "commands": "r e 8;open gate;r e 12;open gate;r e 5;n;e;r n 5;open gate;r n 6",
    "steps": [
@@ -1517,6 +1546,26 @@
    "vnum": 2043,
    "area": "Raff Dwarven Catacombs",
    "rooms_away": 25,
+   "status": "computed"
+  },
+  {
+   "name": "Raff Elemental Canyon",
+   "commands": "r w 7;open gate;w;r n 3;r e 2;r n 5;r w 2;nw;n",
+   "steps": [
+    "west x7",
+    "open gate",
+    "west",
+    "north x3",
+    "east x2",
+    "north x5",
+    "west x2",
+    "northwest",
+    "north"
+   ],
+   "room": "A Mountain Path",
+   "vnum": 9201,
+   "area": "Raff Elemental Canyon",
+   "rooms_away": 22,
    "status": "computed"
   },
   {
@@ -2289,11 +2338,10 @@
     "north",
     "down"
    ],
-   "room": "The Switchbacks",
-   "vnum": 25,
-   "area": "Graves Continental Drift",
-   "status": "drifted",
-   "note": "The old directions stop here: no exit north from here."
+   "room": "Entrance to Elemental Canyon",
+   "vnum": 9207,
+   "area": "Raff Elemental Canyon",
+   "status": "verified"
   },
   {
    "name": "Faerie Ring",
@@ -2761,11 +2809,11 @@
     "north",
     "enter portal"
    ],
-   "room": "The Switchbacks",
-   "vnum": 25,
+   "room": "Eye of the Storm",
+   "vnum": 28,
    "area": "Graves Continental Drift",
    "status": "drifted",
-   "note": "The old directions stop here: no exit north from here."
+   "note": "The old directions stop here: no 'enter portal' here."
   },
   {
    "name": "Mid-World",
