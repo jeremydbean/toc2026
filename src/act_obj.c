@@ -1549,6 +1549,38 @@ static bool parse_coin_amount(char *argument, long *amount, int *coin_type)
     return true;
 }
 
+/*
+ * A price, short enough to sit in a column.
+ *
+ * format_coins below writes all four denominations because a purse has all
+ * four. A shop line wants "1 gold", not "0 platinum, 1 gold, 0 silver,
+ * 0 copper" forty times over.
+ */
+void format_price(long copper_amount, char *buf, size_t buf_size)
+{
+    long platinum, gold, silver, copper;
+    size_t len = 0;
+
+    copper_to_breakdown(copper_amount, &platinum, &gold, &silver, &copper);
+
+    buf[0] = '\0';
+
+    if (platinum > 0)
+        len += (size_t) snprintf(buf + len, buf_size - len, "%ldp ", platinum);
+    if (gold > 0 && len < buf_size)
+        len += (size_t) snprintf(buf + len, buf_size - len, "%ldg ", gold);
+    if (silver > 0 && len < buf_size)
+        len += (size_t) snprintf(buf + len, buf_size - len, "%lds ", silver);
+    if (copper > 0 && len < buf_size)
+        len += (size_t) snprintf(buf + len, buf_size - len, "%ldc ", copper);
+
+    if (buf[0] == '\0')
+        toc_strlcpy(buf, "free", buf_size);
+    else if (len > 0 && len <= buf_size && buf[len - 1] == ' ')
+        buf[len - 1] = '\0';
+}
+
+
 void format_coins(long copper_amount, char *buf, size_t buf_size)
 {
     long platinum, gold, silver, copper;
@@ -3558,7 +3590,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
     {
         char price_buf[MAX_INPUT_LENGTH];
 
-        format_coins( (long) cost * COPPER_PER_GOLD,
+        format_price( (long) cost * COPPER_PER_GOLD,
                       price_buf, sizeof(price_buf) );
         snprintf(buf, sizeof(buf), "You haggle the price down to %s.\n\r",
                  price_buf);
@@ -3620,9 +3652,9 @@ void do_list( CHAR_DATA *ch, char *argument )
 		}
 
                 /* cost is gold; the purse is copper. Say which. */
-                format_coins( (long) cost * COPPER_PER_GOLD,
+                format_price( (long) cost * COPPER_PER_GOLD,
                               price_buf, sizeof(price_buf) );
-                snprintf( buf, sizeof(buf), "[%2d %-28s] %s.\n\r",
+                snprintf( buf, sizeof(buf), "[%2d %10s] %s.\n\r",
                     obj->level, price_buf, obj->short_descr);
 		send_to_char( buf, ch );
 	    }

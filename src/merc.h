@@ -2358,6 +2358,7 @@ bool    has_enough_gold    (const CHAR_DATA *ch, long gold_cost);
 bool    can_adjust_coin_balance (const CHAR_DATA *ch, long amount, int coin_type);
 bool    adjust_coin_balance (CHAR_DATA *ch, long amount, int coin_type);
 void    sanitize_carried_money (CHAR_DATA *ch);
+void    format_price    (long copper_amount, char *buf, size_t buf_size);
 void    format_coins       (long copper_amount, char *buf, size_t buf_size);
 int     query_carry_weight ( CHAR_DATA *ch);
 int     query_carry_coins  ( CHAR_DATA *ch, long amount);
