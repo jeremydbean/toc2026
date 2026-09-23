@@ -190,12 +190,22 @@ class PlayerFacingCoreFixTests(unittest.TestCase):
         self.assertLess(descriptor_loop, weather.index("if ( buf[0] != '\\0'", descriptor_loop))
         self.assertLess(descriptor_loop, weather.index("do_lycanthropy(d->character", descriptor_loop))
         self.assertIn("!IS_SET(ch->act2, ACT2_LYCANTH)", char_update)
-        self.assertIn("UMIN(ch->were_shape.can_carry, 4)", lycanthropy)
-        self.assertIn("if (pObjIndex == NULL)", lycanthropy)
-        self.assertLess(
-            lycanthropy.index("if (pObjIndex == NULL)"),
-            lycanthropy.index("create_object(pObjIndex, 0)"),
-        )
+
+        # The curse is off, and a mob can no longer catch it to pass on.
+        self.assertIn("LYCANTHROPY_ENABLED", char_update)
+        self.assertIn("if( !LYCANTHROPY_ENABLED )", lycanthropy)
+
+        # Anyone still in were form when it was switched off gets their
+        # own body back rather than being left as a mob.
+        self.assertIn("IS_SET(ch->act2, ACT2_LYCANTH)", lycanthropy)
+        self.assertIn('do_return(ch,"")', lycanthropy)
+
+        # The saved-vnum list is cleared, not replayed. Replaying it lost
+        # everything past the fourth item, stripped the ones it kept, and
+        # would duplicate them now that do_return hands the real objects
+        # back.
+        self.assertNotIn("create_object(pObjIndex, 0)", lycanthropy)
+        self.assertIn("were_shape.obj[counter] = 0", lycanthropy)
 
     def test_were_form_admin_input_rejects_negative_indexes(self) -> None:
         mset = function_body(self.act_wiz, "void do_mset", "void do_string")
