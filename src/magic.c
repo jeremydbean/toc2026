@@ -310,14 +310,12 @@ void do_cast( CHAR_DATA *ch, char *argument )
         char candidate[MAX_INPUT_LENGTH];
         char word[MAX_INPUT_LENGTH];
         char *rest = target_name;
-        int found = skill_lookup( arg1 );
 
         toc_strlcpy( candidate, arg1, sizeof(candidate) );
 
         while ( rest[0] != '\0' )
         {
             char *after = one_argument( rest, word );
-            int longer;
 
             if ( word[0] == '\0' )
                 break;
@@ -325,16 +323,15 @@ void do_cast( CHAR_DATA *ch, char *argument )
             toc_strlcat( candidate, " ", sizeof(candidate) );
             toc_strlcat( candidate, word, sizeof(candidate) );
 
-            if ( ( longer = skill_lookup( candidate ) ) < 0 )
+            if ( skill_lookup( candidate ) < 0 )
                 break;
 
-            found       = longer;
+            /* The lookup below re-resolves arg1, so only the
+               text and the remaining target carry forward. */
             target_name = after;
             toc_strlcpy( arg1, candidate, sizeof(arg1) );
             rest        = after;
         }
-
-        UNUSED_PARAM(found);
     }
 
     one_argument( target_name, arg2 );
