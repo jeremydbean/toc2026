@@ -973,7 +973,7 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
 	fprintf( fp, "Lev  %d\n",	obj->level		     );
     if (obj->timer != 0)
 	fprintf( fp, "Time %d\n",	obj->timer	     );
-    fprintf( fp, "Cost %d\n",	obj->cost		     );
+    fprintf( fp, "Cost %ld\n",	obj->cost		     );
     fprintf( fp, "Cond %d\n",	obj->condition		     );
     fprintf( fp, "Repd %d\n",	obj->number_repair	     );
     if (obj->value[0] != obj->pIndexData->value[0]
@@ -2237,7 +2237,7 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'C':
-	    KEY( "Cost",	obj->cost,		fread_number( fp ) );
+	    KEY( "Cost",	obj->cost,		fread_long( fp ) );
 	    KEY( "Cond",	obj->condition,		(sh_int)(fread_number( fp )) );
 	    break;
 

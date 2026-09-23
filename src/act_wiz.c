@@ -1785,7 +1785,7 @@ void do_ostat( CHAR_DATA *ch, char *argument )
         material_name(obj->material) );
     send_to_char( buf, ch );
 
-    snprintf( buf, sizeof(buf), "Level: %d  Cost: %d  Condition: %d  Timer: %d\n\r",
+    snprintf( buf, sizeof(buf), "Level: %d  Cost: %ld  Condition: %d  Timer: %d\n\r",
         obj->level, obj->cost, obj->condition, obj->timer );
     send_to_char( buf, ch );
 

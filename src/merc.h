@@ -1815,7 +1815,9 @@ struct  obj_index_data
     sh_int              condition;
     sh_int              count;
     sh_int              weight;
-    int                 cost;
+    /* Copper.  long because the dearest object in the world is worth
+       more than an int holds once prices are counted in copper. */
+    long                cost;
     int                 value[5];
     OBJ_ACTION_DATA * action;
     char * action_to_room;
@@ -1846,7 +1848,9 @@ struct  obj_data
     sh_int              wear_flags;
     sh_int              wear_loc;
     sh_int              weight;
-    int                 cost;
+    /* Copper.  long because the dearest object in the world is worth
+       more than an int holds once prices are counted in copper. */
+    long                cost;
     sh_int              level;
     sh_int              condition;
     sh_int              number_repair;

@@ -3258,7 +3258,7 @@ void spell_identify( int sn, int level, CHAR_DATA *ch, void *vo )
 
 
     snprintf( buf, sizeof(buf),
-        "Object '%s' is type %s, extra flags %s.\n\rWeight is %d, value is %d, level is %d.\n\r",
+        "Object '%s' is type %s, extra flags %s.\n\rWeight is %d, value is %ld, level is %d.\n\r",
 
         obj->name,
         item_type_name( obj ),

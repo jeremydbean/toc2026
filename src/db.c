@@ -1062,7 +1062,7 @@ void load_objects( FILE *fp )
         pObjIndex->value[4]             = (int)(fread_flag( fp ));
         pObjIndex->level                = (sh_int)(fread_number( fp ));
         pObjIndex->weight               = (sh_int)(fread_number( fp ));
-        pObjIndex->cost                 = fread_number( fp ); 
+        pObjIndex->cost                 = fread_long( fp );
  
         /* condition */
         letter                          = fread_letter( fp );
@@ -4236,7 +4236,7 @@ static char* identify_obj(OBJ_DATA *obj)
     );
     toc_strlcat(bigbuf, buf, sizeof(bigbuf));
 
-    snprintf( buf, sizeof(buf), "Level: %d  Value: %d  Condition: %d  Timer: %d\n",
+    snprintf( buf, sizeof(buf), "Level: %d  Value: %ld  Condition: %d  Timer: %d\n",
         obj->level, obj->cost, obj->condition, obj->timer );
     toc_strlcat(bigbuf, buf, sizeof(bigbuf));
 
