@@ -213,7 +213,7 @@ There is a spit gun laying here.~
 steel~
 3 0 AO
 15 4 3 402 0
-16 10 401 P
+16 10 4010000 P
 E
 spit gun~
 A standard weapon in Mega-City One.  It uses general
@@ -226,7 +226,7 @@ There are some knee pads laying here.~
 leather~
 9 0 AF
 0 0 0 0 0
--1 5 220 P
+-1 5 2200000 P
 E
 knee pads~
 It is a set of Grak Brothers knee pads.  They are currently
@@ -239,7 +239,7 @@ There is a stooky gland laying here.~
 pill~
 26 0 A
 20 15 15 0 0
-19 3 580 P
+19 3 5800000 P
 E
 stooky gland~
 Stooky glands are known for the restorative properties.
@@ -253,7 +253,7 @@ There is a lawgiver laying here.~
 steel~
 3 0 AO
 25 5 4 402 0
--1 8 902 P
+-1 8 9020000 P
 E
 lawgiver gun~
 The standard weapon for the city's Judges.  It uses general
@@ -291,7 +291,7 @@ A bashball bat is laying here.~
 wood~
 5 0 AN
 4 1 5 7 0
--1 3 100 P
+-1 3 1000000 P
 E
 bashball bat~
 This is the same type of bat used by the little spuggers

@@ -500,7 +500,7 @@ A long, slender whip lies here.~
 leather~
 5 AB AN
 7 3 5 4 0
-8 5 324 P
+8 5 3240000 P
 #9302
 arm hercules~
 the Titanic Arm plates of Hercules~
@@ -508,7 +508,7 @@ Arm plates of the Zodiac lie here.~
 steel~
 9 AGK AI
 6 5 6 0 0
-19 10 1000 P
+19 10 10000000 P
 E
 arm~
 These mighty armors have been worn by this immortal, since the ancient time.
@@ -524,7 +524,7 @@ A belt of the Zodiac lies here.~
 leather~
 9 AGK AL
 6 6 5 0 0
-16 5 1500 P
+16 5 15000000 P
 E
 belt~
 You can immediately see that it belongs to Orion, from the three stars
@@ -539,7 +539,7 @@ A massive skull of a dead Draco lies here.~
 bone~
 4 BGH AO
 16 6 6 8 0
-19 10 1250 P
+19 10 12500000 P
 #9306
 fleece aries~
 the Titanic Fleece of Aries~
@@ -547,7 +547,7 @@ A fleece of the Zodiac lies here.~
 skin~
 9 AGK AC
 7 8 8 0 0
-21 10 1500 P
+21 10 15000000 P
 E
 fleece~
 From a look it resembles the Golden Fleece that exists in the Greek myths.
@@ -561,7 +561,7 @@ A hoof of the Zodiac lies here.~
 hoof~
 9 AGK AG
 5 6 6 0 0
-19 10 1500 P
+19 10 15000000 P
 E
 hoof~
 It is with these hooves that Taurus can stand against Orion's attacks.
@@ -575,7 +575,7 @@ A mask of the Zodiac lies here.~
 gold~
 9 AGHK AE
 7 8 7 0 0
-20 10 1750 P
+20 10 17500000 P
 E
 mask~
 You notice the mask has got two faces, one smiling and the other crying.
@@ -592,7 +592,7 @@ A shell of the Zodiac lies here.~
 shell~
 9 AGK AD
 6 5 6 3 0
-19 10 1425 P
+19 10 14250000 P
 E
 shell~
 A shell which is dented in the middle, resulting from the Hercules' mighty
@@ -607,7 +607,7 @@ A skin of the Zodiac lies here.~
 skin~
 9 AGK AK
 6 8 7 0 0
-20 10 1200 P
+20 10 12000000 P
 E
 skin~
 A skin made of metal, which was worn by Hercules during his Ten Labours.
@@ -619,7 +619,7 @@ A bracelet of the Zodiac lies here.~
 Silver~
 9 AGK AM
 8 7 7 0 0
-20 5 1000 P
+20 5 10000000 P
 E
 bracelet~
 A bracelet of purity and youth, only worn by selected virgins.
@@ -633,7 +633,7 @@ A shield of the Zodiac lies here.~
 gold~
 9 AGK AJ
 7 8 7 0 0
-21 10 1150 P
+21 10 11500000 P
 E
 scale~
 It is a shield of justice, used in the ancient battle against injustice.
@@ -649,7 +649,7 @@ A shield of the Zodiac lies here.~
 gold~
 9 BGH AJ
 0 0 0 0 0
-15 10 1000 P
+15 10 10000000 P
 E
 scale~
 It is a shield of injustice, it picks on the innocent.
@@ -665,7 +665,7 @@ Sting of the Zodiac lies here.~
 silver~
 5 AGK AN
 0 5 7 11 0
-20 5 1500 P
+20 5 15000000 P
 E
 sting~
 This dreadful weapon put a lot of mortals to death before Scorpio was banished.
@@ -681,7 +681,7 @@ the Arrow of Sagittarius lies here.~
 magic~
 3 AGK AO
 10 3 8 67 0
-18 5 1050 P
+18 5 10500000 P
 E
 arrow~
 It's an arrow of lightning; it will never miss any target.
@@ -693,7 +693,7 @@ the Titanic Bow of Sagittarius lies here.~
 wood~
 5 AGK ANP
 9 5 7 6 F
-18 10 1250 P
+18 10 12500000 P
 E
 bow~
 The gigantic bow used by the Archer; it is a very powerful weapon.
@@ -709,7 +709,7 @@ a pair of horns of the Zodiac lies here.~
 bone~
 9 AGK AH
 6 7 6 0 0
-20 10 1800 P
+20 10 18000000 P
 E
 horn~
 These strange horns are the work of gods, shaped to fit on hands.
@@ -726,7 +726,7 @@ A vessel of the Zodiac lies here.~
 gold~
 4 AGK AO
 10 9 9 22 0
-20 10 1780 P
+20 10 17800000 P
 E
 vessel~
 This vessel has been carried by the Water Bearer ever since she came to the
@@ -739,7 +739,7 @@ A fish tail of the Zodiac lies here.~
 skin~
 9 AGK AF
 7 6 5 0 0
-19 5 1420 P
+19 5 14200000 P
 E
 tail~
 This tail can actually be worn by mortals somehow as leggings ... another
@@ -756,7 +756,7 @@ A ring of specialty lies here.~
 silver~
 9 AFGK AB
 6 6 8 2 0
-23 1 1250 P
+23 1 12500000 P
 E
 ring~
 This ring belongs to Cassiopeia, queen of the Universe.
@@ -773,7 +773,7 @@ A sceptre of interest lies here.~
 wood~
 1 AFGK AO
 0 0 999 0 0
-25 20 1750 P
+25 20 17500000 P
 E
 sceptre~
 You'd better give it back, or the king of the Universe will punish you.
@@ -789,7 +789,7 @@ Here lies a fortune ... a small ring of power.~
 ~
 9 ABFGI AB
 8 8 8 0 0
-29 1 1250 P
+29 1 12500000 P
 E
 ring~
 It conceals the power of the universe.
@@ -805,7 +805,7 @@ A dazzling white object lies on the ground.~
 silver~
 5 ABFGI AN
 0 4 9 6 0
-28 15 1300 P
+28 15 13000000 P
 A
 18 2
 A
@@ -817,7 +817,7 @@ A shoot grows here, covered with dew.~
 wood~
 18 AB A
 0 0 0 0 0
-22 0 100 P
+22 0 1000000 P
 #9325
 summer flower~
 a summer flower~
@@ -825,7 +825,7 @@ A flower grows here, waiting to be picked up.~
 flower~
 18 AB A
 0 0 0 0 0
-22 0 100 P
+22 0 1000000 P
 #9326
 autumn leaf~
 an autumn leaf~
@@ -833,7 +833,7 @@ A leaf lies here, as if just fallen from a tree.~
 leaf~
 18 AB A
 0 0 0 0 0
-22 0 100 P
+22 0 1000000 P
 #9327
 winter branch~
 a winter branch~
@@ -841,7 +841,7 @@ A branch lies here, still covered with snow.~
 wood~
 18 AB A
 0 0 0 0 0
-22 0 100 P
+22 0 1000000 P
 #9328
 chains andromeda~
 chains of Andromeda~
@@ -849,7 +849,7 @@ Some chains lie on the floor.~
 gold~
 13 AF A
 0 0 0 0 0
-18 0 100 P
+18 0 1000000 P
 E
 chains~
 They certainly look important!

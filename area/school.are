@@ -1166,7 +1166,7 @@ A war banner is on the floor here.~
 cloth~
 1 AG A
 0 0 200 0 0
-0 2 1 P
+0 2 10000 P
 E
 banner~
 This is the official Merc war banner to see you through the darkest realm!
@@ -1199,7 +1199,7 @@ Two bottle bottoms joined together by wire is here on the ground.
 glass~
 9 0 AE
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 A
 3 1
 A
@@ -1211,7 +1211,7 @@ A pocket protector is here.  It bristles with impliments of destruction.~
 leather~
 9 0 AD
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3721
 jacket black~
 a black, leather jacket~
@@ -1219,7 +1219,7 @@ A black leather motorcycle jacket is here gathering dust.~
 leather~
 9 0 AD
 0 0 0 0 0
--1 2 15 P
+-1 2 150000 P
 #3722
 jeans black~
 black jeans~
@@ -1227,7 +1227,7 @@ A pair of black button fly jeans is sitting here.~
 cloth~
 9 0 AF
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3723
 black leather boots~
 black, leather boots~
@@ -1235,7 +1235,7 @@ A pair of old black, leather boots sits here.~
 leather~
 9 0 AG
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3724
 beer~
 A bottle of ToC Beer~
@@ -1243,7 +1243,7 @@ A bottle of delicious looking ToC Beer is sitting here.~
 glass~
 17 0 A
 10 10 1 0 0
--1 1 10 P
+-1 1 100000 P
 E
 beer~
 Proudly Brewed by Soulcrusher Breweries.  *patent pending*
@@ -1256,7 +1256,7 @@ A skimpy looking bra is sitting here.~
 cloth~
 9 0 AD
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3726
 mini skirt black~
 a black mini-skirt~
@@ -1264,7 +1264,7 @@ A black mini-skirt is here getting wrinkled.~
 cloth~
 9 0 AL
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3727
 stockings~
 a set of lacy stockings~
@@ -1272,7 +1272,7 @@ Some lace is here gathering dust.~
 cloth~
 9 0 AF
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3728
 boots black~
 black knee-high boots~
@@ -1280,7 +1280,7 @@ A pair of black boots sits here in the dust.~
 leather~
 9 0 AG
 0 0 0 0 0
--1 2 10 P
+-1 2 100000 P
 #3729
 shirt~
 a sweaty t-shirt~
@@ -1288,7 +1288,7 @@ A sweaty, smelly t-shirt is laying here.~
 cloth~
 9 0 AD
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3730
 shorts~
 a pair of gym shorts~
@@ -1296,7 +1296,7 @@ Some cloth is sitting here in the dirt.~
 cloth~
 9 0 AF
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3731
 soft boots~
 a pair of soft boots~
@@ -1304,7 +1304,7 @@ A pair of soft boots has been thrown here.~
 cloth~
 9 0 AG
 0 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #3732
 cup spit~
 a spit filled cup~
@@ -1352,7 +1352,7 @@ A brand new shield sits here in a corner.~
 metal~
 9 0 AJ
 1 1 1 0 0
--1 10 10 P
+-1 10 100000 P
 A
 5 1
 #3738
@@ -1362,7 +1362,7 @@ A brand new sword is laying up against the wall.~
 metal~
 5 0 AN
 1 2 6 3 0
-3 5 10 P
+3 5 100000 P
 A 
 18 1
 A
@@ -1374,7 +1374,7 @@ A brand new mace is laying up against the wall.~
 metal~
 5 0 AN
 4 2 6 8 0
-3 5 10 P
+3 5 100000 P
 A
 18 2
 A 
@@ -1386,7 +1386,7 @@ A brand new dagger is laying up against the wall.~
 metal~
 5 0 AN
 2 2 6 11 0
-3 5 10 P
+3 5 100000 P
 A
 18 1
 A 
@@ -1398,7 +1398,7 @@ A brand new kris is sitting here.~
 metal~
 5 0 AN
 2 2 6 11 0
-3 5 10 P
+3 5 100000 P
 A
 18 2
 A 
@@ -1410,7 +1410,7 @@ Some robes are sitting here with a big N embroidered on the back.~
 wool~
 9 0 AK
 1 1 1 1 0
-3 1 10 P
+3 1 100000 P
 A 
 4 1
 A
@@ -1422,7 +1422,7 @@ A heavy looking club is sitting here.~
 wood~
 5 0 AN
 4 2 6 8 0
-3 10 10 P
+3 10 100000 P
 A
 18 2
 A 
@@ -1443,7 +1443,7 @@ a quart of Milwalkee's Best~
 A quart of Milwalkee's Best is here calling your name.~
 glass~
 17 0 A     1 1 1 0 0
-3 1 10 P
+3 1 100000 P
 #3746
 sushi~
 some sushi~
@@ -1451,7 +1451,7 @@ Some sushi is sitting here waiting to be eaten.~
 fish~
 19 0 A
 48 0 0 0 0 
-3 1 10 P
+3 1 100000 P
 #3747
 sweater~
 a sweater with M.U. on it~
@@ -1459,7 +1459,7 @@ A grey sweater is here in the dirt.~
 wool~
 9 0 AD
 1 1 1 0 0
-3 1 10 P
+3 1 100000 P
 A 
 2 1
 A
@@ -1491,7 +1491,7 @@ A meat patty making a gobbling noise is resting here.~
 meat~
 19 0 A
 50 0 0 0 0
-1 1 10 P
+1 1 100000 P
 #3750
 nacho salsa~
 nacho's with salsa~
@@ -1499,7 +1499,7 @@ A little mexican snack to tide you over until dinner.~
 food~
 19 0 A
 12 0 0 0 0
-1 1 10 P
+1 1 100000 P
 #3751
 coffee cup~
 a cup of coffee~
@@ -1507,7 +1507,7 @@ A cup of a hearty rich liquid.~
 steel~
 17 0 A
 3 3 12 0 0
-3 1 1 P
+3 1 10000 P
 #3752
 toy train~
 a toy train~
@@ -1515,7 +1515,7 @@ A souvenir toy train is sitting here.~
 steel~
 13 0 AO
 0 0 0 0 0
-1 1 10 P
+1 1 100000 P
 A
 4 1
 A
@@ -1527,7 +1527,7 @@ A big heaping bowl of grits with butter is sitting here.~
 steel~
 19 0 A
 48 0 0 0 0
-5 1 10 P
+5 1 100000 P
 #3754
 portal~
 A Portal~
@@ -1543,7 +1543,7 @@ A slice of cheese cake is sitting here on a plate.~
 food~
 19 0 A
 24 0 0 0 0
-1 0 1 P
+1 0 10000 P
 
 #0
 

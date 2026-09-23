@@ -451,7 +451,7 @@ A large two handed sword rests on the floor.~
 adamantite~
 5 AG AN
 1 8 8 3 F
-52 10 5000 P
+52 10 50000000 P
 A
 19 4
 A
@@ -465,7 +465,7 @@ A large set of elven platemail lies on the ground.~
 adamantite~
 9 AGK AD
 21 16 12 5 0
-52 20 4000 P
+52 20 40000000 P
 A
 2 2
 A
@@ -481,7 +481,7 @@ A pair of elven bracers lies here.~
 adamantite~
 9 GU AI
 20 15 13 5 0
-52 5 3000 P
+52 5 30000000 P
 A
 12 30
 A
@@ -493,7 +493,7 @@ A pair of elven leggings lies here.~
 adamantite~
 9 GK AF
 16 15 21 5 0
-52 15 3500 P
+52 15 35000000 P
 A
 5 2
 A
@@ -505,7 +505,7 @@ A sparkling white silver diadem has been left behind here.~
 silver~
 8 GK AC
 14 23 15 5 0
-52 5 5000 P
+52 5 50000000 P
 A
 3 2
 A
@@ -519,7 +519,7 @@ A deadly looking dirk lies in the soil.~
 steel~
 5 AGU AN
 2 6 12 11 0
-52 15 5500 P
+52 15 55000000 P
 A
 2 2
 A
@@ -533,7 +533,7 @@ An elven helmet lies here.~
 adamantite~
 9 GK AE
 16 21 15 5 0
-52 8 8000 P
+52 8 80000000 P
 A
 13 25
 A
@@ -547,7 +547,7 @@ A pair of elven boots lies here.~
 adamantite~
 9 GK AG
 15 14 21 5 0
-52 10 6000 P
+52 10 60000000 P
 A
 2 1
 A
@@ -559,7 +559,7 @@ A long slender elven sword lies here.~
 adamantite~
 5 AFKU AN
 1 6 9 3 0
-52 10 8000 P
+52 10 80000000 P
 A
 5 2
 A
@@ -573,7 +573,7 @@ An elven bracelet lies here.~
 adamantite~
 9 GKU AM
 17 15 21 5 0
-52 5 1000 P
+52 5 10000000 P
 A
 1 1
 A
@@ -589,7 +589,7 @@ An elvish looking cloak lies here.~
 cloth~
 9 GK AC
 21 13 16 5 0
-52 5 4000 P
+52 5 40000000 P
 A
 12 15
 A
@@ -605,7 +605,7 @@ An elvish staff lies here in a cube of light.~
 wood~
 1 AG AO
 0 0 999 0 0
-52 5 2400 P
+52 5 24000000 P
 A
 19 2
 A
@@ -617,7 +617,7 @@ A pair of elvish gloves lies here.~
 adamantite~
 9 GKU AH
 22 14 16 5 0
-52 6 600 P
+52 6 6000000 P
 A
 17 -5
 A
@@ -631,7 +631,7 @@ A large white medallion lies here on the floor.~
 silver~
 9 GJ AC
 22 14 14 5 0
-52 10 1000 P
+52 10 10000000 P
 A
 12 30
 #5614
@@ -641,7 +641,7 @@ A large black staff lies here absorbing the light.~
 iron~
 1 ABGU AO
 0 0 999 0 0
-52 8 6000 P
+52 8 60000000 P
 A
 12 15
 A
@@ -657,7 +657,7 @@ A large cloak resembling the coming doom lies here.~
 cloth~
 9 GHJMU AC
 20 10 10 5 0
-52 10 14000 P
+52 10 140000000 P
 A
 13 -50
 A
@@ -669,7 +669,7 @@ A pair of leggings resembling the doom.~
 iron~
 9 GHJMU AF
 19 14 18 5 0
-52 11 10000 P
+52 11 100000000 P
 A
 12 -20
 A
@@ -683,7 +683,7 @@ A horn trembling with power lies here.~
 stone~
 9 GJ AO
 16 10 10 5 0
-52 14 12500 P
+52 14 125000000 P
 A
 21 -3
 #5618
@@ -693,7 +693,7 @@ A carefully placed book rests on a pedestal.~
 vellum~
 13 I AO
 0 0 0 0 0
-40 1 1000 P
+40 1 10000000 P
 E
 book~
 You open the dusty book and finds that most of the pages have been burned
@@ -724,7 +724,7 @@ A pair of extremely large claws lies here.~
 stone~
 5 AGJLQU AN
 6 7 8 3 0
-52 25 12000 P
+52 25 120000000 P
 A
 13 10
 A
@@ -740,7 +740,7 @@ A pair of sleeves resembling the doom lies here.~
 iron~
 9 GHJMU AI
 22 17 18 5 0
-52 14 1900 P
+52 14 19000000 P
 A
 13 5
 A
@@ -752,7 +752,7 @@ A large magic girdle lies here.~
 mithril~
 9 GJ AL
 24 19 15 5 0
-52 10 1600 P
+52 10 16000000 P
 A
 13 20
 A
@@ -764,7 +764,7 @@ A large diamond platemail lies here.~
 diamond~
 9 AGIK AD
 24 19 18 5 0
-52 10 25000 P
+52 10 250000000 P
 A
 17 5
 A
@@ -776,7 +776,7 @@ The funds of tarin lies here.~
 gold~
 20 F A
 2000 0 0 0 0
-30 25 2000 P
+30 25 20000000 P
 #5624
 key~
 a key~
@@ -784,7 +784,7 @@ A tiny key lies here.~
 iron~
 18 AG AO
 0 0 0 0 0
-30 1 1 P
+30 1 10000 P
 #5625
 opal potion~
 an opal potion~
@@ -792,7 +792,7 @@ An opal potion lies here in the dirt.~
 glass~
 10 GKQ AO
 30 518 81 36 0
-30 5 1800 P
+30 5 18000000 P
 #5626
 chest opal~
 the opal chest~
@@ -800,7 +800,7 @@ A little opal chest rest on the floor.~
 stone~
 15 AGK 0
 500 15 5633 0 0
-40 1000 50 P
+40 1000 500000 P
 #5627
 visor kings~
 the kings visor~
@@ -808,7 +808,7 @@ A visor lies here, it glows in a strange way.~
 steel~
 9 AGJQ AE
 17 28 19 12 0
-52 10 5000 P
+52 10 50000000 P
 A
 1 2
 A
@@ -824,7 +824,7 @@ A black knights ring has been left behind here.~
 iron~
 9 GHJU AB
 22 10 9 5 0
-52 4 2800 P
+52 4 28000000 P
 A
 13 20
 A
@@ -836,7 +836,7 @@ An enormous iron mask lies here, trembling with powers.~
 iron~
 9 GHMU AE
 0 20 0 0 0
-51 15 8500 P
+51 15 85000000 P
 A
 3 -4
 A
@@ -848,7 +848,7 @@ A heavy wooden club lies here in the dirt.~
 wood~
 5 0 AN
 7 6 8 7 0
-40 12 1728 P
+40 12 17280000 P
 A
 22 -5
 A
@@ -860,7 +860,7 @@ A titans chain mail lies here.~
 steel~
 9 G AD
 12 10 13 3 0
-51 20 2800 P
+51 20 28000000 P
 A
 12 -30
 A
@@ -872,7 +872,7 @@ A stained scroll lies here.~
 vellum~
 2 G AO
 30 36 17 82 0
--1 2 2500 P
+-1 2 25000000 P
 #5633
 key~
 an expensive key~
@@ -880,7 +880,7 @@ A key is here.~
 iron~
 18 0 AO
 0 0 0 0 0
-30 2 1 P
+30 2 10000 P
 #5634
 dagger elven~
 an elven dagger~
@@ -888,7 +888,7 @@ A dagger is here.~
 adamantite~
 5 AU AN
 2 4 10 18 0
-52 5 5000 P
+52 5 50000000 P
 A
 1 1
 A

@@ -232,7 +232,7 @@ a little key shines here.~
 bronze~
 18 0 AO
 0 0 0 0 0
-15 1 75 P
+15 1 750000 P
 E
 key little~
 A little key.
@@ -244,7 +244,7 @@ a piece of a tentacle.~
 leather~
 9 0 AO
 3 3 3 3 0
-9 2 100 P
+9 2 1000000 P
 E
 tentacle~
 A slimy green tentacle.
@@ -260,7 +260,7 @@ a little treasure box is here.~
 adamantite~
 15 V A
 300 13 29350 0 0
-15 2 200 P
+15 2 2000000 P
 E
 box treasure little~
 This treasure box looks like it had been sitting at the bottom of the ocean
@@ -273,7 +273,7 @@ a note is here.~
 paper~
 13 V A
 0 0 0 0 0
-10 1 75 P
+10 1 750000 P
 E
 note~
 To whom it concerns,
@@ -304,7 +304,7 @@ some gold coins.~
 gold~
 20 V A
 1500 0 0 0 0
-10 1 1500 P
+10 1 15000000 P
 #29355
 dagger barbed~
 a barbed dagger~
@@ -312,7 +312,7 @@ a barbed dagger is here.~
 silver~
 5 BUV AN
 2 4 8 2 0
-18 2 200 P
+18 2 2000000 P
 E
 dagger barbed~
 A sharp, barbed dagger.
@@ -337,7 +337,7 @@ the jaws of a mutant barnacle are here.~
 stone~
 5 A AN
 0 4 8 10 0
-20 2 200 P
+20 2 2000000 P
 E
 jaws mutant~
 Jaws of a mutant barnacle.  Since when did barnacles grow jaws?
@@ -361,7 +361,7 @@ a gold pocket watch~
 gold~
 4 G AO
 16 5 5 3 0
-15 2 200 P
+15 2 2000000 P
 E
 pocket watch~
 A gold pocket watch.
@@ -373,7 +373,7 @@ a strong, blue shield is here.~
 adamantite~
 9 GM AJ
 5 7 7 4 0
-17 2 150 P
+17 2 1500000 P
 E
 shield titanium~
 A titanium shield that was manufactured inside Korzath's Fortress.
@@ -391,7 +391,7 @@ a white piece of the sail.~
 cloth~
 9 0 AK
 3 4 3 2 0
-12 3 100 P
+12 3 1000000 P
 E
 sail piece~
 A white piece of the ship's sail.
@@ -411,7 +411,7 @@ a sign is here.~
 paper~
 13 V A
 0 0 0 0 0
-10 1 75 P
+10 1 750000 P
 E
 sign~
 -
@@ -434,7 +434,7 @@ The sword used by the great William Wallace.~
 iron~
 5 HVZ J AN
 1 18 3 1 0
--1 15 75 P
+-1 15 750000 P
 #29362
 stone Hamish~
 the stone of Hamish~
@@ -442,7 +442,7 @@ a large stone of Hamish is here.~
 stone~
 5 HVZ J AN
 0 18 3 8 F
--1 15 75 P
+-1 15 750000 P
 #29363
 wits odysseus~
 (Genius) wits of Odysseus~
@@ -450,7 +450,7 @@ A gift from the Gods, the wits of Odysseus~
 stone~
 9 FVZ J AE
 14 15 12 9 0
--1 5 75 P
+-1 5 750000 P
 #29364
 halo righteousness~
 (Holy) halo of righteousness~
@@ -458,7 +458,7 @@ a glowing halo made visible by the Gods.~
 adamantite~
 9 KVZ J AE
 12 15 15 8 0
--1 5 75 P
+-1 5 750000 P
 #29365
 ball crystal~
 (Cracked) crystal ball~
@@ -466,7 +466,7 @@ a crystal ball that has been cracked open allowing light to escape.~
 adamantite~
 1 AVZ J AO
 0 0 999 0 0
--1 5 75 P
+-1 5 750000 P
 #29366
 ring great serpent~
 a great serpent ring~
@@ -474,7 +474,7 @@ the ring depicts a serpent eating it's own tail forming a ring.~
 stone~
 9 GVZ J AB
 14 14 14 9 0
--1 5 75 P
+-1 5 750000 P
 #29367
 bracers coradine~
 a coradine bracer~
@@ -482,7 +482,7 @@ a bracer made of a godly material, coradine.~
 adamantite~
 9 BVZ J AM
 12 12 12 9 0
--1 5 75 P
+-1 5 750000 P
 #29368
 leggings fairlight~
 fairlight leggings~
@@ -490,7 +490,7 @@ a light pair of dextrous leggings.~
 cloth~
 9 VZ J AF
 11 12 12 9 0
--1 5 75 P
+-1 5 750000 P
 #29369
 boots underworld~
 Underworld boots~
@@ -498,7 +498,7 @@ a pair of boots wrought in the Underworld.~
 stone~
 9 JVZ J AG
 12 14 12 8 0
--1 5 75 P
+-1 5 750000 P
 #29370
 amulet destiny~
 amulet of destiny~
@@ -506,7 +506,7 @@ an amulet of pure destiny, weaved by the Gods.~
 adamantite~
 9 VZ J AC
 10 11 12 8 0
--1 5 75 P
+-1 5 750000 P
 #29371
 plate century~
 (Shining) century plate~
@@ -514,7 +514,7 @@ some century plate created by the Gods.~
 adamantite~
 9 VZ J AD
 15 14 14 9 0
--1 5 75 P
+-1 5 750000 P
 #29372
 chest quest~
 a Quest Chest~
@@ -522,7 +522,7 @@ the Quest Chest is here.~
 stone~
 15 FV AO
 999 15 29373 0 0
-62 5 75 P
+62 5 750000 P
 #29373
 key quest~
 a quest key~
@@ -530,7 +530,7 @@ the key to the Quest Chest.~
 stone~
 18 AZ J AO
 0 0 0 0 0
-62 900 900 P
+62 900 9000000 P
 #0
 
 

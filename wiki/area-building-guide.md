@@ -67,6 +67,8 @@ Prefer this document over the old HTML wiki files, which contain the same inform
 
 ---
 
+> **Cost is copper.** The cost field on an object's value line is counted in copper, not gold: a gold piece is 10000 and a silver is 100. `tools/costs_to_copper.py` converted the world in one pass and is kept for reference; new areas should be written in copper directly.
+
 ## Overview & File Structure
 
 An area file (`.are`) is a plain-text file that defines all the content in one area of the game. All `.are` files must be listed in `area/area.lst` for the game to load them.

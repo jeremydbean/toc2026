@@ -412,8 +412,8 @@ Shop commands include `list`, `buy`, `sell`, `value`, and `repair`. Healers use
 denominations; `worth` summarizes carried money.
 
 `list` shows each price in the denominations it will actually cost, written
-short: `1g`, `5g 20s`, `3p`. The smallest price any shop can charge is one
-gold.
+short: `1c`, `5g 20s`, `3p`. Prices are counted in copper, so a shop can
+charge as little as a single copper coin - the bread in Mud School does.
 
 Banks support:
 

@@ -480,7 +480,7 @@ A small, very simple key.~
 steel~
 18 P AO
 0 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 simple key~
 It's a simple key.
@@ -492,7 +492,7 @@ A small crystal key.~
 adamantite~
 18 P AO
 0 0 0 0 0
-20 2 100 P
+20 2 1000000 P
 E
 crystal key~
 A crystal key.
@@ -504,7 +504,7 @@ A large diamond key.~
 adamantite~
 18 P AO
 0 0 0 0 0
-40 3 100 P
+40 3 1000000 P
 E
 diamond key~
 A key made of diamond.
@@ -516,7 +516,7 @@ A key to a guest room.~
 brass~
 18 V AO
 0 0 0 0 0
-17 1 100 P
+17 1 1000000 P
 E
 guest key~
 The key to the guest rooms.
@@ -528,7 +528,7 @@ A dark black key.~
 stone~
 18 E AO
 0 0 0 0 0
-20 1 100 P
+20 1 1000000 P
 E
 black key~
 A black colored key.
@@ -540,7 +540,7 @@ Some soldier's arm plates are here.~
 brass~
 9 A AI
 3 3 4 0 0
-3 2 100 P
+3 2 1000000 P
 E
 plates~
 Soldier arm plates.
@@ -554,7 +554,7 @@ A pair of soldier's leggings are here.~
 brass~
 9 A AF
 4 4 5 0 0
-3 2 100 P
+3 2 1000000 P
 E
 leggings~
 Soldier leggings.
@@ -568,7 +568,7 @@ A belt made of cord lies here.~
 leather~
 9 I AL
 4 3 5 0 0
-4 1 100 P
+4 1 1000000 P
 E
 belt~
 A belt made of cord.
@@ -582,7 +582,7 @@ A gleaming prism cube bends light here.~
 adamantite~
 1 A AO
 0 0 999 0 0
-4 1 100 P
+4 1 1000000 P
 E
 cube~
 A beautiful, light bending prism that provides light.
@@ -596,7 +596,7 @@ A soldier captain's boots sit here.~
 leather~
 9 0 AG
 3 3 3 0 0
-6 2 100 P
+6 2 1000000 P
 E
 boots~
 Tight fitting boots.
@@ -610,7 +610,7 @@ A sharp sword shines here.~
 steel~
 5 B AN
 1 2 5 1 0
-6 3 100 P
+6 3 1000000 P
 E
 sword~
 This sword is a standard issue soldier sword.
@@ -626,7 +626,7 @@ A makeshift shield lies discarded.~
 steel~
 9 0 AJ
 2 3 4 0 0
-9 2 100 P
+9 2 1000000 P
 E
 tray~
 A serving tray that can be used as a shield.
@@ -640,7 +640,7 @@ Some serving gloves are here.~
 cloth~
 9 0 AH
 3 3 3 0 0
-10 1 100 P
+10 1 1000000 P
 E
 gloves~
 A pair of serving gloves.
@@ -654,7 +654,7 @@ A tuxedo vest is here.~
 cloth~
 9 0 AD
 3 4 3 0 0
-12 2 100 P
+12 2 1000000 P
 E
 vest~
 This vest used to belong to a waiter.
@@ -668,7 +668,7 @@ A large carving knife is on the ground.~
 bronze~
 5 A AN
 2 4 7 25 0
-15 2 100 P
+15 2 1000000 P
 E
 knife~
 This is a sharp carving knife.
@@ -684,7 +684,7 @@ A cooks apron lies in a pile.~
 cloth~
 9 M AL
 3 4 4 1 0
-16 1 100 P
+16 1 1000000 P
 E
 apron~
 A white apron that goes around your waist.
@@ -707,7 +707,7 @@ Some white cloth has been dropped here.~
 cloth~
 9 0 AE
 4 4 5 1 0
-16 1 100 P
+16 1 1000000 P
 E
 hat~
 A long white top hat.
@@ -724,7 +724,7 @@ A pair of tight black leggings are nearly hidden from sight.~
 cloth~
 9 F AF
 4 3 4 1 0
-18 4 200 P
+18 4 2000000 P
 E
 leggings~
 These leggings look really tight.
@@ -738,7 +738,7 @@ A short silver sword gleams here.~
 silver~
 5 AI AN
 1 4 8 3 0
-19 9 350 P
+19 9 3500000 P
 E
 sword~
 A heavy silver sword.
@@ -756,7 +756,7 @@ A Royal cape has been left here.~
 wool~
 9 0 AC
 4 4 4 0 0
-21 5 200 P
+21 5 2000000 P
 E
 cape~
 This cape is embroidered with masterful designs that must have been done by
@@ -771,7 +771,7 @@ Some crafted shoes are here.~
 bronze~
 9 0 AG
 4 4 4 1 0
-20 4 250 P
+20 4 2500000 P
 E
 shoes~
 These shoes must have been made by a master craftsmen.
@@ -789,7 +789,7 @@ A Royal helmet has been thrown here.~
 gold~
 9 G AE
 5 4 5 2 0
-24 6 400 P
+24 6 4000000 P
 E
 helmet~
 The royal helmet looks quite sturdy.
@@ -803,7 +803,7 @@ Precious crested arm plates were left behind here.~
 iron~
 9 G AI
 6 5 4 2 0
-24 7 450 P
+24 7 4500000 P
 E
 plates~
 These arm plates have the crest of Korzath on them.
@@ -817,7 +817,7 @@ A rare rainbow ring lies here.~
 adamantite~
 9 G AB
 5 5 6 5 0
-23 3 300 P
+23 3 3000000 P
 E
 ring~
 A rare rainbow colored ring.
@@ -831,7 +831,7 @@ An expensive silver bracelet glimmers in the dust.~
 silver~
 9 AI AM
 5 5 3 2 0
-23 5 375 P
+23 5 3750000 P
 E
 bracelet~
 The bracelet is made out of pure silver.
@@ -845,7 +845,7 @@ A piece of tainted black platemail is here.~
 adamantite~
 9 CEJ AD
 5 6 5 2 0
-26 5 200 P
+26 5 2000000 P
 E
 platemail~
 This platemail is tainted with the Guardians vileness.
@@ -863,7 +863,7 @@ A Guardian's fire scorched staff is here.~
 wood~
 4 C AO
 35 7 7 65 0
-27 3 150 P
+27 3 1500000 P
 E
 staff~
 This staff is scorched from fire.
@@ -877,7 +877,7 @@ A lightweight security vest lies on the floor.~
 leather~
 9 0 AD
 6 7 6 5 0
-27 5 300 P
+27 5 3000000 P
 E
 vest~
 The security vest is thick and looks like it will fit snugly on you.
@@ -891,7 +891,7 @@ A bright security light shines here.~
 steel~
 1 B AO
 0 0 999 0 0
-27 4 100 P
+27 4 1000000 P
 E
 light~
 The security light is powered by an unknown source.
@@ -907,7 +907,7 @@ A sturdy security shield is here.~
 iron~
 9 0 AJ
 7 6 7 2 0
-29 4 150 P
+29 4 1500000 P
 E
 shield~
 The security shield looks reliable.
@@ -919,7 +919,7 @@ An important key card lies here!~
 gold~
 18 B AO
 0 0 0 0 0
-28 1 100 P
+28 1 1000000 P
 E
 key~
 A very important key card.
@@ -931,7 +931,7 @@ A strong metallic pack lies in the dust.~
 adamantite~
 15 0 AK
 950 1 0 0 0
-29 5 500 P
+29 5 5000000 P
 E
 pack~
 This metallic pack sure can hold a lot of stuff.
@@ -955,7 +955,7 @@ A well used walking stick lies warped on the ground.~
 wood~
 4 I AO
 30 15 15 80 0
-30 2 100 P
+30 2 1000000 P
 E
 stick~
 A sturdy walking stick.
@@ -971,7 +971,7 @@ A pair of black engineer boots sit here.~
 brass~
 9 0 AG
 7 8 7 0 0
-32 5 200 P
+32 5 2000000 P
 E
 boots~
 The black engineer boots look brand new.
@@ -985,7 +985,7 @@ Some engineer gloves would be useful now.~
 steel~
 9 0 AH
 8 8 6 0 0
-32 4 250 P
+32 4 2500000 P
 E
 gloves~
 Brand new engineer gloves.
@@ -999,7 +999,7 @@ A glowing potion is begging to be quaffed.~
 glass~
 10 0 AO
 35 1 3 28 0
-35 2 150 P
+35 2 1500000 P
 E
 potion~
 The potion just glows and glows.
@@ -1011,7 +1011,7 @@ A green scroll is dying to be recited!~
 vellum~
 2 0 AO
 35 3 3 39 0
-35 1 175 P
+35 1 1750000 P
 E
 scroll~
 This scroll is just begging to be recited.
@@ -1023,7 +1023,7 @@ A large dented hammer was once used by a blacksmith.~
 adamantite~
 5 GI AN
 4 5 10 8 A
-39 10 275 P
+39 10 2750000 P
 E
 hammer~
 This hammer has been dented by the blacksmith that used it all the time.
@@ -1043,7 +1043,7 @@ Blue titanium arm plates look brand new.~
 adamantite~
 9 IM AI
 9 9 9 4 0
-39 10 700 P
+39 10 7000000 P
 E
 plates~
 These arm plates look like they just came off the assembly line.
@@ -1059,7 +1059,7 @@ Safety goggles that protect the eyes.~
 glass~
 9 I AE
 9 9 7 4 0
-36 3 280 P
+36 3 2800000 P
 E
 goggles~
 Protection for the eyes!
@@ -1075,7 +1075,7 @@ A pair of blue titanium bracers lies here.~
 adamantite~
 9 IM AM
 9 9 9 3 0
-36 10 700 P
+36 10 7000000 P
 E
 bracers~
 These bracers haven't been used much.
@@ -1091,7 +1091,7 @@ Some faded denim jeans are here.~
 cloth~
 9 M AF
 9 8 9 3 0
-37 4 190 P
+37 4 1900000 P
 E
 jeans~
 Korzath brand name faded denim jeans.
@@ -1109,7 +1109,7 @@ A ring of water glows here.~
 stone~
 17 B AB
 200 200 0 0 0
-38 2 1000 P
+38 2 10000000 P
 E
 ring~
 A ring that holds water!
@@ -1125,7 +1125,7 @@ A dark cloak hums here.~
 cloth~
 9 C AK
 11 12 11 5 0
-40 1 900 P
+40 1 9000000 P
 E
 cloak~
 A pure cloak of darkness.
@@ -1141,7 +1141,7 @@ A titanium belt is taking up space here.~
 adamantite~
 9 IM AL
 12 12 12 6 0
-40 10 700 P
+40 10 7000000 P
 E
 belt~
 A strong titanium belt.
@@ -1157,7 +1157,7 @@ A powerful Mind Mace is lying on the ground.~
 adamantite~
 5 G AN
 4 6 8 27 C
-43 9 1000 P
+43 9 10000000 P
 E
 mace~
 The Mind Mace was made by a Mad Mage.
@@ -1175,7 +1175,7 @@ A richly oiled cloak is collecting dust.~
 leather~
 9 G AK
 12 12 12 6 0
-43 7 900 P
+43 7 9000000 P
 E
 cloak~
 This cloak is heavily oiled to deter the effect of water.
@@ -1191,7 +1191,7 @@ Some scorched plate is here.~
 steel~
 9 GMWZ C AD
 10 10 10 8 0
-44 10 600 P
+44 10 6000000 P
 E
 plate~
 This plate armor has been scorched by flames.
@@ -1211,7 +1211,7 @@ A blasting gleam of Starlight is super bright.~
 adamantite~
 1 AGWZ C AO
 0 0 999 0 0
-45 5 1500 P
+45 5 15000000 P
 E
 starlight~
 A super bright blast of Starlight!
@@ -1233,7 +1233,7 @@ A list of all the possible concoctions is here!!~
 paper~
 2 0 AO
 40 3 3 74 0
-40 1 500 P
+40 1 5000000 P
 E
 list~
 Finally!  A list of all the concoctions!
@@ -1247,7 +1247,7 @@ An invisible robe is here.~
 adamantite~
 9 FGWXZ AK AFK
 10 11 10 4 0
-45 7 1000 P
+45 7 10000000 P
 E
 robe~
 This robe makes the owner invisible when worn about the body.
@@ -1269,7 +1269,7 @@ A list of all the herbs is here!!~
 paper~
 2 0 AO
 40 3 3 507 0
-40 1 500 P
+40 1 5000000 P
 E
 list~
 Finally!  A list of all the herbs!
@@ -1283,7 +1283,7 @@ A cloak of infinity is here.~
 stone~
 9 GWZ A AK
 14 13 11 5 0
-44 7 500 P
+44 7 5000000 P
 E
 cloak~
 A cloak of Infinity.  Maybe it came from the InFiNiTy CoMpLeX.
@@ -1303,7 +1303,7 @@ A mighty staff looks powerful here.~
 gold~
 9 GWZ B AO
 12 12 12 6 0
-45 5 400 P
+45 5 4000000 P
 E
 staff~
 A Staff of Strength.
@@ -1319,7 +1319,7 @@ A shape shifting cloak shifts shape by the seashore.~
 cloth~
 9 GWZ B AK
 12 12 12 3 0
-45 5 900 P
+45 5 9000000 P
 E
 cloak~
 This cloak shifts shape.
@@ -1335,7 +1335,7 @@ Eversight.~
 gold~
 9 ABGIWXZ AE AEG
 14 12 15 3 0
-47 5 2000 P
+47 5 20000000 P
 E
 eversight~
 These are the goggles of Eversight allowing the wearer to see all.
@@ -1362,7 +1362,7 @@ A list of all the scribes is here!!~
 paper~
 2 0 AO
 40 3 3 35 0
-40 1 500 P
+40 1 5000000 P
 E
 list~
 Finally!  A list of all the scibes!
@@ -1376,7 +1376,7 @@ A chunk of mecharmor lies on the ground here.~
 adamantite~
 9 B AD
 12 12 12 0 0
-45 30 1500 P
+45 30 15000000 P
 E
 chunk~
 This is a large chunk of metal from a mech in another dimension.
@@ -1390,7 +1390,7 @@ A giant's hand has been severed and left here.~
 stone~
 9 G AJ
 12 14 12 0 0
-45 35 1000 P
+45 35 10000000 P
 E
 hand~
 This is a giant's severed hand that can be used as a shield.
@@ -1404,7 +1404,7 @@ A pile of silvery metal is on the floor.~
 platinum~
 9 CGJ AD
 10 8 11 5 0
-43 30 700 P
+43 30 7000000 P
 A
 13 15
 A
@@ -1416,7 +1416,7 @@ A silvery helmet is on the floor.~
 platinum~
 9 CGJ AE
 11 9 9 5 0
-43 30 500 P
+43 30 5000000 P
 A
 12 15
 A
@@ -1428,7 +1428,7 @@ Some silvery leggings are on the floor.~
 platinum~
 9 CGJ AF
 10 9 10 5 0
-43 30 500 P
+43 30 5000000 P
 A
 13 15
 A
@@ -1440,7 +1440,7 @@ Some silvery boots are on the floor.~
 platinum~
 9 CGJ AG
 10 10 9 5 0
-43 30 500 P
+43 30 5000000 P
 A
 13 15
 A
@@ -1452,7 +1452,7 @@ A pair of silvery gauntlets are on the floor.~
 platinum~
 9 CGJ AH
 9 10 10 5 0
-43 30 500 P
+43 30 5000000 P
 A
 13 15
 A
@@ -1464,7 +1464,7 @@ A pair of silvery sleeves are on the floor.~
 platinum~
 9 CGJ AI
 10 10 9 5 0
-43 30 560 P
+43 30 5600000 P
 A
 13 15
 A
@@ -1476,7 +1476,7 @@ A jagged, silvery shield is on the floor.~
 platinum~
 9 CGJ AJ
 10 9 10 5 0
-43 30 500 P
+43 30 5000000 P
 A
 13 15
 A
@@ -1488,7 +1488,7 @@ A silvery girth is on the floor.~
 platinum~
 9 CGJ AL
 9 10 9 4 0
-43 30 450 P
+43 30 4500000 P
 A
 13 20
 A
@@ -1500,7 +1500,7 @@ A glowing silvery sword is hovering here, ready to possess an owner.~
 platinum~
 5 CGJ AN
 1 6 8 1 0
-43 35 800 P
+43 35 8000000 P
 A
 18 4
 A
@@ -1512,7 +1512,7 @@ A stainless steel water pump is functioning here.~
 steel~
 25 0 0
 500 500 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 pump~
 A stainless steel water pump.
@@ -1524,7 +1524,7 @@ Some travel rations look edible.~
 pill~
 19 0 AO
 40 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 rations~
 Some hearty travel rations.
@@ -1536,7 +1536,7 @@ A gleaming titanium sword shines here.~
 adamantite~
 5 IM AN
 1 2 19 21 D
-29 10 700 P
+29 10 7000000 P
 E
 sword~
 A heavy sword made of titanium.
@@ -1554,7 +1554,7 @@ A spiked titanium mace is hooked on the wall.~
 adamantite~
 5 IM AN
 4 2 19 0 0
-29 10 700 P
+29 10 7000000 P
 E
 mace~
 A large spiked mace made out of titanium.
@@ -1572,7 +1572,7 @@ A sharp titanium dagger is sheathed here.~
 adamantite~
 5 IM AN
 2 2 19 11 B
-29 10 700 P
+29 10 7000000 P
 E
 dagger~
 A sharp dagger fashioned out of titanium.
@@ -1590,7 +1590,7 @@ A small oak desk is in the center of the trophy room.~
 wood~
 15 0 0
 100 5 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 desk~
 Korzath's small oak desk.
@@ -1602,7 +1602,7 @@ A vial of some vial black syrup gurgles here.~
 glass~
 10 0 AO
 40 28 402 28 0
-40 1 100 P
+40 1 1000000 P
 E
 vial~
 The vial is full of a thick black syrup.
@@ -1614,7 +1614,7 @@ A large metal desk dominates the room.~
 steel~
 15 0 0
 100 5 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 desk~
 A large metal desk.
@@ -1626,7 +1626,7 @@ A long blue wand was left here.~
 steel~
 3 0 AO
 20 3 3 36 0
-20 8 100 P
+20 8 1000000 P
 E
 wand~
 A long blue titanium wand.
@@ -1638,7 +1638,7 @@ A huge liquid metal shaping mold is grounded in the floor here.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 mold~
 This mold is used to shape molten metal into the shapes desired by the
@@ -1651,7 +1651,7 @@ A huge liquid metal shaping mold is grounded in the floor here.~
 adamantite~
 15 0 0
 100 5 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 mold~
 It opens!
@@ -1663,7 +1663,7 @@ A large black anvil is bolted into the floor for the blacksmiths to use.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 anvil~
 The anvil is used by the blacksmiths.
@@ -1675,7 +1675,7 @@ A large black anvil is bolted into the floor for the blacksmiths to use.~
 adamantite~
 15 0 0
 100 5 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 anvil~
 The anvil is used by the blacksmiths.
@@ -1687,7 +1687,7 @@ A blasting fire emanates from a blacksmith's forge.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 forge~
 The blacksmiths use the forge to heat metals before they pound them into 
@@ -1700,7 +1700,7 @@ A medallion depicting the Saint of Travelling is hidden here.~
 adamantite~
 9 AI AC
 9 9 9 10 0
-37 3 1000 P
+37 3 10000000 P
 E
 medallion~
 A medallion depicting Saint Christopher, the Saint of travelling.
@@ -1716,7 +1716,7 @@ A weight belt has been left behind.~
 iron~
 9 M AL
 8 9 9 0 0
-33 0 500 P
+33 0 5000000 P
 E
 belt~
 A weight belt that keeps your back from being injured when you carry heavy
@@ -1731,7 +1731,7 @@ An ID bracelet.~
 iron~
 9 0 AM
 2 2 2 2 0
-1 1 100 P
+1 1 1000000 P
 E
 bracelet~
 An ID bracelet but it has somebody elses name on it!
@@ -1745,7 +1745,7 @@ A massive swirling starlight portal consumes the wall before you.~
 adamantite~
 30 O 0
 5 29113 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 portal~
 A portal to Mota knows where.
@@ -1757,7 +1757,7 @@ A massive swirling starlight portal consumes the wall before you.~
 adamantite~
 30 O 0
 5 29118 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 portal~
 A portal to Mota knows where.
@@ -1769,7 +1769,7 @@ A massive swirling starlight portal consumes the wall before you.~
 adamantite~
 30 O 0
 5 29123 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 portal~
 A portal to Mota knows where.
@@ -1781,7 +1781,7 @@ A massive swirling starlight portal consumes the air around you.~
 adamantite~
 30 O 0
 5 29112 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 portal~
 A portal to Mota knows where.
@@ -1793,7 +1793,7 @@ A massive swirling starlight portal consumes the air around you.~
 adamantite~
 30 O 0
 5 29110 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 portal~
 A portal to Mota knows where.
@@ -1805,7 +1805,7 @@ A massive swirling starlight portal consumes the air around you.~
 adamantite~
 30 O 0
 5 29111 0 0 0
-1 1 100 P
+1 1 1000000 P
 E
 portal~
 A portal to Mota knows where.
@@ -1817,7 +1817,7 @@ A misty key.~
 adamantite~
 18 0 AO
 0 0 0 0 0
-40 1 100 P
+40 1 1000000 P
 E
 misty key~
 This key is just plain mist that is in the shape of a key.
@@ -1829,7 +1829,7 @@ a translation plaque is inscribed into the wall.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 translation plaque~
 This plaque translates the story written on the walls:
@@ -1860,7 +1860,7 @@ some papers are strewn on the floor here.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 papers~
 You take a closer look at the papers here:
@@ -1886,7 +1886,7 @@ a guest list lies discarded.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 guest list~
  -----------------------------------------------------------------------------
@@ -1916,7 +1916,7 @@ some papers are on a desk here.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 memo papers desk~
 You take a glance at the papers on the engineers desk, one particular 
@@ -1955,7 +1955,7 @@ a bulletin board is here on the wall.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 bulletin~
 There is a notice tacked up on the bulletin board.
@@ -1967,7 +1967,7 @@ a folder lies in the corner.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 folder~
 You open the folder and read:
@@ -1996,7 +1996,7 @@ a plaque is attached to the door.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 plaque~
 You look at the plaque:

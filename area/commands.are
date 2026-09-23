@@ -3724,6 +3724,11 @@ SET CHAR / SET MOB
 
 SET OBJ
   Numbers     level weight cost timer type condition material
+
+  COST is in copper.  A gold piece is 10000, a silver 100.  So
+
+    set obj bread cost 1          one copper
+    set obj sword cost 50000      five gold
   Values      value0 value1 value2 value3 value4  (v0 to v4)
   Flags       extra wear
   Text        name short long

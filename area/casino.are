@@ -86,7 +86,7 @@ A heavy gold-coloured token stamped with a coiled dragon lies here.~
 brass~
 8 0 A
 0 0 0 0 0
-10 1 50 P
+10 1 500000 P
 E
 token dragon lucky~
 One face bears a coiled dragon; the other reads 'Lucky Dragon Casino - Dresden'.
@@ -129,7 +129,7 @@ A glass of amber-gold whiskey sits here, smelling of honey and oak.~
 glass~
 17 0 A
 10 10 5 0 0
-5 1 5 P
+5 1 50000 P
 
 #4814
 video poker terminal machine lucky~

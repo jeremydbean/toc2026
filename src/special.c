@@ -1130,7 +1130,7 @@ bool spec_janitor( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	    continue;
 	if ( trash->item_type == ITEM_DRINK_CON
 	||   trash->item_type == ITEM_TRASH
-	||   trash->cost < 10 )
+	||   trash->cost < 10L * COPPER_PER_GOLD )
 	{
 	    act( "$n picks up some trash.", mob, NULL, NULL, TO_ROOM );
 	    obj_from_room( trash );
@@ -1765,13 +1765,15 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	    return true;
 	}
  
-	if (obj->cost / 1000 > 50000)
+	/* Prices are copper now, so the divisor and the ceiling both
+	   move by COPPER_PER_GOLD to go on meaning what they meant. */
+	if (obj->cost / (1000L * COPPER_PER_GOLD) > 50000)
 	{
 	    act("$n tells you 'I can't afford that.'", mob, NULL, ch, TO_VICT);
 	    return true;
 	}
  
-	cost = obj->cost / 1000;
+	cost = (int)(obj->cost / (1000L * COPPER_PER_GOLD));
  
 	snprintf(buf, sizeof(buf), "$n tells you 'I'll give you between "
 		"%d and %d gold coins for $p'.", cost*30, cost*50 );
@@ -1811,13 +1813,15 @@ bool spec_pawn_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg
 	    return true;
 	}
  
-	if (obj->cost / 1000 > 50000)
+	/* Prices are copper now, so the divisor and the ceiling both
+	   move by COPPER_PER_GOLD to go on meaning what they meant. */
+	if (obj->cost / (1000L * COPPER_PER_GOLD) > 50000)
 	{
 	    act("$n tells you 'I can't afford that.'", mob, NULL, ch, TO_VICT);
 	    return true;
 	}
  
-	cost = obj->cost / 1000;
+	cost = (int)(obj->cost / (1000L * COPPER_PER_GOLD));
 	cost *= number_range(30, 50);
  
 	/* won't buy rotting goods */

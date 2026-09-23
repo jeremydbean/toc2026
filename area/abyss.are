@@ -526,7 +526,7 @@ The Sword of the Ancients rests here~
 steel~
 5 GJLM AN
 1 5 8 11 D
-40 10 400 P
+40 10 4000000 P
 A
 18 4
 A
@@ -542,7 +542,7 @@ A pile of dark blue silk lies here, rustling slightly.~
 wool~
 9 GL AK
 10 10 10 2 0
-37 3 453 P
+37 3 4530000 P
 A
 17 -1
 E
@@ -556,7 +556,7 @@ A pair of silver sleeves lies at your feet.~
 silver~
 9 GL AI
 8 8 8 1 0
-32 7 180 P
+32 7 1800000 P
 A
 13 15
 E
@@ -570,7 +570,7 @@ An ornate looking belt lies here.~
 leather~
 9 GL AL
 9 9 9 2 2
-32 2 199 P
+32 2 1990000 P
 E
 rune covered belt~
 Upon closer inspection of the belt you find strange magical symbols...
@@ -582,7 +582,7 @@ A strange helm lies here.~
 steel~
 9 GJL AE
 12 12 12 2 1
-38 8 450 P
+38 8 4500000 P
 A
 6 1
 A
@@ -599,7 +599,7 @@ A rune covered breast plate lies here in the dirt~
 steel~
 9 GJL AD
 11 11 11 2 4
-38 15 394 P
+38 15 3940000 P
 A
 17 -1
 E
@@ -614,7 +614,7 @@ A pair of silver boots stands neatly in the corner~
 silver~
 9 GL AG
 10 10 10 2 0
-35 7 560 P
+35 7 5600000 P
 E
 pair silver boots~
 They are made of pure silver.... they radiate a strong sense of magic.
@@ -627,7 +627,7 @@ brightly.~
 silver~
 9 GLO AJ
 12 12 12 2 3
-46 15 666 P
+46 15 6660000 P
 E
 silver shield~
 The shield is made of a silvery substance.. It is like nothing you have
@@ -640,7 +640,7 @@ A Black and silver Cloak lies crumpled in a corner.~
 silver~
 9 GLM AK
 9 9 9 2 2
-25 5 340 P
+25 5 3400000 P
 E
 black silver cloak~
 It is of a fine, black material that is as dark as night......
@@ -653,7 +653,7 @@ A pair of leg plates formed of some metallic substance lie in pile.~
 steel~
 9 EGL AF
 9 9 9 1 4
-25 5 450 P
+25 5 4500000 P
 #24510
 pair jeweled gauntlets~
 a Pair of Jeweled Gauntlets~
@@ -661,7 +661,7 @@ A pair of jewel encrusted gauntlets lie here.~
 steel~
 9 GJLN AH
 12 12 12 2 2
-45 8 670 P
+45 8 6700000 P
 A
 18 2
 A
@@ -677,7 +677,7 @@ A dark black cloak lies here in the dirt.~
 energy~
 9 GHML AK
 10 10 10 2 0
-35 5 220 P
+35 5 2200000 P
 #24512
 flaming bracelet~
 a Flaming Bracelet~
@@ -685,7 +685,7 @@ A diamond studded bracelet lies here, burning fiercely.~
 diamond~
 9 GHLM AM
 11 11 11 2 0
-35 5 1478 P
+35 5 14780000 P
 A
 18 2
 A
@@ -701,7 +701,7 @@ A black onyx ring lies here, just barely visible.~
 stone~
 9 GL AB
 10 10 10 2 1
-36 1 250 P
+36 1 2500000 P
 A
 17 -1
 A
@@ -713,7 +713,7 @@ A small, wicked looking dagger lies here, its blade as black as night.~
 steel~
 5 BHGLM AN
 2 5 7 2 C
-25 2 360 P
+25 2 3600000 P
 A
 18 -1
 A
@@ -725,7 +725,7 @@ An finely crafted two handed sword lies here engulfed in flamed.~
 fire~
 5 GLM ANP
 1 5 14 29 AF
-50 25 1740 P
+50 25 17400000 P
 A
 18 3
 A
@@ -737,7 +737,7 @@ A trident crafted from fine silver has been placed here.~
 silver~
 5 BCGHJLM AN
 8 5 9 2 0
-36 18 740 P
+36 18 7400000 P
 A
 18 2
 A
@@ -749,7 +749,7 @@ A sword with a razor sharp blade lies here.~
 steel~
 5 GLM AN
 1 5 7 1 D
-33 10 700 P
+33 10 7000000 P
 A
 18 2
 A
@@ -761,7 +761,7 @@ A small crystal ring lies here.~
 crystal~
 8 AGL AB
 0 0 0 0 0 
-22 1 500 P
+22 1 5000000 P
 A
 12 25
 #24519
@@ -771,7 +771,7 @@ A small dagger, encrusted with jewels lies here.~
 steel~
 5 GML AN
 2 10 4 2 0
-37 2 342 P
+37 2 3420000 P
 #24520
 jewel encrusted helmet~
 a Jewel Encrusted Helmet~
@@ -779,7 +779,7 @@ A small, jewel encrusted helmet lies here.~
 silver~
 9 GJLN AE
 10 10 10 2 2
-37 17 679 P
+37 17 6790000 P
 #24521
 small medallion~
 a Small Medallion~
@@ -787,7 +787,7 @@ A small medallion lies here among the dirt.~
 quartz~
 9 AGLP AC
 12 12 12 2 0
-41 2 899 P
+41 2 8990000 P
 A
 12 50
 #24522
@@ -797,7 +797,7 @@ A bracelet made of the finest ivory rests here.~
 ivory~
 9 GL AM
 9 9 9 2 0
-31 2 420 P
+31 2 4200000 P
 #24523
 green cape~
 a Bright Green Cape~
@@ -805,7 +805,7 @@ An ugly, bright green cape lies ruffled in a nearby corner.~
 leather~
 9 GL AC
 9 9 9 1 3
-33 5 404 P
+33 5 4040000 P
 A
 13 10
 #24524
@@ -815,7 +815,7 @@ A large sword lies here, smoldering in flames.~
 fire~
 5 AGL AN
 1 5 5 29 A
-25 10 780 P
+25 10 7800000 P
 #24525
 glaive~
 glaive~
@@ -823,7 +823,7 @@ A glaive rests here in the dirt.~
 steel~
 5 GL AN
 8 12 5 3 0
-44 12 834 P
+44 12 8340000 P
 E
 glaive~
 It is a long polearm with a wickedly sharp blade on its end.
@@ -835,7 +835,7 @@ A magical looking amulet lies here, gleaming.~
 quartz~
 9 GL AC
 11 11 11 3 1
-36 2 600 P
+36 2 6000000 P
 #24527
 circlet concentration~
 the Silver Circlet of Concentration~
@@ -843,7 +843,7 @@ A small tiara of silver lies on the ground.~
 silver~
 9 GL AE
 12 12 12 2 1
-42 2 450 P
+42 2 4500000 P
 A
 12 50
 E
@@ -965,7 +965,7 @@ A silver breast plate lies here in the dirt~
 silver~
 9 GJL AD
 13 14 13 3 5
-48 55 994 P
+48 55 9940000 P
 A
 17 -2
 #24561
@@ -975,7 +975,7 @@ A strange, silver helm lies here.~
 silver~
 9 GJL AE
 14 15 14 2 1
-48 18 750 P
+48 18 7500000 P
 A
 17 -2
 #24562
@@ -985,7 +985,7 @@ A pair of runed covered boots stands neatly in the corner~
 leather~
 9 GL AG
 12 12 12 2 0
-27 12 560 P
+27 12 5600000 P
 #24580
 girth hero heroism~
 the Girth of Real Heroism~
@@ -993,7 +993,7 @@ An enormous, huge GIRTH lies here, filling the room with its power.~
 mithril~
 9 AGIY AL
 12 12 12 9 2
-51 30 1875 P
+51 30 18750000 P
 A
 1 2
 A
@@ -1017,7 +1017,7 @@ An enormous, RING lies here, filling the room with its power.~
 energy~
 9 AGIY AB
 12 12 12 9 1
-51 3 1500 P
+51 3 15000000 P
 A
 17 -2
 A
@@ -1033,7 +1033,7 @@ An enormous, huge WEAPON lies here, filling the room with its power.~
 steel~
 5 AGIY AN
 0 11 8 3 D
-51 30 1875 P
+51 30 18750000 P
 A
 19 8
 A

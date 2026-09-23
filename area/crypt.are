@@ -333,7 +333,7 @@ A long, curved knife waits anxiously to cut you~
 iron~
 5 C AN
 2 3 6 11 D
-19 7 35 P
+19 7 350000 P
 E
 knife long curved~
 This long knife has a long curved blade with a bone handle.  The blade is
@@ -352,7 +352,7 @@ A strange silver amulet rests on the ground here.~
 silver~
 9 AG AC
 5 4 5 0 0
-18 10 200 P
+18 10 2000000 P
 E
 amulet silver~
 This necklace is comprised of a pure silver and seems quite light. A 
@@ -376,7 +376,7 @@ An ivory key has been left here.~
 stone~
 18 0 AO
 0 0 0 0 0
-1 5 100 P
+1 5 1000000 P
 E
 key ivory bone~
 You stare at the shiny white surface of this key, noticing strange
@@ -411,7 +411,7 @@ A dark potion is sitting here on the floor, sucking up all the light.~
 glass~
 10 CEU AO
 25 515 512 0 0
-30 5 100 P
+30 5 1000000 P
 E
 potion dark~
 This potion almost seems to be made of the complete and utter
@@ -425,7 +425,7 @@ An elegant ivory staff rests here, giving off a strange
 wood~
 4 AI AO
 15 6 6 22 0
-20 15 300 P
+20 15 3000000 P
 E
 staff ivory~
 This staff is really weird.  Not only is it carved from beautiful white
@@ -439,7 +439,7 @@ A not-too-small, not-too-large pile of coins glistens in the light.~
 gold~
 20 0 A
 500 0 0 0 0
-1 25 500 P
+1 25 5000000 P
 E
 coins pile~
 The coins look to be quite pretty.  The pile before you isn't that
@@ -453,7 +453,7 @@ A strange sword lies here.~
 steel~
 5 FG AN
 1 6 8 3 C
-43 12 575 P
+43 12 5750000 P
 E
 sword rune~
 The sword looks rather strange, and has cryptic runes engraved into the blade.
@@ -467,7 +467,7 @@ A key made of gold seems to have been forgotten on the ground here.~
 gold~
 18 0 AO
 0 0 0 0 0
-1 5 10 P
+1 5 100000 P
 E
 key gold golden~
 This fine key is made out of gold.  There is a very tiny ruby set into
@@ -480,7 +480,7 @@ A sinister key of blood beckons...~
 iron~
 18 A AO
 0 0 0 0 0
-1 3 15 P
+1 3 150000 P
 E
 key blood~
 This key seems to have been formed by mystically forming human blood
@@ -508,7 +508,7 @@ A strange black cape lies here.~
 cloth~
 9 CEJ AK
 13 11 12 6 0
-45 5 2000 P
+45 5 20000000 P
 E
 cape black satin~
 This cape seems to be rather black.  It feels like it is made of
@@ -527,7 +527,7 @@ A strange necklace made of onyx stones lies here.~
 iron~
 9 CEJ AC
 18 14 19 8 0
-43 10 300 P
+43 10 3000000 P
 E
 necklace onyx~
 This necklace is pretty much just a string with a number of
@@ -545,7 +545,7 @@ A tremendously large halberd stained with blood rests here.~
 steel~
 5 GM ANP
 8 5 10 8 F
-30 35 1200 P
+30 35 12000000 P
 E
 halberd giant~
 This has got to be the largest weapon you have ever seen.  Sure, halberds
@@ -566,7 +566,7 @@ A beautiful sword glowing white is floating upright here.~
 adamantite~
 5 GKU AN
 0 5 11 1 D
-42 20 8000 P
+42 20 80000000 P
 E
 avenger holy sword~
 This beautiful weapon has been forged out of an unknown metal
@@ -637,7 +637,7 @@ This ring gives its wearer supreme strength~
 iron~
 9 F AB
 8 8 7 0 0
-29 12 2500 P
+29 12 25000000 P
 A
 1 3
 #24223
@@ -661,7 +661,7 @@ These gloves once worn by a Saurian are now covered in blood~
 leather~
 9 CUWZ E AH
 6 6 6 3 0
-10 5 800 P
+10 5 8000000 P
 A
 2 1
 A
@@ -679,7 +679,7 @@ This weapon is something you don't even want to know about ... *shiver*~
 adamantite~
 5 GJKUV AN
 0 8 10 20 AEF
-54 25 10000 P
+54 25 100000000 P
 A
 3 3
 A 
@@ -716,7 +716,7 @@ A large wooden cross is being used to block your entrance~
 wood~
 4 IJKUV AO
 51 7 7 38 0
-51 20 12000 P
+51 20 120000000 P
 A
 4 2
 A

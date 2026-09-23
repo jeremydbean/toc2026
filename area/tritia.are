@@ -485,7 +485,7 @@ A short-bladed Triton dagger lies here.~
 steel~
 5 0 AN
 2 2 6 11 0
--1 3 500 P
+-1 3 5000000 P
 E
 dagger~
 You see a short-bladed weapon, with a blade from 20 cm long.
@@ -499,7 +499,7 @@ A long-bladed Triton dagger lies here.~
 steel~
 5 0 AN
 2 2 7 11 0
--1 4 600 P
+-1 4 6000000 P
 E
 dagger~
 You see a long-bladed weapon, with a blade from 40 cm long.
@@ -514,7 +514,7 @@ A wickedly curved Triton kris lies here.~
 steel~
 5 ABFJ AN
 2 3 6 11 A
--1 4 3000 P
+-1 4 30000000 P
 E
 kris~
 You see a short curved weapon, with a very sharp concave
@@ -533,7 +533,7 @@ A golden sceptre lies here.~
 gold~
 5 AJ AN
 4 4 5 8 0
--1 4 8000 P
+-1 4 80000000 P
 E
 sceptre~
 You see a long golden sceptre. It looks very powerful.
@@ -549,7 +549,7 @@ A triton rapier lies here.~
 bronze~
 5 B AN
 1 2 8 3 0
--1 8 2000 P
+-1 8 20000000 P
 E
 rapier~
 You see a short-bladed weapon, with a blade of 70 cm.
@@ -564,7 +564,7 @@ A triton longsword lies here.~
 steel~
 5 E AN
 1 2 8 3 0
--1 10 4000 P
+-1 10 40000000 P
 E
 longsword~
 You see a long-bladed weapon, with a blade of 150 cm.
@@ -577,7 +577,7 @@ A Triton trident lies here.~
 steel~
 5 E AN
 8 2 5 2 0
--1 7 1000 P
+-1 7 10000000 P
 E
 tri trident~
 You see a long spear with three sharp points at the end.
@@ -589,7 +589,7 @@ A six-headed whip lies here.~
 leather~
 5 ABGIKLUVZ AG AN
 7 6 9 4 B
--1 25 60000 P
+-1 25 600000000 P
 E
 six-headed six whip~
 You see a long whip, made from the finest leather.
@@ -614,7 +614,7 @@ A small yellow potion has carelessly been left here.~
 glass~
 10 G A
 15 19 0 0 0
-7 1 400 P
+7 1 4000000 P
 E
 potion yellow~
 The potion has a small label 'Detect The Invisible'.
@@ -626,7 +626,7 @@ A small red potion has carelessly been left here.~
 glass~
 10 G A
 15 43 33 33 0
-11 1 500 P
+11 1 5000000 P
 E
 potion red~
 The potion has a small label 'Remove All Poison'.
@@ -638,7 +638,7 @@ A small black potion has carelessly been left here.~
 glass~
 10 G A
 30 14 4 14 0
-11 1 2200 P
+11 1 22000000 P
 E
 potion black~
 The potion has a small label 'Return Vision'.
@@ -650,7 +650,7 @@ A small green potion has carelessly been left here.~
 glass~
 10 G A
 30 44 19 0 0
-20 1 8600 P
+20 1 86000000 P
 E
 potion green~
 The potion has a small label 'Detect The Hidden'.
@@ -662,7 +662,7 @@ A large white potion has carelessly been left here.~
 glass~
 10 G A
 30 36 3 0 0
-30 1 37000 P
+30 1 370000000 P
 E
 potion white~
 The potion has a small label 'Sanctuary'.
@@ -674,7 +674,7 @@ A tiny yellow gem has carelessly been left here.~
 stone~
 8 A A
 0 0 0 0 0
--1 1 390 P
+-1 1 3900000 P
 #10217
 bright red gem~
 a bright red gem~
@@ -682,7 +682,7 @@ A bright red gem has carelessly been left here.~
 stone~
 8 A A
 0 0 0 0 0
--1 1 280 P
+-1 1 2800000 P
 #10218
 dull blue gem~
 a dull blue gem~
@@ -690,7 +690,7 @@ A large dull blue gem has carelessly been left here.~
 stone~
 8 C A
 0 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 #10219
 green gem~
 a green gem~
@@ -698,7 +698,7 @@ A green gem has carelessly been left here.~
 stone~
 8 0 A
 0 0 0 0 0
--1 1 390 P
+-1 1 3900000 P
 #10220
 wand~
 a wand of teleportation~
@@ -706,7 +706,7 @@ A wand of teleportation has carelessly been left here.~
 wood~
 3 BG AO
 20 2 2 2 0
-30 2 4000 P
+30 2 40000000 P
 A
 12 25
 #10221
@@ -716,7 +716,7 @@ A rod of healing has carelessly been left here.~
 brass~
 3 BG AO
 20 2 2 28 0
-30 2 20000 P
+30 2 200000000 P
 #10223
 boots metal~
 A pair of metal boots~
@@ -724,7 +724,7 @@ A pair of metal boots lies here.~
 steel~
 9 0 AG
 6 6 4 4 0
--1 3 2000 P
+-1 3 20000000 P
 E
 boots metal~
 This pair of metal boots looks great. The person who
@@ -740,7 +740,7 @@ A pair of metal gauntlets is lying on the ground.~
 steel~
 9 0 AH
 6 6 4 4 0
--1 5 1000 P
+-1 5 10000000 P
 E
 gauntlets metal~
 This pair of metal gauntlets looks great. The person who
@@ -754,7 +754,7 @@ A red cloak lies on the ground.~
 cloth~
 9 GJ AC
 5 2 2 8
--1 2 1000 P
+-1 2 10000000 P
 E
 red cloak~
 A strange color for the cloak: red. Who wants to walk
@@ -769,7 +769,7 @@ A kraken shell lies on the ground.~
 adamantite~
 9 ABGJLZ ADE AD
 10 20 15 10 0
--1 20 10000 P
+-1 20 100000000 P
 E
 shell kraken~
 This is a shell of great thickness and durability.
@@ -789,7 +789,7 @@ A necklace of adaption hums here.~
 steel~
 9 ABFGIKLUVZ AH AC
 8 8 7 3 0
--1 2 10000 P
+-1 2 100000000 P
 E
 necklace adaption~
 This necklace looks tiny. You can't see anything special about
@@ -810,7 +810,7 @@ A tiny silver ring lies here~
 silver~
 9 ABGI AB
 5 3 6 10 0
--1 1 10000 P
+-1 1 100000000 P
 E
 ring silver tiny~
 This ring looks tiny. You can't see anything special about
@@ -827,7 +827,7 @@ A soft silk robe lies here.~
 cloth~
 9 A AK
 7 2 4 8 0
--1 5 8000 P
+-1 5 80000000 P
 E
 soft silk robe~
 The robe feels very soft. This robe is a piece of craftmanship.
@@ -845,7 +845,7 @@ A scale lies here.~
 steel~
 9 0 AD
 3 3 3 3 0
--1 2 750 P
+-1 2 7500000 P
 E
 scale~
 This scale looks quite normal. You can't find anything
@@ -858,7 +858,7 @@ A scale lies here.~
 steel~
 9 0 AD
 4 4 4 4 0
--1 3 1000 P
+-1 3 10000000 P
 E
 scale~
 This scale looks normal. You can't find anything
@@ -871,7 +871,7 @@ A pair bracers of defence lies here.~
 steel~
 9 AG AM
 10 10 10 10 0
--1 7 8000 P
+-1 7 80000000 P
 E
 bracers defence~
 These bracers look quite normal. You can't find anything
@@ -888,7 +888,7 @@ A scuba gear lies here.~
 steel~
 29 0 AK
 0 0 0 0 0
-15 3 1000 P
+15 3 10000000 P
 E
 scuba gear~
 This item gives you the possibility to breathe under water.
@@ -900,7 +900,7 @@ A wooden fishing rod lies here.~
 wood~
 5 0 AO
 4 1 6 7 0
-15 3 200 P
+15 3 2000000 P
 E
 wooden rod~
 The perfect item to go fish hunting.
@@ -912,7 +912,7 @@ A small purple potion has carelessly been left here.~
 glass~
 10 G A
 10 16 0 0 0
-17 1 200 P
+17 1 2000000 P
 E
 potion purple~
 The potion has a small label 'Cure light'.
@@ -924,7 +924,7 @@ A small purple potion has carelessly been left here.~
 glass~
 10 G A
 15 61 0 0 0
-17 1 2000 P
+17 1 20000000 P
 E
 potion magenta~
 The potion has a small label 'Cure serious'.
@@ -936,7 +936,7 @@ A small brown potion has carelessly been left here.~
 glass~
 10 G A
 20 15 0 0 0
-19 1 5000 P
+19 1 50000000 P
 E
 potion brown~
 The potion has a small label 'Cure critical'.
@@ -948,7 +948,7 @@ A small yellow potion has carelessly been left here.~
 glass~
 10 G A
 25 28 0 0 0
-33 1 37000 P
+33 1 370000000 P
 E
 potion yellow~
 The potion has a small label 'Healing'.
@@ -960,7 +960,7 @@ A small orange potion has carelessly been left here.~
 glass~
 10 G A
 30 4 2 4 0
-17 1 10000 P
+17 1 100000000 P
 E
 potion orange~
 The potion has a small label 'Healing'.
@@ -972,7 +972,7 @@ A large chest stands in a corner.~
 wood~
 15 0 0
 100 29 10262 0 0
-30 10 50 P
+30 10 500000 P
 E
 chest~
 The chest is well secured against the ground.
@@ -984,7 +984,7 @@ A cup has been set here.~
 glass~
 17 0 A
 2 2 11 0 0
-5 3 10 P
+5 3 100000 P
 E
 cup~
 It is a small simple cup.
@@ -996,7 +996,7 @@ A big pot pie has been left here.~
 food~
 19 0 A
 40 0 0 0 0
-5 3 20 P
+5 3 200000 P
 #10244
 agate bracelet~
 an agate bracelet~
@@ -1004,7 +1004,7 @@ An agate bracelet has been left here.~
 steel~
 9 G AM
 3 3 3 3 0
--1 5 1000 P
+-1 5 10000000 P
 A
 18 3
 A
@@ -1074,7 +1074,7 @@ A golden key lies here.~
 gold~
 18 G A
 15 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 #10261
 key diamond~
 the diamond key~
@@ -1082,7 +1082,7 @@ A diamond key lies here.~
 stone~
 18 G A
 20 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 #10262
 key wooden~
 the wooden key~
@@ -1090,7 +1090,7 @@ A wooden key lies here.~
 wood~
 18 0 A
 20 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 #10263
 key metal~
 the metal key~
@@ -1098,7 +1098,7 @@ A metal key lies here.~
 steel~
 18 0 A
 20 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 #10264
 leggings leather~
 a pair of leather leggings~
@@ -1106,7 +1106,7 @@ A pair of leather leggings lies here.~
 leather~
 9 GHM AF
 4 4 4 4 0
-30 10 1000 P
+30 10 10000000 P
 E
 leggings leather~
 You feel the EVIL spirit in this item.
@@ -1129,7 +1129,7 @@ A shield of defense lies here.~
 steel~
 9 G AJ
 15 15 15 10 0
--1 10 10000 P
+-1 10 100000000 P
 E
 shield defense~
 It looks great!

@@ -553,7 +553,7 @@ There is a pewter ring lying here.~
 steel~
 9 FG AB 
 9 7 9 0 0 
-17 3 1000 P
+17 3 10000000 P
 A
 13 10
 A
@@ -565,7 +565,7 @@ There is a bronze belt sitting here.~
 bronze~
 9 F AL 
 8 9 9 0 0
-17 10 1500 P
+17 10 15000000 P
 A
 1 -1
 A
@@ -577,7 +577,7 @@ A Roman combat helmet has been left here.~
 leather~
 9 A AE 
 4 9 7 9 0
-19 7 1290 P
+19 7 12900000 P
 A
 2 -1
 A
@@ -589,7 +589,7 @@ A coach's whistle has been left here.~
 steel~
 8 H AC 
 8 8 7 0 0
-15 4 800 P
+15 4 8000000 P
 #19104
 stethoscope~
 a stethoscope~
@@ -597,7 +597,7 @@ A doctor has left his stethoscope here.~
 leather~
 9 I AC 
 8 8 8 0 0
-18 12 900 P
+18 12 9000000 P
 A
 18 1
 A
@@ -609,7 +609,7 @@ A woman's hairpin is lying here.~
 steel~
 11 I AE 
 7 6 7 2 0
-15 3 700 P
+15 3 7000000 P
 A
 1 -1
 A
@@ -621,7 +621,7 @@ A delicious looking apple has been left here.~
 food~
 19 0 A 
 4 0 0 0 0
-1 3 10 P
+1 3 100000 P
 #19107
 orange~
 an orange~
@@ -629,7 +629,7 @@ A sun-ripened orange has been left here.~
 food~
 19 0 A 
 6 0 0 0 0
-1 3 10 P
+1 3 100000 P
 #19108
 sandals~
 a pair of leather sandals~
@@ -637,7 +637,7 @@ A pair of leather sandals has been dropped here.~
 leather~
 9 0 AG 
 0 0 0 0 0
--1 11 50 P
+-1 11 500000 P
 A
 14 20
 #19109
@@ -647,7 +647,7 @@ An onyx ring has been left here.~
 stone~
 11 J AB 
 0 0 0 0 0
--1 19 800 P
+-1 19 8000000 P
 A
 5 -1
 A
@@ -659,7 +659,7 @@ A hotdog loaded with chili and onions has been left here.~
 food~
 19 0 A 
 8 0 0 0 0
-1 3 22 P
+1 3 220000 P
 #19111
 bracelet silver gold~
 a silver and gold bracelet~
@@ -667,7 +667,7 @@ A bracelet, made from silver and gold, has been carelessly left here.~
 silver~
 9 BH AM 
 7 6 6 5 0
-16 4 900 P
+16 4 9000000 P
 A
 12 25
 A
@@ -679,7 +679,7 @@ A garnet ring has been left here.~
 gold~
 9 0 AB 
 6 7 6 0 0
-26 15 1200 P
+26 15 12000000 P
 A
 18 1
 #19113
@@ -689,7 +689,7 @@ A beautiful jade pendant has been left here.~
 stone~
 9 0 AC 
 0 0 0 0 0
--1 15 750 P
+-1 15 7500000 P
 A
 3 2
 A
@@ -701,7 +701,7 @@ Froboz's robe has been dropped here.~
 cloth~
 11 0 AC 
 10 10 11 0 0
-28 20 1300 P
+28 20 13000000 P
 A
 17 -3
 A
@@ -713,7 +713,7 @@ a nasty looking tempered sword is lying here.~
 steel~
 5 B AN  
 1 4 5 1 0
-16 15 1200 P
+16 15 12000000 P
 A
 18 -2
 #19116
@@ -723,7 +723,7 @@ a very bloody quenched sword has been left here.~
 steel~
 5 F ANO 
 1 9 3 1 0
-28 18 3000 P
+28 18 30000000 P
 #19117
 bracers~
 Moorish bracers~
@@ -731,7 +731,7 @@ A pair of Moorish bracers has been dropped here.~
 leather~
 9 0 AI
 12 11 12 8 0
-29 4 1300 P
+29 4 13000000 P
 A
 2 -1
 A
@@ -743,7 +743,7 @@ A piece of military combat plate has been left here.~
 bronze~
 9 A AD 
 10 7 7 0 0
-19 18 900 P
+19 18 9000000 P
 A
 2 2
 A
@@ -755,7 +755,7 @@ A pair of combat boots have been left here.~
 leather~
 9 A AG 
 7 7 9 0 0
-19 14 700 P
+19 14 7000000 P
 A
 1 1
 A
@@ -767,7 +767,7 @@ Jupiter's Thunderbolt has been left here.~
 glass~
 5 BK AN 
 0 13 3 29 0
-43 25 4500 P
+43 25 45000000 P
 A
 18 4
 A
@@ -779,7 +779,7 @@ Mar's red loincloth is resting here.~
 cloth~
 9 BK AL 
 13 15 12 3 0
-40 11 2300 P
+40 11 23000000 P
 A
 5 2
 #19122
@@ -789,7 +789,7 @@ Someone has left the crystal necklace of knowledge here!~
 glass~
 9 AG AC 
 10 11 11 6 0
-42 5 3100 P
+42 5 31000000 P
 A
 3 3
 A
@@ -801,7 +801,7 @@ Mercury's winged sandals have been left here.~
 leather~
 9 AL AG 
 10 10 9 0 0
-38 9 1900 P
+38 9 19000000 P
 A
 2 3 
 #19124
@@ -811,7 +811,7 @@ A musty scroll has been dropped here.~
 vellum~
 2 FG AO 
 20 28 0 0 0
-2 10 200 P
+2 10 2000000 P
 #19125
 ornate scroll~
 an ornate scroll~
@@ -819,7 +819,7 @@ An ornate scroll has been left here.~
 vellum~
 2 AG AO 
 18 42 42 53 0
-2 10 200 P
+2 10 2000000 P
 #19126
 plain scroll~
 a plain scroll~
@@ -827,7 +827,7 @@ A plain scroll is lying on the ground.~
 vellum~
 2 G AO 
 15 14 0 0 0
-2 10 200 P
+2 10 2000000 P
 #19127
 staff latumfus~
 the staff of latumfus~
@@ -835,7 +835,7 @@ There is a staff of latumfus lying here on the ground.~
 wood~
 4 BG AO 
 17 3 3 77 0
-5 15 1500 P
+5 15 15000000 P
 #19128
 staff kodarta~
 the Kodarta staff~
@@ -843,7 +843,7 @@ The Kodarta staff has been carelessly left here.~
 wood~
 4 AG AO 
 17 2 2 43 0
-6 20 700 P
+6 20 7000000 P
 #19129
 new wand~
 a prototype wand~
@@ -851,7 +851,7 @@ There is a prototype of a new magical wand lying here.~
 wood~
 3 G AO 
 15 3 3 36 0
-6 10 500 P
+6 10 5000000 P
 A
 1 -2
 A
@@ -863,7 +863,7 @@ There is a flask, containing a blaze orange potion, resting here.~
 glass~
 10 G A 
 9 7 26 13 0
-8 10 125 P
+8 10 1250000 P
 #19131
 mace~
 the executioner's mace~
@@ -871,7 +871,7 @@ The executioner's mace is lying here.~
 steel~
 5 H AN 
 4 5 6 8 0
-25 25 20 P
+25 25 200000 P
 A
 2 -2
 A
@@ -883,7 +883,7 @@ Jupiter's Lightningbolt has been left here.~
 glass~
 5 BK AN
 0 4 12 29 0 
-43 29 3000 P
+43 29 30000000 P
 A
 18 8
 A
@@ -924,7 +924,7 @@ There is a rusty key here.~
 iron~
 18 0 A 
 0 0 0 0 0
-3 0 100 P
+3 0 1000000 P
 #19152
 double key~
 a double sided key~
@@ -932,7 +932,7 @@ A double sided key has been left here.~
 brass~
 18 0 A 
 0 0 0 0 0
-3 0 100 P
+3 0 1000000 P
 #19153
 diamond key~
 a diamond studded key~
@@ -940,7 +940,7 @@ A diamond studded key is sitting on the ground.~
 gold~
 18 0 A 
 0 0 0 0 0
-3 0 100 P
+3 0 1000000 P
 #19154
 pearl key~
 a key with a pearl handle~
@@ -948,7 +948,7 @@ A key with a pearl handle is sitting on the ground.~
 silver~
 18 0 A 
 0 0 0 0 0
-3 0 100 P
+3 0 1000000 P
 #19155
 aquamarine key~
 an aquamarine key~
@@ -956,7 +956,7 @@ There is an aquamarine colored key here.~
 gold~
 18 0 A 
 0 0 0 0 0
-3 0 100 P
+3 0 1000000 P
 #19156
 opal key~
 an opal key~
@@ -964,7 +964,7 @@ An opal key has been left here.~
 gold~
 18 0 A 
 0 0 0 0 0
-3 0 100 P
+3 0 1000000 P
 #19157
 steel key~
 a steel key~
@@ -972,7 +972,7 @@ A steel key is lying on the ground.~
 steel~
 18 0 A 
 0 0 0 0 0
-3 0 100 P
+3 0 1000000 P
 #0
 
 #ROOMS

@@ -102,6 +102,50 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `parse_login_journal`'s docstring claimed newest-first while the function
   returns file order, oldest first.
 
+### Changed
+
+- **Prices are counted in copper.** `obj->cost` was denominated in gold, so
+  the cheapest anything in the world could be was one gold piece -- ten
+  thousand copper. The loaf of bread in Mud School showed "1" on the shop
+  list and took a gold coin, which is not a price a newbie can meet. It
+  costs one copper now.
+
+  Every price in every loaded area was multiplied by `COPPER_PER_GOLD`, so
+  nothing is worth more or less than it was; only the unit changed.
+  `tools/costs_to_copper.py` did it and is kept, because it had to learn
+  four things about the format that a simpler tool gets wrong: several
+  areas are written double-spaced, one object runs its flag and value lines
+  together, weapons carry letters rather than numbers in their value
+  fields, and `ITEM_FLAGS2` adds a flag word that shifts everything after
+  it. It also reproduces a genuine loader quirk -- `fread_flag` does not
+  handle a minus sign, so on a negative value field it returns zero
+  *without consuming the character*, and the whole rest of that object's
+  header shifts along by one.
+
+  `obj->cost` is a `long` now: four objects were already dear enough that
+  ten thousand times their price overflows an int.
+
+  Player files carry a price per carried object, so they gain a version.
+  A file written before version 4 has its object costs scaled on load;
+  without that every item anybody was carrying would come back worth a ten
+  thousandth of what they put it down with.
+
+  Everything that compared a price against a fixed number moved with it:
+  the pawnbroker's divisor and his ceiling, the junk collector's threshold,
+  and the three trust gates that cap what an immortal may load. `do_repair`,
+  the healer and the casino keep their own gold formulas, because none of
+  them derives from `obj->cost` and converting them would be a balance
+  change rather than a unit change.
+
+  Every price a player is shown now carries its denomination -- `1c`,
+  `5g 20s`, `3p` -- on `list`, `value`, `sell`, haggling, `lore` and
+  `identify`. They were bare numbers before, which is how a gold price came
+  to look like a copper one.
+
+  One bug fixed on the way: sacrifice computed its reward in copper and then
+  capped it with `UMIN(copper, obj->cost)` in gold, so sacrificing a
+  one-gold item paid you one copper.
+
 ### Added
 
 - **The necromancer's undead line works.** `create skeleton`, `create

@@ -145,7 +145,7 @@ An axe made of wood lies here.~
 wood~
 5 0 AN
 5 1 5 25 0
-0 3 30 G
+0 3 300000 G
 E
 axe toy~
 A small label says 'made in Taiwan'.
@@ -157,7 +157,7 @@ A pink ice ring draws your eye.~
 ice~
 8 G AB
 0 0 0 0 0
-3 1 1200 G
+3 1 12000000 G
 A
 1  1
 A
@@ -174,7 +174,7 @@ A linen robe is crumpled into a ball here.~
 cloth~
 9 G AK
 1 2 1 1 1
-3 5 2000 G
+3 5 20000000 G
 A
 4 1
 A
@@ -190,7 +190,7 @@ A stout straw broom lies on the floor.~
 wood~
 5 0 AN
 3 2 3 7 F
-0 3 50 W
+0 3 500000 W
 A
 17 -1
 A 
@@ -206,7 +206,7 @@ A juicy steak sits on a plate here.~
 meat~
 19 0 A
 25 0 0 0 0
-0 2 50 P
+0 2 500000 P
 #6645
 steak rotten~
 a rotten steak~
@@ -214,7 +214,7 @@ A dry steak lies on the floor.~
 meat~
 19 0 A
 4 0 0 1 0
-0 2 14 W
+0 2 140000 W
 #6646
 potion amber~
 an amber potion~
@@ -222,7 +222,7 @@ An amber potion sits in a corner.~
 glass~
 10 0 A
 5 16 1 0 0
-0 1 150 G
+0 1 1500000 G
 E
 potion~
 It's a tight-stoppered glass bottle with a thick amber liquid inside. It
@@ -235,7 +235,7 @@ A toy gun with a sharp bayonet lies here.~
 wood~
 5 0 AN
 3 2 3 2 F
-0 2 30 G
+0 2 300000 G
 A
 17 -1
 E gun toy~
@@ -249,7 +249,7 @@ A Dwarven battle axe is here.~
 ~
 5 0 8193
 5 2 7 1 0
-5 10 500 P
+5 10 5000000 P
 A
 18 2
 A
@@ -261,7 +261,7 @@ A strange looking foot device is lying on the ground.~
 ~
 9 G AG
 1 1 1 1 0
-5 5 100 P 
+5 5 1000000 P 
 A
 14 100
 E pogo stick~

@@ -303,7 +303,7 @@ A jagged spear has been left here.~
 bronze~
 5 0 AN
 3 4 5 11 0
-13 15 700 P
+13 15 7000000 P
 #2201
 dagger silver~
 a silver dagger~
@@ -311,7 +311,7 @@ A silver dagger is lying here.~
 silver~
 5 0 AN
 2 1 5 11 0
--1 10 500 P
+-1 10 5000000 P
 #2202
 knife tooth dragon~
 a dragon's tooth knife~
@@ -319,7 +319,7 @@ A dangerous looking knife made from a dragon's tooth has been left here.~
 gold~
 5 0 AN
 2 6 5 11 0
-27 8 2500 P
+27 8 25000000 P
 A
 2 1
 A
@@ -331,7 +331,7 @@ A scaly bracelet lies on the ground.~
 stone~
 9 0 AM  
 7 5 6 0 0
-20 10 1500 P
+20 10 15000000 P
 #2204
 belt silk black~
 a black silk belt~
@@ -339,7 +339,7 @@ A black belt made of the finest silk is hanging here.~
 cloth~
 9 0 AL
 6 5 5 5 0
-20 25 1600 P
+20 25 16000000 P
 A
 5 2
 #2210
@@ -349,7 +349,7 @@ A white belt made of the finest silk is hanging here.~
 cloth~
 15 0 AL
 100 0 0 0 0
-22 5 800 P
+22 5 8000000 P
 A
 1 2
 #2211
@@ -359,7 +359,7 @@ A tarnished platinum bracelet has been dropped here.~
 bronze~
 9 A AM
 6 8 8 0 0
-22 5 1600 P
+22 5 16000000 P
 #2220
 symbol holy~
 a holy symbol~
@@ -367,7 +367,7 @@ A golden holy symbol is here.~
 gold~
 9 A AO
 9 8 8 0 0
-22 2 1700 P
+22 2 17000000 P
 A
 12 15
 #2221
@@ -377,7 +377,7 @@ A black robe is hanging on a hook on the wall.~
 cloth~
 15 0 AK
 50 0 0 0 0
--1 3 300 P
+-1 3 3000000 P
 A
 19 2
 #2222
@@ -387,7 +387,7 @@ An emerald long sword is leaning against the wall.~
 steel~
 5 0 AN
 1 7 4 3 0
-26 24 1800 P
+26 24 18000000 P
 #2223
 club stone~
 a stone club~
@@ -395,7 +395,7 @@ A heavy looking stone club is here.~
 stone~
 5 0 AN
 4 1 5 7 0
--1 18 200 P
+-1 18 2000000 P
 #2224
 ring diamond~
 a diamond ring~
@@ -403,7 +403,7 @@ A diamond ring lies gleaming on the ground.~
 gold~
 9 0 AB
 0 0 0 0 0
--1 6 1000 P
+-1 6 10000000 P
 A
 18 3
 A
@@ -415,7 +415,7 @@ A copper ring is here.~
 brass~
 9 0 AB
 0 0 0 0 0
--1 1 500 P
+-1 1 5000000 P
 A
 4 2
 #2231
@@ -425,7 +425,7 @@ A steel key.~
 steel~
 18 0 A
 0 0 0 0 0
-7 1 100 P
+7 1 1000000 P
 #2232
 key ruby~
 A ruby key~
@@ -433,7 +433,7 @@ A ruby key.~
 iron~
 18 0 A
 0 0 0 0 0
-26 1 2300 P
+26 1 23000000 P
 #2233
 key white~
 a white key~
@@ -441,7 +441,7 @@ A white key.~
 iron~
 18 0 A
 0 0 0 0 0
-6 1 100 P
+6 1 1000000 P
 #2234
 key grey~
 a grey key~
@@ -449,7 +449,7 @@ A grey key is resting on the ground here.~
 iron~
 18 0 A
 0 0 0 0 0
-18 1 800 P
+18 1 8000000 P
 #2237
 key stone~
 a stone key~
@@ -457,7 +457,7 @@ A stone key.~
 stone~
 18 0 A
 0 0 0 0 0
--1 1 800 P
+-1 1 8000000 P
 #2240
 key black~
 a black key~
@@ -465,7 +465,7 @@ A black key.~
 steel~
 18 0 A
 0 0 0 0 0
-6 1 100 P
+6 1 1000000 P
 #2241
 key platinum~
 a platinum key~
@@ -473,7 +473,7 @@ A platinum key.~
 steel~
 18 0 A
 0 0 0 0 0
-41 1 3500 P
+41 1 35000000 P
 #2242
 shield crested~
 a crested shield~
@@ -481,7 +481,7 @@ A large crested shield draws your attention.~
 steel~
 9 0 AJ
 7 7 7 0 0
-26 20 2300 P
+26 20 23000000 P
 A
 5 1
 #2243
@@ -491,7 +491,7 @@ A golden wand has been dropped here.~
 iron~
 3 A AO
 25 10 10 59 0
-18 5 1500 P
+18 5 15000000 P
 #2244
 staff silver~
 a silver staff~
@@ -499,7 +499,7 @@ A silver staff.~
 steel~
 4 AG AO
 25 20 20 73 0
-18 5 1275 P
+18 5 12750000 P
 #2245
 staff dragon~
 the staff of the dragon~
@@ -507,7 +507,7 @@ A powerful oak staff has been left here.~
 steel~
 4 AG AO
 25 10 10 6 0
-45 5 3900 P
+45 5 39000000 P
 #2246
 mail scale~
 scale mail~
@@ -515,7 +515,7 @@ A set of scale mail has been abandoned here.~
 steel~
 9 A AD
 3 4 4 0 0
-37 20 3550 P
+37 20 35500000 P
 #2250
 staff black~
 a black staff~
@@ -523,7 +523,7 @@ You notice the faint outline of a staff.~
 iron~
 4 AJ AO 
 30 3 3 25 0
-22 25 1775 P
+22 25 17750000 P
 #2251 
 potion cyan~
 a cyan potion~
@@ -531,7 +531,7 @@ A small cyan potion has been left here.~
 glass~
 10 0 A
 30 4 27 0 0
-22 1 875 P
+22 1 8750000 P
 #2252 
 potion magenta~
 a magenta potion~
@@ -539,7 +539,7 @@ A magenta potion.~
 glass~
 10 H A 
 30 15 34 0 0
-22 1 900 P
+22 1 9000000 P
 #2254 
 gauntlets spiked~
 a pair of spiked gauntlets~
@@ -547,7 +547,7 @@ A pair of spiked gauntlets.~
 steel~
 9 AG AH 
 9 8 8 0 0
-26 10 2500 P
+26 10 25000000 P
 A
 19 2
 A
@@ -559,7 +559,7 @@ A golden scimitar.~
 gold~
 5 A AN 
 1 4 5 13 0
-18 10 1475 P
+18 10 14750000 P
 A
 3 1
 A
@@ -571,7 +571,7 @@ A diamond brooch.~
 silver~
 9 G AC 
 0 0 0 0 0
--1 2 1500 P
+-1 2 15000000 P
 A
 12 25 
 #2270 
@@ -581,7 +581,7 @@ A runed scroll.~
 paper~
 2 G AO 
 30 1 34 67 0
-22 1 200 P
+22 1 2000000 P
 #2271
 gloves dragon~
 a pair of dragon skin gloves~
@@ -589,7 +589,7 @@ A pair of dragon skin gloves are lying on the ground.~
 steel~
 9 0 AH
 9 8 9 0 0
-27 5 2450 P
+27 5 24500000 P
 A
 2 2
 #2275
@@ -599,7 +599,7 @@ A helm made of a dragon's skull is lying on the ground.~
 bronze~
 9 0 AE
 11 11 10 0 0
-45 15 4125 P
+45 15 41250000 P
 A
 13 15
 #2276
@@ -609,7 +609,7 @@ A large mound of fur is lying here.~
 leather~
 9 0 AK
 7 8 7 0 0
-26 10 2550 P
+26 10 25500000 P
 A
 1 1
 A
@@ -621,7 +621,7 @@ A pair of dragon scale leggings is lying on the ground.~
 steel~
 9 0 AF
 11 10 10 0 0
-39 15 3500 P
+39 15 35000000 P
 #2281
 sleeves dragon scale~
 a set of dragon scale sleeves~
@@ -629,7 +629,7 @@ A set of dragon scale sleeves is lying on the ground.~
 steel~
 9 0 AI 
 8 10 9 0 0
-27 12 2500 P
+27 12 25000000 P
 #2285
 whip dragon tail~
 a dragon tailed whip~
@@ -637,7 +637,7 @@ A dragon tailed whip is lying on the ground.~
 leather~
 5 BJ AN 
 7 7 8 4 0
-41 14 3500 P
+41 14 35000000 P
 A
 18 2
 A
@@ -649,7 +649,7 @@ A copper hammer is lying on the ground.~
 bronze~
 5 0 AN 
 4 3 8 8 0
-18 12 1200 P
+18 12 12000000 P
 #2299
 key gold tarnished~
 a tarnished gold key~
@@ -657,7 +657,7 @@ A tarnished gold key lies here.~
 steel~
 18 0 A 
 0 0 0 0 0
-45 1 3000 P
+45 1 30000000 P
 #0
  
  

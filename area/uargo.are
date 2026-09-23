@@ -362,7 +362,7 @@ A ten feet long sword lies on the ground~
 steel~
 5 GIR AN
 1 10 4 3 DF
-40 50 2000 P
+40 50 20000000 P
 E
 sword piocar~
 
@@ -387,7 +387,7 @@ A ten feet long sword lies on the ground~
 steel~
 5 GIR AN
 1 10 4 1 DF
-44 40 1750 P
+44 40 17500000 P
 E
 sword mercuri~
 
@@ -412,7 +412,7 @@ A ten feet long sword lies on the ground~
 steel~
 5 GIR AN
 1 9 4 3 F
-38 45 1800 P
+38 45 18000000 P
 E
 sword~
 
@@ -436,7 +436,7 @@ An elegant Cunfshon crossbow, of steelreed and bracher wire, lies here~
 steelreed~
 5 GI ANP
 9 6 5 6 F
-31 15 1200 P
+31 15 12000000 P
 A
 18 3
 A
@@ -448,7 +448,7 @@ A really heavily bladed sword lies embedded in the ground~
 steel~
 5 GIR AN
 1 6 6 3 0
-33 24 1100 P
+33 24 11000000 P
 A
 1 1
 A
@@ -464,7 +464,7 @@ dragonlance polearm~
 steel~
 5 EGHJR ANR
 8 4 12 9 EF
-39 30 1500 P
+39 30 15000000 P
 E
 dragonlance~
 
@@ -488,7 +488,7 @@ troll sword~
 steel~
 5 EGHJR AN
 1 10 4 3 DF
-41 35 1750 P
+41 35 17500000 P
 E
 sword~
 
@@ -510,7 +510,7 @@ A three feet long mace lies here~
 steel~
 5 GIR ANO
 4 6 6 8 0
-38 25 1300 P
+38 25 13000000 P
 E
 tail mace~
 
@@ -532,7 +532,7 @@ A light weight shield has been left on the ground~
 steel~
 9 GIR AJ
 9 9 8 2 0
-31 20 1400 P
+31 20 14000000 P
 E
 round shield~
 
@@ -553,7 +553,7 @@ A heavy set, solid dragon shield has been left on the ground~
 steel~
 9 GIR AJ
 10 10 9 4 0
-33 40 1000 P
+33 40 10000000 P
 A
 17 -6
 A
@@ -567,7 +567,7 @@ A piece of red clothing lies in a heap on the ground~
 wool-cotton~
 9 GI AK
 8 8 9 0 0
-31 6 1200 P
+31 6 12000000 P
 A
 13 10
 A
@@ -581,7 +581,7 @@ A piece of leather armor lies on the ground~
 leather~
 9 GI AD
 9 8 9 0 0
-31 8 900 P
+31 8 9000000 P
 A
 2 1
 A
@@ -595,7 +595,7 @@ A brown leather belt is lying carelessly on the ground~
 leather~
 9 GI AL
 9 7 8 0 0
-31 2 800 P
+31 2 8000000 P
 A
 3 1
 A
@@ -607,7 +607,7 @@ A pair of nice looking army boots stands in the far corner~
 leather~
 9 GI AG
 9 8 8 0 0
-31 5 400 P
+31 5 4000000 P
 A
 17 -5
 A
@@ -623,7 +623,7 @@ A pair of leather arm guards lies on the ground~
 leather~
 9 GI AI
 9 7 7 0 0
-31 2 200 P
+31 2 2000000 P
 A
 13 10
 A
@@ -637,7 +637,7 @@ A piece of red and blue clothing lies in a heap on the ground~
 wool-cotton~
 9 GI AK
 9 8 9 1 0
-33 6 300 P
+33 6 3000000 P
 A
 13 30
 A
@@ -651,7 +651,7 @@ A piece of red and blue rimmed clothing lies in a heap on the ground~
 wool-cotton~
 9 GI AK
 10 9 9 1 0
-33 6 600 P
+33 6 6000000 P
 A
 13 20
 A
@@ -665,7 +665,7 @@ A piece of chain armor lies in a heap on the ground~
 steel~
 9 GIR AD
 9 9 9 1 0
-33 18 800 P
+33 18 8000000 P
 A
 17 -6
 A
@@ -677,7 +677,7 @@ black tunic tumuz orgmeen~
 cotton~
 9 EGJ AK
 8 8 8 2 0
-30 6 500 P
+30 6 5000000 P
 A
 17 -4
 A
@@ -691,7 +691,7 @@ black leather breastplate~
 leather~
 9 EGJ AD
 9 8 8 2 0
-30 12 400 P
+30 12 4000000 P
 A
 17 -4
 A
@@ -705,7 +705,7 @@ black helmet~
 steel~
 9 EGJR AE
 8 8 8 2 0
-30 12 300 P
+30 12 3000000 P
 A
 13 15
 A
@@ -719,7 +719,7 @@ black tunic~
 cotton~
 9 EGJ AD
 10 10 11 4 0
-39 6 700 P
+39 6 7000000 P
 A
 17 -9
 A
@@ -733,7 +733,7 @@ black leather belt~
 leather~
 9 EGJ AL
 8 7 7 2 0
-30 2 1000 P
+30 2 10000000 P
 A 
 3 -1
 A
@@ -745,7 +745,7 @@ impish spear~
 steel~
 5 EGJR AN
 3 3 12 11 0
-30 18 500 P
+30 18 5000000 P
 A
 17 -2
 A
@@ -759,7 +759,7 @@ mace~
 steel~
 5 EGJR AN
 4 3 12 7 0
-31 16 500 P
+31 16 5000000 P
 A
 17 -5
 A
@@ -773,7 +773,7 @@ flail~
 steel~
 5 EGJR AN
 6 3 13 8 0
-32 18 500 P
+32 18 5000000 P
 A
 17 -6
 A
@@ -787,7 +787,7 @@ axe~
 steel~
 5 EGJR ANP
 5 3 13 11 F
-33 16 500 P
+33 16 5000000 P
 A
 17 -6
 A
@@ -801,7 +801,7 @@ great black helmet~
 steel~
 9 EGJR AE
 10 9 10 4 0
-39 16 500 P
+39 16 5000000 P
 A
 13 20
 A
@@ -815,7 +815,7 @@ black red robe~
 cotton-linen~
 9 EGJ AD
 9 8 9 3 0
-30 12 600 P
+30 12 6000000 P
 A
 17 -4
 A
@@ -829,7 +829,7 @@ Some rare blueberry bushes are growing here~
 organic~
 15 G 0
 30 0 0 0 0                                  
-1 30 50 P
+1 30 500000 P
 #1031
 blue berries blueberries string~
 a string of blueberries~
@@ -837,7 +837,7 @@ A string of rare blueberries has been dropped on the ground~
 organic~
 26 AGH AO
 15 3 16 0 0
-7 1 4000 P
+7 1 40000000 P
 E
 blueberries string berries~
 	This delicious piece of fruit has been cultivated in 'het Westland'
@@ -850,7 +850,7 @@ imp dagger~
 steel~
 5 EGHJR AN
 2 10 4 3 DF
-41 35 1750 P
+41 35 17500000 P
 A
 1 -1
 A

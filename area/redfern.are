@@ -63,7 +63,7 @@ A wooden chest stands in the corner.~
 wood~
 15 0 A
 200 13 7911 0 0
-4 100 30 P
+4 100 300000 P
 E
 chest~
 It is a robust chest made from short, heavy planks that have been fastened
@@ -76,7 +76,7 @@ A small brass key lies here.~
 brass~
 18 0 A
 0 0 0 0 0
-1 1 4 P
+1 1 40000 P
 E
 key~
 It is a small, simple brass key with no inscriptions or marks of any kind.

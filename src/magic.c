@@ -3257,16 +3257,21 @@ void spell_identify( int sn, int level, CHAR_DATA *ch, void *vo )
     }
 
 
-    snprintf( buf, sizeof(buf),
-        "Object '%s' is type %s, extra flags %s.\n\rWeight is %d, value is %ld, level is %d.\n\r",
+    {
+        char price_buf[MAX_INPUT_LENGTH];
 
-        obj->name,
-        item_type_name( obj ),
-        extra_bit_name( obj->extra_flags ),
-        obj->weight,
-        obj->cost,
-        obj->level
-        );
+        format_price( obj->cost, price_buf, sizeof(price_buf) );
+        snprintf( buf, sizeof(buf),
+            "Object '%s' is type %s, extra flags %s.\n\r"
+            "Weight is %d, worth %s, level is %d.\n\r",
+            obj->name,
+            item_type_name( obj ),
+            extra_bit_name( obj->extra_flags ),
+            obj->weight,
+            price_buf,
+            obj->level
+            );
+    }
     send_to_char( buf, ch );
 
     switch ( obj->item_type )

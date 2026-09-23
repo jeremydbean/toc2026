@@ -680,7 +680,7 @@ A Sceptre made of the purest crystal lies here on the ground, forgotten.~
 crystal~
 9 AGHKLMV AO
 14 13 14 2 0
-50 14 6000 P
+50 14 60000000 P
 E
 sceptre crystal crystalline~
    In your hand you hold the powerful `Sceptre of Commanding', which will
@@ -704,7 +704,7 @@ crystalline white sword justice~
 crystal~
 5 GHIKLMV AN
 1 19 3 3 0
-50 18 4000 P
+50 18 40000000 P
 E
 sword crystalline crystal white justice~
 In your hand you hold the mighty `Sword of Justice', it will help its owner
@@ -737,7 +737,7 @@ A Diadem made of the purest crystal lies here on the ground.~
 crystal~
 9 AGHIKLMV AE
 14 13 13 2 0
-50 16 6000 P
+50 16 60000000 P
 E
 diadem crystalline crystal~
    In your hand you hold the beautiful `Diadem of Perception', which will
@@ -763,7 +763,7 @@ A rich flowing crystalline white Robe, made of the purest crystal lies here.~
 crystal~
 9 AGHIKLMV AD
 14 14 14 3 0
-50 24 9000 P
+50 24 90000000 P
 E
 robe crystalline crystal~
    In your hands you hold the famous Robe of Shielding, which will grant its
@@ -792,7 +792,7 @@ A purple rimmed, crystalline cloak lies on the ground.~
 crystalline~
 9 AGHIKLMV AC
 14 13 14 1 0
-50 16 3000 P
+50 16 30000000 P
 A
 18 3
 A
@@ -804,7 +804,7 @@ A Crown made of the purest crystal lies here on the ground.~
 crystal~
 9 AGHIKLMV AE
 14 13 13 2 0
-49 14 6500 P
+49 14 65000000 P
 E
 crown crystalline crystal~
    In your hand you hold the beautiful `Crown of Perception', which will
@@ -830,7 +830,7 @@ crystalline white dagger~
 crystal~
 5 GHIKLMV AN
 2 6 12 2 0
-49 4 4000 P
+49 4 40000000 P
 E
 dagger crystalline crystal white~
    In your hand you wear the remarkable `Dagger of Wonders', especially made
@@ -862,7 +862,7 @@ ceresian battle armor~
 tungsten~
 9 CGIKRV AD
 14 14 14 1 0
-50 35 4500 P
+50 35 45000000 P
 E
 ceresian battle armor~
 This armor has been blessed by the Goddess Ceres.
@@ -882,7 +882,7 @@ ceresian grand axe grand-axe~
 plasteel~
 5 CGIKRV AN
 5 9 6 6 0
-50 27 3800 P
+50 27 38000000 P
 E
 ceresian grand axe grand-axe~
 This heavy axe has been blessed by the Goddess Ceres.
@@ -902,7 +902,7 @@ ceresian cloak~
 brocade~
 9 CGIKV AC
 14 13 14 1 0
-50 10 1800 P
+50 10 18000000 P
 E
 ceresian royal cloak~
 This cloak has been blessed by the Goddess Ceres.
@@ -922,7 +922,7 @@ ceresian leggings~
 tungsten~
 9 CGIKRV AF
 14 14 14 0 0
-50 20 1800 P
+50 20 18000000 P
 E
 ceresian leggings~
 These leggings have been blessed by the Goddess Ceres.
@@ -940,7 +940,7 @@ ceresian kite~
 tungsten~
 9 CGIKRV AJ
 14 14 14 3 0
-50 26 2500 P
+50 26 25000000 P
 E
 kite ceresian~
 This kite has been blessed by clerics of the Goddess Ceres.
@@ -966,7 +966,7 @@ ceresian armor~
 tungsten~
 9 CGIKRV AD
 14 14 13 0 0
-50 28 3000 P
+50 28 30000000 P
 E
 armor ceresian body~
 This piece of body armor has been blessed by clerics of the Goddess Ceres.
@@ -984,7 +984,7 @@ ceresian helmet~
 tungsten~
 9 CGIKRV AE
 14 14 13 0 0
-50 15 3000 P
+50 15 30000000 P
 E
 helmet ceresian~
 This war helmet has been blessed by clerics of the Goddess Ceres.
@@ -1004,7 +1004,7 @@ ceresian leggings~
 tungsten~
 9 CGIKRV AF
 14 14 13 0 0
-50 15 1000 P
+50 15 10000000 P
 E
 leggings ceresian~
 These leggings have been blessed by clerics of the Goddess Ceres.
@@ -1020,7 +1020,7 @@ ceresian war lance~
 plasteel~
 5 CGIKRV AN
 3 10 5 6 0
-50 12 2000 P
+50 12 20000000 P
 E
 ceresian lance~
 This war lance has been blessed by clerics of the Goddess Ceres.
@@ -1036,7 +1036,7 @@ A breastplate with the royal crest on it lies on the ground in front of you.~
 tungsten~
 9 GRV AD
 13 13 13 1 0
-49 15 1400 P
+49 15 14000000 P
 A
 17 -9
 A
@@ -1050,7 +1050,7 @@ Some shining leggings lie on the ground.~
 tungsten~
 9 GRV AF
 13 13 13 1 0
-49 10 1200 P
+49 10 12000000 P
 A
 17 -3
 A
@@ -1064,7 +1064,7 @@ An indigo blue rimmed, white cloak lies on the ground.~
 polyester-cotton~
 9 GV AC
 14 13 13 2 0
-49 2 1800 P
+49 2 18000000 P
 A
 18 1
 A
@@ -1076,7 +1076,7 @@ A long staff lies on the ground.~
 oak~
 4 AGV AO
 40 18 18 53 0
-39 16 22000 P
+39 16 220000000 P
 E
 staff protocolaire~
 This staff helps the Minister of Protocol to find those who break protocol.
@@ -1093,7 +1093,7 @@ Body armor from another world lies here on the ground.~
 tungsten~
 9 AGIKRV AD
 14 14 14 1 0
-50 35 45000 P
+50 35 450000000 P
 A
 14 -25
 A
@@ -1109,7 +1109,7 @@ A Solgartian Saber lies in front of your feet.~
 plasteel~
 5 AGIKRV AN
 1 9 6 6 0
-50 27 3800 P
+50 27 38000000 P
 A
 1 1
 A
@@ -1125,7 +1125,7 @@ A light-red rimmed cloak lies on the ground.~
 brocade~
 9 AGIKV AC
 14 13 14 1 0
-50 10 2800 P
+50 10 28000000 P
 A
 18 2
 A
@@ -1139,7 +1139,7 @@ Leggings from out of this world lie on the ground.~
 tungsten~
 9 AGIKRV AF
 14 14 14 1 0
-50 12 1800 P
+50 12 18000000 P
 A
 17 -7
 A
@@ -1153,7 +1153,7 @@ A strange looking empty tank has been placed here.~
 tungsten~
 9 BGIKRV AD
 15 16 14 8 0
-50 60 4500 P
+50 60 45000000 P
 A
 1 -1
 A
@@ -1171,7 +1171,7 @@ A Vaporbreather's weapon-device lies in front of your feet.~
 plasteel~
 5 BGIKRV AN
 4 9 6 2 0
-50 27 3800 P
+50 27 38000000 P
 A
 1 2
 A
@@ -1187,7 +1187,7 @@ A dark-red rimmed cloak lies on the ground.~
 brocade~
 9 BGIKV AC
 14 14 14 3 0
-50 25 2800 P
+50 25 28000000 P
 A
 17 -15
 A
@@ -1203,7 +1203,7 @@ A beautiful silk gown lies folded on a chair.~
 silk~
 9 AKV AD
 14 12 14 2 0
-47 19 2300 P
+47 19 23000000 P
 A
 17 -15
 A
@@ -1219,7 +1219,7 @@ A surgeon's scalpel is left on the ground.~
 steel~
 5 AV AN
 2 7 4 6 0
-23 1 1300 P
+23 1 13000000 P
 A
 18 3
 A
@@ -1231,7 +1231,7 @@ A piece of green cloth lies on the ground, neatly folded.~
 cotton-wool~
 9 CGJV ADK
 9 9 9 4 0
-25 10 1600 P
+25 10 16000000 P
 A
 17 -8
 A
@@ -1247,7 +1247,7 @@ An oaken staff has been firmly put in the ground.~
 oak~
 4 BGJV AO
 30 10 10 28 0
-25 18 2000 P
+25 18 20000000 P
 A
 18 3
 A
@@ -1259,7 +1259,7 @@ A pile of brown cloth has been dropped on the ground.~
 cotton-wool~
 9 AGIKLV ADK
 10 9 8 5 0
-31 10 2100 P
+31 10 21000000 P
 A
 17 -14
 A
@@ -1275,7 +1275,7 @@ prayers prayer~
 holy words~
 5 GIKLV AN
 0 7 6 8 0
-31 1 2000 P
+31 1 20000000 P
 A
 18 5
 A
@@ -1287,7 +1287,7 @@ A pile of black cloth lies here on the ground, neatly folded.~
 cotton-wool~
 9 CGIKLV ADK
 11 9 10 5 0
-32 12 2200 P
+32 12 22000000 P
 A
 17 -14
 A
@@ -1303,7 +1303,7 @@ A dagger with a hilt, shaped as an eight-pointed star, lies here.~
 silver~
 5 AGIKLV AN
 2 7 6 2 0
-32 10 2300 P
+32 10 23000000 P
 A
 18 3
 A
@@ -1315,7 +1315,7 @@ A pile of indigo blue cloth lies on the ground.~
 cotton-wool~
 9 AGIKLV ADK
 14 12 14 4 0
-50 12 2600 P
+50 12 26000000 P
 E
 indigo blue velvet robes~
 The robes are ornamented with small eight-pointed stars on the edgings.
@@ -1339,7 +1339,7 @@ starjewel~
 starjewel~
 9 GIKLUV AC
 13 12 13 3 0
-50 1 4000 P
+50 1 40000000 P
 E
 starjewel~
    It's a VERY rare and expensive jewel, carved in the form of an eight-pointed
@@ -1363,7 +1363,7 @@ A Guardian's Bloodsword has been left here in its sheath.~
 energy~
 5 GIKLMUV AN
 0 20 3 1 0
-50 15 5500 P
+50 15 55000000 P
 E
 blood bloodsword saber~
    The bloodsword is a weapon made by and for the Blood Royals. It's a
@@ -1411,7 +1411,7 @@ bloodsword blood saber~
 energy~
 5 GIKLMUV AN
 0 7 7 1 0
-43 10 4500 G
+43 10 45000000 G
 E
 blood bloodsword saber~
    The bloodsword is a weapon made by and for the Blood Royals. It's a
@@ -1462,7 +1462,7 @@ A pile of indigo blue cloth lies on the ground.~
 cotton-wool~
 9 AGIKLUV ADK
 14 12 14 4 0
-33 13 1800 P
+33 13 18000000 P
 E
 indigo blue velvet robes~
 The robes are ornamented with small eight-pointed stars on the edgings.
@@ -1486,7 +1486,7 @@ starjewel~
 starjewel~
 9 GIKLUV AC
 13 12 13 3 0
-33 1 4000 P
+33 1 40000000 P
 E
 starjewel~
    It's a VERY rare and expensive jewel, carved in the form of an eight-pointed
@@ -1510,7 +1510,7 @@ indigo blue velvet robes~
 cotton-wool~
 9 AGIKLUV ADK
 13 12 13 4 0
-43 12 2000 G
+43 12 20000000 G
 E
 indigo blue velvet robes~
    These robes belong to Platus and have turned ghostly translucent with him.
@@ -1536,7 +1536,7 @@ starjewel~
 starjewel~
 9 GIKLUV AC
 12 11 12 2 0
-43 1 2700 G
+43 1 27000000 G
 E
 starjewel~
    It's a VERY rare and expensive jewel, carved in the form of an eight-pointed
@@ -1563,7 +1563,7 @@ A common battle armor lies on the ground in front of you.~
 leather~
 9 G AD
 0 0 0 0 0
--1 6 300 P
+-1 6 3000000 P
 A
 17 -8
 A
@@ -1577,7 +1577,7 @@ Some shining leggings lie in front of you.~
 leather~
 9 G AF
 0 0 0 0 0
--1 5 100 P
+-1 5 1000000 P
 A
 18 1
 A
@@ -1589,7 +1589,7 @@ A blue rimmed, white cloak lies on the ground.~
 cloth~
 9 G AC
 0 0 0 0 0
--1 4 280 P
+-1 4 2800000 P
 A
 18 2
 A
@@ -1601,7 +1601,7 @@ A war lance has been placed against the wall.~
 wood~
 5 A AN
 3 1 5 6 0
--1 3 150 P
+-1 3 1500000 P
 A
 17 -5
 A
@@ -1615,7 +1615,7 @@ A sturdy blade has been placed against the wall.~
 steel~
 5 A AN
 1 1 5 3 0
--1 4 200 P
+-1 4 2000000 P
 A
 17 -5
 A
@@ -1629,7 +1629,7 @@ A weird looking device lies on the ground.~
 steel~
 5 E AN
 0 1 5 6 0
--1 4 200 P
+-1 4 2000000 P
 A
 17 -2
 A
@@ -1643,7 +1643,7 @@ Some clothes, made of a strange fabric lies here.~
 cloth~
 9 E AD
 0 0 0 0 0
--1 5 210 P
+-1 5 2100000 P
 A
 17 -4
 A
@@ -1655,7 +1655,7 @@ A Roman-like breastplate lies here ... a phoenix is engraved in it.~
 bronze~
 9 G AD
 0 0 0 0 0
--1 5 210 P
+-1 5 2100000 P
 E
 roman breastplate~
 The breastplate is a simplified copy of Lord Sagan's armor and has a phoenix
@@ -1674,7 +1674,7 @@ Some Roman-like leggings lie here ... a phoenix is engraved in them.~
 leather~
 9 G AF
 0 0 0 0 0
--1 5 190 P
+-1 5 1900000 P
 E
 roman leggings~
 The leggings are a simplified copy of Lord Sagan's leggings and a phoenix has
@@ -1689,7 +1689,7 @@ A Roman-like short sword lies on the ground.~
 bronze~
 5 0 AN
 1 1 5 3 0
--1 4 200 P
+-1 4 2000000 P
 E
 roman sword short~
 This sword is an almost exact copy of the short swords used by the ancient
@@ -1706,7 +1706,7 @@ A livery lies on the ground, neatly folded.~
 cloth~
 9 AG AD
 0 0 0 0 0
--1 3 210 P
+-1 3 2100000 P
 E
 livery~
 The livery is made of rich, indigo blue fabrics. A crest, a beautiful silvery
@@ -1725,7 +1725,7 @@ A medium sword is left on the ground.~
 steel~
 5 0 AN
 1 1 5 6 0
--1 22 1500 P
+-1 22 15000000 P
 A
 18 2
 A
@@ -1737,7 +1737,7 @@ The strangest looking knife you have ever seen, lies here on the ground.~
 steel~
 5 E AN
 2 1 5 2 0
--1 21 1000 P
+-1 21 10000000 P
 A
 18 2
 A
@@ -1749,7 +1749,7 @@ A potion with changing blue and green colors lies on the ground.~
 glass~
 10 GJK A
 25 28 200 200 P
-5 3 100 0
+5 3 1000000 0
 E
 potion blue green~
 You hear the sarcastic laughter of Khardan ...
@@ -1761,7 +1761,7 @@ A large obsidian statue stands in a dark corner of the room.~
 stone~
 15 CG 0
 0 0 0 0 0
-1 1000 1 P
+1 1000 10000 P
 E
 statue~
 You're not familiar with the person the statue resembles. You notice that
@@ -1775,7 +1775,7 @@ A heavy obsidian tongue lies on the ground.~
 ~
 18 0 1
 10096 0 0 0 0
--1 10 20 P
+-1 10 200000 P
 #10055
 key~
 a translucent key~
@@ -1783,7 +1783,7 @@ You can barely see the translucent key that lies here.~
 ~
 18 32 1
 10146 0 0 0 0
-1 1 30 P
+1 1 300000 P
 #10057
 standard military battle armor~
 a Standard military battle armor~
@@ -1791,7 +1791,7 @@ A common battle armor lies on the ground in front of you.~
 ~
 9 G AD
 0 0 0 0 0
--1 20 1600 P
+-1 20 16000000 P
 A
 17 -4
 A

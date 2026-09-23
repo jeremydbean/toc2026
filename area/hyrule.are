@@ -1149,7 +1149,7 @@ The Master Sword rests here, its sacred blade shining with golden light.~
 steel~
 5 ABGHKUV AN
 1 13 8 3 AD
-58 20 50000 P
+58 20 500000000 P
 A
 18 3
 A
@@ -1208,7 +1208,7 @@ A curious little potion lies here.~
 unknown~
 10 UV A
 30 17 4 2 0
-30 1 100 P
+30 1 1000000 P
 #30207
 black potion~
 a black potion~
@@ -1216,7 +1216,7 @@ A black potion glitters faintly on a nearby shelf.~
 glass~
 10 GUV AO
 50 502 515 568 0
-50 1 10000 P
+50 1 100000000 P
 #30208
 tree~
 the tree~
@@ -1252,7 +1252,7 @@ A small sword is stuck in the ground here.~
 steel~
 5 G AN
 1 7 5 3 0
-25 5 500 P
+25 5 5000000 P
 #30213
 tattered cloth~
 a small tattered cloth~
@@ -1260,7 +1260,7 @@ A small piece of battered cloth lies here in a pile.~
 cloth~
 9 0 AD
 7 6 7 3 0
-28 1 500 P
+28 1 5000000 P
 #30214
 zora flippers~
 zora's flippers~
@@ -1268,7 +1268,7 @@ A small set of blue flippers lies here.~
 unknown~
 29 AB AG
 0 0 0 0 0
-30 2 300 P
+30 2 3000000 P
 #30215
 horseshoes shoes~
 a pair of horseshoes~
@@ -1276,7 +1276,7 @@ A small pair of enchanted horseshoes lies here.~
 steel~
 9 BGUV AG
 10 10 10 6 0
-45 7 2500 P
+45 7 25000000 P
 A
 2 2
 A
@@ -1288,7 +1288,7 @@ A small white potion shakes here.~
 unknown~
 10 ABUV AO
 50 562 33 17 0
-50 8 1000 P
+50 8 10000000 P
 #30217
 light golden portal return~
 a bright golden light~
@@ -1304,7 +1304,7 @@ A single silver arrow lies here.~
 silver~
 5 ABGUV AN
 0 4 14 2 0
-54 1 5000 P
+54 1 50000000 P
 E
 silver arrow~
 The silver metal shines with a light that does not fade.  The Silver Arrow
@@ -1325,7 +1325,7 @@ A small wooden sword lies here.~
 unknown~
 5 AV AN
 1 3 7 1 0
-15 3 50 P
+15 3 500000 P
 #30220
 gold money coins~
 gold coins~
@@ -1333,7 +1333,7 @@ A small pile of gold coins lies here.~
 unknown~
 20 0 A
 CEHIM 0 0 0 0
-1 5 1000 P
+1 5 10000000 P
 #30221
 blue candle~
 a blue candle~
@@ -1341,7 +1341,7 @@ A small blue candle lies here, casting a steady flame.~
 wax~
 1 AG AO
 0 0 999 0 0
-13 5 1000 P
+13 5 10000000 P
 #30222
 short bow~
 a short bow~
@@ -1349,7 +1349,7 @@ A small bow lies here.~
 unknown~
 5 BV AN
 9 6 4 6 0
-18 3 2500 P
+18 3 25000000 P
 #30223
 blue potion~
 a blue potion~
@@ -1357,7 +1357,7 @@ A small, glowing blue potion is here.~
 unknown~
 10 ABV AO
 30 28 28 81 0
-5 5 10000 P
+5 5 100000000 P
 #30224
 red potion~
 a red potion~
@@ -1365,7 +1365,7 @@ A small, glowing red potion is here.~
 unknown~
 10 ABV AO
 30 81 81 81 0
-5 3 4500 P
+5 3 45000000 P
 #30225
 fountain faerie~
 a fountain~
@@ -1397,7 +1397,7 @@ A small tattered shirt lies here in a pile.~
 cloth~
 9 0 AD
 9 9 9 5 0
-40 1 750 P
+40 1 7500000 P
 #30229
 bone sword~
 a bone sword~
@@ -1413,7 +1413,7 @@ A steel shield bearing the symbol of the Triforce lies here.~
 steel~
 9 G AJ
 12 12 12 8 0
-45 20 4000 P
+45 20 40000000 P
 A
 17 -8
 #30231
@@ -1536,7 +1536,7 @@ A large staff of power lies here.~
 wood~
 4 ABGUV AO
 60 5 5 568 0
-70 15 10000 P
+70 15 100000000 P
 A
 12 50
 #30245
@@ -1546,7 +1546,7 @@ A small acid-etched wand lies here.~
 wood~
 3 BG AO
 57 5 5 70 0
-57 5 2500 P
+57 5 25000000 P
 #30246
 burnt key~
 a burnt key~
@@ -1587,7 +1587,7 @@ A heavy suit of Darknut armor lies here.~
 steel~
 9 ABGV AD
 13 13 13 9 0
-52 35 9000 P
+52 35 90000000 P
 A
 5 2
 #30251
@@ -1597,7 +1597,7 @@ The White Sword shines with a clean, silver light here.~
 silver~
 5 ABGUV AN
 1 13 5 20 D
-35 15 15000 P
+35 15 150000000 P
 A
 18 2
 A
@@ -1625,7 +1625,7 @@ A small piece of meat lies here.~
 unknown~
 19 0 A
 ADE 0 0 0 0
-1 1 45 P
+1 1 450000 P
 #30255
 fountain~
 a magical fountain~
@@ -1649,7 +1649,7 @@ A robe woven from darkness and starlight lies here.~
 cloth~
 9 GUV AK
 16 16 16 12 0
-60 8 15000 P
+60 8 150000000 P
 A
 3 2
 A
@@ -1669,7 +1669,7 @@ A huge bag lies here... it seems to have been used to tote many bombs.~
 unknown~
 15 BGH AO
 BCEFHIJ A 0 0 0
-15 2 5000 P
+15 2 50000000 P
 #30260
 small golden chest~
 a small golden chest~
@@ -1685,7 +1685,7 @@ A red ring glows softly here.~
 gold~
 9 ABGKUV AB
 8 8 8 6 0
-69 1 8000 P
+69 1 80000000 P
 A
 13 35
 #30262
@@ -1715,7 +1715,7 @@ A small can of Pepsi lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30265
 can coca cola~
 a can of Coca-Cola~
@@ -1723,7 +1723,7 @@ A small can of Coca-Cola lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30266
 can diet pepsi~
 a can of Diet Pepsi~
@@ -1731,7 +1731,7 @@ A small can of Diet Pepsi lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30267
 can dr pepper~
 a can of Dr. Pepper~
@@ -1739,7 +1739,7 @@ A small can of Dr. Pepper lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30268
 can mountain dew~
 a can of Mt. Dew~
@@ -1747,7 +1747,7 @@ A small can of Mt. Dew lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30269
 can diet coke~
 a can of Diet Coke~
@@ -1755,7 +1755,7 @@ A small can of Diet Coke lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30270
 7 up 7up can~
 a can of 7-up~
@@ -1763,7 +1763,7 @@ A small can of 7-up lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30271
 mug root beer can~
 a can of Mug Root Beer~
@@ -1771,7 +1771,7 @@ A small can of Mug lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30272
 can sprite~
 a can of Sprite~
@@ -1779,7 +1779,7 @@ A small can of Sprite lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30273
 can surge~
 a can of Surge~
@@ -1787,7 +1787,7 @@ A small can of Surge lies here.~
 unknown~
 17 0 AO
 ABF ABF ABCD 0 0
-5 2 500 P
+5 2 5000000 P
 #30274
 drop water~
 a drop of water~
@@ -1795,7 +1795,7 @@ A small container of seemingly endless water lies here.~
 unknown~
 17 ABHV A
 BDEFGH BDEFGH 0 0 0
-1 2 17500 P
+1 2 175000000 P
 #30275
 roc feather~
 a Roc's Feather~
@@ -1803,7 +1803,7 @@ A great white feather floats just above the ground.~
 feather~
 9 ABV AO
 3 3 3 2 0
-10 1 1000 P
+10 1 10000000 P
 A
 2 1
 A
@@ -1815,7 +1815,7 @@ A golden bracelet engraved with a triangle rests here.~
 gold~
 9 ABUV AM
 8 8 8 5 0
-50 2 5000 P
+50 2 50000000 P
 A
 1 2
 #30277
@@ -1838,7 +1838,7 @@ A pair of winged boots rests here.~
 leather~
 9 ABGUV AG
 8 8 8 5 0
-35 4 6000 P
+35 4 60000000 P
 A
 2 2
 A
@@ -1850,7 +1850,7 @@ A small chain with a hook on the end lies here.~
 unknown~
 5 ABGHUV AN
 4 8 5 4 0
-27 0 1000 P
+27 0 10000000 P
 #30280
 gold money coins~
 gold coins~
@@ -1882,7 +1882,7 @@ A small ball hovers here.~
 unknown~
 9 ABGHUV AO
 0 0 0 0 0
-70 15 150000 P
+70 15 1500000000 P
 #30284
 delicious beef jerky meat~
 (Delicious) Beef Jerky~
@@ -1890,7 +1890,7 @@ A strip of delicious beef jerky lies here.~
 meat~
 19 UV A
 H 0 0 0 0
-1 1 25 P
+1 1 250000 P
 #30285
 hyrule arcade cabinet game screen portal~
 a flickering Hyrule arcade cabinet~
@@ -1911,7 +1911,7 @@ The complete Triforce floats here, radiant with golden power.~
 gold~
 18 ABGIV AO
 0 0 0 0 0
-58 1 50000 P
+58 1 500000000 P
 E
 triforce triangles~
 Three golden triangles join as one, embodying Power, Wisdom, and Courage.
@@ -1923,7 +1923,7 @@ A green traveler's cap rests here, ready for another hero.~
 steel~
 9 G AE
 1 1 1 1 0
-1 1 5 P
+1 1 50000 P
 
 #30321
 a wooden buckler hyrule gear~
@@ -1932,7 +1932,7 @@ A wooden buckler rests here, ready for another hero.~
 steel~
 9 G AJ
 1 1 1 1 0
-2 1 20 P
+2 1 200000 P
 
 #30322
 a homespun green tunic hyrule gear~
@@ -1941,7 +1941,7 @@ A homespun green tunic rests here, ready for another hero.~
 steel~
 9 G AD
 1 1 1 1 0
-3 1 45 P
+3 1 450000 P
 
 #30323
 a pair of trailworn boots hyrule gear~
@@ -1950,7 +1950,7 @@ A pair of trail-worn boots rests here, ready for another hero.~
 steel~
 9 G AG
 1 1 1 1 0
-4 1 80 P
+4 1 800000 P
 
 #30324
 a wooden practice blade hyrule gear~
@@ -1959,7 +1959,7 @@ A wooden practice blade rests here, ready for another hero.~
 steel~
 5 G AN
 1 1 4 3 0
-5 2 125 P
+5 2 1250000 P
 
 #30325
 an octorokhide wristguard hyrule gear~
@@ -1968,7 +1968,7 @@ An octorok-hide wristguard rests here, ready for another hero.~
 steel~
 9 G AM
 1 1 1 1 0
-6 2 180 P
+6 2 1800000 P
 
 #30326
 a leevershell belt hyrule gear~
@@ -1977,7 +1977,7 @@ A leever-shell belt rests here, ready for another hero.~
 steel~
 9 G AL
 1 1 1 1 0
-7 2 245 P
+7 2 2450000 P
 
 #30327
 a keesewing cloak hyrule gear~
@@ -1986,7 +1986,7 @@ A keese-wing cloak rests here, ready for another hero.~
 steel~
 9 G AK
 2 2 2 1 0
-8 2 320 P
+8 2 3200000 P
 
 #30328
 a moblin leather jerkin hyrule gear~
@@ -1995,7 +1995,7 @@ A moblin leather jerkin rests here, ready for another hero.~
 steel~
 9 G AD
 2 2 2 1 0
-9 3 405 P
+9 3 4050000 P
 
 #30329
 a heros practice sword hyrule gear~
@@ -2004,7 +2004,7 @@ A hero's practice sword rests here, ready for another hero.~
 steel~
 5 G AN
 1 2 4 3 0
-10 3 500 P
+10 3 5000000 P
 
 #30330
 an eaglecarved bracer hyrule gear~
@@ -2013,7 +2013,7 @@ An eagle-carved bracer rests here, ready for another hero.~
 steel~
 9 G AM
 2 2 2 1 0
-11 3 605 P
+11 3 6050000 P
 
 #30331
 a dungeon delvers cap hyrule gear~
@@ -2022,7 +2022,7 @@ A dungeon delver's cap rests here, ready for another hero.~
 steel~
 9 G AE
 3 3 3 2 0
-12 4 720 P
+12 4 7200000 P
 
 #30332
 a candlekeepers mantle hyrule gear~
@@ -2031,7 +2031,7 @@ A candlekeeper's mantle rests here, ready for another hero.~
 steel~
 9 G AK
 3 3 3 2 0
-13 4 845 P
+13 4 8450000 P
 
 #30333
 a stalfos bone guard hyrule gear~
@@ -2040,7 +2040,7 @@ A stalfos bone guard rests here, ready for another hero.~
 steel~
 9 G AI
 3 3 3 2 0
-14 4 980 P
+14 4 9800000 P
 
 #30334
 a goriya crescent blade hyrule gear~
@@ -2049,7 +2049,7 @@ A goriya crescent blade rests here, ready for another hero.~
 steel~
 5 G AN
 1 3 4 3 0
-15 5 1125 P
+15 5 11250000 P
 
 #30335
 a pair of traprunners boots hyrule gear~
@@ -2058,7 +2058,7 @@ A pair of trap-runner's boots rests here, ready for another hero.~
 steel~
 9 G AG
 4 4 4 2 0
-16 5 1280 P
+16 5 12800000 P
 
 #30336
 a boomerangers wristguard hyrule gear~
@@ -2067,7 +2067,7 @@ A boomeranger's wristguard rests here, ready for another hero.~
 steel~
 9 G AM
 4 4 4 2 0
-17 5 1445 P
+17 5 14450000 P
 
 #30337
 an eagle archers bow hyrule gear~
@@ -2076,7 +2076,7 @@ An eagle archer's bow rests here, ready for another hero.~
 steel~
 5 G AN
 9 4 4 3 0
-18 6 1620 P
+18 6 16200000 P
 
 #30338
 an aquamentusscale hauberk hyrule gear~
@@ -2085,7 +2085,7 @@ An aquamentus-scale hauberk rests here, ready for another hero.~
 steel~
 9 G AD
 4 4 4 3 0
-19 6 1805 P
+19 6 18050000 P
 
 #30339
 heart guard of eagle hyrule gear~
@@ -2094,7 +2094,7 @@ The heart guard of the eagle rests here, ready for another hero.~
 steel~
 9 G AC
 5 5 5 3 0
-20 6 2000 P
+20 6 20000000 P
 
 #30340
 a pair of ropehide boots hyrule gear~
@@ -2103,7 +2103,7 @@ A pair of rope-hide boots rests here, ready for another hero.~
 steel~
 9 G AG
 5 5 5 3 0
-21 7 2205 P
+21 7 22050000 P
 
 #30341
 a pair of moonstone bracers hyrule gear~
@@ -2112,7 +2112,7 @@ A pair of moonstone bracers rests here, ready for another hero.~
 steel~
 9 G AM
 5 5 5 3 0
-22 7 2420 P
+22 7 24200000 P
 
 #30342
 a crescentmoon helm hyrule gear~
@@ -2121,7 +2121,7 @@ A crescent-moon helm rests here, ready for another hero.~
 steel~
 9 G AE
 5 5 5 3 0
-23 7 2645 P
+23 7 26450000 P
 
 #30343
 a moldorm spine blade hyrule gear~
@@ -2130,7 +2130,7 @@ A moldorm spine blade rests here, ready for another hero.~
 steel~
 5 G AN
 1 5 5 3 0
-24 8 2880 P
+24 8 28800000 P
 
 #30344
 a moon labyrinth cuirass hyrule gear~
@@ -2139,7 +2139,7 @@ A moon labyrinth cuirass rests here, ready for another hero.~
 steel~
 9 G AD
 6 6 6 4 0
-25 8 3125 P
+25 8 31250000 P
 
 #30345
 a smokebomb bandolier hyrule gear~
@@ -2148,7 +2148,7 @@ A smoke-bomb bandolier rests here, ready for another hero.~
 steel~
 9 G AK
 6 6 6 4 0
-26 8 3380 P
+26 8 33800000 P
 
 #30346
 an enchanted returning blade hyrule gear~
@@ -2157,7 +2157,7 @@ An enchanted returning blade rests here, ready for another hero.~
 steel~
 5 G AN
 1 6 5 3 0
-27 9 3645 P
+27 9 36450000 P
 
 #30347
 a pair of dodongohide leggings hyrule gear~
@@ -2166,7 +2166,7 @@ A pair of dodongo-hide leggings rests here, ready for another hero.~
 steel~
 9 G AF
 7 7 7 4 0
-28 9 3920 P
+28 9 39200000 P
 
 #30348
 a dodongofang sword hyrule gear~
@@ -2175,7 +2175,7 @@ A dodongo-fang sword rests here, ready for another hero.~
 steel~
 5 G AN
 1 6 5 3 0
-29 9 4205 P
+29 9 42050000 P
 
 #30349
 heart guard of moon hyrule gear~
@@ -2184,7 +2184,7 @@ The heart guard of the moon rests here, ready for another hero.~
 steel~
 9 G AC
 7 7 7 5 0
-30 10 4500 P
+30 10 45000000 P
 
 #30350
 a pair of zolslick boots hyrule gear~
@@ -2193,7 +2193,7 @@ A pair of zol-slick boots rests here, ready for another hero.~
 steel~
 9 G AG
 7 7 7 5 0
-31 10 4805 P
+31 10 48050000 P
 
 #30351
 a bubble ward pendant hyrule gear~
@@ -2202,7 +2202,7 @@ A bubble ward pendant rests here, ready for another hero.~
 steel~
 9 G AC
 8 8 8 5 0
-32 10 5120 P
+32 10 51200000 P
 
 #30352
 a pair of red darknut gauntlets hyrule gear~
@@ -2211,7 +2211,7 @@ A pair of red darknut gauntlets rests here, ready for another hero.~
 steel~
 9 G AH
 8 8 8 5 0
-33 11 5445 P
+33 11 54450000 P
 
 #30353
 a red darknut shield hyrule gear~
@@ -2220,7 +2220,7 @@ A red darknut shield rests here, ready for another hero.~
 steel~
 9 G AJ
 8 8 8 5 0
-34 11 5780 P
+34 11 57800000 P
 
 #30354
 a raftmasters cutlass hyrule gear~
@@ -2229,7 +2229,7 @@ A raftmaster's cutlass rests here, ready for another hero.~
 steel~
 5 G AN
 1 7 5 3 0
-35 11 6125 P
+35 11 61250000 P
 
 #30355
 a red darknut breastplate hyrule gear~
@@ -2238,7 +2238,7 @@ A red darknut breastplate rests here, ready for another hero.~
 steel~
 9 G AD
 9 9 9 6 0
-36 12 6480 P
+36 12 64800000 P
 
 #30356
 a labyrinth crossblade hyrule gear~
@@ -2247,7 +2247,7 @@ A labyrinth crossblade rests here, ready for another hero.~
 steel~
 5 G AN
 1 8 5 3 0
-37 12 6845 P
+37 12 68450000 P
 
 #30357
 a manji knights shield hyrule gear~
@@ -2256,7 +2256,7 @@ A manji knight's shield rests here, ready for another hero.~
 steel~
 9 G AJ
 9 9 9 6 0
-38 12 7220 P
+38 12 72200000 P
 
 #30358
 a manhandla thorn lash hyrule gear~
@@ -2265,7 +2265,7 @@ A manhandla thorn lash rests here, ready for another hero.~
 steel~
 5 G AN
 1 8 5 3 0
-39 13 7605 P
+39 13 76050000 P
 
 #30359
 heart guard of manji hyrule gear~
@@ -2274,7 +2274,7 @@ The heart guard of the manji rests here, ready for another hero.~
 steel~
 9 G AC
 10 10 10 6 0
-40 13 8000 P
+40 13 80000000 P
 
 #30360
 a pair of virewing boots hyrule gear~
@@ -2283,7 +2283,7 @@ A pair of vire-wing boots rests here, ready for another hero.~
 steel~
 9 G AG
 10 10 10 6 0
-41 13 8405 P
+41 13 84050000 P
 
 #30361
 a pair of watercrossing greaves hyrule gear~
@@ -2292,7 +2292,7 @@ A pair of water-crossing greaves rests here, ready for another hero.~
 steel~
 9 G AG
 10 10 10 7 0
-42 14 8820 P
+42 14 88200000 P
 
 #30362
 a like likehide cloak hyrule gear~
@@ -2301,7 +2301,7 @@ A like like-hide cloak rests here, ready for another hero.~
 steel~
 9 G AK
 10 10 10 7 0
-43 14 9245 P
+43 14 92450000 P
 
 #30363
 a serpentcrested shield hyrule gear~
@@ -2310,7 +2310,7 @@ A serpent-crested shield rests here, ready for another hero.~
 steel~
 9 G AJ
 11 11 11 7 0
-44 14 9680 P
+44 14 96800000 P
 
 #30364
 a pair of stepladder sabatons hyrule gear~
@@ -2319,7 +2319,7 @@ A pair of stepladder sabatons rests here, ready for another hero.~
 steel~
 9 G AG
 11 11 11 7 0
-45 15 10125 P
+45 15 101250000 P
 
 #30365
 a pair of gleeokscale bracers hyrule gear~
@@ -2328,7 +2328,7 @@ A pair of gleeok-scale bracers rests here, ready for another hero.~
 steel~
 9 G AM
 11 11 11 7 0
-46 15 10580 P
+46 15 105800000 P
 
 #30366
 a dragonfire helm hyrule gear~
@@ -2337,7 +2337,7 @@ A dragonfire helm rests here, ready for another hero.~
 steel~
 9 G AE
 11 11 11 7 0
-47 15 11045 P
+47 15 110450000 P
 
 #30367
 a gleeokfang spear hyrule gear~
@@ -2346,7 +2346,7 @@ A gleeok-fang spear rests here, ready for another hero.~
 steel~
 5 G AN
 1 10 6 3 0
-48 16 11520 P
+48 16 115200000 P
 
 #30368
 a coat of gleeok scale mail hyrule gear~
@@ -2355,7 +2355,7 @@ A coat of gleeok scale mail rests here, ready for another hero.~
 steel~
 9 G AD
 12 12 12 8 0
-49 16 12005 P
+49 16 120050000 P
 
 #30369
 heart guard of snake hyrule gear~
@@ -2364,7 +2364,7 @@ The heart guard of the snake rests here, ready for another hero.~
 steel~
 9 G AC
 12 12 12 8 0
-50 16 12500 P
+50 16 125000000 P
 
 #30370
 a suit of gibdo wrappings hyrule gear~
@@ -2373,7 +2373,7 @@ A suit of gibdo wrappings rests here, ready for another hero.~
 steel~
 9 G AD
 12 12 12 8 0
-51 17 13005 P
+51 17 130050000 P
 
 #30371
 a pair of pols voice ear guards hyrule gear~
@@ -2382,7 +2382,7 @@ A pair of pols voice ear guards rests here, ready for another hero.~
 steel~
 9 G AE
 13 13 13 8 0
-52 17 13520 P
+52 17 135200000 P
 
 #30372
 a lizard labyrinth breastplate hyrule gear~
@@ -2391,7 +2391,7 @@ A lizard labyrinth breastplate rests here, ready for another hero.~
 steel~
 9 G AD
 13 13 13 8 0
-53 17 14045 P
+53 17 140450000 P
 
 #30373
 a digdoggereye mace hyrule gear~
@@ -2400,7 +2400,7 @@ A digdogger-eye mace rests here, ready for another hero.~
 steel~
 5 G AN
 1 11 6 3 0
-54 18 14580 P
+54 18 145800000 P
 
 #30374
 heart guard of lizard hyrule gear~
@@ -2409,7 +2409,7 @@ The heart guard of the lizard rests here, ready for another hero.~
 steel~
 9 G AC
 13 13 13 9 0
-55 18 15125 P
+55 18 151250000 P
 
 #30375
 a pair of orange wizzrobe gloves hyrule gear~
@@ -2418,7 +2418,7 @@ A pair of orange wizzrobe gloves rests here, ready for another hero.~
 steel~
 9 G AH
 14 14 14 9 0
-56 18 15680 P
+56 18 156800000 P
 
 #30376
 a dragonmages wandblade hyrule gear~
@@ -2427,7 +2427,7 @@ A dragon-mage's wandblade rests here, ready for another hero.~
 steel~
 5 G AN
 1 12 6 3 0
-57 19 16245 P
+57 19 162450000 P
 
 #30377
 shield of gohmas eye hyrule gear~
@@ -2436,7 +2436,7 @@ The shield of gohma's eye rests here, ready for another hero.~
 steel~
 9 G AJ
 14 14 14 9 0
-59 19 17405 P
+59 19 174050000 P
 
 #30378
 heart guard of dragon hyrule gear~
@@ -2445,7 +2445,7 @@ The heart guard of the dragon rests here, ready for another hero.~
 steel~
 9 G AC
 15 15 15 10 0
-60 20 18000 P
+60 20 180000000 P
 
 #30379
 a pair of demon maze boots hyrule gear~
@@ -2454,7 +2454,7 @@ A pair of demon maze boots rests here, ready for another hero.~
 steel~
 9 G AG
 15 15 15 10 0
-61 20 18605 P
+61 20 186050000 P
 
 #30380
 a goriya provisioners belt hyrule gear~
@@ -2463,7 +2463,7 @@ A goriya provisioner's belt rests here, ready for another hero.~
 steel~
 9 G AL
 15 15 15 10 0
-62 20 19220 P
+62 20 192200000 P
 
 #30381
 an ancient dragonscale mantle hyrule gear~
@@ -2472,7 +2472,7 @@ An ancient dragon-scale mantle rests here, ready for another hero.~
 steel~
 9 G AK
 15 15 15 10 0
-63 21 19845 P
+63 21 198450000 P
 
 #30382
 heart guard of demon hyrule gear~
@@ -2481,7 +2481,7 @@ The heart guard of the demon rests here, ready for another hero.~
 steel~
 9 G AC
 16 16 16 10 0
-64 21 20480 P
+64 21 204800000 P
 
 #30383
 a pair of spellbook bracers hyrule gear~
@@ -2490,7 +2490,7 @@ A pair of spellbook bracers rests here, ready for another hero.~
 steel~
 9 G AM
 16 16 16 10 0
-65 21 21125 P
+65 21 211250000 P
 
 #30384
 a magical key pendant hyrule gear~
@@ -2499,7 +2499,7 @@ A magical key pendant rests here, ready for another hero.~
 steel~
 9 G AC
 16 16 16 11 0
-66 22 21780 P
+66 22 217800000 P
 
 #30385
 heart guard of lion hyrule gear~
@@ -2508,7 +2508,7 @@ The heart guard of the lion rests here, ready for another hero.~
 steel~
 9 G AC
 16 16 16 11 0
-67 22 22445 P
+67 22 224450000 P
 
 #30386
 a silverarrow spear hyrule gear~
@@ -2517,7 +2517,7 @@ A silver-arrow spear rests here, ready for another hero.~
 steel~
 5 G AN
 1 14 6 3 0
-68 22 23120 P
+68 22 231200000 P
 
 #30387
 a coat of redring mail hyrule gear~
@@ -2526,7 +2526,7 @@ A coat of red-ring mail rests here, ready for another hero.~
 steel~
 9 G AD
 17 17 17 11 0
-69 23 23805 P
+69 23 238050000 P
 
 #30388
 ganons shadow crown hyrule gear~
@@ -2535,7 +2535,7 @@ Ganon's shadow crown rests here, ready for another hero.~
 steel~
 9 G AE
 17 17 17 11 0
-70 23 24500 P
+70 23 245000000 P
 
 #30400
 triforce shard 1~
@@ -2544,7 +2544,7 @@ The 1th shard of the Triforce of Wisdom gleams here.~
 gold~
 18 G AO
 0 0 0 0 0
-20 1 2000 P
+20 1 20000000 P
 
 #30401
 triforce shard 2~
@@ -2553,7 +2553,7 @@ The 2th shard of the Triforce of Wisdom gleams here.~
 gold~
 18 G AO
 0 0 0 0 0
-30 1 3000 P
+30 1 30000000 P
 
 #30402
 triforce shard 3~
@@ -2562,7 +2562,7 @@ The 3th shard of the Triforce of Wisdom gleams here.~
 gold~
 18 G AO
 0 0 0 0 0
-40 1 4000 P
+40 1 40000000 P
 
 #30403
 triforce shard 4~
@@ -2571,7 +2571,7 @@ The 4th shard of the Triforce of Wisdom gleams here.~
 gold~
 18 G AO
 0 0 0 0 0
-50 1 5000 P
+50 1 50000000 P
 
 #30404
 triforce shard 5~
@@ -2580,7 +2580,7 @@ The 5th shard of the Triforce of Wisdom gleams here.~
 gold~
 18 G AO
 0 0 0 0 0
-55 1 5500 P
+55 1 55000000 P
 
 #30405
 triforce shard 6~
@@ -2589,7 +2589,7 @@ The 6th shard of the Triforce of Wisdom gleams here.~
 gold~
 18 G AO
 0 0 0 0 0
-60 1 6000 P
+60 1 60000000 P
 
 #30406
 triforce shard 7~
@@ -2598,7 +2598,7 @@ The 7th shard of the Triforce of Wisdom gleams here.~
 gold~
 18 G AO
 0 0 0 0 0
-64 1 6400 P
+64 1 64000000 P
 
 #30407
 triforce shard 8~
@@ -2607,7 +2607,7 @@ The 8th shard of the Triforce of Wisdom gleams here.~
 gold~
 18 G AO
 0 0 0 0 0
-67 1 6700 P
+67 1 67000000 P
 
 #30410
 magical boomerang hyrule gear~
@@ -2616,7 +2616,7 @@ The magical boomerang rests here, ready for another hero.~
 steel~
 5 G AN
 1 6 5 3 0
-27 9 3645 P
+27 9 36450000 P
 
 #30411
 raft wooden dungeon~
@@ -2625,7 +2625,7 @@ A sturdy wooden raft waits to carry a hero over deep water.~
 wood~
 22 G A
 0 0 0 0 0
-35 5 6125 P
+35 5 61250000 P
 
 #30412
 stepladder ladder dungeon~
@@ -2634,7 +2634,7 @@ A compact stepladder bridges gaps no stride could cross.~
 wood~
 9 G AG
 9 9 9 4 0
-45 5 10125 P
+45 5 101250000 P
 
 #30413
 recorder whistle instrument~
@@ -2643,7 +2643,7 @@ A little Recorder hums with a melody that moves water and monsters.~
 wood~
 9 G AO
 10 10 10 5 0
-54 5 14580 P
+54 5 145800000 P
 
 #30414
 red candle flame dungeon~
@@ -2652,7 +2652,7 @@ The Red Candle burns with a steady, reusable flame.~
 wax~
 1 G AO
 0 0 999 0 0
-63 2 12000 P
+63 2 120000000 P
 
 #30415
 magic book spellbook~
@@ -2661,7 +2661,7 @@ The Magic Book crackles with fire around its ancient pages.~
 wood~
 9 G AO
 13 13 13 6 0
-65 5 21125 P
+65 5 211250000 P
 
 #30416
 magical key lion~
@@ -2670,7 +2670,7 @@ The Magical Key glows with the memory of every lock it has opened.~
 gold~
 18 G AO
 0 0 0 0 0
-66 1 6600 P
+66 1 66000000 P
 
 #30417
 bait meat food goriya~
@@ -2679,7 +2679,7 @@ A ration of strongly scented enemy bait lies here.~
 meat~
 19 0 A
 H 0 0 0 0
-60 3 6000 P
+60 3 60000000 P
 
 #30420
 bush bramble secret~
@@ -3030,7 +3030,7 @@ The key won from Level 3's guardian lies here.~
 gold~
 18 G AO
 0 0 0 0 0
-40 1 4000 P
+40 1 40000000 P
 
 #30461
 boss key level 4~
@@ -3039,7 +3039,7 @@ The key won from Level 4's guardian lies here.~
 gold~
 18 G AO
 0 0 0 0 0
-50 1 5000 P
+50 1 50000000 P
 
 #30462
 boss key level 5~
@@ -3048,7 +3048,7 @@ The key won from Level 5's guardian lies here.~
 gold~
 18 G AO
 0 0 0 0 0
-55 1 5500 P
+55 1 55000000 P
 
 #30463
 boss key level 6~
@@ -3057,7 +3057,7 @@ The key won from Level 6's guardian lies here.~
 gold~
 18 G AO
 0 0 0 0 0
-60 1 6000 P
+60 1 60000000 P
 
 #30464
 boss key level 7~
@@ -3066,7 +3066,7 @@ The key won from Level 7's guardian lies here.~
 gold~
 18 G AO
 0 0 0 0 0
-64 1 6400 P
+64 1 64000000 P
 
 #30465
 boss key level 8~
@@ -3075,7 +3075,7 @@ The key won from Level 8's guardian lies here.~
 gold~
 18 G AO
 0 0 0 0 0
-67 1 6700 P
+67 1 67000000 P
 
 #30470
 raft waiting island~
@@ -3165,7 +3165,7 @@ The Eagle's map waits here.~
 paper~
 28 G AO
 90 30413 30400 30417 1
-11 1 1100 P
+11 1 11000000 P
 E
 the eagle map parchment~
 Level 1 - The Eagle

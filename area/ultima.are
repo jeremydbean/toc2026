@@ -1295,7 +1295,7 @@ The crook lies here.~
 wood~
 5 0 ANP
 8 3 3 7 F
-4 1 10 P
+4 1 100000 P
 A
 18 1
 A
@@ -1307,7 +1307,7 @@ An old rag doll is here.~
 cloth~
 4 I AO
 10 5 5 34 0
-5 2 10 W
+5 2 100000 W
 E
 rag old doll~
 The rag doll seems to take on the weight of the child you killed.
@@ -1319,7 +1319,7 @@ Katrina's sword gleams prettily.~
 steel~
 5 AK AN
 1 3 4 1 0
-5 2 100 P
+5 2 1000000 P
 E
 sword~
 The sword is shined and cared for with much care.  It glows with
@@ -1332,7 +1332,7 @@ A scroll rescued from the spider's web.~
 vellum~
 2 0 A
 10 35 0 0 0
-8 1 75 P
+8 1 750000 P
 #7621
 dagger~
 a magic dagger~
@@ -1340,7 +1340,7 @@ The magic dagger lies here, pulsating.~
 steel~
 5 B AN
 2 4 9 11 0
-30 4 200 P
+30 4 2000000 P
 A
 3 2
 A
@@ -1352,7 +1352,7 @@ The robes of a mage lie here.~
 cloth~
 9 0 AK
 0 0 0 0 0
-6 2 70 P
+6 2 700000 P
 E
 robe~
 These robes are comfortable and clean.
@@ -1364,7 +1364,7 @@ Smithy's horseshoes are here.~
 iron~
 9 A AG
 0 0 0 0 0
-25 7 150 P
+25 7 1500000 P
 A
 14 50
 A
@@ -1376,7 +1376,7 @@ The fine instrument lies here.~
 wood~
 5 0 AN
 0 1 8 6 0
-9 5 50 P
+9 5 500000 P
 #7625
 cup~
 a cup~
@@ -1384,7 +1384,7 @@ The beggar's cup is here.~
 tin~
 15 0 AO
 100 0 0 0 0
-8 1 10 P
+8 1 100000 P
 #7626
 gold~
 some gold pieces~
@@ -1392,7 +1392,7 @@ Gold pieces.~
 gold~
 20 0 A
 50 0 0 0 0
-1 5 50 P
+1 5 500000 P
 #7627
 bottle~
 the bottle~
@@ -1400,7 +1400,7 @@ Iolo's bottle sits here.~
 glass~
 10 0 AO
 11 15 201 0 0
-11 1 500 P
+11 1 5000000 P
 #7628
 bow~
 Iolo's bow~
@@ -1408,7 +1408,7 @@ Iolo's bow stands against a wall.~
 wood~
 5 AB ANP
 9 3 14 11 F
-35 4 800 P
+35 4 8000000 P
 E
 bow iolo~
 Crafted by the master himself, Iolo, the bow is finely made.  It
@@ -1424,7 +1424,7 @@ A chicken is lying on the ground.~
 leather~
 5 K AN
 0 6 6 23 0
-33 6 100 P
+33 6 1000000 P
 E
 chicken~
 As you look closer you see this isn't a real chicken, it's one of
@@ -1441,7 +1441,7 @@ The Infinity Bow floats here.~
 wood~
 5 ABK ANP
 9 4 9 11 F
-31 10 750 P
+31 10 7500000 P
 E
 infinity bow~
 The bow is immense, yet light.  You see no string, but as your
@@ -1459,7 +1459,7 @@ A simple wooden spear lies here.~
 wood~
 5 0 AN
 8 4 4 11 0
-11 4 50 P
+11 4 500000 P
 #7632
 club~
 a stone club~
@@ -1467,7 +1467,7 @@ A stone club is here.~
 stone~
 5 0 AN
 4 3 7 7 0
-13 10 50 P
+13 10 500000 P
 #7633
 gavel~
 a gavel~
@@ -1475,7 +1475,7 @@ The Judge's gavel lies here.~
 wood~
 5 K AN
 4 4 9 7 0
-32 5 100 P
+32 5 1000000 P
 E
 judge gavel~
 The Gavel is made of ironwood, and seems to have some of the
@@ -1492,7 +1492,7 @@ Jaana's staff lies here.~
 wood~
 5 AK AN
 8 3 7 8 0
-15 7 50 P
+15 7 500000 P
 E
 staff~
 Jaana's staff is strangely shaped, in a double helix form.  As
@@ -1508,7 +1508,7 @@ Geoffrey's sword gleams in the sun.~
 steel~
 5 AK AN
 1 4 8 3 0
-22 15 150 P
+22 15 1500000 P
 E
 geoffrey sword~
 Geoffrey's sword is heavy but sharp.  When you touch the jeweled
@@ -1522,7 +1522,7 @@ A simple sword is here.~
 steel~
 5 0 AN
 1 4 6 1 0
-18 5 50 P
+18 5 500000 P
 #7637
 sword bastard~
 a bastard sword~
@@ -1530,7 +1530,7 @@ Simon's monstrous bastard sword lies here.~
 steel~
 5 AKM ANP
 1 3 15 3 F
-33 18 1500 P
+33 18 15000000 P
 E
 sword bastard~
 This is the biggest and best sword you've ever seen.  It's
@@ -1556,7 +1556,7 @@ A tinker's hammer lies here.~
 steel~
 5 0 AN
 4 5 6 8 0
-25 12 100 P
+25 12 1000000 P
 #7639
 sword~
 a sword~
@@ -1564,7 +1564,7 @@ Julia's hot, glowing sword lies here.~
 steel~
 5 AK AN
 1 4 8 1 0
-28 8 300 P
+28 8 3000000 P
 E
 glowing sword hot~
 Julia was working on this sword before you attacked her.  Though
@@ -1585,7 +1585,7 @@ The most beautiful amulet lies in a pile here.~
 ivory~
 9 HM AC
 1 1 1 5 0
-34 1 100 P
+34 1 1000000 P
 A
 6 2
 A
@@ -1599,7 +1599,7 @@ A sword lies on the ground.~
 steel~
 5 0 AN
 1 4 9 1 0
-30 10 300 P
+30 10 3000000 P
 A
 18 2
 #7642
@@ -1609,7 +1609,7 @@ A paladin's suit of armor lies here.~
 steel~
 9 0 AD
 0 0 0 0 0
-30 15 200 P
+30 15 2000000 P
 A
 1 1
 A
@@ -1621,7 +1621,7 @@ Dupre's rapier is here.~
 steel~
 5 AK AN
 1 6 6 11 0
-33 13 400 P
+33 13 4000000 P
 A
 1 1
 A
@@ -1633,7 +1633,7 @@ A gargoyle's boomerang is here.~
 wood~
 5 BHM AN
 0 4 10 6 0
-35 6 50 P
+35 6 500000 P
 E
 boomerang~
 Though this seems like your basic boomerang, it is much more.  It
@@ -1673,7 +1673,7 @@ A magic cloak is here.~
 cloth~
 9 A AC
 5 7 6 9 0
-35 6 600 P
+35 6 6000000 P
 A
 12 10
 A
@@ -1685,7 +1685,7 @@ A bright light of power shoots into the air.~
 glass~
 9 A AD
 0 0 0 0 0
-40 10 1000 P
+40 10 10000000 P
 A
 17 -10
 A
@@ -1697,7 +1697,7 @@ The empty shell of the Guardian head lies here.~
 steel~
 9 CEJL AE
 0 0 0 0 0
-45 10 950 P
+45 10 9500000 P
 E
 face head helmet red~
 When you slew the evil Guardian, all that was left was his
@@ -1722,7 +1722,7 @@ Waves of corruption come off this evilly enchanted spiked mace.~
 iron~
 5 EJL AN
 4 4 12 7 0
-43 10 750 P
+43 10 7500000 P
 A
 18 5
 A
@@ -1734,7 +1734,7 @@ This completely black armor reeks of death.~
 iron~
 9 CEJL AD
 0 0 0 0 0
-43 15 950 P
+43 15 9500000 P
 A
 14 -100
 A
@@ -1749,7 +1749,7 @@ look at its shape.~
 glass~
 9 EJL AC
 0 0 0 0 0
-39 3 250 P
+39 3 2500000 P
 E
 shape~
 The charm looks to be a mummified part of a body.  It is about 3
@@ -1768,7 +1768,7 @@ The evil gem pulsates.~
 stone~
 4 CEJL AO
 60 1 1 70 0
-37 1 500 P
+37 1 5000000 P
 A
 12 50
 A
@@ -1780,7 +1780,7 @@ Sentri's helmet is here.~
 steel~
 9 K AE
 0 0 0 0 0
-35 10 250 P
+35 10 2500000 P
 A
 4 2
 A
@@ -1792,7 +1792,7 @@ Sentri's sleeves lies here.~
 steel~
 9 K AI
 0 0 0 0 0
-35 10 150 P
+35 10 1500000 P
 A
 1 2
 A
@@ -1804,7 +1804,7 @@ Sentri's girth is here.~
 steel~
 9 K AL
 0 0 0 0 0
-35 10 250 P
+35 10 2500000 P
 A
 13 15
 A
@@ -1816,7 +1816,7 @@ Sentri's two-handed sword is here.~
 steel~
 5 K ANP
 1 3 14 3 F
-35 15 450 P
+35 15 4500000 P
 A
 18 3
 A
@@ -1828,7 +1828,7 @@ Sentri's gloves are here.~
 leather~
 9 K AH
 0 0 0 0 0
-35 2 125 P
+35 2 1250000 P
 A
 18 3
 A
@@ -1840,7 +1840,7 @@ Sentri's boots are here.~
 leather~
 9 K AG
 0 0 0 0 0
-35 5 200 P
+35 5 2000000 P
 A
 2 1
 A
@@ -1852,7 +1852,7 @@ Sentri left his leggings here.~
 steel~
 9 K AF
 0 0 0 0 0
-35 10 250 P
+35 10 2500000 P
 A
 2 1
 A
@@ -1864,7 +1864,7 @@ Sentri left his armor here.~
 steel~
 9 K AD
 0 0 0 0 0
-35 30 500 P
+35 30 5000000 P
 A
 18 3
 A
@@ -1876,7 +1876,7 @@ A triangular shaped medallion is here.~
 gold~
 9 0 AC
 0 0 0 0 0
-37 2 500 P
+37 2 5000000 P
 A
 12 25
 A
@@ -1888,7 +1888,7 @@ The most amazingly well crafted sword lies here.~
 glass~
 5 FGIMUV AN
 1 5 11 1 0
-50 1 1500 P
+50 1 15000000 P
 E
 glass sword~
 Invisible to the naked eye, this sword is the best crafted, as
@@ -1915,7 +1915,7 @@ A jewel encrusted crown is here.~
 gold~
 9 A AE
 0 0 0 0 0
-54 10 2500 P
+54 10 25000000 P
 E
 british crown~
 Legend has it that this most perfect of crowns has within one of
@@ -1946,7 +1946,7 @@ power.~
 gold~
 9 A AO
 0 0 0 0 0
-54 1 1500 P
+54 1 15000000 P
 E
 sceptre~
 The second of the crown jewels, this sceptre is amazingly light,
@@ -1979,7 +1979,7 @@ A silver amulet lies here.~
 silver~
 9 A AC
 0 0 0 0 0
-54 1 1000 P
+54 1 10000000 P
 E
 amulet~
 British's amulet is in the shape of the great earth serpent.
@@ -2007,7 +2007,7 @@ A boat lies here.~
 wood~
 22 0 AE
 0 0 0 0 0
-15 20 10 P
+15 20 100000 P
 #7669
 blue moongate~
 a blue moongate~

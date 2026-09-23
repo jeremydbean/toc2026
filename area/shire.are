@@ -531,7 +531,7 @@ The rainbow staff lies here.~
 wood~
 1 G AO
 0 0 999 0 0
-18 8 500 P
+18 8 5000000 P
 A
 4 1
 #1101
@@ -541,7 +541,7 @@ Sting lies here.~
 steel~
 5 ABK AN
 2 3 6 11 D
-19 7 5000 P
+19 7 50000000 P
 A
 2 2
 #1102
@@ -571,7 +571,7 @@ A loaf of pipeweed bread arouses your hunger.~
 food~
 19 0 A
 24 0 0 0 0
-1 1 13 P
+1 1 130000 P
 #1104
 silvery cloak~
 a silvery cloak~
@@ -579,7 +579,7 @@ A silvery cloak lies here.~
 cloth~
 9 GK AD
 6 7 6 0 0
-18 3 360 P
+18 3 3600000 P
 A
 24 -2
 #1105
@@ -589,7 +589,7 @@ The One Ring is here.~
 gold~
 9 G ABO
 6 6 7 0 0
-19 3 750 P
+19 3 7500000 P
 A
 17 10
 A
@@ -601,7 +601,7 @@ An elven bow lies here.~
 bronze~
 5 BGK ANP
 9 3 6 11 F
-17 10 200 P
+17 10 2000000 P
 A
 18 2
 #1107
@@ -611,7 +611,7 @@ A mithril axe lies here.~
 iron~
 5 A AN
 5 3 6 21 D
-17 12 200 P
+17 12 2000000 P
 A
 19 2
 #1108
@@ -621,7 +621,7 @@ The girth of the thain lies here.~
 leather~
 9 0 AL
 4 5 5 0 0
-14 4 1000 P
+14 4 10000000 P
 A
 4 3
 #1109
@@ -631,7 +631,7 @@ A tiny dagger lies here.~
 steel~
 5 0 AN
 2 2 6 11 D
-8 3 40 P
+8 3 400000 P
 #1110
 egg~
 an egg~
@@ -639,7 +639,7 @@ An egg lies here.~
 food~
 19 0 A
 12 0 0 0 0
-1 1 9 P
+1 1 90000 P
 #1111
 bag~
 a bag~
@@ -647,7 +647,7 @@ A bag is on the floor.~
 cloth~
 15 0 AO
 50 1 0 0 0
-1 5 50 P
+1 5 500000 P
 #1112
 lantern~
 a lantern~
@@ -655,7 +655,7 @@ A lantern is on the floor.~
 glass~
 1 0 AO
 0 0 20 0 0
-1 4 50 P
+1 4 500000 P
 #1113
 bardiche~
 a bardiche~
@@ -663,7 +663,7 @@ A long weapon with a sharp end is on the floor.~
 steel~
 5 0 AN
 8 1 5 3 D
--1 10 1000 P
+-1 10 10000000 P
 A
 18 4
 #1114
@@ -673,7 +673,7 @@ A flail is on the floor.~
 steel~
 5 0 AN
 6 1 5 3 D
--1 8 300 P
+-1 8 3000000 P
 #1115
 birch staff~
 a birch staff~
@@ -681,7 +681,7 @@ A brach of a birch tree lies here.~
 wood~
 4 0 AO
 5 10 10 16 0
-8 2 200 P
+8 2 2000000 P
 A
 3 1
 #0

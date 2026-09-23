@@ -364,7 +364,7 @@ A very sharp looking sword is sitting here.~
 steel~
 5 0 AN
 1 4 8 3 0
-20 10 200 P
+20 10 2000000 P
 A
 18 1
 A
@@ -376,7 +376,7 @@ A pile of cloth is here.~
 cloth~
 9 0 AK
 3 4 3 2 0
-20 2 250 P
+20 2 2500000 P
 A
 1 2
 A
@@ -390,7 +390,7 @@ A pair of well made boots.~
 cloth~
 9 0 AG
 2 2 2 1 0
-20 1 300 P
+20 1 3000000 P
 A
 14 70
 #25218
@@ -400,7 +400,7 @@ A piece of cloth with brightly glowing runes.~
 cloth~
 9 0 AD
 5 5 5 9 0
-20 1 300 P
+20 1 3000000 P
 A
 12 20
 #25219
@@ -410,7 +410,7 @@ An onyx cylinder is buried here in the dust.~
 metal~
 3 0 AO
 20 10 10 26 0
-20 1 500 P
+20 1 5000000 P
 #25220
 adamantite chainmail~
 adamantite chainmail~
@@ -418,7 +418,7 @@ A fine looking chainmail vest.~
 metal~
 9 0 AD
 10 10 10 10 0
-20 5 400 P
+20 5 4000000 P
 A
 2 2
 A
@@ -430,7 +430,7 @@ An amulet decorated with jewels lies forgotten here.~
 metal~
 9 V AC
 5 5 5 3 0
-20 1 300 P
+20 1 3000000 P
 A
 5 1
 A
@@ -444,7 +444,7 @@ A large two-handed battle axe is sitting here.~
 metal~
 5 0 AN
 5 4 8 23 0
-25 15 500 P
+25 15 5000000 P
 #25223
 shield~
 a well-used shield~
@@ -452,7 +452,7 @@ An old shield full of nicks and dents.~
 metal~
 9 0 AJ
 7 7 6 0 0
-25 15 400 W
+25 15 4000000 W
 #25224
 loincloth leather~
 a filthy, leather loincloth~
@@ -460,7 +460,7 @@ A little scrap of leather is lying here in the dust.~
 leather~
 9 0 AL
 1 1 1 1 0
-10 1 10 P
+10 1 100000 P
 #25225
 whip~
 a barbed whip~
@@ -468,7 +468,7 @@ A wicked looking barbed whip.~
 leather~
 5 0 AN
 7 7 7 4 0
-20 5 100 P
+20 5 1000000 P
 #25226
 mask~
 (Glowing)a mask~
@@ -476,7 +476,7 @@ A strange-looking glowing mask.~
 metal~
 9 0 AE
 5 5 5 9 0
-20 1 600 P
+20 1 6000000 P
 #25227
 barrel wine mushroom~
 a barrel of mushroom wine~

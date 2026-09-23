@@ -376,7 +376,7 @@ The ground cracks under the weight of a grey hammer lying here.~
 steel~
 5 JK AN
 4 1 5 8 0
--1 55 5000 P
+-1 55 50000000 P
 A
 2 -2
 A
@@ -394,7 +394,7 @@ A rolled piece of violet parchment lies on the floor.~
 vellum~
 2 I A
 15 1 3 67 0
-15 1 250 P
+15 1 2500000 P
 E
 scroll violet~
 The scroll is written on soft violet parchment that has a pleasing smell to it.
@@ -406,7 +406,7 @@ Lying on the ground is a jet black stone tablet.~
 stone~
 2 E A
 30 40 7 0 0 
-30 5 5000 P
+30 5 50000000 P
 E
 tablet scroll black~
 The tablet is an unreflective black rectangular piece of stone, with strange
@@ -419,7 +419,7 @@ You see a scroll written in an alien tongue.~
 paper~
 2 0 A
 24 30 30 0 0
-24 1 3500 P
+24 1 35000000 P
 E
 scroll githyanki~
 The scroll has writings on it that you cannot comprehend.
@@ -431,7 +431,7 @@ A small amulet lies here in the dirt.~
 iron~
 3 EH AO
 25 5 5 25 0
-25 5 500 P
+25 5 5000000 P
 A
 3 -1
 A
@@ -452,7 +452,7 @@ On the ground is a small talisman which radiates a tangible evil.~
 iron~
 4 EH O
 25 5 5 65 0
-25 5 4500 P
+25 5 45000000 P
 A
 13 -10
 E
@@ -470,7 +470,7 @@ A flat-bladed silvery knife lies here.~
 silver~
 5 0 AN
 2 3 9 2 D
-11 3 1000 P
+11 3 10000000 P
 A
 18 1
 A
@@ -488,7 +488,7 @@ A sharp-looking silvery dagger lies here.~
 silver~
 5 0 AN
 2 2 12 11 D
-15 3 1500 P
+15 3 15000000 P
 A
 18 2
 A
@@ -506,7 +506,7 @@ Light glints off the edge of a razor-sharp sword.~
 steel~
 5 0 AN
 1 2 10 4 D
-15 3 2000 P
+15 3 20000000 P
 A
 2 1
 A
@@ -526,7 +526,7 @@ A heavy yet thinly bladed two-handed sword lies here.~
 steel~
 5 0 AN
 1 2 16 3 F
-25 16 5000 P
+25 16 50000000 P
 A
 18 2
 A
@@ -544,7 +544,7 @@ A silvery sword gleams unnaturally with an alien light.~
 silver~
 5 1 AN
 1 2 14 3 D
-20 13 10000 P
+20 13 100000000 P
 A
 2 2
 A
@@ -564,7 +564,7 @@ A rusty iron flail with wicked barbs on it tears at the ground.~
 iron~
 5 BE AN
 6 2 21 4 0
-33 14 20000 P
+33 14 200000000 P
 A
 18 3
 A
@@ -582,7 +582,7 @@ You feel tendrils of evil emanating from a wicked blade.~
 adamantite~
 5 EHM AN
 1 2 25 3 CD
-40 25 4000 P
+40 25 40000000 P
 A
 1 2
 A
@@ -605,7 +605,7 @@ The room is lit by a hot blue flame coming from a small stone.~
 stone~
 1 0 AO
 0 0 900 0 0
-28 1 3500 P
+28 1 35000000 P
 A
 17 -5
 A
@@ -624,7 +624,7 @@ Twinkling powder floats before your eyes.~
 pill~
 8 0 A
 0 0 0 0 0
--1 1 5000 P
+-1 1 50000000 P
 E
 powder astral~
 You see the residue of the astral plane.
@@ -636,7 +636,7 @@ An intricately fashioned splint mail vest lies here.~
 steel~
 9 0 AD
 0 0 0 0 0
--1 5 500 P
+-1 5 5000000 P
 E
 vest splint~
 This splint mail has been expertly and ornately fashioned from the highest
@@ -649,7 +649,7 @@ An intricately fashioned splint mail skirt lies here.~
 steel~
 9 0 AF
 0 0 0 0 0
--1 2 1000 P
+-1 2 10000000 P
 E
 skirt splint~
 This splint mail has been expertly and ornately fashioned from the highest
@@ -662,7 +662,7 @@ A pair of intricately fashioned splint mail sleeves lie here.~
 steel~
 9 0 AI
 0 0 10 0 0
-15 1 150 P
+15 1 1500000 P
 E
 sleeves splint~
 This splint mail has been expertly and ornately fashioned from the highest
@@ -675,7 +675,7 @@ A pair of painstakingly designed ornate gauntlets lie here.~
 steel~
 9 0 AH
 0 0 0 0 0
--1 5 1900 P
+-1 5 19000000 P
 A
 1 2
 A
@@ -694,7 +694,7 @@ A decaying hunk of cracked leather has been discarded here.~
 leather~
 9 0 AD
 0 0 0 0 0
--1 5 50 P
+-1 5 500000 P
 A
 17 -6
 A
@@ -711,7 +711,7 @@ A tall glass flask holds a translucent violet fluid.~
 glass~
 10 0 A
 18 29 34 18 0
-18 2 1000 P
+18 2 10000000 P
 E
 potion violet~
 The violet fluid inside shifts and swirls.
@@ -723,7 +723,7 @@ A small vial contains a murky, sludge-like substance.~
 glass~
 10 0 A
 15 4 67 518 0
-15 2 750 P
+15 2 7500000 P
 E
 potion vial murky~
 The murky liquid inside this vial looks a lot like sewer water.
@@ -735,7 +735,7 @@ An octagonal vial holds a silvery-colored fluid that reflects light.~
 glass~
 10 0 A
 20 19 20 21 0
-20 2 1500 P
+20 2 15000000 P
 E
 potion silvery~
 The octagonal vial contains a silvery-colored liquid that shimmers in the light.
@@ -747,7 +747,7 @@ Someone has dropped a delicious-looking chocolate mint here.~
 pill~
 26 0 A
 35 81 28 0 0
-35 1 1000 P
+35 1 10000000 P
 E
 mint chocolate~
 This mint is made from the finest of chocolates, surrounding a cool peppermint
@@ -785,7 +785,7 @@ A rusted sword is on the floor.~
 steel~
 5 0 AN
 1 1 5 3 0
--1 5 10 W
+-1 5 100000 W
 A
 18 -2
 A
@@ -801,7 +801,7 @@ A blue blob of some strange substance is here.~
 vellum~
 18 0 A
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #7528
 blob~
 a green blob~
@@ -809,7 +809,7 @@ A green blob of some strange substance is here.~
 vellum~
 18 0 A
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #7529
 cloak psionic~
 the cloak of the psionic~
@@ -817,7 +817,7 @@ A dull gray cloak is here.~
 cloth~
 9 G AK
 0 0 0 20 0
-20 5 1000 P
+20 5 10000000 P
 A 
 12 15
 A

@@ -208,7 +208,7 @@ A bunch of delicious looking smurfberries lie here.~
 food~
 26 0 A
 8 0 0 82 0
-2 5 25 P
+2 5 250000 P
 #101
 glasses~
 A pair of glasses~
@@ -216,7 +216,7 @@ An odd pair of glasses has been left here.~
 glass~
 9 G AE
 1 0 0 0 0
-2 5 250 P
+2 5 2500000 P
 A
 4 1
 #102
@@ -226,7 +226,7 @@ A smurf hat has been left here.~
 leather~
 9 0 AE
 3 0 0 0 0
-2 50 25 P
+2 50 250000 P
 #103
 axe small~
 a small axe~
@@ -234,7 +234,7 @@ A small axe has been dropped here.~
 wood~
 5 0 AN
 5 2 5 3 0
-2 20 10 P
+2 20 100000 P
 #104
 necklace~
 a small necklace~
@@ -242,7 +242,7 @@ A small necklace is lying on the ground.~
 silver~
 9 1 AC
 1 0 0 0 0
-2 5 25 P
+2 5 250000 P
 A
 3 1
 #105
@@ -252,7 +252,7 @@ A pink potion is barely visible on the ground.~
 glass~
 10 0 A
 6 1 14 0 0
-2 5 25 P
+2 5 250000 P
 #106
 wand~
 a small wand~
@@ -260,7 +260,7 @@ A small wand lies on the ground.~
 wood~
 3 0 AO
 5 1 1 5 0
-2 5 25 P
+2 5 250000 P
 #107
 key~
 a tiny key~
@@ -268,7 +268,7 @@ A tiny key is lying on the ground.~
 bronze~
 18 0 A
 2 0 0 0 0
-2 5 2 P
+2 5 20000 P
 #108
 well~
 a smurf well~
@@ -276,7 +276,7 @@ A small smurfy well is here.~
 stone~
 25 0 0
 50 50 0 0 0
-1 3000 1000 P
+1 3000 10000000 P
 #109
 key~
 a small key~
@@ -284,7 +284,7 @@ A key to Gargamel's door lies here.~
 steel~
 18 0 A
 2 0 0 0 0
-2 5 2 P
+2 5 20000 P
 #110
 door~
 A Door~

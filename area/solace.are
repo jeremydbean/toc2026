@@ -785,7 +785,7 @@ A black helmet is on the floor.~
 steel~
 9 G AE
 7 7 7 5 0
-29 5 100 P
+29 5 1000000 P
 A
 3 2
 A
@@ -797,7 +797,7 @@ A pair of black sleeves are on the floor.~
 steel~
 9 G AI
 9 9 8 1 0
-29 7 100 P
+29 7 1000000 P
 A
 1 2
 #13203
@@ -807,7 +807,7 @@ Some black leggings are on the floor.~
 steel~
 9 G AF
 7 8 7 5 0
-29 7 100 P
+29 7 1000000 P
 A
 14 75
 #13204
@@ -817,7 +817,7 @@ A pair of black gauntlets are on the floor.~
 steel~
 9 G AH
 5 6 8 2 0
-29 5 100 P
+29 5 1000000 P
 A
 1 3
 A
@@ -829,7 +829,7 @@ Some black boots are on the floor.~
 steel~
 9 G AG
 7 8 7 0 0 
-29 5 100 P
+29 5 1000000 P
 A
 13 10
 A
@@ -843,7 +843,7 @@ a black cloak lies on the floor.~
 cloth~
 9 G AC
 10 10 10 7 0
-29 2 100 P
+29 2 1000000 P
 A
 22 -4
 A
@@ -855,7 +855,7 @@ A black girth is on the floor.~
 cloth~
 9 G AL
 6 6 6 3 0
-29 10 100 P
+29 10 1000000 P
 A
 5 1
 A
@@ -867,7 +867,7 @@ A large, black shield is on the floor.~
 steel~
 9 G AJ
 9 8 9 2 0
-29 10 100 P
+29 10 1000000 P
 A
 17 4
 A
@@ -879,7 +879,7 @@ A shiny black amulet with a gold symbol is here.~
 steel~
 9 G AC
 1 1 1 1 0
-29 1 100 P
+29 1 1000000 P
 A
 17 3
 A
@@ -899,7 +899,7 @@ A black hilted sword with engravings on the blade lie here.~
 steel~
 5 G AN
 1 6 6 1 F
-29 10 1000 P
+29 10 10000000 P
 E
 sword~
 The blade of the sword is a full meter long, and straight as an arrow, with
@@ -925,7 +925,7 @@ A shiny ring of obsidian is in the dirt.~
 steel~
 9 G AB
 1 1 1 1 0
-24 1 100 P
+24 1 1000000 P
 A
 24 -2
 A
@@ -937,7 +937,7 @@ You see an obsidian bracer here.~
 steel~
 9 0 AM
 3 4 5 0 0
-29 5 500 P
+29 5 5000000 P
 A
 5 1
 #13214
@@ -947,7 +947,7 @@ You see a weapons cabinet.~
 wood~
 15 0 0
 700 15 13210 0 0
--1 0 500 P
+-1 0 5000000 P
 E
 cabinet~
 This is a finely crafted reinforced weapons cabinet. It looks very sturdy.
@@ -961,7 +961,7 @@ A black hilted sword with engravings on the blade lie here.~
 steel~
 5 GI ANP
 0 6 7 1 F
-27 10 100 P
+27 10 1000000 P
 E
 sword~
 The blade of the sword is a full meter long, and straight as an arrow, with
@@ -989,7 +989,7 @@ A steel helmet is on the floor.~
 steel~
 9 G AE
 5 6 6 0 0
-25 5 100 P
+25 5 1000000 P
 A
 21 -2
 A
@@ -1001,7 +1001,7 @@ A pair of steel sleeves are on the floor.~
 steel~
 9 G AI
 6 6 6 1 0
-25 7 100 P
+25 7 1000000 P
 A
 20 -2
 A
@@ -1013,7 +1013,7 @@ Some steel leggings are on the floor.~
 steel~
 9 G AF
 9 8 6 0 0
-25 7 100 P
+25 7 1000000 P
 A
 14 10
 A
@@ -1025,7 +1025,7 @@ A pair of steel gauntlets are on the floor.~
 steel~
 9 G AH
 7 7 6 3 0
-25 5 100 P
+25 5 1000000 P
 A
 18 1
 A
@@ -1039,7 +1039,7 @@ Some steel boots are on the floor.~
 steel~
 9 G AG
 6 6 6 3 0
-25 5 100 P
+25 5 1000000 P
 A
 13 5
 A
@@ -1051,7 +1051,7 @@ a lieutenant's cloak lies on the floor.~
 cloth~
 9 G AC
 8 10 10 0 0
-25 2 100 P
+25 2 1000000 P
 A
 22 -2
 A
@@ -1063,7 +1063,7 @@ A steel girth is on the floor.~
 steel~
 9 G AL
 7 9 9 3 0
-25 10 100 P
+25 10 1000000 P
 A
 24 -1
 #13223
@@ -1073,7 +1073,7 @@ A large, steel shield is on the floor.~
 steel~
 9 G AJ
 9 10 8 0 0
-25 10 100 P
+25 10 1000000 P
 A
 17 2
 A
@@ -1085,7 +1085,7 @@ You see a steel bracer here.~
 steel~
 9 0 AM
 7 7 6 0 0
-25 3 500 P
+25 3 5000000 P
 A
 12 5
 #13225
@@ -1095,7 +1095,7 @@ A black hilted sword with engravings on the blade lie here.~
 steel~
 5 BGHU AN
 0 8 5 1 F
-25 10 100 P
+25 10 1000000 P
 E
 sword~
 The blade of the sword is a full meter long, and straight as an arrow, with
@@ -1125,7 +1125,7 @@ A red helmet is on the floor.~
 steel~
 9 G AE
 1 1 1 1 0
-20 5 100 P
+20 5 1000000 P
 A
 21 -1
 #13227
@@ -1135,7 +1135,7 @@ A pair of red scalemail sleeves are on the floor.~
 steel~
 9 G AI
 1 1 1 1 0
-20 5 100 P
+20 5 1000000 P
 A
 20 -1
 #13228
@@ -1145,7 +1145,7 @@ Some red scalemail leggings are on the floor.~
 steel~
 9 G AF
 1 1 1 1 0
-20 5 100 P
+20 5 1000000 P
 A
 14 50
 #13229
@@ -1155,7 +1155,7 @@ A pair of red scalemail gauntlets are on the floor.~
 steel~
 9 G AH
 1 1 1 1 0
-20 5 100 P
+20 5 1000000 P
 A
 21 -1
 #13230
@@ -1165,7 +1165,7 @@ Some red scalemail boots are on the floor.~
 steel~
 9 G AG
 1 1 1 1 0
-20 5 100 P
+20 5 1000000 P
 A
 13 20
 A
@@ -1177,7 +1177,7 @@ a red sergeant's cloak lies on the floor.~
 cloth~
 9 G AC
 1 1 1 1 0
-20 1 100 P
+20 1 1000000 P
 A
 22 -1
 #13232
@@ -1187,7 +1187,7 @@ A red scalemail girth is on the floor.~
 steel~
 9 G AL
 1 1 1 1 0
-20 10 100 P
+20 10 1000000 P
 #13233
 shield large red~
 the large red shield~
@@ -1195,7 +1195,7 @@ A large, red shield is on the floor.~
 steel~
 9 G AJ
 1 1 1 1 0
-20 5 100 P
+20 5 1000000 P
 A
 17 1
 #13234
@@ -1205,7 +1205,7 @@ You see a red bracer here.~
 steel~
 9 0 AM
 1 1 1 1 0
-20 2 100 P
+20 2 1000000 P
 A
 12 1
 #13235
@@ -1215,7 +1215,7 @@ A red steel warhammer with engravings on the head lies here.~
 steel~
 5 BG AN
 4 4 8 8 0
-20 10 100 P
+20 10 1000000 P
 E
 hammer warhammer~
 This hammer has the words, "MAGE MASHER" engraved into its head.
@@ -1235,7 +1235,7 @@ A suit of black platemail is sitting on the floor.~
 steel~
 9 G AD
 6 5 6 0 0
-15 20 100 P
+15 20 1000000 P
 A
 24 -1
 A
@@ -1247,7 +1247,7 @@ A blade with runes etched in it is on the floor.~
 steel~
 5 G AN
 1 3 4 3 0
-15 5 100 P
+15 5 1000000 P
 A
 18 2
 #13238
@@ -1257,7 +1257,7 @@ A hammer with runes etched in it is on the floor.~
 steel~
 5 G AN
 4 2 5 6 0
-15 10 100 P
+15 10 1000000 P
 A
 18 2
 #13239
@@ -1267,7 +1267,7 @@ A polearm with runes etched in it is on the floor.~
 steel~
 5 G AN
 8 6 3 3 0
-20 10 100 P
+20 10 1000000 P
 A
 18 2
 #13240
@@ -1277,7 +1277,7 @@ A bunch of rings sewn together with taotamoa bark is on the ground.~
 steel~
 9 G AD
 1 1 1 1 0
-25 10 100 P
+25 10 1000000 P
 E
 ringmail~
 This armor is imported from the island of Guam.
@@ -1291,7 +1291,7 @@ A Mcloaf of Mcbread has been left here.~
 food~
 19 0 A
 20 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13242
 Mcdonut~
 Mcdonut~
@@ -1299,7 +1299,7 @@ A chocolate Mcdonut has been left here.~
 food~
 19 0 A
 10 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13243
 mcbagel~
 Mcbagel~
@@ -1307,7 +1307,7 @@ A Mcbagel has been left here.~
 food~
 19 0 A
 10 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13244
 mcpastry~
 Mcpastry~
@@ -1315,7 +1315,7 @@ A Mcpastry has been left here.~
 food~
 19 0 A
 12 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13245
 chocolate chip cookie~
 chocolate chip cookie~
@@ -1323,7 +1323,7 @@ A chocoalte chip cookie has been left here.~
 food~
 19 0 A
 7 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13246
 peanut butter cookie~
 peanut butter cookie~
@@ -1331,7 +1331,7 @@ A peanut butter cookie has been left here.~
 ~
 19 0 A
 7 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13247
 oatmeal cookie~
 oatmeal  cookie~
@@ -1339,7 +1339,7 @@ A oatmeal  cookie has been left here.~
 food~
 19 0 A
 7 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13248
 sugar cookie~
 sugar cookie~
@@ -1347,7 +1347,7 @@ A sugar cookie has been left here.~
 food~
 19 0 A
 7 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13249
 taxes fines~
 taxes and fines~
@@ -1355,7 +1355,7 @@ A bunch of taxes and fines are here waiting to take your money.~
 steel~
 5 0 AN
 0 4 5 12 0
-17 10 10 P
+17 10 100000 P
 A
 15 -10000
 #13250
@@ -1365,7 +1365,7 @@ A large two-handed sword with runes etched in it is on the floor.~
 steel~
 5 G AN
 1 5 3 1 F
-16 10 100 P
+16 10 1000000 P
 A
 18 2
 #13251
@@ -1375,7 +1375,7 @@ A carrot has been left here.~
 food~
 19 0 A
 5 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13252
 cauliflower~
 cauliflower~
@@ -1383,7 +1383,7 @@ A cauliflower has been left here.~
 food~
 19 0 A
 5 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13253
 bell pepper~
 bell pepper~
@@ -1391,7 +1391,7 @@ A bell pepper has been left here.~
 food~
 19 0 A
 5 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13254
 celery stick~
 celery stick~
@@ -1399,7 +1399,7 @@ A celery stick has been left here.~
 food~
 19 0 A
 5 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13255
 glass ice tea~
 a glass of ice tea~
@@ -1407,7 +1407,7 @@ A glass of ice tea has been left here.~
 glass~
 17 0 A
 5 5 11 0 0
--1 3 10 P
+-1 3 100000 P
 #13256
 glass water~
 a glass of water~
@@ -1415,7 +1415,7 @@ A glass of water has been left here.~
 glass~
 17 0 A
 5 5 0 0 0
--1 3 10 P
+-1 3 100000 P
 #13257
 glass koca colah~
 a glass of koca colah~
@@ -1423,7 +1423,7 @@ A glass of koca colah has been left here.~
 glass~
 17 0 A
 5 5 15 0 0
--1 3 10 P
+-1 3 100000 P
 #13258
 bottle Scrapple ice tea~
 a bottle of Scrapple ice tea~
@@ -1431,7 +1431,7 @@ A bottle of Scrapple has been left here.~
 glass~
 17 0 A
 5 5 11 0 0
--1 3 10 P
+-1 3 100000 P
 #13259
 apple~
 apple~
@@ -1439,7 +1439,7 @@ An apple has been left here.~
 food~
 19 0 A
 5 0 0 0 0
--1 10 10 P
+-1 10 100000 P
 #13260
 grape~
 a grape~
@@ -1447,7 +1447,7 @@ A grape has been left here.~
 food~
 19 0 A
 3 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13261
 orange~
 an orange~
@@ -1455,7 +1455,7 @@ An orange has been left here.~
 food~
 19 0 A
 6 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13262
 pear~
 a pear~
@@ -1463,7 +1463,7 @@ A pear has been left here.~
 food~
 19 0 A
 6 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13263
 charm solace~
 the charm of Solace.~
@@ -1471,7 +1471,7 @@ A shiny black charm with a gold symbol is here.~
 steel~
 9 0 AC
 1 1 1 1 0
-20 1 100 P
+20 1 1000000 P
 #13264
 ring solace~
 the ring of Solace.~
@@ -1479,7 +1479,7 @@ A shiny black ring with a gold symbol is here.~
 steel~
 9 0 AB
 1 1 1 1 0
-20 1 10 P
+20 1 100000 P
 #13265
 earrings solace~
 the earrings of Solace.~
@@ -1487,7 +1487,7 @@ A pair of shiny black earrings with a gold symbols is here.~
 steel~
 9 0 AE
 1 1 1 1 0
-20 1 10 P
+20 1 100000 P
 #13266
 frozen pizza crust~
 a frozen pizza crust~
@@ -1495,7 +1495,7 @@ A large, frozen pizza crust is on the ground melting.~
 food~
 19 0 AO
 24 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13267
 frozen pumpkin pie~
 a frozen pumpkin pie~
@@ -1503,7 +1503,7 @@ A large, frozen pumpkin pie is on the ground melting.~
 food~
 19 0 AO
 24 0 0 0 0
--1 1 10 P
+-1 1 100000 P
 #13268
 frozen side beef~
 a frozen side of beef~
@@ -1511,7 +1511,7 @@ A large, frozen side of beef is on the ground melting.~
 food~
 19 0 AO
 48 0 0 0 0
--1 10 10 P
+-1 10 100000 P
 #13269
 frozen asparagus spear~
 a frozen asparagus spear~
@@ -1519,7 +1519,7 @@ A frozen asparagus spear is on the ground melting.~
 food~
 5 0 AN
 0 1 5 0 0
--1 1 10 P
+-1 1 100000 P
 A
 18 1
 #13270
@@ -1529,7 +1529,7 @@ A small jar of mulburry extract has carelessly been left here.~
 food~
 10 G A
 20 81 16 43 0
--1 4 50 P
+-1 4 500000 P
 #13271
 rutabaga~
 rutabaga~
@@ -1537,7 +1537,7 @@ A small rutabaga is lying here.~
 food~
 26 G A
 20 82 59 66 0
--1 4 50 P
+-1 4 500000 P
 #13272
 rutabaga~
 rutabaga~
@@ -1545,7 +1545,7 @@ A small rutabaga is lying here.~
 food~
 26 G A
 20 33 58 4 0
--1 4 50 P
+-1 4 500000 P
 #13273
 rutabaga~
 rutabaga~
@@ -1553,7 +1553,7 @@ A small rutabaga is lying here.~
 food~
 26 G A
 20 61 17 4 0
--1 1 50 P
+-1 1 500000 P
 #13274
 rutabaga~
 rutabaga~
@@ -1561,7 +1561,7 @@ A small rutabaga is lying here.~
 food~
 26 G A
 20 1 64 2 0
--1 1 50 P
+-1 1 500000 P
 #13275
 Scuba tank~
 scuba tank~
@@ -1569,7 +1569,7 @@ A scuba tank is here.~
 steel~
 29 0 AK
 0 0 0 0 0
--1 10 50 P
+-1 10 500000 P
 #13276
 Scuba flippers~
 scuba flippers~
@@ -1577,7 +1577,7 @@ A pair of flippers are here.~
 leather~
 29 G AG
 0 0 0 0 0
--1 4 50 P
+-1 4 500000 P
 A
 2 2
 #13277
@@ -1587,7 +1587,7 @@ A scuba snorkle is on the ground.~
 leather~
 29 0 AE
 0 0 0 0 0
--1 4 50 P
+-1 4 500000 P
 #13278
 dive belt~
 dive belt~
@@ -1595,7 +1595,7 @@ A scuba dive belt is on the ground drying out.~
 leather~
 29 0 AL
 0 0 0 0 0
--1 4 50 P
+-1 4 500000 P
 #13279
 belt pouch~
 belt pouch~
@@ -1603,7 +1603,7 @@ A belt pouch is laying here.~
 ~
 15 0 AL
 50 1 0 0 0
--1 1 50 P
+-1 1 500000 P
 #13280
 cloak storage~
 cloak of storage~
@@ -1611,7 +1611,7 @@ A cloak is on the ground in a pile.~
 cloth~
 15 G AC
 25 1 0 0 0
-25 2 50 P
+25 2 500000 P
 #13281
 ring holding~
 ring of holding~
@@ -1619,7 +1619,7 @@ A small ring with a hinge is here collecting dust.~
 steel~
 15 G AB
 30 1 0 0 0
-25 4 50 P
+25 4 500000 P
 #13282
 travelers robe~
 travelers robe~
@@ -1627,7 +1627,7 @@ A pile of cloth is on the ground here.~
 cloth~
 9 0 AK
 0 0 0 0 0
--1 4 50 P
+-1 4 500000 P
 #13283
 travelers dagger~
 travelers dagger~
@@ -1635,7 +1635,7 @@ A small dagger is here. It looks like the kind a lot of travelers carry.~
 steel~
 5 0 AN
 2 1 5 11 0
--1 3 50 P
+-1 3 500000 P
 #13284
 travelers spellbook~
 travelers spellbook~
@@ -1643,7 +1643,7 @@ A leather bound book with an arcane symbol is laying here.~
 leather~
 4 0 AO
 14 5 5 65 0
--1 4 50 P
+-1 4 500000 P
 #13285
 travelers holy symbol~
 travelers holy symbol~
@@ -1651,7 +1651,7 @@ A cheap holy symbol is laying here.~
 steel~
 4 0 AO
 19 5 5 35 0
--1 4 50 P
+-1 4 500000 P
 #13286
 travelers vest~
 a travelers vest~
@@ -1659,7 +1659,7 @@ You see a travelers vest here.~
 leather~
 9 0 AD
 0 0 0 0 0
--1 3 50 P
+-1 3 500000 P
 #13287
 travelers cloak~
 a travelers cloak~
@@ -1667,7 +1667,7 @@ You see a travelers cloak here.~
 cloth~
 9 0 AC
 0 0 0 0 0
--1 4 5 P
+-1 4 50000 P
 #13288
 travelers sword~
 a travelers sword~
@@ -1675,7 +1675,7 @@ You see a travelers sword here.~
 steel~
 5 G AN
 1 1 5 3 0
--1 5 500 P
+-1 5 5000000 P
 #13289
 travelers scalemail~
 a travelers scalemail~
@@ -1683,7 +1683,7 @@ You see a travelers scalemail here.~
 steel~
 9 0 AD
 0 0 0 0 0
--1 10 50 P
+-1 10 500000 P
 #13290
 travelers shield~
 a travelers shield~
@@ -1691,7 +1691,7 @@ You see a travelers shield here.~
 steel~
 9 0 AJ
 0 0 0 0 0
--1 7 50 P
+-1 7 500000 P
 #13291
 travelers hammer~
 a travelers hammer~
@@ -1699,7 +1699,7 @@ You see a travelers hammer here.~
 steel~
 5 0 AN
 4 1 5 7 0
--1 10 50 P
+-1 10 500000 P
 #13292
 Magnus's spellbook~
 Magnus's spellbook~
@@ -1707,7 +1707,7 @@ A leather bound book with an arcane symbol is laying here.~
 vellum~
 4 0 AO
 19 5 5 200 0
-14 4 50 P
+14 4 500000 P
 #13293
 robe magi~
 robe of the magi~
@@ -1715,7 +1715,7 @@ A pile of cloth is on the ground. The cloth is covered with arcane symbols.~
 cloth~
 9 G AK
 2 2 2 7 0
-14 3 50 P
+14 3 500000 P
 A
 12 30
 A
@@ -1727,7 +1727,7 @@ A finely crafted suit of crystal plate armor is here.~
 gold~
 9 G AD
 7 5 8 4 0
-18 25 500 P
+18 25 5000000 P
 A
 1 1
 A
@@ -1741,7 +1741,7 @@ A huge bloody scythe is here floating above the ground~
 steel~
 5 AG AN
 0 100 100 0 0
-50 10 50 P
+50 10 500000 P
 A
 18 8
 A
@@ -1755,7 +1755,7 @@ A finely crafted crystal shield is here.~
 gold~
 9 G AJ
 4 5 6 5 0
-18 10 50 P
+18 10 500000 P
 A
 13 10
 #13297
@@ -1765,7 +1765,7 @@ A finely crafted crystal longsword is here.~
 gold~
 5 ABG AN
 1 2 6 1 D
-18 5 50 P
+18 5 500000 P
 A
 13 10
 A
@@ -1777,7 +1777,7 @@ A suit of obsidian plate armor is here on the ground.~
 steel~
 9 G AD
 12 12 12 8 0
-29 25 50 P
+29 25 500000 P
 A
 13 20
 A
@@ -1789,7 +1789,7 @@ A suit of steel plate armor is here on the ground.~
 steel~
 9 G AD
 9 10 11 6 0
-25 4 50 P
+25 4 500000 P
 A
 13 15
 A
@@ -1801,7 +1801,7 @@ A suit of red plate armor is here on the ground.~
 steel~
 9 G AD
 1 1 1 1 0
-20 20 50 P
+20 20 500000 P
 A
 13 10
 A
@@ -1813,7 +1813,7 @@ A bow with runes etched in it is on the floor.~
 wood~
 5 A AN
 9 6 3 0 F
-15 5 10 P
+15 5 100000 P
 A
 18 2
 #13302
@@ -1843,7 +1843,7 @@ A large marble fountain gushes forth here.~
 stone~
 25 0 0
 500 500 0 0 0
--1 3000 1000 P
+-1 3000 10000000 P
 E
 fountain~
 It is very nice.  Made from fine white marble.
@@ -1855,7 +1855,7 @@ A shiny depository key is here.~
 steel~
 18 0 A
 0 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 #13306
 city key gold solace~
 Key to the City of Solace.~
@@ -1863,7 +1863,7 @@ A shiny gold city key is here.~
 steel~
 18 0 A
 0 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 #13307
 flaming homer~
 a drink called, "a Flaming homer"~
@@ -1871,7 +1871,7 @@ a drink called, "a Flaming homer" is here.~
 glass~
 17 0 A
 1 1 7 0 0
--1 1 10 P
+-1 1 100000 P
 #13308
 jello shot~
 a jello shot.~
@@ -1879,7 +1879,7 @@ a jello shot is wiggling here.~
 glass~
 17 0 A
 1 1 3 0 0
--1 3 10 P
+-1 3 100000 P
 #13309
 bloody heads~
 a drink called, "bloody heads"~
@@ -1887,7 +1887,7 @@ a drink called, "bloody heads" is sitting here.~
 glass~
 17 0 A
 1 1 5 0 0
--1 1 10 P
+-1 1 100000 P
 #13310
 skull chair~
 a giant skull throne~
@@ -1895,7 +1895,7 @@ A giant skullthrone, with a snake crawling through its eyes and nose, is here.~
 bone~
 12 0 0
 0 0 0 0 0
--1 300 100 P
+-1 300 1000000 P
 #0
 
 

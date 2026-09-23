@@ -86,7 +86,7 @@ A spectral scythe blazing with dark energy has been left here.~
 steel~
 5 ABG AN
 1 6 8 0 EF
-50 25 100000 P
+50 25 1000000000 P
 E
 reaper horseman scythe~
 The Headless Horseman's own war-scythe. The black blade seems to scythe
@@ -104,7 +104,7 @@ A blackened iron helm radiating a chill of death rests here.~
 iron~
 9 AEG AE
 0 0 0 0 0
-50 8 80000 P
+50 8 800000000 P
 E
 helm horseman cursed~
 A grim helm forged of blackened iron, worn by the Headless Horseman himself.
@@ -124,7 +124,7 @@ A warhammer crackling with ice rests here.~
 mithril~
 5 ABG AN
 4 6 8 0 B
-50 30 100000 P
+50 30 1000000000 P
 E
 frostbite hammer warhammer~
 Father Winter's own warhammer, suffused with the power of eternal winter.
@@ -143,7 +143,7 @@ A glowing cloak trimmed with shimmering frost hangs here.~
 cloth~
 9 ABG AK
 0 0 0 0 0
-50 3 90000 P
+50 3 900000000 P
 E
 mantle winter veil cloak~
 A sweeping cloak of deep blue and white, trimmed with frost that refuses to
@@ -163,7 +163,7 @@ A glowing pumpkin-carved charm rests here.~
 glass~
 9 AG AC
 0 0 0 0 0
-0 1 5000 P
+0 1 50000000 P
 E
 pumpkin lantern charm amulet~
 A charm carved in the form of a grinning jack-o-lantern, warm to the touch.
@@ -181,7 +181,7 @@ A silver pendant shaped like a snowflake rests here.~
 silver~
 9 AG AC
 0 0 0 0 0
-0 1 5000 P
+0 1 50000000 P
 E
 snowflake pendant necklace~
 A delicate silver pendant shaped like a snowflake. Wintry light plays through
@@ -199,7 +199,7 @@ A mysterious dark cake with ghostly frosting rests here.~
 food~
 38 AG A
 0 0 0 0 0
-0 1 500 P
+0 1 5000000 P
 E
 cake horseman shadowed pumpkin~
 A thick slice of dark chocolate cake with black buttercream frosting, topped
@@ -215,7 +215,7 @@ A frosted log-shaped cake dusted with powdered sugar sits here.~
 food~
 38 AG A
 0 0 0 0 0
-0 1 500 P
+0 1 5000000 P
 E
 cake yule winter log~
 A thick slice of yule log cake in winter colors -- white and blue frosting
@@ -231,7 +231,7 @@ A bright piece of wrapped candy has been dropped here.~
 cloth~
 19 A AN
 0 3 0 0 0
-0 0 1 A
+0 0 10000 A
 E
 candy treat~
 It is a small piece of hard candy wrapped in orange and black paper.
@@ -244,7 +244,7 @@ A small wrapped gift has been left here.~
 cloth~
 19 A AN
 0 3 0 0 0
-0 0 1 A
+0 0 10000 A
 E
 gift present~
 It is a small gift wrapped in red paper and tied with a golden ribbon.
@@ -259,7 +259,7 @@ A carved pumpkin mask with a glowing grin lies here.~
 cloth~
 9 A AE
 0 0 0 0 0
-0 1 100 P
+0 1 1000000 P
 E
 mask pumpkin jack-o-lantern~
 A hollowed gourd carved into a classic jack-o-lantern, with a small candle
@@ -273,7 +273,7 @@ A red-and-green striped pointy hat with a jingling bell lies here.~
 cloth~
 9 A AE
 0 0 0 0 0
-0 1 100 P
+0 1 1000000 P
 E
 hat elf jaunty felt~
 A conical hat striped in red and green felt, with a little brass bell sewn to
@@ -287,7 +287,7 @@ A rustling paper bag of tricolored candy corn sits here.~
 food~
 19 A A
 4 0 0 0 0
-0 1 25 P
+0 1 250000 P
 E
 candy corn bag~
 A rustling paper bag filled with tricolored candy corn.  Sweet, waxy, and
@@ -301,7 +301,7 @@ A small clay cup steaming with fragrant mulled cider rests here.~
 pottery~
 19 A A
 4 0 0 0 0
-0 1 25 P
+0 1 250000 P
 E
 cider spiced hot cup~
 A small clay cup filled with hot apple cider, fragrant with cinnamon, cloves,

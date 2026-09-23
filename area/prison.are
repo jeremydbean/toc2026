@@ -414,7 +414,7 @@ A short sword rests here.~
 steel~
 5 P AN
 1 2 13 3 D 
-20 40 5000 P
+20 40 50000000 P
 A
 18 1
 A
@@ -426,7 +426,7 @@ A pack of smokes have been dropped here carelessly.~
 paper~
 9 BE AO
 2 1 2 4 0 
-5 10 100 P
+5 10 1000000 P
 A
 2 -2
 A
@@ -441,7 +441,7 @@ A piece of crinkled foil rests here.~
 paper~
 13 H A
 0 0 0 0 0 
-20 10 100 P 
+20 10 1000000 P 
 #20104
 soap rope~
 a soap on a rope~
@@ -449,7 +449,7 @@ Some soap on a rope is here.~
 stone~
 5 AGJL AN
 0 4 3 13 D
-5 20 500 P
+5 20 5000000 P
 A
 19 1
 A
@@ -461,7 +461,7 @@ An enchanted bag lies here~
 leather~
 15 FG AO
 300 1 0 0 0 
-35 1000 1000 P
+35 1000 10000000 P
 #20106
 sword~
 a dull looking sword~
@@ -469,7 +469,7 @@ A dull looking sword has been discarded here.~
 steel~
 5 H AN
 1 4 9 3 E
-30 100 600 P
+30 100 6000000 P
 E
 sword~
 This sword looks like it hasn't been used much, it might still
@@ -484,7 +484,7 @@ A ring of burning embers is here.~
 silver~
 9 0 AB
 5 2 4 0 0 
-20 25 500 P
+20 25 5000000 P
 A
 1 1
 A
@@ -496,7 +496,7 @@ An ivory robe lies here.~
 cloth~
 9 0 AK
 5 5 3 2 0 
-20 30 300 P
+20 30 3000000 P
 A
 4 1
 A
@@ -508,7 +508,7 @@ A juicy filet of rat lies here.~
 food~
 19 0 A
 15 0 0 0 0 
-5 5 50 P
+5 5 500000 P
 #20110
 hatchling cloak~
 a hatchling cloak~
@@ -516,7 +516,7 @@ A  hatchling cloak lies here.~
 leather~
 9 0 AK
 3 4 2 4 0 
-20 20 400 P
+20 20 4000000 P
 #20111
 hatchling shirt~
 a hatchling shirt~
@@ -524,7 +524,7 @@ A hatchling shirt lies here~
 leather~
 9 0 AD
 4 4 5 2 0 
-20 20 400 P
+20 20 4000000 P
 #20112
 helmet~
 a hatchling helmet~
@@ -532,7 +532,7 @@ A hatchling helmet rests here.~
 steel~
 9 0 AE
 3 2 3 3 0 
-20 30 600 P
+20 30 6000000 P
 #20113
 hatchling leggings~
 a set of hatchling leggings~
@@ -540,7 +540,7 @@ Some hatchling leggings lie here.~
 leather~
 9 0 AF
 4 4 3 4 0 
-20 30 600 P
+20 30 6000000 P
 #20114
 hatchling boots~
 a pair of hatchling boots~
@@ -548,7 +548,7 @@ A pair of hatchling boots lie here.~
 leather~
 9 0 AG
 3 4 3 3 0 
-20 40 500 P
+20 40 5000000 P
 #20115
 hatchling gloves~
 a pair of hatchling gloves~
@@ -556,7 +556,7 @@ A pair of hatchling gloves lie here.~
 leather~
 9 0 AH
 4 4 3 4 0 
-20 20 400 P
+20 20 4000000 P
 #20116
 hatchling sleeves~
 a set of hatchling sleeves~
@@ -564,7 +564,7 @@ Some hatchling sleeves lie here.~
 leather~
 9 0 AI
 3 3 2 4 0 
-20 30 400 P
+20 30 4000000 P
 #20117
 shield hatchling~
 a hatchling shield~
@@ -572,7 +572,7 @@ A hatchling shield has been carelessly left here.~
 steel~
 9 0 AJ
 3 3 4 2 0 
-20 50 500 P
+20 50 5000000 P
 #20118
 hatchling belt~
 a hatchling belt~
@@ -580,7 +580,7 @@ A hatchling belt has been dropped here.~
 leather~
 15 0 AL
 4 4 0 4 0 
-20 30 400 P
+20 30 4000000 P
 A
 19 1
 A
@@ -594,7 +594,7 @@ A hatchling bracer has been left here.~
 leather~
 9 0 AM
 4 2 5 1 0 
-20 20 500 P
+20 20 5000000 P
 #20120
 lucky charm hatchling~
 a lucky charm~
@@ -602,7 +602,7 @@ A lucky charm has been left here.~
 glass~
 8 0 AO
 0 0 0 0 0 
-20 10 200 P
+20 10 2000000 P
 A
 4 1
 A
@@ -614,7 +614,7 @@ A starter kit has been dropped here.~
 silver~
 15 0 AO
 75 1 0 0 0 
-5 20 550 P
+5 20 5500000 P
 E
 starter kit~
 This kit has been brought to you by Environmental Chemical corporation
@@ -676,7 +676,7 @@ A big fat joint lies here burning.~
 paper~
 3 0 AO
 20 6 6 72 0 
-20 20 300 P
+20 20 3000000 P
 #20127
 check paycheck~
 a paycheck~
@@ -692,7 +692,7 @@ A dirty mop has been set against the wall.~
 cloth~
 5 0 AN
 6 3 5 0 D 
-9 30 500 P
+9 30 5000000 P
 #20129
 large battle axe~
 a  large battle axe~
@@ -700,7 +700,7 @@ A large battle axe rests here.~
 steel~
 5 0 AN
 5 7 6 21 D 
-40 60 1000 P
+40 60 10000000 P
 A
 17 -5
 A
@@ -712,7 +712,7 @@ A wicked looking spiked wrist guard lies here.~
 adamantite~
 9 0 AM
 5 5 4 6 0 
-35 20 500 P
+35 20 5000000 P
 A
 12 25
 #20131
@@ -722,7 +722,7 @@ A pair of strong leggings has been left here.~
 adamantite~
 9 0 AF
 5 5 3 4 0 
-35 80 800 P
+35 80 8000000 P
 A
 17 -3
 A
@@ -734,7 +734,7 @@ A set of strong sleeves has been dropped here.~
 adamantite~
 9 0 AI
 5 3 4 4 0 
-35 70 600 P
+35 70 6000000 P
 A
 1 2
 #20133
@@ -744,7 +744,7 @@ A prison uniform lies here all starched up.~
 cloth~
 9 0 AK
 5 5 2 4 0 
-37 70 600 P
+37 70 6000000 P
 A
 2 2
 #20134
@@ -764,7 +764,7 @@ A curved dagger lies here.~
 steel~
 5 EFJ AN
 2 4 10 11 D
-35 30 600 P
+35 30 6000000 P
 A
 18 3
 #20136
@@ -774,7 +774,7 @@ A pitch black ring with sparkles of color lies on the ground here.~
 silver~
 9 ABFG AB
 8 8 8 4 0
-30 10 700 P
+30 10 7000000 P
 A
 17 -1
 A
@@ -786,7 +786,7 @@ A set of wrought iron manacles lay in the corner here.~
 iron~
 9 M AM
 0 0 0 0 0  
-15 40 10 P
+15 40 100000 P
 A
 14 -200
 #20138
@@ -796,7 +796,7 @@ A home made zip gun lies here.~
 steel~
 3 0 AO
 20 4 4 65 0
-20 10 400 P
+20 10 4000000 P
 #20139
 coins gold pile~
 a pile of gold coins~
@@ -812,7 +812,7 @@ A set of fabulous looking heels lie here.~
 leather~
 9 0 AG
 8 8 5 3 0 
-40 30 300 P
+40 30 3000000 P
 A
 2 -2
 A
@@ -826,7 +826,7 @@ A pink cashmire scarf has been left here, a definite plus for anyone's wardrobe.
 cloth~
 9 0 AC
 7 5 3 4 0 
-40 30 300 P
+40 30 3000000 P
 A
 18 2
 #20142
@@ -836,7 +836,7 @@ A busty bra lies here.~
 cloth~
 9 AM AD
 5 5 3 4 0 
-35 10 400 P
+35 10 4000000 P
 A
 17 20
 A
@@ -848,7 +848,7 @@ A workers coveralls lay here.~
 cloth~
 9 BF AK
 4 4 2 5 0 
-30 40 500 P
+30 40 5000000 P
 A
 1 3
 A
@@ -860,7 +860,7 @@ A baseball hat with the tribe logo on it is here.~
 cloth~
 9 0 AE
 4 4 5 3 0 
-30 10 300 P
+30 10 3000000 P
 A
 14 200
 #20145
@@ -870,7 +870,7 @@ A tool belt lies here.~
 leather~
 9 0 AL
 5 4 4 0 0 
-30 30 500 P
+30 30 5000000 P
 A
 5 2
 #20146
@@ -880,7 +880,7 @@ A pile of golden netting is here.~
 gold~
 9 0 AE
 8 8 7 9 0 
-45 30 800 P
+45 30 8000000 P
 A
 4 1
 A
@@ -900,7 +900,7 @@ A small baby lies here crying.~
 stone~
 1 A AO
 0 0 9999 0 0 
-45 30 500 P
+45 30 5000000 P
 A
 18 3
 #20148
@@ -910,7 +910,7 @@ A very delicate scroll set in silver leafs lies here.~
 vellum~
 2 0 A
 20 7 518 62 0 
-20 10 300 P
+20 10 3000000 P
 #20149
 Gown virginity~
 a gown of virginity~
@@ -918,7 +918,7 @@ A gown of virginity has been forgotten here.~
 cloth~
 9 0 AK
 9 9 8 5 0 
-45 40 300 P
+45 40 3000000 P
 A
 4 2
 A
@@ -930,7 +930,7 @@ A packet of boiler water treatment has been dropped here.~
 paper~
 19 H A
 15 0 0 0 0 
-5 5 60 P
+5 5 600000 P
 #20151
 dreadlocks~
 a mane of dreadlocks~
@@ -938,7 +938,7 @@ A massive pile of dreadlocks rest here.~
 stone~
 9 ABFKL AE
 15 15 12 14 0 
-55 20 700 P
+55 20 7000000 P
 #20152
 Axe destruction~
 an axe of destruction~
@@ -946,7 +946,7 @@ A massive blood-stained axe of immeasurable age lies here.~
 iron~
 5 BFG AN
 5 5 12 21 A 
-54 50 900 P
+54 50 9000000 P
 A
 17 6
 A
@@ -974,7 +974,7 @@ A severed head of a previous victim lies in the corner.~
 stone~
 26 0 A
 20 548 44 0 0 
-5 10 70 P
+5 10 700000 P
 E
 head~
 Hmmm this head looks like it has been here a while. It has maggots crawling in
@@ -994,7 +994,7 @@ A pill called a "lude" lies here collecting dust.~
 pill~
 26 0 A
 15 3 61 64 0 
-5 10 10000 P
+5 10 100000000 P
 #20158
 flask vile mist~
 a flask of vile liquid~
@@ -1002,7 +1002,7 @@ A flask full of vile liquid has been laid to rest here.~
 glass~
 10 0 A
 45 44 515 516 0 
-45 20 50000 P
+45 20 500000000 P
 #20159
 invisibility staff~
 a staff of invisibility~
@@ -1010,7 +1010,7 @@ A twig of an oak tree lies here.~
 wood~
 4 0 AO
 25 8 8 29 0
-25 40 5000 P
+25 40 50000000 P
 #20160
 drum~
 a drum~
@@ -1030,7 +1030,7 @@ A briefcase has been left here~
 leather~
 15 0 A
 50 1 0 0 0
-30 50 300 P
+30 50 3000000 P
 #20162
 Ball point pen~
 a ball point pen~
@@ -1038,7 +1038,7 @@ A fine ball point pen lies here.~
 silver~
 5 F AN
 2 4 9 11 D 
-30 30 200 P
+30 30 2000000 P
 A
 19 1
 A
@@ -1076,7 +1076,7 @@ A tactical nuke lies here.~
 steel~
 5 ABEFGJ AN
 0 10 12 6 AF 
-56 200 2000 P
+56 200 20000000 P
 A
 13 20
 A
@@ -1109,7 +1109,7 @@ A ring of burning embers lies here.~
 glass~
 9 0 AB
 3 3 2 3 0 
-8 10 40 P
+8 10 400000 P
 A
 1 1
 A
@@ -1121,7 +1121,7 @@ A hatchling cloak lies here.~
 cloth~
 9 0 AC
 2 1 1 4 0 
-5 30 200 P
+5 30 2000000 P
 #20169
 hatchling bracer~
 a hatchling bracer~
@@ -1129,7 +1129,7 @@ A hatchling bracer lies here.~
 silver~
 9 0 AM
 2 1 3 1 0 
-5 30 150 P
+5 30 1500000 P
 #20170
 large desk~
 a large desk~

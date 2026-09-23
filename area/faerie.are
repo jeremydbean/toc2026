@@ -147,7 +147,7 @@ There is a tiny rolled up paper lying on the ground.~
 paper~
 2 AG AO
 10 23 502 0 0
-10 1 100 P
+10 1 1000000 P
 E
 rhyme catchy little~
 You look at the rhyme. It reads:
@@ -164,7 +164,7 @@ A twinkling ball of light sparkles here!~
 glass~
 1 AGI AO
 0 0 9999 0 0
-14 2 10 P
+14 2 100000 P
 A
 4 -1
 A
@@ -178,7 +178,7 @@ A loop of rainbow thread lies here.~
 cloth~
 9 FM AL
 2 0 2 0 0 
-11 3 10 P
+11 3 100000 P
 A
 24 -1
 #24004
@@ -188,7 +188,7 @@ An earthen colored band lies here.~
 leather~
 9 G AM
 1 1 2 0 0
-13 4 15 P
+13 4 150000 P
 A
 2 1
 A
@@ -200,7 +200,7 @@ A vial of sparkling liquid emits a soft white glow.~
 glass~
 10 AG AO
 10 19 56 0 0
-10 1 200 P
+10 1 2000000 P
 #24006
 robe gossamer~
 a gossamer robe~
@@ -208,7 +208,7 @@ A gossamer robe sparkles with a pale white glow!~
 cloth~
 9 IM AK
 3 1 2 0 0
-14 5 175 P
+14 5 1750000 P
 A
 12 10
 #24007
@@ -218,7 +218,7 @@ A sparkling pale light ray glows here!~
 silver~
 5 AF AN
 0 3 6 6 D 
-15 10 1000 P
+15 10 10000000 P
 A
 18 1
 A
@@ -230,7 +230,7 @@ A crystal goblet filled with a sparkling wine is here.~
 glass~
 10 G A
 12 3 18 0 0 
-11 2 50 P
+11 2 500000 P
 #24009
 britches dirty~
 a pair of dirty britches~
@@ -238,7 +238,7 @@ A pair of dirty britches lies here. Get the laundry soap.~
 cloth~
 9 C AF
 2 1 2 1 0
-13 7 250 P
+13 7 2500000 P
 A
 13 10
 A
@@ -260,7 +260,7 @@ A dirty cloak lies here. Ugh! Get the laundry soap.~
 cloth~
 9 C AC
 1 0 1 1 0
-13 6 75 P
+13 6 750000 P
 A
 1 1
 A
@@ -272,7 +272,7 @@ A wand with a huge blue diamond on it is just lying here! Pick it up!~
 wood~
 3 G AO
 14 5 5 10 0 
-14 5 500 P
+14 5 5000000 P
 E
 wand blue diamond~
 They're magically delicious!
@@ -284,7 +284,7 @@ A rainbow ends at this pot of gold!~
 gold~
 20 A AO
 200 0 0 0 0
-0 25 200 P
+0 25 2000000 P
 #24014
 food finger~
 delicious finger food~
@@ -292,7 +292,7 @@ A delicious little plate of scrumptious finger foods lies beckons to you.~
 pill~
 19 0 A
 24 0 0 0 0 
-0 2 10 P
+0 2 100000 P
 #0
 
 

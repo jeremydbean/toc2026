@@ -731,7 +731,7 @@ A small red key has been left here.~
 stone~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 small red key~
 It's small, it's red, it's a key.
@@ -743,7 +743,7 @@ An worn brass key lies idlely on the ground here.~
 brass~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 brass key~
 The brass key seems worn through years of use.
@@ -755,7 +755,7 @@ A moldy, dust covered Oreo(tm) cookie has been discarded here.~
 food~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 tm trademark~
 Oreo is a registered trademark of Christie Brown & Co. a division of Nabisco
@@ -772,7 +772,7 @@ A small iron key hangs from a hook here.~
 iron~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 small iron key~
 It has a 'W3625' insribed on it.
@@ -784,7 +784,7 @@ A small iron key lies on a desk here.~
 iron~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 small iron key~
 It has a 'W2716' insribed on it.
@@ -796,7 +796,7 @@ A tray of Mary Rotte salisbury steak has been left here.~
 food~
 19 0 A
 2 0 0 1 0
--1 2 25 P
+-1 2 250000 P
 E
 salisbury steak tray~
 It's not steak!
@@ -808,7 +808,7 @@ A Mary Rotte garden burger lies here, lonely.~
 food~
 19 0 A
 10 0 0 0 0
--1 1 80 P
+-1 1 800000 P
 E
 garden burger~
 You've never seen anything more disgusting in your life.
@@ -820,7 +820,7 @@ Some Mary Rotte fried eggs sit here slowly hardening.~
 food~
 19 0 A
 5 0 0 0 0
--1 1 25 P
+-1 1 250000 P
 E
 fried eggs~
 You're not sure, but you think that they are plastic.
@@ -832,7 +832,7 @@ A dish of Mary Rotte lyonnaise potatoes wobbles around here.~
 food~
 19 0 A
 7 0 0 0 0
--1 1 50 P
+-1 1 500000 P
 E
 lyonnaise potatoes dish~
 What is lyonnaise, anyways?
@@ -844,7 +844,7 @@ A Mary Rotte calzone cools here.~
 food~
 19 0 A
 24 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 E
 calzone~
 It's similar to a pizza pop.  It looks vaguely edible.
@@ -856,7 +856,7 @@ A HUGE set of barbells lies here, gathering dust.~
 iron~
 12 0 A
 0 0 0 0 0
--1 100 10 P
+-1 100 100000 P
 E
 barbells~
 They look heavy.
@@ -868,7 +868,7 @@ A condom has been carefully placed here.~
 ~
 9 G AF
 0 0 0 0 0
--1 1 200 P
+-1 1 2000000 P
 E
 condom~
 One of the old type...the ones they give away for free.
@@ -884,7 +884,7 @@ A tam is here...~
 cloth~
 9 0 AE
 0 0 0 0 0
--1 5 50 P
+-1 5 500000 P
 E
 tam~
 This tam is real ugly!  I mean UGLY!!  Your Mom wouldn't even wear it!!!
@@ -898,7 +898,7 @@ No it couldn't be... a blue tray!~
 steel~
 9 G AJ
 0 0 0 0 0
--1 5 150 P
+-1 5 1500000 P
 E
 blue tray~
 You can't believe you actually found one.  Blue trays are almost as common
@@ -911,7 +911,7 @@ A hairnet has been thrown away here.~
 cloth~
 9 A AE
 0 0 0 0 0
--1 1 15 P
+-1 1 150000 P
 E
 hairnet~
 This thing (blech) must be glowing from the radiation...
@@ -923,7 +923,7 @@ A long flashlight has been dropped here.~
 steel~
 5 0 AN
 0 1 5 7 0
--1 8 150 P
+-1 8 1500000 P
 E
 flashlight light~
 This looks like one of the flashlights Security uses... uh-oh...
@@ -935,7 +935,7 @@ A nice yellow jacket has been carefully hung here.~
 cloth~
 9 GK AK
 0 0 0 0 0
--1 15 200 P
+-1 15 2000000 P
 E
 yellow jacket~
 This nice, yellow jacket has the word STU-CON emblazoned on the back.
@@ -947,7 +947,7 @@ An evil knife lies on the ground here.~
 iron~
 5 EJ ANO
 2 1 5 11 0
--1 5 500 P
+-1 5 5000000 P
 E
 knife evil~
 This is an evil knife, pure and simple.
@@ -959,7 +959,7 @@ A small silver key lies forgotten here.~
 silver~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 silver key~
 This small key has only one marking on it, the number BF128.
@@ -971,7 +971,7 @@ A small brass key lies forgotten here.~
 brass~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 brass key~
 This brass key is marked with the number HG34.
@@ -983,7 +983,7 @@ A dark, incredibly sharp blade lies on the ground here.~
 adamantite~
 5 FGJL AN
 1 1 5 3 0
--1 15 750 P
+-1 15 7500000 P
 E
 blade darkness~
 The blade has a dark aura surrounding it.  It seems to absorb any light that
@@ -1002,7 +1002,7 @@ A dark brown-to-black cloak has been left here.~
 cloth~
 9 FGJL AK
 0 0 0 0 0
--1 11 425 P
+-1 11 4250000 P
 #15022
 sword mage bane magebane~
 Magebane~
@@ -1010,7 +1010,7 @@ An oddly shaped sword lies here.~
 adamantite~
 5 ABHM AN
 1 1 5 11 0
--1 20 600 P
+-1 20 6000000 P
 E
 mage bane magebane sword~
 Its shape is very peculiar.  It seems to have a glowing aura.
@@ -1030,7 +1030,7 @@ An Obsidian orb is emoting darkness here.~
 stone~
 1 FGJL AO
 0 0 999 0 0
--1 10 385 P
+-1 10 3850000 P
 E
 orb obsidian~
 This Orb looks distinctly evil.
@@ -1046,7 +1046,7 @@ A beautiful Golden jacket has been left here.~
 gold~
 9 0 AD
 0 0 0 0 0
--1 22 820 P
+-1 22 8200000 P
 E
 crest~
 The crest seems to portray the numbers 9 and 7.
@@ -1065,7 +1065,7 @@ An extremely Furry Hat has been carefully hung on the wall here.~
 cloth~
 9 0 AE 
 0 0 0 0 0
--1 3 200 P
+-1 3 2000000 P
 E
 furry hat~
 This hat is covered with fur and has rather nice ear-flaps.
@@ -1079,7 +1079,7 @@ A pair of boots has been left here.~
 leather~
 9 A AG
 0 0 0 0 0
--1 10 65 P
+-1 10 650000 P
 E
 work boots~
 This pair of boots is well worn.
@@ -1091,7 +1091,7 @@ A nice, shiny, silver vest has been lost here.~
 silver~
 9 0 AD
 0 0 0 0 0
--1 20 600 P
+-1 20 6000000 P
 E
 silver vest~
 It's shiny, it's silver ... What more could you want?
@@ -1103,7 +1103,7 @@ A silver object has been dropped here.~
 silver~
 9 0 AE
 0 0 0 0 0
--1 1 500 P
+-1 1 5000000 P
 E
 silver hair brush hairbrush~
 This nice, silver hairbrush is a bit tarnished but still suffices to
@@ -1169,7 +1169,7 @@ The World of Xeen(tm) game is sitting here.~
 cloth~
 13 0 A
 0 0 0 0 0
--1 42 23 P
+-1 42 230000 P
 E
 world xeen~
 This game is a combination of Might & Magic IV and V (tm) and takes up a lot
@@ -1187,7 +1187,7 @@ An ordinary long sword gathers dust here.~
 steel~
 5 0 AN
 1 1 5 3 0
--1 12 120 P
+-1 12 1200000 P
 E
 sword long longsword~
 Looks almost like your generic long sword, but not quite.
@@ -1199,7 +1199,7 @@ A T-square has been carelessly discarded here.~
 wood~
 5 AGH AN
 0 1 5 3 P
--1 9 500 P
+-1 9 5000000 P
 E
 t-square t square death~
 This T-square is an extremely sharp weapon, and has been well used.
@@ -1213,7 +1213,7 @@ An extremely pale apple sits here.~
 food~
 19 0 A
 4 0 0 0 0
--1 1 50 P
+-1 1 500000 P
 E
 apple~
 It looks like it didn't get enough sun.
@@ -1225,7 +1225,7 @@ A bottle with a brightly colored label sits here.~
 glass~
 17 0 A
 4 4 1 0 0
--1 1 10 P
+-1 1 100000 P
 E
 bottle~
 This bottle has such greenish glass that you can't see if anything is inside.
@@ -1237,7 +1237,7 @@ A wooden carafe sits on a table here.~
 wood~
 17 0 A
 8 8 2 0 0
--1 1 20 P
+-1 1 200000 P
 E
 carafe~
 The wooden carafe seems to be some sort of container.
@@ -1249,7 +1249,7 @@ A shotglass has been discarded here.~
 glass~
 17 0 A
 2 2 7 0 0
--1 1 15 P
+-1 1 150000 P
 E
 glass shot shotglass~
 This small glass looks like it would be emptied in a drink or two.
@@ -1261,7 +1261,7 @@ A can of PopCoke awaits you here, cool and refreshing.~
 steel~
 17 0 A
 1 1 15 0 0
--1 1 10 P
+-1 1 100000 P
 E
 popcoke coke pop can~
 This can is elegantly decorated with garish colors that almost make you
@@ -1275,7 +1275,7 @@ A candy bar is here!~
 food~
 19 0 A
 4 0 0 0 0
--1 1 30 P
+-1 1 300000 P
 E
 candy bar~
 This candy is made of the highest standard of chocolate.  It even meets the
@@ -1288,7 +1288,7 @@ A large steel key lies hidden here.~
 steel~
 18 0 AO
 0 0 0 0 0
--1 7 1 P
+-1 7 10000 P
 E
 key steel~
 This large, steel key is very ordinary.
@@ -1300,7 +1300,7 @@ A copy of Golden World lies here.~
 paper~
 13 0 A
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 copy golden world~
 It looks like the student humor newspaper, but it contains nothing to do
@@ -1326,7 +1326,7 @@ A key elusively lies quite convincingly.~
 steel~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 key vic~
 This key is an effective master of the art of uselessness...you wonder
@@ -1400,7 +1400,7 @@ A milk dispenser sits at the back of the auditorium.~
 glass~
 13 B A
 0 0 0 0 0
--1 75 1 P
+-1 75 10000 P
 E
 milk dispenser~
 Darn!  It seems to be broken.
@@ -1412,7 +1412,7 @@ A cool carton of refreshing milk catches your eye.~
 paper~
 17 0 A
 2 2 10 0 0
--1 2 20 P
+-1 2 200000 P
 E
 milk carton white~
 Hey!  It's got that cool picture from those commercials!
@@ -1424,7 +1424,7 @@ A cool carton of refreshing milk catches your eye.~
 paper~
 17 0 A
 2 2 10 0 0
--1 2 21 P
+-1 2 210000 P
 E
 milk chocolate choco carton~
 Hey!  It's got that cool picture from those commercials too!
@@ -1504,7 +1504,7 @@ Nothing seems to be here at all.
 glass~
 1 0 AO
 0 0 999 0 0
--1 0 300 P
+-1 0 3000000 P
 E
 nothing~
 You see nothing special.
@@ -1545,7 +1545,7 @@ There is a wooden chest here.~
 wood~
 15 0 0
 500 1|2|4|8 15054 0 0
--1 1 10 P
+-1 1 100000 P
 E
 chest wooden~
 This is your average, every day, run-of-the-mill, wooden chest.
@@ -1557,7 +1557,7 @@ A large book with the word "Ledger" written on it has been forgotten here.~
 paper~
 2 0 AO
 25 38 4 0 0
--1 10 50 P
+-1 10 500000 P
 E
 ledger book~
 This book is filled with numbers, dates, and strange notation.  It is enough
@@ -1582,7 +1582,7 @@ A small bag filled with coins lies here.~
 gold~
 20 0 A
 1000 0 0 0 0
--1 1 1000 P
+-1 1 10000000 P
 E
 bag coins gold~
 This bag of coins doesn't look too big.

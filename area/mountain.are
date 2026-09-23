@@ -225,7 +225,7 @@ Orcrist the Goblin Cleaver glitters calmly on the floor.~
 magic~
 5 ABHKUV AN
 1 5 14 3 DE
-53 15 15000 P
+53 15 150000000 P
 E
 orcrist~
 the runes OrCrIsT are written on the blade
@@ -249,7 +249,7 @@ A gleaming suit of armor stands in the corner~
 mithril~
 9 AKUVWZ C AD
 10 10 10 10 0
-53 25 10000 P
+53 25 100000000 P
 A
 1 3
 A
@@ -265,7 +265,7 @@ The Dwarven Battle Crown floats slightly off the floor.~
 mithril~
 9 AKUVWZ C AE
 7 9 7 10 0
-53 15 10000 P
+53 15 100000000 P
 E
 crown~
 This is the high crown of the mountain dwarves, it looks fit only to be
@@ -291,7 +291,7 @@ The heralds staff sits glowing in the corner.~
 wood~
 4 ABGKUV AO
 51 5 5 516 0
-51 5 10000 P
+51 5 100000000 P
 E
 staff~
 The runes BaLiN are scrawled on the wooden shaft.
@@ -307,7 +307,7 @@ A large Mithril sword lies in the dust.~
 mithril~
 5 ABHKUV AN
 1 5 12 1 DF
-52 20 10000 P
+52 20 100000000 P
 A
 1 3
 A
@@ -323,7 +323,7 @@ A shimmering ball of light hangs in the air.~
 light~
 1 AUV AO
 0 0 999 0 0
-52 1 10000 P
+52 1 100000000 P
 A
 14 100
 A
@@ -335,7 +335,7 @@ A mithril pick axe rests agains the wall.~
 mithril~
 5 ABUV AN
 4 5 9 6 A
-50 15 7500 P
+50 15 75000000 P
 A
 1 3
 A
@@ -351,7 +351,7 @@ A golden tunic lies in a heap on the floor.~
 wool~
 9 UV AK
 6 9 5 8 0
-50 10 7500 P
+50 10 75000000 P
 A
 5 1
 A
@@ -367,7 +367,7 @@ A Dwarven troopers surcoat lies in a pile on the floor~
 mithril~
 9 AUVWZ C AD
 6 8 7 8 0
-51 10 5000 P
+51 10 50000000 P
 A
 1 2
 A
@@ -385,7 +385,7 @@ A Large well worn axe rests agains the wall.~
 mithril~
 5 AUVWZ C AN
 5 5 8 21 0
-51 15 5000 P
+51 15 50000000 P
 A
 1 2
 A
@@ -401,7 +401,7 @@ A Mithril shield glimmers coldly in the light.~
 mithril~
 9 AUV AJ
 5 4 6 9 0
-51 15 5000 P
+51 15 50000000 P
 A
 13 10
 A
@@ -415,7 +415,7 @@ An elite guard's surcoat lies in a pile on the floor.~
 wool~
 9 ABUVWZ C AD
 10 6 10 10 0
-52 15 9000 P
+52 15 90000000 P
 A
 1 4
 A
@@ -499,7 +499,7 @@ A shield with a large E rune lies here.~
 silver~
 9 ABUVWZ B AJ
 10 10 10 50 0
-54 15 15000 P
+54 15 150000000 P
 A
 3 2
 A
@@ -517,7 +517,7 @@ A very sharp looking sword hovers in the air.~
 adamantite~
 5 ABUVWZ B AN
 1 5 13 1 DE
-54 10 15000 P
+54 10 150000000 P
 A
 1 2
 A
@@ -539,7 +539,7 @@ A Large glowing hammer rests up against the wall.~
 mithril~
 5 ABUVWZ C AN
 4 5 12 6 AB
-54 34 15000 P
+54 34 150000000 P
 A
 1 3
 A
@@ -557,7 +557,7 @@ A set of dwarven mithril plate lies here.~
 mithril~
 9 ABUVWZ C AD
 11 9 10 50 0
-54 30 15000 P
+54 30 150000000 P
 A
 2 -1
 A
@@ -575,7 +575,7 @@ The sword of Furey waits in silence.~
 adamantite~
 5 ABHUVWZ A AN
 1 5 13 18 DE
-54 25 15000 P
+54 25 150000000 P
 A
 1 -1
 A
@@ -593,7 +593,7 @@ A set of mithril leggins lies in the dirt.~
 mithril~
 9 ABUVWZ A AF
 10 15 9 9 0
-54 15 15000 P
+54 15 150000000 P
 A
 1 2
 A
@@ -611,7 +611,7 @@ A magnificent pair of boots rest on the ground.~
 leather~
 9 ABUVWZ D AG
 10 10 10 35 0
-54 5 15000 P
+54 5 150000000 P
 A
 2 5
 A
@@ -627,7 +627,7 @@ A small silver looking dagger lies in the dust.~
 mithril~
 5 ABUVWZ D AN
 2 5 10 2 DE
-54 10 15000 P
+54 10 150000000 P
 A
 5 -2
 A
@@ -643,7 +643,7 @@ A large black feather hovers in the air.~
 magic~
 3 AUV AO
 50 6 6 56 0
-50 5 2500 P
+50 5 25000000 P
 #25029
 robe tattered~
 A Tattered Robe~
@@ -651,7 +651,7 @@ A pile of seemingly old robes lies on the ground.~
 wool~
 9 GUV AD
 7 6 8 10 0
-51 3 5000 P
+51 3 50000000 P
 E
 robe~
 Yuck! there all smelly!
@@ -671,7 +671,7 @@ A rusty sword lies against the wall.~
 iron~
 5 GUV AN
 1 5 7 1 DE
-51 10 5000 P
+51 10 50000000 P
 E
 sword~
 it looks well used.
@@ -745,7 +745,7 @@ A well used broom rests on the wall~
 wood~
 5 GUV AN
 1 5 9 1 DE
-50 10 500 P
+50 10 5000000 P
 E
 broom~
 Its a broom you idiot!

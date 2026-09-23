@@ -513,7 +513,7 @@ A ten-sided Hero Statue is here.~
 stone~
 13 BO 0
 0 0 0 0 0
-51 5 5000 P
+51 5 50000000 P
 E
 statue hero~
 A plaque is on the Hero Statue showing the names of the heroes that this
@@ -526,7 +526,7 @@ a brittle key is here.~
 vellum~
 18 B AO
 0 0 0 0 0
-51 5 500 P
+51 5 5000000 P
 #29202
 key blood red~
 a blood red key~
@@ -534,7 +534,7 @@ a blood red key lies here.~
 wood~
 18 C AO
 0 0 0 0 0
-51 5 500 P
+51 5 5000000 P
 #29203
 key translucent~
 a (Translucent) key~
@@ -542,7 +542,7 @@ a see through key is here.~
 adamantite~
 18 G AO
 0 0 0 0 0
-51 5 500 P
+51 5 5000000 P
 #29204
 key circle shaped~
 a circle shaped key~
@@ -550,7 +550,7 @@ a circle shaped key is here.~
 stone~
 18 G AO
 0 0 0 0 0
-51 5 500 P
+51 5 5000000 P
 #29205
 key jet black~
 a jet black key~
@@ -558,7 +558,7 @@ a jet black key is on the ground.~
 stone~
 18 G AO
 0 0 0 0 0
-51 5 500 P
+51 5 5000000 P
 #29206
 belt rib bone~
 a rib bone belt~
@@ -566,7 +566,7 @@ a belt of rib bones is here.~
 stone~
 9 G AL
 13 13 14 7 0
-50 3 2000 P
+50 3 20000000 P
 E
 belt rib bone~
 This rib bone belt is made entirely of the pure white bones of an unknown
@@ -585,7 +585,7 @@ a mace made of pure white bone lies here.~
 stone~
 5 ABH AN
 4 18 3 8 0
-51 5 2000 P
+51 5 20000000 P
 E
 mace bone~
 This is a powerful mace made of bone.
@@ -605,7 +605,7 @@ a glittering golden amulet is here.~
 gold~
 9 AIV AC
 13 14 12 5 0
-51 2 3000 P
+51 2 30000000 P
 E
 amulet golden~
 This glittering golden amulet is engraved with a picture of large black
@@ -628,7 +628,7 @@ some bronze arm plates have been left here.~
 bronze~
 9 GV AI
 12 13 14 6 0
-51 2 2000 P
+51 2 20000000 P
 E
 arms bronze~
 These are some strong bronze arm plates.
@@ -646,7 +646,7 @@ a straight jacket is here.~
 cloth~
 9 MV AD
 12 14 14 6 0
-51 5 2000 P
+51 5 20000000 P
 E
 jacket straight~
 This straight jacket was made to be worn by madmen.
@@ -667,7 +667,7 @@ a Darkblade lies here.~
 adamantite~
 5 ABEUV AN
 1 18 3 3 C
-51 5 5000 P
+51 5 50000000 P
 E
 darkblade blade~
 A pure black Darkblade blurs when you wield it.
@@ -685,7 +685,7 @@ some Shadowskin lies here in a pile.~
 cloth~
 9 EIMUV AK
 15 12 13 6 0
-51 4 3000 P
+51 4 30000000 P
 E
 shadowskin skin~
 Shadowskin can be worn about the body by adventurers daring enough do so.
@@ -701,7 +701,7 @@ a necklace made of teeth is here.~
 stone~
 9 GIV AC
 14 12 13 7 0
-51 2 5000 P
+51 2 50000000 P
 E
 necklace teeth~
 This necklace is made entirely of, what look to be vampires teeth.
@@ -721,7 +721,7 @@ a wooden stake is in the ground.~
 wood~
 5 BIUV AN
 3 18 3 0 C
-51 1 4000 P
+51 1 40000000 P
 E
 stake wooden~
 This wooden stake is stained with blood.
@@ -739,7 +739,7 @@ a powerful battle helmet is here.~
 bronze~
 9 IV AE
 14 13 14 7 0
-51 5 5000 P
+51 5 50000000 P
 E
 helmet battle~
 A carefully engineered battle helmet was manufactured in Korzath's Fortress.
@@ -761,7 +761,7 @@ a bracelet of beads has been left behind.~
 silver~
 9 FUV AM
 10 10 10 5 0
-40 2 4000 P
+40 2 40000000 P
 E
 bracelet beaded~
 This beaded bracelet was made by Minotaurs near the Keep of Mahn-Tor.
@@ -787,7 +787,7 @@ a glowing cyclopean eye emits light here.~
 stone~
 1 AV AO
 0 0 999 0 0
-51 2 3000 P
+51 2 30000000 P
 E
 eye cyclopean~
 This is the dismembered eye of a cyclops.
@@ -808,7 +808,7 @@ a bow of ancient wood and string is on the ground.~
 cloth~
 5 IUV AN
 9 18 3 6 0
-51 1 2500 P
+51 1 25000000 P
 E
 bow tattered~
 This bow is tattered and ready to fall apart.
@@ -826,7 +826,7 @@ a Doomsday Blade is here.~
 iron~
 5 HU AN
 1 13 5 6 0
-52 6 5000 P
+52 6 50000000 P
 E
 blade doomsday~
 A Doomsday Blade was created from the decomposing parts of a dread beast; a
@@ -847,7 +847,7 @@ a Doomstaff lies here.~
 adamantite~
 4 GUV AO
 51 2 2 28 0
-52 3 2000 P
+52 3 20000000 P
 E
 staff doomstaff~
 A Necromancer's Doom Staff.
@@ -861,7 +861,7 @@ some draconian dragon scales shine here.~
 steel~
 9 UVWZ E AF
 13 15 14 8 0
-52 5 5000 P
+52 5 50000000 P
 E
 dragonscales scales~
 These dragonscales are from an Undead Dragon.
@@ -886,7 +886,7 @@ a golden black talon is here.~
 stone~
 5 IUV AN
 2 15 4 11 0
-52 4 5000 P
+52 4 50000000 P
 E
 talon golden black~
 The golden black talon looks to be worth a small fortune.
@@ -908,7 +908,7 @@ some attachable metal clamps lie here.~
 steel~
 9 IV AH
 14 10 14 0 0
-52 5 7000 P
+52 5 70000000 P
 E
 clamps~
 Attachable clamps that can be worn on the hands.
@@ -924,7 +924,7 @@ a visor of some sort has been discarded here.~
 steel~
 9 GUVXZ AE AEG
 12 12 15 4 0
-52 2 7000 P
+52 2 70000000 P
 E
 vision virtual~
 Virtual Vision can be worn over the eyes providing enhanced sight.
@@ -938,7 +938,7 @@ some black feathered wings are scattered here.~
 cloth~
 9 GUVXZ AI AHI
 13 15 14 6 0
-52 2 5000 P
+52 2 50000000 P
 E
 wings feathered wings~
 Wings that can be used to fly with!
@@ -954,7 +954,7 @@ a small black hole is in the ground.~
 adamantite~
 15 DFGV AO
 800 13 29269 0 0
-52 3 5000 P
+52 3 50000000 P
 E
 black hole~
 A tiny, swirling black hole can be used to store items.
@@ -974,7 +974,7 @@ some tight fitting corduroys are here.~
 leather~
 9 CIV AF
 14 13 14 0 0
-53 3 5000 P
+53 3 50000000 P
 E
 corduroys~
 Corduroys that make a swishing sound when you walk with them on.
@@ -992,7 +992,7 @@ a staff as bright as the sun is burning on the ground.~
 gold~
 4 GUV AO
 51 10 10 4 0
-53 2 5000 P
+53 2 50000000 P
 E
 staff sun~
 This looks like a staff that may have been thrown 'into the sun.'
@@ -1022,7 +1022,7 @@ a ring is here in the dirt.~
 silver~
 9 AIUV AB
 12 10 10 5 0
-53 2 5000 P
+53 2 50000000 P
 E
 psionic ring~
 A ring intended for psionics.
@@ -1042,7 +1042,7 @@ A beam of the mind is here.~
 adamantite~
 9 EUV AO
 14 12 13 6 0
-53 4 5000 P
+53 4 50000000 P
 E
 mind beam~
 A beam of the mind.  When one wielder of psionics uses their psionic ability
@@ -1060,7 +1060,7 @@ some (Dark) Mist is here.~
 leather~
 9 CUV AK
 16 14 15 2 0
-53 15 1000 P
+53 15 10000000 P
 E
 darkmist mist~
 The mist is very dark.
@@ -1088,7 +1088,7 @@ a Mana staff has been left behind.~
 adamantite~
 4 GUV AO
 51 3 3 518 0
-53 2 5000 P
+53 2 50000000 P
 E
 staff mana~
 A staff of mana.
@@ -1102,7 +1102,7 @@ An opaque potion lies here.~
 glass~
 10 GV AO
 51 3 36 56 0
-51 2 1000 P
+51 2 10000000 P
 E
 potion opaque~
 This potion is totally opaque.  It smells of sweaty socks.  Ewwwwwww...
@@ -1114,7 +1114,7 @@ some battle gloves are here.~
 bronze~
 9 IV AH
 12 14 13 4 0
-53 4 5000 P
+53 4 50000000 P
 E
 gloves battle~
 A carefully engineered pair of battle gloves were manufactured in Korzath's
@@ -1135,7 +1135,7 @@ some battle boots are here.~
 bronze~
 9 IV AG
 10 14 13 5 0
-53 5 5000 P
+53 5 50000000 P
 E
 boots battle~
 A carefully engineered pair of battle boots were manufactured in Korzath's
@@ -1156,7 +1156,7 @@ some battle plate is here.~
 bronze~
 9 IV AD
 15 12 12 6 0
-53 4 5000 P
+53 4 50000000 P
 E
 plate battle~
 Some carefully engineered battle plate was manufactured in Korzath's
@@ -1177,7 +1177,7 @@ a battle belt is here.~
 bronze~
 9 IV AL
 14 14 13 2 0
-53 4 5000 P
+53 4 50000000 P
 E
 belt battle~
 A carefully engineered battle belt was manufactured in Korzath's Fortress.
@@ -1197,7 +1197,7 @@ an suit of imperial plate is on the ground.~
 brass~
 9 GIMUV AD
 11 11 15 4 0
-54 5 8000 P
+54 5 80000000 P
 E
 plate imperial~
 This is a powerful suit of Imperial Plate normally worn by Korzath's Elite
@@ -1218,7 +1218,7 @@ a force shield shimmers here.~
 adamantite~
 9 ABGIUV AJ
 15 15 15 10 0
-54 10 9000 P
+54 10 90000000 P
 E
 shield force~
 A magically enhanced Force Shield.
@@ -1238,7 +1238,7 @@ a combat belt is on the floor.~
 cloth~
 9 IV AL
 15 15 15 7 0
-54 4 7000 P
+54 4 70000000 P
 E
 belt combat~
 A combat belt that only a Hero could wear.
@@ -1256,7 +1256,7 @@ some titanic arm plates gleam here.~
 steel~
 9 IMV AI
 14 16 14 8 0
-54 7 7000 P
+54 7 70000000 P
 E
 arm plates titanic~
 Blue titanic arm plates.
@@ -1278,7 +1278,7 @@ an evil half-man's axe draws darkness to the room.~
 iron~
 5 BIMUV AN
 5 17 4 21 DE
-54 5 7000 P
+54 5 70000000 P
 E
 axe halfman~
 A half-axe fashioned by a creature of fading.
@@ -1298,7 +1298,7 @@ an evil half-man's blade draws death to the room.~
 iron~
 5 AIMUV AN
 1 17 4 1 DE
-54 5 7000 P
+54 5 70000000 P
 E
 blade halfman~
 A half-man blade was made by a creature of Shadows.
@@ -1322,7 +1322,7 @@ an evil half-man's cloak draws violence to the room.~
 leather~
 9 IUV AK
 15 15 14 9 0
-54 5 7000 P
+54 5 70000000 P
 E
 cloak halfman~
 A half-mans cloak that has consumed the souls of the beasts slain by it's
@@ -1349,7 +1349,7 @@ a demonic Lifetaker mace is here.~
 adamantite~
 5 ABHIUV AN
 4 18 4 18 CDE
-55 5 10000 P
+55 5 100000000 P
 E
 lifetaker~
 A Guardian's Lifetaker mace.
@@ -1361,7 +1361,7 @@ bloody black claws give off a sickly black aura.~
 adamantite~
 5 FGIHUV AN
 2 18 4 26 CDE
-55 5 10000 P
+55 5 100000000 P
 E
 claws bloody black~
 The claws of a Shadow Guardian.
@@ -1373,7 +1373,7 @@ A mass pill lies here.~
 pill~
 26 V A
 51 516 508 519 0
-51 1 1000 P
+51 1 10000000 P
 #29249
 seal cause~
 Seal of the Cause~
@@ -1381,7 +1381,7 @@ the Seal of The Cause has been left here.~
 stone~
 9 FGV AO
 13 15 14 8 0
-55 5 10000 P
+55 5 100000000 P
 E
 seal cause~
 The Seal of the Cause is engraved with the Korzath Insignia overlapping a
@@ -1395,7 +1395,7 @@ a darkness shattering Sword of Starlight overpowers the room.~
 adamantite~
 5 ABGIMUV AN
 1 18 4 3 ABDE
-55 5 10000 P
+55 5 100000000 P
 E
 sword starlight~
 This glimmering Sword of Starlight is the product of shadow magic and psionic
@@ -1412,7 +1412,7 @@ A key of the Cause lies here.~
 adamantite~
 18 AUV AO
 0 0 0 0 0
-55 5 1000 P
+55 5 10000000 P
 #29252
 bracelet belief~
 bracelet of belief~
@@ -1420,7 +1420,7 @@ A special bracelet glows here.~
 adamantite~
 9 AIMV AM
 14 13 15 7 0
-55 3 9000 P
+55 3 90000000 P
 E
 bracelet belief~
 The bracelet of belief is to be worn by people who are utterly dedicated to
@@ -1433,7 +1433,7 @@ a grey chest sits here.~
 adamantite~
 15 0 0
 999 29 29251 0 0
-51 9000 5000 P
+51 9000 50000000 P
 #29254
 chest shining~
 shining chest~
@@ -1441,7 +1441,7 @@ A shining chest sits here.~
 adamantite~
 15 0 0
 999 29 29251 0 0
-51 9000 5000 P
+51 9000 50000000 P
 #29255
 chest wooden~
 wooden chest~
@@ -1449,7 +1449,7 @@ A wooden chest sits here.~
 adamantite~
 15 0 0
 999 29 29251 0 0
-51 9000 5000 P
+51 9000 50000000 P
 #29256
 one~
 one~
@@ -1457,7 +1457,7 @@ Lever 1.~
 steel~
 31 0 0
 3 29217 0 1 0
-51 900 5000 P
+51 900 50000000 P
 #29257
 two~
 two~
@@ -1465,7 +1465,7 @@ Lever 2.~
 steel~
 31 0 0
 3 29234 2 1 0
-51 900 5000 P
+51 900 50000000 P
 #29258
 three~
 three~
@@ -1473,7 +1473,7 @@ Lever 3.~
 steel~
 31 0 0
 3 29217 3 1 0
-51 900 5000 P
+51 900 50000000 P
 #29259
 four~
 four~
@@ -1481,7 +1481,7 @@ Lever 4.~
 steel~
 31 0 0
 3 29217 4 1 0
-51 900 5000 P
+51 900 50000000 P
 #29260
 five~
 five~
@@ -1489,7 +1489,7 @@ Lever 5.~
 steel~
 31 0 0
 3 29233 5 1 0
-51 900 5000 P
+51 900 50000000 P
 #29261
 six~
 six~
@@ -1497,7 +1497,7 @@ Lever 6.~
 steel~
 31 0 0
 3 29234 5 1 0
-51 900 5000 P
+51 900 50000000 P
 #29262
 seven~
 seven~
@@ -1505,7 +1505,7 @@ Lever 7.~
 steel~
 31 0 0
 3 29217 1 1 0
-51 900 5000 P
+51 900 50000000 P
 #29263
 eight~
 eight~
@@ -1513,7 +1513,7 @@ Lever 8.~
 steel~
 31 0 0
 3 29217 5 1 0
-51 900 5000 P
+51 900 50000000 P
 #29264
 nine~
 nine~
@@ -1521,7 +1521,7 @@ Lever 9.~
 steel~
 31 0 0
 3 29234 4 1 0
-51 900 5000 P
+51 900 50000000 P
 #29265
 ten~
 ten~
@@ -1529,7 +1529,7 @@ Lever 10.~
 steel~
 31 0 0
 3 29233 0 1 0
-51 900 5000 P
+51 900 50000000 P
 #29266
 statue knight~
 Knight Statue~
@@ -1537,7 +1537,7 @@ A statue of a golden knight stands here with it's arms upraised.~
 gold~
 13 0 0
 0 0 0 0 0
-51 900 5000 P
+51 900 50000000 P
 E
 statue knight~
 The statue is a depiction of a Dark Knight from Tandelador.
@@ -1549,7 +1549,7 @@ Right arm.~
 gold~
 31 0 0
 3 29302 1 1 0
-51 900 5000 P
+51 900 50000000 P
 #29268
 arm left~
 left arm~
@@ -1557,7 +1557,7 @@ Left arm.~
 gold~
 31 0 0
 3 29302 3 1 0
-51 900 5000 P
+51 900 50000000 P
 #29269
 star key~
 a star key~
@@ -1565,7 +1565,7 @@ A key in the shape of a five sided star is here.~
 adamantite~
 13 A AO
 0 0 0 0 0
-51 2 1000 P
+51 2 10000000 P
 E
 star key~
 A five sided star key.
@@ -1577,7 +1577,7 @@ red lever.~
 stone~
 31 0 0
 3 29269 3 1 0
-51 5 5000 P
+51 5 50000000 P
 #29271
 lever red~
 a red lever~
@@ -1585,7 +1585,7 @@ red lever.~
 stone~
 31 0 0
 3 29269 3 1 0
-51 5 5000 P
+51 5 50000000 P
 #29272
 lever red~
 a red lever~
@@ -1593,7 +1593,7 @@ red lever.~
 stone~
 31 0 0
 3 29269 3 1 0
-51 5 5000 P
+51 5 50000000 P
 #29273
 lever red~
 a red lever~
@@ -1601,7 +1601,7 @@ red lever.~
 stone~
 31 0 0
 3 29270 1 1 0
-51 5 5000 P
+51 5 50000000 P
 #29274
 pills poison~
 some poison pills~
@@ -1609,7 +1609,7 @@ pills of poison lie here.~
 pill~
 26 GV AO
 51 33 43 39 0
-51 1 1000 P
+51 1 10000000 P
 #29275
 seeds sunflower~
 some sunflower seeds~
@@ -1617,7 +1617,7 @@ some sunflower seeds are here.~
 pill~
 26 GV AO
 51 28 15 61 0
-51 1 1000 P
+51 1 10000000 P
 #29276
 carrot juice~
 some carrot juice~
@@ -1625,7 +1625,7 @@ Some sweet carrot juice lies here.~
 glass~
 10 GV AO
 51 14 519 38 0
-51 1 1000 P
+51 1 10000000 P
 #29277
 pills plague~
 a plague pill~
@@ -1633,7 +1633,7 @@ a plague pill is here.~
 pill~
 26 GV AO
 51 503 501 548 0
-51 1 1000 P
+51 1 10000000 P
 #29278
 potion protection~
 a potion of protection~
@@ -1641,7 +1641,7 @@ A potion of protection is here.~
 glass~
 10 GV AO
 51 1 67 66 0
-51 1 1000 P
+51 1 10000000 P
 #29279
 pill pain~
 a pill of pain~
@@ -1649,7 +1649,7 @@ A small painful pill is here.~
 pill~
 26 GV AO
 51 27 3 504 0
-51 1 1000 P
+51 1 10000000 P
 #29280
 bread cake~
 some bread cake~
@@ -1657,7 +1657,7 @@ Some bread cake is here.~
 pill~
 26 GV AO
 51 28 401 28 0
-51 1 1000 P
+51 1 10000000 P
 #29281
 body~
 a dead body~
@@ -1665,7 +1665,7 @@ a dead body of an Elite Royal Guard decays here.~
 stone~
 15 P 0
 999 0 0 0 0
-51 100 100 P
+51 100 1000000 P
 E
 body dead~
 This is just one of many decaying corpses scattered about in the bloody
@@ -1679,7 +1679,7 @@ a sparkling potions lies here.~
 glass~
 10 0 AO
 52 34 0 0 0
-51 1 10 P
+51 1 100000 P
 #29283
 ring black gold~
 a black and gold ring~
@@ -1687,7 +1687,7 @@ a black and gold ring glimmers here.~
 gold~
 9 GV AB
 14 14 14 9 0
-55 1 9000 P
+55 1 90000000 P
 E
 ring black gold~
 A black and gold ring.  The word "Purdue" is engraved on the inside of the band.
@@ -1699,7 +1699,7 @@ a gleaming star cube is here.~
 adamantite~
 1 AUV AO
 0 0 999 0 0
-55 3 9000 P
+55 3 90000000 P
 E
 cube star~
 This is a gleaming star cube.
@@ -1711,7 +1711,7 @@ a chaos cloak hums here.~
 adamantite~
 9 BV AC
 14 15 16 10 0
-55 3 9000 P
+55 3 90000000 P
 E
 cloak chaos~
 This cloak is to help a person create utter Chaos.
@@ -1723,7 +1723,7 @@ a bottle of Rico's Long Island Iced Tea lies here.~
 glass~
 17 0 AO
 20 20 14 0 0
-51 1 70 P
+51 1 700000 P
 E
 ricochets long island iced tea~
 When Ricochet wants to unwind he kicks back with one of these.
@@ -1735,7 +1735,7 @@ a glass of Duncan's Scotish Ale is here.~
 glass~
 17 0 AO
 20 20 3 0 0
-51 1 70 P
+51 1 700000 P
 E
 duncans scotish ale~
 This is Duncan's Scotish Ale.  Aye! tis the best!
@@ -1747,7 +1747,7 @@ Thalia's Thessalonkian Thunderbolt is here.~
 glass~
 17 0 AO
 20 20 9 0 0
-51 1 70 P
+51 1 700000 P
 E
 thalia thessalonkian thunderbolt~
 This is Thalia's favorite beverage.
@@ -1759,7 +1759,7 @@ Haze's Boilermaker Special boils here.~
 glass~
 17 0 AO
 20 20 1 0 0
-51 1 70 P
+51 1 700000 P
 E
 ~
 Haze doesn't go to Purdue does he?  Hmmmmm...
@@ -1771,7 +1771,7 @@ a Trinidad Boob Bomber has been left here.~
 glass~
 17 0 AO
 20 20 3 0 0
-51 1 70 P
+51 1 700000 P
 E
 ~
 Trinidad is a boob and this drink proves it! :)
@@ -1783,7 +1783,7 @@ a glass of Tifarah's Cookie Crusher is here.~
 glass~
 17 0 AO
 20 20 4 0 0
-51 1 70 P
+51 1 700000 P
 E
 ~
 Tifarah makes brownies, cookies, and now a fantastic beverage!
@@ -1795,7 +1795,7 @@ Tali's Trash PactorSpecial~
 glass~
 17 0 AO
 20 20 8 0 0
-51 1 70 P
+51 1 700000 P
 E
 ~
 Tali's Trash PactorSpecial will have you trashed in no time!
@@ -1807,7 +1807,7 @@ a Soulcrusher Sling is here.~
 glass~
 17 0 AO
 20 20 7 0 0
-51 1 70 P
+51 1 700000 P
 E
 ~
 A Soulcrusher Sling is not a drink for the weak!  Beware!
@@ -1819,7 +1819,7 @@ a Gravestone Hooter is here.~
 glass~
 17 0 AO
 20 20 5 0 0
-51 1 70 P
+51 1 700000 P
 E
 ~
 A Gravestone Hooter, the drink of champions! (and boobs like Trini)
@@ -1831,7 +1831,7 @@ some of Eclipse's Cactus Beer is here.~
 glass~
 17 0 AO
 20 20 1 0 0
-51 1 70 P
+51 1 700000 P
 E
 ~
 Eclipse's Cactus Beer is rumored to come from a tap placed in a giant cactus.
@@ -1843,7 +1843,7 @@ a dying elite royal guard wishes to speak his last words to you.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 elite royal guard man~
 The man raises his head to speak to you:
@@ -1872,7 +1872,7 @@ a blackboard is tacked up on the wall.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 blackboard~
 You look at the blackboard:
@@ -1895,7 +1895,7 @@ a book on military tactics is on a crate here.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 military warfare strategy tactics~
 You begin to read the book:
@@ -1923,7 +1923,7 @@ a leather bound book on castle management is here.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 castle management~
 You look into the book:
@@ -1954,7 +1954,7 @@ a young woman is here meditating.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 young woman~
 The woman senses your approach and raises her head.
@@ -1983,7 +1983,7 @@ a pedestal stands here with an open diary on top.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 diary pedestal book~
 You open the diary:
@@ -2005,7 +2005,7 @@ An aura of black magic radiates here.~
 adamantite~
 9 AG AK
 1 1 1 1 0
-55 500 1 P
+55 500 10000 P
 A
 14 -300
 #29303
@@ -2015,7 +2015,7 @@ A brand new (flaming) sword is laying up against the wall.~
 adamantite~
 5 ABCGHIMVZ GH AN
 1 5000 4 1 ACDE
-68 5 1000000 P
+68 5 10000000000 P
 A
 1 1000
 A

@@ -260,7 +260,7 @@ A small mining pick made of what appears to be silver lies on the ground.~
 silver~
 5 J AN
 4 1 9 11 0
-4 10 150 P
+4 10 1500000 P
 #5001
 banded mail~
 A glowing suit of banded mail~
@@ -268,7 +268,7 @@ A glowing suit of banded mail lies on the ground.~
 steel~
 9 AG AD
 7 0 0 0 0
-30 15 300 P
+30 15 3000000 P
 A
 2 2
 A
@@ -280,7 +280,7 @@ A mighty halberd lies against the wall.~
 steel~
 5 GI AN
 8 3 7 2 0
-30 16 150 P
+30 16 1500000 P
 A
 18 2
 A
@@ -292,7 +292,7 @@ A mushroom shaped amulet lies on the ground.~
 steel~
 9 G AC
 0 0 0 0 0
-6 2 250 P
+6 2 2500000 P
 A
 5 1
 #5005
@@ -302,7 +302,7 @@ A large leg bone rests on the ground.~
 bone~
 5 0 AN
 4 1 4 7 0
-5 5 250 P
+5 5 2500000 P
 #5006
 cactus~
 a small cactus cup~
@@ -310,7 +310,7 @@ A small cactus cup lies on the ground.~
 plant~
 17 0 A
 5 5 0 0 0
-5 6 25 P
+5 6 250000 P
 #5007
 basket~
 a small wicker basket~
@@ -318,7 +318,7 @@ A small wicker basket sits on the ground.~
 cloth~
 15 0 A
 100 5 0 0 0
-1 50 150 P
+1 50 1500000 P
 #5008
 basket~
 a small wicker basket~
@@ -326,7 +326,7 @@ A small wicker basket sits on the ground.~
 cloth~
 15 0 A
 100 5 0 0 0
-1 50 150 P
+1 50 1500000 P
 #5009
 basket~
 a small wicker basket~
@@ -334,7 +334,7 @@ A small wicker basket sits on the ground.~
 cloth~
 15 0 A
 100 5 0 0 0
-1 50 150 P
+1 50 1500000 P
 #5010
 basket~
 a small wicker basket~
@@ -342,7 +342,7 @@ A small wicker basket sits on the ground.~
 cloth~
 15 0 A
 100 5 0 0 0
-1 50 150 P
+1 50 1500000 P
 #5011
 rope~
 a coil of rope~
@@ -350,7 +350,7 @@ A long coil of rope lies on the ground.~
 rope~
 12 0 A
 0 0 0 0 0
-1 12 250 P
+1 12 2500000 P
 #5012
 stakes~
 a bunch of stakes~
@@ -358,7 +358,7 @@ A small bundle of stakes lies here.~
 wood~
 12 0 A
 0 0 0 0 0
-1 6 250 P
+1 6 2500000 P
 #5013
 map~
 an old, tattered map~
@@ -366,7 +366,7 @@ An old, tattered, and much faded map lies here.~
 paper~
 12 0 A
 0 0 0 0 0
-1 1 200 P
+1 1 2000000 P
 #5014
 turban~
 a thick padded turban~
@@ -374,7 +374,7 @@ A thick padded turban lies here.~
 cloth~
 9 GH AE
 3 2 3 1 0
-14 15 350 P
+14 15 3500000 P
 A
 17 1
 #5015
@@ -392,7 +392,7 @@ A long, curved saber stands upright in the ground.~
 steel~
 5 K AN
 1 2 8 3 0
-14 7 350 P
+14 7 3500000 P
 A
 18 2
 #5017
@@ -402,7 +402,7 @@ A curved scimitar lies at your feet.~
 steel~
 5 K AN
 1 2 7 3 0
-12 6 350 P
+12 6 3500000 P
 A
 18 1
 #5018
@@ -412,7 +412,7 @@ A long, pointed cutlass lies here.~
 steel~
 5 K AN
 1 2 7 3 0
-10 5 275 P
+10 5 2750000 P
 #5019
 potion pink~
 a pink potion~
@@ -420,7 +420,7 @@ A pink potion stands here.~
 glass~
 10 0 A
 25 28 35 0 0
-19 6 300 P
+19 6 3000000 P
 #5020
 wand platinum~
 a platinum wand~
@@ -428,7 +428,7 @@ A platinum wand lies here.~
 platinum~
 3 B AO
 30 10 10 32 0
-19 8 450 P
+19 8 4500000 P
 #5021
 bow energy strange~
 a strange energy bow~
@@ -436,7 +436,7 @@ A strange energy bow lies here.~
 energy~
 5 ABGI ANP
 9 4 5 6 F
-19 20 500 P
+19 20 5000000 P
 #5022
 scroll encrypted~
 An encrypted scroll~
@@ -444,7 +444,7 @@ An encrypted scroll lies at your feet.~
 paper~
 2 0 A
 22 14 35 43 0
-28 7 300 P
+28 7 3000000 P
 #5023
 chest~
 an iron bound chest~
@@ -460,7 +460,7 @@ A shiny golden key lies here.~
 gold~
 18 0 A
 0 0 0 0 0
-27 1 15 P
+27 1 150000 P
 #5025
 bracelet copper~
 a copper bracelet~
@@ -468,7 +468,7 @@ A tarnished copper bracelet lies at your feet.~
 copper~
 9 GH AM
 5 0 0 0 0
-28 10 500 P
+28 10 5000000 P
 A
 13 10
 A
@@ -480,7 +480,7 @@ A large ruby lies on the ground collecting dust.~
 ruby~
 8 G A
 20 0 0 0 0
-28 9 1000 P
+28 9 10000000 P
 #5027
 gem diamond~
 A glittering diamond~
@@ -488,7 +488,7 @@ A glittering diamond lies at your feet.~
 diamond~
 8 G A
 21 0 0 0 0
-28 10 2500 P
+28 10 25000000 P
 #5028
 gem sapphire~
 A brilliant sapphire~
@@ -496,7 +496,7 @@ A brilliant sapphire lies here twinkling.~
 sapphire~
 8 G A
 22 0 0 0 0
-27 7 1500 P
+27 7 15000000 P
 #5029
 gem lapis~
 a deep blue lapis lazuli~
@@ -504,7 +504,7 @@ A deep blue lapis lazuli gem lies here.~
 lapis~
 8 G A
 24 0 0 0 0
-27 11 4000 P
+27 11 40000000 P
 #5030
 jewel tiger~
 the tiger jewel~
@@ -512,7 +512,7 @@ The Tiger Jewel lies here blazing.~
 tiger~
 8 I AO
 0 0 0 0 0
-27 23 5000 P
+27 23 50000000 P
 A
 2 1
 #5031
@@ -522,7 +522,7 @@ The red-eyed jewel glares at you greedily.~
 rock~
 8 0 AO
 0 0 0 0 0
-28 30 5000 P
+28 30 50000000 P
 A
 3 2
 #5032
@@ -532,7 +532,7 @@ A fiery green emerald sits here.~
 emerald~
 8 G A
 23 0 0 0 0
-28 8 3400 P
+28 8 34000000 P
 
 #0
 

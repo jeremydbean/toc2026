@@ -180,6 +180,22 @@ static int lore_estimate( int value )
     return number_range( UMIN(half, twice), UMAX(half, twice) );
 }
 
+
+/* The same guess, for a price -- which in copper does not fit an int. */
+static long lore_estimate_price( long value )
+{
+    long half = value / 2;
+    long twice = value * 2;
+    long low = UMIN(half, twice);
+    long high = UMAX(half, twice);
+
+    if ( high <= low )
+        return low;
+
+    return low + (long)( number_range( 0, 1000 ) * (double)( high - low )
+                         / 1000.0 );
+}
+
 /* Temp version of Lore. Needs work. */
 void do_lore( CHAR_DATA *ch, char *argument )
 {
@@ -244,8 +260,15 @@ void do_lore( CHAR_DATA *ch, char *argument )
         lore_estimate(obj->weight) );
     send_to_char( buf, ch );
 
-    snprintf( buf, sizeof(buf), "Looking it over closely, you estimate it's worth about %d gold.\n\r",
-        lore_estimate(obj->cost) );
+    {
+        char price_buf[MAX_INPUT_LENGTH];
+
+        format_price( lore_estimate_price(obj->cost), price_buf,
+                      sizeof(price_buf) );
+        snprintf( buf, sizeof(buf),
+                  "Looking it over closely, you estimate it's worth "
+                  "about %s.\n\r", price_buf );
+    }
     send_to_char( buf, ch );
 
 

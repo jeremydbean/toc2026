@@ -562,7 +562,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Name %s~\n",	ch->name		);
     fprintf( fp, "Id   %d\n",	ch->pcdata->id		);
     fprintf( fp, "LogO %ld\n",  current_time            );
-    fprintf( fp, "Vers %d\n",   3			);
+    fprintf( fp, "Vers %d\n",   4			);
     if (ch->short_descr[0] != '\0')
 	fprintf( fp, "ShD  %s~\n",	ch->short_descr	);
     if( ch->long_descr[0] != '\0')
@@ -2237,7 +2237,18 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	    break;
 
 	case 'C':
-	    KEY( "Cost",	obj->cost,		fread_long( fp ) );
+	    if ( !str_cmp( word, "Cost" ) )
+	    {
+		obj->cost = fread_long( fp );
+		/* Files written before version 4 hold gold. Every price the
+		   game handles counts copper now, and without this every item
+		   anybody is carrying would come back worth a ten thousandth
+		   of what they put it down with. */
+		if ( ch->version < 4 )
+		    obj->cost *= COPPER_PER_GOLD;
+		fMatch = true;
+		break;
+	    }
 	    KEY( "Cond",	obj->condition,		(sh_int)(fread_number( fp )) );
 	    break;
 

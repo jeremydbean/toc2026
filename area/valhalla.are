@@ -502,7 +502,7 @@ A black forge is standing in the corner.
 mithril~
 3 A AO
 50 2 2 70 0
-51 15 30000 P
+51 15 300000000 P
 #9906
 staff wand~
 The staff of dreams~
@@ -511,7 +511,7 @@ A wooden staff with a glittering gem in it.
 wooden~
 3 B AO
 50 3 3 28 0
-51 5 45000 P
+51 5 450000000 P
 #9907
 sword blade~
 Calris~
@@ -520,7 +520,7 @@ A black flaming sword is laying here.
 eog~
 5 AJR AN
 1 8 8 3 0
-52 12 5000 P
+52 12 50000000 P
 A
 1 2
 A
@@ -535,7 +535,7 @@ A blueish mail is tossed carelessly in the corner
 steel~
 9 FL AD
 11 11 11 11 0
-51 20 5000 P
+51 20 50000000 P
 A
 2 3
 A
@@ -576,7 +576,7 @@ You see a small weathered book laying on the ground.
 paper~
 13 ITV AO
 0 0 0 0 0
-1 1 25 W
+1 1 250000 W
 A
 14 100
 E
@@ -753,7 +753,7 @@ You see a small weathered book laying on the ground.
 paper~
 13 ITV AO
 0 0 0 0 0
-1 1 25 W
+1 1 250000 W
 A
 14 100
 E
@@ -791,7 +791,7 @@ You see a small weathered book laying on the ground.
 paper~
 13 ITV AO
 0 0 0 0 0
-1 1 25 W
+1 1 250000 W
 A
 14 100
 E
@@ -864,7 +864,7 @@ You see a small weathered book laying on the ground.
 paper~
 13 ITV AO
 0 0 0 0 0
-1 1 25 W
+1 1 250000 W
 A
 14 100
 E
@@ -907,7 +907,7 @@ A large cooked thanksgiving turkey sits here on a large platter.
 food~
 26 A AO
 28 36 38 0 0
-40 5 300 P
+40 5 3000000 P
 #9916
 shirt white~
 a white shirt~
@@ -915,7 +915,7 @@ Made of white silk, this shirt looks quite expensive.~
 ~
 9 G AD
 17 17 17 8 0
-60 8 9500 P
+60 8 95000000 P
 E
 shirt white~
 On the front, there is the ensignia of a crossed-sword and dagger on a purple
@@ -933,7 +933,7 @@ A pair of black velvet pants lie on the floor here.~
 ~
 9 EI AF
 15 15 15 5 0
-52 13 3000 P
+52 13 30000000 P
 A
 14 50
 A
@@ -947,7 +947,7 @@ Some boots made from the finest leather, stand upright waiting to be used.~
 ~
 9 AC AG
 15 14 15 2 0
-52 12 4300 P
+52 12 43000000 P
 E
 boots leather~
 An ensignia of a crossed-sword and dagger on a purple blackground is attached
@@ -1008,7 +1008,7 @@ There is a single ray of light connected to a sword hilt here.~
 steel~
 5 ABMU AN
 1 16 4 3 D
-52 10 1000 P
+52 10 10000000 P
 A
 5 2
 A
@@ -1022,7 +1022,7 @@ A weapon from the heavens lies here.~
 silver~
 5 AFU AN
 2 5 15 2 D
-52 10 1000 P
+52 10 10000000 P
 A
 1 1
 A
@@ -1040,7 +1040,7 @@ The weapon that shall destroy the world is here.~
 steel~
 5 ABMUV AN
 4 21 3 18 21
-51 30 5000 P
+51 30 50000000 P
 A
 2 2
 A
@@ -1101,7 +1101,7 @@ A tarot card with a picture of a massive black tower on it lies here.~
 adamantite~
 18 BCPUV AO
 0 0 0 0 0
-62 1 10000 P
+62 1 100000000 P
 #9931
 A Huge Chest~
 A Huge Chest~
@@ -1109,7 +1109,7 @@ A huge chest full of treasures sits here.~
 adamantite~
 15 FO A
 100000 13 9930 0 0
-62 10000 10000 P
+62 10000 100000000 P
 #9932
 A table~
 table~
@@ -1117,7 +1117,7 @@ A table with a mirror top sits in the center of the room.~
 adamantite~
 12 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 table~
     You peer into the mirrored table and see a strange reflection
@@ -1133,7 +1133,7 @@ A Fortune in Gold is here.~
 gold~
 8 V A
 500 0 0 0 0
-1 1 500 P
+1 1 5000000 P
 #9934
 Handlink~
 A Multi-colored Handlink~
@@ -1141,7 +1141,7 @@ A multi-colored communication handlink lies here blinking.~
 adamantite~
 18 AUV AO
 0 0 0 0 0
-55 1 1000 P
+55 1 10000000 P
 E
 handlink~
     The handlink is used to communicate to people, places, and
@@ -1159,7 +1159,7 @@ A generic weapon from Valhalla hums here.~
 adamantite~
 5 BFMV AN
 0 10 10 28 ACDE
-63 1 1000 P
+63 1 10000000 P
 E
 generic valhalla weapon~
 Quite powerful for a generic weapon.
@@ -1179,7 +1179,7 @@ Some freshly baked brownies lie here.. umm umm good!~
 food~
 26 UV AE
 30 3 0 0 0
-1 1 1 P
+1 1 10000 P
 #9938
 box~
 a white box~
@@ -1195,7 +1195,7 @@ A beautiful red rose is growing out of the ground.~
 wood~
 8 AGI A
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #9940
 altar~
 an altar~
@@ -1369,7 +1369,7 @@ A wedding band glimmers radiantly in the sunlight.~
 gold~
 9 AHIMO AB
 30 30 30 30 0
-70 1 50000 P
+70 1 500000000 P
 E
 ring band gravestone~
 Expertly crafted, this wedding band is an elegantly simple
@@ -1420,7 +1420,7 @@ a cord the color of the sky lies coiled upon the ground~
 silk~
 9 0 AO
 1 1 1 1 0
-1 0 1 P
+1 0 10000 P
 E
 cord~
 This is the binding cord, used in a handfasting ceremony.  It represents
@@ -1437,7 +1437,7 @@ A small red candle flickers and dances with light~
 wax~
 9 U 0
 1 1 1 1 0
-70 0 1 P
+70 0 10000 P
 E
 candle~
 This small red candle represents the gods of Sembia, and their blessings on
@@ -1450,7 +1450,7 @@ A small white candle flickers and dances with warmth and beauty~
 wax~
 9 U 0
 1 1 1 1 0
-70 0 1 P
+70 0 10000 P
 E
 candle~
 This small white candle represents the goddesses of Sembia, and their
@@ -1465,7 +1465,7 @@ in its splendor~
 silk~
 9 GIOUV AK
 20 20 20 20 0
-51 0 1000 P
+51 0 10000000 P
 E
 gown~
 The bodice of Azlyn's wedding gown is white satin and strapless,
@@ -1489,7 +1489,7 @@ gods, themselves~
 satin~
 9 GIOUV AG
 20 20 20 20 0
-51 0 1000 P
+51 0 10000000 P
 E
 slippers~
 Simple white satin, Azlyn's slippers peek out from under the
@@ -1502,7 +1502,7 @@ These flowers are intertwined in the shape of a perfect garland.~
 flower~
 9 GIOUV AE
 20 20 20 20 0
-51 0 1000 P
+51 0 10000000 P
 E
 garland~
 A fragile circlet rests on Azlyn's head. Made of tiny white
@@ -1516,7 +1516,7 @@ A gosselin veil awaits its bride~
 silk~
 9 GIOUV AD
 20 20 20 20 0
-51 0 1000 P
+51 0 10000000 P
 E
 veil~
 Azlyn's veil is so thin it seems more like white mist
@@ -1535,7 +1535,7 @@ A beautiful white rose is beginning to bloom in a red vase~
 flower~
 9 AGHIOUV AO
 20 20 20 20 0
-51 0 1000 P
+51 0 10000000 P
 E
 rose~
 Droplets of moisture still cling to the petals of this
@@ -1549,7 +1549,7 @@ A small silver bracelet has the inscription A+G in it.~
 silver~
 9 GIOUV AM
 20 20 20 20 0
-51 0 1000 P
+51 0 10000000 P
 E
 bracelet~
 This slender, bangle bracelet has been intricately woven
@@ -1563,7 +1563,7 @@ A silver necklace hangs precariously from an ashen branch~
 silver~
 9 GIOUV AC
 20 20 20 20 0
-51 0 1000 P
+51 0 10000000 P
 E
 necklace~
 The match for Azlyn's bracelets, this necklace is also made
@@ -1577,7 +1577,7 @@ A hovering globe provides light for this room~
 glass~
 1 AGIOUV AO
 0 0 9999 0 0
-51 0 1000 P
+51 0 10000000 P
 E
 ball globe~
 A small globe hovers near Azlyn's shoulders. It emits a soft
@@ -1591,7 +1591,7 @@ here waiting for Azlyn to logon :)~
 metal~
 8 0 AO
 0 0 0 0 0
-60 0 1 P
+60 0 10000 P
 E
 balloon ball~
 A large heart shaped balloon hovers gently above a dozen beautiful red

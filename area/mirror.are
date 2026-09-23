@@ -531,7 +531,7 @@ A lamia collar is on the ground.~
 leather~
 9 0 AC
 0 0 0 0 0
--1 5 25 P
+-1 5 250000 P
 #5301
 breast plate iron~
 a beautiful iron breast plate~
@@ -539,7 +539,7 @@ A beautiful iron breast plate lies here.~
 iron~
 9 0 AD
 0 0 0 0 0
--1 125 2500 P
+-1 125 25000000 P
 A
 18 1
 #5302
@@ -549,7 +549,7 @@ A green serpentine staff has been left here.~
 wood~
 4 FG AO
 20 2 2 23 0
-20 12 750 P
+20 12 7500000 P
 #5304
 scroll magic~
 a scroll of enchantment~
@@ -557,7 +557,7 @@ A scroll of magical enchantment has been left here.~
 vellum~
 2 G A
 30 24 0 0 0
-30 15 1000 P
+30 15 10000000 P
 #5305
 scroll bound~
 a bound scroll~
@@ -565,7 +565,7 @@ A bound scroll of detection lies at your feet.~
 paper~
 2 G A
 30 18 19 20 0
-30 15 1000 P
+30 15 10000000 P
 #5306
 fountain~
 a large beautiful fountain~
@@ -614,7 +614,7 @@ A mandolin lies against the wall.~
 wood~
 4 G AO
 18 5 5 15 0
-18 20 45 P
+18 20 450000 P
 #5310
 harp golden~
 a golden harp~
@@ -622,7 +622,7 @@ A beautiful golden harp is waiting to be played.~
 gold~
 4 G AO
 30 1 1 6 0
-30 100 110 P
+30 100 1100000 P
 #5311
 flute silver~
 a silver flute~
@@ -630,7 +630,7 @@ A brilliant silver flute glimmers from its holster.~
 silver~
 4 AG AO
 30 1 1 7 0
-30 6 75 P
+30 6 750000 P
 #5312
 potion green~
 a green potion~
@@ -638,7 +638,7 @@ You see a green potion on the floor.~
 glass~
 10 0 A
 20 203 0 0 0
-20 5 750 P
+20 5 7500000 P
 #5313
 herbs~
 some bluish herbs~
@@ -646,7 +646,7 @@ Some bluish herbs are scattered here.~
 pill~
 26 0 A
 17 3 0 0 0
-6 1 100 P
+6 1 1000000 P
 #5314
 herbs~
 some purplish herbs~
@@ -654,7 +654,7 @@ Some purplish herbs are scattered here.~
 pill~
 26 0 A
 15 82 0 0 0
-8 1 100 P
+8 1 1000000 P
 #5315
 herbs~
 some grayish herbs~
@@ -662,7 +662,7 @@ Some grayish herbs are scattered here.~
 pill~
 26 0 A
 5 39 33 0 0
-8 1 100 P
+8 1 1000000 P
 #5316
 herbs~
 some orangish herbs~
@@ -670,7 +670,7 @@ Some orangish herbs are scattered here.~
 pill~
 26 0 A
 5 16 0 0 0
-8 1 100 P
+8 1 1000000 P
 #5317
 imperial sword~
 an imperial sword~
@@ -678,7 +678,7 @@ You see an imperial sword here.~
 steel~
 5 G AN
 1 1 5 3 0
--1 5 500 P
+-1 5 5000000 P
 E
 sword~
 You see a sword of great craftsmanship.  Imprinted on the side is:
@@ -695,7 +695,7 @@ You see an imperial mace here.~
 iron~
 5 G AN
 4 1 5 8 0
--1 5 500 P
+-1 5 5000000 P
 E
 mace~
 You see a mace of great craftsmanship.  Imprinted on the side is:
@@ -712,7 +712,7 @@ You see an imperial chest plate here.~
 steel~
 9 0 AD
 0 0 0 0 0
--1 5 900 P
+-1 5 9000000 P
 E
 chest plate~
 You see a chest plate of great craftsmanship.  Stamped on the side is:
@@ -725,7 +725,7 @@ You see an imperial shield here.~
 steel~
 9 0 AJ
 0 0 0 0 0
--1 5 650 P
+-1 5 6500000 P
 E
 shield~
 You see a shield of great craftsmanship.  Imprinted on the side is:
@@ -738,7 +738,7 @@ You see an imperial cloak here.~
 cloth~
 9 0 AC
 0 0 0 0 0
--1 5 850 P
+-1 5 8500000 P
 E
 cloak~
 You see a cloak of great craftsmanship.  Imprinted on the side is:
@@ -751,7 +751,7 @@ You see an imperial helm here.~
 steel~
 9 0 AE
 0 0 0 0 0
--1 5 700 P
+-1 5 7000000 P
 E
 helm~
 You see a helm of great craftsmanship.  Imprinted on the side is:
@@ -764,7 +764,7 @@ You see a pair of imperial plate leggings here.~
 steel~
 9 0 AF
 0 0 0 0 0
--1 5 950 P
+-1 5 9500000 P
 E
 plate leggings~
 You see plate leggings of great craftsmanship.  Imprinted on the side is:
@@ -777,7 +777,7 @@ You see a pair of imperial plate boots here.~
 steel~
 9 0 AG
 0 0 0 0 0
--1 5 700 P
+-1 5 7000000 P
 E
 plate boots~
 You see plate boots of great craftsmanship.  Imprinted on the side is:
@@ -790,7 +790,7 @@ You see a pair of imperial plate gloves here.~
 steel~
 9 0 AH
 0 0 0 0 0
--1 5 900 P
+-1 5 9000000 P
 E
 plate gloves~
 You see plate gloves of great craftsmanship.  Imprinted on the side is:
@@ -803,7 +803,7 @@ You see a pair of imperial plate sleeves here.~
 steel~
 9 0 AI
 0 0 0 0 0
--1 5 775 P
+-1 5 7750000 P
 E
 plate sleeves~
 You see plate sleeves of great craftsmanship.  Imprinted on the side is:
@@ -816,7 +816,7 @@ You see an imperial cape here.~
 cloth~
 9 0 AK
 0 0 0 0 0
--1 5 825 P
+-1 5 8250000 P
 E
 cape~
 You see a cape of great craftsmanship.  Imprinted on the side is:
@@ -829,7 +829,7 @@ You see an imperial belt here.~
 steel~
 9 0 AL
 0 0 0 0 0
--1 5 600 P
+-1 5 6000000 P
 E
 belt~
 You see a belt of great craftsmanship.  Imprinted on the side is:
@@ -842,7 +842,7 @@ You see an imperial metal bracer here.~
 steel~
 9 0 AM
 0 0 0 0 0
--1 5 610 P
+-1 5 6100000 P
 E
 metal bracer~
 You see a metal bracer of great craftsmanship.  Imprinted on the side is:
@@ -855,7 +855,7 @@ You see a ring with a strange symbol on the floor.~
 gold~
 9 G AB
 0 0 0 0 0
--1 1 725 P
+-1 1 7250000 P
 A
 17 -6
 A
@@ -867,7 +867,7 @@ An imperial war banner is on the floor here.~
 wood~
 1 AG A
 0 0 999 0 0
--1 1 850 P
+-1 1 8500000 P
 E
 banner~
 This is the official Merc war banner to see you through the darkest realm!

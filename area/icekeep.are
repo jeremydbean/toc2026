@@ -273,7 +273,7 @@ A small lens made of crystal lies here.~
 glass~
 18 GUV AO
 0 0 0 0 0
-1 1 3000 P
+1 1 30000000 P
 #18005
 black lens~
 A black lens~
@@ -281,7 +281,7 @@ A small, black colored lens lies here.~
 glass~
 18 GUV AO
 0 0 0 0 0
-1 1 3000 P
+1 1 30000000 P
 #18006
 smokey lens~
 A smokey lens~
@@ -289,7 +289,7 @@ A small, smokey colored lens lies here.~
 glass~
 18 GUV AO
 0 0 0 0 0
-1 1 3000 P
+1 1 30000000 P
 #18007
 ring wisdom~
 The Ring of Wisdom~
@@ -297,7 +297,7 @@ A small ring lies here glinting in the light.~
 gold~
 9 G AB
 8 9 5 9 0
-40 3 2500 P
+40 3 25000000 P
 A
 3 1
 A
@@ -313,7 +313,7 @@ A giant sphere of holy power is here.~
 silver~
 1 AGUV AO
 0 0 9999 0 0
-51 5 5000 P
+51 5 50000000 P
 E
 sphere lanatir~
 This magic sphere was once owned by the powerful Lanatir.
@@ -335,7 +335,7 @@ A very powerful wand is lying at your feet.~
 silver~
 3 GV AO
 52 2 2 83 0
-52 6 9000 P
+52 6 90000000 P
 E
 wand power~
 This wand was once carried by the powerful Lanatir.  It is
@@ -358,7 +358,7 @@ A very large, black hammer lies here.~
 adamantite~
 5 BHUV ANP
 4 13 5 18 D
-52 20 7500 P
+52 20 75000000 P
 A
 1 2
 A
@@ -380,7 +380,7 @@ A large, ice covered sword lies here.~
 adamantite~
 5 B AN
 1 8 5 30 B
-33 10 200 P
+33 10 2000000 P
 A
 1 1
 A
@@ -396,7 +396,7 @@ A small, white hood lies crumpled on the ground.~
 leather~
 9 AI AE
 3 7 4 8 0
-30 6 125 P
+30 6 1250000 P
 A
 3 1
 A
@@ -412,7 +412,7 @@ A small, golden crown lies here gleaming in the sunlight.~
 gold~
 9 AV AE
 13 14 12 11 0
-48 8 5000 P
+48 8 50000000 P
 A
 2 2
 A
@@ -427,7 +427,7 @@ A giant block of ice fills much of the space here.
 glass~
 31 V 0
 2 18050 3 1 0
-1 200 100 P
+1 200 1000000 P
 #18015
 vine~
 a vine~
@@ -436,7 +436,7 @@ A sturdy vine dangles here, offering a way upward.
 paper~
 31 V 0
 6 18155 4 1 0
-1 200 100 P
+1 200 1000000 P
 #18016
 vine~
 a vine~
@@ -445,7 +445,7 @@ A sturdy vine hangs here, descending into the depths below.
 paper~
 31 V 0
 7 18132 5 1 0
-1 200 100 P
+1 200 1000000 P
 #18017
 coat bear bearskin~
 a bearskin coat~
@@ -453,7 +453,7 @@ A warm coat made from the skin of a bear is here.~
 leather~
 9 0 AD
 9 6 7 2 0
-16 10 5000 P
+16 10 50000000 P
 A
 17 -12
 A
@@ -475,7 +475,7 @@ Some very warm looking mittens are here.~
 cloth~
 9 0 AH
 6 7 3 2 0
-13 5 4000 P
+13 5 40000000 P
 A
 17 -10
 A
@@ -495,7 +495,7 @@ A small bar of ice cream is here.~
 food~
 19 0 AO
 18 0 0 0 0
-1 1 65 P
+1 1 650000 P
 #18020
 beef jerky strip~
 a strip of beef jerky~
@@ -503,7 +503,7 @@ A delicious piece of beef jerky is here.~
 food~
 19 0 A
 10 0 0 0 0
-1 1 10 P
+1 1 100000 P
 #18021
 icy dagger~
 An icy dagger~
@@ -511,7 +511,7 @@ A small dagger covered in ice is here.~
 adamantite~
 5 BV AN
 2 4 7 2 D
-11 3 11000 P
+11 3 110000000 P
 A
 18 2
 A
@@ -523,7 +523,7 @@ A cap made of heavy wool is here.~
 cloth~
 9 0 AE
 6 7 4 2 0
-15 3 6000 P
+15 3 60000000 P
 A
 13 15
 A
@@ -541,7 +541,7 @@ Some thick snakeskin boots are here.~
 leather~
 9 0 AG
 3 6 2 0 0
-12 4 6000 P
+12 4 60000000 P
 A
 18 2
 A 

@@ -2959,9 +2959,13 @@ void do_return( CHAR_DATA *ch, char *argument )
 static bool obj_check (CHAR_DATA *ch, OBJ_DATA *obj)
 {
 	if (IS_TRUSTED(ch,DEMI)
-	|| (IS_TRUSTED(ch,ANGEL)   && obj->level <= 35 && obj->cost <= 25000)
-	|| (IS_TRUSTED(ch,AVATAR)	 && obj->level <= 25 && obj->cost <= 15000)
-	|| (IS_TRUSTED(ch,IMMORTAL) && obj->level <= 15 && obj->cost <= 5000) )
+	/* Costs are copper now; these ceilings were written in gold. */
+	|| (IS_TRUSTED(ch,ANGEL)   && obj->level <= 35
+	    && obj->cost <= 25000L * COPPER_PER_GOLD)
+	|| (IS_TRUSTED(ch,AVATAR)	 && obj->level <= 25
+	    && obj->cost <= 15000L * COPPER_PER_GOLD)
+	|| (IS_TRUSTED(ch,IMMORTAL) && obj->level <= 15
+	    && obj->cost <= 5000L * COPPER_PER_GOLD) )
 	return true;
     else
 	return false;

@@ -299,7 +299,7 @@ A golden sickle with wedge shaped runes lies here.~
 gold~
 18 I AO
 0 0 0 0 0 
-25 1 100 P
+25 1 1000000 P
 E
 runes rune~
 You look at the runes. A warm glow fills you and you hear an inner 
@@ -313,7 +313,7 @@ A stout sturdy shovel lies here.~
 iron~
 18 0 AO
 0 0 0 0 0 
-25 5 10 P
+25 5 100000 P
 #24103
 creek swift swiftly flowing~
 a swiftly flowing creek~
@@ -329,7 +329,7 @@ A nice cold glass of yellow beer is here.~
 glass~
 17 0 AO
 1 1 1 0 0
-1 2 5 P
+1 2 50000 P
 #24105
 dunkel beer~
 a nice cold manly dunkel~
@@ -337,7 +337,7 @@ A nice cold glass of brown beer is here.~
 glass~
 17 0 AO
 1 1 1 0 0
-1 4 10 P
+1 4 100000 P
 #24106
 grub plate local~
 a plate of the local grub~
@@ -345,7 +345,7 @@ A hot steaming plate of the local grub is here! Yummy!~
 silver~
 19 0 AO
 24 0 0 0 0
-1 4 3 P
+1 4 30000 P
 #24107
 key room~
 a room key~
@@ -353,7 +353,7 @@ A room key is here, and it has a picture of a full mug on it.~
 adamantite~
 18 0 AO
 0 0 0 0 0 
-1 15 25 P
+1 15 250000 P
 #24108
 amulet flaming~
 the flaming amulet~
@@ -361,7 +361,7 @@ A flaming amulet is here, searing the ground.~
 bronze~
 18 ACE AC
 0 0 0 0 0 
-30 15 500 P
+30 15 5000000 P
 #24109
 root mandrake~
 a mandrake root~
@@ -369,7 +369,7 @@ A mandrake root is here.~
 wood~
 26 0 AO
 28 548 61 0 0 
-28 15 300 P
+28 15 3000000 P
 #24110
 axe woodsmans~
 a woodsman's axe~
@@ -377,7 +377,7 @@ A large axe stained with tree sap is here.~
 wood~
 5 0 AN
 5 5 6 25 DF
-27 10 100 P
+27 10 1000000 P
 #24111
 cloak woodsmans~
 a woodsman's cloak~
@@ -385,7 +385,7 @@ A forest colored cloak is here.~
 cloth~
 9 0 AK
 7 7 7 3 0 
-29 8 100 P
+29 8 1000000 P
 A
 17 -10
 #24112
@@ -395,7 +395,7 @@ A white marble cross is here.~
 stone~
 4 AIKL AO
 35 3 3 36 0
-31 12 15000 P
+31 12 150000000 P
 #24113
 robe ink black~
 an ink black robe~
@@ -403,7 +403,7 @@ An ink black robe is here, beckoning to you. Put it on! Ha Ha Ha ....~
 leather~
 9 CEHJM AD
 7 8 7 5 0 
-30 9 300 P
+30 9 3000000 P
 A
 4 -2
 A
@@ -415,7 +415,7 @@ A band of black metal engraved with runes is here.~
 steel~
 9 CEHJM AM
 7 8 8 5 0
-32 14 300 P
+32 14 3000000 P
 A
 13 -20
 A
@@ -434,7 +434,7 @@ A black rune covered rod vibrates in the dark~
 bronze~
 3 CEHJM AO
 40 8 8 22 0 
-34 7 700 P
+34 7 7000000 P
 E
 rune runes~
 As you look at the runes, you feel an incredible heat surge toward you, 
@@ -449,7 +449,7 @@ A ring of fire is here, smoldering on the ground.~
 iron~
 9 AU AB
 10 9 10 8 0
-33 10 300 P
+33 10 3000000 P
 A
 23 -2
 A
@@ -463,7 +463,7 @@ A pick is here.~
 steel~
 5 0 ANP
 8 5 7 27 F 
-30 11 75 P
+30 11 750000 P
 #24118
 horseshoe shoe~
 a horseshoe~
@@ -472,7 +472,7 @@ lucky day?~
 iron~
 13 0 AO
 0 0 0 0 0
-1 2 50 P
+1 2 500000 P
 #24119
 rope~
 fifty feet of rope~
@@ -480,7 +480,7 @@ A huge coil of rope is here.~
 leather~
 13 0 AO
 0 0 0 0 0
-10 5 25 P
+10 5 250000 P
 #24120
 potion~
 a clear potion~
@@ -488,7 +488,7 @@ A glass jar of a clear fluid is here.~
 glass~
 10 0 AO
 30 29 0 0 0 
-30 3 300 P
+30 3 3000000 P
 #24121
 pile~
 a pile hidden in dust~
@@ -505,7 +505,7 @@ a bronze key~
 bronze~
 18 G AO
 0 0 0 0 0
-25 1 10 P
+25 1 100000 P
 #24123
 chest bronze~
 a bronze chest~
@@ -521,7 +521,7 @@ The flail of Dunkeldorf~
 adamantite~
 5 BK AN
 6 4 9 27 B
-30 12 800 P
+30 12 8000000 P
 A
 1 -1
 A

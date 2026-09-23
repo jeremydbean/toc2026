@@ -1108,7 +1108,7 @@ A wicked looking trident is stuck into the ground here.~
 steel~
 5 AEGJ AN
 0 5 11 1 0
-50 20 1369 P
+50 20 13690000 P
 
 #13402
 black leather whip~
@@ -1117,7 +1117,7 @@ A black leather whip lies on the ground here.~
 leather~
 5 BEJ AN
 7 4 11 4 0
-40 20 1263 P
+40 20 12630000 P
 
 #13403
 hickey maker~
@@ -1126,7 +1126,7 @@ A hickey maker lies on the ground here making a soft sucking sound.~
 lether~
 5 0 AN
 7 4 11 4 0
-40 21 1331 P
+40 21 13310000 P
 
 #13404
 sword farslayer~
@@ -1135,7 +1135,7 @@ A black hilted sword with engravings on the blade lies here.~
 steel~
 5 BFGHM AN
 1 6 9 1 F
-50 25 3000 P
+50 25 30000000 P
 E
 sword~
 The blade of the sword is a full meter long, and straight as an arrow, with
@@ -1166,7 +1166,7 @@ An angel's skull lies here on the ground.~
 stone~
 9 0 AE
 12 13 13 0 0
-50 20 963 P
+50 20 9630000 P
 
 #13406
 rotting flesh~
@@ -1175,7 +1175,7 @@ Some rotting flesh lies here in a pile.~
 leather~
 9 0 AD
 7 9 9 0 0
-30 15 666 P
+30 15 6660000 P
 
 #13407
 sword vorpal blade~
@@ -1184,7 +1184,7 @@ A magnificently crafted blade lies here humming softly.~
 steel~
 5 0 AN
 1 7 7 1 0
-30 24 973 P
+30 24 9730000 P
 
 #13408
 flaming claw~
@@ -1193,7 +1193,7 @@ A flaming claw lies here burning brightly.~
 stone~
 5 0 AN
 0 4 12 5 0
-44 25 1006 P
+44 25 10060000 P
 
 #13409
 Demonskin~
@@ -1202,7 +1202,7 @@ A black scaley pile of demonskin lies here.~
 leather~
 9 0 AD
 10 9 10 0 0
-35 11 780 P
+35 11 7800000 P
 
 #13410
 demon teeth~
@@ -1211,7 +1211,7 @@ A bunch of very sharp slimy teeth lie here.~
 stone~
 5 0 AN
 2 5 10 11 0
-40 21 1312 P
+40 21 13120000 P
 
 #13411
 burning flesh~
@@ -1220,7 +1220,7 @@ A pile of burning flesh lies here.~
 leather~
 9 0 AI
 10 7 9 0 0
-42 19 800 P
+42 19 8000000 P
 
 #13412
 rivit gun~
@@ -1229,7 +1229,7 @@ A rivit gun loaded with hot rivits lies here.~
 brass~
 4 0 A0
 35 10 10 200 0
-40 13 666 P
+40 13 6660000 P
 
 #13413
 circular saw~
@@ -1238,7 +1238,7 @@ A circular saw lies here humming.~
 steel~
 5 B AN
 0 7 8 1 0
-46 19 876 P
+46 19 8760000 P
 
 #13414
 box matches~
@@ -1247,7 +1247,7 @@ A box of matches lies here ready to light something.~
 wood~
 4 A AO
 35 8 8 26 0
-48 8 937 P
+48 8 9370000 P
 
 #13415
 bloody black talon~
@@ -1256,7 +1256,7 @@ A severed bloody black talon lies here.~
 stone~
 5 EG AN
 2 8 7 3 0
-50 18 1363 P
+50 18 13630000 P
 
 #13416
 jar of blood~
@@ -1265,7 +1265,7 @@ A dark jar of blood lies here.~
 glass~
 10 0 A
 30 2 35 81 0
-1 20 800 P
+1 20 8000000 P
 
 #13417
 hell hound teeth~
@@ -1274,7 +1274,7 @@ The bloody teeth of a hell hound sit here.~
 stone~
 5 0 AN
 2 4 14 11 0
-45 21 1046 P
+45 21 10460000 P
 
 #13418
 icy bottle~
@@ -1283,7 +1283,7 @@ An icy bottle sits here sits on the floor.~
 glass~
 10 0 A
 35 13 43 73 0
-27 10 1000 P
+27 10 10000000 P
 
 #13419
 ice spear~
@@ -1292,7 +1292,7 @@ A spear made out of ice lies here.~
 glass~
 5 0 AN
 3 4 15 2 0
-47 22 1363 P
+47 22 13630000 P
 
 #13420
 large meat hook~
@@ -1301,7 +1301,7 @@ A large meat hook is stuck into the ground.~
 steel~
 5 0 AN
 0 8 7 21 0 
-51 23 896 P
+51 23 8960000 P
 
 #13421
 meat~
@@ -1310,7 +1310,7 @@ A chuck of meat lies here.~
 food~
 19 0 A
 30 0 0 0 0
-2 10 30 P
+2 10 300000 P
 
 #13422
 blueprint~
@@ -1319,7 +1319,7 @@ A construction blueprint lies on the ground.~
 food~
 19 0 AO
 31 0 0 0 0
-1 20 8 P
+1 20 80000 P
 
 #13423
 electric eraser~
@@ -1328,7 +1328,7 @@ An electric eraser lies on the ground waiting an erasermate.~
 leather~
 5 0 AN
 0 7 8 7 0
-53 25 676 P
+53 25 6760000 P
 
 #13424
 spectacles~
@@ -1337,7 +1337,7 @@ A set of spectacles lies here on the ground. Don't step on them.~
 glass~
 9 0 AE
 14 12 13 0 0
-53 15 790 P
+53 15 7900000 P
 A
 3 2
 
@@ -1348,7 +1348,7 @@ A sinistar looking symbol of evil lies here smoldering.~
 wood~
 3 0 AO
 35 10 10 43 0
-2 15 666 P
+2 15 6660000 P
 
 #13426
 unholy robe pile cloth~
@@ -1357,7 +1357,7 @@ A stinking pile of cloth lies here.~
 cloth~
 9 EJ AK
 13 13 13 0 0
-53 20 793 P
+53 20 7930000 P
 A
 12 75
 
@@ -1368,7 +1368,7 @@ A set of sharp evil looking teeth lie here. Probably a lawyer's.~
 stone~
 5 G AN
 2 11 5 11 0
-53 26 1496 P
+53 26 14960000 P
 
 #13428
 golden ring~
@@ -1377,7 +1377,7 @@ A golden ring lies on the ground here.~
 gold~
 8 0 AB
 0 0 0 0 0
-51 15 1000 P
+51 15 10000000 P
 
 #13429
 engagement ring~
@@ -1386,7 +1386,7 @@ An engagement ring lies here.~
 gold~
 8 0 AB
 0 0 0 0 0
-51 15 1000 P
+51 15 10000000 P
 
 #13430
 prenumptual agreement~
@@ -1395,7 +1395,7 @@ A prenumptual agreement lies here.~
 paper~
 2 0 A
 25 14 18 67 0
-1 10 960 P
+1 10 9600000 P
 
 #13431
 ionic torque wrench~
@@ -1404,7 +1404,7 @@ You see an ionic torque wrench on the ground.~
 steel~
 5 0 AN
 0 9 6 3 0
-50 27 796 P
+50 27 7960000 P
 
 #13432
 figurine horse~
@@ -1413,7 +1413,7 @@ You see a small figurine of a horse on the ground.~
 silver~
 9 AG AO
 0 0 0 0 0
-50 10 900 P
+50 10 9000000 P
 A
 14 50
 
@@ -1424,7 +1424,7 @@ You see a small figurine of a winged horse on the ground.~
 silver~
 3 AG AO
 30 5 5 56 0
-50 10 900 P
+50 10 9000000 P
 A
 14 150
 
@@ -1435,7 +1435,7 @@ You see a small figurine of a dark horse on the ground.~
 silver~
 3 AG AO
 30 5 5 512 0
-50 10 900 P
+50 10 9000000 P
 A
 14 200
 
@@ -1446,7 +1446,7 @@ You see a small figurine of a black dragon on the ground.~
 silver~
 3 AG AO
 30 1 1 200 0
-50 10 1900 P
+50 10 19000000 P
 A
 14 250
 
@@ -1457,7 +1457,7 @@ You see a small figurine of a red dragon on the ground.~
 silver~
 3 AG AO
 30 1 1 201 0
-50 10 1900 P
+50 10 19000000 P
 A
 14 300
 
@@ -1468,7 +1468,7 @@ You see a small figurine of a white dragon on the ground.~
 silver~
 3 AG AO
 30 1 1 204 0
-50 10 1900 P
+50 10 19000000 P
 A
 14 300
 
@@ -1479,7 +1479,7 @@ You see a small figurine of a green dragon on the ground.~
 silver~
 3 AG AO
 30 1 1 203 0
-50 10 1900 P
+50 10 19000000 P
 A
 14 300
 
@@ -1490,7 +1490,7 @@ You see a small figurine of a blue dragon on the ground.~
 silver~
 3 AG AO
 30 1 1 202 0
-50 10 900 P
+50 10 9000000 P
 A
 14 300
 
@@ -1501,7 +1501,7 @@ You see a geiger counter here.~
 glass~
 3 A AO
 30 10 10 35 0
-52 10 1000 P
+52 10 10000000 P
 
 #13441
 photon displacement matrix~
@@ -1510,7 +1510,7 @@ You see a photon displacement matrix on the ground.~
 steel~
 5 AB AN
 0 6 9 6 0
-51 27 1863 P
+51 27 18630000 P
 
 #13442
 black jumpsuit~
@@ -1519,7 +1519,7 @@ You see a black jumpsuit on the ground.~
 cloth~
 9 A AD
 14 13 12 0 0
-51 20 763 P
+51 20 7630000 P
 
 #13443
 antacid pill~
@@ -1528,7 +1528,7 @@ You see an antacid pill here.~
 pill~
 26 0 A
 35 74 81 0 0
-1 20 80 P
+1 20 800000 P
 
 #13444
 manes claw claws~
@@ -1537,7 +1537,7 @@ The severed claws of a sub-demon lie here, twitching.~
 stone~
 5 0 AN
 1 9 4 5 0
-35 17 1393 P
+35 17 13930000 P
 
 #13445
 welding torch~
@@ -1546,7 +1546,7 @@ A welding torch sits on the ground here.~
 steel~
 5 0 AN
 0 5 10 29 0
-45 27 978 P
+45 27 9780000 P
 
 #13446
 blond wig~
@@ -1555,7 +1555,7 @@ A blond wig lies on the ground.~
 cloth~
 9 0 AE
 15 14 14 0 0
-53 15 666 P
+53 15 6660000 P
 
 #13447
 yellow jumpsuit nuclear symbol~
@@ -1564,7 +1564,7 @@ You see a yellow jumpsuit with a nuclear warning symbol.~
 cloth~
 9 0 AD
 14 15 14 0 0
-50 20 793 P
+50 20 7930000 P
 
 #13448
 cleaver~
@@ -1573,7 +1573,7 @@ You see a nasty looking cleaver stuck in the ground.~
 steel~
 5 0 AN
 5 5 11 21 0
-52 27 1936 P
+52 27 19360000 P
 
 #0
 

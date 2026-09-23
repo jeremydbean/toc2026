@@ -429,7 +429,7 @@ A black dagger fashioned from some strange wood is here.~
 wood~
 5 BEJ AN
 2 3 4 11 0
-10 5 300 P
+10 5 3000000 P
 E
 dagger tiny~
 A small sharp dagger is fashioned of some strange wood is here.
@@ -446,7 +446,7 @@ A large black dagger fashioned of some strange wood is here.~
 wood~
 5 BEJ AN
 2 5 7 11 0
-20 10 2000 P
+20 10 20000000 P
 A
 2 2
 A
@@ -463,7 +463,7 @@ An axe fashioned by some crude beast is here.~
 wood~
 5 C AN
 5 3 5 3 0
-12 25 200 P
+12 25 2000000 P
 A
 18 3
 A
@@ -476,7 +476,7 @@ A tunic fashioned from badly cured animal skins lies here.~
 leather~
 9 0 AD
 8 8 4 2 0
-12 20 100 W
+12 20 1000000 W
 A
 13 20
 
@@ -487,7 +487,7 @@ Whats left of a half eaten tree is here.~
 wood~
 5 C AN
 4 5 6 27 F
-22 40 25 P
+22 40 250000 P
 A
 13 -2
 A
@@ -500,7 +500,7 @@ A small signet ring etched by some powerful acid lies here.~
 steel~
 9 AU AB
 5 5 4 5 0
-8 2 1000 P
+8 2 10000000 P
 A
 4 1
 A
@@ -513,7 +513,7 @@ A small medallion engraved with a unicorn lies forgotten in the dust.~
 silver~
 9 AIK AC
 10 8 10 5 0
-15 4 360 P
+15 4 3600000 P
 A
 2 1
 A
@@ -531,7 +531,7 @@ A wooden club with several hard spikes is here.~
 wood~
 5 CJ AN
 4 4 6 27 0
-13 15 200 P
+13 15 2000000 P
 A
 19 2
 A
@@ -544,7 +544,7 @@ A pitch black opal is here gleaming in the darkness.~
 stone~
 9 FCEUV AO
 8 8 10 10 5
-48 5 8000  P
+48 5 80000000  P
 A
 18 5
 A
@@ -565,7 +565,7 @@ Vambraces made of some strange dark metal lie here forgotten.~
 steel~
 9 ACEJHM AI
 6 7 6 6 0
-30 30 4000 P
+30 30 40000000 P
 A
 13 -15
 A
@@ -586,7 +586,7 @@ Leggings of some strange black metal etched by acid lie here.~
 steel~
 9 ACEJH AF
 6 6 7 6 0
-24 25 1500 P
+24 25 15000000 P
 A
 2 -2
 A
@@ -604,7 +604,7 @@ A granite altar stands here in solemn silence.
 stone~
 15 0 0
 1000 1 0 0 0
-50 1 1 P
+50 1 10000 P
 E
 altar~
 The shapes of different forest creatures have been carved into the face of
@@ -639,7 +639,7 @@ A mangled, half eaten corpse of some unfortunate adventurer.~
 stone~
 15 0 0
 1000 1 0 0 0
-50 1 1 P
+50 1 10000 P
 E
 corpse~
 The mangled remains of some fellow unlucky enough to be caught by the dragon,
@@ -654,7 +654,7 @@ A wooden cabinet stands here.
 stone~
 15 0 0
 1000 1 0 0 0
-50 1 1 P
+50 1 10000 P
 #3615
 pale blue potion~
 A pale blue potion~
@@ -662,7 +662,7 @@ A pale blue potion with magenta flecks is here.~
 stone~
 10 AFJHU AO
 60 25 25 25 0
-50 5 5 P
+50 5 50000 P
 #3616
 pale blue potion~
 A pale blue potion~
@@ -670,7 +670,7 @@ A pale blue potion with green flecks is here.~
 stone~
 10 AFJHU AO
 50 81 81 10 0
-50 5 5 P
+50 5 50000 P
 #0
 
 #ROOMS

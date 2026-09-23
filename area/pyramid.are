@@ -306,7 +306,7 @@ A hierogylph-engraved mace has been left here.
 stone~
 5 0 AN
 4 1 5 7 0
--1 8 50 P
+-1 8 500000 P
 E
 egyptian mace~
 The mace is formed from solid brass, and engraved in strange hieroglyphs.
@@ -319,7 +319,7 @@ Sand-colored robes lie here.
 cloth~
 9 0 AK
 0 0 0 0 0
--1 5 40 P
+-1 5 400000 P
 E
 sand robes~
 The robes are colored a sandy off-white, and are in fact caked and covered
@@ -334,7 +334,7 @@ A flat dirk made of chipped obsidian lies here.
 stone~
 5 G AN
 2 1 5 11 0
--1 1 100 P
+-1 1 1000000 P
 A
 2 1
 A
@@ -353,7 +353,7 @@ A dirty cloth turban has been forgotten here.
 cloth~
 9 G AE
 0 0 0 0 0
--1 1 250 P
+-1 1 2500000 P
 A
 2 1
 A
@@ -384,7 +384,7 @@ A dusty bottle lies here on the ground.
 pill~
 10 0 A
 5 33 0 0 0
--1 2 50 P
+-1 2 500000 P
 E
 bottle fluid~
 The bottle is dusty and the fluid has a strange sickly-sweet smell to it.
@@ -397,7 +397,7 @@ A small jar lies here on the ground.
 pill~
 10 0 A
 10 16 0 0 0
--1 2 50 P
+-1 2 500000 P
 E
 jar formaldehyde~
 The jar is sticky and smells really bad.
@@ -410,7 +410,7 @@ A little ball of fire hovers in the air before your eyes.
 steel~
 1 AG AO
 0 0 999 0 0
--1 3 500 P
+-1 3 5000000 P
 A
 13 10
 A
@@ -427,7 +427,7 @@ A curved scimitar made of stone rests on the ground.
 stone~
 5 G AN
 1 1 5 1 0
--1 1 75 P
+-1 1 750000 P
 A
 18 2
 A
@@ -458,7 +458,7 @@ A mighty stone sarcophagus lies in the center of the tomb.
 stone~
 15 0 0
 500 31 28009 0 0
-50 5000 5000 P
+50 5000 50000000 P
 E
 stone sarcophagus~
 The sarcophagus is engraved on the sides with the images of pharaohs,
@@ -477,7 +477,7 @@ A small pile of dust is being scattered by the breeze.
 stone~
 13 0 A
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 dust~
 The dust is old.  As you sift it through your hands you find tiny chips
@@ -491,7 +491,7 @@ A small emerald scarab lies here on the ground.
 stone~
 18 0 AO
 0 0 0 0 0
--1 4 50 P
+-1 4 500000 P
 E
 scarab~
 The scarab is intricately detailed, down to the tiny hairs on its
@@ -505,7 +505,7 @@ A small, tarnished, battered lamp has been dropped here.
 steel~
 4 ABGI AO
 25 5 5 26 0
--1 5 600 P
+-1 5 6000000 P
 A
 17 -5
 A
@@ -523,7 +523,7 @@ A small brass ankh has been left here.
 brass~
 9 G AC
 0 0 0 0 0
--1 1 300 P
+-1 1 3000000 P
 A
 3 1
 A
@@ -541,7 +541,7 @@ A medium-sized parchment book with well-worn pages lies here.
 paper~
 2 0 A
 21 1 1 73 0
--1 10 250 P
+-1 10 2500000 P
 E
 book riddles~
 The book has well-worn pages, containing many befuddling riddles
@@ -556,7 +556,7 @@ The mighty paw of a lion-like creature has been dropped here.
 leather~
 5 G AN
 0 1 5 5 0
--1 18 600 P
+-1 18 6000000 P
 A
 5 1
 A
@@ -577,7 +577,7 @@ A small piece of parchment covered in hieroglyphics lies here.
 paper~
 18 0 AO
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 E
 answer hieroglyphics~
 You cannot decipher the strange hieroglyphics that cover the
@@ -590,7 +590,7 @@ The massive treasure of the sphinx lies here in a big pile.~
 gold~
 20 0 A
 0 0 0 0 0
-60 0 2000 P
+60 0 20000000 P
 E
 treasure~
 The treasure is incredibly large, filled with gold coins and valuables, more
@@ -604,7 +604,7 @@ You see a small pile of sand.
 stone~
 20 0 A
 0 0 0 0 0
-40 0 12986 P
+40 0 129860000 P
 E
 pile sand~
 You think you see some coins and valuables glinting amongst the grains of sand.
@@ -616,7 +616,7 @@ Some fortunate soul has escaped the mummy's curse, for now.~
 ~
 13 ABGHNU AO
 0 0 0 0 0
-1 10 50 P
+1 10 500000 P
 A
 1 -3
 A
@@ -641,7 +641,7 @@ A small glass elixir lies under your feet.
 pill~
 10 G A
 30 36 66 3 0
-2 20 25000 P
+2 20 250000000 P
 E
 small elixir~
 The elixir is deceptively small.  Something tells you that its
@@ -656,7 +656,7 @@ A beautiful, intricately detailed mask has been forgotten here.
 gold~
 9 AG AE
 0 0 0 0 0
--1 15 750 P
+-1 15 7500000 P
 A
 12 25
 A
@@ -680,7 +680,7 @@ A diamond glitters coldly in the light.
 stone~
 8 0 A
 0 0 0 0 0
--1 1 1500 P
+-1 1 15000000 P
 E
 diamond~
 Aha!
@@ -695,7 +695,7 @@ A small length of brass shines here with its own light.~
 steel~
 3 G AO
 35 25 25 30 0
--1 2 1000 P
+-1 2 10000000 P
 A
 21 -5
 A
@@ -713,7 +713,7 @@ A small sandy-colored ring has been carelessly dropped here.~
 stone~
 9 BG AB
 0 0 0 0 0
--1 1 750 P
+-1 1 7500000 P
 A
 3 1
 A
@@ -730,7 +730,7 @@ A small golden sphinx glints in the light.~
 gold~
 8 G AO
 0 0 0 0 0
--1 5 750 P
+-1 5 7500000 P
 A
 4 2
 E
@@ -746,7 +746,7 @@ Massive leggings formed from the body of a sphinx stand here.~
 leather~
 9 GI AF
 0 0 0 0 0
--1 2 500 P
+-1 2 5000000 P
 A
 1 3
 A

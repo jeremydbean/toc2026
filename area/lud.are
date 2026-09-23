@@ -260,7 +260,7 @@ An evil coal black key lies here.~
 stone~
 18 C AO
 0 0 0 0 0
-35 1 100 P
+35 1 1000000 P
 E
 coal black key~
 This key emits the taint of its original beholder.
@@ -272,7 +272,7 @@ A heavy stone key sits here discarded.~
 stone~
 18 U AO
 0 0 0 0 0
-50 75 100 P
+50 75 1000000 P
 E
 heavy stone key~
 This key is SOOOO heavy!
@@ -284,7 +284,7 @@ A tiny silver key glitters on the ground.~
 silver~
 18 0 AO
 0 0 0 0 0
-50 1 100 P
+50 1 1000000 P
 E
 tiny silver key~
 This key must open a door to another cabin.
@@ -296,7 +296,7 @@ A gold key on a chain lies here.~
 gold~
 18 0 AO
 0 0 0 0 0
-50 1 1000 P
+50 1 10000000 P
 E
 gold key~
 This key is fused to a broken neck chain.
@@ -308,7 +308,7 @@ A bent key is here looking bent out of shape.~
 adamantite~
 18 0 AO
 0 0 0 0 0
-50 1 100 P
+50 1 1000000 P
 E
 bent key~
 This key looks pretty bent out of shape. :)
@@ -320,7 +320,7 @@ A long and magical looking key glows here.~
 adamantite~
 18 AG AO
 0 0 0 0 0
-50 1 100 P
+50 1 1000000 P
 E
 long magical key~
 This key looks like it could never get bent out of shape.
@@ -332,7 +332,7 @@ A burnt tarot keycard is almost in tatters.~
 paper~
 18 C AO
 0 0 0 0 0
-50 1 100 A
+50 1 1000000 A
 E
 burnt tarot keycard~
 Be careful with this key, it is in awful condition.
@@ -344,7 +344,7 @@ A ticket to ride Patricia the Monorail lies here.~
 paper~
 13 0 AO
 0 0 0 0 0
-50 1 100000 P
+50 1 1000000000 P
 E
 monorail ticket~
 It has a picture of a smiling train on it.
@@ -356,7 +356,7 @@ a REAL sharp piece of glass!~
 glass~
 37 F AN
 3 0 51 0 0
-51 1 500 P
+51 1 5000000 P
 E
 sharp piece glass~
 It looks REALLY sharp and maybe poisonous since considering who wielded it.
@@ -371,7 +371,7 @@ a faded yellow scarf has something hidden in it...~
 paper~
 15 E AC
 60 4 0 0 0
-52 1 100 P
+52 1 1000000 P
 A
 12 25
 A
@@ -385,7 +385,7 @@ a chain with a small clock incased in gold.~
 wood~
 9 B AC
 14 14 14 7 0
-51 2 500 P
+51 2 5000000 P
 A
 1 2
 A
@@ -399,7 +399,7 @@ a broken watch that reads 00:00.~
 steel~
 9 0 AM
 10 11 12 6 0
-51 1 200 P
+51 1 2000000 P
 A
 13 25
 A
@@ -415,7 +415,7 @@ a lightweight shield to protect yourself with.~
 steel~
 9 0 AJ
 12 14 14 6 0
-52 8 400 P
+52 8 4000000 P
 A
 2 2
 A
@@ -431,7 +431,7 @@ a pretty pink flower dress for you to wear!~
 cloth~
 9 0 AD
 14 14 14 7 0
-53 1 500 P
+53 1 5000000 P
 A
 1 -2
 A
@@ -454,7 +454,7 @@ two gleaming nickel-plated revolvers.~
 iron~
 5 M ANP
 0 16 4 6 F
-54 1 700 P
+54 1 7000000 P
 A
 3 2
 A
@@ -469,7 +469,7 @@ a special implant that allows recolection.~
 gold~
 9 B AE
 11 11 11 12 0
-51 1 1000 P
+51 1 10000000 P
 A
 1 -2
 A
@@ -488,7 +488,7 @@ an important piece of paper.~
 paper~
 18 0 AO
 0 0 0 0 0
-51 1 100 P
+51 1 1000000 P
 #29518
 gear eight edged~
 an eight-edged gear~
@@ -496,7 +496,7 @@ an eight-edged gear that is a part of a tiny clock.~
 iron~
 37 0 AN
 2 0 0 0 0
-51 1 100 P
+51 1 1000000 P
 #29519
 jagged black chasm~
 a jagged black chasm~
@@ -504,7 +504,7 @@ a jagged black chasm separates you from Mid-World.~
 stone~
 31 0 0
 9 29496 3 1 0
-1 1 1 P
+1 1 10000 P
 #29520
 sign~
 a sign~
@@ -512,7 +512,7 @@ a sign is here and it isn't important to even read it!~
 stone~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 sign~
 You look at the sign:

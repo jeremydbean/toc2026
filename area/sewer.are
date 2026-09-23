@@ -381,7 +381,7 @@ A lovely silver ring has been left here.~
 silver~
 9 GVXZ FG AB
 3 3 2 0 0
-3 1 2000  P
+3 1 20000000  P
 A
 18 1
 #7200
@@ -391,7 +391,7 @@ The mysterious devil rod lies on the floor.~
 iron~
 5 G AN
 0 2 10 4 0
-12 6 1188 P
+12 6 11880000 P
 E
 devil rod~
 This is indeed a mysterious rod.  It is dark black at the base but has four
@@ -408,7 +408,7 @@ A large mace lies here.~
 iron~
 5 G AN
 4 2 7 8 0
-8 10 1000 P
+8 10 10000000 P
 E
 large mace~
 The mace is pretty large with a weight of 10 lbs.  The head is actually four
@@ -423,7 +423,7 @@ a small mace has been left here.~
 iron~
 5 G AN
 4 2 7 8 0
-6 6 600 P
+6 6 6000000 P
 E
 small mace~
 This weapon doesn't look like it does a lot of damage, but then you never know.
@@ -438,7 +438,7 @@ A purple cloak lies on the floor.~
 cloth~
 9 G AC
 6 5 6 0 0
-12 20 1404 P
+12 20 14040000 P
 A
 24 -1
 #7204
@@ -448,7 +448,7 @@ A neon blue potion stands on the floor.~
 glass~
 10 G A
 14 15 29 42 0
-1 4 100 P
+1 4 1000000 P
 #7205
 key black~
 a black key~
@@ -456,7 +456,7 @@ A black key has been left on the floor.~
 steel~
 18 0 A
 0 0 0 0 0
-1 1 10 P
+1 1 100000 P
 #7206
 skull white~
 a strange white skull~
@@ -483,7 +483,7 @@ A small stick lies here.~
 wood~
 1 0 AO
 0 0 120 0 0
-5 4 200 P
+5 4 2000000 P
 E
 small stick~
 The small stick does not look interesting at all.  But just as you are going
@@ -500,7 +500,7 @@ A pair of muddy boots has been dropped here.~
 ~
 9 G AG
 3 2 3 0 0
-3 20 75 P
+3 20 750000 P
 E
 The boots are muddy and they look well worn, but also very comfortable.~
 ~
@@ -525,7 +525,7 @@ There lies a short sword.~
 steel~
 5 0 AN
 1 2 4 1 0
-3 4 60 P
+3 4 600000 P
 A
 18 1
 #7216
@@ -535,7 +535,7 @@ On the floor rests an enormous red claw.~
 stone~
 5 GJ AN
 0 7 4 5 0
-29 19 1800 P
+29 19 18000000 P
 E
 claw red redclaw~
 This big claw looks like a part of a dragon.
@@ -551,7 +551,7 @@ There is a silvery breast plate on the floor.~
 silver~
 9 GIKL AD
 8 7 8 0 0
-26 40 5850 P
+26 40 58500000 P
 A
 1 3
 E
@@ -566,7 +566,7 @@ On the floor you see some silvery leg plates.~
 silver~
 9 GIKL AF
 7 8 8 0 0 
-26 20 6750 P
+26 20 67500000 P
 A
 3 3
 E
@@ -580,7 +580,7 @@ You can see a pair of silvery gloves on the floor.~
 silver~
 9 GIKL AH
 9 9 8 0 0
-25 14 6500 P
+25 14 65000000 P
 A
 18 3
 E
@@ -596,7 +596,7 @@ The silvery helmet lies here.~
 silver~
 9 GIKL AE
 8 8 8 0 0
-25 35 5850 P
+25 35 58500000 P
 A
 4 3
 E
@@ -611,7 +611,7 @@ The shield of the rose rests on the floor.~
 silver~
 9 GIKL AJ
 8 9 9 0 0
-27 60 7290 P
+27 60 72900000 P
 A
 17 -10
 E
@@ -626,7 +626,7 @@ A pair of silvery boots stand on the floor.~
 silver~
 9 GIKL AG
 7 9 8 0 0
-26 40 5850 P
+26 40 58500000 P
 A
 2 3
 E
@@ -640,7 +640,7 @@ On the floor you see some silvery arm plates.~
 silver~
 9 GIKL AI
 8 8 9 0 0
-26 40 7020 P
+26 40 70200000 P
 A
 5 3
 E
@@ -654,7 +654,7 @@ A white cloak lies on the floor.~
 cloth~
 9 GIKL AK
 8 8 9 0 0
-27 20 7560 P
+27 20 75600000 P
 E
 cloak white~
 This is a very fine made cloak from an unknown material, in a bright white
@@ -681,7 +681,7 @@ There lies a short sword.~
 steel~
 5 0 AN
 1 2 5 1 0
-4 4 60 P
+4 4 600000 P
 E
 short sword~
 This is a very nice little weapon.
@@ -693,7 +693,7 @@ A backpack stands upright here.~
 leather~
 15 0 AKO
 60 1 0 0 0
-11 2 100 P
+11 2 1000000 P
 #7301
 beltpouch pouch~
 a large beltpouch~
@@ -701,7 +701,7 @@ A large beltpouch lies here on the ground.~
 leather~
 15 0 AL
 20 1 0 0 0
-5 1 20 P
+5 1 200000 P
 #7303
 orb dragonorb~
 the Red DragonOrb~
@@ -709,7 +709,7 @@ A large reddish sphere is in the center of the room.~
 glass~
 4 GJ AO
 14 10 10 36 0
-28 5 7056 P
+28 5 70560000 P
 A
 3 2
 A
@@ -721,7 +721,7 @@ There is a pile of red dragonscale on the floor.~
 leather~
 9 GJ AD
 8 8 8 0 0
-28 30 8120 P
+28 30 81200000 P
 A
 2 -1
 A
@@ -733,7 +733,7 @@ On the floor you see two red dragonscale leggings.~
 leather~
 9 GJ AF
 8 7 9 0 0 
-27 17 6318 P
+27 17 63180000 P
 A
 2 -1
 A
@@ -745,7 +745,7 @@ You can see a pair of large red dragon claws on the floor.~
 leather~
 9 GJ AH
 8 8 8 0 0
-28 15 8624 P
+28 15 86240000 P
 A
 19 2
 #7307
@@ -755,7 +755,7 @@ A helmet fashioned into the likeness of a dragon skull is here.~
 leather~
 9 GJ AE
 8 8 8 0 0
-28 15 8624 P
+28 15 86240000 P
 A
 2 -1
 A
@@ -769,7 +769,7 @@ A large red dragon shield rests on the floor.~
 leather~
 9 GJ AJ
 9 8 8 0 0
-28 10 7056 P
+28 10 70560000 P
 A
 19 2
 #7309
@@ -779,7 +779,7 @@ A pair of a red dragon's rear claws is on the floor.~
 leather~
 9 GJ AG
 8 7 9 0 0
-28 40 8120 P
+28 40 81200000 P
 A
 19 2
 A
@@ -791,7 +791,7 @@ On the ground you see two red arm guards.~
 leather~
 9 GJ AI
 8 8 7 0 0
-28 40 7840 P
+28 40 78400000 P
 A
 19 2
 A

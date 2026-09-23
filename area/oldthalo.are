@@ -143,7 +143,7 @@ A vest made of mithril plates lies heaped on the floor.
 adamantite~
 9 GK AD
 0 0 0 0 0
--1 30 3000 P
+-1 30 30000000 P
 A
 19 1
 A
@@ -155,7 +155,7 @@ Here lies a large mithril helm.~
 adamantite~
 9 GK AE
 0 0 0 0 0
--1 10 1800 P
+-1 10 18000000 P
 A
 18 2
 #5202
@@ -165,7 +165,7 @@ A pair of mithril gauntlets rests on the ground.~
 adamantite~
 9 GK AH
 0 0 0 0 0
--1 10 1900 P
+-1 10 19000000 P
 A
 18 1
 A
@@ -177,7 +177,7 @@ A set of mithril sleeves lies on the ground.~
 adamantite~
 9 GK AI
 0 0 0 0 0
--1 10 2200 P
+-1 10 22000000 P
 A
 18 1
 A
@@ -189,7 +189,7 @@ A pair of mithril boots stands has been left here.~
 adamantite~
 9 GK AG
 0 0 0 0 0
--1 10 1200 P
+-1 10 12000000 P
 A
 18 1
 A
@@ -201,7 +201,7 @@ A set of mithril leggings lie here unattended.~
 adamantite~
 9 GK AF
 0 0 0 0 0
--1 10 2100 P
+-1 10 21000000 P
 A
 18 1
 A
@@ -213,7 +213,7 @@ A large iron girth lies at your feet.~
 adamantite~
 9 GK AL
 5 0 0 0 0
--1 20 1200 P
+-1 20 12000000 P
 A
 5 2
 #5207
@@ -223,7 +223,7 @@ A battered iron breast plate lies here.~
 iron~
 9 0 AD
 2 0 0 0 0
-18 15 50 A
+18 15 500000 A
 A
 18 -6
 #5208
@@ -233,7 +233,7 @@ A small, but sturdy, iron shield has been left here.~
 iron~
 9 GJ AJ
 0 0 0 0 0
--1 20 500 P
+-1 20 5000000 P
 A
 20 -2
 A
@@ -245,7 +245,7 @@ A jet black potion sits upright waiting to be taken.~
 glass~
 10 FG A
 16 4 36 39 0
-9 5 1500 P
+9 5 15000000 P
 #5211
 potion orange~
 an orange potion~
@@ -253,7 +253,7 @@ A small orange potion lies here.~
 glass~
 10 FG A
 21 34 0 0 0
-8 10 900 P
+8 10 9000000 P
 #5214
 ball quartz~
 a smooth quartz ball~
@@ -261,7 +261,7 @@ A smooth quartz ball lies here gleaming.~
 stone~
 1 G AO
 0 0 72 0 0
-19 30 3600 P
+19 30 36000000 P
 #5215
 scroll tattered~
 a tattered scroll~
@@ -269,7 +269,7 @@ A worn and tattered scroll has been left here.~
 vellum~
 2 G A
 24 24 0 0 0
-23 15 5290 P
+23 15 52900000 P
 #5216
 scroll bound~
 a bound scroll~
@@ -277,7 +277,7 @@ A bound scroll of detection lies at your feet.~
 vellum~
 2 G A
 15 18 19 20 0
-23 15 5808 P
+23 15 58080000 P
 #5217
 flute silver~
 a silver flute~
@@ -285,7 +285,7 @@ A brilliant silver flute glimmers from beneath a rock.~
 silver~
 4 AG AO
 17 1 1 7 0
-7 6 378 P
+7 6 3780000 P
 #5218
 talisman demon~
 a demon-faced talisman~
@@ -293,7 +293,7 @@ A demon-faced talisman glares at you angrily.~
 iron~
 9 AG AC
 3 5 4 0 0
-8 11 560 P
+8 11 5600000 P
 A
 1 -10
 A
@@ -305,7 +305,7 @@ A large chunk of venison sits here ready to be eaten.~
 food~
 19 0 A
 24 0 0 0 0
-0 20 10 P
+0 20 100000 P
 #5220
 fountain water~
 a large cracked fountain~
@@ -321,7 +321,7 @@ A nice two-handed sword hangs on a hook in the wall.~
 steel~
 5 GK AN
 1 1 5 3 F
--1 24 7830 P
+-1 24 78300000 P
 A
 18 2
 A
@@ -333,7 +333,7 @@ A black silk robe lies heaped in one corner.~
 cloth~
 9 0 AK
 0 0 0 0 0
--1 6 420 P
+-1 6 4200000 P
 A
 12 10
 #5223
@@ -343,7 +343,7 @@ A beautiful dark green cloak has been dropped by someone.~
 cloth~
 9 GJ AC
 0 0 0 0 0
--1 12 2890 P
+-1 12 28900000 P
 A
 13 5
 #5224
@@ -353,7 +353,7 @@ A small, engraved ebony seal is here.~
 stone~
 18 0 A
 30 0 0 0 0
--1 2 4620 P
+-1 2 46200000 P
 #5225
 desk curved~
 the desk~
@@ -369,7 +369,7 @@ A small, engraved ivory seal lies here.~
 stone~
 18 0 A
 31 0 0 0 0
--1 2 11900 P
+-1 2 119000000 P
 #5227
 cabinet glass~
 the glass cabinet~
@@ -393,7 +393,7 @@ A pale blue stone sits here.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 4200 P
+-1 10 42000000 P
 A
 1 1
 #5231
@@ -403,7 +403,7 @@ A pretty scarlet and blue stone has been dropped here.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 3420 P
+-1 10 34200000 P
 A
 3 1
 #5232
@@ -413,7 +413,7 @@ A small incandescent blue stone lies here.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 8100 P
+-1 10 81000000 P
 A
 4 1
 #5233
@@ -423,7 +423,7 @@ Someone has left a deep red stone here.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 7830 P
+-1 10 78300000 P
 A
 2 1
 #5234
@@ -433,7 +433,7 @@ A tiny pink stone lies at your feet.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 5500 P
+-1 10 55000000 P
 A
 5 2
 #5235
@@ -443,7 +443,7 @@ This pearly white stone would probably sell for a good price.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 7830 P
+-1 10 78300000 P
 A
 13 1
 #5237
@@ -453,7 +453,7 @@ A stunning lavender and green stone rests on the ground.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 7308 P
+-1 10 73080000 P
 A
 24 -2
 #5239
@@ -463,7 +463,7 @@ You can barely make out a dull grey stone on the ground.~
 stone~
 8 0 AO
 0 0 0 0 0
--1 10 891 P
+-1 10 8910000 P
 #5241
 stone pink green~
 a pink and green stone~
@@ -471,7 +471,7 @@ A bright pink and green stone has been left here.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 810 P
+-1 10 8100000 P
 A
 18 -5
 #5243
@@ -481,7 +481,7 @@ An odd clear stone lies at your feet.~
 stone~
 8 G AO
 0 0 0 0 0
--1 10 81 P
+-1 10 810000 P
 A
 17 3
 #5250
@@ -491,7 +491,7 @@ A mandolin lies against the wall.~
 wood~
 4 G AO
 18 5 5 15 0
-18 20 270 P
+18 20 2700000 P
 #5251
 harp golden~
 a golden harp~
@@ -499,7 +499,7 @@ A battered golden harp has been tipped over.~
 gold~
 4 G AO
 18 1 1 6 0
-18 100 560 D
+18 100 5600000 D
 #5252
 long dagger slim~
 a long slim dagger~
@@ -507,7 +507,7 @@ A long slim dagger has been left here.~
 steel~
 5 G AN
 2 1 5 11 0
--1 4 420 G
+-1 4 4200000 G
 A
 18 1
 A

@@ -1599,7 +1599,7 @@ A delicious magic mushroom is here.~
 food~
 19 0 A
 8 0 0 0 0
-0 1 10 P
+0 1 100000 P
 #21
 ball light~
 a bright ball of light~
@@ -1639,7 +1639,7 @@ Coinspinner, the Sword of Luck, is waiting here.~
 adamantite~
 5 ABGTUV AN
 2 5 7 1 0
-41 1 4500 P
+41 1 45000000 P
 A
 3 1
 A
@@ -1669,7 +1669,7 @@ A saddle is here.~
 leather~
 33 A AD
 0 0 0 0 0
-2 0 50 P
+2 0 500000 P
 #29
 generic quest item~
 a generic quest item~
@@ -1685,7 +1685,7 @@ A bow is here.~
 wood~
 5 ABGT AN
 9 5 5 1 0
-41 1 1500 P
+41 1 15000000 P
 #31
 helmet bubble~
 a big glass bubble~
@@ -2156,7 +2156,7 @@ A small beverage container is here.~
 glass~
 10 G AO
 0 0 0 0 0
-0 1 400 P
+0 1 4000000 P
 #75
 potion~
 a potion~
@@ -2164,7 +2164,7 @@ A potion is here.~
 glass~
 10 G AO
 0 0 0 0 0
-0 1 400 P
+0 1 4000000 P
 #76
 blood dragon component~
 a vial of dragons blood~
@@ -2276,7 +2276,7 @@ A rolled vellum scroll is here.~
 vellum~
 2 G AO
 0 0 0 0 0
-0 1 500 P
+0 1 5000000 P
 #91
 container soul bottle~
 a prison for the soul~
@@ -2284,7 +2284,7 @@ A very nasty item is here.~
 glass~
 36 V A
 0 0 0 0 0
-49 1 20000 P
+49 1 200000000 P
 #92
 head~
 a severed head~
@@ -2316,7 +2316,7 @@ A beer barrel has been left here.~
 wood~
 17 0 A
 50 50 1 0 0
-0 25 300 P
+0 25 3000000 P
 #3001
 bottle beer~
 a bottle of beer~
@@ -2324,7 +2324,7 @@ A beer bottle has been left here.~
 glass~
 17 0 A
 8 8 1 0 0
-0 2 20 P
+0 2 200000 P
 #3002
 bottle ale~
 a bottle of ale~
@@ -2332,7 +2332,7 @@ A dark bottle of ale has been left here.~
 glass~
 17 0 A
 8 8 3 0 0
-0 2 10 P
+0 2 100000 P
 #3003
 bottle firebreather~
 a bottle of firebreather~
@@ -2340,7 +2340,7 @@ A bottle of firebreather has been left here.~
 glass~
 17 0 A
 8 8 7 0 0
-0 2 50 P
+0 2 500000 P
 #3004
 bottle local~
 a bottle of local specialty~
@@ -2348,7 +2348,7 @@ A dark bottle has been left here.~
 glass~
 17 0 A
 8 8 8 0 0
-0 2 20 P
+0 2 200000 P
 #3005
 scimitar blade~
 Hassan's scimitar~
@@ -2356,7 +2356,7 @@ Hassan's scimitar lies upon the ground, waiting for its owner.~
 adamantite~
 5 BI AN
 1 5 6 21 EF
-35 20 30 P
+35 20 300000 P
 E
 scimitar blade~
 It is quite heavy.  The blade is made of some metal that you can't even
@@ -2370,7 +2370,7 @@ A big pot pie has been left here.~
 food~
 19 0 A
 24 0 0 0 0
-0 2 50 P
+0 2 500000 P
 #3010
 pit~
 the donation pit~
@@ -2391,7 +2391,7 @@ A loaf of bread is here. It doesn't look too stale.~
 food~
 19 0 A
 12 0 0 0 0
-0 1 10 P
+0 1 100000 P
 #3012
 cinnamon roll~
 a cinnamon roll~
@@ -2399,7 +2399,7 @@ A piping hot cinnamon roll is here. It looks delicious!~
 food~
 19 0 A
 8 0 0 0 0
-0 1 15 P
+0 1 150000 P
 #3013
 sfhg cookies~
 Soulcrusher's sfhg cookies~
@@ -2407,7 +2407,7 @@ A sack of oddly shaped, burnt, chocolate chip cookies is here.~
 food~
 19 0 A
 10 0 0 0 0
-0 1 20 P
+0 1 200000 P
 #3014
 danish blueberry~
 a blueberry danish~
@@ -2415,7 +2415,7 @@ A scrumptious blueberry danish is here.~
 food~
 19 0 A
 6 0 0 0 0
-0 1 15 P
+0 1 150000 P
 #3020
 dagger~
 a dagger~
@@ -2423,7 +2423,7 @@ A dagger with a long thin blade is here.~
 steel~
 5 0 AN
 2 1 4 2 0
-5 1 100 G
+5 1 1000000 G
 #3021
 sword small~
 a small sword~
@@ -2431,7 +2431,7 @@ A small sword lies here.~
 steel~
 5 0 AN
 1 1 5 1 0
-5 3 200 G
+5 3 2000000 G
 #3022
 sword long~
 a long sword~
@@ -2439,7 +2439,7 @@ A long sword has been left here.~
 steel~
 5 0 AN
 1 2 5 3 0
-10 5 750 G
+10 5 7500000 G
 #3023
 club~
 a club~
@@ -2447,7 +2447,7 @@ A stout wooden club is here.~
 wood~
 5 0 AN
 4 1 7 7 0
-5 3 150 G
+5 3 1500000 G
 A
 18 -1
 #3024
@@ -2457,7 +2457,7 @@ A heavy iron mace is here.~
 iron~
 5 0 AN
 4 2 4 7 0
-10 10 500 G
+10 10 5000000 G
 A
 19 1
 #3025
@@ -2467,7 +2467,7 @@ A small hand axe lies forgotten on the floor.~
 iron~
 5 0 AN
 5 1 6 25 0
-5 5 200 G
+5 5 2000000 G
 #3026
 axe battle~
 a battle axe~
@@ -2475,7 +2475,7 @@ A large steel axe rests on the ground.~
 steel~
 5 0 AN
 5 2 5 25 F
-10 9 500 G
+10 9 5000000 G
 #3027
 spear~
 a spear~
@@ -2483,7 +2483,7 @@ A long spear leans against the wall.~
 steel~
 5 0 AN
 3 1 8 11 0
-5 5 150 G
+5 5 1500000 G
 #3028
 staff~
 a wooden staff~
@@ -2491,7 +2491,7 @@ A stout wooden staff lies on the floor.~
 wood~
 5 0 AN
 3 1 8 7 F
-5 4 100 G
+5 4 1000000 G
 A
 17 -2
 #3029
@@ -2501,7 +2501,7 @@ A small iron flail is here.~
 iron~
 5 0 AN
 6 1 7 7 0
-10 5 500 G
+10 5 5000000 G
 A
 17 1
 #3030
@@ -2511,7 +2511,7 @@ A large torch.~
 wood~
 1 0 A
 0 0 50 0 0
-0 1 10 G
+0 1 100000 G
 #3031
 lantern~
 a hooded brass lantern~
@@ -2519,7 +2519,7 @@ A hooded brass lantern has been left here.~
 brass~
 1 0 A
 0 0 250 0 0
-0 4 30 P
+0 4 300000 P
 E
 lantern~
 It is a large and robust but somewhat battered oil lantern made from brass,
@@ -2537,7 +2537,7 @@ A small bag.~
 leather~
 15 0 A
 50 0 0 5 0
-0 2 15 G
+0 2 150000 G
 #3033
 box~
 a box~
@@ -2545,7 +2545,7 @@ A small box.~
 wood~
 15 0 A
 10 0 0 5 0
-0 3 10 G
+0 3 100000 G
 #3039
 scroll cancellation~
 a scroll of cancellation~
@@ -2553,7 +2553,7 @@ A rolled vellum scroll is here.~
 vellum~
 2 G AO
 15 507 0 0 0
-0 1 1000 P
+0 1 10000000 P
 E
 scroll~
 Use this scroll to remove magical curses.
@@ -2565,7 +2565,7 @@ A scroll has carelessly been left here.~
 vellum~
 2 G AO
 12 45 0 0 0
-5 1 1350 P
+5 1 13500000 P
 E
 scroll identify~
 The scroll has a magic formula drawn upon it:
@@ -2583,7 +2583,7 @@ A small yellow potion has carelessly been left here.~
 glass~
 10 G AO
 12 19 0 0 0
-0 1 100 P
+0 1 1000000 P
 E
 potion yellow~
 The potion has a small label 'Detect The Invisible'.
@@ -2595,7 +2595,7 @@ A scroll has carelessly been left here.~
 vellum~
 2 G AO
 20 42 0 0 0
-0 2 50 P
+0 2 500000 P
 E
 scroll~
 The scroll has written a formula of 'Word of Recall' upon it.
@@ -2607,7 +2607,7 @@ an enchanted ring of protection sits on the floor.~
 silver~
 8 G AB
 0 0 0 0 0
-5 1 500 P
+5 1 5000000 P
 E
 ring~
 It's a silver ring set with a gleaming moonstone.
@@ -2623,7 +2623,7 @@ a wooden stick lies on the ground.~
 wood~
 3 G AO
 4 10 10 32 0
-0 1 400 P
+0 1 4000000 P
 E
 wand~
 It has a little note that says 'point this end at target'.
@@ -2635,7 +2635,7 @@ A scale mail jacket is lying on the ground.~
 steel~
 9 0 AD
 3 4 4 0 2
-5 16 750 G
+5 16 7500000 G
 #3046
 bronze breast plate~
 a bronze breast plate~
@@ -2643,7 +2643,7 @@ A bronze breast plate is lying on the ground.~
 bronze~
 9 0 AD
 6 5 7 0 5
-10 20 1000 G
+10 20 10000000 G
 #3050
 raft~
 a raft~
@@ -2651,7 +2651,7 @@ A raft has been left here.~
 wood~
 22 0 A
 0 0 0 0 0
-0 75 1000 A
+0 75 10000000 A
 E
 raft~
 The raft looks very primitive.
@@ -2663,7 +2663,7 @@ A canoe has been left here.~
 wood~
 22 0 A
 0 0 0 0 0
-0 50 1500 G
+0 50 15000000 G
 E
 canoe~
 The canoe is fairly light.
@@ -2675,7 +2675,7 @@ A strong leather bracer is here.~
 leather~
 9 0 AM
 0 2 2 0 0
-5 1 25 P
+5 1 250000 P
 #3053
 belt leather~
 a leather belt~
@@ -2683,7 +2683,7 @@ A soft leather belt is here.~
 leather~
 9 0 AL
 1 2 2 0 0
-5 1 50 G
+5 1 500000 G
 #3054
 girdle leather~
 a leather girdle~
@@ -2691,7 +2691,7 @@ A wide leather girdle is here.~
 leather~
 9 0 AL
 1 3 3 0 1
-7 2 50 G
+7 2 500000 G
 #3060
 jerkin leather~
 a leather jerkin~
@@ -2699,7 +2699,7 @@ A leather jerkin is lying on the ground.~
 leather~
 9 0 AD
 1 2 2 0 0
-5 5 75 G
+5 5 750000 G
 #3061
 cap leather~
 a leather cap~
@@ -2707,7 +2707,7 @@ A leather cap is lying on the ground.~
 leather~
 9 0 AE
 1 2 2 0 0
-5 1 25 G
+5 1 250000 G
 #3062
 pants leather~
 a pair of leather pants~
@@ -2715,7 +2715,7 @@ A pair of leather pants is lying on the ground.~
 leather~
 9 0 AF
 1 2 2 0 0
-5 5 50 G
+5 5 500000 G
 #3063
 boots leather~
 a pair of leather boots~
@@ -2723,7 +2723,7 @@ A pair of leather boots lies here.~
 leather~
 9 0 AG
 1 2 2 0 0
-5 3 75 G
+5 3 750000 G
 #3064
 gloves leather~
 a pair of leather gloves~
@@ -2731,7 +2731,7 @@ A pair of leather gloves is lying on the ground.~
 leather~
 9 0 AH
 1 2 2 0 0
-5 1 55 G
+5 1 550000 G
 #3065
 sleeves leather~
 a pair of leather sleeves~
@@ -2739,7 +2739,7 @@ A pair of leather sleeves is lying on the ground.~
 leather~
 9 0 AI
 1 2 2 0 0
-5 3 55 G
+5 3 550000 G
 #3066
 jerkin hard leather~
 a hard leather jerkin~
@@ -2747,7 +2747,7 @@ A hard leather jerkin is lying on the ground.~
 leather~
 9 0 AD
 1 3 3 0 1
-5 8 500 G
+5 8 5000000 G
 #3067
 cap hard leather~
 a hard leather cap~
@@ -2755,7 +2755,7 @@ A hard leather cap is lying on the ground.~
 leather~
 9 0 AE
 1 3 3 0 0
-10 2 100 G
+10 2 1000000 G
 #3068
 pants hard leather~
 a pair of hard leather pants~
@@ -2763,7 +2763,7 @@ A pair of hard leather pants is lying on the ground.~
 leather~
 9 0 AF
 1 3 3 0 1
-10 7 200 G
+10 7 2000000 G
 #3069
 boots hard leather~
 a pair of hard leather boots~
@@ -2771,7 +2771,7 @@ A pair of hard leather boots lies here.~
 leather~
 9 0 AG
 1 3 3 0 1
-10 4 200 G
+10 4 2000000 G
 #3070
 gloves hard leather~
 a pair of hard leather gloves~
@@ -2779,7 +2779,7 @@ A pair of hard leather gloves is lying on the ground.~
 leather~
 9 0 AH
 1 3 3 0 1
-10 1 100 G
+10 1 1000000 G
 #3071
 sleeves hard leather~
 a pair of hard leather sleeves~
@@ -2787,7 +2787,7 @@ A pair of hard leather sleeves is lying on the ground.~
 leather~
 9 0 AI
 1 3 3 0 1
-10 4 100 G
+10 4 1000000 G
 #3072
 jerkin scale mail~
 a scale mail jerkin~
@@ -2795,7 +2795,7 @@ A scale mail jerkin is lying on the ground.~
 steel~
 9 0 AD
 3 4 4 0 2
-5 10 100 P
+5 10 1000000 P
 #3073
 coif scale mail~
 a scale mail coif~
@@ -2803,7 +2803,7 @@ A scale mail coif is lying on the ground.~
 steel~
 9 0 AE
 3 4 4 0 1
-5 5 75 P
+5 5 750000 P
 #3074
 skirt scale mail~
 a long scale mail skirt~
@@ -2811,7 +2811,7 @@ A long scale mail skirt is lying on the ground.~
 steel~
 9 0 AF
 3 4 4 0 2
-5 8 150 P
+5 8 1500000 P
 #3075
 boots reinforced~
 a pair of reinforced boots~
@@ -2819,7 +2819,7 @@ A pair of reinforced boots lies here.~
 leather~
 9 0 AG
 3 4 4 0 2
-5 4 150 P
+5 4 1500000 P
 #3076
 gloves reinforced~
 a pair of reinforced gloves~
@@ -2827,7 +2827,7 @@ A pair of reinforced gloves is lying on the ground.~
 leather~
 9 0 AH
 3 4 4 0 2
-5 2 150 P
+5 2 1500000 P
 #3077
 sleeves scale mail~
 a pair of scale mail sleeves~
@@ -2835,7 +2835,7 @@ A pair of scale mail sleeves is lying on the ground.~
 steel~
 9 0 AI
 3 4 4 0 2
-5 6 150 P
+5 6 1500000 P
 #3080
 potion heal healing~
 a potion of healing~
@@ -2843,7 +2843,7 @@ A potion of healing is here.~
 glass~
 10 G AO
 20 28 0 0 0
-15 1 2000 P
+15 1 20000000 P
 #3081
 potion sanct sanctuary~
 a potion of sanctuary~
@@ -2851,7 +2851,7 @@ A potion of sanctuary is here.~
 glass~
 10 G AO
 20 36 0 0 0
-10 1 10000 P
+10 1 100000000 P
 #3082
 potion divine~
 a potion of divine protection~
@@ -2859,7 +2859,7 @@ A potion of divine protection is here.~
 crystal~
 10 ABGI AO
 35 36 66 1 0
-20 1 25000 P
+20 1 250000000 P
 #3083
 potion cure light~
 a potion of cure light wounds~
@@ -2867,7 +2867,7 @@ A potion of cure light wounds is here.~
 glass~
 10 G AO
 5 16 0 0 0
-0 1 150 P
+0 1 1500000 P
 #3084
 potion cure serious~
 a potion of cure serious wounds~
@@ -2875,7 +2875,7 @@ A potion of cure serious wounds is here.~
 glass~
 10 G AO
 10 61 0 0 0
-5 1 1500 P
+5 1 15000000 P
 #3085
 potion cure critical critic~
 a potion of cure critical wounds~
@@ -2883,7 +2883,7 @@ A potion of cure critical wounds is here.~
 glass~
 10 G AO
 15 15 0 0 0
-8 1 2500 P
+8 1 25000000 P
 #3086
 potion antidote bottle~
 a bottle of antidote~
@@ -2891,7 +2891,7 @@ A bottle of antidote is here.~
 clay~
 10 G AO
 14 43 16 501 0
-0 1 150 P
+0 1 1500000 P
 #3087
 potion cure blindness~
 a potion of cure blindness~
@@ -2899,7 +2899,7 @@ A potion of cure blindness is here.~
 glass~
 10 G AO
 13 14 0 0 0
-0 1 100 P
+0 1 1000000 P
 #3088
 vial holy water~
 a vial of holy water~
@@ -2907,7 +2907,7 @@ A vial of holy water is here.~
 crystal~
 10 AGI AO
 20 3 34 35 0
-5 1 1500 P
+5 1 15000000 P
 #3089
 potion armor~
 a potion of armor~
@@ -2915,7 +2915,7 @@ A potion of armor is here.~
 glass~
 10 G AO
 10 1 0 0 0
-0 1 150 P
+0 1 1500000 P
 #3090
 potion negation~
 a potion of negation~
@@ -2923,7 +2923,7 @@ A potion of negation is here.~
 glass~
 10 BG AO
 35 507 0 0 0
-0 1 350 P
+0 1 3500000 P
 #3091
 potion fly flying~
 a potion of flying~
@@ -2931,7 +2931,7 @@ A potion of flying is here.~
 glass~
 10 G AO
 9 56 0 0 0
-0 1 100 P
+0 1 1000000 P
 #3092
 potion true sight~
 a potion of true sight~
@@ -2939,7 +2939,7 @@ A potion of true sight is here.~
 glass~
 10 G AO
 10 19 20 44 0
-0 1 150 P
+0 1 1500000 P
 #3093
 endless water jug bottomless~
 an endless water jug~
@@ -2963,7 +2963,7 @@ A small metal shield is lying on the ground.~
 steel~
 9 0 AJ
 4 4 4 1 2
-5 3 750 P
+5 3 7500000 P
 #3100
 tea cup~
 a cup of tea~
@@ -2971,7 +2971,7 @@ A cup has been set here.~
 china~
 17 0 A
 2 2 11 0 0
-0 1 5 P
+0 1 50000 P
 E
 cup~
 It is a small simple cup.
@@ -2983,7 +2983,7 @@ A cup has been set here.~
 china~
 17 0 A
 2 2 12 0 0
-0 1 7 P
+0 1 70000 P
 E
 cup~
 It is a small simple cup.
@@ -2995,7 +2995,7 @@ A cup has been set here.~
 clay~
 17 0 A
 3 3 0 0 0
-0 1 1 P
+0 1 10000 P
 E
 cup~
 It is a large simple cup.
@@ -3007,7 +3007,7 @@ A bronze bracer is lying on the ground.~
 bronze~
 9 0 AM
 3 6 6 0 3
-15 3 2500 P
+15 3 25000000 P
 #3106
 bracer iron~
 an iron bracer~
@@ -3015,7 +3015,7 @@ An iron bracer is lying on the ground.~
 iron~
 9 0 AM
 3 7 7 0 3
-12 4 2000 P
+12 4 20000000 P
 #3110
 shirt chain mail~
 a chain mail shirt~
@@ -3023,7 +3023,7 @@ A chain mail shirt is lying on the ground.~
 steel~
 9 0 AD
 5 4 5 0 3
-10 18 500 P
+10 18 5000000 P
 #3111
 coif chain mail~
 a chain mail coif~
@@ -3031,7 +3031,7 @@ A chain mail coif is lying on the ground.~
 steel~
 9 0 AE
 5 4 5 0 2
-10 5 200 P
+10 5 2000000 P
 #3112
 skirt chain mail~
 a long chain mail skirt~
@@ -3039,7 +3039,7 @@ A long chain mail skirt is lying on the ground.~
 steel~
 9 0 AF
 5 4 5 0 3
-10 10 250 P
+10 10 2500000 P
 #3113
 boots ironbound~
 a pair of iron-bound boots~
@@ -3047,7 +3047,7 @@ A pair of iron-bound boots lies here.~
 iron~
 9 0 AG
 5 4 5 0 3
-10 6 500 P
+10 6 5000000 P
 #3114
 gauntlets chain mail~
 a pair of chain mail gauntlets~
@@ -3055,7 +3055,7 @@ A pair of chain mail gauntlets is lying on the ground.~
 steel~
 9 0 AH
 5 4 5 0 3
-10 4 300 P
+10 4 3000000 P
 #3115
 sleeves chain mail~
 a pair of chain mail sleeves~
@@ -3063,7 +3063,7 @@ A pair of chain mail sleeves is lying on the ground.~
 steel~
 9 0 AI
 5 4 5 0 3
-10 8 200 P
+10 8 2000000 P
 #3116
 shield large metal~
 a large metal shield~
@@ -3071,7 +3071,7 @@ A large metal shield is lying on the ground.~
 steel~
 9 0 AJ
 5 5 5 2 4
-10 10 575 P
+10 10 5750000 P
 #3117
 shield small wooden~
 a small wooden shield~
@@ -3079,7 +3079,7 @@ A small wooden shield is lying on the ground.~
 wood~
 9 0 AJ
 4 3 2 1 1
-5 2 150 P
+5 2 1500000 P
 #3120
 key iron~
 a key~
@@ -3135,7 +3135,7 @@ A long sword has been left here.~
 steel~
 5 0 AN
 1 2 5 3 D
-10 5 750 P
+10 5 7500000 P
 E
 sword long~
 This is the ceremonial sword of the Mayor of Dresden.
@@ -3147,7 +3147,7 @@ A pair of hand cuffs has been left here.~
 iron~
 13 0 AO
 0 0 0 0 0
-0 4 200 A
+0 4 2000000 A
 #3130
 desk drawer~
 the desk~
@@ -3182,7 +3182,7 @@ Looks like at least 1,000 coins.
 gold~
 20 0 A
 950 0 0 0 0
-0 25 950 P
+0 25 9500000 P
 #3133
 city key~
 the City Key~
@@ -3193,7 +3193,7 @@ Arms.
 gold~
 18 0 A
 0 0 0 0 0
-0 25 100 G
+0 25 1000000 G
 #3134
 bench~
 the Bench~
@@ -3201,7 +3201,7 @@ A white-painted wooden bench is standing here.~
 wood~
 12 0 0
 0 0 0 0 0
-0 100 600 G
+0 100 6000000 G
 E
 bench~
 It is a quite heavy but very comfortable bench.  It is placed with its front
@@ -3215,7 +3215,7 @@ A small white fountain gushes forth here.~
 stone~
 25 0 0
 50 50 0 0 0
-0 500 300 G
+0 500 3000000 G
 E
 fountain~
 It is very nice.  Made from fine white marble.
@@ -3227,7 +3227,7 @@ A small pile of gold coins lies here.~
 gold~
 20 0 1
 20 0 0 0 0
-0 2 20 P
+0 2 200000 P
 #3137
 key steel~
 a steel key~
@@ -3247,7 +3247,7 @@ A bloated dead buffalo is on the floor.~
 leather~
 17 0 A
 20 20 0 0 0
-0 5 30 G
+0 5 300000 G
 #3139
 letter resignation~
 the receptionist's letter of resignation~
@@ -3297,7 +3297,7 @@ A piping hot cup of cinnamon coffee is here.~
 china~
 17 0 A
 3 3 12 0 0
-0 1 25 P
+0 1 250000 P
 E
 coffee~
 It's a nice flavorful blend, just right for late-night mudding sessions.
@@ -3309,7 +3309,7 @@ A nice hot bowl of chicken noodle soup is here.~
 wood~
 19 0 A
 8 0 0 0 0
-0 2 30 P
+0 2 300000 P
 E
 soup~
 This looks like just the thing for a cold!
@@ -3321,7 +3321,7 @@ A bowl of nice thick beef stew, with lots of veggetables, sits here.~
 clay~
 19 0 A
 25 0 0 0 0
-0 3 50 P
+0 3 500000 P
 E
 stew~
 This is Kate's special stew, guaranteed to keep hunger pangs away for many
@@ -3334,7 +3334,7 @@ A yummy breadstick, covered with sesame seeds, is here.~
 food~
 19 0 A
 4 0 0 0 0
-0 1 5 P
+0 1 50000 P
 E
 breadstick~
 A nice, crunchy breadstick with just enough seasoning.  Better buy two.
@@ -3346,7 +3346,7 @@ A dark-tinted bottle of beer is here.~
 glass~
 17 0 A
 8 8 1 0 0
-0 2 20 P
+0 2 200000 P
 E
 beer bottle~
 It's a fine beer for serious drinkers, complete with the famous horse head
@@ -3367,7 +3367,7 @@ A rolled up map is here.~
 paper~
 28 0 A
 1 0 0 0 0
-0 1 500 P
+0 1 5000000 P
 E
 map midgaard dresden~
 			       CITY OF DRESDEN
@@ -3412,7 +3412,7 @@ A rolled up map is here.~
 paper~
 28 0 A
 1 0 0 0 0
-0 1 1500 P
+0 1 15000000 P
 E
 map Sembia~
 			 * * *      Sembia     * * *
@@ -3457,7 +3457,7 @@ A rolled up map is here.~
 paper~
 28 0 A
 1 0 0 0 0
-0 1 1000 P
+0 1 10000000 P
 E
 map southern midgaard~
 
@@ -3475,7 +3475,7 @@ A rolled up map is here.~
 paper~
 28 0 A
 1 0 0 0 0
-0 1 750 P
+0 1 7500000 P
 E
 map dwarven kingdom dwarf~
 
@@ -3523,7 +3523,7 @@ A rolled up map is here.~
 paper~
 28 0 A
 1 0 0 0 0
-0 1 1500 P
+0 1 15000000 P
 E
 map moria first~
 * * * MORIA - Map 1 * * *
@@ -3564,7 +3564,7 @@ A rolled up map is here.~
 paper~
 28 0 A
 1 0 0 0 0
-0 1 2500 P
+0 1 25000000 P
 E
 map new thalos~
 .
@@ -3629,7 +3629,7 @@ A rolled up map is here.~
 paper~
 28 0 A
 1 0 0 0 0
-0 1 2000 P
+0 1 20000000 P
 E
 map olympus~
 .
@@ -3930,7 +3930,7 @@ A shield with the crest of Dresden upon it lies here.~
 steel~
 9 AGKL AJ
 11 11 10 0 0
-40 30 2300 P
+40 30 23000000 P
 E
 shield city~
 When you look at the shield you see a crest upon it.  The crest is two swords
@@ -3949,7 +3949,7 @@ A long steel sword lies on the ground here.~
 steel~
 5 AGK AN
 1 2 23 3 AD
-40 24 2500 P
+40 24 25000000 P
 E
 sword valor~
 Here is the sword of the Elite Guard of Dresden.  You can feel it pulsing in
@@ -3972,7 +3972,7 @@ A grand set of platemail that shines with an inner light is here.~
 steel~
 9 ABGK AD
 12 12 11 0 0
-40 30 2200 P
+40 30 22000000 P
 A
 4 2
 A
@@ -3987,7 +3987,7 @@ A large shield with the crest of the city of Dresden upon it is here.~
 steel~
 9 ABKL AJ
 8 7 9 0 0
-25 20 1200 P
+25 20 12000000 P
 E
 shield city~
 When you look at the shield you see a crest upon it.  The crest is two swords
@@ -4041,7 +4041,7 @@ A black helmet is on the floor.~
 adamantite~
 9 GK AE
 12 12 11 0 0
-45 25 3200 P
+45 25 32000000 P
 A
 13 1
 A
@@ -4053,7 +4053,7 @@ A pair of black sleeves are on the floor.~
 adamantite~
 9 GK AI
 12 10 11 0 0
-45 30 2900 P
+45 30 29000000 P
 A
 5 1
 A
@@ -4065,7 +4065,7 @@ Some black leggings are on the floor.~
 adamantite~
 9 GK AI
 10 11 13 0 0
-42 30 2600 P
+42 30 26000000 P
 A
 14 20
 A
@@ -4077,7 +4077,7 @@ A pair of black gauntlets are on the floor.~
 adamantite~
 9 GK AH
 11 10 13 0 0
-43 30 2700 P
+43 30 27000000 P
 A
 18 3
 A
@@ -4089,7 +4089,7 @@ Some black boots are on the floor.~
 adamantite~
 9 GK AG
 11 10 12 3 0
-40 30 2850 P
+40 30 28500000 P
 A
 13 10
 A
@@ -4101,7 +4101,7 @@ A black cloak lies on the floor.~
 adamantite~
 9 GK AC
 11 13 9 0 0
-42 30 2650 P
+42 30 26500000 P
 A
 22 -4
 A
@@ -4113,7 +4113,7 @@ A black girth is on the floor.~
 adamantite~
 9 GK AL
 13 11 12 0 0
-45 32 2350 P
+45 32 23500000 P
 A
 1 1
 A
@@ -4125,7 +4125,7 @@ A large, black shield is on the floor.~
 adamantite~
 9 GK AJ
 10 11 12 0 0
-44 30 2560 P
+44 30 25600000 P
 A
 17 4
 A
@@ -4137,7 +4137,7 @@ A shiny black amulet with a silver symbol is here.~
 adamantite~
 9 GK AC
 12 11 11 0 0
-40 28 2650 P
+40 28 26500000 P
 A
 17 3
 A
@@ -4157,7 +4157,7 @@ A black hilted sword with engravings on the blade lies here.~
 adamantite~
 5 FG AN
 0 2 24 1 E
-40 7 1800 P
+40 7 18000000 P
 A
 18 4
 A
@@ -4169,7 +4169,7 @@ A shiny ring of ebony is in the dirt.~
 adamantite~
 9 G AB
 11 10 10 0 0
-36 1 1000 P
+36 1 10000000 P
 A
 24 -2
 A
@@ -4192,7 +4192,7 @@ A steel helmet is on the floor.~
 steel~
 9 GK AE
 9 10 10 0 0
-37 20 2300 P
+37 20 23000000 P
 A
 21 -2
 A
@@ -4204,7 +4204,7 @@ A pair of steel sleeves are on the floor.~
 steel~
 9 GK AI
 11 12 12 0 0
-40 25 2500 P
+40 25 25000000 P
 A
 20 -2
 A
@@ -4216,7 +4216,7 @@ Some steel leggings are on the floor.~
 steel~
 9 GK AF
 12 11 10 0 0
-39 25 2350 P
+39 25 23500000 P
 A
 14 10
 A
@@ -4228,7 +4228,7 @@ A pair of steel gauntlets are on the floor.~
 steel~
 9 GK AH
 11 11 10 2 0
-41 25 2250 P
+41 25 22500000 P
 A
 18 1
 A
@@ -4242,7 +4242,7 @@ Some steel boots are on the floor.~
 steel~
 9 GK AG
 11 10 9 3 0
-42 25 2550 P
+42 25 25500000 P
 A
 13 5
 A
@@ -4254,7 +4254,7 @@ A commander's cloak lies on the floor.~
 steel~
 9 GK AC
 11 11 11 1 0
-42 27 2650 P
+42 27 26500000 P
 A
 22 -2
 A
@@ -4266,7 +4266,7 @@ A steel girth is on the floor.~
 steel~
 9 GK AL
 12 11 10 0 0
-42 25 2650 P
+42 25 26500000 P
 A
 24 -1
 #4471
@@ -4276,7 +4276,7 @@ A large, steel shield is on the floor.~
 steel~
 9 GK AJ
 12 11 11 0 0
-40 30 2750 P
+40 30 27500000 P
 A
 17 2
 A
@@ -4298,7 +4298,7 @@ A black hilted sword with engravings on the blade lies here.~
 steel~
 5 BFGM AN
 0 2 23 11 AD
-40 7 1650 P
+40 7 16500000 P
 A
 13 50
 A
@@ -4315,7 +4315,7 @@ A black helmet is on the floor.~
 iron~
 9 GK AE
 10 11 10 0 0
-36 20 1950 P
+36 20 19500000 P
 A
 21 -1
 #4475
@@ -4325,7 +4325,7 @@ A pair of black scalemail sleeves are on the floor.~
 iron~
 9 GK AI
 9 10 10 0 0
-35 20 1650 P
+35 20 16500000 P
 A
 20 -1
 #4476
@@ -4335,7 +4335,7 @@ Some black scalemail leggings are on the floor.~
 iron~
 9 GK AF
 10 10 9 2 0
-38 23 1350 P
+38 23 13500000 P
 A
 14 5
 #4477
@@ -4345,7 +4345,7 @@ A pair of black scalemail gauntlets are on the floor.~
 iron~
 9 GK AH
 12 10 11 0 0
-40 20 1650 P
+40 20 16500000 P
 A
 21 -1
 #4478
@@ -4355,7 +4355,7 @@ Some black scalemail boots are on the floor.~
 iron~
 9 GK AG
 11 10 10 0 0
-36 20 1550 P
+36 20 15500000 P
 A
 13 2
 A
@@ -4367,7 +4367,7 @@ A black sergeant's cloak lies on the floor.~
 iron~
 9 GK AC
 10 10 9 2 0
-36 20 1750 P
+36 20 17500000 P
 A
 22 -1
 #4480
@@ -4377,7 +4377,7 @@ A black scalemail girth is on the floor.~
 iron~
 9 GK AJ
 10 10 9 2 0
-36 24 1780 P
+36 24 17800000 P
 #4481
 shield large black~
 the large black shield~
@@ -4385,7 +4385,7 @@ A large, black shield is on the floor.~
 iron~
 9 GK AJ
 11 10 10 0 0
-40 20 1650 P
+40 20 16500000 P
 A
 17 1
 #4482
@@ -4405,7 +4405,7 @@ A black iron staff with engravings on the head lies here.~
 iron~
 5 BG AN
 0 2 22 8 0
-36 25 1750 P
+36 25 17500000 P
 A
 18 4
 A
@@ -4420,7 +4420,7 @@ A suit of brass platemail is sitting on the floor.~
 brass~
 9 G AD
 7 8 8 0 0
-20 10 1000 P
+20 10 10000000 P
 A
 24 -1
 A
@@ -4432,7 +4432,7 @@ A blade with runes etched on it is on the floor.~
 copper~
 5 G AN
 0 2 6 3 0
-20 7 1000 P
+20 7 10000000 P
 A
 18 2
 #4486
@@ -4442,7 +4442,7 @@ A hammer with runes etched on it is on the floor.~
 copper~
 5 G AN
 0 2 6 7 0
-20 12 1000 P
+20 12 10000000 P
 A
 18 2
 #4487
@@ -4452,7 +4452,7 @@ A polearm with runes etched on it is on the floor.~
 copper~
 5 G AN
 0 2 6 2 0
-20 7 1000 P
+20 7 10000000 P
 A
 18 2
 #4488
@@ -4462,7 +4462,7 @@ A large two-handed sword with runes etched on it is on the floor.~
 copper~
 5 G AN
 0 2 6 25 0
-20 7 1000 P
+20 7 10000000 P
 A
 18 2
 #4489
@@ -4472,7 +4472,7 @@ A bow with runes etched on it is on the floor.~
 wood~
 5 G AN
 9 2 6 11 0
-20 7 1000 P
+20 7 10000000 P
 A
 18 2
 
@@ -4483,7 +4483,7 @@ A suit of ebony plate armor is here on the ground.~
 adamantite~
 9 GK AD
 12 12 13 2 0
-45 35 3200 P
+45 35 32000000 P
 A
 13 20
 A
@@ -4496,7 +4496,7 @@ A suit of steel plate armor is here on the ground.~
 steel~
 9 GK AD
 11 12 12 2 0
-42 33 2800 P
+42 33 28000000 P
 A
 13 15
 A
@@ -4509,7 +4509,7 @@ A suit of black plate armor is here on the ground.~
 steel~
 9 GK AD
 11 11 11 2 0
-40 33 2500 P
+40 33 25000000 P
 A
 13 10
 A
@@ -4522,7 +4522,7 @@ A bottle of Molson Export is here.~
 glass~
 17 0 A
 2 2 7 0 0
-0 3 20 P
+0 3 200000 P
 #4494
 jello shot~
 a jello shot~
@@ -4530,7 +4530,7 @@ A jello shot is wiggling here.~
 glass~
 17 0 A
 1 1 3 0 0
-0 3 25 P
+0 3 250000 P
 #4495
 gin~
 a bottle of gin~
@@ -4538,7 +4538,7 @@ A bottle of gin is sitting here.~
 glass~
 17 0 A
 5 5 7 0 0
-0 3 40 P
+0 3 400000 P
 
 #4496
 skull throne~
@@ -4547,7 +4547,7 @@ A giant skull throne with a snake crawling through the eyes and nose is here.~
 stone~
 12 0 0
 0 0 0 0 0
-0 100 300 P
+0 100 3000000 P
 
 #4497
 cloak storage~
@@ -4556,7 +4556,7 @@ A cloak is on the ground in a pile.~
 leather~
 15 G AC
 70 1 0 0 0
-8 5 120 P
+8 5 1200000 P
 #4498
 ring holding~
 a ring of holding~
@@ -4564,7 +4564,7 @@ A small ring with a hinge is here collecting dust.~
 silver~
 15 G AB
 70 1 0 0 0
-10 3 80 P
+10 3 800000 P
 #4499
 city key~
 the City Key~
@@ -4590,7 +4590,7 @@ An expensive looking snowy white cloak is here.~
 leather~
 9 AFGIKLM AC
 12 12 12 5 0
-40 16 3500 P
+40 16 35000000 P
 A
 1 2
 A
@@ -4610,7 +4610,7 @@ A metal blade, cold to the touch, is here glowing softly.~
 adamantite~
 5 AGFIKL AN
 1 2 23 30 BDF
-40 25 3250 P
+40 25 32500000 P
 A
 1 -1
 A
@@ -4630,7 +4630,7 @@ A Ring of glowing adamantite sits here in the dirt.~
 adamantite~
 37 AB AB
 1 0 0 0 0
-1 5 1000 P
+1 5 10000000 P
 T
 $n wears $p and smiles happily!~
 You wear $p and are transported to Recall!~
@@ -4641,7 +4641,7 @@ A dark ring lies here in the dust...don't pick it up!~
 adamantite~
 37 AB AB
 2 0 0 0 0
-1 5 1000 P
+1 5 10000000 P
 T
 $n wears $p and screams 'Ohhh great merciful jesus!'....then explodes!~
 You wear $p and explode into very tiny little pieces!~
@@ -4652,7 +4652,7 @@ A greenish hued ring lies in the dust here.~
 adamantite~
 37 AB AB
 3 0 3 0 0
-1 5 1000 P
+1 5 10000000 P
 #4506
 relicobjectone piece staff~
 the first piece of a staff~
@@ -4660,7 +4660,7 @@ A piece of a staff is lying here.~
 adamantite~
 32 AB A
 0 0 0 0 0
-1 2 10000 P
+1 2 100000000 P
 E
 piece staff~
 A piece of staff is lying here.
@@ -4673,7 +4673,7 @@ A piece of a staff is lying here.~
 adamantite~
 32 AB A
 0 0 0 0 0
-1 2 10000 P
+1 2 100000000 P
 E
 piece staff~
 A piece of staff is lying here.
@@ -4686,7 +4686,7 @@ A piece of a staff is lying here.~
 adamantite~
 32 AB A
 0 0 0 0 0
-1 2 10000 P
+1 2 100000000 P
 E
 piece staff~
 A piece of staff is lying here.
@@ -4699,7 +4699,7 @@ A piece of a staff is lying here.~
 adamantite~
 32 AB A
 0 0 0 0 0
-1 2 10000 P
+1 2 100000000 P
 E
 piece staff~
 A piece of staff is lying here.
@@ -4712,7 +4712,7 @@ A piece of a staff is lying here.~
 adamantite~
 32 AB A
 0 0 0 0 0
-1 2 10000 P
+1 2 100000000 P
 E
 piece staff~
 A piece of staff is lying here.
@@ -4725,7 +4725,7 @@ A piece of a staff is lying here.~
 adamantite~
 32 AB A
 0 0 0 0 0
-1 2 10000 P
+1 2 100000000 P
 E
 piece staff~
 A piece of staff is lying here.
@@ -4738,7 +4738,7 @@ A piece of a staff is lying here.~
 adamantite~
 32 AB A
 0 0 0 0 0
-1 2 10000 P
+1 2 100000000 P
 E
 piece staff~
 A piece of staff is lying here.
@@ -4751,7 +4751,7 @@ A very powerful staff is lying here.~
 adamantite~
 4 GV AO
 65 12 12 568 0
-1 3 1000 P
+1 3 10000000 P
 E
 staff gods~
 In your hands you have the most powerful staff in the entire

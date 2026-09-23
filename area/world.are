@@ -172,7 +172,7 @@ a small red claw of a lobstrosity lies here.~
 stone~
 5 0 AN
 2 4 4 5 0
-10 2 10 P
+10 2 100000 P
 A
 2 1
 #29402
@@ -182,7 +182,7 @@ some brown bearskin is on the ground.~
 leather~
 9 0 AK
 4 3 4 3 0
-10 2 100 P
+10 2 1000000 P
 A
 1 1
 #29403
@@ -192,7 +192,7 @@ a brown branch is hidden in the foliage.~
 wood~
 4 0 AO
 30 5 5 72 0
-30 5 100 P
+30 5 1000000 P
 #29404
 wand purple~
 a purple wand~
@@ -200,7 +200,7 @@ a purple wand lies here.~
 steel~
 3 0 AO
 20 3 3 43 0
-20 3 100 P
+20 3 1000000 P
 #29405
 tree oak~
 a colossal oak tree.~
@@ -208,7 +208,7 @@ a colossal oak tree stands here.~
 wood~
 31 0 0
 6 29497 0 1 0
-1 1 1 P
+1 1 10000 P
 #29406
 bush berry~
 a large green berry bush~
@@ -216,7 +216,7 @@ a large green berry bush is here.~
 wood~
 31 0 0
 8 29488 0 1 0
-1 1 1 P
+1 1 10000 P
 #29407
 bush berry~
 a large green berry bush~
@@ -224,7 +224,7 @@ a large green berry bush is here.~
 wood~
 15 0 0
 900 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #29408
 tree oak~
 a towering tree~
@@ -232,7 +232,7 @@ a towering tree stands here.~
 wood~
 15 0 0
 900 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #29409
 berries red~
 red berries~
@@ -240,7 +240,7 @@ some red berries are here.~
 pill~
 26 0 A
 15 33 0 0 0
-15 1 1 P
+15 1 10000 P
 #29410
 leaf green~
 a green leaf~
@@ -248,7 +248,7 @@ a leaf is on the ground.~
 pill~
 26 0 A
 15 17 0 0 0
-15 1 1 P
+15 1 10000 P
 #29411
 apples~
 apples~
@@ -256,7 +256,7 @@ tasty looking apples grow here.~
 pill~
 19 0 A
 70 0 0 0 0
-15 1 1 P
+15 1 10000 P
 #29412
 strawberries~
 strawberries~
@@ -264,7 +264,7 @@ yummy strawberries are here.~
 pill~
 26 0 A
 15 35 0 0 0
-15 1 1 P
+15 1 10000 P
 #29413
 rock stone~
 a stone rock~
@@ -272,7 +272,7 @@ a flat faced rock is here.~
 stone~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 rock stone~
 This stone looks worn away:
@@ -289,7 +289,7 @@ a metal plaque lies here discarded.~
 steel~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 plaque metal~
 It reads:
@@ -317,7 +317,7 @@ a weather worn sign is here.~
 wood~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 sign~
 You look at the sign:
@@ -342,7 +342,7 @@ a sign lies on its back in the sand.~
 wood~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 sign~
 You read the sign:
@@ -366,7 +366,7 @@ a sign has been hammered into the ground here.~
 wood~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 sign~
 It reads:
@@ -390,7 +390,7 @@ the remains of a campfire are here.~
 wood~
 15 0 0
 900 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #29419
 jawbone white~
 a white jawbone~
@@ -398,7 +398,7 @@ a white jawbone of a human is here.~
 stone~
 3 0 AO
 25 2 2 7 0
-25 1 1 P
+25 1 10000 P
 #29420
 tarot card~
 a tarot card~
@@ -406,7 +406,7 @@ a tarot card with a picture of a large Dark Tower is here.~
 wood~
 2 0 AO
 25 0 0 42 0
-25 1 1 P
+25 1 10000 P
 #29421
 post hitching~
 a hitching post~
@@ -414,7 +414,7 @@ a hitching post is here for tying horses.~
 wood~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #29422
 button~
 a button~
@@ -422,7 +422,7 @@ a button is on the wall.~
 adamantite~
 31 0 0
 4 0 0 0 3
-1 1 1 P
+1 1 10000 P
 #29423
 rope~
 a rope~
@@ -430,7 +430,7 @@ some rope~
 wood~
 31 0 0
 6 29418 1 1 0
-1 1 1 P
+1 1 10000 P
 #29424
 cactus~
 a silly giant cactus~
@@ -438,7 +438,7 @@ a silly giant cactus is here in middle of the desert.~
 wood~
 13 0 0
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 E
 cactus~
 You look closely at the cactus and can see some sort of carved writing:
@@ -455,7 +455,7 @@ a jagged black chasm separates you from the City of Lud.~
 wood~
 31 0 0
 9 29501 3 1 0
-1 1 1 P
+1 1 10000 P
 #0
 
 #ROOMS

@@ -188,7 +188,7 @@ A small unlabeled spice jar is standing here.~
 glass~
 15 0 A
 5 5 0 0 0
-1 1 10 P
+1 1 100000 P
 #8903
 powder black~
 some black powder~
@@ -196,7 +196,7 @@ Some strong-smelling black powder has been carelessly scattered here.~
 food~
 19 0 A
 0 0 0 0 0
-1 1 300 P
+1 1 3000000 P
 E
 powder~
     *        *         *
@@ -212,7 +212,7 @@ Some small yellow kernels have been accidentally left here.~
 food~
 19 0 AO
 1 0 0 0 0
-1 1 10 P
+1 1 100000 P
 E
 kernel kernels~
 Look fairly dull...
@@ -266,7 +266,7 @@ You see a wooden staff on the floor.~
 wood~
 5 K AN
 3 1 5 27 0
--1 5 50 P
+-1 5 500000 P
 E
 staff wooden~
 This oaken staff is very hefty but balanced.
@@ -278,7 +278,7 @@ Some brown cloth is on the floor.~
 cloth~
 9 K AO
 0 0 0 0 0
--1 5 60 P
+-1 5 600000 P
 E
 robe brown cloth~
 This robe is rough, but appears quite durable.
@@ -292,7 +292,7 @@ Some bluish herbs are scattered here.~
 pill~
 26 0 A
 13 3 0 0 0
-1 1 10 P
+1 1 100000 P
 #8914
 herbs~
 some purplish herbs~
@@ -300,7 +300,7 @@ Some purplish herbs are scattered here.~
 pill~
 26 0 A
 15 0 82 0 0
-1 1 10 P
+1 1 100000 P
 #8915
 herbs~
 some blackish herbs~
@@ -308,7 +308,7 @@ Some blackish herbs are scattered here.~
 pill~
 26 0 A
 6 4 0 0 0
-1 1 10 P
+1 1 100000 P
 #8916
 herbs~
 some grayish herbs~
@@ -316,7 +316,7 @@ Some grayish herbs are scattered here.~
 pill~
 26 0 A
 5 39 0 0 0
-1 1 1 P
+1 1 10000 P
 #8917
 herbs~
 some reddish herbs~
@@ -324,7 +324,7 @@ Some reddish herbs are scattered here.~
 pill~
 26 0 A
 15 20 0 0 0
-1 1 10 P
+1 1 100000 P
 #8918
 herbs~
 some orangish herbs~
@@ -332,7 +332,7 @@ Some orangish herbs are scattered here.~
 pill~
 26 0 A
 5 16 0 0 0
-1 1 10 P
+1 1 100000 P
 #8919
 herbs~
 some pinkish herbs~
@@ -340,7 +340,7 @@ Some pinkish herbs are scattered here.~
 pill~
 26 0 A
 5 43 21 0 0
-1 1 10 P
+1 1 100000 P
 #0
 
 

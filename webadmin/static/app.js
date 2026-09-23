@@ -1044,7 +1044,7 @@
             grid.append(
                 detailSection("Core", definitionList([
                     ["Vnum", data.vnum], ["Level", data.level], ["Type", data.item_type], ["Material", data.material],
-                    ["Weight", data.weight], ["Cost", data.cost], ["Condition", data.condition], ["Area", data.area],
+                    ["Weight", data.weight], ["Cost (copper)", data.cost], ["Condition", data.condition], ["Area", data.area],
                 ])),
                 detailSection("Flags", tagList([...(data.extra_flags || []), ...(data.wear_flags || [])])),
                 detailSection("Description", node("p", { className: "description-block", text: stripMudColor(data.long_desc) }), true),

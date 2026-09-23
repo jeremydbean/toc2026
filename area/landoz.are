@@ -304,7 +304,7 @@ A large axe made of tin lies here.~
 steel~
 5 V AN
 5 7 5 21 D
-25 10 100 P
+25 10 1000000 P
 A
 1 1
 A
@@ -355,7 +355,7 @@ A pair of bright ruby red slippers are delicately left here.~
 cloth~
 9 GKL AG
 4 5 4 2 0
-22 2 1000 P
+22 2 10000000 P
 A
 3 2
 A
@@ -381,7 +381,7 @@ A magical wand lies here.~
 gold~
 9 AG AO
 9 8 9 5 0
-40 4 2000 P
+40 4 20000000 P
 A
 12 25
 A
@@ -417,7 +417,7 @@ A hat once worn by a wizard is here.~
 cloth~
 9 AG AE
 12 13 9 7 0
-45 3 200 P
+45 3 2000000 P
 A
 4 2
 A
@@ -453,7 +453,7 @@ A small staff lies here glinting in the sunlight.~
 silver~
 9 A AO
 3 3 3 0 0
-18 3 500 P
+18 3 5000000 P
 A
 1 2
 A

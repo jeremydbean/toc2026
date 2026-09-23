@@ -334,7 +334,7 @@ A white cone-shaped head ornament with religious symbols lies here.~
 gold~
 9 FG AE
 6 0 0 0 0
-23 5 2000 P
+23 5 20000000 P
 A
 4 3
 A
@@ -346,7 +346,7 @@ A black helm is here.  Several dents and several spots of blood cover it.~
 metal~
 9 FG AE
 6 0 0 0 0
-23 5 2000 P
+23 5 20000000 P
 A
 1 1
 A
@@ -366,7 +366,7 @@ A blue potion has been left here.~
 glass~
 10 G A
 15 43 16 16 61
-6 2 1000 P
+6 2 10000000 P
 E
 potion blue~
 It has a nice sky blue color and a smell like peppermint.

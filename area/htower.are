@@ -980,7 +980,7 @@ A slice of pizza is here looking very tasty.~
 food~
 19 0 A
 15 0 0 0 0
-1 1 15 P 
+1 1 150000 P 
 E
 pizza slice~
 Ahh!  Round Table pizza!  How appropriate.  Any root beer?
@@ -992,7 +992,7 @@ A large chunk of meat is here.~
 food~
 19 0 1
 24 0 0 0 0
-1 1 20 P 
+1 1 200000 P 
 #1306
 sandwich~
 a finger sandwich~
@@ -1000,7 +1000,7 @@ A finger sandwich is here.~
 food~
 19 0 A
 20 0 0 0 0
-1 2 15 P
+1 2 150000 P
 E
 sandwich finger~
 It would look quite tasty if someone had first removed the fingernails!
@@ -1024,7 +1024,7 @@ A coffee machine is here.~
 steel~
 15 0 0
 10000 5 0 0 0
--1 10000 10 P
+-1 10000 100000 P
 #1309
 cabinet~
 a cabinet~
@@ -1040,7 +1040,7 @@ A bar of silver has been left here.~
 silver~
 8 0 A
 0 0 0 0 0
--1 10 1000 P
+-1 10 10000000 P
 #1311
 bar gold~
 a bar of gold~
@@ -1048,7 +1048,7 @@ A bar of gold has been left here.~
 gold~
 8 0 A
 0 0 0 0 0
--1 11 2000 P
+-1 11 20000000 P
 #1312
 bar mithril~
 a bar of mithril~
@@ -1056,7 +1056,7 @@ A bar of mithril has been left here.~
 steel~
 8 0 A
 0 0 0 0 0
--1 12 3000 P
+-1 12 30000000 P
 #1313
 bar adamantite~
 a bar of adamantite~
@@ -1064,7 +1064,7 @@ A bar of adamantite has been left here.~
 adamantite~
 8 0 A
 0 0 0 0 0
--1 15 5000 P
+-1 15 50000000 P
 #1314
 hammer mithril~
 a mithril hammer~
@@ -1072,7 +1072,7 @@ a mithril hammer has been left here~
 steel~
 5 G AN
 4 1 5 7 E
--1 19 1000 P
+-1 19 10000000 P
 A
 18 2
 A
@@ -1084,7 +1084,7 @@ A chest is here.~
 wood~
 15 0 0
 5000 13 1316 0 0
--1 1000 1000 P
+-1 1000 10000000 P
 #1316
 key~
 a small key~
@@ -1092,7 +1092,7 @@ A small key has been left here.~
 steel~
 18 0 A
 0 0 0 0 0
-1 1 1000 P
+1 1 10000000 P
 #1317
 long sword~
 a long sword~
@@ -1100,7 +1100,7 @@ A long sword has been left here.~
 steel~
 5 0 AN
 1 1 5 3 D
--1 8 5000 P
+-1 8 50000000 P
 A
 18 1
 A
@@ -1112,7 +1112,7 @@ A finely crafted dagger made of silver is on the ground here.~
 silver~
 5 0 AN
 2 1 5 11 D
--1 5 7500 P
+-1 5 75000000 P
 A
 18 2
 A
@@ -1124,7 +1124,7 @@ A curved scimitar is here in a jewel-covered sheath.~
 steel~
 5 0 AN
 1 1 5 3 D
--1 10 8750 P
+-1 10 87500000 P
 A
 13 3
 #1320
@@ -1134,7 +1134,7 @@ A wooden staff is against the wall here.~
 wood~
 5 0 AN
 3 1 5 11 D
--1 6 10 P
+-1 6 100000 P
 #1321
 cabinet silver~
 a silver chased cabinet~
@@ -1142,7 +1142,7 @@ A large cabinet with a silver finish is here.~
 silver~
 15 0 0
 5000 15 1324 0 0
--1 10000 1 P
+-1 10000 10000 P
 #1322
 cabinet silver~
 a silver chased cabinet~
@@ -1150,7 +1150,7 @@ A large cabinet with a silver finish is here.~
 silver~
 15 0 0
 5000 15 1325 0 0
--1 10000 1 P
+-1 10000 10000 P
 #1323
 key old~
 an old key~
@@ -1158,7 +1158,7 @@ An old key is here~
 iron~
 18 0 AO
 0 0 0 0 0
--1 1 1000 P
+-1 1 10000000 P
 #1324
 silvery key~
 a silvery key~
@@ -1166,7 +1166,7 @@ A silvery key has been left here.~
 silver~
 18 0 AO
 0 0 0 0 0
-1 1 1000 P
+1 1 10000000 P
 #1325
 silvery key~
 a silvery key~
@@ -1174,7 +1174,7 @@ A silvery key has been left here.~
 silver~
 18 0 AO
 0 0 0 0 0
-1 1 1000 P
+1 1 10000000 P
 #1326
 staff red white~
 a red and white staff~
@@ -1182,7 +1182,7 @@ a red and white staff is leaning against the wall here~
 wood~
 4 0 AO
 20 1 1 28 0
-20 8 5500 P
+20 8 55000000 P
 #1327
 staff burnt~
 a burnt staff~
@@ -1190,7 +1190,7 @@ A burnt staff is leaning against the wall here.~
 wood~
 4 0 AO
 20 4 4 4 0
-20 6 1100 P
+20 6 11000000 P
 #1328
 rod black~
 a black rod~
@@ -1198,7 +1198,7 @@ A black rod has been left here.~
 wood~
 3 0 AO
 20 3 3 22 0
-20 4 1200 P
+20 4 12000000 P
 #1329
 wand wooden~
 a wooden stick~
@@ -1206,7 +1206,7 @@ a wooden stick is here~
 wood~
 3 0 AO
 20 10 10 3 0
-20 4 600 P
+20 4 6000000 P
 #1330
 wand metal~
 a metal wand~
@@ -1214,7 +1214,7 @@ A metal wand is here.~
 steel~
 3 0 AO
 20 20 4 25 0
-20 5 2000 P
+20 5 20000000 P
 #1331
 cauldron black~
 a black cauldron~
@@ -1222,7 +1222,7 @@ A large black cauldron is here bubbling.~
 iron~
 15 0 0
 1000 0 0 0 0
--1 5000 5000 P
+-1 5000 50000000 P
 #1332
 wings~
 a small pair of bat wings~
@@ -1230,7 +1230,7 @@ A small pair of bat wings is here.~
 leather~
 13 0 A
 0 0 0 0 0
--1 2 1 P
+-1 2 10000 P
 #1333
 eye eyeball~
 an eyeball~
@@ -1238,7 +1238,7 @@ An eyeball has been left here~
 lether~
 13 0 A
 0 0 0 0 0
--1 1 1 P
+-1 1 10000 P
 #1334
 book tome~
 the book of magic~
@@ -1246,7 +1246,7 @@ An enormous book is lying open here~
 vellum~
 15 1 A
 500 0 0 0 0
--1 5000 500 P
+-1 5000 5000000 P
 #1335
 spectacles glasses~
 a pair of spectacles~
@@ -1254,7 +1254,7 @@ A pair of wire-rimmed spectacles has been left here.~
 glass~
 9 64 AE
 0 0 0 0 0
--1 4 1300 P
+-1 4 13000000 P
 A
 3 1
 A
@@ -1267,7 +1267,7 @@ A golden altar gleams softly here.
 gold~
 15 0 0
 1000 5 0 0 0
--1 5000 1 P
+-1 5000 10000 P
 #1337
 medallion heart~
 a heart shaped medallion~
@@ -1275,7 +1275,7 @@ A heart shaped medallion is here.~
 gold~
 9 GI AC
 0 0 0 0 0
--1 3 5000 P
+-1 3 50000000 P
 A
 4 2
 A
@@ -1287,7 +1287,7 @@ A large chest is here.~
 wood~
 15 AG 0
 2000 15 1339 0 0
--1 5000 5000 P
+-1 5000 50000000 P
 #1339
 key intricate~
 an intricately carved key~
@@ -1295,7 +1295,7 @@ An intricately carved key has been left here.~
 iron~
 18 GIP AO
 0 0 0 0 0
-1 1 1000 P
+1 1 10000000 P
 A
 24 -1
 #1340
@@ -1313,7 +1313,7 @@ A travel worn cloak has carelessly been left here.~
 cloth~
 9 0 AC
 0 0 0 0 0
--1 5 2000 P
+-1 5 20000000 P
 A
 17 -5
 A
@@ -1325,7 +1325,7 @@ Some multicolored cloth is on the ground here~
 cloth~
 9 G AK
 0 0 0 0 0
--1 4 2500 P
+-1 4 25000000 P
 A
 2 2
 A
@@ -1337,7 +1337,7 @@ A pair of old boots is here, they look very comfortable.~
 leather~
 9 G AG
 0 0 0 0 0
--1 2 1500 P
+-1 2 15000000 P
 A
 14 15
 #1344
@@ -1347,7 +1347,7 @@ A small seashell has been left here.~
 stone~
 22 G AB
 0 0 0 0 0 
-1 2 500 P
+1 2 5000000 P
 #1345
 backpack leather~
 a leather backpack~
@@ -1355,7 +1355,7 @@ A leather backpack is here.~
 leather~
 15 0 AKO
 750 1 0 0 0
--1 9 750 P
+-1 9 7500000 P
 #1351
 cup brew herbal~
 a herbal brew~
@@ -1363,7 +1363,7 @@ A herbal brew is here.~
 glass~
 17 0 A
 5 5 11 0 0
-1 2 11 P
+1 2 110000 P
 #1352
 waybread~
 a waybread~
@@ -1371,7 +1371,7 @@ A loaf of waybread has been left here.~
 food~
 19 0 A
 32 0 0 0 0
-1 3 65 P
+1 3 650000 P
 #1355
 cleaver~
 a meat cleaver~
@@ -1379,7 +1379,7 @@ A meat cleaver is sticking in the wall here.~
 steel~
 5 0 AN
 2 4 6 11 D
-20 8 600 P
+20 8 6000000 P
 #1356
 shackles chain~
 some chain shackles~
@@ -1387,7 +1387,7 @@ Some chain shackles have been discarded here~
 steel~
 13 AH A
 0 0 0 0 0
-16 15 750 P
+16 15 7500000 P
 A
 12 -100
 A
@@ -1399,7 +1399,7 @@ A long dagger that seems to be made of silver is here.~
 silver~
 5 G AN
 2 1 5 11 D
--1 5 1200 P
+-1 5 12000000 P
 A
 18 1
 #1359
@@ -1409,7 +1409,7 @@ A scroll is here.~
 vellum~
 2 0 A
 21 4 17 38 0
-21 5 3000 P
+21 5 30000000 P
 #1360
 scroll bound~
 a bound scroll~
@@ -1417,7 +1417,7 @@ A bound scroll is here blowing in the breeze.~
 vellum~
 2 G A
 16 1 2 34 0
-16 3 9500 P
+16 3 95000000 P
 A
 17 -6
 #1361
@@ -1427,7 +1427,7 @@ A long cylindrical tube is rolling around here.~
 leather~
 15 G A
 100 1 0 0 0
--1 8 500 P
+-1 8 5000000 P
 #1362
 scroll old~
 an old scroll~
@@ -1435,7 +1435,7 @@ An old scroll has been left here.~
 vellum~
 2 0 A
 10 12 0 0 0
-10 2 500 P
+10 2 5000000 P
 #1363
 scroll blue~
 a scroll written on blue paper~
@@ -1443,7 +1443,7 @@ A blue scroll has been left here.~
 vellum~
 2 G A
 36 24 0 0 0
-36 5 2000 P
+36 5 20000000 P
 #1364
 pouch leather~
 a leather pouch~
@@ -1451,7 +1451,7 @@ A leather pouch is on the ground here.~
 leather~
 15 G AO
 150 1 0 0 0
--1 2 1750 P
+-1 2 17500000 P
 #1365
 spoon silver~
 a silver stirring spoon~
@@ -1459,7 +1459,7 @@ A silver stirring spoon has been left here.~
 silver~
 12 G AO
 0 0 0 0 0
--1 1 5650 P
+-1 1 56500000 P
 A
 24 -1
 #1366
@@ -1469,7 +1469,7 @@ A blue potion is here.~
 food~
 10 G A
 24 27 27 27 0
--1 2 9000 P
+-1 2 90000000 P
 #1367
 potion red~
 a bright red potion~
@@ -1477,7 +1477,7 @@ A bright red potion is here.~
 food~
 10 G A
 15 15 0 0 0
--1 2 1500 P
+-1 2 15000000 P
 #1368
 potion green~
 a green potion~
@@ -1485,7 +1485,7 @@ A green potion is here.~
 food~
 10 G A
 20 4 2 14 0
--1 2 1500 P
+-1 2 15000000 P
 #1369
 potion effervescent~
 an efervecent potion~
@@ -1493,7 +1493,7 @@ An efervecent potion is bubbling away here~
 food~
 10 G A
 16 18 19 20 0
--1 2 1000 P
+-1 2 10000000 P
 E
 potion efervecent~
 Ahh!  Schwepes Sparkling Soda a refreshing drink.
@@ -1505,7 +1505,7 @@ A milky white potion is here.~
 food~
 10 0 A
 14 42 0 0 0
--1 2 750 P
+-1 2 7500000 P
 #1371
 staff black~
 a black staff~
@@ -1513,7 +1513,7 @@ A black staff is leaning against the wall here.~
 wood~
 4 G AO
 20 2 2 7 0
-20 5 500 P
+20 5 5000000 P
 #1372
 flute golden~
 a golden flute~
@@ -1521,7 +1521,7 @@ A golden flute has been left here.~
 gold~
 4 FC AO
 22 1 1 7 0
-22 4 1500 P
+22 4 15000000 P
 A
 3 -6
 #1373
@@ -1531,7 +1531,7 @@ A small figurine in the shape of a humanoid is standing here.~
 wood~
 4 G AO
 21 15 15 61 0
-21 4 6000 P
+21 4 60000000 P
 #1374
 belt holster~
 a holstered belt~
@@ -1539,7 +1539,7 @@ A holstered belt is here.~
 leather~
 15 0 AL
 20 1 0 0 0
-20 4 290 P
+20 4 2900000 P
 #1375
 wand~
 a blackened wand~
@@ -1547,7 +1547,7 @@ A blackened wand is here.~
 wood~
 3 G AO
 18 5 1 26 0
-18 4 2500 P
+18 4 25000000 P
 #1376
 chisel runed~
 a runed chisel~
@@ -1555,7 +1555,7 @@ A runed chisel is here.~
 iron~
 5 AG AN
 2 6 4 11 D
-20 6 1500 P
+20 6 15000000 P
 A
 2 1
 #1377
@@ -1565,7 +1565,7 @@ A beltpouch is here.~
 lether~
 15 0 AL
 50 1 0 0 0
-21 5 750 P
+21 5 7500000 P
 #1378
 dust~
 some sparkling dust~
@@ -1573,7 +1573,7 @@ Some sparkling dust is in a pile here.~
 stone~
 4 0 AO
 20 1 1 38 0
-20 2 1000 P
+20 2 10000000 P
 #1379
 cowl dark~
 a dark cowl~
@@ -1581,7 +1581,7 @@ A dark cowl is here.~
 cloth~
 9 GJ AC
 7 7 7 0 0
-25 5 1200 P
+25 5 12000000 P
 A
 17 -8
 A
@@ -1593,7 +1593,7 @@ An ashen wand is here~
 wood~
 3 J AO
 20 4 4 63 0
-20 4 2000 P
+20 4 20000000 P
 #1381
 club~
 a huge spiked club~
@@ -1601,7 +1601,7 @@ A huge spiked club has been left here.~
 wood~
 5 0 AN
 4 4 6 7 E
-18 29 750 P
+18 29 7500000 P
 #1382
 robe grey~
 a grey robe~
@@ -1609,7 +1609,7 @@ A pile of grey cloth has been left here.~
 cloth~
 15 GJK AK
 50 1 0 0 0
-24 8 5000 P
+24 8 50000000 P
 A
 17 -9
 A
@@ -1621,7 +1621,7 @@ A pile of grey cloth has been left here.~
 cloth~
 9 GJK AC
 0 0 0 0 0
--1 7 1200 P
+-1 7 12000000 P
 A
 17 -12
 A
@@ -1633,7 +1633,7 @@ A glinting hoop of silvery metal is here.~
 silver~
 9 G AM
 0 0 0 0 0
--1 5 5000 P
+-1 5 50000000 P
 A
 17 -5
 #1385
@@ -1643,7 +1643,7 @@ A grey piece of wood shod in iron has been left here.~
 wood~
 5 G AN
 3 1 5 2 D
--1 7 9000 P
+-1 7 90000000 P
 A
 18 3
 #1386
@@ -1653,7 +1653,7 @@ A small clear cube is sitting here.~
 glass~
 9 AG AO
 0 0 0 0 0
--1 5 5000 P
+-1 5 50000000 P
 A
 17 -5
 #1387
@@ -1663,7 +1663,7 @@ A pile of black cloth is on the ground here.~
 cloth~
 15 GJL AK
 50 1 0 0 0
--1 8 5000 P
+-1 8 50000000 P
 A
 17 -9
 A
@@ -1675,7 +1675,7 @@ A hoop of black onyx is here.~
 glass~
 9 G AM
 0 0 0 0 0
--1 6 8500 P
+-1 6 85000000 P
 A
 19 2
 #1389
@@ -1685,7 +1685,7 @@ A pile of black cloth is on the ground here.~
 cloth~
 9 GJL AC
 0 0 0 0 0
--1 8 3000 P
+-1 8 30000000 P
 A
 17 -12
 A
@@ -1697,7 +1697,7 @@ A piece of black glass is here.~
 glass~
 5 J AN
 2 1 5 11 D
--1 8 1200 P
+-1 8 12000000 P
 A
 19 3
 #1391
@@ -1707,7 +1707,7 @@ A pile of white cloth is on the ground here.~
 cloth~
 15 GKL AK
 50 1 0 0 0
--1 7 2500 P
+-1 7 25000000 P
 A 
 17 -9
 A
@@ -1719,7 +1719,7 @@ A hoop of silvery metal is here.~
 gold~
 9 G AM
 0 0 0 0 0
--1 5 5000 P
+-1 5 50000000 P
 A
 18 2
 #1393
@@ -1729,7 +1729,7 @@ A pile of white cloth is on the ground here.~
 cloth~
 9 GIKL AC
 0 0 0 0 0
--1 7 3000 P
+-1 7 30000000 P
 A
 17 -12
 A
@@ -1741,7 +1741,7 @@ An ivory hilted dagger has been left here~
 steel~
 5 GIK AN
 2 1 5 11 D
--1 8 12000 P
+-1 8 120000000 P
 A
 18 1
 A
@@ -1753,7 +1753,7 @@ A small spiked collar is here.~
 leather~
 9 G AC
 0 0 0 0 0
--1 9 5000 P
+-1 9 50000000 P
 A
 17 -2
 A
@@ -1765,7 +1765,7 @@ A multi-colored pile of cloth is here.~
 cloth~
 15 AG AC
 100 1 0 0 0
--1 8 2500 P
+-1 8 25000000 P
 A
 17 -15
 A
@@ -1777,7 +1777,7 @@ A small ring with a green gemstone is here.~
 stone~
 9 G AB
 0 0 0 0 0
--1 5 5000 P
+-1 5 50000000 P
 A
 12 20
 #1398
@@ -1787,7 +1787,7 @@ A beautifully crafted hoop of emerald is here.~
 stone~
 9 G AM
 0 0 0 0 0
--1 5 3000 P
+-1 5 30000000 P
 A
 17 -5
 A
@@ -1799,7 +1799,7 @@ A large clear crystal cube is here.~
 glass~
 9 AG AO
 0 0 0 0 0
--1 6 2000 P
+-1 6 20000000 P
 A
 17 -10
 A
@@ -1811,7 +1811,7 @@ A wavy bladed knife made of ebony is here.~
 stone~
 5 G AN
 2 1 5 11 D
--1 9 6000 P
+-1 9 60000000 P
 A
 2 2
 A
@@ -1823,7 +1823,7 @@ Some green dragon scales which have been sewn together are here.~
 cloth~
 9 G AD
 0 0 0 0 0
--1 9 1000 P
+-1 9 10000000 P
 E
 green scale shirt~
 Green dragon scale shirt was made from a poor unfortunate green dragon.
@@ -1839,7 +1839,7 @@ A small refrigerator.~
 steel~
 15 B 0
 500 5 0 0 0
--1 5000 1 P
+-1 5000 10000 P
 #1403
 bottle vodka~
 a bottle of Absolut vodka~
@@ -1847,7 +1847,7 @@ A bottle of Absolut vodka is here to drink.~
 glass~
 17 0 A
 25 25 5 0 0
--1 25 1 P
+-1 25 10000 P
 #1404
 juice bottle~
 a bottle of cranberry juice~
@@ -1855,7 +1855,7 @@ A bottle of cranberry juice is here.~
 ~
 17 0 A
 25 25 2 0 0
--1 25 1 P
+-1 25 10000 P
 #0
 
 

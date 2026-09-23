@@ -317,7 +317,7 @@ A rusted knife is sitting here on the ground.~
 steel~
 5 0 AN
 2 2 5 11 0
-1 1 100 P
+1 1 1000000 P
 A
 18 2
 A
@@ -329,7 +329,7 @@ Some moss is growing here and giving off light.~
 paper~
 1 A AO
 0 0 999 0 0
-2 1 10 P
+2 1 100000 P
 #25103
 corset~
 a frilly corset~
@@ -337,7 +337,7 @@ A lacy, silk corset is sitting here on the ground.  It's awful dirty.~
 cloth~
 9 0 AD
 0 0 0 0 0
--1 2 100 P
+-1 2 1000000 P
 #25104
 spear~
 a goblin spear~
@@ -345,7 +345,7 @@ A crude looking spear is here gathering dust.~
 wood~
 5 0 AN
 0 1 5 0 0
--1 2 10 P
+-1 2 100000 P
 #25105
 sword~
 an adamantite longsword~
@@ -353,7 +353,7 @@ A sharp looking longsword is sitting here against the wall.~
 adamantite~
 5 ABG AN
 1 1 5 3 D
--1 5 1000 P
+-1 5 10000000 P
 A
 2 1
 A
@@ -367,7 +367,7 @@ A cloak is here.  It looks like part of the ground itself.~
 cloth~
 9 G AK
 0 0 0 0 0
--1 1 1000 P
+-1 1 10000000 P
 A
 1 1
 A
@@ -391,7 +391,7 @@ A staff with a hooked end is sitting against the wall.~
 wood~
 1 0 AO
 0 0 999 0 0
--1 2 10 P
+-1 2 100000 P
 #25109
 bracer~
 a dark metal bracers~
@@ -399,7 +399,7 @@ A pair of metal bracers are lying here on the ground.~
 steel~
 9 G AI
 0 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 A
 1 2
 #25110
@@ -409,7 +409,7 @@ A silver bracelet with a chain hooking it to a ring is sitting here.~
 silver~
 9 G AM
 0 0 0 0 0
--1 1 100 P
+-1 1 1000000 P
 A
 12 10
 E
@@ -424,7 +424,7 @@ Some web is sitting here on the ground.~
 cloth~
 9 ABG AK
 0 0 0 0 0
--1 2 100 P
+-1 2 1000000 P
 A
 12 20
 #25112
@@ -434,7 +434,7 @@ A mace that is engraved with webs is lying here in the dust.~
 steel~
 5 ABG AN
 4 5 3 8 0
-11 10 100 P
+11 10 1000000 P
 A
 18 2
 A
@@ -479,7 +479,7 @@ A battle axe, fresh blood on the blade, is leaning up against the wall.~
 steel~
 5 0 AN
 5 1 5 1 0
--1 10 100 P
+-1 10 1000000 P
 
 #0
 

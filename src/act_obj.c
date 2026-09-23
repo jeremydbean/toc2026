@@ -47,7 +47,7 @@ DECLARE_DO_FUN(do_look          );
 bool	remove_obj	args( ( CHAR_DATA *ch, int iWear, bool fReplace ) );
 void	wear_obj	args( ( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace ) );
 CD *	find_keeper	args( ( CHAR_DATA *ch ) );
-int	get_cost	args( ( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy ) );
+long	get_cost	args( ( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy ) );
 static bool coins_to_copper_checked args( ( const CHAR_DATA *ch, long *total ) );
 static void normalize_coins args( ( CHAR_DATA *ch, long total_copper ) );
 extern const	int16_t	rev_dir	[];
@@ -3488,10 +3488,10 @@ CHAR_DATA *find_keeper( CHAR_DATA *ch )
 
 
 
-int get_cost( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy )
+long get_cost( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy )
 {
     SHOP_DATA *pShop;
-    int cost;
+    long cost;
     int num_found;
 
     if ( obj == NULL || ( pShop = keeper->pIndexData->pShop ) == NULL )
@@ -3542,7 +3542,8 @@ void do_buy( CHAR_DATA *ch, char *argument )
     CHAR_DATA *keeper;
     OBJ_DATA *obj;
 
-    int cost,roll;
+    long cost;
+    int roll;
 
     if(argument[0] == '\0') {
 	send_to_char( "Buy what?\n\r", ch );
@@ -3562,7 +3563,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-     if(!has_enough_gold(ch, cost)) {
+     if(!can_adjust_coin_balance(ch, -cost, TYPE_COPPER)) {
          act( "$n tells you 'You can't afford to buy $p'.",
              keeper, obj, ch, TO_VICT );
          return;
@@ -3590,8 +3591,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
     {
         char price_buf[MAX_INPUT_LENGTH];
 
-        format_price( (long) cost * COPPER_PER_GOLD,
-                      price_buf, sizeof(price_buf) );
+        format_price( cost, price_buf, sizeof(price_buf) );
         snprintf(buf, sizeof(buf), "You haggle the price down to %s.\n\r",
                  price_buf);
     }
@@ -3601,8 +3601,8 @@ void do_buy( CHAR_DATA *ch, char *argument )
 
     act( "$n buys $p.", ch, obj, NULL, TO_ROOM );
     act( "You buy $p.", ch, obj, NULL, TO_CHAR );
-    add_money(ch,cost*-1);
-    add_money(keeper, cost);
+    adjust_coin_balance(ch, -cost, TYPE_COPPER);
+    adjust_coin_balance(keeper, cost, TYPE_COPPER);
 
     if(IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
         obj = create_object( obj->pIndexData, -1 * obj->level );
@@ -3627,7 +3627,7 @@ void do_list( CHAR_DATA *ch, char *argument )
     {
 	CHAR_DATA *keeper;
 	OBJ_DATA *obj;
-	int cost;
+	long cost;
 	bool found;
 	char arg[MAX_INPUT_LENGTH];
 	char price_buf[MAX_INPUT_LENGTH];
@@ -3652,8 +3652,7 @@ void do_list( CHAR_DATA *ch, char *argument )
 		}
 
                 /* cost is gold; the purse is copper. Say which. */
-                format_price( (long) cost * COPPER_PER_GOLD,
-                              price_buf, sizeof(price_buf) );
+                format_price( cost, price_buf, sizeof(price_buf) );
                 snprintf( buf, sizeof(buf), "[%2d %10s] %s.\n\r",
                     obj->level, price_buf, obj->short_descr);
 		send_to_char( buf, ch );
@@ -3683,7 +3682,8 @@ void do_sell( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *keeper;
     OBJ_DATA *obj;
-    int cost,roll;
+    long cost;
+    int roll;
 
     one_argument( argument, arg );
 
@@ -3737,10 +3737,19 @@ void do_sell( CHAR_DATA *ch, char *argument )
         send_to_char("You haggle with the shopkeeper.\n\r",ch);
         cost += obj->cost / 2 * roll / 100;
         cost = UMIN(cost,95 * get_cost(keeper,obj,true) / 100);
-        cost = (int)UMAX(0L, UMIN((long)cost, keeper->new_gold));
+        {
+            /* What the keeper can actually pay, across every
+               denomination -- this compared against his gold coins
+               alone, which ignored the rest of his purse. */
+            long purse;
+
+            if ( !coins_to_copper_checked( keeper, &purse ) )
+                purse = 0;
+            cost = UMAX( 0L, UMIN( cost, purse ) );
+        }
         check_improve(ch,gsn_haggle,true,4);
     }
-    if (!can_adjust_coin_balance(ch, cost, TYPE_GOLD)
+    if (!can_adjust_coin_balance(ch, cost, TYPE_COPPER)
     ||  query_carry_coins(ch, cost) > can_carry_w(ch))
     {
 	act("$n tells you 'You cannot safely carry that many coins.'",
@@ -3749,11 +3758,15 @@ void do_sell( CHAR_DATA *ch, char *argument )
     }
 
     act( "$n sells $p.", ch, obj, NULL, TO_ROOM );
-    snprintf( buf, sizeof(buf), "You sell $p for %d gold piece%s.",
-        cost, cost == 1 ? "" : "s" );
+    {
+        char price_buf[MAX_INPUT_LENGTH];
+
+        format_price( cost, price_buf, sizeof(price_buf) );
+        snprintf( buf, sizeof(buf), "You sell $p for %s.", price_buf );
+    }
     act( buf, ch, obj, NULL, TO_CHAR );
-    adjust_coin_balance(ch, cost, TYPE_GOLD);
-    adjust_coin_balance(keeper, -cost, TYPE_GOLD);
+    adjust_coin_balance(ch, cost, TYPE_COPPER);
+    adjust_coin_balance(keeper, -cost, TYPE_COPPER);
 
     if ( obj->item_type == ITEM_TRASH )
     {
@@ -3777,7 +3790,7 @@ void do_value( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *keeper;
     OBJ_DATA *obj;
-    int cost;
+    long cost;
 
     one_argument( argument, arg );
 
@@ -3816,7 +3829,13 @@ void do_value( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    snprintf( buf, sizeof(buf), "$n tells you 'I'll give you %d gold coins for $p'.", cost );
+    {
+        char price_buf[MAX_INPUT_LENGTH];
+
+        format_price( cost, price_buf, sizeof(price_buf) );
+        snprintf( buf, sizeof(buf),
+                  "$n tells you 'I'll give you %s for $p'.", price_buf );
+    }
     act( buf, keeper, obj, ch, TO_VICT );
     ch->reply = keeper;
 

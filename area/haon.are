@@ -196,7 +196,7 @@ A heavy lumber axe lies here.~
 wood~
 5 0 AN
 5 2 6 1 0
-10 5 15 P
+10 5 150000 P
 E
 axe lumber~
 It is a heavy axe of the kind lumberjacks use to chop down trees.
@@ -208,7 +208,7 @@ A chequered shirt lies here.~
 cloth~
 9 0 AD
 3 3 3 0 0
-2 2 8 P
+2 2 80000 P
 E
 shirt~
 It is an extra large, chequered shirt made from heavy cloth.
@@ -220,7 +220,7 @@ A pair of leather boots lies here.~
 ~
 9 0 AG
 3 4 3 0 0
-4 4 20 P
+4 4 200000 P
 E
 boots~
 They are fashioned from rough leather that has been oiled frequently to make
@@ -247,7 +247,7 @@ A wooden chest stands in the corner.~
 wood~
 15 0 0
 100 13 6006 0 0
-40 1000 30 P
+40 1000 300000 P
 E
 chest~
 It is a robust chest made from short, heavy planks that have been fastened
@@ -260,7 +260,7 @@ A small brass key lies here.~
 brass~
 18 0 A
 6005 0 0 0 0
-1 10 4 P
+1 10 40000 P
 E
 key~
 It is a small, simple brass key with no inscriptions or marks of any kind.
@@ -272,7 +272,7 @@ Some gold coins lie piled up in a heap on the floor.~
 gold~
 20 0 A
 100 0 0 0 0
-0 10 100 P
+0 10 1000000 P
 E
 coins~
 The coins seem to be gold.  They are obviously valuable.
@@ -284,7 +284,7 @@ Some blackberries grow on a bush nearby.~
 food~
 19 0 A
 3 0 0 0 0
-1 1 10 P
+1 1 100000 P
 E
 blackberries~
 They look very tasty indeed.
@@ -296,7 +296,7 @@ A small mushroom grows nearby.~
 food~
 19 0 A
 6 0 0 0 0
-1 1 10 P
+1 1 100000 P
 E
 mushroom~
 It is a tasty little thing.
@@ -308,7 +308,7 @@ A water barrel has been left here.~
 wood~
 17 0 A
 50 50 0 0 0
-5 10 20 P
+5 10 200000 P
 #6102
 tree opening~
 a colossal tree~
@@ -335,7 +335,7 @@ A long, grey branch rests heavily on the ground.~
 wood~
 1 0 AO
 0 0 25 0 0
-20 10 3 P
+20 10 30000 P
 #6104
 branch~
 a long, grey branch~
@@ -343,7 +343,7 @@ A long, grey branch rests heavily on the ground.~
 wood~
 5 0 AN
 4 2 5 7 0
-30 10 20 P
+30 10 200000 P
 A
 18 -2
 #6105
@@ -361,7 +361,7 @@ A large toadstool grows nearby.~
 food~
 19 0 1
 12 0 0 0 0
-5 5 20 P
+5 5 200000 P
 E
 toadstool~
 It is a large, brown boletus that must weigh nearly five pounds.  The top
@@ -375,7 +375,7 @@ A large toadstool grows nearby.~
 food~
 19 0 1
 12 0 0 1 0
-5 5 20 P
+5 5 200000 P
 E
 toadstool~
 It is a large, brown boletus that must weigh nearly five pounds.  It has small
@@ -389,7 +389,7 @@ A yellow potion has been left here.~
 glass~
 10 G 1
 15 39 0 0 0
-2 3 300 P
+2 3 3000000 P
 E
 potion yellow~
 It has a deep yellow color and a strong spicy smell.
@@ -401,7 +401,7 @@ A large round shield has been left here.~
 wood~
 9 0 513
 5 4 4 0 0
-15 3 100 P
+15 3 1000000 P
 E
 shield large~
 It is made from hard wood that has been reinforced with heavy iron bands.
@@ -413,7 +413,7 @@ An iron crown rests on the ground.~
 iron~
 9 64 17
 3 3 4 0 0
-10 5 100 P
+10 5 1000000 P
 E
 crown iron~
 It is a heavy human-sized crown made from solid iron.
@@ -425,7 +425,7 @@ An iron ring has been left here.~
 iron~
 9 64 3
 1 2 2 0 0
-1 2 100 P
+1 2 1000000 P
 E
 ring iron~
 It is a quite heavy human-sized ring made from solid iron.  It lacks
@@ -438,7 +438,7 @@ the morning star is here collecting dust while it lies on the ground.~
 steel~
 5 G AN
 4 2 8 8 0
-10 4 200 P
+10 4 2000000 P
 #0
 
 

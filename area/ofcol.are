@@ -618,7 +618,7 @@ A hand axe is on the floor here.~
 wood~
 5 0 AN
 5 1 5 3 0
--1 5 100 P
+-1 5 1000000 P
 E
 handaxe hand axe~
 You see a finely made axe.  Iron, with a nice wooden shaft, this axe can
@@ -631,7 +631,7 @@ A sharp meat cleaver is just lying on the floor here!~
 steel~
 5 0 AN
 2 1 5 3 0
--1 5 150 P
+-1 5 1500000 P
 E
 meat cleaver~
 This meat cleaver is made of good steel.
@@ -643,7 +643,7 @@ A side of beef is here on the floor.~
 food~
 19 0 A
 24 0 0 0 0
-5 7 50 P
+5 7 500000 P
 #603
 side meat pork~
 a side of pork~
@@ -651,7 +651,7 @@ A side of pork is here on the floor.~
 food~
 19 0 A
 23 0 0 0 0
-5 7 45 P
+5 7 450000 P
 #604
 side meat horse~
 a side of horse~
@@ -659,7 +659,7 @@ A side of horse is here on the floor.~
 ~
 19 0 A
 30 0 0 0 0
-5 7 60 P
+5 7 600000 P
 #605
 meat chicken~
 a defeathered chicken~
@@ -667,7 +667,7 @@ A defeathered chicken is here on the floor.~
 food~
 19 0 A
 16 0 0 0 0
-5 3 30 P
+5 3 300000 P
 #606
 emerald ring~
 an emerald ring~
@@ -675,7 +675,7 @@ An emerald ring is on the floor, gathering dust.~
 gold~
 8 C AB
 100 0 0 0 0
-1 2 100 P
+1 2 1000000 P
 #607
 glass trinket~
 a glass trinket~
@@ -683,7 +683,7 @@ A glass trinket is on the floor, gathering dust.~
 glass~
 8 0 AO
 50 0 0 0 0
-1 1 50 P
+1 1 500000 P
 A
 24 -1
 #608
@@ -693,7 +693,7 @@ A golden necklace is on the floor, gathering dust.~
 gold~
 8 0 AC
 150 0 0 0 0
-2 1 150 P
+2 1 1500000 P
 A
 4 -1
 A
@@ -705,7 +705,7 @@ Some fresh cabbage is here, get it while it lasts!~
 food~
 19 0 A
 12 0 0 0 0
-2 2 20 P
+2 2 200000 P
 #610
 lettuce~
 a head of lettuce~
@@ -713,7 +713,7 @@ Some fresh lettuce is here, get it while it lasts!~
 food~
 19 0 A
 12 0 0 0 0
-2 2 20 P
+2 2 200000 P
 #611
 milk bottle~
 a bottle of milk~
@@ -721,7 +721,7 @@ A glass bottle of milk is on a shelf here, fresh from the cow.~
 glass~
 17 0 A
 20 20 10 0 0
-5 3 40 P
+5 3 400000 P
 #612
 apple~
 an apple~
@@ -729,7 +729,7 @@ An apple is on the ground.~
 food~
 19 0 A
 8 0 0 0 0
-1 1 5 P
+1 1 50000 P
 #613
 corn~
 an ear of corn~
@@ -737,7 +737,7 @@ An ear of corn is on the ground.~
 ~
 19 0 A
 8 0 0 0 0
-1 1 5 P
+1 1 50000 P
 #614
 hay pile~
 a pile of hay~
@@ -745,7 +745,7 @@ There is a big pile of hay here.~
 ~
 13 0 A
 0 0 0 0 0
-20 1000 50 P
+20 1000 500000 P
 #615
 pitchfork fork~
 a pitchfork~
@@ -753,7 +753,7 @@ A pitchfork is on the floor.~
 wood~
 5 0 AN
 3 1 5 11 0
--1 5 50 P
+-1 5 500000 P
 #616
 vest~
 a leather vest~
@@ -761,7 +761,7 @@ A leather vest is on the floor.~
 leather~
 9 0 AD
 0 0 0 0 0
--1 4 50 P
+-1 4 500000 P
 #617
 sleeves~
 some leather sleeves~
@@ -769,7 +769,7 @@ Some leather sleeves are on the floor.~
 ~
 9 0 AI
 0 0 0 0 0
--1 3 50 P
+-1 3 500000 P
 #618
 leggings~
 some leather leggings~
@@ -777,7 +777,7 @@ Some leather leggings are on the floor.~
 ~
 9 0 AF
 0 0 0 0 0
--1 3 50 P
+-1 3 500000 P
 #619
 boots~
 some leather boots~
@@ -785,7 +785,7 @@ Some leather boots are on the floor.~
 ~
 9 0 AG
 0 0 0 0 0
--1 3 50 P
+-1 3 500000 P
 #620
 signet ring~
 an Ofcol signet ring~
@@ -793,7 +793,7 @@ A shiny ring of gold is in the dirt.~
 ~
 9 0 AB
 0 0 0 0 0
--1 2 100 P
+-1 2 1000000 P
 A
 24 -1
 A
@@ -805,7 +805,7 @@ A pile of brass plates is against the wall here.~
 brass~
 9 0 AD
 0 0 0 0 0
--1 6 100 P
+-1 6 1000000 P
 A
 24 -2
 A
@@ -817,7 +817,7 @@ A brass helm is against the wall here.~
 brass~
 9 0 AE
 0 0 0 0 0
--1 3 100 P
+-1 3 1000000 P
 A
 24 -1
 A
@@ -829,7 +829,7 @@ A pile of brass plates is against the wall here.~
 brass~
 9 0 AF
 0 0 0 0 0
--1 4 100 P
+-1 4 1000000 P
 A
 24 -1
 A
@@ -841,7 +841,7 @@ Some brass boots are against the wall here.~
 brass~
 9 0 AG
 0 0 0 0 0
--1 3 100 P
+-1 3 1000000 P
 A
 24 -1
 A
@@ -853,7 +853,7 @@ Some brass gauntlets are against the wall here.~
 brass~
 9 0 AH
 0 0 0 0 0
--1 3 100 P
+-1 3 1000000 P
 A
 24 -1
 A
@@ -865,7 +865,7 @@ A pile of brass plates is against the wall here.~
 brass~
 9 0 AI
 0 0 0 0 0
--1 3 100 P
+-1 3 1000000 P
 A
 24 -1
 A
@@ -877,7 +877,7 @@ A big plate of brass is against the wall here.~
 ~
 9 0 AJ
 0 0 0 0 0
--1 4 100 P
+-1 4 1000000 P
 A
 24 -1
 A
@@ -889,7 +889,7 @@ A brass girth is against the wall here.~
 brass~
 9 0 AL
 0 0 0 0 0
--1 4 100 P
+-1 4 1000000 P
 A
 24 -1
 A
@@ -901,7 +901,7 @@ A brass bracer is against the wall here.~
 brass~
 9 0 AM
 0 0 0 0 0
--1 3 100 P
+-1 3 1000000 P
 A
 24 -1
 A
@@ -913,7 +913,7 @@ A VERY big sword is against the wall here.~
 steel~
 5 0 AN
 1 1 5 1 F
--1 4 100 P
+-1 4 1000000 P
 A
 18 -2
 A
@@ -925,7 +925,7 @@ A pile of silver plating and chain is on the floor.~
 silver~
 9 GK AD
 0 0 0 0 0
--1 6 1300 P
+-1 6 13000000 P
 A
 12 10
 A
@@ -937,7 +937,7 @@ A shiny helm is on the floor.~
 silver~
 9 GK AE
 0 0 0 0 0
--1 4 400 P
+-1 4 4000000 P
 A
 12 5
 A
@@ -949,7 +949,7 @@ Some shiny leggings are on the floor.~
 silver~
 9 GK AF
 0 0 0 0 0
--1 5 600 P
+-1 5 6000000 P
 A
 12 5
 A
@@ -961,7 +961,7 @@ Some shiny boots are on the floor.~
 silver~
 9 GK AG
 0 0 0 0 0
--1 4 350 P
+-1 4 3500000 P
 A
 12 5
 A
@@ -973,7 +973,7 @@ Some shiny gauntlets are on the floor.~
 silver~
 9 GK AH
 0 0 0 0 0
--1 3 300 P
+-1 3 3000000 P
 A
 12 5
 A
@@ -985,7 +985,7 @@ Some shiny sleeves are on the floor.~
 silver~
 9 GK AI
 0 0 0 0 0
--1 3 400 P
+-1 3 4000000 P
 A
 12 5
 A
@@ -997,7 +997,7 @@ A shiny shield is on the floor.~
 silver~
 9 GK AJ
 0 0 0 0 0
--1 4 400 P
+-1 4 4000000 P
 A
 12 5
 A
@@ -1009,7 +1009,7 @@ A shiny girth is on the floor.~
 silver~
 9 GK AL
 0 0 0 0 0
--1 4 400 P
+-1 4 4000000 P
 A
 12 5
 A
@@ -1021,7 +1021,7 @@ A pile of silvery metal is on the floor.~
 platinum~
 9 GK AD
 9 8 9 1 0
-33 50 700 P
+33 50 7000000 P
 A
 13 15
 A
@@ -1033,7 +1033,7 @@ A silvery helmet is on the floor.~
 platinum~
 9 GK AE
 9 8 9 1 0
-33 30 500 P
+33 30 5000000 P
 A
 12 10
 A
@@ -1045,7 +1045,7 @@ Some silvery leggings are on the floor.~
 platinum~
 9 GK AF
 8 9 7 1 0
-33 40 500 P
+33 40 5000000 P
 A
 13 10
 A
@@ -1057,7 +1057,7 @@ Some silvery boots are on the floor.~
 platinum~
 9 GK AG
 7 8 9 1 0
-33 40 500 P
+33 40 5000000 P
 A
 13 10
 A
@@ -1069,7 +1069,7 @@ A pair of silvery gauntlets are on the floor.~
 platinum~
 9 GK AH
 7 9 7 1 0
-33 40 500 P
+33 40 5000000 P
 A
 13 10
 A
@@ -1081,7 +1081,7 @@ A pair of silvery sleeves are on the floor.~
 platinum~
 9 GK AI
 7 8 7 1 0
-33 40 560 P
+33 40 5600000 P
 A
 13 10
 A
@@ -1093,7 +1093,7 @@ A jagged, silvery shield is on the floor.~
 platinum~
 9 GK AJ
 9 8 9 1 0
-33 40 500 P
+33 40 5000000 P
 A
 13 10
 A
@@ -1105,7 +1105,7 @@ A silvery girth is on the floor.~
 platinum~
 9 GK AL
 7 7 7 1 0
-33 40 450 P
+33 40 4500000 P
 A
 13 10
 A
@@ -1117,7 +1117,7 @@ A glowing silvery sword is hovering here, ready to possess an owner.~
 platinum~
 5 GK AN
 1 5 6 1 0
-33 25 800 P
+33 25 8000000 P
 A
 18 1
 A
@@ -1129,7 +1129,7 @@ A shot of whiskey is on the table.~
 glass~
 17 0 A
 5 5 5 0 0
-1 1 10 P
+1 1 100000 P
 #649
 ale quart~
 a quart of ale~
@@ -1137,7 +1137,7 @@ A quart of ale is on the table.~
 glass~
 17 0 A
 50 50 3 0 0
-1 2 20 P
+1 2 200000 P
 #650
 port brew quart~
 a quart of port brew~
@@ -1145,7 +1145,7 @@ A quart of port brew is on the table.~
 glass~
 17 0 A
 50 50 4 0 0
-1 2 20 P
+1 2 200000 P
 #651
 key citadel~
 the citadel key~
@@ -1153,7 +1153,7 @@ A key is on the floor.~
 bronze~
 18 0 1
 0 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 #652
 symbol holy~
 the Holy Symbol of Bahamut~
@@ -1161,7 +1161,7 @@ A very shiny symbol is on the floor.~
 glass~
 9 GIKL AC
 6 6 6 1 0
-30 3 400 P
+30 3 4000000 P
 A
 12 10
 A
@@ -1173,7 +1173,7 @@ A heavy polearm is against the wall here, ready to inflict damage.~
 steel~
 5 GK AN
 8 1 5 2 0
--1 4 100 P
+-1 4 1000000 P
 A
 18 5
 A
@@ -1185,7 +1185,7 @@ A golden dragonscale torso is on the floor!~
 gold~
 9 GK AD
 0 0 0 0 0
--1 25 500 P
+-1 25 5000000 P
 A
 17 -5
 A
@@ -1197,7 +1197,7 @@ A golden dragonhelm is on the floor!~
 gold~
 9 GK AE
 0 0 0 0 0
--1 10 400 P
+-1 10 4000000 P
 A
 17 -3
 A
@@ -1209,7 +1209,7 @@ Some golden dragonscale leggings are on the floor!~
 gold~
 9 GK AF
 0 0 0 0 0
--1 10 500 P
+-1 10 5000000 P
 A
 17 -3
 A
@@ -1221,7 +1221,7 @@ Some golden dragonscale boots are on the floor!~
 gold~
 9 GK AG
 0 0 0 0 0
--1 10 500 P
+-1 10 5000000 P
 A
 17 -3
 A
@@ -1233,7 +1233,7 @@ Some golden dragonscale gauntlets are on the floor!~
 gold~
 9 GK AH
 0 0 0 0 0
--1 10 500 P
+-1 10 5000000 P
 A
 17 -3
 A
@@ -1245,7 +1245,7 @@ Some golden dragonscale sleeves are on the floor!~
 gold~
 9 GK AI
 0 0 0 0 0
--1 10 500 P
+-1 10 5000000 P
 A
 17 -3
 A
@@ -1257,7 +1257,7 @@ A golden dragonscale shield is on the floor!~
 gold~
 9 GK AJ
 0 0 0 0 0
--1 10 500 P
+-1 10 5000000 P
 A
 17 -3
 A
@@ -1269,7 +1269,7 @@ A golden dragonscale girth is on the floor!~
 gold~
 9 GK AL
 0 0 0 0 0
--1 10 500 P
+-1 10 5000000 P
 A
 17 -3
 A
@@ -1281,7 +1281,7 @@ A huge golden claw is on the floor~
 gold~
 5 GK AN
 0 1 5 5 0
--1 20 500 P
+-1 20 5000000 P
 A
 19 4
 #663
@@ -1291,7 +1291,7 @@ A very large pearl-like sphere is in the center of this room.~
 gold~
 4 GKL AO
 36 4 4 28 0
-36 30 800 P
+36 30 8000000 P
 A
 3 1
 A
@@ -1303,7 +1303,7 @@ A golden robe is on the floor.~
 ~
 9 GK AK
 0 0 0 0 0
--1 10 500 P
+-1 10 5000000 P
 A
 3 2
 #665
@@ -1313,7 +1313,7 @@ A house key is on the floor.~
 wood~
 18 0 1
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #666
 broom~
 a broom~
@@ -1321,7 +1321,7 @@ A broom is against the wall here.~
 wood~
 5 0 AN
 0 2 3 7 0
-5 6 10 P
+5 6 100000 P
 A
 18 3
 A
@@ -1333,7 +1333,7 @@ A chest is on the floor here.~
 wood~
 15 0 A
 100 0 0 0 0
-10 100 10 P
+10 100 100000 P
 #668
 wild flowers~
 wild flowers~
@@ -1341,7 +1341,7 @@ A bunch of pretty wild flowers is here.~
 trash~
 13 K AEO
 0 0 0 0 0
-1 1 10 P
+1 1 100000 P
 E
 wild flowers~
 These wild flowers are really pretty.

@@ -411,7 +411,7 @@ A powerful breast plate has been left here.~
 steel~
 9 FGK AD
 12 13 14 4 0
-52 30 2850 P
+52 30 28500000 P
 A
 1 1
 #901
@@ -421,7 +421,7 @@ A huge hammer has been carelessly dropped here.~
 steel~
 5 FGK AN
 4 2 22 8 0
-52 24 2490 P
+52 24 24900000 P
 A
 18 3
 #902
@@ -431,7 +431,7 @@ A helmet with small wings lies here.~
 steel~
 9 FGK AE
 12 14 13 0 0
-50 5 23409 P
+50 5 234090000 P
 A
 2 2
 #903
@@ -441,7 +441,7 @@ A wicked spear rests on the ground here.~
 steel~
 5 FGJ AN
 3 7 8 11 0
-52 18 25500 P
+52 18 255000000 P
 A
 18 2
 A
@@ -453,7 +453,7 @@ A pair of well made sandals lay here.~
 leather~
 9 FGK AG
 7 8 7 0 0
-35 5 500 P
+35 5 5000000 P
 #905
 staff ivory~
 an ivory staff~
@@ -461,7 +461,7 @@ An ivory staff lies here.~
 stone~
 4 FGK AO
 30 3 3 36 0
-49 8 21168 P
+49 8 211680000 P
 #906
 trident poseidon~
 Poseidon's Trident~
@@ -469,7 +469,7 @@ A huge three pronged spear lies here.~
 gold~
 5 FGK AN
 3 5 11 2 0
-51 16 26411 P
+51 16 264110000 P
 A
 4 2
 #907
@@ -479,7 +479,7 @@ A silver bow lies here.~
 silver~
 5 FGK ANP
 9 6 9 7 F
-52 15 20750 P
+52 15 207500000 P
 A
 18 1
 A
@@ -491,7 +491,7 @@ A pair of metal gauntlets flame here.~
 steel~
 9 FGK AH
 7 9 7 0 0
-35 6 500 P
+35 6 5000000 P
 A
 13 25
 #909
@@ -501,7 +501,7 @@ A vial of ambrosia lies here.~
 glass~
 10 FGK A
 30 22 28 0 0
-30 1 27500 P
+30 1 275000000 P
 #910
 necklace glowing~
 a glowing necklace~
@@ -509,7 +509,7 @@ A necklace with an inner glow lies here.~
 gold~
 9 FGK AC
 13 12 13 2 0
-50 2 2350 P
+50 2 23500000 P
 A
 12 25
 #911
@@ -519,7 +519,7 @@ A sapphire ring lies here.~
 stone~
 9 FGK AB
 13 12 14 0 0
-34 1 2600 P
+34 1 26000000 P
 A
 4 2
 A
@@ -531,7 +531,7 @@ A shield lies here, filling the room with its aura.~
 steel~
 9 FGK AJ
 13 14 13 0 0
-51 10 2500 P
+51 10 25000000 P
 A
 4 1
 #913
@@ -541,7 +541,7 @@ A notched axe is lies here.~
 steel~
 5 FGK AN
 5 7 7 1 0
-48 12 10100 P
+48 12 101000000 P
 #914
 grapes~
 a bunch of grapes~
@@ -549,7 +549,7 @@ A bunch of grapes.~
 food~
 19 0 A
 24 0 0 0 0
--1 50 10 P
+-1 50 100000 P
 #915
 fan~
 a fan made of peacock feathers~
@@ -557,7 +557,7 @@ A fan made of peacock feathers.~
 cloth~
 13 0 A
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #916
 lute~
 a lute~
@@ -565,7 +565,7 @@ A lute.~
 wood~
 13 0 A
 0 0 0 0 0
-1 1 1 P
+1 1 10000 P
 #917
 nugget gold~
 a gold nugget~
@@ -573,7 +573,7 @@ A gold nugget lies gleaming here.~
 gold~
 8 0 A
 0 0 0 0 0
--1 5 300 P
+-1 5 3000000 P
 #918
 apple~
 an apple~
@@ -581,7 +581,7 @@ An apple is here.~
 pill~
 26 0 A
 25 62 0 0 0
-25 1 60 P
+25 1 600000 P
 #919
 pear~
 a pear~
@@ -589,7 +589,7 @@ A pear is here.~
 pill~
 26 0 A
 25 43 0 0 0
-25 1 2500 P
+25 1 25000000 P
 #920
 orange~
 a orange~
@@ -597,7 +597,7 @@ A orange is here.~
 pill~
 26 0 A
 21 1 0 0 0
-21 1 1400 P
+21 1 14000000 P
 #921
 kiwi~
 a kiwi~
@@ -605,7 +605,7 @@ A kiwi is here.~
 pill~
 26 0 A
 24 43 0 0 0
-24 1 3500 P
+24 1 35000000 P
 #922
 amulet~
 the Amulet of Ra~
@@ -613,7 +613,7 @@ A sun shaped medallion is lying here.~
 gold~
 9 FGK AC
 13 12 13 2 0
-51 1 3000 P
+51 1 30000000 P
 A
 12 50
 #923
@@ -623,7 +623,7 @@ A beautiful sword with the rising sun etched on the pommel is lying here.~
 gold~
 5 FGK AN
 1 10 5 3 0
-51 20 22500 P
+51 20 225000000 P
 A
 19 2
 #924
@@ -633,7 +633,7 @@ A deep blue robe is on the ground here.~
 cloth~
 9 FGK AK
 13 13 13 2 0
-52 10 2400 P
+52 10 24000000 P
 A
 13 15
 #925
@@ -643,7 +643,7 @@ A hat is lying here.~
 cloth~
 9 FGK AE
 12 12 14 2 0
-52 5 2300 P
+52 5 23000000 P
 #926
 nectar~
 nectar~
@@ -651,7 +651,7 @@ A vial of nectar is lying here.~
 glass~
 10 0 A
 20 36 39 1 0
-20 1 24500 P
+20 1 245000000 P
 #927
 key cell~
 A Cell key~
@@ -659,7 +659,7 @@ A key has been left here.~
 iron~
 18 0 A
 0 0 0 0 0
--1 1 3600 P
+-1 1 36000000 P
 #928
 map olympus secret~
 a secret map of Olympus~
@@ -667,7 +667,7 @@ A rolled up map is here.~
 paper~
 28 0 A
 1 0 0 0 0
-0 1 2500 P
+0 1 25000000 P
 E
 map olympus secret~
 .

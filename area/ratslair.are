@@ -385,7 +385,7 @@ A lone stool sits on the floor.~
 wood~
 5 0 AN
 4 2 3 8 0
-1 1 100 P
+1 1 1000000 P
 A
 18 1
 A
@@ -440,7 +440,7 @@ A long bladed knife is rusting on the floor.~
 steel~
 5 0 AN
 2 2 3 3 0
-7 0 100 P
+7 0 1000000 P
 A
 19 1
 E
@@ -454,7 +454,7 @@ A tin bracer is rusting on the floor.~
 steel~
 9 0 AM
 4 4 4 0 0
-5 1 100 P
+5 1 1000000 P
 #3815
 tin leggings~
 tin leggings~
@@ -462,7 +462,7 @@ A pair of tin leggings rusts on the floor.~
 steel~
 9 0 AF
 4 4 4 0 0
-5 1 100 P
+5 1 1000000 P
 #3816
 tin armguards~
 tin armguards~
@@ -470,7 +470,7 @@ A pair of tin armguards rusts on the floor.~
 steel~
 9 0 AI
 4 4 4 0 0
-5 1 100 P
+5 1 1000000 P
 #3817
 flail spiked~
 a spiked flail~
@@ -478,7 +478,7 @@ A spiked flail rests on the floor.~
 steel~
 5 0 AN
 6 3 3 7 0
-5 1 100 P
+5 1 1000000 P
 A
 19 2
 #3818
@@ -488,7 +488,7 @@ A barbed whip is curled up on the floor.~
 leather~
 5 0 AN
 4 3 4 4 0
-1 1 100 P
+1 1 1000000 P
 A
 18 1
 A
@@ -500,7 +500,7 @@ A rod of gold rests millimeters from the floor.~
 gold~
 8 ABGI AO
 0 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 A
 17 -5
 A
@@ -527,7 +527,7 @@ A big pile of gold coins is in the middle of the room!~
 gold~
 20 1 A
 0 0 0 0 0
-10 0 500 P
+10 0 5000000 P
 #3822
 sapphire gem~
 a sapphire gem~
@@ -535,7 +535,7 @@ A big sapphire gem glitters on the floor.~
 stone~
 8 0 A
 0 0 0 0 0
-5 0 1000 P
+5 0 10000000 P
 #3823
 ruby gem~
 a ruby gem~
@@ -543,7 +543,7 @@ A big ruby gem glitters on the floor.~
 stone~
 8 0 A
 0 0 0 0 0
-5 0 1000 P
+5 0 10000000 P
 #0
 
 

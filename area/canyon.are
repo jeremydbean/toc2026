@@ -540,7 +540,7 @@ A dark ring which seems to absorb all the light around it lies here.
 stone~
 9 I AB
 0 0 0 0 0
-27 5 7840 P
+27 5 78400000 P
 A
 3 1
 A
@@ -552,7 +552,7 @@ A breastplate made of the stone from deep within the earth lies here.~
 stone~
 9 0 AD
 8 9 8 0 0
-27 70 7290 P
+27 70 72900000 P
 A
 5 1
 #9203
@@ -562,7 +562,7 @@ A dagger made of fire crackles mysteriously here.~
 iron~
 5 A AN
 2 2 17 11 0
-27 2 6561 P
+27 2 65610000 P
 A
 19 4
 #9204
@@ -572,7 +572,7 @@ A cape made of ethereal red fiber lies neatly folded on the ground here.~
 silk~
 9 A AC
 7 9 8 0 0
-28 3 7840 P
+28 3 78400000 P
 A
 19 1
 #9205
@@ -582,7 +582,7 @@ A pair of boots that look fast standing still are here.~
 leather~
 9 G AG
 7 7 8 0 0
-29 1 7569 P
+29 1 75690000 P
 A
 2 2
 #9206
@@ -592,7 +592,7 @@ A helmet that looks like it has weathered many storms has been set here.~
 steel~
 9 B AE
 9 7 8 0 0
-28 4 8120 P
+28 4 81200000 P
 A
 23 -4
 #9207
@@ -602,7 +602,7 @@ A lightning bolt fashioned into a sword spits sparks here.~
 steel~
 5 AB AN
 1 6 5 3 0
-30 10 7830 P
+30 10 78300000 P
 A
 18 -1
 A
@@ -614,7 +614,7 @@ A shield made entirely of energy buzzes here.~
 steel~
 9 B AJ
 10 10 9 0 0
-30 8 9000 P
+30 8 90000000 P
 A
 1 -1
 A
@@ -626,7 +626,7 @@ A girth made of magical ice has been left here.~
 silk~
 9 0 AL
 8 8 8 0 0
-27 10 6561 P
+27 10 65610000 P
 A
 5 -2
 #9210
@@ -636,7 +636,7 @@ A cloak fashioned from a small magical waterfall is here.~
 silk~
 9 0 AD
 8 8 7 0 0
-28 6 7840 P
+28 6 78400000 P
 A
 12 25
 A
@@ -648,7 +648,7 @@ An amulet depicting fire, water, lightning, earth, and air lies here.~
 silver~
 9 A AC
 6 6 7 0 0
-19 1 3420 P
+19 1 34200000 P
 A
 23 -5
 #9212
@@ -658,7 +658,7 @@ A bracelet made of elemental magic lies here.~
 silver~
 9 0 AM
 7 8 7 0 0
-20 4 4000 P
+20 4 40000000 P
 A
 13 25
 #9213
@@ -668,7 +668,7 @@ A pair of platinum arm bands, once worn by the Cyclops, lie here.~
 platinum~
 9 0 AI
 6 8 7 0 0
-22 4 5566 P
+22 4 55660000 P
 A
 18 2
 A
@@ -680,7 +680,7 @@ A pair of platinum leg bands, once worn by the Cyclops, lie here.~
 platinum~
 9 0 AF
 6 7 6 0 0
-22 4 5060 P
+22 4 50600000 P
 A
 1 2
 A
@@ -696,7 +696,7 @@ A fire wand lies forgotten on the ground.~
 wood~
 3 A AO
 16 2 2 26 0
--1 7 2145 P
+-1 7 21450000 P
 #9216
 staff ice~
 an ice staff~
@@ -704,7 +704,7 @@ An ice staff lies forgotten on the ground.~
 wood~
 4 A AO
 22 3 3 202 0
--1 7 567 P
+-1 7 5670000 P
 #9217
 rod earthquake~
 an elemental rod of earthquake~
@@ -712,7 +712,7 @@ An earthquake rod lies forgotten on the ground.~
 wood~
 3 A AO
 6 4 4 23 0
--1 7 1100 P
+-1 7 11000000 P
 #9218
 wand air wind~
 elemental wand of wind and air~
@@ -720,7 +720,7 @@ An air wand lies forgotten on the ground.~
 wood~
 3 A AO
 10 1 1 203 0
--1 7 2002 P
+-1 7 20020000 P
 #9219
 wand~
 elemental wand of lightning~
@@ -728,7 +728,7 @@ A lightning wand lies forgotten on the ground.~
 wood~
 3 A AO
 8 1 1 30 0
--1 7 20 P
+-1 7 200000 P
 #9220
 stone club~
 a stone club~
@@ -736,7 +736,7 @@ A large stone club lies on the ground.~
 stone~
 5 0 AN
 4 4 4 7 0
-15 16 2100 P
+15 16 21000000 P
 #9221
 lode load lodestone loadstone stone~
 a lodestone~
@@ -744,7 +744,7 @@ A dull red rock lies here amid the weeds.~
 stone~
 3 0 AO
 6 2 2 64 0
-6 2 792 P
+6 2 7920000 P
 #9222
 lava lamp~
 a lava lamp~
@@ -752,7 +752,7 @@ A lantern which glows with a red glowing light has been dumped.~
 glass~
 1 A A
 0 0 9999 0 0
-6 4 300 P
+6 4 3000000 P
 #9223
 energy scroll~
 an energy scroll~
@@ -760,7 +760,7 @@ A scroll of energy replacement lies here.~
 paper~
 2 B A
 19 15 81 0 0
-14 1 1820 P
+14 1 18200000 P
 #9224
 water jug~
 a water jug~
@@ -768,7 +768,7 @@ A large but surprisingly light jug of water stands here.~
 glass~
 17 0 A
 150 150 0 0 0
-8 5 729 P
+8 5 7290000 P
 #9225
 dust~
 magic dust~
@@ -776,7 +776,7 @@ A pile of dust of appearance has gathered here.~
 organic~
 26 0 A
 21 19 0 0 0
-1 1 10 P
+1 1 100000 P
 #9226
 flame lance~
 a flame lance~
@@ -784,7 +784,7 @@ A lance of blue flame burns the ground around it.~
 steel~
 5 A AN
 3 3 9 2 0
-23 14 5808 P
+23 14 58080000 P
 A
 13 -20
 A
@@ -796,7 +796,7 @@ A glowing icicle dagger lies here amid a patch of frost.~
 steel~
 5 A AN
 2 7 3 11 0
-23 1 5566 P
+23 1 55660000 P
 A
 19 2
 A
@@ -808,7 +808,7 @@ An avalanche is about to crush you!~
 stone~
 5 0 AN
 0 2 12 6 0
-21 16 4200 P
+21 16 42000000 P
 A
 18 -1
 #9229
@@ -818,7 +818,7 @@ A chain with a star on the end lies here.~
 iron~
 5 A AN
 6 8 3 11 0
-26 11 6084 P
+26 11 60840000 P
 A
 23 -5
 A
@@ -830,7 +830,7 @@ A whip hums innocently too itself.~
 leather~
 5 B AN
 7 4 7 4 0
-21 10 4620 P
+21 10 46200000 P
 A
 19 3
 A
@@ -842,7 +842,7 @@ An elixir to ward off cyclopi has been bought then left behind here.~
 glass~
 10 0 AO
 15 29 0 0 0
-0 1 10 P
+0 1 100000 P
 #0
 
 

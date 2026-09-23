@@ -137,7 +137,7 @@ a pair of winged boots flutters about~
 leather~
 9 GXZ AG AH
 7 7 8 0 0
-22 10 2000 P
+22 10 20000000 P
 E
 boots winged~
 Tiny feathered wings beat steadily at each heel. Worn on the feet, their
@@ -154,7 +154,7 @@ a pair of carved bronze bracers has been tossed here~
 bronze~
 9 0 AI
 8 9 8 0 0
-25 20 5400 P
+25 20 54000000 P
 #9103
 ornate brooch~
 an ornate brooch~
@@ -162,7 +162,7 @@ An ornate brooch was carelessly left here.~
 silver~
 9 F AC
 7 7 8 0 0
-25 10 7430 P
+25 10 74300000 P
 A
 3 1
 A
@@ -174,7 +174,7 @@ bright magenta potion gathers dust.~
 glass~
 10 J AO
 10 1 16 33 0
-20 2 3780 P
+20 2 37800000 P
 #9105
 ancient parchment~
 an ancient illustrated parchment~
@@ -182,7 +182,7 @@ An ancient illustrated parchment crumbles in the corner~
 vellum~
 2 AH AO
 4 4 17 33 0
-20 5 4200 P
+20 5 42000000 P
 #9106
 talon harpy~
 a harpy's talon~
@@ -190,7 +190,7 @@ A very sharp fingernail has been torn from its owner~
 steel~
 5 AGJM AN
 2 4 7 5 0
-23 4 1000 P
+23 4 10000000 P
 A
 19 1
 A
@@ -240,7 +240,7 @@ A broom hovers here in mid-air.
 wood~
 4 BCV A
 14 2 2 56 0
-30 5 300 P
+30 5 3000000 P
 #9114
 egg~
 a Roc egg~
@@ -249,7 +249,7 @@ There is a large egg here, about knee high.
 glass~
 31 V 0
 0 0 0 0 0
-1 5 5 P
+1 5 50000 P
 #9115
 feather roc~
 a Roc feather~
@@ -258,7 +258,7 @@ A bright red feather is here on the ground.
 leather~
 3 V AO
 35 6 6 26 0
-30 3 1526 P
+30 3 15260000 P
 #9116
 pool~
 a pool~
@@ -267,7 +267,7 @@ A beautiful pool of water is here.
 stone~
 30 VZ I 0
 5 13401 0 0 0
-1 1 1 P
+1 1 10000 P
 #0
 
 

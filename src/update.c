@@ -2117,7 +2117,9 @@ free_string(obj->description);
              {
                 if (IS_NPC(obj->carried_by)
                 &&  obj->carried_by->pIndexData->pShop != NULL)
-                add_money(obj->carried_by, obj->cost / 5);
+                /* cost is copper; add_money takes gold. */
+                adjust_coin_balance(obj->carried_by,
+                                    obj->cost / 5, TYPE_COPPER);
                    else
                 act( message, obj->carried_by, obj, NULL, TO_CHAR );
              }
@@ -2190,7 +2192,9 @@ free_string(obj->description);
              {
                 if (IS_NPC(obj->carried_by)
                 &&  obj->carried_by->pIndexData->pShop != NULL)
-                add_money(obj->carried_by, obj->cost / 5);
+                /* cost is copper; add_money takes gold. */
+                adjust_coin_balance(obj->carried_by,
+                                    obj->cost / 5, TYPE_COPPER);
                    else
                 act( message, obj->carried_by, obj, NULL, TO_CHAR );
              }
@@ -2250,7 +2254,9 @@ free_string(obj->description);
 	{
 	    if (IS_NPC(obj->carried_by)
 	    &&  obj->carried_by->pIndexData->pShop != NULL)
-		add_money(obj->carried_by, obj->cost / 5);
+		/* cost is copper; add_money takes gold. */
+		adjust_coin_balance(obj->carried_by,
+		                    obj->cost / 5, TYPE_COPPER);
 	    else
 		act( message, obj->carried_by, obj, NULL, TO_CHAR );
 	}

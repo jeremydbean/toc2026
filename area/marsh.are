@@ -251,7 +251,7 @@ A strange spear lies here.~
 iron~
 5 HJ AN
 3 6 3 2 0
-15 10 500 P
+15 10 5000000 P
 A
 19 3
 A
@@ -263,7 +263,7 @@ A wicked looking horned helmet lies here.~
 adamantite~
 9 HJ AE
 0 0 0 0 0
--1 5 450 P
+-1 5 4500000 P
 E
 horns horn~
 These horns appear to be made of adamantite.~
@@ -278,7 +278,7 @@ An old suit of chainmail lies here, corroded by the marsh.~
 steel~
 9 HJ AD
 8 9 8 0 0 
-29 20 1000 P
+29 20 10000000 P
 #8306
 scythe~
 A huge, wicked-looking scythe~
@@ -286,7 +286,7 @@ An evil, wicked-looking scythe lies in the shadows.~
 iron~
 5 HJ AN
 8 3 6 1 0
-17 16 1000 P
+17 16 10000000 P
 A
 18 3
 A
@@ -298,7 +298,7 @@ A murky green potion lies here in the mud.~
 glass~
 10 G A
 19 15 0 23 0
-20 2 1000 P
+20 2 10000000 P
 E
 potion~
 It looks really disgusting and doesn't smell very nice either.~

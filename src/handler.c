@@ -2767,7 +2767,12 @@ OBJ_DATA *create_money( int amount, int type )
 	obj->description= str_dup(buf);
 	obj->value[0]           = amount;
 	obj->value[1]		= type;
-	obj->cost               = amount;
+	/* cost is copper, so a pile of platinum is not worth its count. */
+	obj->cost               =
+	    type == TYPE_PLATINUM ? (long)amount * COPPER_PER_PLATINUM :
+	    type == TYPE_GOLD     ? (long)amount * COPPER_PER_GOLD     :
+	    type == TYPE_SILVER   ? (long)amount * COPPER_PER_SILVER   :
+	                            (long)amount;
     }
 
     return obj;
