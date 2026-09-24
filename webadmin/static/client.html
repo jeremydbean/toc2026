@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="color-scheme" content="dark">
     <title>Times of Chaos Client</title>
-    <link rel="stylesheet" href="/static/client.css?v=5">
+    <link rel="stylesheet" href="/static/client.css?v=6">
     <link rel="stylesheet" href="/static/theme-dragon.css?v=1">
     <script src="/static/command-sequence.js?v=1" defer></script>
-    <script src="/static/client.js?v=5" defer></script>
+    <script src="/static/client.js?v=6" defer></script>
 </head>
 <body>
     <div class="client-app">
@@ -151,11 +151,6 @@
                     <section class="utility-section">
                         <div class="section-title"><h2>Routes</h2><span class="panel-subtitle" id="routes-count"></span></div>
                         <p class="routes-intro" id="routes-intro"></p>
-                        <div class="segmented-control route-filter" role="group" aria-label="Route source">
-                            <button class="is-active" type="button" data-route-source="computed">Worked out</button>
-                            <button type="button" data-route-source="legacy">Handed down</button>
-                            <button type="button" data-route-source="all">All</button>
-                        </div>
                         <label class="sr-only" for="routes-search">Search routes</label>
                         <input id="routes-search" type="search" placeholder="Search destinations" autocomplete="off" spellcheck="false">
                         <div class="routes-list" id="routes-list" aria-live="polite"></div>

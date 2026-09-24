@@ -569,19 +569,18 @@
 
     // Travel directions from the Oak Tree Square, checked against the
     // world when they were generated. Public, like the help text.
-    const routesState = { data: null, loading: false, source: "computed" };
+    const routesState = { data: null, loading: false };
 
-    // Two kinds of route share the panel. The worked-out ones are walked
-    // out of the current world every time the file is built, so they are
-    // right by construction. The handed-down ones are what players typed
-    // years ago, kept because they name landmarks and shortcuts nobody
-    // wrote down; those can drift as areas change.
-    function routeSets() {
+    // Two kinds of route share the panel, and both are shown at once.
+    // The worked-out ones are walked out of the current world every time
+    // the file is built, so they are right by construction. The
+    // handed-down ones are what players typed years ago, kept because
+    // they name landmarks and shortcuts nobody wrote down; those can
+    // drift as areas change. Each card says which it is.
+    function allRoutes() {
         const data = routesState.data || {};
-        return {
-            computed: data.routes || [],
-            legacy: data.legacy || [],
-        };
+        return (data.routes || []).map((route) => ({ ...route, kind: "computed" }))
+            .concat((data.legacy || []).map((route) => ({ ...route, kind: "legacy" })));
     }
 
     async function loadRoutes() {
@@ -591,16 +590,16 @@
             const data = await api("/api/directions");
             routesState.data = data;
             const counts = data.counts || {};
-            const sets = routeSets();
-            byId("routes-count").textContent =
-                `${sets.computed.length + sets.legacy.length} routes`;
+            const computed = (data.routes || []).length;
+            const legacy = (data.legacy || []).length;
+            byId("routes-count").textContent = `${computed + legacy} routes`;
             const start = data.start || {};
             const drifted = counts.legacy_drifted || 0;
             const repaired = counts.legacy_repaired || 0;
             byId("routes-intro").textContent = start.room
                 ? `All of these start at ${start.room} (room ${start.vnum}). `
-                  + `${sets.computed.length} are worked out of the world as it `
-                  + `stands. Of ${sets.legacy.length} handed down by players, `
+                  + `${computed} are worked out of the world as it stands. Of `
+                  + `${legacy} handed down by players, `
                   + `${counts.legacy_ok || 0} still walk and ${drifted} have `
                   + `drifted`
                   + (repaired
@@ -626,11 +625,7 @@
     function renderRoutes() {
         const query = byId("routes-search").value.trim().toLowerCase();
         const list = byId("routes-list");
-        const sets = routeSets();
-        const chosen = routesState.source === "legacy" ? sets.legacy
-            : routesState.source === "all" ? sets.computed.concat(sets.legacy)
-            : sets.computed;
-        const matching = chosen.filter((route) => {
+        const matching = allRoutes().filter((route) => {
             if (!query) return true;
             return [route.name, route.room, route.area]
                 .some((field) => (field || "").toLowerCase().includes(query));
@@ -653,10 +648,16 @@
             const shown = route.fixed_commands ? "repaired" : route.status;
             const head = node("div", { className: "route-head" });
             head.append(node("h3", { text: route.name }));
-            head.append(node("span", {
+            const tags = node("span", { className: "route-tags" });
+            tags.append(node("span", {
+                className: `route-kind route-kind-${route.kind}`,
+                text: route.kind === "legacy" ? "handed down" : "worked out",
+            }));
+            tags.append(node("span", {
                 className: `route-badge route-${shown}`,
                 text: ROUTE_BADGE[shown] || "needs checking",
             }));
+            head.append(tags);
             card.append(head);
 
             if (route.room) {
@@ -1321,17 +1322,6 @@
         byId("panel-scrim").addEventListener("click", closePanel);
         all("[data-panel]").forEach((tab) => tab.addEventListener("click", () => showUtilityPanel(tab.dataset.panel)));
         byId("routes-search").addEventListener("input", renderRoutes);
-        all("[data-route-source]").forEach((button) => {
-            button.addEventListener("click", () => {
-                routesState.source = button.dataset.routeSource;
-                all("[data-route-source]").forEach((other) => {
-                    other.classList.toggle(
-                        "is-active",
-                        other.dataset.routeSource === routesState.source);
-                });
-                renderRoutes();
-            });
-        });
         byId("help-search").addEventListener("input", renderHelpTopics);
 
         byId("font-size").addEventListener("input", (event) => {

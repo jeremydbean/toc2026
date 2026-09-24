@@ -378,13 +378,12 @@
     function renderRoutes() {
         const data = routesState.data;
         if (!data) return;
-        const source = byId("routes-source").value;
         const query = byId("routes-search").value.trim().toLowerCase();
-        const computed = data.routes || [];
-        const legacy = data.legacy || [];
-        const chosen = source === "legacy" ? legacy
-            : source === "all" ? computed.concat(legacy)
-            : computed;
+        // Everything at once: 170 routes, and the search box narrows them.
+        // Which kind each one is belongs on its card.
+        const chosen = (data.routes || [])
+            .map((route) => ({ ...route, kind: "computed" }))
+            .concat((data.legacy || []).map((route) => ({ ...route, kind: "legacy" })));
 
         const matching = chosen.filter((route) => !query
             || [route.name, route.room, route.area]
@@ -403,10 +402,16 @@
 
             const head = node("div", { className: "route-head" });
             head.append(node("h3", { text: route.name }));
-            head.append(node("span", {
+            const tags = node("span", { className: "route-tags" });
+            tags.append(node("span", {
+                className: `route-kind route-kind-${route.kind}`,
+                text: route.kind === "legacy" ? "handed down" : "worked out",
+            }));
+            tags.append(node("span", {
                 className: `route-badge route-${shown}`,
                 text: ROUTE_BADGE[shown] || "needs checking",
             }));
+            head.append(tags);
             card.append(head);
 
             if (route.room) {
@@ -1887,7 +1892,6 @@
         all("[data-view]").forEach((button) => button.addEventListener("click", () => navigate(button.dataset.view)));
         byId("routes-form").addEventListener("submit", (event) => event.preventDefault());
         byId("routes-search").addEventListener("input", renderRoutes);
-        byId("routes-source").addEventListener("change", renderRoutes);
         byId("logins-prev").addEventListener("click", () => loadLogins(state.loginsPage - 1));
         byId("logins-next").addEventListener("click", () => loadLogins(state.loginsPage + 1));
         byId("activity-prev").addEventListener("click", () => {

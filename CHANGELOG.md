@@ -10,6 +10,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The Routes filter defaulted to hiding half the directions.** Both
+  the client panel and the dashboard opened on the worked-out routes,
+  leaving the eighty-one handed down by players a click away, which most
+  people never made. With 170 routes and a search box already narrowing
+  them, the filter earned nothing. It is gone from both surfaces: every
+  route is listed, and each card carries a tag saying whether it was
+  worked out of the world as it stands or handed down, beside the badge
+  saying how well it still holds up.
+
 - **Eight handed-down routes aimed at a thing rather than an area, so
   when they drifted nothing could offer a way there.** `match_area`
   pairs a broken route with the area it was heading for, but "Pitch

@@ -1474,8 +1474,17 @@ textarea {
 .route-repaired { color: var(--amber); border-color: var(--amber); }
 .route-drifted { color: var(--red); border-color: var(--red-dark); }
 
-.route-filter {
-    margin-bottom: 10px;
+/* What kind of route this is, beside how well it holds up. */
+.route-tags { display: inline-flex; gap: 6px; flex: none; }
+
+.route-kind {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 2px 6px;
+    border-radius: 999px;
+    border: 1px dashed var(--border-strong);
+    color: var(--faint);
 }
 
 .route-dest {
