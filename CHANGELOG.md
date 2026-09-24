@@ -10,6 +10,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The dashboard's top bar ran off the right of the screen, taking the
+  Refresh button and the service pills with it.** `app.css` pins the bar
+  with `position: fixed; inset: 0 0 auto var(--sidebar-width)`, but
+  `theme-dragon.css` loads after it and set `position: relative` on the
+  same element, to anchor the gold rule it draws underneath. That won.
+  A relatively positioned bar keeps its parent's full width and `left`
+  merely shifts it, so the bar was the width of the page *plus* the
+  sidebar: 1493px inside a 1280px window, with the last 213px off-screen
+  and the document scrolling sideways to match.
+
+  `position: fixed` already establishes the containing block that the
+  `::after` needs, so the theme no longer sets position on the top bar;
+  the player client's own bar is a plain flex item and keeps it. The bar
+  now ends exactly at the viewport edge with no horizontal overflow, at
+  desktop and at phone width, and the gold rule still draws.
+
+  The theme stylesheet's cache-busting version is bumped too -- without
+  it browsers keep the copy that carries the bug.
+
 - **The published route to Wyvern's Tower was "crawl hole", which walks
   you into a prank.** Six decoy objects sit in the Center of Oak Tree
   Square -- a hole, a crevice, an air shaft, a chasm, a rock and a

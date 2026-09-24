@@ -150,6 +150,17 @@ h1, h2, h3,
 .topbar,
 .client-bar {
     border-bottom: 1px solid var(--toc-bronze);
+}
+
+/* The ::after below is absolutely positioned and needs a positioned
+   ancestor. .topbar already has one -- it is fixed, and app.css pins it
+   with `inset: 0 0 auto var(--sidebar-width)`. Setting position here too
+   used to override that: the bar stopped being fixed, so `left` shifted
+   it sideways without narrowing it and its last 228px -- the sidebar's
+   width exactly -- hung off the right of the screen, taking the Refresh
+   button and most of the service pills with it. .client-bar is a plain
+   flex item, so that one does need it. */
+.client-bar {
     position: relative;
 }
 .topbar::after,
