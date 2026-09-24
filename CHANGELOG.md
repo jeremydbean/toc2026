@@ -10,6 +10,27 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Eight handed-down routes aimed at a thing rather than an area, so
+  when they drifted nothing could offer a way there.** `match_area`
+  pairs a broken route with the area it was heading for, but "Pitch
+  Black Opal", "Hobgoblins" and "Bright White Light" name an object, a
+  mob and a light, not a destination on the area list -- they were
+  published as broken with no replacement, though all three targets are
+  still in the world and still reachable. The builder now also looks for
+  the thing a route is named after: a room by its name, or the room a
+  mob or object is reset into, nearest to the Oak Tree Square.
+
+  Repaired routes go from 7 to 9 of the 10 that drifted. Hobgoblins
+  lands in the Hobgoblin Barracks, in the same area its old directions
+  were heading for, and Pitch Black Opal (path 2) lands in An ancient
+  tomb -- which is exactly where its path 1, still verified, arrives.
+
+  Bright White Light is left unrepaired on purpose. Its name matches
+  four different reachable things -- a chamber in the High Tower, a
+  brilliant white light in the crypt, and two other lights -- with no
+  way to tell from the name which was meant, and a confidently wrong
+  route is worse than a note saying where the old one stops.
+
 - **The validation workflow had been red on every commit since
   2026-09-20, reporting 203 test failures.** It was five, and none of them
   a product bug. One asserts inside a `subTest` that loops over all 443

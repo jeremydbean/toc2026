@@ -486,6 +486,85 @@ def match_area(name, areas):
     return best
 
 
+def load_landmarks():
+    """Where each named mob and object is reset: name -> [room vnum].
+
+    Reset lines carry the vnum; the names come from the #MOBILES and
+    #OBJECTS records they point at.
+    """
+    names = {}          # ("M"|"O", vnum) -> short description
+    placed = {}         # ("M"|"O", vnum) -> [room vnum]
+
+    listed = [l.strip() for l in (AREA / "area.lst").read_text("latin-1").splitlines()
+              if l.strip() and not l.strip().startswith("$")]
+
+    for fname in listed:
+        path = AREA / fname
+        if not path.is_file():
+            continue
+        text = path.read_text("latin-1")
+
+        for kind, section in (("M", "MOBILES"), ("O", "OBJECTS")):
+            m = re.search(rf"^#{section}\s*$(.*?)^#0\s*$", text, re.S | re.M)
+            if not m:
+                continue
+            for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
+                h = re.match(r"#(\d+)[ \t]*(.*?)~\s*\n(.*?)~", blk, re.S)
+                if h:
+                    names[(kind, int(h.group(1)))] = h.group(3).strip()
+
+        m = re.search(r"^#RESETS\s*$(.*?)^S\s*$", text, re.S | re.M)
+        if not m:
+            continue
+        for line in m.group(1).splitlines():
+            r = re.match(r"^([MO])\s+-?\d+\s+(\d+)\s+-?\d+\s+(\d+)", line.strip())
+            if r:
+                placed.setdefault((r.group(1), int(r.group(2))), []).append(
+                    int(r.group(3)))
+
+    landmarks = {}
+    for key, where in placed.items():
+        label = names.get(key)
+        if label:
+            landmarks.setdefault(normalise(label), []).extend(where)
+    return landmarks
+
+
+def match_landmark(name, rooms, reach, landmarks):
+    """The room a route named after a thing is trying to reach.
+
+    Tries the room names first -- a route called "Bright White Light" may
+    simply be a room -- then the mobs and objects the name could mean. A
+    plural in the handed-down name ("Hobgoblins") is matched against the
+    singular the world uses.
+    """
+    # "Pitch Black Opal (path 2)" is the same landmark as path 1; the
+    # qualifier tells two routes apart, not two destinations.
+    want = normalise(re.sub(r"\(.*?\)", " ", name))
+    if not want:
+        return None
+
+    singular = want[:-1] if want.endswith("s") else want
+    candidates = []
+
+    for vnum in reach:
+        room_name = normalise(rooms[vnum]["name"])
+        if room_name and (room_name == want or want in room_name
+                          or singular in room_name):
+            candidates.append(vnum)
+
+    if not candidates:
+        for label, where in landmarks.items():
+            if label and (label == want or want in label or singular in label):
+                candidates.extend(v for v in where if v in reach)
+
+    if not candidates:
+        return None
+
+    # Closest to the start: a route should be the short way there.
+    return min(candidates, key=lambda v: len(reach[v]))
+
+
 def area_entrances(rooms, reach):
     """The nearest reachable room of each area, which is its way in."""
     best = {}
@@ -523,6 +602,7 @@ def main():
     by_area = {r["area"]: r for r in routes}
     legacy_path = pathlib.Path("tools/legacy_routes.json")
     legacy = []
+    landmarks = load_landmarks()
 
     if legacy_path.is_file():
         for name, script in sorted(
@@ -548,6 +628,17 @@ def main():
                     entry["fixed_steps"] = fixed["steps"]
                     entry["fixed_room"] = fixed["room"]
                     entry["fixed_area"] = fixed["area"]
+                else:
+                    # Some of these aim at a thing rather than an area --
+                    # an opal, a light, a nest of hobgoblins -- so look for
+                    # what the route is named after and walk to that.
+                    landmark = match_landmark(name, rooms, reach, landmarks)
+                    if landmark is not None:
+                        path = reach[landmark]
+                        entry["fixed_commands"] = to_commands(rooms, path)
+                        entry["fixed_steps"] = describe(rooms, path)
+                        entry["fixed_room"] = rooms[landmark]["name"]
+                        entry["fixed_area"] = rooms[landmark]["area"]
 
             legacy.append(entry)
 

@@ -8,7 +8,7 @@
   "computed": 89,
   "legacy_ok": 71,
   "legacy_drifted": 10,
-  "legacy_repaired": 7
+  "legacy_repaired": 9
  },
  "routes": [
   {
@@ -2631,7 +2631,20 @@
    "vnum": 1562,
    "area": "Vougon Gnome Village",
    "status": "drifted",
-   "note": "The old directions stop here: no exit north from here."
+   "note": "The old directions stop here: no exit north from here.",
+   "fixed_commands": "r e 8;open gate;r e 5;s;r e 7;n;r e 2;n",
+   "fixed_steps": [
+    "east x8",
+    "open gate",
+    "east x5",
+    "south",
+    "east x7",
+    "north",
+    "east x2",
+    "north"
+   ],
+   "fixed_room": "Hobgoblin Barracks",
+   "fixed_area": "Vougon Gnome Village"
   },
   {
    "name": "Holy Grove",
@@ -3106,7 +3119,32 @@
    "vnum": 3639,
    "area": "Dazed The Dark Forest",
    "status": "drifted",
-   "note": "The old directions stop here: no exit north from here."
+   "note": "The old directions stop here: no exit north from here.",
+   "fixed_commands": "r w 7;open gate;r w 10;r n 2;r w 2;r s 4;w;s;w;r s 2;r e 2;n;e;s;e;open door;s;d;open rug;d",
+   "fixed_steps": [
+    "west x7",
+    "open gate",
+    "west x10",
+    "north x2",
+    "west x2",
+    "south x4",
+    "west",
+    "south",
+    "west",
+    "south x2",
+    "east x2",
+    "north",
+    "east",
+    "south",
+    "east",
+    "open door",
+    "south",
+    "down",
+    "open rug",
+    "down"
+   ],
+   "fixed_room": "An ancient tomb",
+   "fixed_area": "Dazed The Dark Forest"
   },
   {
    "name": "Plains of the North",
