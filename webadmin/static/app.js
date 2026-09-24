@@ -321,6 +321,9 @@
     }
 
     async function loadView(view) {
+        // The Admin and Game lights sit in the top bar, which every view
+        // shares, so they are refreshed here rather than inside one view.
+        void loadRuntimeStatus();
         if (view === "overview") await loadOverview();
         else if (view === "world") await loadWorld();
         else if (view === "areas") await loadAreasAndHealth();
@@ -580,7 +583,6 @@
         const results = await Promise.allSettled([
             api("/api/stats"),
             api("/api/area_health?include_issues=false"),
-            loadRuntimeStatus(),
             loadConfig(),
         ]);
 
@@ -1890,6 +1892,9 @@
 
     function bindEvents() {
         all("[data-view]").forEach((button) => button.addEventListener("click", () => navigate(button.dataset.view)));
+        // A page left open should not keep showing a state from minutes
+        // ago. The probe behind /api/health is cached, so this is cheap.
+        window.setInterval(() => { void loadRuntimeStatus(); }, 15000);
         byId("routes-form").addEventListener("submit", (event) => event.preventDefault());
         byId("routes-search").addEventListener("input", renderRoutes);
         byId("logins-prev").addEventListener("click", () => loadLogins(state.loginsPage - 1));

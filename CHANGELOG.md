@@ -10,6 +10,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The Admin and Game lights in the top bar only ever updated on the
+  Overview page.** They sit in the bar, which every view shares, but
+  `loadRuntimeStatus()` was called from `loadOverview()` alone. Open the
+  dashboard on Directions, World database or Gear finder and both dots
+  kept the amber "pending" the markup gives them and never moved, so a
+  healthy server read as one still being checked -- indefinitely. They
+  also went stale on a page left open, since nothing refreshed them.
+
+  They now refresh on every view change and on a fifteen-second timer.
+  `/api/health` is public and the loopback probe behind it is cached for
+  two seconds, so the poll costs nothing.
+
 - **The dashboard's top bar ran off the right of the screen, taking the
   Refresh button and the service pills with it.** `app.css` pins the bar
   with `position: fixed; inset: 0 0 auto var(--sidebar-width)`, but
