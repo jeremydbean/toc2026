@@ -1,6 +1,22 @@
 # ToC MUD Area Building Guide
 
 **Comprehensive reference for creating `.are` files for the ToC (Times of Chaos) MUD.**  
+
+> **An `.are` file is a token stream, not a line format.** `fread_letter`,
+> `fread_number`, `fread_word` and `fread_string` all skip whitespace,
+> newlines included, so the loader does not care where you break a line.
+> `D0` and `D 0` are the same exit; an exit's description may begin on the
+> same line as its number (`D3 too dark to tell`); a record header may carry
+> trailing spaces (`#114 `) or its name alongside the vnum
+> (`#24377 The White Queen's Chamber~`). All of those shapes are in the
+> shipped world. Write new records in the ordinary layout described below,
+> but any tool that *reads* area files has to accept every one of them --
+> several did not, and content was deleted on the strength of their false
+> negatives.
+>
+> `fread_flag` is the real trap: it has no handling for a minus sign, so a
+> `-1` returns 0 *and* leaves the `-` unconsumed, shifting every field after
+> it.
 This document covers every section, every flag, every option, and every value used in area files.
 Prefer this document over the old HTML wiki files, which contain the same information in a harder-to-read format.
 

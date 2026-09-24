@@ -10,6 +10,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The maintained guides had drifted behind the code.** AGENTS.md still
+  said Hyrule disables recall everywhere, which stopped being true when
+  the arcade cabinet made the area escapable, and so did the player
+  guide. Neither the guides nor the README mentioned the travel
+  directions at all, though they are generated, published and shown on
+  two surfaces. Now recorded: how `.are` files actually parse and the
+  five line shapes a reader has to accept; that prices are copper and go
+  through `format_price`; what the route builder models and the two rules
+  that keep its output honest; the `?v=` cache-busting requirement for
+  anything under `webadmin/static/`; that `online.count` comes from the
+  game over MSSP and when it does not; where the admin token lives and
+  how to rotate it without it leaving the host; and that a large failure
+  count can be one wrong expectation inside a subTest.
+
 - **The Admin and Game lights in the top bar only ever updated on the
   Overview page.** They sit in the bar, which every view shares, but
   `loadRuntimeStatus()` was called from `loadOverview()` alone. Open the

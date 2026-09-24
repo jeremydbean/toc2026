@@ -326,6 +326,13 @@ Important distinctions:
   that view is visible and keeps at most 60 samples in the browser.
 - The main Operations page has a bounded, filterable Server Info/WizInfo event
   view. Routine activity is useful context but is not a durable audit log.
+- `online.count` on `/api/admin/status` is the game's own tally of descriptors
+  in `CON_PLAYING`, asked for over MSSP, and `online.source` reads `"game"`
+  when that is where it came from. If the game cannot be reached the field
+  reads `"journal"` and the number is only an upper bound: a session that ends
+  without a recorded close leaves a stale `connect` in `log/logins.tsv`, so
+  the journal over-reports and never under-reports. Check `source` before
+  trusting the count to decide whether a restart is safe.
 - `/api/reload` reparses area files for the dashboard and rejects a parser swap
   if critical area-health findings exist. It does not reload the live game.
 - `/api/shutdown` queues an in-game shutdown request. Compose restart policy may
@@ -355,6 +362,27 @@ browser profile. On a trusted Mac, copy it without echoing it:
 ```bash
 ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
 ```
+
+## Travel Directions
+
+The dashboard's **Directions** view and the browser client's **Routes** panel
+list every published route: those worked out of the world as it currently
+stands, and those handed down by players. Both are public -- no admin token --
+and both read the same `/api/directions`. Each card is tagged with which kind
+it is and how well it holds up, and a drifted route that has a worked-out
+replacement shows both.
+
+The file is generated, not live. After any change to exits, portals or
+`area.lst`, regenerate and commit it:
+
+```bash
+python3 tools/build_directions.py
+```
+
+Two areas have no route because nothing in the world links to them: the Quest
+Zone (20301-20313), which is finished content with no entrance, and Temple
+Despair (26000-26006), which has no mobs or objects at all. Dresden has none
+because it contains the square the routes start from.
 
 ## Area And World Changes
 

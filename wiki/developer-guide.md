@@ -446,6 +446,14 @@ export WEB_ADMIN_TOKEN=development-only-random-value
 python -m webadmin.server --host 127.0.0.1 --port 9001
 ```
 
+**Bump the `?v=` when you edit anything under `webadmin/static/`.** Both
+`index.html` and `client.html` load their stylesheets and scripts with a
+cache-busting query, and changing a file without changing that number ships
+nothing -- the browser keeps the copy it already has. A stale stylesheet is
+merely invisible; a stale script is worse, because it can be one that still
+expects an element the new markup no longer contains. Three separate changes
+in one day appeared to have no effect for exactly this reason.
+
 Development rules:
 
 - Keep request bodies typed with Pydantic models.
@@ -493,6 +501,51 @@ replacement, checked-in unit refresh, service health checks, and bounded retry
 after a failed fetch or build. The separate healthcheck contract requires three
 consecutive end-to-end failures before it restarts services and must escalate
 through `toc2026-recovery.service` only after local repair fails.
+
+## Travel Directions
+
+`tools/build_directions.py` reads the area files, builds the room graph, walks
+it from the Oak Tree Square (room 2401) and writes `webadmin/directions.json`.
+The dashboard's Directions view and the client's Routes panel both read that
+file through the public `/api/directions`; neither computes anything. Rebuild
+and commit the JSON with whatever change caused it:
+
+```bash
+python3 tools/build_directions.py
+```
+
+The graph is more than room exits. `ITEM_PORTAL` (30) objects are edges you
+enter. `ITEM_MANIPULATION` (31) objects are edges you climb, jump, crawl,
+push, pull, turn, burn, bomb, play to or feed -- `value[0]` is the verb,
+`value[1]` the destination, and `value[4] == 9` means the object acts on the
+room it sits in and leads nowhere. Rooms flagged `ROOM_TELEPORT` or
+`ROOM_RIVER` carry you on a timer, their destination, speed and visibility
+written as three numbers after the sector.
+
+Two properties matter more than they look:
+
+- **Edges are priced, and the search is Dijkstra.** Walking, a portal or a
+  handhold costs one. A room that carries you costs eight, because you wait
+  on its timer and cannot steer. With an unweighted search the Newbie Train
+  -- eleven stops at five ticks each -- beat walking, and a third of the
+  routes told players to stand still.
+- **A room that teleports you to the recall point is an ejector, not a
+  passage,** and is excluded from routing. Six exist. The House of Pancakes
+  (room 1607) claims the ceiling crushed you and drops you on the Temple
+  altar; six decoy objects in the Oak Tree Square lead there. Because it sits
+  in `wyvern.are`, the published route to Wyvern's Tower was once the single
+  command `crawl hole`.
+
+`load_world()` stays faithful to every room the files contain, including
+ejectors, because `tests/test_directions_router.py` checks it against the
+dashboard's independent parser and that parity is what catches parsing
+regressions. Exclusions belong to the routing step.
+
+Handed-down routes live in `tools/legacy_routes.json`. Each is walked; ones
+that still arrive are published verbatim, because that string is what players
+already know. Ones that drifted are published with a note and, where the
+target can be identified, a freshly computed route beside them -- by area
+name, or failing that by the room, mob or object the route is named after.
 
 ## C Coding Guidance
 

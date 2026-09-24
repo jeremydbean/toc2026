@@ -179,9 +179,13 @@ be discovered before the normal door commands can target them.
 
 Recall is intentionally unpredictable in this game: it may send you to any room
 eligible for recall rather than one fixed hometown. Protected and no-recall
-rooms are excluded. Some areas, including Hyrule, disable recall completely and
-provide their own exit path. Do not enter a dangerous one-way area assuming
-`recall` will always rescue you.
+rooms are excluded. Some areas disable recall and provide their own exit path.
+In Hyrule that is the nine dungeons: inside a `Level N` dungeon, recall will
+not take you out, and you leave the way you came. The Hyrule overworld, its
+sword caves, shops, repair rooms, money games, warp halls and the Lost Woods
+all allow recall, and recalling is the intended way out of the Lost Woods
+loop. Do not enter a dangerous one-way area assuming `recall` will always
+rescue you.
 
 ## Combat
 
@@ -414,6 +418,15 @@ denominations; `worth` summarizes carried money.
 `list` shows each price in the denominations it will actually cost, written
 short: `1c`, `5g 20s`, `3p`. Prices are counted in copper, so a shop can
 charge as little as a single copper coin - the bread in Mud School does.
+
+`repair` works on gear you are wearing as well as gear in your pack, so you do
+not have to take a dented breastplate off to have it seen to. The smith quotes
+a price from how worn the item is and how high a level it is, in the same
+denominations the shops use, and restores the item to full condition -- armour
+values and worth included, both of which a heavy blow can file down. An item
+remembers how often it has been mended; after about two dozen repairs the next
+attempt breaks it for good, and the running count is printed every time so you
+can see it coming.
 
 Banks support:
 

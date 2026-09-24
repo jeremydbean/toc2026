@@ -214,10 +214,28 @@ when a change is broad enough that collateral damage is a real risk, and say
 why. Wrap any live probe in `timeout` -- never poll in a shell loop waiting
 for a test to finish.
 
-`tests/test_webadmin_api.py` and `tests/test_web_help_and_paging.py` need
-`fastapi` and `httpx`; without them they skip *silently*, including the
-admin-auth and host-header-spoofing tests. Install into a virtualenv outside
-the repo (`.venv` is not in `.gitignore`).
+`tests/test_webadmin_api.py`, `tests/test_web_help_and_paging.py` and
+`tests/test_players_online.py` need `fastapi` and `httpx`; without them they
+skip, and until 2026-09-24 two of them skipped *silently*, taking the
+admin-auth and host-header-spoofing tests with them. Install into a virtualenv
+outside the repo (`.venv` is not in `.gitignore`); this machine uses
+`C:\Users\JeremyBean\toc-venv`. A new test module that imports
+`webadmin.server` must guard the import and skip with a reason, the way those
+three do, or it errors instead of skipping wherever the dependency is absent.
+
+**A failure count is not a problem count.** CI was red for four days
+reporting "203 failures", which was five problems: one asserted inside a
+`subTest` looping over all 443 Hyrule rooms, so a single wrong expectation
+printed itself 197 times and buried the rest. Before believing a large
+number, group the failures by test name. And prefer one set comparison to a
+subTest per item when the collection is large -- the same assertion rewritten
+that way now prints one readable line.
+
+Four of those five guarded code that had been deliberately refactored into a
+shared helper and went on asserting at the old address. When a
+source-inspection test fails after a refactor, check whether the behaviour
+moved before changing the test, and repoint the assertion at where it lives
+now -- never weaken it so it passes.
 
 Live-test gotchas that look like product bugs and are not:
 
@@ -255,6 +273,9 @@ Live-test gotchas that look like product bugs and are not:
 - `webadmin/area_parser.py`: independent Python area parser
 - `webadmin/static/console-output.js`: streaming ANSI/Telnet console decoder
 - `webadmin/area_health.py`: shared lint engine
+- `tools/build_directions.py`: builds `webadmin/directions.json`, the travel
+  routes both the dashboard and the player client display
+- `tools/costs_to_copper.py`: the one-pass area converter kept for reference
 
 Commands added or revived in September 2026, and where they live:
 
@@ -297,6 +318,13 @@ Commands added or revived in September 2026, and where they live:
 - Password-bearing commands must not be logged.
 - Keep persisted enum/flag/slot/vnum values stable unless a migration is part of
   the task.
+- Prices are counted in copper. `obj->cost` is copper and is `long`; shop
+  and appraisal output goes through `format_price()`, which writes the
+  non-zero denominations short (`5g 20s`, `1c`, or `free`). Do not print a
+  bare number as a price. `add_money()` and `has_enough_gold()` still take
+  **gold**, so a cost computed in gold -- REPAIR's, for one -- must be
+  multiplied by `COPPER_PER_GOLD` before `format_price` sees it, and clamped
+  first so the multiply cannot overflow a 32-bit `long`.
 - Carried denominations, bank copper, and lifetime casino totals are `long`.
   Route gameplay changes through `add_money()` or
   `adjust_coin_balance()`; preflight both source and destination before any
@@ -322,12 +350,47 @@ For each changed command or gameplay path, check:
 - color enabled/disabled, paging enabled/disabled, and narrow terminal layout
 
 Do not label deliberate random recall as a bug. It can choose any room that is
-eligible and not protected. Some areas, including Hyrule, intentionally disable
-recall and provide explicit return paths.
+eligible and not protected.
+
+Hyrule no longer blocks recall everywhere. It used to: every room carried
+`ROOM_NO_RECALL` and nothing in the world exited into it, so it was a place
+staff could visit and nobody could leave. Since the arcade cabinet was built,
+only the dungeons keep the flag -- vnums 30400 to 30645, the contiguous run
+named "Level N: ..." -- because walking out of Level 7 by saying a word is the
+opposite of what a dungeon is for. The other 197 rooms let you recall away, and
+`tests/test_hyrule_progression.py` asserts exactly that split. The overworld
+carries `ROOM2_ALWAYS_LIT` (flags2 `B`, formerly `ROOM2_B_UNUSED`) because
+field, forest, hills, mountain and desert are sectors `room_is_dark` blacks out
+at sunset.
 
 ## Area Work
 
 The authoritative reference is `wiki/area-building-guide.md`.
+
+**An `.are` file is a token stream, not lines.** `fread_letter`,
+`fread_number`, `fread_word` and `fread_string` all skip whitespace, including
+newlines, so the game does not care where a builder broke a line. Anything
+that reads area files with regexes has to be equally relaxed, and every one of
+these shapes is real and load-bearing in the shipped world:
+
+- `D0` and `D 0` both mean exit zero. 2,275 exits are written the spaced way.
+- An exit's description may start on the same line as its number:
+  `D3 too dark to tell`.
+- A record header may carry trailing whitespace (`#114 `), or its name on the
+  same line (`#24377 The White Queen's Chamber~`).
+- `fread_flag` never handles a minus sign: given `-1` it returns 0 and ungets
+  the `-` without consuming it, shifting everything after it.
+
+Each of those silently dropped content from `tools/build_directions.py` at
+some point, and the dropped content was then acted on: 176 resets across
+`chess.are`, `korzath1.are` and `world.are` had been commented out as
+"(removed: room/obj does not exist)" when every vnum they named was present
+and every room reachable. If a validator says something is missing, confirm
+against `../merc --check-area` and `check_exits.py` before deleting anything.
+
+Before restoring a reset that was commented out, read what it does. One of
+those 176 was a button whose `value[4] == 3` kills everyone in the room except
+whoever pushes it; arming that is a gameplay decision, not a repair.
 
 - Parse sections structurally; do not use unbounded global text replacement.
 - Keep vnums globally unique within each indexed type.
@@ -349,6 +412,48 @@ python3 check_exits.py
 python3 check_resets.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 ```
+
+## Directions And Reachability
+
+`tools/build_directions.py` walks the world from the Oak Tree Square (room
+2401) and writes `webadmin/directions.json`. Both the dashboard's Directions
+view and the client's Routes panel read it through the public
+`/api/directions`. Regenerate with `python3 tools/build_directions.py` after
+any change to exits, portals or `area.lst`, and commit the JSON with the
+change that caused it.
+
+What counts as a way through, because it is more than exits:
+
+- `ITEM_PORTAL` (30) objects, entered.
+- `ITEM_MANIPULATION` (31) objects -- climbed, jumped, crawled, pushed,
+  pulled, turned, burned, bombed, played to or fed. `value[0]` is the verb,
+  `value[1]` the room, and `value[4] == 9` means it acts on the room it sits
+  in and leads nowhere. 95 of them are in play and they are the only way into
+  Dylan's front gate, the Lonely Mountain and the Mid-World treehouse.
+- Rooms flagged `ROOM_TELEPORT` or `ROOM_RIVER`, which carry you on a timer.
+  The three numbers after the sector are destination, speed and visibility.
+
+Two rules keep the output honest, and both were learned the hard way:
+
+- **Price the edges.** Routing is Dijkstra, not breadth-first. A door, a
+  portal or a rope costs one; a room that carries you costs eight, because
+  you wait on its timer and cannot steer. Unweighted, the Newbie Train --
+  eleven stops at five ticks each -- beat walking, and 29 routes told players
+  to stand still instead of walk.
+- **A room that teleports you to the recall point is an ejector, not a
+  passage.** Six exist. The House of Pancakes (1607, in `wyvern.are`) says the
+  ceiling crushed you, prints a fake `<1hp 0m 0mv>` prompt and drops you on
+  the Temple altar; six decoy objects in the Oak Tree Square lead to it. It is
+  a joke, and because it lives in `wyvern.are` the published route to Wyvern's
+  Tower was once the single command `crawl hole`. Ejectors are excluded from
+  routing, though `load_world()` still reports them, because the parity test
+  against the dashboard parser depends on that staying faithful.
+
+89 of the 92 areas holding rooms have a route. Dresden has none because it
+contains the start room. The Quest Zone (20301-20313) and Temple Despair
+(26000-26006) have none because nothing in the world links to them -- the
+first is finished content with no entrance, the second an empty shell with no
+mobs or objects. Do not invent entrances for them; ask.
 
 ## Dashboard Work
 
@@ -373,6 +478,13 @@ python3 scripts/area_lint.py --fail-on critical --limit 100
 - Add tests for no/wrong/correct token, malformed bodies, boundaries,
   filesystem races, and failed parser reload.
 - Document authentication status for every new route.
+- **Bump the `?v=` on any file you edit under `webadmin/static/`.** Both pages
+  load their assets with a cache-busting query, and editing the file without
+  changing the number ships nothing: the browser keeps what it has. This bit
+  three separate times in one session -- a rewritten Routes panel nobody could
+  see, a stylesheet fix that did not apply, and a script that still expected a
+  filter element that had been removed. The last kind is worse than stale, it
+  is broken.
 
 ## Security Facts
 
@@ -449,6 +561,12 @@ Other deploy facts:
 - `MUD_HOST` is where the web service dials (loopback). `MUD_PUBLIC_HOST` is
   what the dashboard displays, resolved to an address so it follows the DDNS
   record rather than going stale.
+- The admin token lives in `/home/toc/toc2026/.env` (gitignored, mode 600) and
+  is read with `grep '^WEB_ADMIN_TOKEN=' ~/toc2026/.env`. It was rotated on
+  2026-09-23 after being pasted into a chat transcript; generate a
+  replacement on the Pi with `openssl rand -hex 32` so the value never leaves
+  the host, and restart `toc2026-web.service`. Never paste it into a commit,
+  an issue or a conversation.
 
 ## Permission Helpers
 

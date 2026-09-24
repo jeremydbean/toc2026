@@ -103,7 +103,7 @@ does not consume the Arrow.
 |---|---|
 | `list` | List a shop, healer, or context-specific service |
 | `buy`, `sell`, `value` | Trade with a shopkeeper |
-| `repair` | Request repair from a compatible NPC |
+| `repair` | Repair a worn or carried item at a smith; price in coins |
 | `heal` | List or buy healer services |
 | `donate` | Send an eligible object to donation handling |
 | `balance`, `deposit`, `withdraw` | Use a bank |
