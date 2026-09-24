@@ -15,6 +15,7 @@ no server is booted.
 """
 from __future__ import annotations
 
+import json
 import pathlib
 import sys
 import unittest
@@ -107,6 +108,61 @@ class RouterReadsTheWholeWorld(unittest.TestCase):
         ]:
             with self.subTest(area=what):
                 self.assertIn(vnum, reach, f"{what} is unreachable")
+
+
+class TrapsAreNotDirections(unittest.TestCase):
+    """The Oak Tree Square prank is not a way to Wyvern's Tower.
+
+    Six decoy objects in the start room -- a hole, a crevice, an air
+    shaft, a chasm, a rock, a platform -- drop you into the House of
+    Pancakes, which says the ceiling crushed you, prints a fake
+    "<1hp 0m 0mv>" prompt, and a tick later teleports you to the Temple
+    altar. It is a joke, not a passage. That room lives in wyvern.are, so
+    reaching it counted as reaching the area, and the published route to
+    Wyvern's Tower was the single command "crawl hole".
+
+    load_world stays faithful to what the world contains -- the parity
+    test above depends on that -- so the exclusion belongs to routing.
+    """
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.published = json.loads(
+            (ROOT / "webadmin" / "directions.json").read_text(encoding="utf-8"))
+        cls.ejectors = bd.load_ejectors()
+
+    def test_the_pancake_room_is_recognised_as_a_trap(self) -> None:
+        self.assertIn(1607, self.ejectors,
+                      "1607 teleports to the altar; it is an ejector")
+
+    def test_no_published_route_walks_into_the_prank(self) -> None:
+        offenders = []
+        for group in ("routes", "legacy"):
+            for route in self.published.get(group, []):
+                for field in ("commands", "fixed_commands"):
+                    text = route.get(field) or ""
+                    if "crawl hole" in text or "jump chasm" in text:
+                        offenders.append(f"{group}:{route['name']}:{field}")
+        self.assertEqual([], offenders)
+
+    def test_wyverns_tower_is_reached_by_walking(self) -> None:
+        route = next((r for r in self.published["routes"]
+                      if "Wyvern" in r["name"]), None)
+        self.assertIsNotNone(route, "no route to Wyvern's Tower")
+        self.assertNotEqual("crawl hole", route["commands"])
+        self.assertGreater(len(route["commands"].split(";")), 3,
+                           "a one-step route there is the prank again")
+
+    def test_an_ejector_is_never_routed_through(self) -> None:
+        rooms = bd.load_world()
+        for vnum in self.ejectors:
+            rooms.pop(vnum, None)
+        portals = bd.load_portals()
+        for room, edges in bd.load_teleports().items():
+            portals.setdefault(room, []).extend(edges)
+        reach = bd.shortest_paths(rooms, bd.START, portals)
+        self.assertFalse(self.ejectors & set(reach),
+                         "routing reached a room that ejects to the Temple")
 
 
 if __name__ == "__main__":

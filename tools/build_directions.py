@@ -46,6 +46,14 @@ def flag_letters(word):
     return set() if word.isdigit() else set(word)
 
 
+# Where the game puts you when you recall or die. A room that teleports
+# you to one of these is throwing you out, not carrying you somewhere:
+# the House of Pancakes in wyvern.are is the joke version, reached by six
+# decoy objects in the Oak Tree Square, and the router used to publish
+# "crawl hole" as the way to Wyvern's Tower because of it.
+EJECT_ROOMS = {4207, 4208}      # ROOM_VNUM_TEMPLE, ROOM_VNUM_ALTAR
+
+
 # ITEM_MANIPULATION value[0]. 10 answers to any of them; 9 in value[4]
 # means the object acts on the room it sits in, so it leads nowhere.
 MANIP_VERB = {1: "flip", 2: "move", 3: "pull", 4: "push", 5: "turn",
@@ -120,6 +128,40 @@ def load_portals():
     return placed
 
 
+def load_ejectors():
+    """Rooms that teleport whoever stands in them back to the Temple.
+
+    They are traps and exits, not passages: the House of Pancakes tells
+    you the ceiling crushed you and then puts you on the altar. Walking a
+    player into one is never directions.
+    """
+    out = set()
+    listed = [l.strip() for l in (AREA / "area.lst").read_text("latin-1").splitlines()
+              if l.strip() and not l.strip().startswith("$")]
+
+    for fname in listed:
+        path = AREA / fname
+        if not path.is_file():
+            continue
+        m = re.search(r"^#ROOMS\s*$(.*?)^#0\s*$",
+                      path.read_text("latin-1"), re.S | re.M)
+        if not m:
+            continue
+        for blk in re.split(r"\n(?=#\d+[ \t\r\n])", m.group(1)):
+            h = re.match(r"#(\d+)[ \t]*(.*?)~", blk, re.S)
+            fl = re.search(r"\n~\n(.*)", blk, re.S)
+            if not h or not fl:
+                continue
+            tok = fl.group(1).split()
+            if len(tok) < 3 or not (set("EF") & set(tok[1])):
+                continue
+            rest = tok[4:] if "Z" in tok[1] else tok[3:]
+            if rest and rest[0].lstrip("-").isdigit() \
+               and int(rest[0]) in EJECT_ROOMS:
+                out.add(int(h.group(1)))
+    return out
+
+
 def load_teleports():
     """Rooms that move you: room -> [(verb, keyword, dest, cost, label)].
 
@@ -164,7 +206,7 @@ def load_teleports():
                 dest, speed = int(rest[0]), int(rest[1]) if len(rest) > 1 else 0
             except ValueError:
                 continue
-            if dest <= 0:
+            if dest <= 0 or dest in EJECT_ROOMS:
                 continue
 
             name = h.group(2).strip().replace("\n", " ")
@@ -580,6 +622,12 @@ def main():
     portals = load_portals()
     for room, edges in load_teleports().items():
         portals.setdefault(room, []).extend(edges)
+
+    # A room that throws you back to the Temple is a trap, not a way
+    # anywhere, and must not be walked into or counted as an entrance.
+    for vnum in load_ejectors():
+        rooms.pop(vnum, None)
+
     reach = shortest_paths(rooms, START, portals)
     entrances = area_entrances(rooms, reach)
 

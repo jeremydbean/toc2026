@@ -1843,14 +1843,23 @@
   },
   {
    "name": "Tyrst Wyvern's Tower",
-   "commands": "crawl hole",
+   "commands": "r e 8;open gate;r e 3;r s 4;r e 2;s;r e 2;d;s;e",
    "steps": [
-    "crawl A Hole"
+    "east x8",
+    "open gate",
+    "east x3",
+    "south x4",
+    "east x2",
+    "south",
+    "east x2",
+    "down",
+    "south",
+    "east"
    ],
-   "room": "House of Pancakes",
-   "vnum": 1607,
+   "room": "Main Eastern Road",
+   "vnum": 1701,
    "area": "Tyrst Wyvern's Tower",
-   "rooms_away": 1,
+   "rooms_away": 23,
    "status": "computed"
   },
   {
@@ -3818,11 +3827,20 @@
    "area": "Copper Miden'nir",
    "status": "drifted",
    "note": "The old directions stop here: nothing lies south of here.",
-   "fixed_commands": "crawl hole",
+   "fixed_commands": "r e 8;open gate;r e 3;r s 4;r e 2;s;r e 2;d;s;e",
    "fixed_steps": [
-    "crawl A Hole"
+    "east x8",
+    "open gate",
+    "east x3",
+    "south x4",
+    "east x2",
+    "south",
+    "east x2",
+    "down",
+    "south",
+    "east"
    ],
-   "fixed_room": "House of Pancakes",
+   "fixed_room": "Main Eastern Road",
    "fixed_area": "Tyrst Wyvern's Tower"
   },
   {

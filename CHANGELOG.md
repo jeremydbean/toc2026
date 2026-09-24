@@ -10,6 +10,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The published route to Wyvern's Tower was "crawl hole", which walks
+  you into a prank.** Six decoy objects sit in the Center of Oak Tree
+  Square -- a hole, a crevice, an air shaft, a chasm, a rock and a
+  platform -- and every one drops you into room 1607, the House of
+  Pancakes. That room says the ceiling has crushed you, prints a fake
+  `<1hp 0m 0mv>` prompt, and a tick later teleports you to the Temple
+  altar. You are not hurt; it is a joke on the curious.
+
+  The router could not tell a joke from a door. 1607 belongs to
+  wyvern.are, so arriving there counted as arriving in Wyvern's Tower,
+  and the whole route to that area was published as one command that
+  fake-kills the reader and leaves them at the Temple. A room whose
+  teleport destination is the recall point is an ejector, not a passage;
+  six of them exist and none is now walked into or counted as an
+  entrance. Wyvern's Tower routes by an actual ten-step walk to the Main
+  Eastern Road.
+
 - **The Routes filter defaulted to hiding half the directions.** Both
   the client panel and the dashboard opened on the worked-out routes,
   leaving the eighty-one handed down by players a click away, which most
