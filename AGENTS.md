@@ -420,11 +420,22 @@ players log in; check `log/logins.tsv` for who has been on lately.
 
 **The updater restarts the game, which disconnects whoever is playing.**
 Before triggering `toc2026-update.service`, check for connected players and
-hold unless the only one online is the owner (Killuminati). Two signals are
-needed and neither is sufficient alone: established sockets on port 9000 say
-how many people are really connected, and the login journal says who -- a
-session ending without a recorded close leaves a stale `connect`, so the
-journal over-reports on its own.
+hold unless the only one online is the owner (Killuminati).
+
+Ask the game, not the journal. `telnet_count_players()` counts descriptors
+in `CON_PLAYING` and the game publishes that over MSSP, which is what
+`/api/admin/status` now reports as `online.count`, with
+`online.source == "game"`. A session ending without a recorded close leaves
+a stale `connect` in `log/logins.tsv`, so the journal only ever
+over-reports; when the game cannot be reached the field says
+`source == "journal"` and the number is an upper bound, not a reading. The
+names still come from the journal, because MSSP carries a count and no
+names. Established sockets on port 9000 are a third, independent check.
+
+The Pi answers SSH on the LAN as `toc@toc.local` (port 22 is deliberately
+not forwarded from the internet). Over SSH the updater can be triggered
+without the admin token by touching `/run/toc2026/update.request`, which
+is the same path `POST /api/update` writes and is owned by `toc`.
 
 The updater does `make clean` first, so production has never been exposed to
 the incremental-build trap described under Build And Run.

@@ -805,13 +805,83 @@ def current_area_health() -> Dict[str, Any]:
     return AREA_HEALTH_CACHE
 
 
+# Telnet bytes needed to ask the game for MSSP. The game sends WILL MSSP
+# on connect and answers a DO with its status block.
+_IAC, _SE, _SB, _DO = 255, 240, 250, 253
+_TELOPT_MSSP = 70
+_MSSP_VAR, _MSSP_VAL = 1, 2
+
+# One short loopback probe answers both "is the game up" and "how many are
+# playing", and the status endpoint asks both. Hold the answer briefly so
+# a five-second dashboard poll does not open two connections each time.
+_GAME_PROBE_TTL = 2.0
+_GAME_PROBE_CACHE: tuple[float, bool, Optional[int]] | None = None
+
+
+def _parse_mssp(payload: bytes) -> Dict[str, str]:
+    """Decode an MSSP subnegotiation body into a plain dict."""
+    out: Dict[str, str] = {}
+    for chunk in payload.split(bytes([_MSSP_VAR])):
+        if not chunk or bytes([_MSSP_VAL]) not in chunk:
+            continue
+        name, _, value = chunk.partition(bytes([_MSSP_VAL]))
+        out[name.decode("latin-1", "replace")] = value.decode("latin-1", "replace")
+    return out
+
+
+def probe_game(timeout: float = 1.0) -> tuple[bool, Optional[int]]:
+    """(reachable, players) from one connection to the game port.
+
+    players is the game's own count of descriptors in CON_PLAYING, or None
+    if it did not answer in time. Never raises.
+    """
+    global _GAME_PROBE_CACHE
+
+    now = time.monotonic()
+    if _GAME_PROBE_CACHE is not None and now - _GAME_PROBE_CACHE[0] < _GAME_PROBE_TTL:
+        return _GAME_PROBE_CACHE[1], _GAME_PROBE_CACHE[2]
+
+    reachable = False
+    players: Optional[int] = None
+    try:
+        with socket.create_connection((MUD_HOST, MUD_PORT), timeout=timeout) as sock:
+            reachable = True
+            sock.sendall(bytes([_IAC, _DO, _TELOPT_MSSP]))
+            sock.settimeout(timeout)
+
+            deadline = time.monotonic() + timeout
+            buf = b""
+            marker = bytes([_IAC, _SB, _TELOPT_MSSP])
+            end = bytes([_IAC, _SE])
+            while time.monotonic() < deadline and len(buf) < 65536:
+                try:
+                    chunk = sock.recv(4096)
+                except OSError:
+                    break
+                if not chunk:
+                    break
+                buf += chunk
+                start = buf.find(marker)
+                if start < 0:
+                    continue
+                stop = buf.find(end, start + len(marker))
+                if stop < 0:
+                    continue
+                fields = _parse_mssp(buf[start + len(marker):stop])
+                raw = fields.get("PLAYERS", "")
+                if raw.strip().lstrip("-").isdigit():
+                    players = max(0, int(raw.strip()))
+                break
+    except OSError:
+        reachable = False
+
+    _GAME_PROBE_CACHE = (now, reachable, players)
+    return reachable, players
+
+
 def read_process_health() -> dict[str, bool]:
     """Return runtime reachability without probing the dashboard itself."""
-    try:
-        with socket.create_connection((MUD_HOST, MUD_PORT), timeout=0.5):
-            mud_online = True
-    except OSError:
-        mud_online = False
+    mud_online, _players = probe_game(timeout=0.5)
     return {
         "merc": mud_online,
         # Serving this request proves the web process is available. Probing a
@@ -844,11 +914,17 @@ def game_process_uptime() -> float | None:
 
 
 def players_online() -> Dict[str, Any]:
-    """Who the journal thinks is connected, bounded by real connections.
+    """Who the journal thinks is connected, bounded by the game's own count.
 
     A session that ends without a recorded close leaves a stale connect in
-    the journal, so the names alone over-report. The socket count is the
-    authority on how many; the names explain who.
+    the journal, so the names alone over-report -- only ever upward. The
+    game counts descriptors in CON_PLAYING and publishes that over MSSP,
+    and that number is the authority on how many; the names explain who.
+
+    `source` says which it is: "game" when the count came from the game,
+    "journal" when the game could not be asked and the names are all there
+    is. A deploy gate wants "game", and should treat "journal" as an
+    upper bound rather than a reading.
     """
     names: list[str] = []
     try:
@@ -857,17 +933,34 @@ def players_online() -> Dict[str, Any]:
         rows = []
 
     # parse_login_journal yields file order, oldest first, so the last row
-    # seen for a name is its most recent event.
+    # seen for a name is its most recent event, and later rows are the more
+    # recent sessions.
     latest: Dict[str, str] = {}
+    order: list[str] = []
     for row in rows:
         name = row.get("name")
         event = row.get("event")
         if name and event:
+            if name not in latest:
+                order.append(name)
             latest[name] = event
-    names = sorted(name for name, event in latest.items()
-                   if event in ("connect", "new", "reconnect"))
+    open_names = [name for name in order
+                  if latest[name] in ("connect", "new", "reconnect")]
 
-    return {"names": names, "count": len(names)}
+    _reachable, playing = probe_game()
+
+    if playing is None:
+        return {"names": sorted(open_names), "count": len(open_names),
+                "source": "journal"}
+
+    # The game is the authority. Where the journal has kept more names than
+    # there are players, the stale ones are the older sessions, so trust
+    # the most recent few; where it has fewer, the names simply cannot say
+    # who the rest are.
+    if playing < len(open_names):
+        open_names = open_names[len(open_names) - playing:]
+
+    return {"names": sorted(open_names), "count": playing, "source": "game"}
 
 
 def file_status(path: Path) -> Dict[str, Any]:

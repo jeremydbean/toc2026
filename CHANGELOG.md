@@ -10,6 +10,32 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The dashboard's "players online" count was the login journal, which
+  only ever over-reports.** `players_online()` promised in its own
+  docstring that the names were "bounded by real connections", with "the
+  socket count ... the authority on how many". No such bound existed: it
+  read `log/logins.tsv` and counted names whose last event was a
+  `connect`. A session that ends without a recorded close leaves one of
+  those behind for good, so the number drifts upward and never comes back
+  -- and the Pi deploy gate, which holds a game restart while players are
+  on, was reading it.
+
+  The game already knows. `telnet_count_players()` walks the descriptor
+  list counting `CON_PLAYING` with a character, and answers `DO MSSP` with
+  the total. The dashboard now asks down the same short loopback probe the
+  health check already opens, caches it for two seconds so a five-second
+  poll does not double the connections, and reports that as
+  `online.count`. The journal is used only to put names to it, and where
+  it holds more names than there are players the older sessions are
+  dropped as the stale ones. A new `online.source` field says `"game"` or
+  `"journal"`, so a caller can tell a reading from an upper bound instead
+  of guessing.
+
+  `tests/test_players_online.py` stands a fake MSSP listener up and covers
+  the count overriding a stale journal, an empty game reporting nobody,
+  more players than names, an unreachable game falling back with
+  `source == "journal"`, and the health flag still tracking reachability.
+
 - **You could not repair the armour you were wearing.** The help for
   REPAIR says it works "on worn equipment", and that is where damaged gear
   normally is -- `damage_eq` only strips a piece off once its condition
