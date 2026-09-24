@@ -126,7 +126,7 @@ ROOM_FLAGS = {
 
 ROOM_FLAGS2 = {
     'A': 'no_tport',
-    'B': 'unused',
+    'B': 'always_lit',
     'C': 'bank',
 }
 

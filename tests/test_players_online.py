@@ -25,6 +25,16 @@ from contextlib import contextmanager
 from pathlib import Path
 from unittest.mock import patch
 
+try:
+    import fastapi  # noqa: F401  -- webadmin.server will not import without it
+
+    WEBADMIN_UNAVAILABLE_REASON = None
+except Exception as exc:  # pragma: no cover - C-only environments skip this
+    WEBADMIN_UNAVAILABLE_REASON = (
+        f"webadmin dependencies unavailable ({type(exc).__name__}: {exc}). "
+        "Install webadmin/requirements.txt."
+    )
+
 IAC, SE, SB, DO = 255, 240, 250, 253
 TELOPT_MSSP = 70
 MSSP_VAR, MSSP_VAL = 1, 2
@@ -119,6 +129,8 @@ def fresh(module) -> None:
     module._GAME_PROBE_CACHE = None
 
 
+@unittest.skipIf(WEBADMIN_UNAVAILABLE_REASON is not None,
+                 WEBADMIN_UNAVAILABLE_REASON or "")
 class PlayersOnlineTests(unittest.TestCase):
     def test_mssp_body_decodes_to_fields(self) -> None:
         with server_with(1) as module:

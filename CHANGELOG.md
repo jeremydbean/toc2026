@@ -10,6 +10,54 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The validation workflow had been red on every commit since
+  2026-09-20, reporting 203 test failures.** It was five, and none of them
+  a product bug. One asserts inside a `subTest` that loops over all 443
+  Hyrule rooms, so a single wrong expectation printed itself 197 times and
+  buried the other four.
+
+  Four guarded code that had been deliberately refactored into shared
+  helpers, and went on asserting at the old address: the charm binding
+  that three create-undead spells now share through `raise_undead`,
+  Herbie's return to his own room now shared through `herbie_visit`, and
+  the lore appraisal that prints through `format_price` since prices moved
+  to copper. Each is repointed at where the behaviour now lives, and the
+  behaviour was checked to still be there first -- these fail again if it
+  goes away.
+
+  The fifth asserted that every Hyrule room carries `ROOM_NO_RECALL`. That
+  stopped being the design when the arcade cabinet was built: the area
+  used to be one nobody could leave, and 197 rooms gave the flag up so
+  players can recall out. `no_recall` is now exactly the dungeon range,
+  30400 to 30645, and the test says so -- as one set comparison rather
+  than 443 subtests, so the next mismatch prints one readable failure
+  instead of nearly two hundred. A companion test covers the other half of
+  that change, that the overworld carries `ROOM2_ALWAYS_LIT` and no longer
+  goes dark at sunset; nothing guarded it before.
+
+- **The dashboard's area parser still called room flag2 `B` "unused".**
+  `src/merc.h` renamed it `ROOM2_ALWAYS_LIT` when the Hyrule overworld
+  stopped blacking out at night, so the dashboard displayed nothing for a
+  flag that is now load-bearing.
+
+- **`tests/test_players_online.py` errored instead of skipping** where
+  fastapi is not installed. It now reports the same reason the other
+  webadmin tests do.
+
+### Added
+
+- **Directions on the dashboard, and an end to serving the old client
+  script.** The routes went into the player client at `/client` but never
+  into the dashboard at `/`, which is where an operator actually looks --
+  `index.html` and `app.js` had no reference to them at all. There is now
+  a Directions item in the left nav, among the public views, reading the
+  same `/api/directions` feed as the client so the two cannot drift.
+
+  The client's own panel was also invisible to anyone who had opened it
+  before: `client.html` still asked for `client.js?v=4`, the same URL it
+  used before the panel was rewritten, so browsers kept the cached script.
+  The client and dashboard asset versions are bumped.
+
 - **The dashboard's "players online" count was the login journal, which
   only ever over-reports.** `players_online()` promised in its own
   docstring that the names were "bounded by real connections", with "the

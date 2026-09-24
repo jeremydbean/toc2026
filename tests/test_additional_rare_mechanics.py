@@ -50,8 +50,10 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         self.assertIn("save_char_obj(ch)", lore)
         self.assertRegex(
             lore,
-            r"estimate it's worth about %d gold[^;]+;\s*send_to_char\( buf, ch \)",
+            r"estimate it's worth\s+\"\s*\n\s*\"about %s",
         )
+        self.assertIn("format_price( lore_estimate_price(obj->cost)", lore)
+        self.assertRegex(lore, r"\}\s*\n\s*send_to_char\( buf, ch \)")
         self.assertIn("for ( i = 1; i <= 3; i++ )", lore)
         self.assertIn("number_percent() <= chance", lore)
         self.assertGreaterEqual(lore.count("lore_estimate(paf->modifier)"), 2)
@@ -106,6 +108,19 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         self.assertIn("save_char_obj(victim)", raise_dead)
 
     def test_summoned_undead_remain_controlled_for_their_lifetime(self) -> None:
+        """The charm lasts exactly as long as the servant does.
+
+        The three create spells used to carry their own copy of this and
+        now share raise_undead, so the binding is asserted where it lives
+        and each spell is checked for going through it.
+        """
+        helper = function_body(
+            self.magic2, "static CHAR_DATA *raise_undead", "void spell_create_skeleton"
+        )
+        self.assertIn("af.duration   = victim->timer", helper)
+        self.assertIn("af.bitvector  = AFF_CHARM", helper)
+        self.assertNotIn("number_fuzzy( ch->level )", helper)
+
         boundaries = (
             ("void spell_create_skeleton", "void spell_create_wraith"),
             ("void spell_create_wraith", "void spell_create_vampire"),
@@ -114,7 +129,7 @@ class AdditionalRareMechanicTests(unittest.TestCase):
         for start, end in boundaries:
             with self.subTest(spell=start):
                 body = function_body(self.magic2, start, end)
-                self.assertIn("af.duration  = victim->timer", body)
+                self.assertIn("raise_undead( ch, corpse,", body)
                 self.assertNotIn("number_fuzzy( ch->level )", body)
 
     def test_transfusion_cannot_leave_the_user_at_zero_hp(self) -> None:

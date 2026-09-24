@@ -96,14 +96,25 @@ class LegacySpecialSystemTests(unittest.TestCase):
         self.assertNotIn("vch->max_hit / (vch->max_hit - vch->hit)", paramedic)
 
     def test_herbie_heal_is_bounded_and_returns_to_its_origin(self) -> None:
+        """The visit itself lives in herbie_visit.
+
+        spec_paramedic and the immortal HERBIE command both call it, so
+        the wandering Herbie and the summoned one cannot drift apart.
+        """
         paramedic = function_body(
             self.special, "bool spec_paramedic", "bool spec_quest_master"
         )
-        self.assertIn("home_room = mob->in_room", paramedic)
-        self.assertIn("most_hurt->hit = most_hurt->max_hit", paramedic)
-        self.assertIn("char_to_room(mob,home_room)", paramedic)
+        self.assertIn("herbie_visit( mob, most_hurt )", paramedic)
         self.assertNotIn("while(most_hurt->hit", paramedic)
         self.assertNotIn("get_room_index(4911)", paramedic)
+
+        visit = function_body(
+            self.special, "void herbie_visit", "bool spec_paramedic"
+        )
+        self.assertIn("home_room = mob->in_room", visit)
+        self.assertIn("victim->hit = victim->max_hit", visit)
+        self.assertIn("char_to_room(mob, home_room)", visit)
+        self.assertNotIn("while(victim->hit", visit)
         self.assertIn("victim->desc->connected != CON_PLAYING", self.act_wiz)
 
     def test_only_rare_training_food_grants_trains(self) -> None:

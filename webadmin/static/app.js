@@ -10,7 +10,7 @@
     const ADMIN_VIEWS = new Set(["players", "console", "logins", "logs", "host", "operations"]);
 
     const VIEW_NAMES = new Set([
-        "overview", "world", "areas", "players", "gear", "console", "logins", "logs", "host", "operations",
+        "overview", "world", "areas", "players", "gear", "routes", "console", "logins", "logs", "host", "operations",
     ]);
     const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -329,6 +329,121 @@
         else if (view === "logs") await connectLogs();
         else if (view === "host") await loadHostStatus();
         else if (view === "operations") await loadOperations();
+        else if (view === "routes") await loadRoutes();
+    }
+
+    // Travel directions. Public, like the help text -- the same feed the
+    // player client reads, so the two cannot disagree.
+    const routesState = { data: null, loading: false };
+
+    const ROUTE_BADGE = {
+        computed: "checks out",
+        verified: "still walks",
+        repaired: "repaired",
+        drifted: "has drifted",
+        portal: "ends at a portal",
+    };
+
+    async function loadRoutes() {
+        if (routesState.data || routesState.loading) return;
+        routesState.loading = true;
+        try {
+            routesState.data = await api("/api/directions");
+        } catch (error) {
+            byId("routes-results").replaceChildren(
+                node("div", { className: "empty-state large", text: error.message }));
+            return;
+        } finally {
+            routesState.loading = false;
+        }
+
+        const data = routesState.data;
+        const counts = data.counts || {};
+        const computed = data.routes || [];
+        const legacy = data.legacy || [];
+        const start = data.start || {};
+        byId("routes-count").textContent = `${computed.length + legacy.length} routes`;
+        const drifted = counts.legacy_drifted || 0;
+        const repaired = counts.legacy_repaired || 0;
+        byId("routes-intro").textContent = start.room
+            ? `All of these start at ${start.room} (room ${start.vnum}). `
+              + `${computed.length} are worked out of the world as it stands. `
+              + `Of ${legacy.length} handed down by players, `
+              + `${counts.legacy_ok || 0} still walk and ${drifted} have drifted`
+              + (repaired ? `; ${repaired} of those come with a replacement.` : ".")
+            : "";
+        renderRoutes();
+    }
+
+    function renderRoutes() {
+        const data = routesState.data;
+        if (!data) return;
+        const source = byId("routes-source").value;
+        const query = byId("routes-search").value.trim().toLowerCase();
+        const computed = data.routes || [];
+        const legacy = data.legacy || [];
+        const chosen = source === "legacy" ? legacy
+            : source === "all" ? computed.concat(legacy)
+            : computed;
+
+        const matching = chosen.filter((route) => !query
+            || [route.name, route.room, route.area]
+                .some((field) => (field || "").toLowerCase().includes(query)));
+
+        const results = byId("routes-results");
+        if (!matching.length) {
+            results.replaceChildren(
+                node("div", { className: "empty-state large", text: "Nothing matches that." }));
+            return;
+        }
+
+        results.replaceChildren(...matching.map((route) => {
+            const card = node("article", { className: "route-card" });
+            const shown = route.fixed_commands ? "repaired" : route.status;
+
+            const head = node("div", { className: "route-head" });
+            head.append(node("h3", { text: route.name }));
+            head.append(node("span", {
+                className: `route-badge route-${shown}`,
+                text: ROUTE_BADGE[shown] || "needs checking",
+            }));
+            card.append(head);
+
+            if (route.room) {
+                const away = Number.isFinite(route.rooms_away)
+                    ? ` - ${route.rooms_away} rooms away` : "";
+                card.append(node("p", {
+                    className: "route-dest",
+                    text: `${route.room} - ${route.area}${away}`,
+                }));
+            }
+
+            card.append(node("pre", { className: "route-commands", text: route.commands }));
+            card.append(node("p", {
+                className: "route-steps",
+                text: (route.steps || []).join(", "),
+            }));
+            if (route.note) {
+                card.append(node("p", { className: "route-note", text: route.note }));
+            }
+            if (route.fixed_commands) {
+                card.append(node("p", {
+                    className: "route-note",
+                    text: route.fixed_room
+                        ? `A way there today, to ${route.fixed_room}`
+                          + (route.fixed_area ? ` - ${route.fixed_area}:` : ":")
+                        : "A way there today:",
+                }));
+                card.append(node("pre", {
+                    className: "route-commands", text: route.fixed_commands,
+                }));
+                card.append(node("p", {
+                    className: "route-steps",
+                    text: (route.fixed_steps || []).join(", "),
+                }));
+            }
+            return card;
+        }));
     }
 
     // A session only has a length once it ends, and the game records that
@@ -1770,6 +1885,9 @@
 
     function bindEvents() {
         all("[data-view]").forEach((button) => button.addEventListener("click", () => navigate(button.dataset.view)));
+        byId("routes-form").addEventListener("submit", (event) => event.preventDefault());
+        byId("routes-search").addEventListener("input", renderRoutes);
+        byId("routes-source").addEventListener("change", renderRoutes);
         byId("logins-prev").addEventListener("click", () => loadLogins(state.loginsPage - 1));
         byId("logins-next").addEventListener("click", () => loadLogins(state.loginsPage + 1));
         byId("activity-prev").addEventListener("click", () => {

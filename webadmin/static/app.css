@@ -1992,3 +1992,18 @@ label textarea {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* Directions view: the same route cards the player client shows. */
+.routes-intro { margin: 0 0 12px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.routes-results { display: flex; flex-direction: column; gap: 10px; }
+.route-card { border: 1px solid var(--border); border-radius: 8px; background: var(--surface-2); padding: 12px 14px; }
+.route-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.route-head h3 { margin: 0; font-size: 14px; }
+.route-badge { flex: none; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; padding: 2px 6px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--muted); }
+.route-verified, .route-computed { color: var(--teal); border-color: var(--teal-dark); }
+.route-repaired { color: var(--amber); border-color: var(--amber); }
+.route-drifted { color: var(--red); border-color: var(--red-dark); }
+.route-dest { margin: 4px 0 8px; font-size: 12px; color: var(--muted); }
+.route-commands { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.5; color: var(--text); background: var(--terminal-bg); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; white-space: pre-wrap; word-break: break-word; }
+.route-steps, .route-note { margin: 8px 0 0; font-size: 11px; line-height: 1.6; color: var(--faint); }
+.route-note { color: var(--muted); }

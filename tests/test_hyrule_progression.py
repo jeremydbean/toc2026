@@ -20,6 +20,7 @@ from webadmin.area_parser import (
     AreaParser,
     ITEM_FLAGS,
     ROOM_FLAGS,
+    ROOM_FLAGS2,
     VULN_FLAGS,
     decode_flags,
 )
@@ -213,16 +214,55 @@ class HyruleProgressionTests(unittest.TestCase):
             with self.subTest(coordinate=coordinate):
                 self.assertEqual(rooms[coordinate], roster)
 
-    def test_every_manifest_room_exists_and_every_hyrule_room_blocks_recall(self) -> None:
+    def test_every_manifest_room_exists_and_only_dungeons_block_recall(self) -> None:
         canonical_vnums = {room["vnum"] for room in self.world.values()}
         for dungeon in self.dungeons.values():
             canonical_vnums.update(room["vnum"] for room in dungeon["rooms"])
             canonical_vnums.update(cellar["vnum"] for cellar in dungeon["cellars"])
         self.assertTrue(canonical_vnums.issubset(self.hyrule_rooms))
 
-        for room in self.hyrule_rooms.values():
-            with self.subTest(room_vnum=room.vnum):
-                self.assertIn("no_recall", decode_flags(room.room_flags, ROOM_FLAGS))
+        # Hyrule once held everyone: every room carried ROOM_NO_RECALL and
+        # nothing in the world exited into it, so it was a place staff
+        # could visit and nobody could leave. The arcade cabinet is the way
+        # in now, and only the dungeons keep the flag -- walking out of
+        # Level 7 by saying a word is the opposite of what a dungeon is
+        # for. The overworld, sword caves, shops, repair rooms, money
+        # games, warp halls and the Lost Woods all let you recall away.
+        dungeon_vnums = set()
+        for dungeon in self.dungeons.values():
+            dungeon_vnums.update(range(dungeon["first_room_vnum"],
+                                       dungeon["last_room_vnum"] + 1))
+
+        blocking = {vnum for vnum, room in self.hyrule_rooms.items()
+                    if "no_recall" in decode_flags(room.room_flags, ROOM_FLAGS)}
+
+        # One assertion rather than one per room: a wrong expectation here
+        # used to print 197 near-identical failures and bury the reason.
+        self.assertEqual(
+            sorted(dungeon_vnums & set(self.hyrule_rooms)), sorted(blocking),
+            "only the dungeon rooms should stop a player recalling out")
+
+    def test_the_overworld_is_lit_after_sunset(self) -> None:
+        """Field, forest, hills, mountain and desert black out at night.
+
+        The overworld is not flagged dark, but room_is_dark blacks those
+        sectors out at sunset, which left half of every day unreadable.
+        ROOM2_ALWAYS_LIT is checked after ROOM_DARK and answers for it.
+        """
+        dungeon_vnums = set()
+        for dungeon in self.dungeons.values():
+            dungeon_vnums.update(range(dungeon["first_room_vnum"],
+                                       dungeon["last_room_vnum"] + 1))
+
+        nightfall_sectors = {2, 3, 4, 5, 10}   # field forest hills mountain desert
+        unlit = sorted(
+            vnum for vnum, room in self.hyrule_rooms.items()
+            if vnum not in dungeon_vnums
+            and int(room.sector_type) in nightfall_sectors
+            and "always_lit" not in decode_flags(room.room_flags2, ROOM_FLAGS2)
+        )
+        self.assertEqual([], unlit,
+                         "these overworld rooms go dark at sunset")
 
     def test_overworld_and_dungeon_reset_counts_match_the_manifest(self) -> None:
         expected: Counter[tuple[int, int]] = Counter()
