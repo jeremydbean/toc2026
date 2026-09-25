@@ -208,6 +208,12 @@ returning when output arrives -- roughly eight minutes of the total is
 waiting for replies that already landed. `tests/test_bank_interest.py` waits
 on a randomised 40-80 second game tick.
 
+That 35 minutes is a local figure. The same suite on a GitHub runner
+takes **51 to 61 minutes** -- ten consecutive runs measured, successes
+and failures alike -- so a `validate` job still going at fifty minutes
+is on schedule rather than hung. Check the job's step list before
+concluding anything is stuck.
+
 Default to: build both trees, run the one relevant test module, ship. Write
 the regression test and let CI run everything. Reach for the full suite only
 when a change is broad enough that collateral damage is a real risk, and say
