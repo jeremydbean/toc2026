@@ -123,6 +123,21 @@ const  WERE_FORM  were_types [] =
 };
 
 
+/*
+ * How thick the world's herbs and spell components lie.
+ *
+ * Finding one should be a small event. With around 7,800 rooms in play a
+ * ceiling of forty herbs is one per two hundred rooms, which is roughly
+ * "now and again" for somebody moving through an area, and the ceiling is
+ * what the rot timer works against rather than a number the world is
+ * always at.
+ *
+ * Nothing is scattered while nobody is playing. The old behaviour piled
+ * components up through the quiet hours so that the first person on in
+ * the morning walked into a world carpeted with them; now the world
+ * drains while it is empty and starts filling again when somebody is
+ * there to find any of it.
+ */
 struct component_type
 {
   int herb;
@@ -2889,76 +2904,70 @@ void update_handler( void )
 }
 
 
-void component_update( void )
+/*
+ * How many herbs and spell components the world is holding.
+ *
+ * Object index counts rather than a walk of the object list: cheaper, and
+ * it counts the ones sitting in a player's pack too. Herbs are vnums
+ * 34-53 and spell components 54-88.
+ */
+void count_components( int *herbs, int *comps )
 {
-  ROOM_INDEX_DATA *component_area, *component_room;
-  OBJ_DATA *component;
   OBJ_INDEX_DATA *pObjIndex;
-  int count, count2, areas, herb, spell_comp, pick;
-  int herb_count = 0, spell_comp_count = 0;
   int vnum;
 
-  /* Count existing components in the world using object index counts.
-   * This is more efficient and safer than iterating the full object_list.
-   * Herbs are vnums 34-53, spell components are vnums 54-88.
-   */
+  *herbs = 0;
+  *comps = 0;
+
   for (vnum = 34; vnum <= 53; vnum++)
   {
     if ((pObjIndex = get_obj_index(vnum)) != NULL)
-      herb_count += pObjIndex->count;
+      *herbs += pObjIndex->count;
   }
   for (vnum = 54; vnum <= 88; vnum++)
   {
     if ((pObjIndex = get_obj_index(vnum)) != NULL)
-      spell_comp_count += pObjIndex->count;
+      *comps += pObjIndex->count;
   }
+}
 
-  /* Limit herbs to 250 in the world */
-  if (herb_count >= 250)
+void component_update( void )
+{
+  ROOM_INDEX_DATA *component_area, *component_room;
+  OBJ_DATA *component;
+  int count, count2, areas, herb, spell_comp, pick;
+  int herb_count = 0, spell_comp_count = 0;
+
+  /* Nobody to find them, nothing to find. */
+  if ( telnet_count_players() < 1 )
+    return;
+
+  count_components( &herb_count, &spell_comp_count );
+
+  if (herb_count >= HERB_CEILING)
   {
     /* Skip herb spawning if we have too many */
   }
   else
   {
-    areas = dice(1,3) + 1;
-    herb = dice(1,2) + 1;
+    areas = 1;
+    herb = number_range(1,2);
 
     for( count = 0; count < areas; count++)
     {
-      int area_attempts = 0;
-      for( ; ; )
-      {
-        component_area = get_room_index( number_range( 0, 65535 ) );
+      component_area = random_scatter_room( NULL );
 
-        if(component_area != NULL)
-          break;
-        
-        if (++area_attempts > 100)  /* Prevent infinite loop - give up after 100 tries */
-          break;
-      }
-      
-      if (component_area == NULL)  /* Skip this area if we couldn't find a room */
+      if (component_area == NULL)  /* Skip this area if we found no room */
         continue;
 
       for(count2 = 0; count2 < herb; count2++)
       {
         /* Check limit again in case we hit it during spawning */
-        if (herb_count >= 250)
+        if (herb_count >= HERB_CEILING)
           break;
 
-        int room_attempts = 0;
-        for( ; ; )
-        {
-          component_room = get_room_index( number_range( 0, 65535 ) );
+        component_room = random_scatter_room( component_area->area );
 
-          if( component_room != NULL
-           && component_room->area == component_area->area )
-            break;
-          
-          if (++room_attempts > 100)  /* Prevent infinite loop */
-            break;
-        }
-        
         if (component_room == NULL)  /* Skip if we couldn't find a room */
           continue;
 
@@ -2977,51 +2986,29 @@ void component_update( void )
   if(number_percent () < 50)
     return;
 
-  /* Limit spell components to 200 in the world */
-  if (spell_comp_count >= 200)
+  if (spell_comp_count >= COMPONENT_CEILING)
     return;
 
-  areas = dice(1,2) + 1;
+  areas = 1;
   spell_comp = 1;
 
   for( count = 0; count < areas; count++)
   {
-    int spell_area_attempts = 0;
-    for( ; ; )
-    {
-      component_area = get_room_index( number_range( 0, 65535 ) );
+    component_area = random_scatter_room( NULL );
 
-      if(component_area != NULL)
-        break;
-      
-      if (++spell_area_attempts > 100)  /* Prevent infinite loop */
-        break;
-    }
-    
     if (component_area == NULL)  /* Skip this area if no room found */
       continue;
 
     for(count2 = 0; count2 < spell_comp; count2++)
     {
       /* Check limit again */
-      if (spell_comp_count >= 200)
+      if (spell_comp_count >= COMPONENT_CEILING)
         break;
 
-      int spell_room_attempts = 0;
-      for( ; ; )
-      {
-        component_room = get_room_index( number_range( 0, 65535 ) );
+      component_room = random_scatter_room( component_area->area );
 
-        if( component_room != NULL && component_room->area == component_area->area)
-          break;
-        
-        if (++spell_room_attempts > 100)  /* Prevent infinite loop */
-          break;
-      }
-      
-      if (component_room == NULL || component_room->area != component_area->area)
+      if (component_room == NULL)
         continue;
-
 
       pick = component_table[dice(1,33) - 1].component;
       component = create_object( get_obj_index(pick), 1 );

@@ -2955,6 +2955,50 @@ int calc_apply_stats(void)
 /*
  * Create an instance of an object.
  */
+/*
+ * One room out of the world, or out of one area, chosen evenly.
+ *
+ * The thing that wanted this picked a random vnum between 0 and 65535 and
+ * hoped: with 7,781 rooms in play that finds a room about one try in
+ * eight, and a room inside an area already chosen about one try in eight
+ * hundred. The inner loop gave up after a hundred tries, which it did
+ * roughly nine times in ten, so most of what component_update() meant to
+ * scatter was never placed at all.
+ *
+ * A single sweep of the room hash with reservoir sampling costs one pass
+ * over 7,781 rooms and always answers.
+ */
+ROOM_INDEX_DATA *random_scatter_room( const AREA_DATA *area )
+{
+    ROOM_INDEX_DATA *room;
+    ROOM_INDEX_DATA *chosen = NULL;
+    int seen = 0;
+    int iHash;
+
+    for ( iHash = 0; iHash < MAX_KEY_HASH; iHash++ )
+    {
+	for ( room = room_index_hash[iHash]; room != NULL; room = room->next )
+	{
+	    if ( area != NULL && room->area != area )
+		continue;
+
+	    /* Somewhere a thing can lie and somebody can pick it up. */
+	    if ( IS_SET(room->room_flags, ROOM_DT)
+	    ||   IS_SET(room->room_flags, ROOM_JAIL)
+	    ||   IS_SET(room->room_flags, ROOM_PRIVATE)
+	    ||   IS_SET(room->room_flags, ROOM_SOLITARY)
+	    ||   IS_SET(room->room_flags, ROOM_IMP_ONLY)
+	    ||   IS_SET(room->room_flags, ROOM_GODS_ONLY) )
+		continue;
+
+	    if ( number_range( 1, ++seen ) == 1 )
+		chosen = room;
+	}
+    }
+
+    return chosen;
+}
+
 OBJ_DATA *create_object( OBJ_INDEX_DATA *pObjIndex, int level )
 {
     ROOM_INDEX_DATA *to_room;

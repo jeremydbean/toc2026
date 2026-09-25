@@ -2379,6 +2379,13 @@ void    move_char       ( CHAR_DATA *ch, int door, bool follow );
 ROOM_INDEX_DATA *recall_room ( CHAR_DATA *ch );
 void    recall_char_to_temple ( CHAR_DATA *ch );
 bool    is_invulnerable ( const CHAR_DATA *ch );
+ROOM_INDEX_DATA *random_scatter_room ( const AREA_DATA *area );
+void    count_components ( int *herbs, int *comps );
+int     telnet_count_players ( void );
+
+/* Defined in update.c, beside the scatterer that enforces them. */
+#define HERB_CEILING            40
+#define COMPONENT_CEILING       25
 bool    room_allows_recall_point ( ROOM_INDEX_DATA *room );
 void    recheck_sneak   ( CHAR_DATA *ch );
 RID     *get_random_room( CHAR_DATA *ch );

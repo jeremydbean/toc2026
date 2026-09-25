@@ -125,6 +125,29 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Herbs and spell components almost never landed.** `component_update()`
+  chose where to put something by guessing a vnum between 0 and 65535 and
+  asking whether a room lived there. With 7,781 rooms in play that finds
+  *a* room about one try in eight; a room inside an area already chosen,
+  about one try in eight hundred. The inner loop gave up after a hundred
+  tries, which it did roughly nine times in ten, so most of what the
+  function meant to scatter was never placed -- and the herb branch did
+  not even check the area before dropping, so what did land often landed
+  somewhere else. `COMPONENT` answered "New Components Scattered!" either
+  way, so there was nothing to go on.
+
+  `random_scatter_room()` walks the room hash once and samples, which
+  always answers, and skips death traps, jails, private rooms and
+  staff-only rooms. `COMPONENT` now counts before and after and prints
+  both numbers.
+
+  With the picker working the old rate would have buried the world, so it
+  is much lower than it was on paper: the ceilings are 40 herbs and 25
+  components rather than 250 and 200, one area and one or two herbs per
+  round rather than up to twelve, and **nothing is scattered at all while
+  nobody is logged in**. The world drains through the quiet hours instead
+  of carpeting itself for whoever logs in first.
+
 - **You could only spend the loose change in your pocket.** A price is
   quoted in copper and was charged with
   `can_adjust_coin_balance(ch, -cost, TYPE_COPPER)`, which reads exactly

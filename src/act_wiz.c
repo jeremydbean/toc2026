@@ -8212,13 +8212,39 @@ void do_itrans( CHAR_DATA *ch, char *argument )
     send_to_char( "Ok.\n\r", ch );
 }
 
+/*
+ * Scatter a round of herbs and spell components.
+ *
+ * It used to answer "New Components Scattered!" whatever happened, which
+ * was the only thing anyone could go on -- and for years what happened
+ * was mostly nothing, because the room picker underneath was a lottery
+ * over 65,536 vnums that gave up nine times in ten. Counting before and
+ * after and printing both numbers means the next person to wonder
+ * whether it works can see the answer.
+ */
 void do_component_update( CHAR_DATA *ch, char *argument )
 {
+    char buf[MAX_STRING_LENGTH];
+    int before_herbs, before_comps;
+    int after_herbs, after_comps;
+
     UNUSED_PARAM(argument);
-  	component_update();
-  	component_update();
-  	component_update();
-    send_to_char( "New Components Scattered!\n\r", ch );
+
+    count_components( &before_herbs, &before_comps );
+    component_update();
+    component_update();
+    component_update();
+    count_components( &after_herbs, &after_comps );
+
+    snprintf( buf, sizeof(buf),
+        "Scattered %d herb%s and %d spell component%s.\n\r"
+        "The world now holds %d of %d herbs and %d of %d components.\n\r",
+        after_herbs - before_herbs,
+        after_herbs - before_herbs == 1 ? "" : "s",
+        after_comps - before_comps,
+        after_comps - before_comps == 1 ? "" : "s",
+        after_herbs, HERB_CEILING, after_comps, COMPONENT_CEILING );
+    send_to_char( buf, ch );
     return;
 }
 

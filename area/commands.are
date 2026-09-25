@@ -357,6 +357,11 @@ command named here for the detail.
   recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
   tells you where it is.  Once every 30 minutes, and not mid-fight.
 
+  Herbs and spell components actually appear now.  They had barely been
+  landing at all for years, and the scattering is deliberately sparse -
+  finding one should be a small event - and stops entirely when nobody is
+  logged in.
+
   Two monster wards that had never worked now do.  A bloody aura turns
   magic aside; a dominion shield turns aside everything, and only goes up
   when the creature is badly hurt.  Four end-game creatures use them: the

@@ -200,7 +200,7 @@ void telnet_offer_options( DESCRIPTOR_DATA *d )
 
 /* ------------------------------------------------------------------ MSSP */
 
-static int telnet_count_players( void )
+int telnet_count_players( void )
 {
     DESCRIPTOR_DATA *d;
     int players = 0;

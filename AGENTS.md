@@ -618,6 +618,20 @@ Other deploy facts:
   the host, and restart `toc2026-web.service`. Never paste it into a commit,
   an issue or a conversation.
 
+## Scattering Things Into The World
+
+`random_scatter_room()` in `src/db.c` is how anything picks a room to put
+something in, optionally inside one area. **Do not guess a vnum.** The
+component scatterer did -- `get_room_index(number_range(0, 65535))` in a
+loop that gave up after a hundred tries -- and with 7,781 rooms spread
+over 65,536 vnums the inner loop failed about nine times in ten, so herbs
+and spell components had barely existed for years while the command that
+placed them reported success.
+
+Component rates live in `component_update()`: `HERB_CEILING` and
+`COMPONENT_CEILING` in `merc.h`, and `telnet_count_players() < 1` stops
+the world filling up while it is empty.
+
 ## Monster Wards
 
 `dshield` and `baura` are in the skill table but belong to mobiles: level
