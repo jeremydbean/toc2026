@@ -160,9 +160,18 @@ class RecallPointTests(unittest.TestCase):
     def test_the_spell_ignores_the_point_and_a_curse(self) -> None:
         """Two characters, because CURSE refuses to target the caster."""
         with LiveMud() as mud:
-            for name in ("Zwizard", "Zvictim"):
-                self.character(mud, name, Levl=70 if name == "Zwizard" else 55,
-                               Room=OAK_SQUARE)
+            # The victim casts WORD OF RECALL repeatedly too, so they
+            # need the mana for it as much as the caster does.
+            self.character(mud, "Zvictim", Levl=55, Room=OAK_SQUARE,
+                           HpManaMove="20000 20000 20000 20000 20000 20000")
+            # CURSE allows a saving throw and costs mana, so the caster
+            # needs enough of it to keep trying. On a hundred points they
+            # run dry after about ten casts, which is how this test failed
+            # in CI while passing every time on a faster machine: the
+            # saving throw went the other way a few times and the wizard
+            # had nothing left to cast with.
+            self.character(mud, "Zwizard", Levl=70, Room=OAK_SQUARE,
+                           HpManaMove="20000 20000 20000 20000 20000 20000")
 
             with mud.connect(timeout=120) as wizard:
                 login(wizard, "Zwizard", PASSWORD)
@@ -189,12 +198,15 @@ class RecallPointTests(unittest.TestCase):
                     # the wizard is still in the square; curse needs them
                     # in the same room.
                     run(wizard, "trans Zvictim", 2.0)
+                    cast = ""
                     for _ in range(15):
-                        run(wizard, "cast curse Zvictim", 2.5)
+                        cast += run(wizard, "cast curse Zvictim", 2.5)
                         if "curse" in run(victim, "affect", 1.6).lower():
                             break
+                    self.assertNotIn("enough mana", cast, cast[-400:])
                     self.assertIn(
-                        "curse", run(victim, "affect", 1.6).lower())
+                        "curse", run(victim, "affect", 1.6).lower(),
+                        "the curse never landed:\n" + cast[-600:])
 
                     run(wizard, "trans Zvictim 3700", 2.0)
                     refused = run(victim, "recall", 2.5)
