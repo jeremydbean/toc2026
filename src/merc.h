@@ -1086,6 +1086,10 @@ const char *default_prompt_text args( ( void ) );
 #define OBJ_VNUM_HYRULE_MIRROR_SHIELD 30580
 #define OBJ_VNUM_HYRULE_PEGASUS_BOOTS 30581
 
+/* An ordinary bag, which MIRROR RESTORE renames and enlarges for the
+   kit it is handing back. */
+#define OBJ_VNUM_MIRROR_PACK       3032
+
 /* Player-bound automatic quest recovery tokens (mountain.are). */
 #define OBJ_VNUM_QUEST_TOKEN_FIRST 25038
 #define OBJ_VNUM_QUEST_TOKEN_LAST  25042
@@ -1764,6 +1768,14 @@ struct  pc_data
     int                 last_session_pk_kills;/* PK kills last session */
     int                 last_session_deaths;  /* deaths last session */
     int                 last_session_quests;  /* quests completed last session */
+
+    /* What MIRROR took off, so MIRROR RESTORE can put it back. Vnums
+       rather than pointers: an object can be dropped, sacrificed or
+       destroyed between the two commands, and a stale pointer to one is
+       a crash where a stale vnum is merely a piece that does not come
+       back. Session only -- neither field is saved. */
+    int                 mirror_worn[MAX_WEAR];
+    char                mirror_of[MAX_INPUT_LENGTH];
 
     /* Where RECALL goes. 0 means the Temple, which is where every
        character starts and where a lost one is sent back to. */

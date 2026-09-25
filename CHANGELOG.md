@@ -49,7 +49,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   object from its prototype rather than their copy, so an enchantment
   they added is not reproduced. `mirror clear` takes it all off again.
   ITEM_ACTION is never put on, because `equip_char` fires those and one
-  of them kills you. Logged.
+  of them kills you, and MIRROR says so rather than passing over it
+  silently. Nothing else can refuse a piece: the three `ITEM_ANTI_*`
+  flags are cleared on the copy, so an item that would zap itself off
+  someone of the immortal's alignment goes on anyway, and the kit is
+  equipped from the last slot backwards so a two-handed weapon does not
+  knock the shield off again.
+
+  `mirror restore` undoes the whole thing: the borrowed kit goes into a
+  pack named "<player>'s gear" in the immortal's inventory, and what
+  they were wearing when they started goes back on. The slots are
+  remembered as vnums rather than pointers -- an object can be dropped
+  or destroyed between the two commands, and a stale pointer to one is a
+  crash where a stale vnum is merely a piece that does not come back.
+  Logged.
 
 - **INVULN, an immortal toggle that stops anything hurting you.** No
   mobile, no player, no spell, and worn equipment stops taking damage

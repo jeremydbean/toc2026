@@ -8966,17 +8966,142 @@ void do_seal( CHAR_DATA *ch, char *argument )
  * the player file, which writes "Wear <n>" for every object it saves;
  * anything at nest level zero with a wear location is something they had
  * on when they logged out.
+ *
+ * MIRROR RESTORE undoes the whole thing: the borrowed kit goes into a
+ * pack in the immortal's inventory and their own gear goes back on.
  */
-static void mirror_strip( CHAR_DATA *ch )
+
+/* Take it all off, and optionally write down what was there. Nothing is
+   destroyed: it lands in the character's inventory, which is where
+   MIRROR RESTORE goes looking for it again. */
+static void mirror_strip( CHAR_DATA *ch, bool remember )
 {
     OBJ_DATA *obj;
     int iWear;
 
     for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
     {
-	if ( ( obj = get_eq_char( ch, iWear ) ) != NULL )
-	    unequip_char( ch, obj );
+	if ( remember )
+	    ch->pcdata->mirror_worn[iWear] = 0;
+
+	if ( ( obj = get_eq_char( ch, iWear ) ) == NULL )
+	    continue;
+
+	if ( remember && obj->pIndexData != NULL )
+	    ch->pcdata->mirror_worn[iWear] = obj->pIndexData->vnum;
+
+	unequip_char( ch, obj );
     }
+}
+
+/* The first one of these carried loose, so the copy that just went into
+   the pack is never mistaken for the original. */
+static OBJ_DATA *mirror_find_carried( CHAR_DATA *ch, int vnum )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+    {
+	if ( obj->wear_loc == WEAR_NONE
+	&&   obj->pIndexData != NULL
+	&&   obj->pIndexData->vnum == vnum )
+	    return obj;
+    }
+
+    return NULL;
+}
+
+/*
+ * Give back the kit MIRROR borrowed, and put the immortal's own on.
+ *
+ * The borrowed pieces are bagged rather than dropped or destroyed: they
+ * are what you came to look at, and having them to hand afterwards is
+ * more use than having to mirror again to see them.
+ */
+static void mirror_restore( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    OBJ_DATA *pack = NULL;
+    OBJ_DATA *obj;
+    OBJ_INDEX_DATA *pObjIndex;
+    int iWear;
+    int packed = 0;
+    int back = 0;
+
+    if ( ch->pcdata->mirror_of[0] == '\0' )
+    {
+	send_to_char( "You are not wearing anybody else's kit.\n\r", ch );
+	return;
+    }
+
+    if ( ( pObjIndex = get_obj_index( OBJ_VNUM_MIRROR_PACK ) ) != NULL )
+    {
+	pack = create_object( pObjIndex, 0 );
+
+	snprintf( buf, sizeof(buf), "%s's gear", ch->pcdata->mirror_of );
+	free_string( pack->short_descr );
+	pack->short_descr = str_dup( buf );
+
+	snprintf( buf, sizeof(buf), "%s's gear lies here.",
+	    ch->pcdata->mirror_of );
+	free_string( pack->description );
+	pack->description = str_dup( buf );
+
+	snprintf( buf, sizeof(buf), "gear pack %s", ch->pcdata->mirror_of );
+	free_string( pack->name );
+	pack->name = str_dup( buf );
+
+	/* Room for a full set of end-game armour, which an ordinary bag
+	   does not have. The weight multiplier is left alone: a bag is
+	   already kind about what it carries, and this one is holding a
+	   whole character's kit. */
+	pack->value[0] = 10000;
+    }
+
+    for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
+    {
+	if ( ( obj = get_eq_char( ch, iWear ) ) == NULL )
+	    continue;
+
+	unequip_char( ch, obj );
+	if ( pack != NULL )
+	{
+	    obj_from_char( obj );
+	    obj_to_obj( obj, pack );
+	}
+	packed++;
+    }
+
+    if ( pack != NULL )
+	obj_to_char( pack, ch );
+
+    /* Backwards, so the weapon goes on before the shield. */
+    for ( iWear = MAX_WEAR - 1; iWear >= 0; iWear-- )
+    {
+	if ( ch->pcdata->mirror_worn[iWear] == 0 )
+	    continue;
+	if ( get_eq_char( ch, iWear ) != NULL )
+	    continue;
+
+	obj = mirror_find_carried( ch, ch->pcdata->mirror_worn[iWear] );
+	if ( obj == NULL )
+	    continue;
+
+	equip_char( ch, obj, iWear );
+	if ( get_eq_char( ch, iWear ) == obj )
+	    back++;
+    }
+
+    snprintf( buf, sizeof(buf),
+	"%d piece%s of %s's kit %s in %s, and you have %d of your own back on.\n\r",
+	packed, packed == 1 ? "" : "s", ch->pcdata->mirror_of,
+	packed == 1 ? "is" : "are",
+	pack != NULL ? pack->short_descr : "your inventory", back );
+    send_to_char( buf, ch );
+
+    for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
+	ch->pcdata->mirror_worn[iWear] = 0;
+    ch->pcdata->mirror_of[0] = '\0';
 }
 
 static bool mirror_wear( CHAR_DATA *ch, int vnum, int iWear )
@@ -8992,11 +9117,24 @@ static bool mirror_wear( CHAR_DATA *ch, int vnum, int iWear )
 	return false;
 
     /* equip_char fires an ITEM_ACTION: one of them recalls you and one
-       of them kills you. Nobody wants that from a diagnostic. */
+       of them kills you outright, which is not something a diagnostic
+       should do to the person running it. This is the only piece MIRROR
+       will not put on, and it says so rather than passing over it. */
     if ( pObjIndex->item_type == ITEM_ACTION )
 	return false;
 
     obj = create_object( pObjIndex, 0 );
+
+    /* The whole point is to see the kit, so nothing about the wearer
+       gets to refuse it. These three make equip_char zap the item off
+       you and drop it -- "You are zapped by a completely black armor"
+       -- for an alignment the character this belongs to evidently does
+       not have. Clearing them on this copy changes nothing for anyone
+       else: the prototype and the owner's own item are untouched. */
+    REMOVE_BIT( obj->extra_flags, ITEM_ANTI_GOOD );
+    REMOVE_BIT( obj->extra_flags, ITEM_ANTI_EVIL );
+    REMOVE_BIT( obj->extra_flags, ITEM_ANTI_NEUTRAL );
+
     obj_to_char( obj, ch );
     equip_char( ch, obj, iWear );
 
@@ -9021,13 +9159,20 @@ void do_mirror( CHAR_DATA *ch, char *argument )
     if ( arg[0] == '\0' )
     {
 	send_to_char( "Syntax: mirror <player>\n\r"
+	              "        mirror restore\n\r"
 	              "        mirror clear\n\r", ch );
+	return;
+    }
+
+    if ( !str_prefix( arg, "restore" ) )
+    {
+	mirror_restore( ch );
 	return;
     }
 
     if ( !str_prefix( arg, "clear" ) || !str_prefix( arg, "off" ) )
     {
-	mirror_strip( ch );
+	mirror_strip( ch, false );
 	send_to_char( "You take everything off.\n\r", ch );
 	return;
     }
@@ -9049,9 +9194,15 @@ void do_mirror( CHAR_DATA *ch, char *argument )
 		wanted[obj->wear_loc] = obj->pIndexData->vnum;
 	}
 
-	mirror_strip( ch );
+	mirror_strip( ch, true );
+	toc_strlcpy( ch->pcdata->mirror_of, victim->name,
+	    sizeof(ch->pcdata->mirror_of) );
 
-	for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
+	/* Backwards, so the weapon goes on before the shield. equip_char
+	   takes a shield off to free both hands for a two-hander, and
+	   forwards it would do that to a kit the owner was wearing quite
+	   happily. */
+	for ( iWear = MAX_WEAR - 1; iWear >= 0; iWear-- )
 	{
 	    if ( wanted[iWear] < 0 )
 		continue;
@@ -9062,9 +9213,12 @@ void do_mirror( CHAR_DATA *ch, char *argument )
 	}
 
 	snprintf( buf, sizeof(buf),
-	    "You are wearing %s's kit: %d piece%s%s.\n\r",
+	    "You are wearing %s's kit: %d piece%s.%s\n\r",
 	    victim->name, worn, worn == 1 ? "" : "s",
-	    missed > 0 ? " (some would not go on)" : "" );
+	    missed > 0
+		? "  One or more were ITEM_ACTION and were left off:"
+		  " wearing those recalls or kills you."
+		: "" );
 	send_to_char( buf, ch );
 	return;
     }
@@ -9077,14 +9231,21 @@ void do_mirror( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    mirror_strip( ch );
+    mirror_strip( ch, true );
+    toc_strlcpy( ch->pcdata->mirror_of, capitalize( arg ),
+	sizeof(ch->pcdata->mirror_of) );
 
     {
 	char linebuf[256];
 	char keyword[64];
+	int  wanted[MAX_WEAR];
 	int  vnum = 0;
 	int  nest = 0;
+	int  iWear;
 	bool have_vnum = false;
+
+	for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
+	    wanted[iWear] = -1;
 
 	while ( fgets( linebuf, (int)sizeof(linebuf), fp ) != NULL )
 	{
@@ -9107,28 +9268,38 @@ void do_mirror( CHAR_DATA *ch, char *argument )
 	    }
 	    else if ( !strcmp( keyword, "Wear" ) )
 	    {
-		int iWear = -1;
+		int slot = -1;
 
-		sscanf( linebuf, "%*s %d", &iWear );
+		sscanf( linebuf, "%*s %d", &slot );
 		/* Nest zero is what they had on them rather than inside
 		   something, and WEAR_NONE is carried rather than worn. */
-		if ( have_vnum && nest == 0 && iWear >= 0 )
-		{
-		    if ( mirror_wear( ch, vnum, iWear ) )
-			worn++;
-		    else
-			missed++;
-		}
+		if ( have_vnum && nest == 0 && slot >= 0 && slot < MAX_WEAR )
+		    wanted[slot] = vnum;
 	    }
+	}
+
+	/* Collected first and put on backwards, for the same reason as
+	   the online path: the weapon before the shield. */
+	for ( iWear = MAX_WEAR - 1; iWear >= 0; iWear-- )
+	{
+	    if ( wanted[iWear] < 0 )
+		continue;
+	    if ( mirror_wear( ch, wanted[iWear], iWear ) )
+		worn++;
+	    else
+		missed++;
 	}
     }
 
     fclose( fp );
 
     snprintf( buf, sizeof(buf),
-	"You are wearing %s's kit as they last saved it: %d piece%s%s.\n\r",
+	"You are wearing %s's kit as they last saved it: %d piece%s.%s\n\r",
 	capitalize( arg ), worn, worn == 1 ? "" : "s",
-	missed > 0 ? " (some would not go on)" : "" );
+	missed > 0
+	    ? "  One or more were ITEM_ACTION and were left off:"
+	      " wearing those recalls or kills you."
+	    : "" );
     send_to_char( buf, ch );
 }
 

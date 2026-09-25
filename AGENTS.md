@@ -691,6 +691,23 @@ written, and nest zero with a wear location is something the character had
 on when they saved. Anything new that needs to look at an offline
 character should follow that rather than loading them.
 
+MIRROR forces the kit on: the three `ITEM_ANTI_*` flags are cleared on
+each copy, so an item that would zap itself off the immortal goes on
+anyway, and both equip loops run from `MAX_WEAR - 1` downwards so a
+two-handed weapon does not knock the shield back off. `ITEM_ACTION` is
+the one exception and stays off, because `equip_char` fires those and one
+of them kills you.
+
+`mirror restore` puts the borrowed kit in a pack and the immortal's own
+gear back on. What came off is remembered in `pcdata->mirror_worn` as
+**vnums, not pointers** -- an object can be dropped, sacrificed or purged
+between the two commands, and a stale pointer to one is a crash where a
+stale vnum is merely a piece that does not come back. Neither field is
+saved; a relog ends the mirror. The pack is filled before the immortal's
+own kit goes back on, and `mirror_find_carried` only considers items at
+`WEAR_NONE`, so a mirrored copy of something the immortal owns one of too
+cannot be picked up in place of the original.
+
 ## Staff Invulnerability
 
 `is_invulnerable(ch)` is the one test, and it is only true for an

@@ -320,6 +320,7 @@ See also: ASTRAL WALK, PROJECT, PSIONICS
 
 0 MIRROR~
 Syntax: mirror <player>
+        mirror restore
         mirror clear
 
 MIRROR takes off everything you are wearing and puts on what somebody
@@ -331,11 +332,23 @@ It works whether or not they are logged in.  An online character is read
 from the game; an offline one from their last save, and MIRROR says which
 it used.
 
+Nothing about you can refuse a piece.  An item that would normally zap
+itself off someone of your alignment goes on anyway, and a two-handed
+weapon will not knock the shield back off.  The one exception is an
+ITEM_ACTION - wearing one of those recalls or kills you - and MIRROR says
+so when it leaves one out.
+
+MIRROR RESTORE undoes it: the borrowed kit goes into a pack called
+"<player>'s gear" in your inventory, and what you were wearing when you
+started goes back on.  The pack is yours to keep, look in, or purge.
+
+MIRROR CLEAR just takes everything off, borrowed or not, and remembers
+nothing.
+
 What you get is a fresh copy of each piece made from its prototype, not
 their copy of it: an enchantment they put on their own sword is not
 reproduced, and neither is its wear and tear.  Anything you already had
-on comes off into your inventory and is not destroyed - MIRROR CLEAR
-takes the borrowed kit off again.
+on comes off into your inventory and is never destroyed.
 
 Use of the command is logged.
 
@@ -384,7 +397,8 @@ command named here for the detail.
 
   Staff can now MIRROR a player's gear onto themselves to look at a
   build from the inside, online or not, and INVULN stops anything hurting
-  them while they do it.
+  them while they do it.  MIRROR RESTORE hands the borrowed kit back in a
+  pack and puts their own gear on again.
 
   Herbs and spell components actually appear now.  They had barely been
   landing at all for years, and the scattering is deliberately sparse -

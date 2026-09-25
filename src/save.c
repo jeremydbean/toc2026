@@ -1171,6 +1171,13 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->depart			= str_dup( "" );
     ch->pcdata->title			= str_dup( "" );
     ch->pcdata->psionic_grant_spec      = str_dup( "" );
+    {
+	int iWear;
+
+	for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
+	    ch->pcdata->mirror_worn[iWear] = 0;
+    }
+    ch->pcdata->mirror_of[0]            = '\0';
     ch->pcdata->recall_vnum             = 0;
     ch->pcdata->recall_set_at           = 0;
     ch->pcdata->list_remorts            = str_dup( "" );
