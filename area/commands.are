@@ -318,6 +318,34 @@ warning of your arrival.
 See also: ASTRAL WALK, PROJECT, PSIONICS
 ~
 
+0 INVULN INVULNERABLE~
+Syntax: invuln
+        invuln damage
+        invuln absorb
+        invuln off
+
+INVULN is an immortal toggle.  While it is on, nothing takes hit points
+off you: no mobile, no player, no spell, and your equipment stops taking
+damage too.  Typing INVULN on its own turns it on, and again turns it off.
+
+The argument chooses only how a blow reads, not whether it lands:
+
+  DAMAGE   the default.  Attacks connect and are described exactly as
+           they would be normally, damage numbers and all - you simply
+           do not lose anything.  This is what you want when you are
+           watching a fight to see how it behaves.
+
+  ABSORB   attacks visibly do nothing.  Everyone in the room is told the
+           blow had no effect on you whatsoever.
+
+  OFF      turn it off.
+
+Nothing about it is shown to anyone else, and it does not appear on your
+score sheet.  Use of the command is logged.
+
+See also: HOLYLIGHT, WIZINVIS, CLOAK, RESTORE
+~
+
 0 CHANGES~
 Syntax: changes
 
@@ -328,6 +356,12 @@ command named here for the detail.
   RECALL can be moved.  RECALL SET makes the room you are standing in your
   recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
   tells you where it is.  Once every 30 minutes, and not mid-fight.
+
+  Two monster wards that had never worked now do.  A bloody aura turns
+  magic aside; a dominion shield turns aside everything, and only goes up
+  when the creature is badly hurt.  Four end-game creatures use them: the
+  Lord General and the Fade in the Battleground, and Zoltan and the second
+  succubus in Valhalla.  See HELP DOMINION SHIELD.
 
   WORD OF RECALL is worth casting now.  It always goes to the Temple
   whatever you have set your own recall to, so a cleric has two places to

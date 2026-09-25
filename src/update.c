@@ -1750,19 +1750,13 @@ void char_update( void )
 		    REMOVE_BIT(ch->imm_flags, IMM_SLASH);
 		}
 */
-		if(is_affected(ch, skill_lookup("dshield") ) )
-		{
-		  if(IS_SET(ch->imm_flags, IMM_WEAPON) )
-			REMOVE_BIT(ch->imm_flags, IMM_WEAPON);
-		  if(IS_SET(ch->imm_flags, IMM_MAGIC) )
-			REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
-		}
-
-		if(is_affected(ch, skill_lookup("baura") ) )
-	 	{
-		  if(IS_SET(ch->imm_flags, IMM_MAGIC) )
-			REMOVE_BIT(ch->imm_flags, IMM_MAGIC);
-		}
+		/* The dominion shield and the bloody aura used to be swept
+		   up here, and wrongly: the test was "still affected", not
+		   "no longer affected", so it stripped the immunity while
+		   the ward was standing. It never ran, because nothing
+		   granted either affect. Both carry their immunity on the
+		   affect itself now, through APPLY_IMMUNITY, so it lifts
+		   with the ward and needs no sweeping. */
 		affect_remove( ch, paf );
 
                 if(!is_affected(ch, skill_lookup("iron skin") ) )

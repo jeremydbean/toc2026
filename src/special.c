@@ -38,6 +38,7 @@ DECLARE_SPEC_FUN(       spec_breath_fire        );
 DECLARE_SPEC_FUN(       spec_breath_frost       );
 DECLARE_SPEC_FUN(       spec_breath_gas         );
 DECLARE_SPEC_FUN(       spec_breath_lightning   );
+DECLARE_SPEC_FUN(       spec_dominion_ward      );
 DECLARE_SPEC_FUN(       spec_cast_adept         );
 DECLARE_SPEC_FUN(       spec_cast_cleric        );
 DECLARE_SPEC_FUN(       spec_cast_judge         );
@@ -226,6 +227,7 @@ const   struct  spec_type       spec_table      [ ] =
     { "spec_breath_gas",        spec_breath_gas         },
     { "spec_breath_dispel",     spec_breath_dispel      },
     { "spec_breath_lightning",  spec_breath_lightning   },
+    { "spec_dominion_ward",     spec_dominion_ward      },
     { "spec_cast_adept",        spec_cast_adept         },
     { "spec_cast_cleric",       spec_cast_cleric        },
     { "spec_cast_judge",        spec_cast_judge         },
@@ -423,6 +425,55 @@ bool spec_breath_lightning( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *ar
  
  
  
+/*
+ * A monster that wards itself.
+ *
+ * Two abilities, both of which no class can learn:
+ *
+ *   a bloody aura, from level 40, turns magic aside. Steel still works,
+ *   so the fight goes on -- it is a problem for the casters in the room
+ *   rather than a pause.
+ *
+ *   a dominion shield, from level 60, turns aside everything, and is
+ *   deliberately a last stand: it is only raised below half health, it
+ *   lasts a single tick, and it cannot be raised twice while it holds.
+ *   It should read as a phase of the fight, not as a broken monster,
+ *   which is why both it and its wearing off are announced.
+ */
+bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
+{
+    UNUSED_PARAM(ch);
+    UNUSED_PARAM(arg);
+    int sn;
+
+    if ( cmd != NULL )
+	return false;
+
+    if ( mob->position != POS_FIGHTING || mob->fighting == NULL )
+	return false;
+
+    if ( mob->level >= 60
+    &&   mob->hit * 2 < mob->max_hit
+    &&   number_bits( 4 ) == 0
+    &&   ( sn = skill_lookup( "dshield" ) ) >= 0
+    &&   !is_affected( mob, sn ) )
+    {
+	(*skill_table[sn].spell_fun) ( sn, mob->level, mob, mob );
+	return true;
+    }
+
+    if ( mob->level >= 40
+    &&   number_bits( 3 ) == 0
+    &&   ( sn = skill_lookup( "baura" ) ) >= 0
+    &&   !is_affected( mob, sn ) )
+    {
+	(*skill_table[sn].spell_fun) ( sn, mob->level, mob, mob );
+	return true;
+    }
+
+    return false;
+}
+
 bool spec_cast_adept( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
     UNUSED_PARAM(ch);

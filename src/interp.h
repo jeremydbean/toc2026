@@ -229,6 +229,7 @@ DECLARE_DO_FUN( do_hero		);
 DECLARE_DO_FUN( do_heroquest    );
 DECLARE_DO_FUN(	do_hide		);
 DECLARE_DO_FUN(	do_holylight	);
+DECLARE_DO_FUN(	do_invuln	);
 DECLARE_DO_FUN( do_hpardon      );
 DECLARE_DO_FUN(	do_idea		);
 DECLARE_DO_FUN( do_ignore       );

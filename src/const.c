@@ -3507,16 +3507,16 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 
     {
 	"dshield",
-	{  15, 15, 15, 15, 15, 15 },	{ 2, 2, 2, 2, 2, 2},
-	spell_null,		TAR_CHAR_SELF,		POS_RESTING,
+	{  72, 72, 72, 72, 72, 72 },	{ 2, 2, 2, 2, 2, 2},
+	spell_dshield,		TAR_CHAR_SELF,		POS_FIGHTING,
 	&gsn_dshield,		SLOT( 0),	0,	24,
 	"",			"Your dominion shield fades away."
     },
 
     {
 	"baura",
-	{  15, 15, 15, 15, 15, 15 },	{ 2, 2, 2, 2, 2, 2},
-	spell_null,		TAR_CHAR_SELF,		POS_RESTING,
+	{  72, 72, 72, 72, 72, 72 },	{ 2, 2, 2, 2, 2, 2},
+	spell_baura,		TAR_CHAR_SELF,		POS_FIGHTING,
 	&gsn_baura,		SLOT( 0),	0,	24,
 	"",			"Your bloody aura fades away."
     },

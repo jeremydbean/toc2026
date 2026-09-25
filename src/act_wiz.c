@@ -4255,10 +4255,27 @@ void do_sset( CHAR_DATA *ch, char *argument )
     {
 	for ( sn = 0; sn < MAX_SKILL; sn++ )
 	{
-	  if ( skill_table[sn].name != NULL )
+	  int class_index;
+	  bool reachable = false;
+
+	  if ( skill_table[sn].name == NULL )
+	    continue;
+
+	  /* Skip what no class can ever learn. A handful of entries in
+	     the table are monster abilities -- the dominion shield and
+	     the bloody aura -- and setting those on a player put two
+	     skills in their list that nothing in the game explains. */
+	  for ( class_index = 0; class_index < MAX_CLASS; class_index++ )
 	  {
-        victim->pcdata->learned[sn]     = clamp_sh_int( value );
+	    if ( skill_table[sn].skill_level[class_index] <= LEVEL_HERO )
+	    {
+	      reachable = true;
+	      break;
+	    }
 	  }
+
+	  if ( reachable )
+	    victim->pcdata->learned[sn] = clamp_sh_int( value );
 	}
         snprintf(buf, sizeof(buf),"All %s skills set to %d.\n\r",victim->name,value);
         send_to_char(buf,ch);
@@ -7197,6 +7214,70 @@ void do_cloak( CHAR_DATA *ch, char *argument )
 
   return;
 
+}
+
+/*
+ * Whether a character is currently proof against everything.
+ *
+ * The flag is only honoured for an immortal, so a demotion takes the
+ * protection away without anyone having to remember to unset the bit.
+ */
+bool is_invulnerable( const CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && IS_IMMORTAL(ch)
+        && IS_SET(ch->act, PLR_INVULN);
+}
+
+void do_invuln( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+
+    if ( IS_NPC(ch) )
+	return;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] != '\0' )
+    {
+	if ( !str_prefix(arg, "off") )
+	{
+	    REMOVE_BIT(ch->act, PLR_INVULN);
+	    send_to_char( "Invulnerability off. You can be hurt again.\n\r",
+		ch );
+	    return;
+	}
+
+	/* The two ways a blow can read. Damage is the default because it
+	   is the one that leaves a fight looking like a fight, which is
+	   what you want when you are watching one work. */
+	if ( !str_prefix(arg, "damage") )
+	    REMOVE_BIT(ch->act, PLR_INVULN_ABSORB);
+	else if ( !str_prefix(arg, "absorb") )
+	    SET_BIT(ch->act, PLR_INVULN_ABSORB);
+	else
+	{
+	    send_to_char( "Syntax: invuln [damage|absorb|off]\n\r", ch );
+	    return;
+	}
+
+	SET_BIT(ch->act, PLR_INVULN);
+    }
+    else if ( IS_SET(ch->act, PLR_INVULN) )
+    {
+	REMOVE_BIT(ch->act, PLR_INVULN);
+	send_to_char( "Invulnerability off. You can be hurt again.\n\r", ch );
+	return;
+    }
+    else
+	SET_BIT(ch->act, PLR_INVULN);
+
+    if ( IS_SET(ch->act, PLR_INVULN_ABSORB) )
+	send_to_char(
+	    "Invulnerability on. Blows will visibly have no effect.\n\r", ch );
+    else
+	send_to_char(
+	    "Invulnerability on. Blows will land and read normally, and take"
+	    " nothing off you.\n\r", ch );
 }
 
 void do_holylight( CHAR_DATA *ch, char *argument )

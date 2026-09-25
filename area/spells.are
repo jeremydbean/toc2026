@@ -1336,6 +1336,27 @@ Mage:40   Cleric:42   Thief:48   Warrior:48   Monk: N/A   Necromancer:44
 See also: ELECTRIC SPELLS, ELEMENTAL, HARMFUL
 ~
 
+0 'DOMINION SHIELD' 'BLOODY AURA' DSHIELD BAURA~
+Some monsters ward themselves in a fight.  Neither ward can be learned,
+practised or gained by any character of any class; they belong to the
+creatures that use them.
+
+A BLOODY AURA turns magic aside.  Spells cast at it do nothing at all
+while it holds, and it holds for a minute or two.  Steel still works -
+close and hit it.
+
+A DOMINION SHIELD turns aside everything, weapon and spell alike.  A
+creature only raises one when it is badly hurt and it lasts about a
+minute, so it is the last stretch of a hard fight rather than a wall.
+Nothing you can do will reach through it.  Hold your ground, keep your
+healing up, and start again when it fades.
+
+Both announce themselves when they go up and when they fade, so if a
+creature has stopped taking damage, read the last few lines.
+
+See also: SANCTUARY, IMMUNE, CONSIDER
+~
+
 0 'WORD OF RECALL'~
 Syntax: cast 'word of recall'
 

@@ -4505,6 +4505,71 @@ void spell_weaken( int sn, int level, CHAR_DATA *ch, void *vo )
 
 /* RT recall spell is back */
 
+/*
+ * Two wards that were declared and never written.
+ *
+ * "dshield" and "baura" have sat in the skill table since before the
+ * repository's history, as spell_null with no caster and no member of any
+ * class group, so nothing in the game could ever produce either one. The
+ * only other mention of them was a pair of blocks in update.c that swept
+ * up immunities the affect never granted -- and swept them while the ward
+ * was still standing rather than after it fell, so they were wrong as
+ * well as unreachable. Those are gone; the immunity rides on the affect
+ * through APPLY_IMMUNITY the way iron skin's does, so it lifts exactly
+ * when the ward does.
+ *
+ * Both are monster abilities. No class can reach them, and they are cast
+ * by spec_dominion_ward.
+ */
+void spell_baura( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+    AFFECT_DATA af;
+
+    if ( is_affected( victim, sn ) )
+	return;
+
+    af.type		= (sh_int)(sn);
+    af.level		= (sh_int)(level);
+    af.duration		= (sh_int)(dice(1,2));
+    af.location		= APPLY_IMMUNITY;
+    af.modifier		= (sh_int)(IMM_MAGIC);
+    af.bitvector	= 0;
+    af.bitvector2	= 0;
+    affect_to_char( victim, &af );
+
+    send_to_char( "A bloody aura closes over you.\n\r", victim );
+    act( "A bloody aura closes over $n, and the air around $m goes still.",
+	victim, NULL, NULL, TO_ROOM );
+}
+
+void spell_dshield( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+    AFFECT_DATA af;
+
+    if ( is_affected( victim, sn ) )
+	return;
+
+    /* Two affects of the same type, so both immunities lift together. */
+    af.type		= (sh_int)(sn);
+    af.level		= (sh_int)(level);
+    af.duration		= 1;
+    af.location		= APPLY_IMMUNITY;
+    af.modifier		= (sh_int)(IMM_WEAPON);
+    af.bitvector	= 0;
+    af.bitvector2	= 0;
+    affect_to_char( victim, &af );
+
+    af.modifier		= (sh_int)(IMM_MAGIC);
+    affect_to_char( victim, &af );
+
+    send_to_char( "A dominion shield seals you away from the world.\n\r",
+	victim );
+    act( "A dominion shield seals $n away -- nothing will touch $m now.",
+	victim, NULL, NULL, TO_ROOM );
+}
+
 void spell_word_of_recall( int sn, int level, CHAR_DATA *ch, void *vo )
 {
     UNUSED_PARAM(sn);

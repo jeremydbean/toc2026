@@ -390,6 +390,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "immtalk",        do_immtalk,     POS_DEAD,       IM,  LOG_NORMAL, 1 },
     { "imotd",          do_imotd,       POS_DEAD,       IM,  LOG_NORMAL, 1 },
     { "invis",          do_invis,       POS_DEAD,       L8,  LOG_NORMAL, 0 },
+    { "invuln",         do_invuln,      POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "itrans",         do_itrans,      POS_DEAD,       L2,  LOG_ALWAYS, 1 },
     { "jail",           do_jail,        POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "ksock",          do_ksock,       POS_DEAD,       L6,  LOG_NORMAL, 1 },

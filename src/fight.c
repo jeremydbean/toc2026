@@ -1282,6 +1282,22 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if ( victim->position == POS_DEAD )
 	return false;
 
+    /* Staff invulnerability, absorbing. Nothing below this runs, so the
+       blow reads as the nothing it is. The other mode falls through and
+       is stopped further down, where the hit points would have come off,
+       so that a fight an immortal is watching still looks like a fight. */
+    if ( dam > 0 && victim != ch && is_invulnerable( victim )
+    &&   IS_SET(victim->act, PLR_INVULN_ABSORB) )
+    {
+	act( "$n's attack has no effect on you whatsoever.",
+	    ch, NULL, victim, TO_VICT );
+	act( "Your attack has no effect on $N whatsoever.",
+	    ch, NULL, victim, TO_CHAR );
+	act( "$n's attack has no effect on $N whatsoever.",
+	    ch, NULL, victim, TO_NOTVICT );
+	return false;
+    }
+
     hyrule_silver_arrow_hit = dam > 0 && is_hyrule_ganon(victim)
         && is_silver_arrow_attack(ch, dt);
 
@@ -1495,14 +1511,15 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if (dam == 0)
 	return false;
 
-    if(number_percent() < 10 && victim != ch)
+    if(number_percent() < 10 && victim != ch && !is_invulnerable( victim ))
 	damage_eq(victim,dam);
 
     /*
      * Hurt the victim.
      * Inform the victim of his new state.
      */
-    victim->hit -= dam;
+    if ( !is_invulnerable( victim ) )
+	victim->hit -= dam;
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
         if ( victim->hit < 1

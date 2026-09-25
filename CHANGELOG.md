@@ -10,6 +10,39 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Two monster wards that had never worked now do.** `dshield` and
+  `baura` have sat in the skill table since before this repository's
+  history as `spell_null`: no cast function, and in no class's skill
+  group, so nothing in the game could produce either affect. The only
+  other mention of them was a pair of blocks in `update.c` that swept up
+  immunities the affect never granted -- and swept them while the ward
+  was still standing rather than after it fell, so they were wrong as
+  well as unreachable. They surfaced only through
+  `set skill <char> all`, which walks the whole table and put two skills
+  in a player's list that nothing in the game explained.
+
+  They are monster abilities now. A **bloody aura** turns magic aside; a
+  **dominion shield** turns aside weapon and spell alike, is only raised
+  below half health, and lasts a single tick, so it reads as the last
+  stretch of a hard fight rather than a wall. Both announce themselves
+  going up and fading. The immunity rides on the affect through
+  `APPLY_IMMUNITY`, the way iron skin's does, so it lifts exactly when
+  the ward does and needs no sweeping.
+
+  No class can reach either: both are level 72 across the board, above
+  MAX_LEVEL. `spec_dominion_ward` is registered for builders, and four
+  end-game mobiles that had no special of their own now carry it -- the
+  Lord General and the Fade in the Battleground, Zoltan and the second
+  succubus in Valhalla.
+
+- **INVULN, an immortal toggle that stops anything hurting you.** No
+  mobile, no player, no spell, and worn equipment stops taking damage
+  too. `invuln damage` (the default) lets attacks connect and be
+  described exactly as they would be, numbers and all, so a fight being
+  watched still looks like a fight; `invuln absorb` makes every blow
+  visibly do nothing. Unlike WIZINVIS and CLOAK it shows nowhere -- not
+  on the score sheet, not to the room. Use of it is logged.
+
 - **RECALL can be moved.** It was a one-way trip to the Temple for
   everybody; it now goes wherever the character last set it.
 

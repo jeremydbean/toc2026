@@ -618,6 +618,25 @@ Other deploy facts:
   the host, and restart `toc2026-web.service`. Never paste it into a commit,
   an issue or a conversation.
 
+## Monster Wards
+
+`dshield` and `baura` are in the skill table but belong to mobiles: level
+72 for every class, above MAX_LEVEL, so nothing can learn, practise or
+gain them. They stay in the table because it is also the affect registry
+-- the type, the duration and the wear-off message all live there.
+`spec_dominion_ward` in `src/special.c` is what casts them, and any
+builder can put it on a mobile.
+
+**An immunity granted by an affect goes on the affect,** through
+`APPLY_IMMUNITY`, so `affect_remove` lifts it. `iron skin` is the model.
+These two used to set `imm_flags` from a sweep in `update.c` that ran when
+any unrelated affect expired and tested "still affected" rather than "no
+longer affected" -- it would have stripped the immunity while the ward was
+standing, had anything ever granted one.
+
+`set skill <char> all` skips abilities no class can reach, which is what
+kept these two out of players' skill lists.
+
 ## Where RECALL Goes
 
 `recall_room(ch)` in `src/act_move.c` is the one place that answers it.
@@ -647,6 +666,18 @@ not hear you, which is the whole reason to carry one. `ROOM_NO_RECALL`
 blocks all of it: that flag is how an area keeps you inside, and it is a
 property of the place rather than the traveller. A new way of sending a
 character home goes through `recall_char_to_temple()`, not `do_recall`.
+
+## Staff Invulnerability
+
+`is_invulnerable(ch)` is the one test, and it is only true for an
+immortal, so a demotion takes the protection away without anyone
+remembering to unset the bit. `damage()` honours it in three places: an
+early return for `PLR_INVULN_ABSORB`, the `damage_eq` call, and the
+subtraction from hit points. Leaving the subtraction as the chokepoint is
+deliberate -- everything above it, `dam_message` included, still runs, so
+the default reading of a blow is the ordinary one and only the loss is
+skipped. Nothing displays the flag: not `score`, not the room. That is a
+deliberate difference from WIZINVIS and CLOAK.
 
 ## Permission Helpers
 

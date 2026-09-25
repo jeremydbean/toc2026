@@ -4070,6 +4070,8 @@ M 9916  spec_psionic            Succubus
 * Soulcrusher's specials
 *
 M 9918 spec_cast_undead        Guardian of Souls
+M 9919 spec_dominion_ward      Zoltan
+M 9924 spec_dominion_ward      the other succubus
 *
 * Herbie's Special
 *
