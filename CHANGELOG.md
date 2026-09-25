@@ -24,7 +24,11 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   They are monster abilities now. A **bloody aura** turns magic aside; a
   **dominion shield** turns aside weapon and spell alike, is only raised
   below half health, and lasts a single tick, so it reads as the last
-  stretch of a hard fight rather than a wall. Both announce themselves
+  stretch of a hard fight rather than a wall. The aura rolls one in
+  sixty-four every four seconds and only while it is down, which puts it
+  up about a quarter of a fight -- at the one in eight it was first
+  written with, the downtime was shorter than the affect and it would
+  have been a permanent immunity to magic on four end-game mobiles. Both announce themselves
   going up and fading. The immunity rides on the affect through
   `APPLY_IMMUNITY`, the way iron skin's does, so it lifts exactly when
   the ward does and needs no sweeping.

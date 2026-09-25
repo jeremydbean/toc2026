@@ -58,29 +58,20 @@ def hitpoints(client) -> int:
     return int(found.group(1)) if found else -1
 
 
-@unittest.skipIf(SKIP is not None, SKIP or "")
-class WardTests(unittest.TestCase):
-    def test_a_warded_monster_raises_its_aura_in_a_fight(self) -> None:
-        with LiveMud() as mud:
-            with mud.connect(timeout=120) as client:
-                create_character(client, "Zwardt", PASSWORD)
-                client.drain(1.0)
-                client.send("quit")
-                self.assertTrue(client.wait_closed())
-            patch_player_file(mud, "Zwardt", Levl=70, Room=BATTLEGROUND_ROOM)
-
-            with mud.connect(timeout=120) as client:
-                login(client, "Zwardt", PASSWORD)
-                # Invulnerable, so a level 68 boss cannot end the test.
-                run(client, "invuln", 1.5)
-                run(client, "kill general", 2.5)
-
-                fight = ""
-                for _ in range(20):
-                    fight += run(client, "", 2.5)
-                    if "bloody aura" in fight:
-                        break
-                self.assertIn("bloody aura", fight, fight[-800:])
+# The ward's proc is not tested live, on purpose.
+#
+# spec_dominion_ward runs every PULSE_MOBILE -- four seconds -- and rolls
+# one in sixty-four, so the expected wait is over four minutes and there
+# is no upper bound on it. A test that waits for it either takes minutes
+# or fails for no reason, and the first version of this file did the
+# latter: twenty rounds gave it an eighty percent chance, so it passed
+# here and failed one CI run in five.
+#
+# That it fires at all was watched by hand against a level 68 Lord
+# General in the Battleground while the odds were still one in eight.
+# What is worth holding automatically is the wiring -- the spell exists,
+# the immunity is carried on the affect, the spec is registered, four
+# mobiles have it -- and WardSourceTests below does that.
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
@@ -201,6 +192,18 @@ class WardSourceTests(unittest.TestCase):
         # "no longer affected", is gone.
         self.assertNotIn('skill_lookup("dshield")', self.update)
         self.assertNotIn('skill_lookup("baura")', self.update)
+
+    def test_the_aura_is_occasional_rather_than_permanent(self) -> None:
+        """The roll only counts while the ward is down, so the uptime is
+        duration over duration plus downtime. One in eight, four seconds
+        apart, against a ninety second affect is three quarters of the
+        fight -- a permanent immunity to magic rather than a ward."""
+        body = self.special.split("bool spec_dominion_ward", 1)[1]
+        body = body.split(chr(10) + "}", 1)[0]
+        self.assertIn("number_bits( 6 ) == 0", body)
+        self.assertIn("!is_affected( mob, sn )", body)
+        # And the shield stays a last stand: only below half health.
+        self.assertIn("mob->hit * 2 < mob->max_hit", body)
 
     def test_a_builder_can_put_the_ward_on_a_mobile(self) -> None:
         self.assertIn("bool spec_dominion_ward", self.special)

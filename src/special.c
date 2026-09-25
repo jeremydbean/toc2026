@@ -439,6 +439,17 @@ bool spec_breath_lightning( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *ar
  *   lasts a single tick, and it cannot be raised twice while it holds.
  *   It should read as a phase of the fight, not as a broken monster,
  *   which is why both it and its wearing off are announced.
+ *
+ * On the odds. This runs every PULSE_MOBILE, four seconds, and the
+ * `!is_affected` test means a roll only counts while the ward is down.
+ * So the uptime is duration / (duration + expected downtime), and at the
+ * one-in-eight I first wrote the aura came back about thirty seconds
+ * after a ninety second affect -- up three quarters of the fight, which
+ * is not a ward, it is a permanent immunity to magic on four end-game
+ * mobiles. One in sixty-four puts the downtime past four minutes and the
+ * uptime near a quarter, which is the occasional thing the help
+ * describes. The shield keeps a shorter fuse because it can only be lit
+ * below half health, and there it should read as the last stand.
  */
 bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 {
@@ -463,7 +474,7 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
     }
 
     if ( mob->level >= 40
-    &&   number_bits( 3 ) == 0
+    &&   number_bits( 6 ) == 0
     &&   ( sn = skill_lookup( "baura" ) ) >= 0
     &&   !is_affected( mob, sn ) )
     {
