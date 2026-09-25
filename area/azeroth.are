@@ -895,7 +895,7 @@ blocks.~
 stone~
 30 CO 0
 0 28101 1 0 0
-1 2000 10000 P
+1 2000 2 P
 
 #28132
 portal~
@@ -905,7 +905,7 @@ blocks.~
 stone~
 30 CO 0
 0 28161 1 0 0
-1 2000 10000 P
+1 2000 2 P
 
 #28133
 scarf wool~
@@ -1002,7 +1002,7 @@ There is a portal here.~
 stone~
 30 O 0
 0 28135 1 0 0
-1 2000 10000 P
+1 2000 2 P
 
 #28141
 gold bar~
@@ -1011,7 +1011,7 @@ A giant bar of gold is here.~
 gold~
 20 A A
 100 0 0 0 0
-1 20 300000000 P
+1 20 48000 P
 
 #0
 

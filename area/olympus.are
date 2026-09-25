@@ -557,7 +557,7 @@ A fan made of peacock feathers.~
 cloth~
 13 0 A
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 #916
 lute~
 a lute~
@@ -565,7 +565,7 @@ A lute.~
 wood~
 13 0 A
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 #917
 nugget gold~
 a gold nugget~

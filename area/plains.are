@@ -107,7 +107,7 @@ Some herbs are lying here, small green leaves and tiny pink flowers.~
 food~
 19 0 A
 1 0 0 0 0
-1 1 250000 P
+1 1 40 P
 E
 herbs herb timian~
 This herb smells rather spicy; maybe you should try it?
@@ -120,7 +120,7 @@ blood red flowers.~
 food~
 19 0 A
 1 0 0 0 0
-1 1 500000 P
+1 1 80 P
 E
 herbs herb gyvel~
 This herb smells rather special, but is it poisonous?
@@ -132,7 +132,7 @@ Some poison ivy is growing here.~
 food~
 19 0 A
 1 0 0 1 0
-1 1 50000 P
+1 1 8 P
 E
 plant ivy~
 This plant has dark green juicy leaves.
@@ -144,7 +144,7 @@ A small jar in a dark, red color.~
 stone~
 17 0 A
 2 2 13 0 0
-1 2 500000 P
+1 2 80 P
 E
 blood jar~
 The jar is made of dry clay, covered with markings suggesting its
@@ -157,7 +157,7 @@ A bunch of pretty wild flowers is here.~
 plant~
 13 K AEO
 0 0 0 0 0
-1 1 100000 P
+1 1 16 P
 E
 wild flowers~
 These wild flowers are really pretty.
@@ -169,7 +169,7 @@ A strange looking amulet is lying here, half covered with dust.~
 glass~
 9 GH AC
 2 0 0 0 0
-1 1 500000 P
+1 1 80 P
 E
 amulet~
 Judging from the signs inscribed in the amulet, you gather it must
@@ -232,7 +232,7 @@ A clear potion wrapped in leather is unnoticed placed here.~
 glass~
 10 G A
 20 18 19 20 0
-1 2 2500000 P
+1 2 400 P
 E
 potion clear~
 As you examine the potion more, you notice the oddities of this

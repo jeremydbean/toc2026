@@ -1843,7 +1843,7 @@ a dying elite royal guard wishes to speak his last words to you.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 elite royal guard man~
 The man raises his head to speak to you:
@@ -1872,7 +1872,7 @@ a blackboard is tacked up on the wall.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 blackboard~
 You look at the blackboard:
@@ -1895,7 +1895,7 @@ a book on military tactics is on a crate here.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 military warfare strategy tactics~
 You begin to read the book:
@@ -1923,7 +1923,7 @@ a leather bound book on castle management is here.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 castle management~
 You look into the book:
@@ -1954,7 +1954,7 @@ a young woman is here meditating.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 young woman~
 The woman senses your approach and raises her head.
@@ -1983,7 +1983,7 @@ a pedestal stands here with an open diary on top.~
 adamantite~
 13 0 0
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 diary pedestal book~
 You open the diary:

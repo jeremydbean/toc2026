@@ -329,7 +329,7 @@ A nice cold glass of yellow beer is here.~
 glass~
 17 0 AO
 1 1 1 0 0
-1 2 50000 P
+1 2 8 P
 #24105
 dunkel beer~
 a nice cold manly dunkel~
@@ -337,7 +337,7 @@ A nice cold glass of brown beer is here.~
 glass~
 17 0 AO
 1 1 1 0 0
-1 4 100000 P
+1 4 16 P
 #24106
 grub plate local~
 a plate of the local grub~
@@ -345,7 +345,7 @@ A hot steaming plate of the local grub is here! Yummy!~
 silver~
 19 0 AO
 24 0 0 0 0
-1 4 30000 P
+1 4 5 P
 #24107
 key room~
 a room key~
@@ -353,7 +353,7 @@ A room key is here, and it has a picture of a full mug on it.~
 adamantite~
 18 0 AO
 0 0 0 0 0 
-1 15 250000 P
+1 15 40 P
 #24108
 amulet flaming~
 the flaming amulet~

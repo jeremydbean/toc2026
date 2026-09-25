@@ -380,7 +380,7 @@ There is some grain here.~
 food~
 19 0 A
 15 0 0 0 0
-1 2 100000 P
+1 2 16 P
 #13013
 leather armor~
 leather armor~
@@ -408,7 +408,7 @@ There is a long wicked looking pole arm lying here.~
 wood~
 5 0 AN
 8 4 3 1 0
-7 20 3000000 P
+7 20 24000 P
 E
 footmans lance~
 This is a long pole arm with detailed engravings on the shaft. The blade at the
@@ -422,7 +422,7 @@ a large pile of skin is lying here.~
 leather~
 9 0 AD
 3 5 4 0 0
-7 10 500000 P
+7 10 4100 P
 E
 Human skin vest~
 This vest is made of multiple layers of human skin stitched together.
@@ -434,7 +434,7 @@ a helmet made of leather and Iron lies here.~
 leather~
 9 0 AE
 4 3 5 0 0
-7 9 700000 P
+7 9 5700 P
 E
 draconian helmet~
 This is a crudly constructed leather helmet, held together with large

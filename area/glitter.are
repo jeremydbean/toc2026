@@ -1749,7 +1749,7 @@ A potion with changing blue and green colors lies on the ground.~
 glass~
 10 GJK A
 25 28 200 200 P
-5 3 1000000 0
+5 3 20000 0
 E
 potion blue green~
 You hear the sarcastic laughter of Khardan ...
@@ -1761,7 +1761,7 @@ A large obsidian statue stands in a dark corner of the room.~
 stone~
 15 CG 0
 0 0 0 0 0
-1 1000 10000 P
+1 1000 2 P
 E
 statue~
 You're not familiar with the person the statue resembles. You notice that
@@ -1783,7 +1783,7 @@ You can barely see the translucent key that lies here.~
 ~
 18 32 1
 10146 0 0 0 0
-1 1 300000 P
+1 1 48 P
 #10057
 standard military battle armor~
 a Standard military battle armor~

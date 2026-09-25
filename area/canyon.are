@@ -744,7 +744,7 @@ A dull red rock lies here amid the weeds.~
 stone~
 3 0 AO
 6 2 2 64 0
-6 2 7920000 P
+6 2 86000 P
 #9222
 lava lamp~
 a lava lamp~
@@ -752,7 +752,7 @@ A lantern which glows with a red glowing light has been dumped.~
 glass~
 1 A A
 0 0 9999 0 0
-6 4 3000000 P
+6 4 33000 P
 #9223
 energy scroll~
 an energy scroll~
@@ -768,7 +768,7 @@ A large but surprisingly light jug of water stands here.~
 glass~
 17 0 A
 150 150 0 0 0
-8 5 7290000 P
+8 5 160000 P
 #9225
 dust~
 magic dust~
@@ -776,7 +776,7 @@ A pile of dust of appearance has gathered here.~
 organic~
 26 0 A
 21 19 0 0 0
-1 1 100000 P
+1 1 16 P
 #9226
 flame lance~
 a flame lance~

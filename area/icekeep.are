@@ -273,7 +273,7 @@ A small lens made of crystal lies here.~
 glass~
 18 GUV AO
 0 0 0 0 0
-1 1 30000000 P
+1 1 4800 P
 #18005
 black lens~
 A black lens~
@@ -281,7 +281,7 @@ A small, black colored lens lies here.~
 glass~
 18 GUV AO
 0 0 0 0 0
-1 1 30000000 P
+1 1 4800 P
 #18006
 smokey lens~
 A smokey lens~
@@ -289,7 +289,7 @@ A small, smokey colored lens lies here.~
 glass~
 18 GUV AO
 0 0 0 0 0
-1 1 30000000 P
+1 1 4800 P
 #18007
 ring wisdom~
 The Ring of Wisdom~
@@ -427,7 +427,7 @@ A giant block of ice fills much of the space here.
 glass~
 31 V 0
 2 18050 3 1 0
-1 200 1000000 P
+1 200 160 P
 #18015
 vine~
 a vine~
@@ -436,7 +436,7 @@ A sturdy vine dangles here, offering a way upward.
 paper~
 31 V 0
 6 18155 4 1 0
-1 200 1000000 P
+1 200 160 P
 #18016
 vine~
 a vine~
@@ -445,7 +445,7 @@ A sturdy vine hangs here, descending into the depths below.
 paper~
 31 V 0
 7 18132 5 1 0
-1 200 1000000 P
+1 200 160 P
 #18017
 coat bear bearskin~
 a bearskin coat~

@@ -276,6 +276,8 @@ Live-test gotchas that look like product bugs and are not:
 - `tools/build_directions.py`: builds `webadmin/directions.json`, the travel
   routes both the dashboard and the player client display
 - `tools/costs_to_copper.py`: the one-pass area converter kept for reference
+- `tools/reprice_by_level.py`: prices objects against what the character who
+  can use them earns; re-runnable, and a fixed point on the committed files
 
 Commands added or revived in September 2026, and where they live:
 
@@ -321,7 +323,17 @@ Commands added or revived in September 2026, and where they live:
 - Prices are counted in copper. `obj->cost` is copper and is `long`; shop
   and appraisal output goes through `format_price()`, which writes the
   non-zero denominations short (`5g 20s`, `1c`, or `free`). Do not print a
-  bare number as a price. `add_money()` and `has_enough_gold()` still take
+  bare number as a price.
+- **A price is worth a number of kills, and the number is about forty.**
+  `load_mobiles` rolls a mobile's coin from its level in six steps, and the
+  steps are cliffs: a level 4 mobile carries one to eight copper, a level 5
+  one about five silver, a level 10 one about five gold, a level 50 one
+  about thirteen platinum. From level 10 up the world's prices sit against
+  that correctly. Below it they did not -- a turkey burger in Mud School
+  cost ten gold, sixty-six thousand level 1 kills -- and
+  `tools/reprice_by_level.py` rescaled them. Price new low-level content
+  in copper and silver, and run that tool: `tests/test_shop_prices.py`
+  asserts it has nothing left to change. `add_money()` and `has_enough_gold()` still take
   **gold**, so a cost computed in gold -- REPAIR's, for one -- must be
   multiplied by `COPPER_PER_GOLD` before `format_price` sees it, and clamped
   first so the multiply cannot overflow a 32-bit `long`.
@@ -392,6 +404,15 @@ Before restoring a reset that was commented out, read what it does. One of
 those 176 was a button whose `value[4] == 3` kills everyone in the room except
 whoever pushes it; arming that is a gameplay decision, not a repair.
 
+- **A record ends where the game says it ends, not at the next `#`.** An
+  object's affects, extra descriptions and actions follow its condition
+  letter, and one of Hyrule's dungeon maps carries an ASCII floor plan in
+  an extra description whose rows begin with a hash.
+  `tools/costs_to_copper.py` scanned for the next `\n#`, landed inside that
+  map and stopped -- leaving the last 85 objects in the world priced in
+  gold after everything else had moved to copper, so a Magical Shield
+  advertised at 130 rupees sold for one silver thirty. Read the trailing
+  `A`/`E`/`T` records the way `load_objects` does.
 - Parse sections structurally; do not use unbounded global text replacement.
 - Keep vnums globally unique within each indexed type.
 - Ensure positive exit targets exist.
@@ -402,6 +423,22 @@ whoever pushes it; arming that is a gameplay decision, not a repair.
 - Run native and Python validation after every area change.
 - Explain intentional warning/info findings with evidence instead of adding a
   silent allowlist.
+
+**Check that the generator still reproduces the file before regenerating.**
+It had drifted: 197 rooms in `area/hyrule.are` carried recall and always-lit
+flags that had been applied to the generated output by hand, and
+`scripts/build_hyrule_area.py` knew nothing about them, so the next
+`make hyrule-area` would have put `ROOM_NO_RECALL` back on the whole area
+and taken `tests/test_hyrule_progression.py` down with it. The rule now
+lives in `room_flag_word()`. `area/hyrule.are` is also the one area file
+committed with CRLF line endings; the generator writes LF, so a
+regeneration rewrites every line of it.
+
+Hyrule prices itself in rupees and says so in the object descriptions. A
+rupee is a gold coin -- the rupee piles are `ITEM_MONEY` with `value[1]`
+set to `TYPE_GOLD` -- so the generator writes `cost * COPPER_PER_GOLD`.
+`tools/reprice_by_level.py` skips the file for both reasons: it is
+generated, and its prices are already calibrated against its own drops.
 
 Hyrule workflow:
 

@@ -317,7 +317,7 @@ A rusted knife is sitting here on the ground.~
 steel~
 5 0 AN
 2 2 5 11 0
-1 1 1000000 P
+1 1 160 P
 A
 18 2
 A
@@ -329,7 +329,7 @@ Some moss is growing here and giving off light.~
 paper~
 1 A AO
 0 0 999 0 0
-2 1 100000 P
+2 1 20 P
 #25103
 corset~
 a frilly corset~

@@ -1705,7 +1705,7 @@ A black long stemmed rose with single thorn lies here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 150000 P
+1 1 24 P
 E
 rose black flower~
 A vicious yet riveting black rose is here with a heady and sensious
@@ -1718,7 +1718,7 @@ A white lily is here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 170000 P
+1 1 27 P
 E
 lily flower~
 A spray of white bell-light flowers peeps shyly out at you from the
@@ -1731,7 +1731,7 @@ There is a basket of daisys here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 180000 P
+1 1 29 P
 E
 daisys basket flower~
 A simple rattaned basket holds an explosion of cheerful white daisys.
@@ -1743,7 +1743,7 @@ Many long stalks of bright blue flowers lie here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 180000 P
+1 1 29 P
 E
 irises flower~
 These freshly gathered irises still bear traces of morning dew, and
@@ -1756,7 +1756,7 @@ There is a bunch of pink, unopened roses here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 190000 P
+1 1 30 P
 E
 nosegay rose buds flower~
 A lovingly tied bouquet of pink roses in early bloom is here, held
@@ -1769,7 +1769,7 @@ A sprig of purple violets lies sleepily in a box here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 180000 P
+1 1 29 P
 E
 violets box flower~
 A strange wooden box here holds several stemless purple violets.
@@ -1781,7 +1781,7 @@ A make shift vase which holds a number of delicate, white flowers is here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 190000 P
+1 1 30 P
 E
 poppy poppies vase flower~
 A vase fashioned from part of a tree trunk holds several sprays of small,
@@ -1794,7 +1794,7 @@ A huge bouquet of bright orange and yellow flowers is here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 200000 P
+1 1 32 P
 E
 Sunflower bouquet flower~
 Your heart instantly lifts at the bursts of vivid color from the fiery
@@ -1823,7 +1823,7 @@ A badly-written love sonnet lies here unrequited, full of emotion.~
 cloth~
 9 0 AO
 5 6 5 0 0
-8 3 500000 P
+8 3 11000 P
 E
 sonnet~
 
@@ -1855,7 +1855,7 @@ A Four-Leaf Clover.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 500000 P
+1 1 80 P
 E
 four-leaf clover~
 Some like to think this rather ordinary-looking leaf a symbol of
@@ -2022,7 +2022,7 @@ A potion marked "Ranger Aid".~
 glass~
 10 AG A
 28 34 38 0 0
-10 8 9000000 P
+10 8 1400 P
 E
 herbal potion~
 The potion is marked "Ranger Aid" and seems to have been brewed from
@@ -2107,7 +2107,7 @@ Herman Melville's "Moby Dick" lies here.~
 cloth~
 13 0 AO
 0 0 0 0 0
-5 3 500000 G
+5 3 10000 G
 E
 Herman Melville book~
 A classic tale of man against fish.  Flipping through it, you notice
@@ -2224,7 +2224,7 @@ A paw-written dirty-old map lies on the floor.~
 wood~
 8 0 A
 0 0 0 0 0
-10 2 30000000 P
+10 2 4800 P
 E
 map~
                                      *-*
@@ -2285,7 +2285,7 @@ A sword-stick lies on the grass here.~
 steel~
 5 0 AN
 2 8 2 2 0
-5 8 1000000 P
+5 8 20000 P
 E
 stick dagger sword-stick~
 The sword-stick seems to have been cunningly fashioned from the branch
@@ -2352,7 +2352,7 @@ There is a bunch of yellow tulips here.~
 energy~
 13 G A
 0 0 0 0 0
-1 1 200000 P
+1 1 32 P
 E
 tulips bunch flower~
 A few choice stalks of yellow tulips are here, wrapped carefully in
@@ -2365,7 +2365,7 @@ A hollowed husk of a fruit lies here.~
 gourd~
 17 0 A
 140 140 0 0 0
-1 4 2000000 P
+1 4 320 P
 E
 gourd~
 A hollowed husk of a fruit lies here.
@@ -2377,7 +2377,7 @@ A creamy thin piece of biscuit lies here tempting you.~
 glass~
 19 0 A
 48 0 0 0 0
-1 2 20000 P
+1 2 3 P
 E
 wafer wafers~
 Can you resist me?
@@ -2389,7 +2389,7 @@ A brownish leather-like sack rests here.~
 leather~
 15 0 AK
 350 1 0 0 0
-1 2 5000000 P
+1 2 800 P
 E
 sack~
 A brownish leather-like sack rests here.
@@ -2401,7 +2401,7 @@ Some purplish husk of a fruit lies here.~
 leather~
 17 0 A
 10 10 0 0 0
-1 3 100000 P
+1 3 16 P
 E
 brinjal gourd~
 Some purplish husk of a fruit lies here.
@@ -2413,7 +2413,7 @@ A plate of beaten eggs, deliciously fried rests here.~
 food~
 19 0 A
 10 0 0 0 0
-1 1 50000 P
+1 1 8 P
 E
 omelette surprise plate~
 An Omelette Surprise!!!
@@ -2425,7 +2425,7 @@ A creamy-white glass of milkshake lies untouched here.~
 food~
 17 0 A
 1 1 10 0 0
-1 1 20000 P
+1 1 3 P
 #20549
 pancakes plate~
 a plate of pancakes~
@@ -2433,7 +2433,7 @@ A plate of golden pancakes, smothered in maple syrup tempts you.~
 food~
 19 0 A
 10 0 0 0 0
-1 1 70000 P
+1 1 11 P
 E
 pancakes plate~
 A stack of pancakes winks at you seductively.
@@ -2445,7 +2445,7 @@ A brown glob in a wide saucer lies here.~
 food~
 19 0 A
 10 0 0 0 0
-1 1 30000 P
+1 1 5 P
 E
 dish pate saucer~
 Farmer Griff's slaughtered Goose, Duffie's liver!
@@ -2457,7 +2457,7 @@ A whole roast duck is here.~
 food~
 19 0 A
 24 0 0 0 0
-1 1 80000 P
+1 1 13 P
 E
 duck~
 Farmer Griff's Speciality -- A golden roasted duck with a savory aroma,
@@ -2470,7 +2470,7 @@ A mystical bowl with strange engravings lies here.~
 food~
 19 0 A
 12 0 0 0 0
-1 1 30000 P
+1 1 5 P
 E
 stew bowl~
 This mystical brew blends 21 herbs from the depths of Emerald Forest,
@@ -2485,7 +2485,7 @@ A white doughed dumpling with a little red dot is here.~
 food~
 19 0 A
 24 0 0 0 0
-1 1 20000 P
+1 1 3 P
 E
 bun~
 Still warm from the oven rack, this fist-sized white bun is wrapped with
@@ -2498,7 +2498,7 @@ An oil-soiled book is here.~
 cloth~
 13 0 A
 0 0 0 0 0
-1 1 10000000 P
+1 1 1600 P
 E
 book~
 
@@ -2529,7 +2529,7 @@ A blue, embroided apron lies folded on the ground.~
 cloth~
 9 0 AD
 3 2 3 0 0
-1 5 500000 G
+1 5 80 G
 E
 apron~
 A fanciful "G" is nicely embroided in the apron's centre.
@@ -2542,7 +2542,7 @@ A snowy-white cushion rests here upon the floor.
 cloth~
 15 0 0
 2 0 0 0 0
-1 100000 10000000 P
+1 100000 1600 P
 #20557
 key iron~
 a rusty iron key~
@@ -2550,7 +2550,7 @@ A key lies here tarnished in rust.~
 iron~
 18 0 A
 0 0 0 0 0
-1 2 100000 P
+1 2 16 P
 E
 key iron~
 It is covered with rust.
@@ -2726,7 +2726,7 @@ A three-eyed root stares right at you!~
 root~
 26 G A
 12 19 81 65 0
-5 2 1000000 P
+5 2 20000 P
 E
 root~
 These roots grow in the deepest marshes, feeding off the remains of
@@ -2740,7 +2740,7 @@ A three-eyed root stares right at you!~
 root~
 26 G A
 12 8 81 27 0
-5 2 1000000 P
+5 2 20000 P
 E
 root~
 These roots grow in the deepest marshes, feeding off the remains of
@@ -2787,7 +2787,7 @@ Several long-stemmed carnations are here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 100000 G
+1 1 16 G
 E
 carnations carnation flower~
 These white carnations, flushed with pink tinges, give off a strong sweet
@@ -2800,7 +2800,7 @@ A handful of wispy white flowers floats wispfully in the air in front of you.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 200000 P
+1 1 32 P
 E
 casket dandelion dandelions flower~
 These tiny, feathery white balls are said to contain the souls of
@@ -2815,7 +2815,7 @@ A grotesque scaley plant sits here on the floor, covered in a fog of flies.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 2500000 P
+1 1 400 P
 E
 carrion flower~
 A sick stench blindsides you and leaves you momentarily senseless.
@@ -2832,7 +2832,7 @@ A stubby stone tub here holds several bright yellow flower bulbs.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 250000 G
+1 1 40 G
 E
 tub crocuses~
 A queer cracked stone with beautiful cravings on the side holds serveral
@@ -2845,7 +2845,7 @@ A solitary spiked cactus is here.~
 energy~
 13 G AO
 0 0 0 0 0
-1 1 50000 P
+1 1 8 P
 E
 cactus~
 This desert shrub seems somewhat out of place but its proud, throny spine
@@ -2897,7 +2897,7 @@ The Grand Pooh-Ba's staff is covered with twirlers and confetti.~
 wood~
 4 G AO
 25 25 25 12 0
-5 2 1000000 W
+5 2 20000 W
 E
 staff~
 This is the Grand Pooh-Ba's ceremonial staff. In his officiation
@@ -2925,7 +2925,7 @@ A knapsack made from the finest leather rests here.~
 leather~
 15 0 AK
 650 1 0 0 0
-1 2 900000 P
+1 2 140 P
 E
 knapsack sack~
 A knapsack made from the finest leather rests here.

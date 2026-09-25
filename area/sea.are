@@ -396,7 +396,7 @@ A piece of meat is here.~
 ~
 19 0 A
 50 0 0 0 0
-1 1 100000 P
+1 1 16 P
 #6403
 squid skin~
 squid skin~
@@ -404,7 +404,7 @@ Some skin is lying here.~
 ~
 9 0 AD
 9 10 9 2 0
-5 7 10000000 P
+5 7 200000 P
 A
 2 -1
 A
@@ -673,7 +673,7 @@ Something lies here, half-hidden among the debris.
 rock~
 15 Z I 0
 50 5 0 5 0
-1 1 10000 P
+1 1 2 P
 #6425
 paper~
 a piece of paper~
@@ -681,7 +681,7 @@ A piece of wax paper is here.~
 paper~
 15 0 A
 50 5 0 5 0
-1 1 10000 P
+1 1 2 P
 #6426
 gold loot treasure jewels goods~
 the loot~
@@ -689,7 +689,7 @@ A pile of stolen goods is here.~
 gold~
 20 0 A
 3000 0 0 0 0
-1 1 10000 P
+1 1 2 P
 #6427
 chest~
 a chest~
@@ -697,7 +697,7 @@ A large chest is here.~
 iron~
 15 0 0
 75 15 6436 5 0
-1 1 10000 P
+1 1 2 P
 #6428
 rope~
 a rope~
@@ -705,7 +705,7 @@ You see a coil of rope.~
 hemp~
 15 Z I 0
 25 5 0 5 0
-1 1 10000 P
+1 1 2 P
 #6429
 helmet old~
 an old helmet~
@@ -741,7 +741,7 @@ A sheath is here.~
 steel~
 15 0 AL
 20 0 0 20 0
-3 2 25000000 P
+3 2 3000 P
 #6433
 sword greenish~
 a greenish sword~

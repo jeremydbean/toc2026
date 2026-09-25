@@ -984,7 +984,7 @@ A cup has been set here.~
 glass~
 17 0 A
 2 2 11 0 0
-5 3 100000 P
+5 3 2000 P
 E
 cup~
 It is a small simple cup.
@@ -996,7 +996,7 @@ A big pot pie has been left here.~
 food~
 19 0 A
 40 0 0 0 0
-5 3 200000 P
+5 3 4100 P
 #10244
 agate bracelet~
 an agate bracelet~

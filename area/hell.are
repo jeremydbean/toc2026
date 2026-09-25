@@ -1265,7 +1265,7 @@ A dark jar of blood lies here.~
 glass~
 10 0 A
 30 2 35 81 0
-1 20 8000000 P
+1 20 1300 P
 
 #13417
 hell hound teeth~
@@ -1310,7 +1310,7 @@ A chuck of meat lies here.~
 food~
 19 0 A
 30 0 0 0 0
-2 10 300000 P
+2 10 60 P
 
 #13422
 blueprint~
@@ -1319,7 +1319,7 @@ A construction blueprint lies on the ground.~
 food~
 19 0 AO
 31 0 0 0 0
-1 20 80000 P
+1 20 13 P
 
 #13423
 electric eraser~
@@ -1348,7 +1348,7 @@ A sinistar looking symbol of evil lies here smoldering.~
 wood~
 3 0 AO
 35 10 10 43 0
-2 15 6660000 P
+2 15 1300 P
 
 #13426
 unholy robe pile cloth~
@@ -1528,7 +1528,7 @@ You see an antacid pill here.~
 pill~
 26 0 A
 35 74 81 0 0
-1 20 800000 P
+1 20 130 P
 
 #13444
 manes claw claws~

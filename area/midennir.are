@@ -135,7 +135,7 @@ A rusted sword lies on the ground.~
 iron~
 5 0 AN
 1 2 4 2 0
-5 4 500000 A
+5 4 10000 A
 E
 sword~
 It looks heavier than your average short sword, but it could use some oiling.
@@ -149,7 +149,7 @@ A blackened spear with an evil-looking blade lies here.~
 iron~
 5 0 AN
 8 2 5 25 F
-3 8 1300000 A
+3 8 160 A
 E
 spear~
 This used to be a boar spear, but it has been used for more dangerous game.
@@ -163,7 +163,7 @@ A helmet with sharp black horns sits here.~
 iron~
 9 0 AE
 3 5 4 0 1
-5 3 1000000 A  
+5 3 20000 A
 #3503
 cloak stained~
 a stained travelling cloak~
@@ -171,7 +171,7 @@ A worn and stained cloak is crumpled up on the floor.~
 cloth~
 9 0 AC
 2 3 4 0 1
-3 4 200000 A
+3 4 24 A
 #3504
 bracer leather enchanted~
 an enchanted leather bracer~
@@ -179,7 +179,7 @@ A leather bracer with mystic symbols sits here.~
 leather~
 9 0 AM
 2 4 4 2 0
-7 1 4000000 G
+7 1 33000 G
 A
 18 1
 E
@@ -193,7 +193,7 @@ A wide-bladed knife sits undisturbed on the floor.~
 mithril~
 5 GK AN
 2 2 4 2 0
-6 1 7500000 P
+6 1 82000 P
 A
 18 1
 E

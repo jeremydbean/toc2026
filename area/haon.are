@@ -208,7 +208,7 @@ A chequered shirt lies here.~
 cloth~
 9 0 AD
 3 3 3 0 0
-2 2 80000 P
+2 2 16 P
 E
 shirt~
 It is an extra large, chequered shirt made from heavy cloth.
@@ -220,7 +220,7 @@ A pair of leather boots lies here.~
 ~
 9 0 AG
 3 4 3 0 0
-4 4 200000 P
+4 4 16 P
 E
 boots~
 They are fashioned from rough leather that has been oiled frequently to make
@@ -260,7 +260,7 @@ A small brass key lies here.~
 brass~
 18 0 A
 6005 0 0 0 0
-1 10 40000 P
+1 10 6 P
 E
 key~
 It is a small, simple brass key with no inscriptions or marks of any kind.
@@ -284,7 +284,7 @@ Some blackberries grow on a bush nearby.~
 food~
 19 0 A
 3 0 0 0 0
-1 1 100000 P
+1 1 16 P
 E
 blackberries~
 They look very tasty indeed.
@@ -296,7 +296,7 @@ A small mushroom grows nearby.~
 food~
 19 0 A
 6 0 0 0 0
-1 1 100000 P
+1 1 16 P
 E
 mushroom~
 It is a tasty little thing.
@@ -308,7 +308,7 @@ A water barrel has been left here.~
 wood~
 17 0 A
 50 50 0 0 0
-5 10 200000 P
+5 10 4100 P
 #6102
 tree opening~
 a colossal tree~
@@ -361,7 +361,7 @@ A large toadstool grows nearby.~
 food~
 19 0 1
 12 0 0 0 0
-5 5 200000 P
+5 5 4100 P
 E
 toadstool~
 It is a large, brown boletus that must weigh nearly five pounds.  The top
@@ -375,7 +375,7 @@ A large toadstool grows nearby.~
 food~
 19 0 1
 12 0 0 1 0
-5 5 200000 P
+5 5 4100 P
 E
 toadstool~
 It is a large, brown boletus that must weigh nearly five pounds.  It has small
@@ -389,7 +389,7 @@ A yellow potion has been left here.~
 glass~
 10 G 1
 15 39 0 0 0
-2 3 3000000 P
+2 3 600 P
 E
 potion yellow~
 It has a deep yellow color and a strong spicy smell.
@@ -425,7 +425,7 @@ An iron ring has been left here.~
 iron~
 9 64 3
 1 2 2 0 0
-1 2 1000000 P
+1 2 160 P
 E
 ring iron~
 It is a quite heavy human-sized ring made from solid iron.  It lacks

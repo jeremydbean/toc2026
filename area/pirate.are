@@ -691,7 +691,7 @@ A black diamond is glittering here.~
 stone~
 8 0 A
 0 0 0 0 0
-2 2 25600000 P
+2 2 5100 P
 #16036
 stone multi-colored~
 A multi-colored stone~
@@ -707,7 +707,7 @@ A gold-trimmed topaz stone lies here.~
 stone~
 8 0 A
 0 0 0 0 0
-2 2 4000000 P
+2 2 800 P
 #16038
 carcass rat dead~
 A dead rat carcass~
@@ -735,7 +735,7 @@ A delicious apple makes your mouth water.~
 organic~
 19 0 AO
 6 0 0 0 0
-1 2 110000 P
+1 2 5400 P
 #16041
 apple~
 a rotten apple~
@@ -743,7 +743,7 @@ A rotten apple is here.~
 organic~
 19 0 A
 6 0 0 1 0
-2 2 600000 A
+2 2 120 A
 #16042
 barrel water~
 A water barrel~
@@ -759,7 +759,7 @@ An open carton of milk is here.~
 glass~
 17 0 AO
 10 10 10 0 0
-0 2 110000 P
+0 2 5400 P
 #16044
 mop~
 a mop~
@@ -783,7 +783,7 @@ Some guano has been deposited here by seagulls. Yuk!~
 organic~
 26 0 AE
 16 66 56 81 0
-9 1 110000 P
+9 1 5400 P
 #16047
 grey potion~
 a grey potion~
@@ -791,7 +791,7 @@ A heavy grey potion sits on the stone.~
 glass~
 10 0 A
 25 66 63 67 0
-9 2 200000 P
+9 2 9800 P
 #16048
 feather wand~
 a feather wand~
@@ -799,7 +799,7 @@ A feather drifts in the wind.~
 wood~
 3 0 AO
 31 2 2 56 0
-14 3 17640000 P
+14 3 860000 P
 #16049
 sack~
 a traveler's sac~
@@ -807,7 +807,7 @@ A traveler's sac is dumped on the floor.~
 cloth~
 15 0 AD
 200 1 0 0 0
-0 5 100000 P
+0 5 4900 P
 #16050
 fish~
 a fish~
@@ -815,7 +815,7 @@ A fish is flip-flopping around on the floor.~
 organic~
 19 0 A
 24 0 0 1 0
-0 2 100000 A
+0 2 4900 A
 #16051
 dagger assassin~
 an assassin's dagger~
@@ -835,7 +835,7 @@ Piles of Gold Bullion lie glittering on the floor!~
 gold~
 20 0 0
 5000 0 0 0 0
-2 0 300000 P
+2 0 60 P
 #0
 
 #ROOMS

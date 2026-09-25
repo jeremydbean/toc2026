@@ -801,7 +801,7 @@ A blue blob of some strange substance is here.~
 vellum~
 18 0 A
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 #7528
 blob~
 a green blob~
@@ -809,7 +809,7 @@ A green blob of some strange substance is here.~
 vellum~
 18 0 A
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 #7529
 cloak psionic~
 the cloak of the psionic~

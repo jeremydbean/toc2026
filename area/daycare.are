@@ -157,7 +157,7 @@ A pink ice ring draws your eye.~
 ice~
 8 G AB
 0 0 0 0 0
-3 1 12000000 G
+3 1 1400 G
 A
 1  1
 A
@@ -174,7 +174,7 @@ A linen robe is crumpled into a ball here.~
 cloth~
 9 G AK
 1 2 1 1 1
-3 5 20000000 G
+3 5 2400 G
 A
 4 1
 A
@@ -249,7 +249,7 @@ A Dwarven battle axe is here.~
 ~
 5 0 8193
 5 2 7 1 0
-5 10 5000000 P
+5 10 100000 P
 A
 18 2
 A
@@ -261,7 +261,7 @@ A strange looking foot device is lying on the ground.~
 ~
 9 G AG
 1 1 1 1 0
-5 5 1000000 P 
+5 5 20000 P
 A
 14 100
 E pogo stick~

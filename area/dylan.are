@@ -249,7 +249,7 @@ There is a large egg here, about knee high.
 glass~
 31 V 0
 0 0 0 0 0
-1 5 50000 P
+1 5 8 P
 #9115
 feather roc~
 a Roc feather~
@@ -267,7 +267,7 @@ A beautiful pool of water is here.
 stone~
 30 VZ I 0
 5 13401 0 0 0
-1 1 10000 P
+1 1 2 P
 #0
 
 

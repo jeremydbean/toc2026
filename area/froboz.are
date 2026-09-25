@@ -213,7 +213,7 @@ A can of FizzyPop sits here, cool and refreshing.~
 steel~
 17 0 A
 1 1 15 0 0
-1 1 450000 P
+1 1 72 P
 #12001
 AXE~
 The AXE~
@@ -229,7 +229,7 @@ A vending machine sandwich sits here till the end of time.~
 food~
 19 0 A
 3 0 0 0 0
-1 1 200000 P
+1 1 32 P
 #12003
 froboz candy bar crunchie chewie~
 a Froboz candy bar~
@@ -237,7 +237,7 @@ A Froboz Crunchie-Chewie candy bar is here!  Yum!~
 food~
 19 0 A
 4 0 0 0 0
-1 1 200000 P
+1 1 32 P
 #12004
 cart chevvy lay~
 the cart~
@@ -261,7 +261,7 @@ A nice looking hat with a propeller on top is here.~
 cloth~
 9 0 AE
 5 5 5 0 0
-8 3 1500000 P
+8 3 33000 P
 A
 3 1
 #12007
@@ -289,7 +289,7 @@ There is a wand here.~
 wood~
 3 AG AO
 1 10 10 534 0
-3 3 50000 P
+3 3 6 P
 #0
 
 #ROOMS

@@ -260,7 +260,7 @@ A small mining pick made of what appears to be silver lies on the ground.~
 silver~
 5 J AN
 4 1 9 11 0
-4 10 1500000 P
+4 10 120 P
 #5001
 banded mail~
 A glowing suit of banded mail~
@@ -292,7 +292,7 @@ A mushroom shaped amulet lies on the ground.~
 steel~
 9 G AC
 0 0 0 0 0
-6 2 2500000 P
+6 2 27000 P
 A
 5 1
 #5005
@@ -302,7 +302,7 @@ A large leg bone rests on the ground.~
 bone~
 5 0 AN
 4 1 4 7 0
-5 5 2500000 P
+5 5 51000 P
 #5006
 cactus~
 a small cactus cup~
@@ -310,7 +310,7 @@ A small cactus cup lies on the ground.~
 plant~
 17 0 A
 5 5 0 0 0
-5 6 250000 P
+5 6 5100 P
 #5007
 basket~
 a small wicker basket~
@@ -318,7 +318,7 @@ A small wicker basket sits on the ground.~
 cloth~
 15 0 A
 100 5 0 0 0
-1 50 1500000 P
+1 50 240 P
 #5008
 basket~
 a small wicker basket~
@@ -326,7 +326,7 @@ A small wicker basket sits on the ground.~
 cloth~
 15 0 A
 100 5 0 0 0
-1 50 1500000 P
+1 50 240 P
 #5009
 basket~
 a small wicker basket~
@@ -334,7 +334,7 @@ A small wicker basket sits on the ground.~
 cloth~
 15 0 A
 100 5 0 0 0
-1 50 1500000 P
+1 50 240 P
 #5010
 basket~
 a small wicker basket~
@@ -342,7 +342,7 @@ A small wicker basket sits on the ground.~
 cloth~
 15 0 A
 100 5 0 0 0
-1 50 1500000 P
+1 50 240 P
 #5011
 rope~
 a coil of rope~
@@ -350,7 +350,7 @@ A long coil of rope lies on the ground.~
 rope~
 12 0 A
 0 0 0 0 0
-1 12 2500000 P
+1 12 400 P
 #5012
 stakes~
 a bunch of stakes~
@@ -358,7 +358,7 @@ A small bundle of stakes lies here.~
 wood~
 12 0 A
 0 0 0 0 0
-1 6 2500000 P
+1 6 400 P
 #5013
 map~
 an old, tattered map~
@@ -366,7 +366,7 @@ An old, tattered, and much faded map lies here.~
 paper~
 12 0 A
 0 0 0 0 0
-1 1 2000000 P
+1 1 320 P
 #5014
 turban~
 a thick padded turban~

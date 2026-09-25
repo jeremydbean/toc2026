@@ -190,7 +190,7 @@ A delicious leg of lamb is here.~
 food~
 19 0 A
 16 0 0 0 0
-1 1 450000 P
+1 1 72 P
 #18202
 mug ale small~
 a small mug of ale~
@@ -198,7 +198,7 @@ A small mug of frothy ale is here.~
 glass~
 17 0 A
 1 1 3 0 0
-1 1 340000 P
+1 1 54 P
 #18203
 anvil~
 a large anvil~
@@ -214,7 +214,7 @@ A large sword made of bronze is here.~
 bronze~
 5 0 AN
 1 2 4 3 D
-5 10 13000000 P
+5 10 1000 P
 A
 14 25
 A
@@ -230,7 +230,7 @@ A small helm made of bronze is here.~
 bronze~
 9 0 AE
 3 2 3 4 0
-4 3 8500000 P
+4 3 680 P
 #18206
 bronze plate~
 a bronze plate~
@@ -238,7 +238,7 @@ A large bronze plate is here.~
 bronze~
 9 0 AD
 4 5 4 1 0
-4 5 10000000 P
+4 5 800 P
 #18207
 crystal rose~
 a beautiful crystal rose~
@@ -246,7 +246,7 @@ A small, beautiful rose made of crystal is here.~
 glass~
 9 AU AO
 4 4 4 4 0
-1 1 40000000 P
+1 1 6400 P
 #18208
 crystal locket~
 a small crystal locket~
@@ -254,7 +254,7 @@ A small locket made of beautiful crystal is here.~
 glass~
 9 AU AO
 4 4 4 4 0
-1 1 32000000 P
+1 1 5100 P
 #18209
 crystal dog puppy~
 a crystal puppy dog~
@@ -262,7 +262,7 @@ A small crystalline puppy is here.~
 glass~
 9 AU AO
 4 4 4 4 0
-1 1 27500000 P
+1 1 4400 P
 #18210
 lemonade glass~
 a tall glass of lemonade~
@@ -270,7 +270,7 @@ A very large glass of lemonade is here.~
 glass~
 17 0 A
 2 2 6 0 0
-1 1 460000 P
+1 1 10000 P
 #18211
 wooden shield~
 a small wooden shield~
@@ -278,7 +278,7 @@ A very small shield made of wood is here.~
 wood~
 9 0 AJ
 3 4 3 1 0
-8 3 2900000 P
+8 3 63000 P
 A
 18 1
 #18212
@@ -288,7 +288,7 @@ A small fountain is here gushing clear water.~
 stone~
 25 0 0
 0 0 0 0 0
-1 300 200000 P
+1 300 32 P
 #18213
 ladder~
 a small metal ladder~
@@ -297,7 +297,7 @@ A small metal ladder is mounted here, leading upward.
 steel~
 31 V 0
 6 18220 4 1 0
-1 200 1000000 P
+1 200 160 P
 #18214
 ladder~
 a small metal ladder~
@@ -306,7 +306,7 @@ A small metal ladder is mounted here, leading downward.
 steel~
 31 V 0
 7 18215 5 1 0
-1 200 1000000 P
+1 200 160 P
 #18215
 pink carnation~
 a lovely pink carnation~
@@ -314,7 +314,7 @@ A beautiful pink carnation is here.~
 paper~
 9 0 AO
 3 3 3 3 0
-3 1 5600000 P
+3 1 670 P
 #18216
 red rose~
 a lovely red rose~
@@ -322,7 +322,7 @@ A beautiful red rose is here.~
 paper~
 9 0 AO
 3 3 3 3 0
-3 1 10200000 P
+3 1 1200 P
 #18217
 bed~
 a small comfortable bed~
@@ -330,7 +330,7 @@ A very small, but comfortable bed sits against the far wall.~
 wood~
 12 OV 0
 0 0 0 0 0
-1 200 3000000 P
+1 200 480 P
 #18218
 bed~
 a very large bed~
@@ -338,7 +338,7 @@ A very large, luxurious bed sits against the far wall.~
 wood~
 12 OV 0
 0 0 0 0 0
-1 200 3000000 P
+1 200 480 P
 #18219
 bag oats~
 a bag of oats~
@@ -346,7 +346,7 @@ A very large bag of oats are here spilling onto the ground.~
 cloth~
 12 OV 0 
 0 0 0 0 0
-1 50 3000000 P
+1 50 480 P
 
 
 

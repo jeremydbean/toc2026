@@ -477,7 +477,7 @@ A small pile of dust is being scattered by the breeze.
 stone~
 13 0 A
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 dust~
 The dust is old.  As you sift it through your hands you find tiny chips
@@ -616,7 +616,7 @@ Some fortunate soul has escaped the mummy's curse, for now.~
 ~
 13 ABGHNU AO
 0 0 0 0 0
-1 10 500000 P
+1 10 80 P
 A
 1 -3
 A
@@ -641,7 +641,7 @@ A small glass elixir lies under your feet.
 pill~
 10 G A
 30 36 66 3 0
-2 20 250000000 P
+2 20 50000 P
 E
 small elixir~
 The elixir is deceptively small.  Something tells you that its

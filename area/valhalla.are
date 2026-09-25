@@ -576,7 +576,7 @@ You see a small weathered book laying on the ground.
 paper~
 13 ITV AO
 0 0 0 0 0
-1 1 250000 W
+1 1 40 W
 A
 14 100
 E
@@ -753,7 +753,7 @@ You see a small weathered book laying on the ground.
 paper~
 13 ITV AO
 0 0 0 0 0
-1 1 250000 W
+1 1 40 W
 A
 14 100
 E
@@ -791,7 +791,7 @@ You see a small weathered book laying on the ground.
 paper~
 13 ITV AO
 0 0 0 0 0
-1 1 250000 W
+1 1 40 W
 A
 14 100
 E
@@ -864,7 +864,7 @@ You see a small weathered book laying on the ground.
 paper~
 13 ITV AO
 0 0 0 0 0
-1 1 250000 W
+1 1 40 W
 A
 14 100
 E
@@ -1117,7 +1117,7 @@ A table with a mirror top sits in the center of the room.~
 adamantite~
 12 0 0
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 table~
     You peer into the mirrored table and see a strange reflection
@@ -1133,7 +1133,7 @@ A Fortune in Gold is here.~
 gold~
 8 V A
 500 0 0 0 0
-1 1 5000000 P
+1 1 800 P
 #9934
 Handlink~
 A Multi-colored Handlink~
@@ -1179,7 +1179,7 @@ Some freshly baked brownies lie here.. umm umm good!~
 food~
 26 UV AE
 30 3 0 0 0
-1 1 10000 P
+1 1 2 P
 #9938
 box~
 a white box~
@@ -1195,7 +1195,7 @@ A beautiful red rose is growing out of the ground.~
 wood~
 8 AGI A
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 #9940
 altar~
 an altar~
@@ -1420,7 +1420,7 @@ a cord the color of the sky lies coiled upon the ground~
 silk~
 9 0 AO
 1 1 1 1 0
-1 0 10000 P
+1 0 2 P
 E
 cord~
 This is the binding cord, used in a handfasting ceremony.  It represents

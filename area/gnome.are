@@ -498,7 +498,7 @@ A small skiff is here.~
 wood~
 22 0 A
 0 0 0 0 0
-4 24 2250000 P
+4 24 180 P
 #1515
 boots gnome~
 a pair of gnome boots~
@@ -516,7 +516,7 @@ A pile of coins.~
 gold~
 20 0 A
 1000 0 0 0 0
-1 10 10000 P
+1 10 2 P
 #1517
 coins~
 a pile of coins~
@@ -524,7 +524,7 @@ A pile of coins.~
 gold~
 20 0 A
 5000 0 0 0 0
-1 50 10000 P
+1 50 2 P
 #1518
 coins~
 a pile of coins~
@@ -532,7 +532,7 @@ A pile of coins.~
 gold~
 20 0 A
 1000 0 0 0 0
-1 10 10000 P
+1 10 2 P
 #1519
 shield stone~
 a stone shield~
@@ -566,7 +566,7 @@ There is a banana here.~
 food~
 19 0 A
 16 0 0 0 0
-1 5 1000000 P
+1 5 160 P
 #1523
 life potion~
 a potion of life healing~

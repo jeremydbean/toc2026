@@ -129,7 +129,7 @@ A nice glass of ice tea is here.~
 glass~
 17 0 A
 8 8 1 0 0
-0 2 500000 P
+0 2 80 P
 #801
 multiple orgasm~
 Multiple Orgasm (alcoholic kind)~
@@ -137,7 +137,7 @@ A nice multiple orgasm drink is here.~
 glass~
 17 0 A
 8 8 1 0 0
-0 2 1000000 P
+0 2 160 P
 #802
 sex beach~
 Sex on the Beach (alcoholic kind)~
@@ -145,7 +145,7 @@ A nice sex on the beach drink is here.~
 glass~
 17 0 A
 8 8 1 0 0
-0 2 750000 P
+0 2 120 P
 #803
 fuzzy navel~
 Fuzzy Navel~
@@ -153,7 +153,7 @@ A nice fuzzy navel drink is here.~
 glass~
 17 0 A
 8 8 1 0 0
-0 2 500000 P
+0 2 80 P
 #804
 kamikaze~
 Kamikaze~
@@ -161,7 +161,7 @@ A nice kamikaze drink is here.~
 glass~
 17 0 A
 8 8 1 0 0
-0 2 600000 P
+0 2 96 P
 #805
 grasshopper~
 Grasshopper~
@@ -169,7 +169,7 @@ A nice grasshopper drink is here.~
 glass~
 17 0 A
 8 8 1 0 0
-0 2 500000 P
+0 2 80 P
 #806
 rum balls~
 Kasandra's famous rum balls~
@@ -177,7 +177,7 @@ A batch of Kasandra's famous rum balls is here.~
 food~
 26 0 A
 25 36 28 74 0
-1 2 15000000000 P
+1 2 2400000 P
 
 #0
 

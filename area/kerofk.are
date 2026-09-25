@@ -975,7 +975,7 @@ There is a strange blue spiraled fruit on the ground here.~
 food~
 19 0 1
 5 0 0 0 0
--1 3 200000 P
+-1 3 4400 P
 E
 powwee~
 This fruit tastes something like apples with peanut better spread on.
@@ -1005,7 +1005,7 @@ A pale, light green zucchini.~
 food~
 19 0 AO
 4 0 0 0 0
--1 6 200000 P
+-1 6 4400 P
 E
 zucchini~
    It looks rather sickly, as if it didn't get enough sun.
@@ -1045,7 +1045,7 @@ There is some sort of bird perch here, attached to something metal.~
 ~
 9 H AI
 0 0 0 0 0
--1 6 5000000 P
+-1 6 110000 P
 E
 bird perch plate~
 This is a bird perch made to affix to the shoulder plate of some
@@ -1060,7 +1060,7 @@ There is an arbalest here, nearly as tall as you!~
 steel~
 5 0 AN
 0 1 5 11 0
--1 15 12500000 P
+-1 15 270000 P
 A
 18 -3
 #8712
@@ -1071,7 +1071,7 @@ the front...~
 wood~
 9 BG AD
 0 0 0 0 0
--1 9 10000000 P
+-1 9 220000 P
 A
 18 1
 A
@@ -1083,7 +1083,7 @@ There is a nice-looking break-away sheathe discarded here.~
 bronze~
 9 0 AL
 0 0 0 0 0
--1 5 12500000 P
+-1 5 270000 P
 A
 18 2
 A
@@ -1095,7 +1095,7 @@ There is a tin can of worms lying here.~
 leather~
 19 0 1
 2 0 0 0 0
--1 4 1000000 P
+-1 4 22000 P
 #8717
 fly lure~
 a fly lure~
@@ -1103,7 +1103,7 @@ There is a small fishing lure here.~
 class~
 13 0 AO
 0 0 0 0 0
--1 1 5000000 P
+-1 1 110000 P
 A
 19 1
 #8718
@@ -1346,7 +1346,7 @@ An extremely pale apple sits here.~
 food~
 19 0 1
 2 0 0 0 0
--1 3 100000 P
+-1 3 2200 P
 E
 apple~
    It looks like it didn't get enough sun.
@@ -1358,7 +1358,7 @@ A potato sits here, eyeing you.~
 food~
 19 0 1
 4 0 0 0 0
--1 2 100000 P
+-1 2 2200 P
 E
 potato~
    Looks like a potato.
@@ -1370,7 +1370,7 @@ You can smell that onion from here!~
 food~
 19 0 1
 1 0 0 0 0
--1 2 100000 P
+-1 2 2200 P
 E
 onion~
    That's a pretty strong onion!
@@ -1382,7 +1382,7 @@ A steel breast plate lies here.~
 steel~
 9 0 9
 0 0 0 0 0
--1 8 10000000 P
+-1 8 220000 P
 A
 5 1
 #8744
@@ -1392,7 +1392,7 @@ A round, steel cap lies here, discarded.~
 steel~
 9 0 17
 0 0 0 0 0
--1 4 13000000 P
+-1 4 280000 P
 #8745
 leggings chain~
 a pair of chain leggings~
@@ -1400,7 +1400,7 @@ A pair of chain leggings are piled here.~
 steel~
 9 0 33
 0 0 0 0 0
--1 6 12750000 P
+-1 6 280000 P
 #8746
 chest~
 a chest~
@@ -1429,7 +1429,7 @@ A bottle with a brightly colored label sits here.~
 glass~
 17 0 1
 4 4 1 0 0
--1 2 2000000 P
+-1 2 44000 P
 #8749
 carafe~
 a carafe~
@@ -1437,7 +1437,7 @@ A wooden carafe sits on a table here.~
 glass~
 17 0 1
 8 8 2 0 0
--1 2 500000 P
+-1 2 11000 P
 #8750
 glass shot shotglass~
 a shotglass~
@@ -1445,7 +1445,7 @@ A shotglass has been discarded here.~
 glass~
 17 0 1
 2 2 7 0 0
--1 2 400000 P
+-1 2 8700 P
 #8751
 cards deck~
 a deck of cards~
@@ -1469,7 +1469,7 @@ You see a book.~
 paper~
 31 A AO
 2 8796 4 1 0
-1 2 1000000 P
+1 2 160 P
 #0
 
 

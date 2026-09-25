@@ -618,7 +618,7 @@ A hand axe is on the floor here.~
 wood~
 5 0 AN
 5 1 5 3 0
--1 5 1000000 P
+-1 5 160 P
 E
 handaxe hand axe~
 You see a finely made axe.  Iron, with a nice wooden shaft, this axe can
@@ -631,7 +631,7 @@ A sharp meat cleaver is just lying on the floor here!~
 steel~
 5 0 AN
 2 1 5 3 0
--1 5 1500000 P
+-1 5 240 P
 E
 meat cleaver~
 This meat cleaver is made of good steel.
@@ -643,7 +643,7 @@ A side of beef is here on the floor.~
 food~
 19 0 A
 24 0 0 0 0
-5 7 500000 P
+5 7 10000 P
 #603
 side meat pork~
 a side of pork~
@@ -651,7 +651,7 @@ A side of pork is here on the floor.~
 food~
 19 0 A
 23 0 0 0 0
-5 7 450000 P
+5 7 9200 P
 #604
 side meat horse~
 a side of horse~
@@ -659,7 +659,7 @@ A side of horse is here on the floor.~
 ~
 19 0 A
 30 0 0 0 0
-5 7 600000 P
+5 7 12000 P
 #605
 meat chicken~
 a defeathered chicken~
@@ -667,7 +667,7 @@ A defeathered chicken is here on the floor.~
 food~
 19 0 A
 16 0 0 0 0
-5 3 300000 P
+5 3 6100 P
 #606
 emerald ring~
 an emerald ring~
@@ -675,7 +675,7 @@ An emerald ring is on the floor, gathering dust.~
 gold~
 8 C AB
 100 0 0 0 0
-1 2 1000000 P
+1 2 160 P
 #607
 glass trinket~
 a glass trinket~
@@ -683,7 +683,7 @@ A glass trinket is on the floor, gathering dust.~
 glass~
 8 0 AO
 50 0 0 0 0
-1 1 500000 P
+1 1 80 P
 A
 24 -1
 #608
@@ -693,7 +693,7 @@ A golden necklace is on the floor, gathering dust.~
 gold~
 8 0 AC
 150 0 0 0 0
-2 1 1500000 P
+2 1 240 P
 A
 4 -1
 A
@@ -705,7 +705,7 @@ Some fresh cabbage is here, get it while it lasts!~
 food~
 19 0 A
 12 0 0 0 0
-2 2 200000 P
+2 2 40 P
 #610
 lettuce~
 a head of lettuce~
@@ -713,7 +713,7 @@ Some fresh lettuce is here, get it while it lasts!~
 food~
 19 0 A
 12 0 0 0 0
-2 2 200000 P
+2 2 40 P
 #611
 milk bottle~
 a bottle of milk~
@@ -721,7 +721,7 @@ A glass bottle of milk is on a shelf here, fresh from the cow.~
 glass~
 17 0 A
 20 20 10 0 0
-5 3 400000 P
+5 3 80 P
 #612
 apple~
 an apple~
@@ -729,7 +729,7 @@ An apple is on the ground.~
 food~
 19 0 A
 8 0 0 0 0
-1 1 50000 P
+1 1 10 P
 #613
 corn~
 an ear of corn~
@@ -737,7 +737,7 @@ An ear of corn is on the ground.~
 ~
 19 0 A
 8 0 0 0 0
-1 1 50000 P
+1 1 10 P
 #614
 hay pile~
 a pile of hay~
@@ -753,7 +753,7 @@ A pitchfork is on the floor.~
 wood~
 5 0 AN
 3 1 5 11 0
--1 5 500000 P
+-1 5 80 P
 #616
 vest~
 a leather vest~
@@ -761,7 +761,7 @@ A leather vest is on the floor.~
 leather~
 9 0 AD
 0 0 0 0 0
--1 4 500000 P
+-1 4 80 P
 #617
 sleeves~
 some leather sleeves~
@@ -769,7 +769,7 @@ Some leather sleeves are on the floor.~
 ~
 9 0 AI
 0 0 0 0 0
--1 3 500000 P
+-1 3 80 P
 #618
 leggings~
 some leather leggings~
@@ -777,7 +777,7 @@ Some leather leggings are on the floor.~
 ~
 9 0 AF
 0 0 0 0 0
--1 3 500000 P
+-1 3 80 P
 #619
 boots~
 some leather boots~
@@ -785,7 +785,7 @@ Some leather boots are on the floor.~
 ~
 9 0 AG
 0 0 0 0 0
--1 3 500000 P
+-1 3 80 P
 #620
 signet ring~
 an Ofcol signet ring~
@@ -1129,7 +1129,7 @@ A shot of whiskey is on the table.~
 glass~
 17 0 A
 5 5 5 0 0
-1 1 100000 P
+1 1 16 P
 #649
 ale quart~
 a quart of ale~
@@ -1137,7 +1137,7 @@ A quart of ale is on the table.~
 glass~
 17 0 A
 50 50 3 0 0
-1 2 200000 P
+1 2 32 P
 #650
 port brew quart~
 a quart of port brew~
@@ -1145,7 +1145,7 @@ A quart of port brew is on the table.~
 glass~
 17 0 A
 50 50 4 0 0
-1 2 200000 P
+1 2 32 P
 #651
 key citadel~
 the citadel key~
@@ -1153,7 +1153,7 @@ A key is on the floor.~
 bronze~
 18 0 1
 0 0 0 0 0
-1 1 1000000 P
+1 1 160 P
 #652
 symbol holy~
 the Holy Symbol of Bahamut~
@@ -1313,7 +1313,7 @@ A house key is on the floor.~
 wood~
 18 0 1
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 #666
 broom~
 a broom~
@@ -1321,7 +1321,7 @@ A broom is against the wall here.~
 wood~
 5 0 AN
 0 2 3 7 0
-5 6 100000 P
+5 6 2000 P
 A
 18 3
 A
@@ -1333,7 +1333,7 @@ A chest is on the floor here.~
 wood~
 15 0 A
 100 0 0 0 0
-10 100 100000 P
+10 100 16 P
 #668
 wild flowers~
 wild flowers~
@@ -1341,7 +1341,7 @@ A bunch of pretty wild flowers is here.~
 trash~
 13 K AEO
 0 0 0 0 0
-1 1 100000 P
+1 1 16 P
 E
 wild flowers~
 These wild flowers are really pretty.

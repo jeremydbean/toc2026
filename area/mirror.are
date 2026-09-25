@@ -638,7 +638,7 @@ You see a green potion on the floor.~
 glass~
 10 0 A
 20 203 0 0 0
-20 5 7500000 P
+20 5 370000 P
 #5313
 herbs~
 some bluish herbs~
@@ -646,7 +646,7 @@ Some bluish herbs are scattered here.~
 pill~
 26 0 A
 17 3 0 0 0
-6 1 1000000 P
+6 1 11000 P
 #5314
 herbs~
 some purplish herbs~
@@ -654,7 +654,7 @@ Some purplish herbs are scattered here.~
 pill~
 26 0 A
 15 82 0 0 0
-8 1 1000000 P
+8 1 22000 P
 #5315
 herbs~
 some grayish herbs~
@@ -662,7 +662,7 @@ Some grayish herbs are scattered here.~
 pill~
 26 0 A
 5 39 33 0 0
-8 1 1000000 P
+8 1 22000 P
 #5316
 herbs~
 some orangish herbs~
@@ -670,7 +670,7 @@ Some orangish herbs are scattered here.~
 pill~
 26 0 A
 5 16 0 0 0
-8 1 1000000 P
+8 1 22000 P
 #5317
 imperial sword~
 an imperial sword~

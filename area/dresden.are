@@ -1466,7 +1466,7 @@ A meaty piece of lasagna with extra cheese.~
 pill~
 19 0 A
 40 0 0 0 0
-0 8 2000000 P
+0 8 240 P
 #4631
 souvlaki~
 a stick of souvlaki~
@@ -1474,7 +1474,7 @@ A juicy stick of souvlaki.~
 pill~
 19 0 0
 15 0 0 0 0
-0 3 500000 P
+0 3 60 P
 #4632
 flask holy water~
 a flask of holy water~
@@ -1490,7 +1490,7 @@ It has a picture of Kernel Flanders on it.~
 paper~
 15 0 A
 50 0 0 0 0
-1 1 1000000 P
+1 1 160 P
 #4634
 chicken~
 some chicken~
@@ -1498,7 +1498,7 @@ A piece of tender, juicy chicken.~
 food~
 19 0 AO
 24 0 0 0 0
-1 1 100000 P
+1 1 12 P
 #4635
 torch~
 a torch~

@@ -65,6 +65,26 @@ class Stream:
             raise ValueError("expected a token")
         return self.text[start:self.pos], start, self.pos
 
+    def letter(self) -> str:
+        self.skip_space()
+        if self.pos >= len(self.text):
+            raise ValueError("expected a letter")
+        ch = self.text[self.pos]
+        self.pos += 1
+        return ch
+
+    def number(self) -> int:
+        """fread_number: an optional sign and a run of digits."""
+        self.skip_space()
+        if self.pos < len(self.text) and self.text[self.pos] in "+-":
+            self.pos += 1
+        start = self.pos
+        while self.pos < len(self.text) and self.text[self.pos].isdigit():
+            self.pos += 1
+        if start == self.pos:
+            raise ValueError("expected a number")
+        return int(self.text[start:self.pos])
+
     def flag(self) -> tuple[str, int, int]:
         """A flag, including the way fread_flag mishandles a minus sign.
 
@@ -139,15 +159,29 @@ def cost_spans(text: str) -> tuple[list[tuple[int, int, int]], list[str]]:
                 found.append((start, end, int(cost)))
 
             stream.token()                    # condition
+
+            # Affects, extra descriptions and object actions, read the
+            # way load_objects() reads them. This used to skip to the
+            # next "\n#" instead, which is not a record boundary: a
+            # Hyrule dungeon map carries an ASCII floor plan in an extra
+            # description and several of its rows start with a hash. The
+            # scan landed in one, found no vnum after it and stopped, and
+            # the last 85 objects in the world were never converted.
+            while True:
+                mark = stream.pos
+                letter = stream.letter()
+                if letter == "A":
+                    stream.number()
+                    stream.number()
+                elif letter in ("E", "T"):
+                    stream.string()
+                    stream.string()
+                else:
+                    stream.pos = mark
+                    break
         except ValueError as exc:
             problems.append(f"#{vnum}: {exc}")
             break
-
-        # On to the next '#', skipping affects and extra descriptions.
-        nxt = text.find("\n#", stream.pos)
-        if nxt < 0 or nxt >= limit:
-            break
-        stream.pos = nxt + 1
 
     return found, problems
 

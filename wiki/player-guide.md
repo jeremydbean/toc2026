@@ -420,6 +420,13 @@ denominations; `worth` summarizes carried money.
 short: `1c`, `5g 20s`, `3p`. Prices are counted in copper, so a shop can
 charge as little as a single copper coin - the bread in Mud School does.
 
+Shops are priced for the people who use them. A shelf in a starting area is
+counted in coppers and silvers, because the mobiles around it carry coppers
+and silvers; the same shelf one bracket up is counted in gold. As a rough
+measure, an ordinary piece of gear costs about as much as thirty or forty
+kills of something your own level, and a meal costs a few. If a shop looks
+unreachable, it is probably not meant for you yet.
+
 `repair` works on gear you are wearing as well as gear in your pack, so you do
 not have to take a dented breastplate off to have it seen to. The smith quotes
 a price from how worn the item is and how high a level it is, in the same

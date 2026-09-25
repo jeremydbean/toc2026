@@ -28,7 +28,7 @@ A red potion bubbles in a glass jar on the floor.~
 glass~
 10 GUV AO
 51 502 28 522 0
-1 2 1000000 P
+1 2 160 P
 E
 red potion~
 Hmmmmm...it seems that this potion is one of heal, sanctuary and fire shield.
@@ -40,7 +40,7 @@ A gold medallion lies in the dust.~
 gold~
 9 ABUVXZ FGH AC
 10 10 10 10 0
-1 5 10000000 P
+1 5 1600 P
 E
 medallion~
 This medallion signifies that you have won the quest in Quest Zone 1!
@@ -52,7 +52,7 @@ A golden vial blazes with divine energy.~
 crystal~
 10 GUV AO
 60 36 502 56 0
-5 50 500000000 P
+5 50 10000000 P
 E
 potion power~
 This potion channels the essence of divine empowerment, granting sanctuary,
@@ -65,7 +65,7 @@ A thick emerald potion smells of ancient mountain earth.~
 crystal~
 10 GUV AO
 60 39 66 74 0
-5 50 500000000 P
+5 50 10000000 P
 E
 potion giant~
 This potion of legendary strength grants the muscles of a giant, skin like
@@ -78,7 +78,7 @@ A black scroll crackles with terrible, smoldering power.~
 paper~
 2 GUV A
 70 532 0 0 0
-1 20 600000000 P
+1 20 96000 P
 E
 scroll farslay~
 This scroll is inscribed with the ancient rite of Farslay. Recite it at one

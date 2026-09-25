@@ -8,7 +8,68 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **The bottom of the economy is priced for the people standing in it.**
+  `obj->cost` is copper, and `load_mobiles` rolls a mobile's coin from its
+  level in six steps with cliffs between them: a level 4 mobile carries one
+  to eight copper, a level 5 one about five silver, a level 10 one about
+  five gold. Measured against that, prices from level 10 up were already
+  about right -- the median object cost forty kills of a mobile its own
+  level. Below it they were not:
+
+  | item level | median price | kills to afford it |
+  |---|---|---|
+  | 1-4   | 20g - 1p75g | 1,000,000 |
+  | 5-9   | 1p - 2p50g  | 2,801 |
+  | 10-14 | 3p          | 59 |
+  | 20-24 | 5p          | 43 |
+  | 40-44 | 10p75g      | 23 |
+
+  A turkey burger in Mud School cost ten gold. A level 1 mobile carries one
+  or two copper, every character in the game starts in Mud School, and they
+  start with nothing. `tools/reprice_by_level.py` rescaled 688 prices across
+  70 files to the target the rest of the world already keeps -- one factor
+  per level, so every ratio a builder chose survives exactly, and no price
+  was raised. Nothing at level 10 or above was touched.
+
+  Mud School now reads 1c for a loaf, 16c for a turkey burger, 48c for a
+  lantern. Dresden's leather worker sells a leather cap for 56s and the
+  jerkin for 1g 65s, about eleven and thirty-two kills at level 5; the
+  weaponsmith's dagger is 2g 60s. Verified in a running game: a character
+  created with an empty purse and sixty copper -- four kills' worth -- buys
+  a meal and has forty-four left.
+
+  What it does not do is the other end, where the same measurement says the
+  median level 50 object costs three kills. That is the income table's last
+  step, not the prices, and changing it moves every high-level character's
+  earnings.
+
 ### Fixed
+
+- **The converter that moved every price to copper stopped 85 objects
+  short, and nobody noticed for the length of the world.** Its docstring
+  is right that an area file must be read as a stream of tokens; its loop
+  then found the next record by scanning for the next `\n#`, which is not
+  a record boundary. A Hyrule dungeon map carries an ASCII floor plan in an
+  extra description and several of its rows begin with a hash. The scan
+  landed inside one, found no vnum after it and gave up -- so the last 85
+  objects in the world kept gold-scale prices after everything else had
+  moved to copper. A Magical Shield whose description reads "displayed for
+  130 rupees" sold for one silver and thirty copper. Both readers now walk
+  the trailing `A`/`E`/`T` records the way `load_objects` does, and
+  `scripts/build_hyrule_area.py` writes its rupee prices out in copper.
+
+- **`scripts/build_hyrule_area.py` had drifted behind the area file it
+  generates, and a regeneration would have undone a month of work.** 197
+  rooms in `area/hyrule.are` had been given their recall and always-lit
+  flags by hand: only the dungeons keep `ROOM_NO_RECALL`, and the overworld
+  carries `ROOM2_ALWAYS_LIT` because its sectors go dark at sunset. The
+  generator still wrote `ROOM_NO_RECALL` on all 443. Running
+  `make hyrule-area` would have reverted both and failed fourteen
+  assertions in `tests/test_hyrule_progression.py`. The rule lives in
+  `room_flag_word()` now, and the generator reproduces the committed file
+  exactly.
 
 - **Remorting quietly took five armour classes off you, every time.**
   `do_remort` rebuilds the character as a bare level-3 body: armour back

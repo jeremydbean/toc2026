@@ -1118,18 +1118,12 @@ a gambling old man~
 An old man waits behind three concealed rupee signs.
 ~
 He offers the same risky money-making game found across the
-
 First Quest: three signs, one choice, and no way to tell them
-
 apart.
 
-
 Type GAMBLE to play.  Each go costs 10 rupees, and the sign you
-
 pick either pays you 50 or 20 rupees, or takes another 20 or 40
-
 off you.  All four outcomes are equally likely, so the house edge
-
 is real and patience is not a strategy.
 ~
 human~
@@ -3188,7 +3182,7 @@ The Moon's map waits here.~
 paper~
 28 G AO
 90 30435 30418 30435 2
-21 1 1200 P
+21 1 12000000 P
 E
 the moon map parchment~
 Level 2 - The Moon
@@ -3211,7 +3205,7 @@ The Manji's map waits here.~
 paper~
 28 G AO
 90 30449 30436 30454 3
-31 1 1300 P
+31 1 13000000 P
 E
 the manji map parchment~
 Level 3 - The Manji
@@ -3234,7 +3228,7 @@ The Snake's map waits here.~
 paper~
 28 G AO
 90 30470 30455 30475 4
-41 1 1400 P
+41 1 14000000 P
 E
 the snake map parchment~
 Level 4 - The Snake
@@ -3257,7 +3251,7 @@ The Lizard's map waits here.~
 paper~
 28 G AO
 90 30489 30476 30499 5
-51 1 1500 P
+51 1 15000000 P
 E
 the lizard map parchment~
 Level 5 - The Lizard
@@ -3280,7 +3274,7 @@ The Dragon's map waits here.~
 paper~
 28 G AO
 90 30519 30500 30525 6
-56 1 1600 P
+56 1 16000000 P
 E
 the dragon map parchment~
 Level 6 - The Dragon
@@ -3303,7 +3297,7 @@ The Demon's map waits here.~
 paper~
 28 G AO
 90 30546 30526 30559 7
-61 1 1700 P
+61 1 17000000 P
 E
 the demon map parchment~
 Level 7 - The Demon
@@ -3326,7 +3320,7 @@ The Lion's map waits here.~
 paper~
 28 G AO
 90 30574 30560 30586 8
-65 1 1800 P
+65 1 18000000 P
 E
 the lion map parchment~
 Level 8 - The Lion
@@ -3349,7 +3343,7 @@ The Death Mountain's map waits here.~
 paper~
 28 G AO
 90 30607 30587 30645 9
-68 1 1900 P
+68 1 19000000 P
 E
 death mountain map parchment~
 Level 9 - Death Mountain
@@ -3372,7 +3366,7 @@ The Eagle's compass waits here.~
 gold~
 28 G AO
 91 30413 30400 30417 1
-11 1 1100 P
+11 1 11000000 P
 #30490
 level 2 moon dungeon compass~
 the Moon dungeon compass~
@@ -3380,7 +3374,7 @@ The Moon's compass waits here.~
 gold~
 28 G AO
 91 30435 30418 30435 2
-21 1 1200 P
+21 1 12000000 P
 #30491
 level 3 manji dungeon compass~
 the Manji dungeon compass~
@@ -3388,7 +3382,7 @@ The Manji's compass waits here.~
 gold~
 28 G AO
 91 30449 30436 30454 3
-31 1 1300 P
+31 1 13000000 P
 #30492
 level 4 snake dungeon compass~
 the Snake dungeon compass~
@@ -3396,7 +3390,7 @@ The Snake's compass waits here.~
 gold~
 28 G AO
 91 30470 30455 30475 4
-41 1 1400 P
+41 1 14000000 P
 #30493
 level 5 lizard dungeon compass~
 the Lizard dungeon compass~
@@ -3404,7 +3398,7 @@ The Lizard's compass waits here.~
 gold~
 28 G AO
 91 30489 30476 30499 5
-51 1 1500 P
+51 1 15000000 P
 #30494
 level 6 dragon dungeon compass~
 the Dragon dungeon compass~
@@ -3412,7 +3406,7 @@ The Dragon's compass waits here.~
 gold~
 28 G AO
 91 30519 30500 30525 6
-56 1 1600 P
+56 1 16000000 P
 #30495
 level 7 demon dungeon compass~
 the Demon dungeon compass~
@@ -3420,7 +3414,7 @@ The Demon's compass waits here.~
 gold~
 28 G AO
 91 30546 30526 30559 7
-61 1 1700 P
+61 1 17000000 P
 #30496
 level 8 lion dungeon compass~
 the Lion dungeon compass~
@@ -3428,7 +3422,7 @@ The Lion's compass waits here.~
 gold~
 28 G AO
 91 30574 30560 30586 8
-65 1 1800 P
+65 1 18000000 P
 #30497
 level 9 death mountain dungeon compass~
 the Death Mountain dungeon compass~
@@ -3436,7 +3430,7 @@ The Death Mountain's compass waits here.~
 gold~
 28 G AO
 91 30607 30587 30645 9
-68 1 1900 P
+68 1 19000000 P
 
 #30500
 letter parchment zelda~
@@ -3445,7 +3439,7 @@ A sealed royal letter lies here.~
 paper~
 8 G AO
 0 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 #30501
 heart container~
 a Heart Container~
@@ -3453,7 +3447,7 @@ A pulsing Heart Container floats here.~
 crystal~
 9 G AO
 0 0 0 0 0
-1 1 1000 P
+1 1 10000000 P
 A
 13 25
 #30502
@@ -3527,7 +3521,7 @@ Ten rupees gleam here.~
 gold~
 20 0 A
 10 2 0 0 0
-1 0 10 P
+1 0 100000 P
 #30511
 thirty rupees gold money coins~
 30 rupees~
@@ -3535,7 +3529,7 @@ Thirty rupees gleam here.~
 gold~
 20 0 A
 30 2 0 0 0
-1 0 30 P
+1 0 300000 P
 #30512
 hundred rupees gold money coins~
 100 rupees~
@@ -3543,7 +3537,7 @@ One hundred rupees gleam here.~
 gold~
 20 0 A
 100 2 0 0 0
-1 0 100 P
+1 0 1000000 P
 #30513
 movable stone block~
 a movable stone block~
@@ -3839,7 +3833,7 @@ A Magical Shield is displayed for 130 rupees.~
 steel~
 9 N AJ
 5 5 5 3 0
-15 8 130 P
+15 8 1300000 P
 A
 17 -5
 #30542
@@ -3849,7 +3843,7 @@ A bomb satchel is displayed for 20 rupees.~
 leather~
 15 N AO
 BCEFHIJ A 0 0 0
-5 2 20 P
+5 2 200000 P
 #30543
 arrows arrow quiver shop~
 a quiver of arrows~
@@ -3857,7 +3851,7 @@ A quiver of arrows is displayed for 80 rupees.~
 wood~
 8 N AO
 0 0 0 0 0
-8 2 80 P
+8 2 800000 P
 #30544
 magical shield shop~
 a Magical Shield~
@@ -3865,7 +3859,7 @@ A Magical Shield is displayed for 160 rupees.~
 steel~
 9 N AJ
 5 5 5 3 0
-15 8 160 P
+15 8 1600000 P
 A
 17 -5
 #30545
@@ -3875,7 +3869,7 @@ A small key is displayed for 100 rupees.~
 iron~
 18 N A
 0 0 0 0 0
-1 1 100 P
+1 1 1000000 P
 #30546
 blue candle shop~
 a Blue Candle~
@@ -3883,7 +3877,7 @@ A Blue Candle is displayed for 60 rupees.~
 wax~
 1 N AO
 0 0 999 0 0
-5 2 60 P
+5 2 600000 P
 #30547
 magical shield bargain shop~
 a Magical Shield~
@@ -3891,7 +3885,7 @@ A Magical Shield is displayed for 90 rupees.~
 steel~
 9 N AJ
 5 5 5 3 0
-15 8 90 P
+15 8 900000 P
 A
 17 -5
 #30548
@@ -3901,7 +3895,7 @@ Enemy bait is displayed for 100 rupees.~
 meat~
 19 N A
 H 0 0 0 0
-55 3 100 P
+55 3 1000000 P
 #30549
 heart recovery shop~
 a Recovery Heart~
@@ -3909,7 +3903,7 @@ A Recovery Heart is displayed for 10 rupees.~
 crystal~
 10 N AO
 10 28 0 0 0
-1 1 10 P
+1 1 100000 P
 #30550
 key small bargain shop~
 a small key~
@@ -3917,7 +3911,7 @@ A small key is displayed for 80 rupees.~
 iron~
 18 N A
 0 0 0 0 0
-1 1 80 P
+1 1 800000 P
 #30551
 blue ring shop~
 the Blue Ring~
@@ -3925,7 +3919,7 @@ The Blue Ring is displayed for 250 rupees.~
 gold~
 9 N AB
 5 5 5 3 0
-35 1 250 P
+35 1 2500000 P
 A
 13 15
 #30552
@@ -3935,7 +3929,7 @@ Enemy bait is displayed for 60 rupees.~
 meat~
 19 N A
 H 0 0 0 0
-55 3 60 P
+55 3 600000 P
 #30553
 blue life potion medicine shop~
 a blue Life Potion~
@@ -3943,7 +3937,7 @@ A blue Life Potion is displayed for 40 rupees.~
 glass~
 10 N AO
 30 28 28 81 0
-1 2 40 P
+1 2 400000 P
 #30554
 red second potion medicine shop~
 a red 2nd Potion~
@@ -3951,7 +3945,7 @@ A red 2nd Potion is displayed for 68 rupees.~
 glass~
 10 N AO
 30 81 81 81 0
-1 2 68 P
+1 2 680000 P
 #30577
 heros hero tunic green courage ganon relic~
 the Hero's Tunic~
@@ -3959,7 +3953,7 @@ The Hero's Tunic rests here, bright as Hyrule Field.~
 cloth~
 9 G AD
 15 15 15 11 0
-54 8 18000 P
+54 8 180000000 P
 E
 hero tunic green courage~
 This green tunic carries the courage of every hero who stood against darkness.
@@ -3979,7 +3973,7 @@ A blue ring shines here with a cool protective light.~
 gold~
 9 G AB
 8 8 8 6 0
-54 1 16000 P
+54 1 160000000 P
 E
 blue ring hyrule wisdom~
 The sapphire band turns danger aside with quiet wisdom. While worn, it reduces
@@ -3999,7 +3993,7 @@ A red ring burns here with a fierce protective light.~
 gold~
 9 G AB
 12 12 12 9 0
-58 1 24000 P
+58 1 240000000 P
 E
 red ring hyrule power~
 The ruby band holds the hard-won power of Death Mountain. While worn, it
@@ -4019,7 +4013,7 @@ A polished Mirror Shield reflects an impossible point of light.~
 silver~
 9 G AJ
 16 16 16 14 0
-56 12 22000 P
+56 12 220000000 P
 E
 mirror shield hyrule light~
 The shield's flawless face turns sorcery and elemental force back toward the
@@ -4037,7 +4031,7 @@ A pair of wing-crested boots waits here, light as air.~
 leather~
 9 G AG
 12 12 12 8 0
-55 5 19000 P
+55 5 190000000 P
 E
 pegasus boots hyrule speed~
 These wing-crested boots make the road race beneath their wearer. While worn,

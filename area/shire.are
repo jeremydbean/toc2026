@@ -571,7 +571,7 @@ A loaf of pipeweed bread arouses your hunger.~
 food~
 19 0 A
 24 0 0 0 0
-1 1 130000 P
+1 1 21 P
 #1104
 silvery cloak~
 a silvery cloak~
@@ -631,7 +631,7 @@ A tiny dagger lies here.~
 steel~
 5 0 AN
 2 2 6 11 D
-8 3 400000 P
+8 3 8700 P
 #1110
 egg~
 an egg~
@@ -639,7 +639,7 @@ An egg lies here.~
 food~
 19 0 A
 12 0 0 0 0
-1 1 90000 P
+1 1 14 P
 #1111
 bag~
 a bag~
@@ -647,7 +647,7 @@ A bag is on the floor.~
 cloth~
 15 0 AO
 50 1 0 0 0
-1 5 500000 P
+1 5 80 P
 #1112
 lantern~
 a lantern~
@@ -655,7 +655,7 @@ A lantern is on the floor.~
 glass~
 1 0 AO
 0 0 20 0 0
-1 4 500000 P
+1 4 80 P
 #1113
 bardiche~
 a bardiche~
@@ -681,7 +681,7 @@ A brach of a birch tree lies here.~
 wood~
 4 0 AO
 5 10 10 16 0
-8 2 2000000 P
+8 2 44000 P
 A
 3 1
 #0

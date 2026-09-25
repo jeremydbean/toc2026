@@ -621,7 +621,7 @@ A delicious looking apple has been left here.~
 food~
 19 0 A 
 4 0 0 0 0
-1 3 100000 P
+1 3 16 P
 #19107
 orange~
 an orange~
@@ -629,7 +629,7 @@ A sun-ripened orange has been left here.~
 food~
 19 0 A 
 6 0 0 0 0
-1 3 100000 P
+1 3 16 P
 #19108
 sandals~
 a pair of leather sandals~
@@ -659,7 +659,7 @@ A hotdog loaded with chili and onions has been left here.~
 food~
 19 0 A 
 8 0 0 0 0
-1 3 220000 P
+1 3 35 P
 #19111
 bracelet silver gold~
 a silver and gold bracelet~
@@ -811,7 +811,7 @@ A musty scroll has been dropped here.~
 vellum~
 2 FG AO 
 20 28 0 0 0
-2 10 2000000 P
+2 10 400 P
 #19125
 ornate scroll~
 an ornate scroll~
@@ -819,7 +819,7 @@ An ornate scroll has been left here.~
 vellum~
 2 AG AO 
 18 42 42 53 0
-2 10 2000000 P
+2 10 400 P
 #19126
 plain scroll~
 a plain scroll~
@@ -827,7 +827,7 @@ A plain scroll is lying on the ground.~
 vellum~
 2 G AO 
 15 14 0 0 0
-2 10 2000000 P
+2 10 400 P
 #19127
 staff latumfus~
 the staff of latumfus~
@@ -835,7 +835,7 @@ There is a staff of latumfus lying here on the ground.~
 wood~
 4 BG AO 
 17 3 3 77 0
-5 15 15000000 P
+5 15 310000 P
 #19128
 staff kodarta~
 the Kodarta staff~
@@ -843,7 +843,7 @@ The Kodarta staff has been carelessly left here.~
 wood~
 4 AG AO 
 17 2 2 43 0
-6 20 7000000 P
+6 20 76000 P
 #19129
 new wand~
 a prototype wand~
@@ -851,7 +851,7 @@ There is a prototype of a new magical wand lying here.~
 wood~
 3 G AO 
 15 3 3 36 0
-6 10 5000000 P
+6 10 54000 P
 A
 1 -2
 A
@@ -863,7 +863,7 @@ There is a flask, containing a blaze orange potion, resting here.~
 glass~
 10 G A 
 9 7 26 13 0
-8 10 1250000 P
+8 10 27000 P
 #19131
 mace~
 the executioner's mace~
@@ -924,7 +924,7 @@ There is a rusty key here.~
 iron~
 18 0 A 
 0 0 0 0 0
-3 0 1000000 P
+3 0 120 P
 #19152
 double key~
 a double sided key~
@@ -932,7 +932,7 @@ A double sided key has been left here.~
 brass~
 18 0 A 
 0 0 0 0 0
-3 0 1000000 P
+3 0 120 P
 #19153
 diamond key~
 a diamond studded key~
@@ -940,7 +940,7 @@ A diamond studded key is sitting on the ground.~
 gold~
 18 0 A 
 0 0 0 0 0
-3 0 1000000 P
+3 0 120 P
 #19154
 pearl key~
 a key with a pearl handle~
@@ -948,7 +948,7 @@ A key with a pearl handle is sitting on the ground.~
 silver~
 18 0 A 
 0 0 0 0 0
-3 0 1000000 P
+3 0 120 P
 #19155
 aquamarine key~
 an aquamarine key~
@@ -956,7 +956,7 @@ There is an aquamarine colored key here.~
 gold~
 18 0 A 
 0 0 0 0 0
-3 0 1000000 P
+3 0 120 P
 #19156
 opal key~
 an opal key~
@@ -964,7 +964,7 @@ An opal key has been left here.~
 gold~
 18 0 A 
 0 0 0 0 0
-3 0 1000000 P
+3 0 120 P
 #19157
 steel key~
 a steel key~
@@ -972,7 +972,7 @@ A steel key is lying on the ground.~
 steel~
 18 0 A 
 0 0 0 0 0
-3 0 1000000 P
+3 0 120 P
 #0
 
 #ROOMS

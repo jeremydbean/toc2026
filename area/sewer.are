@@ -381,7 +381,7 @@ A lovely silver ring has been left here.~
 silver~
 9 GVXZ FG AB
 3 3 2 0 0
-3 1 20000000  P
+3 1 2400  P
 A
 18 1
 #7200
@@ -408,7 +408,7 @@ A large mace lies here.~
 iron~
 5 G AN
 4 2 7 8 0
-8 10 10000000 P
+8 10 220000 P
 E
 large mace~
 The mace is pretty large with a weight of 10 lbs.  The head is actually four
@@ -423,7 +423,7 @@ a small mace has been left here.~
 iron~
 5 G AN
 4 2 7 8 0
-6 6 6000000 P
+6 6 65000 P
 E
 small mace~
 This weapon doesn't look like it does a lot of damage, but then you never know.
@@ -448,7 +448,7 @@ A neon blue potion stands on the floor.~
 glass~
 10 G A
 14 15 29 42 0
-1 4 1000000 P
+1 4 160 P
 #7205
 key black~
 a black key~
@@ -456,7 +456,7 @@ A black key has been left on the floor.~
 steel~
 18 0 A
 0 0 0 0 0
-1 1 100000 P
+1 1 16 P
 #7206
 skull white~
 a strange white skull~
@@ -483,7 +483,7 @@ A small stick lies here.~
 wood~
 1 0 AO
 0 0 120 0 0
-5 4 2000000 P
+5 4 41000 P
 E
 small stick~
 The small stick does not look interesting at all.  But just as you are going
@@ -500,7 +500,7 @@ A pair of muddy boots has been dropped here.~
 ~
 9 G AG
 3 2 3 0 0
-3 20 750000 P
+3 20 90 P
 E
 The boots are muddy and they look well worn, but also very comfortable.~
 ~
@@ -525,7 +525,7 @@ There lies a short sword.~
 steel~
 5 0 AN
 1 2 4 1 0
-3 4 600000 P
+3 4 72 P
 A
 18 1
 #7216
@@ -681,7 +681,7 @@ There lies a short sword.~
 steel~
 5 0 AN
 1 2 5 1 0
-4 4 600000 P
+4 4 48 P
 E
 short sword~
 This is a very nice little weapon.
@@ -701,7 +701,7 @@ A large beltpouch lies here on the ground.~
 leather~
 15 0 AL
 20 1 0 0 0
-5 1 200000 P
+5 1 4100 P
 #7303
 orb dragonorb~
 the Red DragonOrb~

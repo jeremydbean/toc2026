@@ -829,7 +829,7 @@ Some rare blueberry bushes are growing here~
 organic~
 15 G 0
 30 0 0 0 0                                  
-1 30 500000 P
+1 30 80 P
 #1031
 blue berries blueberries string~
 a string of blueberries~
@@ -837,7 +837,7 @@ A string of rare blueberries has been dropped on the ground~
 organic~
 26 AGH AO
 15 3 16 0 0
-7 1 40000000 P
+7 1 330000 P
 E
 blueberries string berries~
 	This delicious piece of fruit has been cultivated in 'het Westland'

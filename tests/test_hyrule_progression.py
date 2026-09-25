@@ -34,6 +34,10 @@ OPPOSITE = {
 }
 
 
+# merc.h: obj->cost is copper, and Hyrule quotes itself in rupees.
+COPPER_PER_GOLD = 10000
+
+
 class HyruleProgressionTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -512,20 +516,32 @@ class HyruleProgressionTests(unittest.TestCase):
                 if puzzle:
                     self.assertIn(puzzle_objects[puzzle], world_room.objects)
 
-        expected_prices = {
+        # The signs still read "displayed for 130 rupees", and a rupee is a
+        # gold coin -- the rupee piles are ITEM_MONEY with value[1] set to
+        # TYPE_GOLD. obj->cost is counted in copper, so the price only
+        # holds if it is written out in copper. It was not: the generator
+        # emitted 130, one ten-thousandth of what the shield advertises,
+        # and the object-section reader in tools/costs_to_copper.py had
+        # stopped 85 objects short of noticing.
+        expected_rupees = {
             30541: 130, 30542: 20, 30543: 80,
             30544: 160, 30545: 100, 30546: 60,
             30547: 90, 30548: 100, 30549: 10,
             30550: 80, 30551: 250, 30552: 60,
             30553: 40, 30554: 68,
         }
+        stocked = [v for inventory in SHOP_INVENTORY.values() for v in inventory]
+        self.assertEqual(
+            {v: self.parser.objects[v].cost for v in stocked},
+            {v: rupees * COPPER_PER_GOLD for v, rupees in expected_rupees.items()},
+            "a shop price has drifted from the rupees its description quotes",
+        )
         for keeper_vnum, inventory in SHOP_INVENTORY.items():
             with self.subTest(keeper_vnum=keeper_vnum):
                 self.assertTrue(set(inventory).issubset(self.parser.mobiles[keeper_vnum].drops))
             for object_vnum in inventory:
                 with self.subTest(object_vnum=object_vnum):
                     obj = self.parser.objects[object_vnum]
-                    self.assertEqual(obj.cost, expected_prices[object_vnum])
                     self.assertIn("inventory", decode_flags(obj.extra_flags, ITEM_FLAGS))
                     self.assertTrue(self.object_is_sourced(object_vnum))
 

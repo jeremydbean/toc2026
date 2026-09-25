@@ -245,7 +245,7 @@ A jet black potion sits upright waiting to be taken.~
 glass~
 10 FG A
 16 4 36 39 0
-9 5 15000000 P
+9 5 730000 P
 #5211
 potion orange~
 an orange potion~
@@ -253,7 +253,7 @@ A small orange potion lies here.~
 glass~
 10 FG A
 21 34 0 0 0
-8 10 9000000 P
+8 10 440000 P
 #5214
 ball quartz~
 a smooth quartz ball~
@@ -285,7 +285,7 @@ A brilliant silver flute glimmers from beneath a rock.~
 silver~
 4 AG AO
 17 1 1 7 0
-7 6 3780000 P
+7 6 31000 P
 #5218
 talisman demon~
 a demon-faced talisman~
@@ -293,7 +293,7 @@ A demon-faced talisman glares at you angrily.~
 iron~
 9 AG AC
 3 5 4 0 0
-8 11 5600000 P
+8 11 120000 P
 A
 1 -10
 A
@@ -305,7 +305,7 @@ A large chunk of venison sits here ready to be eaten.~
 food~
 19 0 A
 24 0 0 0 0
-0 20 100000 P
+0 20 2000 P
 #5220
 fountain water~
 a large cracked fountain~

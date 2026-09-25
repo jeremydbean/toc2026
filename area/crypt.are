@@ -376,7 +376,7 @@ An ivory key has been left here.~
 stone~
 18 0 AO
 0 0 0 0 0
-1 5 1000000 P
+1 5 160 P
 E
 key ivory bone~
 You stare at the shiny white surface of this key, noticing strange
@@ -439,7 +439,7 @@ A not-too-small, not-too-large pile of coins glistens in the light.~
 gold~
 20 0 A
 500 0 0 0 0
-1 25 5000000 P
+1 25 800 P
 E
 coins pile~
 The coins look to be quite pretty.  The pile before you isn't that
@@ -467,7 +467,7 @@ A key made of gold seems to have been forgotten on the ground here.~
 gold~
 18 0 AO
 0 0 0 0 0
-1 5 100000 P
+1 5 16 P
 E
 key gold golden~
 This fine key is made out of gold.  There is a very tiny ruby set into
@@ -480,7 +480,7 @@ A sinister key of blood beckons...~
 iron~
 18 A AO
 0 0 0 0 0
-1 3 150000 P
+1 3 24 P
 E
 key blood~
 This key seems to have been formed by mystically forming human blood

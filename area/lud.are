@@ -504,7 +504,7 @@ a jagged black chasm separates you from Mid-World.~
 stone~
 31 0 0
 9 29496 3 1 0
-1 1 10000 P
+1 1 2 P
 #29520
 sign~
 a sign~
@@ -512,7 +512,7 @@ a sign is here and it isn't important to even read it!~
 stone~
 13 0 0
 0 0 0 0 0
-1 1 10000 P
+1 1 2 P
 E
 sign~
 You look at the sign:

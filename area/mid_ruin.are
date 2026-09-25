@@ -622,7 +622,7 @@ A rusty long sword has been left here.~
 steel~
 5 0 AN
 1 2 5 3 0
-7 5 2500000 D
+7 5 20000 D
 A
 19 -2
 #5704
@@ -632,7 +632,7 @@ A stout wooden club is here.~
 wood~
 5 0 AN
 4 1 7 7 0
-3 3 250000 D
+3 3 30 D
 A
 18 -1
 A
@@ -644,7 +644,7 @@ A heavy rusted iron mace is here.~
 iron~
 5 0 AN
 4 2 4 7 0
-6 10 700000 D
+6 10 7600 D
 A
 19 -2
 #5706
@@ -664,7 +664,7 @@ A large rusted steel axe rests on the ground.~
 steel~
 5 0 AN
 5 2 5 25 F
-7 9 2000000 D
+7 9 16000 D
 A
 19 -2
 #5708
@@ -674,7 +674,7 @@ A long rusty spear leans against lays discarded on the ground.~
 steel~
 5 0 AN
 3 1 8 11 0
-4 5 500000 D
+4 5 40 D
 A
 19 -2
 #5709
@@ -684,7 +684,7 @@ A stout wooden staff lies on the floor.~
 wood~
 5 0 AN
 3 1 8 7 F
-4 4 400000 D
+4 4 32 D
 A
 17 -2
 A
@@ -696,7 +696,7 @@ A small rusty iron flail is here.~
 iron~
 5 0 AN
 6 1 7 7 0
-3 5 500000 D
+3 5 60 D
 A
 17 1
 A
@@ -1579,7 +1579,7 @@ Rare blueberry bushes are growing here.~
 organic~
 15 0 0
 30 0 0 0 0                                  
-1 30 500000 P
+1 30 80 P
 #5776
 berries blueberries string~
 a string of blueberries~
@@ -1587,7 +1587,7 @@ A string of rare blueberries have been dropped on the ground.~
 organic~
 26 AGH AO
 15 3 34 0 0
-7 1 40000000 P
+7 1 330000 P
 A
 3 2
 #5777
@@ -1597,7 +1597,7 @@ blackberry bushes are growing here.~
 organic~
 15 0 0
 30 0 0 0 0                                  
-1 20 500000 P
+1 20 80 P
 #5778
 berries blackberries string~
 a string of blackberries~
@@ -1605,7 +1605,7 @@ A string of rare blackberries has been dropped on the ground.~
 organic~
 26 AGH AO
 15 1 35 0 0                                  
-7 1 45000000 P
+7 1 370000 P
 A
 2 2
 #5779
@@ -1615,7 +1615,7 @@ delicious red berried bushes are growing here.~
 organic~
 15 0 0
 30 0 0 0 0                                  
-1 25 500000 P
+1 25 80 P
 #5780
 berry berries red string~
 a string of red berries~
@@ -1623,7 +1623,7 @@ A string of red berries has been dropped on the ground.~
 organic~
 19 AGH AO
 36 0 0 6 0                                  
-7 1 15000000 P
+7 1 120000 P
 A
 5 2
 #5781
@@ -1633,7 +1633,7 @@ An elder-bush grows here, its branches heavy with clusters of dark berries.~
 organic~
 15 0 0
 5 0 0 0 0                                  
-1 25 1000000 P
+1 25 160 P
 #5782
 elder-berries berries string~
 a string of elder-berries~
@@ -1641,7 +1641,7 @@ A string of rare elder-berries lies here.~
 organic~
 26 AGH AO
 15 43 67 0 0
-7 1 50000000 P
+7 1 410000 P
 A
 4 2
 #5783
@@ -1651,7 +1651,7 @@ A thorny raspberry bush is growing here.~
 organic~
 15 0 0
 5 0 0 0 0                                  
-1 25 750000 P
+1 25 120 P
 #5784
 raspberries berries string~
 a string of raspberries~
@@ -1673,7 +1673,7 @@ a beautiful rose bush is growing here.~
 organic~
 15 0 0
 10 0 0 0 0                                  
-1 25 750000 P
+1 25 120 P
 #5786
 rose~
 a beautiful red rose~

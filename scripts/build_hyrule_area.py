@@ -135,6 +135,12 @@ class ExitSpec:
     description: str = ""
 
 
+# The sectors room_is_dark() blacks out at sunset: field, forest, hills,
+# mountain and desert. Hyrule's overworld is all five, and standing in a
+# field at night unable to see is not what the area is for.
+ALWAYS_LIT_SECTORS = frozenset((2, 3, 4, 5, 10))
+
+
 @dataclass
 class RoomSpec:
     vnum: int
@@ -142,6 +148,7 @@ class RoomSpec:
     description: str
     flags: str = "N"
     sector: int = 2
+    dungeon: bool = False
     exits: dict[str, ExitSpec] = field(default_factory=dict)
     objects: list[int] = field(default_factory=list)
     puzzles: list[int] = field(default_factory=list)
@@ -302,18 +309,27 @@ def new_mobile_records() -> str:
         ),
         mobile_record(
             30345, "hyrule money game elder gambler", "a gambling old man",
+            # Plain newlines. fread_string() turns every newline it
+            # reads into the game's own line ending as it goes, so
+            # spelling that ending out here handed it a second
+            # carriage return to pass along -- invisible while this
+            # file was CRLF, and not once it was not.
             "An old man waits behind three concealed rupee signs.",
-            "He offers the same risky money-making game found across the\n\r"
-            "First Quest: three signs, one choice, and no way to tell them\n\r"
-            "apart.\n\r"
-            "\n\r"
-            "Type GAMBLE to play.  Each go costs 10 rupees, and the sign you\n\r"
-            "pick either pays you 50 or 20 rupees, or takes another 20 or 40\n\r"
-            "off you.  All four outcomes are equally likely, so the house edge\n\r"
+            "He offers the same risky money-making game found across the\n"
+            "First Quest: three signs, one choice, and no way to tell them\n"
+            "apart.\n"
+            "\n"
+            "Type GAMBLE to play.  Each go costs 10 rupees, and the sign you\n"
+            "pick either pays you 50 or 20 rupees, or takes another 20 or 40\n"
+            "off you.  All four outcomes are equally likely, so the house edge\n"
             "is real and patience is not a strategy.",
             50, act_flags="ABMV",
         ),
     ])
+
+
+# obj->cost is copper; Hyrule quotes itself in rupees, which are gold.
+COPPER_PER_GOLD = 10000
 
 
 def object_record(
@@ -329,6 +345,12 @@ def object_record(
     cost: int = 0,
     extras: str = "",
 ) -> str:
+    """One #OBJECTS record. `cost` is in rupees, as the descriptions say.
+
+    A rupee is a gold coin here -- the rupee piles are ITEM_MONEY with
+    value[1] == TYPE_GOLD -- and obj->cost is counted in copper, so the
+    price a sign advertises only holds if it is written out in copper.
+    """
     record = f"""#{vnum}
 {keywords}~
 {short}~
@@ -336,7 +358,7 @@ def object_record(
 {material}~
 {item_line}
 {values}
-{level} {weight} {cost} P"""
+{level} {weight} {cost * COPPER_PER_GOLD} P"""
     if extras:
         record += "\n" + extras.strip()
     return record
@@ -986,7 +1008,7 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
             spec = RoomSpec(
                 room["vnum"], room["name"],
                 dungeon_room_description(dungeon, room),
-                "ADN", 11,
+                "ADN", 11, dungeon=True,
                 objects=list(room["items"]),
                 entities={str(ENEMY_MOBS[name]): count for name, count in room["entities"].items() if name in ENEMY_MOBS},
                 boss_level=level if room["role"] == "boss" else None,
@@ -1009,7 +1031,7 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
             rooms[cellar["vnum"]] = RoomSpec(
                 cellar["vnum"], f"Level {level}: {cellar['name']}",
                 f"A narrow underground passage leads to {dungeon['title']}'s hidden treasure.",
-                "ADN", 11, objects=[cellar["item_vnum"]],
+                "ADN", 11, dungeon=True, objects=[cellar["item_vnum"]],
             )
             add_two_way_exit(
                 rooms, cellar["source_vnum"], "down", cellar["vnum"],
@@ -1250,8 +1272,32 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
     return rooms, world_vnums
 
 
+def room_flag_word(room: RoomSpec) -> str:
+    """The flag field, with recall and light settled by where the room is.
+
+    Hyrule used to set ROOM_NO_RECALL on all 443 rooms, and since nothing
+    in the world exited into it, that made it a place staff could visit
+    and nobody could leave. Only the dungeons keep the flag now -- walking
+    out of Level 7 by saying a word is the opposite of what a dungeon is
+    for. The overworld gets ROOM2_ALWAYS_LIT instead, because its sectors
+    are the ones that go dark at sunset.
+
+    This lived only in the generated area file for a while, hand-applied,
+    which meant the next regeneration would have quietly undone it and
+    taken tests/test_hyrule_progression.py down with it.
+    """
+    if room.dungeon:
+        return room.flags
+
+    flags = room.flags.replace("N", "")
+    if room.sector in ALWAYS_LIT_SECTORS:
+        return f"{flags}Z B"
+    return flags or "0"
+
+
 def render_room(room: RoomSpec) -> str:
-    lines = [f"#{room.vnum}", f"{room.name}~", room.description, "~", f"0 {room.flags} {room.sector}"]
+    lines = [f"#{room.vnum}", f"{room.name}~", room.description, "~",
+             f"0 {room_flag_word(room)} {room.sector}"]
     for direction, exit_spec in sorted(room.exits.items(), key=lambda item: DIRECTION_NUMBERS[item[0]]):
         lines.extend([
             f"D{DIRECTION_NUMBERS[direction]}",
