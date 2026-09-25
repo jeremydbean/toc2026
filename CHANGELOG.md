@@ -75,6 +75,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   naming the attack that failed. Unlike WIZINVIS and CLOAK it shows nowhere -- not
   on the score sheet, not to the room. Use of it is logged.
 
+  It answers to **trust, not level**. `interp.c` gates every command on
+  `get_trust()`, so as first written -- with the effect asking
+  `IS_IMMORTAL()`, which reads the raw level -- a character trusted to
+  immortal rank could run INVULN, was told it was on, and went on taking
+  damage. Both ends now ask the same question. It still lapses on its
+  own when trust is revoked, because `get_trust()` falls back to the
+  level.
+
 - **RECALL can be moved.** It was a one-way trip to the Temple for
   everybody; it now goes wherever the character last set it.
 

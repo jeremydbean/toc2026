@@ -7219,12 +7219,26 @@ void do_cloak( CHAR_DATA *ch, char *argument )
 /*
  * Whether a character is currently proof against everything.
  *
- * The flag is only honoured for an immortal, so a demotion takes the
+ * Trust, not level, because trust is what let them run the command in
+ * the first place: interp.c gates every command on get_trust(), so a
+ * builder trusted to immortal rank was told "Invulnerability on" and
+ * then took damage anyway. Asking the same question in both places is
+ * the whole fix.
+ *
+ * It still lapses on its own. get_trust() falls back to the level when
+ * no trust is assigned, so revoking trust from a mortal takes the
  * protection away without anyone having to remember to unset the bit.
+ *
+ * NPCs are refused outright rather than consulted: PLR_INVULN and the
+ * ACT_* flags share a bitfield, so a mobile would answer this question
+ * with an unrelated bit. That also means a switched immortal is not
+ * protected -- while you are wearing a mobile you are as killable as it
+ * is.
  */
-bool is_invulnerable( const CHAR_DATA *ch )
+bool is_invulnerable( CHAR_DATA *ch )
 {
-    return ch != NULL && !IS_NPC(ch) && IS_IMMORTAL(ch)
+    return ch != NULL && !IS_NPC(ch)
+        && IS_TRUSTED(ch, LEVEL_IMMORTAL)
         && IS_SET(ch->act, PLR_INVULN);
 }
 

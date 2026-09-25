@@ -716,9 +716,15 @@ cannot be picked up in place of the original.
 
 ## Staff Invulnerability
 
-`is_invulnerable(ch)` is the one test, and it is only true for an
-immortal, so a demotion takes the protection away without anyone
-remembering to unset the bit. `damage()` honours it in three places: an
+`is_invulnerable(ch)` is the one test, and it asks
+`IS_TRUSTED(ch, LEVEL_IMMORTAL)` -- **trust, not level.** `interp.c`
+gates every command on `get_trust()`, so gating the effect on
+`IS_IMMORTAL()` meant a builder trusted to immortal rank could run
+INVULN, was told it was on, and took damage anyway. The protection still
+lapses on its own, because `get_trust()` falls back to the level when no
+trust is assigned. A switched immortal is not protected: `PLR_INVULN`
+shares a bitfield with the `ACT_*` flags, so the `!IS_NPC` guard is load
+bearing and a mobile's own bit must never be read as this one. `damage()` honours it in three places: an
 early return for `PLR_INVULN_ABSORB`, the `damage_eq` call, and the
 subtraction from hit points. Leaving the subtraction as the chokepoint is
 deliberate -- everything above it, `dam_message` included, still runs, so

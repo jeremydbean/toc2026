@@ -2390,7 +2390,7 @@ void    quest_handle_logout ( CHAR_DATA *ch );
 void    move_char       ( CHAR_DATA *ch, int door, bool follow );
 ROOM_INDEX_DATA *recall_room ( CHAR_DATA *ch );
 void    recall_char_to_temple ( CHAR_DATA *ch );
-bool    is_invulnerable ( const CHAR_DATA *ch );
+bool    is_invulnerable ( CHAR_DATA *ch );
 ROOM_INDEX_DATA *random_scatter_room ( const AREA_DATA *area );
 void    count_components ( int *herbs, int *comps );
 int     telnet_count_players ( void );
