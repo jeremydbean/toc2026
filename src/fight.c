@@ -1838,7 +1838,7 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     {
 	if ( number_range( 0, victim->wait ) == 0 )
 	{
-	    do_recall( victim, "" );
+	    recall_char_to_temple( victim );
 	    return true;
 	}
     }

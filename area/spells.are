@@ -1339,9 +1339,22 @@ See also: ELECTRIC SPELLS, ELEMENTAL, HARMFUL
 0 'WORD OF RECALL'~
 Syntax: cast 'word of recall'
 
-This spell duplicates the built-in RECALL ability.  It is available to
-full clerics (C/C) of level 28 or higher, but is not generally considered
-useful since the recall skill is free and costs no mana.
+This spell prays you home to the Temple of Devota.  It is available to
+full clerics (C/C) of level 28 or higher.
+
+It is not the same journey as the RECALL skill, and the differences are
+the reason to carry it:
+
+  It always goes to the Temple, whatever you have set your own recall
+  point to.  Between the two you have two places to reach in a hurry
+  instead of one.
+
+  A curse does not stop it.  A curse silences your own prayer, so the
+  RECALL skill fails while you are cursed; somebody else's magic still
+  answers.  A scroll or potion of recall carries the same spell and works
+  the same way, which is why one is worth keeping in your pack.
+
+A room that forbids recall still forbids this.  So does a jail.
 
 See also: RECALL, TELEPORT, PORTAL, TRANSPORT
 ~

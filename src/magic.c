@@ -4516,16 +4516,19 @@ void spell_word_of_recall( int sn, int level, CHAR_DATA *ch, void *vo )
     if (IS_NPC(victim))
       return;
 
-    /* The same place RECALL goes, so the spell and the skill agree. */
-    if ((location = recall_room( victim )) == NULL)
+    /* The Temple, whatever the victim has set their own recall to, and
+       through a curse, which only silences a character's own prayer.
+       Both are what make the spell and a scroll of it worth carrying
+       beside the skill: a second way home that does not move, and one
+       that still answers when the gods will not hear you. */
+    if ((location = get_room_index( ROOM_VNUM_TEMPLE )) == NULL)
     {
 	send_to_char("You are completely lost.\n\r",victim);
 	return;
     }
 
     if (IS_SET(victim->in_room->room_flags,ROOM_NO_RECALL)
-     ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL)
-     ||   IS_AFFECTED(victim,AFF_CURSE))
+     ||   IS_SET(victim->in_room->room_flags, ROOM_JAIL))
     {
 	send_to_char("Spell failed.\n\r",victim);
 	return;

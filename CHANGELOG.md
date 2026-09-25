@@ -33,8 +33,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   death trap, nothing private or staff-only. The stored vnum is rechecked
   on every use rather than trusted from the player file, so an area edit
   that removes the room or makes it no-recall quietly falls back to the
-  Temple instead of stranding anyone. `WORD OF RECALL` goes through the
-  same helper as the skill.
+  Temple instead of stranding anyone.
+
+- **WORD OF RECALL is worth casting.** Its help said it "is not generally
+  considered useful since the recall skill is free and costs no mana",
+  which was fair when both went to the same room. Now only the skill uses
+  the point a character chose: the spell, a scroll or potion of it, the
+  Recall Ring and the rescue of a link-dead player all go to the Temple.
+  A cleric therefore has two places to reach in a hurry instead of one.
+
+  The spell also works through a curse, where the skill does not. A curse
+  silences your own prayer; it has no hold over somebody else's magic, and
+  that is the other half of why a scroll of recall is worth carrying.
+  `ROOM_NO_RECALL` still blocks everything -- that flag is how an area
+  keeps you inside.
 
 - **HELP CHANGES lists changes.** It promised "a log of recent game
   updates, balance changes, new features, and bug fixes" and then had

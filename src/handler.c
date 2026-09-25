@@ -1923,7 +1923,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 	switch(obj->value[0])
 	{
 	    case 1:
-		do_recall(ch,"");
+		recall_char_to_temple(ch);
 		extract_obj(obj);
 		return;  /* obj freed; skip do_obj_action below */
 	    case 2:

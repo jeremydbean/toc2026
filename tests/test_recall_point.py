@@ -11,6 +11,13 @@ RECALL DEFAULT is deliberately exempt from the wait. It is the way back
 from a choice that turned out badly, and a character who cannot reach
 their own recall point has no other way to reset it.
 
+Only the skill uses the point. WORD OF RECALL, a scroll or potion of it,
+the Recall Ring and the rescue of a link-dead player all go to the Temple
+instead, and a curse does not stop them -- a curse silences your own
+prayer, not somebody else's magic. Between them that is a second way
+home that does not move and still answers, which is the reason to carry
+a scroll.
+
 These run against a real server in a throwaway tree.
 """
 from __future__ import annotations
@@ -79,13 +86,15 @@ class RecallPointTests(unittest.TestCase):
                 self.assertIn(
                     "already set here", run(client, "recall set", 1.5))
 
-                # And the trip itself lands there.
+                # And the trip itself lands there. Recall is a skill
+                # roll, so this keeps asking from wherever it ends up
+                # rather than walking further away between attempts.
                 run(client, "north", 1.4)
-                for _ in range(8):          # recall is a skill, and can fail
+                for _ in range(20):
                     arrived = run(client, "recall", 2.0)
-                    if "Oak Tree Square" in arrived:
+                    if ("Oak Tree Square" in arrived
+                            or "already there" in arrived):
                         break
-                    run(client, "north", 1.4)
                 self.assertIn("Oak Tree Square", arrived, arrived)
 
                 back = run(client, "recall default", 1.5)
@@ -148,6 +157,61 @@ class RecallPointTests(unittest.TestCase):
                 self.assertIn(
                     "Oak Tree Square", run(client, "recall where", 1.5))
 
+    def test_the_spell_ignores_the_point_and_a_curse(self) -> None:
+        """Two characters, because CURSE refuses to target the caster."""
+        with LiveMud() as mud:
+            for name in ("Zwizard", "Zvictim"):
+                self.character(mud, name, Levl=70 if name == "Zwizard" else 55,
+                               Room=OAK_SQUARE)
+
+            with mud.connect(timeout=120) as wizard:
+                login(wizard, "Zwizard", PASSWORD)
+                run(wizard, "set skill self all 100", 2.5)
+
+                with mud.connect(timeout=120) as victim:
+                    login(victim, "Zvictim", PASSWORD)
+                    run(wizard, "set skill Zvictim all 100", 2.5)
+
+                    self.assertIn("Oak Tree Square",
+                                  run(victim, "recall set", 1.6))
+
+                    # Uncursed first: the spell ignores the chosen point.
+                    run(wizard, "trans Zvictim 3700", 2.0)
+                    for _ in range(10):
+                        cast = run(victim, "cast 'word of recall'", 2.5)
+                        if "Before the Altar" in cast:
+                            break
+                        run(wizard, "trans Zvictim 3700", 2.0)
+                    self.assertIn("Before the Altar", cast, cast)
+                    self.assertNotIn("Oak Tree Square", cast)
+
+                    # The spell just moved the victim to the Temple and
+                    # the wizard is still in the square; curse needs them
+                    # in the same room.
+                    run(wizard, "trans Zvictim", 2.0)
+                    for _ in range(15):
+                        run(wizard, "cast curse Zvictim", 2.5)
+                        if "curse" in run(victim, "affect", 1.6).lower():
+                            break
+                    self.assertIn(
+                        "curse", run(victim, "affect", 1.6).lower())
+
+                    run(wizard, "trans Zvictim 3700", 2.0)
+                    refused = run(victim, "recall", 2.5)
+                    self.assertIn("forsaken", refused, refused)
+
+                    for _ in range(10):
+                        through = run(victim, "cast 'word of recall'", 2.5)
+                        if "Before the Altar" in through:
+                            break
+                        run(wizard, "trans Zvictim 3700", 2.0)
+                    self.assertIn("Before the Altar", through, through)
+
+                    victim.send("quit")
+                    victim.wait_closed()
+                wizard.send("quit")
+                wizard.wait_closed()
+
     def test_an_unrecognised_word_still_recalls(self) -> None:
         """RECALL is what people type when something is going badly. A
         typo must not be the thing that stops it."""
@@ -176,17 +240,46 @@ class RecallSourceTests(unittest.TestCase):
         cls.skills = (ROOT / "area" / "skills.are").read_text(
             encoding="latin-1")
 
-    def test_recall_no_longer_hardcodes_the_temple(self) -> None:
+    def test_the_skill_uses_the_point_the_player_chose(self) -> None:
         body = self.move.split("void do_recall(", 1)[1]
         body = body.split("\nvoid ", 1)[0]
         self.assertNotIn("ROOM_VNUM_TEMPLE", body)
-        self.assertIn("recall_room( ch )", body)
+        self.assertIn("recall_travel( ch, recall_room( ch ), true )", body)
 
-    def test_the_spell_goes_where_the_skill_goes(self) -> None:
+    def test_the_spell_always_goes_to_the_temple(self) -> None:
+        """A second way home that does not move is the point of it."""
         body = self.magic.split("void spell_word_of_recall", 1)[1]
         body = body.split("\nvoid ", 1)[0]
-        self.assertIn("recall_room( victim )", body)
-        self.assertNotIn("ROOM_VNUM_TEMPLE", body)
+        self.assertIn("ROOM_VNUM_TEMPLE", body)
+        self.assertNotIn("recall_room(", body)
+
+    def test_the_spell_is_not_stopped_by_a_curse(self) -> None:
+        """A curse silences your own prayer, not somebody else's magic."""
+        body = self.magic.split("void spell_word_of_recall", 1)[1]
+        body = body.split("\nvoid ", 1)[0]
+        self.assertNotIn("AFF_CURSE", body)
+        # The place still decides: NO_RECALL is how an area keeps you in.
+        self.assertIn("ROOM_NO_RECALL", body)
+
+    def test_a_curse_stops_only_your_own_prayer(self) -> None:
+        body = self.move.split("static void recall_travel(", 1)[1]
+        body = body.split("\n/* Being sent home", 1)[0]
+        self.assertIn("own_prayer && IS_AFFECTED(ch, AFF_CURSE)", body)
+        self.assertIn("ROOM_NO_RECALL", body)
+
+    def test_every_other_way_home_is_the_temple(self) -> None:
+        """The Recall Ring, the link-dead rescue and the drunk who leaves."""
+        for name in ("src/handler.c", "src/fight.c", "src/update.c"):
+            source = (ROOT / name).read_text(encoding="utf-8")
+            with self.subTest(file=name):
+                self.assertIn("recall_char_to_temple", source)
+                self.assertNotIn("do_recall(ch,\"\")", source)
+                self.assertNotIn("do_recall( victim, \"\" )", source)
+
+        temple = self.move.split("void recall_char_to_temple(", 1)[1]
+        temple = temple.split("\n}", 1)[0]
+        self.assertIn("ROOM_VNUM_TEMPLE", temple)
+        self.assertIn("false", temple)
 
     def test_a_point_is_rechecked_rather_than_trusted(self) -> None:
         """An area edit can take the room away or make it no-recall after

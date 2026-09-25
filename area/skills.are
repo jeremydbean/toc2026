@@ -1323,6 +1323,10 @@ DEFAULT puts it back to the Temple, and RECALL WHERE says where it is.  It
 may be moved once every 30 minutes, and not in a fight; going back to the
 Temple is always allowed.  See HELP RECALL for the whole of it.
 
+WORD OF RECALL, and a scroll or potion of it, always go to the Temple
+instead of your own point, and they work while you are cursed - RECALL
+does not.
+
 If you RECALL during combat, you will lose experience (more than for fleeing),
 and you will have a chance of failing (again, more than for fleeing).  This
 chance is based on your recall skill, although a 100% recall does not

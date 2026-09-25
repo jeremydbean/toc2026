@@ -2722,41 +2722,37 @@ static void recall_set_default( CHAR_DATA *ch )
 }
 
 /* New recall function recoded by Rico 8/2/98 */
-void do_recall( CHAR_DATA *ch, char *argument )
+/*
+ * The journey itself, once something has decided where it goes.
+ *
+ * `own_prayer` is the RECALL skill asking. Everything else that sends a
+ * character home -- WORD OF RECALL, a scroll or potion of it, the Recall
+ * Ring, the rescue of a link-dead player -- passes false, and differs in
+ * two ways on purpose:
+ *
+ *   it goes to the Temple, not to the point the character chose, so a
+ *   caster or anyone carrying a scroll has a second way home that does
+ *   not move; and
+ *
+ *   a curse does not stop it. A curse silences your own prayer. It has
+ *   no hold over somebody else's magic, which is most of the reason to
+ *   keep a scroll in your pack.
+ *
+ * A room that forbids recall still forbids all of it. That flag is how
+ * an area keeps you inside -- Hyrule's nine dungeons rest on it -- and it
+ * is a property of the place rather than of the traveller.
+ */
+static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
+                           bool own_prayer )
 {
     char buf[MAX_STRING_LENGTH];
-    char arg[MAX_INPUT_LENGTH];
     ROOM_INDEX_DATA *location;
-    ROOM_INDEX_DATA *home;
     int lose, skill, chance;
 
     if (IS_NPC(ch))
     {
         send_to_char("Only players can recall.\n\r",ch);
         return;
-    }
-
-    /* Anything that is not one of the three words still recalls. This is
-       the command people reach for when something is going badly, and a
-       typo should not be what stops it working. */
-    one_argument( argument, arg );
-    if ( arg[0] != '\0' && ch->pcdata != NULL )
-    {
-        if ( !str_prefix(arg, "set") )
-        {
-            recall_set_here( ch );
-            return;
-        }
-        if ( !str_prefix(arg, "default") )
-        {
-            recall_set_default( ch );
-            return;
-        }
-        if ( !str_prefix(arg, "where") )
-        {
-            recall_report( ch );
-            return;
-        }
     }
 
     if ( IS_SET(ch->act, PLR_STASIS) )
@@ -2774,7 +2770,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
     if(!IS_NPC(ch) && ch->pcdata->mounted)
       do_dismount(ch,"");
 
-    if ( ( home = recall_room( ch ) ) == NULL )
+    if ( home == NULL )
     {
         send_to_char( "You are completely lost.\n\r", ch );
         return;
@@ -2795,7 +2791,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
     if (!IS_NPC(ch))
     {
        if ( IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-       ||   IS_AFFECTED(ch, AFF_CURSE) )
+       ||   ( own_prayer && IS_AFFECTED(ch, AFF_CURSE) ) )
        {
           send_to_char( "The Gods have forsaken you.\n\r", ch );
           return;
@@ -2914,6 +2910,48 @@ void do_recall( CHAR_DATA *ch, char *argument )
       WAIT_STATE(ch,4);
       send_to_char("You failed!\n\r",ch);
       return;
+}
+
+/* Being sent home by something other than your own prayer. */
+void recall_char_to_temple( CHAR_DATA *ch )
+{
+    recall_travel( ch, get_room_index( ROOM_VNUM_TEMPLE ), false );
+}
+
+void do_recall( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+
+    if (IS_NPC(ch))
+    {
+        send_to_char("Only players can recall.\n\r",ch);
+        return;
+    }
+
+    /* Anything that is not one of the three words still recalls. This is
+       the command people reach for when something is going badly, and a
+       typo should not be what stops it working. */
+    one_argument( argument, arg );
+    if ( arg[0] != '\0' && ch->pcdata != NULL )
+    {
+        if ( !str_prefix(arg, "set") )
+        {
+            recall_set_here( ch );
+            return;
+        }
+        if ( !str_prefix(arg, "default") )
+        {
+            recall_set_default( ch );
+            return;
+        }
+        if ( !str_prefix(arg, "where") )
+        {
+            recall_report( ch );
+            return;
+        }
+    }
+
+    recall_travel( ch, recall_room( ch ), true );
 }
 
 void do_train( CHAR_DATA *ch, char *argument )

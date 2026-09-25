@@ -1467,7 +1467,7 @@ void char_update( void )
 		     do_say(ch,buf);
 		     snprintf( buf, sizeof(buf),"I'm outta here!");
 		     do_say(ch,buf);
-		     do_recall(ch,"");
+		     recall_char_to_temple(ch);
 		     break;
 		case 8:
 		     snprintf( buf, sizeof(buf),"THE COLORS!!! THE COLORS!!!");

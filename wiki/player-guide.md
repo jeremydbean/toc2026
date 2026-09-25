@@ -200,8 +200,15 @@ refused.
 You may move your recall point once every 30 minutes, and not while you are
 fighting or while the blood is still up from a fight. `recall default` is
 exempt from all of that - you can always send it back to the Temple, so a
-choice you regret can never strand you. `word of recall` goes to the same
-place your `recall` does.
+choice you regret can never strand you.
+
+`word of recall` is a different journey, and the differences are the reason
+to carry it. It always goes to the Temple whatever you have set, so between
+the spell and the skill you have two places to reach in a hurry. It also
+works while you are cursed, where `recall` does not: a curse silences your
+own prayer but has no hold over somebody else's magic. A scroll or potion of
+recall carries the same spell and behaves the same way. The Recall Ring, and
+being pulled to safety while link-dead, also go to the Temple.
 
 Some areas disable recall and provide their own exit path. In Hyrule that is
 the nine dungeons: inside a `Level N` dungeon, recall will not take you out,

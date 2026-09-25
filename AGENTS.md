@@ -635,6 +635,19 @@ exempt on purpose: a character who cannot reach their own recall point has
 no other way to reset it. Recall itself is not rate-limited -- the point
 of the feature is a standing shortcut to one room.
 
+**Only the skill uses the chosen point, and only the skill is stopped by a
+curse.** `recall_travel()` takes an `own_prayer` flag for exactly these two
+differences; `recall_char_to_temple()` is the door for everything else --
+the Recall Ring in `handler.c`, the link-dead rescue in `fight.c`, the
+drunk who announces he is leaving in `update.c` -- and
+`spell_word_of_recall` keeps its own copy of the same rules. A scroll or
+potion of recall is that spell, so it inherits them. The result is a
+second way home that does not move and still answers when the gods will
+not hear you, which is the whole reason to carry one. `ROOM_NO_RECALL`
+blocks all of it: that flag is how an area keeps you inside, and it is a
+property of the place rather than the traveller. A new way of sending a
+character home goes through `recall_char_to_temple()`, not `do_recall`.
+
 ## Permission Helpers
 
 Two helpers exist so a rule is stated once. Prefer them to open-coding a

@@ -329,6 +329,12 @@ command named here for the detail.
   recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
   tells you where it is.  Once every 30 minutes, and not mid-fight.
 
+  WORD OF RECALL is worth casting now.  It always goes to the Temple
+  whatever you have set your own recall to, so a cleric has two places to
+  reach in a hurry instead of one, and it works while you are cursed,
+  where the RECALL skill does not.  A scroll or potion of recall carries
+  the same spell and does the same two things.
+
   Shops take the coins you actually have.  Buying used to look only at the
   loose copper in your purse, so a character carrying platinum could be
   told they could not afford a loaf of bread.  Shops now make change, and
@@ -2749,7 +2755,13 @@ are fighting or while the blood is still up from a fight.  RECALL DEFAULT
 is exempt from all of that: you can send your recall back to the Temple at
 any moment, so a choice you regret can never strand you.
 
-WORD OF RECALL sends you to the same place your RECALL does.
+WORD OF RECALL is a different journey, and worth knowing about.  It
+always goes to the Temple whatever you have set, so between the two you
+have two places to reach in a hurry.  It also works while you are cursed,
+where RECALL does not - a curse silences your own prayer but has no hold
+over somebody else's magic.  A scroll or potion of recall carries the same
+spell and behaves the same way.  The Recall Ring, and being pulled to
+safety while link-dead, also go to the Temple.
 
 If you RECALL during combat, you will lose experience (more than for fleeing),
 and you will have a chance of failing (again, more than for fleeing).  This
