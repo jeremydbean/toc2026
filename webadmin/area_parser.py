@@ -451,6 +451,7 @@ ACT_FLAGS = {
     'K': 'practice',
     'L': 'update-always',
     'M': 'nopush',
+    'N': 'b-boy',
     'O': 'undead',
     'Q': 'cleric',
     'R': 'mage',
@@ -460,6 +461,7 @@ ACT_FLAGS = {
     'V': 'nopurge',
     'W': 'mountable',
     'X': 'nokill',
+    'Y': 'questmaster',
     'Z': 'flags2',
 }
 

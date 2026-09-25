@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <ctype.h>
 #include <string.h>
 #include <strings.h> /* for bzero() */
 #include <time.h>
@@ -222,7 +223,7 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
         pointreward, pointreward * 2);
     send_to_char(buf, ch);
 
-    ch->nextquest = ch->level == 50 ? 5 : 15;
+    ch->nextquest = ch->level >= 50 ? 5 : 15;
     save_char_obj(ch);
 }
 
@@ -284,10 +285,29 @@ void quest_handle_logout( CHAR_DATA *ch )
     ch->questobj = 0;
     ch->questrush = false;
     ch->queststreak = 0;
-    ch->nextquest = ch->level == 50 ? 5 : 15;
+    ch->nextquest = ch->level >= 50 ? 5 : 15;
     send_to_char(
         "Leaving the game abandons your active quest and breaks its streak.\n\r",
         ch);
+}
+
+static void quest_show_commands( CHAR_DATA *ch )
+{
+    send_to_char(
+	"{09.-[ AQUEST Commands ]-----------------------------------------.{00\n\r"
+	"{09|{00  {04INFO     {00 View quest status or summary\n\r"
+	"{09|{00  {04POINTS   {00 Check your quest point balance\n\r"
+	"{09|{00  {04TIME     {00 Check your quest timer\n\r"
+	"{09|{00  {04GAMBLE   {00 Double-or-nothing your pending points\n\r"
+	"{09|{00\n\r"
+	"{09|{00  {01At a questmaster:{00\n\r"
+	"{09|{00  {04REQUEST  {00 Seek a quest from the questmaster\n\r"
+	"{09|{00  {04COMPLETE {00 Turn in a finished quest\n\r"
+	"{09|{00  {04LIST     {00 Browse the quest shop\n\r"
+	"{09|{00  {04BUY      {00 Purchase a quest reward\n\r"
+	"{09|{00  {04ABORT    {00 Give up your current quest\n\r"
+	"{09'---------------------------------------------------------------'{00\n\r",
+	ch);
 }
 
 /* The main quest function */
@@ -306,7 +326,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
     argument = one_argument(argument, arg1);
     argument = one_argument(argument, arg2);
 
-    if (!strcmp(arg1, "info"))
+    if (!str_prefix(arg1, "info") && arg1[0] != '\0')
     {
 	if (IS_SET(ch->act, PLR_QUESTOR))
 	{
@@ -415,14 +435,14 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	    "{09'-------------------------------------------------------'{00\n\r", ch);
 	return;
     }
-    if (!strcmp(arg1, "points"))
+    if (!str_prefix(arg1, "points") && arg1[0] != '\0')
     {
 	snprintf(buf, sizeof(buf),
 	    "Quest Points: {0D%d{00\n\r", ch->questpoints);
 	send_to_char(buf, ch);
 	return;
     }
-    else if (!strcmp(arg1, "time"))
+    else if (!str_prefix(arg1, "time") && arg1[0] != '\0')
     {
 	if (!IS_SET(ch->act, PLR_QUESTOR))
 	{
@@ -463,7 +483,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	}
 	return;
     }
-    else if (!strcmp(arg1, "gamble"))
+    else if (!str_prefix(arg1, "gamble") && arg1[0] != '\0')
     {
         if (IS_NPC(ch)) return;
         if (ch->questgamble_pts <= 0)
@@ -535,9 +555,20 @@ void do_quest(CHAR_DATA *ch, char *argument)
         }
     }
 
-/* Checks for a character in the room with spec_questmaster set. This special
-   procedure must be defined in special.c. You could instead use an
-   ACT_QUESTMASTER flag instead of a special procedure. */
+    if ( arg1[0] == '\0'
+    ||   ( str_prefix(arg1, "list")
+        && str_prefix(arg1, "buy")
+        && str_prefix(arg1, "request")
+        && str_prefix(arg1, "complete")
+        && str_prefix(arg1, "abort") ) )
+    {
+	quest_show_commands(ch);
+	return;
+    }
+
+/* Checks for a character in the room with ACT_QUESTM set. Everything from
+   here on is a transaction with that mob, so it is the only part of the
+   command that needs one present. */
 
     if ( ch->in_room == NULL )
     {
@@ -568,24 +599,9 @@ void do_quest(CHAR_DATA *ch, char *argument)
    very nice items, and no one has one yet, because it takes awhile to
    build up quest points :> Make the item worth their while. */
 
-/*  commented this section out below, and replaced with quest.c data from 1999 - Forrest */
-/*    if (!strcmp(arg1, "list"))
-    {
-        act( "$n asks $N for a list of quest items.", ch, NULL, questman, TO_ROOM);
-	act ("You ask $N for a list of quest items.",ch, NULL, questman, TO_CHAR);
-	snprintf(buf, sizeof(buf), "Current Quest Items available for Purchase:\n\r\
-	Potion of Sanctuary		150qp\n\r
-	1-3 Practices:			500qp\n\r
-	Potion of Extra Heal		450qp\n\r
-	Jug O' Moonshine		450qp\n\r
-	level 51 hero! (non remort)     500qp\n\r
-        level 51 hero! (remort)         1000qp\n\r
-To buy an item, type 'AQUEST BUY <item>'.\n\r");
-	send_to_char(buf, ch);
-	return;
-    }*/
+/* The shop listing below replaced a 1996 original in 1999 - Forrest */
 
-    if (!strcmp(arg1, "list"))
+    if (!str_prefix(arg1, "list"))
     {
         act( "$n asks $N for a list of quest items.", ch, NULL, questman, TO_ROOM);
         act ("You ask $N for a list of quest items.",ch, NULL, questman, TO_CHAR);
@@ -605,8 +621,8 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    "{09|{00  Level 51 Hero  (remort)         {0D5000 qp{00\n\r"
 	    "{09|{00\n\r"
 	    "{09|{00  {04Automatic Bonus Systems:{00\n\r"
-	    "{09|{00  {06Win Streak     {00+10%% per quest in a row (max +50%%)\n\r"
-	    "{09|{00  {0CRush Contract  {0020%% chance: 2x reward, 5-8 minute timer\n\r"
+	    "{09|{00  {06Win Streak     {00+10% per quest in a row (max +50%)\n\r"
+	    "{09|{00  {0CRush Contract  {0020% chance: 2x reward, 5-8 minute timer\n\r"
 	    "{09|{00  {0DGamble Offer   {00Double-or-nothing after every completion\n\r"
 	    "{09|{00\n\r"
 	    "{09|{00  Type {0DAQUEST BUY <item>{00 to purchase.\n\r"
@@ -626,7 +642,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
         return;
     }
 
-    else if (!strcmp(arg1, "buy"))
+    else if (!str_prefix(arg1, "buy"))
     {
 	if (arg2[0] == '\0')
 	{
@@ -962,7 +978,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	}
 	return;
     }
-    else if (!strcmp(arg1, "request"))
+    else if (!str_prefix(arg1, "request"))
     {
         if ( ch->questgamble_pts > 0 )
         {
@@ -1053,7 +1069,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	save_char_obj(ch);
 	return;
     }
-    else if (!strcmp(arg1, "complete"))
+    else if (!str_prefix(arg1, "complete"))
     {
         act( "$n informs $N $e has completed $s quest.", ch, NULL, questman, TO_ROOM);
 	act ("You inform $N you have completed $s quest.",ch, NULL, questman, TO_CHAR);
@@ -1099,7 +1115,7 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	do_say(questman, buf);
 	return;
     }
-    else if (!strcmp(arg1,"abort") )
+    else if (!str_prefix(arg1, "abort"))
     {
 	act( "$n approaches $N to abandon $s quest.",ch,NULL,questman,TO_ROOM );
 	act( "You tell $N that you are abandoning your quest.",ch,NULL,questman,TO_CHAR);
@@ -1134,29 +1150,70 @@ To buy an item, type 'AQUEST BUY <item>'.\n\r");
 	    ch->questmob   = 0;
 	    ch->questobj   = 0;
 	    ch->questrush  = false;
-	    if( ch->level == 50 )
+	    if( ch->level >= 50 )
 		ch->nextquest = 7;
 	    else
 		ch->nextquest = 15;
 	    save_char_obj(ch);
 	    return;
 	}
+
+	snprintf(buf, sizeof(buf),
+	    "You have no quest to abandon, %s.", ch->name);
+	do_say(questman, buf);
+	return;
     }
 
-    send_to_char(
-	"{09.-[ AQUEST Commands ]-----------------------------------------.{00\n\r"
-	"{09|{00  {04INFO     {00 View quest status or summary\n\r"
-	"{09|{00  {04POINTS   {00 Check your quest point balance\n\r"
-	"{09|{00  {04TIME     {00 Check your quest timer\n\r"
-	"{09|{00  {04REQUEST  {00 Seek a quest from the questmaster\n\r"
-	"{09|{00  {04COMPLETE {00 Turn in a finished quest\n\r"
-	"{09|{00  {04LIST     {00 Browse the quest shop\n\r"
-	"{09|{00  {04BUY      {00 Purchase a quest reward\n\r"
-	"{09|{00  {04GAMBLE   {00 Double-or-nothing your pending points\n\r"
-	"{09|{00  {04ABORT    {00 Give up your current quest\n\r"
-	"{09'---------------------------------------------------------------'{00\n\r",
-	ch);
+    quest_show_commands(ch);
     return;
+}
+
+/* An area's name is the #AREA line as written: "{10 35} Anon    New
+   Thalos". The level range and the builder's handle are bookkeeping, and
+   a questmaster reading them aloud -- "in the {1 70} Killum Hyrule
+   region" -- is not. GMCP deliberately keeps the fuller form, because the
+   Mudlet map package ships area names and is looked up by them, so this
+   stays local rather than becoming a shared helper. */
+static void quest_area_name( const char *raw, char *out, size_t size )
+{
+    const char *name;
+    const char *brace;
+    const char *after_author;
+    size_t len;
+
+    toc_strlcpy( out, "unknown lands", size );
+    if ( raw == NULL )
+        return;
+
+    name = raw;
+    while ( isspace((unsigned char)*name) )
+        name++;
+    if ( *name == '{' && (brace = strchr(name, '}')) != NULL )
+    {
+        name = brace + 1;
+        while ( isspace((unsigned char)*name) )
+            name++;
+    }
+
+    /* Drop the builder's handle -- the first word -- but never the whole
+       thing: an area credited to nobody keeps the name it has. */
+    after_author = name;
+    while ( *after_author != '\0' && !isspace((unsigned char)*after_author) )
+        after_author++;
+    while ( isspace((unsigned char)*after_author) )
+        after_author++;
+    if ( *after_author != '\0' )
+        name = after_author;
+
+    if ( *name == '\0' )
+        return;
+
+    toc_strlcpy( out, name, size );
+    len = strlen(out);
+    while ( len > 0 && isspace((unsigned char)out[len - 1]) )
+        out[--len] = '\0';
+    if ( out[0] == '\0' )
+        toc_strlcpy( out, "unknown lands", size );
 }
 
 static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
@@ -1173,7 +1230,9 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
 
     index = victim->pIndexData;
     room = victim->in_room;
-    if ( index->level <= 2 || index->level >= ch->level
+    /* Vermin are not a quest for anyone who has left Mud School, but for
+       somebody who has not they are the only quest there is. */
+    if ( index->level < (ch->level < 6 ? 1 : 3) || index->level > ch->level
     ||   IS_SET(index->imm_flags, IMM_SUMMON)
     ||   index->pShop != NULL
     ||   IS_SET(index->act, ACT_GAIN)
@@ -1205,6 +1264,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
     ROOM_INDEX_DATA *room;
     OBJ_DATA *questitem;
     char buf [MAX_STRING_LENGTH];
+    char area_name [MAX_INPUT_LENGTH];
     LIST_ITERATOR iter;
     int candidate_count = 0;
 
@@ -1227,12 +1287,14 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 	    "My apologies, %s - there are no suitable quests at the moment.",
 	    ch->name);
 	do_say(questman, buf);
-	do_say(questman, "Please try again shortly.");
-	ch->nextquest = 5;
+	do_say(questman, "Ask me again in a minute.");
+	ch->nextquest = 1;
         return;
     }
 
     room = victim->in_room;
+    quest_area_name( room->area != NULL ? room->area->name : NULL,
+        area_name, sizeof(area_name) );
 
     /*  40% chance it will send the player on a 'recover item' quest. */
 
@@ -1307,7 +1369,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 
 	snprintf(buf, sizeof(buf),
 	    "It was last spotted near %s, in the %s region.",
-	    room->name, room->area->name);
+	    room->name, area_name);
 	do_say(questman, buf);
 	return;
     }
@@ -1350,7 +1412,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
     {
 	snprintf(buf, sizeof(buf),
 	    "Your quarry was last spotted near %s, in the %s region.",
-	    room->name, room->area->name);
+	    room->name, area_name);
 	do_say(questman,buf);
     }
 
@@ -1397,7 +1459,7 @@ void quest_update(void)
 	    {
     	        char buf [MAX_STRING_LENGTH];
 
-	        if(ch->level == 50)
+	        if(ch->level >= 50)
                     ch->nextquest = 5;
                 else
                     ch->nextquest = 15;

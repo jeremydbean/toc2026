@@ -10,6 +10,77 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Remorting quietly took five armour classes off you, every time.**
+  `do_remort` rebuilds the character as a bare level-3 body: armour back
+  to 100, maxima back to the remort baseline, immunities and affect flags
+  cleared. It does that with the character still wearing everything, and
+  worn gear had already added itself to all three when it went on --
+  `equip_char` writes into `ch->armor`, `ch->max_hit` and the flag words
+  directly, not into `ch->affected`. Writing over the top of that threw
+  the contribution away, and the player's next REMOVE then subtracted a
+  bonus that was no longer there. Measured on a plain new character: 95
+  armour before the remort, 95 after, 105 once the gear came off, against
+  a bare baseline of 100. Repeatable on all five remorts, and the drift
+  went the other way for anything the gear added rather than subtracted.
+  The gear now comes off before the rebuild and goes back on after it, so
+  `unequip_char` unwinds what `equip_char` did. Level checks are not
+  re-applied -- the character was wearing it a second ago -- but
+  ITEM_ACTION stays in the pack, because equipping one of those recalls or
+  kills you.
+
+- **A character whose password had a capital letter in it could not
+  remort at all.** `one_argument` lowercases what it copies, which is
+  right for a keyword and wrong for a password, and `crypt(3)` is case
+  sensitive. `do_password` and `do_pkill` had each stolen a private copy
+  of `one_argument` to dodge this -- the comment in `do_password` says so
+  -- and `do_remort` simply did not notice. There is now one
+  `one_argument_case()` and all three use it.
+
+- **A remort was priced against the life it was leaving.**
+  `exp_per_level` reads class, race and guild, and the starting
+  experience was computed several lines before any of the three had been
+  replaced.
+
+- **A character below level 4 could never be given a quest.** The target
+  filter rejected anything under level 3 absolutely and anything at or
+  above the player's own level, so at levels 1 to 3 the two bounds
+  crossed and nothing in the world qualified. Each attempt then spent a
+  five-minute cooldown to say so. The floor is now relative for anyone
+  who has not left Mud School, the ceiling includes the player's own
+  level, and a failed request costs one minute rather than five.
+
+- **AQUEST would not tell you how to use AQUEST unless you were already
+  standing at a questmaster.** The command list, and every mistyped
+  subcommand, fell through to the questmaster check and got "You can't do
+  that here." Checking your own points, timer, streak or pending gamble
+  already worked anywhere; printing the syntax now does too. Subcommands
+  also accept abbreviations -- all nine start with a different letter --
+  where before `aquest req` was a typo.
+
+- **Three more things the questmaster got visibly wrong.** The shop
+  listing is a literal handed to `send_to_char`, which does not collapse
+  `%%`, so the bonus lines read "+10%%". Quest directions printed the raw
+  `#AREA` line, sending players to "the {1 70} Killum Hyrule region"
+  instead of the Valley of the Elves. And the short post-quest cooldown
+  for someone with nothing left to level tested `ch->level == 50` in four
+  places -- 50 stopped being the ceiling when remorts raised it to 59, so
+  no hero it was written for ever matched it.
+
+- **Recovery quest tokens were potions.** Vnums 25038-25042 are
+  `ITEM_POTION` with every spell slot zero, so quaffing your own quest
+  item destroyed it and left the quest unfinishable. They are ITEM_TRASH
+  now, which is what they always were in everything but the number.
+
+- **`area/commands.are` is Latin-1 and held 36 UTF-8 em-dashes**, which
+  reach the player as three garbage characters each -- including in the
+  REMORT and quest-shop help. Rewritten as ASCII hyphens. The REMORT help
+  also still claimed gear was only kept on the fifth remort; stripping was
+  removed for every remort some time ago.
+
+- **The dashboard's mob flag map had no entry for ACT_QUESTM**, so none
+  of the world's 16 questmasters showed as one. `ACT_B_BOY` was missing
+  the same way.
+
 - **The maintained guides had drifted behind the code.** AGENTS.md still
   said Hyrule disables recall everywhere, which stopped being true when
   the arcade cabinet made the area escapable, and so did the player

@@ -2630,6 +2630,7 @@ int     number_argument ( char *argument, char *arg );
 void    fill_comm_table_index (void);
 void    fill_social_table_index (void);
 char * one_argument    ( char *argument, char *arg_first );
+char * one_argument_case( char *argument, char *arg_first );
 
 /* magic.c */
 int     mana_cost       (CHAR_DATA *ch, int min_mana, int level);

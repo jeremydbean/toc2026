@@ -1147,8 +1147,12 @@ See also: BASH, KICK, NERVE
 ~
 
 0 AQUEST~
-Syntax: aquest <info|points|time>
-Syntax: aquest <request|complete|list|buy|abort|gamble> [option]
+Syntax: aquest <info|points|time|gamble>          anywhere
+Syntax: aquest <request|complete|list|buy|abort>  at a questmaster
+
+Every subcommand may be abbreviated to its first letter, and AQUEST on its
+own prints the list.  Checking on yourself works wherever you are standing;
+the rest is business with the questmaster and needs one in the room.
 
 AQUEST INFO shows the active objective and time remaining, or your cooldown,
 quest points, pending gamble, and win streak. Suitable targets are selected
@@ -2707,7 +2711,8 @@ REQUIREMENT
 
 WHAT YOU KEEP vs. WHAT YOU LOSE
   Keep: character name, gold (held and banked), quest points, remort bonuses,
-        titles earned.  On your FIFTH (final) remort you also keep all gear.
+        titles earned, and every item you own -- worn gear included, though
+        most of it will out-level you until you climb back up.
   Lose: all levels (restart at level 3), all spells and skills, all group
         knowledge, current class/guild/race (replaced by your new choices).
         Stats are reset to 13 in all categories.
@@ -2747,22 +2752,22 @@ HERO QUEST COST
 QUEST SHOP ITEMS
   These items can be purchased from the quest master (AQUEST BUY <item>):
 
-  POTION OF POWER (450 qp)  — buy: AQUEST BUY EMPOWER  or  AQUEST BUY POWER
+  POTION OF POWER (450 qp)  - buy: AQUEST BUY EMPOWER  or  AQUEST BUY POWER
     Bestows Sanctuary, Haste (+DEX), and Flight for the duration of the
     cast.  A single vial of extraordinary divine energy.
 
-  POTION OF THE GIANT (450 qp)  — buy: AQUEST BUY GIANT
+  POTION OF THE GIANT (450 qp)  - buy: AQUEST BUY GIANT
     Grants Giant Strength, Stone Skin fortification, and the ability to
     Pass Door.  Brewed from ancient mountain earth and raw elemental force.
 
-  SCROLL OF FARSLAY (600 qp)  — buy: AQUEST BUY FARSLAY  or  AQUEST BUY SCROLL
+  SCROLL OF FARSLAY (600 qp)  - buy: AQUEST BUY FARSLAY  or  AQUEST BUY SCROLL
     A black scroll inscribed with the ancient rite of Farslay. Targets one
     named character anywhere in the world. One use only, with grave risks.
 
-  POTION OF SANCTUARY (150 qp)  — buy: AQUEST BUY SANCTUARY
+  POTION OF SANCTUARY (150 qp)  - buy: AQUEST BUY SANCTUARY
     A more modest blessing that wraps the drinker in a protective aura.
 
-  PRACTICES (500 qp)  — buy: AQUEST BUY PRAC
+  PRACTICES (500 qp)  - buy: AQUEST BUY PRAC
     Awards 1-3 extra practice sessions for training skills.
 
 CLASS, GUILD, AND RACE OPTIONS
@@ -2951,9 +2956,9 @@ The Potion of Power is purchasable from the quest master for 450 quest
 points (AQUEST BUY EMPOWER or AQUEST BUY POWER).
 
 Drinking it grants three powerful protective effects simultaneously:
-  Sanctuary  — envelope the body in a divine shield (halves damage taken).
-  Haste      — greatly increases attack speed and Dexterity.
-  Fly        — lifts the drinker off the ground.
+  Sanctuary  - envelope the body in a divine shield (halves damage taken).
+  Haste      - greatly increases attack speed and Dexterity.
+  Fly        - lifts the drinker off the ground.
 
 All effects last for the standard spell duration at level 60.
 
@@ -2965,9 +2970,9 @@ The Potion of the Giant is purchasable from the quest master for 450 quest
 points (AQUEST BUY GIANT).
 
 Drinking it applies three combat enhancement effects simultaneously:
-  Giant Strength — dramatically boosts Strength and damage output.
-  Stone Skin     — hardens the skin, significantly improving armor class.
-  Pass Door      — allows movement through closed (non-locked) doors.
+  Giant Strength - dramatically boosts Strength and damage output.
+  Stone Skin     - hardens the skin, significantly improving armor class.
+  Pass Door      - allows movement through closed (non-locked) doors.
 
 All effects last for the standard spell duration at level 60.
 
@@ -3464,14 +3469,14 @@ under the normal startup script, the server pauses roughly fifteen seconds
 for connections to drain, then launches a fresh copy.  All characters are
 automatically saved before the reboot sequence begins.
 
-  reboot  — safe restart; the startup script brings the server back up
+  reboot  - safe restart; the startup script brings the server back up
             automatically after the delay
 
 SHUTDOWN shuts the server down and signals the startup script NOT to
 restart it.  Use shutdown only when the server needs to stay offline for
 maintenance, patching, or emergency fixes.
 
-  shutdown — permanent stop; requires manual intervention to bring the
+  shutdown - permanent stop; requires manual intervention to bring the
              server back up
 
 Both commands are implementor-level only.  Before using either, notify
@@ -3485,7 +3490,7 @@ See also: WIZINFO, GECHO, WIZLOCK
 Syntax: wizlock
 
 WIZLOCK locks the game against new logins.  All players below immortal rank
-(level 62 and lower) are refused entry — except link-dead characters who are
+(level 62 and lower) are refused entry - except link-dead characters who are
 returning to their existing sessions, who are allowed back in.
 
 Wizlock should be used sparingly: typically only during a full reboot,
@@ -3528,7 +3533,7 @@ See also: UNDENY, FREEZE, BAN, WIZLOCK
 Syntax: undeny <name>
 
 UNDENY removes a previously applied DENY flag from a character, restoring
-their ability to log in.  Only supply the character name — they do not need
+their ability to log in.  Only supply the character name - they do not need
 to be online for UNDENY to take effect.
 
 See also: DENY
@@ -3992,7 +3997,7 @@ See also: GOTO, TRANSFER, FORCE
 Syntax: echo <message>
 
 ECHO sends a raw message to all characters in your current room.  No name
-or attribution is shown — the text appears verbatim on every nearby screen.
+or attribution is shown - the text appears verbatim on every nearby screen.
 Useful for producing custom room flavor text or staging events.  Immortals
 of higher trust will see a faint staff tag prepended to the message.
 
@@ -4003,7 +4008,7 @@ See also: GECHO, PECHO
 Syntax: gecho <message>
 
 GECHO broadcasts a message to every connected player on the entire MUD,
-regardless of location.  No attribution is appended.  Use sparingly —
+regardless of location.  No attribution is appended.  Use sparingly -
 unnecessary global echoes are disruptive and are logged.
 
 See also: ECHO, PECHO, ANNOUNCE
@@ -4052,7 +4057,7 @@ HOLYLIGHT is a toggle.  When active, you can see virtually everything in
 the game regardless of visibility conditions: invisible characters, mobs,
 and objects; dark rooms; hidden players; and camouflaged entities.
 
-When HOLYLIGHT is off, you see what mortal players see — useful for testing
+When HOLYLIGHT is off, you see what mortal players see - useful for testing
 how a room or mob appears to players without elevated vision.
 
 Holylight can be toggled on and off at any time.  It does not affect
@@ -4065,13 +4070,13 @@ See also: WIZINVIS, INVIS, DETECT
 Syntax: wizinvis [level]
 
 WIZINVIS sets your visibility level.  Any player whose level is below your
-wizinvis level will be completely unable to see you — you won't appear in
+wizinvis level will be completely unable to see you - you won't appear in
 the room, won't show in WHO, and your actions produce no messages to them.
 
-  wizinvis      — sets invisibility to your own level (maximum stealth)
-  wizinvis 70   — total invisibility to everyone except other 70s
-  wizinvis 0    — removes wizinvis; you become fully visible again
-  wizinvis 62   — visible to other immortals but hidden from all mortals
+  wizinvis      - sets invisibility to your own level (maximum stealth)
+  wizinvis 70   - total invisibility to everyone except other 70s
+  wizinvis 0    - removes wizinvis; you become fully visible again
+  wizinvis 62   - visible to other immortals but hidden from all mortals
 
 Players who CAN see you (at or above your wizi level) see your name flagged
 as (Wizi) in the room and WHO list.
@@ -4171,7 +4176,7 @@ See also: OWHERE, RWHERE, GWHERE, MSTAT
 Syntax: owhere <keyword>
 
 OWHERE locates all instances of an object whose name field matches the
-given keyword anywhere in the game world — carried, worn, in containers,
+given keyword anywhere in the game world - carried, worn, in containers,
 or on mob corpses.  Displays object name, holder/location, and room vnum.
 
 See also: MWHERE, RWHERE, GWHERE, VNUM
@@ -4244,7 +4249,7 @@ See also: POOFOUT, GOTO, INVIS
 Syntax: poofout <message>
 
 POOFOUT sets the message other players see when you leave a room via GOTO.
-The default is '$n leaves in a swirling mist.'  Same rules as POOFIN —
+The default is '$n leaves in a swirling mist.'  Same rules as POOFIN -
 the message should read naturally with your name included, and only visible
 characters will see it.
 
@@ -4263,8 +4268,8 @@ LOG toggles command logging for the specified player.  When enabled, every
 command the player types is written to the server log file.  This is a
 persistent per-character toggle that survives reboots.
 
-  log <name>  — toggle logging for that specific player
-  log all     — toggle server-wide logging of ALL players (session only;
+  log <name>  - toggle logging for that specific player
+  log all     - toggle server-wide logging of ALL players (session only;
                 does not persist across reboots)
 
 Note: PASSWORD commands are never logged regardless of this flag.
@@ -4298,7 +4303,7 @@ See also: LOG, SWITCH, PSTAT
 Syntax: switch <mobile>
 
 SWITCH transfers your consciousness into the target mobile, giving you
-direct control of it.  You type commands as if you were that mob — its
+direct control of it.  You type commands as if you were that mob - its
 stats, skills, and position all apply.  Your immortal body is left standing
 in place while you are switched.
 
@@ -4658,7 +4663,7 @@ file on disk accordingly.  The new name must be 2-12 alphabetic characters.
 The player is notified of the change.  Immortals of equal or higher trust
 cannot be renamed.
 
-Use with caution — the old player file is deleted and replaced with a new
+Use with caution - the old player file is deleted and replaced with a new
 one under the new name immediately.
 
 See also: STAT, PURGE
@@ -4667,7 +4672,7 @@ See also: STAT, PURGE
 63 MUTE~
 Syntax: mute <player>
 
-MUTE silences a player completely — they cannot use say, tell, shout,
+MUTE silences a player completely - they cannot use say, tell, shout,
 channels, or emote until the immortal toggles the mute off.  All
 communication flags are set simultaneously.  Toggling mute again on a
 muted player restores all speech privileges.  The flag is saved across
@@ -4695,7 +4700,7 @@ is transported to player1's room; both are set PK-enabled and their
 fighting is started automatically.  A global notification is sent to both
 participants and to you.
 
-Use responsibly — this will force real combat between the two players.
+Use responsibly - this will force real combat between the two players.
 
 See also: SLAY, PEACE
 ~
@@ -4707,10 +4712,10 @@ IWEATHER immediately forces a global weather change.  All outdoor rooms will
 reflect the new conditions, and atmospheric transition messages are sent to
 all players in outdoor areas.
 
-  iweather sunny  — clear skies; barometric pressure rises to 1000+ mmhg
-  iweather cloudy — overcast skies; pressure sits at a middling 750 mmhg
-  iweather rain   — light-to-heavy rain; pressure drops below 700 mmhg
-  iweather storm  — full lightning storm; pressure plummets below 500 mmhg
+  iweather sunny  - clear skies; barometric pressure rises to 1000+ mmhg
+  iweather cloudy - overcast skies; pressure sits at a middling 750 mmhg
+  iweather rain   - light-to-heavy rain; pressure drops below 700 mmhg
+  iweather storm  - full lightning storm; pressure plummets below 500 mmhg
 
 Storm and rain conditions affect certain spells and skills (e.g. call
 lightning gains bonus damage during storms).  Sunny conditions speed up
@@ -5000,7 +5005,7 @@ See also: WIZINVIS, HOLYLIGHT
 Syntax: itrans <player> [room]
         itrans all [room]
 
-ITRANS performs a silent transfer — the target is moved without seeing
+ITRANS performs a silent transfer - the target is moved without seeing
 the usual transfer arrival or departure messages.  Room may be a vnum or
 a player name for their current location.  Omit room to transfer to your
 own position.

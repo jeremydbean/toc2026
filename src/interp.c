@@ -1303,6 +1303,45 @@ char *one_argument( char *argument, char *arg_first )
 }
 
 /*
+ * one_argument with the case left alone.
+ *
+ * one_argument lowercases what it copies, which is right for a keyword and
+ * wrong for a password: crypt(3) is case sensitive, so a character created
+ * with a capital in their password could never hand it back to a command
+ * that split the line this way. do_password, do_pkill and do_remort each
+ * needed this; two of them open-coded it and the third did not notice.
+ */
+char *one_argument_case( char *argument, char *arg_first )
+{
+    char cEnd;
+
+    while ( isspace(*argument) )
+	argument++;
+
+    cEnd = ' ';
+    if ( *argument == '\'' || *argument == '"' )
+	cEnd = *argument++;
+
+    while ( *argument != '\0' )
+    {
+	if ( *argument == cEnd )
+	{
+	    argument++;
+	    break;
+	}
+	*arg_first = *argument;
+	arg_first++;
+	argument++;
+    }
+    *arg_first = '\0';
+
+    while ( isspace(*argument) )
+	argument++;
+
+    return argument;
+}
+
+/*
  * Contributed by Alander.
  */
 void do_commands( CHAR_DATA *ch, char *argument )

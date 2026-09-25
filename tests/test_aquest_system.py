@@ -164,7 +164,7 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         )
 
         self.assertIn("quest_streak_bonus(ch)", completion)
-        self.assertIn("ch->nextquest = ch->level == 50 ? 5 : 15", completion)
+        self.assertIn("ch->nextquest = ch->level >= 50 ? 5 : 15", completion)
         self.assertIn("ACHIEVEMENT_EVENT_QUEST_RUSH", completion)
         self.assertIn("ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE", completion)
         self.assertNotIn("50%%%% chance", completion)
@@ -180,6 +180,104 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         ):
             with self.subTest(key=key):
                 self.assertIn(f'{{ "{key}"', self.achievements)
+
+    def test_the_short_hero_cooldown_reaches_every_hero(self) -> None:
+        """50 was the ceiling before remorts raised it to 59.
+
+        Four places shortened the wait for a character with nothing left to
+        level, and all four tested for exactly 50, so the heroes they were
+        written for never matched.
+        """
+        self.assertNotIn("ch->level == 50", self.quest)
+        self.assertEqual(self.quest.count("ch->level >= 50"), 4)
+
+    def test_the_command_list_does_not_need_a_questmaster(self) -> None:
+        """Everything that talks to the mob needs one present; printing the
+        syntax does not, and gating it behind one meant the only way to
+        learn the command was to already be standing at it."""
+        command = function_body(self.quest, "void do_quest", "static bool")
+
+        self.assertIn("static void quest_show_commands", self.quest)
+        gate = command.index("You can't do that here")
+        self.assertLess(
+            command.index("quest_show_commands(ch)"), gate,
+            "the command list has to be answerable before the questmaster "
+            "check, not only after it",
+        )
+        for word in ("list", "buy", "request", "complete", "abort"):
+            with self.subTest(word=word):
+                self.assertIn('str_prefix(arg1, "%s")' % word, command)
+
+    def test_subcommands_accept_abbreviations(self) -> None:
+        """str_prefix matches an empty string against anything, so each
+        test needs the emptiness guard beside it or a bare AQUEST would be
+        read as AQUEST INFO."""
+        command = function_body(self.quest, "void do_quest", "static bool")
+
+        for word in ("info", "points", "time", "gamble"):
+            with self.subTest(word=word):
+                self.assertIn(
+                    'str_prefix(arg1, "%s") && arg1[0] != \'\\0\'' % word,
+                    command,
+                )
+        self.assertNotIn("strcmp(arg1", command)
+
+    def test_a_character_below_level_four_can_be_given_a_quest(self) -> None:
+        """The floor was an absolute level 3 and the ceiling excluded the
+        player's own level, so nothing under level 4 had a legal target --
+        and each attempt spent a cooldown to be told so."""
+        suitability = function_body(
+            self.quest,
+            "static bool automatic_quest_target_is_suitable",
+            "void generate_quest",
+        )
+        generation = function_body(
+            self.quest,
+            "void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)",
+            "void quest_update",
+        )
+
+        self.assertIn("(ch->level < 6 ? 1 : 3)", suitability)
+        self.assertIn("index->level > ch->level", suitability)
+        self.assertIn("ch->nextquest = 1;", generation)
+
+    def test_the_questmaster_names_an_area_a_player_would_recognise(self):
+        """area->name is the #AREA line -- "{1 70} Killum Hyrule" -- so the
+        directions read out the level range and the builder's handle."""
+        generation = function_body(
+            self.quest,
+            "void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)",
+            "void quest_update",
+        )
+
+        self.assertIn("static void quest_area_name", self.quest)
+        self.assertIn("quest_area_name( room->area", generation)
+        self.assertEqual(generation.count("room->name, area_name)"), 2)
+        self.assertNotIn("room->name, room->area->name)", generation)
+
+    def test_the_shop_listing_is_a_literal_not_a_format_string(self) -> None:
+        """send_to_char does not collapse %%, so the bonus lines printed
+        "+10%%" to the player."""
+        listing = function_body(
+            self.quest, '"{09.-[ Quest Shop ]', '"{09\'---'
+        )
+        self.assertNotIn("%%", listing)
+
+    def test_recovery_tokens_cannot_be_drunk(self) -> None:
+        """They were ITEM_POTION with every spell slot zero. Quaffing one
+        destroyed it and left the quest unfinishable."""
+        tokens = range(25038, 25043)
+        self.assertEqual(
+            {v: self.parser.objects[v].item_type for v in tokens},
+            {v: "13" for v in tokens},
+            "every recovery token should be ITEM_TRASH (13)",
+        )
+
+    def test_the_help_file_holds_no_stray_utf8(self) -> None:
+        """commands.are is Latin-1. A UTF-8 em-dash written into it reaches
+        the player as three garbage characters."""
+        raw = (ROOT / "area" / "commands.are").read_bytes()
+        self.assertNotIn(b"\xe2\x80", raw)
 
 
 if __name__ == "__main__":

@@ -291,9 +291,10 @@ choices when it rejects a duplicate.
 
 Remorting is a major rebuild: level returns to 3, base permanent stats reset,
 skills and groups are rebuilt for the new path, resources and progression
-bonuses change, and status effects are cleared. Current code keeps items on the
-final remort path, but always read `help remort`, save, and confirm the host has
-a recent backup before committing. The password entered in the command crosses
+bonuses change, and status effects are cleared. Every item you own is kept,
+worn gear included -- though most of it will out-level you until you climb
+back up. Always read `help remort`, save, and confirm the host has a recent
+backup before committing. The password entered in the command crosses
 the same unencrypted Telnet connection as every other command.
 
 ### Necromancers And The Undead
@@ -485,8 +486,11 @@ problems with `bug`, `typo`, and `idea`.
 ## Quests And Player Killing
 
 `aquest` is the main quest command family; invoke it without arguments and read
-`help aquest` for the current subcommands and eligibility. Quest points and
-rewards are distinct from ordinary shop progression.
+`help aquest` for the current subcommands and eligibility. `info`, `points`,
+`time` and `gamble` answer wherever you are standing; requesting, turning in,
+aborting and shopping are business with a questmaster and need one present.
+Every subcommand abbreviates to its first letter. Quest points and rewards are
+distinct from ordinary shop progression.
 
 `pkill` controls or reports player-killing state according to the live rules.
 PK commands, theft, hostile spells, charm, grouping, and corpse handling may

@@ -3881,55 +3881,14 @@ void do_password( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
-    char *pArg;
     char *pwdnew;
     char *p;
-    char cEnd;
 
     if ( IS_NPC(ch) )
 	return;
 
-    /*
-     * Can't use one_argument here because it smashes case.
-     * So we just steal all its code.  Bleagh.
-     */
-    pArg = arg1;
-    while ( isspace(*argument) )
-	argument++;
-
-    cEnd = ' ';
-    if ( *argument == '\'' || *argument == '"' )
-	cEnd = *argument++;
-
-    while ( *argument != '\0' )
-    {
-	if ( *argument == cEnd )
-	{
-	    argument++;
-	    break;
-	}
-	*pArg++ = *argument++;
-    }
-    *pArg = '\0';
-
-    pArg = arg2;
-    while ( isspace(*argument) )
-	argument++;
-
-    cEnd = ' ';
-    if ( *argument == '\'' || *argument == '"' )
-	cEnd = *argument++;
-
-    while ( *argument != '\0' )
-    {
-	if ( *argument == cEnd )
-	{
-	    argument++;
-	    break;
-	}
-	*pArg++ = *argument++;
-    }
-    *pArg = '\0';
+    argument = one_argument_case( argument, arg1 );
+    one_argument_case( argument, arg2 );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' )
     {
@@ -4878,31 +4837,11 @@ void do_pkill( CHAR_DATA *ch, char *argument)
 {
    char arg1[MAX_INPUT_LENGTH];
    char buf[MAX_STRING_LENGTH];
-   char *pArg;
-   char cEnd;
 
    if (IS_NPC(ch))
         return;
 
-    pArg = arg1;
-    while ( isspace(*argument) )
-        argument++;
-
-    cEnd = ' ';
-    if ( *argument == '\'' || *argument == '"' )
-        cEnd = *argument++;
-
-    while ( *argument != '\0' )
-    {
-        if ( *argument == cEnd )
-        {
-            argument++;
-            break;
-        }
-        *pArg++ = *argument++;
-    }
-    *pArg = '\0';
-
+    one_argument_case( argument, arg1 );
 
     if ( arg1[0] == '\0' )
     {
@@ -4960,10 +4899,12 @@ void do_remort( CHAR_DATA *ch, char *arg)
    char buf[MAX_STRING_LENGTH];
    char saveclass[MAX_INPUT_LENGTH];
    int had_classes[2*MAX_CLASS];
+   OBJ_DATA *worn[MAX_WEAR];
    int requested_class = -2;
    int requested_guild = -2;
    int requested_race = -2;
    int i;
+   int iWear;
    int ind_class;
 
    if (IS_NPC(ch))
@@ -4977,7 +4918,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
      return;
    }
 
-   to_strip = one_argument(arg,arg1);
+   to_strip = one_argument_case(arg,arg1);
    to_strip = one_argument(to_strip,arg2);
    to_strip = one_argument(to_strip,arg3);
    to_strip = one_argument(to_strip,arg4);
@@ -5099,7 +5040,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
      to_strip = str_dup(ch->pcdata->list_remorts);
      {
        char *to_strip_base = to_strip;
-       while (to_strip[0] != '\0')
+       while (to_strip[0] != '\0' && ind_class < 2*MAX_CLASS)
         {
          to_strip = one_argument(to_strip,get_class);
          had_classes[ind_class] = atoi(get_class);
@@ -5145,10 +5086,23 @@ void do_remort( CHAR_DATA *ch, char *arg)
    wizinfo(buf,LEVEL_IMMORTAL);
    do_backup();
 
-   /* Final remort: items are KEPT (no stripping). */
+   /* Items are KEPT, worn ones included -- but everything below rewrites
+      armour, maxima and flags for a bare level-3 body, and worn gear had
+      already added itself to all three when it went on. Writing over the
+      top of that loses the contribution, and the player's next REMOVE then
+      subtracts a bonus that is no longer there: five armour classes and
+      whatever hit points the gear carried disappeared for good on every
+      remort. unequip_char is the only thing that knows how to unwind it,
+      so take it all off here and put it back at the end. */
+   for (iWear = 0; iWear < MAX_WEAR; iWear++)
+   {
+      worn[iWear] = get_eq_char(ch, iWear);
+      if (worn[iWear] != NULL)
+         unequip_char(ch, worn[iWear]);
+   }
+
    ch->level    = 3;
    ch->pcdata->points += 2500;
-   ch->exp      = 3 * exp_per_level(ch,ch->pcdata->points);
    for (i=0;i<MAX_STATS;i++) ch->perm_stat[i] = 13;
    ch->pcdata->num_remorts += 1;
    free_string(ch->pcdata->list_remorts);
@@ -5185,6 +5139,8 @@ void do_remort( CHAR_DATA *ch, char *arg)
        else
            ch->pcdata->guild = GUILD_NONE;
    ch->size = pc_race_table[ch->race].size;
+   /* After the class, race and guild swap: exp_per_level reads all three. */
+   ch->exp      = 3 * exp_per_level(ch,ch->pcdata->points);
 
    while (ch->affected) affect_remove(ch,ch->affected );
    ch->affected = NULL;
@@ -5195,7 +5151,14 @@ void do_remort( CHAR_DATA *ch, char *arg)
    ch->affected_by2 = 0;
 
    for (i = 0; i < 4; i++) ch->armor[i]= 100;
-   if ( ch->pcdata->mounted) ch->pcdata->mounted = false;
+   if ( ch->pcdata->mounted )
+   {
+      /* Clearing only the rider's half left the steed flagged as ridden,
+         and a mob in that state is hidden from the room forever. */
+      if ( ch->pet != NULL )
+         ch->pet->ridden = false;
+      ch->pcdata->mounted = false;
+   }
    REMOVE_BIT(ch->act, PLR_BOUGHT_PET);
    REMOVE_BIT(ch->act, PLR_WANTED);
    snprintf(buf, sizeof(buf), "the %s", title_table[ch->class][1][(ch->sex == SEX_FEMALE? 1 : 0)]);
@@ -5235,6 +5198,19 @@ void do_remort( CHAR_DATA *ch, char *arg)
        grant_psionics( ch, 100, true );
 
    ch->position = POS_STANDING;
+
+   /* Level checks are deliberately not re-applied: the character kept the
+      gear and was wearing it a moment ago. ITEM_ACTION is the exception --
+      equip_char fires those, and one of them recalls you while another
+      kills you -- so those stay in the pack. */
+   for (iWear = 0; iWear < MAX_WEAR; iWear++)
+   {
+      if (worn[iWear] == NULL || worn[iWear]->item_type == ITEM_ACTION)
+         continue;
+      if (get_eq_char(ch, iWear) != NULL)
+         continue;
+      equip_char(ch, worn[iWear], iWear);
+   }
    /*
    ch->pcdata->bank = 0;
    ch->new_silver = 50;
