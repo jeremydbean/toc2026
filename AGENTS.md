@@ -338,9 +338,16 @@ Commands added or revived in September 2026, and where they live:
   multiplied by `COPPER_PER_GOLD` before `format_price` sees it, and clamped
   first so the multiply cannot overflow a 32-bit `long`.
 - Carried denominations, bank copper, and lifetime casino totals are `long`.
-  Route gameplay changes through `add_money()` or
-  `adjust_coin_balance()`; preflight both source and destination before any
-  transfer. Money objects hold an `int` pile size and larger corpse balances
+  Route gameplay changes through `add_money()` (gold) or
+  `spend_copper()`/`gain_copper()` (copper); preflight both source and
+  destination before any transfer. **`adjust_coin_balance()` moves one
+  pile, not the purse** -- it is right for picking up a specific coin and
+  wrong for charging a price. Charging with it meant a character holding
+  two and a half million platinum could not buy a twenty-two silver loaf,
+  because the check read `ch->new_copper` alone. Use `has_enough_copper()`
+  to ask, and `query_carry_copper()` rather than `query_carry_coins()` to
+  weigh a payment, which otherwise weighs it as its own value in single
+  coppers. Money objects hold an `int` pile size and larger corpse balances
   must be split into representable piles.
 
 ## Player-Facing Bug Review

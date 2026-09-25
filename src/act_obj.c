@@ -1451,6 +1451,81 @@ bool adjust_coin_balance(CHAR_DATA *ch, long amount, int coin_type)
     return true;
 }
 
+/*
+ * Paying out of the whole purse.
+ *
+ * A price is quoted in copper, and the obvious way to charge it was
+ * can_adjust_coin_balance(ch, -cost, TYPE_COPPER). That reads one field:
+ * ch->new_copper. So a character carrying two and a half million platinum
+ * was told they could not afford a twenty-two silver loaf, because they
+ * had a hundred and seventy-five loose coppers on them and the baker
+ * would not break anything larger. Nobody could buy anything they did not
+ * happen to be carrying exact change for.
+ *
+ * add_money() has always done this correctly, and could not be used here
+ * because it is denominated in gold and cannot express a price of twenty-
+ * two silver.
+ */
+bool has_enough_copper( const CHAR_DATA *ch, long copper )
+{
+    long total;
+
+    if ( copper <= 0 )
+        return true;
+
+    return coins_to_copper_checked( ch, &total ) && total >= copper;
+}
+
+bool spend_copper( CHAR_DATA *ch, long copper )
+{
+    long total;
+
+    if ( copper < 0 )
+        return false;
+    if ( copper == 0 )
+        return true;
+    if ( !coins_to_copper_checked( ch, &total ) || total < copper )
+        return false;
+
+    normalize_coins( ch, total - copper );
+    achievement_check_economy( ch, true );
+    return true;
+}
+
+bool gain_copper( CHAR_DATA *ch, long copper )
+{
+    long total;
+
+    if ( copper < 0 )
+        return false;
+    if ( copper == 0 )
+        return true;
+    if ( !coins_to_copper_checked( ch, &total )
+    ||   copper > LONG_MAX - total )
+        return false;
+
+    normalize_coins( ch, total + copper );
+    achievement_check_economy( ch, true );
+    return true;
+}
+
+/*
+ * What a payment weighs once it is broken into the largest coins that
+ * will carry it: thirteen gold pieces, not a hundred and thirty thousand
+ * coppers. query_carry_coins() counts coins, so handing it a price in
+ * copper priced the weight of the smallest possible change.
+ */
+int query_carry_copper( CHAR_DATA *ch, long copper )
+{
+    long platinum, gold, silver, coppers;
+
+    if ( copper < 0 )
+        return INT_MAX;
+
+    copper_to_breakdown( copper, &platinum, &gold, &silver, &coppers );
+    return query_carry_coins( ch, platinum + gold + silver + coppers );
+}
+
 bool has_enough_gold( const CHAR_DATA *ch, long gold_cost )
 {
     long total_copper;
@@ -3563,7 +3638,7 @@ void do_buy( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-     if(!can_adjust_coin_balance(ch, -cost, TYPE_COPPER)) {
+     if(!has_enough_copper(ch, cost)) {
          act( "$n tells you 'You can't afford to buy $p'.",
              keeper, obj, ch, TO_VICT );
          return;
@@ -3601,8 +3676,8 @@ void do_buy( CHAR_DATA *ch, char *argument )
 
     act( "$n buys $p.", ch, obj, NULL, TO_ROOM );
     act( "You buy $p.", ch, obj, NULL, TO_CHAR );
-    adjust_coin_balance(ch, -cost, TYPE_COPPER);
-    adjust_coin_balance(keeper, cost, TYPE_COPPER);
+    spend_copper(ch, cost);
+    gain_copper(keeper, cost);
 
     if(IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
         obj = create_object( obj->pIndexData, -1 * obj->level );
@@ -3723,7 +3798,10 @@ void do_sell( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( (long)cost > keeper->new_gold )
+    /* cost is copper and new_gold is a count of gold coins, so this
+       compared two different units and read only one pile of the
+       keeper's purse. */
+    if ( !has_enough_copper( keeper, cost ) )
     {
 	act("$n tells you 'I'm afraid I don't have enough gold to buy $p.",
 	    keeper,obj,ch,TO_VICT);
@@ -3749,8 +3827,7 @@ void do_sell( CHAR_DATA *ch, char *argument )
         }
         check_improve(ch,gsn_haggle,true,4);
     }
-    if (!can_adjust_coin_balance(ch, cost, TYPE_COPPER)
-    ||  query_carry_coins(ch, cost) > can_carry_w(ch))
+    if (query_carry_copper(ch, cost) > can_carry_w(ch))
     {
 	act("$n tells you 'You cannot safely carry that many coins.'",
 	    keeper, NULL, ch, TO_VICT);
@@ -3765,8 +3842,8 @@ void do_sell( CHAR_DATA *ch, char *argument )
         snprintf( buf, sizeof(buf), "You sell $p for %s.", price_buf );
     }
     act( buf, ch, obj, NULL, TO_CHAR );
-    adjust_coin_balance(ch, cost, TYPE_COPPER);
-    adjust_coin_balance(keeper, -cost, TYPE_COPPER);
+    gain_copper(ch, cost);
+    spend_copper(keeper, cost);
 
     if ( obj->item_type == ITEM_TRASH )
     {

@@ -47,6 +47,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **You could only spend the loose change in your pocket.** A price is
+  quoted in copper and was charged with
+  `can_adjust_coin_balance(ch, -cost, TYPE_COPPER)`, which reads exactly
+  one field: `ch->new_copper`. A character carrying two and a half million
+  platinum was told they could not afford a twenty-two silver loaf of
+  bread, because they had a hundred and seventy-five loose coppers on them
+  and the baker would not break anything larger. Nobody could buy anything
+  they were not already carrying exact change for.
+
+  Selling had the mirror of it. `cost > keeper->new_gold` compared a copper
+  price against a count of gold coins, so a shopkeeper with 265 gold
+  refused to pay more than 265 copper; the deduction from the keeper then
+  failed silently, and the payment reached the seller as one undivided
+  pile of copper -- thirteen gold arriving as a hundred and thirty thousand
+  coins, which the carry-weight check then refused. Buying and selling now
+  go through `has_enough_copper`, `spend_copper` and `gain_copper`, which
+  work on the whole purse and break coins the way `add_money` always has.
+
 - **The converter that moved every price to copper stopped 85 objects
   short, and nobody noticed for the length of the world.** Its docstring
   is right that an area file must be read as a stream of tokens; its loop
