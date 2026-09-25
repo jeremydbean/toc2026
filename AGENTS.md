@@ -318,6 +318,12 @@ Commands added or revived in September 2026, and where they live:
 - Preserve command-table order semantics. Prefix matching can make an earlier
   entry win.
 - Password-bearing commands must not be logged.
+- **`fread_char` dispatches on the first letter of the key.** A new
+  persisted field's `KEY(...)` has to sit in the `case` for that letter or
+  it is never matched, and the loader then desyncs on the value: two keys
+  added beside a related field in `case 'Q'` instead of `case 'R'` made
+  every affected character hang the game at the login prompt. Use
+  `fread_long` for a `long` field, not `fread_number`.
 - Keep persisted enum/flag/slot/vnum values stable unless a migration is part of
   the task.
 - Prices are counted in copper. `obj->cost` is copper and is `long`; shop
@@ -611,6 +617,23 @@ Other deploy facts:
   replacement on the Pi with `openssl rand -hex 32` so the value never leaves
   the host, and restart `toc2026-web.service`. Never paste it into a commit,
   an issue or a conversation.
+
+## Where RECALL Goes
+
+`recall_room(ch)` in `src/act_move.c` is the one place that answers it.
+`ch->pcdata->recall_vnum` holds a player's chosen room, or 0 for the
+Temple, and the stored vnum is rechecked on every use rather than trusted
+from the player file -- an area edit can take the room away or make it
+no-recall under a saved character, and the honest answer then is the
+Temple. `room_allows_recall_point()` is the test for whether a room may be
+chosen, and it is deliberately the same test recall applies on the way
+out. `spell_word_of_recall` goes through the same helper, so the spell and
+the skill cannot disagree.
+
+Moving the point waits `RECALL_MOVE_COOLDOWN`, and `RECALL DEFAULT` is
+exempt on purpose: a character who cannot reach their own recall point has
+no other way to reset it. Recall itself is not rate-limited -- the point
+of the feature is a standing shortcut to one room.
 
 ## Permission Helpers
 

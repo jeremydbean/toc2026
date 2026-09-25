@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #include <sys/time.h>
 #endif
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -2511,145 +2512,251 @@ void do_visible( CHAR_DATA *ch, char *argument )
 }
 
 
-/*
-void do_recall( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM(argument);
-    char buf[MAX_STRING_LENGTH];
-    CHAR_DATA *victim;
-    ROOM_INDEX_DATA *location;
-	int lose,skill;
+/* The recall this replaced in 1998 sat here, commented out, until
+   2026. It had drifted a long way from the live one and was the
+   first thing any search for do_recall found. - see git history */
 
-    if (IS_NPC(ch) && !IS_SET(ch->act,ACT_PET))
+/*
+ * Whether a room may be somebody's recall point.
+ *
+ * This is the same test recall applies on the way out, so a point a
+ * character chooses is one recall works in both directions from. A death
+ * trap is refused on its own account: arriving there kills you, and a
+ * home you die in is a trap rather than a favourite place.
+ */
+bool room_allows_recall_point( ROOM_INDEX_DATA *room )
+{
+    if ( room == NULL )
+	return false;
+
+    return !IS_SET(room->room_flags, ROOM_NO_RECALL)
+	&& !IS_SET(room->room_flags, ROOM_JAIL)
+	&& !IS_SET(room->room_flags, ROOM_DT)
+	&& !IS_SET(room->room_flags, ROOM_IMP_ONLY)
+	&& !IS_SET(room->room_flags, ROOM_GODS_ONLY)
+	&& !room_is_private(room);
+}
+
+/*
+ * Where this character's recall goes.
+ *
+ * The stored vnum is checked on every use rather than once at load,
+ * because the world moves under a saved character: an area edit can take
+ * the room away or make it no-recall, and the honest answer then is the
+ * Temple, not nowhere.
+ */
+ROOM_INDEX_DATA *recall_room( CHAR_DATA *ch )
+{
+    ROOM_INDEX_DATA *home = NULL;
+
+    if ( ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL
+    &&   ch->pcdata->recall_vnum != 0 )
     {
-	send_to_char("Only players can recall.\n\r",ch);
-	return;
+	home = get_room_index( ch->pcdata->recall_vnum );
+	if ( !room_allows_recall_point( home ) )
+	    home = NULL;
     }
 
-    if(!IS_NPC(ch) && ch->pcdata->mounted)
-      do_dismount(ch,"");
+    if ( home == NULL )
+	home = get_room_index( ROOM_VNUM_TEMPLE );
 
-    act( "$n prays for a way out!", ch, 0, 0, TO_ROOM );
+    return home;
+}
 
-    if ( ( location = get_room_index( ROOM_VNUM_TEMPLE ) ) == NULL )
+/*
+ * A room name with any full stop of its own taken off the end.
+ *
+ * Some are written "Before the Altar." and some "Oak Tree Square", so a
+ * sentence that ends in one reads "at Before the Altar.." for half the
+ * world unless the name is trimmed first.
+ */
+static char *recall_place( ROOM_INDEX_DATA *room, char *buf, size_t size )
+{
+    size_t len;
+
+    toc_strlcpy( buf, room != NULL && room->name != NULL
+	? room->name : "somewhere", size );
+
+    len = strlen( buf );
+    while ( len > 0 && ( buf[len - 1] == '.' || isspace((unsigned char)buf[len - 1]) ) )
+	buf[--len] = '\0';
+
+    if ( buf[0] == '\0' )
+	toc_strlcpy( buf, "somewhere", size );
+
+    return buf;
+}
+
+/* Whole minutes left on the wait, or zero if there is none. */
+static long recall_move_wait( CHAR_DATA *ch )
+{
+    long since;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL || ch->pcdata->recall_set_at == 0 )
+	return 0;
+
+    since = (long)current_time - ch->pcdata->recall_set_at;
+    if ( since < 0 || since >= RECALL_MOVE_COOLDOWN )
+	return 0;
+
+    return ( RECALL_MOVE_COOLDOWN - since + 59 ) / 60;
+}
+
+static void recall_report( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    char place[MAX_INPUT_LENGTH];
+    ROOM_INDEX_DATA *home;
+    long wait;
+
+    if ( ( home = recall_room( ch ) ) == NULL )
     {
 	send_to_char( "You are completely lost.\n\r", ch );
 	return;
     }
 
-    if ( ch->in_room == location )
-	return;
-
-    if (!IS_NPC(ch))
-    {
-       if ( IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-       ||   IS_AFFECTED(ch, AFF_CURSE) )
-       {
-          send_to_char( "The Gods have forsaken you.\n\r", ch );
-          return;
-       }
-    }
-
-    if( IS_SET(ch->in_room->room_flags, ROOM_JAIL) )
-    {
-      send_to_char("There is no escape from this jail.\n\r",ch);
-      return;
-    }
-
-    if (IS_NPC(ch))
-     skill = 40 + ch->level;
+    if ( ch->pcdata->recall_vnum == 0 )
+	snprintf( buf, sizeof(buf),
+	    "Your recall is where it started, at %s.\n\r",
+	    recall_place( home, place, sizeof(place) ) );
     else
-      skill = ch->pcdata->learned[gsn_recall];
+	snprintf( buf, sizeof(buf),
+	    "Your recall is set to %s.\n\r",
+	    recall_place( home, place, sizeof(place) ) );
+    send_to_char( buf, ch );
 
-    if ( ( victim = ch->fighting ) != NULL )
+    wait = recall_move_wait( ch );
+    if ( wait > 0 )
     {
-
-
-	if ( number_percent() > skill - 5)
-	{
-	    if( number_percent() <= 5)
-	    {
-	      send_to_char("Something is very wrong!\n\r",ch);
-	      location = get_random_room(ch);
-	      act( "$n failed to recall, but $e went Somewhere.", ch, NULL, NULL, TO_ROOM );
-	      stop_fighting( ch, true );
-	      char_from_room(ch);
-	      char_to_room(ch,location);
-	      ch->move /= 2;
-	      lose = (ch->desc != NULL) ? 25 : 50;
-	      gain_exp( ch, 0 - lose );
-              snprintf( buf, sizeof(buf), "You exit combat to another place!  You lose %d exps.\n\r", lose );
-              send_to_char(buf,ch);
-	      act( "$n pops in out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM );
-	      return;
-	    }
-	    check_improve(ch,gsn_recall,false,5);
-	    WAIT_STATE( ch, 4 );
-	    send_to_char( "You failed!\n\r", ch );
-	    return;
-	}
-
-	lose = (ch->desc != NULL) ? 25 : 50;
-	gain_exp( ch, 0 - lose );
-	check_improve(ch,gsn_recall,true,5);
-        snprintf( buf, sizeof(buf), "You recall from combat!  You lose %d exps.\n\r", lose );
-        send_to_char( buf, ch );
-	stop_fighting( ch, true );
-
+	snprintf( buf, sizeof(buf),
+	    "You may move it again in %ld minute%s.\n\r",
+	    wait, wait == 1 ? "" : "s" );
+	send_to_char( buf, ch );
+	send_to_char(
+	    "RECALL DEFAULT puts it back to the Temple at any time.\n\r", ch );
     }
-
-    if ( number_percent() > skill - 5)
-    {
-	if( number_percent() <= 5)
-	{
-	  send_to_char("Something is very wrong!",ch);
-	  location = get_random_room(ch);
-	  act( "$n failed to recall, but $e went Somewhere.", ch, NULL, NULL, TO_ROOM );
-	  char_from_room(ch);
-	  char_to_room(ch,location);
-	  ch->move /= 2;
-	  act( "$n pops into the room from out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM );
-	  return;
-	}
-	check_improve(ch,gsn_recall,false,5);
-	WAIT_STATE( ch, 4 );
-        snprintf( buf, sizeof(buf), "You failed!\n\r");
-        send_to_char( buf, ch );
-	return;
-    }
-
-    ch->move /= 2;
-    act( "$n disappears.", ch, NULL, NULL, TO_ROOM );
-
-    if (ch->pet != NULL && !ch->pet->ridden)
-        do_recall(ch->pet,"");
-    else if(ch->pet != NULL && ch->pet->ridden)
-    {
-     ch->pcdata->mounted = false;
-     ch->pet->ridden = false;
-    }
-
-    char_from_room( ch );
-    char_to_room( ch, location );
-    act( "$n appears in the room.", ch, NULL, NULL, TO_ROOM );
-    do_look( ch, "auto" );
-    return;
+    else
+	send_to_char( "You may move it whenever you like.\n\r", ch );
 }
 
-*/
+static void recall_set_here( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    char place[MAX_INPUT_LENGTH];
+    long wait;
+
+    if ( ch->in_room == NULL )
+    {
+	send_to_char( "You are nowhere at all.\n\r", ch );
+	return;
+    }
+
+    if ( ch->fighting != NULL )
+    {
+	send_to_char( "Not in the middle of a fight.\n\r", ch );
+	return;
+    }
+
+    /* Battleticks outlast the fight itself, which is the point here:
+       moving your recall is a quiet decision about where home is, not a
+       way to reposition while a hunt is still on. */
+    if ( ch->battleticks > 0 )
+    {
+	send_to_char(
+	    "Not while the blood is up. Let the fighting settle first.\n\r",
+	    ch );
+	return;
+    }
+
+    if ( !room_allows_recall_point( ch->in_room ) )
+    {
+	send_to_char(
+	    "The Gods will not answer a prayer raised in this place.\n\r", ch );
+	return;
+    }
+
+    if ( ch->pcdata->recall_vnum == ch->in_room->vnum )
+    {
+	send_to_char( "Your recall is already set here.\n\r", ch );
+	return;
+    }
+
+    wait = recall_move_wait( ch );
+    if ( wait > 0 )
+    {
+	snprintf( buf, sizeof(buf),
+	    "You moved your recall too recently. Try again in %ld minute%s.\n\r",
+	    wait, wait == 1 ? "" : "s" );
+	send_to_char( buf, ch );
+	send_to_char(
+	    "RECALL DEFAULT puts it back to the Temple at any time.\n\r", ch );
+	return;
+    }
+
+    ch->pcdata->recall_vnum = ch->in_room->vnum;
+    ch->pcdata->recall_set_at = (long)current_time;
+
+    snprintf( buf, sizeof(buf),
+	"You fix this place in your mind. Recall will bring you to %s.\n\r",
+	recall_place( ch->in_room, place, sizeof(place) ) );
+    send_to_char( buf, ch );
+    act( "$n kneels a moment, committing this place to memory.",
+	ch, NULL, NULL, TO_ROOM );
+    save_char_obj( ch );
+}
+
+static void recall_set_default( CHAR_DATA *ch )
+{
+    /* Deliberately free of the wait. It is the way back from a choice
+       that turned out badly, and a character who cannot reach their own
+       recall point has no other way to reset it. */
+    if ( ch->pcdata->recall_vnum == 0 )
+    {
+	send_to_char( "Your recall already points at the Temple.\n\r", ch );
+	return;
+    }
+
+    ch->pcdata->recall_vnum = 0;
+    send_to_char( "Your recall settles back to the Temple.\n\r", ch );
+    save_char_obj( ch );
+}
 
 /* New recall function recoded by Rico 8/2/98 */
 void do_recall( CHAR_DATA *ch, char *argument )
 {
-    UNUSED_PARAM(argument);
     char buf[MAX_STRING_LENGTH];
+    char arg[MAX_INPUT_LENGTH];
     ROOM_INDEX_DATA *location;
+    ROOM_INDEX_DATA *home;
     int lose, skill, chance;
 
     if (IS_NPC(ch))
     {
         send_to_char("Only players can recall.\n\r",ch);
         return;
+    }
+
+    /* Anything that is not one of the three words still recalls. This is
+       the command people reach for when something is going badly, and a
+       typo should not be what stops it working. */
+    one_argument( argument, arg );
+    if ( arg[0] != '\0' && ch->pcdata != NULL )
+    {
+        if ( !str_prefix(arg, "set") )
+        {
+            recall_set_here( ch );
+            return;
+        }
+        if ( !str_prefix(arg, "default") )
+        {
+            recall_set_default( ch );
+            return;
+        }
+        if ( !str_prefix(arg, "where") )
+        {
+            recall_report( ch );
+            return;
+        }
     }
 
     if ( IS_SET(ch->act, PLR_STASIS) )
@@ -2667,16 +2774,22 @@ void do_recall( CHAR_DATA *ch, char *argument )
     if(!IS_NPC(ch) && ch->pcdata->mounted)
       do_dismount(ch,"");
 
-    act( "$n prays for a way out!", ch, 0, 0, TO_ROOM );
-
-    if ( ( location = get_room_index( ROOM_VNUM_TEMPLE ) ) == NULL )
+    if ( ( home = recall_room( ch ) ) == NULL )
     {
         send_to_char( "You are completely lost.\n\r", ch );
         return;
     }
+    location = home;
 
+    /* Checked before the prayer, so standing on your own recall point
+       does not announce a prayer that then does nothing. */
     if ( ch->in_room == location )
+    {
+        send_to_char( "You are already there.\n\r", ch );
         return;
+    }
+
+    act( "$n prays for a way out!", ch, 0, 0, TO_ROOM );
 
     /* Crash bug fix - Rico 8/2/98 */
     if (!IS_NPC(ch))
@@ -2720,7 +2833,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
              send_to_char(buf,ch);
           }
           else
-          location = get_room_index(ROOM_VNUM_TEMPLE);
+          location = home;
 
              if (ch->pet != NULL && !ch->pet->ridden)
              {
@@ -2740,7 +2853,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
              gain_exp(ch, 0 - lose);
              do_look(ch,"auto");
 
-             if (location != get_room_index(ROOM_VNUM_TEMPLE))
+             if (location != home)
              act("$n pops in out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM);
              else
              {
@@ -2767,7 +2880,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
          act("$n failed to recall, but $e went somewhere.", ch, NULL, NULL, TO_ROOM);
       }
       else
-      location = get_room_index(ROOM_VNUM_TEMPLE);
+      location = home;
 
              if (ch->pet != NULL && !ch->pet->ridden)
              {
@@ -2786,7 +2899,7 @@ void do_recall( CHAR_DATA *ch, char *argument )
             }
              do_look(ch, "auto");
 
-             if (location != get_room_index(ROOM_VNUM_TEMPLE))
+             if (location != home)
              act("$n pops in out of nowhere, cursing like a sailor.", ch, NULL, NULL, TO_ROOM);
              else
              {

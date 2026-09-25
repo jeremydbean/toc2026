@@ -47,7 +47,10 @@ Many character and object lookups support a numbered keyword such as
 | `ride`, `mount`, `dismount` | Control supported mounts |
 | `track <target>` | Use tracking skill where available |
 | `search` | Search the current room |
-| `recall`, `/` | Attempt random recall to an eligible room |
+| `recall`, `/` | Pray for transport to your recall point |
+| `recall set` | Make this room your recall point (once per 30 minutes) |
+| `recall default` | Send your recall point back to the Temple |
+| `recall where` | Show your recall point and when you may move it |
 | `where`, `areas`, `scan` | Orient within the world |
 | `astral walk`, `project`, `shift`, `telekinesis`, `tk` | Specialized psionic travel, scouting, and retrieval when learned |
 

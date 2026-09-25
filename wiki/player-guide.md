@@ -177,15 +177,38 @@ be discovered before the normal door commands can target them.
 
 ### Recall
 
-Recall is intentionally unpredictable in this game: it may send you to any room
-eligible for recall rather than one fixed hometown. Protected and no-recall
-rooms are excluded. Some areas disable recall and provide their own exit path.
-In Hyrule that is the nine dungeons: inside a `Level N` dungeon, recall will
-not take you out, and you leave the way you came. The Hyrule overworld, its
-sword caves, shops, repair rooms, money games, warp halls and the Lost Woods
-all allow recall, and recalling is the intended way out of the Lost Woods
-loop. Do not enter a dangerous one-way area assuming `recall` will always
-rescue you.
+`recall`, or `/`, prays for transport to your recall point. It costs half your
+movement, it can fail on a skill check, and on a rare bad roll it drops you in
+a random eligible room instead - so it is a good escape, not a guaranteed one.
+Recalling out of combat also costs experience. From the fourth remort on it
+always succeeds and never misfires.
+
+Your recall point starts at the Temple of Devota in Dresden, and you can move
+it:
+
+| Command | Effect |
+| --- | --- |
+| `recall set` | Make the room you are standing in your recall point |
+| `recall default` | Send it back to the Temple |
+| `recall where` | Where it is now, and whether you may move it yet |
+
+Pick somewhere you keep going back to: a hunting ground you are working
+through, a questmaster, the shop you live out of. A room has to be one recall
+works in, so no-recall rooms, jails, death traps and private rooms are all
+refused.
+
+You may move your recall point once every 30 minutes, and not while you are
+fighting or while the blood is still up from a fight. `recall default` is
+exempt from all of that - you can always send it back to the Temple, so a
+choice you regret can never strand you. `word of recall` goes to the same
+place your `recall` does.
+
+Some areas disable recall and provide their own exit path. In Hyrule that is
+the nine dungeons: inside a `Level N` dungeon, recall will not take you out,
+and you leave the way you came. The Hyrule overworld, its sword caves, shops,
+repair rooms, money games, warp halls and the Lost Woods all allow recall, and
+recalling is the intended way out of the Lost Woods loop. Do not enter a
+dangerous one-way area assuming `recall` will always rescue you.
 
 ## Combat
 
@@ -601,8 +624,8 @@ class, guild, skill, position, room feature, NPC, or held object. `skills`,
 ### I Am Lost
 
 Use `look`, `exits`, `where`, `areas`, `scan`, and room descriptions. Backtrack
-one move at a time. Recall is random among eligible rooms and can be disabled,
-so it should not be the only plan. In Mudlet, the official mapper records rooms
+one move at a time. Recall takes you to your recall point, but it can fail and
+some areas disable it, so it should not be the only plan. In Mudlet, the official mapper records rooms
 as you explore, but it intentionally omits undiscovered secrets and may not draw
 special scripted routes. Ask on a suitable help channel when stuck.
 

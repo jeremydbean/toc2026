@@ -1279,6 +1279,17 @@ const char *default_prompt_text args( ( void ) );
 #define ROOM_VNUM_DEATH            4216
 #define ROOM_VNUM_CHAT             9960
 #define ROOM_VNUM_TEMPLE           4207
+
+/*
+ * How long a character must wait between moving their recall point.
+ *
+ * Recall itself is free and repeatable, so the point a character chooses
+ * is a standing shortcut to one room. The wait is what stops it being a
+ * teleport network: you may keep one favourite place, not hop between
+ * them. Putting it back to the Temple is always allowed, so nobody can
+ * strand themselves somewhere they cannot find again.
+ */
+#define RECALL_MOVE_COOLDOWN       (30 * 60)
 #define ROOM_VNUM_ALTAR            4208
 #define ROOM_VNUM_SCHOOL           3700
 #define ROOM_VNUM_JAIL             3
@@ -1748,6 +1759,11 @@ struct  pc_data
     int                 last_session_pk_kills;/* PK kills last session */
     int                 last_session_deaths;  /* deaths last session */
     int                 last_session_quests;  /* quests completed last session */
+
+    /* Where RECALL goes. 0 means the Temple, which is where every
+       character starts and where a lost one is sent back to. */
+    int                 recall_vnum;
+    long                recall_set_at;        /* unix time it was last moved */
 
     long                bank_interest_time;   /* unix timestamp of last interest payment */
     long                bank_interest_total;  /* lifetime interest earned, in copper */
@@ -2355,6 +2371,8 @@ void    quest_handle_logout ( CHAR_DATA *ch );
 
 /* act_move.c */
 void    move_char       ( CHAR_DATA *ch, int door, bool follow );
+ROOM_INDEX_DATA *recall_room ( CHAR_DATA *ch );
+bool    room_allows_recall_point ( ROOM_INDEX_DATA *room );
 void    recheck_sneak   ( CHAR_DATA *ch );
 RID     *get_random_room( CHAR_DATA *ch );
 

@@ -1309,10 +1309,19 @@ See also: LORE, BREW, CONCOCT
 
 0 RECALL /~
 Syntax: RECALL
+        RECALL SET
+        RECALL DEFAULT
+        RECALL WHERE
 
 RECALL prays to Mota for miraculous transportation from where you are back
-to the Temple of Devota.  '/' is a synonym for RECALL.  This skill is given
+to your recall point.  '/' is a synonym for RECALL.  This skill is given
 to all characters for free.
+
+Your recall point starts at the Temple of Devota and you may move it.
+RECALL SET makes the room you are standing in your recall point, RECALL
+DEFAULT puts it back to the Temple, and RECALL WHERE says where it is.  It
+may be moved once every 30 minutes, and not in a fight; going back to the
+Temple is always allowed.  See HELP RECALL for the whole of it.
 
 If you RECALL during combat, you will lose experience (more than for fleeing),
 and you will have a chance of failing (again, more than for fleeing).  This
@@ -1326,7 +1335,7 @@ curse may not recall at all.
 
 Trainer: mud school adept, Fingers (any)
 
-See also: WORD OF RECALL, SUMMON, TRANSPORT
+See also: WORD OF RECALL, SUMMON, TRANSPORT, CHANGES
 ~
 
 -1 'SHIELD BLOCK'~

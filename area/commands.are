@@ -321,11 +321,57 @@ See also: ASTRAL WALK, PROJECT, PSIONICS
 0 CHANGES~
 Syntax: changes
 
-Displays a log of recent game updates, balance changes, new features, and
-bug fixes added by the implementors.  Read this regularly to stay current
-on what is new in the game.
+What has changed in the game lately, newest first.  Type HELP on any
+command named here for the detail.
 
-See also: NEWS, MOTD
+25 Sep 2026
+  RECALL can be moved.  RECALL SET makes the room you are standing in your
+  recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
+  tells you where it is.  Once every 30 minutes, and not mid-fight.
+
+  Shops take the coins you actually have.  Buying used to look only at the
+  loose copper in your purse, so a character carrying platinum could be
+  told they could not afford a loaf of bread.  Shops now make change, and
+  they pay for what you sell them in coins you can carry.
+
+  Prices in low-level areas are priced for low-level characters.  Mud
+  School sells bread for a copper and a meal for sixteen; a full set of
+  leather in Dresden is a few gold rather than a few platinum.  Nothing
+  above level 10 changed.
+
+23-25 Sep 2026
+  AQUEST INFO, POINTS, TIME and GAMBLE work wherever you are standing;
+  only the questmaster's business needs a questmaster.  Every subcommand
+  can be shortened to its first letter.  Characters under level 4 can be
+  given a quest at last, and the questmaster now names an area you would
+  recognise instead of reading out its level range.
+
+  REMORT no longer quietly costs you armour.  Gear you keep on through a
+  remort keeps its bonuses.  Remorting also works if your password has a
+  capital letter in it, which it did not before.
+
+  REPAIR works on gear you are wearing, quotes its price in coins, and
+  restores an item's armour and worth as well as its condition.
+
+  Travel directions to every area in the game are published on the website
+  at toc.jeremybean.com, and in the Routes panel of the browser client.
+
+  Hyrule lets you recall out of it, except from inside the nine dungeons,
+  and its overworld no longer goes pitch dark at sunset.
+
+Sep 2026
+  Prices are counted in copper.  LIST and APPRAISE write them in the coins
+  they will cost you - 5g 20s, 1c, free - instead of one long number.
+
+  The necromancer's undead line works: CREATE SKELETON, CREATE ZOMBIE and
+  the rest.  ANIMATE PARTS no longer needs a body part, and hits harder
+  when it has one.
+
+  CAST no longer needs quotes around a spell with a space in its name.
+
+  Rooms built in game survive a reboot.
+
+See also: NEWS, MOTD, RECALL, AQUEST, REMORT, REPAIR
 ~
 
 0 MOTD~
@@ -2680,9 +2726,30 @@ See also: QUIT, SAVE
 
 0 RECALL /~
 Syntax: RECALL
+        RECALL SET
+        RECALL DEFAULT
+        RECALL WHERE
 
 RECALL prays to the gods for miraculous transportation from where you are
-back to the Temple of Devota in Dresden.  '/' is a synonym for RECALL.
+back to your recall point.  '/' is a synonym for RECALL.
+
+Every character begins with their recall point at the Temple of Devota in
+Dresden.  You may move it:
+
+  RECALL SET       makes the room you are standing in your recall point.
+  RECALL DEFAULT   puts it back to the Temple.
+  RECALL WHERE     tells you where it is, and whether you may move it yet.
+
+Choose somewhere you go often - a hunting ground you are working through,
+a questmaster, the shop you live out of.  Anywhere the gods have forsaken
+is refused, and so are jails, death traps and private rooms.
+
+You may move your recall point once every 30 minutes, and not while you
+are fighting or while the blood is still up from a fight.  RECALL DEFAULT
+is exempt from all of that: you can send your recall back to the Temple at
+any moment, so a choice you regret can never strand you.
+
+WORD OF RECALL sends you to the same place your RECALL does.
 
 If you RECALL during combat, you will lose experience (more than for fleeing),
 and you will have a chance of failing (again, more than for fleeing).  This
@@ -2694,7 +2761,7 @@ RECALL costs half of your movement points.
 RECALL doesn't work in certain god-forsaken rooms.  Characters afflicted by a
 curse may not recall at all.
 
-See also: WORD OF RECALL, PORTAL, MOVEMENT
+See also: WORD OF RECALL, PORTAL, MOVEMENT, CHANGES
 ~
 
 0 REMORT~

@@ -624,6 +624,10 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "SesPK    %d\n",  ch->pcdata->last_session_pk_kills );
     fprintf( fp, "SesDead  %d\n",  ch->pcdata->last_session_deaths );
     fprintf( fp, "SesQuest %d\n",  ch->pcdata->last_session_quests );
+    if( ch->pcdata->recall_vnum != 0 )
+	fprintf( fp, "RecallRoom %d\n", ch->pcdata->recall_vnum );
+    if( ch->pcdata->recall_set_at != 0 )
+	fprintf( fp, "RecallSet  %ld\n", ch->pcdata->recall_set_at );
     if( ch->questpoints != 0 )
 	fprintf( fp, "QuestPnts %d\n",	ch->questpoints );
     if( ch->queststreak != 0 )
@@ -1167,6 +1171,8 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->depart			= str_dup( "" );
     ch->pcdata->title			= str_dup( "" );
     ch->pcdata->psionic_grant_spec      = str_dup( "" );
+    ch->pcdata->recall_vnum             = 0;
+    ch->pcdata->recall_set_at           = 0;
     ch->pcdata->list_remorts            = str_dup( "" );
     ch->pcdata->num_remorts             = 0;
     for (stat =0; stat < MAX_STATS; stat++)
@@ -1764,6 +1770,8 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	case 'R':
 	    KEY( "Race",        ch->race,
 				(sh_int)(race_lookup(fread_string( fp ))) );
+	    KEY( "RecallRoom",	ch->pcdata->recall_vnum,   fread_number( fp ) );
+	    KEY( "RecallSet",	ch->pcdata->recall_set_at, fread_long( fp ) );
 
 	    if ( !str_cmp( word, "Room" ) )
 	    {

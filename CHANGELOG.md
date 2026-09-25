@@ -8,6 +8,39 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **RECALL can be moved.** It was a one-way trip to the Temple for
+  everybody; it now goes wherever the character last set it.
+
+  - `RECALL SET` makes the room you are standing in your recall point.
+  - `RECALL DEFAULT` puts it back to the Temple.
+  - `RECALL WHERE` says where it is and whether you may move it yet.
+
+  The wait is on *moving* the point, not on using it: recall stays free
+  and repeatable, because a standing shortcut to one favourite room -- a
+  hunting ground, a questmaster, the shop you live out of -- is the whole
+  feature. What 30 minutes stops is changing where recall lands in the
+  middle of something, which is the version that would matter in a fight.
+  Setting is also refused while fighting and while battleticks are still
+  running, so it cannot be used to reposition during a hunt.
+
+  `RECALL DEFAULT` is exempt from the wait by design. It is the way back
+  from a choice that turned out badly, and a character who cannot reach
+  their own recall point has no other way to reset it.
+
+  A room must be one recall works in: no `ROOM_NO_RECALL`, no jail, no
+  death trap, nothing private or staff-only. The stored vnum is rechecked
+  on every use rather than trusted from the player file, so an area edit
+  that removes the room or makes it no-recall quietly falls back to the
+  Temple instead of stranding anyone. `WORD OF RECALL` goes through the
+  same helper as the skill.
+
+- **HELP CHANGES lists changes.** It promised "a log of recent game
+  updates, balance changes, new features, and bug fixes" and then had
+  none of them. It now carries the player-visible changes of the last
+  month, newest first.
+
 ### Changed
 
 - **The bottom of the economy is priced for the people standing in it.**

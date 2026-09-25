@@ -4516,7 +4516,8 @@ void spell_word_of_recall( int sn, int level, CHAR_DATA *ch, void *vo )
     if (IS_NPC(victim))
       return;
 
-    if ((location = get_room_index( ROOM_VNUM_TEMPLE)) == NULL)
+    /* The same place RECALL goes, so the spell and the skill agree. */
+    if ((location = recall_room( victim )) == NULL)
     {
 	send_to_char("You are completely lost.\n\r",victim);
 	return;
