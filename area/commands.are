@@ -318,6 +318,30 @@ warning of your arrival.
 See also: ASTRAL WALK, PROJECT, PSIONICS
 ~
 
+0 MIRROR~
+Syntax: mirror <player>
+        mirror clear
+
+MIRROR takes off everything you are wearing and puts on what somebody
+else is wearing, so you can look at a character's setup from the inside -
+why they are taking the damage they are, whether a slot is empty, what a
+build actually adds up to - without asking them to hand anything over.
+
+It works whether or not they are logged in.  An online character is read
+from the game; an offline one from their last save, and MIRROR says which
+it used.
+
+What you get is a fresh copy of each piece made from its prototype, not
+their copy of it: an enchantment they put on their own sword is not
+reproduced, and neither is its wear and tear.  Anything you already had
+on comes off into your inventory and is not destroyed - MIRROR CLEAR
+takes the borrowed kit off again.
+
+Use of the command is logged.
+
+See also: INVULN, LOAD, CLONE, FINGER, STAT
+~
+
 0 INVULN INVULNERABLE~
 Syntax: invuln
         invuln damage
@@ -335,8 +359,9 @@ The argument chooses only how a blow reads, not whether it lands:
            do not lose anything.  This is what you want when you are
            watching a fight to see how it behaves.
 
-  ABSORB   attacks visibly do nothing.  Everyone in the room is told the
-           blow had no effect on you whatsoever.
+  ABSORB   attacks visibly do nothing.  They read exactly as they would
+           against something immune to the weapon being used - "Zog is
+           unaffected by your slash!" - and name the attack that failed.
 
   OFF      turn it off.
 
@@ -356,6 +381,10 @@ command named here for the detail.
   RECALL can be moved.  RECALL SET makes the room you are standing in your
   recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
   tells you where it is.  Once every 30 minutes, and not mid-fight.
+
+  Staff can now MIRROR a player's gear onto themselves to look at a
+  build from the inside, online or not, and INVULN stops anything hurting
+  them while they do it.
 
   Herbs and spell components actually appear now.  They had barely been
   landing at all for years, and the scattering is deliberately sparse -

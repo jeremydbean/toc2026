@@ -35,12 +35,27 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Lord General and the Fade in the Battleground, Zoltan and the second
   succubus in Valhalla.
 
+- **MIRROR, an immortal command that wears somebody else's kit.** It
+  takes off what the immortal has on -- into their inventory, not
+  destroyed -- and puts on what the named character is wearing, so a
+  build can be looked at from the inside without asking anyone to hand
+  anything over. It works whether or not they are logged in: an online
+  character is read from the game, an offline one from the `Wear` lines
+  of their last save, and the reply says which. Each piece is a fresh
+  object from its prototype rather than their copy, so an enchantment
+  they added is not reproduced. `mirror clear` takes it all off again.
+  ITEM_ACTION is never put on, because `equip_char` fires those and one
+  of them kills you. Logged.
+
 - **INVULN, an immortal toggle that stops anything hurting you.** No
   mobile, no player, no spell, and worn equipment stops taking damage
   too. `invuln damage` (the default) lets attacks connect and be
   described exactly as they would be, numbers and all, so a fight being
   watched still looks like a fight; `invuln absorb` makes every blow
-  visibly do nothing. Unlike WIZINVIS and CLOAK it shows nowhere -- not
+  read the way one does against something immune to the weapon being
+  used -- "Zog is unaffected by your slash!" -- borrowing the voice the
+  game already has for this rather than inventing a second one, and
+  naming the attack that failed. Unlike WIZINVIS and CLOAK it shows nowhere -- not
   on the score sheet, not to the room. Use of it is logged.
 
 - **RECALL can be moved.** It was a one-way trip to the Temple for

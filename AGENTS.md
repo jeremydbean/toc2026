@@ -681,6 +681,16 @@ blocks all of it: that flag is how an area keeps you inside, and it is a
 property of the place rather than the traveller. A new way of sending a
 character home goes through `recall_char_to_temple()`, not `do_recall`.
 
+## Reading An Offline Character
+
+`do_finger` and `do_mirror` in `src/act_wiz.c` both read a player file
+directly rather than going through `load_char_obj`, which would drag in
+room placement, pets and mail. The format is line-oriented for this
+purpose: `#O` opens an object, `Vnum`, `Nest` and `Wear` are always
+written, and nest zero with a wear location is something the character had
+on when they saved. Anything new that needs to look at an offline
+character should follow that rather than loading them.
+
 ## Staff Invulnerability
 
 `is_invulnerable(ch)` is the one test, and it is only true for an

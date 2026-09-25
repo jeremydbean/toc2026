@@ -8949,6 +8949,190 @@ void do_seal( CHAR_DATA *ch, char *argument )
 
 
 /*
+ * MIRROR: take off what you are wearing and put on somebody else's kit.
+ *
+ * For looking at a character's setup from the inside -- why they are
+ * taking the damage they are, whether a slot is empty, what a build
+ * actually adds up to -- without asking them to hand anything over, and
+ * without needing them to be online.
+ *
+ * Fresh objects are made from the vnums the target is wearing, so what
+ * you get is the prototype of each piece, not their copy of it: an
+ * enchantment they put on their own sword is not reproduced, and neither
+ * is its wear and tear. Everything the immortal already had on comes off
+ * into their inventory first and is not destroyed.
+ *
+ * An online character is read from the game. An offline one is read from
+ * the player file, which writes "Wear <n>" for every object it saves;
+ * anything at nest level zero with a wear location is something they had
+ * on when they logged out.
+ */
+static void mirror_strip( CHAR_DATA *ch )
+{
+    OBJ_DATA *obj;
+    int iWear;
+
+    for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
+    {
+	if ( ( obj = get_eq_char( ch, iWear ) ) != NULL )
+	    unequip_char( ch, obj );
+    }
+}
+
+static bool mirror_wear( CHAR_DATA *ch, int vnum, int iWear )
+{
+    OBJ_INDEX_DATA *pObjIndex;
+    OBJ_DATA *obj;
+
+    if ( iWear < 0 || iWear >= MAX_WEAR )
+	return false;
+    if ( get_eq_char( ch, iWear ) != NULL )
+	return false;
+    if ( ( pObjIndex = get_obj_index( vnum ) ) == NULL )
+	return false;
+
+    /* equip_char fires an ITEM_ACTION: one of them recalls you and one
+       of them kills you. Nobody wants that from a diagnostic. */
+    if ( pObjIndex->item_type == ITEM_ACTION )
+	return false;
+
+    obj = create_object( pObjIndex, 0 );
+    obj_to_char( obj, ch );
+    equip_char( ch, obj, iWear );
+
+    return get_eq_char( ch, iWear ) == obj;
+}
+
+void do_mirror( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    char fname[MAX_INPUT_LENGTH];
+    CHAR_DATA *victim;
+    FILE *fp;
+    int worn = 0;
+    int missed = 0;
+
+    if ( IS_NPC(ch) )
+	return;
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+	send_to_char( "Syntax: mirror <player>\n\r"
+	              "        mirror clear\n\r", ch );
+	return;
+    }
+
+    if ( !str_prefix( arg, "clear" ) || !str_prefix( arg, "off" ) )
+    {
+	mirror_strip( ch );
+	send_to_char( "You take everything off.\n\r", ch );
+	return;
+    }
+
+    /* Online: read the character rather than a file that may be stale. */
+    if ( ( victim = get_char_world( ch, arg ) ) != NULL && !IS_NPC(victim) )
+    {
+	int wanted[MAX_WEAR];
+	OBJ_DATA *obj;
+	int iWear;
+
+	for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
+	    wanted[iWear] = -1;
+
+	for ( obj = victim->carrying; obj != NULL; obj = obj->next_content )
+	{
+	    if ( obj->wear_loc >= 0 && obj->wear_loc < MAX_WEAR
+	    &&   obj->pIndexData != NULL )
+		wanted[obj->wear_loc] = obj->pIndexData->vnum;
+	}
+
+	mirror_strip( ch );
+
+	for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
+	{
+	    if ( wanted[iWear] < 0 )
+		continue;
+	    if ( mirror_wear( ch, wanted[iWear], iWear ) )
+		worn++;
+	    else
+		missed++;
+	}
+
+	snprintf( buf, sizeof(buf),
+	    "You are wearing %s's kit: %d piece%s%s.\n\r",
+	    victim->name, worn, worn == 1 ? "" : "s",
+	    missed > 0 ? " (some would not go on)" : "" );
+	send_to_char( buf, ch );
+	return;
+    }
+
+    snprintf( fname, sizeof(fname), "%s%s", PLAYER_DIR, capitalize( arg ) );
+
+    if ( ( fp = fopen( fname, "r" ) ) == NULL )
+    {
+	send_to_char( "No player by that name found.\n\r", ch );
+	return;
+    }
+
+    mirror_strip( ch );
+
+    {
+	char linebuf[256];
+	char keyword[64];
+	int  vnum = 0;
+	int  nest = 0;
+	bool have_vnum = false;
+
+	while ( fgets( linebuf, (int)sizeof(linebuf), fp ) != NULL )
+	{
+	    if ( sscanf( linebuf, "%60s", keyword ) != 1 )
+		continue;
+
+	    if ( !strcmp( keyword, "#O" ) )
+	    {
+		vnum = 0;
+		nest = 0;
+		have_vnum = false;
+	    }
+	    else if ( !strcmp( keyword, "Vnum" ) )
+	    {
+		have_vnum = sscanf( linebuf, "%*s %d", &vnum ) == 1;
+	    }
+	    else if ( !strcmp( keyword, "Nest" ) )
+	    {
+		sscanf( linebuf, "%*s %d", &nest );
+	    }
+	    else if ( !strcmp( keyword, "Wear" ) )
+	    {
+		int iWear = -1;
+
+		sscanf( linebuf, "%*s %d", &iWear );
+		/* Nest zero is what they had on them rather than inside
+		   something, and WEAR_NONE is carried rather than worn. */
+		if ( have_vnum && nest == 0 && iWear >= 0 )
+		{
+		    if ( mirror_wear( ch, vnum, iWear ) )
+			worn++;
+		    else
+			missed++;
+		}
+	    }
+	}
+    }
+
+    fclose( fp );
+
+    snprintf( buf, sizeof(buf),
+	"You are wearing %s's kit as they last saved it: %d piece%s%s.\n\r",
+	capitalize( arg ), worn, worn == 1 ? "" : "s",
+	missed > 0 ? " (some would not go on)" : "" );
+    send_to_char( buf, ch );
+}
+
+/*
  * FINGER: look up player info (online or offline).
  */
 void do_finger( CHAR_DATA *ch, char *argument )

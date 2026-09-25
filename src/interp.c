@@ -395,6 +395,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "jail",           do_jail,        POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "ksock",          do_ksock,       POS_DEAD,       L6,  LOG_NORMAL, 1 },
     { "load",           do_load,        POS_DEAD,       L5,  LOG_ALWAYS, 1 },
+    { "mirror",         do_mirror,      POS_STANDING,   L5,  LOG_ALWAYS, 1 },
     { "log",            do_log,         POS_DEAD,       L2,  LOG_ALWAYS, 1 },
     { "memory",         do_memory,      POS_DEAD,       L5,  LOG_NORMAL, 1 },
     { "mwhere",         do_mwhere,      POS_DEAD,       L8,  LOG_NORMAL, 1 },

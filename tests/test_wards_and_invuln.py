@@ -130,7 +130,9 @@ class InvulnTests(unittest.TestCase):
             self.assertEqual(hitpoints(client), before,
                              "an invulnerable immortal lost hit points")
 
-    def test_absorb_says_the_blow_did_nothing(self) -> None:
+    def test_absorb_reads_as_the_immunity_the_game_already_has(self) -> None:
+        """Not a second wording for the same idea: the one a weapon gets
+        when it hits something immune to it, naming the attack."""
         with self.mud.connect(timeout=120) as client:
             login(client, "Zinvuln", PASSWORD)
             run(client, "invuln absorb", 1.5)
@@ -140,10 +142,10 @@ class InvulnTests(unittest.TestCase):
             fight = ""
             for _ in range(10):
                 fight += run(client, "", 2.5)
-                if "no effect on you whatsoever" in fight:
+                if "powerless against you" in fight:
                     break
 
-            self.assertIn("no effect on you whatsoever", fight, fight[-600:])
+            self.assertIn("powerless against you", fight, fight[-600:])
             self.assertEqual(hitpoints(client), before)
 
     def test_the_flag_is_not_shown_to_anyone(self) -> None:

@@ -1282,22 +1282,6 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     if ( victim->position == POS_DEAD )
 	return false;
 
-    /* Staff invulnerability, absorbing. Nothing below this runs, so the
-       blow reads as the nothing it is. The other mode falls through and
-       is stopped further down, where the hit points would have come off,
-       so that a fight an immortal is watching still looks like a fight. */
-    if ( dam > 0 && victim != ch && is_invulnerable( victim )
-    &&   IS_SET(victim->act, PLR_INVULN_ABSORB) )
-    {
-	act( "$n's attack has no effect on you whatsoever.",
-	    ch, NULL, victim, TO_VICT );
-	act( "Your attack has no effect on $N whatsoever.",
-	    ch, NULL, victim, TO_CHAR );
-	act( "$n's attack has no effect on $N whatsoever.",
-	    ch, NULL, victim, TO_NOTVICT );
-	return false;
-    }
-
     hyrule_silver_arrow_hit = dam > 0 && is_hyrule_ganon(victim)
         && is_silver_arrow_attack(ch, dt);
 
@@ -1505,6 +1489,20 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
             / HYRULE_SILVER_ARROW_GANON_DAMAGE_DIVISOR));
 
     dam = apply_hyrule_relic_damage_reduction( victim, dam, dam_type );
+
+    /* Staff invulnerability, absorbing. Borrowing the immunity the game
+       already has a voice for -- "$N is unaffected by your slash!" --
+       rather than inventing a second wording for the same idea, and it
+       names the attack that failed. dam of zero then stops everything
+       below, so nothing else has to know about it. The other mode leaves
+       both alone and is stopped where the hit points come off, so a fight
+       an immortal is watching still looks like a fight. */
+    if ( dam > 0 && victim != ch && is_invulnerable( victim )
+    &&   IS_SET(victim->act, PLR_INVULN_ABSORB) )
+    {
+	immune = true;
+	dam = 0;
+    }
 
     dam_message( ch, victim, dam, dt, immune );
 
