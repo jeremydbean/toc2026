@@ -39,6 +39,8 @@ PASSWORD = "Zward1"
 
 # The Inner Fortress, where a Lord General stands. It carries the ward.
 BATTLEGROUND_ROOM = 29315
+# Somewhere with nothing in it that attacks on sight.
+TEMPLE_ROOM = 4207
 MUD_SCHOOL = 3700
 
 # MAX_LEVEL is 70, so nothing at 72 is reachable by any class.
@@ -151,14 +153,25 @@ class InvulnTests(unittest.TestCase):
             self.assertTrue(client.wait_closed())
         # A mortal level with an immortal trust: the two disagree, which
         # is the whole point of the fixture.
+        #
+        # They start somewhere safe and walk in, unlike the immortal
+        # tests above. A level 70 character is an immortal and the
+        # Battleground's aggressives ignore them; a level 45 one is prey,
+        # so logging in there put the character in combat before the test
+        # could type anything and the reply to INVULN arrived buried in
+        # combat rounds. Turn it on first, then go where it matters --
+        # which also makes this a better test, since the protection is
+        # now standing before the first blow rather than racing it.
         patch_player_file(self.mud, "Ztrusted", Levl=45, Tru=65,
-                          Room=BATTLEGROUND_ROOM,
+                          Room=TEMPLE_ROOM,
                           HpManaMove="20000 20000 20000 20000 20000 20000")
 
         with self.mud.connect(timeout=120) as client:
             login(client, "Ztrusted", PASSWORD)
             self.assertIn("read normally", run(client, "invuln damage", 1.5))
 
+            # goto is LEVEL_IMMORTAL, which trust 65 clears.
+            run(client, "goto %d" % BATTLEGROUND_ROOM, 2.0)
             before = hitpoints(client)
             self.assertGreater(before, 0)
             run(client, "kill general", 2.5)

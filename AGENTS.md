@@ -252,6 +252,16 @@ Live-test gotchas that look like product bugs and are not:
 - `parse_login_journal()` returns **file order, oldest first**.
 - Guildmaster mob vnums are not room vnums. `goto 4701` goes to a room;
   the Necro Guild Master lives in room 4721.
+- **`Levl=70` in a fixture makes an immortal, and aggressives ignore
+  immortals.** A test that patches a character to level 70 and drops
+  them somewhere dangerous is quiet; the same fixture at a mortal level
+  is in combat before the first command is typed, and the reply the
+  test asserts on arrives buried in combat rounds. Put a mortal fixture
+  somewhere safe -- the Temple is 4207 -- set up what you need, then
+  `goto` the dangerous room. It is also the better test: whatever you
+  are proving is then standing before the first blow instead of racing
+  it. A live test that passes in ~57s and fails in ~30s is usually
+  failing its first assertion, not behaving differently.
 
 ## Source Ownership Map
 
