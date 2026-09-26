@@ -648,6 +648,54 @@ Because `install-pi.sh --refresh` runs before the restart in the same
 run, a change to the updater takes effect on the *next* deploy, not the
 one carrying it.
 
+**Never commit a change to a file the running game writes.** The
+updater advances the checkout with `git merge --ff-only`, and the game
+rewrites several tracked paths continuously, so on the Pi they are
+always dirty. A commit that touches one of them does not merely lose
+the live copy -- the merge refuses outright and **every later deploy
+fails** until somebody fixes the tree by hand. The `dirty_paths`
+allowlist earlier in the script does not help: it decides whether to
+start, while the refusal comes from the merge itself.
+
+The paths that behave this way are the ones that allowlist names:
+`area/custom.are` and, under `area/`, `shutdown`, `ban`, `maxload`,
+`wizlist`, `offense`, `relics`, `not` and `pkilldata`. `bugs`, `ideas`,
+`typos` and `notes` were among them until 2026-09-26 and are now
+untracked and gitignored, which is the right shape for all of these:
+runtime state does not belong in the repository. Untracking one is
+itself such a commit, so it needs the same care -- back the live copies
+up, restore the tracked versions so the paths are clean, let the merge
+remove them, then put the live content back.
+
+## Player Reports
+
+`bug`, `typo` and `idea` append one line each to `area/bugs.txt`,
+`area/typos.txt` and `area/ideas.txt`, and always did nothing else. The
+files reached 135, 106 and 500 lines on the live server because nothing
+announced a report and nothing read one back.
+
+`report_login_notice()` in `src/act_comm.c` now says at login how many
+notes are unread -- for everybody -- and, for staff, how many reports
+have arrived since they last looked. `REPORTS` reads them and
+`REPORTS CLEAR <kind>` renames the file with a timestamp rather than
+deleting it: those files are the only record of what a player said.
+`pcdata->reports_seen[]` holds the per-character read position and
+saves as one `ReportsSeen` line under **case 'R'** in `fread_char`.
+
+Most of what is in them is not a report. A player who types `bug` and
+their next command on one line files the command, so the files are full
+of `wear all`, `here` and `short sword`. Clearing is therefore part of
+the feature, not a nicety: a backlog nobody can clear is a backlog
+nobody reads. Anything genuine in there is worth turning into work --
+see the `title` command, teleport on oneself, and a Gang Land room
+describing an exit it does not have.
+
+The staff half is gated with `IS_TRUSTED(ch, LEVEL_IMMORTAL)`, not
+`IS_IMMORTAL`. `is_note_to()` still uses `IS_IMMORTAL`, so a trusted
+builder does not receive notes addressed to `immortal`; that is the
+same class of bug as the INVULN one and has not been changed, because
+it alters who receives mail.
+
 Other deploy facts:
 
 - Never run the Pi installer or updater against the Windows VM; that host is

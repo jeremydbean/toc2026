@@ -37,3 +37,16 @@ heroes/*
 # mid-write. Both belong to the running server, not to the repository.
 area/*.are.*.bak
 area/*.are.tmp
+
+# Player-written report files and the note board. The game appends to
+# these while it runs, so a live server always shows them modified, and
+# they carry player names and player-to-player mail. Tracked until
+# 2026-09-26; history still holds the old contents.
+area/bugs.txt
+area/typos.txt
+area/ideas.txt
+area/notes.txt
+# What REPORTS CLEAR sets aside, same content under a dated name.
+area/bugs.txt.*
+area/typos.txt.*
+area/ideas.txt.*

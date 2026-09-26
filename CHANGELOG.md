@@ -10,6 +10,44 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **The game says when something is waiting for you.** Unread notes are
+  announced at login, for everyone, instead of sitting unmentioned until
+  somebody thought to type NOTE. Staff additionally get a count of the
+  bug, typo and idea reports filed since they last looked, and a
+  `REPORTS` command to read them: `reports` for a summary, `reports
+  bugs|typos|ideas [n]` for the most recent, `reports clear <kind>` to
+  set a file aside.
+
+  `bug`, `typo` and `idea` have always appended one line to a flat file
+  and done nothing else -- nothing announced a report and nothing read
+  one back -- so on the live server they had reached 135, 106 and 500
+  lines, unread. Most of it is not a report at all: typing `bug` and
+  your next command on one line files the command, which is why those
+  files are full of `wear all` and `short sword`. Clearing is part of
+  the feature for that reason, and it renames the file with a timestamp
+  rather than deleting it, because what a player told us is worth
+  keeping even when the file is mostly noise.
+
+  The read position lives in `pcdata->reports_seen[]` and saves as one
+  `ReportsSeen` line under case `'R'`, which is the letter `fread_char`
+  dispatches on. The staff half is gated on
+  `IS_TRUSTED(ch, LEVEL_IMMORTAL)` rather than the raw level.
+
+### Changed
+
+- **The player report files and the note board are no longer tracked in
+  git.** `area/bugs.txt`, `typos.txt`, `ideas.txt` and `notes.txt` held
+  739 lines of player-written text, including player names and the
+  in-game note board, and the running game rewrites all four. Runtime
+  state does not belong in the repository. They are gitignored now;
+  history still holds what was committed before.
+
+  Untracking one of these is delicate. The updater advances the Pi with
+  `git merge --ff-only`, and these paths are permanently dirty there, so
+  a commit that touches one makes the merge refuse and blocks every
+  later deploy until the tree is fixed by hand. The live copies were
+  backed up and restored around this change.
+
 - **Two monster wards that had never worked now do.** `dshield` and
   `baura` have sat in the skill table since before this repository's
   history as `spell_null`: no cast function, and in no class's skill

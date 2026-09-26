@@ -2836,6 +2836,12 @@ case CON_DEFAULT_CHOICE:
 		    send_to_char(buf, ch);
 		}
 	    }
+
+	    /* Last, so it is the thing left on screen: unread notes for
+	       anyone, and player reports for staff. Both used to be
+	       silent -- a report went into a flat file that nothing in
+	       the game ever mentioned again. */
+	    report_login_notice( ch );
 	}
 	break;
     }

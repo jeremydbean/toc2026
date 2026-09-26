@@ -188,6 +188,13 @@ typedef struct script_loop_prepoll_payload
 /* String and memory management parameters. */
 #define MAX_KEY_HASH             2048
 #define MAX_STRING_LENGTH        4096
+/* BUG, TYPO and IDEA each append to one of these. The order is fixed:
+   a saved ReportsSeen line is three numbers in it. */
+#define REPORT_BUGS     0
+#define REPORT_TYPOS    1
+#define REPORT_IDEAS    2
+#define REPORT_KINDS    3
+
 /* Largest telnet subnegotiation payload we will buffer (GMCP JSON is the
  * biggest realistic consumer). Anything longer is discarded rather than
  * truncated into a malformed message. */
@@ -1769,6 +1776,12 @@ struct  pc_data
     int                 last_session_deaths;  /* deaths last session */
     int                 last_session_quests;  /* quests completed last session */
 
+    /* How many lines of each report file this character had seen the
+       last time they looked, so REPORTS can say what is new. Counted
+       in lines because that is what the files are: BUG, TYPO and IDEA
+       each append exactly one. */
+    int                 reports_seen[REPORT_KINDS];
+
     /* What MIRROR took off, so MIRROR RESTORE can put it back. Vnums
        rather than pointers: an object can be dropped, sacrificed or
        destroyed between the two commands, and a stale pointer to one is
@@ -2299,6 +2312,10 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 /* Function Prototypes */
 /* act_comm.c */
 bool    is_note_to      ( CHAR_DATA *ch, NOTE_DATA *pnote );
+int     unread_note_count ( CHAR_DATA *ch );
+int     report_line_count ( int kind );
+const char *report_kind_name ( int kind );
+void    report_login_notice ( CHAR_DATA *ch );
 void    save_notes      ( void );
 void    check_sex       ( CHAR_DATA *ch);
 void    add_follower    ( CHAR_DATA *ch, CHAR_DATA *master );

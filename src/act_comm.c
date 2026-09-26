@@ -2299,6 +2299,360 @@ void do_pose( CHAR_DATA *ch, char *argument )
 
 
 
+/*
+ * BUG, TYPO and IDEA reports, and telling somebody they exist.
+ *
+ * The three commands have always appended a line each to a flat file and
+ * said nothing more about it. Nothing in the game announced a report and
+ * nothing read one back, so the only way to see what players had filed
+ * was to open the files on the host -- and mostly nobody did. The three
+ * files on the live server had grown to 135, 106 and 500 lines.
+ *
+ * Most of that is not a report at all. A player who types BUG and then
+ * their next command on the same line files the command, so the files
+ * are full of "wear all", "here" and "short sword". That is why CLEAR
+ * exists: a backlog nobody can clear is a backlog nobody reads.
+ */
+static const char *const report_files[REPORT_KINDS] =
+{
+    BUG_FILE, TYPO_FILE, IDEA_FILE
+};
+
+static const char *const report_names[REPORT_KINDS] =
+{
+    "bug", "typo", "idea"
+};
+
+/* What the syntax line offers, and what anyone would actually type.
+   Matching is done against these because a prefix test against the
+   singular rejects the plural: "bugs" is not a prefix of "bug", so the
+   documented spelling was the one spelling that did not work. The
+   singular above is for prose, where "1 new bug" reads properly. */
+static const char *const report_plurals[REPORT_KINDS] =
+{
+    "bugs", "typos", "ideas"
+};
+
+const char *report_kind_name( int kind )
+{
+    if ( kind < 0 || kind >= REPORT_KINDS )
+	return "report";
+
+    return report_names[kind];
+}
+
+/*
+ * How many reports of this kind exist. One line is one report: that is
+ * the shape append_file writes and nothing else appends to these.
+ */
+int report_line_count( int kind )
+{
+    FILE *fp;
+    int count = 0;
+    int c;
+    int last = '\n';
+
+    if ( kind < 0 || kind >= REPORT_KINDS )
+	return 0;
+
+    fclose( fpReserve );
+    if ( ( fp = fopen( report_files[kind], "r" ) ) != NULL )
+    {
+	while ( ( c = getc( fp ) ) != EOF )
+	{
+	    if ( c == '\n' )
+		count++;
+	    last = c;
+	}
+	/* A last line somebody left unterminated is still a report. */
+	if ( last != '\n' )
+	    count++;
+	fclose( fp );
+    }
+    fpReserve = fopen( NULL_FILE, "r" );
+
+    return count;
+}
+
+/*
+ * Notes waiting for this character that they have not read.
+ */
+int unread_note_count( CHAR_DATA *ch )
+{
+    NOTE_DATA *pnote;
+    int count = 0;
+
+    if ( ch == NULL || IS_NPC(ch) )
+	return 0;
+
+    for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
+    {
+	if ( is_note_to( ch, pnote ) && pnote->date_stamp > ch->last_note )
+	    count++;
+    }
+
+    return count;
+}
+
+/*
+ * Said once, at login, and meant to be hard to scroll past.
+ */
+void report_login_notice( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    int notes;
+    int fresh[REPORT_KINDS];
+    int kind;
+    int total = 0;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->desc == NULL )
+	return;
+
+    notes = unread_note_count( ch );
+
+    if ( notes > 0 )
+    {
+	snprintf( buf, sizeof(buf),
+	    "\n\r{0E+----------------------------------------------------+{00\n\r"
+	    "{0E|{00  You have {0F%d{00 unread note%s waiting.%*s{0E|{00\n\r"
+	    "{0E|{00  Type {0FNOTE READ{00 to read %s.%*s{0E|{00\n\r"
+	    "{0E+----------------------------------------------------+{00\n\r",
+	    notes, notes == 1 ? "" : "s",
+	    notes == 1 ? 22 : 21, "",
+	    notes == 1 ? "it" : "them",
+	    notes == 1 ? 21 : 19, "" );
+	send_to_char( buf, ch );
+    }
+
+    /* The report files are staff business. */
+    if ( !IS_TRUSTED(ch, LEVEL_IMMORTAL) )
+	return;
+
+    for ( kind = 0; kind < REPORT_KINDS; kind++ )
+    {
+	fresh[kind] = report_line_count( kind ) - ch->pcdata->reports_seen[kind];
+	if ( fresh[kind] < 0 )
+	{
+	    /* Somebody cleared the file since this character last looked.
+	       Their marker is ahead of what exists; start it over rather
+	       than reporting a negative backlog. */
+	    ch->pcdata->reports_seen[kind] = report_line_count( kind );
+	    fresh[kind] = 0;
+	}
+	total += fresh[kind];
+    }
+
+    if ( total < 1 )
+	return;
+
+    send_to_char(
+	"\n\r{0C+----------------------------------------------------+{00\n\r"
+	"{0C|{00  {0FNEW PLAYER REPORTS{00                                "
+	"{0C|{00\n\r", ch );
+
+    for ( kind = 0; kind < REPORT_KINDS; kind++ )
+    {
+	if ( fresh[kind] < 1 )
+	    continue;
+
+	snprintf( buf, sizeof(buf),
+	    "{0C|{00    {0F%4d{00 new %s%-6s                                 "
+	    "{0C|{00\n\r",
+	    fresh[kind], report_kind_name( kind ),
+	    fresh[kind] == 1 ? "" : "s" );
+	send_to_char( buf, ch );
+    }
+
+    send_to_char(
+	"{0C|{00  Type {0FREPORTS{00 to read them.                        "
+	"{0C|{00\n\r"
+	"{0C+----------------------------------------------------+{00\n\r", ch );
+}
+
+/*
+ * REPORTS: read what players have filed, and clear it when it is dealt
+ * with.
+ */
+void do_reports( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    FILE *fp;
+    int kind = -1;
+    int i;
+
+    if ( IS_NPC(ch) )
+	return;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    if ( arg1[0] != '\0' && !str_prefix( arg1, "clear" ) )
+    {
+	char stamp[64];
+	char archive[MAX_INPUT_LENGTH];
+	time_t now = current_time;
+	struct tm *when;
+
+	for ( i = 0; i < REPORT_KINDS; i++ )
+	{
+	    if ( arg2[0] != '\0' && !str_prefix( arg2, report_plurals[i] ) )
+		kind = i;
+	}
+
+	if ( kind < 0 )
+	{
+	    send_to_char( "Clear which: bugs, typos or ideas?\n\r", ch );
+	    return;
+	}
+
+	if ( report_line_count( kind ) < 1 )
+	{
+	    snprintf( buf, sizeof(buf), "There are no %s reports to clear.\n\r",
+		report_kind_name( kind ) );
+	    send_to_char( buf, ch );
+	    return;
+	}
+
+	/* Renamed rather than deleted. These are the only record of what
+	   players told us, and a mistyped command should not destroy
+	   them. */
+	when = localtime( &now );
+	if ( when == NULL || strftime( stamp, sizeof(stamp), "%Y%m%d-%H%M%S",
+		when ) == 0 )
+	    toc_strlcpy( stamp, "archive", sizeof(stamp) );
+
+	snprintf( archive, sizeof(archive), "%s.%s",
+	    report_files[kind], stamp );
+
+	if ( rename( report_files[kind], archive ) != 0 )
+	{
+	    send_to_char( "Could not set that file aside.\n\r", ch );
+	    return;
+	}
+
+	ch->pcdata->reports_seen[kind] = 0;
+	snprintf( buf, sizeof(buf),
+	    "The %s reports are set aside in %s.\n\r",
+	    report_kind_name( kind ), archive );
+	send_to_char( buf, ch );
+
+	snprintf( buf, sizeof(buf), "%s cleared the %s reports.",
+	    ch->name, report_kind_name( kind ) );
+	wizinfo( buf, get_trust( ch ) );
+	return;
+    }
+
+    for ( i = 0; i < REPORT_KINDS; i++ )
+    {
+	if ( arg1[0] != '\0' && !str_prefix( arg1, report_plurals[i] ) )
+	    kind = i;
+    }
+
+    if ( kind < 0 )
+    {
+	/* A summary, and what is new since this character last looked. */
+	send_to_char( "Syntax: reports <bugs|typos|ideas> [count]\n\r"
+		      "        reports clear <bugs|typos|ideas>\n\r\n\r", ch );
+
+	for ( i = 0; i < REPORT_KINDS; i++ )
+	{
+	    int have = report_line_count( i );
+	    int fresh = have - ch->pcdata->reports_seen[i];
+
+	    if ( fresh < 0 )
+		fresh = 0;
+
+	    snprintf( buf, sizeof(buf), "  %-6s %4d filed, {0F%d{00 new\n\r",
+		report_plurals[i], have, fresh );
+	    send_to_char( buf, ch );
+	}
+	return;
+    }
+
+    {
+	int want = is_number( arg2 ) ? atoi( arg2 ) : 20;
+	int have = report_line_count( kind );
+	int shown = 0;
+	int line = 0;
+	bool full = false;
+	char record[MAX_INPUT_LENGTH];
+	char output[MAX_STRING_LENGTH];
+
+	if ( want < 1 )
+	    want = 1;
+	/* One page of output is one buffer here: this fork has no
+	   growable BUFFER, so the cap is what MAX_STRING_LENGTH holds
+	   rather than an arbitrary number. */
+	if ( want > 40 )
+	    want = 40;
+
+	if ( have < 1 )
+	{
+	    snprintf( buf, sizeof(buf), "No %s reports have been filed.\n\r",
+		report_kind_name( kind ) );
+	    send_to_char( buf, ch );
+	    return;
+	}
+
+	snprintf( output, sizeof(output),
+	    "The %d most recent of %d %s report%s:\n\r",
+	    UMIN( want, have ), have, report_kind_name( kind ),
+	    have == 1 ? "" : "s" );
+
+	fclose( fpReserve );
+	if ( ( fp = fopen( report_files[kind], "r" ) ) != NULL )
+	{
+	    while ( !full && fgets( record, (int)sizeof(record), fp ) != NULL )
+	    {
+		char *nl;
+
+		line++;
+		if ( line <= have - want )
+		    continue;
+
+		if ( ( nl = strchr( record, '\n' ) ) != NULL )
+		    *nl = '\0';
+		if ( ( nl = strchr( record, '\r' ) ) != NULL )
+		    *nl = '\0';
+
+		/* Players wrote these, so they are shown as text. Any
+		   colour token in one is left as the literal characters
+		   the player typed rather than interpreted. */
+		snprintf( buf, sizeof(buf), "  %s\n\r", record );
+		if ( strlen( output ) + strlen( buf ) + 64 >= sizeof(output) )
+		{
+		    full = true;
+		    break;
+		}
+		toc_strlcat( output, buf, sizeof(output) );
+		shown++;
+	    }
+	    fclose( fp );
+	}
+	fpReserve = fopen( NULL_FILE, "r" );
+
+	if ( shown < 1 )
+	    toc_strlcat( output, "  (nothing readable in the file)\n\r",
+		sizeof(output) );
+	else if ( full )
+	    toc_strlcat( output,
+		"  ... the rest would not fit; ask for fewer.\n\r",
+		sizeof(output) );
+
+	page_to_char( output, ch );
+
+	/* Everything up to here has now been seen, so the login notice
+	   should not raise it again. Only what was actually shown: a
+	   truncated page leaves the remainder new. */
+	if ( !full )
+	    ch->pcdata->reports_seen[kind] = have;
+	else
+	    ch->pcdata->reports_seen[kind] = have - want + shown;
+    }
+}
+
 void do_bug( CHAR_DATA *ch, char *argument )
 {
     /* Code Safety: Secure file append using safe fprintf format */

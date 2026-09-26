@@ -587,6 +587,13 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "ListRemorts %s~\n", ch->pcdata->list_remorts ? ch->pcdata->list_remorts : "" );
     fprintf( fp, "NumRemorts %d\n", ch->pcdata->num_remorts );
     fprintf( fp, "Note %d\n",	(int)	ch->last_note	);
+    if ( ch->pcdata->reports_seen[REPORT_BUGS] > 0
+    ||   ch->pcdata->reports_seen[REPORT_TYPOS] > 0
+    ||   ch->pcdata->reports_seen[REPORT_IDEAS] > 0 )
+	fprintf( fp, "ReportsSeen %d %d %d\n",
+	    ch->pcdata->reports_seen[REPORT_BUGS],
+	    ch->pcdata->reports_seen[REPORT_TYPOS],
+	    ch->pcdata->reports_seen[REPORT_IDEAS] );
     fprintf( fp, "Scro %d\n", 	ch->lines		);
     fprintf( fp, "Room %d\n",
         (  ch->in_room == get_room_index( ROOM_VNUM_LIMBO )
@@ -1178,6 +1185,12 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	    ch->pcdata->mirror_worn[iWear] = 0;
     }
     ch->pcdata->mirror_of[0]            = '\0';
+    {
+	int iKind;
+
+	for ( iKind = 0; iKind < REPORT_KINDS; iKind++ )
+	    ch->pcdata->reports_seen[iKind] = 0;
+    }
     ch->pcdata->recall_vnum             = 0;
     ch->pcdata->recall_set_at           = 0;
     ch->pcdata->list_remorts            = str_dup( "" );
@@ -1779,6 +1792,20 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 				(sh_int)(race_lookup(fread_string( fp ))) );
 	    KEY( "RecallRoom",	ch->pcdata->recall_vnum,   fread_number( fp ) );
 	    KEY( "RecallSet",	ch->pcdata->recall_set_at, fread_long( fp ) );
+
+	    /* Three numbers on one line, so it stays a single key. It
+	       sits in case 'R' because fread_char dispatches on the
+	       first letter of the key: anywhere else it never matches,
+	       and the loader then desyncs on the values it did not
+	       consume. */
+	    if ( !str_cmp( word, "ReportsSeen" ) )
+	    {
+		ch->pcdata->reports_seen[REPORT_BUGS]  = fread_number( fp );
+		ch->pcdata->reports_seen[REPORT_TYPOS] = fread_number( fp );
+		ch->pcdata->reports_seen[REPORT_IDEAS] = fread_number( fp );
+		fMatch = true;
+		break;
+	    }
 
 	    if ( !str_cmp( word, "Room" ) )
 	    {

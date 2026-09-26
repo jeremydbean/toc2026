@@ -318,6 +318,30 @@ warning of your arrival.
 See also: ASTRAL WALK, PROJECT, PSIONICS
 ~
 
+0 REPORTS~
+Syntax: reports
+        reports <bugs|typos|ideas> [count]
+        reports clear <bugs|typos|ideas>
+
+What players have filed with BUG, TYPO and IDEA.  Each of those adds one
+line to a file, and until now nothing in the game ever mentioned them
+again, so they piled up unread - several hundred of them.
+
+REPORTS on its own counts what has been filed and how much of it is new
+since you last looked.  Naming a kind shows the most recent ones, twenty
+by default, and marks them read; you are told at login when more arrive.
+
+Be warned that most of what is in there is not a report.  Typing BUG and
+your next command on the same line files the command, so these files are
+full of "wear all" and "short sword" among the real reports.
+
+REPORTS CLEAR sets a file aside under a dated name rather than deleting
+it.  What a player told us is worth keeping even when the file is mostly
+noise, and a mistyped command should not destroy it.
+
+See also: BUG, TYPO, IDEA, NOTE
+~
+
 0 MIRROR~
 Syntax: mirror <player>
         mirror restore
@@ -394,6 +418,11 @@ command named here for the detail.
   RECALL can be moved.  RECALL SET makes the room you are standing in your
   recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
   tells you where it is.  Once every 30 minutes, and not mid-fight.
+
+  The game says when something is waiting for you.  Unread notes are
+  announced at login instead of sitting unmentioned, and staff are told
+  how many bug, typo and idea reports have come in since they last
+  looked.  See HELP REPORTS.
 
   Staff can now MIRROR a player's gear onto themselves to look at a
   build from the inside, online or not, and INVULN stops anything hurting
