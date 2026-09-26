@@ -29,6 +29,9 @@ import pathlib
 import re
 import sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "webadmin"))
+from area_parser import format_area_name  # noqa: E402
+
 AREA = pathlib.Path("area")
 START = 2401
 
@@ -636,12 +639,16 @@ def main():
         if vnum == START or not path:
             continue
         routes.append({
-            "name": area,
+            # Shown, searched and sorted on, so it leads with the zone.
+            # `area` keeps the file's own wording because match_area and
+            # the parity test both compare against it.
+            "name": format_area_name(area),
             "commands": to_commands(rooms, path),
             "steps": describe(rooms, path),
             "room": rooms[vnum]["name"],
             "vnum": vnum,
             "area": area,
+            "area_display": format_area_name(area),
             "rooms_away": len(path),
             "status": "computed",
         })
@@ -664,6 +671,7 @@ def main():
                 "room": room.get("name", ""),
                 "vnum": here,
                 "area": room.get("area", ""),
+                "area_display": format_area_name(room.get("area", "")),
                 "status": "verified" if problem is None else "drifted",
             }
 
@@ -676,6 +684,8 @@ def main():
                     entry["fixed_steps"] = fixed["steps"]
                     entry["fixed_room"] = fixed["room"]
                     entry["fixed_area"] = fixed["area"]
+                    entry["fixed_area_display"] = format_area_name(
+                        fixed["area"])
                 else:
                     # Some of these aim at a thing rather than an area --
                     # an opal, a light, a nest of hobgoblins -- so look for
@@ -687,12 +697,15 @@ def main():
                         entry["fixed_steps"] = describe(rooms, path)
                         entry["fixed_room"] = rooms[landmark]["name"]
                         entry["fixed_area"] = rooms[landmark]["area"]
+                        entry["fixed_area_display"] = format_area_name(
+                            rooms[landmark]["area"])
 
             legacy.append(entry)
 
     payload = {
         "start": {"vnum": START, "room": rooms[START]["name"],
-                  "area": rooms[START]["area"]},
+                  "area": rooms[START]["area"],
+                  "area_display": format_area_name(rooms[START]["area"])},
         "counts": {
             "computed": len(routes),
             "legacy_ok": sum(1 for e in legacy if e["status"] == "verified"),

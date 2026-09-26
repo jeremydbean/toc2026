@@ -569,6 +569,82 @@
 
     // Travel directions from the Oak Tree Square, checked against the
     // world when they were generated. Public, like the help text.
+    // Mudlet treats a single semicolon as literal text and wants two to
+    // separate commands, so directions copied straight from here ran as
+    // one long nonsense command. The toggle is per browser and remembered.
+    const SEPARATOR_KEY = "toc.routes.separator";
+
+    function commandSeparator() {
+        try {
+            return localStorage.getItem(SEPARATOR_KEY) === "mudlet" ? ";;" : ";";
+        } catch (err) {
+            return ";";
+        }
+    }
+
+    function setCommandSeparator(mudlet) {
+        try {
+            localStorage.setItem(SEPARATOR_KEY, mudlet ? "mudlet" : "standard");
+        } catch (err) {
+            // A browser refusing storage still gets a working toggle for
+            // this visit; it just will not be remembered.
+        }
+    }
+
+    // The stored route is always single-semicolon. Only what is shown and
+    // copied changes, so whatever sends it in-browser keeps working.
+    function forDisplay(commands) {
+        const sep = commandSeparator();
+        return sep === ";" ? commands : String(commands || "").split(";").join(sep);
+    }
+
+    async function copyText(text, button) {
+        let ok = false;
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+                ok = true;
+            }
+        } catch (err) {
+            ok = false;
+        }
+        if (!ok) {
+            // The client is often served over plain http on a LAN, where
+            // the async clipboard API is not available at all.
+            const pad = document.createElement("textarea");
+            pad.value = text;
+            pad.setAttribute("readonly", "");
+            pad.style.position = "fixed";
+            pad.style.opacity = "0";
+            document.body.appendChild(pad);
+            pad.select();
+            try {
+                ok = document.execCommand("copy");
+            } catch (err) {
+                ok = false;
+            }
+            document.body.removeChild(pad);
+        }
+        if (button) {
+            const was = button.textContent;
+            button.textContent = ok ? "Copied" : "Press Ctrl+C";
+            button.classList.add("is-copied");
+            setTimeout(() => {
+                button.textContent = was;
+                button.classList.remove("is-copied");
+            }, 1600);
+        }
+        return ok;
+    }
+
+    function copyButton(getText) {
+        const button = node("button", { className: "route-copy", text: "Copy" });
+        button.type = "button";
+        button.title = "Copy these directions";
+        button.addEventListener("click", () => void copyText(getText(), button));
+        return button;
+    }
+
     const routesState = { data: null, loading: false };
 
     // Two kinds of route share the panel, and both are shown at once.
@@ -622,6 +698,16 @@
         portal: "ends at a portal",
     };
 
+    function wireMudletToggle() {
+        const box = byId("routes-mudlet");
+        if (!box) return;
+        box.checked = commandSeparator() === ";;";
+        box.addEventListener("change", () => {
+            setCommandSeparator(box.checked);
+            renderRoutes();
+        });
+    }
+
     function renderRoutes() {
         const query = byId("routes-search").value.trim().toLowerCase();
         const list = byId("routes-list");
@@ -630,6 +716,13 @@
             return [route.name, route.room, route.area]
                 .some((field) => (field || "").toLowerCase().includes(query));
         });
+        // By what the card is called, which now leads with the zone. The
+        // generator emits them in the file's own order, which is the
+        // builder's handle first -- the very thing that made this list
+        // read as if it were sorted by whoever built the place.
+        matching.sort((a, b) => (a.name || "").localeCompare(
+            b.name || "", undefined, { sensitivity: "base" }));
+
 
         if (!matching.length) {
             list.replaceChildren(node("p", {
@@ -665,18 +758,22 @@
                     ? ` - ${route.rooms_away} rooms away` : "";
                 card.append(node("p", {
                     className: "route-dest",
-                    text: `${route.room} - ${route.area}${away}`,
+                    text: `${route.room} - ${route.area_display || route.area}${away}`,
                 }));
             }
 
             const paste = node("button", {
                 className: "route-commands",
-                text: route.commands,
+                text: forDisplay(route.commands),
             });
             paste.type = "button";
             paste.title = "Send this";
+            // Always the stored form: the separator is a display choice
+            // for other clients, not a change to what this one sends.
             paste.addEventListener("click", () => sendCommandSequence(route.commands));
-            card.append(paste);
+            const row = node("div", { className: "route-command-row" });
+            row.append(paste, copyButton(() => forDisplay(route.commands)));
+            card.append(row);
 
             card.append(node("p", {
                 className: "route-steps",
@@ -694,18 +791,22 @@
                     className: "route-note",
                     text: route.fixed_room
                         ? `A way there today, to ${route.fixed_room}`
-                          + (route.fixed_area ? ` - ${route.fixed_area}:` : ":")
+                          + (route.fixed_area || route.fixed_area_display
+                              ? ` - ${route.fixed_area_display || route.fixed_area}:` : ":")
                         : "A way there today:",
                 }));
                 const fixed = node("button", {
                     className: "route-commands",
-                    text: route.fixed_commands,
+                    text: forDisplay(route.fixed_commands),
                 });
                 fixed.type = "button";
                 fixed.title = "Send this";
                 fixed.addEventListener(
                     "click", () => sendCommandSequence(route.fixed_commands));
-                card.append(fixed);
+                const fixedRow = node("div", { className: "route-command-row" });
+                fixedRow.append(
+                    fixed, copyButton(() => forDisplay(route.fixed_commands)));
+                card.append(fixedRow);
                 card.append(node("p", {
                     className: "route-steps",
                     text: (route.fixed_steps || []).join(", "),
@@ -1322,6 +1423,7 @@
         byId("panel-scrim").addEventListener("click", closePanel);
         all("[data-panel]").forEach((tab) => tab.addEventListener("click", () => showUtilityPanel(tab.dataset.panel)));
         byId("routes-search").addEventListener("input", renderRoutes);
+        wireMudletToggle();
         byId("help-search").addEventListener("input", renderHelpTopics);
 
         byId("font-size").addEventListener("input", (event) => {

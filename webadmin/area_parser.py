@@ -410,6 +410,57 @@ SPELL_NAMES = {
     600: "enchant item",
 }
 
+def split_area_name(raw: str) -> tuple:
+    """Separate an area's builder handle from the zone's own name.
+
+    `#AREA { 5 15} Alfa    Moria~` carries three things in one line: the
+    level range in braces, the builder's handle, and the name. The handle
+    comes first, which is why a list of areas sorted on this string sorts
+    by whoever built them -- Alfa's Moria filed under A.
+
+    Of the 124 areas that carry an `#AREA` line, 105 separate the handle
+    from the name with a run of two or more spaces, which is unambiguous.
+    The other 19 use a single space, and there the first word is the
+    handle: "Hatchet Mud School", "Generic Old Marsh", "Unknown The Tombs
+    of Tarin". `Builder Workshop` in custom.are reads the same way --
+    "Builder" is a placeholder handle exactly as "Generic" and "Unknown"
+    are elsewhere.
+
+    Returns (builder, name). Either may be empty; a line with no space at
+    all is all name and no handle, which is the honest reading.
+    """
+    text = " ".join((raw or "").split(" "))
+    text = text.strip()
+    if not text:
+        return "", ""
+
+    # A run of two or more spaces is the builder's own separator. Prefer
+    # it wherever it exists: it is what the line actually says, rather
+    # than something inferred from word order.
+    wide = re.search(r"\s{2,}", text)
+    if wide:
+        builder = text[:wide.start()].strip()
+        name = text[wide.end():].strip()
+        if builder and name:
+            return " ".join(builder.split()), " ".join(name.split())
+
+    parts = text.split(None, 1)
+    if len(parts) == 2:
+        return parts[0].strip(), " ".join(parts[1].split())
+
+    return "", " ".join(text.split())
+
+
+def format_area_name(raw: str) -> str:
+    """"Moria (Alfa)" -- the zone first, so the name is what sorts."""
+    builder, name = split_area_name(raw)
+    if not name:
+        return builder
+    if not builder:
+        return name
+    return "%s (%s)" % (name, builder)
+
+
 def get_spell_name(spell_num: int) -> str:
     """Convert spell slot number to spell name."""
     if spell_num == 0:
@@ -1195,11 +1246,26 @@ class AreaParser:
             
             credits_match = re.match(r'\{(.*?)\}\s*(.*)', raw_line)
             if credits_match:
+                name = credits_match.group(2).strip()
+                builder, zone = split_area_name(name)
                 return {
                     "credits": credits_match.group(1).strip(),
-                    "name": credits_match.group(2).strip()
+                    # `name` is left exactly as the file writes it. The
+                    # directions router and the native-parser parity test
+                    # both compare against it.
+                    "name": name,
+                    "builder": builder,
+                    "zone": zone,
+                    "display_name": format_area_name(name),
                 }
-            return {"name": raw_line, "credits": ""}
+            builder, zone = split_area_name(raw_line)
+            return {
+                "name": raw_line,
+                "credits": "",
+                "builder": builder,
+                "zone": zone,
+                "display_name": format_area_name(raw_line),
+            }
             
         # Check for HELPS
         if re.search(r'#HELPS', content):

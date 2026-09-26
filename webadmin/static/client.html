@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="color-scheme" content="dark">
     <title>Times of Chaos Client</title>
-    <link rel="stylesheet" href="/static/client.css?v=6">
+    <link rel="stylesheet" href="/static/client.css?v=7">
     <link rel="stylesheet" href="/static/theme-dragon.css?v=2">
     <script src="/static/command-sequence.js?v=1" defer></script>
-    <script src="/static/client.js?v=6" defer></script>
+    <script src="/static/client.js?v=8" defer></script>
 </head>
 <body>
     <div class="client-app">
@@ -153,6 +153,7 @@
                         <p class="routes-intro" id="routes-intro"></p>
                         <label class="sr-only" for="routes-search">Search routes</label>
                         <input id="routes-search" type="search" placeholder="Search destinations" autocomplete="off" spellcheck="false">
+                        <label class="routes-mudlet"><input id="routes-mudlet" type="checkbox">Mudlet style (<code>;;</code> between commands)</label>
                         <div class="routes-list" id="routes-list" aria-live="polite"></div>
                     </section>
                 </div>

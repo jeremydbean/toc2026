@@ -2,7 +2,8 @@
  "start": {
   "vnum": 2401,
   "room": "Center of Oak Tree Square.",
-  "area": "Drakk City of Dresden"
+  "area": "Drakk City of Dresden",
+  "area_display": "City of Dresden (Drakk)"
  },
  "counts": {
   "computed": 89,
@@ -12,7 +13,7 @@
  },
  "routes": [
   {
-   "name": "Alfa Holy Grove",
+   "name": "Holy Grove (Alfa)",
    "commands": "r e 8;open gate;e;r n 3;r e 2",
    "steps": [
     "east x8",
@@ -24,11 +25,12 @@
    "room": "At the edge of the grove",
    "vnum": 8950,
    "area": "Alfa Holy Grove",
+   "area_display": "Holy Grove (Alfa)",
    "rooms_away": 14,
    "status": "computed"
   },
   {
-   "name": "Alfa Moria",
+   "name": "Moria (Alfa)",
    "commands": "r s 6;open gate;r s 2;r e 2;r n 2",
    "steps": [
     "south x6",
@@ -40,11 +42,12 @@
    "room": "The hills",
    "vnum": 4000,
    "area": "Alfa Moria",
+   "area_display": "Moria (Alfa)",
    "rooms_away": 12,
    "status": "computed"
   },
   {
-   "name": "Alfa Ofcol",
+   "name": "Ofcol (Alfa)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 3;e;r n 2;r e 2;n;e;r n 3",
    "steps": [
     "west x7",
@@ -63,11 +66,12 @@
    "room": "Village street",
    "vnum": 5550,
    "area": "Alfa Ofcol",
+   "area_display": "Ofcol (Alfa)",
    "rooms_away": 26,
    "status": "computed"
   },
   {
-   "name": "Andi The Astral Plane",
+   "name": "The Astral Plane (Andi)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 2;r u 2",
    "steps": [
     "west x7",
@@ -81,11 +85,12 @@
    "room": "The Bottom of the Rainbow",
    "vnum": 7500,
    "area": "Andi The Astral Plane",
+   "area_display": "The Astral Plane (Andi)",
    "rooms_away": 17,
    "status": "computed"
   },
   {
-   "name": "Andi The Great Pyramid",
+   "name": "The Great Pyramid (Andi)",
    "commands": "r e 3;s;e;s;r e 2;s;e;r s 2;r e 14;r s 2",
    "steps": [
     "east x3",
@@ -102,11 +107,12 @@
    "room": "The Great Eastern Desert",
    "vnum": 28000,
    "area": "Andi The Great Pyramid",
+   "area_display": "The Great Pyramid (Andi)",
    "rooms_away": 28,
    "status": "computed"
   },
   {
-   "name": "Anon Dwarven Kingdom",
+   "name": "Dwarven Kingdom (Anon)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d;w;r s 3;u",
    "steps": [
     "north x2",
@@ -130,11 +136,12 @@
    "room": "Mine Maze",
    "vnum": 6546,
    "area": "Anon Dwarven Kingdom",
+   "area_display": "Dwarven Kingdom (Anon)",
    "rooms_away": 22,
    "status": "computed"
   },
   {
-   "name": "Anon High Tower of Sorcery",
+   "name": "High Tower of Sorcery (Anon)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 2;w;sw;w;n",
    "steps": [
     "west x7",
@@ -155,11 +162,12 @@
    "room": "Entrance to the Shadow Grove",
    "vnum": 1300,
    "area": "Anon High Tower of Sorcery",
+   "area_display": "High Tower of Sorcery (Anon)",
    "rooms_away": 29,
    "status": "computed"
   },
   {
-   "name": "Anon New Thalos",
+   "name": "New Thalos (Anon)",
    "commands": "r e 8;open gate;r e 13",
    "steps": [
     "east x8",
@@ -169,11 +177,12 @@
    "room": "Outside the West Gate of New Thalos",
    "vnum": 9669,
    "area": "Anon New Thalos",
+   "area_display": "New Thalos (Anon)",
    "rooms_away": 21,
    "status": "computed"
   },
   {
-   "name": "Anon Sands of Sorrow",
+   "name": "Sands of Sorrow (Anon)",
    "commands": "r e 3;s;e;s;r e 2;s;e;r s 2;r e 3",
    "steps": [
     "east x3",
@@ -189,11 +198,12 @@
    "room": "A long tunnel",
    "vnum": 5000,
    "area": "Anon Sands of Sorrow",
+   "area_display": "Sands of Sorrow (Anon)",
    "rooms_away": 15,
    "status": "computed"
   },
   {
-   "name": "Anon The Abyss",
+   "name": "The Abyss (Anon)",
    "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;open door;e;u;e;open door;s;open book;s;w;d;w;d",
    "steps": [
     "west x7",
@@ -227,11 +237,12 @@
    "room": "Lost in the Mountains",
    "vnum": 24501,
    "area": "Anon The Abyss",
+   "area_display": "The Abyss (Anon)",
    "rooms_away": 38,
    "status": "computed"
   },
   {
-   "name": "Aten The Chessboard",
+   "name": "The Chessboard (Aten)",
    "commands": "r s 2;r w 3;r u 3;n",
    "steps": [
     "south x2",
@@ -242,11 +253,12 @@
    "room": "The Stone Door",
    "vnum": 24300,
    "area": "Aten The Chessboard",
+   "area_display": "The Chessboard (Aten)",
    "rooms_away": 9,
    "status": "computed"
   },
   {
-   "name": "BB Tritia",
+   "name": "Tritia (BB)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 2;r w 4;r n 2;r w 2;r s 3;r w 3",
    "steps": [
     "west x7",
@@ -268,11 +280,12 @@
    "room": "The beach",
    "vnum": 10200,
    "area": "BB Tritia",
+   "area_display": "Tritia (BB)",
    "rooms_away": 39,
    "status": "computed"
   },
   {
-   "name": "CAW Ancalador",
+   "name": "Ancalador (CAW)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;e;r s 2;r w 3",
    "steps": [
     "west x7",
@@ -288,11 +301,12 @@
    "room": "Muddy Riverbank",
    "vnum": 11057,
    "area": "CAW Ancalador",
+   "area_display": "Ancalador (CAW)",
    "rooms_away": 25,
    "status": "computed"
   },
   {
-   "name": "CAW Froboz Factory",
+   "name": "Froboz Factory (CAW)",
    "commands": "r s 2;r w 3;u;e;enter mouth",
    "steps": [
     "south x2",
@@ -304,11 +318,12 @@
    "room": "A Littered Road",
    "vnum": 12000,
    "area": "CAW Froboz Factory",
+   "area_display": "Froboz Factory (CAW)",
    "rooms_away": 8,
    "status": "computed"
   },
   {
-   "name": "CAW Kerofk",
+   "name": "Kerofk (CAW)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 5;r w 2;r n 2",
    "steps": [
     "west x7",
@@ -323,11 +338,12 @@
    "room": "Mountain Pass",
    "vnum": 8846,
    "area": "CAW Kerofk",
+   "area_display": "Kerofk (CAW)",
    "rooms_away": 22,
    "status": "computed"
   },
   {
-   "name": "CAW The Abandoned Cathedral",
+   "name": "The Abandoned Cathedral (CAW)",
    "commands": "r e 8;open gate;e;r n 3;r e 4;n;r e 2;n;e;s;r w 2;s;r w 3;open gate;r w 4;r n 2;e",
    "steps": [
     "east x8",
@@ -351,11 +367,12 @@
    "room": "An Old Stone Road",
    "vnum": 24256,
    "area": "CAW The Abandoned Cathedral",
+   "area_display": "The Abandoned Cathedral (CAW)",
    "rooms_away": 35,
    "status": "computed"
   },
   {
-   "name": "CAW/SC Strange Campus",
+   "name": "Strange Campus (CAW/SC)",
    "commands": "r s 2;r w 3;r u 3;enter portal",
    "steps": [
     "south x2",
@@ -366,11 +383,12 @@
    "room": "The Eastern Campus Entrance",
    "vnum": 15000,
    "area": "CAW/SC Strange Campus",
+   "area_display": "Strange Campus (CAW/SC)",
    "rooms_away": 9,
    "status": "computed"
   },
   {
-   "name": "CAW/SC Werith's Wayhouse",
+   "name": "Werith's Wayhouse (CAW/SC)",
    "commands": "r w 7;open gate;r w 3;r s 2",
    "steps": [
     "west x7",
@@ -381,11 +399,12 @@
    "room": "Outside the Wayhouse",
    "vnum": 14000,
    "area": "CAW/SC Werith's Wayhouse",
+   "area_display": "Werith's Wayhouse (CAW/SC)",
    "rooms_away": 12,
    "status": "computed"
   },
   {
-   "name": "Casret Ultima",
+   "name": "Ultima (Casret)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 2;w;sw;w;r n 5;enter red",
    "steps": [
     "west x7",
@@ -407,11 +426,12 @@
    "room": "Entrance to Ultima",
    "vnum": 7600,
    "area": "Casret Ultima",
+   "area_display": "Ultima (Casret)",
    "rooms_away": 34,
    "status": "computed"
   },
   {
-   "name": "Chris The Keep of Mahn-Tor",
+   "name": "The Keep of Mahn-Tor (Chris)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d;r w 3;r n 2;r u 2",
    "steps": [
     "north x2",
@@ -435,11 +455,12 @@
    "room": "The end of the guarded hall",
    "vnum": 2397,
    "area": "Chris The Keep of Mahn-Tor",
+   "area_display": "The Keep of Mahn-Tor (Chris)",
    "rooms_away": 24,
    "status": "computed"
   },
   {
-   "name": "Copper Miden'nir",
+   "name": "Miden'nir (Copper)",
    "commands": "r s 6;open gate;r s 2",
    "steps": [
     "south x6",
@@ -449,11 +470,12 @@
    "room": "The Trail to Miden'nir",
    "vnum": 3505,
    "area": "Copper Miden'nir",
+   "area_display": "Miden'nir (Copper)",
    "rooms_away": 8,
    "status": "computed"
   },
   {
-   "name": "Copper Plains of the North",
+   "name": "Plains of the North (Copper)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;n",
    "steps": [
     "west x7",
@@ -466,11 +488,12 @@
    "room": "Path in the plains",
    "vnum": 300,
    "area": "Copper Plains of the North",
+   "area_display": "Plains of the North (Copper)",
    "rooms_away": 14,
    "status": "computed"
   },
   {
-   "name": "Crane Azeroth",
+   "name": "Azeroth (Crane)",
    "commands": "r s 6;open gate;r s 3;w;r s 5",
    "steps": [
     "south x6",
@@ -482,11 +505,12 @@
    "room": "Watch Your Step!",
    "vnum": 28161,
    "area": "Crane Azeroth",
+   "area_display": "Azeroth (Crane)",
    "rooms_away": 15,
    "status": "computed"
   },
   {
-   "name": "DAWS Dylan's Area",
+   "name": "Dylan's Area (DAWS)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 3;e;r n 2;r e 2;n;e;r n 4;r e 5;open east;r e 4;s;r u 6;s",
    "steps": [
     "west x7",
@@ -511,11 +535,12 @@
    "room": "A fluffy white cloud.",
    "vnum": 9101,
    "area": "DAWS Dylan's Area",
+   "area_display": "Dylan's Area (DAWS)",
    "rooms_away": 44,
    "status": "computed"
   },
   {
-   "name": "DAWS Fire Newts",
+   "name": "Fire Newts (DAWS)",
    "commands": "r e 8;open gate;r e 3;s;se;ne;e;se",
    "steps": [
     "east x8",
@@ -530,11 +555,12 @@
    "room": "Obsidian hills",
    "vnum": 2900,
    "area": "DAWS Fire Newts",
+   "area_display": "Fire Newts (DAWS)",
    "rooms_away": 16,
    "status": "computed"
   },
   {
-   "name": "Dazed The Dark Forest",
+   "name": "The Dark Forest (Dazed)",
    "commands": "r w 7;open gate;r w 10;r n 2;r w 2;r s 3",
    "steps": [
     "west x7",
@@ -547,11 +573,12 @@
    "room": "Entrance to the Dark Forest.",
    "vnum": 3601,
    "area": "Dazed The Dark Forest",
+   "area_display": "The Dark Forest (Dazed)",
    "rooms_away": 24,
    "status": "computed"
   },
   {
-   "name": "Diku Haon Dor",
+   "name": "Haon Dor (Diku)",
    "commands": "r w 7;open gate;r w 2",
    "steps": [
     "west x7",
@@ -561,11 +588,12 @@
    "room": "The edge of the forest",
    "vnum": 6000,
    "area": "Diku Haon Dor",
+   "area_display": "Haon Dor (Diku)",
    "rooms_away": 9,
    "status": "computed"
   },
   {
-   "name": "Diku Limbo",
+   "name": "Limbo (Diku)",
    "commands": "r s 5;e",
    "steps": [
     "south x5",
@@ -574,11 +602,12 @@
    "room": "The Pet Shop of Exotic Creatures.",
    "vnum": 2562,
    "area": "Diku Limbo",
+   "area_display": "Limbo (Diku)",
    "rooms_away": 6,
    "status": "computed"
   },
   {
-   "name": "Diku Redferne's Residence",
+   "name": "Redferne's Residence (Diku)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 3;e;r n 2;r e 2;n;e;r n 4;r e 5;open east;r e 4;s;r u 3",
    "steps": [
     "west x7",
@@ -602,11 +631,12 @@
    "room": "On the Huge Chain",
    "vnum": 7914,
    "area": "Diku Redferne's Residence",
+   "area_display": "Redferne's Residence (Diku)",
    "rooms_away": 40,
    "status": "computed"
   },
   {
-   "name": "Diku Sewer",
+   "name": "Sewer (Diku)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d",
    "steps": [
     "north x2",
@@ -620,11 +650,12 @@
    "room": "The Quadruple Junction Under the Garbage",
    "vnum": 7030,
    "area": "Diku Sewer",
+   "area_display": "Sewer (Diku)",
    "rooms_away": 11,
    "status": "computed"
   },
   {
-   "name": "Doctor Galaxy",
+   "name": "Galaxy (Doctor)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 2;w;sw;w;r n 3;r e 2",
    "steps": [
     "west x7",
@@ -646,11 +677,12 @@
    "room": "Inside a Tavern",
    "vnum": 9301,
    "area": "Doctor Galaxy",
+   "area_display": "Galaxy (Doctor)",
    "rooms_away": 33,
    "status": "computed"
   },
   {
-   "name": "Drakk Ruins of Midgaard",
+   "name": "Ruins of Midgaard (Drakk)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 2;r w 2",
    "steps": [
     "west x7",
@@ -668,11 +700,12 @@
    "room": "On the River",
    "vnum": 5979,
    "area": "Drakk Ruins of Midgaard",
+   "area_display": "Ruins of Midgaard (Drakk)",
    "rooms_away": 27,
    "status": "computed"
   },
   {
-   "name": "Drkside Drow City",
+   "name": "Drow City (Drkside)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d;r e 5",
    "steps": [
     "north x2",
@@ -694,11 +727,12 @@
    "room": "City street",
    "vnum": 5114,
    "area": "Drkside Drow City",
+   "area_display": "Drow City (Drkside)",
    "rooms_away": 22,
    "status": "computed"
   },
   {
-   "name": "Drkside Thalos",
+   "name": "Thalos (Drkside)",
    "commands": "r e 8;open gate;r e 3;s",
    "steps": [
     "east x8",
@@ -709,11 +743,12 @@
    "room": "The dwarf forest",
    "vnum": 5261,
    "area": "Drkside Thalos",
+   "area_display": "Thalos (Drkside)",
    "rooms_away": 12,
    "status": "computed"
   },
   {
-   "name": "Eclipse Sea of Serenity",
+   "name": "Sea of Serenity (Eclipse)",
    "commands": "r e 8;open gate;r e 13;open gate;r e 6;r s 5;d;r w 13;r n 4",
    "steps": [
     "east x8",
@@ -729,11 +764,12 @@
    "room": "On the beach",
    "vnum": 6401,
    "area": "Eclipse Sea of Serenity",
+   "area_display": "Sea of Serenity (Eclipse)",
    "rooms_away": 50,
    "status": "computed"
   },
   {
-   "name": "Elrond Valhalla",
+   "name": "Valhalla (Elrond)",
    "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;open door;e;u;e;open door;s;open book;s;w;d;w;open gates;r w 5;r d 2;e;s;r e 2;n;r e 2;s;r e 2;n;e;r d 2;s;w;n;r w 2;s;r w 4;n;r w 2;r d 2;r e 2;s;open door;e;n;e;open freezer;r e 2;s;e;n;e;open door;e;r s 2;r d 4;open CLOSED;r u 2",
    "steps": [
     "west x7",
@@ -806,11 +842,12 @@
    "room": "The Gateway to the Undying Lands",
    "vnum": 9900,
    "area": "Elrond Valhalla",
+   "area_display": "Valhalla (Elrond)",
    "rooms_away": 94,
    "status": "computed"
   },
   {
-   "name": "FeaR The Emerald Forest",
+   "name": "The Emerald Forest (FeaR)",
    "commands": "r s 6;open gate;r s 3;w;s;open secret;w",
    "steps": [
     "south x6",
@@ -824,11 +861,12 @@
    "room": "A Fog-Shrouded Trail",
    "vnum": 20501,
    "area": "FeaR The Emerald Forest",
+   "area_display": "The Emerald Forest (FeaR)",
    "rooms_away": 12,
    "status": "computed"
   },
   {
-   "name": "Flar The Prison",
+   "name": "The Prison (Flar)",
    "commands": "r e 8;open gate;r e 2;n",
    "steps": [
     "east x8",
@@ -839,11 +877,12 @@
    "room": "Entrance to the Prison",
    "vnum": 20100,
    "area": "Flar The Prison",
+   "area_display": "The Prison (Flar)",
    "rooms_away": 11,
    "status": "computed"
   },
   {
-   "name": "Generic Old Marsh",
+   "name": "Old Marsh (Generic)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 3",
    "steps": [
     "west x7",
@@ -860,11 +899,12 @@
    "room": "Muddy Path",
    "vnum": 8301,
    "area": "Generic Old Marsh",
+   "area_display": "Old Marsh (Generic)",
    "rooms_away": 26,
    "status": "computed"
   },
   {
-   "name": "Generic Olympus",
+   "name": "Olympus (Generic)",
    "commands": "r w 7;open gate;r w 10;s;r w 2;r s 2;w;s;r w 3;n;w;n;nw;n",
    "steps": [
     "west x7",
@@ -885,11 +925,12 @@
    "room": "Mountain",
    "vnum": 901,
    "area": "Generic Olympus",
+   "area_display": "Olympus (Generic)",
    "rooms_away": 32,
    "status": "computed"
   },
   {
-   "name": "Generic Smurf Village",
+   "name": "Smurf Village (Generic)",
    "commands": "r s 2;r w 3;u;w;enter berry",
    "steps": [
     "south x2",
@@ -901,11 +942,12 @@
    "room": "Dimly Lit Path",
    "vnum": 101,
    "area": "Generic Smurf Village",
+   "area_display": "Smurf Village (Generic)",
    "rooms_away": 8,
    "status": "computed"
   },
   {
-   "name": "Glop Mega-City One",
+   "name": "Mega-City One (Glop)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 5;r w 2;nw;n;r u 4;n;d;n;w;r n 4;w;r n 2;e;u;n;enter portal",
    "steps": [
     "west x7",
@@ -933,11 +975,12 @@
    "room": "Entrance to Mega-City One",
    "vnum": 8001,
    "area": "Glop Mega-City One",
+   "area_display": "Mega-City One (Glop)",
    "rooms_away": 41,
    "status": "computed"
   },
   {
-   "name": "Graves Assassins Guild",
+   "name": "Assassins Guild (Graves)",
    "commands": "r w 7;open gate;r w 10;r n 3",
    "steps": [
     "west x7",
@@ -948,11 +991,12 @@
    "room": "The Gates",
    "vnum": 17001,
    "area": "Graves Assassins Guild",
+   "area_display": "Assassins Guild (Graves)",
    "rooms_away": 20,
    "status": "computed"
   },
   {
-   "name": "Graves Continental Drift",
+   "name": "Continental Drift (Graves)",
    "commands": "r s 2;r w 3;u;w",
    "steps": [
     "south x2",
@@ -963,11 +1007,12 @@
    "room": "An odd sight",
    "vnum": 17,
    "area": "Graves Continental Drift",
+   "area_display": "Continental Drift (Graves)",
    "rooms_away": 7,
    "status": "computed"
   },
   {
-   "name": "Graves The Ashen Wastes",
+   "name": "The Ashen Wastes (Graves)",
    "commands": "r e 8;open gate;r e 3;s;se;e",
    "steps": [
     "east x8",
@@ -980,11 +1025,12 @@
    "room": "Gateway to the Ashen Wastes",
    "vnum": 26700,
    "area": "Graves The Ashen Wastes",
+   "area_display": "The Ashen Wastes (Graves)",
    "rooms_away": 14,
    "status": "computed"
   },
   {
-   "name": "Graves The Lonely Mountain",
+   "name": "The Lonely Mountain (Graves)",
    "commands": "r w 7;open gate;r w 10;s;r w 2;r s 2;w;s;r w 3;n;w;n;nw;r w 2;nw;n",
    "steps": [
     "west x7",
@@ -1007,11 +1053,12 @@
    "room": "A small mountain crevice",
    "vnum": 25001,
    "area": "Graves The Lonely Mountain",
+   "area_display": "The Lonely Mountain (Graves)",
    "rooms_away": 35,
    "status": "computed"
   },
   {
-   "name": "Graves The Lucky Dragon Casino",
+   "name": "The Lucky Dragon Casino (Graves)",
    "commands": "r n 2;r e 3;s",
    "steps": [
     "north x2",
@@ -1021,11 +1068,12 @@
    "room": "The Lucky Dragon Casino - Entrance",
    "vnum": 4810,
    "area": "Graves The Lucky Dragon Casino",
+   "area_display": "The Lucky Dragon Casino (Graves)",
    "rooms_away": 6,
    "status": "computed"
   },
   {
-   "name": "Hatchet Mud School",
+   "name": "Mud School (Hatchet)",
    "commands": "r s 2;r w 3;u",
    "steps": [
     "south x2",
@@ -1035,11 +1083,12 @@
    "room": "Entrance to Mud School",
    "vnum": 3700,
    "area": "Hatchet Mud School",
+   "area_display": "Mud School (Hatchet)",
    "rooms_away": 6,
    "status": "computed"
   },
   {
-   "name": "Hatchet The Rats Lair",
+   "name": "The Rats Lair (Hatchet)",
    "commands": "r e 3;s;e;s;r e 2;s;w;open down;r d 2",
    "steps": [
     "east x3",
@@ -1055,11 +1104,12 @@
    "room": "Below a Dark Stairway",
    "vnum": 3801,
    "area": "Hatchet The Rats Lair",
+   "area_display": "The Rats Lair (Hatchet)",
    "rooms_away": 12,
    "status": "computed"
   },
   {
-   "name": "Hatchet Valley of the Elves",
+   "name": "Valley of the Elves (Hatchet)",
    "commands": "r e 8;open gate;r e 5;r n 5;r w 6;r n 2",
    "steps": [
     "east x8",
@@ -1072,11 +1122,12 @@
    "room": "A Path through the Fields",
    "vnum": 7800,
    "area": "Hatchet Valley of the Elves",
+   "area_display": "Valley of the Elves (Hatchet)",
    "rooms_away": 26,
    "status": "computed"
   },
   {
-   "name": "Haze Battleground",
+   "name": "Battleground (Haze)",
    "commands": "r e 8;open gate;r e 13;open gate;r e 6;r n 6;open gate;r n 9;open north;n",
    "steps": [
     "east x8",
@@ -1093,11 +1144,12 @@
    "room": "Heroes Hall",
    "vnum": 29201,
    "area": "Haze Battleground",
+   "area_display": "Battleground (Haze)",
    "rooms_away": 43,
    "status": "computed"
   },
   {
-   "name": "Haze City Of LUD",
+   "name": "City Of LUD (Haze)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 2;r w 4;r n 2;r w 2;r s 3;r w 3;n",
    "steps": [
     "west x7",
@@ -1120,11 +1172,12 @@
    "room": "The Steel Bridge",
    "vnum": 29501,
    "area": "Haze City Of LUD",
+   "area_display": "City Of LUD (Haze)",
    "rooms_away": 40,
    "status": "computed"
   },
   {
-   "name": "Haze Korzath's Fortress",
+   "name": "Korzath's Fortress (Haze)",
    "commands": "r e 8;open gate;r e 13;open gate;r e 6;r n 6;open gate;r n 6",
    "steps": [
     "east x8",
@@ -1139,11 +1192,12 @@
    "room": "Entrance to the Fortress",
    "vnum": 29001,
    "area": "Haze Korzath's Fortress",
+   "area_display": "Korzath's Fortress (Haze)",
    "rooms_away": 39,
    "status": "computed"
   },
   {
-   "name": "Haze Mid-World",
+   "name": "Mid-World (Haze)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 2;r w 4;r n 2;r w 2;r s 3;r w 3;n;jump jagged",
    "steps": [
     "west x7",
@@ -1167,11 +1221,12 @@
    "room": "Above the City of Lud",
    "vnum": 29496,
    "area": "Haze Mid-World",
+   "area_display": "Mid-World (Haze)",
    "rooms_away": 41,
    "status": "computed"
   },
   {
-   "name": "Haze Voyage Across Sea",
+   "name": "Voyage Across Sea (Haze)",
    "commands": "r e 8;open gate;r e 13;open gate;r e 12;open gate;r e 6;n;e",
    "steps": [
     "east x8",
@@ -1187,11 +1242,12 @@
    "room": "Dock before the Sea",
    "vnum": 29350,
    "area": "Haze Voyage Across Sea",
+   "area_display": "Voyage Across Sea (Haze)",
    "rooms_away": 41,
    "status": "computed"
   },
   {
-   "name": "Kahn Old Thalos",
+   "name": "Old Thalos (Kahn)",
    "commands": "r e 8;open gate;e;r n 3;r e 4;n;r e 2;n",
    "steps": [
     "east x8",
@@ -1206,11 +1262,12 @@
    "room": "The Void",
    "vnum": 5378,
    "area": "Kahn Old Thalos",
+   "area_display": "Old Thalos (Kahn)",
    "rooms_away": 20,
    "status": "computed"
   },
   {
-   "name": "Karl The HighLands",
+   "name": "The HighLands (Karl)",
    "commands": "r e 3;s;e;s;r e 2;r s 3;w;n;w;n;w;n;w;s;r w 7;s;d",
    "steps": [
     "east x3",
@@ -1234,11 +1291,12 @@
    "room": "Entrance to a Valley in the Highlands",
    "vnum": 17100,
    "area": "Karl The HighLands",
+   "area_display": "The HighLands (Karl)",
    "rooms_away": 28,
    "status": "computed"
   },
   {
-   "name": "KasChel Social Club",
+   "name": "Social Club (KasChel)",
    "commands": "r w 5;s",
    "steps": [
     "west x5",
@@ -1247,11 +1305,12 @@
    "room": "The Entrance to Temple Blvd. Social Club",
    "vnum": 800,
    "area": "KasChel Social Club",
+   "area_display": "Social Club (KasChel)",
    "rooms_away": 6,
    "status": "computed"
   },
   {
-   "name": "Killum Hyrule",
+   "name": "Hyrule (Killum)",
    "commands": "r s 2;r w 3;r u 3;enter portal;r e 4;r n 4;r e 2;enter cabinet",
    "steps": [
     "south x2",
@@ -1266,11 +1325,12 @@
    "room": "The First Quest Begins",
    "vnum": 30200,
    "area": "Killum Hyrule",
+   "area_display": "Hyrule (Killum)",
    "rooms_away": 20,
    "status": "computed"
   },
   {
-   "name": "Klute Arena of ole Midgaard",
+   "name": "Arena of ole Midgaard (Klute)",
    "commands": "r w 5;n;w;n",
    "steps": [
     "west x5",
@@ -1281,11 +1341,12 @@
    "room": "A Dark Alleyway.",
    "vnum": 2628,
    "area": "Klute Arena of ole Midgaard",
+   "area_display": "Arena of ole Midgaard (Klute)",
    "rooms_away": 8,
    "status": "computed"
   },
   {
-   "name": "Kyrus Forsaken Clanhall",
+   "name": "Forsaken Clanhall (Kyrus)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d;r e 6;open north;n;d;r n 2;u;n;d;open north;n;e;n;open down;d;n",
    "steps": [
     "north x2",
@@ -1321,11 +1382,12 @@
    "room": "A passage",
    "vnum": 15475,
    "area": "Kyrus Forsaken Clanhall",
+   "area_display": "Forsaken Clanhall (Kyrus)",
    "rooms_away": 35,
    "status": "computed"
   },
   {
-   "name": "Lance Pirate Ship",
+   "name": "Pirate Ship (Lance)",
    "commands": "r e 8;open gate;r e 13;open gate;r e 12;open gate;r e 6;r n 2",
    "steps": [
     "east x8",
@@ -1340,11 +1402,12 @@
    "room": "Beginning of the Pier",
    "vnum": 16000,
    "area": "Lance Pirate Ship",
+   "area_display": "Pirate Ship (Lance)",
    "rooms_away": 41,
    "status": "computed"
   },
   {
-   "name": "Lok Camelot",
+   "name": "Camelot (Lok)",
    "commands": "r w 7;open gate;r w 8;r s 2;w;s;w;s;r w 2;r s 5;r e 2;s;e;s;r w 2;n;w",
    "steps": [
     "west x7",
@@ -1368,11 +1431,12 @@
    "room": "Before the Forest Arden",
    "vnum": 701,
    "area": "Lok Camelot",
+   "area_display": "Camelot (Lok)",
    "rooms_away": 37,
    "status": "computed"
   },
   {
-   "name": "Lok Coven",
+   "name": "Coven (Lok)",
    "commands": "r w 7;open gate;r w 5;n",
    "steps": [
     "west x7",
@@ -1383,11 +1447,12 @@
    "room": "Before the Forest Murkmire",
    "vnum": 24101,
    "area": "Lok Coven",
+   "area_display": "Coven (Lok)",
    "rooms_away": 13,
    "status": "computed"
   },
   {
-   "name": "Lok Faerie Ring",
+   "name": "Faerie Ring (Lok)",
    "commands": "r e 8;open gate;r e 5;s;r e 3;r s 6",
    "steps": [
     "east x8",
@@ -1400,11 +1465,12 @@
    "room": "Forest Clearing",
    "vnum": 24001,
    "area": "Lok Faerie Ring",
+   "area_display": "Faerie Ring (Lok)",
    "rooms_away": 23,
    "status": "computed"
   },
   {
-   "name": "Mahatma Arachnos",
+   "name": "Arachnos (Mahatma)",
    "commands": "r w 7;open gate;r w 10;s;r w 2;n;w;r u 3",
    "steps": [
     "west x7",
@@ -1419,11 +1485,12 @@
    "room": "Webbed Entrance",
    "vnum": 6301,
    "area": "Mahatma Arachnos",
+   "area_display": "Arachnos (Mahatma)",
    "rooms_away": 25,
    "status": "computed"
   },
   {
-   "name": "Mahatma Glass Fortress",
+   "name": "Glass Fortress (Mahatma)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 8;u;e;r u 3;r n 2",
    "steps": [
     "west x7",
@@ -1440,11 +1507,12 @@
    "room": "The Big, Blue Ocean",
    "vnum": 1801,
    "area": "Mahatma Glass Fortress",
+   "area_display": "Glass Fortress (Mahatma)",
    "rooms_away": 28,
    "status": "computed"
   },
   {
-   "name": "Merc Troll Den",
+   "name": "Troll Den (Merc)",
    "commands": "r s 6;open gate;r s 5;d;s",
    "steps": [
     "south x6",
@@ -1456,11 +1524,12 @@
    "room": "Wastedump",
    "vnum": 2801,
    "area": "Merc Troll Den",
+   "area_display": "Troll Den (Merc)",
    "rooms_away": 13,
    "status": "computed"
   },
   {
-   "name": "Morgan The Glitter Palace",
+   "name": "The Glitter Palace (Morgan)",
    "commands": "r e 8;open gate;r e 3;r n 2;nw;w;s;enter portal",
    "steps": [
     "east x8",
@@ -1475,11 +1544,12 @@
    "room": "Before the crystal bridge.",
    "vnum": 10000,
    "area": "Morgan The Glitter Palace",
+   "area_display": "The Glitter Palace (Morgan)",
    "rooms_away": 17,
    "status": "computed"
   },
   {
-   "name": "Morgan the Upper Argo",
+   "name": "the Upper Argo (Morgan)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 7",
    "steps": [
     "west x7",
@@ -1492,11 +1562,12 @@
    "room": "A mountain path",
    "vnum": 1000,
    "area": "Morgan the Upper Argo",
+   "area_display": "the Upper Argo (Morgan)",
    "rooms_away": 20,
    "status": "computed"
   },
   {
-   "name": "Onivel Rome",
+   "name": "Rome (Onivel)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 3;e;r n 2;r e 4;r s 6",
    "steps": [
     "west x7",
@@ -1513,11 +1584,12 @@
    "room": "Though the Weeds",
    "vnum": 19168,
    "area": "Onivel Rome",
+   "area_display": "Rome (Onivel)",
    "rooms_away": 29,
    "status": "computed"
   },
   {
-   "name": "PinkF Mob Factory",
+   "name": "Mob Factory (PinkF)",
    "commands": "r n 2;r e 4;n;e;n;e",
    "steps": [
     "north x2",
@@ -1530,11 +1602,12 @@
    "room": "Entrance to the Mob Factory",
    "vnum": 9400,
    "area": "PinkF Mob Factory",
+   "area_display": "Mob Factory (PinkF)",
    "rooms_away": 10,
    "status": "computed"
   },
   {
-   "name": "Poohb The Shire",
+   "name": "The Shire (Poohb)",
    "commands": "r e 8;open gate;r e 5;r n 2",
    "steps": [
     "east x8",
@@ -1545,11 +1618,12 @@
    "room": "A well kept path",
    "vnum": 1100,
    "area": "Poohb The Shire",
+   "area_display": "The Shire (Poohb)",
    "rooms_away": 15,
    "status": "computed"
   },
   {
-   "name": "Raff Dwarven Catacombs",
+   "name": "Dwarven Catacombs (Raff)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d;w;r s 4;r u 3",
    "steps": [
     "north x2",
@@ -1573,11 +1647,12 @@
    "room": "Waterfall of mist",
    "vnum": 2043,
    "area": "Raff Dwarven Catacombs",
+   "area_display": "Dwarven Catacombs (Raff)",
    "rooms_away": 25,
    "status": "computed"
   },
   {
-   "name": "Raff Elemental Canyon",
+   "name": "Elemental Canyon (Raff)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 5;r w 2;nw;n",
    "steps": [
     "west x7",
@@ -1593,11 +1668,12 @@
    "room": "A Mountain Path",
    "vnum": 9201,
    "area": "Raff Elemental Canyon",
+   "area_display": "Elemental Canyon (Raff)",
    "rooms_away": 22,
    "status": "computed"
   },
   {
-   "name": "Raff Gangland",
+   "name": "Gangland (Raff)",
    "commands": "r e 3;s;e;s;r e 3",
    "steps": [
     "east x3",
@@ -1609,11 +1685,12 @@
    "room": "A Dark Alleyway",
    "vnum": 2101,
    "area": "Raff Gangland",
+   "area_display": "Gangland (Raff)",
    "rooms_away": 9,
    "status": "computed"
   },
   {
-   "name": "Sandman Dwarven Day Care",
+   "name": "Dwarven Day Care (Sandman)",
    "commands": "r e 8;open gate;r e 3;r s 4;r e 2;s;r e 2;d;r n 3;e;s;e;r s 2",
    "steps": [
     "east x8",
@@ -1633,11 +1710,12 @@
    "room": "The Dwarven Drop Off",
    "vnum": 6601,
    "area": "Sandman Dwarven Day Care",
+   "area_display": "Dwarven Day Care (Sandman)",
    "rooms_away": 29,
    "status": "computed"
   },
   {
-   "name": "Shop Gelidia",
+   "name": "Gelidia (Shop)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 8;u;e;u;n",
    "steps": [
     "west x7",
@@ -1654,11 +1732,12 @@
    "room": "Outside the gates of Gelidia",
    "vnum": 18224,
    "area": "Shop Gelidia",
+   "area_display": "Gelidia (Shop)",
    "rooms_away": 25,
    "status": "computed"
   },
   {
-   "name": "Shop The Ice Keep",
+   "name": "The Ice Keep (Shop)",
    "commands": "r w 7;open gate;w;r n 3;r e 2;r n 8;u;e;u;n;open north;r n 2;e;ne;r n 2;nw;r n 2;r e 2;ne;r n 4;open north;r n 2",
    "steps": [
     "west x7",
@@ -1687,11 +1766,12 @@
    "room": "Beginning of a small trail",
    "vnum": 18138,
    "area": "Shop The Ice Keep",
+   "area_display": "The Ice Keep (Shop)",
    "rooms_away": 43,
    "status": "computed"
   },
   {
-   "name": "Shop The Land of Oz",
+   "name": "The Land of Oz (Shop)",
    "commands": "r w 7;open gate;r w 10;s;r w 2;n;w;n;enter portal",
    "steps": [
     "west x7",
@@ -1707,11 +1787,12 @@
    "room": "Entrance to the Land of Oz",
    "vnum": 17700,
    "area": "Shop The Land of Oz",
+   "area_display": "The Land of Oz (Shop)",
    "rooms_away": 24,
    "status": "computed"
   },
   {
-   "name": "Strahd Crystalmir Lake",
+   "name": "Crystalmir Lake (Strahd)",
    "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;d",
    "steps": [
     "west x7",
@@ -1729,11 +1810,12 @@
    "room": "Rock Outcropping",
    "vnum": 13001,
    "area": "Strahd Crystalmir Lake",
+   "area_display": "Crystalmir Lake (Strahd)",
    "rooms_away": 21,
    "status": "computed"
   },
   {
-   "name": "Strahd Descent to Hell",
+   "name": "Descent to Hell (Strahd)",
    "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;r w 2;r n 3;e;s;open door;e;u;e;open door;s;open book;s",
    "steps": [
     "west x7",
@@ -1763,11 +1845,12 @@
    "room": "Stone Archway",
    "vnum": 13401,
    "area": "Strahd Descent to Hell",
+   "area_display": "Descent to Hell (Strahd)",
    "rooms_away": 34,
    "status": "computed"
   },
   {
-   "name": "Strahd Town Of Solace",
+   "name": "Town Of Solace (Strahd)",
    "commands": "r w 7;open gate;r w 4;r s 2;e;s;e;r s 2;w;s;r d 2;w;n",
    "steps": [
     "west x7",
@@ -1787,11 +1870,12 @@
    "room": "Gateway to Solace",
    "vnum": 13201,
    "area": "Strahd Town Of Solace",
+   "area_display": "Town Of Solace (Strahd)",
    "rooms_away": 24,
    "status": "computed"
   },
   {
-   "name": "Trin Mushroom Grove",
+   "name": "Mushroom Grove (Trin)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d;r w 8",
    "steps": [
     "north x2",
@@ -1813,11 +1897,12 @@
    "room": "Into the cavern.",
    "vnum": 25201,
    "area": "Trin Mushroom Grove",
+   "area_display": "Mushroom Grove (Trin)",
    "rooms_away": 25,
    "status": "computed"
   },
   {
-   "name": "Trin The Underdark",
+   "name": "The Underdark (Trin)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d",
    "steps": [
     "north x2",
@@ -1838,11 +1923,12 @@
    "room": "The Trade Route.",
    "vnum": 25160,
    "area": "Trin The Underdark",
+   "area_display": "The Underdark (Trin)",
    "rooms_away": 17,
    "status": "computed"
   },
   {
-   "name": "Tyrst Wyvern's Tower",
+   "name": "Wyvern's Tower (Tyrst)",
    "commands": "r e 8;open gate;r e 3;r s 4;r e 2;s;r e 2;d;s;e",
    "steps": [
     "east x8",
@@ -1859,11 +1945,12 @@
    "room": "Main Eastern Road",
    "vnum": 1701,
    "area": "Tyrst Wyvern's Tower",
+   "area_display": "Wyvern's Tower (Tyrst)",
    "rooms_away": 23,
    "status": "computed"
   },
   {
-   "name": "Unknown The Tombs of Tarin",
+   "name": "The Tombs of Tarin (Unknown)",
    "commands": "r w 7;open gate;r w 10;r n 2;r w 2",
    "steps": [
     "west x7",
@@ -1875,11 +1962,12 @@
    "room": "A bend in the dark forest",
    "vnum": 5622,
    "area": "Unknown The Tombs of Tarin",
+   "area_display": "The Tombs of Tarin (Unknown)",
    "rooms_away": 21,
    "status": "computed"
   },
   {
-   "name": "Vougon Gnome Village",
+   "name": "Gnome Village (Vougon)",
    "commands": "r e 8;open gate;r e 5;s;e",
    "steps": [
     "east x8",
@@ -1891,11 +1979,12 @@
    "room": "Entrance to Gnome Village",
    "vnum": 1501,
    "area": "Vougon Gnome Village",
+   "area_display": "Gnome Village (Vougon)",
    "rooms_away": 15,
    "status": "computed"
   },
   {
-   "name": "Wench Dragon Tower",
+   "name": "Dragon Tower (Wench)",
    "commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d;r w 3;r n 2;ne;r e 2;se;e;r u 2",
    "steps": [
     "north x2",
@@ -1923,6 +2012,7 @@
    "room": "A cave opening",
    "vnum": 2235,
    "area": "Wench Dragon Tower",
+   "area_display": "Dragon Tower (Wench)",
    "rooms_away": 29,
    "status": "computed"
   }
@@ -1950,6 +2040,7 @@
    "room": "A Wild Valley",
    "vnum": 11000,
    "area": "CAW Ancalador",
+   "area_display": "Ancalador (CAW)",
    "status": "verified"
   },
   {
@@ -1968,6 +2059,7 @@
    "room": "Webbed Entrance",
    "vnum": 6301,
    "area": "Mahatma Arachnos",
+   "area_display": "Arachnos (Mahatma)",
    "status": "verified"
   },
   {
@@ -1983,6 +2075,7 @@
    "room": "Center of the Arena.",
    "vnum": 2609,
    "area": "Klute Arena of ole Midgaard",
+   "area_display": "Arena of ole Midgaard (Klute)",
    "status": "verified"
   },
   {
@@ -1997,6 +2090,7 @@
    "room": "The Gates",
    "vnum": 17001,
    "area": "Graves Assassins Guild",
+   "area_display": "Assassins Guild (Graves)",
    "status": "verified"
   },
   {
@@ -2015,6 +2109,7 @@
    "room": "Entrance to Azeroth",
    "vnum": 28101,
    "area": "Crane Azeroth",
+   "area_display": "Azeroth (Crane)",
    "status": "verified"
   },
   {
@@ -2044,6 +2139,7 @@
    "room": "Hospital",
    "vnum": 6534,
    "area": "Anon Dwarven Kingdom",
+   "area_display": "Dwarven Kingdom (Anon)",
    "status": "verified"
   },
   {
@@ -2069,6 +2165,7 @@
    "room": "The Nest",
    "vnum": 3623,
    "area": "Dazed The Dark Forest",
+   "area_display": "The Dark Forest (Dazed)",
    "status": "verified"
   },
   {
@@ -2087,6 +2184,7 @@
    "room": "The Void",
    "vnum": 5378,
    "area": "Kahn Old Thalos",
+   "area_display": "Old Thalos (Kahn)",
    "status": "drifted",
    "note": "The old directions stop here: no exit north from here."
   },
@@ -2121,6 +2219,7 @@
    "room": "The Western Gate of Camelot",
    "vnum": 726,
    "area": "Lok Camelot",
+   "area_display": "Camelot (Lok)",
    "status": "verified"
   },
   {
@@ -2137,6 +2236,7 @@
    "room": "At an Intersection in the Forest Murkmire",
    "vnum": 24104,
    "area": "Lok Coven",
+   "area_display": "Coven (Lok)",
    "status": "verified"
   },
   {
@@ -2156,6 +2256,7 @@
    "room": "Crown of the trees",
    "vnum": 5671,
    "area": "Unknown The Tombs of Tarin",
+   "area_display": "The Tombs of Tarin (Unknown)",
    "status": "verified"
   },
   {
@@ -2178,6 +2279,7 @@
    "room": "Middle of Crystalmir Lake",
    "vnum": 13005,
    "area": "Strahd Crystalmir Lake",
+   "area_display": "Crystalmir Lake (Strahd)",
    "status": "verified"
   },
   {
@@ -2212,6 +2314,7 @@
    "room": "Hallway",
    "vnum": 2203,
    "area": "Wench Dragon Tower",
+   "area_display": "Dragon Tower (Wench)",
    "status": "verified"
   },
   {
@@ -2237,6 +2340,7 @@
    "room": "City street",
    "vnum": 5101,
    "area": "Drkside Drow City",
+   "area_display": "Drow City (Drkside)",
    "status": "verified"
   },
   {
@@ -2268,6 +2372,7 @@
    "room": "The bonfire.",
    "vnum": 25265,
    "area": "Trin Mushroom Grove",
+   "area_display": "Mushroom Grove (Trin)",
    "status": "verified"
   },
   {
@@ -2291,6 +2396,7 @@
    "room": "Day Care Center",
    "vnum": 6602,
    "area": "Sandman Dwarven Day Care",
+   "area_display": "Dwarven Day Care (Sandman)",
    "status": "verified"
   },
   {
@@ -2314,6 +2420,7 @@
    "room": "Top of mountain",
    "vnum": 6503,
    "area": "Anon Dwarven Kingdom",
+   "area_display": "Dwarven Kingdom (Anon)",
    "status": "verified"
   },
   {
@@ -2339,6 +2446,7 @@
    "room": "A fluffy white cloud.",
    "vnum": 9102,
    "area": "DAWS Dylan's Area",
+   "area_display": "Dylan's Area (DAWS)",
    "status": "verified"
   },
   {
@@ -2361,6 +2469,7 @@
    "room": "Entrance to Elemental Canyon",
    "vnum": 9207,
    "area": "Raff Elemental Canyon",
+   "area_display": "Elemental Canyon (Raff)",
    "status": "verified"
   },
   {
@@ -2379,6 +2488,7 @@
    "room": "Entrance Hall",
    "vnum": 24002,
    "area": "Lok Faerie Ring",
+   "area_display": "Faerie Ring (Lok)",
    "status": "verified"
   },
   {
@@ -2401,6 +2511,7 @@
    "room": "Inside the mountain",
    "vnum": 2910,
    "area": "DAWS Fire Newts",
+   "area_display": "Fire Newts (DAWS)",
    "status": "verified"
   },
   {
@@ -2441,6 +2552,7 @@
    "room": "The Altar",
    "vnum": 5145,
    "area": "Drkside Drow City",
+   "area_display": "Drow City (Drkside)",
    "status": "drifted",
    "note": "The old directions stop here: no exit south from here.",
    "fixed_commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d;r e 6;open north;n;d;r n 2;u;n;d;open north;n;e;n;open down;d;n",
@@ -2476,7 +2588,8 @@
     "north"
    ],
    "fixed_room": "A passage",
-   "fixed_area": "Kyrus Forsaken Clanhall"
+   "fixed_area": "Kyrus Forsaken Clanhall",
+   "fixed_area_display": "Forsaken Clanhall (Kyrus)"
   },
   {
    "name": "Gangland",
@@ -2491,6 +2604,7 @@
    "room": "Beginning of White Dragon Boulevard",
    "vnum": 2102,
    "area": "Raff Gangland",
+   "area_display": "Gangland (Raff)",
    "status": "verified"
   },
   {
@@ -2511,6 +2625,7 @@
    "room": "Inside the gates of Gelidia",
    "vnum": 18223,
    "area": "Shop Gelidia",
+   "area_display": "Gelidia (Shop)",
    "status": "verified"
   },
   {
@@ -2531,6 +2646,7 @@
    "room": "Beginning of the swamp",
    "vnum": 3616,
    "area": "Dazed The Dark Forest",
+   "area_display": "The Dark Forest (Dazed)",
    "status": "verified"
   },
   {
@@ -2553,6 +2669,7 @@
    "room": "The Snow-filled Land",
    "vnum": 1806,
    "area": "Mahatma Glass Fortress",
+   "area_display": "Glass Fortress (Mahatma)",
    "status": "verified"
   },
   {
@@ -2568,6 +2685,7 @@
    "room": "A Dusty Path",
    "vnum": 1502,
    "area": "Vougon Gnome Village",
+   "area_display": "Gnome Village (Vougon)",
    "status": "verified"
   },
   {
@@ -2590,6 +2708,7 @@
    "room": "Tower",
    "vnum": 1612,
    "area": "Tyrst Wyvern's Tower",
+   "area_display": "Wyvern's Tower (Tyrst)",
    "status": "verified"
   },
   {
@@ -2603,6 +2722,7 @@
    "room": "A narrow trail through the deep, dark forest",
    "vnum": 6103,
    "area": "Diku Haon Dor",
+   "area_display": "Haon Dor (Diku)",
    "status": "verified"
   },
   {
@@ -2621,6 +2741,7 @@
    "room": "A Small Mine Shaft",
    "vnum": 1588,
    "area": "Vougon Gnome Village",
+   "area_display": "Gnome Village (Vougon)",
    "status": "verified"
   },
   {
@@ -2639,6 +2760,7 @@
    "room": "Entrance to the Mine Shaft",
    "vnum": 1562,
    "area": "Vougon Gnome Village",
+   "area_display": "Gnome Village (Vougon)",
    "status": "drifted",
    "note": "The old directions stop here: no exit north from here.",
    "fixed_commands": "r e 8;open gate;r e 5;s;r e 7;n;r e 2;n",
@@ -2653,7 +2775,8 @@
     "north"
    ],
    "fixed_room": "Hobgoblin Barracks",
-   "fixed_area": "Vougon Gnome Village"
+   "fixed_area": "Vougon Gnome Village",
+   "fixed_area_display": "Gnome Village (Vougon)"
   },
   {
    "name": "Holy Grove",
@@ -2668,6 +2791,7 @@
    "room": "The holy grove",
    "vnum": 8904,
    "area": "Alfa Holy Grove",
+   "area_display": "Holy Grove (Alfa)",
    "status": "verified"
   },
   {
@@ -2720,6 +2844,7 @@
    "room": "Inside the ice keep",
    "vnum": 18027,
    "area": "Shop The Ice Keep",
+   "area_display": "The Ice Keep (Shop)",
    "status": "verified"
   },
   {
@@ -2735,6 +2860,7 @@
    "room": "Igor's Secret Chamber",
    "vnum": 9750,
    "area": "Anon New Thalos",
+   "area_display": "New Thalos (Anon)",
    "status": "verified"
   },
   {
@@ -2758,6 +2884,7 @@
    "room": "Jenk's Place",
    "vnum": 8739,
    "area": "CAW Kerofk",
+   "area_display": "Kerofk (CAW)",
    "status": "verified"
   },
   {
@@ -2781,6 +2908,7 @@
    "room": "Intersection",
    "vnum": 8736,
    "area": "CAW Kerofk",
+   "area_display": "Kerofk (CAW)",
    "status": "verified"
   },
   {
@@ -2797,6 +2925,7 @@
    "room": "Grand Foyer",
    "vnum": 29003,
    "area": "Haze Korzath's Fortress",
+   "area_display": "Korzath's Fortress (Haze)",
    "status": "verified"
   },
   {
@@ -2828,6 +2957,7 @@
    "room": "Entrance to Mega-City One",
    "vnum": 8001,
    "area": "Glop Mega-City One",
+   "area_display": "Mega-City One (Glop)",
    "status": "verified"
   },
   {
@@ -2856,6 +2986,7 @@
    "room": "On the Beach",
    "vnum": 29381,
    "area": "Haze Voyage Across Sea",
+   "area_display": "Voyage Across Sea (Haze)",
    "status": "verified"
   },
   {
@@ -2869,6 +3000,7 @@
    "room": "The Trail to Miden'nir",
    "vnum": 3505,
    "area": "Copper Miden'nir",
+   "area_display": "Miden'nir (Copper)",
    "status": "verified"
   },
   {
@@ -2883,6 +3015,7 @@
    "room": "Entrance Hallway to Mob Factory",
    "vnum": 9407,
    "area": "PinkF Mob Factory",
+   "area_display": "Mob Factory (PinkF)",
    "status": "verified"
   },
   {
@@ -2898,6 +3031,7 @@
    "room": "The tunnel",
    "vnum": 4014,
    "area": "Alfa Moria",
+   "area_display": "Moria (Alfa)",
    "status": "verified"
   },
   {
@@ -2926,6 +3060,7 @@
    "room": "The Eastern Gate of Nethril.",
    "vnum": 25208,
    "area": "Trin Mushroom Grove",
+   "area_display": "Mushroom Grove (Trin)",
    "status": "verified"
   },
   {
@@ -2944,6 +3079,7 @@
    "room": "Village street",
    "vnum": 5551,
    "area": "Alfa Ofcol",
+   "area_display": "Ofcol (Alfa)",
    "status": "verified"
   },
   {
@@ -2974,6 +3110,7 @@
    "room": "Lost in the Mist",
    "vnum": 2335,
    "area": "Chris The Keep of Mahn-Tor",
+   "area_display": "The Keep of Mahn-Tor (Chris)",
    "status": "verified"
   },
   {
@@ -2988,6 +3125,7 @@
    "room": "The dwarf forest",
    "vnum": 5258,
    "area": "Drkside Thalos",
+   "area_display": "Thalos (Drkside)",
    "status": "verified"
   },
   {
@@ -3016,6 +3154,7 @@
    "room": "The Library Addition",
    "vnum": 5338,
    "area": "Kahn Old Thalos",
+   "area_display": "Old Thalos (Kahn)",
    "status": "verified"
   },
   {
@@ -3046,6 +3185,7 @@
    "room": "Mountain",
    "vnum": 901,
    "area": "Generic Olympus",
+   "area_display": "Olympus (Generic)",
    "status": "drifted",
    "note": "The old directions stop here: no exit north from here.",
    "fixed_commands": "r w 7;open gate;r w 10;s;r w 2;r s 2;w;s;r w 3;n;w;n;nw;n",
@@ -3066,7 +3206,8 @@
     "north"
    ],
    "fixed_room": "Mountain",
-   "fixed_area": "Generic Olympus"
+   "fixed_area": "Generic Olympus",
+   "fixed_area_display": "Olympus (Generic)"
   },
   {
    "name": "Pitch Black Opal (path 1)",
@@ -3097,6 +3238,7 @@
    "room": "An ancient tomb",
    "vnum": 3645,
    "area": "Dazed The Dark Forest",
+   "area_display": "The Dark Forest (Dazed)",
    "status": "verified"
   },
   {
@@ -3127,6 +3269,7 @@
    "room": "Lost in the Mushrooms",
    "vnum": 3639,
    "area": "Dazed The Dark Forest",
+   "area_display": "The Dark Forest (Dazed)",
    "status": "drifted",
    "note": "The old directions stop here: no exit north from here.",
    "fixed_commands": "r w 7;open gate;r w 10;r n 2;r w 2;r s 4;w;s;w;r s 2;r e 2;n;e;s;e;open door;s;d;open rug;d",
@@ -3153,7 +3296,8 @@
     "down"
    ],
    "fixed_room": "An ancient tomb",
-   "fixed_area": "Dazed The Dark Forest"
+   "fixed_area": "Dazed The Dark Forest",
+   "fixed_area_display": "The Dark Forest (Dazed)"
   },
   {
    "name": "Plains of the North",
@@ -3169,6 +3313,7 @@
    "room": "Path in the plains",
    "vnum": 300,
    "area": "Copper Plains of the North",
+   "area_display": "Plains of the North (Copper)",
    "status": "verified"
   },
   {
@@ -3192,6 +3337,7 @@
    "room": "Outside Redferne's residence",
    "vnum": 7900,
    "area": "Diku Redferne's Residence",
+   "area_display": "Redferne's Residence (Diku)",
    "status": "verified"
   },
   {
@@ -3210,6 +3356,7 @@
    "room": "Clay Road",
    "vnum": 19165,
    "area": "Onivel Rome",
+   "area_display": "Rome (Onivel)",
    "status": "verified"
   },
   {
@@ -3233,6 +3380,7 @@
    "room": "The Common Square",
    "vnum": 5725,
    "area": "Drakk Ruins of Midgaard",
+   "area_display": "Ruins of Midgaard (Drakk)",
    "status": "verified"
   },
   {
@@ -3253,6 +3401,7 @@
    "room": "Into the Astral Plane",
    "vnum": 7507,
    "area": "Andi The Astral Plane",
+   "area_display": "The Astral Plane (Andi)",
    "status": "verified"
   },
   {
@@ -3269,6 +3418,7 @@
    "room": "Sea of sand",
    "vnum": 20,
    "area": "Graves Continental Drift",
+   "area_display": "Continental Drift (Graves)",
    "status": "verified"
   },
   {
@@ -3287,6 +3437,7 @@
    "room": "Ishtar River",
    "vnum": 9720,
    "area": "Anon New Thalos",
+   "area_display": "New Thalos (Anon)",
    "status": "drifted",
    "note": "The old directions stop here: no exit north from here.",
    "fixed_commands": "r e 8;open gate;r e 13;open gate;r e 6;r s 5;d;r w 13;r n 4",
@@ -3302,7 +3453,8 @@
     "north x4"
    ],
    "fixed_room": "On the beach",
-   "fixed_area": "Eclipse Sea of Serenity"
+   "fixed_area": "Eclipse Sea of Serenity",
+   "fixed_area_display": "Sea of Serenity (Eclipse)"
   },
   {
    "name": "Sewer",
@@ -3319,6 +3471,7 @@
    "room": "The Quadruple Junction Under the Garbage",
    "vnum": 7030,
    "area": "Diku Sewer",
+   "area_display": "Sewer (Diku)",
    "status": "verified"
   },
   {
@@ -3343,6 +3496,7 @@
    "room": "The Shadow Grove",
    "vnum": 1308,
    "area": "Anon High Tower of Sorcery",
+   "area_display": "High Tower of Sorcery (Anon)",
    "status": "verified"
   },
   {
@@ -3355,6 +3509,7 @@
    "room": "The Entrance to Temple Blvd. Social Club",
    "vnum": 800,
    "area": "KasChel Social Club",
+   "area_display": "Social Club (KasChel)",
    "status": "verified"
   },
   {
@@ -3374,6 +3529,7 @@
    "room": "A ruined clay dwelling",
    "vnum": 5226,
    "area": "Drkside Thalos",
+   "area_display": "Thalos (Drkside)",
    "status": "verified"
   },
   {
@@ -3387,6 +3543,7 @@
    "room": "The Center of Market Square",
    "vnum": 9506,
    "area": "Anon New Thalos",
+   "area_display": "New Thalos (Anon)",
    "status": "verified"
   },
   {
@@ -3416,6 +3573,7 @@
    "room": "The Cathedral Courtyard",
    "vnum": 24201,
    "area": "CAW The Abandoned Cathedral",
+   "area_display": "The Abandoned Cathedral (CAW)",
    "status": "verified"
   },
   {
@@ -3437,6 +3595,7 @@
    "room": "Into the Astral Plane",
    "vnum": 7507,
    "area": "Andi The Astral Plane",
+   "area_display": "The Astral Plane (Andi)",
    "status": "verified"
   },
   {
@@ -3459,6 +3618,7 @@
    "room": "On a road",
    "vnum": 9793,
    "area": "Anon New Thalos",
+   "area_display": "New Thalos (Anon)",
    "status": "drifted",
    "note": "The old directions stop here: nothing lies north of here.",
    "fixed_commands": "r w 7;open gate;r w 10;r n 2;r w 2;r s 3",
@@ -3471,7 +3631,8 @@
     "south x3"
    ],
    "fixed_room": "Entrance to the Dark Forest.",
-   "fixed_area": "Dazed The Dark Forest"
+   "fixed_area": "Dazed The Dark Forest",
+   "fixed_area_display": "The Dark Forest (Dazed)"
   },
   {
    "name": "The Emerald Forest",
@@ -3491,6 +3652,7 @@
    "room": "A Thickly-Wooded Dell",
    "vnum": 20506,
    "area": "FeaR The Emerald Forest",
+   "area_display": "The Emerald Forest (FeaR)",
    "status": "verified"
   },
   {
@@ -3509,6 +3671,7 @@
    "room": "Before the crystal bridge.",
    "vnum": 10000,
    "area": "Morgan The Glitter Palace",
+   "area_display": "The Glitter Palace (Morgan)",
    "status": "verified"
   },
   {
@@ -3533,6 +3696,7 @@
    "room": "The Crossroads",
    "vnum": 17122,
    "area": "Karl The HighLands",
+   "area_display": "The HighLands (Karl)",
    "status": "verified"
   },
   {
@@ -3562,6 +3726,7 @@
    "room": "The end of the guarded hall",
    "vnum": 2397,
    "area": "Chris The Keep of Mahn-Tor",
+   "area_display": "The Keep of Mahn-Tor (Chris)",
    "status": "verified"
   },
   {
@@ -3581,6 +3746,7 @@
    "room": "A dark section of the forest",
    "vnum": 66,
    "area": "Graves Continental Drift",
+   "area_display": "Continental Drift (Graves)",
    "status": "drifted",
    "note": "The old directions stop here: no 'enter tornado' here.",
    "fixed_commands": "r w 7;open gate;r w 10;s;r w 2;n;w;n;enter portal",
@@ -3596,7 +3762,8 @@
     "enter The swirling tornado"
    ],
    "fixed_room": "Entrance to the Land of Oz",
-   "fixed_area": "Shop The Land of Oz"
+   "fixed_area": "Shop The Land of Oz",
+   "fixed_area_display": "The Land of Oz (Shop)"
   },
   {
    "name": "The Lonely Mountain",
@@ -3630,6 +3797,7 @@
    "room": "Onward and Upward",
    "vnum": 25015,
    "area": "Graves The Lonely Mountain",
+   "area_display": "The Lonely Mountain (Graves)",
    "status": "verified"
   },
   {
@@ -3644,6 +3812,7 @@
    "room": "The Prison of Dresden",
    "vnum": 20101,
    "area": "Flar The Prison",
+   "area_display": "The Prison (Flar)",
    "status": "verified"
   },
   {
@@ -3658,6 +3827,7 @@
    "room": "Entrance to the Shire",
    "vnum": 1103,
    "area": "Poohb The Shire",
+   "area_display": "The Shire (Poohb)",
    "status": "verified"
   },
   {
@@ -3679,6 +3849,7 @@
    "room": "Upper half of the broken stairs",
    "vnum": 5602,
    "area": "Unknown The Tombs of Tarin",
+   "area_display": "The Tombs of Tarin (Unknown)",
    "status": "verified"
   },
   {
@@ -3712,6 +3883,7 @@
    "room": "The intersection.",
    "vnum": 25143,
    "area": "Trin The Underdark",
+   "area_display": "The Underdark (Trin)",
    "status": "drifted",
    "note": "The old directions stop here: no exit east from here.",
    "fixed_commands": "r n 2;r e 4;n;e;r n 2;open down;d;w;d;w;n;w;open ozone;d",
@@ -3732,7 +3904,8 @@
     "down"
    ],
    "fixed_room": "The Trade Route.",
-   "fixed_area": "Trin The Underdark"
+   "fixed_area": "Trin The Underdark",
+   "fixed_area_display": "The Underdark (Trin)"
   },
   {
    "name": "Town Of Solace",
@@ -3755,6 +3928,7 @@
    "room": "Gateway to Solace",
    "vnum": 13201,
    "area": "Strahd Town Of Solace",
+   "area_display": "Town Of Solace (Strahd)",
    "status": "verified"
   },
   {
@@ -3769,6 +3943,7 @@
    "room": "Soggy Cave",
    "vnum": 19,
    "area": "Graves Continental Drift",
+   "area_display": "Continental Drift (Graves)",
    "status": "verified"
   },
   {
@@ -3786,6 +3961,7 @@
    "room": "The Entrance to the Valley of the Elves",
    "vnum": 7805,
    "area": "Hatchet Valley of the Elves",
+   "area_display": "Valley of the Elves (Hatchet)",
    "status": "verified"
   },
   {
@@ -3802,6 +3978,7 @@
    "room": "Main Room",
    "vnum": 14015,
    "area": "CAW/SC Werith's Wayhouse",
+   "area_display": "Werith's Wayhouse (CAW/SC)",
    "status": "verified"
   },
   {
@@ -3825,6 +4002,7 @@
    "room": "Along the Eastern Road",
    "vnum": 3525,
    "area": "Copper Miden'nir",
+   "area_display": "Miden'nir (Copper)",
    "status": "drifted",
    "note": "The old directions stop here: nothing lies south of here.",
    "fixed_commands": "r e 8;open gate;r e 3;r s 4;r e 2;s;r e 2;d;s;e",
@@ -3841,7 +4019,8 @@
     "east"
    ],
    "fixed_room": "Main Eastern Road",
-   "fixed_area": "Tyrst Wyvern's Tower"
+   "fixed_area": "Tyrst Wyvern's Tower",
+   "fixed_area_display": "Wyvern's Tower (Tyrst)"
   },
   {
    "name": "the Upper Argo",
@@ -3862,6 +4041,7 @@
    "room": "A clearing",
    "vnum": 1007,
    "area": "Morgan the Upper Argo",
+   "area_display": "the Upper Argo (Morgan)",
    "status": "verified"
   }
  ]

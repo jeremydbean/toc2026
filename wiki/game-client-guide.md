@@ -121,6 +121,24 @@ The desktop command panel includes movement, character, and combat actions.
 Mobile layouts keep a compact command strip beneath the input. Every quick
 action uses the same command path as typed input.
 
+## Routes
+
+The Routes panel lists every published way to walk somewhere, named for the
+zone with its builder in brackets -- `Moria (Alfa)` -- so the list reads and
+sorts by destination rather than by whoever built it. The same list appears in
+the dashboard's Routes view and both read the public `/api/directions`.
+
+Clicking a set of directions sends it to the game. **Copy** puts it on the
+clipboard instead, for pasting into another client.
+
+Tick **Mudlet style** to separate the copied commands with `;;` instead of
+`;`. Mudlet treats a single semicolon as ordinary text and needs two to break
+one line into several commands, so directions copied without this ran as one
+long nonsense command. The setting is remembered in the browser and changes
+only what is shown and copied: the client's own send button always uses the
+stored single-semicolon form, and `/api/directions` is unchanged, so anything
+else reading the feed is unaffected.
+
 ## Aliases
 
 Open **Session**, then use **Add** under Aliases. An alias contains:
