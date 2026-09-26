@@ -608,6 +608,36 @@ is the same path `POST /api/update` writes and is owned by `toc`.
 The updater does `make clean` first, so production has never been exposed to
 the incremental-build trap described under Build And Run.
 
+**The updater now checks for players itself, immediately before the
+restart.** Check before triggering as well, but understand what that
+check is and is not worth: everything between the trigger and the
+restart -- fetch, `make clean`, a full rebuild, the world check and the
+Python suite -- takes about four minutes, and a reading taken before all
+that is stale by exactly the window that matters. Somebody logged in
+during a build and was disconnected by a check that had already said the
+game was empty. The gate lives in `deploy/toc2026-update`:
+
+- It holds while anyone who is not in `TOC_UPDATE_OWNERS` (default
+  `Killuminati`) is connected, polling every 30s up to
+  `TOC_UPDATE_HOLD_SECONDS` (default 900), then goes ahead anyway --
+  the update is already built and validated by that point, and holding
+  a validated update forever is the worse failure.
+- The count is the game's own MSSP reading and the names come from the
+  login journal, which only ever over-reports. A count higher than the
+  owners it can name holds: it waits too often rather than too rarely.
+- If the API cannot be read it falls back to established sockets on
+  port 9000, so an unhealthy dashboard does not hold every deploy for a
+  quarter of an hour.
+- It queues an `announce` before the stop, so whoever is on gets told.
+
+**The gate does not protect the owner**, by design -- an owner alone is
+not a reason to hold. If you are deploying while the owner is testing,
+say so first; the check will not do it for you.
+
+Because `install-pi.sh --refresh` runs before the restart in the same
+run, a change to the updater takes effect on the *next* deploy, not the
+one carrying it.
+
 Other deploy facts:
 
 - Never run the Pi installer or updater against the Windows VM; that host is

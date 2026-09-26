@@ -13,6 +13,81 @@ def read(relative_path: str) -> str:
     return (ROOT / relative_path).read_text(encoding="utf-8")
 
 
+def updater_gate_program() -> str:
+    """The Python the updater embeds to decide whether to hold."""
+    updater = read("deploy/toc2026-update")
+    body = updater.split('"$TOC_ROOT/.venv/bin/python" -c \'', 1)[1]
+    return body.split("\n'", 1)[0]
+
+
+class UpdateRestartGateTests(unittest.TestCase):
+    """The decision itself, not just that the code is present.
+
+    The count comes from the game over MSSP and is authoritative; the
+    names come from the login journal, which only ever over-reports. So
+    a count higher than the owners we can name has to hold.
+    """
+
+    def decide(self, online: dict, owners: str = "Killuminati") -> str:
+        import json
+        import sys
+
+        result = subprocess.run(
+            [sys.executable, "-c", updater_gate_program()],
+            input=json.dumps({"online": online}),
+            capture_output=True, text=True,
+            env={"OWNERS": owners, "PATH": os.environ.get("PATH", "")},
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return result.stdout.strip()
+
+    def test_it_goes_ahead_when_nobody_is_playing(self) -> None:
+        self.assertEqual(self.decide({"count": 0, "names": []}), "0|")
+
+    def test_an_owner_alone_does_not_hold_it(self) -> None:
+        self.assertEqual(
+            self.decide({"count": 1, "names": ["Killuminati"]}), "1|")
+        # Names off the wire are not normalised for us.
+        self.assertEqual(
+            self.decide({"count": 1, "names": ["killuminati"]}), "1|")
+
+    def test_anybody_else_holds_it(self) -> None:
+        self.assertEqual(
+            self.decide({"count": 1, "names": ["Bob"]}), "1|Bob")
+        self.assertEqual(
+            self.decide({"count": 2, "names": ["Killuminati", "Bob"]}),
+            "2|Bob")
+
+    def test_a_player_the_journal_missed_still_holds_it(self) -> None:
+        """The game says two are connected and the journal can name one.
+        The one it cannot name is the whole reason to wait."""
+        self.assertEqual(
+            self.decide({"count": 2, "names": ["Killuminati"]}),
+            "2|1 unnamed")
+
+    def test_an_unreadable_reading_is_not_an_empty_game(self) -> None:
+        import sys
+
+        result = subprocess.run(
+            [sys.executable, "-c", updater_gate_program()],
+            input="not json at all", capture_output=True, text=True,
+            env={"OWNERS": "Killuminati", "PATH": os.environ.get("PATH", "")},
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), "?|unknown")
+
+    def test_an_unreadable_reading_falls_back_to_the_socket_count(self) -> None:
+        """Otherwise a dashboard that is down holds every deploy for a
+        quarter of an hour -- and a dashboard that is down is itself a
+        reason to get on with the restart."""
+        updater = read("deploy/toc2026-update")
+        self.assertIn("established_on_game_port", updater)
+        self.assertIn("sport = :9000", updater)
+        fallback = updater.split('if [ "$blockers" = "unknown" ]', 1)[1]
+        fallback = fallback.split("fi", 1)[0]
+        self.assertIn("-eq 0", fallback)
+
+
 class InstallationAssetsTests(unittest.TestCase):
     def test_platform_entrypoints_are_present(self):
         expected = (
@@ -125,6 +200,17 @@ class InstallationAssetsTests(unittest.TestCase):
         self.assertIn("../merc --check-area", updater)
         self.assertIn("tests.test_webadmin_api tests.test_installation_assets", updater)
         self.assertIn('install-pi.sh" --refresh', updater)
+
+        # The player check has to sit between the build and the stop.
+        # Asked before the build it is stale by the length of the build,
+        # which is how somebody got disconnected by a check that had
+        # already said the game was empty.
+        gate = updater.index("online_status()")
+        self.assertLess(updater.index('install-pi.sh" --refresh'), gate)
+        self.assertLess(gate, updater.index("systemctl stop toc2026-game"))
+        self.assertIn("TOC_UPDATE_OWNERS", updater)
+        self.assertIn("TOC_UPDATE_HOLD_SECONDS", updater)
+        self.assertIn("announce|", updater)
         self.assertIn("toc2026-player-backup.service", updater)
         self.assertIn("reset-failed toc2026-player-backup.service", updater)
         self.assertIn("OnCalendar=Sun *-*-* 04:00:00", timer)

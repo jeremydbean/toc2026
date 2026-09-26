@@ -116,6 +116,112 @@ done
 # resilience fixes self-deploying instead of requiring a separate SSH session.
 "$TOC_ROOT/deploy/install-pi.sh" --refresh
 
+# ---------------------------------------------------------------------
+# Who is playing right now?
+#
+# Asked here, immediately before the stop, rather than by whoever
+# triggered the update. Everything above this line -- fetch, make clean,
+# a full rebuild, the world check and the Python suite -- takes minutes,
+# so a check made before it is stale by exactly the window that matters.
+# Somebody logged in during a four minute build and was disconnected by
+# a check that had already said the game was empty.
+#
+# The count comes from the game itself over MSSP and is authoritative.
+# The names come from the login journal, which only ever over-reports,
+# so a count higher than the owners we can name holds the restart. That
+# is the safe way round: it waits too often rather than too rarely.
+# ---------------------------------------------------------------------
+UPDATE_OWNERS="${TOC_UPDATE_OWNERS:-Killuminati}"
+HOLD_SECONDS="${TOC_UPDATE_HOLD_SECONDS:-900}"
+ANNOUNCE_LEAD="${TOC_UPDATE_ANNOUNCE_LEAD:-20}"
+
+# Prints "<count>|<names that are not owners>". A leading count of 0, or
+# an empty name list, means the restart may go ahead.
+online_status()
+{
+    token="$(sed -n 's/^WEB_ADMIN_TOKEN=//p' "$TOC_ROOT/.env" 2>/dev/null \
+        | head -n 1)"
+    if [ -z "$token" ]; then
+        echo "0|"
+        return 0
+    fi
+    curl --fail --silent --max-time 5 \
+        -H "X-Admin-Token: $token" \
+        http://127.0.0.1:9001/api/admin/status 2>/dev/null \
+    | OWNERS="$UPDATE_OWNERS" "$TOC_ROOT/.venv/bin/python" -c '
+import json, os, sys
+
+try:
+    online = (json.load(sys.stdin) or {}).get("online") or {}
+except Exception:
+    # No reading is not the same as an empty game. Say so, and let the
+    # caller hold rather than assume the room is clear.
+    print("?|unknown")
+    raise SystemExit(0)
+
+owners = set()
+for name in os.environ.get("OWNERS", "").split(","):
+    if name.strip():
+        owners.add(name.strip().lower())
+
+count = online.get("count") or 0
+names = [n for n in (online.get("names") or []) if n]
+mine = [n for n in names if n.strip().lower() in owners]
+
+# Every connected descriptor accounted for by an owner means nobody
+# else is on. A name the journal never recorded leaves count above the
+# owners we can see, and that holds.
+blockers = [n for n in names if n.strip().lower() not in owners]
+if count > len(mine) and not blockers:
+    blockers = ["%d unnamed" % (count - len(mine))]
+
+print("%s|%s" % (count, ", ".join(blockers)))
+' 2>/dev/null || echo "?|unknown"
+}
+
+# Established sockets on port 9000, which needs neither the token nor
+# the dashboard. Used only to second-guess an unreadable API: if nothing
+# is connected at the TCP level there is nobody to protect, and holding
+# a validated update for fifteen minutes because the web service is
+# unhealthy is the wrong trade -- an unhealthy web service is itself a
+# reason to get on with the restart.
+established_on_game_port()
+{
+    ss -Htn state established '( sport = :9000 )' 2>/dev/null | wc -l
+}
+
+waited=0
+blockers=""
+while :; do
+    status="$(online_status)"
+    blockers="${status#*|}"
+    if [ "$blockers" = "unknown" ] && [ "$(established_on_game_port)" -eq 0 ]
+    then
+        echo "Player count unreadable, but no sockets on 9000; going ahead."
+        blockers=""
+        status="0|"
+    fi
+    [ -n "$blockers" ] || break
+    if [ "$waited" -ge "$HOLD_SECONDS" ]; then
+        echo "Restarting with $blockers still connected after ${waited}s;" \
+            "the update is built and validated and holding longer is worse." >&2
+        break
+    fi
+    echo "Holding the restart: $blockers connected (${waited}s so far)."
+    "$SLEEP" 30
+    waited=$((waited + 30))
+done
+
+# Tell whoever is on before the lights go out. announce is the one queue
+# action that needs no immortal in the game to run it.
+online_now="${status%%|*}"
+if [ "$online_now" != "0" ] && [ -f "$TOC_ROOT/area/webadmin.queue" ]; then
+    run_toc /bin/sh -c "printf 'announce|%s\\n' \
+        'The game is restarting for an update and will be back shortly.' \
+        >>'$TOC_ROOT/area/webadmin.queue'" || true
+    "$SLEEP" "$ANNOUNCE_LEAD"
+fi
+
 systemctl stop toc2026-web.service
 systemctl stop toc2026-game.service
 systemctl reset-failed toc2026-game.service toc2026-web.service
