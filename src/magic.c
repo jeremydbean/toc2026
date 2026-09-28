@@ -3985,6 +3985,7 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
     UNUSED_PARAM(sn);
     CHAR_DATA *victim = (CHAR_DATA *) vo;
     bool found = false;
+    bool cursed = false;        /* anything cursed was seen at all */
     OBJ_DATA *obj;
     int iWear;
 
@@ -4007,6 +4008,7 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
 
         if (IS_OBJ_STAT(obj,ITEM_NODROP) || IS_OBJ_STAT(obj,ITEM_NOREMOVE))
         {   /* attempt to remove curse */
+	    cursed = true;
 	    if (!saves_dispel(level,obj->level,0))
 	    {
 		found = true;
@@ -4022,6 +4024,7 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
    {
         if (IS_OBJ_STAT(obj,ITEM_NODROP) || IS_OBJ_STAT(obj,ITEM_NOREMOVE))
         {   /* attempt to remove curse */
+	    cursed = true;
             if (!saves_dispel(level,obj->level,0))
             {
                 found = true;
@@ -4031,6 +4034,24 @@ void spell_remove_curse( int sn, int level, CHAR_DATA *ch, void *vo )
                 act("$n's $p glows blue.",victim,obj,NULL,TO_ROOM);
 	    }
          }
+    }
+
+    /*
+     * Say what happened. This used to end here, silently: a player who
+     * paid a healer 250 gold and whose curse saved was told nothing at
+     * all, so they paid again, and again. One of them gave up after
+     * three attempts and sacrificed the item.
+     *
+     * Only one item is freed per casting -- the loops stop at the first
+     * that fails its save -- and that is worth saying too, or somebody
+     * wearing two cursed things thinks the second one is a bug.
+     */
+    if ( !found )
+    {
+	if ( cursed )
+	    send_to_char( "The curse holds fast.\n\r", victim );
+	else
+	    send_to_char( "Nothing you are carrying is cursed.\n\r", victim );
     }
 }
 void spell_restore_mana( int sn, int level, CHAR_DATA *ch, void *vo )

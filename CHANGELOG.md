@@ -10,6 +10,38 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Hermie takes a command, and has more to give.** `buff` reads out
+  her list, `buff <name>` asks for one thing, `buff <group>` for a
+  handful -- DEFENSE, DETECTS, TRAVEL, CURES, RESTORE, COMBAT -- and
+  `buff all` for everything. It is shaped like `heal` at the pit
+  because that is the shape players already know, except that she
+  charges nothing, so the command sits at level 0. Speech still works
+  and runs through the same code.
+
+  Ten more spells on the list, and `refresh`, `heal` and `mana` now
+  fill the pool rather than handing out a slice, with `vitals` for all
+  three. Reading one watched session showed why that mattered: a player
+  topping up said `22` nine times in three seconds and `23` nine times
+  in two, and every one of them worked.
+
+### Fixed
+
+- **The healer at the pit no longer takes 250 gold in silence.**
+  `spell_remove_curse` frees the first cursed item that fails its save
+  and ended there with no else branch, so a player whose curse held was
+  told nothing at all. One of them paid three times in eleven seconds
+  and then sacrificed the item. It now says whether the curse held or
+  whether nothing was cursed, and `heal uncurse <item>` answers that it
+  cannot be aimed rather than discarding the word.
+
+- **Watching a player records what they did.** `log <name>` wrote a
+  blank line for every step, because all ten directions are
+  `LOG_NEVER` -- 82 of the 296 lines in the first captured session --
+  and never recorded a command the game refused. It now logs every
+  command with the room vnum, refusals included. Commands that carry a
+  secret are logged by name with their arguments dropped, so a password
+  is still never written down.
+
 - **The game says when something is waiting for you.** Unread notes are
   announced at login, for everyone, instead of sitting unmentioned until
   somebody thought to type NOTE. Staff additionally get a count of the

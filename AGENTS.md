@@ -667,6 +667,53 @@ itself such a commit, so it needs the same care -- back the live copies
 up, restore the tracked versions so the paths are clean, let the merge
 remove them, then put the live content back.
 
+## Watching A Player
+
+`log <name>` sets `PLR_LOG`, and what it records is the point of the
+feature: somebody is watching that character because of a suspected bug
+or a suspected cheat.
+
+Two things it used to get wrong, both found by reading the first
+session anyone captured. All ten directions are `LOG_NEVER`, so every
+step wrote a line with nothing after the colon -- **82 of 296 lines**.
+And an unrecognised command was not logged at all, because the write
+sat inside `if ( found )`, although a command the game refused is
+exactly what a cheat hunt wants to see.
+
+`LOG_NEVER` was doing two unrelated jobs: *too noisy for the global
+log* (movement) and *must never be written down* (`password`,
+`resetpwd`, `delete`). Only the second is a rule. For a watched
+character `interpret()` now records every command with the room vnum,
+refusals included, and for the second kind logs the command's **name
+with its arguments dropped** -- so a password change is visible and the
+password never is.
+
+Recording refused input means a password typed at the wrong moment can
+reach the log. That is the cost of the feature doing its job; the logs
+are already handled as sensitive.
+
+## Hermie
+
+`spellup` places her; `buff` is how a player asks. She is modelled on
+the healer at the pit -- `do_heal` in `src/misc.c` -- except that she
+charges nothing, so `buff` sits at level 0. Speech still works and goes
+through `spellup_listen()`, the same path as the command, so the two
+cannot drift.
+
+`SPELLUP_RESTORE` entries fill a pool outright rather than casting the
+spell behind it. The watched session showed why: `refresh` and `heal`
+hand out a slice, so a player topping up said `22` nine times in three
+seconds and `23` nine times in two, and **every one of them
+succeeded**. A free service standing in the temple can simply fill the
+pool.
+
+Only spells with a real `spell_fun` and a character target belong on
+her list. `iron skin`, `psionic armor`, `psychic shield`, `mindbar` and
+`levitate` are all `spell_null` -- the same dead-registry state
+`dshield` and `baura` were in -- and `detect poison`, `identify` and
+`haven` target an object or an exit. `spellup_grant` refuses a
+`spell_null` politely, but listing one is advertising nothing.
+
 ## Player Reports
 
 `bug`, `typo` and `idea` append one line each to `area/bugs.txt`,

@@ -318,6 +318,30 @@ warning of your arrival.
 See also: ASTRAL WALK, PROJECT, PSIONICS
 ~
 
+0 BUFF~
+Syntax: buff
+        buff <spell>
+        buff <group>
+        buff all
+
+Ask Hermie for a spell.  She stands where an immortal has put her, she
+asks for nothing in return, and she will cast anything on her list.
+
+BUFF on its own reads out the list.  Give it a name or a number for one
+spell, a group name for a handful at once, or ALL for everything she
+has.
+
+The groups are DEFENSE, DETECTS, TRAVEL, CURES, RESTORE and COMBAT.
+
+REFRESH, HEAL and MANA fill the pool rather than topping it up, and
+VITALS does all three, so there is no reason to ask twice.
+
+Talking to her still works if you prefer it - 'say sanctuary', 'say 5',
+'say all' - and goes through exactly the same list.
+
+See also: HEAL, SPELLUP
+~
+
 0 REPORTS~
 Syntax: reports
         reports <bugs|typos|ideas> [count]
@@ -418,6 +442,15 @@ command named here for the detail.
   RECALL can be moved.  RECALL SET makes the room you are standing in your
   recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
   tells you where it is.  Once every 30 minutes, and not mid-fight.
+
+  Hermie takes a command now.  BUFF reads out her list and BUFF
+  <name> asks for one thing, the way HEAL works at the pit, except
+  that she charges nothing.  She has ten more spells than she did,
+  six named groups, and REFRESH, HEAL and MANA now fill the pool
+  instead of handing out a slice at a time.  See HELP BUFF.
+
+  The healer at the pit tells you when a curse resists instead of
+  taking your gold in silence.
 
   The game says when something is waiting for you.  Unread notes are
   announced at login instead of sitting unmentioned, and staff are told

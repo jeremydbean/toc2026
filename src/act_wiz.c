@@ -10297,6 +10297,13 @@ DECLARE_SPELL_FUN( spell_null );
 #define SPELLUP_SPELL       0
 #define SPELLUP_EMPOWER     1
 #define SPELLUP_TITANIC     2
+#define SPELLUP_RESTORE     3   /* fill a pool rather than cast at it */
+
+/* Which pool SPELLUP_RESTORE fills. */
+#define SPELLUP_POOL_HIT    1
+#define SPELLUP_POOL_MANA   2
+#define SPELLUP_POOL_MOVE   4
+#define SPELLUP_POOL_ALL    (SPELLUP_POOL_HIT|SPELLUP_POOL_MANA|SPELLUP_POOL_MOVE)
 
 struct spellup_entry
 {
@@ -10304,39 +10311,88 @@ struct spellup_entry
     const char *spell;      /* skill_table name; NULL for the two bundles */
     const char *label;      /* how it reads on her menu                   */
     int         kind;
+    int         pool;       /* SPELLUP_POOL_* for SPELLUP_RESTORE          */
+};
+
+/* Named handfuls, so nobody has to ask for nine things one at a time. */
+struct spellup_group
+{
+    const char *keyword;
+    const char *label;
+    const char *members;    /* space-separated entry keywords */
+};
+
+static const struct spellup_group spellup_groups[] =
+{
+    { "defense", "every ward she has",
+      "armor shield stoneskin sanctuary protection divine globe"
+      " fireshield frostshield" },
+    { "detects", "every detection",
+      "detectinvis detecthidden detectmagic detectgood detectevil"
+      " infravision" },
+    { "travel",  "getting about",
+      "fly passdoor haste" },
+    { "cures",   "everything ailing you",
+      "cureblind curedisease curepoison curenightmare uncurse" },
+    { "restore", "hit points, mana and movement",
+      "heal mana refresh" },
+    { "combat",  "before a fight",
+      "giant frenzy haste stoneskin sanctuary" },
+    { NULL, NULL, NULL }
 };
 
 /* Every beneficial spell she offers, including each one that `empower'
  * bundles together, so a player can take just the piece they want. */
 static const struct spellup_entry spellup_table[] =
 {
-    { "armor",      "armor",             "armor",             SPELLUP_SPELL   },
-    { "bless",      "bless",             "bless",             SPELLUP_SPELL   },
-    { "shield",     "shield",            "shield",            SPELLUP_SPELL   },
-    { "stoneskin",  "stone skin",        "stone skin",        SPELLUP_SPELL   },
-    { "sanctuary",  "sanctuary",         "sanctuary",         SPELLUP_SPELL   },
-    { "haste",      "haste",             "haste",             SPELLUP_SPELL   },
-    { "fly",        "fly",               "fly",               SPELLUP_SPELL   },
-    { "passdoor",   "pass door",         "pass door",         SPELLUP_SPELL   },
-    { "protection", "protection evil",   "protection evil",   SPELLUP_SPELL   },
-    { "fireshield", "fire shield",       "fire shield",       SPELLUP_SPELL   },
-    { "frostshield","frost shield",      "frost shield",      SPELLUP_SPELL   },
-    { "divine",     "divine protection", "divine protection", SPELLUP_SPELL   },
-    { "giant",      "giant strength",    "giant strength",    SPELLUP_SPELL   },
-    { "frenzy",     "frenzy",            "frenzy",            SPELLUP_SPELL   },
-    { "globe",      "major globe",       "major globe",       SPELLUP_SPELL   },
-    { "infravision","infravision",       "infravision",       SPELLUP_SPELL   },
-    { "detectinvis","detect invis",      "detect invis",      SPELLUP_SPELL   },
-    { "detecthidden","detect hidden",    "detect hidden",     SPELLUP_SPELL   },
-    { "detectmagic","detect magic",      "detect magic",      SPELLUP_SPELL   },
-    { "detectgood", "detect good",       "detect good",       SPELLUP_SPELL   },
-    { "detectevil", "detect evil",       "detect evil",       SPELLUP_SPELL   },
-    { "refresh",    "refresh",           "refresh",           SPELLUP_SPELL   },
-    { "heal",       "heal",              "heal",              SPELLUP_SPELL   },
-    { "mana",       "restore mana",      "restore mana",      SPELLUP_SPELL   },
-    { "empower",    NULL,                "empower (bundle)",  SPELLUP_EMPOWER },
-    { "titanic",    NULL,                "titanic (bundle)",  SPELLUP_TITANIC },
-    { NULL,         NULL,                NULL,                0               }
+    { "armor",      "armor",             "armor",             SPELLUP_SPELL, 0 },
+    { "bless",      "bless",             "bless",             SPELLUP_SPELL, 0 },
+    { "shield",     "shield",            "shield",            SPELLUP_SPELL, 0 },
+    { "stoneskin",  "stone skin",        "stone skin",        SPELLUP_SPELL, 0 },
+    { "sanctuary",  "sanctuary",         "sanctuary",         SPELLUP_SPELL, 0 },
+    { "haste",      "haste",             "haste",             SPELLUP_SPELL, 0 },
+    { "fly",        "fly",               "fly",               SPELLUP_SPELL, 0 },
+    { "passdoor",   "pass door",         "pass door",         SPELLUP_SPELL, 0 },
+    { "protection", "protection evil",   "protection evil",   SPELLUP_SPELL, 0 },
+    { "fireshield", "fire shield",       "fire shield",       SPELLUP_SPELL, 0 },
+    { "frostshield","frost shield",      "frost shield",      SPELLUP_SPELL, 0 },
+    { "divine",     "divine protection", "divine protection", SPELLUP_SPELL, 0 },
+    { "giant",      "giant strength",    "giant strength",    SPELLUP_SPELL, 0 },
+    { "frenzy",     "frenzy",            "frenzy",            SPELLUP_SPELL, 0 },
+    { "globe",      "major globe",       "major globe",       SPELLUP_SPELL, 0 },
+    { "infravision","infravision",       "infravision",       SPELLUP_SPELL, 0 },
+    { "detectinvis","detect invis",      "detect invis",      SPELLUP_SPELL, 0 },
+    { "detecthidden","detect hidden",    "detect hidden",     SPELLUP_SPELL, 0 },
+    { "detectmagic","detect magic",      "detect magic",      SPELLUP_SPELL, 0 },
+    { "detectgood", "detect good",       "detect good",       SPELLUP_SPELL, 0 },
+    { "detectevil", "detect evil",       "detect evil",       SPELLUP_SPELL, 0 },
+    /* Filled rather than cast at. The spells behind these hand out a
+     * slice -- which is why a player topping up said "22" nine times in
+     * three seconds. She is a free service standing in the temple; she
+     * can simply fill the pool. */
+    { "refresh",    NULL,                "refresh (full)",    SPELLUP_RESTORE,
+      SPELLUP_POOL_MOVE },
+    { "heal",       NULL,                "heal (full)",       SPELLUP_RESTORE,
+      SPELLUP_POOL_HIT  },
+    { "mana",       NULL,                "restore mana (full)", SPELLUP_RESTORE,
+      SPELLUP_POOL_MANA },
+    { "vitals",     NULL,                "all three pools",   SPELLUP_RESTORE,
+      SPELLUP_POOL_ALL  },
+
+    { "cureblind",  "cure blindness",    "cure blindness",    SPELLUP_SPELL, 0 },
+    { "curedisease","cure disease",      "cure disease",      SPELLUP_SPELL, 0 },
+    { "curepoison", "cure poison",       "cure poison",       SPELLUP_SPELL, 0 },
+    { "curenightmare","cure nightmare",  "cure nightmare",    SPELLUP_SPELL, 0 },
+    { "uncurse",    "remove curse",      "remove curse",      SPELLUP_SPELL, 0 },
+    { "invis",      "invis",             "invisibility",      SPELLUP_SPELL, 0 },
+    { "gloves",     "power gloves",      "power gloves",      SPELLUP_SPELL, 0 },
+    { "shroud",     "shroud",            "shroud",            SPELLUP_SPELL, 0 },
+    { "ghostly",    "ghostly presence",  "ghostly presence",  SPELLUP_SPELL, 0 },
+    { "align",      "know alignment",    "know alignment",    SPELLUP_SPELL, 0 },
+
+    { "empower",    NULL,                "empower (bundle)",  SPELLUP_EMPOWER, 0 },
+    { "titanic",    NULL,                "titanic (bundle)",  SPELLUP_TITANIC, 0 },
+    { NULL,         NULL,                NULL,                0,               0 }
 };
 
 static int spellup_count( void )
@@ -10420,6 +10476,43 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
         return TRUE;
     }
 
+    if ( entry->kind == SPELLUP_RESTORE )
+    {
+        bool filled = FALSE;
+
+        if ( IS_SET( entry->pool, SPELLUP_POOL_HIT )
+        &&   victim->hit < victim->max_hit )
+        {
+            victim->hit = victim->max_hit;
+            filled = TRUE;
+        }
+        if ( IS_SET( entry->pool, SPELLUP_POOL_MANA )
+        &&   victim->mana < victim->max_mana )
+        {
+            victim->mana = victim->max_mana;
+            filled = TRUE;
+        }
+        if ( IS_SET( entry->pool, SPELLUP_POOL_MOVE )
+        &&   victim->move < victim->max_move )
+        {
+            victim->move = victim->max_move;
+            filled = TRUE;
+        }
+
+        if ( !filled )
+        {
+            act( "$n looks you over.  'Nothing wanting there.'",
+                mob, NULL, victim, TO_VICT );
+            return FALSE;
+        }
+
+        act( "$n rests a hand on your shoulder, and the ache goes out of you.",
+            mob, NULL, victim, TO_VICT );
+        act( "$n rests a hand on $N's shoulder.", mob, NULL, victim,
+            TO_NOTVICT );
+        return TRUE;
+    }
+
     sn = skill_lookup( entry->spell );
     if ( sn < 0 || skill_table[sn].spell_fun == NULL
       || skill_table[sn].spell_fun == spell_null )
@@ -10435,6 +10528,62 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
     ( *skill_table[sn].spell_fun )( sn, mob->level, victim, (void *) victim );
     spellup_pin_duration( victim, sn );
     return TRUE;
+}
+
+/* Defined below, beside the rest of the parsing. */
+static const struct spellup_entry *spellup_match( const char *said );
+
+static const struct spellup_group *spellup_group_match( const char *said )
+{
+    int i;
+
+    if ( said == NULL || said[0] == '\0' )
+        return NULL;
+
+    for ( i = 0; spellup_groups[i].keyword != NULL; i++ )
+    {
+        if ( !str_cmp( said, spellup_groups[i].keyword ) )
+            return &spellup_groups[i];
+    }
+
+    return NULL;
+}
+
+/*
+ * Hand out every entry a group names. Counted rather than assumed: a
+ * keyword that no longer exists should be visible as a shortfall and
+ * not quietly skipped.
+ */
+static int spellup_grant_group( CHAR_DATA *mob, CHAR_DATA *victim,
+                                const struct spellup_group *group )
+{
+    char members[MAX_STRING_LENGTH];
+    char *rest;
+    char one[MAX_INPUT_LENGTH];
+    int given = 0;
+
+    toc_strlcpy( members, group->members, sizeof(members) );
+    rest = members;
+
+    while ( rest != NULL && *rest != '\0' )
+    {
+        const struct spellup_entry *entry;
+        char *space = strchr( rest, ' ' );
+
+        if ( space != NULL )
+            *space = '\0';
+        toc_strlcpy( one, rest, sizeof(one) );
+        rest = ( space != NULL ) ? space + 1 : NULL;
+
+        if ( one[0] == '\0' )
+            continue;
+        if ( ( entry = spellup_match( one ) ) == NULL )
+            continue;
+        if ( spellup_grant( mob, victim, entry ) )
+            given++;
+    }
+
+    return given;
 }
 
 static void spellup_show_menu( CHAR_DATA *mob, CHAR_DATA *ch )
@@ -10466,6 +10615,28 @@ static void spellup_show_menu( CHAR_DATA *mob, CHAR_DATA *ch )
             strncat( line, "\n\r", sizeof(line) - strlen(line) - 1 );
             send_to_char( line, ch );
             line[0] = '\0';
+        }
+    }
+
+    line[0] = '\0';
+    {
+        int g;
+
+        for ( g = 0; spellup_groups[g].keyword != NULL; g++ )
+        {
+            char cell[MAX_INPUT_LENGTH];
+
+            snprintf( cell, sizeof(cell), "  {%02X%-8s{00 %-28s",
+                COL_SAYS, spellup_groups[g].keyword,
+                spellup_groups[g].label );
+            strncat( line, cell, sizeof(line) - strlen(line) - 1 );
+
+            if ( g % 2 == 1 || spellup_groups[g + 1].keyword == NULL )
+            {
+                strncat( line, "\n\r", sizeof(line) - strlen(line) - 1 );
+                send_to_char( line, ch );
+                line[0] = '\0';
+            }
         }
     }
 
@@ -10585,6 +10756,42 @@ static bool spellup_addressed( const char *said )
  * Called from do_say.  spec_funs never see player speech and there is no
  * script event for it either, so this is the hook.
  */
+/*
+ * BUFF: the same service, asked for the way the healer at the pit is
+ * asked, because that is the shape players already know. Hers is free.
+ *
+ * Speech still works -- she has answered `say' since she was built --
+ * but a command is discoverable, survives a client that eats leading
+ * numbers, and cannot be mistaken for chat by everyone else in the room.
+ */
+void spellup_listen( CHAR_DATA *ch, const char *argument );
+
+void do_buff( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    CHAR_DATA *mob;
+
+    if ( IS_NPC(ch) )
+        return;
+
+    if ( ( mob = spellup_mob_in_room( ch->in_room ) ) == NULL )
+    {
+        send_to_char( "There is nobody here offering that.\n\r", ch );
+        return;
+    }
+
+    one_argument( argument, arg );
+
+    if ( arg[0] == '\0' )
+    {
+        spellup_show_menu( mob, ch );
+        return;
+    }
+
+    /* One path for both ways of asking, so they can never drift. */
+    spellup_listen( ch, arg );
+}
+
 void spellup_listen( CHAR_DATA *ch, const char *argument )
 {
     char said[MAX_INPUT_LENGTH];
@@ -10617,6 +10824,25 @@ void spellup_listen( CHAR_DATA *ch, const char *argument )
             ch->in_room != NULL ? ch->in_room->vnum : 0 );
         log_string( buf );
         return;
+    }
+
+    {
+        const struct spellup_group *group = spellup_group_match( said );
+
+        if ( group != NULL )
+        {
+            int given;
+
+            act( "$n nods.  'That lot, then.'", mob, NULL, ch, TO_VICT );
+            given = spellup_grant_group( mob, ch, group );
+
+            snprintf( buf, sizeof(buf),
+                "Spellup: %s gave %s the %s group (%d spells) in room %d.",
+                mob->short_descr, ch->name, group->keyword, given,
+                ch->in_room != NULL ? ch->in_room->vnum : 0 );
+            log_string( buf );
+            return;
+        }
     }
 
     if ( ( entry = spellup_match( said ) ) == NULL )

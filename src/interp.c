@@ -392,6 +392,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "invis",          do_invis,       POS_DEAD,       L8,  LOG_NORMAL, 0 },
     { "invuln",         do_invuln,      POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "reports",        do_reports,     POS_DEAD,       L8,  LOG_NORMAL, 1 },
+    { "buff",           do_buff,        POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "itrans",         do_itrans,      POS_DEAD,       L2,  LOG_ALWAYS, 1 },
     { "jail",           do_jail,        POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "ksock",          do_ksock,       POS_DEAD,       L6,  LOG_NORMAL, 1 },
@@ -513,6 +514,7 @@ void interpret( CHAR_DATA *ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];
     char logline[MAX_INPUT_LENGTH];
+    bool watched;
     char buf[MAX_INPUT_LENGTH];
     int cmd;
     int trust;
@@ -643,14 +645,47 @@ void interpret( CHAR_DATA *ch, char *argument )
     /*
      * Log and snoop.  Guard against cmd == -1 (unknown command).
      */
+    /*
+     * LOG on a character is a deliberate act: somebody is watching them
+     * because of a suspected bug or a suspected cheat. It should record
+     * what they did, and it did close to the opposite.
+     *
+     * All ten directions are LOG_NEVER, so every step wrote a line with
+     * nothing after the colon -- 82 of 296 lines in the first session
+     * anyone watched. And an unrecognised command was not logged at all,
+     * although a command the game refused is exactly what both a bug
+     * hunt and a cheat hunt want to see.
+     *
+     * LOG_NEVER was doing two unrelated jobs: "too noisy for the global
+     * log" (movement) and "must never be written down" (password,
+     * resetpwd, delete). Only the second is a rule. For a watched
+     * character the command is always named, and for that second kind
+     * the arguments are dropped and only the name survives -- so a
+     * password is still never written, but the fact that one was
+     * changed is.
+     */
+    watched = ( !IS_NPC(ch) && IS_SET(ch->act, PLR_LOG) );
+
     if ( found )
     {
-        if ( cmd_table[cmd].log == LOG_NEVER )
+        bool secret = ( cmd_table[cmd].log == LOG_NEVER );
+
+        if ( secret )
             logline[0] = '\0';
 
-        if ( ( !IS_NPC(ch) && IS_SET(ch->act, PLR_LOG) )
-        ||   fLogAll
-        ||   cmd_table[cmd].log == LOG_ALWAYS )
+        if ( watched )
+        {
+            /* Where it happened, too. Half of reading one of these
+               afterwards is working out where the character was. */
+            snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s [%d]: %s%s",
+                ch->name,
+                ch->in_room != NULL ? ch->in_room->vnum : 0,
+                secret ? cmd_table[cmd].name : logline,
+                secret ? " (arguments withheld)" : "" );
+            log_string( log_buf );
+        }
+        else if ( logline[0] != '\0'
+             && ( fLogAll || cmd_table[cmd].log == LOG_ALWAYS ) )
         {
             snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s: %s", ch->name, logline );
             log_string( log_buf );
@@ -662,6 +697,16 @@ void interpret( CHAR_DATA *ch, char *argument )
             write_to_buffer( ch->desc->snoop_by, logline, 0 );
             write_to_buffer( ch->desc->snoop_by, "\n\r",  2 );
         }
+    }
+    else if ( watched && logline[0] != '\0' )
+    {
+        /* Refused, mistyped, or above their level. The first is how a
+           bug usually announces itself and the second how somebody
+           probing for one does. */
+        snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+            "Log %s [%d]: (refused) %s",
+            ch->name, ch->in_room != NULL ? ch->in_room->vnum : 0, logline );
+        log_string( log_buf );
     }
 
     if ( !found )

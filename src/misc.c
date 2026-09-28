@@ -56,7 +56,10 @@ void do_heal(CHAR_DATA *ch, char *argument)
         return;
     }
 
-    one_argument(argument,arg);
+    /* Keep the remainder: the uncurse case below needs to know whether
+       the player named something, and one_argument leaves the original
+       string untouched when its return is thrown away. */
+    argument = one_argument(argument,arg);
 
     if (arg[0] == '\0')
     {
@@ -69,7 +72,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	send_to_char("  blind:   cure blindness       100 gold\n\r",ch);
 	send_to_char("  disease: cure disease         100 gold\n\r",ch);
 	send_to_char("  poison:  cure poison	       75 gold\n\r",ch); 
-	send_to_char("  uncurse: remove curse	      250 gold\n\r",ch);
+	send_to_char("  uncurse: remove one curse     250 gold\n\r",ch);
 	send_to_char("  refresh: restore movement      10 gold\n\r",ch);
 	send_to_char("  mana:    restore mana	      100 gold\n\r",ch);
 	send_to_char(" Type heal <type> to be healed.\n\r",ch);
@@ -132,6 +135,14 @@ void do_heal(CHAR_DATA *ch, char *argument)
 	    sn    = skill_lookup("remove curse");
 	    words = "candussido judifgz";
 	    cost  = 250;
+	    /* The spell frees whichever cursed item fails its save
+	       first and cannot be aimed, so a named one is not
+	       honoured. Say so rather than dropping the word without
+	       comment: players type "heal uncurse <item>" and quite
+	       reasonably expect it to mean something. */
+	    if ( argument[0] != '\0' )
+		act( "$N says 'I lift what I can reach, not what you name.'",
+		    ch, NULL, mob, TO_CHAR );
 	    break;
 
 	case 'r' :
