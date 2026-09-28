@@ -2470,6 +2470,72 @@ void recheck_sneak( CHAR_DATA *ch)
 
 
 
+/*
+ * SHADOWMELD: a fourth-remort gift, and the one thing in the game that
+ * is safe to be away from the keyboard in.
+ *
+ * It is hide with the timer taken off and the restrictions loosened:
+ * sit, sleep, read, do whatever, and it holds. Moving ends it, and
+ * that is the only thing that does apart from swinging at somebody.
+ *
+ * Mobiles cannot see a melded character at all -- can_see refuses them
+ * before the shortcut that gives high level mobiles perfect sight --
+ * so nothing will wander in and kill somebody who stepped away.
+ */
+void shadowmeld_break( CHAR_DATA *ch, const char *why )
+{
+    if ( ch == NULL || IS_NPC(ch) )
+        return;
+    if ( !IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
+        return;
+
+    REMOVE_BIT( ch->affected_by2, AFF2_SHADOWMELD );
+
+    if ( why != NULL && ch->desc != NULL )
+    {
+        char buf[MAX_STRING_LENGTH];
+
+        snprintf( buf, sizeof(buf), "%s\n\r", why );
+        send_to_char( buf, ch );
+    }
+
+    /* Guarded: this is called from char_from_room and from extraction
+       paths, and act() needs somewhere to speak. */
+    if ( ch->in_room != NULL )
+        act( "$n melts out of the shadows.", ch, NULL, NULL, TO_ROOM );
+}
+
+void do_shadowmeld( CHAR_DATA *ch, char *argument )
+{
+    UNUSED_PARAM(argument);
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    if ( ch->pcdata->num_remorts < REMORTS_FOR_SHADOWMELD )
+    {
+        send_to_char( "The shadows do not know you well enough yet.\n\r", ch );
+        return;
+    }
+
+    if ( IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
+    {
+        shadowmeld_break( ch, "You step out of the shadows." );
+        return;
+    }
+
+    if ( ch->fighting != NULL )
+    {
+        send_to_char( "Not in the middle of a fight.\n\r", ch );
+        return;
+    }
+
+    SET_BIT( ch->affected_by2, AFF2_SHADOWMELD );
+    send_to_char( "You draw the shadows around you.  They will hold until "
+                  "you move.\n\r", ch );
+    act( "$n fades into the shadows.", ch, NULL, NULL, TO_ROOM );
+}
+
 void do_hide( CHAR_DATA *ch, char *argument )
 {
     UNUSED_PARAM(argument);

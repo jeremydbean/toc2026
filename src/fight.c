@@ -601,6 +601,11 @@ void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
     int     chance, sn, dual;
     char buf[MAX_STRING_LENGTH];
 
+    /* Every swing funnels through here, so it is the one place that
+       needs to know a melded character has just given themselves
+       away. */
+    shadowmeld_on_attack( ch );
+
     /* decrement the wait */
     if (ch->desc == NULL)
 	ch->wait = UMAX(0,ch->wait - PULSE_VIOLENCE);
@@ -2793,6 +2798,13 @@ void death_cry( CHAR_DATA *ch )
 }
 
 
+
+/* Swinging at somebody is the other way out of a meld. */
+void shadowmeld_on_attack( CHAR_DATA *ch )
+{
+    if ( ch != NULL && !IS_NPC(ch) && IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
+        shadowmeld_break( ch, "You break from the shadows to strike." );
+}
 
 void raw_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 {

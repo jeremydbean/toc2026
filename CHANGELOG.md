@@ -8,6 +8,29 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Two new remort gifts.** The remort taken at level 56 doubles how
+  long a character may idle before the void takes them. The one taken
+  at level 57 gives SHADOWMELD: draw the shadows around yourself and
+  stay in them until you move, sleeping if you like, with no creature
+  in the world able to see you. It is meant for stepping away from the
+  keyboard, and nothing else in the game is safe to do that in.
+
+  Only two things end a meld: leaving the room, however you leave it,
+  and swinging at somebody. Against other players it behaves like
+  hide, so detect hidden and holylight still find you. It is the
+  world's creatures you are hidden from.
+
+  The check in `can_see` sits deliberately above the shortcut that
+  hands every mobile of immortal level perfect sight. Below it, an
+  aggressive high-level mobile would still have walked in and killed
+  somebody who had stepped away, which is the one thing the gift
+  exists to prevent.
+
+  `idle_purge_ticks()` is now the only thing that decides an idle
+  character's rope, and both branches of `char_update` use it.
+
 ### Fixed
 
 - **All three staff channels were half-broken, and seven commands with

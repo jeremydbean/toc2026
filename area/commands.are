@@ -318,6 +318,33 @@ warning of your arrival.
 See also: ASTRAL WALK, PROJECT, PSIONICS
 ~
 
+0 SHADOWMELD~
+Syntax: shadowmeld
+
+Draw the shadows around yourself.  You stay in them until you move.
+
+Nothing else ends it.  Sit, sleep, read your notes, count your coin -
+the shadows hold.  This is the one state in the game that is safe to
+leave the keyboard in: while you are melded no creature in the world
+can see you, so nothing will wander in and kill you while you are
+away.
+
+Two things break it.  Leaving the room, however you leave it - walking,
+a portal, a recall, being dragged - and swinging at somebody.  Typing
+SHADOWMELD again steps you out deliberately.
+
+Other players can still find you if they are looking for the hidden,
+and the gods always can.  It is the world's creatures you are hidden
+from.
+
+You cannot start a meld in the middle of a fight.
+
+This is a gift of the fourth remort, the one taken at level 57.
+
+See also: HIDE, SNEAK, REMORT
+
+~
+
 0 STASH~
 Syntax: stash
         stash put <item>
@@ -473,6 +500,13 @@ command named here for the detail.
   <n> <player> passes one on, NOTE SEARCH finds a note by any word in
   it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
   the lot.  See HELP NOTE.
+
+  Two new gifts for remorting.  The remort taken at level 56 doubles
+  how long you may idle before the void takes you.  The one taken at
+  level 57 gives SHADOWMELD: draw the shadows around yourself and stay
+  in them until you move, sleeping if you like, with no creature in the
+  world able to see you.  It is meant for stepping away from the
+  keyboard.  See HELP SHADOWMELD.
 
   There is a stash at the altar now, one step west of recall.  STASH
   PUT sets something aside from anywhere in the world; STASH GET takes
@@ -3062,6 +3096,17 @@ NOTES
   Remort history is saved; HELP SCORE shows your remort count.
 
 See also: HERO, HEROLEVELS, GAIN, GROUPS
+
+Each remort carries its own gift, and they build on one another:
+
+    first   (at level 54)   hunger and thirst no longer touch you
+    second  (at level 55)   psionic powers
+    third   (at level 56)   twice as long before the idle void takes you
+    fourth  (at level 57)   SHADOWMELD
+    fifth   (at level 58)   the last, and the climb to 59
+
+Every remort also raises the flat hit, mana and movement you start a
+life with, and the practices and trains you begin it holding.
 ~
 
 0 AFFECT~

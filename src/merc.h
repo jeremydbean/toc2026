@@ -249,6 +249,18 @@ typedef struct script_loop_prepoll_payload
 #define IDLE_TO_LIMBO_TICKS     5
 #define LINKDEAD_PURGE_TICKS    3
 
+/*
+ * Remort gifts, by the count a character has (a remort taken at level
+ * L leaves them with L - 53):
+ *
+ *   1  (level 54)  no hunger or thirst
+ *   2  (level 55)  psionics
+ *   3  (level 56)  twice as long before the idle timer takes you
+ *   4  (level 57)  shadowmeld
+ */
+#define REMORTS_FOR_LONG_IDLE   3
+#define REMORTS_FOR_SHADOWMELD  4
+
 #define BATTLE_TICKS            2
 
 #define IMPLEMENTOR             MAX_LEVEL
@@ -1021,6 +1033,7 @@ const char *default_prompt_text args( ( void ) );
 #define AFF2_GHOST               (K)
 #define AFF2_MADNESS             (L)
 #define AFF2_DIVINE_PROT         (M)
+#define AFF2_SHADOWMELD          (N)
 
 /* Sex. */
 #define SEX_NEUTRAL                   0
@@ -2361,6 +2374,9 @@ char *  format_obj_to_char ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort );
 bool    spellup_here    ( CHAR_DATA *ch );
 int     stash_count     ( CHAR_DATA *ch );
 bool    stash_is_linked ( CHAR_DATA *ch, const char *name );
+int     idle_purge_ticks ( CHAR_DATA *ch );
+void    shadowmeld_break ( CHAR_DATA *ch, const char *why );
+void    shadowmeld_on_attack ( CHAR_DATA *ch );
 bool    stash_has_offers ( CHAR_DATA *ch );
 void    stash_offer_notice ( CHAR_DATA *ch );
 void    stash_link_report ( CHAR_DATA *ch, char *buf, size_t size );

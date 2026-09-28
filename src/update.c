@@ -1698,7 +1698,7 @@ void char_update( void )
                 ch->timer++;
 
                 if ( ch->level < LEVEL_IMMORTAL
-                &&   ch->timer >= LINKDEAD_PURGE_TICKS
+                &&   ch->timer >= idle_purge_ticks( ch )
                 &&   ch_quit == NULL )
                 {
                     ch_quit = ch;
@@ -1708,7 +1708,7 @@ void char_update( void )
             {
                 ch->timer++;
 
-                if ( ch->timer >= LINKDEAD_PURGE_TICKS
+                if ( ch->timer >= idle_purge_ticks( ch )
                 &&   ch->was_in_room == NULL
                 &&   ch->in_room != NULL
                 &&   ch->in_room->vnum != ROOM_VNUM_LIMBO
@@ -1936,6 +1936,24 @@ void char_update( void )
  * Update all objs.
  * This function is performance sensitive.
  */
+/*
+ * How long a character may idle before the void takes them.
+ *
+ * A third remort doubles it. Somebody who has been round the wheel
+ * that many times has earned a longer leash than a level 1 who walked
+ * away from the keyboard.
+ */
+int idle_purge_ticks( CHAR_DATA *ch )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return LINKDEAD_PURGE_TICKS;
+
+    if ( ch->pcdata->num_remorts >= REMORTS_FOR_LONG_IDLE )
+        return LINKDEAD_PURGE_TICKS * 2;
+
+    return LINKDEAD_PURGE_TICKS;
+}
+
 void obj_update( void )
 {
     OBJ_DATA *obj;

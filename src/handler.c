@@ -1521,6 +1521,12 @@ void char_from_room( CHAR_DATA *ch )
 	return;
     }
 
+    /* Moving is the one thing that breaks a meld, and this is every way
+       a character leaves a room -- walking, a portal, a recall, being
+       dragged. After the null check, because breaking it speaks to the
+       room. */
+    shadowmeld_break( ch, "You step out of the shadows." );
+
     if ( !IS_NPC(ch) )
 	--ch->in_room->area->nplayer;
 
@@ -2940,6 +2946,16 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
     &&   get_trust( ch ) < victim->cloak_level )
 	return false;
 
+    /*
+     * Shadowmeld, checked before the shortcut below rather than after.
+     * That shortcut hands every mobile of immortal level perfect sight,
+     * and the whole point of melding is to be safe from exactly those
+     * while away from the keyboard. aggr_update picks its victims with
+     * can_see, so refusing here is what stops them being attacked.
+     */
+    if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD) && IS_NPC(ch) )
+	return false;
+
     if ( (!IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT))
     ||   (IS_NPC(ch) && IS_IMMORTAL(ch)))
 	return true;
@@ -2978,6 +2994,10 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
 	if(number_percent() < chance)
 	    return false;
     }
+
+    if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD)
+    &&   !IS_AFFECTED(ch, AFF_DETECT_HIDDEN) )
+	return false;
 
     if ( IS_AFFECTED(victim, AFF_HIDE)
     &&   !IS_AFFECTED(ch, AFF_DETECT_HIDDEN)

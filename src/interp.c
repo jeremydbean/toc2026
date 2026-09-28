@@ -395,6 +395,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "reports",        do_reports,     POS_DEAD,       L8,  LOG_NORMAL, 1 },
     { "buff",           do_buff,        POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "stash",          do_stash,       POS_RESTING,     0,  LOG_NORMAL, 1 },
+    { "shadowmeld",     do_shadowmeld,  POS_SLEEPING,    0,  LOG_NORMAL, 1 },
     { "itrans",         do_itrans,      POS_DEAD,       L2,  LOG_ALWAYS, 1 },
     { "jail",           do_jail,        POS_DEAD,       L8,  LOG_ALWAYS, 1 },
     { "ksock",          do_ksock,       POS_DEAD,       L6,  LOG_NORMAL, 1 },

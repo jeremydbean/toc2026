@@ -739,6 +739,51 @@ her list. `iron skin`, `psionic armor`, `psychic shield`, `mindbar` and
 `haven` target an object or an exit. `spellup_grant` refuses a
 `spell_null` politely, but listing one is advertising nothing.
 
+## Remort Gifts
+
+A remort taken at level L leaves the character with `L - 53` remorts,
+so the count and the level are not the same number and the code gates
+on the count. They are named rather than written as bare integers:
+
+| count | level | gift |
+| --- | --- | --- |
+| 1 | 54 | no hunger or thirst |
+| 2 | 55 | psionics (`grant_psionics`, re-granted on every later remort) |
+| 3 | 56 | `REMORTS_FOR_LONG_IDLE` -- twice as long before the void |
+| 4 | 57 | `REMORTS_FOR_SHADOWMELD` |
+| 5 | 58 | the last one allowed |
+
+Hunger and thirst are moot in practice: `gain_condition` returns early
+for anyone at `LEVEL_HERO` or above, and a remorting character is 54 or
+better. A 2018 note complaining that the last remort carries none of
+the earlier gifts was checked in 2026-09 and needs nothing.
+
+**`idle_purge_ticks(ch)`** is the only place that decides how long an
+idle character has. Both branches in `char_update` use it -- link-dead
+and connected-but-idle -- and a test asserts `LINKDEAD_PURGE_TICKS` is
+never compared against directly there, so a new branch cannot quietly
+skip the bonus.
+
+## Shadowmeld
+
+`AFF2_SHADOWMELD` is hide with the timer removed: it holds through
+sitting, sleeping and everything else, and ends only on leaving the
+room or attacking.
+
+**The check in `can_see` sits above the `IS_NPC(ch) && IS_IMMORTAL(ch)`
+shortcut, and must stay there.** That shortcut hands every mobile of
+immortal level perfect sight, so below it an aggressive high-level
+mobile would walk in and kill somebody who had stepped away -- which
+is the one thing the gift exists to prevent. `aggr_update` chooses its
+victims with `can_see`, so that placement is the whole of the
+protection. Against players it behaves like hide, so detect hidden and
+holylight still find them.
+
+`shadowmeld_break()` is called from `char_from_room`, which is every
+way a character leaves a room. It must run **after** that function's
+`in_room == NULL` check, and it guards its own `act()` as well: it is
+reachable from extraction paths where there is no room to speak to.
+
 ## The Stash
 
 Storage at `ROOM_VNUM_ALTAR` (4208), one room west of where RECALL
