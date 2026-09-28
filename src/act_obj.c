@@ -1494,6 +1494,10 @@ bool spend_copper( CHAR_DATA *ch, long copper )
 
 bool gain_copper( CHAR_DATA *ch, long copper )
 {
+    /* Coin appearing from nowhere is the oldest exploit there is. */
+    if ( copper != 0 )
+        watch_log( ch, "copper %+ld", copper );
+
     long total;
 
     if ( copper < 0 )

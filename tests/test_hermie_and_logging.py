@@ -150,6 +150,9 @@ class WatchedPlayerLogTests(unittest.TestCase):
         self.assertIn("north", text)
         # A refused command is recorded too.
         self.assertIn("refused", text)
+        # And where they ended up, which no command shows for a portal,
+        # a teleport or a recall ring.
+        self.assertIn("moved to", text)
 
 
 class LoggingSourceTests(unittest.TestCase):

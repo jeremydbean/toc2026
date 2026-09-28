@@ -12,6 +12,7 @@
 #include <sys/types.h>
 #endif
 #include <ctype.h>
+#include <stdarg.h>   /* watch_log takes a format and arguments */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -510,6 +511,37 @@ bool check_specials(CHAR_DATA *ch, DO_FUN *cmd, char *arg)
  * The main entry point for executing commands.
  * Can be recursively called from 'at', 'order', 'force'.
  */
+/*
+ * Record something a watched character did.
+ *
+ * A command log answers "what did they type". It does not answer where
+ * they ended up when nothing was typed -- a portal, a teleport, a recall
+ * ring -- nor what they gained, nor what killed them, and those are the
+ * questions a bug report or a cheat accusation actually turns on.
+ *
+ * Costs one bit test for everybody else, which is why it can sit in
+ * char_to_room.
+ */
+void watch_log( CHAR_DATA *ch, const char *fmt, ... )
+{
+    char body[2 * MAX_INPUT_LENGTH];
+    char line[2 * MAX_INPUT_LENGTH];
+    va_list args;
+
+    if ( ch == NULL || IS_NPC(ch) || !IS_SET(ch->act, PLR_LOG) )
+        return;
+
+    va_start( args, fmt );
+    vsnprintf( body, sizeof(body), fmt, args );
+    va_end( args );
+
+    snprintf( line, sizeof(line), "Log %s [%d]: %s",
+        ch->name,
+        ch->in_room != NULL ? ch->in_room->vnum : 0,
+        body );
+    log_string( line );
+}
+
 void interpret( CHAR_DATA *ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];

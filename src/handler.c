@@ -1563,6 +1563,13 @@ void char_from_room( CHAR_DATA *ch )
  */
 void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 {
+    /* Before the move, so the line reads "from here to there". A
+       portal, a teleport or a recall ring moves a character with no
+       command to show for it. */
+    if ( pRoomIndex != NULL && !IS_NPC(ch) && IS_SET(ch->act, PLR_LOG) )
+        watch_log( ch, "moved to %d (%s)", pRoomIndex->vnum,
+            pRoomIndex->name != NULL ? pRoomIndex->name : "?" );
+
     OBJ_DATA *obj;
 
     if ( pRoomIndex == NULL )

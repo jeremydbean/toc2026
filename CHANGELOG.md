@@ -34,6 +34,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   whether nothing was cursed, and `heal uncurse <item>` answers that it
   cannot be aimed rather than discarding the word.
 
+- **Watching a player records more than their typing.** `watch_log()`
+  adds the things a command log cannot see: every room they end up in
+  (a portal or a teleport moves them with no command to show for it),
+  level changes, every change of coin, and both halves of a death. It
+  costs one bit test for anybody not being watched. `REPORTS CLEAR`
+  now also reaches the log rather than only telling whoever happened to
+  be online.
+
 - **Watching a player records what they did.** `log <name>` wrote a
   blank line for every step, because all ten directions are
   `LOG_NEVER` -- 82 of the 296 lines in the first captured session --

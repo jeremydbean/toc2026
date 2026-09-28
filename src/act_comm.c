@@ -2538,9 +2538,13 @@ void do_reports( CHAR_DATA *ch, char *argument )
 	    report_kind_name( kind ), archive );
 	send_to_char( buf, ch );
 
-	snprintf( buf, sizeof(buf), "%s cleared the %s reports.",
-	    ch->name, report_kind_name( kind ) );
+	snprintf( buf, sizeof(buf), "%s cleared the %s reports into %s.",
+	    ch->name, report_kind_name( kind ), archive );
 	wizinfo( buf, get_trust( ch ) );
+	/* wizinfo reaches whoever is online at the time and nobody
+	   afterwards, which is no use when the question comes up a week
+	   later. */
+	log_string( buf );
 	return;
     }
 

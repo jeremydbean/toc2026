@@ -692,6 +692,31 @@ Recording refused input means a password typed at the wrong moment can
 reach the log. That is the cost of the feature doing its job; the logs
 are already handled as sensitive.
 
+**`watch_log(ch, fmt, ...)`** is the hook for everything a command log
+cannot see. It returns immediately unless that character carries
+`PLR_LOG`, which is one bit test, which is why it can sit somewhere as
+hot as `char_to_room`. Add to it rather than open-coding another
+`log_string` behind an `IS_SET(ch->act, PLR_LOG)`; every line it writes
+carries the room vnum in the same shape, so one grep finds a whole
+session.
+
+It is wired where a bug or a cheat shows itself:
+
+- `char_to_room` -- where they ended up. A portal, a teleport or a
+  recall ring moves a character with no command to account for it, so
+  the command log alone cannot reconstruct a route.
+- `advance_level` -- `level 34 -> 35`, and whether it was an advance or
+  a restore.
+- `gain_copper` -- any change. Coin from nowhere is the oldest exploit
+  there is.
+- `raw_kill` -- both sides of it, so a death has a cause and a kill has
+  a victim.
+
+Staff actions that change shared state should reach `log_string` and
+not only `wizinfo`: wizinfo tells whoever is online at that moment and
+nobody afterwards, which is no use when the question is asked a week
+later. `REPORTS CLEAR` does both.
+
 ## Hermie
 
 `spellup` places her; `buff` is how a player asks. She is modelled on

@@ -2316,6 +2316,7 @@ int     unread_note_count ( CHAR_DATA *ch );
 int     report_line_count ( int kind );
 const char *report_kind_name ( int kind );
 void    report_login_notice ( CHAR_DATA *ch );
+void    watch_log       ( CHAR_DATA *ch, const char *fmt, ... );
 void    save_notes      ( void );
 void    check_sex       ( CHAR_DATA *ch);
 void    add_follower    ( CHAR_DATA *ch, CHAR_DATA *master );

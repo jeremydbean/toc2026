@@ -2796,6 +2796,13 @@ void death_cry( CHAR_DATA *ch )
 
 void raw_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 {
+    watch_log( victim, "died to %s",
+        ch == NULL ? "nothing" :
+        ( IS_NPC(ch) ? ch->short_descr : ch->name ) );
+    watch_log( ch, "killed %s",
+        victim == NULL ? "nothing" :
+        ( IS_NPC(victim) ? victim->short_descr : victim->name ) );
+
     raw_kill_internal( ch, victim, false );
 }
 
