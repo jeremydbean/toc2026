@@ -1526,8 +1526,11 @@ textarea {
    Mudlet reads a single semicolon as literal text, so directions pasted
    from here ran as one long nonsense command until the toggle existed. */
 .routes-mudlet {
+    /* The label's text is wrapped in one span on purpose. Left bare it
+       is three flex items -- text, <code>, text -- so the gap opens up
+       inside the sentence and each piece wraps on its own. */
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 0.45rem;
     margin: 0.5rem 0 0.25rem;
     font-size: 0.85rem;
@@ -1535,8 +1538,30 @@ textarea {
     cursor: pointer;
 }
 
-.routes-mudlet input {
+/* In the dashboard this label sits in a four-column filter grid, where
+   a 159px cell folded it onto two lines. It wants the whole row. */
+.filter-grid > .routes-mudlet {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+.routes-mudlet > span {
+    /* One flex item, so the sentence wraps as a sentence. */
+    min-width: 0;
+}
+
+.routes-mudlet input[type="checkbox"] {
+    /* The filter grid sizes form controls to 38px, which is right for a
+       text box and three times too tall for a tick. */
     width: auto;
+    height: auto;
+    /* The global `input, select, textarea' rule sets min-height 38px and
+       padding for text boxes; a tick inherits both and ends up three
+       times too tall, which pushed the label onto two lines. */
+    min-height: 0;
+    padding: 0;
+    flex: 0 0 auto;
+    align-self: center;
     margin: 0;
     cursor: pointer;
 }
