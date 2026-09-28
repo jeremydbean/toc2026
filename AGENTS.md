@@ -748,10 +748,28 @@ on the count. They are named rather than written as bare integers:
 | count | level | gift |
 | --- | --- | --- |
 | 1 | 54 | no hunger or thirst |
-| 2 | 55 | psionics (`grant_psionics`, re-granted on every later remort) |
-| 3 | 56 | `REMORTS_FOR_LONG_IDLE` -- twice as long before the void |
-| 4 | 57 | `REMORTS_FOR_SHADOWMELD` |
-| 5 | 58 | the last one allowed |
+| 2 | 55 | psionics -- one power from each of four disciplines |
+| 3 | 56 | `REMORTS_FOR_LONG_IDLE`, `REMORTS_FOR_BIG_PACK`, `REMORTS_FOR_EXTRA_PSI` |
+| 4 | 57 | `REMORTS_FOR_SHADOWMELD`, `REMORTS_FOR_SURE_RECALL`, a third power each |
+| 5 | 58 | every psionic power, no carry limit, a free choice of class and guild |
+
+`REMORTS_FOR_BIG_PACK` is read by `remort_carry_multiplier()` in
+`handler.c`, which doubles both `can_carry_n` and `can_carry_w`. It sits
+below the `num_remorts >= 5` branches that lift the limits outright, so
+the ladder stays monotonic.
+
+**Psionics stack, and that costs a persisted field.** A remort wipes
+`learned[]` wholesale, so re-granting from the sets alone redealt the
+hand and could take a discipline a player had spent a life with.
+`pcdata->psionic_known` is a comma-separated list of canonical skill
+names, saved as `PsiKnown` under **case 'P'**, and `grant_psionics`
+re-learns everything in it before awarding anything new. The per-set
+target is `num_remorts - 1`, so the third remort holds two of each and
+the fourth three. The `is_final` branch is checked **ahead of** an
+immortal `grantpsi` spec: the last life gets all 17 whatever else was
+asked for. `psionic_sync_known()` seeds the list from `learned[]` when a
+player file is loaded, so characters who earned powers before the field
+existed keep them across their next remort.
 
 Hunger and thirst are moot in practice: `gain_condition` returns early
 for anyone at `LEVEL_HERO` or above, and a remorting character is 54 or
@@ -763,6 +781,29 @@ idle character has. Both branches in `char_update` use it -- link-dead
 and connected-but-idle -- and a test asserts `LINKDEAD_PURGE_TICKS` is
 never compared against directly there, so a new branch cannot quietly
 skip the bonus.
+
+## The Remort Class History
+
+Every life must be a different game from the last, so `do_remort` refuses
+a class you have already lived as and a guild you have already belonged
+to -- until the fifth remort, gated on `REMORTS_FOR_FREE_CHOICE`, which
+is free of both.
+
+**They are two histories, not one pool.** A guild is stored as its
+matching class index (`GUILD_MAGE == CLASS_MAGE`), so the old flat
+`had_classes[2*MAX_CLASS]` array conflated them: having been in the mage
+guild barred you from ever living as a mage. And a non-monk life burned
+two of only six values, so a reachable history left a player with no
+legal choice at their fourth remort -- shown an empty list, stuck at 57,
+with 59 out of reach for good. `tests/test_remort_gifts.py` walks every
+path exhaustively and asserts no starting pair can dead-end.
+
+`ListRemorts` is unchanged on disk and is **not** a flat list of numbers.
+It is written one life at a time as `<class>` alone for a monk or a necro,
+who have no guild, and `<class> <guild>` for everybody else. Read it back
+the same way -- class first, and only look for a guild token when the
+class was neither monk nor necro -- or the pairs misalign. `none` (-1) is
+always a legal guild, which is what guarantees a choice always exists.
 
 ## Shadowmeld
 

@@ -2876,7 +2876,7 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
       skill = ch->pcdata->learned[gsn_recall];
 
     /* 4th+ remort: recall always succeeds (no chance check, no random room). */
-    if ( !IS_NPC(ch) && ch->pcdata->num_remorts >= 4 )
+    if ( !IS_NPC(ch) && ch->pcdata->num_remorts >= REMORTS_FOR_SURE_RECALL )
         skill = 101;
 
     chance = number_percent();
@@ -2885,7 +2885,8 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
     {
        if (chance < skill)
        {
-          if (chance < 5 && (IS_NPC(ch) || ch->pcdata->num_remorts < 4))
+          if (chance < 5 && (IS_NPC(ch)
+           || ch->pcdata->num_remorts < REMORTS_FOR_SURE_RECALL))
           {
              location = get_random_room(ch);
              send_to_char("Something is very wrong!\n\r",ch);
@@ -2935,7 +2936,8 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
 
    if (chance < skill)
    {
-      if (chance < 5 && (IS_NPC(ch) || ch->pcdata->num_remorts < 4))
+      if (chance < 5 && (IS_NPC(ch)
+           || ch->pcdata->num_remorts < REMORTS_FOR_SURE_RECALL))
       {
          location = get_random_room(ch);
          send_to_char("Something is very wrong!\n\r",ch);

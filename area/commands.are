@@ -501,6 +501,21 @@ command named here for the detail.
   it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
   the lot.  See HELP NOTE.
 
+  The third remort now carries three gifts instead of one: twice the
+  carrying room, twice as long before the idle void, and a second psionic
+  power from each discipline.  Psionics STACK from now on -- a remort
+  remembers what it gave you and hands it back, so a later life never
+  costs you a power you already had, and the fifth remort gives you all
+  seventeen.
+
+  Remorting no longer reads your class and guild history as one list.  It
+  used to, and because a guild is stored as its matching class, having
+  been in the mage guild barred you from ever living as a mage.  Worse, a
+  player who spent their choices badly could arrive at the fourth remort
+  with nothing legal left to pick, stuck at 57 with 59 out of reach.  The
+  two histories are separate now, 'none' is always a legal guild, and a
+  refusal lists everything still open to you.
+
   Two new gifts for remorting.  The remort taken at level 56 doubles
   how long you may idle before the void takes you.  The one taken at
   level 57 gives SHADOWMELD: draw the shadows around yourself and stay
@@ -3039,15 +3054,21 @@ BENEFITS PER REMORT
     5th       58        59          1000 each          25      18       +5
 
   Starting at remort 1 you are immune to hunger and thirst forever.
-  Starting at remort 2 you gain psionic powers: one random skill from each of
-  4 disciplines, for 4 skills total.  The full pool contains 17 skills: ego
-  whip, mindblast, nightmare, torment, clairvoyance, mindbar, psionic armor,
-  psychic shield, telekinesis, astral walk, shift, confuse, project,
-  transfusion, mind leech, enervate, and pyrotechnics.  These are re-granted on
-  each subsequent remort since skills are wiped.  At the final (5th) remort all
-  17 psionic skills are given.
+  Starting at remort 2 you gain psionic powers, and every remort after that
+  deepens them: one power from each of the 4 disciplines at the 2nd remort,
+  two from each at the 3rd, three from each at the 4th.  They STACK.  A
+  remort wipes your skills, but the powers you have been given are
+  remembered and handed back, so a later life never costs you one you
+  already had.  The full pool contains 17: ego whip, mindblast, nightmare,
+  torment, clairvoyance, mindbar, psionic armor, psychic shield,
+  telekinesis, astral walk, shift, confuse, project, transfusion, mind
+  leech, enervate, and pyrotechnics.  At the final (5th) remort you are
+  given every one of them.
+  Starting at remort 3 you carry twice as many items and twice the weight,
+  and you may idle twice as long before the void takes you.
   Starting at remort 4 your recall always succeeds (no skill check, no
-  random-room mishap).  Recall from combat still costs experience.
+  random-room mishap).  Recall from combat still costs experience.  The 4th
+  remort also grants SHADOWMELD -- see HELP SHADOWMELD.
   On the 5th (final) remort you carry unlimited items and weight and may
   choose any class and guild freely (the usual restriction of picking only
   classes you have never been does not apply).
@@ -3079,8 +3100,22 @@ QUEST SHOP ITEMS
     Awards 1-3 extra practice sessions for training skills.
 
 CLASS, GUILD, AND RACE OPTIONS
-  You must choose a class AND guild combination you have never used before
-  (tracked across all remorts) -- EXCEPT on your final (5th) remort.
+  Every life must be a new one, so that levelling it is a different game
+  from the last.  Two separate histories are kept across all your remorts:
+
+    - the CLASSES you have lived as.  You may not pick one of them again.
+    - the GUILDS you have belonged to.  You may not join one of them again.
+
+  They are separate lists.  Having been in the mage guild does not stop you
+  living as a mage later, and vice versa.  'none' is always available as a
+  guild, so you can never be left with no legal choice.  Your current class
+  and guild count as used the moment you remort away from them.
+
+  If a choice is refused, the game lists every class and guild still open
+  to you.
+
+  On your final (5th) remort neither history applies and you may pick
+  anything.
   Classes: mage, cleric, thief, warrior, monk, necro
   Guilds:  mage, cleric, thief, warrior, none
            (Monks and Necros must use 'none' as their guild.)
@@ -3100,10 +3135,15 @@ See also: HERO, HEROLEVELS, GAIN, GROUPS
 Each remort carries its own gift, and they build on one another:
 
     first   (at level 54)   hunger and thirst no longer touch you
-    second  (at level 55)   psionic powers
-    third   (at level 56)   twice as long before the idle void takes you
-    fourth  (at level 57)   SHADOWMELD
-    fifth   (at level 58)   the last, and the climb to 59
+    second  (at level 55)   psionic powers, one from each discipline
+    third   (at level 56)   twice the carrying room, twice as long before
+                            the idle void takes you, and a second power
+                            from each discipline
+    fourth  (at level 57)   SHADOWMELD, a recall that never fails, and a
+                            third power from each discipline
+    fifth   (at level 58)   every psionic power, no carrying limit at all,
+                            a free choice of class and guild, and the
+                            climb to 59
 
 Every remort also raises the flat hit, mana and movement you start a
 life with, and the practices and trains you begin it holding.

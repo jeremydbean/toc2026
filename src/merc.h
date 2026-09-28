@@ -255,11 +255,17 @@ typedef struct script_loop_prepoll_payload
  *
  *   1  (level 54)  no hunger or thirst
  *   2  (level 55)  psionics
- *   3  (level 56)  twice as long before the idle timer takes you
- *   4  (level 57)  shadowmeld
+ *   3  (level 56)  twice as long before the idle timer takes you,
+ *                   twice the carrying room, and a deeper psionic grant
+ *   4  (level 57)  shadowmeld, and a recall that never fails
  */
 #define REMORTS_FOR_LONG_IDLE   3
+#define REMORTS_FOR_BIG_PACK    3
+#define REMORTS_FOR_EXTRA_PSI   3
+#define REMORTS_FOR_SURE_RECALL 4
 #define REMORTS_FOR_SHADOWMELD  4
+/* Remorts already taken when the class/guild history stops applying. */
+#define REMORTS_FOR_FREE_CHOICE 4
 
 #define BATTLE_TICKS            2
 
@@ -1761,6 +1767,7 @@ struct  pc_data
     sh_int              psionic;
     bool                psionic_grant_pending;
     char * psionic_grant_spec;
+    char * psionic_known;
     sh_int              condition       [3];
     sh_int              learned         [MAX_SKILL];
     bool                group_known     [MAX_GROUP];
@@ -2516,6 +2523,7 @@ void    close_socket    ( DESCRIPTOR_DATA *dclose );
 void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
 void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
+void    psionic_sync_known ( CHAR_DATA *ch );
 bool    normalize_psionic_arguments ( const char *argument, char *output, size_t length, char *invalid );
 /* Dynamic-string aware output helpers. */
 void    send_to_char_dstring ( const DString *txt, CHAR_DATA *ch );

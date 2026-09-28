@@ -4916,14 +4916,14 @@ void do_remort( CHAR_DATA *ch, char *arg)
    char *to_strip;
    char buf[MAX_STRING_LENGTH];
    char saveclass[MAX_INPUT_LENGTH];
-   int had_classes[2*MAX_CLASS];
+   bool had_class[MAX_CLASS];
+   bool had_guild[MAX_CLASS];
    OBJ_DATA *worn[MAX_WEAR];
    int requested_class = -2;
    int requested_guild = -2;
    int requested_race = -2;
    int i;
    int iWear;
-   int ind_class;
 
    if (IS_NPC(ch))
         return;
@@ -5033,20 +5033,32 @@ void do_remort( CHAR_DATA *ch, char *arg)
      send_to_char("You are not allowed to remort anymore.\n\r",ch);
      return;
    }
-   for (i=0;i<2*MAX_CLASS;i++) {
-     had_classes[i] = -2;
+   /*
+    * What this character has already been.
+    *
+    * The saved history is written one life at a time: "<class>" alone for
+    * a monk or a necro, who have no guild, and "<class> <guild>" for
+    * everybody else. Reading it back the same way is what keeps the two
+    * apart. It used to be read as one flat pool of numbers, and because a
+    * guild is stored as the matching class index that pool conflated them:
+    * a character who had once been in the mage guild could never be a mage.
+    * Worse, a non-monk life burned two of only six values, so a player who
+    * spent them badly arrived at their fourth remort with nothing left to
+    * choose, was shown an empty list, and could never remort again -- the
+    * fifth remort, and level 59 with it, out of reach for good.
+    */
+   for (i = 0; i < MAX_CLASS; i++)
+   {
+      had_class[i] = false;
+      had_guild[i] = false;
    }
-   ind_class = 0;
-   had_classes[ind_class] = ch->class;
+
    snprintf(saveclass, sizeof(saveclass),"%d ",ch->class);
-   ind_class += 1;
    if ((ch->class != CLASS_MONK) && (ch->class != CLASS_NECRO)) {
-     had_classes[ind_class] = ch->pcdata->guild;
      {
        size_t len = strlen(saveclass);
        snprintf(saveclass+len, sizeof(saveclass)-len," %d ",ch->pcdata->guild);
      }
-     ind_class += 1;
    }
    if (ch->pcdata->num_remorts > 0)
    {
@@ -5058,41 +5070,97 @@ void do_remort( CHAR_DATA *ch, char *arg)
      to_strip = str_dup(ch->pcdata->list_remorts);
      {
        char *to_strip_base = to_strip;
-       while (to_strip[0] != '\0' && ind_class < 2*MAX_CLASS)
-        {
+
+       while (to_strip[0] != '\0')
+       {
+         int past_class;
+         int past_guild;
+
          to_strip = one_argument(to_strip,get_class);
-         had_classes[ind_class] = atoi(get_class);
-         ind_class += 1;
+         past_class = atoi(get_class);
+         if (past_class >= 0 && past_class < MAX_CLASS)
+            had_class[past_class] = true;
+
+         /* A monk or a necro wrote no guild after their class. */
+         if (past_class == CLASS_MONK || past_class == CLASS_NECRO)
+            continue;
+
+         if (to_strip[0] == '\0')
+            break;
+
+         to_strip = one_argument(to_strip,get_class);
+         past_guild = atoi(get_class);
+         if (past_guild >= 0 && past_guild < MAX_CLASS)
+            had_guild[past_guild] = true;
        }
        free_string(to_strip_base);
      }
    }
-   if (ch->pcdata->num_remorts < 4)
+
+   /* The life being left behind counts as well. */
+   if (ch->class >= 0 && ch->class < MAX_CLASS)
+      had_class[ch->class] = true;
+   if ((ch->class != CLASS_MONK) && (ch->class != CLASS_NECRO)
+   &&  ch->pcdata->guild >= 0 && ch->pcdata->guild < MAX_CLASS)
+      had_guild[ch->pcdata->guild] = true;
+
+   if (ch->pcdata->num_remorts < REMORTS_FOR_FREE_CHOICE)
    {
-   for (i=0;i < 2*MAX_CLASS;i++) {
-     if ((requested_class == had_classes[i]) ||
-         (requested_guild == had_classes[i]))
-     {
-       int j,k;
-       int found;
-       send_to_char("You must select a class/guild you have never been before.\n\r",ch);
-       send_to_char("You have the choice out of:\n\r",ch);
-       for (j=0;j<MAX_CLASS;j++) {
-         found = 0;
-         for (k=0;k<2*MAX_CLASS;k++) {
-           if (j == had_classes[k]) {
-            found = 1;
-            break;
-           }
-         }
-         if (!found) {
-           snprintf(buf, sizeof(buf),"%s\n\r",class_table[j].name);
-           send_to_char(buf, ch);
-         }
-       }
-       return;
-     }
-     }
+      bool class_taken = had_class[requested_class];
+      bool guild_taken = ( requested_guild >= 0 && requested_guild < MAX_CLASS
+                        && had_guild[requested_guild] );
+
+      if (class_taken || guild_taken)
+      {
+        int j;
+        int offered = 0;
+
+        if (class_taken)
+        {
+          snprintf(buf, sizeof(buf),
+            "You have already lived as a %s.  Every life before the last must"
+            " be a new one.\n\r", class_table[requested_class].name);
+          send_to_char(buf, ch);
+        }
+        if (guild_taken)
+        {
+          snprintf(buf, sizeof(buf),
+            "You have already belonged to the %s guild.\n\r",
+            class_table[requested_guild].name);
+          send_to_char(buf, ch);
+        }
+
+        send_to_char("\n\rClasses still open to you:\n\r", ch);
+        for (j = 0; j < MAX_CLASS; j++)
+        {
+          if (had_class[j])
+            continue;
+          offered++;
+          if (j == CLASS_MONK || j == CLASS_NECRO)
+            snprintf(buf, sizeof(buf), "  %-10s (guild must be 'none')\n\r",
+                     class_table[j].name);
+          else
+            snprintf(buf, sizeof(buf), "  %s\n\r", class_table[j].name);
+          send_to_char(buf, ch);
+        }
+        if (offered == 0)
+          send_to_char("  (none -- tell an immortal, this should not"
+                       " happen)\n\r", ch);
+
+        send_to_char("\n\rGuilds still open to you:\n\r", ch);
+        for (j = 0; j < MAX_CLASS; j++)
+        {
+          if (j != GUILD_MAGE && j != GUILD_CLERIC
+          &&  j != GUILD_THIEF && j != GUILD_WARRIOR)
+            continue;
+          if (had_guild[j])
+            continue;
+          snprintf(buf, sizeof(buf), "  %s\n\r", class_table[j].name);
+          send_to_char(buf, ch);
+        }
+        send_to_char("  none      (always allowed)\n\r", ch);
+        return;
+      }
    }
    /* HEHE, FINALLY A VALID CHOICE */
 

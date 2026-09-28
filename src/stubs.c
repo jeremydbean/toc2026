@@ -216,11 +216,63 @@ bool normalize_psionic_arguments( const char *argument, char *output, size_t len
     return TRUE;
 }
 
+/*
+ * Powers already awarded are remembered by name, because a remort wipes the
+ * whole skill table and these are meant to accumulate across lives rather
+ * than be redealt.  The list survives the wipe; the learned entries do not,
+ * and are put back from it on the next grant.
+ */
+static void psionic_remember( CHAR_DATA *ch, const char *name )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( name == NULL || name[0] == '\0' )
+        return;
+
+    if ( ch->pcdata->psionic_known == NULL )
+        ch->pcdata->psionic_known = str_dup( "" );
+
+    if ( psionic_spec_contains( ch->pcdata->psionic_known, name ) )
+        return;
+
+    toc_strlcpy( buf, ch->pcdata->psionic_known, sizeof(buf) );
+    if ( buf[0] != '\0' )
+        toc_strlcat( buf, ",", sizeof(buf) );
+    toc_strlcat( buf, name, sizeof(buf) );
+
+    free_string( ch->pcdata->psionic_known );
+    ch->pcdata->psionic_known = str_dup( buf );
+}
+
+static bool psionic_is_known( CHAR_DATA *ch, sh_int sn )
+{
+    if ( sn < 0 )
+        return false;
+
+    return psionic_spec_contains( ch->pcdata->psionic_known,
+                                  skill_table[(int)sn].name );
+}
+
+static void psionic_learn( CHAR_DATA *ch, sh_int sn )
+{
+    if ( sn < 0 )
+        return;
+
+    if ( ch->pcdata->learned[(int)sn] < 75 )
+        ch->pcdata->learned[(int)sn] = 75;
+
+    psionic_remember( ch, skill_table[(int)sn].name );
+}
+
 void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 {
-    /* 4 thematic psionic skill sets.  Normal remorts (2-4): 1 random skill
-     * per set (4 total).  Final remort (num_remorts >= 5): all 17 skills.
-     * Immortal grantpsi with a spec: honours the spec and bypasses sets.
+    /* 4 thematic psionic skill sets.  A remort awards one power from each
+     * set for every remort past the first -- 4 at the second remort, 8 at
+     * the third, 12 at the fourth -- and the powers stack, because what
+     * was awarded before is remembered by name and put back.  The final
+     * remort (num_remorts >= 5) hands over all 17, ahead of any immortal
+     * spec: there is no later life to award the rest in.  An immortal
+     * grantpsi with a spec otherwise honours the spec and bypasses sets.
      *
      * Set 0  Assault:  ego_whip, torment, nightmare, mindblast
      * Set 1  Astral:   astral_walk, shift, project, telekinesis
@@ -273,7 +325,42 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
         }
     }
 
-    if ( spec_only )
+    /* Everything awarded in an earlier life comes back first.  The skill
+     * table was wiped by the remort; the remembered list was not. */
+    for ( s = 0; s < 4; s++ )
+    {
+        for ( i = 0; psi_sets[s][i] != NULL; i++ )
+        {
+            sh_int sn = *psi_sets[s][i];
+
+            if ( psionic_is_known( ch, sn ) )
+            {
+                if ( ch->pcdata->learned[(int)sn] < 75 )
+                    ch->pcdata->learned[(int)sn] = 75;
+                selected++;
+            }
+        }
+    }
+
+    if ( is_final )
+    {
+        /* The final remort hands over the whole discipline: all 17 powers,
+         * ahead of any immortal-supplied list, because there is no later
+         * life to award the rest in. */
+        for ( s = 0; s < 4; s++ )
+        {
+            for ( i = 0; psi_sets[s][i] != NULL; i++ )
+            {
+                sh_int sn = *psi_sets[s][i];
+                if ( sn >= 0 && !psionic_is_known( ch, sn ) )
+                {
+                    psionic_learn( ch, sn );
+                    selected++;
+                }
+            }
+        }
+    }
+    else if ( spec_only )
     {
         /* Grant only the skills matching the immortal-supplied spec string. */
         for ( s = 0; s < 4; s++ )
@@ -281,46 +368,50 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
             for ( i = 0; psi_sets[s][i] != NULL; i++ )
             {
                 sh_int sn = *psi_sets[s][i];
-                if ( sn >= 0 && psionic_spec_contains(
-                         ch->pcdata->psionic_grant_spec,
-                         skill_table[(int)sn].name ) )
+                if ( sn >= 0 && !psionic_is_known( ch, sn )
+                &&   psionic_spec_contains( ch->pcdata->psionic_grant_spec,
+                                            skill_table[(int)sn].name ) )
                 {
+                    psionic_learn( ch, sn );
                     selected++;
-                    if ( ch->pcdata->learned[(int)sn] < 75 )
-                        ch->pcdata->learned[(int)sn] = 75;
-                }
-            }
-        }
-    }
-    else if ( is_final )
-    {
-        /* Final remort: award all 17 psionic skills. */
-        for ( s = 0; s < 4; s++ )
-        {
-            for ( i = 0; psi_sets[s][i] != NULL; i++ )
-            {
-                sh_int sn = *psi_sets[s][i];
-                if ( sn >= 0 )
-                {
-                    selected++;
-                    if ( ch->pcdata->learned[(int)sn] < 75 )
-                        ch->pcdata->learned[(int)sn] = 75;
                 }
             }
         }
     }
     else
     {
-        /* Normal remorts (2-4): pick 1 random skill from each set = 4 skills. */
+        /* One power from each discipline at the second remort, and one more
+         * from each at every remort after it.  They stack: the count below
+         * is how many of a set the character should end up holding, so a
+         * remort adds to what the last one gave rather than redealing it. */
+        int want = UMAX( 1, ch->pcdata->num_remorts - 1 );
+
         for ( s = 0; s < 4; s++ )
         {
-            int pick = number_range( 0, psi_set_sizes[s] - 1 );
-            sh_int sn = *psi_sets[s][pick];
-            if ( sn >= 0 )
+            int unknown[6];
+            int count = 0;
+            int held  = 0;
+
+            for ( i = 0; i < psi_set_sizes[s]; i++ )
             {
+                sh_int sn = *psi_sets[s][i];
+
+                if ( sn < 0 )
+                    continue;
+                if ( psionic_is_known( ch, sn ) )
+                    held++;
+                else
+                    unknown[count++] = i;
+            }
+
+            while ( held < want && count > 0 )
+            {
+                int pick = number_range( 0, count - 1 );
+
+                psionic_learn( ch, *psi_sets[s][unknown[pick]] );
                 selected++;
-                if ( ch->pcdata->learned[(int)sn] < 75 )
-                    ch->pcdata->learned[(int)sn] = 75;
+                held++;
+                unknown[pick] = unknown[--count];
             }
         }
     }
@@ -337,6 +428,28 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     free_string( ch->pcdata->psionic_grant_spec );
     ch->pcdata->psionic_grant_spec = str_dup( "" );
     send_to_char( "\n\r{0E}Your mind awakens to hidden psionic powers!{x}\n\r", ch );
+}
+
+/*
+ * Characters who earned psionics before the powers were remembered by name
+ * hold them only in the skill table, which the next remort wipes. Seeding
+ * the list from what they already know means their first stacking remort
+ * adds to those rather than dealing a fresh hand.
+ */
+void psionic_sync_known( CHAR_DATA *ch )
+{
+    int i;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    for ( i = 0; psionic_skill_names[i] != NULL; i++ )
+    {
+        int sn = skill_lookup( psionic_skill_names[i] );
+
+        if ( sn >= 0 && ch->pcdata->learned[sn] > 0 )
+            psionic_remember( ch, psionic_skill_names[i] );
+    }
 }
 
 void list_group_known( CHAR_DATA *ch )

@@ -3415,6 +3415,7 @@ void free_char( CHAR_DATA *ch )
         free_string( ch->pcdata->depart         );
         free_string( ch->pcdata->title          );
         free_string( ch->pcdata->psionic_grant_spec );
+        free_string( ch->pcdata->psionic_known  );
         free_string( ch->pcdata->stash_links    );
         free_string( ch->pcdata->stash_offers   );
         free_string( ch->pcdata->stash_blocks   );

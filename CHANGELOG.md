@@ -10,6 +10,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **The third remort now carries three gifts.** Twice the carrying room,
+  in slots and in weight alike; twice as long before the idle void; and a
+  second psionic power from each of the four disciplines.
+
+- **Psionic powers stack across remorts.** They never did: a remort wipes
+  the skill table, and the grant simply redealt one power per discipline,
+  so a player could lose a discipline they had spent a whole life with.
+  What has been awarded is remembered by name in `PsiKnown` now, put back
+  before anything new is given, and the per-discipline target grows with
+  the remort count -- one each at the second remort, two at the third,
+  three at the fourth. The fifth hands over all seventeen, ahead of any
+  immortal grant list, because there is no later life to award the rest
+  in. Characters who earned powers before the field existed have it
+  seeded from what they already know when their file loads.
+
 - **Two new remort gifts.** The remort taken at level 56 doubles how
   long a character may idle before the void takes them. The one taken
   at level 57 gives SHADOWMELD: draw the shadows around yourself and
@@ -32,6 +47,26 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   character's rope, and both branches of `char_update` use it.
 
 ### Fixed
+
+- **A player could remort themselves into a corner they could never get
+  out of.** Every life is meant to be a new one, so REMORT refuses a class
+  or a guild you have already been. It read both out of one flat list, and
+  because a guild is stored as its matching class index the two were
+  conflated -- having been in the mage guild barred you from ever living
+  as a mage. Each non-monk life burned two of only six values, so a mage
+  of the cleric guild who went thief/warrior, then monk, then necro
+  arrived at their fourth remort with nothing legal left to choose, was
+  shown an empty list, and was stuck at level 57 with 59 out of reach for
+  good.
+
+  The two histories are kept apart now: a class you have lived bars that
+  class, a guild you have held bars that guild, and 'none' is always a
+  legal guild, so a choice always exists. A refusal lists every class and
+  guild still open to you rather than printing classes alone and leaving
+  you to guess the guild. The saved `ListRemorts` format is unchanged and
+  is read back the way it was written, one life at a time. HELP REMORT
+  described the old rule as a class-and-guild *combination*, which it
+  never was.
 
 - **All three staff channels were half-broken, and seven commands with
   them.** `channel_say()` decided who could hear by `victim->level`

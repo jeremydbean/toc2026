@@ -591,6 +591,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Psionic  %d\n", ch->pcdata->psionic );
     fprintf( fp, "PsiGrant %d\n", ch->pcdata->psionic_grant_pending ? 1 : 0 );
     fprintf( fp, "PsiSpec %s~\n", ch->pcdata->psionic_grant_spec ? ch->pcdata->psionic_grant_spec : "" );
+    fprintf( fp, "PsiKnown %s~\n", ch->pcdata->psionic_known ? ch->pcdata->psionic_known : "" );
     fprintf( fp, "Cast %s\n",	get_castlename( ch->pcdata->castle) );
     fprintf( fp, "Levl %d\n",	ch->level		);
     if (ch->trust != 0)
@@ -1202,6 +1203,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->depart			= str_dup( "" );
     ch->pcdata->title			= str_dup( "" );
     ch->pcdata->psionic_grant_spec      = str_dup( "" );
+    ch->pcdata->psionic_known           = str_dup( "" );
     {
 	int iWear;
 
@@ -1362,7 +1364,11 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     if ( ch->pcdata->depart                == NULL ) ch->pcdata->depart                = str_dup( "" );
     if ( ch->pcdata->title                 == NULL ) ch->pcdata->title                 = str_dup( "" );
     if ( ch->pcdata->psionic_grant_spec    == NULL ) ch->pcdata->psionic_grant_spec    = str_dup( "" );
+    if ( ch->pcdata->psionic_known         == NULL ) ch->pcdata->psionic_known         = str_dup( "" );
     if ( ch->pcdata->list_remorts          == NULL ) ch->pcdata->list_remorts          = str_dup( "" );
+
+    /* Powers learned before the list existed still count towards it. */
+    psionic_sync_known( ch );
 
     /* Nobody stays cursed by a mechanic that no longer runs. */
     if ( !LYCANTHROPY_ENABLED && ch->were_shape.name != NULL )
@@ -1792,6 +1798,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Psionic",     ch->pcdata->psionic,    (sh_int)(fread_number( fp )) );
             KEY( "PsiGrant",    ch->pcdata->psionic_grant_pending, fread_number( fp ) );
             KEY( "PsiSpec",     ch->pcdata->psionic_grant_spec, fread_string( fp ) );
+            KEY( "PsiKnown",    ch->pcdata->psionic_known, fread_string( fp ) );
 	    break;
 
 	case 'Q':

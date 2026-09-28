@@ -901,6 +901,19 @@ int get_max_train( CHAR_DATA *ch, int stat )
     return UMIN(max,MAX_STAT);
 }
 
+/*
+ * The third remort doubles what a character can haul, in slots and in
+ * weight alike. It sits below the fifth-remort branches, which lift the
+ * limits altogether, so the ladder stays monotonic.
+ */
+static int remort_carry_multiplier( CHAR_DATA *ch )
+{
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return 1;
+
+    return ch->pcdata->num_remorts >= REMORTS_FOR_BIG_PACK ? 2 : 1;
+}
+
 int can_carry_n( CHAR_DATA *ch )
 {
     if ( !IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL )
@@ -910,12 +923,13 @@ int can_carry_n( CHAR_DATA *ch )
         return 1000;
 
     if(IS_SET(ch->act2,ACT2_LYCANTH) )
-       return ch->were_shape.can_carry;
+       return ch->were_shape.can_carry * remort_carry_multiplier( ch );
 
     if ( IS_NPC(ch) && IS_SET(ch->act, ACT_PET) )
 	return 0;
 
-    return MAX_WEAR +  2 * get_curr_stat(ch,STAT_DEX) + ch->level;
+    return ( MAX_WEAR +  2 * get_curr_stat(ch,STAT_DEX) + ch->level )
+         * remort_carry_multiplier( ch );
 }
 
 /*
@@ -944,12 +958,12 @@ int can_carry_w( CHAR_DATA *ch )
         return 1000000;
 
     if(IS_SET(ch->act2,ACT2_LYCANTH) )
-      return carry_weight_base( ch );
+      return carry_weight_base( ch ) * remort_carry_multiplier( ch );
 
     if ( IS_NPC(ch) && IS_SET(ch->act, ACT_PET) )
 	return 0;
 
-    return carry_weight_base( ch );
+    return carry_weight_base( ch ) * remort_carry_multiplier( ch );
 }
 
 

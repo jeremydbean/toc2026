@@ -147,16 +147,19 @@ class RemortSourceTests(unittest.TestCase):
         cls.source = (ROOT / "src" / "act_info.c").read_text(encoding="utf-8")
 
     def test_the_remort_history_walk_cannot_run_off_the_array(self) -> None:
-        """had_classes is a fixed stack array read from the player file.
+        """The history arrays are fixed and are filled from a player file.
 
-        ListRemorts is two numbers per remort and five remorts is the cap,
-        so a sound file never fills it -- but a hand-edited or damaged one
-        can, and the loop had no bound at all.
+        ListRemorts is at most two numbers per remort and five remorts is
+        the cap, so a sound file never troubles them -- but a hand-edited
+        or damaged one can. The bound used to be on the loop counter, over
+        a single had_classes[2*MAX_CLASS] pool; it is on the index now,
+        over the separate had_class and had_guild arrays. See
+        tests/test_remort_gifts.py for why they were split.
         """
-        self.assertIn(
-            "while (to_strip[0] != '\\0' && ind_class < 2*MAX_CLASS)",
-            self.source,
-        )
+        body = self.source.split("void do_remort(")[1]
+        self.assertIn("if (past_class >= 0 && past_class < MAX_CLASS)", body)
+        self.assertIn("if (past_guild >= 0 && past_guild < MAX_CLASS)", body)
+        self.assertNotIn("had_classes", body)
 
     def test_remorting_off_a_mount_releases_the_mount(self) -> None:
         """Clearing only the rider's half leaves the steed flagged ridden,
