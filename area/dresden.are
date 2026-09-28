@@ -1846,6 +1846,26 @@ stone~
 31 0 0
 9 1607 5 1 0
 0 1 0 P
+#4250
+chest stash strongbox oaken~
+a heavy oaken chest~
+A heavy oaken chest stands against the wall, bound in iron.~
+wood~
+12 O 0
+0 0 0 0 0
+1 100 0 P
+E
+chest stash strongbox oaken~
+An oaken chest bound with iron, older than the temple around it.  There is
+no lock, and no lid anybody has managed to lift.  Whatever is inside answers
+only to the person it belongs to.
+
+    stash              what you have in it
+    stash put <item>   set something aside, from anywhere in the world
+    stash get <item>   take it out again, which only works here
+    stash buy          pay for more room
+
+~
 #0
 
 
@@ -11235,6 +11255,7 @@ M 0 4202 1 4207  The Watcher before altar
 E 1 2401 1 16      wield giant scimitar
 *
 O 0 3010 5 4208  Donation Pit at altar
+O 0 4250 1 4208  The stash chest at the altar
 *
 O 0 3135 2 4206  Fountain in Halls of Healing
 *

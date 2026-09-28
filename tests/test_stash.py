@@ -179,11 +179,29 @@ class StashSourceTests(unittest.TestCase):
         self.assertLess(self.save.index('"#STASH'),
                         self.save.index('"#END'))
 
-    def test_a_deposit_is_saved_at_once(self) -> None:
+    def test_every_branch_that_moves_something_saves_at_once(self) -> None:
         """A stash written only at quit is a duplication bug waiting for
-        a crash."""
-        body = self.obj.split("void do_stash(", 1)[1].split("\nvoid do_donate(", 1)[0]
-        self.assertEqual(3, body.count("save_char_obj( ch )"))
+        a crash.
+
+        Checked branch by branch rather than by counting calls: a count
+        was the first version of this and it broke the moment the
+        command grew a subcommand, which tells you it was measuring the
+        wrong thing.
+        """
+        body = self.obj.split("void do_stash(", 1)[1]
+        body = body.split(chr(10) + "void do_donate(", 1)[0]
+
+        for opens_with in ('!str_prefix( arg, "put" )',
+                           '!str_prefix( arg, "get" )',
+                           '!str_prefix( arg, "buy" )'):
+            with self.subTest(branch=opens_with):
+                self.assertIn(opens_with, body)
+                branch = body.split(opens_with, 1)[1]
+                # To the start of the next subcommand, or the end.
+                nxt = branch.find("    if ( !str_prefix( arg,")
+                if nxt > 0:
+                    branch = branch[:nxt]
+                self.assertIn("save_char_obj( ch )", branch)
 
     def test_shrinking_below_the_contents_is_refused(self) -> None:
         """Checked here rather than against a live server: SET will not

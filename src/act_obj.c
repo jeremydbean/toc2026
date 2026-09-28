@@ -315,6 +315,286 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 
 /* annonymous code. Possible creators: Tohlan or Tahkus. */
 /*
+ * Whether this character has named that one. Half of a link: the other
+ * half is the same question asked the other way round.
+ */
+/*
+ * Add or drop a name in one of the space-separated lists.
+ *
+ * Rebuilt rather than spliced: shorter than cutting a name out in
+ * place, and it cannot leave a stray separator behind.
+ */
+static char *stash_name_list( const char *list, const char *name, bool adding )
+{
+    char names[MAX_STRING_LENGTH];
+    char kept[MAX_STRING_LENGTH];
+    char *rest;
+
+    kept[0] = '\0';
+    toc_strlcpy( names, list != NULL ? list : "", sizeof(names) );
+
+    for ( rest = names; rest != NULL && *rest != '\0'; )
+    {
+        char *space = strchr( rest, ' ' );
+        char *word = rest;
+
+        if ( space != NULL )
+            *space = '\0';
+        rest = ( space != NULL ) ? space + 1 : NULL;
+
+        if ( word[0] == '\0' )
+            continue;
+        if ( !str_cmp( word, name ) )
+            continue;           /* dropped, or re-added below */
+
+        if ( kept[0] != '\0' )
+            toc_strlcat( kept, " ", sizeof(kept) );
+        toc_strlcat( kept, word, sizeof(kept) );
+    }
+
+    if ( adding )
+    {
+        if ( kept[0] != '\0' )
+            toc_strlcat( kept, " ", sizeof(kept) );
+        toc_strlcat( kept, capitalize( (char *) name ), sizeof(kept) );
+    }
+
+    return str_dup( kept );
+}
+
+bool stash_has_offers( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL
+        && ch->pcdata->stash_offers != NULL
+        && ch->pcdata->stash_offers[0] != '\0';
+}
+
+/*
+ * Said at login, because an offer nobody knows about is an offer that
+ * never gets answered.
+ */
+void stash_offer_notice( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( !stash_has_offers( ch ) )
+        return;
+
+    snprintf( buf, sizeof(buf),
+        "\n\r{0E+----------------------------------------------------+{00\n\r"
+        "{0E|{00  {0FSTASH{00                                             "
+        "{0E|{00\n\r"
+        "{0E|{00  These want to share a stash with you:\n\r"
+        "{0E|{00    {0F%s{00\n\r"
+        "{0E|{00  '{0Fstash link <name>{00' to accept, '{0Fstash deny "
+        "<name>{00' to refuse,\n\r"
+        "{0E|{00  or '{0Fstash block <name>{00' if they will not take no.\n\r"
+        "{0E+----------------------------------------------------+{00\n\r",
+        ch->pcdata->stash_offers );
+    send_to_char( buf, ch );
+}
+
+/*
+ * Record on the target that somebody has named them. Their own list
+ * only holds who they named, so without this there is no way for them
+ * to learn an offer exists short of reading every player file.
+ */
+static bool stash_record_offer( CHAR_DATA *ch, const char *name, bool adding )
+{
+    DESCRIPTOR_DATA offline_desc;
+    CHAR_DATA *target;
+    bool offline = false;
+    bool blocked = false;
+
+    if ( ( target = get_char_world( ch, (char *) name ) ) == NULL )
+    {
+        char proper[MAX_INPUT_LENGTH];
+
+        toc_strlcpy( proper, name, sizeof(proper) );
+        proper[0] = UPPER(proper[0]);
+        memset( &offline_desc, 0, sizeof(offline_desc) );
+
+        if ( !load_char_obj( &offline_desc, proper ) )
+            return false;
+
+        target = offline_desc.character;
+        target->desc = NULL;
+        register_character( target );
+        offline_desc.connected = CON_PLAYING;
+        reset_char( target );
+        offline = true;
+    }
+
+    if ( IS_NPC(target) || target->pcdata == NULL )
+    {
+        if ( offline )
+            extract_char( target, true );
+        return false;
+    }
+
+    if ( adding && is_name( ch->name, target->pcdata->stash_blocks ) )
+        blocked = true;
+
+    if ( !blocked )
+    {
+        char *updated = stash_name_list( target->pcdata->stash_offers,
+            ch->name, adding );
+
+        free_string( target->pcdata->stash_offers );
+        target->pcdata->stash_offers = updated;
+        save_char_obj( target );
+
+        if ( adding && target->desc != NULL )
+        {
+            char buf[MAX_STRING_LENGTH];
+
+            snprintf( buf, sizeof(buf),
+                "\n\r{0E%s wants to share a stash with you.  "
+                "'{0Fstash link %s{0E' to accept.{00\n\r",
+                ch->name, ch->name );
+            send_to_char( buf, target );
+        }
+    }
+
+    if ( offline )
+        extract_char( target, true );
+
+    return !blocked;
+}
+
+bool stash_is_linked( CHAR_DATA *ch, const char *name )
+{
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
+      || ch->pcdata->stash_links == NULL || name == NULL )
+        return false;
+
+    return is_name( (char *) name, ch->pcdata->stash_links );
+}
+
+/*
+ * The names on somebody's list, read straight out of their save file.
+ *
+ * A full load_char_obj to answer one question is far too much, and the
+ * file is line-oriented for exactly this -- the same reason FINGER and
+ * MIRROR read it directly rather than loading the character.
+ */
+static void stash_links_on_file( const char *name, char *out, size_t size )
+{
+    char filename[MAX_INPUT_LENGTH];
+    char line[MAX_STRING_LENGTH];
+    FILE *fp;
+
+    out[0] = '\0';
+    if ( name == NULL || name[0] == '\0' )
+        return;
+
+    snprintf( filename, sizeof(filename), "%s%s", PLAYER_DIR,
+        capitalize( (char *) name ) );
+
+    fclose( fpReserve );
+    if ( ( fp = fopen( filename, "r" ) ) != NULL )
+    {
+        while ( fgets( line, (int)sizeof(line), fp ) != NULL )
+        {
+            char *tail;
+
+            if ( str_prefix( "StashLinks ", line ) )
+                continue;
+
+            tail = line + strlen( "StashLinks " );
+            toc_strlcpy( out, tail, size );
+            if ( ( tail = strchr( out, '~' ) ) != NULL )
+                *tail = '\0';
+            if ( ( tail = strchr( out, '\n' ) ) != NULL )
+                *tail = '\0';
+            break;
+        }
+        fclose( fp );
+    }
+    fpReserve = fopen( NULL_FILE, "r" );
+}
+
+/* Both halves present: they named us and we named them. */
+static bool stash_link_is_mutual( CHAR_DATA *ch, const char *name )
+{
+    CHAR_DATA *other;
+    char theirs[MAX_STRING_LENGTH];
+
+    if ( !stash_is_linked( ch, name ) )
+        return false;
+
+    /* Online, their list is in memory and current. */
+    if ( ( other = get_char_world( ch, (char *) name ) ) != NULL
+    &&   !IS_NPC(other) && other->pcdata != NULL )
+        return stash_is_linked( other, ch->name );
+
+    stash_links_on_file( name, theirs, sizeof(theirs) );
+    return is_name( ch->name, theirs );
+}
+
+/* For SCORE and the stash listing. */
+void stash_link_report( CHAR_DATA *ch, char *buf, size_t size )
+{
+    char names[MAX_STRING_LENGTH];
+    char one[MAX_INPUT_LENGTH];
+    char *rest;
+
+    buf[0] = '\0';
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL
+      || ch->pcdata->stash_links == NULL
+      || ch->pcdata->stash_links[0] == '\0' )
+        return;
+
+    toc_strlcpy( names, ch->pcdata->stash_links, sizeof(names) );
+    rest = names;
+
+    while ( rest != NULL && *rest != '\0' )
+    {
+        char *space = strchr( rest, ' ' );
+
+        if ( space != NULL )
+            *space = '\0';
+        toc_strlcpy( one, rest, sizeof(one) );
+        rest = ( space != NULL ) ? space + 1 : NULL;
+
+        if ( one[0] == '\0' )
+            continue;
+
+        if ( buf[0] != '\0' )
+            toc_strlcat( buf, ", ", size );
+        toc_strlcat( buf, capitalize( one ), size );
+        /* An offer nobody has answered is not a link, and saying so
+           saves somebody wondering why they cannot see anything. */
+        if ( !stash_link_is_mutual( ch, one ) )
+            toc_strlcat( buf, " (waiting)", size );
+    }
+}
+
+static int stash_link_count( CHAR_DATA *ch )
+{
+    char names[MAX_STRING_LENGTH];
+    char *rest;
+    int count = 0;
+
+    if ( ch->pcdata->stash_links == NULL )
+        return 0;
+
+    toc_strlcpy( names, ch->pcdata->stash_links, sizeof(names) );
+    for ( rest = names; rest != NULL && *rest != '\0'; )
+    {
+        char *space = strchr( rest, ' ' );
+
+        if ( space != NULL )
+            *space = '\0';
+        if ( *rest != '\0' )
+            count++;
+        rest = ( space != NULL ) ? space + 1 : NULL;
+    }
+
+    return count;
+}
+
+/*
  * STASH: storage at the altar that outlives a reboot.
  *
  * Items go in from anywhere in the world and come out only at the
@@ -418,6 +698,17 @@ static void stash_show( CHAR_DATA *ch )
         toc_strlcat( out, "  ... and more than will fit on one screen.\n\r",
             sizeof(out) );
 
+    {
+        char shared[MAX_STRING_LENGTH];
+
+        stash_link_report( ch, shared, sizeof(shared) );
+        if ( shared[0] != '\0' )
+        {
+            snprintf( line, sizeof(line), "\n\rShared with: %s\n\r", shared );
+            toc_strlcat( out, line, sizeof(out) );
+        }
+    }
+
     if ( ch->pcdata->stash_max < STASH_SLOTS_MAX )
     {
         char price[MAX_INPUT_LENGTH];
@@ -460,6 +751,50 @@ void do_stash( CHAR_DATA *ch, char *argument )
         if ( argument[0] == '\0' )
         {
             send_to_char( "Put what into your stash?\n\r", ch );
+            return;
+        }
+
+        if ( !str_cmp( argument, "all" ) )
+        {
+            OBJ_DATA *next;
+            int put = 0;
+
+            for ( obj = ch->carrying; obj != NULL; obj = next )
+            {
+                next = obj->next_content;
+
+                /* Worn gear stays worn: "all" means what is in your
+                   hands, not what is on your back. */
+                if ( obj->wear_loc != WEAR_NONE )
+                    continue;
+                if ( !can_see_obj( ch, obj ) )
+                    continue;
+                if ( stash_count( ch ) >= ch->pcdata->stash_max )
+                    break;
+                if ( obj->item_type == ITEM_CORPSE_PC
+                  || obj->item_type == ITEM_CORPSE_NPC
+                  || obj->timer > 0
+                  || !can_drop_obj( ch, obj ) )
+                    continue;
+
+                obj_from_char( obj );
+                stash_receive( ch, obj );
+                put++;
+            }
+
+            if ( put == 0 )
+            {
+                send_to_char( "Nothing you are carrying can go in.\n\r", ch );
+                return;
+            }
+
+            snprintf( buf, sizeof(buf),
+                "You put %d thing%s away%s.\n\r", put, put == 1 ? "" : "s",
+                stash_count( ch ) >= ch->pcdata->stash_max
+                    ? ", and the stash is now full" : "" );
+            send_to_char( buf, ch );
+            act( "$n puts a few things away.", ch, NULL, NULL, TO_ROOM );
+            save_char_obj( ch );
             return;
         }
 
@@ -512,7 +847,9 @@ void do_stash( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( !str_prefix( arg, "get" ) || !str_prefix( arg, "take" ) )
+    /* "take" is the cross-character verb below, so it cannot be an
+       alias for this one. */
+    if ( !str_prefix( arg, "get" ) || !str_prefix( arg, "withdraw" ) )
     {
         OBJ_DATA *prev = NULL;
 
@@ -565,6 +902,314 @@ void do_stash( CHAR_DATA *ch, char *argument )
         act( "$n takes $p out of their stash.", ch, obj, NULL, TO_ROOM );
 
         save_char_obj( ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "link" ) || !str_prefix( arg, "unlink" ) )
+    {
+        bool undoing = ( arg[0] == 'u' || arg[0] == 'U' );
+        char one[MAX_INPUT_LENGTH];
+
+        one_argument( argument, one );
+
+        if ( one[0] == '\0' )
+        {
+            send_to_char( undoing ? "Unlink from whom?\n\r"
+                                  : "Link with which of your characters?\n\r",
+                ch );
+            return;
+        }
+
+        if ( !str_cmp( one, ch->name ) )
+        {
+            send_to_char( "You already have your own stash.\n\r", ch );
+            return;
+        }
+
+        if ( !undoing && stash_is_linked( ch, one ) )
+        {
+            send_to_char( "You have already named them.\n\r", ch );
+            return;
+        }
+
+        if ( undoing && !stash_is_linked( ch, one ) )
+        {
+            send_to_char( "You have not named them.\n\r", ch );
+            return;
+        }
+
+        if ( !undoing && stash_link_count( ch ) >= STASH_MAX_LINKS )
+        {
+            snprintf( buf, sizeof(buf),
+                "You cannot keep more than %d of these.\n\r",
+                STASH_MAX_LINKS );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        /* Tell the other side before committing: if they have blocked
+           this character there is nothing to record, and saying so
+           beats leaving an offer that can never be answered. */
+        if ( !stash_record_offer( ch, one, !undoing ) && !undoing )
+        {
+            send_to_char( "They are not accepting stash links from you.\n\r",
+                ch );
+            return;
+        }
+
+        free_string( ch->pcdata->stash_links );
+        ch->pcdata->stash_links = stash_name_list(
+            ch->pcdata->stash_links, one, !undoing );
+
+        /* Answering an offer clears it: it is no longer outstanding. */
+        if ( !undoing && is_name( one, ch->pcdata->stash_offers ) )
+        {
+            char *left = stash_name_list( ch->pcdata->stash_offers, one, false );
+
+            free_string( ch->pcdata->stash_offers );
+            ch->pcdata->stash_offers = left;
+        }
+
+        save_char_obj( ch );
+
+        if ( undoing )
+        {
+            snprintf( buf, sizeof(buf),
+                "You no longer share a stash with %s.\n\r",
+                capitalize( one ) );
+        }
+        else if ( stash_link_is_mutual( ch, one ) )
+        {
+            snprintf( buf, sizeof(buf),
+                "Linked.  You and %s now share a stash.\n\r",
+                capitalize( one ) );
+        }
+        else
+        {
+            /* Nothing is shared until the other side answers, and
+               saying so is the whole point of the handshake. */
+            snprintf( buf, sizeof(buf),
+                "Noted.  Nothing is shared until you log in as %s and "
+                "type '{0Fstash link %s{00'.\n\r",
+                capitalize( one ), ch->name );
+        }
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "deny" ) || !str_prefix( arg, "refuse" ) )
+    {
+        char one[MAX_INPUT_LENGTH];
+
+        one_argument( argument, one );
+
+        if ( one[0] == '\0' )
+        {
+            if ( !stash_has_offers( ch ) )
+                send_to_char( "Nobody has offered.\n\r", ch );
+            else
+            {
+                snprintf( buf, sizeof(buf), "Waiting on you: %s\n\r",
+                    ch->pcdata->stash_offers );
+                send_to_char( buf, ch );
+            }
+            return;
+        }
+
+        if ( !is_name( one, ch->pcdata->stash_offers ) )
+        {
+            send_to_char( "They have not offered.\n\r", ch );
+            return;
+        }
+
+        {
+            char *left = stash_name_list( ch->pcdata->stash_offers, one, false );
+
+            free_string( ch->pcdata->stash_offers );
+            ch->pcdata->stash_offers = left;
+        }
+        save_char_obj( ch );
+
+        snprintf( buf, sizeof(buf),
+            "Refused.  If %s keeps asking, '{0Fstash block %s{00'.\n\r",
+            capitalize( one ), capitalize( one ) );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "block" ) || !str_prefix( arg, "unblock" ) )
+    {
+        bool lifting = ( !str_prefix( arg, "unblock" ) && arg[0] == 'u' );
+        char one[MAX_INPUT_LENGTH];
+
+        one_argument( argument, one );
+
+        if ( one[0] == '\0' )
+        {
+            if ( ch->pcdata->stash_blocks == NULL
+              || ch->pcdata->stash_blocks[0] == '\0' )
+                send_to_char( "You are refusing nobody.\n\r", ch );
+            else
+            {
+                snprintf( buf, sizeof(buf), "Refusing offers from: %s\n\r",
+                    ch->pcdata->stash_blocks );
+                send_to_char( buf, ch );
+            }
+            return;
+        }
+
+        {
+            char *updated = stash_name_list( ch->pcdata->stash_blocks,
+                one, !lifting );
+
+            free_string( ch->pcdata->stash_blocks );
+            ch->pcdata->stash_blocks = updated;
+        }
+
+        /* A block drops anything they have already put in front of you,
+           or the notice would keep arriving from somebody you have
+           just refused. */
+        if ( !lifting && is_name( one, ch->pcdata->stash_offers ) )
+        {
+            char *left = stash_name_list( ch->pcdata->stash_offers, one, false );
+
+            free_string( ch->pcdata->stash_offers );
+            ch->pcdata->stash_offers = left;
+        }
+
+        save_char_obj( ch );
+
+        snprintf( buf, sizeof(buf), "%s can %soffer you a stash link.\n\r",
+            capitalize( one ), lifting ? "" : "no longer " );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "of" ) || !str_prefix( arg, "take" ) )
+    {
+        bool taking = ( arg[0] == 't' || arg[0] == 'T' );
+        char who[MAX_INPUT_LENGTH];
+        DESCRIPTOR_DATA offline_desc;
+        CHAR_DATA *owner;
+        bool offline = false;
+
+        argument = one_argument( argument, who );
+
+        if ( who[0] == '\0' )
+        {
+            send_to_char( taking ? "Syntax: stash take <character> <item>\n\r"
+                                 : "Syntax: stash of <character>\n\r", ch );
+            return;
+        }
+
+        if ( !stash_link_is_mutual( ch, who ) )
+        {
+            send_to_char( "You do not share a stash with them.\n\r", ch );
+            return;
+        }
+
+        if ( taking && !at_altar )
+        {
+            send_to_char( "Their stash is at the altar too.\n\r", ch );
+            return;
+        }
+
+        if ( ( owner = get_char_world( ch, who ) ) == NULL )
+        {
+            /* Same load / modify / save / extract shape the offline
+               staff commands use. */
+            who[0] = UPPER(who[0]);
+            memset( &offline_desc, 0, sizeof(offline_desc) );
+
+            if ( !load_char_obj( &offline_desc, who ) )
+            {
+                send_to_char( "No such character is saved.\n\r", ch );
+                return;
+            }
+
+            owner = offline_desc.character;
+            owner->desc = NULL;
+            register_character( owner );
+            offline_desc.connected = CON_PLAYING;
+            reset_char( owner );
+            offline = true;
+        }
+
+        if ( IS_NPC(owner) || owner->pcdata == NULL )
+        {
+            if ( offline )
+                extract_char( owner, true );
+            return;
+        }
+
+        if ( !taking )
+        {
+            OBJ_DATA *obj;
+            int number = 0;
+
+            snprintf( buf, sizeof(buf), "%s's stash holds %d of %d:\n\r",
+                capitalize( who ), stash_count( owner ),
+                owner->pcdata->stash_max );
+            send_to_char( buf, ch );
+
+            for ( obj = owner->pcdata->stash; obj != NULL;
+                  obj = obj->next_content )
+            {
+                snprintf( buf, sizeof(buf), "  %3d) %s\n\r", ++number,
+                    format_obj_to_char( obj, ch, true ) );
+                send_to_char( buf, ch );
+            }
+
+            if ( number == 0 )
+                send_to_char( "  It is empty.\n\r", ch );
+        }
+        else if ( argument[0] == '\0' )
+        {
+            send_to_char( "Take what out of their stash?\n\r", ch );
+        }
+        else
+        {
+            OBJ_DATA *obj;
+            OBJ_DATA *prev = NULL;
+
+            for ( obj = owner->pcdata->stash; obj != NULL;
+                  obj = obj->next_content )
+            {
+                if ( can_see_obj( ch, obj ) && is_name( argument, obj->name ) )
+                    break;
+                prev = obj;
+            }
+
+            if ( obj == NULL )
+                send_to_char( "There is nothing like that in their stash.\n\r",
+                    ch );
+            else if ( ch->carry_number + get_obj_number( obj )
+                      > can_carry_n( ch ) )
+                send_to_char( "Your hands are too full.\n\r", ch );
+            else if ( ch->carry_weight + get_obj_weight( obj )
+                      > can_carry_w( ch ) )
+                send_to_char( "That is more than you can carry.\n\r", ch );
+            else
+            {
+                if ( prev == NULL )
+                    owner->pcdata->stash = obj->next_content;
+                else
+                    prev->next_content = obj->next_content;
+                obj->next_content = NULL;
+
+                obj_to_char( obj, ch );
+                act( "You take $p out of their stash.", ch, obj, NULL,
+                    TO_CHAR );
+
+                /* Both files: the item left one and joined the other,
+                   and a crash between the two would copy it. */
+                save_char_obj( owner );
+                save_char_obj( ch );
+            }
+        }
+
+        if ( offline )
+            extract_char( owner, true );
         return;
     }
 
@@ -623,11 +1268,18 @@ void do_stash( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    send_to_char( "Syntax: stash            -- what is in it\n\r"
-                  "        stash put <item> -- from anywhere in the world\n\r"
-                  "        stash get <item> -- at the altar only\n\r"
-                  "        stash buy        -- more room, at the altar\n\r",
-                  ch );
+    send_to_char(
+        "Syntax: stash                     -- what is in it\n\r"
+        "        stash put <item>          -- from anywhere in the world\n\r"
+        "        stash get <item>          -- at the altar only\n\r"
+        "        stash buy                 -- more room, at the altar\n\r"
+        "        stash link <character>    -- share with another of yours\n\r"
+        "        stash unlink <character>  -- stop sharing\n\r"
+        "        stash of <character>      -- what is in theirs\n\r"
+        "        stash take <character> <item> -- at the altar only\n\r"
+        "        stash deny <character>    -- refuse an offer\n\r"
+        "        stash block <character>   -- and stop them asking\n\r",
+        ch );
 }
 
 void do_donate( CHAR_DATA *ch, char *argument )

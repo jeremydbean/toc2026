@@ -1320,6 +1320,17 @@ const char *default_prompt_text args( ( void ) );
 #define STASH_SLOTS_STEP     25
 #define STASH_SLOTS_MAX      500
 #define STASH_UPGRADE_GOLD   250L
+
+/*
+ * Two characters share a stash when each has named the other. One list
+ * per character and no separate pending state: the offer is the entry,
+ * and the link is live when it is answered. Proving you can log in as
+ * both is the proof of ownership, which is stronger than a password
+ * typed into a command -- that would cross plain Telnet in clear, land
+ * in the log and in the player's own scrollback, and be a password
+ * oracle at MUD speed.
+ */
+#define STASH_MAX_LINKS      8
 #define ROOM_VNUM_SCHOOL           3700
 #define ROOM_VNUM_JAIL             3
 #define ROOM_VNUM_BANK          9621
@@ -1799,6 +1810,9 @@ struct  pc_data
        section. Counted in top-level items, so a bag of gems is one. */
     OBJ_DATA *          stash;
     int                 stash_max;
+    char *              stash_links;    /* whoever this one has named  */
+    char *              stash_offers;   /* whoever has named this one  */
+    char *              stash_blocks;   /* whoever may not name it     */
 
     /* How many lines of each report file this character had seen the
        last time they looked, so REPORTS can say what is new. Counted
@@ -2346,6 +2360,10 @@ void    report_login_notice ( CHAR_DATA *ch );
 char *  format_obj_to_char ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort );
 bool    spellup_here    ( CHAR_DATA *ch );
 int     stash_count     ( CHAR_DATA *ch );
+bool    stash_is_linked ( CHAR_DATA *ch, const char *name );
+bool    stash_has_offers ( CHAR_DATA *ch );
+void    stash_offer_notice ( CHAR_DATA *ch );
+void    stash_link_report ( CHAR_DATA *ch, char *buf, size_t size );
 void    stash_receive   ( CHAR_DATA *ch, OBJ_DATA *obj );
 void    stash_extract   ( CHAR_DATA *ch );
 void    watch_log       ( CHAR_DATA *ch, const char *fmt, ... );

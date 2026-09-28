@@ -2076,6 +2076,24 @@ void do_score( CHAR_DATA *ch, char *argument )
       send_to_char(kader, ch);
     }
 
+  /* The stash, and anybody sharing it. Worth a line here because it is
+     the one store a character owns that is not on their person, so
+     nothing else on this sheet hints that it exists. */
+  if ( !IS_NPC(ch) && ch->pcdata != NULL )
+  {
+      char shared[MAX_STRING_LENGTH];
+
+      snprintf( buf, sizeof(buf), "Stash: %d of %d used.\n\r",
+          stash_count( ch ), ch->pcdata->stash_max );
+      send_to_char( buf, ch );
+
+      stash_link_report( ch, shared, sizeof(shared) );
+      if ( shared[0] != '\0' )
+      {
+          snprintf( buf, sizeof(buf), "Stash shared with: %s\n\r", shared );
+          send_to_char( buf, ch );
+      }
+  }
 
   return;
 

@@ -44,6 +44,15 @@ void do_heal(CHAR_DATA *ch, char *argument)
         send_to_char( "You can't do that here.\n\r", ch );
         return;
     }
+    /* Hermie first. She is put somewhere deliberately by an immortal
+       and does the same work for nothing, so where both are standing
+       in one room she is the one a player means. */
+    if ( spellup_here( ch ) )
+    {
+        do_buff( ch, argument );
+        return;
+    }
+
     for ( mob = ch->in_room->people; mob; mob = mob->next_in_room )
     {
         if ( IS_NPC(mob) && IS_SET(mob->act, ACT_IS_HEALER) )
@@ -52,17 +61,6 @@ void do_heal(CHAR_DATA *ch, char *argument)
  
     if ( mob == NULL )
     {
-        /* Hermie does the same job for nothing and has a longer list,
-           so if she is the one standing here, HEAL is a perfectly
-           reasonable way to ask her. Deliberately not ACT_IS_HEALER on
-           her: that flag would route her through the code below, which
-           charges. */
-        if ( spellup_here( ch ) )
-        {
-            do_buff( ch, argument );
-            return;
-        }
-
         send_to_char( "You can't do that here.\n\r", ch );
         return;
     }

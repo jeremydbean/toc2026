@@ -602,6 +602,15 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Note %d\n",	(int)	ch->last_note	);
     if ( ch->pcdata->stash_max != STASH_SLOTS_START )
 	fprintf( fp, "StashMax %d\n", ch->pcdata->stash_max );
+    if ( ch->pcdata->stash_links != NULL
+    &&   ch->pcdata->stash_links[0] != '\0' )
+	fprintf( fp, "StashLinks %s~\n", ch->pcdata->stash_links );
+    if ( ch->pcdata->stash_offers != NULL
+    &&   ch->pcdata->stash_offers[0] != '\0' )
+	fprintf( fp, "StashOffers %s~\n", ch->pcdata->stash_offers );
+    if ( ch->pcdata->stash_blocks != NULL
+    &&   ch->pcdata->stash_blocks[0] != '\0' )
+	fprintf( fp, "StashBlocks %s~\n", ch->pcdata->stash_blocks );
     if ( ch->pcdata->reports_seen[REPORT_BUGS] > 0
     ||   ch->pcdata->reports_seen[REPORT_TYPOS] > 0
     ||   ch->pcdata->reports_seen[REPORT_IDEAS] > 0 )
@@ -1202,6 +1211,9 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->mirror_of[0]            = '\0';
     ch->pcdata->stash                   = NULL;
     ch->pcdata->stash_max               = STASH_SLOTS_START;
+    ch->pcdata->stash_links             = str_dup( "" );
+    ch->pcdata->stash_offers            = str_dup( "" );
+    ch->pcdata->stash_blocks            = str_dup( "" );
     {
 	int iKind;
 
@@ -1844,6 +1856,9 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "Save",	ch->saving_throw,	(sh_int)(fread_number( fp )) );
 	    KEY( "SavedOnce",	ch->pcdata->has_saved,	fread_number( fp ) );
 	    KEY( "StashMax",	ch->pcdata->stash_max,	fread_number( fp ) );
+	    KEY( "StashLinks",	ch->pcdata->stash_links, fread_string( fp ) );
+	    KEY( "StashOffers",	ch->pcdata->stash_offers, fread_string( fp ) );
+	    KEY( "StashBlocks",	ch->pcdata->stash_blocks, fread_string( fp ) );
 	    KEY( "Scro",	ch->lines,		fread_number( fp ) );
 	    KEY( "SesLogin",	ch->pcdata->last_session_login,	 fread_long( fp ) );
 	    KEY( "SesDur",	ch->pcdata->last_session_dur,	 fread_long( fp ) );

@@ -6396,17 +6396,20 @@ static const struct newbie_item
     {  3715,  1 },   /* a mud school diploma       */
     { 20301,  5 },   /* A Red Potion               */
     {  5780,  1 },   /* a string of red berries    */
+    {  5776,  1 },   /* a string of blueberries    */
+                     /* Both strings are levelling gear rather than
+                        food, whatever their names suggest. */
     {  3094,  1 },   /* an endless snack pack      */
+                     /* The one food in the pack, and endless, so
+                        nobody starts out carrying perishables. */
     {  3081,  2 },   /* a potion of sanctuary      */
     {  4639,  2 },   /* a potion of extra healing  */
     {  3605,  2 },   /* An etched signet ring      */
-    {  3093,  1 },   /* an endless water jug       */
     { 15011,  1 },   /* a condom                   */
     { 29009,  1 },   /* a prism cube               */
     {  5003,  2 },   /* the amulet                 */
     { 29085,  2 },   /* an ID bracelet             */
     {   104,  2 },   /* a small necklace           */
-    {  5776,  1 },   /* a string of blueberries    */
     { 29008,  1 },   /* a cord belt                */
     {     0,  0 }
 };
@@ -6438,6 +6441,12 @@ static OBJ_DATA *make_newbie_pack( CHAR_DATA *ch )
     pack->description = str_dup( "A *NEWBIE* pack! has been left here." );
     pack->level = 1;
 
+    /* Twice what the prototype holds. It is carrying a starter kit and
+       is meant to go on carrying whatever they pick up next. value[0]
+       is a container's capacity in weight. */
+    if ( pack->item_type == ITEM_CONTAINER )
+        pack->value[0] = UMAX( pack->value[0] * 2, pack->value[0] );
+
     missing = 0;
     for ( entry = 0; newbie_contents[entry].vnum != 0; entry++ )
     {
@@ -6451,18 +6460,22 @@ static OBJ_DATA *make_newbie_pack( CHAR_DATA *ch )
         {
             item = create_object( index, 1 );
 
-            /* Both strings of berries are ITEM_NODROP, so a newbie given
-               the pack was stuck with them. Cleared on the copy rather than
-               on the vnum: those items exist elsewhere in the world, where
-               the flag is somebody's deliberate choice. Doing it here also
-               means a later addition to the table cannot reintroduce it. */
+            /* Cleared on the copy rather than on the vnum: these
+               items exist elsewhere in the world, where a NODROP is
+               somebody's deliberate choice. Doing it here also means a
+               later addition to the table cannot reintroduce it. */
             REMOVE_BIT( item->extra_flags, ITEM_NODROP );
             REMOVE_BIT( item->extra_flags, ITEM_NOREMOVE );
 
-            /* And usable on arrival: several of these sit above level 1, so
-               the character the pack is for could carry them and not wear
-               them. */
+            /* Usable on arrival: several of these sit above level 1, so
+               the character the pack is for could carry them and not
+               wear them. */
             item->level = 1;
+
+            /* And light enough to carry all at once. A level 1
+               character has very little strength, and a starter kit
+               they cannot lift is not a starter kit. */
+            item->weight = 1;
 
             obj_to_obj( item, pack );
         }
@@ -10432,7 +10445,6 @@ static const struct spellup_entry spellup_table[] =
     { "invis",      "invis",             "invisibility",      SPELLUP_SPELL, 0 },
     { "gloves",     "power gloves",      "power gloves",      SPELLUP_SPELL, 0 },
     { "shroud",     "shroud",            "shroud",            SPELLUP_SPELL, 0 },
-    { "ghostly",    "ghostly presence",  "ghostly presence",  SPELLUP_SPELL, 0 },
     { "align",      "know alignment",    "know alignment",    SPELLUP_SPELL, 0 },
 
     { "empower",    NULL,                "empower (bundle)",  SPELLUP_EMPOWER, 0 },
@@ -10503,8 +10515,15 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
                 mob, NULL, victim, TO_VICT );
             return FALSE;
         }
+        /* The player is the actor, not Hermie. do_empower resolves its
+           target with get_char_world, which filters on can_see, so a
+           wizinvis immortal is invisible to her: the command failed and
+           printed "They aren't here." to a mobile with no descriptor,
+           and the player saw nothing but the wink. Asking the character
+           to empower themselves cannot fail that way. The affect then
+           carries their level rather than hers. */
         snprintf( buf, sizeof(buf), "%s %d", victim->name, SPELLUP_DURATION );
-        do_empower( mob, buf );
+        do_empower( victim, buf );
         return TRUE;
     }
 
@@ -10516,8 +10535,9 @@ static bool spellup_grant( CHAR_DATA *mob, CHAR_DATA *victim,
                 mob, NULL, victim, TO_VICT );
             return FALSE;
         }
+        /* Same reason as empower above. */
         snprintf( buf, sizeof(buf), "%s %d", victim->name, SPELLUP_DURATION );
-        do_titanic( mob, buf );
+        do_titanic( victim, buf );
         return TRUE;
     }
 

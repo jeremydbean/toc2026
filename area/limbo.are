@@ -797,16 +797,20 @@ the world patching people up one emergency at a time, she picked a spot,
 put her feet down, and started keeping a list.
 
 She casts spells on whoever asks, one at a time, and each one lasts thirty
-ticks.  Talk to her with SAY:
+ticks.  Ask her the way you would ask the healer at the pit, except that
+nothing she does costs a copper:
 
-    say hermie        she reads out her list
-    say sanctuary     she casts that one on you
-    say 5             the same thing, chosen by number
-    say all           everything on the list, one after another
+    heal              she reads out her list
+    heal sanctuary    she casts that one on you
+    heal defense      a whole handful at once
+    heal all          everything on the list, one after another
 
-She answers to her name, and to 'menu', 'list', 'hello' or 'help'.  Anything
-else said in the room she stays out of, so you can hold a conversation in
-front of her without being interrupted.
+The groups are defense, detects, travel, cures, restore and combat, and
+refresh, heal and mana fill the pool rather than topping it up.  BUFF does
+the same as HEAL if a healer is somehow standing next to her.
+
+She pays no attention to ordinary talk, so you can hold a conversation in
+front of her without setting her off.
 ~
 unique~
 ABQ CDFHJT 1000 S

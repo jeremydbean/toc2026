@@ -2663,6 +2663,9 @@ void report_login_notice( CHAR_DATA *ch )
 	send_to_char( buf, ch );
     }
 
+    /* Somebody waiting on an answer about a shared stash. */
+    stash_offer_notice( ch );
+
     /* The report files are staff business. */
     if ( !IS_TRUSTED(ch, LEVEL_IMMORTAL) )
 	return;
