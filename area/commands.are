@@ -443,6 +443,12 @@ command named here for the detail.
   recall point, RECALL DEFAULT puts it back to the Temple, and RECALL WHERE
   tells you where it is.  Once every 30 minutes, and not mid-fight.
 
+  The note board answers back.  NOTE REPLY <n> starts a note to
+  whoever wrote that one with the subject already set, NOTE FORWARD
+  <n> <player> passes one on, NOTE SEARCH finds a note by any word in
+  it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
+  the lot.  See HELP NOTE.
+
   Hermie takes a command now.  BUFF reads out her list and BUFF
   <name> asks for one thing, the way HEAL works at the pit, except
   that she charges nothing.  She has ten more spells than she did,
@@ -2771,8 +2777,18 @@ The following options are available:
 
 reading notes:
 note list       : show all notes (unread notes are marked with an N)
+note unread     : show only the ones you have not read yet
 note read       : either by number, or read next to read unread notes
+note search     : find notes mentioning a word, in the sender, the
+		  subject or the body
+note catchup    : mark everything read without opening it
 note remove     : removes a note that you wrote or are the target of
+
+answering notes:
+note reply      : start a note back to whoever wrote number <n>, with
+		  the subject set to Re: theirs
+note forward    : send number <n> on to somebody else, with the original
+		  text carried across and marked as theirs
 
 writing new notes:
 note to         : sets the to line for a new note (name(s), immortal, all,
@@ -2783,6 +2799,10 @@ note -          : deletes the last line you typed (no argument required)
 note clear      : erase a note in progress
 note show       : shows the note you are working on
 note post       : posts a new note. This MUST be done to post a note.
+
+A number is always the note's place in your full list, even when you
+are looking at a filtered one, so a number you read off a search is the
+number to give to note read.
 
 When you log in, you will be informed if there are unread notes waiting. Type
 note read (or just note) to scroll through them one at a time.

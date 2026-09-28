@@ -60,12 +60,6 @@ class ReportsTests(unittest.TestCase):
         # way interp.c gates every command.
         patch_player_file(mud, "Zstaffer", Levl=45, Tru=65)
 
-        # The shipped area/ carries the live server's own backlog --
-        # 739 lines of it -- and the harness copies the directory
-        # wholesale. Start each test from an empty desk instead, in the
-        # throwaway tree only.
-        for name in ("bugs.txt", "typos.txt", "ideas.txt"):
-            (mud.root / "area" / name).write_text("", encoding="latin-1")
         return mud
 
     def test_a_filed_bug_is_announced_at_the_next_login(self) -> None:

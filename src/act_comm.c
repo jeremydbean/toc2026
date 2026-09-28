@@ -1254,9 +1254,138 @@ static void note_discard( CHAR_DATA *ch )
 }
 
 
+/*
+ * The Nth note addressed to this character, counted the way the list
+ * numbers them -- so a number a player read off the screen means the
+ * same thing to every command that takes one.
+ */
+static NOTE_DATA *note_by_number( CHAR_DATA *ch, int number )
+{
+    NOTE_DATA *pnote;
+    int count = 0;
+
+    if ( number < 1 )
+        return NULL;
+
+    for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
+    {
+        if ( !is_note_to( ch, pnote ) )
+            continue;
+        if ( ++count == number )
+            return pnote;
+    }
+
+    return NULL;
+}
+
+/* Case-insensitive substring, for searching a board by hand. */
+static bool note_contains( const char *haystack, const char *needle )
+{
+    size_t span;
+    size_t left;
+
+    if ( haystack == NULL || needle == NULL || needle[0] == '\0' )
+        return false;
+
+    span = strlen( needle );
+    left = strlen( haystack );
+
+    /* Walk the remaining length down rather than measuring it again
+       each step: a note runs to two kilobytes and this is called
+       three times per note per search. */
+    while ( left >= span )
+    {
+        if ( !str_prefix( needle, haystack ) )
+            return true;
+        haystack++;
+        left--;
+    }
+
+    return false;
+}
+
+/*
+ * One lister behind LIST, UNREAD and SEARCH, so the numbering can never
+ * disagree between them: the number shown is always the note's place in
+ * the full list, never its place in the filtered one. A player who
+ * searches and then reads the number they were shown gets the note they
+ * were looking at.
+ */
+#define NOTE_FILTER_ALL     0
+#define NOTE_FILTER_UNREAD  1
+#define NOTE_FILTER_MATCH   2
+
+static void note_list_filtered( CHAR_DATA *ch, int filter, const char *needle )
+{
+    char out[MAX_STRING_LENGTH];
+    char line[MAX_INPUT_LENGTH];
+    NOTE_DATA *pnote;
+    int number = 0;
+    int shown = 0;
+    bool full = false;
+
+    out[0] = '\0';
+
+    for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
+    {
+        bool unread;
+
+        if ( !is_note_to( ch, pnote ) )
+            continue;
+
+        number++;
+        unread = pnote->date_stamp > ch->last_note;
+
+        if ( filter == NOTE_FILTER_UNREAD && !unread )
+            continue;
+        if ( filter == NOTE_FILTER_MATCH
+        &&   !note_contains( pnote->sender, needle )
+        &&   !note_contains( pnote->subject, needle )
+        &&   !note_contains( pnote->text, needle ) )
+            continue;
+
+        snprintf( line, sizeof(line), "%3d)%s %-12s %-28s %s\n\r",
+            number,
+            unread ? " {0FN{00" : "  ",
+            pnote->sender  ? pnote->sender  : "(nobody)",
+            pnote->subject ? pnote->subject : "(no subject)",
+            pnote->date    ? pnote->date    : "" );
+
+        if ( strlen( out ) + strlen( line ) + 128 >= sizeof(out) )
+        {
+            full = true;
+            break;
+        }
+        toc_strlcat( out, line, sizeof(out) );
+        shown++;
+    }
+
+    if ( shown == 0 )
+    {
+        if ( filter == NOTE_FILTER_UNREAD )
+            send_to_char( "You have read everything addressed to you.\n\r", ch );
+        else if ( filter == NOTE_FILTER_MATCH )
+            send_to_char( "No note of yours mentions that.\n\r", ch );
+        else
+            send_to_char( "There are none.\n\r", ch );
+        return;
+    }
+
+    snprintf( line, sizeof(line),
+        "\n\r%d note%s%s. Read one with '{0Fnote read <number>{00'%s\n\r",
+        shown, shown == 1 ? "" : "s",
+        full ? " (more would not fit)" : "",
+        filter == NOTE_FILTER_ALL
+            ? ", or reply with '{0Fnote reply <number>{00'." : "." );
+    toc_strlcat( out, line, sizeof(out) );
+
+    page_to_char( out, ch );
+}
+
 void do_note( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     NOTE_DATA *pnote;
     int number;
@@ -1269,33 +1398,137 @@ void do_note( CHAR_DATA *ch, char *argument )
 
     if ( arg[0] == '\0' || !str_cmp( arg, "list" ) )
     {
-        count = 0;
         send_to_char( "Notes addressed to you:\n\r", ch );
+        note_list_filtered( ch, NOTE_FILTER_ALL, NULL );
+        return;
+    }
 
+    if ( !str_cmp( arg, "unread" ) || !str_cmp( arg, "new" ) )
+    {
+        send_to_char( "Waiting for you:\n\r", ch );
+        note_list_filtered( ch, NOTE_FILTER_UNREAD, NULL );
+        return;
+    }
+
+    if ( !str_cmp( arg, "search" ) || !str_cmp( arg, "find" ) )
+    {
+        if ( argument[0] == '\0' )
+        {
+            send_to_char( "Search your notes for what?\n\r", ch );
+            return;
+        }
+
+        snprintf( buf, sizeof(buf), "Notes mentioning '%s':\n\r", argument );
+        send_to_char( buf, ch );
+        note_list_filtered( ch, NOTE_FILTER_MATCH, argument );
+        return;
+    }
+
+    if ( !str_cmp( arg, "catchup" ) )
+    {
+        count = 0;
         for ( pnote = note_list; pnote != NULL; pnote = pnote->next )
         {
-            if ( !is_note_to( ch, pnote ) )
-                continue;
-
-            count++;
-            snprintf( buf, sizeof(buf), "%3d)%s %-12s %-28s %s\n\r",
-                count,
-                pnote->date_stamp > ch->last_note ? " N" : "  ",
-                pnote->sender  ? pnote->sender  : "(nobody)",
-                pnote->subject ? pnote->subject : "(no subject)",
-                pnote->date    ? pnote->date    : "" );
-            send_to_char( buf, ch );
+            if ( is_note_to( ch, pnote ) && pnote->date_stamp > ch->last_note )
+                count++;
         }
 
         if ( count == 0 )
-            send_to_char( "  There are none.\n\r", ch );
+        {
+            send_to_char( "Nothing is waiting.\n\r", ch );
+            return;
+        }
+
+        ch->last_note = current_time;
+        snprintf( buf, sizeof(buf),
+            "%d note%s marked as read without opening %s.\n\r",
+            count, count == 1 ? "" : "s", count == 1 ? "it" : "them" );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_cmp( arg, "reply" ) || !str_cmp( arg, "forward" ) )
+    {
+        bool forwarding = ( arg[0] == 'f' || arg[0] == 'F' );
+        char who[MAX_INPUT_LENGTH];
+        const char *subject;
+        NOTE_DATA *source;
+
+        argument = one_argument( argument, arg2 );
+
+        if ( !is_number( arg2 ) )
+        {
+            send_to_char( forwarding
+                ? "Syntax: note forward <number> <player>\n\r"
+                : "Syntax: note reply <number>\n\r", ch );
+            return;
+        }
+
+        if ( ( source = note_by_number( ch, atoi( arg2 ) ) ) == NULL )
+        {
+            send_to_char( "There is no note by that number.\n\r", ch );
+            return;
+        }
+
+        if ( forwarding )
+        {
+            one_argument( argument, who );
+            if ( who[0] == '\0' )
+            {
+                send_to_char( "Forward it to whom?\n\r", ch );
+                return;
+            }
+        }
         else
         {
-            snprintf( buf, sizeof(buf),
-                "\n\r%d note%s. Read one with 'note read <number>'.\n\r",
-                count, count == 1 ? "" : "s" );
-            send_to_char( buf, ch );
+            /* Back to whoever wrote it, which is the whole point. */
+            toc_strlcpy( who, source->sender != NULL ? source->sender : "",
+                sizeof(who) );
+            if ( who[0] == '\0' )
+            {
+                send_to_char( "That note has no sender to answer.\n\r", ch );
+                return;
+            }
         }
+
+        note_start( ch );
+
+        free_string( ch->pnote->to_list );
+        ch->pnote->to_list = str_dup( who );
+
+        subject = source->subject != NULL ? source->subject : "(no subject)";
+        /* One Re: is a reply; four is a mess. */
+        if ( forwarding )
+            snprintf( buf, sizeof(buf), "Fwd: %s", subject );
+        else if ( !str_prefix( "Re:", subject ) )
+            snprintf( buf, sizeof(buf), "%s", subject );
+        else
+            snprintf( buf, sizeof(buf), "Re: %s", subject );
+
+        free_string( ch->pnote->subject );
+        ch->pnote->subject = str_dup( buf );
+
+        if ( forwarding && source->text != NULL )
+        {
+            /* Carry the original across, marked as somebody else's
+               words rather than silently becoming yours. */
+            snprintf( buf, sizeof(buf), "--- forwarded from %s ---\n\r%s"
+                "--- ends ---\n\r",
+                source->sender != NULL ? source->sender : "somebody",
+                source->text );
+            if ( strlen( buf ) < MAX_STRING_LENGTH / 2 )
+            {
+                free_string( ch->pnote->text );
+                ch->pnote->text = str_dup( buf );
+            }
+        }
+
+        snprintf( buf, sizeof(buf),
+            "%s %s, subject '%s'.\n\r"
+            "Add lines with '{0Fnote +{00' and send it with '{0Fnote send{00'.\n\r",
+            forwarding ? "Forwarding to" : "Replying to",
+            who, ch->pnote->subject );
+        send_to_char( buf, ch );
         return;
     }
 

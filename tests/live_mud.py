@@ -329,7 +329,19 @@ class LiveMud:
         # A full copy, not symlinks: the server writes into its working
         # directory (shutdown.txt, *.dmp, pkill data), and symlinks would
         # write straight back into the repository.
-        shutil.copytree(ROOT / "area", self.root / "area")
+        #
+        # Runtime state is left behind, though. These four are written by
+        # the running game and are no part of a fresh world: a working
+        # copy carries the live board, so a test that writes its own note
+        # found it numbered 23 behind a thousand real ones from the year
+        # 2000. Clearing them after the copy does not work either --
+        # notes are read into memory at boot and written back out from
+        # there -- so they have to be missing before the server starts.
+        shutil.copytree(
+            ROOT / "area", self.root / "area",
+            ignore=shutil.ignore_patterns(
+                "notes.txt", "bugs.txt", "typos.txt", "ideas.txt",
+                "bugs.txt.*", "typos.txt.*", "ideas.txt.*"))
         for name in ("player", "gods", "heroes", "corpse", "backups", "log"):
             (self.root / name).mkdir()
         (self.root / "player" / "versions").mkdir()

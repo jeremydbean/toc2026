@@ -739,6 +739,27 @@ her list. `iron skin`, `psionic armor`, `psychic shield`, `mindbar` and
 `haven` target an object or an exit. `spellup_grant` refuses a
 `spell_null` politely, but listing one is advertising nothing.
 
+## The Note Board
+
+`note_list_filtered()` in `src/act_comm.c` backs LIST, UNREAD and
+SEARCH. Keep it that way: **the number it prints is the note's place in
+the character's full list, not its place in the filtered one.** A
+player who searches, sees `2)` and types `note read 2` has to get that
+note. A filtered view that renumbers is worse than no search at all.
+
+REPLY and FORWARD build an ordinary draft in `ch->pnote` through
+`note_start()`, so everything downstream -- `note +`, `note show`,
+`note send` -- is unchanged. REPLY does not stack `Re:`.
+
+**A test world must not inherit the live board.** `tests/live_mud.py`
+copies `area/` wholesale, and a working copy still holds `notes.txt`,
+`bugs.txt`, `typos.txt` and `ideas.txt` even though they are untracked
+now -- so a test that wrote its own note found it numbered 23 behind a
+thousand real ones from the year 2000. They are excluded from the copy.
+Clearing them after `__enter__` does not work: notes are read into
+memory at boot and written back from there, so the file has to be
+missing before the server starts.
+
 ## Player Reports
 
 `bug`, `typo` and `idea` append one line each to `area/bugs.txt`,

@@ -10,6 +10,22 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **The note board answers back.** `note reply <n>` starts a note to
+  whoever wrote that one, with the subject already set to `Re:` theirs
+  and no second `Re:` if it was a reply already. `note forward <n>
+  <player>` passes one on with the original text carried across and
+  fenced as somebody else's words. `note search <text>` matches the
+  sender, the subject or the body; `note unread` shows only what is
+  waiting; `note catchup` marks the lot read without opening it.
+
+  Answering a note used to mean reading it, remembering who sent it and
+  what it was called, then typing `note to`, `note subject Re: ...` and
+  hoping the name was right.
+
+  One lister backs list, unread and search, and the number it prints is
+  always the note's place in the full list. Search, see `2)`, read 2 --
+  and it is the note you were looking at.
+
 - **Twenty-five more achievements**, weighted to the categories that
   had almost nothing. Exploration goes from 3 to 22 and combat from 9
   to 15; the catalog is 152 of a reserved 192.
