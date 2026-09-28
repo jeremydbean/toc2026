@@ -152,6 +152,37 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "hyrule-arrival", "A Hero Awakens", "Be teleported into the First Quest entrance of Hyrule.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 30200, 0 },
     { "hyrule-cartographer", "Across Hyrule", "Discover the entrance to all nine Hyrule dungeons.", ACH_CAT_EXPLORATION, 30, false, ACH_REQ_HYRULE_DUNGEONS, 9, 0 },
 
+    /* Every room below is the destination of a published route, so
+       it is reachable on foot from the Oak Tree Square. Points
+       follow the walk: the route walker puts Mud School six rooms
+       out and Valhalla ninety-four. */
+    { "visit-mud-school", "Back to School", "Find the entrance to Mud School.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 3700, 0 },
+    { "visit-casino", "Feeling Lucky", "Step into the Lucky Dragon Casino.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 4810, 0 },
+    { "visit-smurf", "Little Blue Trail", "Follow the dimly lit path into Smurf Village.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 101, 0 },
+    { "visit-haon-dor", "Edge of the Forest", "Reach the edge of Haon Dor.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 6000, 0 },
+    { "visit-gangland", "Wrong Side of Town", "Find the dark alleyway into Gangland.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 2101, 0 },
+    { "visit-moria", "Into the Hills", "Reach the hills above Moria.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 4000, 0 },
+    { "visit-thalos", "The Dwarf Forest", "Reach the dwarf forest outside Thalos.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 5261, 0 },
+    { "visit-shire", "A Well Kept Path", "Find the well kept path into the Shire.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 1100, 0 },
+    { "visit-astral", "Bottom of the Rainbow", "Stand at the bottom of the rainbow.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 7500, 0 },
+    { "visit-drow-city", "Beneath the Surface", "Walk a street of the Drow City.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 5114, 0 },
+    { "visit-wyvern", "The Long Road East", "Reach the main eastern road below Wyvern's Tower.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 1701, 0 },
+    { "visit-solace", "Gateway to Solace", "Arrive at the gateway to Solace.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 13201, 0 },
+    { "visit-arachnos", "Webbed Entrance", "Find the webbed entrance to Arachnos.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 6301, 0 },
+    { "visit-pyramid", "The Great Eastern Desert", "Cross into the Great Eastern Desert.", ACH_CAT_EXPLORATION, 20, false, ACH_REQ_ROOM, 28000, 0 },
+    { "visit-olympus", "Climbing to the Gods", "Reach the mountain of Olympus.", ACH_CAT_EXPLORATION, 20, false, ACH_REQ_ROOM, 901, 0 },
+    { "visit-hell", "Stone Archway", "Pass under the stone archway of the Descent.", ACH_CAT_EXPLORATION, 25, false, ACH_REQ_ROOM, 13401, 0 },
+    { "visit-abyss", "Lost in the Mountains", "Find your way to the Abyss.", ACH_CAT_EXPLORATION, 25, false, ACH_REQ_ROOM, 24501, 0 },
+    { "visit-battleground", "Heroes Hall", "Reach Heroes Hall in the Battleground.", ACH_CAT_EXPLORATION, 30, false, ACH_REQ_ROOM, 29201, 0 },
+    { "visit-valhalla", "The Undying Lands", "Reach the gateway to Valhalla, the furthest walk in the realms.", ACH_CAT_EXPLORATION, 50, false, ACH_REQ_ROOM, 9900, 0 },
+
+    { "five-hundred-kills", "Blooded", "Defeat 500 mobiles.", ACH_CAT_COMBAT, 15, false, ACH_REQ_MOB_KILLS, 500, 0 },
+    { "twentyfive-hundred-kills", "Butcher's Bill", "Defeat 2,500 mobiles.", ACH_CAT_COMBAT, 35, false, ACH_REQ_MOB_KILLS, 2500, 0 },
+    { "five-thousand-kills", "Walking Calamity", "Defeat 5,000 mobiles.", ACH_CAT_COMBAT, 45, false, ACH_REQ_MOB_KILLS, 5000, 0 },
+    { "ten-pkills", "Blood in the Water", "Earn 10 qualifying player kills.", ACH_CAT_COMBAT, 20, false, ACH_REQ_PKILLS, 10, 0 },
+    { "fifty-pkills", "Feared", "Earn 50 qualifying player kills.", ACH_CAT_COMBAT, 45, false, ACH_REQ_PKILLS, 50, 0 },
+    { "twofifty-pkills", "The Long War", "Earn 250 qualifying player kills.", ACH_CAT_COMBAT, 80, false, ACH_REQ_PKILLS, 250, 0 },
+
     { "relic-power-of-world", "The World in Your Hands", "Acquire the Power of the world from the Crypt.", ACH_CAT_COLLECTION, 50, false, ACH_REQ_OBJECT, 24225, 0 },
     { "relic-lifetaker", "Take a Life, Leave a Legacy", "Acquire the Satanic Lifetaker.", ACH_CAT_COLLECTION, 50, false, ACH_REQ_OBJECT, 29246, 0 },
     { "relic-starlight-sword", "Starlight, Star Bright", "Acquire Korzath's Starlight Sword.", ACH_CAT_COLLECTION, 50, false, ACH_REQ_OBJECT, 29250, 0 },

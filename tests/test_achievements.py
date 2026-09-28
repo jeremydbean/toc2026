@@ -41,7 +41,10 @@ class AchievementSystemTests(unittest.TestCase):
     def test_catalog_has_stable_unique_keys_and_fits_reserved_capacity(self) -> None:
         catalog_lines = re.findall(r'^[ \t]*\{[ \t]*"', self.source, re.MULTILINE)
         self.assertEqual(len(self.entries), len(catalog_lines))
-        self.assertEqual(len(self.entries), 127)
+        # A tripwire, not a limit: it should move only when somebody
+        # meant to move it. 127 until 2026-09-28, when exploration went
+        # from 3 to 22 and combat from 9 to 15.
+        self.assertEqual(len(self.entries), 152)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))
@@ -209,6 +212,34 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertIn("achievement_check_state(ch, false)", comm)
         self.assertRegex(interp, r'"achievements"\s*,\s*do_achievements')
         self.assertIn("src/achievements.c", cmake)
+
+    def test_every_exploration_room_is_somewhere_a_player_can_walk(self) -> None:
+        """An achievement for a room nobody can reach is not content.
+
+        Each one is the destination of a published route, so the route
+        walker has already proved there is a way there from the Oak Tree
+        Square. Hyrule is the exception: it is entered by the arcade
+        cabinet rather than on foot.
+        """
+        import json
+
+        source = (ROOT / "src" / "achievements.c").read_text(encoding="utf-8")
+        rooms = set()
+        for line in source.splitlines():
+            if "ACH_REQ_ROOM" not in line or not line.strip().startswith("{"):
+                continue
+            tail = line.split("ACH_REQ_ROOM", 1)[1]
+            rooms.add(int(tail.split(",")[1]))
+
+        published = json.loads(
+            (ROOT / "webadmin" / "directions.json").read_text("utf-8"))
+        reachable = {r["vnum"] for r in published["routes"]}
+        reachable |= {r["vnum"] for r in published.get("legacy", [])}
+        # Hyrule is reached through the arcade cabinet, not on foot.
+        hyrule = {v for v in rooms if 30000 <= v < 31000}
+
+        self.assertGreater(len(rooms), 15, "exploration went missing")
+        self.assertEqual(set(), (rooms - hyrule) - reachable)
 
     def test_player_help_and_documentation_are_present(self) -> None:
         command_help = (ROOT / "area" / "commands.are").read_text(encoding="latin-1")

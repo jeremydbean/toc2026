@@ -10,6 +10,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Twenty-five more achievements**, weighted to the categories that
+  had almost nothing. Exploration goes from 3 to 22 and combat from 9
+  to 15; the catalog is 152 of a reserved 192.
+
+  Every exploration room is the destination of a published route, so
+  the route walker has already proved you can get there on foot from
+  the Oak Tree Square, and the points follow that walk rather than
+  taste: Mud School is six rooms out and worth 5, Valhalla is
+  ninety-four and worth 50. A test holds them to it.
+
+  The combat ladder had gaps that covered most of a character's
+  fighting life -- 100 straight to 1,000 to 10,000 kills, and 1 to 25
+  to 100 player kills -- so it gains 500, 2,500 and 5,000 kills and 10,
+  50 and 250 player kills.
+
+  Nothing new was needed in the C: every one uses a requirement kind
+  that already existed. Achievements persist by key rather than by
+  index, so inserting these mid-table leaves earned ones alone.
+
 - **Hermie takes a command, and has more to give.** `buff` reads out
   her list, `buff <name>` asks for one thing, `buff <group>` for a
   handful -- DEFENSE, DETECTS, TRAVEL, CURES, RESTORE, COMBAT -- and
