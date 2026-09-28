@@ -1302,6 +1302,24 @@ const char *default_prompt_text args( ( void ) );
  */
 #define RECALL_MOVE_COOLDOWN       (30 * 60)
 #define ROOM_VNUM_ALTAR            4208
+
+/*
+ * The stash: storage that outlives a reboot, kept at the altar one step
+ * west of where RECALL lands. Items go in from anywhere in the world and
+ * come out only here, so it stores loot without becoming a way to carry
+ * it.
+ *
+ * Slots are bought rather than given. Fifty to begin with, twenty-five
+ * at a time after that, and the price is the square of the purchase
+ * number -- so the first is pocket change and the last is a goal. Going
+ * the whole way costs 527,250 gold, which against the coin a level 50
+ * mobile carries is something over four hundred kills.
+ */
+#define STASH_ROOM_VNUM      ROOM_VNUM_ALTAR
+#define STASH_SLOTS_START    50
+#define STASH_SLOTS_STEP     25
+#define STASH_SLOTS_MAX      500
+#define STASH_UPGRADE_GOLD   250L
 #define ROOM_VNUM_SCHOOL           3700
 #define ROOM_VNUM_JAIL             3
 #define ROOM_VNUM_BANK          9621
@@ -1775,6 +1793,12 @@ struct  pc_data
     int                 last_session_pk_kills;/* PK kills last session */
     int                 last_session_deaths;  /* deaths last session */
     int                 last_session_quests;  /* quests completed last session */
+
+    /* Kept at the altar rather than carried: not in ch->carrying, not
+       in any room, and written to the player file under its own
+       section. Counted in top-level items, so a bag of gems is one. */
+    OBJ_DATA *          stash;
+    int                 stash_max;
 
     /* How many lines of each report file this character had seen the
        last time they looked, so REPORTS can say what is new. Counted
@@ -2316,6 +2340,14 @@ int     unread_note_count ( CHAR_DATA *ch );
 int     report_line_count ( int kind );
 const char *report_kind_name ( int kind );
 void    report_login_notice ( CHAR_DATA *ch );
+/* Lives in act_info.c and had only a file-local prototype there. The
+   stash listing needs it too, and CMake builds with -Werror so an
+   implicit declaration is a hard error where Make merely warns. */
+char *  format_obj_to_char ( OBJ_DATA *obj, CHAR_DATA *ch, bool fShort );
+bool    spellup_here    ( CHAR_DATA *ch );
+int     stash_count     ( CHAR_DATA *ch );
+void    stash_receive   ( CHAR_DATA *ch, OBJ_DATA *obj );
+void    stash_extract   ( CHAR_DATA *ch );
 void    watch_log       ( CHAR_DATA *ch, const char *fmt, ... );
 void    save_notes      ( void );
 void    check_sex       ( CHAR_DATA *ch);

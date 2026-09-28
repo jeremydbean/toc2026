@@ -314,6 +314,322 @@ void get_obj( CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container )
 }
 
 /* annonymous code. Possible creators: Tohlan or Tahkus. */
+/*
+ * STASH: storage at the altar that outlives a reboot.
+ *
+ * Items go in from anywhere in the world and come out only at the
+ * altar. That asymmetry is the whole design: it stores loot without
+ * becoming a way to carry it, so a character cannot empty a dungeon
+ * into their pocket and keep walking.
+ *
+ * The objects live in ch->pcdata->stash, which is not ch->carrying and
+ * not any room, and are written to the player file under #STASH. They
+ * weigh nothing and count against nothing the character carries.
+ */
+int stash_count( CHAR_DATA *ch )
+{
+    OBJ_DATA *obj;
+    int count = 0;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return 0;
+
+    /* Top level only: a bag of gems is one thing put away. */
+    for ( obj = ch->pcdata->stash; obj != NULL; obj = obj->next_content )
+        count++;
+
+    return count;
+}
+
+void stash_receive( CHAR_DATA *ch, OBJ_DATA *obj )
+{
+    obj->next_content = ch->pcdata->stash;
+    ch->pcdata->stash = obj;
+    obj->carried_by   = NULL;
+    obj->in_room      = NULL;
+    obj->in_obj       = NULL;
+}
+
+/*
+ * Free the whole stash. Called when the character leaves the game, or
+ * the objects sit in memory with nothing pointing at them.
+ */
+void stash_extract( CHAR_DATA *ch )
+{
+    OBJ_DATA *obj;
+    OBJ_DATA *next;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    for ( obj = ch->pcdata->stash; obj != NULL; obj = next )
+    {
+        next = obj->next_content;
+        obj->next_content = NULL;
+        extract_obj( obj );
+    }
+
+    ch->pcdata->stash = NULL;
+}
+
+/* What the next twenty-five slots cost, in copper. */
+static long stash_upgrade_copper( CHAR_DATA *ch )
+{
+    long step = ( ch->pcdata->stash_max - STASH_SLOTS_START )
+              / STASH_SLOTS_STEP + 1;
+
+    /* The square of the purchase number, so the first is pocket change
+       and the last is worth going after. Eighteen of them to reach the
+       ceiling, and the whole road is 527,250 gold. */
+    return STASH_UPGRADE_GOLD * step * step * COPPER_PER_GOLD;
+}
+
+static void stash_show( CHAR_DATA *ch )
+{
+    char out[MAX_STRING_LENGTH];
+    char line[MAX_INPUT_LENGTH];
+    OBJ_DATA *obj;
+    int number = 0;
+    bool full = false;
+
+    snprintf( out, sizeof(out), "Your stash holds %d of %d thing%s.\n\r",
+        stash_count( ch ), ch->pcdata->stash_max,
+        ch->pcdata->stash_max == 1 ? "" : "s" );
+
+    for ( obj = ch->pcdata->stash; obj != NULL; obj = obj->next_content )
+    {
+        if ( !can_see_obj( ch, obj ) )
+            continue;
+
+        snprintf( line, sizeof(line), "  %3d) %s\n\r", ++number,
+            format_obj_to_char( obj, ch, true ) );
+
+        if ( strlen( out ) + strlen( line ) + 160 >= sizeof(out) )
+        {
+            full = true;
+            break;
+        }
+        toc_strlcat( out, line, sizeof(out) );
+    }
+
+    if ( number == 0 )
+        toc_strlcat( out, "  It is empty.\n\r", sizeof(out) );
+    else if ( full )
+        toc_strlcat( out, "  ... and more than will fit on one screen.\n\r",
+            sizeof(out) );
+
+    if ( ch->pcdata->stash_max < STASH_SLOTS_MAX )
+    {
+        char price[MAX_INPUT_LENGTH];
+
+        format_price( stash_upgrade_copper( ch ), price, sizeof(price) );
+        snprintf( line, sizeof(line),
+            "\n\rAnother %d slots cost %s.  '{0Fstash buy{00' at the altar.\n\r",
+            STASH_SLOTS_STEP, price );
+        toc_strlcat( out, line, sizeof(out) );
+    }
+
+    page_to_char( out, ch );
+}
+
+void do_stash( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    OBJ_DATA *obj;
+    bool at_altar;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    at_altar = ( ch->in_room != NULL
+              && ch->in_room->vnum == STASH_ROOM_VNUM );
+
+    argument = one_argument( argument, arg );
+
+    if ( arg[0] == '\0' || !str_prefix( arg, "list" ) )
+    {
+        /* Readable from anywhere: knowing what you own is not the same
+           as reaching it. */
+        stash_show( ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "put" ) || !str_prefix( arg, "store" ) )
+    {
+        if ( argument[0] == '\0' )
+        {
+            send_to_char( "Put what into your stash?\n\r", ch );
+            return;
+        }
+
+        if ( ( obj = get_obj_carry( ch, argument ) ) == NULL )
+        {
+            send_to_char( "You are not carrying that.\n\r", ch );
+            return;
+        }
+
+        if ( stash_count( ch ) >= ch->pcdata->stash_max )
+        {
+            snprintf( buf, sizeof(buf),
+                "Your stash is full at %d.  Buy more room at the altar.\n\r",
+                ch->pcdata->stash_max );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        /* The same refusals DONATE makes, for the same reasons: a
+           corpse rots, and a timed object would rot in storage. */
+        if ( obj->item_type == ITEM_CORPSE_PC
+          || obj->item_type == ITEM_CORPSE_NPC )
+        {
+            send_to_char( "That is nobody's idea of a keepsake.\n\r", ch );
+            return;
+        }
+
+        if ( obj->timer > 0 )
+        {
+            send_to_char( "That will not last long enough to be worth "
+                          "keeping.\n\r", ch );
+            return;
+        }
+
+        if ( !can_drop_obj( ch, obj ) )
+        {
+            send_to_char( "You can't let go of it.\n\r", ch );
+            return;
+        }
+
+        act( "You put $p away for safe keeping.", ch, obj, NULL, TO_CHAR );
+        act( "$n puts $p away.", ch, obj, NULL, TO_ROOM );
+
+        obj_from_char( obj );
+        stash_receive( ch, obj );
+
+        /* At once. A stash written only at quit is a duplication bug
+           waiting for a crash. */
+        save_char_obj( ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "get" ) || !str_prefix( arg, "take" ) )
+    {
+        OBJ_DATA *prev = NULL;
+
+        if ( !at_altar )
+        {
+            send_to_char( "Your stash is at the altar, and so is its "
+                          "contents.\n\r", ch );
+            return;
+        }
+
+        if ( argument[0] == '\0' )
+        {
+            send_to_char( "Take what out of your stash?\n\r", ch );
+            return;
+        }
+
+        for ( obj = ch->pcdata->stash; obj != NULL; obj = obj->next_content )
+        {
+            if ( can_see_obj( ch, obj ) && is_name( argument, obj->name ) )
+                break;
+            prev = obj;
+        }
+
+        if ( obj == NULL )
+        {
+            send_to_char( "There is nothing like that in your stash.\n\r", ch );
+            return;
+        }
+
+        if ( ch->carry_number + get_obj_number( obj ) > can_carry_n( ch ) )
+        {
+            send_to_char( "Your hands are too full.\n\r", ch );
+            return;
+        }
+
+        if ( ch->carry_weight + get_obj_weight( obj ) > can_carry_w( ch ) )
+        {
+            send_to_char( "That is more than you can carry.\n\r", ch );
+            return;
+        }
+
+        if ( prev == NULL )
+            ch->pcdata->stash = obj->next_content;
+        else
+            prev->next_content = obj->next_content;
+        obj->next_content = NULL;
+
+        obj_to_char( obj, ch );
+        act( "You take $p out of your stash.", ch, obj, NULL, TO_CHAR );
+        act( "$n takes $p out of their stash.", ch, obj, NULL, TO_ROOM );
+
+        save_char_obj( ch );
+        return;
+    }
+
+    if ( !str_prefix( arg, "buy" ) )
+    {
+        long cost;
+
+        if ( !at_altar )
+        {
+            send_to_char( "Room is bought at the altar.\n\r", ch );
+            return;
+        }
+
+        if ( ch->pcdata->stash_max >= STASH_SLOTS_MAX )
+        {
+            send_to_char( "Your stash is already as large as it goes.\n\r",
+                ch );
+            return;
+        }
+
+        cost = stash_upgrade_copper( ch );
+
+        if ( !has_enough_copper( ch, cost ) )
+        {
+            char price[MAX_INPUT_LENGTH];
+
+            format_price( cost, price, sizeof(price) );
+            snprintf( buf, sizeof(buf),
+                "Another %d slots cost %s, and you do not have it.\n\r",
+                STASH_SLOTS_STEP, price );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        if ( !spend_copper( ch, cost ) )
+        {
+            send_to_char( "Something went wrong counting your coin.\n\r", ch );
+            return;
+        }
+
+        ch->pcdata->stash_max = UMIN( ch->pcdata->stash_max + STASH_SLOTS_STEP,
+                                      STASH_SLOTS_MAX );
+
+        {
+            char price[MAX_INPUT_LENGTH];
+
+            format_price( cost, price, sizeof(price) );
+            snprintf( buf, sizeof(buf),
+                "You pay %s.  Your stash now holds %d.\n\r",
+                price, ch->pcdata->stash_max );
+        }
+        send_to_char( buf, ch );
+        act( "$n pays for more room at the altar.", ch, NULL, NULL, TO_ROOM );
+
+        save_char_obj( ch );
+        return;
+    }
+
+    send_to_char( "Syntax: stash            -- what is in it\n\r"
+                  "        stash put <item> -- from anywhere in the world\n\r"
+                  "        stash get <item> -- at the altar only\n\r"
+                  "        stash buy        -- more room, at the altar\n\r",
+                  ch );
+}
+
 void do_donate( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];

@@ -2469,6 +2469,12 @@ void extract_char( CHAR_DATA *ch, bool fPull )
           extract_obj_player( obj );
     }
 
+    /* The stash is not in ch->carrying, so the loop above never sees it.
+       It has already been written to the player file by this point;
+       these are the copies in memory and nothing else points at them. */
+    if ( !IS_NPC(ch) )
+        stash_extract( ch );
+
     char_from_room( ch );
 
     if ( !fPull )

@@ -232,6 +232,7 @@ DECLARE_DO_FUN(	do_holylight	);
 DECLARE_DO_FUN(	do_invuln	);
 DECLARE_DO_FUN(	do_reports	);
 DECLARE_DO_FUN(	do_buff		);
+DECLARE_DO_FUN(	do_stash	);
 DECLARE_DO_FUN(	do_mirror	);
 DECLARE_DO_FUN( do_hpardon      );
 DECLARE_DO_FUN(	do_idea		);

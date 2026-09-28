@@ -105,14 +105,32 @@ class HermieTests(unittest.TestCase):
                 with self.subTest(piece=piece):
                     self.assertIn(piece, affects, affects)
 
-    def test_speech_still_works(self) -> None:
-        """She has answered `say' since she was built."""
+    def test_heal_reaches_her_and_costs_nothing(self) -> None:
+        """The healer at the pit is the interface players know, so hers
+        is the same one. She is deliberately not ACT_IS_HEALER: that
+        flag routes through the code that charges."""
+        mud = self.staffed()
+        with mud.connect(timeout=120) as client:
+            login(client, "Zbuffer", PASSWORD)
+            self.summon_hermie(client)
+
+            menu = run(client, "heal", 2.2)
+            self.assertIn("free", menu, menu[-600:])
+            self.assertIn("I offer the following", menu, menu[-600:])
+
+            before = run(client, "worth", 1.8)
+            run(client, "heal armor", 2.2)
+            self.assertIn("armor", run(client, "affect", 2.0).lower())
+            self.assertEqual(before, run(client, "worth", 1.8))
+
+    def test_she_no_longer_listens_to_the_room(self) -> None:
+        """Speech was how she worked and is not how she works now."""
         mud = self.staffed()
         with mud.connect(timeout=120) as client:
             login(client, "Zbuffer", PASSWORD)
             self.summon_hermie(client)
             run(client, "say armor", 2.2)
-            self.assertIn("armor", run(client, "affect", 2.0).lower())
+            self.assertNotIn("armor", run(client, "affect", 2.0).lower())
 
 
 @unittest.skipIf(SKIP is not None, SKIP or "")

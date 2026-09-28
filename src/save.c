@@ -37,6 +37,11 @@ extern const WERE_FORM were_types[];
  * Array of containers read for proper re-nesting of objects.
  */
 #define MAX_NEST	100
+
+/* Set by the #STASH marker while a player file is being read, so the
+   objects after it land in the stash rather than in inventory. A
+   file-static beside rgObjNest, which works the same way. */
+static bool fread_to_stash = false;
 static	OBJ_DATA *	rgObjNest	[MAX_NEST];
 
 
@@ -509,6 +514,14 @@ void save_char_obj( CHAR_DATA *ch )
 	if (ch->pet != NULL && ch->pet->in_room == ch->in_room
         && ch->pet->carrying == NULL )
 	    fwrite_pet(ch->pet,fp);
+	/* Last, and deliberately: the marker puts fread_obj into stash
+	   mode for every #O that follows, so nothing of the character's
+	   own may come after it. */
+	if ( ch->pcdata != NULL && ch->pcdata->stash != NULL )
+	{
+	    fprintf( fp, "#STASH\n" );
+	    fwrite_obj( ch, ch->pcdata->stash, fp, 0 );
+	}
         fprintf( fp, "#END\n" );
         if (fclose( fp ) != 0)
         {
@@ -587,6 +600,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "ListRemorts %s~\n", ch->pcdata->list_remorts ? ch->pcdata->list_remorts : "" );
     fprintf( fp, "NumRemorts %d\n", ch->pcdata->num_remorts );
     fprintf( fp, "Note %d\n",	(int)	ch->last_note	);
+    if ( ch->pcdata->stash_max != STASH_SLOTS_START )
+	fprintf( fp, "StashMax %d\n", ch->pcdata->stash_max );
     if ( ch->pcdata->reports_seen[REPORT_BUGS] > 0
     ||   ch->pcdata->reports_seen[REPORT_TYPOS] > 0
     ||   ch->pcdata->reports_seen[REPORT_IDEAS] > 0 )
@@ -1185,6 +1200,8 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	    ch->pcdata->mirror_worn[iWear] = 0;
     }
     ch->pcdata->mirror_of[0]            = '\0';
+    ch->pcdata->stash                   = NULL;
+    ch->pcdata->stash_max               = STASH_SLOTS_START;
     {
 	int iKind;
 
@@ -1236,6 +1253,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 
 	for ( iNest = 0; iNest < MAX_NEST; iNest++ )
 	    rgObjNest[iNest] = NULL;
+	fread_to_stash = false;
 
 	found = true;
 	for ( ; ; )
@@ -1261,6 +1279,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
 	    else if ( !str_cmp( word, "OBJECT" ) ) fread_obj  ( ch, fp );
 	    else if ( !str_cmp( word, "O"      ) ) fread_obj  ( ch, fp );
 	    else if ( !str_cmp( word, "PET"    ) ) fread_pet  ( ch, fp );
+	    else if ( !str_cmp( word, "STASH"  ) ) fread_to_stash = true;
 	    else if ( !str_cmp( word, "END"    ) ) break;
 	    else
 	    {
@@ -1824,6 +1843,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 	    KEY( "SavingThrow",	ch->saving_throw,	(sh_int)(fread_number( fp )) );
 	    KEY( "Save",	ch->saving_throw,	(sh_int)(fread_number( fp )) );
 	    KEY( "SavedOnce",	ch->pcdata->has_saved,	fread_number( fp ) );
+	    KEY( "StashMax",	ch->pcdata->stash_max,	fread_number( fp ) );
 	    KEY( "Scro",	ch->lines,		fread_number( fp ) );
 	    KEY( "SesLogin",	ch->pcdata->last_session_login,	 fread_long( fp ) );
 	    KEY( "SesDur",	ch->pcdata->last_session_dur,	 fread_long( fp ) );
@@ -2379,7 +2399,17 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
                         log_string("To container");
                     }
 */
-                    if ( iNest == 0 || rgObjNest[iNest] == NULL ) {
+                    if ( iNest == 0 && fread_to_stash
+                      && ch->pcdata != NULL ) {
+                       /* Kept at the altar: carried by nobody, in no
+                          room, and weighing nothing on the character. */
+                       obj->next_content    = ch->pcdata->stash;
+                       ch->pcdata->stash    = obj;
+                       obj->carried_by      = NULL;
+                       obj->in_room         = NULL;
+                       obj->in_obj          = NULL;
+                    }
+                    else if ( iNest == 0 || rgObjNest[iNest] == NULL ) {
                        obj->next_content =  ch->carrying;
                        ch->carrying      =  obj;
                        obj->carried_by   =  ch;

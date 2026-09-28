@@ -318,26 +318,51 @@ warning of your arrival.
 See also: ASTRAL WALK, PROJECT, PSIONICS
 ~
 
+0 STASH~
+Syntax: stash
+        stash put <item>
+        stash get <item>
+        stash buy
+
+Storage at the altar that survives a reboot.
+
+STASH on its own lists what is in it, and you can read that from
+anywhere - knowing what you own is not the same as reaching it.
+
+STASH PUT works from anywhere in the world, so you can set something
+aside the moment you find it.  STASH GET works only at the altar, one
+step west of where you land when you recall.  That is deliberate: the
+stash stores loot, it is not a way to carry it.
+
+You start with room for fifty things, counted as things rather than
+weight - a bag of gems is one.  STASH BUY at the altar adds another
+twenty-five, and the price climbs each time, up to five hundred.
+
+Anything with a timer on it is refused, and so is a corpse.  They would
+only rot where you put them.
+
+See also: DONATE, RECALL
+
+~
+
 0 BUFF~
-Syntax: buff
+Syntax: heal
+        heal <spell>
         buff <spell>
-        buff <group>
-        buff all
 
-Ask Hermie for a spell.  She stands where an immortal has put her, she
-asks for nothing in return, and she will cast anything on her list.
+Ask Hermie for a spell.  She works exactly like the healer at the pit -
+HEAL on its own reads out what she offers, HEAL <name> asks for one -
+except that everything she does is free.
 
-BUFF on its own reads out the list.  Give it a name or a number for one
-spell, a group name for a handful at once, or ALL for everything she
-has.
+BUFF is the same command under another name, for when a healer and
+Hermie are somehow in the same room and you want to be sure which one
+you are talking to.
 
-The groups are DEFENSE, DETECTS, TRAVEL, CURES, RESTORE and COMBAT.
+Name a group instead of a spell to take a handful at once: DEFENSE,
+DETECTS, TRAVEL, CURES, RESTORE, COMBAT, or ALL for the lot.
 
 REFRESH, HEAL and MANA fill the pool rather than topping it up, and
 VITALS does all three, so there is no reason to ask twice.
-
-Talking to her still works if you prefer it - 'say sanctuary', 'say 5',
-'say all' - and goes through exactly the same list.
 
 See also: HEAL, SPELLUP
 ~
@@ -449,11 +474,17 @@ command named here for the detail.
   it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
   the lot.  See HELP NOTE.
 
-  Hermie takes a command now.  BUFF reads out her list and BUFF
-  <name> asks for one thing, the way HEAL works at the pit, except
-  that she charges nothing.  She has ten more spells than she did,
-  six named groups, and REFRESH, HEAL and MANA now fill the pool
-  instead of handing out a slice at a time.  See HELP BUFF.
+  There is a stash at the altar now, one step west of recall.  STASH
+  PUT sets something aside from anywhere in the world; STASH GET takes
+  it back out, and that part only works at the altar.  Fifty things to
+  begin with, more for coin.  See HELP STASH.
+
+  Hermie answers HEAL now, exactly like the healer at the pit and
+  with the same menu, except that everything she does is free.  She
+  no longer listens to what you say in the room.  She has ten more
+  spells than she did, six named groups, and REFRESH, HEAL and MANA
+  now fill the pool instead of handing out a slice at a time.  See
+  HELP BUFF.
 
   The healer at the pit tells you when a curse resists instead of
   taking your gold in silence.

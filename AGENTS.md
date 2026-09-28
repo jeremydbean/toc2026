@@ -739,6 +739,41 @@ her list. `iron skin`, `psionic armor`, `psychic shield`, `mindbar` and
 `haven` target an object or an exit. `spellup_grant` refuses a
 `spell_null` politely, but listing one is advertising nothing.
 
+## The Stash
+
+Storage at `ROOM_VNUM_ALTAR` (4208), one room west of where RECALL
+lands. Items go in from anywhere and come out only there, which is the
+whole design: it stores loot without becoming a way to carry it.
+
+The objects live in `ch->pcdata->stash`. They are **not** in
+`ch->carrying`, not in a room and not in a container, so:
+
+- `extract_char` never sees them and they need `stash_extract()`, or
+  they leak on every quit.
+- `obj_update` never touches them, because its first test is
+  `obj->timer <= 0`, and anything with a timer is refused on the way
+  in.
+- They weigh nothing and count against nothing the character carries.
+
+They are written to the player file under a `#STASH` marker **after**
+everything else, including the pet. The marker puts `fread_obj` into
+stash mode for every `#O` that follows, so nothing of the character's
+own may ever be written after it. `stash_max` saves separately as
+`StashMax` under **case 'S'**, and forgetting it means a bought upgrade
+evaporates at the next login -- worse than not selling it at all.
+
+Every deposit and withdrawal calls `save_char_obj()` immediately. A
+stash written only at quit is a duplication bug waiting for a crash.
+
+Fifty slots to start, twenty-five per purchase at `250 * n^2` gold, to
+a ceiling of 500. The whole road is 527,250 gold, which against the
+coin a level 50 mobile carries is something over four hundred kills.
+`set player <name> stash <n>` grants room without the coin and refuses
+to shrink a stash below what is already in it, which would strand
+items nobody could reach.
+
+`set` also answers to `player` now, not only `mobile` and `character`.
+
 ## The Note Board
 
 `note_list_filtered()` in `src/act_comm.c` backs LIST, UNREAD and

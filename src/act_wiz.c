@@ -4156,6 +4156,7 @@ void do_set( CHAR_DATA *ch, char *argument )
     if (arg[0] == '\0')
     {
 	send_to_char("Syntax:\n\r",ch);
+	send_to_char("  set player <name> <field> <value>\n\r",ch);
 	send_to_char("  set mob   <name> <field> <value>\n\r",ch);
 	send_to_char("  set obj   <name> <field> <value>\n\r",ch);
 	send_to_char("  set room  <room> <field> <value>\n\r",ch);
@@ -4163,7 +4164,11 @@ void do_set( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (!str_prefix(arg,"mobile") || !str_prefix(arg,"character"))
+    /* "player" as well as "mobile" and "character": when the target
+       is a player that is the word an immortal reaches for, and it
+       is not a prefix of any other subcommand here. */
+    if (!str_prefix(arg,"mobile") || !str_prefix(arg,"character")
+    ||  !str_prefix(arg,"player"))
     {
 	do_mset(ch,argument);
 	return;
@@ -4726,6 +4731,46 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	else
 	  snprintf(buf, sizeof(buf),"You now have %d Practices.\n\r",value);
 	send_to_char(buf,ch);
+	return;
+    }
+
+    if ( !str_prefix( arg2, "stash" ) )
+    {
+	if ( IS_NPC(victim) || victim->pcdata == NULL )
+	{
+	    send_to_char( "Mobiles have nowhere to put anything.\n\r", ch );
+	    return;
+	}
+
+	if ( value < STASH_SLOTS_START || value > STASH_SLOTS_MAX )
+	{
+	    snprintf( buf, sizeof(buf),
+		"Stash range is %d to %d slots.\n\r",
+		STASH_SLOTS_START, STASH_SLOTS_MAX );
+	    send_to_char( buf, ch );
+	    return;
+	}
+
+	/* Shrinking below what is already in there would strand items
+	   nobody could reach: the count is checked on the way in, not on
+	   the way out, so they would simply sit there unreturnable. */
+	if ( value < stash_count( victim ) )
+	{
+	    snprintf( buf, sizeof(buf),
+		"%s already has %d things stashed.\n\r",
+		victim->name, stash_count( victim ) );
+	    send_to_char( buf, ch );
+	    return;
+	}
+
+	victim->pcdata->stash_max = value;
+	if ( victim != ch )
+	    snprintf( buf, sizeof(buf), "%s's stash now holds %d.\n\r",
+		victim->name, value );
+	else
+	    snprintf( buf, sizeof(buf), "Your stash now holds %d.\n\r", value );
+	send_to_char( buf, ch );
+	save_char_obj( victim );
 	return;
     }
 
@@ -10589,68 +10634,47 @@ static int spellup_grant_group( CHAR_DATA *mob, CHAR_DATA *victim,
 static void spellup_show_menu( CHAR_DATA *mob, CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
-    char line[MAX_STRING_LENGTH];
+    char line[MAX_INPUT_LENGTH];
     int total = spellup_count();
     int i;
 
-    act( "$n produces a dog-eared notebook and reads from it.",
-        mob, NULL, ch, TO_VICT );
+    /*
+     * Laid out like the healer's price list at the pit, because that is
+     * the one a player has already read. Same shape, same closing line,
+     * and a price column that says what hers costs.
+     */
+    act( "$N says 'I offer the following:'", ch, NULL, mob, TO_CHAR );
 
-    snprintf( buf, sizeof(buf),
-        "\n\r{%02XHermie's list -- say the number or the name, and it lasts %d ticks.{00\n\r",
-        COL_SAYS, SPELLUP_DURATION );
-    send_to_char( buf, ch );
-
-    line[0] = '\0';
+    buf[0] = '\0';
     for ( i = 0; i < total; i++ )
     {
-        char cell[MAX_INPUT_LENGTH];
+        snprintf( line, sizeof(line), "  %-14s %-22s free\n\r",
+            spellup_table[i].keyword, spellup_table[i].label );
 
-        snprintf( cell, sizeof(cell), "  %2d) %-20s", i + 1,
-                  spellup_table[i].label );
-        strncat( line, cell, sizeof(line) - strlen(line) - 1 );
-
-        if ( i % 3 == 2 || i == total - 1 )
-        {
-            strncat( line, "\n\r", sizeof(line) - strlen(line) - 1 );
-            send_to_char( line, ch );
-            line[0] = '\0';
-        }
+        if ( strlen( buf ) + strlen( line ) + 256 >= sizeof(buf) )
+            break;
+        toc_strlcat( buf, line, sizeof(buf) );
     }
 
-    line[0] = '\0';
+    for ( i = 0; spellup_groups[i].keyword != NULL; i++ )
     {
-        int g;
+        snprintf( line, sizeof(line), "  %-14s %-22s free\n\r",
+            spellup_groups[i].keyword, spellup_groups[i].label );
 
-        for ( g = 0; spellup_groups[g].keyword != NULL; g++ )
-        {
-            char cell[MAX_INPUT_LENGTH];
-
-            snprintf( cell, sizeof(cell), "  {%02X%-8s{00 %-28s",
-                COL_SAYS, spellup_groups[g].keyword,
-                spellup_groups[g].label );
-            strncat( line, cell, sizeof(line) - strlen(line) - 1 );
-
-            if ( g % 2 == 1 || spellup_groups[g + 1].keyword == NULL )
-            {
-                strncat( line, "\n\r", sizeof(line) - strlen(line) - 1 );
-                send_to_char( line, ch );
-                line[0] = '\0';
-            }
-        }
+        if ( strlen( buf ) + strlen( line ) + 128 >= sizeof(buf) )
+            break;
+        toc_strlcat( buf, line, sizeof(buf) );
     }
 
-    snprintf( buf, sizeof(buf),
-        "\n\r  Say the number or the name -- '{%02Xsay 5{00' or '{%02Xsay sanctuary{00'.\n\r"
-        "  Say '{%02Xall{00' for the whole list, or '{%02Xmenu{00' to hear it again.\n\r",
-        COL_SAYS, COL_SAYS, COL_SAYS, COL_SAYS );
-    send_to_char( buf, ch );
+    snprintf( line, sizeof(line),
+        "  %-14s %-22s free\n\r"
+        " Type heal <type> to be healed.\n\r",
+        "all", "everything she has" );
+    toc_strlcat( buf, line, sizeof(buf) );
+
+    page_to_char( buf, ch );
 }
 
-/*
- * What the player said, normalised: lowercased, and with the punctuation
- * people put on the end of a question stripped off.
- */
 static void spellup_normalise( const char *argument, char *out, size_t size )
 {
     size_t length;
@@ -10765,6 +10789,12 @@ static bool spellup_addressed( const char *said )
  * numbers, and cannot be mistaken for chat by everyone else in the room.
  */
 void spellup_listen( CHAR_DATA *ch, const char *argument );
+
+bool spellup_here( CHAR_DATA *ch )
+{
+    return ch != NULL && ch->in_room != NULL
+        && spellup_mob_in_room( ch->in_room ) != NULL;
+}
 
 void do_buff( CHAR_DATA *ch, char *argument )
 {
