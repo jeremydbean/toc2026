@@ -814,21 +814,24 @@ Otherwise the ability can be typed as fast as the player can type and
 the damage piles up with nothing throttling it.
 `tests/test_damage_lag.py` scans every `do_` function for it.
 
-Two shapes are exempt and are named in that file's `KILLED_GUARDS`: the
+The exceptions live in that file's `EXEMPT`, each with its reason: the
 stock "the victim died, do not touch the pointer" return, where the
-fight is already over, and `do_concoct`, whose damage lands on the
-brewer. A *failed* attempt that deals no damage is also deliberately
-outside the rule -- it costs mana and nothing else, by design.
+fight is already over; `do_concoct`, whose damage lands on the brewer;
+and `do_nerve_damage`, where a *missed* strike still deals `dice(4,4)`
+and returns free **on purpose** -- a monk fights with no weapon, and
+that consolation damage is part of what pays for it. Lagging it was
+tried in 2026-09 and reverted. Adding to `EXEMPT` is a balance
+decision, not a way to quiet a failure. A failed attempt that deals no
+damage is outside the rule as well: it costs mana and nothing else.
 
 Paying the lag before the roll, as `do_kick`, `do_smite`, `do_backstab`
 and `do_shoot` do, covers every path below it. The psionics pay it after
 instead, which is equally sound because each of their damage paths
 reaches one.
 
-Two commands broke the rule and were fixed in 2026-09: a **missed**
-`NERVE DAMAGE`, which still dealt `dice(4,4)` and returned free, and
-`BOMB`, which takes half a target's maximum hit points with no roll,
-nothing consumed and no lag at all.
+One command broke the rule and was fixed in 2026-09: `BOMB`, which
+takes half a target's maximum hit points with no roll, nothing consumed
+and no lag at all.
 
 **Immortals bypass lag entirely** -- `comm.c` reads
 `if ( ch->wait > 0 && !IS_IMMORTAL(ch) )`, and `IS_IMMORTAL` is the raw

@@ -5905,10 +5905,6 @@ void do_nerve_damage( CHAR_DATA *ch, char *argument )
 	   ch->mana -= 10;
 	   ch->move -= 5;
 	   check_improve(ch,gsn_nerve_damage,false,4);
-	   /* It missed the nerve and still drew blood, so it pays the
-	      same lag a hit does. Damage without lag is damage you can
-	      spam. */
-	   WAIT_STATE( ch, skill_table[gsn_nerve_damage].beats );
 	   return;
 	}
 	ch->mana -= 15;

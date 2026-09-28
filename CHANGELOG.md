@@ -67,19 +67,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-- **Two abilities dealt damage and handed the turn straight back.** A
-  *missed* NERVE DAMAGE still drew four dice of blood and then returned
-  with no lag at all, so the miss was free and the command could be
-  typed as fast as the player could type it. BOMB takes half a target's
-  maximum hit points with no roll and nothing consumed, and paid no lag
-  either. Both pay it now.
+- **BOMB dealt damage and handed the turn straight back.** It takes
+  half a target's maximum hit points with no roll and nothing consumed,
+  and paid no lag either, so it could be typed as fast as the player
+  could type it. It pays now.
 
   The sweep behind that checked every ability in the game: no damaging
   spell or skill has a `beats` of 0, and every other path that calls
-  `damage()` already pays. `tests/test_damage_lag.py` keeps it that way.
-  ENERVATE, which prompted the check, was innocent -- every path of it
-  that deals damage pays 12 beats. The log showing it spammed was an
-  immortal, and immortals bypass lag by design.
+  `damage()` either pays or is exempt for a stated reason.
+  `tests/test_damage_lag.py` keeps it that way. A monk's *missed* NERVE
+  DAMAGE still deals four dice and returns free, which is deliberate --
+  a monk carries no weapon and that is part of what pays for it.
+  ENERVATE, which prompted the check, was innocent: every path of it
+  that deals damage pays 12 beats, and the log showing it spammed was
+  an immortal, who bypasses lag by design.
 
 - **A player could remort themselves into a corner they could never get
   out of.** Every life is meant to be a new one, so REMORT refuses a class
