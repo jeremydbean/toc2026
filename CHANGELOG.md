@@ -10,9 +10,28 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- **The third remort now carries three gifts.** Twice the carrying room,
-  in slots and in weight alike; twice as long before the idle void; and a
-  second psionic power from each of the four disciplines.
+- **Shadowmeld is a real skill.** It is for two things: going AFK
+  without being killed for it, and laying in wait in a room somebody has
+  to walk through so that you strike first. The fourth remort teaches it at 50%
+  and it improves from there with use and with failure like anything
+  else; an immortal can grant it to anybody with `SET SKILL`, and no
+  later remort takes it away. It sits in the table at level 3 for every
+  class, because a remort restarts at 3 and a skill priced any higher
+  could not be improved until the character had climbed all the way
+  back. Nothing teaches it and no guildmaster sells it, so those two
+  routes are the only ones.
+
+  It behaves as STEALTH against other players now rather than as hide:
+  the same roll against the same weather, so looking for the hidden no
+  longer finds you. Holylight still does, and faerie fog still reveals
+  you. VIS steps you out of it, WHO shows `[SHADOW]`, WHERE omits you
+  and DANGER SENSE counts you -- everything stealth already did.
+
+- **The third remort now carries four gifts.** Twice the carrying room,
+  in slots and in weight alike; twice as long before the idle void; a
+  second psionic power from each of the four disciplines; and the recall
+  that never fails, moved down from the fourth remort to make room for
+  shadowmeld.
 
 - **Psionic powers stack across remorts.** They never did: a remort wipes
   the skill table, and the grant simply redealt one power per discipline,
@@ -48,6 +67,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Two abilities dealt damage and handed the turn straight back.** A
+  *missed* NERVE DAMAGE still drew four dice of blood and then returned
+  with no lag at all, so the miss was free and the command could be
+  typed as fast as the player could type it. BOMB takes half a target's
+  maximum hit points with no roll and nothing consumed, and paid no lag
+  either. Both pay it now.
+
+  The sweep behind that checked every ability in the game: no damaging
+  spell or skill has a `beats` of 0, and every other path that calls
+  `damage()` already pays. `tests/test_damage_lag.py` keeps it that way.
+  ENERVATE, which prompted the check, was innocent -- every path of it
+  that deals damage pays 12 beats. The log showing it spammed was an
+  immortal, and immortals bypass lag by design.
+
 - **A player could remort themselves into a corner they could never get
   out of.** Every life is meant to be a new one, so REMORT refuses a class
   or a guild you have already been. It read both out of one flat list, and
@@ -59,14 +92,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   shown an empty list, and was stuck at level 57 with 59 out of reach for
   good.
 
-  The two histories are kept apart now: a class you have lived bars that
-  class, a guild you have held bars that guild, and 'none' is always a
-  legal guild, so a choice always exists. A refusal lists every class and
-  guild still open to you rather than printing classes alone and leaving
-  you to guess the guild. The saved `ListRemorts` format is unchanged and
-  is read back the way it was written, one life at a time. HELP REMORT
-  described the old rule as a class-and-guild *combination*, which it
-  never was.
+  The class is the whole of the restriction now, because the class is
+  what decides how a life plays. A class you have lived bars that class;
+  the guild is free, so join any of them as often as you like. With six
+  classes and at most five restricted lives there is always something
+  left to pick. A refusal lists every class still open to you. The saved
+  `ListRemorts` format is unchanged and is read back the way it was
+  written, one life at a time. HELP REMORT described the old rule as a
+  class-and-guild *combination*, which it never was.
 
 - **All three staff channels were half-broken, and seven commands with
   them.** `channel_say()` decided who could hear by `victim->level`

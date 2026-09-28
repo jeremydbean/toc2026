@@ -450,7 +450,8 @@ void do_danger_sense( CHAR_DATA *ch, char *argument )
             &&   victim->in_room != NULL
             &&   victim->in_room->area == ch->in_room->area
             &&   victim != ch
-            &&   IS_AFFECTED2(victim, AFF2_STEALTH) )
+            && ( IS_AFFECTED2(victim, AFF2_STEALTH)
+              || IS_AFFECTED2(victim, AFF2_SHADOWMELD) ) )
                count +=1;
 
             if ( d->connected == CON_PLAYING

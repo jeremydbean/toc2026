@@ -147,6 +147,7 @@ int16_t                  gsn_fast_healing;
 int16_t                  gsn_haggle;
 int16_t                  gsn_lore;
 int16_t                  gsn_meditation;
+int16_t                  gsn_shadowmeld;
 int16_t                  gsn_stealth;
 int16_t			gsn_danger_sense;
  

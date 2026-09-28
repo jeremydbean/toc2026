@@ -749,8 +749,8 @@ on the count. They are named rather than written as bare integers:
 | --- | --- | --- |
 | 1 | 54 | no hunger or thirst |
 | 2 | 55 | psionics -- one power from each of four disciplines |
-| 3 | 56 | `REMORTS_FOR_LONG_IDLE`, `REMORTS_FOR_BIG_PACK`, `REMORTS_FOR_EXTRA_PSI` |
-| 4 | 57 | `REMORTS_FOR_SHADOWMELD`, `REMORTS_FOR_SURE_RECALL`, a third power each |
+| 3 | 56 | `REMORTS_FOR_LONG_IDLE`, `REMORTS_FOR_BIG_PACK`, `REMORTS_FOR_EXTRA_PSI`, `REMORTS_FOR_SURE_RECALL` |
+| 4 | 57 | `REMORTS_FOR_SHADOWMELD` -- the skill at `SHADOWMELD_GRANTED_AT`, and a third power each |
 | 5 | 58 | every psionic power, no carry limit, a free choice of class and guild |
 
 `REMORTS_FOR_BIG_PACK` is read by `remort_carry_multiplier()` in
@@ -785,18 +785,19 @@ skip the bonus.
 ## The Remort Class History
 
 Every life must be a different game from the last, so `do_remort` refuses
-a class you have already lived as and a guild you have already belonged
-to -- until the fifth remort, gated on `REMORTS_FOR_FREE_CHOICE`, which
-is free of both.
+a class the character has already lived as -- until the fifth remort,
+gated on `REMORTS_FOR_FREE_CHOICE`, which is free of it.
 
-**They are two histories, not one pool.** A guild is stored as its
-matching class index (`GUILD_MAGE == CLASS_MAGE`), so the old flat
-`had_classes[2*MAX_CLASS]` array conflated them: having been in the mage
-guild barred you from ever living as a mage. And a non-monk life burned
-two of only six values, so a reachable history left a player with no
-legal choice at their fourth remort -- shown an empty list, stuck at 57,
-with 59 out of reach for good. `tests/test_remort_gifts.py` walks every
-path exhaustively and asserts no starting pair can dead-end.
+**The class is the whole of the restriction. The guild is free.** The
+class is what decides how a life plays, so it is what the rule is for.
+Guilds used to be barred as well, out of one flat
+`had_classes[2*MAX_CLASS]` pool shared with the classes -- and a guild is
+stored as its matching class index (`GUILD_MAGE == CLASS_MAGE`), so the
+pool conflated the two and having been in the mage guild barred you from
+ever living as a mage. A non-monk life also burned two of only six
+values, so a reachable history left a player with no legal choice at
+their fourth remort: an empty list, stuck at 57, with 59 out of reach for
+good. `tests/test_remort_gifts.py` walks every path exhaustively.
 
 `ListRemorts` is unchanged on disk and is **not** a flat list of numbers.
 It is written one life at a time as `<class>` alone for a monk or a necro,
@@ -805,11 +806,75 @@ the same way -- class first, and only look for a guild token when the
 class was neither monk nor necro -- or the pairs misalign. `none` (-1) is
 always a legal guild, which is what guarantees a choice always exists.
 
+## Damage Costs Lag
+
+**Wherever a command calls `damage()` and then returns, a `WAIT_STATE`
+has to lie either before the call or between the call and the return.**
+Otherwise the ability can be typed as fast as the player can type and
+the damage piles up with nothing throttling it.
+`tests/test_damage_lag.py` scans every `do_` function for it.
+
+Two shapes are exempt and are named in that file's `KILLED_GUARDS`: the
+stock "the victim died, do not touch the pointer" return, where the
+fight is already over, and `do_concoct`, whose damage lands on the
+brewer. A *failed* attempt that deals no damage is also deliberately
+outside the rule -- it costs mana and nothing else, by design.
+
+Paying the lag before the roll, as `do_kick`, `do_smite`, `do_backstab`
+and `do_shoot` do, covers every path below it. The psionics pay it after
+instead, which is equally sound because each of their damage paths
+reaches one.
+
+Two commands broke the rule and were fixed in 2026-09: a **missed**
+`NERVE DAMAGE`, which still dealt `dice(4,4)` and returned free, and
+`BOMB`, which takes half a target's maximum hit points with no roll,
+nothing consumed and no lag at all.
+
+**Immortals bypass lag entirely** -- `comm.c` reads
+`if ( ch->wait > 0 && !IS_IMMORTAL(ch) )`, and `IS_IMMORTAL` is the raw
+level, not trust. A staff character spamming an attack is that rule
+working, not a missing `WAIT_STATE`; check the level before hunting for
+one. No damaging ability has `beats` of 0 in `skill_table`: every
+zero-beat entry is a passive (weapon proficiencies, dodge, parry,
+second and third attack, fast healing, meditation).
+
 ## Shadowmeld
 
-`AFF2_SHADOWMELD` is hide with the timer removed: it holds through
-sitting, sleeping and everything else, and ends only on leaving the
-room or attacking.
+`AFF2_SHADOWMELD` is **stealth** with the timer removed and the room
+nailed down: it holds through sitting, sleeping and everything else, and
+ends on leaving the room, on striking, and on VIS.
+
+It exists for two things, and both matter when judging a change to it:
+going AFK without being killed for it, and laying in wait in a room
+somebody has to walk through. The first is why no mobile may ever see a
+melded character; the second is why striking ends it rather than being
+forbidden.
+
+It is a real skill. `gsn_shadowmeld` sits in `skill_table` at
+**level 3 for every class**, which is deliberate -- a remort restarts at
+3, and `get_skill` returns 0 below `skill_level` while `check_improve`
+refuses to improve there, so a gift priced at the level it is given at
+would be frozen until the character had climbed all the way back. Its
+rating must stay non-zero for the same reason. Nothing teaches it: it is
+in no group and no guildmaster's `can_gain`, so `do_practice`'s
+`learned[sn] < 1` test and `do_gain`'s per-guildmaster list are what keep
+it to the fourth remort and `SET SKILL`. `do_shadowmeld` does not look at
+the remort count at all -- holding the skill is the gate, which is what
+lets a grant work on a character who has never remorted.
+
+`do_remort` reads the practised value **before** the skill wipe and puts
+back `UMAX(kept, SHADOWMELD_GRANTED_AT)`, so a later remort never costs
+it. `load_char_obj` grants it to anyone at `REMORTS_FOR_SHADOWMELD` who
+holds none, which carries the characters who earned it when it was a flat
+flag.
+
+**Against players it is stealth, not hide.** `concealment_chance()` in
+`handler.c` is the one place the roll and its weather modifiers live, and
+both skills go through it, so the two cannot drift. Detect hidden does
+not beat it; holylight does, from the shortcut above. Faerie fog strips
+it, `damage()` breaks it for the attacker (which covers spells, where
+`multi_hit` covers only melee), WHERE omits a melded character and
+DANGER SENSE counts them, all exactly as they do for stealth.
 
 **The check in `can_see` sits above the `IS_NPC(ch) && IS_IMMORTAL(ch)`
 shortcut, and must stay there.** That shortcut hands every mobile of

@@ -2782,6 +2782,7 @@ void spell_faerie_fog( int sn, int level, CHAR_DATA *ch, void *vo )
 	REMOVE_BIT   ( ich->affected_by, AFF_INVISIBLE	);
 	REMOVE_BIT   ( ich->affected_by, AFF_SNEAK	);
 	REMOVE_BIT   ( ich->affected_by2, AFF2_STEALTH	);
+	REMOVE_BIT   ( ich->affected_by2, AFF2_SHADOWMELD );
 	act( "$n is revealed!", ich, NULL, NULL, TO_ROOM );
 	send_to_char( "You are revealed!\n\r", ich );
     }

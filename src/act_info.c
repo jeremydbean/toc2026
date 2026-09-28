@@ -295,6 +295,8 @@ if(!scan)
         toc_strlcat( buf, "(Silver Aura) ", sizeof(buf) );
     if ( IS_AFFECTED2(victim, AFF2_STEALTH) )
         toc_strlcat( buf, "(Stealth Mode) ", sizeof(buf) );
+    if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD) )
+        toc_strlcat( buf, "(Shadowmelded) ", sizeof(buf) );
     if ( IS_AFFECTED2(victim, AFF2_FLAMING_HOT) )
         toc_strlcat( buf, "(Flaming) ", sizeof(buf) );
     if ( IS_AFFECTED2(victim, AFF2_FLAMING_COLD) )
@@ -2485,7 +2487,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
 		}
 
 	    /* a little formatting */
-	    snprintf(buf, sizeof(buf), "[%2d %s %s%s ] %s%s%s%s%s%s%s%s%s%s%s%s%s%s\n\r",
+	    snprintf(buf, sizeof(buf), "[%2d %s %s%s ] %s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n\r",
 		wch->level,
 		wch->race < MAX_PC_RACE ? pc_race_table[wch->race].who_name
 					: "      ",
@@ -2502,6 +2504,7 @@ void do_whois (CHAR_DATA *ch, char *argument)
 		IS_SET(wch->act,PLR_EXCON) ? "(EXCON) " : "",
 		IS_SET(wch->act,PLR_QFLAG) ? "(Quest) " : "",
 	 	IS_SET(wch->act,PLR_CLOAKED) ? "[CLOAKED] " : "",
+		IS_AFFECTED2(wch, AFF2_SHADOWMELD) ? "[SHADOW] " : "",
 		IS_SET(wch->act,PLR_AFK) ? "[*AFK*] " : "",
 		wch->name, IS_NPC(wch) ? "" : wch->pcdata->title);
             toc_strlcat(output,buf, sizeof(output));
@@ -2721,7 +2724,7 @@ void do_who( CHAR_DATA *ch, char *argument )
 	/*
 	 * Format it up.
 	 */
-	snprintf(buf, sizeof(buf), "[%2d %s %s%s ] %s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n\r",
+	snprintf(buf, sizeof(buf), "[%2d %s %s%s ] %s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n\r",
 	    wch->level,
             (!str_cmp(wch->name,"Blackbird") ? "Bird   "
              : (!str_cmp(wch->name,"Gravestone") ? "Tomb   "
@@ -2747,6 +2750,7 @@ void do_who( CHAR_DATA *ch, char *argument )
 	    IS_SET(wch->act, PLR_EXCON)  ? "(EXCON) "  : "",
             IS_SET(wch->act, PLR_QFLAG) ? "(Quest) " : "",
 	    IS_SET(wch->act, PLR_CLOAKED) ? "[CLOAKED] " : "",
+	    IS_AFFECTED2(wch, AFF2_SHADOWMELD) ? "[SHADOW] " : "",
 	    IS_SET(wch->act, PLR_AFK)     ? "[*AFK*] " : "",
 	    wch->name,
 	    IS_NPC(wch) ? "" : wch->pcdata->title );
@@ -2894,6 +2898,7 @@ void do_where( CHAR_DATA *ch, char *argument )
             &&   !IS_AFFECTED(victim, AFF_HIDE)
 	    &&   !IS_AFFECTED(victim, AFF_SNEAK)
 	    &&   !IS_AFFECTED2(victim, AFF2_STEALTH)
+	    &&   !IS_AFFECTED2(victim, AFF2_SHADOWMELD)
 	    &&   can_see( ch, victim )
 	    &&   victim != ch
 	    &&   is_name( arg, victim->name ) )
@@ -4917,11 +4922,11 @@ void do_remort( CHAR_DATA *ch, char *arg)
    char buf[MAX_STRING_LENGTH];
    char saveclass[MAX_INPUT_LENGTH];
    bool had_class[MAX_CLASS];
-   bool had_guild[MAX_CLASS];
    OBJ_DATA *worn[MAX_WEAR];
    int requested_class = -2;
    int requested_guild = -2;
    int requested_race = -2;
+   int kept_meld = 0;
    int i;
    int iWear;
 
@@ -5034,24 +5039,30 @@ void do_remort( CHAR_DATA *ch, char *arg)
      return;
    }
    /*
-    * What this character has already been.
+    * Which classes this character has already lived as.
     *
-    * The saved history is written one life at a time: "<class>" alone for
-    * a monk or a necro, who have no guild, and "<class> <guild>" for
-    * everybody else. Reading it back the same way is what keeps the two
-    * apart. It used to be read as one flat pool of numbers, and because a
-    * guild is stored as the matching class index that pool conflated them:
-    * a character who had once been in the mage guild could never be a mage.
-    * Worse, a non-monk life burned two of only six values, so a player who
-    * spent them badly arrived at their fourth remort with nothing left to
-    * choose, was shown an empty list, and could never remort again -- the
-    * fifth remort, and level 59 with it, out of reach for good.
+    * The point of the rule is that levelling a new life is a different
+    * game from the last, and the class is what decides that: its skills,
+    * its gains, what it can wear and swing. So the class is the whole of
+    * the restriction, and the guild is free -- pick any of them, or none,
+    * as often as you like.
+    *
+    * It used to bar guilds too, out of one flat pool of numbers shared
+    * with the classes. A guild is stored as its matching class index, so
+    * the pool conflated the two and having been in the mage guild barred
+    * you from ever living as a mage. Each non-monk life also burned two
+    * of only six values, so a player who spent them badly arrived at
+    * their fourth remort with nothing left to choose, was shown an empty
+    * list, and could never remort again -- the fifth remort, and level 59
+    * with it, out of reach for good.
+    *
+    * The saved history is unchanged on disk and is read back the way it
+    * was written: one life at a time, "<class>" alone for a monk or a
+    * necro, who have no guild, and "<class> <guild>" for everybody else.
+    * Read it any other way and the pairs misalign.
     */
    for (i = 0; i < MAX_CLASS; i++)
-   {
       had_class[i] = false;
-      had_guild[i] = false;
-   }
 
    snprintf(saveclass, sizeof(saveclass),"%d ",ch->class);
    if ((ch->class != CLASS_MONK) && (ch->class != CLASS_NECRO)) {
@@ -5074,7 +5085,6 @@ void do_remort( CHAR_DATA *ch, char *arg)
        while (to_strip[0] != '\0')
        {
          int past_class;
-         int past_guild;
 
          to_strip = one_argument(to_strip,get_class);
          past_class = atoi(get_class);
@@ -5085,13 +5095,10 @@ void do_remort( CHAR_DATA *ch, char *arg)
          if (past_class == CLASS_MONK || past_class == CLASS_NECRO)
             continue;
 
+         /* Step over the guild token; it restricts nothing. */
          if (to_strip[0] == '\0')
             break;
-
          to_strip = one_argument(to_strip,get_class);
-         past_guild = atoi(get_class);
-         if (past_guild >= 0 && past_guild < MAX_CLASS)
-            had_guild[past_guild] = true;
        }
        free_string(to_strip_base);
      }
@@ -5100,67 +5107,38 @@ void do_remort( CHAR_DATA *ch, char *arg)
    /* The life being left behind counts as well. */
    if (ch->class >= 0 && ch->class < MAX_CLASS)
       had_class[ch->class] = true;
-   if ((ch->class != CLASS_MONK) && (ch->class != CLASS_NECRO)
-   &&  ch->pcdata->guild >= 0 && ch->pcdata->guild < MAX_CLASS)
-      had_guild[ch->pcdata->guild] = true;
 
-   if (ch->pcdata->num_remorts < REMORTS_FOR_FREE_CHOICE)
+   if (ch->pcdata->num_remorts < REMORTS_FOR_FREE_CHOICE
+   &&  had_class[requested_class])
    {
-      bool class_taken = had_class[requested_class];
-      bool guild_taken = ( requested_guild >= 0 && requested_guild < MAX_CLASS
-                        && had_guild[requested_guild] );
+      int j;
+      int offered = 0;
 
-      if (class_taken || guild_taken)
+      snprintf(buf, sizeof(buf),
+        "You have already lived as a %s.  Every life before the last must be"
+        " a new one.\n\r", class_table[requested_class].name);
+      send_to_char(buf, ch);
+
+      send_to_char("\n\rClasses still open to you:\n\r", ch);
+      for (j = 0; j < MAX_CLASS; j++)
       {
-        int j;
-        int offered = 0;
-
-        if (class_taken)
-        {
-          snprintf(buf, sizeof(buf),
-            "You have already lived as a %s.  Every life before the last must"
-            " be a new one.\n\r", class_table[requested_class].name);
-          send_to_char(buf, ch);
-        }
-        if (guild_taken)
-        {
-          snprintf(buf, sizeof(buf),
-            "You have already belonged to the %s guild.\n\r",
-            class_table[requested_guild].name);
-          send_to_char(buf, ch);
-        }
-
-        send_to_char("\n\rClasses still open to you:\n\r", ch);
-        for (j = 0; j < MAX_CLASS; j++)
-        {
-          if (had_class[j])
-            continue;
-          offered++;
-          if (j == CLASS_MONK || j == CLASS_NECRO)
-            snprintf(buf, sizeof(buf), "  %-10s (guild must be 'none')\n\r",
-                     class_table[j].name);
-          else
-            snprintf(buf, sizeof(buf), "  %s\n\r", class_table[j].name);
-          send_to_char(buf, ch);
-        }
-        if (offered == 0)
-          send_to_char("  (none -- tell an immortal, this should not"
-                       " happen)\n\r", ch);
-
-        send_to_char("\n\rGuilds still open to you:\n\r", ch);
-        for (j = 0; j < MAX_CLASS; j++)
-        {
-          if (j != GUILD_MAGE && j != GUILD_CLERIC
-          &&  j != GUILD_THIEF && j != GUILD_WARRIOR)
-            continue;
-          if (had_guild[j])
-            continue;
+        if (had_class[j])
+          continue;
+        offered++;
+        if (j == CLASS_MONK || j == CLASS_NECRO)
+          snprintf(buf, sizeof(buf), "  %-10s (guild must be 'none')\n\r",
+                   class_table[j].name);
+        else
           snprintf(buf, sizeof(buf), "  %s\n\r", class_table[j].name);
-          send_to_char(buf, ch);
-        }
-        send_to_char("  none      (always allowed)\n\r", ch);
-        return;
+        send_to_char(buf, ch);
       }
+      if (offered == 0)
+        send_to_char("  (none -- tell an immortal, this should not"
+                     " happen)\n\r", ch);
+
+      send_to_char("\n\rAny guild is open to you: mage, cleric, thief,"
+                   " warrior, or none.\n\r", ch);
+      return;
    }
    /* HEHE, FINALLY A VALID CHOICE */
 
@@ -5251,6 +5229,12 @@ void do_remort( CHAR_DATA *ch, char *arg)
    set_title(ch, buf);
 
 
+   /* What the character had practised shadowmeld to. Every other skill
+      goes, but this one is a remort gift, and taking a later remort must
+      never be the thing that costs it. */
+   if ( gsn_shadowmeld > 0 )
+      kept_meld = ch->pcdata->learned[gsn_shadowmeld];
+
    for (i=0;i<MAX_SKILL;i++) ch->pcdata->learned[i] = 0;
    for (i=0;i<MAX_GROUP;i++) ch->pcdata->group_known[i] = 0;
 
@@ -5282,6 +5266,14 @@ void do_remort( CHAR_DATA *ch, char *arg)
     * all other skills and must be re-awarded each time). */
    if ( ch->pcdata->num_remorts >= 2 )
        grant_psionics( ch, 100, true );
+
+   /* Shadowmeld, from the fourth remort on: half of it as the gift, or
+      whatever the character had already practised it to, whichever is
+      more. It holds for every remort above the one that issued it. */
+   if ( ch->pcdata->num_remorts >= REMORTS_FOR_SHADOWMELD
+   &&   gsn_shadowmeld > 0 )
+       ch->pcdata->learned[gsn_shadowmeld] =
+           (sh_int)UMAX( kept_meld, SHADOWMELD_GRANTED_AT );
 
    ch->position = POS_STANDING;
 

@@ -217,7 +217,7 @@ typedef struct script_loop_prepoll_payload
 /* Game parameters. */
 #define WORLD_SIZE              30000
 #define MAX_SOCIALS             512
-#define MAX_SKILL               231
+#define MAX_SKILL               232
 #define TRAIL_LEN               10
 #define MAX_GROUP               56
 #define MAX_IN_GROUP            20
@@ -256,13 +256,16 @@ typedef struct script_loop_prepoll_payload
  *   1  (level 54)  no hunger or thirst
  *   2  (level 55)  psionics
  *   3  (level 56)  twice as long before the idle timer takes you,
- *                   twice the carrying room, and a deeper psionic grant
- *   4  (level 57)  shadowmeld, and a recall that never fails
+ *                   twice the carrying room, a deeper psionic grant,
+ *                   and a recall that never fails
+ *   4  (level 57)  shadowmeld
  */
 #define REMORTS_FOR_LONG_IDLE   3
 #define REMORTS_FOR_BIG_PACK    3
 #define REMORTS_FOR_EXTRA_PSI   3
-#define REMORTS_FOR_SURE_RECALL 4
+#define REMORTS_FOR_SURE_RECALL 3
+/* What the fourth remort's shadowmeld is worth before any practice. */
+#define SHADOWMELD_GRANTED_AT   50
 #define REMORTS_FOR_SHADOWMELD  4
 /* Remorts already taken when the class/guild history stops applying. */
 #define REMORTS_FOR_FREE_CHOICE 4
@@ -2152,6 +2155,7 @@ extern sh_int  gsn_fast_healing;
 extern sh_int  gsn_haggle;
 extern sh_int  gsn_lore;
 extern sh_int  gsn_meditation;
+extern sh_int  gsn_shadowmeld;
 extern sh_int  gsn_stealth;
 extern sh_int  gsn_danger_sense;
 extern sh_int  gsn_scrolls;

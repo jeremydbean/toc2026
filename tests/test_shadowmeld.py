@@ -1,9 +1,17 @@
 """Shadowmeld and the longer idle rope, both remort gifts.
 
-Shadowmeld is hide with the timer taken off: sit, sleep, read, and it
-holds. Moving ends it, and so does swinging at somebody. Mobiles
-cannot see a melded character at all, which is the point -- it is the
-one state that is safe to leave the keyboard in.
+Shadowmeld is stealth with the timer taken off and the room nailed
+down: sit, sleep, read, and it holds. Moving ends it, VIS ends it, and
+so does swinging at somebody. Against another player it rolls exactly
+as stealth does, weather and all, and detect hidden does not beat it;
+holylight does. Mobiles cannot see a melded character at all, which is
+the point -- it is the one state that is safe to leave the keyboard in.
+
+It is an ordinary skill. Nothing teaches it and no guildmaster sells
+it, so it is held only by a character who has taken their fourth
+remort, which grants it at 50%, or by one an immortal has granted it
+to with SET SKILL. From there it improves with use and with failure
+like anything else, and a later remort never takes it away.
 """
 from __future__ import annotations
 
@@ -41,24 +49,82 @@ class ShadowmeldTests(unittest.TestCase):
                           **{"NumRemorts": remorts})
         return mud
 
-    def test_a_fourth_remort_can_meld_and_a_third_cannot(self) -> None:
+    def arm(self, client, percent: int = 100) -> None:
+        """Take the dice out of it.
+
+        Shadowmeld is a skill now, so a fourth remort holds it at 50 and
+        every one of these tests would be a coin flip. The fixture is
+        trusted to 70, so it can set its own skill -- which also proves
+        the immortal grant works.
+        """
+        said = run(client, "set skill Zshadow shadowmeld %d" % percent, 1.6)
+        self.assertNotIn("No such skill", said, said)
+
+    def test_a_fourth_remort_holds_the_skill_and_a_third_does_not(self) -> None:
+        """The gift is the skill; knowing it is the whole gate."""
         mud = self.melder(remorts=3)
         with mud.connect(timeout=120) as client:
             login(client, "Zshadow", PASSWORD)
-            self.assertIn("do not know you well enough",
+            self.assertIn("know nothing of melting into shadow",
                           run(client, "shadowmeld", 1.8))
 
         mud2 = self.melder(remorts=4)
         with mud2.connect(timeout=120) as client:
             login(client, "Zshadow", PASSWORD)
-            self.assertIn("draw the shadows",
+            said = run(client, "shadowmeld", 1.8)
+            self.assertNotIn("know nothing", said, said)
+            # At 50% either outcome proves they hold it.
+            self.assertTrue(
+                "draw the shadows" in said or "shadows slip away" in said,
+                said,
+            )
+
+    def test_the_fourth_remort_grants_it_at_half(self) -> None:
+        mud = self.melder(remorts=4)
+        with mud.connect(timeout=120) as client:
+            login(client, "Zshadow", PASSWORD)
+            client.send("quit")
+            self.assertTrue(client.wait_closed())
+
+        saved = (mud.player_dir / "Zshadow").read_text(encoding="latin-1")
+        self.assertIn("Sk 50 'shadowmeld'", saved,
+                      "the fourth remort should leave the skill at 50")
+
+    def test_an_immortal_can_grant_it_to_anyone(self) -> None:
+        """No remort at all, granted by hand, and it works."""
+        mud = self.melder(remorts=0)
+        with mud.connect(timeout=120) as client:
+            login(client, "Zshadow", PASSWORD)
+            self.assertIn("know nothing of melting into shadow",
                           run(client, "shadowmeld", 1.8))
+            self.arm(client)
+            self.assertIn("draw the shadows", run(client, "shadowmeld", 1.8))
+
+    def test_vis_ends_it(self) -> None:
+        mud = self.melder()
+        with mud.connect(timeout=120) as client:
+            login(client, "Zshadow", PASSWORD)
+            self.arm(client)
+            run(client, "shadowmeld", 1.8)
+            self.assertIn("step out of the shadows", run(client, "vis", 1.8))
+            # Really off: asking again turns it on rather than off.
+            self.assertIn("draw the shadows", run(client, "shadowmeld", 1.8))
+
+    def test_who_shows_the_shadow_tag(self) -> None:
+        mud = self.melder()
+        with mud.connect(timeout=120) as client:
+            login(client, "Zshadow", PASSWORD)
+            self.arm(client)
+            self.assertNotIn("[SHADOW]", run(client, "who", 1.8))
+            run(client, "shadowmeld", 1.8)
+            self.assertIn("[SHADOW]", run(client, "who", 1.8))
 
     def test_it_holds_through_sleeping(self) -> None:
         """Unlike hide, which the usual restrictions end."""
         mud = self.melder()
         with mud.connect(timeout=120) as client:
             login(client, "Zshadow", PASSWORD)
+            self.arm(client)
             run(client, "shadowmeld", 1.8)
             run(client, "sleep", 1.6)
             # Still melded: asking again toggles it off rather than on.
@@ -69,6 +135,7 @@ class ShadowmeldTests(unittest.TestCase):
         mud = self.melder()
         with mud.connect(timeout=120) as client:
             login(client, "Zshadow", PASSWORD)
+            self.arm(client)
             run(client, "shadowmeld", 1.8)
             said = run(client, "north", 1.8)
             self.assertIn("step out of the shadows", said, said)
@@ -80,6 +147,7 @@ class ShadowmeldTests(unittest.TestCase):
         mud = self.melder()
         with mud.connect(timeout=120) as client:
             login(client, "Zshadow", PASSWORD)
+            self.arm(client)
             self.assertIn("draw the shadows", run(client, "shadowmeld", 1.6))
             self.assertIn("step out", run(client, "shadowmeld", 1.6))
             self.assertIn("draw the shadows", run(client, "shadowmeld", 1.6))
@@ -88,6 +156,7 @@ class ShadowmeldTests(unittest.TestCase):
         mud = self.melder()
         with mud.connect(timeout=120) as client:
             login(client, "Zshadow", PASSWORD)
+            self.arm(client)
             run(client, "goto 3700", 1.8)
             run(client, "kill guard", 2.2)
             said = run(client, "shadowmeld", 1.8)
@@ -138,6 +207,57 @@ class ShadowmeldSourceTests(unittest.TestCase):
         # And the raw constant is no longer compared against directly.
         body = self.update.split("void char_update(", 1)[1]
         self.assertNotIn(">= LINKDEAD_PURGE_TICKS", body)
+
+    def test_it_is_a_real_skill_reachable_from_level_three(self) -> None:
+        """A remort restarts at level 3.
+
+        get_skill returns 0 below skill_level and check_improve refuses to
+        improve there, so a gift priced at the level it is given at would
+        be frozen until the character had climbed all the way back.
+        """
+        const = (ROOT / "src" / "const.c").read_text(encoding="latin-1")
+        entry = const.split('"shadowmeld",')[1].split(chr(10) + "    },")[0]
+        self.assertIn("{   3,  3,  3,  3,  3,  3 }", entry, entry)
+        self.assertIn("&gsn_shadowmeld", entry, entry)
+        # A rating of zero also stops check_improve dead.
+        self.assertIn("{ 6, 6, 6, 6, 6, 6}", entry, entry)
+
+    def test_using_it_improves_it_either_way(self) -> None:
+        body = self.move.split("void do_shadowmeld(")[1].split("\nvoid ")[0]
+        self.assertIn("check_improve( ch, gsn_shadowmeld, true, 3 )", body)
+        self.assertIn("check_improve( ch, gsn_shadowmeld, false, 3 )", body)
+        self.assertIn("get_skill( ch, gsn_shadowmeld )", body)
+        # The remort count is no longer the gate; holding the skill is.
+        self.assertNotIn("REMORTS_FOR_SHADOWMELD", body)
+
+    def test_players_roll_against_it_exactly_as_they_do_stealth(self) -> None:
+        """Detect hidden used to beat it. It does not any more."""
+        body = self.handler.split("bool can_see(")[1]
+        self.assertIn("concealment_chance( victim, gsn_stealth )", body)
+        self.assertIn("concealment_chance( victim, gsn_shadowmeld )", body)
+        self.assertNotIn(
+            "IS_AFFECTED2(victim, AFF2_SHADOWMELD)\n    &&   !IS_AFFECTED(ch, AFF_DETECT_HIDDEN)",
+            body,
+        )
+
+    def test_a_later_remort_never_costs_the_skill(self) -> None:
+        act_info = (ROOT / "src" / "act_info.c").read_text(encoding="utf-8")
+        body = act_info.split("void do_remort(")[1]
+        self.assertIn("kept_meld = ch->pcdata->learned[gsn_shadowmeld]", body)
+        self.assertLess(
+            body.index("kept_meld = ch->pcdata->learned[gsn_shadowmeld]"),
+            body.index("for (i=0;i<MAX_SKILL;i++) ch->pcdata->learned[i] = 0;"),
+            "the practised value has to be read before the wipe",
+        )
+        self.assertIn("UMAX( kept_meld, SHADOWMELD_GRANTED_AT )", body)
+        self.assertIn("num_remorts >= REMORTS_FOR_SHADOWMELD", body)
+
+    def test_characters_who_earned_it_before_it_was_a_skill_keep_it(
+        self,
+    ) -> None:
+        save = (ROOT / "src" / "save.c").read_text(encoding="utf-8")
+        self.assertIn("ch->pcdata->learned[gsn_shadowmeld] = SHADOWMELD_GRANTED_AT",
+                      save)
 
     def test_the_gifts_are_named_rather_than_numbered(self) -> None:
         self.assertIn("#define REMORTS_FOR_SHADOWMELD", self.merc)

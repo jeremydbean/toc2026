@@ -2938,6 +2938,35 @@ bool can_see_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
 
 
 /*
+ * How likely a concealed character is to go unnoticed.
+ *
+ * Stealth and shadowmeld both roll this, so the two cannot drift apart --
+ * shadowmeld is stealth that holds while you stay put. The modifiers are
+ * the hour and the weather: there is less to hide in at noon under a
+ * cloudless sky than at midnight in the rain.
+ */
+static int concealment_chance( const CHAR_DATA *victim, int sn )
+{
+    int chance = get_skill( victim, sn );
+
+    if ( weather_info.sunlight == SUN_RISE || weather_info.sunlight == SUN_SET )
+        chance -= 10;
+    if ( weather_info.sunlight == SUN_LIGHT )
+        chance -= 20;
+    if ( weather_info.sunlight == SUN_DARK )
+        chance += 10;
+
+    if ( weather_info.sky == SKY_RAINING || weather_info.sky == SKY_CLOUDY )
+        chance += 10;
+    if ( weather_info.sky == SKY_CLOUDLESS )
+        chance -= 10;
+    if ( weather_info.sky == SKY_LIGHTNING )
+        chance += 15;
+
+    return chance;
+}
+
+/*
  * True if char can see victim.
  */
 bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
@@ -2988,29 +3017,19 @@ bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
     &&   !IS_AFFECTED(ch, AFF_DETECT_INVIS ) )
 	return false;
 
-    if ( IS_AFFECTED2(victim, AFF2_STEALTH) ) {
-	int chance = get_skill(victim,gsn_stealth);
+    if ( IS_AFFECTED2(victim, AFF2_STEALTH)
+    &&   number_percent() < concealment_chance( victim, gsn_stealth ) )
+	return false;
 
-	if(weather_info.sunlight == SUN_RISE || weather_info.sunlight == SUN_SET)
-	    chance -= 10;
-	if(weather_info.sunlight == SUN_LIGHT)
-	    chance -= 20;
-	if(weather_info.sunlight == SUN_DARK)
-	    chance += 10;
-
-	if(weather_info.sky == SKY_RAINING || weather_info.sky == SKY_CLOUDY)
-	    chance += 10;
-	if(weather_info.sky == SKY_CLOUDLESS)
-	    chance -= 10;
-	if(weather_info.sky == SKY_LIGHTNING)
-	    chance += 15;
-
-	if(number_percent() < chance)
-	    return false;
-    }
-
-    if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD)
-    &&   !IS_AFFECTED(ch, AFF_DETECT_HIDDEN) )
+    /*
+     * Against another player shadowmeld is stealth: the same roll against
+     * the same weather, and detect hidden does not beat it. Holylight
+     * does, from the shortcut above. The !IS_NPC guard is for a builder
+     * who sets the bit on a mobile -- get_skill has no answer for this sn
+     * on a mob and would read an uninitialised local.
+     */
+    if ( IS_AFFECTED2(victim, AFF2_SHADOWMELD) && !IS_NPC(victim)
+    &&   number_percent() < concealment_chance( victim, gsn_shadowmeld ) )
 	return false;
 
     if ( IS_AFFECTED(victim, AFF_HIDE)
@@ -3203,6 +3222,7 @@ char *affect2_bit_name( long vector )
     if ( vector & AFF2_DARK_VISION   ) toc_strlcat( buf, " dark_vision", sizeof(buf) );
     if ( vector & AFF2_DETECT_GOOD   ) toc_strlcat( buf, " detect_good", sizeof(buf) );
     if ( vector & AFF2_STEALTH       ) toc_strlcat( buf, " stealth", sizeof(buf) );
+    if ( vector & AFF2_SHADOWMELD    ) toc_strlcat( buf, " shadowmeld", sizeof(buf) );
     if ( vector & AFF2_STUNNED       ) toc_strlcat( buf, " stunned", sizeof(buf) );
     if ( vector & AFF2_NO_RECOVER   ) toc_strlcat( buf,  " sleepless", sizeof(buf) );
     if ( vector & AFF2_FORCE_SWORD  ) toc_strlcat( buf,  " force_sword", sizeof(buf) );

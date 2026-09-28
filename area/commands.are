@@ -323,25 +323,47 @@ Syntax: shadowmeld
 
 Draw the shadows around yourself.  You stay in them until you move.
 
-Nothing else ends it.  Sit, sleep, read your notes, count your coin -
-the shadows hold.  This is the one state in the game that is safe to
-leave the keyboard in: while you are melded no creature in the world
-can see you, so nothing will wander in and kill you while you are
-away.
+Shadowmeld is STEALTH with the timer taken off and the room nailed
+down.  It is exactly as good at hiding you as stealth is - the same
+roll, the same weather, the same odds - and unlike stealth it never
+runs out.  What you give up is the ability to walk anywhere.
 
-Two things break it.  Leaving the room, however you leave it - walking,
-a portal, a recall, being dragged - and swinging at somebody.  Typing
+Nothing but moving ends it.  Sit, sleep, read your notes, count your
+coin - the shadows hold.
+
+WHAT IT IS FOR
+  Two things.
+
+  Going AFK.  This is the one state in the game that is safe to leave
+  the keyboard in: while you are melded no creature in the world can
+  see you, so nothing will wander in and kill you while you are away.
+
+  Laying in wait.  Meld in a room somebody has to walk through, and
+  wait.  They will not see you unless they beat your skill, and you
+  strike first.  The blow itself is what ends the meld.
+
+Three things break it.  Leaving the room, however you leave it -
+walking, a portal, a recall, being dragged.  Striking at somebody.
+And VIS, which drops every concealment you are carrying.  Typing
 SHADOWMELD again steps you out deliberately.
 
-Other players can still find you if they are looking for the hidden,
-and the gods always can.  It is the world's creatures you are hidden
-from.
+Against another player it behaves exactly like stealth: they roll
+against your skill, and looking for the hidden does not help them.
+The gods, with holylight, always see you.  Faerie fog reveals you.
 
 You cannot start a meld in the middle of a fight.
 
-This is a gift of the fourth remort, the one taken at level 57.
+THE SKILL
+  Shadowmeld is an ordinary skill and improves the ordinary way, with
+  use and with failure.  It cannot be practised from nothing, gained
+  at a guildmaster or bought: the only ways to hold it are the fourth
+  remort, which grants it at 50%, and the gift of a god.
 
-See also: HIDE, SNEAK, REMORT
+  Once you hold it you may practise it up like anything else, and no
+  later remort will take it away.
+
+See also: HIDE, SNEAK, STEALTH, VISIBLE, REMORT
+
 
 ~
 
@@ -500,6 +522,31 @@ command named here for the detail.
   <n> <player> passes one on, NOTE SEARCH finds a note by any word in
   it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
   the lot.  See HELP NOTE.
+
+  SHADOWMELD is a real skill now, and it is meant for two things: going
+  AFK without being killed for it, and laying in wait in a room somebody
+  has to walk through so that you strike first.
+
+  The fourth remort teaches it at 50% and it improves from there with
+  use and with failure, like anything else.  A god can grant it to
+  anyone with SET SKILL.  No later remort takes it away, and once you
+  hold it you may practise it up.
+
+  It behaves exactly like STEALTH against other players now rather than
+  like hide - the same roll against the same weather - so looking for
+  the hidden no longer finds you.  Holylight still does, and faerie fog
+  still reveals you.  VIS steps you out of it, WHO shows [SHADOW] beside
+  your name, WHERE leaves you off the list and DANGER SENSE counts you,
+  all exactly as they do for stealth.  Striking at somebody ends it,
+  whether you swing or cast.
+
+  The recall that never fails has moved from the fourth remort down to
+  the third, to make room for shadowmeld.
+
+  Remorting no longer cares which guilds you have belonged to, only
+  which classes you have lived as: mage, cleric, thief, warrior, monk,
+  necro.  Every life must be a class you have not played.  Join any
+  guild you like, as often as you like.
 
   The third remort now carries three gifts instead of one: twice the
   carrying room, twice as long before the idle void, and a second psionic
@@ -3065,10 +3112,12 @@ BENEFITS PER REMORT
   leech, enervate, and pyrotechnics.  At the final (5th) remort you are
   given every one of them.
   Starting at remort 3 you carry twice as many items and twice the weight,
-  and you may idle twice as long before the void takes you.
-  Starting at remort 4 your recall always succeeds (no skill check, no
-  random-room mishap).  Recall from combat still costs experience.  The 4th
-  remort also grants SHADOWMELD -- see HELP SHADOWMELD.
+  you may idle twice as long before the void takes you, and your recall
+  always succeeds (no skill check, no random-room mishap).  Recall from
+  combat still costs experience.
+  At remort 4 you are taught SHADOWMELD at 50%.  It is a real skill from
+  there: practise it, improve it with use, and no later remort takes it
+  away.  See HELP SHADOWMELD.
   On the 5th (final) remort you carry unlimited items and weight and may
   choose any class and guild freely (the usual restriction of picking only
   classes you have never been does not apply).
@@ -3101,21 +3150,23 @@ QUEST SHOP ITEMS
 
 CLASS, GUILD, AND RACE OPTIONS
   Every life must be a new one, so that levelling it is a different game
-  from the last.  Two separate histories are kept across all your remorts:
+  from the last -- and the CLASS is what decides that.  You may not live
+  twice as the same class.  Your current class counts as used the moment
+  you remort away from it, and the game remembers every class you have
+  ever been.
 
-    - the CLASSES you have lived as.  You may not pick one of them again.
-    - the GUILDS you have belonged to.  You may not join one of them again.
+  The classes are mage, cleric, thief, warrior, monk and necro, so a
+  character who remorts all the way through will have played nearly all
+  of them.
 
-  They are separate lists.  Having been in the mage guild does not stop you
-  living as a mage later, and vice versa.  'none' is always available as a
-  guild, so you can never be left with no legal choice.  Your current class
-  and guild count as used the moment you remort away from them.
+  The GUILD is free.  Join any of them, as often as you like, or none.
+  Monks and necromancers must still use 'none', because those classes
+  have no guild.
 
-  If a choice is refused, the game lists every class and guild still open
-  to you.
+  If a class is refused, the game lists every one still open to you.
 
-  On your final (5th) remort neither history applies and you may pick
-  anything.
+  On your final (5th) remort even the class history is set aside and you
+  may pick anything.
   Classes: mage, cleric, thief, warrior, monk, necro
   Guilds:  mage, cleric, thief, warrior, none
            (Monks and Necros must use 'none' as their guild.)
@@ -3137,10 +3188,10 @@ Each remort carries its own gift, and they build on one another:
     first   (at level 54)   hunger and thirst no longer touch you
     second  (at level 55)   psionic powers, one from each discipline
     third   (at level 56)   twice the carrying room, twice as long before
-                            the idle void takes you, and a second power
+                            the idle void takes you, a recall that never
+                            fails, and a second power from each discipline
+    fourth  (at level 57)   the SHADOWMELD skill at 50%, and a third power
                             from each discipline
-    fourth  (at level 57)   SHADOWMELD, a recall that never fails, and a
-                            third power from each discipline
     fifth   (at level 58)   every psionic power, no carrying limit at all,
                             a free choice of class and guild, and the
                             climb to 59

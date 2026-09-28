@@ -3712,6 +3712,19 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
     },
 
     {
+	/* Level 3 for every class on purpose: a remort restarts at 3, and
+	   the gift is worth nothing if it cannot be improved until the
+	   character has climbed all the way back. No guildmaster lists it
+	   in can_gain and it belongs to no group, so the only ways to hold
+	   it are the fourth remort and an immortal's SET SKILL. */
+	"shadowmeld",
+	{   3,  3,  3,  3,  3,  3 },  { 6, 6, 6, 6, 6, 6},
+	spell_null,             TAR_IGNORE,             POS_SLEEPING,
+	&gsn_shadowmeld,        SLOT( 0),        0,     12,
+	"",                     "!Shadowmeld!"
+    },
+
+    {
 	"stealth",
 	{  62, 62, 18, 62, 62, 62 },  { 7, 7, 5, 7, 7, 7},
 	spell_null,             TAR_IGNORE,             POS_STANDING,

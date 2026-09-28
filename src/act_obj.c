@@ -5224,6 +5224,10 @@ void do_bomb( CHAR_DATA *ch, char *argument )
              ch, NULL, victim, TO_ROOM );
         damage( ch, victim, UMAX( 1, victim->max_hit / 2 ),
                 TYPE_UNDEFINED, DAM_FIRE );
+        /* Half its maximum hit points, no roll and nothing consumed: the
+           only thing standing between this and a one-command kill is the
+           lag. */
+        WAIT_STATE( ch, PULSE_VIOLENCE );
         return;
     }
 

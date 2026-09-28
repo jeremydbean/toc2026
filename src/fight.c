@@ -1888,6 +1888,10 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
 	send_to_char("You are no longer stealthful.\n\r",ch);
     }
 
+    /* multi_hit covers melee; this covers everything else that deals
+       damage, a spell included. Both are idempotent. */
+    shadowmeld_break( ch, "You break from the shadows to strike." );
+
     tail_chain( );
     return true;
 }
@@ -5901,6 +5905,10 @@ void do_nerve_damage( CHAR_DATA *ch, char *argument )
 	   ch->mana -= 10;
 	   ch->move -= 5;
 	   check_improve(ch,gsn_nerve_damage,false,4);
+	   /* It missed the nerve and still drew blood, so it pays the
+	      same lag a hit does. Damage without lag is damage you can
+	      spam. */
+	   WAIT_STATE( ch, skill_table[gsn_nerve_damage].beats );
 	   return;
 	}
 	ch->mana -= 15;

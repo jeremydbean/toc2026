@@ -1370,6 +1370,14 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     /* Powers learned before the list existed still count towards it. */
     psionic_sync_known( ch );
 
+    /* Shadowmeld used to be a flat check against the remort count rather
+     * than a skill. Anyone who earned it that way is given the skill, so
+     * the gift does not quietly disappear the day it became one. */
+    if ( ch->pcdata->num_remorts >= REMORTS_FOR_SHADOWMELD
+    &&   gsn_shadowmeld > 0
+    &&   ch->pcdata->learned[gsn_shadowmeld] == 0 )
+        ch->pcdata->learned[gsn_shadowmeld] = SHADOWMELD_GRANTED_AT;
+
     /* Nobody stays cursed by a mechanic that no longer runs. */
     if ( !LYCANTHROPY_ENABLED && ch->were_shape.name != NULL )
     {

@@ -151,14 +151,14 @@ class RemortSourceTests(unittest.TestCase):
 
         ListRemorts is at most two numbers per remort and five remorts is
         the cap, so a sound file never troubles them -- but a hand-edited
-        or damaged one can. The bound used to be on the loop counter, over
-        a single had_classes[2*MAX_CLASS] pool; it is on the index now,
-        over the separate had_class and had_guild arrays. See
-        tests/test_remort_gifts.py for why they were split.
+        or damaged one can. The bound used to be on the loop counter,
+        over a single had_classes[2*MAX_CLASS] pool; it is on the index
+        now, over had_class. See tests/test_remort_gifts.py for why the
+        guild half went away.
         """
         body = self.source.split("void do_remort(")[1]
         self.assertIn("if (past_class >= 0 && past_class < MAX_CLASS)", body)
-        self.assertIn("if (past_guild >= 0 && past_guild < MAX_CLASS)", body)
+        self.assertIn("if (ch->class >= 0 && ch->class < MAX_CLASS)", body)
         self.assertNotIn("had_classes", body)
 
     def test_remorting_off_a_mount_releases_the_mount(self) -> None:
