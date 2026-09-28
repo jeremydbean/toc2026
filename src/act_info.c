@@ -2137,8 +2137,18 @@ void do_affect( CHAR_DATA *ch, char *argument)
     AFFECT_DATA *paf;
     int count;
     const int max_affect_nodes = 1024;
+    bool melded;
 
-    if( ch->affected == NULL )
+    /*
+     * Shadowmeld is a bare bit in affected_by2 rather than an AFFECT_DATA
+     * with a duration -- it has no duration, it holds until you move --
+     * so the walk below cannot see it. It is listed by hand, and it also
+     * has to defeat the early return: a character whose only concealment
+     * is a meld was being told they were affected by nothing at all.
+     */
+    melded = IS_AFFECTED2(ch, AFF2_SHADOWMELD);
+
+    if( ch->affected == NULL && !melded )
     {
 	send_to_char( "You are not affected by any spells.\n\r",ch);
 	return;
@@ -2161,6 +2171,10 @@ void do_affect( CHAR_DATA *ch, char *argument)
         }
 
 	send_to_char( "You are affected by:\n\r",ch);
+
+	if ( melded )
+	    send_to_char( "Skill: 'shadowmeld' until you move.\n\r", ch );
+
 	for( paf = ch->affected; paf != NULL; paf = paf->next )
 	{
 		/* Skip pure sentinel entries (no location, no modifier, no bits) */

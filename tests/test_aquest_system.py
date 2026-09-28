@@ -82,6 +82,33 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         self.assertNotIn("get_char_world", generation)
         self.assertNotIn("find_location", generation)
 
+    def test_hyrule_is_never_a_quest_destination(self) -> None:
+        """443 rooms, generated, and its dungeons refuse recall.
+
+        A quest pointing at a mobile seven floors down is a half-hour
+        march through content the player may never have seen, for a
+        quest reward. The area is matched on its file rather than a vnum
+        range: it is generated, so the vnums are the generator's
+        business, but the file it is written to is fixed.
+        """
+        merc = (ROOT / "src" / "merc.h").read_text(encoding="utf-8")
+        self.assertIn('#define QUEST_EXCLUDED_AREA     "hyrule.are"', merc)
+
+        body = self.quest.split("static bool quest_area_is_excluded(")[1]
+        body = body.split(chr(10) + "}")[0]
+        self.assertIn("room->area->file_name", body)
+        self.assertIn("QUEST_EXCLUDED_AREA", body)
+
+        check = self.quest.split("automatic_quest_target_is_suitable( CHAR_DATA")[1]
+        check = check.split(chr(10) + "}")[0]
+        self.assertIn("quest_area_is_excluded(room)", check)
+
+        # And the file the constant names is really the one in play.
+        self.assertTrue(
+            (ROOT / "area" / "hyrule.are").is_file(),
+            "the excluded area file has been renamed; the constant is stale",
+        )
+
     def test_group_members_and_pet_owners_receive_kill_credit(self) -> None:
         credit = function_body(
             self.quest, "void quest_record_kill", "void quest_handle_logout"

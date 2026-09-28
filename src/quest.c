@@ -1216,6 +1216,28 @@ static void quest_area_name( const char *raw, char *out, size_t size )
         toc_strlcpy( out, "unknown lands", size );
 }
 
+/*
+ * Whether an area is off limits to the quest master.
+ *
+ * Hyrule is 443 rooms, most of them generated, and its dungeons are
+ * deliberately no-recall -- a quest that points a player at a mobile
+ * seven floors down is a half-hour march through content they may
+ * never have seen, for a quest reward. It stays out of the pool until
+ * somebody decides otherwise.
+ *
+ * Matched on the file rather than a vnum range: the area is generated
+ * and its vnums are the generator's business, but the file it is
+ * written to is fixed.
+ */
+static bool quest_area_is_excluded( const ROOM_INDEX_DATA *room )
+{
+    if ( room == NULL || room->area == NULL
+    ||   room->area->file_name == NULL )
+        return false;
+
+    return !str_cmp( room->area->file_name, QUEST_EXCLUDED_AREA );
+}
+
 static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
                                                 CHAR_DATA *questman,
                                                 CHAR_DATA *victim )
@@ -1249,6 +1271,7 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
     ||   !can_see(ch, victim)
     ||   !can_see_room(ch, room)
     ||   room_is_private(room)
+    ||   quest_area_is_excluded(room)
     ||   IS_SET(room->room_flags, ROOM_SAFE)
     ||   IS_SET(room->room_flags, ROOM_DT)
     ||   IS_SET(room->room_flags, ROOM_JAIL) )

@@ -270,6 +270,9 @@ typedef struct script_loop_prepoll_payload
 /* Remorts already taken when the class/guild history stops applying. */
 #define REMORTS_FOR_FREE_CHOICE 4
 
+/* The one area the automatic quest master will not send anybody into. */
+#define QUEST_EXCLUDED_AREA     "hyrule.are"
+
 #define BATTLE_TICKS            2
 
 #define IMPLEMENTOR             MAX_LEVEL
@@ -2724,6 +2727,7 @@ int     get_obj_number  ( OBJ_DATA *obj );
 int     get_obj_weight  ( OBJ_DATA *obj );
 bool    room_is_dark    ( ROOM_INDEX_DATA *pRoomIndex );
 bool    room_is_private ( ROOM_INDEX_DATA *pRoomIndex );
+bool    can_enter_private_room ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex );
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    can_see_obj     ( CHAR_DATA *ch, const OBJ_DATA *obj );
 bool    can_see_room    ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex);

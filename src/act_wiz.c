@@ -1190,7 +1190,7 @@ void do_transfer( CHAR_DATA *ch, char *argument )
 	}
 
 
-	if ( room_is_private( location ) && get_trust(ch) < 69)
+	if ( !can_enter_private_room( ch, location ) )
 	{
 	    send_to_char( "That room is private right now.\n\r", ch );
 	    return;
@@ -1265,7 +1265,7 @@ void do_at( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( room_is_private( location ) && get_trust(ch) < 69)
+    if ( !can_enter_private_room( ch, location ) )
     {
 	send_to_char( "That room is private right now.\n\r", ch );
 	return;
@@ -1473,7 +1473,7 @@ void do_goto( CHAR_DATA *ch, char *argument )
 	}
     }
 
-    if ( room_is_private( location ) && get_trust(ch) < 69)
+    if ( !can_enter_private_room( ch, location ) )
     {
 	send_to_char( "That room is private right now.\n\r", ch );
 	return;
@@ -8242,7 +8242,7 @@ void do_itrans( CHAR_DATA *ch, char *argument )
 	    return;
 	}
 
-	if ( room_is_private( location ) && get_trust(ch) < 69)
+	if ( !can_enter_private_room( ch, location ) )
 	{
 	    send_to_char( "That room is private right now.\n\r", ch );
 	    return;

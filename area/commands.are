@@ -368,10 +368,18 @@ See also: HIDE, SNEAK, STEALTH, VISIBLE, REMORT
 ~
 
 0 STASH~
-Syntax: stash
-        stash put <item>
-        stash get <item>
-        stash buy
+Syntax: stash                          -- what is in it
+        stash put <item>               -- from anywhere in the world
+        stash put all                  -- everything you can spare
+        stash get <item>               -- at the altar only
+        stash buy                      -- more room, at the altar
+        stash link <character>         -- share with another of yours
+        stash unlink <character>       -- stop sharing
+        stash of <character>           -- what is in theirs
+        stash take <character> <item>  -- at the altar only
+        stash deny <character>         -- refuse an offer
+        stash block <character>        -- and stop them asking
+        stash unblock <character>      -- let them ask again
 
 Storage at the altar that survives a reboot.
 
@@ -379,9 +387,10 @@ STASH on its own lists what is in it, and you can read that from
 anywhere - knowing what you own is not the same as reaching it.
 
 STASH PUT works from anywhere in the world, so you can set something
-aside the moment you find it.  STASH GET works only at the altar, one
-step west of where you land when you recall.  That is deliberate: the
-stash stores loot, it is not a way to carry it.
+aside the moment you find it.  STASH PUT ALL sends everything in your
+hands that is allowed in.  STASH GET works only at the altar, one step
+west of where you land when you recall.  That is deliberate: the stash
+stores loot, it is not a way to carry it.
 
 You start with room for fifty things, counted as things rather than
 weight - a bag of gems is one.  STASH BUY at the altar adds another
@@ -390,7 +399,71 @@ twenty-five, and the price climbs each time, up to five hundred.
 Anything with a timer on it is refused, and so is a corpse.  They would
 only rot where you put them.
 
-See also: DONATE, RECALL
+SHARING BETWEEN YOUR CHARACTERS
+  Two characters who each name the other share one pool: either can
+  take what the other left.  It takes both halves, so nobody can reach
+  into your stash without you naming them back.  See HELP STASHLINK -
+  that entry covers linking, denying and blocking in full.
+
+Your stash is saved the instant anything goes in or comes out, so a
+crash cannot cost you what you put away.
+
+See also: STASHLINK, DONATE, RECALL
+
+~
+
+0 STASHLINK LINK~
+Syntax: stash link <character>         -- offer, or accept
+        stash unlink <character>       -- stop sharing
+        stash of <character>           -- what is in theirs
+        stash take <character> <item>  -- at the altar only
+        stash deny <character>         -- refuse an offer
+        stash block <character>        -- and stop them asking
+        stash unblock <character>      -- let them ask again
+
+How to share one stash between two of your own characters.
+
+IT TAKES BOTH HALVES
+  Naming somebody is only half of a link.  Log in as your first
+  character and type:
+
+      stash link <your other character>
+
+  You will be told that nothing is shared yet.  Log in as that other
+  character and type the same thing back, naming the first.  Now the
+  two of you share: either can see and take what the other left.
+
+  This is why nobody can reach into your stash uninvited.  Someone can
+  name you all they like; until you name them back it does nothing.
+
+WHEN SOMEBODY NAMES YOU
+  You are told at login that an offer is waiting and who made it.
+  Three answers:
+
+      stash link <name>    accept, and share from then on
+      stash deny <name>    refuse, and clear the offer
+      stash block <name>   refuse, and stop them asking again
+
+  DENY clears one offer.  If the same person keeps offering, BLOCK
+  turns them away before the offer is ever recorded - they are simply
+  told you are not accepting.  STASH BLOCK on its own lists everybody
+  you are turning away, and STASH UNBLOCK lets one of them ask again.
+
+USING A SHARED STASH
+  STASH OF <character> lists what is in theirs, from anywhere.
+  STASH TAKE <character> <item> pulls it out, at the altar only - the
+  same rule your own stash follows.
+
+  The other character does not have to be logged in.  Their saved
+  stash is read straight off the disk.
+
+UNLINKING
+  STASH UNLINK <character> ends your half at once.  Nothing is lost:
+  every item stays in the stash of whoever put it there.
+
+  You may keep up to eight links.
+
+See also: STASH, RECALL
 
 ~
 
@@ -522,6 +595,16 @@ command named here for the detail.
   <n> <player> passes one on, NOTE SEARCH finds a note by any word in
   it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
   the lot.  See HELP NOTE.
+
+  An idle immortal no longer fills a one-person room.  Standing in the
+  quest room was enough to shut questing down for everybody else, which
+  is not what that flag is for - it exists to stop players walking in on
+  each other.  Staff can also walk into such a room now rather than
+  being turned away from it.
+
+  STASH LINK has a help entry of its own at last: HELP STASHLINK covers
+  linking, denying, blocking and sharing in full, and HELP STASH lists
+  every subcommand rather than four of them.
 
   SHADOWMELD is a real skill now, and it is meant for two things: going
   AFK without being killed for it, and laying in wait in a room somebody

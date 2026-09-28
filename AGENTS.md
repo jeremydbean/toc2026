@@ -994,6 +994,20 @@ Other deploy facts:
   the host, and restart `toc2026-web.service`. Never paste it into a commit,
   an issue or a conversation.
 
+## What The Quest Master Will Not Ask For
+
+`automatic_quest_target_is_suitable()` in `src/quest.c` decides the
+pool, and `quest_area_is_excluded()` keeps **Hyrule** out of it.
+`QUEST_EXCLUDED_AREA` in `merc.h` names the file, not a vnum range: the
+area is generated, so its vnums belong to the generator, but
+`hyrule.are` is fixed. The reason is size and newness -- 443 rooms,
+most generated, with no-recall dungeons, so a quest aimed seven floors
+down is a half-hour march through content the player may never have
+seen.
+
+Exclude another area by name there rather than by adding a second
+mechanism.
+
 ## Scattering Things Into The World
 
 `random_scatter_room()` in `src/db.c` is how anything picks a room to put
@@ -1101,6 +1115,26 @@ deliberate -- everything above it, `dam_message` included, still runs, so
 the default reading of a blow is the ordinary one and only the loss is
 skipped. Nothing displays the flag: not `score`, not the room. That is a
 deliberate difference from WIZINVIS and CLOAK.
+
+## One-Person Rooms
+
+`ROOM_SOLITARY` closes a room at one occupant and `ROOM_PRIVATE` at two.
+Two rules, both learned from one incident where an idle immortal in the
+quest room shut questing down for the whole mud:
+
+- **Staff do not count towards the occupancy.** `room_is_private()`
+  skips anyone at immortal trust. The flag exists to stop players
+  walking in on each other, not to let a staff character close a room
+  by standing in it.
+- **`can_enter_private_room(ch, room)` is the one place that decides
+  who may walk in anyway.** Every caller used to ask
+  `ch->level < 69` -- the raw level, and a number rather than a rank --
+  so an ordinary immortal was refused and a builder trusted to immortal
+  rank was refused everywhere. `ROOM_IMP_ONLY` is not an occupancy
+  limit and keeps its own `GOD` bar inside that helper.
+
+`tests/test_private_rooms.py` pins both, including that no caller reads
+a raw level again.
 
 ## Permission Helpers
 

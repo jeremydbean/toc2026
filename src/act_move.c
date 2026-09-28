@@ -852,7 +852,7 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 	return;
     }
 
-    if ( room_is_private( to_room ) && ch->level < 69)
+    if ( !can_enter_private_room( ch, to_room ) )
     {
 	send_to_char( "That room is private right now.\n\r", ch );
 	runner = 2;
@@ -4327,7 +4327,7 @@ void do_riding(CHAR_DATA *ch, int door, bool skip_special_check)
     }
 
 
-    if ( room_is_private( to_room ) && temp_ch->level < 69)
+    if ( !can_enter_private_room( temp_ch, to_room ) )
     {
       send_to_char( "That room is private right now.\n\r", temp_ch );
       return;

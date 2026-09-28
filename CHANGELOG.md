@@ -67,6 +67,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **An idle immortal filled a one-person room.** Standing in the quest
+  room was enough to shut questing down for everybody: `ROOM_SOLITARY`
+  counts occupants and counted staff among them. Staff are skipped now.
+  They can also walk into such a room rather than being turned away --
+  every caller had asked for level 69 rather than immortal rank, and
+  asked it of the raw level rather than trust, so an ordinary immortal
+  was refused and a trusted builder was refused everywhere.
+  Implementor-only rooms keep the bar they had.
+
+- **The quest master no longer sends anybody into Hyrule.** It is 443
+  rooms, most of them generated, and its dungeons refuse recall, so a
+  quest aimed at a mobile seven floors down was a half-hour march for a
+  quest reward.
+
+- **STASH LINK had no help at all.** HELP STASHLINK now covers the
+  two-sided handshake, denying, blocking and sharing; HELP STASH lists
+  every subcommand rather than four of them, PUT ALL included.
+
 - **BOMB dealt damage and handed the turn straight back.** It takes
   half a target's maximum hit points with no roll and nothing consumed,
   and paid no lag either, so it could be typed as fast as the player

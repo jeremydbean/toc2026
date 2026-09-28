@@ -119,6 +119,22 @@ class ShadowmeldTests(unittest.TestCase):
             run(client, "shadowmeld", 1.8)
             self.assertIn("[SHADOW]", run(client, "who", 1.8))
 
+    def test_affect_lists_it(self) -> None:
+        """It is a bare bit, not an AFFECT_DATA, so AFFECT cannot walk to it.
+
+        The early return is the other half: a character whose only
+        concealment is a meld was told they were affected by nothing.
+        """
+        mud = self.melder()
+        with mud.connect(timeout=120) as client:
+            login(client, "Zshadow", PASSWORD)
+            self.arm(client)
+            self.assertNotIn("shadowmeld", run(client, "affect", 1.8))
+            run(client, "shadowmeld", 1.8)
+            said = run(client, "affect", 1.8)
+            self.assertIn("shadowmeld", said, said)
+            self.assertNotIn("not affected by any spells", said, said)
+
     def test_it_holds_through_sleeping(self) -> None:
         """Unlike hide, which the usual restrictions end."""
         mud = self.melder()

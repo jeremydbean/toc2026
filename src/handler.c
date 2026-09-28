@@ -2891,8 +2891,21 @@ bool room_is_private( ROOM_INDEX_DATA *pRoomIndex )
 
     count = 0;
     for ( rch = pRoomIndex->people; rch != NULL; rch = rch->next_in_room)
+    {
+	/*
+	 * Staff do not take up the room. An immortal standing in a
+	 * solitary room -- watching, building, or simply idle -- used to
+	 * fill it, and the next player to walk up was told the room was
+	 * private. One idle immortal in the quest room shut questing
+	 * down for everybody, which is not what the flag is for: it
+	 * exists to stop players walking in on each other.
+	 */
+	if ( !IS_NPC(rch) && IS_TRUSTED(rch, LEVEL_IMMORTAL) )
+	    continue;
+
 	if(rch->battleticks == 0)
   	    count++;
+    }
 
     if ( IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)  && count >= 2 )
 	return true;
@@ -2904,6 +2917,30 @@ bool room_is_private( ROOM_INDEX_DATA *pRoomIndex )
 	return true;
 
     return false;
+}
+
+/*
+ * Whether ch may walk into a room room_is_private() has closed.
+ *
+ * An occupancy limit is aimed at players, so staff override it -- and
+ * they had to, because every caller asked for level 69 rather than
+ * immortal rank, and asked it of ch->level rather than get_trust(), so
+ * an ordinary immortal was turned away from a room they were meant to
+ * be able to reach and a trusted builder was turned away from all of
+ * them.
+ *
+ * ROOM_IMP_ONLY is not an occupancy limit. It keeps the bar it always
+ * had.
+ */
+bool can_enter_private_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
+{
+    if ( pRoomIndex == NULL || !room_is_private( pRoomIndex ) )
+	return true;
+
+    if ( IS_SET(pRoomIndex->room_flags, ROOM_IMP_ONLY) )
+	return get_trust( ch ) >= GOD;
+
+    return IS_TRUSTED( ch, LEVEL_IMMORTAL );
 }
 
 /* visibility on a room -- for entering and exits */
