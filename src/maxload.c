@@ -485,7 +485,7 @@ void do_lst_maxload(CHAR_DATA *ch, char *argument)
     OBJ_INDEX_DATA *pObj;
     int prevent_overflow = 0;
 
-    if (!IS_IMMORTAL(ch))
+    if (!IS_TRUSTED(ch, LEVEL_IMMORTAL))
     {
         send_to_char("You should not even get this line.\n\r", ch);
         return;

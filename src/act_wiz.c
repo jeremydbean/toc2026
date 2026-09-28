@@ -264,7 +264,7 @@ void do_finger( CHAR_DATA *ch, char *argument )
      return;
    }
    else
-   if(IS_IMMORTAL(ch))
+   if(IS_TRUSTED(ch, LEVEL_IMMORTAL))
    {
      fgets(arg,sizeof(arg),fp);
      fgets(arg,sizeof(arg),fp);
@@ -2735,7 +2735,7 @@ void do_forcesave(CHAR_DATA *ch, char *argument)
      FOR_EACH_CHARACTER( iter, vch )
      {
 
-       if(IS_NPC(vch) || vch->level < 3 || vch->level > ch->level)
+       if(IS_NPC(vch) || vch->level < 3 || get_trust(vch) > get_trust(ch))
          continue;
 
        if (!vch->desc)
@@ -2868,7 +2868,7 @@ void do_switch( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if( IS_IMMORTAL(ch) )
+    if( IS_TRUSTED(ch, LEVEL_IMMORTAL) )
     {
 	snprintf(buf, sizeof(buf),"%s is now Possessed by you.\n\r",victim->name);
 	send_to_char( buf, ch );
@@ -7478,7 +7478,7 @@ void do_hpardon( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (!str_cmp(arg1,"all") && ch->level > 69)
+    if (!str_cmp(arg1,"all") && get_trust(ch) >= MAX_LEVEL)
     {
 	send_to_char( "All hunters removed.\n\r", ch );
 	/* disable hunting on all hunters */
@@ -8105,7 +8105,7 @@ void do_ksock( CHAR_DATA *ch, char *argument )
           if (d->character != NULL)
           {
             if(d->descriptor == ch->desc->descriptor ||
-               ch->level < d->character->level)
+               get_trust(ch) < get_trust(d->character))
             {
               send_to_char("Yeah. Right. Ok. Whatever. Like, duh.\n\r",ch);
               return;

@@ -542,7 +542,12 @@ static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
           || victim == NULL )
             continue;
 
-        if ( victim->level < hear_level )
+        /* Trust, not level. The command table lets somebody speak on
+           a channel when get_trust() clears its rank, so asking the
+           level here meant a builder trusted to immortal could talk on
+           immtalk and never hear a word of the reply. Same for godtalk
+           and hero. */
+        if ( get_trust( victim ) < hear_level )
             continue;
 
         if ( IS_SET( victim->comm, flag )
@@ -561,7 +566,7 @@ void do_immtalk( CHAR_DATA *ch, char *argument )
 
     /* The help promises the sender's rank, so staff can tell at a glance
        who is talking without a WHO. */
-    snprintf( verb, sizeof(verb), "[%d] immtalks", (int) ch->level );
+    snprintf( verb, sizeof(verb), "[%d] immtalks", get_trust( ch ) );
 
     channel_say( ch, argument, COMM_NOWIZ, COL_IMMTALK,
                  "Immortal", "immtalk", verb, LEVEL_IMMORTAL );
@@ -572,7 +577,7 @@ void do_godtalk( CHAR_DATA *ch, char *argument )
 {
     char verb[64];
 
-    snprintf( verb, sizeof(verb), "[%d] godtalks", (int) ch->level );
+    snprintf( verb, sizeof(verb), "[%d] godtalks", get_trust( ch ) );
 
     channel_say( ch, argument, COMM_NOGOD, COL_IMMTALK,
                  "God", "godtalk", verb, MAX_LEVEL - 1 );
@@ -1166,7 +1171,12 @@ bool is_note_to( CHAR_DATA *ch, NOTE_DATA *pnote )
     if ( is_name( "all", pnote->to_list ) )
         return TRUE;
 
-    if ( IS_IMMORTAL(ch) && is_name( "immortal", pnote->to_list ) )
+    /* Trust, not level. Everything else that decides whether somebody
+       counts as staff asks get_trust(), so a builder trusted to
+       immortal rank who could run staff commands still never saw the
+       mail addressed to the people running them. */
+    if ( IS_TRUSTED(ch, LEVEL_IMMORTAL)
+    &&   is_name( "immortal", pnote->to_list ) )
         return TRUE;
 
     return is_name( ch->name, pnote->to_list );
@@ -1807,7 +1817,7 @@ void do_note( CHAR_DATA *ch, char *argument )
             /* Your own note, one addressed to you by name, or staff
                clearing the board. A note to all is not yours to delete
                just because you can read it. */
-            if ( !IS_IMMORTAL(ch)
+            if ( !IS_TRUSTED(ch, LEVEL_IMMORTAL)
               && str_cmp( ch->name, pnote->sender )
               && !is_name( ch->name, pnote->to_list ) )
             {

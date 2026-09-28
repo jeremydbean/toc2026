@@ -918,10 +918,35 @@ deliberate difference from WIZINVIS and CLOAK.
 Two helpers exist so a rule is stated once. Prefer them to open-coding a
 comparison:
 
-- `get_trust(ch)` -- **never read `ch->trust` directly.** The field is 0
-  unless somebody explicitly assigned a trust, which is the normal state, so
-  a raw comparison refuses everybody including implementors. Nine gates had
-  this bug.
+- `get_trust(ch)` -- **never read `ch->trust` directly**, and never
+  read `ch->level` or `IS_IMMORTAL()` to decide whether somebody counts
+  as staff. The field is 0 unless somebody explicitly assigned a trust,
+  which is the normal state, so a raw comparison refuses everybody
+  including implementors. Nine gates had that bug.
+
+  `interpret()` gates every command on `get_trust(ch)`, so anything
+  asking the level instead disagrees with it for exactly one kind of
+  character -- a builder given immortal trust without an immortal level.
+  They can start the command and then be refused by it. Eight more were
+  found in 2026-09 by sweeping the 111 commands WIZHELP lists:
+
+  - `channel_say()` tested `victim->level`, so **all three staff
+    channels were half-broken**: immtalk, godtalk and hero let a
+    trusted builder speak and never let them hear.
+  - `do_switch` used `IS_IMMORTAL(ch)` to pick a *message*, and the
+    branch below is the werewolf shapeshift -- so a trusted builder who
+    switched was moved to room 9 with a `were_shape` copied onto the
+    mobile.
+  - `do_ksock`, `do_forcesave`, `do_hpardon`, `do_lst_maxload`,
+    `do_finger`, and `is_note_to` for staff mail.
+
+  Three look like the same bug and are not: `do_force` already asks
+  `get_trust` for permission and reads `vch->level` only to pick which
+  victims a sweep covers, `do_forcesave` keeps a `vch->level < 3` floor,
+  and `do_remort` assigns `ch->level`. `do_immort` in `act_comm.c` is
+  declared, defined, and **never registered in the command table** --
+  an orphaned duplicate of immtalk with its own `IS_IMMORTAL(victim)`
+  loop. `tests/test_staff_trust.py` keeps the sweep.
 - `rank_protects(ch, victim)` -- whether rank stops `ch` acting on `victim`.
   Implementors are exempt, because `get_trust(victim) >= get_trust(ch)` reads
   `70 >= 70` at MAX_LEVEL and locked implementors out of twenty-two commands

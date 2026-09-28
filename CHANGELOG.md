@@ -8,6 +8,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- **All three staff channels were half-broken, and seven commands with
+  them.** `channel_say()` decided who could hear by `victim->level`
+  while the command table decides who may speak by `get_trust()`, so a
+  builder trusted to immortal rank could talk on immtalk, godtalk or
+  hero and never hear a word of the reply.
+
+  Sweeping the 111 commands WIZHELP lists turned up the same fault in
+  `switch`, `ksock`, `fsave`, `hpardon`, `maxloads`, `finger` and staff
+  mail. `switch` was the worst: `IS_IMMORTAL(ch)` picked which message
+  to print, and the branch below it is the werewolf shapeshift, so a
+  trusted builder who switched was moved to room 9 with a `were_shape`
+  copied onto the mobile they were possessing.
+
+  The rank immtalk and godtalk print is now the trust that let the
+  speaker on the channel rather than their level.
+
 ### Added
 
 - **The note board answers back.** `note reply <n>` starts a note to
