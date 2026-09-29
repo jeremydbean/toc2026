@@ -648,6 +648,7 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "PkRec %ld\n",ch->pcdata->pkills_received );
     fprintf( fp, "PkGiv %ld\n",ch->pcdata->pkills_given );
     achievement_write_char( ch, fp );
+    fprintf( fp, "LastOut  %ld\n", ch->pcdata->last_logout );
     fprintf( fp, "SesLogin %ld\n", ch->pcdata->last_session_login );
     fprintf( fp, "SesDur   %ld\n", ch->pcdata->last_session_dur );
     fprintf( fp, "SesExpG  %ld\n", ch->pcdata->last_session_exp_gain );
@@ -1187,6 +1188,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->session_pk_kills        = 0;
     ch->pcdata->session_deaths          = 0;
     ch->pcdata->session_quests          = 0;
+    ch->pcdata->last_logout             = 0;
     ch->pcdata->last_session_login      = 0;
     ch->pcdata->last_session_dur        = 0;
     ch->pcdata->last_session_exp_gain   = 0;
@@ -1758,6 +1760,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
 
 
 	case 'L':
+	    KEY( "LastOut",	ch->pcdata->last_logout,	fread_number( fp ) );
 	    KEY( "LastLevel",	ch->pcdata->last_level, fread_number( fp ) );
 	    KEY( "LLev",	ch->pcdata->last_level, fread_number( fp ) );
 	    KEY( "Level",	ch->level,		(sh_int)(fread_number( fp )) );

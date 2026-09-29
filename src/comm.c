@@ -1423,6 +1423,11 @@ void close_socket( DESCRIPTOR_DATA *dclose )
                 record_logout( ch->name, dclose->host,
                     shutting_down ? "shutdown" : "linkdead",
                     (long)(current_time - ch->pcdata->session_logon) );
+            /* Losing the link is leaving, as far as HISTORY cares:
+               without this a dropped player would be shown everything
+               said since their last clean quit. */
+            if ( !IS_NPC(ch) && ch->pcdata != NULL )
+                ch->pcdata->last_logout = (long)current_time;
 	    ch->desc = NULL;
 	}
 	else
@@ -2842,6 +2847,7 @@ case CON_DEFAULT_CHOICE:
 	       silent -- a report went into a flat file that nothing in
 	       the game ever mentioned again. */
 	    report_login_notice( ch );
+	    history_login_notice( ch );
 	}
 	break;
     }

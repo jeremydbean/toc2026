@@ -67,6 +67,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **You are shown what you missed when you log in.** The channel lines
+  said while you were away -- the ones you would have seen had you been
+  here -- from the moment you last left, capped at fifteen with a count
+  of the rest. Tells are not in it, because a tell to somebody who is
+  not logged in is never delivered. The cut-off is recorded both on a
+  clean quit and on losing link, so a dropped player is not later shown
+  everything since their last proper goodbye.
+
 - **HISTORY reads back what was said.** A player's Mudlet chat capture
   stopped part way through a session and there was no way to recover
   the lines, so the game keeps them now. `HISTORY` on its own shows the

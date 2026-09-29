@@ -641,7 +641,7 @@ static int history_compare( const void *a, const void *b )
  * cannot read is never gathered at all.
  */
 static int history_gather( CHAR_DATA *ch, HISTORY_ENTRY *out, int limit,
-                           int only_channel, bool want_tells )
+                           int only_channel, bool want_tells, time_t since )
 {
     int count = 0;
     int index;
@@ -667,6 +667,8 @@ static int history_gather( CHAR_DATA *ch, HISTORY_ENTRY *out, int limit,
 
             if ( line->text == NULL )
                 continue;
+            if ( since != 0 && line->when <= since )
+                continue;
 
             out[count].when = line->when;
             out[count].meta = &channel_meta_table[index];
@@ -687,6 +689,8 @@ static int history_gather( CHAR_DATA *ch, HISTORY_ENTRY *out, int limit,
             int slot = ( start + i ) % TELL_HISTORY_LINES;
 
             if ( ch->pcdata->tell_history[slot] == NULL )
+                continue;
+            if ( since != 0 && ch->pcdata->tell_history_when[slot] <= since )
                 continue;
 
             out[count].when = ch->pcdata->tell_history_when[slot];
@@ -816,7 +820,7 @@ void do_history( CHAR_DATA *ch, char *argument )
     /* HISTORY TELL: the character's own, and nobody else's. */
     if ( !str_cmp( arg, "tell" ) || !str_cmp( arg, "tells" ) )
     {
-        count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -2, true );
+        count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -2, true, 0 );
         history_print( ch, gathered, count, wanted, "your tells" );
         return;
     }
@@ -824,7 +828,7 @@ void do_history( CHAR_DATA *ch, char *argument )
     /* HISTORY: everything this character could have heard. */
     if ( arg[0] == '\0' )
     {
-        count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -1, true );
+        count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -1, true, 0 );
         history_print( ch, gathered, count, wanted, "every channel" );
         return;
     }
@@ -843,9 +847,63 @@ void do_history( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    count = history_gather( ch, gathered, HISTORY_GATHER_MAX, index, false );
+    count = history_gather( ch, gathered, HISTORY_GATHER_MAX, index, false,
+                            0 );
     history_print( ch, gathered, count, wanted,
                    channel_meta_table[index].name );
+}
+
+/*
+ * What was said while they were away.
+ *
+ * Shown once, on arrival, because somebody logging in has no way of
+ * knowing they missed anything. Only lines after their last logout,
+ * only channels they may read, and only the most recent few -- a wall
+ * of text at the login prompt is worse than nothing.
+ *
+ * Tells are left out on purpose: a tell to somebody who is not here is
+ * never delivered, so there is nothing for them to have missed.
+ *
+ * The history lives in memory, so a restart since they left means there
+ * is nothing to show. That is the honest answer rather than a gap to
+ * apologise for.
+ */
+void history_login_notice( CHAR_DATA *ch )
+{
+    HISTORY_ENTRY gathered[HISTORY_GATHER_MAX];
+    char buf[MAX_STRING_LENGTH];
+    int count;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    /*
+     * With no recorded logout -- a new character, or anyone whose first
+     * login this is since the feature arrived -- there is no cut-off to
+     * apply, so they get the most recent few. That is still "what you
+     * would have seen had you been here", and it means the notice works
+     * from the first login rather than the second.
+     */
+    count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -1, false,
+                            ch->pcdata->last_logout > 0
+                                ? (time_t)ch->pcdata->last_logout : 0 );
+    if ( count == 0 )
+        return;
+
+    snprintf( buf, sizeof(buf), "\n\r{%02XWhile you were away:{00\n\r",
+              COL_HIGHLIGHT );
+    send_to_char( buf, ch );
+
+    history_print( ch, gathered, count, HISTORY_LOGIN_LINES,
+                   "the channels" );
+
+    if ( count > HISTORY_LOGIN_LINES )
+    {
+        snprintf( buf, sizeof(buf),
+                  "{%02X(%d more -- type HISTORY %d to see them all.){00\n\r",
+                  COL_HIGHLIGHT, count - HISTORY_LOGIN_LINES, count );
+        send_to_char( buf, ch );
+    }
 }
 
 void do_auction( CHAR_DATA *ch, char *argument )
@@ -3572,6 +3630,8 @@ void do_quit( CHAR_DATA *ch, char *argument )
     /* Snapshot session stats so they can be viewed offline */
     {
         long dur = (long)(current_time - ch->pcdata->session_logon);
+        /* HISTORY reads this to work out what they missed. */
+        ch->pcdata->last_logout           = (long)current_time;
         ch->pcdata->last_session_login    = (long)ch->pcdata->session_logon;
         ch->pcdata->last_session_dur      = dur;
         ch->pcdata->last_session_exp_gain = ch->exp - ch->pcdata->session_start_exp;

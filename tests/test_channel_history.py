@@ -117,6 +117,53 @@ class ChannelHistory(unittest.TestCase):
                     self.assertNotIn("a private matter", said, said)
 
 
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class MissedWhileAway(unittest.TestCase):
+    def test_a_returning_player_is_shown_what_was_said(self) -> None:
+        """Two characters: one talks while the other is logged out."""
+        with LiveMud() as mud:
+            for name in ("Awayly", "Chatly"):
+                with mud.connect(timeout=120) as client:
+                    create_character(client, name, PASSWORD)
+                    client.send("quit")
+                    self.assertTrue(client.wait_closed())
+
+            # Chatly holds the floor while Awayly is gone.
+            with mud.connect(timeout=120) as talker:
+                login(talker, "Chatly", PASSWORD)
+                run(talker, "gossip something while you were out", 1.8)
+
+                with mud.connect(timeout=120) as back:
+                    said = ""
+                    mark = len(back.transcript)
+                    login(back, "Awayly", PASSWORD)
+                    back.drain(2.0)
+                    said = back.transcript[mark:]
+
+                    self.assertIn("While you were away", said, said)
+                    self.assertIn("something while you were out", said, said)
+
+    def test_it_does_not_repeat_what_they_already_saw(self) -> None:
+        """The cut-off is their own logout, not a fixed window."""
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Twicely", PASSWORD)
+                run(client, "gossip heard this one live", 1.8)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+
+            with mud.connect(timeout=120) as client:
+                mark = len(client.transcript)
+                login(client, "Twicely", PASSWORD)
+                client.drain(2.0)
+                said = client.transcript[mark:]
+
+                self.assertNotIn("While you were away", said, said)
+                # It is still in the history if they go looking.
+                self.assertIn("heard this one live",
+                              run(client, "history gossip", 2.0))
+
+
 class HistorySourceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
