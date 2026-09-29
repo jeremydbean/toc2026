@@ -64,10 +64,34 @@ if [ -n "$token" ]; then
     curl -s --max-time 5 http://127.0.0.1:9001/api/admin/status \
         -H "X-Admin-Token: $token" | grep -o '"count":[0-9]*' | head -1 || true
 fi
+# Somebody being connected is not a reason to hold. The update is
+# already built and validated by this point, and holding a validated
+# update until the mud happens to be empty is the worse failure --
+# the Pi's updater waited up to fifteen minutes and then went ahead
+# anyway, which is the same answer taken slowly.
+#
+# What is owed to whoever is on is a warning and a save, in that
+# order, so nobody loses a session to a restart they did not expect.
+# `fsave` is do_forcesave, which writes every playing character; the
+# game also saves on a clean shutdown, and this is the belt to that
+# pair of braces. The queue is polled rather than read on write, so
+# each step needs a moment to be picked up before the next one is
+# worth sending.
 q="$CURRENT/area/webadmin.queue"
-[ -f "$q" ] && printf 'announce|%s\n' \
-    "Restarting for an update - back in under a minute." >> "$q" 2>/dev/null || true
-sleep 6
+if [ -f "$q" ]; then
+    printf 'announce|%s\n' \
+        "Update incoming - saving everyone now, back in under a minute." \
+        >> "$q" 2>/dev/null || true
+    sleep 4
+    printf 'command|%s\n' "fsave" >> "$q" 2>/dev/null || true
+    sleep 6
+    printf 'announce|%s\n' \
+        "Everyone saved. Restarting - reconnect in a moment." \
+        >> "$q" 2>/dev/null || true
+    sleep 3
+else
+    sleep 6
+fi
 
 say "installing"
 systemctl stop toc-web toc-game

@@ -712,6 +712,28 @@ broken: what is down, how to deploy, whether the backups are working,
 and how to rebuild on a new machine. Everything on it has been run at
 least once.
 
+**Deploy whenever the change is ready, connected players or not.** The
+owner settled this on 2026-09-29: do not hold, do not ask, and do not
+wait for an empty mud. By the time the stop is reached the update has
+already been fetched, built and validated, and holding a validated
+update until nobody is on is the worse failure -- the Pi's updater
+waited up to fifteen minutes and then went ahead regardless, which is
+the same answer taken slowly.
+
+What is owed to whoever is connected is a **warning and a save**, in
+that order, and `toc-deploy` does both before `systemctl stop`: an
+announce, then `command|fsave` through the webadmin queue, which is
+`do_forcesave` and writes every playing character, then a second
+announce. The game saves on a clean shutdown as well; the explicit
+save is the belt to that pair of braces, because a session's progress
+is not something to lose to a restart nobody expected. The queue is
+polled rather than read on write, so each step needs a moment before
+the next one is worth sending.
+
+Because the install step runs before the restart in the same run, a
+change to `toc-deploy` itself takes effect on the *next* deploy, not
+the one carrying it.
+
 `toc-deploy` exists because doing this by hand is how `area/custom.are`
 went missing: it is tracked in git *and* listed in `area.lst`, so
 treating it as a runtime file and excluding it left the game unable to
