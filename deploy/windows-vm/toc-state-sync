@@ -26,7 +26,9 @@ STATE_REPO="${STATE_REPO:-/srv/toc/state-repo}"
 REMOTE="${REMOTE:-git@github.com:jeremydbean/toc2026.git}"
 BRANCH="${BRANCH:-main}"
 GIT_SSH_KEY="${GIT_SSH_KEY:-/srv/toc/.ssh/id_ed25519_state_sync}"
-LOCK_FILE="/run/toc-state-sync.lock"
+# systemd makes this directory for us and gives it to the service user;
+# /run itself is root-owned and the service runs as toc.
+LOCK_FILE="${LOCK_FILE:-/run/toc-state-sync/lock}"
 
 export GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
 

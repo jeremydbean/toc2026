@@ -9,6 +9,8 @@ Type=oneshot
 User=toc
 Group=toc
 Environment=HOME=/srv/toc
+# /run is root-owned; this one is ours, and systemd cleans it up.
+RuntimeDirectory=toc-state-sync
 ExecStart=/usr/local/sbin/toc-state-sync
 # A failed push is not a reason to stop trying; the next timer fires.
 SuccessExitStatus=0 1
