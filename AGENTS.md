@@ -834,6 +834,21 @@ seconds and `23` nine times in two, and **every one of them
 succeeded**. A free service standing in the temple can simply fill the
 pool.
 
+**Her menu has to fit one screen, and that is a correctness rule, not
+a taste one.** `page_to_char` stops at "[Hit Return to continue]" and
+the next thing the player sends is consumed as that return -- so a
+menu that pages silently eats the command after it, and the player
+sees their buff simply not happen. Hers ran to three screens (one
+spell per line, its full name beside it, and "free" written forty
+times) and cost two tests before anyone noticed it was the product.
+It is three columns of keywords with the groups on one line now, and
+`tests/test_spellup_mob.py` asserts both that it does not page and
+that the next command lands. If you add to her list, take something
+out of the layout.
+
+Two things the compact version must keep saying, because they are the
+whole point of her: that it is **free**, and how long a buff lasts.
+
 Only spells with a real `spell_fun` and a character target belong on
 her list. `iron skin`, `psionic armor`, `psychic shield`, `mindbar` and
 `levitate` are all `spell_null` -- the same dead-registry state

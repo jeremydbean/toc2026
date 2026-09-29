@@ -8,7 +8,51 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Live player state reaches GitHub every five minutes.** `player/`,
+  `gods/`, `log/` and the `area/` runtime files are committed to `main`
+  in plaintext by `toc-state-sync` on whichever host is running the
+  game, so an outage costs minutes rather than everything since the
+  last time somebody thought to copy them. `toc-state-sync-check`
+  complains -- to the journal, to a marker file, and into the game
+  where staff will see it -- if that stops working, because the way
+  backups fail is quietly. `deploy/toc-restore` rebuilds a working
+  game from the public repository and nothing else, and has been
+  rehearsed rather than only written.
+
+- **Characters are written to disk every five minutes instead of
+  every thirty.** Stock ROM staggers autosaves over a 30-tick cycle,
+  so syncing every five minutes was copying files that could be half
+  an hour stale. `AUTOSAVE_CYCLE_TICKS` closes that.
+
 ### Fixed
+
+- **Hermie's menu ran to three screens and ate the command after it.**
+  `page_to_char` stops at "[Hit Return to continue]" and takes
+  whatever arrives next as that return, so asking her for a buff
+  straight after reading her list did nothing at all -- no refusal, no
+  message, nothing. Three columns of keywords with the groups on one
+  line brings forty-odd rows down to twelve, and a test now asserts it
+  does not page.
+
+- **A player-state sync no longer starts a CI run.** Every one used to:
+  an hour and a half of runner time to be told no code had changed,
+  three times an hour, burying the real failures underneath. Guarded
+  twice, by `paths-ignore` on the workflow and `[skip ci]` in the
+  commit.
+
+- **The dashboard's host panel worked on the Pi and nowhere else.** It
+  was disabled by default and its service, timer and journal unit
+  names were hard-coded to the appliance's, so on the VM both host
+  endpoints answered 503 and every table came back empty. The names
+  come from the environment now. Game uptime moved onto the host
+  payload as well, so the Host tab stops showing "Locked" beside a
+  host uptime that is working, and the tile next to it no longer calls
+  the machine a Pi.
+
+- **The endless water jug is back in the newbie pack.** Only the
+  ordinary one was meant to come out.
 
 - Mudlet package 1.0.6 explicitly shows and raises its mapper on refresh,
   resize, atlas load, and `tocgui on`, without overriding `tocgui off`.
