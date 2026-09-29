@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790711304
+LogO 1790724350
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6336384
+Plyd 6336419
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 30608
-HMV  30000 30000 30000 30000 30000 30000
+HMV  29960 29960 30020 30025 29975 29975
 NewGold 50
 NewPlat 2503009
 NewCopp 32
@@ -74,6 +74,12 @@ Achv carry-hundred-platinum 1789572550
 Achv four-denominations 1789572550
 Achv silver-arrow 1788203195
 Achv hyrule-death-mountain 1788203214
+Achv level-35 1790724320
+Achv level-45 1790724320
+Achv month-played 1790724320
+Achv bank-thousand-platinum 1790724320
+Achv carry-ten-platinum 1790724320
+Achv carry-thousand-platinum 1790724320
 LastOut  0
 SesLogin 1790639508
 SesDur   157
@@ -89,9 +95,10 @@ QuestPnts 24
 CasinoWon  102
 CasinoLost 204
 Exp  1927300
-Act  276684
+Act  293068
 AfBy 512
 Comm 155680
+Invi 70
 Mounted 0
 On_Quest 0
 Quest_Pause 0
