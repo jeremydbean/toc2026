@@ -4684,9 +4684,9 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "mana" ) )
     {
-	if ( value < 0 || value > 15000 )
+	if ( value < 0 || value > 30000 )
 	{
-	    send_to_char( "Mana range is 0 to 15,000 mana points.\n\r", ch );
+	    send_to_char( "Mana range is 0 to 30,000 mana points.\n\r", ch );
 	    return;
 	}
         victim->max_mana = clamp_sh_int( value );
@@ -4702,9 +4702,9 @@ void do_mset( CHAR_DATA *ch, char *argument )
 
     if ( !str_prefix( arg2, "end" ) )
     {
-	if ( value < 0 || value > 15000 )
+	if ( value < 0 || value > 30000 )
 	{
-	    send_to_char( "Endurance range is 0 to 15,000 points.\n\r", ch );
+	    send_to_char( "Endurance range is 0 to 30,000 points.\n\r", ch );
 	    return;
 	}
         victim->max_move = clamp_sh_int( value );

@@ -18,6 +18,11 @@ alias `tocgui off` hides the interface and `tocgui on` restores it.
 `tocgui status` reports the installed package version and whether GMCP data is
 active. Mapping continues while the interface is hidden.
 
+Package 1.0.6 restores mapper visibility and stacking on refresh, resize,
+atlas import, and `tocgui on`. If the gauges work but the map pane is blank,
+`tocgui on` repairs the display without replacing your map. `tocgui off`
+remains respected by delayed refreshes and window resizing.
+
 The map is intentionally exploration-based. `Room.Info` never reveals secret
 exits or rooms the character cannot see. Portals, `enter` routes, teleports,
 and scripted movement may not produce ordinary directional map links. A room

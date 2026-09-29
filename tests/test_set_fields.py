@@ -49,6 +49,28 @@ def immortal(mud: LiveMud, name: str) -> None:
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class SetCharTests(unittest.TestCase):
+    def test_mana_and_endurance_allow_30000_and_persist(self) -> None:
+        with LiveMud() as mud:
+            immortal(mud, "Zsetcaps")
+            with mud.connect(timeout=120) as god:
+                login(god, "Zsetcaps", PASSWORD)
+                for field in ("mana", "end"):
+                    for value in (0, 15001, 30000):
+                        reply = run(god, f"set char Zsetcaps {field} {value}")
+                        self.assertNotIn("range is", reply)
+                        self.assertIn(str(value), reply)
+                    for value in (-1, 30001, 32768):
+                        reply = run(god, f"set char Zsetcaps {field} {value}")
+                        self.assertIn("range is 0 to 30,000", reply)
+                run(god, "restore Zsetcaps")
+                god.send("quit")
+                god.wait_closed()
+            with mud.connect(timeout=120) as god:
+                login(god, "Zsetcaps", PASSWORD)
+                shown = run(god, "stat char Zsetcaps")
+                self.assertRegex(shown, r"Mana:\s*30000/30000")
+                self.assertRegex(shown, r"End:\s*30000/30000")
+
     def test_the_new_combat_and_movement_fields_apply(self) -> None:
         with LiveMud() as mud:
             immortal(mud, "Zsetchar")

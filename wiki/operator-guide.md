@@ -7,6 +7,10 @@ command availability depends on trust level; use `wizhelp` and
 
 ## Operating Principles
 
+`set char <name> mana <value>` and `set char <name> end <value>` accept
+0 through 30,000 and update the maximum and permanent base stat. They do not
+refill the current pool; use `restore <name>` when a refill is intended.
+
 1. Protect player continuity before convenience. Back up before upgrades,
    restores, mass edits, or experimental commands.
 2. Prefer in-game and dashboard operations over direct file edits.

@@ -8,6 +8,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- Mudlet package 1.0.6 explicitly shows and raises its mapper on refresh,
+  resize, atlas load, and `tocgui on`, without overriding `tocgui off`.
+- Staff `set char <name> mana` and `end` accept 0 through 30,000, matching
+  the existing HP/movement ceiling instead of rejecting values above 15,000.
+
 ### Added
 
 - **Shadowmeld is a real skill.** It is for two things: going AFK

@@ -33,7 +33,7 @@ end
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.5"
+tocMudlet.version = "1.0.6"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -402,12 +402,17 @@ end
 -- and calling updateMap() is what makes it draw on its own; doing it on
 -- a resize as well keeps it right when the window changes.
 function tocMudlet.nudgeMap()
+  if not tocMudlet.enabled then return end
   local mapper = tocMudlet.ui and tocMudlet.ui.mapper
   if not mapper then return end
 
+  -- Repositioning alone does not restore visibility or lift the native
+  -- mapper above the background after a package reload or window resize.
+  if mapper.show then pcall(function() mapper:show() end) end
   -- Geyser recomputes the real pixel rectangle from the container size.
   if mapper.reposition then pcall(function() mapper:reposition() end) end
   if mapper.resize then pcall(function() mapper:resize() end) end
+  if mapper.raise then pcall(function() mapper:raise() end) end
   if updateMap then pcall(updateMap) end
 end
 
@@ -454,6 +459,7 @@ function tocMudlet.onDownloadDone(file)
     if centerview and gmcp and gmcp.Room and gmcp.Room.Info and gmcp.Room.Info.num then
       pcall(centerview, tonumber(gmcp.Room.Info.num))
     end
+    tocMudlet.nudgeMap()
   else
     cecho("\n<red>The world map downloaded but would not load.<reset> " ..
       "Make sure the mapper is showing, then try <white>tocgui atlas<reset> again.\n")
@@ -481,6 +487,7 @@ function tocMudlet.command(action)
       tocMudlet.buildUI()
       tocMudlet.refresh()
     end
+    tocMudlet.nudgeMap()
     cecho("\n<green>Times of Chaos GUI enabled.<reset>\n")
   else
     cecho(string.format("\n<cyan>Times of Chaos Mudlet package %s: GUI %s, GMCP %s.<reset>\n",

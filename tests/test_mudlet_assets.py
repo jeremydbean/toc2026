@@ -79,6 +79,38 @@ class MudletAssetTests(unittest.TestCase):
         self.assertIn("pcall(setExitStub, roomId, direction, false)", script)
 
     @unittest.skipUnless(shutil.which("lua"), "Lua interpreter is not installed")
+    def test_mapper_refresh_restores_visibility_but_respects_off(self) -> None:
+        script = self.package_script()
+        start = script.index("function tocMudlet.nudgeMap()")
+        end = script.index("function tocMudlet.refresh()", start)
+        harness = r'''
+local calls = {}
+local function record(name) table.insert(calls, name) end
+tocMudlet = {enabled = true, ui = {mapper = {
+  show = function() record("show") end,
+  reposition = function() record("position") end,
+  resize = function() record("resize") end,
+  raise = function() record("raise") end,
+}}}
+updateMap = function() record("update") end
+'''
+        checks = r'''
+tocMudlet.nudgeMap()
+assert(table.concat(calls, ",") == "show,position,resize,raise,update")
+calls = {}
+tocMudlet.enabled = false
+tocMudlet.nudgeMap()
+assert(#calls == 0, "refresh must not undo tocgui off")
+tocMudlet.enabled = true
+tocMudlet.ui = {}
+tocMudlet.nudgeMap()
+assert(#calls == 0, "teardown must be safe")
+'''
+        result = subprocess.run(["lua", "-"], input=harness + script[start:end] + checks,
+                                text=True, capture_output=True, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+    @unittest.skipUnless(shutil.which("lua"), "Lua interpreter is not installed")
     def test_package_lua_compiles(self) -> None:
         result = subprocess.run(
             ["lua", "-e", 'assert(load(io.read("*a")))'],
