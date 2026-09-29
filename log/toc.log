@@ -12095,3 +12095,15 @@ Tue Sep 29 16:12:07 2026 :: Automated backup complete.
 Tue Sep 29 16:12:07 2026 :: Daily backup complete.
 Tue Sep 29 16:12:30 2026 :: Sock.sinaddr:  192.168.0.1
 Tue Sep 29 16:12:30 2026 :: EOF encountered on read.
+Tue Sep 29 16:13:19 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Tue Sep 29 16:13:25 2026 :: Received signal 15; saving players and shutting down.
+Tue Sep 29 16:13:25 2026 :: Normal termination of game.
+Tue Sep 29 16:13:25 2026 ::  INIT OK 
+Tue Sep 29 16:13:25 2026 :: ROM is ready to rock on port 9000.
+Tue Sep 29 16:13:25 2026 :: Automated backup complete.
+Tue Sep 29 16:13:25 2026 :: Daily backup complete.
+Tue Sep 29 16:13:47 2026 :: Loading Killuminati's playerfile
+Tue Sep 29 16:13:47 2026 :: Killuminati@192.168.0.1 has connected.
+Tue Sep 29 16:14:04 2026 :: Killuminati cleared the bug reports into bugs.txt.20260929-161404.
+Tue Sep 29 16:14:07 2026 :: Killuminati cleared the typo reports into typos.txt.20260929-161407.
+Tue Sep 29 16:14:09 2026 :: Killuminati cleared the idea reports into ideas.txt.20260929-161409.
