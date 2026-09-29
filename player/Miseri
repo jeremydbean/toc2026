@@ -1,0 +1,476 @@
+#PLAYER
+Name Miseri~
+Id   46467
+LogO 1790426886
+Vers 4
+Prom ~
+Ignoring ~
+Race human~
+Sex  1
+Cla  5
+Gui  5
+Psionic  0
+PsiGrant 1
+PsiSpec ~
+Cast none
+Levl 12
+Tru  70
+Plyd 4172
+ListRemorts ~
+NumRemorts 0
+Note 0
+Scro 22
+Room 25265
+HMV  146 146 1001 1001 131 131
+NewGold 236
+NewPlat 104
+NewCopp 1745
+NewSilv 159
+BankCP 0
+IntTime 1790363953
+IntTotal 0
+Dcount 0
+SavedOnce 1
+Corpses	0
+PkRec 0
+PkGiv 0
+AchKills 30
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1789786847
+Achv level-10 1789798927
+Achv first-kill 1789672913
+Achv carry-one-platinum 1789786847
+Achv carry-hundred-platinum 1789798357
+Achv four-denominations 1789786847
+SesLogin 1790426815
+SesDur   71
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
+Exp  25253
+Act  80124
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 3
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  8
+Prac 31
+Trai 35
+Alig  -118
+Hit   8
+Dam   6
+ACs 72 77 75 86
+Attr 13 13 13 13 13
+AMod -2 13 16 -1 13
+Pass MiJx5Di.yq8i6~
+Titl  the Maker of Maggots~
+Pnts 0
+TSex 1
+LLev 0
+HMVP 136 991 166
+Cond 0 45 45
+Alias / who~
+Alias ] recall~
+Alias k c 'chill touch'~
+Sk 75 'animate parts'
+Sk 75 'armor'
+Sk 1 'blindness'
+Sk 1 'cancellation'
+Sk 43 'cause light'
+Sk 45 'chill touch'
+Sk 1 'create skeleton'
+Sk 1 'create wraith'
+Sk 1 'create vampire'
+Sk 43 'butcher'
+Sk 1 'bewitch weapon'
+Sk 1 'curse'
+Sk 1 'earth travel'
+Sk 75 'embalm'
+Sk 1 'energy drain'
+Sk 1 'evil eye'
+Sk 1 'fly'
+Sk 1 'haven'
+Sk 1 'major globe'
+Sk 1 'maze'
+Sk 1 'pass door'
+Sk 1 'plague'
+Sk 1 'poison'
+Sk 1 'raise dead'
+Sk 1 'remove curse'
+Sk 1 'rope trick'
+Sk 1 'sanctuary'
+Sk 1 'shield'
+Sk 1 'shroud'
+Sk 1 'ghostly presence'
+Sk 1 'shock sphere'
+Sk 1 'skeletal hands'
+Sk 1 'tentacles'
+Sk 1 'trap the soul'
+Sk 1 'vampiric touch'
+Sk 1 'weaken'
+Sk 1 'neutrality field'
+Sk 8 'axe'
+Sk 80 'dagger'
+Sk 6 'flail'
+Sk 5 'mace'
+Sk 3 'polearm'
+Sk 7 'spear'
+Sk 3 'sword'
+Sk 15 'whip'
+Sk 1 'archery'
+Sk 1 'concoct'
+Sk 1 'ride'
+Sk 1 'shove'
+Sk 43 'scrolls'
+Sk 1 'staves'
+Sk 43 'wands'
+Sk 100 'recall'
+Gr 'rom basics'
+Gr 'necro basics'
+Gr 'necro default'
+Gr 'life & undeath'
+Gr 'necro maladictions'
+Gr 'necromancy'
+Gr 'necro protective'
+Gr 'necro transportation'
+End
+
+#O
+Vnum 29032
+Nest 0
+Name newbie pack starter~
+ShD  A *NEWBIE* pack!~
+Desc A *NEWBIE* pack! has been left here.~
+Wear 12
+Lev  1
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29008
+Nest 0
+Wear 13
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5776
+Nest 0
+ExtF 65
+Wear -1
+Lev  1
+Cost 40000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 0
+Wear 4
+Lev  1
+Cost 250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 0
+Wear 3
+Lev  1
+Cost 250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 0
+ExtF 67108864
+Wear 15
+Lev  1
+Cost 1000000
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 0
+ExtF 67108864
+Wear 14
+Lev  1
+Cost 1000000
+Cond 96
+Repd 0
+End
+
+#O
+Vnum 5003
+Nest 0
+Wear -1
+Lev  1
+Cost 2500000
+Cond 100
+Repd 0
+Affect -1 6 -1 -1 19 0 0
+Affect -1 6 -1 5 17 0 0
+Affect -1 6 -1 -10 13 0 0
+End
+
+#O
+Vnum 5003
+Nest 0
+Wear -1
+Lev  1
+Cost 2500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29009
+Nest 0
+Wear 0
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 15011
+Nest 0
+ExtF 67108928
+Wear 7
+Lev  1
+Cost 2000000
+Cond 99
+Repd 0
+Val  4 3 4 0 0
+Affect -1 1 -1 -1 2 0 0
+End
+
+#O
+Vnum 3093
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3605
+Nest 0
+ExtF 68157441
+Wear 2
+Lev  1
+Cost 10000000
+Cond 98
+Repd 0
+End
+
+#O
+Vnum 3605
+Nest 0
+ExtF 68157441
+Wear 1
+Lev  1
+Cost 10000000
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 4639
+Nest 0
+Wear -1
+Lev  1
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 4639
+Nest 0
+Wear -1
+Lev  1
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 3081
+Nest 0
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 3081
+Nest 0
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 3094
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5780
+Nest 0
+ExtF 65
+Wear -1
+Lev  1
+Cost 15000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 20301
+Nest 0
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 0
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 0
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 0
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 0
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear 17
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 17016
+Nest 0
+ExtF 67108869
+Wear 16
+Lev  1
+Cost 50000000
+Cond 99
+Repd 0
+End
+
+#END

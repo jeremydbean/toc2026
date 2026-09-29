@@ -1,7 +1,7 @@
 #PLAYER
 Name Epp~
 Id   14050
-LogO 953491600
+LogO 1789608624
 Vers 3
 Desc SOBE POWER!! The Drink Of All Chamelions
 ~
@@ -12,9 +12,11 @@ Sex  1
 Cla  3
 Gui  2
 Psionic  2
+PsiGrant 0
+PsiSpec ~
 Cast none
 Levl 51
-Plyd 856456
+Plyd 856482
 ListRemorts ~
 NumRemorts 0
 Note 953331256
@@ -25,14 +27,45 @@ NewGold 8
 NewPlat 5
 NewCopp 37
 NewSilv 40
-Bank 80
+BankCP 80000000
+IntTime 0
 Dcount 3
+SavedOnce 1
 Corpses	0
 PkRec 3
 PkGiv 0
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1789608567
+Achv level-10 1789608567
+Achv level-15 1789608567
+Achv level-20 1789608567
+Achv level-25 1789608567
+Achv level-30 1789608567
+Achv level-40 1789608567
+Achv level-50 1789608567
+Achv day-played 1789608567
+Achv week-played 1789608567
+Achv bank-one-platinum 1789608567
+Achv carry-one-platinum 1789608567
+Achv four-denominations 1789608567
+SesLogin 0
+SesDur   0
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
 QuestPnts 3506
 Exp  119750
 Act  200
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -499,7 +532,7 @@ Nest 0
 ExtF 2097153
 Wear -1
 Lev  1
-Time 278
+Time 277
 Cost 0
 Cond 100
 Repd 0

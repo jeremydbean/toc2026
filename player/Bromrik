@@ -1,0 +1,145 @@
+#PLAYER
+Name Bromrik~
+Id   62508
+LogO 1789664804
+Vers 3
+Prom ~
+Ignoring  ~
+Race dwarf~
+Sex  1
+Cla  3
+Gui  11
+Psionic  0
+PsiGrant 0
+PsiSpec ~
+Cast none
+Levl 1
+Plyd 326
+ListRemorts ~
+NumRemorts 0
+Note 0
+Scro 22
+Room 3714
+HMV  16 20 100 100 100 100
+NewGold 0
+NewPlat 0
+NewCopp 0
+NewSilv 0
+BankCP 0
+IntTime 1789664594
+Dcount 0
+SavedOnce 1
+Corpses	0
+PkRec 0
+PkGiv 0
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+SesLogin 0
+SesDur   0
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
+Exp  0
+Act  66812
+AfBy 512
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  8
+Prac 4
+Trai 3
+Save  -1
+Alig  750
+Hit   2
+Dam   2
+ACs 75 75 75 79
+Attr 14 13 12 12 15
+AMod 0 0 0 0 0
+Pass Br9gFv3H7Kd7Y~
+Titl  the Swordpupil~
+Pnts 0
+TSex 1
+LLev 0
+HMVP 20 100 100
+Cond 0 43 43
+Sk 1 'shield block'
+Sk 13 'sword'
+Sk 1 'bash'
+Sk 1 'disarm'
+Sk 1 'kick'
+Sk 1 'parry'
+Sk 1 'rescue'
+Sk 1 'recall'
+Gr 'rom basics'
+Gr 'warrior basics'
+Gr 'warrior default'
+AffD 'armor'   0  20 -20  17          0          0
+End
+
+#O
+Vnum 3716
+Nest 0
+Wear 0
+Cost 0
+Cond 100
+Repd 0
+Val  0 0 195 0 0
+End
+
+#O
+Vnum 3703
+Nest 0
+Wear 5
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear 11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3702
+Nest 0
+Wear 16
+Cost 0
+Cond 100
+Repd 0
+End
+
+#END

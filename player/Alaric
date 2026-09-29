@@ -1,0 +1,879 @@
+#PLAYER
+Name Alaric~
+Id   22012
+LogO 1790648624
+Vers 4
+Prom ~
+Ignoring ~
+Race dwarf~
+Sex  2
+Cla  3
+Gui  3
+Psionic  0
+PsiGrant 1
+PsiSpec ~
+PsiKnown ~
+Cast none
+Levl 50
+Plyd 199727
+ListRemorts ~
+NumRemorts 0
+Note 1790386686
+Scro 22
+Room 2497
+HMV  1167 1167 1873 1918 117 927
+NewGold 46
+NewPlat 40
+NewCopp 88
+NewSilv 2
+BankCP 407696207
+IntTime 1790643484
+IntTotal 3696207
+Dcount 0
+SavedOnce 1
+Corpses	0
+PkRec 0
+PkGiv 0
+AchKills 728
+AchQuests 77
+AchDeaths 0
+AchExplore 5
+AchMaps 5
+AchCompass 5
+AchTriforce 4
+Achv level-5 1789779928
+Achv level-10 1789781673
+Achv level-15 1789822189
+Achv level-20 1789832718
+Achv level-25 1789836532
+Achv level-30 1789857296
+Achv level-40 1789871752
+Achv level-50 1789947074
+Achv day-played 1790134411
+Achv first-kill 1789779526
+Achv hundred-kills 1789824285
+Achv first-quest 1789950885
+Achv ten-quests 1790040827
+Achv fifty-quests 1790470861
+Achv five-quest-streak 1790127385
+Achv ten-quest-streak 1790643205
+Achv quest-rush 1789952291
+Achv hyrule-arrival 1789863229
+Achv visit-casino 1790643630
+Achv visit-gangland 1790640411
+Achv visit-thalos 1790639548
+Achv visit-shire 1790639907
+Achv visit-wyvern 1790640963
+Achv five-hundred-kills 1790637986
+Achv first-deposit 1789782963
+Achv bank-one-platinum 1789782963
+Achv bank-hundred-platinum 1789874386
+Achv first-interest 1789865893
+Achv carry-one-platinum 1789779928
+Achv carry-hundred-platinum 1789862066
+Achv four-denominations 1789779928
+Achv first-triforce-shard 1790207801
+Achv hyrule-manji 1790207782
+LastOut  1790648624
+SesLogin 1790648525
+SesDur   99
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
+RecallRoom 2497
+RecallSet  1790647311
+QuestPnts 2778
+QuestStrk 21
+CasinoWon  51
+CasinoLost 304
+Exp  112575
+Act  4261068
+AfBy 3678848
+AfBy2 4104
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  8
+Save  -2
+Alig  1006
+Hit   56
+Dam   71
+ACs -161 -153 -158 -12
+Attr 22 13 12 16 15
+AMod 13 25 25 16 25
+Pass Al3w9zuAlwpyY~
+Titl .~
+Pnts 0
+TSex 1
+LLev 0
+HMVP 1072 1368 394
+Cond 0 10 10
+Alias k kick~
+Alias sm smite~
+Sk 30 'axe'
+Sk 100 'dagger'
+Sk 25 'flail'
+Sk 25 'mace'
+Sk 35 'polearm'
+Sk 94 'shield block'
+Sk 30 'spear'
+Sk 100 'sword'
+Sk 30 'whip'
+Sk 1 'bash'
+Sk 73 'berserk'
+Sk 1 'disarm'
+Sk 75 'heroic grip'
+Sk 95 'dodge'
+Sk 100 'enhanced damage'
+Sk 95 'kick'
+Sk 97 'parry'
+Sk 1 'rescue'
+Sk 98 'second attack'
+Sk 85 'third attack'
+Sk 86 'fast healing'
+Sk 79 'recall'
+Sk 75 'smite'
+Gr 'rom basics'
+Gr 'warrior basics'
+Gr 'warrior default'
+Gr 'warrior guild'
+AffD 'empower'   0  -1 -100  17          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'empower'   4  -1   0   0          0          0
+AffD 'titanic'   2  -1  50  16          0          0
+AffD 'titanic'   8  -1 500  14          0          0
+AffD 'titanic'   6  -1 500  12          0          0
+AffD 'titanic'   3  -1 100  13          0          0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear 17
+Cost 0
+Cond 100
+Repd 10
+End
+
+#O
+Vnum 29032
+Nest 0
+Name newbie pack starter~
+ShD  A *NEWBIE* pack!~
+Desc A *NEWBIE* pack! has been left here.~
+Wear 12
+Lev  29
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3715
+Nest 1
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 3716
+Nest 1
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+Val  0 0 184 0 0
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 3715
+Nest 1
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 7623
+Nest 1
+Wear -1
+Lev  25
+Cost 1500000
+Cond 100
+Repd 0
+Affect -1 25 -1 -13 12 0 0
+End
+
+#O
+Vnum 9224
+Nest 1
+Wear -1
+Lev  8
+Cost 7290000
+Cond 100
+Repd 0
+Val  150 141 0 0 0
+End
+
+#O
+Vnum 9214
+Nest 1
+Wear -1
+Lev  22
+Cost 50600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30359
+Nest 1
+Wear -1
+Lev  40
+Cost 80000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30491
+Nest 1
+Wear -1
+Lev  31
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30482
+Nest 1
+Wear -1
+Lev  31
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30489
+Nest 1
+Wear -1
+Lev  11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30480
+Nest 1
+Wear -1
+Lev  11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29924
+Nest 1
+Wear -1
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29924
+Nest 1
+Wear -1
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 9213
+Nest 0
+Wear 10
+Lev  22
+Cost 55660000
+Cond 100
+Repd 1
+End
+
+#O
+Vnum 3093
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3094
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 724
+Nest 0
+Wear 8
+Lev  30
+Cost 5000000
+Cond 100
+Repd 0
+Affect -1 30 -1 -4 19 0 0
+End
+
+#O
+Vnum 10048
+Nest 0
+Wear 5
+Lev  32
+Cost 22000000
+Cond 100
+Repd 0
+Affect -1 32 -1 5 21 0 0
+End
+
+#O
+Vnum 3737
+Nest 0
+Wear -1
+Lev  1
+Cost 100000
+Cond 100
+Repd 9
+Val  2 2 4 0 0
+End
+
+#O
+Vnum 10059
+Nest 0
+Wear 3
+Lev  33
+Cost 40000000
+Cond 100
+Repd 0
+Affect -1 33 -1 -1 23 0 0
+End
+
+#O
+Vnum 10059
+Nest 0
+Wear 4
+Lev  33
+Cost 40000000
+Cond 100
+Repd 0
+Affect -1 33 -1 13 17 0 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear 1
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16013
+Nest 0
+Wear 7
+Lev  41
+Cost 14980000
+Cond 100
+Repd 0
+Affect -1 41 -1 -1 14 0 0
+End
+
+#O
+Vnum 16021
+Nest 0
+Wear 15
+Lev  46
+Cost 19350000
+Cond 100
+Repd 0
+Affect -1 46 -1 2 24 0 0
+Affect -1 46 -1 -1 14 0 0
+End
+
+#O
+Vnum 16021
+Nest 0
+Wear 14
+Lev  46
+Cost 19350000
+Cond 100
+Repd 0
+Affect -1 46 -1 -4 18 0 0
+Affect -1 46 -1 -5 1 0 0
+Affect -1 46 -1 -1 1 0 0
+End
+
+#O
+Vnum 725
+Nest 0
+Wear 9
+Lev  46
+Cost 9500000
+Cond 100
+Repd 0
+Affect -1 46 -1 5 17 0 0
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 1500000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 1500000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 1500000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 1500000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 1500000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 0
+Wear -1
+Cost 1500000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3616
+Nest 0
+ExtF 1049121
+Wear -1
+Lev  50
+Cost 50000
+Cond 100
+Repd 0
+Spell 1 'refresh'
+Spell 2 'refresh'
+Spell 3 'colour spray'
+End
+
+#O
+Vnum 3615
+Nest 0
+ExtF 1049121
+Wear -1
+Lev  50
+Cost 50000
+Cond 100
+Repd 0
+Spell 1 'energy drain'
+Spell 2 'energy drain'
+Spell 3 'energy drain'
+End
+
+#O
+Vnum 10049
+Nest 0
+Wear -1
+Lev  32
+Cost 23000000
+Cond 100
+Repd 1
+Affect -1 32 -1 -3 22 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -1 5 0 0
+End
+
+#O
+Vnum 721
+Nest 0
+Wear 13
+Lev  48
+Cost 9500000
+Cond 100
+Repd 0
+Affect -1 48 -1 4 24 0 0
+End
+
+#O
+Vnum 700
+Nest 0
+ExtF 3146818
+Wear -1
+Lev  48
+Cost 25000000
+Cond 100
+Repd 0
+Affect -1 48 -1 3 20 0 0
+End
+
+#O
+Vnum 4619
+Nest 0
+Wear 6
+Lev  25
+Cost 250000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30542
+Nest 0
+Wear -1
+Lev  5
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30542
+Nest 0
+Wear -1
+Lev  5
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30542
+Nest 0
+Wear -1
+Lev  5
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30542
+Nest 0
+Wear -1
+Lev  5
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30411
+Nest 0
+Wear -1
+Lev  35
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear 2
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29049
+Nest 0
+Wear 0
+Lev  45
+Cost 15000000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+Affect -1 45 -1 -1 24 0 0
+End
+
+#O
+Vnum 30232
+Nest 0
+Wear -1
+Lev  17
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30501
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29920
+Nest 0
+Wear 16
+Lev  50
+Cost 1000000000
+Cond 100
+Repd 0
+Affect -1 50 -1 3 22 0 0
+End
+
+#O
+Vnum 29924
+Nest 0
+Wear -1
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#STASH
+#O
+Vnum 29920
+Nest 0
+Wear -1
+Lev  50
+Cost 1000000000
+Cond 100
+Repd 0
+Affect -1 50 -1 -4 4 0 0
+End
+
+#END

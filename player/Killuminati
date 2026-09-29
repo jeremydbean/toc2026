@@ -1,11 +1,11 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1775589572
-Vers 3
+LogO 1790649769
+Vers 4
 Desc You see something very special about him.
 ~
-Prom ~
+Prom <%hhp %mm %vmv> [Room: %R] %c~
 Ignoring spellup~
 Race elf~
 Sex  1
@@ -14,45 +14,90 @@ Gui  3
 Psionic  1
 PsiGrant 0
 PsiSpec ~
+PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,mindblast,nightmare,project,psionic armor,psychic shield,pyrotechnics,shift,telekinesis,torment,transfusion~
 Cast Valh
 Levl 70
 Tru  70
-Plyd 5922613
+Plyd 6328434
 ListRemorts ~
 NumRemorts 0
-Note 1544841593
+Note 1790386686
+StashMax 500
 Scro 0
-Room 25265
-HMV  30000 30000 30000 30000 30000 30000
-NewGold 136
-NewPlat 2508554
-NewCopp 469
-NewSilv 113
-BankCP 7500000000000
-IntTime 1775430576
+Room 2
+HMV  29960 29960 29975 29975 30000 30000
+NewGold 50
+NewPlat 2503009
+NewCopp 32
+NewSilv 44
+BankCP 15438777585406
+IntTime 1790621458
+IntTotal 380154983554
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-SesLogin 1775589568
-SesDur   4
+AchKills 8
+AchQuests 0
+AchDeaths 1
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1788203195
+Achv level-10 1788203195
+Achv level-15 1788203195
+Achv level-20 1788203195
+Achv level-25 1788203195
+Achv level-30 1788203195
+Achv level-40 1788203195
+Achv level-50 1788203195
+Achv level-55 1788203195
+Achv level-58 1788203195
+Achv level-59 1788203195
+Achv day-played 1788203195
+Achv week-played 1788203195
+Achv first-kill 1788203214
+Achv hyrule-arrival 1789610933
+Achv visit-casino 1790643607
+Achv relic-farslay-scroll 1789744124
+Achv first-death 1789744378
+Achv death-by-farslay-backfire 1789744378
+Achv bank-one-platinum 1789572550
+Achv bank-hundred-platinum 1789572550
+Achv bank-ten-thousand-platinum 1789572550
+Achv first-interest 1789572587
+Achv week-interest 1789572587
+Achv carry-one-platinum 1789572550
+Achv carry-hundred-platinum 1789572550
+Achv four-denominations 1789572550
+Achv silver-arrow 1788203195
+Achv hyrule-death-mountain 1788203214
+LastOut  0
+SesLogin 1790639508
+SesDur   157
 SesExpG  0
 SesLvlG  0
 SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
+RecallRoom 2401
+RecallSet  1790373238
 QuestPnts 24
+CasinoWon  102
+CasinoLost 204
 Exp  1927300
-Act  287948
-AfBy 512
-Comm 155648
+Act  293068
+AfBy 3678848
+AfBy2 4104
+Comm 155680
 Invi 70
 Mounted 0
 On_Quest 0
 Quest_Pause 0
-Pk_State 0
+Pk_State 1
 Jw_Timer 0
 ColFlag 1
 Color 0 0
@@ -74,13 +119,13 @@ Color 15 6
 Color 16 6
 Pos  8
 Prac 265
-Trai 73
-Alig  -88
-Hit   4
-Dam   4
-ACs 100 100 100 100
+Trai 74
+Alig  -269
+Hit   30
+Dam   30
+ACs 0 0 0 0
 Attr 25 21 18 18 18
-AMod 1 0 0 0 0
+AMod 16 17 17 17 15
 Pass Kilrpis9ggekI~
 Bin  Killuminati appears before you.~
 Bout Killuminati raises into the sky, and is gone.~
@@ -88,13 +133,13 @@ Titl , the Don.~
 Pnts 40
 TSex 1
 LLev 3
-HMVP 10000 10000 10000
+HMVP 30000 15000 15000
 Cond 0 100 100
 Alias / who~
 Alias f flee~
 Alias ] recall~
 Alias l get all~
-Alias pit 'goto 4207'~
+Alias pit goto 4208~
 Alias - goto 4208~
 Sk 100 'reserved'
 Sk 100 'aid'
@@ -274,6 +319,7 @@ Sk 100 'danger sense'
 Sk 100 'destruction'
 Sk 100 'dirt kicking'
 Sk 100 'disarm'
+Sk 100 'heroic grip'
 Sk 100 'dodge'
 Sk 100 'dual wield'
 Sk 100 'enhanced damage'
@@ -315,6 +361,7 @@ Sk 100 'sneak'
 Sk 100 'search'
 Sk 100 'sleight of hand'
 Sk 100 'steal'
+Sk 100 'shadowmeld'
 Sk 100 'stealth'
 Sk 100 'scrolls'
 Sk 100 'staves'
@@ -328,380 +375,30 @@ Sk 100 'titanic'
 Sk 100 'petrify'
 Gr 'rom basics'
 Gr 'mage basics'
+Gr 'warrior basics'
 Gr 'mage default'
+Gr 'warrior default'
+Gr 'warrior guild'
+AffD 'empower'   0  -1   0   0          0          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1 -100  17          0          0
+AffD 'titanic'   0  -1   0  13          0          0
+AffD 'titanic'   0  -1 14950  12          0          0
+AffD 'titanic'   0  -1 15025  14          0          0
 AffD 'titanic'   0  -1  50  16          0          0
-AffD 'titanic'   0  -1 20025  14          0          0
-AffD 'titanic'   0  -1 19950  12          0          0
-AffD 'titanic'   0  -1 19990  13          0          0
-End
-
-#O
-Vnum 29032
-Nest 0
-Name newbie pack~
-ShD  A *NEWBIE* pack!~
-Desc A *NEWBIE* pack lies here.~
-Wt   1
-Wear 12
-Lev  1
-Cost 500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29008
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5776
-Nest 1
-Wear -1
-Lev  1
-Cost 4000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29009
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Val  0 0 -1 0 0
-End
-
-#O
-Vnum 15011
-Nest 1
-Wear -1
-Lev  1
-Cost 200
-Cond 100
-Repd 0
-Val  3 4 2 0 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9224
-Nest 1
-Wear -1
-Lev  1
-Cost 729
-Cond 100
-Repd 0
-Val  150 138 0 0 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5780
-Nest 1
-Wear -1
-Lev  1
-Cost 1500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 3715
-Nest 1
-Wear -1
-Cost 0
-Cond 100
-Repd 0
 End
 
 #O
@@ -716,113 +413,713 @@ Val  0 0 -1 0 0
 End
 
 #O
-Vnum 29243
-Nest 0
-Wear -1
-Lev  54
-Cost 7000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29243
-Nest 0
-Wear -1
-Lev  54
-Cost 7000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 10049
-Nest 0
-Wear -1
-Lev  32
-Cost 2300
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 1016
-Nest 0
-Wear -1
-Lev  33
-Cost 300
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 1016
-Nest 0
-Wear -1
-Lev  33
-Cost 300
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 1016
-Nest 0
-Wear -1
-Lev  33
-Cost 300
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 1016
-Nest 0
-Wear -1
-Lev  33
-Cost 300
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 1016
-Nest 0
-Wear -1
-Lev  33
-Cost 300
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5620
-Nest 0
-ExtF 1049152
-Wear -1
-Lev  52
-Cost 1900
-Cond 100
-Repd 0
-Affect -1 52 -1 13 12 0 0
-Affect -1 52 -1 -1 14 0 0
-Affect -1 52 -1 1 24 0 0
-Affect -1 52 -1 -4 19 0 0
-End
-
-#O
 Vnum 9925
 Nest 0
 Wear -1
 Lev  51
-Cost 5000
+Cost 50000000
 Cond 100
 Repd 3
 End
 
 #O
-Vnum 80
+Vnum 29303
 Nest 0
+ExtF 35651911
+Wear -1
+Lev  68
+Cost 10000000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29032
+Nest 0
+Name newbie pack starter~
+ShD  A *NEWBIE* pack!~
+Desc A *NEWBIE* pack! has been left here.~
+Wear 12
+Lev  1
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3715
+Nest 1
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 160
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 160
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 160
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 160
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 160
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 5780
+Nest 1
+ExtF 65
+Wear -1
+Lev  1
+Cost 120000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3094
+Nest 1
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3081
+Nest 1
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 3081
+Nest 1
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 4639
+Nest 1
+Wear -1
+Lev  1
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 4639
+Nest 1
+Wear -1
+Lev  1
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  1
+Cost 220000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  1
+Cost 220000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3093
+Nest 1
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 15011
+Nest 1
+Wear -1
+Lev  1
+Cost 2000000
+Cond 100
+Repd 0
+Val  4 3 4 0 0
+End
+
+#O
+Vnum 29009
+Nest 1
+Wear -1
+Lev  1
+Cost 80
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+Affect -1 4 -1 3 22 0 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  1
+Cost 27000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  1
+Cost 27000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 160
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 160
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  1
+Cost 50
+Cond 100
+Repd 0
+Affect -1 2 -1 -10 14 0 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5776
+Nest 1
+ExtF 65
+Wear -1
+Lev  1
+Cost 330000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29008
+Nest 1
+Wear -1
+Lev  1
+Cost 80
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3
+Nest 1
+Name coins platinum~
+ShD  100 platinum coins~
+Desc A pile of platinum coins.~
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Val  100 3 0 0 0
+End
+
+#O
+Vnum 9925
+Nest 0
+Wear 16
+Lev  51
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29924
+Nest 0
+Wear -1
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#STASH
+#O
+Vnum 29032
+Nest 0
+Name newbie pack starter~
+ShD  A *NEWBIE* pack!~
+Desc A *NEWBIE* pack! has been left here.~
+Wear -1
+Lev  29
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29008
+Nest 1
+Wear -1
+Lev  4
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5776
+Nest 1
+Wear -1
+Lev  7
+Cost 40000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  2
+Cost 250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  2
+Cost 250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  6
+Cost 2500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  6
+Cost 2500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29009
+Nest 1
+Wear -1
+Lev  4
+Cost 1000000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 15011
+Nest 1
+Wear -1
+Lev  1
+Cost 2000000
+Cond 100
+Repd 0
+Val  3 4 3 0 0
+End
+
+#O
+Vnum 9224
+Nest 1
+Wear -1
+Lev  8
+Cost 7290000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  8
+Cost 10000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  8
+Cost 10000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 4639
+Nest 1
+Wear -1
+Lev  25
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 4639
+Nest 1
+Wear -1
+Lev  25
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 3081
+Nest 1
+Wear -1
+Lev  10
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 3081
+Nest 1
+Wear -1
+Lev  10
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5780
+Nest 1
+Wear -1
+Lev  7
+Cost 15000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 3715
+Nest 1
 Wear -1
 Cost 0
 Cond 100
@@ -830,10 +1127,738 @@ Repd 0
 End
 
 #O
-Vnum 29303
+Vnum 29032
 Nest 0
+Name newbie pack~
+ShD  A *NEWBIE* pack!~
+Desc A *NEWBIE* pack lies here.~
+Wt   1
 Wear -1
-Lev  68
+Lev  1
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29008
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  1
+Cost 250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  1
+Cost 2500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5776
+Nest 1
+Wear -1
+Lev  1
+Cost 40000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  1
+Cost 250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  1
+Cost 2500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29009
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 15011
+Nest 1
+Wear -1
+Lev  1
+Cost 2000000
+Cond 100
+Repd 0
+Val  3 4 2 0 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 9224
+Nest 1
+Wear -1
+Lev  1
+Cost 7290000
+Cond 100
+Repd 0
+Val  150 138 0 0 0
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  1
+Cost 10000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  1
+Cost 10000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 4639
+Nest 1
+Wear -1
+Lev  1
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 4639
+Nest 1
+Wear -1
+Lev  1
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 3081
+Nest 1
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 3081
+Nest 1
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5780
+Nest 1
+Wear -1
+Lev  1
+Cost 15000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 3715
+Nest 1
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29032
+Nest 0
+Name newbie pack~
+ShD  A *NEWBIE* pack!~
+Desc A *NEWBIE* pack lies here.~
+Wt   1
+Wear -1
+Lev  1
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3715
+Nest 1
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 5780
+Nest 1
+Wear -1
+Lev  1
+Cost 15000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3081
+Nest 1
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 3081
+Nest 1
+Wear -1
+Lev  1
+Cost 100000000
+Cond 100
+Repd 0
+Spell 1 'sanctuary'
+End
+
+#O
+Vnum 4639
+Nest 1
+Wear -1
+Lev  1
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 4639
+Nest 1
+Wear -1
+Lev  1
+Cost 200000000
+Cond 100
+Repd 0
+Spell 1 'heal'
+Spell 2 'heal'
+Spell 3 'heal'
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  1
+Cost 10000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  1
+Cost 10000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 9224
+Nest 1
+Wear -1
+Lev  1
+Cost 7290000
+Cond 100
+Repd 0
+Val  150 138 0 0 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 15011
+Nest 1
+Wear -1
+Lev  1
+Cost 2000000
+Cond 100
+Repd 0
+Val  3 4 2 0 0
+End
+
+#O
+Vnum 29009
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  1
+Cost 2500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  1
+Cost 250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5776
+Nest 1
+Wear -1
+Lev  1
+Cost 40000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  1
+Cost 2500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  1
+Cost 250000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29008
+Nest 1
+Wear -1
+Lev  1
 Cost 1000000
 Cond 100
 Repd 0
@@ -848,352 +1873,7 @@ Desc A *NEWBIE* pack lies here.~
 Wt   1
 Wear -1
 Lev  1
-Cost 500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3715
-Nest 1
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 5780
-Nest 1
-Wear -1
-Lev  1
-Cost 1500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9224
-Nest 1
-Wear -1
-Lev  1
-Cost 729
-Cond 100
-Repd 0
-Val  150 138 0 0 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 15011
-Nest 1
-Wear -1
-Lev  1
-Cost 200
-Cond 100
-Repd 0
-Val  3 4 2 0 0
-End
-
-#O
-Vnum 29009
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Val  0 0 -1 0 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5776
-Nest 1
-Wear -1
-Lev  1
-Cost 4000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -1203,31 +1883,7 @@ Vnum 29008
 Nest 1
 Wear -1
 Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29032
-Nest 0
-Name newbie pack~
-ShD  A *NEWBIE* pack!~
-Desc A *NEWBIE* pack lies here.~
-Wt   1
-Wear -1
-Lev  1
-Cost 500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29008
-Nest 1
-Wear -1
-Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -1237,7 +1893,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -1247,7 +1903,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -1257,7 +1913,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -1267,7 +1923,7 @@ Vnum 5776
 Nest 1
 Wear -1
 Lev  1
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -1277,7 +1933,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -1287,7 +1943,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -1297,7 +1953,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -1307,7 +1963,7 @@ Vnum 29009
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -1318,7 +1974,7 @@ Vnum 15011
 Nest 1
 Wear -1
 Lev  1
-Cost 200
+Cost 2000000
 Cond 100
 Repd 0
 Val  3 4 2 0 0
@@ -1328,7 +1984,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1338,7 +1994,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  1
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 138 0 0 0
@@ -1349,7 +2005,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -1359,7 +2015,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -1369,7 +2025,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -1382,7 +2038,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -1395,7 +2051,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -1406,7 +2062,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -1416,7 +2072,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1425,7 +2081,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1434,7 +2090,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1443,7 +2099,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1452,7 +2108,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1461,7 +2117,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1470,7 +2126,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1479,7 +2135,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1488,7 +2144,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1498,7 +2154,7 @@ Vnum 5780
 Nest 1
 Wear -1
 Lev  1
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -1508,20 +2164,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1534,7 +2177,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1547,7 +2190,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1560,7 +2203,20 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1586,7 +2242,7 @@ Desc A *NEWBIE* pack lies here.~
 Wt   1
 Wear -1
 Lev  1
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -1605,7 +2261,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1618,7 +2274,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1631,7 +2287,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1644,7 +2300,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1657,7 +2313,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -1670,7 +2326,7 @@ Vnum 5780
 Nest 1
 Wear -1
 Lev  1
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -1679,7 +2335,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1688,7 +2344,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1697,7 +2353,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1706,7 +2362,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1715,7 +2371,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1724,7 +2380,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1733,7 +2389,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1742,7 +2398,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1751,7 +2407,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1761,7 +2417,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -1772,7 +2428,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -1783,7 +2439,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -1796,7 +2452,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -1809,7 +2465,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -1819,7 +2475,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -1829,7 +2485,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  1
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 138 0 0 0
@@ -1839,7 +2495,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -1849,7 +2505,7 @@ Vnum 15011
 Nest 1
 Wear -1
 Lev  1
-Cost 200
+Cost 2000000
 Cond 100
 Repd 0
 Val  3 4 2 0 0
@@ -1860,7 +2516,7 @@ Vnum 29009
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -1871,7 +2527,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -1881,7 +2537,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -1891,7 +2547,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -1901,7 +2557,7 @@ Vnum 5776
 Nest 1
 Wear -1
 Lev  1
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -1911,7 +2567,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -1921,7 +2577,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -1931,7 +2587,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -1941,7 +2597,7 @@ Vnum 29008
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -1955,7 +2611,7 @@ Desc A *NEWBIE* pack lies here.~
 Wt   1
 Wear -1
 Lev  1
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -1965,7 +2621,7 @@ Vnum 29008
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -1975,7 +2631,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -1985,7 +2641,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -1995,7 +2651,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -2005,7 +2661,7 @@ Vnum 5776
 Nest 1
 Wear -1
 Lev  1
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -2015,7 +2671,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -2025,7 +2681,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -2035,7 +2691,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -2045,7 +2701,7 @@ Vnum 29009
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -2056,7 +2712,7 @@ Vnum 15011
 Nest 1
 Wear -1
 Lev  1
-Cost 200
+Cost 2000000
 Cond 100
 Repd 0
 Val  3 4 2 0 0
@@ -2066,7 +2722,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2076,7 +2732,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  1
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 138 0 0 0
@@ -2087,7 +2743,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -2097,7 +2753,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -2107,7 +2763,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -2120,7 +2776,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -2133,7 +2789,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -2144,7 +2800,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -2154,7 +2810,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2163,7 +2819,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2172,7 +2828,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2181,7 +2837,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2190,7 +2846,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2199,7 +2855,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2208,7 +2864,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2217,7 +2873,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2226,7 +2882,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -2236,7 +2892,7 @@ Vnum 5780
 Nest 1
 Wear -1
 Lev  1
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -2246,7 +2902,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -2259,7 +2915,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -2272,7 +2928,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -2285,7 +2941,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -2298,745 +2954,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 3715
-Nest 1
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29032
-Nest 0
-Name newbie pack~
-ShD  A *NEWBIE* pack!~
-Desc A *NEWBIE* pack lies here.~
-Wt   1
-Wear -1
-Lev  1
-Cost 500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3715
-Nest 1
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 5780
-Nest 1
-Wear -1
-Lev  1
-Cost 1500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9224
-Nest 1
-Wear -1
-Lev  1
-Cost 729
-Cond 100
-Repd 0
-Val  150 138 0 0 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 15011
-Nest 1
-Wear -1
-Lev  1
-Cost 200
-Cond 100
-Repd 0
-Val  3 4 2 0 0
-End
-
-#O
-Vnum 29009
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Val  0 0 -1 0 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5776
-Nest 1
-Wear -1
-Lev  1
-Cost 4000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29008
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29032
-Nest 0
-Name newbie pack~
-ShD  A *NEWBIE* pack!~
-Desc A *NEWBIE* pack lies here.~
-Wt   1
-Wear -1
-Lev  1
-Cost 500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29008
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5776
-Nest 1
-Wear -1
-Lev  1
-Cost 4000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29009
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Val  0 0 -1 0 0
-End
-
-#O
-Vnum 15011
-Nest 1
-Wear -1
-Lev  1
-Cost 200
-Cond 100
-Repd 0
-Val  3 4 2 0 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9224
-Nest 1
-Wear -1
-Lev  1
-Cost 729
-Cond 100
-Repd 0
-Val  150 138 0 0 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5780
-Nest 1
-Wear -1
-Lev  1
-Cost 1500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3062,7 +2980,7 @@ Desc A *NEWBIE* pack lies here.~
 Wt   1
 Wear -1
 Lev  1
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -3081,7 +2999,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3094,7 +3012,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3107,7 +3025,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3120,7 +3038,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3133,7 +3051,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3146,7 +3064,7 @@ Vnum 5780
 Nest 1
 Wear -1
 Lev  1
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -3155,7 +3073,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3164,7 +3082,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3173,7 +3091,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3182,7 +3100,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3191,7 +3109,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3200,7 +3118,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3209,7 +3127,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3218,7 +3136,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3227,7 +3145,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3237,7 +3155,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -3248,7 +3166,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -3259,7 +3177,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -3272,7 +3190,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -3285,7 +3203,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -3295,7 +3213,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -3305,7 +3223,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  1
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 138 0 0 0
@@ -3315,7 +3233,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3325,7 +3243,7 @@ Vnum 15011
 Nest 1
 Wear -1
 Lev  1
-Cost 200
+Cost 2000000
 Cond 100
 Repd 0
 Val  3 4 2 0 0
@@ -3336,7 +3254,7 @@ Vnum 29009
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -3347,7 +3265,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -3357,7 +3275,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -3367,7 +3285,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -3377,7 +3295,7 @@ Vnum 5776
 Nest 1
 Wear -1
 Lev  1
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -3387,7 +3305,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -3397,7 +3315,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -3407,7 +3325,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -3417,7 +3335,7 @@ Vnum 29008
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -3431,7 +3349,7 @@ Desc A *NEWBIE* pack lies here.~
 Wt   1
 Wear -1
 Lev  1
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -3441,7 +3359,7 @@ Vnum 29008
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -3451,7 +3369,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -3461,7 +3379,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -3471,7 +3389,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -3481,7 +3399,7 @@ Vnum 5776
 Nest 1
 Wear -1
 Lev  1
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -3491,7 +3409,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -3501,7 +3419,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -3511,7 +3429,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -3521,7 +3439,7 @@ Vnum 29009
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -3532,7 +3450,7 @@ Vnum 15011
 Nest 1
 Wear -1
 Lev  1
-Cost 200
+Cost 2000000
 Cond 100
 Repd 0
 Val  3 4 2 0 0
@@ -3542,7 +3460,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3552,7 +3470,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  1
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 138 0 0 0
@@ -3563,7 +3481,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -3573,7 +3491,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -3583,7 +3501,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -3596,7 +3514,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -3609,7 +3527,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -3620,7 +3538,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -3630,7 +3548,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3639,7 +3557,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3648,7 +3566,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3657,7 +3575,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3666,7 +3584,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3675,7 +3593,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3684,7 +3602,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3693,7 +3611,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3702,7 +3620,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -3712,7 +3630,7 @@ Vnum 5780
 Nest 1
 Wear -1
 Lev  1
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -3722,7 +3640,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3735,7 +3653,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3748,7 +3666,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3761,7 +3679,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -3774,745 +3692,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 3715
-Nest 1
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29032
-Nest 0
-Name newbie pack~
-ShD  A *NEWBIE* pack!~
-Desc A *NEWBIE* pack lies here.~
-Wt   1
-Wear -1
-Lev  1
-Cost 500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3715
-Nest 1
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 5780
-Nest 1
-Wear -1
-Lev  1
-Cost 1500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9224
-Nest 1
-Wear -1
-Lev  1
-Cost 729
-Cond 100
-Repd 0
-Val  150 138 0 0 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 15011
-Nest 1
-Wear -1
-Lev  1
-Cost 200
-Cond 100
-Repd 0
-Val  3 4 2 0 0
-End
-
-#O
-Vnum 29009
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Val  0 0 -1 0 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5776
-Nest 1
-Wear -1
-Lev  1
-Cost 4000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29008
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29032
-Nest 0
-Name newbie pack~
-ShD  A *NEWBIE* pack!~
-Desc A *NEWBIE* pack lies here.~
-Wt   1
-Wear -1
-Lev  1
-Cost 500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29008
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5776
-Nest 1
-Wear -1
-Lev  1
-Cost 4000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29009
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Val  0 0 -1 0 0
-End
-
-#O
-Vnum 15011
-Nest 1
-Wear -1
-Lev  1
-Cost 200
-Cond 100
-Repd 0
-Val  3 4 2 0 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9224
-Nest 1
-Wear -1
-Lev  1
-Cost 729
-Cond 100
-Repd 0
-Val  150 138 0 0 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5780
-Nest 1
-Wear -1
-Lev  1
-Cost 1500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -4538,7 +3718,7 @@ Desc A *NEWBIE* pack lies here.~
 Wt   1
 Wear -1
 Lev  1
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -4557,7 +3737,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -4570,7 +3750,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -4583,7 +3763,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -4596,7 +3776,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -4609,7 +3789,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -4622,7 +3802,7 @@ Vnum 5780
 Nest 1
 Wear -1
 Lev  1
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -4631,7 +3811,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4640,7 +3820,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4649,7 +3829,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4658,7 +3838,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4667,7 +3847,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4676,7 +3856,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4685,7 +3865,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4694,7 +3874,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4703,7 +3883,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4713,7 +3893,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -4724,7 +3904,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -4735,7 +3915,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -4748,7 +3928,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -4761,7 +3941,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -4771,7 +3951,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -4781,7 +3961,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  1
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 138 0 0 0
@@ -4791,7 +3971,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -4801,7 +3981,7 @@ Vnum 15011
 Nest 1
 Wear -1
 Lev  1
-Cost 200
+Cost 2000000
 Cond 100
 Repd 0
 Val  3 4 2 0 0
@@ -4812,7 +3992,7 @@ Vnum 29009
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -4823,7 +4003,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -4833,7 +4013,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -4843,7 +4023,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -4853,7 +4033,7 @@ Vnum 5776
 Nest 1
 Wear -1
 Lev  1
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -4863,7 +4043,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -4873,7 +4053,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -4883,7 +4063,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -4893,7 +4073,7 @@ Vnum 29008
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -4907,7 +4087,7 @@ Desc A *NEWBIE* pack lies here.~
 Wt   1
 Wear -1
 Lev  1
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -4917,7 +4097,7 @@ Vnum 29008
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -4927,7 +4107,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -4937,7 +4117,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -4947,7 +4127,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -4957,7 +4137,7 @@ Vnum 5776
 Nest 1
 Wear -1
 Lev  1
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -4967,7 +4147,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -4977,7 +4157,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -4987,7 +4167,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -4997,7 +4177,7 @@ Vnum 29009
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -5008,7 +4188,7 @@ Vnum 15011
 Nest 1
 Wear -1
 Lev  1
-Cost 200
+Cost 2000000
 Cond 100
 Repd 0
 Val  3 4 2 0 0
@@ -5018,7 +4198,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5028,7 +4208,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  1
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 138 0 0 0
@@ -5039,7 +4219,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -5049,7 +4229,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -5059,7 +4239,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -5072,7 +4252,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -5085,7 +4265,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -5096,7 +4276,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -5106,7 +4286,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5115,7 +4295,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5124,7 +4304,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5133,7 +4313,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5142,7 +4322,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5151,7 +4331,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5160,7 +4340,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5169,7 +4349,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5178,7 +4358,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5188,7 +4368,7 @@ Vnum 5780
 Nest 1
 Wear -1
 Lev  1
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -5198,20 +4378,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5224,7 +4391,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5237,7 +4404,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5250,7 +4417,20 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5276,7 +4456,7 @@ Desc A *NEWBIE* pack lies here.~
 Wt   1
 Wear -1
 Lev  1
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -5295,7 +4475,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5308,7 +4488,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5321,7 +4501,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5334,7 +4514,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5347,7 +4527,7 @@ Vnum 20301
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'haste'
@@ -5360,7 +4540,7 @@ Vnum 5780
 Nest 1
 Wear -1
 Lev  1
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -5369,7 +4549,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5378,7 +4558,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5387,7 +4567,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5396,7 +4576,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5405,7 +4585,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5414,7 +4594,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5423,7 +4603,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5432,7 +4612,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5441,7 +4621,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5451,7 +4631,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -5462,7 +4642,7 @@ Vnum 3081
 Nest 1
 Wear -1
 Lev  1
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 Spell 1 'sanctuary'
@@ -5473,7 +4653,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -5486,7 +4666,7 @@ Vnum 4639
 Nest 1
 Wear -1
 Lev  1
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Spell 1 'heal'
@@ -5499,7 +4679,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -5509,7 +4689,7 @@ Vnum 3605
 Nest 1
 Wear -1
 Lev  1
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -5519,7 +4699,7 @@ Vnum 9224
 Nest 1
 Wear -1
 Lev  1
-Cost 729
+Cost 7290000
 Cond 100
 Repd 0
 Val  150 138 0 0 0
@@ -5529,7 +4709,7 @@ End
 Vnum 3009
 Nest 1
 Wear -1
-Cost 50
+Cost 500000
 Cond 100
 Repd 0
 End
@@ -5539,7 +4719,7 @@ Vnum 15011
 Nest 1
 Wear -1
 Lev  1
-Cost 200
+Cost 2000000
 Cond 100
 Repd 0
 Val  3 4 2 0 0
@@ -5550,7 +4730,7 @@ Vnum 29009
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -5561,7 +4741,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -5571,7 +4751,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -5581,7 +4761,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -5591,7 +4771,7 @@ Vnum 5776
 Nest 1
 Wear -1
 Lev  1
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -5601,7 +4781,7 @@ Vnum 29085
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
@@ -5611,7 +4791,7 @@ Vnum 5003
 Nest 1
 Wear -1
 Lev  1
-Cost 250
+Cost 2500000
 Cond 100
 Repd 0
 End
@@ -5621,7 +4801,7 @@ Vnum 104
 Nest 1
 Wear -1
 Lev  1
-Cost 25
+Cost 250000
 Cond 100
 Repd 0
 End
@@ -5631,391 +4811,20 @@ Vnum 29008
 Nest 1
 Wear -1
 Lev  1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 End
 
 #O
-Vnum 29032
-Nest 0
-Name newbie pack~
-ShD  A *NEWBIE* pack!~
-Desc A *NEWBIE* pack lies here.~
-Wt   1
-Wear -1
-Lev  1
-Cost 500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29008
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5776
-Nest 1
-Wear -1
-Lev  1
-Cost 4000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 104
-Nest 1
-Wear -1
-Lev  1
-Cost 25
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29085
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5003
-Nest 1
-Wear -1
-Lev  1
-Cost 250
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29009
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Val  0 0 -1 0 0
-End
-
-#O
-Vnum 15011
-Nest 1
-Wear -1
-Lev  1
-Cost 200
-Cond 100
-Repd 0
-Val  3 4 2 0 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9224
-Nest 1
-Wear -1
-Lev  1
-Cost 729
-Cond 100
-Repd 0
-Val  150 138 0 0 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3605
-Nest 1
-Wear -1
-Lev  1
-Cost 1000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 4639
-Nest 1
-Wear -1
-Lev  1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'heal'
-Spell 2 'heal'
-Spell 3 'heal'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3081
-Nest 1
-Wear -1
-Lev  1
-Cost 10000
-Cond 100
-Repd 0
-Spell 1 'sanctuary'
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3009
-Nest 1
-Wear -1
-Cost 50
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 5780
-Nest 1
-Wear -1
-Lev  1
-Cost 1500
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 100
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 3715
-Nest 1
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 28135
+Vnum 7651
 Nest 0
 Wear -1
-Lev  35
-Cost 28000
+Lev  43
+Cost 9500000
 Cond 100
 Repd 0
-Spell 1 'cause critical'
-Spell 2 'haste'
-Spell 3 'cause critical'
+Affect -1 43 -1 -19 12 0 0
 End
 
 #END

@@ -1,7 +1,7 @@
 #PLAYER
 Name Rockcrusher~
 Id   3259
-LogO 953440193
+LogO 1789616624
 Vers 3
 Desc You hear a dripping noise.  It gets louder and louder and louder...
 It won't go away!!!  You frantically slap yourself and smash your fists
@@ -32,9 +32,11 @@ Sex  1
 Cla  4
 Gui  4
 Psionic  1
+PsiGrant 0
+PsiSpec ~
 Cast none
 Levl 52
-Plyd 1038435
+Plyd 1038484
 ListRemorts ~
 NumRemorts 0
 Note 950989152
@@ -45,14 +47,44 @@ NewGold 23891
 NewPlat 0
 NewCopp 0
 NewSilv 0
-Bank 0
+BankCP 0
+IntTime 0
 Dcount 0
+SavedOnce 1
 Corpses	0
 PkRec 4
 PkGiv 0
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1789615323
+Achv level-10 1789615323
+Achv level-15 1789615323
+Achv level-20 1789615323
+Achv level-25 1789615323
+Achv level-30 1789615323
+Achv level-40 1789615323
+Achv level-50 1789615323
+Achv day-played 1789615323
+Achv week-played 1789615323
+Achv carry-one-platinum 1789615323
+Achv carry-hundred-platinum 1789615323
+SesLogin 0
+SesDur   0
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
 QuestPnts 191
 Exp  129407
 Act  204
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0

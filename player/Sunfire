@@ -1,0 +1,663 @@
+#PLAYER
+Name Sunfire~
+Id   45367
+LogO 1789776792
+Vers 3
+Prom ~
+Ignoring ~
+Race dwarf~
+Sex  1
+Cla  0
+Gui  0
+Psionic  0
+PsiGrant 1
+PsiSpec ~
+Cast none
+Levl 13
+Plyd 6367
+ListRemorts ~
+NumRemorts 0
+Note 0
+Scro 22
+Room 4207
+HMV  138 149 672 796 85 172
+NewGold 88
+NewPlat 6
+NewCopp 965
+NewSilv 151
+BankCP 2000000
+IntTime 1789728892
+IntTotal 0
+Dcount 0
+SavedOnce 1
+Corpses	0
+PkRec 0
+PkGiv 0
+AchKills 91
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1789762853
+Achv level-10 1789771656
+Achv first-kill 1789728977
+Achv first-deposit 1789763756
+Achv bank-one-platinum 1789763756
+Achv carry-one-platinum 1789763315
+Achv four-denominations 1789763315
+SesLogin 1789775692
+SesDur   1100
+SesExpG  262
+SesLvlG  1
+SesKill  7
+SesPK    0
+SesDead  0
+SesQuest 0
+Exp  31247
+Act  66764
+AfBy 512
+Comm 24576
+Mounted 0
+On_Quest 0
+Quest_Pause 0
+Pk_State 0
+Jw_Timer 0
+ColFlag 1
+Color 0 0
+Color 1 8
+Color 2 5
+Color 3 14
+Color 4 11
+Color 5 3
+Color 6 2
+Color 7 4
+Color 8 5
+Color 9 14
+Color 10 4
+Color 11 0
+Color 12 12
+Color 13 7
+Color 14 11
+Color 15 6
+Color 16 6
+Pos  8
+Prac 37
+Trai 6
+Alig  1005
+Hit   2
+Dam   5
+ACs 61 59 56 104
+Attr 20 13 12 16 15
+AMod 1 11 11 0 10
+Pass Su4wNZTbjV39A~
+Titl  the Conjurer~
+Pnts 0
+TSex 1
+LLev 0
+HMVP 149 809 172
+Cond 0 19 45
+Alias mm cast 'magic missile'~
+Alias ff cast 'faerie fire'~
+Alias fl cast fly~
+Sk 61 'armor'
+Sk 1 'burning hands'
+Sk 1 'chill touch'
+Sk 1 'detect invis'
+Sk 62 'faerie fire'
+Sk 1 'fly'
+Sk 1 'giant strength'
+Sk 1 'identify'
+Sk 1 'lightning bolt'
+Sk 1 'locate object'
+Sk 86 'magic missile'
+Sk 61 'refresh'
+Sk 1 'shield'
+Sk 76 'dagger'
+Sk 1 'bash'
+Sk 1 'scrolls'
+Sk 1 'wands'
+Sk 61 'recall'
+Gr 'rom basics'
+Gr 'mage basics'
+Gr 'mage default'
+Gr 'mage guild'
+End
+
+#O
+Vnum 3716
+Nest 0
+ExtF 67108929
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+Val  0 0 177 0 0
+End
+
+#O
+Vnum 3703
+Nest 0
+ExtF 67108864
+Wear 5
+Cost 0
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3704
+Nest 0
+Wear 11
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3716
+Nest 0
+ExtF 67108929
+Wear 0
+Cost 0
+Cond 100
+Repd 0
+Val  0 0 99 0 0
+End
+
+#O
+Vnum 3715
+Nest 0
+ExtF 67108928
+Wear -1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3740
+Nest 0
+Wear -1
+Lev  3
+Cost 10
+Cond 100
+Repd 0
+Affect -1 3 -1 5 21 0 0
+End
+
+#O
+Vnum 3722
+Nest 0
+Wear 7
+Lev  1
+Cost 10
+Cond 100
+Repd 0
+Val  4 2 2 0 0
+Affect -1 1 -1 7 17 0 0
+Affect -1 1 -1 1 21 0 0
+End
+
+#O
+Vnum 3723
+Nest 0
+ExtF 67108864
+Wear 8
+Lev  1
+Cost 10
+Cond 100
+Repd 0
+Val  3 3 3 0 0
+End
+
+#O
+Vnum 3724
+Nest 0
+Wear -1
+Lev  1
+Cost 10
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3719
+Nest 0
+Wear 6
+Lev  1
+Cost 10
+Cond 100
+Repd 0
+Val  3 3 3 0 0
+End
+
+#O
+Vnum 3713
+Nest 0
+Wear 15
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3740
+Nest 0
+ExtF 67108864
+Wear 16
+Lev  3
+Cost 10
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 3705
+Nest 0
+Wear 4
+Cost 0
+Cond 100
+Repd 0
+Affect -1 0 -1 -13 12 0 0
+End
+
+#O
+Vnum 3712
+Nest 0
+ExtF 67108864
+Wear 13
+Cost 0
+Cond 98
+Repd 0
+End
+
+#O
+Vnum 29032
+Nest 0
+Name newbie pack starter~
+ShD  A *NEWBIE* pack!~
+Desc A *NEWBIE* pack! has been left here.~
+Wear -1
+Lev  29
+Cost 500
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 100
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 100
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 100
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 100
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 100
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 5780
+Nest 1
+Wear -1
+Lev  7
+Cost 1500
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 1
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  8
+Cost 1000
+Cond 100
+Repd 0
+Affect -1 8 -1 5 20 0 0
+End
+
+#O
+Vnum 3605
+Nest 1
+Wear -1
+Lev  8
+Cost 1000
+Cond 100
+Repd 0
+Affect -1 8 -1 -2 14 0 0
+End
+
+#O
+Vnum 9224
+Nest 1
+Wear -1
+Lev  8
+Cost 729
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 15011
+Nest 1
+Wear -1
+Lev  1
+Cost 200
+Cond 100
+Repd 0
+Val  3 3 2 0 0
+End
+
+#O
+Vnum 29009
+Nest 1
+Wear -1
+Lev  4
+Cost 100
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+Affect -1 4 -1 2 21 0 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  6
+Cost 250
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5003
+Nest 1
+Wear -1
+Lev  6
+Cost 250
+Cond 100
+Repd 0
+Affect -1 6 -1 -1 4 0 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 100
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29085
+Nest 1
+Wear -1
+Lev  1
+Cost 100
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  2
+Cost 25
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 104
+Nest 1
+Wear -1
+Lev  2
+Cost 25
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5776
+Nest 1
+Wear -1
+Lev  7
+Cost 4000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29008
+Nest 1
+Wear -1
+Lev  4
+Cost 100
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3715
+Nest 0
+ExtF 67108928
+Wear 17
+Cost 0
+Cond 99
+Repd 0
+End
+
+#O
+Vnum 6644
+Nest 0
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 6646
+Nest 0
+Wear -1
+Time 115
+Cost 150
+Cond 90
+Repd 0
+Spell 1 'cure light'
+Spell 2 'armor'
+End
+
+#O
+Vnum 6601
+Nest 0
+Wear -1
+Lev  3
+Cost 1200
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear 1
+Lev  7
+Cost 441
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 2802
+Nest 0
+Wear 12
+Lev  10
+Cost 1331
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear 2
+Lev  7
+Cost 441
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3503
+Nest 0
+Wear 3
+Lev  3
+Cost 20
+Cond 75
+Repd 0
+End
+
+#O
+Vnum 3504
+Nest 0
+Wear 14
+Lev  7
+Cost 400
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3009
+Nest 0
+Wear -1
+Cost 50
+Cond 100
+Repd 0
+End
+
+#END

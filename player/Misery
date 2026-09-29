@@ -1,8 +1,8 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1785936020
-Vers 3
+LogO 1790377843
+Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
 
@@ -109,37 +109,66 @@ PsiSpec ~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1661034
+Plyd 1663737
 ListRemorts ~
 NumRemorts 0
 Note 953485148
 Scro 22
-Room 30400
-HMV  10348 11172 5628 5628 2058 2058
-NewGold 434
-NewPlat 5254
-NewCopp 1145
-NewSilv 816
-BankCP 978395000000
-IntTime 1785934506
+Room 10174
+HMV  10883 11138 5628 5628 1719 2058
+NewGold 308
+NewPlat 5206
+NewCopp 845
+NewSilv 593
+BankCP 1089072020795
+IntTime 1789663889
+IntTotal 0
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 24
-SesLogin 1785935313
-SesDur   707
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1787935878
+Achv level-10 1787935878
+Achv level-15 1787935878
+Achv level-20 1787935878
+Achv level-25 1787935878
+Achv level-30 1787935878
+Achv level-40 1787935878
+Achv level-50 1787935878
+Achv day-played 1787935878
+Achv week-played 1787935878
+Achv first-pkill 1787935878
+Achv relic-british-crown 1787935878
+Achv relic-british-sceptre 1787935878
+Achv bank-one-platinum 1789577474
+Achv bank-hundred-platinum 1789577474
+Achv bank-ten-thousand-platinum 1789577474
+Achv first-interest 1789577491
+Achv week-interest 1789577491
+Achv carry-one-platinum 1789577474
+Achv carry-hundred-platinum 1789577474
+Achv four-denominations 1789577474
+Achv silver-arrow 1787938835
+SesLogin 1790377822
+SesDur   21
 SesExpG  0
 SesLvlG  0
-SesKill  1
+SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
 QuestPnts 111
 Exp  177312
-Act  33956040
-AfBy 3678889
-AfBy2 4632
+Act  33960136
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -167,11 +196,11 @@ Color 16 6
 Pos  8
 Save  2
 Alig  955
-Hit   104
-Dam   153
-ACs -352 -323 -382 -185
+Hit   70
+Dam   87
+ACs -212 -183 -242 -45
 Attr 20 16 18 18 19
-AMod 31 19 17 25 15
+AMod 12 4 2 6 0
 Pass Kilrpis9ggekI~
 Ariv $n lets an arrow fly to $T.~
 Dprt $n lets an arrow fly to $T.~
@@ -238,42 +267,6 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'blindness'   0  60  -4  18          1          0
-AffD 'pass door'   0  18   0   0    1048576          0
-AffD 'protection evil'   0  18   0   0       8192          0
-AffD 'fire shield'   0  18   0   0          0          8
-AffD 'frost shield'   0  18   0   0          0         16
-AffD 'detect hidden'   0  18   0   0         32          0
-AffD 'detect invis'   0  18   0   0          8          0
-AffD 'power gloves'   0  18  35  19          0          0
-AffD 'giant strength'   0  18   4   1          0          0
-AffD 'frenzy'   0  18 110  17          0          0
-AffD 'frenzy'   0  18  11  19          0          0
-AffD 'frenzy'   0  18  11  18          0          0
-AffD 'fly'   0  21   0   0     524288          0
-AffD 'aid'   0  18  34  13          0          0
-AffD 'aid'   0  18   7  18          0          0
-AffD 'divine protection'   0  18   0   0          0       4096
-AffD 'haste'   0  18   4   2    2097152          0
-AffD 'sanctuary'   0  18   0   0        128          0
-AffD 'major globe'  -1  18 -150  17          0          0
-AffD 'force sword'   0   8   0   0          0        512
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1 -100  17          0          0
 AffD 'titanic'   0  -1 9310  13          0          0
 AffD 'titanic'   0  -1 4690  12          0          0
 AffD 'titanic'   0  -1 1715  14          0          0
@@ -298,7 +291,7 @@ Nest 0
 ExtF 2100545
 Wear 3
 Lev  50
-Cost 3000
+Cost 30000000
 Cond 88
 Repd 0
 End
@@ -366,7 +359,7 @@ Vnum 725
 Nest 0
 Wear 9
 Lev  46
-Cost 950
+Cost 9500000
 Cond 97
 Repd 0
 End
@@ -376,7 +369,7 @@ Vnum 7664
 Nest 0
 Wear 6
 Lev  54
-Cost 2500
+Cost 25000000
 Cond 89
 Repd 0
 End
@@ -386,7 +379,7 @@ Vnum 7665
 Nest 0
 Wear 17
 Lev  54
-Cost 1500
+Cost 15000000
 Cond 90
 Repd 0
 End
@@ -416,10 +409,11 @@ End
 #O
 Vnum 9944
 Nest 0
+ExtF 68157505
 Wear 0
 Lev  20
 Cost 0
-Cond 24
+Cond 21
 Repd 0
 Val  0 0 -1 0 0
 End
@@ -429,7 +423,7 @@ Vnum 9924
 Nest 0
 Wear 11
 Lev  52
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -451,7 +445,7 @@ Nest 0
 ExtF 19713
 Wear 5
 Lev  51
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 Affect -1 51 -1 -8 17 0 0
@@ -463,7 +457,7 @@ Vnum 29032
 Nest 0
 Wear 12
 Lev  29
-Cost 500
+Cost 5000000
 Cond 90
 Repd 0
 End
@@ -474,7 +468,7 @@ Nest 1
 ExtF 1048579
 Wear -1
 Lev  52
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 End
@@ -485,7 +479,7 @@ Nest 1
 Name bright white potion~
 ShD  a bright white potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 77 77 77 0
@@ -500,7 +494,7 @@ Nest 1
 Name bright white potion~
 ShD  a bright white potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 77 77 77 0
@@ -515,7 +509,7 @@ Nest 1
 Name bright white potion~
 ShD  a bright white potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 77 77 77 0
@@ -530,7 +524,7 @@ Nest 1
 Name bright white potion~
 ShD  a bright white potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 77 77 77 0
@@ -545,7 +539,7 @@ Nest 1
 Name bright white potion~
 ShD  a bright white potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 77 77 77 0
@@ -560,7 +554,7 @@ Nest 1
 Name bright white potion~
 ShD  a bright white potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 77 77 77 0
@@ -575,7 +569,7 @@ Nest 1
 Name bright white potion~
 ShD  a bright white potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 77 77 77 0
@@ -590,7 +584,7 @@ Nest 1
 Name bright white potion~
 ShD  a bright white potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 77 77 77 0
@@ -605,7 +599,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -620,7 +614,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -635,7 +629,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -650,7 +644,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -665,7 +659,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -680,7 +674,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -695,7 +689,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -710,7 +704,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -725,7 +719,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -740,7 +734,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -755,7 +749,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -770,7 +764,7 @@ Nest 1
 Name colorless potion~
 ShD  a colorless potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 12 77 106 0
@@ -785,7 +779,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -800,7 +794,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -815,7 +809,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -830,7 +824,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -845,7 +839,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -860,7 +854,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -875,7 +869,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -890,7 +884,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -905,7 +899,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -920,7 +914,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -935,7 +929,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -950,7 +944,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -965,7 +959,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -980,7 +974,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -995,7 +989,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -1010,7 +1004,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -1025,7 +1019,7 @@ Nest 1
 ExtF 20
 Wear -1
 Lev  43
-Cost 950
+Cost 9500000
 Cond 100
 Repd 0
 End
@@ -1072,7 +1066,7 @@ Nest 1
 Name flaming red potion~
 ShD  a flaming red potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  50 64 -1 -1 0
@@ -1085,7 +1079,7 @@ Nest 1
 Name flaming red potion~
 ShD  a flaming red potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  50 64 -1 -1 0
@@ -1098,7 +1092,7 @@ Nest 1
 Name flaming red potion~
 ShD  a flaming red potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 64 -1 -1 0
@@ -1111,7 +1105,7 @@ Nest 1
 Name flaming red potion~
 ShD  a flaming red potion~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 64 -1 -1 0
@@ -1124,7 +1118,7 @@ Nest 1
 Name pinkish potion~
 ShD  a pinkish potion ~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  51 106 106 106 0
@@ -1160,7 +1154,7 @@ Vnum 19122
 Nest 1
 Wear -1
 Lev  42
-Cost 3100
+Cost 31000000
 Cond 100
 Repd 0
 End
@@ -1171,7 +1165,7 @@ Nest 1
 ExtF 20
 Wear -1
 Lev  43
-Cost 950
+Cost 9500000
 Cond 100
 Repd 0
 End
@@ -1258,7 +1252,7 @@ Vnum 29218
 Nest 1
 Wear -1
 Lev  51
-Cost 2500
+Cost 25000000
 Cond 100
 Repd 0
 End
@@ -1268,7 +1262,7 @@ Vnum 20503
 Nest 1
 Wear -1
 Lev  38
-Cost 12000
+Cost 120000000
 Cond 100
 Repd 0
 End
@@ -1277,19 +1271,7 @@ End
 Vnum 3092
 Nest 1
 Wear -1
-Cost 150
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 1
-Wear -1
-Cost 150
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -1301,7 +1283,19 @@ End
 Vnum 3092
 Nest 1
 Wear -1
-Cost 150
+Cost 1500000
+Cond 100
+Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3092
+Nest 1
+Wear -1
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -1324,7 +1318,7 @@ End
 Vnum 3092
 Nest 0
 Wear -1
-Cost 150
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'detect invis'
@@ -1337,7 +1331,7 @@ Vnum 29208
 Nest 0
 Wear -1
 Lev  51
-Cost 3000
+Cost 30000000
 Cond 100
 Repd 0
 Affect -1 51 -1 -2 23 0 0
@@ -1353,7 +1347,7 @@ Act_room $n wields his extremely powerful newbie sword.~
 Act_char You wield your "newbie sword"... boy, will they be suprised.~
 Wear 16
 Lev  54
-Cost 7000
+Cost 70000000
 Cond 67
 Repd 0
 Affect -1 54 -1 -2 21 0 0
@@ -1364,7 +1358,7 @@ Vnum 29208
 Nest 0
 Wear -1
 Lev  51
-Cost 3000
+Cost 30000000
 Cond 100
 Repd 0
 End
@@ -1374,10 +1368,20 @@ Vnum 29226
 Nest 0
 Wear -1
 Lev  52
-Cost 5000
+Cost 50000000
 Cond 100
 Repd 0
 Val  800 29 29269 0 10
+End
+
+#O
+Vnum 30218
+Nest 0
+Wear -1
+Lev  50
+Cost 50000000
+Cond 100
+Repd 0
 End
 
 #END
