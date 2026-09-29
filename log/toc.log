@@ -12183,3 +12183,5 @@ Tue Sep 29 17:50:24 2026 :: Log Killuminati: restore self
 Tue Sep 29 17:50:33 2026 :: Log Killuminati: set char self end 30000
 Tue Sep 29 17:50:35 2026 :: Log Killuminati: restore self
 Tue Sep 29 17:50:36 2026 :: Log Killuminati: fsave
+Tue Sep 29 17:56:26 2026 :: Sock.sinaddr:  185.93.89.79
+Tue Sep 29 17:56:27 2026 :: EOF encountered on read.
