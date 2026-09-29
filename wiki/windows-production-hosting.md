@@ -127,6 +127,95 @@ state, verify the archive, restore into an empty directory, compare ownership
 and contents, and explicitly decide whether the intended rollback of progress
 is acceptable before replacement.
 
+## Losing The Machine
+
+The Raspberry Pi this ran on died at 07:57 on 2026-09-29 with no
+warning: no under-voltage, no storage error, no clean shutdown, the
+game answering health checks a quarter of an hour earlier. Its
+characters came back only because the SD card happened to still be
+readable. That was luck. This section is what replaced the luck.
+
+### What is where
+
+| | Where | How often | Survives the host dying |
+| --- | --- | --- | --- |
+| Characters, gods, note board, reports, logs | `main` on GitHub, plaintext | 5 min | yes |
+| Encrypted snapshot of `player/` | `snapshots-vm` on the private backups repo | 6 h | yes |
+| Full state tarball | `/var/backups/toc/` on the host | daily 08:15 | **no** |
+| Character files on disk | `/srv/toc/current/player` | every 5 min per player | no |
+
+The daily tarball is local only. It is useful for an "undo the last
+hour" mistake and worth nothing against a dead disk; do not count it.
+
+### The five-minute promise
+
+Two things have to line up for it, and both were wrong before this:
+
+- **The game has to write the file.** `char_update` saves each playing
+  character once per `AUTOSAVE_CYCLE_TICKS` minutes, staggered by
+  descriptor. Stock ROM used 30, so half an hour of play was at risk
+  no matter how often the files were copied. It is 5 now.
+- **The file has to leave the machine.** `toc-state-sync` commits and
+  pushes every 5 minutes.
+
+Worst case is therefore about ten minutes of one character's play, and
+typically much less.
+
+### Knowing it still works
+
+`toc-state-sync-check` runs every fifteen minutes and complains if the
+sync has not succeeded recently or has commits it could not push. It
+writes `/run/toc-state-sync.status`, logs to the journal at
+`daemon.err`, and queues an in-game announcement so a staff character
+sees it. Read the marker to answer "are we backed up right now":
+
+```bash
+cat /run/toc-state-sync.status
+systemctl list-timers 'toc-state-sync*'
+```
+
+### Rebuilding on a new machine
+
+`deploy/toc-restore` does it from the public repository and nothing
+else -- no archive to locate, no key to have kept, no token to
+remember. On a fresh Debian-family box with `git`, `make`, `gcc` and
+`rsync`:
+
+```bash
+git clone https://github.com/jeremydbean/toc2026.git /tmp/toc
+sudo /tmp/toc/deploy/toc-restore
+```
+
+It clones, checks the characters actually came with the clone, builds,
+validates the world, and installs to `/srv/toc/current`.
+
+**Rehearse it without touching anything live.** This is the part people
+skip and then regret:
+
+```bash
+TOC_PREFIX=/tmp/drill deploy/toc-restore
+```
+
+Last rehearsed 2026-09-29: 968 characters, world validated, about two
+minutes end to end.
+
+### What is deliberately not in the repository
+
+Two things, and neither blocks a restore, because both can simply be
+made again:
+
+- the web admin token, `/etc/toc/web.env` -- any random hex string;
+  `openssl rand -hex 32`
+- the state-sync deploy key, `/srv/toc/.ssh/id_ed25519_state_sync` --
+  `ssh-keygen -t ed25519`, then add the public half to the repository
+  with write access
+
+The game units themselves (`toc-game.service`, `toc-web.service`) are
+host-specific and live on the host, not in git. Copy them from the old
+machine if you have it; otherwise they are two short units running
+`/srv/toc/current/merc 9000` from `/srv/toc/current/area` as `toc`, and
+uvicorn for the dashboard.
+
 ## Safe Releases
 
 Build and test a separate source tree first. Preserve local gameplay fixes when

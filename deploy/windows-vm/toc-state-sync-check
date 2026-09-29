@@ -1,0 +1,62 @@
+#!/bin/sh
+# Notice when the state sync stops working.
+#
+# The way backups fail is quietly. toc-state-sync could break for any
+# number of dull reasons -- a revoked deploy key, a full disk, GitHub
+# down, a botched edit -- and nothing about the running game would look
+# different. The first anyone would know is the next disaster, which is
+# exactly the wrong time to find out.
+#
+# So: check that the sync ran recently and succeeded, and if it did not,
+# say so somewhere a person will see it.
+set -eu
+
+UNIT="${UNIT:-toc-state-sync.service}"
+MAX_AGE_MIN="${MAX_AGE_MIN:-20}"        # timer is every 5; 20 is four misses
+STATE_REPO="${STATE_REPO:-/srv/toc/state-repo}"
+MARKER="${MARKER:-/run/toc-state-sync.status}"
+QUEUE="${QUEUE:-/srv/toc/current/area/webadmin.queue}"
+
+result=$(systemctl show -p Result --value "$UNIT" 2>/dev/null || echo unknown)
+finished=$(systemctl show -p ExecMainExitTimestampMonotonic --value "$UNIT" 2>/dev/null || echo 0)
+now=$(awk '{printf "%d", $1 * 1000000}' /proc/uptime)
+
+age_min=99999
+if [ "${finished:-0}" -gt 0 ]; then
+    age_min=$(( (now - finished) / 60000000 ))
+fi
+
+problem=""
+[ "$result" != "success" ] && problem="last run reported '$result'"
+[ "$age_min" -gt "$MAX_AGE_MIN" ] && \
+    problem="${problem:+$problem; }last successful run was ${age_min} minutes ago"
+
+# Unpushed commits are the other way this goes wrong: the script runs,
+# commits, and cannot push. That leaves the only copy on a disk that
+# might be the one about to fail.
+unpushed=0
+if [ -d "$STATE_REPO/.git" ]; then
+    unpushed=$(git -C "$STATE_REPO" rev-list --count '@{u}..HEAD' 2>/dev/null || echo 0)
+    [ "$unpushed" -gt 0 ] && \
+        problem="${problem:+$problem; }$unpushed commits committed but never pushed"
+fi
+
+if [ -z "$problem" ]; then
+    printf 'ok %s age=%smin unpushed=0\n' "$(date -Is)" "$age_min" > "$MARKER" 2>/dev/null || true
+    echo "state sync healthy: last run ${age_min} min ago"
+    exit 0
+fi
+
+printf 'FAILING %s %s\n' "$(date -Is)" "$problem" > "$MARKER" 2>/dev/null || true
+echo "STATE SYNC IS NOT WORKING: $problem" >&2
+logger -t toc-state-sync -p daemon.err "state sync is not working: $problem" 2>/dev/null || true
+
+# Tell whoever is in the game. A staff character reading this is the
+# whole point; an error only journald sees is an error nobody sees.
+if [ -f "$QUEUE" ] && [ -w "$QUEUE" ]; then
+    printf 'announce|%s\n' \
+        "ADMIN: player-state backup to GitHub is not working ($problem). Saves are still on disk but are not leaving this machine." \
+        >> "$QUEUE" 2>/dev/null || true
+fi
+
+exit 1

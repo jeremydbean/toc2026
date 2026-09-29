@@ -1,0 +1,10 @@
+[Unit]
+Description=Check the player-state backup every quarter hour
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

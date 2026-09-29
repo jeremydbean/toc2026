@@ -1342,7 +1342,7 @@ void char_update( void )
     /* update save counter */
     save_number++;
 
-    if (save_number > 29)
+    if (save_number >= AUTOSAVE_CYCLE_TICKS)
 	save_number = 0;
 
     FOR_EACH_CHARACTER( iter, ch )
@@ -1885,10 +1885,12 @@ void char_update( void )
     FOR_EACH_CHARACTER( iter, ch )
     {
 
+        /* Spread over the cycle by descriptor, so a full mud does not
+           write every player file in the same tick. */
         if ( ch->desc != NULL
         &&   !IS_NPC(ch)
         &&   ch->level >= 1
-        &&   ch->desc->descriptor % 30 == save_number )
+        &&   ch->desc->descriptor % AUTOSAVE_CYCLE_TICKS == save_number )
             save_char_obj( ch );
 
         /* 4-hour session milestone: snapshot heroes/immortals once per

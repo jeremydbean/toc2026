@@ -1,0 +1,7 @@
+[Unit]
+Description=Check that the player-state backup is still reaching GitHub
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/windows-production-hosting.md
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/toc-state-sync-check

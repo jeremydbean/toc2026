@@ -243,6 +243,18 @@ typedef struct script_loop_prepoll_payload
 #define PULSE_VIOLENCE          ( 3 * PULSE_PER_SECOND)
 #define PULSE_MOBILE            ( 4 * PULSE_PER_SECOND)
 #define PULSE_TICK              (60 * PULSE_PER_SECOND)
+
+/*
+ * How long a playing character may go unsaved.
+ *
+ * char_update runs once a minute and saves the players whose descriptor
+ * number falls in this tick's slot, so the cycle length is how many
+ * minutes pass between one character's saves. Stock ROM used 30, which
+ * is half an hour of play a crash could take. The host this runs on
+ * died once with no warning; five minutes is the most that should ever
+ * be at risk, and it matches how often the state reaches GitHub.
+ */
+#define AUTOSAVE_CYCLE_TICKS    5
 #define PULSE_AREA              (60 * PULSE_PER_SECOND)
 #define PULSE_DISASTER          (30 * PULSE_PER_SECOND)
 #define PULSE_DEATHTRAP         ( 2 * PULSE_PER_SECOND)

@@ -1,0 +1,132 @@
+#!/bin/sh
+# Rebuild a working Times of Chaos from GitHub and nothing else.
+#
+# This is the other half of toc-state-sync. The sync is only worth
+# having if somebody can turn what it pushed back into a running game
+# on a machine that has never seen this project, so that is what this
+# does: clone, build, put the live state where the game expects it,
+# and check the world loads.
+#
+# It deliberately takes no arguments it does not need and assumes
+# nothing about the host beyond a Debian-family Linux with the build
+# tools. Run it on a bare box after a disk failure and you should have
+# the game back with at most the last sync interval missing.
+#
+#   sudo ./toc-restore                     # into /srv/toc, the usual place
+#   TOC_PREFIX=/tmp/drill ./toc-restore    # a rehearsal that touches nothing
+#
+# A rehearsal is the point of TOC_PREFIX: an untested restore is a
+# hope, not a backup, so this is written to be run for practice
+# without disturbing anything live.
+set -eu
+
+REPO="${REPO:-https://github.com/jeremydbean/toc2026.git}"
+BRANCH="${BRANCH:-main}"
+TOC_PREFIX="${TOC_PREFIX:-/srv/toc}"
+BUILD="$TOC_PREFIX/build"
+CURRENT="$TOC_PREFIX/current"
+DRILL="${DRILL:-0}"
+[ "$TOC_PREFIX" = "/srv/toc" ] || DRILL=1
+
+say() { printf '\n== %s\n' "$*"; }
+
+say "restoring from $REPO ($BRANCH) into $TOC_PREFIX"
+[ "$DRILL" = 1 ] && echo "   rehearsal: nothing outside $TOC_PREFIX is touched"
+
+# ---------------------------------------------------------------- clone
+say "fetching the repository"
+mkdir -p "$TOC_PREFIX"
+if [ -d "$BUILD/.git" ]; then
+    git -C "$BUILD" fetch --quiet origin "$BRANCH"
+    git -C "$BUILD" reset --quiet --hard "origin/$BRANCH"
+else
+    git clone --quiet --branch "$BRANCH" "$REPO" "$BUILD"
+fi
+echo "   at $(git -C "$BUILD" rev-parse --short HEAD)"
+
+# ------------------------------------------------------------- the state
+# The saves, the note board and the reports come down with the clone,
+# because toc-state-sync commits them. That is the whole point: there
+# is no second archive to find and no key to have kept.
+say "checking the live state came with it"
+players=$(ls "$BUILD/player" 2>/dev/null | grep -cv '^versions$' || echo 0)
+gods=$(ls "$BUILD/gods" 2>/dev/null | wc -l || echo 0)
+echo "   $players characters, $gods gods files"
+if [ "$players" -lt 1 ]; then
+    echo "   NO CHARACTERS IN THE REPOSITORY -- stopping." >&2
+    echo "   Either the sync was never running or the wrong branch is checked out." >&2
+    exit 1
+fi
+newest=$(git -C "$BUILD" log -1 --format=%cI -- player gods 2>/dev/null || echo unknown)
+echo "   state last committed: $newest"
+
+# ---------------------------------------------------------------- build
+say "building"
+make -C "$BUILD" clean >/dev/null 2>&1 || true
+if ! make -C "$BUILD" >/tmp/toc-restore-build.log 2>&1; then
+    echo "   build failed; see /tmp/toc-restore-build.log" >&2
+    tail -15 /tmp/toc-restore-build.log >&2
+    exit 1
+fi
+echo "   built $(ls -la "$BUILD/merc" | awk '{print $5}') bytes"
+
+# ------------------------------------------------------------ world check
+say "checking the world loads"
+if ( cd "$BUILD/area" && ../merc --check-area 2>&1 | tail -1 ); then
+    :
+else
+    echo "   the world did not validate" >&2
+    exit 1
+fi
+
+# --------------------------------------------------------------- install
+say "installing to $CURRENT"
+mkdir -p "$CURRENT"
+rsync -a --exclude '.git/' "$BUILD/" "$CURRENT/"
+# These are written by the running game and are not code; they come
+# from the repository on a restore because that is the only copy.
+for d in player gods log; do
+    [ -d "$BUILD/$d" ] && { mkdir -p "$CURRENT/$d"; rsync -a "$BUILD/$d/" "$CURRENT/$d/"; }
+done
+mkdir -p "$CURRENT/corpse" "$CURRENT/heroes" "$CURRENT/backups"
+echo "   $(ls "$CURRENT/player" | wc -l) characters in place"
+
+if [ "$DRILL" = 1 ]; then
+    say "rehearsal complete"
+    echo "A real restore would now: chown -R toc:toc $CURRENT,"
+    echo "install the systemd units from deploy/windows-vm/, put the"
+    echo "state-sync deploy key at ~/.ssh/id_ed25519_state_sync, and"
+    echo "start toc-game and toc-web."
+    exit 0
+fi
+
+# ------------------------------------------------------------- services
+say "wiring up the services"
+id -u toc >/dev/null 2>&1 || useradd --system --home "$TOC_PREFIX" --shell /usr/sbin/nologin toc
+chown -R toc:toc "$TOC_PREFIX"
+
+for u in toc-state-sync.service toc-state-sync.timer; do
+    [ -f "$BUILD/deploy/windows-vm/$u" ] && install -m 0644 "$BUILD/deploy/windows-vm/$u" /etc/systemd/system/
+done
+[ -f "$BUILD/deploy/windows-vm/toc-state-sync" ] &&
+    install -m 0755 "$BUILD/deploy/windows-vm/toc-state-sync" /usr/local/sbin/
+
+cat <<'NOTE'
+
+   The game units themselves (toc-game.service, toc-web.service) are
+   host-specific and are not in the repository. Copy them from the old
+   host if you have it, or write two units that run
+   `/srv/toc/current/merc 9000` from /srv/toc/current/area as user toc,
+   and uvicorn for the dashboard.
+
+   Two things are deliberately NOT in the repository and have to be
+   put back by hand:
+     - the web admin token   -> /etc/toc/web.env
+     - the state-sync deploy key -> /srv/toc/.ssh/id_ed25519_state_sync
+   Both can simply be generated afresh: a new token is any random hex
+   string, and a new deploy key needs adding to the repository with
+   write access. Nothing in the game depends on the old values.
+NOTE
+
+systemctl daemon-reload || true
+say "done -- start toc-game and toc-web when the units are in place"

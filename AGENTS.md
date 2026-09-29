@@ -625,6 +625,24 @@ that problem -- its build tree at `/srv/toc/build` holds no live state,
 and the state clone is not what gets deployed. Keep the two separate
 and the trap stays shut.
 
+**Two halves, and the second is the one people skip.**
+`deploy/toc-restore` rebuilds a working game from the public repository
+alone -- no archive to find, no key to have kept -- and takes
+`TOC_PREFIX` so it can be rehearsed into a scratch directory without
+touching anything live. Rehearse it when you change what the sync
+covers; an untested restore is a hope.
+
+`toc-state-sync-check` runs every fifteen minutes and makes a stalled
+sync loud: journal at `daemon.err`, a marker at
+`/run/toc-state-sync.status`, and an in-game announcement, because the
+way backups fail is quietly.
+
+**`AUTOSAVE_CYCLE_TICKS` is the other half of the five-minute
+promise.** Syncing every five minutes is pointless if the game only
+writes a character's file every thirty, which is what stock ROM did.
+`char_update` saves each playing character once per cycle, staggered by
+descriptor so a full mud does not write every file in one tick.
+
 ## Deploying To The Raspberry Pi
 
 The Pi at `toc.jeremybean.com` is the live server, not a staging box. Real
