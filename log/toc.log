@@ -12208,3 +12208,11 @@ Tue Sep 29 19:29:21 2026 :: Log Killuminati: set char self hp 30000
 Tue Sep 29 19:29:25 2026 :: Log Killuminati: set char self end 30000
 Tue Sep 29 19:29:26 2026 :: Log Killuminati: restore self
 Tue Sep 29 19:30:17 2026 :: Log Killuminati: load obj 30259
+Tue Sep 29 19:48:18 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Tue Sep 29 19:48:24 2026 :: Received signal 15; saving players and shutting down.
+Tue Sep 29 19:48:24 2026 :: Closing link to Killuminati.
+Tue Sep 29 19:48:24 2026 :: Normal termination of game.
+Tue Sep 29 19:48:25 2026 ::  INIT OK 
+Tue Sep 29 19:48:25 2026 :: ROM is ready to rock on port 9000.
+Tue Sep 29 19:48:25 2026 :: Automated backup complete.
+Tue Sep 29 19:48:25 2026 :: Daily backup complete.
