@@ -12118,3 +12118,12 @@ Tue Sep 29 16:18:52 2026 :: Daily backup complete.
 Tue Sep 29 16:30:14 2026 :: Sock.sinaddr:  172.28.90.1
 Tue Sep 29 16:30:24 2026 :: Sock.sinaddr:  172.28.90.1
 Tue Sep 29 16:30:24 2026 :: EOF encountered on read.
+Tue Sep 29 16:38:57 2026 :: Sock.sinaddr:  192.168.0.1
+Tue Sep 29 16:39:03 2026 :: Loading Killuminati's playerfile
+Tue Sep 29 16:39:04 2026 :: Killuminati@192.168.0.1 has connected.
+Tue Sep 29 16:41:34 2026 :: Log Killuminati: spellup
+Tue Sep 29 16:41:34 2026 :: Spellup: Hermie placed in room 4208 by Killuminati.
+Tue Sep 29 16:41:40 2026 :: Spellup: Hermie gave Killuminati the full list (30 ticks) in room 4208.
+Tue Sep 29 16:41:49 2026 :: Log Killuminati: cloak
+Tue Sep 29 16:41:53 2026 :: Spellup: Hermie gave Killuminati the full list (30 ticks) in room 4208.
+Tue Sep 29 16:42:30 2026 :: Log Killuminati: set char self mana 30000
