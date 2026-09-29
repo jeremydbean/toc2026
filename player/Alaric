@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790724719
+LogO 1790724909
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,14 +15,14 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 50
-Plyd 201700
+Plyd 201890
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1167 1167 1918 1918 927 927
-NewGold 73
+HMV  1167 1167 1918 1918 451 927
+NewGold 97
 NewPlat 40
 NewCopp 1
 NewSilv 12
@@ -35,7 +35,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 729
-AchQuests 79
+AchQuests 80
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -88,10 +88,11 @@ SesDead  0
 SesQuest 0
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 2911
-QuestStrk 23
+QuestPnts 2937
+QuestStrk 24
 CasinoWon  51
 CasinoLost 304
+QuestNext 5
 Exp  112575
 Act  4261068
 AfBy 3678848
@@ -134,7 +135,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 23 23
+Cond 0 20 20
 Alias k kick~
 Alias sm smite~
 Sk 30 'axe'
