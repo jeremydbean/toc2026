@@ -12127,3 +12127,16 @@ Tue Sep 29 16:41:40 2026 :: Spellup: Hermie gave Killuminati the full list (30 t
 Tue Sep 29 16:41:49 2026 :: Log Killuminati: cloak
 Tue Sep 29 16:41:53 2026 :: Spellup: Hermie gave Killuminati the full list (30 ticks) in room 4208.
 Tue Sep 29 16:42:30 2026 :: Log Killuminati: set char self mana 30000
+Tue Sep 29 16:57:30 2026 :: Received signal 15; saving players and shutting down.
+Tue Sep 29 16:57:30 2026 :: Closing link to Killuminati.
+Tue Sep 29 16:57:30 2026 :: Normal termination of game.
+Tue Sep 29 16:57:32 2026 ::  INIT OK 
+Tue Sep 29 16:57:32 2026 :: Validation OK: areas=94 mobs=2337 objects=3561 rooms=7781 active_mobs=5762.
+Tue Sep 29 16:57:32 2026 ::  INIT OK 
+Tue Sep 29 16:57:32 2026 :: ROM is ready to rock on port 9000.
+Tue Sep 29 16:57:32 2026 :: Automated backup complete.
+Tue Sep 29 16:57:32 2026 :: Daily backup complete.
+Tue Sep 29 16:57:40 2026 :: Sock.sinaddr:  172.28.90.1
+Tue Sep 29 16:57:45 2026 :: Loading Mudlettest's playerfile
+Tue Sep 29 16:57:46 2026 :: EOF encountered on read.
+Tue Sep 29 16:57:46 2026 :: Closing link to Mudlettest.
