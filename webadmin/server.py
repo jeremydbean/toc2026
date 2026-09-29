@@ -1444,6 +1444,11 @@ def host_status_snapshot() -> Dict[str, Any]:
     return {
         "generated": time.time(),
         "read_only": True,
+        # The Host tab used to take this from /api/admin/status and showed
+        # "Locked" whenever that call was not available to it, sitting next
+        # to a host uptime that was working. It is host telemetry; it
+        # belongs here.
+        "game_uptime_seconds": game_process_uptime(),
         "host": host_resource_status(),
         "repository": repository_status(),
         "services": services,

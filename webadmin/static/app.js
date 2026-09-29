@@ -943,6 +943,12 @@
     function renderHostStatus(status) {
         state.host.status = status;
         const host = status.host || {};
+        if (status.game_uptime_seconds !== undefined) {
+            byId("host-game-uptime").textContent =
+                status.game_uptime_seconds == null
+                    ? "not running"
+                    : formatDuration(status.game_uptime_seconds);
+        }
         const repository = status.repository || {};
         renderHostResources(host, status.generated, true);
         byId("host-revision").textContent = repository.deployed || repository.head || "-";
