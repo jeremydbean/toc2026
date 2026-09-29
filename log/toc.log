@@ -12143,3 +12143,12 @@ Tue Sep 29 16:57:46 2026 :: Closing link to Mudlettest.
 Tue Sep 29 16:59:46 2026 :: Sock.sinaddr:  192.168.0.1
 Tue Sep 29 16:59:56 2026 :: Loading Killuminati's playerfile
 Tue Sep 29 16:59:57 2026 :: Killuminati@192.168.0.1 has connected.
+Tue Sep 29 17:19:29 2026 :: Sock.sinaddr:  185.247.137.206
+Tue Sep 29 17:19:30 2026 :: EOF encountered on read.
+Tue Sep 29 17:19:42 2026 :: Sock.sinaddr:  195.96.139.196
+Tue Sep 29 17:19:44 2026 :: EOF encountered on read.
+Tue Sep 29 17:21:50 2026 :: Log Killuminati: set char self mana 30000
+Tue Sep 29 17:21:57 2026 :: Log Killuminati: set char self end 30000
+Tue Sep 29 17:22:03 2026 :: Log Killuminati: set char self hp 30000
+Tue Sep 29 17:22:04 2026 :: Log Killuminati: restore self
+Tue Sep 29 17:24:03 2026 :: Sock.sinaddr:  66.132.186.185
