@@ -157,7 +157,22 @@ DEPLOYED_COMMIT_FILE = Path(
     os.getenv("TOC_DEPLOYED_COMMIT_FILE", "/var/lib/toc2026/deployed-commit")
 )
 
-HOST_SERVICE_UNITS = (
+def _units_from_env(name: str, default: tuple) -> tuple:
+    """Unit names for this host, or the appliance's if unset.
+
+    The dashboard used to hard-code the Raspberry Pi appliance's unit
+    names, so on the Hyper-V VM -- where they are toc-game.service and
+    friends -- the services and timers tables came back empty and the
+    whole host panel looked broken. The names belong in the
+    environment, beside the rest of the host's configuration.
+    """
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    return tuple(u.strip() for u in raw.replace(",", " ").split() if u.strip())
+
+
+HOST_SERVICE_UNITS = _units_from_env("TOC_HOST_SERVICE_UNITS", (
     "toc2026-game.service",
     "toc2026-web.service",
     "toc2026-recovery.service",
@@ -168,15 +183,15 @@ HOST_SERVICE_UNITS = (
     "toc2026-player-backup.service",
     "toc2026-namecheap-ddns.service",
     "toc2026-led.service",
-)
-HOST_TIMER_UNITS = (
+))
+HOST_TIMER_UNITS = _units_from_env("TOC_HOST_TIMER_UNITS", (
     "toc2026-update.timer",
     "toc2026-healthcheck.timer",
     "toc2026-maintenance.timer",
     "toc2026-player-backup.timer",
     "toc2026-namecheap-ddns.timer",
-)
-HOST_JOURNAL_UNITS = (
+))
+HOST_JOURNAL_UNITS = _units_from_env("TOC_HOST_JOURNAL_UNITS", (
     "toc2026-game.service",
     "toc2026-web.service",
     "toc2026-recovery.service",
@@ -186,7 +201,7 @@ HOST_JOURNAL_UNITS = (
     "toc2026-maintenance.service",
     "toc2026-player-backup.service",
     "toc2026-namecheap-ddns.service",
-)
+))
 HOST_COMMANDS = {"git", "journalctl", "systemctl"}
 HOST_COMMAND_OUTPUT_LIMIT = 1024 * 1024
 HOST_RESOURCE_SAMPLE_MIN_INTERVAL = 0.2
