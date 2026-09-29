@@ -15,6 +15,9 @@ UNIT="${UNIT:-toc-state-sync.service}"
 MAX_AGE_MIN="${MAX_AGE_MIN:-20}"        # timer is every 5; 20 is four misses
 STATE_REPO="${STATE_REPO:-/srv/toc/state-repo}"
 MARKER="${MARKER:-/run/toc-state-sync.status}"
+# systemd gives the service a RuntimeDirectory; run by hand there is
+# none, and a failed marker write must not fail the check itself.
+mkdir -p "$(dirname "$MARKER")" 2>/dev/null || true
 QUEUE="${QUEUE:-/srv/toc/current/area/webadmin.queue}"
 
 result=$(systemctl show -p Result --value "$UNIT" 2>/dev/null || echo unknown)

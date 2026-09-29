@@ -593,9 +593,22 @@ See `SECURITY.md` for mitigation and reporting procedures.
 
 ## Live State Goes To GitHub
 
-`deploy/windows-vm/toc-state-sync` runs on a five-minute timer on
+`deploy/windows-vm/toc-state-sync` runs **every five minutes** on
 whichever host is running the game and commits `player/`, `gods/`,
-`log/` and the `area/` runtime files to `main` **in plaintext**.
+`log/` and the `area/` runtime files to `main` **in plaintext**. It
+commits nothing when nothing changed.
+
+The interval was widened twice while chasing CI noise and put back
+both times. Frequent syncing is what protects the characters; a
+validate per sync is a separate problem with a separate fix, below.
+Do not reach for the interval again.
+
+**A sync must never start a CI run.** Every one used to, which is an
+hour and a half of runner time to be told no code changed, three times
+an hour. Two guards: `paths-ignore` in `.github/workflows/validate.yml`
+for the paths the sync owns, and `[skip ci]` in the commit message.
+Keep both -- a path added to the sync and forgotten in `paths-ignore`
+is caught by the second.
 
 This is the owner's decision, taken with the consequences understood:
 the files carry DES password hashes and player addresses, the

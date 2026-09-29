@@ -1,14 +1,16 @@
 [Unit]
-Description=Push live player state to GitHub every few minutes
-Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/windows-production-hosting.md
+Description=Push live player state to GitHub
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/disaster-recovery.md
 
 [Timer]
-# Five minutes is the most a crash can cost, and that is the point of
-# the whole thing. It was briefly widened to fifteen to quiet CI, but
-# the CI noise was never the interval's fault: paths-ignore on the
-# workflow and [skip ci] in the commit are what fixed that, so the
-# window can stay tight. Persistent so a sync missed while the host
-# was off runs once it is back.
+# Every five minutes, so a character who signs out is off the machine
+# within five minutes of doing it.
+#
+# This was briefly widened to fifteen minutes and then to daily, both
+# times trying to quiet CI. That was the wrong lever: a validate per
+# sync is stopped by paths-ignore in the workflow and [skip ci] in the
+# commit, and with those in place the interval costs nothing but
+# history. Frequent is what protects the characters, so frequent it is.
 OnBootSec=3min
 OnUnitActiveSec=5min
 Persistent=true
