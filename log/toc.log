@@ -12200,3 +12200,10 @@ Tue Sep 29 18:50:34 2026 :: Sock.sinaddr:  150.107.36.82
 Tue Sep 29 18:50:34 2026 :: EOF encountered on read.
 Tue Sep 29 18:50:34 2026 :: EOF encountered on read.
 Tue Sep 29 19:05:44 2026 :: Sock.sinaddr:  162.248.100.206
+Tue Sep 29 19:27:22 2026 :: Sock.sinaddr:  192.168.0.1
+Tue Sep 29 19:27:27 2026 :: Loading Killuminati's playerfile
+Tue Sep 29 19:27:28 2026 :: Killuminati@192.168.0.1 has connected.
+Tue Sep 29 19:29:18 2026 :: Log Killuminati: set char self mana 30000
+Tue Sep 29 19:29:21 2026 :: Log Killuminati: set char self hp 30000
+Tue Sep 29 19:29:25 2026 :: Log Killuminati: set char self end 30000
+Tue Sep 29 19:29:26 2026 :: Log Killuminati: restore self
