@@ -3108,6 +3108,7 @@ int unread_note_count( CHAR_DATA *ch )
 void report_login_notice( CHAR_DATA *ch )
 {
     char buf[MAX_STRING_LENGTH];
+    char label[32];
     int notes;
     int fresh[REPORT_KINDS];
     int kind;
@@ -3166,11 +3167,23 @@ void report_login_notice( CHAR_DATA *ch )
 	if ( fresh[kind] < 1 )
 	    continue;
 
+	/*
+	 * Pad the whole label, not the plural.
+	 *
+	 * This was "%s%-6s" with the name and then the "s", so the
+	 * six-wide field padded the plural marker rather than the
+	 * word, and the row's length moved with the length of the
+	 * name. bug, typo and idea are 3, 4 and 4 characters, so all
+	 * three rows came out different widths and ran past the
+	 * border. The box is 52 wide inside: four spaces, a
+	 * four-digit count, " new ", and the label fills the rest.
+	 */
+	snprintf( label, sizeof(label), "%s%s",
+	    report_kind_name( kind ), fresh[kind] == 1 ? "" : "s" );
+
 	snprintf( buf, sizeof(buf),
-	    "{0C|{00    {0F%4d{00 new %s%-6s                                 "
-	    "{0C|{00\n\r",
-	    fresh[kind], report_kind_name( kind ),
-	    fresh[kind] == 1 ? "" : "s" );
+	    "{0C|{00    {0F%4d{00 new %-39s{0C|{00\n\r",
+	    fresh[kind], label );
 	send_to_char( buf, ch );
     }
 
