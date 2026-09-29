@@ -129,6 +129,10 @@ is acceptable before replacement.
 
 ## Losing The Machine
 
+The short version of this section lives in
+[Disaster Recovery](disaster-recovery.md), which is the page to open
+when something is actually broken. What follows is the reasoning.
+
 The Raspberry Pi this ran on died at 07:57 on 2026-09-29 with no
 warning: no under-voltage, no storage error, no clean shutdown, the
 game answering health checks a quarter of an hour earlier. Its

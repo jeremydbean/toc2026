@@ -611,6 +611,14 @@ snapshot to a private repo and remains its own thing.
 Everything it commits is in `.gitignore`, so every `git add` is `-f`.
 That is deliberate, not a bug to tidy up.
 
+**Tracking `log/` gave the old Pi trap a new route.** Running
+`--check-area` from `build/area` makes merc write `build/log/toc.log`,
+which is now a tracked file, so `git merge --ff-only` in the build tree
+refuses and every later deploy fails. `toc-deploy` discards and
+`reset --hard`s the build tree instead of merging, which is correct
+there because it holds no local work. Anything else that keeps a second
+checkout has to do the same.
+
 It works in a clone of its own at `/srv/toc/state-repo`. The deployed
 tree must not become a git repository -- installs rsync over it. Before
 committing it does `fetch` then `reset --hard origin/main`, and on a
@@ -643,10 +651,39 @@ writes a character's file every thirty, which is what stock ROM did.
 `char_update` saves each playing character once per cycle, staggered by
 descriptor so a full mud does not write every file in one tick.
 
-## Deploying To The Raspberry Pi
+## Where This Actually Runs
 
-The Pi at `toc.jeremybean.com` is the live server, not a staging box. Real
-players log in; check `log/logins.tsv` for who has been on lately.
+**The game runs in the Hyper-V VM `TOC-Production` on the Windows
+desktop.** The Raspberry Pi died on 2026-09-29 -- abruptly, with the
+game answering health checks fifteen minutes earlier and no
+under-voltage, storage error or clean shutdown in its journal -- and it
+is not coming back. Its characters were recovered from the SD card and
+are what the VM now serves.
+
+    ssh -i C:\ProgramData\ToC\secrets\toc-admin tocadmin@172.28.90.2
+    sudo /usr/local/sbin/toc-deploy          # fetch, build, check, restart
+    sudo /usr/local/sbin/toc-deploy --dry-run
+
+`wiki/disaster-recovery.md` is the one page to read when something is
+broken: what is down, how to deploy, whether the backups are working,
+and how to rebuild on a new machine. Everything on it has been run at
+least once.
+
+`toc-deploy` exists because doing this by hand is how `area/custom.are`
+went missing: it is tracked in git *and* listed in `area.lst`, so
+treating it as a runtime file and excluding it left the game unable to
+boot. The script carries the exclude list that is actually correct.
+
+The section below describes the Pi. **It is history**, kept because the
+appliance scripts are still in the tree and because the reasoning
+behind the update gate is worth keeping. Nothing in it is a live
+instruction: there is no `toc.local` to reach and no
+`/run/toc2026/update.request` to touch.
+
+## Deploying To The Raspberry Pi (historical)
+
+The Pi at `toc.jeremybean.com` was the live server, not a staging box. Real
+players logged in; `log/logins.tsv` recorded who had been on lately.
 
 **The updater restarts the game, which disconnects whoever is playing.**
 Before triggering `toc2026-update.service`, check for connected players and

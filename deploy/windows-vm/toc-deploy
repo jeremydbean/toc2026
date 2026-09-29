@@ -1,0 +1,124 @@
+#!/bin/sh
+# Bring the running game up to what is on GitHub.
+#
+# This replaces doing it by hand, which is how area/custom.are went
+# missing on 2026-09-29: it is tracked in git *and* listed in
+# area.lst, so excluding it as "a runtime file" left the game unable
+# to boot. The exclude list below is the one that is actually right,
+# and having it in a script means it stays right.
+#
+#   sudo toc-deploy            # fetch, build, check, install, restart
+#   sudo toc-deploy --dry-run  # everything except stopping the game
+#
+# State is never taken from git by this script. player/, gods/, log/
+# and the area runtime files belong to the running game; toc-restore
+# is the one that puts them back, and only onto a machine that has
+# none.
+set -eu
+
+BUILD="${BUILD:-/srv/toc/build}"
+CURRENT="${CURRENT:-/srv/toc/current}"
+BRANCH="${BRANCH:-main}"
+DRY=0
+[ "${1:-}" = "--dry-run" ] && DRY=1
+
+say() { printf '\n== %s\n' "$*"; }
+
+say "fetching"
+before=$(git -C "$BUILD" rev-parse --short HEAD)
+# The build tree holds nothing worth keeping, and it dirties itself:
+# running --check-area from build/area makes merc write build/log/toc.log,
+# which is a tracked file now that the state sync commits logs. A
+# merge --ff-only then refuses and every later deploy fails -- the exact
+# trap AGENTS.md describes, arriving by a new route. Discard and reset
+# rather than merge, because there is never a local change here to lose.
+git -C "$BUILD" checkout --quiet -- . 2>/dev/null || true
+git -C "$BUILD" fetch --quiet origin "$BRANCH"
+git -C "$BUILD" reset --quiet --hard "origin/$BRANCH"
+after=$(git -C "$BUILD" rev-parse --short HEAD)
+if [ "$before" = "$after" ]; then
+    echo "   already at $after"
+else
+    echo "   $before -> $after"
+fi
+
+say "building"
+make -C "$BUILD" clean >/dev/null 2>&1 || true
+if ! make -C "$BUILD" >/tmp/toc-deploy-build.log 2>&1; then
+    echo "   BUILD FAILED -- nothing has been touched. See /tmp/toc-deploy-build.log" >&2
+    tail -15 /tmp/toc-deploy-build.log >&2
+    exit 1
+fi
+
+say "checking the world"
+( cd "$BUILD/area" && ../merc --check-area 2>&1 | tail -1 )
+
+if [ "$DRY" = 1 ]; then
+    say "dry run: built and validated, nothing installed"
+    exit 0
+fi
+
+say "who is online"
+token=$(grep -m1 '^WEB_ADMIN_TOKEN=' /etc/toc/web.env 2>/dev/null | cut -d= -f2- || true)
+if [ -n "$token" ]; then
+    curl -s --max-time 5 http://127.0.0.1:9001/api/admin/status \
+        -H "X-Admin-Token: $token" | grep -o '"count":[0-9]*' | head -1 || true
+fi
+q="$CURRENT/area/webadmin.queue"
+[ -f "$q" ] && printf 'announce|%s\n' \
+    "Restarting for an update - back in under a minute." >> "$q" 2>/dev/null || true
+sleep 6
+
+say "installing"
+systemctl stop toc-web toc-game
+stamp=$(date +%Y%m%d-%H%M%S)
+tar czf "/srv/toc/rollback-code-$stamp.tgz" -C "$CURRENT" merc src area webadmin 2>/dev/null || true
+
+# Everything except what the running game owns. custom.are is NOT in
+# this list on purpose -- it is tracked, area.lst loads it, and the
+# game will not boot without it.
+rsync -a --delete \
+  --exclude '.git/' \
+  --exclude 'player/' --exclude 'gods/' --exclude 'heroes/' \
+  --exclude 'backups/' --exclude 'corpse/' --exclude 'log/' --exclude 'notes/' \
+  --exclude 'area/shutdown' --exclude 'area/webadmin.queue' \
+  --exclude 'area/*.txt' \
+  --exclude 'area/pkilldata' --exclude 'area/wizlist' --exclude 'area/maxload' \
+  --exclude 'area/offense' --exclude 'area/relics' --exclude 'area/not' \
+  --exclude 'area/ban' \
+  --exclude 'area/*.are.*.bak' --exclude 'area/*.are.*.tmp' \
+  "$BUILD/" "$CURRENT/"
+
+# area/*.txt is excluded above to protect notes/bugs/ideas/typos, but
+# help and social text files live there too and are code.
+for f in "$BUILD"/area/*.txt; do
+    b=$(basename "$f")
+    case "$b" in
+        notes.txt|bugs.txt|ideas.txt|typos.txt) continue ;;
+    esac
+    cp "$f" "$CURRENT/area/$b"
+done
+
+chown -R toc:toc "$CURRENT"
+
+say "starting"
+systemctl start toc-game
+sleep 8
+systemctl start toc-web
+sleep 4
+printf '   game=%s web=%s\n' "$(systemctl is-active toc-game)" "$(systemctl is-active toc-web)"
+
+n=0
+while [ $n -lt 15 ]; do
+    if curl --fail --silent --max-time 3 http://127.0.0.1:9001/api/health |
+        grep -q '"merc":true'; then
+        say "healthy at $after"
+        printf '   characters on disk: %s\n' "$(ls "$CURRENT/player" | wc -l)"
+        exit 0
+    fi
+    n=$((n + 1)); sleep 3
+done
+
+echo "   DID NOT COME BACK HEALTHY. Roll back with:" >&2
+echo "   tar xzf /srv/toc/rollback-code-$stamp.tgz -C $CURRENT && systemctl restart toc-game toc-web" >&2
+exit 1

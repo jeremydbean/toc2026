@@ -27,6 +27,7 @@ and a large collection of hand-built areas.
 | Returning player | [Player Command Reference](wiki/player-command-reference.md) |
 | Mudlet player | [Official Mudlet package](mudlet/README.md) |
 | Server host | [Hosting Guide](wiki/hosting-guide.md) |
+| Something is broken, or the host died | [Disaster Recovery](wiki/disaster-recovery.md) |
 | Current Windows production host | [Windows Production Runbook](wiki/windows-production-hosting.md) |
 | Mudlet listing submission | [Listing Handoff](mudlet/listing-submission.md) |
 | Immortal/operator | [Operator Guide](wiki/operator-guide.md) |
