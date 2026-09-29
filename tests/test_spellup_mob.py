@@ -61,18 +61,6 @@ def immortal(mud: LiveMud, name: str) -> None:
     patch_player_file(mud, name, Levl=IMMORTAL_LEVEL)
 
 
-def clear_pager(client):
-    """Her menu is long enough to page now.
-
-    page_to_char stops at "[Hit Return to continue]" and the *next*
-    thing the client sends is taken as that return rather than as a
-    command -- so a test that reads the menu and immediately asks for a
-    buff has its buff swallowed, and the affect never appears. This is
-    the pager working, not a bug; the test has to walk through it.
-    """
-    client.send("")
-    client.drain(1.2)
-
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class SpellupMobTests(unittest.TestCase):
@@ -88,10 +76,9 @@ class SpellupMobTests(unittest.TestCase):
 
                 # BUFF with nothing after it opens the menu.
                 menu = run(client, "buff", settle=3.0)
-                clear_pager(client)
                 self.assertIn("sanctuary", menu)
-                self.assertIn("empower (bundle)", menu)
-                self.assertIn("titanic (bundle)", menu)
+                self.assertIn("empower", menu)
+                self.assertIn("titanic", menu)
                 self.assertIn(f"lasts {DURATION} ticks", menu)
 
                 # By name.
@@ -111,6 +98,35 @@ class SpellupMobTests(unittest.TestCase):
                                 if f"'{spell}'" in row)
                     self.assertIn(f"for {DURATION} hours", line,
                                   f"{spell} did not get the flat duration")
+
+    def test_her_menu_fits_on_one_screen(self) -> None:
+        """A menu that pages eats the next thing you type.
+
+        It used to run to three screens: one spell per line, its full
+        name beside it, and a price column reading "free" forty times.
+        page_to_char then stops at "[Hit Return to continue]" and takes
+        whatever the player sends next as that return -- so asking for
+        a buff straight after reading the menu did nothing at all, and
+        the player had no idea why. Two tests died of it before anyone
+        noticed it was the product and not them.
+
+        Keep it on one screen. Three columns of keywords and the
+        groups on one line is what makes it fit; if something is added
+        to her list, take something else out of the layout.
+        """
+        with LiveMud() as mud:
+            immortal(mud, "Zspellpage")
+            with mud.connect(timeout=120) as client:
+                login(client, "Zspellpage", PASSWORD)
+                run(client, "spellup", settle=3.0)
+
+                menu = run(client, "buff", settle=3.0)
+                self.assertNotIn("Hit Return to continue", menu, menu[-400:])
+
+                # And the proof it matters: the very next command lands.
+                run(client, "buff sanctuary", settle=3.0)
+                self.assertIn("sanctuary",
+                              run(client, "affect", settle=2.5).lower())
 
     def test_looking_at_her_explains_how_to_use_her(self) -> None:
         """A player's first move is to look at her, so the syntax lives there."""
@@ -142,15 +158,15 @@ class SpellupMobTests(unittest.TestCase):
 
                 chatter = run(client, "say did you see that fight last night",
                               settle=3.0)
-                self.assertNotIn("stone skin", chatter)
+                self.assertNotIn("stoneskin", chatter)
 
                 # And naming her does nothing either. Speech used to be
                 # the whole interface; now it is just talking.
                 asked = run(client, "say hermie are you there", settle=3.0)
-                self.assertNotIn("stone skin", asked)
+                self.assertNotIn("stoneskin", asked)
 
                 # BUFF still reaches her from the same room.
-                self.assertIn("stone skin", run(client, "buff", settle=3.0))
+                self.assertIn("stoneskin", run(client, "buff", settle=3.0))
 
     def test_mortals_can_use_her(self) -> None:
         """The command is immortal-only; the conversation must not be."""
@@ -165,8 +181,7 @@ class SpellupMobTests(unittest.TestCase):
                     mortal.drain(2.0)
 
                     menu = run(mortal, "buff", settle=3.0)
-                    clear_pager(mortal)
-                    self.assertIn("stone skin", menu)
+                    self.assertIn("stoneskin", menu)
 
                     run(mortal, "buff armor", settle=3.0)
                     affects = run(mortal, "affect", settle=3.0)

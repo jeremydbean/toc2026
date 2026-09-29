@@ -27,18 +27,6 @@ def run(client, command: str, settle: float = 1.8) -> str:
     return client.transcript[mark:]
 
 
-def clear_pager(client):
-    """Her menu is long enough to page now.
-
-    page_to_char stops at "[Hit Return to continue]" and the *next*
-    thing the client sends is taken as that return rather than as a
-    command -- so a test that reads the menu and immediately asks for a
-    buff has its buff swallowed, and the affect never appears. This is
-    the pager working, not a bug; the test has to walk through it.
-    """
-    client.send("")
-    client.drain(1.2)
-
 
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class HermieTests(unittest.TestCase):
@@ -68,7 +56,6 @@ class HermieTests(unittest.TestCase):
             self.summon_hermie(client)
 
             menu = run(client, "buff", 2.2)
-            clear_pager(client)
             self.assertIn("sanctuary", menu, menu[-700:])
 
             said = run(client, "buff sanctuary", 2.2)
@@ -129,9 +116,8 @@ class HermieTests(unittest.TestCase):
             self.summon_hermie(client)
 
             menu = run(client, "heal", 2.2)
-            clear_pager(client)
             self.assertIn("free", menu, menu[-600:])
-            self.assertIn("I offer the following", menu, menu[-600:])
+            self.assertIn("Anything on this list", menu, menu[-600:])
 
             before = run(client, "worth", 1.8)
             run(client, "heal armor", 2.2)

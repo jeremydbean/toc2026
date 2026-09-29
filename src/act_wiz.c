@@ -10659,40 +10659,74 @@ static void spellup_show_menu( CHAR_DATA *mob, CHAR_DATA *ch )
     char buf[MAX_STRING_LENGTH];
     char line[MAX_INPUT_LENGTH];
     int total = spellup_count();
+    int column = 0;
     int i;
 
     /*
-     * Laid out like the healer's price list at the pit, because that is
-     * the one a player has already read. Same shape, same closing line,
-     * and a price column that says what hers costs.
+     * Three across, because down one column it was three screens.
+     *
+     * The first version copied the healer's price list exactly: one
+     * spell per line with its full name and a price column reading
+     * "free" forty times over. The healer offers ten things and hers
+     * fits; Hermie offers forty and it did not. A player had to press
+     * return twice to see the end of it, and -- worse -- anything they
+     * typed while the pager was waiting was swallowed as the keypress,
+     * so asking for a buff straight after reading the menu did
+     * nothing at all. That cost two tests and would have cost players
+     * more.
+     *
+     * The keyword is what you type and is its own label for almost
+     * everything on the list, so the second column was mostly saying
+     * the word again. Price says itself once, in the opening line.
      */
-    act( "$N says 'I offer the following:'", ch, NULL, mob, TO_CHAR );
+    /* The word "free" earns its place: she is the free one, and that
+       is the whole difference between her and the healer. */
+    act( "$N says 'All of it free.  Anything on this list:'",
+        ch, NULL, mob, TO_CHAR );
 
     buf[0] = '\0';
+    line[0] = '\0';
+
     for ( i = 0; i < total; i++ )
     {
-        snprintf( line, sizeof(line), "  %-14s %-22s free\n\r",
-            spellup_table[i].keyword, spellup_table[i].label );
+        char cell[32];
 
-        if ( strlen( buf ) + strlen( line ) + 256 >= sizeof(buf) )
-            break;
+        snprintf( cell, sizeof(cell), "  %-16s", spellup_table[i].keyword );
+        toc_strlcat( line, cell, sizeof(line) );
+
+        if ( ++column == 3 )
+        {
+            toc_strlcat( line, "\n\r", sizeof(line) );
+            if ( strlen( buf ) + strlen( line ) + 512 >= sizeof(buf) )
+                break;
+            toc_strlcat( buf, line, sizeof(buf) );
+            line[0] = '\0';
+            column = 0;
+        }
+    }
+
+    if ( column != 0 )
+    {
+        toc_strlcat( line, "\n\r", sizeof(line) );
         toc_strlcat( buf, line, sizeof(buf) );
     }
 
+    /*
+     * The groups on one line. Seven of them with their labels was
+     * another nine lines and tipped the whole thing onto a second
+     * page again -- and the names say what they are.
+     */
+    toc_strlcat( buf, "\n\r Or a handful at once:  ", sizeof(buf) );
     for ( i = 0; spellup_groups[i].keyword != NULL; i++ )
     {
-        snprintf( line, sizeof(line), "  %-14s %-22s free\n\r",
-            spellup_groups[i].keyword, spellup_groups[i].label );
-
-        if ( strlen( buf ) + strlen( line ) + 128 >= sizeof(buf) )
+        snprintf( line, sizeof(line), "%s ", spellup_groups[i].keyword );
+        if ( strlen( buf ) + strlen( line ) + 192 >= sizeof(buf) )
             break;
         toc_strlcat( buf, line, sizeof(buf) );
     }
-
     snprintf( line, sizeof(line),
-        "  %-14s %-22s free\n\r"
-        " Type heal <type> to be healed.\n\r",
-        "all", "everything she has" );
+        "all\n\r\n\r Type heal <name>, or heal <number> by row.  Each lasts %d ticks.\n\r",
+        SPELLUP_DURATION );
     toc_strlcat( buf, line, sizeof(buf) );
 
     page_to_char( buf, ch );
