@@ -1,7 +1,7 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1790711686
+LogO 1790711721
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -110,13 +110,13 @@ PsiKnown clairvoyance,confuse,ego whip,mindbar~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1663925
+Plyd 1663960
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2497
-HMV  10968 10968 5628 5628 1045 2058
+Room 2401
+HMV  10968 10968 5628 5628 522 2058
 NewGold 17
 NewPlat 5209
 NewCopp 45
@@ -167,22 +167,24 @@ Achv level-45 1790711500
 Achv bank-thousand-platinum 1790711500
 Achv carry-ten-platinum 1790711500
 Achv carry-thousand-platinum 1790711500
-LastOut  0
-SesLogin 1790377822
-SesDur   21
+LastOut  1790711721
+SesLogin 1790711500
+SesDur   221
 SesExpG  0
 SesLvlG  0
-SesKill  0
+SesKill  1
 SesPK    0
 SesDead  0
-SesQuest 0
+SesQuest 1
+RecallRoom 2401
+RecallSet  1790711702
 QuestPnts 165
 QuestStrk 1
 QuestNext 5
 Exp  177312
 Act  33960136
 AfBy 3678908
-AfBy2 4106
+AfBy2 4170
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -207,7 +209,7 @@ Color 13 3
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  5
+Pos  8
 Save  -6
 Alig  965
 Hit   109
@@ -281,6 +283,7 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
+AffD 'stealth'   0  12   0   0          0         64
 AffD 'titanic'   0  28  50  16          0          0
 AffD 'titanic'   0  28 1715  14          0          0
 AffD 'titanic'   0  28 4690  12          0          0

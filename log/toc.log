@@ -12236,3 +12236,8 @@ Tue Sep 29 19:53:29 2026 :: Log Misery: tita self
 Tue Sep 29 19:53:31 2026 :: Log Misery: restore self
 Tue Sep 29 19:53:34 2026 :: Spellup: Hermie gave Misery the full list (30 ticks) in room 2401.
 Tue Sep 29 19:53:38 2026 :: Log Misery: restore self
+Tue Sep 29 19:55:21 2026 :: Log Misery: fsave
+Tue Sep 29 19:55:21 2026 :: Misery has quit.
+Tue Sep 29 19:55:21 2026 :: [QUIT] Player rejoined the real world.
+Tue Sep 29 19:55:22 2026 :: Sock.sinaddr:  192.168.0.1
+Tue Sep 29 19:55:29 2026 :: EOF encountered on read.
