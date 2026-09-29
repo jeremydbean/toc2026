@@ -10,6 +10,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **`scripts/test-parallel.sh` runs the test modules across every core.**
+  The suite took about 87 minutes because `unittest discover` is serial
+  and 50 of the 75 modules boot a real server that parses all 7,781
+  rooms -- eleven cores idle for an hour and a half. Nothing in the
+  fixtures had to change to allow it: each `LiveMud` already picks a free
+  port and its own throwaway copy of `area/`, they were simply never run
+  at the same time. The full suite is now **10m 28s, all passing**, and
+  failures are reprinted together at the end instead of buried in the
+  interleaving.
+
 - **Live player state reaches GitHub every five minutes.** `player/`,
   `gods/`, `log/` and the `area/` runtime files are committed to `main`
   in plaintext by `toc-state-sync` on whichever host is running the

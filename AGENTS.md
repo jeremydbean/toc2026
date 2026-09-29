@@ -214,6 +214,36 @@ and failures alike -- so a `validate` job still going at fifty minutes
 is on schedule rather than hung. Check the job's step list before
 concluding anything is stuck.
 
+`scripts/test-parallel.sh` runs the modules across every core instead of
+one at a time, which takes the same suite from about 87 minutes to about
+eight. Nothing in the fixtures needed changing to allow it: every
+`LiveMud` already picks a free port and its own throwaway copy of
+`area/`, so the modules were simply never run at the same time. It
+reprints the failures together at the end rather than leaving them buried
+in the interleaving, and exits non-zero if any module failed.
+
+```bash
+scripts/test-parallel.sh                  # everything
+scripts/test-parallel.sh test_stash       # just these
+JOBS=4 scripts/test-parallel.sh           # gentler on the machine
+```
+
+**It runs from the repository root, and that is load bearing.** A third
+of the modules reach for `src/`, `area/` or `import webadmin` relative to
+the root; `python -m` puts the working directory on `sys.path` and
+`discover -s tests` adds `tests/` so `import live_mud` still resolves.
+Running from inside `tests/` -- which is the obvious way to write it --
+fails eleven modules with import and file-not-found errors that look
+like product bugs and are not.
+
+**`LiveMud.drain(seconds)` sleeps its whole window on purpose.** Making
+it return early when the game goes quiet is the obvious speedup and it
+was tried in 2026-09: `test_recall_point` then failed with an `affect`
+reply that arrived as an empty string, because output comes in bursts
+with gaps in them and a drain that stops at the first gap returns before
+the reply. The parallel runner gets the same time back without touching
+the helper, so leave it alone.
+
 Default to: build both trees, run the one relevant test module, ship. Write
 the regression test and let CI run everything. Reach for the full suite only
 when a change is broad enough that collateral damage is a real risk, and say
