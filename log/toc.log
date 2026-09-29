@@ -12074,3 +12074,9 @@ Tue Sep 29 14:47:43 2026 :: Automated backup complete.
 Tue Sep 29 14:47:43 2026 :: Daily backup complete.
 Tue Sep 29 15:01:59 2026 :: Sock.sinaddr:  69.5.169.186
 Tue Sep 29 15:02:10 2026 :: Sock.sinaddr:  69.5.169.209
+Tue Sep 29 15:20:47 2026 :: Received signal 15; saving players and shutting down.
+Tue Sep 29 15:20:47 2026 :: Normal termination of game.
+Tue Sep 29 15:20:47 2026 ::  INIT OK 
+Tue Sep 29 15:20:47 2026 :: ROM is ready to rock on port 9000.
+Tue Sep 29 15:20:47 2026 :: Automated backup complete.
+Tue Sep 29 15:20:47 2026 :: Daily backup complete.
