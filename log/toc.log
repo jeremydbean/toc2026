@@ -12176,3 +12176,10 @@ Tue Sep 29 17:36:14 2026 :: Log Killuminati: finger alaric
 Tue Sep 29 17:36:50 2026 :: Log Killuminati: cloak
 Tue Sep 29 17:37:06 2026 :: Log Killuminati: spellup
 Tue Sep 29 17:37:06 2026 :: Spellup: Hermie placed in room 4208 by Killuminati.
+Tue Sep 29 17:50:11 2026 :: Log Killuminati: empower self
+Tue Sep 29 17:50:15 2026 :: Log Killuminati: titanic self
+Tue Sep 29 17:50:21 2026 :: Log Killuminati: set char self mana 30000
+Tue Sep 29 17:50:24 2026 :: Log Killuminati: restore self
+Tue Sep 29 17:50:33 2026 :: Log Killuminati: set char self end 30000
+Tue Sep 29 17:50:35 2026 :: Log Killuminati: restore self
+Tue Sep 29 17:50:36 2026 :: Log Killuminati: fsave
