@@ -1,0 +1,105 @@
+#!/bin/sh
+# Push live game state to GitHub so an outage can never cost more than
+# the last few minutes of play.
+#
+# The Pi died at 07:57 on 2026-09-29 with no warning and no clean
+# shutdown. Its saves survived only because the card was readable; the
+# next failure might not be so kind. This runs every few minutes and
+# commits the state as it stands, in plaintext, to the main repository
+# -- which is also where anyone cloning the game to run it themselves
+# will find it.
+#
+# That plaintext is a deliberate choice by the owner, taken with the
+# consequences understood: these files carry DES password hashes and
+# player addresses, the repository is public, and the transport was
+# never private. This is a test environment and the owner would rather
+# lose the secrecy than the characters. Do not quietly re-encrypt this
+# or move it to a private mirror; the older encrypted six-hourly
+# snapshot in toc-player-backup does that job and is a different thing.
+#
+# The work happens in a clone of its own. The deployed tree is not a
+# git repository and must not become one: the installer rsyncs over it.
+set -eu
+
+TOC_ROOT="${TOC_ROOT:-/srv/toc/current}"
+STATE_REPO="${STATE_REPO:-/srv/toc/state-repo}"
+REMOTE="${REMOTE:-git@github.com:jeremydbean/toc2026.git}"
+BRANCH="${BRANCH:-main}"
+GIT_SSH_KEY="${GIT_SSH_KEY:-/srv/toc/.ssh/id_ed25519_state_sync}"
+LOCK_FILE="/run/toc-state-sync.lock"
+
+export GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
+
+# What counts as state. Everything here is in .gitignore, so every add
+# needs -f; that is the point, not an accident.
+STATE_DIRS="player gods log"
+STATE_FILES="area/notes.txt area/bugs.txt area/ideas.txt area/typos.txt
+             area/pkilldata area/wizlist area/maxload area/offense
+             area/relics area/not area/ban area/custom.are"
+
+[ -d "$TOC_ROOT/player" ] || { echo "no player dir at $TOC_ROOT" >&2; exit 1; }
+[ -r "$GIT_SSH_KEY" ] || { echo "no deploy key at $GIT_SSH_KEY" >&2; exit 1; }
+
+# One at a time. A sync that overlaps itself fights over the index.
+exec 9>"$LOCK_FILE"
+flock -n 9 || { echo "another sync is running"; exit 0; }
+
+if [ ! -d "$STATE_REPO/.git" ]; then
+    echo "cloning $REMOTE into $STATE_REPO"
+    git clone --branch "$BRANCH" "$REMOTE" "$STATE_REPO"
+    git -C "$STATE_REPO" config user.name "toc state sync"
+    git -C "$STATE_REPO" config user.email "toc@localhost"
+fi
+
+cd "$STATE_REPO"
+
+# Somebody else pushes to this branch too -- a developer, or me from
+# the host. Take their work first and put ours on top, rather than
+# forcing and losing theirs.
+git fetch --quiet origin "$BRANCH"
+git reset --quiet --hard "origin/$BRANCH"
+
+for d in $STATE_DIRS; do
+    [ -d "$TOC_ROOT/$d" ] || continue
+    mkdir -p "$STATE_REPO/$d"
+    # versions/ is the game's own rolling backup of saves. One copy of
+    # history is enough and git is already keeping it.
+    rsync -a --delete --exclude 'versions/' "$TOC_ROOT/$d/" "$STATE_REPO/$d/"
+done
+
+for f in $STATE_FILES; do
+    [ -f "$TOC_ROOT/$f" ] || continue
+    mkdir -p "$STATE_REPO/$(dirname "$f")"
+    cp "$TOC_ROOT/$f" "$STATE_REPO/$f"
+done
+
+for d in $STATE_DIRS; do
+    [ -d "$STATE_REPO/$d" ] && git add -f -A "$d"
+done
+for f in $STATE_FILES; do
+    [ -f "$STATE_REPO/$f" ] && git add -f "$f"
+done
+
+if git diff --cached --quiet; then
+    exit 0
+fi
+
+changed=$(git diff --cached --name-only | wc -l)
+players=$(git diff --cached --name-only -- player | wc -l)
+git commit --quiet -m "State sync: $changed files, $players characters
+
+Automatic. Written by toc-state-sync on the host that is running the
+game, so that an outage cannot cost more than the interval between
+runs."
+
+# The branch can move under us between the fetch and the push.
+n=0
+until git push --quiet origin "$BRANCH" 2>/dev/null; do
+    n=$((n + 1))
+    [ "$n" -ge 5 ] && { echo "push failed after $n attempts" >&2; exit 1; }
+    sleep $((n * 3))
+    git fetch --quiet origin "$BRANCH"
+    git rebase --quiet "origin/$BRANCH" || { git rebase --abort; exit 1; }
+done
+
+echo "pushed $changed files ($players characters)"

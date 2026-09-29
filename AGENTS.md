@@ -591,6 +591,40 @@ See `SECURITY.md` for mitigation and reporting procedures.
 - When publishing is authorized, use a focused branch/review flow and report the
   exact validation result.
 
+## Live State Goes To GitHub
+
+`deploy/windows-vm/toc-state-sync` runs on a five-minute timer on
+whichever host is running the game and commits `player/`, `gods/`,
+`log/` and the `area/` runtime files to `main` **in plaintext**.
+
+This is the owner's decision, taken with the consequences understood:
+the files carry DES password hashes and player addresses, the
+repository is public, and the transport was never private. It is a test
+environment and he would rather lose the secrecy than the characters --
+the Pi died with no warning on 2026-09-29 and its saves survived only
+because the card happened to be readable. Publishing them also means
+somebody cloning the repo to run the game gets a populated world. Do
+not re-encrypt this, move it to a private mirror, or narrow what it
+covers. `toc-player-backup` is the separate, encrypted, six-hourly
+snapshot to a private repo and remains its own thing.
+
+Everything it commits is in `.gitignore`, so every `git add` is `-f`.
+That is deliberate, not a bug to tidy up.
+
+It works in a clone of its own at `/srv/toc/state-repo`. The deployed
+tree must not become a git repository -- installs rsync over it. Before
+committing it does `fetch` then `reset --hard origin/main`, and on a
+rejected push it rebases and retries, because a developer pushes to the
+same branch.
+
+**This changes the rule about committing files the game writes.** On
+the Pi that was forbidden outright: its updater advanced the checkout
+with `git merge --ff-only`, and a tracked file the game rewrites makes
+that merge refuse, breaking every later deploy. The VM does not have
+that problem -- its build tree at `/srv/toc/build` holds no live state,
+and the state clone is not what gets deployed. Keep the two separate
+and the trap stays shut.
+
 ## Deploying To The Raspberry Pi
 
 The Pi at `toc.jeremybean.com` is the live server, not a staging box. Real

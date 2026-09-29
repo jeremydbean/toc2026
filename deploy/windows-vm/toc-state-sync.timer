@@ -1,0 +1,14 @@
+[Unit]
+Description=Push live player state to GitHub every few minutes
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/windows-production-hosting.md
+
+[Timer]
+# Five minutes is the most a crash can cost. Persistent so a sync
+# missed while the host was off runs once it is back.
+OnBootSec=3min
+OnUnitActiveSec=5min
+Persistent=true
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target

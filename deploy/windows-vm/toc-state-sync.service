@@ -1,0 +1,15 @@
+[Unit]
+Description=Push live player state to GitHub
+Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/windows-production-hosting.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=toc
+Group=toc
+Environment=HOME=/srv/toc
+ExecStart=/usr/local/sbin/toc-state-sync
+# A failed push is not a reason to stop trying; the next timer fires.
+SuccessExitStatus=0 1
+TimeoutStartSec=600
