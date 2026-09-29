@@ -88,7 +88,7 @@ fi
 
 changed=$(git diff --cached --name-only | wc -l)
 players=$(git diff --cached --name-only -- player | wc -l)
-git commit --quiet -m "State sync: $changed files, $players characters
+git commit --quiet -m "State sync: $changed files, $players characters [skip ci]
 
 Automatic. Written by toc-state-sync on the host that is running the
 game, so that an outage cannot cost more than the interval between

@@ -1,5 +1,11 @@
 """Hermie, the standing spellup desk.
 
+She used to answer speech: SAY HELLO opened her menu and SAY SANCTUARY
+cast. That was taken out deliberately -- talking in her room set her
+off, which made her unusable anywhere players gather -- and BUFF is
+how she is asked now, with HEAL routed to her when she is standing
+where a healer would be. These tests follow the command.
+
 `spellup` plants Herbie's girlfriend in the room and she buffs whoever talks
 to her, picking from a menu she reads out. Three things here are worth a
 test rather than a read-through:
@@ -55,6 +61,19 @@ def immortal(mud: LiveMud, name: str) -> None:
     patch_player_file(mud, name, Levl=IMMORTAL_LEVEL)
 
 
+def clear_pager(client):
+    """Her menu is long enough to page now.
+
+    page_to_char stops at "[Hit Return to continue]" and the *next*
+    thing the client sends is taken as that return rather than as a
+    command -- so a test that reads the menu and immediately asks for a
+    buff has its buff swallowed, and the affect never appears. This is
+    the pager working, not a bug; the test has to walk through it.
+    """
+    client.send("")
+    client.drain(1.2)
+
+
 @unittest.skipIf(SKIP is not None, SKIP or "")
 class SpellupMobTests(unittest.TestCase):
     def test_she_appears_reads_her_menu_and_casts(self) -> None:
@@ -67,17 +86,18 @@ class SpellupMobTests(unittest.TestCase):
                 self.assertIn("taking requests", placed)
                 self.assertNotIn("missing from the area files", placed)
 
-                # Anything she does not recognise opens the menu.
-                menu = run(client, "say hello", settle=3.0)
+                # BUFF with nothing after it opens the menu.
+                menu = run(client, "buff", settle=3.0)
+                clear_pager(client)
                 self.assertIn("sanctuary", menu)
                 self.assertIn("empower (bundle)", menu)
                 self.assertIn("titanic (bundle)", menu)
                 self.assertIn(f"lasts {DURATION} ticks", menu)
 
                 # By name.
-                run(client, "say sanctuary", settle=3.0)
+                run(client, "buff sanctuary", settle=3.0)
                 # By menu number -- haste is row 6.
-                run(client, "say 6", settle=3.0)
+                run(client, "buff 6", settle=3.0)
 
                 affects = run(client, "affect", settle=3.0)
                 self.assertIn("sanctuary", affects)
@@ -101,8 +121,11 @@ class SpellupMobTests(unittest.TestCase):
                 run(client, "spellup", settle=3.0)
 
                 described = run(client, "look hermie", settle=3.0)
-                self.assertIn("say hermie", described)
-                self.assertIn("say all", described)
+                # Her description teaches the command, because the
+                # first thing a player does is look at her.
+                self.assertIn("heal", described)
+                self.assertIn("heal all", described)
+                self.assertNotIn("say hermie", described)
                 self.assertIn("thirty", described)
 
                 # And the room line points at her rather than just naming her.
@@ -119,12 +142,15 @@ class SpellupMobTests(unittest.TestCase):
 
                 chatter = run(client, "say did you see that fight last night",
                               settle=3.0)
-                self.assertNotIn("Hermie's list", chatter)
                 self.assertNotIn("stone skin", chatter)
 
-                # But her name still opens it.
+                # And naming her does nothing either. Speech used to be
+                # the whole interface; now it is just talking.
                 asked = run(client, "say hermie are you there", settle=3.0)
-                self.assertIn("stone skin", asked)
+                self.assertNotIn("stone skin", asked)
+
+                # BUFF still reaches her from the same room.
+                self.assertIn("stone skin", run(client, "buff", settle=3.0))
 
     def test_mortals_can_use_her(self) -> None:
         """The command is immortal-only; the conversation must not be."""
@@ -138,10 +164,11 @@ class SpellupMobTests(unittest.TestCase):
                     create_character(mortal, "Zspellmort", PASSWORD)
                     mortal.drain(2.0)
 
-                    menu = run(mortal, "say menu", settle=3.0)
+                    menu = run(mortal, "buff", settle=3.0)
+                    clear_pager(mortal)
                     self.assertIn("stone skin", menu)
 
-                    run(mortal, "say armor", settle=3.0)
+                    run(mortal, "buff armor", settle=3.0)
                     affects = run(mortal, "affect", settle=3.0)
                     self.assertIn("armor", affects)
 
@@ -152,7 +179,7 @@ class SpellupMobTests(unittest.TestCase):
                 login(client, "Zspellthr", PASSWORD)
                 run(client, "spellup", settle=3.0)
 
-                run(client, "say all", settle=6.0)
+                run(client, "buff all", settle=6.0)
                 affects = run(client, "affect", settle=3.0)
 
                 # A representative spread: a plain buff, one of the two

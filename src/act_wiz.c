@@ -6400,8 +6400,11 @@ static const struct newbie_item
                      /* Both strings are levelling gear rather than
                         food, whatever their names suggest. */
     {  3094,  1 },   /* an endless snack pack      */
-                     /* The one food in the pack, and endless, so
-                        nobody starts out carrying perishables. */
+    {  3093,  1 },   /* an endless water jug       */
+                     /* The food and drink, and both endless, so
+                        nobody starts out carrying perishables. The
+                        ordinary water jug was what came out -- this
+                        one was taken with it by mistake and put back. */
     {  3081,  2 },   /* a potion of sanctuary      */
     {  4639,  2 },   /* a potion of extra healing  */
     {  3605,  2 },   /* An etched signet ring      */

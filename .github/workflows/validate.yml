@@ -2,6 +2,27 @@ name: Validate
 
 on:
   push:
+    # The live host commits player state here every five minutes. Each of
+    # those used to start a full validate, which takes an hour and a half
+    # and tells us nothing: no code changed. Ignore the paths the state
+    # sync owns. A commit that touches code as well still runs, because
+    # paths-ignore only skips when *every* changed path matches.
+    paths-ignore:
+      - 'player/**'
+      - 'gods/**'
+      - 'log/**'
+      - 'heroes/**'
+      - 'area/notes.txt'
+      - 'area/bugs.txt'
+      - 'area/ideas.txt'
+      - 'area/typos.txt'
+      - 'area/pkilldata'
+      - 'area/wizlist'
+      - 'area/maxload'
+      - 'area/offense'
+      - 'area/relics'
+      - 'area/not'
+      - 'area/ban'
   pull_request:
 
 jobs:
