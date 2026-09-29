@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790725224
+LogO 1790725715
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,14 +15,14 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 50
-Plyd 202205
+Plyd 202696
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1167 1167 1918 1918 272 927
-NewGold 6
+HMV  1167 1167 1878 1918 511 927
+NewGold 27
 NewPlat 41
 NewCopp 14
 NewSilv 21
@@ -34,8 +34,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 730
-AchQuests 81
+AchKills 731
+AchQuests 82
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -89,14 +89,14 @@ SesDead  0
 SesQuest 0
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 3114
-QuestStrk 25
+QuestPnts 3148
+QuestStrk 26
 CasinoWon  51
 CasinoLost 304
-QuestNext 5
+QuestNext 30
 Exp  112575
 Act  4261068
-AfBy 3678848
+AfBy 3678912
 AfBy2 4104
 Comm 24576
 Mounted 0
@@ -125,9 +125,9 @@ Color 16 6
 Pos  8
 Save  -2
 Alig  1000
-Hit   56
-Dam   71
-ACs -161 -153 -158 -12
+Hit   66
+Dam   81
+ACs -61 -53 -58 88
 Attr 22 13 12 16 15
 AMod 13 25 25 16 25
 Pass Al3w9zuAlwpyY~
@@ -136,7 +136,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 15 15
+Cond 0 7 7
 Alias k kick~
 Alias sm smite~
 Sk 30 'axe'
@@ -166,6 +166,9 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'berserk'  51   3 100  17         64          0
+AffD 'berserk'  51   3  10  19         64          0
+AffD 'berserk'  49   3  10  18         64          0
 AffD 'titanic'   3  -1 100  13          0          0
 AffD 'titanic'   6  -1 500  12          0          0
 AffD 'titanic'   8  -1 500  14          0          0
