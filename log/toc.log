@@ -12140,3 +12140,6 @@ Tue Sep 29 16:57:40 2026 :: Sock.sinaddr:  172.28.90.1
 Tue Sep 29 16:57:45 2026 :: Loading Mudlettest's playerfile
 Tue Sep 29 16:57:46 2026 :: EOF encountered on read.
 Tue Sep 29 16:57:46 2026 :: Closing link to Mudlettest.
+Tue Sep 29 16:59:46 2026 :: Sock.sinaddr:  192.168.0.1
+Tue Sep 29 16:59:56 2026 :: Loading Killuminati's playerfile
+Tue Sep 29 16:59:57 2026 :: Killuminati@192.168.0.1 has connected.
