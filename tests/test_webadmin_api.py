@@ -544,6 +544,66 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertFalse(client.get("/api/config").json()["local_admin_unlock"])
             self.assertEqual(client.post("/api/auth/local").status_code, 403)
 
+    def test_channel_history_is_token_gated_and_filterable(self) -> None:
+        """What was said on the shared channels, and nothing else.
+
+        The journal is appended to by a running game, so a read can land
+        on a half-written line; the parser skips those rather than
+        raising. The channel list is built from the whole file, not the
+        filtered window, or filtering to one channel would drop every
+        other channel out of its own dropdown.
+        """
+        with self.webadmin_client() as (server, client, temp_root):
+            journal = temp_root / "channels.tsv"
+            journal.write_text(
+                "\n".join([
+                    "1700000000\tgossip\tAlaric\tanyone selling a shield",
+                    "1700000060\tauction\tEclipse\tselling a tower shield",
+                    "1700000120\tgossip\tAlaric\tI will take it",
+                    # a tab inside the text must not split into a column
+                    "1700000180\tgossip\tMisery\tone\ttwo",
+                    # junk from a read that landed mid-write
+                    "not-a-timestamp\tgossip\tBad\tnope",
+                    "1700000240\ttruncated",
+                ]) + "\n",
+                encoding="latin-1",
+            )
+
+            with patch.object(server, "CHANNEL_JOURNAL", journal):
+                denied = client.get("/api/channels")
+                self.assertEqual(
+                    denied.status_code, 403,
+                    "chat history must stay behind the token",
+                )
+
+                headers = {"X-Admin-Token": "secret"}
+                payload = client.get("/api/channels", headers=headers).json()
+                one = client.get(
+                    "/api/channels?channel=auction", headers=headers
+                ).json()
+                found = client.get(
+                    "/api/channels?search=shield", headers=headers
+                ).json()
+
+        self.assertTrue(payload["journal_present"])
+        self.assertEqual(payload["channels"], ["auction", "gossip"])
+
+        # Newest first, and the two unparseable rows are gone.
+        texts = [line["text"] for line in payload["lines"]]
+        self.assertEqual(texts[0], "one\ttwo")
+        self.assertEqual(len(payload["lines"]), 4)
+
+        self.assertEqual([line["speaker"] for line in one["lines"]], ["Eclipse"])
+        self.assertEqual(
+            one["channels"], ["auction", "gossip"],
+            "filtering to a channel must not empty the channel list",
+        )
+
+        self.assertEqual(
+            sorted(line["speaker"] for line in found["lines"]),
+            ["Alaric", "Eclipse"],
+        )
+
     def test_login_history_pairs_sessions_and_reports_playtime(self) -> None:
         """The journal is two half-records per session; the API joins them.
 

@@ -7,10 +7,10 @@
     // Views that cannot show anything without the admin token. Hidden while
     // locked, and not reachable by hash either, so a stale #host bookmark
     // lands on the overview rather than an empty page.
-    const ADMIN_VIEWS = new Set(["players", "console", "logins", "logs", "host", "operations"]);
+    const ADMIN_VIEWS = new Set(["players", "console", "logins", "chat", "logs", "host", "operations"]);
 
     const VIEW_NAMES = new Set([
-        "overview", "world", "areas", "players", "gear", "routes", "console", "logins", "logs", "host", "operations",
+        "overview", "world", "areas", "players", "gear", "routes", "console", "logins", "chat", "logs", "host", "operations",
     ]);
     const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -329,6 +329,7 @@
         else if (view === "areas") await loadAreasAndHealth();
         else if (view === "players") await loadPlayerNames();
         else if (view === "logins") await loadLogins();
+        else if (view === "chat") await loadChat();
         else if (view === "logs") await connectLogs();
         else if (view === "host") await loadHostStatus();
         else if (view === "operations") await loadOperations();
@@ -579,6 +580,79 @@
     // Everything that pages does it fifty at a time, matching the world
     // browser, so the dashboard reads the same wherever you are in it.
     const PAGE_SIZE = 50;
+
+    // Channel history. The game keeps its own rings in memory for the
+    // in-game HISTORY command and loses them on a reboot; it also
+    // appends each line to log/channels.tsv, which is what this reads,
+    // so the dashboard can still answer after a restart. Tells are not
+    // in that file and are not meant to be.
+    let chatWired = false;
+
+    async function loadChat() {
+        if (!await ensureAuth()) return;
+        const body = byId("chat-table").querySelector("tbody");
+
+        if (!chatWired) {
+            chatWired = true;
+            byId("chat-refresh").addEventListener("click", () => void loadChat());
+            byId("chat-channel").addEventListener("change", () => void loadChat());
+            let typing = null;
+            byId("chat-search").addEventListener("input", () => {
+                window.clearTimeout(typing);
+                typing = window.setTimeout(() => void loadChat(), 250);
+            });
+        }
+
+        const picked = byId("chat-channel").value || "";
+        const search = byId("chat-search").value || "";
+        const query = new URLSearchParams({ limit: "500" });
+        if (picked) query.set("channel", picked);
+        if (search) query.set("search", search);
+
+        let data;
+        try {
+            data = await api(`/api/channels?${query}`, { auth: true });
+        } catch (error) {
+            body.replaceChildren(node("tr", {}, [
+                node("td", { className: "empty-state", text: error.message, attrs: { colspan: 4 } }),
+            ]));
+            return;
+        }
+
+        byId("chat-updated").textContent =
+            `Updated ${new Date(data.generated * 1000).toLocaleTimeString()}`;
+
+        // Rebuild the dropdown only when the set of channels actually
+        // changed, or it resets the selection out from under a filter
+        // that is refreshing while somebody reads it.
+        const select = byId("chat-channel");
+        const names = data.channels || [];
+        const current = [...select.options].slice(1).map((option) => option.value);
+        if (current.join("|") !== names.join("|")) {
+            const keep = select.value;
+            select.replaceChildren(
+                node("option", { text: "All channels", attrs: { value: "" } }),
+                ...names.map((name) => node("option", { text: name, attrs: { value: name } })),
+            );
+            select.value = names.includes(keep) ? keep : "";
+        }
+
+        const lines = data.lines || [];
+        byId("chat-note").textContent = data.journal_present
+            ? `${formatNumber(lines.length)} line${lines.length === 1 ? "" : "s"}, newest first`
+            : "No channel journal yet - it appears once somebody speaks.";
+
+        const rows = lines.map((line) => node("tr", {}, [
+            tableCell(formatWhen(line.when)),
+            tableCell(line.channel || "-"),
+            tableCell(line.speaker || "-"),
+            tableCell(line.text || ""),
+        ]));
+
+        body.replaceChildren(...(rows.length ? rows : [node("tr", {}, [
+            node("td", { className: "empty-state", text: "Nothing said yet.", attrs: { colspan: 4 } }),
+        ])]));
+    }
 
     async function loadLogins(page = 1) {
         if (!await ensureAuth()) return;

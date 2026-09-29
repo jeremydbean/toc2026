@@ -527,6 +527,115 @@ static int channel_history_index( const char *name )
     return -1;
 }
 
+/*
+ * The in-memory rings answer HISTORY for a player who missed something.
+ * They cannot answer the dashboard: that is a separate process, and the
+ * rings are gone on a reboot besides.  So every line that reaches a
+ * shared channel is also appended here, tab separated, the same shape
+ * the login journal uses:
+ *
+ *      <epoch>\t<channel>\t<speaker>\t<text>
+ *
+ * **Tells are not in this file and must never be put in it.**  They do
+ * not come through the shared register below -- each character keeps
+ * their own in pcdata->tell_history -- and that separation is the whole
+ * reason a global channel journal is safe to write at all.  log/ is
+ * committed to a public repository every five minutes; what is in here
+ * was said to a room full of people, and nothing else may be.
+ */
+static void channel_journal_sanitize( char *dest, size_t size,
+                                      const char *source )
+{
+    size_t length;
+    unsigned char value;
+
+    length = 0;
+    if ( source == NULL || source[0] == '\0' )
+        source = "(unknown)";
+
+    while ( *source != '\0' && length + 1 < size )
+    {
+        value = (unsigned char)*source++;
+        dest[length++] = ( value == '\t' || value == '\r' || value == '\n'
+            || value < 32 || value == 127 ) ? ' ' : (char)value;
+    }
+    dest[length] = '\0';
+}
+
+
+/*
+ * Chatter is not rare the way logins are, so this rewrites only once the
+ * file has grown past CHANNEL_JOURNAL_MAX and then keeps the newest
+ * CHANNEL_JOURNAL_KEEP lines -- one rewrite every four hundred lines
+ * rather than one per line.
+ */
+static void channel_journal_trim( void )
+{
+    static char kept[CHANNEL_JOURNAL_KEEP][CHANNEL_JOURNAL_LINE];
+    char line[CHANNEL_JOURNAL_LINE];
+    FILE *fp;
+    long total;
+    int index;
+    int count;
+
+    fp = fopen( CHANNEL_JOURNAL_FILE, "r" );
+    if ( fp == NULL )
+        return;
+
+    total = 0;
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+    {
+        toc_strlcpy( kept[total % CHANNEL_JOURNAL_KEEP], line,
+                     CHANNEL_JOURNAL_LINE );
+        total++;
+    }
+    fclose( fp );
+
+    if ( total <= CHANNEL_JOURNAL_MAX )
+        return;
+
+    fp = fopen( CHANNEL_JOURNAL_FILE, "w" );
+    if ( fp == NULL )
+        return;
+
+    count = total < CHANNEL_JOURNAL_KEEP ? (int)total : CHANNEL_JOURNAL_KEEP;
+    for ( index = 0; index < count; index++ )
+    {
+        long slot = ( total - count + index ) % CHANNEL_JOURNAL_KEEP;
+
+        fputs( kept[slot], fp );
+    }
+    fclose( fp );
+}
+
+
+static void channel_journal_record( const char *channel, const char *name,
+                                    const char *text )
+{
+    char safe_channel[32];
+    char safe_name[MAX_INPUT_LENGTH];
+    char safe_text[CHANNEL_JOURNAL_LINE];
+    FILE *fp;
+
+    if ( channel == NULL || text == NULL )
+        return;
+
+    channel_journal_sanitize( safe_channel, sizeof(safe_channel), channel );
+    channel_journal_sanitize( safe_name, sizeof(safe_name), name );
+    channel_journal_sanitize( safe_text, sizeof(safe_text), text );
+
+    fp = fopen( CHANNEL_JOURNAL_FILE, "a" );
+    if ( fp == NULL )
+        return;
+
+    fprintf( fp, "%ld\t%s\t%s\t%s\n", (long)current_time,
+             safe_channel, safe_name, safe_text );
+    fclose( fp );
+
+    channel_journal_trim();
+}
+
+
 void channel_history_add( const char *channel, CHAR_DATA *ch,
                           const char *text )
 {
@@ -556,6 +665,9 @@ void channel_history_add( const char *channel, CHAR_DATA *ch,
         ( channel_log_next[index] + 1 ) % CHANNEL_HISTORY_LINES;
     if ( channel_log_held[index] < CHANNEL_HISTORY_LINES )
         channel_log_held[index]++;
+
+    /* One register, so the journal cannot drift from the rings. */
+    channel_journal_record( channel, line->name, text );
 }
 
 void tell_history_add( CHAR_DATA *ch, const char *line )

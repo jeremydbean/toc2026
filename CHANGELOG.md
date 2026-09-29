@@ -10,6 +10,30 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Channel history reaches the dashboard.** The game now appends every
+  line that goes to a shared channel to `log/channels.tsv`, and the new
+  admin-only Chat view reads it through `/api/channels`, filterable by
+  channel and by text. The in-game HISTORY rings are still memory-only
+  and still go on a reboot; this is what survives one. **Tells are not
+  in that file**: they never pass through the shared register, and that
+  is deliberate, because `log/` is published.
+
+- **A questing streak keeps paying past five.** The bonus stopped dead
+  at `min(streak, 5) * 10`, so the sixth quest in a row was worth
+  exactly what the fifth was and a run of fifty was worth no more than a
+  run of five. It now climbs in shallower steps -- +10% each to five,
+  +5% to fifteen, +3% to thirty, +2% to fifty, +1% after that -- capped
+  at 300%. The first tier is unchanged, so no existing streak is worth
+  less than it was.
+
+- **Forty-two more achievements**, 152 to 194. Deeper ladders for
+  levels, remorts, playtime, kills, player kills, quests, quest streaks,
+  deaths, bank and purse totals and casino wins and losses; and twenty
+  more places to find, every one of them the destination of a published
+  route, so all of them can be walked to. No new hook and no new saved
+  field: the earned set is written by key, so nobody's player file
+  changes.
+
 - **`scripts/test-parallel.sh` runs the test modules across every core.**
   The suite took about 87 minutes because `unittest discover` is serial
   and 50 of the 75 modules boot a real server that parses all 7,781

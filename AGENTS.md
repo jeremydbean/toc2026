@@ -558,8 +558,8 @@ mobs or objects. Do not invent entrances for them; ask.
   disables them with 503.
 - Protected WebSockets use an authenticated local cookie or a first JSON auth
   message. Never place the token in a WebSocket URL or query parameter.
-- Player list/detail, logs, structured events, backups, and operational status
-  are protected. World data, health, configuration flags, gear analysis, and
+- Player list/detail, logs, channel history (`/api/channels`), structured
+  events, backups, and operational status are protected. World data, health, configuration flags, gear analysis, and
   the browser-to-game `/ws` bridge are public at the app layer. Do not claim
   the token protects the entire dashboard.
 - `/api/admin/status` may expose queue depth and file metadata, but never queue
@@ -1141,6 +1141,37 @@ Other deploy facts:
   the host, and restart `toc2026-web.service`. Never paste it into a commit,
   an issue or a conversation.
 
+## The Questing Streak
+
+`quest_streak_bonus()` in `src/quest.c` is the whole of it, and it used
+to be one line: `URANGE(0, ch->queststreak, 5) * 10`. That stopped dead
+at five, so the sixth quest in a row paid exactly what the fifth did and
+a run of fifty was worth no more than a run of five -- nothing rode on
+keeping a streak alive past the first few, which is the opposite of what
+a streak is for.
+
+It climbs in shallower and shallower steps now, so a longer run is
+always worth more without the reward running away:
+
+| streak | each | total |
+| --- | --- | --- |
+| 1-5 | +10% | 50% at five |
+| 6-15 | +5% | 100% at fifteen |
+| 16-30 | +3% | 145% at thirty |
+| 31-50 | +2% | 185% at fifty |
+| 51+ | +1% | to `QUEST_STREAK_BONUS_MAX` (300%) |
+
+Two rules if you touch the curve. **The first tier stays as it is** --
+changing it would make somebody's existing streak worth less than it
+was yesterday. And **the cap is load bearing**: `queststreak` is a
+`sh_int` that only resets on a failure, so without one a streak nobody
+breaks pays an unbounded multiple. The bonus applies to the quest-point
+reward, not to the coin.
+
+The bonus is read *before* `queststreak++`, so the message naming
+"streak of N" is paying the bonus for N-1. That is how it has always
+worked and changing it is a reward change, not a display fix.
+
 ## What The Quest Master Will Not Ask For
 
 `automatic_quest_target_is_suitable()` in `src/quest.c` decides the
@@ -1280,10 +1311,28 @@ deliberate difference from WIZINVIS and CLOAK.
 chat capture stopped part way through a session and nothing on the
 server could recover the lines.
 
-- **In memory only, and gone on a reboot.** That is the trade, and it is
-  deliberate: this is a scrollback for somebody who missed something,
-  not a transcript. A transcript of every channel is a different
-  feature with different consequences, and nobody has asked for one.
+- **In memory for the in-game command, on disk for the dashboard.**
+  The rings behind HISTORY are still memory-only and still go on a
+  reboot: that is a scrollback for somebody who missed something.
+  Since 2026-09-29 each line is *also* appended to
+  `log/channels.tsv` -- `<epoch>\t<channel>\t<speaker>\t<text>`, the
+  same shape as the login journal -- because the dashboard is a
+  separate process and cannot read the game's memory, and the owner
+  asked to see the history there. `channel_journal_record()` in
+  `act_comm.c` writes it and trims at `CHANNEL_JOURNAL_MAX` back to
+  `CHANNEL_JOURNAL_KEEP`, and it is called from inside the shared
+  register so the file cannot drift from the rings.
+
+  **Tells are not in that file and must never be put in it.** They do
+  not pass through the shared register, and that separation is the
+  whole reason a global channel journal is safe to write: `log/` is
+  committed to a public repository every five minutes, so what lands
+  in there was said to a room full of people. A private message is a
+  different feature with different consequences.
+
+  `/api/channels` reads it, token-gated like the other player views,
+  and filters by channel and by text. The Chat view in the dashboard
+  is that endpoint.
 - **`channel_meta_table` in `act_comm.c` is the register.** A new
   channel that sends without calling `channel_history_add()` is a
   silent hole; `tests/test_channel_history.py` counts the call sites so

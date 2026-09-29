@@ -150,11 +150,50 @@ static int add_quest_points( CHAR_DATA *ch, int amount )
     return granted;
 }
 
+/*
+ * The streak bonus used to stop dead at five: URANGE(0, streak, 5) * 10,
+ * so the sixth quest in a row paid exactly what the fifth did and a run
+ * of fifty was worth no more than a run of five.  Nothing was riding on
+ * keeping the streak alive past that point, which is the opposite of
+ * what a streak is for.
+ *
+ * It keeps climbing now, in shallower and shallower steps, so a longer
+ * run is always worth more than a shorter one without the reward
+ * running away with itself:
+ *
+ *      quests  1-5     +10% each   ->   50% at five
+ *      quests  6-15     +5% each   ->  100% at fifteen
+ *      quests 16-30     +3% each   ->  145% at thirty
+ *      quests 31-50     +2% each   ->  185% at fifty
+ *      beyond           +1% each   ->  capped at QUEST_STREAK_BONUS_MAX
+ *
+ * The first tier is unchanged, so nobody's streak is worth less today
+ * than it was yesterday.  The cap is what stops a streak nobody ever
+ * breaks from paying an unbounded multiple, and the arithmetic below
+ * cannot overflow before it: queststreak is a sh_int, so the widest
+ * term is SHRT_MAX * 10, and every tier is clamped again at the end.
+ */
 static int quest_streak_bonus( const CHAR_DATA *ch )
 {
-    if ( ch == NULL )
+    int streak;
+    int bonus;
+
+    if ( ch == NULL || ch->queststreak <= 0 )
         return 0;
-    return URANGE(0, ch->queststreak, 5) * 10;
+
+    streak = ch->queststreak;
+    bonus  = UMIN(streak, 5) * 10;
+
+    if ( streak > 5 )
+        bonus += UMIN(streak - 5, 10) * 5;
+    if ( streak > 15 )
+        bonus += UMIN(streak - 15, 15) * 3;
+    if ( streak > 30 )
+        bonus += UMIN(streak - 30, 20) * 2;
+    if ( streak > 50 )
+        bonus += UMIN(streak - 50, QUEST_STREAK_BONUS_MAX);
+
+    return UMIN(bonus, QUEST_STREAK_BONUS_MAX);
 }
 
 static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,

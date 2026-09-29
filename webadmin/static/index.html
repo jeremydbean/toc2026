@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/theme-dragon.css?v=2">
     <script src="/static/command-sequence.js?v=1" defer></script>
     <script src="/static/console-output.js?v=1" defer></script>
-    <script src="/static/app.js?v=18" defer></script>
+    <script src="/static/app.js?v=19" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -31,6 +31,7 @@
                 <button class="nav-item" type="button" data-view="routes">Directions</button>
                 <button class="nav-item" type="button" data-admin data-view="console">Game console</button>
                 <button class="nav-item" type="button" data-admin data-view="logins">Logins</button>
+                <button class="nav-item" type="button" data-admin data-view="chat">Chat</button>
                 <button class="nav-item" type="button" data-admin data-view="logs">Live logs</button>
                 <button class="nav-item" type="button" data-admin data-view="host">Host status</button>
                 <button class="nav-item" type="button" data-admin data-view="operations">Operations</button>
@@ -276,6 +277,35 @@
                         <button class="button button-primary" type="submit" disabled>Send</button>
                     </form>
                 </div>
+            </section>
+
+            <section class="view" data-admin id="chat-view" data-title="Chat">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">What was said</span>
+                        <h2>Channel history</h2>
+                    </div>
+                    <span class="timestamp" id="chat-updated">Not refreshed</span>
+                </div>
+
+                <section class="panel">
+                    <div class="panel-heading">
+                        <h3>Shared channels</h3>
+                        <span class="panel-subtitle" id="chat-note">Newest first</span>
+                    </div>
+                    <div class="log-actions">
+                        <select id="chat-channel"><option value="">All channels</option></select>
+                        <input id="chat-search" type="search" placeholder="Search text or speaker" autocomplete="off">
+                        <button class="button button-secondary compact" id="chat-refresh" type="button">Refresh</button>
+                        <span class="panel-subtitle">Tells are private and are never recorded here.</span>
+                    </div>
+                    <div class="table-frame borderless">
+                        <table id="chat-table">
+                            <thead><tr><th>When</th><th>Channel</th><th>Who</th><th>Said</th></tr></thead>
+                            <tbody><tr><td colspan="4" class="empty-state">Admin access required.</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
             </section>
 
             <section class="view" data-admin id="logins-view" data-title="Logins">

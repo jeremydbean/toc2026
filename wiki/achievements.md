@@ -33,15 +33,15 @@ placeholder until earned.
 
 | Category | Milestones |
 |---|---|
-| Character | Levels 5, 10, 15, 20, 25, 30, 40, 50, 55, 58, and 59; first and fifth remorts; 24 hours and seven days played |
-| Combat | 1, 100, 500, 1,000, 2,500, 5,000 and 10,000 mobile kills; 1, 10, 25, 50, 100 and 250 qualifying player kills; a hidden Farslay feat |
+| Character | Levels 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 58, and 59; every remort from the first to the fifth; 24 hours, seven days, and thirty days played |
+| Combat | 1, 100, 500, 1,000, 2,500, 5,000, 10,000, 25,000 and 50,000 mobile kills; 1, 10, 25, 50, 100, 250 and 500 qualifying player kills; a hidden Farslay feat |
 | Encounters | Seventeen named endgame bosses plus five-boss and full-catalog meta achievements |
-| Quests | 1, 10, 50, 100, 250, and 500 completions; streaks of 5, 10, and 25; rush, final-minute, gamble-win, and keepsake feats |
-| Exploration | Nineteen landmarks across the world, from Mud School six rooms out to Valhalla at ninety-four, plus arrival in Hyrule and discovery of all nine dungeon entrances |
+| Quests | 1, 10, 50, 100, 250, 500, and 1,000 completions; streaks of 5, 10, 25, 50, and 100; rush, final-minute, gamble-win, and keepsake feats |
+| Exploration | Thirty-nine landmarks across the world, from the Pet Shop and Mud School six rooms out to Valhalla at ninety-four, plus arrival in Hyrule and discovery of all nine dungeon entrances. Every one is the destination of a published route in `webadmin/directions.json`, so all of them are reachable on foot |
 | Collection | Seventeen rare or special-source relics plus 5, 10, and 17-relic metas |
 | Crafting | Brewing, concocting, scribing, the hidden Farslay-scroll recipe, and a crafting meta |
-| Misadventure | 1, 10, and 100 deaths; six unusual death causes; a hidden death meta |
-| Economy | Bank deposits and balances, interest, carried wealth and denominations, casino lifetime totals, and hidden slots, roulette, and poker feats |
+| Misadventure | 1, 10, 25, 50, 100, and 500 deaths; six unusual death causes; a hidden death meta |
+| Economy | Bank deposits and balances to 1,000 platinum, interest, carried wealth to 1,000 platinum, all four denominations at once, casino lifetime totals won and lost to a million gold, and hidden slots, roulette, and poker feats |
 | Hyrule | Signature items, shards, maps, compasses, nine bosses, Ganon, Zelda, and meta completion |
 
 The world-boss list is the Tarrasque, the Borg, Korzath, the Master Guardian,
@@ -118,8 +118,8 @@ character save, quit, autosave, snapshot, backup, and restore behavior.
 
 ## Developer Notes
 
-The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 192
-timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 152. Add
+The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 256
+timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 194. Add
 a new entry only with a unique key that will never be repurposed.
 
 Achievement views use canonical `{HH}` game-color tokens and

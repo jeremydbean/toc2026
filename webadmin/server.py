@@ -144,6 +144,12 @@ PLAYER_PATH: Path = Path(os.getenv("PLAYER_PATH", "player"))
 # The game appends one row per login, and since this release one per logout
 # too. It writes it as ../log/logins.tsv from the area directory.
 LOGIN_JOURNAL: Path = Path(os.getenv("LOGIN_JOURNAL", "log/logins.tsv"))
+# The game appends every line that reaches a shared channel here, in
+# the same tab-separated shape. Tells are deliberately absent: they
+# live per-character in memory and never reach this file.
+CHANNEL_JOURNAL: Path = Path(
+    os.getenv("CHANNEL_JOURNAL", "log/channels.tsv")
+)
 UPDATE_REQUEST_PATH: Optional[Path] = (
     Path(update_request_path)
     if (update_request_path := os.getenv("TOC_UPDATE_REQUEST_PATH", "").strip())
@@ -1748,6 +1754,74 @@ async def logins(
         "limit": limit,
         "has_more": offset + len(window) < len(sessions),
         "players": player_playtime_totals(),
+    }
+
+
+def parse_channel_journal(
+    path: Path, limit: int = 500, channel: str = "", search: str = ""
+) -> tuple[list[Dict[str, Any]], list[str]]:
+    """Read the channel journal newest-first, with the channels it holds.
+
+    The channel list is built from the whole file rather than from the
+    window, or filtering to a quiet channel would remove it from its own
+    dropdown. Malformed rows are skipped rather than raising: this file
+    is appended to by a live game and a read can land mid-write.
+    """
+    rows: list[Dict[str, Any]] = []
+    channels: set[str] = set()
+    wanted = channel.strip().lower()
+    needle = search.strip().lower()
+
+    try:
+        text = path.read_text(encoding="latin-1", errors="replace")
+    except OSError:
+        return [], []
+
+    for line in text.splitlines():
+        parts = line.split("\t")
+        if len(parts) < 4:
+            continue
+        when, name, said = parts[0], parts[2], "\t".join(parts[3:])
+        chan = parts[1]
+        channels.add(chan)
+        if wanted and chan.lower() != wanted:
+            continue
+        if needle and needle not in said.lower() and needle not in name.lower():
+            continue
+        try:
+            stamp = float(when)
+        except ValueError:
+            continue
+        rows.append(
+            {"when": stamp, "channel": chan, "speaker": name, "text": said}
+        )
+
+    rows.reverse()
+    return rows[:limit], sorted(channels)
+
+
+@app.get("/api/channels")
+async def channels(
+    limit: int = Query(default=200, ge=1, le=2000),
+    channel: str = Query(default=""),
+    search: str = Query(default=""),
+    _: None = Depends(verify_token),
+) -> Dict[str, Any]:
+    """Shared-channel history. Token-gated, like the other player views.
+
+    The in-game HISTORY command reads memory and forgets on a reboot;
+    this reads the journal the game writes beside it, so the dashboard
+    can answer the same question after a restart. Tells are not in it.
+    """
+    rows, names = parse_channel_journal(
+        CHANNEL_JOURNAL, limit=limit, channel=channel, search=search
+    )
+    return {
+        "generated": time.time(),
+        "journal_present": CHANNEL_JOURNAL.exists(),
+        "lines": rows,
+        "channels": names,
+        "limit": limit,
     }
 
 

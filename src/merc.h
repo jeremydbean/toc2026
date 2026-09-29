@@ -225,7 +225,11 @@ typedef struct script_loop_prepoll_payload
 #define MAX_PC_RACE             6
 #define MAX_ALIASES             20
 #define MAX_HUNTERS             50
-#define MAX_ACHIEVEMENTS        192
+/* How far a questing streak can lift the point reward, in percent.
+   See quest_streak_bonus() for the curve that climbs to it. */
+#define QUEST_STREAK_BONUS_MAX  300
+
+#define MAX_ACHIEVEMENTS        256
 #define MAX_LEVEL               70
 #define LEVEL_IMMORTAL          (MAX_LEVEL - 10)
 #define LEVEL_KING              (MAX_LEVEL - 11)
@@ -2480,6 +2484,10 @@ void    write_web_admin_event ( const char *channel, const char *message,
 #define GAME_LOG_FILE           "../log/toc.log"
 
 #define LOGIN_JOURNAL_FILE      "../log/logins.tsv"
+#define CHANNEL_JOURNAL_FILE    "../log/channels.tsv"
+#define CHANNEL_JOURNAL_KEEP    400
+#define CHANNEL_JOURNAL_MAX     800
+#define CHANNEL_JOURNAL_LINE    512
 #define LOGIN_JOURNAL_KEEP      200
 #define LOGIN_JOURNAL_MAX       400
 #define LOGIN_JOURNAL_LINE      192

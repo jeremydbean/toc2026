@@ -257,7 +257,64 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "hyrule-lion", "Ashes of the Lion", "Defeat ashen Gleeok in Level 8: The Lion.", ACH_CAT_HYRULE, 30, false, ACH_REQ_BOSS, 30316, 30574 },
     { "hyrule-death-mountain", "The Final Silver Light", "Defeat Ganon in Level 9: Death Mountain.", ACH_CAT_HYRULE, 50, false, ACH_REQ_BOSS, 30225, 30607 },
     { "hero-of-hyrule", "Hero of Hyrule", "Defeat the principal boss of every Hyrule dungeon.", ACH_CAT_HYRULE, 100, false, ACH_REQ_HYRULE_BOSSES, 9, 0 },
-    { "zelda-rescued", "It's Dangerous to Go Alone", "Reach Princess Zelda beyond Ganon's chamber.", ACH_CAT_HYRULE, 40, false, ACH_REQ_ROOM, 30615, 0 }
+    { "zelda-rescued", "It's Dangerous to Go Alone", "Reach Princess Zelda beyond Ganon's chamber.", ACH_CAT_HYRULE, 40, false, ACH_REQ_ROOM, 30615, 0 },
+
+    /* --- 2026-09-29: forty-two more, all of them reading state
+       the game already keeps.  No new hook, no new saved field:
+       the earned set is written by key, so the table can grow
+       without touching anybody's player file. --- */
+
+    { "level-35", "Into the Deep End", "Reach level 35.", ACH_CAT_CHARACTER, 10, false, ACH_REQ_LEVEL, 35, 0 },
+    { "level-45", "Hardened by the Realms", "Reach level 45.", ACH_CAT_CHARACTER, 15, false, ACH_REQ_LEVEL, 45, 0 },
+    { "two-remorts", "Twice Reborn", "Complete two remorts.", ACH_CAT_CHARACTER, 25, false, ACH_REQ_REMORTS, 2, 0 },
+    { "three-remorts", "Third Life, New Road", "Complete three remorts.", ACH_CAT_CHARACTER, 35, false, ACH_REQ_REMORTS, 3, 0 },
+    { "four-remorts", "Four Lives Deep", "Complete four remorts.", ACH_CAT_CHARACTER, 45, false, ACH_REQ_REMORTS, 4, 0 },
+    { "month-played", "Resident of the Realms", "Accumulate thirty days of play time.", ACH_CAT_CHARACTER, 60, false, ACH_REQ_PLAYED, 2592000L, 0 },
+
+    { "twentyfive-thousand-kills", "Nothing Left Standing", "Defeat 25,000 mobiles.", ACH_CAT_COMBAT, 80, false, ACH_REQ_MOB_KILLS, 25000, 0 },
+    { "fifty-thousand-kills", "The Realms Remember You", "Defeat 50,000 mobiles.", ACH_CAT_COMBAT, 100, false, ACH_REQ_MOB_KILLS, 50000, 0 },
+    { "fivehundred-pkills", "Legend of the Arena", "Earn 500 qualifying player kills.", ACH_CAT_COMBAT, 100, false, ACH_REQ_PKILLS, 500, 0 },
+
+    { "thousand-quests", "Errand of a Lifetime", "Complete 1,000 quests.", ACH_CAT_QUESTS, 100, false, ACH_REQ_QUESTS, 1000, 0 },
+    { "fifty-quest-streak", "Nothing Stops You", "Complete fifty quests in a row.", ACH_CAT_QUESTS, 75, false, ACH_REQ_QUEST_STREAK, 50, 0 },
+    { "hundred-quest-streak", "Perfect Record", "Complete one hundred quests in a row.", ACH_CAT_QUESTS, 150, false, ACH_REQ_QUEST_STREAK, 100, 0 },
+
+    { "twentyfive-deaths", "Hard Lessons", "Suffer twenty-five true deaths.", ACH_CAT_MISADVENTURE, 20, false, ACH_REQ_DEATHS, 25, 0 },
+    { "fifty-deaths", "On a First-Name Basis", "Suffer fifty true deaths.", ACH_CAT_MISADVENTURE, 30, false, ACH_REQ_DEATHS, 50, 0 },
+    { "fivehundred-deaths", "Unkillable Optimist", "Suffer five hundred true deaths.", ACH_CAT_MISADVENTURE, 75, false, ACH_REQ_DEATHS, 500, 0 },
+
+    { "bank-thousand-platinum", "Old Money", "Hold at least 1,000 platinum in the bank.", ACH_CAT_ECONOMY, 30, false, ACH_REQ_BANK_BALANCE, 1000000000L, 0 },
+    { "carry-ten-platinum", "Heavy Pockets", "Carry coins worth at least 10 platinum.", ACH_CAT_ECONOMY, 10, false, ACH_REQ_CARRIED_MONEY, 10000000L, 0 },
+    { "carry-thousand-platinum", "Walking Treasury", "Carry coins worth at least 1,000 platinum.", ACH_CAT_ECONOMY, 35, false, ACH_REQ_CARRIED_MONEY, 1000000000L, 0 },
+    { "casino-ten-thousand-won", "The Dealer Frowns", "Accumulate 10,000 gold in casino winnings.", ACH_CAT_ECONOMY, 25, false, ACH_REQ_CASINO_WINNINGS, 10000, 0 },
+    { "casino-million-won", "Break the Bank", "Accumulate 1,000,000 gold in casino winnings.", ACH_CAT_ECONOMY, 75, false, ACH_REQ_CASINO_WINNINGS, 1000000, 0 },
+    { "casino-ten-thousand-lost", "Just One More Hand", "Lose 10,000 gold at the casino.", ACH_CAT_ECONOMY, 10, true, ACH_REQ_CASINO_LOSSES, 10000, 0 },
+    { "casino-million-lost", "The House Sends Its Thanks", "Lose 1,000,000 gold at the casino.", ACH_CAT_ECONOMY, 40, true, ACH_REQ_CASINO_LOSSES, 1000000, 0 },
+
+    /* Twenty more walks.  Every vnum below is the published
+       destination of a route in webadmin/directions.json, so all of
+       them are reachable on foot from the Oak Tree Square, and the
+       points follow how far out the route walker puts them. */
+    { "visit-pet-shop", "Something Exotic", "Find the Pet Shop of Exotic Creatures.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 2562, 0 },
+    { "visit-social-club", "Members Only", "Step into the Temple Boulevard Social Club.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 800, 0 },
+    { "visit-froboz", "The Littered Road", "Find the littered road to the Froboz Factory.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 12000, 0 },
+    { "visit-arena", "Blood on the Sand", "Find the dark alleyway to the Arena of ole Midgaard.", ACH_CAT_EXPLORATION, 5, false, ACH_REQ_ROOM, 2628, 0 },
+    { "visit-chessboard", "Your Move", "Reach the stone door of the Chessboard.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 24300, 0 },
+    { "visit-mob-factory", "Where Monsters Come From", "Find the entrance to the Mob Factory.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 9400, 0 },
+    { "visit-prison", "Visiting Hours", "Reach the entrance to the Prison.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 20100, 0 },
+    { "visit-emerald-forest", "Fog on the Trail", "Find the fog-shrouded trail into the Emerald Forest.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 20501, 0 },
+    { "visit-ashen-wastes", "Gateway to Ash", "Reach the gateway to the Ashen Wastes.", ACH_CAT_EXPLORATION, 10, false, ACH_REQ_ROOM, 26700, 0 },
+    { "visit-sands-of-sorrow", "A Long Tunnel", "Reach the long tunnel into the Sands of Sorrow.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 5000, 0 },
+    { "visit-azeroth", "Watch Your Step", "Find the way into Azeroth.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 28161, 0 },
+    { "visit-glitter-palace", "Before the Crystal Bridge", "Stand before the crystal bridge of the Glitter Palace.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 10000, 0 },
+    { "visit-underdark", "The Trade Route", "Walk the trade route of the Underdark.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 25160, 0 },
+    { "visit-new-thalos", "Outside the West Gate", "Reach the west gate of New Thalos.", ACH_CAT_EXPLORATION, 15, false, ACH_REQ_ROOM, 9669, 0 },
+    { "visit-oz", "Off to See Someone", "Find the entrance to the Land of Oz.", ACH_CAT_EXPLORATION, 20, false, ACH_REQ_ROOM, 17700, 0 },
+    { "visit-high-tower", "The Shadow Grove", "Reach the Shadow Grove below the High Tower of Sorcery.", ACH_CAT_EXPLORATION, 20, false, ACH_REQ_ROOM, 1300, 0 },
+    { "visit-ultima", "Into Britannia", "Find the entrance to Ultima.", ACH_CAT_EXPLORATION, 25, false, ACH_REQ_ROOM, 7600, 0 },
+    { "visit-korzath-fortress", "At the Fortress Gate", "Reach the entrance to Korzath's Fortress.", ACH_CAT_EXPLORATION, 30, false, ACH_REQ_ROOM, 29001, 0 },
+    { "visit-ice-keep", "A Small Cold Trail", "Find the small trail to the Ice Keep.", ACH_CAT_EXPLORATION, 35, false, ACH_REQ_ROOM, 18138, 0 },
+    { "visit-sea-of-serenity", "The Far Beach", "Reach the beach of the Sea of Serenity.", ACH_CAT_EXPLORATION, 40, false, ACH_REQ_ROOM, 6401, 0 }
 };
 
 typedef char achievement_table_must_fit[

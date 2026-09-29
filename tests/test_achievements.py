@@ -44,7 +44,7 @@ class AchievementSystemTests(unittest.TestCase):
         # A tripwire, not a limit: it should move only when somebody
         # meant to move it. 127 until 2026-09-28, when exploration went
         # from 3 to 22 and combat from 9 to 15.
-        self.assertEqual(len(self.entries), 152)
+        self.assertEqual(len(self.entries), 194)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))
@@ -75,9 +75,11 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertTrue(all(int(entry["points"]) > 0 for entry in self.entries))
         self.assertIn("achievement_progress", self.source)
         self.assertIn("achievement_format_date", self.source)
+        # Another tripwire. 16 until 2026-09-29, when the bank, purse
+        # and casino ladders each gained rungs above their old top.
         self.assertEqual(
             sum(entry["category"] == "ACH_CAT_ECONOMY" for entry in self.entries),
-            16,
+            23,
         )
 
     def test_summary_is_compact_and_paged_colors_are_converted(self) -> None:
