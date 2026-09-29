@@ -12185,3 +12185,11 @@ Tue Sep 29 17:50:35 2026 :: Log Killuminati: restore self
 Tue Sep 29 17:50:36 2026 :: Log Killuminati: fsave
 Tue Sep 29 17:56:26 2026 :: Sock.sinaddr:  185.93.89.79
 Tue Sep 29 17:56:27 2026 :: EOF encountered on read.
+Tue Sep 29 18:31:38 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Tue Sep 29 18:31:44 2026 :: Received signal 15; saving players and shutting down.
+Tue Sep 29 18:31:44 2026 :: Closing link to Killuminati.
+Tue Sep 29 18:31:44 2026 :: Normal termination of game.
+Tue Sep 29 18:31:44 2026 ::  INIT OK 
+Tue Sep 29 18:31:44 2026 :: ROM is ready to rock on port 9000.
+Tue Sep 29 18:31:44 2026 :: Automated backup complete.
+Tue Sep 29 18:31:44 2026 :: Daily backup complete.
