@@ -67,13 +67,34 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
-- **You are shown what you missed when you log in.** The channel lines
-  said while you were away -- the ones you would have seen had you been
-  here -- from the moment you last left, capped at fifteen with a count
-  of the rest. Tells are not in it, because a tell to somebody who is
-  not logged in is never delivered. The cut-off is recorded both on a
-  clean quit and on losing link, so a dropped player is not later shown
-  everything since their last proper goodbye.
+- **HISTORY marks where you were away.** Type it and a
+  `--- while you were away ---` line is drawn at the moment you last
+  logged out, with everything said since below it, so the lines you
+  would have seen had you been here are one command away. Nothing is
+  pushed at you on arrival. The moment is recorded both on a clean quit
+  and on losing link, so a dropped player's marker sits at the drop
+  rather than at their last proper goodbye.
+
+- **A social was logged as a refusal.** The watched-player log wrote its
+  line from the command-table lookup, and socials are looked up after
+  that, so every NOD, GRIN and BOW a watched character used was recorded
+  as `(refused)`. A log that reports working commands as failures is
+  worse than no log, since the whole value of it is being able to trust
+  what it says. It is written after the lookup now and says which
+  happened.
+
+- **Hermie ignored a named item in silence.** A watched session showed
+  somebody type `heal uncurse shieldb` eight times, try to drop the
+  thing, and try again. Remove curse cannot be aimed -- it frees
+  whichever cursed item fails its save first -- and the healer at the
+  pit says so, but she was dropping the name without a word. She says
+  it too now.
+
+- **The Mudlet map did not appear until you clicked in the window.**
+  Reported by Alaric. The mapper is built at load, before the profile
+  window has settled, so it ended up the right shape but unpainted.
+  Package 1.0.5 re-applies its geometry and calls `updateMap()` when the
+  first room arrives, shortly after load, and on any window resize.
 
 - **HISTORY reads back what was said.** A player's Mudlet chat capture
   stopped part way through a session and there was no way to recover

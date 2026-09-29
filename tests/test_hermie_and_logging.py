@@ -184,6 +184,40 @@ class LoggingSourceTests(unittest.TestCase):
         """82 of the first 296 lines anyone captured were empty."""
         self.assertIn('logline[0] != \'\\0\'', self.interp)
 
+    def test_a_social_is_not_logged_as_a_refusal(self) -> None:
+        """The log has to be worth trusting, and it was not.
+
+        The watched line was written from the command-table lookup, and
+        socials are looked up after that, so every NOD, GRIN and BOW a
+        watched character used was recorded as "(refused)". Four of
+        them read back that way in the first session anyone checked. A
+        log that reports working commands as failures is worse than no
+        log at all.
+        """
+        body = self.interp.split("if ( !found )")[1]
+        body = body.split("Character not in position")[0]
+
+        self.assertIn("bool social = check_social( ch, command, argument );",
+                      body)
+        self.assertIn('social ? "social" : "refused"', body)
+        self.assertLess(
+            body.index("check_social"), body.index('"refused"'),
+            "the lookup has to happen before the line is written",
+        )
+
+    def test_hermie_says_when_she_ignores_a_named_item(self) -> None:
+        """Eight tries at 'heal uncurse shieldb' with no word back.
+
+        Remove curse cannot be aimed -- it frees whichever cursed item
+        fails its save first -- and she was dropping the name in
+        silence, so the player had no way to know. The healer at the
+        pit already said so.
+        """
+        wiz = (ROOT / "src" / "act_wiz.c").read_text(encoding="latin-1")
+        body = wiz.split("void do_buff(")[1].split(chr(10) + "}")[0]
+        self.assertIn("I lift what I can reach, not what you name.", body)
+        self.assertIn('!str_prefix( arg, "uncurse" )', body)
+
     def test_a_password_is_still_never_written(self) -> None:
         """The whole reason LOG_NEVER blanks the line. Watching a player
         must not defeat it: the command is named, the arguments are not."""

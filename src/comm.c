@@ -2847,7 +2847,6 @@ case CON_DEFAULT_CHOICE:
 	       silent -- a report went into a flat file that nothing in
 	       the game ever mentioned again. */
 	    report_login_notice( ch );
-	    history_login_notice( ch );
 	}
 	break;
     }

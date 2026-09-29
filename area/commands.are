@@ -402,11 +402,12 @@ WHAT YOU CAN SEE
   and no one else can read them.
 
 WHAT YOU MISSED
-  When you log in you are shown what was said on the channels while you
-  were away - the same lines you would have seen had you been here,
-  from the moment you last left.  Only the most recent fifteen, and
-  only if there is anything; if more was said it tells you how many and
-  you can type HISTORY <number> for the lot.
+  Nothing is thrown at you when you log in.  Type HISTORY and a line
+  reading '--- while you were away ---' is drawn at the moment you last
+  left, with everything said since below it.
+
+  So the lines you would have seen had you been here are there when you
+  want them, and not before.
 
   Tells are not in it.  A tell to somebody who is not logged in is
   never delivered, so there is nothing there to have missed.
@@ -650,8 +651,9 @@ command named here for the detail.
   it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
   the lot.  See HELP NOTE.
 
-  When you log in you are now shown what was said on the channels while
-  you were away, from the moment you last left.
+  HISTORY draws a line where you last logged out, so what was said
+  while you were away is easy to pick out.  Nothing is shown to you
+  automatically - you have to ask.
 
   HISTORY reads back what was said.  Type it on its own for the last
   twenty lines across every channel you can hear, HISTORY 50 for more,

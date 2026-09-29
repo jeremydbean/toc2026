@@ -733,17 +733,6 @@ void interpret( CHAR_DATA *ch, char *argument )
             write_to_buffer( ch->desc->snoop_by, "\n\r",  2 );
         }
     }
-    else if ( watched && logline[0] != '\0' )
-    {
-        /* Refused, mistyped, or above their level. The first is how a
-           bug usually announces itself and the second how somebody
-           probing for one does. */
-        snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
-            "Log %s [%d]: (refused) %s",
-            ch->name, ch->in_room != NULL ? ch->in_room->vnum : 0, logline );
-        log_string( log_buf );
-    }
-
     if ( !found )
     {
         script_command_payload not_found_payload;
@@ -759,9 +748,32 @@ void interpret( CHAR_DATA *ch, char *argument )
 
         /*
          * Look for command in socials table.
+         *
+         * The watched log used to be written before this, so every
+         * social a watched character used was recorded as "(refused)
+         * nod" -- four of them in the first session read back that way.
+         * A log that reports working commands as failures is worse than
+         * no log: the whole value of it is that somebody can trust what
+         * it says. It is written after the lookup now, and says which
+         * happened.
          */
-        if ( !check_social( ch, command, argument ) )
-            send_to_char( "Huh?\n\r", ch );
+        {
+            bool social = check_social( ch, command, argument );
+
+            if ( !social )
+                send_to_char( "Huh?\n\r", ch );
+
+            if ( watched && logline[0] != '\0' )
+            {
+                snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+                    "Log %s [%d]: (%s) %s",
+                    ch->name,
+                    ch->in_room != NULL ? ch->in_room->vnum : 0,
+                    social ? "social" : "refused",
+                    logline );
+                log_string( log_buf );
+            }
+        }
 	return;
     }
 

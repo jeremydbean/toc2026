@@ -131,7 +131,9 @@ client review.
 
 ## Deployment: 2026-09-16, commit 4e357b9
 
-Package 1.0.4 and the refreshed MAP/MUDLET help are live. Cutover followed the
+Package 1.0.5 and the refreshed MAP/MUDLET help are live. 1.0.5 makes the
+mapper paint itself on arrival rather than waiting for the player to click
+in the window. Cutover followed the
 Windows production runbook: a clean build from `main` in `/srv/toc/build`,
 `--check-area` against the build tree, a code rollback copy of the previous
 binary and help file in `/var/backups/toc`, maintenance marker, service stop,
@@ -142,9 +144,9 @@ Player state was byte-identical across the swap: combined SHA-256
 `6d721306dda2c8b6...` before and after.
 
 Verified against the public host afterwards: the GMCP handshake advertises
-`Client.GUI {"version":"1.0.4"}` and `Client.Map` pointing at the world atlas,
+`Client.GUI {"version":"1.0.5"}` and `Client.Map` pointing at the world atlas,
 both URLs return HTTP 200 (19,059 and 1,667,686 bytes), and the published
-`.mpackage` contains the `tocgui atlas` alias and `loadAtlas` at 1.0.4.
+`.mpackage` contains the `tocgui atlas` alias and `loadAtlas` at 1.0.5.
 
 Two CI failures were resolved in the same window. The recovery script's rebuild
 stage had been failing on GitHub runners since `f86c810`: `install -o toc -g

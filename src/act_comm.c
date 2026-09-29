@@ -740,6 +740,29 @@ static void history_print( CHAR_DATA *ch, HISTORY_ENTRY *entry, int count,
 
     for ( i = first; i < count; i++ )
     {
+        /*
+         * Mark where they were not here.
+         *
+         * Nothing is pushed at a player on arrival -- they asked for
+         * that to stay quiet -- so this is how HISTORY answers "what
+         * did I miss": a line drawn at the moment they last left, with
+         * everything below it said while they were away.
+         */
+        if ( !IS_NPC(ch) && ch->pcdata != NULL
+        &&   ch->pcdata->last_logout > 0
+        &&   entry[i].when > (time_t)ch->pcdata->last_logout
+        &&   ( i == first
+            || entry[i - 1].when <= (time_t)ch->pcdata->last_logout ) )
+        {
+            snprintf( line, sizeof(line),
+                "{%02X--- while you were away ---{00\n\r", COL_HIGHLIGHT );
+            if ( used + strlen( line ) + 64 < sizeof(out) )
+            {
+                toc_strlcat( out, line, sizeof(out) );
+                used = strlen( out );
+            }
+        }
+
         history_stamp( entry[i].when, stamp, sizeof(stamp) );
 
         if ( entry[i].meta == NULL )
@@ -851,59 +874,6 @@ void do_history( CHAR_DATA *ch, char *argument )
                             0 );
     history_print( ch, gathered, count, wanted,
                    channel_meta_table[index].name );
-}
-
-/*
- * What was said while they were away.
- *
- * Shown once, on arrival, because somebody logging in has no way of
- * knowing they missed anything. Only lines after their last logout,
- * only channels they may read, and only the most recent few -- a wall
- * of text at the login prompt is worse than nothing.
- *
- * Tells are left out on purpose: a tell to somebody who is not here is
- * never delivered, so there is nothing for them to have missed.
- *
- * The history lives in memory, so a restart since they left means there
- * is nothing to show. That is the honest answer rather than a gap to
- * apologise for.
- */
-void history_login_notice( CHAR_DATA *ch )
-{
-    HISTORY_ENTRY gathered[HISTORY_GATHER_MAX];
-    char buf[MAX_STRING_LENGTH];
-    int count;
-
-    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
-        return;
-
-    /*
-     * With no recorded logout -- a new character, or anyone whose first
-     * login this is since the feature arrived -- there is no cut-off to
-     * apply, so they get the most recent few. That is still "what you
-     * would have seen had you been here", and it means the notice works
-     * from the first login rather than the second.
-     */
-    count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -1, false,
-                            ch->pcdata->last_logout > 0
-                                ? (time_t)ch->pcdata->last_logout : 0 );
-    if ( count == 0 )
-        return;
-
-    snprintf( buf, sizeof(buf), "\n\r{%02XWhile you were away:{00\n\r",
-              COL_HIGHLIGHT );
-    send_to_char( buf, ch );
-
-    history_print( ch, gathered, count, HISTORY_LOGIN_LINES,
-                   "the channels" );
-
-    if ( count > HISTORY_LOGIN_LINES )
-    {
-        snprintf( buf, sizeof(buf),
-                  "{%02X(%d more -- type HISTORY %d to see them all.){00\n\r",
-                  COL_HIGHLIGHT, count - HISTORY_LOGIN_LINES, count );
-        send_to_char( buf, ch );
-    }
 }
 
 void do_auction( CHAR_DATA *ch, char *argument )

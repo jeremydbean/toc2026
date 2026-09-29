@@ -283,8 +283,6 @@ typedef struct script_loop_prepoll_payload
 #define TELL_HISTORY_LINES      20
 #define HISTORY_DEFAULT_LINES   20
 #define HISTORY_MAX_LINES       100
-/* How much of what they missed is worth pushing at somebody on arrival. */
-#define HISTORY_LOGIN_LINES     15
 
 #define BATTLE_TICKS            2
 
@@ -2552,7 +2550,6 @@ void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
 void    channel_history_add ( const char *channel, CHAR_DATA *ch,
                               const char *text );
 void    tell_history_add ( CHAR_DATA *ch, const char *line );
-void    history_login_notice ( CHAR_DATA *ch );
 void    psionic_sync_known ( CHAR_DATA *ch );
 bool    normalize_psionic_arguments ( const char *argument, char *output, size_t length, char *invalid );
 /* Dynamic-string aware output helpers. */

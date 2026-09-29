@@ -33,10 +33,11 @@ end
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.4"
+tocMudlet.version = "1.0.5"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
+tocMudlet.mapNudged = false
 tocMudlet.lastExits = nil
 tocMudlet.enabled = true
 
@@ -229,6 +230,12 @@ local function linkKnownExits(roomId, exits)
 end
 
 function tocMudlet.onRoomInfo()
+  -- First room of the session is the moment the map has something to
+  -- show, and the moment it most needs the nudge.
+  if not tocMudlet.mapNudged then
+    tocMudlet.mapNudged = true
+    if tempTimer then tempTimer(0.2, function() tocMudlet.nudgeMap() end) end
+  end
   local info = gmcp and gmcp.Room and gmcp.Room.Info
   if type(info) ~= "table" then return end
   local roomId = tonumber(info.num or info.id)
@@ -385,10 +392,30 @@ function tocMudlet.subscribe()
     '"Room 1","Room.Info 1"]')
 end
 
+-- Alaric: "Mudlet map ui does not start automatically. User has to click
+-- inside the window to see the map after logging in."
+--
+-- Geyser.Mapper wraps createMapper, which places the widget in absolute
+-- pixels. Built at load, before the profile window has settled, it ends
+-- up the right shape but unpainted, and the first thing that forces a
+-- repaint is the user clicking in the window. Re-applying its geometry
+-- and calling updateMap() is what makes it draw on its own; doing it on
+-- a resize as well keeps it right when the window changes.
+function tocMudlet.nudgeMap()
+  local mapper = tocMudlet.ui and tocMudlet.ui.mapper
+  if not mapper then return end
+
+  -- Geyser recomputes the real pixel rectangle from the container size.
+  if mapper.reposition then pcall(function() mapper:reposition() end) end
+  if mapper.resize then pcall(function() mapper:resize() end) end
+  if updateMap then pcall(updateMap) end
+end
+
 function tocMudlet.refresh()
   if gmcp and gmcp.Char and gmcp.Char.Vitals then tocMudlet.onVitals() end
   if gmcp and gmcp.Char and gmcp.Char.Status then tocMudlet.onStatus() end
   if gmcp and gmcp.Room and gmcp.Room.Info then tocMudlet.onRoomInfo() end
+  tocMudlet.nudgeMap()
 end
 
 -- Mudlet only downloads the server's map into a profile that does not already
@@ -476,6 +503,7 @@ function tocMudlet.install()
   register("gmcp.Char.Status", function() tocMudlet.onStatus() end)
   register("gmcp.Room.Info", function() tocMudlet.onRoomInfo() end)
   register("sysConnectionEvent", function() tocMudlet.subscribe() end)
+  register("sysWindowResizeEvent", function() tocMudlet.nudgeMap() end)
   register("sysDownloadDone", function(_, file) tocMudlet.onDownloadDone(file) end)
   register("sysDownloadError", function(_, _, file) tocMudlet.onDownloadError(file) end)
   register("sysUninstallPackage", function(_, packageName)
@@ -483,6 +511,10 @@ function tocMudlet.install()
   end)
   if isConnected and isConnected() then tocMudlet.subscribe() end
   tempTimer(0.1, tocMudlet.refresh)
+  -- Once more after the window has certainly settled. Cheap, and it is
+  -- the difference between the map being there on arrival and the
+  -- player having to click for it.
+  tempTimer(1.5, tocMudlet.nudgeMap)
   cecho("\n<cyan>Times of Chaos Mudlet interface ready.<reset> " ..
     "Type <white>tocgui<reset> for status, <white>tocgui atlas<reset> for the world map, or <white>tocgui off<reset> to hide it.\n")
 end

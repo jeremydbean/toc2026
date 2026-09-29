@@ -1152,15 +1152,16 @@ server could recover the lines.
   `free_char`. Putting them in a global ring would have leaked private
   conversation to anybody who typed HISTORY.
 
-`history_login_notice()` runs at login, from `comm.c` beside
-`report_login_notice()`, and shows what was said while the character was
-away. The cut-off is `pcdata->last_logout`, saved as `LastOut`, which is
-set **both** in `do_quit` and in `close_socket`'s link-dead branch --
-setting only the first means a dropped player is later shown everything
-since their last clean quit. A character with no recorded logout gets
-the most recent few instead of nothing, so the notice works from the
-first login rather than the second. Tells are left out: a tell to
-somebody who is not here is never delivered, so there is nothing missed.
+**Nothing is pushed at a player on arrival.** That was tried and taken
+out: a login notice showing what was missed is noise somebody has to
+read past. `history_print()` draws a
+`--- while you were away ---` line instead, at `pcdata->last_logout`,
+so HISTORY answers the question only when it is asked.
+
+`last_logout` is saved as `LastOut` and is set **both** in `do_quit` and
+in `close_socket`'s link-dead branch -- setting only the first means a
+dropped player's marker sits at their last clean quit instead of at the
+drop.
 
 `HISTORY` with no argument, or with a number, merges everything the
 character may read and sorts it by the clock, so the tell history needs

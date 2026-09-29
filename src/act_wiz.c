@@ -10830,13 +10830,25 @@ void do_buff( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    one_argument( argument, arg );
+    argument = one_argument( argument, arg );
 
     if ( arg[0] == '\0' )
     {
         spellup_show_menu( mob, ch );
         return;
     }
+
+    /*
+     * Only the first word means anything to her, and remove curse in
+     * particular cannot be aimed -- it frees whichever cursed item
+     * fails its save first. A watched session showed somebody type
+     * "heal uncurse shieldb" eight times, try to drop the thing, and
+     * try again, with nothing ever telling them the name was being
+     * thrown away. The healer at the pit says so; she does now too.
+     */
+    if ( argument[0] != '\0' && !str_prefix( arg, "uncurse" ) )
+        act( "$n says 'I lift what I can reach, not what you name.'",
+            mob, NULL, ch, TO_VICT );
 
     /* One path for both ways of asking, so they can never drift. */
     spellup_listen( ch, arg );
