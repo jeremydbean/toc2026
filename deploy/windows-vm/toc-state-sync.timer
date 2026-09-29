@@ -3,12 +3,14 @@ Description=Push live player state to GitHub every few minutes
 Documentation=https://github.com/jeremydbean/toc2026/blob/main/wiki/windows-production-hosting.md
 
 [Timer]
-# Fifteen minutes is the most a crash can cost. It was five, which
-# was a commit every five minutes forever -- too much noise in the
-# history for what it buys. Persistent so a sync missed while the
-# host was off runs once it is back.
+# Five minutes is the most a crash can cost, and that is the point of
+# the whole thing. It was briefly widened to fifteen to quiet CI, but
+# the CI noise was never the interval's fault: paths-ignore on the
+# workflow and [skip ci] in the commit are what fixed that, so the
+# window can stay tight. Persistent so a sync missed while the host
+# was off runs once it is back.
 OnBootSec=3min
-OnUnitActiveSec=15min
+OnUnitActiveSec=5min
 Persistent=true
 AccuracySec=30s
 
