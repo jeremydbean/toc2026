@@ -89,15 +89,33 @@ rsync -a --delete \
   --exclude 'area/*.are.*.bak' --exclude 'area/*.are.*.tmp' \
   "$BUILD/" "$CURRENT/"
 
-# area/*.txt is excluded above to protect notes/bugs/ideas/typos, but
-# help and social text files live there too and are code.
+# area/*.txt is excluded wholesale above, but help and social text
+# files live there too and are code, so they have to come back.
+#
+# The list of what must NOT come back is the important half, and
+# getting it wrong took the game down on 2026-09-29: this loop
+# originally skipped only the four report files, so it copied
+# shutdown.txt out of git into the live tree, and
+# ExecCondition=test ! -e .../area/shutdown.txt then stopped
+# toc-game from starting at all. Every runtime .txt belongs to the
+# running game and none of them may be restored from a checkout.
+runtime_txt="shutdown.txt ban.txt bugs.txt ideas.txt typos.txt notes.txt
+             maxload.txt wizlist.txt offense.txt relics.txt not.txt
+             pkilldata.txt"
 for f in "$BUILD"/area/*.txt; do
+    [ -f "$f" ] || continue
     b=$(basename "$f")
-    case "$b" in
-        notes.txt|bugs.txt|ideas.txt|typos.txt) continue ;;
-    esac
+    skip=0
+    for r in $runtime_txt; do
+        [ "$b" = "$r" ] && { skip=1; break; }
+    done
+    [ "$skip" = 1 ] && continue
     cp "$f" "$CURRENT/area/$b"
 done
+
+# Belt and braces: whatever happened above, the game must not find a
+# shutdown marker it did not write itself.
+rm -f "$CURRENT/area/shutdown.txt" "$CURRENT/area/shutdown"
 
 chown -R toc:toc "$CURRENT"
 
