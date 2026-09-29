@@ -367,6 +367,50 @@ See also: HIDE, SNEAK, STEALTH, VISIBLE, REMORT
 
 ~
 
+0 HISTORY REPLAY~
+Syntax: history                  -- the last 20, every channel
+        history <number>         -- that many instead
+        history <channel>        -- just that one
+        history <channel> <num>  -- that many of just that one
+        history tell             -- your own tells, and nobody else's
+        history list             -- what is held, and how much
+
+Read back what was said.
+
+If your client stopped capturing, or you were fighting, or you simply
+scrolled past it - HISTORY on its own shows the last twenty lines from
+every channel you can hear, oldest first, with the time against each.
+
+    history            the last twenty
+    history 50         the last fifty
+    history gossip     only gossip
+    history gossip 5   the last five gossips
+    history tell       your tells
+
+CHANNELS WITH A HISTORY
+  gossip, shout, yell, question, answer, music, leveling, and - for
+  those who can hear them - hero, immtalk and godtalk.
+
+  HISTORY LIST names them and says how many lines each is holding.
+
+WHAT YOU CAN SEE
+  Only channels you are allowed to hear.  A mortal cannot read immtalk
+  back any more than they could hear it live.
+
+  Tells are private and are never in the shared history.  Each
+  character keeps their own copy of the tells they sent and received,
+  and no one else can read them.
+
+IT DOES NOT SURVIVE A REBOOT
+  History is held in memory.  When the game restarts it is gone.  It is
+  a way to catch up on what you missed, not a transcript.
+
+Only the last 30 lines of each channel are kept, and the last 20 tells.
+
+See also: CHANNELS, GOSSIP, TELL
+
+~
+
 0 STASH~
 Syntax: stash                          -- what is in it
         stash put <item>               -- from anywhere in the world
@@ -595,6 +639,23 @@ command named here for the detail.
   <n> <player> passes one on, NOTE SEARCH finds a note by any word in
   it, NOTE UNREAD shows only what is waiting and NOTE CATCHUP clears
   the lot.  See HELP NOTE.
+
+  HISTORY reads back what was said.  Type it on its own for the last
+  twenty lines across every channel you can hear, HISTORY 50 for more,
+  HISTORY GOSSIP for one channel, or HISTORY TELL for your own tells -
+  which stay private, and are kept per character.  It is held in memory
+  and is lost on a reboot, so it is a way to catch up rather than a
+  transcript.  See HELP HISTORY.
+
+  You can set your recall point at the quest giver now.  A room was
+  being refused for being 'private', which is a count of who is standing
+  in it - the questmaster and you already made two - and that count
+  changes minute to minute, so a point set in a quiet moment would have
+  quietly reverted to the Temple later.  Only the permanent flags refuse
+  a recall point now.
+
+  A mobile that lives in a room no longer fills it either.  The quest
+  giver's room holds two, and the questmaster was one of them.
 
   An idle immortal no longer fills a one-person room.  Standing in the
   quest room was enough to shut questing down for everybody else, which
@@ -3122,7 +3183,8 @@ Dresden.  You may move it:
 
 Choose somewhere you go often - a hunting ground you are working through,
 a questmaster, the shop you live out of.  Anywhere the gods have forsaken
-is refused, and so are jails, death traps and private rooms.
+is refused, and so are jails and death traps.  A busy room is fine: who
+else happens to be standing there makes no difference.
 
 You may move your recall point once every 30 minutes, and not while you
 are fighting or while the blood is still up from a fight.  RECALL DEFAULT

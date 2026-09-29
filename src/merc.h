@@ -273,6 +273,17 @@ typedef struct script_loop_prepoll_payload
 /* The one area the automatic quest master will not send anybody into. */
 #define QUEST_EXCLUDED_AREA     "hyrule.are"
 
+/*
+ * HISTORY. Lines are kept in memory only and go when the game restarts:
+ * this is a scrollback for a client that lost it, not a transcript.
+ * Public channels share one ring each; tells are private and each
+ * character keeps their own.
+ */
+#define CHANNEL_HISTORY_LINES   30
+#define TELL_HISTORY_LINES      20
+#define HISTORY_DEFAULT_LINES   20
+#define HISTORY_MAX_LINES       100
+
 #define BATTLE_TICKS            2
 
 #define IMPLEMENTOR             MAX_LEVEL
@@ -1774,6 +1785,11 @@ struct  pc_data
     bool                psionic_grant_pending;
     char * psionic_grant_spec;
     char * psionic_known;
+    /* Not saved: a tell scrollback for the length of the session. */
+    char * tell_history [TELL_HISTORY_LINES];
+    time_t              tell_history_when [TELL_HISTORY_LINES];
+    sh_int              tell_history_next;
+    sh_int              tell_history_held;
     sh_int              condition       [3];
     sh_int              learned         [MAX_SKILL];
     bool                group_known     [MAX_GROUP];
@@ -2530,6 +2546,9 @@ void    close_socket    ( DESCRIPTOR_DATA *dclose );
 void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
 void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
+void    channel_history_add ( const char *channel, CHAR_DATA *ch,
+                              const char *text );
+void    tell_history_add ( CHAR_DATA *ch, const char *line );
 void    psionic_sync_known ( CHAR_DATA *ch );
 bool    normalize_psionic_arguments ( const char *argument, char *output, size_t length, char *invalid );
 /* Dynamic-string aware output helpers. */

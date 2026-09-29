@@ -3417,6 +3417,16 @@ void free_char( CHAR_DATA *ch )
         free_string( ch->pcdata->title          );
         free_string( ch->pcdata->psionic_grant_spec );
         free_string( ch->pcdata->psionic_known  );
+        for ( i = 0; i < TELL_HISTORY_LINES; i++ )
+        {
+            if ( ch->pcdata->tell_history[i] != NULL )
+            {
+                free_string( ch->pcdata->tell_history[i] );
+                ch->pcdata->tell_history[i] = NULL;
+            }
+        }
+        ch->pcdata->tell_history_next = 0;
+        ch->pcdata->tell_history_held = 0;
         free_string( ch->pcdata->stash_links    );
         free_string( ch->pcdata->stash_offers   );
         free_string( ch->pcdata->stash_blocks   );

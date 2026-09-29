@@ -443,8 +443,409 @@ void do_afk ( CHAR_DATA *ch, char * argument)
 
 void do_replay (CHAR_DATA *ch, char *argument)
 {
-    UNUSED_PARAM(argument);
-    send_to_char("Replay history is unavailable.\n\r", ch);
+    /* REPLAY was a stub that said nothing was available and was never
+       registered. It is HISTORY now, so anybody who remembers the old
+       name gets what they were after. */
+    do_history( ch, argument );
+}
+
+/*
+ * ------------------------------------------------------------------------
+ * Channel history.
+ *
+ * A player asked for this because their client stopped capturing chat
+ * part way through a session and there was no way to get it back. The
+ * game keeps the last few lines of every public channel and hands them
+ * over on request.
+ *
+ * In memory only. A reboot loses it, which is the right trade: this is
+ * a scrollback for somebody who missed something, not a transcript, and
+ * a transcript of every channel is a different feature with different
+ * consequences.
+ *
+ * Tells do not go in the shared rings. They are private, so each
+ * character keeps their own copy of the ones they sent and received,
+ * and nobody else can read them back.
+ * ------------------------------------------------------------------------
+ */
+
+typedef struct history_line HISTORY_LINE;
+struct history_line
+{
+    char *  name;
+    char *  text;
+    time_t  when;
+};
+
+typedef struct channel_meta CHANNEL_META;
+struct channel_meta
+{
+    const char *    name;       /* what HISTORY takes as its argument */
+    const char *    verb;       /* so the line reads the way it did */
+    int             colour;
+    int             hear_level; /* trust needed to read it back */
+};
+
+/*
+ * The verb here is the plain one. Immtalk and godtalk prefix the
+ * speaker's rank when live; the history does not, because the rank a
+ * character held at the time is not recorded and guessing it now would
+ * be a lie.
+ */
+static const CHANNEL_META channel_meta_table[] =
+{
+    { "gossip",    "gossips",       COL_GOSSIP,    0 },
+    { "shout",     "shouts",        COL_SHOUTS,    0 },
+    { "yell",      "yells",         COL_SHOUTS,    0 },
+    { "question",  "questions",     COL_QUESTION,  0 },
+    { "answer",    "answers",       COL_QUESTION,  0 },
+    { "music",     "MUSIC:",        COL_SOCIALS,   0 },
+    { "hero",      "heroes",        COL_HERO,      LEVEL_HERO },
+    { "leveling",  "congratulates", COL_HIGHLIGHT, 0 },
+    { "immtalk",   "immtalks",      COL_IMMTALK,   LEVEL_IMMORTAL },
+    { "godtalk",   "godtalks",      COL_IMMTALK,   MAX_LEVEL - 1 },
+    { NULL,        NULL,            0,             0 }
+};
+
+#define CHANNEL_LOG_MAX 10
+
+static HISTORY_LINE channel_log[CHANNEL_LOG_MAX][CHANNEL_HISTORY_LINES];
+static int channel_log_next[CHANNEL_LOG_MAX];
+static int channel_log_held[CHANNEL_LOG_MAX];
+
+static int channel_history_index( const char *name )
+{
+    int i;
+
+    if ( name == NULL || name[0] == '\0' )
+        return -1;
+
+    for ( i = 0; channel_meta_table[i].name != NULL; i++ )
+        if ( !str_prefix( name, channel_meta_table[i].name ) )
+            return i;
+
+    return -1;
+}
+
+void channel_history_add( const char *channel, CHAR_DATA *ch,
+                          const char *text )
+{
+    HISTORY_LINE *line;
+    int index;
+
+    if ( ch == NULL || text == NULL || text[0] == '\0' )
+        return;
+
+    index = channel_history_index( channel );
+    if ( index < 0 || index >= CHANNEL_LOG_MAX )
+        return;
+
+    line = &channel_log[index][channel_log_next[index]];
+
+    /* Reusing a slot: let go of what was in it. */
+    if ( line->name != NULL )
+        free_string( line->name );
+    if ( line->text != NULL )
+        free_string( line->text );
+
+    line->name = str_dup( ch->name != NULL ? ch->name : "someone" );
+    line->text = str_dup( text );
+    line->when = current_time;
+
+    channel_log_next[index] =
+        ( channel_log_next[index] + 1 ) % CHANNEL_HISTORY_LINES;
+    if ( channel_log_held[index] < CHANNEL_HISTORY_LINES )
+        channel_log_held[index]++;
+}
+
+void tell_history_add( CHAR_DATA *ch, const char *line )
+{
+    int slot;
+
+    if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || line == NULL )
+        return;
+
+    slot = ch->pcdata->tell_history_next;
+    if ( slot < 0 || slot >= TELL_HISTORY_LINES )
+        slot = 0;
+
+    if ( ch->pcdata->tell_history[slot] != NULL )
+        free_string( ch->pcdata->tell_history[slot] );
+
+    ch->pcdata->tell_history[slot] = str_dup( line );
+    ch->pcdata->tell_history_when[slot] = current_time;
+    ch->pcdata->tell_history_next =
+        (sh_int)( ( slot + 1 ) % TELL_HISTORY_LINES );
+    if ( ch->pcdata->tell_history_held < TELL_HISTORY_LINES )
+        ch->pcdata->tell_history_held++;
+}
+
+/* hh:mm, so a line can be placed against when somebody remembers it. */
+static void history_stamp( time_t when, char *dest, size_t size )
+{
+    struct tm *broken = localtime( &when );
+
+    if ( broken == NULL )
+    {
+        toc_strlcpy( dest, "--:--", size );
+        return;
+    }
+
+    snprintf( dest, size, "%02d:%02d", broken->tm_hour, broken->tm_min );
+}
+
+/*
+ * One line on its way to the screen, wherever it came from.
+ *
+ * The merged view has to interleave ten channels and a private tell
+ * history, so everything is gathered into one of these, sorted by the
+ * clock, and the tail printed. `meta` is the channel it came from, or
+ * NULL for a tell, which is already a whole sentence by then.
+ */
+typedef struct history_entry HISTORY_ENTRY;
+struct history_entry
+{
+    time_t                  when;
+    const CHANNEL_META *    meta;
+    const char *            name;
+    const char *            text;
+};
+
+#define HISTORY_GATHER_MAX  ( CHANNEL_LOG_MAX * CHANNEL_HISTORY_LINES \
+                              + TELL_HISTORY_LINES )
+
+static bool history_may_read( CHAR_DATA *ch, int index )
+{
+    return get_trust( ch ) >= channel_meta_table[index].hear_level;
+}
+
+/* Oldest first: the tail of the sort is the most recent. */
+static int history_compare( const void *a, const void *b )
+{
+    const HISTORY_ENTRY *left  = (const HISTORY_ENTRY *) a;
+    const HISTORY_ENTRY *right = (const HISTORY_ENTRY *) b;
+
+    if ( left->when < right->when )
+        return -1;
+    if ( left->when > right->when )
+        return 1;
+    return 0;
+}
+
+/*
+ * Every line this character could have seen.
+ *
+ * "Could have seen" is about rank and privacy, not about which channels
+ * they happen to have switched off: somebody catching up after their
+ * client stopped capturing wants what was said, and a channel they
+ * cannot read is never gathered at all.
+ */
+static int history_gather( CHAR_DATA *ch, HISTORY_ENTRY *out, int limit,
+                           int only_channel, bool want_tells )
+{
+    int count = 0;
+    int index;
+    int i;
+
+    for ( index = 0; channel_meta_table[index].name != NULL; index++ )
+    {
+        int held, start;
+
+        if ( only_channel >= 0 && index != only_channel )
+            continue;
+        if ( !history_may_read( ch, index ) )
+            continue;
+
+        held  = channel_log_held[index];
+        start = ( channel_log_next[index] - held + CHANNEL_HISTORY_LINES )
+                % CHANNEL_HISTORY_LINES;
+
+        for ( i = 0; i < held && count < limit; i++ )
+        {
+            const HISTORY_LINE *line =
+                &channel_log[index][( start + i ) % CHANNEL_HISTORY_LINES];
+
+            if ( line->text == NULL )
+                continue;
+
+            out[count].when = line->when;
+            out[count].meta = &channel_meta_table[index];
+            out[count].name = line->name != NULL ? line->name : "someone";
+            out[count].text = line->text;
+            count++;
+        }
+    }
+
+    if ( want_tells && !IS_NPC(ch) && ch->pcdata != NULL )
+    {
+        int held  = ch->pcdata->tell_history_held;
+        int start = ( ch->pcdata->tell_history_next - held
+                      + TELL_HISTORY_LINES ) % TELL_HISTORY_LINES;
+
+        for ( i = 0; i < held && count < limit; i++ )
+        {
+            int slot = ( start + i ) % TELL_HISTORY_LINES;
+
+            if ( ch->pcdata->tell_history[slot] == NULL )
+                continue;
+
+            out[count].when = ch->pcdata->tell_history_when[slot];
+            out[count].meta = NULL;
+            out[count].name = NULL;
+            out[count].text = ch->pcdata->tell_history[slot];
+            count++;
+        }
+    }
+
+    if ( count > 1 )
+        qsort( out, (size_t)count, sizeof(HISTORY_ENTRY), history_compare );
+
+    return count;
+}
+
+/*
+ * Print the last `wanted` of them, oldest first.
+ *
+ * Built into one buffer and paged, because a hundred lines is well past
+ * a screen. The guard is the usual one: stop adding rather than run off
+ * the end.
+ */
+static void history_print( CHAR_DATA *ch, HISTORY_ENTRY *entry, int count,
+                           int wanted, const char *what )
+{
+    char out[MAX_STRING_LENGTH];
+    char line[MAX_STRING_LENGTH];
+    char stamp[16];
+    size_t used;
+    int first;
+    int i;
+
+    if ( count == 0 )
+    {
+        snprintf( line, sizeof(line), "Nothing has been said on %s.\n\r",
+                  what );
+        send_to_char( line, ch );
+        return;
+    }
+
+    first = count > wanted ? count - wanted : 0;
+
+    snprintf( out, sizeof(out), "{%02XThe last %d on %s:{00\n\r",
+              COL_HIGHLIGHT, count - first, what );
+    used = strlen( out );
+
+    for ( i = first; i < count; i++ )
+    {
+        history_stamp( entry[i].when, stamp, sizeof(stamp) );
+
+        if ( entry[i].meta == NULL )
+            snprintf( line, sizeof(line), "{%02X[%s] %s{00\n\r",
+                      COL_TELL, stamp, entry[i].text );
+        else
+            snprintf( line, sizeof(line), "{%02X[%s] %s %s '%s'{00\n\r",
+                      entry[i].meta->colour, stamp, entry[i].name,
+                      entry[i].meta->verb, entry[i].text );
+
+        if ( used + strlen( line ) + 64 >= sizeof(out) )
+        {
+            toc_strlcat( out, "... the rest is older than this screen.\n\r",
+                         sizeof(out) );
+            break;
+        }
+
+        toc_strlcat( out, line, sizeof(out) );
+        used = strlen( out );
+    }
+
+    page_to_char( out, ch );
+}
+
+void do_history( CHAR_DATA *ch, char *argument )
+{
+    HISTORY_ENTRY gathered[HISTORY_GATHER_MAX];
+    char arg[MAX_INPUT_LENGTH];
+    char rest[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    int wanted = HISTORY_DEFAULT_LINES;
+    int index;
+    int count;
+
+    if ( IS_NPC(ch) )
+        return;
+
+    argument = one_argument( argument, arg );
+    one_argument( argument, rest );
+
+    /* HISTORY LIST: what is held, and how much of it. */
+    if ( !str_cmp( arg, "list" ) )
+    {
+        int i;
+
+        send_to_char( "Held right now:\n\r", ch );
+        for ( i = 0; channel_meta_table[i].name != NULL; i++ )
+        {
+            if ( !history_may_read( ch, i ) )
+                continue;
+            snprintf( buf, sizeof(buf), "  %-10s %3d line%s\n\r",
+                      channel_meta_table[i].name, channel_log_held[i],
+                      channel_log_held[i] == 1 ? "" : "s" );
+            send_to_char( buf, ch );
+        }
+        snprintf( buf, sizeof(buf), "  %-10s %3d line%s\n\r", "tell",
+                  ch->pcdata != NULL ? ch->pcdata->tell_history_held : 0,
+                  ( ch->pcdata != NULL && ch->pcdata->tell_history_held == 1 )
+                      ? "" : "s" );
+        send_to_char( buf, ch );
+        send_to_char( "\n\rHistory is kept in memory and is lost on a "
+                      "reboot.\n\r", ch );
+        return;
+    }
+
+    /* HISTORY <number>: that many, across everything. */
+    if ( arg[0] != '\0' && is_number( arg ) )
+    {
+        wanted = URANGE( 1, atoi( arg ), HISTORY_MAX_LINES );
+        arg[0] = '\0';
+    }
+    else if ( rest[0] != '\0' && is_number( rest ) )
+    {
+        /* HISTORY <channel> <number> */
+        wanted = URANGE( 1, atoi( rest ), HISTORY_MAX_LINES );
+    }
+
+    /* HISTORY TELL: the character's own, and nobody else's. */
+    if ( !str_cmp( arg, "tell" ) || !str_cmp( arg, "tells" ) )
+    {
+        count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -2, true );
+        history_print( ch, gathered, count, wanted, "your tells" );
+        return;
+    }
+
+    /* HISTORY: everything this character could have heard. */
+    if ( arg[0] == '\0' )
+    {
+        count = history_gather( ch, gathered, HISTORY_GATHER_MAX, -1, true );
+        history_print( ch, gathered, count, wanted, "every channel" );
+        return;
+    }
+
+    index = channel_history_index( arg );
+    if ( index < 0 )
+    {
+        send_to_char( "No channel by that name keeps a history.  Type "
+                      "HISTORY LIST for the ones that do.\n\r", ch );
+        return;
+    }
+
+    if ( !history_may_read( ch, index ) )
+    {
+        send_to_char( "That channel is not yours to read.\n\r", ch );
+        return;
+    }
+
+    count = history_gather( ch, gathered, HISTORY_GATHER_MAX, index, false );
+    history_print( ch, gathered, count, wanted,
+                   channel_meta_table[index].name );
 }
 
 void do_auction( CHAR_DATA *ch, char *argument )
@@ -514,7 +915,8 @@ static bool channel_may_speak( CHAR_DATA *ch )
  */
 static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
                          const char *label, const char *self_verb,
-                         const char *other_verb, int hear_level )
+                         const char *other_verb, int hear_level,
+                         const char *history )
 {
     char buf[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *d;
@@ -529,6 +931,8 @@ static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
         return;
 
     REMOVE_BIT( ch->comm, flag );
+
+    channel_history_add( history, ch, argument );
 
     snprintf( buf, sizeof(buf), "{%02XYou %s '%s'{00\n\r",
               colour, self_verb, argument );
@@ -569,7 +973,7 @@ void do_immtalk( CHAR_DATA *ch, char *argument )
     snprintf( verb, sizeof(verb), "[%d] immtalks", get_trust( ch ) );
 
     channel_say( ch, argument, COMM_NOWIZ, COL_IMMTALK,
-                 "Immortal", "immtalk", verb, LEVEL_IMMORTAL );
+                 "Immortal", "immtalk", verb, LEVEL_IMMORTAL, "immtalk" );
 }
 
 
@@ -580,21 +984,22 @@ void do_godtalk( CHAR_DATA *ch, char *argument )
     snprintf( verb, sizeof(verb), "[%d] godtalks", get_trust( ch ) );
 
     channel_say( ch, argument, COMM_NOGOD, COL_IMMTALK,
-                 "God", "godtalk", verb, MAX_LEVEL - 1 );
+                 "God", "godtalk", verb, MAX_LEVEL - 1, "godtalk" );
 }
 
 
 void do_hero( CHAR_DATA *ch, char *argument )
 {
     channel_say( ch, argument, COMM_NOHERO, COL_HERO,
-                 "Hero", "hero", "heroes", LEVEL_HERO );
+                 "Hero", "hero", "heroes", LEVEL_HERO, "hero" );
 }
 
 
 void do_leveling( CHAR_DATA *ch, char *argument )
 {
     channel_say( ch, argument, COMM_NOGRATZ, COL_HIGHLIGHT,
-                 "Leveling", "congratulate", "congratulates", 0 );
+                 "Leveling", "congratulate", "congratulates", 0,
+                 "leveling" );
 }
 
 
@@ -873,6 +1278,9 @@ void do_gossip( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOGOSSIP);
  
+      channel_history_add( "gossip", ch, argument );
+
+
       snprintf( buf, sizeof(buf), "{%02XYou gossip '%s'{00\n\r",
           COL_GOSSIP, argument );
       send_to_char( buf, ch );
@@ -942,6 +1350,9 @@ void do_question( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOQUESTION);
  
+      channel_history_add( "question", ch, argument );
+
+
       snprintf( buf, sizeof(buf), "{%02XYou question '%s'{00\n\r",
           COL_QUESTION, argument );
       send_to_char( buf, ch );
@@ -1001,6 +1412,9 @@ void do_answer( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOQUESTION);
  
+      channel_history_add( "answer", ch, argument );
+
+
       snprintf( buf, sizeof(buf), "{%02XYou answer '%s'{00\n\r",
           COL_QUESTION, argument );
       send_to_char( buf, ch );
@@ -1058,6 +1472,9 @@ void do_music( CHAR_DATA *ch, char *argument )
  
       REMOVE_BIT(ch->comm,COMM_NOMUSIC);
  
+      channel_history_add( "music", ch, argument );
+
+
       snprintf( buf, sizeof(buf), "{%02XYou MUSIC: '%s'{00\n\r",
           COL_SOCIALS, argument );
       send_to_char( buf, ch );
@@ -1922,6 +2339,8 @@ void do_shout( CHAR_DATA *ch, char *argument )
     WAIT_STATE( ch, 12 );
     
     /* Code Safety: snprintf */
+    channel_history_add( "shout", ch, argument );
+
     snprintf( buf, sizeof(buf), "{%02XYou shout '%s'{00\n\r", COL_SHOUTS, argument );
     send_to_char( buf, ch );
     for ( d = descriptor_list; d != NULL; d = d->next )
@@ -1949,6 +2368,7 @@ void do_tell( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
+    char stamp[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
 
     /* If the sender is AFK, sending a tell means they're back — auto-clear */
@@ -2029,10 +2449,20 @@ void do_tell( CHAR_DATA *ch, char *argument )
     snprintf( buf, sizeof(buf), "{%02XYou tell %s '%s'{00\n\r",
         COL_TELL, victim->name, argument );
     send_to_char( buf, ch );
+
+    /* Both sides keep their own copy: a tell is private, so it never
+       goes into the shared rings HISTORY reads for a channel. */
+    snprintf( stamp, sizeof(stamp), "You tell %s '%s'",
+        victim->name, argument );
+    tell_history_add( ch, stamp );
     
     snprintf( buf, sizeof(buf), "{%02X%s tells you '%s'{00\n\r",
         COL_TELL, PERS(ch, victim), argument );
     send_to_char( buf, victim );
+
+    snprintf( stamp, sizeof(stamp), "%s tells you '%s'",
+        PERS(ch, victim), argument );
+    tell_history_add( victim, stamp );
     victim->reply	= ch;
 
     return;
@@ -2044,6 +2474,7 @@ void do_reply( CHAR_DATA *ch, char *argument )
 {
     CHAR_DATA *victim;
     char buf[MAX_STRING_LENGTH];
+    char stamp[MAX_STRING_LENGTH];
 
     /* If the sender is AFK, replying means they're back — auto-clear */
     if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_AFK) )
@@ -2111,9 +2542,17 @@ void do_reply( CHAR_DATA *ch, char *argument )
         COL_TELL, victim->name, argument );
     send_to_char( buf, ch );
 
+    snprintf( stamp, sizeof(stamp), "You reply to %s '%s'",
+        victim->name, argument );
+    tell_history_add( ch, stamp );
+
     snprintf( buf, sizeof(buf), "{%02X%s replies '%s'{00\n\r",
         COL_TELL, PERS(ch, victim), argument );
     send_to_char( buf, victim );
+
+    snprintf( stamp, sizeof(stamp), "%s replies '%s'",
+        PERS(ch, victim), argument );
+    tell_history_add( victim, stamp );
     victim->reply	= ch;
 
     return;
@@ -2140,6 +2579,8 @@ void do_yell( CHAR_DATA *ch, char *argument )
 
 
     /* Code Safety: snprintf */
+    channel_history_add( "yell", ch, argument );
+
     snprintf( buf, sizeof(buf), "{%02XYou yell '%s'{00\n\r", COL_SHOUTS, argument );
     send_to_char( buf, ch );
     

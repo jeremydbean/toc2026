@@ -2893,14 +2893,21 @@ bool room_is_private( ROOM_INDEX_DATA *pRoomIndex )
     for ( rch = pRoomIndex->people; rch != NULL; rch = rch->next_in_room)
     {
 	/*
-	 * Staff do not take up the room. An immortal standing in a
-	 * solitary room -- watching, building, or simply idle -- used to
-	 * fill it, and the next player to walk up was told the room was
-	 * private. One idle immortal in the quest room shut questing
-	 * down for everybody, which is not what the flag is for: it
-	 * exists to stop players walking in on each other.
+	 * Only players take up the room, and only mortal ones.
+	 *
+	 * A mobile that lives there filled a slot for good: the quest
+	 * giver's room is ROOM_PRIVATE, so the questmaster plus one
+	 * player already made two and nobody else could walk in. A
+	 * solitary room with a resident mobile admitted nobody at all.
+	 *
+	 * Staff do not count either. An immortal standing in a solitary
+	 * room -- watching, building, or simply idle -- used to fill it,
+	 * and one who had wandered off shut questing down for the whole
+	 * mud. The flag exists to stop players walking in on each other,
+	 * not to let a mobile or a staff character close a room by
+	 * standing in it.
 	 */
-	if ( !IS_NPC(rch) && IS_TRUSTED(rch, LEVEL_IMMORTAL) )
+	if ( IS_NPC(rch) || IS_TRUSTED(rch, LEVEL_IMMORTAL) )
 	    continue;
 
 	if(rch->battleticks == 0)

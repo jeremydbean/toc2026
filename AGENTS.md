@@ -1058,6 +1058,17 @@ exempt on purpose: a character who cannot reach their own recall point has
 no other way to reset it. Recall itself is not rate-limited -- the point
 of the feature is a standing shortcut to one room.
 
+**A recall point is refused by flags, never by who is standing there.**
+`room_allows_recall_point()` used to include `room_is_private()`, which
+made it stricter than recall itself -- the way out tests `ROOM_NO_RECALL`
+and `ROOM_JAIL` and nothing else -- and made it unstable, because
+privacy is an occupancy count. A player at the quest giver was told the
+gods would not hear them: the room is `ROOM_PRIVATE` and the questmaster
+and the player together made two. And since the stored vnum is rechecked
+on every use, a point set in a quiet moment would have reverted to the
+Temple the next time somebody else walked in. Jail, death traps,
+no-recall, implementor-only and gods-only still refuse it.
+
 **Only the skill uses the chosen point, and only the skill is stopped by a
 curse.** `recall_travel()` takes an `own_prayer` flag for exactly these two
 differences; `recall_char_to_temple()` is the door for everything else --
@@ -1116,16 +1127,49 @@ the default reading of a blow is the ordinary one and only the loss is
 skipped. Nothing displays the flag: not `score`, not the room. That is a
 deliberate difference from WIZINVIS and CLOAK.
 
+## Channel History
+
+`HISTORY` reads back what was said. It exists because a player's Mudlet
+chat capture stopped part way through a session and nothing on the
+server could recover the lines.
+
+- **In memory only, and gone on a reboot.** That is the trade, and it is
+  deliberate: this is a scrollback for somebody who missed something,
+  not a transcript. A transcript of every channel is a different
+  feature with different consequences, and nobody has asked for one.
+- **`channel_meta_table` in `act_comm.c` is the register.** A new
+  channel that sends without calling `channel_history_add()` is a
+  silent hole; `tests/test_channel_history.py` counts the call sites so
+  one cannot be added or dropped unnoticed. The four channels that go
+  through `channel_say()` are covered by the single call inside it; the
+  six that walk the descriptor list themselves each record their own.
+- **Reading a channel back needs the rank that hearing it needs.**
+  `history_may_read()` compares `get_trust()` against the same
+  `hear_level` the live channel uses, and a channel the character
+  cannot read is never gathered and never listed.
+- **Tells are never in the shared rings.** Each character keeps their
+  own in `pcdata->tell_history`, which is not saved and is freed in
+  `free_char`. Putting them in a global ring would have leaked private
+  conversation to anybody who typed HISTORY.
+
+`HISTORY` with no argument, or with a number, merges everything the
+character may read and sorts it by the clock, so the tell history needs
+its own `tell_history_when` -- a formatted line with the time baked in
+cannot be sorted against the channels.
+
 ## One-Person Rooms
 
 `ROOM_SOLITARY` closes a room at one occupant and `ROOM_PRIVATE` at two.
 Two rules, both learned from one incident where an idle immortal in the
 quest room shut questing down for the whole mud:
 
-- **Staff do not count towards the occupancy.** `room_is_private()`
-  skips anyone at immortal trust. The flag exists to stop players
-  walking in on each other, not to let a staff character close a room
-  by standing in it.
+- **Only mortal players count towards the occupancy.**
+  `room_is_private()` skips NPCs and anyone at immortal trust. A mobile
+  that lives in the room filled a slot for good -- the quest giver's
+  room is `ROOM_PRIVATE`, so the questmaster plus one player was already
+  two, and a solitary room with a resident mobile admitted nobody at
+  all. The flag exists to stop players walking in on each other, not to
+  let a mobile or a staff character close a room by standing in it.
 - **`can_enter_private_room(ch, room)` is the one place that decides
   who may walk in anyway.** Every caller used to ask
   `ch->level < 69` -- the raw level, and a number rather than a rank --

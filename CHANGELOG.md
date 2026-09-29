@@ -67,6 +67,36 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **HISTORY reads back what was said.** A player's Mudlet chat capture
+  stopped part way through a session and there was no way to recover
+  the lines, so the game keeps them now. `HISTORY` on its own shows the
+  last twenty across every channel the character can hear, oldest
+  first, with the time against each; `HISTORY 50` shows more, `HISTORY
+  GOSSIP` one channel, `HISTORY GOSSIP 5` the last five of it, and
+  `HISTORY LIST` what is held. `REPLAY`, which had been a stub saying
+  nothing was available and was never even registered in the command
+  table, is now a synonym.
+
+  A channel you may not hear is a channel you may not read back, and
+  tells never go into the shared rings -- each character keeps their
+  own copy of the tells they sent and received, and nobody else can
+  read them. It is all held in memory and is lost on a reboot, which is
+  the point: a way to catch up, not a transcript.
+
+- **You could not set a recall point at the quest giver.** The room is
+  ROOM_PRIVATE and the questmaster stands in it, so the questmaster and
+  the player already made two and the gods "would not answer a prayer
+  raised in this place". A recall point is refused by flags now, never
+  by an occupancy count -- which was also stricter than recall itself,
+  and unstable, since the stored room is rechecked on every use and
+  would have reverted to the Temple the moment somebody else walked in.
+  Jail, death traps and the rest still refuse it.
+
+- **A mobile that lives in a room filled it.** The same count behind
+  both of the above: a resident questmaster or shopkeeper took a
+  privacy slot permanently, and a solitary room with a mobile in it
+  admitted nobody at all.
+
 - **An idle immortal filled a one-person room.** Standing in the quest
   room was enough to shut questing down for everybody: `ROOM_SOLITARY`
   counts occupants and counted staff among them. Staff are skipped now.

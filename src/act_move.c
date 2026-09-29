@@ -2617,12 +2617,23 @@ bool room_allows_recall_point( ROOM_INDEX_DATA *room )
     if ( room == NULL )
 	return false;
 
+    /*
+     * Flags only. This used to refuse a private room as well, which was
+     * both stricter than recall itself -- the way out tests NO_RECALL
+     * and JAIL and nothing else -- and unstable: room_is_private() is an
+     * occupancy count, so whether the gods would hear you depended on
+     * who happened to be standing there. A player at the quest giver was
+     * told "The Gods will not answer a prayer raised in this place"
+     * because the questmaster and the player together made two. Worse,
+     * the stored vnum is rechecked on every use, so a point set in a
+     * quiet moment would have silently fallen back to the Temple the
+     * next time somebody else was in the room.
+     */
     return !IS_SET(room->room_flags, ROOM_NO_RECALL)
 	&& !IS_SET(room->room_flags, ROOM_JAIL)
 	&& !IS_SET(room->room_flags, ROOM_DT)
 	&& !IS_SET(room->room_flags, ROOM_IMP_ONLY)
-	&& !IS_SET(room->room_flags, ROOM_GODS_ONLY)
-	&& !room_is_private(room);
+	&& !IS_SET(room->room_flags, ROOM_GODS_ONLY);
 }
 
 /*
