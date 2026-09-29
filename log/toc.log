@@ -12216,3 +12216,23 @@ Tue Sep 29 19:48:25 2026 ::  INIT OK
 Tue Sep 29 19:48:25 2026 :: ROM is ready to rock on port 9000.
 Tue Sep 29 19:48:25 2026 :: Automated backup complete.
 Tue Sep 29 19:48:25 2026 :: Daily backup complete.
+Tue Sep 29 19:50:17 2026 :: Sock.sinaddr:  91.196.152.241
+Tue Sep 29 19:50:21 2026 :: Sock.sinaddr:  91.196.152.200
+Tue Sep 29 19:50:25 2026 :: EOF encountered on read.
+Tue Sep 29 19:50:51 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Tue Sep 29 19:50:57 2026 :: Received signal 15; saving players and shutting down.
+Tue Sep 29 19:50:57 2026 :: Normal termination of game.
+Tue Sep 29 19:50:58 2026 ::  INIT OK 
+Tue Sep 29 19:50:58 2026 :: ROM is ready to rock on port 9000.
+Tue Sep 29 19:50:58 2026 :: Automated backup complete.
+Tue Sep 29 19:50:58 2026 :: Daily backup complete.
+Tue Sep 29 19:51:35 2026 :: Sock.sinaddr:  192.168.0.1
+Tue Sep 29 19:51:38 2026 :: Loading Misery's playerfile
+Tue Sep 29 19:51:39 2026 :: Misery@192.168.0.1 has connected.
+Tue Sep 29 19:53:19 2026 :: Log Misery: spellup
+Tue Sep 29 19:53:19 2026 :: Spellup: Hermie placed in room 2401 by Misery.
+Tue Sep 29 19:53:23 2026 :: Spellup: Hermie gave Misery the full list (30 ticks) in room 2401.
+Tue Sep 29 19:53:29 2026 :: Log Misery: tita self
+Tue Sep 29 19:53:31 2026 :: Log Misery: restore self
+Tue Sep 29 19:53:34 2026 :: Spellup: Hermie gave Misery the full list (30 ticks) in room 2401.
+Tue Sep 29 19:53:38 2026 :: Log Misery: restore self
