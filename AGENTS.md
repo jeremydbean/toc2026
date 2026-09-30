@@ -1431,6 +1431,51 @@ the default reading of a blow is the ordinary one and only the loss is
 skipped. Nothing displays the flag: not `score`, not the room. That is a
 deliberate difference from WIZINVIS and CLOAK.
 
+## The GMCP Feeds
+
+`src/gmcp.c` owns the JSON; `telnet_proto.c` owns negotiation. Three
+feeds carry game state to the Mudlet package, and each has a rule that
+is invisible when it is broken.
+
+**`Room.Info`** carries `exits`, and since 2026-09-30 also `doors`
+(per direction: open, closed or locked), `flags`, and `services` --
+what the room is *for*, being a shop, questmaster, guildmaster,
+trainer or healer. The doors loop must keep every guard the exits loop
+has: `EX_SECRET` and `can_see_room`, or the map draws a door the
+player cannot see. `services` reports roles and not occupants, so a
+mobile wandering through does not churn the payload hash.
+
+`ROOM_DT` is in `flags` and is not the spoiler it looks like:
+`Room.Info` describes the room you are standing in, and a death trap
+kills you on the way in, so the only character who ever receives that
+flag is one it has already killed. What it buys is a map that
+remembers.
+
+**`Char.Affects`** is de-duplicated by skill. Several spells are two
+`AFFECT_DATA` sharing one name -- bless carries a hitroll affect and a
+saving-throw affect, both called "bless" -- and a list that says so
+twice reports the implementation rather than the character. The walk
+is bounded, and shadowmeld is listed by hand for the same reason
+`do_affect` lists it by hand: it is a bare bit with no `AFFECT_DATA`
+behind it.
+
+**`Comm.Channel` is emitted where the text is delivered, never from
+one central place.** This is the important one. The tempting shortcut
+is a single emit from `channel_history_add()`, the register the
+HISTORY command uses -- but that register knows the channel and the
+speaker and *not the audience*, and the audiences differ: yell reaches
+one area, the staff channels are rank-gated, and every channel honours
+its own deafness flag. A chat window built on a second guess at the
+audience shows people things they did not hear. So there are two calls
+per channel, one beside the speaker's own `send_to_char` and one
+inside the loop that writes to each listener, and correctness comes
+free from standing in the same place. Tells go through
+`tell_history_add`, which is already called once per recipient.
+
+`tests/test_gmcp_payloads.py` counts the emit sites against the number
+of channels, so a channel added without its two emits fails the same
+way one added without its history call does.
+
 ## Channel History
 
 `HISTORY` reads back what was said. It exists because a player's Mudlet

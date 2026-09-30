@@ -29,6 +29,40 @@ static const char * const gmcp_sector_name[SECT_MAX] =
     "water", "deep-water", "underwater", "air", "desert", "underground"
 };
 
+#define GMCP_ROLE_MAX 5
+
+/*
+ * Room flags worth telling a client about: the ones that change how a
+ * player treats a room rather than how the game implements it.
+ *
+ * ROOM_DT is in here and it is not the spoiler it looks like. Room.Info
+ * describes the room you are standing in, and a death trap kills you on
+ * the way in -- so the only character who ever receives this flag is one
+ * it has already killed. What it buys is a map that remembers, which is
+ * the difference between dying there once and dying there twice.
+ */
+static const struct
+{
+    long        flag;
+    const char *name;
+} gmcp_room_flag[] =
+{
+    { ROOM_DT,          "deathtrap" },
+    { ROOM_SAFE,        "safe" },
+    { ROOM_NO_RECALL,   "norecall" },
+    { ROOM_JAIL,        "jail" },
+    { ROOM_LAW,         "law" },
+    { ROOM_PRIVATE,     "private" },
+    { ROOM_SOLITARY,    "solitary" },
+    { ROOM_NO_MOB,      "nomob" },
+    { ROOM_ARENA,       "arena" },
+    { ROOM_SILENT,      "silent" },
+    { ROOM_PET_SHOP,    "petshop" },
+    { ROOM_HP_REGEN,    "hpregen" },
+    { ROOM_MANA_REGEN,  "manaregen" },
+    { 0,                NULL }
+};
+
 static bool gmcp_token_equal( const char *message, const char *token )
 {
     size_t i;
@@ -147,6 +181,8 @@ static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
     d->gmcp_last_character = NULL;
     d->gmcp_last_room = -1;
     d->gmcp_last_room_hash = 0;
+    d->gmcp_last_affect_hash = 0;
+    d->gmcp_affects_valid = false;
 }
 
 static void gmcp_send_initial( DESCRIPTOR_DATA *d )
@@ -181,6 +217,7 @@ void gmcp_on_enabled( DESCRIPTOR_DATA *d )
     {
         gmcp_send_room( d );
         gmcp_send_character( d );
+        gmcp_send_affects( d );
     }
 }
 
@@ -219,6 +256,7 @@ void gmcp_handle_message( DESCRIPTOR_DATA *d, const char *message )
         {
             gmcp_send_room( d );
             gmcp_send_character( d );
+            gmcp_send_affects( d );
         }
     }
 }
@@ -299,6 +337,142 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
     }
 }
 
+/*
+ * One line of channel talk, to one descriptor that has just been sent
+ * it. Callers stand beside the delivery rather than guessing at the
+ * audience, so there is deliberately no filtering here: if you are
+ * calling this, the player heard it.
+ */
+/*
+ * What is currently on the character, so a client can show it rather
+ * than the player typing AFFECTS to find out.
+ *
+ * Shadowmeld is listed by hand for the same reason do_affect lists it
+ * by hand: it is a bare bit in affected_by2 with no duration and no
+ * AFFECT_DATA behind it, so walking ch->affected cannot see it, and a
+ * melded character would otherwise be told they were affected by
+ * nothing at all.
+ *
+ * The walk is bounded. affect_data is a linked list and a corrupt or
+ * pathological one would otherwise spin here with the descriptor
+ * blocked behind it.
+ */
+void gmcp_send_affects( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *ch;
+    AFFECT_DATA *paf;
+    char json[MAX_STRING_LENGTH];
+    char number[64];
+    sh_int seen[64];
+    uint32_t hash;
+    int seen_count;
+    int count;
+    int i;
+    bool first;
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    ch = d->character;
+    if ( ch == NULL )
+        return;
+
+    toc_strlcpy( json, "{\"affects\":[", sizeof(json) );
+    first = true;
+    count = 0;
+    seen_count = 0;
+
+    for ( paf = ch->affected; paf != NULL && count < 64; paf = paf->next )
+    {
+        const char *name;
+
+        count++;
+        if ( paf->type < 0 || paf->type >= MAX_SKILL )
+            continue;
+        name = skill_table[paf->type].name;
+        if ( name == NULL || name[0] == '\0' )
+            continue;
+
+        /* One row per spell. Several spells are modelled as a pair of
+           affects sharing one name -- bless carries a hitroll affect
+           and a saving-throw affect, both called "bless" -- and a
+           list that says so twice is reporting the implementation
+           rather than the character. The pair is added together with
+           the same duration, so the first is as good as either. */
+        for ( i = 0; i < seen_count; i++ )
+            if ( seen[i] == paf->type )
+                break;
+        if ( i < seen_count )
+            continue;
+        if ( seen_count < (int)(sizeof(seen) / sizeof(seen[0])) )
+            seen[seen_count++] = paf->type;
+
+        if ( !first )
+            toc_strlcat( json, ",", sizeof(json) );
+        first = false;
+
+        toc_strlcat( json, "{\"name\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), name );
+        toc_strlcat( json, ",\"duration\":", sizeof(json) );
+        snprintf( number, sizeof(number), "%d", paf->duration );
+        toc_strlcat( json, number, sizeof(json) );
+        toc_strlcat( json, ",\"level\":", sizeof(json) );
+        snprintf( number, sizeof(number), "%d", paf->level );
+        toc_strlcat( json, number, sizeof(json) );
+        toc_strlcat( json, "}", sizeof(json) );
+    }
+
+    if ( !IS_NPC(ch) && IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
+    {
+        if ( !first )
+            toc_strlcat( json, ",", sizeof(json) );
+        first = false;
+        /* No duration: it holds until you leave the room, strike, or
+           go visible, which is not a number of ticks. */
+        toc_strlcat( json,
+            "{\"name\":\"shadowmeld\",\"duration\":-1,\"level\":0}",
+            sizeof(json) );
+    }
+
+    toc_strlcat( json, "]}", sizeof(json) );
+
+    hash = gmcp_room_hash( json );
+    if ( d->gmcp_affects_valid && d->gmcp_last_affect_hash == hash )
+        return;
+
+    telnet_send_gmcp( d, "Char.Affects", json );
+    d->gmcp_last_affect_hash = hash;
+    d->gmcp_affects_valid = true;
+}
+
+
+void gmcp_send_channel( DESCRIPTOR_DATA *d, const char *channel,
+                        const char *speaker, const char *text )
+{
+    char json[MAX_STRING_LENGTH];
+    char number[64];
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+    if ( channel == NULL || text == NULL )
+        return;
+
+    toc_strlcpy( json, "{\"channel\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json), channel );
+    toc_strlcat( json, ",\"speaker\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json),
+                             speaker != NULL ? speaker : "" );
+    toc_strlcat( json, ",\"text\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json), text );
+    toc_strlcat( json, ",\"time\":", sizeof(json) );
+    snprintf( number, sizeof(number), "%ld", (long)current_time );
+    toc_strlcat( json, number, sizeof(json) );
+    toc_strlcat( json, "}", sizeof(json) );
+
+    telnet_send_gmcp( d, "Comm.Channel", json );
+}
+
+
 void gmcp_send_room( DESCRIPTOR_DATA *d )
 {
     CHAR_DATA *ch;
@@ -349,7 +523,103 @@ void gmcp_send_room( DESCRIPTOR_DATA *d )
         toc_strlcat( json, number, sizeof(json) );
     }
 
-    toc_strlcat( json, "},\"indoors\":", sizeof(json) );
+    /*
+     * Doors, for the exits listed above. A client that knows a door is
+     * shut can open it before walking into it rather than after; one
+     * that does not spends a timeout finding out.
+     */
+    toc_strlcat( json, "},\"doors\":{", sizeof(json) );
+
+    first_exit = true;
+    for ( direction = 0; direction < 10; ++direction )
+    {
+        const char *state;
+
+        exit_data = room->exit[direction];
+        if ( exit_data == NULL || exit_data->u1.to_room == NULL
+          || IS_SET(exit_data->exit_info, EX_SECRET)
+          || !IS_SET(exit_data->exit_info, EX_ISDOOR)
+          || !can_see_room(ch, exit_data->u1.to_room) )
+            continue;
+
+        state = IS_SET(exit_data->exit_info, EX_LOCKED) ? "locked"
+              : IS_SET(exit_data->exit_info, EX_CLOSED) ? "closed"
+              : "open";
+
+        if ( !first_exit )
+            toc_strlcat( json, ",", sizeof(json) );
+        first_exit = false;
+        gmcp_json_append_quoted( json, sizeof(json),
+                                 gmcp_direction_name[direction] );
+        toc_strlcat( json, ":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), state );
+    }
+
+    toc_strlcat( json, "},\"flags\":[", sizeof(json) );
+
+    first_exit = true;
+    for ( direction = 0; gmcp_room_flag[direction].name != NULL; ++direction )
+    {
+        if ( !IS_SET(room->room_flags, gmcp_room_flag[direction].flag) )
+            continue;
+        if ( !first_exit )
+            toc_strlcat( json, ",", sizeof(json) );
+        first_exit = false;
+        gmcp_json_append_quoted( json, sizeof(json),
+                                 gmcp_room_flag[direction].name );
+    }
+
+    /*
+     * What the room is for. A shopkeeper or a guildmaster is the reason
+     * to come back to a room and the reason to label it on a map. These
+     * are services and not an inventory of who is standing about, so a
+     * mobile wandering through changes nothing and does not churn the
+     * payload hash.
+     */
+    toc_strlcat( json, "],\"services\":[", sizeof(json) );
+
+    first_exit = true;
+    {
+        static const char * const role_name[GMCP_ROLE_MAX] =
+            { "shop", "quest", "practice", "train", "healer" };
+        CHAR_DATA *rch;
+        bool seen[GMCP_ROLE_MAX];
+        int index;
+
+        for ( index = 0; index < GMCP_ROLE_MAX; ++index )
+            seen[index] = false;
+
+        for ( rch = room->people; rch != NULL; rch = rch->next_in_room )
+        {
+            int role = -1;
+
+            if ( !IS_NPC(rch) || !can_see(ch, rch) )
+                continue;
+
+            if ( rch->pIndexData != NULL && rch->pIndexData->pShop != NULL )
+                role = 0;
+            else if ( IS_SET(rch->act, ACT_QUESTM) )
+                role = 1;
+            else if ( IS_SET(rch->act, ACT_PRACTICE) )
+                role = 2;
+            else if ( IS_SET(rch->act, ACT_TRAIN) )
+                role = 3;
+            else if ( IS_SET(rch->act, ACT_IS_HEALER) )
+                role = 4;
+
+            /* Two shopkeepers in a room is one "shop", not two. */
+            if ( role < 0 || seen[role] )
+                continue;
+            seen[role] = true;
+
+            if ( !first_exit )
+                toc_strlcat( json, ",", sizeof(json) );
+            first_exit = false;
+            gmcp_json_append_quoted( json, sizeof(json), role_name[role] );
+        }
+    }
+
+    toc_strlcat( json, "],\"indoors\":", sizeof(json) );
     toc_strlcat( json,
         IS_SET(room->room_flags, ROOM_INDOORS) ? "true" : "false",
         sizeof(json) );

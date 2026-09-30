@@ -534,6 +534,8 @@ struct  descriptor_data
     sh_int              gmcp_last_class;
     sh_int              gmcp_last_race;
     int                 gmcp_last_room;
+    uint32_t            gmcp_last_affect_hash;
+    bool                gmcp_affects_valid;
     uint32_t            gmcp_last_room_hash;
     /*
      * MCCP2 output compression. Held as void * so <zlib.h> does not have to
@@ -2584,6 +2586,9 @@ void    close_socket    ( DESCRIPTOR_DATA *dclose );
 void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
 void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
+void    gmcp_send_affects  ( DESCRIPTOR_DATA *d );
+void    gmcp_send_channel  ( DESCRIPTOR_DATA *d, const char *channel,
+                             const char *speaker, const char *text );
 void    channel_history_add ( const char *channel, CHAR_DATA *ch,
                               const char *text );
 void    tell_history_add ( CHAR_DATA *ch, const char *line );

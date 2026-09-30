@@ -677,6 +677,12 @@ void tell_history_add( CHAR_DATA *ch, const char *line )
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL || line == NULL )
         return;
 
+    /* Called once for the teller and once for the told, so the
+       audience is already exactly right and needs no filtering. The
+       line carries who and when, which is why no speaker is sent
+       beside it. */
+    gmcp_send_channel( ch->desc, "tell", "", line );
+
     slot = ch->pcdata->tell_history_next;
     if ( slot < 0 || slot >= TELL_HISTORY_LINES )
         slot = 0;
@@ -1077,6 +1083,7 @@ static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
     snprintf( buf, sizeof(buf), "{%02XYou %s '%s'{00\n\r",
               colour, self_verb, argument );
     send_to_char( buf, ch );
+    gmcp_send_channel( ch->desc, history, ch->name, argument );
 
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
@@ -1100,6 +1107,7 @@ static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
 
         snprintf( buf, sizeof(buf), "{%02X$n %s '$t'{00", colour, other_verb );
         act_new_cstr( buf, ch, argument, d->character, TO_VICT, POS_SLEEPING );
+        gmcp_send_channel( d, history, ch->name, argument );
     }
 }
 
@@ -1424,6 +1432,7 @@ void do_gossip( CHAR_DATA *ch, char *argument )
       snprintf( buf, sizeof(buf), "{%02XYou gossip '%s'{00\n\r",
           COL_GOSSIP, argument );
       send_to_char( buf, ch );
+      gmcp_send_channel( ch->desc, "gossip", ch->name, argument );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
         CHAR_DATA *victim;
@@ -1438,6 +1447,7 @@ void do_gossip( CHAR_DATA *ch, char *argument )
             snprintf( buf, sizeof(buf), "{%02X$n gossips '$t'{00", COL_GOSSIP );
             act_new_cstr( buf,
                      ch,argument, d->character, TO_VICT,POS_SLEEPING );
+                     gmcp_send_channel( d, "gossip", ch->name, argument );
         }
       }
     }
@@ -1496,6 +1506,7 @@ void do_question( CHAR_DATA *ch, char *argument )
       snprintf( buf, sizeof(buf), "{%02XYou question '%s'{00\n\r",
           COL_QUESTION, argument );
       send_to_char( buf, ch );
+      gmcp_send_channel( ch->desc, "question", ch->name, argument );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
         CHAR_DATA *victim;
@@ -1510,6 +1521,7 @@ void do_question( CHAR_DATA *ch, char *argument )
             snprintf( buf, sizeof(buf), "{%02X$n questions '$t'{00", COL_QUESTION );
             act_new_cstr( buf,
                      ch,argument, d->character, TO_VICT,POS_SLEEPING );
+                     gmcp_send_channel( d, "question", ch->name, argument );
         }
       }
     }
@@ -1558,6 +1570,7 @@ void do_answer( CHAR_DATA *ch, char *argument )
       snprintf( buf, sizeof(buf), "{%02XYou answer '%s'{00\n\r",
           COL_QUESTION, argument );
       send_to_char( buf, ch );
+      gmcp_send_channel( ch->desc, "answer", ch->name, argument );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
         CHAR_DATA *victim;
@@ -1572,6 +1585,7 @@ void do_answer( CHAR_DATA *ch, char *argument )
             snprintf( buf, sizeof(buf), "{%02X$n answers '$t'{00", COL_QUESTION );
             act_new_cstr( buf,
                      ch,argument, d->character, TO_VICT,POS_SLEEPING );
+                     gmcp_send_channel( d, "answer", ch->name, argument );
         }
       }
     }
@@ -1618,6 +1632,7 @@ void do_music( CHAR_DATA *ch, char *argument )
       snprintf( buf, sizeof(buf), "{%02XYou MUSIC: '%s'{00\n\r",
           COL_SOCIALS, argument );
       send_to_char( buf, ch );
+      gmcp_send_channel( ch->desc, "music", ch->name, argument );
       for ( d = descriptor_list; d != NULL; d = d->next )
       {
         CHAR_DATA *victim;
@@ -1632,6 +1647,7 @@ void do_music( CHAR_DATA *ch, char *argument )
             snprintf( buf, sizeof(buf), "{%02X$n MUSIC: '$t'{00", COL_SOCIALS );
             act_new_cstr( buf,
                      ch,argument, d->character, TO_VICT,POS_SLEEPING );
+                     gmcp_send_channel( d, "music", ch->name, argument );
         }
       }
     }
@@ -2483,6 +2499,7 @@ void do_shout( CHAR_DATA *ch, char *argument )
 
     snprintf( buf, sizeof(buf), "{%02XYou shout '%s'{00\n\r", COL_SHOUTS, argument );
     send_to_char( buf, ch );
+    gmcp_send_channel( ch->desc, "shout", ch->name, argument );
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
 	CHAR_DATA *victim;
@@ -2496,6 +2513,7 @@ void do_shout( CHAR_DATA *ch, char *argument )
 	{
             snprintf( buf, sizeof(buf), "{%02X$n shouts '$t'{00", COL_SHOUTS );
             act_new_cstr(buf,ch,argument,d->character,TO_VICT,POS_SLEEPING);
+            gmcp_send_channel( d, "shout", ch->name, argument );
 	}
     }
 
@@ -2723,6 +2741,7 @@ void do_yell( CHAR_DATA *ch, char *argument )
 
     snprintf( buf, sizeof(buf), "{%02XYou yell '%s'{00\n\r", COL_SHOUTS, argument );
     send_to_char( buf, ch );
+    gmcp_send_channel( ch->desc, "yell", ch->name, argument );
     
     for ( d = descriptor_list; d != NULL; d = d->next )
     {
@@ -2735,6 +2754,7 @@ void do_yell( CHAR_DATA *ch, char *argument )
 	{
             snprintf( buf, sizeof(buf), "{%02X$n yells '$t'{00", COL_SHOUTS );
             act_new_cstr(buf,ch,argument,d->character,TO_VICT,POS_SLEEPING);
+            gmcp_send_channel( d, "yell", ch->name, argument );
         }
     }
 
