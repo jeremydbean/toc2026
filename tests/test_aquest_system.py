@@ -27,6 +27,17 @@ def function_body(source: str, start: str, end: str) -> str:
     return match.group("body")
 
 
+
+def without_comments(source: str) -> str:
+    """C source with its comments removed.
+
+    A test that greps for a line of code will otherwise match the
+    comment that explains why that line was taken out, which is the
+    opposite of what it is asking.
+    """
+    return re.sub(r"/\*.*?\*/", " ", source, flags=re.S)
+
+
 class AutomaticQuestSystemTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -267,6 +278,32 @@ class AutomaticQuestSystemTests(unittest.TestCase):
         self.assertIn("(ch->level < 6 ? 1 : 3)", suitability)
         self.assertIn("index->level > ch->level", suitability)
         self.assertIn("ch->nextquest = 1;", generation)
+
+    def test_every_level_may_quest_including_immortals(self) -> None:
+        """A flat `ch->level > 59` refused staff a quest outright.
+
+        What they were told was "there are no suitable quests at the
+        moment", which was not true: the pool had never been looked
+        at. Nothing about questing needs a mortal, and being unable to
+        try the feature is a poor position to judge it from.
+
+        No special case replaces it. The per-target ceiling,
+        `index->level > ch->level`, simply stops binding once the
+        character is above the mortal cap.
+        """
+        suitability = function_body(
+            self.quest,
+            "static bool automatic_quest_target_is_suitable",
+            "void generate_quest",
+        )
+        # Comments included the removed line to explain it, and a
+        # test that reads them cannot tell an explanation from a
+        # reinstatement.
+        self.assertNotIn("ch->level > 59", without_comments(self.quest))
+        self.assertNotIn("LEVEL_IMMORTAL", suitability)
+        self.assertNotIn("IS_IMMORTAL", suitability)
+        # And the ceiling that does the work is still there.
+        self.assertIn("index->level > ch->level", suitability)
 
     def test_the_questmaster_names_an_area_a_player_would_recognise(self):
         """area->name is the #AREA line -- "{1 70} Killum Hyrule" -- so the

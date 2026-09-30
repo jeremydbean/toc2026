@@ -1805,6 +1805,10 @@ AQUEST INFO shows the active objective and time remaining, or your cooldown,
 quest points, pending gamble, and win streak. Suitable targets are selected
 from live, level-appropriate mobiles in rooms your character may enter.
 
+Every level may quest, immortals included. A target is never above your
+own level, so above the mortal cap that ceiling stops binding and the
+whole world is fair game.
+
 Kill credit includes eligible group members present with the final attacker,
 including kills finished by a controlled pet. Recovery items are bound to the
 assigned player, may be carried inside a container, and disappear when the

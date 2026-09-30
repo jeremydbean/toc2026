@@ -1326,14 +1326,28 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
     ROOM_INDEX_DATA *room;
 
     if ( victim == NULL || !IS_NPC(victim) || victim == questman
-    ||   victim->pIndexData == NULL || victim->in_room == NULL
-    ||   ch->level > 59 )
+    ||   victim->pIndexData == NULL || victim->in_room == NULL )
         return false;
 
     index = victim->pIndexData;
     room = victim->in_room;
-    /* Vermin are not a quest for anyone who has left Mud School, but for
-       somebody who has not they are the only quest there is. */
+
+    /*
+     * Every level may quest, immortals included. This used to stop at
+     * 59 -- a flat `ch->level > 59` above -- so a staff character was
+     * told there were no suitable quests, which was not true: the
+     * pool had never been looked at. Nothing about questing needs a
+     * mortal, and being unable to try the feature is a poor position
+     * to judge it from.
+     *
+     * The ceiling is the character's own level, so for somebody above
+     * the mortal cap it stops binding and the whole world is fair
+     * game. That is the right answer for a level 70 and it needs no
+     * special case.
+     *
+     * Vermin are not a quest for anyone who has left Mud School, but
+     * for somebody who has not they are the only quest there is.
+     */
     if ( index->level < (ch->level < 6 ? 1 : 3) || index->level > ch->level
     ||   IS_SET(index->imm_flags, IMM_SUMMON)
     ||   index->pShop != NULL
