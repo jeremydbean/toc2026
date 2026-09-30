@@ -15334,3 +15334,14 @@ Wed Sep 30 15:27:07 2026 :: Eclipse@97.248.95.144 has connected.
 Wed Sep 30 15:27:43 2026 :: Sock.sinaddr:  192.168.0.1
 Wed Sep 30 15:27:53 2026 :: Loading Killuminati's playerfile
 Wed Sep 30 15:27:54 2026 :: Killuminati@192.168.0.1 has connected.
+Wed Sep 30 15:31:23 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Wed Sep 30 15:31:29 2026 :: Received signal 15; saving players and shutting down.
+Wed Sep 30 15:31:29 2026 :: Closing link to Killuminati.
+Wed Sep 30 15:31:29 2026 :: Closing link to Eclipse.
+Wed Sep 30 15:31:29 2026 :: Normal termination of game.
+Wed Sep 30 15:31:30 2026 ::  INIT OK 
+Wed Sep 30 15:31:30 2026 :: ROM is ready to rock on port 9000.
+Wed Sep 30 15:31:30 2026 :: Automated backup complete.
+Wed Sep 30 15:31:30 2026 :: Daily backup complete.
+Wed Sep 30 15:31:43 2026 :: Loading Eclipse's playerfile
+Wed Sep 30 15:31:45 2026 :: Eclipse@97.248.95.144 has connected.
