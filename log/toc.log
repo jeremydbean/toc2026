@@ -15416,3 +15416,6 @@ Wed Sep 30 19:45:21 2026 ::  INIT OK
 Wed Sep 30 19:45:21 2026 :: ROM is ready to rock on port 9000.
 Wed Sep 30 19:45:21 2026 :: Automated backup complete.
 Wed Sep 30 19:45:21 2026 :: Daily backup complete.
+Wed Sep 30 20:28:28 2026 :: Sock.sinaddr:  192.168.0.1
+Wed Sep 30 20:28:32 2026 :: Loading Killuminati's playerfile
+Wed Sep 30 20:28:33 2026 :: Killuminati@192.168.0.1 has connected.
