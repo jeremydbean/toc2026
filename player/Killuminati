@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790800380
+LogO 1790800678
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,13 +18,13 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6371372
+Plyd 6371662
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
-Room 2401
+Room 1
 HMV  30000 30000 30025 30025 30000 30000
 NewGold 51
 NewPlat 2503009
@@ -63,6 +63,7 @@ Achv hyrule-arrival 1789610933
 Achv visit-mud-school 1790800150
 Achv visit-casino 1790643607
 Achv visit-haon-dor 1790783134
+Achv visit-thalos 1790800613
 Achv relic-farslay-scroll 1789744124
 Achv first-death 1789744378
 Achv death-by-farslay-backfire 1789744378
@@ -83,6 +84,8 @@ Achv bank-thousand-platinum 1790724320
 Achv carry-ten-platinum 1790724320
 Achv carry-thousand-platinum 1790724320
 Achv visit-pet-shop 1790781000
+Achv visit-glitter-palace 1790800614
+Achv visit-high-tower 1790800570
 LastOut  1790726960
 SesLogin 1790639508
 SesDur   157
@@ -387,26 +390,26 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'titanic'   0  -1  40  13          0          0
-AffD 'titanic'   0  -1   0  12          0          0
-AffD 'titanic'   0  -1  25  14          0          0
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  20  19          0          0
 AffD 'empower'   0  -1 -100  17          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'empower'   0  -1   0   0          0          0
+AffD 'titanic'   0  -1  50  16          0          0
+AffD 'titanic'   0  -1  25  14          0          0
+AffD 'titanic'   0  -1   0  12          0          0
+AffD 'titanic'   0  -1  40  13          0          0
 End
 
 #O
