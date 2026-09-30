@@ -24,7 +24,7 @@ end
 ]]></script>
    <command></command>
    <packageName>TimesOfChaos</packageName>
-   <regex>^walk(?:\s+(stop|\d+))?$</regex>
+   <regex>^walk(?:\s+(.+))?$</regex>
   </Alias>
  </AliasPackage>
  <ActionPackage></ActionPackage>
@@ -54,13 +54,15 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.9"
+tocMudlet.version = "1.1.0"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
 tocMudlet.mapNudged = false
 tocMudlet.lastExits = nil
 tocMudlet.enabled = true
+tocMudlet.routes = nil
+tocMudlet.affects = {}
 
 local P = {
   background = "#11131f",
@@ -233,6 +235,46 @@ local function ensureRoom(roomId, info)
   return true
 end
 
+local DOOR_STATE = { open = 1, closed = 2, locked = 3 }
+
+-- Short direction keys are what this package records exits under and
+-- what Room.Info names its doors by; the long names are what Mudlet
+-- hands back in speedWalkDir. Both directions of that mapping are
+-- needed, so keep them beside each other.
+local SHORT_DIRECTION = {}
+for short, long in pairs(LONG_DIRECTION) do SHORT_DIRECTION[long] = short end
+
+local function markDoors(roomId, doors)
+  if not setDoor then return end
+  for direction in pairs(DIR_OFFSET) do
+    local state = type(doors) == "table" and DOOR_STATE[doors[direction]] or 0
+    pcall(setDoor, roomId, direction, state)
+  end
+end
+
+-- What the room is for, as one character on the map. A death trap
+-- outranks everything else it could say: the only way to learn about
+-- one is to die in it, and the map remembering is the whole value.
+local ROOM_MARK = {
+  deathtrap = "X", shop = "$", quest = "?", healer = "+",
+  practice = "P", train = "T", petshop = "&", jail = "#",
+}
+
+local function markRoom(roomId, info)
+  if not setRoomChar then return end
+  local mark = nil
+  for _, flag in ipairs(type(info.flags) == "table" and info.flags or {}) do
+    if flag == "deathtrap" then mark = ROOM_MARK.deathtrap break end
+    mark = mark or ROOM_MARK[flag]
+  end
+  if mark ~= ROOM_MARK.deathtrap then
+    for _, role in ipairs(type(info.services) == "table" and info.services or {}) do
+      mark = ROOM_MARK[role] or mark
+    end
+  end
+  pcall(setRoomChar, roomId, mark or "")
+end
+
 local function linkKnownExits(roomId, exits)
   if type(exits) ~= "table" or not setExit then return end
 
@@ -336,12 +378,24 @@ walkSend = function()
   local w = tocMudlet.walk
   w.step = w.step + 1
   w.retried = false
-  local dir = walkCommandFor(w.dirs[w.step])
+  local raw = w.dirs[w.step]
+  local dir = walkCommandFor(raw)
   if dir == nil then
     walkStop(nil)
     cecho("\n<gold>[walk]<reset> Arrived.\n")
     return
   end
+  -- Room.Info told us the door was shut before we walked into it, so
+  -- open it now rather than discovering it on the watchdog four
+  -- seconds later. A locked one is opened anyway: the game will say
+  -- so, and guessing at keys is not this script\'s business.
+  local short = SHORT_DIRECTION[dir] or (type(raw) == "string" and raw:lower())
+  local doors = tocMudlet.lastExits and tocMudlet.lastExits.doors
+  if short and type(doors) == "table"
+    and (doors[short] == "closed" or doors[short] == "locked") then
+    send("open " .. dir)
+  end
+
   send(dir)
   walkArm()
 end
@@ -384,12 +438,87 @@ function doSpeedWalk()
   walkSend()
 end
 
+-- The published routes: the same webadmin/directions.json the
+-- dashboard and the browser client read, fetched from the repository
+-- rather than from the game host, so it works whether or not the
+-- dashboard is reachable.
+local ROUTES_URL =
+  "https://raw.githubusercontent.com/jeremydbean/toc2026/main/webadmin/directions.json"
+
+function tocMudlet.onRoutes(text)
+  local ok, data = pcall(yajl.to_value, text)
+  if not ok or type(data) ~= "table" or type(data.routes) ~= "table" then
+    cecho("\n<gold>[walk]<reset> The route list would not parse.\n")
+    return
+  end
+  tocMudlet.routes = data.routes
+  cecho(string.format(
+    "\n<gold>[walk]<reset> %d published routes loaded. " ..
+    "<white>walk <name><reset> to use one.\n", #data.routes))
+end
+
+local function findRoute(name)
+  if type(tocMudlet.routes) ~= "table" then return nil end
+  local needle = name:lower()
+  local best = nil
+  for _, route in ipairs(tocMudlet.routes) do
+    local haystack = ((route.area_display or "") .. " " ..
+                      (route.area or "") .. " " .. (route.room or "")):lower()
+    if haystack:find(needle, 1, true) then
+      -- Shortest match wins, so "thalos" prefers Thalos to
+      -- "The Tombs of Tarin, past Thalos".
+      if best == nil or #(route.area_display or "") < #(best.area_display or "") then
+        best = route
+      end
+    end
+  end
+  return best
+end
+
 function tocMudlet.walkCommand(argument)
   if argument == "stop" then
     if tocMudlet.walk.active then
       walkStop("stopped.")
     else
       cecho("\n<gold>[walk]<reset> Not walking anywhere.\n")
+    end
+    return
+  end
+
+  if argument == "routes" then
+    if downloadFile then
+      cecho("\n<gold>[walk]<reset> Fetching the published routes...\n")
+      pcall(downloadFile, getMudletHomeDir() .. "/toc-directions.json", ROUTES_URL)
+    end
+    return
+  end
+
+  -- A name rather than a number: look it up in the published routes.
+  if argument and argument ~= "" and tonumber(argument) == nil then
+    if tocMudlet.routes == nil then
+      cecho("\n<gold>[walk]<reset> Route list not loaded yet - " ..
+        "<white>walk routes<reset> fetches it.\n")
+      return
+    end
+    local route = findRoute(argument)
+    if route == nil then
+      cecho("\n<gold>[walk]<reset> No published route matches \'" ..
+        argument .. "\'.\n")
+      return
+    end
+    if route.vnum and roomExistsSafe(route.vnum) then
+      cecho(string.format("\n<gold>[walk]<reset> %s, %s rooms out.\n",
+        route.area_display or route.area or "there",
+        tostring(route.rooms_away or "?")))
+      if gotoRoom then pcall(gotoRoom, route.vnum) end
+    else
+      -- Not on this player\'s map yet, so there is nothing to walk.
+      -- The published route is written from the Oak Tree Square and
+      -- is wrong from anywhere else, so it is shown rather than run.
+      cecho(string.format(
+        "\n<gold>[walk]<reset> %s is not on your map yet. From the Oak " ..
+        "Tree Square:\n  <white>%s<reset>\n",
+        route.area_display or argument, route.commands or "?"))
     end
     return
   end
@@ -429,6 +558,8 @@ function tocMudlet.onRoomInfo()
 
   if ensureRoom(roomId, info) then
     linkKnownExits(roomId, info.exits)
+    markDoors(roomId, info.doors)
+    markRoom(roomId, info)
     if tocMudlet.lastRoom and roomExistsSafe(tocMudlet.lastRoom) then
       linkKnownExits(tocMudlet.lastRoom,
         type(tocMudlet.lastExits) == "table" and tocMudlet.lastExits.exits or nil)
@@ -468,6 +599,69 @@ function tocMudlet.onVitals()
     tocMudlet.ui.exp:setValue(exp, math.max(1, maxexp),
       string.format("EXP  %d to level", toLevel))
   end
+end
+
+local CHANNEL_COLOUR = {
+  gossip = "#8ab4ff", auction = "#ffd479", question = "#7ee0c0",
+  answer = "#7ee0c0", shout = "#ff9f6e", yell = "#ff9f6e",
+  music = "#c7a0ff", tell = "#ffb3d9", immtalk = "#9fe870",
+  godtalk = "#9fe870", hero = "#ffd479", leveling = "#ffffff",
+}
+
+function tocMudlet.onChannel()
+  local line = gmcp and gmcp.Comm and gmcp.Comm.Channel
+  if type(line) ~= "table" or not tocMudlet.ui.chat then return end
+
+  local colour = CHANNEL_COLOUR[line.channel or ""] or P.muted
+  local when = os.date("%H:%M", tonumber(line.time) or os.time())
+  local body
+  if line.speaker == nil or line.speaker == "" then
+    body = tostring(line.text or "")
+  else
+    body = string.format("%s: %s", tostring(line.speaker), tostring(line.text))
+  end
+
+  tocMudlet.ui.chat:hecho(string.format(
+    "<%s>[%s] <%s>%s<r>\n",
+    P.muted:gsub("#", ""), when, colour:gsub("#", ""), body:gsub("<", "(")))
+end
+
+function tocMudlet.onAffects()
+  local payload = gmcp and gmcp.Char and gmcp.Char.Affects
+  if type(payload) ~= "table" or not tocMudlet.ui.affects then return end
+
+  local list = type(payload.affects) == "table" and payload.affects or {}
+  if #list == 0 then
+    tocMudlet.ui.affects:echo(string.format(
+      [[<span style="color:%s">No spells on you</span>]], P.muted))
+    return
+  end
+
+  -- Shortest first, because the one about to lapse is the one worth
+  -- seeing; a duration of -1 means it does not lapse at all.
+  table.sort(list, function(a, b)
+    local x = tonumber(a.duration) or 0
+    local y = tonumber(b.duration) or 0
+    if x < 0 then return false end
+    if y < 0 then return true end
+    return x < y
+  end)
+
+  local parts = {}
+  for index, affect in ipairs(list) do
+    if index > 8 then
+      parts[#parts + 1] = string.format("+%d more", #list - 8)
+      break
+    end
+    local left = tonumber(affect.duration) or 0
+    local colour = left >= 0 and left <= 5 and "#ff9f6e" or P.text
+    parts[#parts + 1] = string.format(
+      [[<span style="color:%s">%s%s</span>]], colour,
+      html(affect.name or "?"), left >= 0 and (" " .. left) or "")
+  end
+
+  tocMudlet.ui.affects:echo(table.concat(parts,
+    string.format([[<span style="color:%s"> · </span>]], P.border)))
 end
 
 function tocMudlet.onStatus()
@@ -539,10 +733,37 @@ function tocMudlet.buildUI()
     P.background, P.text, P.border))
   tocMudlet.ui.identity:echo("<b>Times of Chaos</b><br><span style='color:#a5abc0'>Connecting...</span>")
 
-  tocMudlet.ui.mapper = Geyser.Mapper:new({
-    name = "tocMudlet.mapper", x = -350, y = 64,
-    width = 340, height = "100%-112px",
+  tocMudlet.ui.affects = Geyser.Label:new({
+    name = "tocMudlet.affects", x = -350, y = 60,
+    width = 340, height = 26,
   })
+  tocMudlet.ui.affects:setStyleSheet(string.format([[
+    background:%s;color:%s;border:1px solid %s;border-radius:5px;
+    padding:2px 8px;qproperty-alignment:'AlignVCenter';]],
+    P.background, P.text, P.border))
+  tocMudlet.ui.affects:echo(string.format(
+    [[<span style="color:%s">No spells on you</span>]], P.muted))
+
+  -- The map keeps the top half and the chat takes the bottom. A chat
+  -- window is the thing a player reads while walking, so it wants to
+  -- be beside the map rather than buried behind it.
+  tocMudlet.ui.mapper = Geyser.Mapper:new({
+    name = "tocMudlet.mapper", x = -350, y = 90,
+    width = 340, height = "54%-90px",
+  })
+
+  tocMudlet.ui.chat = Geyser.MiniConsole:new({
+    name = "tocMudlet.chat", x = -350, y = "54%",
+    width = 340, height = "46%-52px",
+    autoWrap = true, scrollBar = true, fontSize = 9,
+  })
+  pcall(function() tocMudlet.ui.chat:setColor(P.background) end)
+  tocMudlet.ui.chat:setFontSize(9)
+  if tocMudlet.ui.chat.enableScrollBar then
+    pcall(function() tocMudlet.ui.chat:enableScrollBar() end)
+  end
+  tocMudlet.ui.chat:hecho(string.format("<%s>Channels appear here.\n",
+    P.muted:gsub("#", "")))
 
   tocMudlet.ui.mapHint = Geyser.Label:new({
     name = "tocMudlet.mapHint", x = -350, y = -42,
@@ -639,6 +860,18 @@ function tocMudlet.loadAtlas()
 end
 
 function tocMudlet.onDownloadDone(file)
+  -- The routes file rides the same download machinery as the atlas,
+  -- so it has to be recognised before the atlas check bails out.
+  if file:match("toc%-directions%.json$") then
+    local handle = io.open(file, "r")
+    if handle then
+      local body = handle:read("*a")
+      handle:close()
+      tocMudlet.onRoutes(body)
+    end
+    return
+  end
+
   if file ~= tocMudlet.atlasPending then return end
   tocMudlet.atlasPending = nil
   local ok, loaded = pcall(loadMap, file)
@@ -696,6 +929,8 @@ function tocMudlet.install()
   tocMudlet.buildUI()
   register("gmcp.Char.Vitals", function() tocMudlet.onVitals() end)
   register("gmcp.Char.Status", function() tocMudlet.onStatus() end)
+  register("gmcp.Char.Affects", function() tocMudlet.onAffects() end)
+  register("gmcp.Comm.Channel", function() tocMudlet.onChannel() end)
   register("gmcp.Room.Info", function() tocMudlet.onRoomInfo() end)
   register("sysConnectionEvent", function() tocMudlet.subscribe() end)
   register("sysWindowResizeEvent", function() tocMudlet.nudgeMap() end)

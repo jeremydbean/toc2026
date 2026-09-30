@@ -1,4 +1,4 @@
--- Drive the package's click-to-walk against a stubbed Mudlet API.
+-- Drive the package's behaviour against a stubbed Mudlet API.
 --
 -- The package is written for globals Mudlet provides (send, cecho,
 -- tempTimer, the mapper functions), so the harness supplies a
@@ -6,7 +6,7 @@
 -- recording versions of the three that matter: what was sent, what
 -- was echoed, and what timer was armed.
 --
--- Run as: lua tests/mudlet_walk_spec.lua <path to extracted package lua>
+-- Run as: lua tests/mudlet_ui_spec.lua <path to extracted package lua>
 -- tests/test_mudlet_assets.py extracts the script and calls this.
 
 local target = arg and arg[1]
@@ -125,6 +125,60 @@ tocMudlet.walkCommand("stop")
 check("walk stop ends it", tocMudlet.walk.active == false)
 tocMudlet.onWalkArrival(500)
 check("and a late arrival does not restart it", #sent == 1, #sent)
+
+-- ------------------------------------------------ a door on the way
+-- Room.Info said the door north is shut, so it should be opened
+-- before walking into it rather than after a four second timeout.
+tocMudlet.lastExits = { doors = { n = "closed" } }
+startWalk({ "n", "e" }, { 600, 601 })
+check("a door known to be shut is opened first",
+  sent[1] == "open north", sent[1])
+check("and then walked through", sent[2] == "north", sent[2])
+
+tocMudlet.lastExits = { doors = { n = "open" } }
+startWalk({ "n" }, { 700 })
+check("an open door is not opened again", sent[1] == "north", sent[1])
+tocMudlet.lastExits = nil
+
+-- ------------------------------------------------ the chat window
+local chat = {}
+tocMudlet.ui.chat = { hecho = function(_, line) chat[#chat + 1] = line end }
+
+gmcp.Comm = { Channel = { channel = "gossip", speaker = "Alaric",
+                          text = "hello", time = 0 } }
+tocMudlet.onChannel()
+check("a channel line reaches the chat window", #chat == 1, #chat)
+check("naming who said it", (chat[1] or ""):find("Alaric") ~= nil, chat[1])
+
+gmcp.Comm.Channel = { channel = "tell", speaker = "",
+                      text = "You tell Bob 'hi'", time = 0 }
+tocMudlet.onChannel()
+check("a tell carries its own wording",
+  (chat[2] or ""):find("You tell Bob") ~= nil, chat[2])
+
+-- ------------------------------------------------ the affects panel
+local shown = {}
+tocMudlet.ui.affects = { echo = function(_, text) shown[#shown + 1] = text end }
+gmcp.Char = { Affects = { affects = {
+  { name = "armor", duration = 40 },
+  { name = "bless", duration = 3 },
+  { name = "shadowmeld", duration = -1 },
+} } }
+tocMudlet.onAffects()
+
+local panel = shown[#shown] or ""
+check("every affect is listed",
+  panel:find("bless") and panel:find("armor") and panel:find("shadowmeld"),
+  panel)
+check("the one about to lapse is first",
+  (panel:find("bless") or 0) < (panel:find("armor") or 0), panel)
+check("one that never lapses is last",
+  (panel:find("shadowmeld") or 0) > (panel:find("armor") or 0), panel)
+
+gmcp.Char.Affects = { affects = {} }
+tocMudlet.onAffects()
+check("an empty list says so",
+  (shown[#shown] or ""):find("No spells") ~= nil, shown[#shown])
 
 print(failures == 0 and "ALL PASS" or (failures .. " FAILED"))
 os.exit(failures == 0 and 0 or 1)

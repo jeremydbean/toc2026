@@ -26,6 +26,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Mudlet 1.1.0: chat pane, affects line, doors and room labels, and
+  named walks.** The chat pane shows exactly what the character heard,
+  because the game emits each line where it delivers it rather than
+  guessing at the audience. The map draws doors and marks what a room
+  is for, and the walker opens a door it already knows is shut instead
+  of bumping into it. `walk routes` loads the published route list and
+  `walk <name>` walks to one.
+
 - **Mudlet 1.0.9: click-to-walk.** Click a room on the map, or type
   `walk <vnum>`, and the character walks there. Mudlet plots the route
   and hands it over; the package walks it one room at a time, sending

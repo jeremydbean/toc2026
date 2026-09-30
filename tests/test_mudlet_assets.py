@@ -41,7 +41,7 @@ class MudletAssetTests(unittest.TestCase):
             BUILDER.build_package_bytes(),
         )
 
-    def test_click_to_walk_walks_one_step_per_arrival(self) -> None:
+    def test_the_interface_behaves_against_a_stubbed_mudlet(self) -> None:
         """Drive doSpeedWalk in real Lua, against a stubbed Mudlet.
 
         Checking the source for the right function names would not
@@ -49,7 +49,7 @@ class MudletAssetTests(unittest.TestCase):
         one step, that being pushed off the route stops the walk
         instead of marching the rest of it into a wall, and that a
         shut door is retried once and then given up on. The spec
-        lives in tests/mudlet_walk_spec.lua.
+        lives in tests/mudlet_ui_spec.lua.
         """
         lua = None
         for candidate in ("lua5.4", "lua5.3", "lua", "luajit"):
@@ -63,7 +63,7 @@ class MudletAssetTests(unittest.TestCase):
             script = Path(tmp) / "package.lua"
             script.write_text(self.package_script(), encoding="utf-8")
             result = subprocess.run(
-                [lua, str(ROOT / "tests" / "mudlet_walk_spec.lua"),
+                [lua, str(ROOT / "tests" / "mudlet_ui_spec.lua"),
                  str(script)],
                 capture_output=True, text=True, timeout=120,
             )
