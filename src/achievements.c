@@ -628,6 +628,13 @@ static bool achievement_unlock(CHAR_DATA *ch, int index, bool announce)
             "{0D$n has earned the achievement '{0F%s{0D'!{00",
             definition->title);
         act(buf, ch, NULL, NULL, TO_ROOM);
+
+        /* Inside the announce branch on purpose: a login can hand out
+           a dozen catch-up awards silently, and a dozen toasts at the
+           door is not a celebration. */
+        gmcp_send_achievement( ch, definition->title,
+                               definition->description, definition->points,
+                               achievement_points(ch) );
     }
 
     return true;

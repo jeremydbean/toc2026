@@ -182,7 +182,15 @@ static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
     d->gmcp_last_room = -1;
     d->gmcp_last_room_hash = 0;
     d->gmcp_last_affect_hash = 0;
+    d->gmcp_last_quest_hash = 0;
+    d->gmcp_last_target_hash = 0;
+    d->gmcp_last_chars_hash = 0;
+    d->gmcp_last_items_sig = 0;
     d->gmcp_affects_valid = false;
+    d->gmcp_quest_valid = false;
+    d->gmcp_target_valid = false;
+    d->gmcp_chars_valid = false;
+    d->gmcp_items_valid = false;
 }
 
 static void gmcp_send_initial( DESCRIPTOR_DATA *d )
@@ -218,6 +226,10 @@ void gmcp_on_enabled( DESCRIPTOR_DATA *d )
         gmcp_send_room( d );
         gmcp_send_character( d );
         gmcp_send_affects( d );
+        gmcp_send_quest( d );
+        gmcp_send_target( d );
+        gmcp_send_chars( d );
+        gmcp_send_items( d );
     }
 }
 
@@ -257,6 +269,10 @@ void gmcp_handle_message( DESCRIPTOR_DATA *d, const char *message )
             gmcp_send_room( d );
             gmcp_send_character( d );
             gmcp_send_affects( d );
+            gmcp_send_quest( d );
+            gmcp_send_target( d );
+            gmcp_send_chars( d );
+            gmcp_send_items( d );
         }
     }
 }
@@ -443,6 +459,350 @@ void gmcp_send_affects( DESCRIPTOR_DATA *d )
     telnet_send_gmcp( d, "Char.Affects", json );
     d->gmcp_last_affect_hash = hash;
     d->gmcp_affects_valid = true;
+}
+
+
+/*
+ * Percent of a maximum, clamped, for a health bar. max_hit can be
+ * zero or negative on a half-built mobile, and a bar is better empty
+ * than dividing by it.
+ */
+static int gmcp_percent( long value, long maximum )
+{
+    if ( maximum <= 0 )
+        return 0;
+    if ( value <= 0 )
+        return 0;
+    if ( value >= maximum )
+        return 100;
+    return (int)( ( value * 100L ) / maximum );
+}
+
+
+/*
+ * The quest a character is on, for a panel that can count the timer
+ * down where AQUEST TIME has to be asked. The countdown moves once a
+ * minute, so this re-sends about that often and no more.
+ */
+void gmcp_send_quest( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *ch;
+    MOB_INDEX_DATA *mob;
+    OBJ_INDEX_DATA *obj;
+    char json[MAX_STRING_LENGTH];
+    char number[64];
+    uint32_t hash;
+    bool active;
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    ch = d->character;
+    if ( ch == NULL || IS_NPC(ch) )
+        return;
+
+    active = IS_SET(ch->act, PLR_QUESTOR);
+
+    toc_strlcpy( json, "{\"active\":", sizeof(json) );
+    toc_strlcat( json, active ? "true" : "false", sizeof(json) );
+
+    toc_strlcat( json, ",\"kind\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json),
+        !active ? "none"
+      : ch->questemergency ? "emergency"
+      : ch->questrush ? "rush" : "normal" );
+
+    toc_strlcat( json, ",\"countdown\":", sizeof(json) );
+    snprintf( number, sizeof(number), "%d", active ? (int)ch->countdown : 0 );
+    toc_strlcat( json, number, sizeof(json) );
+
+    /* What the questmaster actually asked for. */
+    toc_strlcat( json, ",\"target\":", sizeof(json) );
+    mob = ch->questmob > 0 ? get_mob_index( ch->questmob ) : NULL;
+    obj = ch->questobj > 0 ? get_obj_index( ch->questobj ) : NULL;
+    gmcp_json_append_quoted( json, sizeof(json),
+          mob != NULL && mob->short_descr != NULL ? mob->short_descr
+        : obj != NULL && obj->short_descr != NULL ? obj->short_descr
+        : active ? "the questmaster" : "" );
+
+    toc_strlcat( json, ",\"kill\":", sizeof(json) );
+    toc_strlcat( json, mob != NULL ? "true" : "false", sizeof(json) );
+
+    toc_strlcat( json, ",\"streak\":", sizeof(json) );
+    snprintf( number, sizeof(number), "%d", (int)ch->queststreak );
+    toc_strlcat( json, number, sizeof(json) );
+
+    toc_strlcat( json, ",\"points\":", sizeof(json) );
+    snprintf( number, sizeof(number), "%d", ch->questpoints );
+    toc_strlcat( json, number, sizeof(json) );
+
+    /* Minutes until they may ask for another one. */
+    toc_strlcat( json, ",\"wait\":", sizeof(json) );
+    snprintf( number, sizeof(number), "%d", (int)ch->nextquest );
+    toc_strlcat( json, number, sizeof(json) );
+    toc_strlcat( json, "}", sizeof(json) );
+
+    hash = gmcp_room_hash( json );
+    if ( d->gmcp_quest_valid && d->gmcp_last_quest_hash == hash )
+        return;
+
+    telnet_send_gmcp( d, "Char.Quest", json );
+    d->gmcp_last_quest_hash = hash;
+    d->gmcp_quest_valid = true;
+}
+
+
+/*
+ * Who you are fighting and how they are doing. The game says this in
+ * prose -- "is in awful condition" -- which a bar can say better, and
+ * which is the one number a player watches hardest.
+ */
+void gmcp_send_target( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *ch;
+    CHAR_DATA *victim;
+    char json[MAX_STRING_LENGTH];
+    char number[64];
+    uint32_t hash;
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    ch = d->character;
+    if ( ch == NULL )
+        return;
+
+    victim = ch->fighting;
+
+    if ( victim == NULL || !can_see( ch, victim ) )
+    {
+        toc_strlcpy( json, "{\"fighting\":false}", sizeof(json) );
+    }
+    else
+    {
+        toc_strlcpy( json, "{\"fighting\":true,\"name\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), PERS( victim, ch ) );
+        toc_strlcat( json, ",\"level\":", sizeof(json) );
+        snprintf( number, sizeof(number), "%d", victim->level );
+        toc_strlcat( json, number, sizeof(json) );
+        toc_strlcat( json, ",\"percent\":", sizeof(json) );
+        snprintf( number, sizeof(number), "%d",
+                  gmcp_percent( victim->hit, victim->max_hit ) );
+        toc_strlcat( json, number, sizeof(json) );
+        toc_strlcat( json, "}", sizeof(json) );
+    }
+
+    hash = gmcp_room_hash( json );
+    if ( d->gmcp_target_valid && d->gmcp_last_target_hash == hash )
+        return;
+
+    telnet_send_gmcp( d, "Char.Target", json );
+    d->gmcp_last_target_hash = hash;
+    d->gmcp_target_valid = true;
+}
+
+
+/*
+ * Who and what is in the room with you. Room.Info says what the room
+ * is for; this says who is standing in it, which changes constantly
+ * and so is its own message rather than another field there.
+ */
+void gmcp_send_chars( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *ch;
+    CHAR_DATA *rch;
+    char json[MAX_STRING_LENGTH];
+    char number[64];
+    uint32_t hash;
+    int count;
+    bool first;
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    ch = d->character;
+    if ( ch == NULL || ch->in_room == NULL )
+        return;
+
+    toc_strlcpy( json, "{\"chars\":[", sizeof(json) );
+    first = true;
+    count = 0;
+
+    for ( rch = ch->in_room->people; rch != NULL && count < 40;
+          rch = rch->next_in_room )
+    {
+        if ( rch == ch || !can_see( ch, rch ) )
+            continue;
+        count++;
+
+        if ( !first )
+            toc_strlcat( json, ",", sizeof(json) );
+        first = false;
+
+        toc_strlcat( json, "{\"name\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), PERS( rch, ch ) );
+        toc_strlcat( json, ",\"npc\":", sizeof(json) );
+        toc_strlcat( json, IS_NPC(rch) ? "true" : "false", sizeof(json) );
+        toc_strlcat( json, ",\"aggressive\":", sizeof(json) );
+        toc_strlcat( json,
+            IS_NPC(rch) && IS_SET(rch->act, ACT_AGGRESSIVE) ? "true" : "false",
+            sizeof(json) );
+        toc_strlcat( json, ",\"level\":", sizeof(json) );
+        snprintf( number, sizeof(number), "%d", rch->level );
+        toc_strlcat( json, number, sizeof(json) );
+        toc_strlcat( json, ",\"percent\":", sizeof(json) );
+        snprintf( number, sizeof(number), "%d",
+                  gmcp_percent( rch->hit, rch->max_hit ) );
+        toc_strlcat( json, number, sizeof(json) );
+        toc_strlcat( json, ",\"fighting\":", sizeof(json) );
+        toc_strlcat( json, rch->fighting != NULL ? "true" : "false",
+                     sizeof(json) );
+        toc_strlcat( json, "}", sizeof(json) );
+    }
+
+    toc_strlcat( json, "]}", sizeof(json) );
+
+    hash = gmcp_room_hash( json );
+    if ( d->gmcp_chars_valid && d->gmcp_last_chars_hash == hash )
+        return;
+
+    telnet_send_gmcp( d, "Room.Chars", json );
+    d->gmcp_last_chars_hash = hash;
+    d->gmcp_chars_valid = true;
+}
+
+
+/*
+ * What is carried and what is worn.
+ *
+ * Unlike the others this hashes a cheap signature rather than the
+ * finished payload: an inventory runs to dozens of items, this is
+ * called from the main loop, and building all that string only to
+ * throw it away four times a second is work nobody asked for. The
+ * signature is integer arithmetic over the vnums and wear slots,
+ * which is what a change to either would move.
+ */
+static uint32_t gmcp_items_signature( CHAR_DATA *ch )
+{
+    OBJ_DATA *obj;
+    uint32_t sig = 2166136261u;
+    int count = 0;
+
+    for ( obj = ch->carrying; obj != NULL && count < 200; obj = obj->next_content )
+    {
+        count++;
+        sig = ( sig ^ (uint32_t)( obj->pIndexData != NULL
+                                ? obj->pIndexData->vnum : 0 ) ) * 16777619u;
+        sig = ( sig ^ (uint32_t)( obj->wear_loc + 2 ) ) * 16777619u;
+    }
+
+    return sig ^ (uint32_t)count;
+}
+
+
+void gmcp_send_items( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *ch;
+    OBJ_DATA *obj;
+    char json[MAX_STRING_LENGTH];
+    char number[64];
+    uint32_t sig;
+    int count;
+    bool first;
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    ch = d->character;
+    if ( ch == NULL )
+        return;
+
+    sig = gmcp_items_signature( ch );
+    if ( d->gmcp_items_valid && d->gmcp_last_items_sig == sig )
+        return;
+
+    toc_strlcpy( json, "{\"inventory\":[", sizeof(json) );
+    first = true;
+    count = 0;
+
+    for ( obj = ch->carrying; obj != NULL && count < 100;
+          obj = obj->next_content )
+    {
+        if ( obj->wear_loc != WEAR_NONE || !can_see_obj( ch, obj ) )
+            continue;
+        count++;
+
+        if ( !first )
+            toc_strlcat( json, ",", sizeof(json) );
+        first = false;
+        toc_strlcat( json, "{\"name\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json),
+            obj->short_descr != NULL ? obj->short_descr : "something" );
+        toc_strlcat( json, "}", sizeof(json) );
+    }
+
+    toc_strlcat( json, "],\"equipment\":[", sizeof(json) );
+    first = true;
+    count = 0;
+
+    for ( obj = ch->carrying; obj != NULL && count < 100;
+          obj = obj->next_content )
+    {
+        if ( obj->wear_loc == WEAR_NONE || !can_see_obj( ch, obj ) )
+            continue;
+        count++;
+
+        if ( !first )
+            toc_strlcat( json, ",", sizeof(json) );
+        first = false;
+        toc_strlcat( json, "{\"name\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json),
+            obj->short_descr != NULL ? obj->short_descr : "something" );
+        toc_strlcat( json, ",\"slot\":", sizeof(json) );
+        snprintf( number, sizeof(number), "%d", obj->wear_loc );
+        toc_strlcat( json, number, sizeof(json) );
+        toc_strlcat( json, "}", sizeof(json) );
+    }
+
+    toc_strlcat( json, "]}", sizeof(json) );
+
+    telnet_send_gmcp( d, "Char.Items", json );
+    d->gmcp_last_items_sig = sig;
+    d->gmcp_items_valid = true;
+}
+
+
+/*
+ * One achievement, at the moment it is earned. Sent from the same
+ * branch that prints the banner, so a client is told exactly when the
+ * player is told and never for the silent catch-up awards a login can
+ * hand out in bulk.
+ */
+void gmcp_send_achievement( CHAR_DATA *ch, const char *title,
+                            const char *description, int points, int total )
+{
+    char json[MAX_STRING_LENGTH];
+    char number[64];
+
+    if ( ch == NULL || ch->desc == NULL || title == NULL )
+        return;
+    if ( !ch->desc->gmcp_enabled || ch->desc->connected != CON_PLAYING )
+        return;
+
+    toc_strlcpy( json, "{\"title\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json), title );
+    toc_strlcat( json, ",\"description\":", sizeof(json) );
+    gmcp_json_append_quoted( json, sizeof(json),
+                             description != NULL ? description : "" );
+    toc_strlcat( json, ",\"points\":", sizeof(json) );
+    snprintf( number, sizeof(number), "%d", points );
+    toc_strlcat( json, number, sizeof(json) );
+    toc_strlcat( json, ",\"total\":", sizeof(json) );
+    snprintf( number, sizeof(number), "%d", total );
+    toc_strlcat( json, number, sizeof(json) );
+    toc_strlcat( json, "}", sizeof(json) );
+
+    telnet_send_gmcp( ch->desc, "Char.Achievement", json );
 }
 
 

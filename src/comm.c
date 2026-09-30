@@ -1778,6 +1778,10 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 	gmcp_send_room( d );
 	gmcp_send_character( d );
 	gmcp_send_affects( d );
+	gmcp_send_quest( d );
+	gmcp_send_target( d );
+	gmcp_send_chars( d );
+	gmcp_send_items( d );
     }
 
     /* Mudlet's isPrompt() uses IAC GA. Frame login and pager prompts too. */

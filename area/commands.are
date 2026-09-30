@@ -222,6 +222,11 @@ GMCP can receive:
   Room.Info     - room number, name, area, terrain, visible exits, the
                   state of any doors, room flags, and what the room is
                   for (shop, questmaster, healer, practice, trainer)
+  Char.Quest    - your current quest, its timer, and your streak
+  Char.Target   - who you are fighting and how they are doing
+  Char.Items    - what you carry and what you wear
+  Char.Achievement - one achievement, at the moment you earn it
+  Room.Chars    - who and what is in the room with you
   Comm.Channel  - one line of channel talk, one say, or one tell, as
                   you hear it
   Client.Map    - location of the official world atlas

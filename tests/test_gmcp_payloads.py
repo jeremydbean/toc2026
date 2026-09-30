@@ -73,6 +73,59 @@ class GmcpPayloadTests(unittest.TestCase):
     def test_affects_are_sent_only_when_they_change(self) -> None:
         self.assertIn("gmcp_last_affect_hash", self.affects)
 
+    def test_the_quest_feed_says_which_contract_and_how_long(self) -> None:
+        body = function_body(self.gmcp, "void gmcp_send_quest(")
+        for key in ('"active"', '"kind"', '"countdown"', '"target"',
+                    '"streak"', '"wait"'):
+            self.assertIn(key.replace('"', chr(92) + '"'), body, key)
+        # An emergency and a rush are different contracts and the panel
+        # has to be able to tell them apart.
+        self.assertIn("questemergency", body)
+        self.assertIn("questrush", body)
+
+    def test_the_target_feed_respects_sight(self) -> None:
+        """You cannot watch the health of something you cannot see."""
+        body = function_body(self.gmcp, "void gmcp_send_target(")
+        self.assertIn("can_see( ch, victim )", body)
+        self.assertIn("gmcp_percent", body)
+
+    def test_room_chars_skips_you_and_what_you_cannot_see(self) -> None:
+        body = function_body(self.gmcp, "void gmcp_send_chars(")
+        self.assertIn("rch == ch || !can_see( ch, rch )", body)
+        self.assertIn("ACT_AGGRESSIVE", body)
+        # Bounded: a crowded room must not run the payload off the end.
+        self.assertRegex(body, r"count\s*<\s*\d+")
+
+    def test_a_health_bar_never_divides_by_zero(self) -> None:
+        """max_hit can be zero on a half-built mobile."""
+        body = function_body(self.gmcp, "static int gmcp_percent(")
+        self.assertIn("maximum <= 0", body)
+
+    def test_items_hash_a_signature_rather_than_the_payload(self) -> None:
+        """This one runs off the main loop and an inventory is long.
+
+        The other feeds build their JSON and hash that. Doing it here
+        would build dozens of short strings four times a second and
+        throw them away, so the signature is integer arithmetic over
+        the vnums and wear slots -- what a change to either moves.
+        """
+        body = function_body(self.gmcp, "void gmcp_send_items(")
+        signature_at = body.index("gmcp_items_signature")
+        build_at = body.index("inventory")
+        self.assertLess(signature_at, build_at,
+                        "the payload is being built before the check")
+        self.assertIn("return;", body[signature_at:build_at])
+
+    def test_an_achievement_is_announced_once_and_never_in_bulk(self) -> None:
+        """A login can hand out a dozen silent catch-up awards."""
+        achievements = read("src", "achievements.c")
+        announce = achievements.split("achievement_can_announce(ch, announce)",
+                                      1)[1]
+        announce = announce[:announce.index("return true;")]
+        self.assertIn("gmcp_send_achievement(", announce)
+        # And nowhere else.
+        self.assertEqual(achievements.count("gmcp_send_achievement("), 1)
+
     def test_chat_is_emitted_where_it_is_delivered(self) -> None:
         """The audience differs per channel, so the emit cannot be central.
 
