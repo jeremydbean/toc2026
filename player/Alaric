@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790726146
+LogO 1790726410
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 50
-Plyd 203127
+Plyd 203391
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1167 1167 1888 1918 431 927
-NewGold 67
+HMV  1167 1167 1892 1918 208 927
+NewGold 69
 NewPlat 41
-NewCopp 14
-NewSilv 21
+NewCopp 28
+NewSilv 30
 BankCP 407696207
 IntTime 1790643484
 IntTotal 3696207
@@ -34,8 +34,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 732
-AchQuests 84
+AchKills 734
+AchQuests 85
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -89,8 +89,8 @@ SesDead  0
 SesQuest 0
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 3237
-QuestStrk 28
+QuestPnts 3413
+QuestStrk 29
 CasinoWon  51
 CasinoLost 304
 QuestNext 5
