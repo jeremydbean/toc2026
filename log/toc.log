@@ -14797,3 +14797,144 @@ Wed Sep 30 01:35:40 2026 :: Log Alaric [0]: moved to 1000 (A mountain path)
 Wed Sep 30 01:35:40 2026 :: Log Alaric [0]: moved to 1001 (A mountain path)
 Wed Sep 30 01:35:40 2026 :: Log Alaric [1001]: up (arguments withheld)
 Wed Sep 30 01:35:40 2026 :: Log Alaric [0]: moved to 1002 (A mountain path)
+Wed Sep 30 01:35:41 2026 :: Log Alaric [1002]: east (arguments withheld)
+Wed Sep 30 01:35:41 2026 :: Log Alaric [0]: moved to 46 (Steep and Winding Path)
+Wed Sep 30 01:35:41 2026 :: Log Alaric [46]: up (arguments withheld)
+Wed Sep 30 01:35:41 2026 :: Log Alaric [0]: moved to 47 (Chilly Path)
+Wed Sep 30 01:35:41 2026 :: Log Alaric [47]: up (arguments withheld)
+Wed Sep 30 01:35:41 2026 :: Log Alaric [0]: moved to 48 (Onward and Upward)
+Wed Sep 30 01:35:41 2026 :: Log Alaric [48]: up (arguments withheld)
+Wed Sep 30 01:35:41 2026 :: Log Alaric [0]: moved to 49 (Top of the World, Ma!)
+Wed Sep 30 01:35:42 2026 :: Log Alaric [49]: north (arguments withheld)
+Wed Sep 30 01:35:42 2026 :: Log Alaric [0]: moved to 50 (Snow Blind!)
+Wed Sep 30 01:35:42 2026 :: Log Alaric [50]: north (arguments withheld)
+Wed Sep 30 01:35:42 2026 :: Log Alaric [0]: moved to 1801 (The Big, Blue Ocean)
+Wed Sep 30 01:35:42 2026 :: Log Alaric [1801]: west (arguments withheld)
+Wed Sep 30 01:35:42 2026 :: Log Alaric [0]: moved to 1802 (The Big, Blue Ocean)
+Wed Sep 30 01:35:42 2026 :: Log Alaric [1802]: south (arguments withheld)
+Wed Sep 30 01:35:42 2026 :: Log Alaric [0]: moved to 1803 (The Big, Blue Ocean)
+Wed Sep 30 01:35:43 2026 :: Log Alaric [1803]: south (arguments withheld)
+Wed Sep 30 01:35:43 2026 :: Log Alaric [0]: moved to 1804 (The Icy Waters)
+Wed Sep 30 01:35:43 2026 :: Log Alaric [1804]: south (arguments withheld)
+Wed Sep 30 01:35:43 2026 :: Log Alaric [0]: moved to 1805 (The Hardpack)
+Wed Sep 30 01:35:43 2026 :: Log Alaric [1805]: south (arguments withheld)
+Wed Sep 30 01:35:43 2026 :: Log Alaric [0]: moved to 1806 (The Snow-filled Land)
+Wed Sep 30 01:35:44 2026 :: Log Alaric [1806]: ex
+Wed Sep 30 01:35:45 2026 :: Log Alaric [1806]: north (arguments withheld)
+Wed Sep 30 01:35:45 2026 :: Log Alaric [0]: moved to 1831 (The Snow-filled Land)
+Wed Sep 30 01:35:46 2026 :: Log Alaric [1831]: ex
+Wed Sep 30 01:35:46 2026 :: Log Alaric [1831]: west (arguments withheld)
+Wed Sep 30 01:35:46 2026 :: Log Alaric [0]: moved to 1833 (The Snow-filled Land)
+Wed Sep 30 01:35:47 2026 :: Log Alaric [1833]: ex
+Wed Sep 30 01:35:49 2026 :: Log Alaric [1833]: south (arguments withheld)
+Wed Sep 30 01:35:49 2026 :: Log Alaric [0]: moved to 1807 (The Gnome Outpost)
+Wed Sep 30 01:35:51 2026 :: Log Alaric [1807]: aq info
+Wed Sep 30 01:35:53 2026 :: Log Alaric [1807]: down (arguments withheld)
+Wed Sep 30 01:35:53 2026 :: Log Alaric [0]: moved to 1808 (The Tight Passage)
+Wed Sep 30 01:35:55 2026 :: Log Alaric [1808]: down (arguments withheld)
+Wed Sep 30 01:35:55 2026 :: Log Alaric [0]: moved to 1809 (The Even Tighter Passage)
+Wed Sep 30 01:35:56 2026 :: Log Alaric [1809]: down (arguments withheld)
+Wed Sep 30 01:35:56 2026 :: Log Alaric [0]: moved to 1810 (The Center Chamber)
+Wed Sep 30 01:35:57 2026 :: Log Alaric [1810]: kill gn
+Wed Sep 30 01:36:02 2026 :: Log Alaric [1810]: recal
+Wed Sep 30 01:36:02 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Wed Sep 30 01:36:03 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:36:03 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:36:03 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:36:03 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:36:04 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:36:04 2026 :: Log Alaric [2497]: aq comp
+Wed Sep 30 01:36:04 2026 :: Log Alaric [2497]: aq ga no
+Wed Sep 30 01:36:06 2026 :: Log Alaric [2497]: sc
+Wed Sep 30 01:38:06 2026 :: Log Alaric [0]: moved to 2 (Limbo)
+Wed Sep 30 01:38:07 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Wed Sep 30 01:38:07 2026 :: Log Alaric [2497]: who
+Wed Sep 30 01:38:07 2026 :: Log Alaric [2497]: worth
+Wed Sep 30 01:39:11 2026 :: Log Alaric [2497]: aq ti
+Wed Sep 30 01:40:08 2026 :: Log Alaric [2497]: who
+Wed Sep 30 01:40:10 2026 :: Log Alaric [2497]: sc
+Wed Sep 30 01:40:17 2026 :: Log Alaric [2497]: aq re
+Wed Sep 30 01:40:21 2026 :: Log Alaric [2497]: en do
+Wed Sep 30 01:40:21 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Wed Sep 30 01:40:30 2026 :: Log Alaric [2401]: r e 8
+Wed Sep 30 01:40:30 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Wed Sep 30 01:40:30 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Wed Sep 30 01:40:30 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Wed Sep 30 01:40:30 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Wed Sep 30 01:40:30 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Wed Sep 30 01:40:30 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Wed Sep 30 01:40:30 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Wed Sep 30 01:40:30 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [2426]: open east e
+Wed Sep 30 01:40:31 2026 :: Log Alaric [2426]: r e 3
+Wed Sep 30 01:40:31 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [3502]: r s 4
+Wed Sep 30 01:40:31 2026 :: Log Alaric [0]: moved to 5261 (The dwarf forest)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [0]: moved to 5260 (The dwarf forest)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [0]: moved to 5259 (The dwarf forest)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [0]: moved to 5258 (The dwarf forest)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [5258]: east (arguments withheld)
+Wed Sep 30 01:40:31 2026 :: Log Alaric [0]: moved to 5262 (The dwarf forest)
+Wed Sep 30 01:40:32 2026 :: Log Alaric [5262]: east (arguments withheld)
+Wed Sep 30 01:40:32 2026 :: Log Alaric [0]: moved to 5263 (The darker dwarf forest)
+Wed Sep 30 01:40:32 2026 :: Log Alaric [5263]: south (arguments withheld)
+Wed Sep 30 01:40:32 2026 :: Log Alaric [0]: moved to 5264 (The darker dwarf forest)
+Wed Sep 30 01:40:32 2026 :: Log Alaric [5264]: east (arguments withheld)
+Wed Sep 30 01:40:32 2026 :: Log Alaric [0]: moved to 5265 (The darker dwarf forest)
+Wed Sep 30 01:40:32 2026 :: Log Alaric [5265]: east (arguments withheld)
+Wed Sep 30 01:40:32 2026 :: Log Alaric [0]: moved to 5266 (The darker dwarf forest)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [5266]: down (arguments withheld)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 5267 (A valley in the dark dwarf forest)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [5267]: south (arguments withheld)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 62 (Minor Path)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [62]: r e 8
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 1701 (Main Eastern Road)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 1702 (Crossroads to the Wilderness)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 1601 (Rough East-West Path)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 1602 (Rough Path Between the Hills)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 1603 (Path through an Open Area)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 1604 (West Side of Moat)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 1620 (Western Moat)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [0]: moved to 1623 (Tower Foyer)
+Wed Sep 30 01:40:33 2026 :: Log Alaric [1623]: open east
+Wed Sep 30 01:40:34 2026 :: Log Alaric [1623]: east (arguments withheld)
+Wed Sep 30 01:40:34 2026 :: Log Alaric [0]: moved to 1624 (The Grand Lobby)
+Wed Sep 30 01:40:35 2026 :: Log Alaric [1624]: west (arguments withheld)
+Wed Sep 30 01:40:35 2026 :: Log Alaric [0]: moved to 1623 (Tower Foyer)
+Wed Sep 30 01:40:35 2026 :: Log Alaric [1623]: west (arguments withheld)
+Wed Sep 30 01:40:35 2026 :: Log Alaric [0]: moved to 1620 (Western Moat)
+Wed Sep 30 01:40:35 2026 :: Log Alaric [1620]: west (arguments withheld)
+Wed Sep 30 01:40:35 2026 :: Log Alaric [0]: moved to 1604 (West Side of Moat)
+Wed Sep 30 01:40:36 2026 :: Log Alaric [1604]: west (arguments withheld)
+Wed Sep 30 01:40:36 2026 :: Log Alaric [0]: moved to 1603 (Path through an Open Area)
+Wed Sep 30 01:40:36 2026 :: Log Alaric [1603]: west (arguments withheld)
+Wed Sep 30 01:40:36 2026 :: Log Alaric [0]: moved to 1602 (Rough Path Between the Hills)
+Wed Sep 30 01:40:36 2026 :: Log Alaric [1602]: west (arguments withheld)
+Wed Sep 30 01:40:36 2026 :: Log Alaric [0]: moved to 1601 (Rough East-West Path)
+Wed Sep 30 01:40:37 2026 :: Log Alaric [1601]: west (arguments withheld)
+Wed Sep 30 01:40:37 2026 :: Log Alaric [0]: moved to 1702 (Crossroads to the Wilderness)
+Wed Sep 30 01:40:38 2026 :: Log Alaric [1702]: north (arguments withheld)
+Wed Sep 30 01:40:38 2026 :: Log Alaric [0]: moved to 1704 (Trail north of crossroads)
+Wed Sep 30 01:40:39 2026 :: Log Alaric [1704]: north (arguments withheld)
+Wed Sep 30 01:40:39 2026 :: Log Alaric [0]: moved to 1705 (Trail south of forest)
+Wed Sep 30 01:40:40 2026 :: Log Alaric [1705]: north (arguments withheld)
+Wed Sep 30 01:40:40 2026 :: Log Alaric [0]: moved to 1706 (Entrance to the forest)
+Wed Sep 30 01:40:40 2026 :: Log Alaric [1706]: north (arguments withheld)
+Wed Sep 30 01:40:40 2026 :: Log Alaric [0]: moved to 1707 (Trail in Dark Oak Forest)
+Wed Sep 30 01:40:41 2026 :: Log Alaric [1707]: north (arguments withheld)
+Wed Sep 30 01:40:41 2026 :: Log Alaric [0]: moved to 1708 (Junction in Dark Forest)
+Wed Sep 30 01:40:42 2026 :: Log Alaric [1708]: west (arguments withheld)
+Wed Sep 30 01:40:42 2026 :: Log Alaric [0]: moved to 1709 (Path to Centaur Village)
+Wed Sep 30 01:40:44 2026 :: Log Alaric [1709]: get all
+Wed Sep 30 01:40:45 2026 :: Log Alaric [1709]: get all
+Wed Sep 30 01:40:45 2026 :: Log Alaric [1709]: get all
+Wed Sep 30 01:40:45 2026 :: Log Alaric [1709]: recal
+Wed Sep 30 01:40:45 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Wed Sep 30 01:40:46 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:40:46 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:40:46 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:40:46 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:40:47 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 01:40:48 2026 :: Log Alaric [2497]: aq comp
