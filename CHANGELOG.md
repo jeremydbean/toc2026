@@ -26,6 +26,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **`HELP ROUTES`.** The realms publish a walking route to 89 of the
+  92 areas that have rooms, and until now the only way to meet them
+  was to already know `walk routes` existed. The new topic says where
+  to see them in Mudlet, the browser client and the dashboard, warns
+  that a route is a walk and not a safe passage, and explains why
+  three areas have none. `HELP MAP` now points at it under "Where can
+  I go?".
+
 - **In-game help for the whole Mudlet interface.** `HELP MUDLET` lists
   every alias and what each panel shows; a new `HELP WALK` covers
   click-to-walk, named destinations and how the walk paces itself;
@@ -65,6 +73,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   quest is one or the other and never pays both multipliers; the streak
   bonus still applies on top. A hidden achievement, "When It Could Not
   Wait", goes with it.
+
+### Changed
+
+- **Nobody is voided for idling in under a quarter of an hour.** The
+  idle timer was three minutes, which is not long enough to answer a
+  door, and players were losing sessions to it. It is fifteen minutes
+  now for a level 1, plus a minute per five levels, so the rope grows
+  with the character: 19 at level 20, 25 at level 50. The third
+  remort's named gift still doubles the result. Both branches -- link
+  dead and connected but idle -- read it from `idle_purge_ticks()`,
+  which remains the only place the answer is worked out.
 
 ### Fixed
 

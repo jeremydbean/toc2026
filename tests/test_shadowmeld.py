@@ -211,11 +211,36 @@ class ShadowmeldSourceTests(unittest.TestCase):
         self.assertLess(body.index("Char_from_room: NULL"),
                         body.index("shadowmeld_break"))
 
-    def test_a_third_remort_doubles_the_idle_rope(self) -> None:
+    def test_the_idle_rope_is_a_quarter_hour_and_grows_with_level(self) -> None:
+        """Nobody gets less than fifteen minutes.
+
+        Three was not long enough to answer a door. Level drives the
+        rest, and the third remort's named gift still doubles the
+        result. The clamp matters: level comes out of a player file.
+        """
         body = self.update.split("int idle_purge_ticks(", 1)[1]
         body = body.split("\n}", 1)[0]
+
         self.assertIn("REMORTS_FOR_LONG_IDLE", body)
-        self.assertIn("LINKDEAD_PURGE_TICKS * 2", body)
+        self.assertIn("ticks *= 2", body)
+        self.assertIn("IDLE_LEVELS_PER_TICK", body)
+        self.assertIn("URANGE( 0, ch->level, MAX_LEVEL )", body)
+
+        merc = (ROOT / "src" / "merc.h").read_text(encoding="latin-1")
+        self.assertIn("#define LINKDEAD_PURGE_TICKS    15", merc)
+        self.assertIn("#define IDLE_LEVELS_PER_TICK    5", merc)
+
+        # The table the comment promises, worked the same way.
+        def rope(level: int, remorts: int = 0) -> int:
+            ticks = 15 + min(max(level, 0), 70) // 5
+            return ticks * 2 if remorts >= 3 else ticks
+
+        self.assertEqual([rope(n) for n in (1, 20, 40, 50, 59)],
+                         [15, 19, 23, 25, 26])
+        self.assertEqual(rope(56, 3), 52)
+        # Monotonic: a later life is never shorter than an earlier one.
+        ropes = [rope(53 + n, n) for n in range(6)]
+        self.assertEqual(ropes, sorted(ropes), ropes)
 
     def test_both_idle_branches_use_the_helper(self) -> None:
         """There are two: link-dead, and connected but idle."""

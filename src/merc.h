@@ -273,7 +273,20 @@ typedef struct script_loop_prepoll_payload
 #define PULSE_DISASTER          (30 * PULSE_PER_SECOND)
 #define PULSE_DEATHTRAP         ( 2 * PULSE_PER_SECOND)
 #define IDLE_TO_LIMBO_TICKS     5
-#define LINKDEAD_PURGE_TICKS    3
+
+/*
+ * How long a character may sit idle before the void takes them,
+ * counted in ticks of PULSE_TICK, which is a minute.
+ *
+ * This is the floor, for a level 1: it was 3, which is three minutes
+ * to answer a door or read a message, and short enough that players
+ * were losing sessions to it. One minute is added per
+ * IDLE_LEVELS_PER_TICK levels on top, and the third remort doubles
+ * the result. idle_purge_ticks() is the only place that works any of
+ * it out.
+ */
+#define LINKDEAD_PURGE_TICKS    15
+#define IDLE_LEVELS_PER_TICK    5
 
 /*
  * Remort gifts, by the count a character has (a remort taken at level

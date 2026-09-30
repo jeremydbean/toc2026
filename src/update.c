@@ -1938,21 +1938,42 @@ void char_update( void )
  * This function is performance sensitive.
  */
 /*
- * How long a character may idle before the void takes them.
+ * How long a character may idle before the void takes them, in ticks
+ * of a minute each. Both branches of char_update use this -- link
+ * dead, and connected but idle -- so it is the one place the answer
+ * is worked out.
  *
- * A third remort doubles it. Somebody who has been round the wheel
- * that many times has earned a longer leash than a level 1 who walked
- * away from the keyboard.
+ * Nobody gets less than a quarter of an hour. The old three minutes
+ * was not long enough to answer a door, and players were losing
+ * sessions to it. A minute is added per IDLE_LEVELS_PER_TICK levels
+ * on top of that, so the rope grows with the character:
+ *
+ *   level     1   20   40   50   59
+ *   minutes  15   19   23   25   26
+ *
+ * The third remort doubles the result, which is its named gift, and
+ * is why a level 56 sits at 52 rather than 26. Remorting lengthens
+ * the rope through level as well, because levels 54 to 59 exist only
+ * by remorting.
+ *
+ * Level is clamped before it is divided. It is read from a player
+ * file, and a bad one should cost a long idle timer rather than
+ * something stranger.
  */
 int idle_purge_ticks( CHAR_DATA *ch )
 {
+    int ticks;
+
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )
         return LINKDEAD_PURGE_TICKS;
 
-    if ( ch->pcdata->num_remorts >= REMORTS_FOR_LONG_IDLE )
-        return LINKDEAD_PURGE_TICKS * 2;
+    ticks = LINKDEAD_PURGE_TICKS
+          + URANGE( 0, ch->level, MAX_LEVEL ) / IDLE_LEVELS_PER_TICK;
 
-    return LINKDEAD_PURGE_TICKS;
+    if ( ch->pcdata->num_remorts >= REMORTS_FOR_LONG_IDLE )
+        ticks *= 2;
+
+    return ticks;
 }
 
 void obj_update( void )
