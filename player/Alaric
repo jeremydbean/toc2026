@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790807057
+LogO 1790807445
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 50
-Plyd 211171
+Plyd 211559
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1167 1167 1810 1918 233 927
+HMV  1167 1167 1850 1918 433 927
 NewGold 15
 NewPlat 46
 NewCopp 41
@@ -137,7 +137,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 28 28
+Cond 0 20 20
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
@@ -172,7 +172,6 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'mindbar'   0   6   0   0          0          0
 AffD 'empower'   0  -1 -100  17          0          0
 AffD 'empower'   0  -1  20  19          0          0
 AffD 'empower'   0  -1  20  18          0          0
