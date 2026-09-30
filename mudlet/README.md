@@ -18,6 +18,22 @@ alias `tocgui off` hides the interface and `tocgui on` restores it.
 `tocgui status` reports the installed package version and whether GMCP data is
 active. Mapping continues while the interface is hidden.
 
+Package 1.2.0 adds the panels the new GMCP feeds were for.
+
+- **Target strip.** Who you are fighting, with a bar for how badly
+  they are hurt. The game says this in prose; a bar says it better.
+- **Quest strip.** What the quest wants and the timer counting down,
+  so an emergency contract's five minutes are visible without asking
+  for them. Amber at three minutes, red at one.
+- **Tabs below the map.** Chat, Tells, Here (who is in the room, with
+  aggressives marked) and Items (worn and carried). Tells get their
+  own tab so they are not lost among gossip.
+- **Clickable exits** along the bottom bar, one button per way out.
+- **Achievement notices** over the map for a few seconds when you
+  earn one.
+
+Package 1.1.1 fixes the chat pane printing its colour tags as text.
+
 Package 1.1.0 adds a chat pane, an affects line, doors and room
 labels on the map, and walking to a named place.
 

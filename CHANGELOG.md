@@ -26,6 +26,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Mudlet 1.2.0: quest and target strips, room and item tabs,
+  clickable exits, achievement notices.** The quest strip counts an
+  emergency contract's five minutes down, amber at three and red at
+  one. The target strip draws your opponent's condition as a bar,
+  which the game otherwise says in prose. Below the map, four tabs:
+  Chat, Tells (their own, so they are not lost among gossip), Here
+  (who is in the room, aggressives marked) and Items. Exits are
+  buttons on the bottom bar. An achievement is shown over the map for
+  a few seconds when it is earned, and only the ones the game
+  announces, so a login's silent catch-up awards do not arrive as a
+  stack. `HELP MUDLET` describes all of it.
+
 - **Five more GMCP feeds**, for the panels that read them:
   `Char.Quest` (objective, contract kind, countdown, streak),
   `Char.Target` (who you are fighting and their condition),
