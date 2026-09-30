@@ -33,7 +33,7 @@ end
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.6"
+tocMudlet.version = "1.0.7"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -76,7 +76,19 @@ local ENVIRONMENT = {
 
 local function html(text)
   text = tostring(text or "")
-  return text:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;")
+  return (text:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"))
+end
+
+-- Race and class arrive from GMCP as the game stores them: "half-elf",
+-- "cleric". Char.Status is data, so the capitals belong here, in the
+-- thing that draws them, rather than in a protocol every other client
+-- reads too. A hyphen starts a word the same as a space does, so
+-- "half-elf" reads "Half-Elf" and not "Half-elf".
+local function titlecase(text)
+  if type(text) ~= "string" then return text end
+  return (text:gsub("[^%s%-]+", function(word)
+    return word:sub(1, 1):upper() .. word:sub(2)
+  end))
 end
 
 local function number(value, fallback)
@@ -290,7 +302,8 @@ function tocMudlet.onStatus()
     [[<div style="color:%s;font-size:13pt"><b>%s</b></div>]] ..
     [[<div style="color:%s">Level %s %s · %s</div>]],
     P.text, html(status.name or "Times of Chaos"), P.muted,
-    html(status.level or "?"), html(status.race or ""), html(status.class or "")))
+    html(status.level or "?"), html(titlecase(status.race or "")),
+    html(titlecase(status.class or ""))))
 end
 
 local function styleGauge(gauge, first, second)

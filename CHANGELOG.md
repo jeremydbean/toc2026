@@ -8,6 +8,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- **Mudlet 1.0.7: the identity panel capitalises race and class.**
+  Reported in game by Alaric. `Char.Status` carries them the way the
+  game stores them, lower case, because GMCP is data and not
+  presentation -- so the panel title-cases them on the way to the
+  screen rather than the protocol changing for every client that reads
+  it. A hyphen starts a word, so "half-elf" reads "Half-Elf".
+
 ### Added
 
 - **Emergency contracts.** About one quest request in twenty now comes

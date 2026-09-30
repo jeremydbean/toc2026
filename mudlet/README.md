@@ -18,6 +18,11 @@ alias `tocgui off` hides the interface and `tocgui on` restores it.
 `tocgui status` reports the installed package version and whether GMCP data is
 active. Mapping continues while the interface is hidden.
 
+Package 1.0.7 capitalises the race and class shown in the identity panel.
+`Char.Status` carries them the way the game stores them -- "half-elf",
+"cleric" -- because GMCP is data rather than presentation, so the panel
+title-cases them on the way to the screen.
+
 Package 1.0.6 restores mapper visibility and stacking on refresh, resize,
 atlas import, and `tocgui on`. If the gauges work but the map pane is blank,
 `tocgui on` repairs the display without replacing your map. `tocgui off`

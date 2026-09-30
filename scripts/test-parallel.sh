@@ -44,6 +44,19 @@ start=$(date +%s)
 run_one() {
     local mod="$1"
     local log="$OUT/$mod.log"
+
+    # A name that is not a module at all discovers nothing, passes,
+    # and tells you nothing -- which reads exactly like a module that
+    # ran and was fine. Say so instead.
+    if [ ! -f "tests/$mod.py" ]; then
+        printf '  MISS  %s (no tests/%s.py)
+' "$mod" "$mod"
+        printf '%s
+' "$mod" >>"$OUT/failed"
+        printf 'no such module: tests/%s.py
+' "$mod" >"$log"
+        return
+    fi
     if "$PYTHON" -m unittest discover -s tests -p "$mod.py" >"$log" 2>&1; then
         # "OK (skipped=3)" still counts as a pass.
         printf '  ok    %s\n' "$mod"
@@ -72,7 +85,7 @@ if [ -f "$OUT/failed" ]; then
     while read -r mod; do
         printf '\n--- %s ---\n' "$mod"
         # The assertion and its message, not the whole run.
-        grep -E '^(FAIL|ERROR):|^AssertionError|^[A-Za-z]*Error:' \
+        grep -E '^(FAIL|ERROR):|^AssertionError|^[A-Za-z]*Error:|^no such module' \
             "$OUT/$mod.log" | head -12
     done <"$OUT/failed"
     printf '\n%d module(s) failed. Full logs: rerun one with\n' \
