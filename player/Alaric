@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790733494
+LogO 1790733872
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,15 +15,15 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 50
-Plyd 210475
+Plyd 210853
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1167 1167 1830 1918 213 927
-NewGold 98
-NewPlat 45
+HMV  1167 1167 1835 1918 108 927
+NewGold 15
+NewPlat 46
 NewCopp 41
 NewSilv 37
 BankCP 408715447
@@ -35,7 +35,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 750
-AchQuests 105
+AchQuests 106
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -78,20 +78,21 @@ Achv first-triforce-shard 1790207801
 Achv hyrule-manji 1790207782
 Achv level-35 1790722751
 Achv level-45 1790722751
+Achv fifty-quest-streak 1790733868
 Achv carry-ten-platinum 1790722751
-LastOut  1790648624
-SesLogin 1790648525
-SesDur   99
+LastOut  1790733872
+SesLogin 1790722751
+SesDur   11121
 SesExpG  0
 SesLvlG  0
-SesKill  0
+SesKill  22
 SesPK    0
 SesDead  0
-SesQuest 0
+SesQuest 29
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 4972
-QuestStrk 49
+QuestPnts 5017
+QuestStrk 50
 CasinoWon  51
 CasinoLost 304
 QuestNext 5
@@ -137,7 +138,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 39 39
+Cond 0 33 33
 Alias k kick~
 Alias sm smite~
 Sk 30 'axe'
