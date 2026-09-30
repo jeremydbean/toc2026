@@ -623,6 +623,12 @@ def area_entrances(rooms, reach):
 def main():
     rooms = load_world()
     portals = load_portals()
+
+    # Kept before the teleports are merged in: a teleport carries you
+    # on a timer with no command to send, so it is a way through for
+    # routing but not something a client can be told to walk.
+    object_links = {room: list(edges) for room, edges in portals.items()}
+
     for room, edges in load_teleports().items():
         portals.setdefault(room, []).extend(edges)
 
@@ -702,6 +708,20 @@ def main():
 
             legacy.append(entry)
 
+    # Every way through that is not a compass direction: a portal you
+    # enter, a rope you climb, a cabinet you step into. Mudlet calls
+    # these special exits and walks one by sending its command.
+    links = []
+    for room in sorted(object_links):
+        if room not in rooms:
+            continue
+        for verb, keyword, dest, _cost, _label in object_links[room]:
+            if dest not in rooms or not verb or not keyword:
+                continue
+            links.append({"from": room,
+                          "command": "%s %s" % (verb, keyword),
+                          "to": dest})
+
     payload = {
         "start": {"vnum": START, "room": rooms[START]["name"],
                   "area": rooms[START]["area"],
@@ -711,9 +731,11 @@ def main():
             "legacy_ok": sum(1 for e in legacy if e["status"] == "verified"),
             "legacy_drifted": sum(1 for e in legacy if e["status"] == "drifted"),
             "legacy_repaired": sum(1 for e in legacy if "fixed_commands" in e),
+            "links": len(links),
         },
         "routes": routes,
         "legacy": legacy,
+        "links": links,
     }
 
     out = pathlib.Path("webadmin/directions.json")

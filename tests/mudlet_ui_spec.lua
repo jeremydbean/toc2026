@@ -44,6 +44,10 @@ roomExists = function() return true end
 gotoRoom = function() end
 gmcp = { Char = {}, Room = {} }
 
+-- Real, not permissive: ipairs over a stub that answers every
+-- index with another stub never terminates.
+yajl = { to_value = function(value) return value end }
+
 -- The package opens with `tocMudlet = tocMudlet or {}`, which reads
 -- the global before assigning it. Left to the metatable above, that
 -- read returns a stub, the stub is truthy, and the package adopts it
@@ -328,6 +332,33 @@ check("the Chat tab leaves tells out",
 tocMudlet.showPane("here")
 check("the Here tab swaps the console",
   tocMudlet.ui.here.shown == true and tocMudlet.ui.chat.shown == false)
+
+-- --------------------------------- ways through that are not directions
+-- Hyrule is entered with "enter cabinet", which no compass direction
+-- describes, so without these the map has the rooms and no way in.
+local special = {}
+addSpecialExit = function(from, to, command)
+  special[#special + 1] = { from = from, to = to, command = command }
+end
+roomExists = function(id) return id ~= 99999 end
+
+tocMudlet.routesQuiet = true
+tocMudlet.onRoutes({
+  routes = {},
+  links = {
+    { from = 15068, command = "enter cabinet", to = 30200 },
+    { from = 1, command = "climb rope", to = 2 },
+    { from = 3, command = "enter portal", to = 99999 },
+  },
+})
+
+check("a special exit is installed for each known link",
+  #special == 2, #special)
+check("with its command", special[1].command == "enter cabinet",
+  special[1] and special[1].command)
+check("and its direction", special[1].from == 15068 and special[1].to == 30200)
+check("a link to a room not on the map is skipped",
+  special[2].to == 2, special[2] and special[2].to)
 
 print(failures == 0 and "ALL PASS" or (failures .. " FAILED"))
 os.exit(failures == 0 and 0 or 1)

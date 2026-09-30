@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.2.0"
+#define TOC_MUDLET_PACKAGE_VERSION "1.2.1"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \

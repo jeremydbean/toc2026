@@ -77,6 +77,12 @@ marking it.
 
 Doors are drawn as the game reports them: open, closed, or locked.
 
+Not every way through is a direction.  A portal you enter, a rope you climb,
+the arcade cabinet that takes you to Hyrule - the map knows those too, and
+clicking a room on the far side of one walks you through it.  They are
+loaded from the published route list, which the interface fetches for you a
+few seconds after you connect.
+
 Symbols and doors are drawn inside the room boxes, so they appear only when
 the map is zoomed in far enough to draw those boxes.  Zoom in with the mouse
 wheel over the map if you see coloured rooms and no symbols.
@@ -188,6 +194,10 @@ WYVERN, WALK OZ.
 A named walk needs the destination on your own map.  If it is not there yet
 the published route is printed instead of walked, because those routes are
 written from the Oak Tree Square and are wrong from anywhere else.
+
+The same list carries every way through that is not a compass direction, so
+a walk can route through a portal, a rope, or the Hyrule cabinet without you
+naming it.  The walk sends the command the same way you would type it.
 
 See also: MUDLET, MAP, RUN, RECALL
 ~

@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.2.0"
+tocMudlet.version = "1.2.1"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -448,16 +448,65 @@ end
 local ROUTES_URL =
   "https://raw.githubusercontent.com/jeremydbean/toc2026/main/webadmin/directions.json"
 
+-- The ways through that are not compass directions: a portal you
+-- enter, a rope you climb, the arcade cabinet in the Games Room that
+-- takes you to Hyrule.
+--
+-- A mapper builds its graph from directional exits alone, so without
+-- these the Hyrule rooms sat on the map with nothing joining them to
+-- the world, and clicking one answered "Cannot find a path from 2401
+-- to 30239 using known exits" -- which was true, and not the map\'s
+-- fault. Mudlet calls them special exits and walks one by sending its
+-- command, which the walker already does with whatever speedWalkDir
+-- hands it, so this is the only piece that was missing.
+local function installLinks(links)
+  if type(links) ~= "table" or not addSpecialExit then return 0 end
+
+  local added = 0
+  for _, link in ipairs(links) do
+    local from, to = tonumber(link.from), tonumber(link.to)
+    -- Both ends have to be on this player\'s map. A link into a room
+    -- they have never seen is not a route they can walk.
+    if from and to and link.command
+      and roomExistsSafe(from) and roomExistsSafe(to)
+      and pcall(addSpecialExit, from, to, link.command) then
+      added = added + 1
+    end
+  end
+
+  return added
+end
+
 function tocMudlet.onRoutes(text)
   local ok, data = pcall(yajl.to_value, text)
   if not ok or type(data) ~= "table" or type(data.routes) ~= "table" then
-    cecho("\n<gold>[walk]<reset> The route list would not parse.\n")
+    if not tocMudlet.routesQuiet then
+      cecho("\n<gold>[walk]<reset> The route list would not parse.\n")
+    end
     return
   end
+
   tocMudlet.routes = data.routes
-  cecho(string.format(
-    "\n<gold>[walk]<reset> %d published routes loaded. " ..
-    "<white>walk <name><reset> to use one.\n", #data.routes))
+  local added = installLinks(data.links)
+
+  if not tocMudlet.routesQuiet then
+    cecho(string.format(
+      "\n<gold>[walk]<reset> %d published routes loaded, %d special " ..
+      "exits mapped. <white>walk <name><reset> to use one.\n",
+      #data.routes, added))
+  end
+end
+
+-- Fetched quietly at startup as well as on demand, because a click on
+-- the map should route through a portal without the player having to
+-- know that a list exists.
+function tocMudlet.fetchRoutes(quiet)
+  if not downloadFile or not getMudletHomeDir then return end
+  tocMudlet.routesQuiet = quiet and true or false
+  if not quiet then
+    cecho("\n<gold>[walk]<reset> Fetching the published routes...\n")
+  end
+  pcall(downloadFile, getMudletHomeDir() .. "/toc-directions.json", ROUTES_URL)
 end
 
 local function findRoute(name)
@@ -489,10 +538,7 @@ function tocMudlet.walkCommand(argument)
   end
 
   if argument == "routes" then
-    if downloadFile then
-      cecho("\n<gold>[walk]<reset> Fetching the published routes...\n")
-      pcall(downloadFile, getMudletHomeDir() .. "/toc-directions.json", ROUTES_URL)
-    end
+    tocMudlet.fetchRoutes(false)
     return
   end
 
@@ -1110,8 +1156,13 @@ function tocMudlet.subscribe()
   if not sendGMCP then return end
   sendGMCP('Core.Hello {"client":"Mudlet","version":"TimesOfChaos ' ..
     tocMudlet.version .. '"}')
+  -- The server does not gate on this list, but advertising one that
+  -- stopped being true four versions ago is how a client ends up
+  -- being sent the wrong thing by something that does.
   sendGMCP('Core.Supports.Add ["Char 1","Char.Vitals 1","Char.Status 1",' ..
-    '"Room 1","Room.Info 1"]')
+    '"Char.Affects 1","Char.Quest 1","Char.Target 1","Char.Items 1",' ..
+    '"Char.Achievement 1","Room 1","Room.Info 1","Room.Chars 1",' ..
+    '"Comm 1","Comm.Channel 1"]')
 end
 
 -- Alaric: "Mudlet map ui does not start automatically. User has to click
@@ -1263,6 +1314,12 @@ function tocMudlet.install()
   -- the difference between the map being there on arrival and the
   -- player having to click for it.
   tempTimer(1.5, tocMudlet.nudgeMap)
+  -- A few seconds in, so it is not competing with the atlas for the
+  -- connection on the one occasion both are wanted at once.
+  if not tocMudlet.routesRequested then
+    tocMudlet.routesRequested = true
+    tempTimer(5, function() tocMudlet.fetchRoutes(true) end)
+  end
   cecho("\n<cyan>Times of Chaos Mudlet interface ready.<reset> " ..
     "Type <white>tocgui<reset> for status, <white>tocgui atlas<reset> for the world map, or <white>tocgui off<reset> to hide it.\n")
 end

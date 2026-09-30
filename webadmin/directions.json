@@ -9,7 +9,8 @@
   "computed": 89,
   "legacy_ok": 71,
   "legacy_drifted": 10,
-  "legacy_repaired": 9
+  "legacy_repaired": 9,
+  "links": 131
  },
  "routes": [
   {
@@ -4043,6 +4044,663 @@
    "area": "Morgan the Upper Argo",
    "area_display": "the Upper Argo (Morgan)",
    "status": "verified"
+  }
+ ],
+ "links": [
+  {
+   "from": 17,
+   "command": "enter berry",
+   "to": 101
+  },
+  {
+   "from": 23,
+   "command": "enter portal",
+   "to": 10000
+  },
+  {
+   "from": 26,
+   "command": "enter mirror",
+   "to": 27
+  },
+  {
+   "from": 28,
+   "command": "enter portal",
+   "to": 8001
+  },
+  {
+   "from": 66,
+   "command": "enter portal",
+   "to": 17700
+  },
+  {
+   "from": 101,
+   "command": "enter door",
+   "to": 17
+  },
+  {
+   "from": 1311,
+   "command": "enter red",
+   "to": 7600
+  },
+  {
+   "from": 2497,
+   "command": "enter door",
+   "to": 2401
+  },
+  {
+   "from": 2497,
+   "command": "enter door",
+   "to": 2401
+  },
+  {
+   "from": 2497,
+   "command": "enter door",
+   "to": 2401
+  },
+  {
+   "from": 3216,
+   "command": "push book",
+   "to": 3216
+  },
+  {
+   "from": 3783,
+   "command": "enter mouth",
+   "to": 12000
+  },
+  {
+   "from": 3790,
+   "command": "climb rope",
+   "to": 3791
+  },
+  {
+   "from": 3791,
+   "command": "climb rope",
+   "to": 3790
+  },
+  {
+   "from": 3795,
+   "command": "enter portal",
+   "to": 15000
+  },
+  {
+   "from": 5148,
+   "command": "turn brazier",
+   "to": 5145
+  },
+  {
+   "from": 7600,
+   "command": "enter blue",
+   "to": 1311
+  },
+  {
+   "from": 8001,
+   "command": "enter portal",
+   "to": 28
+  },
+  {
+   "from": 8794,
+   "command": "move book",
+   "to": 8796
+  },
+  {
+   "from": 9141,
+   "command": "move cauldron",
+   "to": 9188
+  },
+  {
+   "from": 9159,
+   "command": "climb rope",
+   "to": 9160
+  },
+  {
+   "from": 9160,
+   "command": "climb rope",
+   "to": 9159
+  },
+  {
+   "from": 9941,
+   "command": "jump edge",
+   "to": 9994
+  },
+  {
+   "from": 9994,
+   "command": "climb rope",
+   "to": 9941
+  },
+  {
+   "from": 10000,
+   "command": "enter portal",
+   "to": 23
+  },
+  {
+   "from": 12000,
+   "command": "enter door",
+   "to": 3783
+  },
+  {
+   "from": 15000,
+   "command": "enter portal",
+   "to": 3795
+  },
+  {
+   "from": 15068,
+   "command": "enter cabinet",
+   "to": 30200
+  },
+  {
+   "from": 15068,
+   "command": "enter hyrule",
+   "to": 30200
+  },
+  {
+   "from": 15479,
+   "command": "climb {",
+   "to": 15475
+  },
+  {
+   "from": 17785,
+   "command": "enter balloon",
+   "to": 6130
+  },
+  {
+   "from": 18050,
+   "command": "move block",
+   "to": 18050
+  },
+  {
+   "from": 18132,
+   "command": "climb vine",
+   "to": 18155
+  },
+  {
+   "from": 18155,
+   "command": "climb vine",
+   "to": 18132
+  },
+  {
+   "from": 18215,
+   "command": "climb ladder",
+   "to": 18220
+  },
+  {
+   "from": 18220,
+   "command": "climb ladder",
+   "to": 18215
+  },
+  {
+   "from": 24219,
+   "command": "climb rope",
+   "to": 24257
+  },
+  {
+   "from": 24254,
+   "command": "jump ledge",
+   "to": 24259
+  },
+  {
+   "from": 24257,
+   "command": "climb rope",
+   "to": 24219
+  },
+  {
+   "from": 24257,
+   "command": "enter portal",
+   "to": 24258
+  },
+  {
+   "from": 24258,
+   "command": "enter portal",
+   "to": 24257
+  },
+  {
+   "from": 24598,
+   "command": "enter portal",
+   "to": 4208
+  },
+  {
+   "from": 25017,
+   "command": "climb rope",
+   "to": 25027
+  },
+  {
+   "from": 25021,
+   "command": "turn torch",
+   "to": 25021
+  },
+  {
+   "from": 25027,
+   "command": "climb rope",
+   "to": 25017
+  },
+  {
+   "from": 25036,
+   "command": "move chair",
+   "to": 25033
+  },
+  {
+   "from": 25230,
+   "command": "climb rope",
+   "to": 25261
+  },
+  {
+   "from": 25232,
+   "command": "climb net",
+   "to": 25289
+  },
+  {
+   "from": 25245,
+   "command": "enter door",
+   "to": 25287
+  },
+  {
+   "from": 25246,
+   "command": "enter door",
+   "to": 25288
+  },
+  {
+   "from": 25261,
+   "command": "climb rope",
+   "to": 25230
+  },
+  {
+   "from": 25275,
+   "command": "enter door",
+   "to": 25276
+  },
+  {
+   "from": 25276,
+   "command": "enter door",
+   "to": 25275
+  },
+  {
+   "from": 25279,
+   "command": "enter door",
+   "to": 25280
+  },
+  {
+   "from": 25280,
+   "command": "enter door",
+   "to": 25279
+  },
+  {
+   "from": 25283,
+   "command": "enter door",
+   "to": 25284
+  },
+  {
+   "from": 25284,
+   "command": "enter door",
+   "to": 25283
+  },
+  {
+   "from": 25287,
+   "command": "enter door",
+   "to": 25245
+  },
+  {
+   "from": 25288,
+   "command": "enter door",
+   "to": 25246
+  },
+  {
+   "from": 25289,
+   "command": "climb net",
+   "to": 25232
+  },
+  {
+   "from": 28101,
+   "command": "enter portal",
+   "to": 28161
+  },
+  {
+   "from": 28129,
+   "command": "enter portal",
+   "to": 28135
+  },
+  {
+   "from": 28161,
+   "command": "enter portal",
+   "to": 28101
+  },
+  {
+   "from": 29110,
+   "command": "enter portal",
+   "to": 29118
+  },
+  {
+   "from": 29111,
+   "command": "enter portal",
+   "to": 29123
+  },
+  {
+   "from": 29112,
+   "command": "enter portal",
+   "to": 29113
+  },
+  {
+   "from": 29113,
+   "command": "enter portal",
+   "to": 29112
+  },
+  {
+   "from": 29118,
+   "command": "enter portal",
+   "to": 29110
+  },
+  {
+   "from": 29123,
+   "command": "enter portal",
+   "to": 29111
+  },
+  {
+   "from": 29217,
+   "command": "pull one",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull two",
+   "to": 29234
+  },
+  {
+   "from": 29217,
+   "command": "pull three",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull four",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull five",
+   "to": 29233
+  },
+  {
+   "from": 29217,
+   "command": "pull six",
+   "to": 29234
+  },
+  {
+   "from": 29217,
+   "command": "pull seven",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull eight",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull nine",
+   "to": 29234
+  },
+  {
+   "from": 29217,
+   "command": "pull ten",
+   "to": 29233
+  },
+  {
+   "from": 29217,
+   "command": "pull one",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull two",
+   "to": 29234
+  },
+  {
+   "from": 29217,
+   "command": "pull three",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull four",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull five",
+   "to": 29233
+  },
+  {
+   "from": 29217,
+   "command": "pull six",
+   "to": 29234
+  },
+  {
+   "from": 29217,
+   "command": "pull seven",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull eight",
+   "to": 29217
+  },
+  {
+   "from": 29217,
+   "command": "pull nine",
+   "to": 29234
+  },
+  {
+   "from": 29217,
+   "command": "pull ten",
+   "to": 29233
+  },
+  {
+   "from": 29244,
+   "command": "pull lever",
+   "to": 29269
+  },
+  {
+   "from": 29244,
+   "command": "pull lever",
+   "to": 29269
+  },
+  {
+   "from": 29248,
+   "command": "pull lever",
+   "to": 29269
+  },
+  {
+   "from": 29248,
+   "command": "pull lever",
+   "to": 29269
+  },
+  {
+   "from": 29289,
+   "command": "pull lever",
+   "to": 29270
+  },
+  {
+   "from": 29289,
+   "command": "pull lever",
+   "to": 29270
+  },
+  {
+   "from": 29293,
+   "command": "pull lever",
+   "to": 29269
+  },
+  {
+   "from": 29293,
+   "command": "pull lever",
+   "to": 29269
+  },
+  {
+   "from": 29302,
+   "command": "pull arm",
+   "to": 29302
+  },
+  {
+   "from": 29302,
+   "command": "pull arm",
+   "to": 29302
+  },
+  {
+   "from": 29302,
+   "command": "pull arm",
+   "to": 29302
+  },
+  {
+   "from": 29302,
+   "command": "pull arm",
+   "to": 29302
+  },
+  {
+   "from": 29409,
+   "command": "crawl bush",
+   "to": 29488
+  },
+  {
+   "from": 29418,
+   "command": "climb tree",
+   "to": 29497
+  },
+  {
+   "from": 29496,
+   "command": "jump jagged",
+   "to": 29501
+  },
+  {
+   "from": 29497,
+   "command": "climb rope",
+   "to": 29418
+  },
+  {
+   "from": 29501,
+   "command": "jump jagged",
+   "to": 29496
+  },
+  {
+   "from": 30247,
+   "command": "enter stepladder",
+   "to": 30658
+  },
+  {
+   "from": 30253,
+   "command": "enter raft",
+   "to": 30456
+  },
+  {
+   "from": 30295,
+   "command": "enter raft",
+   "to": 30657
+  },
+  {
+   "from": 30414,
+   "command": "enter return",
+   "to": 30271
+  },
+  {
+   "from": 30434,
+   "command": "enter return",
+   "to": 30276
+  },
+  {
+   "from": 30451,
+   "command": "enter return",
+   "to": 30205
+  },
+  {
+   "from": 30474,
+   "command": "enter return",
+   "to": 30253
+  },
+  {
+   "from": 30493,
+   "command": "enter return",
+   "to": 30323
+  },
+  {
+   "from": 30524,
+   "command": "enter return",
+   "to": 30282
+  },
+  {
+   "from": 30547,
+   "command": "enter return",
+   "to": 30250
+  },
+  {
+   "from": 30578,
+   "command": "enter return",
+   "to": 30229
+  },
+  {
+   "from": 30615,
+   "command": "enter light",
+   "to": 15068
+  },
+  {
+   "from": 30659,
+   "command": "enter tree",
+   "to": 15068
+  },
+  {
+   "from": 30720,
+   "command": "enter western",
+   "to": 30257
+  },
+  {
+   "from": 30720,
+   "command": "enter central",
+   "to": 30209
+  },
+  {
+   "from": 30720,
+   "command": "enter eastern",
+   "to": 30309
+  },
+  {
+   "from": 30721,
+   "command": "enter western",
+   "to": 30209
+  },
+  {
+   "from": 30721,
+   "command": "enter central",
+   "to": 30309
+  },
+  {
+   "from": 30721,
+   "command": "enter eastern",
+   "to": 30283
+  },
+  {
+   "from": 30722,
+   "command": "enter western",
+   "to": 30309
+  },
+  {
+   "from": 30722,
+   "command": "enter central",
+   "to": 30283
+  },
+  {
+   "from": 30722,
+   "command": "enter eastern",
+   "to": 30257
+  },
+  {
+   "from": 30723,
+   "command": "enter western",
+   "to": 30283
+  },
+  {
+   "from": 30723,
+   "command": "enter central",
+   "to": 30257
+  },
+  {
+   "from": 30723,
+   "command": "enter eastern",
+   "to": 30209
   }
  ]
 }
