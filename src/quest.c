@@ -201,12 +201,19 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
 {
     char buf[MAX_STRING_LENGTH];
     bool completed_rush = ch->questrush;
+    bool completed_emergency = ch->questemergency;
     bool completed_last_minute = ch->countdown == 1;
     int pointreward = number_range(10,40);
     int reward = number_range(gold_min, gold_max);
     int streak_bonus = quest_streak_bonus(ch);
 
-    if ( completed_rush )
+    /* An emergency replaces the rush multiplier rather than stacking
+       with it: the two are alternatives at request time and a quest is
+       never both. The streak bonus applies on top of whichever landed,
+       the same as it always has. */
+    if ( completed_emergency )
+        pointreward *= QUEST_EMERGENCY_MULTIPLIER;
+    else if ( completed_rush )
         pointreward *= 2;
     pointreward += (pointreward * streak_bonus) / 100;
 
@@ -219,7 +226,11 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
 
     if ( !IS_NPC(ch) && ch->pcdata->session_quests < INT_MAX )
         ch->pcdata->session_quests++;
-    if ( completed_rush )
+    if ( completed_emergency )
+        do_say(questman,
+            "You answered the emergency in time - the realm will not "
+            "forget this!");
+    else if ( completed_rush )
         do_say(questman,
             "Rush contract fulfilled - your double reward is well earned!");
     if ( ch->queststreak > 0 )
@@ -236,6 +247,7 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     ch->questmob = 0;
     ch->questobj = 0;
     ch->questrush = false;
+    ch->questemergency = false;
     if ( ch->queststreak < 0 )
         ch->queststreak = 0;
     if ( ch->queststreak < SHRT_MAX )
@@ -244,6 +256,8 @@ static void complete_automatic_quest( CHAR_DATA *ch, CHAR_DATA *questman,
     achievement_record_quest(ch);
     if ( completed_rush )
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_RUSH, true);
+    if ( completed_emergency )
+        achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_EMERGENCY, true);
     if ( completed_last_minute )
         achievement_record_event(ch, ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE, true);
 
@@ -323,6 +337,7 @@ void quest_handle_logout( CHAR_DATA *ch )
     ch->questmob = 0;
     ch->questobj = 0;
     ch->questrush = false;
+    ch->questemergency = false;
     ch->queststreak = 0;
     ch->nextquest = ch->level >= 50 ? 5 : 15;
     send_to_char(
@@ -412,7 +427,10 @@ void do_quest(CHAR_DATA *ch, char *argument)
 		    ch->countdown == 1 ? "" : "s");
 		send_to_char(buf, ch);
 	    }
-	    if (ch->questrush)
+	    if (ch->questemergency)
+		send_to_char(
+		    "{09|{00 {0C** EMERGENCY CONTRACT - five times the reward if you make it! **{00\n\r", ch);
+	    else if (ch->questrush)
 		send_to_char(
 		    "{09|{00 {0C** RUSH CONTRACT - double reward for finishing on time! **{00\n\r", ch);
 	    if (ch->queststreak > 0)
@@ -1051,6 +1069,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	ch->questobj = 0;
 	ch->countdown = 0;
 	ch->questrush = false;
+	ch->questemergency = false;
 
 	switch (number_range(0, 3))
 	{
@@ -1076,10 +1095,30 @@ void do_quest(CHAR_DATA *ch, char *argument)
 
         if (ch->questmob > 0 || ch->questobj > 0)
 	{
-	    if (chance(20))
+	    /* Rolled ahead of the rush contract, so an emergency is the
+	       rarer of the two and the rush chance reads against what is
+	       left. A quest is one or the other, never both. */
+	    if (chance(QUEST_EMERGENCY_CHANCE))
+	    {
+		ch->countdown = (sh_int)QUEST_EMERGENCY_MINUTES;
+		ch->questrush = false;
+		ch->questemergency = true;
+		send_to_char(
+		    "\n\r{0C** EMERGENCY CONTRACT! Five times the reward - "
+		    "and almost no time! **{00\n\r\n\r",
+		    ch);
+		do_say(questman,
+		    "This cannot wait - it is an EMERGENCY, and I will pay "
+		    "five times over for it!");
+		snprintf(buf, sizeof(buf),
+		    "You have %d minutes. Go now!", ch->countdown);
+		do_say(questman, buf);
+	    }
+	    else if (chance(20))
 	    {
 		ch->countdown = (sh_int)(number_range(5, 8));
 		ch->questrush = true;
+		ch->questemergency = false;
 		send_to_char(
 		    "\n\r{0C** RUSH CONTRACT! Double reward - finish before time runs out! **{00\n\r\n\r",
 		    ch);
@@ -1093,6 +1132,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	    {
 		ch->countdown = (sh_int)(number_range(10,30));
 		ch->questrush = false;
+		ch->questemergency = false;
 		snprintf(buf, sizeof(buf),
 		    "You have %d minutes to complete this quest.", ch->countdown);
 		do_say(questman, buf);
@@ -1189,6 +1229,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
 	    ch->questmob   = 0;
 	    ch->questobj   = 0;
 	    ch->questrush  = false;
+	    ch->questemergency = false;
 	    if( ch->level >= 50 )
 		ch->nextquest = 7;
 	    else
@@ -1542,6 +1583,7 @@ void quest_update(void)
                 ch->questmob = 0;
                 ch->questobj = 0;
 		ch->questrush = false;
+		ch->questemergency = false;
 		save_char_obj(ch);
             }
             if (ch->countdown > 0 && ch->countdown < 6)

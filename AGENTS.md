@@ -661,7 +661,11 @@ Everything it commits is in `.gitignore`, so every `git add` is `-f`.
 That is deliberate, not a bug to tidy up.
 
 **Tracking `log/` gave the old Pi trap a new route.** Running
-`--check-area` from `build/area` makes merc write `build/log/toc.log`,
+`--check-area` from the repository's own `area/` writes `log/toc.log`,
+which is tracked, so a working tree goes dirty every time somebody
+validates the world -- check `git status` before committing and
+`git checkout -- log/toc.log` if it did. The same command run from
+`build/area` makes merc write `build/log/toc.log`,
 which is now a tracked file, so `git merge --ff-only` in the build tree
 refuses and every later deploy fails. `toc-deploy` discards and
 `reset --hard`s the build tree instead of merging, which is correct
@@ -1234,6 +1238,34 @@ Other deploy facts:
   replacement on the Pi with `openssl rand -hex 32` so the value never leaves
   the host, and restart `toc2026-web.service`. Never paste it into a commit,
   an issue or a conversation.
+
+## Quest Contracts
+
+A quest request rolls for a contract before it settles the timer, and
+the order is the whole of the exclusivity:
+
+| | chance | timer | points |
+| --- | --- | --- | --- |
+| Emergency | `QUEST_EMERGENCY_CHANCE` (5%) | 5 minutes flat | x5 |
+| Rush | 20% of what is left (~19%) | 5-8 minutes | x2 |
+| Ordinary | the rest | 10-30 minutes | x1 |
+
+**A quest is one or the other, never both.** The emergency is rolled
+first and the rush is its `else if`; writing them as two independent
+rolls would let a quest pay ten times. The multiplier likewise
+*replaces* the rush one rather than stacking with it. The streak bonus
+applies on top of whichever landed, as it always has.
+
+**`questemergency` is cleared everywhere `questrush` is** -- six sites
+-- because a flag left standing pays five times on the *next* quest.
+Neither is saved: a mid-quest logout strips `PLR_QUESTOR` in `save.c`,
+so there is no persisted state to migrate and no `fread_char` case to
+get wrong. `tests/test_aquest_system.py` walks every `questrush`
+clear and fails if one of them leaves the emergency flag set.
+
+`complete_automatic_quest` reads both flags into locals at the top,
+before anything clears them. Reading `ch->questemergency` later in that
+function is reading a flag that has already gone.
 
 ## The Questing Streak
 

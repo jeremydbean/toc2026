@@ -145,6 +145,7 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "ten-quest-streak", "Unbroken Resolve", "Complete ten quests in a row.", ACH_CAT_QUESTS, 25, false, ACH_REQ_QUEST_STREAK, 10, 0 },
     { "twenty-five-quest-streak", "Unshakable", "Complete twenty-five quests in a row.", ACH_CAT_QUESTS, 50, false, ACH_REQ_QUEST_STREAK, 25, 0 },
     { "quest-rush", "Rush Delivery", "Complete a rush contract before its shortened timer expires.", ACH_CAT_QUESTS, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_QUEST_RUSH, 0 },
+    { "quest-emergency", "When It Could Not Wait", "Complete an emergency contract before its five-minute timer expires.", ACH_CAT_QUESTS, 40, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_QUEST_EMERGENCY, 0 },
     { "quest-last-minute", "Under the Wire", "Complete an automatic quest in its final minute.", ACH_CAT_QUESTS, 20, true, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE, 0 },
     { "quest-gamble-win", "Double or Nothing", "Win an automatic-quest double-or-nothing gamble.", ACH_CAT_QUESTS, 15, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_QUEST_GAMBLE_WIN, 0 },
     { "quest-keepsake", "A Token of Esteem", "Acquire a questmaster's keepsake trophy.", ACH_CAT_QUESTS, 20, false, ACH_REQ_OBJECT, 20306, 0 },

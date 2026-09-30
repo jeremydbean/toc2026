@@ -138,6 +138,7 @@ typedef enum
     ACHIEVEMENT_EVENT_FARSLAY_KILL,
     ACHIEVEMENT_EVENT_DEATH_RAY,
     ACHIEVEMENT_EVENT_QUEST_RUSH,
+    ACHIEVEMENT_EVENT_QUEST_EMERGENCY,
     ACHIEVEMENT_EVENT_QUEST_LAST_MINUTE,
     ACHIEVEMENT_EVENT_QUEST_GAMBLE_WIN,
     ACHIEVEMENT_EVENT_BANK_DEPOSIT,
@@ -228,6 +229,15 @@ typedef struct script_loop_prepoll_payload
 /* How far a questing streak can lift the point reward, in percent.
    See quest_streak_bonus() for the curve that climbs to it. */
 #define QUEST_STREAK_BONUS_MAX  300
+
+/* An emergency contract: rare, short, and worth a great deal.
+   The multiplier is the whole reward, not an addition to the rush
+   one -- five times the points, which is 400% more than the base.
+   It is rolled ahead of the rush contract, so the rush chance is
+   read against what is left rather than the whole. */
+#define QUEST_EMERGENCY_CHANCE      5
+#define QUEST_EMERGENCY_MINUTES     5
+#define QUEST_EMERGENCY_MULTIPLIER  5
 
 #define MAX_ACHIEVEMENTS        256
 #define MAX_LEVEL               70
@@ -1759,6 +1769,7 @@ struct  char_data
     sh_int              queststreak;    /* consecutive complete count; resets on fail/abort */
     sh_int              questgamble_pts;/* points withheld pending double-or-nothing offer */
     bool                questrush;      /* current quest is a rush contract */
+    bool                questemergency; /* current quest is an emergency */
 };
 
 /* Hate data */

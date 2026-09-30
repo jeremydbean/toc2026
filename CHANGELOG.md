@@ -8,6 +8,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Emergency contracts.** About one quest request in twenty now comes
+  back as an emergency: five minutes flat, and five times the base point
+  reward. It is rolled ahead of the rush contract and replaces it, so a
+  quest is one or the other and never pays both multipliers; the streak
+  bonus still applies on top. A hidden achievement, "When It Could Not
+  Wait", goes with it.
+
 ### Fixed
 
 - **A promised psionic grant never arrived.** `GRANTPSI` set

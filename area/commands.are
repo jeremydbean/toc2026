@@ -1653,9 +1653,19 @@ quest ends. Completed quests may be turned in to any questmaster for gold and
 a pending quest-point reward.
 
 Resolve that reward with AQUEST GAMBLE YES for a 50% double-or-nothing chance,
-or AQUEST GAMBLE NO to collect it safely. Rush contracts double the base point
-reward, while consecutive completions add up to a 50% streak bonus. Aborting,
-timing out, or quitting during an active quest breaks the streak.
+or AQUEST GAMBLE NO to collect it safely.
+
+CONTRACTS
+  Most quests allow 10 to 30 minutes. About one in five is a RUSH CONTRACT:
+  5 to 8 minutes for double the base point reward. About one in twenty is an
+  EMERGENCY CONTRACT: five minutes flat for five times the base reward. A
+  quest is one or the other, never both.
+
+STREAKS
+  Consecutive completions add a point bonus that keeps growing: 10% for each
+  of the first five, then 5% each to fifteen, 3% each to thirty, 2% each to
+  fifty, and 1% each after that, to a ceiling of 300%. Aborting, timing out,
+  or quitting during an active quest breaks the streak and loses all of it.
 
 See also: QUEST, TOPTEN
 ~

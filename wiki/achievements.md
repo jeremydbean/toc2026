@@ -36,7 +36,7 @@ placeholder until earned.
 | Character | Levels 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 58, and 59; every remort from the first to the fifth; 24 hours, seven days, and thirty days played |
 | Combat | 1, 100, 500, 1,000, 2,500, 5,000, 10,000, 25,000 and 50,000 mobile kills; 1, 10, 25, 50, 100, 250 and 500 qualifying player kills; a hidden Farslay feat |
 | Encounters | Seventeen named endgame bosses plus five-boss and full-catalog meta achievements |
-| Quests | 1, 10, 50, 100, 250, 500, and 1,000 completions; streaks of 5, 10, 25, 50, and 100; rush, final-minute, gamble-win, and keepsake feats |
+| Quests | 1, 10, 50, 100, 250, 500, and 1,000 completions; streaks of 5, 10, 25, 50, and 100; rush, emergency, final-minute, gamble-win, and keepsake feats |
 | Exploration | Thirty-nine landmarks across the world, from the Pet Shop and Mud School six rooms out to Valhalla at ninety-four, plus arrival in Hyrule and discovery of all nine dungeon entrances. Every one is the destination of a published route in `webadmin/directions.json`, so all of them are reachable on foot |
 | Collection | Seventeen rare or special-source relics plus 5, 10, and 17-relic metas |
 | Crafting | Brewing, concocting, scribing, the hidden Farslay-scroll recipe, and a crafting meta |
@@ -60,8 +60,9 @@ Farslay. Acquiring one is enough; the achievement remains after the object is
 used, lost, stored, or destroyed.
 
 Automatic-quest achievements also recognize completing a rush contract,
-turning in a quest during its final minute, winning double-or-nothing, and
-acquiring the questmaster's keepsake. Kill objectives award progress to
+surviving an emergency contract (the hidden five-minute, five-times-reward
+one), turning in a quest during its final minute, winning double-or-nothing,
+and acquiring the questmaster's keepsake. Kill objectives award progress to
 eligible group members present for the kill, including when a controlled pet
 lands the final blow.
 
@@ -119,7 +120,7 @@ character save, quit, autosave, snapshot, backup, and restore behavior.
 ## Developer Notes
 
 The catalog and command live in `src/achievements.c`. `PC_DATA` reserves 256
-timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 194. Add
+timestamp slots through `MAX_ACHIEVEMENTS`; the current catalog uses 195. Add
 a new entry only with a unique key that will never be repurposed.
 
 Achievement views use canonical `{HH}` game-color tokens and

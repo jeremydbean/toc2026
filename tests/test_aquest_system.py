@@ -309,3 +309,61 @@ class AutomaticQuestSystemTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EmergencyContractTests(unittest.TestCase):
+    """The rare five-minute contract worth five times the points.
+
+    Three ways to get this wrong, and all three are quiet: a quest
+    that is both an emergency and a rush pays ten times; a clear that
+    misses one site carries the multiplier into the next quest; and
+    reading the flag after it has been cleared pays nothing at all.
+    """
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.quest = (ROOT / "src" / "quest.c").read_text(encoding="utf-8")
+        cls.merc = (ROOT / "src" / "merc.h").read_text(encoding="latin-1")
+
+    def test_the_numbers_are_named_once(self) -> None:
+        self.assertIn("#define QUEST_EMERGENCY_CHANCE      5", self.merc)
+        self.assertIn("#define QUEST_EMERGENCY_MINUTES     5", self.merc)
+        self.assertIn("#define QUEST_EMERGENCY_MULTIPLIER  5", self.merc)
+
+    def test_it_is_rolled_ahead_of_the_rush_and_excludes_it(self) -> None:
+        offer = self.quest.split("if (chance(QUEST_EMERGENCY_CHANCE))", 1)
+        self.assertEqual(len(offer), 2, "the emergency roll went missing")
+        self.assertIn("else if (chance(20))", offer[1],
+                      "the rush contract must be the alternative, not a "
+                      "second roll that can also land")
+        body = offer[1][:offer[1].index("else if (chance(20))")]
+        self.assertIn("ch->questrush = false;", body)
+        self.assertIn("ch->questemergency = true;", body)
+
+    def test_the_multiplier_replaces_the_rush_rather_than_stacking(self) -> None:
+        self.assertRegex(
+            self.quest,
+            r"if \( completed_emergency \)\s*\n\s*pointreward \*= "
+            r"QUEST_EMERGENCY_MULTIPLIER;\s*\n\s*else if \( completed_rush \)")
+
+    def test_the_flag_is_read_before_anything_clears_it(self) -> None:
+        body = self.quest.split("static void complete_automatic_quest", 1)[1]
+        read_at = body.index("completed_emergency = ch->questemergency")
+        cleared_at = body.index("ch->questemergency = false")
+        self.assertLess(read_at, cleared_at)
+
+    def test_every_questrush_clear_clears_the_emergency_too(self) -> None:
+        """A stale flag would pay five times on the following quest."""
+        lines = self.quest.split("\n")
+        for i, line in enumerate(lines):
+            if "ch->questrush" in line and "false" in line:
+                nxt = lines[i + 1] if i + 1 < len(lines) else ""
+                self.assertIn(
+                    "questemergency", nxt,
+                    "quest.c:%d clears questrush and leaves questemergency "
+                    "set" % (i + 1))
+
+    def test_the_player_is_told_which_contract_they_hold(self) -> None:
+        self.assertIn("EMERGENCY CONTRACT!", self.quest)
+        self.assertIn("EMERGENCY CONTRACT -", self.quest)
+        self.assertIn("ACHIEVEMENT_EVENT_QUEST_EMERGENCY", self.quest)
