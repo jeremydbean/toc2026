@@ -15239,3 +15239,4 @@ Wed Sep 30 08:15:28 2026 ::  INIT OK
 Wed Sep 30 08:15:28 2026 :: ROM is ready to rock on port 9000.
 Wed Sep 30 08:15:28 2026 :: Automated backup complete.
 Wed Sep 30 08:15:28 2026 :: Daily backup complete.
+Wed Sep 30 08:33:08 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last successful run was 99999 minutes ago). Saves are still on disk but are not leaving this machine.
