@@ -18,6 +18,8 @@ from __future__ import annotations
 import json
 import pathlib
 import sys
+import os
+import importlib.util
 import unittest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -164,6 +166,66 @@ class TrapsAreNotDirections(unittest.TestCase):
         self.assertFalse(self.ejectors & set(reach),
                          "routing reached a room that ejects to the Temple")
 
+
+
+class RouteHelpTests(unittest.TestCase):
+    """The in-game list of everywhere you can walk to.
+
+    It is generated from the same routes the website publishes, for
+    the reason every generated file in this repository is generated:
+    a hand-kept list of 89 areas is wrong the first time somebody adds
+    one, and a help file that lies about where you can go is worse
+    than not having a list at all.
+    """
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.help_path = ROOT / "area" / "routelist.are"
+        cls.text = cls.help_path.read_text(encoding="latin-1")
+        cls.data = json.loads(
+            (ROOT / "webadmin" / "directions.json").read_text(encoding="utf-8"))
+
+    def test_it_is_loaded_by_the_game(self) -> None:
+        listed = (ROOT / "area" / "area.lst").read_text(encoding="latin-1")
+        self.assertIn("routelist.are", listed,
+                      "a help file not in area.lst is a file nobody reads")
+
+    def test_it_is_a_well_formed_help_file(self) -> None:
+        self.assertTrue(self.text.startswith("#HELPS"))
+        self.assertIn("0 WALKTO ROUTELIST AREALIST~", self.text)
+        # The terminator the loader needs; without it the game will not boot.
+        self.assertIn("0 $~", self.text)
+        self.assertTrue(self.text.rstrip().endswith("#$"))
+
+    def test_every_published_route_is_named(self) -> None:
+        for route in self.data["routes"]:
+            name = route.get("area_display") or route["area"]
+            self.assertIn(name, self.text, name)
+
+    def test_it_names_nothing_that_is_not_a_route(self) -> None:
+        """Dresden holds the start room; two areas have no way in."""
+        for absent in ("Quest Zone", "Temple Despair"):
+            self.assertNotIn(absent + " (", self.text, absent)
+
+    def test_the_generator_reproduces_it(self) -> None:
+        """A file that regenerates differently has been hand-edited."""
+        before = self.help_path.read_bytes()
+        spec = importlib.util.spec_from_file_location(
+            "build_directions", ROOT / "tools" / "build_directions.py")
+        builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(builder)
+
+        cwd = os.getcwd()
+        os.chdir(ROOT)
+        try:
+            builder.write_route_help(self.data["routes"])
+            after = self.help_path.read_bytes()
+        finally:
+            self.help_path.write_bytes(before)
+            os.chdir(cwd)
+
+        self.assertEqual(before, after,
+                         "area/routelist.are does not match its generator")
 
 if __name__ == "__main__":
     unittest.main()

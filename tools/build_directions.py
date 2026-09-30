@@ -620,6 +620,70 @@ def area_entrances(rooms, reach):
     return best
 
 
+
+# Help files are Latin-1 with CRLF and ~-terminated strings, and the
+# game is strict about all three.
+HELP_EOL = chr(13) + chr(10)
+
+
+def write_route_help(routes):
+    """A help topic naming every area a player can walk to.
+
+    Generated rather than hand-kept: 89 entries go stale the first
+    time somebody adds an area, and a help file that lies about where
+    you can go is worse than not having one. Alphabetical, because
+    this is a lookup list -- you read a name off it and hand that name
+    to WALK.
+    """
+    entries = sorted(
+        ((r.get("area_display") or r["area"]), r.get("rooms_away") or 0)
+        for r in routes)
+
+    lines = [
+        "0 WALKTO ROUTELIST AREALIST~",
+        "Every area you can walk to from the Oak Tree Square, and how many",
+        "rooms out it is.  In Mudlet, WALK <name> follows one of these; on",
+        "the website and in the browser client they are listed with the",
+        "commands to get there.",
+        "",
+        "The number is rooms travelled, not difficulty.  A short walk can",
+        "end somewhere that will kill you, and a long one can be perfectly",
+        "safe.  See ROUTES.",
+        "",
+    ]
+
+    # Two columns. A name is given 32 characters, which is the longest
+    # in the world plus a little, so nothing is truncated.
+    labels = ["%4d  %s" % (away, name) for name, away in entries]
+    half = (len(labels) + 1) // 2
+    left, right = labels[:half], labels[half:]
+    for index in range(half):
+        a = left[index]
+        b = right[index] if index < len(right) else ""
+        lines.append(("  %-38s%s" % (a, b)).rstrip())
+
+    lines += [
+        "",
+        "Dresden is not listed because it holds the Oak Tree Square, which",
+        "is where every route begins.  The Quest Zone and Temple Despair",
+        "are not listed because nothing in the world links to them.",
+        "",
+        "See also: ROUTES, WALK, MAP, MUDLET, AREAS",
+        "~",
+        "",
+        "0 $~",
+        "",
+        "#$",
+        "",
+    ]
+
+    body = "#HELPS" + HELP_EOL + HELP_EOL + HELP_EOL.join(lines)
+    out = pathlib.Path("area/routelist.are")
+    with open(out, "w", encoding="latin-1", newline="") as fh:
+        fh.write(body)
+    return len(entries)
+
+
 def main():
     rooms = load_world()
     portals = load_portals()
@@ -740,6 +804,9 @@ def main():
 
     out = pathlib.Path("webadmin/directions.json")
     out.write_text(json.dumps(payload, indent=1) + "\n", encoding="utf-8")
+
+    listed = write_route_help(routes)
+    print(f"{listed} areas listed in area/routelist.are")
     print(f"{len(rooms)} rooms, {len(reach)} reachable from {START} "
           f"({sum(len(v) for v in portals.values())} portals and "
           f"handholds in play)")

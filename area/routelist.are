@@ -1,0 +1,68 @@
+#HELPS
+
+0 WALKTO ROUTELIST AREALIST~
+Every area you can walk to from the Oak Tree Square, and how many
+rooms out it is.  In Mudlet, WALK <name> follows one of these; on
+the website and in the browser client they are listed with the
+commands to get there.
+
+The number is rooms travelled, not difficulty.  A short walk can
+end somewhere that will kill you, and a long one can be perfectly
+safe.  See ROUTES.
+
+    25  Ancalador (CAW)                   20  Old Thalos (Kahn)
+    25  Arachnos (Mahatma)                32  Olympus (Generic)
+     8  Arena of ole Midgaard (Klute)     41  Pirate Ship (Lance)
+    20  Assassins Guild (Graves)          14  Plains of the North (Copper)
+    15  Azeroth (Crane)                   40  Redferne's Residence (Diku)
+    43  Battleground (Haze)               29  Rome (Onivel)
+    37  Camelot (Lok)                     27  Ruins of Midgaard (Drakk)
+    40  City Of LUD (Haze)                15  Sands of Sorrow (Anon)
+     7  Continental Drift (Graves)        50  Sea of Serenity (Eclipse)
+    13  Coven (Lok)                       11  Sewer (Diku)
+    21  Crystalmir Lake (Strahd)           8  Smurf Village (Generic)
+    34  Descent to Hell (Strahd)           6  Social Club (KasChel)
+    29  Dragon Tower (Wench)               9  Strange Campus (CAW/SC)
+    22  Drow City (Drkside)               12  Thalos (Drkside)
+    25  Dwarven Catacombs (Raff)          35  The Abandoned Cathedral (CAW)
+    29  Dwarven Day Care (Sandman)        38  The Abyss (Anon)
+    22  Dwarven Kingdom (Anon)            14  The Ashen Wastes (Graves)
+    44  Dylan's Area (DAWS)               17  The Astral Plane (Andi)
+    22  Elemental Canyon (Raff)            9  The Chessboard (Aten)
+    23  Faerie Ring (Lok)                 24  The Dark Forest (Dazed)
+    16  Fire Newts (DAWS)                 12  The Emerald Forest (FeaR)
+    35  Forsaken Clanhall (Kyrus)         17  The Glitter Palace (Morgan)
+     8  Froboz Factory (CAW)              28  The Great Pyramid (Andi)
+    33  Galaxy (Doctor)                   28  The HighLands (Karl)
+     9  Gangland (Raff)                   43  The Ice Keep (Shop)
+    25  Gelidia (Shop)                    24  The Keep of Mahn-Tor (Chris)
+    28  Glass Fortress (Mahatma)          24  The Land of Oz (Shop)
+    15  Gnome Village (Vougon)            35  The Lonely Mountain (Graves)
+     9  Haon Dor (Diku)                    6  The Lucky Dragon Casino (Graves)
+    29  High Tower of Sorcery (Anon)      11  The Prison (Flar)
+    14  Holy Grove (Alfa)                 12  The Rats Lair (Hatchet)
+    20  Hyrule (Killum)                   15  The Shire (Poohb)
+    22  Kerofk (CAW)                      21  The Tombs of Tarin (Unknown)
+    39  Korzath's Fortress (Haze)         17  The Underdark (Trin)
+     6  Limbo (Diku)                      24  Town Of Solace (Strahd)
+    41  Mega-City One (Glop)              39  Tritia (BB)
+    41  Mid-World (Haze)                  13  Troll Den (Merc)
+     8  Miden'nir (Copper)                34  Ultima (Casret)
+    10  Mob Factory (PinkF)               94  Valhalla (Elrond)
+    12  Moria (Alfa)                      26  Valley of the Elves (Hatchet)
+     6  Mud School (Hatchet)              41  Voyage Across Sea (Haze)
+    25  Mushroom Grove (Trin)             12  Werith's Wayhouse (CAW/SC)
+    21  New Thalos (Anon)                 23  Wyvern's Tower (Tyrst)
+    26  Ofcol (Alfa)                      20  the Upper Argo (Morgan)
+    26  Old Marsh (Generic)
+
+Dresden is not listed because it holds the Oak Tree Square, which
+is where every route begins.  The Quest Zone and Temple Despair
+are not listed because nothing in the world links to them.
+
+See also: ROUTES, WALK, MAP, MUDLET, AREAS
+~
+
+0 $~
+
+#$

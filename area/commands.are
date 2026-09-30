@@ -91,8 +91,8 @@ The map draws rooms, exits, and doors.  It does not show who or what is
 standing in a room - use LOOK for that.
 
 WHERE CAN I GO?
-The realms publish a route to almost every area, written from the Oak Tree
-Square.  See ROUTES for the list and how to follow one.
+WALKTO lists every area you can walk to and how many rooms out it is.
+ROUTES explains how to follow one.
 
 The map belongs to your local Mudlet profile, not your character file.  The
 browser client and plain Telnet do not currently show this automatic map.
@@ -208,6 +208,7 @@ that have rooms.  Each route is written from the Oak Tree Square, gives the
 commands to get there, and says how many rooms out it is.
 
 WHERE TO SEE THEM
+  In game        WALKTO lists every area and how far out it is.
   Mudlet         WALK ROUTES loads the list, then WALK <name> follows one,
                  such as WALK THALOS or WALK WYVERN.  See WALK.
   Browser client The Routes panel lists every destination.
@@ -230,7 +231,7 @@ nothing in the world links to them.
 Secret doors, and anything the game has not shown you, are not in a route.
 EXITS and SEARCH remain authoritative.
 
-See also: MAP, WALK, MUDLET, RUN, RECALL
+See also: WALKTO, MAP, WALK, MUDLET, RUN, RECALL
 ~
 
 0 GMCP~
@@ -2107,7 +2108,10 @@ recommended levels.  However, those recommendations are just a rough range
 and it is a good idea to read road signs to determine if you are entering
 somewhere that may be particularly dangerous.
 
-See also: WHERE, RECALL
+AREAS lists everywhere that exists.  WALKTO lists everywhere there is a
+published walking route to, with the distance to each.
+
+See also: WALKTO, ROUTES, WHERE, RECALL
 ~
 
 0 ARRIVE~

@@ -552,6 +552,13 @@ What counts as a way through, because it is more than exits:
 - Rooms flagged `ROOM_TELEPORT` or `ROOM_RIVER`, which carry you on a timer.
   The three numbers after the sector are destination, speed and visibility.
 
+It also writes **`area/routelist.are`**, the `HELP WALKTO` topic
+naming every area with a route and how far out it is. That file is
+generated: edit the generator, not the help, and `area.lst` must keep
+listing it or the topic quietly disappears.
+`tests/test_directions_router.py` asserts the generator reproduces it
+byte for byte.
+
 The JSON also carries a `links` array: every one of those ways through
 as a `{from, command, to}` edge. That is what the Mudlet mapper needs --
 it builds its graph from directional exits alone, so without them the
