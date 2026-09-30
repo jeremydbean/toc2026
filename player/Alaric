@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790727487
+LogO 1790727682
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,14 +15,14 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 50
-Plyd 204468
+Plyd 204663
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1167 1167 1778 1918 87 927
-NewGold 0
+HMV  1167 1167 1793 1918 21 927
+NewGold 23
 NewPlat 42
 NewCopp 28
 NewSilv 30
@@ -35,7 +35,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 735
-AchQuests 87
+AchQuests 88
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -89,11 +89,11 @@ SesDead  0
 SesQuest 0
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 3578
-QuestStrk 31
+QuestPnts 3602
+QuestStrk 32
 CasinoWon  51
 CasinoLost 304
-QuestNext 2
+QuestNext 5
 Exp  112575
 Act  4261068
 AfBy 3678912
@@ -136,7 +136,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 31 31
+Cond 0 28 28
 Alias k kick~
 Alias sm smite~
 Sk 30 'axe'
@@ -166,9 +166,9 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'berserk'  51   4 100  17         64          0
-AffD 'berserk'   2   4  10  19         64          0
-AffD 'berserk'   0   4  10  18         64          0
+AffD 'berserk'  49   0 100  17         64          0
+AffD 'berserk'   0   0  10  19         64          0
+AffD 'berserk'   0   0  10  18         64          0
 AffD 'titanic'   3  -1 100  13          0          0
 AffD 'titanic'   6  -1 500  12          0          0
 AffD 'titanic'   8  -1 500  14          0          0
