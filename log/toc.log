@@ -15233,3 +15233,9 @@ Wed Sep 30 07:54:44 2026 :: EOF encountered on read.
 Wed Sep 30 08:00:54 2026 :: Sock.sinaddr:  47.251.122.246
 Wed Sep 30 08:00:55 2026 :: Sock.sinaddr:  47.251.122.246
 Wed Sep 30 08:00:55 2026 :: EOF encountered on read.
+Wed Sep 30 08:15:28 2026 :: Received signal 15; saving players and shutting down.
+Wed Sep 30 08:15:28 2026 :: Normal termination of game.
+Wed Sep 30 08:15:28 2026 ::  INIT OK 
+Wed Sep 30 08:15:28 2026 :: ROM is ready to rock on port 9000.
+Wed Sep 30 08:15:28 2026 :: Automated backup complete.
+Wed Sep 30 08:15:28 2026 :: Daily backup complete.
