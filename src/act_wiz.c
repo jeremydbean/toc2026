@@ -7715,8 +7715,12 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     }
     else if ( immediate )
     {
-        send_to_char( "They are inside the awakening band, so this waits "
-                      "for a level check between 18 and 21.\n\r", ch );
+        /* "Inside the band" was wrong for the commonest case by far:
+           a level 1 is below it, not in it, and will meet it on the
+           way up. Say where the band is rather than where they are. */
+        send_to_char( "Psionics awaken between levels 18 and 21, so this "
+                      "is flagged for a level check there rather than "
+                      "granted now.\n\r", ch );
         immediate = false;
     }
 
@@ -7748,7 +7752,14 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     victim->pcdata->last_level = 0;
     send_to_char( "Grant flag applied. They will receive psionics on a level check between "
                   "18 and 21.\n\r", ch );
-    if ( !offline )
+
+    /* Worth saying on its own line: an immortal who typed NOW wants to
+       know the character is not there, separately from why the grant
+       was deferred. */
+    if ( offline )
+        send_to_char( "They are not online, so the flag is saved straight "
+                      "to their player file.\n\r", ch );
+    else
         send_to_char( "Your mind tingles with unfamiliar potential.\n\r", victim );
 
     {

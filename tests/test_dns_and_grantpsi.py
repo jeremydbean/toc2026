@@ -119,6 +119,39 @@ class OfflineGrantPsiTests(unittest.TestCase):
                 self.assertIn("not online", reply)
                 self.assertIn("Grant flag applied", reply)
 
+    def test_above_the_band_it_is_granted_even_when_they_are_offline(self) -> None:
+        """Past level 21 there is no level check left to wait for.
+
+        Flagging would mean never, so the grant lands at once. Doing
+        that to an offline character means working on a loaded copy,
+        and the copy has to be saved and extracted -- an early return
+        past either would throw the grant away and leak the character
+        for the life of the process.
+        """
+        with LiveMud() as mud:
+            immortal(mud, "Zpsiimmz")
+            with mud.connect(timeout=120) as maker:
+                create_character(maker, "Zpsihighz", PASSWORD)
+                maker.send("quit")
+                maker.wait_closed()
+            patch_player_file(mud, "Zpsihighz", Levl=50)
+
+            with mud.connect(timeout=120) as god:
+                login(god, "Zpsiimmz", PASSWORD)
+                reply = run(god, "grantpsi Zpsihighz", settle=4.0)
+
+                self.assertIn("granted", reply.lower(), reply)
+                self.assertNotIn("Grant flag applied", reply, reply)
+
+                # The loaded copy must not still be in the world.
+                self.assertNotIn("Zpsihighz", run(god, "who", settle=2.5))
+
+            saved = (mud.root / "player" / "Zpsihighz").read_text(
+                encoding="latin-1", errors="replace")
+            self.assertIn("PsiKnown", saved)
+            self.assertNotIn("PsiGrant 1", saved,
+                             "a granted psionic must not stay pending")
+
     def test_an_unknown_name_is_refused_cleanly(self) -> None:
         with LiveMud() as mud:
             immortal(mud, "Zpsiimmc")

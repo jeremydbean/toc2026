@@ -26,6 +26,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **`GRANTPSI` stopped saying the target was offline, and told a
+  level 1 they were "inside the awakening band".** Restructuring the
+  immediate path dropped the first and got the second wrong -- a
+  level 1 is below the band, not in it. It now names where the band
+  is rather than where they are, and says on its own line when the
+  flag went to a player file instead of a person. Caught by CI.
+
 - **Mudlet 1.2.0: quest and target strips, room and item tabs,
   clickable exits, achievement notices.** The quest strip counts an
   emergency contract's five minutes down, amber at three and red at
