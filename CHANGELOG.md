@@ -107,6 +107,24 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- **CI is faster and cheaper.** Superseded runs are cancelled, so
+  three commits in ten minutes no longer mean three ninety-minute runs
+  and one useful answer. The tests run across the runner's cores
+  through `scripts/test-parallel.sh` rather than one at a time. The C
+  tree is built once with the strict warnings instead of twice, since
+  the strict set is the default set plus more and neither uses
+  `-Werror`. ccache and pip are cached, which is what keeps
+  `validate.sh`'s deliberate `make clean` from costing a full rebuild
+  -- the Makefile's `CC` had to become `?=` for that to work at all.
+
+- **`validate.sh` could fail on its own output.** It runs
+  `--check-area`, which appends to `log/toc.log` -- tracked since the
+  state sync started -- and merc's banner ends in a space, so the
+  `git diff --check` at the end of the same script failed on
+  whitespace the script had just caused. It skips `log/` now. Nothing
+  had hit it only because the unit tests were failing earlier in the
+  run.
+
 - **Says are recorded.** A say now reaches the staff journal and the
   chat window of everybody who was in the room to hear it. It is
   deliberately **not** in the shared HISTORY: those rings are handed to

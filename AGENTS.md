@@ -236,11 +236,12 @@ Running from inside `tests/` -- which is the obvious way to write it --
 fails eleven modules with import and file-not-found errors that look
 like product bugs and are not.
 
-**`test_live_gameplay`'s login-throttle tests are the one thing that
-flakes under it.** The throttle is measured against the wall clock, so
-a dozen servers competing for the same cores can miss a window and
-time out waiting for "wrong password"; the same module passes alone.
-Re-run a throttle failure with `JOBS=1` before believing it.
+**`test_live_gameplay` runs on its own, after the rest.** Its
+login-throttle tests measure against the wall clock, so a dozen
+servers competing for the same cores make them miss a window and time
+out waiting for "wrong password". `SERIAL` in the runner names the
+modules that get the machine to themselves; add to it only for a real
+timing dependency, not to quiet a flake with a cause.
 
 **`LiveMud.drain(seconds)` sleeps its whole window on purpose.** Making
 it return early when the game goes quiet is the obvious speedup and it
@@ -249,6 +250,22 @@ reply that arrived as an empty string, because output comes in bursts
 with gaps in them and a drain that stops at the first gap returns before
 the reply. The parallel runner gets the same time back without touching
 the helper, so leave it alone.
+
+CI runs the same script, so it gets the same speedup, plus three
+things that only matter there:
+
+- **Superseded runs are cancelled** (`concurrency` with
+  `cancel-in-progress`). Three commits in ten minutes used to mean
+  three full runs and one useful answer.
+- **ccache**, because `validate.sh` opens with `make clean` on
+  purpose -- stale objects have bitten this codebase before -- and the
+  cache is what stops that costing a full rebuild every time. The
+  Makefile's `CC` is `?=` so the workflow can point it at ccache;
+  making it `:=` again silently disables this.
+- **One C build, not two.** It used to build with the default warning
+  flags and then again with the strict set. The strict set is the
+  default plus more and neither uses `-Werror`, so the second build
+  only ever printed warnings -- which one build prints just as well.
 
 Default to: build both trees, run the one relevant test module, ship. Write
 the regression test and let CI run everything. Reach for the full suite only
@@ -664,7 +681,10 @@ That is deliberate, not a bug to tidy up.
 `--check-area` from the repository's own `area/` writes `log/toc.log`,
 which is tracked, so a working tree goes dirty every time somebody
 validates the world -- check `git status` before committing and
-`git checkout -- log/toc.log` if it did. The same command run from
+`git checkout -- log/toc.log` if it did. Worse, merc's banner ends in
+a space, so an unfiltered `git diff --check` then fails on output the
+validation itself caused; `scripts/validate.sh` excludes `log/` from
+that check for exactly that reason, and the exclusion must stay. The same command run from
 `build/area` makes merc write `build/log/toc.log`,
 which is now a tracked file, so `git merge --ff-only` in the build tree
 refuses and every later deploy fails. `toc-deploy` discards and

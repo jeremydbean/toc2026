@@ -24,6 +24,13 @@ set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 
 JOBS="${JOBS:-$(nproc 2>/dev/null || echo 4)}"
+
+# Modules to run on their own, after the rest, however many jobs were
+# asked for. test_live_gameplay measures a login throttle against the
+# wall clock, so a dozen servers competing for the same cores make it
+# miss its window and fail for a reason that has nothing to do with
+# the code. Everything else is happy to share.
+SERIAL="${SERIAL:-test_live_gameplay}"
 PYTHON="${PYTHON:-python3}"
 OUT="$(mktemp -d)"
 trap 'rm -rf "$OUT"' EXIT
@@ -38,7 +45,22 @@ else
     done
 fi
 
-printf 'Running %d modules across %d jobs\n\n' "${#modules[@]}" "$JOBS"
+# Split the list: everything that can share, and the tail that cannot.
+parallel_modules=()
+serial_modules=()
+for mod in "${modules[@]}"; do
+    case " $SERIAL " in
+        *" $mod "*) serial_modules+=("$mod") ;;
+        *)          parallel_modules+=("$mod") ;;
+    esac
+done
+
+printf 'Running %d modules across %d jobs' \
+    "${#parallel_modules[@]}" "$JOBS"
+if [ "${#serial_modules[@]}" -gt 0 ]; then
+    printf ', then %d on its own' "${#serial_modules[@]}"
+fi
+printf '\n\n'
 start=$(date +%s)
 
 run_one() {
@@ -67,7 +89,7 @@ run_one() {
 }
 
 running=0
-for mod in "${modules[@]}"; do
+for mod in "${parallel_modules[@]}"; do
     run_one "$mod" &
     running=$((running + 1))
     if [ "$running" -ge "$JOBS" ]; then
@@ -76,6 +98,11 @@ for mod in "${modules[@]}"; do
     fi
 done
 wait
+
+# The ones that need the machine to themselves.
+for mod in "${serial_modules[@]}"; do
+    run_one "$mod"
+done
 
 elapsed=$(( $(date +%s) - start ))
 printf '\n%d modules in %dm %ds\n' "${#modules[@]}" $((elapsed / 60)) $((elapsed % 60))

@@ -13,11 +13,13 @@ step() {
 
 cd "$repo_root"
 
-step "C clean build"
-make clean
-make
-
-step "C strict warning build"
+# One build, with the strict warnings on. It used to be two -- the
+# default flags and then the strict ones -- which compiled every file
+# twice to produce the same working binary. The strict set is the
+# default set plus more, and neither uses -Werror, so the second build
+# was only ever there to print the warnings; doing it once prints them
+# just as well.
+step "C clean build, strict warnings"
 make clean
 make "WARNFLAGS=$strict_warnings"
 
@@ -75,10 +77,18 @@ step "Area data checks"
 "$python_bin" check_shops.py
 "$python_bin" scripts/area_lint.py --fail-on critical --limit 20
 
+# Across every core rather than one at a time: most of these modules
+# boot a real server and then spend their time waiting for it, so the
+# cores are idle either way. See scripts/test-parallel.sh, which also
+# keeps the timing-sensitive modules out of the crowd.
 step "Unit tests"
-"$python_bin" -m unittest discover -s tests
+PYTHON="$python_bin" bash scripts/test-parallel.sh
 
+# Not log/. The game writes it, this script made it write to it two
+# steps ago by running --check-area, and merc's own banner ends in a
+# space -- so an unfiltered check fails on output this script caused,
+# which is the worst kind of red. The check is about source hygiene.
 step "Git whitespace check"
-git diff --check
+git diff --check -- . ':(exclude)log'
 
 printf '\nValidation complete.\n'

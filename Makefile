@@ -1,5 +1,7 @@
 # Top-level Makefile for ToC MUD on Ubuntu 24.04+
-CC       := gcc
+# ?= so the environment can point this at ccache, which is what
+# stops CI's deliberate `make clean` costing a full rebuild.
+CC       ?= gcc
 PYTHON   ?= python3
 
 # Default flags favor stability while still surfacing helpful warnings. Use

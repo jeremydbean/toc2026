@@ -25,6 +25,13 @@ on:
       - 'area/ban'
   pull_request:
 
+# A push while a run is going makes that run pointless: it is
+# validating code that has already been replaced. Three commits in ten
+# minutes used to mean three ninety-minute runs and one useful answer.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -36,15 +43,26 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential gcc make libcrypt-dev zlib1g-dev lua5.4
+          sudo apt-get install -y build-essential gcc make libcrypt-dev zlib1g-dev lua5.4 ccache
           # lua5.4 is what makes the Mudlet package's Lua actually compile
           # here; without it that test skips and ships unparsed script.
           sudo ln -sf "$(command -v lua5.4)" /usr/local/bin/lua
+
+      - name: Cache compiled objects
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ccache
+          key: ccache-validate-${{ github.sha }}
+          restore-keys: ccache-validate-
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            webadmin/requirements.txt
+            scripts/requirements.txt
 
       - name: Install Python dependencies
         run: |
@@ -52,6 +70,11 @@ jobs:
           python -m pip install -r webadmin/requirements.txt -r scripts/requirements.txt
 
       - name: Run validation suite
+        env:
+          # validate.sh does `make clean` first, on purpose -- this
+          # codebase has been bitten by stale objects before -- so the
+          # compiler cache is what stops that costing a full rebuild.
+          CC: ccache gcc
         run: bash scripts/validate.sh
 
   sanitize:
@@ -68,10 +91,19 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential gcc make cmake libcrypt-dev zlib1g-dev
+          sudo apt-get install -y build-essential gcc make cmake libcrypt-dev zlib1g-dev ccache
+
+      - name: Cache compiled objects
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ccache
+          key: ccache-sanitize-${{ github.sha }}
+          restore-keys: ccache-sanitize-
 
       - name: Configure sanitizer build
-        run: cmake -S . -B build-sanitize -DCMAKE_BUILD_TYPE=Debug -DENABLE_SANITIZERS=ON
+        run: |
+          cmake -S . -B build-sanitize -DCMAKE_BUILD_TYPE=Debug \
+            -DENABLE_SANITIZERS=ON -DCMAKE_C_COMPILER_LAUNCHER=ccache
 
       - name: Build
         run: cmake --build build-sanitize --parallel
