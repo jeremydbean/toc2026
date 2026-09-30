@@ -1,7 +1,7 @@
 #PLAYER
 Name Eclipse~
 Id   2891
-LogO 1790782913
+LogO 1790783233
 Vers 4
 Desc Blah
 ~
@@ -18,12 +18,12 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,mindbar,mindblast,nightmare,p
 Cast none
 Levl 70
 Tru  70
-Plyd 10891406
+Plyd 10891726
 ListRemorts 0  0 ~
 NumRemorts 1
 Note 1790386686
 Scro 22
-Room 9988
+Room 2440
 HMV  4051 4051 2370 2370 3714 3714
 NewGold 24
 NewPlat 4
