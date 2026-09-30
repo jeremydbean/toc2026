@@ -276,6 +276,12 @@ typedef struct script_loop_prepoll_payload
  *                   and a recall that never fails
  *   4  (level 57)  shadowmeld
  */
+/* Psionics awaken in this level band and nowhere else. Each level
+   inside it rolls once, so a character owed psionics has four
+   chances in all and may still finish the band without them. */
+#define PSI_AWAKEN_MIN          18
+#define PSI_AWAKEN_MAX          21
+
 #define REMORTS_FOR_LONG_IDLE   3
 #define REMORTS_FOR_BIG_PACK    3
 #define REMORTS_FOR_EXTRA_PSI   3

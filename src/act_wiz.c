@@ -3360,7 +3360,6 @@ void do_advance( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     int level;
     int iLevel;
-    int chance;
 /*    int updown = 1; */
 
     argument = one_argument( argument, arg1 );
@@ -3454,9 +3453,11 @@ void do_advance( CHAR_DATA *ch, char *argument )
 
   /* victim->trust = 0; EC */
 
-  chance = number_range(18,21);
-  if(victim->level == chance && victim->pcdata->psionic < 1)
-     do_check_psi(victim,"");
+  /* do_check_psi holds the whole condition, including the 18-21
+     awakening roll, which used to be open-coded here and at the other
+     call site where it could not be logged. "levelup" is what makes
+     it a fresh chance: a login passes no argument and never rolls. */
+  do_check_psi(victim,"levelup");
 
   update_wizlist(victim,level);
   save_char_obj(victim);
@@ -7697,10 +7698,25 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
     free_string( victim->pcdata->psionic_grant_spec );
     victim->pcdata->psionic_grant_spec = str_dup( list_buf );
 
-    if ( immediate && offline )
+    /*
+     * Inside the PSI_AWAKEN_MIN..PSI_AWAKEN_MAX band the flag waits
+     * for the roll however the immortal asked for it -- that band is
+     * the design, and a grant that skipped it would be a way around
+     * the one chance everybody else takes.
+     *
+     * Above the band there is no level check left to wait for, so a
+     * flag would mean never; it lands at once instead, exactly as
+     * though the roll had hit. That is what granting psionics to a
+     * level 50 character is asking for.
+     */
+    if ( victim->level > PSI_AWAKEN_MAX )
     {
-        send_to_char( "They are not online, so this is flagged for their "
-                      "next level check instead.\n\r", ch );
+        immediate = true;
+    }
+    else if ( immediate )
+    {
+        send_to_char( "They are inside the awakening band, so this waits "
+                      "for a level check between 18 and 21.\n\r", ch );
         immediate = false;
     }
 
@@ -7711,16 +7727,27 @@ void do_grantpsi( CHAR_DATA *ch, char *argument )
         victim->pcdata->psionic_grant_pending = false;
         grant_psionics( victim, 100, true );
         send_to_char( "Psionics granted immediately.\n\r", ch );
-        snprintf( note, sizeof(note), "%s granted %s psionics immediately (%s).",
-                  ch->name, victim->name, list_buf );
+        snprintf( note, sizeof(note),
+                  "%s granted %s psionics immediately at level %d (%s).",
+                  ch->name, victim->name, victim->level, list_buf );
         wizinfo( note, LEVEL_IMMORTAL );
+
+        /* An offline victim is a loaded copy. Without both of these
+           the grant is thrown away and the copy leaks into the
+           character list for the life of the process. */
+        if ( offline )
+        {
+            save_char_obj( victim );
+            extract_char( victim, true );
+        }
         return;
     }
 
     victim->pcdata->psionic_grant_pending = true;
     victim->pcdata->psionic = 0;
     victim->pcdata->last_level = 0;
-    send_to_char( "Grant flag applied. They will receive psionics on their next level check.\n\r", ch );
+    send_to_char( "Grant flag applied. They will receive psionics on a level check between "
+                  "18 and 21.\n\r", ch );
     if ( !offline )
         send_to_char( "Your mind tingles with unfamiliar potential.\n\r", victim );
 

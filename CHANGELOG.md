@@ -8,6 +8,45 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- **A promised psionic grant never arrived.** `GRANTPSI` set
+  `psionic_grant_pending`, saved it as `PsiGrant`, told the immortal it
+  would land on the next level check and the player that their mind
+  tingled with unfamiliar potential -- and nothing ever read the flag
+  back. A level 50 character carried it for days. The flag is read now,
+  and a grant to somebody already past the 18-21 awakening band lands at
+  once rather than waiting on a roll that cannot come round again.
+
+- **A login re-rolled the psionic awakening.** The
+  `number_range(18, 21)` roll sat open-coded at two call sites, and the
+  player loader calls the same check, so a character inside the band
+  could relog until it landed. The roll lives in `do_check_psi` now and
+  only a gained level takes one.
+
+- **Psionic grants are written down.** Which power, from which set,
+  against which roll, and why that one rather than another -- none of it
+  was recorded anywhere but the player's own skill list, so "did I miss
+  the roll or did it never fire?" could not be answered. Every roll,
+  hit or miss, and every power granted now logs its arithmetic.
+
+- **`GRANTPSI` on an offline character could lose the grant and leak the
+  character.** The offline branch works on a loaded copy that has to be
+  saved and extracted; there is one immediate path now so no branch can
+  skip it.
+
+- **A chance of 100 missed one time in a hundred.**
+  `number_percent() >= chance` in `grant_psionics`, where
+  `number_percent()` returns 1..100.
+
+- **Every step a watched player took logged "(arguments withheld)".**
+  `LOG_NEVER` means "too noisy for the global log" for the ten
+  directions and "never write the arguments" for `password`, `resetpwd`
+  and `remort`, and one flag was being read for both -- 800-odd lines in
+  one session claiming something was hidden where there was nothing to
+  hide, burying the few where something was. The secrecy list is
+  explicit now.
+
 ### Added
 
 - **Channel history reaches the dashboard.** The game now appends every

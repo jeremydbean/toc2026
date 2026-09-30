@@ -549,7 +549,6 @@ long next_xp_level( CHAR_DATA *ch )
 
 void gain_exp( CHAR_DATA *ch, int gain )
 {
-    int chance;
 
     if ( IS_NPC(ch) || ch->level > LEVEL_KING || ch->level == 50)
 	     return;
@@ -596,9 +595,9 @@ void gain_exp( CHAR_DATA *ch, int gain )
         /* "beaten ToC" message now handled in advance_level() */
 	  }
 
-	  chance = number_range(18,21);
-	  if(ch->level == chance && ch->pcdata->psionic < 1)
-	    do_check_psi(ch,"");
+	  /* Gaining a level is the one thing that rolls for psionics;
+	     do_check_psi holds the band and the roll. */
+	  do_check_psi(ch,"levelup");
 	  save_char_obj(ch);
 	}
      }

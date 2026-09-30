@@ -1,6 +1,12 @@
 #include <ctype.h>
+#include <stdarg.h>
+#include <stdio.h>
 #include "merc.h"
 #include "interp.h"
+
+/* Defined below, beside the grant it reports on; do_check_psi
+   above it needs the prototype. */
+static void psi_log( CHAR_DATA *ch, const char *fmt, ... );
 
 static const char * const psionic_skill_names[] =
 {
@@ -141,15 +147,72 @@ void die_follower( CHAR_DATA *ch )
 
 void do_check_psi( CHAR_DATA *ch, char *argument )
 {
-    UNUSED_PARAM(argument);
+    bool on_level_gain;
+    bool owed;
+    int roll;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
 
-    /* Grant psionics when an immortal advances a char who has remorted 2+ times
-     * and hasn't received psionics yet. */
-    if ( ch->pcdata->num_remorts >= 2 && ch->pcdata->psionic <= 0 )
+    /*
+     * Two ways to be owed psionics: a second remort, or an immortal's
+     * GRANTPSI.  Only the first was ever checked here, so a deferred
+     * grant set psionic_grant_pending, saved it as PsiGrant, told the
+     * player their mind tingles with unfamiliar potential -- and then
+     * nothing read the flag back.
+     *
+     * Being owed is not the same as receiving.  Psionics awaken in the
+     * PSI_AWAKEN_MIN..PSI_AWAKEN_MAX band, one roll per level gained
+     * inside it, and that is the whole of the chance: four rolls at
+     * one in four, so roughly a third of those owed finish the band
+     * with nothing.  That is the design, not an accident.
+     *
+     * The roll used to sit open-coded at the two call sites, which
+     * cost three things: it could not be written down, a login ran it
+     * again (relog until it lands), and a flag set above the band
+     * waited on a roll that was never coming round again.  It lives
+     * here now, once, and says what it did.
+     */
+    on_level_gain = ( argument != NULL && !str_cmp( argument, "levelup" ) );
+
+    owed = ch->pcdata->psionic_grant_pending
+        || ( ch->pcdata->num_remorts >= 2 && ch->pcdata->psionic <= 0 );
+
+    if ( !owed )
+        return;
+
+    /*
+     * A flag set above the band has no future roll to wait for, so it
+     * lands at once -- which is what an immortal granting psionics to
+     * a level 50 character means by it.  This also carries the
+     * characters flagged while nothing was reading the flag at all.
+     */
+    if ( ch->pcdata->psionic_grant_pending && ch->level > PSI_AWAKEN_MAX )
+    {
+        psi_log( ch, "flagged grant honoured at level %d, past the %d-%d "
+                     "awakening band", ch->level, PSI_AWAKEN_MIN,
+                 PSI_AWAKEN_MAX );
         grant_psionics( ch, 100, true );
+        return;
+    }
+
+    /* A login is not a fresh chance. Only gaining a level is. */
+    if ( !on_level_gain )
+        return;
+
+    if ( ch->level < PSI_AWAKEN_MIN || ch->level > PSI_AWAKEN_MAX )
+        return;
+
+    roll = number_range( PSI_AWAKEN_MIN, PSI_AWAKEN_MAX );
+
+    psi_log( ch, "awakening roll at level %d: rolled %d of %d-%d, hits on "
+                 "%d -- %s", ch->level, roll, PSI_AWAKEN_MIN, PSI_AWAKEN_MAX,
+             ch->level, roll == ch->level ? "AWAKENED" : "missed" );
+
+    if ( roll != ch->level )
+        return;
+
+    grant_psionics( ch, 100, true );
 }
 
 bool normalize_psionic_arguments( const char *argument, char *output, size_t length, char *invalid )
@@ -253,6 +316,44 @@ static bool psionic_is_known( CHAR_DATA *ch, sh_int sn )
                                   skill_table[(int)sn].name );
 }
 
+/*
+ * One line per decision, to the permanent log and to the watched-player
+ * log both.
+ *
+ * A psionic grant is rare, irreversible, and the hardest thing in the
+ * game to argue about after the fact: which power, out of which set,
+ * against which roll, and why that one rather than another.  None of
+ * that was written down anywhere -- the only record was the player's
+ * own skill list afterwards -- so a player asking "did I miss the
+ * roll or did it never fire?" could not be answered at all.  Now the
+ * arithmetic is in the log, not just the outcome.
+ */
+static void psi_log( CHAR_DATA *ch, const char *fmt, ... )
+{
+    /* Half-size so the name and prefix cannot push the joined line
+       past the buffer it is written into. */
+    char body[MAX_STRING_LENGTH / 2];
+    char line[MAX_STRING_LENGTH];
+    va_list args;
+
+    if ( ch == NULL )
+        return;
+
+    va_start( args, fmt );
+    vsnprintf( body, sizeof(body), fmt, args );
+    va_end( args );
+
+    /* The room vnum goes in the one line rather than in a second one
+       from watch_log: both sinks write to the same file, so calling
+       both printed everything twice for exactly the watched character
+       whose log is hardest to read already. */
+    snprintf( line, sizeof(line), "Psi %s [%d]: %s",
+              ch->name != NULL ? ch->name : "(noname)",
+              ch->in_room != NULL ? ch->in_room->vnum : 0, body );
+    log_string( line );
+}
+
+
 static void psionic_learn( CHAR_DATA *ch, sh_int sn )
 {
     if ( sn < 0 )
@@ -294,11 +395,35 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
     bool spec_only;
     bool is_final;
 
+    static const char * const psi_set_names[4] =
+        { "Assault", "Astral", "Defense", "Control" };
+
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
 
-    if ( !force_grant && number_percent() >= chance )
-        return;
+    if ( force_grant )
+    {
+        psi_log( ch, "grant forced, no roll taken (remorts %d, pending %s)",
+                 ch->pcdata->num_remorts,
+                 ch->pcdata->psionic_grant_pending ? "yes" : "no" );
+    }
+    else
+    {
+        /*
+         * number_percent() returns 1..100, so a miss has to be
+         * `roll > chance`.  It was `>=`, which meant a chance of 100
+         * still missed one time in a hundred -- invisible until now
+         * only because every caller forces the grant instead.
+         */
+        int roll = number_percent();
+        bool missed = ( roll > chance );
+
+        psi_log( ch, "roll %d vs chance %d, miss when roll > chance -- %s",
+                 roll, chance, missed ? "MISSED, nothing granted" : "passed" );
+
+        if ( missed )
+            return;
+    }
 
     /* An immortal-specified skill list overrides set logic. */
     spec_only = ( ch->pcdata->psionic_grant_spec != NULL
@@ -336,7 +461,12 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
             if ( psionic_is_known( ch, sn ) )
             {
                 if ( ch->pcdata->learned[(int)sn] < 75 )
+                {
                     ch->pcdata->learned[(int)sn] = 75;
+                    psi_log( ch, "restored %s (%s set) to 75%% from an "
+                                 "earlier life", skill_table[(int)sn].name,
+                             psi_set_names[s] );
+                }
                 selected++;
             }
         }
@@ -355,6 +485,9 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                 if ( sn >= 0 && !psionic_is_known( ch, sn ) )
                 {
                     psionic_learn( ch, sn );
+                    psi_log( ch, "granted %s (%s set) -- final remort, "
+                                 "every power", skill_table[(int)sn].name,
+                             psi_set_names[s] );
                     selected++;
                 }
             }
@@ -373,6 +506,9 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                                             skill_table[(int)sn].name ) )
                 {
                     psionic_learn( ch, sn );
+                    psi_log( ch, "granted %s (%s set) -- named in the "
+                                 "immortal spec", skill_table[(int)sn].name,
+                             psi_set_names[s] );
                     selected++;
                 }
             }
@@ -404,11 +540,20 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
                     unknown[count++] = i;
             }
 
+            psi_log( ch, "%s set: holds %d of %d, target %d for remort %d, "
+                         "%d candidate%s", psi_set_names[s], held,
+                     psi_set_sizes[s], want, ch->pcdata->num_remorts,
+                     count, count == 1 ? "" : "s" );
+
             while ( held < want && count > 0 )
             {
                 int pick = number_range( 0, count - 1 );
+                sh_int chosen = *psi_sets[s][unknown[pick]];
 
-                psionic_learn( ch, *psi_sets[s][unknown[pick]] );
+                psionic_learn( ch, chosen );
+                psi_log( ch, "granted %s (%s set) -- drew %d of %d unheld",
+                         skill_table[(int)chosen].name, psi_set_names[s],
+                         pick + 1, count );
                 selected++;
                 held++;
                 unknown[pick] = unknown[--count];
@@ -418,9 +563,17 @@ void grant_psionics( CHAR_DATA *ch, int chance, bool force_grant )
 
     if ( selected == 0 )
     {
+        /* Clearing the flag matters as much as the bug does: this runs
+           off a level check, so a pending grant that selects nothing
+           would try again on every one of them, forever. */
+        psi_log( ch, "nothing could be selected -- grant abandoned" );
+        ch->pcdata->psionic_grant_pending = false;
         bug( "Grant_psionics: no valid skills were selected.", 0 );
         return;
     }
+
+    psi_log( ch, "grant complete, %d power%s now held", selected,
+             selected == 1 ? "" : "s" );
 
     ch->pcdata->psionic               = 1;
     ch->pcdata->psionic_grant_pending = false;

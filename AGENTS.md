@@ -236,6 +236,12 @@ Running from inside `tests/` -- which is the obvious way to write it --
 fails eleven modules with import and file-not-found errors that look
 like product bugs and are not.
 
+**`test_live_gameplay`'s login-throttle tests are the one thing that
+flakes under it.** The throttle is measured against the wall clock, so
+a dozen servers competing for the same cores can miss a window and
+time out waiting for "wrong password"; the same module passes alone.
+Re-run a throttle failure with `JOBS=1` before believing it.
+
 **`LiveMud.drain(seconds)` sleeps its whole window on purpose.** Making
 it return early when the game goes quiet is the obvious speedup and it
 was tried in 2026-09: `test_recall_point` then failed with an `affect`
@@ -836,7 +842,18 @@ exactly what a cheat hunt wants to see.
 
 `LOG_NEVER` was doing two unrelated jobs: *too noisy for the global
 log* (movement) and *must never be written down* (`password`,
-`resetpwd`, `delete`). Only the second is a rule. For a watched
+`resetpwd`, `delete`). Only the second is a rule, and reading both off
+the one flag was itself the second bug: `command_hides_arguments()` in
+`interp.c` now holds the secrecy list -- `password`, `resetpwd`,
+`delete`, `delet`, and `remort`, whose syntax is
+`remort <password> <class> <guild> <race>` -- while `LOG_NEVER` goes
+on meaning only "keep it out of the global log". Before that split,
+every step a watched character took logged
+`south (arguments withheld)`, claiming something was hidden where
+there was nothing to hide and burying the handful of lines where
+something really was: 800-odd of them in one session. The watched
+write also has to happen **before** `logline` is blanked, or movement
+loses its argument the way it originally did. For a watched
 character `interpret()` now records every command with the room vnum,
 refusals included, and for the second kind logs the command's **name
 with its arguments dropped** -- so a password change is visible and the
@@ -950,6 +967,61 @@ idle character has. Both branches in `char_update` use it -- link-dead
 and connected-but-idle -- and a test asserts `LINKDEAD_PURGE_TICKS` is
 never compared against directly there, so a new branch cannot quietly
 skip the bonus.
+
+## The Psionic Awakening
+
+**Psionics awaken between levels 18 and 21 and nowhere else.**
+`PSI_AWAKEN_MIN` and `PSI_AWAKEN_MAX` in `merc.h` name the band, and
+`do_check_psi()` in `src/stubs.c` is the one place that holds it: one
+`number_range(18, 21)` per level *gained* inside the band, granting
+when it equals the character's level. Four rolls at one in four, so
+about a third of those owed finish the band with nothing. That is the
+design and it is not a bug to be smoothed out.
+
+Two ways to be owed psionics: a second remort
+(`num_remorts >= 2 && psionic <= 0`), or an immortal's `GRANTPSI`.
+Being owed is not receiving -- the band still has to be rolled
+through. The exception is **above** the band: there is no level check
+left to wait for, so a grant to a character past 21 lands at once,
+exactly as though the roll had hit.
+
+Four things were wrong here in 2026-09, all of them from the roll
+living in the wrong place -- open-coded as
+`chance = number_range(18,21); if (level == chance && psionic < 1)`
+at each of two call sites:
+
+- **`psionic_grant_pending` was written to the save file and read by
+  nothing.** `GRANTPSI` set it, saved it as `PsiGrant`, told the
+  immortal "they will receive psionics on their next level check" and
+  the player "your mind tingles with unfamiliar potential" -- and
+  then `do_check_psi` tested only the remort count. A level 50
+  character carried `PsiGrant 1` for days having been promised it
+  twice.
+- **A login re-rolled.** `load_char_obj` calls `do_check_psi`, so with
+  the roll at the call sites a character inside the band could relog
+  until it landed. The call from the loader passes no argument now and
+  only `"levelup"` rolls.
+- **A grant above the band waited for ever**, because the band is
+  behind you and nothing was checking whether it still could happen.
+- **`number_percent() >= chance` in `grant_psionics`** made a chance
+  of 100 miss one time in a hundred. `number_percent()` is 1..100, so
+  a miss is `roll > chance`. Every caller forces the grant, which is
+  the only reason nobody saw it.
+
+And the offline branch of `GRANTPSI` loads a *copy* of the character:
+any path that grants and returns without `save_char_obj` **and**
+`extract_char` throws the grant away and leaks the copy into the
+character list for the life of the process. There is one immediate
+path for that reason. `tests/test_psionics.py` pins all of it.
+
+**`psi_log()` writes the arithmetic, not the outcome.** Which power,
+out of which set, against which roll, and why that one -- a grant is
+rare and irreversible and the hardest thing in the game to argue
+about afterwards, and none of it used to be recorded anywhere but the
+player's own skill list. It writes one line per decision through
+`log_string`, with the room vnum folded in; do **not** also call
+`watch_log` from it, because both sinks are the same file and a
+watched character then gets every line twice.
 
 ## The Remort Class History
 

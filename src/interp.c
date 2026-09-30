@@ -545,6 +545,32 @@ void watch_log( CHAR_DATA *ch, const char *fmt, ... )
     log_string( line );
 }
 
+/*
+ * The commands whose arguments must never reach a log, as opposed to
+ * the ones that are merely too noisy for the global one.  PASSWORD and
+ * RESETPWD are obvious; REMORT is on the list because its syntax is
+ * `remort <password> <class> <guild> <race>` and the password is the
+ * first word of it; DELETE takes a confirmation nobody needs written
+ * down.  Movement and PKILL are LOG_NEVER for noise and belong nowhere
+ * near this list.
+ */
+static bool command_hides_arguments( const char *name )
+{
+    static const char * const secret[] =
+    { "password", "resetpwd", "delete", "delet", "remort", NULL };
+    int i;
+
+    if ( name == NULL )
+        return FALSE;
+
+    for ( i = 0; secret[i] != NULL; i++ )
+        if ( !str_cmp( name, secret[i] ) )
+            return TRUE;
+
+    return FALSE;
+}
+
+
 void interpret( CHAR_DATA *ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];
@@ -703,10 +729,17 @@ void interpret( CHAR_DATA *ch, char *argument )
 
     if ( found )
     {
-        bool secret = ( cmd_table[cmd].log == LOG_NEVER );
-
-        if ( secret )
-            logline[0] = '\0';
+        /*
+         * LOG_NEVER still means "keep this out of the global log", and
+         * that is all it means.  Whether the *arguments* may be written
+         * down is a separate question with a separate answer, and
+         * reading the two off one flag made a watched character's every
+         * step read "south (arguments withheld)" -- which claims
+         * something was hidden where there was nothing to hide, and
+         * buries the handful of lines where something really was.
+         */
+        bool quiet  = ( cmd_table[cmd].log == LOG_NEVER );
+        bool secret = command_hides_arguments( cmd_table[cmd].name );
 
         if ( watched )
         {
@@ -719,7 +752,11 @@ void interpret( CHAR_DATA *ch, char *argument )
                 secret ? " (arguments withheld)" : "" );
             log_string( log_buf );
         }
-        else if ( logline[0] != '\0'
+
+        if ( quiet )
+            logline[0] = '\0';
+
+        if ( !watched && logline[0] != '\0'
              && ( fLogAll || cmd_table[cmd].log == LOG_ALWAYS ) )
         {
             snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "Log %s: %s", ch->name, logline );
