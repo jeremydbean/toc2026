@@ -15389,3 +15389,11 @@ Wed Sep 30 16:24:37 2026 :: Loading Eclipse's playerfile
 Wed Sep 30 16:24:40 2026 :: Eclipse@97.248.95.144 has connected.
 Wed Sep 30 16:26:55 2026 :: Sock.sinaddr:  85.217.149.19
 Wed Sep 30 16:26:55 2026 :: EOF encountered on read.
+Wed Sep 30 16:33:08 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Wed Sep 30 16:33:13 2026 :: Received signal 15; saving players and shutting down.
+Wed Sep 30 16:33:13 2026 :: Closing link to Eclipse.
+Wed Sep 30 16:33:13 2026 :: Normal termination of game.
+Wed Sep 30 16:33:14 2026 ::  INIT OK 
+Wed Sep 30 16:33:14 2026 :: ROM is ready to rock on port 9000.
+Wed Sep 30 16:33:14 2026 :: Automated backup complete.
+Wed Sep 30 16:33:14 2026 :: Daily backup complete.
