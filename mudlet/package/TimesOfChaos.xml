@@ -15,6 +15,17 @@ end
    <packageName>TimesOfChaos</packageName>
    <regex>^tocgui(?:\s+(on|off|status|atlas))?$</regex>
   </Alias>
+  <Alias isActive="yes" isFolder="no">
+   <name>Times of Chaos walking</name>
+   <script><![CDATA[
+if tocMudlet and tocMudlet.walkCommand then
+  tocMudlet.walkCommand(matches[2])
+end
+]]></script>
+   <command></command>
+   <packageName>TimesOfChaos</packageName>
+   <regex>^walk(?:\s+(stop|\d+))?$</regex>
+  </Alias>
  </AliasPackage>
  <ActionPackage></ActionPackage>
  <ScriptPackage>
@@ -43,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.8"
+tocMudlet.version = "1.0.9"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -251,6 +262,159 @@ local function linkKnownExits(roomId, exits)
   end
 end
 
+-- Click-to-walk. Mudlet plots the route, hands it over in
+-- speedWalkDir (the commands) and speedWalkPath (the rooms those
+-- commands lead through), and calls doSpeedWalk(). Walking it is ours
+-- to do.
+--
+-- One step per arrival, rather than firing the whole path at the
+-- server at once. GMCP Room.Info is the game telling us we really
+-- moved, so the walk paces itself to the server, respects movement
+-- lag, and notices the moment something goes wrong -- a closed door,
+-- a mob in the way, a recall, being dragged somewhere. A burst of
+-- sends would look like it worked and leave you somewhere else.
+local WALK_TIMEOUT = 4
+
+-- Anything a direction might arrive as: the short keys this package
+-- records its exits under, the long names and the numeric constants
+-- Mudlet may hand back instead, and -- for a special exit -- the raw
+-- command string, which is why an unrecognised value is sent as it
+-- stands rather than dropped.
+local WALK_LONG = {
+  n = "north", e = "east", s = "south", w = "west", u = "up", d = "down",
+  ne = "northeast", nw = "northwest", se = "southeast", sw = "southwest",
+  [1] = "north", [2] = "northeast", [3] = "northwest", [4] = "east",
+  [5] = "west", [6] = "south", [7] = "southeast", [8] = "southwest",
+  [9] = "up", [10] = "down", [11] = "in", [12] = "out",
+}
+
+tocMudlet.walk = { dirs = {}, rooms = {}, step = 0, active = false,
+                   timer = nil, retried = false }
+
+local walkStop, walkSend, walkArm
+
+local function walkCommandFor(dir)
+  if dir == nil then return nil end
+  local key = type(dir) == "string" and dir:lower() or dir
+  return WALK_LONG[key] or tostring(dir)
+end
+
+walkStop = function(message)
+  local w = tocMudlet.walk
+  if w.timer and killTimer then pcall(killTimer, w.timer) end
+  w.timer = nil
+  w.active = false
+  w.dirs, w.rooms, w.step, w.retried = {}, {}, 0, false
+  if message then cecho("\n<gold>[walk]<reset> " .. message .. "\n") end
+end
+
+walkArm = function()
+  local w = tocMudlet.walk
+  if w.timer and killTimer then pcall(killTimer, w.timer) end
+  if not tempTimer then return end
+  w.timer = tempTimer(WALK_TIMEOUT, function()
+    local pending = tocMudlet.walk
+    if not pending.active then return end
+    local dir = walkCommandFor(pending.dirs[pending.step])
+    -- A shut door is much the commonest reason a step does not land,
+    -- and opening the one in front of you is what a player would do.
+    -- Once, then give up: hammering it is how a script picks a fight
+    -- with a guard.
+    if dir and not pending.retried then
+      pending.retried = true
+      send("open " .. dir)
+      send(dir)
+      walkArm()
+      return
+    end
+    walkStop("stopped at step " .. tostring(pending.step) ..
+      ": the room did not change, so something is in the way.")
+  end)
+end
+
+walkSend = function()
+  local w = tocMudlet.walk
+  w.step = w.step + 1
+  w.retried = false
+  local dir = walkCommandFor(w.dirs[w.step])
+  if dir == nil then
+    walkStop(nil)
+    cecho("\n<gold>[walk]<reset> Arrived.\n")
+    return
+  end
+  send(dir)
+  walkArm()
+end
+
+-- Called from onRoomInfo, which is the only thing that knows we moved.
+function tocMudlet.onWalkArrival(roomId)
+  local w = tocMudlet.walk
+  if not w.active then return end
+
+  local expected = tonumber(w.rooms[w.step])
+  if expected ~= nil and expected ~= roomId then
+    walkStop("stopped: that is not where the route expected you. " ..
+      "Click the room again to re-plot from here.")
+    return
+  end
+
+  walkSend()
+end
+
+function doSpeedWalk()
+  local dirs = type(speedWalkDir) == "table" and speedWalkDir or {}
+  local rooms = type(speedWalkPath) == "table" and speedWalkPath or {}
+
+  walkStop(nil)
+
+  if #dirs == 0 then
+    cecho("\n<gold>[walk]<reset> No route from here to there on your " ..
+      "map yet. Explore the way once and it will know.\n")
+    return
+  end
+
+  tocMudlet.walk.dirs = dirs
+  tocMudlet.walk.rooms = rooms
+  tocMudlet.walk.step = 0
+  tocMudlet.walk.active = true
+
+  cecho(string.format(
+    "\n<gold>[walk]<reset> Walking %d room%s. <white>walk stop<reset> " ..
+    "breaks off.\n", #dirs, #dirs == 1 and "" or "s"))
+  walkSend()
+end
+
+function tocMudlet.walkCommand(argument)
+  if argument == "stop" then
+    if tocMudlet.walk.active then
+      walkStop("stopped.")
+    else
+      cecho("\n<gold>[walk]<reset> Not walking anywhere.\n")
+    end
+    return
+  end
+
+  local target = tonumber(argument)
+  if target then
+    if not roomExistsSafe(target) then
+      cecho("\n<gold>[walk]<reset> Room " .. target ..
+        " is not on your map yet.\n")
+      return
+    end
+    if gotoRoom then pcall(gotoRoom, target) end
+    return
+  end
+
+  if tocMudlet.walk.active then
+    cecho(string.format(
+      "\n<gold>[walk]<reset> Walking: %d of %d rooms done.\n",
+      math.max(0, tocMudlet.walk.step - 1), #tocMudlet.walk.dirs))
+  else
+    cecho("\n<gold>[walk]<reset> Click a room on the map to walk there, " ..
+      "or <white>walk <vnum><reset>.\n")
+  end
+end
+
 function tocMudlet.onRoomInfo()
   -- First room of the session is the moment the map has something to
   -- show, and the moment it most needs the nudge.
@@ -274,6 +438,7 @@ function tocMudlet.onRoomInfo()
 
   tocMudlet.lastRoom = roomId
   tocMudlet.lastExits = info
+  tocMudlet.onWalkArrival(roomId)
   if tocMudlet.ui.location then
     tocMudlet.ui.location:echo(string.format(
       [[<span style="color:%s"><b>%s</b></span>  <span style="color:%s">%s · #%d</span>]],

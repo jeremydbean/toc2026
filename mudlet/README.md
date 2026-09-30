@@ -18,6 +18,14 @@ alias `tocgui off` hides the interface and `tocgui on` restores it.
 `tocgui status` reports the installed package version and whether GMCP data is
 active. Mapping continues while the interface is hidden.
 
+Package 1.0.9 adds click-to-walk. Click a room on the map, or type
+`walk <vnum>`, and the character walks there one room at a time. Each
+step is sent when GMCP confirms you arrived in the room the route
+expected, so the walk keeps pace with the server and stops the moment
+something goes wrong -- a mob in the way, a recall, being dragged off.
+A shut door is opened and retried once. `walk stop` breaks off, and
+`walk` on its own reports progress.
+
 Package 1.0.8 sets `mudlet.mapper_script`, which stops Mudlet's own
 mapper printing "Prompt not auto-detected, use 'map prompt' to set a
 prompt pattern" when the map opens. This package maps from GMCP

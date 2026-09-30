@@ -5,6 +5,7 @@ import io
 import re
 import shutil
 import subprocess
+import tempfile
 import unittest
 import zipfile
 from pathlib import Path
@@ -39,6 +40,37 @@ class MudletAssetTests(unittest.TestCase):
             (ROOT / "mudlet" / "TimesOfChaos.mpackage").read_bytes(),
             BUILDER.build_package_bytes(),
         )
+
+    def test_click_to_walk_walks_one_step_per_arrival(self) -> None:
+        """Drive doSpeedWalk in real Lua, against a stubbed Mudlet.
+
+        Checking the source for the right function names would not
+        catch what actually matters: that one arrival sends exactly
+        one step, that being pushed off the route stops the walk
+        instead of marching the rest of it into a wall, and that a
+        shut door is retried once and then given up on. The spec
+        lives in tests/mudlet_walk_spec.lua.
+        """
+        lua = None
+        for candidate in ("lua5.4", "lua5.3", "lua", "luajit"):
+            lua = shutil.which(candidate)
+            if lua is not None:
+                break
+        if lua is None:
+            self.skipTest("no lua interpreter on PATH")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            script = Path(tmp) / "package.lua"
+            script.write_text(self.package_script(), encoding="utf-8")
+            result = subprocess.run(
+                [lua, str(ROOT / "tests" / "mudlet_walk_spec.lua"),
+                 str(script)],
+                capture_output=True, text=True, timeout=120,
+            )
+
+        self.assertEqual(result.returncode, 0,
+                         result.stdout + result.stderr)
+        self.assertIn("ALL PASS", result.stdout)
 
     def test_package_contains_valid_mudlet_xml(self) -> None:
         package = BUILDER.build_package_bytes()

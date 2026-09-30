@@ -26,6 +26,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Mudlet 1.0.9: click-to-walk.** Click a room on the map, or type
+  `walk <vnum>`, and the character walks there. Mudlet plots the route
+  and hands it over; the package walks it one room at a time, sending
+  each step only when GMCP confirms arrival in the room the route
+  expected. That paces it to the server, respects movement lag, and
+  stops the walk the moment something diverts you rather than marching
+  the rest of the path into a wall. A shut door is opened and the step
+  retried once. `walk stop` breaks off.
+
 - **Emergency contracts.** About one quest request in twenty now comes
   back as an emergency: five minutes flat, and five times the base point
   reward. It is rolled ahead of the rush contract and replaces it, so a
