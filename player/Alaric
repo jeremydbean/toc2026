@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790810805
+LogO 1790811295
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,7 +15,7 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 50
-Plyd 214919
+Plyd 214932
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -96,6 +96,7 @@ QuestPnts 5227
 QuestStrk 54
 CasinoWon  51
 CasinoLost 304
+QuestNext 30
 Exp  112575
 Act  4261068
 AfBy 3678848
@@ -173,26 +174,26 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'empower'   4  -1   0   0          0          0
-AffD 'titanic'   2  -1  50  16          0          0
-AffD 'titanic'   8  -1 500  14          0          0
-AffD 'titanic'   6  -1 500  12          0          0
 AffD 'titanic'   3  -1 100  13          0          0
+AffD 'titanic'   6  -1 500  12          0          0
+AffD 'titanic'   8  -1 500  14          0          0
+AffD 'titanic'   2  -1  50  16          0          0
+AffD 'empower'   4  -1   0   0          0          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1 -100  17          0          0
 End
 
 #O
@@ -589,8 +590,8 @@ Lev  46
 Cost 19350000
 Cond 100
 Repd 0
-Affect -1 46 -1 2 24 0 0
 Affect -1 46 -1 -1 14 0 0
+Affect -1 46 -1 2 24 0 0
 End
 
 #O
@@ -601,9 +602,9 @@ Lev  46
 Cost 19350000
 Cond 100
 Repd 0
-Affect -1 46 -1 -4 18 0 0
-Affect -1 46 -1 -5 1 0 0
 Affect -1 46 -1 -1 1 0 0
+Affect -1 46 -1 -5 1 0 0
+Affect -1 46 -1 -4 18 0 0
 End
 
 #O
@@ -725,10 +726,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -3 22 0 0
-Affect -1 32 -1 -15 13 0 0
-Affect -1 32 -1 -13 12 0 0
 Affect -1 32 -1 -1 5 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -3 22 0 0
 End
 
 #O
