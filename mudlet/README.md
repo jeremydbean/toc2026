@@ -18,6 +18,11 @@ alias `tocgui off` hides the interface and `tocgui on` restores it.
 `tocgui status` reports the installed package version and whether GMCP data is
 active. Mapping continues while the interface is hidden.
 
+Package 1.0.8 sets `mudlet.mapper_script`, which stops Mudlet's own
+mapper printing "Prompt not auto-detected, use 'map prompt' to set a
+prompt pattern" when the map opens. This package maps from GMCP
+`Room.Info` and never reads the prompt, so that warning never applied.
+
 Package 1.0.7 capitalises the race and class shown in the identity panel.
 `Char.Status` carries them the way the game stores them -- "half-elf",
 "cleric" -- because GMCP is data rather than presentation, so the panel

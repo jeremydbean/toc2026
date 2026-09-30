@@ -10,6 +10,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Mudlet 1.0.8: no more "Prompt not auto-detected" from the mapper.**
+  Mudlet's own mapper assumes nothing is handling the map unless a
+  script says so, and then tries to auto-detect a prompt to track
+  movement itself. This package maps from GMCP `Room.Info` and never
+  reads the prompt, so the warning never applied to it; setting
+  `mudlet.mapper_script` is the documented way to say so.
+
 - **Mudlet 1.0.7: the identity panel capitalises race and class.**
   Reported in game by Alaric. `Char.Status` carries them the way the
   game stores them, lower case, because GMCP is data and not

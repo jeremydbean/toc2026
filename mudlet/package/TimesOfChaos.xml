@@ -30,10 +30,20 @@ end
 -- Times of Chaos official Mudlet package
 -- https://github.com/jeremydbean/toc2026/tree/main/mudlet
 
+-- Tell Mudlet a mapping script is installed. Without this its own
+-- mapper assumes nothing is handling the map, tries to auto-detect a
+-- prompt so it can track movement itself, and prints
+-- "Prompt not auto-detected, use 'map prompt' to set a prompt pattern"
+-- at anyone who opens the mapper. This package maps from GMCP
+-- Room.Info and never needs the prompt, so the warning was pure noise
+-- and it worried at least one player into reporting it.
+mudlet = mudlet or {}
+mudlet.mapper_script = true
+
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.0.7"
+tocMudlet.version = "1.0.8"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
