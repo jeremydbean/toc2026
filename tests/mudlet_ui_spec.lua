@@ -44,6 +44,13 @@ roomExists = function() return true end
 gotoRoom = function() end
 gmcp = { Char = {}, Room = {} }
 
+-- The package opens with `tocMudlet = tocMudlet or {}`, which reads
+-- the global before assigning it. Left to the metatable above, that
+-- read returns a stub, the stub is truthy, and the package adopts it
+-- as its own table -- after which every tocMudlet.x is another stub.
+-- Hand it a plain table to find.
+tocMudlet = { handlers = {}, ui = {} }
+
 -- install() at the bottom of the package builds a UI; it may well
 -- fail against stubs, and it does not matter. Everything under test
 -- is defined above that call.
@@ -152,11 +159,14 @@ check("naming who said it", (chat[1] or ""):find("Alaric") ~= nil, chat[1])
 check("in a colour tag decho can read, decimal and not hex",
   (chat[1] or ""):match("<%d+,%d+,%d+>") ~= nil, chat[1])
 
+-- The pane filters now, and the Chat tab leaves tells out, so the
+-- tell has to be asked for by tab rather than assumed.
 gmcp.Comm.Channel = { channel = "tell", speaker = "",
                       text = "You tell Bob 'hi'", time = 0 }
 tocMudlet.onChannel()
-check("a tell carries its own wording",
-  (chat[2] or ""):find("You tell Bob") ~= nil, chat[2])
+check("a tell is not in the Chat tab",
+  (chat[2] or ""):find("You tell Bob") == nil, chat[2])
+check("but it is kept", #tocMudlet.chatLog >= 2, #tocMudlet.chatLog)
 
 -- ------------------------------------------------ the affects panel
 local shown = {}
@@ -181,6 +191,143 @@ gmcp.Char.Affects = { affects = {} }
 tocMudlet.onAffects()
 check("an empty list says so",
   (shown[#shown] or ""):find("No spells") ~= nil, shown[#shown])
+
+-- ------------------------------------------------ a console stub
+local function console()
+  local lines = {}
+  return {
+    lines = lines,
+    clear = function() for i = #lines, 1, -1 do lines[i] = nil end end,
+    decho = function(_, line) lines[#lines + 1] = line end,
+    echo = function(_, line) lines[#lines + 1] = line end,
+    show = function(self) self.shown = true end,
+    hide = function(self) self.shown = false end,
+    setStyleSheet = function() end,
+    setClickCallback = function(self, fn) self.click = fn end,
+  }
+end
+
+local function text(pane)
+  return table.concat(pane.lines, "")
+end
+
+-- ------------------------------------------------ the quest panel
+tocMudlet.ui.quest = console()
+gmcp.Char = gmcp.Char or {}
+
+gmcp.Char.Quest = { active = false, wait = 7 }
+tocMudlet.onQuest()
+check("a waiting quest says how long", text(tocMudlet.ui.quest):find("7 min") ~= nil,
+  text(tocMudlet.ui.quest))
+
+tocMudlet.ui.quest = console()
+gmcp.Char.Quest = { active = true, kind = "emergency", countdown = 1,
+                    target = "a cooshee", kill = true }
+tocMudlet.onQuest()
+local questText = text(tocMudlet.ui.quest)
+check("an emergency says so", questText:find("EMERGENCY") ~= nil, questText)
+check("and names the target", questText:find("cooshee") ~= nil, questText)
+check("and says Kill for a kill quest", questText:find("Kill") ~= nil, questText)
+
+-- ------------------------------------------------ the target strip
+tocMudlet.ui.target = console()
+gmcp.Char.Target = { fighting = false }
+tocMudlet.onTarget()
+check("not fighting says so",
+  text(tocMudlet.ui.target):find("Not fighting") ~= nil,
+  text(tocMudlet.ui.target))
+
+tocMudlet.ui.target = console()
+gmcp.Char.Target = { fighting = true, name = "a fido", percent = 30 }
+tocMudlet.onTarget()
+local targetText = text(tocMudlet.ui.target)
+check("a target is named", targetText:find("fido") ~= nil, targetText)
+check("with its percentage", targetText:find("30%%") ~= nil, targetText)
+
+-- ------------------------------------------------ who is here
+tocMudlet.ui.here = console()
+gmcp.Room = gmcp.Room or {}
+gmcp.Room.Chars = { chars = {} }
+tocMudlet.onChars()
+check("an empty room says so",
+  text(tocMudlet.ui.here):find("Nobody else") ~= nil, text(tocMudlet.ui.here))
+
+tocMudlet.ui.here = console()
+gmcp.Room.Chars = { chars = {
+  { name = "a guard", npc = true, aggressive = true },
+  { name = "Alaric", npc = false },
+} }
+tocMudlet.onChars()
+local hereText = text(tocMudlet.ui.here)
+check("everyone is listed",
+  hereText:find("guard") and hereText:find("Alaric"), hereText)
+check("an aggressive is marked", hereText:find("aggressive") ~= nil, hereText)
+
+-- ------------------------------------------------ carried and worn
+tocMudlet.ui.items = console()
+gmcp.Char.Items = {
+  equipment = { { name = "a sub issue sword", slot = 16 } },
+  inventory = { { name = "a loaf of bread" } },
+}
+tocMudlet.onItems()
+local itemText = text(tocMudlet.ui.items)
+check("the wear slot is named", itemText:find("wielded") ~= nil, itemText)
+check("carried items are listed", itemText:find("bread") ~= nil, itemText)
+
+-- ------------------------------------------------ the toast
+tocMudlet.ui.toast = console()
+gmcp.Char.Achievement = { title = "Rush Delivery", description = "Fast.",
+                          points = 15 }
+tocMudlet.onAchievement()
+check("an achievement is shown", tocMudlet.ui.toast.shown == true)
+check("with its title",
+  text(tocMudlet.ui.toast):find("Rush Delivery") ~= nil,
+  text(tocMudlet.ui.toast))
+
+-- ------------------------------------------------ clickable exits
+tocMudlet.exitButtons = {}
+for i = 1, 10 do tocMudlet.exitButtons[i] = console() end
+tocMudlet.showExits({ n = 100, e = 101 })
+check("one button per exit",
+  tocMudlet.exitButtons[1].shown == true
+    and tocMudlet.exitButtons[2].shown == true
+    and tocMudlet.exitButtons[3].shown == false)
+check("a button walks that way", type(tocMudlet.exitButtons[1].click) == "function")
+
+sent = {}
+tocMudlet.exitButtons[1].click()
+check("and sends the long direction", sent[1] == "north", sent[1])
+
+tocMudlet.showExits({})
+check("a room with no exits shows no buttons",
+  tocMudlet.exitButtons[1].shown == false)
+
+-- ------------------------------------------------ the chat tabs
+tocMudlet.chatLog = {}
+tocMudlet.ui.chat = console()
+tocMudlet.ui.here = console()
+tocMudlet.ui.items = console()
+tocMudlet.ui.tabs = {}
+
+gmcp.Comm = { Channel = { channel = "gossip", speaker = "A", text = "one",
+                          time = 0 } }
+tocMudlet.onChannel()
+gmcp.Comm.Channel = { channel = "tell", speaker = "", text = "two", time = 0 }
+tocMudlet.onChannel()
+
+tocMudlet.showPane("tells")
+local tellsOnly = text(tocMudlet.ui.chat)
+check("the Tells tab shows only tells",
+  tellsOnly:find("two") ~= nil and tellsOnly:find("one") == nil, tellsOnly)
+
+tocMudlet.showPane("chat")
+local chatOnly = text(tocMudlet.ui.chat)
+check("the Chat tab leaves tells out",
+  chatOnly:find("one") ~= nil and chatOnly:find("two") == nil, chatOnly)
+
+tocMudlet.showPane("here")
+check("the Here tab swaps the console",
+  tocMudlet.ui.here.shown == true and tocMudlet.ui.chat.shown == false)
 
 print(failures == 0 and "ALL PASS" or (failures .. " FAILED"))
 os.exit(failures == 0 and 0 or 1)

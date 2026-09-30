@@ -107,11 +107,22 @@ WHAT THE INTERFACE SHOWS
             about to lapse is the one you see.  Five ticks or less turns
             orange.  Shadowmeld shows no number because it does not run
             out: it ends when you leave the room, strike, or go visible.
+  Target    Who you are fighting and how badly they are hurt.
+  Quest     Your quest, what it wants, and the timer counting down.
+            An EMERGENCY contract says so, and the last minute turns
+            red.
   Map       The whole world, following you as you move.
-  Chat      Channels and tells in their own scrollback below the map,
-            coloured by channel.  It shows what you actually heard - a
-            yell from another area, or a channel you have switched off,
-            never reaches it.
+  Exits     A button for each way out of the room.  Click one to go.
+  Tabs      Below the map, four of them:
+              Chat   every channel you can hear
+              Tells  just the tells, so they are not lost in gossip
+              Here   who and what is in the room, aggressives marked
+              Items  what you are wearing and what you carry
+            The chat shows what you actually heard - a yell from
+            another area, or a channel you have switched off, never
+            reaches it.
+  Awards    An achievement is shown over the map for a few seconds
+            when you earn it.
 
 Package updates are offered automatically when the server advertises a new
 version.
@@ -120,7 +131,8 @@ COMMANDS
 These are local Mudlet aliases, not game commands.  They do nothing over
 plain Telnet or in the browser client.
 
-  tocgui         show the package version and GMCP state
+  tocgui status  show the package version and GMCP state, which
+                 bare TOCGUI also does
   tocgui atlas   download the world map into this profile
   tocgui off     hide the interface
   tocgui on      restore the interface

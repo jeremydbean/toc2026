@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.1.1"
+tocMudlet.version = "1.2.0"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -62,6 +62,9 @@ tocMudlet.mapNudged = false
 tocMudlet.lastExits = nil
 tocMudlet.enabled = true
 tocMudlet.routes = nil
+tocMudlet.chatLog = {}
+tocMudlet.chatFilter = "chat"
+tocMudlet.exitButtons = {}
 tocMudlet.affects = {}
 
 local P = {
@@ -569,6 +572,7 @@ function tocMudlet.onRoomInfo()
 
   tocMudlet.lastRoom = roomId
   tocMudlet.lastExits = info
+  tocMudlet.showExits(info.exits)
   tocMudlet.onWalkArrival(roomId)
   if tocMudlet.ui.location then
     tocMudlet.ui.location:echo(string.format(
@@ -612,6 +616,26 @@ local function rgbOf(hex)
     tonumber(r, 16), tonumber(g, 16), tonumber(b, 16))
 end
 
+local CHAT_LOG_MAX = 300
+
+-- Which lines each tab wants. "chat" is everything a room full of
+-- people would have heard; tells are somebody talking to you alone,
+-- which is worth its own tab rather than being lost among gossip.
+local function chatWants(filter, channel)
+  if filter == "tells" then return channel == "tell" end
+  return channel ~= "tell"
+end
+
+local function chatRender()
+  if not tocMudlet.ui.chat then return end
+  tocMudlet.ui.chat:clear()
+  for _, entry in ipairs(tocMudlet.chatLog) do
+    if chatWants(tocMudlet.chatFilter, entry.channel) then
+      tocMudlet.ui.chat:decho(entry.line)
+    end
+  end
+end
+
 local CHANNEL_COLOUR = {
   gossip = "#8ab4ff", auction = "#ffd479", question = "#7ee0c0",
   answer = "#7ee0c0", shout = "#ff9f6e", yell = "#ff9f6e",
@@ -632,9 +656,50 @@ function tocMudlet.onChannel()
     body = string.format("%s: %s", tostring(line.speaker), tostring(line.text))
   end
 
-  tocMudlet.ui.chat:decho(string.format(
+  local rendered = string.format(
     "<%s>[%s] <%s>%s<r>\n",
-    rgbOf(P.muted), when, rgbOf(colour), (body:gsub("<", "("))))
+    rgbOf(P.muted), when, rgbOf(colour), (body:gsub("<", "(")))
+
+  -- Kept so a tab change can redraw without asking the game again.
+  tocMudlet.chatLog[#tocMudlet.chatLog + 1] =
+    { channel = line.channel or "", line = rendered }
+  while #tocMudlet.chatLog > CHAT_LOG_MAX do
+    table.remove(tocMudlet.chatLog, 1)
+  end
+
+  if chatWants(tocMudlet.chatFilter, line.channel or "") then
+    tocMudlet.ui.chat:decho(rendered)
+  end
+end
+
+-- The bottom pane is four tabs over three consoles: Chat and Tells
+-- are the same console with different filters, because they are the
+-- same stream read two ways.
+function tocMudlet.showPane(which)
+  local panes = { chat = tocMudlet.ui.chat, here = tocMudlet.ui.here,
+                  items = tocMudlet.ui.items }
+
+  if which == "tells" or which == "chat" then
+    tocMudlet.chatFilter = which
+    chatRender()
+  end
+
+  local visible = (which == "tells") and "chat" or which
+  for name, pane in pairs(panes) do
+    if pane then
+      if name == visible then pane:show() else pane:hide() end
+    end
+  end
+
+  for name, tab in pairs(tocMudlet.ui.tabs or {}) do
+    if tab then
+      tab:setStyleSheet(string.format([[
+        background:%s;color:%s;border:1px solid %s;border-radius:4px;
+        qproperty-alignment:'AlignCenter';]],
+        name == which and P.border or P.background,
+        name == which and P.text or P.muted, P.border))
+    end
+  end
 end
 
 function tocMudlet.onAffects()
@@ -673,6 +738,173 @@ function tocMudlet.onAffects()
 
   tocMudlet.ui.affects:echo(table.concat(parts,
     string.format([[<span style="color:%s"> · </span>]], P.border)))
+end
+
+function tocMudlet.onQuest()
+  local quest = gmcp and gmcp.Char and gmcp.Char.Quest
+  if type(quest) ~= "table" or not tocMudlet.ui.quest then return end
+
+  if not quest.active then
+    local wait = tonumber(quest.wait) or 0
+    local text = wait > 0
+      and string.format("Quest: ready in %d min", wait)
+      or "Quest: ready"
+    tocMudlet.ui.quest:echo(string.format(
+      [[<span style="color:%s">%s</span>]], P.muted, html(text)))
+    return
+  end
+
+  local left = tonumber(quest.countdown) or 0
+  -- An emergency is five minutes total, so a minute left is a quarter
+  -- of it gone wrong; the colour has to arrive before the panic does.
+  local colour = left <= 1 and "#ff6e6e"
+    or left <= 3 and "#ff9f6e"
+    or P.text
+  local kind = quest.kind == "emergency" and "EMERGENCY "
+    or quest.kind == "rush" and "RUSH "
+    or ""
+  local verb = quest.kill and "Kill" or "Fetch"
+
+  tocMudlet.ui.quest:echo(string.format(
+    [[<span style="color:%s">%s%s %s</span>]] ..
+    [[<span style="color:%s"> &middot; %d min</span>]],
+    P.muted, kind, verb, html(quest.target or "?"), colour, left))
+end
+
+function tocMudlet.onTarget()
+  local target = gmcp and gmcp.Char and gmcp.Char.Target
+  if type(target) ~= "table" or not tocMudlet.ui.target then return end
+
+  if not target.fighting then
+    tocMudlet.ui.target:echo(string.format(
+      [[<span style="color:%s">Not fighting</span>]], P.muted))
+    return
+  end
+
+  local percent = math.max(0, math.min(100, tonumber(target.percent) or 0))
+  local colour = percent <= 25 and "#ff6e6e"
+    or percent <= 60 and "#ff9f6e" or "#9fe870"
+  -- A bar drawn in text, because a Geyser gauge here would need its
+  -- own row and this fits on the one line the panel has.
+  local filled = math.floor(percent / 10)
+  tocMudlet.ui.target:echo(string.format(
+    [[<span style="color:%s">%s</span> ]] ..
+    [[<span style="color:%s">%s</span>]] ..
+    [[<span style="color:%s">%s %d%%</span>]],
+    P.text, html(target.name or "?"), colour, string.rep("|", filled),
+    P.border, string.rep("|", 10 - filled), percent))
+end
+
+function tocMudlet.onChars()
+  local payload = gmcp and gmcp.Room and gmcp.Room.Chars
+  if type(payload) ~= "table" or not tocMudlet.ui.here then return end
+
+  local list = type(payload.chars) == "table" and payload.chars or {}
+  tocMudlet.ui.here:clear()
+
+  if #list == 0 then
+    tocMudlet.ui.here:decho(string.format("<%s>Nobody else here.\n",
+      rgbOf(P.muted)))
+    return
+  end
+
+  for _, who in ipairs(list) do
+    local colour = who.aggressive and "#ff6e6e"
+      or (not who.npc) and "#8ab4ff" or P.text
+    local note = who.aggressive and " (aggressive)" or ""
+    if who.fighting then note = note .. " (fighting)" end
+    tocMudlet.ui.here:decho(string.format("<%s>%s<%s>%s\n",
+      rgbOf(colour), tostring(who.name or "?"):gsub("<", "("),
+      rgbOf(P.muted), note))
+  end
+end
+
+local WEAR_SLOT = {
+  [0] = "light", [1] = "finger", [2] = "finger", [3] = "neck",
+  [4] = "neck", [5] = "body", [6] = "head", [7] = "legs", [8] = "feet",
+  [9] = "hands", [10] = "arms", [11] = "shield", [12] = "about",
+  [13] = "waist", [14] = "wrist", [15] = "wrist", [16] = "wielded",
+  [17] = "held",
+}
+
+function tocMudlet.onItems()
+  local payload = gmcp and gmcp.Char and gmcp.Char.Items
+  if type(payload) ~= "table" or not tocMudlet.ui.items then return end
+
+  local worn = type(payload.equipment) == "table" and payload.equipment or {}
+  local carried = type(payload.inventory) == "table" and payload.inventory or {}
+  tocMudlet.ui.items:clear()
+
+  tocMudlet.ui.items:decho(string.format("<%s>WORN\n", rgbOf(P.muted)))
+  if #worn == 0 then
+    tocMudlet.ui.items:decho(string.format("<%s>  nothing\n",
+      rgbOf(P.border)))
+  end
+  for _, item in ipairs(worn) do
+    tocMudlet.ui.items:decho(string.format("<%s>  %-8s <%s>%s\n",
+      rgbOf(P.muted), WEAR_SLOT[tonumber(item.slot) or -1] or "worn",
+      rgbOf(P.text), tostring(item.name or "?"):gsub("<", "(")))
+  end
+
+  tocMudlet.ui.items:decho(string.format("\n<%s>CARRIED\n",
+    rgbOf(P.muted)))
+  if #carried == 0 then
+    tocMudlet.ui.items:decho(string.format("<%s>  nothing\n",
+      rgbOf(P.border)))
+  end
+  for _, item in ipairs(carried) do
+    tocMudlet.ui.items:decho(string.format("<%s>  %s\n",
+      rgbOf(P.text), tostring(item.name or "?"):gsub("<", "(")))
+  end
+end
+
+function tocMudlet.onAchievement()
+  local earned = gmcp and gmcp.Char and gmcp.Char.Achievement
+  if type(earned) ~= "table" or not tocMudlet.ui.toast then return end
+
+  tocMudlet.ui.toast:echo(string.format(
+    [[<div style="color:%s"><b>%s</b></div>]] ..
+    [[<div style="color:%s">%s &middot; +%s points</div>]],
+    "#ffd479", html(earned.title or "Achievement"), P.muted,
+    html(earned.description or ""), tostring(earned.points or 0)))
+  tocMudlet.ui.toast:show()
+
+  -- Long enough to read, short enough not to sit over the map.
+  tocMudlet.toastAt = (tocMudlet.toastAt or 0) + 1
+  local mine = tocMudlet.toastAt
+  if tempTimer then
+    tempTimer(8, function()
+      if tocMudlet.toastAt == mine and tocMudlet.ui.toast then
+        tocMudlet.ui.toast:hide()
+      end
+    end)
+  end
+end
+
+-- Clickable exits. The room panel already knows them; making them
+-- clickable is the difference between reading the map and using it.
+function tocMudlet.showExits(exits)
+  local order = { "n", "e", "s", "w", "u", "d", "ne", "nw", "se", "sw" }
+  local index = 0
+
+  for _, short in ipairs(order) do
+    if type(exits) == "table" and exits[short] then
+      index = index + 1
+      local button = tocMudlet.exitButtons[index]
+      if button then
+        local long = LONG_DIRECTION[short] or short
+        button:echo(string.format(
+          [[<center><span style="color:%s">%s</span></center>]],
+          P.text, short:upper()))
+        button:setClickCallback(function() send(long) end)
+        button:show()
+      end
+    end
+  end
+
+  for spare = index + 1, #tocMudlet.exitButtons do
+    tocMudlet.exitButtons[spare]:hide()
+  end
 end
 
 function tocMudlet.onStatus()
@@ -758,16 +990,86 @@ function tocMudlet.buildUI()
   -- The map keeps the top half and the chat takes the bottom. A chat
   -- window is the thing a player reads while walking, so it wants to
   -- be beside the map rather than buried behind it.
+  tocMudlet.ui.target = Geyser.Label:new({
+    name = "tocMudlet.target", x = -350, y = 88,
+    width = 340, height = 24,
+  })
+  tocMudlet.ui.quest = Geyser.Label:new({
+    name = "tocMudlet.quest", x = -350, y = 116,
+    width = 340, height = 24,
+  })
+  for _, strip in ipairs({ tocMudlet.ui.target, tocMudlet.ui.quest }) do
+    strip:setStyleSheet(string.format([[
+      background:%s;color:%s;border:1px solid %s;border-radius:5px;
+      padding:2px 8px;qproperty-alignment:'AlignVCenter';]],
+      P.background, P.text, P.border))
+  end
+  tocMudlet.ui.target:echo(string.format(
+    [[<span style="color:%s">Not fighting</span>]], P.muted))
+  tocMudlet.ui.quest:echo(string.format(
+    [[<span style="color:%s">Quest: ready</span>]], P.muted))
+
   tocMudlet.ui.mapper = Geyser.Mapper:new({
-    name = "tocMudlet.mapper", x = -350, y = 90,
-    width = 340, height = "54%-90px",
+    name = "tocMudlet.mapper", x = -350, y = 146,
+    width = 340, height = "50%-146px",
   })
 
-  tocMudlet.ui.chat = Geyser.MiniConsole:new({
-    name = "tocMudlet.chat", x = -350, y = "54%",
-    width = 340, height = "46%-52px",
-    autoWrap = true, scrollBar = true, fontSize = 9,
+  -- Three consoles in one place, one shown at a time.
+  local paneGeometry = { x = -350, y = "50%", width = 340,
+                         height = "50%-80px", autoWrap = true,
+                         scrollBar = true, fontSize = 9 }
+  for _, name in ipairs({ "chat", "here", "items" }) do
+    local spec = {}
+    for key, value in pairs(paneGeometry) do spec[key] = value end
+    spec.name = "tocMudlet." .. name
+    tocMudlet.ui[name] = Geyser.MiniConsole:new(spec)
+    pcall(function() tocMudlet.ui[name]:setColor(P.background) end)
+    tocMudlet.ui[name]:setFontSize(9)
+    if tocMudlet.ui[name].enableScrollBar then
+      pcall(function() tocMudlet.ui[name]:enableScrollBar() end)
+    end
+  end
+
+  tocMudlet.ui.tabs = {}
+  local tabBar = Geyser.HBox:new({
+    name = "tocMudlet.tabBar", x = -350, y = -76, width = 340, height = 24,
   })
+  for _, tab in ipairs({ { "chat", "Chat" }, { "tells", "Tells" },
+                         { "here", "Here" }, { "items", "Items" } }) do
+    local label = Geyser.Label:new(
+      { name = "tocMudlet.tab." .. tab[1] }, tabBar)
+    label:echo(string.format(
+      [[<center><span style="color:%s">%s</span></center>]], P.muted, tab[2]))
+    label:setClickCallback(function() tocMudlet.showPane(tab[1]) end)
+    tocMudlet.ui.tabs[tab[1]] = label
+  end
+
+  -- An achievement is rare and worth stopping for, so it is drawn
+  -- over the map rather than scrolling past in the chat.
+  tocMudlet.ui.toast = Geyser.Label:new({
+    name = "tocMudlet.toast", x = -350, y = 150, width = 340, height = 56,
+  })
+  tocMudlet.ui.toast:setStyleSheet(string.format([[
+    background:%s;color:%s;border:2px solid #ffd479;border-radius:6px;
+    padding:4px 10px;]], P.panel, P.text))
+  tocMudlet.ui.toast:hide()
+
+  -- Clickable exits, sitting left of the sidebar on the bottom bar.
+  local exitBar = Geyser.HBox:new({
+    name = "tocMudlet.exitBar", x = -660, y = -34, width = 296, height = 34,
+  })
+  for slot = 1, 10 do
+    local button = Geyser.Label:new(
+      { name = "tocMudlet.exit" .. slot }, exitBar)
+    button:setStyleSheet(string.format([[
+      background:%s;color:%s;border:1px solid %s;border-radius:4px;
+      margin:4px 2px;qproperty-alignment:'AlignCenter';]],
+      P.background, P.text, P.border))
+    button:hide()
+    tocMudlet.exitButtons[slot] = button
+  end
+
+  tocMudlet.showPane("chat")
   pcall(function() tocMudlet.ui.chat:setColor(P.background) end)
   tocMudlet.ui.chat:setFontSize(9)
   if tocMudlet.ui.chat.enableScrollBar then
@@ -941,6 +1243,11 @@ function tocMudlet.install()
   register("gmcp.Char.Vitals", function() tocMudlet.onVitals() end)
   register("gmcp.Char.Status", function() tocMudlet.onStatus() end)
   register("gmcp.Char.Affects", function() tocMudlet.onAffects() end)
+  register("gmcp.Char.Quest", function() tocMudlet.onQuest() end)
+  register("gmcp.Char.Target", function() tocMudlet.onTarget() end)
+  register("gmcp.Char.Items", function() tocMudlet.onItems() end)
+  register("gmcp.Char.Achievement", function() tocMudlet.onAchievement() end)
+  register("gmcp.Room.Chars", function() tocMudlet.onChars() end)
   register("gmcp.Comm.Channel", function() tocMudlet.onChannel() end)
   register("gmcp.Room.Info", function() tocMudlet.onRoomInfo() end)
   register("sysConnectionEvent", function() tocMudlet.subscribe() end)
