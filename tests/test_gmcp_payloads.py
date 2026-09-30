@@ -89,10 +89,31 @@ class GmcpPayloadTests(unittest.TestCase):
         emits = self.comm.count("gmcp_send_channel(")
         self.assertEqual(recordings, 7, "channel count moved")
         self.assertEqual(
-            emits, recordings * 2 + 1,
-            "every channel needs a speaker emit and a listener emit, "
-            "plus the one inside tell_history_add",
+            emits, recordings * 2 + 2,
+            "every channel needs a speaker emit and a listener emit; "
+            "then one inside tell_history_add, and one inside do_say "
+            "whose single room loop covers the speaker too",
         )
+
+    def test_a_say_is_journalled_but_never_replayed(self) -> None:
+        """A room conversation cannot honestly be replayed.
+
+        HISTORY hands its rings to whoever asks, including somebody
+        who was nowhere near at the time, and nothing remembers who
+        was standing in the room. So a say reaches the journal and
+        the chat panes of the people who were there, and no ring.
+        """
+        # Not function_body(): do_say is full of colour codes like
+        # "{%02X" and "{00", and a brace counter cannot tell those
+        # from the braces it is looking for.
+        body = self.comm.split("void do_say(", 1)[1]
+        body = body.split("\nvoid ", 1)[0]
+        self.assertIn('channel_journal_record( "say"', body)
+        self.assertIn('gmcp_send_channel( rch->desc, "say"', body)
+        self.assertNotIn("channel_history_add", body)
+        # The same position gate act() just used, so a sleeper who was
+        # not shown the line does not receive it either.
+        self.assertIn("position < POS_RESTING", body)
 
     def test_the_listener_emit_sits_with_the_listener_write(self) -> None:
         """Beside act_new_cstr, so it inherits that loop's filters."""

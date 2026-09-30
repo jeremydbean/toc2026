@@ -2460,6 +2460,38 @@ void do_say( CHAR_DATA *ch, char *argument )
     snprintf( buf, sizeof(buf), "{%02X$n says '$t'{00", COL_SAYS );
     act_new_cstr( buf, ch, argument, NULL, TO_ROOM, POS_RESTING );
 
+    /*
+     * A say is room-local, and that decides how it is recorded.
+     *
+     * It goes to the journal, which is the staff record of what was
+     * said, and to the chat pane of everybody who was standing here
+     * to hear it -- the same position gate act() just used, so a
+     * sleeper who was not shown the line does not receive it either.
+     *
+     * It deliberately does NOT go into the shared HISTORY rings.
+     * Those are replayed to whoever asks, including people who were
+     * nowhere near at the time, and a room conversation replayed to
+     * the whole mud is a leak rather than a feature. A say can only
+     * honestly be replayed to somebody who was there, and nothing
+     * remembers who that was.
+     */
+    channel_journal_record( "say", ch->name, argument );
+
+    if ( ch->in_room != NULL )
+    {
+        CHAR_DATA *rch;
+
+        for ( rch = ch->in_room->people; rch != NULL;
+              rch = rch->next_in_room )
+        {
+            if ( IS_NPC(rch) || rch->desc == NULL )
+                continue;
+            if ( rch != ch && rch->position < POS_RESTING )
+                continue;
+            gmcp_send_channel( rch->desc, "say", ch->name, argument );
+        }
+    }
+
     return;
 }
 

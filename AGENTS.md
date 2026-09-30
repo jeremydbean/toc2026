@@ -1472,6 +1472,14 @@ inside the loop that writes to each listener, and correctness comes
 free from standing in the same place. Tells go through
 `tell_history_add`, which is already called once per recipient.
 
+**A say is journalled and never put in a ring.** `do_say` calls
+`channel_journal_record()` and emits to everyone in the room, and
+deliberately does not call `channel_history_add()`. HISTORY hands its
+rings to whoever asks, including somebody who was nowhere near, and
+nothing remembers who was standing where -- so a say can be recorded
+for staff and shown live to the room, but it cannot honestly be
+replayed. Do not "fix" this by adding say to `channel_meta_table`.
+
 `tests/test_gmcp_payloads.py` counts the emit sites against the number
 of channels, so a channel added without its two emits fails the same
 way one added without its history call does.

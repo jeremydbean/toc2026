@@ -76,6 +76,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 
+- **Says are recorded.** A say now reaches the staff journal and the
+  chat window of everybody who was in the room to hear it. It is
+  deliberately **not** in the shared HISTORY: those rings are handed to
+  whoever asks, including somebody who was nowhere near at the time,
+  and nothing remembers who was standing where. A room conversation
+  replayed to the whole mud is a leak rather than a feature. The
+  position gate matches the one `act()` uses, so a sleeper who was not
+  shown the line does not receive it either. `HELP CHANNELS` and
+  `HELP HISTORY` now say what is recorded and what is not.
+
 - **Nobody is voided for idling in under a quarter of an hour.** The
   idle timer was three minutes, which is not long enough to answer a
   door, and players were losing sessions to it. It is fifteen minutes

@@ -222,7 +222,8 @@ GMCP can receive:
   Room.Info     - room number, name, area, terrain, visible exits, the
                   state of any doors, room flags, and what the room is
                   for (shop, questmaster, healer, practice, trainer)
-  Comm.Channel  - one line of channel talk or one tell, as you hear it
+  Comm.Channel  - one line of channel talk, one say, or one tell, as
+                  you hear it
   Client.Map    - location of the official world atlas
   Client.GUI    - version and location of the official Mudlet package
 
@@ -524,6 +525,12 @@ WHAT YOU CAN SEE
   Tells are private and are never in the shared history.  Each
   character keeps their own copy of the tells they sent and received,
   and no one else can read them.
+
+  SAY is not in the history either, and cannot be.  A say is heard by
+  the room, and the history is handed to whoever asks for it - there
+  is no honest way to replay a room conversation to somebody who was
+  not standing there.  Says are still recorded for staff, and still
+  reach the chat window of everyone who was in the room at the time.
 
 WHAT YOU MISSED
   Nothing is thrown at you when you log in.  Type HISTORY and a line
@@ -4026,7 +4033,19 @@ your communications channels, e.g. gossip, shouts, info, etc..
 
 To toggle the on/off status of a channel, type the name of that channel.
 
-See also: GOSSIP, SHOUT, TELL, SAY, DEAF, QUIET
+WHAT IS RECORDED
+Everything said on a channel is kept two ways: in the shared history that
+HISTORY reads back, and in a staff log.  You only ever see the channels you
+are allowed to hear - a channel you have switched off, or one above your
+rank, is not in your history and is not sent to your client.
+
+SAY is recorded for staff and shown to everyone in the room, but it is not
+in the shared history: see HISTORY for why.
+
+Tells are private.  They are never in the shared history and never in the
+staff log; each character keeps their own copy and no one else can read it.
+
+See also: GOSSIP, SHOUT, TELL, SAY, HISTORY, DEAF, QUIET
 ~
 
 63 AREAVNUMS~
