@@ -15696,3 +15696,154 @@ Wed Sep 30 22:45:23 2026 :: Log Alaric [0]: moved to 2414 (Top of the oak tree.)
 Wed Sep 30 22:45:43 2026 :: Log Alaric [2414]: u
 Wed Sep 30 22:45:43 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
 Wed Sep 30 22:46:07 2026 :: Log Alaric [2497]: gos The UI window with the name is pretty badass now. Buffs, fighting status and your effects is a nice addition
+Wed Sep 30 22:46:28 2026 :: Log Alaric [2497]: help walkto
+Wed Sep 30 22:46:55 2026 :: Log Alaric [2497]: l
+Wed Sep 30 22:46:59 2026 :: Log Alaric [2497]: enter door
+Wed Sep 30 22:46:59 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Wed Sep 30 22:46:59 2026 :: Log Alaric [2401]: west
+Wed Sep 30 22:46:59 2026 :: Log Alaric [0]: moved to 2405 (Western Oak Tree Square.)
+Wed Sep 30 22:46:59 2026 :: Log Alaric [2405]: west
+Wed Sep 30 22:46:59 2026 :: Log Alaric [0]: moved to 2433 (Temple Boulevard.)
+Wed Sep 30 22:47:00 2026 :: Log Alaric [2433]: south
+Wed Sep 30 22:47:00 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Wed Sep 30 22:47:00 2026 :: Log Alaric [4201]: west
+Wed Sep 30 22:47:00 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Wed Sep 30 22:47:00 2026 :: Log Alaric [4202]: west
+Wed Sep 30 22:47:00 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Wed Sep 30 22:47:00 2026 :: Log Alaric [4207]: up
+Wed Sep 30 22:47:00 2026 :: Log Alaric [0]: moved to 3700 (Entrance to Mud School)
+Wed Sep 30 22:47:01 2026 :: Log Alaric [3700]: up
+Wed Sep 30 22:47:01 2026 :: Log Alaric [0]: moved to 3772 (Newbie Train Station)
+Wed Sep 30 22:47:01 2026 :: Log Alaric [3772]: up
+Wed Sep 30 22:47:01 2026 :: Log Alaric [0]: moved to 3795 (Strange Blending of Time)
+Wed Sep 30 22:47:01 2026 :: Log Alaric [3795]: enter portal
+Wed Sep 30 22:47:01 2026 :: Log Alaric [0]: moved to 15000 (The Eastern Campus Entrance)
+Wed Sep 30 22:47:01 2026 :: Log Alaric [15000]: east
+Wed Sep 30 22:47:01 2026 :: Log Alaric [0]: moved to 15001 (Campus Crescent)
+Wed Sep 30 22:47:02 2026 :: Log Alaric [15001]: east
+Wed Sep 30 22:47:02 2026 :: Log Alaric [0]: moved to 15002 (Campus Crescent)
+Wed Sep 30 22:47:02 2026 :: Log Alaric [15002]: east
+Wed Sep 30 22:47:02 2026 :: Log Alaric [0]: moved to 15003 (Campus Crescent)
+Wed Sep 30 22:47:02 2026 :: Log Alaric [15003]: east
+Wed Sep 30 22:47:02 2026 :: Log Alaric [0]: moved to 15004 (The Crossroads)
+Wed Sep 30 22:47:02 2026 :: Log Alaric [15004]: north
+Wed Sep 30 22:47:02 2026 :: Log Alaric [0]: moved to 15010 (University Avenue)
+Wed Sep 30 22:47:03 2026 :: Log Alaric [15010]: north
+Wed Sep 30 22:47:03 2026 :: Log Alaric [0]: moved to 15011 (University Avenue)
+Wed Sep 30 22:47:03 2026 :: Log Alaric [15011]: north
+Wed Sep 30 22:47:03 2026 :: Log Alaric [0]: moved to 15012 (University Avenue)
+Wed Sep 30 22:47:03 2026 :: Log Alaric [15012]: north
+Wed Sep 30 22:47:03 2026 :: Log Alaric [0]: moved to 15013 (University Avenue)
+Wed Sep 30 22:47:03 2026 :: Log Alaric [15013]: east
+Wed Sep 30 22:47:03 2026 :: Log Alaric [0]: moved to 15038 (The Back Hall)
+Wed Sep 30 22:47:04 2026 :: Log Alaric [15038]: east
+Wed Sep 30 22:47:04 2026 :: Log Alaric [0]: moved to 15068 (The Games Room)
+Wed Sep 30 22:47:04 2026 :: Log Alaric [15068]: enter cabinet
+Wed Sep 30 22:47:04 2026 :: Log Alaric [0]: moved to 30200 (The First Quest Begins)
+Wed Sep 30 22:47:29 2026 :: Log Alaric [30200]: gos Manually using the command worked. Thought maybe having to portal first would throw it for a loop, but went right there
+Wed Sep 30 22:47:30 2026 :: Log Alaric [30200]: recal
+Wed Sep 30 22:47:30 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Wed Sep 30 22:47:33 2026 :: Log Alaric [2497]: aq re
+Wed Sep 30 22:47:38 2026 :: Log Alaric [2497]: en do
+Wed Sep 30 22:47:38 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Wed Sep 30 22:47:40 2026 :: Log Alaric [2401]: east
+Wed Sep 30 22:47:40 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Wed Sep 30 22:47:40 2026 :: Log Alaric [2403]: east
+Wed Sep 30 22:47:40 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Wed Sep 30 22:47:40 2026 :: Log Alaric [2420]: east
+Wed Sep 30 22:47:40 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Wed Sep 30 22:47:40 2026 :: Log Alaric [2421]: south
+Wed Sep 30 22:47:40 2026 :: Log Alaric [0]: moved to 2441 (River Road.)
+Wed Sep 30 22:47:41 2026 :: Log Alaric [2441]: east
+Wed Sep 30 22:47:41 2026 :: Log Alaric [0]: moved to 2442 (River Road.)
+Wed Sep 30 22:47:41 2026 :: Log Alaric [2442]: south
+Wed Sep 30 22:47:41 2026 :: Log Alaric [0]: moved to 2443 (River Road.)
+Wed Sep 30 22:47:41 2026 :: Log Alaric [2443]: east
+Wed Sep 30 22:47:41 2026 :: Log Alaric [0]: moved to 2444 (River Road.)
+Wed Sep 30 22:47:41 2026 :: Log Alaric [2444]: east
+Wed Sep 30 22:47:41 2026 :: Log Alaric [0]: moved to 2445 (End of River Road.)
+Wed Sep 30 22:47:42 2026 :: Log Alaric [2445]: east
+Wed Sep 30 22:47:42 2026 :: Log Alaric [0]: moved to 2101 (A Dark Alleyway)
+Wed Sep 30 22:47:43 2026 :: Log Alaric [2101]: e
+Wed Sep 30 22:47:43 2026 :: Log Alaric [0]: moved to 2102 (Beginning of White Dragon Boulevard)
+Wed Sep 30 22:47:44 2026 :: Log Alaric [2102]: e
+Wed Sep 30 22:47:44 2026 :: Log Alaric [0]: moved to 2103 (Along White Dragon Boulevard)
+Wed Sep 30 22:47:44 2026 :: Log Alaric [2103]: e
+Wed Sep 30 22:47:44 2026 :: Log Alaric [0]: moved to 2104 (White Dragon Boulevard at Armory)
+Wed Sep 30 22:47:45 2026 :: Log Alaric [2104]: e
+Wed Sep 30 22:47:45 2026 :: Log Alaric [0]: moved to 2105 (White Dragon Blvd.)
+Wed Sep 30 22:47:45 2026 :: Log Alaric [2105]: e
+Wed Sep 30 22:47:45 2026 :: Log Alaric [0]: moved to 2106 (Corner of Ice and White Dragon)
+Wed Sep 30 22:47:46 2026 :: Log Alaric [2106]: e
+Wed Sep 30 22:47:46 2026 :: Log Alaric [0]: moved to 2107 (White Dragon Boulevard)
+Wed Sep 30 22:47:46 2026 :: Log Alaric [2107]: e
+Wed Sep 30 22:47:46 2026 :: Log Alaric [0]: moved to 2108 (Corner of Bronze and White Dragon)
+Wed Sep 30 22:47:47 2026 :: Log Alaric [2108]: e
+Wed Sep 30 22:47:49 2026 :: Log Alaric [2108]: aq info
+Wed Sep 30 22:47:51 2026 :: Log Alaric [2108]: e
+Wed Sep 30 22:47:51 2026 :: Log Alaric [2108]: e
+Wed Sep 30 22:47:54 2026 :: Log Alaric [2108]: s
+Wed Sep 30 22:47:54 2026 :: Log Alaric [0]: moved to 2115 (Bronze Dragon Street at wizard's back door)
+Wed Sep 30 22:47:56 2026 :: Log Alaric [2115]: w
+Wed Sep 30 22:47:56 2026 :: Log Alaric [0]: moved to 2114 (The remains of the magic shop)
+Wed Sep 30 22:47:56 2026 :: Log Alaric [2114]: w
+Wed Sep 30 22:47:56 2026 :: Log Alaric [0]: moved to 2113 (Ice Dragon Bend)
+Wed Sep 30 22:47:57 2026 :: Log Alaric [2113]: w
+Wed Sep 30 22:47:57 2026 :: Log Alaric [0]: moved to 2112 (A Bend in the Way)
+Wed Sep 30 22:47:57 2026 :: Log Alaric [2112]: w
+Wed Sep 30 22:47:59 2026 :: Log Alaric [2112]: n
+Wed Sep 30 22:47:59 2026 :: Log Alaric [2112]: w
+Wed Sep 30 22:48:00 2026 :: Log Alaric [2112]: s
+Wed Sep 30 22:48:00 2026 :: Log Alaric [0]: moved to 2118 (Ice Dragon Way)
+Wed Sep 30 22:48:02 2026 :: Log Alaric [2118]: w
+Wed Sep 30 22:48:03 2026 :: Log Alaric [2118]: e
+Wed Sep 30 22:48:03 2026 :: Log Alaric [0]: moved to 2119 (Courtyard North)
+Wed Sep 30 22:48:03 2026 :: Log Alaric [2119]: s
+Wed Sep 30 22:48:03 2026 :: Log Alaric [0]: moved to 2123 (Courtyard South)
+Wed Sep 30 22:48:04 2026 :: Log Alaric [2123]: w
+Wed Sep 30 22:48:05 2026 :: Log Alaric [2123]: s
+Wed Sep 30 22:48:05 2026 :: Log Alaric [0]: moved to 2128 (Yellow Dragon Road)
+Wed Sep 30 22:48:05 2026 :: Log Alaric [2128]: w
+Wed Sep 30 22:48:05 2026 :: Log Alaric [0]: moved to 2127 (Yellow Dragon Road)
+Wed Sep 30 22:48:07 2026 :: Log Alaric [2127]: n
+Wed Sep 30 22:48:07 2026 :: Log Alaric [0]: moved to 2122 (Ice Dragon Way)
+Wed Sep 30 22:48:07 2026 :: Log Alaric [2122]: w
+Wed Sep 30 22:48:07 2026 :: Log Alaric [0]: moved to 2121 (Shortcut)
+Wed Sep 30 22:48:08 2026 :: Log Alaric [2121]: n
+Wed Sep 30 22:48:08 2026 :: Log Alaric [0]: moved to 2117 (Shortcut)
+Wed Sep 30 22:48:09 2026 :: Log Alaric [2117]: n
+Wed Sep 30 22:48:09 2026 :: Log Alaric [0]: moved to 2111 (Armory)
+Wed Sep 30 22:48:10 2026 :: Log Alaric [2111]: n
+Wed Sep 30 22:48:10 2026 :: Log Alaric [0]: moved to 2104 (White Dragon Boulevard at Armory)
+Wed Sep 30 22:48:10 2026 :: Log Alaric [2104]: w
+Wed Sep 30 22:48:10 2026 :: Log Alaric [0]: moved to 2103 (Along White Dragon Boulevard)
+Wed Sep 30 22:48:11 2026 :: Log Alaric [2103]: s
+Wed Sep 30 22:48:11 2026 :: Log Alaric [0]: moved to 2110 (East end of an over-grown plot of land)
+Wed Sep 30 22:48:11 2026 :: Log Alaric [2110]: w
+Wed Sep 30 22:48:11 2026 :: Log Alaric [0]: moved to 2109 (An over-grown lot)
+Wed Sep 30 22:48:12 2026 :: Log Alaric [2109]: e
+Wed Sep 30 22:48:12 2026 :: Log Alaric [0]: moved to 2110 (East end of an over-grown plot of land)
+Wed Sep 30 22:48:12 2026 :: Log Alaric [2110]: s
+Wed Sep 30 22:48:12 2026 :: Log Alaric [0]: moved to 2116 (Dracolich Plaza)
+Wed Sep 30 22:48:13 2026 :: Log Alaric [2116]: s
+Wed Sep 30 22:48:13 2026 :: Log Alaric [2116]: n
+Wed Sep 30 22:48:13 2026 :: Log Alaric [0]: moved to 2110 (East end of an over-grown plot of land)
+Wed Sep 30 22:48:15 2026 :: Log Alaric [2110]: (refused) gs
+Wed Sep 30 22:48:15 2026 :: Log Alaric [2110]: s
+Wed Sep 30 22:48:15 2026 :: Log Alaric [0]: moved to 2116 (Dracolich Plaza)
+Wed Sep 30 22:48:17 2026 :: Log Alaric [2116]: get all
+Wed Sep 30 22:48:18 2026 :: Log Alaric [2116]: recal
+Wed Sep 30 22:48:18 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Wed Sep 30 22:48:18 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 22:48:18 2026 :: Log Alaric [2497]: recal
+Wed Sep 30 22:48:20 2026 :: Log Alaric [2497]: aq comp
+Wed Sep 30 22:48:22 2026 :: Log Alaric [2497]: aq ga no
+Wed Sep 30 22:48:22 2026 :: Log Alaric [2497]: sc
+Wed Sep 30 22:48:35 2026 :: Log Alaric [2497]: gos Just did a questing using it, went right there.
+Wed Sep 30 22:49:05 2026 :: Log Alaric [2497]: gos Hell of a lot better than when I used to make a right-click menu in zMud with all the areas in it to go quickly everywhere
+Wed Sep 30 22:49:06 2026 :: Log Alaric [2497]: who
+Wed Sep 30 22:50:41 2026 :: Log Alaric [2497]: gos Me too. Another mud I playeyd there was a player that made a specific package for it and the GUI was pretty wild. Looked like the old 386 D&D game interfaces
+Wed Sep 30 22:50:42 2026 :: Log Alaric [2497]: who
+Wed Sep 30 22:50:56 2026 :: Log Alaric [2497]: gos Like Eye of the Beholder
+Wed Sep 30 22:50:57 2026 :: Log Alaric [2497]: who
+Wed Sep 30 22:51:03 2026 :: Log Alaric [2497]: who
