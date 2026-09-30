@@ -15419,3 +15419,17 @@ Wed Sep 30 19:45:21 2026 :: Daily backup complete.
 Wed Sep 30 20:28:28 2026 :: Sock.sinaddr:  192.168.0.1
 Wed Sep 30 20:28:32 2026 :: Loading Killuminati's playerfile
 Wed Sep 30 20:28:33 2026 :: Killuminati@192.168.0.1 has connected.
+Wed Sep 30 20:31:07 2026 :: Log Killuminati: restore
+Wed Sep 30 20:32:55 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Wed Sep 30 20:33:00 2026 :: Received signal 15; saving players and shutting down.
+Wed Sep 30 20:33:00 2026 :: Closing link to Killuminati.
+Wed Sep 30 20:33:00 2026 :: Normal termination of game.
+Wed Sep 30 20:33:01 2026 ::  INIT OK 
+Wed Sep 30 20:33:01 2026 :: ROM is ready to rock on port 9000.
+Wed Sep 30 20:33:01 2026 :: Automated backup complete.
+Wed Sep 30 20:33:01 2026 :: Daily backup complete.
+Wed Sep 30 20:33:06 2026 :: Sock.sinaddr:  192.168.0.1
+Wed Sep 30 20:33:08 2026 :: Loading Killuminati's playerfile
+Wed Sep 30 20:33:09 2026 :: Killuminati@192.168.0.1 has connected.
+Wed Sep 30 20:33:14 2026 :: Log Killuminati: spellup
+Wed Sep 30 20:33:14 2026 :: Spellup: Hermie placed in room 2401 by Killuminati.
