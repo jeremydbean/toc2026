@@ -62,10 +62,32 @@ not draw a normal map line.  Deleted rooms that can no longer be visited
 may remain in Mudlet's saved map.  Room descriptions, EXITS, and SEARCH
 remain authoritative.
 
+WHAT THE MAP MARKS
+Each room can carry one symbol saying what it is for:
+
+  $  a shop             ?  a questmaster      +  a healer
+  P  a practice guild   T  a trainer          &  a pet shop
+  #  a jail             X  a death trap
+
+A room is marked when you visit it, from what the game reports about the
+room you are standing in.  Nothing is marked in advance, and a room with no
+service carries no symbol - most rooms do not.  A death trap is therefore
+only ever marked after it has already killed you, which is the point of
+marking it.
+
+Doors are drawn as the game reports them: open, closed, or locked.
+
+Symbols and doors are drawn inside the room boxes, so they appear only when
+the map is zoomed in far enough to draw those boxes.  Zoom in with the mouse
+wheel over the map if you see coloured rooms and no symbols.
+
+The map draws rooms, exits, and doors.  It does not show who or what is
+standing in a room - use LOOK for that.
+
 The map belongs to your local Mudlet profile, not your character file.  The
 browser client and plain Telnet do not currently show this automatic map.
 
-See also: MUDLET, GMCP, EXITS, SEARCH, WEBCLIENT
+See also: MUDLET, WALK, GMCP, EXITS, SEARCH, WEBCLIENT
 ~
 
 0 MUDLET TOCGUI~
@@ -74,15 +96,38 @@ for toc.jeremybean.com on port 9000.  In Mudlet's profile settings, leave
 "Enable GMCP" and "Allow server to install script packages" enabled.  The
 server will offer the official interface and the world atlas automatically.
 
-The interface provides HP, mana, movement, and experience gauges; character
-and room status; and a mapper covering the whole world as you explore.  Package
-updates are offered automatically when the server advertises a new version.
+WHAT THE INTERFACE SHOWS
+  Gauges    HP, mana, movement, and experience, across the top.
+  Identity  Your name, level, race, and class.
+  Affects   What is currently on you, shortest duration first, so the one
+            about to lapse is the one you see.  Five ticks or less turns
+            orange.  Shadowmeld shows no number because it does not run
+            out: it ends when you leave the room, strike, or go visible.
+  Map       The whole world, following you as you move.
+  Chat      Channels and tells in their own scrollback below the map,
+            coloured by channel.  It shows what you actually heard - a
+            yell from another area, or a channel you have switched off,
+            never reaches it.
 
-These are local Mudlet aliases, not game commands:
-  tocgui status  - show the package version and GMCP state
-  tocgui atlas   - download the world map into this profile
-  tocgui off     - hide the gauges and mapper
-  tocgui on      - restore the interface
+Package updates are offered automatically when the server advertises a new
+version.
+
+COMMANDS
+These are local Mudlet aliases, not game commands.  They do nothing over
+plain Telnet or in the browser client.
+
+  tocgui         show the package version and GMCP state
+  tocgui atlas   download the world map into this profile
+  tocgui off     hide the interface
+  tocgui on      restore the interface
+
+  walk           report on a walk in progress
+  walk <vnum>    walk to a room by number
+  walk <name>    walk to a published destination, such as WALK THALOS
+  walk routes    fetch the published route list
+  walk stop      break off a walk
+
+Clicking a room on the map walks you there.  See WALK.
 
 Mapping continues while the interface is hidden.  Your map is saved in the
 Mudlet profile.  A profile that was mapped before the world atlas shipped
@@ -92,7 +137,43 @@ If the interface says GMCP is waiting, enable GMCP and server packages in
 the profile, then reconnect.  Manual package files and source are at:
   github.com/jeremydbean/toc2026/tree/main/mudlet
 
-See also: MAP, GMCP, WEB, WEBCLIENT
+See also: MAP, WALK, GMCP, WEB, WEBCLIENT
+~
+
+0 WALK CLICKTOWALK~
+WALK is a Mudlet alias, not a game command.  It does nothing over plain
+Telnet or in the browser client.  For the game's own movement shortcut, see
+RUN.
+
+Click any room on the map to walk there, or:
+
+  walk <vnum>    walk to a room by number
+  walk <name>    walk to a published destination, such as WALK THALOS
+  walk routes    fetch the published route list
+  walk           report on a walk in progress
+  walk stop      break off
+
+HOW IT WALKS
+One room at a time.  The next step is sent only once the game confirms you
+arrived in the room the route expected, so the walk keeps pace with the
+server, respects movement lag, and stops the moment something diverts you -
+a mobile in the way, a recall, a portal, being dragged.  It never fires a
+whole path at the server and hopes.
+
+A door the map already knows is shut is opened before the step rather than
+after it.  For a door nothing warned about, the walk waits a few seconds,
+tries OPEN once, and gives up if that does not work.
+
+NAMED DESTINATIONS
+WALK ROUTES loads the published route list, the same one the web dashboard
+shows.  WALK <name> then matches an area or room name: WALK THALOS, WALK
+WYVERN, WALK OZ.
+
+A named walk needs the destination on your own map.  If it is not there yet
+the published route is printed instead of walked, because those routes are
+written from the Oak Tree Square and are wrong from anywhere else.
+
+See also: MUDLET, MAP, RUN, RECALL
 ~
 
 0 GMCP~
@@ -100,11 +181,19 @@ GMCP is the out-of-band protocol used by modern MUD clients.  It is not a game
 command and does not add text to normal Telnet output.  A client that enables
 GMCP can receive:
 
-  Char.Vitals  - hit points, mana, movement, experience, and level
-  Char.Status  - character name, level, race, and class
-  Room.Info    - room number, name, area, terrain, and visible exits
-  Client.Map   - location of the official world atlas
-  Client.GUI   - version and location of the official Mudlet package
+  Char.Vitals   - hit points, mana, movement, experience, and level
+  Char.Status   - character name, level, race, and class
+  Char.Affects  - the spells currently on you, with their durations
+  Room.Info     - room number, name, area, terrain, visible exits, the
+                  state of any doors, room flags, and what the room is
+                  for (shop, questmaster, healer, practice, trainer)
+  Comm.Channel  - one line of channel talk or one tell, as you hear it
+  Client.Map    - location of the official world atlas
+  Client.GUI    - version and location of the official Mudlet package
+
+Comm.Channel is sent where the line is delivered, so a client receives
+exactly what the character heard and nothing else: a yell from another
+area, or a channel you have switched off, never arrives.
 
 Core.Ping requests are also answered.  Room.Info excludes secret exits and
 destinations the character cannot see.  Clients that do not negotiate GMCP

@@ -26,6 +26,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **In-game help for the whole Mudlet interface.** `HELP MUDLET` lists
+  every alias and what each panel shows; a new `HELP WALK` covers
+  click-to-walk, named destinations and how the walk paces itself;
+  `HELP MAP` explains what the room symbols mean and says plainly that
+  they are drawn inside the room boxes, so they only appear once the
+  map is zoomed in far enough; and `HELP GMCP` now lists `Char.Affects`
+  and `Comm.Channel` alongside the fields `Room.Info` gained. All four
+  say that these are Mudlet aliases rather than game commands.
+
 - **Mudlet 1.1.1: the chat pane printed its colour tags.** `decho`
   takes decimal `<R,G,B>` and `hecho` takes `#RRGGBB` with no
   brackets; the pane had the brackets of one and the hex of the other,
