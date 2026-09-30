@@ -142,13 +142,15 @@ tocMudlet.lastExits = nil
 
 -- ------------------------------------------------ the chat window
 local chat = {}
-tocMudlet.ui.chat = { hecho = function(_, line) chat[#chat + 1] = line end }
+tocMudlet.ui.chat = { decho = function(_, line) chat[#chat + 1] = line end }
 
 gmcp.Comm = { Channel = { channel = "gossip", speaker = "Alaric",
                           text = "hello", time = 0 } }
 tocMudlet.onChannel()
 check("a channel line reaches the chat window", #chat == 1, #chat)
 check("naming who said it", (chat[1] or ""):find("Alaric") ~= nil, chat[1])
+check("in a colour tag decho can read, decimal and not hex",
+  (chat[1] or ""):match("<%d+,%d+,%d+>") ~= nil, chat[1])
 
 gmcp.Comm.Channel = { channel = "tell", speaker = "",
                       text = "You tell Bob 'hi'", time = 0 }

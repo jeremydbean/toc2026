@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.1.0"
+tocMudlet.version = "1.1.1"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -601,6 +601,17 @@ function tocMudlet.onVitals()
   end
 end
 
+-- decho wants decimal <R,G,B>; the palette is hex, so it is converted
+-- here rather than kept twice. hecho would take the hex as it stands,
+-- but its escape character is "#" and players type "#" -- decho's is
+-- "<", which the message body already has taken out of it.
+local function rgbOf(hex)
+  local r, g, b = tostring(hex):match("^#(%x%x)(%x%x)(%x%x)$")
+  if not r then return "231,233,242" end
+  return string.format("%d,%d,%d",
+    tonumber(r, 16), tonumber(g, 16), tonumber(b, 16))
+end
+
 local CHANNEL_COLOUR = {
   gossip = "#8ab4ff", auction = "#ffd479", question = "#7ee0c0",
   answer = "#7ee0c0", shout = "#ff9f6e", yell = "#ff9f6e",
@@ -621,9 +632,9 @@ function tocMudlet.onChannel()
     body = string.format("%s: %s", tostring(line.speaker), tostring(line.text))
   end
 
-  tocMudlet.ui.chat:hecho(string.format(
+  tocMudlet.ui.chat:decho(string.format(
     "<%s>[%s] <%s>%s<r>\n",
-    P.muted:gsub("#", ""), when, colour:gsub("#", ""), body:gsub("<", "(")))
+    rgbOf(P.muted), when, rgbOf(colour), (body:gsub("<", "("))))
 end
 
 function tocMudlet.onAffects()
@@ -762,8 +773,8 @@ function tocMudlet.buildUI()
   if tocMudlet.ui.chat.enableScrollBar then
     pcall(function() tocMudlet.ui.chat:enableScrollBar() end)
   end
-  tocMudlet.ui.chat:hecho(string.format("<%s>Channels appear here.\n",
-    P.muted:gsub("#", "")))
+  tocMudlet.ui.chat:decho(string.format("<%s>Channels appear here.\n",
+    rgbOf(P.muted)))
 
   tocMudlet.ui.mapHint = Geyser.Label:new({
     name = "tocMudlet.mapHint", x = -350, y = -42,

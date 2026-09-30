@@ -26,6 +26,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Mudlet 1.1.1: the chat pane printed its colour tags.** `decho`
+  takes decimal `<R,G,B>` and `hecho` takes `#RRGGBB` with no
+  brackets; the pane had the brackets of one and the hex of the other,
+  so every tag arrived as literal text. `decho` is the right one here
+  because its escape character is `<`, which the message body already
+  has neutralised, where `hecho`'s is `#` and players type `#`.
+
 - **Mudlet 1.1.0: chat pane, affects line, doors and room labels, and
   named walks.** The chat pane shows exactly what the character heard,
   because the game emits each line where it delivers it rather than
