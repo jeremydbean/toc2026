@@ -15438,3 +15438,11 @@ Wed Sep 30 20:35:01 2026 :: Sock.sinaddr:  40.124.178.24
 Wed Sep 30 20:35:01 2026 :: EOF encountered on read.
 Wed Sep 30 21:12:20 2026 :: Sock.sinaddr:  89.21.67.173
 Wed Sep 30 21:13:07 2026 :: Sock.sinaddr:  185.223.235.37
+Wed Sep 30 21:23:30 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Wed Sep 30 21:23:36 2026 :: Received signal 15; saving players and shutting down.
+Wed Sep 30 21:23:36 2026 :: Closing link to Killuminati.
+Wed Sep 30 21:23:36 2026 :: Normal termination of game.
+Wed Sep 30 21:23:36 2026 ::  INIT OK 
+Wed Sep 30 21:23:36 2026 :: ROM is ready to rock on port 9000.
+Wed Sep 30 21:23:37 2026 :: Automated backup complete.
+Wed Sep 30 21:23:37 2026 :: Daily backup complete.
