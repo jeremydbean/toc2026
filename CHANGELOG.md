@@ -26,6 +26,18 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **Five more GMCP feeds**, for the panels that read them:
+  `Char.Quest` (objective, contract kind, countdown, streak),
+  `Char.Target` (who you are fighting and their condition),
+  `Room.Chars` (who and what is in the room), `Char.Items` (carried
+  and worn), and `Char.Achievement`, sent at the moment one is earned.
+  `Char.Items` hashes a cheap integer signature over vnums and wear
+  slots rather than its own payload, because it runs off the main loop
+  and an inventory is long. `Char.Achievement` is emitted inside the
+  announce branch, so the dozen silent catch-up awards a login can
+  hand out do not arrive as a dozen notifications. `HELP GMCP` lists
+  them all.
+
 - **`HELP ROUTES`.** The realms publish a walking route to 89 of the
   92 areas that have rooms, and until now the only way to meet them
   was to already know `walk routes` existed. The new topic says where
