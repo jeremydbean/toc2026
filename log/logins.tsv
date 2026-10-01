@@ -343,3 +343,6 @@
 1790896493	Killuminati	108-81-26-245.lightspeed.tukrga.sbcglobal.net	shutdown	1172
 1790896493	Alaric	208.126.22.104	shutdown	2105
 1790896513	Alaric	208.126.22.104	connect
+1790896676	Alaric	208.126.22.104	linkdead	162
+1790896676	Alaric	208.126.22.104	reconnect
+1790896836	Killuminati	108-81-26-245.lightspeed.tukrga.sbcglobal.net	connect
