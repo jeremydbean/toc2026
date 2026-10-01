@@ -387,6 +387,13 @@ void violence_update( void )
 	if ( ( victim = ch->fighting ) == NULL || ch->in_room == NULL )
 	    continue;
 
+	/* A benchmark run in the training yard ends itself after the
+	   number of rounds it was given.  Asked before the swing, so
+	   the run is exactly that many rounds long and two readings
+	   are comparable. */
+	if ( dummy_round_limit( ch, victim ) )
+	    continue;
+
 	if ( IS_AWAKE(ch) && ch->in_room == victim->in_room )
 	    multi_hit( ch, victim, TYPE_UNDEFINED );
 	else
@@ -1430,7 +1437,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
     /*
      * Check for parry, and dodge.
      */
-    if ( dt >= TYPE_HIT && ch != victim)
+    if ( dt >= TYPE_HIT && ch != victim
+    &&   !dummy_skips_defence( victim ) )
     {
         /* The yard counts these: a blow turned aside never
            reaches the subtraction below, so without a hook here the

@@ -119,6 +119,20 @@ static const DUMMY_SPELL dummy_spell_table[] =
 static int  dummy_spell  = DUMMY_SPELL_NONE;
 static bool dummy_hasted = false;
 
+/*
+ * Benchmark mode. Two different kinds of noise spoil a DPS reading:
+ * the dummy turning blows aside, which makes your number depend on
+ * its rolls as much as on your gear, and a run you stop by hand,
+ * which is a different length every time so two readings are not
+ * comparable. This removes both.
+ *
+ * Deliberately not the default: something that cannot dodge is not a
+ * fair model of anything in the world. It is a measuring instrument,
+ * and the fair model is what the other shapes are for.
+ */
+static bool dummy_bench = false;
+static int  dummy_bench_rounds = DUMMY_BENCH_ROUNDS;
+
 /* Whether anybody has chosen a level.  Until somebody has, the dummy
    follows whoever is looking at it, which is the comparison almost
    everybody wants; once somebody has, it stays put, because a
@@ -351,6 +365,7 @@ static void dummy_session_clear( CHAR_DATA *ch )
     ch->pcdata->dummy_taken = 0;
     ch->pcdata->dummy_attempts = 0;
     ch->pcdata->dummy_worst = 0;
+    ch->pcdata->dummy_rounds = 0;
     for ( i = 0; i < 3; i++ )
     {
         ch->pcdata->dummy_dealt_from[i] = 0;
@@ -623,6 +638,16 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
                      : "one attack each round" );
     send_to_char( buf, ch );
 
+    if ( dummy_bench )
+        snprintf( buf, sizeof(buf),
+            "{0C|{00 Bench   {0F%-8d{00  rounds, and it will not dodge, parry "
+            "or block\n\r", dummy_bench_rounds );
+    else
+        snprintf( buf, sizeof(buf),
+            "{0C|{00 Bench   {0F%-8s{00  it defends itself, and you stop the "
+            "run yourself\n\r", "off" );
+    send_to_char( buf, ch );
+
     send_to_char(
         "{0C'----------------------------------------------------------------'{00\n\r",
         ch );
@@ -633,6 +658,8 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
         "  dummy hits <type>    what it attacks you with\n\r"
         "  dummy magic <kind>   what it casts at you, or none\n\r"
         "  dummy haste          an extra attack a round, on or off\n\r"
+        "  dummy bench [rounds] a clean benchmark: it stands still, and\n\r"
+        "                       the run ends itself after N rounds\n\r"
         "  dummy reset          your level, the defaults, numbers cleared\n\r"
         "  dummy report         stop, heal you both, and read the numbers\n\r"
         "\n\r  Then just KILL DUMMY.  Neither of you can die here.\n\r\n\r",
@@ -747,6 +774,7 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
     int seconds;
     int swings, attempts;
     int i, shown;
+    int rounds;
     long dealt, taken;
 
     if ( pc->dummy_started == 0 )
@@ -763,6 +791,7 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
     taken    = pc->dummy_taken;
     swings   = pc->dummy_swings;
     attempts = pc->dummy_attempts;
+    rounds   = pc->dummy_rounds;
 
     send_to_char(
         "\n\r{0C.-[ Training report ]-------------------------------------------.{00\n\r",
@@ -770,15 +799,24 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
 
     snprintf( buf, sizeof(buf),
         "{0C|{00 A level %d %s dummy, hitting in %s%s%s,\n\r"
-        "{0C|{00 over %d second%s.\n\r",
+        "{0C|{00 over %d second%s.%s\n\r",
         pc->dummy_level, dummy_shape_table[dummy_shape].name,
         dummy_attack_table[dummy_attack].name,
         dummy_spell == DUMMY_SPELL_NONE ? "" : ", casting ",
         dummy_spell == DUMMY_SPELL_NONE
             ? ( dummy_hasted ? ", hasted" : "" )
             : dummy_spell_table[dummy_spell].name,
-        seconds, seconds == 1 ? "" : "s" );
+        seconds, seconds == 1 ? "" : "s",
+        rounds > 0 ? "  Benchmark." : "" );
     send_to_char( buf, ch );
+
+    if ( rounds > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+            "{0C|{00 %d round%s, and it did not defend itself.\n\r",
+            rounds, rounds == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+    }
 
     /* ------------------------------------------------ your offence */
     send_to_char(
@@ -789,6 +827,16 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
         dealt, dealt / seconds,
         swings > 0 ? dealt / swings : 0 );
     send_to_char( buf, ch );
+
+    /* Per round is the figure two benchmark runs can be compared on:
+       it does not move with how long the rounds happened to take. */
+    if ( rounds > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   per round {0F%ld{00 over %d round%s\n\r",
+            dealt / rounds, rounds, rounds == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+    }
 
     if ( swings > 0 )
     {
@@ -928,6 +976,47 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
 }
 
 
+/*
+ * Whether the dummy is standing still to be hit. Called from the one
+ * place in damage() that rolls the four defences, so a benchmark
+ * skips all of them together and cannot skip some and not others.
+ */
+bool dummy_skips_defence( CHAR_DATA *victim )
+{
+    return dummy_bench && is_training_dummy( victim );
+}
+
+
+/*
+ * True when the run has had its rounds and this tick should not
+ * swing. Asked from violence_update before the blow, so a run of
+ * fifty is fifty and two readings are comparable.
+ */
+bool dummy_round_limit( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    if ( !dummy_bench || dummy_bench_rounds <= 0 )
+        return false;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL || !is_training_dummy( victim ) )
+        return false;
+
+    /* Nothing has landed yet: a run that has not started cannot end,
+       or a player who types KILL and waits is reported at nothing. */
+    if ( ch->pcdata->dummy_started == 0 )
+        return false;
+
+    if ( ch->pcdata->dummy_rounds < dummy_bench_rounds )
+    {
+        ch->pcdata->dummy_rounds++;
+        return false;
+    }
+
+    send_to_char( "\n\rThe bell goes.\n\r", ch );
+    dummy_report( ch, victim );
+    return true;
+}
+
+
 void do_dummy( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
@@ -1001,6 +1090,8 @@ void do_dummy( CHAR_DATA *ch, char *argument )
         dummy_spell = DUMMY_SPELL_NONE;
         dummy_hasted = false;
         dummy_level_chosen = false;
+        dummy_bench = false;
+        dummy_bench_rounds = DUMMY_BENCH_ROUNDS;
         dummy_configure( dummy, UMAX( 1, ch->level ),
                          DUMMY_SHAPE_DEFAULT, DUMMY_ATTACK_DEFAULT );
         snprintf( buf, sizeof(buf),
@@ -1060,6 +1151,45 @@ void do_dummy( CHAR_DATA *ch, char *argument )
         }
         send_to_char( "It does not know that one.  DUMMY lists what it "
                       "can cast.\n\r", ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "bench" ) || !str_prefix( arg1, "rounds" ) )
+    {
+        if ( arg2[0] == '\0' )
+            dummy_bench = !dummy_bench;
+        else if ( is_number( arg2 ) )
+        {
+            int rounds = atoi( arg2 );
+
+            if ( rounds < 1 || rounds > 1000 )
+            {
+                send_to_char( "Pick a number of rounds between 1 and "
+                              "1000.\n\r", ch );
+                return;
+            }
+            dummy_bench_rounds = rounds;
+            dummy_bench = true;
+        }
+        else if ( !str_cmp( arg2, "off" ) )
+            dummy_bench = false;
+        else
+        {
+            send_to_char( "DUMMY BENCH, DUMMY BENCH <rounds>, or "
+                          "DUMMY BENCH OFF.\n\r", ch );
+            return;
+        }
+
+        if ( dummy_bench )
+        {
+            snprintf( buf, sizeof(buf),
+                "It plants itself and stops defending.  %d rounds, then "
+                "the bell.\n\r", dummy_bench_rounds );
+            send_to_char( buf, ch );
+        }
+        else
+            send_to_char( "It comes back on guard, and the run is yours "
+                          "to stop.\n\r", ch );
         return;
     }
 

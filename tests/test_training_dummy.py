@@ -352,6 +352,70 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn("memset( ch->pcdata->dummy_out", clear)
         self.assertIn("memset( ch->pcdata->dummy_in", clear)
 
+    # ------------------------------------------------- benchmarking
+    def test_the_benchmark_turns_off_every_defence_at_once(self) -> None:
+        """One guard on the block that rolls all four, so a benchmark
+        cannot end up skipping some defences and not others."""
+        self.assertIn("dummy_skips_defence( victim )", self.fight)
+        block = self.fight.split("Check for parry, and dodge.", 1)[1][:400]
+        self.assertIn("!dummy_skips_defence( victim )", block)
+        body = self.dummy.split("bool dummy_skips_defence(", 1)[1]
+        body = body.split("\n}", 1)[0]
+        self.assertIn("dummy_bench", body)
+        self.assertIn("is_training_dummy( victim )", body)
+
+    def test_only_the_dummy_stops_defending(self) -> None:
+        """Your own parries are your armour, and measuring it is the
+        other half of why anybody is in the yard."""
+        # It takes the defender and nothing else, so it cannot
+        # structurally turn off the attacker's parries as well.
+        self.assertIn("bool dummy_skips_defence( CHAR_DATA *victim )",
+                      self.dummy)
+        self.assertIn("bool    dummy_skips_defence( CHAR_DATA *victim );",
+                      self.merc)
+
+    def test_the_run_ends_itself_after_its_rounds(self) -> None:
+        """A run you stop by hand is a different length every time,
+        so two readings cannot be compared."""
+        self.assertIn("dummy_round_limit( ch, victim )", self.fight)
+        body = self.dummy.split("bool dummy_round_limit(", 1)[1]
+        body = body.split("\n}", 1)[0]
+        self.assertIn("dummy_rounds < dummy_bench_rounds", body)
+        self.assertIn("dummy_report( ch, victim )", body)
+
+    def test_the_limit_is_asked_before_the_swing(self) -> None:
+        """Otherwise a run of fifty is fifty-one."""
+        loop = self.fight.split("void violence_update(", 1)[1]
+        loop = loop.split("\n}", 1)[0]
+        self.assertLess(loop.index("dummy_round_limit"),
+                        loop.index("multi_hit( ch, victim"))
+
+    def test_a_run_that_never_started_cannot_end(self) -> None:
+        """Otherwise typing KILL and waiting reports on nothing."""
+        body = self.dummy.split("bool dummy_round_limit(", 1)[1]
+        body = body.split("\n}", 1)[0]
+        self.assertIn("dummy_started == 0", body)
+
+    def test_the_benchmark_is_not_the_default(self) -> None:
+        """Something that cannot get out of the way is not a fair
+        model of anything in the world."""
+        self.assertIn("static bool dummy_bench = false;", self.dummy)
+        self.assertIn("#define DUMMY_BENCH_ROUNDS 50", self.merc)
+        reset = without_comments(self.dummy).split("if ( is_reset )", 1)[1]
+        self.assertIn("dummy_bench = false", reset[:600])
+
+    def test_the_report_gives_damage_per_round(self) -> None:
+        """Per second moves with how long the rounds took; per round
+        is the figure two benchmark runs can be compared on."""
+        report = self.dummy.split("static void dummy_report(", 1)[1]
+        report = report.split("\nvoid do_dummy(", 1)[0]
+        self.assertIn("per round", report)
+        self.assertIn("dealt / rounds", report)
+
+    def test_the_round_count_is_bounded(self) -> None:
+        body = self.dummy.split('!str_prefix( arg1, "bench" )', 1)[1][:900]
+        self.assertIn("rounds < 1 || rounds > 1000", body)
+
     def test_the_session_is_not_persisted(self) -> None:
         """A training run is something you are doing, not something
         you are: none of it belongs in a player file."""
@@ -359,7 +423,8 @@ class TrainingDummyTests(unittest.TestCase):
         for field in ("dummy_dealt", "dummy_taken", "dummy_started",
                       "dummy_level", "dummy_dealt_from", "dummy_taken_from",
                       "dummy_avoided", "dummy_evaded", "dummy_attempts",
-                      "dummy_worst", "dummy_out", "dummy_in"):
+                      "dummy_worst", "dummy_out", "dummy_in",
+                      "dummy_rounds"):
             self.assertIn(field, self.merc, field)
             self.assertNotIn(field, save, field + " reached save.c")
 

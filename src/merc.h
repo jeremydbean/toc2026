@@ -813,6 +813,9 @@ struct  kill_data
  */
 #define DUMMY_MAX_SOURCES  24
 
+/* How many rounds a benchmark run lasts unless you say otherwise. */
+#define DUMMY_BENCH_ROUNDS 50
+
 /* The highest attack_table index dam_message will name. */
 #define MAX_DAMAGE_MESSAGE 32
 #define ROOM_VNUM_TRAINING_YARD     2419
@@ -1947,6 +1950,7 @@ struct  pc_data
     int                 dummy_evaded[4];
     int                 dummy_attempts;
     int                 dummy_worst;
+    int                 dummy_rounds;
     int                 dummy_hits;
     int                 dummy_misses;
     int                 dummy_swings;
@@ -2671,6 +2675,8 @@ bool    dummy_absorb       ( CHAR_DATA *ch, CHAR_DATA *victim, int dam,
                              int dt );
 void    dummy_defended     ( CHAR_DATA *ch, CHAR_DATA *victim,
                              int dt, int how );
+bool    dummy_skips_defence( CHAR_DATA *victim );
+bool    dummy_round_limit  ( CHAR_DATA *ch, CHAR_DATA *victim );
 long    dummy_typical_hp   ( int level );
 void    gmcp_send_affects  ( DESCRIPTOR_DATA *d );
 void    gmcp_send_quest    ( DESCRIPTOR_DATA *d );

@@ -241,6 +241,7 @@ Syntax: dummy                  the menu, and what it is set to
         dummy hits <type>      what it should hit you with
         dummy magic <kind>     what it should cast at you, or none
         dummy haste            an extra attack a round, on or off
+        dummy bench [rounds]   a clean benchmark over a fixed run
         dummy reset            your level, the defaults, numbers cleared
         dummy report           stop, heal you both, read the numbers
         leave ring             step back out into the square
@@ -283,6 +284,31 @@ world at that level, so the time-to-kill in the report means something.
   DUMMY HASTE gives it a second attack each round.  Use it to find out
   what your armour is worth against something fast rather than
   something heavy.
+
+BENCHMARKING
+  DUMMY BENCH is for comparing two sets of gear against each other
+  rather than against the world.  Two things spoil a damage reading:
+  the dummy turning blows aside, which makes your number depend on
+  its rolls as much as on your gear, and a run you stop by hand,
+  which is a different length every time so two readings cannot be
+  compared.  Benchmark mode removes both.
+
+    dummy bench          turn it on or off, 50 rounds
+    dummy bench <n>      turn it on with n rounds, 1 to 1000
+    dummy bench off      back to a dummy that defends itself
+
+  It stops dodging, parrying, blocking and ducking entirely, the run
+  ends itself after the rounds are up, and the report gains a damage
+  per round figure.  Per round is the number to write down: unlike
+  per second it does not move with how long the rounds happened to
+  take.
+
+  Your own defences still work - that is your armour, and measuring
+  it is the other half of why you are here.
+
+  It is not the default and should not be.  Something that cannot get
+  out of the way is not a fair model of anything in the world; it is a
+  measuring instrument.  For a fair fight use the shapes.
 
   Change the shape to find out whether your problem is damage or
   accuracy.  You cannot change any of this in the middle of a run: a
@@ -964,6 +990,13 @@ command named here for the detail.
   is the one setting you can change mid-fight.  LEAVE RING steps you
   back out into the square, taking the report with you if a run is
   going, and is the only way out on foot.
+
+  DUMMY BENCH is for comparing two sets of gear rather than measuring
+  yourself against the world.  The dummy stops defending itself
+  altogether and the run ends on its own after a set number of rounds
+  - fifty unless you say otherwise - so two readings are the same
+  length and neither depends on its dodge rolls.  The report gains a
+  damage per round figure, which is the one to write down.
 
   The report also breaks the fight down attack by attack - every spell
   you cast and every special attack on its own line, biggest first,
