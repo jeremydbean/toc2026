@@ -19572,3 +19572,9 @@ Thu Oct  1 12:41:45 2026 :: Automated backup complete.
 Thu Oct  1 12:41:45 2026 :: Daily backup complete.
 Thu Oct  1 12:44:05 2026 :: Sock.sinaddr:  65.49.1.24
 Thu Oct  1 12:44:05 2026 :: EOF encountered on read.
+Thu Oct  1 12:57:04 2026 :: Sock.sinaddr:  79.124.56.214
+Thu Oct  1 12:58:46 2026 :: Sock.sinaddr:  192.168.0.1
+Thu Oct  1 12:58:48 2026 :: Loading Killuminati's playerfile
+Thu Oct  1 12:58:49 2026 :: Killuminati@192.168.0.1 has connected.
+Thu Oct  1 12:58:52 2026 :: Log Killuminati: load obj 5614; load obj 30579; load obj 24581; load obj 7666; load obj 2321; load obj 30577; load obj 760; load obj 3610; load obj 4618; load obj 908; load obj 29209; load obj 24223; load obj 1016; load obj 29241; load obj 29512; load obj 9212; load obj 13295; load obj 7665
+Thu Oct  1 12:59:01 2026 :: Log Killuminati: load obj 5614; load obj 30579; load obj 24581; load obj 7666; load obj 2321; load obj 30577; load obj 760; load obj 3610; load obj 4618; load obj 908; load obj 29209; load obj 24223; load obj 1016; load obj 29241; load obj 29512; load obj 9212; load obj 13295; load obj 7665
