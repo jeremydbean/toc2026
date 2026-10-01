@@ -1,7 +1,7 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1790837485
+LogO 1790837721
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -110,13 +110,13 @@ PsiKnown clairvoyance,confuse,ego whip,mindbar~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1669520
+Plyd 1669744
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2419
-HMV  1828 1828 938 938 343 343
+HMV  1803 1828 938 938 343 343
 NewGold 17
 NewPlat 5130
 NewCopp 45
@@ -167,6 +167,7 @@ Achv level-45 1790711500
 Achv bank-thousand-platinum 1790711500
 Achv carry-ten-platinum 1790711500
 Achv carry-thousand-platinum 1790711500
+Achv benchmark-champion 1790837597
 LastOut  1790836388
 SesLogin 1790828656
 SesDur   591
@@ -457,8 +458,8 @@ Lev  51
 Cost 5000000
 Cond 100
 Repd 0
-Affect -1 51 -1 4 24 0 0
 Affect -1 51 -1 -8 17 0 0
+Affect -1 51 -1 4 24 0 0
 End
 
 #O
