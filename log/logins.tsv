@@ -248,3 +248,9 @@
 1790838283	Killuminati	108-81-26-245.lightspeed.tukrga.sbcglobal.net	connect
 1790838391	Killuminati	108-81-26-245.lightspeed.tukrga.sbcglobal.net	quit	108
 1790838398	Astarte	108-81-26-245.lightspeed.tukrga.sbcglobal.net	connect
+1790838539	Astarte	108-81-26-245.lightspeed.tukrga.sbcglobal.net	shutdown	140
+1790838590	Milenko	108-81-26-245.lightspeed.tukrga.sbcglobal.net	connect
+1790838606	Milenko	108-81-26-245.lightspeed.tukrga.sbcglobal.net	linkdead	15
+1790838609	Killuminati	108-81-26-245.lightspeed.tukrga.sbcglobal.net	connect
+1790838625	Killuminati	108-81-26-245.lightspeed.tukrga.sbcglobal.net	quit	15
+1790838634	Milenko	108-81-26-245.lightspeed.tukrga.sbcglobal.net	reconnect

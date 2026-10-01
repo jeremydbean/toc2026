@@ -1,7 +1,7 @@
 #PLAYER
 Name Milenko~
 Id   56969
-LogO 1790837092
+LogO 1790838606
 Vers 4
 Desc .                ...
 .             ::::::
@@ -50,10 +50,10 @@ PsiSpec ~
 PsiKnown ~
 Cast Fors
 Levl 52
-Plyd 927796
+Plyd 927813
 ListRemorts ~
 NumRemorts 0
-Note 953466460
+Note 1544841593
 Scro 22
 Room 4207
 HMV  575 1539 980 1431 190 381
@@ -413,8 +413,8 @@ Lev  46
 Cost 100000000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 50 -1 6 19 0 0
 AffD 'enchant weapon' 50 -1 6 18 0 0
+AffD 'enchant weapon' 50 -1 6 19 0 0
 End
 
 #O
@@ -448,8 +448,8 @@ Lev  46
 Cost 10000000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 53 -1 6 18 0 0
 AffD 'enchant weapon' 53 -1 9 19 0 0
+AffD 'enchant weapon' 53 -1 6 18 0 0
 End
 
 #O

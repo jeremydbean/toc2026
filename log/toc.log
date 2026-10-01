@@ -19048,3 +19048,29 @@ Thu Oct  1 07:06:38 2026 :: Astarte@108-81-26-245.lightspeed.tukrga.sbcglobal.ne
 Thu Oct  1 07:06:51 2026 :: Log Astarte: spellup
 Thu Oct  1 07:06:51 2026 :: Spellup: Hermie placed in room 2419 by Astarte.
 Thu Oct  1 07:06:54 2026 :: Spellup: Hermie gave Astarte the full list (30 ticks) in room 2419.
+Thu Oct  1 07:08:53 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Thu Oct  1 07:08:59 2026 :: Received signal 15; saving players and shutting down.
+Thu Oct  1 07:08:59 2026 :: Closing link to Astarte.
+Thu Oct  1 07:08:59 2026 :: Normal termination of game.
+Thu Oct  1 07:08:59 2026 ::  INIT OK 
+Thu Oct  1 07:08:59 2026 :: ROM is ready to rock on port 9000.
+Thu Oct  1 07:09:00 2026 :: Automated backup complete.
+Thu Oct  1 07:09:00 2026 :: Daily backup complete.
+Thu Oct  1 07:09:44 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 07:09:49 2026 :: Loading Milenko's playerfile
+Thu Oct  1 07:09:50 2026 :: Milenko@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 07:10:06 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 07:10:06 2026 :: EOF encountered on read.
+Thu Oct  1 07:10:06 2026 :: Closing link to Milenko.
+Thu Oct  1 07:10:08 2026 :: Loading Killuminati's playerfile
+Thu Oct  1 07:10:09 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 07:10:14 2026 :: Log Killuminati: trust mil 70
+Thu Oct  1 07:10:22 2026 :: Log Killuminati: trust milenko 70
+Thu Oct  1 07:10:25 2026 :: Killuminati has quit.
+Thu Oct  1 07:10:25 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 07:10:31 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 07:10:33 2026 :: Loading Milenko's playerfile
+Thu Oct  1 07:10:34 2026 :: Milenko@108-81-26-245.lightspeed.tukrga.sbcglobal.net reconnected.
+Thu Oct  1 07:10:38 2026 :: Log Milenko: restore self
+Thu Oct  1 07:12:15 2026 :: Log Milenko: trans tyrant
+Thu Oct  1 07:12:17 2026 :: Log Milenko: trans misery
