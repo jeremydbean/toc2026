@@ -19203,3 +19203,265 @@ Thu Oct  1 08:00:57 2026 :: Spellup: Hermie gave Killuminati the full list (30 t
 Thu Oct  1 08:02:39 2026 :: Sock.sinaddr:  108.81.26.245
 Thu Oct  1 08:02:42 2026 :: Loading Killuminati's playerfile
 Thu Oct  1 08:02:50 2026 :: Closing link to Killuminati.
+Thu Oct  1 08:06:03 2026 ::  INIT OK 
+Thu Oct  1 08:06:03 2026 :: ROM is ready to rock on port 9000.
+Thu Oct  1 08:06:03 2026 :: Automated backup complete.
+Thu Oct  1 08:06:03 2026 :: Daily backup complete.
+Thu Oct  1 08:06:13 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 08:06:16 2026 :: Loading Killuminati's playerfile
+Thu Oct  1 08:06:18 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 08:10:39 2026 :: Killuminati has quit.
+Thu Oct  1 08:10:39 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 08:10:46 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 08:11:51 2026 :: Loading Misery's playerfile
+Thu Oct  1 08:11:52 2026 :: Misery@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 08:13:30 2026 :: Log Misery: spellup
+Thu Oct  1 08:13:30 2026 :: Spellup: Hermie placed in room 2401 by Misery.
+Thu Oct  1 08:16:03 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 08:16:43 2026 :: Received signal 15; saving players and shutting down.
+Thu Oct  1 08:16:43 2026 :: Closing link to Misery.
+Thu Oct  1 08:16:43 2026 :: Normal termination of game.
+Thu Oct  1 08:16:43 2026 ::  INIT OK 
+Thu Oct  1 08:16:43 2026 :: ROM is ready to rock on port 9000.
+Thu Oct  1 08:16:43 2026 :: Automated backup complete.
+Thu Oct  1 08:16:43 2026 :: Daily backup complete.
+Thu Oct  1 08:16:48 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 08:16:55 2026 :: Loading Misery's playerfile
+Thu Oct  1 08:16:56 2026 :: Misery@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 08:20:46 2026 :: Log Misery: load obj 8703
+Thu Oct  1 08:21:02 2026 :: Log Misery: load obj 1016
+Thu Oct  1 08:21:19 2026 :: Log Misery: load obj 29209
+Thu Oct  1 08:21:33 2026 :: Log Misery: load obj 30577
+Thu Oct  1 08:21:46 2026 :: Log Misery: load obj 4618
+Thu Oct  1 08:21:58 2026 :: Log Misery: load obj 24581
+Thu Oct  1 08:21:58 2026 :: Log Misery: load obj 24581
+Thu Oct  1 08:22:15 2026 :: Log Misery: load obj 29235
+Thu Oct  1 08:22:28 2026 :: Log Misery: load obj 7664
+Thu Oct  1 08:22:44 2026 :: Log Misery: load obj 7665
+Thu Oct  1 08:22:56 2026 :: Log Misery: load obj 3610
+Thu Oct  1 08:23:25 2026 :: Log Misery: load obj 728
+Thu Oct  1 08:23:40 2026 :: Log Misery: load obj 29062
+Thu Oct  1 08:23:49 2026 :: Log Misery: set char self align 1000
+Thu Oct  1 08:23:58 2026 :: Log Misery: set char self align -1000
+Thu Oct  1 08:24:16 2026 :: Log Misery: load obj 7666
+Thu Oct  1 08:24:37 2026 :: Log Misery: load obj 29241
+Thu Oct  1 08:24:48 2026 :: Log Misery: load obj 13295
+Thu Oct  1 08:24:58 2026 :: Log Misery: load obj 29512
+Thu Oct  1 08:25:09 2026 :: Log Misery: load obj 29512
+Thu Oct  1 08:27:13 2026 :: Log Misery: load obj 5720
+Thu Oct  1 08:28:51 2026 :: Misery has quit.
+Thu Oct  1 08:28:51 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 08:28:57 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 08:28:59 2026 :: Loading Astarte's playerfile
+Thu Oct  1 08:29:01 2026 :: Astarte@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 08:29:21 2026 :: Log Astarte: load obj 1016
+Thu Oct  1 08:29:31 2026 :: Log Astarte: load obj 29209
+Thu Oct  1 08:29:43 2026 :: Log Astarte: load obj 25029
+Thu Oct  1 08:29:52 2026 :: Log Astarte: load obj 4618
+Thu Oct  1 08:30:09 2026 :: Log Astarte: load obj 24581
+Thu Oct  1 08:30:10 2026 :: Log Astarte: load obj 24581
+Thu Oct  1 08:30:19 2026 :: Log Astarte: load obj 725
+Thu Oct  1 08:30:29 2026 :: Log Astarte: load obj 7649
+Thu Oct  1 08:30:35 2026 :: Log Astarte: set char self align -1000
+Thu Oct  1 08:30:45 2026 :: Log Astarte: load obj 28112
+Thu Oct  1 08:30:56 2026 :: Log Astarte: load obj 3610
+Thu Oct  1 08:31:03 2026 :: Log Astarte: load obj 2321
+Thu Oct  1 08:31:09 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 08:31:29 2026 :: Log Astarte: load obj 28128
+Thu Oct  1 08:31:45 2026 :: Log Astarte: load obj 24580
+Thu Oct  1 08:32:14 2026 :: Log Astarte: load obj 5720
+Thu Oct  1 08:32:25 2026 :: Log Astarte: load obj 29512
+Thu Oct  1 08:32:26 2026 :: Log Astarte: load obj 29512
+Thu Oct  1 08:32:46 2026 :: Log Astarte: set char self align 0
+Thu Oct  1 08:36:19 2026 :: Astarte has quit.
+Thu Oct  1 08:36:19 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 08:36:24 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 08:36:25 2026 :: Loading Tyrant's playerfile
+Thu Oct  1 08:36:26 2026 :: Tyrant@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 08:36:31 2026 :: Log Tyrant: set char self align 0
+Thu Oct  1 08:36:36 2026 :: Log Tyrant: load obj 1016
+Thu Oct  1 08:36:45 2026 :: Log Tyrant: load obj 24502
+Thu Oct  1 08:36:53 2026 :: Log Tyrant: set char self align -1000
+Thu Oct  1 08:37:03 2026 :: Log Tyrant: load obj 738
+Thu Oct  1 08:37:13 2026 :: Log Tyrant: load obj 13230
+Thu Oct  1 08:37:24 2026 :: Log Tyrant: load obj 9322
+Thu Oct  1 08:37:25 2026 :: Log Tyrant: load obj 9322
+Thu Oct  1 08:37:32 2026 :: Log Tyrant: load obj 643
+Thu Oct  1 08:37:41 2026 :: Log Tyrant: set char self align 0
+Thu Oct  1 08:38:15 2026 :: Log Tyrant: load obj 13201
+Thu Oct  1 08:38:24 2026 :: Log Tyrant: load obj 30501
+Thu Oct  1 08:38:31 2026 :: Log Tyrant: load obj 3610
+Thu Oct  1 08:38:41 2026 :: Log Tyrant: load obj 2321
+Thu Oct  1 08:38:56 2026 :: Log Tyrant: load obj 20118
+Thu Oct  1 08:39:07 2026 :: Log Tyrant: load obj 5716
+Thu Oct  1 08:39:20 2026 :: Log Tyrant: load obj 9212
+Thu Oct  1 08:39:25 2026 :: Log Tyrant: load obj 9212
+Thu Oct  1 08:39:45 2026 :: Log Tyrant: load obj 2321
+Thu Oct  1 08:40:05 2026 :: Log Tyrant: spellup
+Thu Oct  1 08:40:05 2026 :: Spellup: Hermie placed in room 2497 by Tyrant.
+Thu Oct  1 08:40:06 2026 :: Spellup: Hermie gave Tyrant the full list (30 ticks) in room 2497.
+Thu Oct  1 08:40:16 2026 :: Log Tyrant: trans hermie
+Thu Oct  1 08:40:59 2026 :: Log Tyrant: load obj 5716
+Thu Oct  1 08:42:09 2026 :: Tyrant has quit.
+Thu Oct  1 08:42:09 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 08:42:13 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 08:42:15 2026 :: Loading Milenko's playerfile
+Thu Oct  1 08:42:16 2026 :: Milenko@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 08:42:18 2026 :: Log Milenko [25265]: moved to 25265 (The bonfire.)
+Thu Oct  1 08:42:21 2026 :: Log Milenko [25265]: goto dummy
+Thu Oct  1 08:42:21 2026 :: Log Milenko [0]: moved to 2419 (The Training Yard)
+Thu Oct  1 08:42:22 2026 :: Log Milenko [2419]: /
+Thu Oct  1 08:42:39 2026 :: Log Milenko [2419]: load obj 8703
+Thu Oct  1 08:42:41 2026 :: Log Milenko [2419]: wear robe
+Thu Oct  1 08:42:48 2026 :: Log Milenko [2419]: load obj 5602
+Thu Oct  1 08:42:49 2026 :: Log Milenko [2419]: load obj 5602
+Thu Oct  1 08:42:50 2026 :: Log Milenko [2419]: rem bra
+Thu Oct  1 08:42:51 2026 :: Log Milenko [2419]: rem bra
+Thu Oct  1 08:42:52 2026 :: Log Milenko [2419]: wear el
+Thu Oct  1 08:42:55 2026 :: Log Milenko [2419]: rem arm
+Thu Oct  1 08:42:56 2026 :: Log Milenko [2419]: wear bra
+Thu Oct  1 08:42:57 2026 :: Log Milenko [2419]: rem bro
+Thu Oct  1 08:42:58 2026 :: Log Milenko [2419]: rem arm
+Thu Oct  1 08:42:59 2026 :: Log Milenko [2419]: eq
+Thu Oct  1 08:43:15 2026 :: Log Milenko [2419]: rem wri
+Thu Oct  1 08:43:15 2026 :: Log Milenko [2419]: rem wri
+Thu Oct  1 08:43:17 2026 :: Log Milenko [2419]: wear el
+Thu Oct  1 08:43:18 2026 :: Log Milenko [2419]: wear el
+Thu Oct  1 08:43:30 2026 :: Log Milenko [2419]: load obj 25029
+Thu Oct  1 08:43:34 2026 :: Log Milenko [2419]: wear rob
+Thu Oct  1 08:43:41 2026 :: Log Milenko [2419]: load obj 4618
+Thu Oct  1 08:43:42 2026 :: Log Milenko [2419]: wear mi
+Thu Oct  1 08:43:48 2026 :: Log Milenko [2419]: rem ring
+Thu Oct  1 08:43:48 2026 :: Log Milenko [2419]: rem ring
+Thu Oct  1 08:43:51 2026 :: Log Milenko [2419]: load obj 24581
+Thu Oct  1 08:43:51 2026 :: Log Milenko [2419]: load obj 24581
+Thu Oct  1 08:43:53 2026 :: Log Milenko [2419]: wear real
+Thu Oct  1 08:43:54 2026 :: Log Milenko [2419]: wear real
+Thu Oct  1 08:43:56 2026 :: Log Milenko [2419]: wear ring
+Thu Oct  1 08:43:56 2026 :: Log Milenko [2419]: wear ring
+Thu Oct  1 08:43:59 2026 :: Log Milenko [2419]: owhere ring of
+Thu Oct  1 08:44:07 2026 :: Log Milenko [2419]: owher ering of real
+Thu Oct  1 08:44:10 2026 :: Log Milenko [2419]: owhere ring of
+Thu Oct  1 08:44:23 2026 :: Log Milenko [2419]: owhere ring of real
+Thu Oct  1 08:44:56 2026 :: Log Milenko [2419]: load obj 908
+Thu Oct  1 08:44:58 2026 :: Log Milenko [2419]: wear ga
+Thu Oct  1 08:44:59 2026 :: Log Milenko [2419]: eq
+Thu Oct  1 08:45:07 2026 :: Log Milenko [2419]: load obj 7649
+Thu Oct  1 08:45:08 2026 :: Log Milenko [2419]: wear red
+Thu Oct  1 08:45:12 2026 :: Log Milenko [2419]: set char self align 0
+Thu Oct  1 08:45:14 2026 :: Log Milenko [2419]: load obj 7649
+Thu Oct  1 08:45:15 2026 :: Log Milenko [2419]: wear red
+Thu Oct  1 08:45:21 2026 :: Log Milenko [2419]: set char self align -1000
+Thu Oct  1 08:45:22 2026 :: Log Milenko [2419]: wear red
+Thu Oct  1 08:45:30 2026 :: Log Milenko [2419]: load obj 3608
+Thu Oct  1 08:45:31 2026 :: Log Milenko [2419]: wear op
+Thu Oct  1 08:45:37 2026 :: Log Milenko [2419]: load obj 10264
+Thu Oct  1 08:45:40 2026 :: Log Milenko [2419]: wear let
+Thu Oct  1 08:45:42 2026 :: Log Milenko [2419]: wear lea
+Thu Oct  1 08:45:49 2026 :: Log Milenko [2419]: load obj 29925
+Thu Oct  1 08:45:50 2026 :: Log Milenko [2419]: load obj 29925
+Thu Oct  1 08:45:52 2026 :: Log Milenko [2419]: eq
+Thu Oct  1 08:45:54 2026 :: Log Milenko [2419]: rem pre
+Thu Oct  1 08:45:55 2026 :: Log Milenko [2419]: rem pre
+Thu Oct  1 08:45:57 2026 :: Log Milenko [2419]: rem star
+Thu Oct  1 08:45:57 2026 :: Log Milenko [2419]: rem star
+Thu Oct  1 08:46:00 2026 :: Log Milenko [2419]: wear snow
+Thu Oct  1 08:46:00 2026 :: Log Milenko [2419]: wear snow
+Thu Oct  1 08:46:11 2026 :: Log Milenko [2419]: load obj 28128
+Thu Oct  1 08:46:12 2026 :: Log Milenko [2419]: wear gla
+Thu Oct  1 08:46:13 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 08:46:32 2026 :: Log Milenko [2419]: owhere glai
+Thu Oct  1 08:46:40 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:46:44 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:46:47 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:46:52 2026 :: Log Milenko [2419]: nos
+Thu Oct  1 08:46:53 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:46:56 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:47:00 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:47:04 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:47:07 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:47:10 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:47:14 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:47:18 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:47:21 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:47:31 2026 :: Log Milenko [2419]: c bew gla
+Thu Oct  1 08:47:41 2026 :: Log Milenko [2419]: wear gla
+Thu Oct  1 08:47:51 2026 :: Log Milenko [2419]: load obj 24515
+Thu Oct  1 08:47:53 2026 :: Log Milenko [2419]: wear swo
+Thu Oct  1 08:47:58 2026 :: Log Milenko [2419]: c bew gla
+Thu Oct  1 08:48:00 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:48:08 2026 :: Log Milenko [2419]: c bewitch flaming
+Thu Oct  1 08:48:15 2026 :: Log Milenko [2419]: wear flaming
+Thu Oct  1 08:48:22 2026 :: Log Milenko [2419]: load obj 24580
+Thu Oct  1 08:48:25 2026 :: Log Milenko [2419]: wear gir
+Thu Oct  1 08:48:35 2026 :: Log Milenko [2419]: load obj 5720
+Thu Oct  1 08:48:37 2026 :: Log Milenko [2419]: wear hear
+Thu Oct  1 08:48:43 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:48:47 2026 :: Log Milenko [2419]: c 'remove curse' self
+Thu Oct  1 08:48:53 2026 :: Log Milenko [2419]: c bewitch heart
+Thu Oct  1 08:49:00 2026 :: Log Milenko [2419]: wear heart
+Thu Oct  1 08:49:03 2026 :: Log Milenko [2419]: load obj 20130
+Thu Oct  1 08:49:06 2026 :: Log Milenko [2419]: eq
+Thu Oct  1 08:49:11 2026 :: Log Milenko [2419]: wear spi
+Thu Oct  1 08:49:13 2026 :: Log Milenko [2419]: load obj 20130
+Thu Oct  1 08:49:14 2026 :: Log Milenko [2419]: wear spi
+Thu Oct  1 08:49:34 2026 :: Log Milenko [2419]: load obj 14020
+Thu Oct  1 08:49:36 2026 :: Log Milenko [2419]: wear bu
+Thu Oct  1 08:49:44 2026 :: Log Milenko [2419]: load obj 24223
+Thu Oct  1 08:49:45 2026 :: Log Milenko [2419]: wear car
+Thu Oct  1 08:49:47 2026 :: Log Milenko [2419]: eq
+Thu Oct  1 08:49:56 2026 :: Log Milenko [2419]: kill dum
+Thu Oct  1 08:50:00 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:09 2026 :: Log Milenko [2419]: owhere heart
+Thu Oct  1 08:50:15 2026 :: Log Milenko [2419]: owhere heartseek
+Thu Oct  1 08:50:18 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:22 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:26 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:29 2026 :: Log Milenko [2419]: eq
+Thu Oct  1 08:50:30 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:38 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:41 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:44 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:47 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:50 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:53 2026 :: Log Milenko [2419]: k
+Thu Oct  1 08:50:56 2026 :: Log Milenko [2419]: load obj 3608
+Thu Oct  1 08:50:56 2026 :: Log Milenko [2419]: wear op
+Thu Oct  1 08:50:59 2026 :: Log Milenko [2419]: eq
+Thu Oct  1 08:51:25 2026 :: Log Milenko [2419]: dummy lea
+Thu Oct  1 08:52:20 2026 :: Log Milenko [2419]: eq
+Thu Oct  1 08:52:38 2026 :: Log Milenko [2419]: stat obj hearts
+Thu Oct  1 08:53:03 2026 :: Log Milenko [2419]: fsave
+Thu Oct  1 08:53:06 2026 :: Log Milenko [2419]: quit
+Thu Oct  1 08:53:06 2026 :: Milenko has quit.
+Thu Oct  1 08:53:06 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 09:01:13 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 09:16:23 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 09:31:31 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 09:39:20 2026 :: Sock.sinaddr:  198.235.24.220
+Thu Oct  1 09:39:20 2026 :: EOF encountered on read.
+Thu Oct  1 09:46:33 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 10:01:33 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last successful run was 99999 minutes ago). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 10:16:43 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 10:31:49 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last successful run was 99999 minutes ago). Saves are still on disk but are not leaving this machine.
+Thu Oct  1 10:35:29 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 10:35:38 2026 :: Loading Miseri's playerfile
+Thu Oct  1 10:35:40 2026 :: Miseri@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 10:36:11 2026 :: [DELETE] Character is contemplating deletion.
+Thu Oct  1 10:36:15 2026 :: [DELETE] Character self-deleted.
+Thu Oct  1 10:36:15 2026 :: Miseri has quit.
+Thu Oct  1 10:36:15 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 10:36:20 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 10:36:22 2026 :: Loading Miseri's playerfile
+Thu Oct  1 10:36:43 2026 :: Miseri@108-81-26-245.lightspeed.tukrga.sbcglobal.net new player.
+Thu Oct  1 10:36:55 2026 :: 108-81-26-245.lightspeed.tukrga.sbcglobal.net input spamming!
+Thu Oct  1 10:36:55 2026 :: Miseri has quit.
+Thu Oct  1 10:36:55 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 10:44:59 2026 :: ANNOUNCE: Restarting for an update - back in under a minute.
+Thu Oct  1 10:45:05 2026 :: Received signal 15; saving players and shutting down.
+Thu Oct  1 10:45:05 2026 :: Normal termination of game.
+Thu Oct  1 10:45:05 2026 ::  INIT OK 
+Thu Oct  1 10:45:05 2026 :: ROM is ready to rock on port 9000.
+Thu Oct  1 10:45:05 2026 :: Automated backup complete.
+Thu Oct  1 10:45:05 2026 :: Daily backup complete.
+Thu Oct  1 10:46:55 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last run reported 'exit-code'). Saves are still on disk but are not leaving this machine.
