@@ -1,0 +1,4 @@
+# The training yard's benchmark board: each character's best
+# fifty-round standard run, best first.
+# name total seconds level class when
+Tyrant 19206 152 34 2 1790836808
