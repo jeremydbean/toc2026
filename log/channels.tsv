@@ -619,3 +619,30 @@
 1790897430	say	questor thews	Here's your 17 gold - well earned!
 1790897442	say	Alaric	That borderline negates the process
 1790897494	gossip	Tyrant	imagine that hitting a level 29 back in the day
+1790897556	gossip	Tyrant	i don't know if the walk quest will take you right to it every time, but i'm curious how close it gets you based on the room name thews gives
+1790897577	gossip	Tyrant	i imagine if there's a bunch of the same room name you'll have to wander a bit, but.  it knows to walk you to a specific room name, lol
+1790897598	gossip	Alaric	Spyman would have been in an even worse position!
+1790897600	gossip	Tyrant	if it feels too cheat-ish i'll make it an immortal command, lol
+1790897604	gossip	Tyrant	lolol. 
+1790897610	gossip	Tyrant	oh man you should see astarte, my T/W
+1790897612	gossip	Alaric	He was liek 253hp or something like that at the 29-34 range
+1790897624	gossip	Tyrant	he's only level 52 and he outdid everyone else on DPS.  do dummy leaderboard
+1790897662	gossip	Alaric	Damn
+1790897666	gossip	Tyrant	you gotta fight the dummy once and see whatcha get
+1790897680	gossip	Alaric	Sec
+1790897682	gossip	Tyrant	the fight stops itself after 25 rounds
+1790897701	gossip	Tyrant	he can't kill you, it's like arena.  you just go to 1hp
+1790897705	say	questor thews	Thank you for answering the call, brave Alaric!
+1790897705	say	questor thews	A prized artifact - The Amulet of Soulcrusher - has gone missing!
+1790897705	say	questor thews	Find it and I'll reward you handsomely in quest points!
+1790897705	say	questor thews	It was last spotted near First intersection of Hector and Achilles, in the Gangland region.
+1790897705	say	questor thews	You have 20 minutes to complete this quest.
+1790897705	say	questor thews	The realm is counting on you!
+1790897719	say	questor thews	Excellent work! The realm is in your debt!
+1790897719	say	questor thews	Streak of 21 in a row! A +115% bonus has been added!
+1790897719	say	questor thews	Here's your 22 gold - well earned!
+1790897741	gossip	Tyrant	look in the top right while you fight above the map
+1790897752	gossip	Tyrant	it shows you the number of rounds, total DPS, and your average per round
+1790897769	gossip	Alaric	That's slick to have that graphic
+1790897782	gossip	Tyrant	apparently you can code about anything into mudlet, lol
+1790897797	gossip	Tyrant	so if there's anything else you'd rather see over there, it can prolly do it
