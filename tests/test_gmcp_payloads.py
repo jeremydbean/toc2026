@@ -73,6 +73,14 @@ class GmcpPayloadTests(unittest.TestCase):
     def test_affects_are_sent_only_when_they_change(self) -> None:
         self.assertIn("gmcp_last_affect_hash", self.affects)
 
+    def test_vitals_carry_per_level_exp_progress(self) -> None:
+        """The exp bar fills across the current level, not across the
+        cumulative total, so the feed sends a 0-100 exp_pct computed from
+        the exp_per_level * level floor."""
+        body = function_body(self.gmcp, "void gmcp_send_character(")
+        self.assertIn(r'\"exp_pct\"', body)
+        self.assertIn("exp_per_level( ch, ch->pcdata->points ) * ch->level", body)
+
     def test_the_quest_feed_says_which_contract_and_how_long(self) -> None:
         body = function_body(self.gmcp, "void gmcp_send_quest(")
         for key in ('"active"', '"kind"', '"countdown"', '"target"',

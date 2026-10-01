@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.5.0"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.1"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -290,6 +290,7 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
     const char *class_name;
     long maximum_exp;
     long to_level;
+    int exp_pct;
     char json[MAX_STRING_LENGTH];
     char number[64];
 
@@ -302,6 +303,21 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
 
     maximum_exp = IS_NPC(ch) ? ch->exp : next_xp_level( ch );
     to_level = maximum_exp > ch->exp ? maximum_exp - ch->exp : 0;
+
+    /* Progress through the current level, 0-100, for a WoW-style bar
+       that fills across the level rather than sitting near the top of a
+       cumulative total. The floor is exp_per_level * level -- the baseline
+       this codebase uses everywhere for "the exp to be at this level" --
+       and the band runs from there to the next level's threshold. */
+    {
+        long floor = IS_NPC(ch) ? 0
+            : (long) exp_per_level( ch, ch->pcdata->points ) * ch->level;
+        long band = maximum_exp - floor;
+        exp_pct = ( band > 0 && ch->exp > floor )
+            ? (int) ( ( ch->exp - floor ) * 100 / band ) : 0;
+        if ( exp_pct < 0 ) exp_pct = 0;
+        if ( exp_pct > 100 ) exp_pct = 100;
+    }
 
     if ( !d->gmcp_vitals_valid
       || d->gmcp_last_hit != ch->hit
@@ -316,10 +332,11 @@ void gmcp_send_character( DESCRIPTOR_DATA *d )
         snprintf( json, sizeof(json),
             "{\"hp\":%d,\"maxhp\":%d,\"mana\":%d,\"maxmana\":%d,"
             "\"move\":%d,\"maxmove\":%d,\"moves\":%d,\"maxmoves\":%d,"
-            "\"exp\":%ld,\"maxexp\":%ld,\"tnl\":%ld,\"level\":%d}",
+            "\"exp\":%ld,\"maxexp\":%ld,\"tnl\":%ld,\"level\":%d,"
+            "\"exp_pct\":%d}",
             ch->hit, ch->max_hit, ch->mana, ch->max_mana,
             ch->move, ch->max_move, ch->move, ch->max_move,
-            ch->exp, maximum_exp, to_level, ch->level );
+            ch->exp, maximum_exp, to_level, ch->level, exp_pct );
         telnet_send_gmcp( d, "Char.Vitals", json );
 
         d->gmcp_last_hit = ch->hit;

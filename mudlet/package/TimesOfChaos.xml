@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.5.0"
+tocMudlet.version = "1.5.1"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -76,7 +76,9 @@ local P = {
   hp1 = "#7f1d1d", hp2 = "#dc2626",
   mana1 = "#1e3a8a", mana2 = "#3b82f6",
   move1 = "#14532d", move2 = "#22c55e",
-  exp1 = "#713f12", exp2 = "#eab308",
+  -- EXP is green and fills across the level, like an MMO xp bar; a
+  -- teal-leaning emerald so it reads apart from the grass-green MOVE bar.
+  exp1 = "#065f46", exp2 = "#34d399",
   -- Lag drains amber; the enemy bar is a colour of its own so it is
   -- never read as your own health at a glance.
   lag1 = "#78350f", lag2 = "#f59e0b",
@@ -676,11 +678,21 @@ function tocMudlet.onVitals()
   setGauge(tocMudlet.ui.mana, vitals.mana, vitals.maxmana, "MANA")
   setGauge(tocMudlet.ui.move, vitals.moves or vitals.move,
     vitals.maxmoves or vitals.maxmove, "MOVE")
-  local exp, maxexp = number(vitals.exp), number(vitals.maxexp, 1)
   local toLevel = number(vitals.tnl)
   if tocMudlet.ui.exp then
-    tocMudlet.ui.exp:setValue(exp, math.max(1, maxexp),
-      string.format("EXP  %d to level", toLevel))
+    -- Fill across the current level (0-100 from the server), not across
+    -- the cumulative total -- so it rises as you earn, like an xp bar,
+    -- rather than sitting near full. Older servers that send no exp_pct
+    -- fall back to the raw exp/maxexp fraction.
+    local pct = vitals.exp_pct
+    if pct ~= nil then
+      tocMudlet.ui.exp:setValue(number(pct), 100,
+        string.format("EXP  %d to level", toLevel))
+    else
+      tocMudlet.ui.exp:setValue(number(vitals.exp),
+        math.max(1, number(vitals.maxexp, 1)),
+        string.format("EXP  %d to level", toLevel))
+    end
   end
 
   -- Low-health warning: the HP gauge turns its danger colour at or
@@ -997,18 +1009,10 @@ function tocMudlet.onTarget()
     tocMudlet.ui.target:echo(string.format(
       [[<span style="color:%s">Not fighting</span>]], P.muted) ..
       (last and ("<br>" .. last) or ""))
-    if tocMudlet.ui.enemy then
-      tocMudlet.ui.enemy:setValue(0, 1, "NO TARGET")
-    end
     return
   end
 
   local percent = math.max(0, math.min(100, tonumber(target.percent) or 0))
-  if tocMudlet.ui.enemy then
-    local name = tostring(target.name or "TARGET"):gsub("<", "(")
-    tocMudlet.ui.enemy:setValue(percent, 100,
-      string.format("%.12s %d%%", name, percent))
-  end
   local colour = percent <= 25 and "#ff6e6e"
     or percent <= 60 and "#ff9f6e" or "#9fe870"
   -- A bar drawn in text, because a Geyser gauge here would need its
@@ -1285,18 +1289,17 @@ function tocMudlet.buildUI()
   tocMudlet.ui.mana = Geyser.Gauge:new({name = "tocMudlet.mana"}, tocMudlet.ui.gauges)
   tocMudlet.ui.move = Geyser.Gauge:new({name = "tocMudlet.move"}, tocMudlet.ui.gauges)
   tocMudlet.ui.exp = Geyser.Gauge:new({name = "tocMudlet.exp"}, tocMudlet.ui.gauges)
-  -- The enemy beside your own bars, the way a fight is actually read.
-  tocMudlet.ui.enemy = Geyser.Gauge:new({name = "tocMudlet.enemy"}, tocMudlet.ui.gauges)
   styleGauge(tocMudlet.ui.hp, P.hp1, P.hp2)
   styleGauge(tocMudlet.ui.mana, P.mana1, P.mana2)
   styleGauge(tocMudlet.ui.move, P.move1, P.move2)
+  -- EXP is a green progress bar that fills across the level, like the
+  -- xp bar in an MMO; the enemy's health lives in the Target strip,
+  -- not up here beside your own vitals.
   styleGauge(tocMudlet.ui.exp, P.exp1, P.exp2)
-  styleGauge(tocMudlet.ui.enemy, P.enemy1, P.enemy2)
   setGauge(tocMudlet.ui.hp, 0, 1, "HP")
   setGauge(tocMudlet.ui.mana, 0, 1, "MANA")
   setGauge(tocMudlet.ui.move, 0, 1, "MOVE")
   tocMudlet.ui.exp:setValue(0, 1, "EXP")
-  tocMudlet.ui.enemy:setValue(0, 1, "NO TARGET")
 
   -- When you can act again: a thin bar under the vitals that empties as
   -- the lag runs out. Empty means ready. The game sends the remainder
@@ -1377,12 +1380,12 @@ function tocMudlet.buildUI()
 
   tocMudlet.ui.mapper = Geyser.Mapper:new({
     name = "tocMudlet.mapper", x = -350, y = 208,
-    width = 340, height = "50%-208px",
+    width = 340, height = "66%-208px",
   })
 
   -- Three consoles in one place, one shown at a time.
-  local paneGeometry = { x = -350, y = "50%", width = 340,
-                         height = "50%-80px", autoWrap = true,
+  local paneGeometry = { x = -350, y = "66%", width = 340,
+                         height = "34%-80px", autoWrap = true,
                          scrollBar = true, fontSize = 9 }
   for _, name in ipairs({ "chat", "here", "items", "buffs", "group" }) do
     local spec = {}

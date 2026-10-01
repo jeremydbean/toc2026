@@ -482,20 +482,36 @@ do
     text(g):find("Not in a group") ~= nil, text(g))
 end
 
--- ------------------------------------------------ the enemy gauge
+-- ------------------------------------------- the target strip's health
 do
-  local ev = {}
-  tocMudlet.ui.enemy = { setValue = function(_, _, _, lbl) ev[#ev + 1] = lbl or "" end }
   tocMudlet.ui.target = console()
   gmcp.Char.Target = { fighting = true, name = "a cityguard",
                        level = 10, percent = 40 }
   tocMudlet.onTarget()
-  check("the enemy gauge shows the target",
-    (ev[#ev] or ""):find("cityguard") ~= nil, ev[#ev])
+  local t = text(tocMudlet.ui.target)
+  check("the target strip shows the enemy and its health",
+    t:find("cityguard") ~= nil and t:find("40%%") ~= nil, t)
   gmcp.Char.Target = { fighting = false }
   tocMudlet.onTarget()
-  check("no target clears the enemy gauge",
-    (ev[#ev] or ""):find("NO TARGET") ~= nil, ev[#ev])
+  check("not fighting says so",
+    text(tocMudlet.ui.target):find("Not fighting") ~= nil,
+    text(tocMudlet.ui.target))
+end
+
+-- ------------------------------------------------ the exp bar fills per level
+do
+  local ev = {}
+  tocMudlet.ui.exp = { setValue = function(_, cur, max, lbl)
+    ev = { cur = cur, max = max, lbl = lbl } end }
+  gmcp.Char = gmcp.Char or {}
+  gmcp.Char.Vitals = { hp = 1, maxhp = 1, mana = 1, maxmana = 1,
+    move = 1, maxmove = 1, exp = 123, maxexp = 456, tnl = 333,
+    level = 10, exp_pct = 37 }
+  tocMudlet.onVitals()
+  check("the exp bar uses the per-level percent", ev.cur == 37 and ev.max == 100,
+    tostring(ev.cur) .. "/" .. tostring(ev.max))
+  check("and labels the exp to level", (ev.lbl or ""):find("333 to level") ~= nil,
+    ev.lbl)
 end
 
 -- ------------------------------------------------ the buffs pane
