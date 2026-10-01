@@ -693,3 +693,23 @@
 1790898386	say	questor thews	Streak of 23 in a row! A +121% bonus has been added!
 1790898386	say	questor thews	Here's your 1 gold - well earned!
 1790898388	gossip	Tyrant	god it really does just run you there, lol
+1790898414	gossip	Tyrant	claude actually recommended that command when i was brainstorming what to do with mudlet, lol
+1790898414	gossip	Alaric	It veers around with the mazes, but it locks on pretty quickly
+1790898434	gossip	Tyrant	yeah you just type it a few times.  you could like trigger questing, lol
+1790898465	gossip	Alaric	Could be done with variables you put in as the end user.
+1790898474	gossip	Alaric	It's pretty easy with just the walk command
+1790898495	gossip	Tyrant	just trigger attacks off [TARGET].  write get all for all the quest items.
+1790898506	gossip	Tyrant	you could probably automate the whole thing, lol
+1790898640	gossip	Alaric	It'd easily be possible. Onlyy a handful of commands otherwise even now
+1790898641	say	questor thews	Thank you for answering the call, brave Alaric!
+1790898641	say	questor thews	an old centaur has been declared an outlaw!
+1790898641	say	questor thews	Hunt them down before they cause more trouble!
+1790898641	say	questor thews	Your quarry was last spotted near A Centaur's Hut, in the Wyvern's Tower region.
+1790898641	say	questor thews	You have 19 minutes to complete this quest.
+1790898641	say	questor thews	The realm is counting on you!
+1790898664	say	questor thews	Splendid - you've returned victorious!
+1790898664	say	questor thews	Streak of 24 in a row! A +124% bonus has been added!
+1790898664	say	questor thews	Here's your 8 gold - well earned!
+1790898684	say	Tyrant	take off all your clothes, lol
+1790898690	say	Tyrant	and put em in a pack
+1790898696	say	Tyrant	i wanna test something
