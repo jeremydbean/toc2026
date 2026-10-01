@@ -3,6 +3,6 @@
 # standard fight, best first.
 # name total seconds level class when guild
 Astarte 37591 75 51 2 1790843664 3
+Misery 30604 77 54 2 1790854273 2
 Milenko 13444 78 52 5 1790844674 5
-Misery 10655 76 54 2 1790839333 2
 Tyrant 10223 78 34 2 1790844097 2
