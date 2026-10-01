@@ -1,1 +1,1 @@
-[ 2497] Alaric: In the Mudlet panel that display your name, level, race and class, the race and class names should be capitalized.
+[ 2401] Alaric: The psionic skill, "Mindbar" doesn't show on the list of effects when the players types, "affect"

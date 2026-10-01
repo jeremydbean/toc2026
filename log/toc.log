@@ -17753,3 +17753,153 @@ Thu Oct  1 01:07:53 2026 :: Log Alaric [1716]: where guard
 Thu Oct  1 01:08:02 2026 :: Log Alaric [1716]: gos Lol, yeah. But the mobs is dead :)
 Thu Oct  1 01:08:10 2026 :: Log Alaric [1716]: gos No :)
 Thu Oct  1 01:08:13 2026 :: Log Alaric [1716]: l
+Thu Oct  1 01:08:20 2026 :: Log Killuminati: load mob 1715
+Thu Oct  1 01:08:20 2026 :: Log Alaric [1716]: gos I'm gonna need this one :)
+Thu Oct  1 01:08:44 2026 :: Log Alaric [1716]: gos Probably why the room was private. The mud just forces the quest on the whole room
+Thu Oct  1 01:08:44 2026 :: Log Alaric [1716]: l
+Thu Oct  1 01:08:47 2026 :: Log Alaric [1716]: aq
+Thu Oct  1 01:08:50 2026 :: Log Alaric [1716]: aq info
+Thu Oct  1 01:09:05 2026 :: Log Alaric [1716]: l
+Thu Oct  1 01:09:07 2026 :: Log Alaric [1716]: say Damn
+Thu Oct  1 01:09:18 2026 :: Log Alaric [1716]: (refused) sayy Al borked, said I had a quest for 5582 qp :)
+Thu Oct  1 01:09:22 2026 :: Log Alaric [1716]: say Al borked, said I had a quest for 5582 qp :)
+Thu Oct  1 01:09:24 2026 :: Log Alaric [1716]: recal
+Thu Oct  1 01:09:24 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Thu Oct  1 01:09:26 2026 :: Log Alaric [2497]: aq re
+Thu Oct  1 01:09:30 2026 :: Log Alaric [2497]: en do
+Thu Oct  1 01:09:30 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Thu Oct  1 01:09:36 2026 :: Log Alaric [2401]: r w 7
+Thu Oct  1 01:09:36 2026 :: Log Alaric [0]: moved to 2405 (Western Oak Tree Square.)
+Thu Oct  1 01:09:36 2026 :: Log Alaric [0]: moved to 2433 (Temple Boulevard.)
+Thu Oct  1 01:09:36 2026 :: Log Alaric [0]: moved to 2434 (Temple Boulevard.)
+Thu Oct  1 01:09:36 2026 :: Log Alaric [0]: moved to 2435 (Temple Boulevard.)
+Thu Oct  1 01:09:36 2026 :: Log Alaric [0]: moved to 2436 (Temple Boulevard.)
+Thu Oct  1 01:09:36 2026 :: Log Alaric [0]: moved to 2437 (Temple Boulevard.)
+Thu Oct  1 01:09:36 2026 :: Log Alaric [0]: moved to 2438 (Inside the Western Gates of Dresden.)
+Thu Oct  1 01:09:36 2026 :: Log Alaric [2438]: open west
+Thu Oct  1 01:09:37 2026 :: Log Alaric [2438]: w
+Thu Oct  1 01:09:37 2026 :: Log Alaric [0]: moved to 2439 (Outside the Western Gates of Dresden.)
+Thu Oct  1 01:09:37 2026 :: Log Alaric [2439]: r n 3
+Thu Oct  1 01:09:37 2026 :: Log Alaric [0]: moved to 3900 (West trail around Dresden)
+Thu Oct  1 01:09:37 2026 :: Log Alaric [0]: moved to 3901 (West trail around Dresden)
+Thu Oct  1 01:09:37 2026 :: Log Alaric [0]: moved to 3902 (Northwest corner of dusty trail.)
+Thu Oct  1 01:09:37 2026 :: Log Alaric [3902]: e
+Thu Oct  1 01:09:37 2026 :: Log Alaric [0]: moved to 3903 (Dusty trail along north wall.)
+Thu Oct  1 01:09:37 2026 :: Log Alaric [3903]: e
+Thu Oct  1 01:09:37 2026 :: Log Alaric [0]: moved to 3904 (The long dusty trail following the north wall.)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [3904]: r n 8
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 300 (Path in the plains)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 315 (Gallow hill)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 320 (Grassy plains)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 322 (Grassy foothills)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 324 (The steep foothills)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 45 (Base of Mount Ulmo)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 1000 (A mountain path)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 1001 (A mountain path)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [1001]: u
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 1002 (A mountain path)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [1002]: e
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 46 (Steep and Winding Path)
+Thu Oct  1 01:09:38 2026 :: Log Alaric [46]: u
+Thu Oct  1 01:09:38 2026 :: Log Alaric [0]: moved to 47 (Chilly Path)
+Thu Oct  1 01:09:39 2026 :: Log Alaric [47]: u
+Thu Oct  1 01:09:39 2026 :: Log Alaric [0]: moved to 48 (Onward and Upward)
+Thu Oct  1 01:09:39 2026 :: Log Alaric [48]: u
+Thu Oct  1 01:09:39 2026 :: Log Alaric [0]: moved to 49 (Top of the World, Ma!)
+Thu Oct  1 01:09:39 2026 :: Log Alaric [49]: n
+Thu Oct  1 01:09:39 2026 :: Log Alaric [0]: moved to 50 (Snow Blind!)
+Thu Oct  1 01:09:39 2026 :: Log Alaric [50]: n
+Thu Oct  1 01:09:39 2026 :: Log Alaric [0]: moved to 1801 (The Big, Blue Ocean)
+Thu Oct  1 01:09:40 2026 :: Log Alaric [1801]: w
+Thu Oct  1 01:09:40 2026 :: Log Alaric [0]: moved to 1802 (The Big, Blue Ocean)
+Thu Oct  1 01:09:40 2026 :: Log Alaric [1802]: s
+Thu Oct  1 01:09:40 2026 :: Log Alaric [0]: moved to 1803 (The Big, Blue Ocean)
+Thu Oct  1 01:09:40 2026 :: Log Alaric [1803]: s
+Thu Oct  1 01:09:40 2026 :: Log Alaric [0]: moved to 1804 (The Icy Waters)
+Thu Oct  1 01:09:40 2026 :: Log Alaric [1804]: s
+Thu Oct  1 01:09:40 2026 :: Log Alaric [0]: moved to 1805 (The Hardpack)
+Thu Oct  1 01:09:41 2026 :: Log Alaric [1805]: s
+Thu Oct  1 01:09:41 2026 :: Log Alaric [0]: moved to 1806 (The Snow-filled Land)
+Thu Oct  1 01:09:43 2026 :: Log Alaric [1806]: ex
+Thu Oct  1 01:09:44 2026 :: Log Alaric [1806]: n
+Thu Oct  1 01:09:44 2026 :: Log Alaric [0]: moved to 1832 (The Snow-filled Land)
+Thu Oct  1 01:09:44 2026 :: Log Alaric [1832]: ex
+Thu Oct  1 01:09:45 2026 :: Log Alaric [1832]: e
+Thu Oct  1 01:09:45 2026 :: Log Alaric [0]: moved to 1833 (The Snow-filled Land)
+Thu Oct  1 01:09:45 2026 :: Log Alaric [1833]: ex
+Thu Oct  1 01:09:47 2026 :: Log Alaric [1833]: s
+Thu Oct  1 01:09:47 2026 :: Log Alaric [0]: moved to 1807 (The Gnome Outpost)
+Thu Oct  1 01:09:47 2026 :: Log Alaric [1807]: d
+Thu Oct  1 01:09:47 2026 :: Log Alaric [0]: moved to 1808 (The Tight Passage)
+Thu Oct  1 01:09:48 2026 :: Log Alaric [1808]: d
+Thu Oct  1 01:09:48 2026 :: Log Alaric [0]: moved to 1809 (The Even Tighter Passage)
+Thu Oct  1 01:09:48 2026 :: Log Alaric [1809]: d
+Thu Oct  1 01:09:48 2026 :: Log Alaric [0]: moved to 1810 (The Center Chamber)
+Thu Oct  1 01:09:48 2026 :: Log Alaric [1810]: d
+Thu Oct  1 01:09:50 2026 :: Log Alaric [1810]: e
+Thu Oct  1 01:09:50 2026 :: Log Alaric [0]: moved to 1811 (A Passageway)
+Thu Oct  1 01:09:50 2026 :: Log Alaric [1811]: e
+Thu Oct  1 01:09:50 2026 :: Log Alaric [0]: moved to 1812 (The Cold Passageway)
+Thu Oct  1 01:09:51 2026 :: Log Alaric [1812]: n
+Thu Oct  1 01:09:51 2026 :: Log Alaric [0]: moved to 1821 (The Guard's Dining Hall)
+Thu Oct  1 01:09:52 2026 :: Log Alaric [1821]: n
+Thu Oct  1 01:09:52 2026 :: Log Alaric [0]: moved to 1823 (The Frost Giant Guard Quarters)
+Thu Oct  1 01:09:52 2026 :: Log Alaric [1823]: n
+Thu Oct  1 01:09:52 2026 :: Log Alaric [0]: moved to 1826 (The connecting tunnel)
+Thu Oct  1 01:09:53 2026 :: Log Alaric [1826]: n
+Thu Oct  1 01:09:53 2026 :: Log Alaric [0]: moved to 1824 (The White Dragon's Lair)
+Thu Oct  1 01:09:55 2026 :: Log Alaric [1824]: kill dr
+Thu Oct  1 01:10:00 2026 :: Log Alaric [1824]: k
+Thu Oct  1 01:10:12 2026 :: Log Alaric [1824]: who
+Thu Oct  1 01:10:12 2026 :: Log Alaric [1824]: k
+Thu Oct  1 01:10:15 2026 :: Log Alaric [1824]: k
+Thu Oct  1 01:10:18 2026 :: Log Alaric [1824]: k
+Thu Oct  1 01:10:26 2026 :: Log Alaric [1824]: recal
+Thu Oct  1 01:10:26 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Thu Oct  1 01:10:26 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 01:10:26 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 01:10:26 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 01:10:27 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 01:10:27 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 01:10:28 2026 :: Log Alaric [2497]: aq comp
+Thu Oct  1 01:10:31 2026 :: Log Alaric [2497]: aq ga no
+Thu Oct  1 01:10:33 2026 :: Log Alaric [2497]: en do
+Thu Oct  1 01:10:34 2026 :: Log Alaric [2497]: s
+Thu Oct  1 01:10:34 2026 :: Log Alaric [2497]: s
+Thu Oct  1 01:10:35 2026 :: Log Alaric [2497]: w
+Thu Oct  1 01:10:37 2026 :: Log Alaric [2497]: l
+Thu Oct  1 01:10:38 2026 :: Log Alaric [2497]: af
+Thu Oct  1 01:10:41 2026 :: Log Alaric [2497]: gr
+Thu Oct  1 01:10:42 2026 :: Log Alaric [2497]: l
+Thu Oct  1 01:10:51 2026 :: Log Alaric [2497]: (social) grin
+Thu Oct  1 01:10:52 2026 :: Log Alaric [2497]: l
+Thu Oct  1 01:10:55 2026 :: Log Alaric [2497]: en do
+Thu Oct  1 01:10:55 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Thu Oct  1 01:10:57 2026 :: Log Alaric [2401]: jump rock
+Thu Oct  1 01:10:57 2026 :: Log Alaric [0]: moved to 1607 (House of Pancakes)
+Thu Oct  1 01:10:57 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Thu Oct  1 01:10:59 2026 :: Log Alaric [4208]: heal ref
+Thu Oct  1 01:11:03 2026 :: Log Alaric [4208]: heal ref
+Thu Oct  1 01:11:05 2026 :: Log Killuminati: spellup
+Thu Oct  1 01:11:05 2026 :: Spellup: Hermie placed in room 4208 by Killuminati.
+Thu Oct  1 01:11:06 2026 :: Log Alaric [4208]: heal ref
+Thu Oct  1 01:11:06 2026 :: Spellup: Hermie gave Alaric refresh (full) (30 ticks) in room 4208.
+Thu Oct  1 01:11:06 2026 :: Log Alaric [4208]: heal ref
+Thu Oct  1 01:11:06 2026 :: Log Alaric [4208]: r e 4
+Thu Oct  1 01:11:06 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Thu Oct  1 01:11:06 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Thu Oct  1 01:11:06 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Thu Oct  1 01:11:06 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Thu Oct  1 01:11:07 2026 :: Log Alaric [2427]: n
+Thu Oct  1 01:11:07 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Thu Oct  1 01:11:07 2026 :: Log Alaric [2404]: n
+Thu Oct  1 01:11:07 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Thu Oct  1 01:11:07 2026 :: Log Alaric [2401]: sc
+Thu Oct  1 01:11:50 2026 :: Log Alaric [2401]: mindbar
+Thu Oct  1 01:11:51 2026 :: Log Alaric [2401]: mindbar
+Thu Oct  1 01:11:52 2026 :: Log Alaric [2401]: mindbar
+Thu Oct  1 01:11:53 2026 :: Log Alaric [2401]: mindbar
+Thu Oct  1 01:12:04 2026 :: Log Alaric [2401]: af
+Thu Oct  1 01:12:19 2026 :: Log Alaric [2401]: mindbar
+Thu Oct  1 01:13:00 2026 :: Log Alaric [2401]: bug The psionic skill, "Mindbar" doesn't show on the list of effects when the players types, "affect"
+Thu Oct  1 01:13:02 2026 :: Log Alaric [2401]: who
