@@ -1876,18 +1876,22 @@
    "status": "computed"
   },
   {
-   "name": "The Training Yard (ToC)",
-   "commands": "s;w;enter practice",
+   "name": "Training Dummy Yard (ToC)",
+   "commands": "r e 7;r n 5;open door;r n 3;open door;n;enter ring",
    "steps": [
-    "south",
-    "west",
+    "east x7",
+    "north x5",
+    "open door",
+    "north x3",
+    "open door",
+    "north",
     "enter a practice ring"
    ],
    "room": "The Training Yard",
    "vnum": 2419,
-   "area": "ToC The Training Yard",
-   "area_display": "The Training Yard (ToC)",
-   "rooms_away": 3,
+   "area": "ToC Training Dummy Yard",
+   "area_display": "Training Dummy Yard (ToC)",
+   "rooms_away": 17,
    "status": "computed"
   },
   {
@@ -4098,11 +4102,6 @@
    "to": 7600
   },
   {
-   "from": 2409,
-   "command": "enter practice",
-   "to": 2419
-  },
-  {
    "from": 2497,
    "command": "enter door",
    "to": 2401
@@ -4141,6 +4140,11 @@
    "from": 3795,
    "command": "enter portal",
    "to": 15000
+  },
+  {
+   "from": 4462,
+   "command": "enter ring",
+   "to": 2419
   },
   {
    "from": 5148,

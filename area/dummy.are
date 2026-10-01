@@ -1,4 +1,4 @@
-#AREA   { ALL } ToC     The Training Yard~
+#AREA   { ALL } ToC     Training Dummy Yard~
 
 #MOBILES
 #2400
@@ -25,18 +25,18 @@ ABV 0 0 S
 
 #OBJECTS
 #2404
-practice ring training yard portal~
+ring practice training yard portal~
 a practice ring~
-A worn practice ring is marked out on the flagstones here.
-~
+A practice ring is chalked into one of the sparring circles here.~
 ~
 30 0 0
 0 2419 0 0 0
 0 1000 0 P
 E
 ring practice yard~
-Scuffed flagstones, worn into a shallow bowl by generations of feet.
-Step into it and you are in the yard.
+A twenty-foot circle like the others, but chalked twice over and scuffed
+into a shallow bowl by generations of feet.  Step into it and you are in
+the training yard, alone with the dummy.  HELP DUMMY explains the rest.
 ~
 
 #0
@@ -44,21 +44,21 @@ Step into it and you are in the yard.
 #ROOMS
 #2419
 The Training Yard~
-A square of hard-packed earth behind the armoury, walled on three sides
-and open to the square through the practice ring.  A dummy stands at the
-centre on a weighted post, leaning slightly, sackcloth split and resewn
-along every seam.  Somebody has chalked a tally on the wall and given up
-counting.
+A square of hard-packed earth behind the Grand Knight's sparring room,
+walled on every side, with room in it for one fighter at a time.  A dummy
+stands at the centre on a weighted post, leaning slightly, sackcloth split
+and resewn along every seam.  Somebody has chalked a tally on the wall and
+given up counting.
 
 Nothing dies here.  That is the whole point of the place.  The practice
 ring is underfoot where you came through it; LEAVE RING steps back out,
 and HELP DUMMY explains everything the yard can tell you.
 ~
-0 V 1
+0 LV 1
 E
 ring practice~
 The ring you came in by, scuffed into the earth.  LEAVE RING takes you
-back to the square.
+back to the sparring room.
 ~
 E
 dummy post tally~
@@ -72,7 +72,7 @@ S
 
 #RESETS
 M 0 2400 1 2419
-O 0 2404 0 2409
+O 0 2404 0 4462
 S
 
 #$

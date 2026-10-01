@@ -1315,7 +1315,8 @@ static bool quest_area_is_excluded( const ROOM_INDEX_DATA *room )
     ||   room->area->file_name == NULL )
         return false;
 
-    return !str_cmp( room->area->file_name, QUEST_EXCLUDED_AREA );
+    return !str_cmp( room->area->file_name, QUEST_EXCLUDED_AREA )
+        || !str_cmp( room->area->file_name, QUEST_EXCLUDED_YARD );
 }
 
 static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,

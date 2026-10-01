@@ -720,7 +720,7 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
         "  dummy endless        no bell, and it defends itself again\n\r"
         "  dummy reset          the standard run: your level, fifty rounds\n\r"
         "  dummy report         stop early and read the numbers\n\r"
-        "  dummy board          the benchmark leaderboard\n\r"
+        "  dummy leaderboard    the benchmark leaderboard\n\r"
         "\n\r  Then just KILL DUMMY.  Neither of you can die here, nothing\n\r"
         "  is learned here, and afterwards you are put back the way you\n\r"
         "  were when the run began.  HELP DUMMY has the rest.\n\r\n\r",
@@ -1612,7 +1612,8 @@ void do_dummy( CHAR_DATA *ch, char *argument )
     {
         send_to_char(
             "There is no training dummy here.  The yard is through the\n\r"
-            "practice ring, in the southwestern corner of Oak Tree Square.\n\r",
+            "practice ring in the Grand Knight's sparring room in Dresden;\n\r"
+            "WALK DUMMY in Mudlet takes you there.\n\r",
             ch );
         return;
     }
@@ -1869,7 +1870,7 @@ void do_leave( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( ( back = get_room_index( ROOM_VNUM_OAK_SQUARE ) ) == NULL )
+    if ( ( back = get_room_index( ROOM_VNUM_YARD_DOOR ) ) == NULL )
     {
         send_to_char( "The practice ring will not open.\n\r", ch );
         return;
@@ -1886,11 +1887,4 @@ void do_leave( CHAR_DATA *ch, char *argument )
     char_to_room( ch, back );
     act( "$n steps out of the practice ring.", ch, NULL, NULL, TO_ROOM );
     do_look( ch, "auto" );
-}
-
-
-void do_leaderboard( CHAR_DATA *ch, char *argument )
-{
-    UNUSED_PARAM( argument );
-    dps_board_show( ch );
 }

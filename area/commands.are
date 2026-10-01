@@ -245,12 +245,30 @@ Syntax: dummy                  the menu, and what it is set to
         dummy endless          no bell, and it defends itself again
         dummy reset            the standard run, and the numbers cleared
         dummy report           stop early and read the numbers
-        dummy board            the benchmark leaderboard
-        leave ring             step back out into the square
+        dummy leaderboard      the benchmark leaderboard
+        leave ring             step back out to the sparring room
 
-A training dummy you can hit as hard as you like.  It is in the Training
-Yard, through the practice ring in the southwestern corner of Oak Tree
-Square.  KILL DUMMY to begin.
+A training dummy you can hit as hard as you like.
+
+WHERE IT IS
+  In the Training Yard, through the practice ring in the Grand Knight's
+  sparring room in Dresden.
+
+  In Mudlet, WALK DUMMY walks you there.  On foot from the Oak Tree
+  Square: east 7, north 5, open door, north 3, open door, north - which
+  is the sparring room.
+
+GETTING IN AND OUT
+  ENTER RING   step through the practice ring into the yard
+  KILL DUMMY   start a run
+  LEAVE RING   step back out to the sparring room
+
+  LEAVE RING is the only way out on foot; RECALL works as well.  Leave
+  in the middle of a run and you are given the report on the way past.
+
+The yard takes one fighter at a time.  While somebody is in there the
+ring will not let anyone else through - immortals excepted - so a run
+is never shared and never interrupted.
 
 THE RULES OF THE YARD
   Neither of you can die there.  The dummy soaks up everything, and its
@@ -278,7 +296,7 @@ THE STANDARD RUN
   The standard run is the dummy exactly as DUMMY RESET leaves it, at your
   level, for fifty rounds.  Only that run is ranked, because every
   setting can move the answer, and a board that let them vary would rank
-  the settings rather than the gear.  See LEADERBOARD.
+  the settings rather than the gear.  DUMMY LEADERBOARD shows the board.
 
 CHANGING IT
   Shapes        soft, armored, evasive, brutal
@@ -330,8 +348,7 @@ See also: LEADERBOARD, LEAVE, COMPARE, LORE, DAMAGENUMBERS
 ~
 
 0 LEADERBOARD BENCHMARK~
-Syntax: leaderboard
-        dummy board
+Syntax: dummy leaderboard
 
 The training yard's benchmark board: the best fifty-round standard run
 each character has posted, best first.  It shows the top ten, and tells
@@ -356,9 +373,10 @@ See also: DUMMY, ACHIEVEMENTS
 Syntax: leave ring
         leave
 
-Steps you out of the Training Yard and back into Oak Tree Square.  You
-got in by entering the practice ring, so this is the way back out, and
-it is the only way out on foot.  RECALL works from there too.
+Steps you out of the Training Yard and back into the Grand Knight's
+sparring room in Dresden.  You got in by entering the practice ring, so
+this is the way back out, and it is the only way out on foot.  RECALL
+works from there too.
 
 If a training run is going when you type it, you get the report on the
 way past rather than losing it.
@@ -948,13 +966,15 @@ command named here for the detail.
   figure - so DAMAGENUMBERS worked for every weapon except the odd
   ones, and for bare hands in some cases.  Reported by Alaric.
 
-  A training yard, and a dummy in it that cannot be killed.  Go
-  through the practice ring in the southwestern corner of Oak Tree
-  Square and KILL DUMMY.  HELP DUMMY explains all of it.
+  A training yard, and a dummy in it that cannot be killed.  The
+  practice ring into it is in the Grand Knight's sparring room in
+  Dresden - WALK DUMMY in Mudlet takes you there - and inside, KILL
+  DUMMY.  HELP DUMMY explains all of it.  The yard takes one fighter
+  at a time, so nobody else can walk into your run.
 
   Every run is a ranked benchmark by default: fifty rounds, then a
   bell, against a dummy at your own level that stands still and does
-  not dodge, parry or block.  Your best goes on a leaderboard - see
+  not dodge, parry or block.  Your best goes on a leaderboard - DUMMY
   LEADERBOARD - and when a run ends you are told whether it was a
   personal best, where you stand among everybody who has run it, and
   how far the record is.  Post the best run anybody has and you earn
@@ -973,6 +993,12 @@ command named here for the detail.
   four shapes, nine damage types, a spell for it to cast, haste, a
   different number of rounds, or DUMMY ENDLESS for a run with no bell
   and a dummy that defends itself.  LEAVE RING takes you back out.
+
+  A portal now refuses to take you into a private room that is full,
+  the way walking in always has.  It used to be the one way past.
+
+  The quest master no longer asks you to kill the training dummy, which
+  cannot die.
 
   Pyrotechnics now hits as hard as a fireball cast at your level.  It
   used to scale with your current hit points, which made it about three

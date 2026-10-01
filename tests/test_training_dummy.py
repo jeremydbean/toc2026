@@ -49,13 +49,15 @@ class TrainingDummyTests(unittest.TestCase):
         else, so blows land there that would be refused in a room
         that was merely safe.
         """
-        self.assertRegex(self.area, r"\n0 V 1\r?\n", "the yard is not an arena")
+        self.assertRegex(self.area, r"\n0 L?V 1\r?\n", "the yard is not an arena")
         is_safe = self.fight.split("bool is_safe(", 1)[1][:900]
         self.assertIn("ROOM_ARENA", is_safe)
 
     def test_the_dummy_and_the_way_in_both_reset(self) -> None:
         self.assertRegex(self.area, r"M 0 2400 1 2419")
-        self.assertRegex(self.area, r"O 0 2404 0 2409")
+        # The Grand Knight's sparring room, whose description has had
+        # practice dummies and sparring circles in it all along.
+        self.assertRegex(self.area, r"O 0 2404 0 4462")
 
     def test_the_way_in_costs_nothing(self) -> None:
         """A portal's value[0] of 1 charges 50 gold, which is not what
@@ -201,7 +203,8 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertRegex(interp, r'\{ "leave",\s+do_leave,')
         body = self.dummy.split("void do_leave(", 1)[1].split("\n}", 1)[0]
         self.assertIn("ROOM_VNUM_TRAINING_YARD", body)
-        self.assertIn("ROOM_VNUM_OAK_SQUARE", body)
+        self.assertIn("ROOM_VNUM_YARD_DOOR", body)
+        self.assertIn("#define ROOM_VNUM_YARD_DOOR         4462", self.merc)
 
     def test_leaving_mid_run_still_gives_you_the_numbers(self) -> None:
         """Walking out would otherwise throw away the only reason to
@@ -225,7 +228,7 @@ class TrainingDummyTests(unittest.TestCase):
         no-recall.  ROOM_NO_RECALL is N; the yard carries V alone."""
         room = self.area.split("#2419", 1)[1].split("\n#", 1)[0]
         flags = [line for line in room.splitlines()
-                 if line.strip().endswith(" V 1")]
+                 if re.fullmatch(r"0 [A-Za-z]+ 1", line.strip())]
         self.assertEqual(1, len(flags), "the yard's flag line changed")
         self.assertNotIn("N", flags[0].split()[1],
                          "the yard became no-recall and is now a trap")
@@ -583,16 +586,59 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn('"benchmark-champion"', source)
         self.assertIn("ACHIEVEMENT_EVENT_DPS_CHAMPION", self.merc)
 
-    def test_the_board_can_be_read_anywhere(self) -> None:
+    def test_the_board_is_dummy_leaderboard(self) -> None:
+        """DUMMY LEADERBOARD is the command, on the owner's word. A
+        top-level LEADERBOARD claimed a general word for one feature,
+        beside a pkill ranking a player could expect it to show."""
         interp = read("src", "interp.c")
-        self.assertRegex(interp, r'\{ "leaderboard",\s+do_leaderboard,')
-        # LEA must still reach LEAVE, the way out of the yard.
-        self.assertLess(interp.index('{ "leave",'),
-                        interp.index('{ "leaderboard",'))
-        # Ahead of the no-dummy-here check, so it works outside the yard.
+        self.assertNotIn('{ "leaderboard",', interp)
+        self.assertNotIn("do_leaderboard", read("src", "interp.h"))
         body = self.dummy.split("void do_dummy(", 1)[1]
+        self.assertIn('!str_prefix( arg1, "leaderboard" )', body)
+        # Ahead of the no-dummy-here check, so it works outside the yard.
         self.assertLess(body.index("dps_board_show( ch )"),
                         body.index("There is no training dummy here."))
+        help_text = read("area", "commands.are")
+        topic = help_text.split("0 LEADERBOARD BENCHMARK~", 1)[1].split("~", 1)[0]
+        self.assertIn("Syntax: dummy leaderboard", topic)
+
+    # ------------------------------------------------ in and out by name
+    def test_the_way_in_is_enter_ring(self) -> None:
+        """The route generator names a portal by its first keyword, so
+        the ring's keywords lead with "ring" -- otherwise the published
+        route says ENTER PRACTICE."""
+        ring = self.area.split("#2404", 1)[1].replace("\r", "").split("\n")
+        self.assertTrue(ring[1].startswith("ring "), ring[1])
+        import json
+        routes = json.loads(read("webadmin", "directions.json"))["routes"]
+        yard = [r for r in routes if r.get("vnum") == 2419][0]
+        self.assertTrue(yard["commands"].endswith(";enter ring"),
+                        yard["commands"])
+
+    def test_the_sparring_room_says_what_to_type(self) -> None:
+        dresden = read("area", "dresden.are")
+        room = dresden.split("#4462", 1)[1].split("\n#", 1)[0]
+        self.assertIn("ENTER", room)
+        self.assertIn("RING to step through", room)
+        self.assertIn("LEAVE RING", room)
+
+    def test_the_help_gives_the_way_there_from_the_route(self) -> None:
+        """Written directions go stale when the world changes; these are
+        checked against the generated route, so they cannot."""
+        import json
+        routes = json.loads(read("webadmin", "directions.json"))["routes"]
+        yard = [r for r in routes if r.get("vnum") == 2419][0]
+        walk = []
+        for step in yard["steps"][:-1]:          # the last is the ring
+            m = re.fullmatch(r"(\w+) x(\d+)", step)
+            walk.append("%s %s" % (m.group(1), m.group(2)) if m else step)
+        expected = ", ".join(walk)
+        topic = read("area", "commands.are").replace("\r", "")
+        topic = topic.split("0 DUMMY TRAINING YARD~", 1)[1].split("\n~", 1)[0]
+        flat = " ".join(topic.split())
+        self.assertIn(expected, flat, "HELP DUMMY's directions are stale")
+        for words in ("WALK DUMMY", "ENTER RING", "LEAVE RING"):
+            self.assertIn(words, topic, words)
 
     # ------------------------------------------ the board is runtime state
     def test_the_board_file_is_runtime_state_everywhere(self) -> None:
@@ -625,6 +671,59 @@ class TrainingDummyTests(unittest.TestCase):
             self.assertTrue(on_disk or written,
                             "%s is neither tracked nor written by the game"
                             % path)
+
+    # ------------------------------------------------- one at a time
+    def test_the_yard_takes_one_fighter_at_a_time(self) -> None:
+        """ROOM_SOLITARY: room_is_private() counts mortal players only
+        and can_enter_private_room() lets immortals in anyway, which is
+        the rule asked for exactly."""
+        room = self.area.split("#2419", 1)[1].split("\n#", 1)[0]
+        line = [l for l in room.splitlines()
+                if re.fullmatch(r"0 [A-Za-z]+ 1", l.strip())][0]
+        self.assertIn("L", line.split()[1], "the yard is not solitary")
+        self.assertIn("V", line.split()[1], "the yard is not an arena")
+
+    def test_a_portal_asks_whether_the_room_is_full(self) -> None:
+        """do_enter never asked, so a portal walked past every private
+        room in the world -- and the ring into the yard is a portal.
+        Asked before the fare, so a refusal costs nothing."""
+        move = read("src", "act_move.c")
+        body = move.split("void do_enter(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("can_enter_private_room( ch, to_room )", body)
+        self.assertLess(body.index("can_enter_private_room( ch, to_room )"),
+                        body.index("switch( obj->value[0])"))
+        self.assertGreater(body.index("can_enter_private_room( ch, to_room )"),
+                           body.index("to_room = get_room_index"))
+
+    def test_the_ring_sits_on_one_line(self) -> None:
+        """An object's long description ends at its ~ on the same line;
+        a line break before it is a blank line under the object, since
+        the game adds its own."""
+        ring = self.area.split("#2404", 1)[1].split("\n#", 1)[0]
+        lines = ring.replace("\r", "").split("\n")
+        # [1] keywords, [2] short, [3] long -- ending on its own ~.
+        self.assertTrue(lines[3].endswith("~"), repr(lines[3]))
+
+    def test_walk_dummy_finds_it(self) -> None:
+        """The Mudlet walker matches the published route's area and
+        room names, so the word has to be in one of them."""
+        header = self.area.split("\n", 1)[0]
+        self.assertIn("Dummy", header)
+        import json
+        routes = json.loads(read("webadmin", "directions.json"))["routes"]
+        yard = [r for r in routes if r.get("vnum") == 2419]
+        self.assertEqual(1, len(yard))
+        haystack = " ".join(str(yard[0].get(k, "")) for k in
+                            ("area_display", "area", "room")).lower()
+        self.assertIn("dummy", haystack)
+
+    def test_no_quest_sends_you_after_the_dummy(self) -> None:
+        """It cannot die, so a quest to kill it could never finish."""
+        quest = read("src", "quest.c")
+        body = quest.split("static bool quest_area_is_excluded(", 1)[1]
+        body = body.split("\n}", 1)[0]
+        self.assertIn("QUEST_EXCLUDED_YARD", body)
+        self.assertIn('#define QUEST_EXCLUDED_YARD     "dummy.are"', self.merc)
 
     def test_the_session_is_not_persisted(self) -> None:
         """A training run is something you are doing, not something

@@ -3530,6 +3530,19 @@ void do_enter( CHAR_DATA *ch, char *argument )
      return;
    }
 
+   /*
+    * The rule walking and riding already obey: a full private or
+    * one-person room refuses you whichever way you come at it. A portal
+    * was the one way in that never asked, so it walked past every
+    * private room in the world. Asked before the fare below, so a
+    * refusal costs nothing.
+    */
+   if ( !can_enter_private_room( ch, to_room ) )
+   {
+     send_to_char( "That room is private right now.\n\r", ch );
+     return;
+   }
+
    switch( obj->value[0])
    {
    case 1:               /* for windows in hall of hero's */

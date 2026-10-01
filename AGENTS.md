@@ -692,6 +692,16 @@ snapshot to a private repo and remains its own thing.
 Everything it commits is in `.gitignore`, so every `git add` is `-f`.
 That is deliberate, not a bug to tidy up.
 
+**Its file list must name what the game actually writes.** Until
+2026-10-01 seven entries lacked their `.txt` -- `area/pkilldata` for
+`area/pkilldata.txt` -- and the copy loop skips a missing path without
+a word, so PK standings, the wizlist, max-load state and the ban list
+had reached no backup since the initial commit.
+`tests/test_training_dummy.py` checks every entry against a file git
+tracks or the source writes. `toc-deploy` does **not** install this
+script; after changing it, install it on the VM by hand:
+`sudo install -m 0755 /srv/toc/build/deploy/windows-vm/toc-state-sync /usr/local/sbin/`.
+
 **Tracking `log/` gave the old Pi trap a new route.** Running
 `--check-area` from the repository's own `area/` writes `log/toc.log`,
 which is tracked, so a working tree goes dirty every time somebody
@@ -1643,6 +1653,52 @@ comparison:
 - `is_loopback_ip(ip)` -- one place that knows what 127/8 means, used to
   keep the healthcheck's two-minute probe out of the log and to decide
   whether a PROXY header may be trusted.
+
+## The Training Yard
+
+`src/dummy.c`. Mob 2400 in room 2419 (`area/dummy.are`), reached by
+the practice ring (object 2404) in the Grand Knight's Sparring Room,
+4462, in Dresden. Every rule below was either asked for by the owner
+or found broken live; keep them.
+
+- **One fighter at a time.** The yard is `ROOM_SOLITARY` with
+  `ROOM_ARENA`. `room_is_private()` counts mortals only and
+  `can_enter_private_room()` lets immortals in, which is the rule.
+  `do_enter` asks it **before the portal's fare** -- portals used to be
+  the one way into any private room in the world that never asked.
+- **Nobody can be shut in.** No walking exit; LEAVE RING is the way
+  out on foot, so the yard must never become `ROOM_NO_RECALL`.
+- **A run never heals.** Hit points, mana and moves are snapshotted
+  at the first blow and put back at the stand-down -- never set to
+  max, or the yard is a free heal for anybody who walks in half dead.
+  `dummy_left_yard()` in `char_from_room` puts them back on any way
+  out mid-run, because a snapshot carried out could be cashed in later.
+- **Nothing is learned there.** `check_improve` returns in the yard.
+- **The dummy never holds a grudge.** `add_hate` refuses it, and the
+  stand-down ends only this player's fight (`stop_fighting` with
+  `fBoth` froze a grouped partner's run).
+- **Damage is recorded at the subtraction** in `damage()`, beside
+  `is_invulnerable`, and blows turned aside by the four defensive
+  checks just above it, through `dummy_defended()`.
+
+The **benchmark board** is `area/dpsboard.txt`: every character's best
+standard run, one line each. The standard run is the dummy exactly as
+DUMMY RESET leaves it, at the runner's own level, reaching the bell at
+fifty rounds; a configuration counter noted at the first blow refuses a
+run during which anybody changed the dummy. Immortals are not ranked,
+by trust. The file is runtime state and has to be named as such in
+**five** places -- `.gitignore`, `toc-state-sync`'s `STATE_FILES`,
+`toc-deploy`'s `runtime_txt`, `validate.yml`'s `paths-ignore`, and the
+copy filter in `tests/live_mud.py` -- and a test checks all five.
+
+`tools/build_directions.py` names a portal by its **first keyword**,
+which is why the ring's keywords begin with `ring`: the published route
+and HELP DUMMY's walking directions both say ENTER RING, and a test
+pins the help's directions to the generated route.
+
+The quest master excludes the yard by file name beside Hyrule
+(`QUEST_EXCLUDED_YARD`): the dummy cannot die, so a quest to kill it
+could never finish.
 
 ## Completion Standard
 

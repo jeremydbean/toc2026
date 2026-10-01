@@ -94,7 +94,6 @@ DECLARE_DO_FUN( set_questflag   );
 DECLARE_DO_FUN( do_at		);
 DECLARE_DO_FUN( do_dummy		);
 DECLARE_DO_FUN( do_leave		);
-DECLARE_DO_FUN( do_leaderboard	);
 DECLARE_DO_FUN(	do_advance 	);
 DECLARE_DO_FUN( do_affect	);
 DECLARE_DO_FUN( do_achievements );
