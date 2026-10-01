@@ -1,7 +1,7 @@
 #PLAYER
 Name Milenko~
 Id   56969
-LogO 1790823409
+LogO 1790837092
 Vers 4
 Desc .                ...
 .             ::::::
@@ -50,13 +50,13 @@ PsiSpec ~
 PsiKnown ~
 Cast Fors
 Levl 52
-Plyd 927735
+Plyd 927796
 ListRemorts ~
 NumRemorts 0
-Note 951253659
+Note 953466460
 Scro 22
 Room 4207
-HMV  575 1539 1300 1431 190 381
+HMV  575 1539 980 1431 190 381
 NewGold 0
 NewPlat 16
 NewCopp 0
@@ -96,10 +96,10 @@ Achv level-35 1790822830
 Achv level-45 1790822830
 Achv bank-thousand-platinum 1790822830
 Achv carry-ten-platinum 1790822830
-LastOut  1790823409
-SesLogin 1790823315
-SesDur   94
-SesExpG  -25
+LastOut  1790837092
+SesLogin 1790837033
+SesDur   59
+SesExpG  0
 SesLvlG  0
 SesKill  0
 SesPK    0
@@ -413,8 +413,8 @@ Lev  46
 Cost 100000000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 50 -1 6 18 0 0
 AffD 'enchant weapon' 50 -1 6 19 0 0
+AffD 'enchant weapon' 50 -1 6 18 0 0
 End
 
 #O
@@ -448,8 +448,8 @@ Lev  46
 Cost 10000000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 53 -1 9 19 0 0
 AffD 'enchant weapon' 53 -1 6 18 0 0
+AffD 'enchant weapon' 53 -1 9 19 0 0
 End
 
 #O
