@@ -1,0 +1,597 @@
+/***************************************************************************
+ * The training yard: a dummy you can hit as hard as you like, that hits    *
+ * back, and that nobody walks away from dead.                              *
+ *                                                                          *
+ * The point of the place is a number. "Is this sword better than that      *
+ * one" is otherwise answered by going and fighting something and forming   *
+ * an impression, which is a slow way to be wrong. Here you set the dummy   *
+ * up, swing for a minute, type DUMMY REPORT and read what you actually     *
+ * did -- and what it did back.                                             *
+ *                                                                          *
+ * It defaults to your own level, because the question is almost always     *
+ * "how do I do against something my size", and a reading against anything  *
+ * else is a different question the player did not ask.                     *
+ ***************************************************************************/
+
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+
+#include "merc.h"
+#include "interp.h"
+
+/*
+ * What the dummy can pretend to be. They differ in defence rather
+ * than in flavour, because each one isolates a different question
+ * somebody might be asking about their gear.
+ */
+typedef struct dummy_shape
+{
+    const char *name;
+    const char *blurb;
+    int         ac;
+    int         hitroll;
+    int         damage_scale;   /* percent of a level-typical blow */
+    long        off_flags;
+} DUMMY_SHAPE;
+
+static const DUMMY_SHAPE dummy_shape_table[] =
+{
+    { "soft",    "no armour, no defences -- a clean reading of your damage",
+      100,   0,  40, 0 },
+    { "armored", "heavily armoured -- is your hitroll keeping up",
+      -120, 10,  70, 0 },
+    { "evasive", "dodges and parries -- are you landing anything",
+      -20,   5,  50, OFF_DODGE | OFF_PARRY },
+    { "brutal",  "hits as hard as its level allows -- what can you take",
+      -40,  10, 140, 0 },
+    { NULL, NULL, 0, 0, 0, 0 }
+};
+
+/*
+ * What it hits you with. Indices into attack_table, which is what
+ * carries the damage school: the point is to test your resistances
+ * and your saves, not to vary the verb.
+ */
+typedef struct dummy_attack
+{
+    const char *name;
+    int         attack;         /* attack_table index */
+    const char *blurb;
+} DUMMY_ATTACK;
+
+static const DUMMY_ATTACK dummy_attack_table[] =
+{
+    { "slash",     1,  "ordinary edged weapon damage" },
+    { "pierce",    2,  "ordinary thrusting damage" },
+    { "bash",      6,  "ordinary blunt damage" },
+    { "fire",     29,  "tests fire resistance and immunity" },
+    { "cold",     30,  "tests cold resistance" },
+    { "lightning",28,  "tests lightning resistance" },
+    { "acid",     14,  "tests acid resistance" },
+    { "energy",   18,  "tests energy resistance" },
+    { "holy",     20,  "tests holy resistance, and alignment" },
+    { NULL, 0, NULL }
+};
+
+#define DUMMY_SHAPE_DEFAULT  0
+#define DUMMY_ATTACK_DEFAULT 0
+
+/* There is one dummy, so one set of settings. An area reset rebuilds
+   the mobile and loses these; the next DUMMY command puts them back,
+   which is why the menu always writes them rather than trusting them. */
+static int dummy_shape = DUMMY_SHAPE_DEFAULT;
+static int dummy_attack = DUMMY_ATTACK_DEFAULT;
+
+
+/*
+ * What a mobile of this level is typically worth in hit points,
+ * averaged over every mobile in the world at that level.
+ *
+ * The alternative was to invent a number, and an invented number is
+ * the one thing a training yard must not report: "you would kill
+ * this in nine seconds" is only worth reading if the thing being
+ * killed is a real measure of the world. Cached, because the walk is
+ * over every prototype and the answer cannot change without a reboot.
+ */
+long dummy_typical_hp( int level )
+{
+    extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
+    static long cache[MAX_LEVEL + 1];
+    static bool cached[MAX_LEVEL + 1];
+    MOB_INDEX_DATA *proto;
+    long total = 0;
+    int count = 0;
+    int bucket;
+
+    level = URANGE( 0, level, MAX_LEVEL );
+
+    if ( cached[level] )
+        return cache[level];
+
+    for ( bucket = 0; bucket < MAX_KEY_HASH; bucket++ )
+    {
+        for ( proto = mob_index_hash[bucket]; proto != NULL;
+              proto = proto->next )
+        {
+            if ( proto->level != level )
+                continue;
+            total += (long)proto->hit[2]
+                   + ( (long)proto->hit[0] * ( proto->hit[1] + 1 ) ) / 2;
+            count++;
+        }
+    }
+
+    /* Nothing in the world at that level: give the curve rather than
+       a zero, and say nothing false. */
+    cache[level] = count > 0 ? total / count : (long)level * 20 + 20;
+    cached[level] = true;
+    return cache[level];
+}
+
+
+bool is_training_dummy( CHAR_DATA *ch )
+{
+    return ch != NULL && IS_NPC(ch) && ch->pIndexData != NULL
+        && ch->pIndexData->vnum == MOB_VNUM_TRAINING_DUMMY;
+}
+
+
+static CHAR_DATA *dummy_in_room( CHAR_DATA *ch )
+{
+    CHAR_DATA *rch;
+
+    if ( ch == NULL || ch->in_room == NULL )
+        return NULL;
+
+    for ( rch = ch->in_room->people; rch != NULL; rch = rch->next_in_room )
+        if ( is_training_dummy( rch ) )
+            return rch;
+
+    return NULL;
+}
+
+
+static void dummy_session_clear( CHAR_DATA *ch )
+{
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    ch->pcdata->dummy_dealt = 0;
+    ch->pcdata->dummy_taken = 0;
+    ch->pcdata->dummy_hits = 0;
+    ch->pcdata->dummy_misses = 0;
+    ch->pcdata->dummy_struck = 0;
+    ch->pcdata->dummy_swings = 0;
+    ch->pcdata->dummy_best = 0;
+    ch->pcdata->dummy_started = 0;
+    ch->pcdata->dummy_level = 0;
+}
+
+
+/*
+ * Both halves of every blow in the yard come through here, from the
+ * one place in damage() that would otherwise subtract hit points.
+ */
+void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
+{
+    CHAR_DATA *player;
+
+    if ( ch == NULL || victim == NULL || ch == victim )
+        return;
+
+    player = is_training_dummy( victim ) ? ch : victim;
+    if ( IS_NPC(player) || player->pcdata == NULL )
+        return;
+
+    /* The clock starts at the first blow either way, so a player who
+       spends a minute choosing a weapon is not charged for the pause. */
+    if ( player->pcdata->dummy_started == 0 )
+    {
+        CHAR_DATA *target = is_training_dummy( victim ) ? victim : ch;
+
+        player->pcdata->dummy_started = current_time;
+        player->pcdata->dummy_level = target->level;
+    }
+
+    if ( is_training_dummy( victim ) )
+    {
+        player->pcdata->dummy_swings++;
+        if ( dam > 0 )
+        {
+            player->pcdata->dummy_hits++;
+            player->pcdata->dummy_dealt += dam;
+            if ( dam > player->pcdata->dummy_best )
+                player->pcdata->dummy_best = dam;
+        }
+        else
+        {
+            player->pcdata->dummy_misses++;
+        }
+        return;
+    }
+
+    if ( dam > 0 )
+    {
+        player->pcdata->dummy_taken += dam;
+        player->pcdata->dummy_struck++;
+    }
+}
+
+
+/*
+ * Nothing dies in the yard, and nothing leaves hurt either.
+ *
+ * The dummy absorbs everything. The player is floored at a single hit
+ * point rather than made invulnerable, because the floor is the
+ * lesson: a brutal dummy that puts you on 1 and holds you there has
+ * told you something that one which cannot touch you has not.
+ */
+bool dummy_absorb( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
+{
+    if ( is_training_dummy( victim ) )
+    {
+        dummy_record( ch, victim, dam );
+        return true;
+    }
+
+    if ( is_training_dummy( ch ) && !IS_NPC(victim) )
+    {
+        dummy_record( ch, victim, dam );
+        victim->hit -= dam;
+        if ( victim->hit < 1 )
+            victim->hit = 1;
+        return true;
+    }
+
+    return false;
+}
+
+
+static void dummy_configure( CHAR_DATA *dummy, int level, int shape,
+                             int attack )
+{
+    const DUMMY_SHAPE *form = &dummy_shape_table[shape];
+    long blow;
+    int i;
+
+    dummy_shape = shape;
+    dummy_attack = attack;
+
+    dummy->level = (sh_int)level;
+    dummy->max_hit = (int)dummy_typical_hp( level );
+    dummy->hit = dummy->max_hit;
+    dummy->hitroll = (sh_int)( level / 4 + form->hitroll );
+    dummy->dam_type = (sh_int)dummy_attack_table[attack].attack;
+
+    for ( i = 0; i < 4; i++ )
+        dummy->armor[i] = (sh_int)form->ac;
+
+    /* A level-typical blow, scaled by the shape: the dummy should
+       read like something of its level, not like a boss. */
+    blow = ( (long)level * 2 + 6 ) * form->damage_scale / 100;
+    dummy->damage[0] = (sh_int)UMAX( 1, blow / 6 );
+    dummy->damage[1] = 6;
+    dummy->damage[2] = (sh_int)UMAX( 0, blow / 3 );
+    dummy->damroll = (sh_int)( level / 5 );
+
+    dummy->off_flags = form->off_flags;
+}
+
+
+static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
+{
+    char buf[MAX_STRING_LENGTH];
+    int i;
+
+    send_to_char(
+        "\n\r{0C.-[ The training dummy ]----------------------------------------.{00\n\r",
+        ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 Level   {0F%-4d{00  worth %ld hit points, a level %d mobile's average\n\r",
+        dummy->level, (long)dummy->max_hit, dummy->level );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 Shape   {0F%-8s{00  %s\n\r",
+        dummy_shape_table[dummy_shape].name,
+        dummy_shape_table[dummy_shape].blurb );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 Hits in {0F%-8s{00  %s\n\r",
+        dummy_attack_table[dummy_attack].name,
+        dummy_attack_table[dummy_attack].blurb );
+    send_to_char( buf, ch );
+
+    send_to_char(
+        "{0C'----------------------------------------------------------------'{00\n\r",
+        ch );
+
+    send_to_char(
+        "\n\r  dummy <level>        any level; it starts at your own\n\r"
+        "  dummy shape <name>   soft, armored, evasive, brutal\n\r"
+        "  dummy hits <type>    what it attacks you with\n\r"
+        "  dummy reset          back to your level and the defaults\n\r"
+        "  dummy report         stop, heal you both, and read the numbers\n\r"
+        "\n\r  Then just KILL DUMMY.  Neither of you can die here.\n\r\n\r",
+        ch );
+
+    send_to_char( "  Damage types: ", ch );
+    for ( i = 0; dummy_attack_table[i].name != NULL; i++ )
+    {
+        snprintf( buf, sizeof(buf), "%s%s",
+                  i > 0 ? ", " : "", dummy_attack_table[i].name );
+        send_to_char( buf, ch );
+    }
+    send_to_char( "\n\r", ch );
+}
+
+
+static void dummy_verdict( CHAR_DATA *ch, long dealt, int seconds, int level )
+{
+    char buf[MAX_STRING_LENGTH];
+    long typical;
+    long dps;
+    long ttk;
+
+    if ( seconds < 1 )
+        seconds = 1;
+
+    dps = dealt / seconds;
+    typical = dummy_typical_hp( level );
+
+    if ( dps < 1 )
+    {
+        send_to_char( "You did not land enough to measure.\n\r", ch );
+        return;
+    }
+
+    ttk = typical / dps;
+
+    snprintf( buf, sizeof(buf),
+        "A level %d mobile averages %ld hit points, so at this rate you\n\r"
+        "would drop one in {0F%ld{00 second%s.  ",
+        level, typical, ttk, ttk == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+
+    /* Banded on time to kill rather than raw damage: so many hit
+       points a second means nothing without something to spend it on. */
+    if ( ttk <= 5 )
+        send_to_char( "That is devastating.\n\r", ch );
+    else if ( ttk <= 15 )
+        send_to_char( "That is strong.\n\r", ch );
+    else if ( ttk <= 30 )
+        send_to_char( "That is solid.\n\r", ch );
+    else if ( ttk <= 60 )
+        send_to_char( "That is slow going.\n\r", ch );
+    else
+        send_to_char( "You will struggle with anything of that level.\n\r",
+                      ch );
+}
+
+
+static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
+{
+    char buf[MAX_STRING_LENGTH];
+    PC_DATA *pc = ch->pcdata;
+    int seconds;
+    int swings;
+    long dealt, taken;
+
+    if ( pc->dummy_started == 0 )
+    {
+        send_to_char( "You have not hit anything yet.\n\r", ch );
+        return;
+    }
+
+    seconds = (int)( current_time - pc->dummy_started );
+    if ( seconds < 1 )
+        seconds = 1;
+
+    dealt = pc->dummy_dealt;
+    taken = pc->dummy_taken;
+    swings = pc->dummy_hits + pc->dummy_misses;
+
+    send_to_char(
+        "\n\r{0C.-[ Training report ]-------------------------------------------.{00\n\r",
+        ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 A level %d %s dummy, hitting in %s, over %d second%s.\n\r",
+        pc->dummy_level, dummy_shape_table[dummy_shape].name,
+        dummy_attack_table[dummy_attack].name,
+        seconds, seconds == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 You dealt {0F%-7ld{00 total   {0F%-5ld{00 per second\n\r",
+        dealt, dealt / seconds );
+    send_to_char( buf, ch );
+
+    if ( swings > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   landed %d of %d (%d%%)   best %d   average %ld\n\r",
+            pc->dummy_hits, swings, pc->dummy_hits * 100 / swings,
+            pc->dummy_best,
+            pc->dummy_hits > 0 ? dealt / pc->dummy_hits : 0 );
+        send_to_char( buf, ch );
+    }
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 It dealt  {0F%-7ld{00 total   {0F%-5ld{00 per second in %d blow%s\n\r",
+        taken, taken / seconds, pc->dummy_struck,
+        pc->dummy_struck == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+
+    if ( taken > 0 && ch->max_hit > 0 )
+    {
+        long survive = ( (long)ch->max_hit * seconds ) / UMAX( 1, taken );
+
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   it would take you from full in {0F%ld{00 second%s\n\r",
+            survive, survive == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+    }
+
+    send_to_char(
+        "{0C'----------------------------------------------------------------'{00\n\r",
+        ch );
+
+    dummy_verdict( ch, dealt, seconds, pc->dummy_level );
+
+    /* Everything back as it was, both ways. */
+    if ( ch->fighting != NULL )
+        stop_fighting( ch, true );
+    if ( dummy != NULL )
+    {
+        if ( dummy->fighting != NULL )
+            stop_fighting( dummy, true );
+        dummy->hit = dummy->max_hit;
+        act( "$n straightens up, good as new.", dummy, NULL, NULL, TO_ROOM );
+    }
+
+    ch->hit = ch->max_hit;
+    ch->mana = ch->max_mana;
+    ch->move = ch->max_move;
+    send_to_char( "You are patched up and rested.\n\r", ch );
+
+    dummy_session_clear( ch );
+}
+
+
+void do_dummy( CHAR_DATA *ch, char *argument )
+{
+    char arg1[MAX_INPUT_LENGTH];
+    char arg2[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *dummy;
+    int i;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL )
+        return;
+
+    argument = one_argument( argument, arg1 );
+    one_argument( argument, arg2 );
+
+    dummy = dummy_in_room( ch );
+
+    if ( !str_prefix( arg1, "report" ) && arg1[0] != '\0' )
+    {
+        dummy_report( ch, dummy );
+        return;
+    }
+
+    if ( dummy == NULL )
+    {
+        send_to_char(
+            "There is no training dummy here.  The yard is through the\n\r"
+            "practice ring, in the southwestern corner of Oak Tree Square.\n\r",
+            ch );
+        return;
+    }
+
+    /*
+     * Changing it mid-run would make the numbers a blend of two
+     * different opponents, which is worse than no numbers at all.
+     */
+    if ( arg1[0] != '\0' && ch->pcdata->dummy_started != 0 )
+    {
+        send_to_char(
+            "You are in the middle of a run.  DUMMY REPORT first -- a\n\r"
+            "reading means nothing if the thing you were hitting changed\n\r"
+            "half way through.\n\r", ch );
+        return;
+    }
+
+    if ( arg1[0] == '\0' )
+    {
+        /* Nobody has set it up, or it has reset: it is your size.
+           That is the comparison almost everybody actually wants. */
+        if ( dummy->level != ch->level && ch->pcdata->dummy_started == 0 )
+            dummy_configure( dummy, ch->level, dummy_shape, dummy_attack );
+        dummy_menu( ch, dummy );
+        return;
+    }
+
+    /* "re" is a prefix of both; report is tested first, so RESET
+       needs enough letters to tell them apart. */
+    if ( !str_prefix( arg1, "reset" ) && strlen( arg1 ) >= 3 )
+    {
+        dummy_configure( dummy, UMAX( 1, ch->level ),
+                         DUMMY_SHAPE_DEFAULT, DUMMY_ATTACK_DEFAULT );
+        snprintf( buf, sizeof(buf),
+            "Back to a level %d %s dummy, hitting in %s.\n\r",
+            dummy->level, dummy_shape_table[DUMMY_SHAPE_DEFAULT].name,
+            dummy_attack_table[DUMMY_ATTACK_DEFAULT].name );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "shape" ) )
+    {
+        for ( i = 0; dummy_shape_table[i].name != NULL; i++ )
+        {
+            if ( !str_prefix( arg2, dummy_shape_table[i].name ) )
+            {
+                dummy_configure( dummy, dummy->level, i, dummy_attack );
+                snprintf( buf, sizeof(buf),
+                    "The dummy settles into a %s stance: %s.\n\r",
+                    dummy_shape_table[i].name, dummy_shape_table[i].blurb );
+                send_to_char( buf, ch );
+                act( "$n adjusts the training dummy.", ch, NULL, NULL,
+                     TO_ROOM );
+                return;
+            }
+        }
+        send_to_char( "No shape by that name.  Try soft, armored, "
+                      "evasive or brutal.\n\r", ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "hits" ) || !str_prefix( arg1, "damage" ) )
+    {
+        for ( i = 0; dummy_attack_table[i].name != NULL; i++ )
+        {
+            if ( !str_prefix( arg2, dummy_attack_table[i].name ) )
+            {
+                dummy_configure( dummy, dummy->level, dummy_shape, i );
+                snprintf( buf, sizeof(buf),
+                    "It will come at you with %s -- %s.\n\r",
+                    dummy_attack_table[i].name,
+                    dummy_attack_table[i].blurb );
+                send_to_char( buf, ch );
+                return;
+            }
+        }
+        send_to_char( "It cannot hit you with that.  DUMMY lists what "
+                      "it can.\n\r", ch );
+        return;
+    }
+
+    if ( is_number( arg1 ) )
+    {
+        int level = atoi( arg1 );
+
+        if ( level < 1 || level > MAX_LEVEL )
+        {
+            snprintf( buf, sizeof(buf),
+                      "Pick a level between 1 and %d.\n\r", MAX_LEVEL );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        dummy_configure( dummy, level, dummy_shape, dummy_attack );
+        snprintf( buf, sizeof(buf),
+            "The dummy is now level %d, and worth %ld hit points -- what a\n\r"
+            "level %d mobile averages.\n\r",
+            level, (long)dummy->max_hit, level );
+        send_to_char( buf, ch );
+        act( "$n adjusts the training dummy.", ch, NULL, NULL, TO_ROOM );
+        return;
+    }
+
+    dummy_menu( ch, dummy );
+}

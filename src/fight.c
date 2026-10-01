@@ -1521,7 +1521,16 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
      * Hurt the victim.
      * Inform the victim of his new state.
      */
-    if ( !is_invulnerable( victim ) )
+    /*
+     * The training yard. Nothing there dies: the dummy absorbs every
+     * blow, the player is floored at one hit point, and both halves
+     * are counted on the way past so DUMMY REPORT has numbers to read
+     * back. It sits on the subtraction for the same reason
+     * invulnerability does -- everything above this line, dam_message
+     * included, still runs, so a practice blow reads exactly like a
+     * real one.
+     */
+    if ( !dummy_absorb( ch, victim, dam ) && !is_invulnerable( victim ) )
 	victim->hit -= dam;
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {

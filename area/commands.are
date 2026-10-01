@@ -234,6 +234,59 @@ EXITS and SEARCH remain authoritative.
 See also: WALKTO, MAP, WALK, MUDLET, RUN, RECALL
 ~
 
+0 DUMMY TRAINING YARD~
+Syntax: dummy                  the menu, and what it is set to
+        dummy <level>          what level it should pretend to be
+        dummy shape <name>     how it should defend
+        dummy hits <type>      what it should hit you with
+        dummy reset            back to your level and the defaults
+        dummy report           stop, heal you both, read the numbers
+
+A training dummy you can hit as hard as you like.  It is in the Training
+Yard, through the practice ring in the southwestern corner of Oak Tree
+Square.
+
+NEITHER OF YOU CAN DIE THERE
+The dummy soaks up everything and never falls.  You cannot be killed by
+it either: its blows take you down to one hit point and no further.  That
+is a property of the yard and nowhere else - do not read it as a reason to
+pick a fight outside.
+
+SETTING IT UP
+It starts at your own level, which is the comparison almost everybody
+actually wants, and you can set it to anything.  It is always worth what a
+mobile of that level really averages, measured across every mobile in the
+world at that level, so the time-to-kill in the report means something.
+
+  Shapes
+    soft      no armour, no defences - a clean reading of your damage
+    armored   heavily armoured - is your hitroll keeping up
+    evasive   dodges and parries - are you landing anything
+    brutal    hits as hard as its level allows - what can you take
+
+  Damage types
+    slash, pierce, bash, fire, cold, lightning, acid, energy, holy
+
+  Change the damage type to test a resistance, an immunity, or a saving
+  throw.  Change the shape to find out whether your problem is damage or
+  accuracy.  You cannot change either in the middle of a run: a reading
+  blended from two different opponents is worse than no reading.
+
+READING THE REPORT
+  KILL DUMMY to begin, and DUMMY REPORT when you have had enough.  The
+  clock starts at the first blow in either direction, so taking a moment
+  to choose a weapon costs you nothing.
+
+  It gives your total damage and damage per second, how many swings
+  landed, your best and average hit, the same figures for what it did to
+  you, and how long it would take to put you down from full.  Then it
+  says how long you would need to kill a mobile of that level.
+
+  Both of you are healed to full afterwards and the run is cleared.
+
+See also: COMPARE, LORE, SCORE, DAMAGENUMBERS, AREAS
+~
+
 0 GMCP~
 GMCP is the out-of-band protocol used by modern MUD clients.  It is not a game
 command and does not add text to normal Telnet output.  A client that enables
@@ -2698,7 +2751,11 @@ Results are estimates against an equal-level standard opponent over five
 combat rounds. They include item affects and warn when an item cannot be used
 yet, but unusual opponents and tactics can still change the best choice.
 
-See also: LORE, IDENTIFY, INVENTORY, EQUIPMENT, SCORE
+COMPARE is arithmetic on paper.  To settle it by hitting something, see
+DUMMY: a training dummy in Dresden that cannot be killed and reports what
+you actually did.
+
+See also: DUMMY, LORE, IDENTIFY, INVENTORY, EQUIPMENT, SCORE
 ~
 
 0 CONSIDER~

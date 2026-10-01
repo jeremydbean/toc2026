@@ -785,6 +785,7 @@ struct  kill_data
 };
 
 /* Well known mob virtual numbers. */
+#define MOB_VNUM_TRAINING_DUMMY     2400
 #define MOB_VNUM_FIDO              3090
 #define MOB_VNUM_CITYGUARD         4456
 #define MOB_VNUM_VAMPIRE           3404
@@ -1895,6 +1896,16 @@ struct  pc_data
 
     /* Last session snapshot (persisted to player file) */
     long                last_logout;          /* when they last left the game */
+    /* Training-yard run; deliberately not persisted. */
+    long                dummy_dealt;
+    long                dummy_taken;
+    int                 dummy_hits;
+    int                 dummy_misses;
+    int                 dummy_swings;
+    int                 dummy_struck;
+    int                 dummy_best;
+    int                 dummy_level;
+    time_t              dummy_started;
     long                last_session_login;   /* unix timestamp of last login */
     long                last_session_dur;     /* session duration in seconds */
     long                last_session_exp_gain;/* net exp gained last session */
@@ -2607,6 +2618,9 @@ void    close_socket    ( DESCRIPTOR_DATA *dclose );
 void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
 void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
+bool    is_training_dummy  ( CHAR_DATA *ch );
+bool    dummy_absorb       ( CHAR_DATA *ch, CHAR_DATA *victim, int dam );
+long    dummy_typical_hp   ( int level );
 void    gmcp_send_affects  ( DESCRIPTOR_DATA *d );
 void    gmcp_send_quest    ( DESCRIPTOR_DATA *d );
 void    gmcp_send_target   ( DESCRIPTOR_DATA *d );

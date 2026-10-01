@@ -36,6 +36,7 @@ set(SRC_FILES
     src/const.c
     src/container.c
     src/db.c
+    src/dummy.c
     src/dstring.c
     src/edit.c
     src/fight.c

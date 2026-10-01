@@ -1,0 +1,76 @@
+#AREA   { ALL } ToC     The Training Yard~
+
+#MOBILES
+#2400
+training combat dummy practice~
+the training dummy~
+A battered training dummy stands here, waiting.
+~
+Sackcloth over a frame of oak, patched so many times that none of the
+original is left.  It does not look like much.  It has outlasted every
+weapon ever swung at it.
+
+Type DUMMY to set what it should pretend to be, and DUMMY REPORT when
+you have had enough.
+~
+dummy~
+ABV 0 0 S
+50 0 1d1+2000 1d1+100 10d10+40 0
+-50 -50 -50 -50
+0 0 0 0
+8 8 0 0
+0 0 M 0
+
+#0
+
+#OBJECTS
+#2404
+practice ring training yard portal~
+a practice ring~
+A worn practice ring is marked out on the flagstones here.
+~
+~
+30 0 0
+0 2419 0 0 0
+0 1000 0 P
+E
+ring practice yard~
+Scuffed flagstones, worn into a shallow bowl by generations of feet.
+Step into it and you are in the yard.
+~
+
+#0
+
+#ROOMS
+#2419
+The Training Yard~
+A square of hard-packed earth behind the armoury, walled on three sides
+and open to the square through the practice ring.  A dummy stands at the
+centre on a weighted post, leaning slightly, sackcloth split and resewn
+along every seam.  Somebody has chalked a tally on the wall and given up
+counting.
+
+Nothing dies here.  That is the whole point of the place.
+~
+0 V 1
+D0
+You are back in the square.
+~
+~
+0 -1 2409
+E
+dummy post tally~
+The tally runs to four figures before the chalk gives out.  Underneath,
+in a different hand: DUMMY sets it up, DUMMY REPORT tells you how you
+did.
+~
+S
+
+#0
+
+#RESETS
+M 0 2400 1 2419
+O 0 2404 0 2409
+S
+
+#$

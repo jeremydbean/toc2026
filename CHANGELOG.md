@@ -26,6 +26,23 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- **A training yard, through the practice ring in the southwestern
+  corner of Oak Tree Square.** A dummy that cannot be killed and
+  cannot kill you -- its blows floor you at one hit point and stop --
+  so you can measure gear instead of forming an impression of it over
+  an evening. `DUMMY` opens a menu: set its level (it starts at
+  yours), its shape (soft, armored, evasive, brutal) and what it hits
+  you with (nine damage schools, for testing resistances and saves).
+  `KILL DUMMY` to start, `DUMMY REPORT` to stop. The report gives your
+  damage per second and its damage per second, hit rate, best and
+  average blow, how long it would take you from full, and how long you
+  would need to kill a mobile of that level.
+
+  That last figure is measured, not invented: the dummy is always
+  worth what a mobile of its level really averages, across every
+  mobile in the world at that level. A benchmark nobody can check is
+  the one thing a training yard must not report.
+
 - **`GRANTPSI` stopped saying the target was offline, and told a
   level 1 they were "inside the awakening band".** Restructuring the
   immediate path dropped the first and got the second wrong -- a
