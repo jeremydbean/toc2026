@@ -2,6 +2,6 @@
 # The training yard's benchmark board: each character's best
 # standard fight, best first.
 # name total seconds level class when
+Astarte 11977 76 51 2 1790840150
 Misery 10655 76 54 2 1790839333
-Astarte 9062 75 51 2 1790839651
 Tyrant 5886 75 34 2 1790838258
