@@ -1,8 +1,8 @@
 #PLAYER
 Name Milenko~
 Id   56969
-LogO 952998363
-Vers 3
+LogO 1790822843
+Vers 4
 Desc .                ...
 .             ::::::
 .             :::::: ::
@@ -45,9 +45,12 @@ Sex  1
 Cla  5
 Gui  5
 Psionic  2
+PsiGrant 0
+PsiSpec ~
+PsiKnown ~
 Cast Fors
 Levl 52
-Plyd 927637
+Plyd 927639
 ListRemorts ~
 NumRemorts 0
 Note 951253659
@@ -58,11 +61,50 @@ NewGold 0
 NewPlat 16
 NewCopp 0
 NewSilv 0
-Bank 72000
+BankCP 72000000000
+IntTime 0
+IntTotal 0
 Dcount 0
+SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 1
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1790822830
+Achv level-10 1790822830
+Achv level-15 1790822830
+Achv level-20 1790822830
+Achv level-25 1790822830
+Achv level-30 1790822830
+Achv level-40 1790822830
+Achv level-50 1790822830
+Achv day-played 1790822830
+Achv week-played 1790822830
+Achv first-pkill 1790822830
+Achv relic-power-of-world 1790822830
+Achv bank-one-platinum 1790822830
+Achv bank-hundred-platinum 1790822830
+Achv bank-ten-thousand-platinum 1790822830
+Achv carry-one-platinum 1790822830
+Achv level-35 1790822830
+Achv level-45 1790822830
+Achv bank-thousand-platinum 1790822830
+Achv carry-ten-platinum 1790822830
+LastOut  0
+SesLogin 0
+SesDur   0
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
 QuestPnts 67
 Exp  116153
 Act  67174600
@@ -209,7 +251,7 @@ Vnum 16013
 Nest 0
 Wear 7
 Lev  41
-Cost 1498
+Cost 14980000
 Cond 100
 Repd 0
 End
@@ -219,7 +261,7 @@ Vnum 725
 Nest 0
 Wear 9
 Lev  46
-Cost 950
+Cost 9500000
 Cond 100
 Repd 0
 End
@@ -229,7 +271,7 @@ Vnum 29206
 Nest 0
 Wear 13
 Lev  50
-Cost 2000
+Cost 20000000
 Cond 84
 Repd 0
 End
@@ -239,7 +281,7 @@ Vnum 10051
 Nest 0
 Wear 4
 Lev  50
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -249,7 +291,7 @@ Vnum 10051
 Nest 0
 Wear 3
 Lev  50
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -270,7 +312,7 @@ Vnum 29209
 Nest 0
 Wear 10
 Lev  51
-Cost 2000
+Cost 20000000
 Cond 100
 Repd 0
 End
@@ -280,7 +322,7 @@ Vnum 25029
 Nest 0
 Wear 5
 Lev  51
-Cost 5000
+Cost 50000000
 Cond 100
 Repd 0
 End
@@ -290,7 +332,7 @@ Vnum 29215
 Nest 0
 Wear 6
 Lev  51
-Cost 5000
+Cost 50000000
 Cond 100
 Repd 0
 End
@@ -300,7 +342,7 @@ Vnum 4618
 Nest 0
 Wear 8
 Lev  39
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 End
@@ -310,7 +352,7 @@ Vnum 6434
 Nest 0
 Wear 2
 Lev  45
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -320,7 +362,7 @@ Vnum 6434
 Nest 0
 Wear 1
 Lev  45
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 End
@@ -341,7 +383,7 @@ Vnum 29032
 Nest 0
 Wear 12
 Lev  29
-Cost 500
+Cost 5000000
 Cond 99
 Repd 0
 End
@@ -352,7 +394,7 @@ Nest 1
 Name rainbow tea~
 ShD  a rainbow colored container of tea~
 Wear -1
-Cost 400
+Cost 4000000
 Cond 100
 Repd 0
 Val  32 35 103 106 0
@@ -368,7 +410,7 @@ Nest 1
 ExtF 354
 Wear -1
 Lev  46
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 AffD 'enchant weapon' 50 -1 6 19 0 0
@@ -380,7 +422,7 @@ Vnum 724
 Nest 1
 Wear -1
 Lev  30
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 End
@@ -390,7 +432,7 @@ Vnum 25106
 Nest 1
 Wear -1
 Lev  2
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 Val  2 2 3 0 0
@@ -403,7 +445,7 @@ Nest 1
 ExtF 1048899
 Wear -1
 Lev  46
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 AffD 'enchant weapon' 53 -1 6 18 0 0
@@ -430,7 +472,7 @@ ShD  a bottle containing essence of watcher grinch~
 Desc A bottle containing essence of watcher grinch is here.~
 Wear -1
 Lev  49
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Val  0 0 0 4202 0
@@ -443,7 +485,7 @@ ShD  a bottle containing essence of watcher grinch~
 Desc A bottle containing essence of watcher grinch is here.~
 Wear -1
 Lev  49
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Val  0 0 0 4202 0
@@ -456,7 +498,7 @@ ShD  a bottle containing essence of watcher grinch~
 Desc A bottle containing essence of watcher grinch is here.~
 Wear -1
 Lev  49
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 Val  0 0 0 4202 0
@@ -469,7 +511,7 @@ ShD  a bottle containing essence of watcher grinch~
 Desc A bottle containing essence of watcher grinch is here.~
 Wear -1
 Lev  50
-Cost 25000
+Cost 250000000
 Cond 100
 Repd 0
 Val  0 0 0 4202 0
@@ -480,7 +522,7 @@ Vnum 91
 Nest 1
 Wear -1
 Lev  49
-Cost 20000
+Cost 200000000
 Cond 100
 Repd 0
 End
@@ -491,7 +533,7 @@ Nest 1
 ExtF 3146818
 Wear -1
 Lev  48
-Cost 2500
+Cost 25000000
 Cond 100
 Repd 0
 End
@@ -502,7 +544,7 @@ Nest 1
 ExtF 3145792
 Wear -1
 Lev  54
-Cost 10000
+Cost 100000000
 Cond 100
 Repd 0
 End
@@ -513,7 +555,7 @@ Nest 1
 ExtF 2100544
 Wear -1
 Lev  49
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -523,7 +565,7 @@ Vnum 717
 Nest 1
 Wear -1
 Lev  40
-Cost 450
+Cost 4500000
 Cond 100
 Repd 0
 End
@@ -533,7 +575,7 @@ Vnum 717
 Nest 1
 Wear -1
 Lev  40
-Cost 450
+Cost 4500000
 Cond 100
 Repd 0
 End
@@ -543,7 +585,7 @@ Vnum 16046
 Nest 1
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -554,7 +596,7 @@ Vnum 16046
 Nest 1
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -565,7 +607,7 @@ Vnum 2321
 Nest 1
 Wear -1
 Lev  29
-Cost 3000
+Cost 30000000
 Cond 100
 Repd 0
 End
@@ -575,7 +617,7 @@ Vnum 2321
 Nest 1
 Wear -1
 Lev  29
-Cost 3000
+Cost 30000000
 Cond 100
 Repd 0
 End
@@ -608,7 +650,7 @@ Vnum 20130
 Nest 0
 Wear 15
 Lev  35
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 Affect -1 35 -1 -1 4 0 0
@@ -619,7 +661,7 @@ Vnum 20130
 Nest 0
 Wear 14
 Lev  35
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 Affect -1 35 -1 4 20 0 0
