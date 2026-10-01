@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790857922
+LogO 1790858277
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6388210
+Plyd 6388565
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 2419
-HMV  30102 30690 30087 30140 30060 30125
+HMV  30194 30740 30140 30140 30175 30175
 NewGold 155
 NewPlat 2503017
 NewCopp 149
@@ -142,9 +142,9 @@ Prac 265
 Trai 75
 Save  -89
 Alig  -1000
-Hit   76
-Dam   93
-ACs -317 -316 -323 -264
+Hit   80
+Dam   97
+ACs -337 -338 -347 -276
 Attr 25 21 18 18 18
 AMod 23 15 15 22 21
 Pass Kilrpis9ggekI~
@@ -400,21 +400,21 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'power gloves'   0  22  35  19          0          0
-AffD 'detect evil'   0  22   0   0          4          0
-AffD 'detect good'   0  22   0   0          0          2
-AffD 'detect magic'   0  22   0   0         16          0
-AffD 'detect hidden'   0  22   0   0         32          0
-AffD 'detect invis'   0  22   0   0          8          0
-AffD 'major globe'   0  22 -150  17          0          0
-AffD 'frenzy'   0  22 110  17          0          0
-AffD 'frenzy'   0  22  11  19          0          0
-AffD 'frenzy'   0  22  11  18          0          0
-AffD 'stone skin'   0  22 -40  17          0          0
-AffD 'shield'   0  22 -20  17          0          0
-AffD 'bless'   0  22  -8  24          0          0
-AffD 'bless'   0  22   8  18          0          0
-AffD 'armor'   0  22 -20  17          0          0
+AffD 'power gloves'   0  17  35  19          0          0
+AffD 'detect evil'   0  17   0   0          4          0
+AffD 'detect good'   0  17   0   0          0          2
+AffD 'detect magic'   0  17   0   0         16          0
+AffD 'detect hidden'   0  17   0   0         32          0
+AffD 'detect invis'   0  17   0   0          8          0
+AffD 'major globe'   0  17 -150  17          0          0
+AffD 'frenzy'   0  17 110  17          0          0
+AffD 'frenzy'   0  17  11  19          0          0
+AffD 'frenzy'   0  17  11  18          0          0
+AffD 'stone skin'   0  17 -40  17          0          0
+AffD 'shield'   0  17 -20  17          0          0
+AffD 'bless'   0  17  -8  24          0          0
+AffD 'bless'   0  17   8  18          0          0
+AffD 'armor'   0  17 -20  17          0          0
 AffD 'empower'   0  -1 -100  17          0          0
 AffD 'empower'   0  -1  20  19          0          0
 AffD 'empower'   0  -1  20  18          0          0
@@ -1646,6 +1646,26 @@ Nest 0
 Wear 16
 Lev  50
 Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29512
+Nest 0
+Wear 15
+Lev  51
+Cost 2000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29512
+Nest 0
+Wear 14
+Lev  51
+Cost 2000000
 Cond 100
 Repd 0
 End
