@@ -1,7 +1,7 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1790837721
+LogO 1790838172
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -110,14 +110,14 @@ PsiKnown clairvoyance,confuse,ego whip,mindbar~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1669744
+Plyd 1670195
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2419
-HMV  1803 1828 938 938 343 343
-NewGold 17
+HMV  1828 1828 938 938 213 343
+NewGold 44
 NewPlat 5130
 NewCopp 45
 NewSilv 1
@@ -130,7 +130,7 @@ Corpses	0
 PkRec 0
 PkGiv 24
 AchKills 1
-AchQuests 1
+AchQuests 2
 AchDeaths 0
 AchExplore 0
 AchMaps 0
@@ -150,6 +150,7 @@ Achv first-kill 1790711658
 Achv first-pkill 1787935878
 Achv first-quest 1790711681
 Achv quest-rush 1790711681
+Achv quest-emergency 1790837967
 Achv ten-pkills 1790711500
 Achv relic-british-crown 1787935878
 Achv relic-british-sceptre 1787935878
@@ -168,19 +169,20 @@ Achv bank-thousand-platinum 1790711500
 Achv carry-ten-platinum 1790711500
 Achv carry-thousand-platinum 1790711500
 Achv benchmark-champion 1790837597
-LastOut  1790836388
-SesLogin 1790828656
-SesDur   591
+LastOut  1790838172
+SesLogin 1790837501
+SesDur   671
 SesExpG  0
 SesLvlG  0
 SesKill  0
 SesPK    0
 SesDead  0
-SesQuest 0
+SesQuest 1
 RecallRoom 2401
 RecallSet  1790711702
 QuestPnts 165
-QuestStrk 1
+QuestStrk 2
+QuestNext 2
 Exp  177312
 Act  33960136
 AfBy 512
