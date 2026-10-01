@@ -19510,3 +19510,8 @@ Thu Oct  1 11:36:53 2026 :: ROM is ready to rock on port 9000.
 Thu Oct  1 11:36:53 2026 :: Automated backup complete.
 Thu Oct  1 11:36:53 2026 :: Daily backup complete.
 Thu Oct  1 11:58:28 2026 :: Sock.sinaddr:  192.168.0.1
+Thu Oct  1 11:59:53 2026 :: Loading Misery's playerfile
+Thu Oct  1 11:59:54 2026 :: Misery@192.168.0.1 has connected.
+Thu Oct  1 12:00:09 2026 :: Log Misery: spellup
+Thu Oct  1 12:00:09 2026 :: Spellup: Hermie placed in room 2401 by Misery.
+Thu Oct  1 12:00:15 2026 :: Spellup: Hermie gave Misery the full list (30 ticks) in room 2401.

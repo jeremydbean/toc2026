@@ -1,7 +1,7 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1790854526
+LogO 1790856135
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -110,7 +110,7 @@ PsiKnown clairvoyance,confuse,ego whip,mindbar~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1672177
+Plyd 1672319
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -285,57 +285,57 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'titanic'   0  27  50  16          0          0
-AffD 'titanic'   0  27 1840  14          0          0
-AffD 'titanic'   0  27 5175  12          0          0
-AffD 'titanic'   0  27 11590  13          0          0
-AffD 'empower'   0  27 -100  17          0          0
-AffD 'empower'   0  27  20  19          0          0
-AffD 'empower'   0  27  20  18          0          0
-AffD 'empower'   0  27  15   5          0          0
-AffD 'empower'   0  27  11   2          0          0
-AffD 'empower'  17  27  15   4          0          0
-AffD 'empower'  15  27  15   3          0          0
-AffD 'giant strength'  15  27  15   1          0          0
-AffD 'divine protection'  17  27   0   0          0       4096
-AffD 'fire shield'  10  27   0   0          0          8
-AffD 'protection evil'  18  27   0   0       8192          0
-AffD 'pass door'  11  27   0   0    1048576          0
-AffD 'fly'  42  27   0   0     524288          0
-AffD 'haste'  43  27   4   2    2097152          0
-AffD 'sanctuary'  45  27   0   0        128          0
-AffD 'empower'  46  27   0   0          0          0
-AffD 'armor'   0  27 -20  17          0          0
-AffD 'bless'   0  27   8  18          0          0
-AffD 'bless'   0  27  -8  24          0          0
-AffD 'shield'   0  27 -20  17          0          0
-AffD 'stone skin'   0  27 -40  17          0          0
-AffD 'sanctuary'   0  27   0   0        128          0
-AffD 'haste'   0  27   4   2    2097152          0
-AffD 'fly'   0  27   0   0     524288          0
-AffD 'pass door'   0  27   0   0    1048576          0
-AffD 'protection evil'   0  27   0   0       8192          0
-AffD 'fire shield'   0  27   0   0          0          8
-AffD 'divine protection'   0  27   0   0          0       4096
-AffD 'giant strength'   0  27   4   1          0          0
-AffD 'frenzy'   0  27  11  18          0          0
-AffD 'frenzy'   0  27  11  19          0          0
-AffD 'frenzy'   0  27 110  17          0          0
-AffD 'major globe'   0  27 -134  17          0          0
-AffD 'detect invis'  43  27   0   0          8          0
-AffD 'detect hidden'  44  27   0   0         32          0
-AffD 'detect magic'  42  27   0   0         16          0
-AffD 'detect good'  42  27   0   0          0          2
-AffD 'detect evil'  19  27   0   0          4          0
-AffD 'power gloves'  15  27   7  19          0          0
-AffD 'sanctuary'  13  27   0   0        128          0
-AffD 'haste'  14  27   4   2    2097152          0
-AffD 'fly'  17  27   0   0     524288          0
-AffD 'pass door'  12  27   0   0    1048576          0
-AffD 'protection evil'   9  27   0   0       8192          0
-AffD 'fire shield'  16  27   0   0          0          8
+AffD 'giant strength'  10  27  15   1          0          0
 AffD 'divine protection'  16  27   0   0          0       4096
-AffD 'giant strength'  11  27  15   1          0          0
+AffD 'fire shield'  16  27   0   0          0          8
+AffD 'protection evil'   9  27   0   0       8192          0
+AffD 'pass door'  11  27   0   0    1048576          0
+AffD 'fly'  16  27   0   0     524288          0
+AffD 'haste'  14  27   4   2    2097152          0
+AffD 'sanctuary'  13  27   0   0        128          0
+AffD 'power gloves'  13  27   7  19          0          0
+AffD 'detect evil'  19  27   0   0          4          0
+AffD 'detect good'  40  27   0   0          0          2
+AffD 'detect magic'  41  27   0   0         16          0
+AffD 'detect hidden'  43  27   0   0         32          0
+AffD 'detect invis'  42  27   0   0          8          0
+AffD 'major globe'   0  27 -134  17          0          0
+AffD 'frenzy'   0  27 110  17          0          0
+AffD 'frenzy'   0  27  11  19          0          0
+AffD 'frenzy'   0  27  11  18          0          0
+AffD 'giant strength'   0  27   4   1          0          0
+AffD 'divine protection'   0  27   0   0          0       4096
+AffD 'fire shield'   0  27   0   0          0          8
+AffD 'protection evil'   0  27   0   0       8192          0
+AffD 'pass door'   0  27   0   0    1048576          0
+AffD 'fly'   0  27   0   0     524288          0
+AffD 'haste'   0  27   4   2    2097152          0
+AffD 'sanctuary'   0  27   0   0        128          0
+AffD 'stone skin'   0  27 -40  17          0          0
+AffD 'shield'   0  27 -20  17          0          0
+AffD 'bless'   0  27  -8  24          0          0
+AffD 'bless'   0  27   8  18          0          0
+AffD 'armor'   0  27 -20  17          0          0
+AffD 'empower'  46  24   0   0          0          0
+AffD 'sanctuary'  44  27   0   0        128          0
+AffD 'haste'  42  27   4   2    2097152          0
+AffD 'fly'  42  27   0   0     524288          0
+AffD 'pass door'  11  27   0   0    1048576          0
+AffD 'protection evil'  18  27   0   0       8192          0
+AffD 'fire shield'   9  27   0   0          0          8
+AffD 'divine protection'  16  27   0   0          0       4096
+AffD 'giant strength'  15  27  15   1          0          0
+AffD 'empower'  15  24  15   3          0          0
+AffD 'empower'  15  24  15   4          0          0
+AffD 'empower'   0  24  11   2          0          0
+AffD 'empower'   0  24  15   5          0          0
+AffD 'empower'   0  24  20  18          0          0
+AffD 'empower'   0  24  20  19          0          0
+AffD 'empower'   0  24 -100  17          0          0
+AffD 'titanic'   0  24 11590  13          0          0
+AffD 'titanic'   0  24 5175  12          0          0
+AffD 'titanic'   0  24 1840  14          0          0
+AffD 'titanic'   0  24  50  16          0          0
 End
 
 #O
@@ -500,8 +500,8 @@ Lev  51
 Cost 5000000
 Cond 100
 Repd 0
-Affect -1 51 -1 -8 17 0 0
 Affect -1 51 -1 4 24 0 0
+Affect -1 51 -1 -8 17 0 0
 End
 
 #O
@@ -1540,6 +1540,7 @@ End
 #O
 Vnum 3610
 Nest 0
+ExtF 533
 Wear -1
 Lev  24
 Cost 15000000
@@ -1625,19 +1626,6 @@ Wear 16
 Lev  50
 Cost 90000000
 Cond 100
-Repd 0
-End
-
-#O
-Vnum 10
-Nest 0
-ShD  an old skeleton~
-Desc An old skeleton is lying here.~
-Wear -1
-Lev  54
-Time 1
-Cost 0
-Cond 25
 Repd 0
 End
 
