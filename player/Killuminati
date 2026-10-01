@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790817753
+LogO 1790818049
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6383526
+Plyd 6383822
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 2401
-HMV  30000 30000 30025 30025 30000 30000
+HMV  30040 30040 30040 30040 30025 30025
 NewGold 66
 NewPlat 2503009
 NewCopp 36
@@ -38,7 +38,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 10
+AchKills 11
 AchQuests 1
 AchDeaths 1
 AchExplore 0
@@ -135,11 +135,11 @@ Pos  8
 Prac 265
 Trai 74
 Alig  -546
-Hit   30
-Dam   30
+Hit   23
+Dam   23
 ACs 0 0 0 0
 Attr 25 21 18 18 18
-AMod 16 17 17 17 15
+AMod 15 15 15 15 15
 Pass Kilrpis9ggekI~
 Bin  Killuminati appears before you.~
 Bout Killuminati raises into the sky, and is gone.~
@@ -438,23 +438,12 @@ Repd 3
 End
 
 #O
-Vnum 29303
-Nest 0
-ExtF 35651911
-Wear -1
-Lev  68
-Cost 10000000000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 29032
 Nest 0
 Name newbie pack starter~
 ShD  A *NEWBIE* pack!~
 Desc A *NEWBIE* pack! has been left here.~
-Wear 12
+Wear -1
 Lev  1
 Cost 5000000
 Cond 100
@@ -758,7 +747,7 @@ End
 Vnum 9925
 Nest 0
 ExtF 3145731
-Wear 16
+Wear -1
 Lev  51
 Cost 50000000
 Cond 100
@@ -780,6 +769,561 @@ Nest 0
 Wear -1
 Lev  15
 Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3608
+Nest 0
+Wear -1
+Lev  48
+Cost 80000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 700
+Nest 0
+ExtF 3149890
+Wear -1
+Lev  48
+Cost 25000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5609
+Nest 0
+ExtF 1048640
+Wear -1
+Lev  52
+Cost 10000000
+Cond 100
+Repd 0
+Affect -1 52 -1 -33 14 0 0
+Affect -1 52 -1 -9 13 0 0
+End
+
+#O
+Vnum 5609
+Nest 0
+ExtF 1048640
+Wear -1
+Lev  52
+Cost 10000000
+Cond 100
+Repd 0
+Affect -1 52 -1 -4 2 0 0
+End
+
+#O
+Vnum 29206
+Nest 0
+Wear -1
+Lev  50
+Cost 20000000
+Cond 100
+Repd 0
+Affect -1 50 -1 -4 5 0 0
+End
+
+#O
+Vnum 25106
+Nest 0
+Wear -1
+Cost 10000000
+Cond 100
+Repd 0
+Val  2 3 3 0 0
+End
+
+#O
+Vnum 16019
+Nest 0
+Wear -1
+Lev  47
+Cost 20040000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3609
+Nest 0
+ExtF 4245
+Wear -1
+Lev  30
+Cost 40000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 725
+Nest 0
+ExtF 320
+Wear -1
+Lev  46
+Cost 9500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16016
+Nest 0
+Wear -1
+Lev  52
+Cost 23680000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 9917
+Nest 0
+Wear -1
+Lev  52
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 52 -1 7 17 0 0
+End
+
+#O
+Vnum 29215
+Nest 0
+Wear -1
+Lev  51
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 7651
+Nest 0
+ExtF 20
+Wear -1
+Lev  43
+Cost 9500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 2321
+Nest 0
+Wear -1
+Lev  29
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 29 -1 -1 4 0 0
+End
+
+#O
+Vnum 2321
+Nest 0
+Wear -1
+Lev  29
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 29 -1 -21 13 0 0
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear -1
+Lev  52
+Cost 24090000
+Cond 100
+Repd 0
+Affect -1 52 -1 17 12 0 0
+End
+
+#O
+Vnum 16033
+Nest 0
+Wear -1
+Lev  52
+Cost 24090000
+Cond 100
+Repd 0
+Affect -1 52 -1 3 21 0 0
+End
+
+#O
+Vnum 29049
+Nest 0
+Wear -1
+Lev  45
+Cost 15000000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+Affect -1 45 -1 -3 2 0 0
+End
+
+#O
+Vnum 3032
+Nest 0
+Name gear pack Kyrus~
+ShD  Kyrus's gear~
+Desc Kyrus's gear lies here.~
+Wear -1
+Cost 3100
+Cond 90
+Repd 0
+Val  10000 0 0 5 0
+End
+
+#O
+Vnum 9944
+Nest 1
+Wear -1
+Lev  20
+Cost 0
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 17025
+Nest 1
+ExtF 6
+Wear -1
+Lev  53
+Cost 15000000
+Cond 100
+Repd 0
+Affect -1 53 -1 3 24 0 0
+Affect -1 53 -1 -4 1 0 0
+Affect -1 53 -1 4 23 0 0
+Affect -1 53 -1 1 20 0 0
+End
+
+#O
+Vnum 17025
+Nest 1
+ExtF 6
+Wear -1
+Lev  53
+Cost 15000000
+Cond 100
+Repd 0
+Affect -1 53 -1 -17 12 0 0
+End
+
+#O
+Vnum 10004
+Nest 1
+ExtF 2101697
+Wear -1
+Lev  50
+Cost 30000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 10004
+Nest 1
+ExtF 2101697
+Wear -1
+Lev  50
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 50 -1 1 21 0 0
+End
+
+#O
+Vnum 7651
+Nest 1
+ExtF 20
+Wear -1
+Lev  43
+Cost 9500000
+Cond 100
+Repd 0
+Affect -1 43 -1 -1 13 0 0
+End
+
+#O
+Vnum 29215
+Nest 1
+Wear -1
+Lev  51
+Cost 50000000
+Cond 100
+Repd 0
+Affect -1 51 -1 -5 19 0 0
+End
+
+#O
+Vnum 29227
+Nest 1
+Wear -1
+Lev  53
+Cost 50000000
+Cond 100
+Repd 0
+Affect -1 53 -1 -4 3 0 0
+End
+
+#O
+Vnum 29236
+Nest 1
+Wear -1
+Lev  53
+Cost 50000000
+Cond 100
+Repd 0
+Affect -1 53 -1 7 17 0 0
+End
+
+#O
+Vnum 29235
+Nest 1
+Wear -1
+Lev  53
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3609
+Nest 1
+ExtF 4245
+Wear -1
+Lev  30
+Cost 40000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29240
+Nest 1
+Wear -1
+Lev  54
+Cost 90000000
+Cond 100
+Repd 0
+Affect -1 54 -1 -4 19 0 0
+End
+
+#O
+Vnum 29206
+Nest 1
+Wear -1
+Lev  50
+Cost 20000000
+Cond 100
+Repd 0
+Affect -1 50 -1 -3 3 0 0
+End
+
+#O
+Vnum 717
+Nest 1
+Wear -1
+Lev  40
+Cost 4500000
+Cond 100
+Repd 0
+Affect -1 40 -1 -2 24 0 0
+Affect -1 40 -1 -4 3 0 0
+Affect -1 40 -1 1 21 0 0
+End
+
+#O
+Vnum 717
+Nest 1
+Wear -1
+Lev  40
+Cost 4500000
+Cond 100
+Repd 0
+Affect -1 40 -1 4 21 0 0
+End
+
+#O
+Vnum 17020
+Nest 1
+ExtF 19
+Wear -1
+Lev  53
+Cost 20000000
+Cond 100
+Repd 0
+Affect -1 53 -1 1 23 0 0
+End
+
+#O
+Vnum 10000
+Nest 1
+ExtF 2101441
+Wear -1
+Lev  50
+Cost 60000000
+Cond 100
+Repd 0
+Affect -1 50 -1 -19 13 0 0
+End
+
+#O
+Vnum 29303
+Nest 0
+ExtF 35651911
+Wear -1
+Lev  1
+Cost 10000000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 24515
+Nest 0
+Wear -1
+Lev  50
+Cost 17400000
+Cond 100
+Repd 0
+Affect -1 50 -1 9 17 0 0
+Affect -1 50 -1 1 14 0 0
+End
+
+#O
+Vnum 24512
+Nest 0
+Wear -1
+Lev  35
+Cost 14780000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 24512
+Nest 0
+Wear -1
+Lev  35
+Cost 14780000
+Cond 100
+Repd 0
+Affect -1 35 -1 9 13 0 0
+End
+
+#O
+Vnum 13408
+Nest 0
+Wear -1
+Lev  44
+Cost 10060000
+Cond 100
+Repd 0
+Affect -1 44 -1 1 22 0 0
+End
+
+#O
+Vnum 13307
+Nest 0
+ExtF 8192
+Wear -1
+Cost 100000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 13307
+Nest 0
+ExtF 8192
+Wear -1
+Cost 100000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 8727
+Nest 0
+Wear -1
+Lev  44
+Cost 28000000
+Cond 100
+Repd 0
+Val  1 6 8 3 1
+End
+
+#O
+Vnum 9204
+Nest 0
+Wear -1
+Lev  28
+Cost 78400000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 1803
+Nest 0
+Wear -1
+Lev  30
+Cost 50000000
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 1803
+Nest 0
+Wear -1
+Lev  30
+Cost 50000000
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 908
+Nest 0
+Wear -1
+Lev  35
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 908
+Nest 0
+Wear -1
+Lev  35
+Cost 5000000
+Cond 100
+Repd 0
+Affect -1 35 -1 -1 3 0 0
+End
+
+#O
+Vnum 9575
+Nest 0
+ExtF 8192
+Wear -1
+Lev  1
+Cost 4100
 Cond 100
 Repd 0
 End
