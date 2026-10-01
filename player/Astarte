@@ -1,7 +1,7 @@
 #PLAYER
 Name Astarte~
 Id   30739
-LogO 1790840870
+LogO 1790840993
 Vers 4
 Desc .                      //:::::::::::::::::::::::::::::::::::::::::::::\\
 .                     //:::_______:::::::::________::::::::::_____:::::::\\
@@ -40,7 +40,7 @@ PsiKnown mindbar,project,pyrotechnics,telekinesis~
 Cast none
 Levl 51
 Tru  69
-Plyd 659220
+Plyd 659334
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -88,9 +88,9 @@ Achv level-45 1790829651
 Achv carry-ten-platinum 1790829651
 Achv carry-thousand-platinum 1790829651
 Achv benchmark-champion 1790838495
-LastOut  1790840241
-SesLogin 1790840006
-SesDur   235
+LastOut  1790840993
+SesLogin 1790840881
+SesDur   112
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -99,7 +99,7 @@ SesDead  0
 SesQuest 0
 QuestPnts 90
 QuestStrk 2
-QuestNext 4
+QuestNext 2
 Exp  113672
 Act  131272
 AfBy 3678908
@@ -139,7 +139,7 @@ AMod 32 15 15 22 13
 Pass AsQheSp/NGAuY~
 Ariv $n leaves $t.~
 Dprt $n has arrived from the $t.~
-Titl ... the mortal immortal.~
+Titl ... the immortal mortal.~
 Pnts 40
 TSex 1
 LLev 174
@@ -193,50 +193,50 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'warrior guild'
-AffD 'change sex'  10   9  -1   6          0          0
-AffD 'armor'   0  20 -20  17          0          0
-AffD 'bless'   0  20   8  18          0          0
-AffD 'bless'   0  20  -8  24          0          0
-AffD 'shield'  37  20 -20  17          0          0
-AffD 'stone skin'   0  20 -40  17          0          0
-AffD 'sanctuary'   0  20   0   0        128          0
-AffD 'haste'  48  20   4   2    2097152          0
-AffD 'fly'  51  20   0   0     524288          0
-AffD 'pass door'  49  20   0   0    1048576          0
-AffD 'protection evil'  44  20   0   0       8192          0
-AffD 'fire shield'  46  20   0   0          0          8
-AffD 'divine protection'  27  20   0   0          0       4096
-AffD 'giant strength'  25  20   4   1          0          0
-AffD 'frenzy'  46  20  11  18          0          0
-AffD 'frenzy'  45  20  11  19          0          0
-AffD 'frenzy'  39  20 110  17          0          0
-AffD 'major globe'  49  20 -131  17          0          0
-AffD 'detect invis'  39  20   0   0          8          0
-AffD 'detect hidden'  44  20   0   0         32          0
-AffD 'detect magic'  47  20   0   0         16          0
-AffD 'detect good'  47  20   0   0          0          2
-AffD 'detect evil'  49  20   0   0          4          0
-AffD 'power gloves'  36  20  14  19          0          0
-AffD 'empower'  32  11   0   0          0          0
-AffD 'sanctuary'  37  20   0   0        128          0
-AffD 'haste'  35  20   4   2    2097152          0
-AffD 'fly'  52  20   0   0     524288          0
-AffD 'pass door'  46  20   0   0    1048576          0
-AffD 'protection evil'  46  20   0   0       8192          0
-AffD 'fire shield'  49  20   0   0          0          8
-AffD 'divine protection'  31  20   0   0          0       4096
-AffD 'giant strength'  40  20  15   1          0          0
-AffD 'empower'  30  11  15   3          0          0
-AffD 'empower'  45  11  15   4          0          0
-AffD 'empower'  50  11  11   2          0          0
-AffD 'empower'  50  11  15   5          0          0
-AffD 'empower'  51  11  20  18          0          0
-AffD 'empower'  51  11  20  19          0          0
-AffD 'empower'  50  11 -100  17          0          0
-AffD 'titanic'  47  11 7920  13          0          0
-AffD 'titanic'  45  11 2685  12          0          0
-AffD 'titanic'  46  11 1425  14          0          0
-AffD 'titanic'  49  11  50  16          0          0
+AffD 'titanic'  49   9  50  16          0          0
+AffD 'titanic'  46   9 1425  14          0          0
+AffD 'titanic'  44   9 2685  12          0          0
+AffD 'titanic'  47   9 7920  13          0          0
+AffD 'empower'  50   9 -100  17          0          0
+AffD 'empower'  51   9  20  19          0          0
+AffD 'empower'  51   9  20  18          0          0
+AffD 'empower'  49   9  15   5          0          0
+AffD 'empower'  49   9  11   2          0          0
+AffD 'empower'  45   9  15   4          0          0
+AffD 'empower'  30   9  15   3          0          0
+AffD 'giant strength'  40  18  15   1          0          0
+AffD 'divine protection'  31  18   0   0          0       4096
+AffD 'fire shield'  49  18   0   0          0          8
+AffD 'protection evil'  46  18   0   0       8192          0
+AffD 'pass door'  46  18   0   0    1048576          0
+AffD 'fly'  52  18   0   0     524288          0
+AffD 'haste'  35  18   4   2    2097152          0
+AffD 'sanctuary'  37  18   0   0        128          0
+AffD 'empower'  31   9   0   0          0          0
+AffD 'power gloves'  36  18  14  19          0          0
+AffD 'detect evil'  49  18   0   0          4          0
+AffD 'detect good'  46  18   0   0          0          2
+AffD 'detect magic'  46  18   0   0         16          0
+AffD 'detect hidden'  44  18   0   0         32          0
+AffD 'detect invis'  39  18   0   0          8          0
+AffD 'major globe'  48  18 -131  17          0          0
+AffD 'frenzy'  39  18 110  17          0          0
+AffD 'frenzy'  45  18  11  19          0          0
+AffD 'frenzy'  46  18  11  18          0          0
+AffD 'giant strength'  24  18   4   1          0          0
+AffD 'divine protection'  27  18   0   0          0       4096
+AffD 'fire shield'  46  18   0   0          0          8
+AffD 'protection evil'  43  18   0   0       8192          0
+AffD 'pass door'  49  18   0   0    1048576          0
+AffD 'fly'  50  18   0   0     524288          0
+AffD 'haste'  47  18   4   2    2097152          0
+AffD 'sanctuary'   0  18   0   0        128          0
+AffD 'stone skin'   0  18 -40  17          0          0
+AffD 'shield'  37  18 -20  17          0          0
+AffD 'bless'   0  18  -8  24          0          0
+AffD 'bless'   0  18   8  18          0          0
+AffD 'armor'   0  18 -20  17          0          0
+AffD 'change sex'   8   7  -1   6          0          0
 End
 
 #O
@@ -381,8 +381,8 @@ Lev  45
 Cost 32500000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 51 -1 6 18 0 0
 AffD 'enchant weapon' 51 -1 6 19 0 0
+AffD 'enchant weapon' 51 -1 6 18 0 0
 End
 
 #O
