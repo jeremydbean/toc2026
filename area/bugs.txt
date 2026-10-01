@@ -1,1 +1,2 @@
 [ 2401] Alaric: The psionic skill, "Mindbar" doesn't show on the list of effects when the players types, "affect"
+[16001] Alaric: Exotic weapons do not display the damage done to mobile during a fight

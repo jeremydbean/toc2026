@@ -358,3 +358,28 @@
 1790819594	say	Killuminati	it's slick it can like tell you anything about the game
 1790819601	say	Alaric	Pretty sure thats the text I see
 1790819625	gossip	Killuminati	i thought about seeing if i could get an AI mob that could answer questions, lol
+1790819661	gossip	Alaric	shears through The sailor with terrible force!
+1790819694	gossip	Killuminati	you can go back to the old fighting style by typing damage
+1790819700	gossip	Killuminati	doesn't show the HP
+1790819710	gossip	Killuminati	but with mudlet you can see it
+1790819722	gossip	Killuminati	ok apparently it's vorpal proc
+1790819723	gossip	Alaric	Seems to just be exotics, other weapons show. Just logged that as you typed it
+1790819735	gossip	Killuminati	the excessive force, is a vorpal damage special thing
+1790819744	gossip	Killuminati	apparently that was always in the code it just never worked
+1790819749	gossip	Killuminati	it does now, lol
+1790819759	gossip	Alaric	Ah, don't think I'd ever seen that. What the actual effect? Bonus damage of some level?
+1790819782	gossip	Killuminati	scales with weapon skill and adds 10% and also heals you for 1/20 of the damage
+1790819802	gossip	Killuminati	it's a 1 in 25 chance to land 3x damage on all vorpal weapons
+1790819841	gossip	Alaric	Very nice. You see the flavor text, but not the damage, but can definately see the hp of the mob drop down. Nice to know
+1790819845	gossip	Killuminati	vampiric was the 10% damage and healing, sorry.
+1790819901	say	questor thews	Your timing is perfect, Alaric. I have just the task for you.
+1790819901	say	questor thews	a gang member has been declared an outlaw!
+1790819901	say	questor thews	Hunt them down before they cause more trouble!
+1790819901	say	questor thews	Your quarry was last spotted near Curve in the road, in the Gangland region.
+1790819901	say	questor thews	You have 16 minutes to complete this quest.
+1790819901	say	questor thews	Fortune favors the bold - good luck!
+1790819921	say	questor thews	Excellent work! The realm is in your debt!
+1790819921	say	questor thews	Streak of 13 in a row! A +85% bonus has been added!
+1790819921	say	questor thews	Here's your 13 gold - well earned!
+1790819929	gossip	Killuminati	sharp weapons doubles the damage 9% of the time vs. vorpal's triple damage 3.75%
+1790819936	gossip	Killuminati	so sharp is actually better, interesting
