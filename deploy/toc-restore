@@ -85,11 +85,13 @@ mkdir -p "$CURRENT"
 rsync -a --exclude '.git/' "$BUILD/" "$CURRENT/"
 # These are written by the running game and are not code; they come
 # from the repository on a restore because that is the only copy.
-for d in player gods log; do
+for d in player gods heroes log; do
     [ -d "$BUILD/$d" ] && { mkdir -p "$CURRENT/$d"; rsync -a "$BUILD/$d/" "$CURRENT/$d/"; }
 done
+# corpse/ and backups/ are genuinely empty on a new box; heroes/ is not,
+# and creating it empty here is how a restored game got a blank plaque.
 mkdir -p "$CURRENT/corpse" "$CURRENT/heroes" "$CURRENT/backups"
-echo "   $(ls "$CURRENT/player" | wc -l) characters in place"
+echo "   $(ls "$CURRENT/player" | wc -l) characters, $(ls "$CURRENT/heroes" | wc -l) heroes in place"
 
 if [ "$DRILL" = 1 ]; then
     say "rehearsal complete"

@@ -42,7 +42,12 @@ export GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostK
 # and the ban list had not reached GitHub since the initial commit.
 # tests/test_training_dummy.py checks every name here against a file
 # the game writes.
-STATE_DIRS="player gods log"
+# heroes/ is here because the Hall of Heroes plaque is drawn from it
+# (show_hero_plaque reads HERO_DIR), and 83 of those 212 records
+# belong to heroes with no character file left -- this is the only
+# copy of their names. A restore without it brings the game back
+# with a blank plaque.
+STATE_DIRS="player gods heroes log"
 STATE_FILES="area/notes.txt area/bugs.txt area/ideas.txt area/typos.txt
              area/pkilldata.txt area/wizlist.txt area/maxload.txt
              area/offense.txt area/relics.txt area/not.txt area/ban.txt

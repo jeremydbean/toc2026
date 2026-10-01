@@ -685,6 +685,27 @@ class TrainingDummyTests(unittest.TestCase):
                             "%s is neither tracked nor written by the game"
                             % path)
 
+    def test_every_directory_the_game_writes_is_synced(self) -> None:
+        """heroes/ was missing for as long as the sync existed. The
+        plaque is drawn from it and 83 of its records belong to heroes
+        with no character file left, so a restore without it loses
+        those names for good. toc-restore has to put back every
+        directory the sync collects, or syncing it achieves nothing."""
+        import re as _re
+        sync = read("deploy", "windows-vm", "toc-state-sync")
+        dirs = _re.search(r'STATE_DIRS="([^"]*)"', sync).group(1).split()
+        self.assertEqual(set(dirs), {"player", "gods", "heroes", "log"})
+
+        restore = read("deploy", "toc-restore")
+        restored = _re.search(r"for d in ([a-z ]+); do", restore).group(1).split()
+        self.assertEqual(set(restored), set(dirs),
+                         "toc-restore does not put back what the sync saves")
+
+        ignored = read(".github", "workflows", "validate.yml")
+        for d in dirs:
+            self.assertIn("'%s/**'" % d, ignored,
+                          "%s/ would start a CI run on every sync" % d)
+
     # ------------------------------------------------- one at a time
     def test_the_yard_takes_one_fighter_at_a_time(self) -> None:
         """ROOM_SOLITARY: room_is_private() counts mortal players only
