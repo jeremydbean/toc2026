@@ -1,0 +1,27 @@
+[Unit]
+Description=Times of Chaos web client and private administration
+After=network-online.target toc-game.service
+Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+ConditionPathExists=!/etc/toc/maintenance
+
+[Service]
+Type=simple
+User=toc
+Group=toc
+WorkingDirectory=/srv/toc/current
+EnvironmentFile=/etc/toc/web.env
+ExecStart=/srv/toc/venv/bin/python -m webadmin.server --host 0.0.0.0 --port 9001 --mud-host 127.0.0.1 --mud-port 9000 --queue /srv/toc/current/area/webadmin.queue --log-file /var/log/toc/game.log --area-path /srv/toc/current/area --backup-path /var/backups/toc --player-path /srv/toc/current/player
+Restart=always
+RestartSec=5
+TimeoutStopSec=20
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/toc/current /var/backups/toc
+
+[Install]
+WantedBy=multi-user.target

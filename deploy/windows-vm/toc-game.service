@@ -1,0 +1,35 @@
+[Unit]
+Description=Times of Chaos game server
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=5
+ConditionPathExists=!/etc/toc/maintenance
+
+[Service]
+Type=notify
+NotifyAccess=main
+User=toc
+Group=toc
+WorkingDirectory=/srv/toc/current/area
+ExecCondition=/usr/bin/test ! -e /srv/toc/current/area/shutdown.txt
+ExecStart=/srv/toc/current/merc 9000
+Restart=always
+RestartSec=5
+WatchdogSec=60
+WatchdogSignal=SIGTERM
+TimeoutStartSec=120
+TimeoutStopSec=30
+KillSignal=SIGTERM
+LimitNOFILE=1024
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/srv/toc/current
+StandardOutput=append:/var/log/toc/game.log
+StandardError=append:/var/log/toc/game.log
+
+[Install]
+WantedBy=multi-user.target

@@ -102,40 +102,80 @@ rm -f "$CURRENT/area/shutdown.txt" "$CURRENT/area/shutdown"
 
 if [ "$DRILL" = 1 ]; then
     say "rehearsal complete"
-    echo "A real restore would now: chown -R toc:toc $CURRENT,"
-    echo "install the systemd units from deploy/windows-vm/, put the"
-    echo "state-sync deploy key at ~/.ssh/id_ed25519_state_sync, and"
-    echo "start toc-game and toc-web."
+    echo "A real restore would now: create the toc user, build the venv,"
+    echo "install every systemd unit (game, web, sync, recovery) with a"
+    echo "fresh web-admin token, and enable + start the game so it comes"
+    echo "back on crash and on boot. Two things still need a human: open"
+    echo "the game port in the host firewall, and drop the state-sync"
+    echo "deploy key at /srv/toc/.ssh/id_ed25519_state_sync."
     exit 0
 fi
 
 # ------------------------------------------------------------- services
 say "wiring up the services"
 id -u toc >/dev/null 2>&1 || useradd --system --home "$TOC_PREFIX" --shell /usr/sbin/nologin toc
-chown -R toc:toc "$TOC_PREFIX"
+mkdir -p /etc/toc /var/log/toc /var/backups/toc
 
-for u in toc-state-sync.service toc-state-sync.timer; do
+# Every unit, not just the sync. The game and dashboard units are in the
+# repository now, so a bare-box restore brings up a *running* game rather
+# than leaving the service layer to be rebuilt by hand -- which is how the
+# Oracle migration left the host until this was fixed.
+for u in toc-game.service toc-web.service \
+         toc-state-sync.service toc-state-sync.timer \
+         toc-state-sync-check.service toc-state-sync-check.timer \
+         toc-game-recovery.service toc-game-recovery.timer; do
     [ -f "$BUILD/deploy/windows-vm/$u" ] && install -m 0644 "$BUILD/deploy/windows-vm/$u" /etc/systemd/system/
 done
-[ -f "$BUILD/deploy/windows-vm/toc-state-sync" ] &&
-    install -m 0755 "$BUILD/deploy/windows-vm/toc-state-sync" /usr/local/sbin/
+for s in toc-state-sync toc-state-sync-check toc-game-recovery; do
+    [ -f "$BUILD/deploy/windows-vm/$s" ] && install -m 0755 "$BUILD/deploy/windows-vm/$s" /usr/local/sbin/
+done
+
+# The dashboard's virtualenv.
+if [ ! -x "$TOC_PREFIX/venv/bin/python" ]; then
+    if python3 -m venv "$TOC_PREFIX/venv" 2>/dev/null; then
+        "$TOC_PREFIX/venv/bin/pip" install --quiet --upgrade pip || true
+        "$TOC_PREFIX/venv/bin/pip" install --quiet -r "$BUILD/webadmin/requirements.txt" || true
+    else
+        echo "   WARN: no python3-venv; dashboard will not start until a venv exists at $TOC_PREFIX/venv" >&2
+    fi
+fi
+
+# A fresh web-admin token, generated here so the value never leaves the
+# host -- but only when none is already present, never clobbering a live
+# one. Nothing in the game depends on the old value.
+if [ ! -f /etc/toc/web.env ]; then
+    ( umask 077
+      {
+        printf 'WEB_ADMIN_TOKEN=%s\n' "$(openssl rand -hex 32)"
+        printf 'WEB_ADMIN_LOCAL_UNLOCK=0\n'
+        printf 'WEB_ADMIN_HOST_STATUS=1\n'
+        printf 'TOC_HOST_SERVICE_UNITS=toc-game.service toc-web.service toc-state-sync.service toc-state-sync-check.service toc-game-recovery.service\n'
+        printf 'TOC_HOST_TIMER_UNITS=toc-state-sync.timer toc-state-sync-check.timer toc-game-recovery.timer\n'
+        printf 'TOC_HOST_JOURNAL_UNITS=toc-game.service toc-web.service toc-state-sync.service\n'
+      } > /etc/toc/web.env )
+fi
+
+chown -R toc:toc "$TOC_PREFIX" /var/log/toc /var/backups/toc
+
+systemctl daemon-reload || true
+# Enabled, not just started: the game has to come back on its own after a
+# crash (Restart=always) and after a reboot (enabled). The recovery timer
+# is the backstop if it ever crash-loops past systemd's start limit.
+systemctl enable --now toc-game.service toc-web.service 2>/dev/null || true
+systemctl enable --now toc-state-sync.timer toc-state-sync-check.timer toc-game-recovery.timer 2>/dev/null || true
 
 cat <<'NOTE'
 
-   The game units themselves (toc-game.service, toc-web.service) are
-   host-specific and are not in the repository. Copy them from the old
-   host if you have it, or write two units that run
-   `/srv/toc/current/merc 9000` from /srv/toc/current/area as user toc,
-   and uvicorn for the dashboard.
-
-   Two things are deliberately NOT in the repository and have to be
-   put back by hand:
-     - the web admin token   -> /etc/toc/web.env
-     - the state-sync deploy key -> /srv/toc/.ssh/id_ed25519_state_sync
-   Both can simply be generated afresh: a new token is any random hex
-   string, and a new deploy key needs adding to the repository with
-   write access. Nothing in the game depends on the old values.
+   The game is installed and set to restart on crash and on boot. Two
+   things still need a human, because both are credentials:
+     - open the game port (9000) in the host firewall. On an OCI Ubuntu
+       box that is an iptables ACCEPT inserted before the REJECT rule and
+       saved with netfilter-persistent -- the VCN security list alone is
+       not enough. Most other hosts (Linode and the like) need nothing.
+     - put the state-sync deploy key at
+       /srv/toc/.ssh/id_ed25519_state_sync (owned by toc, mode 600), its
+       public half added to the repo as a deploy key with write access.
+       Until it is there the game runs but backups do not resume.
 NOTE
 
-systemctl daemon-reload || true
-say "done -- start toc-game and toc-web when the units are in place"
+say "done -- game is up and self-restarting; see the two manual steps above"
