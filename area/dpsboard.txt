@@ -2,7 +2,7 @@
 # The training yard's benchmark board: each character's best
 # standard fight, best first.
 # name total seconds level class when guild
-Astarte 11977 76 51 2 1790840150 3
+Astarte 37591 75 51 2 1790843664 3
+Milenko 13444 78 52 5 1790844674 5
 Misery 10655 76 54 2 1790839333 2
-Milenko 6135 77 52 5 1790841105 5
-Tyrant 5886 75 34 2 1790838258 2
+Tyrant 10223 78 34 2 1790844097 2
