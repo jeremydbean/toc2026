@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790858504
+LogO 1790859770
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6388792
+Plyd 6389034
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 2419
-HMV  30248 30740 30140 30140 30175 30175
+HMV  30040 30040 30000 30000 30025 30025
 NewGold 155
 NewPlat 2503017
 NewCopp 149
@@ -140,13 +140,13 @@ Color 16 6
 Pos  8
 Prac 265
 Trai 75
-Save  -89
+Save  -8
 Alig  -1000
-Hit   80
-Dam   97
-ACs -337 -338 -347 -276
+Hit   39
+Dam   66
+ACs -120 -120 -120 -120
 Attr 25 21 18 18 18
-AMod 23 15 15 22 21
+AMod 15 15 15 15 15
 Pass Kilrpis9ggekI~
 Bin  Killuminati appears before you.~
 Bout Killuminati raises into the sky, and is gone.~
@@ -397,50 +397,52 @@ Sk 100 'petrify'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'warrior basics'
+Gr 'monk basics'
 Gr 'mage default'
 Gr 'warrior default'
+Gr 'monk default'
 Gr 'warrior guild'
-AffD 'power gloves'   0  14  35  19          0          0
-AffD 'detect evil'   0  14   0   0          4          0
-AffD 'detect good'   0  14   0   0          0          2
-AffD 'detect magic'   0  14   0   0         16          0
-AffD 'detect hidden'   0  14   0   0         32          0
-AffD 'detect invis'   0  14   0   0          8          0
-AffD 'major globe'   0  14 -150  17          0          0
-AffD 'frenzy'   0  14 110  17          0          0
-AffD 'frenzy'   0  14  11  19          0          0
-AffD 'frenzy'   0  14  11  18          0          0
-AffD 'stone skin'   0  14 -40  17          0          0
-AffD 'shield'   0  14 -20  17          0          0
-AffD 'bless'   0  14  -8  24          0          0
-AffD 'bless'   0  14   8  18          0          0
-AffD 'armor'   0  14 -20  17          0          0
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'titanic'   0  -1  25  14          0          0
-AffD 'titanic'   0  -1   0  12          0          0
 AffD 'titanic'   0  -1  40  13          0          0
+AffD 'titanic'   0  -1   0  12          0          0
+AffD 'titanic'   0  -1  25  14          0          0
+AffD 'titanic'   0  -1  50  16          0          0
+AffD 'empower'   0  -1   0   0          0          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1 -100  17          0          0
+AffD 'armor'   0  10 -20  17          0          0
+AffD 'bless'   0  10   8  18          0          0
+AffD 'bless'   0  10  -8  24          0          0
+AffD 'shield'   0  10 -20  17          0          0
+AffD 'stone skin'   0  10 -40  17          0          0
+AffD 'frenzy'   0  10  11  18          0          0
+AffD 'frenzy'   0  10  11  19          0          0
+AffD 'frenzy'   0  10 110  17          0          0
+AffD 'major globe'   0  10 -150  17          0          0
+AffD 'detect invis'   0  10   0   0          8          0
+AffD 'detect hidden'   0  10   0   0         32          0
+AffD 'detect magic'   0  10   0   0         16          0
+AffD 'detect good'   0  10   0   0          0          2
+AffD 'detect evil'   0  10   0   0          4          0
+AffD 'power gloves'   0  10  35  19          0          0
 End
 
 #O
 Vnum 9944
 Nest 0
-Wear 0
+Wear -1
 Lev  20
 Cost 0
 Cond 100
@@ -825,8 +827,8 @@ Lev  52
 Cost 10000000
 Cond 100
 Repd 0
-Affect -1 52 -1 -33 14 0 0
 Affect -1 52 -1 -9 13 0 0
+Affect -1 52 -1 -33 14 0 0
 End
 
 #O
@@ -1136,9 +1138,9 @@ Lev  40
 Cost 4500000
 Cond 100
 Repd 0
-Affect -1 40 -1 -2 24 0 0
-Affect -1 40 -1 -4 3 0 0
 Affect -1 40 -1 1 21 0 0
+Affect -1 40 -1 -4 3 0 0
+Affect -1 40 -1 -2 24 0 0
 End
 
 #O
@@ -1195,8 +1197,8 @@ Lev  50
 Cost 17400000
 Cond 100
 Repd 0
-Affect -1 50 -1 9 17 0 0
 Affect -1 50 -1 1 14 0 0
+Affect -1 50 -1 9 17 0 0
 End
 
 #O
@@ -1354,10 +1356,10 @@ Lev  53
 Cost 15000000
 Cond 100
 Repd 0
-Affect -1 53 -1 3 24 0 0
-Affect -1 53 -1 -4 1 0 0
-Affect -1 53 -1 4 23 0 0
 Affect -1 53 -1 1 20 0 0
+Affect -1 53 -1 4 23 0 0
+Affect -1 53 -1 -4 1 0 0
+Affect -1 53 -1 3 24 0 0
 End
 
 #O
@@ -1493,7 +1495,7 @@ End
 #O
 Vnum 1016
 Nest 0
-Wear 12
+Wear -1
 Lev  33
 Cost 3000000
 Cond 100
@@ -1503,7 +1505,7 @@ End
 #O
 Vnum 29209
 Nest 0
-Wear 10
+Wear -1
 Lev  51
 Cost 20000000
 Cond 100
@@ -1513,7 +1515,7 @@ End
 #O
 Vnum 30577
 Nest 0
-Wear 5
+Wear -1
 Lev  54
 Cost 180000000
 Cond 100
@@ -1523,7 +1525,7 @@ End
 #O
 Vnum 4618
 Nest 0
-Wear 8
+Wear -1
 Lev  39
 Cost 200000000
 Cond 100
@@ -1533,7 +1535,7 @@ End
 #O
 Vnum 30579
 Nest 0
-Wear 2
+Wear -1
 Lev  58
 Cost 240000000
 Cond 100
@@ -1543,7 +1545,7 @@ End
 #O
 Vnum 30579
 Nest 0
-Wear 1
+Wear -1
 Lev  58
 Cost 240000000
 Cond 100
@@ -1563,7 +1565,7 @@ End
 #O
 Vnum 760
 Nest 0
-Wear 6
+Wear -1
 Lev  55
 Cost 0
 Cond 50
@@ -1573,7 +1575,7 @@ End
 #O
 Vnum 7665
 Nest 0
-Wear 17
+Wear -1
 Lev  54
 Cost 15000000
 Cond 100
@@ -1583,7 +1585,7 @@ End
 #O
 Vnum 3610
 Nest 0
-Wear 7
+Wear -1
 Lev  24
 Cost 15000000
 Cond 100
@@ -1593,7 +1595,7 @@ End
 #O
 Vnum 7666
 Nest 0
-Wear 4
+Wear -1
 Lev  54
 Cost 10000000
 Cond 100
@@ -1603,7 +1605,7 @@ End
 #O
 Vnum 7666
 Nest 0
-Wear 3
+Wear -1
 Lev  54
 Cost 10000000
 Cond 100
@@ -1633,7 +1635,7 @@ End
 #O
 Vnum 29241
 Nest 0
-Wear 13
+Wear -1
 Lev  54
 Cost 70000000
 Cond 100
@@ -1643,7 +1645,7 @@ End
 #O
 Vnum 13295
 Nest 0
-Wear 16
+Wear -1
 Lev  50
 Cost 500000
 Cond 100
@@ -1653,7 +1655,7 @@ End
 #O
 Vnum 29512
 Nest 0
-Wear 15
+Wear -1
 Lev  51
 Cost 2000000
 Cond 100
@@ -1663,7 +1665,201 @@ End
 #O
 Vnum 29512
 Nest 0
-Wear 14
+Wear -1
+Lev  51
+Cost 2000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 5614
+Nest 0
+Wear -1
+Lev  52
+Cost 60000000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 30579
+Nest 0
+Wear -1
+Lev  58
+Cost 240000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 24581
+Nest 0
+Wear -1
+Lev  51
+Cost 15000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 7666
+Nest 0
+Wear -1
+Lev  54
+Cost 10000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 2321
+Nest 0
+Wear -1
+Lev  29
+Cost 30000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30577
+Nest 0
+Wear -1
+Lev  54
+Cost 180000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 760
+Nest 0
+Wear -1
+Lev  55
+Cost 0
+Cond 50
+Repd 0
+End
+
+#O
+Vnum 3610
+Nest 0
+Wear -1
+Lev  24
+Cost 15000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 4618
+Nest 0
+Wear -1
+Lev  39
+Cost 200000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 908
+Nest 0
+Wear -1
+Lev  35
+Cost 5000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29209
+Nest 0
+Wear -1
+Lev  51
+Cost 20000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 24223
+Nest 0
+Wear -1
+Lev  26
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 1016
+Nest 0
+Wear -1
+Lev  33
+Cost 3000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29241
+Nest 0
+Wear -1
+Lev  54
+Cost 70000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29512
+Nest 0
+Wear -1
+Lev  51
+Cost 2000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 9212
+Nest 0
+Wear -1
+Lev  20
+Cost 40000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 13295
+Nest 0
+Wear -1
+Lev  50
+Cost 500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 7665
+Nest 0
+Wear -1
+Lev  54
+Cost 15000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29512
+Nest 0
+Name broken watch~
+ShD  a broken watch~
+Desc a broken watch that reads 00:00.~
+Wear -1
 Lev  51
 Cost 2000000
 Cond 100
