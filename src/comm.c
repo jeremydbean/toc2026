@@ -1432,9 +1432,15 @@ void close_socket( DESCRIPTOR_DATA *dclose )
 	}
 	else
 	{
+	    /*
+	     * Not CON_PLAYING: this character never entered the game.
+	     * It was loaded from disk at the name prompt and nothing
+	     * has happened to it since, so there is nothing to write
+	     * -- and writing anyway meant anybody who knew a name
+	     * could rewrite that character's file by fumbling the
+	     * password at the prompt.  Let it go instead.
+	     */
 	    CHAR_DATA *save_ch = dclose->original ? dclose->original : dclose->character;
-	    if ( save_ch != NULL && !IS_NPC(save_ch) && save_ch->level >= 1 )
-		save_char_obj( save_ch );
 	    free_char( save_ch );
 	}
     }

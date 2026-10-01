@@ -9,6 +9,7 @@ was invented rather than measured.
 """
 from __future__ import annotations
 
+import re
 import unittest
 from pathlib import Path
 
@@ -17,6 +18,12 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def read(*parts: str) -> str:
     return ROOT.joinpath(*parts).read_text(encoding="latin-1")
+
+
+def without_comments(text: str) -> str:
+    """Strip C comments so an assertion cannot be met by prose."""
+    text = re.sub(r"/\*.*?\*/", " ", text, flags=re.S)
+    return re.sub(r"//[^\n]*", " ", text)
 
 
 class TrainingDummyTests(unittest.TestCase):
@@ -63,13 +70,14 @@ class TrainingDummyTests(unittest.TestCase):
         so a practice blow reads exactly like a real one -- which is
         the point, since the reading has to be of the real thing.
         """
-        self.assertIn("dummy_absorb( ch, victim, dam )", self.fight)
         # The subtraction sits on its own line under the if, so the
         # guard is the statement just above it, not the same line.
         before = self.fight.split("victim->hit -= dam;")[0]
-        tail = "".join(before.splitlines()[-3:])
-        self.assertIn("dummy_absorb", tail,
+        tail = "".join(before.splitlines()[-4:])
+        self.assertIn("dummy_absorb( ch, victim, dam, dt )", tail,
                       "the guard is no longer on the subtraction")
+        self.assertIn("is_invulnerable( victim )", tail,
+                      "invulnerability lost its place on the same line")
 
     def test_the_dummy_absorbs_and_the_player_is_only_floored(self) -> None:
         body = self.dummy.split("bool dummy_absorb(", 1)[1].split("\n}", 1)[0]
@@ -96,12 +104,18 @@ class TrainingDummyTests(unittest.TestCase):
 
     def test_the_report_gives_both_directions_and_heals_both(self) -> None:
         body = self.dummy.split("static void dummy_report(", 1)[1]
-        self.assertIn("You dealt", body)
-        self.assertIn("It dealt", body)
+        body = body.split("\nvoid do_dummy(", 1)[0]
+        self.assertIn("WHAT YOU DID", body)
+        self.assertIn("WHAT IT DID TO YOU", body)
         self.assertIn("per second", body)
-        self.assertIn("dummy->hit = dummy->max_hit", body)
-        self.assertIn("ch->hit = ch->max_hit", body)
-        self.assertIn("dummy_session_clear", body)
+        # The healing moved into the shared stand-down; the report
+        # still has to reach it, and it still has to clear the run.
+        self.assertIn("dummy_stand_down( ch, dummy )", body)
+        heal = self.dummy.split("static void dummy_stand_down(", 1)[1]
+        heal = heal.split("\n}", 1)[0]
+        self.assertIn("dummy->hit = dummy->max_hit", heal)
+        self.assertIn("ch->hit = ch->max_hit", heal)
+        self.assertIn("dummy_session_clear", heal)
 
     def test_the_dummy_forgets_when_the_run_ends(self) -> None:
         """Reported in play: it attacked again the instant the report
@@ -112,10 +126,16 @@ class TrainingDummyTests(unittest.TestCase):
         its own. Right for every other mobile in the world; wrong for
         this one.
         """
-        body = self.dummy.split("static void dummy_report(", 1)[1]
+        # It lives in dummy_stand_down now, which is what REPORT,
+        # RESET and LEAVE all go through -- so one fix covers three
+        # ways of ending a run instead of one.
+        body = self.dummy.split("static void dummy_stand_down(", 1)[1]
+        body = body.split("\n}", 1)[0]
         self.assertIn("remove_all_hates( dummy )", body)
         self.assertIn("do_stop_hunting", body)
         self.assertIn("dummy->position = POS_STANDING", body)
+        report = self.dummy.split("static void dummy_report(", 1)[1]
+        self.assertIn("dummy_stand_down( ch, dummy )", report)
 
     def test_it_defaults_to_your_own_level(self) -> None:
         """Almost everybody is asking how they do against something
@@ -130,12 +150,136 @@ class TrainingDummyTests(unittest.TestCase):
             self.assertIn('"%s"' % school, self.dummy, school)
         self.assertIn("dummy->dam_type", self.dummy)
 
+    # ------------------------------------------------- getting out
+    def test_leave_is_a_command_and_only_works_in_the_yard(self) -> None:
+        """You get in by entering the practice ring, so the way out
+        should be the same shape rather than a compass direction."""
+        interp = read("src", "interp.c")
+        self.assertRegex(interp, r'\{ "leave",\s+do_leave,')
+        body = self.dummy.split("void do_leave(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("ROOM_VNUM_TRAINING_YARD", body)
+        self.assertIn("ROOM_VNUM_OAK_SQUARE", body)
+
+    def test_leaving_mid_run_still_gives_you_the_numbers(self) -> None:
+        """Walking out would otherwise throw away the only reason to
+        have been in there."""
+        body = self.dummy.split("void do_leave(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("dummy_report(", body)
+
+    def test_the_north_exit_still_works(self) -> None:
+        """LEAVE is the signposted way out, not the only one: a
+        player who never reads the help must not be stuck."""
+        self.assertRegex(self.area, r"\nD0\r?\n")
+        self.assertRegex(self.area, r"0 -1 2409")
+
+    # --------------------------------------------------------- reset
+    def test_reset_clears_the_numbers_and_works_mid_run(self) -> None:
+        """Reported in play.  The stance going back to default while
+        the numbers stay up is half a reset, and the half it leaves
+        is the half that makes the next reading wrong.
+
+        It is also the one setting change that belongs inside a run,
+        because throwing the run away is exactly what it means.
+        """
+        body = without_comments(self.dummy)
+        self.assertIn("is_reset = ( strlen( arg1 ) >= 3", body)
+        self.assertIn("!is_reset && ch->pcdata->dummy_started != 0", body,
+                      "reset is still caught by the mid-run guard")
+        reset = body.split("if ( is_reset )", 1)[1][:600]
+        self.assertIn("dummy_stand_down( ch, dummy )", reset)
+
+    def test_report_and_reset_stand_down_the_same_way(self) -> None:
+        """Two copies of forget-the-grudge-and-heal is one copy that
+        will be fixed and one that will not."""
+        self.assertEqual(2, self.dummy.count("dummy_stand_down( ch, dummy )"))
+        helper = self.dummy.split("static void dummy_stand_down(", 1)[1]
+        helper = helper.split("\n}", 1)[0]
+        for part in ("remove_all_hates", "do_stop_hunting",
+                     "dummy->hit = dummy->max_hit", "dummy_session_clear"):
+            self.assertIn(part, helper, part)
+
+    # ------------------------------------------------- magic and haste
+    def test_it_can_cast_at_you(self) -> None:
+        """A damage school delivered by a weapon tests a resistance.
+        The same school from a spell tests a saving throw as well,
+        which is a different question about the same armour."""
+        self.assertIn("dummy_spell_table", self.dummy)
+        for kind in ("force", "fire", "cold", "lightning", "acid", "harm"):
+            self.assertIn('"%s"' % kind, self.dummy, kind)
+        spec = self.dummy.split("bool spec_training_dummy(", 1)[1]
+        spec = spec.split("\n}", 1)[0]
+        self.assertIn("skill_table[sn].spell_fun", spec)
+        self.assertIn("mob->position != POS_FIGHTING", spec)
+
+    def test_the_spell_is_fixed_not_random(self) -> None:
+        """A reading you cannot reproduce is not a measurement, so it
+        casts what it was told to and nothing else."""
+        spec = self.dummy.split("bool spec_training_dummy(", 1)[1]
+        spec = spec.split("\n}", 1)[0]
+        self.assertNotIn("number_bits", spec)
+        self.assertNotIn("number_range", spec)
+        self.assertIn("dummy_spell_table[dummy_spell].spell", spec)
+
+    def test_the_spec_survives_an_area_reset(self) -> None:
+        """Assigned in code rather than in the area file, so a reset
+        rebuilding the mobile cannot quietly take the casting away."""
+        cfg = self.dummy.split("static void dummy_configure(", 1)[1]
+        cfg = cfg.split("\n}", 1)[0]
+        self.assertIn('spec_lookup( "spec_training_dummy" )', cfg)
+        self.assertIn("AFF_HASTE", cfg)
+        special = read("src", "special.c")
+        self.assertIn('{ "spec_training_dummy",', special)
+
+    # --------------------------------------------------- the breakdown
+    def test_damage_is_split_by_where_it_came_from(self) -> None:
+        """"You did 4,200" does not say whether it was the sword or
+        the spellbook, which is the thing you came here to find."""
+        self.assertIn("dummy_dealt_from", self.merc)
+        self.assertIn("dummy_taken_from", self.merc)
+        src = self.dummy.split("static int dummy_source(", 1)[1]
+        src = src.split("\n}", 1)[0]
+        self.assertIn("TYPE_HIT", src)
+        self.assertIn("spell_fun != spell_null", src)
+
+    def test_blows_turned_aside_are_counted(self) -> None:
+        """A parry returns out of damage() above the subtraction the
+        yard hooks, so without a hook of its own the report cannot
+        tell a parry from a swing that never happened -- which is
+        most of what somebody comparing two shields wants to know.
+        """
+        for how in ("DUMMY_AVOID_DUCK", "DUMMY_AVOID_PARRY",
+                    "DUMMY_AVOID_DODGE", "DUMMY_AVOID_SHIELD"):
+            self.assertIn(how, self.merc, how)
+            self.assertIn("dummy_defended( ch, victim, %s )" % how,
+                          self.fight, how)
+        body = self.dummy.split("void dummy_defended(", 1)[1]
+        body = body.split("\n}", 1)[0]
+        self.assertIn("dummy_avoided[how]++", body)
+        self.assertIn("dummy_evaded[how]++", body)
+
+    def test_the_defence_hooks_sit_before_the_returns(self) -> None:
+        """Counted on the way out, or not counted at all."""
+        block = self.fight.split("Check for parry, and dodge.", 1)[1][:1400]
+        for check in ("check_ducking", "check_parry", "check_dodge",
+                      "check_shield_block"):
+            after = block.split(check, 1)[1][:200]
+            self.assertLess(after.index("dummy_defended"),
+                            after.index("return false"), check)
+
+    def test_percentages_are_of_attempts(self) -> None:
+        """A shield that stops a third of everything should read as a
+        third; against landed blows only it would read as nothing."""
+        report = self.dummy.split("static void dummy_report(", 1)[1]
+        self.assertIn("pc->dummy_avoided[i] * 100 / attempts", report)
+
     def test_the_session_is_not_persisted(self) -> None:
         """A training run is something you are doing, not something
         you are: none of it belongs in a player file."""
         save = read("src", "save.c")
         for field in ("dummy_dealt", "dummy_taken", "dummy_started",
-                      "dummy_level"):
+                      "dummy_level", "dummy_dealt_from", "dummy_taken_from",
+                      "dummy_avoided", "dummy_evaded", "dummy_attempts",
+                      "dummy_worst"):
             self.assertIn(field, self.merc, field)
             self.assertNotIn(field, save, field + " reached save.c")
 

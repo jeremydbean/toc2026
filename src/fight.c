@@ -1433,14 +1433,30 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
      */
     if ( dt >= TYPE_HIT && ch != victim)
     {
+        /* The yard counts these: a blow turned aside never
+           reaches the subtraction below, so without a hook here the
+           report cannot tell a parry from a swing that was never
+           taken. */
         if ( check_ducking( ch, victim ) )
+        {
+            dummy_defended( ch, victim, DUMMY_AVOID_DUCK );
             return false;
+        }
 	if ( check_parry( ch, victim ) )
+	{
+	    dummy_defended( ch, victim, DUMMY_AVOID_PARRY );
 	    return false;
+	}
 	if ( check_dodge( ch, victim ) )
+	{
+	    dummy_defended( ch, victim, DUMMY_AVOID_DODGE );
 	    return false;
+	}
 	if ( check_shield_block( ch, victim ) )
+	{
+	    dummy_defended( ch, victim, DUMMY_AVOID_SHIELD );
 	    return false;
+	}
     }
 
     if( shield > 0)
@@ -1530,7 +1546,8 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
      * included, still runs, so a practice blow reads exactly like a
      * real one.
      */
-    if ( !dummy_absorb( ch, victim, dam ) && !is_invulnerable( victim ) )
+    if ( !dummy_absorb( ch, victim, dam, dt )
+    &&   !is_invulnerable( victim ) )
 	victim->hit -= dam;
     if ( IS_NPC(victim) && victim->pIndexData != NULL )
     {
@@ -3386,22 +3403,45 @@ void dam_message( CHAR_DATA *ch, CHAR_DATA *victim,int dam,int dt,bool immune )
 
 				    if ( dt == TYPE_HIT )
 				    {
+					/*
+					 * A weapon whose attack type is 0 lands
+					 * here rather than in the named-attack
+					 * branch below, and so did bare hands.
+					 * That branch grew damage numbers and
+					 * this one did not, so DAMAGENUMBERS
+					 * worked for every weapon in the world
+					 * except the fifteen odd ones.  Same
+					 * rule as below: you see your own
+					 * numbers, the victim sees theirs, and
+					 * bystanders never see any.
+					 */
 					if (ch  == victim)
 					{
-				      snprintf(buf1, sizeof(buf1), "$n \x02\x0A%s\x02\x01 $melf%c",vp,punct);
-				      snprintf(buf2, sizeof(buf2), "You \x02\x0A%s\x02\x01 yourself%c",vs,punct);
-				/*          snprintf(buf1, sizeof(buf1), "$n %s $melf%c",vp,punct);
-					    snprintf(buf2, sizeof(buf2), "You %s yourself%c",vs,punct);
-				*/      }
+					  if (!IS_NPC(ch) && IS_SET(ch->act, PLR_DAMAGE_NUMBERS))
+					  {
+					    snprintf(buf1, sizeof(buf1), "$n \x02\x0A%s\x02\x01 $melf%c",vp,punct);
+					    snprintf(buf2, sizeof(buf2), "You \x02\x0A%s\x02\x01 yourself%c [\x02\x0A-%d\x02\x01]",vs,punct,dam);
+					  }
+					  else
+					  {
+					    snprintf(buf1, sizeof(buf1), "$n \x02\x0A%s\x02\x01 $melf%c",vp,punct);
+					    snprintf(buf2, sizeof(buf2), "You \x02\x0A%s\x02\x01 yourself%c",vs,punct);
+					  }
+					}
 					else
 					{
-				      snprintf(buf1, sizeof(buf1), "$n \x02\x0A%s\x02\x01 $N%c",  vp, punct );
-				      snprintf(buf2, sizeof(buf2), "You \x02\x0A%s\x02\x01 $N%c", vs, punct );
-				      snprintf(buf3, sizeof(buf3), "$n \x02\x0A%s\x02\x01 you%c", vp, punct );
-				/*          snprintf(buf1, sizeof(buf1), "$n %s $N%c",  vp, punct );
-					    snprintf(buf2, sizeof(buf2), "You %s $N%c", vs, punct );
-					    snprintf(buf3, sizeof(buf3), "$n %s you%c", vp, punct );
-				*/      }
+					  snprintf(buf1, sizeof(buf1), "$n \x02\x0A%s\x02\x01 $N%c",  vp, punct );
+
+					  if (!IS_NPC(ch) && IS_SET(ch->act, PLR_DAMAGE_NUMBERS))
+					    snprintf(buf2, sizeof(buf2), "You \x02\x0A%s\x02\x01 $N%c [\x02\x0A-%d\x02\x01]", vs, punct, dam );
+					  else
+					    snprintf(buf2, sizeof(buf2), "You \x02\x0A%s\x02\x01 $N%c", vs, punct );
+
+					  if (!IS_NPC(victim) && IS_SET(victim->act, PLR_DAMAGE_NUMBERS))
+					    snprintf(buf3, sizeof(buf3), "$n \x02\x0A%s\x02\x01 you%c [\x02\x0A-%d\x02\x01]", vp, punct, dam );
+					  else
+					    snprintf(buf3, sizeof(buf3), "$n \x02\x0A%s\x02\x01 you%c", vp, punct );
+					}
 				    }
 				    else
 				    {

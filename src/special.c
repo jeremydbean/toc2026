@@ -39,6 +39,7 @@ DECLARE_SPEC_FUN(       spec_breath_frost       );
 DECLARE_SPEC_FUN(       spec_breath_gas         );
 DECLARE_SPEC_FUN(       spec_breath_lightning   );
 DECLARE_SPEC_FUN(       spec_dominion_ward      );
+DECLARE_SPEC_FUN(       spec_training_dummy     );
 DECLARE_SPEC_FUN(       spec_cast_adept         );
 DECLARE_SPEC_FUN(       spec_cast_cleric        );
 DECLARE_SPEC_FUN(       spec_cast_judge         );
@@ -228,6 +229,7 @@ const   struct  spec_type       spec_table      [ ] =
     { "spec_breath_dispel",     spec_breath_dispel      },
     { "spec_breath_lightning",  spec_breath_lightning   },
     { "spec_dominion_ward",     spec_dominion_ward      },
+    { "spec_training_dummy",    spec_training_dummy     },
     { "spec_cast_adept",        spec_cast_adept         },
     { "spec_cast_cleric",       spec_cast_cleric        },
     { "spec_cast_judge",        spec_cast_judge         },

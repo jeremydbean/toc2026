@@ -786,6 +786,18 @@ struct  kill_data
 
 /* Well known mob virtual numbers. */
 #define MOB_VNUM_TRAINING_DUMMY     2400
+
+/* Which column of a training report a blow belongs in, and the
+   four ways a blow can be turned aside before it lands. */
+#define DUMMY_FROM_WEAPON   0
+#define DUMMY_FROM_SPELL    1
+#define DUMMY_FROM_SKILL    2
+#define DUMMY_AVOID_DUCK    0
+#define DUMMY_AVOID_PARRY   1
+#define DUMMY_AVOID_DODGE   2
+#define DUMMY_AVOID_SHIELD  3
+#define ROOM_VNUM_TRAINING_YARD     2419
+#define ROOM_VNUM_OAK_SQUARE        2409
 #define MOB_VNUM_FIDO              3090
 #define MOB_VNUM_CITYGUARD         4456
 #define MOB_VNUM_VAMPIRE           3404
@@ -1899,6 +1911,12 @@ struct  pc_data
     /* Training-yard run; deliberately not persisted. */
     long                dummy_dealt;
     long                dummy_taken;
+    long                dummy_dealt_from[3];
+    long                dummy_taken_from[3];
+    int                 dummy_avoided[4];
+    int                 dummy_evaded[4];
+    int                 dummy_attempts;
+    int                 dummy_worst;
     int                 dummy_hits;
     int                 dummy_misses;
     int                 dummy_swings;
@@ -2619,7 +2637,10 @@ void    write_to_buffer ( DESCRIPTOR_DATA *d, const char *txt, int length );
 void    do_check_psi    ( CHAR_DATA *ch, char *argument );
 void    grant_psionics  ( CHAR_DATA *ch, int chance, bool force_grant );
 bool    is_training_dummy  ( CHAR_DATA *ch );
-bool    dummy_absorb       ( CHAR_DATA *ch, CHAR_DATA *victim, int dam );
+bool    dummy_absorb       ( CHAR_DATA *ch, CHAR_DATA *victim, int dam,
+                             int dt );
+void    dummy_defended     ( CHAR_DATA *ch, CHAR_DATA *victim,
+                             int how );
 long    dummy_typical_hp   ( int level );
 void    gmcp_send_affects  ( DESCRIPTOR_DATA *d );
 void    gmcp_send_quest    ( DESCRIPTOR_DATA *d );

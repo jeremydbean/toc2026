@@ -19,6 +19,7 @@
 
 #include "merc.h"
 #include "interp.h"
+#include "magic.h"
 
 /*
  * What the dummy can pretend to be. They differ in defence rather
@@ -83,6 +84,67 @@ static const DUMMY_ATTACK dummy_attack_table[] =
 static int dummy_shape = DUMMY_SHAPE_DEFAULT;
 static int dummy_attack = DUMMY_ATTACK_DEFAULT;
 
+
+
+/*
+ * What it can cast at you.  Named by what they test rather than by
+ * the spell, because the player is choosing a question, not a
+ * spellbook.  Resolved by name through skill_lookup so a renamed
+ * spell is an entry that politely does nothing rather than a wrong
+ * one.
+ */
+typedef struct dummy_spell
+{
+    const char *name;
+    const char *spell;
+    const char *blurb;
+} DUMMY_SPELL;
+
+static const DUMMY_SPELL dummy_spell_table[] =
+{
+    { "none",      "",               "no spells -- weapon damage only" },
+    { "force",     "magic missile",  "small and frequent, barely resisted" },
+    { "fire",      "fireball",       "fire, and a saving throw for half" },
+    { "cold",      "chill touch",    "cold, and a save against the chill" },
+    { "lightning", "lightning bolt", "lightning, and a save for half" },
+    { "acid",      "acid blast",     "acid, and a save for half" },
+    { "light",     "colour spray",   "light, and a save for half" },
+    { "harm",      "harm",           "heavy, and very little resists it" },
+    { "negative",  "cause critical", "negative energy, no saving throw" },
+    { NULL, NULL, NULL }
+};
+
+#define DUMMY_SPELL_NONE 0
+
+static int  dummy_spell  = DUMMY_SPELL_NONE;
+static bool dummy_hasted = false;
+
+/* Whether anybody has chosen a level.  Until somebody has, the dummy
+   follows whoever is looking at it, which is the comparison almost
+   everybody wants; once somebody has, it stays put, because a
+   setting the menu silently undoes is worse than no setting. */
+static bool dummy_level_chosen = false;
+
+
+/*
+ * Which column of the report a blow belongs in.  ROM already carries
+ * the split: dt is the weapon type at or above TYPE_HIT, and the
+ * skill number that caused it otherwise, where a spell is a skill
+ * with a real spell function behind it.
+ */
+static int dummy_source( int dt )
+{
+    if ( dt >= TYPE_HIT || dt < 0 || dt >= MAX_SKILL )
+        return DUMMY_FROM_WEAPON;
+
+    return skill_table[dt].spell_fun != spell_null
+         ? DUMMY_FROM_SPELL : DUMMY_FROM_SKILL;
+}
+
+
+static const char *dummy_source_name[3] = { "weapon", "spells", "skills" };
+static const char *dummy_avoid_name[4]  = { "ducked", "parried", "dodged",
+                                            "blocked" };
 
 /*
  * What a mobile of this level is typically worth in hit points,
@@ -157,8 +219,22 @@ static void dummy_session_clear( CHAR_DATA *ch )
     if ( IS_NPC(ch) || ch->pcdata == NULL )
         return;
 
+    int i;
+
     ch->pcdata->dummy_dealt = 0;
     ch->pcdata->dummy_taken = 0;
+    ch->pcdata->dummy_attempts = 0;
+    ch->pcdata->dummy_worst = 0;
+    for ( i = 0; i < 3; i++ )
+    {
+        ch->pcdata->dummy_dealt_from[i] = 0;
+        ch->pcdata->dummy_taken_from[i] = 0;
+    }
+    for ( i = 0; i < 4; i++ )
+    {
+        ch->pcdata->dummy_avoided[i] = 0;
+        ch->pcdata->dummy_evaded[i] = 0;
+    }
     ch->pcdata->dummy_hits = 0;
     ch->pcdata->dummy_misses = 0;
     ch->pcdata->dummy_struck = 0;
@@ -173,50 +249,105 @@ static void dummy_session_clear( CHAR_DATA *ch )
  * Both halves of every blow in the yard come through here, from the
  * one place in damage() that would otherwise subtract hit points.
  */
-void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
+/*
+ * The one place a player's half of a training fight is started, so
+ * that the clock and the level are agreed between every counter.
+ */
+static PC_DATA *dummy_session( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     CHAR_DATA *player;
+    CHAR_DATA *target;
 
     if ( ch == NULL || victim == NULL || ch == victim )
-        return;
+        return NULL;
+
+    if ( !is_training_dummy( ch ) && !is_training_dummy( victim ) )
+        return NULL;
 
     player = is_training_dummy( victim ) ? ch : victim;
+    target = is_training_dummy( victim ) ? victim : ch;
+
     if ( IS_NPC(player) || player->pcdata == NULL )
-        return;
+        return NULL;
 
     /* The clock starts at the first blow either way, so a player who
        spends a minute choosing a weapon is not charged for the pause. */
     if ( player->pcdata->dummy_started == 0 )
     {
-        CHAR_DATA *target = is_training_dummy( victim ) ? victim : ch;
-
         player->pcdata->dummy_started = current_time;
         player->pcdata->dummy_level = target->level;
     }
 
+    return player->pcdata;
+}
+
+
+void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
+{
+    PC_DATA *pc = dummy_session( ch, victim );
+    int from;
+
+    if ( pc == NULL )
+        return;
+
+    from = dummy_source( dt );
+
     if ( is_training_dummy( victim ) )
     {
-        player->pcdata->dummy_swings++;
+        pc->dummy_swings++;
         if ( dam > 0 )
         {
-            player->pcdata->dummy_hits++;
-            player->pcdata->dummy_dealt += dam;
-            if ( dam > player->pcdata->dummy_best )
-                player->pcdata->dummy_best = dam;
+            pc->dummy_hits++;
+            pc->dummy_dealt += dam;
+            pc->dummy_dealt_from[from] += dam;
+            if ( dam > pc->dummy_best )
+                pc->dummy_best = dam;
         }
         else
         {
-            player->pcdata->dummy_misses++;
+            pc->dummy_misses++;
         }
         return;
     }
 
+    pc->dummy_attempts++;
     if ( dam > 0 )
     {
-        player->pcdata->dummy_taken += dam;
-        player->pcdata->dummy_struck++;
+        pc->dummy_taken += dam;
+        pc->dummy_taken_from[from] += dam;
+        pc->dummy_struck++;
+        if ( dam > pc->dummy_worst )
+            pc->dummy_worst = dam;
     }
 }
+
+
+/*
+ * A blow turned aside returns out of damage() above the subtraction
+ * the yard hooks, so without this the report could not tell a parry
+ * from a swing that never happened -- which is most of what somebody
+ * comparing two shields wants to know.
+ */
+void dummy_defended( CHAR_DATA *ch, CHAR_DATA *victim, int how )
+{
+    PC_DATA *pc = dummy_session( ch, victim );
+
+    if ( pc == NULL || how < 0 || how >= 4 )
+        return;
+
+    if ( is_training_dummy( victim ) )
+    {
+        /* It turned your blow aside: still one of your swings. */
+        pc->dummy_swings++;
+        pc->dummy_evaded[how]++;
+    }
+    else
+    {
+        pc->dummy_attempts++;
+        pc->dummy_avoided[how]++;
+    }
+}
+
 
 
 /*
@@ -227,17 +358,17 @@ void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
  * lesson: a brutal dummy that puts you on 1 and holds you there has
  * told you something that one which cannot touch you has not.
  */
-bool dummy_absorb( CHAR_DATA *ch, CHAR_DATA *victim, int dam )
+bool dummy_absorb( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
 {
     if ( is_training_dummy( victim ) )
     {
-        dummy_record( ch, victim, dam );
+        dummy_record( ch, victim, dam, dt );
         return true;
     }
 
     if ( is_training_dummy( ch ) && !IS_NPC(victim) )
     {
-        dummy_record( ch, victim, dam );
+        dummy_record( ch, victim, dam, dt );
         victim->hit -= dam;
         if ( victim->hit < 1 )
             victim->hit = 1;
@@ -276,6 +407,47 @@ static void dummy_configure( CHAR_DATA *dummy, int level, int shape,
     dummy->damroll = (sh_int)( level / 5 );
 
     dummy->off_flags = form->off_flags;
+
+    if ( dummy_hasted )
+        SET_BIT( dummy->affected_by, AFF_HASTE );
+    else
+        REMOVE_BIT( dummy->affected_by, AFF_HASTE );
+
+    /* The spec is what casts; it is assigned here rather than in the
+       area file so that an area reset cannot quietly take it away. */
+    dummy->spec_fun = spec_lookup( "spec_training_dummy" );
+}
+
+
+/*
+ * It casts what it was told to, once per mobile pulse while it is
+ * fighting.  Deliberately not a random spellbook: a reading you
+ * cannot reproduce is not a measurement.
+ */
+bool spec_training_dummy( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
+                          char *arg )
+{
+    CHAR_DATA *victim;
+    int sn;
+
+    UNUSED_PARAM( ch );
+    UNUSED_PARAM( arg );
+
+    if ( cmd != NULL || mob->position != POS_FIGHTING )
+        return false;
+
+    if ( dummy_spell == DUMMY_SPELL_NONE )
+        return false;
+
+    if ( ( victim = mob->fighting ) == NULL || IS_NPC(victim) )
+        return false;
+
+    sn = skill_lookup( dummy_spell_table[dummy_spell].spell );
+    if ( sn < 0 || skill_table[sn].spell_fun == spell_null )
+        return false;
+
+    (*skill_table[sn].spell_fun) ( sn, mob->level, mob, victim );
+    return true;
 }
 
 
@@ -305,6 +477,19 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
         dummy_attack_table[dummy_attack].blurb );
     send_to_char( buf, ch );
 
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 Casts   {0F%-8s{00  %s\n\r",
+        dummy_spell_table[dummy_spell].name,
+        dummy_spell_table[dummy_spell].blurb );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 Haste   {0F%-8s{00  %s\n\r",
+        dummy_hasted ? "on" : "off",
+        dummy_hasted ? "an extra attack each round"
+                     : "one attack each round" );
+    send_to_char( buf, ch );
+
     send_to_char(
         "{0C'----------------------------------------------------------------'{00\n\r",
         ch );
@@ -313,7 +498,9 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
         "\n\r  dummy <level>        any level; it starts at your own\n\r"
         "  dummy shape <name>   soft, armored, evasive, brutal\n\r"
         "  dummy hits <type>    what it attacks you with\n\r"
-        "  dummy reset          back to your level and the defaults\n\r"
+        "  dummy magic <kind>   what it casts at you, or none\n\r"
+        "  dummy haste          an extra attack a round, on or off\n\r"
+        "  dummy reset          your level, the defaults, numbers cleared\n\r"
         "  dummy report         stop, heal you both, and read the numbers\n\r"
         "\n\r  Then just KILL DUMMY.  Neither of you can die here.\n\r\n\r",
         ch );
@@ -323,6 +510,13 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
     {
         snprintf( buf, sizeof(buf), "%s%s",
                   i > 0 ? ", " : "", dummy_attack_table[i].name );
+        send_to_char( buf, ch );
+    }
+    send_to_char( "\n\r  Spells:       ", ch );
+    for ( i = 0; dummy_spell_table[i].name != NULL; i++ )
+    {
+        snprintf( buf, sizeof(buf), "%s%s",
+                  i > 0 ? ", " : "", dummy_spell_table[i].name );
         send_to_char( buf, ch );
     }
     send_to_char( "\n\r", ch );
@@ -372,79 +566,16 @@ static void dummy_verdict( CHAR_DATA *ch, long dealt, int seconds, int level )
 }
 
 
-static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
+/*
+ * Everything back as it was, both ways, and the run's numbers wiped.
+ * Shared by REPORT and RESET: the only difference between those two
+ * is whether you get to read the figures before they go.
+ */
+static void dummy_stand_down( CHAR_DATA *ch, CHAR_DATA *dummy )
 {
-    char buf[MAX_STRING_LENGTH];
-    PC_DATA *pc = ch->pcdata;
-    int seconds;
-    int swings;
-    long dealt, taken;
-
-    if ( pc->dummy_started == 0 )
-    {
-        send_to_char( "You have not hit anything yet.\n\r", ch );
-        return;
-    }
-
-    seconds = (int)( current_time - pc->dummy_started );
-    if ( seconds < 1 )
-        seconds = 1;
-
-    dealt = pc->dummy_dealt;
-    taken = pc->dummy_taken;
-    swings = pc->dummy_hits + pc->dummy_misses;
-
-    send_to_char(
-        "\n\r{0C.-[ Training report ]-------------------------------------------.{00\n\r",
-        ch );
-
-    snprintf( buf, sizeof(buf),
-        "{0C|{00 A level %d %s dummy, hitting in %s, over %d second%s.\n\r",
-        pc->dummy_level, dummy_shape_table[dummy_shape].name,
-        dummy_attack_table[dummy_attack].name,
-        seconds, seconds == 1 ? "" : "s" );
-    send_to_char( buf, ch );
-
-    snprintf( buf, sizeof(buf),
-        "{0C|{00 You dealt {0F%-7ld{00 total   {0F%-5ld{00 per second\n\r",
-        dealt, dealt / seconds );
-    send_to_char( buf, ch );
-
-    if ( swings > 0 )
-    {
-        snprintf( buf, sizeof(buf),
-            "{0C|{00   landed %d of %d (%d%%)   best %d   average %ld\n\r",
-            pc->dummy_hits, swings, pc->dummy_hits * 100 / swings,
-            pc->dummy_best,
-            pc->dummy_hits > 0 ? dealt / pc->dummy_hits : 0 );
-        send_to_char( buf, ch );
-    }
-
-    snprintf( buf, sizeof(buf),
-        "{0C|{00 It dealt  {0F%-7ld{00 total   {0F%-5ld{00 per second in %d blow%s\n\r",
-        taken, taken / seconds, pc->dummy_struck,
-        pc->dummy_struck == 1 ? "" : "s" );
-    send_to_char( buf, ch );
-
-    if ( taken > 0 && ch->max_hit > 0 )
-    {
-        long survive = ( (long)ch->max_hit * seconds ) / UMAX( 1, taken );
-
-        snprintf( buf, sizeof(buf),
-            "{0C|{00   it would take you from full in {0F%ld{00 second%s\n\r",
-            survive, survive == 1 ? "" : "s" );
-        send_to_char( buf, ch );
-    }
-
-    send_to_char(
-        "{0C'----------------------------------------------------------------'{00\n\r",
-        ch );
-
-    dummy_verdict( ch, dealt, seconds, pc->dummy_level );
-
-    /* Everything back as it was, both ways. */
     if ( ch->fighting != NULL )
         stop_fighting( ch, true );
+
     if ( dummy != NULL )
     {
         if ( dummy->fighting != NULL )
@@ -471,9 +602,182 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
     ch->move = ch->max_move;
     if ( ch->position == POS_FIGHTING )
         ch->position = POS_STANDING;
-    send_to_char( "You are patched up and rested.\n\r", ch );
 
     dummy_session_clear( ch );
+}
+
+
+static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
+{
+    char buf[MAX_STRING_LENGTH];
+    PC_DATA *pc = ch->pcdata;
+    int seconds;
+    int swings, attempts;
+    int i, shown;
+    long dealt, taken;
+
+    if ( pc->dummy_started == 0 )
+    {
+        send_to_char( "You have not hit anything yet.\n\r", ch );
+        return;
+    }
+
+    seconds = (int)( current_time - pc->dummy_started );
+    if ( seconds < 1 )
+        seconds = 1;
+
+    dealt    = pc->dummy_dealt;
+    taken    = pc->dummy_taken;
+    swings   = pc->dummy_swings;
+    attempts = pc->dummy_attempts;
+
+    send_to_char(
+        "\n\r{0C.-[ Training report ]-------------------------------------------.{00\n\r",
+        ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 A level %d %s dummy, hitting in %s%s%s,\n\r"
+        "{0C|{00 over %d second%s.\n\r",
+        pc->dummy_level, dummy_shape_table[dummy_shape].name,
+        dummy_attack_table[dummy_attack].name,
+        dummy_spell == DUMMY_SPELL_NONE ? "" : ", casting ",
+        dummy_spell == DUMMY_SPELL_NONE
+            ? ( dummy_hasted ? ", hasted" : "" )
+            : dummy_spell_table[dummy_spell].name,
+        seconds, seconds == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+
+    /* ------------------------------------------------ your offence */
+    send_to_char(
+        "{0C|{00\n\r{0C|{00 {0EWHAT YOU DID{00\n\r", ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00   total {0F%-8ld{00 per second {0F%-6ld{00 per swing {0F%ld{00\n\r",
+        dealt, dealt / seconds,
+        swings > 0 ? dealt / swings : 0 );
+    send_to_char( buf, ch );
+
+    if ( swings > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   landed {0F%d{00 of {0F%d{00 (%d%%)   best {0F%d{00   "
+            "average landed {0F%ld{00\n\r",
+            pc->dummy_hits, swings, pc->dummy_hits * 100 / swings,
+            pc->dummy_best,
+            pc->dummy_hits > 0 ? dealt / pc->dummy_hits : 0 );
+        send_to_char( buf, ch );
+
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   missed {0F%d{00   turned aside by it {0F%d{00\n\r",
+            pc->dummy_misses,
+            pc->dummy_evaded[0] + pc->dummy_evaded[1]
+          + pc->dummy_evaded[2] + pc->dummy_evaded[3] );
+        send_to_char( buf, ch );
+    }
+
+    /* Where it came from. Only the columns that did something: a row
+       of zeroes is three lines of nothing to read past. */
+    if ( dealt > 0 )
+    {
+        shown = 0;
+        send_to_char( "{0C|{00   from ", ch );
+        for ( i = 0; i < 3; i++ )
+        {
+            if ( pc->dummy_dealt_from[i] <= 0 )
+                continue;
+            snprintf( buf, sizeof(buf), "%s{0F%s{00 %ld (%ld%%)",
+                      shown++ > 0 ? "   " : "",
+                      dummy_source_name[i], pc->dummy_dealt_from[i],
+                      pc->dummy_dealt_from[i] * 100 / dealt );
+            send_to_char( buf, ch );
+        }
+        send_to_char( "\n\r", ch );
+    }
+
+    /* ------------------------------------------------ your defence */
+    send_to_char(
+        "{0C|{00\n\r{0C|{00 {0EWHAT IT DID TO YOU{00\n\r", ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00   total {0F%-8ld{00 per second {0F%-6ld{00 in {0F%d{00 "
+        "landed blow%s\n\r",
+        taken, taken / seconds, pc->dummy_struck,
+        pc->dummy_struck == 1 ? "" : "s" );
+    send_to_char( buf, ch );
+
+    if ( pc->dummy_struck > 0 )
+    {
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   worst {0F%d{00   average landed {0F%ld{00\n\r",
+            pc->dummy_worst, taken / pc->dummy_struck );
+        send_to_char( buf, ch );
+    }
+
+    if ( attempts > 0 )
+    {
+        int avoided = pc->dummy_avoided[0] + pc->dummy_avoided[1]
+                    + pc->dummy_avoided[2] + pc->dummy_avoided[3];
+
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   it tried {0F%d{00 time%s; you stopped {0F%d{00 "
+            "of them (%d%%)\n\r",
+            attempts, attempts == 1 ? "" : "s", avoided,
+            avoided * 100 / attempts );
+        send_to_char( buf, ch );
+
+        if ( avoided > 0 )
+        {
+            shown = 0;
+            send_to_char( "{0C|{00     ", ch );
+            for ( i = 0; i < 4; i++ )
+            {
+                if ( pc->dummy_avoided[i] <= 0 )
+                    continue;
+                snprintf( buf, sizeof(buf), "%s{0F%s{00 %d (%d%%)",
+                          shown++ > 0 ? "   " : "",
+                          dummy_avoid_name[i], pc->dummy_avoided[i],
+                          pc->dummy_avoided[i] * 100 / attempts );
+                send_to_char( buf, ch );
+            }
+            send_to_char( "\n\r", ch );
+        }
+    }
+
+    if ( taken > 0 )
+    {
+        shown = 0;
+        send_to_char( "{0C|{00   from ", ch );
+        for ( i = 0; i < 3; i++ )
+        {
+            if ( pc->dummy_taken_from[i] <= 0 )
+                continue;
+            snprintf( buf, sizeof(buf), "%s{0F%s{00 %ld (%ld%%)",
+                      shown++ > 0 ? "   " : "",
+                      dummy_source_name[i], pc->dummy_taken_from[i],
+                      pc->dummy_taken_from[i] * 100 / taken );
+            send_to_char( buf, ch );
+        }
+        send_to_char( "\n\r", ch );
+    }
+
+    if ( taken > 0 && ch->max_hit > 0 )
+    {
+        long survive = ( (long)ch->max_hit * seconds ) / UMAX( 1, taken );
+
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   it would take you from full in {0F%ld{00 second%s\n\r",
+            survive, survive == 1 ? "" : "s" );
+        send_to_char( buf, ch );
+    }
+
+    send_to_char(
+        "{0C'----------------------------------------------------------------'{00\n\r",
+        ch );
+
+    dummy_verdict( ch, dealt, seconds, pc->dummy_level );
+
+    dummy_stand_down( ch, dummy );
+    send_to_char( "You are patched up and rested.\n\r", ch );
 }
 
 
@@ -483,6 +787,7 @@ void do_dummy( CHAR_DATA *ch, char *argument )
     char arg2[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *dummy;
+    bool is_reset;
     int i;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL )
@@ -490,6 +795,10 @@ void do_dummy( CHAR_DATA *ch, char *argument )
 
     argument = one_argument( argument, arg1 );
     one_argument( argument, arg2 );
+
+    /* "re" is a prefix of both RESET and REPORT, and report is tested
+       first, so reset needs enough letters to tell them apart. */
+    is_reset = ( strlen( arg1 ) >= 3 && !str_prefix( arg1, "reset" ) );
 
     dummy = dummy_in_room( ch );
 
@@ -512,7 +821,7 @@ void do_dummy( CHAR_DATA *ch, char *argument )
      * Changing it mid-run would make the numbers a blend of two
      * different opponents, which is worse than no numbers at all.
      */
-    if ( arg1[0] != '\0' && ch->pcdata->dummy_started != 0 )
+    if ( arg1[0] != '\0' && !is_reset && ch->pcdata->dummy_started != 0 )
     {
         send_to_char(
             "You are in the middle of a run.  DUMMY REPORT first -- a\n\r"
@@ -524,23 +833,34 @@ void do_dummy( CHAR_DATA *ch, char *argument )
     if ( arg1[0] == '\0' )
     {
         /* Nobody has set it up, or it has reset: it is your size.
-           That is the comparison almost everybody actually wants. */
-        if ( dummy->level != ch->level && ch->pcdata->dummy_started == 0 )
+           That is the comparison almost everybody actually wants --
+           but only until somebody says otherwise, or the menu would
+           undo the level they just chose. */
+        if ( !dummy_level_chosen && dummy->level != ch->level
+        &&   ch->pcdata->dummy_started == 0 )
             dummy_configure( dummy, ch->level, dummy_shape, dummy_attack );
         dummy_menu( ch, dummy );
         return;
     }
 
-    /* "re" is a prefix of both; report is tested first, so RESET
-       needs enough letters to tell them apart. */
-    if ( !str_prefix( arg1, "reset" ) && strlen( arg1 ) >= 3 )
+    if ( is_reset )
     {
+        bool had_run = ( ch->pcdata->dummy_started != 0 );
+
+        /* The stance going back to default and the numbers staying
+           up is half a reset, and the half it leaves is the half
+           that makes the next reading wrong. */
+        dummy_stand_down( ch, dummy );
+        dummy_spell = DUMMY_SPELL_NONE;
+        dummy_hasted = false;
+        dummy_level_chosen = false;
         dummy_configure( dummy, UMAX( 1, ch->level ),
                          DUMMY_SHAPE_DEFAULT, DUMMY_ATTACK_DEFAULT );
         snprintf( buf, sizeof(buf),
-            "Back to a level %d %s dummy, hitting in %s.\n\r",
+            "Back to a level %d %s dummy, hitting in %s.%s\n\r",
             dummy->level, dummy_shape_table[DUMMY_SHAPE_DEFAULT].name,
-            dummy_attack_table[DUMMY_ATTACK_DEFAULT].name );
+            dummy_attack_table[DUMMY_ATTACK_DEFAULT].name,
+            had_run ? "  The run so far is discarded." : "" );
         send_to_char( buf, ch );
         return;
     }
@@ -563,6 +883,51 @@ void do_dummy( CHAR_DATA *ch, char *argument )
         }
         send_to_char( "No shape by that name.  Try soft, armored, "
                       "evasive or brutal.\n\r", ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "magic" ) || !str_prefix( arg1, "casts" )
+    ||   !str_prefix( arg1, "spell" ) )
+    {
+        for ( i = 0; dummy_spell_table[i].name != NULL; i++ )
+        {
+            if ( arg2[0] == '\0'
+            ||   str_prefix( arg2, dummy_spell_table[i].name ) )
+                continue;
+
+            dummy_spell = i;
+            dummy_configure( dummy, dummy->level, dummy_shape,
+                             dummy_attack );
+            if ( i == DUMMY_SPELL_NONE )
+                send_to_char( "It puts its hands down.  Weapon damage "
+                              "only.\n\r", ch );
+            else
+            {
+                snprintf( buf, sizeof(buf),
+                    "It will cast %s at you -- %s.\n\r",
+                    dummy_spell_table[i].spell,
+                    dummy_spell_table[i].blurb );
+                send_to_char( buf, ch );
+            }
+            return;
+        }
+        send_to_char( "It does not know that one.  DUMMY lists what it "
+                      "can cast.\n\r", ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "haste" ) )
+    {
+        if ( arg2[0] == '\0' )
+            dummy_hasted = !dummy_hasted;
+        else
+            dummy_hasted = ( !str_cmp( arg2, "on" )
+                          || !str_cmp( arg2, "yes" ) );
+
+        dummy_configure( dummy, dummy->level, dummy_shape, dummy_attack );
+        send_to_char( dummy_hasted
+            ? "It blurs, and comes at you twice as often.\n\r"
+            : "It slows back to one attack a round.\n\r", ch );
         return;
     }
 
@@ -598,6 +963,7 @@ void do_dummy( CHAR_DATA *ch, char *argument )
             return;
         }
 
+        dummy_level_chosen = true;
         dummy_configure( dummy, level, dummy_shape, dummy_attack );
         snprintf( buf, sizeof(buf),
             "The dummy is now level %d, and worth %ld hit points -- what a\n\r"
@@ -609,4 +975,43 @@ void do_dummy( CHAR_DATA *ch, char *argument )
     }
 
     dummy_menu( ch, dummy );
+}
+
+
+/*
+ * You get into the yard by entering the practice ring, so you should
+ * get out of it the same way round.  Walking north still works; this
+ * is the command the way in leads you to expect.
+ */
+void do_leave( CHAR_DATA *ch, char *argument )
+{
+    ROOM_INDEX_DATA *back;
+
+    UNUSED_PARAM( argument );
+
+    if ( ch->in_room == NULL
+    ||   ch->in_room->vnum != ROOM_VNUM_TRAINING_YARD )
+    {
+        send_to_char( "There is nothing here to leave.  EXITS lists the "
+                      "ways out.\n\r", ch );
+        return;
+    }
+
+    if ( ( back = get_room_index( ROOM_VNUM_OAK_SQUARE ) ) == NULL )
+    {
+        send_to_char( "The practice ring will not open.\n\r", ch );
+        return;
+    }
+
+    /* Walking out mid-run would throw away the only reason to have
+       been in here, so take the reading on the way past. */
+    if ( !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->dummy_started != 0 )
+        dummy_report( ch, dummy_in_room( ch ) );
+
+    act( "$n ducks back out through the practice ring.", ch, NULL, NULL,
+         TO_ROOM );
+    char_from_room( ch );
+    char_to_room( ch, back );
+    act( "$n steps out of the practice ring.", ch, NULL, NULL, TO_ROOM );
+    do_look( ch, "auto" );
 }

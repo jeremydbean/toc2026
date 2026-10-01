@@ -20,6 +20,7 @@
 #include <time.h>
 #include "merc.h"
 #include "interp.h"
+#include "magic.h"
 #pragma GCC diagnostic ignored "-Wformat-truncation"
 
 #define HYRULE_GANON_VNUM 30225
@@ -2177,12 +2178,24 @@ void do_affect( CHAR_DATA *ch, char *argument)
 
 	for( paf = ch->affected; paf != NULL; paf = paf->next )
 	{
-		/* Skip pure sentinel entries (no location, no modifier, no bits) */
-		if ( paf->location == APPLY_NONE && paf->modifier == 0
-		&&   paf->bitvector == 0 && paf->bitvector2 == 0 )
+		/*
+		 * A marker affect -- no location, no modifier, no bits --
+		 * is still a real affect.  Mindbar, psionic armor and
+		 * psychic shield are nothing but a named duration that
+		 * other code looks for by name, so skipping that shape
+		 * told a player behind a mental fortress they had no such
+		 * thing.  Skip only what has no name to print.
+		 */
+		if ( paf->type < 0 || paf->type >= MAX_SKILL
+		||   skill_table[paf->type].name == NULL )
 			continue;
 
-		snprintf(buf, sizeof(buf), "Spell: '%s'", skill_table[paf->type].name);
+		/* Psionics and skills are not spells, and the player who
+		   went looking for one knows the difference. */
+		snprintf(buf, sizeof(buf), "%s: '%s'",
+			skill_table[paf->type].spell_fun == spell_null
+				? "Skill" : "Spell",
+			skill_table[paf->type].name);
 		send_to_char( buf, ch );
 
 		if( ch->level >= 20 )
