@@ -3018,6 +3018,46 @@ static int concealment_chance( const CHAR_DATA *victim, int sn )
 /*
  * True if char can see victim.
  */
+/*
+ * Whether ch may see wch on the client's online roster. WHO asks
+ * can_see(), which is wrong for a list redrawn constantly: it rolls
+ * dice for stealth and shadowmeld, so the roster would flicker, and it
+ * asks about the viewer's own eyes, so blindness or a dark room would
+ * empty it. This keeps every rule about the other player and none about
+ * the dice or the viewer's surroundings -- a stealthed or melded player
+ * is simply never listed, rather than listed some of the time.
+ */
+bool online_can_list( CHAR_DATA *ch, const CHAR_DATA *wch )
+{
+    if ( ch == wch || IS_NPC(wch) )
+	return false;
+
+    if ( IS_SET(wch->act, PLR_WIZINVIS)
+    &&   get_trust( ch ) < wch->invis_level )
+	return false;
+
+    if ( IS_SET(wch->act, PLR_CLOAKED)
+    &&   ch->in_room != wch->in_room
+    &&   get_trust( ch ) < wch->cloak_level )
+	return false;
+
+    if ( !IS_NPC(ch) && IS_SET(ch->act, PLR_HOLYLIGHT) )
+	return true;
+
+    if ( IS_AFFECTED2(wch, AFF2_STEALTH) || IS_AFFECTED2(wch, AFF2_SHADOWMELD) )
+	return false;
+
+    if ( ( IS_AFFECTED(wch, AFF_INVISIBLE) || IS_AFFECTED2(wch, AFF2_GHOST) )
+    &&   !IS_AFFECTED(ch, AFF_DETECT_INVIS) )
+	return false;
+
+    if ( IS_AFFECTED(wch, AFF_HIDE) && !IS_AFFECTED(ch, AFF_DETECT_HIDDEN) )
+	return false;
+
+    return true;
+}
+
+
 bool can_see( CHAR_DATA *ch, const CHAR_DATA *victim )
 {
 /* RT changed so that WIZ_INVIS has levels */

@@ -401,7 +401,14 @@ void violence_update( void )
 	    continue;
 
 	if ( IS_AWAKE(ch) && ch->in_room == victim->in_room )
+	{
+	    /* One of these is a round to the fight meter, as it is to the
+	       training dummy's report, so the two figures agree. */
+	    if ( !IS_NPC(ch) && ch->pcdata != NULL
+	    &&   ch->pcdata->meter_active )
+		ch->pcdata->meter_rounds++;
 	    multi_hit( ch, victim, TYPE_UNDEFINED );
+	}
 	else
 	    stop_fighting( ch, false );
 
@@ -1559,6 +1566,13 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
      * included, still runs, so a practice blow reads exactly like a
      * real one.
      */
+    /* Every blow a player lands counts on the fight meter -- on the
+       dummy too -- before anything below decides whether hit points
+       actually move. */
+    if ( dam > 0 && ch != victim && !IS_NPC(ch) && ch->pcdata != NULL
+    &&   ch->pcdata->meter_active )
+	ch->pcdata->meter_damage += dam;
+
     if ( !dummy_absorb( ch, victim, dam, dt )
     &&   !is_invulnerable( victim ) )
 	victim->hit -= dam;
@@ -2470,6 +2484,16 @@ void set_fighting( CHAR_DATA *ch, CHAR_DATA *victim )
     ch->fighting = victim;
     ch->position = POS_FIGHTING;
 
+    /* A new fight starts the meter from nothing. The last fight's
+       numbers are kept right up to this moment, so the client can show
+       them in between. */
+    if ( !IS_NPC(ch) && ch->pcdata != NULL )
+    {
+	ch->pcdata->meter_damage = 0;
+	ch->pcdata->meter_rounds = 0;
+	ch->pcdata->meter_active = true;
+    }
+
     return;
 }
 
@@ -2503,6 +2527,9 @@ void stop_fighting( CHAR_DATA *ch, bool fBoth )
     {
         if ( fch == ch || ( fBoth && fch->fighting == ch ) )
         {
+	    /* The fight is over; its numbers stay as "the last fight". */
+	    if ( !IS_NPC(fch) && fch->pcdata != NULL )
+		fch->pcdata->meter_active = false;
 	    fch->fighting       = NULL;
 	    fch->position = IS_NPC(fch) ? fch->default_pos : POS_STANDING;
 	    update_pos( fch );

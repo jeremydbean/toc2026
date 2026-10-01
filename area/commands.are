@@ -113,10 +113,17 @@ WHAT THE INTERFACE SHOWS
             about to lapse is the one you see.  Five ticks or less turns
             orange.  Shadowmeld shows no number because it does not run
             out: it ends when you leave the room, strike, or go visible.
-  Target    Who you are fighting and how badly they are hurt.
+  Target    Who you are fighting and how badly they are hurt, and
+            under it your damage per round: the fight you are in,
+            kept up to date every round, then the last fight once it
+            is over.  Every fight counts, not only the training dummy,
+            and it works with damage numbers off.
   Quest     Your quest, what it wants, and the timer counting down.
             An EMERGENCY contract says so, and the last minute turns
             red.
+  Online    Who else is playing - the players you could see.  A wizi,
+            cloaked, stealthed, shadowmelded, hidden or invisible
+            player is left off unless you could see them anyway.
   Map       The whole world, following you as you move.
   Exits     A button for each way out of the room.  Click one to go.
   Tabs      Below the map, four of them:
@@ -442,7 +449,9 @@ GMCP can receive:
                   state of any doors, room flags, and what the room is
                   for (shop, questmaster, healer, practice, trainer)
   Char.Quest    - your current quest, its timer, and your streak
-  Char.Target   - who you are fighting and how they are doing
+  Char.Target   - who you are fighting and how they are doing, and
+                  your damage per round in this fight or the last
+  Char.Online   - who else is playing, as far as you could see
   Char.Items    - what you carry and what you wear
   Char.Achievement - one achievement, at the moment you earn it
   Room.Chars    - who and what is in the room with you
@@ -1051,6 +1060,13 @@ command named here for the detail.
 
   The quest master no longer asks you to kill the training dummy, which
   cannot die.
+
+  Mudlet shows your damage per round under the target: live during a
+  fight, then the last fight's once it ends.  Every fight counts, and
+  the game measures it, so it works with damage numbers off.  A new
+  line below the quest lists who else is online - only players you
+  could see, so nobody wizi, cloaked, stealthed or hidden.  Mudlet
+  offers the 1.3.0 package update automatically.
 
   POKE pokes again.  It was taken as the start of the longer command
   POKER, so the social could never be used.  A word that is exactly a

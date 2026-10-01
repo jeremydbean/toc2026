@@ -1786,6 +1786,7 @@ bool process_output( DESCRIPTOR_DATA *d, bool fPrompt )
 	gmcp_send_affects( d );
 	gmcp_send_quest( d );
 	gmcp_send_target( d );
+	gmcp_send_online( d );
 	gmcp_send_chars( d );
 	gmcp_send_items( d );
     }

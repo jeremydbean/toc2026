@@ -247,6 +247,57 @@ tocMudlet.onTarget()
 local targetText = text(tocMudlet.ui.target)
 check("a target is named", targetText:find("fido") ~= nil, targetText)
 check("with its percentage", targetText:find("30%%") ~= nil, targetText)
+check("an old server with no meter adds no meter line",
+  targetText:find("a round") == nil, targetText)
+
+-- ------------------------------------------------ the fight meter
+tocMudlet.ui.target = console()
+gmcp.Char.Target = { fighting = true, name = "a fido", percent = 60,
+                     rounds = 9, damage = 1926, per_round = 214 }
+tocMudlet.onTarget()
+local meterNow = text(tocMudlet.ui.target)
+check("the running fight's average shows", meterNow:find("214 a round") ~= nil, meterNow)
+check("with its rounds", meterNow:find("9 rounds") ~= nil, meterNow)
+check("and its total, with commas", meterNow:find("1,926 damage") ~= nil, meterNow)
+check("still naming the target", meterNow:find("fido") ~= nil, meterNow)
+
+tocMudlet.ui.target = console()
+gmcp.Char.Target = { fighting = false,
+                     last = { rounds = 1, damage = 88, per_round = 88 } }
+tocMudlet.onTarget()
+local meterLast = text(tocMudlet.ui.target)
+check("between fights it says so", meterLast:find("Not fighting") ~= nil, meterLast)
+check("and gives the last fight", meterLast:find("Last fight") ~= nil, meterLast)
+check("with one round singular", meterLast:find("1 round ") ~= nil, meterLast)
+
+tocMudlet.ui.target = console()
+gmcp.Char.Target = { fighting = false }
+tocMudlet.onTarget()
+check("no last fight, no last-fight line",
+  text(tocMudlet.ui.target):find("Last fight") == nil, text(tocMudlet.ui.target))
+
+-- ------------------------------------------------ who else is on
+tocMudlet.ui.online = console()
+gmcp.Char.Online = { count = 0, players = {} }
+tocMudlet.onOnline()
+check("an empty roster says so",
+  text(tocMudlet.ui.online):find("nobody else") ~= nil, text(tocMudlet.ui.online))
+
+tocMudlet.ui.online = console()
+gmcp.Char.Online = { count = 2, players = { "Alaric", "Misery" } }
+tocMudlet.onOnline()
+local roster = text(tocMudlet.ui.online)
+check("the roster names them", roster:find("Alaric, Misery") ~= nil, roster)
+check("and counts them", roster:find("Online %(2%)") ~= nil, roster)
+
+local many = {}
+for i = 1, 14 do many[i] = "Player" .. string.char(64 + i) end
+tocMudlet.ui.online = console()
+gmcp.Char.Online = { count = #many, players = many }
+tocMudlet.onOnline()
+local crowded = text(tocMudlet.ui.online)
+check("a long roster says how many more", crowded:find("more") ~= nil, crowded)
+check("and still counts everybody", crowded:find("Online %(14%)") ~= nil, crowded)
 
 -- ------------------------------------------------ who is here
 tocMudlet.ui.here = console()

@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.2.1"
+#define TOC_MUDLET_PACKAGE_VERSION "1.3.0"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -184,11 +184,13 @@ static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
     d->gmcp_last_affect_hash = 0;
     d->gmcp_last_quest_hash = 0;
     d->gmcp_last_target_hash = 0;
+    d->gmcp_last_online_hash = 0;
     d->gmcp_last_chars_hash = 0;
     d->gmcp_last_items_sig = 0;
     d->gmcp_affects_valid = false;
     d->gmcp_quest_valid = false;
     d->gmcp_target_valid = false;
+    d->gmcp_online_valid = false;
     d->gmcp_chars_valid = false;
     d->gmcp_items_valid = false;
 }
@@ -557,10 +559,29 @@ void gmcp_send_quest( DESCRIPTOR_DATA *d )
  * prose -- "is in awful condition" -- which a bar can say better, and
  * which is the one number a player watches hardest.
  */
+/*
+ * The fight meter's figures, appended to a Char.Target object: the
+ * running fight while it lasts, the last one after. Per round divides
+ * by at least one, because a fight won with its opening blow has
+ * damage and no completed round.
+ */
+static void gmcp_meter_append( char *json, size_t size, const PC_DATA *pc )
+{
+    char number[128];
+
+    snprintf( number, sizeof(number),
+              "\"rounds\":%d,\"damage\":%ld,\"per_round\":%ld",
+              pc->meter_rounds, pc->meter_damage,
+              pc->meter_damage / UMAX( 1, pc->meter_rounds ) );
+    toc_strlcat( json, number, size );
+}
+
+
 void gmcp_send_target( DESCRIPTOR_DATA *d )
 {
     CHAR_DATA *ch;
     CHAR_DATA *victim;
+    const PC_DATA *pc;
     char json[MAX_STRING_LENGTH];
     char number[64];
     uint32_t hash;
@@ -573,10 +594,19 @@ void gmcp_send_target( DESCRIPTOR_DATA *d )
         return;
 
     victim = ch->fighting;
+    /* A switched character is driving a mobile, which keeps no meter. */
+    pc = IS_NPC(ch) ? NULL : ch->pcdata;
 
     if ( victim == NULL || !can_see( ch, victim ) )
     {
-        toc_strlcpy( json, "{\"fighting\":false}", sizeof(json) );
+        toc_strlcpy( json, "{\"fighting\":false", sizeof(json) );
+        if ( pc != NULL && ( pc->meter_rounds > 0 || pc->meter_damage > 0 ) )
+        {
+            toc_strlcat( json, ",\"last\":{", sizeof(json) );
+            gmcp_meter_append( json, sizeof(json), pc );
+            toc_strlcat( json, "}", sizeof(json) );
+        }
+        toc_strlcat( json, "}", sizeof(json) );
     }
     else
     {
@@ -589,6 +619,11 @@ void gmcp_send_target( DESCRIPTOR_DATA *d )
         snprintf( number, sizeof(number), "%d",
                   gmcp_percent( victim->hit, victim->max_hit ) );
         toc_strlcat( json, number, sizeof(json) );
+        if ( pc != NULL )
+        {
+            toc_strlcat( json, ",", sizeof(json) );
+            gmcp_meter_append( json, sizeof(json), pc );
+        }
         toc_strlcat( json, "}", sizeof(json) );
     }
 
@@ -599,6 +634,77 @@ void gmcp_send_target( DESCRIPTOR_DATA *d )
     telnet_send_gmcp( d, "Char.Target", json );
     d->gmcp_last_target_hash = hash;
     d->gmcp_target_valid = true;
+}
+
+
+/*
+ * Who else is on, as far as you could tell -- the client's online
+ * roster. online_can_list() decides, not can_see(), so the list does not
+ * flicker with a concealment roll. Names only, alphabetical, and the
+ * count is of the names sent: a hidden player is not a number either.
+ */
+static int gmcp_name_order( const void *a, const void *b )
+{
+    return str_cmp( *(const char * const *) a, *(const char * const *) b );
+}
+
+
+void gmcp_send_online( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *ch;
+    DESCRIPTOR_DATA *od;
+    const char *names[128];
+    char json[MAX_STRING_LENGTH];
+    char number[32];
+    uint32_t hash;
+    int count = 0;
+    int i;
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    ch = d->original ? d->original : d->character;
+    if ( ch == NULL )
+        return;
+
+    for ( od = descriptor_list; od != NULL; od = od->next )
+    {
+        CHAR_DATA *wch;
+
+        if ( od->connected != CON_PLAYING || od->character == NULL )
+            continue;
+        wch = od->original ? od->original : od->character;
+
+        /* WHO's own rule: a switched immortal stays out of sight of
+           anybody below it. */
+        if ( od->original != NULL && get_trust( ch ) < 67 )
+            continue;
+        if ( !online_can_list( ch, wch ) )
+            continue;
+        if ( count < (int)( sizeof(names) / sizeof(names[0]) ) )
+            names[count++] = wch->name;
+    }
+
+    qsort( names, (size_t) count, sizeof(names[0]), gmcp_name_order );
+
+    snprintf( number, sizeof(number), "{\"count\":%d,", count );
+    toc_strlcpy( json, number, sizeof(json) );
+    toc_strlcat( json, "\"players\":[", sizeof(json) );
+    for ( i = 0; i < count; i++ )
+    {
+        if ( i > 0 )
+            toc_strlcat( json, ",", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json), names[i] );
+    }
+    toc_strlcat( json, "]}", sizeof(json) );
+
+    hash = gmcp_room_hash( json );
+    if ( d->gmcp_online_valid && d->gmcp_last_online_hash == hash )
+        return;
+
+    telnet_send_gmcp( d, "Char.Online", json );
+    d->gmcp_last_online_hash = hash;
+    d->gmcp_online_valid = true;
 }
 
 

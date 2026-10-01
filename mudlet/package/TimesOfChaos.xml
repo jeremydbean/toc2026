@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.2.1"
+tocMudlet.version = "1.3.0"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -817,13 +817,36 @@ function tocMudlet.onQuest()
     P.muted, kind, verb, html(quest.target or "?"), colour, left))
 end
 
+-- 12345 -> "12,345", so a big fight's total stays readable.
+local function commas(n)
+  local s = tostring(math.floor(tonumber(n) or 0))
+  local out = s:reverse():gsub("(%d%d%d)", "%1,"):reverse()
+  return (out:gsub("^,", ""))
+end
+
+-- The fight meter's line: the running fight's figures while it lasts,
+-- the last one's after. The game measures it; Mudlet only draws it,
+-- because with damage numbers off the combat text carries no figures.
+local function meterLine(m, label)
+  if type(m) ~= "table" then return nil end
+  local rounds = tonumber(m.rounds) or 0
+  return string.format(
+    [[<span style="color:%s">%s</span>]] ..
+    [[<span style="color:%s"> %s a round</span>]] ..
+    [[<span style="color:%s"> &middot; %d round%s &middot; %s damage</span>]],
+    P.muted, label, P.text, commas(m.per_round), P.muted,
+    rounds, rounds == 1 and "" or "s", commas(m.damage))
+end
+
 function tocMudlet.onTarget()
   local target = gmcp and gmcp.Char and gmcp.Char.Target
   if type(target) ~= "table" or not tocMudlet.ui.target then return end
 
   if not target.fighting then
+    local last = meterLine(target.last, "Last fight:")
     tocMudlet.ui.target:echo(string.format(
-      [[<span style="color:%s">Not fighting</span>]], P.muted))
+      [[<span style="color:%s">Not fighting</span>]], P.muted) ..
+      (last and ("<br>" .. last) or ""))
     return
   end
 
@@ -833,12 +856,46 @@ function tocMudlet.onTarget()
   -- A bar drawn in text, because a Geyser gauge here would need its
   -- own row and this fits on the one line the panel has.
   local filled = math.floor(percent / 10)
+  local now = target.rounds and meterLine(target, "This fight:") or nil
   tocMudlet.ui.target:echo(string.format(
     [[<span style="color:%s">%s</span> ]] ..
     [[<span style="color:%s">%s</span>]] ..
     [[<span style="color:%s">%s %d%%</span>]],
     P.text, html(target.name or "?"), colour, string.rep("|", filled),
-    P.border, string.rep("|", 10 - filled), percent))
+    P.border, string.rep("|", 10 - filled), percent) ..
+    (now and ("<br>" .. now) or ""))
+end
+
+-- Who else is on. The game decides who you may know about -- never a
+-- wizi, stealthed, melded or hidden player you could not see -- and
+-- sends names in order; this only fits them on one line.
+function tocMudlet.onOnline()
+  local online = gmcp and gmcp.Char and gmcp.Char.Online
+  if type(online) ~= "table" or not tocMudlet.ui.online then return end
+
+  local names = type(online.players) == "table" and online.players or {}
+  if #names == 0 then
+    tocMudlet.ui.online:echo(string.format(
+      [[<span style="color:%s">Online: nobody else you can see</span>]],
+      P.muted))
+    return
+  end
+
+  -- About forty characters fit beside the label; past that, say how
+  -- many more rather than letting the line run under the edge.
+  local shown, used = {}, 0
+  for _, name in ipairs(names) do
+    if used + #name > 40 and #shown > 0 then break end
+    shown[#shown + 1] = html(name)
+    used = used + #name + 2
+  end
+  local more = #names - #shown
+  tocMudlet.ui.online:echo(string.format(
+    [[<span style="color:%s">Online (%d): </span>]] ..
+    [[<span style="color:%s">%s</span>]] ..
+    [[<span style="color:%s">%s</span>]],
+    P.muted, #names, P.text, table.concat(shown, ", "), P.muted,
+    more > 0 and string.format(" +%d more", more) or ""))
 end
 
 function tocMudlet.onChars()
@@ -1036,15 +1093,22 @@ function tocMudlet.buildUI()
   -- The map keeps the top half and the chat takes the bottom. A chat
   -- window is the thing a player reads while walking, so it wants to
   -- be beside the map rather than buried behind it.
+  -- Two lines: the target and its health, then damage per round, so
+  -- a long name never pushes the figure off the end.
   tocMudlet.ui.target = Geyser.Label:new({
     name = "tocMudlet.target", x = -350, y = 88,
-    width = 340, height = 24,
+    width = 340, height = 42,
   })
   tocMudlet.ui.quest = Geyser.Label:new({
-    name = "tocMudlet.quest", x = -350, y = 116,
+    name = "tocMudlet.quest", x = -350, y = 134,
     width = 340, height = 24,
   })
-  for _, strip in ipairs({ tocMudlet.ui.target, tocMudlet.ui.quest }) do
+  tocMudlet.ui.online = Geyser.Label:new({
+    name = "tocMudlet.online", x = -350, y = 162,
+    width = 340, height = 24,
+  })
+  for _, strip in ipairs({ tocMudlet.ui.target, tocMudlet.ui.quest,
+                           tocMudlet.ui.online }) do
     strip:setStyleSheet(string.format([[
       background:%s;color:%s;border:1px solid %s;border-radius:5px;
       padding:2px 8px;qproperty-alignment:'AlignVCenter';]],
@@ -1054,10 +1118,12 @@ function tocMudlet.buildUI()
     [[<span style="color:%s">Not fighting</span>]], P.muted))
   tocMudlet.ui.quest:echo(string.format(
     [[<span style="color:%s">Quest: ready</span>]], P.muted))
+  tocMudlet.ui.online:echo(string.format(
+    [[<span style="color:%s">Online: waiting for the game</span>]], P.muted))
 
   tocMudlet.ui.mapper = Geyser.Mapper:new({
-    name = "tocMudlet.mapper", x = -350, y = 146,
-    width = 340, height = "50%-146px",
+    name = "tocMudlet.mapper", x = -350, y = 190,
+    width = 340, height = "50%-190px",
   })
 
   -- Three consoles in one place, one shown at a time.
@@ -1161,6 +1227,7 @@ function tocMudlet.subscribe()
   -- being sent the wrong thing by something that does.
   sendGMCP('Core.Supports.Add ["Char 1","Char.Vitals 1","Char.Status 1",' ..
     '"Char.Affects 1","Char.Quest 1","Char.Target 1","Char.Items 1",' ..
+    '"Char.Online 1",' ..
     '"Char.Achievement 1","Room 1","Room.Info 1","Room.Chars 1",' ..
     '"Comm 1","Comm.Channel 1"]')
 end
@@ -1296,6 +1363,7 @@ function tocMudlet.install()
   register("gmcp.Char.Affects", function() tocMudlet.onAffects() end)
   register("gmcp.Char.Quest", function() tocMudlet.onQuest() end)
   register("gmcp.Char.Target", function() tocMudlet.onTarget() end)
+  register("gmcp.Char.Online", function() tocMudlet.onOnline() end)
   register("gmcp.Char.Items", function() tocMudlet.onItems() end)
   register("gmcp.Char.Achievement", function() tocMudlet.onAchievement() end)
   register("gmcp.Room.Chars", function() tocMudlet.onChars() end)

@@ -555,11 +555,13 @@ struct  descriptor_data
     uint32_t            gmcp_last_affect_hash;
     uint32_t            gmcp_last_quest_hash;
     uint32_t            gmcp_last_target_hash;
+    uint32_t            gmcp_last_online_hash;
     uint32_t            gmcp_last_chars_hash;
     uint32_t            gmcp_last_items_sig;
     bool                gmcp_affects_valid;
     bool                gmcp_quest_valid;
     bool                gmcp_target_valid;
+    bool                gmcp_online_valid;
     bool                gmcp_chars_valid;
     bool                gmcp_items_valid;
     uint32_t            gmcp_last_room_hash;
@@ -1980,6 +1982,13 @@ struct  pc_data
     int                 dummy_pre_hit;
     int                 dummy_pre_mana;
     int                 dummy_pre_move;
+
+    /* The fight meter: this fight's damage and rounds while it lasts,
+       and the last one's once it is over, for Char.Target. Never
+       saved -- a fight does not outlive the session it was fought in. */
+    long                meter_damage;
+    int                 meter_rounds;
+    bool                meter_active;
     int                 dummy_hits;
     int                 dummy_misses;
     int                 dummy_swings;
@@ -2713,6 +2722,7 @@ long    dummy_typical_hp   ( int level );
 void    gmcp_send_affects  ( DESCRIPTOR_DATA *d );
 void    gmcp_send_quest    ( DESCRIPTOR_DATA *d );
 void    gmcp_send_target   ( DESCRIPTOR_DATA *d );
+void    gmcp_send_online   ( DESCRIPTOR_DATA *d );
 void    gmcp_send_chars    ( DESCRIPTOR_DATA *d );
 void    gmcp_send_items    ( DESCRIPTOR_DATA *d );
 void    gmcp_send_achievement ( CHAR_DATA *ch, const char *title,
@@ -2923,6 +2933,7 @@ bool    room_is_dark    ( ROOM_INDEX_DATA *pRoomIndex );
 bool    room_is_private ( ROOM_INDEX_DATA *pRoomIndex );
 bool    can_enter_private_room ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex );
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
+bool    online_can_list ( CHAR_DATA *ch, const CHAR_DATA *wch );
 bool    can_see_obj     ( CHAR_DATA *ch, const OBJ_DATA *obj );
 bool    can_see_room    ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex);
 bool    can_drop_obj    ( CHAR_DATA *ch, OBJ_DATA *obj );
