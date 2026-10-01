@@ -327,6 +327,7 @@ void    handle_input            ( DESCRIPTOR_DATA *d );
 void    access_lookup           ( DESCRIPTOR_DATA *d );
 bool    check_parse_name        ( char *name );
 bool    check_reconnect         ( DESCRIPTOR_DATA *d, char *name, bool fConn );
+static void wizinfo_same_host   ( DESCRIPTOR_DATA *d, CHAR_DATA *ch );
 bool    check_playing           ( DESCRIPTOR_DATA *d, char *name );
 bool    write_to_descriptor     ( DESCRIPTOR_DATA *d, const char *txt, int length );
 static bool check_ban           ( const char *site, int type );
@@ -2360,6 +2361,7 @@ void nanny( DESCRIPTOR_DATA *d, char *argument )
         log_string( log_buf );
         record_login( ch->name, d->host, "connect" );
         wizinfo(log_buf,LEVEL_IMMORTAL);
+        wizinfo_same_host( d, ch );
 
 	if ( IS_HERO(ch) )
 	{
@@ -3014,8 +3016,10 @@ bool check_reconnect( DESCRIPTOR_DATA *d, char *name, bool fConn )
                 snprintf( log_buf, 2 * MAX_INPUT_LENGTH, "%s@%s reconnected.", ch->name, d->host );
                 log_string( log_buf );
                 record_login( ch->name, d->host, "reconnect" );
-                snprintf( buf, sizeof(buf), "%s has reconnected.", ch->name );
+                snprintf( buf, sizeof(buf), "%s@%s has reconnected.",
+                          ch->name, d->host );
                 wizinfo( buf, ch->level );
+                wizinfo_same_host( d, ch );
                 d->connected = CON_PLAYING;
 	    }
 	    return TRUE;
@@ -4084,6 +4088,52 @@ void record_logout( const char *name, const char *host, const char *event,
                     long duration )
 {
     record_session_event( name, host, event, duration < 0 ? 0 : duration );
+}
+
+
+/*
+ * Tell staff when a character arrives from an address somebody else is
+ * already playing from, and who. This was Ricochet's, from 1998, and it
+ * went missing in the November 2025 rewrite of this file. Compared
+ * exactly -- the original's strstr() matched 1.2.3.4 against 1.2.3.45 --
+ * and loopback is skipped: web players arrive with their own address in
+ * host, so anything still showing loopback is the dashboard itself.
+ */
+static void wizinfo_same_host( DESCRIPTOR_DATA *d, CHAR_DATA *ch )
+{
+    DESCRIPTOR_DATA *od;
+    char names[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    int others = 0;
+
+    if ( d == NULL || ch == NULL || d->host == NULL || d->host[0] == '\0'
+    ||   !str_cmp( d->host, "localhost" ) || !str_prefix( "127.", d->host ) )
+        return;
+
+    names[0] = '\0';
+    for ( od = descriptor_list; od != NULL; od = od->next )
+    {
+        CHAR_DATA *och;
+
+        if ( od == d || od->connected != CON_PLAYING || od->host == NULL
+        ||   str_cmp( od->host, d->host ) )
+            continue;
+        och = od->original != NULL ? od->original : od->character;
+        if ( och == NULL || och == ch )
+            continue;
+        if ( others++ > 0 )
+            toc_strlcat( names, ", ", sizeof(names) );
+        toc_strlcat( names, och->name, sizeof(names) );
+    }
+
+    if ( others == 0 )
+        return;
+
+    snprintf( buf, sizeof(buf),
+              "%s shares an address with %s: %d players on from %s.",
+              ch->name, names, others + 1, d->host );
+    log_string( buf );
+    wizinfo( buf, LEVEL_IMMORTAL );
 }
 
 

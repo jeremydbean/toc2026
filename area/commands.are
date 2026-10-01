@@ -385,7 +385,9 @@ Syntax: dummy leaderboard
 
 The training yard's benchmark board: the best twenty-five-round standard run
 each character has posted, best first.  It shows the top ten, and tells
-you where you stand among everybody who has ever run it.
+you where you stand among everybody who has ever run it.  Each line
+gives class and guild the way WHO does: T/T for a thief in the thieves'
+guild, T/W for a thief among the warriors, and Monk or Necro.
 
 ONLY THE STANDARD FIGHT IS RANKED.  That is the default fight in the
 training yard: twenty-five rounds against a dummy at your own level that

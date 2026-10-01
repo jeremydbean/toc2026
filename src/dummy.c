@@ -1222,6 +1222,7 @@ typedef struct dps_board_entry
     int         seconds;
     int         level;
     int         cls;
+    int         guild;          /* -1 until known */
     long        when;
 } DPS_BOARD_ENTRY;
 
@@ -1242,6 +1243,66 @@ static bool dps_board_name_ok( const char *name )
         if ( !isalpha( (unsigned char) name[i] ) )
             return false;
     return true;
+}
+
+
+/*
+ * A board line written before the guild was stored has none, so it is
+ * read from the character's own file -- the "Gui" line save.c writes --
+ * rather than left blank until their next run. The name has already
+ * passed dps_board_name_ok, so it cannot name a path anywhere else.
+ */
+static int dps_board_guild_from_file( const char *name )
+{
+    char path[MAX_INPUT_LENGTH];
+    char line[256];
+    FILE *fp;
+    int guild = -1;
+
+    snprintf( path, sizeof(path), "%s%s", PLAYER_DIR, name );
+    if ( ( fp = fopen( path, "r" ) ) == NULL )
+        return -1;
+    while ( fgets( line, sizeof(line), fp ) != NULL )
+    {
+        if ( !strncmp( line, "Gui ", 4 ) )
+        {
+            if ( sscanf( line + 4, "%d", &guild ) != 1 )
+                guild = -1;
+            break;
+        }
+    }
+    fclose( fp );
+    return guild;
+}
+
+
+/*
+ * Class and guild the way players say them: T/T, W/W, T/W. Monks and
+ * necromancers have no guild, so they are named in full.
+ */
+static void dps_board_class( const DPS_BOARD_ENTRY *e, char *out, size_t size )
+{
+    if ( e->cls < 0 || e->cls >= MAX_CLASS )
+    {
+        toc_strlcpy( out, "?", size );
+        return;
+    }
+    if ( e->cls == CLASS_MONK )
+    {
+        toc_strlcpy( out, "Monk", size );
+        return;
+    }
+    if ( e->cls == CLASS_NECRO )
+    {
+        toc_strlcpy( out, "Necro", size );
+        return;
+    }
+    if ( e->guild >= 0 && e->guild < MAX_CLASS
+    &&   e->guild != CLASS_MONK && e->guild != CLASS_NECRO )
+        snprintf( out, size, "%c/%c", UPPER( class_table[e->cls].name[0] ),
+                  UPPER( class_table[e->guild].name[0] ) );
+    else
+        snprintf( out, size, "%c", UPPER( class_table[e->cls].name[0] ) );
 }
 
 
@@ -1278,12 +1339,18 @@ static void dps_board_load( void )
         if ( line[0] == '\n' || line[0] == '\r' )
             continue;
         memset( &e, 0, sizeof(e) );
-        if ( sscanf( line, "%63s %ld %d %d %d %ld", name, &e.total,
-                     &e.seconds, &e.level, &e.cls, &e.when ) != 6 )
+        e.guild = -1;
+        /* Seven fields since the guild was added; six before it. A
+           six-field line is still a valid run, and its guild is looked
+           up below rather than shown as unknown. */
+        if ( sscanf( line, "%63s %ld %d %d %d %ld %d", name, &e.total,
+                     &e.seconds, &e.level, &e.cls, &e.when, &e.guild ) < 6 )
             continue;
         if ( !dps_board_name_ok( name ) || e.total < 0 || e.seconds < 1 )
             continue;
         toc_strlcpy( e.name, name, sizeof(e.name) );
+        if ( e.guild < 0 )
+            e.guild = dps_board_guild_from_file( e.name );
         dps_board[dps_board_count++] = e;
     }
 
@@ -1343,11 +1410,12 @@ static void dps_board_save( void )
         "#standard %d\n"
         "# The training yard's benchmark board: each character's best\n"
         "# standard fight, best first.\n"
-        "# name total seconds level class when\n", DPSBOARD_STANDARD );
+        "# name total seconds level class when guild\n", DPSBOARD_STANDARD );
     for ( i = 0; i < dps_board_count; i++ )
-        fprintf( fp, "%s %ld %d %d %d %ld\n",
+        fprintf( fp, "%s %ld %d %d %d %ld %d\n",
                  dps_board[i].name, dps_board[i].total, dps_board[i].seconds,
-                 dps_board[i].level, dps_board[i].cls, dps_board[i].when );
+                 dps_board[i].level, dps_board[i].cls, dps_board[i].when,
+                 dps_board[i].guild );
 
     fclose( fp );
     fpReserve = fopen( NULL_FILE, "r" );
@@ -1509,6 +1577,7 @@ static void dps_board_submit( CHAR_DATA *ch, long total, int seconds )
         entry.seconds = seconds;
         entry.level   = ch->level;
         entry.cls     = ch->class;
+        entry.guild   = ch->pcdata->guild;
         entry.when    = (long) current_time;
         dps_board[at] = entry;
         dps_board_count++;
@@ -1618,11 +1687,7 @@ static void dps_board_show( CHAR_DATA *ch )
         {
             const DPS_BOARD_ENTRY *e = &dps_board[i];
 
-            if ( e->cls >= 0 && e->cls < MAX_CLASS )
-                toc_strlcpy( cls, class_table[e->cls].name, sizeof(cls) );
-            else
-                toc_strlcpy( cls, "?", sizeof(cls) );
-            cls[0] = UPPER( cls[0] );
+            dps_board_class( e, cls, sizeof(cls) );
 
             when = (time_t) e->when;
             if ( ( tm = localtime( &when ) ) == NULL
