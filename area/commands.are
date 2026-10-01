@@ -118,7 +118,9 @@ WHAT THE INTERFACE SHOWS
             kept up to date every round, then the last fight once it
             is over.  Every fight counts, not only the training dummy,
             and it works with damage numbers off.
-  Quest     Your quest, what it wants, and the timer counting down.
+  Quest     Your quest, what it wants, and the timer counting down,
+            and under it the room and region the quest master said
+            the target was last seen in.
             An EMERGENCY contract says so, and the last minute turns
             red.
   Online    Who else is playing - the players you could see.  A wizi,
@@ -133,7 +135,8 @@ WHAT THE INTERFACE SHOWS
               Items  what you are wearing and what you carry
             The chat shows what you actually heard - a yell from
             another area, or a channel you have switched off, never
-            reaches it.
+            reaches it - in the colours you chose with COLOR, so it
+            matches the main window.
   Awards    An achievement is shown over the map for a few seconds
             when you earn it.
 
@@ -429,7 +432,8 @@ GMCP can receive:
   Room.Info     - room number, name, area, terrain, visible exits, the
                   state of any doors, room flags, and what the room is
                   for (shop, questmaster, healer, practice, trainer)
-  Char.Quest    - your current quest, its timer, and your streak
+  Char.Quest    - your current quest, its timer, your streak, and
+                  where the target was last seen
   Char.Target   - who you are fighting and how they are doing, and
                   your damage per round in this fight or the last
   Char.Online   - who else is playing, as far as you could see
@@ -437,7 +441,7 @@ GMCP can receive:
   Char.Achievement - one achievement, at the moment you earn it
   Room.Chars    - who and what is in the room with you
   Comm.Channel  - one line of channel talk, one say, or one tell, as
-                  you hear it
+                  you hear it, in the colour you chose for it
   Client.Map    - location of the official world atlas
   Client.GUI    - version and location of the official Mudlet package
 
@@ -1055,6 +1059,11 @@ command named here for the detail.
 
   If WALK DUMMY in Mudlet still heads somewhere else, TOCGUI ATLAS
   reloads the map with the yard where it is now.
+
+  The Mudlet chat window now shows each channel in the colour you
+  chose for it with COLOR, the same as the main window, and the quest
+  strip says where the quest master last saw your target.  Mudlet
+  offers the 1.3.1 package update automatically.
 
   POKE pokes again.  It was taken as the start of the longer command
   POKER, so the social could never be used.  A word that is exactly a

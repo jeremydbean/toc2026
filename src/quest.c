@@ -1254,7 +1254,7 @@ void do_quest(CHAR_DATA *ch, char *argument)
    region" -- is not. GMCP deliberately keeps the fuller form, because the
    Mudlet map package ships area names and is looked up by them, so this
    stays local rather than becoming a shared helper. */
-static void quest_area_name( const char *raw, char *out, size_t size )
+void quest_area_name( const char *raw, char *out, size_t size )
 {
     const char *name;
     const char *brace;
@@ -1413,6 +1413,9 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
     room = victim->in_room;
     quest_area_name( room->area != NULL ? room->area->name : NULL,
         area_name, sizeof(area_name) );
+    /* The room the quest master is about to name aloud, kept so the
+       client can show it too. */
+    ch->questroom = room->vnum;
 
     /*  40% chance it will send the player on a 'recover item' quest. */
 

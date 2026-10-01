@@ -184,6 +184,31 @@ const char *color_code( const CHAR_DATA *ch, int slot )
     return col_disp_table[entry].ansi_str;
 }
 
+/*
+ * The name of the colour this character has chosen for a category --
+ * "bright_magenta" -- or NULL when they would see it uncoloured. The same
+ * answer color_code() gives as an escape sequence, for a client that
+ * draws the line somewhere else and has to match the main window.
+ */
+const char *color_name( const CHAR_DATA *ch, int slot )
+{
+    int entry;
+
+    if ( !color_is_enabled( ch ) )
+        return NULL;
+    if ( !is_valid_color_slot( slot ) )
+        slot = COL_REGULAR;
+
+    entry = ch->pcdata->col_table[slot];
+    if ( entry < 0 || entry >= COLOR_OPTION_COUNT )
+        return NULL;
+    if ( col_disp_table[entry].ansi_str == NULL
+    ||   col_disp_table[entry].ansi_str[0] == '\0' )
+        return NULL;                    /* "plain" */
+    return col_disp_table[entry].type;
+}
+
+
 bool color_is_enabled( const CHAR_DATA *ch )
 {
     if ( ch == NULL || IS_NPC(ch) || ch->pcdata == NULL )

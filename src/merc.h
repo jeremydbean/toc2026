@@ -1847,6 +1847,10 @@ struct  char_data
     sh_int              countdown;
     sh_int              questobj;
     sh_int              questmob;
+    /* Where the target was when the quest was handed out, for the
+       client's quest strip. Not saved: a quest does not survive a
+       logout. */
+    int                 questroom;
     sh_int              queststreak;    /* consecutive complete count; resets on fail/abort */
     sh_int              questgamble_pts;/* points withheld pending double-or-nothing offer */
     bool                questrush;      /* current quest is a rush contract */
@@ -3026,6 +3030,9 @@ const struct col_table_type *color_category_lookup( const char *name );
 int     color_display_lookup( const char *name );
 void    color_update_defaults( CHAR_DATA *ch, bool overwrite );
 const char *color_code      ( const CHAR_DATA *ch, int color_slot );
+const char *color_name      ( const CHAR_DATA *ch, int color_slot );
+int     channel_color_category ( const char *channel );
+void    quest_area_name ( const char *raw, char *out, size_t size );
 bool    color_is_enabled    ( const CHAR_DATA *ch );
 bool    color_parse_slot    ( const char *str, unsigned char *slot_out );
 bool    color_token_prefix  ( char ch );

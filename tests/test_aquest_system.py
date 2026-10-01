@@ -314,7 +314,11 @@ class AutomaticQuestSystemTests(unittest.TestCase):
             "void quest_update",
         )
 
-        self.assertIn("static void quest_area_name", self.quest)
+        # Shared since 2026-10-01 so the client's quest strip names the
+        # region in the same words the quest master says aloud.
+        self.assertIn("\nvoid quest_area_name( const char *raw", self.quest)
+        self.assertIn("quest_area_name( where->area",
+                      (ROOT / "src" / "gmcp.c").read_text(encoding="latin-1"))
         self.assertIn("quest_area_name( room->area", generation)
         self.assertEqual(generation.count("room->name, area_name)"), 2)
         self.assertNotIn("room->name, room->area->name)", generation)

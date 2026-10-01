@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.3.0"
+#define TOC_MUDLET_PACKAGE_VERSION "1.3.1"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -530,6 +530,27 @@ void gmcp_send_quest( DESCRIPTOR_DATA *d )
     toc_strlcat( json, ",\"kill\":", sizeof(json) );
     toc_strlcat( json, mob != NULL ? "true" : "false", sizeof(json) );
 
+    /* Where the quest master said it was last seen. Only while there is
+       still a target: once it is dealt with, the next stop is the
+       quest master, and the room is history. */
+    {
+        ROOM_INDEX_DATA *where = ( active && ( mob != NULL || obj != NULL )
+                                   && ch->questroom > 0 )
+                                 ? get_room_index( ch->questroom ) : NULL;
+
+        if ( where != NULL && where->name != NULL )
+        {
+            char region[MAX_INPUT_LENGTH];
+
+            quest_area_name( where->area != NULL ? where->area->name : NULL,
+                             region, sizeof(region) );
+            toc_strlcat( json, ",\"room\":", sizeof(json) );
+            gmcp_json_append_quoted( json, sizeof(json), where->name );
+            toc_strlcat( json, ",\"area\":", sizeof(json) );
+            gmcp_json_append_quoted( json, sizeof(json), region );
+        }
+    }
+
     toc_strlcat( json, ",\"streak\":", sizeof(json) );
     snprintf( number, sizeof(number), "%d", (int)ch->queststreak );
     toc_strlcat( json, number, sizeof(json) );
@@ -930,6 +951,20 @@ void gmcp_send_channel( DESCRIPTOR_DATA *d, const char *channel,
                              speaker != NULL ? speaker : "" );
     toc_strlcat( json, ",\"text\":", sizeof(json) );
     gmcp_json_append_quoted( json, sizeof(json), text );
+
+    /* The colour this listener chose for the channel, so the client's
+       chat window matches its main window. Absent with colour off. */
+    {
+        CHAR_DATA *who = d->original != NULL ? d->original : d->character;
+        const char *colour = who != NULL
+            ? color_name( who, channel_color_category( channel ) ) : NULL;
+
+        if ( colour != NULL )
+        {
+            toc_strlcat( json, ",\"color\":", sizeof(json) );
+            gmcp_json_append_quoted( json, sizeof(json), colour );
+        }
+    }
     toc_strlcat( json, ",\"time\":", sizeof(json) );
     snprintf( number, sizeof(number), "%ld", (long)current_time );
     toc_strlcat( json, number, sizeof(json) );

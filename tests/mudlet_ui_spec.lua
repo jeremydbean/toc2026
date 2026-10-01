@@ -172,6 +172,29 @@ check("a tell is not in the Chat tab",
   (chat[2] or ""):find("You tell Bob") == nil, chat[2])
 check("but it is kept", #tocMudlet.chatLog >= 2, #tocMudlet.chatLog)
 
+-- ------------------------------------------------ the player's own colours
+tocMudlet.chatLog = {}
+gmcp.Comm.Channel = { channel = "gossip", speaker = "Alaric", text = "hi",
+                      time = 0, color = "bright_magenta" }
+tocMudlet.onChannel()
+local coloured = tocMudlet.chatLog[#tocMudlet.chatLog].line
+check("a chosen colour is drawn as Mudlet draws it",
+  coloured:find("<255,0,255>Alaric: hi") ~= nil, coloured)
+
+gmcp.Comm.Channel = { channel = "gossip", speaker = "Alaric", text = "hi",
+                      time = 0 }
+tocMudlet.onChannel()
+local plain = tocMudlet.chatLog[#tocMudlet.chatLog].line
+check("no colour sent keeps the package's own",
+  plain:find("<138,180,255>Alaric: hi") ~= nil, plain)
+
+gmcp.Comm.Channel = { channel = "say", speaker = "Alaric", text = "hi",
+                      time = 0, color = "not-a-colour" }
+tocMudlet.onChannel()
+local unknown = tocMudlet.chatLog[#tocMudlet.chatLog].line
+check("an unknown name falls back rather than breaking the line",
+  unknown:find("Alaric: hi") ~= nil, unknown)
+
 -- ------------------------------------------------ the affects panel
 local shown = {}
 tocMudlet.ui.affects = { echo = function(_, text) shown[#shown + 1] = text end }
@@ -232,6 +255,18 @@ local questText = text(tocMudlet.ui.quest)
 check("an emergency says so", questText:find("EMERGENCY") ~= nil, questText)
 check("and names the target", questText:find("cooshee") ~= nil, questText)
 check("and says Kill for a kill quest", questText:find("Kill") ~= nil, questText)
+check("an old server's quest has no last-seen line",
+  questText:find("last seen") == nil, questText)
+
+tocMudlet.ui.quest = console()
+gmcp.Char.Quest = { active = true, kind = "normal", countdown = 12,
+                    target = "a cooshee", kill = true,
+                    room = "The Edge of the Forest", area = "Dresden" }
+tocMudlet.onQuest()
+local whereText = text(tocMudlet.ui.quest)
+check("the quest says where it was last seen",
+  whereText:find("last seen near The Edge of the Forest, Dresden") ~= nil, whereText)
+check("on its own line", whereText:find("<br>") ~= nil, whereText)
 
 -- ------------------------------------------------ the target strip
 tocMudlet.ui.target = console()

@@ -507,6 +507,28 @@ static const CHANNEL_META channel_meta_table[] =
     { NULL,        NULL,            0,             0 }
 };
 
+/*
+ * The colour category a channel is printed in, for a client drawing it
+ * somewhere else. The register has most of them; say and tell are not in
+ * it, because HISTORY does not replay either.
+ */
+int channel_color_category( const char *channel )
+{
+    int i;
+
+    if ( channel == NULL )
+        return COL_REGULAR;
+    if ( !str_cmp( channel, "say" ) )
+        return COL_SAYS;
+    if ( !str_cmp( channel, "tell" ) )
+        return COL_TELL;
+    for ( i = 0; channel_meta_table[i].name != NULL; i++ )
+        if ( !str_cmp( channel, channel_meta_table[i].name ) )
+            return channel_meta_table[i].colour;
+    return COL_REGULAR;
+}
+
+
 #define CHANNEL_LOG_MAX 10
 
 static HISTORY_LINE channel_log[CHANNEL_LOG_MAX][CHANNEL_HISTORY_LINES];
