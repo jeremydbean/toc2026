@@ -53,17 +53,11 @@ class TrainingDummyTests(unittest.TestCase):
         is_safe = self.fight.split("bool is_safe(", 1)[1][:900]
         self.assertIn("ROOM_ARENA", is_safe)
 
-    def test_the_dummy_and_the_way_in_both_reset(self) -> None:
+    def test_the_dummy_resets_and_nothing_else_does(self) -> None:
+        """No portal any more: the yard is a room you walk into."""
         self.assertRegex(self.area, r"M 0 2400 1 2419")
-        # The Grand Knight's sparring room, whose description has had
-        # practice dummies and sparring circles in it all along.
-        self.assertRegex(self.area, r"O 0 2404 0 4462")
-
-    def test_the_way_in_costs_nothing(self) -> None:
-        """A portal's value[0] of 1 charges 50 gold, which is not what
-        a training yard is for."""
-        self.assertRegex(self.area, r"\n30 0 0\r?\n0 2419 0 0 0")
-
+        self.assertNotIn("#OBJECTS", self.area)
+        self.assertNotRegex(self.area, r"\nO 0 ")
     # ----------------------------------------------------------- nobody dies
     def test_the_absorb_sits_on_the_damage_subtraction(self) -> None:
         """The same chokepoint invulnerability uses.
@@ -196,31 +190,19 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn("dummy->dam_type", self.dummy)
 
     # ------------------------------------------------- getting out
-    def test_leave_is_a_command_and_only_works_in_the_yard(self) -> None:
-        """You get in by entering the practice ring, so the way out
-        should be the same shape rather than a compass direction."""
-        interp = read("src", "interp.c")
-        self.assertRegex(interp, r'\{ "leave",\s+do_leave,')
-        body = self.dummy.split("void do_leave(", 1)[1].split("\n}", 1)[0]
-        self.assertIn("ROOM_VNUM_TRAINING_YARD", body)
-        self.assertIn("ROOM_VNUM_YARD_DOOR", body)
-        self.assertIn("#define ROOM_VNUM_YARD_DOOR         4462", self.merc)
-
-    def test_leaving_mid_run_still_gives_you_the_numbers(self) -> None:
-        """Walking out would otherwise throw away the only reason to
-        have been in there."""
-        body = self.dummy.split("void do_leave(", 1)[1].split("\n}", 1)[0]
-        self.assertIn("dummy_report(", body)
-
-    def test_the_yard_has_no_walking_exit(self) -> None:
-        """You arrive through the ring and you leave through it.
-
-        Removing the exit makes LEAVE the only way out on foot, so
-        the two things below are what stop that being a trap.
-        """
+    def test_down_then_south_and_north_back_out(self) -> None:
+        """The owner's ruling: down from the centre of the Oak Tree
+        Square, then south into the yard; north walks back out."""
         room = self.area.split("#2419", 1)[1].split("\n#", 1)[0]
-        self.assertNotRegex(room, r"\nD\s*\d",
-                            "the yard has a walking exit again")
+        self.assertRegex(room, r"\nD0\r?\n[^\n]*\r?\n~\r?\n~\r?\n0 -1 4649")
+        self.assertEqual(1, len(re.findall(r"\nD\s*\d", room)),
+                         "the yard has a second walking exit")
+        # Within #ROOMS: the same vnum also names a mobile and an object.
+        dresden = read("area", "dresden.are").split("#ROOMS", 1)[1]
+        hall = dresden.split("#4649", 1)[1].split("\n#", 1)[0]
+        self.assertRegex(hall, r"\nD2\r?\n[^\n]*\r?\n~\r?\n~\r?\n0 -1 2419")
+        self.assertRegex(dresden.split("#2401", 1)[1].split("\n#", 1)[0],
+                         r"\nD5\r?\n[^~]*~[^~]*~\r?\n\S+ -?\d+ 4649")
 
     def test_nobody_can_be_shut_in_the_yard(self) -> None:
         """With no exit, RECALL is the escape hatch for a player who
@@ -234,17 +216,17 @@ class TrainingDummyTests(unittest.TestCase):
                          "the yard became no-recall and is now a trap")
 
     def test_the_room_says_how_to_get_out(self) -> None:
-        """The only way out has to be discoverable by looking."""
+        """The way out has to be discoverable by looking."""
         room = self.area.split("#2419", 1)[1].split("\n#", 1)[0]
-        self.assertIn("LEAVE RING", room)
-
-    def test_leave_takes_the_ring_by_name(self) -> None:
-        """LEAVE RING is what the room tells you to type."""
-        body = self.dummy.split("void do_leave(", 1)[1].split("\n}", 1)[0]
-        self.assertIn('str_prefix( arg, "ring" )', body)
-        # A bare LEAVE still works: there is only one thing to leave.
-        self.assertIn("arg[0] != '\\0'", body)
-
+        self.assertIn("North leads", room)
+        self.assertIn("HELP DUMMY", room)
+    def test_there_is_no_leave_command(self) -> None:
+        """LEAVE RING went with the ring: north is the way out."""
+        self.assertNotIn('{ "leave",', read("src", "interp.c"))
+        self.assertNotIn("do_leave", read("src", "interp.h"))
+        self.assertNotIn("void do_leave(", self.dummy)
+        self.assertNotIn("ROOM_VNUM_YARD_DOOR", self.merc)
+        self.assertNotIn("0 LEAVE~", read("area", "commands.are"))
     # --------------------------------------------------------- reset
     def test_reset_clears_the_numbers_and_works_mid_run(self) -> None:
         """Reported in play.  The stance going back to default while
@@ -631,25 +613,28 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn("Syntax: dummy leaderboard", topic)
 
     # ------------------------------------------------ in and out by name
-    def test_the_way_in_is_enter_ring(self) -> None:
-        """The route generator names a portal by its first keyword, so
-        the ring's keywords lead with "ring" -- otherwise the published
-        route says ENTER PRACTICE."""
-        ring = self.area.split("#2404", 1)[1].replace("\r", "").split("\n")
-        self.assertTrue(ring[1].startswith("ring "), ring[1])
+    def test_the_way_in_is_down_then_south(self) -> None:
+        """What the published route, WALK DUMMY and the help all say."""
         import json
         routes = json.loads(read("webadmin", "directions.json"))["routes"]
         yard = [r for r in routes if r.get("vnum") == 2419][0]
-        self.assertTrue(yard["commands"].endswith(";enter ring"),
-                        yard["commands"])
+        self.assertEqual(yard["commands"], "d;s")
 
-    def test_the_sparring_room_says_what_to_type(self) -> None:
-        dresden = read("area", "dresden.are")
-        room = dresden.split("#4462", 1)[1].split("\n#", 1)[0]
-        self.assertIn("ENTER", room)
-        self.assertIn("RING to step through", room)
-        self.assertIn("LEAVE RING", room)
+    def test_the_entrance_hall_points_south(self) -> None:
+        """The room you pass through says what is beyond it."""
+        dresden = read("area", "dresden.are").split("#ROOMS", 1)[1]
+        hall = dresden.split("#4649", 1)[1].split("\n#", 1)[0]
+        self.assertIn("To the south a low archway opens onto a training yard",
+                      hall)
+        self.assertIn("HELP DUMMY", hall)
 
+    def test_a_second_mortal_is_told_to_wait(self) -> None:
+        """'That room is private right now' does not tell anybody to
+        wait their turn."""
+        move = read("src", "act_move.c")
+        block = move.split("if ( !can_enter_private_room( ch, to_room ) )", 1)[1]
+        self.assertIn("to_room->vnum == ROOM_VNUM_TRAINING_YARD", block[:400])
+        self.assertIn("Somebody is already training in the yard", block[:400])
     def test_the_help_gives_the_way_there_from_the_route(self) -> None:
         """Written directions go stale when the world changes; these are
         checked against the generated route, so they cannot."""
@@ -657,7 +642,7 @@ class TrainingDummyTests(unittest.TestCase):
         routes = json.loads(read("webadmin", "directions.json"))["routes"]
         yard = [r for r in routes if r.get("vnum") == 2419][0]
         walk = []
-        for step in yard["steps"][:-1]:          # the last is the ring
+        for step in yard["steps"]:
             m = re.fullmatch(r"(\w+) x(\d+)", step)
             walk.append("%s %s" % (m.group(1), m.group(2)) if m else step)
         expected = ", ".join(walk)
@@ -665,7 +650,7 @@ class TrainingDummyTests(unittest.TestCase):
         topic = topic.split("0 DUMMY TRAINING YARD~", 1)[1].split("\n~", 1)[0]
         flat = " ".join(topic.split())
         self.assertIn(expected, flat, "HELP DUMMY's directions are stale")
-        for words in ("WALK DUMMY", "ENTER RING", "LEAVE RING"):
+        for words in ("WALK DUMMY", "North walks you back out"):
             self.assertIn(words, topic, words)
 
     # ------------------------------------------ the board is runtime state
@@ -722,15 +707,6 @@ class TrainingDummyTests(unittest.TestCase):
                         body.index("switch( obj->value[0])"))
         self.assertGreater(body.index("can_enter_private_room( ch, to_room )"),
                            body.index("to_room = get_room_index"))
-
-    def test_the_ring_sits_on_one_line(self) -> None:
-        """An object's long description ends at its ~ on the same line;
-        a line break before it is a blank line under the object, since
-        the game adds its own."""
-        ring = self.area.split("#2404", 1)[1].split("\n#", 1)[0]
-        lines = ring.replace("\r", "").split("\n")
-        # [1] keywords, [2] short, [3] long -- ending on its own ~.
-        self.assertTrue(lines[3].endswith("~"), repr(lines[3]))
 
     def test_walk_dummy_finds_it(self) -> None:
         """The Mudlet walker matches the published route's area and

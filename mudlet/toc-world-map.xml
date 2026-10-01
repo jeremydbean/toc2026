@@ -6328,6 +6328,7 @@
   </room>
   <room id="2419" area="25" title="The Training Yard" environment="2">
    <coord x="0" y="0" z="0" />
+   <exit direction="north" target="4649" />
   </room>
   <room id="2420" area="23" title="Battle Road" environment="2">
    <coord x="2" y="0" z="0" />
@@ -10897,6 +10898,7 @@
   <room id="4649" area="23" title="Entrance to the Hall of Hero's." environment="1">
    <coord x="0" y="0" z="-1" />
    <exit direction="north" target="4650" />
+   <exit direction="south" target="2419" />
    <exit direction="up" target="2401" />
   </room>
   <room id="4650" area="23" title="Hall of Relaxation" environment="1">

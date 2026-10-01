@@ -854,7 +854,12 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
 
     if ( !can_enter_private_room( ch, to_room ) )
     {
-	send_to_char( "That room is private right now.\n\r", ch );
+	/* The training yard is the one-person room players meet most,
+	   and "private" does not tell them to wait their turn. */
+	send_to_char( to_room->vnum == ROOM_VNUM_TRAINING_YARD
+	    ? "Somebody is already training in the yard.  Wait for them to "
+	      "come out.\n\r"
+	    : "That room is private right now.\n\r", ch );
 	runner = 2;
 	return;
     }

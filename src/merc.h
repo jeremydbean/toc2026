@@ -843,9 +843,6 @@ struct  kill_data
 /* The highest attack_table index dam_message will name. */
 #define MAX_DAMAGE_MESSAGE 32
 #define ROOM_VNUM_TRAINING_YARD     2419
-/* The Grand Knight's sparring room in Dresden, where the practice
-   ring into the yard lies and where LEAVE RING brings you back. */
-#define ROOM_VNUM_YARD_DOOR         4462
 #define MOB_VNUM_FIDO              3090
 #define MOB_VNUM_CITYGUARD         4456
 #define MOB_VNUM_VAMPIRE           3404

@@ -929,12 +929,11 @@ static void dummy_stand_down( CHAR_DATA *ch, CHAR_DATA *dummy )
 
 /*
  * Called from char_from_room, so it is every way out of the yard --
- * a recall, a teleport, a quit. Leaving mid-run abandons the run and
- * puts the vitals back now, while still standing in the yard: a
- * snapshot carried out could be cashed in later by starting a run at
- * full, leaving, getting hurt somewhere else and coming back to end
- * it. LEAVE RING reports first, so by the time it gets here there is
- * nothing left to do.
+ * walking north, a recall, a teleport, a quit. Leaving mid-run
+ * abandons the run and puts the vitals back now, while still standing
+ * in the yard: a snapshot carried out could be cashed in later by
+ * starting a run at full, leaving, getting hurt somewhere else and
+ * coming back to end it.
  */
 void dummy_left_yard( CHAR_DATA *ch )
 {
@@ -1778,9 +1777,9 @@ static void dummy_command( CHAR_DATA *ch, char *argument )
     if ( dummy == NULL )
     {
         send_to_char(
-            "There is no training dummy here.  The yard is through the\n\r"
-            "practice ring in the Grand Knight's sparring room in Dresden;\n\r"
-            "WALK DUMMY in Mudlet takes you there.\n\r",
+            "There is no training dummy here.  The yard is down the stairs\n\r"
+            "in the centre of the Oak Tree Square, then south; WALK DUMMY\n\r"
+            "in Mudlet takes you there.\n\r",
             ch );
         return;
     }
@@ -2037,60 +2036,6 @@ static void dummy_command( CHAR_DATA *ch, char *argument )
     dummy_menu( ch, dummy );
 }
 
-
-/*
- * You get into the yard by entering the practice ring, so you should
- * get out of it the same way round.  Walking north still works; this
- * is the command the way in leads you to expect.
- */
-void do_leave( CHAR_DATA *ch, char *argument )
-{
-    char arg[MAX_INPUT_LENGTH];
-    ROOM_INDEX_DATA *back;
-
-    one_argument( argument, arg );
-
-    if ( ch->in_room == NULL
-    ||   ch->in_room->vnum != ROOM_VNUM_TRAINING_YARD )
-    {
-        send_to_char( "There is nothing here to leave.  EXITS lists the "
-                      "ways out.\n\r", ch );
-        return;
-    }
-
-    /*
-     * LEAVE RING is the signposted form and the one the room tells
-     * you.  A bare LEAVE works because there is only one thing here
-     * to leave, but an argument that names something else is a typo
-     * worth saying so about rather than silently obeying.
-     */
-    if ( arg[0] != '\0'
-    &&   str_prefix( arg, "ring" ) && str_prefix( arg, "yard" )
-    &&   str_prefix( arg, "practice" ) )
-    {
-        send_to_char( "Leave what?  The practice ring is the way out.\n\r",
-                      ch );
-        return;
-    }
-
-    if ( ( back = get_room_index( ROOM_VNUM_YARD_DOOR ) ) == NULL )
-    {
-        send_to_char( "The practice ring will not open.\n\r", ch );
-        return;
-    }
-
-    /* Walking out mid-run would throw away the only reason to have
-       been in here, so take the reading on the way past. */
-    if ( !IS_NPC(ch) && ch->pcdata != NULL && ch->pcdata->dummy_started != 0 )
-        dummy_report( ch, dummy_in_room( ch ) );
-
-    act( "$n ducks back out through the practice ring.", ch, NULL, NULL,
-         TO_ROOM );
-    char_from_room( ch );
-    char_to_room( ch, back );
-    act( "$n steps out of the practice ring.", ch, NULL, NULL, TO_ROOM );
-    do_look( ch, "auto" );
-}
 
 
 /*

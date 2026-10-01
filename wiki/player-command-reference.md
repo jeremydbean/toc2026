@@ -133,6 +133,7 @@ bank commands require the appropriate NPC or room.
 | `confuse`, `ego whip`, `mindblast`, `nightmare`, `pyrotechnics`, `torment` | Specialized magical or psionic combat |
 | `mindbar`, `mindleech`, `enervate`, `psionic`, `psychic`, `transfusion` | Specialized psionic defense, draining, and healing abilities |
 | `topten` | Show supported combat or PK ranking information |
+| `dummy`, `dummy report`, `dummy leaderboard` | The training yard: set up the dummy, read a run, see the benchmark board (down then south from the Oak Tree Square) |
 
 This is not a skill list. `skills` and `spells` are authoritative for the
 character because learned commands and level gates vary by build.

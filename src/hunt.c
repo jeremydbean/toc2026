@@ -811,9 +811,18 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
         wizinfo(buf, LEVEL_IMMORTAL);
         return;
     }
+    /*
+     * A hunter stops at the edge of a room no mobile may enter, exactly
+     * as it stops at a safe one. Wandering has always refused a NO_MOB
+     * room (mobile_update), but hunting asked only about SAFE -- so a
+     * city guard hunting a WANTED player followed them to the altar,
+     * which is NO_MOB and not SAFE, and the Temple filled with guards.
+     */
     else if ( ch->in_room->exit[dir] != NULL
 	      && ch->in_room->exit[dir]->u1.to_room != NULL
-	      && IS_SET(ch->in_room->exit[dir]->u1.to_room->room_flags,ROOM_SAFE) && !ANNOY)
+	      && ( IS_SET(ch->in_room->exit[dir]->u1.to_room->room_flags,ROOM_SAFE)
+	        || IS_SET(ch->in_room->exit[dir]->u1.to_room->room_flags,ROOM_NO_MOB) )
+	      && !ANNOY)
     {
 	if (ch->position != POS_RESTING)
 	    do_rest(ch,"");

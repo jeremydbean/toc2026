@@ -23,48 +23,30 @@ ABV 0 0 S
 
 #0
 
-#OBJECTS
-#2404
-ring practice training yard portal~
-a practice ring~
-A practice ring is chalked into one of the sparring circles here.~
-~
-30 0 0
-0 2419 0 0 0
-0 1000 0 P
-E
-ring practice yard~
-A twenty-foot circle like the others, but chalked twice over and scuffed
-into a shallow bowl by generations of feet.  Step into it and you are in
-the training yard, alone with the dummy.  HELP DUMMY explains the rest.
-~
-
-#0
-
 #ROOMS
 #2419
 The Training Yard~
-A square of hard-packed earth behind the Grand Knight's sparring room,
-walled on every side, with room in it for one fighter at a time.  A dummy
-stands at the centre on a weighted post, leaning slightly, sackcloth split
-and resewn along every seam.  Somebody has chalked a tally on the wall and
-given up counting.
+A square of hard-packed earth beneath the great oak, south of the
+entrance to the Hall of Heroes, walled on every side and with room in it
+for one fighter at a time.  A dummy stands at the centre on a weighted
+post, leaning slightly, sackcloth split and resewn along every seam.
+Somebody has chalked a tally on the wall and given up counting.
 
-Nothing dies here.  That is the whole point of the place.  The practice
-ring is underfoot where you came through it; LEAVE RING steps back out,
-and HELP DUMMY explains everything the yard can tell you.
+Nothing dies here.  That is the whole point of the place.  North leads
+back to the entrance hall, and HELP DUMMY explains everything the yard
+can tell you.
 ~
 0 LV 1
-E
-ring practice~
-The ring you came in by, scuffed into the earth.  LEAVE RING takes you
-back to the sparring room.
+D0
+The entrance to the Hall of Heroes.
 ~
+~
+0 -1 4649
 E
 dummy post tally~
 The tally runs to four figures before the chalk gives out.  Underneath,
 in a different hand: DUMMY sets it up, DUMMY REPORT tells you how you
-did, LEAVE RING gets you out.
+did.
 ~
 S
 
@@ -72,7 +54,6 @@ S
 
 #RESETS
 M 0 2400 1 2419
-O 0 2404 0 4462
 S
 
 #$

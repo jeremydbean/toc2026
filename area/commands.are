@@ -255,29 +255,26 @@ Syntax: dummy                  the menu, and what it is set to
         dummy reset            back to the standard, ranked fight
         dummy report           stop early and read the numbers
         dummy leaderboard      the benchmark leaderboard
-        leave ring             step back out to the sparring room
 
 A training dummy you can hit as hard as you like.
 
 WHERE IT IS
-  In the Training Yard, through the practice ring in the Grand Knight's
-  sparring room in Dresden.
+  In the Training Yard, beneath the great oak in the centre of the Oak
+  Tree Square.  From the centre of the square: down, south.  Go down the
+  staircase in the tree to the Entrance to the Hall of Heroes, and the
+  yard is through the archway to the south.  North walks you back out.
 
-  In Mudlet, WALK DUMMY walks you there.  On foot from the Oak Tree
-  Square: east 7, north 5, open door, north 3, open door, north - which
-  is the sparring room.
+  In Mudlet, WALK DUMMY walks you there.  Anybody can get there, whatever
+  their class or guild.
 
-GETTING IN AND OUT
-  ENTER RING   step through the practice ring into the yard
-  KILL DUMMY   start a run
-  LEAVE RING   step back out to the sparring room
+ONE AT A TIME
+  The yard takes one fighter at a time.  While somebody is in there you
+  are told they are training and to wait for them to come out -
+  immortals excepted - so a run is never shared and never interrupted.
 
-  LEAVE RING is the only way out on foot; RECALL works as well.  Leave
-  in the middle of a run and you are given the report on the way past.
-
-The yard takes one fighter at a time.  While somebody is in there the
-ring will not let anyone else through - immortals excepted - so a run
-is never shared and never interrupted.
+  Walk out in the middle of a run, or recall, and the run is abandoned:
+  you are put back the way you were when it began.  DUMMY REPORT first
+  if you want the numbers.
 
 THE RULES OF THE YARD
   Neither of you can die there.  The dummy soaks up everything, and its
@@ -380,7 +377,7 @@ READING THE REPORT
   After a ranked run, the board: this run, your personal best, where you
   stand among everybody who has run it, and how far the record is.
 
-See also: LEADERBOARD, LEAVE, COMPARE, LORE, DAMAGENUMBERS
+See also: LEADERBOARD, COMPARE, LORE, DAMAGENUMBERS
 ~
 
 0 LEADERBOARD BENCHMARK~
@@ -417,24 +414,6 @@ anybody has run and you earn the achievement Top of the Board.
 To run it: DUMMY RESET in the training yard, then KILL DUMMY.
 
 See also: DUMMY, ACHIEVEMENTS
-~
-
-0 LEAVE~
-Syntax: leave ring
-        leave
-
-Steps you out of the Training Yard and back into the Grand Knight's
-sparring room in Dresden.  You got in by entering the practice ring, so
-this is the way back out, and it is the only way out on foot.  RECALL
-works from there too.
-
-If a training run is going when you type it, you get the report on the
-way past rather than losing it.
-
-Anywhere else, there is nothing to leave - use a direction, or EXITS to
-see which ones there are.
-
-See also: DUMMY, EXITS, ENTER, RECALL
 ~
 
 0 GMCP~
@@ -1018,11 +997,11 @@ command named here for the detail.
   figure - so DAMAGENUMBERS worked for every weapon except the odd
   ones, and for bare hands in some cases.  Reported by Alaric.
 
-  A training yard, and a dummy in it that cannot be killed.  The
-  practice ring into it is in the Grand Knight's sparring room in
-  Dresden - WALK DUMMY in Mudlet takes you there - and inside, KILL
-  DUMMY.  HELP DUMMY explains all of it.  The yard takes one fighter
-  at a time, so nobody else can walk into your run.
+  A training yard, and a dummy in it that cannot be killed.  Go down
+  the staircase in the centre of the Oak Tree Square, then south -
+  WALK DUMMY in Mudlet takes you there - and KILL DUMMY.  HELP DUMMY
+  explains all of it.  The yard takes one fighter at a time, so nobody
+  else can walk into your run.
 
   Every run is the standard fight by default: twenty-five rounds, then a
   bell, against a dummy at your own level that fights normally - it
@@ -1052,8 +1031,8 @@ command named here for the detail.
   damage per second, per swing and per round, and everything it did
   to you.  Set the dummy up however the question needs: any level,
   four shapes, nine damage types, a spell for it to cast, haste, a
-  different number of rounds, or DUMMY ENDLESS for a run with no bell
-  and a dummy that defends itself.  LEAVE RING takes you back out.
+  different number of rounds, or DUMMY ENDLESS for a run with no
+  bell.
 
   A portal now refuses to take you into a private room that is full,
   the way walking in always has.  It used to be the one way past.
@@ -1067,6 +1046,13 @@ command named here for the detail.
   line below the quest lists who else is online - only players you
   could see, so nobody wizi, cloaked, stealthed or hidden.  Mudlet
   offers the 1.3.0 package update automatically.
+
+  City guards hunting a wanted player no longer follow them into the
+  Temple.  A hunter stops at the edge of a room mobiles may not enter,
+  as it always has at a safe one.
+
+  If WALK DUMMY in Mudlet still heads somewhere else, TOCGUI ATLAS
+  reloads the map with the yard where it is now.
 
   POKE pokes again.  It was taken as the start of the longer command
   POKER, so the social could never be used.  A word that is exactly a

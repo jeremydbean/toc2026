@@ -245,6 +245,21 @@ successful hostile shot, an NPC may move toward the archer and retaliate.
 consequences. Read `help pkill`, `help murder`, and the server rules before
 using it.
 
+### The Training Yard
+
+A dummy that cannot be killed, for finding out what your gear and spells
+actually do. From the centre of the Oak Tree Square go `down`, then
+`south`; `north` walks back out, and in Mudlet `walk dummy` takes you
+there. The yard takes one fighter at a time.
+
+`kill dummy` starts the standard fight: twenty-five rounds against a dummy
+at your level that dodges, parries, blocks and hits back. Neither of you
+can die there, nothing is learned there, and when the run ends you are put
+back the way you were when it began rather than healed. The report breaks
+the fight down attack by attack, both ways, and the standard fight is
+ranked on `dummy leaderboard`. `dummy` alone shows every setting; change
+any of them and the run is not ranked. See `help dummy`.
+
 ### Rest And Recovery
 
 Use `rest`, `sit`, `sleep`, `stand`, and `wake` to control position and recovery.

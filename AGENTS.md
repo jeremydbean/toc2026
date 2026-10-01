@@ -1362,6 +1362,16 @@ seen.
 Exclude another area by name there rather than by adding a second
 mechanism.
 
+## Hunters And NO_MOB
+
+A hunting mobile stops at the edge of a `ROOM_NO_MOB` room exactly as
+it stops at a `ROOM_SAFE` one (`hunt_victim` in `src/hunt.c`).
+Wandering has always refused NO_MOB; hunting asked only about SAFE, so
+city guards hunting a WANTED player -- `spec_guard` attacks one on
+sight, and a guard that has fought somebody hunts them -- followed
+their quarry to the Temple altar, which is NO_MOB and not SAFE, and the
+Temple filled with guards. `tests/test_hunt_no_mob.py`.
+
 ## Scattering Things Into The World
 
 `random_scatter_room()` in `src/db.c` is how anything picks a room to put
@@ -1661,18 +1671,27 @@ comparison:
 
 ## The Training Yard
 
-`src/dummy.c`. Mob 2400 in room 2419 (`area/dummy.are`), reached by
-the practice ring (object 2404) in the Grand Knight's Sparring Room,
-4462, in Dresden. Every rule below was either asked for by the owner
-or found broken live; keep them.
+`src/dummy.c`. Mob 2400 in room 2419 (`area/dummy.are`), reached on
+foot: down from the centre of the Oak Tree Square to the Entrance to
+the Hall of Heroes (4649), then south. North walks back out. Every rule
+below was either asked for by the owner or found broken live; keep
+them.
+
+**Check a public place by walking it as somebody who is not in a
+guild.** The yard first opened through a portal in the Grand Knight's
+Sparring Room, inside the Citadel of War, where a Guild Guard
+(`spec_guild_guard`, mob 4400) turns away everyone who is not a
+warrior. `tools/build_directions.py` does not model guards, so it
+published a route nobody else could walk, and the route looked fine.
 
 - **One fighter at a time.** The yard is `ROOM_SOLITARY` with
   `ROOM_ARENA`. `room_is_private()` counts mortals only and
   `can_enter_private_room()` lets immortals in, which is the rule.
-  `do_enter` asks it **before the portal's fare** -- portals used to be
-  the one way into any private room in the world that never asked.
-- **Nobody can be shut in.** No walking exit; LEAVE RING is the way
-  out on foot, so the yard must never become `ROOM_NO_RECALL`.
+  Walking in goes through `move_char`, which asks it and tells a second
+  mortal somebody is training. `do_enter` asks it too, **before a
+  portal's fare** -- portals used to be the one way into any private
+  room in the world that never asked.
+- **North is the way out**, and the yard is not `ROOM_NO_RECALL`.
 - **A run never heals.** Hit points, mana and moves are snapshotted
   at the first blow and put back at the stand-down -- never set to
   max, or the yard is a free heal for anybody who walks in half dead.
@@ -1717,10 +1736,10 @@ it whenever the standard changes. The file is runtime state and has to be named 
 `toc-deploy`'s `runtime_txt`, `validate.yml`'s `paths-ignore`, and the
 copy filter in `tests/live_mud.py` -- and a test checks all five.
 
-`tools/build_directions.py` names a portal by its **first keyword**,
-which is why the ring's keywords begin with `ring`: the published route
-and HELP DUMMY's walking directions both say ENTER RING, and a test
-pins the help's directions to the generated route.
+HELP DUMMY's walking directions are pinned to the generated route by a
+test, so moving the yard and forgetting the help fails the build. The
+area is named Training Dummy Yard so the Mudlet walker's name match
+finds it from WALK DUMMY.
 
 The quest master excludes the yard by file name beside Hyrule
 (`QUEST_EXCLUDED_YARD`): the dummy cannot die, so a quest to kill it
