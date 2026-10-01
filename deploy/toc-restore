@@ -93,6 +93,13 @@ done
 mkdir -p "$CURRENT/corpse" "$CURRENT/heroes" "$CURRENT/backups"
 echo "   $(ls "$CURRENT/player" | wc -l) characters, $(ls "$CURRENT/heroes" | wc -l) heroes in place"
 
+# area/shutdown.txt is tracked in git but is a runtime marker: when it
+# exists, toc-game.service's ExecCondition skips the start and the game
+# comes up dead. The wholesale rsync above brings it down from the
+# checkout, so a bare-box restore boots to nothing until it is removed.
+# toc-deploy rm's it for the same reason; recovery has to as well.
+rm -f "$CURRENT/area/shutdown.txt" "$CURRENT/area/shutdown"
+
 if [ "$DRILL" = 1 ]; then
     say "rehearsal complete"
     echo "A real restore would now: chown -R toc:toc $CURRENT,"
