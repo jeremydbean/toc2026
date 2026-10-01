@@ -1,7 +1,7 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1790836017
+LogO 1790836303
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -110,13 +110,13 @@ PsiKnown clairvoyance,confuse,ego whip,mindbar~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1668052
+Plyd 1668338
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2419
-HMV  1683 1828 938 938 343 343
+HMV  1473 1828 938 938 343 343
 NewGold 17
 NewPlat 5130
 NewCopp 45
