@@ -556,6 +556,37 @@ WEAR_SLOT_NAMES = {
     15: "Right Wrist", 16: "Wielded",      17: "Held",
 }
 
+# The gear finder's slots: every place the game equips, in wear-location
+# order (WEAR_LIGHT .. WEAR_HOLD), each with the wear flag that lets an
+# item go there. Rings, necks and wrists are pairs: the second of each is
+# ranked without the first one's top pick, so the best two differ.
+GEAR_FINDER_SLOTS = [
+    ("light",  "Light"),
+    ("finger", "Left Finger"),
+    ("finger", "Right Finger"),
+    ("neck",   "Neck (1st)"),
+    ("neck",   "Neck (2nd)"),
+    ("body",   "Body"),
+    ("head",   "Head"),
+    ("legs",   "Legs"),
+    ("feet",   "Feet"),
+    ("hands",  "Hands"),
+    ("arms",   "Arms"),
+    ("shield", "Shield"),
+    ("about",  "About Body"),
+    ("waist",  "Waist"),
+    ("wrist",  "Left Wrist"),
+    ("wrist",  "Right Wrist"),
+    ("wield",  "Wielded"),
+    ("hold",   "Held"),
+]
+# apply_ac() in handler.c: armour counts three times on the body, twice on
+# the head, the legs and about the body, and once anywhere else.
+GEAR_AC_MULTIPLIER = {"body": 3, "head": 2, "legs": 2, "about": 2}
+ITEM_TYPE_LIGHT = 1
+ITEM_TYPE_WEAPON = 5
+ITEM_TYPE_ARMOR = 9
+
 SEX_NAMES = ["neutral", "male", "female"]
 PLAYER_NAME_RE = re.compile(r"^[A-Za-z]{1,20}$")
 ALIGN_NAMES = [
@@ -3072,14 +3103,16 @@ async def get_best_gear(
     weights = CLASS_WEIGHTS[class_name]
     race_flag = RACE_FLAGS.get(race_name)
     
-    # Group by wear location
-    best_items = {} # location -> list of (score, item)
-    
+    # Every slot the game equips, in the order it lists them, and an
+    # entry for each even when nothing fits -- so a blank slot reads as
+    # "nothing at this level" rather than as a slot the finder forgot.
+    best_items: dict[str, list] = {key: [] for key, _label in GEAR_FINDER_SLOTS}
+
     for vnum, obj in parser.objects.items():
         # Level check
         if obj.level > level:
             continue
-            
+
         # Race check (exclude items restricted to OTHER races)
         flags2_decoded = decode_flags(obj.extra_flags2, ITEM_FLAGS2)
         restricted = False
@@ -3092,21 +3125,56 @@ async def get_best_gear(
                 else:
                     restricted = True # Restricted to another race
                     break
-        
+
         if restricted:
             continue
-        
+
+        try:
+            item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
+        except (TypeError, ValueError):
+            item_type_num = 0
+
+        # Where it can go. A light is worn as a light because of what it
+        # is, not because of a wear flag (wear_obj tests the item type),
+        # so lights were missing from the finder altogether. The
+        # "two-hands" wear flag is read by nothing in the game.
+        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
+        slots = []
+        if item_type_num == ITEM_TYPE_LIGHT:
+            slots.append("light")
+        for slot in wear_decoded:
+            if slot not in best_items or slot == "light":
+                continue
+            # Only weapons are wielded, and a weapon goes nowhere else.
+            if slot == "wield" and item_type_num != ITEM_TYPE_WEAPON:
+                continue
+            if item_type_num == ITEM_TYPE_WEAPON and slot != "wield":
+                continue
+            slots.append(slot)
+        if not slots:
+            continue
+
         # Calculate score
         score = 0.0
         breakdown = []
         affects_decoded = decode_applies(obj.affects)
-        
+
         for aff in obj.affects:
             loc_id = aff.get('location', 0)
             val = aff.get('modifier', 0)
             loc_name = APPLY_LOCATIONS.get(loc_id, '').lower()
-            
-            if loc_name in weights:
+
+            if loc_name.startswith("save vs") and "save vs spell" in weights:
+                # A save is better the lower it goes -- saves_spell()
+                # subtracts saving_throw -- so a positive one is a penalty.
+                # It was scored as a bonus, which put cursed kit on top.
+                # All five saves move the one saving_throw in affect_modify,
+                # so they share a weight.
+                w = weights["save vs spell"]
+                s = val * -w
+                score += s
+                breakdown.append(f"{loc_name.title()}: {val} x -{w} = {s:.1f}")
+            elif loc_name in weights:
                 w = weights[loc_name]
                 s = val * w
                 score += s
@@ -3116,14 +3184,8 @@ async def get_best_gear(
                 s = val * -1.0
                 score += s
                 breakdown.append(f"AC: {val} x -1 = {s:.1f}")
-        
-        # Also check values for weapons (avg damage)
-        try:
-            item_type_num = int(obj.item_type) if obj.item_type.isdigit() else 0
-        except:
-            item_type_num = 0
-            
-        if item_type_num == 5: # Weapon
+
+        if item_type_num == ITEM_TYPE_WEAPON:
             # values[1] is dice count, values[2] is dice size
             try:
                 d_num = int(obj.values[1])
@@ -3132,45 +3194,58 @@ async def get_best_gear(
                 s = avg_dam * 2.0
                 score += s # Weight weapon damage highly
                 breakdown.append(f"Dmg: {d_num}d{d_size} (avg {avg_dam:.1f}) x 2.0 = {s:.1f}")
-            except:
+            except (IndexError, TypeError, ValueError):
                 pass
-        
-        if score <= 0:
-            continue
-        
-        # Add to best items per slot
-        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
-        for slot in wear_decoded:
-            if slot == "take":
-                continue
-            
-            # Filter: Only weapons in wield slot
-            if slot == "wield" and item_type_num != 5:
-                continue
-                
-            # Filter: No weapons in armor slots (head, body, etc)
-            if item_type_num == 5 and slot not in ["wield", "two-hands"]:
-                continue
 
-            if slot not in best_items:
-                best_items[slot] = []
-            
+        # An armour piece's own AC is values[0..3] -- pierce, bash, slash
+        # and magic -- and it used to count for nothing, so plain armour
+        # and most shields scored zero and were never listed.
+        armour = 0.0
+        if item_type_num == ITEM_TYPE_ARMOR:
+            try:
+                armour = sum(int(v) for v in obj.values[:4]) / 4.0
+            except (TypeError, ValueError):
+                armour = 0.0
+
+        for slot in slots:
+            slot_score = score
+            slot_breakdown = list(breakdown)
+            if armour:
+                times = GEAR_AC_MULTIPLIER.get(slot, 1)
+                s = armour * times
+                slot_score += s
+                slot_breakdown.append(
+                    f"Armour: {armour:g} average x {times} on {slot} = {s:g}")
+            if not slot_breakdown:
+                slot_breakdown.append("No bonuses: it fills the slot and nothing more")
+
             best_items[slot].append({
-                "score": round(score, 2),
-                "score_breakdown": breakdown,
+                "score": round(slot_score, 2),
+                "score_breakdown": slot_breakdown,
                 "vnum": obj.vnum,
                 "name": obj.short_desc,
                 "level": obj.level,
                 "affects": affects_decoded,
                 "area": obj.area_name
             })
-    
-    # Sort and limit
+
+    # Sort and limit. Ties go to the higher-level item, then the vnum, so
+    # the same question always gets the same answer.
+    for items in best_items.values():
+        items.sort(key=lambda x: (-x['score'], -x['level'], x['vnum']))
+
     result = {}
-    for slot, items in best_items.items():
-        items.sort(key=lambda x: x['score'], reverse=True)
-        result[slot] = items[:limit]
-        
+    taken: dict[str, int] = {}
+    for key, label in GEAR_FINDER_SLOTS:
+        items = best_items[key]
+        if key in taken:
+            # The second of a pair: whatever topped the first is already
+            # worn there, so this one starts from the next best.
+            items = [i for i in items if i["vnum"] != taken[key]]
+        elif items:
+            taken[key] = items[0]["vnum"]
+        result[label] = items[:limit]
+
     return result
 
 

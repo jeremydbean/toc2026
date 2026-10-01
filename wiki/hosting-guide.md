@@ -555,6 +555,18 @@ maximum `50`). Example:
 /api/best_gear?class_name=warrior&race_name=dwarf&level=40&limit=10
 ```
 
+The response has one key for each of the eighteen slots the game equips,
+named and ordered as the equipment view shows them, and a slot nothing fits
+is present with an empty list. The second of each pair (Right Finger, Neck
+(2nd), Right Wrist) is ranked without the first one's top pick, so the best
+two are different items. The page shows the top pick for every slot first,
+then the ranked alternatives. Every item the class could wear at that level
+is ranked, including ones with no bonuses:
+an armour piece scores its own AC (multiplied the way `apply_ac()` does,
+three times on the body and twice on the head, legs and about the body),
+lights are listed under Light by item type, and a positive save counts
+against an item, because a lower save is the better one.
+
 List endpoints accept bounded pagination. `GET /api/mobs` and
 `GET /api/rooms` accept `limit`, `offset`, and `q`; `GET /api/objects` accepts
 `limit`, `offset`, and its existing filters, including `name`. The response

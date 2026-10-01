@@ -994,6 +994,15 @@ What has changed in the game lately, newest first.  Type HELP on any
 command named here for the detail.
 
 1 Oct 2026
+  The dashboard's gear finder names the best piece for each of your
+  eighteen slots for your class and level - both rings, both necks and
+  both wrists, two different items for each pair - then ranks every
+  item you could wear in each slot, Light included.  Plain
+  armour and shields were missing because their own armour class was
+  never counted, lights because they carry no wear flag, and an item
+  that made your saves worse was being ranked as if it made them
+  better.
+
   Staff can eat anything again, to destroy an item they carry.  It
   checked the character's level rather than their trust, so a builder
   trusted to immortal rank was told the item was not edible.

@@ -1654,13 +1654,34 @@
     function renderGear(data) {
         const results = byId("gear-results");
         const fragment = document.createDocumentFragment();
-        const slots = Object.entries(data).sort(([a], [b]) => a.localeCompare(b));
-        if (!slots.length) {
+        // The server sends every slot in the order the game lists them.
+        const slots = Object.entries(data);
+        if (!slots.some(([, items]) => items.length)) {
             results.replaceChildren(node("div", { className: "empty-state large", text: "No compatible scored gear was found." }));
             return;
         }
+        // The answer first: the single best piece for every slot, for this
+        // class at this level. The ranked alternatives follow per slot.
+        const loadout = node("section", { className: "gear-slot gear-loadout" }, [node("h3", { text: "Best in each slot" })]);
+        slots.forEach(([slot, items]) => {
+            const best = items[0];
+            const pick = best
+                ? node("button", { className: "text-button", text: stripMudColor(best.name), attrs: { type: "button" } })
+                : node("span", { text: "Nothing at this level" });
+            if (best) pick.addEventListener("click", () => void openWorldDetail("objects", best.vnum));
+            loadout.append(node("div", { className: "gear-item" }, [
+                node("div", {}, [node("small", { text: "Slot" }), node("div", { text: slot })]),
+                node("div", {}, [pick, best ? node("small", { text: ` #${best.vnum}` }) : null].filter(Boolean)),
+                node("div", {}, [node("small", { text: "Level" }), node("div", { text: best ? best.level : "-" })]),
+                node("div", {}, [node("small", { text: "Score" }), node("div", { text: best ? best.score : "-" })]),
+            ]));
+        });
+        fragment.append(loadout);
         slots.forEach(([slot, items]) => {
             const section = node("section", { className: "gear-slot" }, [node("h3", { text: slot })]);
+            if (!items.length) {
+                section.append(node("div", { className: "empty-state", text: "Nothing fits this slot at this level." }));
+            }
             items.forEach((item) => {
                 const details = node("details");
                 details.append(node("summary", { text: "Score details" }));
