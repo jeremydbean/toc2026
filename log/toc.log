@@ -21108,3 +21108,33 @@ Thu Oct  1 23:51:05 2026 :: Log Alaric [2497]: aq ga no
 Thu Oct  1 23:51:08 2026 :: Log Alaric [2497]: sc
 Thu Oct  1 23:51:10 2026 :: Sock.sinaddr:  3.149.57.90
 Thu Oct  1 23:51:11 2026 :: EOF encountered on read.
+Thu Oct  1 23:52:09 2026 :: Log Alaric [2497]: i
+Thu Oct  1 23:52:15 2026 :: Log Alaric [2497]: rem all
+Thu Oct  1 23:52:15 2026 :: Alaric did a remove all.
+Thu Oct  1 23:52:17 2026 :: Log Tyrant: load obj 29032
+Thu Oct  1 23:52:17 2026 :: Log Alaric [2497]: put all new
+Thu Oct  1 23:52:19 2026 :: Log Alaric [2497]: i
+Thu Oct  1 23:52:32 2026 :: Log Tyrant: spellup
+Thu Oct  1 23:52:32 2026 :: Spellup: Hermie placed in room 2497 by Tyrant.
+Thu Oct  1 23:52:40 2026 :: Log Alaric [2497]: get tru new
+Thu Oct  1 23:52:42 2026 :: Log Alaric [2497]: quaff tr
+Thu Oct  1 23:53:32 2026 :: Log Alaric [2497]: i
+Thu Oct  1 23:53:41 2026 :: Log Alaric [2497]: wear all
+Thu Oct  1 23:53:43 2026 :: Log Alaric [2497]: i
+Thu Oct  1 23:53:50 2026 :: Log Alaric [2497]: eq
+Thu Oct  1 23:54:01 2026 :: Log Alaric [2497]: wear all
+Thu Oct  1 23:54:30 2026 :: Log Alaric [2497]: give plat ty
+Thu Oct  1 23:54:33 2026 :: Log Alaric [2497]: give plat ty
+Thu Oct  1 23:54:37 2026 :: Log Alaric [2497]: give heart ty
+Thu Oct  1 23:54:45 2026 :: Log Tyrant: set obj heart align 0
+Thu Oct  1 23:54:49 2026 :: Log Alaric [2497]: give pot tyy
+Thu Oct  1 23:54:50 2026 :: Log Alaric [2497]: give pot tyy
+Thu Oct  1 23:54:52 2026 :: Log Alaric [2497]: give pot ty
+Thu Oct  1 23:54:52 2026 :: Log Alaric [2497]: give pot ty
+Thu Oct  1 23:54:57 2026 :: Log Tyrant: set obj heart align -0
+Thu Oct  1 23:55:42 2026 :: Log Alaric [2497]: wear all
+Thu Oct  1 23:55:49 2026 :: Log Alaric [2497]: give gir ty
+Thu Oct  1 23:55:52 2026 :: Log Alaric [2497]: give pot ty
+Thu Oct  1 23:55:53 2026 :: Log Alaric [2497]: give pot ty
+Thu Oct  1 23:56:14 2026 :: Sock.sinaddr:  3.149.57.90
+Thu Oct  1 23:56:14 2026 :: EOF encountered on read.
