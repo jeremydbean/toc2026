@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790816233
+LogO 1790816574
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,27 +15,27 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 50
-Plyd 219870
+Plyd 220211
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1167 1167 1100 1918 284 927
-NewGold 27
+HMV  1167 1167 1075 1918 190 927
+NewGold 44
 NewPlat 47
 NewCopp 46
 NewSilv 37
-BankCP 408715447
-IntTime 1790729884
-IntTotal 4715447
+BankCP 409737235
+IntTime 1790816284
+IntTotal 5737235
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 758
-AchQuests 117
+AchQuests 118
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -92,11 +92,11 @@ SesDead  0
 SesQuest 4
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 5564
-QuestStrk 6
+QuestPnts 5582
+QuestStrk 7
 CasinoWon  51
 CasinoLost 304
-QuestNext 2
+QuestNext 5
 Exp  112575
 Act  4261068
 AfBy 3678848
@@ -139,7 +139,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 32 32
+Cond 0 27 27
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
@@ -174,7 +174,7 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'mindbar'  16   3   0   0          0          0
+AffD 'mindbar'  16   8   0   0          0          0
 AffD 'titanic'   3  -1 100  13          0          0
 AffD 'titanic'   6  -1 500  12          0          0
 AffD 'titanic'   8  -1 500  14          0          0
