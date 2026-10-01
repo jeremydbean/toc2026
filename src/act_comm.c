@@ -2664,6 +2664,9 @@ void do_tell( CHAR_DATA *ch, char *argument )
             act("$E is AFK and may not respond right away.",ch,NULL,victim,TO_CHAR);
     }
 
+    /* Swedish and drunk slurring, so a tell reads like the speaker too. */
+    argument = speak_filter( ch, argument );
+
     /* Code Safety: snprintf and buffer safety */
     snprintf( buf, sizeof(buf), "{%02XYou tell %s '%s'{00\n\r",
         COL_TELL, victim->name, argument );
@@ -2755,6 +2758,9 @@ void do_reply( CHAR_DATA *ch, char *argument )
         else
             act("$E is AFK and may not respond right away.",ch,NULL,victim,TO_CHAR);
     }
+
+    /* Swedish and drunk slurring, matching say, tell and the channels. */
+    argument = speak_filter( ch, argument );
 
     /* Code Safety: snprintf */
     snprintf( buf, sizeof(buf), "{%02XYou reply to %s '%s'{00\n\r",

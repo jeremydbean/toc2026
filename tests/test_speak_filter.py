@@ -35,12 +35,11 @@ class SpeakFilterTests(unittest.TestCase):
 
     def test_speech_paths_apply_the_filter(self):
         comm = read("src", "act_comm.c")
-        say = comm[comm.index("void do_say("):]
-        say = say[:say.index("\n}")]
-        self.assertIn("speak_filter( ch, argument )", say)
-        chan = comm[comm.index("static void channel_say("):]
-        chan = chan[:chan.index("\n}")]
-        self.assertIn("speak_filter( ch, argument )", chan)
+        for fn in ("void do_say(", "static void channel_say(",
+                   "void do_tell(", "void do_reply("):
+            body = comm[comm.index(fn):]
+            body = body[:body.index("\n}")]
+            self.assertIn("speak_filter( ch, argument )", body, fn)
 
 
 if __name__ == "__main__":
