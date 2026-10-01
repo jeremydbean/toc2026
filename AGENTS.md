@@ -703,9 +703,16 @@ That is deliberate, not a bug to tidy up.
 a word, so PK standings, the wizlist, max-load state and the ban list
 had reached no backup since the initial commit.
 `tests/test_training_dummy.py` checks every entry against a file git
-tracks or the source writes. `toc-deploy` does **not** install this
-script; after changing it, install it on the VM by hand:
-`sudo install -m 0755 /srv/toc/build/deploy/windows-vm/toc-state-sync /usr/local/sbin/`.
+tracks or the source writes. `toc-deploy` installs this script, with
+itself, `toc-state-sync-check` and `toc-game-recovery`, at the end of
+every deploy that comes back healthy -- see below.
+
+**If the sync starts failing with "object file ... is empty"**, its
+clone is corrupt. It was, from 08:09 to 10:47 UTC on 2026-10-01, and no
+player save reached GitHub in that time. Move the clone aside and let
+the script re-clone: `mv /srv/toc/state-repo
+/srv/toc/state-repo.corrupt-<date>`, then start `toc-state-sync.service`
+and check the journal says `pushed`.
 
 **Tracking `log/` gave the old Pi trap a new route.** Running
 `--check-area` from the repository's own `area/` writes `log/toc.log`,
@@ -790,9 +797,21 @@ is not something to lose to a restart nobody expected. The queue is
 polled rather than read on write, so each step needs a moment before
 the next one is worth sending.
 
-Because the install step runs before the restart in the same run, a
-change to `toc-deploy` itself takes effect on the *next* deploy, not
-the one carrying it.
+**The host's copies of the deploy scripts are installed at the end of a
+healthy deploy.** This used to say an install step ran before the
+restart; there was none. A fix to `toc-deploy` or the state sync sat in
+git while the VM ran the old copy, and on 2026-10-01 that old
+`toc-deploy` -- which did not list `dpsboard.txt` as runtime state --
+copied git's benchmark board over the live one on every deploy,
+discarding the day's best runs. Now `toc-deploy` installs itself,
+`toc-state-sync`, `toc-state-sync-check` and `toc-game-recovery` from
+the build tree once the game answers healthy, so a change to any of them
+takes effect on the deploy that carries it, from the end of that run.
+
+**The webadmin queue runs commands as a stand-in character with no
+player data**, so anything that needs `pcdata` -- `dummy`, for one --
+does nothing from it. Use it for `fsave`, `announce` and staff commands
+that act on the world; do the rest in game.
 
 `toc-deploy` exists because doing this by hand is how `area/custom.are`
 went missing: it is tracked in git *and* listed in `area.lst`, so

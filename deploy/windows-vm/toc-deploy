@@ -157,6 +157,22 @@ while [ $n -lt 15 ]; do
         grep -q '"merc":true'; then
         say "healthy at $after"
         printf '   characters on disk: %s\n' "$(ls "$CURRENT/player" | wc -l)"
+
+        # Keep the host's copies of these scripts in step with the
+        # checkout that just came back healthy. Nothing used to install
+        # them, so a fix to this script or to the state sync sat in git
+        # while the VM ran the old copy -- which is how, on 2026-10-01,
+        # every deploy copied git's benchmark board over the live one.
+        # Only from a build that came back healthy, so a broken script
+        # cannot replace a working one; install(1) writes a new file, so
+        # the copy running now is not touched.
+        for s in toc-deploy toc-state-sync toc-state-sync-check toc-game-recovery; do
+            if [ -f "$BUILD/deploy/windows-vm/$s" ] &&
+               ! cmp -s "$BUILD/deploy/windows-vm/$s" "/usr/local/sbin/$s"; then
+                install -m 0755 "$BUILD/deploy/windows-vm/$s" "/usr/local/sbin/$s" &&
+                    printf '   installed %s\n' "$s"
+            fi
+        done
         exit 0
     fi
     n=$((n + 1)); sleep 3
