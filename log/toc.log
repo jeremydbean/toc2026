@@ -19518,3 +19518,14 @@ Thu Oct  1 12:00:15 2026 :: Spellup: Hermie gave Misery the full list (30 ticks)
 Thu Oct  1 12:19:45 2026 :: Sock.sinaddr:  79.124.56.214
 Thu Oct  1 12:22:43 2026 :: Sock.sinaddr:  185.93.89.79
 Thu Oct  1 12:22:44 2026 :: EOF encountered on read.
+Thu Oct  1 12:26:37 2026 :: Misery has quit.
+Thu Oct  1 12:26:37 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 12:27:53 2026 :: Sock.sinaddr:  192.168.0.1
+Thu Oct  1 12:27:56 2026 :: Loading Misery's playerfile
+Thu Oct  1 12:27:57 2026 :: Misery@192.168.0.1 has connected.
+Thu Oct  1 12:28:28 2026 :: Log Misery: set char self
+Thu Oct  1 12:28:36 2026 :: Log Misery: set char self class monk
+Thu Oct  1 12:28:41 2026 :: Log Misery: set char self guild monk
+Thu Oct  1 12:29:01 2026 :: Misery has quit.
+Thu Oct  1 12:29:01 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 12:29:09 2026 :: Sock.sinaddr:  192.168.0.1
