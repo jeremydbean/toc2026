@@ -1716,6 +1716,11 @@ published a route nobody else could walk, and the route looked fine.
   max, or the yard is a free heal for anybody who walks in half dead.
   `dummy_left_yard()` in `char_from_room` puts them back on any way
   out mid-run, because a snapshot carried out could be cashed in later.
+- **It cannot die, by any route.** The guard in `damage()` only covers
+  blows; a fatality, a death ray or a slay goes straight to `raw_kill`,
+  and a fatality backstab killed it. `raw_kill_internal` refuses the
+  dummy and stands it back up, and backstab never rolls a fatality on
+  it, because `fatality()` pays `group_gain` before it kills.
 - **Nothing is learned there.** `check_improve` returns in the yard.
 - **The dummy never holds a grudge.** `add_hate` refuses it, and the
   stand-down ends only this player's fight (`stop_fighting` with

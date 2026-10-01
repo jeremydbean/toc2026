@@ -2901,6 +2901,20 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         return;
     }
 
+    /* Every instant kill -- a fatality, a death ray, a slay -- arrives
+       here without passing the yard's guard in damage(), so this is the
+       one place that can promise the training dummy never dies. It
+       stands back up whole; whatever fight it was in is over. */
+    if ( is_training_dummy( victim ) )
+    {
+        stop_fighting( victim, true );
+        victim->hit = victim->max_hit;
+        victim->position = POS_STANDING;
+        act( "$n wobbles on its post and rights itself, unharmed.",
+             victim, NULL, NULL, TO_ROOM );
+        return;
+    }
+
     stop_fighting( victim, true );
 
     if(IS_SET(victim->act2,ACT2_LYCANTH) && IS_SWITCHED(victim) )
@@ -4621,6 +4635,13 @@ void do_backstab( CHAR_DATA *ch, char *argument )
         chance = 0;
 
     if(ch->pcdata->learned[gsn_fatality] < 2)
+        chance = 0;
+
+    /* The training dummy cannot die, so it cannot be finished either:
+       a fatality skipped damage() and the yard's guard on it, and killed
+       the dummy outright. The backstab lands as a backstab instead, and
+       counts on the meter like any other blow. */
+    if ( is_training_dummy( victim ) )
         chance = 0;
 
     if ((chance >= number_percent()) && chance !=0)

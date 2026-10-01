@@ -994,6 +994,12 @@ What has changed in the game lately, newest first.  Type HELP on any
 command named here for the detail.
 
 1 Oct 2026
+  The training dummy can no longer be finished off.  A fatality
+  backstab killed it outright, because an instant kill never passed
+  the check that keeps it standing.  Backstab it and you get an
+  ordinary backstab, counted on the meter like any other blow; and
+  anything else that kills on the spot now finds it back on its post.
+
   AFFECT now lists psionic wards.  MINDBAR, PSIONIC ARMOR and PSYCHIC
   SHIELD change no statistic - they are a named protection and a
   duration - and the list was skipping exactly that shape, so the one

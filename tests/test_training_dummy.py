@@ -848,5 +848,25 @@ class TrainingDummyTests(unittest.TestCase):
             self.assertNotIn(field, save, field + " reached save.c")
 
 
+    # ---------------------------------------------------- it cannot die
+    def test_no_instant_kill_can_finish_the_dummy(self) -> None:
+        """A fatality backstab killed it: instant kills skip damage(),
+        where the yard's guard lives, and go straight to raw_kill."""
+        code = without_comments(self.fight)
+        body = code.split("static void raw_kill_internal( CHAR_DATA", 1)[1]
+        body = body.split("ACT2_LYCANTH", 1)[0]
+        self.assertIn("is_training_dummy( victim )", body,
+                      "raw_kill_internal does not refuse the dummy")
+        self.assertIn("victim->hit = victim->max_hit", body)
+
+    def test_backstab_never_rolls_a_fatality_on_the_dummy(self) -> None:
+        """Refusing it in raw_kill alone would still have paid out
+        group_gain, which fatality() calls first."""
+        code = without_comments(self.fight)
+        roll = code.split("chance=ch->pcdata->learned[gsn_fatality]/20;", 1)[1]
+        roll = roll.split("fatality(ch,victim);", 1)[0]
+        self.assertRegex(roll, r"is_training_dummy\( victim \)\s*\)\s*chance = 0;")
+
+
 if __name__ == "__main__":
     unittest.main()
