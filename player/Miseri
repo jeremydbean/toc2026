@@ -1,7 +1,7 @@
 #PLAYER
 Name Miseri~
 Id   46467
-LogO 1790821695
+LogO 1790821928
 Vers 4
 Prom ~
 Ignoring ~
@@ -16,14 +16,14 @@ PsiKnown ~
 Cast none
 Levl 12
 Tru  70
-Plyd 4317
+Plyd 4550
 ListRemorts ~
 NumRemorts 0
 Note 0
 ReportsSeen 2 0 0
 Scro 22
-Room 4720
-HMV  146 146 1001 1001 66 131
+Room 4702
+HMV  146 146 1001 1001 131 131
 NewGold 236
 NewPlat 104
 NewCopp 1745
@@ -86,8 +86,8 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 31
-Trai 35
+Prac 30
+Trai 26
 Alig  -118
 Hit   8
 Dam   6
@@ -100,7 +100,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 136 991 166
-Cond 0 42 42
+Cond 0 46 46
 Alias / who~
 Alias ] recall~
 Alias k c 'chill touch'~
@@ -110,20 +110,28 @@ Sk 1 'blindness'
 Sk 1 'cancellation'
 Sk 43 'cause light'
 Sk 45 'chill touch'
+Sk 1 'cone of cold'
 Sk 1 'create skeleton'
 Sk 1 'create wraith'
 Sk 1 'create vampire'
 Sk 43 'butcher'
 Sk 1 'bewitch weapon'
 Sk 1 'curse'
+Sk 1 'death shroud'
+Sk 1 'dust devil'
 Sk 1 'earth travel'
 Sk 75 'embalm'
 Sk 1 'energy drain'
 Sk 1 'evil eye'
 Sk 1 'fly'
+Sk 1 'force sword'
 Sk 1 'haven'
+Sk 1 'icicle'
+Sk 43 'infravision'
 Sk 1 'major globe'
+Sk 1 'mana convert'
 Sk 1 'maze'
+Sk 1 'moonbeam'
 Sk 1 'pass door'
 Sk 1 'plague'
 Sk 1 'poison'
@@ -139,6 +147,7 @@ Sk 1 'skeletal hands'
 Sk 1 'tentacles'
 Sk 1 'trap the soul'
 Sk 1 'vampiric touch'
+Sk 1 'vortex'
 Sk 1 'weaken'
 Sk 1 'neutrality field'
 Sk 8 'axe'
@@ -160,6 +169,8 @@ Sk 100 'recall'
 Gr 'rom basics'
 Gr 'necro basics'
 Gr 'necro default'
+Gr 'necro elemental'
+Gr 'necro enhancement'
 Gr 'life & undeath'
 Gr 'necro maladictions'
 Gr 'necromancy'
