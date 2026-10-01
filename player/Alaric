@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790815316
+LogO 1790815658
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,14 +15,14 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 50
-Plyd 218953
+Plyd 219295
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1167 1167 1918 1918 552 927
-NewGold 16
+HMV  1167 1167 1509 1918 136 927
+NewGold 43
 NewPlat 47
 NewCopp 46
 NewSilv 37
@@ -35,7 +35,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 757
-AchQuests 114
+AchQuests 115
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -92,14 +92,14 @@ SesDead  0
 SesQuest 4
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 5448
-QuestStrk 3
+QuestPnts 5497
+QuestStrk 4
 CasinoWon  51
 CasinoLost 304
 QuestNext 30
 Exp  112575
 Act  4261068
-AfBy 3678848
+AfBy 3678904
 AfBy2 4104
 Comm 24576
 Mounted 0
@@ -139,11 +139,11 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 47 47
+Cond 0 41 41
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
-Sk 75 'mindbar'
+Sk 76 'mindbar'
 Sk 75 'mind leech'
 Sk 75 'telekinesis'
 Sk 75 'torment'
@@ -174,6 +174,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'detect hidden'   3   7   0   0         32          0
+AffD 'detect magic'   2   7   0   0         16          0
+AffD 'detect invis'  16   7   0   0          8          0
+AffD 'mindbar'  16   3   0   0          0          0
 AffD 'titanic'   3  -1 100  13          0          0
 AffD 'titanic'   6  -1 500  12          0          0
 AffD 'titanic'   8  -1 500  14          0          0
@@ -497,16 +501,6 @@ Repd 0
 End
 
 #O
-Vnum 3094
-Nest 0
-Wear -1
-Lev  1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 724
 Nest 0
 Wear 8
@@ -616,18 +610,6 @@ Cost 9500000
 Cond 100
 Repd 0
 Affect -1 46 -1 5 17 0 0
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 1500000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
 End
 
 #O
@@ -866,6 +848,16 @@ Cost 1000000000
 Cond 100
 Repd 0
 Affect -1 50 -1 3 22 0 0
+End
+
+#O
+Vnum 734
+Nest 0
+Wear -1
+Lev  10
+Cost 0
+Cond 100
+Repd 0
 End
 
 #STASH
