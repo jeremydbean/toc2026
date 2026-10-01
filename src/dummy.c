@@ -13,6 +13,7 @@
  * else is a different question the player did not ask.                     *
  ***************************************************************************/
 
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -130,7 +131,7 @@ static bool dummy_hasted = false;
  * fair model of anything in the world. It is a measuring instrument,
  * and the fair model is what the other shapes are for.
  */
-static bool dummy_bench = false;
+static bool dummy_bench = true;
 static int  dummy_bench_rounds = DUMMY_BENCH_ROUNDS;
 
 /* Whether anybody has chosen a level.  Until somebody has, the dummy
@@ -138,6 +139,39 @@ static int  dummy_bench_rounds = DUMMY_BENCH_ROUNDS;
    everybody wants; once somebody has, it stays put, because a
    setting the menu silently undoes is worse than no setting. */
 static bool dummy_level_chosen = false;
+
+/*
+ * Bumped by every change to how the dummy is set up. A run notes the
+ * value when it starts and is ranked only if it is the same at the
+ * bell: the dummy is shared, and anybody in the yard can change it in
+ * the middle of somebody else's run.
+ */
+static long dummy_config_epoch = 0;
+
+static void dummy_configure( CHAR_DATA *dummy, int level, int shape,
+                             int attack );
+bool spec_training_dummy( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
+                          char *arg );
+
+
+/*
+ * The run the board ranks: fifty rounds against the dummy exactly as
+ * DUMMY RESET leaves it, at the runner's own level. Each setting can
+ * move the answer -- the shape is armour, the level is what a spell
+ * saves against, and its spells and haste can blind or weaken you --
+ * so a board that let any of them vary would rank the settings rather
+ * than the gear.
+ */
+static bool dummy_run_is_standard( CHAR_DATA *ch, CHAR_DATA *dummy )
+{
+    return dummy_bench
+        && dummy_bench_rounds == DUMMY_BENCH_ROUNDS
+        && dummy_shape  == DUMMY_SHAPE_DEFAULT
+        && dummy_attack == DUMMY_ATTACK_DEFAULT
+        && dummy_spell  == DUMMY_SPELL_NONE
+        && !dummy_hasted
+        && dummy != NULL && dummy->level == ch->level;
+}
 
 
 /*
@@ -417,8 +451,30 @@ static PC_DATA *dummy_session( CHAR_DATA *ch, CHAR_DATA *victim )
        spends a minute choosing a weapon is not charged for the pause. */
     if ( player->pcdata->dummy_started == 0 )
     {
-        player->pcdata->dummy_started = current_time;
-        player->pcdata->dummy_level = target->level;
+        /*
+         * A dummy nobody has set up since it was loaded still carries
+         * the area file's numbers, and one left at somebody else's
+         * level is the wrong size for this run. Set it up before the
+         * first blow is counted rather than measuring the wrong thing.
+         */
+        if ( target->spec_fun != spec_training_dummy
+        ||   ( !dummy_level_chosen && target->level != player->level ) )
+            dummy_configure( target,
+                             dummy_level_chosen ? target->level
+                                                : UMAX( 1, player->level ),
+                             dummy_shape, dummy_attack );
+
+        player->pcdata->dummy_started  = current_time;
+        player->pcdata->dummy_level    = target->level;
+        player->pcdata->dummy_epoch    = dummy_config_epoch;
+        player->pcdata->dummy_standard = dummy_run_is_standard( player,
+                                                                target );
+
+        /* What they come back to. Taken here, at the first blow, so a
+           run cannot be used to walk out healthier than it began. */
+        player->pcdata->dummy_pre_hit  = player->hit;
+        player->pcdata->dummy_pre_mana = player->mana;
+        player->pcdata->dummy_pre_move = player->move;
     }
 
     return player->pcdata;
@@ -534,6 +590,7 @@ static void dummy_configure( CHAR_DATA *dummy, int level, int shape,
     long blow;
     int i;
 
+    dummy_config_epoch++;
     dummy_shape = shape;
     dummy_attack = attack;
 
@@ -640,12 +697,13 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
 
     if ( dummy_bench )
         snprintf( buf, sizeof(buf),
-            "{0C|{00 Bench   {0F%-8d{00  rounds, and it will not dodge, parry "
-            "or block\n\r", dummy_bench_rounds );
+            "{0C|{00 Rounds  {0F%-8d{00  then the bell; it will not dodge, "
+            "parry or block%s\n\r", dummy_bench_rounds,
+            dummy_bench_rounds == DUMMY_BENCH_ROUNDS ? "" : " (unranked)" );
     else
         snprintf( buf, sizeof(buf),
-            "{0C|{00 Bench   {0F%-8s{00  it defends itself, and you stop the "
-            "run yourself\n\r", "off" );
+            "{0C|{00 Rounds  {0F%-8s{00  it defends itself, and DUMMY REPORT "
+            "ends the run\n\r", "endless" );
     send_to_char( buf, ch );
 
     send_to_char(
@@ -658,11 +716,14 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
         "  dummy hits <type>    what it attacks you with\n\r"
         "  dummy magic <kind>   what it casts at you, or none\n\r"
         "  dummy haste          an extra attack a round, on or off\n\r"
-        "  dummy bench [rounds] a clean benchmark: it stands still, and\n\r"
-        "                       the run ends itself after N rounds\n\r"
-        "  dummy reset          your level, the defaults, numbers cleared\n\r"
-        "  dummy report         stop, heal you both, and read the numbers\n\r"
-        "\n\r  Then just KILL DUMMY.  Neither of you can die here.\n\r\n\r",
+        "  dummy bench [rounds] a set number of rounds, then the bell (50)\n\r"
+        "  dummy endless        no bell, and it defends itself again\n\r"
+        "  dummy reset          the standard run: your level, fifty rounds\n\r"
+        "  dummy report         stop early and read the numbers\n\r"
+        "  dummy board          the benchmark leaderboard\n\r"
+        "\n\r  Then just KILL DUMMY.  Neither of you can die here, nothing\n\r"
+        "  is learned here, and afterwards you are put back the way you\n\r"
+        "  were when the run began.  HELP DUMMY has the rest.\n\r\n\r",
         ch );
 
     send_to_char( "  Damage types: ", ch );
@@ -731,39 +792,105 @@ static void dummy_verdict( CHAR_DATA *ch, long dealt, int seconds, int level )
  * Shared by REPORT and RESET: the only difference between those two
  * is whether you get to read the figures before they go.
  */
+/*
+ * Back to how they came in, not to full. A fight you cannot lose is
+ * otherwise a free heal for anybody who walks in half dead and walks
+ * out whole, and a free mana refill on top. Only once a run has
+ * actually started: a RESET with nothing in progress has no snapshot
+ * to go back to, and must not touch the character at all.
+ */
+static void dummy_restore_vitals( CHAR_DATA *ch )
+{
+    PC_DATA *pc = ch->pcdata;
+
+    if ( pc == NULL || pc->dummy_started == 0 )
+        return;
+
+    ch->hit  = URANGE( 1, pc->dummy_pre_hit,  UMAX( 1, ch->max_hit ) );
+    ch->mana = URANGE( 0, pc->dummy_pre_mana, UMAX( 0, ch->max_mana ) );
+    ch->move = URANGE( 0, pc->dummy_pre_move, UMAX( 0, ch->max_move ) );
+}
+
+
+/*
+ * Ends this player's half of the fight and nobody else's. The dummy is
+ * shared, and stopping every fight it was in -- stop_fighting with
+ * fBoth, as this used to -- froze anybody else mid-run against it:
+ * their fight ended, the round counter stopped being asked, and their
+ * bell never came. Anybody still hitting it is picked back up by
+ * damage() on their next blow.
+ */
 static void dummy_stand_down( CHAR_DATA *ch, CHAR_DATA *dummy )
 {
     if ( ch->fighting != NULL )
-        stop_fighting( ch, true );
+        stop_fighting( ch, false );
 
     if ( dummy != NULL )
     {
-        if ( dummy->fighting != NULL )
-            stop_fighting( dummy, true );
+        if ( dummy->fighting == ch )
+            stop_fighting( dummy, false );
 
         /*
          * An attacked mobile remembers who hit it, and one that hates
          * you sets about you again the moment the fight stops --
          * which is right for everything else in the world and wrong
          * for this. Stopping the fight alone left the dummy swinging
-         * the instant the report printed.
+         * the instant the report printed. Only this player's grudge:
+         * the others are still hitting it.
          */
-        remove_all_hates( dummy );
-        if ( dummy->hunting != NULL )
-            do_stop_hunting( dummy, dummy->hunting->name );
+        remove_hate( dummy, ch );
+        if ( dummy->hunting == ch )
+            do_stop_hunting( dummy, ch->name );
 
         dummy->hit = dummy->max_hit;
-        dummy->position = POS_STANDING;
+        if ( dummy->fighting == NULL )
+            dummy->position = POS_STANDING;
         act( "$n straightens up, good as new.", dummy, NULL, NULL, TO_ROOM );
     }
 
-    ch->hit = ch->max_hit;
-    ch->mana = ch->max_mana;
-    ch->move = ch->max_move;
+    dummy_restore_vitals( ch );
     if ( ch->position == POS_FIGHTING )
         ch->position = POS_STANDING;
 
     dummy_session_clear( ch );
+}
+
+
+/*
+ * Called from char_from_room, so it is every way out of the yard --
+ * a recall, a teleport, a quit. Leaving mid-run abandons the run and
+ * puts the vitals back now, while still standing in the yard: a
+ * snapshot carried out could be cashed in later by starting a run at
+ * full, leaving, getting hurt somewhere else and coming back to end
+ * it. LEAVE RING reports first, so by the time it gets here there is
+ * nothing left to do.
+ */
+void dummy_left_yard( CHAR_DATA *ch )
+{
+    CHAR_DATA *dummy;
+
+    if ( IS_NPC(ch) || ch->pcdata == NULL || ch->in_room == NULL
+    ||   ch->in_room->vnum != ROOM_VNUM_TRAINING_YARD
+    ||   ch->pcdata->dummy_started == 0 )
+        return;
+
+    dummy_restore_vitals( ch );
+    if ( ( dummy = dummy_in_room( ch ) ) != NULL )
+        remove_hate( dummy, ch );
+    dummy_session_clear( ch );
+    send_to_char( "You leave the yard, and the run is abandoned.\n\r", ch );
+}
+
+
+/*
+ * Nothing is learned in the yard. A dummy that cannot die and cannot
+ * kill you is a free practice room otherwise; the yard is for
+ * measuring what you have, not building it.
+ */
+bool dummy_blocks_improve( CHAR_DATA *ch )
+{
+    return ch != NULL && ch->in_room != NULL
+        && ch->in_room->vnum == ROOM_VNUM_TRAINING_YARD;
 }
 
 
@@ -972,7 +1099,405 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
     dummy_verdict( ch, dealt, seconds, pc->dummy_level );
 
     dummy_stand_down( ch, dummy );
-    send_to_char( "You are patched up and rested.\n\r", ch );
+    send_to_char( "You are put back the way you were when the run "
+                  "began.\n\r", ch );
+}
+
+
+/* ---------------------------------------------------------------------
+ * The benchmark board
+ *
+ * One line per character: their best standard run. Keeping every
+ * character's best rather than a top ten is what lets a run be placed
+ * against everybody who has ever run it ("you are 14th of 31"), which
+ * is the question somebody finishing a run actually asks.
+ * ------------------------------------------------------------------- */
+
+typedef struct dps_board_entry
+{
+    char        name[16];
+    long        total;
+    int         seconds;
+    int         level;
+    int         cls;
+    long        when;
+} DPS_BOARD_ENTRY;
+
+static DPS_BOARD_ENTRY dps_board[DPSBOARD_MAX];
+static int  dps_board_count  = 0;
+static bool dps_board_loaded = false;
+
+
+/* Letters only, at most twelve: the rule character creation enforces,
+   so anything else in the file is damage rather than a player. */
+static bool dps_board_name_ok( const char *name )
+{
+    size_t i, len = strlen( name );
+
+    if ( len < 1 || len > 12 )
+        return false;
+    for ( i = 0; i < len; i++ )
+        if ( !isalpha( (unsigned char) name[i] ) )
+            return false;
+    return true;
+}
+
+
+static void dps_board_load( void )
+{
+    FILE *fp;
+    char line[256];
+    char name[64];
+    DPS_BOARD_ENTRY e;
+    int i, j;
+
+    if ( dps_board_loaded )
+        return;
+    dps_board_loaded = true;
+    dps_board_count = 0;
+
+    fclose( fpReserve );
+    if ( ( fp = fopen( DPSBOARD_FILE, "r" ) ) == NULL )
+    {
+        /* No board yet: nobody has run the standard. */
+        fpReserve = fopen( NULL_FILE, "r" );
+        return;
+    }
+
+    while ( dps_board_count < DPSBOARD_MAX
+    &&      fgets( line, sizeof(line), fp ) != NULL )
+    {
+        if ( line[0] == '#' || line[0] == '\n' || line[0] == '\r' )
+            continue;
+        memset( &e, 0, sizeof(e) );
+        if ( sscanf( line, "%63s %ld %d %d %d %ld", name, &e.total,
+                     &e.seconds, &e.level, &e.cls, &e.when ) != 6 )
+            continue;
+        if ( !dps_board_name_ok( name ) || e.total < 0 || e.seconds < 1 )
+            continue;
+        toc_strlcpy( e.name, name, sizeof(e.name) );
+        dps_board[dps_board_count++] = e;
+    }
+
+    fclose( fp );
+    fpReserve = fopen( NULL_FILE, "r" );
+
+    /* Written sorted, but a hand edit must not be able to leave the
+       board in the wrong order. Biggest first; a tie goes to whoever
+       posted it first. */
+    for ( i = 1; i < dps_board_count; i++ )
+    {
+        e = dps_board[i];
+        for ( j = i - 1;
+              j >= 0 && ( dps_board[j].total < e.total
+                       || ( dps_board[j].total == e.total
+                         && dps_board[j].when > e.when ) );
+              j-- )
+            dps_board[j + 1] = dps_board[j];
+        dps_board[j + 1] = e;
+    }
+}
+
+
+static void dps_board_save( void )
+{
+    FILE *fp;
+    int i;
+
+    fclose( fpReserve );
+    if ( ( fp = fopen( DPSBOARD_FILE ".tmp", "w" ) ) == NULL )
+    {
+        bug( "dps_board_save: cannot write the benchmark board.", 0 );
+        fpReserve = fopen( NULL_FILE, "r" );
+        return;
+    }
+
+    fprintf( fp,
+        "# The training yard's benchmark board: each character's best\n"
+        "# fifty-round standard run, best first.\n"
+        "# name total seconds level class when\n" );
+    for ( i = 0; i < dps_board_count; i++ )
+        fprintf( fp, "%s %ld %d %d %d %ld\n",
+                 dps_board[i].name, dps_board[i].total, dps_board[i].seconds,
+                 dps_board[i].level, dps_board[i].cls, dps_board[i].when );
+
+    fclose( fp );
+    fpReserve = fopen( NULL_FILE, "r" );
+
+    /* Written aside and moved into place, so a crash mid-write leaves
+       the old board rather than half of a new one. */
+    rename( DPSBOARD_FILE ".tmp", DPSBOARD_FILE );
+}
+
+
+static int dps_board_find( const char *name )
+{
+    int i;
+
+    for ( i = 0; i < dps_board_count; i++ )
+        if ( !str_cmp( dps_board[i].name, name ) )
+            return i;
+    return -1;
+}
+
+
+static const char *dps_ordinal( int n, char *buf, size_t size )
+{
+    const char *suffix = "th";
+
+    if ( n % 100 < 11 || n % 100 > 13 )
+    {
+        switch ( n % 10 )
+        {
+        case 1:  suffix = "st"; break;
+        case 2:  suffix = "nd"; break;
+        case 3:  suffix = "rd"; break;
+        default: break;
+        }
+    }
+    snprintf( buf, size, "%d%s", n, suffix );
+    return buf;
+}
+
+
+/*
+ * Why a finished benchmark is not going on the board, or NULL if it
+ * is. Read before the report clears the run.
+ */
+static const char *dummy_board_refusal( CHAR_DATA *ch, CHAR_DATA *dummy )
+{
+    PC_DATA *pc = ch->pcdata;
+
+    if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        return "immortals are not ranked";
+    if ( dummy_bench_rounds != DUMMY_BENCH_ROUNDS )
+        return "only the fifty-round run is ranked";
+    if ( !pc->dummy_standard || !dummy_run_is_standard( ch, dummy ) )
+        return "the dummy was not at its standard settings - "
+               "DUMMY RESET puts it back";
+    if ( pc->dummy_epoch != dummy_config_epoch )
+        return "somebody changed the dummy during the run";
+    return NULL;
+}
+
+
+static void dps_board_submit( CHAR_DATA *ch, long total, int seconds )
+{
+    char buf[MAX_STRING_LENGTH];
+    char place[16];
+    DPS_BOARD_ENTRY entry;
+    char others_name[16];
+    long previous = -1;
+    long others_best = -1;
+    bool improved, was_leader, reached;
+    int own, at, i;
+
+    dps_board_load();
+
+    own = dps_board_find( ch->name );
+    if ( own >= 0 )
+        previous = dps_board[own].total;
+    was_leader = ( own == 0 );
+
+    /*
+     * The best anybody else has posted, before this run changes it --
+     * copied, not pointed at. The insertion below shifts the array, so
+     * a pointer into it named whoever landed in that slot afterwards:
+     * found live, a new leader was told they had beaten themselves.
+     */
+    others_name[0] = '\0';
+    for ( i = 0; i < dps_board_count; i++ )
+    {
+        if ( i == own )
+            continue;
+        others_best = dps_board[i].total;
+        toc_strlcpy( others_name, dps_board[i].name, sizeof(others_name) );
+        break;
+    }
+
+    improved = ( own < 0 || total > previous );
+    reached  = true;
+
+    if ( improved && own < 0 && dps_board_count == DPSBOARD_MAX )
+    {
+        /* Full. The last place makes way only for a better run. */
+        if ( total > dps_board[DPSBOARD_MAX - 1].total )
+            dps_board_count--;
+        else
+            improved = reached = false;
+    }
+
+    if ( improved )
+    {
+        if ( own >= 0 )
+        {
+            memmove( &dps_board[own], &dps_board[own + 1],
+                     ( dps_board_count - own - 1 ) * sizeof(dps_board[0]) );
+            dps_board_count--;
+        }
+
+        /* Strictly better goes ahead; a tie stays behind whoever got
+           there first. */
+        for ( at = 0; at < dps_board_count; at++ )
+            if ( total > dps_board[at].total )
+                break;
+        memmove( &dps_board[at + 1], &dps_board[at],
+                 ( dps_board_count - at ) * sizeof(dps_board[0]) );
+
+        memset( &entry, 0, sizeof(entry) );
+        toc_strlcpy( entry.name, ch->name, sizeof(entry.name) );
+        entry.total   = total;
+        entry.seconds = seconds;
+        entry.level   = ch->level;
+        entry.cls     = ch->class;
+        entry.when    = (long) current_time;
+        dps_board[at] = entry;
+        dps_board_count++;
+        dps_board_save();
+    }
+
+    own = dps_board_find( ch->name );
+
+    send_to_char(
+        "\n\r{0C.-[ Benchmark board ]---------------------------------------------.{00\n\r",
+        ch );
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 This run: {0F%ld{00 over %d rounds, {0F%ld{00 a round.\n\r",
+        total, DUMMY_BENCH_ROUNDS, total / DUMMY_BENCH_ROUNDS );
+    send_to_char( buf, ch );
+
+    if ( !reached )
+        send_to_char( "{0C|{00 The board is full, and this run does not "
+                      "reach it.\n\r", ch );
+    else if ( previous < 0 )
+        send_to_char( "{0C|{00 Your first benchmark on record.\n\r", ch );
+    else if ( improved )
+    {
+        snprintf( buf, sizeof(buf),
+            "{0C|{00 {0EA new personal best{00, %ld better than your last "
+            "(%ld).\n\r", total - previous, previous );
+        send_to_char( buf, ch );
+    }
+    else
+    {
+        snprintf( buf, sizeof(buf),
+            "{0C|{00 Your personal best is {0F%ld{00; this run was %ld "
+            "short of it.\n\r", previous, previous - total );
+        send_to_char( buf, ch );
+    }
+
+    if ( own >= 0 )
+    {
+        snprintf( buf, sizeof(buf),
+            "{0C|{00 You are {0F%s{00 of %d on the board.\n\r",
+            dps_ordinal( own + 1, place, sizeof(place) ), dps_board_count );
+        send_to_char( buf, ch );
+
+        if ( own == 0 )
+        {
+            if ( improved && !was_leader && others_best < 0 )
+                send_to_char( "{0C|{00 {0ENobody has posted a benchmark "
+                              "before you.{00\n\r", ch );
+            else if ( improved && !was_leader )
+            {
+                snprintf( buf, sizeof(buf),
+                    "{0C|{00 {0EThat beats the best anybody else has posted"
+                    "{00 - %ld, by %.12s.\n\r", others_best, others_name );
+                send_to_char( buf, ch );
+            }
+            else if ( improved )
+                send_to_char( "{0C|{00 You extend your own record.\n\r", ch );
+            else
+                send_to_char( "{0C|{00 You still hold the record.\n\r", ch );
+        }
+        else
+        {
+            snprintf( buf, sizeof(buf),
+                "{0C|{00 The record is {0F%ld{00, held by %.12s - %ld ahead "
+                "of you.\n\r", dps_board[0].total, dps_board[0].name,
+                dps_board[0].total - dps_board[own].total );
+            send_to_char( buf, ch );
+        }
+    }
+
+    send_to_char(
+        "{0C'----------------------------------------------------------------'{00\n\r",
+        ch );
+
+    /* After the board, so the toast lands under the reason for it. It
+       unlocks once; holding the top again later is its own reward. */
+    if ( own == 0 )
+        achievement_record_event( ch, ACHIEVEMENT_EVENT_DPS_CHAMPION, true );
+}
+
+
+static void dps_board_show( CHAR_DATA *ch )
+{
+    char buf[MAX_STRING_LENGTH];
+    char date[16];
+    char cls[32];
+    char place[16];
+    struct tm *tm;
+    time_t when;
+    int i, own, shown;
+
+    dps_board_load();
+
+    send_to_char(
+        "\n\r{0C.-[ Benchmark leaderboard ]---------------------------------------.{00\n\r",
+        ch );
+
+    if ( dps_board_count == 0 )
+        send_to_char( "{0C|{00 Nobody has run the standard benchmark yet.\n\r",
+                      ch );
+    else
+    {
+        send_to_char( "{0C|{00  #  Name          Lvl  Class        Damage  Round"
+                      "   DPS  Date\n\r", ch );
+        shown = UMIN( dps_board_count, DPSBOARD_SHOWN );
+        for ( i = 0; i < shown; i++ )
+        {
+            const DPS_BOARD_ENTRY *e = &dps_board[i];
+
+            if ( e->cls >= 0 && e->cls < MAX_CLASS )
+                toc_strlcpy( cls, class_table[e->cls].name, sizeof(cls) );
+            else
+                toc_strlcpy( cls, "?", sizeof(cls) );
+            cls[0] = UPPER( cls[0] );
+
+            when = (time_t) e->when;
+            if ( ( tm = localtime( &when ) ) == NULL
+            ||   strftime( date, sizeof(date), "%b %d", tm ) == 0 )
+                toc_strlcpy( date, "?", sizeof(date) );
+
+            snprintf( buf, sizeof(buf),
+                "{0C|{00 %2d  %-12.12s  %3d  %-10.10s  {0F%7ld{00  %5ld  %4ld  %s\n\r",
+                i + 1, e->name, e->level, cls, e->total,
+                e->total / DUMMY_BENCH_ROUNDS,
+                e->total / UMAX( 1, e->seconds ), date );
+            send_to_char( buf, ch );
+        }
+    }
+
+    send_to_char(
+        "{0C'----------------------------------------------------------------'{00\n\r",
+        ch );
+    send_to_char(
+        "  Fifty rounds against the dummy at its standard settings, at your\n\r"
+        "  own level: DUMMY RESET, then KILL DUMMY in the training yard.\n\r"
+        "  Immortals are not ranked.\n\r", ch );
+
+    if ( !IS_NPC(ch) )
+    {
+        if ( ( own = dps_board_find( ch->name ) ) >= 0 )
+            snprintf( buf, sizeof(buf), "  You are %s of %d, with %ld.\n\r",
+                      dps_ordinal( own + 1, place, sizeof(place) ),
+                      dps_board_count, dps_board[own].total );
+        else
+            snprintf( buf, sizeof(buf),
+                      "  You have no benchmark on record.\n\r" );
+        send_to_char( buf, ch );
+    }
 }
 
 
@@ -994,6 +1519,11 @@ bool dummy_skips_defence( CHAR_DATA *victim )
  */
 bool dummy_round_limit( CHAR_DATA *ch, CHAR_DATA *victim )
 {
+    char buf[MAX_STRING_LENGTH];
+    const char *refusal;
+    long total;
+    int seconds;
+
     if ( !dummy_bench || dummy_bench_rounds <= 0 )
         return false;
 
@@ -1011,8 +1541,21 @@ bool dummy_round_limit( CHAR_DATA *ch, CHAR_DATA *victim )
         return false;
     }
 
+    /* Everything the board needs, read before the report clears it. */
+    total   = ch->pcdata->dummy_dealt;
+    seconds = UMAX( 1, (int)( current_time - ch->pcdata->dummy_started ) );
+    refusal = dummy_board_refusal( ch, victim );
+
     send_to_char( "\n\rThe bell goes.\n\r", ch );
     dummy_report( ch, victim );
+
+    if ( refusal == NULL )
+        dps_board_submit( ch, total, seconds );
+    else
+    {
+        snprintf( buf, sizeof(buf), "Not ranked: %s.\n\r", refusal );
+        send_to_char( buf, ch );
+    }
     return true;
 }
 
@@ -1038,9 +1581,30 @@ void do_dummy( CHAR_DATA *ch, char *argument )
 
     dummy = dummy_in_room( ch );
 
+    /* Read-only, so it works anywhere and in the middle of a run. */
+    if ( strlen( arg1 ) >= 2
+    &&   ( !str_prefix( arg1, "board" ) || !str_prefix( arg1, "leaderboard" )
+        || !str_prefix( arg1, "top" ) ) )
+    {
+        dps_board_show( ch );
+        return;
+    }
+
     if ( !str_prefix( arg1, "report" ) && arg1[0] != '\0' )
     {
+        bool cut_short = dummy_bench && ch->pcdata->dummy_started != 0
+                      && ch->pcdata->dummy_rounds < dummy_bench_rounds;
+        int done = ch->pcdata->dummy_rounds;
+
         dummy_report( ch, dummy );
+        if ( cut_short )
+        {
+            snprintf( buf, sizeof(buf),
+                "Stopped after %d of %d rounds, so it is not ranked: only a "
+                "run that reaches the bell counts.\n\r",
+                done, dummy_bench_rounds );
+            send_to_char( buf, ch );
+        }
         return;
     }
 
@@ -1090,7 +1654,7 @@ void do_dummy( CHAR_DATA *ch, char *argument )
         dummy_spell = DUMMY_SPELL_NONE;
         dummy_hasted = false;
         dummy_level_chosen = false;
-        dummy_bench = false;
+        dummy_bench = true;
         dummy_bench_rounds = DUMMY_BENCH_ROUNDS;
         dummy_configure( dummy, UMAX( 1, ch->level ),
                          DUMMY_SHAPE_DEFAULT, DUMMY_ATTACK_DEFAULT );
@@ -1154,42 +1718,57 @@ void do_dummy( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /*
+     * Sets, never toggles. As a toggle, the first DUMMY BENCH on a
+     * dummy somebody had already benched switched benchmarking off and
+     * said "it comes back on guard", which read as the command failing.
+     */
     if ( !str_prefix( arg1, "bench" ) || !str_prefix( arg1, "rounds" ) )
     {
-        if ( arg2[0] == '\0' )
-            dummy_bench = !dummy_bench;
-        else if ( is_number( arg2 ) )
-        {
-            int rounds = atoi( arg2 );
+        int rounds = DUMMY_BENCH_ROUNDS;
 
+        if ( !str_cmp( arg2, "off" ) )
+        {
+            do_dummy( ch, "endless" );
+            return;
+        }
+
+        if ( arg2[0] != '\0' )
+        {
+            if ( !is_number( arg2 ) )
+            {
+                send_to_char( "DUMMY BENCH, or DUMMY BENCH <rounds>.  "
+                              "DUMMY ENDLESS turns it off.\n\r", ch );
+                return;
+            }
+            rounds = atoi( arg2 );
             if ( rounds < 1 || rounds > 1000 )
             {
                 send_to_char( "Pick a number of rounds between 1 and "
                               "1000.\n\r", ch );
                 return;
             }
-            dummy_bench_rounds = rounds;
-            dummy_bench = true;
-        }
-        else if ( !str_cmp( arg2, "off" ) )
-            dummy_bench = false;
-        else
-        {
-            send_to_char( "DUMMY BENCH, DUMMY BENCH <rounds>, or "
-                          "DUMMY BENCH OFF.\n\r", ch );
-            return;
         }
 
-        if ( dummy_bench )
-        {
-            snprintf( buf, sizeof(buf),
-                "It plants itself and stops defending.  %d rounds, then "
-                "the bell.\n\r", dummy_bench_rounds );
-            send_to_char( buf, ch );
-        }
-        else
-            send_to_char( "It comes back on guard, and the run is yours "
-                          "to stop.\n\r", ch );
+        dummy_bench = true;
+        dummy_bench_rounds = rounds;
+        dummy_config_epoch++;
+        snprintf( buf, sizeof(buf),
+            "It plants itself and stops defending.  %d rounds, then the "
+            "bell.%s\n\r", rounds,
+            rounds == DUMMY_BENCH_ROUNDS
+                ? "  That is the standard run, and it is ranked."
+                : "  Only the fifty-round run is ranked." );
+        send_to_char( buf, ch );
+        return;
+    }
+
+    if ( !str_prefix( arg1, "endless" ) )
+    {
+        dummy_bench = false;
+        dummy_config_epoch++;
+        send_to_char( "It comes back on guard.  No bell: the run lasts until "
+                      "DUMMY REPORT, and is not ranked.\n\r", ch );
         return;
     }
 
@@ -1307,4 +1886,11 @@ void do_leave( CHAR_DATA *ch, char *argument )
     char_to_room( ch, back );
     act( "$n steps out of the practice ring.", ch, NULL, NULL, TO_ROOM );
     do_look( ch, "auto" );
+}
+
+
+void do_leaderboard( CHAR_DATA *ch, char *argument )
+{
+    UNUSED_PARAM( argument );
+    dps_board_show( ch );
 }

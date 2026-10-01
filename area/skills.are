@@ -177,10 +177,12 @@ See also: PSIONICS, PSIONIC ARMOR, MINDBAR
 15 PYROTECHNICS~
 Syntax: pyrotechnics <victim>
 
-This psionic skill ignites the air around a victim.  Its damage scales with
-the user's current vitality, can be reduced by a saving throw, and may heat a
-piece of the victim's equipment until it temporarily cannot be worn.  It does
-not consume a light source.
+This psionic skill ignites the air around a victim.  It deals the same
+damage as a fireball cast at your level, halved by a saving throw, and may
+heat a piece of the victim's equipment until it temporarily cannot be worn -
+which is what it offers over a fireball, and what its extra mana pays for.
+A failed attempt costs its wait, just as a failed cast does.  It does not
+consume a light source.
 
 Minimum level: 20
 

@@ -235,6 +235,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "crawl",		do_crawl,	POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "dummy",         do_dummy,       POS_RESTING,     0,  LOG_NORMAL, 1 },
     { "leave",         do_leave,       POS_RESTING,     0,  LOG_NEVER,  1 },
+    { "leaderboard",   do_leaderboard, POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "drop",		do_drop,	POS_RESTING,	 0,  LOG_ALWAYS, 1 },
     { "eat",		do_eat,		POS_RESTING,	 0,  LOG_NORMAL, 1 },
     { "fill",		do_fill,	POS_RESTING,	 0,  LOG_NORMAL, 1 },

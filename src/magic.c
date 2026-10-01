@@ -2693,9 +2693,13 @@ void spell_energy_drain( int sn, int level, CHAR_DATA *ch, void *vo )
 
 
 
-void spell_fireball( int sn, int level, CHAR_DATA *ch, void *vo )
+/*
+ * Fireball's damage roll, on its own so that anything priced as "the
+ * same as a fireball" -- pyrotechnics is -- reads the same table and
+ * cannot drift from it when fireball is retuned.
+ */
+int fireball_damage_roll( int level )
 {
-    CHAR_DATA *victim = (CHAR_DATA *) vo;
     static const int16_t dam_each[] =
     {
 	  0,
@@ -2705,11 +2709,20 @@ void spell_fireball( int sn, int level, CHAR_DATA *ch, void *vo )
 	 92,  94,  96,  98, 100,	102, 104, 106, 108, 110,
 	112, 114, 116, 118, 120,	122, 124, 126, 128, 130
     };
-    int dam;
 
     level	= UMIN(level, (int)(sizeof(dam_each)/sizeof(dam_each[0]) - 1));
     level	= UMAX(0, level);
-    dam		= number_range( dam_each[level] / 2, dam_each[level] * 2 );
+    return number_range( dam_each[level] / 2, dam_each[level] * 2 );
+}
+
+
+void spell_fireball( int sn, int level, CHAR_DATA *ch, void *vo )
+{
+    CHAR_DATA *victim = (CHAR_DATA *) vo;
+    int dam;
+
+    dam		= fireball_damage_roll( level );
+    level	= URANGE( 0, level, 50 );
     if ( saves_spell( level, victim ) )
 	dam /= 2;
     damage( ch, victim, dam, sn, DAM_FIRE );

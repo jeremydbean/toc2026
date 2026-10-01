@@ -114,7 +114,10 @@ class TrainingDummyTests(unittest.TestCase):
         heal = self.dummy.split("static void dummy_stand_down(", 1)[1]
         heal = heal.split("\n}", 1)[0]
         self.assertIn("dummy->hit = dummy->max_hit", heal)
-        self.assertIn("ch->hit = ch->max_hit", heal)
+        # The player goes back to how they came in, not to full -- see
+        # test_you_leave_as_you_came_in.
+        self.assertIn("dummy_restore_vitals( ch )", heal)
+        self.assertNotIn("ch->hit = ch->max_hit", heal)
         self.assertIn("dummy_session_clear", heal)
 
     def test_the_dummy_forgets_when_the_run_ends(self) -> None:
@@ -131,11 +134,51 @@ class TrainingDummyTests(unittest.TestCase):
         # ways of ending a run instead of one.
         body = self.dummy.split("static void dummy_stand_down(", 1)[1]
         body = body.split("\n}", 1)[0]
-        self.assertIn("remove_all_hates( dummy )", body)
+        # This player's grudge only: see
+        # test_one_run_ending_does_not_end_anybody_elses.
+        self.assertIn("remove_hate( dummy, ch )", body)
         self.assertIn("do_stop_hunting", body)
         self.assertIn("dummy->position = POS_STANDING", body)
         report = self.dummy.split("static void dummy_report(", 1)[1]
         self.assertIn("dummy_stand_down( ch, dummy )", report)
+
+    def test_the_dummy_never_holds_a_grudge(self) -> None:
+        """At the source, not only on the way out: a hate list is how
+        a mobile goes back for somebody, and left to hate, the dummy
+        charged the next player in a group the moment the first one's
+        run ended, screaming at them for fleeing."""
+        body = self.fight.split("void add_hate (", 1)[1].split("\n}", 1)[0]
+        self.assertIn("is_training_dummy( vict )", body)
+        self.assertLess(body.index("is_training_dummy( vict )"),
+                        body.index("alloc_mem"))
+
+    def test_the_record_holder_is_named_by_copy(self) -> None:
+        """Found live: a pointer into the board named whoever landed in
+        that slot after the insertion shifted it, so a new leader was
+        told they had beaten themselves."""
+        submit = self.dummy.split("static void dps_board_submit(", 1)[1]
+        submit = submit.split("\n}", 1)[0]
+        self.assertIn("char others_name[16];", submit)
+        self.assertIn("toc_strlcpy( others_name, dps_board[i].name", submit)
+        self.assertNotIn("others_name = dps_board", submit)
+
+    def test_one_run_ending_does_not_end_anybody_elses(self) -> None:
+        """Found live with two players benchmarking side by side.
+
+        The stand-down called stop_fighting( dummy, true ), which stops
+        every fight the dummy is in. The first player's bell ended the
+        second player's fight too, their round counter stopped being
+        asked, and their bell never came.
+        """
+        body = without_comments(
+            self.dummy.split("static void dummy_stand_down(", 1)[1]
+            .split("\n}", 1)[0])
+        self.assertNotIn("stop_fighting( ch, true )", body)
+        self.assertNotIn("stop_fighting( dummy, true )", body)
+        self.assertNotIn("remove_all_hates", body)
+        self.assertIn("if ( dummy->fighting == ch )", body)
+        left = self.dummy.split("void dummy_left_yard(", 1)[1].split("\n}", 1)[0]
+        self.assertNotIn("remove_all_hates", left)
 
     def test_it_defaults_to_your_own_level(self) -> None:
         """Almost everybody is asking how they do against something
@@ -221,7 +264,7 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertEqual(2, self.dummy.count("dummy_stand_down( ch, dummy )"))
         helper = self.dummy.split("static void dummy_stand_down(", 1)[1]
         helper = helper.split("\n}", 1)[0]
-        for part in ("remove_all_hates", "do_stop_hunting",
+        for part in ("remove_hate( dummy, ch )", "do_stop_hunting",
                      "dummy->hit = dummy->max_hit", "dummy_session_clear"):
             self.assertIn(part, helper, part)
 
@@ -233,7 +276,7 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn("dummy_spell_table", self.dummy)
         for kind in ("force", "fire", "cold", "lightning", "acid", "harm"):
             self.assertIn('"%s"' % kind, self.dummy, kind)
-        spec = self.dummy.split("bool spec_training_dummy(", 1)[1]
+        spec = self.dummy.rsplit("bool spec_training_dummy(", 1)[1]
         spec = spec.split("\n}", 1)[0]
         self.assertIn("skill_table[sn].spell_fun", spec)
         self.assertIn("mob->position != POS_FIGHTING", spec)
@@ -241,7 +284,7 @@ class TrainingDummyTests(unittest.TestCase):
     def test_the_spell_is_fixed_not_random(self) -> None:
         """A reading you cannot reproduce is not a measurement, so it
         casts what it was told to and nothing else."""
-        spec = self.dummy.split("bool spec_training_dummy(", 1)[1]
+        spec = self.dummy.rsplit("bool spec_training_dummy(", 1)[1]
         spec = spec.split("\n}", 1)[0]
         self.assertNotIn("number_bits", spec)
         self.assertNotIn("number_range", spec)
@@ -250,7 +293,7 @@ class TrainingDummyTests(unittest.TestCase):
     def test_the_spec_survives_an_area_reset(self) -> None:
         """Assigned in code rather than in the area file, so a reset
         rebuilding the mobile cannot quietly take the casting away."""
-        cfg = self.dummy.split("static void dummy_configure(", 1)[1]
+        cfg = self.dummy.rsplit("static void dummy_configure(", 1)[1]
         cfg = cfg.split("\n}", 1)[0]
         self.assertIn('spec_lookup( "spec_training_dummy" )', cfg)
         self.assertIn("AFF_HASTE", cfg)
@@ -396,13 +439,27 @@ class TrainingDummyTests(unittest.TestCase):
         body = body.split("\n}", 1)[0]
         self.assertIn("dummy_started == 0", body)
 
-    def test_the_benchmark_is_not_the_default(self) -> None:
-        """Something that cannot get out of the way is not a fair
-        model of anything in the world."""
-        self.assertIn("static bool dummy_bench = false;", self.dummy)
+    def test_the_benchmark_is_the_default(self) -> None:
+        """Fifty rounds and a bell unless you ask for endless.
+
+        It was the other way round until the owner turned it on
+        2026-10-01: the benchmark is the run worth comparing, so it is
+        the one a player should get without knowing to ask for it.
+        """
+        self.assertIn("static bool dummy_bench = true;", self.dummy)
         self.assertIn("#define DUMMY_BENCH_ROUNDS 50", self.merc)
         reset = without_comments(self.dummy).split("if ( is_reset )", 1)[1]
-        self.assertIn("dummy_bench = false", reset[:600])
+        self.assertIn("dummy_bench = true", reset[:700])
+        self.assertIn('!str_prefix( arg1, "endless" )', self.dummy)
+
+    def test_bench_sets_rather_than_toggles(self) -> None:
+        """As a toggle, the first DUMMY BENCH on a dummy somebody had
+        already benched switched it off, which read as failing."""
+        code = without_comments(self.dummy)
+        self.assertNotIn("dummy_bench = !dummy_bench", code)
+        bench = code.split('!str_prefix( arg1, "bench" )', 1)[1]
+        bench = bench.split('!str_prefix( arg1, "endless" )', 1)[0]
+        self.assertIn("dummy_bench = true", bench)
 
     def test_the_report_gives_damage_per_round(self) -> None:
         """Per second moves with how long the rounds took; per round
@@ -413,8 +470,161 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn("dealt / rounds", report)
 
     def test_the_round_count_is_bounded(self) -> None:
-        body = self.dummy.split('!str_prefix( arg1, "bench" )', 1)[1][:900]
+        body = self.dummy.split('!str_prefix( arg1, "bench" )', 1)[1][:1500]
         self.assertIn("rounds < 1 || rounds > 1000", body)
+
+    # --------------------------------------------- the rules of the yard
+    def test_you_leave_as_you_came_in(self) -> None:
+        """A fight you cannot lose is otherwise a free heal for anybody
+        who walks in half dead, and a free mana refill on top."""
+        start = self.dummy.split("if ( player->pcdata->dummy_started == 0 )",
+                                 1)[1][:2200]
+        for pool in ("hit", "mana", "move"):
+            self.assertRegex(start, r"dummy_pre_%s\s*=\s*player->%s;"
+                             % (pool, pool))
+        restore = self.dummy.split("static void dummy_restore_vitals(", 1)[1]
+        restore = restore.split("\n}", 1)[0]
+        for pool in ("hit", "mana", "move"):
+            self.assertIn("pc->dummy_pre_%s" % pool, restore)
+        self.assertNotIn("max_hit;", restore.replace("UMAX( 1, ch->max_hit )", ""))
+
+    def test_a_reset_with_no_run_touches_nothing(self) -> None:
+        """No run, no snapshot: restoring then would set you to zero."""
+        restore = self.dummy.split("static void dummy_restore_vitals(", 1)[1]
+        restore = restore.split("\n}", 1)[0]
+        self.assertIn("pc->dummy_started == 0", restore)
+        self.assertLess(restore.index("dummy_started == 0"),
+                        restore.index("ch->hit"))
+
+    def test_leaving_mid_run_puts_you_back_on_the_way_out(self) -> None:
+        """A snapshot carried out of the yard could be cashed in: start
+        at full, leave, get hurt elsewhere, come back and end it."""
+        handler = read("src", "handler.c")
+        body = handler.split("void char_from_room(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("dummy_left_yard( ch )", body)
+        # After the null check, before the room pointers change.
+        self.assertLess(body.index("ch->in_room == NULL"),
+                        body.index("dummy_left_yard( ch )"))
+        self.assertLess(body.index("dummy_left_yard( ch )"),
+                        body.index("ch->in_room->people = ch->next_in_room"))
+        left = self.dummy.split("void dummy_left_yard(", 1)[1].split("\n}", 1)[0]
+        self.assertIn("dummy_restore_vitals( ch )", left)
+        self.assertIn("dummy_session_clear( ch )", left)
+
+    def test_nothing_is_learned_in_the_yard(self) -> None:
+        skills = read("src", "skills.c")
+        body = skills.split("void check_improve(", 1)[1][:700]
+        self.assertIn("dummy_blocks_improve( ch )", body)
+        block = self.dummy.split("bool dummy_blocks_improve(", 1)[1]
+        self.assertIn("ROOM_VNUM_TRAINING_YARD", block.split("\n}", 1)[0])
+
+    def test_the_room_points_at_the_help(self) -> None:
+        room = self.area.split("#2419", 1)[1].split("\n#", 1)[0]
+        self.assertIn("HELP DUMMY", room)
+
+    # ---------------------------------------------------- the board
+    def test_only_the_standard_run_is_ranked(self) -> None:
+        """Every setting can move the answer, so a board that let any
+        of them vary would rank the settings rather than the gear."""
+        std = self.dummy.split("static bool dummy_run_is_standard(", 1)[1]
+        std = std.split("\n}", 1)[0]
+        for term in ("dummy_bench_rounds == DUMMY_BENCH_ROUNDS",
+                     "dummy_shape  == DUMMY_SHAPE_DEFAULT",
+                     "dummy_attack == DUMMY_ATTACK_DEFAULT",
+                     "dummy_spell  == DUMMY_SPELL_NONE", "!dummy_hasted",
+                     "dummy->level == ch->level"):
+            self.assertIn(term, std, term)
+
+    def test_immortals_are_not_ranked(self) -> None:
+        """By trust, the way every other staff test is asked."""
+        refusal = self.dummy.split("static const char *dummy_board_refusal(",
+                                   1)[1].split("\n}", 1)[0]
+        self.assertIn("IS_TRUSTED( ch, LEVEL_IMMORTAL )", refusal)
+
+    def test_a_dummy_changed_mid_run_is_not_ranked(self) -> None:
+        """The dummy is shared; anybody can change it under you."""
+        self.assertIn("dummy_config_epoch++", self.dummy.rsplit(
+            "static void dummy_configure(", 1)[1][:400])
+        refusal = self.dummy.split("static const char *dummy_board_refusal(",
+                                   1)[1].split("\n}", 1)[0]
+        self.assertIn("pc->dummy_epoch != dummy_config_epoch", refusal)
+        for command in ('"bench"', '"endless"'):
+            branch = self.dummy.split("!str_prefix( arg1, %s )" % command, 1)[1]
+            self.assertIn("dummy_config_epoch++", branch[:1800], command)
+
+    def test_the_run_is_read_before_the_report_clears_it(self) -> None:
+        limit = self.dummy.split("bool dummy_round_limit(", 1)[1]
+        limit = limit.split("\n}", 1)[0]
+        for read_first in ("total   = ch->pcdata->dummy_dealt",
+                           "refusal = dummy_board_refusal( ch, victim )"):
+            self.assertLess(limit.index(read_first),
+                            limit.index("dummy_report( ch, victim )"))
+        self.assertIn("dps_board_submit( ch, total, seconds )", limit)
+
+    def test_a_tie_does_not_take_the_place(self) -> None:
+        """Whoever got there first keeps it."""
+        submit = self.dummy.split("static void dps_board_submit(", 1)[1]
+        submit = submit.split("\n}", 1)[0]
+        self.assertIn("if ( total > dps_board[at].total )", submit)
+        self.assertIn("total > previous", submit)
+
+    def test_the_board_survives_a_crash_mid_write(self) -> None:
+        save = self.dummy.split("static void dps_board_save(", 1)[1]
+        save = save.split("\n}", 1)[0]
+        self.assertIn('DPSBOARD_FILE ".tmp"', save)
+        self.assertIn('rename( DPSBOARD_FILE ".tmp", DPSBOARD_FILE )', save)
+        self.assertIn("fpReserve", save)
+
+    def test_number_one_earns_the_achievement(self) -> None:
+        submit = self.dummy.split("static void dps_board_submit(", 1)[1]
+        submit = submit.split("\n}", 1)[0]
+        self.assertIn("ACHIEVEMENT_EVENT_DPS_CHAMPION", submit)
+        source = read("src", "achievements.c")
+        self.assertIn('"benchmark-champion"', source)
+        self.assertIn("ACHIEVEMENT_EVENT_DPS_CHAMPION", self.merc)
+
+    def test_the_board_can_be_read_anywhere(self) -> None:
+        interp = read("src", "interp.c")
+        self.assertRegex(interp, r'\{ "leaderboard",\s+do_leaderboard,')
+        # LEA must still reach LEAVE, the way out of the yard.
+        self.assertLess(interp.index('{ "leave",'),
+                        interp.index('{ "leaderboard",'))
+        # Ahead of the no-dummy-here check, so it works outside the yard.
+        body = self.dummy.split("void do_dummy(", 1)[1]
+        self.assertLess(body.index("dps_board_show( ch )"),
+                        body.index("There is no training dummy here."))
+
+    # ------------------------------------------ the board is runtime state
+    def test_the_board_file_is_runtime_state_everywhere(self) -> None:
+        """Never tracked, never restored from a checkout, always
+        synced, and never inherited by a test world."""
+        self.assertIn("area/dpsboard.txt",
+                      read(".gitignore"))
+        self.assertIn('"dpsboard.txt"', read("tests", "live_mud.py"))
+        deploy = read("deploy", "windows-vm", "toc-deploy")
+        self.assertIn("dpsboard.txt", deploy.split("runtime_txt=", 1)[1][:400])
+        self.assertIn("area/dpsboard.txt",
+                      read(".github", "workflows", "validate.yml"))
+
+    def test_every_synced_file_is_one_that_exists(self) -> None:
+        """The sync skips a missing path without a word, which is how
+        seven runtime files went unbacked for ten months: they were
+        listed without the .txt the game writes."""
+        import re as _re
+        sync = read("deploy", "windows-vm", "toc-state-sync")
+        files = _re.search(r'STATE_FILES="([^"]*)"', sync).group(1).split()
+        self.assertIn("area/dpsboard.txt", files)
+        source = "".join(read("src", f.name) for f in
+                         (ROOT / "src").iterdir()
+                         if f.suffix in (".c", ".h"))
+        for path in files:
+            name = path.split("/", 1)[1]
+            on_disk = (ROOT / path).exists()
+            written = ('"%s"' % name in source
+                       or '/%s"' % name in source)
+            self.assertTrue(on_disk or written,
+                            "%s is neither tracked nor written by the game"
+                            % path)
 
     def test_the_session_is_not_persisted(self) -> None:
         """A training run is something you are doing, not something
@@ -424,7 +634,8 @@ class TrainingDummyTests(unittest.TestCase):
                       "dummy_level", "dummy_dealt_from", "dummy_taken_from",
                       "dummy_avoided", "dummy_evaded", "dummy_attempts",
                       "dummy_worst", "dummy_out", "dummy_in",
-                      "dummy_rounds"):
+                      "dummy_rounds", "dummy_epoch", "dummy_standard",
+                      "dummy_pre_hit", "dummy_pre_mana", "dummy_pre_move"):
             self.assertIn(field, self.merc, field)
             self.assertNotIn(field, save, field + " reached save.c")
 

@@ -148,7 +148,8 @@ typedef enum
     ACHIEVEMENT_EVENT_BANK_EMPTIED,
     ACHIEVEMENT_EVENT_SLOTS_JACKPOT,
     ACHIEVEMENT_EVENT_ROULETTE_STRAIGHT,
-    ACHIEVEMENT_EVENT_POKER_ROYAL_FLUSH
+    ACHIEVEMENT_EVENT_POKER_ROYAL_FLUSH,
+    ACHIEVEMENT_EVENT_DPS_CHAMPION
 } achievement_event_type;
 
 typedef void (*script_event_callback)( script_event_type type, void *payload, void *context );
@@ -813,8 +814,20 @@ struct  kill_data
  */
 #define DUMMY_MAX_SOURCES  24
 
-/* How many rounds a benchmark run lasts unless you say otherwise. */
+/* How many rounds a benchmark run lasts unless you say otherwise --
+   and the only length the leaderboard ranks. */
 #define DUMMY_BENCH_ROUNDS 50
+
+/*
+ * The benchmark leaderboard.  One line per character holding their
+ * best standard run, so a character's place can be given against
+ * everybody who has ever run it and not only the top of the board.
+ * It lives beside pkilldata.txt and is runtime state like it: never
+ * tracked, never restored from a checkout, synced by toc-state-sync.
+ */
+#define DPSBOARD_FILE      "../area/dpsboard.txt"
+#define DPSBOARD_MAX       500
+#define DPSBOARD_SHOWN     10
 
 /* The highest attack_table index dam_message will name. */
 #define MAX_DAMAGE_MESSAGE 32
@@ -1951,6 +1964,11 @@ struct  pc_data
     int                 dummy_attempts;
     int                 dummy_worst;
     int                 dummy_rounds;
+    long                dummy_epoch;
+    bool                dummy_standard;
+    int                 dummy_pre_hit;
+    int                 dummy_pre_mana;
+    int                 dummy_pre_move;
     int                 dummy_hits;
     int                 dummy_misses;
     int                 dummy_swings;
@@ -2677,6 +2695,8 @@ void    dummy_defended     ( CHAR_DATA *ch, CHAR_DATA *victim,
                              int dt, int how );
 bool    dummy_skips_defence( CHAR_DATA *victim );
 bool    dummy_round_limit  ( CHAR_DATA *ch, CHAR_DATA *victim );
+void    dummy_left_yard    ( CHAR_DATA *ch );
+bool    dummy_blocks_improve( CHAR_DATA *ch );
 long    dummy_typical_hp   ( int level );
 void    gmcp_send_affects  ( DESCRIPTOR_DATA *d );
 void    gmcp_send_quest    ( DESCRIPTOR_DATA *d );
@@ -2730,6 +2750,7 @@ RID * get_room_index  ( int vnum );
 char    fread_letter    ( FILE *fp );
 int     fread_number    ( FILE *fp );
 long    fread_long      ( FILE *fp );
+int     fireball_damage_roll ( int level );
 long    fread_flag      ( FILE *fp );
 char * fread_string    ( FILE *fp );
 char * fread_string_eol ( FILE *fp );

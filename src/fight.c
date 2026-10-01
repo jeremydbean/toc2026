@@ -5132,6 +5132,14 @@ void add_hate (CHAR_DATA *ch, CHAR_DATA *vict)
     if (IS_NPC(ch) || !IS_NPC(vict))
 	return;
 
+    /* The training dummy never holds a grudge. A hate list is how a
+       mobile goes back for somebody, and the dummy never starts a
+       fight -- it only answers one. Left to hate, it charged the next
+       player in a group the moment the first one's run ended,
+       screaming at them for fleeing. */
+    if ( is_training_dummy( vict ) )
+	return;
+
     if ( check_hate(vict, ch) ) /* No need to doubely hate em */
 	return;
 

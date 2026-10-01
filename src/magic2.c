@@ -1669,7 +1669,6 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
     CHAR_DATA *victim;
     int chance;
     int dam;
-    int hpch;
 
     one_argument(argument, arg);
 
@@ -1729,11 +1728,18 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
             return;
         }
 
+        /*
+         * A failed cast pays its wait before it rolls, in do_cast.
+         * This used to return free, so a miss could be retried on
+         * the next keystroke -- which is what made pyrotechnics feel
+         * faster than the fireball it is priced against.
+         */
         if ( number_percent() > chance )
         {
             send_to_char("You lost your concentration.\n\r", ch);
             check_improve(ch, gsn_pyrotechnics, false, 4);
             ch->mana -= (dice(1, 5) + 3);
+            WAIT_STATE(ch, skill_table[gsn_pyrotechnics].beats);
             return;
         }
 
@@ -1766,8 +1772,14 @@ void do_pyrotechnics ( CHAR_DATA *ch, char *argument )
     act("$n's eyes blaze white as a column of psionic fire erupts around $N!", ch, NULL, victim, TO_ROOM);
     act("$n's mind ignites the air around you in searing psionic flame!", ch, NULL, victim, TO_VICT);
 
-    hpch = UMAX(10, ch->hit);
-    dam  = number_range(hpch / 14 + 1, hpch / 7);
+    /*
+     * Fireball's damage, from fireball's table.  It used to roll
+     * hp/14 .. hp/7 off the caster's current hit points, which made
+     * it about three times its level-scaled peers at level 50 and
+     * grew without bound with every remort.  The heated gear is what
+     * it adds over a fireball, and what the extra mana pays for.
+     */
+    dam = fireball_damage_roll( ch->level );
     if ( saves_spell(ch->level, victim) )
         dam /= 2;
 

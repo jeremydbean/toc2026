@@ -860,6 +860,12 @@ void check_improve( CHAR_DATA *ch, int sn, bool success, int multiplier )
     if (IS_NPC(ch))
 	return;
 
+    /* Nothing is learned in the training yard.  A dummy that cannot
+       die and cannot kill you is a free practice room otherwise, and
+       the yard is for measuring what you have, not for building it. */
+    if ( dummy_blocks_improve( ch ) )
+	return;
+
     if (ch->level < skill_table[sn].skill_level[ch->class]
     ||  skill_table[sn].rating[ch->class] == 0
     ||  ch->pcdata->learned[sn] == 0

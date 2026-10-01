@@ -1541,6 +1541,11 @@ void char_from_room( CHAR_DATA *ch )
        room. */
     shadowmeld_break( ch, "You step out of the shadows." );
 
+    /* Leaving the training yard mid-run abandons the run and puts
+       your hit points back now, while you are still standing in it:
+       a snapshot carried out of the yard could be cashed in later. */
+    dummy_left_yard( ch );
+
     if ( !IS_NPC(ch) )
 	--ch->in_room->area->nplayer;
 

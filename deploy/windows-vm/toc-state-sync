@@ -34,10 +34,19 @@ export GIT_SSH_COMMAND="ssh -i $GIT_SSH_KEY -o IdentitiesOnly=yes -o StrictHostK
 
 # What counts as state. Everything here is in .gitignore, so every add
 # needs -f; that is the point, not an accident.
+#
+# These must be the names the game actually writes. Until 2026-10-01
+# seven of them were listed without their .txt -- area/pkilldata for
+# area/pkilldata.txt -- and the loop below skips a path that does not
+# exist without a word, so PK standings, the wizlist, max-load state
+# and the ban list had not reached GitHub since the initial commit.
+# tests/test_training_dummy.py checks every name here against a file
+# the game writes.
 STATE_DIRS="player gods log"
 STATE_FILES="area/notes.txt area/bugs.txt area/ideas.txt area/typos.txt
-             area/pkilldata area/wizlist area/maxload area/offense
-             area/relics area/not area/ban area/custom.are"
+             area/pkilldata.txt area/wizlist.txt area/maxload.txt
+             area/offense.txt area/relics.txt area/not.txt area/ban.txt
+             area/dpsboard.txt area/custom.are"
 
 [ -d "$TOC_ROOT/player" ] || { echo "no player dir at $TOC_ROOT" >&2; exit 1; }
 [ -r "$GIT_SSH_KEY" ] || { echo "no deploy key at $GIT_SSH_KEY" >&2; exit 1; }

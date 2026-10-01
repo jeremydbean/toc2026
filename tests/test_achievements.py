@@ -43,8 +43,9 @@ class AchievementSystemTests(unittest.TestCase):
         self.assertEqual(len(self.entries), len(catalog_lines))
         # A tripwire, not a limit: it should move only when somebody
         # meant to move it. 127 until 2026-09-28, when exploration went
-        # from 3 to 22 and combat from 9 to 15.
-        self.assertEqual(len(self.entries), 195)
+        # from 3 to 22 and combat from 9 to 15; 196 from 2026-10-01 with
+        # Top of the Board, for the training yard's benchmark record.
+        self.assertEqual(len(self.entries), 196)
 
         keys = [entry["key"] for entry in self.entries]
         self.assertEqual(len(keys), len(set(keys)))

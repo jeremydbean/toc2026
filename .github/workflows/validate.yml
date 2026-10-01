@@ -16,13 +16,14 @@ on:
       - 'area/bugs.txt'
       - 'area/ideas.txt'
       - 'area/typos.txt'
-      - 'area/pkilldata'
-      - 'area/wizlist'
-      - 'area/maxload'
-      - 'area/offense'
-      - 'area/relics'
-      - 'area/not'
-      - 'area/ban'
+      - 'area/pkilldata.txt'
+      - 'area/wizlist.txt'
+      - 'area/maxload.txt'
+      - 'area/offense.txt'
+      - 'area/relics.txt'
+      - 'area/not.txt'
+      - 'area/ban.txt'
+      - 'area/dpsboard.txt'
   pull_request:
 
 # A push while a run is going makes that run pointless: it is

@@ -46,6 +46,9 @@ area/bugs.txt
 area/typos.txt
 area/ideas.txt
 area/notes.txt
+# The training yard's benchmark board: runtime state, synced with -f.
+area/dpsboard.txt
+area/dpsboard.txt.tmp
 # What REPORTS CLEAR sets aside, same content under a dated name.
 area/bugs.txt.*
 area/typos.txt.*

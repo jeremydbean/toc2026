@@ -241,128 +241,115 @@ Syntax: dummy                  the menu, and what it is set to
         dummy hits <type>      what it should hit you with
         dummy magic <kind>     what it should cast at you, or none
         dummy haste            an extra attack a round, on or off
-        dummy bench [rounds]   a clean benchmark over a fixed run
-        dummy reset            your level, the defaults, numbers cleared
-        dummy report           stop, heal you both, read the numbers
+        dummy bench [rounds]   a set number of rounds, then the bell
+        dummy endless          no bell, and it defends itself again
+        dummy reset            the standard run, and the numbers cleared
+        dummy report           stop early and read the numbers
+        dummy board            the benchmark leaderboard
         leave ring             step back out into the square
 
 A training dummy you can hit as hard as you like.  It is in the Training
 Yard, through the practice ring in the southwestern corner of Oak Tree
-Square.
+Square.  KILL DUMMY to begin.
 
-NEITHER OF YOU CAN DIE THERE
-The dummy soaks up everything and never falls.  You cannot be killed by
-it either: its blows take you down to one hit point and no further.  That
-is a property of the yard and nowhere else - do not read it as a reason to
-pick a fight outside.
+THE RULES OF THE YARD
+  Neither of you can die there.  The dummy soaks up everything, and its
+  blows take you down to one hit point and no further.
 
-SETTING IT UP
-It starts at your own level, which is the comparison almost everybody
-actually wants, and you can set it to anything.  It is always worth what a
-mobile of that level really averages, measured across every mobile in the
-world at that level, so the time-to-kill in the report means something.
+  When the run ends you are put back the way you were when it began -
+  hit points, mana and moves - not healed to full.  Walk in hurt and you
+  walk out hurt; the yard is for measuring, not for resting.  Leave in
+  the middle of a run, by recall or anything else, and the run is
+  abandoned and you are put back on the way out.
 
-  Shapes
-    soft      no armour, no defences - a clean reading of your damage
-    armored   heavily armoured - is your hitroll keeping up
-    evasive   dodges and parries - are you landing anything
-    brutal    hits as hard as its level allows - what can you take
+  Nothing is learned there.  Your skills and spells do not improve
+  while you are in the yard, whatever you do.
 
-  Damage types
-    slash, pierce, bash, fire, cold, lightning, acid, energy, holy
+THE STANDARD RUN
+  By default every run is a benchmark: fifty rounds, then a bell, and
+  for those fifty rounds the dummy stands still - it does not dodge,
+  parry, block or duck.  Your own defences still work; that is your
+  armour, and measuring it is the other half of why you are there.
 
-  Spells
-    none, force, fire, cold, lightning, acid, light, harm, negative
+  The dummy starts at your own level and is worth what a mobile of that
+  level really averages, measured across every mobile in the world, so
+  the time-to-kill in the report means something.
+
+  The standard run is the dummy exactly as DUMMY RESET leaves it, at your
+  level, for fifty rounds.  Only that run is ranked, because every
+  setting can move the answer, and a board that let them vary would rank
+  the settings rather than the gear.  See LEADERBOARD.
+
+CHANGING IT
+  Shapes        soft, armored, evasive, brutal
+  Damage types  slash, pierce, bash, fire, cold, lightning, acid,
+                energy, holy
+  Spells        none, force, fire, cold, lightning, acid, light, harm,
+                negative
 
   A damage school delivered by a weapon tests a resistance.  The same
   school delivered by a spell tests a saving throw as well, which is a
-  different question about the same suit of armour - so set DUMMY HITS
-  to measure one and DUMMY MAGIC to measure the other.  It casts once a
-  pulse while fighting, always the same spell, because a reading you
-  cannot reproduce is not a measurement.
+  different question about the same suit of armour.  DUMMY HASTE gives
+  it a second attack a round, for what your armour is worth against
+  something fast.  It casts once a pulse, always the same spell: a
+  reading you cannot reproduce is not a measurement.
 
-  DUMMY HASTE gives it a second attack each round.  Use it to find out
-  what your armour is worth against something fast rather than
-  something heavy.
+  DUMMY BENCH <n> runs for n rounds instead of fifty.  DUMMY ENDLESS has
+  no bell at all and lets it defend itself again - a fairer model of a
+  real fight, ended with DUMMY REPORT.  Neither is ranked.
 
-BENCHMARKING
-  DUMMY BENCH is for comparing two sets of gear against each other
-  rather than against the world.  Two things spoil a damage reading:
-  the dummy turning blows aside, which makes your number depend on
-  its rolls as much as on your gear, and a run you stop by hand,
-  which is a different length every time so two readings cannot be
-  compared.  Benchmark mode removes both.
-
-    dummy bench          turn it on or off, 50 rounds
-    dummy bench <n>      turn it on with n rounds, 1 to 1000
-    dummy bench off      back to a dummy that defends itself
-
-  It stops dodging, parrying, blocking and ducking entirely, the run
-  ends itself after the rounds are up, and the report gains a damage
-  per round figure.  Per round is the number to write down: unlike
-  per second it does not move with how long the rounds happened to
-  take.
-
-  Your own defences still work - that is your armour, and measuring
-  it is the other half of why you are here.
-
-  It is not the default and should not be.  Something that cannot get
-  out of the way is not a fair model of anything in the world; it is a
-  measuring instrument.  For a fair fight use the shapes.
-
-  Change the shape to find out whether your problem is damage or
-  accuracy.  You cannot change any of this in the middle of a run: a
-  reading blended from two different opponents is worse than no
-  reading.  DUMMY RESET is the exception - it is how you throw a run
-  away and start again, so it clears the numbers as well as the
-  settings, and it works mid-fight.
+  None of this can be changed in the middle of a run: a reading blended
+  from two opponents is worse than none.  DUMMY RESET is the exception -
+  it throws the run away and starts over, and works mid-fight.
 
 READING THE REPORT
-  KILL DUMMY to begin, and DUMMY REPORT when you have had enough.  The
-  clock starts at the first blow in either direction, so taking a moment
-  to choose a weapon costs you nothing.
+  The clock starts at the first blow in either direction, so taking a
+  moment to choose a weapon costs nothing.
 
-  WHAT YOU DID is your total, your damage per second, and your damage
-  per swing - which is the honest one, because it charges you for the
-  swings that missed.  Then how many landed, your best, your average
-  landed hit, how many missed outright and how many it turned aside.
-  Then where the damage came from: weapon, spells or skills.
+  WHAT YOU DID is your total, your damage per second, per swing and per
+  round - per round is the figure to compare two runs on, since it does
+  not move with how long the rounds happened to take.  Then how many
+  swings landed, your best and average hit, what missed and what it
+  turned aside, and whether the damage came from your weapon, your
+  spells or your skills.
 
-  Then ATTACK BY ATTACK, which is the one most people came for: every
-  spell you cast, every special attack and your weapon, each on its
-  own line, biggest first, with its damage, its share of your total,
-  how many of its attempts landed, its average and its best.  Cast
-  three different spells and you get three lines and can see which
-  one is actually earning its mana.
+  Then attack by attack: every spell you cast, every special attack and
+  your weapon, each on its own line, biggest first, with its damage, its
+  share, how many of its attempts landed, its average and its best.
+  Second and third attack are not separable from the weapon itself - the
+  game swings them as the same attack - so they are in its line.
 
-  Second and third attack are not separable from the weapon itself -
-  the game swings them as the same attack and nothing could honestly
-  tell them apart - so they are counted in your weapon's line.
+  WHAT IT DID TO YOU is the same from the other side: how often it
+  tried, how many you ducked, parried, dodged or blocked, what got
+  through, your worst hit, and how long it would take you from full.
 
-  WHAT IT DID TO YOU is the same from the other side, and it is the
-  half that tells you what your armour is worth.  How often it tried,
-  how many of those you stopped and how - ducked, parried, dodged or
-  blocked, each as a percentage of its attempts - what got through,
-  your worst single hit, and how long it would take you from full.
-  It gets its own attack-by-attack list too, so you can see whether
-  its spell or its weapon is the thing hurting you.
+  After a ranked run, the board: this run, your personal best, where you
+  stand among everybody who has run it, and how far the record is.
 
-  Every percentage is of attempts, not of landed blows, so a shield
-  that stops a third of everything reads as a third.
+See also: LEADERBOARD, LEAVE, COMPARE, LORE, DAMAGENUMBERS
+~
 
-  Both of you are healed to full afterwards and the run is cleared.
+0 LEADERBOARD BENCHMARK~
+Syntax: leaderboard
+        dummy board
 
-LEAVING
-  LEAVE RING steps you back out into Oak Tree Square.  It is the only
-  way out on foot - you came in through the ring, so you go back out
-  through it - and a plain LEAVE does the same, since there is only
-  one thing in the yard to leave.  If a run is going when you type it
-  you get the report on the way past rather than losing it.
+The training yard's benchmark board: the best fifty-round standard run
+each character has posted, best first.  It shows the top ten, and tells
+you where you stand among everybody who has ever run it.
 
-  RECALL works from the yard as well, if you would rather go to the
-  Temple.
+A run is ranked when it is the standard one - the dummy exactly as DUMMY
+RESET leaves it, at your own level - and it reaches the bell.  Stop it
+early with DUMMY REPORT, change the dummy during it, or run it at any
+other length and it is not ranked; the game tells you which.  Immortals
+are not ranked.
 
-See also: COMPARE, LORE, SCORE, DAMAGENUMBERS, AREAS
+When a ranked run ends you are told whether it is a personal best, your
+place on the board, and how far ahead the record is.  Post the best run
+anybody has run and you earn the achievement Top of the Board.
+
+To run it: DUMMY RESET in the training yard, then KILL DUMMY.
+
+See also: DUMMY, ACHIEVEMENTS
 ~
 
 0 LEAVE~
@@ -961,49 +948,38 @@ command named here for the detail.
   figure - so DAMAGENUMBERS worked for every weapon except the odd
   ones, and for bare hands in some cases.  Reported by Alaric.
 
-  A training yard, and a dummy in it that cannot be killed.  Go through
-  the practice ring in the southwestern corner of Oak Tree Square.  KILL
-  DUMMY to start, DUMMY REPORT to stop and read what you actually did.
-  Neither of you can die there: it soaks up everything, and its blows
-  floor you at one hit point rather than killing you.
+  A training yard, and a dummy in it that cannot be killed.  Go
+  through the practice ring in the southwestern corner of Oak Tree
+  Square and KILL DUMMY.  HELP DUMMY explains all of it.
 
-  It is your own level by default, so the comparison is a fair one, and
-  worth what a mobile of that level really averages across the whole
-  world - so the time-to-kill it quotes means something.  DUMMY on its
-  own shows the menu.
+  Every run is a ranked benchmark by default: fifty rounds, then a
+  bell, against a dummy at your own level that stands still and does
+  not dodge, parry or block.  Your best goes on a leaderboard - see
+  LEADERBOARD - and when a run ends you are told whether it was a
+  personal best, where you stand among everybody who has run it, and
+  how far the record is.  Post the best run anybody has and you earn
+  Top of the Board.
 
-  Set it up however the question needs.  DUMMY <level> for any level,
-  DUMMY SHAPE for soft, armored, evasive or brutal, DUMMY HITS for the
-  damage school it swings in, DUMMY MAGIC for a spell it casts at you,
-  and DUMMY HASTE for a second attack each round.  A weapon in a damage
-  school tests your resistance; a spell in the same school tests your
-  saving throw as well.
+  Neither of you can die in the yard.  When a run ends you are put back
+  the way you were when it began - hit points, mana and moves - not
+  healed to full, so it is no place to recover.  Nothing is learned
+  there either: skills and spells do not improve in the yard.
 
-  The report covers both halves of the fight in detail: your total,
-  your damage per second and per swing, what landed, what missed, what
-  it turned aside, and whether the damage came from your weapon, your
-  spells or your skills.  Then the same from the other side - how often
-  it tried, how many you ducked, parried, dodged or blocked, what got
-  through, your worst hit, and how long it would take you from full.
+  The report breaks the fight down attack by attack, both ways - every
+  spell you cast and every special attack on its own line, with its
+  damage, share, hit rate, average and best - alongside your totals,
+  damage per second, per swing and per round, and everything it did
+  to you.  Set the dummy up however the question needs: any level,
+  four shapes, nine damage types, a spell for it to cast, haste, a
+  different number of rounds, or DUMMY ENDLESS for a run with no bell
+  and a dummy that defends itself.  LEAVE RING takes you back out.
 
-  DUMMY RESET throws a run away and starts over, numbers and all, and
-  is the one setting you can change mid-fight.  LEAVE RING steps you
-  back out into the square, taking the report with you if a run is
-  going, and is the only way out on foot.
-
-  DUMMY BENCH is for comparing two sets of gear rather than measuring
-  yourself against the world.  The dummy stops defending itself
-  altogether and the run ends on its own after a set number of rounds
-  - fifty unless you say otherwise - so two readings are the same
-  length and neither depends on its dodge rolls.  The report gains a
-  damage per round figure, which is the one to write down.
-
-  The report also breaks the fight down attack by attack - every spell
-  you cast and every special attack on its own line, biggest first,
-  with its damage, its share, how many attempts landed, its average
-  and its best - and does the same for what the dummy did to you.
-
-  See HELP DUMMY.
+  Pyrotechnics now hits as hard as a fireball cast at your level.  It
+  used to scale with your current hit points, which made it about three
+  times its fellow psionics at level fifty and grew without limit with
+  every remort.  A failed attempt now costs its wait, as a failed cast
+  does, rather than letting you try again at once.  Heating the
+  victim's gear is still what it adds over a fireball.
 
 25 Sep 2026
   RECALL can be moved.  RECALL SET makes the room you are standing in your

@@ -111,6 +111,7 @@ rsync -a --delete \
   --exclude 'area/offense' --exclude 'area/relics' --exclude 'area/not' \
   --exclude 'area/ban' \
   --exclude 'area/*.are.*.bak' --exclude 'area/*.are.*.tmp' \
+  --exclude 'area/*.txt.tmp' \
   "$BUILD/" "$CURRENT/"
 
 # area/*.txt is excluded wholesale above, but help and social text
@@ -125,7 +126,7 @@ rsync -a --delete \
 # running game and none of them may be restored from a checkout.
 runtime_txt="shutdown.txt ban.txt bugs.txt ideas.txt typos.txt notes.txt
              maxload.txt wizlist.txt offense.txt relics.txt not.txt
-             pkilldata.txt"
+             pkilldata.txt dpsboard.txt"
 for f in "$BUILD"/area/*.txt; do
     [ -f "$f" ] || continue
     b=$(basename "$f")

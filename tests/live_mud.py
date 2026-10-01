@@ -341,7 +341,10 @@ class LiveMud:
             ROOT / "area", self.root / "area",
             ignore=shutil.ignore_patterns(
                 "notes.txt", "bugs.txt", "typos.txt", "ideas.txt",
-                "bugs.txt.*", "typos.txt.*", "ideas.txt.*"))
+                "bugs.txt.*", "typos.txt.*", "ideas.txt.*",
+                # A test world must not inherit somebody's benchmark
+                # board, for the same reason it must not inherit notes.
+                "dpsboard.txt", "dpsboard.txt.tmp"))
         for name in ("player", "gods", "heroes", "corpse", "backups", "log"):
             (self.root / name).mkdir()
         (self.root / "player" / "versions").mkdir()
