@@ -459,5 +459,7 @@
 1790840791	say	questor thews	Well done! I knew you were right for the job.
 1790840791	say	questor thews	Streak of 2 in a row! A +10% bonus has been added!
 1790840791	say	questor thews	Here's your 29 gold - well earned!
-1790870429	immtalk	Eclipse	hi
-1790870432	godtalk	Eclipse	hi
+1790871790	gossip	Killuminati	moving this over to an oracle hosted VM instead of running it on a raspberry pi, lol
+1790871807	gossip	Killuminati	already almost had a scare with the SD card on that thing
+1790871809	gossip	Eclipse	why?
+1790871829	gossip	Eclipse	why
