@@ -1,8 +1,8 @@
 #PLAYER
 Name Hello~
 Id   3197
-LogO 950982014
-Vers 3
+LogO 1790873379
+Vers 4
 Prom ~
 Ignoring ~
 Race saurian~
@@ -10,9 +10,12 @@ Sex  1
 Cla  0
 Gui  11
 Psionic  0
+PsiGrant 0
+PsiSpec ~
+PsiKnown ~
 Cast none
 Levl 3
-Plyd 2607
+Plyd 2608
 ListRemorts ~
 NumRemorts 0
 Note 941163841
@@ -23,11 +26,31 @@ NewGold 348
 NewPlat 0
 NewCopp 0
 NewSilv 0
-Bank 0
+BankCP 0
+IntTime 0
+IntTotal 0
 Dcount 0
+SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv carry-one-platinum 1790873379
+LastOut  0
+SesLogin 0
+SesDur   0
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
 Exp  6972
 Act  65788
 AfBy 512
