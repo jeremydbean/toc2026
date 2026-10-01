@@ -1,7 +1,7 @@
 #PLAYER
 Name Misery~
 Id   59089
-LogO 1790866532
+LogO 1790889600
 Vers 4
 Desc .                       //:::::::::::::::::::::::::::::::::::::::::::::\\
 
@@ -110,27 +110,27 @@ PsiKnown clairvoyance,confuse,ego whip,mindbar~
 Cast Fors
 Levl 54
 Tru  70
-Plyd 1675771
+Plyd 1676058
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2419
+Room 2497
 HMV  2318 2318 1035 1035 368 368
-NewGold 163
-NewPlat 5131
-NewCopp 83
-NewSilv 218
-BankCP 1110901108104
-IntTime 1790787089
-IntTotal 21829087309
+NewGold 74
+NewPlat 5132
+NewCopp 2
+NewSilv 20
+BankCP 1113678360874
+IntTime 1790873489
+IntTotal 24606340079
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 24
-AchKills 2
-AchQuests 2
+AchKills 3
+AchQuests 3
 AchDeaths 0
 AchExplore 0
 AchMaps 0
@@ -151,6 +151,8 @@ Achv first-pkill 1787935878
 Achv first-quest 1790711681
 Achv quest-rush 1790711681
 Achv quest-emergency 1790837967
+Achv quest-gamble-win 1790889345
+Achv visit-shire 1790889329
 Achv ten-pkills 1790711500
 Achv relic-british-crown 1787935878
 Achv relic-british-sceptre 1787935878
@@ -181,8 +183,8 @@ SesDead  0
 SesQuest 0
 RecallRoom 2401
 RecallSet  1790711702
-QuestPnts 165
-QuestStrk 2
+QuestPnts 347
+QuestStrk 3
 Exp  177312
 Act  33960136
 AfBy 512
@@ -454,8 +456,8 @@ Lev  51
 Cost 5000000
 Cond 100
 Repd 0
-Affect -1 51 -1 -8 17 0 0
 Affect -1 51 -1 4 24 0 0
+Affect -1 51 -1 -8 17 0 0
 End
 
 #O
