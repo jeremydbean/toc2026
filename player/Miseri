@@ -1,7 +1,7 @@
 #PLAYER
 Name Miseri~
 Id   46467
-LogO 1790426886
+LogO 1790821695
 Vers 4
 Prom ~
 Ignoring ~
@@ -12,22 +12,24 @@ Gui  5
 Psionic  0
 PsiGrant 1
 PsiSpec ~
+PsiKnown ~
 Cast none
 Levl 12
 Tru  70
-Plyd 4172
+Plyd 4317
 ListRemorts ~
 NumRemorts 0
 Note 0
+ReportsSeen 2 0 0
 Scro 22
-Room 25265
-HMV  146 146 1001 1001 131 131
+Room 4720
+HMV  146 146 1001 1001 66 131
 NewGold 236
 NewPlat 104
 NewCopp 1745
 NewSilv 159
 BankCP 0
-IntTime 1790363953
+IntTime 1790795953
 IntTotal 0
 Dcount 0
 SavedOnce 1
@@ -47,6 +49,8 @@ Achv first-kill 1789672913
 Achv carry-one-platinum 1789786847
 Achv carry-hundred-platinum 1789798357
 Achv four-denominations 1789786847
+Achv carry-ten-platinum 1790821552
+LastOut  0
 SesLogin 1790426815
 SesDur   71
 SesExpG  0
@@ -55,7 +59,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  25253
+Exp  25228
 Act  80124
 Comm 24576
 Mounted 0
@@ -96,7 +100,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 136 991 166
-Cond 0 45 45
+Cond 0 42 42
 Alias / who~
 Alias ] recall~
 Alias k c 'chill touch'~
@@ -247,9 +251,9 @@ Lev  1
 Cost 2500000
 Cond 100
 Repd 0
-Affect -1 6 -1 -1 19 0 0
-Affect -1 6 -1 5 17 0 0
 Affect -1 6 -1 -10 13 0 0
+Affect -1 6 -1 5 17 0 0
+Affect -1 6 -1 -1 19 0 0
 End
 
 #O
