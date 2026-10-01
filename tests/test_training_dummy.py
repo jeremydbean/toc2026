@@ -103,6 +103,20 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn("ch->hit = ch->max_hit", body)
         self.assertIn("dummy_session_clear", body)
 
+    def test_the_dummy_forgets_when_the_run_ends(self) -> None:
+        """Reported in play: it attacked again the instant the report
+        printed.
+
+        An attacked mobile records who hit it, and one that hates you
+        attacks on sight, so stopping the fight was never enough on
+        its own. Right for every other mobile in the world; wrong for
+        this one.
+        """
+        body = self.dummy.split("static void dummy_report(", 1)[1]
+        self.assertIn("remove_all_hates( dummy )", body)
+        self.assertIn("do_stop_hunting", body)
+        self.assertIn("dummy->position = POS_STANDING", body)
+
     def test_it_defaults_to_your_own_level(self) -> None:
         """Almost everybody is asking how they do against something
         their own size; anything else is a different question."""

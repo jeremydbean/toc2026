@@ -449,13 +449,28 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
     {
         if ( dummy->fighting != NULL )
             stop_fighting( dummy, true );
+
+        /*
+         * An attacked mobile remembers who hit it, and one that hates
+         * you sets about you again the moment the fight stops --
+         * which is right for everything else in the world and wrong
+         * for this. Stopping the fight alone left the dummy swinging
+         * the instant the report printed.
+         */
+        remove_all_hates( dummy );
+        if ( dummy->hunting != NULL )
+            do_stop_hunting( dummy, dummy->hunting->name );
+
         dummy->hit = dummy->max_hit;
+        dummy->position = POS_STANDING;
         act( "$n straightens up, good as new.", dummy, NULL, NULL, TO_ROOM );
     }
 
     ch->hit = ch->max_hit;
     ch->mana = ch->max_mana;
     ch->move = ch->max_move;
+    if ( ch->position == POS_FIGHTING )
+        ch->position = POS_STANDING;
     send_to_char( "You are patched up and rested.\n\r", ch );
 
     dummy_session_clear( ch );
