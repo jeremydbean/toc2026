@@ -1,7 +1,7 @@
 #PLAYER
 Name Milenko~
 Id   56969
-LogO 1790838606
+LogO 1790838997
 Vers 4
 Desc .                ...
 .             ::::::
@@ -50,13 +50,14 @@ PsiSpec ~
 PsiKnown ~
 Cast Fors
 Levl 52
-Plyd 927813
+Tru  70
+Plyd 928204
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4207
-HMV  575 1539 980 1431 190 381
+Room 4649
+HMV  1539 1539 1163 1431 176 381
 NewGold 0
 NewPlat 16
 NewCopp 0
@@ -87,6 +88,7 @@ Achv level-50 1790822830
 Achv day-played 1790822830
 Achv week-played 1790822830
 Achv first-pkill 1790822830
+Achv visit-mud-school 1790838812
 Achv relic-power-of-world 1790822830
 Achv bank-one-platinum 1790822830
 Achv bank-hundred-platinum 1790822830
@@ -96,7 +98,7 @@ Achv level-35 1790822830
 Achv level-45 1790822830
 Achv bank-thousand-platinum 1790822830
 Achv carry-ten-platinum 1790822830
-LastOut  1790837092
+LastOut  1790838606
 SesLogin 1790837033
 SesDur   59
 SesExpG  0
@@ -107,8 +109,8 @@ SesDead  0
 SesQuest 0
 QuestPnts 67
 Exp  116128
-Act  67174600
-Comm 28672
+Act  67182792
+Comm 24576
 Mounted 0
 On_Quest 0
 Quest_Pause 0
@@ -146,7 +148,7 @@ Pnts 40
 TSex 1
 LLev 186
 HMVP 1379 1076 406
-Cond 0 40 48
+Cond 0 100 100
 Alias / who~
 Alias f flee~
 Alias ] recall~
@@ -241,7 +243,7 @@ Gr 'necro maladictions'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'major globe'  40  12 -80  17          0          0
+AffD 'major globe'  39   5 -80  17          0          0
 End
 
 #O
