@@ -20722,3 +20722,113 @@ Thu Oct  1 23:35:57 2026 :: Sock.sinaddr:  5.161.177.47
 Thu Oct  1 23:35:57 2026 :: EOF encountered on read.
 Thu Oct  1 23:36:09 2026 :: Log Alaric [2419]: gos That's slick to have that graphic
 Thu Oct  1 23:36:20 2026 :: Log Alaric [2419]: af
+Thu Oct  1 23:36:58 2026 :: Log Alaric [2419]: n
+Thu Oct  1 23:36:58 2026 :: Log Alaric [0]: moved to 4649 (Entrance to the Hall of Hero's.)
+Thu Oct  1 23:37:00 2026 :: Log Alaric [4649]: u
+Thu Oct  1 23:37:00 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Thu Oct  1 23:37:19 2026 :: Log Alaric [2401]: gos See what looks like maybe the combat lag as a level bar near the top below your hp mana and move
+Thu Oct  1 23:37:24 2026 :: Log Alaric [2401]: l
+Thu Oct  1 23:37:26 2026 :: Log Alaric [2401]: aq time
+Thu Oct  1 23:38:23 2026 :: Log Alaric [2401]: gos No, that's what I think is already there?
+Thu Oct  1 23:38:32 2026 :: Log Alaric [2401]: bers
+Thu Oct  1 23:38:45 2026 :: Log Alaric [2401]: gr
+Thu Oct  1 23:39:19 2026 :: Log Alaric [2401]: gos Yeah, seems to be the stun type effect whenever doing something. Like I just failed a berserk and it showed a 10 second countdown. Next qued command went through as soon as it completed
+Thu Oct  1 23:39:21 2026 :: Log Alaric [2401]: aq time
+Thu Oct  1 23:39:23 2026 :: Log Alaric [2401]: l
+Thu Oct  1 23:40:09 2026 :: Log Alaric [2401]: aq re
+Thu Oct  1 23:40:11 2026 :: Log Alaric [2401]: l
+Thu Oct  1 23:40:12 2026 :: Log Alaric [2401]: u
+Thu Oct  1 23:40:12 2026 :: Log Alaric [0]: moved to 2410 (Climbing the Oak Tree...)
+Thu Oct  1 23:40:12 2026 :: Log Alaric [2410]: u
+Thu Oct  1 23:40:12 2026 :: Log Alaric [0]: moved to 2411 (Up in the Oak Tree.)
+Thu Oct  1 23:40:12 2026 :: Log Alaric [2411]: u
+Thu Oct  1 23:40:12 2026 :: Log Alaric [0]: moved to 2414 (Top of the oak tree.)
+Thu Oct  1 23:40:12 2026 :: Log Alaric [2414]: u
+Thu Oct  1 23:40:12 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Thu Oct  1 23:40:13 2026 :: Log Alaric [2497]: aq re
+Thu Oct  1 23:40:17 2026 :: Log Alaric [2497]: enter door
+Thu Oct  1 23:40:17 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Thu Oct  1 23:40:17 2026 :: Log Alaric [2401]: east
+Thu Oct  1 23:40:17 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Thu Oct  1 23:40:17 2026 :: Log Alaric [2403]: east
+Thu Oct  1 23:40:17 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Thu Oct  1 23:40:17 2026 :: Log Alaric [2420]: east
+Thu Oct  1 23:40:17 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Thu Oct  1 23:40:18 2026 :: Log Alaric [2421]: east
+Thu Oct  1 23:40:18 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Thu Oct  1 23:40:18 2026 :: Log Alaric [2422]: east
+Thu Oct  1 23:40:18 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Thu Oct  1 23:40:18 2026 :: Log Alaric [2423]: east
+Thu Oct  1 23:40:18 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Thu Oct  1 23:40:18 2026 :: Log Alaric [2424]: east
+Thu Oct  1 23:40:18 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Thu Oct  1 23:40:19 2026 :: Log Alaric [2425]: east
+Thu Oct  1 23:40:19 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Thu Oct  1 23:40:19 2026 :: Log Alaric [2426]: open east
+Thu Oct  1 23:40:19 2026 :: Log Alaric [2426]: east
+Thu Oct  1 23:40:19 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Thu Oct  1 23:40:22 2026 :: Log Alaric [2440]: east
+Thu Oct  1 23:40:22 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Thu Oct  1 23:40:22 2026 :: Log Alaric [3503]: east
+Thu Oct  1 23:40:22 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Thu Oct  1 23:40:22 2026 :: Log Alaric [3502]: south
+Thu Oct  1 23:40:22 2026 :: Log Alaric [0]: moved to 5261 (The dwarf forest)
+Thu Oct  1 23:40:23 2026 :: Log Alaric [5261]: southeast
+Thu Oct  1 23:40:23 2026 :: Log Alaric [0]: moved to 35 (Lava Forest)
+Thu Oct  1 23:40:23 2026 :: Log Alaric [35]: northeast
+Thu Oct  1 23:40:23 2026 :: Log Alaric [0]: moved to 36 (The Lava Tube)
+Thu Oct  1 23:40:23 2026 :: Log Alaric [36]: east
+Thu Oct  1 23:40:23 2026 :: Log Alaric [0]: moved to 37 (Lava Field)
+Thu Oct  1 23:40:23 2026 :: Log Alaric [37]: southeast
+Thu Oct  1 23:40:23 2026 :: Log Alaric [0]: moved to 2900 (Obsidian hills)
+Thu Oct  1 23:40:24 2026 :: Log Alaric [2900]: south
+Thu Oct  1 23:40:24 2026 :: Log Alaric [0]: moved to 2901 (Obsidian hills)
+Thu Oct  1 23:40:24 2026 :: Log Alaric [2901]: south
+Thu Oct  1 23:40:24 2026 :: Log Alaric [0]: moved to 2902 (Obsidian hills)
+Thu Oct  1 23:40:24 2026 :: Log Alaric [2902]: east
+Thu Oct  1 23:40:24 2026 :: Log Alaric [0]: moved to 2903 (Mountain side)
+Thu Oct  1 23:40:24 2026 :: Log Alaric [2903]: south
+Thu Oct  1 23:40:24 2026 :: Log Alaric [0]: moved to 2904 (Mountain side)
+Thu Oct  1 23:40:25 2026 :: Log Alaric [2904]: south
+Thu Oct  1 23:40:25 2026 :: Log Alaric [0]: moved to 2905 (Mountain top)
+Thu Oct  1 23:40:25 2026 :: Log Alaric [2905]: south
+Thu Oct  1 23:40:25 2026 :: Log Alaric [0]: moved to 2906 (Entrance to the mountain)
+Thu Oct  1 23:40:25 2026 :: Log Alaric [2906]: down
+Thu Oct  1 23:40:27 2026 :: Log Alaric [2906]: gos For sure
+Thu Oct  1 23:40:29 2026 :: Log Alaric [2906]: open down
+Thu Oct  1 23:40:29 2026 :: Log Alaric [2906]: down
+Thu Oct  1 23:40:37 2026 :: Log Alaric [2906]: sleep
+Thu Oct  1 23:40:39 2026 :: Log Alaric [2906]: aq time
+Thu Oct  1 23:40:54 2026 :: Log Alaric [2906]: wake
+Thu Oct  1 23:40:55 2026 :: Log Alaric [2906]: l
+Thu Oct  1 23:41:00 2026 :: Log Alaric [2906]: down
+Thu Oct  1 23:41:00 2026 :: Log Alaric [0]: moved to 2910 (Inside the mountain)
+Thu Oct  1 23:41:00 2026 :: Sock.sinaddr:  3.212.128.62
+Thu Oct  1 23:41:00 2026 :: Log Alaric [2910]: down
+Thu Oct  1 23:41:00 2026 :: Log Alaric [0]: moved to 2913 (Inside the mountain)
+Thu Oct  1 23:41:00 2026 :: EOF encountered on read.
+Thu Oct  1 23:41:00 2026 :: Log Alaric [2913]: down
+Thu Oct  1 23:41:00 2026 :: Log Alaric [0]: moved to 2916 (Bottom of the mountain)
+Thu Oct  1 23:41:00 2026 :: Log Alaric [2916]: north
+Thu Oct  1 23:41:00 2026 :: Log Alaric [0]: moved to 2917 (The tunnel)
+Thu Oct  1 23:41:01 2026 :: Log Alaric [2917]: north
+Thu Oct  1 23:41:01 2026 :: Log Alaric [0]: moved to 2918 (Bend in the tunnel)
+Thu Oct  1 23:41:03 2026 :: Log Alaric [2918]: kill gu
+Thu Oct  1 23:41:07 2026 :: Log Alaric [2918]: recal
+Thu Oct  1 23:41:07 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Thu Oct  1 23:41:07 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 23:41:10 2026 :: Log Alaric [2497]: aq ga no
+Thu Oct  1 23:41:12 2026 :: Log Alaric [2497]: aq comp
+Thu Oct  1 23:41:15 2026 :: Log Alaric [2497]: aq ga no
+Thu Oct  1 23:41:16 2026 :: Log Alaric [2497]: sc
+Thu Oct  1 23:41:17 2026 :: Log Alaric [2497]: en do
+Thu Oct  1 23:41:17 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Thu Oct  1 23:41:19 2026 :: Log Alaric [2401]: jump rock
+Thu Oct  1 23:41:19 2026 :: Log Alaric [0]: moved to 1607 (House of Pancakes)
+Thu Oct  1 23:41:20 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Thu Oct  1 23:41:22 2026 :: Log Alaric [4208]: heal ref
+Thu Oct  1 23:41:26 2026 :: Log Alaric [4208]: heal ref
+Thu Oct  1 23:41:30 2026 :: Log Alaric [4208]: heal ref
+Thu Oct  1 23:41:34 2026 :: Log Alaric [4208]: heal ref
+Thu Oct  1 23:41:38 2026 :: Log Alaric [4208]: gos I'm impressed
+Thu Oct  1 23:41:41 2026 :: Log Alaric [4208]: heal ref
