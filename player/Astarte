@@ -1,7 +1,7 @@
 #PLAYER
 Name Astarte~
 Id   30739
-LogO 1790840532
+LogO 1790840870
 Vers 4
 Desc .                      //:::::::::::::::::::::::::::::::::::::::::::::\\
 .                     //:::_______:::::::::________::::::::::_____:::::::\\
@@ -40,14 +40,14 @@ PsiKnown mindbar,project,pyrotechnics,telekinesis~
 Cast none
 Levl 51
 Tru  69
-Plyd 658882
+Plyd 659220
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  9504 9504 3222 3222 1704 1710
-NewGold 3
+HMV  9504 9504 3222 3222 1710 1710
+NewGold 32
 NewPlat 1206
 NewCopp 72
 NewSilv 5
@@ -60,7 +60,7 @@ Corpses	0
 PkRec 7
 PkGiv 1
 AchKills 1
-AchQuests 1
+AchQuests 2
 AchDeaths 0
 AchExplore 0
 AchMaps 0
@@ -79,6 +79,7 @@ Achv week-played 1790829651
 Achv first-kill 1790840516
 Achv first-pkill 1790829651
 Achv first-quest 1790840527
+Achv quest-gamble-win 1790840795
 Achv carry-one-platinum 1790829651
 Achv carry-hundred-platinum 1790829651
 Achv four-denominations 1790829651
@@ -96,9 +97,9 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-QuestPnts 8
-QuestStrk 1
-QuestNext 5
+QuestPnts 90
+QuestStrk 2
+QuestNext 4
 Exp  113672
 Act  131272
 AfBy 3678908
@@ -192,50 +193,50 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'warrior guild'
-AffD 'change sex'  11  15  -1   6          0          0
-AffD 'armor'   0  26 -20  17          0          0
-AffD 'bless'   0  26   8  18          0          0
-AffD 'bless'   0  26  -8  24          0          0
-AffD 'shield'  39  26 -20  17          0          0
-AffD 'stone skin'   0  26 -40  17          0          0
-AffD 'sanctuary'   0  26   0   0        128          0
-AffD 'haste'  49  26   4   2    2097152          0
-AffD 'fly'  52  26   0   0     524288          0
-AffD 'pass door'  49  26   0   0    1048576          0
-AffD 'protection evil'  48  26   0   0       8192          0
-AffD 'fire shield'  48  26   0   0          0          8
-AffD 'divine protection'  28  26   0   0          0       4096
-AffD 'giant strength'  26  26   4   1          0          0
-AffD 'frenzy'  47  26  11  18          0          0
-AffD 'frenzy'  48  26  11  19          0          0
-AffD 'frenzy'  40  26 110  17          0          0
-AffD 'major globe'  49  26 -131  17          0          0
-AffD 'detect invis'  41  26   0   0          8          0
-AffD 'detect hidden'  47  26   0   0         32          0
-AffD 'detect magic'  50  26   0   0         16          0
-AffD 'detect good'  49  26   0   0          0          2
-AffD 'detect evil'  52  26   0   0          4          0
-AffD 'power gloves'  36  26  14  19          0          0
-AffD 'empower'  36  17   0   0          0          0
-AffD 'sanctuary'  37  26   0   0        128          0
-AffD 'haste'  36  26   4   2    2097152          0
-AffD 'fly'  52  26   0   0     524288          0
-AffD 'pass door'  48  26   0   0    1048576          0
-AffD 'protection evil'  48  26   0   0       8192          0
-AffD 'fire shield'  49  26   0   0          0          8
-AffD 'divine protection'  32  26   0   0          0       4096
-AffD 'giant strength'  41  26  15   1          0          0
-AffD 'empower'  32  17  15   3          0          0
-AffD 'empower'  47  17  15   4          0          0
-AffD 'empower'  52  17  11   2          0          0
-AffD 'empower'  51  17  15   5          0          0
-AffD 'empower'  51  17  20  18          0          0
-AffD 'empower'  51  17  20  19          0          0
-AffD 'empower'  51  17 -100  17          0          0
-AffD 'titanic'  48  17 7920  13          0          0
-AffD 'titanic'  48  17 2685  12          0          0
-AffD 'titanic'  46  17 1425  14          0          0
-AffD 'titanic'  49  17  50  16          0          0
+AffD 'change sex'  10   9  -1   6          0          0
+AffD 'armor'   0  20 -20  17          0          0
+AffD 'bless'   0  20   8  18          0          0
+AffD 'bless'   0  20  -8  24          0          0
+AffD 'shield'  37  20 -20  17          0          0
+AffD 'stone skin'   0  20 -40  17          0          0
+AffD 'sanctuary'   0  20   0   0        128          0
+AffD 'haste'  48  20   4   2    2097152          0
+AffD 'fly'  51  20   0   0     524288          0
+AffD 'pass door'  49  20   0   0    1048576          0
+AffD 'protection evil'  44  20   0   0       8192          0
+AffD 'fire shield'  46  20   0   0          0          8
+AffD 'divine protection'  27  20   0   0          0       4096
+AffD 'giant strength'  25  20   4   1          0          0
+AffD 'frenzy'  46  20  11  18          0          0
+AffD 'frenzy'  45  20  11  19          0          0
+AffD 'frenzy'  39  20 110  17          0          0
+AffD 'major globe'  49  20 -131  17          0          0
+AffD 'detect invis'  39  20   0   0          8          0
+AffD 'detect hidden'  44  20   0   0         32          0
+AffD 'detect magic'  47  20   0   0         16          0
+AffD 'detect good'  47  20   0   0          0          2
+AffD 'detect evil'  49  20   0   0          4          0
+AffD 'power gloves'  36  20  14  19          0          0
+AffD 'empower'  32  11   0   0          0          0
+AffD 'sanctuary'  37  20   0   0        128          0
+AffD 'haste'  35  20   4   2    2097152          0
+AffD 'fly'  52  20   0   0     524288          0
+AffD 'pass door'  46  20   0   0    1048576          0
+AffD 'protection evil'  46  20   0   0       8192          0
+AffD 'fire shield'  49  20   0   0          0          8
+AffD 'divine protection'  31  20   0   0          0       4096
+AffD 'giant strength'  40  20  15   1          0          0
+AffD 'empower'  30  11  15   3          0          0
+AffD 'empower'  45  11  15   4          0          0
+AffD 'empower'  50  11  11   2          0          0
+AffD 'empower'  50  11  15   5          0          0
+AffD 'empower'  51  11  20  18          0          0
+AffD 'empower'  51  11  20  19          0          0
+AffD 'empower'  50  11 -100  17          0          0
+AffD 'titanic'  47  11 7920  13          0          0
+AffD 'titanic'  45  11 2685  12          0          0
+AffD 'titanic'  46  11 1425  14          0          0
+AffD 'titanic'  49  11  50  16          0          0
 End
 
 #O
