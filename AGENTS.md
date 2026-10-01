@@ -23,7 +23,8 @@ Maintained documentation:
 - `wiki/achievements.md`: achievement catalog, command views, persistence, and hooks
 - `wiki/game-client-guide.md`: browser terminal, ANSI, paging, and client controls
 - `wiki/hosting-guide.md`: deployment/configuration/persistence
-- `wiki/windows-production-hosting.md`: current Hyper-V production operations
+- `wiki/disaster-recovery.md`: current Oracle Cloud hosting, deploy and recovery
+- `wiki/windows-production-hosting.md`: retired Hyper-V VM operations (history)
 - `mudlet/listing-submission.md`: Mudlet listing readiness and review handoff
 - `wiki/operator-guide.md`: immortal and incident procedures
 - `wiki/developer-guide.md`: architecture and development workflow
@@ -763,21 +764,29 @@ descriptor so a full mud does not write every file in one tick.
 
 ## Where This Actually Runs
 
-**The game runs in the Hyper-V VM `TOC-Production` on the Windows
-desktop.** The Raspberry Pi died on 2026-09-29 -- abruptly, with the
-game answering health checks fifteen minutes earlier and no
-under-voltage, storage error or clean shutdown in its journal -- and it
-is not coming back. Its characters were recovered from the SD card and
-are what the VM now serves.
+**The game runs on Oracle Cloud: an Always Free ARM (aarch64) Ubuntu
+24.04 instance at `129.213.53.66`, which `toc.jeremybean.com` resolves
+to.** It moved there on 2026-10-01. Both earlier hosts are gone --
+before Oracle it ran on a Hyper-V VM on the owner's Windows desktop (now
+powered off), and before that on a Raspberry Pi that died without
+warning on 2026-09-29 -- and the characters were carried forward through
+each move. Only Oracle is live: there is no VM to reach at `172.28.90.2`
+and no Pi at `toc.local`.
 
-    ssh -i C:\ProgramData\ToC\secrets\toc-admin tocadmin@172.28.90.2
+    ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.213.53.66
     sudo /usr/local/sbin/toc-deploy          # fetch, build, check, restart
     sudo /usr/local/sbin/toc-deploy --dry-run
 
+The SSH user is **ubuntu** (the VM used `tocadmin`; that is history).
+The key was in Downloads at cutover and may be moved to
+`C:\ProgramData\ToC\secrets\`. The game, dashboard, state-sync and
+recovery run under systemd on the same `/srv/toc` layout as the VM did,
+so everything below about deploys, backups and recovery still applies --
+only the address and the login changed.
+
 `wiki/disaster-recovery.md` is the one page to read when something is
 broken: what is down, how to deploy, whether the backups are working,
-and how to rebuild on a new machine. Everything on it has been run at
-least once.
+and how to rebuild on a new machine.
 
 **Deploy whenever the change is ready, connected players or not.** The
 owner settled this on 2026-09-29: do not hold, do not ask, and do not
@@ -818,87 +827,23 @@ went missing: it is tracked in git *and* listed in `area.lst`, so
 treating it as a runtime file and excluding it left the game unable to
 boot. The script carries the exclude list that is actually correct.
 
-The section below describes the Pi. **It is history**, kept because the
-appliance scripts are still in the tree and because the reasoning
-behind the update gate is worth keeping. Nothing in it is a live
-instruction: there is no `toc.local` to reach and no
-`/run/toc2026/update.request` to touch.
+**It is a free-tier box, and that is the one soft spot.** The Oracle
+account is still on the 30-day trial; upgrading it to Pay As You Go --
+which keeps it $0 -- is what exempts an idle Always Free instance from
+being reclaimed. A reclamation would lose nothing anyway: the state sync
+(above) and `toc-restore` rebuild the game on a fresh box -- Oracle,
+Linode, anything Debian-family -- in minutes, so a host loss here is an
+outage, not a data loss. That is the whole point of the backup design.
 
-## Deploying To The Raspberry Pi (historical)
-
-The Pi at `toc.jeremybean.com` was the live server, not a staging box. Real
-players logged in; `log/logins.tsv` recorded who had been on lately.
-
-**The updater restarts the game, which disconnects whoever is playing.**
-Before triggering `toc2026-update.service`, check for connected players and
-hold unless the only one online is the owner (Killuminati).
-
-Ask the game, not the journal. `telnet_count_players()` counts descriptors
-in `CON_PLAYING` and the game publishes that over MSSP, which is what
-`/api/admin/status` now reports as `online.count`, with
-`online.source == "game"`. A session ending without a recorded close leaves
-a stale `connect` in `log/logins.tsv`, so the journal only ever
-over-reports; when the game cannot be reached the field says
-`source == "journal"` and the number is an upper bound, not a reading. The
-names still come from the journal, because MSSP carries a count and no
-names. Established sockets on port 9000 are a third, independent check.
-
-The Pi answers SSH on the LAN as `toc@toc.local` (port 22 is deliberately
-not forwarded from the internet). Over SSH the updater can be triggered
-without the admin token by touching `/run/toc2026/update.request`, which
-is the same path `POST /api/update` writes and is owned by `toc`.
-
-The updater does `make clean` first, so production has never been exposed to
-the incremental-build trap described under Build And Run.
-
-**The updater now checks for players itself, immediately before the
-restart.** Check before triggering as well, but understand what that
-check is and is not worth: everything between the trigger and the
-restart -- fetch, `make clean`, a full rebuild, the world check and the
-Python suite -- takes about four minutes, and a reading taken before all
-that is stale by exactly the window that matters. Somebody logged in
-during a build and was disconnected by a check that had already said the
-game was empty. The gate lives in `deploy/toc2026-update`:
-
-- It holds while anyone who is not in `TOC_UPDATE_OWNERS` (default
-  `Killuminati`) is connected, polling every 30s up to
-  `TOC_UPDATE_HOLD_SECONDS` (default 900), then goes ahead anyway --
-  the update is already built and validated by that point, and holding
-  a validated update forever is the worse failure.
-- The count is the game's own MSSP reading and the names come from the
-  login journal, which only ever over-reports. A count higher than the
-  owners it can name holds: it waits too often rather than too rarely.
-- If the API cannot be read it falls back to established sockets on
-  port 9000, so an unhealthy dashboard does not hold every deploy for a
-  quarter of an hour.
-- It queues an `announce` before the stop, so whoever is on gets told.
-
-**The gate does not protect the owner**, by design -- an owner alone is
-not a reason to hold. If you are deploying while the owner is testing,
-say so first; the check will not do it for you.
-
-Because `install-pi.sh --refresh` runs before the restart in the same
-run, a change to the updater takes effect on the *next* deploy, not the
-one carrying it.
-
-**Never commit a change to a file the running game writes.** The
-updater advances the checkout with `git merge --ff-only`, and the game
-rewrites several tracked paths continuously, so on the Pi they are
-always dirty. A commit that touches one of them does not merely lose
-the live copy -- the merge refuses outright and **every later deploy
-fails** until somebody fixes the tree by hand. The `dirty_paths`
-allowlist earlier in the script does not help: it decides whether to
-start, while the refusal comes from the merge itself.
-
-The paths that behave this way are the ones that allowlist names:
-`area/custom.are` and, under `area/`, `shutdown`, `ban`, `maxload`,
-`wizlist`, `offense`, `relics`, `not` and `pkilldata`. `bugs`, `ideas`,
-`typos` and `notes` were among them until 2026-09-26 and are now
-untracked and gitignored, which is the right shape for all of these:
-runtime state does not belong in the repository. Untracking one is
-itself such a commit, so it needs the same care -- back the live copies
-up, restore the tracked versions so the paths are clean, let the merge
-remove them, then put the live content back.
+**The old deploy appliances are dead history.** The scripts under
+`deploy/` that name the Pi -- `install-pi.sh`, `toc2026-update`,
+`pi.env.example` and the `toc2026-*` systemd units -- ran only on the
+Pi, which advanced its checkout with `git merge --ff-only` (a tracked
+file the game rewrites would block that merge). Neither the VM nor
+Oracle works that way: `toc-deploy` resets the build tree and rsyncs it
+over `current/`, and live state travels through the GitHub sync above.
+Do not resurrect the Pi updater, `toc.local` or
+`/run/toc2026/update.request` against any current host.
 
 ## Watching A Player
 
@@ -1294,18 +1239,17 @@ it alters who receives mail.
 
 Other deploy facts:
 
-- Never run the Pi installer or updater against the Windows VM; that host is
-  a test environment only.
-- Never copy player files, logs, PK standings, max-load state, shutdown
-  markers, or queued commands from Git into production.
-- `MUD_HOST` is where the web service dials (loopback). `MUD_PUBLIC_HOST` is
-  what the dashboard displays, resolved to an address so it follows the DDNS
-  record rather than going stale.
-- The admin token lives in `/home/toc/toc2026/.env` (gitignored, mode 600) and
-  is read with `grep '^WEB_ADMIN_TOKEN=' ~/toc2026/.env`. It was rotated on
-  2026-09-23 after being pasted into a chat transcript; generate a
-  replacement on the Pi with `openssl rand -hex 32` so the value never leaves
-  the host, and restart `toc2026-web.service`. Never paste it into a commit,
+- A deploy never takes player state from git. `toc-deploy` excludes
+  `player/`, `gods/`, `heroes/`, the logs and the area runtime files and
+  ships only code; **`toc-restore` is the only thing that lays live state
+  down from git**, and only onto a fresh box in a disaster.
+- `MUD_HOST` is where the web service dials (loopback, 127.0.0.1).
+  `MUD_PUBLIC_HOST` is what the dashboard shows players; on Oracle it is
+  set to `toc.jeremybean.com` in `/etc/toc/web.env`.
+- The admin token lives in `/etc/toc/web.env` (mode 600, root) and is read
+  with `sudo grep '^WEB_ADMIN_TOKEN=' /etc/toc/web.env`. Generate a
+  replacement on the host with `openssl rand -hex 32` so the value never
+  leaves it, then restart `toc-web.service`. Never paste it into a commit,
   an issue or a conversation.
 
 ## Quest Contracts

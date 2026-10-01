@@ -626,10 +626,10 @@ Confirm the host, port, and protocol. The first-party browser client is normally
 9000. Test whether the server is online and check local firewall or VPN rules.
 Do not enter the web-client URL as the host in a traditional MUD client.
 
-On the dedicated Raspberry Pi LAN appliance, use
-`http://toc.local:9001/client` or `http://PI_ADDRESS:9001/client`, and connect a
-traditional client to `toc.local:9000` or `PI_ADDRESS:9000`. The `:9001` is
-required; the Pi does not serve ToC on browser port 80.
+The live server is `toc.jeremybean.com`: play in a browser at
+`http://toc.jeremybean.com:9001/client`, or point any traditional MUD
+client at `toc.jeremybean.com` port `9000`. The `:9001` is required for
+the browser client; there is no listener on browser port 80.
 
 ### My Password Is Rejected
 

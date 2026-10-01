@@ -3,21 +3,24 @@
 One page, in the order you will actually need it. Everything on it has
 been run at least once rather than only written down.
 
-The game runs in a Hyper-V VM called `TOC-Production` on the Windows
-desktop. The Raspberry Pi that used to host it died on 2026-09-29 and
-is not coming back; anything telling you to `ssh toc@toc.local` or
-touch `/run/toc2026/update.request` is describing that dead machine.
+The game runs on an Oracle Cloud instance (Always Free ARM, Ubuntu
+24.04) reached at `129.213.53.66`, which `toc.jeremybean.com` points to.
+It moved there on 2026-10-01. Two earlier hosts are gone and not coming
+back: a Hyper-V VM on the owner's Windows desktop (powered off), and
+before that a Raspberry Pi that died on 2026-09-29. Anything telling you
+to `ssh toc@toc.local`, touch `/run/toc2026/update.request`, or start a
+`TOC-Production` VM is describing a dead machine.
 
 ## Where everything is
 
 | | |
 | --- | --- |
-| Host | Hyper-V VM `TOC-Production`, Ubuntu 24.04 |
-| Reach it | `ssh -i C:\ProgramData\ToC\secrets\toc-admin tocadmin@172.28.90.2` |
+| Host | Oracle Cloud instance, Ubuntu 24.04 ARM, region us-ashburn-1 |
+| Reach it | `ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.213.53.66` |
 | Game lives in | `/srv/toc/current` (state) and `/srv/toc/build` (git checkout) |
 | Public | `toc.jeremybean.com:9000` game, `:9001` dashboard and browser client |
-| Router forwards to | `192.168.0.43`, the Windows host, which NATs to the VM |
-| Admin token | `C:\ProgramData\ToC\secrets\web-admin-token.txt`, mirrored in the VM's `/etc/toc/web.env` |
+| Firewall | OCI VCN security list **and** the instance's own iptables -- a port must be open in both |
+| Admin token | `/etc/toc/web.env` on the host (mode 600) |
 
 ## Is it up?
 
@@ -31,12 +34,16 @@ alive and the dashboard can see it. Anything else, work down this page.
 ## The game is down
 
 ```bash
-ssh -i C:\ProgramData\ToC\secrets\toc-admin tocadmin@172.28.90.2
+ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.213.53.66
 systemctl status toc-game toc-web
 sudo journalctl -u toc-game -n 50
 ```
 
-Things that have actually caused this:
+The game is set to restart itself: `Restart=always` after a crash, a
+60-second watchdog for a hang, enabled units after a reboot, and
+`toc-game-recovery` every couple of minutes as the backstop if it ever
+crash-loops past systemd's start limit. If it is still down, things that
+have actually caused it:
 
 - **`custom.are: No such file or directory`** -- `area/custom.are` is
   tracked in git and listed in `area.lst`, and an install that treated
@@ -45,19 +52,20 @@ Things that have actually caused this:
 - **Unmet condition `ConditionPathExists=!/etc/toc/maintenance`** --
   a maintenance marker is in place. `sudo mv /etc/toc/maintenance
   /etc/toc/maintenance.off` and start the units.
-- **A shutdown marker** at `/srv/toc/current/area/shutdown`, left by an
-  in-game `shutdown`. Remove it, `systemctl reset-failed`, start.
+- **A shutdown marker** at `/srv/toc/current/area/shutdown.txt`, left by
+  an in-game `shutdown`. It is tracked in git, so a restore brings it
+  back -- `toc-restore` removes it. Delete it, `systemctl reset-failed`,
+  start.
 
-## The VM is down but Windows is up
+## The instance itself is down
 
-```powershell
-Get-VM TOC-Production          # needs an elevated PowerShell
-Start-VM TOC-Production
-```
-
-It is set to start with the host (`AutomaticStartAction Start`, 20s
-delay). If Hyper-V cmdlets say "you do not have the required
-permission", you are not elevated.
+Soft-reboot or start it from the OCI console (Compute -> Instances ->
+the instance -> Reboot / Start), or `sudo reboot` over SSH if you can
+still reach it. The enabled units bring the game, dashboard, sync and
+recovery back on their own; a full reboot has been tested end to end. If
+the instance will not start with "out of host capacity", that is the ARM
+free-tier capacity limit -- retry later, or restore onto another shape
+or another provider (see "The machine is gone").
 
 ## Deploying a code change
 
@@ -78,99 +86,88 @@ systemctl list-timers 'toc-state-sync*'
 ```
 
 `ok ... unpushed=0` is what you want. `toc-state-sync` commits
-characters, gods, the note board, the reports and the logs to `main`
-every five minutes; `toc-state-sync-check` complains every quarter hour
-if that stops, to the journal, to that marker file, and into the game
-where staff will see it.
+characters, gods, heroes, the note board, the reports and the logs to
+`main` every five minutes; `toc-state-sync-check` complains every
+quarter hour if that stops, to the journal, to that marker file, and
+into the game where staff will see it.
 
 If it is failing, the usual causes are the deploy key
 (`/srv/toc/.ssh/id_ed25519_state_sync` and the repository's deploy key
-list must agree) or a full disk.
+list must agree), a full disk, or a corrupt clone at
+`/srv/toc/state-repo` (symptom: `object file ... is empty` -- move the
+clone aside and let the sync re-clone).
 
 ## The machine is gone
 
 This is the one that matters, and it is rehearsed rather than
-theoretical. On any fresh Debian-family box with `git`, `make`, `gcc`
-and `rsync`:
+theoretical. On any fresh Debian-family box:
 
 ```bash
+sudo apt install -y build-essential cmake zlib1g-dev libcrypt-dev git python3-venv
 git clone https://github.com/jeremydbean/toc2026.git /tmp/toc
-sudo /tmp/toc/deploy/toc-restore
+sudo sh /tmp/toc/deploy/toc-restore
 ```
 
-That clones, confirms the characters really came with the clone,
-builds, validates the world, and installs to `/srv/toc/current`. It
-stops rather than proceeding if the repository has no characters in it.
+`toc-restore` clones, confirms the characters really came with the
+clone, builds, validates the world, installs to `/srv/toc/current`, and
+now also installs every systemd unit, builds the dashboard venv, writes
+a fresh admin token and starts the game -- so it comes up running and
+self-restarting. It stops rather than proceeding if the repository has
+no characters in it.
 
 Rehearse it any time without touching anything live:
 
 ```bash
-TOC_PREFIX=/tmp/drill deploy/toc-restore
+TOC_PREFIX=/tmp/drill sh deploy/toc-restore
 ```
 
-Last rehearsed 2026-09-29: 968 characters, world validated, about two
-minutes.
+Last rehearsed 2026-10-01 on the Oracle host: 968 characters, 212
+heroes, world validated, about two minutes.
 
 Two things are not in the repository, and neither blocks a restore
 because both can be made again:
 
 - the admin token -- `openssl rand -hex 32` into `/etc/toc/web.env`
+  (toc-restore writes one if none exists)
 - the state-sync deploy key -- `ssh-keygen -t ed25519`, then add the
-  public half to the repository with **write** access
+  public half to the repository with **write** access, so backups resume
 
-The `toc-game.service` and `toc-web.service` units are host-specific
-and live on the host. Copy them from the old machine if you still have
-it; otherwise they run `/srv/toc/current/merc 9000` from
-`/srv/toc/current/area` as user `toc`, and uvicorn for the dashboard.
+One host-specific step is not automated, because it is per-provider:
+**open the game port in the firewall.** On the Oracle box that is an
+iptables ACCEPT before the REJECT rule, saved with
+`netfilter-persistent` -- the OCI security list alone is not enough.
+Most other providers (Linode and the like) need nothing here.
 
 ## Moving to a different machine on purpose
 
-Same as above, plus:
+Same as "The machine is gone", plus:
 
-1. Point the router's port forward at the new host's LAN address, and
-   reserve that address in DHCP so it cannot move.
-2. Check `toc.jeremybean.com` still resolves to your WAN address.
-   Nothing on the VM maintains that record -- its DDNS timer updates
-   `toc.beanj.com`, the test name. The Pi used to keep the real one.
-3. Copy the two secrets across, or make new ones.
+1. Reserve the new box's public IP with the provider so it cannot change
+   under you (on OCI, convert the ephemeral IP to a reserved one).
+2. Point `toc.jeremybean.com` at the new address. DNS is maintained by
+   hand now -- nothing on the host updates it.
+3. Copy the two secrets across, or make new ones, and open the firewall.
+4. Bring the game up, then enable `toc-state-sync` on the new host --
+   and make sure the old host is no longer syncing, or the two will
+   fight over the branch.
 
 ## What survives what
 
 | | Where | How often | Survives a dead disk |
 | --- | --- | --- | --- |
-| Characters, gods, notes, reports, logs | `main` on GitHub, plaintext | 5 min | yes |
-| Encrypted `player/` snapshot | private backups repo | 6 h | yes |
-| Full state tarball | `/var/backups/toc/` | daily | **no** |
+| Characters, gods, heroes, notes, reports, logs | `main` on GitHub, plaintext | 5 min | yes |
+| Encrypted `player/` snapshot | private backups repo | 6 h | **not wired up on Oracle yet** |
+| Full state tarball | `/var/backups/toc/` | -- | **not wired up on Oracle yet** |
 | Character files on disk | `/srv/toc/current/player` | 5 min per player | no |
 
-The daily tarball is local only. It is good for undoing the last hour
-and worth nothing against a dead disk.
+The five-minute GitHub sync is the live backup and it is running. The
+encrypted six-hourly snapshot and the daily local tarball ran on the old
+VM and are **not yet set up on Oracle** -- a follow-up. Until they are,
+the GitHub sync is the whole safety net, which is enough to rebuild from
+(that is what "The machine is gone" does) but is plaintext and public.
 
 Player state is committed in **plaintext** to a public repository. That
-is deliberate: it is a test environment, the owner would rather lose
-the secrecy than the characters, and anyone cloning the repo to run the
-game themselves gets a populated world. See the note in `AGENTS.md`
-before changing it.
-
-## Recovering from a dead machine's disk
-
-If the host is dead but its disk is readable, and it is a Raspberry Pi
-card in a USB reader on Windows, note that **neither `wsl --mount` nor
-Hyper-V disk passthrough will accept a USB card reader** -- both fail
-with `ERROR_INVALID_DRIVE`. What works:
-
-1. Read the partition table with `Get-Partition -DiskNumber N` and note
-   partition 2's offset.
-2. Copy that partition to a sparse file with a raw read of
-   `\\.\PhysicalDriveN`, skipping all-zero chunks. A 232 GB card with
-   9 GB used stores about 9 GB and takes under two hours.
-3. In WSL, `losetup -f --show -r <image>` then
-   `mount -t ext4 -o ro,noload <loop> /mnt/piroot`. The `noload` matters:
-   it stops a dirty journal being replayed onto your only copy.
-
-Do not open the image with an exclusive handle while writing it, or
-nothing can read it until the copy finishes.
-
-A better answer if you have a Mac: `brew install e2fsprogs`, then
-`sudo debugfs -R "rdump /home/toc/toc2026/player ~/recovered" /dev/diskNs2`.
-Userspace only, no kernel extension, reads only what it needs.
+is deliberate: it is a test environment, the owner would rather lose the
+secrecy than the characters, and anyone cloning the repo to run the game
+themselves gets a populated world. See the note in `AGENTS.md` before
+changing it.

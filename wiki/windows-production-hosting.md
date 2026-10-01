@@ -1,5 +1,11 @@
 # Windows Production Hosting
 
+> **Historical.** The game no longer runs on the Hyper-V VM described
+> here. It moved to Oracle Cloud on 2026-10-01; the VM is powered off.
+> For current hosting, deploys and recovery see
+> [disaster-recovery.md](disaster-recovery.md). This page is kept only as
+> a record of the VM setup.
+
 This runbook describes the Windows/Hyper-V deployment configured on September
 16, 2026. It is distinct from the Docker installer and Raspberry Pi appliance.
 Do not run the Pi installer or Pi automatic updater on this VM.

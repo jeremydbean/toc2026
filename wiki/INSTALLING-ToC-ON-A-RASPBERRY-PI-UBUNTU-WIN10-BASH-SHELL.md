@@ -1,9 +1,15 @@
 # Times of Chaos Installation Guide
 
-This filename remains because old wiki links point here. These are the current
-automated instructions for Windows, macOS, Debian/Ubuntu, and Raspberry Pi OS.
-For production design, backups, reverse proxies, and service management, use
-the complete [Hosting Guide](hosting-guide.md).
+> **The live server does not run on a Raspberry Pi.** It runs on Oracle
+> Cloud (it was on a Pi until 2026-09-29, then a Hyper-V VM, then Oracle
+> from 2026-10-01). This page is a generic local-install how-to only; for
+> the real host, its deploys and disaster recovery, see
+> [disaster-recovery.md](disaster-recovery.md).
+
+This filename remains because old wiki links point here. These are
+automated instructions for installing a local copy on Windows, macOS, or
+Debian/Ubuntu. For production design, backups, and service management,
+see [disaster-recovery.md](disaster-recovery.md).
 
 ## What The Installer Does
 

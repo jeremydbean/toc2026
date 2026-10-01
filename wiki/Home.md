@@ -24,8 +24,10 @@ objects.
 
 ## Hosts And Staff
 
-- [Windows Production Runbook](windows-production-hosting.md) - the live Hyper-V
-  deployment, private administration, player-state safety, recovery, and backups
+- [Disaster Recovery](disaster-recovery.md) - the current Oracle Cloud host:
+  deploys, backups, self-restart, and rebuilding on a fresh machine
+- [Windows Production Runbook](windows-production-hosting.md) - retired Hyper-V
+  VM deployment (history; the game moved to Oracle on 2026-10-01)
 - [Mudlet Listing Handoff](../mudlet/listing-submission.md) - readiness checks,
   clean-profile verification, and default-game review
 - [Web Admin Guide](web-admin-guide.md) - dashboard authentication, world and

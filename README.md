@@ -188,10 +188,11 @@ traditional MUD client to `localhost:9000`. The administration dashboard is
 the installers never print or replace an existing token. Both interfaces ship
 all browser assets locally and do not require internet access after installation.
 
-The dedicated Pi LAN profile uses `http://toc.local:9001/client` and
-`http://toc.local:9001/` instead. If mDNS is unavailable, substitute the Pi's
-IP address and keep the required `:9001` port. A bare `http://PI_ADDRESS` URL
-targets port 80, where ToC does not listen.
+To reach the live public server instead of a local copy, use
+`http://toc.jeremybean.com:9001/client` for the browser client and
+`http://toc.jeremybean.com:9001/` for the dashboard. Keep the `:9001`
+port -- a bare URL targets port 80, where ToC does not listen. The game
+itself is `toc.jeremybean.com` port `9000` for any MUD client.
 
 ### Mudlet (Recommended Desktop Client)
 

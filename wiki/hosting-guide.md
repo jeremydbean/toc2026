@@ -1,8 +1,12 @@
 # Times of Chaos Hosting Guide
 
-For the existing `toc.jeremybean.com` Windows-hosted server, use the
-[Windows Production Runbook](windows-production-hosting.md). Its Hyper-V VM
-and service names differ from both Docker Compose and the Pi appliance.
+> **The live server runs on Oracle Cloud.** For how the real
+> `toc.jeremybean.com` host is deployed, backed up and recovered, see
+> [disaster-recovery.md](disaster-recovery.md) -- that is the current,
+> authoritative page. This guide is a general reference for installing
+> and running your own copy (Docker or native), and the Raspberry Pi
+> appliance and Hyper-V sections in it describe retired setups, kept
+> because their scripts are still in `deploy/`.
 
 This guide covers installation, configuration, service management,
 persistence, backup, upgrades, monitoring, the web dashboard, and production

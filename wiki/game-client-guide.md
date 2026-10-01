@@ -51,15 +51,14 @@ The automated installation starts the client at:
 http://127.0.0.1:9001/client
 ```
 
-The dedicated Raspberry Pi LAN appliance starts the same client automatically
-with `toc2026-web.service`. From another device on that private LAN, open:
+The live server runs the same client. From any device, open:
 
 ```text
-http://toc.local:9001/client
+http://toc.jeremybean.com:9001/client
 ```
 
-If mDNS is unavailable, use `http://PI_ADDRESS:9001/client`. Port `9001` is
-required; a bare Pi address selects port 80 and will be refused.
+Port `9001` is required; a bare address selects port 80, where ToC does
+not listen.
 
 The launchers can open it directly:
 
@@ -253,11 +252,11 @@ ssh toc "sed -n 's/^WEB_ADMIN_TOKEN=//p' /home/toc/toc2026/.env" | pbcopy
 Paste it into the authentication dialog. **Remember on this browser** keeps it
 in that browser profile until **Lock**, browser-data clearing, or token rotation.
 
-### The Pi Address Refuses The Browser
+### The Address Refuses The Browser
 
-Use `http://PI_ADDRESS:9001/` for the dashboard or
-`http://PI_ADDRESS:9001/client` for play. If those fail, confirm the service and
-listener on the Pi:
+Use `http://toc.jeremybean.com:9001/` for the dashboard or
+`http://toc.jeremybean.com:9001/client` for play. If those fail, confirm the
+service and listener on the host:
 
 ```bash
 systemctl status toc2026-web
