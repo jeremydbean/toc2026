@@ -56,6 +56,7 @@ set(SRC_FILES
     src/skills.c
     src/script_event.c
     src/season.c
+    src/speak_filter.c
     src/special.c
     src/string_safe.c
     src/telnet_proto.c

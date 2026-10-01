@@ -994,6 +994,12 @@ What has changed in the game lately, newest first.  Type HELP on any
 command named here for the detail.
 
 1 Oct 2026
+  SWEDISH works again.  The command set a flag but nothing read it: the
+  speech filter that garbles a swedished (or drunk) player's SAY and
+  channel text had been dropped in a refactor and left only as an
+  uncompiled file.  It is compiled and wired back into SAY and the
+  channels.  Drunk slurring returns with it.
+
   Mudlet 1.5.0 adds a combat-awareness set: a lag bar that shows when
   you can act again, an enemy health gauge beside your own bars, a
   Buffs tab with a countdown bar per spell, a Group tab showing each

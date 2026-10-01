@@ -1100,6 +1100,10 @@ static void channel_say( CHAR_DATA *ch, char *argument, int flag, int colour,
 
     REMOVE_BIT( ch->comm, flag );
 
+    /* Swedish and drunk slurring, applied once so the history, the GMCP
+       feed and every listener all carry the same filtered text. */
+    argument = speak_filter( ch, argument );
+
     channel_history_add( history, ch, argument );
 
     snprintf( buf, sizeof(buf), "{%02XYou %s '%s'{00\n\r",
@@ -2474,6 +2478,9 @@ void do_say( CHAR_DATA *ch, char *argument )
         send_to_char( "The gods have silenced you!\n\r", ch );
         return;
     }
+
+    /* Swedish and drunk slurring, if either is on the speaker. */
+    argument = speak_filter( ch, argument );
 
     /* Code Safety: snprintf */
     snprintf( buf, sizeof(buf), "{%02XYou say '%s'{00\n\r", COL_SAYS, argument );
