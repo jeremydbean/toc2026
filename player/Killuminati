@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790871812
+LogO 1790872132
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6391594
+Plyd 6391898
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 2419
-HMV  30694 30814 30115 30115 30075 30075
+HMV  30812 30814 30115 30115 30075 30075
 NewGold 155
 NewPlat 2503017
 NewCopp 149
@@ -402,26 +402,26 @@ Gr 'mage default'
 Gr 'warrior default'
 Gr 'monk default'
 Gr 'warrior guild'
-AffD 'empower'   0  -1 -100  17          0          0
-AffD 'empower'   0  -1  20  19          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'titanic'   0  -1  25  14          0          0
-AffD 'titanic'   0  -1   0  12          0          0
 AffD 'titanic'   0  -1  40  13          0          0
+AffD 'titanic'   0  -1   0  12          0          0
+AffD 'titanic'   0  -1  25  14          0          0
+AffD 'titanic'   0  -1  50  16          0          0
+AffD 'empower'   0  -1   0   0          0          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1 -100  17          0          0
 End
 
 #O
@@ -812,8 +812,8 @@ Lev  52
 Cost 10000000
 Cond 100
 Repd 0
-Affect -1 52 -1 -33 14 0 0
 Affect -1 52 -1 -9 13 0 0
+Affect -1 52 -1 -33 14 0 0
 End
 
 #O
@@ -1123,9 +1123,9 @@ Lev  40
 Cost 4500000
 Cond 100
 Repd 0
-Affect -1 40 -1 -2 24 0 0
-Affect -1 40 -1 -4 3 0 0
 Affect -1 40 -1 1 21 0 0
+Affect -1 40 -1 -4 3 0 0
+Affect -1 40 -1 -2 24 0 0
 End
 
 #O
@@ -1182,8 +1182,8 @@ Lev  50
 Cost 17400000
 Cond 100
 Repd 0
-Affect -1 50 -1 9 17 0 0
 Affect -1 50 -1 1 14 0 0
+Affect -1 50 -1 9 17 0 0
 End
 
 #O
@@ -1341,10 +1341,10 @@ Lev  53
 Cost 15000000
 Cond 100
 Repd 0
-Affect -1 53 -1 3 24 0 0
-Affect -1 53 -1 -4 1 0 0
-Affect -1 53 -1 4 23 0 0
 Affect -1 53 -1 1 20 0 0
+Affect -1 53 -1 4 23 0 0
+Affect -1 53 -1 -4 1 0 0
+Affect -1 53 -1 3 24 0 0
 End
 
 #O
