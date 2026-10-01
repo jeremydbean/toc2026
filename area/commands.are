@@ -418,6 +418,10 @@ anybody has run and you earn the achievement Top of the Board.
 
 To run it: DUMMY RESET in the training yard, then KILL DUMMY.
 
+Staff can tidy it: DUMMY LEADERBOARD REMOVE <name> takes one
+character's run off, and DUMMY LEADERBOARD CLEAR CONFIRM empties it.
+Both are logged.
+
 See also: DUMMY, ACHIEVEMENTS
 ~
 
@@ -1064,6 +1068,11 @@ command named here for the detail.
   chose for it with COLOR, the same as the main window, and the quest
   strip says where the quest master last saw your target.  Mudlet
   offers the 1.3.1 package update automatically.
+
+  The plaque in the Hall of Heroes lists every hero there has ever
+  been, and a new hero's name is on it the moment they are made - as
+  the room always said it would be.  LOOK PLAQUE, down from the
+  centre of the Oak Tree Square.
 
   POKE pokes again.  It was taken as the start of the longer command
   POKER, so the social could never be used.  A word that is exactly a

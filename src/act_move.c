@@ -583,6 +583,12 @@ void do_look( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* The Hall of Heroes' plaque lists every hero there is, drawn when
+       it is read; the area file's text is only the fallback. */
+    if ( ch->in_room->vnum == ROOM_VNUM_HERO_HALL
+    &&   is_name( arg1, "plaque" ) && show_hero_plaque( ch ) )
+        return;
+
     pdesc = get_extra_descr( arg1, ch->in_room->extra_descr );
     if ( pdesc != NULL )
     {

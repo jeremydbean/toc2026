@@ -664,9 +664,20 @@ void gmcp_send_target( DESCRIPTOR_DATA *d )
  * flicker with a concealment roll. Names only, alphabetical, and the
  * count is of the names sent: a hidden player is not a number either.
  */
+/* An ordering, which str_cmp() is not: it answers only whether two
+   strings differ, so as a qsort comparator it left the roster in no
+   order at all. Found by the hero plaque's test. */
 static int gmcp_name_order( const void *a, const void *b )
 {
-    return str_cmp( *(const char * const *) a, *(const char * const *) b );
+    const char *x = *(const char * const *) a;
+    const char *y = *(const char * const *) b;
+
+    while ( *x != '\0' && LOWER(*x) == LOWER(*y) )
+    {
+        x++;
+        y++;
+    }
+    return LOWER(*x) - LOWER(*y);
 }
 
 

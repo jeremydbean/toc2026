@@ -1726,6 +1726,79 @@ static void dps_board_show( CHAR_DATA *ch )
 
 
 /*
+ * Staff: take one character's run off the board, or empty it. Both go
+ * to log_string as well as wizinfo -- wizinfo tells whoever is online,
+ * and a board somebody emptied has to be explicable a week later.
+ */
+static void dps_board_staff( CHAR_DATA *ch, const char *what,
+                             const char *who )
+{
+    char buf[MAX_STRING_LENGTH];
+    int at;
+
+    dps_board_load();
+
+    if ( !str_prefix( what, "remove" ) )
+    {
+        if ( who[0] == '\0' )
+        {
+            send_to_char( "DUMMY LEADERBOARD REMOVE <name>.\n\r", ch );
+            return;
+        }
+        if ( ( at = dps_board_find( who ) ) < 0 )
+        {
+            snprintf( buf, sizeof(buf), "Nobody called %.12s is on the "
+                      "board.\n\r", who );
+            send_to_char( buf, ch );
+            return;
+        }
+        {
+            char place[16];
+
+            snprintf( buf, sizeof(buf),
+                "Benchmark board: %s removed %s (%ld, %s of %d).",
+                ch->name, dps_board[at].name, dps_board[at].total,
+                dps_ordinal( at + 1, place, sizeof(place) ), dps_board_count );
+        }
+        memmove( &dps_board[at], &dps_board[at + 1],
+                 ( dps_board_count - at - 1 ) * sizeof(dps_board[0]) );
+        dps_board_count--;
+        dps_board_save();
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+        send_to_char( "Done.  The board now reads:\n\r", ch );
+        dps_board_show( ch );
+        return;
+    }
+
+    if ( !str_prefix( what, "clear" ) )
+    {
+        if ( str_cmp( who, "confirm" ) )
+        {
+            snprintf( buf, sizeof(buf),
+                "That takes all %d run%s off the board for good.  DUMMY "
+                "LEADERBOARD CLEAR CONFIRM to do it.\n\r",
+                dps_board_count, dps_board_count == 1 ? "" : "s" );
+            send_to_char( buf, ch );
+            return;
+        }
+        snprintf( buf, sizeof(buf),
+            "Benchmark board: %s cleared it (%d run%s).",
+            ch->name, dps_board_count, dps_board_count == 1 ? "" : "s" );
+        dps_board_count = 0;
+        dps_board_save();
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+        send_to_char( "The board is empty.\n\r", ch );
+        return;
+    }
+
+    send_to_char( "DUMMY LEADERBOARD REMOVE <name>, or DUMMY LEADERBOARD "
+                  "CLEAR CONFIRM.\n\r", ch );
+}
+
+
+/*
  * Whether the dummy is standing still to be hit. Called from the one
  * place in damage() that rolls the four defences, so a benchmark
  * skips all of them together and cannot skip some and not others.
@@ -1812,11 +1885,20 @@ static void dummy_command( CHAR_DATA *ch, char *argument )
 
     dummy = dummy_in_room( ch );
 
-    /* Read-only, so it works anywhere and in the middle of a run. */
+    /* Read-only for players, so it works anywhere and in the middle of
+       a run. Staff can also take entries off it. */
     if ( strlen( arg1 ) >= 2
     &&   ( !str_prefix( arg1, "board" ) || !str_prefix( arg1, "leaderboard" )
         || !str_prefix( arg1, "top" ) ) )
     {
+        if ( arg2[0] != '\0' && IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+        {
+            char arg3[MAX_INPUT_LENGTH];
+
+            one_argument( one_argument( argument, arg3 ), arg3 );
+            dps_board_staff( ch, arg2, arg3 );
+            return;
+        }
         dps_board_show( ch );
         return;
     }

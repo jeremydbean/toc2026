@@ -2529,6 +2529,8 @@ size_t toc_strlcat(char *dst, const char *src, size_t siz);
 #define PLAYER_SNAPSHOT_MIN_INTERVAL 1800       /* minimum seconds between snapshots (30 min) */
 #define GOD_DIR         "../gods/"
 #define HERO_DIR        "../heroes/"
+/* The Entrance to the Hall of Heroes, where the plaque is. */
+#define ROOM_VNUM_HERO_HALL     4649
 #define CORPSE_DIR      "../corpse/"
 #define AREA_DIR        "saved"
 #define CHGRP_TO        "toc"
@@ -3033,6 +3035,7 @@ const char *color_code      ( const CHAR_DATA *ch, int color_slot );
 const char *color_name      ( const CHAR_DATA *ch, int color_slot );
 int     channel_color_category ( const char *channel );
 void    quest_area_name ( const char *raw, char *out, size_t size );
+bool    show_hero_plaque ( CHAR_DATA *ch );
 bool    color_is_enabled    ( const CHAR_DATA *ch );
 bool    color_parse_slot    ( const char *str, unsigned char *slot_out );
 bool    color_token_prefix  ( char ch );

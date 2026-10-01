@@ -2823,3 +2823,108 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
     fpReserve = fopen( NULL_FILE, "r" );
     return;
 }
+
+
+/*
+ * The plaque in the Hall of Heroes, drawn from heroes/ -- the record
+ * save_char_obj writes for every hero who saves -- so a new hero's name
+ * is on it the moment they are made, which is what the room has always
+ * claimed. Not filtered on a surviving character file: 83 of the heroes
+ * recorded there have none, and the plaque is the only place their
+ * names are kept. Returns false when there is nothing to draw, so LOOK
+ * falls through to the old text in the area file.
+ */
+/* An ordering, which str_cmp() is not: it answers only whether two
+   strings differ, so as a qsort comparator it left the list in no
+   order at all. */
+static int hero_name_order( const void *a, const void *b )
+{
+    const char *x = (const char *) a;
+    const char *y = (const char *) b;
+
+    while ( *x != '\0' && LOWER(*x) == LOWER(*y) )
+    {
+        x++;
+        y++;
+    }
+    return LOWER(*x) - LOWER(*y);
+}
+
+
+bool show_hero_plaque( CHAR_DATA *ch )
+{
+    static char names[1024][16];
+    static char out[24576];
+    char line[256];
+    struct dirent *ent;
+    DIR *dp;
+    size_t len;
+    int count = 0;
+    int rows, r, c, i;
+
+    if ( ( dp = opendir( HERO_DIR ) ) == NULL )
+        return false;
+
+    while ( ( ent = readdir( dp ) ) != NULL && count < 1024 )
+    {
+        const char *n = ent->d_name;
+
+        /* A character's name: letters only, at most twelve, the rule
+           creation enforces. Anything else in the directory is not a
+           hero record. */
+        len = strlen( n );
+        if ( len < 2 || len > 12 )
+            continue;
+        for ( i = 0; n[i] != '\0' && isalpha( (unsigned char) n[i] ); i++ )
+            ;
+        if ( n[i] != '\0' )
+            continue;
+        toc_strlcpy( names[count], n, sizeof(names[count]) );
+        names[count][0] = UPPER( names[count][0] );
+        count++;
+    }
+    closedir( dp );
+
+    if ( count == 0 )
+        return false;
+
+    qsort( names, (size_t) count, sizeof(names[0]), hero_name_order );
+
+    out[0] = '\0';
+    toc_strlcat( out,
+        "                          *********************\n\r"
+        "                          *   Heroes of ToC   *\n\r"
+        "                          *********************\n\r\n\r", sizeof(out) );
+    snprintf( line, sizeof(line),
+        "  Every one of the %d who have reached the pinnacle of mortal power,\n\r"
+        "  in alphabetical order.  A new hero's name appears the moment they\n\r"
+        "  are made.\n\r", count );
+    toc_strlcat( out, line, sizeof(out) );
+    toc_strlcat( out,
+        "|-----------------------------------------------------------------------------|\n\r",
+        sizeof(out) );
+
+    /* Six columns, read down rather than across, as the old plaque was. */
+    rows = ( count + 5 ) / 6;
+    for ( r = 0; r < rows; r++ )
+    {
+        toc_strlcpy( line, "|", sizeof(line) );
+        for ( c = 0; c < 6; c++ )
+        {
+            char cell[16];
+
+            i = c * rows + r;
+            snprintf( cell, sizeof(cell), c < 5 ? "%-12.12s " : "%-12.12s",
+                      i < count ? names[i] : "" );
+            toc_strlcat( line, cell, sizeof(line) );
+        }
+        toc_strlcat( line, "|\n\r", sizeof(line) );
+        toc_strlcat( out, line, sizeof(out) );
+    }
+    toc_strlcat( out,
+        "|-----------------------------------------------------------------------------|\n\r",
+        sizeof(out) );
+
+    page_to_char( out, ch );
+    return true;
+}
