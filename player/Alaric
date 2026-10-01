@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790896284
+LogO 1790896613
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 50
-Plyd 226208
+Plyd 226518
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2497
-HMV  1067 1067 1418 1418 413 427
-NewGold 58
-NewPlat 2
-NewCopp 69
-NewSilv 92
+Room 2494
+HMV  1067 1067 1418 1418 416 427
+NewGold 92
+NewPlat 3
+NewCopp 79
+NewSilv 99
 BankCP 534737235
 IntTime 1790816284
 IntTotal 5737235
@@ -34,8 +34,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 777
-AchQuests 127
+AchKills 779
+AchQuests 128
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -95,11 +95,10 @@ SesDead  0
 SesQuest 14
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 6171
-QuestStrk 16
+QuestPnts 6246
+QuestStrk 17
 CasinoWon  51
 CasinoLost 304
-QuestNext 30
 Exp  112575
 Act  4261068
 AfBy 512
@@ -128,11 +127,11 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Save  -2
+Save  -1
 Alig  1000
-Hit   36
-Dam   51
-ACs -61 -53 -58 88
+Hit   33
+Dam   48
+ACs -14 -12 -14 117
 Attr 22 13 12 16 15
 AMod -2 10 10 1 10
 Pass Al3w9zuAlwpyY~
@@ -141,7 +140,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 11 11
+Cond 0 6 6
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
@@ -494,7 +493,7 @@ End
 Vnum 10048
 Nest 0
 ExtF 69209412
-Wear 5
+Wear -1
 Lev  32
 Cost 22000000
 Cond 96
@@ -565,8 +564,8 @@ Lev  46
 Cost 19350000
 Cond 100
 Repd 0
-Affect -1 46 -1 2 24 0 0
 Affect -1 46 -1 -1 14 0 0
+Affect -1 46 -1 2 24 0 0
 End
 
 #O
@@ -577,9 +576,9 @@ Lev  46
 Cost 19350000
 Cond 100
 Repd 0
-Affect -1 46 -1 -4 18 0 0
-Affect -1 46 -1 -5 1 0 0
 Affect -1 46 -1 -1 1 0 0
+Affect -1 46 -1 -5 1 0 0
+Affect -1 46 -1 -4 18 0 0
 End
 
 #O
@@ -689,10 +688,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -3 22 0 0
-Affect -1 32 -1 -15 13 0 0
-Affect -1 32 -1 -13 12 0 0
 Affect -1 32 -1 -1 5 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -3 22 0 0
 End
 
 #O
