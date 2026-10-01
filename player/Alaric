@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790819921
+LogO 1790820184
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 50
-Plyd 223558
+Plyd 223821
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2497
-HMV  1039 1067 1418 1418 75 427
+Room 2401
+HMV  292 1067 1418 1418 225 427
 NewGold 87
 NewPlat 111
 NewCopp 67
@@ -99,7 +99,6 @@ QuestPnts 6027
 QuestStrk 13
 CasinoWon  51
 CasinoLost 304
-QuestNext 5
 Exp  112575
 Act  4261068
 AfBy 512
@@ -128,23 +127,24 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Save  -2
+Save  -13
 Alig  1000
-Hit   36
-Dam   51
+Hit   32
+Dam   45
 ACs -61 -53 -58 88
 Attr 22 13 12 16 15
-AMod -2 10 10 1 10
+AMod 0 10 10 1 12
 Pass Al3w9zuAlwpyY~
 Titl .~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 9 9
+Cond 0 6 6
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
+Alias chat gossip~
 Sk 76 'mindbar'
 Sk 75 'mind leech'
 Sk 75 'telekinesis'
@@ -493,10 +493,11 @@ End
 #O
 Vnum 10048
 Nest 0
+ExtF 69209412
 Wear 5
 Lev  32
 Cost 22000000
-Cond 100
+Cond 96
 Repd 0
 Affect -1 32 -1 5 21 0 0
 End
@@ -811,7 +812,7 @@ End
 #O
 Vnum 29920
 Nest 0
-Wear 16
+Wear -1
 Lev  50
 Cost 1000000000
 Cond 100
@@ -879,6 +880,16 @@ Cost 7500000
 Cond 100
 Repd 0
 Affect -1 50 -1 4 23 0 0
+End
+
+#O
+Vnum 17000
+Nest 0
+Wear 16
+Lev  49
+Cost 100000000
+Cond 100
+Repd 0
 End
 
 #STASH
