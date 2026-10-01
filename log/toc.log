@@ -16899,3 +16899,103 @@ Thu Oct  1 00:03:58 2026 :: Log Alaric [2497]: aq ga no
 Thu Oct  1 00:03:59 2026 :: Log Alaric [2497]: sc
 Thu Oct  1 00:04:01 2026 :: Sock.sinaddr:  147.185.132.111
 Thu Oct  1 00:04:01 2026 :: EOF encountered on read.
+Thu Oct  1 00:15:49 2026 :: Log Alaric [2497]: who
+Thu Oct  1 00:15:52 2026 :: Log Alaric [2497]: aq re
+Thu Oct  1 00:15:56 2026 :: Log Alaric [2497]: en do
+Thu Oct  1 00:15:56 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Thu Oct  1 00:16:01 2026 :: Log Alaric [2401]: east
+Thu Oct  1 00:16:01 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Thu Oct  1 00:16:01 2026 :: Log Alaric [2403]: east
+Thu Oct  1 00:16:01 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Thu Oct  1 00:16:02 2026 :: Log Alaric [2420]: east
+Thu Oct  1 00:16:02 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Thu Oct  1 00:16:02 2026 :: Log Alaric [2421]: east
+Thu Oct  1 00:16:02 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Thu Oct  1 00:16:02 2026 :: Log Alaric [2422]: east
+Thu Oct  1 00:16:02 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Thu Oct  1 00:16:02 2026 :: Log Alaric [2423]: east
+Thu Oct  1 00:16:02 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Thu Oct  1 00:16:03 2026 :: Log Alaric [2424]: east
+Thu Oct  1 00:16:03 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Thu Oct  1 00:16:03 2026 :: Log Alaric [2425]: east
+Thu Oct  1 00:16:03 2026 :: Log Alaric [0]: moved to 2426 (Inside the Eastern Gates of Dresden.)
+Thu Oct  1 00:16:03 2026 :: Log Alaric [2426]: open east
+Thu Oct  1 00:16:03 2026 :: Log Alaric [2426]: east
+Thu Oct  1 00:16:03 2026 :: Log Alaric [0]: moved to 2440 (Outside the Eastern Gates of Dresden.)
+Thu Oct  1 00:16:07 2026 :: Log Alaric [2440]: east
+Thu Oct  1 00:16:07 2026 :: Log Alaric [0]: moved to 3503 (City Entrance)
+Thu Oct  1 00:16:07 2026 :: Log Alaric [3503]: east
+Thu Oct  1 00:16:07 2026 :: Log Alaric [0]: moved to 3502 (The Cross Roads)
+Thu Oct  1 00:16:07 2026 :: Log Alaric [3502]: south
+Thu Oct  1 00:16:07 2026 :: Log Alaric [0]: moved to 5261 (The dwarf forest)
+Thu Oct  1 00:16:08 2026 :: Log Alaric [5261]: south
+Thu Oct  1 00:16:08 2026 :: Log Alaric [0]: moved to 5260 (The dwarf forest)
+Thu Oct  1 00:16:08 2026 :: Log Alaric [5260]: south
+Thu Oct  1 00:16:08 2026 :: Log Alaric [0]: moved to 5259 (The dwarf forest)
+Thu Oct  1 00:16:08 2026 :: Log Alaric [5259]: south
+Thu Oct  1 00:16:08 2026 :: Log Alaric [0]: moved to 5258 (The dwarf forest)
+Thu Oct  1 00:16:08 2026 :: Log Alaric [5258]: east
+Thu Oct  1 00:16:08 2026 :: Log Alaric [0]: moved to 5262 (The dwarf forest)
+Thu Oct  1 00:16:09 2026 :: Log Alaric [5262]: east
+Thu Oct  1 00:16:09 2026 :: Log Alaric [0]: moved to 5263 (The darker dwarf forest)
+Thu Oct  1 00:16:09 2026 :: Log Alaric [5263]: south
+Thu Oct  1 00:16:09 2026 :: Log Alaric [0]: moved to 5264 (The darker dwarf forest)
+Thu Oct  1 00:16:09 2026 :: Log Alaric [5264]: east
+Thu Oct  1 00:16:09 2026 :: Log Alaric [0]: moved to 5265 (The darker dwarf forest)
+Thu Oct  1 00:16:09 2026 :: Log Alaric [5265]: east
+Thu Oct  1 00:16:09 2026 :: Log Alaric [0]: moved to 5266 (The darker dwarf forest)
+Thu Oct  1 00:16:10 2026 :: Log Alaric [5266]: down
+Thu Oct  1 00:16:10 2026 :: Log Alaric [0]: moved to 5267 (A valley in the dark dwarf forest)
+Thu Oct  1 00:16:10 2026 :: Log Alaric [5267]: south
+Thu Oct  1 00:16:10 2026 :: Log Alaric [0]: moved to 62 (Minor Path)
+Thu Oct  1 00:16:10 2026 :: Log Alaric [62]: east
+Thu Oct  1 00:16:10 2026 :: Log Alaric [0]: moved to 1701 (Main Eastern Road)
+Thu Oct  1 00:16:13 2026 :: Log Alaric [1701]: e
+Thu Oct  1 00:16:13 2026 :: Log Alaric [0]: moved to 1702 (Crossroads to the Wilderness)
+Thu Oct  1 00:16:13 2026 :: Log Alaric [1702]: n
+Thu Oct  1 00:16:13 2026 :: Log Alaric [0]: moved to 1704 (Trail north of crossroads)
+Thu Oct  1 00:16:16 2026 :: Log Alaric [1704]: aq info
+Thu Oct  1 00:16:17 2026 :: Log Alaric [1704]: n
+Thu Oct  1 00:16:17 2026 :: Log Alaric [0]: moved to 1705 (Trail south of forest)
+Thu Oct  1 00:16:17 2026 :: Log Alaric [1705]: n
+Thu Oct  1 00:16:17 2026 :: Log Alaric [0]: moved to 1706 (Entrance to the forest)
+Thu Oct  1 00:16:18 2026 :: Log Alaric [1706]: n
+Thu Oct  1 00:16:18 2026 :: Log Alaric [0]: moved to 1707 (Trail in Dark Oak Forest)
+Thu Oct  1 00:16:19 2026 :: Log Alaric [1707]: n
+Thu Oct  1 00:16:19 2026 :: Log Alaric [0]: moved to 1708 (Junction in Dark Forest)
+Thu Oct  1 00:16:20 2026 :: Log Alaric [1708]: w
+Thu Oct  1 00:16:20 2026 :: Log Alaric [0]: moved to 1709 (Path to Centaur Village)
+Thu Oct  1 00:16:21 2026 :: Log Alaric [1709]: n
+Thu Oct  1 00:16:22 2026 :: Log Alaric [1709]: w
+Thu Oct  1 00:16:22 2026 :: Log Alaric [0]: moved to 1710 (The East side of the Centaur Clearing)
+Thu Oct  1 00:16:23 2026 :: Log Alaric [1710]: n
+Thu Oct  1 00:16:23 2026 :: Log Alaric [0]: moved to 1712 (A Centaur's Hut)
+Thu Oct  1 00:16:24 2026 :: Log Alaric [1712]: s
+Thu Oct  1 00:16:24 2026 :: Log Alaric [0]: moved to 1710 (The East side of the Centaur Clearing)
+Thu Oct  1 00:16:24 2026 :: Log Alaric [1710]: s
+Thu Oct  1 00:16:24 2026 :: Log Alaric [0]: moved to 1713 (A Centaur's Hut)
+Thu Oct  1 00:16:25 2026 :: Log Alaric [1713]: n
+Thu Oct  1 00:16:25 2026 :: Log Alaric [0]: moved to 1710 (The East side of the Centaur Clearing)
+Thu Oct  1 00:16:26 2026 :: Log Alaric [1710]: w
+Thu Oct  1 00:16:26 2026 :: Log Alaric [0]: moved to 1711 (West side of the Centaur Clearing)
+Thu Oct  1 00:16:26 2026 :: Log Alaric [1711]: n
+Thu Oct  1 00:16:26 2026 :: Log Alaric [0]: moved to 1714 (A Centaur's Hut)
+Thu Oct  1 00:16:27 2026 :: Log Alaric [1714]: s
+Thu Oct  1 00:16:27 2026 :: Log Alaric [0]: moved to 1711 (West side of the Centaur Clearing)
+Thu Oct  1 00:16:27 2026 :: Log Alaric [1711]: s
+Thu Oct  1 00:16:27 2026 :: Log Alaric [0]: moved to 1715 (A Centaur's Hut)
+Thu Oct  1 00:16:28 2026 :: Log Alaric [1715]: n
+Thu Oct  1 00:16:28 2026 :: Log Alaric [0]: moved to 1711 (West side of the Centaur Clearing)
+Thu Oct  1 00:16:29 2026 :: Log Alaric [1711]: w
+Thu Oct  1 00:16:29 2026 :: Log Alaric [0]: moved to 1716 (Entrance to a Large Hut)
+Thu Oct  1 00:16:31 2026 :: Log Alaric [1716]: kill ce
+Thu Oct  1 00:16:37 2026 :: Log Alaric [1716]: kill ce
+Thu Oct  1 00:16:41 2026 :: Log Alaric [1716]: recal
+Thu Oct  1 00:16:42 2026 :: Log Alaric [1716]: recal
+Thu Oct  1 00:16:42 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Thu Oct  1 00:16:43 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 00:16:43 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 00:16:43 2026 :: Log Alaric [2497]: recal
+Thu Oct  1 00:16:43 2026 :: Log Alaric [2497]: aq comp
+Thu Oct  1 00:16:44 2026 :: Log Alaric [2497]: aq ga no
+Thu Oct  1 00:16:45 2026 :: Log Alaric [2497]: sc
