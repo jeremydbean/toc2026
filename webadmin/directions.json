@@ -6,11 +6,11 @@
   "area_display": "City of Dresden (Drakk)"
  },
  "counts": {
-  "computed": 89,
+  "computed": 90,
   "legacy_ok": 71,
   "legacy_drifted": 10,
   "legacy_repaired": 9,
-  "links": 131
+  "links": 132
  },
  "routes": [
   {
@@ -1873,6 +1873,21 @@
    "area": "Strahd Town Of Solace",
    "area_display": "Town Of Solace (Strahd)",
    "rooms_away": 24,
+   "status": "computed"
+  },
+  {
+   "name": "The Training Yard (ToC)",
+   "commands": "s;w;enter practice",
+   "steps": [
+    "south",
+    "west",
+    "enter a practice ring"
+   ],
+   "room": "The Training Yard",
+   "vnum": 2419,
+   "area": "ToC The Training Yard",
+   "area_display": "The Training Yard (ToC)",
+   "rooms_away": 3,
    "status": "computed"
   },
   {
@@ -4081,6 +4096,11 @@
    "from": 1311,
    "command": "enter red",
    "to": 7600
+  },
+  {
+   "from": 2409,
+   "command": "enter practice",
+   "to": 2419
   },
   {
    "from": 2497,

@@ -147,6 +147,132 @@ static const char *dummy_avoid_name[4]  = { "ducked", "parried", "dodged",
                                             "blocked" };
 
 /*
+ * One row per attack.  The key is dt, which ROM already sets to the
+ * skill that caused the blow or to the weapon's attack type, so
+ * every spell and every special attack separates itself and nothing
+ * here has to guess.
+ */
+static DUMMY_SOURCE_DATA *dummy_slot( DUMMY_SOURCE_DATA *table, int dt )
+{
+    int i;
+
+    for ( i = 0; i < DUMMY_MAX_SOURCES; i++ )
+    {
+        if ( table[i].attempts > 0 && table[i].dt == dt )
+            return &table[i];
+    }
+
+    for ( i = 0; i < DUMMY_MAX_SOURCES; i++ )
+    {
+        if ( table[i].attempts == 0 )
+        {
+            table[i].dt = dt;
+            return &table[i];
+        }
+    }
+
+    /* Full. The totals above are still right; this one is not
+       itemised, which is the honest failure for a display. */
+    return NULL;
+}
+
+
+static void dummy_tally( DUMMY_SOURCE_DATA *table, int dt, int dam )
+{
+    DUMMY_SOURCE_DATA *row = dummy_slot( table, dt );
+
+    if ( row == NULL )
+        return;
+
+    row->attempts++;
+    if ( dam <= 0 )
+        return;
+
+    row->hits++;
+    row->damage += dam;
+    if ( dam > row->best )
+        row->best = dam;
+}
+
+
+static const char *dummy_dt_name( int dt )
+{
+    if ( dt >= 0 && dt < MAX_SKILL && skill_table[dt].name != NULL )
+        return skill_table[dt].name;
+
+    if ( dt >= TYPE_HIT && dt <= TYPE_HIT + MAX_DAMAGE_MESSAGE )
+        return attack_table[dt - TYPE_HIT].name;
+
+    return "unknown";
+}
+
+
+/*
+ * Biggest first, because the first line is the answer to "what is
+ * actually doing the work".  Selection sort over at most
+ * DUMMY_MAX_SOURCES rows, which is cheaper than being clever.
+ */
+static void dummy_sort( DUMMY_SOURCE_DATA *table )
+{
+    int i, j, pick;
+    DUMMY_SOURCE_DATA swap;
+
+    for ( i = 0; i < DUMMY_MAX_SOURCES - 1; i++ )
+    {
+        pick = i;
+        for ( j = i + 1; j < DUMMY_MAX_SOURCES; j++ )
+        {
+            if ( table[j].damage > table[pick].damage
+            || ( table[j].damage == table[pick].damage
+              && table[j].attempts > table[pick].attempts ) )
+                pick = j;
+        }
+        if ( pick != i )
+        {
+            swap = table[i];
+            table[i] = table[pick];
+            table[pick] = swap;
+        }
+    }
+}
+
+
+/*
+ * The itemised half of a report. Returns the number of rows drawn so
+ * the caller knows whether to head it at all.
+ */
+static int dummy_itemise( CHAR_DATA *ch, DUMMY_SOURCE_DATA *table,
+                          long total )
+{
+    char buf[MAX_STRING_LENGTH];
+    int i, drawn = 0;
+
+    dummy_sort( table );
+
+    for ( i = 0; i < DUMMY_MAX_SOURCES; i++ )
+    {
+        DUMMY_SOURCE_DATA *row = &table[i];
+
+        if ( row->attempts <= 0 )
+            continue;
+
+        snprintf( buf, sizeof(buf),
+            "{0C|{00   %-18s {0F%7ld{00 %3ld%%  %4d of %-4d  avg %-5ld "
+            "best %d\n\r",
+            dummy_dt_name( row->dt ), row->damage,
+            total > 0 ? row->damage * 100 / total : 0,
+            row->hits, row->attempts,
+            row->hits > 0 ? row->damage / row->hits : 0,
+            row->best );
+        send_to_char( buf, ch );
+        drawn++;
+    }
+
+    return drawn;
+}
+
+
+/*
  * What a mobile of this level is typically worth in hit points,
  * averaged over every mobile in the world at that level.
  *
@@ -235,6 +361,8 @@ static void dummy_session_clear( CHAR_DATA *ch )
         ch->pcdata->dummy_avoided[i] = 0;
         ch->pcdata->dummy_evaded[i] = 0;
     }
+    memset( ch->pcdata->dummy_out, 0, sizeof(ch->pcdata->dummy_out) );
+    memset( ch->pcdata->dummy_in, 0, sizeof(ch->pcdata->dummy_in) );
     ch->pcdata->dummy_hits = 0;
     ch->pcdata->dummy_misses = 0;
     ch->pcdata->dummy_struck = 0;
@@ -295,6 +423,7 @@ void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
     if ( is_training_dummy( victim ) )
     {
         pc->dummy_swings++;
+        dummy_tally( pc->dummy_out, dt, dam );
         if ( dam > 0 )
         {
             pc->dummy_hits++;
@@ -311,6 +440,7 @@ void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
     }
 
     pc->dummy_attempts++;
+    dummy_tally( pc->dummy_in, dt, dam );
     if ( dam > 0 )
     {
         pc->dummy_taken += dam;
@@ -328,7 +458,7 @@ void dummy_record( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
  * from a swing that never happened -- which is most of what somebody
  * comparing two shields wants to know.
  */
-void dummy_defended( CHAR_DATA *ch, CHAR_DATA *victim, int how )
+void dummy_defended( CHAR_DATA *ch, CHAR_DATA *victim, int dt, int how )
 {
     PC_DATA *pc = dummy_session( ch, victim );
 
@@ -337,14 +467,17 @@ void dummy_defended( CHAR_DATA *ch, CHAR_DATA *victim, int how )
 
     if ( is_training_dummy( victim ) )
     {
-        /* It turned your blow aside: still one of your swings. */
+        /* It turned your blow aside: still one of your swings, and
+           still an attempt by whatever you swung. */
         pc->dummy_swings++;
         pc->dummy_evaded[how]++;
+        dummy_tally( pc->dummy_out, dt, 0 );
     }
     else
     {
         pc->dummy_attempts++;
         pc->dummy_avoided[how]++;
+        dummy_tally( pc->dummy_in, dt, 0 );
     }
 }
 
@@ -694,6 +827,14 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
         send_to_char( "\n\r", ch );
     }
 
+    /* And the same thing attack by attack, which is the resolution
+       somebody choosing between two spellbooks needs. */
+    if ( pc->dummy_out[0].attempts > 0 )
+    {
+        send_to_char( "{0C|{00   {0Eattack by attack{00\n\r", ch );
+        dummy_itemise( ch, pc->dummy_out, dealt );
+    }
+
     /* ------------------------------------------------ your defence */
     send_to_char(
         "{0C|{00\n\r{0C|{00 {0EWHAT IT DID TO YOU{00\n\r", ch );
@@ -758,6 +899,12 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
             send_to_char( buf, ch );
         }
         send_to_char( "\n\r", ch );
+    }
+
+    if ( pc->dummy_in[0].attempts > 0 )
+    {
+        send_to_char( "{0C|{00   {0Eattack by attack{00\n\r", ch );
+        dummy_itemise( ch, pc->dummy_in, taken );
     }
 
     if ( taken > 0 && ch->max_hit > 0 )
@@ -985,15 +1132,31 @@ void do_dummy( CHAR_DATA *ch, char *argument )
  */
 void do_leave( CHAR_DATA *ch, char *argument )
 {
+    char arg[MAX_INPUT_LENGTH];
     ROOM_INDEX_DATA *back;
 
-    UNUSED_PARAM( argument );
+    one_argument( argument, arg );
 
     if ( ch->in_room == NULL
     ||   ch->in_room->vnum != ROOM_VNUM_TRAINING_YARD )
     {
         send_to_char( "There is nothing here to leave.  EXITS lists the "
                       "ways out.\n\r", ch );
+        return;
+    }
+
+    /*
+     * LEAVE RING is the signposted form and the one the room tells
+     * you.  A bare LEAVE works because there is only one thing here
+     * to leave, but an argument that names something else is a typo
+     * worth saying so about rather than silently obeying.
+     */
+    if ( arg[0] != '\0'
+    &&   str_prefix( arg, "ring" ) && str_prefix( arg, "yard" )
+    &&   str_prefix( arg, "practice" ) )
+    {
+        send_to_char( "Leave what?  The practice ring is the way out.\n\r",
+                      ch );
         return;
     }
 

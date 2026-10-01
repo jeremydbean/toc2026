@@ -166,11 +166,38 @@ class TrainingDummyTests(unittest.TestCase):
         body = self.dummy.split("void do_leave(", 1)[1].split("\n}", 1)[0]
         self.assertIn("dummy_report(", body)
 
-    def test_the_north_exit_still_works(self) -> None:
-        """LEAVE is the signposted way out, not the only one: a
-        player who never reads the help must not be stuck."""
-        self.assertRegex(self.area, r"\nD0\r?\n")
-        self.assertRegex(self.area, r"0 -1 2409")
+    def test_the_yard_has_no_walking_exit(self) -> None:
+        """You arrive through the ring and you leave through it.
+
+        Removing the exit makes LEAVE the only way out on foot, so
+        the two things below are what stop that being a trap.
+        """
+        room = self.area.split("#2419", 1)[1].split("\n#", 1)[0]
+        self.assertNotRegex(room, r"\nD\s*\d",
+                            "the yard has a walking exit again")
+
+    def test_nobody_can_be_shut_in_the_yard(self) -> None:
+        """With no exit, RECALL is the escape hatch for a player who
+        never reads the room -- so the yard must never become
+        no-recall.  ROOM_NO_RECALL is N; the yard carries V alone."""
+        room = self.area.split("#2419", 1)[1].split("\n#", 1)[0]
+        flags = [line for line in room.splitlines()
+                 if line.strip().endswith(" V 1")]
+        self.assertEqual(1, len(flags), "the yard's flag line changed")
+        self.assertNotIn("N", flags[0].split()[1],
+                         "the yard became no-recall and is now a trap")
+
+    def test_the_room_says_how_to_get_out(self) -> None:
+        """The only way out has to be discoverable by looking."""
+        room = self.area.split("#2419", 1)[1].split("\n#", 1)[0]
+        self.assertIn("LEAVE RING", room)
+
+    def test_leave_takes_the_ring_by_name(self) -> None:
+        """LEAVE RING is what the room tells you to type."""
+        body = self.dummy.split("void do_leave(", 1)[1].split("\n}", 1)[0]
+        self.assertIn('str_prefix( arg, "ring" )', body)
+        # A bare LEAVE still works: there is only one thing to leave.
+        self.assertIn("arg[0] != '\\0'", body)
 
     # --------------------------------------------------------- reset
     def test_reset_clears_the_numbers_and_works_mid_run(self) -> None:
@@ -250,7 +277,7 @@ class TrainingDummyTests(unittest.TestCase):
         for how in ("DUMMY_AVOID_DUCK", "DUMMY_AVOID_PARRY",
                     "DUMMY_AVOID_DODGE", "DUMMY_AVOID_SHIELD"):
             self.assertIn(how, self.merc, how)
-            self.assertIn("dummy_defended( ch, victim, %s )" % how,
+            self.assertIn("dummy_defended( ch, victim, dt, %s )" % how,
                           self.fight, how)
         body = self.dummy.split("void dummy_defended(", 1)[1]
         body = body.split("\n}", 1)[0]
@@ -272,6 +299,59 @@ class TrainingDummyTests(unittest.TestCase):
         report = self.dummy.split("static void dummy_report(", 1)[1]
         self.assertIn("pc->dummy_avoided[i] * 100 / attempts", report)
 
+    # ------------------------------------------- attack by attack
+    def test_every_attack_is_itemised_by_name(self) -> None:
+        """Three spells cast should read as three lines.
+
+        dt is already the skill that caused the blow, or the
+        weapon's attack type, so the split needs no guessing.
+        """
+        self.assertIn("DUMMY_MAX_SOURCES", self.merc)
+        self.assertIn("dummy_out[DUMMY_MAX_SOURCES]", self.merc)
+        self.assertIn("dummy_in[DUMMY_MAX_SOURCES]", self.merc)
+        name = self.dummy.split("static const char *dummy_dt_name(", 1)[1]
+        name = name.split("\n}", 1)[0]
+        self.assertIn("skill_table[dt].name", name)
+        self.assertIn("attack_table[dt - TYPE_HIT].name", name)
+
+    def test_a_full_table_still_totals_correctly(self) -> None:
+        """The itemised list is a display. Running out of rows must
+        cost the detail, never the arithmetic."""
+        slot = self.dummy.split("static DUMMY_SOURCE_DATA *dummy_slot(",
+                                1)[1].split("\n}", 1)[0]
+        self.assertIn("return NULL", slot)
+        tally = self.dummy.split("static void dummy_tally(", 1)[1]
+        tally = tally.split("\n}", 1)[0]
+        self.assertIn("if ( row == NULL )", tally)
+        self.assertIn("return", tally)
+
+    def test_both_directions_are_itemised(self) -> None:
+        report = self.dummy.split("static void dummy_report(", 1)[1]
+        report = report.split("\nvoid do_dummy(", 1)[0]
+        self.assertIn("dummy_itemise( ch, pc->dummy_out, dealt )", report)
+        self.assertIn("dummy_itemise( ch, pc->dummy_in, taken )", report)
+
+    def test_a_turned_aside_blow_counts_as_an_attempt(self) -> None:
+        """Otherwise a weapon that keeps getting parried reads as a
+        perfect hit rate on the few that landed."""
+        body = self.dummy.split("void dummy_defended(", 1)[1]
+        body = body.split("\n}", 1)[0]
+        self.assertIn("dummy_tally( pc->dummy_out, dt, 0 )", body)
+        self.assertIn("dummy_tally( pc->dummy_in, dt, 0 )", body)
+
+    def test_the_biggest_contributor_is_first(self) -> None:
+        """The first line should be the answer to "what is actually
+        doing the work"."""
+        srt = self.dummy.split("static void dummy_sort(", 1)[1]
+        srt = srt.split("\n}", 1)[0]
+        self.assertIn("table[j].damage > table[pick].damage", srt)
+
+    def test_the_tables_are_cleared_with_the_session(self) -> None:
+        clear = self.dummy.split("static void dummy_session_clear(", 1)[1]
+        clear = clear.split("\n}", 1)[0]
+        self.assertIn("memset( ch->pcdata->dummy_out", clear)
+        self.assertIn("memset( ch->pcdata->dummy_in", clear)
+
     def test_the_session_is_not_persisted(self) -> None:
         """A training run is something you are doing, not something
         you are: none of it belongs in a player file."""
@@ -279,7 +359,7 @@ class TrainingDummyTests(unittest.TestCase):
         for field in ("dummy_dealt", "dummy_taken", "dummy_started",
                       "dummy_level", "dummy_dealt_from", "dummy_taken_from",
                       "dummy_avoided", "dummy_evaded", "dummy_attempts",
-                      "dummy_worst"):
+                      "dummy_worst", "dummy_out", "dummy_in"):
             self.assertIn(field, self.merc, field)
             self.assertNotIn(field, save, field + " reached save.c")
 

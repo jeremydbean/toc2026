@@ -80,6 +80,7 @@ typedef struct  board_data              BOARD_DATA;
 typedef struct  obj_data                OBJ_DATA;
 typedef struct  obj_index_data          OBJ_INDEX_DATA;
 typedef struct  pc_data                 PC_DATA;
+typedef struct  dummy_source_data       DUMMY_SOURCE_DATA;
 typedef struct  alias_data              ALIAS_DATA;
 typedef struct  gen_data                GEN_DATA;
 typedef struct  reset_data              RESET_DATA;
@@ -796,6 +797,24 @@ struct  kill_data
 #define DUMMY_AVOID_PARRY   1
 #define DUMMY_AVOID_DODGE   2
 #define DUMMY_AVOID_SHIELD  3
+
+/*
+ * Per-attack accounting for a training run.  The key is ROM's own
+ * dt: the skill number that caused the blow, or the weapon's attack
+ * type above TYPE_HIT -- so every spell, every special attack and
+ * dual wield land on their own row without anything being invented.
+ * Second and third attack cannot be split out: one_hit is called
+ * with the same dt for all of them, so they are the weapon's row.
+ *
+ * A fixed table rather than a list, because this is session state on
+ * every connected character.  A run that somehow used more distinct
+ * attacks than this still has correct totals; the overflow is simply
+ * not itemised.
+ */
+#define DUMMY_MAX_SOURCES  24
+
+/* The highest attack_table index dam_message will name. */
+#define MAX_DAMAGE_MESSAGE 32
 #define ROOM_VNUM_TRAINING_YARD     2419
 #define ROOM_VNUM_OAK_SQUARE        2409
 #define MOB_VNUM_FIDO              3090
@@ -1829,6 +1848,15 @@ struct alias_data
 };
 
 /* Data which only PC's have. */
+struct  dummy_source_data
+{
+    int                 dt;
+    long                damage;
+    int                 hits;
+    int                 attempts;
+    int                 best;
+};
+
 struct  pc_data
 {
     PC_DATA * next;
@@ -1913,6 +1941,8 @@ struct  pc_data
     long                dummy_taken;
     long                dummy_dealt_from[3];
     long                dummy_taken_from[3];
+    DUMMY_SOURCE_DATA   dummy_out[DUMMY_MAX_SOURCES];
+    DUMMY_SOURCE_DATA   dummy_in[DUMMY_MAX_SOURCES];
     int                 dummy_avoided[4];
     int                 dummy_evaded[4];
     int                 dummy_attempts;
@@ -2640,7 +2670,7 @@ bool    is_training_dummy  ( CHAR_DATA *ch );
 bool    dummy_absorb       ( CHAR_DATA *ch, CHAR_DATA *victim, int dam,
                              int dt );
 void    dummy_defended     ( CHAR_DATA *ch, CHAR_DATA *victim,
-                             int how );
+                             int dt, int how );
 long    dummy_typical_hp   ( int level );
 void    gmcp_send_affects  ( DESCRIPTOR_DATA *d );
 void    gmcp_send_quest    ( DESCRIPTOR_DATA *d );

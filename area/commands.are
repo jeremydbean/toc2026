@@ -243,7 +243,7 @@ Syntax: dummy                  the menu, and what it is set to
         dummy haste            an extra attack a round, on or off
         dummy reset            your level, the defaults, numbers cleared
         dummy report           stop, heal you both, read the numbers
-        leave                  step back out into the square
+        leave ring             step back out into the square
 
 A training dummy you can hit as hard as you like.  It is in the Training
 Yard, through the practice ring in the southwestern corner of Oak Tree
@@ -300,13 +300,26 @@ READING THE REPORT
   per swing - which is the honest one, because it charges you for the
   swings that missed.  Then how many landed, your best, your average
   landed hit, how many missed outright and how many it turned aside.
-  Last, where the damage came from: weapon, spells or skills.
+  Then where the damage came from: weapon, spells or skills.
+
+  Then ATTACK BY ATTACK, which is the one most people came for: every
+  spell you cast, every special attack and your weapon, each on its
+  own line, biggest first, with its damage, its share of your total,
+  how many of its attempts landed, its average and its best.  Cast
+  three different spells and you get three lines and can see which
+  one is actually earning its mana.
+
+  Second and third attack are not separable from the weapon itself -
+  the game swings them as the same attack and nothing could honestly
+  tell them apart - so they are counted in your weapon's line.
 
   WHAT IT DID TO YOU is the same from the other side, and it is the
   half that tells you what your armour is worth.  How often it tried,
   how many of those you stopped and how - ducked, parried, dodged or
   blocked, each as a percentage of its attempts - what got through,
   your worst single hit, and how long it would take you from full.
+  It gets its own attack-by-attack list too, so you can see whether
+  its spell or its weapon is the thing hurting you.
 
   Every percentage is of attempts, not of landed blows, so a shield
   that stops a third of everything reads as a third.
@@ -314,24 +327,33 @@ READING THE REPORT
   Both of you are healed to full afterwards and the run is cleared.
 
 LEAVING
-  LEAVE steps you back out into Oak Tree Square.  If a run is going
-  when you type it you get the report on the way past rather than
-  losing it.  Walking north works too.
+  LEAVE RING steps you back out into Oak Tree Square.  It is the only
+  way out on foot - you came in through the ring, so you go back out
+  through it - and a plain LEAVE does the same, since there is only
+  one thing in the yard to leave.  If a run is going when you type it
+  you get the report on the way past rather than losing it.
+
+  RECALL works from the yard as well, if you would rather go to the
+  Temple.
 
 See also: COMPARE, LORE, SCORE, DAMAGENUMBERS, AREAS
 ~
 
 0 LEAVE~
-Syntax: leave
+Syntax: leave ring
+        leave
 
 Steps you out of the Training Yard and back into Oak Tree Square.  You
-got in by entering the practice ring, so this is the way back out; the
-yard's north exit does the same thing.
+got in by entering the practice ring, so this is the way back out, and
+it is the only way out on foot.  RECALL works from there too.
+
+If a training run is going when you type it, you get the report on the
+way past rather than losing it.
 
 Anywhere else, there is nothing to leave - use a direction, or EXITS to
 see which ones there are.
 
-See also: DUMMY, EXITS, ENTER
+See also: DUMMY, EXITS, ENTER, RECALL
 ~
 
 0 GMCP~
@@ -939,8 +961,14 @@ command named here for the detail.
   through, your worst hit, and how long it would take you from full.
 
   DUMMY RESET throws a run away and starts over, numbers and all, and
-  is the one setting you can change mid-fight.  LEAVE steps you back
-  out into the square, taking the report with you if a run is going.
+  is the one setting you can change mid-fight.  LEAVE RING steps you
+  back out into the square, taking the report with you if a run is
+  going, and is the only way out on foot.
+
+  The report also breaks the fight down attack by attack - every spell
+  you cast and every special attack on its own line, biggest first,
+  with its damage, its share, how many attempts landed, its average
+  and its best - and does the same for what the dummy did to you.
 
   See HELP DUMMY.
 

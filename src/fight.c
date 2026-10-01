@@ -19,7 +19,6 @@
 #include "merc.h"
 #include "interp.h"
 
-#define MAX_DAMAGE_MESSAGE 32
 #define HYRULE_GOHMA_VNUM       30223
 #define HYRULE_GANON_VNUM       30225
 #define HYRULE_BOW_VNUM         30222
@@ -1439,22 +1438,22 @@ bool damage( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, int dam_type )
            taken. */
         if ( check_ducking( ch, victim ) )
         {
-            dummy_defended( ch, victim, DUMMY_AVOID_DUCK );
+            dummy_defended( ch, victim, dt, DUMMY_AVOID_DUCK );
             return false;
         }
 	if ( check_parry( ch, victim ) )
 	{
-	    dummy_defended( ch, victim, DUMMY_AVOID_PARRY );
+	    dummy_defended( ch, victim, dt, DUMMY_AVOID_PARRY );
 	    return false;
 	}
 	if ( check_dodge( ch, victim ) )
 	{
-	    dummy_defended( ch, victim, DUMMY_AVOID_DODGE );
+	    dummy_defended( ch, victim, dt, DUMMY_AVOID_DODGE );
 	    return false;
 	}
 	if ( check_shield_block( ch, victim ) )
 	{
-	    dummy_defended( ch, victim, DUMMY_AVOID_SHIELD );
+	    dummy_defended( ch, victim, dt, DUMMY_AVOID_SHIELD );
 	    return false;
 	}
     }
