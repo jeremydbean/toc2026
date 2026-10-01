@@ -1,7 +1,7 @@
 #PLAYER
 Name Milenko~
 Id   56969
-LogO 1790822843
+LogO 1790823409
 Vers 4
 Desc .                ...
 .             ::::::
@@ -50,19 +50,19 @@ PsiSpec ~
 PsiKnown ~
 Cast Fors
 Levl 52
-Plyd 927639
+Plyd 927735
 ListRemorts ~
 NumRemorts 0
 Note 951253659
 Scro 22
-Room 4208
-HMV  1539 1539 1414 1431 381 381
+Room 4207
+HMV  575 1539 1300 1431 190 381
 NewGold 0
 NewPlat 16
 NewCopp 0
 NewSilv 0
 BankCP 72000000000
-IntTime 0
+IntTime 1790823334
 IntTotal 0
 Dcount 0
 SavedOnce 1
@@ -96,19 +96,18 @@ Achv level-35 1790822830
 Achv level-45 1790822830
 Achv bank-thousand-platinum 1790822830
 Achv carry-ten-platinum 1790822830
-LastOut  0
-SesLogin 0
-SesDur   0
-SesExpG  0
+LastOut  1790823409
+SesLogin 1790823315
+SesDur   94
+SesExpG  -25
 SesLvlG  0
 SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
 QuestPnts 67
-Exp  116153
+Exp  116128
 Act  67174600
-AfBy2 8
 Comm 28672
 Mounted 0
 On_Quest 0
@@ -135,13 +134,13 @@ Color 15 6
 Color 16 6
 Pos  8
 Save  9
-Alig  1000
+Alig  949
 Hit   36
 Dam   44
 ACs -152 -150 -159 -69
 Attr 18 21 18 18 18
 AMod 9 -2 1 1 -7
-Pass MioK4yngaLTUE~
+Pass MiJx5Di.yq8i6~
 Titl ... the Excellence of Execution.~
 Pnts 40
 TSex 1
@@ -242,8 +241,7 @@ Gr 'necro maladictions'
 Gr 'necromancy'
 Gr 'necro protective'
 Gr 'necro transportation'
-AffD 'major globe'  41  14 -80  17          0          0
-AffD 'death shroud'   0   0   0   0          0          8
+AffD 'major globe'  40  12 -80  17          0          0
 End
 
 #O
@@ -310,10 +308,11 @@ End
 #O
 Vnum 29209
 Nest 0
+ExtF 69206080
 Wear 10
 Lev  51
 Cost 20000000
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -340,10 +339,11 @@ End
 #O
 Vnum 4618
 Nest 0
+ExtF 67108864
 Wear 8
 Lev  39
 Cost 200000000
-Cond 100
+Cond 98
 Repd 0
 End
 
@@ -413,8 +413,8 @@ Lev  46
 Cost 100000000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 50 -1 6 19 0 0
 AffD 'enchant weapon' 50 -1 6 18 0 0
+AffD 'enchant weapon' 50 -1 6 19 0 0
 End
 
 #O
@@ -448,8 +448,8 @@ Lev  46
 Cost 10000000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 53 -1 6 18 0 0
 AffD 'enchant weapon' 53 -1 9 19 0 0
+AffD 'enchant weapon' 53 -1 6 18 0 0
 End
 
 #O
