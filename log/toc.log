@@ -19488,3 +19488,24 @@ Thu Oct  1 11:29:49 2026 :: Log Misery: load mob 2400
 Thu Oct  1 11:32:44 2026 :: Log Misery: spellup
 Thu Oct  1 11:32:44 2026 :: Spellup: Hermie placed in room 2419 by Misery.
 Thu Oct  1 11:32:44 2026 :: Spellup: Hermie gave Misery the full list (30 ticks) in room 2419.
+Thu Oct  1 11:34:17 2026 :: Log Misery: load obj 11009
+Thu Oct  1 11:35:13 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Thu Oct  1 11:35:17 2026 :: Log WebAdmin: fsave
+Thu Oct  1 11:35:23 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Thu Oct  1 11:35:23 2026 :: Log Misery: fsave
+Thu Oct  1 11:35:26 2026 :: Received signal 15; saving players and shutting down.
+Thu Oct  1 11:35:26 2026 :: Closing link to Misery.
+Thu Oct  1 11:35:26 2026 :: Normal termination of game.
+Thu Oct  1 11:35:26 2026 ::  INIT OK 
+Thu Oct  1 11:35:26 2026 :: ROM is ready to rock on port 9000.
+Thu Oct  1 11:35:27 2026 :: Automated backup complete.
+Thu Oct  1 11:35:27 2026 :: Daily backup complete.
+Thu Oct  1 11:36:39 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Thu Oct  1 11:36:43 2026 :: Log WebAdmin: fsave
+Thu Oct  1 11:36:49 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Thu Oct  1 11:36:52 2026 :: Received signal 15; saving players and shutting down.
+Thu Oct  1 11:36:52 2026 :: Normal termination of game.
+Thu Oct  1 11:36:53 2026 ::  INIT OK 
+Thu Oct  1 11:36:53 2026 :: ROM is ready to rock on port 9000.
+Thu Oct  1 11:36:53 2026 :: Automated backup complete.
+Thu Oct  1 11:36:53 2026 :: Daily backup complete.
