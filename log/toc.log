@@ -19529,3 +19529,34 @@ Thu Oct  1 12:28:41 2026 :: Log Misery: set char self guild monk
 Thu Oct  1 12:29:01 2026 :: Misery has quit.
 Thu Oct  1 12:29:01 2026 :: [QUIT] Player rejoined the real world.
 Thu Oct  1 12:29:09 2026 :: Sock.sinaddr:  192.168.0.1
+Thu Oct  1 12:29:12 2026 :: Loading Misery's playerfile
+Thu Oct  1 12:29:13 2026 :: Misery@192.168.0.1 has connected.
+Thu Oct  1 12:29:21 2026 :: Log Misery: set char self class thief
+Thu Oct  1 12:29:26 2026 :: Log Misery: set char self guild thief
+Thu Oct  1 12:29:31 2026 :: Misery has quit.
+Thu Oct  1 12:29:31 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 12:29:34 2026 :: Sock.sinaddr:  192.168.0.1
+Thu Oct  1 12:29:36 2026 :: Loading Killuminati's playerfile
+Thu Oct  1 12:29:37 2026 :: Killuminati@192.168.0.1 has connected.
+Thu Oct  1 12:29:41 2026 :: Log Killuminati: set char self class monk
+Thu Oct  1 12:29:45 2026 :: Log Killuminati: set self skill all 100
+Thu Oct  1 12:29:49 2026 :: Log Killuminati: set skill self all 100
+Thu Oct  1 12:29:57 2026 :: Log Killuminati: load obj 1016
+Thu Oct  1 12:30:05 2026 :: Log Killuminati: load obj 29209
+Thu Oct  1 12:30:16 2026 :: Log Killuminati: load obj 30577
+Thu Oct  1 12:30:23 2026 :: Log Killuminati: load obj 4618
+Thu Oct  1 12:30:33 2026 :: Log Killuminati: load obj 30579
+Thu Oct  1 12:30:34 2026 :: Log Killuminati: load obj 30579
+Thu Oct  1 12:30:42 2026 :: Log Killuminati: load obj 908
+Thu Oct  1 12:30:47 2026 :: Log Killuminati: load obj 760
+Thu Oct  1 12:30:54 2026 :: Log Killuminati: load obj 7665
+Thu Oct  1 12:31:03 2026 :: Log Killuminati: load obj 3610
+Thu Oct  1 12:31:08 2026 :: Log Killuminati: load obj 7666
+Thu Oct  1 12:31:08 2026 :: Log Killuminati: load obj 7666
+Thu Oct  1 12:31:19 2026 :: Log Killuminati: load obj 24223
+Thu Oct  1 12:31:33 2026 :: Sock.sinaddr:  195.178.110.204
+Thu Oct  1 12:31:33 2026 :: Log Killuminati: load obj 28128
+Thu Oct  1 12:31:40 2026 :: Log Killuminati: load obj 29241
+Thu Oct  1 12:31:47 2026 :: Log Killuminati: load obj 13295
+Thu Oct  1 12:32:05 2026 :: Log Killuminati: load obj 29512
+Thu Oct  1 12:32:06 2026 :: Log Killuminati: load obj 29512
