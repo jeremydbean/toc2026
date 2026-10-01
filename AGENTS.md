@@ -765,15 +765,19 @@ descriptor so a full mud does not write every file in one tick.
 ## Where This Actually Runs
 
 **The game runs on Oracle Cloud: an Always Free ARM (aarch64) Ubuntu
-24.04 instance at `129.213.53.66`, which `toc.jeremybean.com` resolves
-to.** It moved there on 2026-10-01. Both earlier hosts are gone --
+24.04 instance at `129.159.105.156`, which `toc.jeremybean.com` resolves
+to.** It moved there on 2026-10-01. That address is a **reserved** IP, a
+standalone resource that survives a stop or recreate of the instance --
+so it outlives the box, and is deleted deliberately only when the whole
+project is torn down. (The first few hours used an ephemeral
+`129.213.53.66`, now released.) Both earlier hosts are gone --
 before Oracle it ran on a Hyper-V VM on the owner's Windows desktop (now
 powered off), and before that on a Raspberry Pi that died without
 warning on 2026-09-29 -- and the characters were carried forward through
 each move. Only Oracle is live: there is no VM to reach at `172.28.90.2`
 and no Pi at `toc.local`.
 
-    ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.213.53.66
+    ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.159.105.156
     sudo /usr/local/sbin/toc-deploy          # fetch, build, check, restart
     sudo /usr/local/sbin/toc-deploy --dry-run
 

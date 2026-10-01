@@ -4,7 +4,7 @@ One page, in the order you will actually need it. Everything on it has
 been run at least once rather than only written down.
 
 The game runs on an Oracle Cloud instance (Always Free ARM, Ubuntu
-24.04) reached at `129.213.53.66`, which `toc.jeremybean.com` points to.
+24.04) reached at `129.159.105.156`, which `toc.jeremybean.com` points to.
 It moved there on 2026-10-01. Two earlier hosts are gone and not coming
 back: a Hyper-V VM on the owner's Windows desktop (powered off), and
 before that a Raspberry Pi that died on 2026-09-29. Anything telling you
@@ -16,7 +16,8 @@ to `ssh toc@toc.local`, touch `/run/toc2026/update.request`, or start a
 | | |
 | --- | --- |
 | Host | Oracle Cloud instance, Ubuntu 24.04 ARM, region us-ashburn-1 |
-| Reach it | `ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.213.53.66` |
+| Public IP | `129.159.105.156` -- **reserved**, so it survives a stop/recreate |
+| Reach it | `ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.159.105.156` |
 | Game lives in | `/srv/toc/current` (state) and `/srv/toc/build` (git checkout) |
 | Public | `toc.jeremybean.com:9000` game, `:9001` dashboard and browser client |
 | Firewall | OCI VCN security list **and** the instance's own iptables -- a port must be open in both |
@@ -34,7 +35,7 @@ alive and the dashboard can see it. Anything else, work down this page.
 ## The game is down
 
 ```bash
-ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.213.53.66
+ssh -i C:\Users\JeremyBean\Downloads\oci_game_private_key ubuntu@129.159.105.156
 systemctl status toc-game toc-web
 sudo journalctl -u toc-game -n 50
 ```
