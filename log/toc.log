@@ -19672,3 +19672,8 @@ Thu Oct  1 15:53:46 2026 :: EOF encountered on read.
 Thu Oct  1 15:53:49 2026 :: EOF encountered on read.
 Thu Oct  1 16:04:52 2026 :: Log Eclipse: dns
 Thu Oct  1 16:08:09 2026 :: EOF encountered on read.
+Thu Oct  1 16:21:40 2026 :: ANNOUNCE: The game is moving to a new server. Saving now - please reconnect in a minute.
+Thu Oct  1 16:21:44 2026 :: Log WebAdmin: fsave
+Thu Oct  1 16:21:59 2026 :: Received signal 15; saving players and shutting down.
+Thu Oct  1 16:21:59 2026 :: Closing link to Eclipse.
+Thu Oct  1 16:21:59 2026 :: Normal termination of game.
