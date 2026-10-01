@@ -1,7 +1,7 @@
 #PLAYER
 Name Tyrant~
 Id   23103
-LogO 1790837485
+LogO 1790838279
 Vers 4
 Desc .                         /|                 |\
 .                        / | ___.--^^^--.___ | \
@@ -44,7 +44,7 @@ PsiSpec ~
 PsiKnown ~
 Cast Fors
 Levl 34
-Plyd 752914
+Plyd 753016
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
@@ -199,48 +199,48 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'titanic'  21   7  50  16          0          0
-AffD 'titanic'  23   7 1615  14          0          0
-AffD 'titanic'  24   7 1000  12          0          0
-AffD 'titanic'  25   7 4830  13          0          0
-AffD 'empower'  23   7 -100  17          0          0
-AffD 'empower'  21   7  20  19          0          0
-AffD 'empower'  21   7  20  18          0          0
-AffD 'empower'  25   7  15   5          0          0
-AffD 'empower'  23   7  11   2          0          0
-AffD 'empower'  19   7  15   4          0          0
-AffD 'empower'  21   7  15   3          0          0
-AffD 'giant strength'  23   7  15   1          0          0
-AffD 'divine protection'  26   7   0   0          0       4096
-AffD 'fire shield'  20   7   0   0          0          8
-AffD 'protection evil'  24   7   0   0       8192          0
-AffD 'pass door'  21   7   0   0    1048576          0
-AffD 'fly'  22   7   0   0     524288          0
-AffD 'haste'  24   7   4   2    2097152          0
-AffD 'sanctuary'  47   7   0   0        128          0
-AffD 'empower'  49   7   0   0          0          0
-AffD 'detect evil'  49   7   0   0          4          0
-AffD 'detect good'  49   7   0   0          0          2
-AffD 'detect magic'   0   7   0   0         16          0
-AffD 'detect hidden'   0   7   0   0         32          0
-AffD 'detect invis'   0   7   0   0          8          0
-AffD 'major globe'   0   7 -114  17          0          0
-AffD 'frenzy'   0   7 110  17          0          0
-AffD 'frenzy'   0   7  11  19          0          0
-AffD 'frenzy'   0   7  11  18          0          0
-AffD 'giant strength'   0   7   4   1          0          0
-AffD 'divine protection'   0   7   0   0          0       4096
-AffD 'fire shield'   0   7   0   0          0          8
-AffD 'protection evil'   0   7   0   0       8192          0
-AffD 'pass door'   0   7   0   0    1048576          0
-AffD 'fly'   0   7   0   0     524288          0
-AffD 'haste'   0   7   4   2    2097152          0
-AffD 'sanctuary'   0   7   0   0        128          0
-AffD 'stone skin'   0   7 -40  17          0          0
-AffD 'shield'   0   7 -20  17          0          0
-AffD 'bless'   0   7  -8  24          0          0
-AffD 'bless'   0   7   8  18          0          0
-AffD 'armor'   0   7 -20  17          0          0
+AffD 'armor'   0   5 -20  17          0          0
+AffD 'bless'   0   5   8  18          0          0
+AffD 'bless'   0   5  -8  24          0          0
+AffD 'shield'   0   5 -20  17          0          0
+AffD 'stone skin'   0   5 -40  17          0          0
+AffD 'sanctuary'   0   5   0   0        128          0
+AffD 'haste'   0   5   4   2    2097152          0
+AffD 'fly'   0   5   0   0     524288          0
+AffD 'pass door'   0   5   0   0    1048576          0
+AffD 'protection evil'   0   5   0   0       8192          0
+AffD 'fire shield'   0   5   0   0          0          8
+AffD 'divine protection'   0   5   0   0          0       4096
+AffD 'giant strength'   0   5   4   1          0          0
+AffD 'frenzy'   0   5  11  18          0          0
+AffD 'frenzy'   0   5  11  19          0          0
+AffD 'frenzy'   0   5 110  17          0          0
+AffD 'major globe'   0   5 -114  17          0          0
+AffD 'detect invis'   0   5   0   0          8          0
+AffD 'detect hidden'   0   5   0   0         32          0
+AffD 'detect magic'   0   5   0   0         16          0
+AffD 'detect good'  49   5   0   0          0          2
+AffD 'detect evil'  49   5   0   0          4          0
+AffD 'empower'  49   5   0   0          0          0
+AffD 'sanctuary'  47   5   0   0        128          0
+AffD 'haste'  24   5   4   2    2097152          0
+AffD 'fly'  22   5   0   0     524288          0
+AffD 'pass door'  21   5   0   0    1048576          0
+AffD 'protection evil'  24   5   0   0       8192          0
+AffD 'fire shield'  20   5   0   0          0          8
+AffD 'divine protection'  26   5   0   0          0       4096
+AffD 'giant strength'  23   5  15   1          0          0
+AffD 'empower'  21   5  15   3          0          0
+AffD 'empower'  19   5  15   4          0          0
+AffD 'empower'  23   5  11   2          0          0
+AffD 'empower'  24   5  15   5          0          0
+AffD 'empower'  21   5  20  18          0          0
+AffD 'empower'  21   5  20  19          0          0
+AffD 'empower'  23   5 -100  17          0          0
+AffD 'titanic'  25   5 4830  13          0          0
+AffD 'titanic'  23   5 1000  12          0          0
+AffD 'titanic'  23   5 1615  14          0          0
+AffD 'titanic'  19   5  50  16          0          0
 End
 
 #O
@@ -569,7 +569,7 @@ End
 Vnum 9231
 Nest 0
 Wear -1
-Time 132
+Time 130
 Cost 100000
 Cond 100
 Repd 0
@@ -580,7 +580,7 @@ End
 Vnum 9231
 Nest 0
 Wear -1
-Time 73
+Time 71
 Cost 100000
 Cond 100
 Repd 0
@@ -591,7 +591,7 @@ End
 Vnum 9231
 Nest 0
 Wear -1
-Time 98
+Time 96
 Cost 100000
 Cond 100
 Repd 0
