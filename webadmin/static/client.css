@@ -1606,3 +1606,47 @@ textarea {
     border-color: #4caf50;
     color: #4caf50;
 }
+
+/* "How to connect" strip under the header: telnet address + Mudlet.
+   Always visible so a new player knows how to reach the game and that
+   Mudlet is the recommended way. Wraps to two rows on a phone. */
+.play-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding: 8px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+}
+.play-info-telnet { color: var(--muted); }
+.play-info-label { color: var(--text); font-weight: 650; margin-right: 8px; }
+.play-info code {
+    color: var(--teal);
+    background: var(--terminal-bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+.play-info-mudlet {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--teal-dark);
+    border: 1px solid var(--teal);
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: background 0.15s ease;
+}
+.play-info-mudlet:hover { background: var(--teal); }
+.play-info-icon { width: 18px; height: 18px; color: var(--teal); flex: none; }
+.play-info-mudlet:hover .play-info-icon { color: var(--text); }
+@media (max-width: 640px) {
+    .play-info { justify-content: center; text-align: center; }
+    .play-info-mudlet { width: 100%; justify-content: center; }
+}
