@@ -19169,3 +19169,31 @@ Thu Oct  1 07:50:38 2026 :: Spellup: Hermie gave Milenko the full list (30 ticks
 Thu Oct  1 07:52:32 2026 :: Log Milenko: set char self wanted
 Thu Oct  1 07:52:39 2026 :: Log Milenko: set char self wanted no
 Thu Oct  1 07:52:41 2026 :: Log Milenko: save
+Thu Oct  1 07:54:40 2026 :: Log Milenko: restore self
+Thu Oct  1 07:55:27 2026 :: Log Milenko: log self
+Thu Oct  1 07:55:31 2026 :: Log Milenko [4202]: goto drow fem
+Thu Oct  1 07:55:41 2026 :: Log Milenko [4202]: help goto
+Thu Oct  1 07:55:43 2026 :: Log Milenko [4202]: alias
+Thu Oct  1 07:55:47 2026 :: Log Milenko [4202]: alias goto clear
+Thu Oct  1 07:55:53 2026 :: Log Milenko [4202]: alias clear goto
+Thu Oct  1 07:56:04 2026 :: Log Milenko [4202]: alias goto goto
+Thu Oct  1 07:56:07 2026 :: Log Milenko [4202]: goto drow
+Thu Oct  1 07:56:07 2026 :: Log Milenko [0]: moved to 25265 (The bonfire.)
+Thu Oct  1 07:56:21 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:25 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:28 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:31 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:34 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:37 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:40 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:43 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:46 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:49 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:52 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:55 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:56:58 2026 :: Log Milenko [25265]: k
+Thu Oct  1 07:57:01 2026 :: Log Milenko [25265]: quit
+Thu Oct  1 07:57:01 2026 :: Milenko has quit.
+Thu Oct  1 07:57:01 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 07:57:56 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 07:58:00 2026 :: Loading Lowang's playerfile
