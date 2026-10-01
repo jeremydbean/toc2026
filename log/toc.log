@@ -18980,3 +18980,9 @@ Thu Oct  1 04:48:10 2026 :: Sock.sinaddr:  108.81.26.245
 Thu Oct  1 04:48:12 2026 :: Loading Astarte's playerfile
 Thu Oct  1 04:48:13 2026 :: Astarte@108-81-26-245.lightspeed.tukrga.sbcglobal.net reconnected.
 Thu Oct  1 04:48:17 2026 :: Spellup: Hermie gave Astarte the full list (30 ticks) in room 2419.
+Thu Oct  1 04:52:01 2026 :: Log Astarte: set
+Thu Oct  1 04:52:04 2026 :: Log Astarte: set player
+Thu Oct  1 04:52:07 2026 :: Log Astarte: set player wanted
+Thu Oct  1 04:52:14 2026 :: Log Astarte: set player wanted no
+Thu Oct  1 04:52:24 2026 :: Log Astarte: set player self wanted no
+Thu Oct  1 04:55:38 2026 :: Log Astarte: restore self
