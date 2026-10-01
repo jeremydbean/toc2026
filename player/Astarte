@@ -1,8 +1,8 @@
 #PLAYER
 Name Astarte~
 Id   30739
-LogO 1542379101
-Vers 3
+LogO 1790829691
+Vers 4
 Desc .                      //:::::::::::::::::::::::::::::::::::::::::::::\\
 .                     //:::_______:::::::::________::::::::::_____:::::::\\
 .                   //:::_/   _-"":::_--"""        """--_::::\_  ):::::::::\\
@@ -34,24 +34,64 @@ Sex  1
 Cla  2
 Gui  3
 Psionic  1
+PsiGrant 0
+PsiSpec ~
+PsiKnown mindbar,project,pyrotechnics,telekinesis~
 Cast none
 Levl 51
-Plyd 655341
+Plyd 655384
 ListRemorts ~
 NumRemorts 0
 Note 953324127
 Scro 22
-Room 4208
-HMV  1526 1584 168 537 53 285
+Room 2419
+HMV  1519 1584 168 537 45 285
 NewGold 1
 NewPlat 1206
 NewCopp 72
 NewSilv 5
-Bank 0
+BankCP 0
+IntTime 1790829691
+IntTotal 0
 Dcount 0
+SavedOnce 1
 Corpses	0
 PkRec 7
 PkGiv 1
+AchKills 0
+AchQuests 0
+AchDeaths 0
+AchExplore 0
+AchMaps 0
+AchCompass 0
+AchTriforce 0
+Achv level-5 1790829651
+Achv level-10 1790829651
+Achv level-15 1790829651
+Achv level-20 1790829651
+Achv level-25 1790829651
+Achv level-30 1790829651
+Achv level-40 1790829651
+Achv level-50 1790829651
+Achv day-played 1790829651
+Achv week-played 1790829651
+Achv first-pkill 1790829651
+Achv carry-one-platinum 1790829651
+Achv carry-hundred-platinum 1790829651
+Achv four-denominations 1790829651
+Achv level-35 1790829651
+Achv level-45 1790829651
+Achv carry-ten-platinum 1790829651
+Achv carry-thousand-platinum 1790829651
+LastOut  0
+SesLogin 0
+SesDur   0
+SesExpG  0
+SesLvlG  0
+SesKill  0
+SesPK    0
+SesDead  0
+SesQuest 0
 QuestPnts 8
 Exp  113627
 Act  67240136
@@ -146,20 +186,20 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'warrior guild'
-AffD 'fly'  34   4   0   0     524288          0
-AffD 'change sex'  19  73  -1   6          0          0
-AffD 'haste'   0   5   4   2    2097152          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'sneak'  23  45   0   0      32768          0
-AffD 'armor'   0  18 -20  17          0          0
-AffD 'shield'   0  55 -20  17          0          0
-AffD 'berserk'   0   2  10  18         64          0
-AffD 'berserk'  10   2  10  19         64          0
-AffD 'berserk'   0   2 100  17         64          0
-AffD 'stone skin'  52  14 -40  17          0          0
-AffD 'detect invis'  47   9   0   0          8          0
-AffD 'detect magic'   0   9   0   0         16          0
 AffD 'detect hidden'  29   9   0   0         32          0
+AffD 'detect magic'   0   9   0   0         16          0
+AffD 'detect invis'  47   9   0   0          8          0
+AffD 'stone skin'  52  14 -40  17          0          0
+AffD 'berserk'   0   2 100  17         64          0
+AffD 'berserk'  10   2  10  19         64          0
+AffD 'berserk'   0   2  10  18         64          0
+AffD 'shield'   0  55 -20  17          0          0
+AffD 'armor'   0  18 -20  17          0          0
+AffD 'sneak'  23  45   0   0      32768          0
+AffD 'sanctuary'   0   0   0   0        128          0
+AffD 'haste'   0   5   4   2    2097152          0
+AffD 'change sex'  19  73  -1   6          0          0
+AffD 'fly'  34   4   0   0     524288          0
 End
 
 #O
@@ -167,7 +207,7 @@ Vnum 29032
 Nest 0
 Wear 12
 Lev  29
-Cost 500
+Cost 5000000
 Cond 80
 Repd 0
 End
@@ -177,7 +217,7 @@ Vnum 29274
 Nest 1
 Wear -1
 Lev  51
-Cost 1000
+Cost 10000000
 Cond 100
 Repd 0
 Spell 3 'giant strength'
@@ -187,7 +227,7 @@ End
 Vnum 3091
 Nest 1
 Wear -1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'fly'
@@ -197,7 +237,7 @@ End
 Vnum 3091
 Nest 1
 Wear -1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'fly'
@@ -207,7 +247,7 @@ End
 Vnum 3091
 Nest 1
 Wear -1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'fly'
@@ -217,7 +257,7 @@ End
 Vnum 3091
 Nest 1
 Wear -1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'fly'
@@ -227,7 +267,7 @@ End
 Vnum 3091
 Nest 1
 Wear -1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'fly'
@@ -237,7 +277,7 @@ End
 Vnum 3091
 Nest 1
 Wear -1
-Cost 100
+Cost 1000000
 Cond 100
 Repd 0
 Spell 1 'fly'
@@ -287,7 +327,7 @@ Vnum 4717
 Nest 1
 Wear -1
 Lev  10
-Cost 150
+Cost 1500000
 Cond 100
 Repd 0
 Spell 1 'shroud'
@@ -301,11 +341,11 @@ Nest 1
 ExtF 67
 Wear -1
 Lev  45
-Cost 3250
+Cost 32500000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 51 -1 6 18 0 0
 AffD 'enchant weapon' 51 -1 6 19 0 0
+AffD 'enchant weapon' 51 -1 6 18 0 0
 End
 
 #O
@@ -314,7 +354,7 @@ Nest 1
 ExtF 3146818
 Wear -1
 Lev  48
-Cost 2500
+Cost 25000000
 Cond 100
 Repd 0
 End
@@ -325,7 +365,7 @@ Nest 1
 ExtF 2100544
 Wear -1
 Lev  50
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 Affect -1 50 -1 4 20 0 0
@@ -336,7 +376,7 @@ Vnum 10012
 Nest 1
 Wear -1
 Lev  50
-Cost 277
+Cost 2770000
 Cond 96
 Repd 0
 Val  12 12 12 1 0
@@ -348,7 +388,7 @@ Vnum 16013
 Nest 0
 Wear 7
 Lev  41
-Cost 1498
+Cost 14980000
 Cond 100
 Repd 0
 End
@@ -358,7 +398,7 @@ Vnum 29206
 Nest 0
 Wear 13
 Lev  50
-Cost 2000
+Cost 20000000
 Cond 100
 Repd 0
 End
@@ -368,7 +408,7 @@ Vnum 29049
 Nest 0
 Wear 0
 Lev  45
-Cost 1500
+Cost 15000000
 Cond 100
 Repd 0
 Val  0 0 -1 0 0
@@ -380,7 +420,7 @@ Nest 0
 ExtF 2100545
 Wear 4
 Lev  50
-Cost 3000
+Cost 30000000
 Cond 100
 Repd 0
 Affect -1 50 -1 -4 4 0 0
@@ -392,7 +432,7 @@ Nest 0
 ExtF 2100545
 Wear 3
 Lev  50
-Cost 3000
+Cost 30000000
 Cond 100
 Repd 0
 End
@@ -402,7 +442,7 @@ Vnum 29215
 Nest 0
 Wear 6
 Lev  51
-Cost 5000
+Cost 50000000
 Cond 100
 Repd 0
 Affect -1 51 -1 -11 13 0 0
@@ -414,7 +454,7 @@ Nest 0
 ExtF 21
 Wear 10
 Lev  30
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 End
@@ -425,7 +465,7 @@ Nest 0
 ExtF 20
 Wear 5
 Lev  43
-Cost 950
+Cost 9500000
 Cond 100
 Repd 0
 End
@@ -435,7 +475,7 @@ Vnum 725
 Nest 0
 Wear 9
 Lev  46
-Cost 950
+Cost 9500000
 Cond 100
 Repd 0
 Affect -1 46 -1 1 23 0 0
@@ -446,7 +486,7 @@ Vnum 717
 Nest 0
 Wear 15
 Lev  40
-Cost 450
+Cost 4500000
 Cond 100
 Repd 0
 Affect -1 40 -1 2 21 0 0
@@ -457,7 +497,7 @@ Vnum 717
 Nest 0
 Wear 14
 Lev  40
-Cost 450
+Cost 4500000
 Cond 98
 Repd 0
 Affect -1 40 -1 4 22 0 0
@@ -468,7 +508,7 @@ Vnum 724
 Nest 0
 Wear 8
 Lev  30
-Cost 500
+Cost 5000000
 Cond 100
 Repd 0
 Affect -1 30 -1 -4 21 0 0
@@ -479,7 +519,7 @@ Vnum 911
 Nest 0
 Wear 2
 Lev  34
-Cost 2600
+Cost 26000000
 Cond 100
 Repd 0
 Affect -1 34 -1 4 20 0 0
@@ -490,7 +530,7 @@ Vnum 911
 Nest 0
 Wear 1
 Lev  34
-Cost 2600
+Cost 26000000
 Cond 100
 Repd 0
 Affect -1 34 -1 -13 13 0 0
@@ -513,7 +553,7 @@ Nest 0
 ExtF 2100544
 Wear 16
 Lev  49
-Cost 4000
+Cost 40000000
 Cond 100
 Repd 0
 Affect -1 49 -1 -1 3 0 0
@@ -524,7 +564,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -535,7 +575,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -546,7 +586,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -557,7 +597,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -568,7 +608,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -579,7 +619,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -590,7 +630,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -601,7 +641,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
@@ -612,7 +652,7 @@ Vnum 16046
 Nest 0
 Wear -1
 Lev  9
-Cost 11
+Cost 110000
 Cond 100
 Repd 0
 Spell 3 'refresh'
