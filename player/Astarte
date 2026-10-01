@@ -1,7 +1,7 @@
 #PLAYER
 Name Astarte~
 Id   30739
-LogO 1790829691
+LogO 1790829931
 Vers 4
 Desc .                      //:::::::::::::::::::::::::::::::::::::::::::::\\
 .                     //:::_______:::::::::________::::::::::_____:::::::\\
@@ -39,13 +39,13 @@ PsiSpec ~
 PsiKnown mindbar,project,pyrotechnics,telekinesis~
 Cast none
 Levl 51
-Plyd 655384
+Plyd 655624
 ListRemorts ~
 NumRemorts 0
 Note 953324127
 Scro 22
 Room 2419
-HMV  1519 1584 168 537 45 285
+HMV  1555 1584 537 537 285 285
 NewGold 1
 NewPlat 1206
 NewCopp 72
@@ -83,7 +83,7 @@ Achv level-35 1790829651
 Achv level-45 1790829651
 Achv carry-ten-platinum 1790829651
 Achv carry-thousand-platinum 1790829651
-LastOut  0
+LastOut  1790829853
 SesLogin 0
 SesDur   0
 SesExpG  0
@@ -95,7 +95,7 @@ SesQuest 0
 QuestPnts 8
 Exp  113627
 Act  67240136
-AfBy 2654968
+AfBy 2130488
 Comm 28672
 Mounted 0
 On_Quest 0
@@ -123,9 +123,9 @@ Color 16 6
 Pos  8
 Save  8
 Alig  651
-Hit   48
-Dam   83
-ACs -75 -65 -71 51
+Hit   38
+Dam   73
+ACs -175 -165 -171 -49
 Wimp  150
 Attr 20 16 18 18 19
 AMod 13 0 0 7 -2
@@ -149,7 +149,7 @@ Alias 1 sneak~
 Alias 2 berserk~
 Sk 21 'mindbar'
 Sk 10 'project'
-Sk 1 'pyrotechnics'
+Sk 80 'pyrotechnics'
 Sk 95 'telekinesis'
 Sk 7 'axe'
 Sk 100 'dagger'
@@ -186,20 +186,15 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'warrior guild'
-AffD 'detect hidden'  29   9   0   0         32          0
-AffD 'detect magic'   0   9   0   0         16          0
-AffD 'detect invis'  47   9   0   0          8          0
-AffD 'stone skin'  52  14 -40  17          0          0
-AffD 'berserk'   0   2 100  17         64          0
-AffD 'berserk'  10   2  10  19         64          0
-AffD 'berserk'   0   2  10  18         64          0
-AffD 'shield'   0  55 -20  17          0          0
-AffD 'armor'   0  18 -20  17          0          0
-AffD 'sneak'  23  45   0   0      32768          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   5   4   2    2097152          0
-AffD 'change sex'  19  73  -1   6          0          0
-AffD 'fly'  34   4   0   0     524288          0
+AffD 'detect hidden'  29   4   0   0         32          0
+AffD 'detect magic'   0   4   0   0         16          0
+AffD 'detect invis'  46   4   0   0          8          0
+AffD 'stone skin'  52   9 -40  17          0          0
+AffD 'shield'   0  50 -20  17          0          0
+AffD 'armor'   0  13 -20  17          0          0
+AffD 'sneak'  23  40   0   0      32768          0
+AffD 'haste'   0   0   4   2    2097152          0
+AffD 'change sex'  19  68  -1   6          0          0
 End
 
 #O

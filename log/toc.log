@@ -18954,3 +18954,15 @@ Thu Oct  1 04:40:43 2026 :: [QUIT] Player rejoined the real world.
 Thu Oct  1 04:40:46 2026 :: Sock.sinaddr:  108.81.26.245
 Thu Oct  1 04:40:48 2026 :: Loading Astarte's playerfile
 Thu Oct  1 04:40:50 2026 :: Astarte@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 04:44:13 2026 :: EOF encountered on read.
+Thu Oct  1 04:44:13 2026 :: Closing link to Astarte.
+Thu Oct  1 04:44:13 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 04:44:17 2026 :: Loading Killuminati's playerfile
+Thu Oct  1 04:44:18 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Thu Oct  1 04:44:34 2026 :: Log Killuminati: set skill
+Thu Oct  1 04:44:41 2026 :: Log Killuminati: set skill astar pyrot 80
+Thu Oct  1 04:44:44 2026 :: Killuminati has quit.
+Thu Oct  1 04:44:44 2026 :: [QUIT] Player rejoined the real world.
+Thu Oct  1 04:44:48 2026 :: Sock.sinaddr:  108.81.26.245
+Thu Oct  1 04:44:50 2026 :: Loading Astarte's playerfile
+Thu Oct  1 04:44:51 2026 :: Astarte@108-81-26-245.lightspeed.tukrga.sbcglobal.net reconnected.
