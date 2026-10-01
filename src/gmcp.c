@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.3.1"
+#define TOC_MUDLET_PACKAGE_VERSION "1.4.0"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -544,6 +544,12 @@ void gmcp_send_quest( DESCRIPTOR_DATA *d )
 
             quest_area_name( where->area != NULL ? where->area->name : NULL,
                              region, sizeof(region) );
+            /* The target room's vnum, so the Mudlet client can walk
+               there: the map keys rooms by vnum, so WALK QUEST is just
+               gotoRoom(num). Only present when the target is located. */
+            toc_strlcat( json, ",\"num\":", sizeof(json) );
+            snprintf( number, sizeof(number), "%d", ch->questroom );
+            toc_strlcat( json, number, sizeof(json) );
             toc_strlcat( json, ",\"room\":", sizeof(json) );
             gmcp_json_append_quoted( json, sizeof(json), where->name );
             toc_strlcat( json, ",\"area\":", sizeof(json) );

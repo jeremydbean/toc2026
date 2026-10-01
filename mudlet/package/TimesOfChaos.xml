@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.3.1"
+tocMudlet.version = "1.4.0"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -542,6 +542,33 @@ function tocMudlet.walkCommand(argument)
     return
   end
 
+  -- Walk to wherever the quest master last placed the target. The feed
+  -- carries the room vnum and the map keys rooms by vnum, so this is the
+  -- same gotoRoom the manual "walk <vnum>" uses -- no name matching,
+  -- which would be hopeless across the many rooms that share a name.
+  if argument == "quest" then
+    local q = gmcp and gmcp.Char and gmcp.Char.Quest
+    if not (q and q.active) then
+      cecho("\n<gold>[walk]<reset> You are not on a quest right now.\n")
+      return
+    end
+    local num = tonumber(q.num)
+    if num and roomExistsSafe(num) then
+      cecho(string.format(
+        "\n<gold>[walk]<reset> Walking to the quest target: %s%s.\n",
+        (q.room and q.room ~= "") and q.room or ("room " .. num),
+        (q.area and q.area ~= "") and (", " .. q.area) or ""))
+      if gotoRoom then pcall(gotoRoom, num) end
+    elseif q.area and q.area ~= "" then
+      cecho("\n<gold>[walk]<reset> That exact room is not on your map yet; " ..
+        "heading for " .. q.area .. ".\n")
+      tocMudlet.walkCommand(q.area)
+    else
+      cecho("\n<gold>[walk]<reset> The quest target is not on your map yet.\n")
+    end
+    return
+  end
+
   -- A name rather than a number: look it up in the published routes.
   if argument and argument ~= "" and tonumber(argument) == nil then
     if tocMudlet.routes == nil then
@@ -829,16 +856,36 @@ function tocMudlet.onQuest()
   -- wandered since, so it says "last seen" rather than "is".
   local where = ""
   if quest.room and quest.room ~= "" then
+    -- When the room vnum came through, the strip is clickable and says
+    -- so; without it there is nothing to walk to.
+    local hint = tonumber(quest.num) and
+      string.format([[ &middot; <span style="color:%s">click to walk</span>]], P.accent or "#8fd3ff")
+      or ""
     where = string.format(
-      [[<br><span style="color:%s">last seen near %s%s</span>]],
+      [[<br><span style="color:%s">last seen near %s%s</span>%s]],
       P.muted, html(quest.room),
-      (quest.area and quest.area ~= "") and (", " .. html(quest.area)) or "")
+      (quest.area and quest.area ~= "") and (", " .. html(quest.area)) or "",
+      hint)
   end
 
   tocMudlet.ui.quest:echo(string.format(
     [[<span style="color:%s">%s%s %s</span>]] ..
     [[<span style="color:%s"> &middot; %d min</span>]],
     P.muted, kind, verb, html(quest.target or "?"), colour, left) .. where)
+
+  -- Clicking the quest strip walks you to the target, when there is one
+  -- on the map. Cleared otherwise so a stale target cannot be clicked.
+  if tocMudlet.ui.quest.setClickCallback then
+    if tonumber(quest.num) then
+      pcall(function()
+        tocMudlet.ui.quest:setClickCallback(function()
+          tocMudlet.walkCommand("quest")
+        end)
+      end)
+    elseif tocMudlet.ui.quest.resetClickCallback then
+      pcall(function() tocMudlet.ui.quest:resetClickCallback() end)
+    end
+  end
 end
 
 -- 12345 -> "12,345", so a big fight's total stays readable.

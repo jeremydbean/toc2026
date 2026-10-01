@@ -82,6 +82,10 @@ class GmcpPayloadTests(unittest.TestCase):
         # has to be able to tell them apart.
         self.assertIn("questemergency", body)
         self.assertIn("questrush", body)
+        # The target room's vnum rides along so the Mudlet client can walk
+        # there -- the map keys rooms by vnum, so WALK QUEST is gotoRoom.
+        self.assertIn(r'\"num\"', body)
+        self.assertIn("ch->questroom", body)
 
     def test_the_target_feed_respects_sight(self) -> None:
         """You cannot watch the health of something you cannot see."""

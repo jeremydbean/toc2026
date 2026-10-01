@@ -994,6 +994,11 @@ What has changed in the game lately, newest first.  Type HELP on any
 command named here for the detail.
 
 1 Oct 2026
+  Mudlet: the quest strip now carries the target room, and clicking it
+  (or typing WALK QUEST) walks you straight there. The game sends the
+  room's vnum with the quest, so it is an exact path, not a guess by
+  name. Update the package to 1.4.0 to get it.
+
   The dashboard's gear finder names the best piece for each of your
   eighteen slots for your class and level - both rings, both necks and
   both wrists, two different items for each pair - then ranks every
