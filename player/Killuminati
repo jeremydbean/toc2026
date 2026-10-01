@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790889287
+LogO 1790893780
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,7 +18,7 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6400928
+Plyd 6401184
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -26,7 +26,7 @@ StashMax 500
 Scro 0
 Room 2497
 HMV  30814 30814 30115 30115 30075 30075
-NewGold 82
+NewGold 98
 NewPlat 2503018
 NewCopp 49
 NewSilv 42
@@ -38,8 +38,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 12
-AchQuests 2
+AchKills 13
+AchQuests 3
 AchDeaths 1
 AchExplore 0
 AchMaps 0
@@ -60,12 +60,14 @@ Achv day-played 1788203195
 Achv week-played 1788203195
 Achv first-kill 1788203214
 Achv first-quest 1790816825
+Achv quest-rush 1790893770
 Achv hyrule-arrival 1789610933
 Achv visit-mud-school 1790800150
 Achv visit-casino 1790643607
 Achv visit-haon-dor 1790783134
 Achv visit-gangland 1790889207
 Achv visit-thalos 1790800613
+Achv visit-shire 1790893758
 Achv visit-drow-city 1790842211
 Achv visit-wyvern 1790816725
 Achv relic-british-sceptre 1790857854
@@ -94,19 +96,19 @@ Achv visit-pet-shop 1790781000
 Achv visit-glitter-palace 1790800614
 Achv visit-underdark 1790842210
 Achv visit-high-tower 1790800570
-LastOut  1790877649
-SesLogin 1790863687
-SesDur   933
+LastOut  1790893780
+SesLogin 1790893526
+SesDur   254
 SesExpG  0
 SesLvlG  0
-SesKill  0
+SesKill  1
 SesPK    0
 SesDead  0
-SesQuest 0
+SesQuest 1
 RecallRoom 2401
 RecallSet  1790373238
 QuestPnts 24
-QuestStrk 2
+QuestStrk 3
 CasinoWon  102
 CasinoLost 204
 QuestNext 4
@@ -404,26 +406,26 @@ Gr 'mage default'
 Gr 'warrior default'
 Gr 'monk default'
 Gr 'warrior guild'
-AffD 'titanic'   0  -1  40  13          0          0
-AffD 'titanic'   0  -1   0  12          0          0
-AffD 'titanic'   0  -1  25  14          0          0
-AffD 'titanic'   0  -1  50  16          0          0
-AffD 'empower'   0  -1   0   0          0          0
-AffD 'sanctuary'   0  -1   0   0        128          0
-AffD 'haste'   0  -1   4   2    2097152          0
-AffD 'fly'   0  -1   0   0     524288          0
-AffD 'pass door'   0  -1   0   0    1048576          0
-AffD 'protection evil'   0  -1   0   0       8192          0
-AffD 'fire shield'   0  -1   0   0          0          8
-AffD 'divine protection'   0  -1   0   0          0       4096
-AffD 'giant strength'   0  -1  15   1          0          0
-AffD 'empower'   0  -1  15   3          0          0
-AffD 'empower'   0  -1  15   4          0          0
-AffD 'empower'   0  -1  11   2          0          0
-AffD 'empower'   0  -1  15   5          0          0
-AffD 'empower'   0  -1  20  18          0          0
-AffD 'empower'   0  -1  20  19          0          0
 AffD 'empower'   0  -1 -100  17          0          0
+AffD 'empower'   0  -1  20  19          0          0
+AffD 'empower'   0  -1  20  18          0          0
+AffD 'empower'   0  -1  15   5          0          0
+AffD 'empower'   0  -1  11   2          0          0
+AffD 'empower'   0  -1  15   4          0          0
+AffD 'empower'   0  -1  15   3          0          0
+AffD 'giant strength'   0  -1  15   1          0          0
+AffD 'divine protection'   0  -1   0   0          0       4096
+AffD 'fire shield'   0  -1   0   0          0          8
+AffD 'protection evil'   0  -1   0   0       8192          0
+AffD 'pass door'   0  -1   0   0    1048576          0
+AffD 'fly'   0  -1   0   0     524288          0
+AffD 'haste'   0  -1   4   2    2097152          0
+AffD 'sanctuary'   0  -1   0   0        128          0
+AffD 'empower'   0  -1   0   0          0          0
+AffD 'titanic'   0  -1  50  16          0          0
+AffD 'titanic'   0  -1  25  14          0          0
+AffD 'titanic'   0  -1   0  12          0          0
+AffD 'titanic'   0  -1  40  13          0          0
 End
 
 #O
