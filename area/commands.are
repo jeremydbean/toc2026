@@ -994,6 +994,12 @@ What has changed in the game lately, newest first.  Type HELP on any
 command named here for the detail.
 
 1 Oct 2026
+  Mudlet 1.5.0 adds a combat-awareness set: a lag bar that shows when
+  you can act again, an enemy health gauge beside your own bars, a
+  Buffs tab with a countdown bar per spell, a Group tab showing each
+  party member's level and health, a low-health warning, and a Tells
+  tab that lights up on a new tell.  Update the package to get them.
+
   Mudlet: the quest strip now carries the target room, and clicking it
   (or typing WALK QUEST) walks you straight there. The game sends the
   room's vnum with the quest, so it is an exact path, not a guess by

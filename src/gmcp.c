@@ -12,7 +12,7 @@
 #include "merc.h"
 #include "telnet_proto.h"
 
-#define TOC_MUDLET_PACKAGE_VERSION "1.4.0"
+#define TOC_MUDLET_PACKAGE_VERSION "1.5.0"
 #define TOC_MUDLET_PACKAGE_URL \
     "https://raw.githubusercontent.com/jeremydbean/toc2026/main/mudlet/TimesOfChaos.mpackage"
 #define TOC_MUDLET_MAP_URL \
@@ -192,6 +192,9 @@ static void gmcp_reset_snapshots( DESCRIPTOR_DATA *d )
     d->gmcp_target_valid = false;
     d->gmcp_online_valid = false;
     d->gmcp_chars_valid = false;
+    d->gmcp_last_wait = -1;
+    d->gmcp_last_group_hash = 0;
+    d->gmcp_group_valid = false;
     d->gmcp_items_valid = false;
 }
 
@@ -275,6 +278,8 @@ void gmcp_handle_message( DESCRIPTOR_DATA *d, const char *message )
             gmcp_send_target( d );
             gmcp_send_chars( d );
             gmcp_send_items( d );
+            gmcp_send_lag( d );
+            gmcp_send_group( d );
         }
     }
 }
@@ -743,6 +748,124 @@ void gmcp_send_online( DESCRIPTOR_DATA *d )
     telnet_send_gmcp( d, "Char.Online", json );
     d->gmcp_last_online_hash = hash;
     d->gmcp_online_valid = true;
+}
+
+
+/*
+ * How long until the character can act again, for a lag bar.
+ *
+ * Sent when the wait *changes* -- an action that lagged, or the wait
+ * running down or out -- and never while it sits at zero, so a quiet
+ * character costs nothing. It rides the output flush like every other
+ * feed rather than firing per pulse, which is what keeps it from
+ * flooding the link four times a second. The client drains its bar
+ * between messages; each one is the authoritative remainder, so a
+ * client clock that drifts is corrected by the next.
+ *
+ * Staff are never held by a wait (comm.c skips it for IS_IMMORTAL), so
+ * they are sent no lag rather than a bar for a pause that never comes.
+ */
+void gmcp_send_lag( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *ch;
+    char json[64];
+    int wait;
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    ch = d->character;
+    if ( ch == NULL )
+        return;
+
+    wait = IS_IMMORTAL( ch ) ? 0 : UMAX( 0, (int) ch->wait );
+
+    /* Only when a fresh wait is applied (or extended), and once when it
+       clears. The steady per-pulse decrements in between are predictable,
+       so the client drains its own bar rather than being told four times
+       a second -- the whole point of not flooding the link. */
+    if ( wait > d->gmcp_last_wait
+      || ( wait == 0 && d->gmcp_last_wait > 0 ) )
+    {
+        snprintf( json, sizeof(json), "{\"ms\":%d}",
+                  wait * ( 1000 / PULSE_PER_SECOND ) );
+        telnet_send_gmcp( d, "Char.Lag", json );
+    }
+    d->gmcp_last_wait = wait;
+}
+
+
+/*
+ * The group you are in, for a party panel: each member's level and
+ * how they are holding up, whether they are the leader and whether
+ * they are in the room with you.
+ *
+ * Players only, walked off the descriptor list -- a pet or a charmed
+ * mobile follows its master but is not a party member, and walking the
+ * whole character list for every flush would cost thousands of checks
+ * to find a handful of people. Alone is not a group: a list of one,
+ * which is only you, is sent empty so a solo player draws nothing.
+ */
+#define GMCP_GROUP_MAX 16
+
+void gmcp_send_group( DESCRIPTOR_DATA *d )
+{
+    CHAR_DATA *ch;
+    DESCRIPTOR_DATA *od;
+    char json[MAX_STRING_LENGTH];
+    char number[192];
+    uint32_t hash;
+    int count = 0;
+
+    if ( d == NULL || !d->gmcp_enabled || d->connected != CON_PLAYING )
+        return;
+
+    ch = d->character;
+    if ( ch == NULL )
+        return;
+
+    toc_strlcpy( json, "{\"members\":[", sizeof(json) );
+    for ( od = descriptor_list; od != NULL && count < GMCP_GROUP_MAX;
+          od = od->next )
+    {
+        CHAR_DATA *gch;
+
+        if ( od->connected != CON_PLAYING || od->character == NULL )
+            continue;
+        gch = od->character;
+        if ( !is_same_group( ch, gch ) )
+            continue;
+
+        if ( count > 0 )
+            toc_strlcat( json, ",", sizeof(json) );
+        toc_strlcat( json, "{\"name\":", sizeof(json) );
+        gmcp_json_append_quoted( json, sizeof(json),
+            IS_NPC(gch) ? gch->short_descr : gch->name );
+        snprintf( number, sizeof(number),
+            ",\"level\":%d,\"hp\":%d,\"mana\":%d,\"move\":%d,"
+            "\"leader\":%s,\"here\":%s,\"you\":%s}",
+            gch->level,
+            gmcp_percent( gch->hit, gch->max_hit ),
+            gmcp_percent( gch->mana, gch->max_mana ),
+            gmcp_percent( gch->move, gch->max_move ),
+            gch->leader == NULL ? "true" : "false",
+            gch->in_room == ch->in_room ? "true" : "false",
+            gch == ch ? "true" : "false" );
+        toc_strlcat( json, number, sizeof(json) );
+        count++;
+    }
+    toc_strlcat( json, "]}", sizeof(json) );
+
+    if ( count < 2 )
+        toc_strlcpy( json, "{\"members\":[]}", sizeof(json) );
+
+    hash = gmcp_room_hash( json );
+    if ( d->gmcp_group_valid && d->gmcp_last_group_hash == hash )
+        return;
+
+    telnet_send_gmcp( d, "Char.Group", json );
+    d->gmcp_last_group_hash = hash;
+    d->gmcp_group_valid = true;
 }
 
 

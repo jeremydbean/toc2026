@@ -93,6 +93,25 @@ class GmcpPayloadTests(unittest.TestCase):
         self.assertIn("can_see( ch, victim )", body)
         self.assertIn("gmcp_percent", body)
 
+    def test_the_lag_feed_sends_on_change_not_every_pulse(self) -> None:
+        """A lag bar that was told the wait four times a second would
+        flood the link; it is sent only when the wait rises or clears."""
+        body = function_body(self.gmcp, "void gmcp_send_lag(")
+        self.assertIn("ch->wait", body)
+        self.assertIn("PULSE_PER_SECOND", body)
+        # Immortals are never held, so they are sent no lag.
+        self.assertIn("IS_IMMORTAL", body)
+        # The guard is "increased, or cleared from non-zero", not "differs".
+        self.assertIn("> d->gmcp_last_wait", body)
+
+    def test_the_group_feed_is_players_and_needs_two(self) -> None:
+        """A party panel: real group members only, and never a list of
+        one, which is just you."""
+        body = function_body(self.gmcp, "void gmcp_send_group(")
+        self.assertIn("is_same_group", body)
+        self.assertIn("count < 2", body)
+        self.assertIn(r'\"leader\"', body)
+
     def test_room_chars_skips_you_and_what_you_cannot_see(self) -> None:
         body = function_body(self.gmcp, "void gmcp_send_chars(")
         self.assertIn("rch == ch || !can_see( ch, rch )", body)

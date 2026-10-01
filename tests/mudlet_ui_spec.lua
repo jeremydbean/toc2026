@@ -446,5 +446,75 @@ check("and its direction", special[1].from == 15068 and special[1].to == 30200)
 check("a link to a room not on the map is skipped",
   special[2].to == 2, special[2] and special[2].to)
 
+-- ------------------------------------------------ the lag bar
+do
+  local vals = {}
+  tocMudlet.ui.lag = { setValue = function(_, cur, max) vals[#vals + 1] = { cur, max } end }
+  gmcp.Char = gmcp.Char or {}
+  gmcp.Char.Lag = { ms = 2000 }
+  tocMudlet.onLag()
+  check("a fresh lag fills the bar",
+    vals[#vals] and vals[#vals][1] == 2000, vals[#vals] and vals[#vals][1])
+  gmcp.Char.Lag = { ms = 0 }
+  tocMudlet.onLag()
+  check("zero lag empties the bar",
+    vals[#vals] and vals[#vals][1] == 0, vals[#vals] and vals[#vals][1])
+end
+
+-- ------------------------------------------------ the group panel
+do
+  local g = console()
+  tocMudlet.ui.group = g
+  gmcp.Char.Group = { members = {
+    { name = "Tyrant", level = 50, hp = 90, mana = 80, move = 70,
+      leader = true, here = true, you = true },
+    { name = "Milenko", level = 52, hp = 20, mana = 50, move = 60,
+      leader = false, here = false },
+  } }
+  tocMudlet.onGroup()
+  local gt = text(g)
+  check("the group lists each member",
+    gt:find("Tyrant") and gt:find("Milenko"), gt)
+  check("the leader is marked", gt:find("%*Tyrant") ~= nil, gt)
+  gmcp.Char.Group = { members = {} }
+  tocMudlet.onGroup()
+  check("a solo player sees no group",
+    text(g):find("Not in a group") ~= nil, text(g))
+end
+
+-- ------------------------------------------------ the enemy gauge
+do
+  local ev = {}
+  tocMudlet.ui.enemy = { setValue = function(_, _, _, lbl) ev[#ev + 1] = lbl or "" end }
+  tocMudlet.ui.target = console()
+  gmcp.Char.Target = { fighting = true, name = "a cityguard",
+                       level = 10, percent = 40 }
+  tocMudlet.onTarget()
+  check("the enemy gauge shows the target",
+    (ev[#ev] or ""):find("cityguard") ~= nil, ev[#ev])
+  gmcp.Char.Target = { fighting = false }
+  tocMudlet.onTarget()
+  check("no target clears the enemy gauge",
+    (ev[#ev] or ""):find("NO TARGET") ~= nil, ev[#ev])
+end
+
+-- ------------------------------------------------ the buffs pane
+do
+  local b = console()
+  tocMudlet.ui.buffs = b
+  tocMudlet.ui.affects = { echo = function() end }
+  gmcp.Char.Affects = { affects = {
+    { name = "bless", duration = 10 },
+    { name = "sanctuary", duration = 4 },
+    { name = "shadowmeld", duration = -1 },
+  } }
+  tocMudlet.onAffects()
+  local bt = text(b)
+  check("the buffs pane lists each spell",
+    bt:find("bless") and bt:find("sanctuary"), bt)
+  check("a permanent affect reads on",
+    bt:find("shadowmeld") ~= nil and bt:find("on") ~= nil, bt)
+end
+
 print(failures == 0 and "ALL PASS" or (failures .. " FAILED"))
 os.exit(failures == 0 and 0 or 1)

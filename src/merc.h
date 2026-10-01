@@ -565,6 +565,9 @@ struct  descriptor_data
     bool                gmcp_chars_valid;
     bool                gmcp_items_valid;
     uint32_t            gmcp_last_room_hash;
+    int                 gmcp_last_wait;     /* Char.Lag: last wait sent */
+    uint32_t            gmcp_last_group_hash;
+    bool                gmcp_group_valid;
     /*
      * MCCP2 output compression. Held as void * so <zlib.h> does not have to
      * be pulled into merc.h, which every translation unit includes.
@@ -2728,6 +2731,8 @@ void    gmcp_send_target   ( DESCRIPTOR_DATA *d );
 void    gmcp_send_online   ( DESCRIPTOR_DATA *d );
 void    gmcp_send_chars    ( DESCRIPTOR_DATA *d );
 void    gmcp_send_items    ( DESCRIPTOR_DATA *d );
+void    gmcp_send_lag      ( DESCRIPTOR_DATA *d );
+void    gmcp_send_group    ( DESCRIPTOR_DATA *d );
 void    gmcp_send_achievement ( CHAR_DATA *ch, const char *title,
                              const char *description, int points,
                              int total );

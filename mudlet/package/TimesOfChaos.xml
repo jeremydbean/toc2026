@@ -54,7 +54,7 @@ mudlet.mapper_script = true
 tocMudlet = tocMudlet or {}
 if type(tocMudlet.teardown) == "function" then pcall(tocMudlet.teardown) end
 
-tocMudlet.version = "1.4.0"
+tocMudlet.version = "1.5.0"
 tocMudlet.handlers = {}
 tocMudlet.ui = {}
 tocMudlet.lastRoom = nil
@@ -77,6 +77,12 @@ local P = {
   mana1 = "#1e3a8a", mana2 = "#3b82f6",
   move1 = "#14532d", move2 = "#22c55e",
   exp1 = "#713f12", exp2 = "#eab308",
+  -- Lag drains amber; the enemy bar is a colour of its own so it is
+  -- never read as your own health at a glance.
+  lag1 = "#78350f", lag2 = "#f59e0b",
+  enemy1 = "#4c1d95", enemy2 = "#a855f7",
+  accent = "#8fd3ff",
+  good = "#4ade80", bad = "#f87171", warn = "#fbbf24",
 }
 
 local DIR_OFFSET = {
@@ -676,6 +682,26 @@ function tocMudlet.onVitals()
     tocMudlet.ui.exp:setValue(exp, math.max(1, maxexp),
       string.format("EXP  %d to level", toLevel))
   end
+
+  -- Low-health warning: the HP gauge turns its danger colour at or
+  -- below a quarter, and recovers above it. One edge-triggered beep so
+  -- a steady low bar does not nag every tick.
+  local hp = number(vitals.hp or vitals.health)
+  local maxhp = math.max(1, number(vitals.maxhp or vitals.maxhealth, 1))
+  local pct = hp / maxhp * 100
+  if tocMudlet.ui.hp then
+    styleGauge(tocMudlet.ui.hp, pct <= 25 and "#3f0d0d" or P.hp1,
+      pct <= 25 and "#ff3b3b" or P.hp2)
+  end
+  if pct <= 25 and not tocMudlet.lowHp then
+    tocMudlet.lowHp = true
+    if tocMudlet.alertsOn ~= false then
+      cecho("\n<red>*** LOW HEALTH ***<reset>\n")
+      if raiseEvent then pcall(raiseEvent, "tocMudlet.lowHealth", hp, maxhp) end
+    end
+  elseif pct > 35 then
+    tocMudlet.lowHp = false
+  end
 end
 
 -- decho wants decimal <R,G,B>; the palette is hex, so it is converted
@@ -757,6 +783,20 @@ function tocMudlet.onChannel()
   if chatWants(tocMudlet.chatFilter, line.channel or "") then
     tocMudlet.ui.chat:decho(rendered)
   end
+
+  -- A tell arriving while you are not looking at the Tells tab lights
+  -- it up, so a private message is not missed behind another pane.
+  if (line.channel or "") == "tell" and tocMudlet.chatFilter ~= "tells" then
+    tocMudlet.unreadTells = true
+    local tab = tocMudlet.ui.tabs and tocMudlet.ui.tabs.tells
+    if tab then
+      pcall(function()
+        tab:echo(string.format(
+          [[<center><span style="color:%s">Tells &bull;</span></center>]],
+          P.accent))
+      end)
+    end
+  end
 end
 
 -- The bottom pane is four tabs over three consoles: Chat and Tells
@@ -764,7 +804,11 @@ end
 -- same stream read two ways.
 function tocMudlet.showPane(which)
   local panes = { chat = tocMudlet.ui.chat, here = tocMudlet.ui.here,
-                  items = tocMudlet.ui.items }
+                  items = tocMudlet.ui.items, buffs = tocMudlet.ui.buffs,
+                  group = tocMudlet.ui.group }
+
+  -- Opening a tab is reading it, so it stops calling for attention.
+  if which == "tells" then tocMudlet.unreadTells = false end
 
   if which == "tells" or which == "chat" then
     tocMudlet.chatFilter = which
@@ -825,6 +869,41 @@ function tocMudlet.onAffects()
 
   tocMudlet.ui.affects:echo(table.concat(parts,
     string.format([[<span style="color:%s"> · </span>]], P.border)))
+
+  -- The Buffs pane is the same list in full: every affect with a
+  -- countdown bar, longest shown as a steady "on". A text bar, because
+  -- the pane is a console; it is the one place to see at a glance how
+  -- long each spell has left.
+  if tocMudlet.ui.buffs then
+    tocMudlet.ui.buffs:clear()
+    if #list == 0 then
+      tocMudlet.ui.buffs:decho(string.format(
+        "<%s>No spells on you.\n", rgbOf(P.muted)))
+    else
+      -- Scale the bars against the longest finite duration present, so
+      -- they are comparable without pretending to a fixed maximum.
+      local longest = 1
+      for _, a in ipairs(list) do
+        local d = tonumber(a.duration) or 0
+        if d > longest then longest = d end
+      end
+      for _, a in ipairs(list) do
+        local d = tonumber(a.duration) or 0
+        local name = tostring(a.name or "?"):gsub("<", "("):sub(1, 14)
+        if d < 0 then
+          tocMudlet.ui.buffs:decho(string.format(
+            "<%s>%-14s <%s>on\n", rgbOf(P.text), name, rgbOf(P.good)))
+        else
+          local fill = math.max(0, math.min(10, math.floor(d / longest * 10)))
+          local col = d <= 5 and P.warn or P.good
+          tocMudlet.ui.buffs:decho(string.format(
+            "<%s>%-14s <%s>%s<%s>%s <%s>%d\n",
+            rgbOf(P.text), name, rgbOf(col), string.rep("|", fill),
+            rgbOf(P.border), string.rep("|", 10 - fill), rgbOf(P.muted), d))
+        end
+      end
+    end
+  end
 end
 
 function tocMudlet.onQuest()
@@ -918,10 +997,18 @@ function tocMudlet.onTarget()
     tocMudlet.ui.target:echo(string.format(
       [[<span style="color:%s">Not fighting</span>]], P.muted) ..
       (last and ("<br>" .. last) or ""))
+    if tocMudlet.ui.enemy then
+      tocMudlet.ui.enemy:setValue(0, 1, "NO TARGET")
+    end
     return
   end
 
   local percent = math.max(0, math.min(100, tonumber(target.percent) or 0))
+  if tocMudlet.ui.enemy then
+    local name = tostring(target.name or "TARGET"):gsub("<", "(")
+    tocMudlet.ui.enemy:setValue(percent, 100,
+      string.format("%.12s %d%%", name, percent))
+  end
   local colour = percent <= 25 and "#ff6e6e"
     or percent <= 60 and "#ff9f6e" or "#9fe870"
   -- A bar drawn in text, because a Geyser gauge here would need its
@@ -935,6 +1022,80 @@ function tocMudlet.onTarget()
     P.text, html(target.name or "?"), colour, string.rep("|", filled),
     P.border, string.rep("|", 10 - filled), percent) ..
     (now and ("<br>" .. now) or ""))
+end
+
+-- The lag bar. The game sends the remaining wait in milliseconds only
+-- when it changes; between messages a 10/sec timer drains the bar on
+-- its own, so it reads as a smooth countdown rather than a step. Zero
+-- empties it and says READY; anything above fills it amber.
+tocMudlet.lag = { left = 0, span = 1, timer = nil }
+local LAG_STEP_MS = 100
+
+function tocMudlet.lagTick()
+  local g = tocMudlet.ui.lag
+  if not g then return end
+  if tocMudlet.lag.left <= 0 then
+    tocMudlet.lag.left = 0
+    g:setValue(0, 1, "")
+    if tocMudlet.lag.timer and killTimer then
+      killTimer(tocMudlet.lag.timer)
+    end
+    tocMudlet.lag.timer = nil
+    return
+  end
+  g:setValue(tocMudlet.lag.left, math.max(1, tocMudlet.lag.span),
+    string.format("%.1fs", tocMudlet.lag.left / 1000))
+end
+
+function tocMudlet.onLag()
+  local lag = gmcp and gmcp.Char and gmcp.Char.Lag
+  if type(lag) ~= "table" or not tocMudlet.ui.lag then return end
+  local ms = math.max(0, tonumber(lag.ms) or 0)
+  tocMudlet.lag.left = ms
+  tocMudlet.lag.span = ms > 0 and ms or 1
+  tocMudlet.lagTick()
+  -- Drain between server messages by counting the bar down ourselves;
+  -- the next Char.Lag is authoritative and resets it.
+  if ms > 0 and not tocMudlet.lag.timer and tempTimer then
+    local function arm()
+      tocMudlet.lag.timer = tempTimer(LAG_STEP_MS / 1000, function()
+        tocMudlet.lag.left = tocMudlet.lag.left - LAG_STEP_MS
+        tocMudlet.lagTick()
+        if tocMudlet.lag.left > 0 then arm() else tocMudlet.lag.timer = nil end
+      end)
+    end
+    arm()
+  end
+end
+
+-- The party panel: one line per member, their level and how they are
+-- holding up, the leader marked and anyone in another room dimmed. A
+-- solo player is sent an empty list and the panel says so.
+function tocMudlet.onGroup()
+  local group = gmcp and gmcp.Char and gmcp.Char.Group
+  if type(group) ~= "table" or not tocMudlet.ui.group then return end
+  local members = type(group.members) == "table" and group.members or {}
+  tocMudlet.ui.group:clear()
+  if #members == 0 then
+    tocMudlet.ui.group:decho(string.format(
+      "<%s>Not in a group.\n", rgbOf(P.muted)))
+    return
+  end
+  tocMudlet.ui.group:decho(string.format(
+    "<%s>%-12s %3s %4s %4s %4s\n", rgbOf(P.muted),
+    "WHO", "LVL", "HP", "MN", "MV"))
+  for _, m in ipairs(members) do
+    local hp = tonumber(m.hp) or 0
+    local hpcol = hp <= 25 and P.bad or hp <= 60 and P.warn or P.good
+    local nameCol = m.here and (m.you and P.accent or P.text) or P.muted
+    local tag = m.leader and "*" or " "
+    local name = (tag .. tostring(m.name or "?")):gsub("<", "("):sub(1, 12)
+    tocMudlet.ui.group:decho(string.format(
+      "<%s>%-12s <%s>%3d <%s>%3d%% <%s>%3d%% <%s>%3d%%\n",
+      rgbOf(nameCol), name, rgbOf(P.muted), tonumber(m.level) or 0,
+      rgbOf(hpcol), hp, rgbOf(P.mana2), tonumber(m.mana) or 0,
+      rgbOf(P.move2), tonumber(m.move) or 0))
+  end
 end
 
 -- Who else is on. The game decides who you may know about -- never a
@@ -1117,21 +1278,41 @@ function tocMudlet.buildUI()
     "background:%s;border-bottom:1px solid %s;", P.panel, P.border))
 
   tocMudlet.ui.gauges = Geyser.HBox:new({
-    name = "tocMudlet.gauges", x = 8, y = 8,
-    width = "100%-376px", height = 42,
+    name = "tocMudlet.gauges", x = 8, y = 6,
+    width = "100%-376px", height = 34,
   })
   tocMudlet.ui.hp = Geyser.Gauge:new({name = "tocMudlet.hp"}, tocMudlet.ui.gauges)
   tocMudlet.ui.mana = Geyser.Gauge:new({name = "tocMudlet.mana"}, tocMudlet.ui.gauges)
   tocMudlet.ui.move = Geyser.Gauge:new({name = "tocMudlet.move"}, tocMudlet.ui.gauges)
   tocMudlet.ui.exp = Geyser.Gauge:new({name = "tocMudlet.exp"}, tocMudlet.ui.gauges)
+  -- The enemy beside your own bars, the way a fight is actually read.
+  tocMudlet.ui.enemy = Geyser.Gauge:new({name = "tocMudlet.enemy"}, tocMudlet.ui.gauges)
   styleGauge(tocMudlet.ui.hp, P.hp1, P.hp2)
   styleGauge(tocMudlet.ui.mana, P.mana1, P.mana2)
   styleGauge(tocMudlet.ui.move, P.move1, P.move2)
   styleGauge(tocMudlet.ui.exp, P.exp1, P.exp2)
+  styleGauge(tocMudlet.ui.enemy, P.enemy1, P.enemy2)
   setGauge(tocMudlet.ui.hp, 0, 1, "HP")
   setGauge(tocMudlet.ui.mana, 0, 1, "MANA")
   setGauge(tocMudlet.ui.move, 0, 1, "MOVE")
   tocMudlet.ui.exp:setValue(0, 1, "EXP")
+  tocMudlet.ui.enemy:setValue(0, 1, "NO TARGET")
+
+  -- When you can act again: a thin bar under the vitals that empties as
+  -- the lag runs out. Empty means ready. The game sends the remainder
+  -- only when it changes; the bar drains itself in between.
+  tocMudlet.ui.lag = Geyser.Gauge:new({
+    name = "tocMudlet.lag", x = 8, y = 43,
+    width = "100%-376px", height = 12,
+  })
+  styleGauge(tocMudlet.ui.lag, P.lag1, P.lag2)
+  pcall(function()
+    tocMudlet.ui.lag.text:setStyleSheet(string.format([[
+      color: %s; font-family: "DejaVu Sans Mono", monospace;
+      font-size: 7pt; font-weight: 600; qproperty-alignment: 'AlignCenter';]],
+      P.text))
+  end)
+  tocMudlet.ui.lag:setValue(0, 1, "")
 
   tocMudlet.ui.rightBackground = Geyser.Label:new({
     name = "tocMudlet.rightBackground", x = -360, y = 0,
@@ -1203,7 +1384,7 @@ function tocMudlet.buildUI()
   local paneGeometry = { x = -350, y = "50%", width = 340,
                          height = "50%-80px", autoWrap = true,
                          scrollBar = true, fontSize = 9 }
-  for _, name in ipairs({ "chat", "here", "items" }) do
+  for _, name in ipairs({ "chat", "here", "items", "buffs", "group" }) do
     local spec = {}
     for key, value in pairs(paneGeometry) do spec[key] = value end
     spec.name = "tocMudlet." .. name
@@ -1220,7 +1401,8 @@ function tocMudlet.buildUI()
     name = "tocMudlet.tabBar", x = -350, y = -76, width = 340, height = 24,
   })
   for _, tab in ipairs({ { "chat", "Chat" }, { "tells", "Tells" },
-                         { "here", "Here" }, { "items", "Items" } }) do
+                         { "here", "Here" }, { "items", "Items" },
+                         { "buffs", "Buffs" }, { "group", "Group" } }) do
     local label = Geyser.Label:new(
       { name = "tocMudlet.tab." .. tab[1] }, tabBar)
     label:echo(string.format(
@@ -1300,7 +1482,7 @@ function tocMudlet.subscribe()
   -- being sent the wrong thing by something that does.
   sendGMCP('Core.Supports.Add ["Char 1","Char.Vitals 1","Char.Status 1",' ..
     '"Char.Affects 1","Char.Quest 1","Char.Target 1","Char.Items 1",' ..
-    '"Char.Online 1",' ..
+    '"Char.Online 1","Char.Lag 1","Char.Group 1",' ..
     '"Char.Achievement 1","Room 1","Room.Info 1","Room.Chars 1",' ..
     '"Comm 1","Comm.Channel 1"]')
 end
@@ -1332,6 +1514,9 @@ end
 function tocMudlet.refresh()
   if gmcp and gmcp.Char and gmcp.Char.Vitals then tocMudlet.onVitals() end
   if gmcp and gmcp.Char and gmcp.Char.Status then tocMudlet.onStatus() end
+  if gmcp and gmcp.Char and gmcp.Char.Affects then tocMudlet.onAffects() end
+  if gmcp and gmcp.Char and gmcp.Char.Group then tocMudlet.onGroup() end
+  if gmcp and gmcp.Char and gmcp.Char.Lag then tocMudlet.onLag() end
   if gmcp and gmcp.Room and gmcp.Room.Info then tocMudlet.onRoomInfo() end
   tocMudlet.nudgeMap()
 end
@@ -1438,6 +1623,8 @@ function tocMudlet.install()
   register("gmcp.Char.Target", function() tocMudlet.onTarget() end)
   register("gmcp.Char.Online", function() tocMudlet.onOnline() end)
   register("gmcp.Char.Items", function() tocMudlet.onItems() end)
+  register("gmcp.Char.Lag", function() tocMudlet.onLag() end)
+  register("gmcp.Char.Group", function() tocMudlet.onGroup() end)
   register("gmcp.Char.Achievement", function() tocMudlet.onAchievement() end)
   register("gmcp.Room.Chars", function() tocMudlet.onChars() end)
   register("gmcp.Comm.Channel", function() tocMudlet.onChannel() end)
