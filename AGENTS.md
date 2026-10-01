@@ -386,6 +386,11 @@ Commands added or revived in September 2026, and where they live:
   every return path.
 - Preserve command-table order semantics. Prefix matching can make an earlier
   entry win.
+- A word that is **exactly** a social's name is that social, even when
+  it is the start of a longer command: `interpret()` drops a prefix
+  command match for an exact social. POKE was unusable for years as an
+  abbreviation of POKER. `tests/test_social_lookup.py` lists every
+  social a longer command would otherwise hide.
 - Password-bearing commands must not be logged.
 - **`fread_char` dispatches on the first letter of the key.** A new
   persisted field's `KEY(...)` has to sit in the `case` for that letter or
@@ -1680,13 +1685,34 @@ or found broken live; keep them.
 - **Damage is recorded at the subtraction** in `damage()`, beside
   `is_invulnerable`, and blows turned aside by the four defensive
   checks just above it, through `dummy_defended()`.
+- **The default is a fair fight, and the default is what you get.**
+  Twenty-five rounds and a bell, against a dummy at your level that
+  dodges, parries, blocks and hits back. `DUMMY DEFENDS NO` and
+  `DUMMY FIGHTS NO` take its part out for measuring damage alone --
+  separate settings, said yes or no, never toggled. The settings are
+  shared statics, so `dummy_left_yard()` puts them back to standard
+  when the yard empties of players; otherwise the next person to walk
+  in and simply attack inherited the last fighter's endless,
+  defenceless setup.
+- **Every change says whether runs still count.** `do_dummy` is a thin
+  wrapper that watches the configuration counter around
+  `dummy_command()`, so a new setting cannot forget to say it.
+  `dummy_unstandard_reason()` is the one list of what "standard" means,
+  one named reason per setting.
 
 The **benchmark board** is `area/dpsboard.txt`: every character's best
 standard run, one line each. The standard run is the dummy exactly as
 DUMMY RESET leaves it, at the runner's own level, reaching the bell at
-fifty rounds; a configuration counter noted at the first blow refuses a
-run during which anybody changed the dummy. Immortals are not ranked,
-by trust. The file is runtime state and has to be named as such in
+`DUMMY_BENCH_ROUNDS` (25) rounds, against a dummy that defends itself
+and fights back; a configuration counter noted at the first blow refuses a
+run during which anybody changed the dummy. Immortals are not ranked
+-- **by level, not trust**, the one deliberate exception to the rule
+under Permission Helpers: a player trusted with staff commands fights at
+their own level and pays lag like anyone else, so their run is real.
+The board file starts `#standard N` (`DPSBOARD_STANDARD`); a board
+written under another definition of the standard fight is set aside on
+load rather than ranked against runs it cannot be compared with. Bump
+it whenever the standard changes. The file is runtime state and has to be named as such in
 **five** places -- `.gitignore`, `toc-state-sync`'s `STATE_FILES`,
 `toc-deploy`'s `runtime_txt`, `validate.yml`'s `paths-ignore`, and the
 copy filter in `tests/live_mud.py` -- and a test checks all five.

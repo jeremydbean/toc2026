@@ -819,7 +819,7 @@ struct  kill_data
 
 /* How many rounds a benchmark run lasts unless you say otherwise --
    and the only length the leaderboard ranks. */
-#define DUMMY_BENCH_ROUNDS 50
+#define DUMMY_BENCH_ROUNDS 25
 
 /*
  * The benchmark leaderboard.  One line per character holding their
@@ -829,6 +829,12 @@ struct  kill_data
  * tracked, never restored from a checkout, synced by toc-state-sync.
  */
 #define DPSBOARD_FILE      "../area/dpsboard.txt"
+/* Which definition of the standard fight the board holds runs
+   against. 1 was fifty rounds against a dummy that stood still; 2
+   is twenty-five rounds of a fair fight. A
+   board written under another number is set aside on load rather
+   than ranked against runs it cannot be compared with. */
+#define DPSBOARD_STANDARD  2
 #define DPSBOARD_MAX       500
 #define DPSBOARD_SHOWN     10
 
@@ -2700,6 +2706,7 @@ void    dummy_defended     ( CHAR_DATA *ch, CHAR_DATA *victim,
                              int dt, int how );
 bool    dummy_skips_defence( CHAR_DATA *victim );
 bool    dummy_round_limit  ( CHAR_DATA *ch, CHAR_DATA *victim );
+bool    dummy_holds_fire   ( CHAR_DATA *ch );
 void    dummy_left_yard    ( CHAR_DATA *ch );
 bool    dummy_blocks_improve( CHAR_DATA *ch );
 long    dummy_typical_hp   ( int level );

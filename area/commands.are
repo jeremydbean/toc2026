@@ -241,9 +241,11 @@ Syntax: dummy                  the menu, and what it is set to
         dummy hits <type>      what it should hit you with
         dummy magic <kind>     what it should cast at you, or none
         dummy haste            an extra attack a round, on or off
-        dummy bench [rounds]   a set number of rounds, then the bell
-        dummy endless          no bell, and it defends itself again
-        dummy reset            the standard run, and the numbers cleared
+        dummy rounds <n>       n rounds, then the bell
+        dummy endless          no bell; DUMMY REPORT ends the run
+        dummy defends yes|no   whether it dodges, parries and blocks
+        dummy fights yes|no    whether it hits you back
+        dummy reset            back to the standard, ranked fight
         dummy report           stop early and read the numbers
         dummy leaderboard      the benchmark leaderboard
         leave ring             step back out to the sparring room
@@ -283,20 +285,39 @@ THE RULES OF THE YARD
   Nothing is learned there.  Your skills and spells do not improve
   while you are in the yard, whatever you do.
 
-THE STANDARD RUN
-  By default every run is a benchmark: fifty rounds, then a bell, and
-  for those fifty rounds the dummy stands still - it does not dodge,
-  parry, block or duck.  Your own defences still work; that is your
-  armour, and measuring it is the other half of why you are there.
+THE STANDARD FIGHT - THE ONLY ONE THAT IS RANKED
+  By default every run is the standard fight: walk in, KILL DUMMY, and
+  that is the ranked run - twenty-five rounds, then a bell, against a dummy at
+  your own level that fights normally.  It dodges,
+  parries and blocks, and it hits you back.  It is worth what a mobile
+  of your level really averages, measured across every mobile in the
+  world, so the time-to-kill in the report means something.
 
-  The dummy starts at your own level and is worth what a mobile of that
-  level really averages, measured across every mobile in the world, so
-  the time-to-kill in the report means something.
+  The leaderboard ranks the standard fight and nothing else.  A run
+  counts only if every one of these holds, from the first blow to the
+  bell:
 
-  The standard run is the dummy exactly as DUMMY RESET leaves it, at your
-  level, for fifty rounds.  Only that run is ranked, because every
-  setting can move the answer, and a board that let them vary would rank
-  the settings rather than the gear.  DUMMY LEADERBOARD shows the board.
+    - it is twenty-five rounds and reaches the bell
+    - the dummy is your own level
+    - it defends itself and it fights back
+    - its shape, damage type, spell and haste are as DUMMY RESET
+      leaves them
+
+  Change any of them - a longer or shorter fight, an endless one, a
+  dummy that will not hit you or will not defend itself, anything at
+  all - and the run is not ranked.  Stopping early with DUMMY REPORT is
+  not ranked either, and neither is a run during which somebody
+  changed the dummy.  Immortals are never ranked; trusted players are.
+
+  Whatever you change lasts while you are in the yard.  When the yard
+  empties the dummy goes back to the standard fight, so whoever comes in
+  next and simply attacks it gets the ranked run, not your settings.
+
+  You are never left guessing: the menu has a Ranked line, every change
+  you make tells you straight away whether runs will still count, and
+  an unranked run says exactly why at the bell.  DUMMY RESET puts
+  everything back to the standard fight.  DUMMY LEADERBOARD shows the
+  board.
 
 CHANGING IT
   Shapes        soft, armored, evasive, brutal
@@ -312,9 +333,17 @@ CHANGING IT
   something fast.  It casts once a pulse, always the same spell: a
   reading you cannot reproduce is not a measurement.
 
-  DUMMY BENCH <n> runs for n rounds instead of fifty.  DUMMY ENDLESS has
-  no bell at all and lets it defend itself again - a fairer model of a
-  real fight, ended with DUMMY REPORT.  Neither is ranked.
+  To measure your damage alone, take the dummy's own part out of the
+  fight.  DUMMY DEFENDS NO makes it stand still: it stops dodging,
+  parrying, blocking and ducking, so every blow you throw is one it
+  takes.  DUMMY FIGHTS NO makes it stop hitting you, spells included.
+  Your own defences still work either way - that is your armour.
+
+  DUMMY ROUNDS <n> makes the fight n rounds long instead of twenty-five, and
+  DUMMY ENDLESS takes the bell away so the run lasts until DUMMY REPORT.
+
+  None of these is ranked.  They are for finding things out; the
+  standard fight is for comparing yourself with everybody else.
 
   None of this can be changed in the middle of a run: a reading blended
   from two opponents is worse than none.  DUMMY RESET is the exception -
@@ -350,15 +379,29 @@ See also: LEADERBOARD, LEAVE, COMPARE, LORE, DAMAGENUMBERS
 0 LEADERBOARD BENCHMARK~
 Syntax: dummy leaderboard
 
-The training yard's benchmark board: the best fifty-round standard run
+The training yard's benchmark board: the best twenty-five-round standard run
 each character has posted, best first.  It shows the top ten, and tells
 you where you stand among everybody who has ever run it.
 
-A run is ranked when it is the standard one - the dummy exactly as DUMMY
-RESET leaves it, at your own level - and it reaches the bell.  Stop it
-early with DUMMY REPORT, change the dummy during it, or run it at any
-other length and it is not ranked; the game tells you which.  Immortals
-are not ranked.
+ONLY THE STANDARD FIGHT IS RANKED.  That is the default fight in the
+training yard: twenty-five rounds against a dummy at your own level that
+defends itself and hits back, with every setting exactly as DUMMY RESET
+leaves it, run all the way to the bell.
+
+Anything else is not ranked:
+
+  - a longer or shorter fight (DUMMY ROUNDS), or an endless one
+  - a dummy that does not defend itself (DUMMY DEFENDS NO)
+  - a dummy that does not hit you (DUMMY FIGHTS NO)
+  - any other change: its level, shape, damage type, spell or haste
+  - stopping early with DUMMY REPORT
+  - somebody changing the dummy in the middle of your run
+  - an immortal's run - though a player trusted with staff commands is
+    ranked like anybody else, since they fight at their own level
+
+The game tells you which of these applies: the dummy's menu has a
+Ranked line, every change you make says whether runs still count, and
+an unranked run names the reason at the bell.
 
 When a ranked run ends you are told whether it is a personal best, your
 place on the board, and how far ahead the record is.  Post the best run
@@ -972,13 +1015,22 @@ command named here for the detail.
   DUMMY.  HELP DUMMY explains all of it.  The yard takes one fighter
   at a time, so nobody else can walk into your run.
 
-  Every run is a ranked benchmark by default: fifty rounds, then a
-  bell, against a dummy at your own level that stands still and does
-  not dodge, parry or block.  Your best goes on a leaderboard - DUMMY
-  LEADERBOARD - and when a run ends you are told whether it was a
-  personal best, where you stand among everybody who has run it, and
-  how far the record is.  Post the best run anybody has and you earn
-  Top of the Board.
+  Every run is the standard fight by default: twenty-five rounds, then a
+  bell, against a dummy at your own level that fights normally - it
+  dodges, parries, blocks and hits back.  Your best goes on a
+  leaderboard - DUMMY LEADERBOARD - and when a run ends you are told
+  whether it was a personal best, where you stand among everybody who
+  has run it, and how far the record is.  Post the best run anybody has
+  and you earn Top of the Board.
+
+  Just attacking the dummy gives you the standard fight: when the yard
+  empties, it goes back to it, whatever the last fighter set.
+
+  Only the standard fight is ranked.  DUMMY DEFENDS NO and DUMMY FIGHTS
+  NO take the dummy's own part out so you can measure your damage
+  alone, and DUMMY ROUNDS and DUMMY ENDLESS change the length - but
+  changing any setting at all means the run is not ranked, and the game
+  says so the moment you change it.
 
   Neither of you can die in the yard.  When a run ends you are put back
   the way you were when it began - hit points, mana and moves - not
@@ -999,6 +1051,15 @@ command named here for the detail.
 
   The quest master no longer asks you to kill the training dummy, which
   cannot die.
+
+  POKE pokes again.  It was taken as the start of the longer command
+  POKER, so the social could never be used.  A word that is exactly a
+  social's name is now that social.
+
+  COMBINE is back.  It switches your inventory between the combined
+  list - (3) a big pot pie - and the long one, and AUTOLIST shows which
+  you have.  It had been switched off while everything it controls
+  stayed on.  COMB is still the social, so type at least COMBI.
 
   Pyrotechnics now hits as hard as a fireball cast at your level.  It
   used to scale with your current hit points, which made it about three

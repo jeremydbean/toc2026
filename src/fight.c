@@ -394,6 +394,12 @@ void violence_update( void )
 	if ( dummy_round_limit( ch, victim ) )
 	    continue;
 
+	/* A training dummy told not to fight back stands and takes it:
+	   it stays in the fight, so the player's blows keep landing, but
+	   it never swings. */
+	if ( dummy_holds_fire( ch ) )
+	    continue;
+
 	if ( IS_AWAKE(ch) && ch->in_room == victim->in_room )
 	    multi_hit( ch, victim, TYPE_UNDEFINED );
 	else

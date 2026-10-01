@@ -106,7 +106,7 @@ class TrainingDummyTests(unittest.TestCase):
 
     def test_the_report_gives_both_directions_and_heals_both(self) -> None:
         body = self.dummy.split("static void dummy_report(", 1)[1]
-        body = body.split("\nvoid do_dummy(", 1)[0]
+        body = body.split("\nstatic void dummy_command(", 1)[0]
         self.assertIn("WHAT YOU DID", body)
         self.assertIn("WHAT IT DID TO YOU", body)
         self.assertIn("per second", body)
@@ -373,7 +373,7 @@ class TrainingDummyTests(unittest.TestCase):
 
     def test_both_directions_are_itemised(self) -> None:
         report = self.dummy.split("static void dummy_report(", 1)[1]
-        report = report.split("\nvoid do_dummy(", 1)[0]
+        report = report.split("\nstatic void dummy_command(", 1)[0]
         self.assertIn("dummy_itemise( ch, pc->dummy_out, dealt )", report)
         self.assertIn("dummy_itemise( ch, pc->dummy_in, taken )", report)
 
@@ -407,7 +407,9 @@ class TrainingDummyTests(unittest.TestCase):
         self.assertIn("!dummy_skips_defence( victim )", block)
         body = self.dummy.split("bool dummy_skips_defence(", 1)[1]
         body = body.split("\n}", 1)[0]
-        self.assertIn("dummy_bench", body)
+        # Its own setting now, not a side effect of the bell.
+        self.assertIn("!dummy_defends", body)
+        self.assertNotIn("dummy_bench", body)
         self.assertIn("is_training_dummy( victim )", body)
 
     def test_only_the_dummy_stops_defending(self) -> None:
@@ -450,9 +452,20 @@ class TrainingDummyTests(unittest.TestCase):
         the one a player should get without knowing to ask for it.
         """
         self.assertIn("static bool dummy_bench = true;", self.dummy)
-        self.assertIn("#define DUMMY_BENCH_ROUNDS 50", self.merc)
+        # Twenty-five, on the owner's word of 2026-10-01; it was fifty.
+        self.assertIn("#define DUMMY_BENCH_ROUNDS 25", self.merc)
+        help_text = read("area", "commands.are").replace("\r", "")
+        for topic in ("0 DUMMY TRAINING YARD~", "0 LEADERBOARD BENCHMARK~"):
+            body = help_text.split(topic, 1)[1].split("\n~", 1)[0]
+            self.assertNotIn("fifty", body.lower(), topic)
+            self.assertIn("twenty-five", body.lower(), topic)
+        self.assertNotIn("fifty", without_comments(self.dummy).lower())
         reset = without_comments(self.dummy).split("if ( is_reset )", 1)[1]
-        self.assertIn("dummy_bench = true", reset[:700])
+        # Through the one list of standard settings, shared with the
+        # yard emptying -- see test_an_empty_yard_goes_back_to_standard.
+        self.assertIn("dummy_settings_standard();", reset[:700])
+        standard = self.dummy.split("static void dummy_settings_standard(", 1)[1]
+        self.assertIn("dummy_bench        = true", standard.split("\n}", 1)[0])
         self.assertIn('!str_prefix( arg1, "endless" )', self.dummy)
 
     def test_bench_sets_rather_than_toggles(self) -> None:
@@ -468,7 +481,7 @@ class TrainingDummyTests(unittest.TestCase):
         """Per second moves with how long the rounds took; per round
         is the figure two benchmark runs can be compared on."""
         report = self.dummy.split("static void dummy_report(", 1)[1]
-        report = report.split("\nvoid do_dummy(", 1)[0]
+        report = report.split("\nstatic void dummy_command(", 1)[0]
         self.assertIn("per round", report)
         self.assertIn("dealt / rounds", report)
 
@@ -529,20 +542,35 @@ class TrainingDummyTests(unittest.TestCase):
     def test_only_the_standard_run_is_ranked(self) -> None:
         """Every setting can move the answer, so a board that let any
         of them vary would rank the settings rather than the gear."""
-        std = self.dummy.split("static bool dummy_run_is_standard(", 1)[1]
-        std = std.split("\n}", 1)[0]
-        for term in ("dummy_bench_rounds == DUMMY_BENCH_ROUNDS",
-                     "dummy_shape  == DUMMY_SHAPE_DEFAULT",
-                     "dummy_attack == DUMMY_ATTACK_DEFAULT",
-                     "dummy_spell  == DUMMY_SPELL_NONE", "!dummy_hasted",
-                     "dummy->level == ch->level"):
+        # Every setting is named, one reason each, so an unranked run
+        # can say which thing made it so.
+        std = self.dummy.split("static const char *dummy_unstandard_reason(",
+                               1)[1].split("\n}", 1)[0]
+        for term in ("!dummy_bench",
+                     "dummy_bench_rounds != DUMMY_BENCH_ROUNDS",
+                     "!dummy_defends", "!dummy_fights",
+                     "dummy_shape != DUMMY_SHAPE_DEFAULT",
+                     "dummy_attack != DUMMY_ATTACK_DEFAULT",
+                     "dummy_spell != DUMMY_SPELL_NONE", "dummy_hasted",
+                     "dummy->level != ch->level"):
             self.assertIn(term, std, term)
+        self.assertEqual(std.count("return \""), 9,
+                         "one named reason per setting")
+        run = self.dummy.split("static bool dummy_run_is_standard(", 1)[1]
+        self.assertIn("dummy_unstandard_reason( ch, dummy ) == NULL",
+                      run.split("\n}", 1)[0])
 
-    def test_immortals_are_not_ranked(self) -> None:
-        """By trust, the way every other staff test is asked."""
-        refusal = self.dummy.split("static const char *dummy_board_refusal(",
-                                   1)[1].split("\n}", 1)[0]
-        self.assertIn("IS_TRUSTED( ch, LEVEL_IMMORTAL )", refusal)
+    def test_immortals_are_not_ranked_but_trusted_players_are(self) -> None:
+        """By level, not trust -- the one place that deliberately does
+        not follow the staff-permission rule. A trusted player fights at
+        their own level and pays lag like anybody else, so their run is
+        a real one: the owner's ruling, 2026-10-01."""
+        refusal = without_comments(
+            self.dummy.split("static const char *dummy_board_refusal(",
+                             1)[1].split("\n}", 1)[0])
+        self.assertIn("IS_IMMORTAL( ch )", refusal)
+        self.assertNotIn("IS_TRUSTED", refusal)
+        self.assertNotIn("get_trust", refusal)
 
     def test_a_dummy_changed_mid_run_is_not_ranked(self) -> None:
         """The dummy is shared; anybody can change it under you."""
@@ -593,7 +621,7 @@ class TrainingDummyTests(unittest.TestCase):
         interp = read("src", "interp.c")
         self.assertNotIn('{ "leaderboard",', interp)
         self.assertNotIn("do_leaderboard", read("src", "interp.h"))
-        body = self.dummy.split("void do_dummy(", 1)[1]
+        body = self.dummy.split("static void dummy_command(", 1)[1]
         self.assertIn('!str_prefix( arg1, "leaderboard" )', body)
         # Ahead of the no-dummy-here check, so it works outside the yard.
         self.assertLess(body.index("dps_board_show( ch )"),
@@ -724,6 +752,111 @@ class TrainingDummyTests(unittest.TestCase):
         body = body.split("\n}", 1)[0]
         self.assertIn("QUEST_EXCLUDED_YARD", body)
         self.assertIn('#define QUEST_EXCLUDED_YARD     "dummy.are"', self.merc)
+
+    # ---------------------------------------------- a fair fight
+    def test_the_standard_fight_is_a_fair_one(self) -> None:
+        """The owner's ruling: by default the dummy dodges, parries,
+        blocks and hits back. Standing still is something you ask for."""
+        self.assertIn("static bool dummy_defends = true;", self.dummy)
+        self.assertIn("static bool dummy_fights  = true;", self.dummy)
+        reset = without_comments(self.dummy).split("if ( is_reset )", 1)[1]
+        self.assertIn("dummy_settings_standard();", reset[:800])
+        standard = self.dummy.split("static void dummy_settings_standard(", 1)[1]
+        standard = standard.split("\n}", 1)[0]
+        for setting in ("dummy_defends      = true", "dummy_fights       = true",
+                        "dummy_bench_rounds = DUMMY_BENCH_ROUNDS",
+                        "dummy_spell        = DUMMY_SPELL_NONE",
+                        "dummy_hasted       = false",
+                        "dummy_level_chosen = false"):
+            self.assertIn(setting, standard, setting)
+
+    def test_an_empty_yard_goes_back_to_standard(self) -> None:
+        """Somebody who simply walks in and attacks gets the standard
+        fight, not whatever the last fighter left it set to -- but only
+        once nobody is left in there, so an immortal stepping out does
+        not undo the setup of somebody still fighting."""
+        left = self.dummy.split("void dummy_left_yard(", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("dummy_settings_standard();", left)
+        self.assertIn("DUMMY_SHAPE_DEFAULT, DUMMY_ATTACK_DEFAULT", left)
+        self.assertIn("if ( !player_stays && dummy != NULL )", left)
+        self.assertIn("other != ch && !IS_NPC(other)", left)
+        # Reset whether or not a run was going: walking out of an idle
+        # yard leaves it for the next person too.
+        self.assertLess(left.index("dummy_started != 0"),
+                        left.index("dummy_settings_standard();"))
+        self.assertNotIn("||   ch->pcdata->dummy_started == 0", left)
+
+    def test_the_bell_no_longer_stands_it_still(self) -> None:
+        """Benchmarking and defencelessness used to be one setting;
+        they answer different questions."""
+        bench = without_comments(self.dummy).split(
+            '!str_prefix( arg1, "bench" )', 1)[1].split(
+            '!str_prefix( arg1, "endless" )', 1)[0]
+        self.assertNotIn("dummy_defends", bench)
+        self.assertNotIn("stops defending", bench)
+
+    def test_a_dummy_told_not_to_fight_never_swings(self) -> None:
+        """Skipped in violence_update before multi_hit, and its spell
+        is held too."""
+        loop = self.fight.split("void violence_update(", 1)[1]
+        loop = loop.split("\n}", 1)[0]
+        self.assertLess(loop.index("dummy_holds_fire( ch )"),
+                        loop.index("multi_hit( ch, victim"))
+        hold = self.dummy.split("bool dummy_holds_fire(", 1)[1]
+        self.assertIn("!dummy_fights && is_training_dummy( ch )",
+                      hold.split("\n}", 1)[0])
+        spec = self.dummy.rsplit("bool spec_training_dummy(", 1)[1]
+        self.assertIn("!dummy_fights", spec.split("\n}", 1)[0])
+
+    def test_the_two_settings_are_said_not_toggled(self) -> None:
+        """A toggle's reply can read as the opposite of what was asked
+        for, which is how DUMMY BENCH confused somebody once already."""
+        code = without_comments(self.dummy)
+        self.assertNotIn("dummy_defends = !dummy_defends", code)
+        self.assertNotIn("dummy_fights = !dummy_fights", code)
+        branch = code.split('!str_prefix( arg1, "defends" )', 1)[1][:2600]
+        for word in ('"yes"', '"no"', "dummy_config_epoch++"):
+            self.assertIn(word, branch, word)
+
+    def test_every_change_says_whether_runs_still_count(self) -> None:
+        """Nobody should find out at the bell that fifty rounds were
+        never going to count."""
+        wrapper = self.dummy.rsplit("void do_dummy( CHAR_DATA *ch", 1)[1]
+        wrapper = wrapper.split("\n}", 1)[0]
+        self.assertIn("dummy_command( ch, argument )", wrapper)
+        self.assertIn("dummy_config_epoch != before", wrapper)
+        self.assertIn("dummy_ranked_note( ch, dummy )", wrapper)
+        menu = self.dummy.split("static void dummy_menu(", 1)[1]
+        self.assertIn("Ranked", menu.split("\n}", 1)[0])
+
+    def test_an_unranked_run_names_its_reason(self) -> None:
+        refusal = self.dummy.split("static const char *dummy_board_refusal(",
+                                   1)[1].split("\n}", 1)[0]
+        self.assertIn("dummy_unstandard_reason( ch, dummy )", refusal)
+
+    def test_a_board_from_another_standard_is_set_aside(self) -> None:
+        """The first standard stood the dummy still; its runs cannot be
+        ranked against a fair fight."""
+        self.assertIn("#define DPSBOARD_STANDARD  2", self.merc)
+        save = self.dummy.split("static void dps_board_save(", 1)[1]
+        self.assertIn('"#standard %d\\n"', save.split("\n}", 1)[0])
+        load = self.dummy.split("static void dps_board_load(", 1)[1]
+        load = load.split("\n}", 1)[0]
+        self.assertIn('"#standard %d", &standard', load)
+        self.assertIn("int standard = 1;", load)
+        self.assertIn("standard != DPSBOARD_STANDARD", load)
+
+    def test_the_help_says_only_the_standard_fight_is_ranked(self) -> None:
+        help_text = read("area", "commands.are").replace("\r", "")
+        board = help_text.split("0 LEADERBOARD BENCHMARK~", 1)[1].split("\n~", 1)[0]
+        self.assertIn("ONLY THE STANDARD FIGHT IS RANKED", board)
+        for setting in ("DUMMY ROUNDS", "DUMMY DEFENDS NO", "DUMMY FIGHTS NO",
+                        "DUMMY REPORT"):
+            self.assertIn(setting, board, setting)
+        dummy = help_text.split("0 DUMMY TRAINING YARD~", 1)[1].split("\n~", 1)[0]
+        self.assertIn("THE ONLY ONE THAT IS RANKED", dummy)
+        self.assertIn("dummy defends yes|no", dummy)
+        self.assertIn("dummy fights yes|no", dummy)
 
     def test_the_session_is_not_persisted(self) -> None:
         """A training run is something you are doing, not something

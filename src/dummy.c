@@ -125,14 +125,20 @@ static bool dummy_hasted = false;
  * the dummy turning blows aside, which makes your number depend on
  * its rolls as much as on your gear, and a run you stop by hand,
  * which is a different length every time so two readings are not
- * comparable. This removes both.
- *
- * Deliberately not the default: something that cannot dodge is not a
- * fair model of anything in the world. It is a measuring instrument,
- * and the fair model is what the other shapes are for.
+ * comparable. A set number of rounds and a bell answers the second;
+ * whether it defends itself is its own setting, below.
  */
 static bool dummy_bench = true;
 static int  dummy_bench_rounds = DUMMY_BENCH_ROUNDS;
+
+/*
+ * Whether it dodges, parries and blocks, and whether it hits back. By
+ * default it does both, because the standard fight is a fair one: the
+ * owner's ruling, 2026-10-01. Turning either off is how somebody
+ * measures their damage alone -- and makes the run unranked.
+ */
+static bool dummy_defends = true;
+static bool dummy_fights  = true;
 
 /* Whether anybody has chosen a level.  Until somebody has, the dummy
    follows whoever is looking at it, which is the comparison almost
@@ -155,22 +161,64 @@ bool spec_training_dummy( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 
 
 /*
- * The run the board ranks: fifty rounds against the dummy exactly as
- * DUMMY RESET leaves it, at the runner's own level. Each setting can
- * move the answer -- the shape is armour, the level is what a spell
- * saves against, and its spells and haste can blind or weaken you --
- * so a board that let any of them vary would rank the settings rather
- * than the gear.
+ * The fight the board ranks: twenty-five rounds against the dummy as
+ * DUMMY RESET leaves it, at the runner's own level, fighting normally.
+ * Each setting can move the answer -- the shape is armour, the level is
+ * what a spell saves against, its spells and haste can blind or weaken
+ * you, and a dummy that will not defend or hit back is a different
+ * fight altogether -- so a board that let any of them vary would rank
+ * the settings rather than the gear.
+ *
+ * Returns why this is not that fight, or NULL when it is. Named one by
+ * one, because "not the standard settings" left a player to work out
+ * which of nine things they had changed.
  */
+static const char *dummy_unstandard_reason( CHAR_DATA *ch, CHAR_DATA *dummy )
+{
+    if ( !dummy_bench )
+        return "the fight is endless, with no bell";
+    if ( dummy_bench_rounds != DUMMY_BENCH_ROUNDS )
+        return "the number of rounds was changed";
+    if ( !dummy_defends )
+        return "the dummy does not defend itself";
+    if ( !dummy_fights )
+        return "the dummy does not fight back";
+    if ( dummy_shape != DUMMY_SHAPE_DEFAULT )
+        return "the dummy's shape was changed";
+    if ( dummy_attack != DUMMY_ATTACK_DEFAULT )
+        return "the dummy's damage type was changed";
+    if ( dummy_spell != DUMMY_SPELL_NONE )
+        return "the dummy casts a spell";
+    if ( dummy_hasted )
+        return "the dummy is hasted";
+    if ( dummy == NULL || dummy->level != ch->level )
+        return "the dummy is not your level";
+    return NULL;
+}
+
+
 static bool dummy_run_is_standard( CHAR_DATA *ch, CHAR_DATA *dummy )
 {
-    return dummy_bench
-        && dummy_bench_rounds == DUMMY_BENCH_ROUNDS
-        && dummy_shape  == DUMMY_SHAPE_DEFAULT
-        && dummy_attack == DUMMY_ATTACK_DEFAULT
-        && dummy_spell  == DUMMY_SPELL_NONE
-        && !dummy_hasted
-        && dummy != NULL && dummy->level == ch->level;
+    return dummy_unstandard_reason( ch, dummy ) == NULL;
+}
+
+
+/*
+ * Every setting back to the standard fight. The shape and damage type
+ * go back through dummy_configure, which every caller follows this with
+ * because it is also what rebuilds the mobile. One list, used by DUMMY
+ * RESET and by the yard emptying, so the two cannot disagree about
+ * what "standard" means.
+ */
+static void dummy_settings_standard( void )
+{
+    dummy_spell        = DUMMY_SPELL_NONE;
+    dummy_hasted       = false;
+    dummy_level_chosen = false;
+    dummy_bench        = true;
+    dummy_bench_rounds = DUMMY_BENCH_ROUNDS;
+    dummy_defends      = true;
+    dummy_fights       = true;
 }
 
 
@@ -641,7 +689,7 @@ bool spec_training_dummy( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
     if ( cmd != NULL || mob->position != POS_FIGHTING )
         return false;
 
-    if ( dummy_spell == DUMMY_SPELL_NONE )
+    if ( dummy_spell == DUMMY_SPELL_NONE || !dummy_fights )
         return false;
 
     if ( ( victim = mob->fighting ) == NULL || IS_NPC(victim) )
@@ -697,14 +745,33 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
 
     if ( dummy_bench )
         snprintf( buf, sizeof(buf),
-            "{0C|{00 Rounds  {0F%-8d{00  then the bell; it will not dodge, "
-            "parry or block%s\n\r", dummy_bench_rounds,
-            dummy_bench_rounds == DUMMY_BENCH_ROUNDS ? "" : " (unranked)" );
+            "{0C|{00 Rounds  {0F%-8d{00  then the bell\n\r",
+            dummy_bench_rounds );
     else
         snprintf( buf, sizeof(buf),
-            "{0C|{00 Rounds  {0F%-8s{00  it defends itself, and DUMMY REPORT "
-            "ends the run\n\r", "endless" );
+            "{0C|{00 Rounds  {0F%-8s{00  no bell; DUMMY REPORT ends the run\n\r",
+            "endless" );
     send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 Defends {0F%-8s{00  %s\n\r", dummy_defends ? "yes" : "no",
+        dummy_defends ? "dodges, parries and blocks"
+                      : "stands still and takes every blow" );
+    send_to_char( buf, ch );
+
+    snprintf( buf, sizeof(buf),
+        "{0C|{00 Fights  {0F%-8s{00  %s\n\r", dummy_fights ? "yes" : "no",
+        dummy_fights ? "hits you back" : "never hits you" );
+    send_to_char( buf, ch );
+
+    {
+        const char *why = dummy_unstandard_reason( ch, dummy );
+
+        snprintf( buf, sizeof(buf),
+            "{0C|{00 Ranked  {0F%-8s{00  %s\n\r", why == NULL ? "yes" : "no",
+            why == NULL ? "the standard fight" : why );
+        send_to_char( buf, ch );
+    }
 
     send_to_char(
         "{0C'----------------------------------------------------------------'{00\n\r",
@@ -716,11 +783,15 @@ static void dummy_menu( CHAR_DATA *ch, CHAR_DATA *dummy )
         "  dummy hits <type>    what it attacks you with\n\r"
         "  dummy magic <kind>   what it casts at you, or none\n\r"
         "  dummy haste          an extra attack a round, on or off\n\r"
-        "  dummy bench [rounds] a set number of rounds, then the bell (50)\n\r"
-        "  dummy endless        no bell, and it defends itself again\n\r"
-        "  dummy reset          the standard run: your level, fifty rounds\n\r"
+        "  dummy rounds <n>     n rounds, then the bell (the standard is 25)\n\r"
+        "  dummy endless        no bell; DUMMY REPORT ends the run\n\r"
+        "  dummy defends yes|no whether it dodges, parries and blocks\n\r"
+        "  dummy fights yes|no  whether it hits you back\n\r"
+        "  dummy reset          back to the standard, ranked fight\n\r"
         "  dummy report         stop early and read the numbers\n\r"
         "  dummy leaderboard    the benchmark leaderboard\n\r"
+        "\n\r  Only the standard fight is ranked: 25 rounds, every setting\n\r"
+        "  as DUMMY RESET leaves it.  Change anything and it is not.\n\r"
         "\n\r  Then just KILL DUMMY.  Neither of you can die here, nothing\n\r"
         "  is learned here, and afterwards you are put back the way you\n\r"
         "  were when the run began.  HELP DUMMY has the rest.\n\r\n\r",
@@ -868,17 +939,45 @@ static void dummy_stand_down( CHAR_DATA *ch, CHAR_DATA *dummy )
 void dummy_left_yard( CHAR_DATA *ch )
 {
     CHAR_DATA *dummy;
+    CHAR_DATA *other;
+    bool player_stays = false;
 
     if ( IS_NPC(ch) || ch->pcdata == NULL || ch->in_room == NULL
-    ||   ch->in_room->vnum != ROOM_VNUM_TRAINING_YARD
-    ||   ch->pcdata->dummy_started == 0 )
+    ||   ch->in_room->vnum != ROOM_VNUM_TRAINING_YARD )
         return;
 
-    dummy_restore_vitals( ch );
-    if ( ( dummy = dummy_in_room( ch ) ) != NULL )
-        remove_hate( dummy, ch );
-    dummy_session_clear( ch );
-    send_to_char( "You leave the yard, and the run is abandoned.\n\r", ch );
+    dummy = dummy_in_room( ch );
+
+    if ( ch->pcdata->dummy_started != 0 )
+    {
+        dummy_restore_vitals( ch );
+        if ( dummy != NULL )
+            remove_hate( dummy, ch );
+        dummy_session_clear( ch );
+        send_to_char( "You leave the yard, and the run is abandoned.\n\r",
+                      ch );
+    }
+
+    /*
+     * The settings are shared, so whatever the last fighter set the
+     * dummy to used to wait for the next one: somebody who simply
+     * walked in and attacked could get an endless fight against a
+     * dummy that would not defend itself, and an unranked run they
+     * never asked for. When the yard empties of players it goes back
+     * to the standard fight. Not before: an immortal stepping out must
+     * not undo the setup of somebody still in there.
+     */
+    for ( other = ch->in_room->people; other != NULL;
+          other = other->next_in_room )
+        if ( other != ch && !IS_NPC(other) )
+            player_stays = true;
+
+    if ( !player_stays && dummy != NULL )
+    {
+        dummy_settings_standard();
+        dummy_configure( dummy, UMAX( 1, dummy->level ),
+                         DUMMY_SHAPE_DEFAULT, DUMMY_ATTACK_DEFAULT );
+    }
 }
 
 
@@ -934,16 +1033,20 @@ static void dummy_report( CHAR_DATA *ch, CHAR_DATA *dummy )
             ? ( dummy_hasted ? ", hasted" : "" )
             : dummy_spell_table[dummy_spell].name,
         seconds, seconds == 1 ? "" : "s",
-        rounds > 0 ? "  Benchmark." : "" );
+        pc->dummy_standard && pc->dummy_epoch == dummy_config_epoch
+            ? "  The standard fight." : "" );
     send_to_char( buf, ch );
 
     if ( rounds > 0 )
     {
-        snprintf( buf, sizeof(buf),
-            "{0C|{00 %d round%s, and it did not defend itself.\n\r",
-            rounds, rounds == 1 ? "" : "s" );
+        snprintf( buf, sizeof(buf), "{0C|{00 %d round%s.\n\r",
+                  rounds, rounds == 1 ? "" : "s" );
         send_to_char( buf, ch );
     }
+    if ( !dummy_defends )
+        send_to_char( "{0C|{00 It did not dodge, parry or block.\n\r", ch );
+    if ( !dummy_fights )
+        send_to_char( "{0C|{00 It did not fight back.\n\r", ch );
 
     /* ------------------------------------------------ your offence */
     send_to_char(
@@ -1150,6 +1253,7 @@ static void dps_board_load( void )
     char name[64];
     DPS_BOARD_ENTRY e;
     int i, j;
+    int standard = 1;           /* a board with no marker predates them */
 
     if ( dps_board_loaded )
         return;
@@ -1167,7 +1271,12 @@ static void dps_board_load( void )
     while ( dps_board_count < DPSBOARD_MAX
     &&      fgets( line, sizeof(line), fp ) != NULL )
     {
-        if ( line[0] == '#' || line[0] == '\n' || line[0] == '\r' )
+        if ( line[0] == '#' )
+        {
+            sscanf( line, "#standard %d", &standard );
+            continue;
+        }
+        if ( line[0] == '\n' || line[0] == '\r' )
             continue;
         memset( &e, 0, sizeof(e) );
         if ( sscanf( line, "%63s %ld %d %d %d %ld", name, &e.total,
@@ -1181,6 +1290,25 @@ static void dps_board_load( void )
 
     fclose( fp );
     fpReserve = fopen( NULL_FILE, "r" );
+
+    /*
+     * Runs posted under another definition of the standard fight are
+     * not comparable with this one -- the first stood the dummy still
+     * -- so they are set aside rather than ranked. The next ranked run
+     * writes a board under the current definition.
+     */
+    if ( standard != DPSBOARD_STANDARD )
+    {
+        char note[MAX_STRING_LENGTH];
+
+        snprintf( note, sizeof(note),
+            "dps_board_load: board is standard %d, not %d; %d run%s set "
+            "aside.", standard, DPSBOARD_STANDARD, dps_board_count,
+            dps_board_count == 1 ? "" : "s" );
+        log_string( note );
+        dps_board_count = 0;
+        return;
+    }
 
     /* Written sorted, but a hand edit must not be able to leave the
        board in the wrong order. Biggest first; a tie goes to whoever
@@ -1213,9 +1341,10 @@ static void dps_board_save( void )
     }
 
     fprintf( fp,
+        "#standard %d\n"
         "# The training yard's benchmark board: each character's best\n"
-        "# fifty-round standard run, best first.\n"
-        "# name total seconds level class when\n" );
+        "# standard fight, best first.\n"
+        "# name total seconds level class when\n", DPSBOARD_STANDARD );
     for ( i = 0; i < dps_board_count; i++ )
         fprintf( fp, "%s %ld %d %d %d %ld\n",
                  dps_board[i].name, dps_board[i].total, dps_board[i].seconds,
@@ -1268,16 +1397,47 @@ static const char *dummy_board_refusal( CHAR_DATA *ch, CHAR_DATA *dummy )
 {
     PC_DATA *pc = ch->pcdata;
 
-    if ( IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
+    const char *why;
+
+    /*
+     * By level, not trust -- deliberately the opposite of every staff
+     * permission test. A player trusted with staff commands still fights
+     * at their own level and pays lag like anybody else (comm.c's lag
+     * bypass reads the level too), so their run is a real one: the
+     * owner's ruling, 2026-10-01. Only an immortal's is not.
+     */
+    if ( IS_IMMORTAL( ch ) )
         return "immortals are not ranked";
-    if ( dummy_bench_rounds != DUMMY_BENCH_ROUNDS )
-        return "only the fifty-round run is ranked";
-    if ( !pc->dummy_standard || !dummy_run_is_standard( ch, dummy ) )
-        return "the dummy was not at its standard settings - "
-               "DUMMY RESET puts it back";
+    if ( ( why = dummy_unstandard_reason( ch, dummy ) ) != NULL )
+        return why;
+    if ( !pc->dummy_standard )
+        return "the run began before the dummy was put back to the "
+               "standard fight";
     if ( pc->dummy_epoch != dummy_config_epoch )
         return "somebody changed the dummy during the run";
     return NULL;
+}
+
+
+/*
+ * Said after every change to the dummy, so nobody finds out at the bell
+ * that a whole run was never going to count.
+ */
+static void dummy_ranked_note( CHAR_DATA *ch, CHAR_DATA *dummy )
+{
+    char buf[MAX_STRING_LENGTH];
+    const char *why = dummy_unstandard_reason( ch, dummy );
+
+    if ( why == NULL )
+        send_to_char( "This is the standard fight: a run that reaches the "
+                      "bell is ranked.\n\r", ch );
+    else
+    {
+        snprintf( buf, sizeof(buf),
+            "Not the standard fight - %s - so runs will not be ranked.  "
+            "DUMMY RESET puts it back.\n\r", why );
+        send_to_char( buf, ch );
+    }
 }
 
 
@@ -1483,8 +1643,8 @@ static void dps_board_show( CHAR_DATA *ch )
         "{0C'----------------------------------------------------------------'{00\n\r",
         ch );
     send_to_char(
-        "  Fifty rounds against the dummy at its standard settings, at your\n\r"
-        "  own level: DUMMY RESET, then KILL DUMMY in the training yard.\n\r"
+        "  The standard fight: 25 rounds against the dummy as DUMMY RESET\n\r"
+        "  leaves it, at your own level.  KILL DUMMY in the training yard.\n\r"
         "  Immortals are not ranked.\n\r", ch );
 
     if ( !IS_NPC(ch) )
@@ -1508,14 +1668,21 @@ static void dps_board_show( CHAR_DATA *ch )
  */
 bool dummy_skips_defence( CHAR_DATA *victim )
 {
-    return dummy_bench && is_training_dummy( victim );
+    return !dummy_defends && is_training_dummy( victim );
+}
+
+
+/* Whether the dummy is to take this round without swinging. */
+bool dummy_holds_fire( CHAR_DATA *ch )
+{
+    return !dummy_fights && is_training_dummy( ch );
 }
 
 
 /*
  * True when the run has had its rounds and this tick should not
  * swing. Asked from violence_update before the blow, so a run of
- * fifty is fifty and two readings are comparable.
+ * of N rounds is N rounds and two readings are comparable.
  */
 bool dummy_round_limit( CHAR_DATA *ch, CHAR_DATA *victim )
 {
@@ -1560,7 +1727,7 @@ bool dummy_round_limit( CHAR_DATA *ch, CHAR_DATA *victim )
 }
 
 
-void do_dummy( CHAR_DATA *ch, char *argument )
+static void dummy_command( CHAR_DATA *ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
@@ -1652,11 +1819,7 @@ void do_dummy( CHAR_DATA *ch, char *argument )
            up is half a reset, and the half it leaves is the half
            that makes the next reading wrong. */
         dummy_stand_down( ch, dummy );
-        dummy_spell = DUMMY_SPELL_NONE;
-        dummy_hasted = false;
-        dummy_level_chosen = false;
-        dummy_bench = true;
-        dummy_bench_rounds = DUMMY_BENCH_ROUNDS;
+        dummy_settings_standard();
         dummy_configure( dummy, UMAX( 1, ch->level ),
                          DUMMY_SHAPE_DEFAULT, DUMMY_ATTACK_DEFAULT );
         snprintf( buf, sizeof(buf),
@@ -1730,7 +1893,7 @@ void do_dummy( CHAR_DATA *ch, char *argument )
 
         if ( !str_cmp( arg2, "off" ) )
         {
-            do_dummy( ch, "endless" );
+            dummy_command( ch, "endless" );
             return;
         }
 
@@ -1738,8 +1901,8 @@ void do_dummy( CHAR_DATA *ch, char *argument )
         {
             if ( !is_number( arg2 ) )
             {
-                send_to_char( "DUMMY BENCH, or DUMMY BENCH <rounds>.  "
-                              "DUMMY ENDLESS turns it off.\n\r", ch );
+                send_to_char( "DUMMY ROUNDS <number>.  DUMMY ENDLESS takes "
+                              "the bell away.\n\r", ch );
                 return;
             }
             rounds = atoi( arg2 );
@@ -1754,12 +1917,7 @@ void do_dummy( CHAR_DATA *ch, char *argument )
         dummy_bench = true;
         dummy_bench_rounds = rounds;
         dummy_config_epoch++;
-        snprintf( buf, sizeof(buf),
-            "It plants itself and stops defending.  %d rounds, then the "
-            "bell.%s\n\r", rounds,
-            rounds == DUMMY_BENCH_ROUNDS
-                ? "  That is the standard run, and it is ranked."
-                : "  Only the fifty-round run is ranked." );
+        snprintf( buf, sizeof(buf), "%d rounds, then the bell.\n\r", rounds );
         send_to_char( buf, ch );
         return;
     }
@@ -1768,8 +1926,53 @@ void do_dummy( CHAR_DATA *ch, char *argument )
     {
         dummy_bench = false;
         dummy_config_epoch++;
-        send_to_char( "It comes back on guard.  No bell: the run lasts until "
-                      "DUMMY REPORT, and is not ranked.\n\r", ch );
+        send_to_char( "No bell: the run lasts until DUMMY REPORT.\n\r", ch );
+        return;
+    }
+
+    /* Two separate settings, each said in so many words rather than
+       toggled, so the reply cannot read as the opposite of what was
+       asked for. */
+    if ( strlen( arg1 ) >= 2
+    &&   ( !str_prefix( arg1, "defends" ) || !str_prefix( arg1, "fights" ) ) )
+    {
+        bool defending = !str_prefix( arg1, "defends" );
+        bool on;
+
+        if ( !str_cmp( arg2, "yes" ) || !str_cmp( arg2, "on" ) )
+            on = true;
+        else if ( !str_cmp( arg2, "no" ) || !str_cmp( arg2, "off" ) )
+            on = false;
+        else
+        {
+            snprintf( buf, sizeof(buf),
+                "DUMMY %s YES or DUMMY %s NO.  Right now it %s.\n\r",
+                defending ? "DEFENDS" : "FIGHTS",
+                defending ? "DEFENDS" : "FIGHTS",
+                defending ? ( dummy_defends ? "dodges, parries and blocks"
+                                            : "stands still" )
+                          : ( dummy_fights ? "hits you back"
+                                           : "never hits you" ) );
+            send_to_char( buf, ch );
+            return;
+        }
+
+        if ( defending )
+        {
+            dummy_defends = on;
+            send_to_char( on ? "It comes on guard: it will dodge, parry "
+                               "and block.\n\r"
+                             : "It plants itself and stops defending: every "
+                               "blow you throw is one it takes.\n\r", ch );
+        }
+        else
+        {
+            dummy_fights = on;
+            send_to_char( on ? "It squares up: it will hit you back.\n\r"
+                             : "It drops its arms: it will not hit you.\n\r",
+                          ch );
+        }
+        dummy_config_epoch++;
         return;
     }
 
@@ -1887,4 +2090,23 @@ void do_leave( CHAR_DATA *ch, char *argument )
     char_to_room( ch, back );
     act( "$n steps out of the practice ring.", ch, NULL, NULL, TO_ROOM );
     do_look( ch, "auto" );
+}
+
+
+/*
+ * Every change to the dummy bumps the configuration counter, so this one
+ * place can say, after any of them, whether runs will still be ranked --
+ * rather than nine branches each remembering to.
+ */
+void do_dummy( CHAR_DATA *ch, char *argument )
+{
+    long before = dummy_config_epoch;
+    CHAR_DATA *dummy;
+
+    dummy_command( ch, argument );
+
+    if ( argument[0] != '\0' && dummy_config_epoch != before
+    &&   !IS_NPC(ch) && ch->pcdata != NULL
+    &&   ( dummy = dummy_in_room( ch ) ) != NULL )
+        dummy_ranked_note( ch, dummy );
 }

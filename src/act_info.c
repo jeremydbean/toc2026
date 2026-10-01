@@ -766,13 +766,11 @@ void do_autolist(CHAR_DATA *ch, char *argument)
 	send_to_char("ON\n\r",ch);
     else
 	send_to_char("OFF\n\r",ch);
-/*
     send_to_char("combine items  ",ch);
     if (IS_SET(ch->comm,COMM_COMBINE))
 	send_to_char("ON\n\r",ch);
     else
 	send_to_char("OFF\n\r",ch);
-*/
     if (!IS_SET(ch->act,PLR_CANLOOT))
 	send_to_char("Your corpse is safe from thieves.\n\r",ch);
     else
@@ -1179,8 +1177,16 @@ void do_prompt(CHAR_DATA *ch, char *argument)
 }
 
 /*
+ * Back on, 2026-10-01. The command had been commented out of the table
+ * while everything it controls stayed live: new characters are created
+ * with COMM_COMBINE set, every inventory and look honours it, and HELP
+ * COMBINE described a command nobody could type -- so a player who
+ * wanted the long list had no way to get it.
+ */
 void do_combine(CHAR_DATA *ch, char *argument)
 {
+    UNUSED_PARAM(argument);
+
     if (IS_SET(ch->comm,COMM_COMBINE))
     {
       send_to_char("Long inventory selected.\n\r",ch);
@@ -1192,7 +1198,6 @@ void do_combine(CHAR_DATA *ch, char *argument)
       SET_BIT(ch->comm,COMM_COMBINE);
     }
 }
-*/
 void do_noloot(CHAR_DATA *ch, char *argument)
 {
     UNUSED_PARAM(argument);

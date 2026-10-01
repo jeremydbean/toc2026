@@ -150,7 +150,7 @@ DECLARE_DO_FUN( do_cloak	);
 DECLARE_DO_FUN(	do_close	);
 DECLARE_DO_FUN(	do_color	);
 DECLARE_DO_FUN(	do_commands	);
-/*DECLARE_DO_FUN( do_combine	);*/
+DECLARE_DO_FUN( do_combine	);
 DECLARE_DO_FUN( do_compact	);
 DECLARE_DO_FUN(	do_compare	);
 DECLARE_DO_FUN(	do_concoct	);

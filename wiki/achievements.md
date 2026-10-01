@@ -34,7 +34,7 @@ placeholder until earned.
 | Category | Milestones |
 |---|---|
 | Character | Levels 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 58, and 59; every remort from the first to the fifth; 24 hours, seven days, and thirty days played |
-| Combat | 1, 100, 500, 1,000, 2,500, 5,000, 10,000, 25,000 and 50,000 mobile kills; 1, 10, 25, 50, 100, 250 and 500 qualifying player kills; a hidden Farslay feat; Top of the Board, for posting the best fifty-round benchmark in the training yard |
+| Combat | 1, 100, 500, 1,000, 2,500, 5,000, 10,000, 25,000 and 50,000 mobile kills; 1, 10, 25, 50, 100, 250 and 500 qualifying player kills; a hidden Farslay feat; Top of the Board, for posting the best standard benchmark in the training yard |
 | Encounters | Seventeen named endgame bosses plus five-boss and full-catalog meta achievements |
 | Quests | 1, 10, 50, 100, 250, 500, and 1,000 completions; streaks of 5, 10, 25, 50, and 100; rush, emergency, final-minute, gamble-win, and keepsake feats |
 | Exploration | Thirty-nine landmarks across the world, from the Pet Shop and Mud School six rooms out to Valhalla at ninety-four, plus arrival in Hyrule and discovery of all nine dungeon entrances. Every one is the destination of a published route in `webadmin/directions.json`, so all of them are reachable on foot |

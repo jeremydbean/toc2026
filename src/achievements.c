@@ -316,7 +316,7 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "visit-korzath-fortress", "At the Fortress Gate", "Reach the entrance to Korzath's Fortress.", ACH_CAT_EXPLORATION, 30, false, ACH_REQ_ROOM, 29001, 0 },
     { "visit-ice-keep", "A Small Cold Trail", "Find the small trail to the Ice Keep.", ACH_CAT_EXPLORATION, 35, false, ACH_REQ_ROOM, 18138, 0 },
     { "visit-sea-of-serenity", "The Far Beach", "Reach the beach of the Sea of Serenity.", ACH_CAT_EXPLORATION, 40, false, ACH_REQ_ROOM, 6401, 0 },
-    { "benchmark-champion", "Top of the Board", "Post the best fifty-round benchmark anybody has run in the training yard.", ACH_CAT_COMBAT, 50, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DPS_CHAMPION, 0 }
+    { "benchmark-champion", "Top of the Board", "Post the best standard benchmark anybody has run in the training yard.", ACH_CAT_COMBAT, 50, false, ACH_REQ_EVENT, ACHIEVEMENT_EVENT_DPS_CHAMPION, 0 }
 };
 
 typedef char achievement_table_must_fit[

@@ -181,7 +181,7 @@ const	struct	cmd_type	cmd_table	[] =
     { "brief",		do_brief,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "channels",	do_channels,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
     { "color",	        do_color,	POS_DEAD,        0,  LOG_NORMAL, 1 },
-/*    { "combine",	do_combine,	POS_DEAD,        0,  LOG_NORMAL, 1 },*/
+    { "combine",	do_combine,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "compact",	do_compact,	POS_DEAD,        0,  LOG_NORMAL, 1 },
 	  { "damagenumbers",	do_damagenumbers,	POS_DEAD,        0,  LOG_NORMAL, 1 },
     { "depart",		do_depart,	POS_DEAD,	 0,  LOG_NORMAL, 1 },
@@ -573,6 +573,23 @@ static bool command_hides_arguments( const char *name )
 }
 
 
+/*
+ * The social whose name is exactly this word, or -1. A linear walk, but
+ * it is only asked when the word was a prefix rather than a name, which
+ * is rare.
+ */
+static int social_exact_index( const char *name )
+{
+    extern int social_count;
+    int i;
+
+    for ( i = 0; i < social_count; i++ )
+        if ( !str_cmp( name, social_table[i].name ) )
+            return i;
+    return -1;
+}
+
+
 void interpret( CHAR_DATA *ch, char *argument )
 {
     char command[MAX_INPUT_LENGTH];
@@ -704,6 +721,22 @@ void interpret( CHAR_DATA *ch, char *argument )
 */
     cmd = cmd_tab_sn_lookup(command, trust);
     if (cmd != -1) found = true;
+
+    /*
+     * A word that is exactly a social's name is that social, even when
+     * it is also the start of a longer command. Commands are looked up
+     * first and by prefix, so POKE was taken as an abbreviation of
+     * POKER and the social could never be used, and COMB would go to
+     * COMBINE now that it is back. A word that is exactly a command's name is still
+     * that command, so the deliberate abbreviation order -- S for
+     * south and the rest -- is untouched.
+     */
+    if ( found && str_cmp( command, cmd_table[cmd].name )
+    &&   social_exact_index( command ) >= 0 )
+    {
+        found = false;
+        cmd = -1;
+    }
 
     /*
      * Log and snoop.  Guard against cmd == -1 (unknown command).
@@ -1251,6 +1284,16 @@ bool check_social( CHAR_DATA *ch, char *command, char *argument )
       return false;
 
     cmd = social_tab_sn_lookup(command, 0);
+
+    /* The indexed lookup returns the first social the word is a prefix
+       of; an exact name has to beat it, or a social that is the start
+       of another one could be reached only by luck of list order. */
+    {
+        int exact = social_exact_index( command );
+
+        if ( exact >= 0 )
+            cmd = exact;
+    }
 
     if (cmd >= 0) found = true;
 
