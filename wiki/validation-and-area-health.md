@@ -217,6 +217,10 @@ Operational endpoints are disabled with HTTP 503 until `WEB_ADMIN_TOKEN` is conf
 X-Admin-Token: your-token
 ```
 
+> **Self-host option.** This describes the Raspberry Pi appliance for running
+> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
+> see [disaster-recovery.md](disaster-recovery.md).
+
 `POST /api/update` validates only that authentication succeeds and the
 configured request file can be touched. On the Pi, verify the separate host
 contract after deployment:

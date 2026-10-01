@@ -21,6 +21,10 @@ local machine by default:
 http://127.0.0.1:9001
 ```
 
+> **Self-host option.** This describes the Raspberry Pi appliance for running
+> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
+> see [disaster-recovery.md](disaster-recovery.md).
+
 The native Raspberry Pi appliance starts it during boot and publishes it only
 to the trusted LAN profile:
 

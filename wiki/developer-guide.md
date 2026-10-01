@@ -491,6 +491,10 @@ bypass splitting. Both interfaces share the same APIs and bridges.
 `scripts/web_server.py` is only a compatibility launcher; do not add a second
 server implementation there.
 
+> **Self-host option.** This describes the Raspberry Pi appliance for running
+> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
+> see [disaster-recovery.md](disaster-recovery.md).
+
 The Pi update contract spans `POST /api/update`,
 `TOC_UPDATE_REQUEST_PATH`, `deploy/systemd/toc2026-update.path`, the root-owned
 installed copy of `deploy/toc2026-update`, and its service/timer units. Changes

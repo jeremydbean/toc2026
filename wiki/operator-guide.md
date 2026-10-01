@@ -65,6 +65,11 @@ no `#AREA` record. Investigate unexpected deltas, not the known counting model.
 
 ### Raspberry Pi Appliance Quick Check
 
+> **Self-host option.** This describes the Raspberry Pi appliance for running
+> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
+> see [disaster-recovery.md](disaster-recovery.md).
+
+
 ```bash
 ssh toc
 systemctl status toc2026-game toc2026-web

@@ -132,6 +132,10 @@ Treat the token as an immortal credential. Generate at least 32 random bytes,
 store it outside Git, limit who can read it, and rotate it when staff access
 changes or exposure is suspected.
 
+> **Self-host option.** This describes the Raspberry Pi appliance for running
+> your own copy. The live `toc.jeremybean.com` server runs on Oracle Cloud --
+> see [disaster-recovery.md](wiki/disaster-recovery.md).
+
 The Raspberry Pi LAN appliance uses manual token entry because its dashboard
 bind is not loopback. Its private `.env` is preserved across reboots, rebuilds,
 and guarded Git updates, so the token remains stable until an operator rotates
