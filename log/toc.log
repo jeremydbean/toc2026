@@ -19515,3 +19515,6 @@ Thu Oct  1 11:59:54 2026 :: Misery@192.168.0.1 has connected.
 Thu Oct  1 12:00:09 2026 :: Log Misery: spellup
 Thu Oct  1 12:00:09 2026 :: Spellup: Hermie placed in room 2401 by Misery.
 Thu Oct  1 12:00:15 2026 :: Spellup: Hermie gave Misery the full list (30 ticks) in room 2401.
+Thu Oct  1 12:19:45 2026 :: Sock.sinaddr:  79.124.56.214
+Thu Oct  1 12:22:43 2026 :: Sock.sinaddr:  185.93.89.79
+Thu Oct  1 12:22:44 2026 :: EOF encountered on read.
