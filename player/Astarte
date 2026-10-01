@@ -1,7 +1,7 @@
 #PLAYER
 Name Astarte~
 Id   30739
-LogO 1790832094
+LogO 1790836635
 Vers 4
 Desc .                      //:::::::::::::::::::::::::::::::::::::::::::::\\
 .                     //:::_______:::::::::________::::::::::_____:::::::\\
@@ -40,10 +40,10 @@ PsiKnown mindbar,project,pyrotechnics,telekinesis~
 Cast none
 Levl 51
 Tru  70
-Plyd 657787
+Plyd 658032
 ListRemorts ~
 NumRemorts 0
-Note 953324127
+Note 1790386686
 Scro 22
 Room 2419
 HMV  1584 1584 537 537 285 285
@@ -84,10 +84,10 @@ Achv level-35 1790829651
 Achv level-45 1790829651
 Achv carry-ten-platinum 1790829651
 Achv carry-thousand-platinum 1790829651
-LastOut  1790832094
-SesLogin 1790829651
-SesDur   2443
-SesExpG  45
+LastOut  1790836635
+SesLogin 1790836392
+SesDur   243
+SesExpG  0
 SesLvlG  0
 SesKill  0
 SesPK    0
@@ -187,8 +187,8 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'warrior guild'
-AffD 'sneak'  14   4   0   0      32768          0
-AffD 'change sex'  13  32  -1   6          0          0
+AffD 'change sex'  13  29  -1   6          0          0
+AffD 'sneak'  14   1   0   0      32768          0
 End
 
 #O
@@ -333,8 +333,8 @@ Lev  45
 Cost 32500000
 Cond 100
 Repd 0
-AffD 'enchant weapon' 51 -1 6 19 0 0
 AffD 'enchant weapon' 51 -1 6 18 0 0
+AffD 'enchant weapon' 51 -1 6 19 0 0
 End
 
 #O
