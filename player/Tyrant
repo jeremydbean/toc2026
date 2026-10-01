@@ -1,7 +1,7 @@
 #PLAYER
 Name Tyrant~
 Id   23103
-LogO 1790838539
+LogO 1790839182
 Vers 4
 Desc .                         /|                 |\
 .                        / | ___.--^^^--.___ | \
@@ -45,13 +45,13 @@ PsiKnown ~
 Cast Fors
 Levl 34
 Tru  70
-Plyd 753276
+Plyd 753460
 ListRemorts ~
 NumRemorts 0
 Note 1544841593
 Scro 22
-Room 4207
-HMV  5393 5796 1200 1200 985 1938
+Room 4649
+HMV  966 966 200 200 323 323
 NewGold 2
 NewPlat 1929
 NewCopp 31
@@ -94,9 +94,9 @@ Achv bank-thousand-platinum 1790829256
 Achv carry-ten-platinum 1790829256
 Achv carry-thousand-platinum 1790829256
 Achv benchmark-champion 1790836808
-LastOut  1790838279
-SesLogin 1790829256
-SesDur   387
+LastOut  1790839182
+SesLogin 1790839000
+SesDur   182
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -106,8 +106,7 @@ SesQuest 0
 QuestPnts 243
 Exp  78232
 Act  100729032
-AfBy 3678908
-AfBy2 4106
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -133,20 +132,20 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Save  -14
+Save  -6
 Alig  1000
-Hit   63
-Dam   87
-ACs -238 -215 -225 -116
+Hit   24
+Dam   56
+ACs -54 -31 -41 68
 Attr 20 16 18 18 19
-AMod 29 15 18 21 15
+AMod 10 0 3 2 0
 Pass MiJx5Di.yq8i6~
 Titl . O==}-??? PKILLS!-->~
 Pnts 40
 TSex 1
 LLev 3
 HMVP 951 145 298
-Cond 0 0 0
+Cond 0 48 48
 Alias / who~
 Alias ] recall~
 Alias f flee~
@@ -200,48 +199,6 @@ Gr 'rom basics'
 Gr 'thief basics'
 Gr 'thief default'
 Gr 'thief guild'
-AffD 'armor'   0   0 -20  17          0          0
-AffD 'bless'   0   0   8  18          0          0
-AffD 'bless'   0   0  -8  24          0          0
-AffD 'shield'   0   0 -20  17          0          0
-AffD 'stone skin'   0   0 -40  17          0          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'giant strength'   0   0   4   1          0          0
-AffD 'frenzy'   0   0  11  18          0          0
-AffD 'frenzy'   0   0  11  19          0          0
-AffD 'frenzy'   0   0 110  17          0          0
-AffD 'major globe'   0   0 -114  17          0          0
-AffD 'detect invis'   0   0   0   0          8          0
-AffD 'detect hidden'   0   0   0   0         32          0
-AffD 'detect magic'   0   0   0   0         16          0
-AffD 'detect good'  48   0   0   0          0          2
-AffD 'detect evil'  49   0   0   0          4          0
-AffD 'empower'  48   0   0   0          0          0
-AffD 'sanctuary'  47   0   0   0        128          0
-AffD 'haste'  24   0   4   2    2097152          0
-AffD 'fly'  21   0   0   0     524288          0
-AffD 'pass door'  20   0   0   0    1048576          0
-AffD 'protection evil'  23   0   0   0       8192          0
-AffD 'fire shield'  17   0   0   0          0          8
-AffD 'divine protection'  25   0   0   0          0       4096
-AffD 'giant strength'  23   0  15   1          0          0
-AffD 'empower'  20   0  15   3          0          0
-AffD 'empower'  17   0  15   4          0          0
-AffD 'empower'  22   0  11   2          0          0
-AffD 'empower'  24   0  15   5          0          0
-AffD 'empower'  21   0  20  18          0          0
-AffD 'empower'  20   0  20  19          0          0
-AffD 'empower'  22   0 -100  17          0          0
-AffD 'titanic'  24   0 4830  13          0          0
-AffD 'titanic'  23   0 1000  12          0          0
-AffD 'titanic'  21   0 1615  14          0          0
-AffD 'titanic'  18   0  50  16          0          0
 End
 
 #O
@@ -570,7 +527,7 @@ End
 Vnum 9231
 Nest 0
 Wear -1
-Time 125
+Time 122
 Cost 100000
 Cond 100
 Repd 0
@@ -581,7 +538,7 @@ End
 Vnum 9231
 Nest 0
 Wear -1
-Time 66
+Time 63
 Cost 100000
 Cond 100
 Repd 0
@@ -592,7 +549,7 @@ End
 Vnum 9231
 Nest 0
 Wear -1
-Time 91
+Time 88
 Cost 100000
 Cond 100
 Repd 0
@@ -609,6 +566,26 @@ Repd 0
 Spell 1 'detect invis'
 Spell 2 'detect magic'
 Spell 3 'detect hidden'
+End
+
+#O
+Vnum 3093
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3094
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
 End
 
 #END
