@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790858277
+LogO 1790858504
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6388565
+Plyd 6388792
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 2419
-HMV  30194 30740 30140 30140 30175 30175
+HMV  30248 30740 30140 30140 30175 30175
 NewGold 155
 NewPlat 2503017
 NewCopp 149
@@ -400,21 +400,21 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'power gloves'   0  17  35  19          0          0
-AffD 'detect evil'   0  17   0   0          4          0
-AffD 'detect good'   0  17   0   0          0          2
-AffD 'detect magic'   0  17   0   0         16          0
-AffD 'detect hidden'   0  17   0   0         32          0
-AffD 'detect invis'   0  17   0   0          8          0
-AffD 'major globe'   0  17 -150  17          0          0
-AffD 'frenzy'   0  17 110  17          0          0
-AffD 'frenzy'   0  17  11  19          0          0
-AffD 'frenzy'   0  17  11  18          0          0
-AffD 'stone skin'   0  17 -40  17          0          0
-AffD 'shield'   0  17 -20  17          0          0
-AffD 'bless'   0  17  -8  24          0          0
-AffD 'bless'   0  17   8  18          0          0
-AffD 'armor'   0  17 -20  17          0          0
+AffD 'power gloves'   0  14  35  19          0          0
+AffD 'detect evil'   0  14   0   0          4          0
+AffD 'detect good'   0  14   0   0          0          2
+AffD 'detect magic'   0  14   0   0         16          0
+AffD 'detect hidden'   0  14   0   0         32          0
+AffD 'detect invis'   0  14   0   0          8          0
+AffD 'major globe'   0  14 -150  17          0          0
+AffD 'frenzy'   0  14 110  17          0          0
+AffD 'frenzy'   0  14  11  19          0          0
+AffD 'frenzy'   0  14  11  18          0          0
+AffD 'stone skin'   0  14 -40  17          0          0
+AffD 'shield'   0  14 -20  17          0          0
+AffD 'bless'   0  14  -8  24          0          0
+AffD 'bless'   0  14   8  18          0          0
+AffD 'armor'   0  14 -20  17          0          0
 AffD 'empower'   0  -1 -100  17          0          0
 AffD 'empower'   0  -1  20  19          0          0
 AffD 'empower'   0  -1  20  18          0          0

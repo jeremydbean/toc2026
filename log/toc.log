@@ -19560,3 +19560,15 @@ Thu Oct  1 12:31:40 2026 :: Log Killuminati: load obj 29241
 Thu Oct  1 12:31:47 2026 :: Log Killuminati: load obj 13295
 Thu Oct  1 12:32:05 2026 :: Log Killuminati: load obj 29512
 Thu Oct  1 12:32:06 2026 :: Log Killuminati: load obj 29512
+Thu Oct  1 12:41:31 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Thu Oct  1 12:41:35 2026 :: Log WebAdmin: fsave
+Thu Oct  1 12:41:41 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Thu Oct  1 12:41:44 2026 :: Received signal 15; saving players and shutting down.
+Thu Oct  1 12:41:44 2026 :: Closing link to Killuminati.
+Thu Oct  1 12:41:44 2026 :: Normal termination of game.
+Thu Oct  1 12:41:45 2026 ::  INIT OK 
+Thu Oct  1 12:41:45 2026 :: ROM is ready to rock on port 9000.
+Thu Oct  1 12:41:45 2026 :: Automated backup complete.
+Thu Oct  1 12:41:45 2026 :: Daily backup complete.
+Thu Oct  1 12:44:05 2026 :: Sock.sinaddr:  65.49.1.24
+Thu Oct  1 12:44:05 2026 :: EOF encountered on read.
