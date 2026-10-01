@@ -3031,7 +3031,10 @@ void do_eat( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( !IS_IMMORTAL(ch) )
+    /* Staff can eat anything, which is how an item is destroyed on the
+       spot. By trust, as every staff gate is: by level it refused a
+       builder trusted to immortal rank, who was told it was not edible. */
+    if ( !IS_TRUSTED( ch, LEVEL_IMMORTAL ) )
     {
 	if ( obj->item_type != ITEM_FOOD && obj->item_type != ITEM_PILL &&
 		obj->item_type != ITEM_CAKE )

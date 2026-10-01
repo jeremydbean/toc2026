@@ -112,6 +112,7 @@ class StaffTrustSourceTests(unittest.TestCase):
 
     def test_the_commands_that_were_gated_by_level_are_not(self) -> None:
         for filename, function in (
+            ("act_obj.c", "do_eat"),
             ("act_wiz.c", "do_finger"),
             ("act_wiz.c", "do_switch"),
             ("act_comm.c", "is_note_to"),
