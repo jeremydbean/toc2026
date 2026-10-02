@@ -79,6 +79,8 @@ struct gear_metrics
     int relic_nonphysical_reduction;
     int relic_movement_reduction;
     int relic_kill_heal;
+    long affected_by;
+    long affected_by2;
 };
 
 static int gear_skill( CHAR_DATA *ch, int sn )
@@ -296,6 +298,29 @@ static const char *gear_slot_name( int slot )
     }
 }
 
+/*
+ * The one wear flag wear_obj would act on.  An item carrying several goes
+ * to the first of them in wear_obj's order and never to the others, and a
+ * light is always a light whatever else it says: Starlight is take and
+ * hold, and WEAR puts it in the light slot.  Reading every flag as a slot
+ * offered items for places WEAR will never put them.
+ */
+static int gear_natural_wear_flag( OBJ_DATA *obj )
+{
+    static const int order[] = {
+        ITEM_WEAR_FINGER, ITEM_WEAR_NECK, ITEM_WEAR_BODY, ITEM_WEAR_HEAD,
+        ITEM_WEAR_LEGS, ITEM_WEAR_FEET, ITEM_WEAR_HANDS, ITEM_WEAR_ARMS,
+        ITEM_WEAR_ABOUT, ITEM_WEAR_WAIST, ITEM_WEAR_WRIST, ITEM_WEAR_SHIELD,
+        ITEM_WIELD, ITEM_HOLD
+    };
+    int i;
+
+    for ( i = 0; i < (int)(sizeof( order ) / sizeof( order[0] )); i++ )
+        if ( CAN_WEAR( obj, order[i] ) )
+            return order[i];
+    return 0;
+}
+
 static bool gear_item_supports_slot( OBJ_DATA *obj, int slot )
 {
     int wear_flag;
@@ -304,10 +329,13 @@ static bool gear_item_supports_slot( OBJ_DATA *obj, int slot )
         return false;
     if ( slot == WEAR_LIGHT )
         return obj->item_type == ITEM_LIGHT;
+    if ( obj->item_type == ITEM_LIGHT )
+        return false;
+    /* SECONDARY puts a wieldable weapon in the off hand. */
     if ( slot == WEAR_SHIELD && obj->item_type == ITEM_WEAPON )
         return CAN_WEAR( obj, ITEM_WIELD );
     wear_flag = gear_slot_wear_flag( slot );
-    return wear_flag != 0 && CAN_WEAR( obj, wear_flag );
+    return wear_flag != 0 && gear_natural_wear_flag( obj ) == wear_flag;
 }
 
 static int gear_choose_slot( CHAR_DATA *ch, OBJ_DATA *obj1, OBJ_DATA *obj2 )
@@ -346,32 +374,6 @@ static int gear_choose_slot( CHAR_DATA *ch, OBJ_DATA *obj1, OBJ_DATA *obj2 )
             return slots[i];
 
     return WEAR_NONE;
-}
-
-static OBJ_DATA *gear_find_equipped_match( CHAR_DATA *ch, OBJ_DATA *candidate )
-{
-    static const int slots[] = {
-        WEAR_WIELD, WEAR_SHIELD, WEAR_HOLD, WEAR_LIGHT, WEAR_BODY, WEAR_HEAD,
-        WEAR_LEGS, WEAR_FEET, WEAR_HANDS, WEAR_ARMS, WEAR_ABOUT,
-        WEAR_WAIST, WEAR_FINGER_L, WEAR_FINGER_R, WEAR_NECK_1,
-        WEAR_NECK_2, WEAR_WRIST_L, WEAR_WRIST_R
-    };
-    OBJ_DATA *worn;
-    int i;
-
-    for ( i = 0; i < (int)(sizeof( slots ) / sizeof( slots[0] )); i++ )
-    {
-        worn = get_eq_char( ch, slots[i] );
-        if ( worn != NULL && worn != candidate
-            && gear_item_supports_slot( candidate, slots[i] ) )
-        {
-            if ( candidate->item_type == ITEM_WEAPON
-                && worn->item_type != ITEM_WEAPON )
-                continue;
-            return worn;
-        }
-    }
-    return NULL;
 }
 
 static int gear_stat_cap( CHAR_DATA *ch, int stat )
@@ -1029,6 +1031,8 @@ static void gear_calculate_metrics( CHAR_DATA *ch,
     metrics->max_move = UMAX( 0, loadout->max_move );
     metrics->saving_throw = loadout->saving_throw;
     metrics->exp_bonus = UMAX( 0, loadout->exp_bonus );
+    metrics->affected_by = loadout->affected_by;
+    metrics->affected_by2 = loadout->affected_by2;
     if ( loadout->hyrule_red_ring_count > 0 )
         metrics->relic_damage_reduction = 20;
     else if ( loadout->hyrule_blue_ring_count > 0 )
@@ -1171,21 +1175,34 @@ static double gear_focus_value( const GEAR_METRICS *metrics, int focus )
     }
 }
 
+/*
+ * The same rule as wear_requirements_met: the race flags name everyone
+ * who may wear it, so an item flagged human and saurian suits both.  This
+ * used to refuse it unless every flag named you, which turned Eversight
+ * and Virtual Vision away from the humans and saurians they were made for.
+ */
 static bool gear_race_allowed( CHAR_DATA *ch, OBJ_DATA *obj )
 {
+    int allowed;
+    int mine;
+
     if ( !IS_OBJ_STAT( obj, ITEM_RACE_RESTRICTED ) )
         return true;
-    if ( IS_OBJ_STAT2( obj, ITEM2_HUMAN_ONLY ) && ch->race != 1 )
-        return false;
-    if ( IS_OBJ_STAT2( obj, ITEM2_ELF_ONLY ) && ch->race != 2 )
-        return false;
-    if ( IS_OBJ_STAT2( obj, ITEM2_DWARF_ONLY ) && ch->race != 3 )
-        return false;
-    if ( IS_OBJ_STAT2( obj, ITEM2_HALFLING_ONLY ) && ch->race != 4 )
-        return false;
-    if ( IS_OBJ_STAT2( obj, ITEM2_SAURIAN_ONLY ) && ch->race != 5 )
-        return false;
-    return true;
+    allowed = obj->extra_flags2
+        & ( ITEM2_HUMAN_ONLY | ITEM2_ELF_ONLY | ITEM2_DWARF_ONLY
+          | ITEM2_HALFLING_ONLY | ITEM2_SAURIAN_ONLY );
+    if ( allowed == 0 )
+        return true;
+    switch ( ch->race )
+    {
+    case 1:  mine = ITEM2_HUMAN_ONLY;    break;
+    case 2:  mine = ITEM2_ELF_ONLY;      break;
+    case 3:  mine = ITEM2_DWARF_ONLY;    break;
+    case 4:  mine = ITEM2_HALFLING_ONLY; break;
+    case 5:  mine = ITEM2_SAURIAN_ONLY;  break;
+    default: mine = 0;                   break;
+    }
+    return mine != 0 && IS_SET( allowed, mine );
 }
 
 static bool gear_offhand_power_allowed( OBJ_DATA *obj )
@@ -1363,34 +1380,28 @@ static void gear_build_candidate_loadout( CHAR_DATA *ch,
     gear_apply_item( ch, result, candidate, slot, 1 );
 }
 
-static void gear_send_metric( CHAR_DATA *ch, const char *label,
-                              double value1, double value2,
-                              const char *unit, bool selected )
+/* Two items' figures side by side, and which way the edge falls. */
+static void gear_send_row( CHAR_DATA *ch, const char *label,
+                           double value1, double value2, bool selected )
 {
     char buf[MAX_STRING_LENGTH];
+    char edge[32];
     double percent;
 
     if ( fabs( value1 - value2 ) <= UMAX( 0.01, value2 * 0.005 ) )
-    {
-        snprintf( buf, sizeof( buf ), " %c %-15s even (%.1f vs %.1f %s)\n\r",
-                  selected ? '*' : ' ', label, value1, value2, unit );
-    }
+        toc_strlcpy( edge, "even", sizeof( edge ) );
     else if ( value1 > value2 )
     {
         percent = (value1 / UMAX( 0.1, value2 ) - 1.0) * 100.0;
-        snprintf( buf, sizeof( buf ),
-                  " %c %-15s A +%.1f%% (%.1f vs %.1f %s)\n\r",
-                  selected ? '*' : ' ', label, UMIN( 999.9, percent ),
-                  value1, value2, unit );
+        snprintf( edge, sizeof( edge ), "A +%.1f%%", UMIN( 999.9, percent ) );
     }
     else
     {
         percent = (value2 / UMAX( 0.1, value1 ) - 1.0) * 100.0;
-        snprintf( buf, sizeof( buf ),
-                  " %c %-15s B +%.1f%% (%.1f vs %.1f %s)\n\r",
-                  selected ? '*' : ' ', label, UMIN( 999.9, percent ),
-                  value1, value2, unit );
+        snprintf( edge, sizeof( edge ), "B +%.1f%%", UMIN( 999.9, percent ) );
     }
+    snprintf( buf, sizeof( buf ), " %c %-14s %10.1f %10.1f  %s\n\r",
+              selected ? '*' : ' ', label, value1, value2, edge );
     send_to_char( buf, ch );
 }
 
@@ -1518,64 +1529,758 @@ static void gear_send_profile( CHAR_DATA *ch, const GEAR_PROFILE *profile )
     send_to_char( buf, ch );
 }
 
-static void gear_send_recommendation( CHAR_DATA *ch, OBJ_DATA *obj1,
-                                      OBJ_DATA *obj2, double value1,
-                                      double value2, bool usable1,
-                                      bool usable2, int focus )
+/* ------------------------------------------------------------------ */
+/* Evaluating a swap                                                   */
+/* ------------------------------------------------------------------ */
+
+/*
+ * A against B in one slot.  Both are measured from the same base -- the
+ * kit with that slot standing empty -- so their overall indexes are on one
+ * scale.  Either object may be NULL, meaning the slot left empty.
+ */
+static void gear_evaluate_pair( CHAR_DATA *ch, const GEAR_PROFILE *profile,
+                                OBJ_DATA *obj1, OBJ_DATA *obj2, int slot,
+                                GEAR_METRICS *base_metrics,
+                                GEAR_METRICS *metrics1,
+                                GEAR_METRICS *metrics2 )
+{
+    GEAR_LOADOUT base;
+    GEAR_LOADOUT loadout1;
+    GEAR_LOADOUT loadout2;
+
+    gear_build_base_loadout( ch, obj1, obj2, slot, &base );
+    loadout1 = base;
+    if ( obj1 != NULL )
+        gear_build_candidate_loadout( ch, &base, obj1, slot, &loadout1 );
+    loadout2 = base;
+    if ( obj2 != NULL )
+        gear_build_candidate_loadout( ch, &base, obj2, slot, &loadout2 );
+    gear_calculate_metrics( ch, profile, &base, base_metrics );
+    gear_calculate_metrics( ch, profile, &loadout1, metrics1 );
+    gear_calculate_metrics( ch, profile, &loadout2, metrics2 );
+    gear_calculate_overall( profile, base_metrics, metrics1 );
+    gear_calculate_overall( profile, base_metrics, metrics2 );
+}
+
+static int gear_pair_partner( int slot )
+{
+    switch ( slot )
+    {
+    case WEAR_FINGER_L: return WEAR_FINGER_R;
+    case WEAR_FINGER_R: return WEAR_FINGER_L;
+    case WEAR_NECK_1:   return WEAR_NECK_2;
+    case WEAR_NECK_2:   return WEAR_NECK_1;
+    case WEAR_WRIST_L:  return WEAR_WRIST_R;
+    case WEAR_WRIST_R:  return WEAR_WRIST_L;
+    default:            return -1;
+    }
+}
+
+/*
+ * What a carried item would replace.  For a ring, an amulet or a bracer
+ * that is the weaker of the two you wear -- the one you would take off --
+ * where it used to be whichever was on the left, so a ring could be
+ * measured against your best one and called a downgrade when it beat the
+ * other.
+ */
+static OBJ_DATA *gear_find_equipped_match( CHAR_DATA *ch,
+                                           const GEAR_PROFILE *profile,
+                                           OBJ_DATA *candidate, int focus )
+{
+    static const int slots[] = {
+        WEAR_WIELD, WEAR_SHIELD, WEAR_HOLD, WEAR_LIGHT, WEAR_BODY, WEAR_HEAD,
+        WEAR_LEGS, WEAR_FEET, WEAR_HANDS, WEAR_ARMS, WEAR_ABOUT,
+        WEAR_WAIST, WEAR_FINGER_L, WEAR_FINGER_R, WEAR_NECK_1,
+        WEAR_NECK_2, WEAR_WRIST_L, WEAR_WRIST_R
+    };
+    GEAR_METRICS base_metrics;
+    GEAR_METRICS with_candidate;
+    GEAR_METRICS with_worn;
+    OBJ_DATA *worn;
+    OBJ_DATA *other;
+    double gain_worn;
+    double gain_other;
+    int partner;
+    int i;
+
+    for ( i = 0; i < (int)(sizeof( slots ) / sizeof( slots[0] )); i++ )
+    {
+        worn = get_eq_char( ch, slots[i] );
+        if ( worn == NULL || worn == candidate
+            || !gear_item_supports_slot( candidate, slots[i] ) )
+            continue;
+        if ( candidate->item_type == ITEM_WEAPON
+            && worn->item_type != ITEM_WEAPON )
+            continue;
+
+        partner = gear_pair_partner( slots[i] );
+        other = partner < 0 ? NULL : get_eq_char( ch, partner );
+        if ( other == NULL || other == candidate )
+            return worn;
+
+        gear_evaluate_pair( ch, profile, candidate, worn, slots[i],
+                            &base_metrics, &with_candidate, &with_worn );
+        gain_worn = gear_focus_value( &with_candidate, focus )
+            / UMAX( 0.1, gear_focus_value( &with_worn, focus ) );
+        gear_evaluate_pair( ch, profile, candidate, other, partner,
+                            &base_metrics, &with_candidate, &with_worn );
+        gain_other = gear_focus_value( &with_candidate, focus )
+            / UMAX( 0.1, gear_focus_value( &with_worn, focus ) );
+        return gain_other > gain_worn ? other : worn;
+    }
+    return NULL;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reporting a comparison                                              */
+/* ------------------------------------------------------------------ */
+
+/* Append one "hit +2"-style part, wrapping before the line runs long. */
+static void gear_change_part( CHAR_DATA *ch, char *line, size_t size,
+                              const char *part, bool *first )
+{
+    if ( !*first && strlen( line ) + strlen( part ) + 2 > 76 )
+    {
+        toc_strlcat( line, "\n\r", size );
+        send_to_char( line, ch );
+        toc_strlcpy( line, "    ", size );
+    }
+    else if ( !*first )
+        toc_strlcat( line, ", ", size );
+    toc_strlcat( line, part, size );
+    *first = false;
+}
+
+static void gear_change_number( CHAR_DATA *ch, char *line, size_t size,
+                                const char *label, int delta, bool *first )
+{
+    char part[64];
+
+    if ( delta == 0 )
+        return;
+    snprintf( part, sizeof( part ), "%s %+d", label, delta );
+    gear_change_part( ch, line, size, part, first );
+}
+
+static void gear_change_flags( CHAR_DATA *ch, char *line, size_t size,
+                               const char *sign, const char *names,
+                               bool *first )
+{
+    char part[MAX_STRING_LENGTH];
+
+    if ( names == NULL || names[0] == '\0' || !str_cmp( names, "none" ) )
+        return;
+    snprintf( part, sizeof( part ), "%s%s", sign, names );
+    gear_change_part( ch, line, size, part, first );
+}
+
+/*
+ * What actually differs once A is on instead of B, the way the website's
+ * score breakdown shows it: the numbers a player can check against
+ * IDENTIFY, not just a verdict.
+ */
+static void gear_send_changes( CHAR_DATA *ch, OBJ_DATA *obj1,
+                               OBJ_DATA *obj2, const GEAR_METRICS *a,
+                               const GEAR_METRICS *b )
+{
+    static const char *stat_names[MAX_STATS] = {
+        "STR", "INT", "WIS", "DEX", "CON"
+    };
+    char line[MAX_STRING_LENGTH];
+    char part[64];
+    bool first = true;
+    int i;
+
+    toc_strlcpy( line, "A over B: ", sizeof( line ) );
+    gear_change_number( ch, line, sizeof( line ), "hit",
+                        a->hitroll - b->hitroll, &first );
+    gear_change_number( ch, line, sizeof( line ), "dam",
+                        a->damroll - b->damroll, &first );
+    if ( obj1->item_type == ITEM_WEAPON && obj2->item_type == ITEM_WEAPON
+        && (obj1->value[1] != obj2->value[1]
+            || obj1->value[2] != obj2->value[2]) )
+    {
+        snprintf( part, sizeof( part ), "dice %dd%d vs %dd%d",
+                  obj1->value[1], obj1->value[2],
+                  obj2->value[1], obj2->value[2] );
+        gear_change_part( ch, line, sizeof( line ), part, &first );
+    }
+    gear_change_number( ch, line, sizeof( line ), "hp",
+                        a->max_hit - b->max_hit, &first );
+    gear_change_number( ch, line, sizeof( line ), "mana",
+                        a->max_mana - b->max_mana, &first );
+    gear_change_number( ch, line, sizeof( line ), "move",
+                        a->max_move - b->max_move, &first );
+    gear_change_number( ch, line, sizeof( line ), "AC",
+                        a->average_ac - b->average_ac, &first );
+    gear_change_number( ch, line, sizeof( line ), "save",
+                        a->saving_throw - b->saving_throw, &first );
+    for ( i = 0; i < MAX_STATS; i++ )
+        gear_change_number( ch, line, sizeof( line ), stat_names[i],
+                            a->stat[i] - b->stat[i], &first );
+    if ( a->exp_bonus != b->exp_bonus )
+    {
+        snprintf( part, sizeof( part ), "XP %+d%%",
+                  a->exp_bonus - b->exp_bonus );
+        gear_change_part( ch, line, sizeof( line ), part, &first );
+    }
+    gear_change_flags( ch, line, sizeof( line ), "+",
+        affect_bit_name( a->affected_by & ~b->affected_by ), &first );
+    gear_change_flags( ch, line, sizeof( line ), "-",
+        affect_bit_name( b->affected_by & ~a->affected_by ), &first );
+    gear_change_flags( ch, line, sizeof( line ), "+",
+        affect2_bit_name( a->affected_by2 & ~b->affected_by2 ), &first );
+    gear_change_flags( ch, line, sizeof( line ), "-",
+        affect2_bit_name( b->affected_by2 & ~a->affected_by2 ), &first );
+
+    if ( first )
+        toc_strlcat( line, "nothing you can see on the score sheet",
+                     sizeof( line ) );
+    toc_strlcat( line, ".\n\r", sizeof( line ) );
+    send_to_char( line, ch );
+}
+
+/*
+ * Which category carries most of the winner's overall edge -- the same
+ * weighted indexes gear_calculate_overall adds up, taken one at a time.
+ */
+static const char *gear_main_reason( const GEAR_PROFILE *profile,
+                                     const GEAR_METRICS *base,
+                                     const GEAR_METRICS *win,
+                                     const GEAR_METRICS *lose )
+{
+    static const char *names[] = {
+        "weapon damage", "spellcasting", "survivability", "leveling pace",
+        "utility"
+    };
+    double edge[5];
+    double best;
+    int pick;
+    int i;
+
+    edge[0] = (gear_metric_index( win->melee, base->melee )
+        - gear_metric_index( lose->melee, base->melee ))
+        * profile->melee_weight;
+    edge[1] = (gear_metric_index( win->spells, base->spells )
+        - gear_metric_index( lose->spells, base->spells ))
+        * profile->spell_weight;
+    edge[2] = (gear_metric_index( win->survival, base->survival )
+        - gear_metric_index( lose->survival, base->survival ))
+        * profile->defense_weight;
+    edge[3] = (gear_metric_index( win->leveling, base->leveling )
+        - gear_metric_index( lose->leveling, base->leveling ))
+        * profile->leveling_weight;
+    edge[4] = (gear_metric_index( win->utility, base->utility )
+        - gear_metric_index( lose->utility, base->utility ))
+        * profile->utility_weight;
+
+    pick = 0;
+    best = edge[0];
+    for ( i = 1; i < 5; i++ )
+        if ( edge[i] > best )
+        {
+            best = edge[i];
+            pick = i;
+        }
+    return names[pick];
+}
+
+static void gear_send_recommendation( CHAR_DATA *ch,
+                                      const GEAR_PROFILE *profile,
+                                      const GEAR_METRICS *base,
+                                      const GEAR_METRICS *metrics1,
+                                      const GEAR_METRICS *metrics2,
+                                      bool usable1, bool usable2, int focus )
 {
     char buf[MAX_STRING_LENGTH];
+    char reason[96];
+    double value1;
+    double value2;
     double percent;
+    bool a_wins;
 
     if ( usable1 && !usable2 )
     {
-        snprintf( buf, sizeof( buf ),
-                  "Recommendation: A is the usable choice right now; B's result is theoretical.\n\r" );
-        send_to_char( buf, ch );
+        send_to_char( "Verdict: A -- B cannot be used right now, so its figures are theoretical.\n\r", ch );
         return;
     }
     if ( usable2 && !usable1 )
     {
-        snprintf( buf, sizeof( buf ),
-                  "Recommendation: B is the usable choice right now; A's result is theoretical.\n\r" );
-        send_to_char( buf, ch );
+        send_to_char( "Verdict: B -- A cannot be used right now, so its figures are theoretical.\n\r", ch );
         return;
     }
     if ( !usable1 && !usable2 )
     {
-        send_to_char( "Recommendation: neither item is usable by you right now.\n\r", ch );
+        send_to_char( "Verdict: neither item is usable by you right now.\n\r", ch );
         return;
     }
 
+    value1 = gear_focus_value( metrics1, focus );
+    value2 = gear_focus_value( metrics2, focus );
     if ( fabs( value1 - value2 ) <= UMAX( 0.01, value2 * 0.005 ) )
     {
         snprintf( buf, sizeof( buf ),
-                  "Recommendation: the items are effectively tied for %s.\n\r",
+                  "Verdict: effectively even for %s.\n\r",
                   gear_focus_name( focus ) );
+        send_to_char( buf, ch );
+        return;
     }
-    else if ( value1 > value2 )
-    {
-        percent = (value1 / UMAX( 0.1, value2 ) - 1.0) * 100.0;
-        snprintf( buf, sizeof( buf ),
-                  "Recommendation: A (%s) is %.1f%% better for %s.\n\r",
-                  obj1->short_descr, UMIN( 999.9, percent ),
-                  gear_focus_name( focus ) );
-    }
-    else
-    {
-        percent = (value2 / UMAX( 0.1, value1 ) - 1.0) * 100.0;
-        snprintf( buf, sizeof( buf ),
-                  "Recommendation: B (%s) is %.1f%% better for %s.\n\r",
-                  obj2->short_descr, UMIN( 999.9, percent ),
-                  gear_focus_name( focus ) );
-    }
+
+    a_wins = value1 > value2;
+    percent = a_wins ? value1 / UMAX( 0.1, value2 ) - 1.0
+                     : value2 / UMAX( 0.1, value1 ) - 1.0;
+    reason[0] = '\0';
+    if ( focus == GEAR_FOCUS_OVERALL )
+        snprintf( reason, sizeof( reason ), ", mostly from %s",
+                  a_wins ? gear_main_reason( profile, base, metrics1, metrics2 )
+                         : gear_main_reason( profile, base, metrics2, metrics1 ) );
+    snprintf( buf, sizeof( buf ), "Verdict: %s is %.1f%% better for %s%s.\n\r",
+              a_wins ? "A" : "B", UMIN( 999.9, percent * 100.0 ),
+              focus == GEAR_FOCUS_OVERALL ? "you" : gear_focus_name( focus ),
+              reason );
     send_to_char( buf, ch );
 }
 
+static void gear_send_item_line( CHAR_DATA *ch, char label, OBJ_DATA *obj,
+                                 bool usable, const char *why )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    snprintf( buf, sizeof( buf ), "%c) %s (level %d)%s%s%s%s\n\r",
+              label, obj->short_descr, obj->level,
+              obj->wear_loc != WEAR_NONE ? ", worn" : "",
+              usable ? "" : " [not usable: ", usable ? "" : why,
+              usable ? "" : "]" );
+    send_to_char( buf, ch );
+}
+
+/* ------------------------------------------------------------------ */
+/* COMPARE UPGRADES: the gear finder, in the game                      */
+/* ------------------------------------------------------------------ */
+
+#define GEAR_UPGRADE_TOP 5
+
+extern const int dice_thrown[];
+extern const int dice_size[];
+extern AREA_DATA *area_first;
+
+typedef struct gear_upgrade
+{
+    OBJ_INDEX_DATA *pObj;
+    MOB_INDEX_DATA *pMob;
+    AREA_DATA *area;
+    int level;
+    int slot;
+    double gain;
+} GEAR_UPGRADE;
+
+typedef struct gear_slot_state
+{
+    int slot;
+    OBJ_DATA *worn;
+    GEAR_LOADOUT base;
+    GEAR_METRICS base_metrics;
+    double now_value;
+} GEAR_SLOT_STATE;
+
+static const struct
+{
+    const char *name;
+    int first;
+    int second;
+} gear_groups[] = {
+    { "light",    WEAR_LIGHT,    -1 },
+    { "finger",   WEAR_FINGER_L, WEAR_FINGER_R },
+    { "neck",     WEAR_NECK_1,   WEAR_NECK_2 },
+    { "body",     WEAR_BODY,     -1 },
+    { "head",     WEAR_HEAD,     -1 },
+    { "legs",     WEAR_LEGS,     -1 },
+    { "feet",     WEAR_FEET,     -1 },
+    { "hands",    WEAR_HANDS,    -1 },
+    { "arms",     WEAR_ARMS,     -1 },
+    { "off hand", WEAR_SHIELD,   -1 },
+    { "about",    WEAR_ABOUT,    -1 },
+    { "waist",    WEAR_WAIST,    -1 },
+    { "wrist",    WEAR_WRIST_L,  WEAR_WRIST_R },
+    { "wield",    WEAR_WIELD,    -1 },
+    { "held",     WEAR_HOLD,     -1 }
+};
+#define GEAR_GROUP_COUNT ((int)(sizeof( gear_groups ) / sizeof( gear_groups[0] )))
+
+static int gear_group_lookup( const char *arg )
+{
+    static const struct { const char *alias; int group; } aliases[] = {
+        { "ring", 1 }, { "rings", 1 }, { "amulet", 2 }, { "necklace", 2 },
+        { "armor", 3 }, { "armour", 3 }, { "helm", 4 }, { "helmet", 4 },
+        { "boots", 6 }, { "gloves", 7 }, { "shield", 9 }, { "offhand", 9 },
+        { "secondary", 9 }, { "cloak", 10 }, { "belt", 11 },
+        { "bracer", 12 }, { "bracers", 12 }, { "weapon", 13 },
+        { "main", 13 }, { "hold", 14 }
+    };
+    int i;
+
+    for ( i = 0; i < (int)(sizeof( aliases ) / sizeof( aliases[0] )); i++ )
+        if ( !str_cmp( arg, aliases[i].alias ) )
+            return aliases[i].group;
+    for ( i = 0; i < GEAR_GROUP_COUNT; i++ )
+        if ( !str_prefix( arg, gear_groups[i].name ) )
+            return i;
+    return -1;
+}
+
+/*
+ * The object a reset would make, without making it: create_object would
+ * put it in object_list, count it against its limit and advance max-load
+ * bookkeeping, all for a figure.  Only the fields the evaluation reads
+ * are filled; nothing here outlives the call.
+ *
+ * A level -1 prototype takes its level from what loads it, exactly as
+ * create_object and reset_area decide: a mobile's level less two, or a
+ * shopkeeper's by item type, never above 52.  Its weapon dice and armour
+ * follow that level -- the commonest of create_object's weapon rolls.
+ */
+static void gear_object_from_index( OBJ_DATA *obj, OBJ_INDEX_DATA *pObj,
+                                    MOB_INDEX_DATA *pMob )
+{
+    int level;
+    int i;
+
+    memset( obj, 0, sizeof( *obj ) );
+    obj->pIndexData = pObj;
+    obj->name = pObj->name;
+    obj->short_descr = pObj->short_descr;
+    obj->description = pObj->description;
+    obj->item_type = pObj->item_type;
+    obj->extra_flags = pObj->extra_flags;
+    obj->extra_flags2 = pObj->extra_flags2;
+    obj->wear_flags = pObj->wear_flags;
+    obj->wear_loc = WEAR_NONE;
+    obj->weight = pObj->weight;
+    obj->cost = pObj->cost;
+    obj->condition = pObj->condition;
+    obj->material = pObj->material;
+    for ( i = 0; i < 5; i++ )
+        obj->value[i] = pObj->value[i];
+
+    if ( pObj->level != -1 )
+    {
+        obj->level = pObj->level;
+        return;
+    }
+
+    if ( pMob->pShop != NULL )
+        level = (pObj->item_type == ITEM_WEAPON
+                 || pObj->item_type == ITEM_ARMOR) ? 10 : 0;
+    else
+        level = URANGE( 0, pMob->level - 2, LEVEL_HERO2 - 1 );
+    level = UMIN( level, 52 );
+    obj->level = (sh_int)level;
+    if ( pObj->item_type == ITEM_WEAPON )
+    {
+        obj->value[1] = dice_thrown[level];
+        obj->value[2] = dice_size[level];
+    }
+    else if ( pObj->item_type == ITEM_ARMOR )
+    {
+        for ( i = 0; i < 3; i++ )
+            obj->value[i] = level / 5 + 3;
+    }
+}
+
+/*
+ * Whether a reset hands a player something to keep.  Rot-death gear
+ * crumbles a few ticks after its carrier dies, and inventory-flagged
+ * items on anything but a shopkeeper are destroyed with the corpse;
+ * gods-only and implementor-only rooms are not the world.
+ */
+static bool gear_reset_yields_gear( OBJ_INDEX_DATA *pObj,
+                                    MOB_INDEX_DATA *pMob,
+                                    ROOM_INDEX_DATA *pRoom )
+{
+    if ( pObj == NULL || pMob == NULL )
+        return false;
+    if ( IS_SET( pObj->extra_flags, ITEM_ROT_DEATH ) )
+        return false;
+    if ( IS_SET( pObj->extra_flags, ITEM_INVENTORY ) && pMob->pShop == NULL )
+        return false;
+    if ( pRoom != NULL
+        && IS_SET( pRoom->room_flags, ROOM_IMP_ONLY | ROOM_GODS_ONLY ) )
+        return false;
+    return pObj->item_type == ITEM_LIGHT || pObj->wear_flags != 0;
+}
+
+static void gear_prepare_slot( CHAR_DATA *ch, const GEAR_PROFILE *profile,
+                               int slot, int focus, GEAR_SLOT_STATE *state )
+{
+    GEAR_LOADOUT now;
+    GEAR_METRICS now_metrics;
+
+    state->slot = slot;
+    state->worn = get_eq_char( ch, slot );
+    gear_build_base_loadout( ch, state->worn, NULL, slot, &state->base );
+    gear_calculate_metrics( ch, profile, &state->base, &state->base_metrics );
+    now = state->base;
+    if ( state->worn != NULL )
+        gear_build_candidate_loadout( ch, &state->base, state->worn, slot,
+                                      &now );
+    gear_calculate_metrics( ch, profile, &now, &now_metrics );
+    gear_calculate_overall( profile, &state->base_metrics, &now_metrics );
+    state->now_value = gear_focus_value( &now_metrics, focus );
+}
+
+static double gear_candidate_gain( CHAR_DATA *ch, const GEAR_PROFILE *profile,
+                                   const GEAR_SLOT_STATE *state,
+                                   OBJ_DATA *candidate, int focus )
+{
+    GEAR_LOADOUT loadout;
+    GEAR_METRICS metrics;
+
+    gear_build_candidate_loadout( ch, &state->base, candidate, state->slot,
+                                  &loadout );
+    gear_calculate_metrics( ch, profile, &loadout, &metrics );
+    gear_calculate_overall( profile, &state->base_metrics, &metrics );
+    return gear_focus_value( &metrics, focus )
+        / UMAX( 0.1, state->now_value ) - 1.0;
+}
+
+/* Keep the best GEAR_UPGRADE_TOP, one entry per prototype, best first. */
+static void gear_keep_upgrade( GEAR_UPGRADE *list, int *count,
+                               const GEAR_UPGRADE *found )
+{
+    int i;
+    int at;
+
+    for ( i = 0; i < *count; i++ )
+        if ( list[i].pObj == found->pObj )
+        {
+            if ( found->gain < list[i].gain
+                || (found->gain == list[i].gain
+                    && found->pMob->level >= list[i].pMob->level) )
+                return;
+            for ( ; i < *count - 1; i++ )
+                list[i] = list[i + 1];
+            (*count)--;
+            break;
+        }
+
+    for ( at = 0; at < *count; at++ )
+        if ( found->gain > list[at].gain )
+            break;
+    if ( at >= GEAR_UPGRADE_TOP )
+        return;
+    if ( *count < GEAR_UPGRADE_TOP )
+        (*count)++;
+    for ( i = *count - 1; i > at; i-- )
+        list[i] = list[i - 1];
+    list[at] = *found;
+}
+
+/*
+ * Walk every reset in the world for gear a mobile carries or wears, and
+ * rank each piece by what it does to *this* character's kit in the slot
+ * it would go to.  The website's gear finder does this with fixed weights
+ * per class; here every candidate goes through the same simulation as
+ * COMPARE, against the gear actually worn, at the character's own level
+ * and skills.  Only what they could put on today counts.
+ */
+static void gear_find_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
+                                int only_group, int focus,
+                                GEAR_UPGRADE best[][GEAR_UPGRADE_TOP],
+                                int found[] )
+{
+    GEAR_SLOT_STATE states[GEAR_GROUP_COUNT][2];
+    AREA_DATA *pArea;
+    RESET_DATA *pReset;
+    MOB_INDEX_DATA *pMob;
+    ROOM_INDEX_DATA *pRoom;
+    OBJ_INDEX_DATA *pObj;
+    OBJ_DATA candidate;
+    GEAR_UPGRADE entry;
+    char why[128];
+    double gain;
+    int g;
+    int side;
+    int slot;
+
+    for ( g = 0; g < GEAR_GROUP_COUNT; g++ )
+    {
+        found[g] = 0;
+        if ( only_group >= 0 && g != only_group )
+            continue;
+        gear_prepare_slot( ch, profile, gear_groups[g].first, focus,
+                           &states[g][0] );
+        if ( gear_groups[g].second >= 0 )
+            gear_prepare_slot( ch, profile, gear_groups[g].second, focus,
+                               &states[g][1] );
+    }
+
+    for ( pArea = area_first; pArea != NULL; pArea = pArea->next )
+    {
+        pMob = NULL;
+        pRoom = NULL;
+        for ( pReset = pArea->reset_first; pReset != NULL;
+              pReset = pReset->next )
+        {
+            if ( pReset->command == 'M' )
+            {
+                pMob = get_mob_index( pReset->arg1 );
+                pRoom = get_room_index( pReset->arg3 );
+                continue;
+            }
+            if ( pReset->command != 'G' && pReset->command != 'E' )
+                continue;
+
+            pObj = get_obj_index( pReset->arg1 );
+            if ( !gear_reset_yields_gear( pObj, pMob, pRoom ) )
+                continue;
+            gear_object_from_index( &candidate, pObj, pMob );
+            if ( candidate.level > ch->level )
+                continue;
+
+            for ( g = 0; g < GEAR_GROUP_COUNT; g++ )
+            {
+                if ( only_group >= 0 && g != only_group )
+                    continue;
+                if ( !gear_item_supports_slot( &candidate,
+                                               gear_groups[g].first ) )
+                    continue;
+                for ( side = 0; side < 2; side++ )
+                {
+                    slot = side == 0 ? gear_groups[g].first
+                                     : gear_groups[g].second;
+                    if ( slot < 0 )
+                        break;
+                    if ( !gear_item_usable( ch, &candidate, slot, why,
+                                            sizeof( why ) ) )
+                        continue;
+                    gain = gear_candidate_gain( ch, profile, &states[g][side],
+                                                &candidate, focus );
+                    if ( gain <= 0.005 )
+                        continue;
+                    entry.pObj = pObj;
+                    entry.pMob = pMob;
+                    entry.area = pArea;
+                    entry.level = candidate.level;
+                    entry.slot = slot;
+                    entry.gain = gain;
+                    gear_keep_upgrade( best[g], &found[g], &entry );
+                }
+            }
+        }
+    }
+}
+
+static void gear_upgrade_source( const GEAR_UPGRADE *u, char *out,
+                                 size_t size )
+{
+    char area[MAX_INPUT_LENGTH];
+
+    quest_area_name( u->area->name, area, sizeof( area ) );
+    snprintf( out, size, "%s %s, %s",
+              u->pMob->pShop != NULL ? "sold by" : "from",
+              u->pMob->short_descr, area );
+}
+
+static void gear_send_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
+                                int focus, int only_group )
+{
+    static GEAR_UPGRADE best[GEAR_GROUP_COUNT][GEAR_UPGRADE_TOP];
+    int found[GEAR_GROUP_COUNT];
+    char buf[MAX_STRING_LENGTH];
+    char source[MAX_STRING_LENGTH];
+    char none[MAX_STRING_LENGTH];
+    OBJ_DATA *worn;
+    OBJ_DATA *other;
+    int g;
+    int i;
+
+    gear_find_upgrades( ch, profile, only_group, focus, best, found );
+
+    if ( only_group < 0 )
+    {
+        snprintf( buf, sizeof( buf ),
+                  "Upgrades in reach, ranked for %s (gain over what you wear):\n\r",
+                  focus == GEAR_FOCUS_OVERALL ? "you" : gear_focus_name( focus ) );
+        send_to_char( buf, ch );
+        none[0] = '\0';
+        for ( g = 0; g < GEAR_GROUP_COUNT; g++ )
+        {
+            if ( found[g] == 0 )
+            {
+                if ( none[0] != '\0' )
+                    toc_strlcat( none, ", ", sizeof( none ) );
+                toc_strlcat( none, gear_groups[g].name, sizeof( none ) );
+                continue;
+            }
+            gear_upgrade_source( &best[g][0], source, sizeof( source ) );
+            snprintf( buf, sizeof( buf ), " %-8s %+6.1f%%  %s (L%d) -- %s\n\r",
+                      gear_groups[g].name,
+                      UMIN( 999.9, best[g][0].gain * 100.0 ),
+                      best[g][0].pObj->short_descr, best[g][0].level, source );
+            send_to_char( buf, ch );
+        }
+        if ( none[0] != '\0' )
+        {
+            snprintf( buf, sizeof( buf ), "Nothing in reach beats your: %s.\n\r",
+                      none );
+            send_to_char( buf, ch );
+        }
+        send_to_char( "COMPARE UPGRADES <slot> lists the best five for one slot.\n\r",
+                      ch );
+        return;
+    }
+
+    g = only_group;
+    worn = get_eq_char( ch, gear_groups[g].first );
+    other = gear_groups[g].second >= 0
+        ? get_eq_char( ch, gear_groups[g].second ) : NULL;
+    snprintf( buf, sizeof( buf ), "Best in reach for your %s, ranked for %s:\n\r",
+              gear_groups[g].name,
+              focus == GEAR_FOCUS_OVERALL ? "you" : gear_focus_name( focus ) );
+    send_to_char( buf, ch );
+    if ( gear_groups[g].second >= 0 )
+        snprintf( buf, sizeof( buf ), "  You wear: %s | %s\n\r",
+                  worn != NULL ? worn->short_descr : "nothing",
+                  other != NULL ? other->short_descr : "nothing" );
+    else
+        snprintf( buf, sizeof( buf ), "  You wear: %s\n\r",
+                  worn != NULL ? worn->short_descr : "nothing" );
+    send_to_char( buf, ch );
+
+    if ( found[g] == 0 )
+    {
+        send_to_char( "Nothing you can wear today beats it.\n\r", ch );
+        return;
+    }
+    for ( i = 0; i < found[g]; i++ )
+    {
+        worn = get_eq_char( ch, best[g][i].slot );
+        snprintf( buf, sizeof( buf ), " %d. %+6.1f%%  %s (L%d)%s%s\n\r",
+                  i + 1, UMIN( 999.9, best[g][i].gain * 100.0 ),
+                  best[g][i].pObj->short_descr, best[g][i].level,
+                  gear_groups[g].second >= 0
+                      ? (worn != NULL ? ", in place of " : ", in the empty slot")
+                      : "",
+                  gear_groups[g].second >= 0 && worn != NULL
+                      ? worn->short_descr : "" );
+        send_to_char( buf, ch );
+        gear_upgrade_source( &best[g][i], source, sizeof( source ) );
+        snprintf( buf, sizeof( buf ), "             %s\n\r", source );
+        send_to_char( buf, ch );
+    }
+}
+
+/* ------------------------------------------------------------------ */
+/* The command                                                         */
+/* ------------------------------------------------------------------ */
+
 static void gear_send_usage( CHAR_DATA *ch )
 {
-    send_to_char( "Syntax: compare <item> [item]\n\r", ch );
-    send_to_char( "        compare <focus> <item> [item]\n\r", ch );
-    send_to_char( "        compare profile\n\r", ch );
+    send_to_char( "Syntax: compare <item> [item]          how two items change your kit\n\r", ch );
+    send_to_char( "        compare <focus> <item> [item]  rank by one category\n\r", ch );
+    send_to_char( "        compare detail <item> [item]   the full projected loadouts\n\r", ch );
+    send_to_char( "        compare upgrades [slot]        the best gear you can get today\n\r", ch );
+    send_to_char( "        compare profile                the priorities behind it all\n\r", ch );
     send_to_char( "Focus: overall, damage, spells, defense, leveling, utility\n\r", ch );
 }
 
@@ -1589,19 +2294,16 @@ void do_compare( CHAR_DATA *ch, char *argument )
     OBJ_DATA *obj1;
     OBJ_DATA *obj2;
     GEAR_PROFILE profile;
-    GEAR_LOADOUT base;
-    GEAR_LOADOUT loadout1;
-    GEAR_LOADOUT loadout2;
     GEAR_METRICS base_metrics;
     GEAR_METRICS metrics1;
     GEAR_METRICS metrics2;
     int focus;
     int parsed_focus;
+    int group;
     int slot;
     bool usable1;
     bool usable2;
-    double focused_value1;
-    double focused_value2;
+    bool detail;
 
     if ( IS_NPC( ch ) )
     {
@@ -1623,11 +2325,18 @@ void do_compare( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* Leading words, in any order: a focus, DETAIL, UPGRADES. */
     focus = GEAR_FOCUS_OVERALL;
-    parsed_focus = gear_focus_lookup( arg1 );
-    if ( parsed_focus != GEAR_FOCUS_INVALID )
+    detail = false;
+    for ( ;; )
     {
-        focus = parsed_focus;
+        parsed_focus = gear_focus_lookup( arg1 );
+        if ( parsed_focus != GEAR_FOCUS_INVALID )
+            focus = parsed_focus;
+        else if ( !str_cmp( arg1, "detail" ) || !str_cmp( arg1, "full" ) )
+            detail = true;
+        else
+            break;
         argument = one_argument( argument, arg1 );
         if ( arg1[0] == '\0' )
         {
@@ -1635,6 +2344,22 @@ void do_compare( CHAR_DATA *ch, char *argument )
             return;
         }
     }
+
+    if ( !str_cmp( arg1, "upgrades" ) || !str_cmp( arg1, "upgrade" ) )
+    {
+        one_argument( argument, arg2 );
+        group = -1;
+        if ( arg2[0] != '\0' && (group = gear_group_lookup( arg2 )) < 0 )
+        {
+            send_to_char( "Slots: light, finger, neck, body, head, legs, feet, hands, arms,\n\r"
+                          "       off hand, about, waist, wrist, wield, held.\n\r", ch );
+            return;
+        }
+        gear_build_profile( ch, &profile );
+        gear_send_upgrades( ch, &profile, focus, group );
+        return;
+    }
+
     one_argument( argument, arg2 );
 
     obj1 = get_obj_carry( ch, arg1 );
@@ -1645,6 +2370,8 @@ void do_compare( CHAR_DATA *ch, char *argument )
         send_to_char( "You do not have the first item.\n\r", ch );
         return;
     }
+
+    gear_build_profile( ch, &profile );
 
     if ( arg2[0] != '\0' )
     {
@@ -1659,7 +2386,7 @@ void do_compare( CHAR_DATA *ch, char *argument )
     }
     else
     {
-        obj2 = gear_find_equipped_match( ch, obj1 );
+        obj2 = gear_find_equipped_match( ch, &profile, obj1, focus );
         if ( obj2 == NULL )
         {
             send_to_char( "You aren't wearing anything in a comparable slot.\n\r", ch );
@@ -1675,7 +2402,8 @@ void do_compare( CHAR_DATA *ch, char *argument )
     }
 
     if ( obj1->wear_loc != WEAR_NONE && obj2->wear_loc != WEAR_NONE
-        && obj1->wear_loc != obj2->wear_loc )
+        && obj1->wear_loc != obj2->wear_loc
+        && gear_pair_partner( obj1->wear_loc ) != obj2->wear_loc )
     {
         send_to_char( "Those items are already worn in different slots; remove one before comparing them.\n\r",
                       ch );
@@ -1689,64 +2417,57 @@ void do_compare( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    gear_build_profile( ch, &profile );
-    gear_build_base_loadout( ch, obj1, obj2, slot, &base );
-    gear_build_candidate_loadout( ch, &base, obj1, slot, &loadout1 );
-    gear_build_candidate_loadout( ch, &base, obj2, slot, &loadout2 );
-    gear_calculate_metrics( ch, &profile, &base, &base_metrics );
-    gear_calculate_metrics( ch, &profile, &loadout1, &metrics1 );
-    gear_calculate_metrics( ch, &profile, &loadout2, &metrics2 );
-    gear_calculate_overall( &profile, &base_metrics, &metrics1 );
-    gear_calculate_overall( &profile, &base_metrics, &metrics2 );
-
+    gear_evaluate_pair( ch, &profile, obj1, obj2, slot,
+                        &base_metrics, &metrics1, &metrics2 );
     usable1 = gear_item_usable( ch, obj1, slot, reason1, sizeof( reason1 ) );
     usable2 = gear_item_usable( ch, obj2, slot, reason2, sizeof( reason2 ) );
 
-    gear_send_profile( ch, &profile );
-    snprintf( buf, sizeof( buf ), "Comparison slot: %s\n\r",
-              gear_slot_name( slot ) );
-    send_to_char( buf, ch );
-    snprintf( buf, sizeof( buf ), "A) %s (level %d)%s%s%s\n\r",
-              obj1->short_descr, obj1->level,
-              usable1 ? "" : " [not usable: ",
-              usable1 ? "" : reason1, usable1 ? "" : "]" );
-    send_to_char( buf, ch );
-    snprintf( buf, sizeof( buf ), "B) %s (level %d)%s%s%s\n\r",
-              obj2->short_descr, obj2->level,
-              usable2 ? "" : " [not usable: ",
-              usable2 ? "" : reason2, usable2 ? "" : "]" );
+    if ( detail )
+        gear_send_profile( ch, &profile );
+    gear_send_item_line( ch, 'A', obj1, usable1, reason1 );
+    gear_send_item_line( ch, 'B', obj2, usable2, reason2 );
+    snprintf( buf, sizeof( buf ), "Slot: %s.  Ranked for %s.\n\r",
+              gear_slot_name( slot ),
+              focus == GEAR_FOCUS_OVERALL ? profile.style
+                                          : gear_focus_name( focus ) );
     send_to_char( buf, ch );
 
-    send_to_char( "\n\rEstimated category edges:\n\r", ch );
-    if ( focus == GEAR_FOCUS_OVERALL || focus == GEAR_FOCUS_DAMAGE )
-        gear_send_metric( ch, "Weapon damage", metrics1.melee, metrics2.melee,
-                          "damage/round", focus == GEAR_FOCUS_DAMAGE );
-    if ( focus == GEAR_FOCUS_OVERALL || focus == GEAR_FOCUS_SPELLS )
-        gear_send_metric( ch, "Spellcasting", metrics1.spells, metrics2.spells,
-                          "readiness", focus == GEAR_FOCUS_SPELLS );
-    if ( focus == GEAR_FOCUS_OVERALL || focus == GEAR_FOCUS_DEFENSE )
-        gear_send_metric( ch, "Survivability", metrics1.survival,
-                          metrics2.survival, "effective hp",
-                          focus == GEAR_FOCUS_DEFENSE );
-    if ( focus == GEAR_FOCUS_OVERALL || focus == GEAR_FOCUS_LEVELING )
-        gear_send_metric( ch, "Leveling", metrics1.leveling,
-                          metrics2.leveling, "efficiency",
-                          focus == GEAR_FOCUS_LEVELING );
-    if ( focus == GEAR_FOCUS_OVERALL || focus == GEAR_FOCUS_UTILITY )
-        gear_send_metric( ch, "Utility", metrics1.utility, metrics2.utility,
-                          "readiness", focus == GEAR_FOCUS_UTILITY );
-    if ( focus != GEAR_FOCUS_OVERALL )
-        gear_send_metric( ch, "Overall fit", metrics1.overall,
-                          metrics2.overall, "profile index", false );
+    send_to_char( "                            A          B\n\r", ch );
+    gear_send_row( ch, "Damage/round", metrics1.melee, metrics2.melee,
+                   focus == GEAR_FOCUS_DAMAGE );
+    gear_send_row( ch, "Spellcasting", metrics1.spells, metrics2.spells,
+                   focus == GEAR_FOCUS_SPELLS );
+    gear_send_row( ch, "Effective hp", metrics1.survival, metrics2.survival,
+                   focus == GEAR_FOCUS_DEFENSE );
+    gear_send_row( ch, "Leveling pace", metrics1.leveling, metrics2.leveling,
+                   focus == GEAR_FOCUS_LEVELING );
+    gear_send_row( ch, "Utility", metrics1.utility, metrics2.utility,
+                   focus == GEAR_FOCUS_UTILITY );
+    gear_send_row( ch, "Overall fit", metrics1.overall, metrics2.overall,
+                   focus == GEAR_FOCUS_OVERALL );
+    gear_send_changes( ch, obj1, obj2, &metrics1, &metrics2 );
 
-    send_to_char( "\n\rProjected loadouts:\n\r", ch );
-    gear_send_loadout_facts( ch, &profile, &metrics1, &metrics2 );
+    if ( detail )
+    {
+        send_to_char( "\n\rProjected loadouts:\n\r", ch );
+        gear_send_loadout_facts( ch, &profile, &metrics1, &metrics2 );
+    }
+    else if ( metrics1.relic_damage_reduction > 0
+        || metrics1.relic_nonphysical_reduction > 0
+        || metrics1.relic_movement_reduction > 0
+        || metrics1.relic_kill_heal > 0
+        || metrics2.relic_damage_reduction > 0
+        || metrics2.relic_nonphysical_reduction > 0
+        || metrics2.relic_movement_reduction > 0
+        || metrics2.relic_kill_heal > 0 )
+    {
+        gear_send_relic_facts( ch, 'A', &metrics1 );
+        gear_send_relic_facts( ch, 'B', &metrics2 );
+    }
 
-    focused_value1 = gear_focus_value( &metrics1, focus );
-    focused_value2 = gear_focus_value( &metrics2, focus );
-    send_to_char( "\n\r", ch );
-    gear_send_recommendation( ch, obj1, obj2, focused_value1,
-                              focused_value2, usable1, usable2, focus );
-    send_to_char( "Estimate uses an equal-level opponent, current skills, and a five-round fight.\n\r",
-                  ch );
+    gear_send_recommendation( ch, &profile, &base_metrics, &metrics1,
+                              &metrics2, usable1, usable2, focus );
+    if ( detail )
+        send_to_char( "Estimate uses an equal-level opponent, current skills, and a five-round fight.\n\r",
+                      ch );
 }
