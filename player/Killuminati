@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790901619
+LogO 1790905599
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,13 +18,13 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6407125
+Plyd 6411105
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
-Room 2401
+Room 2494
 HMV  30814 30814 30115 30115 30075 30075
 NewGold 98
 NewPlat 2503018

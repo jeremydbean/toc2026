@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790901678
+LogO 1790905652
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,26 +15,26 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 51
-Plyd 231572
+Plyd 235546
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 25027
-HMV  3185 6441 8620 8620 1759 2861
-NewGold 18
-NewPlat 80
-NewCopp 321
-NewSilv 94
-BankCP 504737235
-IntTime 1790816284
-IntTotal 5737235
+Room 2390
+HMV  1082 1096 1445 1445 421 421
+NewGold 113
+NewPlat 95
+NewCopp 653
+NewSilv 204
+BankCP 505999078
+IntTime 1790902684
+IntTotal 6999078
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 803
+AchKills 829
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -68,6 +68,7 @@ Achv visit-haon-dor 1790901408
 Achv visit-gangland 1790640411
 Achv visit-thalos 1790639548
 Achv visit-shire 1790639907
+Achv visit-drow-city 1790903709
 Achv visit-wyvern 1790640963
 Achv visit-battleground 1790899715
 Achv five-hundred-kills 1790637986
@@ -87,6 +88,7 @@ Achv fifty-quest-streak 1790733868
 Achv carry-ten-platinum 1790722751
 Achv visit-arena 1790817462
 Achv visit-chessboard 1790898112
+Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
 Achv visit-korzath-fortress 1790899622
 LastOut  1790896676
@@ -104,10 +106,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  122785
+Exp  124507
 Act  4261068
-AfBy 3678908
-AfBy2 4106
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -135,20 +136,20 @@ Color 16 6
 Pos  8
 Prac 4
 Trai 1
-Save  -17
-Alig  927
-Hit   71
-Dam   119
-ACs -355 -365 -322 -207
+Save  -6
+Alig  1000
+Hit   32
+Dam   46
+ACs -154 -164 -121 -6
 Attr 22 13 12 16 15
-AMod 16 25 25 19 24
+AMod -2 10 11 -2 9
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Fifth Order~
 Pnts 0
 TSex 1
 LLev 0
 HMVP 1086 1395 400
-Cond 0 24 6
+Cond 0 100 100
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
@@ -162,7 +163,7 @@ Sk 100 'dagger'
 Sk 25 'flail'
 Sk 26 'mace'
 Sk 35 'polearm'
-Sk 94 'shield block'
+Sk 96 'shield block'
 Sk 30 'spear'
 Sk 100 'sword'
 Sk 30 'whip'
@@ -173,60 +174,17 @@ Sk 75 'heroic grip'
 Sk 95 'dodge'
 Sk 100 'enhanced damage'
 Sk 95 'kick'
-Sk 98 'parry'
+Sk 100 'parry'
 Sk 1 'rescue'
 Sk 98 'second attack'
 Sk 85 'third attack'
-Sk 86 'fast healing'
+Sk 87 'fast healing'
 Sk 80 'recall'
 Sk 75 'smite'
 Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   0   5 -20  17          0          0
-AffD 'bless'   0   5   8  18          0          0
-AffD 'bless'   0   5  -8  24          0          0
-AffD 'shield'   0   5 -20  17          0          0
-AffD 'stone skin'   0   5 -40  17          0          0
-AffD 'sanctuary'   0   5   0   0        128          0
-AffD 'haste'   0   5   4   2    2097152          0
-AffD 'fly'   0   5   0   0     524288          0
-AffD 'pass door'   0   5   0   0    1048576          0
-AffD 'protection evil'   0   5   0   0       8192          0
-AffD 'fire shield'   0   5   0   0          0          8
-AffD 'divine protection'   0   5   0   0          0       4096
-AffD 'giant strength'   0   5   4   1          0          0
-AffD 'frenzy'   0   5  11  18          0          0
-AffD 'frenzy'   0   5  11  19          0          0
-AffD 'frenzy'   0   5 110  17          0          0
-AffD 'major globe'   0   5 -131  17          0          0
-AffD 'detect invis'  26   5   0   0          8          0
-AffD 'detect hidden'   0   5   0   0         32          0
-AffD 'detect magic'  37   5   0   0         16          0
-AffD 'detect good'  30   5   0   0          0          2
-AffD 'detect evil'  14   5   0   0          4          0
-AffD 'power gloves'  33   5  42  19          0          0
-AffD 'empower'  37   5   0   0          0          0
-AffD 'sanctuary'  34   5   0   0        128          0
-AffD 'haste'  42   5   4   2    2097152          0
-AffD 'fly'  38   5   0   0     524288          0
-AffD 'pass door'   0   5   0   0    1048576          0
-AffD 'protection evil'   0   5   0   0       8192          0
-AffD 'fire shield'  26   5   0   0          0          8
-AffD 'divine protection'   0   5   0   0          0       4096
-AffD 'giant strength'   0   5  15   1          0          0
-AffD 'empower'  19   5  15   3          0          0
-AffD 'empower'  35   5  15   4          0          0
-AffD 'empower'  38   5  11   2          0          0
-AffD 'empower'  37   5  15   5          0          0
-AffD 'empower'  28   5  20  18          0          0
-AffD 'empower'  39   5  20  19          0          0
-AffD 'empower'  40   5 -100  17          0          0
-AffD 'titanic'  42   5 5355  13          0          0
-AffD 'titanic'  41   5 7175  12          0          0
-AffD 'titanic'  27   5 2440  14          0          0
-AffD 'titanic'   0   5  50  16          0          0
 End
 
 #O
@@ -586,12 +544,11 @@ End
 #O
 Vnum 3737
 Nest 0
-ExtF 67108864
 Wear 11
 Lev  1
 Cost 100000
-Cond 98
-Repd 9
+Cond 100
+Repd 10
 Val  2 2 4 0 0
 End
 
@@ -613,7 +570,7 @@ Wear 2
 Lev  43
 Cost 22600000
 Cond 100
-Repd 0
+Repd 1
 End
 
 #O
@@ -898,11 +855,10 @@ End
 #O
 Vnum 3715
 Nest 0
-ExtF 67108928
 Wear 17
 Cost 0
-Cond 94
-Repd 0
+Cond 100
+Repd 1
 End
 
 #O
@@ -953,23 +909,11 @@ End
 #O
 Vnum 29211
 Nest 0
-Wear 16
+Wear -1
 Lev  51
 Cost 50000000
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 700
-Nest 0
-ExtF 3146818
-Wear -1
-Lev  48
-Cost 25000000
-Cond 100
-Repd 0
-Affect -1 48 -1 3 20 0 0
 End
 
 #O
@@ -982,6 +926,63 @@ Repd 0
 Spell 1 'detect invis'
 Spell 2 'detect magic'
 Spell 3 'detect hidden'
+End
+
+#O
+Vnum 700
+Nest 0
+ExtF 3146818
+Wear 16
+Lev  48
+Cost 25000000
+Cond 100
+Repd 0
+Affect -1 48 -1 3 20 0 0
+End
+
+#O
+Vnum 25102
+Nest 0
+Wear -1
+Lev  2
+Cost 0
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+End
+
+#O
+Vnum 2382
+Nest 0
+Wear -1
+Lev  27
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 2321
+Nest 0
+Wear -1
+Lev  29
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 29 -1 -4 1 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 2 0 0
+End
+
+#O
+Vnum 2321
+Nest 0
+Wear -1
+Lev  29
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 29 -1 -2 5 0 0
 End
 
 #STASH

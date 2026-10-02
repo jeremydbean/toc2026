@@ -407,3 +407,109 @@
 1790901569	gossip	Killuminati	i can use one of those temp credit cards too that only has like $10 on it or something so it could never go over anyway
 1790901578	gossip	Killuminati	those like virtual card numbers
 1790901593	gossip	Killuminati	yeah i'll prolly do that at some point, lol
+1790901792	gossip	Killuminati	oh and you can't gain any improvement on your skills fighting the dummy since you can turn off it's ability to hit you, lol
+1790901806	gossip	Killuminati	so no farming weapon skills on the dummy, lol
+1790901812	gossip	Alaric	Ha, can't make the hermit crab too obvious
+1790901817	gossip	Killuminati	lol
+1790901953	gossip	Alaric	At remort, does it force you naked?
+1790901976	gossip	Alaric	Might need to grab some opal rings and whatnot in advance
+1790902005	gossip	Killuminati	oh damn claude gives free $25 api access for your first time
+1790902012	gossip	Killuminati	shit, thats a TON of questions, lol
+1790902054	gossip	Alaric	I want to say I have a faint memory of still wearing your 54 gear at remort. You start power leveling but if yoyu log off, the gear deletes because of the check that has something like you not being able to keep gear a handful of levels above yourself
+1790902119	gossip	Killuminati	i'll check that
+1790902130	gossip	Killuminati	it's supposed to just remove it and keep it in inventory, i'll confirm.
+1790902195	gossip	Alaric	I know it deletes. I cheesed the horseman at like level 20 and the gear that wasn't the charm (level 0) was gone after logging
+1790902224	gossip	Alaric	Want to say it's like 2 or 3 levels above you
+1790902245	gossip	Killuminati	ok it won't do that i promise.  i'll probably have it make you a custom pack called your level x gear and throw it in your stash
+1790902303	gossip	Alaric	I think there are gear respawn checks based on how many pfiles own a piece of gear to ensure scarcity. Maybe it was implemented to prevent people from farming and hoarding too much
+1790902328	gossip	Killuminati	hat's the culprit  the "castrate storage characters" guard: fwrite_obj skips saving any non-container item more than 2 levels above the character. After remort drops you to a low level, every high-level piece is >2 above you, so it's silently not written to your pfile  gone on next login. That's the "can't hold gear past a certain level" behavior, and it's data loss for remorters.
+1790902352	gossip	Killuminati	it's being fixed.  good job remembering that, lol
+1790902367	gossip	Killuminati	be a good thing to ask the oracle, lol
+1790902383	gossip	Alaric	It bit me in the ass even back in the day when someone high level would feed you gears, then they'd be gone the next dayy
+1790902402	gossip	Alaric	Lol, can bake cookies while you sit with her like the Matrix
+1790902424	gossip	Killuminati	i told em i don't care about storage characters and never do that. lol.  but stash should be safe anyway
+1790902465	gossip	Killuminati	i have my WoW 'bankerchick' blood elf in a fancy dress that runs all my storage, lol
+1790902479	gossip	Killuminati	it's a guild all to herself with maxed out bank slots, lol
+1790902483	gossip	Killuminati	and maxed out bank storage
+1790902507	gossip	Killuminati	and a whole guild bank to herself, lol
+1790902536	gossip	Alaric	That's how the character name of Caddy started.
+1790902540	gossip	Killuminati	i'm pro storage character, but that's the point of the stash anyway, so whatever weird code they had limiting that is being stripped right now
+1790902544	gossip	Alaric	It was a mule to hold all the shit I was hiding
+1790902550	gossip	Alaric	He was my Caddy
+1790902559	gossip	Killuminati	i actually dramatically increased the amount people can carry anyway
+1790902574	gossip	Killuminati	level 59 you can basically carry what an immortal can carry, which is effectively no limit, lol
+1790902592	gossip	Killuminati	god damn you're leveling fast, lol
+1790902605	gossip	Alaric	Flyying
+1790902628	gossip	Killuminati	imagine if you had maxed gear, lol
+1790902656	gossip	Alaric	For sure. I'd be near 53
+1790902659	gossip	Killuminati	hopefully claude will have this code done before you remort. lolol
+1790902711	gossip	Alaric	Big jump was due to Herbie. Those buffs are actually insane. Running around without it, now
+1790902730	gossip	Killuminati	i love that the high end AI coding basically can do anything and rarely fucks up.  but i literally have it spin up an entire mud on the side and test everyting before it implements anything.  it's found a lot of bugs that way
+1790902755	gossip	Killuminati	it like creates characters, boosts em, and tests it all.  it'll remort a character to confirm before rolling out, lol
+1790902764	gossip	Killuminati	that's hermie.  herbie's girlfriend, lol
+1790902768	gossip	Alaric	I was curious about rollbacks and whatnot. Not much data to make a backup of dates, I suppose
+1790902777	gossip	Alaric	Lol
+1790902779	gossip	Alaric	Generous bitch
+1790902787	gossip	Killuminati	oh yeah it's all github so it can always roll back
+1790902800	gossip	Killuminati	like eveyr single change is reverseable and fully logged
+1790902820	gossip	Killuminati	player files get uploaded to the cloud every 5 min, lol
+1790902824	gossip	Killuminati	plus the regular backups
+1790902861	gossip	Killuminati	i had an SD card die on the original pi this was on and no one lost anything and it had spun up a new image on a new machine within 15 min, lol
+1790902999	gossip	Killuminati	god i love this new max claude plan.  everything i've done tonight, the website change, all the math for that.  and i'm only at 21% usage from 17%
+1790903002	gossip	Alaric	Nice. I had a Pi at one point that Forrest and I had compiled and ran it for awhile. No clue where that went, but this is an awesome modern day application of the tools available
+1790903024	gossip	Killuminati	i literally had it running on a pi zero just fine.
+1790903045	gossip	Killuminati	now it's on a 4-core 24GB of RAM cloud PC with a 4Gbps connection, lol
+1790903056	gossip	Killuminati	and that's the FREE tier with oracle now, lol
+1790903090	gossip	Alaric	Crazy. That's obscene stats for a mud
+1790903100	gossip	Killuminati	ok it finished the remort, it's doing the oracle now, lol
+1790903228	gossip	Alaric	Got two items with a (Damaged) flag on them, but the NPC reports them not needing repair. Also verified they're in perfect condition because the mud lets me wear them after they're removed
+1790903260	gossip	Alaric	Not sure how to report that one. But have two examples
+1790903526	gossip	Killuminati	what are the items
+1790903568	gossip	Alaric	One of my pirate rings and excalibur
+1790903584	gossip	Alaric	...now Excalibur seems fine. 
+1790903622	say	Killuminati	what item?
+1790903622	gossip	Alaric	Huh, guess maybye I'm fine
+1790903640	say	Alaric	I might be going crazy. I dunno
+1790903643	gossip	Killuminati	ok claude is looking into it anyway, lol
+1790903684	gossip	Alaric	Ring may have been confusion on which one needed removed, but I swear Excal was giving my grief. Seems fine now, thoughy
+1790903696	gossip	Killuminati	mmmkay
+1790903866	gossip	Killuminati	oh it found the bug
+1790903883	gossip	Killuminati	apparently it changed the condition when repaired but didn't remove the flag that adds the damaged
+1790903988	gossip	Killuminati	oh ok.  so previously.  the item would have shattered, lol.  but items don't do that anymore, they cant be damaged to the point of shattering anymore.  
+1790903998	gossip	Killuminati	but the flag can still go on it, that's being fixed
+1790904010	gossip	Alaric	Score
+1790904117	gossip	Killuminati	yeah so rather than shatter it, items just become unequipped and can't be used at all until repaired
+1790904133	gossip	Killuminati	apparently the flags for that aren't perfect
+1790904158	gossip	Alaric	Least those items still pass the check to wear. That's what really mattered
+1790904357	gossip	Killuminati	ok it has everything it needs to make the AI oracle, lol.  it's building it now, lol
+1790904376	gossip	Killuminati	at $0.001 a question, that free $25 will last forever, lol
+1790904457	gossip	Alaric	Can it be pretty complex questions. What if you were, "Can you look at all of my best in slot gear, and suggest, in order, the easiest pieces to get based on my current gear that I am wearing?"
+1790904464	gossip	Alaric	That's a game-genie level question
+1790904485	gossip	Killuminati	yeah, it can answer anything at all about the game.  it knows everything, it has access to all the code
+1790904566	gossip	Alaric	Might be some different calculations going on.... I went and got a broach of life. The in-game comparison is telling me both my starjewel and golden amulet are better.
+1790904602	gossip	Alaric	Can see the stats on the website, I was skeptical about a piece of gear with only raw defenses on it and no stats is better
+1790904676	gossip	Alaric	Maybe website is pushing that because of the survivability of the defense
+1790904737	gossip	Alaric	Looks like it's because it is essentially hp gear
+1790904777	gossip	Killuminati	not sure, i can ask, lol
+1790904789	gossip	Killuminati	or you can here in a few, lol
+1790904794	gossip	Alaric	Website has a dropdown for why it thinks it is the best
+1790904876	gossip	Alaric	You had done actual testing. Suppose just gotta believe in it. I'm too skeptical
+1790904914	gossip	Killuminati	lol.  i mean, i tested it with like 4 characters and they all dramatically improved with the dummy after putting on the recommended gear
+1790904927	gossip	Killuminati	i'm sure it's not perfect, but it definately impressed me more than i expected it to, lol
+1790904969	gossip	Killuminati	nice thing about the dummy is it's a consistent fight.  same mob, same number of rounds, so the gear is really the only thing that changed
+1790905024	gossip	Killuminati	the dummy is always the same level as who attacks it, unless you tweak it with all the menus before.  and you can tweak like anything about it.  if you want to test magic resist, it can be whatever spec you want
+1790905067	gossip	Killuminati	lol, claude is currently remorting and testing, lol
+1790905113	gossip	Alaric	It does seem to favor survivability heavily. I have the website sort by dwarf level 50 warrior. Bracelet for example show elemental bracelets as the best. The breakdown shows them, because of hp bonus
+1790905145	gossip	Killuminati	hmm, i can tweak that down if that's what it's doing
+1790905207	gossip	Alaric	Maybe could have tweak to determine whether you want raw damage, or survivability
+1790905244	gossip	Alaric	I remember I did have an hp set on Kyrus at one point, then had aliases set up to remove a couple pieces at a time as my hp went down.
+1790905302	gossip	Alaric	PK fights would go like 6 rounds, then swap a handful of pieces and be at 100 percent and damage would go up, rinse and repeat like 3 more times. People would be nearly dead by by the time I had my "real" gear on
+1790905347	gossip	Killuminati	yeah i made it clear that i want 'best gear' to be 'more damage' for the most part.  obviously if something is like + huge hp boost vs. slight dam bonus, i'd want that to be considered, but.  focus mostly on improvement to damage
+1790905356	gossip	Killuminati	it may tweak the list a bit based on that clarification
+1790905384	gossip	Alaric	Weapons for the most part are what I expected to see on the level 50 list
+1790905398	gossip	Alaric	But hard to argue with the damage your chars were doing
+1790905411	gossip	Killuminati	yeah i mean, you saw what you did with all the recommendations, lol
+1790905428	gossip	Alaric	Not stopping me from going down the list though :)
+1790905441	gossip	Killuminati	Now I see the whole picture. The bug is magnitude: hp/mana bonuses come in tenshundreds while hitroll/damroll/stats come in single digits, so even with damroll weighted higher per point (warrior damroll 4.0 vs hp 2.0), a +50 hp roll (=100) buries a +6 damroll upgrade (=24). I'll make the survivability weights small enough that an ordinary damage upgrade wins, while a huge hp bump still can. Also scaling weapon-dice value by the class's melee weight so weapons matter for fighters, not casters. The remort
+1790905617	gossip	Killuminati	the new weights hand-check out (warrior: +8 damroll = 32 beats +50 hp = 10; but +150 hp = 30 beats +2 damroll = 8). Let me check for an existing gear-scoring test I need to keep green:
+1790905637	gossip	Alaric	Crazy how much it checks
