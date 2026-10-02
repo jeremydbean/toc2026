@@ -25156,3 +25156,80 @@ Fri Oct  2 23:05:30 2026 :: Log Alaric [2427]: n
 Fri Oct  2 23:05:30 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
 Fri Oct  2 23:05:30 2026 :: Log Alaric [2404]: n
 Fri Oct  2 23:05:30 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Fri Oct  2 23:06:00 2026 :: Log Alaric [2401]: where valk
+Fri Oct  2 23:06:10 2026 :: Log Alaric [2401]: w
+Fri Oct  2 23:06:10 2026 :: Log Alaric [0]: moved to 2405 (Western Oak Tree Square.)
+Fri Oct  2 23:06:10 2026 :: Log Alaric [2405]: w
+Fri Oct  2 23:06:10 2026 :: Log Alaric [0]: moved to 2433 (Temple Boulevard.)
+Fri Oct  2 23:06:11 2026 :: Log Alaric [2433]: w
+Fri Oct  2 23:06:11 2026 :: Log Alaric [0]: moved to 2434 (Temple Boulevard.)
+Fri Oct  2 23:06:11 2026 :: Log Alaric [2434]: ex
+Fri Oct  2 23:06:12 2026 :: Log Alaric [2434]: w
+Fri Oct  2 23:06:12 2026 :: Log Alaric [0]: moved to 2435 (Temple Boulevard.)
+Fri Oct  2 23:06:12 2026 :: Log Alaric [2435]: ex
+Fri Oct  2 23:06:13 2026 :: Log Alaric [2435]: w
+Fri Oct  2 23:06:13 2026 :: Log Alaric [0]: moved to 2436 (Temple Boulevard.)
+Fri Oct  2 23:06:13 2026 :: Log Alaric [2436]: ex
+Fri Oct  2 23:06:15 2026 :: Log Alaric [2436]: w
+Fri Oct  2 23:06:15 2026 :: Log Alaric [0]: moved to 2437 (Temple Boulevard.)
+Fri Oct  2 23:06:15 2026 :: Log Alaric [2437]: ex
+Fri Oct  2 23:06:16 2026 :: Log Alaric [2437]: n
+Fri Oct  2 23:06:16 2026 :: Log Alaric [0]: moved to 4601 (Entrance to the Temple of Breas.)
+Fri Oct  2 23:06:18 2026 :: Log Alaric [4601]: con gu
+Fri Oct  2 23:06:19 2026 :: Log Alaric [4601]: who
+Fri Oct  2 23:06:25 2026 :: Log Alaric [4601]: eq
+Fri Oct  2 23:06:30 2026 :: Log Alaric [4601]: sc
+Fri Oct  2 23:06:33 2026 :: Log Alaric [4601]: kill gu
+Fri Oct  2 23:06:41 2026 :: Log Alaric [4601]: torm
+Fri Oct  2 23:06:46 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:06:54 2026 :: Log Alaric [4601]: sc
+Fri Oct  2 23:06:54 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:07:02 2026 :: Log Alaric [4601]: af
+Fri Oct  2 23:07:03 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:07:12 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:07:15 2026 :: Log Alaric [4601]: get exc
+Fri Oct  2 23:07:16 2026 :: Log Alaric [4601]: wear exc
+Fri Oct  2 23:07:20 2026 :: Log Alaric [4601]: af
+Fri Oct  2 23:07:25 2026 :: Log Alaric [4601]: flee
+Fri Oct  2 23:07:25 2026 :: Log Alaric [0]: moved to 2437 (Temple Boulevard.)
+Fri Oct  2 23:07:28 2026 :: Log Alaric [2437]: sc
+Fri Oct  2 23:07:32 2026 :: Log Alaric [2437]: help hand
+Fri Oct  2 23:07:36 2026 :: Log Alaric [2437]: gainlist
+Fri Oct  2 23:07:44 2026 :: Log Alaric [2437]: help remort
+Fri Oct  2 23:08:06 2026 :: Log Alaric [2437]: wear exc
+Fri Oct  2 23:08:07 2026 :: Log Alaric [2437]: i
+Fri Oct  2 23:08:08 2026 :: Log Alaric [2437]: eq
+Fri Oct  2 23:08:11 2026 :: Log Alaric [2437]: rem plate
+Fri Oct  2 23:08:15 2026 :: Log Alaric [2437]: rem veil
+Fri Oct  2 23:08:16 2026 :: Log Alaric [2437]: sc
+Fri Oct  2 23:08:18 2026 :: Log Alaric [2437]: wear ve
+Fri Oct  2 23:08:19 2026 :: Log Alaric [2437]: sc
+Fri Oct  2 23:08:27 2026 :: Log Alaric [2437]: af
+Fri Oct  2 23:08:28 2026 :: Log Alaric [2437]: eq
+Fri Oct  2 23:08:31 2026 :: Log Alaric [2437]: rem amu
+Fri Oct  2 23:08:32 2026 :: Log Alaric [2437]: rem amu
+Fri Oct  2 23:08:32 2026 :: Log Alaric [2437]: sc
+Fri Oct  2 23:08:34 2026 :: Sock.sinaddr:  3.212.128.62
+Fri Oct  2 23:08:35 2026 :: EOF encountered on read.
+Fri Oct  2 23:08:37 2026 :: Log Alaric [2437]: wear starj
+Fri Oct  2 23:08:37 2026 :: Log Alaric [2437]: wear starj
+Fri Oct  2 23:08:40 2026 :: Log Alaric [2437]: put amu new
+Fri Oct  2 23:08:40 2026 :: Log Alaric [2437]: put amu new
+Fri Oct  2 23:08:41 2026 :: Log Alaric [2437]: score
+Fri Oct  2 23:08:47 2026 :: Log Alaric [2437]: eq
+Fri Oct  2 23:08:55 2026 :: Log Alaric [2437]: rem ve
+Fri Oct  2 23:08:56 2026 :: Log Alaric [2437]: sc
+Fri Oct  2 23:08:59 2026 :: Log Alaric [2437]: wear ve
+Fri Oct  2 23:09:01 2026 :: Log Alaric [2437]: rem dip
+Fri Oct  2 23:09:02 2026 :: Log Alaric [2437]: wear dip
+Fri Oct  2 23:09:03 2026 :: Log Alaric [2437]: sc
+Fri Oct  2 23:09:05 2026 :: Log Alaric [2437]: who
+Fri Oct  2 23:09:09 2026 :: Log Alaric [2437]: wake
+Fri Oct  2 23:09:10 2026 :: Log Alaric [2437]: l
+Fri Oct  2 23:09:11 2026 :: Log Alaric [2437]: af
+Fri Oct  2 23:09:12 2026 :: Log Alaric [2437]: eq
+Fri Oct  2 23:12:11 2026 :: Log Alaric [2437]: quit
+Fri Oct  2 23:12:11 2026 :: Alaric has quit.
+Fri Oct  2 23:12:11 2026 :: [QUIT] Player rejoined the real world.
+Fri Oct  2 23:13:39 2026 :: Sock.sinaddr:  3.149.57.90
+Fri Oct  2 23:13:39 2026 :: EOF encountered on read.
