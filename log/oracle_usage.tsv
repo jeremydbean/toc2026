@@ -3,3 +3,5 @@
 1790914142	Killuminati	claude-haiku-4-5	323	48	0	19166	0.024521	how are psionics determined?	Psionics are granted randomly at remort 2, 3, and 4—one power from each of the four disciplines per remort—and all 17 powers unlock at remort 5.	0
 1790914171	Killuminati	claude-haiku-4-5	326	75	19166	0	0.002618	what are the perks for remorting?	Remort resets you to level 3 but lets you rebuild as a new class/guild, keeps all your equipment, and unlocks psionics (four random powers per remort 2-4, all seventeen by remort 5); each life also raises the level cap by one until the final remort at level 59.	0
 1790951973	Deploycheck	claude-haiku-4-5	18	14	0	19715	0.039518	what does sanctuary do?	`sanctuary` reduces physical damage taken by 25%.	0
+1790952125	Deploycheck	cache	0	0	0	0	0.000000	what does sanctuary do?	`sanctuary` reduces physical damage taken by 25%.	1
+1790952137	Deploycheck	claude-haiku-4-5	301	16	19715	0	0.002352	what does sanctuary do?	`sanctuary` reduces damage taken from any attack by one half.	0
