@@ -3648,9 +3648,9 @@ void disarm( CHAR_DATA *ch, CHAR_DATA *victim )
     if ( IS_OBJ_STAT(obj,ITEM_NOREMOVE))
     {
 	act("$S weapon won't budge!",ch,NULL,victim,TO_CHAR);
-	act("$n tries to \x02\x0C disarm\x02\x01 you, but your weapon won't budge!",
+	act("$n tries to \x02\x0Cdisarm\x02\x01 you, but your weapon won't budge!",
 	    ch,NULL,victim,TO_VICT);
-	act("$n tries to \x02\x0C disarm\x02\x01 $N, but fails.",ch,NULL,victim,TO_NOTVICT);
+	act("$n tries to \x02\x0Cdisarm\x02\x01 $N, but fails.",ch,NULL,victim,TO_NOTVICT);
 	return;
     }
 
@@ -3663,10 +3663,10 @@ void disarm( CHAR_DATA *ch, CHAR_DATA *victim )
     {
         act("You wrench at $N's weapon, but $E grips it like iron!",
             ch,NULL,victim,TO_CHAR);
-        act("$n tries to \x02\x0C disarm\x02\x01 you -- you tighten "
+        act("$n tries to \x02\x0Cdisarm\x02\x01 you -- you tighten "
             "your grip and hold fast!",
             ch,NULL,victim,TO_VICT);
-        act("$n tries to \x02\x0C disarm\x02\x01 $N, but $N holds on "
+        act("$n tries to \x02\x0Cdisarm\x02\x01 $N, but $N holds on "
             "through sheer strength.",
             ch,NULL,victim,TO_NOTVICT);
         return;
