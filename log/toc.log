@@ -25250,3 +25250,34 @@ Fri Oct  2 23:35:26 2026 :: Log Alaric [2437]: pray
 Fri Oct  2 23:35:26 2026 :: Log Alaric [0]: moved to 8 (The Oracle's Sanctum)
 Fri Oct  2 23:35:26 2026 :: Oracle: Alaric prayed from room 2437 (Temple Boulevard.) and entered her sanctum.
 Fri Oct  2 23:35:29 2026 :: Oracle answered Alaric in room 8: I don't understand that command; try `help` or `commands` to see what is available.
+Fri Oct  2 23:36:23 2026 :: Log Alaric [8]: say I am having trouble getting gear from high level mobiles. Could you analyze my potential upgrades, from the lowest required player level and suggest what three items would be the easiest for me to obtain so that I can increase my damage.
+Fri Oct  2 23:36:23 2026 :: Log Alaric [8]: asked the Oracle: I am having trouble getting gear from high level mobiles. Could you analyze my potential upgrades, from the lowest required player level and suggest what three items would be the easiest for me to obtain so that I can increase my damage.
+Fri Oct  2 23:36:29 2026 :: Oracle answered Alaric in room 8: Your newbie shield (lvl 1) is the easiest swap -- upgrade to a Ceresian kite (lvl 50) from Countess DiLuna in Morgan, then seek the elven gloves (lvl 52) and elven bracelet (lvl 52) from the elven hall guard in the Tombs of Tarin, all within your reach at 52.
+Fri Oct  2 23:37:10 2026 :: Log Alaric [8]: say Getting gear that is above level 50 is too difficult. Can you suggest gear that would still be upgrades for me, but below level 50?
+Fri Oct  2 23:37:10 2026 :: Log Alaric [8]: asked the Oracle: Getting gear that is above level 50 is too difficult. Can you suggest gear that would still be upgrades for me, but below level 50?
+Fri Oct  2 23:37:13 2026 :: Oracle answered Alaric in room 8: Swap your newbie shield for a Ceresian kite (lvl 50) from Countess DiLuna, your pegleg for Solgartian battle armor leggings (lvl 50) from Bear Olefsky, and your mud school diploma for the Crystalline Sceptre of Commanding (lvl 50) from Crown Prince Augustus Starfire -- all at level 50 in Morgan.
+Fri Oct  2 23:37:34 2026 :: Log Alaric [8]: say How about gear that is even lower level than those
+Fri Oct  2 23:37:34 2026 :: Log Alaric [8]: asked the Oracle: How about gear that is even lower level than those
+Fri Oct  2 23:37:41 2026 :: Oracle answered Alaric in room 8: Your winter veil mantle (lvl 50) is already best-in-slot; below that, seek the divine breastplate (lvl 51) which replaces your current plate, or downgrade to some black velvet robes (lvl 32), battle helmet (lvl 51), a pair of mithril boots (lvl 39), or a white bracer (lvl 40) -- all significantly lower but less of an upgrade than level 50 items.
+Fri Oct  2 23:38:02 2026 :: Log Alaric [8]: say done
+Fri Oct  2 23:38:02 2026 :: Log Alaric [0]: moved to 2437 (Temple Boulevard.)
+Fri Oct  2 23:39:02 2026 :: Sock.sinaddr:  54.167.223.174
+Fri Oct  2 23:39:03 2026 :: EOF encountered on read.
+Fri Oct  2 23:39:05 2026 :: Log Alaric [2437]: n
+Fri Oct  2 23:39:05 2026 :: Log Alaric [0]: moved to 4601 (Entrance to the Temple of Breas.)
+Fri Oct  2 23:39:11 2026 :: Log Alaric [4601]: wear exc
+Fri Oct  2 23:39:15 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:39:23 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:39:33 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:39:50 2026 :: Log Alaric [4601]: bers
+Fri Oct  2 23:40:05 2026 :: Log Alaric [4601]: (refused) kk
+Fri Oct  2 23:40:07 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:40:15 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:40:21 2026 :: Log Alaric [4601]: score
+Fri Oct  2 23:40:21 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:40:30 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:40:33 2026 :: Log Alaric [4601]: get exc
+Fri Oct  2 23:40:33 2026 :: Log Alaric [4601]: wear exc
+Fri Oct  2 23:40:55 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:41:05 2026 :: Log Alaric [4601]: k
+Fri Oct  2 23:41:10 2026 :: Log Alaric [4601]: k
