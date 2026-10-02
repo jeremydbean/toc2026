@@ -22349,3 +22349,128 @@ Fri Oct  2 01:06:21 2026 :: Log Alaric [2494]: repair exc
 Fri Oct  2 01:06:23 2026 :: Log Alaric [2494]: wear exc
 Fri Oct  2 01:06:34 2026 :: Log Alaric [2494]: eq
 Fri Oct  2 01:07:08 2026 :: Log Alaric [2494]: gos Got two items with a (Damaged) flag on them, but the NPC reports them not needing repair. Also verified they're in perfect condition because the mud lets me wear them after they're removed
+Fri Oct  2 01:07:23 2026 :: Sock.sinaddr:  5.161.215.244
+Fri Oct  2 01:07:23 2026 :: EOF encountered on read.
+Fri Oct  2 01:07:40 2026 :: Log Alaric [2494]: gos Not sure how to report that one. But have two examples
+Fri Oct  2 01:09:29 2026 :: Log Alaric [2494]: score
+Fri Oct  2 01:09:39 2026 :: Log Alaric [2494]: score
+Fri Oct  2 01:09:41 2026 :: Log Alaric [2494]: who
+Fri Oct  2 01:09:49 2026 :: Log Alaric [2494]: who
+Fri Oct  2 01:09:51 2026 :: Log Alaric [2494]: score
+Fri Oct  2 01:11:00 2026 :: Log Alaric [2494]: who
+Fri Oct  2 01:11:03 2026 :: Log Alaric [2494]: af
+Fri Oct  2 01:11:09 2026 :: Log Alaric [2494]: l
+Fri Oct  2 01:11:10 2026 :: Log Alaric [2494]: n
+Fri Oct  2 01:11:10 2026 :: Log Alaric [0]: moved to 2485 (Market Plaza.)
+Fri Oct  2 01:11:11 2026 :: Log Alaric [2485]: w
+Fri Oct  2 01:11:11 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Fri Oct  2 01:11:13 2026 :: Log Alaric [2415]: kill ci
+Fri Oct  2 01:11:17 2026 :: Log Alaric [2415]: s
+Fri Oct  2 01:11:17 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Fri Oct  2 01:11:19 2026 :: Log Alaric [2402]: s
+Fri Oct  2 01:11:19 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Fri Oct  2 01:11:24 2026 :: Log Alaric [2401]: gain
+Fri Oct  2 01:11:25 2026 :: Log Alaric [2401]: list
+Fri Oct  2 01:11:43 2026 :: Log Alaric [2401]: north
+Fri Oct  2 01:11:43 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Fri Oct  2 01:11:43 2026 :: Log Alaric [2402]: north
+Fri Oct  2 01:11:43 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Fri Oct  2 01:11:43 2026 :: Log Alaric [2415]: east
+Fri Oct  2 01:11:43 2026 :: Log Alaric [0]: moved to 2485 (Market Plaza.)
+Fri Oct  2 01:11:43 2026 :: Log Alaric [2485]: east
+Fri Oct  2 01:11:43 2026 :: Log Alaric [0]: moved to 2486 (Market Plaza.)
+Fri Oct  2 01:11:44 2026 :: Log Alaric [2486]: east
+Fri Oct  2 01:11:44 2026 :: Log Alaric [0]: moved to 2487 (Market Plaza.)
+Fri Oct  2 01:11:44 2026 :: Log Alaric [2487]: north
+Fri Oct  2 01:11:44 2026 :: Log Alaric [0]: moved to 2484 (Market Plaza.)
+Fri Oct  2 01:11:44 2026 :: Log Alaric [2484]: north
+Fri Oct  2 01:11:44 2026 :: Log Alaric [0]: moved to 2481 (Market Plaza.)
+Fri Oct  2 01:11:44 2026 :: Log Alaric [2481]: north
+Fri Oct  2 01:11:44 2026 :: Log Alaric [0]: moved to 2514 (Dark Alley.)
+Fri Oct  2 01:11:45 2026 :: Log Alaric [2514]: east
+Fri Oct  2 01:11:45 2026 :: Log Alaric [0]: moved to 2505 (Dark Alley.)
+Fri Oct  2 01:11:45 2026 :: Log Alaric [2505]: north
+Fri Oct  2 01:11:45 2026 :: Log Alaric [0]: moved to 2506 (Dead End.)
+Fri Oct  2 01:11:45 2026 :: Log Alaric [2506]: open down
+Fri Oct  2 01:11:45 2026 :: Log Alaric [2506]: down
+Fri Oct  2 01:11:45 2026 :: Log Alaric [0]: moved to 7030 (The Quadruple Junction Under the Garbage)
+Fri Oct  2 01:11:48 2026 :: Log Alaric [7030]: west
+Fri Oct  2 01:11:48 2026 :: Log Alaric [0]: moved to 7022 (The odd room with smooth walls)
+Fri Oct  2 01:11:48 2026 :: Log Alaric [7022]: down
+Fri Oct  2 01:11:48 2026 :: Log Alaric [0]: moved to 7112 (An odd intersection)
+Fri Oct  2 01:11:48 2026 :: Log Alaric [7112]: west
+Fri Oct  2 01:11:48 2026 :: Log Alaric [0]: moved to 7104 (A junction in the sewer pipes)
+Fri Oct  2 01:11:48 2026 :: Log Alaric [7104]: north
+Fri Oct  2 01:11:48 2026 :: Log Alaric [0]: moved to 7103 (A muddy bend in the sewer system)
+Fri Oct  2 01:11:49 2026 :: Log Alaric [7103]: west
+Fri Oct  2 01:11:49 2026 :: Log Alaric [0]: moved to 7101 (Under the mudhole)
+Fri Oct  2 01:11:49 2026 :: Log Alaric [7101]: down
+Fri Oct  2 01:11:52 2026 :: Log Alaric [7101]: east
+Fri Oct  2 01:11:52 2026 :: Log Alaric [0]: moved to 7103 (A muddy bend in the sewer system)
+Fri Oct  2 01:11:53 2026 :: Log Alaric [7103]: south
+Fri Oct  2 01:11:53 2026 :: Log Alaric [0]: moved to 7104 (A junction in the sewer pipes)
+Fri Oct  2 01:11:53 2026 :: Log Alaric [7104]: east
+Fri Oct  2 01:11:53 2026 :: Log Alaric [0]: moved to 7112 (An odd intersection)
+Fri Oct  2 01:11:53 2026 :: Log Alaric [7112]: north
+Fri Oct  2 01:11:53 2026 :: Log Alaric [0]: moved to 7111 (The southwestern corner of the ledge)
+Fri Oct  2 01:11:53 2026 :: Log Alaric [7111]: east
+Fri Oct  2 01:11:53 2026 :: Log Alaric [0]: moved to 7115 (The Broad ledge)
+Fri Oct  2 01:11:54 2026 :: Log Alaric [7115]: south
+Fri Oct  2 01:11:54 2026 :: Log Alaric [0]: moved to 7129 (The sewer line.)
+Fri Oct  2 01:11:54 2026 :: Log Alaric [7129]: down
+Fri Oct  2 01:11:54 2026 :: Log Alaric [0]: moved to 7221 (The sewer drain.)
+Fri Oct  2 01:11:54 2026 :: Log Alaric [7221]: west
+Fri Oct  2 01:11:54 2026 :: Log Alaric [0]: moved to 7220 (A boring drain.)
+Fri Oct  2 01:11:54 2026 :: Log Alaric [7220]: north
+Fri Oct  2 01:11:54 2026 :: Log Alaric [0]: moved to 7219 (A dry sewer drain.)
+Fri Oct  2 01:11:55 2026 :: Log Alaric [7219]: east
+Fri Oct  2 01:11:55 2026 :: Log Alaric [0]: moved to 7217 (The half-dry drain.)
+Fri Oct  2 01:11:55 2026 :: Log Alaric [7217]: north
+Fri Oct  2 01:11:55 2026 :: Log Alaric [0]: moved to 7216 (Under water in the sewer.)
+Fri Oct  2 01:11:55 2026 :: Log Alaric [7216]: north
+Fri Oct  2 01:11:55 2026 :: Log Alaric [0]: moved to 7215 (The half-wet drain.)
+Fri Oct  2 01:11:55 2026 :: Log Alaric [7215]: north
+Fri Oct  2 01:11:55 2026 :: Log Alaric [0]: moved to 7210 (The four-way junction.)
+Fri Oct  2 01:11:56 2026 :: Log Alaric [7210]: west
+Fri Oct  2 01:11:56 2026 :: Log Alaric [0]: moved to 7209 (The crawlway.)
+Fri Oct  2 01:11:56 2026 :: Log Alaric [7209]: west
+Fri Oct  2 01:11:56 2026 :: Log Alaric [0]: moved to 7208 (The lair entrance.)
+Fri Oct  2 01:11:56 2026 :: Log Alaric [7208]: open north
+Fri Oct  2 01:11:56 2026 :: Log Alaric [7208]: north
+Fri Oct  2 01:11:56 2026 :: Log Alaric [0]: moved to 7204 (The Lair)
+Fri Oct  2 01:12:00 2026 :: Log Alaric [7204]: north
+Fri Oct  2 01:12:00 2026 :: Log Alaric [0]: moved to 7203 (The Lair)
+Fri Oct  2 01:12:00 2026 :: Log Alaric [7203]: north
+Fri Oct  2 01:12:00 2026 :: Log Alaric [0]: moved to 7202 (The Lair)
+Fri Oct  2 01:12:00 2026 :: Log Alaric [7202]: open north
+Fri Oct  2 01:12:00 2026 :: Log Alaric [7202]: north
+Fri Oct  2 01:12:00 2026 :: Log Alaric [0]: moved to 7201 (The inner Lair)
+Fri Oct  2 01:12:03 2026 :: Log Alaric [7201]: down
+Fri Oct  2 01:12:03 2026 :: Log Alaric [0]: moved to 25171 (The climb up.)
+Fri Oct  2 01:12:04 2026 :: Log Alaric [25171]: down
+Fri Oct  2 01:12:04 2026 :: Log Alaric [0]: moved to 25170 (The end of the sloping passage.)
+Fri Oct  2 01:12:04 2026 :: Log Alaric [25170]: east
+Fri Oct  2 01:12:04 2026 :: Log Alaric [0]: moved to 25169 (The slope steepens.)
+Fri Oct  2 01:12:04 2026 :: Log Alaric [25169]: east
+Fri Oct  2 01:12:04 2026 :: Log Alaric [0]: moved to 25168 (The slope upwards.)
+Fri Oct  2 01:12:04 2026 :: Log Alaric [25168]: east
+Fri Oct  2 01:12:04 2026 :: Log Alaric [0]: moved to 25167 (The dark passage.)
+Fri Oct  2 01:12:05 2026 :: Log Alaric [25167]: east
+Fri Oct  2 01:12:05 2026 :: Log Alaric [0]: moved to 25166 (The Intersection.)
+Fri Oct  2 01:12:05 2026 :: Log Alaric [25166]: north
+Fri Oct  2 01:12:05 2026 :: Log Alaric [0]: moved to 25165 (The dim passage.)
+Fri Oct  2 01:12:05 2026 :: Log Alaric [25165]: north
+Fri Oct  2 01:12:05 2026 :: Log Alaric [0]: moved to 25159 (The Trade Route.)
+Fri Oct  2 01:12:05 2026 :: Log Alaric [25159]: west
+Fri Oct  2 01:12:05 2026 :: Log Alaric [0]: moved to 25158 (The Trade Route.)
+Fri Oct  2 01:12:06 2026 :: Log Alaric [25158]: west
+Fri Oct  2 01:12:06 2026 :: Log Alaric [0]: moved to 25153 (The Trade Route.)
+Fri Oct  2 01:12:06 2026 :: Log Alaric [25153]: north
+Fri Oct  2 01:12:06 2026 :: Log Alaric [0]: moved to 25152 (The passage in between.)
+Fri Oct  2 01:12:06 2026 :: Log Alaric [25152]: north
+Fri Oct  2 01:12:06 2026 :: Log Alaric [0]: moved to 25151 (The hole in the wall.)
+Fri Oct  2 01:12:06 2026 :: Log Alaric [25151]: up
+Fri Oct  2 01:12:06 2026 :: Log Alaric [0]: moved to 25185 (The ledge.)
+Fri Oct  2 01:12:07 2026 :: Log Alaric [25185]: up
+Fri Oct  2 01:12:07 2026 :: Log Alaric [0]: moved to 2397 (The end of the guarded hall)
+Fri Oct  2 01:12:15 2026 :: Log Alaric [2397]: l
