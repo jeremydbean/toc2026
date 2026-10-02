@@ -4899,6 +4899,55 @@ in the first place.
 ~
 0 BNX 0
 S
+#8
+The Oracle's Sanctum~
+   Heavy velvet the colour of a bruised plum shuts out every trace of the
+world.  Candles gutter in the corners, their smoke mingling with the sweet
+haze of incense curling from a brass censer.  Clusters of amethyst and
+quartz glitter on every shelf, catching the candlelight and throwing it
+back in pale violet sparks.  At the centre of the room a round table draped
+in midnight silk holds a crystal ball, its depths swirling with a slow,
+milky light, and a deck of worn cards lies fanned beside it.  Strings of
+beads hang where a floor ought to be, and below them there is only mist.
+~
+0 CDKLN 0
+D5
+Through the hanging beads the mist thins toward the world you left.
+~
+beads curtain~
+0 0 4207
+E
+crystal ball~
+   The ball is clear as still water until you lean closer, then it clouds.
+Shapes move in its depths -- a road, a blade, a face -- and are gone before
+you can name them.
+~
+E
+crystals crystal amethyst quartz shelf shelves~
+   Amethyst geodes, spears of clear quartz and smoky points of citrine crowd
+the shelves.  They hum, very faintly, whenever the Oracle speaks.
+~
+E
+incense censer smoke haze~
+   A brass censer breathes out ribbons of sandalwood and myrrh.  The smoke
+never quite rises; it drifts, as though it were listening.
+~
+E
+cards deck tarot~
+   A worn tarot deck, fanned face down.  One card has been turned over: The
+Fool, stepping smiling off the edge of a cliff.
+~
+E
+candles candle~
+   Fat beeswax candles, half melted, their flames all leaning toward the
+crystal ball as if drawn to it.
+~
+E
+drapes velvet table silk~
+   Thick velvet and midnight silk, stitched with faded silver stars and the
+turning phases of a moon.
+~
+S
 #9
 Rest Area~
 A resting place for lost souls

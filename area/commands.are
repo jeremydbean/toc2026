@@ -4,14 +4,19 @@
 
 The Oracle is an ancient seer who answers questions about Times of Chaos.
 
-  pray             call her to your room (one seeker at a time)
-  ask <question>   ask her -- or just SAY her a question
-  say done         send her home when you are finished
+  pray             go to her sanctum (one seeker at a time)
+  say <anything>   in her sanctum, everything you say is said to her
+  ask <question>   the same, as a command
+  say done         return to where you prayed (or step down the beads)
 
 She knows commands, classes, races, remorts, skills, areas, leveling, and
 what gear to seek for your class and level.  She answers only questions
-about the game and keeps it brief.  She stays until you say DONE, leave the
-room, or fall silent a while.  The gods may bar a troublemaker from her.
+about the game and keeps it brief.
+
+An audience lasts at most five minutes and ends sooner if you fall silent.
+However it ends, you return to where you prayed, dazed for a moment.  You
+cannot pray in battle, while your blood is still up, while something hunts
+you, or from a death trap.  The gods may bar a troublemaker from her.
 ~
 
 60 FARSLAY ORACLEADMIN~

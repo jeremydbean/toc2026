@@ -868,12 +868,13 @@ struct  kill_data
 /* The Oracle -- an in-game seer who answers questions by asking Claude out
  * of process (src/oracle.c, webadmin/oracle.py).  Dormant until placed. */
 #define MOB_VNUM_ORACLE              97
+#define ROOM_VNUM_ORACLE             8   /* her sanctum, limbo.are */
 void  spellup_listen  args( ( CHAR_DATA *ch, const char *argument ) );
 void  oracle_listen   args( ( CHAR_DATA *ch, const char *argument ) );
 bool  oracle_here     args( ( CHAR_DATA *ch ) );
 void  oracle_on_char_from_room args( ( CHAR_DATA *ch ) );
-bool  oracle_hears    args( ( const char *argument ) );
 void  oracle_process_queries args( ( void ) );
+int   oracle_saved_room args( ( CHAR_DATA *ch ) );
 bool  is_oracle_mob   args( ( CHAR_DATA *ch ) );
 bool  is_killuminati  args( ( CHAR_DATA *ch ) );
 bool  is_divinely_warded args( ( CHAR_DATA *ch ) );

@@ -48,6 +48,7 @@
 #include <unistd.h>
 
 #include "merc.h"
+#include "interp.h"
 
 /* Both spools live in the game working directory (area/), beside
    webadmin.queue, so the two processes agree on where they are.  The
@@ -56,8 +57,10 @@
 #define ORACLE_ANSWER_FILE   "oracle.answer"
 #define ORACLE_JOURNAL_FILE  "../log/oracle.tsv"
 
-/* She leaves after this long with no question from her supplicant. */
-#define ORACLE_IDLE_SECONDS  180
+/* An audience in her sanctum lasts at most this long, and ends sooner after
+   this much silence.  She warns a minute before the end. */
+#define ORACLE_SESSION_SECONDS 300
+#define ORACLE_IDLE_SECONDS    180
 
 /* The model answers an off-topic question with exactly this token; she turns
    it into a refusal rather than speaking it.  After this many in one sitting
@@ -74,6 +77,12 @@ static CHAR_DATA *oracle_mob      = NULL;
 static char       oracle_summoner[MAX_INPUT_LENGTH] = "";
 static int        oracle_room_vnum = 0;
 static time_t     oracle_last      = 0;
+
+/* The audience: where the supplicant prayed from (a vnum, so a room that is
+   later freed cannot dangle), when it began, and whether she has warned. */
+static int        oracle_origin_vnum = 0;
+static time_t     oracle_started     = 0;
+static bool       oracle_warned      = FALSE;
 
 /* Off-topic strikes this sitting, and a short hold on an offender after she
    walks out on them.  In memory only -- a reboot forgives, which is fine for
@@ -225,19 +234,83 @@ static void oracle_journal( const char *role, const char *who, int room_vnum,
 }
 
 
+/* Coming back to the world leaves a supplicant dazed for a tick, so the
+   sanctum is never a way to step out of trouble and straight back in. */
+#define ORACLE_RETURN_LAG    PULSE_TICK
+
+static void oracle_come_back( CHAR_DATA *ch )
+{
+    if ( ch == NULL )
+        return;
+    send_to_char( "You stagger, dazed, as the world rushes back in around you.\n\r", ch );
+    WAIT_STATE( ch, ORACLE_RETURN_LAG );
+}
+
+
 /*
- * Send her home.  Clears the globals first, then speaks the farewell and
- * extracts the mob, so the extraction's own char_from_room pass finds the
- * globals already clear and does nothing.
+ * The room to write in a player file instead of the sanctum, or 0 if the
+ * character is not in it.  Nobody wakes up in her sanctum: her supplicant is
+ * saved at the room they prayed from, anyone else at the Temple.
  */
-static void oracle_dismiss( void )
+int oracle_saved_room( CHAR_DATA *ch )
+{
+    if ( ch == NULL || ch->in_room == NULL
+      || ch->in_room->vnum != ROOM_VNUM_ORACLE )
+        return 0;
+
+    if ( !IS_NPC(ch) && ch->name != NULL && oracle_origin_vnum > 0
+      && !str_cmp( ch->name, oracle_summoner )
+      && get_room_index( oracle_origin_vnum ) != NULL )
+        return oracle_origin_vnum;
+
+    return ROOM_VNUM_TEMPLE;
+}
+
+
+/* Point the sanctum's way out -- the bead curtain, down -- at a room. */
+static void oracle_set_way_out( ROOM_INDEX_DATA *to )
+{
+    ROOM_INDEX_DATA *sanctum = get_room_index( ROOM_VNUM_ORACLE );
+
+    if ( sanctum != NULL && to != NULL && sanctum->exit[DIR_DOWN] != NULL )
+        sanctum->exit[DIR_DOWN]->u1.to_room = to;
+}
+
+
+/* Where the supplicant goes home to: the room they prayed in, or the Temple
+   if that room is gone. */
+static ROOM_INDEX_DATA *oracle_home( int vnum )
+{
+    ROOM_INDEX_DATA *home = vnum > 0 ? get_room_index( vnum ) : NULL;
+
+    return home != NULL ? home : get_room_index( ROOM_VNUM_TEMPLE );
+}
+
+
+/*
+ * End the audience.  Clears the globals first, so the char_from_room passes
+ * below find nothing to do, then the Oracle fades and -- when send_home is
+ * set -- the supplicant is returned to the room they prayed in.  send_home is
+ * FALSE when they are already leaving on their own (walking down the bead
+ * curtain, quitting, being summoned away): moving them again would fight the
+ * move already in progress.  The way out is left pointing at their home
+ * either way, so the curtain still leads back.
+ */
+static void oracle_dismiss( bool send_home )
 {
     CHAR_DATA *mob = oracle_mob;
+    ROOM_INDEX_DATA *sanctum = get_room_index( ROOM_VNUM_ORACLE );
+    ROOM_INDEX_DATA *home = oracle_home( oracle_origin_vnum );
+    char who[MAX_INPUT_LENGTH];
 
+    toc_strlcpy( who, oracle_summoner, sizeof(who) );
     oracle_mob = NULL;
     oracle_summoner[0] = '\0';
     oracle_room_vnum = 0;
     oracle_last = 0;
+    oracle_origin_vnum = 0;
+    oracle_started = 0;
+    oracle_warned = FALSE;
 
     if ( mob != NULL )
     {
@@ -246,13 +319,36 @@ static void oracle_dismiss( void )
                 mob, NULL, NULL, TO_ROOM );
         extract_char( mob, TRUE );
     }
+
+    if ( send_home && sanctum != NULL && home != NULL && who[0] != '\0' )
+    {
+        CHAR_DATA *vch;
+        CHAR_DATA *vch_next;
+
+        for ( vch = sanctum->people; vch != NULL; vch = vch_next )
+        {
+            vch_next = vch->next_in_room;
+            if ( IS_NPC(vch) || vch->name == NULL || str_cmp( vch->name, who ) )
+                continue;
+
+            send_to_char( "The incense thickens into mist, and the sanctum fades away.\n\r", vch );
+            char_from_room( vch );
+            char_to_room( vch, home );
+            act( "$n steps out of a thinning curl of incense smoke.",
+                vch, NULL, NULL, TO_ROOM );
+            do_look( vch, "auto" );
+            oracle_come_back( vch );
+            break;
+        }
+    }
 }
 
 
 /*
  * Called from char_from_room for every character that leaves a room.  If her
- * supplicant walks out she returns whence she came; if she herself is being
- * removed (by any path) the globals are simply cleared.
+ * supplicant leaves the sanctum -- down the bead curtain, quitting, summoned
+ * away -- the audience ends.  If she herself is being removed (by any path)
+ * the globals are simply cleared.
  */
 void oracle_on_char_from_room( CHAR_DATA *ch )
 {
@@ -265,16 +361,25 @@ void oracle_on_char_from_room( CHAR_DATA *ch )
         oracle_summoner[0] = '\0';
         oracle_room_vnum = 0;
         oracle_last = 0;
+        oracle_origin_vnum = 0;
+        oracle_started = 0;
+        oracle_warned = FALSE;
         return;
     }
 
     if ( !IS_NPC(ch) && ch->name != NULL
       && !str_cmp( ch->name, oracle_summoner ) )
-        oracle_dismiss();
+    {
+        /* Leaving on their own -- down the bead curtain, or summoned away --
+           still costs the daze of coming back. */
+        oracle_come_back( ch );
+        oracle_dismiss( FALSE );
+    }
 }
 
 
-/* A word that ends a session, said rather than asked. */
+/* A word that ends the audience.  Trailing punctuation is ignored, so "done.",
+   "Done!" and "thanks?" all count. */
 static bool oracle_is_farewell( const char *said )
 {
     static const char * const words[] =
@@ -282,41 +387,21 @@ static bool oracle_is_farewell( const char *said )
         "exit", "done", "bye", "goodbye", "farewell", "thanks",
         "thank you", "that is all", "nevermind", "leave", NULL
     };
+    char word[MAX_INPUT_LENGTH];
+    size_t len;
     int i;
 
+    toc_strlcpy( word, said, sizeof(word) );
+    len = strlen( word );
+    while ( len > 0 && ( word[len - 1] == '.' || word[len - 1] == '!'
+                      || word[len - 1] == '?' || word[len - 1] == ' ' ) )
+        word[--len] = '\0';
+
     for ( i = 0; words[i] != NULL; i++ )
-        if ( !str_cmp( said, words[i] ) )
+        if ( !str_cmp( word, words[i] ) )
             return TRUE;
 
     return FALSE;
-}
-
-
-/*
- * Should a spoken line reach the Oracle?  A question (ends in '?') or a
- * farewell does; ordinary room chat does not, so casual talk near her never
- * spends an API call.
- */
-bool oracle_hears( const char *argument )
-{
-    char said[MAX_INPUT_LENGTH];
-    size_t len;
-
-    oracle_sanitize( said, sizeof(said), argument );
-    len = strlen( said );
-    if ( len == 0 )
-        return FALSE;
-
-    /* A question mark anywhere: "where is X?  give me directions" asks. */
-    if ( strchr( said, '?' ) != NULL )
-        return TRUE;
-
-    {
-        size_t i;
-        for ( i = 0; i < len; i++ )
-            said[i] = (char) LOWER( said[i] );
-    }
-    return oracle_is_farewell( said );
 }
 
 
@@ -397,7 +482,7 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
         act( "$n inclines her head.  'Go well.'", mob, NULL, ch, TO_VICT );
         oracle_journal( "DONE", ch->name,
                         ch->in_room != NULL ? ch->in_room->vnum : 0, said );
-        oracle_dismiss();
+        oracle_dismiss( TRUE );
         return;
     }
 
@@ -719,8 +804,10 @@ void do_ask( CHAR_DATA *ch, char *argument )
 }
 
 
-/* Deliver one answer to the player who asked, if they are still here. */
-static void oracle_deliver( CHAR_DATA *mob, const char *player,
+/* Deliver one answer to the player who asked, if they are still here.
+   Returns TRUE if the delivery ended the audience -- the mob is then gone and
+   must not be touched again. */
+static bool oracle_deliver( CHAR_DATA *mob, const char *player,
                             const char *answer )
 {
     char buf[MAX_STRING_LENGTH];
@@ -754,9 +841,10 @@ static void oracle_deliver( CHAR_DATA *mob, const char *player,
             oracle_cooldown_until =
                 ( current_time > 0 ? current_time : time(NULL) )
                 + ORACLE_COOLDOWN_SECONDS;
-            oracle_dismiss();
+            oracle_dismiss( TRUE );
+            return TRUE;
         }
-        return;
+        return FALSE;
     }
 
     /* A real answer: she is being used properly, so forgive earlier strikes. */
@@ -766,7 +854,7 @@ static void oracle_deliver( CHAR_DATA *mob, const char *player,
                     mob->in_room != NULL ? mob->in_room->vnum : 0, answer );
 
     if ( vch == NULL )
-        return;   /* they walked off; the answer is dropped */
+        return FALSE;   /* they walked off; the answer is dropped */
 
     snprintf( buf, sizeof(buf),
               "{%02X$n opens her eyes, turns to $N, and says, '$t'{00",
@@ -789,6 +877,7 @@ static void oracle_deliver( CHAR_DATA *mob, const char *player,
             gmcp_send_channel( rch->desc, "say", mob->short_descr, answer );
         }
     }
+    return FALSE;
 }
 
 
@@ -884,7 +973,13 @@ bool spec_oracle( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
                         *answer++ = '\0';
                         if ( buf[0] == '\0' || answer[0] == '\0' )
                             continue;
-                        oracle_deliver( mob, buf, answer );
+                        if ( oracle_deliver( mob, buf, answer ) )
+                        {
+                            /* She left; the rest of the batch has nobody
+                               to answer and the mob is gone. */
+                            fclose( pending );
+                            return TRUE;
+                        }
                     }
                 }
                 fclose( pending );
@@ -892,30 +987,71 @@ bool spec_oracle( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
         }
     }
 
-    /* Retire her if her supplicant has fallen silent. */
-    if ( oracle_mob != NULL && oracle_last > 0
-      && (long) ( ( current_time > 0 ? current_time : time(NULL) ) - oracle_last )
-         > ORACLE_IDLE_SECONDS )
+    if ( oracle_mob != NULL )
     {
-        act( "$n says 'You have fallen quiet.  I will return to my rest.'",
-            mob, NULL, NULL, TO_ROOM );
-        oracle_dismiss();
-        return TRUE;
+        long now = (long) ( current_time > 0 ? current_time : time(NULL) );
+
+        /* The audience has a hard limit; warn a minute before it ends. */
+        if ( oracle_started > 0 && now - (long) oracle_started >= ORACLE_SESSION_SECONDS )
+        {
+            act( "$n says 'The vision fades.  Our time is done.'",
+                mob, NULL, NULL, TO_ROOM );
+            oracle_dismiss( TRUE );
+            return TRUE;
+        }
+        if ( oracle_started > 0 && !oracle_warned
+          && now - (long) oracle_started >= ORACLE_SESSION_SECONDS - 60 )
+        {
+            oracle_warned = TRUE;
+            act( "$n says 'My sight grows dim.  Ask your last.'",
+                mob, NULL, NULL, TO_ROOM );
+        }
+
+        /* Or sooner, if her supplicant has fallen silent. */
+        if ( oracle_last > 0 && now - (long) oracle_last > ORACLE_IDLE_SECONDS )
+        {
+            act( "$n says 'You have fallen quiet.  I will return to my rest.'",
+                mob, NULL, NULL, TO_ROOM );
+            oracle_dismiss( TRUE );
+            return TRUE;
+        }
     }
 
     return FALSE;
 }
 
 
+/* Is any mobile hunting this character right now? */
+static bool oracle_is_hunted( CHAR_DATA *ch )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *vch;
+
+    FOR_EACH_CHARACTER( iter, vch )
+    {
+        if ( IS_NPC(vch) && vch->hunting == ch )
+            return TRUE;
+    }
+    return FALSE;
+}
+
+
 /*
- * PRAY -- a supplicant calls the Oracle to them.  One at a time; a second
- * caller is turned away while she is attending someone.
+ * PRAY -- the supplicant is drawn out of the world into the Oracle's
+ * sanctum, the way rope trick or haven takes a caster aside.  The bead
+ * curtain (down) leads back to the room they prayed in; so does saying DONE,
+ * and so does the end of the audience.  One supplicant at a time: the
+ * sanctum is solitary, no-recall and safe.  Never an escape: not in combat,
+ * not while the blood is still up after a fight or a flight, and not while
+ * something is hunting you.
  */
 void do_pray( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
     MOB_INDEX_DATA *idx;
     CHAR_DATA *mob;
+    ROOM_INDEX_DATA *sanctum;
+    ROOM_INDEX_DATA *origin;
 
     UNUSED_PARAM(argument);
 
@@ -925,6 +1061,42 @@ void do_pray( CHAR_DATA *ch, char *argument )
     if ( ch->in_room == NULL )
     {
         send_to_char( "You are nowhere the Oracle could reach you.\n\r", ch );
+        return;
+    }
+
+    if ( ch->in_room->vnum == ROOM_VNUM_ORACLE )
+    {
+        send_to_char( "You are already in her sanctum.\n\r", ch );
+        return;
+    }
+
+    if ( ch->fighting != NULL || ch->position == POS_FIGHTING )
+    {
+        send_to_char( "You cannot pray in the heat of battle.\n\r", ch );
+        return;
+    }
+
+    /* Battleticks outlast the fight -- and cover the moments after a flee. */
+    if ( ch->battleticks > 0 )
+    {
+        send_to_char( "Your blood is still up.  Let the fighting settle before you pray.\n\r", ch );
+        return;
+    }
+
+    if ( oracle_is_hunted( ch ) )
+    {
+        send_to_char( "Something is hunting you.  The Oracle will not hide you from it.\n\r", ch );
+        return;
+    }
+
+    /* Never a way out of a death trap, a cell or a duel. */
+    if ( IS_SET( ch->in_room->room_flags, ROOM_DT )
+      || IS_SET( ch->in_room->room_flags, ROOM_JAIL )
+      || IS_SET( ch->in_room->room_flags, ROOM_ARENA )
+      || ( ch->in_room->affected != NULL
+        && ch->in_room->affected->type == EXTRA_DIMENSIONAL ) )
+    {
+        send_to_char( "Your prayer cannot reach her from here.\n\r", ch );
         return;
     }
 
@@ -951,40 +1123,65 @@ void do_pray( CHAR_DATA *ch, char *argument )
 
     if ( oracle_mob != NULL )
     {
-        if ( !str_cmp( oracle_summoner, ch->name )
-          && oracle_mob->in_room == ch->in_room )
-            send_to_char( "The Oracle is already here, attending you.\n\r", ch );
-        else
-        {
-            snprintf( buf, sizeof(buf),
-                "The Oracle is attending to someone else right now.  "
-                "Pray again in a little while.\n\r" );
-            send_to_char( buf, ch );
-        }
+        send_to_char( "The Oracle is attending to someone else right now.  "
+                      "Pray again in a little while.\n\r", ch );
         return;
     }
 
-    if ( ( idx = get_mob_index( MOB_VNUM_ORACLE ) ) == NULL )
+    if ( ( idx = get_mob_index( MOB_VNUM_ORACLE ) ) == NULL
+      || ( sanctum = get_room_index( ROOM_VNUM_ORACLE ) ) == NULL )
     {
         send_to_char( "You pray, but no answer comes.\n\r", ch );
         return;
     }
 
+    /* Anyone left in the sanctum with no audience (a reboot, a quit) is shown
+       out before the next supplicant arrives. */
+    {
+        CHAR_DATA *vch;
+        CHAR_DATA *vch_next;
+        ROOM_INDEX_DATA *temple = get_room_index( ROOM_VNUM_TEMPLE );
+
+        for ( vch = sanctum->people; vch != NULL; vch = vch_next )
+        {
+            vch_next = vch->next_in_room;
+            if ( IS_NPC(vch) || IS_IMMORTAL(vch) || temple == NULL )
+                continue;
+            send_to_char( "The sanctum dims, and you find yourself elsewhere.\n\r", vch );
+            char_from_room( vch );
+            char_to_room( vch, temple );
+            do_look( vch, "auto" );
+        }
+    }
+
+    origin = ch->in_room;
+
+    act( "You bow your head in prayer.  The world falls away in a curl of "
+        "incense, and you open your eyes somewhere else.", ch, NULL, NULL, TO_CHAR );
+    act( "$n bows $s head in prayer and is gone in a curl of incense smoke.",
+        ch, NULL, NULL, TO_ROOM );
+
+    /* Move the supplicant before the globals are set, so the departure hook
+       in char_from_room has nothing to act on. */
+    char_from_room( ch );
+    char_to_room( ch, sanctum );
+    oracle_set_way_out( origin );
+
     mob = create_mobile( idx );
     mob->spec_fun = spec_lookup( "spec_oracle" );
-    char_to_room( mob, ch->in_room );
+    char_to_room( mob, sanctum );
 
     oracle_mob = mob;
     toc_strlcpy( oracle_summoner, ch->name, sizeof(oracle_summoner) );
-    oracle_room_vnum = ch->in_room->vnum;
+    oracle_room_vnum = sanctum->vnum;
+    oracle_origin_vnum = origin->vnum;
     oracle_last = current_time > 0 ? current_time : time(NULL);
+    oracle_started = oracle_last;
+    oracle_warned = FALSE;
     oracle_strikes = 0;
 
-    act( "You bow your head in prayer.  The air stirs, and the Oracle fades "
-        "into being before you.", ch, NULL, NULL, TO_CHAR );
-    act( "$n bows in prayer, and the Oracle fades into being.",
-        ch, NULL, NULL, TO_ROOM );
-    act( "$n murmurs, 'Ask what you will.  Say DONE when you are finished.'",
+    do_look( ch, "auto" );
+    act( "$n murmurs, 'Ask what you will.  Say DONE, or part the beads, when you are finished.'",
         mob, NULL, NULL, TO_ROOM );
 
     /* An easter egg: she sees the mind for what it is.  Said only to the
@@ -1000,12 +1197,12 @@ void do_pray( CHAR_DATA *ch, char *argument )
                 mob, NULL, ch, TO_VICT );
     }
 
-    snprintf( buf, sizeof(buf), "Oracle: %s prayed; she appeared in room %d (%s).",
-              ch->name, ch->in_room->vnum,
-              ch->in_room->name != NULL ? ch->in_room->name : "?" );
+    snprintf( buf, sizeof(buf), "Oracle: %s prayed from room %d (%s) and entered her sanctum.",
+              ch->name, origin->vnum,
+              origin->name != NULL ? origin->name : "?" );
     log_string( buf );
     wizinfo( buf, LEVEL_IMMORTAL );
-    oracle_journal( "SUMMON", ch->name, ch->in_room->vnum, "" );
+    oracle_journal( "SUMMON", ch->name, origin->vnum, "" );
 }
 
 
@@ -1120,7 +1317,7 @@ void do_oracle( CHAR_DATA *ch, char *argument )
         /* If the one being barred has her right now, send her home. */
         if ( banning && oracle_mob != NULL
           && !str_cmp( oracle_summoner, victim->name ) )
-            oracle_dismiss();
+            oracle_dismiss( TRUE );
         return;
     }
 
@@ -1135,15 +1332,15 @@ void do_oracle( CHAR_DATA *ch, char *argument )
                   ch->name, oracle_summoner );
         log_string( buf );
         wizinfo( buf, LEVEL_IMMORTAL );
-        oracle_dismiss();
+        oracle_dismiss( TRUE );
         send_to_char( "You send the Oracle home.\n\r", ch );
         return;
     }
 
     if ( oracle_mob != NULL )
         snprintf( buf, sizeof(buf),
-                  "The Oracle attends %s in room %d.\n\r",
-                  oracle_summoner, oracle_room_vnum );
+                  "The Oracle attends %s in her sanctum (prayed from room %d).\n\r",
+                  oracle_summoner, oracle_origin_vnum );
     else
         snprintf( buf, sizeof(buf), "The Oracle is not currently summoned.\n\r" );
     send_to_char( buf, ch );

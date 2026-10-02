@@ -589,16 +589,21 @@ spoiler-conscious mechanics are in [Hyrule: First Quest](hyrule-area.md).
 
 ## The Oracle
 
-`pray` calls the Oracle, a seer who answers questions about the game, to your
-room. `ask <question>` (or just `say` her a question) puts it to her; `say
-done` sends her home. She attends one seeker at a time.
+`pray` draws you out of the world into the sanctum of the Oracle, a seer who
+answers questions about the game. Everything you `say` there is said to her
+(`ask <question>` works too). `say done`, or stepping `down` through the bead
+curtain, returns you to where you prayed. She attends one seeker at a time.
 
 - She knows commands, classes, races, remorts, skills, areas, leveling, and
-  what gear to seek for your class and level, and can look at what you (or
-  another player) are wearing.
+  what gear to seek for your class and level. She can see what you and other
+  players are wearing, and where an item or creature is right now.
 - She answers only questions about Times of Chaos and keeps them brief.
-- She leaves when you say `done`, leave the room, or fall silent. Repeated
-  off-topic questions make her go, and the gods can bar a troublemaker.
+- An audience lasts at most five minutes, less if you fall silent. However it
+  ends -- done, silence, time, or her walking out on off-topic questions --
+  you return to where you prayed, dazed for a moment.
+- It is never an escape: you cannot pray in battle, while your blood is still
+  up after a fight or a flight, while something hunts you, or from a death
+  trap.
 
 ## Character Settings
 

@@ -203,8 +203,9 @@ class OracleWiringTests(unittest.TestCase):
         self.assertIn('{ "oracle",', interp)       # staff status/playback/dismiss
         self.assertIn('{ "pray",', interp)         # players summon her
         self.assertIn("src/oracle.c", self.read("CMakeLists.txt"))
-        # A spoken question (or farewell) also reaches her, via the do_say hook.
-        self.assertIn("oracle_hears", self.read("src", "act_comm.c"))
+        # Every say in her sanctum reaches her, via the do_say hook.
+        self.assertIn("oracle_here(ch) )\n        oracle_listen",
+                      self.read("src", "act_comm.c").replace("\r\n", "\n"))
 
     def test_she_leaves_when_her_supplicant_does(self):
         # The departure hook retires her when the summoner leaves the room.
@@ -222,9 +223,26 @@ class OracleWiringTests(unittest.TestCase):
         unit = self.read("deploy", "windows-vm", "toc-web.service")
         self.assertIn("StateDirectory=toc", unit)
 
-    def test_a_question_mark_anywhere_reaches_her(self):
-        # "where is X?  give me directions" must count, not just a trailing ?.
-        self.assertIn("strchr( said, '?' )", self.read("src", "oracle.c"))
+    def test_the_sanctum_is_a_closed_room(self):
+        # Solitary, no-recall, safe, no mobs, and its only exit leads down.
+        limbo = self.read("area", "limbo.are").replace("\r\n", "\n")
+        room = limbo[limbo.index("The Oracle's Sanctum~"):]
+        room = room[:room.index("\nS\n")]
+        self.assertIn("\n0 CDKLN 0\n", room)
+        self.assertIn("\nD5\n", room)
+        for d in ("D0", "D1", "D2", "D3", "D4"):
+            self.assertNotIn("\n" + d + "\n", room)
+
+    def test_pray_is_never_an_escape(self):
+        oracle = self.read("src", "oracle.c")
+        pray = oracle[oracle.index("void do_pray("):]
+        for guard in ("ch->fighting", "battleticks", "oracle_is_hunted",
+                      "ROOM_DT", "ROOM_JAIL", "ROOM_ARENA"):
+            self.assertIn(guard, pray)
+
+    def test_nobody_is_saved_inside_the_sanctum(self):
+        self.assertIn("oracle_saved_room", self.read("src", "save.c"))
+        self.assertIn("ORACLE_SESSION_SECONDS 300", self.read("src", "oracle.c"))
 
     def test_off_topic_protocol_is_wired(self):
         # The model emits a sentinel for off-topic; the game turns it into a

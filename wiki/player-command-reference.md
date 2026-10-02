@@ -276,14 +276,18 @@ An in-game seer who answers questions about the game.
 
 | Commands | Use |
 |---|---|
-| `pray` | Call the Oracle to your room (one seeker at a time) |
-| `ask <question>` | Ask her a question; you may also `say` her a question |
-| `say done` | Send her home when you are finished |
+| `pray` | Go to the Oracle's sanctum (one seeker at a time) |
+| `say <anything>` | In her sanctum, everything you say is said to her |
+| `ask <question>` | The same, as a command |
+| `say done` | Return to where you prayed (or go `down` through the beads) |
 
 - She knows commands, classes, races, remorts, skills, areas, leveling, and
   what gear to seek for your class and level.
 - She answers only questions about Times of Chaos, and keeps answers short.
-- She stays until you say `done`, leave the room, or fall silent a while.
+- An audience lasts at most five minutes, less if you fall silent. However it
+  ends, you return to where you prayed, dazed for a moment.
+- You cannot pray in battle, while your blood is still up, while something
+  hunts you, or from a death trap.
 - Repeated off-topic questions make her leave; the gods may bar a troublemaker.
 
 ## Related Guides

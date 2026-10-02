@@ -622,11 +622,17 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
 	    ch->pcdata->reports_seen[REPORT_TYPOS],
 	    ch->pcdata->reports_seen[REPORT_IDEAS] );
     fprintf( fp, "Scro %d\n", 	ch->lines		);
+    /* Nobody is ever saved inside the Oracle's sanctum: it is not a place to
+       wake up.  oracle_saved_room() names the room they prayed from (or the
+       Temple), so a quit, a link-death or a crash puts them back where the
+       audience began. */
     fprintf( fp, "Room %d\n",
-        (  ch->in_room == get_room_index( ROOM_VNUM_LIMBO )
-        && ch->was_in_room != NULL )
-            ? ch->was_in_room->vnum
-            : ch->in_room == NULL ? 3001 : ch->in_room->vnum );
+        oracle_saved_room( ch ) > 0
+            ? oracle_saved_room( ch )
+            : (  ch->in_room == get_room_index( ROOM_VNUM_LIMBO )
+              && ch->was_in_room != NULL )
+                ? ch->was_in_room->vnum
+                : ch->in_room == NULL ? 3001 : ch->in_room->vnum );
 
     fprintf( fp, "HMV  %d %d %d %d %d %d\n",
 	ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move );
