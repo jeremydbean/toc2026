@@ -347,7 +347,7 @@ keeps everything earlier ones gave.
 
 | Remorts taken | Gift |
 |---:|---|
-| 1 | Hunger and thirst no longer affect you |
+| 1 | Hunger and thirst no longer affect you: you never get hungry or thirsty again |
 | 2 | Psionics: one power from each of the four disciplines |
 | 3 | Two powers per discipline; you may stay idle or link-dead twice as long before being dropped; you can carry twice the items and twice the weight; recall always succeeds and never throws you to a random room |
 | 4 | Three powers per discipline; the Shadowmeld skill at 50% |
@@ -560,6 +560,10 @@ problems with `bug`, `typo`, and `idea`.
 aborting and shopping are business with a questmaster and need one present.
 Every subcommand abbreviates to its first letter. Quest points and rewards are
 distinct from ordinary shop progression.
+
+The questmaster never sends you into Hyrule -- it is too large and too new to
+be fair as a quest target, and its dungeons do not let you recall -- nor to the
+Training Dummy Yard, whose dummy cannot die. Every other area can come up.
 
 `pkill` controls or reports player-killing state according to the live rules.
 PK commands, theft, hostile spells, charm, grouping, and corpse handling may

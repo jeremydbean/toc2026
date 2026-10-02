@@ -106,6 +106,8 @@ rsync -a --delete \
   --exclude 'player/' --exclude 'gods/' --exclude 'heroes/' \
   --exclude 'backups/' --exclude 'corpse/' --exclude 'log/' --exclude 'notes/' \
   --exclude 'area/shutdown' --exclude 'area/webadmin.queue' \
+  --exclude 'area/oracle.ask' --exclude 'area/oracle.answer' \
+  --exclude 'area/oracle.query' --exclude 'area/oracle.queryresult' \
   --exclude 'area/*.txt' \
   --exclude 'area/pkilldata' --exclude 'area/wizlist' --exclude 'area/maxload' \
   --exclude 'area/offense' --exclude 'area/relics' --exclude 'area/not' \
