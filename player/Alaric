@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790902305
+LogO 1790902619
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 51
-Plyd 232199
+Plyd 232513
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4202
-HMV  1096 1096 1445 1445 421 421
+Room 16001
+HMV  1096 1096 1445 1445 375 421
 NewGold 15
 NewPlat 82
 NewCopp 66
@@ -147,7 +147,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1086 1395 400
-Cond 0 24 6
+Cond 0 24 48
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~

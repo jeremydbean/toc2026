@@ -422,3 +422,22 @@
 1790902224	gossip	Alaric	Want to say it's like 2 or 3 levels above you
 1790902245	gossip	Killuminati	ok it won't do that i promise.  i'll probably have it make you a custom pack called your level x gear and throw it in your stash
 1790902303	gossip	Alaric	I think there are gear respawn checks based on how many pfiles own a piece of gear to ensure scarcity. Maybe it was implemented to prevent people from farming and hoarding too much
+1790902328	gossip	Killuminati	hat's the culprit  the "castrate storage characters" guard: fwrite_obj skips saving any non-container item more than 2 levels above the character. After remort drops you to a low level, every high-level piece is >2 above you, so it's silently not written to your pfile  gone on next login. That's the "can't hold gear past a certain level" behavior, and it's data loss for remorters.
+1790902352	gossip	Killuminati	it's being fixed.  good job remembering that, lol
+1790902367	gossip	Killuminati	be a good thing to ask the oracle, lol
+1790902383	gossip	Alaric	It bit me in the ass even back in the day when someone high level would feed you gears, then they'd be gone the next dayy
+1790902402	gossip	Alaric	Lol, can bake cookies while you sit with her like the Matrix
+1790902424	gossip	Killuminati	i told em i don't care about storage characters and never do that. lol.  but stash should be safe anyway
+1790902465	gossip	Killuminati	i have my WoW 'bankerchick' blood elf in a fancy dress that runs all my storage, lol
+1790902479	gossip	Killuminati	it's a guild all to herself with maxed out bank slots, lol
+1790902483	gossip	Killuminati	and maxed out bank storage
+1790902507	gossip	Killuminati	and a whole guild bank to herself, lol
+1790902536	gossip	Alaric	That's how the character name of Caddy started.
+1790902540	gossip	Killuminati	i'm pro storage character, but that's the point of the stash anyway, so whatever weird code they had limiting that is being stripped right now
+1790902544	gossip	Alaric	It was a mule to hold all the shit I was hiding
+1790902550	gossip	Alaric	He was my Caddy
+1790902559	gossip	Killuminati	i actually dramatically increased the amount people can carry anyway
+1790902574	gossip	Killuminati	level 59 you can basically carry what an immortal can carry, which is effectively no limit, lol
+1790902592	gossip	Killuminati	god damn you're leveling fast, lol
+1790902605	gossip	Alaric	Flyying
+1790902628	gossip	Killuminati	imagine if you had maxed gear, lol
