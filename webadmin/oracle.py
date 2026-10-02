@@ -259,9 +259,11 @@ def _cache_namespace() -> str:
     base = _SYSTEM_RULES + "\0" + _game_context()
     if _NAMESPACE.get("base") != base:
         h = hashlib.sha1(base.encode("utf-8", "replace"))
-        area = Path(__file__).resolve().parent.parent / "area"
+        root = Path(__file__).resolve().parent.parent
         try:
-            for p in sorted(area.glob("*.are")):
+            # Her own code too: how the context is built decides the answer
+            # as surely as the help does.
+            for p in sorted(root.glob("area/*.are")) + sorted(root.glob("webadmin/*.py")):
                 st = p.stat()
                 h.update(("%s:%d:%d\0" % (p.name, st.st_size, int(st.st_mtime))).encode())
         except OSError:
