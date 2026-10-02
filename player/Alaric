@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790905066
+LogO 1790905652
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 51
-Plyd 234960
+Plyd 235546
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2390
-HMV  1096 1096 1445 1445 421 421
-NewGold 111
-NewPlat 94
-NewCopp 587
-NewSilv 199
+HMV  1082 1096 1445 1445 421 421
+NewGold 113
+NewPlat 95
+NewCopp 653
+NewSilv 204
 BankCP 505999078
 IntTime 1790902684
 IntTotal 6999078
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 828
+AchKills 829
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -106,9 +106,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  124501
+Exp  124507
 Act  4261068
-AfBy 1049088
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -178,14 +178,13 @@ Sk 100 'parry'
 Sk 1 'rescue'
 Sk 98 'second attack'
 Sk 85 'third attack'
-Sk 86 'fast healing'
+Sk 87 'fast healing'
 Sk 80 'recall'
 Sk 75 'smite'
 Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'pass door'   6  56   0   0    1048576          0
 End
 
 #O
@@ -973,6 +972,17 @@ Repd 0
 Affect -1 29 -1 -4 1 0 0
 Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+End
+
+#O
+Vnum 2321
+Nest 0
+Wear -1
+Lev  29
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 29 -1 -2 5 0 0
 End
 
 #STASH

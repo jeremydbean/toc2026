@@ -506,3 +506,10 @@
 1790905302	gossip	Alaric	PK fights would go like 6 rounds, then swap a handful of pieces and be at 100 percent and damage would go up, rinse and repeat like 3 more times. People would be nearly dead by by the time I had my "real" gear on
 1790905347	gossip	Killuminati	yeah i made it clear that i want 'best gear' to be 'more damage' for the most part.  obviously if something is like + huge hp boost vs. slight dam bonus, i'd want that to be considered, but.  focus mostly on improvement to damage
 1790905356	gossip	Killuminati	it may tweak the list a bit based on that clarification
+1790905384	gossip	Alaric	Weapons for the most part are what I expected to see on the level 50 list
+1790905398	gossip	Alaric	But hard to argue with the damage your chars were doing
+1790905411	gossip	Killuminati	yeah i mean, you saw what you did with all the recommendations, lol
+1790905428	gossip	Alaric	Not stopping me from going down the list though :)
+1790905441	gossip	Killuminati	Now I see the whole picture. The bug is magnitude: hp/mana bonuses come in tenshundreds while hitroll/damroll/stats come in single digits, so even with damroll weighted higher per point (warrior damroll 4.0 vs hp 2.0), a +50 hp roll (=100) buries a +6 damroll upgrade (=24). I'll make the survivability weights small enough that an ordinary damage upgrade wins, while a huge hp bump still can. Also scaling weapon-dice value by the class's melee weight so weapons matter for fighters, not casters. The remort
+1790905617	gossip	Killuminati	the new weights hand-check out (warrior: +8 damroll = 32 beats +50 hp = 10; but +150 hp = 30 beats +2 damroll = 8). Let me check for an existing gear-scoring test I need to keep green:
+1790905637	gossip	Alaric	Crazy how much it checks
