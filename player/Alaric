@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790901993
+LogO 1790902305
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 51
-Plyd 231887
+Plyd 232199
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 25031
-HMV  1831 6451 8620 8620 1882 2861
-NewGold 24
+Room 4202
+HMV  1096 1096 1445 1445 421 421
+NewGold 15
 NewPlat 82
-NewCopp 336
-NewSilv 105
+NewCopp 66
+NewSilv 11
 BankCP 504737235
 IntTime 1790816284
 IntTotal 5737235
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 806
+AchKills 807
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -104,10 +104,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  123922
+Exp  124375
 Act  4261068
-AfBy 3678908
-AfBy2 4106
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -135,13 +134,13 @@ Color 16 6
 Pos  8
 Prac 4
 Trai 1
-Save  -14
-Alig  941
-Hit   71
-Dam   119
-ACs -355 -365 -322 -207
+Save  -6
+Alig  957
+Hit   32
+Dam   46
+ACs -154 -164 -121 -6
 Attr 22 13 12 16 15
-AMod 17 25 26 17 24
+AMod -2 10 11 -2 9
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Fifth Order~
 Pnts 0
@@ -173,7 +172,7 @@ Sk 75 'heroic grip'
 Sk 95 'dodge'
 Sk 100 'enhanced damage'
 Sk 95 'kick'
-Sk 98 'parry'
+Sk 99 'parry'
 Sk 1 'rescue'
 Sk 98 'second attack'
 Sk 85 'third attack'
@@ -184,49 +183,6 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'armor'   0   0 -20  17          0          0
-AffD 'bless'   0   0   8  18          0          0
-AffD 'bless'   0   0  -8  24          0          0
-AffD 'shield'   0   0 -20  17          0          0
-AffD 'stone skin'   0   0 -40  17          0          0
-AffD 'sanctuary'   0   0   0   0        128          0
-AffD 'haste'   0   0   4   2    2097152          0
-AffD 'fly'   0   0   0   0     524288          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'fire shield'   0   0   0   0          0          8
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'giant strength'   0   0   4   1          0          0
-AffD 'frenzy'   0   0  11  18          0          0
-AffD 'frenzy'   0   0  11  19          0          0
-AffD 'frenzy'   0   0 110  17          0          0
-AffD 'major globe'   0   0 -131  17          0          0
-AffD 'detect invis'  26   0   0   0          8          0
-AffD 'detect hidden'   0   0   0   0         32          0
-AffD 'detect magic'  37   0   0   0         16          0
-AffD 'detect good'  29   0   0   0          0          2
-AffD 'detect evil'  14   0   0   0          4          0
-AffD 'power gloves'  32   0  42  19          0          0
-AffD 'empower'  36   0   0   0          0          0
-AffD 'sanctuary'  34   0   0   0        128          0
-AffD 'haste'  41   0   4   2    2097152          0
-AffD 'fly'  37   0   0   0     524288          0
-AffD 'pass door'   0   0   0   0    1048576          0
-AffD 'protection evil'   0   0   0   0       8192          0
-AffD 'fire shield'  25   0   0   0          0          8
-AffD 'divine protection'   0   0   0   0          0       4096
-AffD 'giant strength'   0   0  15   1          0          0
-AffD 'empower'  18   0  15   3          0          0
-AffD 'empower'  33   0  15   4          0          0
-AffD 'empower'  38   0  11   2          0          0
-AffD 'empower'  36   0  15   5          0          0
-AffD 'empower'  28   0  20  18          0          0
-AffD 'empower'  37   0  20  19          0          0
-AffD 'empower'  39   0 -100  17          0          0
-AffD 'titanic'  42   0 5355  13          0          0
-AffD 'titanic'  41   0 7175  12          0          0
-AffD 'titanic'  27   0 2440  14          0          0
-AffD 'titanic'   0   0  50  16          0          0
 End
 
 #O
