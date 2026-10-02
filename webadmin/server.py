@@ -673,6 +673,19 @@ def _oracle_live_lookup(reqs, timeout: float = 2.5, asker: str = "") -> list:
     return [got.get(r, "") if r else "" for r in ids]
 
 
+def _oracle_gear_where(item: Dict[str, Any], objs, mobs) -> str:
+    """'from the pirate in Pirate Ship': the finder's own source when it gave
+    one -- it has already ruled out carriers a player cannot loot -- else the
+    first carrier on file."""
+    area = item.get("area", "?")
+    source = item.get("source")
+    if source:
+        return "%s in %s" % (source, area)
+    carriers = getattr(objs.get(item.get("vnum")), "carried_by", None) or []
+    carrier = getattr(mobs.get(carriers[0]), "short_desc", None) if carriers else None
+    return "from %s in %s" % (carrier, area) if carrier else "from %s" % area
+
+
 def _oracle_context(player: str, question: str) -> str:
     """Build live grounding for one question: the asker's level, class and worn
     gear, and -- for gear questions -- the obtainable best-in-slot for their
@@ -814,15 +827,9 @@ def _oracle_context(player: str, question: str) -> str:
             if not items:
                 continue
             top = items[0]
-            where = top.get("area", "?")
-            obj = objs.get(top.get("vnum"))
-            carriers = getattr(obj, "carried_by", None) or []
-            if carriers:
-                carrier = getattr(mobs.get(carriers[0]), "short_desc", None)
-                if carrier:
-                    where = "%s in %s" % (carrier, where)
-            bis.append("%s: %s (lvl %s) from %s" % (
-                slot, top.get("name", "?"), top.get("level", "?"), where))
+            bis.append("%s: %s (lvl %s), %s" % (
+                slot, top.get("name", "?"), top.get("level", "?"),
+                _oracle_gear_where(top, objs, mobs)))
         if bis:
             lines.append("Obtainable best-in-slot for this class and level -- "
                          + "; ".join(bis) + ".")
@@ -841,13 +848,9 @@ def _oracle_context(player: str, question: str) -> str:
             top = {}
         picks = []
         for it in (top.get("Wielded") or [])[:3]:
-            where = it.get("area", "?")
-            carriers = getattr(objs.get(it.get("vnum")), "carried_by", None) or []
-            carrier = getattr(mobs.get(carriers[0]), "short_desc", None) if carriers else None
-            if carrier:
-                where = "%s in %s" % (carrier, where)
-            picks.append("%s (lvl %s) from %s" % (it.get("name", "?"),
-                                                  it.get("level", "?"), where))
+            picks.append("%s (lvl %s), %s" % (it.get("name", "?"),
+                                              it.get("level", "?"),
+                                              _oracle_gear_where(it, objs, mobs)))
         if picks:
             # Stated as a fact about the game. Worded as "what a warrior can
             # wield", she hedged that she could not see the asker's class.
