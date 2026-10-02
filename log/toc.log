@@ -22002,3 +22002,73 @@ Fri Oct  2 00:36:57 2026 :: Log Alaric [25001]: ex
 Fri Oct  2 00:37:00 2026 :: Log Alaric [25001]: scan
 Fri Oct  2 00:37:02 2026 :: Log Alaric [25001]: af
 Fri Oct  2 00:37:06 2026 :: Log Alaric [25001]: l
+Fri Oct  2 00:37:07 2026 :: Log Alaric [25001]: n
+Fri Oct  2 00:37:07 2026 :: Log Alaric [0]: moved to 25002 (Near the river)
+Fri Oct  2 00:37:08 2026 :: Log Alaric [25002]: scan
+Fri Oct  2 00:37:10 2026 :: Log Alaric [25002]: ex
+Fri Oct  2 00:37:13 2026 :: Log Alaric [25002]: n
+Fri Oct  2 00:37:13 2026 :: Log Alaric [0]: moved to 25004 (Beginning of the climb)
+Fri Oct  2 00:37:14 2026 :: Log Alaric [25004]: nw
+Fri Oct  2 00:37:14 2026 :: Log Alaric [0]: moved to 25005 (Hard Climb)
+Fri Oct  2 00:37:17 2026 :: Log Alaric [25005]: n
+Fri Oct  2 00:37:17 2026 :: Log Alaric [0]: moved to 25006 (Head of the Bridge)
+Fri Oct  2 00:37:18 2026 :: Log Alaric [25006]: w
+Fri Oct  2 00:37:18 2026 :: Log Alaric [0]: moved to 25007 (On the bridge)
+Fri Oct  2 00:37:19 2026 :: Log Alaric [25007]: w
+Fri Oct  2 00:37:19 2026 :: Log Alaric [0]: moved to 25008 (Middle of the Bridge)
+Fri Oct  2 00:37:19 2026 :: Log Alaric [25008]: w
+Fri Oct  2 00:37:19 2026 :: Log Alaric [0]: moved to 25009 (End of the Bridge)
+Fri Oct  2 00:37:21 2026 :: Log Alaric [25009]: nw
+Fri Oct  2 00:37:21 2026 :: Log Alaric [0]: moved to 25015 (Onward and Upward)
+Fri Oct  2 00:37:24 2026 :: Log Alaric [25015]: look ra
+Fri Oct  2 00:37:25 2026 :: Log Alaric [25015]: con ra
+Fri Oct  2 00:37:26 2026 :: Log Alaric [25015]: kill ra
+Fri Oct  2 00:37:34 2026 :: Log Alaric [25015]: gos That's not bad
+Fri Oct  2 00:38:08 2026 :: Log Alaric [25015]: gos Kind of derps mages locate and whatnot, but it'd be interesting to just ask a mob, "What are the three best bracers I can get right now?"
+Fri Oct  2 00:38:27 2026 :: Log Alaric [25015]: gos "What area in that mob in?" etc
+Fri Oct  2 00:38:44 2026 :: Log Alaric [25015]: k
+Fri Oct  2 00:38:49 2026 :: Log Alaric [25015]: k
+Fri Oct  2 00:39:06 2026 :: Log Alaric [25015]: l
+Fri Oct  2 00:39:07 2026 :: Log Alaric [25015]: l i cor
+Fri Oct  2 00:39:11 2026 :: Log Alaric [25015]: get fe cor
+Fri Oct  2 00:39:12 2026 :: Log Alaric [25015]: comp fe
+Fri Oct  2 00:39:16 2026 :: Log Alaric [25015]: drop fe
+Fri Oct  2 00:39:17 2026 :: Log Alaric [25015]: sac fe
+Fri Oct  2 00:39:17 2026 :: Log Alaric [25015]: l
+Fri Oct  2 00:39:19 2026 :: Log Alaric [25015]: n
+Fri Oct  2 00:39:19 2026 :: Log Alaric [0]: moved to 25016 (Causeway)
+Fri Oct  2 00:39:21 2026 :: Log Alaric [25016]: n
+Fri Oct  2 00:39:21 2026 :: Log Alaric [0]: moved to 25017 (Sharp Climb to the Top)
+Fri Oct  2 00:39:24 2026 :: Log Alaric [25017]: climb rope
+Fri Oct  2 00:39:24 2026 :: Log Alaric [0]: moved to 25027 (Before the Gates)
+Fri Oct  2 00:39:27 2026 :: Log Alaric [25027]: look gu
+Fri Oct  2 00:39:41 2026 :: Log Alaric [25027]: kill gu
+Fri Oct  2 00:39:50 2026 :: Log Alaric [25027]: wear mace
+Fri Oct  2 00:39:56 2026 :: Log Alaric [25027]: k
+Fri Oct  2 00:40:04 2026 :: Log Alaric [25027]: i
+Fri Oct  2 00:40:08 2026 :: Log Alaric [25027]: wear dark
+Fri Oct  2 00:40:23 2026 :: Log Alaric [25027]: k
+Fri Oct  2 00:40:28 2026 :: Log Alaric [25027]: k
+Fri Oct  2 00:40:51 2026 :: Log Alaric [25027]: l i cor
+Fri Oct  2 00:40:54 2026 :: Log Alaric [25027]: get all cor
+Fri Oct  2 00:40:55 2026 :: Log Alaric [25027]: comp sur
+Fri Oct  2 00:41:02 2026 :: Log Alaric [25027]: drop sur
+Fri Oct  2 00:41:03 2026 :: Log Alaric [25027]: sac sur
+Fri Oct  2 00:41:04 2026 :: Log Alaric [25027]: i
+Fri Oct  2 00:41:06 2026 :: Log Alaric [25027]: comp axe
+Fri Oct  2 00:41:11 2026 :: Log Alaric [25027]: drop ax
+Fri Oct  2 00:41:14 2026 :: Log Alaric [25027]: sac ax
+Fri Oct  2 00:41:25 2026 :: Log Alaric [25027]: worth
+Fri Oct  2 00:41:28 2026 :: Log Alaric [25027]: k
+Fri Oct  2 00:41:37 2026 :: Log Alaric [25027]: l
+Fri Oct  2 00:41:39 2026 :: Log Alaric [25027]: open north
+Fri Oct  2 00:41:41 2026 :: Log Alaric [25027]: n
+Fri Oct  2 00:41:41 2026 :: Log Alaric [0]: moved to 25028 (Inside the Keep)
+Fri Oct  2 00:41:43 2026 :: Log Alaric [25028]: scan
+Fri Oct  2 00:41:47 2026 :: Log Alaric [25028]: e
+Fri Oct  2 00:41:47 2026 :: Log Alaric [0]: moved to 25031 (The Grand Hall)
+Fri Oct  2 00:41:48 2026 :: Log Alaric [25031]: kill ra
+Fri Oct  2 00:41:54 2026 :: Log Alaric [25031]: wear exc
+Fri Oct  2 00:41:58 2026 :: Sock.sinaddr:  178.156.189.113
+Fri Oct  2 00:41:59 2026 :: EOF encountered on read.
+Fri Oct  2 00:42:02 2026 :: Log Alaric [25031]: bers
