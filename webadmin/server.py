@@ -849,9 +849,14 @@ def _oracle_context(player: str, question: str) -> str:
             picks.append("%s (lvl %s) from %s" % (it.get("name", "?"),
                                                   it.get("level", "?"), where))
         if picks:
-            lines.append("Most powerful weapons a %s can wield at the mortal cap "
-                         "(level %d), per the gear finder -- %s." % (
-                             c, _ORACLE_MORTAL_CAP, "; ".join(picks)))
+            # Stated as a fact about the game. Worded as "what a warrior can
+            # wield", she hedged that she could not see the asker's class.
+            whose = ("for a %s like the supplicant" % c) if cls in CLASS_WEIGHTS \
+                else "overall"
+            lines.append("The most powerful weapons in the game %s, as the gear "
+                         "finder ranks them at the mortal cap (level %d) -- %s. "
+                         "Answer with the first of these." % (
+                             whose, _ORACLE_MORTAL_CAP, "; ".join(picks)))
 
     # The website's Directions data: walking routes from the Oak Tree Square.
     if any(h in ql for h in _ORACLE_DIR_HINTS) or "where is" in ql:
