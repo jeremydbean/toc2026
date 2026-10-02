@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790908857
+LogO 1790909268
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6413784
+Plyd 6414195
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 4216
-HMV  318 30724 231 30065 631 29950
+HMV  565 30724 434 30065 1121 29950
 NewGold 98
 NewPlat 2503018
 NewCopp 329
@@ -409,7 +409,7 @@ Vnum 20305
 Nest 0
 Wear -1
 Lev  1
-Time 312
+Time 304
 Cost 96000
 Cond 100
 Repd 0
@@ -594,11 +594,11 @@ End
 Vnum 11
 Nest 0
 Name Killuminati corpse~
-ShD  corpse of Killuminati~
-Desc The corpse of Killuminati is lying here.~
+ShD  a rotting corpse~
+Desc Flies are buzzing around a rotting corpse.~
 Wear -1
 Lev  70
-Time 21
+Time 13
 Cost 0
 Cond 25
 Repd 0
@@ -608,11 +608,11 @@ End
 Vnum 11
 Nest 0
 Name Killuminati corpse~
-ShD  corpse of Killuminati~
-Desc The corpse of Killuminati is lying here.~
+ShD  a rotting corpse~
+Desc Flies are buzzing around a rotting corpse.~
 Wear -1
 Lev  70
-Time 20
+Time 12
 Cost 0
 Cond 25
 Repd 0
