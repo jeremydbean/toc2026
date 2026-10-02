@@ -3070,6 +3070,7 @@ void    group_remove    ( CHAR_DATA *ch, const char *name);
 /* special.c */
 SF * spec_lookup     ( const char *name );
 char * special_name    ( SPEC_FUN *spec );
+int     guild_closed_rooms ( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max );
 
 /* hunt.c */
 void    hunt_victim     ( CHAR_DATA *ch, int ANNOY );

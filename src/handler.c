@@ -1152,7 +1152,14 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd )
     case APPLY_INT:           ch->mod_stat[STAT_INT]    += mod; break;
     case APPLY_WIS:           ch->mod_stat[STAT_WIS]    += mod; break;
     case APPLY_CON:           ch->mod_stat[STAT_CON]    += mod; break;
-    case APPLY_SEX:           ch->sex                   += mod; break;
+    case APPLY_SEX:
+	ch->sex += mod;
+	/* An affect that wears off after the base sex was changed under
+	   it lands outside 0..2; the base is the honest answer then. */
+	if ( ch->sex < 0 || ch->sex > 2 )
+	    ch->sex = ( IS_NPC(ch) || ch->pcdata == NULL )
+	            ? 0 : ch->pcdata->true_sex;
+	break;
     case APPLY_CLASS:                                           break;
     case APPLY_LEVEL:                                           break;
     case APPLY_AGE:                                             break;
@@ -3935,11 +3942,26 @@ void do_flip( CHAR_DATA *ch, char *argument )
 {
    OBJ_DATA *obj = NULL;
    char arg[MAX_INPUT_LENGTH];
+   bool check_social args( ( CHAR_DATA *ch, char *command, char *argument ) );
 
    one_argument( argument, arg );
 
-   if( ( obj = get_obj_here( ch, arg) ) == NULL )
-   { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
+   /*
+    * FLIP is a switch you throw and a social you do, and the command
+    * has the same name as the social, so the social could never be
+    * reached: FLIP alone said "I see no  here." Anything that is not
+    * an object here -- nothing at all, or a person -- is the social.
+    */
+   if( arg[0] == '\0' || ( obj = get_obj_here( ch, arg) ) == NULL )
+   {
+      char social[] = "flip";
+
+      if ( ( arg[0] == '\0' || get_char_room( ch, arg ) != NULL )
+      &&   check_social( ch, social, argument ) )
+         return;
+      act("I see no $T here.",ch, NULL, arg, TO_CHAR);
+      return;
+   }
 
    if( obj->item_type != ITEM_MANIPULATION )
    { act("You can't do that to the $T.",ch, NULL, arg, TO_CHAR); return;}
@@ -4087,6 +4109,9 @@ void do_crawl( CHAR_DATA *ch, char *argument )
 
    one_argument( argument, arg );
 
+   if ( arg[0] == '\0' )
+   { send_to_char( "Crawl through what?\n\r", ch ); return; }
+
    if( ( obj = get_obj_here( ch, arg) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}
 
@@ -4110,6 +4135,9 @@ void do_jump( CHAR_DATA *ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
 
    one_argument( argument, arg );
+
+   if ( arg[0] == '\0' )
+   { send_to_char( "Jump where?\n\r", ch ); return; }
 
    if( ( obj = get_obj_here( ch, arg) ) == NULL )
    { act("I see no $T here.",ch, NULL, arg, TO_CHAR); return;}

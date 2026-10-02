@@ -686,8 +686,19 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
 	 ch->position != POS_SITTING )
 	return;
 
+    /*
+     * A hunter standing beside its quarry ignores its wait so that it
+     * can strike at once -- but only when it can strike. One that cannot
+     * see its target (invisible) or stands in a safe room can only
+     * growl, and with the wait ignored it growled every pulse: a
+     * message a second for as long as the player stayed invisible.
+     */
     --ch->wait;
-    if ( (ch->wait>0) && (ANNOY || ch->in_room->vnum!=ch->hunting->in_room->vnum) )
+    if ( (ch->wait>0)
+    &&   ( ANNOY
+        || ch->in_room->vnum != ch->hunting->in_room->vnum
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || !can_see(ch, ch->hunting) ) )
 	return;
     else
 	ch->wait = 0;
@@ -747,7 +758,7 @@ void hunt_victim(CHAR_DATA *ch, int ANNOY)
 	{
 	   act("$n looks at $N and growls.",
 		ch, NULL, ch->hunting, TO_NOTVICT);
-	   act("$n looks at you and growls.'",
+	   act("$n looks at you and growls.",
 		ch, NULL, ch->hunting, TO_VICT);
 	   act("You growl at $N.", ch, NULL, ch->hunting, TO_CHAR);
 	}

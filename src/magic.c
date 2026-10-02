@@ -410,12 +410,24 @@ void do_cast( CHAR_DATA *ch, char *argument )
 	break;
 
     case TAR_CHAR_OFFENSIVE:
+	/*
+	 * Teleport is offensive when it is aimed at somebody else -- they
+	 * get a save and a chance to hit back -- but casting it on
+	 * yourself is what most people want it for, and spell_teleport
+	 * has always handled that case. The "yourself" refusal below
+	 * made the commonest use of the spell impossible.
+	 */
 	if ( arg2[0] == '\0' )
 	{
 	    if ( ( victim = ch->fighting ) == NULL )
 	    {
-		send_to_char( "Cast the spell on whom?\n\r", ch );
-		return;
+		if ( skill_table[sn].spell_fun == spell_teleport )
+		    victim = ch;
+		else
+		{
+		    send_to_char( "Cast the spell on whom?\n\r", ch );
+		    return;
+		}
 	    }
 	}
 	else
@@ -427,7 +439,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 	    }
 	}
 
-	if ( ch == victim )
+	if ( ch == victim && skill_table[sn].spell_fun != spell_teleport )
 	{
 	    send_to_char( "You can't do that to yourself.\n\r", ch );
 	    return;
@@ -612,6 +624,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
 void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj )
 {
     void *vo;
+    void check_killer args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 
     if ( sn <= 0 )
 	return;
@@ -689,6 +702,15 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
 	    vch_next = vch->next_in_room;
 	    if ( victim == vch && victim->fighting == NULL )
 	    {
+		/*
+		 * The user of the wand, staff or scroll started this, so
+		 * they answer for it -- the same order do_cast uses.
+		 * Without it a spell that does no damage (curse, blindness,
+		 * sleep) let the victim's first return blow reach
+		 * check_killer first, and the player who was attacked was
+		 * the one flagged WANTED.
+		 */
+		check_killer( ch, victim );
 		multi_hit( victim, ch, TYPE_UNDEFINED );
 		break;
 	    }

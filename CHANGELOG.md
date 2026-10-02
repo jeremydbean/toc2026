@@ -10,6 +10,51 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Old player bug reports, triaged against today's code.** Each was
+  checked; these were still live. `tests/test_old_bug_reports.py`.
+  - OPEN, CLOSE, LOCK, UNLOCK, PICK, DOORBASH and SEARCH take a
+    direction after the door's name. OPEN DOOR EAST read only "door"
+    and opened the first door in the room, so a second door could be
+    reached only as OPEN EAST or OPEN 2.DOOR.
+  - TELEPORT can be cast on yourself again, which is what the spell is
+    for: it is offensive against others, and offensive spells refused
+    "yourself".
+  - A wand, staff or scroll user is the aggressor. With a spell that did
+    no damage the victim's return blow reached `check_killer` first, so
+    the player who was attacked was the one flagged WANTED.
+  - RUN EAST -1 ran until a wall stopped it: `is_number` accepts a sign
+    and the loop counted down to zero. A non-direction no longer runs
+    north, and SPEEDWALK's count cannot overflow.
+  - Running past an aggressive mobile follows the rules `aggr_update`
+    does: a wimpy, calmed, charmed or sleeping mobile, or one in a safe
+    room, no longer attacks. Fidos and bruisers jumped runners.
+  - The quest master no longer names an unbought pet in a pet shop's
+    storage (the copy carries ACT_PET, not the index) or a mobile inside
+    a guild hall whose guard would turn the player away.
+  - A hunter beside an invisible quarry growled every second; it now
+    waits between growls, and the message lost a stray quote.
+  - SET SEX lifts CHANGE SEX first, and an expiring APPLY_SEX affect
+    that lands out of range falls back to the true sex, so an
+    immortal's fix no longer flips back when the spell wears off.
+  - FLIP with no argument, or at a person, is the social. The command
+    of the same name hid it.
+  - A monk is not outfitted with a dagger; hand to hand gets the
+    starting skill floor instead.
+  - The pet shop prints prices in coin ("40g") rather than a bare number
+    of gold pieces that read as copper.
+  - EXITS names a closed exit by its keyword ("Closed gate").
+  - BALANCE stated 1% daily interest; the bank pays 0.25%.
+  - Drow mages on the mushroom tower wielded their wand, which hit as
+    10d10 from its charges; they hold it now. The duergar mercenary's
+    axe chops instead of pecking. Marilyn stays in the Solace bird shop.
+    The Mud School storage jar can be picked up, as its room says, and
+    the gate there answers to "door". Missing keywords on the newbie
+    robes, the dark metal bracers and the seasonal Salir. Room text for
+    Gang Land 2160, the fox hole valley (5267), the Midgaard Woods trail
+    (5946) and the river under the rope (25230) matches the exits and
+    objects. Help for BANK, CRAWL, JUMP, ALIAS, TITLE, OPEN and
+    TELEPORT describes what the commands do.
+
 - **The gear finder hid race-restricted gear from the race it was for.**
   Reported in game by Alaric: Starlight compared better than the blue
   war banner in game but never appeared on the website. The game reads

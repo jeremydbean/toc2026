@@ -2807,7 +2807,8 @@ void do_balance( CHAR_DATA *ch, char *argument )
     send_to_char("Your current balance is ", ch);
     send_to_char(coins_buf, ch);
     send_to_char(".\n\r", ch);
-    send_to_char("Interest pays 1% per real day on balances of at least 1 platinum, with up to 7 days of catch-up.\n\r", ch);
+    /* bank_interest() in update.c pays balance / 400 a day. */
+    send_to_char("Interest pays 0.25% per real day on balances of at least 1 platinum, with up to 7 days of catch-up.\n\r", ch);
     achievement_check_economy(ch, true);
     return;
 }

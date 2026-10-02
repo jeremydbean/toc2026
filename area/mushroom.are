@@ -443,7 +443,7 @@ a two-handed battle axe~
 A large two-handed battle axe is sitting here.~
 metal~
 5 0 AN
-5 4 8 23 0
+5 4 8 25 0
 25 15 5000000 P
 #25223
 shield~
@@ -1170,10 +1170,11 @@ The river continues into the cavern.
 S
 #25230
 On the underground river.~
-You are underneath a bridge that stretches across the river.  To either side
-of you the grove stretches on into the darkness.  You can hear the sounds of
-singing to the south, but there is nowhere to land on the river to see where
-the singing is coming from.
+You are underneath a bridge that stretches across the river.  A rope tied to
+its rails hangs down to the water within reach.  To either side of you the
+grove stretches on into the darkness.  You can hear the sounds of singing to
+the south, but there is nowhere to land on the river to see where the singing
+is coming from.
 ~
 252 DE 7
 7 5 0
@@ -2353,19 +2354,19 @@ E 1 25217 -1 8       *boots
 *Mage in wall tower
 M 0 25201 4 25271
 E 1 25218 -1 5       *robe
-E 1 25219 -1 16      *wand
+E 1 25219 -1 17      *wand
 *Mage in northern tower
 M 0 25201 4 25286
 E 1 25218 -1 5       *robe
-E 1 25219 -1 16      *wand
+E 1 25219 -1 17      *wand
 *Mage in western tower
 M 0 25201 4 25282
 E 1 25218 -1 5       *robe
-E 1 25219 -1 16      *wand
+E 1 25219 -1 17      *wand
 *Mage in southern tower
 M 0 25201 4 25278
 E 1 25218 -1 5       *robe
-E 1 25219 -1 16      *wand
+E 1 25219 -1 17      *wand
 *Gateguards of the eastern gate
 M 0 25202 8 25208
 E 1 25215 -1 16      *sword

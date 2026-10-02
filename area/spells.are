@@ -1236,8 +1236,9 @@ Syntax: cast teleport
 
 This spell takes you from your current location to a random location
 somewhere in the world. This can be a risky thing to do, since it's
-a dangerous world.  Note that you can teleport only yourself, not mobs
-or other players.
+a dangerous world.  Cast with no target (or on yourself, by name or as
+SELF) it moves you.  Cast on somebody else it is an attack: they get a
+saving throw, and they may fight back.
 
 Minimum level depends on your primary class and is:
 Mage:13  Cleric:22   Thief:25   Warrior:36   Monk: N/A   Necromancer:N/A

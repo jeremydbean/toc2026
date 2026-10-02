@@ -1318,9 +1318,9 @@ jar dragon~
 a dragon jar~
 A jar marked with the word dragon is sitting here.~
 glass~
-36 OV 0
+36 OV A
 0 0 0 0 0
-0 0 0 P
+0 1 0 P
 #3734
 train~
 the Newbie Train~
@@ -1404,7 +1404,7 @@ A
 A 
 19 2
 #3742
-robe~
+robe robes newbie~
 newbie robes~
 Some robes are sitting here with a big N embroidered on the back.~
 wool~
@@ -2104,7 +2104,7 @@ The only exit is on the other side of the gate north of you.
 D0
 You see the Arena ahead.
 ~
-gate~
+gate door~
 1 -1 3722
 E
 sign~

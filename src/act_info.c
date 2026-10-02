@@ -1641,11 +1641,34 @@ void do_examine( CHAR_DATA *ch, char *argument )
 
 
 /*
+ * "Closed gate", "Closed hatch": a closed exit is named by its own first
+ * keyword, the word OPEN will answer to. It always said "Closed door",
+ * so Mud School's gate -- keyword "gate" -- was listed as a door that
+ * OPEN DOOR could not find.
+ */
+static const char *closed_exit_label( const EXIT_DATA *pexit,
+                                      char *label, size_t size )
+{
+    char word[MAX_INPUT_LENGTH];
+
+    if ( pexit->keyword == NULL || pexit->keyword[0] == '\0' )
+        return "Closed door";
+
+    one_argument( pexit->keyword, word );
+    if ( word[0] == '\0' )
+        return "Closed door";
+
+    snprintf( label, size, "Closed %s", word );
+    return label;
+}
+
+/*
  * Thanks to Zrin for auto-exit part.
  */
 void do_exits( CHAR_DATA *ch, char *argument )
 {
     char buf[MAX_STRING_LENGTH];
+    char label[MAX_INPUT_LENGTH + 8];
     EXIT_DATA *pexit;
     bool found;
     bool fAuto;
@@ -1685,7 +1708,7 @@ void do_exits( CHAR_DATA *ch, char *argument )
                     snprintf( buf + len, sizeof(buf) - len, "%-5s - %s\n\r",
                         capitalize( dir_name[door] ),
                         IS_SET(pexit->exit_info, EX_CLOSED)
-                            ? "Closed door"
+                            ? closed_exit_label( pexit, label, sizeof(label) )
                             : (room_is_dark( pexit->u1.to_room )
                             && (!IS_AFFECTED(ch,AFF_INFRARED)))
                                 ?  "Too dark to tell"
@@ -1699,7 +1722,7 @@ void do_exits( CHAR_DATA *ch, char *argument )
                         capitalize( dir_name[door] ),
                         pexit->u1.to_room->vnum,
                         IS_SET(pexit->exit_info, EX_CLOSED)
-                            ? "Closed door"
+                            ? closed_exit_label( pexit, label, sizeof(label) )
                             : pexit->u1.to_room->name
                         );
                 }
