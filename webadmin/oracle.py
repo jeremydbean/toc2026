@@ -244,13 +244,30 @@ def _cache_ttl() -> float:
         return 7 * 86400.0
 
 
+_NAMESPACE: Dict[str, str] = {}
+
+
 def _cache_namespace() -> str:
-    """A digest of everything an answer was grounded on: the rules and the
-    game docs. It prefixes every cache key, so a deploy that corrects the docs
-    retires every answer given from the old ones instead of serving them for
-    another week. Old entries simply stop matching and age out."""
-    text = _SYSTEM_RULES + "\0" + _game_context()
-    return hashlib.sha1(text.encode("utf-8", "replace")).hexdigest()[:12]
+    """A digest of everything an answer was grounded on: the rules, the game
+    docs, and the area files that hold the HELP entries and the world the gear
+    finder and drop tables read. It prefixes every cache key, so a deploy that
+    corrects any of them retires every answer given from the old version
+    instead of serving it for another week. Old entries stop matching and age
+    out. The area files are digested by name, size and modification time --
+    reading 10MB a question is not worth it -- once per process, which a
+    deploy restarts."""
+    base = _SYSTEM_RULES + "\0" + _game_context()
+    if _NAMESPACE.get("base") != base:
+        h = hashlib.sha1(base.encode("utf-8", "replace"))
+        area = Path(__file__).resolve().parent.parent / "area"
+        try:
+            for p in sorted(area.glob("*.are")):
+                st = p.stat()
+                h.update(("%s:%d:%d\0" % (p.name, st.st_size, int(st.st_mtime))).encode())
+        except OSError:
+            pass
+        _NAMESPACE.update({"base": base, "digest": h.hexdigest()[:12]})
+    return _NAMESPACE["digest"]
 
 
 def _ns(key: str) -> str:
