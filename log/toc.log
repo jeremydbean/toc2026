@@ -23394,3 +23394,32 @@ Fri Oct  2 02:37:27 2026 :: Sock.sinaddr:  147.185.133.176
 Fri Oct  2 02:37:29 2026 :: Sock.sinaddr:  147.185.133.176
 Fri Oct  2 02:38:46 2026 :: Sock.sinaddr:  5.161.215.244
 Fri Oct  2 02:38:46 2026 :: EOF encountered on read.
+Fri Oct  2 02:43:50 2026 :: Sock.sinaddr:  54.167.223.174
+Fri Oct  2 02:43:50 2026 :: EOF encountered on read.
+Fri Oct  2 02:47:35 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Oct  2 02:47:39 2026 :: Log WebAdmin: fsave
+Fri Oct  2 02:47:45 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Oct  2 02:47:48 2026 :: Received signal 15; saving players and shutting down.
+Fri Oct  2 02:47:48 2026 :: Closing link to Killuminati.
+Fri Oct  2 02:47:48 2026 :: Normal termination of game.
+Fri Oct  2 02:47:48 2026 ::  INIT OK 
+Fri Oct  2 02:47:48 2026 :: ROM is ready to rock on port 9000.
+Fri Oct  2 02:47:49 2026 :: Automated backup complete.
+Fri Oct  2 02:47:49 2026 :: Daily backup complete.
+Fri Oct  2 02:48:53 2026 :: Sock.sinaddr:  5.161.73.160
+Fri Oct  2 02:48:54 2026 :: EOF encountered on read.
+Fri Oct  2 02:49:19 2026 :: Sock.sinaddr:  47.254.213.90
+Fri Oct  2 02:49:19 2026 :: Sock.sinaddr:  47.254.213.90
+Fri Oct  2 02:49:20 2026 :: EOF encountered on read.
+Fri Oct  2 02:53:58 2026 :: Sock.sinaddr:  178.156.189.113
+Fri Oct  2 02:53:58 2026 :: EOF encountered on read.
+Fri Oct  2 02:59:03 2026 :: Sock.sinaddr:  3.12.251.153
+Fri Oct  2 02:59:03 2026 :: EOF encountered on read.
+Fri Oct  2 03:00:00 2026 :: Sock.sinaddr:  108.81.26.245
+Fri Oct  2 03:00:03 2026 :: Loading Killuminati's playerfile
+Fri Oct  2 03:00:04 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Fri Oct  2 03:00:08 2026 :: Oracle: Killuminati prayed; she appeared in room 4216 (Death room.).
+Fri Oct  2 03:04:04 2026 :: Oracle: Killuminati prayed; she appeared in room 4216 (Death room.).
+Fri Oct  2 03:04:07 2026 :: Sock.sinaddr:  3.149.57.90
+Fri Oct  2 03:04:07 2026 :: EOF encountered on read.
+Fri Oct  2 03:04:49 2026 :: Oracle: Killuminati prayed; she appeared in room 4216 (Death room.).
