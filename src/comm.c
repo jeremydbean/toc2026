@@ -792,6 +792,7 @@ void game_loop_unix( int control )
          * Process any queued web-admin actions before polling descriptors.
          */
         process_web_admin_queue();
+        oracle_process_queries();
 
         {
             script_loop_prepoll_payload poll_payload;

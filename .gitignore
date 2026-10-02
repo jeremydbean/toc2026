@@ -28,6 +28,8 @@ corpse/
 area/webadmin.queue
 area/oracle.ask
 area/oracle.answer
+area/oracle.query
+area/oracle.queryresult
 area/*.dmp
 log/
 player/*

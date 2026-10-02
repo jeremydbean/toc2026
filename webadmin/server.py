@@ -337,6 +337,113 @@ _ORACLE_GEAR_HINTS = (
     "better", "worn", "wearing",
 )
 
+# A "where is it / who has it" question is worth a live lookup in the running
+# game; these mark one. The stopwords carry no item meaning.
+_ORACLE_LIVE_TRIGGERS = (
+    "who has", "who carries", "who is carrying", "who's carrying",
+    "who is wearing", "who's wearing", "who is holding", "who is wielding",
+    "who owns", "who got", "where is", "where's", "where are", "what room",
+    "what area", "located", "find the", "find a",
+)
+_ORACLE_STOPWORDS = frozenset((
+    "the a an of is are was were right now currently who whos has have carries "
+    "carrying wearing wielding holding owns got where wheres what which room "
+    "area located find in on at does do anyone someone today still it there any "
+    "my me i can get to you know tell please oracle s").split())
+_ORACLE_DIR_HINTS = (
+    "how do i get", "how to get", "how can i get", "directions", "direction to",
+    "route", "walk to", "path to", "way to", "get to", "how far",
+)
+_ORACLE_LEVEL_HINTS = (
+    "leveling", "levelling", "level up", "exp ", "experience", " xp", "grind",
+    "what mobs", "which mobs", "mobs to", "where should i level",
+    "best place to level", "kill for",
+)
+# Questions about the asker's own current state, which must never be answered
+# from the cache.
+_ORACLE_PERSONAL_HINTS = (
+    "my gear", "my eq", "my equipment", "i'm wearing", "im wearing",
+    "i am wearing", "i have", "my current", "what i have", "upgrade",
+    "online", "who's on", "whos on", "right now", "currently",
+)
+
+
+def _oracle_live_keyword(question: str) -> str:
+    """The item or mob a "where is / who has" question is about, as up to four
+    content words for the game's own keyword match -- or "" if the question is
+    not that kind. Deterministic: the model never chooses what is looked up."""
+    ql = (question or "").lower()
+    hit = None
+    for trigger in _ORACLE_LIVE_TRIGGERS:
+        i = ql.find(trigger)
+        if i != -1 and (hit is None or i < hit[0]):
+            hit = (i, trigger)
+    if hit is None:
+        return ""
+    tail = ql[hit[0] + len(hit[1]):]
+    words = [w for w in re.findall(r"[a-z]{2,20}", tail) if w not in _ORACLE_STOPWORDS]
+    return " ".join(words[:4])
+
+
+def _oracle_live_lookup(reqs, timeout: float = 2.5) -> list:
+    """Ask the running game a few read-only questions and wait for the answers.
+
+    reqs is a list of (kind, arg) with kind in obj/mob/eq. They are appended to
+    area/oracle.query; the game drains that on its pulse, runs a fixed
+    read-only scan for each, and appends "<id>\\t<finding>" to
+    area/oracle.queryresult. Returns findings in request order ("" for any
+    that did not come back in time). Never raises."""
+    if not reqs:
+        return []
+    base = QUEUE_PATH.parent
+    qpath = base / "oracle.query"
+    rpath = base / "oracle.queryresult"
+    stamp = int(time.time() * 1000)
+    ids: list = []
+    out_lines = []
+    for i, (kind, arg) in enumerate(reqs):
+        clean = " ".join(re.findall(r"[A-Za-z]+", str(arg)))[:60]
+        if kind not in ("obj", "mob", "eq") or not clean:
+            ids.append(None)
+            continue
+        rid = "q%d_%d" % (stamp, i)
+        ids.append(rid)
+        out_lines.append("%s\t%s\t%s" % (rid, kind, clean))
+    if not out_lines:
+        return ["" for _ in reqs]
+    try:
+        with open(qpath, "a", encoding="utf-8") as fh:
+            oracle._lock_ex(fh)
+            fh.write("\n".join(out_lines) + "\n")
+    except OSError:
+        return ["" for _ in reqs]
+
+    wanted = {r for r in ids if r}
+    got: Dict[str, str] = {}
+    deadline = time.time() + timeout
+    while time.time() < deadline and len(got) < len(wanted):
+        time.sleep(0.15)
+        try:
+            text = rpath.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            continue
+        for line in text.splitlines():
+            rid, _, rest = line.partition("\t")
+            if rid in wanted and rid not in got:
+                got[rid] = rest.strip()
+
+    # Only one lookup batch is ever outstanding (the poller is one thread), so
+    # clearing the whole result file is safe; a straggler from an earlier,
+    # timed-out batch is simply discarded.
+    try:
+        with open(rpath, "r+", encoding="utf-8") as fh:
+            oracle._lock_ex(fh)
+            fh.seek(0)
+            fh.truncate(0)
+    except OSError:
+        pass
+    return [got.get(r, "") if r else "" for r in ids]
+
 
 def _oracle_context(player: str, question: str) -> str:
     """Build live grounding for one question: the asker's level, class and worn
@@ -382,6 +489,7 @@ def _oracle_context(player: str, question: str) -> str:
     # Cheap: a single stat per token (names are stored capitalised); bounded.
     seen = {player.casefold()}
     others = 0
+    named: list = []
     for tok in re.findall(r"[A-Za-z]{3,12}", question or ""):
         cap = tok.capitalize()
         if cap.casefold() in seen:
@@ -405,9 +513,25 @@ def _oracle_context(player: str, question: str) -> str:
             cand.get("name", cap), cand.get("level", "?"),
             cand.get("race", "?"), cand.get("class_name", "?"),
             "; ".join(ow[:20]) if ow else "nothing of note"))
+        named.append(cand.get("name", cap))
         others += 1
         if others >= 2:
             break
+
+    # Live, from the running game (read-only): the current gear of any player
+    # named in the question, and -- for "where is / who has" -- where an item
+    # or mob is right now. The poller chooses these lookups, never the model.
+    reqs = [("eq", n) for n in named]
+    live_kw = _oracle_live_keyword(question)
+    if live_kw:
+        reqs += [("obj", live_kw), ("mob", live_kw)]
+    if reqs:
+        for (kind, _arg), found in zip(reqs, _oracle_live_lookup(reqs)):
+            if not found:
+                continue
+            if kind == "mob" and found.startswith("No '"):
+                continue   # it was an item, not a mob
+            lines.append("Live right now -- %s" % found)
 
     ql = (question or "").lower()
     if cls in CLASS_WEIGHTS and race in RACE_FLAGS \
@@ -435,7 +559,78 @@ def _oracle_context(player: str, question: str) -> str:
             lines.append("Obtainable best-in-slot for this class and level -- "
                          + "; ".join(bis) + ".")
 
-    return "\n".join(lines)[:6000]
+    # The website's Directions data: walking routes from the Oak Tree Square.
+    if any(h in ql for h in _ORACLE_DIR_HINTS) or "where is" in ql:
+        try:
+            routes = load_directions().get("routes") or []
+        except Exception:
+            routes = []
+        words = [w for w in re.findall(r"[a-z]{3,20}", ql)
+                 if w not in _ORACLE_STOPWORDS
+                 and w not in ("how", "directions", "direction", "route", "walk",
+                               "path", "way", "far", "from", "here", "there")]
+        scored = []
+        for r in routes:
+            hay = " ".join(str(r.get(k, "")) for k in
+                           ("name", "area", "area_display", "room")).lower()
+            score = sum(1 for w in words if w in hay)
+            if score:
+                scored.append((score, r))
+        if scored:
+            scored.sort(key=lambda x: (-x[0], x[1].get("rooms_away") or 9999))
+            best_score = scored[0][0]
+            for score, r in [s for s in scored if s[0] == best_score][:2]:
+                lines.append("Route to %s (%s rooms from the Oak Tree Square): %s" % (
+                    r.get("area_display") or r.get("name"),
+                    r.get("rooms_away", "?"), r.get("commands", "")))
+
+    # The website's Leveling guide: best mobs for the asker's level.
+    if any(h in ql for h in _ORACLE_LEVEL_HINTS):
+        try:
+            lv = asyncio.run(get_leveling(level=lvl, limit=5))
+        except Exception:
+            lv = {}
+        picks = []
+        for m in (lv.get("mobs") or [])[:5]:
+            picks.append("%s (lvl %s) in %s: %s xp/kill, ~%s xp/hr, %s around%s%s" % (
+                m.get("name"), m.get("level"), m.get("area"), m.get("xp_per_kill"),
+                m.get("xp_per_hour"), m.get("count"),
+                ", aggressive" if m.get("aggressive") else "",
+                ("; route: " + m["directions"]) if m.get("directions") else ""))
+        if picks:
+            lines.append("Best leveling for level %d (the site's leveling guide) -- %s."
+                         % (lvl, " | ".join(picks)))
+
+    return "\n".join(lines)[:9000]
+
+
+def _oracle_cache_key(player: str, question: str):
+    """A cache key for a question whose answer depends only on class, race and
+    level -- "best sword for my level", "how do I remort", "where should I
+    level" -- or None for anything about the asker's own current state, a named
+    player, or a live "where is / who has" lookup, which must be fresh."""
+    ql = " ".join(re.findall(r"[a-z0-9']+", (question or "").lower()))
+    if not ql:
+        return None
+    if any(h in ql for h in _ORACLE_PERSONAL_HINTS) or _oracle_live_keyword(question):
+        return None
+    for tok in re.findall(r"[A-Za-z]{3,12}", question or ""):
+        cap = tok.capitalize()
+        if cap.casefold() == (player or "").casefold():
+            continue
+        try:
+            if (PLAYER_PATH / cap).is_file():
+                return None
+        except OSError:
+            return None
+    prof = parse_player_file(player) or {}
+    return "|".join((ql, str(prof.get("class_name", "")).lower(),
+                     str(prof.get("race", "")).lower(), str(prof.get("level", ""))))
+
+
+def _oracle_provider(player: str, question: str):
+    """What the poller hands each question: (live grounding, cache key)."""
+    return _oracle_context(player, question), _oracle_cache_key(player, question)
 
 
 async def _oracle_poll_loop():
@@ -449,7 +644,7 @@ async def _oracle_poll_loop():
     answer = QUEUE_PATH.parent / "oracle.answer"
     while True:
         try:
-            await asyncio.to_thread(oracle.poll_once, ask, answer, _oracle_context)
+            await asyncio.to_thread(oracle.poll_once, ask, answer, _oracle_provider)
         except asyncio.CancelledError:
             raise
         except Exception:
@@ -465,7 +660,7 @@ def oracle_report(limit: int = 50) -> Dict[str, Any]:
                       or (QUEUE_PATH.parent.parent / "log" / "oracle_usage.tsv"))
     calls: list = []
     per_player: dict = {}
-    totals = {"chats": 0, "tokens": 0, "cost": 0.0}
+    totals = {"chats": 0, "tokens": 0, "cost": 0.0, "cached": 0}
 
     try:
         text = usage_path.read_text(encoding="utf-8", errors="replace")
@@ -482,17 +677,21 @@ def oracle_report(limit: int = 50) -> Dict[str, Any]:
         except ValueError:
             continue
         tokens = inp + out + cread + cwrite
+        cached = len(parts) > 10 and parts[10] == "1"
         calls.append({
             "time": epoch, "player": parts[1], "model": parts[2],
             "input": inp, "output": out, "cache_read": cread,
             "cache_write": cwrite, "tokens": tokens, "cost": round(cost, 6),
             "question": parts[8], "answer": parts[9],
             "off_topic": parts[9] == "__OFFTOPIC__",
+            "cached": cached,
         })
         pp = per_player.setdefault(
             parts[1], {"player": parts[1], "chats": 0, "tokens": 0, "cost": 0.0})
         pp["chats"] += 1; pp["tokens"] += tokens; pp["cost"] += cost
         totals["chats"] += 1; totals["tokens"] += tokens; totals["cost"] += cost
+        if cached:
+            totals["cached"] += 1
 
     players = sorted(per_player.values(), key=lambda p: -p["cost"])
     for p in players:

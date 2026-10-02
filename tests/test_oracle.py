@@ -49,7 +49,8 @@ class OracleTests(unittest.TestCase):
             (k, __import__("os").environ.get(k))
             for k in ("ORACLE_API_KEY", "ANTHROPIC_API_KEY", "ORACLE_ENABLED",
                       "ORACLE_MODEL", "ORACLE_DAILY_USD", "ORACLE_PER_PLAYER_HOUR",
-                      "ORACLE_STATE"))
+                      "ORACLE_STATE", "ORACLE_USAGE", "ORACLE_CACHE",
+                      "ORACLE_CACHE_DAYS"))
         import os
         os.environ["ORACLE_STATE"] = str(self.state)
         for k in ("ORACLE_API_KEY", "ANTHROPIC_API_KEY", "ORACLE_ENABLED"):
@@ -134,6 +135,49 @@ class OracleTests(unittest.TestCase):
         self.assertEqual(out[1], "Milenko\tGo to the temple.")
         # Drained, so the spool can never back up.
         self.assertEqual(ask.read_text(encoding="utf-8"), "")
+
+    def test_cache_hit_answers_without_the_api(self):
+        import os
+        self._enable()
+        os.environ["ORACLE_USAGE"] = str(Path(self.tmp) / "usage.tsv")
+
+        class Boom:
+            def __init__(self, **kw):
+                raise AssertionError("the API must not be called on a cache hit")
+        broken = types.ModuleType("anthropic")
+        broken.Anthropic = Boom
+        sys.modules["anthropic"] = broken
+
+        oracle._cache_put("how do i remort|warrior|human|54", "Remort at 54.")
+        out = oracle.consult("Alaric", "How do I remort?",
+                             cache_key="how do i remort|warrior|human|54")
+        self.assertEqual(out, "Remort at 54.")
+        row = (Path(self.tmp) / "usage.tsv").read_text().strip().split("\t")
+        self.assertEqual(row[-1], "1")          # logged as cached
+        self.assertEqual(float(row[7]), 0.0)    # at no cost
+
+    def test_real_answers_are_cached_refusals_are_not(self):
+        self._enable()
+        sys.modules["anthropic"] = _fake_anthropic("Seek the smith.")
+        oracle.consult("Alaric", "best sword?", cache_key="k-sword")
+        self.assertEqual(oracle._cache_get("k-sword"), "Seek the smith.")
+
+        sys.modules["anthropic"] = _fake_anthropic("__OFFTOPIC__")
+        self.assertEqual(oracle.consult("Alaric", "capital of France?",
+                                        cache_key="k-france"), "__OFFTOPIC__")
+        self.assertIsNone(oracle._cache_get("k-france"))
+
+    def test_poll_once_accepts_a_context_and_cache_key(self):
+        self._enable()
+        sys.modules["anthropic"] = _fake_anthropic("Go north.")
+        ask = Path(self.tmp) / "oracle.ask"
+        answer = Path(self.tmp) / "oracle.answer"
+        ask.write_text("1700000000\tAlaric\twhere do I level?\n", encoding="utf-8")
+        n = oracle.poll_once(ask, answer,
+                             lambda p, q: ("Supplicant: Alaric.", "k-level"))
+        self.assertEqual(n, 1)
+        self.assertEqual(answer.read_text(encoding="utf-8").strip(), "Alaric\tGo north.")
+        self.assertEqual(oracle._cache_get("k-level"), "Go north.")
 
     def test_poll_once_drains_even_when_dormant(self):
         ask = Path(self.tmp) / "oracle.ask"

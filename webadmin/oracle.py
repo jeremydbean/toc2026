@@ -149,9 +149,10 @@ def _usage_fields(usage: Any):
 
 
 def _log_usage(player: str, model: str, usage: Any, cost: float,
-               question: str, answer: str) -> None:
+               question: str, answer: str, cached: bool = False) -> None:
     """Append one per-call usage record for the dashboard: tab-separated
-    epoch, player, model, input, output, cache-read, cache-write, cost, Q, A.
+    epoch, player, model, input, output, cache-read, cache-write, cost, Q, A,
+    and a cached flag (1 when served from the answer cache, at no cost).
     Written only when ORACLE_USAGE names a path; failures are ignored."""
     path = _env("ORACLE_USAGE")
     if not path:
@@ -167,6 +168,7 @@ def _log_usage(player: str, model: str, usage: Any, cost: float,
                 str(int(time.time())), flat(player), model,
                 str(inp), str(out), str(cread), str(cwrite),
                 "%.6f" % cost, flat(question), flat(answer),
+                "1" if cached else "0",
             )) + "\n")
     except OSError:
         pass
@@ -183,6 +185,67 @@ def _estimate_usd(model: str, usage: Any) -> float:
         + g("cache_read_input_tokens") * cread
         + g("cache_creation_input_tokens") * cwrite
     ) / 1_000_000.0
+
+
+# ----------------------------------------------------------------- cache
+# A question whose answer depends only on class, race and level ("best sword
+# for my level", "how do I remort", "where should I level") is answered once
+# and reused, free and instant. The caller decides cacheability -- it passes a
+# key only when nothing live or personal is involved -- so this is just a
+# bounded key -> (answer, time) store beside the state file.
+def _cache_path() -> Path:
+    custom = _env("ORACLE_CACHE")
+    return Path(custom) if custom else _state_path().with_name("oracle.cache.json")
+
+
+def _cache_ttl() -> float:
+    try:
+        return max(0.0, float(_env("ORACLE_CACHE_DAYS", "7"))) * 86400.0
+    except ValueError:
+        return 7 * 86400.0
+
+
+def _cache_get(key: Optional[str]) -> Optional[str]:
+    if not key or _cache_ttl() <= 0:
+        return None
+    try:
+        data = json.loads(_cache_path().read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    hit = data.get(key) if isinstance(data, dict) else None
+    if not isinstance(hit, dict):
+        return None
+    try:
+        if time.time() - float(hit.get("t", 0)) > _cache_ttl():
+            return None
+    except (TypeError, ValueError):
+        return None
+    answer = hit.get("a")
+    return answer if isinstance(answer, str) and answer else None
+
+
+def _cache_put(key: Optional[str], answer: str) -> None:
+    if not key or _cache_ttl() <= 0:
+        return
+    path = _cache_path()
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            data = {}
+    except (OSError, ValueError):
+        data = {}
+    data[key] = {"a": answer, "t": time.time()}
+    if len(data) > 500:
+        oldest = sorted(data.items(), key=lambda kv: kv[1].get("t", 0))
+        for k, _v in oldest[:len(data) - 500]:
+            data.pop(k, None)
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_name(path.name + ".tmp")
+        tmp.write_text(json.dumps(data), encoding="utf-8")
+        tmp.replace(path)
+    except OSError:
+        pass
 
 
 # ------------------------------------------------------------- grounding
@@ -226,7 +289,8 @@ def _one_line(s: str, limit: int = 460) -> str:
     return s[:limit]
 
 
-def consult(player: str, question: str, context: str = "") -> str:
+def consult(player: str, question: str, context: str = "",
+            cache_key: Optional[str] = None) -> str:
     """Answer one question, enforcing the caps. Returns a single line of
     plain text for the mob to say. Never raises.
 
@@ -239,6 +303,13 @@ def consult(player: str, question: str, context: str = "") -> str:
         return "The Oracle waits. Ask something."
     if not is_enabled():
         return _QUIET
+
+    # Already answered for this class/race/level? Serve it free and instantly.
+    if cache_key:
+        cached = _cache_get(cache_key)
+        if cached:
+            _log_usage(player, "cache", None, 0.0, question, cached, cached=True)
+            return cached
 
     now = time.time()
     state = _load_state()
@@ -302,6 +373,9 @@ def consult(player: str, question: str, context: str = "") -> str:
         # The model marks an off-topic question with a sentinel; pass it
         # through cleanly for the game to turn into a refusal.
         final = ORACLE_OFFTOPIC if ORACLE_OFFTOPIC in answer else (answer or _QUIET)
+        # Never cache a refusal or a failure: a wrong refusal would stick.
+        if cache_key and final not in (ORACLE_OFFTOPIC, _QUIET):
+            _cache_put(cache_key, final)
         _log_usage(player, model, resp.usage, cost, question, final)
         return final
     except Exception:
@@ -374,12 +448,18 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
         if not player or not question:
             continue
         context = ""
+        cache_key = None
         if context_provider is not None:
             try:
-                context = context_provider(player, question) or ""
+                got = context_provider(player, question)
+                if isinstance(got, tuple):
+                    context = got[0] or ""
+                    cache_key = got[1] if len(got) > 1 else None
+                else:
+                    context = got or ""
             except Exception:
-                context = ""
-        answer = _one_line(consult(player, question, context))
+                context, cache_key = "", None
+        answer = _one_line(consult(player, question, context, cache_key))
         try:
             with open(ans, "a", encoding="utf-8") as af:
                 _lock_ex(af)

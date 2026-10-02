@@ -424,6 +424,274 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
 }
 
 
+/* ---------------------------------------------------------------- live
+ * Read-only live-world lookups, so the Oracle can answer "who has X", "where
+ * is X" and "what is Y wearing" from the running game.  The web poller writes
+ * a request to oracle.query; this drains it on the game pulse, runs a FIXED
+ * set of read-only scans -- never interpret(), never a command -- and writes
+ * the finding to oracle.queryresult.  Nothing the model emits can reach this:
+ * the poller decides in code what to look up; the game only ever reports.
+ */
+#define ORACLE_QUERY_FILE    "oracle.query"
+#define ORACLE_QRESULT_FILE  "oracle.queryresult"
+#define ORACLE_LIVE_MAX      8
+
+
+static void oracle_lookup_obj( const char *keyword, char *out, size_t size )
+{
+    LIST_ITERATOR iter;
+    OBJ_DATA *obj;
+    int found = 0;
+
+    out[0] = '\0';
+    if ( keyword == NULL || keyword[0] == '\0' )
+        return;
+
+    FOR_EACH_OBJECT( iter, obj )
+    {
+        char where[MAX_INPUT_LENGTH];
+        char line[MAX_INPUT_LENGTH];
+
+        if ( obj->pIndexData == NULL || obj->name == NULL )
+            continue;
+        if ( !is_name( keyword, obj->name ) )
+            continue;
+
+        if ( obj->carried_by != NULL )
+            snprintf( where, sizeof(where), "carried by %s",
+                      obj->carried_by->name != NULL ? obj->carried_by->name : "someone" );
+        else if ( obj->in_room != NULL )
+            snprintf( where, sizeof(where), "in %s (%d)",
+                      obj->in_room->name != NULL ? obj->in_room->name : "?",
+                      obj->in_room->vnum );
+        else if ( obj->in_obj != NULL )
+            snprintf( where, sizeof(where), "inside %s",
+                      obj->in_obj->short_descr != NULL ? obj->in_obj->short_descr
+                                                       : "a container" );
+        else
+            continue;
+
+        snprintf( line, sizeof(line), "%s%s %s", found ? "; " : "",
+                  obj->short_descr != NULL ? obj->short_descr : "it", where );
+        if ( strlen(out) + strlen(line) + 1 < size )
+            toc_strlcat( out, line, size );
+        if ( ++found >= ORACLE_LIVE_MAX )
+            break;
+    }
+
+    if ( found == 0 )
+        snprintf( out, size, "No '%s' is anywhere in the world right now.", keyword );
+}
+
+
+static void oracle_lookup_mob( const char *keyword, char *out, size_t size )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *mob;
+    int found = 0;
+
+    out[0] = '\0';
+    if ( keyword == NULL || keyword[0] == '\0' )
+        return;
+
+    FOR_EACH_CHARACTER( iter, mob )
+    {
+        char line[MAX_INPUT_LENGTH];
+
+        if ( !IS_NPC(mob) || mob->in_room == NULL
+          || mob->pIndexData == NULL || mob->name == NULL )
+            continue;
+        if ( !is_name( keyword, mob->name ) )
+            continue;
+
+        snprintf( line, sizeof(line), "%s%s in %s (%d)", found ? "; " : "",
+                  mob->short_descr != NULL ? mob->short_descr : mob->name,
+                  mob->in_room->name != NULL ? mob->in_room->name : "?",
+                  mob->in_room->vnum );
+        if ( strlen(out) + strlen(line) + 1 < size )
+            toc_strlcat( out, line, size );
+        if ( ++found >= ORACLE_LIVE_MAX )
+            break;
+    }
+
+    if ( found == 0 )
+        snprintf( out, size, "No '%s' is roaming the world right now.", keyword );
+}
+
+
+static void oracle_lookup_eq( const char *name, char *out, size_t size )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *vch;
+    CHAR_DATA *target = NULL;
+    OBJ_DATA *obj;
+    char items[MAX_STRING_LENGTH];
+    int found = 0;
+
+    out[0] = '\0';
+    if ( name == NULL || name[0] == '\0' )
+        return;
+
+    FOR_EACH_CHARACTER( iter, vch )
+    {
+        if ( !IS_NPC(vch) && vch->name != NULL && !str_cmp( vch->name, name ) )
+        {
+            target = vch;
+            break;
+        }
+    }
+
+    if ( target == NULL )
+    {
+        snprintf( out, size, "%s is not online right now.", name );
+        return;
+    }
+
+    items[0] = '\0';
+    for ( obj = target->carrying; obj != NULL; obj = obj->next_content )
+    {
+        char line[MAX_INPUT_LENGTH];
+
+        if ( obj->wear_loc == WEAR_NONE )
+            continue;
+        snprintf( line, sizeof(line), "%s%s", found ? "; " : "",
+                  obj->short_descr != NULL ? obj->short_descr : "something" );
+        if ( strlen(items) + strlen(line) + 1 < sizeof(items) )
+            toc_strlcat( items, line, sizeof(items) );
+        found++;
+    }
+
+    snprintf( out, size, "%s is wearing right now: %s.", target->name,
+              found ? items : "nothing of note" );
+}
+
+
+/* Drain the poller's live-lookup requests on the game pulse and answer them,
+   read-only. */
+void oracle_process_queries( void )
+{
+    FILE *fp;
+    FILE *pending;
+    FILE *out;
+    char buf[MAX_STRING_LENGTH];
+    struct stat fst;
+#if defined(unix) || defined(__unix__) || defined(__APPLE__)
+    struct flock lock;
+#endif
+
+    if ( stat( ORACLE_QUERY_FILE, &fst ) == -1 || fst.st_size == 0 )
+        return;
+
+    fp = fopen( ORACLE_QUERY_FILE, "r+" );
+    if ( fp == NULL )
+        return;
+
+#if defined(unix) || defined(__unix__) || defined(__APPLE__)
+    memset( &lock, 0, sizeof(lock) );
+    lock.l_type = F_WRLCK;
+    lock.l_whence = SEEK_SET;
+    if ( fcntl( fileno(fp), F_SETLK, &lock ) == -1 )
+    {
+        fclose( fp );
+        return;
+    }
+#endif
+
+    pending = tmpfile();
+    if ( pending == NULL )
+    {
+        fclose( fp );
+        return;
+    }
+
+    while ( fgets( buf, sizeof(buf), fp ) != NULL )
+    {
+        if ( fputs( buf, pending ) == EOF )
+            break;
+    }
+    if ( ferror(fp) || ferror(pending) || fflush(pending) != 0 )
+    {
+        fclose( pending );
+        fclose( fp );
+        return;
+    }
+
+#if defined(unix) || defined(__unix__) || defined(__APPLE__)
+    if ( ftruncate( fileno(fp), 0 ) != 0 )
+    {
+        fclose( pending );
+        fclose( fp );
+        return;
+    }
+    fclose( fp );
+#else
+    {
+        FILE *clear = freopen( ORACLE_QUERY_FILE, "w", fp );
+        if ( clear == NULL )
+        {
+            fclose( pending );
+            return;
+        }
+        fclose( clear );
+    }
+#endif
+
+    rewind( pending );
+
+    out = fopen( ORACLE_QRESULT_FILE, "a" );
+#if defined(unix) || defined(__unix__) || defined(__APPLE__)
+    if ( out != NULL )
+    {
+        memset( &lock, 0, sizeof(lock) );
+        lock.l_type = F_WRLCK;
+        lock.l_whence = SEEK_SET;
+        if ( fcntl( fileno(out), F_SETLKW, &lock ) == -1 )
+        {
+            fclose( out );
+            out = NULL;
+        }
+    }
+#endif
+
+    while ( fgets( buf, sizeof(buf), pending ) != NULL )
+    {
+        char ans[MAX_STRING_LENGTH];
+        char *reqid;
+        char *kind;
+        char *keyword;
+        size_t len = strlen( buf );
+
+        while ( len > 0 && ( buf[len - 1] == '\n' || buf[len - 1] == '\r' ) )
+            buf[--len] = '\0';
+        if ( buf[0] == '\0' )
+            continue;
+
+        reqid   = strtok( buf, "\t" );
+        kind    = strtok( NULL, "\t" );
+        keyword = strtok( NULL, "" );
+        if ( reqid == NULL || kind == NULL || keyword == NULL )
+            continue;
+
+        ans[0] = '\0';
+        if ( !str_cmp( kind, "obj" ) )
+            oracle_lookup_obj( keyword, ans, sizeof(ans) );
+        else if ( !str_cmp( kind, "mob" ) )
+            oracle_lookup_mob( keyword, ans, sizeof(ans) );
+        else if ( !str_cmp( kind, "eq" ) )
+            oracle_lookup_eq( keyword, ans, sizeof(ans) );
+        else
+            continue;
+
+        if ( out != NULL && ans[0] != '\0' )
+            fprintf( out, "%s\t%s\n", reqid, ans );
+    }
+
+    if ( out != NULL )
+        fclose( out );
+    fclose( pending );
+}
+
+
 void do_ask( CHAR_DATA *ch, char *argument )
 {
     CHAR_DATA *mob;
@@ -717,6 +985,19 @@ void do_pray( CHAR_DATA *ch, char *argument )
         ch, NULL, NULL, TO_ROOM );
     act( "$n murmurs, 'Ask what you will.  Say DONE when you are finished.'",
         mob, NULL, NULL, TO_ROOM );
+
+    /* An easter egg: she sees the mind for what it is.  Said only to the
+       supplicant, so it gives nothing away to the room. */
+    if ( ch->pcdata != NULL )
+    {
+        if ( ch->pcdata->psionic > 0 )
+            act( "$n's clouded eyes linger on you a moment too long.  'Your mind is louder than most.'",
+                mob, NULL, ch, TO_VICT );
+        else if ( ch->pcdata->psionic_grant_pending
+               || ( ch->pcdata->num_remorts >= 2 && ch->pcdata->psionic <= 0 ) )
+            act( "$n pauses, as though something about you puzzles her.  'There is something unusual about your mind, seeker.'",
+                mob, NULL, ch, TO_VICT );
+    }
 
     snprintf( buf, sizeof(buf), "Oracle: %s prayed; she appeared in room %d (%s).",
               ch->name, ch->in_room->vnum,

@@ -338,7 +338,7 @@
         byId("oracle-status").textContent = data.enabled ? "Enabled" : "Disabled";
         const t = data.totals || { chats: 0, tokens: 0, cost: 0 };
         byId("oracle-totals").textContent =
-            `${formatNumber(t.chats)} chats · ${formatNumber(t.tokens)} tokens · $${(t.cost || 0).toFixed(4)} total`
+            `${formatNumber(t.chats)} chats · ${formatNumber(t.tokens)} tokens · $${(t.cost || 0).toFixed(4)} total · ${formatNumber(t.cached || 0)} cached`
             + ` · today $${(data.spent_today || 0).toFixed(4)} / $${(data.daily_cap || 0).toFixed(2)} cap`;
         const pbody = byId("oracle-players").querySelector("tbody");
         const players = data.per_player || [];
@@ -354,7 +354,7 @@
             node("td", { text: new Date(c.time * 1000).toLocaleString() }),
             node("td", { text: c.player }),
             node("td", { text: c.question }),
-            node("td", { text: c.off_topic ? "(off-topic — refused)" : c.answer }),
+            node("td", { text: c.off_topic ? "(off-topic — refused)" : (c.cached ? c.answer + " (cached)" : c.answer) }),
             node("td", { text: formatNumber(c.tokens) }),
             node("td", { text: `$${(c.cost || 0).toFixed(5)}` }),
         ])) : [node("tr", {}, [node("td", { className: "empty-state", text: "No questions yet.", attrs: { colspan: 6 } })])]));

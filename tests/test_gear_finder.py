@@ -191,6 +191,71 @@ class GearFinderTests(unittest.TestCase):
         self.assertIn("level 40 human warrior", ctx)
         self.assertNotIn("best-in-slot", ctx.lower())
 
+    # ---- live bridge, website data, and the answer cache -------------
+    def test_live_keyword_extraction(self) -> None:
+        from webadmin import server
+
+        self.assertEqual(server._oracle_live_keyword(
+            "who has the sword of justice right now?"), "sword justice")
+        self.assertEqual(server._oracle_live_keyword(
+            "Where is the Amulet of Power?"), "amulet power")
+        self.assertEqual(server._oracle_live_keyword("how do I remort?"), "")
+
+    def test_context_carries_live_findings_routes_and_leveling(self) -> None:
+        import tempfile
+        from webadmin import server
+
+        prof = {"class_name": "warrior", "race": "human", "level": 30, "equipment": []}
+        seen = {}
+
+        def fake_lookup(reqs, timeout=2.5):
+            seen["reqs"] = list(reqs)
+            return ["Sword of Justice carried by Augustus" if kind == "obj"
+                    else "No 'sword justice' is roaming the world right now."
+                    for kind, _arg in reqs]
+
+        routes = {"routes": [{"name": "Camelot", "area": "Camelot",
+                              "area_display": "Camelot", "room": "Gate",
+                              "commands": "n;n;e", "rooms_away": 3}]}
+
+        async def fake_level(**_kw):
+            return {"mobs": [{"name": "a troll", "level": 31, "area": "Moria",
+                              "xp_per_kill": 200, "xp_per_hour": 9000, "count": 4,
+                              "aggressive": False, "directions": "s;s"}]}
+
+        with tempfile.TemporaryDirectory() as empty, \
+                patch.object(server, "PLAYER_PATH", Path(empty)), \
+                patch.object(server, "parse_player_file", lambda n: prof), \
+                patch.object(server, "parser", SimpleNamespace(objects={}, mobs={})), \
+                patch.object(server, "_oracle_live_lookup", fake_lookup), \
+                patch.object(server, "load_directions", lambda: routes), \
+                patch.object(server, "get_leveling", fake_level):
+            live = server._oracle_context("Tester", "who has the sword of justice?")
+            route = server._oracle_context("Tester", "how do I get to Camelot?")
+            lvl = server._oracle_context("Tester", "what mobs should I kill for exp?")
+
+        self.assertIn(("obj", "sword justice"), seen["reqs"])
+        self.assertIn("Live right now -- Sword of Justice carried by Augustus", live)
+        self.assertNotIn("roaming", live)        # an empty mob result is dropped
+        self.assertIn("Route to Camelot", route)
+        self.assertIn("n;n;e", route)
+        self.assertIn("a troll (lvl 31) in Moria", lvl)
+
+    def test_cache_key_only_for_impersonal_questions(self) -> None:
+        import tempfile
+        from webadmin import server
+
+        prof = {"class_name": "warrior", "race": "human", "level": 30}
+        with tempfile.TemporaryDirectory() as empty, \
+                patch.object(server, "parse_player_file", lambda n: prof), \
+                patch.object(server, "PLAYER_PATH", Path(empty)):
+            self.assertEqual(server._oracle_cache_key("Tester", "How do I remort?"),
+                             "how do i remort|warrior|human|30")
+            self.assertIsNone(server._oracle_cache_key(
+                "Tester", "what is my easiest upgrade?"))
+            self.assertIsNone(server._oracle_cache_key(
+                "Tester", "who has the sword of justice?"))
+
 
 if __name__ == "__main__":
     unittest.main()
