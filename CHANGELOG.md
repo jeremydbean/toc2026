@@ -10,6 +10,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Typo reports from the archive, worked through.** Every line ever
+  filed to `area/typos.txt` was checked against the current world, and
+  the 33 reports whose slip was still there are fixed across 18 area
+  files and 5 source files (Mob Factory, A Shrine to a Forgotten God,
+  "The Gods appreciate", "You're in too much pain", race arrival lines
+  that read "The beautiful a toy soldier", and the like).
+
 - **The gear finder hid race-restricted gear from the race it was for.**
   Reported in game by Alaric: Starlight compared better than the blue
   war banner in game but never appeared on the website. The game reads
