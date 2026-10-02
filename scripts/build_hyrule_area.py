@@ -1,8 +1,18 @@
 """Generate ``area/hyrule.are`` from the First Quest manifest.
 
-The existing object and mobile catalog is retained so builders can continue to
-edit its balance in OLC. Rooms and resets are generated because their topology is
-reference-derived and should never drift independently from the tests.
+What is generated, and from where:
+
+- Rooms and resets come from ``data/hyrule_first_quest.json`` (the NES
+  topology, the enemies each NES screen or room shows, the level bands)
+  and their names and prose from ``data/hyrule_room_prose.json``.
+- Every enemy that fights is generated here, as one record per kind per
+  level band (see ENEMY_TYPES), so a keese in Level 1 and a keese on Death
+  Mountain are different mobiles statted for their own band.
+- The nine bosses are retained catalog records whose stat line is rewritten
+  from BOSS_STATS, and each carries a generated weapon from BOSS_WEAPONS.
+
+The rest of the object and mobile catalog -- names, flags, descriptions,
+shopkeepers, the old men, Princess Zelda -- is retained as builders left it.
 """
 
 from __future__ import annotations
@@ -10,6 +20,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import textwrap
 from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -18,6 +29,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MANIFEST = ROOT / "data" / "hyrule_first_quest.json"
+DEFAULT_PROSE = ROOT / "data" / "hyrule_room_prose.json"
 DEFAULT_AREA = ROOT / "area" / "hyrule.are"
 
 DIRECTION_NUMBERS = {
@@ -28,11 +40,11 @@ OPPOSITE_DIRECTIONS = {
     "up": "down", "down": "up",
 }
 
-NEW_MOBILE_VNUMS = set(range(30335, 30346))
+NEW_MOBILE_VNUMS = set(range(30338, 30346))
 NEW_OBJECT_VNUMS = (
     set(range(30500, 30515))
     | {30520}
-    | set(range(30530, 30582))
+    | set(range(30530, 30591))
 )
 
 BOSS_MOBS = {
@@ -44,47 +56,24 @@ BOSS_GEAR = {
     6: 30378, 7: 30382, 8: 30385, 9: 30388,
 }
 GANON_GOLDEN_KEY_VNUM = 30243
-ENEMY_MOBS = {
-    "aquamentus": 30222,
-    "blade_trap": 30337,
-    "blue_darknut": 30315,
-    "blue_goriya": 30312,
-    "blue_wizzrobe": 30221,
-    "bubble": 30304,
-    "digdogger": 30309,
-    "dodongo": 30218,
-    "ganon": 30225,
-    "gel": 30300,
-    "gibdo": 30219,
-    "gleeok": 30307,
-    "gohma": 30223,
-    "keese": 30211,
-    "like_like": 30215,
-    "manhandla": 30305,
-    "moldorm": 30303,
+
+# Characters who are not enemies keep the one catalog record they always had.
+NPC_MOBS = {
     "old_man": 30228,
-    "patra": 30318,
-    "pols_voice": 30308,
     "princess_zelda": 30338,
-    "red_darknut": 30220,
-    "red_goriya": 30214,
-    "red_lanmola": 30317,
-    "red_wizzrobe": 30310,
-    "rope": 30302,
-    "stalfos": 30212,
-    "vire": 30306,
-    "wallmaster": 30301,
-    "zol": 30213,
-    "blue_lanmola": 30217,
+    "fairy": 30216,
 }
 
-WORLD_MOBS = {
-    "armos": 30336,
-    "fairy": 30216,
-    "falling_rock": 30337,
-    "ghini": 30330,
-    "peahat": 30335,
-    "zora": 30321,
+# The catalog records that used to be spawned as ordinary enemies. Each is
+# replaced by the per-band records generated from ENEMY_TYPES, so the old
+# single-level record is dropped rather than left behind unspawned. 30335-
+# 30337 (peahat, armos, the shared hazard) were generated here before.
+RETIRED_MOBILE_VNUMS = {
+    30200, 30201, 30202, 30203, 30205, 30206, 30207, 30208,
+    30211, 30212, 30213, 30214, 30215, 30217, 30219, 30220, 30221,
+    30300, 30301, 30302, 30304, 30306, 30308, 30310, 30312,
+    30315, 30317, 30318, 30320, 30321, 30322, 30323, 30327,
+    30328, 30329, 30330, 30335, 30336, 30337,
 }
 
 SHOP_KEEPERS = {
@@ -112,18 +101,800 @@ PUZZLE_OBJECTS = {
     "bracelet": 30564,
 }
 
+# The gear chests. Stage 0 is the Wooden Sword cave; stage N sits in Level
+# N's map room. The catalog gear runs one piece per level, 1 to 70, and each
+# chest holds the pieces for the band of the dungeon it stands in, so what
+# a chest gives can be worn by the character who reached it.
 GEAR_STAGES = {
-    0: (30440, range(30320, 30330)),
-    1: (30441, range(30330, 30340)),
-    2: (30443, range(30340, 30350)),
-    3: (30445, range(30350, 30360)),
-    4: (30447, range(30360, 30370)),
-    5: (30449, range(30370, 30375)),
-    6: (30451, range(30375, 30379)),
-    7: (30453, range(30379, 30383)),
-    8: (30455, range(30383, 30386)),
-    9: (30520, range(30386, 30389)),
+    0: (30440, range(30320, 30324)),   # levels 1-4
+    1: (30441, range(30324, 30329)),   # 5-9
+    2: (30443, range(30329, 30335)),   # 10-15
+    3: (30445, range(30335, 30341)),   # 16-21
+    4: (30447, range(30341, 30348)),   # 22-28
+    5: (30449, range(30348, 30355)),   # 29-35
+    6: (30451, range(30355, 30362)),   # 36-42
+    7: (30453, range(30362, 30368)),   # 43-48
+    8: (30455, range(30368, 30375)),   # 49-55
+    9: (30520, range(30375, 30389)),   # 56-70
 }
+
+
+# --------------------------------------------------------------------------
+# Enemies.
+#
+# Hyrule runs from level 1 on the start screen to 59 in Death Mountain, and
+# the same NES enemy turns up all the way along it: a keese flies in Level 1
+# and in Level 9. So each kind is generated once per level band. The band of
+# a dungeon is its manifest "recommended_levels"; an overworld screen takes
+# the band its own recommended level falls in.
+#
+# A generated enemy's vnum encodes its kind: TIER_VNUM_FIRST + code * 10 +
+# (band - 1). The code is the offset of the catalog record the kind used to
+# be (30215 -> 15 for the like like), so src/fight.c can map any band of a
+# like like, bubble or wallmaster back to the effect it has always had --
+# see hyrule_enemy_kind() there. Keep the two in step.
+# --------------------------------------------------------------------------
+
+TIER_VNUM_FIRST = 31000
+TIER_VNUM_LAST = TIER_VNUM_FIRST + 145 * 10 + 9
+
+
+@dataclass(frozen=True)
+class EnemyType:
+    code: int
+    race: str
+    keywords: str
+    short: str
+    long: str
+    description: str
+    rank: float          # where in its band it sits: 0 bottom, 1 top
+    hp: float = 1.0      # hit points against an ordinary mobile of its level
+    damage: float = 1.0  # damage against an ordinary mobile of its level
+    attack: int = 0      # attack_table index (const.c)
+    off: str = "0"
+    size: str = "M"
+    special: str = ""    # spec_fun, carried over from the record it replaced
+
+
+ENEMY_TYPES: dict[str, EnemyType] = {
+    # The overworld.
+    "red_octorok": EnemyType(
+        0, "fish", "octorok red", "a red octorok",
+        "A red octorok waddles through the grass, cheeks puffed with a rock.",
+        "A squat red creature on four stubby legs, all mouth and bulging eyes.\n"
+        "It spits stones with surprising force, then waddles off to find a\n"
+        "better angle.", 0.0, 0.8, 0.8, 6, size="S"),
+    "blue_octorok": EnemyType(
+        1, "fish", "octorok blue", "a blue octorok",
+        "A blue octorok turns its snout toward you and spits.",
+        "Bigger and steadier than its red cousins, the blue octorok plants its\n"
+        "stubby legs and fires stone after stone without hurrying.",
+        0.35, 1.0, 1.0, 6, size="S"),
+    "red_moblin": EnemyType(
+        2, "pig", "moblin red", "a red moblin",
+        "A red moblin stalks between the trees with a spear on its shoulder.",
+        "A dog-faced brute in a ragged loincloth, the moblin carries a\n"
+        "bundle of crude spears and throws them with more strength than aim.",
+        0.3, 1.0, 1.0, 2),
+    "blue_moblin": EnemyType(
+        3, "pig", "moblin blue", "a blue moblin",
+        "A blue moblin snorts and lowers its spear.",
+        "Heavier and meaner than the red moblins, this one has thrown a great\n"
+        "many spears and learned from the ones that missed.",
+        0.6, 1.15, 1.1, 2),
+    "red_tektite": EnemyType(
+        122, "insect", "tektite red spider", "a red tektite",
+        "A red tektite crouches on its spindly legs, ready to spring.",
+        "A one-eyed hopping spider with legs like bent wire. It bounds from\n"
+        "rock to rock in great unpredictable arcs.",
+        0.1, 0.7, 0.8, 10, "F", "S"),
+    "blue_tektite": EnemyType(
+        5, "insect", "tektite blue spider", "a blue tektite",
+        "A blue tektite bobs on its long legs, watching you with its one eye.",
+        "Larger than the red kind and far more patient, the blue tektite waits\n"
+        "until you are close before it leaps.",
+        0.45, 0.9, 0.9, 10, "F", "S"),
+    "red_leever": EnemyType(
+        6, "insect", "leever red sand", "a red leever",
+        "A red leever spins up out of the sand in a spray of grit.",
+        "A burrowing thing like a spinning thistle of hard red leaves. It\n"
+        "surfaces beside its prey, whirls at them and sinks away again.",
+        0.2, 0.9, 0.9, 22, size="S"),
+    "blue_leever": EnemyType(
+        7, "insect", "leever blue sand", "a blue leever",
+        "A blue leever rises from the sand and whirls toward you.",
+        "The blue leevers burrow deeper and surface harder than the red, and\n"
+        "they do not give up the chase.",
+        0.55, 1.1, 1.0, 22, size="S"),
+    "red_lynel": EnemyType(
+        127, "horse", "lynel red centaur lion", "a red lynel",
+        "A red lynel paces the rocks, sword drawn and mane bristling.",
+        "A lion's head on a horse's body, with a man's arms that hold a broad\n"
+        "sword and a shield. Lynels throw their swords like spears.",
+        0.8, 1.3, 1.2, 3, "K", "L"),
+    "blue_lynel": EnemyType(
+        8, "horse", "lynel blue centaur lion", "a blue lynel",
+        "A blue lynel stamps a hoof and raises its sword.",
+        "The blue lynels are the terror of the high country: tireless, armoured\n"
+        "in hide like iron, and never far from the next of their kind.",
+        1.0, 1.5, 1.3, 3, "K", "L"),
+    "peahat": EnemyType(
+        135, "plant", "peahat spinning flower", "a peahat",
+        "A peahat skims over the ground on whirling petals.",
+        "A thorny flower whose petals spin like a rotor, carrying it just out\n"
+        "of reach. It is easiest to strike when it settles to rest.",
+        0.4, 0.9, 0.9, 1, "F"),
+    "zora": EnemyType(
+        121, "fish", "zola zora river", "a Zola",
+        "A Zola surfaces in the water, its eyes fixed on you.",
+        "A finned water-dweller with a wide, sullen mouth. It rises, spits a\n"
+        "ball of fire, and sinks out of sight before the steam clears.",
+        0.45, 0.9, 1.1, 6),
+    "ghini": EnemyType(
+        130, "undead", "ghini ghost", "a ghini",
+        "A ghini drifts among the headstones, one great eye wide open.",
+        "A pale, round ghost with a single staring eye and stubby arms. It\n"
+        "rises from the graves of those who were disturbed.",
+        0.7, 1.2, 1.0, 5),
+    "armos": EnemyType(
+        136, "modron", "armos knight statue", "an Armos knight",
+        "An Armos knight has stirred from its pedestal and lumbers forward.",
+        "A stone soldier carved to stand guard forever. Touch one, and it\n"
+        "wakes, and it remembers its orders.",
+        0.85, 1.4, 1.2, 8, size="L"),
+    "falling_rock": EnemyType(
+        26, "modron", "boulder rock falling", "a tumbling boulder",
+        "A boulder bounds down the slope toward you.",
+        "A loose block of mountain rock, bouncing down the slope in great\n"
+        "unstoppable leaps.", 0.5, 0.8, 1.2, 8, size="L"),
+    # The dungeons.
+    "keese": EnemyType(
+        11, "bat", "keese bat", "a keese",
+        "A keese flutters in jerky circles near the ceiling.",
+        "A black cave bat with ragged wings. It darts in sudden zigzags and\n"
+        "never holds still long enough to strike cleanly.",
+        0.0, 0.5, 0.7, 10, "F", "T"),
+    "gel": EnemyType(
+        100, "unique", "gel slime", "a gel",
+        "A small gel quivers on the flagstones.",
+        "A blob of dark jelly no bigger than a fist. It creeps in fits and\n"
+        "starts and clings to whatever it touches.",
+        0.0, 0.45, 0.6, 12, size="T"),
+    "zol": EnemyType(
+        13, "unique", "zol slime", "a zol",
+        "A zol heaves itself across the floor, trembling.",
+        "A great quivering mound of slime. Cut it and it splits into gels, as\n"
+        "if it had never been one creature at all.",
+        0.3, 1.0, 0.9, 14),
+    "bubble": EnemyType(
+        104, "undead", "bubble skull flame", "a bubble",
+        "A flaming skull bubble bounces from wall to wall.",
+        "A grinning skull wreathed in flickering light. Its touch leaves a\n"
+        "chill that loosens the grip on a sword.",
+        0.3, 0.6, 0.7, 29, "F", "S"),
+    "rope": EnemyType(
+        102, "snake", "rope snake", "a rope",
+        "A rope coils on the floor, tongue flickering.",
+        "A red snake that idles until it catches sight of prey, then hurls\n"
+        "itself straight at it.", 0.3, 0.8, 0.9, 10, size="S"),
+    "stalfos": EnemyType(
+        12, "undead", "stalfos skeleton", "a stalfos",
+        "A stalfos skeleton rattles forward, sword raised.",
+        "The bones of a long-dead soldier, held together by the dungeon's\n"
+        "old malice and still remembering how to fence.",
+        0.4, 1.0, 1.0, 3),
+    "red_goriya": EnemyType(
+        14, "goblin", "goriya red", "a red goriya",
+        "A red goriya hefts a boomerang and grins.",
+        "A dog-like goblin in a red tunic. It throws its boomerang, ducks, and\n"
+        "catches it again on the way back.",
+        0.4, 1.0, 1.0, 7),
+    "blue_goriya": EnemyType(
+        112, "goblin", "goriya blue", "a blue goriya",
+        "A blue goriya spins a boomerang around one claw.",
+        "Tougher than the red goriyas, and quicker with the boomerang.",
+        0.7, 1.15, 1.1, 7),
+    "wallmaster": EnemyType(
+        101, "undead", "wallmaster hand", "a wallmaster",
+        "A great disembodied hand creeps along the wall.",
+        "A huge grey hand that slides out of the stonework. Whatever it seizes\n"
+        "it carries back to the dungeon's entrance.",
+        0.55, 1.0, 0.9, 8),
+    "vire": EnemyType(
+        106, "bat", "vire bat demon", "a vire",
+        "A vire hops across the room on leathery wings.",
+        "A blue imp with bat wings and a wicked grin. Strike it, and it\n"
+        "bursts into a flurry of keese.", 0.6, 1.0, 1.0, 10),
+    "like_like": EnemyType(
+        15, "unique", "like likelike tube", "a like like",
+        "A like like squats here, a wet tube of hungry flesh.",
+        "A pulsing column of flesh with a mouth at the top. It swallows what\n"
+        "it can, and it is fondest of shields.",
+        0.6, 1.2, 0.8, 14),
+    "pols_voice": EnemyType(
+        108, "rabbit", "pols voice", "a pols voice",
+        "A pols voice bounds about, its great ears twitching at every sound.",
+        "A ghostly rabbit-eared thing that bounces from wall to wall. Loud\n"
+        "noises hurt it more than any blade.",
+        0.6, 1.0, 1.0, 15),
+    "gibdo": EnemyType(
+        19, "undead", "gibdo mummy", "a gibdo",
+        "A gibdo shambles forward in rotting wrappings.",
+        "A mummy bound in grave linen, slow and patient and terribly strong.",
+        0.7, 1.25, 1.0, 8, special="spec_cast_undead"),
+    "red_darknut": EnemyType(
+        20, "human", "darknut red knight", "a red darknut",
+        "A red darknut advances behind its shield, sword levelled.",
+        "A knight in red armour with a shield that turns any blow struck from\n"
+        "the front. Its sword arm never tires.",
+        0.8, 1.3, 1.1, 3, "K"),
+    "blue_darknut": EnemyType(
+        115, "human", "darknut blue knight", "a blue darknut",
+        "A blue darknut bars the way, shield high.",
+        "The blue darknuts are the dungeon's elite guard: heavier armour,\n"
+        "harder blows and no fear at all.",
+        1.0, 1.5, 1.2, 3, "K"),
+    "red_wizzrobe": EnemyType(
+        110, "human", "wizzrobe red wizard", "a red wizzrobe",
+        "A red wizzrobe flickers into view, wand already raised.",
+        "A robed sorcerer who vanishes and reappears beside its prey to loose\n"
+        "a bolt of magic.", 0.7, 0.9, 1.2, 19, special="spec_cast_mage"),
+    "blue_wizzrobe": EnemyType(
+        21, "human", "wizzrobe blue wizard", "a blue wizzrobe",
+        "A blue wizzrobe glides forward, trailing sparks from its wand.",
+        "The blue wizzrobes walk through their own spells and blink from place\n"
+        "to place across a room.", 0.9, 1.0, 1.3, 19, special="spec_cast_mage"),
+    "red_lanmola": EnemyType(
+        117, "centipede", "lanmola red centipede", "a red lanmola",
+        "A red lanmola writhes across the floor in a rush of segments.",
+        "A great centipede of armoured segments that races around the room\n"
+        "faster than the eye can follow.", 0.8, 1.3, 1.1, 10, "H", "L"),
+    "blue_lanmola": EnemyType(
+        17, "centipede", "lanmola blue centipede", "a blue lanmola",
+        "A blue lanmola coils and uncoils, segment over segment.",
+        "Longer, harder and faster than the red kind.",
+        1.0, 1.5, 1.2, 10, "H", "L"),
+    "patra": EnemyType(
+        118, "unique", "patra eye", "a patra",
+        "A patra hangs in the air, ringed by a whirl of lesser eyes.",
+        "A great floating eye at the heart of a spinning cloud of smaller ones.\n"
+        "The ring tightens and widens as it hunts.",
+        1.0, 2.0, 1.3, 19, "F", "L"),
+    "dodongo": EnemyType(
+        18, "lizard", "dodongo dinosaur", "a dodongo",
+        "A dodongo lumbers about on short thick legs.",
+        "A rhinoceros-sized lizard with a hide no sword can cut. It swallows\n"
+        "anything that looks edible, which is how most die.",
+        1.0, 1.75, 1.1, 10, size="L"),
+    "digdogger": EnemyType(
+        109, "unique", "digdogger urchin", "a digdogger",
+        "A digdogger rolls slowly around the room, spines twitching.",
+        "A giant sea urchin with a single eye in its middle. It hates certain\n"
+        "sounds, and shrinks when it hears them.",
+        1.0, 1.75, 1.1, 8, size="L"),
+    "blade_trap": EnemyType(
+        137, "modron", "blade trap spiked", "a blade trap",
+        "A spiked blade trap waits in the corner, ready to slam across the floor.",
+        "A block of iron set with blades, it lies still until something moves\n"
+        "in its line and then it slams across the room.",
+        0.5, 0.8, 1.2, 1),
+}
+
+_codes = [enemy.code for enemy in ENEMY_TYPES.values()]
+if len(set(_codes)) != len(_codes) or not all(0 <= code <= 145 for code in _codes):
+    raise ValueError("ENEMY_TYPES codes must be unique and within 0-145")
+
+
+def band_index(level: int, bands: dict[int, tuple[int, int]]) -> int:
+    """The dungeon band an overworld level falls in."""
+    for band, (_, high) in sorted(bands.items()):
+        if level <= high:
+            return band
+    return max(bands)
+
+
+def tier_vnum(kind: str, band: int) -> int:
+    return TIER_VNUM_FIRST + ENEMY_TYPES[kind].code * 10 + band - 1
+
+
+def tier_level(kind: str, band: int, bands: dict[int, tuple[int, int]]) -> int:
+    low, high = bands[band]
+    return round(low + ENEMY_TYPES[kind].rank * (high - low))
+
+
+# Ordinary mobiles elsewhere in the world, read off the area files with the
+# dashboard parser: roughly the median hit points and average damage for a
+# spawned mobile at each level. A Hyrule enemy scales from these by its kind.
+HIT_POINT_CURVE = (
+    (1, 15), (5, 70), (10, 140), (15, 240), (20, 380), (25, 600),
+    (30, 900), (35, 1350), (40, 1750), (45, 2400), (50, 3300),
+    (55, 4600), (60, 6200), (65, 8000),
+)
+DAMAGE_CURVE = (
+    (1, 3), (5, 5), (10, 8), (15, 11), (20, 15), (25, 19), (30, 24),
+    (35, 28), (40, 33), (45, 38), (50, 43), (55, 49), (60, 55), (65, 62),
+)
+
+
+def curve(points: tuple[tuple[int, int], ...], level: int) -> float:
+    if level <= points[0][0]:
+        return float(points[0][1])
+    for (low_level, low_value), (high_level, high_value) in zip(points, points[1:]):
+        if level <= high_level:
+            share = (level - low_level) / (high_level - low_level)
+            return low_value + share * (high_value - low_value)
+    return float(points[-1][1])
+
+
+def stat_fields(level: int, hit_points: float, damage: float) -> tuple[str, str, int]:
+    """Hit dice, damage dice and hitroll for a mobile of this level.
+
+    load_mobiles raises the damage bonus to 3 * level / 4 and the hitroll to
+    level / 2 whatever the file says, so the dice are built on top of those
+    floors rather than fighting them.
+    """
+    hit_count = max(1, level // 4)
+    hit_bonus = max(1, round(hit_points - hit_count * 5.5))
+    floor = 3 * level // 4
+    bonus = max(floor, round(damage * 0.6))
+    dice_average = max(1.0, damage - bonus)
+    dice_count = max(1, level // 15 + 1)
+    dice_size = max(2, round(2 * dice_average / dice_count - 1))
+    return (f"{hit_count}d10+{hit_bonus}",
+            f"{dice_count}d{dice_size}+{bonus}",
+            level // 2)
+
+
+def enemy_record(kind: str, band: int, bands: dict[int, tuple[int, int]]) -> str:
+    enemy = ENEMY_TYPES[kind]
+    level = tier_level(kind, band, bands)
+    hit_dice, damage_dice, hitroll = stat_fields(
+        level,
+        curve(HIT_POINT_CURVE, level) * enemy.hp,
+        curve(DAMAGE_CURVE, level) * enemy.damage,
+    )
+    keywords = merge_keywords(enemy.keywords, enemy.short)
+    # ACT_IS_NPC, ACT_SENTINEL, ACT_AGGRESSIVE: NES enemies hold their
+    # screen or room. A wandering one walks out of its band, and in a
+    # dungeon it piles into the next room's population.
+    return f"""#{tier_vnum(kind, band)}
+{keywords}~
+{enemy.short}~
+{enemy.long}
+~
+{enemy.description}
+~
+{enemy.race}~
+ABF 0 0 S
+{level} {hitroll} {hit_dice} 1d1+0 {damage_dice} {enemy.attack}
+0 0 0 0
+{enemy.off} 0 0 0
+8 8 0 0
+AHMV ABCDEFGHIJK {enemy.size} 0"""
+
+
+# --------------------------------------------------------------------------
+# Population.
+#
+# The manifest records what each NES screen and room shows, and some NES
+# rooms are crowded -- eight keese, six like likes, a wall of wizzrobes. In
+# the MUD every one of those is a full fight, so a room keeps every kind it
+# had but far fewer of each, and no room holds more than ROOM_ENEMY_CAP
+# unless it has more kinds than that.
+# --------------------------------------------------------------------------
+
+ROOM_ENEMY_CAP = 3
+SINGLE_ENEMIES = {"blade_trap", "patra", "dodongo", "digdogger"}
+
+
+def thinned_count(kind: str, nes_count: int) -> int:
+    if nes_count <= 0:
+        return 0
+    if kind in SINGLE_ENEMIES or nes_count <= 3:
+        return 1
+    return 2 if nes_count <= 6 else 3
+
+
+def thin_population(entities: dict[str, int]) -> dict[str, int]:
+    counts = {
+        kind: thinned_count(kind, count)
+        for kind, count in entities.items() if count > 0
+    }
+    while sum(counts.values()) > ROOM_ENEMY_CAP:
+        crowded = sorted(
+            (kind for kind, count in counts.items() if count > 1),
+            key=lambda kind: (-counts[kind], kind),
+        )
+        if not crowded:
+            break
+        counts[crowded[0]] -= 1
+    return counts
+
+
+def world_spawns(room: dict[str, Any], bands: dict[int, tuple[int, int]]) -> dict[int, int]:
+    """Mobile vnum -> count for one overworld screen.
+
+    The overworld already asks for at most two of anything, so its counts
+    are the manifest's; only the band changes with the screen's level.
+    """
+    band = band_index(room["recommended_level"], bands)
+    spawns: Counter[int] = Counter()
+    for kind, count in room["entities"].items():
+        if kind in NPC_MOBS:
+            spawns[NPC_MOBS[kind]] += count
+        elif kind in ENEMY_TYPES:
+            spawns[tier_vnum(kind, band)] += count
+    return dict(spawns)
+
+
+def dungeon_spawns(level: int, room: dict[str, Any]) -> dict[int, int]:
+    """Mobile vnum -> count for one dungeon room."""
+    if room["role"] == "boss":
+        return {BOSS_MOBS[level]: 1}
+    spawns: Counter[int] = Counter()
+    enemies = {kind: count for kind, count in room["entities"].items() if kind in ENEMY_TYPES}
+    for kind, count in thin_population(enemies).items():
+        spawns[tier_vnum(kind, level)] += count
+    for kind, count in room["entities"].items():
+        if kind in NPC_MOBS:
+            spawns[NPC_MOBS[kind]] += 1
+        elif kind not in ENEMY_TYPES:
+            raise ValueError(f"Level {level} {room['coordinate']}: no mobile for {kind!r}")
+    return dict(spawns)
+
+
+def manifest_bands(manifest: dict[str, Any]) -> dict[int, tuple[int, int]]:
+    return {
+        dungeon["level"]: tuple(dungeon["recommended_levels"])
+        for dungeon in manifest["dungeons"]
+    }
+
+
+def enemy_records(manifest: dict[str, Any]) -> str:
+    bands = manifest_bands(manifest)
+    return "\n".join(enemy_record(kind, band, bands) for kind, band in enemy_tiers(manifest))
+
+
+def enemy_specials(manifest: dict[str, Any]) -> list[str]:
+    return [
+        f"M {tier_vnum(kind, band)} {ENEMY_TYPES[kind].special} Load to: "
+        f"{ENEMY_TYPES[kind].short} (Level {band} band)"
+        for kind, band in enemy_tiers(manifest)
+        if ENEMY_TYPES[kind].special
+    ]
+
+
+def enemy_tiers(manifest: dict[str, Any]) -> list[tuple[str, int]]:
+    """Every (kind, band) the manifest spawns, in vnum order."""
+    bands = manifest_bands(manifest)
+    wanted: set[tuple[str, int]] = set()
+    for room in manifest["overworld"]["rooms"]:
+        band = band_index(room["recommended_level"], bands)
+        wanted.update((kind, band) for kind in room["entities"] if kind in ENEMY_TYPES)
+    for dungeon in manifest["dungeons"]:
+        for room in dungeon["rooms"]:
+            if room["role"] == "boss":
+                continue
+            wanted.update(
+                (kind, dungeon["level"]) for kind in room["entities"] if kind in ENEMY_TYPES
+            )
+    return sorted(wanted, key=lambda item: tier_vnum(*item))
+
+
+# --------------------------------------------------------------------------
+# Bosses.
+#
+# Levels sit a little above the top of their dungeon's band; hit points are
+# several times an ordinary mobile of that level, weighted by how hard the
+# boss is in the NES game -- Aquamentus and Dodongo are the gentle ones,
+# Gohma and the four-headed Gleeok are not, and Ganon is Ganon. Only the
+# stat line is rewritten: names, flags, resistances and Ganon's silver
+# vulnerability stay as the catalog has them.
+# --------------------------------------------------------------------------
+
+BOSS_STATS = {
+    # dungeon: (level, hit points, average damage per blow)
+    1: (10, 650, 15),     # Aquamentus
+    2: (16, 1250, 21),    # Dodongo
+    3: (23, 2400, 30),    # Manhandla
+    4: (30, 4000, 39),    # Gleeok, two heads
+    5: (36, 6000, 48),    # Digdogger
+    6: (43, 8500, 57),    # Gohma
+    7: (49, 9500, 63),    # Aquamentus again, older and harder
+    8: (55, 15000, 73),   # Gleeok, four heads
+    9: (62, 20000, 85),   # Ganon
+}
+
+
+def restat_mobile(body: str, vnum: int, level: int, hit_points: int, damage: int) -> str:
+    """Rewrite one retained mobile's level, hitroll, hit and damage dice.
+
+    The stat line is the first line of the record shaped like one: level,
+    hitroll, then hit, mana and damage dice and the attack type. Mana dice
+    and the attack type are kept.
+    """
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n.*?(?=^#\d+\r?$|\Z)").search(body)
+    if not record:
+        raise ValueError(f"missing mobile record {vnum}")
+    stat_line = re.compile(
+        r"(?m)^-?\d+ -?\d+ \d+d\d+\+-?\d+ (\d+d\d+\+-?\d+) \d+d\d+\+-?\d+ (-?\d+)(?=\r?$)"
+    )
+    match = stat_line.search(body, record.start(), record.end())
+    if not match:
+        raise ValueError(f"missing stat line for mobile {vnum}")
+    hit_dice, damage_dice, hitroll = stat_fields(level, hit_points, damage)
+    line = f"{level} {hitroll} {hit_dice} {match.group(1)} {damage_dice} {match.group(2)}"
+    return body[:match.start()] + line + body[match.end():]
+
+
+# --------------------------------------------------------------------------
+# Boss weapons.
+#
+# Each boss carries a weapon that should be the best a character of that
+# dungeon's band can find. "Best" was measured with the dashboard parser
+# against every mobile-carried weapon in the world at or below the weapon's
+# level, scored as average damage (value[1] * (value[2] + 1) / 2) plus
+# damroll, and against Hyrule's own sword-cave weapons where those are
+# better. Each sits 10-20% above that mark; see BOSS_WEAPON_BASELINES.
+# --------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class BossWeapon:
+    vnum: int
+    keywords: str
+    short: str
+    long: str
+    material: str
+    weapon_class: int
+    dice: tuple[int, int]
+    attack: int
+    level: int
+    hitroll: int
+    damroll: int
+    weight: int
+    lore: str
+
+
+BOSS_WEAPONS = {
+    1: BossWeapon(
+        30582, "aquamentus horn spear", "an Aquamentus horn-spear",
+        "A spear tipped with a dragon's horn lies here.", "bone", 3, (3, 6), 2,
+        8, 2, 1, 6,
+        "The shaft is cut from a young tree in the Eagle's courtyard, and the\n"
+        "head is the horn Aquamentus wore on its snout. It is light, quick and\n"
+        "far sharper than anything a beginner has a right to carry."),
+    2: BossWeapon(
+        30583, "dodongo tail club", "a Dodongo tail-club",
+        "A heavy club of grey, pebbled hide lies here.", "leather", 4, (4, 8), 7,
+        14, 2, 2, 12,
+        "A length of Dodongo tail, dried hard as wood and bound at the grip.\n"
+        "Nothing that fell on the Moon's floor ever cut that hide; this is\n"
+        "what it feels like to be hit by it."),
+    3: BossWeapon(
+        30584, "manhandla bloom whip", "the Manhandla bloom-whip",
+        "A whip of thorned green vine lies coiled here.", "wood", 7, (6, 9), 4,
+        20, 2, 2, 5,
+        "Four thorned heads once grew from Manhandla's heart, and this whip is\n"
+        "braided from the vine that joined them. It lashes faster than it\n"
+        "should, as though it were still trying to grow."),
+    4: BossWeapon(
+        30585, "gleeok twin fang glaive", "the Gleeok twin-fang glaive",
+        "A long glaive set with two dragon fangs lies here.", "steel", 8, (7, 8), 21,
+        27, 3, 2, 14,
+        "Two fangs from the Snake's guardian are lashed side by side on an\n"
+        "ash haft. The blade is still faintly warm, and smells of smoke."),
+    5: BossWeapon(
+        30586, "digdogger urchin flail", "the Digdogger urchin flail",
+        "A spiked iron ball on a chain lies here.", "iron", 6, (7, 9), 8,
+        33, 3, 2, 15,
+        "The head of this flail is a single spine-cluster from the great\n"
+        "urchin of the Lizard's den. It hums faintly when swung, a sound\n"
+        "Digdogger would have hated."),
+    6: BossWeapon(
+        30587, "gohma eye lance", "the Gohma eye-lance",
+        "A slender lance with a red crystal point lies here.", "steel", 3, (7, 10), 11,
+        40, 3, 1, 10,
+        "The point is the crystal lens of Gohma's single eye, ground to a\n"
+        "needle. It finds the weak spot in armour as surely as an arrow\n"
+        "found the eye."),
+    7: BossWeapon(
+        30588, "demon dragonbone sword", "the Demon's dragonbone sword",
+        "A pale sword of carved dragonbone lies here.", "bone", 1, (9, 9), 3,
+        46, 4, 4, 12,
+        "Carved from the jaw of the old Aquamentus that guarded the Demon's\n"
+        "depths. The bone is harder than steel and holds an edge for ever."),
+    8: BossWeapon(
+        30589, "lion four crowned axe", "the Lion's four-crowned axe",
+        "A great axe with four crowned heads on its blade lies here.", "steel", 5, (10, 9), 21,
+        52, 9, 6, 18,
+        "The Lion's guardian had four heads and this axe has four crowns\n"
+        "worked into its blade, one for each. It cleaves through scale as\n"
+        "though scale were cloth."),
+    9: BossWeapon(
+        30590, "trident ganon", "the Trident of Ganon",
+        "A black trident wreathed in a dull red light lies here.", "iron", 3, (11, 10), 11,
+        59, 9, 3, 16,
+        "Ganon's own weapon, black iron that drinks the light around it. In\n"
+        "the hand of a hero it rivals the Master Sword itself, though it has\n"
+        "never once been carried for a good cause before."),
+}
+
+# The best existing weapon each boss weapon was measured against, for the
+# record: (score, what it is). Score is average damage plus damroll.
+BOSS_WEAPON_BASELINES = {
+    1: (10.0, "the large mace, sewer.are, level 8"),
+    2: (17.0, "an icy dagger, icekeep.are, level 11"),
+    3: (28.0, "a barbed whip, mushroom.are, level 20"),
+    4: (28.0, "a barbed whip, mushroom.are, level 20"),
+    5: (32.0, "the White Sword, Hyrule sword cave, level 30"),
+    6: (33.5, "a two-handed sword, dresden.are, level 38"),
+    7: (42.0, "A Glaive-Guisarme, azeroth.are, level 45"),
+    8: (49.0, "(Flaming) A Light Saber, glitter.are, level 50"),
+    9: (54.0, "the Power of the world, crypt.are, level 54"),
+}
+
+
+# --------------------------------------------------------------------------
+# Item levels.
+#
+# Every item a player can get in Hyrule sits at or below the band of the
+# place it is first found: a chest at its dungeon's band, a boss's Heart
+# Guard at the top of that boss's band, a cave or a cellar at the band of
+# the screen or dungeon it opens from. The retained catalog wrote them for
+# the old 1-70 layout -- a level 15 wooden sword on the start screen, a
+# level 17 boomerang in Level 1 -- so their level, values and (for the
+# gear chests and Heart Guards) cost are rewritten here from the bands.
+#
+# The Master Sword keeps level 58 and its stats: it is the NES's late-game
+# sword, found early and usable late, and that level was asked for.
+# --------------------------------------------------------------------------
+
+def armor_values(level: int) -> str:
+    """The catalog gear's own curve: an armour point per four levels."""
+    armour = max(1, round(level / 4))
+    return f"{armour} {armour} {armour} {max(1, round(armour * 0.62))} 0"
+
+
+def weapon_dice(level: int) -> tuple[int, int]:
+    """About 0.7 of a level in average damage, the catalog's chest weapons."""
+    average = max(2.5, 0.7 * level)
+    count = max(1, round(level / 5))
+    size = max(2, round(2 * average / count - 1))
+    return count, size
+
+
+@dataclass(frozen=True)
+class ItemLevel:
+    level: int
+    values: str | None = None   # None keeps the record's values
+    cost: int | None = None     # rupees; None keeps the record's cost
+
+
+# Items with one home, levelled by hand to the band they are found in.
+ITEM_LEVELS = {
+    # The start screen's cave, for a character on their first day.
+    30219: ItemLevel(1, "1 2 4 1 0"),                 # wooden sword, 2d4
+    # Level 1, band 2-8.
+    30232: ItemLevel(4, "0 2 5 0 0"),                 # small boomerang, 2d5
+    30222: ItemLevel(6, "9 2 5 6 0"),                 # short bow, 2d5
+    30400: ItemLevel(2),                              # Triforce shards: the
+    # Level 2, band 8-14.                             # bottom of each band
+    30410: ItemLevel(12, "1 3 5 3 0"),                # Magical Boomerang, 3d5
+    30401: ItemLevel(8),
+    # Level 3, band 14-20.
+    30411: ItemLevel(16),                             # the raft
+    30402: ItemLevel(14),
+    # Level 4, band 20-27.
+    30412: ItemLevel(22, armor_values(22)),           # the stepladder
+    30403: ItemLevel(20),
+    # Level 5, band 27-33; the White Sword, Power Bracelet and Letter caves
+    # open from band 5 screens too.
+    30413: ItemLevel(30, armor_values(30)),           # the Recorder
+    30251: ItemLevel(30, "1 10 5 20 D"),              # White Sword, 10d5 +2/+2
+    30276: ItemLevel(30),                             # Power Bracelet
+    30404: ItemLevel(27),
+    # Level 6, band 33-40.
+    30245: ItemLevel(38, "38 5 5 70 0"),              # the Magical Rod
+    30405: ItemLevel(33),
+    # Level 7, band 40-46.
+    30414: ItemLevel(42),                             # the Red Candle
+    30406: ItemLevel(40),
+    # Level 8, band 46-52.
+    30415: ItemLevel(48, armor_values(48)),           # the Magic Book
+    30416: ItemLevel(48),                             # the Magical Key
+    30407: ItemLevel(46),
+    # Level 9, band 53-59.
+    30261: ItemLevel(56),                             # red ring, cellar
+}
+
+
+def gear_item_levels(manifest: dict[str, Any]) -> dict[int, int]:
+    """Chest gear spread across its dungeon's band; Heart Guards at its top.
+
+    Each chest takes the levels its band adds over the band before -- the
+    bands share their end levels -- from the bottom up, so that together
+    with the Heart Guards every level from 1 to 59 has a piece.
+    """
+    bands = manifest_bands(manifest)
+    heart_guards = set(BOSS_GEAR.values())
+    levels = {BOSS_GEAR[level]: bands[level][1] for level in BOSS_GEAR}
+    previous_high = 4                        # stage 0, the starter cave, is 1-4
+    for stage, (_, gear_vnums) in GEAR_STAGES.items():
+        pieces = [vnum for vnum in gear_vnums if vnum not in heart_guards]
+        if stage == 0:
+            low, width = 1, 4
+        else:
+            low, high = previous_high + 1, bands[stage][1]
+            width = high - low + 1
+            previous_high = high
+        for index, vnum in enumerate(pieces):
+            levels[vnum] = low + index * width // len(pieces)
+    return levels
+
+
+def relevel_object(body: str, vnum: int, level: int,
+                   values: str | None = None, cost: int | None = None) -> str:
+    """Rewrite a retained object's level, and optionally its values and cost.
+
+    The level line is the first "level weight cost condition" line in the
+    record; the values line is the one before it.
+    """
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n.*?(?=^#\d+\r?$|\Z)").search(body)
+    if not record:
+        raise ValueError(f"missing object record {vnum}")
+    level_line = re.compile(r"(?m)^(-?\d+) (\d+) (\d+) ([PGAWDBR])(?=\r?$)")
+    match = level_line.search(body, record.start(), record.end())
+    if not match:
+        raise ValueError(f"missing level line for object {vnum}")
+    new_cost = match.group(3) if cost is None else str(cost * COPPER_PER_GOLD)
+    replacement = f"{level} {match.group(2)} {new_cost} {match.group(4)}"
+    start = match.start()
+    if values is not None:
+        values_start = body.rindex("\n", record.start(), start - 1) + 1
+        start = values_start
+        replacement = f"{values}\n{replacement}"
+    return body[:start] + replacement + body[match.end():]
+
+
+def relevel_catalog_items(body: str, manifest: dict[str, Any]) -> str:
+    for vnum, level in sorted(gear_item_levels(manifest).items()):
+        values_line = re.compile(rf"(?ms)^#{vnum}\r?\n(?:[^\n]*\n){{5}}([^\n]*)\n").search(body)
+        old_values = values_line.group(1).split() if values_line else []
+        if len(old_values) == 5 and _is_weapon(body, vnum):
+            count, size = weapon_dice(level)
+            values = f"{old_values[0]} {count} {size} {old_values[3]} {old_values[4]}"
+        else:
+            values = armor_values(level)
+        body = relevel_object(body, vnum, level, values, level * level * 5)
+    for vnum, item in ITEM_LEVELS.items():
+        body = relevel_object(body, vnum, item.level, item.values, item.cost)
+    return body
+
+
+def _is_weapon(body: str, vnum: int) -> bool:
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n(?:[^\n]*\n){{4}}(\d+) ").search(body)
+    return bool(record) and record.group(1) == "5"
+
+
+def weapon_score(weapon: BossWeapon) -> float:
+    count, size = weapon.dice
+    return count * (size + 1) / 2 + weapon.damroll
+
+
+def boss_weapon_record(dungeon_level: int) -> str:
+    weapon = BOSS_WEAPONS[dungeon_level]
+    count, size = weapon.dice
+    lore = (
+        f"{weapon.lore}\n"
+        f"It is the prize of Level {dungeon_level}, carried by the guardian who rules there."
+    )
+    return object_record(
+        weapon.vnum, weapon.keywords, weapon.short, weapon.long, weapon.material,
+        "5 AG AN",
+        f"{weapon.weapon_class} {count} {size} {weapon.attack} 0",
+        weapon.level, weapon.weight, weapon.level * weapon.level * 6,
+        f"E\n{weapon.keywords}~\n{lore}\n~\nA\n18 {weapon.hitroll}\nA\n19 {weapon.damroll}",
+    )
 
 
 @dataclass
@@ -250,21 +1021,6 @@ AHMV ABCDEFGHIJK M 0"""
 
 def new_mobile_records() -> str:
     return "\n".join([
-        mobile_record(
-            30335, "peahat spinning plant", "a Peahat",
-            "A Peahat skims over the ground on whirling leaves.",
-            "Its petals spin like a rotor, carrying a thorny core just out of reach.", 8, "plant",
-        ),
-        mobile_record(
-            30336, "armos statue knight", "an awakened Armos",
-            "An Armos statue has awakened and blocks the path.",
-            "Ancient stone plates grind together as the guardian advances.", 48,
-        ),
-        mobile_record(
-            30337, "blade trap falling rock hazard", "a dungeon hazard",
-            "A stone hazard tears across the room.",
-            "It moves with the merciless rhythm of Hyrule's oldest defenses.", 45,
-        ),
         mobile_record(
             30338, "princess zelda", "Princess Zelda",
             "Princess Zelda waits beside the completed Triforce.",
@@ -638,334 +1394,78 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30544, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 160 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 160, "A\n17 -5"),
         object_record(30545, "key small shop", "a small key", "A small key is displayed for 100 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 100),
         object_record(30546, "blue candle shop", "a Blue Candle", "A Blue Candle is displayed for 60 rupees.", "wax", "1 N AO", "0 0 999 0 0", 5, 2, 60),
-        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 90, "A\n17 -5"),
-        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 rupees.", "meat", "19 N A", "H 0 0 0 0", 55, 3, 100),
+        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 20, 8, 90, "A\n17 -5"),
+        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 100),
         object_record(30549, "heart recovery shop", "a Recovery Heart", "A Recovery Heart is displayed for 10 rupees.", "crystal", "10 N AO", "10 28 0 0 0", 1, 1, 10),
         object_record(30550, "key small bargain shop", "a small key", "A small key is displayed for 80 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 80),
-        object_record(30551, "blue ring shop", "the Blue Ring", "The Blue Ring is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 35, 1, 250, "A\n13 15"),
-        object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 rupees.", "meat", "19 N A", "H 0 0 0 0", 55, 3, 60),
+        object_record(30551, "blue ring shop", "the Blue Ring", "The Blue Ring is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 24, 1, 250, "A\n13 15"),
+        object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 60),
         object_record(30553, "blue life potion medicine shop", "a blue Life Potion", "A blue Life Potion is displayed for 40 rupees.", "glass", "10 N AO", "30 28 28 81 0", 1, 2, 40),
         object_record(30554, "red second potion medicine shop", "a red 2nd Potion", "A red 2nd Potion is displayed for 68 rupees.", "glass", "10 N AO", "30 81 81 81 0", 1, 2, 68),
     ])
     objects.extend(ganon_relic_records())
+    objects.extend(boss_weapon_record(level) for level in sorted(BOSS_WEAPONS))
     return "\n".join(objects)
 
 
-def world_region(coordinate: str) -> tuple[str, int]:
-    column = ord(coordinate[0]) - ord("A")
-    row = int(coordinate[1:])
-    if row >= 7:
-        return "Death Mountain", 5
-    if column <= 4 and row >= 4:
-        return "the western highlands", 4
-    if column <= 5 and row <= 3:
-        return "the Lost Woods", 3
-    if column >= 12 and row <= 3:
-        return "the eastern desert", 10
-    if column >= 12:
-        return "Lake Hylia's shore", 2
-    return "Hyrule Field", 2
+def world_sector(room: dict[str, Any]) -> int:
+    """The sector an overworld screen stands on, read off its NES enemies.
 
-
-def world_room_name(room: dict[str, Any]) -> str:
-    landmarks = room["landmarks"]
-    for landmark in landmarks:
-        if landmark["type"] == "start":
-            return "The First Quest Begins"
-        if landmark["type"] == "dungeon":
-            return f"Before Level {landmark['level']}: {DUNGEON_TITLE_CACHE[landmark['level']]}"
-        if landmark["type"] == "fairy_fountain":
-            return "A Fairy Fountain"
-    region, _ = world_region(room["coordinate"])
-    return f"{region} [{room['coordinate']}]"
+    The enemies the NES draws on a screen say what the ground is: lynels,
+    tektites and falling rocks live on Death Mountain's rock, leevers in
+    sand, moblins in the woods. The top two rows are the mountain itself.
+    """
+    row = int(room["coordinate"][1:])
+    kinds = set(room["entities"])
+    if row >= 7 or kinds & {"red_lynel", "blue_lynel", "red_tektite",
+                            "blue_tektite", "falling_rock"}:
+        return 5
+    if kinds & {"red_leever", "blue_leever"}:
+        return 10
+    if room["coordinate"] == LOST_WOODS or kinds & {"red_moblin", "blue_moblin"}:
+        return 3
+    return 2
 
 
 # --------------------------------------------------------------------------
 # Room prose.
 #
-# The manifest knows the dungeon, the room's role, its occupants and its
-# doors. That is enough to describe a place instead of restating the source
-# data, which is what the old one-line template did.
+# Names and descriptions live in data/hyrule_room_prose.json, written room
+# by room from the NES screen or dungeon room each one stands for. Keys:
+#   overworld  -- the manifest coordinate ("H1")
+#   dungeons   -- "L<level>:<coordinate>", and "L<level>:cellar:<coordinate>"
+#                 for the block-stair cellar under that room
+#   special    -- the caves, shops and secrets that are not NES screens
+# A dungeon room's name is prefixed "Level N: " here; the dungeons are the
+# contiguous run of "Level N: ..." rooms, and nothing else is named so.
+# A missing entry is an error rather than a fallback: the old fallback was
+# a template that listed the room's occupants, which is what this replaced.
 # --------------------------------------------------------------------------
 
-# Each dungeon reads differently underfoot. Two openings apiece so a long
-# crawl does not repeat a single sentence twenty-five times; the choice is
-# made from the vnum, so the build stays reproducible.
-DUNGEON_ATMOSPHERE = {
-    1: ("Pale stone walls rise into shadow, dry and cold and very old.",
-        "The air here is still, and every footfall carries too far."),
-    2: ("Moonlight has no business this far underground, yet the walls hold a faint silver cast.",
-        "Grey dust lies undisturbed across the floor of this silent hall."),
-    3: ("Interlocking channels are cut deep into the floor in a rigid pattern.",
-        "The masonry turns at hard right angles, corner after corner."),
-    4: ("Damp seeps between the blocks and pools in the mortar joints.",
-        "Coils of old carving wind along the walls, scale over scale."),
-    5: ("The passage narrows and widens without warning, as if something swallowed this hall whole.",
-        "Loose grit shifts underfoot, worn from the walls by long use."),
-    6: ("Scorch marks fan across the ceiling in long black tongues.",
-        "Heat lingers in the stone here, held from some older fire."),
-    7: ("The walls sweat. Whatever was sealed down here was sealed deep.",
-        "Faint scratching carries from behind the stone, always one room off."),
-    8: ("Heavy pillars carry the weight of the mountain overhead.",
-        "The hall is built broad and proud, and something has made it a den."),
-    9: ("Death Mountain closes in: raw rock, low ceilings, no comfort at all.",
-        "The deepest stone of Hyrule presses close on every side."),
-}
-
-# Readable forms. The manifest uses the NES entity names, which are fine as
-# keys and poor as prose.
-ENTITY_PROSE = {
-    "aquamentus":     ("an aquamentus", "aquamentus"),
-    "blade_trap":     ("a blade trap", "blade traps"),
-    "blue_darknut":   ("a blue darknut", "blue darknuts"),
-    "blue_goriya":    ("a blue goriya", "blue goriyas"),
-    "blue_lanmola":   ("a blue lanmola", "blue lanmolas"),
-    "blue_wizzrobe":  ("a blue wizzrobe", "blue wizzrobes"),
-    "bubble":         ("a bubble", "bubbles"),
-    "digdogger":      ("a digdogger", "digdoggers"),
-    "dodongo":        ("a dodongo", "dodongos"),
-    "ganon":          ("Ganon himself", "Ganon himself"),
-    "gel":            ("a gel", "gels"),
-    "gibdo":          ("a gibdo", "gibdos"),
-    "gleeok":         ("a gleeok", "gleeoks"),
-    "gohma":          ("a gohma", "gohmas"),
-    "keese":          ("a keese", "keese"),
-    "like_like":      ("a like-like", "like-likes"),
-    "manhandla":      ("a manhandla", "manhandlas"),
-    "old_man":        ("an old man", "old men"),
-    "patra":          ("a patra", "patras"),
-    "pols_voice":     ("a pols voice", "pols voices"),
-    "princess_zelda": ("Princess Zelda", "Princess Zelda"),
-    "red_darknut":    ("a red darknut", "red darknuts"),
-    "red_goriya":     ("a red goriya", "red goriyas"),
-    "red_lanmola":    ("a red lanmola", "red lanmolas"),
-    "red_wizzrobe":   ("a red wizzrobe", "red wizzrobes"),
-    "rope":           ("a rope", "ropes"),
-    "stalfos":        ("a stalfos", "stalfos"),
-    "vire":           ("a vire", "vires"),
-    "wallmaster":     ("a wallmaster", "wallmasters"),
-    "zol":            ("a zol", "zols"),
-}
-
-COUNT_WORDS = {2: "a pair of", 3: "three", 4: "four", 5: "five",
-               6: "six", 7: "seven", 8: "eight", 9: "nine"}
+LOST_WOODS = "E2"
+LOST_HILLS = "H7"
+DESCRIPTION_WIDTH = 75
 
 
-def entity_phrase(name: str, count: int) -> str:
-    """'a keese', 'a pair of keese', 'three zols'."""
-    singular, plural = ENTITY_PROSE.get(
-        name, ("a " + name.replace("_", " "), name.replace("_", " ") + "s"))
-    if count <= 1:
-        return singular
-    return f"{COUNT_WORDS.get(count, str(count))} {plural}"
+def wrap_description(text: str) -> str:
+    return textwrap.fill(" ".join(text.split()), width=DESCRIPTION_WIDTH)
 
 
-def subject_is_plural(entities: dict) -> bool:
-    """True when the composed subject needs a plural verb.
+class Prose:
+    def __init__(self, data: dict[str, dict[str, dict[str, str]]]) -> None:
+        self.data = data
 
-    Several kinds of enemy, or more than one of any kind, both read as
-    plural: "a keese waits" but "a pair of keese wait", and "a zol and a
-    keese wait".
-    """
-    present = [(name, count) for name, count in entities.items() if count]
-    if len(present) > 1:
-        return True
-    return bool(present) and present[0][1] > 1
+    def entry(self, group: str, key: str) -> dict[str, str]:
+        try:
+            return self.data[group][key]
+        except KeyError:
+            raise KeyError(f"data/hyrule_room_prose.json has no {group} entry {key!r}") from None
 
+    def name(self, group: str, key: str) -> str:
+        return self.entry(group, key)["name"]
 
-def join_prose(parts: list[str]) -> str:
-    if not parts:
-        return ""
-    if len(parts) == 1:
-        return parts[0]
-    return ", ".join(parts[:-1]) + " and " + parts[-1]
-
-
-def occupants_line(entities: dict) -> str:
-    present = [entity_phrase(name, count)
-               for name, count in sorted(entities.items()) if count]
-    if not present:
-        return "Nothing moves."
-    verb = "wait" if subject_is_plural(entities) else "waits"
-    return f"{join_prose(present).capitalize()} {verb} here."
-
-
-def doors_line(exits: dict) -> str:
-    """Mention only the doors worth acting on."""
-    notes = []
-    for direction, data in sorted(exits.items()):
-        kind = data.get("type")
-        if kind == "bombable":
-            notes.append(f"a hairline crack in the {direction} wall")
-        elif kind == "locked":
-            notes.append(f"a locked door {direction}")
-        elif kind == "shutter":
-            notes.append(f"a shutter {direction}")
-    if not notes:
-        return ""
-    return " You notice " + join_prose(notes) + "."
-
-
-def dungeon_room_description(dungeon: dict, room: dict) -> str:
-    level = dungeon["level"]
-    title = dungeon["title"]
-    role = room.get("role", "room")
-    vnum = int(room["vnum"])
-
-    openings = DUNGEON_ATMOSPHERE.get(
-        level, ("Worked stone presses in on every side.",) * 2)
-    opening = openings[vnum % len(openings)]
-
-    if role == "entrance":
-        body = f"This is the way into {title}, and the way back out."
-    elif role == "map":
-        body = "Someone charted these halls once and left the chart behind."
-    elif role == "compass":
-        body = "A sense of direction settles on you, sharper than it should be."
-    elif role == "boss":
-        body = f"The floor opens out. Whatever rules {title} rules from here."
-    elif role == "goal":
-        body = "Light collects in the middle of the room and does not scatter."
-    else:
-        body = ""
-
-    parts = [opening]
-    if body:
-        parts.append(body)
-    parts.append(occupants_line(room.get("entities", {})))
-    text = " ".join(parts) + doors_line(room.get("exits", {}))
-    return text
-
-
-# Hyrule Field alone is 39 screens, so one sentence per region would repeat
-# itself into wallpaper. Four apiece, chosen by vnum for reproducibility.
-REGION_SETTINGS = {
-    "Death Mountain": (
-        "Bare rock and loose scree climb away on every side.",
-        "The path narrows between boulders that have not moved in an age.",
-        "Grey stone, grey sky, and a wind that comes straight off the peak.",
-        "Rubble slides underfoot wherever the trail pretends to level out.",
-    ),
-    "the western highlands": (
-        "High ground and thin grass, with a long view over the country below.",
-        "The wind comes across the uplands unbroken and carries a chill.",
-        "Outcrops of pale rock break through the turf like old bone.",
-        "The ground falls away eastward in a series of long green steps.",
-    ),
-    "the Lost Woods": (
-        "Close-grown trunks cut the light into pieces and hide the way.",
-        "Every direction looks like the one you came from.",
-        "Moss deadens the sound here until your own steps seem far off.",
-        "Branches close overhead and the path forgets itself.",
-    ),
-    "the eastern desert": (
-        "Dry sand drifts against the stones, and the wind never stops.",
-        "Heat stands over the flats in sheets you can almost see through.",
-        "Nothing grows. The sand has buried whatever used to.",
-        "Wind-scoured rock juts from the dunes at broken angles.",
-    ),
-    "Lake Hylia's shore": (
-        "Water lies flat and bright beyond the reeds.",
-        "Wet gravel gives way to shallows that run a long way out.",
-        "Reeds stand in the margin, and the lake is quiet past them.",
-        "The shoreline curves away, patient and very old.",
-    ),
-    "Hyrule Field": (
-        "Open ground rolls away, grass and rock and little else.",
-        "The country here is wide and plain and offers nowhere to hide.",
-        "Grass runs to the horizon, broken by the odd standing stone.",
-        "Cart ruts cross the turf, long grown over and going nowhere.",
-    ),
-}
-
-# What the manifest calls a landmark, and what a player would call it.
-LANDMARK_PROSE = {
-    "rupee": "a moneylender's cave",
-    "gamble": "a gambling den",
-    "cave": "a cave mouth",
-    "potion_shop": "a potion seller",
-    "warp_hall": "a warp hall",
-    "heart": "a heart container",
-    "door_repair": "a door repair man, and his prices",
-    "shop": "a merchant's cave",
-    "fairy_fountain": "a fairy fountain",
-    "secret": "something deliberately hidden",
-    "secret_return": "a way back to the surface",
-    "start": "the place you first set foot in Hyrule",
-}
-
-
-def overworld_description(room: dict, region: str) -> str:
-    """Overworld screens, described as ground rather than as screen IDs."""
-    vnum = int(room["vnum"])
-    settings = REGION_SETTINGS.get(
-        region, ("The land of Hyrule stretches away.",))
-    setting = settings[vnum % len(settings)]
-
-    present = [entity_phrase(name, count)
-               for name, count in sorted(room.get("entities", {}).items())
-               if count]
-    if present:
-        plural = subject_is_plural(room.get("entities", {}))
-        openers = (
-            ("{} hold this ground." if plural else "{} holds this ground."),
-            ("{} are waiting." if plural else "{} is waiting."),
-            ("{} have the run of the place." if plural
-             else "{} has the run of the place."),
-        )
-        threat = openers[vnum % len(openers)].format(
-            join_prose(present).capitalize())
-    else:
-        quiet = ("Nothing stirs but the wind.", "For once, nothing moves.",
-                 "The screen is empty, which is its own kind of warning.")
-        threat = quiet[vnum % len(quiet)]
-
-    landmark_text = ""
-    landmarks = room.get("landmarks") or []
-    if landmarks:
-        names = []
-        for item in landmarks:
-            if item.get("name"):
-                names.append(item["name"])
-            elif "level" in item:
-                names.append(f"the entrance to Level {item['level']}")
-            else:
-                names.append(LANDMARK_PROSE.get(
-                    item["type"], item["type"].replace("_", " ")))
-        landmark_text = " Somewhere here: " + join_prose(names) + "."
-
-    return f"{setting} {threat}{landmark_text}"
-
-
-def world_room_description(room: dict[str, Any]) -> str:
-    region, _ = world_region(room["coordinate"])
-    return overworld_description(room, region)
-
-
-def choose_world_mob(entity: str, recommended_level: int) -> int | None:
-    if entity in WORLD_MOBS:
-        return WORLD_MOBS[entity]
-    if entity == "red_octorok":
-        return 30320 if recommended_level < 15 else (30200 if recommended_level < 45 else 30329)
-    if entity == "blue_octorok":
-        return 30200 if recommended_level < 18 else 30201
-    if entity == "red_moblin":
-        return 30226 if recommended_level < 15 else 30202
-    if entity == "blue_moblin":
-        return 30202 if recommended_level < 28 else 30203
-    if entity == "red_tektite":
-        return 30322 if recommended_level < 25 else 30205
-    if entity == "blue_tektite":
-        return 30205
-    if entity == "red_leever":
-        return 30323 if recommended_level < 28 else 30206
-    if entity == "blue_leever":
-        return 30207
-    if entity == "red_lynel":
-        return 30327 if recommended_level < 44 else 30328
-    if entity == "blue_lynel":
-        return 30208
-    return None
+    def description(self, group: str, key: str) -> str:
+        return wrap_description(self.entry(group, key)["description"])
 
 
 def add_two_way_exit(
@@ -982,39 +1482,43 @@ def add_two_way_exit(
     rooms[destination].exits[reverse] = ExitSpec(source, locks, key_vnum, keyword)
 
 
-def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str, int]]:
+GATE_EXIT_DESCRIPTIONS = {
+    "raft": "Open water lies that way. Only a raft will carry you across.",
+    "stepladder": "A narrow gap of water cuts across the way; a stepladder would bridge it.",
+}
+
+
+def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomSpec], dict[str, int]]:
     rooms: dict[int, RoomSpec] = {}
     world_vnums = {room["coordinate"]: room["vnum"] for room in manifest["overworld"]["rooms"]}
+    bands = manifest_bands(manifest)
 
     for room in manifest["overworld"]["rooms"]:
-        _, sector = world_region(room["coordinate"])
+        coordinate = room["coordinate"]
         spec = RoomSpec(
-            room["vnum"], world_room_name(room), world_room_description(room), "N", sector,
+            room["vnum"], prose.name("overworld", coordinate),
+            prose.description("overworld", coordinate), "N", world_sector(room),
+            entities={str(vnum): count for vnum, count in world_spawns(room, bands).items()},
         )
         for direction, exit_data in room["exits"].items():
             gate = exit_data["gate"]
             keyword = "" if gate == "open" else f"{gate} crossing"
-            description = "" if gate == "open" else f"The route requires the {gate}."
+            description = GATE_EXIT_DESCRIPTIONS.get(gate, "")
             spec.exits[direction] = ExitSpec(exit_data["to_vnum"], keyword=keyword, description=description)
-        for entity, count in room["entities"].items():
-            mob_vnum = choose_world_mob(entity, room["recommended_level"])
-            if mob_vnum is not None:
-                spec.entities[str(mob_vnum)] = spec.entities.get(str(mob_vnum), 0) + count
         rooms[spec.vnum] = spec
 
     for dungeon in manifest["dungeons"]:
         level = dungeon["level"]
         for room in dungeon["rooms"]:
+            key = f"L{level}:{room['coordinate']}"
             spec = RoomSpec(
-                room["vnum"], room["name"],
-                dungeon_room_description(dungeon, room),
+                room["vnum"], f"Level {level}: {prose.name('dungeons', key)}",
+                prose.description("dungeons", key),
                 "ADN", 11, dungeon=True,
                 objects=list(room["items"]),
-                entities={str(ENEMY_MOBS[name]): count for name, count in room["entities"].items() if name in ENEMY_MOBS},
+                entities={str(vnum): count for vnum, count in dungeon_spawns(level, room).items()},
                 boss_level=level if room["role"] == "boss" else None,
             )
-            if room["role"] == "boss":
-                spec.entities = {str(BOSS_MOBS[level]): 1}
             for direction, exit_data in room["exits"].items():
                 door_type = exit_data["type"]
                 locks, key_vnum, keyword = 0, 0, ""
@@ -1028,9 +1532,10 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
             rooms[spec.vnum] = spec
 
         for cellar in dungeon["cellars"]:
+            key = f"L{level}:cellar:{cellar['source_coordinate']}"
             rooms[cellar["vnum"]] = RoomSpec(
-                cellar["vnum"], f"Level {level}: {cellar['name']}",
-                f"A narrow underground passage leads to {dungeon['title']}'s hidden treasure.",
+                cellar["vnum"], f"Level {level}: {prose.name('dungeons', key)}",
+                prose.description("dungeons", key),
                 "ADN", 11, dungeon=True, objects=[cellar["item_vnum"]],
             )
             add_two_way_exit(
@@ -1067,22 +1572,22 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
                 )
 
     cave_specs = [
-        (30650, "H1", "Wooden Sword Cave", 30219, None),
-        (30651, "K8", "White Sword Cave", 30251, None),
-        (30652, "B6", "Master Sword Grave", 30200, "push"),
-        (30653, "O8", "Letter Cave", 30500, None),
-        (30654, "L1", "Bombed Heart Cave", 30501, "bomb"),
-        (30655, "M6", "Mountain Heart Cave", 30501, "bomb"),
-        (30656, "H4", "Burned Heart Cave", 30501, "burn"),
-        (30657, "P6", "Raft Heart Island", 30501, "portal"),
-        (30658, "P3", "Stepladder Heart Ledge", 30501, "portal"),
-        (30659, "E2", "The Secret Return Tree", 30211, "burn"),
-        (30674, "E6", "Power Bracelet Alcove", 30276, "armos"),
+        (30650, "H1", "wooden_sword_cave", 30219, None),
+        (30651, "K8", "white_sword_cave", 30251, None),
+        (30652, "B6", "master_sword_grave", 30200, "push"),
+        (30653, "O8", "letter_cave", 30500, None),
+        (30654, "L1", "heart_cave_bomb", 30501, "bomb"),
+        (30655, "M6", "heart_cave_mountain", 30501, "bomb"),
+        (30656, "H4", "heart_cave_burn", 30501, "burn"),
+        (30657, "P6", "heart_island", 30501, "portal"),
+        (30658, "P3", "heart_ledge", 30501, "portal"),
+        (30659, "E2", "secret_return_tree", 30211, "burn"),
+        (30674, "E6", "power_bracelet_alcove", 30276, "armos"),
     ]
-    for vnum, coordinate, name, object_vnum, puzzle in cave_specs:
+    for vnum, coordinate, prose_key, object_vnum, puzzle in cave_specs:
         rooms[vnum] = RoomSpec(
-            vnum, name,
-            "A compact hidden chamber preserves one of the First Quest's original rewards.",
+            vnum, prose.name("special", prose_key),
+            prose.description("special", prose_key),
             "ADN", 11, objects=[object_vnum],
         )
         world_vnum = world_vnums[coordinate]
@@ -1106,10 +1611,11 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
             cave_vnum = landmark["room_vnum"]
             amount = landmark["amount"]
             puzzle = landmark.get("puzzle")
+            prose_key = f"rupee_{puzzle or 'open'}"
             rooms[cave_vnum] = RoomSpec(
                 cave_vnum,
-                f"A Secret of {amount} Rupees",
-                "A hidden First Quest grotto holds the reward revealed on this screen.",
+                prose.name("special", prose_key),
+                prose.description("special", prose_key),
                 "ADN", 11, objects=[money_objects[amount]],
             )
             world_vnum = room["vnum"]
@@ -1131,19 +1637,18 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
             shop_kind = landmark["shop_kind"]
             shop_vnum = landmark["room_vnum"]
             keeper_vnum = SHOP_KEEPERS[shop_kind]
-            potion_shop = landmark["type"] == "potion_shop"
+            puzzle = landmark.get("puzzle")
+            if landmark["type"] == "potion_shop":
+                prose_key = "potion_shop"
+            else:
+                prose_key = "shop_secret" if puzzle else "shop"
             rooms[shop_vnum] = RoomSpec(
                 shop_vnum,
-                "A First Quest Potion Shop" if potion_shop else "A First Quest Item Shop",
-                (
-                    "An old woman waits for Princess Zelda's letter before offering her medicines."
-                    if potion_shop else
-                    "Three wares are arranged exactly as they were in this First Quest shop."
-                ),
+                prose.name("special", prose_key),
+                prose.description("special", prose_key),
                 "ADN", 11, entities={str(keeper_vnum): 1},
             )
             world_vnum = room["vnum"]
-            puzzle = landmark.get("puzzle")
             direction = landmark.get("direction", "down")
             add_two_way_exit(
                 rooms, world_vnum, direction, shop_vnum,
@@ -1156,34 +1661,18 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
                     puzzle_vnum[direction] if isinstance(puzzle_vnum, dict) else puzzle_vnum
                 )
 
-    attraction_details = {
-        "door_repair": (
-            "A Door-Repair Charge",
-            "A stern old man demands the First Quest's one-time 20-rupee repair charge.",
-            30344,
-        ),
-        "gamble": (
-            "A Money-Making Game",
-            "Three concealed amounts wait for anyone willing to gamble ten rupees.",
-            30345,
-        ),
-        "warp_hall": (
-            "A Power Bracelet Warp Hall",
-            "Three stone roads connect the four corners of the First Quest overworld.",
-            None,
-        ),
-    }
+    attraction_keepers = {"door_repair": 30344, "gamble": 30345, "warp_hall": None}
     for room in manifest["overworld"]["rooms"]:
         for landmark in room["landmarks"]:
             attraction_type = landmark["type"]
-            if attraction_type not in attraction_details:
+            if attraction_type not in attraction_keepers:
                 continue
-            name, description, keeper_vnum = attraction_details[attraction_type]
+            keeper_vnum = attraction_keepers[attraction_type]
             attraction_vnum = landmark["room_vnum"]
             rooms[attraction_vnum] = RoomSpec(
                 attraction_vnum,
-                name,
-                description,
+                prose.name("special", attraction_type),
+                prose.description("special", attraction_type),
                 "ADN", 11,
                 objects=[route["object_vnum"] for route in landmark.get("routes", [])],
                 entities={} if keeper_vnum is None else {str(keeper_vnum): 1},
@@ -1204,14 +1693,16 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
     rooms[world_vnums["D4"]].objects.append(30225)
     rooms[world_vnums["J5"]].objects.append(30225)
 
+    # The maze rooms read exactly like the screen they repeat. A counter in
+    # the name ("[2/3]") told the player the answer the maze is asking for.
     # Lost Woods: north, west, south, west. East always escapes the maze.
-    lost_woods = world_vnums["E2"]
+    lost_woods = world_vnums[LOST_WOODS]
     lost_woods_east = rooms[lost_woods].exits.get("east")
     lost_woods_west = rooms[lost_woods].exits.get("west")
-    for index, vnum in enumerate(range(30750, 30753), start=1):
+    for vnum in range(30750, 30753):
         rooms[vnum] = RoomSpec(
-            vnum, f"The Lost Woods [{index}/3]",
-            "The trees repeat with impossible precision; only the old route continues.", "N", 3,
+            vnum, rooms[lost_woods].name, rooms[lost_woods].description,
+            "N", rooms[lost_woods].sector,
         )
         if lost_woods_east:
             rooms[vnum].exits["east"] = lost_woods_east
@@ -1225,13 +1716,13 @@ def build_rooms(manifest: dict[str, Any]) -> tuple[dict[int, RoomSpec], dict[str
             rooms[vnum].exits.setdefault(direction, ExitSpec(lost_woods))
 
     # Lost Hills requires five consecutive northward screen crossings.
-    lost_hills = world_vnums["H7"]
+    lost_hills = world_vnums[LOST_HILLS]
     north_destination = rooms[lost_hills].exits["north"].destination
     previous = lost_hills
-    for index, vnum in enumerate(range(30753, 30757), start=1):
+    for vnum in range(30753, 30757):
         rooms[vnum] = RoomSpec(
-            vnum, f"The Lost Hills [{index}/4]",
-            "The same steep ridge rises again. The northern route is the only progress.", "N", 5,
+            vnum, rooms[lost_hills].name, rooms[lost_hills].description,
+            "N", rooms[lost_hills].sector,
         )
         rooms[previous].exits["north"] = ExitSpec(vnum)
         previous = vnum
@@ -1331,6 +1822,7 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
                 if room.vnum in boss_room_to_level and int(entity_vnum) == BOSS_MOBS[boss_room_to_level[room.vnum]]:
                     level = boss_room_to_level[room.vnum]
                     lines.append(f"G 1 {BOSS_GEAR[level]} 100")
+                    lines.append(f"G 1 {BOSS_WEAPONS[level].vnum} 100")
                     if level == 9:
                         lines.append(f"G 1 {GANON_GOLDEN_KEY_VNUM} 100")
         for object_vnum in room.objects:
@@ -1372,32 +1864,86 @@ def render_shops() -> str:
     return "\n".join(lines)
 
 
-def build_area(manifest_path: Path, area_path: Path) -> None:
-    global DUNGEON_TITLE_CACHE
+# The catalog's old man stood "at a counter here, selling drinks", which is
+# what fifteen dungeon rooms showed beside a description of him between two
+# fires with a hint. Stats and flags are the catalog's; is_hyrule_bystander()
+# in fight.c is what keeps his level 50 from being farmed.
+OLD_MAN_RECORD = """#30228
+old man sage~
+An old man~
+An old man stands between the fires, waiting to share what he knows.
+~
+A white-bearded old man in a long red robe. He has been down here far longer
+than anyone should be, and he speaks only to pass on a warning or a secret.
+~
+human~
+ABMV DF 0 S
+50 25 15d10+4400 1d1+0 5d8+37 16
+0 0 0 0
+0 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0"""
+
+
+def remove_tier_records(body: str) -> str:
+    """Drop every generated enemy record, whatever bands it was built for."""
+    pattern = re.compile(r"(?ms)^#(\d+)\r?\n.*?(?=^#\d+\r?$|\Z)")
+
+    def keep(match: re.Match[str]) -> str:
+        vnum = int(match.group(1))
+        return "" if TIER_VNUM_FIRST <= vnum <= TIER_VNUM_LAST else match.group(0)
+
+    return pattern.sub(keep, body).strip()
+
+
+def render_specials(retained: str, manifest: dict[str, Any]) -> str:
+    """The retained spec_fun lines, less the retired and generated enemies."""
+    lines = []
+    for line in retained.splitlines():
+        fields = line.split()
+        if len(fields) >= 2 and fields[0] == "M" and fields[1].isdigit():
+            vnum = int(fields[1])
+            if vnum in RETIRED_MOBILE_VNUMS or TIER_VNUM_FIRST <= vnum <= TIER_VNUM_LAST:
+                continue
+        if line.strip() == "S":
+            continue
+        lines.append(line.rstrip())
+    lines.extend(enemy_specials(manifest))
+    lines.append("S")
+    return "\n".join(line for line in lines if line)
+
+
+def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_PROSE) -> None:
     manifest = load_json(manifest_path)
-    DUNGEON_TITLE_CACHE = {dungeon["level"]: dungeon["title"] for dungeon in manifest["dungeons"]}
+    prose = Prose(load_json(prose_path))
     original = area_path.read_text(encoding="utf-8")
     header = original[:original.index("#MOBILES")].rstrip()
     mobile_body = strip_section_terminator(section(original, "#MOBILES", "#OBJECTS"), "#0")
     object_body = strip_section_terminator(section(original, "#OBJECTS", "#ROOMS"), "#0")
     specials_body = section(original, "#SPECIALS", "#RESETS")
 
-    mobile_body = remove_records(mobile_body, NEW_MOBILE_VNUMS)
+    mobile_body = remove_records(mobile_body, NEW_MOBILE_VNUMS | RETIRED_MOBILE_VNUMS)
+    mobile_body = remove_tier_records(mobile_body)
+    mobile_body = replace_record(mobile_body, NPC_MOBS["old_man"], OLD_MAN_RECORD)
+    for level, (mob_level, hit_points, damage) in BOSS_STATS.items():
+        mobile_body = restat_mobile(mobile_body, BOSS_MOBS[level], mob_level, hit_points, damage)
     object_body = remove_records(object_body, NEW_OBJECT_VNUMS)
     object_body = replace_record(object_body, 30218, silver_arrow_object_record())
     for dungeon in manifest["dungeons"]:
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))
+    object_body = relevel_catalog_items(object_body, manifest)
 
-    rooms, _ = build_rooms(manifest)
+    rooms, _ = build_rooms(manifest, prose)
     room_body = "\n".join(render_room(room) for room in sorted(rooms.values(), key=lambda item: item.vnum))
     resets = render_resets(rooms, manifest)
 
     output = (
-        f"{header}\n\n#MOBILES\n{mobile_body}\n{new_mobile_records()}\n#0\n\n"
+        f"{header}\n\n#MOBILES\n{mobile_body}\n{new_mobile_records()}\n"
+        f"{enemy_records(manifest)}\n#0\n\n"
         f"#OBJECTS\n{object_body}\n{new_object_records(manifest)}\n#0\n\n"
         f"#ROOMS\n{room_body}\n#0\n\n"
-        f"#SPECIALS\n{specials_body.strip()}\n\n"
+        f"#SPECIALS\n{render_specials(specials_body, manifest)}\n\n"
         f"#RESETS\n{resets}\n\n"
         f"#SHOPS\n{render_shops()}\n\n#$\n"
     )
@@ -1409,12 +1955,13 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--area", type=Path, default=DEFAULT_AREA)
+    parser.add_argument("--prose", type=Path, default=DEFAULT_PROSE)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    build_area(args.manifest.resolve(), args.area.resolve())
+    build_area(args.manifest.resolve(), args.area.resolve(), args.prose.resolve())
 
 
 if __name__ == "__main__":

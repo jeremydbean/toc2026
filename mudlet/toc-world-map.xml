@@ -118,8 +118,12 @@
   <room id="7" area="52" title="The Jail" environment="1">
    <coord x="48" y="0" z="0" />
   </room>
-  <room id="9" area="52" title="Rest Area" environment="1">
+  <room id="8" area="52" title="The Oracle's Sanctum" environment="1">
    <coord x="56" y="0" z="0" />
+   <exit direction="down" target="4207" />
+  </room>
+  <room id="9" area="52" title="Rest Area" environment="1">
+   <coord x="64" y="0" z="0" />
   </room>
   <room id="10" area="17" title="A path upwards" environment="6">
    <coord x="0" y="0" z="0" />
@@ -6911,7 +6915,7 @@
    <exit direction="north" target="2408" />
   </room>
   <room id="2550" area="52" title="Entrance to the Mayor's Office." environment="2">
-   <coord x="64" y="0" z="0" />
+   <coord x="72" y="0" z="0" />
    <exit direction="north" target="2552" />
    <exit direction="east" target="2430" />
    <exit direction="south" target="2553" />
@@ -6919,160 +6923,160 @@
    <exit direction="up" target="2558" />
   </room>
   <room id="2551" area="52" title="Mayor's Office." environment="1">
-   <coord x="63" y="0" z="0" />
+   <coord x="71" y="0" z="0" />
    <exit direction="east" target="2550" />
   </room>
   <room id="2552" area="52" title="Guards Room." environment="1">
-   <coord x="64" y="1" z="0" />
+   <coord x="72" y="1" z="0" />
    <exit direction="south" target="2550" />
    <exit direction="up" target="2556" />
   </room>
   <room id="2553" area="52" title="Guards Room." environment="1">
-   <coord x="64" y="-1" z="0" />
+   <coord x="72" y="-1" z="0" />
    <exit direction="north" target="2550" />
    <exit direction="up" target="2554" />
   </room>
   <room id="2554" area="52" title="Sergeant's Reception Room." environment="1">
-   <coord x="64" y="-1" z="1" />
+   <coord x="72" y="-1" z="1" />
    <exit direction="north" target="2555" />
    <exit direction="down" target="2553" />
   </room>
   <room id="2555" area="52" title="Sergeant's Office." environment="1">
-   <coord x="65" y="0" z="1" />
+   <coord x="73" y="0" z="1" />
    <exit direction="south" target="2554" />
   </room>
   <room id="2556" area="52" title="Commander's Reception Area." environment="1">
-   <coord x="64" y="1" z="1" />
+   <coord x="72" y="1" z="1" />
    <exit direction="north" target="2557" />
    <exit direction="down" target="2552" />
   </room>
   <room id="2557" area="52" title="Commander's Office." environment="1">
-   <coord x="64" y="2" z="1" />
+   <coord x="72" y="2" z="1" />
    <exit direction="south" target="2556" />
   </room>
   <room id="2558" area="52" title="Captain's Waiting Room." environment="1">
-   <coord x="64" y="0" z="1" />
+   <coord x="72" y="0" z="1" />
    <exit direction="north" target="2559" />
    <exit direction="down" target="2550" />
   </room>
   <room id="2559" area="52" title="Captain's Office." environment="1">
-   <coord x="65" y="1" z="1" />
+   <coord x="73" y="1" z="1" />
    <exit direction="north" target="2560" />
    <exit direction="south" target="2558" />
   </room>
   <room id="2560" area="52" title="Whooops!!" environment="2">
-   <coord x="65" y="2" z="1" />
+   <coord x="73" y="2" z="1" />
   </room>
   <room id="2562" area="52" title="The Pet Shop of Exotic Creatures." environment="2">
-   <coord x="73" y="0" z="0" />
+   <coord x="81" y="0" z="0" />
    <exit direction="west" target="2430" />
   </room>
   <room id="2563" area="52" title="Pet Storage." environment="2">
-   <coord x="81" y="0" z="0" />
+   <coord x="89" y="0" z="0" />
   </room>
   <room id="2564" area="52" title="Wall Road." environment="2">
-   <coord x="89" y="0" z="0" />
+   <coord x="97" y="0" z="0" />
    <exit direction="north" target="2438" />
    <exit direction="south" target="2565" />
   </room>
   <room id="2565" area="52" title="Wall Road." environment="2">
-   <coord x="89" y="-1" z="0" />
+   <coord x="97" y="-1" z="0" />
    <exit direction="north" target="2564" />
    <exit direction="south" target="2566" />
   </room>
   <room id="2566" area="52" title="Wall Road." environment="2">
-   <coord x="89" y="-2" z="0" />
+   <coord x="97" y="-2" z="0" />
    <exit direction="north" target="2565" />
    <exit direction="south" target="2567" />
   </room>
   <room id="2567" area="52" title="Wall Road." environment="2">
-   <coord x="89" y="-3" z="0" />
+   <coord x="97" y="-3" z="0" />
    <exit direction="north" target="2566" />
    <exit direction="south" target="2568" />
   </room>
   <room id="2568" area="52" title="Wall Road." environment="2">
-   <coord x="89" y="-4" z="0" />
+   <coord x="97" y="-4" z="0" />
    <exit direction="north" target="2567" />
    <exit direction="south" target="2569" />
   </room>
   <room id="2569" area="52" title="Southwest Guardpost and Watchtower." environment="2">
-   <coord x="89" y="-5" z="0" />
+   <coord x="97" y="-5" z="0" />
    <exit direction="north" target="2568" />
    <exit direction="east" target="2579" />
    <exit direction="up" target="2570" />
   </room>
   <room id="2570" area="52" title="Inside Southwest Watchtower." environment="2">
-   <coord x="89" y="-5" z="1" />
+   <coord x="97" y="-5" z="1" />
    <exit direction="down" target="2569" />
   </room>
   <room id="2571" area="52" title="Wall Road." environment="2">
-   <coord x="103" y="0" z="0" />
+   <coord x="111" y="0" z="0" />
    <exit direction="north" target="2426" />
    <exit direction="south" target="2572" />
   </room>
   <room id="2572" area="52" title="Wall Road." environment="2">
-   <coord x="103" y="-1" z="0" />
+   <coord x="111" y="-1" z="0" />
    <exit direction="north" target="2571" />
    <exit direction="south" target="2573" />
   </room>
   <room id="2573" area="52" title="Wall Road." environment="2">
-   <coord x="103" y="-2" z="0" />
+   <coord x="111" y="-2" z="0" />
    <exit direction="north" target="2572" />
    <exit direction="south" target="2574" />
   </room>
   <room id="2574" area="52" title="Wall Road." environment="2">
-   <coord x="103" y="-3" z="0" />
+   <coord x="111" y="-3" z="0" />
    <exit direction="north" target="2573" />
    <exit direction="south" target="2575" />
   </room>
   <room id="2575" area="52" title="Wall Road." environment="2">
-   <coord x="103" y="-4" z="0" />
+   <coord x="111" y="-4" z="0" />
    <exit direction="north" target="2574" />
    <exit direction="south" target="2576" />
   </room>
   <room id="2576" area="52" title="Southeast Guardpost and Watchtower." environment="2">
-   <coord x="103" y="-5" z="0" />
+   <coord x="111" y="-5" z="0" />
    <exit direction="north" target="2575" />
    <exit direction="west" target="2578" />
    <exit direction="up" target="2577" />
   </room>
   <room id="2577" area="52" title="Inside Southeast Watchtower." environment="2">
-   <coord x="103" y="-5" z="1" />
+   <coord x="111" y="-5" z="1" />
    <exit direction="down" target="2576" />
   </room>
   <room id="2578" area="52" title="Path along the river." environment="2">
-   <coord x="102" y="-5" z="0" />
+   <coord x="110" y="-5" z="0" />
    <exit direction="east" target="2576" />
    <exit direction="west" target="2447" />
   </room>
   <room id="2579" area="52" title="Wall Road." environment="2">
-   <coord x="90" y="-5" z="0" />
+   <coord x="98" y="-5" z="0" />
    <exit direction="east" target="2580" />
    <exit direction="west" target="2569" />
   </room>
   <room id="2580" area="52" title="Wall Road." environment="2">
-   <coord x="91" y="-5" z="0" />
+   <coord x="99" y="-5" z="0" />
    <exit direction="east" target="2581" />
    <exit direction="west" target="2579" />
   </room>
   <room id="2581" area="52" title="Wall Road." environment="2">
-   <coord x="92" y="-5" z="0" />
+   <coord x="100" y="-5" z="0" />
    <exit direction="east" target="2582" />
    <exit direction="west" target="2580" />
   </room>
   <room id="2582" area="52" title="Wall Road." environment="2">
-   <coord x="93" y="-5" z="0" />
+   <coord x="101" y="-5" z="0" />
    <exit direction="east" target="2583" />
    <exit direction="south" target="2581" />
   </room>
   <room id="2583" area="52" title="Wall Road." environment="2">
-   <coord x="94" y="-5" z="0" />
+   <coord x="102" y="-5" z="0" />
    <exit direction="north" target="4700" />
    <exit direction="east" target="2584" />
    <exit direction="south" target="2582" />
   </room>
   <room id="2584" area="52" title="Wall Road." environment="2">
-   <coord x="95" y="-5" z="0" />
+   <coord x="103" y="-5" z="0" />
    <exit direction="east" target="2431" />
    <exit direction="west" target="2583" />
   </room>
@@ -38757,106 +38761,106 @@
    <exit direction="west" target="30207" />
    <exit direction="down" target="30650" />
   </room>
-  <room id="30201" area="45" title="the Lost Woods [A1]" environment="4">
+  <room id="30201" area="45" title="Southwest Meadow" environment="3">
    <coord x="-7" y="0" z="0" />
    <exit direction="east" target="30202" />
   </room>
-  <room id="30202" area="45" title="the Lost Woods [B1]" environment="4">
+  <room id="30202" area="45" title="Woodland Rock Face" environment="4">
    <coord x="-6" y="0" z="0" />
    <exit direction="north" target="30217" />
    <exit direction="east" target="30203" />
    <exit direction="west" target="30201" />
    <exit direction="down" target="30661" />
   </room>
-  <room id="30203" area="45" title="the Lost Woods [C1]" environment="4">
+  <room id="30203" area="45" title="Southern Woods" environment="4">
    <coord x="-5" y="0" z="0" />
    <exit direction="north" target="30218" />
    <exit direction="east" target="30204" />
    <exit direction="west" target="30202" />
   </room>
-  <room id="30204" area="45" title="the Lost Woods [D1]" environment="4">
+  <room id="30204" area="45" title="Path to the Manji" environment="4">
    <coord x="-4" y="0" z="0" />
    <exit direction="north" target="30219" />
    <exit direction="east" target="30205" />
    <exit direction="west" target="30203" />
   </room>
-  <room id="30205" area="45" title="Before Level 3: The Manji" environment="4">
+  <room id="30205" area="45" title="Grove of the Manji" environment="6">
    <coord x="-3" y="0" z="0" />
    <exit direction="west" target="30204" />
    <exit direction="down" target="30437" />
   </room>
-  <room id="30206" area="45" title="the Lost Woods [F1]" environment="4">
+  <room id="30206" area="45" title="Sandy Glade" environment="11">
    <coord x="-2" y="0" z="0" />
    <exit direction="north" target="30221" />
    <exit direction="east" target="30207" />
   </room>
-  <room id="30207" area="45" title="Hyrule Field [G1]" environment="3">
+  <room id="30207" area="45" title="Crags West of the Start" environment="6">
    <coord x="-1" y="0" z="0" />
    <exit direction="north" target="30222" />
    <exit direction="east" target="30200" />
    <exit direction="west" target="30206" />
    <exit direction="down" target="30712" />
   </room>
-  <room id="30208" area="45" title="Hyrule Field [I1]" environment="3">
+  <room id="30208" area="45" title="Meadow East of the Cave" environment="3">
    <coord x="1" y="0" z="0" />
    <exit direction="north" target="30224" />
    <exit direction="east" target="30209" />
    <exit direction="west" target="30200" />
    <exit direction="down" target="30696" />
   </room>
-  <room id="30209" area="45" title="Hyrule Field [J1]" environment="3">
+  <room id="30209" area="45" title="Stone Field" environment="6">
    <coord x="2" y="0" z="0" />
    <exit direction="east" target="30210" />
    <exit direction="west" target="30208" />
    <exit direction="down" target="30722" />
   </room>
-  <room id="30210" area="45" title="Hyrule Field [K1]" environment="3">
+  <room id="30210" area="45" title="Rocky Southern Ridge" environment="6">
    <coord x="3" y="0" z="0" />
    <exit direction="east" target="30211" />
    <exit direction="west" target="30209" />
   </room>
-  <room id="30211" area="45" title="Hyrule Field [L1]" environment="3">
+  <room id="30211" area="45" title="Southern Sands" environment="11">
    <coord x="4" y="0" z="0" />
    <exit direction="north" target="30227" />
    <exit direction="east" target="30212" />
    <exit direction="west" target="30210" />
    <exit direction="down" target="30654" />
   </room>
-  <room id="30212" area="45" title="the eastern desert [M1]" environment="11">
+  <room id="30212" area="45" title="Leever Dunes" environment="11">
    <coord x="5" y="0" z="0" />
    <exit direction="east" target="30213" />
    <exit direction="west" target="30211" />
    <exit direction="down" target="30713" />
   </room>
-  <room id="30213" area="45" title="the eastern desert [N1]" environment="11">
+  <room id="30213" area="45" title="Southern Shore Path" environment="3">
    <coord x="6" y="0" z="0" />
    <exit direction="east" target="30214" />
    <exit direction="west" target="30212" />
    <exit direction="down" target="30707" />
   </room>
-  <room id="30214" area="45" title="the eastern desert [O1]" environment="11">
+  <room id="30214" area="45" title="Southeast Grassland" environment="3">
    <coord x="7" y="0" z="0" />
    <exit direction="east" target="30215" />
    <exit direction="west" target="30213" />
   </room>
-  <room id="30215" area="45" title="the eastern desert [P1]" environment="11">
+  <room id="30215" area="45" title="Southeast Coast" environment="3">
    <coord x="8" y="0" z="0" />
    <exit direction="north" target="30231" />
    <exit direction="west" target="30214" />
   </room>
-  <room id="30216" area="45" title="the Lost Woods [A2]" environment="4">
+  <room id="30216" area="45" title="Western Meadow Edge" environment="6">
    <coord x="-8" y="1" z="0" />
    <exit direction="north" target="30232" />
    <exit direction="east" target="30217" />
   </room>
-  <room id="30217" area="45" title="the Lost Woods [B2]" environment="4">
+  <room id="30217" area="45" title="The Tangled Woods" environment="4">
    <coord x="-7" y="1" z="0" />
    <exit direction="north" target="30233" />
    <exit direction="east" target="30218" />
    <exit direction="south" target="30202" />
    <exit direction="west" target="30216" />
   </room>
-  <room id="30218" area="45" title="the Lost Woods [C2]" environment="4">
+  <room id="30218" area="45" title="Old Forest Clearing" environment="4">
    <coord x="-5" y="1" z="0" />
    <exit direction="north" target="30234" />
    <exit direction="east" target="30219" />
@@ -38864,7 +38868,7 @@
    <exit direction="west" target="30217" />
    <exit direction="down" target="30662" />
   </room>
-  <room id="30219" area="45" title="the Lost Woods [D2]" environment="4">
+  <room id="30219" area="45" title="Bramble Wood" environment="4">
    <coord x="-4" y="1" z="0" />
    <exit direction="north" target="30235" />
    <exit direction="east" target="30220" />
@@ -38872,7 +38876,7 @@
    <exit direction="west" target="30218" />
    <exit direction="down" target="30702" />
   </room>
-  <room id="30220" area="45" title="the Lost Woods [E2]" environment="4">
+  <room id="30220" area="45" title="The Lost Woods" environment="4">
    <coord x="-3" y="1" z="0" />
    <exit direction="north" target="30750" />
    <exit direction="east" target="30221" />
@@ -38881,28 +38885,28 @@
    <exit direction="up" target="30694" />
    <exit direction="down" target="30659" />
   </room>
-  <room id="30221" area="45" title="the Lost Woods [F2]" environment="4">
+  <room id="30221" area="45" title="Forest Stream" environment="3">
    <coord x="-2" y="1" z="0" />
    <exit direction="north" target="30237" />
    <exit direction="east" target="30222" />
    <exit direction="south" target="30206" />
    <exit direction="west" target="30220" />
   </room>
-  <room id="30222" area="45" title="Hyrule Field [G2]" environment="3">
+  <room id="30222" area="45" title="Candle Shop Knoll" environment="3">
    <coord x="-1" y="1" z="0" />
    <exit direction="east" target="30223" />
    <exit direction="south" target="30207" />
    <exit direction="west" target="30221" />
    <exit direction="down" target="30682" />
   </room>
-  <room id="30223" area="45" title="Hyrule Field [H2]" environment="3">
+  <room id="30223" area="45" title="Rock Wall Above the Start" environment="3">
    <coord x="0" y="1" z="0" />
    <exit direction="east" target="30224" />
    <exit direction="south" target="30200" />
    <exit direction="west" target="30222" />
    <exit direction="down" target="30665" />
   </room>
-  <room id="30224" area="45" title="Hyrule Field [I2]" environment="3">
+  <room id="30224" area="45" title="Bush Row" environment="3">
    <coord x="1" y="1" z="0" />
    <exit direction="north" target="30240" />
    <exit direction="east" target="30225" />
@@ -38910,20 +38914,20 @@
    <exit direction="west" target="30223" />
    <exit direction="down" target="30705" />
   </room>
-  <room id="30225" area="45" title="Hyrule Field [J2]" environment="3">
+  <room id="30225" area="45" title="River Bend" environment="3">
    <coord x="2" y="1" z="0" />
    <exit direction="north" target="30241" />
    <exit direction="east" target="30226" />
    <exit direction="west" target="30224" />
   </room>
-  <room id="30226" area="45" title="Hyrule Field [K2]" environment="3">
+  <room id="30226" area="45" title="Riverbank Thicket" environment="3">
    <coord x="3" y="1" z="0" />
    <exit direction="north" target="30242" />
    <exit direction="east" target="30227" />
    <exit direction="west" target="30225" />
    <exit direction="down" target="30706" />
   </room>
-  <room id="30227" area="45" title="Hyrule Field [L2]" environment="3">
+  <room id="30227" area="45" title="Shaded Grove" environment="4">
    <coord x="4" y="1" z="0" />
    <exit direction="north" target="30243" />
    <exit direction="east" target="30228" />
@@ -38931,103 +38935,103 @@
    <exit direction="west" target="30226" />
    <exit direction="down" target="30669" />
   </room>
-  <room id="30228" area="45" title="the eastern desert [M2]" environment="11">
+  <room id="30228" area="45" title="Dark Pine Stand" environment="4">
    <coord x="5" y="1" z="0" />
    <exit direction="north" target="30244" />
    <exit direction="east" target="30229" />
    <exit direction="west" target="30227" />
   </room>
-  <room id="30229" area="45" title="Before Level 8: The Lion" environment="11">
+  <room id="30229" area="45" title="The Lion's Thicket" environment="4">
    <coord x="6" y="1" z="0" />
    <exit direction="north" target="30245" />
    <exit direction="east" target="30230" />
    <exit direction="west" target="30228" />
    <exit direction="down" target="30562" />
   </room>
-  <room id="30230" area="45" title="the eastern desert [O2]" environment="11">
+  <room id="30230" area="45" title="Eastern Wood Path" environment="4">
    <coord x="7" y="1" z="0" />
    <exit direction="east" target="30231" />
    <exit direction="west" target="30229" />
   </room>
-  <room id="30231" area="45" title="the eastern desert [P2]" environment="11">
+  <room id="30231" area="45" title="Coastal Shop Cave" environment="3">
    <coord x="8" y="1" z="0" />
    <exit direction="north" target="30247" />
    <exit direction="south" target="30215" />
    <exit direction="west" target="30230" />
    <exit direction="down" target="30686" />
   </room>
-  <room id="30232" area="45" title="the Lost Woods [A3]" environment="4">
+  <room id="30232" area="45" title="Western Crags" environment="6">
    <coord x="-9" y="2" z="0" />
    <exit direction="north" target="30248" />
    <exit direction="south" target="30216" />
   </room>
-  <room id="30233" area="45" title="the Lost Woods [B3]" environment="4">
+  <room id="30233" area="45" title="Deepwood Corner" environment="4">
    <coord x="-8" y="2" z="0" />
    <exit direction="east" target="30234" />
    <exit direction="south" target="30217" />
    <exit direction="down" target="30660" />
   </room>
-  <room id="30234" area="45" title="the Lost Woods [C3]" environment="4">
+  <room id="30234" area="45" title="Lost Woods Crossing" environment="4">
    <coord x="-7" y="2" z="0" />
    <exit direction="north" target="30250" />
    <exit direction="east" target="30235" />
    <exit direction="south" target="30218" />
    <exit direction="west" target="30233" />
   </room>
-  <room id="30235" area="45" title="the Lost Woods [D3]" environment="4">
+  <room id="30235" area="45" title="The Fairy Path" environment="4">
    <coord x="-5" y="2" z="0" />
    <exit direction="north" target="30251" />
    <exit direction="east" target="30236" />
    <exit direction="south" target="30219" />
    <exit direction="west" target="30234" />
   </room>
-  <room id="30236" area="45" title="the Lost Woods [E3]" environment="4">
+  <room id="30236" area="45" title="Forest River Ford" environment="3">
    <coord x="-3" y="2" z="0" />
    <exit direction="north" target="30252" />
    <exit direction="east" target="30237" />
    <exit direction="south" target="30220" />
    <exit direction="west" target="30235" />
   </room>
-  <room id="30237" area="45" title="the Lost Woods [F3]" environment="4">
+  <room id="30237" area="45" title="Shore Below the Snake" environment="3">
    <coord x="-2" y="2" z="0" />
    <exit direction="north" target="30253" />
    <exit direction="east" target="30238" />
    <exit direction="south" target="30221" />
    <exit direction="west" target="30236" />
   </room>
-  <room id="30238" area="45" title="Hyrule Field [G3]" environment="3">
+  <room id="30238" area="45" title="Lake Hylia, Southwest Bank" environment="3">
    <coord x="-1" y="2" z="0" />
    <exit direction="north" target="30254" />
    <exit direction="east" target="30239" />
    <exit direction="west" target="30237" />
    <exit direction="down" target="30664" />
   </room>
-  <room id="30239" area="45" title="Hyrule Field [H3]" environment="3">
+  <room id="30239" area="45" title="Lakeside Meadow" environment="3">
    <coord x="0" y="2" z="0" />
    <exit direction="east" target="30240" />
    <exit direction="west" target="30238" />
   </room>
-  <room id="30240" area="45" title="Hyrule Field [I3]" environment="3">
+  <room id="30240" area="45" title="Crossroads South of the Lake" environment="3">
    <coord x="1" y="2" z="0" />
    <exit direction="north" target="30256" />
    <exit direction="east" target="30241" />
    <exit direction="south" target="30224" />
    <exit direction="west" target="30239" />
   </room>
-  <room id="30241" area="45" title="Hyrule Field [J3]" environment="3">
+  <room id="30241" area="45" title="Flower Field" environment="3">
    <coord x="2" y="2" z="0" />
    <exit direction="north" target="30257" />
    <exit direction="east" target="30242" />
    <exit direction="south" target="30225" />
    <exit direction="west" target="30240" />
   </room>
-  <room id="30242" area="45" title="Hyrule Field [K3]" environment="3">
+  <room id="30242" area="45" title="Rolling Green Downs" environment="3">
    <coord x="3" y="2" z="0" />
    <exit direction="east" target="30243" />
    <exit direction="south" target="30226" />
    <exit direction="west" target="30241" />
   </room>
-  <room id="30243" area="45" title="Hyrule Field [L3]" environment="3">
+  <room id="30243" area="45" title="Eastwood Glade" environment="4">
    <coord x="4" y="2" z="0" />
    <exit direction="north" target="30259" />
    <exit direction="east" target="30244" />
@@ -39035,105 +39039,105 @@
    <exit direction="west" target="30242" />
    <exit direction="down" target="30668" />
   </room>
-  <room id="30244" area="45" title="the eastern desert [M3]" environment="11">
+  <room id="30244" area="45" title="Pinewood Rise" environment="4">
    <coord x="5" y="2" z="0" />
    <exit direction="east" target="30245" />
    <exit direction="south" target="30228" />
    <exit direction="west" target="30243" />
   </room>
-  <room id="30245" area="45" title="the eastern desert [N3]" environment="11">
+  <room id="30245" area="45" title="Moblin Hollow" environment="4">
    <coord x="6" y="2" z="0" />
    <exit direction="north" target="30261" />
    <exit direction="east" target="30246" />
    <exit direction="south" target="30229" />
    <exit direction="west" target="30244" />
   </room>
-  <room id="30246" area="45" title="the eastern desert [O3]" environment="11">
+  <room id="30246" area="45" title="Candlemaker's Dead End" environment="4">
    <coord x="7" y="2" z="0" />
    <exit direction="west" target="30245" />
    <exit direction="down" target="30685" />
   </room>
-  <room id="30247" area="45" title="the eastern desert [P3]" environment="11">
+  <room id="30247" area="45" title="The Coast's Lonely Ledge" environment="3">
    <coord x="8" y="2" z="0" />
    <exit direction="north" target="30263" />
    <exit direction="south" target="30231" />
   </room>
-  <room id="30248" area="45" title="the western highlands [A4]" environment="5">
+  <room id="30248" area="45" title="The Graveyard's Southern Fence" environment="3">
    <coord x="-9" y="3" z="0" />
    <exit direction="north" target="30264" />
    <exit direction="east" target="30249" />
    <exit direction="south" target="30232" />
   </room>
-  <room id="30249" area="45" title="the western highlands [B4]" environment="5">
+  <room id="30249" area="45" title="Hollow of Headstones" environment="3">
    <coord x="-8" y="3" z="0" />
    <exit direction="north" target="30265" />
    <exit direction="west" target="30248" />
   </room>
-  <room id="30250" area="45" title="Before Level 7: The Demon" environment="5">
+  <room id="30250" area="45" title="The Still Pond" environment="4">
    <coord x="-7" y="3" z="0" />
    <exit direction="south" target="30234" />
    <exit direction="down" target="30527" />
   </room>
-  <room id="30251" area="45" title="A Fairy Fountain" environment="5">
+  <room id="30251" area="45" title="Fairy Pond of the Woods" environment="3">
    <coord x="-5" y="3" z="0" />
    <exit direction="south" target="30235" />
   </room>
-  <room id="30252" area="45" title="the western highlands [E4]" environment="5">
+  <room id="30252" area="45" title="Riverside Cave" environment="3">
    <coord x="-3" y="3" z="0" />
    <exit direction="north" target="30268" />
    <exit direction="south" target="30236" />
    <exit direction="down" target="30680" />
   </room>
-  <room id="30253" area="45" title="Before Level 4: The Snake" environment="3">
+  <room id="30253" area="45" title="Isle of the Snake" environment="3">
    <coord x="-2" y="3" z="0" />
    <exit direction="south" target="30237" />
   </room>
-  <room id="30254" area="45" title="Hyrule Field [G4]" environment="3">
+  <room id="30254" area="45" title="Lake Hylia, Western Reeds" environment="3">
    <coord x="-1" y="3" z="0" />
    <exit direction="east" target="30255" />
    <exit direction="south" target="30238" />
    <exit direction="down" target="30690" />
   </room>
-  <room id="30255" area="45" title="Hyrule Field [H4]" environment="3">
+  <room id="30255" area="45" title="Lake Hylia, South Shore" environment="3">
    <coord x="0" y="3" z="0" />
    <exit direction="east" target="30256" />
    <exit direction="west" target="30254" />
    <exit direction="down" target="30656" />
   </room>
-  <room id="30256" area="45" title="Hyrule Field [I4]" environment="3">
+  <room id="30256" area="45" title="Lake Hylia Sand Bar" environment="11">
    <coord x="1" y="3" z="0" />
    <exit direction="north" target="30272" />
    <exit direction="south" target="30240" />
    <exit direction="west" target="30255" />
    <exit direction="down" target="30667" />
   </room>
-  <room id="30257" area="45" title="Hyrule Field [J4]" environment="3">
+  <room id="30257" area="45" title="Boulder Meadow" environment="3">
    <coord x="2" y="3" z="0" />
    <exit direction="north" target="30273" />
    <exit direction="east" target="30258" />
    <exit direction="south" target="30241" />
    <exit direction="down" target="30721" />
   </room>
-  <room id="30258" area="45" title="Hyrule Field [K4]" environment="3">
+  <room id="30258" area="45" title="Craggy Rise" environment="6">
    <coord x="3" y="3" z="0" />
    <exit direction="north" target="30274" />
    <exit direction="east" target="30259" />
    <exit direction="west" target="30257" />
    <exit direction="down" target="30683" />
   </room>
-  <room id="30259" area="45" title="Hyrule Field [L4]" environment="3">
+  <room id="30259" area="45" title="Eastern Thicket" environment="4">
    <coord x="4" y="3" z="0" />
    <exit direction="north" target="30275" />
    <exit direction="south" target="30243" />
    <exit direction="west" target="30258" />
    <exit direction="down" target="30697" />
   </room>
-  <room id="30260" area="45" title="Lake Hylia's shore [M4]" environment="3">
+  <room id="30260" area="45" title="The Eastern Dock" environment="3">
    <coord x="5" y="3" z="0" />
    <exit direction="north" target="30276" />
    <exit direction="east" target="30261" />
   </room>
-  <room id="30261" area="45" title="Lake Hylia's shore [N4]" environment="3">
+  <room id="30261" area="45" title="Wooded Crossroads" environment="4">
    <coord x="6" y="3" z="0" />
    <exit direction="north" target="30277" />
    <exit direction="east" target="30262" />
@@ -39141,187 +39145,187 @@
    <exit direction="west" target="30260" />
    <exit direction="down" target="30691" />
   </room>
-  <room id="30262" area="45" title="Lake Hylia's shore [O4]" environment="3">
+  <room id="30262" area="45" title="Armos Sentinel Grove" environment="4">
    <coord x="7" y="3" z="0" />
    <exit direction="west" target="30261" />
    <exit direction="down" target="30672" />
   </room>
-  <room id="30263" area="45" title="Lake Hylia's shore [P4]" environment="3">
+  <room id="30263" area="45" title="Eastern Cliffs" environment="3">
    <coord x="8" y="3" z="0" />
    <exit direction="north" target="30279" />
    <exit direction="south" target="30247" />
   </room>
-  <room id="30264" area="45" title="the western highlands [A5]" environment="5">
+  <room id="30264" area="45" title="The Graveyard, Lower Rows" environment="3">
    <coord x="-9" y="4" z="0" />
    <exit direction="north" target="30280" />
    <exit direction="east" target="30265" />
    <exit direction="south" target="30248" />
   </room>
-  <room id="30265" area="45" title="the western highlands [B5]" environment="5">
+  <room id="30265" area="45" title="The Graveyard Gate" environment="3">
    <coord x="-8" y="4" z="0" />
    <exit direction="north" target="30281" />
    <exit direction="east" target="30266" />
    <exit direction="south" target="30249" />
    <exit direction="west" target="30264" />
   </room>
-  <room id="30266" area="45" title="the western highlands [C5]" environment="5">
+  <room id="30266" area="45" title="Ghost Hill" environment="6">
    <coord x="-7" y="4" z="0" />
    <exit direction="north" target="30282" />
    <exit direction="east" target="30267" />
    <exit direction="west" target="30265" />
   </room>
-  <room id="30267" area="45" title="the western highlands [D5]" environment="5">
+  <room id="30267" area="45" title="The Cracked Bluff" environment="3">
    <coord x="-4" y="4" z="0" />
    <exit direction="north" target="30283" />
    <exit direction="west" target="30266" />
    <exit direction="down" target="30692" />
   </room>
-  <room id="30268" area="45" title="the western highlands [E5]" environment="5">
+  <room id="30268" area="45" title="The Silent Sentinels" environment="11">
    <coord x="-3" y="4" z="0" />
    <exit direction="south" target="30252" />
    <exit direction="down" target="30688" />
   </room>
-  <room id="30269" area="45" title="Hyrule Field [F5]" environment="3">
+  <room id="30269" area="45" title="The Quiet Glade" environment="3">
    <coord x="-2" y="4" z="0" />
    <exit direction="north" target="30285" />
    <exit direction="east" target="30270" />
   </room>
-  <room id="30270" area="45" title="Hyrule Field [G5]" environment="3">
+  <room id="30270" area="45" title="The Sheltered Hollow" environment="3">
    <coord x="-1" y="4" z="0" />
    <exit direction="north" target="30286" />
    <exit direction="west" target="30269" />
   </room>
-  <room id="30271" area="45" title="Before Level 1: The Eagle" environment="3">
+  <room id="30271" area="45" title="The Eagle's Gate" environment="3">
    <coord x="0" y="4" z="0" />
    <exit direction="east" target="30272" />
    <exit direction="down" target="30401" />
   </room>
-  <room id="30272" area="45" title="Hyrule Field [I5]" environment="3">
+  <room id="30272" area="45" title="The River Landing" environment="3">
    <coord x="1" y="4" z="0" />
    <exit direction="north" target="30288" />
    <exit direction="south" target="30256" />
    <exit direction="west" target="30271" />
   </room>
-  <room id="30273" area="45" title="A Fairy Fountain" environment="3">
+  <room id="30273" area="45" title="The Fairy Fountain, North" environment="3">
    <coord x="2" y="4" z="0" />
    <exit direction="south" target="30257" />
   </room>
-  <room id="30274" area="45" title="Hyrule Field [K5]" environment="3">
+  <room id="30274" area="45" title="The Peahat Fields" environment="11">
    <coord x="3" y="4" z="0" />
    <exit direction="north" target="30290" />
    <exit direction="east" target="30275" />
    <exit direction="south" target="30258" />
   </room>
-  <room id="30275" area="45" title="Hyrule Field [L5]" environment="3">
+  <room id="30275" area="45" title="The Blowing Sands" environment="11">
    <coord x="4" y="4" z="0" />
    <exit direction="north" target="30291" />
    <exit direction="south" target="30259" />
    <exit direction="west" target="30274" />
   </room>
-  <room id="30276" area="45" title="Before Level 2: The Moon" environment="3">
+  <room id="30276" area="45" title="The Moon Gate" environment="3">
    <coord x="5" y="4" z="0" />
    <exit direction="south" target="30260" />
    <exit direction="down" target="30418" />
   </room>
-  <room id="30277" area="45" title="Lake Hylia's shore [N5]" environment="3">
+  <room id="30277" area="45" title="The Armos Shore" environment="4">
    <coord x="6" y="4" z="0" />
    <exit direction="north" target="30293" />
    <exit direction="south" target="30261" />
    <exit direction="down" target="30671" />
   </room>
-  <room id="30278" area="45" title="Lake Hylia's shore [O5]" environment="3">
+  <room id="30278" area="45" title="The Octorok Banks" environment="3">
    <coord x="7" y="4" z="0" />
    <exit direction="north" target="30294" />
    <exit direction="east" target="30279" />
   </room>
-  <room id="30279" area="45" title="Lake Hylia's shore [P5]" environment="3">
+  <room id="30279" area="45" title="Lake Hylia, Eastern Dock" environment="3">
    <coord x="8" y="4" z="0" />
    <exit direction="north" target="30295" />
    <exit direction="south" target="30263" />
    <exit direction="west" target="30278" />
   </room>
-  <room id="30280" area="45" title="the western highlands [A6]" environment="5">
+  <room id="30280" area="45" title="The Old Graveyard" environment="3">
    <coord x="-9" y="5" z="0" />
    <exit direction="east" target="30281" />
    <exit direction="south" target="30264" />
   </room>
-  <room id="30281" area="45" title="the western highlands [B6]" environment="5">
+  <room id="30281" area="45" title="The Master Sword Grave" environment="3">
    <coord x="-8" y="5" z="0" />
    <exit direction="south" target="30265" />
    <exit direction="west" target="30280" />
    <exit direction="down" target="30652" />
   </room>
-  <room id="30282" area="45" title="Before Level 6: The Dragon" environment="5">
+  <room id="30282" area="45" title="The Dragon's Gate" environment="6">
    <coord x="-7" y="5" z="0" />
    <exit direction="south" target="30266" />
    <exit direction="down" target="30501" />
   </room>
-  <room id="30283" area="45" title="the western highlands [D6]" environment="5">
+  <room id="30283" area="45" title="The Western Warp Stone" environment="6">
    <coord x="-4" y="5" z="0" />
    <exit direction="east" target="30284" />
    <exit direction="south" target="30267" />
    <exit direction="down" target="30720" />
   </room>
-  <room id="30284" area="45" title="the western highlands [E6]" environment="5">
+  <room id="30284" area="45" title="The Armos Gallery" environment="3">
    <coord x="-3" y="5" z="0" />
    <exit direction="north" target="30300" />
    <exit direction="east" target="30285" />
    <exit direction="west" target="30283" />
    <exit direction="down" target="30674" />
   </room>
-  <room id="30285" area="45" title="Hyrule Field [F6]" environment="3">
+  <room id="30285" area="45" title="The Bomb Merchant's Cave" environment="3">
    <coord x="-2" y="5" z="0" />
    <exit direction="north" target="30301" />
    <exit direction="south" target="30269" />
    <exit direction="west" target="30284" />
    <exit direction="down" target="30681" />
   </room>
-  <room id="30286" area="45" title="Hyrule Field [G6]" environment="3">
+  <room id="30286" area="45" title="The Meadow Bluff" environment="3">
    <coord x="-1" y="5" z="0" />
    <exit direction="east" target="30287" />
    <exit direction="south" target="30270" />
    <exit direction="down" target="30689" />
   </room>
-  <room id="30287" area="45" title="Hyrule Field [H6]" environment="3">
+  <room id="30287" area="45" title="Foot of Death Mountain" environment="3">
    <coord x="0" y="5" z="0" />
    <exit direction="north" target="30303" />
    <exit direction="east" target="30288" />
    <exit direction="west" target="30286" />
    <exit direction="down" target="30695" />
   </room>
-  <room id="30288" area="45" title="Hyrule Field [I6]" environment="3">
+  <room id="30288" area="45" title="The Withered Thicket" environment="3">
    <coord x="1" y="5" z="0" />
    <exit direction="east" target="30289" />
    <exit direction="south" target="30272" />
    <exit direction="west" target="30287" />
    <exit direction="down" target="30666" />
   </room>
-  <room id="30289" area="45" title="Hyrule Field [J6]" environment="3">
+  <room id="30289" area="45" title="The Sandy Flats" environment="11">
    <coord x="2" y="5" z="0" />
    <exit direction="east" target="30290" />
    <exit direction="west" target="30288" />
   </room>
-  <room id="30290" area="45" title="Hyrule Field [K6]" environment="3">
+  <room id="30290" area="45" title="The Dune Strip" environment="11">
    <coord x="3" y="5" z="0" />
    <exit direction="east" target="30291" />
    <exit direction="south" target="30274" />
    <exit direction="west" target="30289" />
   </room>
-  <room id="30291" area="45" title="Hyrule Field [L6]" environment="3">
+  <room id="30291" area="45" title="Below the Lost Hills" environment="11">
    <coord x="4" y="5" z="0" />
    <exit direction="north" target="30307" />
    <exit direction="east" target="30292" />
    <exit direction="south" target="30275" />
    <exit direction="west" target="30290" />
   </room>
-  <room id="30292" area="45" title="Lake Hylia's shore [M6]" environment="3">
+  <room id="30292" area="45" title="Lake Hylia, North Cliffs" environment="6">
    <coord x="5" y="5" z="0" />
    <exit direction="north" target="30308" />
    <exit direction="east" target="30293" />
    <exit direction="west" target="30291" />
    <exit direction="down" target="30655" />
   </room>
-  <room id="30293" area="45" title="Lake Hylia's shore [N6]" environment="3">
+  <room id="30293" area="45" title="Lake Hylia, North Shore" environment="3">
    <coord x="6" y="5" z="0" />
    <exit direction="north" target="30309" />
    <exit direction="east" target="30294" />
@@ -39329,96 +39333,96 @@
    <exit direction="west" target="30292" />
    <exit direction="down" target="30670" />
   </room>
-  <room id="30294" area="45" title="Lake Hylia's shore [O6]" environment="3">
+  <room id="30294" area="45" title="Lake Hylia, Northeast Shore" environment="3">
    <coord x="7" y="5" z="0" />
    <exit direction="south" target="30278" />
    <exit direction="west" target="30293" />
   </room>
-  <room id="30295" area="45" title="Lake Hylia's shore [P6]" environment="3">
+  <room id="30295" area="45" title="The Lonely Isle" environment="3">
    <coord x="8" y="5" z="0" />
    <exit direction="south" target="30279" />
   </room>
-  <room id="30296" area="45" title="Death Mountain [A7]" environment="6">
+  <room id="30296" area="45" title="The Western Gorge" environment="6">
    <coord x="-7" y="6" z="0" />
    <exit direction="north" target="30312" />
    <exit direction="east" target="30297" />
    <exit direction="down" target="30710" />
   </room>
-  <room id="30297" area="45" title="Death Mountain [B7]" environment="6">
+  <room id="30297" area="45" title="The Windswept Shelf" environment="6">
    <coord x="-6" y="6" z="0" />
    <exit direction="north" target="30313" />
    <exit direction="west" target="30296" />
   </room>
-  <room id="30298" area="45" title="Death Mountain [C7]" environment="6">
+  <room id="30298" area="45" title="The Shieldmaker's Bluff" environment="6">
    <coord x="-5" y="6" z="0" />
    <exit direction="north" target="30314" />
    <exit direction="east" target="30299" />
    <exit direction="down" target="30687" />
   </room>
-  <room id="30299" area="45" title="Death Mountain [D7]" environment="6">
+  <room id="30299" area="45" title="Broken Stone Terrace" environment="6">
    <coord x="-4" y="6" z="0" />
    <exit direction="north" target="30315" />
    <exit direction="east" target="30300" />
    <exit direction="west" target="30298" />
    <exit direction="down" target="30663" />
   </room>
-  <room id="30300" area="45" title="Death Mountain [E7]" environment="6">
+  <room id="30300" area="45" title="The Crumbling Scarp" environment="6">
    <coord x="-3" y="6" z="0" />
    <exit direction="east" target="30301" />
    <exit direction="south" target="30284" />
    <exit direction="west" target="30299" />
    <exit direction="down" target="30703" />
   </room>
-  <room id="30301" area="45" title="Death Mountain [F7]" environment="6">
+  <room id="30301" area="45" title="Highland Overlook" environment="6">
    <coord x="-2" y="6" z="0" />
    <exit direction="east" target="30302" />
    <exit direction="south" target="30285" />
    <exit direction="west" target="30300" />
   </room>
-  <room id="30302" area="45" title="Death Mountain [G7]" environment="6">
+  <room id="30302" area="45" title="The Rumbling Gully" environment="6">
    <coord x="-1" y="6" z="0" />
    <exit direction="east" target="30303" />
    <exit direction="west" target="30301" />
    <exit direction="down" target="30711" />
   </room>
-  <room id="30303" area="45" title="Death Mountain [H7]" environment="6">
+  <room id="30303" area="45" title="The Lost Hills" environment="6">
    <coord x="0" y="6" z="0" />
    <exit direction="north" target="30753" />
    <exit direction="east" target="30304" />
    <exit direction="south" target="30287" />
    <exit direction="west" target="30302" />
   </room>
-  <room id="30304" area="45" title="Death Mountain [I7]" environment="6">
+  <room id="30304" area="45" title="The Boulder Run" environment="6">
    <coord x="1" y="6" z="0" />
    <exit direction="east" target="30305" />
    <exit direction="west" target="30303" />
   </room>
-  <room id="30305" area="45" title="Death Mountain [J7]" environment="6">
+  <room id="30305" area="45" title="Rolling Stone Ravine" environment="6">
    <coord x="2" y="6" z="0" />
    <exit direction="east" target="30306" />
    <exit direction="west" target="30304" />
   </room>
-  <room id="30306" area="45" title="Death Mountain [K7]" environment="6">
+  <room id="30306" area="45" title="The Springing Hills" environment="6">
    <coord x="3" y="6" z="0" />
    <exit direction="north" target="30322" />
    <exit direction="east" target="30307" />
    <exit direction="west" target="30305" />
   </room>
-  <room id="30307" area="45" title="Death Mountain [L7]" environment="6">
+  <room id="30307" area="45" title="Hills Below the Basin" environment="6">
    <coord x="4" y="6" z="0" />
    <exit direction="north" target="30323" />
    <exit direction="east" target="30308" />
    <exit direction="south" target="30291" />
    <exit direction="west" target="30306" />
   </room>
-  <room id="30308" area="45" title="Death Mountain [M7]" environment="6">
+  <room id="30308" area="45" title="Lone Armos Ridge" environment="6">
    <coord x="5" y="6" z="0" />
    <exit direction="north" target="30324" />
    <exit direction="east" target="30309" />
    <exit direction="south" target="30292" />
    <exit direction="west" target="30307" />
   </room>
-  <room id="30309" area="45" title="Death Mountain [N7]" environment="6">
+  <room id="30309" area="45" title="The Heavy Boulder" environment="6">
    <coord x="6" y="6" z="0" />
    <exit direction="north" target="30325" />
    <exit direction="east" target="30310" />
@@ -39426,192 +39430,192 @@
    <exit direction="west" target="30308" />
    <exit direction="down" target="30723" />
   </room>
-  <room id="30310" area="45" title="Death Mountain [O7]" environment="6">
+  <room id="30310" area="45" title="The Scarred Cliffs" environment="6">
    <coord x="7" y="6" z="0" />
    <exit direction="north" target="30326" />
    <exit direction="east" target="30311" />
    <exit direction="west" target="30309" />
    <exit direction="down" target="30708" />
   </room>
-  <room id="30311" area="45" title="Death Mountain [P7]" environment="6">
+  <room id="30311" area="45" title="The Eastern Cliffs" environment="6">
    <coord x="8" y="6" z="0" />
    <exit direction="north" target="30327" />
    <exit direction="west" target="30310" />
    <exit direction="down" target="30714" />
   </room>
-  <room id="30312" area="45" title="Death Mountain [A8]" environment="6">
+  <room id="30312" area="45" title="Death Mountain's Western Summit" environment="6">
    <coord x="-7" y="7" z="0" />
    <exit direction="east" target="30313" />
    <exit direction="south" target="30296" />
   </room>
-  <room id="30313" area="45" title="Death Mountain [B8]" environment="6">
+  <room id="30313" area="45" title="Lynel Ridge" environment="6">
    <coord x="-6" y="7" z="0" />
    <exit direction="east" target="30314" />
    <exit direction="south" target="30297" />
    <exit direction="west" target="30312" />
    <exit direction="down" target="30700" />
   </room>
-  <room id="30314" area="45" title="Death Mountain [C8]" environment="6">
+  <room id="30314" area="45" title="The High Boulder Pass" environment="6">
    <coord x="-5" y="7" z="0" />
    <exit direction="east" target="30315" />
    <exit direction="south" target="30298" />
    <exit direction="west" target="30313" />
   </room>
-  <room id="30315" area="45" title="Death Mountain [D8]" environment="6">
+  <room id="30315" area="45" title="Rockfall Crest" environment="6">
    <coord x="-4" y="7" z="0" />
    <exit direction="south" target="30299" />
    <exit direction="west" target="30314" />
    <exit direction="down" target="30701" />
   </room>
-  <room id="30316" area="45" title="Death Mountain [E8]" environment="6">
+  <room id="30316" area="45" title="The Medicine Woman's Ledge" environment="6">
    <coord x="-3" y="11" z="0" />
    <exit direction="east" target="30317" />
    <exit direction="down" target="30693" />
   </room>
-  <room id="30317" area="45" title="Before Level 9: Death Mountain" environment="6">
+  <room id="30317" area="45" title="Spectacle Rock" environment="6">
    <coord x="-2" y="11" z="0" />
    <exit direction="east" target="30318" />
    <exit direction="west" target="30316" />
    <exit direction="down" target="30590" />
   </room>
-  <room id="30318" area="45" title="Death Mountain [G8]" environment="6">
+  <room id="30318" area="45" title="East of Spectacle Rock" environment="6">
    <coord x="-1" y="11" z="0" />
    <exit direction="east" target="30319" />
    <exit direction="west" target="30317" />
   </room>
-  <room id="30319" area="45" title="Death Mountain [H8]" environment="6">
+  <room id="30319" area="45" title="The Summit Road" environment="6">
    <coord x="0" y="11" z="0" />
    <exit direction="east" target="30320" />
    <exit direction="south" target="30303" />
    <exit direction="west" target="30318" />
    <exit direction="down" target="30704" />
   </room>
-  <room id="30320" area="45" title="Death Mountain [I8]" environment="6">
+  <room id="30320" area="45" title="Avalanche Slope" environment="6">
    <coord x="1" y="11" z="0" />
    <exit direction="east" target="30321" />
    <exit direction="west" target="30319" />
   </room>
-  <room id="30321" area="45" title="Death Mountain [J8]" environment="6">
+  <room id="30321" area="45" title="Death Mountain's Dead End" environment="6">
    <coord x="2" y="11" z="0" />
    <exit direction="west" target="30320" />
   </room>
-  <room id="30322" area="45" title="Death Mountain [K8]" environment="6">
+  <room id="30322" area="45" title="The White Sword Falls" environment="6">
    <coord x="3" y="7" z="0" />
    <exit direction="south" target="30306" />
    <exit direction="down" target="30651" />
   </room>
-  <room id="30323" area="45" title="Before Level 5: The Lizard" environment="6">
+  <room id="30323" area="45" title="The Lizard's Gate" environment="6">
    <coord x="4" y="7" z="0" />
    <exit direction="south" target="30307" />
    <exit direction="down" target="30476" />
   </room>
-  <room id="30324" area="45" title="Death Mountain [M8]" environment="6">
+  <room id="30324" area="45" title="The Candle Merchant's Hollow" environment="6">
    <coord x="5" y="7" z="0" />
    <exit direction="east" target="30325" />
    <exit direction="south" target="30308" />
    <exit direction="down" target="30684" />
   </room>
-  <room id="30325" area="45" title="Death Mountain [N8]" environment="6">
+  <room id="30325" area="45" title="Tektite Heights" environment="6">
    <coord x="6" y="7" z="0" />
    <exit direction="south" target="30309" />
    <exit direction="west" target="30324" />
    <exit direction="down" target="30698" />
   </room>
-  <room id="30326" area="45" title="Death Mountain [O8]" environment="6">
+  <room id="30326" area="45" title="Ledge of the Letter Cave" environment="6">
    <coord x="7" y="7" z="0" />
    <exit direction="south" target="30310" />
    <exit direction="down" target="30653" />
   </room>
-  <room id="30327" area="45" title="Death Mountain [P8]" environment="6">
+  <room id="30327" area="45" title="The Northeast Crag" environment="6">
    <coord x="8" y="7" z="0" />
    <exit direction="south" target="30311" />
    <exit direction="down" target="30673" />
   </room>
-  <room id="30400" area="45" title="Level 1: The Eagle [B1]" environment="12">
+  <room id="30400" area="45" title="Level 1: West Guardroom" environment="12">
    <coord x="-1" y="4" z="-1" />
    <exit direction="east" target="30401" />
   </room>
-  <room id="30401" area="45" title="Level 1: The Eagle [C1]" environment="12">
+  <room id="30401" area="45" title="Level 1: Eagle Gate" environment="12">
    <coord x="0" y="4" z="-1" />
    <exit direction="north" target="30403" />
    <exit direction="east" target="30402" />
    <exit direction="west" target="30400" />
    <exit direction="up" target="30271" />
   </room>
-  <room id="30402" area="45" title="Level 1: The Eagle [D1]" environment="12">
+  <room id="30402" area="45" title="Level 1: East Bone Room" environment="12">
    <coord x="1" y="4" z="-1" />
    <exit direction="west" target="30401" />
   </room>
-  <room id="30403" area="45" title="Level 1: The Eagle [C2]" environment="12">
+  <room id="30403" area="45" title="Level 1: Rattling Passage" environment="12">
    <coord x="-1" y="5" z="-1" />
    <exit direction="north" target="30405" />
    <exit direction="south" target="30401" />
   </room>
-  <room id="30404" area="45" title="Level 1: The Eagle [B3]" environment="12">
+  <room id="30404" area="45" title="Level 1: Shuttered West Room" environment="12">
    <coord x="-2" y="6" z="-1" />
    <exit direction="north" target="30408" />
    <exit direction="east" target="30405" />
   </room>
-  <room id="30405" area="45" title="Level 1: The Eagle [C3]" environment="12">
+  <room id="30405" area="45" title="Level 1: Diamond-Tiled Crossing" environment="12">
    <coord x="-1" y="6" z="-1" />
    <exit direction="north" target="30409" />
    <exit direction="east" target="30406" />
    <exit direction="south" target="30403" />
    <exit direction="west" target="30404" />
   </room>
-  <room id="30406" area="45" title="Level 1: The Eagle [D3]" environment="12">
+  <room id="30406" area="45" title="Level 1: Bat Roost" environment="12">
    <coord x="1" y="6" z="-1" />
    <exit direction="north" target="30410" />
    <exit direction="west" target="30405" />
   </room>
-  <room id="30407" area="45" title="Level 1: The Eagle [A4]" environment="12">
+  <room id="30407" area="45" title="Level 1: Hall of the Twin Fires" environment="12">
    <coord x="-3" y="7" z="-1" />
    <exit direction="east" target="30408" />
   </room>
-  <room id="30408" area="45" title="Level 1: The Eagle [B4]" environment="12">
+  <room id="30408" area="45" title="Level 1: Slime-Slick Hall" environment="12">
    <coord x="-2" y="7" z="-1" />
    <exit direction="east" target="30409" />
    <exit direction="south" target="30404" />
    <exit direction="west" target="30407" />
   </room>
-  <room id="30409" area="45" title="Level 1: The Eagle [C4]" environment="12">
+  <room id="30409" area="45" title="Level 1: Chamber of Pillars" environment="12">
    <coord x="-1" y="7" z="-1" />
    <exit direction="north" target="30412" />
    <exit direction="east" target="30410" />
    <exit direction="south" target="30405" />
    <exit direction="west" target="30408" />
   </room>
-  <room id="30410" area="45" title="Level 1: The Eagle [D4]" environment="12">
+  <room id="30410" area="45" title="Level 1: Scarred Hall" environment="12">
    <coord x="0" y="7" z="-1" />
    <exit direction="east" target="30411" />
    <exit direction="south" target="30406" />
    <exit direction="west" target="30409" />
   </room>
-  <room id="30411" area="45" title="Level 1: The Eagle [E4]" environment="12">
+  <room id="30411" area="45" title="Level 1: Hall of Grasping Walls" environment="12">
    <coord x="1" y="7" z="-1" />
    <exit direction="north" target="30413" />
    <exit direction="west" target="30410" />
   </room>
-  <room id="30412" area="45" title="Level 1: The Eagle [C5]" environment="12">
+  <room id="30412" area="45" title="Level 1: Ossuary Hall" environment="12">
    <coord x="-1" y="8" z="-1" />
    <exit direction="north" target="30416" />
    <exit direction="south" target="30409" />
   </room>
-  <room id="30413" area="45" title="Level 1: The Eagle [E5]" environment="12">
+  <room id="30413" area="45" title="Level 1: Aquamentus's Lair" environment="12">
    <coord x="1" y="8" z="-1" />
    <exit direction="east" target="30414" />
    <exit direction="south" target="30411" />
   </room>
-  <room id="30414" area="45" title="Level 1: The Eagle [F5]" environment="12">
+  <room id="30414" area="45" title="Level 1: Triforce Chamber" environment="12">
    <coord x="2" y="8" z="-1" />
    <exit direction="west" target="30413" />
   </room>
-  <room id="30415" area="45" title="Level 1: The Eagle [B6]" environment="12">
+  <room id="30415" area="45" title="Level 1: Chamber of Blade Traps" environment="12">
    <coord x="-2" y="9" z="-1" />
    <exit direction="east" target="30416" />
    <exit direction="down" target="30417" />
   </room>
-  <room id="30416" area="45" title="Level 1: The Eagle [C6]" environment="12">
+  <room id="30416" area="45" title="Level 1: Northern Guardroom" environment="12">
    <coord x="-1" y="9" z="-1" />
    <exit direction="south" target="30412" />
    <exit direction="west" target="30415" />
@@ -39620,201 +39624,201 @@
    <coord x="-2" y="9" z="-2" />
    <exit direction="up" target="30415" />
   </room>
-  <room id="30418" area="45" title="Level 2: The Moon [B1]" environment="12">
+  <room id="30418" area="45" title="Level 2: Crescent Gate" environment="12">
    <coord x="5" y="4" z="-1" />
    <exit direction="north" target="30421" />
    <exit direction="east" target="30419" />
    <exit direction="up" target="30276" />
   </room>
-  <room id="30419" area="45" title="Level 2: The Moon [C1]" environment="12">
+  <room id="30419" area="45" title="Level 2: Shed Skin Chamber" environment="12">
    <coord x="9" y="4" z="-1" />
    <exit direction="north" target="30422" />
    <exit direction="west" target="30418" />
   </room>
-  <room id="30420" area="45" title="Level 2: The Moon [A2]" environment="12">
+  <room id="30420" area="45" title="Level 2: Coiled Track Room" environment="12">
    <coord x="3" y="5" z="-1" />
    <exit direction="east" target="30421" />
   </room>
-  <room id="30421" area="45" title="Level 2: The Moon [B2]" environment="12">
+  <room id="30421" area="45" title="Level 2: Blue Antechamber" environment="12">
    <coord x="4" y="5" z="-1" />
    <exit direction="east" target="30422" />
    <exit direction="south" target="30418" />
    <exit direction="west" target="30420" />
   </room>
-  <room id="30422" area="45" title="Level 2: The Moon [C2]" environment="12">
+  <room id="30422" area="45" title="Level 2: Moonstone Crossroads" environment="12">
    <coord x="5" y="6" z="-1" />
    <exit direction="north" target="30424" />
    <exit direction="east" target="30423" />
    <exit direction="south" target="30419" />
    <exit direction="west" target="30421" />
   </room>
-  <room id="30423" area="45" title="Level 2: The Moon [D2]" environment="12">
+  <room id="30423" area="45" title="Level 2: Dripping Chamber" environment="12">
    <coord x="6" y="8" z="-1" />
    <exit direction="north" target="30425" />
    <exit direction="west" target="30422" />
   </room>
-  <room id="30424" area="45" title="Level 2: The Moon [C3]" environment="12">
+  <room id="30424" area="45" title="Level 2: Gouged Hall" environment="12">
    <coord x="2" y="7" z="-1" />
    <exit direction="north" target="30426" />
    <exit direction="east" target="30425" />
    <exit direction="south" target="30422" />
   </room>
-  <room id="30425" area="45" title="Level 2: The Moon [D3]" environment="12">
+  <room id="30425" area="45" title="Level 2: Cracked Eastern Room" environment="12">
    <coord x="3" y="6" z="-1" />
    <exit direction="north" target="30427" />
    <exit direction="south" target="30423" />
    <exit direction="west" target="30424" />
   </room>
-  <room id="30426" area="45" title="Level 2: The Moon [C4]" environment="12">
+  <room id="30426" area="45" title="Level 2: Long Hall of the Moon" environment="12">
    <coord x="0" y="8" z="-1" />
    <exit direction="north" target="30428" />
    <exit direction="east" target="30427" />
    <exit direction="south" target="30424" />
   </room>
-  <room id="30427" area="45" title="Level 2: The Moon [D4]" environment="12">
+  <room id="30427" area="45" title="Level 2: Eastern Hall of Cuts" environment="12">
    <coord x="1" y="9" z="-1" />
    <exit direction="north" target="30429" />
    <exit direction="south" target="30425" />
    <exit direction="west" target="30426" />
   </room>
-  <room id="30428" area="45" title="Level 2: The Moon [C5]" environment="12">
+  <room id="30428" area="45" title="Level 2: Silent Chamber" environment="12">
    <coord x="0" y="9" z="-1" />
    <exit direction="north" target="30430" />
    <exit direction="east" target="30429" />
    <exit direction="south" target="30426" />
   </room>
-  <room id="30429" area="45" title="Level 2: The Moon [D5]" environment="12">
+  <room id="30429" area="45" title="Level 2: Trap-Grooved Room" environment="12">
    <coord x="1" y="10" z="-1" />
    <exit direction="north" target="30431" />
    <exit direction="south" target="30427" />
    <exit direction="west" target="30428" />
   </room>
-  <room id="30430" area="45" title="Level 2: The Moon [C6]" environment="12">
+  <room id="30430" area="45" title="Level 2: Serpent Hall" environment="12">
    <coord x="0" y="10" z="-1" />
    <exit direction="north" target="30432" />
    <exit direction="east" target="30431" />
    <exit direction="south" target="30428" />
   </room>
-  <room id="30431" area="45" title="Level 2: The Moon [D6]" environment="12">
+  <room id="30431" area="45" title="Level 2: Slime-Pooled Cell" environment="12">
    <coord x="2" y="10" z="-1" />
    <exit direction="north" target="30433" />
    <exit direction="south" target="30429" />
    <exit direction="west" target="30430" />
   </room>
-  <room id="30432" area="45" title="Level 2: The Moon [C7]" environment="12">
+  <room id="30432" area="45" title="Level 2: Smoke-Stained Antechamber" environment="12">
    <coord x="1" y="11" z="-1" />
    <exit direction="north" target="30435" />
    <exit direction="east" target="30433" />
    <exit direction="south" target="30430" />
   </room>
-  <room id="30433" area="45" title="Level 2: The Moon [D7]" environment="12">
+  <room id="30433" area="45" title="Level 2: Northeast Hollow" environment="12">
    <coord x="2" y="11" z="-1" />
    <exit direction="south" target="30431" />
    <exit direction="west" target="30432" />
   </room>
-  <room id="30434" area="45" title="Level 2: The Moon [B8]" environment="12">
+  <room id="30434" area="45" title="Level 2: Triforce Chamber" environment="12">
    <coord x="0" y="12" z="-1" />
    <exit direction="east" target="30435" />
   </room>
-  <room id="30435" area="45" title="Level 2: The Moon [C8]" environment="12">
+  <room id="30435" area="45" title="Level 2: Dodongo's Lair" environment="12">
    <coord x="1" y="12" z="-1" />
    <exit direction="south" target="30432" />
    <exit direction="west" target="30434" />
   </room>
-  <room id="30436" area="45" title="Level 3: The Manji [C1]" environment="12">
+  <room id="30436" area="45" title="Level 3: Ooze Chamber" environment="12">
    <coord x="-4" y="0" z="-1" />
    <exit direction="north" target="30439" />
    <exit direction="east" target="30437" />
   </room>
-  <room id="30437" area="45" title="Level 3: The Manji [D1]" environment="12">
+  <room id="30437" area="45" title="Level 3: Manji Gate" environment="12">
    <coord x="-3" y="0" z="-1" />
    <exit direction="west" target="30436" />
    <exit direction="up" target="30205" />
   </room>
-  <room id="30438" area="45" title="Level 3: The Manji [A2]" environment="12">
+  <room id="30438" area="45" title="Level 3: Knight's Dead End" environment="12">
    <coord x="-6" y="1" z="-1" />
    <exit direction="north" target="30440" />
    <exit direction="down" target="30454" />
   </room>
-  <room id="30439" area="45" title="Level 3: The Manji [C2]" environment="12">
+  <room id="30439" area="45" title="Level 3: Streaked Hall" environment="12">
    <coord x="-4" y="2" z="-1" />
    <exit direction="north" target="30442" />
    <exit direction="south" target="30436" />
   </room>
-  <room id="30440" area="45" title="Level 3: The Manji [A3]" environment="12">
+  <room id="30440" area="45" title="Level 3: Armored Hall" environment="12">
    <coord x="-6" y="2" z="-1" />
    <exit direction="north" target="30445" />
    <exit direction="east" target="30441" />
    <exit direction="south" target="30438" />
   </room>
-  <room id="30441" area="45" title="Level 3: The Manji [B3]" environment="12">
+  <room id="30441" area="45" title="Level 3: Hall of Blades" environment="12">
    <coord x="-5" y="3" z="-1" />
    <exit direction="north" target="30446" />
    <exit direction="east" target="30442" />
    <exit direction="west" target="30440" />
   </room>
-  <room id="30442" area="45" title="Level 3: The Manji [C3]" environment="12">
+  <room id="30442" area="45" title="Level 3: Manji Crossing" environment="12">
    <coord x="-4" y="3" z="-1" />
    <exit direction="north" target="30447" />
    <exit direction="east" target="30443" />
    <exit direction="south" target="30439" />
    <exit direction="west" target="30441" />
   </room>
-  <room id="30443" area="45" title="Level 3: The Manji [D3]" environment="12">
+  <room id="30443" area="45" title="Level 3: Eastern Slime Hall" environment="12">
    <coord x="-2" y="3" z="-1" />
    <exit direction="north" target="30448" />
    <exit direction="east" target="30444" />
    <exit direction="west" target="30442" />
   </room>
-  <room id="30444" area="45" title="Level 3: The Manji [E3]" environment="12">
+  <room id="30444" area="45" title="Level 3: Chamber of Cold Flickers" environment="12">
    <coord x="-1" y="-1" z="-1" />
    <exit direction="north" target="30449" />
    <exit direction="west" target="30443" />
   </room>
-  <room id="30445" area="45" title="Level 3: The Manji [A4]" environment="12">
+  <room id="30445" area="45" title="Level 3: Haunted West Room" environment="12">
    <coord x="-6" y="8" z="-1" />
    <exit direction="east" target="30446" />
    <exit direction="south" target="30440" />
   </room>
-  <room id="30446" area="45" title="Level 3: The Manji [B4]" environment="12">
+  <room id="30446" area="45" title="Level 3: Bat Gallery" environment="12">
    <coord x="-5" y="6" z="-1" />
    <exit direction="east" target="30447" />
    <exit direction="south" target="30441" />
    <exit direction="west" target="30445" />
   </room>
-  <room id="30447" area="45" title="Level 3: The Manji [C4]" environment="12">
+  <room id="30447" area="45" title="Level 3: Hall of Three Locks" environment="12">
    <coord x="-4" y="4" z="-1" />
    <exit direction="north" target="30450" />
    <exit direction="east" target="30448" />
    <exit direction="south" target="30442" />
    <exit direction="west" target="30446" />
   </room>
-  <room id="30448" area="45" title="Level 3: The Manji [D4]" environment="12">
+  <room id="30448" area="45" title="Level 3: Room of Sliding Blades" environment="12">
    <coord x="-3" y="2" z="-1" />
    <exit direction="east" target="30449" />
    <exit direction="south" target="30443" />
    <exit direction="west" target="30447" />
   </room>
-  <room id="30449" area="45" title="Level 3: The Manji [E4]" environment="12">
+  <room id="30449" area="45" title="Level 3: Manhandla's Lair" environment="12">
    <coord x="-2" y="2" z="-1" />
    <exit direction="north" target="30451" />
    <exit direction="south" target="30444" />
    <exit direction="west" target="30448" />
   </room>
-  <room id="30450" area="45" title="Level 3: The Manji [C5]" environment="12">
+  <room id="30450" area="45" title="Level 3: Blade Corridor" environment="12">
    <coord x="-4" y="7" z="-1" />
    <exit direction="north" target="30453" />
    <exit direction="south" target="30447" />
   </room>
-  <room id="30451" area="45" title="Level 3: The Manji [E5]" environment="12">
+  <room id="30451" area="45" title="Level 3: Triforce Chamber" environment="12">
    <coord x="-2" y="1" z="-1" />
    <exit direction="south" target="30449" />
   </room>
-  <room id="30452" area="45" title="Level 3: The Manji [B6]" environment="12">
+  <room id="30452" area="45" title="Level 3: Northwest Roost" environment="12">
    <coord x="-5" y="8" z="-1" />
    <exit direction="east" target="30453" />
   </room>
-  <room id="30453" area="45" title="Level 3: The Manji [C6]" environment="12">
+  <room id="30453" area="45" title="Level 3: Firelit Hall of Riddles" environment="12">
    <coord x="-3" y="8" z="-1" />
    <exit direction="south" target="30450" />
    <exit direction="west" target="30452" />
@@ -39823,107 +39827,107 @@
    <coord x="-6" y="1" z="-2" />
    <exit direction="up" target="30438" />
   </room>
-  <room id="30455" area="45" title="Level 4: The Snake [A1]" environment="12">
+  <room id="30455" area="45" title="Level 4: Dripping Roost" environment="12">
    <coord x="18" y="0" z="0" />
    <exit direction="east" target="30456" />
   </room>
-  <room id="30456" area="45" title="Level 4: The Snake [B1]" environment="12">
+  <room id="30456" area="45" title="Level 4: Mouth of the Snake" environment="12">
    <coord x="19" y="0" z="0" />
    <exit direction="north" target="30457" />
    <exit direction="west" target="30455" />
    <exit direction="up" target="30253" />
   </room>
-  <room id="30457" area="45" title="Level 4: The Snake [B2]" environment="12">
+  <room id="30457" area="45" title="Level 4: Moat Crossing" environment="12">
    <coord x="19" y="1" z="0" />
    <exit direction="north" target="30460" />
    <exit direction="east" target="30458" />
    <exit direction="south" target="30456" />
   </room>
-  <room id="30458" area="45" title="Level 4: The Snake [C2]" environment="12">
+  <room id="30458" area="45" title="Level 4: Serpent Coil Chamber" environment="12">
    <coord x="20" y="1" z="0" />
    <exit direction="west" target="30457" />
   </room>
-  <room id="30459" area="45" title="Level 4: The Snake [A3]" environment="12">
+  <room id="30459" area="45" title="Level 4: Lane of Blocks" environment="12">
    <coord x="18" y="2" z="0" />
    <exit direction="north" target="30461" />
    <exit direction="east" target="30460" />
   </room>
-  <room id="30460" area="45" title="Level 4: The Snake [B3]" environment="12">
+  <room id="30460" area="45" title="Level 4: Seeping Gallery" environment="12">
    <coord x="19" y="2" z="0" />
    <exit direction="south" target="30457" />
    <exit direction="west" target="30459" />
   </room>
-  <room id="30461" area="45" title="Level 4: The Snake [A4]" environment="12">
+  <room id="30461" area="45" title="Level 4: Still Corridor" environment="12">
    <coord x="18" y="3" z="0" />
    <exit direction="north" target="30462" />
    <exit direction="south" target="30459" />
   </room>
-  <room id="30462" area="45" title="Level 4: The Snake [A5]" environment="12">
+  <room id="30462" area="45" title="Level 4: Crackling Antechamber" environment="12">
    <coord x="18" y="4" z="0" />
    <exit direction="north" target="30465" />
    <exit direction="south" target="30461" />
   </room>
-  <room id="30463" area="45" title="Level 4: The Snake [B5]" environment="12">
+  <room id="30463" area="45" title="Level 4: Hall of Biting Serpents" environment="12">
    <coord x="19" y="4" z="0" />
    <exit direction="north" target="30466" />
    <exit direction="east" target="30464" />
   </room>
-  <room id="30464" area="45" title="Level 4: The Snake [C5]" environment="12">
+  <room id="30464" area="45" title="Level 4: Room of the Sunken Block" environment="12">
    <coord x="20" y="4" z="0" />
    <exit direction="west" target="30463" />
    <exit direction="down" target="30475" />
   </room>
-  <room id="30465" area="45" title="Level 4: The Snake [A6]" environment="12">
+  <room id="30465" area="45" title="Level 4: Divided Hall" environment="12">
    <coord x="18" y="5" z="0" />
    <exit direction="north" target="30467" />
    <exit direction="east" target="30466" />
    <exit direction="south" target="30462" />
   </room>
-  <room id="30466" area="45" title="Level 4: The Snake [B6]" environment="12">
+  <room id="30466" area="45" title="Level 4: Slick Chamber" environment="12">
    <coord x="19" y="5" z="0" />
    <exit direction="north" target="30468" />
    <exit direction="south" target="30463" />
    <exit direction="west" target="30465" />
   </room>
-  <room id="30467" area="45" title="Level 4: The Snake [A7]" environment="12">
+  <room id="30467" area="45" title="Level 4: Cold Crossing" environment="12">
    <coord x="18" y="6" z="0" />
    <exit direction="north" target="30471" />
    <exit direction="east" target="30468" />
    <exit direction="south" target="30465" />
   </room>
-  <room id="30468" area="45" title="Level 4: The Snake [B7]" environment="12">
+  <room id="30468" area="45" title="Level 4: The Sealed Heart" environment="12">
    <coord x="19" y="6" z="0" />
    <exit direction="north" target="30472" />
    <exit direction="east" target="30469" />
    <exit direction="south" target="30466" />
    <exit direction="west" target="30467" />
   </room>
-  <room id="30469" area="45" title="Level 4: The Snake [C7]" environment="12">
+  <room id="30469" area="45" title="Level 4: Knight's Approach" environment="12">
    <coord x="20" y="6" z="0" />
    <exit direction="north" target="30473" />
    <exit direction="east" target="30470" />
    <exit direction="west" target="30468" />
   </room>
-  <room id="30470" area="45" title="Level 4: The Snake [D7]" environment="12">
+  <room id="30470" area="45" title="Level 4: Gleeok's Lair" environment="12">
    <coord x="21" y="6" z="0" />
    <exit direction="north" target="30474" />
    <exit direction="west" target="30469" />
   </room>
-  <room id="30471" area="45" title="Level 4: The Snake [A8]" environment="12">
+  <room id="30471" area="45" title="Level 4: Hall of Twin Fires" environment="12">
    <coord x="18" y="7" z="0" />
    <exit direction="south" target="30467" />
   </room>
-  <room id="30472" area="45" title="Level 4: The Snake [B8]" environment="12">
+  <room id="30472" area="45" title="Level 4: Rafter Roost" environment="12">
    <coord x="19" y="7" z="0" />
    <exit direction="east" target="30473" />
    <exit direction="south" target="30468" />
   </room>
-  <room id="30473" area="45" title="Level 4: The Snake [C8]" environment="12">
+  <room id="30473" area="45" title="Level 4: Gauntlet of Blades" environment="12">
    <coord x="20" y="7" z="0" />
    <exit direction="south" target="30469" />
    <exit direction="west" target="30472" />
   </room>
-  <room id="30474" area="45" title="Level 4: The Snake [D8]" environment="12">
+  <room id="30474" area="45" title="Level 4: Triforce Chamber" environment="12">
    <coord x="21" y="7" z="0" />
    <exit direction="south" target="30470" />
   </room>
@@ -39931,122 +39935,122 @@
    <coord x="20" y="4" z="-1" />
    <exit direction="up" target="30464" />
   </room>
-  <room id="30476" area="45" title="Level 5: The Lizard [C1]" environment="12">
+  <room id="30476" area="45" title="Level 5: Lizard's Gate" environment="12">
    <coord x="4" y="7" z="-1" />
    <exit direction="north" target="30480" />
    <exit direction="east" target="30477" />
    <exit direction="up" target="30323" />
   </room>
-  <room id="30477" area="45" title="Level 5: The Lizard [D1]" environment="12">
+  <room id="30477" area="45" title="Level 5: Echoing Chamber" environment="12">
    <coord x="5" y="7" z="-1" />
    <exit direction="north" target="30481" />
    <exit direction="west" target="30476" />
   </room>
-  <room id="30478" area="45" title="Level 5: The Lizard [A2]" environment="12">
+  <room id="30478" area="45" title="Level 5: Western Stairwell" environment="12">
    <coord x="2" y="9" z="-1" />
    <exit direction="east" target="30479" />
    <exit direction="down" target="30498" />
   </room>
-  <room id="30479" area="45" title="Level 5: The Lizard [B2]" environment="12">
+  <room id="30479" area="45" title="Level 5: Tomb of Wrappings" environment="12">
    <coord x="3" y="8" z="-1" />
    <exit direction="north" target="30482" />
    <exit direction="east" target="30480" />
    <exit direction="west" target="30478" />
   </room>
-  <room id="30480" area="45" title="Level 5: The Lizard [C2]" environment="12">
+  <room id="30480" area="45" title="Level 5: Embalmers' Hall" environment="12">
    <coord x="4" y="8" z="-1" />
    <exit direction="north" target="30483" />
    <exit direction="east" target="30481" />
    <exit direction="south" target="30476" />
    <exit direction="west" target="30479" />
   </room>
-  <room id="30481" area="45" title="Level 5: The Lizard [D2]" environment="12">
+  <room id="30481" area="45" title="Level 5: Hall of the Warning" environment="12">
    <coord x="5" y="8" z="-1" />
    <exit direction="south" target="30477" />
    <exit direction="west" target="30480" />
   </room>
-  <room id="30482" area="45" title="Level 5: The Lizard [B3]" environment="12">
+  <room id="30482" area="45" title="Level 5: Slime-Glazed Vault" environment="12">
    <coord x="3" y="9" z="-1" />
    <exit direction="east" target="30483" />
    <exit direction="south" target="30479" />
   </room>
-  <room id="30483" area="45" title="Level 5: The Lizard [C3]" environment="12">
+  <room id="30483" area="45" title="Level 5: Hall of Heavy Tracks" environment="12">
    <coord x="4" y="9" z="-1" />
    <exit direction="north" target="30485" />
    <exit direction="east" target="30484" />
    <exit direction="south" target="30480" />
    <exit direction="west" target="30482" />
   </room>
-  <room id="30484" area="45" title="Level 5: The Lizard [D3]" environment="12">
+  <room id="30484" area="45" title="Level 5: Gray Junction" environment="12">
    <coord x="5" y="9" z="-1" />
    <exit direction="north" target="30486" />
    <exit direction="west" target="30483" />
   </room>
-  <room id="30485" area="45" title="Level 5: The Lizard [C4]" environment="12">
+  <room id="30485" area="45" title="Level 5: Hushed Archive" environment="12">
    <coord x="4" y="10" z="-1" />
    <exit direction="east" target="30486" />
    <exit direction="south" target="30483" />
   </room>
-  <room id="30486" area="45" title="Level 5: The Lizard [D4]" environment="12">
+  <room id="30486" area="45" title="Level 5: Shuffling Passage" environment="12">
    <coord x="5" y="10" z="-1" />
    <exit direction="north" target="30488" />
    <exit direction="south" target="30484" />
    <exit direction="west" target="30485" />
   </room>
-  <room id="30487" area="45" title="Level 5: The Lizard [A5]" environment="12">
+  <room id="30487" area="45" title="Level 5: Sealed Crypt" environment="12">
    <coord x="3" y="11" z="-1" />
    <exit direction="north" target="30489" />
   </room>
-  <room id="30488" area="45" title="Level 5: The Lizard [D5]" environment="12">
+  <room id="30488" area="45" title="Level 5: Lizard Shrine" environment="12">
    <coord x="5" y="11" z="-1" />
    <exit direction="north" target="30492" />
    <exit direction="south" target="30486" />
   </room>
-  <room id="30489" area="45" title="Level 5: The Lizard [A6]" environment="12">
+  <room id="30489" area="45" title="Level 5: Digdogger's Den" environment="12">
    <coord x="2" y="12" z="-1" />
    <exit direction="north" target="30493" />
    <exit direction="east" target="30490" />
    <exit direction="south" target="30487" />
   </room>
-  <room id="30490" area="45" title="Level 5: The Lizard [B6]" environment="12">
+  <room id="30490" area="45" title="Level 5: Whispering Gallery" environment="12">
    <coord x="3" y="12" z="-1" />
    <exit direction="north" target="30494" />
    <exit direction="east" target="30491" />
    <exit direction="west" target="30489" />
   </room>
-  <room id="30491" area="45" title="Level 5: The Lizard [C6]" environment="12">
+  <room id="30491" area="45" title="Level 5: Ossuary" environment="12">
    <coord x="4" y="12" z="-1" />
    <exit direction="east" target="30492" />
    <exit direction="west" target="30490" />
   </room>
-  <room id="30492" area="45" title="Level 5: The Lizard [D6]" environment="12">
+  <room id="30492" area="45" title="Level 5: Bat-Haunted Tomb" environment="12">
    <coord x="5" y="12" z="-1" />
    <exit direction="south" target="30488" />
    <exit direction="west" target="30491" />
   </room>
-  <room id="30493" area="45" title="Level 5: The Lizard [A7]" environment="12">
+  <room id="30493" area="45" title="Level 5: Triforce Chamber" environment="12">
    <coord x="2" y="13" z="-1" />
    <exit direction="south" target="30489" />
   </room>
-  <room id="30494" area="45" title="Level 5: The Lizard [B7]" environment="12">
+  <room id="30494" area="45" title="Level 5: Hidden Sage's Nook" environment="12">
    <coord x="3" y="13" z="-1" />
    <exit direction="south" target="30490" />
   </room>
-  <room id="30495" area="45" title="Level 5: The Lizard [C7]" environment="12">
+  <room id="30495" area="45" title="Level 5: Rafter Hall" environment="12">
    <coord x="2" y="8" z="-2" />
    <exit direction="north" target="30498" />
    <exit direction="east" target="30496" />
   </room>
-  <room id="30496" area="45" title="Level 5: The Lizard [D7]" environment="12">
+  <room id="30496" area="45" title="Level 5: Sage's Bargain Room" environment="12">
    <coord x="3" y="8" z="-2" />
    <exit direction="west" target="30495" />
   </room>
-  <room id="30497" area="45" title="Level 5: The Lizard [B8]" environment="12">
+  <room id="30497" area="45" title="Level 5: Room of the Scraped Block" environment="12">
    <coord x="1" y="9" z="-2" />
    <exit direction="east" target="30498" />
    <exit direction="down" target="30499" />
   </room>
-  <room id="30498" area="45" title="Level 5: The Lizard [C8]" environment="12">
+  <room id="30498" area="45" title="Level 5: Stair Landing" environment="12">
    <coord x="2" y="9" z="-2" />
    <exit direction="south" target="30495" />
    <exit direction="west" target="30497" />
@@ -40056,134 +40060,134 @@
    <coord x="1" y="9" z="-3" />
    <exit direction="up" target="30497" />
   </room>
-  <room id="30500" area="45" title="Level 6: The Dragon [A1]" environment="12">
+  <room id="30500" area="45" title="Level 6: Scorched Antechamber" environment="12">
    <coord x="-11" y="5" z="-1" />
    <exit direction="north" target="30503" />
    <exit direction="east" target="30501" />
   </room>
-  <room id="30501" area="45" title="Level 6: The Dragon [B1]" environment="12">
+  <room id="30501" area="45" title="Level 6: Dragon's Gate" environment="12">
    <coord x="-10" y="5" z="-1" />
    <exit direction="east" target="30502" />
    <exit direction="west" target="30500" />
    <exit direction="up" target="30282" />
   </room>
-  <room id="30502" area="45" title="Level 6: The Dragon [C1]" environment="12">
+  <room id="30502" area="45" title="Level 6: Rune-Scored Hall" environment="12">
    <coord x="-9" y="6" z="-1" />
    <exit direction="north" target="30504" />
    <exit direction="west" target="30501" />
   </room>
-  <room id="30503" area="45" title="Level 6: The Dragon [A2]" environment="12">
+  <room id="30503" area="45" title="Level 6: Slime Cistern" environment="12">
    <coord x="-11" y="6" z="-1" />
    <exit direction="north" target="30505" />
    <exit direction="south" target="30500" />
   </room>
-  <room id="30504" area="45" title="Level 6: The Dragon [C2]" environment="12">
+  <room id="30504" area="45" title="Level 6: Sour Cell" environment="12">
    <coord x="-9" y="7" z="-1" />
    <exit direction="south" target="30502" />
   </room>
-  <room id="30505" area="45" title="Level 6: The Dragon [A3]" environment="12">
+  <room id="30505" area="45" title="Level 6: Smoky Roost" environment="12">
    <coord x="-11" y="7" z="-1" />
    <exit direction="north" target="30506" />
    <exit direction="south" target="30503" />
   </room>
-  <room id="30506" area="45" title="Level 6: The Dragon [A4]" environment="12">
+  <room id="30506" area="45" title="Level 6: Blade Corridor" environment="12">
    <coord x="-11" y="8" z="-1" />
    <exit direction="north" target="30507" />
    <exit direction="south" target="30505" />
   </room>
-  <room id="30507" area="45" title="Level 6: The Dragon [A5]" environment="12">
+  <room id="30507" area="45" title="Level 6: Flickering Hall" environment="12">
    <coord x="-11" y="9" z="-1" />
    <exit direction="north" target="30511" />
    <exit direction="south" target="30506" />
   </room>
-  <room id="30508" area="45" title="Level 6: The Dragon [B5]" environment="12">
+  <room id="30508" area="45" title="Level 6: Taloned Corner" environment="12">
    <coord x="-10" y="9" z="-1" />
    <exit direction="north" target="30512" />
    <exit direction="east" target="30509" />
   </room>
-  <room id="30509" area="45" title="Level 6: The Dragon [C5]" environment="12">
+  <room id="30509" area="45" title="Level 6: Sorcerer's Stair" environment="12">
    <coord x="-9" y="9" z="-1" />
    <exit direction="west" target="30508" />
    <exit direction="down" target="30520" />
   </room>
-  <room id="30510" area="45" title="Level 6: The Dragon [E5]" environment="12">
+  <room id="30510" area="45" title="Level 6: Mage's Dead End" environment="12">
    <coord x="-10" y="7" z="-2" />
    <exit direction="north" target="30513" />
   </room>
-  <room id="30511" area="45" title="Level 6: The Dragon [A6]" environment="12">
+  <room id="30511" area="45" title="Level 6: Statue Gallery" environment="12">
    <coord x="-11" y="10" z="-1" />
    <exit direction="north" target="30515" />
    <exit direction="east" target="30512" />
    <exit direction="south" target="30507" />
   </room>
-  <room id="30512" area="45" title="Level 6: The Dragon [B6]" environment="12">
+  <room id="30512" area="45" title="Level 6: Ash Chamber" environment="12">
    <coord x="-10" y="10" z="-1" />
    <exit direction="north" target="30516" />
    <exit direction="south" target="30508" />
    <exit direction="west" target="30511" />
   </room>
-  <room id="30513" area="45" title="Level 6: The Dragon [E6]" environment="12">
+  <room id="30513" area="45" title="Level 6: Threshold of the Nest" environment="12">
    <coord x="-10" y="8" z="-2" />
    <exit direction="north" target="30519" />
    <exit direction="east" target="30514" />
    <exit direction="south" target="30510" />
   </room>
-  <room id="30514" area="45" title="Level 6: The Dragon [F6]" environment="12">
+  <room id="30514" area="45" title="Level 6: Eastern Bend" environment="12">
    <coord x="-9" y="8" z="-2" />
    <exit direction="north" target="30520" />
    <exit direction="west" target="30513" />
   </room>
-  <room id="30515" area="45" title="Level 6: The Dragon [A7]" environment="12">
+  <room id="30515" area="45" title="Level 6: Silent Vault" environment="12">
    <coord x="-11" y="11" z="-1" />
    <exit direction="east" target="30516" />
    <exit direction="south" target="30511" />
   </room>
-  <room id="30516" area="45" title="Level 6: The Dragon [B7]" environment="12">
+  <room id="30516" area="45" title="Level 6: Hall of Many Doors" environment="12">
    <coord x="-10" y="11" z="-1" />
    <exit direction="north" target="30521" />
    <exit direction="east" target="30517" />
    <exit direction="south" target="30512" />
    <exit direction="west" target="30515" />
   </room>
-  <room id="30517" area="45" title="Level 6: The Dragon [C7]" environment="12">
+  <room id="30517" area="45" title="Level 6: Ember Hall" environment="12">
    <coord x="-9" y="11" z="-1" />
    <exit direction="north" target="30522" />
    <exit direction="east" target="30518" />
    <exit direction="west" target="30516" />
   </room>
-  <room id="30518" area="45" title="Level 6: The Dragon [D7]" environment="12">
+  <room id="30518" area="45" title="Level 6: Northern Ascent" environment="12">
    <coord x="-8" y="11" z="-1" />
    <exit direction="north" target="30523" />
    <exit direction="west" target="30517" />
   </room>
-  <room id="30519" area="45" title="Level 6: The Dragon [E7]" environment="12">
+  <room id="30519" area="45" title="Level 6: Gohma's Nest" environment="12">
    <coord x="-10" y="9" z="-2" />
    <exit direction="north" target="30524" />
    <exit direction="south" target="30513" />
   </room>
-  <room id="30520" area="45" title="Level 6: The Dragon [F7]" environment="12">
+  <room id="30520" area="45" title="Level 6: Eastern Stairwell" environment="12">
    <coord x="-9" y="9" z="-2" />
    <exit direction="south" target="30514" />
    <exit direction="up" target="30509" />
   </room>
-  <room id="30521" area="45" title="Level 6: The Dragon [B8]" environment="12">
+  <room id="30521" area="45" title="Level 6: Room of the Loose Block" environment="12">
    <coord x="-10" y="12" z="-1" />
    <exit direction="east" target="30522" />
    <exit direction="south" target="30516" />
    <exit direction="down" target="30525" />
   </room>
-  <room id="30522" area="45" title="Level 6: The Dragon [C8]" environment="12">
+  <room id="30522" area="45" title="Level 6: Hall of Weak Walls" environment="12">
    <coord x="-9" y="12" z="-1" />
    <exit direction="east" target="30523" />
    <exit direction="south" target="30517" />
    <exit direction="west" target="30521" />
   </room>
-  <room id="30523" area="45" title="Level 6: The Dragon [D8]" environment="12">
+  <room id="30523" area="45" title="Level 6: Hall of Twin Fires" environment="12">
    <coord x="-8" y="12" z="-1" />
    <exit direction="south" target="30518" />
    <exit direction="west" target="30522" />
   </room>
-  <room id="30524" area="45" title="Level 6: The Dragon [E8]" environment="12">
+  <room id="30524" area="45" title="Level 6: Triforce Chamber" environment="12">
    <coord x="-10" y="10" z="-2" />
    <exit direction="south" target="30519" />
   </room>
@@ -40191,175 +40195,175 @@
    <coord x="-10" y="12" z="-2" />
    <exit direction="up" target="30521" />
   </room>
-  <room id="30526" area="45" title="Level 7: The Demon [A1]" environment="12">
+  <room id="30526" area="45" title="Level 7: Hall of Shed Skins" environment="12">
    <coord x="-8" y="3" z="-1" />
    <exit direction="north" target="30529" />
   </room>
-  <room id="30527" area="45" title="Level 7: The Demon [B1]" environment="12">
+  <room id="30527" area="45" title="Level 7: Demon's Gate" environment="12">
    <coord x="-7" y="3" z="-1" />
    <exit direction="north" target="30530" />
    <exit direction="east" target="30528" />
    <exit direction="up" target="30250" />
   </room>
-  <room id="30528" area="45" title="Level 7: The Demon [C1]" environment="12">
+  <room id="30528" area="45" title="Level 7: Dripping Antechamber" environment="12">
    <coord x="-6" y="3" z="-1" />
    <exit direction="north" target="30531" />
    <exit direction="west" target="30527" />
   </room>
-  <room id="30529" area="45" title="Level 7: The Demon [A2]" environment="12">
+  <room id="30529" area="45" title="Level 7: Blade Trap Corridor" environment="12">
    <coord x="-8" y="4" z="-1" />
    <exit direction="north" target="30535" />
    <exit direction="east" target="30530" />
    <exit direction="south" target="30526" />
   </room>
-  <room id="30530" area="45" title="Level 7: The Demon [B2]" environment="12">
+  <room id="30530" area="45" title="Level 7: Moat Crossroads" environment="12">
    <coord x="-7" y="4" z="-1" />
    <exit direction="north" target="30536" />
    <exit direction="east" target="30531" />
    <exit direction="south" target="30527" />
    <exit direction="west" target="30529" />
   </room>
-  <room id="30531" area="45" title="Level 7: The Demon [C2]" environment="12">
+  <room id="30531" area="45" title="Level 7: Bat Roost" environment="12">
    <coord x="-6" y="4" z="-1" />
    <exit direction="north" target="30537" />
    <exit direction="east" target="30532" />
    <exit direction="south" target="30528" />
    <exit direction="west" target="30530" />
   </room>
-  <room id="30532" area="45" title="Level 7: The Demon [D2]" environment="12">
+  <room id="30532" area="45" title="Level 7: Shuttered Gallery" environment="12">
    <coord x="-5" y="4" z="-1" />
    <exit direction="north" target="30538" />
    <exit direction="east" target="30533" />
    <exit direction="west" target="30531" />
   </room>
-  <room id="30533" area="45" title="Level 7: The Demon [E2]" environment="12">
+  <room id="30533" area="45" title="Level 7: Urchin's Hollow" environment="12">
    <coord x="-2" y="4" z="-1" />
    <exit direction="east" target="30534" />
    <exit direction="west" target="30532" />
   </room>
-  <room id="30534" area="45" title="Level 7: The Demon [F2]" environment="12">
+  <room id="30534" area="45" title="Level 7: Bone-Strewn Alcove" environment="12">
    <coord x="2" y="4" z="-1" />
    <exit direction="west" target="30533" />
   </room>
-  <room id="30535" area="45" title="Level 7: The Demon [A3]" environment="12">
+  <room id="30535" area="45" title="Level 7: Dodongo Den" environment="12">
    <coord x="-8" y="5" z="-1" />
    <exit direction="north" target="30539" />
    <exit direction="east" target="30536" />
    <exit direction="south" target="30529" />
   </room>
-  <room id="30536" area="45" title="Level 7: The Demon [B3]" environment="12">
+  <room id="30536" area="45" title="Level 7: Boomerang Hall" environment="12">
    <coord x="-7" y="5" z="-1" />
    <exit direction="north" target="30540" />
    <exit direction="east" target="30537" />
    <exit direction="south" target="30530" />
    <exit direction="west" target="30535" />
   </room>
-  <room id="30537" area="45" title="Level 7: The Demon [C3]" environment="12">
+  <room id="30537" area="45" title="Level 7: Hall of Bones" environment="12">
    <coord x="-6" y="5" z="-1" />
    <exit direction="south" target="30531" />
    <exit direction="west" target="30536" />
   </room>
-  <room id="30538" area="45" title="Level 7: The Demon [D3]" environment="12">
+  <room id="30538" area="45" title="Level 7: The Old Man's Fires" environment="12">
    <coord x="-5" y="5" z="-1" />
    <exit direction="south" target="30532" />
   </room>
-  <room id="30539" area="45" title="Level 7: The Demon [A4]" environment="12">
+  <room id="30539" area="45" title="Level 7: Hall of the Second Sage" environment="12">
    <coord x="-8" y="6" z="-1" />
    <exit direction="south" target="30535" />
   </room>
-  <room id="30540" area="45" title="Level 7: The Demon [B4]" environment="12">
+  <room id="30540" area="45" title="Level 7: Hall of Lingering Chill" environment="12">
    <coord x="-7" y="6" z="-1" />
    <exit direction="north" target="30542" />
    <exit direction="south" target="30536" />
   </room>
-  <room id="30541" area="45" title="Level 7: The Demon [A5]" environment="12">
+  <room id="30541" area="45" title="Level 7: Western Moat" environment="12">
    <coord x="-8" y="7" z="-1" />
    <exit direction="north" target="30544" />
    <exit direction="east" target="30542" />
   </room>
-  <room id="30542" area="45" title="Level 7: The Demon [B5]" environment="12">
+  <room id="30542" area="45" title="Level 7: Island Chamber" environment="12">
    <coord x="-7" y="7" z="-1" />
    <exit direction="east" target="30543" />
    <exit direction="south" target="30540" />
    <exit direction="west" target="30541" />
   </room>
-  <room id="30543" area="45" title="Level 7: The Demon [C5]" environment="12">
+  <room id="30543" area="45" title="Level 7: Hidden Cistern" environment="12">
    <coord x="-6" y="7" z="-1" />
    <exit direction="west" target="30542" />
   </room>
-  <room id="30544" area="45" title="Level 7: The Demon [A6]" environment="12">
+  <room id="30544" area="45" title="Level 7: Hall of Grumbling" environment="12">
    <coord x="-8" y="8" z="-1" />
    <exit direction="north" target="30548" />
    <exit direction="south" target="30541" />
   </room>
-  <room id="30545" area="45" title="Level 7: The Demon [B6]" environment="12">
+  <room id="30545" area="45" title="Level 7: Stairwell of the Demon" environment="12">
    <coord x="-2" y="10" z="0" />
    <exit direction="east" target="30546" />
    <exit direction="down" target="30558" />
   </room>
-  <room id="30546" area="45" title="Level 7: The Demon [C6]" environment="12">
+  <room id="30546" area="45" title="Level 7: Aquamentus's Lair" environment="12">
    <coord x="-1" y="10" z="0" />
    <exit direction="east" target="30547" />
    <exit direction="west" target="30545" />
   </room>
-  <room id="30547" area="45" title="Level 7: The Demon [D6]" environment="12">
+  <room id="30547" area="45" title="Level 7: Triforce Chamber" environment="12">
    <coord x="1" y="10" z="0" />
    <exit direction="west" target="30546" />
   </room>
-  <room id="30548" area="45" title="Level 7: The Demon [A7]" environment="12">
+  <room id="30548" area="45" title="Level 7: Teeming Moat Hall" environment="12">
    <coord x="-8" y="9" z="-1" />
    <exit direction="north" target="30553" />
    <exit direction="east" target="30549" />
    <exit direction="south" target="30544" />
   </room>
-  <room id="30549" area="45" title="Level 7: The Demon [B7]" environment="12">
+  <room id="30549" area="45" title="Level 7: Twin Pillar Hall" environment="12">
    <coord x="-7" y="9" z="-1" />
    <exit direction="north" target="30554" />
    <exit direction="east" target="30550" />
    <exit direction="west" target="30548" />
   </room>
-  <room id="30550" area="45" title="Level 7: The Demon [C7]" environment="12">
+  <room id="30550" area="45" title="Level 7: Hall of the Loose Block" environment="12">
    <coord x="-5" y="9" z="-1" />
    <exit direction="east" target="30551" />
    <exit direction="west" target="30549" />
    <exit direction="down" target="30559" />
   </room>
-  <room id="30551" area="45" title="Level 7: The Demon [D7]" environment="12">
+  <room id="30551" area="45" title="Level 7: Hall of Keyholes" environment="12">
    <coord x="-4" y="9" z="-1" />
    <exit direction="north" target="30556" />
    <exit direction="east" target="30552" />
    <exit direction="west" target="30550" />
   </room>
-  <room id="30552" area="45" title="Level 7: The Demon [E7]" environment="12">
+  <room id="30552" area="45" title="Level 7: Spined Sand Pit" environment="12">
    <coord x="-3" y="9" z="-1" />
    <exit direction="north" target="30557" />
    <exit direction="west" target="30551" />
   </room>
-  <room id="30553" area="45" title="Level 7: The Demon [A8]" environment="12">
+  <room id="30553" area="45" title="Level 7: Forgotten Corner" environment="12">
    <coord x="-8" y="10" z="-1" />
    <exit direction="east" target="30554" />
    <exit direction="south" target="30548" />
   </room>
-  <room id="30554" area="45" title="Level 7: The Demon [B8]" environment="12">
+  <room id="30554" area="45" title="Level 7: Northern Moat Room" environment="12">
    <coord x="-7" y="10" z="-1" />
    <exit direction="east" target="30555" />
    <exit direction="south" target="30549" />
    <exit direction="west" target="30553" />
   </room>
-  <room id="30555" area="45" title="Level 7: The Demon [C8]" environment="12">
+  <room id="30555" area="45" title="Level 7: Goriya Barracks" environment="12">
    <coord x="-6" y="10" z="-1" />
    <exit direction="west" target="30554" />
   </room>
-  <room id="30556" area="45" title="Level 7: The Demon [D8]" environment="12">
+  <room id="30556" area="45" title="Level 7: Silent Vault" environment="12">
    <coord x="-4" y="10" z="-1" />
    <exit direction="south" target="30551" />
   </room>
-  <room id="30557" area="45" title="Level 7: The Demon [E8]" environment="12">
+  <room id="30557" area="45" title="Level 7: Smoke-Stained Den" environment="12">
    <coord x="-3" y="10" z="-1" />
    <exit direction="east" target="30558" />
    <exit direction="south" target="30552" />
   </room>
-  <room id="30558" area="45" title="Level 7: The Demon [F8]" environment="12">
+  <room id="30558" area="45" title="Level 7: Grasping Wall Chamber" environment="12">
    <coord x="-2" y="10" z="-1" />
    <exit direction="west" target="30557" />
    <exit direction="up" target="30545" />
@@ -40368,135 +40372,135 @@
    <coord x="-5" y="9" z="-2" />
    <exit direction="up" target="30550" />
   </room>
-  <room id="30560" area="45" title="Level 8: The Lion [B1]" environment="12">
+  <room id="30560" area="45" title="Level 8: Tomb of Wrappings" environment="12">
    <coord x="2" y="1" z="-1" />
    <exit direction="east" target="30561" />
    <exit direction="down" target="30585" />
   </room>
-  <room id="30561" area="45" title="Level 8: The Lion [C1]" environment="12">
+  <room id="30561" area="45" title="Level 8: Western Antechamber" environment="12">
    <coord x="5" y="1" z="-1" />
    <exit direction="east" target="30562" />
    <exit direction="west" target="30560" />
   </room>
-  <room id="30562" area="45" title="Level 8: The Lion [D1]" environment="12">
+  <room id="30562" area="45" title="Level 8: Lion's Gate" environment="12">
    <coord x="6" y="1" z="-1" />
    <exit direction="north" target="30564" />
    <exit direction="east" target="30563" />
    <exit direction="west" target="30561" />
    <exit direction="up" target="30229" />
   </room>
-  <room id="30563" area="45" title="Level 8: The Lion [E1]" environment="12">
+  <room id="30563" area="45" title="Level 8: Eastern Roost" environment="12">
    <coord x="7" y="1" z="-1" />
    <exit direction="west" target="30562" />
   </room>
-  <room id="30564" area="45" title="Level 8: The Lion [D2]" environment="12">
+  <room id="30564" area="45" title="Level 8: Narrow Passage Hall" environment="12">
    <coord x="6" y="2" z="-1" />
    <exit direction="north" target="30567" />
    <exit direction="south" target="30562" />
   </room>
-  <room id="30565" area="45" title="Level 8: The Lion [B3]" environment="12">
+  <room id="30565" area="45" title="Level 8: Quiet Western Cell" environment="12">
    <coord x="4" y="4" z="-1" />
    <exit direction="east" target="30566" />
   </room>
-  <room id="30566" area="45" title="Level 8: The Lion [C3]" environment="12">
+  <room id="30566" area="45" title="Level 8: Hall of Echoes" environment="12">
    <coord x="5" y="3" z="-1" />
    <exit direction="north" target="30571" />
    <exit direction="east" target="30567" />
    <exit direction="west" target="30565" />
   </room>
-  <room id="30567" area="45" title="Level 8: The Lion [D3]" environment="12">
+  <room id="30567" area="45" title="Level 8: Slime-Slick Crossing" environment="12">
    <coord x="7" y="3" z="-1" />
    <exit direction="north" target="30572" />
    <exit direction="east" target="30568" />
    <exit direction="south" target="30564" />
    <exit direction="west" target="30566" />
   </room>
-  <room id="30568" area="45" title="Level 8: The Lion [E3]" environment="12">
+  <room id="30568" area="45" title="Level 8: Warren of Long Ears" environment="12">
    <coord x="9" y="3" z="-1" />
    <exit direction="west" target="30567" />
   </room>
-  <room id="30569" area="45" title="Level 8: The Lion [A4]" environment="12">
+  <room id="30569" area="45" title="Level 8: Gel-Streaked Chamber" environment="12">
    <coord x="10" y="5" z="0" />
    <exit direction="north" target="30573" />
    <exit direction="east" target="30570" />
   </room>
-  <room id="30570" area="45" title="Level 8: The Lion [B4]" environment="12">
+  <room id="30570" area="45" title="Level 8: Stair Beneath the Lion" environment="12">
    <coord x="9" y="5" z="0" />
    <exit direction="north" target="30574" />
    <exit direction="west" target="30569" />
    <exit direction="down" target="30577" />
   </room>
-  <room id="30571" area="45" title="Level 8: The Lion [C4]" environment="12">
+  <room id="30571" area="45" title="Level 8: Hall of Crouching Lions" environment="12">
    <coord x="8" y="4" z="-1" />
    <exit direction="north" target="30575" />
    <exit direction="east" target="30572" />
    <exit direction="south" target="30566" />
   </room>
-  <room id="30572" area="45" title="Level 8: The Lion [D4]" environment="12">
+  <room id="30572" area="45" title="Level 8: Locked Crossway" environment="12">
    <coord x="7" y="4" z="-1" />
    <exit direction="north" target="30576" />
    <exit direction="south" target="30567" />
    <exit direction="west" target="30571" />
   </room>
-  <room id="30573" area="45" title="Level 8: The Lion [A5]" environment="12">
+  <room id="30573" area="45" title="Level 8: Sage of the Northern Fire" environment="12">
    <coord x="10" y="6" z="0" />
    <exit direction="east" target="30574" />
    <exit direction="south" target="30569" />
   </room>
-  <room id="30574" area="45" title="Level 8: The Lion [B5]" environment="12">
+  <room id="30574" area="45" title="Level 8: Gleeok's Lair" environment="12">
    <coord x="9" y="6" z="0" />
    <exit direction="north" target="30578" />
    <exit direction="south" target="30570" />
    <exit direction="west" target="30573" />
   </room>
-  <room id="30575" area="45" title="Level 8: The Lion [C5]" environment="12">
+  <room id="30575" area="45" title="Level 8: Sage of the Tenth Foe" environment="12">
    <coord x="9" y="5" z="-1" />
    <exit direction="south" target="30571" />
   </room>
-  <room id="30576" area="45" title="Level 8: The Lion [D5]" environment="12">
+  <room id="30576" area="45" title="Level 8: Chamber of Three Doors" environment="12">
    <coord x="7" y="5" z="-1" />
    <exit direction="north" target="30580" />
    <exit direction="east" target="30577" />
    <exit direction="south" target="30572" />
   </room>
-  <room id="30577" area="45" title="Level 8: The Lion [E5]" environment="12">
+  <room id="30577" area="45" title="Level 8: Knight's Guardroom" environment="12">
    <coord x="8" y="5" z="-1" />
    <exit direction="west" target="30576" />
    <exit direction="up" target="30570" />
   </room>
-  <room id="30578" area="45" title="Level 8: The Lion [B6]" environment="12">
+  <room id="30578" area="45" title="Level 8: Triforce Chamber" environment="12">
    <coord x="9" y="7" z="0" />
    <exit direction="south" target="30574" />
   </room>
-  <room id="30579" area="45" title="Level 8: The Lion [C6]" environment="12">
+  <room id="30579" area="45" title="Level 8: Lion's Den" environment="12">
    <coord x="4" y="6" z="-1" />
    <exit direction="north" target="30581" />
    <exit direction="east" target="30580" />
   </room>
-  <room id="30580" area="45" title="Level 8: The Lion [D6]" environment="12">
+  <room id="30580" area="45" title="Level 8: Cartographer's Hall" environment="12">
    <coord x="7" y="6" z="-1" />
    <exit direction="north" target="30582" />
    <exit direction="south" target="30576" />
    <exit direction="west" target="30579" />
   </room>
-  <room id="30581" area="45" title="Level 8: The Lion [C7]" environment="12">
+  <room id="30581" area="45" title="Level 8: Burrow Chamber" environment="12">
    <coord x="7" y="9" z="-1" />
    <exit direction="east" target="30582" />
    <exit direction="south" target="30579" />
   </room>
-  <room id="30582" area="45" title="Level 8: The Lion [D7]" environment="12">
+  <room id="30582" area="45" title="Level 8: Northern Crossroads" environment="12">
    <coord x="8" y="7" z="-1" />
    <exit direction="north" target="30584" />
    <exit direction="east" target="30583" />
    <exit direction="south" target="30580" />
    <exit direction="west" target="30581" />
   </room>
-  <room id="30583" area="45" title="Level 8: The Lion [E7]" environment="12">
+  <room id="30583" area="45" title="Level 8: Hall of the Shifted Block" environment="12">
    <coord x="9" y="7" z="-1" />
    <exit direction="west" target="30582" />
    <exit direction="down" target="30586" />
   </room>
-  <room id="30584" area="45" title="Level 8: The Lion [D8]" environment="12">
+  <room id="30584" area="45" title="Level 8: Ooze-Drenched Chamber" environment="12">
    <coord x="8" y="8" z="-1" />
    <exit direction="south" target="30582" />
   </room>
@@ -40508,39 +40512,39 @@
    <coord x="9" y="7" z="-2" />
    <exit direction="up" target="30583" />
   </room>
-  <room id="30587" area="45" title="Level 9: Death Mountain [B1]" environment="12">
+  <room id="30587" area="45" title="Level 9: Stairwell Antechamber" environment="12">
    <coord x="-5" y="11" z="-2" />
    <exit direction="north" target="30591" />
    <exit direction="up" target="30589" />
   </room>
-  <room id="30588" area="45" title="Level 9: Death Mountain [D1]" environment="12">
+  <room id="30588" area="45" title="Level 9: Chamber of Locked Doors" environment="12">
    <coord x="-5" y="11" z="-1" />
    <exit direction="north" target="30593" />
    <exit direction="east" target="30589" />
   </room>
-  <room id="30589" area="45" title="Level 9: Death Mountain [E1]" environment="12">
+  <room id="30589" area="45" title="Level 9: Furrowed Sand Pit" environment="12">
    <coord x="-4" y="11" z="-1" />
    <exit direction="west" target="30588" />
    <exit direction="down" target="30587" />
   </room>
-  <room id="30590" area="45" title="Level 9: Death Mountain [G1]" environment="12">
+  <room id="30590" area="45" title="Level 9: Gate Beneath Spectacle Rock" environment="12">
    <coord x="-2" y="11" z="-1" />
    <exit direction="north" target="30596" />
    <exit direction="up" target="30317" />
   </room>
-  <room id="30591" area="45" title="Level 9: Death Mountain [B2]" environment="12">
+  <room id="30591" area="45" title="Level 9: Eye of the Western Hall" environment="12">
    <coord x="-7" y="12" z="-1" />
    <exit direction="north" target="30598" />
    <exit direction="east" target="30592" />
    <exit direction="south" target="30587" />
    <exit direction="down" target="30621" />
   </room>
-  <room id="30592" area="45" title="Level 9: Death Mountain [C2]" environment="12">
+  <room id="30592" area="45" title="Level 9: Roost of the Keese" environment="12">
    <coord x="-6" y="12" z="-1" />
    <exit direction="east" target="30593" />
    <exit direction="west" target="30591" />
   </room>
-  <room id="30593" area="45" title="Level 9: Death Mountain [D2]" environment="12">
+  <room id="30593" area="45" title="Level 9: Slime-Slick Junction" environment="12">
    <coord x="-5" y="12" z="-1" />
    <exit direction="north" target="30600" />
    <exit direction="east" target="30594" />
@@ -40548,54 +40552,54 @@
    <exit direction="west" target="30592" />
    <exit direction="down" target="30641" />
   </room>
-  <room id="30594" area="45" title="Level 9: Death Mountain [E2]" environment="12">
+  <room id="30594" area="45" title="Level 9: Crossroads of Ash" environment="12">
    <coord x="-4" y="12" z="-1" />
    <exit direction="north" target="30601" />
    <exit direction="east" target="30595" />
    <exit direction="west" target="30593" />
   </room>
-  <room id="30595" area="45" title="Level 9: Death Mountain [F2]" environment="12">
+  <room id="30595" area="45" title="Level 9: Scorched Vestibule" environment="12">
    <coord x="-3" y="12" z="-1" />
    <exit direction="north" target="30602" />
    <exit direction="east" target="30596" />
    <exit direction="west" target="30594" />
   </room>
-  <room id="30596" area="45" title="Level 9: Death Mountain [G2]" environment="12">
+  <room id="30596" area="45" title="Level 9: Hall of the First Warning" environment="12">
    <coord x="-2" y="12" z="-1" />
    <exit direction="north" target="30603" />
    <exit direction="south" target="30590" />
    <exit direction="west" target="30595" />
   </room>
-  <room id="30597" area="45" title="Level 9: Death Mountain [A3]" environment="12">
+  <room id="30597" area="45" title="Level 9: Ooze-Pooled Corner" environment="12">
    <coord x="-8" y="13" z="-1" />
    <exit direction="north" target="30605" />
    <exit direction="east" target="30598" />
   </room>
-  <room id="30598" area="45" title="Level 9: Death Mountain [B3]" environment="12">
+  <room id="30598" area="45" title="Level 9: Hall of Half-Eaten Shields" environment="12">
    <coord x="-7" y="13" z="-1" />
    <exit direction="north" target="30606" />
    <exit direction="south" target="30591" />
    <exit direction="west" target="30597" />
   </room>
-  <room id="30599" area="45" title="Level 9: Death Mountain [C3]" environment="12">
+  <room id="30599" area="45" title="Level 9: Whirling Dust Chamber" environment="12">
    <coord x="-6" y="13" z="-1" />
    <exit direction="north" target="30607" />
    <exit direction="east" target="30600" />
    <exit direction="down" target="30639" />
   </room>
-  <room id="30600" area="45" title="Level 9: Death Mountain [D3]" environment="12">
+  <room id="30600" area="45" title="Level 9: Hall of Shadows and Flame" environment="12">
    <coord x="-5" y="13" z="-1" />
    <exit direction="north" target="30608" />
    <exit direction="south" target="30593" />
    <exit direction="west" target="30599" />
   </room>
-  <room id="30601" area="45" title="Level 9: Death Mountain [E3]" environment="12">
+  <room id="30601" area="45" title="Level 9: Hall of Twin Pillars" environment="12">
    <coord x="-4" y="13" z="-1" />
    <exit direction="north" target="30609" />
    <exit direction="east" target="30602" />
    <exit direction="south" target="30594" />
   </room>
-  <room id="30602" area="45" title="Level 9: Death Mountain [F3]" environment="12">
+  <room id="30602" area="45" title="Level 9: The Sealed Sand Hollow" environment="12">
    <coord x="-3" y="13" z="-1" />
    <exit direction="north" target="30610" />
    <exit direction="east" target="30603" />
@@ -40603,221 +40607,221 @@
    <exit direction="west" target="30601" />
    <exit direction="down" target="30633" />
   </room>
-  <room id="30603" area="45" title="Level 9: Death Mountain [G3]" environment="12">
+  <room id="30603" area="45" title="Level 9: Gallery of Ooze" environment="12">
    <coord x="-2" y="13" z="-1" />
    <exit direction="north" target="30611" />
    <exit direction="south" target="30596" />
    <exit direction="west" target="30602" />
   </room>
-  <room id="30604" area="45" title="Level 9: Death Mountain [H3]" environment="12">
+  <room id="30604" area="45" title="Level 9: Eastern Spellward" environment="12">
    <coord x="0" y="9" z="-2" />
    <exit direction="north" target="30612" />
   </room>
-  <room id="30605" area="45" title="Level 9: Death Mountain [A4]" environment="12">
+  <room id="30605" area="45" title="Level 9: Corridor of Burnt Runes" environment="12">
    <coord x="-8" y="14" z="-1" />
    <exit direction="north" target="30613" />
    <exit direction="south" target="30597" />
   </room>
-  <room id="30606" area="45" title="Level 9: Death Mountain [B4]" environment="12">
+  <room id="30606" area="45" title="Level 9: Hall of Grinding Blades" environment="12">
    <coord x="-7" y="14" z="-1" />
    <exit direction="north" target="30614" />
    <exit direction="south" target="30598" />
   </room>
-  <room id="30607" area="45" title="Level 9: Death Mountain [C4]" environment="12">
+  <room id="30607" area="45" title="Level 9: Ganon's Dark Chamber" environment="12">
    <coord x="-6" y="14" z="-1" />
    <exit direction="north" target="30615" />
    <exit direction="south" target="30599" />
   </room>
-  <room id="30608" area="45" title="Level 9: Death Mountain [D4]" environment="12">
+  <room id="30608" area="45" title="Level 9: Hidden Sage's Alcove" environment="12">
    <coord x="-5" y="14" z="-1" />
    <exit direction="south" target="30600" />
   </room>
-  <room id="30609" area="45" title="Level 9: Death Mountain [E4]" environment="12">
+  <room id="30609" area="45" title="Level 9: Chamber of Scorch Rings" environment="12">
    <coord x="-4" y="14" z="-1" />
    <exit direction="east" target="30610" />
    <exit direction="south" target="30601" />
   </room>
-  <room id="30610" area="45" title="Level 9: Death Mountain [F4]" environment="12">
+  <room id="30610" area="45" title="Level 9: Crowded Sorcery Hall" environment="12">
    <coord x="-3" y="14" z="-1" />
    <exit direction="east" target="30611" />
    <exit direction="south" target="30602" />
    <exit direction="west" target="30609" />
   </room>
-  <room id="30611" area="45" title="Level 9: Death Mountain [G4]" environment="12">
+  <room id="30611" area="45" title="Level 9: Hall of Blue Flames" environment="12">
    <coord x="-2" y="14" z="-1" />
    <exit direction="south" target="30603" />
    <exit direction="west" target="30610" />
   </room>
-  <room id="30612" area="45" title="Level 9: Death Mountain [H4]" environment="12">
+  <room id="30612" area="45" title="Level 9: Eastern Wardroom" environment="12">
    <coord x="0" y="10" z="-2" />
    <exit direction="north" target="30620" />
    <exit direction="south" target="30604" />
   </room>
-  <room id="30613" area="45" title="Level 9: Death Mountain [A5]" environment="12">
+  <room id="30613" area="45" title="Level 9: Blade-Trap Stairwell" environment="12">
    <coord x="-5" y="15" z="-1" />
    <exit direction="east" target="30614" />
    <exit direction="south" target="30605" />
    <exit direction="down" target="30640" />
   </room>
-  <room id="30614" area="45" title="Level 9: Death Mountain [B5]" environment="12">
+  <room id="30614" area="45" title="Level 9: Hall of Many Dangers" environment="12">
    <coord x="-8" y="11" z="-2" />
    <exit direction="north" target="30622" />
    <exit direction="south" target="30606" />
    <exit direction="west" target="30613" />
   </room>
-  <room id="30615" area="45" title="Level 9: Death Mountain [C5]" environment="12">
+  <room id="30615" area="45" title="Level 9: Princess Zelda's Chamber" environment="12">
    <coord x="-6" y="15" z="-1" />
    <exit direction="south" target="30607" />
   </room>
-  <room id="30616" area="45" title="Level 9: Death Mountain [D5]" environment="12">
+  <room id="30616" area="45" title="Level 9: Pool of Gel" environment="12">
    <coord x="-4" y="11" z="-2" />
    <exit direction="north" target="30624" />
    <exit direction="east" target="30617" />
   </room>
-  <room id="30617" area="45" title="Level 9: Death Mountain [E5]" environment="12">
+  <room id="30617" area="45" title="Level 9: Bat-Haunted Gallery" environment="12">
    <coord x="-3" y="11" z="-2" />
    <exit direction="north" target="30625" />
    <exit direction="west" target="30616" />
   </room>
-  <room id="30618" area="45" title="Level 9: Death Mountain [F5]" environment="12">
+  <room id="30618" area="45" title="Level 9: Chamber of the Needle" environment="12">
    <coord x="-2" y="11" z="-2" />
    <exit direction="north" target="30626" />
   </room>
-  <room id="30619" area="45" title="Level 9: Death Mountain [G5]" environment="12">
+  <room id="30619" area="45" title="Level 9: Murky Junction" environment="12">
    <coord x="-1" y="11" z="-2" />
    <exit direction="north" target="30627" />
    <exit direction="east" target="30620" />
   </room>
-  <room id="30620" area="45" title="Level 9: Death Mountain [H5]" environment="12">
+  <room id="30620" area="45" title="Level 9: Belfry of the Vires" environment="12">
    <coord x="0" y="11" z="-2" />
    <exit direction="north" target="30628" />
    <exit direction="south" target="30612" />
    <exit direction="west" target="30619" />
   </room>
-  <room id="30621" area="45" title="Level 9: Death Mountain [A6]" environment="12">
+  <room id="30621" area="45" title="Level 9: Western Stair Room" environment="12">
    <coord x="-7" y="12" z="-2" />
    <exit direction="north" target="30629" />
    <exit direction="up" target="30591" />
   </room>
-  <room id="30622" area="45" title="Level 9: Death Mountain [B6]" environment="12">
+  <room id="30622" area="45" title="Level 9: Circling Wind Chamber" environment="12">
    <coord x="-8" y="12" z="-2" />
    <exit direction="north" target="30630" />
    <exit direction="east" target="30623" />
    <exit direction="south" target="30614" />
   </room>
-  <room id="30623" area="45" title="Level 9: Death Mountain [C6]" environment="12">
+  <room id="30623" area="45" title="Level 9: Hall of Slime and Shadow" environment="12">
    <coord x="-6" y="12" z="-2" />
    <exit direction="north" target="30631" />
    <exit direction="east" target="30624" />
    <exit direction="west" target="30622" />
   </room>
-  <room id="30624" area="45" title="Level 9: Death Mountain [D6]" environment="12">
+  <room id="30624" area="45" title="Level 9: Gel-Choked Crossway" environment="12">
    <coord x="-4" y="12" z="-2" />
    <exit direction="north" target="30632" />
    <exit direction="east" target="30625" />
    <exit direction="south" target="30616" />
    <exit direction="west" target="30623" />
   </room>
-  <room id="30625" area="45" title="Level 9: Death Mountain [E6]" environment="12">
+  <room id="30625" area="45" title="Level 9: Winged Watchtower" environment="12">
    <coord x="-3" y="12" z="-2" />
    <exit direction="north" target="30633" />
    <exit direction="south" target="30617" />
    <exit direction="west" target="30624" />
   </room>
-  <room id="30626" area="45" title="Level 9: Death Mountain [F6]" environment="12">
+  <room id="30626" area="45" title="Level 9: Ooze-Streaked Passage" environment="12">
    <coord x="-2" y="12" z="-2" />
    <exit direction="north" target="30634" />
    <exit direction="east" target="30627" />
    <exit direction="south" target="30618" />
   </room>
-  <room id="30627" area="45" title="Level 9: Death Mountain [G6]" environment="12">
+  <room id="30627" area="45" title="Level 9: Hall of Quivering Gel" environment="12">
    <coord x="-1" y="12" z="-2" />
    <exit direction="north" target="30635" />
    <exit direction="east" target="30628" />
    <exit direction="south" target="30619" />
    <exit direction="west" target="30626" />
   </room>
-  <room id="30628" area="45" title="Level 9: Death Mountain [H6]" environment="12">
+  <room id="30628" area="45" title="Level 9: The Cartographer's Vault" environment="12">
    <coord x="0" y="12" z="-2" />
    <exit direction="north" target="30636" />
    <exit direction="south" target="30620" />
    <exit direction="west" target="30627" />
   </room>
-  <room id="30629" area="45" title="Level 9: Death Mountain [A7]" environment="12">
+  <room id="30629" area="45" title="Level 9: Sealed Western Sanctum" environment="12">
    <coord x="-8" y="13" z="-2" />
    <exit direction="south" target="30621" />
    <exit direction="down" target="30644" />
   </room>
-  <room id="30630" area="45" title="Level 9: Death Mountain [B7]" environment="12">
+  <room id="30630" area="45" title="Level 9: Sand Burrow Hall" environment="12">
    <coord x="-9" y="13" z="-2" />
    <exit direction="north" target="30637" />
    <exit direction="south" target="30622" />
   </room>
-  <room id="30631" area="45" title="Level 9: Death Mountain [C7]" environment="12">
+  <room id="30631" area="45" title="Level 9: Red Sand Hall" environment="12">
    <coord x="-7" y="13" z="-2" />
    <exit direction="north" target="30638" />
    <exit direction="east" target="30632" />
    <exit direction="south" target="30623" />
   </room>
-  <room id="30632" area="45" title="Level 9: Death Mountain [D7]" environment="12">
+  <room id="30632" area="45" title="Level 9: Silent Cell" environment="12">
    <coord x="-5" y="13" z="-2" />
    <exit direction="south" target="30624" />
    <exit direction="west" target="30631" />
   </room>
-  <room id="30633" area="45" title="Level 9: Death Mountain [E7]" environment="12">
+  <room id="30633" area="45" title="Level 9: Stair of the Devourers" environment="12">
    <coord x="-3" y="13" z="-2" />
    <exit direction="east" target="30634" />
    <exit direction="south" target="30625" />
    <exit direction="up" target="30602" />
   </room>
-  <room id="30634" area="45" title="Level 9: Death Mountain [F7]" environment="12">
+  <room id="30634" area="45" title="Level 9: Blue-Scorched Hall" environment="12">
    <coord x="-2" y="13" z="-2" />
    <exit direction="east" target="30635" />
    <exit direction="south" target="30626" />
    <exit direction="west" target="30633" />
   </room>
-  <room id="30635" area="45" title="Level 9: Death Mountain [G7]" environment="12">
+  <room id="30635" area="45" title="Level 9: Northern Whirl Chamber" environment="12">
    <coord x="-1" y="13" z="-2" />
    <exit direction="north" target="30642" />
    <exit direction="south" target="30627" />
    <exit direction="west" target="30634" />
   </room>
-  <room id="30636" area="45" title="Level 9: Death Mountain [H7]" environment="12">
+  <room id="30636" area="45" title="Level 9: Eastern Gauntlet" environment="12">
    <coord x="0" y="13" z="-2" />
    <exit direction="north" target="30643" />
    <exit direction="south" target="30628" />
   </room>
-  <room id="30637" area="45" title="Level 9: Death Mountain [B8]" environment="12">
+  <room id="30637" area="45" title="Level 9: Northwestern Den" environment="12">
    <coord x="-8" y="14" z="-2" />
    <exit direction="east" target="30638" />
    <exit direction="south" target="30630" />
   </room>
-  <room id="30638" area="45" title="Level 9: Death Mountain [C8]" environment="12">
+  <room id="30638" area="45" title="Level 9: Sage of the Northern Hall" environment="12">
    <coord x="-7" y="14" z="-2" />
    <exit direction="south" target="30631" />
    <exit direction="west" target="30637" />
   </room>
-  <room id="30639" area="45" title="Level 9: Death Mountain [D8]" environment="12">
+  <room id="30639" area="45" title="Level 9: Stair of Slime" environment="12">
    <coord x="-6" y="13" z="-2" />
    <exit direction="east" target="30640" />
    <exit direction="up" target="30599" />
   </room>
-  <room id="30640" area="45" title="Level 9: Death Mountain [E8]" environment="12">
+  <room id="30640" area="45" title="Level 9: Quiet Stair Landing" environment="12">
    <coord x="-5" y="14" z="-2" />
    <exit direction="west" target="30639" />
    <exit direction="up" target="30613" />
   </room>
-  <room id="30641" area="45" title="Level 9: Death Mountain [F8]" environment="12">
+  <room id="30641" area="45" title="Level 9: Northern Stair of Flame" environment="12">
    <coord x="-5" y="12" z="-2" />
    <exit direction="east" target="30642" />
    <exit direction="up" target="30593" />
   </room>
-  <room id="30642" area="45" title="Level 9: Death Mountain [G8]" environment="12">
+  <room id="30642" area="45" title="Level 9: Sage of the Northern Gate" environment="12">
    <coord x="-4" y="13" z="-2" />
    <exit direction="south" target="30635" />
    <exit direction="west" target="30641" />
   </room>
-  <room id="30643" area="45" title="Level 9: Death Mountain [H8]" environment="12">
+  <room id="30643" area="45" title="Level 9: Northeastern Sanctum" environment="12">
    <coord x="0" y="14" z="-2" />
    <exit direction="south" target="30636" />
    <exit direction="down" target="30645" />
@@ -40830,215 +40834,215 @@
    <coord x="0" y="14" z="-3" />
    <exit direction="up" target="30643" />
   </room>
-  <room id="30650" area="45" title="Wooden Sword Cave" environment="12">
+  <room id="30650" area="45" title="The Old Man's Cave" environment="12">
    <coord x="0" y="0" z="-1" />
    <exit direction="up" target="30200" />
   </room>
-  <room id="30651" area="45" title="White Sword Cave" environment="12">
+  <room id="30651" area="45" title="The White Sword Cave" environment="12">
    <coord x="3" y="7" z="-1" />
    <exit direction="up" target="30322" />
   </room>
-  <room id="30652" area="45" title="Master Sword Grave" environment="12">
+  <room id="30652" area="45" title="Beneath the Hero's Grave" environment="12">
    <coord x="-9" y="5" z="-1" />
    <exit direction="up" target="30281" />
   </room>
-  <room id="30653" area="45" title="Letter Cave" environment="12">
+  <room id="30653" area="45" title="The Hermit's Cave" environment="12">
    <coord x="7" y="8" z="-1" />
    <exit direction="up" target="30326" />
   </room>
-  <room id="30654" area="45" title="Bombed Heart Cave" environment="12">
+  <room id="30654" area="45" title="A Hidden Heart Grotto" environment="12">
    <coord x="4" y="0" z="-1" />
    <exit direction="up" target="30211" />
   </room>
-  <room id="30655" area="45" title="Mountain Heart Cave" environment="12">
+  <room id="30655" area="45" title="A Grotto in the Mountain" environment="12">
    <coord x="5" y="5" z="-1" />
    <exit direction="up" target="30292" />
   </room>
-  <room id="30656" area="45" title="Burned Heart Cave" environment="12">
+  <room id="30656" area="45" title="Beneath the Burned Bush" environment="12">
    <coord x="0" y="3" z="-1" />
    <exit direction="up" target="30255" />
   </room>
-  <room id="30657" area="45" title="Raft Heart Island" environment="12">
+  <room id="30657" area="45" title="The Raft Island" environment="12">
    <coord x="29" y="0" z="0" />
    <exit direction="up" target="30295" />
   </room>
-  <room id="30658" area="45" title="Stepladder Heart Ledge" environment="12">
+  <room id="30658" area="45" title="Across the Narrow Water" environment="12">
    <coord x="37" y="0" z="0" />
    <exit direction="up" target="30247" />
   </room>
-  <room id="30659" area="45" title="The Secret Return Tree" environment="12">
+  <room id="30659" area="45" title="Hollow of the Old Tree" environment="12">
    <coord x="-3" y="1" z="-1" />
    <exit direction="up" target="30220" />
   </room>
-  <room id="30660" area="45" title="A Secret of 10 Rupees" environment="12">
+  <room id="30660" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="-8" y="2" z="-1" />
    <exit direction="up" target="30233" />
   </room>
-  <room id="30661" area="45" title="A Secret of 30 Rupees" environment="12">
+  <room id="30661" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="-6" y="0" z="-1" />
    <exit direction="up" target="30202" />
   </room>
-  <room id="30662" area="45" title="A Secret of 100 Rupees" environment="12">
+  <room id="30662" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="-5" y="1" z="-1" />
    <exit direction="up" target="30218" />
   </room>
-  <room id="30663" area="45" title="A Secret of 30 Rupees" environment="12">
+  <room id="30663" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="-4" y="6" z="-1" />
    <exit direction="up" target="30299" />
   </room>
-  <room id="30664" area="45" title="A Secret of 10 Rupees" environment="12">
+  <room id="30664" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="-1" y="2" z="-1" />
    <exit direction="up" target="30238" />
   </room>
-  <room id="30665" area="45" title="A Secret of 30 Rupees" environment="12">
+  <room id="30665" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="0" y="1" z="-1" />
    <exit direction="up" target="30223" />
   </room>
-  <room id="30666" area="45" title="A Secret of 30 Rupees" environment="12">
+  <room id="30666" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="1" y="5" z="-1" />
    <exit direction="up" target="30288" />
   </room>
-  <room id="30667" area="45" title="A Secret of 30 Rupees" environment="12">
+  <room id="30667" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="1" y="3" z="-1" />
    <exit direction="up" target="30256" />
   </room>
-  <room id="30668" area="45" title="A Secret of 10 Rupees" environment="12">
+  <room id="30668" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="4" y="2" z="-1" />
    <exit direction="up" target="30243" />
   </room>
-  <room id="30669" area="45" title="A Secret of 100 Rupees" environment="12">
+  <room id="30669" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="4" y="1" z="-1" />
    <exit direction="up" target="30227" />
   </room>
-  <room id="30670" area="45" title="A Secret of 30 Rupees" environment="12">
+  <room id="30670" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="6" y="5" z="-1" />
    <exit direction="up" target="30293" />
   </room>
-  <room id="30671" area="45" title="A Secret of 30 Rupees" environment="12">
+  <room id="30671" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="6" y="4" z="-1" />
    <exit direction="up" target="30277" />
   </room>
-  <room id="30672" area="45" title="A Secret of 10 Rupees" environment="12">
+  <room id="30672" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="8" y="3" z="-1" />
    <exit direction="up" target="30262" />
   </room>
-  <room id="30673" area="45" title="A Secret of 100 Rupees" environment="12">
+  <room id="30673" area="45" title="It's a Secret to Everybody" environment="12">
    <coord x="10" y="7" z="-1" />
    <exit direction="up" target="30327" />
   </room>
-  <room id="30674" area="45" title="Power Bracelet Alcove" environment="12">
+  <room id="30674" area="45" title="Under the Armos Statue" environment="12">
    <coord x="-4" y="5" z="-1" />
    <exit direction="up" target="30284" />
   </room>
-  <room id="30680" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30680" area="45" title="A Merchant's Cave" environment="12">
    <coord x="-3" y="3" z="-1" />
    <exit direction="up" target="30252" />
   </room>
-  <room id="30681" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30681" area="45" title="A Merchant's Cave" environment="12">
    <coord x="-3" y="5" z="-1" />
    <exit direction="up" target="30285" />
   </room>
-  <room id="30682" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30682" area="45" title="A Merchant's Cave" environment="12">
    <coord x="-1" y="1" z="-1" />
    <exit direction="up" target="30222" />
   </room>
-  <room id="30683" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30683" area="45" title="A Merchant's Cave" environment="12">
    <coord x="3" y="3" z="-1" />
    <exit direction="up" target="30258" />
   </room>
-  <room id="30684" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30684" area="45" title="A Merchant's Cave" environment="12">
    <coord x="6" y="7" z="-1" />
    <exit direction="up" target="30324" />
   </room>
-  <room id="30685" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30685" area="45" title="A Merchant's Cave" environment="12">
    <coord x="7" y="2" z="-1" />
    <exit direction="up" target="30246" />
   </room>
-  <room id="30686" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30686" area="45" title="A Merchant's Cave" environment="12">
    <coord x="8" y="1" z="-1" />
    <exit direction="up" target="30231" />
   </room>
-  <room id="30687" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30687" area="45" title="A Hidden Merchant's Cave" environment="12">
    <coord x="-6" y="6" z="-1" />
    <exit direction="up" target="30298" />
   </room>
-  <room id="30688" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30688" area="45" title="A Hidden Merchant's Cave" environment="12">
    <coord x="-3" y="4" z="-1" />
    <exit direction="up" target="30268" />
   </room>
-  <room id="30689" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30689" area="45" title="A Hidden Merchant's Cave" environment="12">
    <coord x="-2" y="5" z="-1" />
    <exit direction="up" target="30286" />
   </room>
-  <room id="30690" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30690" area="45" title="A Hidden Merchant's Cave" environment="12">
    <coord x="-1" y="3" z="-1" />
    <exit direction="up" target="30254" />
   </room>
-  <room id="30691" area="45" title="A First Quest Item Shop" environment="12">
+  <room id="30691" area="45" title="A Hidden Merchant's Cave" environment="12">
    <coord x="6" y="3" z="-1" />
    <exit direction="up" target="30261" />
   </room>
-  <room id="30692" area="45" title="A First Quest Potion Shop" environment="12">
+  <room id="30692" area="45" title="The Medicine Woman's Cave" environment="12">
    <coord x="-9" y="4" z="-1" />
    <exit direction="up" target="30267" />
   </room>
-  <room id="30693" area="45" title="A First Quest Potion Shop" environment="12">
+  <room id="30693" area="45" title="The Medicine Woman's Cave" environment="12">
    <coord x="-3" y="11" z="-1" />
    <exit direction="up" target="30316" />
   </room>
-  <room id="30694" area="45" title="A First Quest Potion Shop" environment="12">
+  <room id="30694" area="45" title="The Medicine Woman's Cave" environment="12">
    <coord x="-3" y="1" z="1" />
    <exit direction="down" target="30220" />
   </room>
-  <room id="30695" area="45" title="A First Quest Potion Shop" environment="12">
+  <room id="30695" area="45" title="The Medicine Woman's Cave" environment="12">
    <coord x="0" y="5" z="-1" />
    <exit direction="up" target="30287" />
   </room>
-  <room id="30696" area="45" title="A First Quest Potion Shop" environment="12">
+  <room id="30696" area="45" title="The Medicine Woman's Cave" environment="12">
    <coord x="1" y="0" z="-1" />
    <exit direction="up" target="30208" />
   </room>
-  <room id="30697" area="45" title="A First Quest Potion Shop" environment="12">
+  <room id="30697" area="45" title="The Medicine Woman's Cave" environment="12">
    <coord x="4" y="3" z="-1" />
    <exit direction="up" target="30259" />
   </room>
-  <room id="30698" area="45" title="A First Quest Potion Shop" environment="12">
+  <room id="30698" area="45" title="The Medicine Woman's Cave" environment="12">
    <coord x="7" y="7" z="-1" />
    <exit direction="up" target="30325" />
   </room>
-  <room id="30700" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30700" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="-6" y="9" z="-1" />
    <exit direction="up" target="30313" />
   </room>
-  <room id="30701" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30701" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="-5" y="7" z="-1" />
    <exit direction="up" target="30315" />
   </room>
-  <room id="30702" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30702" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="-4" y="1" z="-1" />
    <exit direction="up" target="30219" />
   </room>
-  <room id="30703" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30703" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="-3" y="6" z="-1" />
    <exit direction="up" target="30300" />
   </room>
-  <room id="30704" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30704" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="0" y="11" z="-1" />
    <exit direction="up" target="30319" />
   </room>
-  <room id="30705" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30705" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="1" y="1" z="-1" />
    <exit direction="up" target="30224" />
   </room>
-  <room id="30706" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30706" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="3" y="1" z="-1" />
    <exit direction="up" target="30226" />
   </room>
-  <room id="30707" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30707" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="6" y="0" z="-1" />
    <exit direction="up" target="30213" />
   </room>
-  <room id="30708" area="45" title="A Door-Repair Charge" environment="12">
+  <room id="30708" area="45" title="The Door-Repair Charge" environment="12">
    <coord x="8" y="6" z="-1" />
    <exit direction="up" target="30310" />
   </room>
@@ -41062,65 +41066,65 @@
    <coord x="9" y="6" z="-1" />
    <exit direction="up" target="30311" />
   </room>
-  <room id="30720" area="45" title="A Power Bracelet Warp Hall" environment="12">
+  <room id="30720" area="45" title="The Warp Stairway Hall" environment="12">
    <coord x="-4" y="8" z="-1" />
    <exit direction="up" target="30283" />
   </room>
-  <room id="30721" area="45" title="A Power Bracelet Warp Hall" environment="12">
+  <room id="30721" area="45" title="The Warp Stairway Hall" environment="12">
    <coord x="2" y="3" z="-1" />
    <exit direction="up" target="30257" />
   </room>
-  <room id="30722" area="45" title="A Power Bracelet Warp Hall" environment="12">
+  <room id="30722" area="45" title="The Warp Stairway Hall" environment="12">
    <coord x="2" y="0" z="-1" />
    <exit direction="up" target="30209" />
   </room>
-  <room id="30723" area="45" title="A Power Bracelet Warp Hall" environment="12">
+  <room id="30723" area="45" title="The Warp Stairway Hall" environment="12">
    <coord x="6" y="6" z="-1" />
    <exit direction="up" target="30309" />
   </room>
-  <room id="30750" area="45" title="The Lost Woods [1/3]" environment="4">
+  <room id="30750" area="45" title="The Lost Woods" environment="4">
    <coord x="-4" y="2" z="0" />
    <exit direction="north" target="30220" />
    <exit direction="east" target="30221" />
    <exit direction="south" target="30220" />
    <exit direction="west" target="30751" />
   </room>
-  <room id="30751" area="45" title="The Lost Woods [2/3]" environment="4">
+  <room id="30751" area="45" title="The Lost Woods" environment="4">
    <coord x="-6" y="2" z="0" />
    <exit direction="north" target="30220" />
    <exit direction="east" target="30221" />
    <exit direction="south" target="30752" />
    <exit direction="west" target="30220" />
   </room>
-  <room id="30752" area="45" title="The Lost Woods [3/3]" environment="4">
+  <room id="30752" area="45" title="The Lost Woods" environment="4">
    <coord x="-6" y="1" z="0" />
    <exit direction="north" target="30220" />
    <exit direction="east" target="30221" />
    <exit direction="south" target="30220" />
    <exit direction="west" target="30219" />
   </room>
-  <room id="30753" area="45" title="The Lost Hills [1/4]" environment="6">
+  <room id="30753" area="45" title="The Lost Hills" environment="6">
    <coord x="0" y="7" z="0" />
    <exit direction="north" target="30754" />
    <exit direction="east" target="30304" />
    <exit direction="south" target="30287" />
    <exit direction="west" target="30302" />
   </room>
-  <room id="30754" area="45" title="The Lost Hills [2/4]" environment="6">
+  <room id="30754" area="45" title="The Lost Hills" environment="6">
    <coord x="0" y="8" z="0" />
    <exit direction="north" target="30755" />
    <exit direction="east" target="30304" />
    <exit direction="south" target="30287" />
    <exit direction="west" target="30302" />
   </room>
-  <room id="30755" area="45" title="The Lost Hills [3/4]" environment="6">
+  <room id="30755" area="45" title="The Lost Hills" environment="6">
    <coord x="0" y="9" z="0" />
    <exit direction="north" target="30756" />
    <exit direction="east" target="30304" />
    <exit direction="south" target="30287" />
    <exit direction="west" target="30302" />
   </room>
-  <room id="30756" area="45" title="The Lost Hills [4/4]" environment="6">
+  <room id="30756" area="45" title="The Lost Hills" environment="6">
    <coord x="0" y="10" z="0" />
    <exit direction="north" target="30319" />
    <exit direction="east" target="30304" />

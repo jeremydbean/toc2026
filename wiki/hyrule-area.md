@@ -2,21 +2,21 @@
 
 ## Status
 
-Hyrule is a generated level 1-70 campaign based on the First Quest from the
+Hyrule is a generated level 1-59 campaign based on the First Quest from the
 original *Legend of Zelda*. It replaces the old ToC2 room layout while retaining
 the useful Hyrule mobile and object catalog.
 
 | Property | Value |
 | --- | --- |
 | Area file | `area/hyrule.are` |
-| Reserved vnums | `30200-30799` |
+| Reserved vnums | rooms and objects `30200-30799`; mobiles `30200-30345` and generated enemies `31000-32459` |
 | Entry object | Hyrule arcade cabinet `30285` in Campus room `15068` |
 | Arrival | Overworld screen `H1`, room `30200` |
-| Exit model | Secret return tree and post-Ganon return light |
-| Recall | Disabled in every Hyrule room |
-| Level range | `1-70` |
+| Exit model | Secret return tree, post-Ganon return light, and recall from the overworld |
+| Recall | Blocked only inside the nine dungeons (`30400-30645`) |
+| Level range | `1-59` |
 | Canonical geometry | 128 overworld screens plus 246 dungeon rooms and cellars |
-| Generated area size | 443 rooms and 2,265 reset records |
+| Generated area size | 443 rooms and 1,464 reset records |
 
 There is no walking exit from the main world into Hyrule. Players arrive by
 entering the arcade cabinet, matching the intended "teleported into Zelda"
@@ -29,10 +29,19 @@ Do not hand-edit generated rooms or resets in `area/hyrule.are`. The checked-in
 source chain is:
 
 1. `data/hyrule_first_quest.json` stores normalized screen, room, encounter,
-   door, landmark, shop, secret, and progression data.
-2. `scripts/build_hyrule_area.py` combines that manifest with the retained area
-   catalog and writes `area/hyrule.are`.
-3. `tests/test_hyrule_progression.py` checks geometry, placement, progression,
+   door, landmark, shop, secret, and progression data. Its encounters are what
+   the NES screen or room shows, not what the MUD spawns (see Population).
+2. `data/hyrule_room_prose.json` holds every room's name and description,
+   written from the NES screen or dungeon room it stands for. Keys are the
+   manifest coordinate for the overworld, `L<level>:<coordinate>` for dungeon
+   rooms, `L<level>:cellar:<coordinate>` for block-stair cellars, and named
+   `special` entries for caves, shops, and secrets. Descriptions are one
+   paragraph; the generator wraps them at 75 columns and prefixes dungeon names
+   with `Level N: `. A missing entry stops the build.
+3. `scripts/build_hyrule_area.py` combines those with the retained area
+   catalog and writes `area/hyrule.are`. It also owns every enemy record, the
+   bosses' stat lines, and the boss weapons.
+4. `tests/test_hyrule_progression.py` checks geometry, placement, progression,
    reachability, resets, services, and generation idempotence.
 
 The manifest itself is built by `scripts/build_hyrule_manifest.py`. Its image
@@ -78,22 +87,115 @@ come from the First Quest route references.
 
 | Level | Player levels | Overworld | Entry | Rooms | Boss | Goal |
 | --- | ---: | --- | ---: | --- | ---: | ---: |
-| 1: The Eagle | 11-20 | `H5` | `30401` | `30400-30417` | `30413` | `30414` |
-| 2: The Moon | 21-30 | `M5` | `30418` | `30418-30435` | `30435` | `30434` |
-| 3: The Manji | 31-40 | `E1` | `30437` | `30436-30454` | `30449` | `30451` |
-| 4: The Snake | 41-50 | `F4` | `30456` | `30455-30475` | `30470` | `30474` |
-| 5: The Lizard | 51-55 | `L8` | `30476` | `30476-30499` | `30489` | `30493` |
-| 6: The Dragon | 56-60 | `C6` | `30501` | `30500-30525` | `30519` | `30524` |
-| 7: The Demon | 61-64 | `C4` | `30527` | `30526-30559` | `30546` | `30547` |
-| 8: The Lion | 65-67 | `N2` | `30562` | `30560-30586` | `30574` | `30578` |
-| 9: Death Mountain | 68-70 | `F8` | `30590` | `30587-30645` | `30607` | `30615` |
+| 1: The Eagle | 2-8 | `H5` | `30401` | `30400-30417` | `30413` | `30414` |
+| 2: The Moon | 8-14 | `M5` | `30418` | `30418-30435` | `30435` | `30434` |
+| 3: The Manji | 14-20 | `E1` | `30437` | `30436-30454` | `30449` | `30451` |
+| 4: The Snake | 20-27 | `F4` | `30456` | `30455-30475` | `30470` | `30474` |
+| 5: The Lizard | 27-33 | `L8` | `30476` | `30476-30499` | `30489` | `30493` |
+| 6: The Dragon | 33-40 | `C6` | `30501` | `30500-30525` | `30519` | `30524` |
+| 7: The Demon | 40-46 | `C4` | `30527` | `30526-30559` | `30546` | `30547` |
+| 8: The Lion | 46-52 | `N2` | `30562` | `30560-30586` | `30574` | `30578` |
+| 9: Death Mountain | 53-59 | `F8` | `30590` | `30587-30645` | `30607` | `30615` |
 
-Dungeon 1 starts after the level 1-10 overworld opening. Equipment chests cover
-every player level through 70. Bosses carry the top gear for their band, while
-maps, cellars, and intermediate rooms source the rest. The Master Sword remains
-fixed at level 58 as requested. The required Silver Arrow is level 54, so
-characters level 54 or higher can wield it without immortal status even though
-Death Mountain's enemies extend into the administrative level range.
+The bands are `LEVEL_BANDS` in `scripts/build_hyrule_manifest.py`, copied
+into each dungeon's `recommended_levels`. Each overworld screen's
+`recommended_level` comes from `world_level()` there: an inverse-square-
+distance average of every dungeon's band midpoint, with the start screen
+anchored at 1. Standing on a dungeon's screen gives that dungeon's midpoint,
+so the ground around Level 8 is graded for the high forties even though it is
+six screens from the start. The manifest builder needs reference images that
+are not committed, so when the bands change, apply `LEVEL_BANDS` and
+`world_level()` to the checked-in JSON as well.
+
+### Item Levels
+
+Every item a player can get sits at or below the band of the place it is first
+found, and its stats are rescaled to that level (`ITEM_LEVELS`,
+`gear_item_levels()` and `relevel_catalog_items()` in the generator):
+
+- Each dungeon's map-room chest (`GEAR_STAGES`) holds gear spread across the
+  levels its band adds, so with the Heart Guards every level from 1 to 59 has
+  sourced gear and nothing sourced is above 59. Armour follows the catalog's own
+  curve (an armour point per four levels); chest weapons average about 0.7 of
+  their level.
+- Each boss's Heart Guard is at the top of its dungeon's band (Ganon's crown at
+  59).
+- Caves, cellars, and quest items take the band of the screen or dungeon they
+  open from: the Wooden Sword is level 1 (2d4), the small boomerang 4, the
+  short bow 6, the Magical Boomerang 12, the raft 16, the stepladder 22, the
+  White Sword, Power Bracelet, and Recorder 30, the Magical Rod 38, the Red
+  Candle 42, the Magic Book and Magical Key 48, and each Triforce shard the
+  bottom of its dungeon's band.
+- A shop item takes the lowest band it is sold in.
+- The Master Sword is the deliberate exception: found in the graveyard (a band
+  6 screen) and kept at level 58, the NES's late-game sword.
+- The Silver Arrow stays at level 54 (`HYRULE_SILVER_ARROW_LEVEL`), inside
+  Death Mountain's band; the relics stay at 54-58.
+
+`tests/test_hyrule_progression.py` walks every room, mobile, and container
+source and fails on an item above its source's band, and on any sourced weapon
+that matches its band's boss weapon.
+
+### Hyrule's Bystanders
+
+The old men, the door-repair man, the gambler, Princess Zelda, and the fountain
+fairies are level 10-70 and fight nobody. `is_hyrule_bystander()` in
+`src/fight.c` makes them safe from attacks and spells alike, so they cannot be
+farmed for experience. The merchants were already safe as shopkeepers.
+
+### Enemies
+
+Each NES enemy kind (`ENEMY_TYPES` in the generator) is generated once per
+band it appears in, at vnum `31000 + code * 10 + (band - 1)`. A dungeon room
+uses its dungeon's band; an overworld screen uses the band its own level falls
+in. Within a band a kind's level is set by its rank -- keese and gels at the
+bottom, darknuts, lynels, and lanmolas at the top -- and its hit points and
+damage by its kind against an ordinary mobile of that level elsewhere in the
+world (`HIT_POINT_CURVE`, `DAMAGE_CURVE`, read off the other area files). All
+generated enemies are sentinel and aggressive: an NES enemy holds its screen.
+
+The code is the offset of the single catalog record the kind used to be
+(`30215` -> 15 for the like like), and `hyrule_enemy_kind()` in `src/fight.c`
+maps any band back to it. That is how the like like's shield-eating, the
+bubble's disarm, and the wallmaster's drag back to the entrance work at every
+band. Change a code and you change which effect a kind has.
+
+### Population
+
+The manifest records the NES cast, and some NES rooms are crowded: eight
+keese, six like likes, a wall of wizzrobes. A dungeon room keeps every kind it
+had but fewer of each -- one for up to three, two for four to six, three for
+seven or more, and one of each blade trap, patra, dodongo, or digdogger -- and
+no more than three in all unless it has more than three kinds. Death Mountain
+went from 254 dungeon spawns to 114, and all nine dungeons from 559 to 308.
+The overworld already asked for at most two of anything and is unchanged.
+
+### Bosses And Their Weapons
+
+Bosses keep their catalog records and achievements; only the stat line is
+generated (`BOSS_STATS`). Each sits a few levels above its band, with hit
+points weighted by how hard it is in the NES game. Each carries its Heart Guard
+and a weapon (`BOSS_WEAPONS`) through `G` resets.
+
+| Level | Boss | Boss level | Hit points | Weapon | Weapon level | Avg + damroll | Best existing |
+| --- | --- | ---: | ---: | --- | ---: | ---: | --- |
+| 1 | Aquamentus | 10 | 650 | Aquamentus horn-spear 3d6, +2 hit +1 dam | 8 | 11.5 | 10.0, the large mace |
+| 2 | Dodongo | 16 | 1,250 | Dodongo tail-club 4d8, +2/+2 | 14 | 20.0 | 17.0, an icy dagger |
+| 3 | Manhandla | 23 | 2,400 | Manhandla bloom-whip 6d9, +2/+2 | 20 | 32.0 | 28.0, a barbed whip |
+| 4 | Gleeok | 30 | 4,000 | Gleeok twin-fang glaive 7d8, +3/+2 | 27 | 33.5 | 28.0, a barbed whip |
+| 5 | Digdogger | 36 | 6,000 | Digdogger urchin flail 7d9, +3/+2 | 33 | 37.0 | 32.0, Hyrule's White Sword (level 30) |
+| 6 | Gohma | 43 | 8,500 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
+| 7 | ancient Aquamentus | 49 | 9,500 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
+| 8 | ashen Gleeok | 55 | 15,000 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
+| 9 | Ganon | 62 | 20,000 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
+
+"Best existing" is the best weapon a character of that level could otherwise
+carry: every mobile-carried weapon in the world at or below the weapon's level,
+scored as `value[1] * (value[2] + 1) / 2` plus damroll with the dashboard
+parser, and Hyrule's own re-levelled weapons where they beat it. Each
+boss weapon sits 10-20% above that mark, and the test holds it there. The
+Master Sword (level 58, 62.5) stays Hyrule's signature blade; Ganon's trident
+edges it by one point at level 59.
 
 Death Mountain requires all eight Triforce shards before its bombed entrance
 can be used. Ganon drops Golden Key `30243`; that key opens Zelda's room, which
@@ -274,13 +376,22 @@ The Hyrule tests verify:
 - all 128 overworld screens and every canonical dungeon room
 - reciprocal topology, non-overlapping ranges, and complete reachability
 - all 56 marked bomb walls, including Death Mountain's exact 19 wall pairs
-- exact reset counts for source-derived encounters
+- reset counts derived from the NES encounters by the population rule, with
+  every kind kept and no room crowded
+- level bands that climb from Level 1 to 59 without gaps, and enemies statted
+  inside the band they stand in
+- each boss out-levelling its band and outlasting the one before, and carrying
+  a weapon 10-20% better than the best existing one at that level
+- room names free of grid labels, `Level N:` naming confined to the dungeons,
+  and descriptions that fit a terminal and do not list occupants
 - live-population reset caps, including a single Ganon across empty-area resets
 - locked-door solvability using keys found in each dungeon
 - Death Mountain passages, encounters, Ganon key, and Triforce gate
-- every level from 1 through 70 having sourced weapon or armor
+- every level from 1 through 59 having sourced weapon or armor, none above 59,
+  and every item at or below the band it is found in
 - maps, compasses, shops, rupees, repairs, gambling, and warp routes
-- teleport-only entry, no recall, and a path back from every Hyrule room
+- teleport-only entry, recall blocked only in the dungeons, and a path back
+  from every Hyrule room
 - area-generator idempotence
 
 The full validator also performs clean and strict-warning C builds, boots the
@@ -290,11 +401,17 @@ executes the complete Python test suite.
 ## Fidelity Boundary
 
 The canonical topology, room counts, cardinal adjacency, dungeon silhouettes,
-door classes, encounter counts, major item locations, services, and route
+door classes, encounter kinds, major item locations, services, and route
 permutations are data-derived. MUD combat is real-time rather than tile-based,
 and one Zelda screen is represented by one text room rather than a pixel map.
-Area resets make enemies and rewards replayable. These are intentional engine
-adaptations; they do not alter the crossing count or progression route.
+Area resets make enemies and rewards replayable, and crowded rooms are thinned
+(see Population). These are intentional engine adaptations; they do not alter
+the crossing count or progression route.
+
+The room prose was written from the NES screens and rooms with the manifest's
+facts in hand -- terrain read off each screen's enemies, doors, stairs, block
+cellars, and landmarks. It is approximate by design: the room shapes and old
+men's hints are paraphrased from the game, not transcribed.
 
 ## Related Documentation
 

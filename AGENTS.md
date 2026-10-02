@@ -47,7 +47,8 @@ Maintained documentation:
 - Do not silently convert `.are` files to UTF-8. They are Latin-1 and contain
   `~`-terminated strings.
 - Do not hand-edit generated Hyrule output for a lasting change. Update
-  `data/hyrule_first_quest.json` and/or the generator, regenerate, and test.
+  `data/hyrule_first_quest.json`, `data/hyrule_room_prose.json` (room names
+  and descriptions) and/or the generator, regenerate, and test.
 - Work with existing uncommitted user changes. Never discard, reset, or rewrite
   unrelated work.
 
@@ -178,15 +179,18 @@ python3 -m unittest tests.test_money_safety tests.test_bank_interest tests.test_
 git diff --check
 ```
 
-Current September 2026 Python baseline:
+Current October 2026 Python baseline:
 
 ```text
 100 listed area entries
-2,337 mobiles
-3,560 objects
-7,781 rooms
-0 critical, 12 warning, 1,510 information findings
+2,427 mobiles
+3,570 objects
+7,783 rooms
+0 critical, 12 warning, 1,512 information findings
 ```
+
+The mobile count rose by about ninety when Hyrule's enemies became one
+generated record per kind per level band (see `wiki/hyrule-area.md`).
 
 The information count fell from 1,571 when 176 resets that had been
 commented out as "(removed: room/obj does not exist)" went back in; every
@@ -527,6 +531,22 @@ rupee is a gold coin -- the rupee piles are `ITEM_MONEY` with `value[1]`
 set to `TYPE_GOLD` -- so the generator writes `cost * COPPER_PER_GOLD`.
 `tools/reprice_by_level.py` skips the file for both reasons: it is
 generated, and its prices are already calibrated against its own drops.
+
+Hyrule's dungeons climb from Level 1 (characters level 2-8) to Death
+Mountain (53-59), and its enemies are generated once per kind per band, at
+mobile vnum `31000 + code * 10 + (band - 1)` -- so a keese in Level 1 and
+one in Level 9 are different mobiles. The like like, bubble and wallmaster
+contact effects in `src/fight.c` find their kind through
+`hyrule_enemy_kind()`, which decodes that vnum; `HYRULE_TIER_FIRST` and
+`HYRULE_TIER_LAST` there must match `TIER_VNUM_FIRST`/`TIER_VNUM_LAST` in
+the generator. The manifest's encounters are the NES cast; the generator
+thins crowded rooms to at most three. Bosses keep their vnums (the
+achievements name them) and only their stat lines are generated. Every
+item a player can get sits at or below the band it is found in -- the
+generator rewrites the retained catalog's levels and stats from the bands
+-- except the Master Sword, kept at 58 on purpose. The old men, Zelda and
+the other non-combatants are refused by `is_hyrule_bystander()` in
+`is_safe`, so their high levels cannot be farmed.
 
 Hyrule workflow:
 

@@ -28,6 +28,21 @@
 #define HYRULE_BLUE_LIKE_LIKE_VNUM 30332
 #define HYRULE_BUBBLE_VNUM      30304
 #define HYRULE_WALLMASTER_VNUM  30301
+/*
+ * Hyrule's enemies are generated once per level band by
+ * scripts/build_hyrule_area.py, at TIER_FIRST + kind * 10 + (band - 1),
+ * where kind is the offset of the single record that kind used to be
+ * (30215 -> 15 for the like like). The three vnums above are those old
+ * records: they no longer exist as mobiles, and name the kind instead.
+ */
+#define HYRULE_FAIRY_VNUM       30216
+#define HYRULE_OLD_MAN_VNUM     30228
+#define HYRULE_ZELDA_VNUM       30338
+#define HYRULE_REPAIR_MAN_VNUM  30344
+#define HYRULE_GAMBLER_VNUM     30345
+#define HYRULE_TIER_FIRST       31000
+#define HYRULE_TIER_LAST        32459
+#define HYRULE_KIND_BASE        30200
 
 static const int hyrule_ganon_loot_vnums[] =
 {
@@ -226,6 +241,27 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
         && victim->pIndexData->vnum == HYRULE_GANON_VNUM;
 }
 
+/*
+ * Hyrule's people who are not enemies: the old men with their hints, the
+ * door-repair man and the gambler, Princess Zelda and the fountain fairies.
+ * They are level 50 or more so nothing in their band can hurt them, which
+ * also made them the best experience in Hyrule for anyone who could. The
+ * merchants are shopkeepers and protected already.
+ */
+static bool is_hyrule_bystander( CHAR_DATA *victim )
+{
+    int vnum;
+
+    if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL )
+        return false;
+    vnum = victim->pIndexData->vnum;
+    return vnum == HYRULE_OLD_MAN_VNUM
+        || vnum == HYRULE_REPAIR_MAN_VNUM
+        || vnum == HYRULE_GAMBLER_VNUM
+        || vnum == HYRULE_ZELDA_VNUM
+        || vnum == HYRULE_FAIRY_VNUM;
+}
+
 static bool is_silver_arrow_weapon( OBJ_DATA *weapon )
 {
     return weapon != NULL && weapon->pIndexData != NULL
@@ -308,6 +344,14 @@ static int hyrule_dungeon_entrance( int room_vnum )
     return 0;
 }
 
+/* Which Hyrule enemy a mobile is, whatever band it was generated for. */
+static int hyrule_enemy_kind( int vnum )
+{
+    if ( vnum >= HYRULE_TIER_FIRST && vnum <= HYRULE_TIER_LAST )
+        return HYRULE_KIND_BASE + ( vnum - HYRULE_TIER_FIRST ) / 10;
+    return vnum;
+}
+
 static void apply_hyrule_contact_effect( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     OBJ_DATA *equipment;
@@ -319,7 +363,7 @@ static void apply_hyrule_contact_effect( CHAR_DATA *ch, CHAR_DATA *victim )
     ||   victim->in_room == NULL || victim->hit < 1 )
         return;
 
-    attacker_vnum = ch->pIndexData->vnum;
+    attacker_vnum = hyrule_enemy_kind( ch->pIndexData->vnum );
     if ( ( attacker_vnum == HYRULE_LIKE_LIKE_VNUM
         || attacker_vnum == HYRULE_BLUE_LIKE_LIKE_VNUM )
     &&   number_percent() <= 8
@@ -1975,6 +2019,12 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
 	return true;
     }
 
+    if ( is_hyrule_bystander(victim) )
+    {
+	act("$N is no enemy of yours.",ch,NULL,victim,TO_CHAR);
+	return true;
+    }
+
     /* The Oracle is beyond violence. */
     if ( is_oracle_mob(victim) )
     {
@@ -2091,7 +2141,7 @@ bool is_safe_spell(CHAR_DATA *ch, CHAR_DATA *victim, bool area )
 	return true;
 
     /* The Oracle is beyond spells too. */
-    if ( is_oracle_mob(victim) )
+    if ( is_oracle_mob(victim) || is_hyrule_bystander(victim) )
 	return true;
 
     /* no fighting in safe rooms

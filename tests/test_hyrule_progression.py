@@ -8,13 +8,25 @@ from collections import Counter, deque
 from pathlib import Path
 
 from scripts.build_hyrule_area import (
+    BOSS_GEAR,
     BOSS_MOBS,
-    ENEMY_MOBS,
+    BOSS_STATS,
+    BOSS_WEAPON_BASELINES,
+    BOSS_WEAPONS,
+    ENEMY_TYPES,
     GEAR_STAGES,
+    NPC_MOBS,
+    ROOM_ENEMY_CAP,
     SHOP_INVENTORY,
     SHOP_KEEPERS,
-    choose_world_mob,
+    TIER_VNUM_FIRST,
+    TIER_VNUM_LAST,
+    band_index,
     build_area,
+    dungeon_spawns,
+    manifest_bands,
+    weapon_score,
+    world_spawns,
 )
 from webadmin.area_parser import (
     AreaParser,
@@ -269,21 +281,16 @@ class HyruleProgressionTests(unittest.TestCase):
                          "these overworld rooms go dark at sunset")
 
     def test_overworld_and_dungeon_reset_counts_match_the_manifest(self) -> None:
+        bands = manifest_bands(self.manifest)
         expected: Counter[tuple[int, int]] = Counter()
         for room in self.world.values():
-            for entity, count in room["entities"].items():
-                mob_vnum = choose_world_mob(entity, room["recommended_level"])
-                if mob_vnum is not None:
-                    expected[(room["vnum"], mob_vnum)] += count
+            for mob_vnum, count in world_spawns(room, bands).items():
+                expected[(room["vnum"], mob_vnum)] += count
 
         for dungeon in self.dungeons.values():
             for room in dungeon["rooms"]:
-                if room["role"] == "boss":
-                    expected[(room["vnum"], BOSS_MOBS[dungeon["level"]])] = 1
-                    continue
-                for entity, count in room["entities"].items():
-                    if entity in ENEMY_MOBS:
-                        expected[(room["vnum"], ENEMY_MOBS[entity])] += count
+                for mob_vnum, count in dungeon_spawns(dungeon["level"], room).items():
+                    expected[(room["vnum"], mob_vnum)] += count
 
         canonical_rooms = {
             room["vnum"] for room in self.world.values()
@@ -298,6 +305,317 @@ class HyruleProgressionTests(unittest.TestCase):
             if reset.command == "M" and reset.arg3 in canonical_rooms
         )
         self.assertEqual(actual, expected)
+
+    def test_crowded_rooms_keep_their_kinds_with_fewer_of_each(self) -> None:
+        """The NES room's cast, not its crowd.
+
+        Death Mountain alone asked for 254 mobiles -- eight keese here, six
+        like likes there -- and every one is a full fight in the MUD. A room
+        keeps every kind of enemy its NES room shows, never more of any kind
+        than the NES had, and no more than ROOM_ENEMY_CAP in all unless it
+        has more kinds than that.
+        """
+        kind_of = {
+            TIER_VNUM_FIRST + enemy.code * 10 + band - 1: kind
+            for kind, enemy in ENEMY_TYPES.items()
+            for band in range(1, 10)
+        }
+        problems = []
+        for level, dungeon in self.dungeons.items():
+            for room in dungeon["rooms"]:
+                if room["role"] == "boss":
+                    continue
+                spawned = Counter()
+                for reset in self.resets:
+                    if reset.command == "M" and reset.arg3 == room["vnum"] and reset.arg1 in kind_of:
+                        spawned[kind_of[reset.arg1]] += 1
+                nes = {kind: count for kind, count in room["entities"].items()
+                       if kind in ENEMY_TYPES}
+                if set(spawned) != set(nes):
+                    problems.append((level, room["coordinate"], "kinds", dict(spawned), nes))
+                if any(spawned[kind] > nes[kind] for kind in spawned):
+                    problems.append((level, room["coordinate"], "more than the NES", dict(spawned)))
+                if sum(spawned.values()) > max(ROOM_ENEMY_CAP, len(nes)):
+                    problems.append((level, room["coordinate"], "crowded", dict(spawned)))
+        self.assertEqual([], problems)
+
+        dungeon_total = sum(
+            1 for reset in self.resets
+            if reset.command == "M"
+            and any(dungeon["first_room_vnum"] <= reset.arg3 <= dungeon["last_room_vnum"]
+                    for dungeon in self.dungeons.values())
+        )
+        self.assertLess(dungeon_total, 350, "the dungeons are crowded again")
+
+    def test_dungeons_climb_from_the_first_levels_to_fifty_nine(self) -> None:
+        bands = manifest_bands(self.manifest)
+        self.assertLessEqual(bands[1][0], 3, "Level 1 is for characters fresh from school")
+        self.assertEqual(bands[9][1], 59, "Death Mountain is for the top of mortal play")
+        for level in range(1, 9):
+            with self.subTest(level=level):
+                self.assertLess(bands[level][0], bands[level + 1][0])
+                self.assertLessEqual(bands[level + 1][0] - bands[level][1], 1,
+                                     "a gap between bands leaves levels with no dungeon")
+
+        # The ground a dungeon stands on is graded for that dungeon.
+        self.assertEqual(self.world["H1"]["recommended_level"], 1)
+        for level, dungeon in self.dungeons.items():
+            screen = self.world[dungeon["overworld_coordinate"]]
+            with self.subTest(level=level, screen=dungeon["overworld_coordinate"]):
+                low, high = bands[level]
+                self.assertTrue(low <= screen["recommended_level"] <= high)
+                self.assertEqual(band_index(screen["recommended_level"], bands), level)
+
+    def test_enemies_are_statted_for_the_band_they_stand_in(self) -> None:
+        bands = manifest_bands(self.manifest)
+        room_band = {room["vnum"]: band_index(room["recommended_level"], bands)
+                     for room in self.world.values()}
+        for level, dungeon in self.dungeons.items():
+            room_band.update({vnum: level for vnum in range(
+                dungeon["first_room_vnum"], dungeon["last_room_vnum"] + 1)})
+
+        out_of_band = []
+        for reset in self.resets:
+            if reset.command != "M" or not TIER_VNUM_FIRST <= reset.arg1 <= TIER_VNUM_LAST:
+                continue
+            mob = self.parser.mobiles[reset.arg1]
+            low, high = bands[room_band[reset.arg3]]
+            if not low <= mob.level <= high:
+                out_of_band.append((reset.arg3, reset.arg1, mob.level, (low, high)))
+            if "B" not in mob.act_flags:
+                out_of_band.append((reset.arg3, reset.arg1, "wanders out of its band"))
+        self.assertEqual([], out_of_band)
+
+        # Every enemy that spawns in Hyrule is one of the generated records,
+        # apart from the bosses and the people who are not enemies at all.
+        allowed = set(BOSS_MOBS.values()) | set(NPC_MOBS.values()) | set(SHOP_INVENTORY) | {30344, 30345}
+        stray = {
+            reset.arg1 for reset in self.resets
+            if reset.command == "M"
+            and not TIER_VNUM_FIRST <= reset.arg1 <= TIER_VNUM_LAST
+            and reset.arg1 not in allowed
+        }
+        self.assertEqual(set(), stray)
+
+    def test_contact_effects_find_every_band_of_their_kind(self) -> None:
+        """fight.c decodes a generated vnum back to the kind it was.
+
+        The like like eats shields, the bubble disarms and the wallmaster
+        drags you to the entrance, all keyed on the vnum the kind used to
+        have. If the generator's layout and fight.c's decoding drift, those
+        effects silently stop at every band.
+        """
+        fight = Path("src/fight.c").read_text(encoding="utf-8")
+        self.assertIn(f"#define HYRULE_TIER_FIRST       {TIER_VNUM_FIRST}", fight)
+        self.assertIn(f"#define HYRULE_TIER_LAST        {TIER_VNUM_LAST}", fight)
+        self.assertIn("attacker_vnum = hyrule_enemy_kind( ch->pIndexData->vnum );", fight)
+        for kind, old_vnum in (("like_like", 30215), ("bubble", 30304), ("wallmaster", 30301)):
+            with self.subTest(kind=kind):
+                self.assertEqual(30200 + ENEMY_TYPES[kind].code, old_vnum)
+                spawned = [vnum for vnum in self.parser.mobiles
+                           if TIER_VNUM_FIRST <= vnum <= TIER_VNUM_LAST
+                           and 30200 + (vnum - TIER_VNUM_FIRST) // 10 == old_vnum]
+                self.assertTrue(spawned, f"no {kind} is generated")
+
+    def test_each_boss_is_a_step_up_and_tops_its_band(self) -> None:
+        bands = manifest_bands(self.manifest)
+        previous_level = previous_hp = 0
+        for level in range(1, 10):
+            boss = self.parser.mobiles[BOSS_MOBS[level]]
+            hit_dice = boss.hitp_dice
+            count, rest = hit_dice.split("d")
+            size, bonus = rest.split("+")
+            hit_points = int(count) * (int(size) + 1) / 2 + int(bonus)
+            with self.subTest(level=level, boss=boss.short_desc):
+                self.assertEqual(boss.level, BOSS_STATS[level][0])
+                self.assertGreater(boss.level, bands[level][1],
+                                   "a boss should out-level the dungeon it rules")
+                self.assertGreater(boss.level, previous_level)
+                self.assertGreater(hit_points, previous_hp)
+                self.assertIn(self.dungeons[level]["boss_vnum"], boss.spawn_rooms)
+            previous_level, previous_hp = boss.level, hit_points
+        self.assertLessEqual(self.parser.mobiles[BOSS_MOBS[9]].level, 65)
+
+    def test_each_boss_carries_the_best_weapon_for_its_band(self) -> None:
+        bands = manifest_bands(self.manifest)
+        previous = 0.0
+        for level in range(1, 10):
+            weapon = BOSS_WEAPONS[level]
+            obj = self.parser.objects[weapon.vnum]
+            boss = self.parser.mobiles[BOSS_MOBS[level]]
+            affects = {affect["location"]: affect["modifier"] for affect in obj.affects}
+            average = int(obj.values[1]) * (int(obj.values[2]) + 1) / 2
+            score = average + affects.get(19, 0)
+            baseline = BOSS_WEAPON_BASELINES[level][0]
+            with self.subTest(level=level, weapon=obj.short_desc):
+                self.assertEqual(obj.item_type, "5")
+                self.assertIn("N", obj.wear_flags, "a weapon has to be wieldable")
+                self.assertIn(weapon.vnum, boss.drops)
+                self.assertTrue(bands[level][0] <= obj.level <= bands[level][1])
+                self.assertEqual(score, weapon_score(weapon))
+                self.assertGreater(score, previous)
+                # Best in slot, but not absurdly so: 10-20% over the best
+                # weapon a character of that level could otherwise carry.
+                self.assertGreaterEqual(score, baseline * 1.10)
+                self.assertLessEqual(score, baseline * 1.20)
+                self.assertEqual(obj.cost, obj.level * obj.level * 6 * COPPER_PER_GOLD)
+                # The boss is the only source: one G reset, nothing else.
+                self.assertEqual(
+                    [reset.command for reset in self.resets
+                     if reset.command in {"O", "G", "E", "P"} and reset.arg1 == weapon.vnum],
+                    ["G"],
+                )
+            previous = score
+
+    def room_bands(self) -> dict[int, int]:
+        """The band of every Hyrule room: its dungeon, its screen, or the
+        screen whose exit or portal leads into it (caves, shops, cellars)."""
+        bands = manifest_bands(self.manifest)
+        room_band = {room["vnum"]: band_index(room["recommended_level"], bands)
+                     for room in self.world.values()}
+        for level, dungeon in self.dungeons.items():
+            room_band.update({vnum: level for vnum in range(
+                dungeon["first_room_vnum"], dungeon["last_room_vnum"] + 1)})
+        changed = True
+        while changed:
+            changed = False
+            for vnum, room in self.hyrule_rooms.items():
+                if vnum not in room_band:
+                    continue
+                leads_to = {exit_data.to_room for exit_data in room.exits}
+                for object_vnum in room.objects:
+                    obj = self.parser.objects.get(object_vnum)
+                    if obj is not None and obj.item_type == "30":
+                        leads_to.add(int(obj.values[1]))
+                for target in leads_to:
+                    if target in self.hyrule_rooms and target not in room_band:
+                        room_band[target] = room_band[vnum]
+                        changed = True
+        return room_band
+
+    def test_items_sit_at_or_below_the_band_they_are_found_in(self) -> None:
+        """A level 15 wooden sword on the start screen helped nobody.
+
+        Every place an item comes from -- a room, a boss or shopkeeper, a
+        chest -- has a band, and the item must be usable at the top of
+        it. The Master Sword is the one deliberate exception: the NES's
+        late-game sword, found in the graveyard and kept at level 58.
+        """
+        bands = manifest_bands(self.manifest)
+        room_band = self.room_bands()
+        holder_band: dict[int, int] = {}
+        found: dict[int, set[int]] = {}
+        mob_room = None
+        for reset in self.resets:
+            if reset.command == "M":
+                mob_room = reset.arg3
+            elif reset.command == "O" and reset.arg3 in room_band:
+                found.setdefault(reset.arg1, set()).add(room_band[reset.arg3])
+                holder_band[reset.arg1] = room_band[reset.arg3]
+            elif reset.command in {"G", "E"} and mob_room in room_band:
+                found.setdefault(reset.arg1, set()).add(room_band[mob_room])
+                holder_band[reset.arg1] = room_band[mob_room]
+        for reset in self.resets:
+            if reset.command == "P" and reset.arg3 in holder_band:
+                found.setdefault(reset.arg1, set()).add(holder_band[reset.arg3])
+
+        too_high = []
+        for vnum, found_in in sorted(found.items()):
+            obj = self.parser.objects[vnum]
+            if vnum == 30200:
+                continue
+            for band in found_in:
+                if obj.level > bands[band][1]:
+                    too_high.append((vnum, obj.short_desc, obj.level, band, bands[band]))
+        self.assertEqual([], too_high)
+        self.assertEqual(self.parser.objects[30200].level, 58)
+
+        # The first things a new character can pick up.
+        self.assertLessEqual(self.parser.objects[30219].level, 3, "the Wooden Sword")
+        self.assertLessEqual(self.parser.objects[30232].level, bands[1][1], "the boomerang")
+        for level, heart_guard in BOSS_GEAR.items():
+            with self.subTest(level=level, heart_guard=heart_guard):
+                low, high = bands[level]
+                self.assertTrue(low <= self.parser.objects[heart_guard].level <= high)
+
+        # The Silver Arrow rule must sit inside Death Mountain's band.
+        merc = Path("src/merc.h").read_text(encoding="utf-8")
+        arrow_level = int(merc.split("#define HYRULE_SILVER_ARROW_LEVEL", 1)[1].split()[0])
+        self.assertEqual(arrow_level, self.parser.objects[30218].level)
+        self.assertTrue(bands[9][0] <= arrow_level <= bands[9][1])
+
+    def test_nothing_found_outdoes_its_bands_boss_weapon(self) -> None:
+        """The boss weapons stay best in slot after the re-levelling."""
+        bands = manifest_bands(self.manifest)
+        better = []
+        for obj in self.parser.objects.values():
+            if (obj.area_file != "hyrule.are" or obj.item_type != "5"
+                    or obj.vnum in {weapon.vnum for weapon in BOSS_WEAPONS.values()}
+                    or not self.object_is_sourced(obj.vnum)):
+                continue
+            affects = {affect["location"]: affect["modifier"] for affect in obj.affects}
+            score = int(obj.values[1]) * (int(obj.values[2]) + 1) / 2 + affects.get(19, 0)
+            for level, weapon in BOSS_WEAPONS.items():
+                if bands[level][0] <= obj.level <= bands[level][1] and score >= weapon_score(weapon):
+                    better.append((obj.vnum, obj.short_desc, obj.level, score, level))
+        self.assertEqual([], better)
+
+    def test_hyrule_bystanders_cannot_be_attacked(self) -> None:
+        """The old men are level 50 so nothing in Level 1 can hurt them,
+        which made them the best experience in Hyrule for anyone who could."""
+        fight = Path("src/fight.c").read_text(encoding="utf-8")
+        for name, vnum in (("OLD_MAN", NPC_MOBS["old_man"]), ("ZELDA", NPC_MOBS["princess_zelda"]),
+                           ("FAIRY", NPC_MOBS["fairy"]), ("REPAIR_MAN", 30344), ("GAMBLER", 30345)):
+            self.assertIn(f"#define HYRULE_{name}_VNUM", fight)
+            self.assertIn(str(vnum), fight.split(f"#define HYRULE_{name}_VNUM", 1)[1].split("\n", 1)[0])
+        safe = fight.split("bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("is_hyrule_bystander(victim)", safe)
+        self.assertGreaterEqual(fight.count("is_hyrule_bystander(victim)"), 2,
+                                "both is_safe and the quiet spell check must refuse them")
+
+    def test_room_names_carry_no_grid_labels(self) -> None:
+        import re
+
+        grid = re.compile(r"\[[A-P]\d\]|\b[A-P][1-8]\b|\[\d+/\d+\]")
+        labelled = sorted(
+            (vnum, room.name) for vnum, room in self.hyrule_rooms.items()
+            if grid.search(room.name)
+        )
+        self.assertEqual([], labelled)
+
+        dungeon_vnums = {}
+        for level, dungeon in self.dungeons.items():
+            for vnum in range(dungeon["first_room_vnum"], dungeon["last_room_vnum"] + 1):
+                dungeon_vnums[vnum] = level
+        misnamed = sorted(
+            (vnum, room.name) for vnum, room in self.hyrule_rooms.items()
+            if room.name.startswith("Level ") != (vnum in dungeon_vnums)
+            or (vnum in dungeon_vnums
+                and not room.name.startswith(f"Level {dungeon_vnums[vnum]}: "))
+        )
+        self.assertEqual([], misnamed)
+        self.assertEqual(self.hyrule_rooms[30200].name, "The First Quest Begins")
+
+    def test_rooms_describe_the_place_and_fit_a_terminal(self) -> None:
+        """The old prose was one template that listed who was in the room."""
+        lost_maze = set(range(30750, 30757))
+        problems = []
+        seen: dict[str, int] = {}
+        for vnum, room in sorted(self.hyrule_rooms.items()):
+            lines = room.description.strip().splitlines()
+            if not 2 <= len(lines) <= 7:
+                problems.append((vnum, "length", len(lines)))
+            if any(len(line) > 78 for line in lines):
+                problems.append((vnum, "too wide"))
+            for phrase in ("waits here", "wait here", "Nothing moves", "hold this ground"):
+                if phrase in room.description:
+                    problems.append((vnum, phrase))
+            text = " ".join(room.description.split())
+            if (text in seen and vnum not in lost_maze
+                    and not 30660 <= vnum <= 30723):
+                problems.append((vnum, "same as", seen[text]))
+            seen.setdefault(text, vnum)
+        self.assertEqual([], problems)
 
     def test_every_dungeon_goal_is_reachable_with_keys_found_on_its_floor(self) -> None:
         for level, dungeon in self.dungeons.items():
@@ -393,7 +711,9 @@ class HyruleProgressionTests(unittest.TestCase):
             and obj.item_type in {"5", "9"}
             and self.object_is_sourced(obj.vnum)
         }
-        self.assertEqual(set(range(1, 71)) - sourced_levels, set())
+        # Hyrule is a 1-59 climb: gear for every mortal level, none above.
+        self.assertEqual(set(range(1, 60)) - sourced_levels, set())
+        self.assertEqual({level for level in sourced_levels if level > 59}, set())
 
         for stage, (chest_vnum, gear_vnums) in GEAR_STAGES.items():
             with self.subTest(stage=stage):
