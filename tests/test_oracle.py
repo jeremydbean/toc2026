@@ -364,6 +364,27 @@ class OracleContextTests(unittest.TestCase):
                       titles("how can I see what people said on gossip while I "
                              "was offline?"))
         self.assertIn("HELP BUFF", titles("how do I get free buffs?"))
+        # Not AQUEST, which only mentions gambling in passing.
+        self.assertIn("HELP CASINO", titles("is there anywhere to gamble?"))
+
+    def test_the_strongest_weapon_in_the_game_is_answered_at_the_cap(self):
+        # A question with no level is not best-in-slot; the eval found her
+        # saying she could not see what weapons exist.
+        from unittest.mock import patch
+        seen = {}
+
+        async def fake_best(**kw):
+            seen.update(kw)
+            return {"Wielded": [{"name": "the Power of the world", "level": 54,
+                                 "area": "The Abandoned Cathedral", "vnum": 1}]}
+
+        with patch.object(_server, "get_best_gear", fake_best), \
+                patch.object(_server, "parser", types.SimpleNamespace(
+                    objects={}, mobiles={}, rooms={})):
+            ctx = _server._oracle_context(
+                "Nobodyhere", "what is the most powerful weapon in the game?")
+        self.assertEqual(seen.get("level"), _server._ORACLE_MORTAL_CAP)
+        self.assertIn("the Power of the world (lvl 54)", ctx)
 
     def test_only_the_relevant_docs_are_sent(self):
         # Sending the whole manual cost ~$0.04 a sitting in cache writes.

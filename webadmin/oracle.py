@@ -358,7 +358,8 @@ what which who whom whose where when why how do does did can could should
 would will shall may might must have has had not no yes so if then than there
 here as about into out up down over any some all each more most much many one
 two get got make made use used also just only very really please tell know want
-oracle game times chaos mud player players thing things way
+oracle game times chaos mud player players thing things way anywhere somewhere
+everywhere anything something everything anyone someone everyone ever
 """.split())
 
 
@@ -366,7 +367,12 @@ def _stem(w: str) -> str:
     """Enough stemming that "remorts", "remorting" and "remort" agree."""
     for suf, rep in (("ies", "y"), ("ing", ""), ("ed", ""), ("es", ""), ("s", "")):
         if len(w) > len(suf) + 3 and w.endswith(suf):
-            return w[:-len(suf)] + rep
+            w = w[:-len(suf)] + rep
+            break
+    # "gamble" and "gambling" both come to "gambl", "store" and "stored" to
+    # "stor": a final e is dropped once the suffix is gone.
+    if len(w) > 4 and w.endswith("e"):
+        w = w[:-1]
     return w
 
 
@@ -416,10 +422,10 @@ def _doc_sections() -> List[Dict[str, Any]]:
     return sections
 
 
-def term_counts(text: str, title: str = "") -> Dict[str, Any]:
-    """A searchable record for rank(): term counts, titles weighted 3x."""
+def term_counts(text: str, title: str = "", title_weight: int = 3) -> Dict[str, Any]:
+    """A searchable record for rank(): term counts, the title weighted up."""
     counts: Dict[str, int] = {}
-    for t in _terms(text) + _terms(title) * 3:
+    for t in _terms(text) + _terms(title) * title_weight:
         counts[t] = counts.get(t, 0) + 1
     return {"tf": counts, "len": sum(counts.values()) or 1}
 

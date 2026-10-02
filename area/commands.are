@@ -845,7 +845,10 @@ stores loot, it is not a way to carry it.
 
 You start with room for fifty things, counted as things rather than
 weight - a bag of gems is one.  STASH BUY at the altar adds another
-twenty-five, and the price climbs each time, up to five hundred.
+twenty-five, and the price climbs each time, up to five hundred.  The
+first purchase costs 250 gold, the second 1,000, the third 2,250 -- 250
+gold times the square of the purchase number -- and all eighteen come to
+527,250 gold.  STASH on its own always shows the price of the next one.
 
 Anything with a timer on it is refused, and so is a corpse.  They would
 only rot where you put them.

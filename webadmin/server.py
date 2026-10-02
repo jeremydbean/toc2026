@@ -546,7 +546,11 @@ def _oracle_help_records(entries: list) -> list:
         records = []
         for entry in entries:
             body = re.sub(r"\{(?:[0-9A-Fa-f]{2}|.)", "", entry.get("body", ""))
-            rec = oracle.term_counts(body, " ".join(entry.get("keywords", [])))
+            # A help entry's keywords say what it is about far more surely
+            # than a passing mention in a long body: AQUEST names "gamble"
+            # four times and is not where anybody goes to gamble.
+            rec = oracle.term_counts(body, " ".join(entry.get("keywords", [])),
+                                     title_weight=6)
             rec["entry"] = entry
             records.append(rec)
         _ORACLE_HELP_INDEX.update({"entries": entries, "records": records})
@@ -587,6 +591,16 @@ def _oracle_help_lines(question: str, entries: list, limit: int = 2) -> list:
         lines.append("HELP %s -- %s" % (entry.get("title", "?").upper(), body))
     return lines
 
+
+_ORACLE_TOP_HINTS = ("most powerful", "strongest", "best weapon", "deadliest",
+                     "top weapon", "highest damage", "most damage", "best sword",
+                     "best axe", "best mace", "best dagger")
+_ORACLE_WEAPON_WORDS = ("weapon", "sword", "axe", "mace", "dagger", "whip",
+                        "spear", "flail", "polearm", "staff", "blade")
+_ORACLE_WORLD_HINTS = ("in the game", "in the world", "overall", "anywhere",
+                       "in existence", "of all", "ever", "there is", "on the mud")
+# The highest level a mortal reaches (the fifth remort's life).
+_ORACLE_MORTAL_CAP = 59
 
 _ORACLE_WHO_HINTS = (
     "online", "who's on", "whos on", "who is on", "anyone on", "anybody on",
@@ -812,6 +826,32 @@ def _oracle_context(player: str, question: str) -> str:
         if bis:
             lines.append("Obtainable best-in-slot for this class and level -- "
                          + "; ".join(bis) + ".")
+
+    # "The most powerful weapon in the game" is not a best-in-slot question --
+    # it has no level -- so answer it at the mortal cap, from the same finder.
+    if any(h in ql for h in _ORACLE_TOP_HINTS) \
+            and any(w in ql for w in _ORACLE_WEAPON_WORDS) \
+            and (any(w in ql for w in _ORACLE_WORLD_HINTS) or not prof):
+        c = cls if cls in CLASS_WEIGHTS else "warrior"
+        r = race if race in RACE_FLAGS else "human"
+        try:
+            top = asyncio.run(get_best_gear(class_name=c, race_name=r,
+                                            level=_ORACLE_MORTAL_CAP, limit=3))
+        except Exception:
+            top = {}
+        picks = []
+        for it in (top.get("Wielded") or [])[:3]:
+            where = it.get("area", "?")
+            carriers = getattr(objs.get(it.get("vnum")), "carried_by", None) or []
+            carrier = getattr(mobs.get(carriers[0]), "short_desc", None) if carriers else None
+            if carrier:
+                where = "%s in %s" % (carrier, where)
+            picks.append("%s (lvl %s) from %s" % (it.get("name", "?"),
+                                                  it.get("level", "?"), where))
+        if picks:
+            lines.append("Most powerful weapons a %s can wield at the mortal cap "
+                         "(level %d), per the gear finder -- %s." % (
+                             c, _ORACLE_MORTAL_CAP, "; ".join(picks)))
 
     # The website's Directions data: walking routes from the Oak Tree Square.
     if any(h in ql for h in _ORACLE_DIR_HINTS) or "where is" in ql:
