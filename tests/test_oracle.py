@@ -322,6 +322,15 @@ class OracleContextTests(unittest.TestCase):
         self.assertEqual(wq("what should I be wearing at level 20?"), ("", ""))
         self.assertEqual(wq("what are you wearing?"), ("", ""))
 
+    def test_the_shipped_help_reaches_her_without_a_player_file(self):
+        # She once said sanctuary takes off a quarter; the help says half.
+        # The help must be in her context even when no player file is
+        # readable, which is exactly when it is all she has.
+        ctx = _server._oracle_context("Nobodyhere", "what does sanctuary do?")
+        self.assertIn("SANCTUARY spell reduces the damage taken", ctx)
+        self.assertIn("by one half", ctx)
+        self.assertNotIn("Supplicant:", ctx)
+
     def test_a_gear_question_about_a_creature_is_never_cached(self):
         self.assertIsNone(_server._oracle_cache_key(
             "Nobodyhere", "is the cityguard wearing a helm?"))

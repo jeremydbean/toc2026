@@ -631,9 +631,9 @@ def _oracle_context(player: str, question: str) -> str:
     gear, and -- for gear questions -- the obtainable best-in-slot for their
     class and level, with where it drops. Runs in the poller's thread; the
     dashboard already reads player files and parses the world here."""
-    prof = parse_player_file(player)
-    if not prof:
-        return ""
+    # Without a readable player file there is nothing personal to say, but
+    # the help, the drop tables and the live world still answer the question.
+    prof = parse_player_file(player) or {}
 
     cls = str(prof.get("class_name", "")).lower()
     race = str(prof.get("race", "")).lower()
@@ -647,7 +647,8 @@ def _oracle_context(player: str, question: str) -> str:
     mobs = getattr(parser, "mobiles", None) or getattr(parser, "mobs", {}) or {}
     rooms = getattr(parser, "rooms", {}) or {}
 
-    lines = ["Supplicant: %s, a level %d %s %s." % (player, lvl, race or "?", cls or "?")]
+    lines = (["Supplicant: %s, a level %d %s %s." % (player, lvl, race or "?", cls or "?")]
+             if prof else [])
     ql = (question or "").lower()
 
     # Who is connected is asked of the game itself (the "who" lookup below),
@@ -660,8 +661,9 @@ def _oracle_context(player: str, question: str) -> str:
         name = getattr(obj, "short_desc", None) or ("item %s" % it.get("vnum"))
         slot = WEAR_SLOT_NAMES.get(it.get("wear", -1), "worn")
         worn.append("%s: %s (lvl %s)" % (slot, name, it.get("level", "?")))
-    lines.append("Currently worn -- " + ("; ".join(worn[:20]) if worn
-                                          else "nothing of note") + ".")
+    if prof:
+        lines.append("Currently worn -- " + ("; ".join(worn[:20]) if worn
+                                              else "nothing of note") + ".")
 
     # Other players named in the question, so she can answer "is X wearing Y?".
     # Cheap: a single stat per token (names are stored capitalised); bounded.
