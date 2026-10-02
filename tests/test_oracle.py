@@ -216,6 +216,10 @@ class OracleWiringTests(unittest.TestCase):
     def test_oracle_mob_exists_in_limbo(self):
         self.assertIn("the Oracle sits here", self.read("area", "limbo.are"))
 
+    def test_a_question_mark_anywhere_reaches_her(self):
+        # "where is X?  give me directions" must count, not just a trailing ?.
+        self.assertIn("strchr( said, '?' )", self.read("src", "oracle.c"))
+
     def test_off_topic_protocol_is_wired(self):
         # The model emits a sentinel for off-topic; the game turns it into a
         # refusal and escalates.

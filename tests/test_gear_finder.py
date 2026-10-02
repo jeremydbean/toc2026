@@ -241,6 +241,34 @@ class GearFinderTests(unittest.TestCase):
         self.assertIn("n;n;e", route)
         self.assertIn("a troll (lvl 31) in Moria", lvl)
 
+    def test_a_live_finding_comes_with_a_route_to_its_area(self) -> None:
+        import tempfile
+        from webadmin import server
+
+        prof = {"class_name": "warrior", "race": "human", "level": 30, "equipment": []}
+        fake_parser = SimpleNamespace(
+            objects={}, mobiles={},
+            rooms={100: SimpleNamespace(area_name="Camelot   Keep")})
+        routes = {"routes": [{"name": "Camelot", "area": "Camelot Keep",
+                              "area_display": "Camelot", "commands": "n;n;e",
+                              "rooms_away": 3}]}
+
+        def fake_lookup(reqs, timeout=2.5):
+            return ["a grail in The Chapel (100)" if kind == "obj" else ""
+                    for kind, _arg in reqs]
+
+        with tempfile.TemporaryDirectory() as empty, \
+                patch.object(server, "PLAYER_PATH", Path(empty)), \
+                patch.object(server, "parse_player_file", lambda n: prof), \
+                patch.object(server, "parser", fake_parser), \
+                patch.object(server, "_oracle_live_lookup", fake_lookup), \
+                patch.object(server, "load_directions", lambda: routes):
+            ctx = server._oracle_context("Tester", "where is the grail?")
+
+        self.assertIn("a grail in The Chapel (100)", ctx)
+        self.assertIn("Route to Camelot, where that is", ctx)
+        self.assertIn("n;n;e", ctx)
+
     def test_cache_key_only_for_impersonal_questions(self) -> None:
         import tempfile
         from webadmin import server

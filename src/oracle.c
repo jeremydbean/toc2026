@@ -307,7 +307,8 @@ bool oracle_hears( const char *argument )
     if ( len == 0 )
         return FALSE;
 
-    if ( said[len - 1] == '?' )
+    /* A question mark anywhere: "where is X?  give me directions" asks. */
+    if ( strchr( said, '?' ) != NULL )
         return TRUE;
 
     {

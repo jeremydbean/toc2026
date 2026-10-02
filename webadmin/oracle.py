@@ -261,7 +261,8 @@ def _game_context() -> str:
     here = Path(__file__).resolve().parent.parent
     parts = []
     for rel in ("wiki/player-command-reference.md", "wiki/player-guide.md",
-                "wiki/achievements.md", "wiki/game-client-guide.md"):
+                "wiki/psionics.md", "wiki/achievements.md",
+                "wiki/game-client-guide.md"):
         try:
             parts.append("### " + rel + "\n"
                          + (here / rel).read_text(encoding="utf-8", errors="replace"))

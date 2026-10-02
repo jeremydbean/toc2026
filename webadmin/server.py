@@ -462,7 +462,9 @@ def _oracle_context(player: str, question: str) -> str:
         lvl = 1
 
     objs = getattr(parser, "objects", {}) or {}
-    mobs = getattr(parser, "mobs", {}) or {}
+    # The parser calls its mob table `mobiles`.
+    mobs = getattr(parser, "mobiles", None) or getattr(parser, "mobs", {}) or {}
+    rooms = getattr(parser, "rooms", {}) or {}
 
     lines = ["Supplicant: %s, a level %d %s %s." % (player, lvl, race or "?", cls or "?")]
 
@@ -525,6 +527,7 @@ def _oracle_context(player: str, question: str) -> str:
     live_kw = _oracle_live_keyword(question)
     if live_kw:
         reqs += [("obj", live_kw), ("mob", live_kw)]
+    live_rooms: list = []
     if reqs:
         for (kind, _arg), found in zip(reqs, _oracle_live_lookup(reqs)):
             if not found:
@@ -532,6 +535,35 @@ def _oracle_context(player: str, question: str) -> str:
             if kind == "mob" and found.startswith("No '"):
                 continue   # it was an item, not a mob
             lines.append("Live right now -- %s" % found)
+            if kind in ("obj", "mob"):
+                live_rooms += [int(v) for v in re.findall(r"\((\d+)\)", found)]
+
+    # A route to wherever the live lookup found it, from the Directions data.
+    if live_rooms:
+        try:
+            all_routes = load_directions().get("routes") or []
+        except Exception:
+            all_routes = []
+        by_area: Dict[str, Any] = {}
+        for r in all_routes:
+            for k in (r.get("area"), r.get("area_display")):
+                if k:
+                    by_area.setdefault(" ".join(str(k).split()), r)
+        done = set()
+        for v in live_rooms:
+            area = getattr(rooms.get(v), "area_name", "") or ""
+            key = " ".join(area.split())
+            if not key or key in done:
+                continue
+            done.add(key)
+            r = by_area.get(key)
+            if r:
+                lines.append("Route to %s, where that is (%s rooms from the Oak "
+                             "Tree Square): %s" % (r.get("area_display") or key,
+                                                   r.get("rooms_away", "?"),
+                                                   r.get("commands", "")))
+            if len(done) >= 2:
+                break
 
     ql = (question or "").lower()
     if cls in CLASS_WEIGHTS and race in RACE_FLAGS \

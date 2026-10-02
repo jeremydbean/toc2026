@@ -371,8 +371,10 @@ and resurrecting a dead player are what those spells do.
 Beginning at remort 2, a character receives one random power from each of four
 psionic disciplines. The final remort grants all 17 powers. These abilities use
 mana and include mental attacks, temporary defenses, healing, scouting,
-teleportation, and item retrieval. See the [Psionics Guide](psionics.md) for the
-complete power list, costs, defensive interactions, and protected-room rules.
+teleportation, and item retrieval. Practice them with Salir the Monk in the
+Study of the Sage, in the Astral Plane. See the [Psionics Guide](psionics.md)
+for the complete power list, costs, defensive interactions, and protected-room
+rules.
 
 ## Achievements
 

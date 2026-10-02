@@ -6,6 +6,13 @@ from each discipline, for four powers total. The final remort grants all 17.
 Use `skills` to see which powers the current character knows and `help
 <power>` for live syntax.
 
+## Where To Practice
+
+Psionic powers are practiced with **Salir the Monk**, who hovers in the Study
+of the Sage in the Astral Plane (room 7599). The Astral Plane is about 17 rooms
+from the Oak Tree Square: `r w 7;open gate;w;r n 3;r e 2;r n 2;r u 2` reaches
+the area, then find the Study of the Sage.
+
 ## Disciplines
 
 | Discipline | Powers |
