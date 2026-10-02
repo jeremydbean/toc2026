@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790981707
+LogO 1790982045
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 238457
+Plyd 238795
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2401
-HMV  1110 1110 1472 1472 427 427
-NewGold 102
-NewPlat 116
-NewCopp 105
-NewSilv 53
+Room 2497
+HMV  1150 1150 1482 1482 427 427
+NewGold 115
+NewPlat 121
+NewCopp 136
+NewSilv 76
 BankCP 505999078
 IntTime 1790902684
 IntTotal 6999078
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 838
+AchKills 839
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -106,9 +106,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  124749
+Exp  125284
 Act  4261068
-AfBy 524856
+AfBy 524800
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -137,12 +137,12 @@ Pos  8
 Prac 8
 Trai 2
 Save  -6
-Alig  975
-Hit   32
-Dam   46
-ACs -154 -164 -121 -6
+Alig  987
+Hit   29
+Dam   43
+ACs -161 -172 -128 -15
 Attr 22 13 12 16 15
-AMod -2 10 11 -2 9
+AMod -3 10 11 -2 9
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Third Order~
 Pnts 0
@@ -185,10 +185,7 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'fly'  32   8   0   0     524288          0
-AffD 'detect hidden'  41   1   0   0         32          0
-AffD 'detect magic'  34   1   0   0         16          0
-AffD 'detect invis'  29   1   0   0          8          0
+AffD 'fly'  29   3   0   0     524288          0
 End
 
 #O
@@ -462,17 +459,6 @@ Repd 0
 End
 
 #O
-Vnum 10059
-Nest 1
-Wear -1
-Lev  33
-Cost 40000000
-Cond 100
-Repd 0
-Affect -1 33 -1 13 17 0 0
-End
-
-#O
 Vnum 721
 Nest 1
 Wear -1
@@ -506,7 +492,7 @@ End
 #O
 Vnum 9213
 Nest 0
-Wear 10
+Wear -1
 Lev  22
 Cost 55660000
 Cond 100
@@ -559,7 +545,7 @@ End
 #O
 Vnum 10059
 Nest 0
-Wear 4
+Wear -1
 Lev  33
 Cost 40000000
 Cond 100
@@ -1017,6 +1003,39 @@ Cond 100
 Repd 0
 Val  0 0 9998 0 0
 Affect -1 35 -1 -1 18 0 0
+End
+
+#O
+Vnum 29208
+Nest 0
+Wear 4
+Lev  51
+Cost 30000000
+Cond 100
+Repd 0
+Affect -1 51 -1 9 17 0 0
+End
+
+#O
+Vnum 29209
+Nest 0
+Wear 10
+Lev  51
+Cost 20000000
+Cond 100
+Repd 0
+Affect -1 51 -1 4 22 0 0
+End
+
+#O
+Vnum 10059
+Nest 0
+Wear -1
+Lev  33
+Cost 40000000
+Cond 100
+Repd 0
+Affect -1 33 -1 13 17 0 0
 End
 
 #STASH
