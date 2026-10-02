@@ -566,3 +566,14 @@
 1790978633	gossip	Alaric	Really gotta fix the switch on my fucking "y" key
 1790978642	gossip	Killuminati	lol
 1790978697	gossip	Killuminati	your question only cost $0.00349
+1790978719	gossip	Alaric	I'm curious to grab those. Because when I compared them at 51 the in-game comparison said platinum was better
+1790978738	gossip	Alaric	I submitted a bug just a bit ago outlaying another example of the different between in game and the website
+1790978746	gossip	Killuminati	interesting, yeah anything she gets wrong just make a bug report. 
+1790978767	gossip	Killuminati	i saw, it's been awhile since i took a look at compare.  probably needs updating like the gear on the website did
+1790978826	gossip	Killuminati	Alaric's answer: the website and the in-game compare use the same stats. The website was misreading the item. For 55 objects, the website's area parser swapped the race-restriction flags and the wear flags, so the website read Starlight as human-only and worn on the neck. 
+1790978828	gossip	Killuminati	In the game it's dwarf-only and held. Alaric is a dwarf, so the website hid the one light made for him. It now ranks Starlight first in the light slot for a level-52 dwarf warrior (25.6 vs. the black staff's 24.0). I added a regression test, and the gear finder and directions tests still pass.
+1790978882	gossip	Alaric	It's damned quick
+1790978884	gossip	Killuminati	that's the result of your bug report.  it's fixing it, lol
+1790978898	gossip	Killuminati	the AI actually monitors the bug reports, lol
+1790978911	gossip	Killuminati	but it won't reboot while anyone is logged in that isn't me, lol
+1790978992	gossip	Alaric	Be back in a bit
