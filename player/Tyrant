@@ -1,7 +1,7 @@
 #PLAYER
 Name Tyrant~
 Id   23103
-LogO 1790899248
+LogO 1790899440
 Vers 4
 Desc .                         /|                 |\
 .                        / | ___.--^^^--.___ | \
@@ -45,7 +45,7 @@ PsiKnown ~
 Cast Fors
 Levl 34
 Tru  70
-Plyd 755922
+Plyd 756114
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
@@ -95,9 +95,9 @@ Achv bank-thousand-platinum 1790829256
 Achv carry-ten-platinum 1790829256
 Achv carry-thousand-platinum 1790829256
 Achv benchmark-champion 1790836808
-LastOut  1790844129
-SesLogin 1790843787
-SesDur   342
+LastOut  1790899440
+SesLogin 1790897367
+SesDur   2073
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -146,7 +146,7 @@ Pnts 40
 TSex 1
 LLev 3
 HMVP 951 145 298
-Cond 0 7 7
+Cond 0 5 5
 Alias / who~
 Alias ] recall~
 Alias f flee~
@@ -380,7 +380,7 @@ End
 Vnum 9231
 Nest 1
 Wear -1
-Time 48
+Time 45
 Cost 100000
 Cond 100
 Repd 0
@@ -391,7 +391,7 @@ End
 Vnum 9231
 Nest 1
 Wear -1
-Time 23
+Time 20
 Cost 100000
 Cond 100
 Repd 0
@@ -402,7 +402,7 @@ End
 Vnum 9231
 Nest 1
 Wear -1
-Time 82
+Time 79
 Cost 100000
 Cond 100
 Repd 0

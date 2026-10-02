@@ -1,12 +1,12 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790899032
+LogO 1790899576
 Vers 4
 Prom ~
 Ignoring ~
 Race dwarf~
-Sex  1
+Sex  2
 Cla  3
 Gui  3
 Psionic  1
@@ -14,16 +14,16 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
-Levl 50
-Plyd 228937
+Levl 51
+Plyd 229481
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1178 1447 1413 1438 374 374
-NewGold 76
-NewPlat 21
+HMV  1057 1071 1408 1435 265 488
+NewGold 3
+NewPlat 22
 NewCopp 8
 NewSilv 1
 BankCP 504737235
@@ -35,7 +35,7 @@ Corpses	0
 PkRec 0
 PkGiv 0
 AchKills 783
-AchQuests 135
+AchQuests 136
 AchDeaths 0
 AchExplore 5
 AchMaps 5
@@ -97,13 +97,14 @@ SesDead  0
 SesQuest 14
 RecallRoom 2497
 RecallSet  1790647311
-QuestPnts 6939
-QuestStrk 24
+QuestPnts 13
+QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  112575
+QuestNext 3
+Exp  114750
 Act  4261068
-AfBy 568
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -129,20 +130,22 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Save  2
+Prac 4
+Trai 1
+Save  -1
 Alig  1000
-Hit   14
-Dam   10
-ACs -119 -136 -90 -27
+Hit   35
+Dam   51
+ACs -131 -138 -98 18
 Attr 22 13 12 16 15
-AMod 0 0 0 3 -4
+AMod -3 10 10 1 12
 Pass Al3w9zuAlwpyY~
-Titl .~
+Titl  the Heroine of the Fifth Order~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 1072 1368 394
-Cond 0 32 14
+HMVP 1086 1395 400
+Cond 0 24 6
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
@@ -178,9 +181,6 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'detect hidden'  45   4   0   0         32          0
-AffD 'detect magic'  15   4   0   0         16          0
-AffD 'detect invis'  49   4   0   0          8          0
 End
 
 #O
@@ -197,12 +197,68 @@ Repd 1
 End
 
 #O
-Vnum 3715
+Vnum 20301
 Nest 1
 Wear -1
-Cost 0
+Lev  1
+Cost 1000000
 Cond 100
 Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
+End
+
+#O
+Vnum 20301
+Nest 1
+Wear -1
+Lev  1
+Cost 1000000
+Cond 100
+Repd 0
+Spell 1 'haste'
+Spell 2 'heal'
+Spell 3 'fire shield'
 End
 
 #O
@@ -271,129 +327,51 @@ Spell 3 'fire shield'
 End
 
 #O
-Vnum 3716
+Vnum 3092
 Nest 1
 Wear -1
-Cost 0
-Cond 100
-Repd 0
-Val  0 0 184 0 0
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 1000000
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 1000000
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 1000000
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 1000000
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 20301
-Nest 1
-Wear -1
-Lev  1
-Cost 1000000
-Cond 100
-Repd 0
-Spell 1 'haste'
-Spell 2 'heal'
-Spell 3 'fire shield'
-End
-
-#O
-Vnum 3715
-Nest 1
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 7623
-Nest 1
-Wear -1
-Lev  25
 Cost 1500000
 Cond 100
 Repd 0
-Affect -1 25 -1 -13 12 0 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
 End
 
 #O
-Vnum 9224
+Vnum 3092
 Nest 1
 Wear -1
-Lev  8
-Cost 7290000
+Cost 1500000
 Cond 100
 Repd 0
-Val  150 141 0 0 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
 End
 
 #O
-Vnum 9214
+Vnum 3092
 Nest 1
 Wear -1
-Lev  22
-Cost 50600000
+Cost 1500000
 Cond 100
 Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
 End
 
 #O
-Vnum 30359
+Vnum 3092
 Nest 1
 Wear -1
-Lev  40
-Cost 80000000
+Cost 1500000
 Cond 100
 Repd 0
+Spell 1 'detect invis'
+Spell 2 'detect magic'
+Spell 3 'detect hidden'
 End
 
 #O
@@ -437,218 +415,6 @@ Repd 0
 End
 
 #O
-Vnum 29924
-Nest 1
-Wear -1
-Cost 50000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29924
-Nest 1
-Wear -1
-Cost 50000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3746
-Nest 1
-Wear -1
-Lev  3
-Cost 16
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29925
-Nest 1
-Wear -1
-Cost 50000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29923
-Nest 1
-Wear -1
-Lev  50
-Cost 900000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29922
-Nest 1
-Wear -1
-Lev  50
-Cost 1000000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 700
-Nest 1
-ExtF 3146818
-Wear -1
-Lev  48
-Cost 25000000
-Cond 100
-Repd 0
-Affect -1 48 -1 3 20 0 0
-End
-
-#O
-Vnum 29920
-Nest 1
-Wear -1
-Lev  50
-Cost 1000000000
-Cond 100
-Repd 0
-Affect -1 50 -1 3 22 0 0
-End
-
-#O
-Vnum 30501
-Nest 1
-Wear -1
-Lev  1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30232
-Nest 1
-Wear -1
-Lev  17
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29049
-Nest 1
-Wear -1
-Lev  45
-Cost 15000000
-Cond 100
-Repd 0
-Val  0 0 -1 0 0
-Affect -1 45 -1 -1 24 0 0
-End
-
-#O
-Vnum 16006
-Nest 1
-Wear -1
-Lev  43
-Cost 22600000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 30411
 Nest 1
 Wear -1
@@ -656,67 +422,6 @@ Lev  35
 Cost 0
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 30542
-Nest 1
-Wear -1
-Lev  5
-Cost 20
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30542
-Nest 1
-Wear -1
-Lev  5
-Cost 20
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30542
-Nest 1
-Wear -1
-Lev  5
-Cost 20
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 30542
-Nest 1
-Wear -1
-Lev  5
-Cost 20
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 4619
-Nest 1
-Wear -1
-Lev  25
-Cost 250000000
-Cond 100
-Repd 1
-End
-
-#O
-Vnum 721
-Nest 1
-Wear -1
-Lev  48
-Cost 9500000
-Cond 100
-Repd 0
-Affect -1 48 -1 4 24 0 0
 End
 
 #O
@@ -734,183 +439,12 @@ Affect -1 32 -1 -3 22 0 0
 End
 
 #O
-Vnum 3092
+Vnum 3715
 Nest 1
 Wear -1
-Cost 1500000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 1
-Wear -1
-Cost 1500000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 1
-Wear -1
-Cost 1500000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 1
-Wear -1
-Cost 1500000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 725
-Nest 1
-Wear -1
-Lev  46
-Cost 9500000
-Cond 100
-Repd 0
-Affect -1 46 -1 5 17 0 0
-End
-
-#O
-Vnum 16021
-Nest 1
-Wear -1
-Lev  46
-Cost 19350000
-Cond 100
-Repd 0
-Affect -1 46 -1 -1 1 0 0
-Affect -1 46 -1 -5 1 0 0
-Affect -1 46 -1 -4 18 0 0
-End
-
-#O
-Vnum 16021
-Nest 1
-Wear -1
-Lev  46
-Cost 19350000
-Cond 100
-Repd 0
-Affect -1 46 -1 -1 14 0 0
-Affect -1 46 -1 2 24 0 0
-End
-
-#O
-Vnum 16013
-Nest 1
-Wear -1
-Lev  41
-Cost 14980000
-Cond 100
-Repd 1
-Affect -1 41 -1 -1 14 0 0
-End
-
-#O
-Vnum 16006
-Nest 1
-Wear -1
-Lev  43
-Cost 22600000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 10059
-Nest 1
-Wear -1
-Lev  33
-Cost 40000000
-Cond 100
-Repd 0
-Affect -1 33 -1 13 17 0 0
-End
-
-#O
-Vnum 10059
-Nest 1
-Wear -1
-Lev  33
-Cost 40000000
-Cond 100
-Repd 0
-Affect -1 33 -1 -1 23 0 0
-End
-
-#O
-Vnum 3737
-Nest 1
-Wear -1
-Lev  1
-Cost 100000
-Cond 100
-Repd 9
-Val  2 2 4 0 0
-End
-
-#O
-Vnum 10048
-Nest 1
-Wear -1
-Lev  32
-Cost 22000000
-Cond 100
-Repd 1
-Affect -1 32 -1 5 21 0 0
-End
-
-#O
-Vnum 724
-Nest 1
-Wear -1
-Lev  30
-Cost 5000000
-Cond 100
-Repd 0
-Affect -1 30 -1 -4 19 0 0
-End
-
-#O
-Vnum 3093
-Nest 1
-Wear -1
-Lev  1
 Cost 0
 Cond 100
 Repd 0
-End
-
-#O
-Vnum 9213
-Nest 1
-Wear -1
-Lev  22
-Cost 55660000
-Cond 100
-Repd 1
 End
 
 #O
@@ -920,6 +454,15 @@ Wear -1
 Cost 0
 Cond 100
 Repd 10
+End
+
+#O
+Vnum 29924
+Nest 1
+Wear -1
+Cost 50000000
+Cond 100
+Repd 0
 End
 
 #O
@@ -933,143 +476,427 @@ Repd 0
 End
 
 #O
-Vnum 17015
+Vnum 28129
 Nest 0
-Wear -1
-Lev  50
-Cost 7500000
-Cond 100
-Repd 0
-Affect -1 50 -1 4 23 0 0
-End
-
-#O
-Vnum 3608
-Nest 0
-Wear 17
-Lev  48
-Cost 80000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9212
-Nest 0
-Wear 15
-Lev  20
-Cost 40000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9212
-Nest 0
-Wear 14
-Lev  20
-Cost 40000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 1016
-Nest 0
-Wear 12
-Lev  33
-Cost 3000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 908
-Nest 0
-Wear 9
-Lev  35
+Wear 5
+Lev  45
 Cost 5000000
 Cond 100
 Repd 0
 End
 
 #O
-Vnum 2321
+Vnum 9213
 Nest 0
-Wear 4
-Lev  29
-Cost 30000000
+Wear 10
+Lev  22
+Cost 55660000
+Cond 100
+Repd 1
+End
+
+#O
+Vnum 3093
+Nest 0
+Wear -1
+Lev  1
+Cost 0
 Cond 100
 Repd 0
 End
 
 #O
-Vnum 18013
+Vnum 724
+Nest 0
+Wear 8
+Lev  30
+Cost 5000000
+Cond 100
+Repd 0
+Affect -1 30 -1 -4 19 0 0
+End
+
+#O
+Vnum 10048
+Nest 0
+Wear -1
+Lev  32
+Cost 22000000
+Cond 100
+Repd 1
+Affect -1 32 -1 5 21 0 0
+End
+
+#O
+Vnum 3737
+Nest 0
+Wear -1
+Lev  1
+Cost 100000
+Cond 100
+Repd 9
+Val  2 2 4 0 0
+End
+
+#O
+Vnum 10059
+Nest 0
+Wear 4
+Lev  33
+Cost 40000000
+Cond 100
+Repd 0
+Affect -1 33 -1 -1 23 0 0
+End
+
+#O
+Vnum 10059
+Nest 0
+Wear 3
+Lev  33
+Cost 40000000
+Cond 100
+Repd 0
+Affect -1 33 -1 13 17 0 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear 2
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16013
+Nest 0
+Wear 7
+Lev  41
+Cost 14980000
+Cond 100
+Repd 1
+Affect -1 41 -1 -1 14 0 0
+End
+
+#O
+Vnum 16021
+Nest 0
+Wear 15
+Lev  46
+Cost 19350000
+Cond 100
+Repd 0
+Affect -1 46 -1 -1 14 0 0
+Affect -1 46 -1 2 24 0 0
+End
+
+#O
+Vnum 16021
+Nest 0
+Wear 14
+Lev  46
+Cost 19350000
+Cond 100
+Repd 0
+Affect -1 46 -1 -1 1 0 0
+Affect -1 46 -1 -5 1 0 0
+Affect -1 46 -1 -4 18 0 0
+End
+
+#O
+Vnum 725
+Nest 0
+Wear 9
+Lev  46
+Cost 9500000
+Cond 100
+Repd 0
+Affect -1 46 -1 5 17 0 0
+End
+
+#O
+Vnum 721
+Nest 0
+Wear 13
+Lev  48
+Cost 9500000
+Cond 100
+Repd 0
+Affect -1 48 -1 4 24 0 0
+End
+
+#O
+Vnum 4619
 Nest 0
 Wear 6
+Lev  25
+Cost 250000000
+Cond 100
+Repd 1
+End
+
+#O
+Vnum 30542
+Nest 0
+Wear -1
+Lev  5
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30542
+Nest 0
+Wear -1
+Lev  5
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30542
+Nest 0
+Wear -1
+Lev  5
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30542
+Nest 0
+Wear -1
+Lev  5
+Cost 20
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 16006
+Nest 0
+Wear 1
+Lev  43
+Cost 22600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29049
+Nest 0
+Wear 0
+Lev  45
+Cost 15000000
+Cond 100
+Repd 0
+Val  0 0 -1 0 0
+Affect -1 45 -1 -1 24 0 0
+End
+
+#O
+Vnum 30232
+Nest 0
+Wear -1
+Lev  17
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30501
+Nest 0
+Wear -1
+Lev  1
+Cost 0
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29920
+Nest 0
+Wear 16
+Lev  50
+Cost 1000000000
+Cond 100
+Repd 0
+Affect -1 50 -1 3 22 0 0
+End
+
+#O
+Vnum 700
+Nest 0
+ExtF 3146818
+Wear -1
 Lev  48
+Cost 25000000
+Cond 100
+Repd 0
+Affect -1 48 -1 3 20 0 0
+End
+
+#O
+Vnum 29923
+Nest 0
+Wear 12
+Lev  50
+Cost 900000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29925
+Nest 0
+Wear -1
 Cost 50000000
 Cond 100
 Repd 0
 End
 
 #O
-Vnum 4618
+Vnum 3746
 Nest 0
-Wear 8
-Lev  39
-Cost 200000000
+Wear -1
+Lev  3
+Cost 16
 Cond 100
 Repd 0
 End
 
 #O
-Vnum 2321
+Vnum 3746
 Nest 0
-Wear 3
-Lev  29
-Cost 30000000
+Wear -1
+Lev  3
+Cost 16
 Cond 100
 Repd 0
 End
 
 #O
-Vnum 17712
+Vnum 3746
 Nest 0
-Wear 0
-Lev  42
+Wear -1
+Lev  3
+Cost 16
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3746
+Nest 0
+Wear -1
+Lev  3
+Cost 16
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3746
+Nest 0
+Wear -1
+Lev  3
+Cost 16
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3746
+Nest 0
+Wear -1
+Lev  3
+Cost 16
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3746
+Nest 0
+Wear -1
+Lev  3
+Cost 16
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3746
+Nest 0
+Wear -1
+Lev  3
+Cost 16
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3746
+Nest 0
+Wear -1
+Lev  3
+Cost 16
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3746
+Nest 0
+Wear -1
+Lev  3
+Cost 16
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 29924
+Nest 0
+Wear -1
+Cost 50000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 30359
+Nest 0
+Wear -1
+Lev  40
+Cost 80000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 9224
+Nest 0
+Wear -1
+Lev  8
+Cost 7290000
+Cond 100
+Repd 0
+Val  150 141 0 0 0
+End
+
+#O
+Vnum 3715
+Nest 0
+Wear 17
 Cost 0
-Cond 100
-Repd 0
-Val  0 0 9994 0 0
-End
-
-#O
-Vnum 9322
-Nest 0
-Wear 2
-Lev  29
-Cost 12500000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 9322
-Nest 0
-Wear 1
-Lev  29
-Cost 12500000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 28129
-Nest 0
-Wear 5
-Lev  45
-Cost 5000000
 Cond 100
 Repd 0
 End
@@ -1104,6 +931,27 @@ Cost 800000000
 Cond 100
 Repd 0
 Affect -1 50 -1 1 4 0 0
+End
+
+#O
+Vnum 9214
+Nest 0
+Wear -1
+Lev  22
+Cost 50600000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 7623
+Nest 0
+Wear -1
+Lev  25
+Cost 1500000
+Cond 100
+Repd 0
+Affect -1 25 -1 -13 12 0 0
 End
 
 #END
