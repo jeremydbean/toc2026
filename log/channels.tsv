@@ -513,3 +513,32 @@
 1790905441	gossip	Killuminati	Now I see the whole picture. The bug is magnitude: hp/mana bonuses come in tenshundreds while hitroll/damroll/stats come in single digits, so even with damroll weighted higher per point (warrior damroll 4.0 vs hp 2.0), a +50 hp roll (=100) buries a +6 damroll upgrade (=24). I'll make the survivability weights small enough that an ordinary damage upgrade wins, while a huge hp bump still can. Also scaling weapon-dice value by the class's melee weight so weapons matter for fighters, not casters. The remort
 1790905617	gossip	Killuminati	the new weights hand-check out (warrior: +8 damroll = 32 beats +50 hp = 10; but +150 hp = 30 beats +2 damroll = 8). Let me check for an existing gear-scoring test I need to keep green:
 1790905637	gossip	Alaric	Crazy how much it checks
+1790905663	gossip	Killuminati	yeah it really crunched the numbers for awhile to make the list, lol
+1790905738	gossip	Killuminati	it was already filtering by 'normal play acquirable items'.  there's some crazy immortal made but un-acquirable items. like my flaming newbie sword and some of soul's stuff, etc.
+1790905755	gossip	Killuminati	it's only supposed to recommend items that can actually drop in normal play, even if rare to spawn
+1790905815	gossip	Killuminati	dude the money code was a mess.  even when they implemented platinum, the entire money code was gold-based.  so the lowest price you used to be able to make something was 1g.  i had to completely re-structure the entire money system. which.  is fucking EVERYWHERE, lol
+1790905822	gossip	Killuminati	to get it back to copper-based
+1790905854	gossip	Alaric	The repair costs generally seem better. Some items would require an obscene amount of platinum
+1790905861	gossip	Killuminati	there were actually several bugs where you could convert and then split and re-convert and it didn't math right and you could scale up to unlimited money, lol
+1790905875	gossip	Killuminati	yeah because it was all gold based, lol
+1790905907	gossip	Killuminati	and they didn't adjust pricing on everything when they did it.  i did.  every fucking vendor, every time money was touched the code had to be changed.  it was a massive update
+1790905955	gossip	Killuminati	i think ungrim and blackbird did the platinum change didn't they?
+1790905976	gossip	Killuminati	apparently blackbird was a good coder.  ungrim was terrible apprently, lol
+1790905979	gossip	Alaric	I honestly don't know. Was after the shutdown, so likelyy Ungrim
+1790905989	gossip	Alaric	I don't remember platinum at all
+1790906009	gossip	Killuminati	yeah it got thrown in when they started fucking with stealth, and that was blackbird
+1790906024	gossip	Killuminati	that was the first code i reverted was i restored old stealth, lol
+1790906065	gossip	Killuminati	once i got access to all the imm notes, man.  people always bitched about the thieves, lol.  
+1790906077	gossip	Killuminati	they're funny to read, lol
+1790906093	gossip	Alaric	They're a decent class, but in PK it was violent
+1790906145	gossip	Alaric	Picking off people sleeping in a group and them not knowing they're buddy died was epic
+1790906362	gossip	Killuminati	ok, remort gear stuff fixed.  the (damaged) bug fixed, and the gear probably changed on the website
+1790906377	gossip	Alaric	Kickass
+1790906392	gossip	Killuminati	now the oracle, lol
+1790906405	gossip	Alaric	I'm gonna bow out. I'm going to go back to gear collection tomorrow.
+1790906417	gossip	Killuminati	Remort keeps every piece of gear  removed the save-time castrate limit; over-level gear is bagged into the stash, never lost
+1790906427	gossip	Killuminati	booooo, i want you to oracleeee, lol
+1790906428	gossip	Alaric	I know I can level, but increasing damage and seeing this gear out seems fun
+1790906441	gossip	Alaric	I'll abuse it tomorrow :)
+1790906451	gossip	Killuminati	it'll prolly take a bit for that to work, lol
+1790906465	gossip	Alaric	Catch ya later
