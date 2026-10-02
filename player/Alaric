@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790903552
+LogO 1790903856
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 51
-Plyd 233446
+Plyd 233750
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2397
-HMV  1096 1096 1445 1445 306 421
-NewGold 10
-NewPlat 91
-NewCopp 30
-NewSilv 60
+Room 25158
+HMV  1096 1096 1445 1445 203 421
+NewGold 64
+NewPlat 86
+NewCopp 117
+NewSilv 76
 BankCP 505999078
 IntTime 1790902684
 IntTotal 6999078
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 812
+AchKills 815
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -68,6 +68,7 @@ Achv visit-haon-dor 1790901408
 Achv visit-gangland 1790640411
 Achv visit-thalos 1790639548
 Achv visit-shire 1790639907
+Achv visit-drow-city 1790903709
 Achv visit-wyvern 1790640963
 Achv visit-battleground 1790899715
 Achv five-hundred-kills 1790637986
@@ -87,6 +88,7 @@ Achv fifty-quest-streak 1790733868
 Achv carry-ten-platinum 1790722751
 Achv visit-arena 1790817462
 Achv visit-chessboard 1790898112
+Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
 Achv visit-korzath-fortress 1790899622
 LastOut  1790896676
@@ -135,7 +137,7 @@ Pos  8
 Prac 4
 Trai 1
 Save  -6
-Alig  1002
+Alig  1000
 Hit   32
 Dam   46
 ACs -154 -164 -121 -6
@@ -564,12 +566,11 @@ End
 #O
 Vnum 16006
 Nest 0
-ExtF 67108864
 Wear 2
 Lev  43
 Cost 22600000
-Cond 97
-Repd 0
+Cond 100
+Repd 1
 End
 
 #O
@@ -854,11 +855,10 @@ End
 #O
 Vnum 3715
 Nest 0
-ExtF 67108928
 Wear 17
 Cost 0
-Cond 94
-Repd 0
+Cond 100
+Repd 1
 End
 
 #O

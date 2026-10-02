@@ -473,3 +473,10 @@
 1790903643	gossip	Killuminati	ok claude is looking into it anyway, lol
 1790903684	gossip	Alaric	Ring may have been confusion on which one needed removed, but I swear Excal was giving my grief. Seems fine now, thoughy
 1790903696	gossip	Killuminati	mmmkay
+1790903866	gossip	Killuminati	oh it found the bug
+1790903883	gossip	Killuminati	apparently it changed the condition when repaired but didn't remove the flag that adds the damaged
+1790903988	gossip	Killuminati	oh ok.  so previously.  the item would have shattered, lol.  but items don't do that anymore, they cant be damaged to the point of shattering anymore.  
+1790903998	gossip	Killuminati	but the flag can still go on it, that's being fixed
+1790904010	gossip	Alaric	Score
+1790904117	gossip	Killuminati	yeah so rather than shatter it, items just become unequipped and can't be used at all until repaired
+1790904133	gossip	Killuminati	apparently the flags for that aren't perfect
