@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790977848
+LogO 1790978395
 Vers 4
 Prom ~
 Ignoring ~
@@ -14,18 +14,18 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
-Levl 51
-Plyd 236452
+Levl 52
+Plyd 236999
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 16005
-HMV  956 1096 1445 1445 421 421
-NewGold 63
-NewPlat 96
-NewCopp 61
-NewSilv 46
+Room 16039
+HMV  798 1110 1445 1472 419 427
+NewGold 92
+NewPlat 106
+NewCopp 134
+NewSilv 100
 BankCP 505999078
 IntTime 1790902684
 IntTotal 6999078
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 830
+AchKills 835
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -106,7 +106,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  124507
+Exp  124769
 Act  4261068
 AfBy 524800
 Comm 24576
@@ -134,8 +134,8 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 4
-Trai 1
+Prac 8
+Trai 2
 Save  -6
 Alig  1000
 Hit   32
@@ -144,11 +144,11 @@ ACs -154 -164 -121 -6
 Attr 22 13 12 16 15
 AMod -2 10 11 -2 9
 Pass Al3w9zuAlwpyY~
-Titl  the Heroine of the Fifth Order~
+Titl  the Heroine of the Third Order~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 1086 1395 400
+HMVP 1100 1422 406
 Cond 0 100 100
 Alias k kick~
 Alias sm smite~
@@ -163,7 +163,7 @@ Sk 100 'dagger'
 Sk 25 'flail'
 Sk 26 'mace'
 Sk 35 'polearm'
-Sk 96 'shield block'
+Sk 97 'shield block'
 Sk 30 'spear'
 Sk 100 'sword'
 Sk 30 'whip'
@@ -176,7 +176,7 @@ Sk 100 'enhanced damage'
 Sk 95 'kick'
 Sk 100 'parry'
 Sk 1 'rescue'
-Sk 98 'second attack'
+Sk 99 'second attack'
 Sk 85 'third attack'
 Sk 87 'fast healing'
 Sk 80 'recall'
@@ -185,7 +185,7 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'fly'  26   0   0   0     524288          0
+AffD 'fly'  24   5   0   0     524288          0
 End
 
 #O
@@ -526,7 +526,7 @@ Nest 0
 Wear 8
 Lev  30
 Cost 5000000
-Cond 100
+Cond 94
 Repd 0
 Affect -1 30 -1 -4 19 0 0
 End
@@ -1037,16 +1037,6 @@ Spell 1 'fly'
 End
 
 #O
-Vnum 3091
-Nest 0
-Wear -1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'fly'
-End
-
-#O
 Vnum 756
 Nest 0
 Wear -1
@@ -1054,6 +1044,7 @@ Lev  35
 Cost 7500000
 Cond 100
 Repd 0
+Val  0 0 9998 0 0
 Affect -1 35 -1 -1 18 0 0
 End
 
