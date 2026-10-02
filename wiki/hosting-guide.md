@@ -565,7 +565,9 @@ is present with an empty list. The second of each pair (Right Finger, Neck
 (2nd), Right Wrist) is ranked without the first one's top pick, so the best
 two are different items. The page shows the top pick for every slot first,
 then the ranked alternatives. Every item the class could wear at that level
-is ranked, including ones with no bonuses:
+is ranked **if a mob carries or wears it** (so the pick is actually
+obtainable, not a unique or quest-only piece), including ones with no
+bonuses:
 an armour piece scores its own AC (multiplied the way `apply_ac()` does,
 three times on the body and twice on the head, legs and about the body),
 lights are listed under Light by item type, and a positive save counts

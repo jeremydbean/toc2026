@@ -34,7 +34,8 @@ except Exception as exc:  # pragma: no cover - C-only environments skip this
 SAVE_VS_SPELL = 24
 
 
-def item(vnum, item_type, wear, values=("0", "0", "0", "0", "0"), affects=(), level=1):
+def item(vnum, item_type, wear, values=("0", "0", "0", "0", "0"), affects=(),
+         level=1, carried_by=(2400,)):
     from webadmin.area_parser import Object
 
     return Object(
@@ -43,7 +44,7 @@ def item(vnum, item_type, wear, values=("0", "0", "0", "0", "0"), affects=(), le
         extra_flags2="0", wear_flags=wear, values=list(values), level=level,
         weight=1, cost=0, condition="P",
         affects=[{"location": loc, "modifier": mod} for loc, mod in affects],
-        area_name="Test",
+        area_name="Test", carried_by=list(carried_by),
     )
 
 
@@ -108,6 +109,16 @@ class GearFinderTests(unittest.TestCase):
         result = self.find(sword)
         self.assertEqual([i["vnum"] for i in result["Wielded"]], [7])
         self.assertEqual(result["Held"], [])
+
+    def test_items_no_mob_carries_are_excluded(self) -> None:
+        """A recommendation you cannot get is noise: only gear a mob
+        carries or wears (carried_by) is ranked."""
+        dropped = item(9, 11, "AE", affects=[(18, 5)])          # carried
+        unique = item(10, 11, "AE", affects=[(18, 50)], carried_by=())  # no mob
+        result = self.find(dropped, unique)
+        heads = [i["vnum"] for i in result["Head"]]
+        self.assertIn(9, heads)
+        self.assertNotIn(10, heads)
 
     def test_the_level_limit_still_applies(self) -> None:
         result = self.find(item(8, 11, "AE", level=40), level=10)

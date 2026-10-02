@@ -3109,6 +3109,14 @@ async def get_best_gear(
     best_items: dict[str, list] = {key: [] for key, _label in GEAR_FINDER_SLOTS}
 
     for vnum, obj in parser.objects.items():
+        # Obtainable only. A recommendation you cannot get is noise, so
+        # skip anything no mobile carries or wears (carried_by is filled
+        # from G and E resets). That drops uniques, quest-only pieces and
+        # defined-but-never-reset orphans, leaving gear that actually
+        # falls off a mob.
+        if not getattr(obj, "carried_by", None):
+            continue
+
         # Level check
         if obj.level > level:
             continue
