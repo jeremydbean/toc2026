@@ -24515,3 +24515,25 @@ Fri Oct  2 21:59:55 2026 :: Alaric has reached the next level of Heroism!!
 Fri Oct  2 22:00:05 2026 :: Log Alaric [16039]: recal
 Fri Oct  2 22:00:05 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
 Fri Oct  2 22:00:06 2026 :: Log Alaric [2497]: help pray
+Fri Oct  2 22:01:15 2026 :: Log Alaric [2497]: where oracle
+Fri Oct  2 22:01:26 2026 :: Log Alaric [2497]: pray
+Fri Oct  2 22:01:26 2026 :: Log Alaric [0]: moved to 8 (The Oracle's Sanctum)
+Fri Oct  2 22:01:26 2026 :: Oracle: Alaric prayed from room 2497 (A sudden wind blows you from the tree!) and entered her sanctum.
+Fri Oct  2 22:01:31 2026 :: Log Alaric [8]: eq
+Fri Oct  2 22:02:13 2026 :: Log Alaric [8]: say What is a better replacement for my platinum arm bands, that would be within my ability to obtain?
+Fri Oct  2 22:02:13 2026 :: Log Alaric [8]: asked the Oracle: What is a better replacement for my platinum arm bands, that would be within my ability to obtain?
+Fri Oct  2 22:02:19 2026 :: Oracle answered Alaric in room 8: Bronze arm plates (level 51) from a deranged madman in Haze Battleground would be a significant upgrade over your level 22 platinum arm bands.
+Fri Oct  2 22:02:31 2026 :: Log Alaric [8]: gos That's badass
+Fri Oct  2 22:02:32 2026 :: Log Alaric [8]: i
+Fri Oct  2 22:02:34 2026 :: Sock.sinaddr:  3.212.128.62
+Fri Oct  2 22:02:34 2026 :: EOF encountered on read.
+Fri Oct  2 22:02:44 2026 :: Log Alaric [8]: help pray
+Fri Oct  2 22:02:48 2026 :: Log Alaric [8]: say ydone
+Fri Oct  2 22:02:48 2026 :: Log Alaric [8]: asked the Oracle: ydone
+Fri Oct  2 22:02:50 2026 :: Log Alaric [8]: say done
+Fri Oct  2 22:02:50 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Fri Oct  2 22:03:52 2026 :: Log Alaric [2497]: en do
+Fri Oct  2 22:03:52 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Fri Oct  2 22:03:53 2026 :: Log Alaric [2401]: gos Really gotta fix the switch on my fucking "y" key
+Fri Oct  2 22:03:53 2026 :: Log Alaric [2401]: en do
+Fri Oct  2 22:03:58 2026 :: Log Killuminati: restore self
