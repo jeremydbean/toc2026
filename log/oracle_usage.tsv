@@ -6,3 +6,13 @@
 1790952125	Deploycheck	cache	0	0	0	0	0.000000	what does sanctuary do?	`sanctuary` reduces physical damage taken by 25%.	1
 1790952137	Deploycheck	claude-haiku-4-5	301	16	19715	0	0.002352	what does sanctuary do?	`sanctuary` reduces damage taken from any attack by one half.	0
 1790973306	Killuminati	claude-haiku-4-5	896	32	0	19715	0.040486	what mob has the most powerful weapon in the game and what is it?	The brilliant white light in the Abandoned Cathedral carries the Power of the world, the highest-level weapon obtainable at level 54.	0
+1790974146	Deploycheck	claude-haiku-4-5	2043	41	0	0	0.002248	where can I store items I don't want to carry around?	The stash at the altar stores items that survive a reboot; use `stash put` from anywhere in the world and `stash get` at the altar to retrieve them.	0
+1790974147	Deploycheck	claude-haiku-4-5	1483	36	0	0	0.001663	how do I get free buffs?	Ask Hermie for spells; everything she offers is free, or name a group like DEFENSE, TRAVEL, or ALL to take multiple at once.	0
+1790974148	Deploycheck	claude-haiku-4-5	2053	13	0	0	0.002118	what level do clerics get sanctuary?	Clerics get sanctuary at level 21.	0
+1790974148	Deploycheck	claude-haiku-4-5	2450	12	0	0	0.002510	how many times can I remort?	You may remort up to five times.	0
+1790974149	Deploycheck	claude-haiku-4-5	2389	27	0	0	0.002524	how do I change where recall takes me?	`recall set` makes your current room your recall point, usable once every 30 minutes outside of combat.	0
+1790974150	Deploycheck	claude-haiku-4-5	2796	32	0	0	0.002956	what is an emergency quest?	An emergency contract is a quest lasting exactly five minutes for five times the base quest-point reward; about one in twenty quests is one.	0
+1790974151	Deploycheck	claude-haiku-4-5	2232	37	0	0	0.002417	where is the training dummy?	The Training Yard is beneath the great oak in the centre of the Oak Tree Square: `down` then `south`, or in Mudlet `walk dummy`.	0
+1790974152	Deploycheck	claude-haiku-4-5	886	9	0	0	0.000931	what is the capital of france?	__OFFTOPIC__	0
+1790974153	Deploycheck	claude-haiku-4-5	2814	32	0	0	0.002974	will the questmaster ever send me into hyrule?	The reference does not say whether questmasters send players into Hyrule, so I cannot answer that from what I have been shown.	0
+1790974153	Deploycheck	claude-haiku-4-5	1759	20	0	0	0.001859	how do I stop getting hungry?	Eat food to satisfy your hunger; characters who go hungry suffer regeneration penalties.	0
