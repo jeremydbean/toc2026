@@ -755,3 +755,14 @@
 1790899581	say	Alaric	Hero the keyword :)
 1790899594	hero	Alaric	Blat
 1790899597	hero	Killuminati	wee
+1790899628	gossip	Killuminati	you know.  i should also.  yes.  i'll add what mobs to level on for each level to the website, lol
+1790899647	gossip	Alaric	Recommended range isn't bad.
+1790899661	gossip	Alaric	There's so many areas, but I always tended to only stick to a few
+1790899766	gossip	Killuminati	yeah but there's probably some hidden gems, lol
+1790899776	gossip	Killuminati	and hyrule should have mobs in literally all level ranges
+1790899812	gossip	Killuminati	lol i asked it to make the leveling tab.  'that's a meaty feature' it says.  wonder how long before it creates it, lol
+1790899849	gossip	Killuminati	I'm working out the XP formula, computing a level_range value from victim and player levels offset by 3, then mapping that range to a base experience value using a lookup table indexed by how far apart the levels are.
+1790899858	gossip	Killuminati	The result confirms XP scales steeply upward for killing higher-level mobs (200 base plus 50 per level above) while dropping off sharply for lower-level victims, which is what drives players to seek out tougher enemies for better rewards.
+1790899868	gossip	Killuminati	I still need to check how the base value combines with group bonus, alignment, and any final randomization or divisor to get the actual awarded XP, so I'll keep reading past the alignment section to find that final calculation.
+1790899868	gossip	Alaric	That's awesome
+1790899871	gossip	Killuminati	that's what it says, lol

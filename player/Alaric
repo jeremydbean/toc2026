@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790899576
+LogO 1790899720
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 51
-Plyd 229481
+Plyd 229625
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2497
-HMV  1057 1071 1408 1435 265 488
-NewGold 3
-NewPlat 22
-NewCopp 8
-NewSilv 1
+Room 29202
+HMV  679 1081 1425 1435 269 488
+NewGold 14
+NewPlat 26
+NewCopp 35
+NewSilv 21
 BankCP 504737235
 IntTime 1790816284
 IntTotal 5737235
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 783
+AchKills 784
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -68,6 +68,7 @@ Achv visit-gangland 1790640411
 Achv visit-thalos 1790639548
 Achv visit-shire 1790639907
 Achv visit-wyvern 1790640963
+Achv visit-battleground 1790899715
 Achv five-hundred-kills 1790637986
 Achv first-deposit 1789782963
 Achv bank-one-platinum 1789782963
@@ -86,6 +87,7 @@ Achv carry-ten-platinum 1790722751
 Achv visit-arena 1790817462
 Achv visit-chessboard 1790898112
 Achv visit-new-thalos 1790818086
+Achv visit-korzath-fortress 1790899622
 LastOut  1790896676
 SesLogin 1790811286
 SesDur   9385
@@ -101,7 +103,6 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-QuestNext 3
 Exp  114750
 Act  4261068
 AfBy 512
@@ -134,11 +135,11 @@ Prac 4
 Trai 1
 Save  -1
 Alig  1000
-Hit   35
-Dam   51
-ACs -131 -138 -98 18
+Hit   32
+Dam   46
+ACs -133 -140 -102 18
 Attr 22 13 12 16 15
-AMod -3 10 10 1 12
+AMod -2 10 11 1 13
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Fifth Order~
 Pnts 0
@@ -530,7 +531,7 @@ End
 #O
 Vnum 3737
 Nest 0
-Wear -1
+Wear 11
 Lev  1
 Cost 100000
 Cond 100
@@ -723,7 +724,7 @@ End
 #O
 Vnum 29920
 Nest 0
-Wear 16
+Wear -1
 Lev  50
 Cost 1000000000
 Cond 100
@@ -735,7 +736,7 @@ End
 Vnum 700
 Nest 0
 ExtF 3146818
-Wear -1
+Wear 16
 Lev  48
 Cost 25000000
 Cond 100
