@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1790908609
+LogO 1790908857
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,14 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6413536
+Plyd 6413784
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
 Scro 0
 Room 4216
-HMV  165 30774 115 30065 281 29950
+HMV  318 30724 231 30065 631 29950
 NewGold 98
 NewPlat 2503018
 NewCopp 329
@@ -112,7 +112,7 @@ QuestStrk 3
 CasinoWon  102
 CasinoLost 204
 Exp  1927300
-Act  67386572
+Act  277708
 Comm 155680
 Mounted 0
 On_Quest 0
@@ -143,10 +143,10 @@ Trai 75
 Save  -41
 Alig  -1000
 Hit   33
-Dam   19
-ACs -97 -106 -107 -11
+Dam   22
+ACs -88 -95 -100 -6
 Attr 25 21 18 18 18
-AMod 4 0 -1 3 3
+AMod 4 0 -1 3 6
 Pass Kilrpis9ggekI~
 Bin  Killuminati appears before you.~
 Bout Killuminati raises into the sky, and is gone.~
@@ -409,7 +409,7 @@ Vnum 20305
 Nest 0
 Wear -1
 Lev  1
-Time 317
+Time 312
 Cost 96000
 Cond 100
 Repd 0
@@ -433,18 +433,6 @@ Nest 0
 Wear 12
 Lev  33
 Cost 3000000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 24223
-Nest 0
-ExtF 128
-Wear 11
-Lev  26
-Time 4
-Cost 0
 Cond 100
 Repd 0
 End
@@ -610,7 +598,7 @@ ShD  corpse of Killuminati~
 Desc The corpse of Killuminati is lying here.~
 Wear -1
 Lev  70
-Time 26
+Time 21
 Cost 0
 Cond 25
 Repd 0
@@ -624,7 +612,7 @@ ShD  corpse of Killuminati~
 Desc The corpse of Killuminati is lying here.~
 Wear -1
 Lev  70
-Time 25
+Time 20
 Cost 0
 Cond 25
 Repd 0
