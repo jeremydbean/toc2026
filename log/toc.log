@@ -23354,3 +23354,15 @@ Fri Oct  2 02:08:45 2026 :: Sock.sinaddr:  40.124.176.225
 Fri Oct  2 02:08:45 2026 :: EOF encountered on read.
 Fri Oct  2 02:13:25 2026 :: Sock.sinaddr:  5.161.194.92
 Fri Oct  2 02:13:25 2026 :: EOF encountered on read.
+Fri Oct  2 02:18:28 2026 :: Sock.sinaddr:  178.156.185.231
+Fri Oct  2 02:18:28 2026 :: EOF encountered on read.
+Fri Oct  2 02:21:06 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Oct  2 02:21:10 2026 :: Log WebAdmin: fsave
+Fri Oct  2 02:21:16 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Oct  2 02:21:19 2026 :: Received signal 15; saving players and shutting down.
+Fri Oct  2 02:21:19 2026 :: Closing link to Killuminati.
+Fri Oct  2 02:21:19 2026 :: Normal termination of game.
+Fri Oct  2 02:21:20 2026 ::  INIT OK 
+Fri Oct  2 02:21:20 2026 :: ROM is ready to rock on port 9000.
+Fri Oct  2 02:21:20 2026 :: Automated backup complete.
+Fri Oct  2 02:21:20 2026 :: Daily backup complete.
