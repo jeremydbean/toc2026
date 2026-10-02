@@ -19652,7 +19652,7 @@
    <coord x="1" y="4" z="0" />
    <exit direction="south" target="8720" />
   </room>
-  <room id="8853" area="47" title="A Srine to a Forgotten God" environment="12">
+  <room id="8853" area="47" title="A Shrine to a Forgotten God" environment="12">
    <coord x="3" y="-1" z="-1" />
    <exit direction="west" target="8811" />
   </room>
@@ -20940,7 +20940,7 @@
    <exit direction="south" target="9412" />
    <exit direction="west" target="9406" />
   </room>
-  <room id="9412" area="60" title="Entrance Hallway to Mob Factoy" environment="1">
+  <room id="9412" area="60" title="Entrance Hallway to Mob Factory" environment="1">
    <coord x="2" y="0" z="0" />
    <exit direction="north" target="9411" />
    <exit direction="east" target="9417" />

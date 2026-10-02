@@ -558,6 +558,18 @@ python3 check_resets.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 ```
 
+## The Mudlet Starter Map Is Generated
+
+`mudlet/toc-world-map.xml` is built from the rooms by
+`python3 scripts/build_mudlet_package.py`, and `scripts/validate.sh` runs it
+with `--check` **before the test suite**. Any change to a room's name,
+exits, sector or existence -- a new room in `limbo.are`, a typo fixed in a
+room title, a Hyrule regeneration -- leaves the map stale, and CI then
+stops at that check: from 2026-10-02 to 10-03 every push failed there and
+no test ran in CI at all, because the Oracle's sanctum room had been added
+without regenerating it. Rebuild it in the same commit as the room change,
+and run `python3 scripts/build_mudlet_package.py --check` before pushing.
+
 ## Directions And Reachability
 
 `tools/build_directions.py` walks the world from the Oak Tree Square (room
