@@ -10,6 +10,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **The gear finder hid race-restricted gear from the race it was for.**
+  Reported in game by Alaric: Starlight compared better than the blue
+  war banner in game but never appeared on the website. The game reads
+  an object's flag line as `type extra [extra2] wear`, with extra2
+  present only when the extra flags carry `Z`; the dashboard parser
+  read the fourth token as extra2, swapping the two on all 55 such
+  objects. Starlight, dwarf-only and held, read as human-only and worn
+  on the neck. It now tops the light slot for a level 52 dwarf
+  warrior. `tests/test_area_parser_flags2.py`.
+
 - **Mudlet 1.0.8: no more "Prompt not auto-detected" from the mapper.**
   Mudlet's own mapper assumes nothing is handling the map unless a
   script says so, and then tries to auto-detect a prompt to track

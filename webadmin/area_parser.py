@@ -1536,29 +1536,28 @@ class AreaParser:
                     type_line = lines[i].split()
                     item_type_num = int(type_line[0])
                     extra_flags = type_line[1] if len(type_line) > 1 else "0"
-                    wear_flags = type_line[2] if len(type_line) > 2 else "0"
-                    
-                    # Check for merged values line (e.g. school.are #3745)
-                    # Standard is 3 fields (type, extra, wear) or 4 (type, extra, wear, extra2)
-                    # If we have significantly more, assume values are included
+
+                    # load_objects reads extra2 *before* the wear flags, and
+                    # only when the extra flags carry ITEM_FLAGS2 (Z):
+                    # "type extra [extra2] wear".  This used to read the
+                    # fourth token as extra2 instead, which swapped the two
+                    # on all 55 such objects -- a dwarf-only light read as
+                    # human-only and worn on the neck, so the gear finder
+                    # hid Starlight from the dwarves it was made for.
+                    has_flags2 = bool(parse_flag_value(extra_flags) & flag_bit('Z'))
+                    flag_tokens = 3 if has_flags2 else 2
+                    extra_flags2 = type_line[2] if has_flags2 and len(type_line) > 2 else "0"
+                    wear_flags = (type_line[flag_tokens]
+                                  if len(type_line) > flag_tokens else "0")
+
+                    # Check for merged values line (e.g. school.are #3745:
+                    # "17 0 A 1 1 1 0 0") -- the five values ride on the
+                    # flags line instead of their own.
                     values = []
-                    extra_flags2 = "0"
-                    
-                    # If we have > 4 fields, it's likely merged values
-                    # Or if we have > 3 fields and the 4th is numeric (could be extra2 or value1)
-                    # This is tricky. Let's assume if len >= 8 (3 flags + 5 values) it's definitely merged.
-                    if len(type_line) >= 8:
-                        # Merged line: type extra wear value1 value2 value3 value4 value5
-                        # Or: type extra wear extra2 value1 ...
-                        # In school.are #3745: 17 0 A 1 1 1 0 0 (8 fields)
-                        # This looks like type extra wear val1 val2 val3 val4 val5
-                        values = type_line[3:]
+                    if len(type_line) >= flag_tokens + 1 + 5:
+                        values = type_line[flag_tokens + 1:]
                         i += 1
                     else:
-                        # Not merged, or maybe extra2 is present
-                        if len(type_line) == 4:
-                            extra_flags2 = type_line[3]
-                        
                         i += 1
                         # Parse values line
                         while i < len(lines) and not lines[i].strip(): i += 1
