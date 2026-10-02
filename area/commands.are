@@ -8,10 +8,14 @@ The Oracle is an ancient seer who answers questions about Times of Chaos.
   say <anything>   in her sanctum, everything you say is said to her
   ask <question>   the same, as a command
   say done         return to where you prayed (or step down the beads)
+  say wrong        tell the gods her last answer was wrong
 
 She knows commands, classes, races, remorts, skills, areas, leveling, and
-what gear to seek for your class and level.  She answers only questions
-about the game and keeps it brief.
+what gear to seek for your class and level, and she has read the game's
+own help.  She can see where an item or creature is right now, what a
+player or a creature is wearing, and where an item drops.  She remembers
+what you asked earlier in the same audience, so you may follow up.  She
+answers only questions about the game and keeps it brief.
 
 An audience lasts at most five minutes and ends sooner if you fall silent.
 However it ends, you return to where you prayed, dazed for a moment.  You

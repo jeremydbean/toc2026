@@ -280,9 +280,12 @@ An in-game seer who answers questions about the game.
 | `say <anything>` | In her sanctum, everything you say is said to her |
 | `ask <question>` | The same, as a command |
 | `say done` | Return to where you prayed (or go `down` through the beads) |
+| `say wrong` | Report her last answer as wrong (filed for staff; she stops giving it) |
 
 - She knows commands, classes, races, remorts, skills, areas, leveling, and
-  what gear to seek for your class and level.
+  what gear to seek for your class and level, and she has read the game's
+  help. She can see what players and creatures wear, where things are right
+  now, and where items drop. Follow-up questions in one audience work.
 - She answers only questions about Times of Chaos, and keeps answers short.
 - An audience lasts at most five minutes, less if you fall silent. However it
   ends, you return to where you prayed, dazed for a moment.

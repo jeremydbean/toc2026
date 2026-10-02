@@ -382,7 +382,188 @@ def _oracle_live_keyword(question: str) -> str:
         return ""
     tail = ql[hit[0] + len(hit[1]):]
     words = [w for w in re.findall(r"[a-z]{2,20}", tail) if w not in _ORACLE_STOPWORDS]
-    return " ".join(words[:4])
+    return " ".join(_oracle_correct(words[:4], "any"))
+
+
+# "Is Augustus wearing the sword of justice?", "what is the cityguard
+# wielding?", "does the dragon have a ring?" -- a question about what one
+# particular someone has on. The subject is looked up as a mobile (players
+# are found by name separately), the item as an object. Matched by shape,
+# so "what should I be wearing at 20?" is not mistaken for one.
+_ORACLE_WEAR_VERBS = r"(?:wearing|wielding|carrying|holding|using|equipped with)"
+_ORACLE_WEAR_PATTERNS = (
+    re.compile(r"\b(?:is|was)\s+(?P<subj>[a-z' ]{2,40}?)\s+(?:still\s+)?"
+               + _ORACLE_WEAR_VERBS + r"\b(?P<item>.*)"),
+    re.compile(r"\bwhat(?:\s+is|'s|s)\s+(?P<subj>[a-z' ]{2,40}?)\s+"
+               + _ORACLE_WEAR_VERBS + r"\b(?P<item>)"),
+    re.compile(r"\bwhat\s+(?:does|do)\s+(?P<subj>[a-z' ]{2,40}?)\s+"
+               r"(?:wear|wield|carry|hold|use|have)\b(?P<item>)"),
+    re.compile(r"\bdoes\s+(?P<subj>[a-z' ]{2,40}?)\s+"
+               r"(?:have|wear|wield|carry|hold)\b(?P<item>.*)"),
+)
+# Pronouns and the like: "is it wearing", "what are you wearing".
+_ORACLE_NOT_A_SUBJECT = frozenset("i me my you your he she they them it this that "
+                                  "someone anyone somebody anybody he's she's".split())
+
+
+def _oracle_wear_question(question: str) -> Tuple[str, str]:
+    """(subject words, item words) for a "what is X wearing" question, or
+    ("", "") when it is not one."""
+    ql = " ".join((question or "").lower().replace("?", " ").split())
+    for pat in _ORACLE_WEAR_PATTERNS:
+        m = pat.search(ql)
+        if not m:
+            continue
+        subj = [w for w in re.findall(r"[a-z]{2,20}", m.group("subj"))
+                if w not in _ORACLE_STOPWORDS and w not in _ORACLE_NOT_A_SUBJECT]
+        if not subj:
+            continue
+        item = [w for w in re.findall(r"[a-z]{2,20}", m.group("item") or "")
+                if w not in _ORACLE_STOPWORDS]
+        return " ".join(subj[:3]), " ".join(item[:4])
+    return "", ""
+
+
+# Keyword vocabularies from the world, for correcting a misspelt name before
+# the game's exact keyword match sees it: the first live question anybody
+# asked her was about "agustus", and Augustus is spelt with a u.
+_ORACLE_VOCAB: Dict[str, Any] = {"parser": None}
+
+
+def _oracle_vocab(kind: str) -> list:
+    if _ORACLE_VOCAB.get("parser") is not parser:
+        def words(table) -> list:
+            out = set()
+            for rec in (table or {}).values():
+                out.update(re.findall(r"[a-z]{3,20}",
+                                      str(getattr(rec, "keywords", "")).lower()))
+            return sorted(out)
+        objs = words(getattr(parser, "objects", {}))
+        mobs = words(getattr(parser, "mobiles", None) or getattr(parser, "mobs", {}))
+        _ORACLE_VOCAB.update({"parser": parser, "obj": objs, "mob": mobs,
+                              "any": sorted(set(objs) | set(mobs))})
+    return _ORACLE_VOCAB.get(kind) or []
+
+
+def _oracle_correct(words, kind: str) -> list:
+    """Each word as it is, if the world knows it; otherwise the closest word
+    the world does know, if one is close enough; otherwise as it is."""
+    import difflib
+
+    vocab = _oracle_vocab(kind)
+    if not vocab:
+        return list(words)
+    known = set(vocab)
+    out = []
+    for w in words:
+        if w in known or len(w) < 4:
+            out.append(w)
+            continue
+        near = difflib.get_close_matches(w, vocab, n=1, cutoff=0.8)
+        out.append(near[0] if near else w)
+    return out
+
+
+# "Where does the X drop?" -- answered from the area files: which mobiles
+# load it, which rooms it lies in, which containers hold it.
+_ORACLE_DROP_HINTS = (
+    "drop", "dropped", "where can i get", "where can i find", "where do i get",
+    "where do i find", "how do i get", "how can i get", "how to get", "obtain",
+    "loot", "comes from", "come from", "where does", "who has a", "farm",
+)
+_ORACLE_DROP_FILLER = frozenset(
+    "drop drops dropped get find obtain loot comes come from does can how "
+    "where who farm best good one some".split())
+
+
+def _oracle_drop_lines(question: str, objs: dict, mobs: dict, rooms: dict) -> list:
+    """Where an item named in the question comes from, from the world data.
+    Only items whose keywords contain every word asked about are reported --
+    a near miss is a guess, and she should not guess where loot is."""
+    ql = (question or "").lower()
+    if not any(h in ql for h in _ORACLE_DROP_HINTS) or "get to" in ql:
+        return []
+    words = [w for w in re.findall(r"[a-z]{3,20}", ql)
+             if w not in _ORACLE_STOPWORDS and w not in _ORACLE_DROP_FILLER]
+    words = _oracle_correct(words[:4], "obj")
+    if not words:
+        return []
+
+    matches = []
+    for vnum, obj in objs.items():
+        kw = set(re.findall(r"[a-z]+", str(getattr(obj, "keywords", "")).lower()))
+        if all(w in kw for w in words):
+            matches.append(obj)
+    if not matches or len(matches) > 12:
+        return []   # nothing, or so many that the question was not specific
+
+    in_rooms: Dict[int, list] = {}
+    for rv, room in rooms.items():
+        for ov in getattr(room, "objects", []) or []:
+            in_rooms.setdefault(ov, []).append(room)
+
+    def sources(obj) -> list:
+        out = []
+        for mv in (getattr(obj, "carried_by", None) or [])[:3]:
+            mob = mobs.get(mv)
+            if mob is not None:
+                out.append("carried by %s (lvl %s) in %s" % (
+                    getattr(mob, "short_desc", "?"), getattr(mob, "level", "?"),
+                    getattr(mob, "area_name", "?")))
+        for room in in_rooms.get(getattr(obj, "vnum", None), [])[:2]:
+            out.append("lies in %s in %s" % (getattr(room, "name", "?"),
+                                              getattr(room, "area_name", "?")))
+        for cv in (getattr(obj, "contained_by", None) or [])[:2]:
+            box = objs.get(cv)
+            if box is not None:
+                out.append("inside %s in %s" % (getattr(box, "short_desc", "?"),
+                                                getattr(box, "area_name", "?")))
+        return out
+
+    matches.sort(key=lambda o: (-len(sources(o)), getattr(o, "vnum", 0)))
+    lines = []
+    for obj in matches[:3]:
+        src = sources(obj)
+        lines.append("Where %s (lvl %s) comes from, per the area files -- %s." % (
+            getattr(obj, "short_desc", "?"), getattr(obj, "level", "?"),
+            "; ".join(src) if src else "nothing in the world loads it"))
+    return lines
+
+
+# HELP entries that answer the question, so she can quote the game's own
+# help on a spell, skill or command instead of guessing at it.
+_ORACLE_HELP_SKIP = frozenset(
+    "help level levels class classes race races game player players time "
+    "what where when how who which mud times chaos".split())
+
+
+def _oracle_help_lines(question: str, entries: list, limit: int = 2) -> list:
+    ql = " " + " ".join(re.findall(r"[a-z0-9']+", (question or "").lower())) + " "
+    scored = []
+    for entry in entries:
+        best = 0
+        for kw in entry.get("keywords", []):
+            k = " ".join(re.findall(r"[a-z0-9']+", kw.lower()))
+            if len(k) < 4 or k in _ORACLE_STOPWORDS or k in _ORACLE_HELP_SKIP:
+                continue
+            if (" " + k + " ") in ql:
+                best = max(best, len(k))
+        if best:
+            scored.append((best, len(entry.get("body", "")), entry))
+    scored.sort(key=lambda s: (-s[0], s[1]))
+    lines = []
+    for _score, _len, entry in scored[:limit]:
+        body = re.sub(r"\{(?:[0-9A-Fa-f]{2}|.)", "", entry.get("body", ""))
+        body = " ".join(body.split())[:1500]
+        lines.append("HELP %s -- %s" % (entry.get("title", "?").upper(), body))
+    return lines
+
+
+_ORACLE_WHO_HINTS = (
+    "online", "who's on", "whos on", "who is on", "anyone on", "anybody on",
+    "who is playing", "who's playing", "whos playing", "logged in", "logged on",
+    "how many players", "players on",
+)
 
 
 def _oracle_live_lookup(reqs, timeout: float = 2.5) -> list:
@@ -467,16 +648,11 @@ def _oracle_context(player: str, question: str) -> str:
     rooms = getattr(parser, "rooms", {}) or {}
 
     lines = ["Supplicant: %s, a level %d %s %s." % (player, lvl, race or "?", cls or "?")]
+    ql = (question or "").lower()
 
-    # Live: who is connected right now (so she can answer "who's on?").
-    try:
-        on = players_online()
-        names = on.get("names") or []
-        lines.append("Online now (%d): %s." % (
-            on.get("count", len(names)),
-            ", ".join(names[:40]) if names else "nobody"))
-    except Exception:
-        pass
+    # Who is connected is asked of the game itself (the "who" lookup below),
+    # never read from the login journal: the journal does not know who is
+    # wizinvis, and she told mortals which hidden immortals were on.
 
     worn = []
     for it in prof.get("equipment", []):
@@ -527,6 +703,16 @@ def _oracle_context(player: str, question: str) -> str:
     live_kw = _oracle_live_keyword(question)
     if live_kw:
         reqs += [("obj", live_kw), ("mob", live_kw)]
+    # "Is Augustus wearing the sword of justice?" -- a mobile's gear, and the
+    # item asked about wherever it is. A subject that is a player was already
+    # handled by name above.
+    subj, item = _oracle_wear_question(question)
+    if subj and not any(subj.casefold() == n.casefold() for n in named):
+        reqs.append(("mobeq", " ".join(_oracle_correct(subj.split(), "mob"))))
+    if item and not live_kw:
+        reqs.append(("obj", " ".join(_oracle_correct(item.split(), "obj"))))
+    if any(h in ql for h in _ORACLE_WHO_HINTS):
+        reqs.append(("who", "all"))
     live_rooms: list = []
     if reqs:
         for (kind, _arg), found in zip(reqs, _oracle_live_lookup(reqs)):
@@ -535,7 +721,7 @@ def _oracle_context(player: str, question: str) -> str:
             if kind == "mob" and found.startswith("No '"):
                 continue   # it was an item, not a mob
             lines.append("Live right now -- %s" % found)
-            if kind in ("obj", "mob"):
+            if kind in ("obj", "mob", "mobeq"):
                 live_rooms += [int(v) for v in re.findall(r"\((\d+)\)", found)]
 
     # A route to wherever the live lookup found it, from the Directions data.
@@ -565,7 +751,18 @@ def _oracle_context(player: str, question: str) -> str:
             if len(done) >= 2:
                 break
 
-    ql = (question or "").lower()
+    # Where an item comes from, from the area files.
+    try:
+        lines += _oracle_drop_lines(question, objs, mobs, rooms)
+    except Exception:
+        pass
+
+    # The game's own help on whatever spell, skill or command was named.
+    try:
+        lines += _oracle_help_lines(question, load_player_help())
+    except Exception:
+        pass
+
     if cls in CLASS_WEIGHTS and race in RACE_FLAGS \
             and any(k in ql for k in _ORACLE_GEAR_HINTS):
         try:
@@ -644,7 +841,9 @@ def _oracle_cache_key(player: str, question: str):
     ql = " ".join(re.findall(r"[a-z0-9']+", (question or "").lower()))
     if not ql:
         return None
-    if any(h in ql for h in _ORACLE_PERSONAL_HINTS) or _oracle_live_keyword(question):
+    if any(h in ql for h in _ORACLE_PERSONAL_HINTS) or _oracle_live_keyword(question) \
+            or _oracle_wear_question(question)[0] \
+            or any(h in ql for h in _ORACLE_WHO_HINTS):
         return None
     for tok in re.findall(r"[A-Za-z]{3,12}", question or ""):
         cap = tok.capitalize()

@@ -330,9 +330,9 @@ remort <password> <class> <guild> <race>
 
 Use `none` for the guild when choosing Monk or Necromancer. The class, guild,
 and race arguments require at least two characters. Necromancer and Monk race
-restrictions still apply. Before the final remort, the new class/guild choices
-normally must differ from earlier lives; the game explains currently valid
-choices when it rejects a duplicate.
+restrictions still apply. Before the final remort, the new class must differ
+from every earlier life's class; the game explains currently valid choices when
+it rejects a duplicate.
 
 Remorting is a major rebuild: level returns to 3, base permanent stats reset,
 skills and groups are rebuilt for the new path, resources and progression
@@ -341,6 +341,19 @@ worn gear included -- though most of it will out-level you until you climb
 back up. Always read `help remort`, save, and confirm the host has a recent
 backup before committing. The password entered in the command crosses
 the same unencrypted Telnet connection as every other command.
+
+Each remort also leaves a permanent gift. Gifts accumulate: every later life
+keeps everything earlier ones gave.
+
+| Remorts taken | Gift |
+|---:|---|
+| 1 | Hunger and thirst no longer affect you |
+| 2 | Psionics: one power from each of the four disciplines |
+| 3 | Two powers per discipline; you may stay idle or link-dead twice as long before being dropped; you can carry twice the items and twice the weight; recall always succeeds and never throws you to a random room |
+| 4 | Three powers per discipline; the Shadowmeld skill at 50% |
+| 5 | All 17 psionic powers; no carrying limits; the fifth remort may pick any class, even one you have already lived as |
+
+The guild is never restricted, only the class.
 
 ### Necromancers And The Undead
 
@@ -369,7 +382,9 @@ and resurrecting a dead player are what those spells do.
 ### Psionics
 
 Beginning at remort 2, a character receives one random power from each of four
-psionic disciplines. The final remort grants all 17 powers. These abilities use
+psionic disciplines. Powers stack and are never taken away: the third remort
+brings each discipline to two, the fourth to three, and the final remort grants
+all 17. These abilities use
 mana and include mental attacks, temporary defenses, healing, scouting,
 teleportation, and item retrieval. Practice them with Salir the Monk in the
 Study of the Sage, in the Astral Plane. See the [Psionics Guide](psionics.md)
@@ -595,8 +610,13 @@ answers questions about the game. Everything you `say` there is said to her
 curtain, returns you to where you prayed. She attends one seeker at a time.
 
 - She knows commands, classes, races, remorts, skills, areas, leveling, and
-  what gear to seek for your class and level. She can see what you and other
-  players are wearing, and where an item or creature is right now.
+  what gear to seek for your class and level, and she has read the game's own
+  help. She can see what players and creatures are wearing, where an item or
+  creature is right now, and where an item drops.
+- She remembers what you asked earlier in the same audience, so a follow-up
+  ("and for a mage?") works.
+- If an answer is wrong, `say wrong`. The exchange is filed as a bug report
+  for the staff, and she stops giving that answer.
 - She answers only questions about Times of Chaos and keeps them brief.
 - An audience lasts at most five minutes, less if you fall silent. However it
   ends -- done, silence, time, or her walking out on off-topic questions --

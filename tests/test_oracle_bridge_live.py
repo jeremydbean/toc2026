@@ -3,16 +3,21 @@
 The web poller appends "<id>\\t<kind>\\t<arg>" to area/oracle.query; the game
 drains it on its pulse, runs a fixed read-only scan, and appends
 "<id>\\t<finding>" to area/oracle.queryresult. This boots a real server and
-exercises all three kinds: a mob's live location, a player's live gear, and
-an object that does not exist.
+exercises every kind: a mob's live location, a player's live gear, an object
+that does not exist, a mobile's gear, and who is online -- with a wizinvis
+immortal connected, who must not appear in any of it.
+
+It then prays, to check the game tells the poller a sitting has begun and
+that WRONG with nothing yet said is answered politely rather than filed.
 """
 import time
 import unittest
 
-from live_mud import LiveMud, create_character, skip_reason
+from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason
 
 PW = "testpw12"
 NAME = "Zbridger"
+HIDDEN = "Zhider"
 
 _SKIP = skip_reason()
 
@@ -37,7 +42,16 @@ def wait_for_results(path, ids, timeout=10.0):
 class OracleBridgeLive(unittest.TestCase):
     def test_game_answers_read_only_lookups(self):
         with LiveMud() as mud:
-            with mud.connect(timeout=120) as client:
+            # A wizinvis immortal, made first and logged back in below.
+            with mud.connect(timeout=120) as setup:
+                create_character(setup, HIDDEN, PW)
+                setup.send("quit")
+                self.assertTrue(setup.wait_closed())
+            patch_player_file(mud, HIDDEN, Levl=70, Invi=70, Room=4207)
+
+            with mud.connect(timeout=120) as hider, \
+                    mud.connect(timeout=120) as client:
+                login(hider, HIDDEN, PW)
                 create_character(client, NAME, PW)
 
                 area = mud.root / "area"
@@ -46,10 +60,19 @@ class OracleBridgeLive(unittest.TestCase):
                 query.write_text(
                     "r1\tmob\tdummy\n"
                     "r2\teq\t%s\n"
-                    "r3\tobj\tzzqqxnothing\n" % NAME,
+                    "r3\tobj\tzzqqxnothing\n"
+                    "r4\twho\tall\n"
+                    "r5\teq\t%s\n"
+                    "r6\tmobeq\tdummy\n" % (NAME, HIDDEN),
                     encoding="utf-8")
 
-                got = wait_for_results(result, {"r1", "r2", "r3"})
+                got = wait_for_results(result, {"r1", "r2", "r3", "r4", "r5", "r6"})
+
+                ask = area / "oracle.ask"
+                ask.write_text("", encoding="utf-8")
+                prayed = client.command("pray", 1.5)
+                wrong = client.command("say wrong", 1.0)
+                spooled = ask.read_text(encoding="utf-8", errors="replace")
 
         self.assertIn("r1", got, "the game never answered the mob lookup")
         self.assertIn("(2419)", got["r1"], "dummy should be in room 2419: " + got["r1"])
@@ -57,6 +80,22 @@ class OracleBridgeLive(unittest.TestCase):
         self.assertIn("%s is wearing right now" % NAME, got["r2"])
         self.assertIn("r3", got)
         self.assertIn("No 'zzqqxnothing'", got["r3"])
+
+        # Who is on, as WHO shows a mortal: the wizinvis immortal is absent,
+        # and asking after them by name says they are not online.
+        self.assertIn("r4", got)
+        self.assertIn(NAME, got["r4"])
+        self.assertNotIn(HIDDEN, got["r4"])
+        self.assertIn("r5", got)
+        self.assertIn("%s is not online right now" % HIDDEN, got["r5"])
+
+        # A mobile's gear, named by its short description, with its room.
+        self.assertIn("r6", got)
+        self.assertIn("(2419), is wearing right now", got["r6"])
+
+        self.assertIn("The Oracle's Sanctum", prayed)
+        self.assertIn("\t%s\t\x01SITTING" % NAME, spooled)
+        self.assertIn("told you nothing yet", wrong)
 
 
 if __name__ == "__main__":

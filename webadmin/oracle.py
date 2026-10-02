@@ -17,20 +17,48 @@ can say, and any failure degrades to a quiet, in-character message.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import os
+import re
 import time
+import unicodedata
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 # Per-model price in USD per million tokens: (input, output, cache_read,
-# cache_write). Cache read is ~0.1x input, write ~1.25x. Used only to
-# estimate spend against the daily cap; the real bill is Anthropic's.
+# cache_write). Cache read is ~0.1x input; the write is the 1-hour rate, 2x
+# input, because that is the only cache this module writes (see consult).
+# Used only to estimate spend against the daily cap; the real bill is
+# Anthropic's.
 _PRICES = {
-    "claude-haiku-4-5":  (1.00, 5.00, 0.10, 1.25),
-    "claude-sonnet-5-5": (2.00, 10.00, 0.20, 2.50),
-    "claude-opus-5-5":   (4.00, 20.00, 0.20, 5.00),
+    "claude-haiku-4-5":  (1.00, 5.00, 0.10, 2.00),
+    "claude-sonnet-5-5": (2.00, 10.00, 0.20, 4.00),
+    "claude-opus-5-5":   (4.00, 20.00, 0.20, 8.00),
 }
+
+# The game docs are cached for an hour rather than the default five minutes.
+# Questions arrive minutes apart, so a five-minute cache expired between
+# nearly every pair of them: three calls in four paid a fresh ~19K-token
+# write and only one ever read it back, which made the cache dearer than
+# no cache at all. An hour-long write costs 2x instead of 1.25x and is paid
+# back by the second question inside the hour.
+_CACHE_CONTROL = {"type": "ephemeral", "ttl": "1h"}
+
+# Recent exchanges are replayed so a follow-up ("and for a mage?") makes
+# sense. Bounded in count and age, and cleared when a new sitting begins.
+_HISTORY_TURNS = 3
+_HISTORY_SECONDS = 600
+_HISTORY: Dict[str, List[Tuple[float, str, str]]] = {}
+
+# The answer-cache key each player's last answer came from, so WRONG can
+# drop exactly that entry.
+_LAST_CACHE_KEY: Dict[str, str] = {}
+
+# The game writes a record whose question starts with this byte to tell the
+# poller something (a new sitting, a disputed answer). The game turns every
+# control byte a player types into a space, so a player cannot forge one.
+ORACLE_CONTROL = "\x01"
 _DEFAULT_MODEL = "claude-haiku-4-5"
 
 # The model emits this for a question that is not about the game; the game
@@ -104,10 +132,13 @@ def _per_hour_cap() -> int:
 
 def _max_answer_tokens() -> int:
     # She is terse by design, so the ceiling is low; it only bounds a runaway.
+    # 80 was too tight -- a two-clause remort answer came in at 75 -- and an
+    # answer that hits the ceiling is trimmed to its last whole sentence
+    # rather than spoken half-finished (see _trim_truncated).
     try:
-        return max(32, min(512, int(_env("ORACLE_MAX_ANSWER_TOKENS", "80"))))
+        return max(32, min(512, int(_env("ORACLE_MAX_ANSWER_TOKENS", "120"))))
     except ValueError:
-        return 80
+        return 120
 
 
 def _state_path() -> Path:
@@ -205,6 +236,19 @@ def _cache_ttl() -> float:
         return 7 * 86400.0
 
 
+def _cache_namespace() -> str:
+    """A digest of everything an answer was grounded on: the rules and the
+    game docs. It prefixes every cache key, so a deploy that corrects the docs
+    retires every answer given from the old ones instead of serving them for
+    another week. Old entries simply stop matching and age out."""
+    text = _SYSTEM_RULES + "\0" + _game_context()
+    return hashlib.sha1(text.encode("utf-8", "replace")).hexdigest()[:12]
+
+
+def _ns(key: str) -> str:
+    return _cache_namespace() + "|" + key
+
+
 def _cache_get(key: Optional[str]) -> Optional[str]:
     if not key or _cache_ttl() <= 0:
         return None
@@ -212,7 +256,7 @@ def _cache_get(key: Optional[str]) -> Optional[str]:
         data = json.loads(_cache_path().read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return None
-    hit = data.get(key) if isinstance(data, dict) else None
+    hit = data.get(_ns(key)) if isinstance(data, dict) else None
     if not isinstance(hit, dict):
         return None
     try:
@@ -234,11 +278,28 @@ def _cache_put(key: Optional[str], answer: str) -> None:
             data = {}
     except (OSError, ValueError):
         data = {}
-    data[key] = {"a": answer, "t": time.time()}
+    data[_ns(key)] = {"a": answer, "t": time.time()}
     if len(data) > 500:
         oldest = sorted(data.items(), key=lambda kv: kv[1].get("t", 0))
         for k, _v in oldest[:len(data) - 500]:
             data.pop(k, None)
+    _cache_write(path, data)
+
+
+def _cache_drop(key: Optional[str]) -> None:
+    """Forget one cached answer -- the one a player has just called wrong."""
+    if not key:
+        return
+    path = _cache_path()
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return
+    if isinstance(data, dict) and data.pop(_ns(key), None) is not None:
+        _cache_write(path, data)
+
+
+def _cache_write(path: Path, data: Dict[str, Any]) -> None:
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
         tmp = path.with_name(path.name + ".tmp")
@@ -290,6 +351,66 @@ def _one_line(s: str, limit: int = 460) -> str:
     return s[:limit]
 
 
+# The model writes typographic punctuation; the game tells every client it
+# speaks ISO-8859-1 (MSSP CHARSET), so a UTF-8 em dash reached a Latin-1
+# client as three bytes of mojibake -- and two of her first four live answers
+# had one. Everything she says is folded to plain ASCII before the game sees
+# it. Braces go too: '{' is the game's colour prefix, and a model that writes
+# one would be read as a colour code.
+_ASCII_FOLD = {
+    "—": " -- ", "–": "-", "‒": "-", "‑": "-", "‐": "-",
+    "−": "-", "‘": "'", "’": "'", "‚": "'", "‛": "'",
+    "“": '"', "”": '"', "„": '"', "′": "'", "″": '"',
+    "…": "...", "•": "*", "·": "*", "×": "x", "→": "->",
+    "←": "<-", " ": " ", " ": " ", " ": " ", "≈": "~",
+    "≥": ">=", "≤": "<=", "½": "1/2", "¼": "1/4",
+    "{": "(", "}": ")",
+}
+
+
+def _ascii(s: str) -> str:
+    """Fold an answer to plain ASCII the game can send to any client."""
+    s = "".join(_ASCII_FOLD.get(ch, ch) for ch in str(s or ""))
+    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode("ascii")
+    return " ".join(s.split())
+
+
+def _trim_truncated(s: str) -> str:
+    """An answer cut off by max_tokens, brought back to its last whole
+    sentence -- or, if it never finished one, to its last whole word and an
+    ellipsis. Spoken half-finished it reads as a glitch, not an oracle."""
+    s = s.rstrip()
+    ends = [m.end() for m in re.finditer(r"[.!?](?=\s|$)", s)]
+    if ends and ends[-1] >= len(s) * 0.3:
+        return s[:ends[-1]]
+    cut = s.rsplit(" ", 1)[0] if " " in s else s
+    return cut.rstrip(",;:- ") + "..."
+
+
+def _history_for(player: str, now: float) -> List[Tuple[float, str, str]]:
+    turns = [t for t in _HISTORY.get(player, []) if now - t[0] < _HISTORY_SECONDS]
+    _HISTORY[player] = turns[-_HISTORY_TURNS:]
+    return _HISTORY[player]
+
+
+def _remember(player: str, question: str, answer: str) -> None:
+    turns = _HISTORY.setdefault(player, [])
+    turns.append((time.time(), question, answer))
+    del turns[:-_HISTORY_TURNS]
+
+
+def forget(player: str) -> None:
+    """A new sitting, or a disputed answer: drop the conversation so far."""
+    _HISTORY.pop(player, None)
+
+
+def dispute(player: str) -> None:
+    """The player said WRONG: stop serving that answer from the cache, and do
+    not carry it into the next question as if it were true."""
+    _cache_drop(_LAST_CACHE_KEY.pop(player, None))
+    forget(player)
+
+
 def consult(player: str, question: str, context: str = "",
             cache_key: Optional[str] = None) -> str:
     """Answer one question, enforcing the caps. Returns a single line of
@@ -305,14 +426,22 @@ def consult(player: str, question: str, context: str = "",
     if not is_enabled():
         return _QUIET
 
+    now = time.time()
+    history = _history_for(player, now)
+    # A follow-up depends on what came before it, so it is neither served
+    # from the cache nor written to it.
+    if history:
+        cache_key = None
+
     # Already answered for this class/race/level? Serve it free and instantly.
     if cache_key:
         cached = _cache_get(cache_key)
         if cached:
             _log_usage(player, "cache", None, 0.0, question, cached, cached=True)
+            _LAST_CACHE_KEY[player] = cache_key
+            _remember(player, question, cached)
             return cached
 
-    now = time.time()
     state = _load_state()
     if state.get("day") != _today():
         state = {"day": _today(), "spent": 0.0, "players": {}}
@@ -342,7 +471,7 @@ def consult(player: str, question: str, context: str = "",
         system_blocks = [
             {"type": "text", "text": _SYSTEM_RULES},
             {"type": "text", "text": "Game reference follows.\n\n" + _game_context(),
-             "cache_control": {"type": "ephemeral"}},
+             "cache_control": dict(_CACHE_CONTROL)},
         ]
         if context:
             # Dynamic, so it follows the cached breakpoint and is not cached.
@@ -351,17 +480,28 @@ def consult(player: str, question: str, context: str = "",
                 "text": ("Live context for this question (the player and the "
                          "world as they are right now):\n\n" + context),
             })
+        # Earlier exchanges this sitting go first, as real turns, so a
+        # follow-up is read in the light of them.
+        messages: List[Dict[str, str]] = []
+        for _t, q, a in history:
+            messages.append({"role": "user",
+                             "content": f"A player named {player} asks: {q}"})
+            messages.append({"role": "assistant", "content": a})
+        messages.append({"role": "user",
+                         "content": f"A player named {player} asks: {question}"})
         resp = client.messages.create(
             model=model,
             max_tokens=_max_answer_tokens(),
             system=system_blocks,
-            messages=[{"role": "user",
-                       "content": f"A player named {player} asks: {question}"}],
+            messages=messages,
         )
         answer = ""
         for block in resp.content:
             if getattr(block, "type", None) == "text":
                 answer += block.text
+        answer = _ascii(answer)
+        if getattr(resp, "stop_reason", None) == "max_tokens" and answer:
+            answer = _trim_truncated(answer)
         # Record estimated spend against the daily cap.
         state = _load_state()
         if state.get("day") != _today():
@@ -375,8 +515,13 @@ def consult(player: str, question: str, context: str = "",
         # through cleanly for the game to turn into a refusal.
         final = ORACLE_OFFTOPIC if ORACLE_OFFTOPIC in answer else (answer or _QUIET)
         # Never cache a refusal or a failure: a wrong refusal would stick.
-        if cache_key and final not in (ORACLE_OFFTOPIC, _QUIET):
-            _cache_put(cache_key, final)
+        if final not in (ORACLE_OFFTOPIC, _QUIET):
+            if cache_key:
+                _cache_put(cache_key, final)
+                _LAST_CACHE_KEY[player] = cache_key
+            else:
+                _LAST_CACHE_KEY.pop(player, None)
+            _remember(player, question, final)
         _log_usage(player, model, resp.usage, cost, question, final)
         return final
     except Exception:
@@ -448,6 +593,14 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
         question = "\t".join(parts[2:]).strip()
         if not player or not question:
             continue
+        # A message from the game, not a question: act on it, answer nothing.
+        if question.startswith(ORACLE_CONTROL):
+            verb = question[1:].strip().upper()
+            if verb == "SITTING":
+                forget(player)
+            elif verb == "WRONG":
+                dispute(player)
+            continue
         context = ""
         cache_key = None
         if context_provider is not None:
@@ -460,7 +613,7 @@ def poll_once(ask_path, answer_path, context_provider=None) -> int:
                     context = got or ""
             except Exception:
                 context, cache_key = "", None
-        answer = _one_line(consult(player, question, context, cache_key))
+        answer = _one_line(_ascii(consult(player, question, context, cache_key)))
         try:
             with open(ans, "a", encoding="utf-8") as af:
                 _lock_ex(af)

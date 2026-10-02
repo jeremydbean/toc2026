@@ -1,8 +1,10 @@
 # Psionics Guide
 
 Psionics are remort powers that use mana rather than spell slots. Characters
-unlock them beginning at remort 2. Remorts 2 through 4 grant one random power
-from each discipline, for four powers total. The final remort grants all 17.
+unlock them beginning at remort 2, which grants one random power from each of
+the four disciplines. Powers stack and are kept across later remorts: remort 3
+brings each discipline to two powers (eight in all), remort 4 to three (twelve),
+and the final remort grants all 17.
 Use `skills` to see which powers the current character knows and `help
 <power>` for live syntax.
 

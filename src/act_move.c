@@ -2919,7 +2919,8 @@ static void recall_travel( CHAR_DATA *ch, ROOM_INDEX_DATA *home,
     else
       skill = ch->pcdata->learned[gsn_recall];
 
-    /* 4th+ remort: recall always succeeds (no chance check, no random room). */
+    /* From REMORTS_FOR_SURE_RECALL (the third remort): recall always succeeds
+       (no chance check, no random room). */
     if ( !IS_NPC(ch) && ch->pcdata->num_remorts >= REMORTS_FOR_SURE_RECALL )
         skill = 101;
 

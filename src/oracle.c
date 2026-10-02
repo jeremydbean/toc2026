@@ -91,6 +91,16 @@ static int        oracle_strikes = 0;
 static char       oracle_cooldown_name[MAX_INPUT_LENGTH] = "";
 static time_t     oracle_cooldown_until = 0;
 
+/* The last question asked this sitting and the last real answer given, so a
+   supplicant who says WRONG files a report naming exactly what was wrong. */
+static char       oracle_last_question[MAX_INPUT_LENGTH] = "";
+static char       oracle_last_answer[MAX_INPUT_LENGTH * 2] = "";  /* answers are under 500 */
+
+/* A record whose question field starts with this byte is a message from the
+   game to the poller, not a question.  oracle_sanitize turns every control
+   byte a player types into a space, so no player can forge one. */
+#define ORACLE_CONTROL       '\001'
+
 
 static CHAR_DATA *oracle_mob_in_room( ROOM_INDEX_DATA *room )
 {
@@ -311,6 +321,8 @@ static void oracle_dismiss( bool send_home )
     oracle_origin_vnum = 0;
     oracle_started = 0;
     oracle_warned = FALSE;
+    oracle_last_question[0] = '\0';
+    oracle_last_answer[0] = '\0';
 
     if ( mob != NULL )
     {
@@ -364,6 +376,8 @@ void oracle_on_char_from_room( CHAR_DATA *ch )
         oracle_origin_vnum = 0;
         oracle_started = 0;
         oracle_warned = FALSE;
+        oracle_last_question[0] = '\0';
+        oracle_last_answer[0] = '\0';
         return;
     }
 
@@ -378,15 +392,10 @@ void oracle_on_char_from_room( CHAR_DATA *ch )
 }
 
 
-/* A word that ends the audience.  Trailing punctuation is ignored, so "done.",
-   "Done!" and "thanks?" all count. */
-static bool oracle_is_farewell( const char *said )
+/* Does what was said match one of these phrases?  Trailing punctuation is
+   ignored, so "done.", "Done!" and "thanks?" all count. */
+static bool oracle_said_one_of( const char *said, const char * const *words )
 {
-    static const char * const words[] =
-    {
-        "exit", "done", "bye", "goodbye", "farewell", "thanks",
-        "thank you", "that is all", "nevermind", "leave", NULL
-    };
     char word[MAX_INPUT_LENGTH];
     size_t len;
     int i;
@@ -405,7 +414,36 @@ static bool oracle_is_farewell( const char *said )
 }
 
 
-/* Spool one question for the out-of-process poller. */
+/* A word that ends the audience. */
+static bool oracle_is_farewell( const char *said )
+{
+    static const char * const words[] =
+    {
+        "exit", "done", "bye", "goodbye", "farewell", "thanks",
+        "thank you", "that is all", "nevermind", "leave", NULL
+    };
+
+    return oracle_said_one_of( said, words );
+}
+
+
+/* The supplicant disputing her last answer. */
+static bool oracle_is_dispute( const char *said )
+{
+    static const char * const words[] =
+    {
+        "wrong", "that's wrong", "thats wrong", "that is wrong",
+        "you're wrong", "youre wrong", "you are wrong", "incorrect",
+        "that's incorrect", "that is incorrect", "not true", "that's not true",
+        "that is not true", NULL
+    };
+
+    return oracle_said_one_of( said, words );
+}
+
+
+/* Spool one record for the out-of-process poller: a question, or -- when it
+   begins with ORACLE_CONTROL -- a message from the game itself. */
 static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
 {
     FILE *fp;
@@ -434,6 +472,46 @@ static bool oracle_spool_question( CHAR_DATA *ch, const char *question )
 
     fclose( fp );   /* closing releases the advisory lock */
     return TRUE;
+}
+
+
+/* Tell the poller something about this supplicant: SITTING when a new
+   audience begins (so it forgets the last one's conversation), WRONG when
+   they dispute an answer (so it stops serving that answer from its cache). */
+static void oracle_spool_control( CHAR_DATA *ch, const char *verb )
+{
+    char record[MAX_INPUT_LENGTH];
+
+    snprintf( record, sizeof(record), "%c%s", ORACLE_CONTROL, verb );
+    oracle_spool_question( ch, record );
+}
+
+
+/* WRONG: file the disputed exchange where staff will see it, and tell the
+   poller to drop it. */
+static void oracle_dispute( CHAR_DATA *ch, CHAR_DATA *mob )
+{
+    char report[MAX_STRING_LENGTH];
+
+    if ( oracle_last_answer[0] == '\0' )
+    {
+        act( "$n says 'I have told you nothing yet.'", mob, NULL, ch, TO_VICT );
+        return;
+    }
+
+    snprintf( report, sizeof(report), "[Oracle] disputed answer.  Q: %s  A: %s",
+              oracle_last_question[0] != '\0' ? oracle_last_question : "?",
+              oracle_last_answer );
+    append_file( ch, BUG_FILE, report );
+    oracle_journal( "WRONG", ch->name,
+                    ch->in_room != NULL ? ch->in_room->vnum : 0,
+                    oracle_last_answer );
+    oracle_spool_control( ch, "WRONG" );
+    oracle_last_answer[0] = '\0';
+
+    act( "$n frowns, and the mist around her stirs.  'Then my sight was "
+        "clouded.  The gods will hear of it.'", mob, NULL, ch, TO_VICT );
+    watch_log( ch, "disputed an Oracle answer" );
 }
 
 
@@ -486,6 +564,13 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
         return;
     }
 
+    if ( oracle_is_dispute( said ) )
+    {
+        oracle_last = current_time > 0 ? current_time : time(NULL);
+        oracle_dispute( ch, mob );
+        return;
+    }
+
     if ( !oracle_spool_question( ch, question ) )
     {
         act( "$n murmurs, 'The mists are closed to me just now.'",
@@ -494,6 +579,7 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
     }
 
     oracle_last = current_time > 0 ? current_time : time(NULL);
+    toc_strlcpy( oracle_last_question, question, sizeof(oracle_last_question) );
     oracle_journal( "Q", ch->name,
                     ch->in_room != NULL ? ch->in_room->vnum : 0, question );
 
@@ -523,6 +609,32 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
 #define ORACLE_LIVE_MAX      8
 
 
+/*
+ * Somebody the Oracle must not betray: a wizinvis character.  WHO hides them
+ * from mortals, so she does too -- every lookup below treats them, and
+ * anything they hold, as not there.  A lookup has no asker to test can_see
+ * against, so this is the rule for everyone, and it is the one that matters:
+ * a mortal learning an invisible immortal is online.
+ */
+static bool oracle_hidden( CHAR_DATA *vch )
+{
+    if ( vch == NULL )
+        return FALSE;
+    if ( vch->desc != NULL && vch->desc->original != NULL )
+        vch = vch->desc->original;   /* a switched immortal hides as themself */
+    return !IS_NPC(vch) && vch->invis_level > 0;
+}
+
+
+/* How to name a holder: a mobile's name field is its keyword list. */
+static const char *oracle_holder_name( CHAR_DATA *vch )
+{
+    if ( IS_NPC(vch) && vch->short_descr != NULL )
+        return vch->short_descr;
+    return vch->name != NULL ? vch->name : "someone";
+}
+
+
 static void oracle_lookup_obj( const char *keyword, char *out, size_t size )
 {
     LIST_ITERATOR iter;
@@ -536,16 +648,39 @@ static void oracle_lookup_obj( const char *keyword, char *out, size_t size )
     FOR_EACH_OBJECT( iter, obj )
     {
         char where[MAX_INPUT_LENGTH];
-        char line[MAX_INPUT_LENGTH];
+        char line[MAX_STRING_LENGTH];
+        OBJ_DATA *outer;
+        int depth = 0;
 
         if ( obj->pIndexData == NULL || obj->name == NULL )
             continue;
         if ( !is_name( keyword, obj->name ) )
             continue;
 
+        /* Whoever ultimately holds it, through any nesting of containers --
+           so a bag cannot hide what an invisible immortal is carrying. */
+        for ( outer = obj; outer->in_obj != NULL && depth < 32; depth++ )
+            outer = outer->in_obj;
+        if ( outer->carried_by != NULL && oracle_hidden( outer->carried_by ) )
+            continue;
+
         if ( obj->carried_by != NULL )
-            snprintf( where, sizeof(where), "carried by %s",
-                      obj->carried_by->name != NULL ? obj->carried_by->name : "someone" );
+        {
+            CHAR_DATA *holder = obj->carried_by;
+
+            /* A mobile's room is part of the answer -- it is where to go.
+               A player's is not hers to give away. */
+            if ( IS_NPC(holder) && holder->in_room != NULL )
+                snprintf( where, sizeof(where), "%s %s in %s (%d)",
+                          obj->wear_loc != WEAR_NONE ? "worn by" : "carried by",
+                          oracle_holder_name( holder ),
+                          holder->in_room->name != NULL ? holder->in_room->name : "?",
+                          holder->in_room->vnum );
+            else
+                snprintf( where, sizeof(where), "%s %s",
+                          obj->wear_loc != WEAR_NONE ? "worn by" : "carried by",
+                          oracle_holder_name( holder ) );
+        }
         else if ( obj->in_room != NULL )
             snprintf( where, sizeof(where), "in %s (%d)",
                       obj->in_room->name != NULL ? obj->in_room->name : "?",
@@ -627,7 +762,7 @@ static void oracle_lookup_eq( const char *name, char *out, size_t size )
         }
     }
 
-    if ( target == NULL )
+    if ( target == NULL || oracle_hidden( target ) )
     {
         snprintf( out, size, "%s is not online right now.", name );
         return;
@@ -649,6 +784,86 @@ static void oracle_lookup_eq( const char *name, char *out, size_t size )
 
     snprintf( out, size, "%s is wearing right now: %s.", target->name,
               found ? items : "nothing of note" );
+}
+
+
+/* What a mobile is wearing: the first one in the world answering to the
+   keywords, and where it stands. */
+static void oracle_lookup_mobeq( const char *keyword, char *out, size_t size )
+{
+    LIST_ITERATOR iter;
+    CHAR_DATA *mob;
+    CHAR_DATA *target = NULL;
+    OBJ_DATA *obj;
+    char items[MAX_STRING_LENGTH];
+    int found = 0;
+
+    out[0] = '\0';
+    if ( keyword == NULL || keyword[0] == '\0' )
+        return;
+
+    FOR_EACH_CHARACTER( iter, mob )
+    {
+        if ( IS_NPC(mob) && mob->in_room != NULL && mob->pIndexData != NULL
+          && mob->name != NULL && is_name( keyword, mob->name ) )
+        {
+            target = mob;
+            break;
+        }
+    }
+
+    if ( target == NULL )
+        return;     /* the plain mob lookup already says it is not about */
+
+    items[0] = '\0';
+    for ( obj = target->carrying; obj != NULL; obj = obj->next_content )
+    {
+        char line[MAX_INPUT_LENGTH];
+
+        if ( obj->wear_loc == WEAR_NONE )
+            continue;
+        snprintf( line, sizeof(line), "%s%s", found ? "; " : "",
+                  obj->short_descr != NULL ? obj->short_descr : "something" );
+        if ( strlen(items) + strlen(line) + 1 < sizeof(items) )
+            toc_strlcat( items, line, sizeof(items) );
+        found++;
+    }
+
+    snprintf( out, size, "%s, in %s (%d), is wearing right now: %s.",
+              oracle_holder_name( target ),
+              target->in_room->name != NULL ? target->in_room->name : "?",
+              target->in_room->vnum, found ? items : "nothing at all" );
+}
+
+
+/* Who is playing, as WHO shows a mortal: wizinvis characters left out. */
+static void oracle_lookup_who( char *out, size_t size )
+{
+    DESCRIPTOR_DATA *d;
+    char names[MAX_STRING_LENGTH];
+    int count = 0;
+
+    names[0] = '\0';
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *vch;
+
+        if ( d->connected != CON_PLAYING )
+            continue;
+        vch = d->original != NULL ? d->original : d->character;
+        if ( vch == NULL || vch->name == NULL || oracle_hidden( vch ) )
+            continue;
+        if ( strlen(names) + strlen(vch->name) + 3 < sizeof(names) )
+        {
+            if ( count > 0 )
+                toc_strlcat( names, ", ", sizeof(names) );
+            toc_strlcat( names, vch->name, sizeof(names) );
+        }
+        count++;
+    }
+
+    snprintf( out, size, "Online now (%d): %s.", count,
+              count > 0 ? names : "nobody" );
 }
 
 
@@ -765,6 +980,10 @@ void oracle_process_queries( void )
             oracle_lookup_mob( keyword, ans, sizeof(ans) );
         else if ( !str_cmp( kind, "eq" ) )
             oracle_lookup_eq( keyword, ans, sizeof(ans) );
+        else if ( !str_cmp( kind, "mobeq" ) )
+            oracle_lookup_mobeq( keyword, ans, sizeof(ans) );
+        else if ( !str_cmp( kind, "who" ) )
+            oracle_lookup_who( ans, sizeof(ans) );
         else
             continue;
 
@@ -855,6 +1074,8 @@ static bool oracle_deliver( CHAR_DATA *mob, const char *player,
 
     if ( vch == NULL )
         return FALSE;   /* they walked off; the answer is dropped */
+
+    toc_strlcpy( oracle_last_answer, answer, sizeof(oracle_last_answer) );
 
     snprintf( buf, sizeof(buf),
               "{%02X$n opens her eyes, turns to $N, and says, '$t'{00",
@@ -1179,6 +1400,11 @@ void do_pray( CHAR_DATA *ch, char *argument )
     oracle_started = oracle_last;
     oracle_warned = FALSE;
     oracle_strikes = 0;
+    oracle_last_question[0] = '\0';
+    oracle_last_answer[0] = '\0';
+
+    /* A new audience: the poller forgets the last one's conversation. */
+    oracle_spool_control( ch, "SITTING" );
 
     do_look( ch, "auto" );
     act( "$n murmurs, 'Ask what you will.  Say DONE, or part the beads, when you are finished.'",
