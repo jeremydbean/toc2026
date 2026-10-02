@@ -1256,6 +1256,31 @@ Other deploy facts:
   leaves it, then restart `toc-web.service`. Never paste it into a commit,
   an issue or a conversation.
 
+## Compare And The Gear Finder
+
+`src/gear_compare.c` (COMPARE) and `get_best_gear` in `webadmin/server.py`
+(the website's Gear Finder) answer the same question -- which gear makes
+you hit harder -- and must keep agreeing on what counts as gear:
+
+- **Damage first.** COMPARE scores damage change plus a quarter of the
+  toughness change (`GEAR_TOUGH_WEIGHT`). A caster's damage is mana to cast
+  with, because spells cast at `ch->level` and gear changes only how many
+  casts there are. `tests/test_gear_finder.py` pins the website's version
+  of the same order in both directions.
+- **One slot per item, the one WEAR picks**: the first of its wear flags in
+  `wear_obj`'s order, and a light is always a light.
+- **Race flags name everyone an item suits** (`wear_requirements_met`), and
+  apply only when `ITEM_RACE_RESTRICTED` is set.
+- **Obtainable means a G or E reset on a mobile**, minus rot-death gear,
+  inventory-flagged gear on a non-shopkeeper, staff rooms, and Mud School
+  past newbie level. A level -1 prototype comes out at the carrier's level
+  less two (a shopkeeper's by item type), capped at 52, with
+  `dice_thrown`/`dice_size` dice -- the dashboard keeps its own copy of
+  those tables.
+- **COMPARE UPGRADES never calls `create_object`.** It builds a stack
+  `OBJ_DATA` from the prototype, because a real object joins `object_list`,
+  counts against limits and advances max-load state, all for a figure.
+
 ## Quest Contracts
 
 A quest request rolls for a contract before it settles the timer, and

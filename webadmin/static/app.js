@@ -1704,7 +1704,10 @@
         }
         // The answer first: the single best piece for every slot, for this
         // class at this level. The ranked alternatives follow per slot.
-        const loadout = node("section", { className: "gear-slot gear-loadout" }, [node("h3", { text: "Best in each slot" })]);
+        const loadout = node("section", { className: "gear-slot gear-loadout" }, [
+            node("h3", { text: "Best in each slot" }),
+            node("p", { className: "muted", text: "Damage first, from gear a mob in the world carries or sells. In game, COMPARE UPGRADES ranks the same gear for your exact character -- your skills, stats and what you already wear." }),
+        ]);
         slots.forEach(([slot, items]) => {
             const best = items[0];
             const pick = best
@@ -1736,7 +1739,7 @@
                     node("div", {}, [nameButton, node("small", { text: ` #${item.vnum}` })]),
                     node("div", {}, [node("small", { text: "Level" }), node("div", { text: item.level })]),
                     node("div", {}, [node("small", { text: "Score" }), node("div", { text: item.score })]),
-                    node("div", {}, [node("small", { text: stripMudColor(item.area) }), details]),
+                    node("div", {}, [node("small", { text: stripMudColor(item.area) + (item.source ? ` -- ${stripMudColor(item.source)}` : "") }), details]),
                 ]));
             });
             fragment.append(section);

@@ -3809,6 +3809,99 @@ async def get_mob(vnum: int) -> Dict[str, Any]:
     }
 
 
+# create_object's dice for a level -1 weapon (dice_thrown / dice_size in
+# src/db.c): the commonest of its three rolls.
+_DICE_THROWN = [
+    2,3,3,3,3,4,4,4,3,3,3,4,4,4,4,4,4,4,4,4,5,5,4,4,5,7,4,6,6,5,5,5,
+    6,6,6,6,6,6,7,7,7,5,5,5,6,7,8,8,6,6,6,6,7,8,8,8,8,8,8,8,8,8,8,8]
+_DICE_SIZE = [
+    4,3,3,3,4,3,3,3,5,6,6,4,4,5,5,5,5,6,6,6,5,5,7,7,6,4,8,5,5,7,7,7,
+    6,6,6,7,7,7,6,6,6,9,9,9,8,7,6,6,9,9,9,9,8,7,7,7,7,7,7,7,7,7,7,7]
+
+# wear_obj tries the wear flags in this order and uses the first that
+# fits, so an item goes to exactly one kind of slot. A light is a light
+# whatever its flags say.
+GEAR_WEAR_ORDER = ["finger", "neck", "body", "head", "legs", "feet", "hands",
+                   "arms", "about", "waist", "wrist", "shield", "wield", "hold"]
+GEAR_RACE_ONLY = ("human-only", "elf-only", "dwarf-only", "halfling-only",
+                  "saurian-only")
+
+
+def _gear_natural_slot(obj, item_type: int) -> Optional[str]:
+    """The one slot WEAR would put this in, or None."""
+    if item_type == ITEM_TYPE_LIGHT:
+        return "light"
+    worn = set(decode_flags(obj.wear_flags, WEAR_FLAGS))
+    for slot in GEAR_WEAR_ORDER:
+        if slot in worn:
+            return slot
+    return None
+
+
+def _gear_race_ok(obj, race_flag: Optional[str]) -> bool:
+    """wear_requirements_met's rule: when the race-restricted flag is set,
+    the race flags name everyone it suits."""
+    if "race-restricted" not in decode_flags(obj.extra_flags, ITEM_FLAGS):
+        return True
+    allowed = [f for f in decode_flags(obj.extra_flags2, ITEM_FLAGS2)
+               if f in GEAR_RACE_ONLY]
+    return not allowed or race_flag in allowed
+
+
+def _gear_sources(obj, item_type: int, level: int):
+    """Each mobile a player can take this from, with the level and values
+    the item comes out at: (mob, item_level, values).
+
+    reset_area hands a level -1 prototype the carrier's level less two (a
+    shopkeeper's by item type), never above 52, and create_object rolls
+    its weapon dice or armour from that level. Rot-death gear crumbles
+    after its carrier dies and inventory-flagged gear on anyone but a
+    shopkeeper goes with the corpse. Staff rooms are not the world, and
+    Mud School turns away anyone past level 5."""
+    extra = decode_flags(obj.extra_flags, ITEM_FLAGS)
+    if "rot-death" in extra:
+        return
+    shops = getattr(parser, "shopkeepers", set())
+    mobiles = getattr(parser, "mobiles", {})
+    rooms_by_vnum = getattr(parser, "rooms", {})
+    for mob_vnum in obj.carried_by:
+        mob = mobiles.get(mob_vnum)
+        if mob is None:
+            # A carrier the parser holds no record of: the reset names it,
+            # so take the prototype as it stands.
+            if obj.level != -1:
+                yield None, obj.level, list(obj.values)
+            continue
+        shop = mob_vnum in shops
+        if "inventory" in extra and not shop:
+            continue
+        rooms = [rooms_by_vnum.get(r) for r in mob.spawn_rooms]
+        rooms = [r for r in rooms if r is not None]
+        if rooms:
+            def closed(room):
+                flags = decode_flags(room.room_flags, ROOM_FLAGS)
+                return ("imp_only" in flags or "gods_only" in flags
+                        or ("newbies_only" in flags and level > 5))
+            if all(closed(r) for r in rooms):
+                continue
+        values = list(obj.values)
+        item_level = obj.level
+        if item_level == -1:
+            if shop:
+                item_level = 10 if item_type in (ITEM_TYPE_WEAPON, ITEM_TYPE_ARMOR) else 0
+            else:
+                item_level = max(0, min(int(mob.level or 0) - 2, 52))
+            item_level = min(item_level, 52)
+            if item_type == ITEM_TYPE_WEAPON and len(values) > 2:
+                values[1] = str(_DICE_THROWN[item_level])
+                values[2] = str(_DICE_SIZE[item_level])
+            elif item_type == ITEM_TYPE_ARMOR and len(values) > 2:
+                for i in range(3):
+                    values[i] = str(item_level // 5 + 3)
+        yield mob, item_level, values
+
+
+
 @app.get("/api/best_gear")
 async def get_best_gear(
     class_name: str = Query(..., description="Class name (mage, cleric, thief, warrior, monk, necromancer)"),
@@ -3836,32 +3929,11 @@ async def get_best_gear(
     best_items: dict[str, list] = {key: [] for key, _label in GEAR_FINDER_SLOTS}
 
     for vnum, obj in parser.objects.items():
-        # Obtainable only. A recommendation you cannot get is noise, so
-        # skip anything no mobile carries or wears (carried_by is filled
-        # from G and E resets). That drops uniques, quest-only pieces and
-        # defined-but-never-reset orphans, leaving gear that actually
-        # falls off a mob.
+        # Obtainable only: something a mobile carries or wears (G and E
+        # resets) that a player can actually take and keep.
         if not getattr(obj, "carried_by", None):
             continue
-
-        # Level check
-        if obj.level > level:
-            continue
-
-        # Race check (exclude items restricted to OTHER races)
-        flags2_decoded = decode_flags(obj.extra_flags2, ITEM_FLAGS2)
-        restricted = False
-        for flag in flags2_decoded:
-            if flag.endswith("-only"):
-                if race_flag and flag == race_flag:
-                    pass # Allowed
-                elif flag == "human-only" and race_name == "human":
-                    pass
-                else:
-                    restricted = True # Restricted to another race
-                    break
-
-        if restricted:
+        if not _gear_race_ok(obj, race_flag):
             continue
 
         try:
@@ -3869,27 +3941,28 @@ async def get_best_gear(
         except (TypeError, ValueError):
             item_type_num = 0
 
-        # Where it can go. A light is worn as a light because of what it
-        # is, not because of a wear flag (wear_obj tests the item type),
-        # so lights were missing from the finder altogether. The
-        # "two-hands" wear flag is read by nothing in the game.
-        wear_decoded = decode_flags(obj.wear_flags, WEAR_FLAGS)
-        slots = []
-        if item_type_num == ITEM_TYPE_LIGHT:
-            slots.append("light")
-        for slot in wear_decoded:
-            if slot not in best_items or slot == "light":
-                continue
-            # Only weapons are wielded, and a weapon goes nowhere else.
-            if slot == "wield" and item_type_num != ITEM_TYPE_WEAPON:
-                continue
-            if item_type_num == ITEM_TYPE_WEAPON and slot != "wield":
-                continue
-            slots.append(slot)
-        if not slots:
+        slot = _gear_natural_slot(obj, item_type_num)
+        if slot is None or slot not in best_items:
+            continue
+        # Only weapons are wielded, and a weapon goes nowhere else.
+        if (slot == "wield") != (item_type_num == ITEM_TYPE_WEAPON):
             continue
 
-        # Calculate score
+        # The best version of it this level can use: a level -1 item is
+        # stronger off a stronger carrier.
+        source = None
+        for mob, item_level, values in _gear_sources(obj, item_type_num, level):
+            if item_level > level:
+                continue
+            mob_level = int(mob.level or 0) if mob is not None else 999
+            if source is None or item_level > source[1] or (
+                    item_level == source[1] and mob_level < source[3]):
+                source = (mob, item_level, values, mob_level)
+        if source is None:
+            continue
+        mob, item_level, values, _mob_level = source
+
+        # Score: damage first, toughness after, by the class's weights.
         score = 0.0
         breakdown = []
         affects_decoded = decode_applies(obj.affects)
@@ -3902,73 +3975,66 @@ async def get_best_gear(
             if loc_name.startswith("save vs") and "save vs spell" in weights:
                 # A save is better the lower it goes -- saves_spell()
                 # subtracts saving_throw -- so a positive one is a penalty.
-                # It was scored as a bonus, which put cursed kit on top.
                 # All five saves move the one saving_throw in affect_modify,
                 # so they share a weight.
                 w = weights["save vs spell"]
-                s = val * -w
-                score += s
-                breakdown.append(f"{loc_name.title()}: {val} x -{w} = {s:.1f}")
+                s_ = val * -w
+                score += s_
+                breakdown.append(f"{loc_name.title()}: {val} x -{w} = {s_:.1f}")
             elif loc_name in weights:
                 w = weights[loc_name]
-                s = val * w
-                score += s
-                breakdown.append(f"{loc_name.title()}: {val} x {w} = {s:.1f}")
+                s_ = val * w
+                score += s_
+                breakdown.append(f"{loc_name.title()}: {val} x {w} = {s_:.1f}")
             elif loc_name == 'armor class':
-                # Negative AC is good in ROM, so multiply by -1 to make it a positive score
-                s = val * -1.0
-                score += s
-                breakdown.append(f"AC: {val} x -1 = {s:.1f}")
+                # Negative AC is good in ROM.
+                s_ = val * -1.0
+                score += s_
+                breakdown.append(f"AC: {val} x -1 = {s_:.1f}")
 
         if item_type_num == ITEM_TYPE_WEAPON:
-            # values[1] is dice count, values[2] is dice size
             try:
-                d_num = int(obj.values[1])
-                d_size = int(obj.values[2])
+                d_num = int(values[1])
+                d_size = int(values[2])
                 avg_dam = d_num * (d_size + 1) / 2.0
-                # Scale the weapon's own damage by how much this class fights in
-                # melee (its damroll weight), so a weapon dominates a fighter's
-                # score and barely moves a caster's. 0.5 keeps a warrior's
-                # weapon weight at the old 2.0 (damroll 4.0 x 0.5).
+                # A weapon's own damage, scaled by how much this class
+                # fights in melee (its damroll weight): it dominates a
+                # fighter's score and barely moves a caster's.
                 wdw = weights.get("damroll", 1.0) * 0.5
-                s = avg_dam * wdw
-                score += s
+                s_ = avg_dam * wdw
+                score += s_
                 breakdown.append(
-                    f"Dmg: {d_num}d{d_size} (avg {avg_dam:.1f}) x {wdw:g} = {s:.1f}")
+                    f"Dmg: {d_num}d{d_size} (avg {avg_dam:.1f}) x {wdw:g} = {s_:.1f}")
             except (IndexError, TypeError, ValueError):
                 pass
 
-        # An armour piece's own AC is values[0..3] -- pierce, bash, slash
-        # and magic -- and it used to count for nothing, so plain armour
-        # and most shields scored zero and were never listed.
-        armour = 0.0
+        # An armour piece's own AC is values[0..3], counted the way
+        # apply_ac() counts it in that slot.
         if item_type_num == ITEM_TYPE_ARMOR:
             try:
-                armour = sum(int(v) for v in obj.values[:4]) / 4.0
+                armour = sum(int(v) for v in values[:4]) / 4.0
             except (TypeError, ValueError):
                 armour = 0.0
-
-        for slot in slots:
-            slot_score = score
-            slot_breakdown = list(breakdown)
             if armour:
                 times = GEAR_AC_MULTIPLIER.get(slot, 1)
-                s = armour * times
-                slot_score += s
-                slot_breakdown.append(
-                    f"Armour: {armour:g} average x {times} on {slot} = {s:g}")
-            if not slot_breakdown:
-                slot_breakdown.append("No bonuses: it fills the slot and nothing more")
+                score += armour * times
+                breakdown.append(
+                    f"Armour: {armour:g} average x {times} on {slot} = {armour * times:g}")
+        if not breakdown:
+            breakdown.append("No bonuses: it fills the slot and nothing more")
 
-            best_items[slot].append({
-                "score": round(slot_score, 2),
-                "score_breakdown": slot_breakdown,
-                "vnum": obj.vnum,
-                "name": obj.short_desc,
-                "level": obj.level,
-                "affects": affects_decoded,
-                "area": obj.area_name
-            })
+        best_items[slot].append({
+            "score": round(score, 2),
+            "score_breakdown": breakdown,
+            "vnum": obj.vnum,
+            "name": obj.short_desc,
+            "level": item_level,
+            "affects": affects_decoded,
+            "area": obj.area_name,
+            "source": "" if mob is None else (
+                ("sold by " if mob.vnum in getattr(parser, "shopkeepers", set())
+                 else "from ") + (mob.short_desc or "someone")),
+        })
 
     # Sort and limit. Ties go to the higher-level item, then the vnum, so
     # the same question always gets the same answer.

@@ -1115,6 +1115,8 @@ class AreaParser:
         self.areas: Dict[str, Area] = {}
         self.resets: Dict[str, List[Reset]] = {}
         self.mob_specials: Dict[int, str] = {}
+        # Mobile vnums that keep a shop (#SHOPS): what they carry is for sale.
+        self.shopkeepers: set = set()
         self.errors: List[Dict[str, str]] = []
         
     def parse_all(self) -> None:
@@ -1131,6 +1133,7 @@ class AreaParser:
         self.areas.clear()
         self.resets.clear()
         self.mob_specials.clear()
+        self.shopkeepers.clear()
         self.errors.clear()
 
         with open(area_list_file, 'r', encoding='latin-1', errors='ignore') as f:
@@ -1215,6 +1218,7 @@ class AreaParser:
         self._parse_rooms(content, filepath.name, area_name)
         self._parse_resets(content, filepath.name)
         self._parse_specials(content)
+        self._parse_shops(content)
         
         # Calculate vnum range for this area
         vnums = []
@@ -1848,6 +1852,17 @@ class AreaParser:
                     continue
         
         self.resets[area_file] = resets
+
+    def _parse_shops(self, content: str) -> None:
+        """Record #SHOPS keepers: one line per shop, the keeper's vnum
+        first, ended by a 0."""
+        m = re.search(r"^#SHOPS\s*$(.*?)^0\s*$", content, re.M | re.S)
+        if not m:
+            return
+        for line in m.group(1).splitlines():
+            first = line.split("*", 1)[0].split()
+            if first and first[0].isdigit() and int(first[0]) > 0:
+                self.shopkeepers.add(int(first[0]))
 
     def _parse_specials(self, content: str) -> None:
         """Parse mobile special-function assignments."""

@@ -8,6 +8,37 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **COMPARE, rebuilt: which gear makes you hit harder.** The old command
+  blended five indexes (damage, spells, survival, leveling, utility) under
+  a weighted "profile" and printed twenty-odd lines; it is now two numbers.
+  Damage -- weapon damage per round walked through `multi_hit` and
+  `one_hit`, or for a caster the mana there is to cast with, since every
+  spell is cast at the caster's level and gear only changes how many casts
+  there are -- and toughness, effective hp against an equal-level foe,
+  counted a quarter as much. The output is the two items, a three-row
+  table, every number that moves on the score sheet, and a one-line
+  verdict.
+  - `compare <item>` measures against the weaker of a pair (it used to take
+    whichever ring was on the left) and against an empty slot rather than
+    refusing.
+  - `compare upgrades [slot]` is the gear finder in game: every piece a mob
+    carries, wears or sells, through the same measurement against what the
+    character wears, limited to what they could put on today, with where
+    to get it.
+  - `compare profile` says how your damage is made: swings, hit chance,
+    damage a hit, mana and casts.
+  - An item goes only to the slot WEAR puts it in (a held light is a light),
+    race flags name everyone an item suits, as `wear` reads them (Eversight
+    was refused to the humans it was made for), and a saurian's tail swing
+    counts.
+- **The website Gear Finder** applies the same rules: one slot per item,
+  level -1 gear at the level its carrier gives it (518 obtainable pieces
+  were scored as level -1, usable by anyone, with no dice), no rot-death or
+  corpse-destroyed gear, nothing from staff rooms or Mud School past
+  newbie level, and each pick names the mob that drops or sells it.
+
 ### Fixed
 
 - **The gear finder hid race-restricted gear from the race it was for.**

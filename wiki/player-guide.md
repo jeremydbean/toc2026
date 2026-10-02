@@ -452,25 +452,22 @@ Magic and consumable object commands include `quaff`, `recite`, `brandish`,
 `zap`, `eat`, `drink`, `fill`, `brew`, `scribe`, and `concoct`. The item type,
 class skills, charges, and room rules determine whether each command works.
 
-### Advanced Compare
+### Compare
 
 ```text
-compare <item>
-compare <item-a> <item-b>
-compare <focus> <item> [item]
-compare profile
+compare <item>            against what you wear there, or the empty slot
+compare <item-a> <item-b> two items against each other
+compare upgrades [slot]   the best gear you could wear today, and where it is
+compare profile           how your damage is made
+compare defense ...       rank by toughness instead of damage
 ```
 
-Valid focuses are `overall`, `damage`, `spells`, `defense`, `leveling`, and
-`utility`. The comparison models projected full loadouts rather than adding a
-few raw attributes. It accounts for class, guild, race gates, level, learned
-abilities, weapon proficiency, attacks, spell resources, survival, recovery,
-equipment conflicts, and the selected focus.
-
-The displayed percentage is an estimate against a standard equal-level combat
-benchmark, not a universal promise. Enemy resistances, vulnerabilities, fight
-length, special attacks, and group role can change the practical winner. See
-[Advanced Gear Comparison](gear-comparison.md) for the complete model.
+`compare` ranks gear by how much harder it makes you hit -- weapon damage per
+round for fighters, mana to cast with for casters -- and uses toughness to
+settle close calls. It works from your own level, skills, stats and what you
+already wear, and says plainly when you cannot use something yet.
+`compare upgrades` searches every piece of gear a mob in the world carries or
+sells. See [Gear Comparison](gear-comparison.md) for the complete model.
 
 ## Shops, Currency, And Banking
 
@@ -699,9 +696,9 @@ special scripted routes. Ask on a suitable help channel when stuck.
 
 ### My Equipment Looks Worse After A Swap
 
-Run `compare profile`, then compare the two items with the relevant focus. Check
-level, race/alignment restrictions, weapon proficiency, two-handed conflicts,
-no-remove items, heated/damaged state, and the complete projected loadout.
+Run `compare <item>` before swapping: it shows what changes on the score
+sheet and whether you hit harder. Its verdict names anything that stops you
+using the item (level, race, alignment, weight, two-handed conflicts).
 
 ### The Client Shows Odd Characters
 
@@ -719,7 +716,7 @@ equipment / inventory     worn and carried objects
 look / exits / scan       immediate surroundings
 areas / where             world orientation
 consider <target>         danger estimate
-compare profile           inferred equipment priorities
+compare upgrades          best gear you can get today
 save                       persist progress
 rules                      local conduct and PK rules
 bug / typo / idea          send feedback to staff

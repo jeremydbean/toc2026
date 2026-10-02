@@ -1,77 +1,102 @@
-# Advanced Gear Comparison
+# Gear Comparison
 
-The in-game `compare` command evaluates gear as part of the player's complete
-loadout. It does not equip, remove, identify, or otherwise change either item.
+The in-game `compare` command answers one question: which gear makes this
+character hit harder? It never equips, removes or changes anything.
 
 ## Player commands
 
 ```text
-compare <item>
-compare <item-a> <item-b>
-compare <focus> <item> [item]
-compare profile
+compare <item>            against what you wear there, or the empty slot
+compare <item-a> <item-b> two items against each other
+compare upgrades [slot]   the best gear you could wear today, and where it is
+compare profile           how your damage is made
+compare defense ...       rank by toughness instead of damage
 ```
 
-With one item, the game finds the currently equipped item in the same exact
-slot. Two explicitly named items must compete for a common slot. Valid focuses
-are `overall`, `damage`, `spells`, `defense`, `leveling`, and `utility`.
+With one item, `compare` measures it against what it would replace. For a
+ring, an amulet or a bracer that is the weaker of the two you wear -- the one
+you would take off. If nothing is worn there it measures against the empty
+slot.
 
-`compare profile` displays the inferred playstyle and percentage priority mix.
-The profile is rebuilt on every command, so it follows changes to the player's
-level, primary class, guild, learned spells, weapon proficiencies, and trained
-skills.
+## How it ranks
 
-## What the categories mean
+Every comparison puts the item on in place of what is in the slot, keeps the
+rest of the character exactly as they stand, and measures two numbers.
 
-- **Weapon damage** estimates damage per combat round against the standard
-  armor class for an equal-level opponent. It includes weapon dice, hitroll,
-  damroll, strength, proficiency, haste, second and third attacks, dual wield,
-  enhanced damage, backstab, smite, and fists of fury where usable.
-- **Spellcasting** is a readiness estimate, not a promise of spell damage. It
-  combines maximum mana, mana recovery, intelligence learning, wisdom
-  practices, and the importance of spells in the inferred profile.
-- **Survivability** estimates effective hit points using maximum hp, armor hit
-  avoidance, armor damage reduction, saves, regeneration, immunities, parry,
-  dodge, shield block, sanctuary, and divine protection.
-- **Leveling** combines combat pace, survival, recovery, movement, skill
-  learning, and the positive `APPLY_EXP` bonus the engine applies to gains.
-- **Utility** values movement capacity and recovery, dexterity, constitution,
-  immunities, flight, invisibility, and detect invisibility.
+- **Damage.** For weapons: damage per round, walked through `multi_hit` and
+  `one_hit` -- two swings, haste, second and third attack, dual wield, a
+  saurian's tail, the d20 hit roll against an equal-level mobile's armour,
+  weapon dice, enhanced damage, weapon flags, damroll and strength. Backstab,
+  smite and fists of fury count for a fifth, as openers and occasional
+  bursts. For spells: mana to cast with, the pool plus four ticks of
+  `mana_gain` regeneration, because every spell is cast at the caster's level
+  and gear only changes how many casts there are. A character's damage is
+  split between the two by class (mage and necromancer 85% spells, cleric
+  50%, monk 15%, thief and warrior none), leaning 30% toward the guild, and
+  is all weapons for anyone who knows no attack spell.
+- **Toughness.** Effective hit points against an equal-level opponent: hp,
+  armour turning blows aside and softening the rest, dodge, parry, shield
+  block, sanctuary, divine protection, saves against the half of the damage
+  that is magic, and the Hyrule relic wards.
 
-The model also understands Hyrule's unique Ganon relics. It applies the
-strongest Blue or Red Ring ward, estimates the Mirror Shield against a mixed
-physical/nonphysical benchmark, values the Hero's Tunic as between-fight
-recovery, and converts the Pegasus Boots' movement discount into effective
-travel capacity. Projected loadouts print these effects on dedicated relic
-lines so their contribution is visible rather than hidden in the final score.
+The score is the damage change plus a quarter of the toughness change. A big
+hp bump can still beat a marginal damage gain; an ordinary one cannot. Under
+half a percent is a tie. `compare defense` ranks by toughness alone.
 
-The overall recommendation normalizes each category against the loadout with
-the compared slot empty, then combines them using the displayed player-profile
-priorities. A focused comparison uses the selected category for its final
-recommendation and still reports overall fit.
+Hitroll helps only until you land 95% of your swings, which is the most the
+d20 allows; past that it shows as a change on the score sheet and nothing in
+the damage row. That is the model being honest, not a bug.
 
 ## Reading a result
 
-`A +12.4%` means loadout A's estimate for that row is 12.4 percent higher than
-loadout B's estimate. The projected loadouts also show hitroll, damroll, hp,
-mana, movement, average armor class, saving throw, XP bonus, weapon skill, and
-all five current stats so the reason is inspectable.
+```text
+A) Starlight (level 45)
+B) the blue war banner of Persante of Inde (level 35), worn
+Slot: light.  Your damage comes from weapons.
+                           A         B
+  Weapon dmg/round     246.7     244.3   A +1.0%
+  Toughness            14713     14300   A +2.9%
+A instead of B: hit +1, dam +1, mana -20, move -40, save -2.
+Verdict: A, Starlight -- 1.0% more damage, 2.9% tougher.
+```
 
-Items above the player's level are still modeled, but are marked theoretical.
-The command also checks heated or damaged gear, alignment and race gates,
-weapon weight, no-remove conflicts, two-handed conflicts, the game's special
-restrictions on secondary weapons, and the nonstacking Blue/Red Ring rule.
+The "instead" line lists every number on the score sheet that moves, so the
+verdict can be checked against `identify`. Items you cannot use yet are still
+measured, and the verdict says why you cannot (level, alignment, race,
+weight, dual wield, two-handed conflicts, a cursed item that will not come
+off).
 
-## Limits of the estimate
+## Upgrades
 
-The combat benchmark is an equal-level standard opponent and a five-round
-fight. A particular enemy's damage type, resistances, vulnerabilities, armor,
-special attacks, or fight length can change the practical winner. The command
-therefore presents category estimates and underlying loadout facts instead of
-hiding the decision behind one universal item score.
+`compare upgrades` walks every reset in the world for gear a mobile carries,
+wears or sells, puts each piece through the same measurement in place of what
+you wear, and keeps the ones that win. Only what you could put on today
+counts:
 
-The implementation lives in `src/gear_compare.c`; the command registration and
-public function declaration remain in `src/interp.c` and `src/interp.h`.
+- Your level, race (the race flags name everyone an item suits, as WEAR reads
+  them), alignment, strength for a weapon, and the off-hand rules.
+- An item goes only to the slot WEAR would put it in: the first of its wear
+  flags in `wear_obj`'s order, and a light is always a light.
+- A level -1 prototype comes out at its carrier's level less two (a
+  shopkeeper's by item type), capped at 52, with weapon dice and armour to
+  match, exactly as `reset_area` and `create_object` make it.
+- Not listed: rot-death gear, which crumbles after the kill; inventory-flagged
+  gear on anyone but a shopkeeper, which goes with the corpse; anything in a
+  gods-only or implementor-only room; and Mud School past newbie level.
+
+The website's Gear Finder applies the same obtainability rules and the same
+damage-first order with fixed weights per class and level. `compare upgrades`
+is the version that knows the character: skills, stats and current kit.
+
+## Limits
+
+The benchmark is an equal-level standard opponent. A particular enemy's
+damage type, resistances, armour, special attacks or fight length can change
+the practical winner. `dummy` in the training yard measures what you actually
+do.
+
+The implementation lives in `src/gear_compare.c`; the website finder is
+`get_best_gear` in `webadmin/server.py`.
 
 ## Related Documentation
 

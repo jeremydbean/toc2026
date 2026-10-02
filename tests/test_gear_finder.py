@@ -151,6 +151,77 @@ class GearFinderTests(unittest.TestCase):
         self.assertEqual(ranked[0], 22,
                          "a very large hp bump should still win over a tiny damage gain")
 
+    # ---- what a player can really get and wear -----------------------
+    def find_world(self, objects, mobiles, race="human", level=50,
+                   class_name="warrior", shopkeepers=(), rooms=None):
+        from webadmin import server
+
+        fake = SimpleNamespace(objects={o.vnum: o for o in objects},
+                               mobiles=mobiles, rooms=rooms or {},
+                               shopkeepers=set(shopkeepers))
+        with patch.object(server, "parser", fake):
+            return asyncio.run(server.get_best_gear(
+                class_name=class_name, race_name=race, level=level, limit=10))
+
+    @staticmethod
+    def mob(vnum, level, rooms=(1,)):
+        return SimpleNamespace(vnum=vnum, level=level, short_desc=f"mob {vnum}",
+                               spawn_rooms=list(rooms))
+
+    def test_an_item_goes_only_where_wear_puts_it(self) -> None:
+        """wear_obj uses the first wear flag in its order: a ring that can
+        also be held is a ring, and a light that can be held is a light."""
+        from dataclasses import replace
+
+        ring = replace(item(30, 9, "ABO", affects=[(19, 3)]), carried_by=[1])
+        light = replace(item(31, 1, "AO", affects=[(19, 3)]), carried_by=[1])
+        result = self.find_world([ring, light], {1: self.mob(1, 40)})
+        self.assertEqual([i["vnum"] for i in result["Left Finger"]], [30])
+        self.assertEqual([i["vnum"] for i in result["Light"]], [31])
+        self.assertEqual(result["Held"], [])
+
+    def test_race_flags_name_everyone_the_item_suits(self) -> None:
+        """Race-restricted (W) with human and saurian flags fits both, as
+        wear_requirements_met reads it -- and nobody else."""
+        from dataclasses import replace
+
+        helm = replace(item(32, 11, "AE", affects=[(19, 2)]), carried_by=[1],
+                       extra_flags="WZ", extra_flags2="AE")
+        mobs = {1: self.mob(1, 40)}
+        self.assertTrue(self.find_world([helm], mobs, race="human")["Head"])
+        self.assertTrue(self.find_world([helm], mobs, race="saurian")["Head"])
+        self.assertFalse(self.find_world([helm], mobs, race="dwarf")["Head"])
+
+    def test_gear_that_vanishes_with_its_carrier_is_not_listed(self) -> None:
+        """Rot-death crumbles after the kill; inventory-flagged gear goes
+        with the corpse unless a shopkeeper is selling it."""
+        from dataclasses import replace
+
+        rot = replace(item(33, 11, "AE", affects=[(19, 5)]), carried_by=[1],
+                      extra_flags="P")
+        inv = replace(item(34, 11, "AE", affects=[(19, 5)]), carried_by=[1],
+                      extra_flags="N")
+        sold = replace(item(35, 11, "AE", affects=[(19, 5)]), carried_by=[2],
+                       extra_flags="N")
+        result = self.find_world([rot, inv, sold],
+                                 {1: self.mob(1, 40), 2: self.mob(2, 40)},
+                                 shopkeepers=[2])
+        self.assertEqual([i["vnum"] for i in result["Head"]], [35])
+        self.assertTrue(result["Head"][0]["source"].startswith("sold by"))
+
+    def test_a_level_minus_one_item_takes_its_carriers_level(self) -> None:
+        """reset_area gives it the carrier's level less two, and
+        create_object rolls weapon dice for that level."""
+        from dataclasses import replace
+
+        sword = replace(item(36, 5, "AN", ("1", "0", "0", "3", "0"), level=-1),
+                        carried_by=[1])
+        mobs = {1: self.mob(1, 32)}
+        self.assertEqual(self.find_world([sword], mobs, level=20)["Wielded"], [])
+        listed = self.find_world([sword], mobs, level=40)["Wielded"]
+        self.assertEqual(listed[0]["level"], 30)
+        self.assertIn("5d7", " ".join(listed[0]["score_breakdown"]))
+
     # ---- the Oracle's live grounding --------------------------------
     def test_oracle_context_describes_gear_and_obtainable_bis(self) -> None:
         from webadmin import server

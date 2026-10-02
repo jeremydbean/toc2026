@@ -66,7 +66,7 @@ Contextual movement may also be attached to `push`, `pull`, `move`, `turn`,
 | `achievements [view]` | Points and progress for levels, bosses, relics, crafting, economy, unusual deaths, quests, exploration, and Hyrule |
 | `equipment`, `inventory`, `worth` | Worn items, carried items, and money |
 | `consider <target>`, `danger` | Estimate nearby danger |
-| `compare ...`, `compare profile` | Analyze equipment and inferred playstyle |
+| `compare <item> [item]`, `compare upgrades [slot]`, `compare profile` | Which gear makes you hit harder; the best gear you can get today |
 | `lore <object>` | Inspect an item with lore knowledge |
 | `count` | Show population/count information supported by the game |
 | `time`, `weather` | World time and environmental state |

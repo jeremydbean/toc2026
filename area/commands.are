@@ -3050,35 +3050,41 @@ See also: BRIEF, COLOR, COMBINE
 ~
 
 0 COMPARE~
-Syntax: compare <object> [object]
-Syntax: compare <focus> <object> [object]
-Syntax: compare profile
+Syntax: compare <item> [item]
+        compare upgrades [slot]
+        compare profile
+        compare defense ...
 
-COMPARE evaluates two complete hypothetical equipment sets without changing
-what you wear. With one object, it finds the item equipped in the same exact
-slot. With two objects, both must be able to occupy a common slot.
+COMPARE tells you which gear makes you hit harder.
 
-The default OVERALL result adapts to your level, class, guild, learned spells,
-weapon proficiency, and trained combat and defensive skills. It reports the
-estimated edge in weapon damage, spellcasting readiness, survivability,
-leveling efficiency, and utility. COMPARE PROFILE shows the priorities used.
+  compare <item>          against what you wear in that slot (for rings,
+                          amulets and bracers, the weaker of your two),
+                          or against the empty slot
+  compare <item> <item>   two items against each other
+  compare upgrades        the best piece for every slot that you could
+                          wear today, from gear a mob in the world carries
+                          or sells
+  compare upgrades <slot> the top five for one slot, and where to get them
+  compare profile         how your damage is made: swings, hit chance,
+                          damage a hit, and mana for casters
+  compare defense ...     rank by toughness instead (for tanks)
 
-Choose a focus to make that category the recommendation:
-  DAMAGE   - weapon dice, accuracy, attacks, and relevant combat moves
-  SPELLS   - mana, recovery, casting stats, and learning capacity
-  DEFENSE  - hp, armor, saves, immunities, dodge, parry, and block
-  LEVELING - combat pace, recovery, learning, travel, and experience bonuses
-  UTILITY  - movement, recovery, useful affects, stats, and immunities
+How it ranks:
+  - Damage first: weapon damage per round for fighters, mana to cast with
+    for casters (a spell's damage is set by your level; gear only changes
+    how many casts you get).  Hybrids blend the two.
+  - Toughness second: effective hp against an equal-level foe, counting
+    hp, armor, saves, sanctuary, dodge, parry and shield block.  It counts
+    a quarter as much as damage.
+  - It is worked out for you: your level, skills, stats, race and the
+    rest of what you wear.  Hitroll stops helping once you land 95%.
+  - It says when you cannot use an item yet, and why.
 
-Results are estimates against an equal-level standard opponent over five
-combat rounds. They include item affects and warn when an item cannot be used
-yet, but unusual opponents and tactics can still change the best choice.
+The website's gear finder ranks the same gear by class and level; this
+is the version that knows your character.  To settle it by hitting
+something, see DUMMY.
 
-COMPARE is arithmetic on paper.  To settle it by hitting something, see
-DUMMY: a training dummy in Dresden that cannot be killed and reports what
-you actually did.
-
-See also: DUMMY, LORE, IDENTIFY, INVENTORY, EQUIPMENT, SCORE
+See also: DUMMY, LORE, IDENTIFY, EQUIPMENT, SCORE
 ~
 
 0 CONSIDER~
