@@ -359,6 +359,16 @@ def _oracle_context(player: str, question: str) -> str:
 
     lines = ["Supplicant: %s, a level %d %s %s." % (player, lvl, race or "?", cls or "?")]
 
+    # Live: who is connected right now (so she can answer "who's on?").
+    try:
+        on = players_online()
+        names = on.get("names") or []
+        lines.append("Online now (%d): %s." % (
+            on.get("count", len(names)),
+            ", ".join(names[:40]) if names else "nobody"))
+    except Exception:
+        pass
+
     worn = []
     for it in prof.get("equipment", []):
         obj = objs.get(it.get("vnum"))
@@ -367,6 +377,37 @@ def _oracle_context(player: str, question: str) -> str:
         worn.append("%s: %s (lvl %s)" % (slot, name, it.get("level", "?")))
     lines.append("Currently worn -- " + ("; ".join(worn[:20]) if worn
                                           else "nothing of note") + ".")
+
+    # Other players named in the question, so she can answer "is X wearing Y?".
+    # Cheap: a single stat per token (names are stored capitalised); bounded.
+    seen = {player.casefold()}
+    others = 0
+    for tok in re.findall(r"[A-Za-z]{3,12}", question or ""):
+        cap = tok.capitalize()
+        if cap.casefold() in seen:
+            continue
+        seen.add(cap.casefold())
+        try:
+            if not (PLAYER_PATH / cap).is_file():
+                continue
+        except OSError:
+            continue
+        cand = parse_player_file(cap)
+        if not cand:
+            continue
+        ow = []
+        for it in cand.get("equipment", []):
+            o = objs.get(it.get("vnum"))
+            ow.append("%s: %s" % (
+                WEAR_SLOT_NAMES.get(it.get("wear", -1), "worn"),
+                getattr(o, "short_desc", None) or ("item %s" % it.get("vnum"))))
+        lines.append("%s is a level %s %s %s, wearing -- %s." % (
+            cand.get("name", cap), cand.get("level", "?"),
+            cand.get("race", "?"), cand.get("class_name", "?"),
+            "; ".join(ow[:20]) if ow else "nothing of note"))
+        others += 1
+        if others >= 2:
+            break
 
     ql = (question or "").lower()
     if cls in CLASS_WEIGHTS and race in RACE_FLAGS \
@@ -416,6 +457,69 @@ async def _oracle_poll_loop():
         await asyncio.sleep(ORACLE_POLL_SECONDS)
 
 
+def oracle_report(limit: int = 50) -> Dict[str, Any]:
+    """Aggregate the Oracle usage log for the admin dashboard: recent calls
+    (question, answer, tokens, cost), per-player totals, grand totals, and
+    today's spend against the daily cap."""
+    usage_path = Path(os.environ.get("ORACLE_USAGE")
+                      or (QUEUE_PATH.parent.parent / "log" / "oracle_usage.tsv"))
+    calls: list = []
+    per_player: dict = {}
+    totals = {"chats": 0, "tokens": 0, "cost": 0.0}
+
+    try:
+        text = usage_path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        text = ""
+
+    for line in text.splitlines():
+        parts = line.split("\t")
+        if len(parts) < 10:
+            continue
+        try:
+            epoch = int(parts[0]); inp = int(parts[3]); out = int(parts[4])
+            cread = int(parts[5]); cwrite = int(parts[6]); cost = float(parts[7])
+        except ValueError:
+            continue
+        tokens = inp + out + cread + cwrite
+        calls.append({
+            "time": epoch, "player": parts[1], "model": parts[2],
+            "input": inp, "output": out, "cache_read": cread,
+            "cache_write": cwrite, "tokens": tokens, "cost": round(cost, 6),
+            "question": parts[8], "answer": parts[9],
+            "off_topic": parts[9] == "__OFFTOPIC__",
+        })
+        pp = per_player.setdefault(
+            parts[1], {"player": parts[1], "chats": 0, "tokens": 0, "cost": 0.0})
+        pp["chats"] += 1; pp["tokens"] += tokens; pp["cost"] += cost
+        totals["chats"] += 1; totals["tokens"] += tokens; totals["cost"] += cost
+
+    players = sorted(per_player.values(), key=lambda p: -p["cost"])
+    for p in players:
+        p["cost"] = round(p["cost"], 6)
+    totals["cost"] = round(totals["cost"], 6)
+
+    try:
+        state = oracle._load_state()
+    except Exception:
+        state = {}
+    return {
+        "enabled": _safe(lambda: oracle.is_enabled(), False),
+        "spent_today": round(float(state.get("spent", 0.0)), 6) if state else 0.0,
+        "daily_cap": _safe(lambda: oracle._daily_cap_usd(), 0.0),
+        "totals": totals,
+        "per_player": players,
+        "calls": calls[-limit:][::-1],
+    }
+
+
+def _safe(fn, default):
+    try:
+        return fn()
+    except Exception:
+        return default
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global AREA_HEALTH_CACHE, parser, queue_writer
@@ -423,6 +527,10 @@ async def lifespan(app: FastAPI):
     parser = await asyncio.to_thread(load_area_parser, AREA_PATH)
     AREA_MAP_CACHE.clear()
     AREA_HEALTH_CACHE = None
+    # Co-locate the Oracle usage log with the transcript, in the game's log dir,
+    # unless the host overrides it. The worker (same process) reads this env.
+    os.environ.setdefault(
+        "ORACLE_USAGE", str(QUEUE_PATH.parent.parent / "log" / "oracle_usage.tsv"))
     oracle_task = asyncio.create_task(_oracle_poll_loop())
     try:
         yield
@@ -1963,6 +2071,16 @@ async def channels(
         "channels": names,
         "limit": limit,
     }
+
+
+@app.get("/api/oracle")
+async def oracle_usage(
+    limit: int = Query(default=50, ge=1, le=500),
+    _: None = Depends(verify_token),
+) -> Dict[str, Any]:
+    """Oracle usage: recent Q&A with tokens and cost, per-player and grand
+    totals, and today's spend. Token-gated, like the other player views."""
+    return await asyncio.to_thread(oracle_report, limit)
 
 
 @app.get("/api/auth/check")

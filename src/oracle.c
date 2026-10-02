@@ -659,6 +659,13 @@ void do_pray( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* Barred by a god (ORACLE BAN). */
+    if ( ch->pcdata != NULL && ch->pcdata->no_oracle )
+    {
+        send_to_char( "The gods have barred you from the Oracle's sight.\n\r", ch );
+        return;
+    }
+
     /* Held out after wasting her sight too often. */
     {
         time_t now = current_time > 0 ? current_time : time(NULL);
@@ -791,7 +798,49 @@ void do_oracle( CHAR_DATA *ch, char *argument )
     char arg[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
 
-    one_argument( argument, arg );
+    argument = one_argument( argument, arg );
+
+    if ( !str_prefix( arg, "ban" ) || !str_prefix( arg, "allow" ) )
+    {
+        char name[MAX_INPUT_LENGTH];
+        CHAR_DATA *victim;
+        bool banning = ( LOWER(arg[0]) == 'b' );
+
+        one_argument( argument, name );
+        if ( name[0] == '\0' )
+        {
+            send_to_char( "Syntax: oracle ban <player>, or oracle allow <player>.\n\r", ch );
+            return;
+        }
+        if ( ( victim = get_char_world( ch, name ) ) == NULL )
+        {
+            send_to_char( "They are not in this world.\n\r", ch );
+            return;
+        }
+        if ( IS_NPC(victim) || victim->pcdata == NULL )
+        {
+            send_to_char( "Only players can be barred.\n\r", ch );
+            return;
+        }
+
+        victim->pcdata->no_oracle = banning ? 1 : 0;
+        save_char_obj( victim );
+
+        snprintf( buf, sizeof(buf), "Oracle: %s %s %s.",
+                  ch->name, banning ? "barred" : "restored", victim->name );
+        log_string( buf );
+        wizinfo( buf, LEVEL_IMMORTAL );
+
+        snprintf( buf, sizeof(buf), "%s %s the Oracle.\n\r", victim->name,
+                  banning ? "can no longer pray to" : "may pray to" );
+        send_to_char( buf, ch );
+
+        /* If the one being barred has her right now, send her home. */
+        if ( banning && oracle_mob != NULL
+          && !str_cmp( oracle_summoner, victim->name ) )
+            oracle_dismiss();
+        return;
+    }
 
     if ( !str_prefix( arg, "dismiss" ) || !str_prefix( arg, "purge" ) )
     {

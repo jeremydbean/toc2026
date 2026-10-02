@@ -2025,6 +2025,7 @@ struct  pc_data
        section. Counted in top-level items, so a bag of gems is one. */
     OBJ_DATA *          stash;
     int                 stash_max;
+    int                 no_oracle;      /* immortal bar: may not pray the Oracle */
     char *              stash_links;    /* whoever this one has named  */
     char *              stash_offers;   /* whoever has named this one  */
     char *              stash_blocks;   /* whoever may not name it     */

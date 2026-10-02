@@ -1,5 +1,35 @@
 #HELPS
 
+0 ORACLE PRAY ASK SEER~
+
+The Oracle is an ancient seer who answers questions about Times of Chaos.
+
+  pray             call her to your room (one seeker at a time)
+  ask <question>   ask her -- or just SAY her a question
+  say done         send her home when you are finished
+
+She knows commands, classes, races, remorts, skills, areas, leveling, and
+what gear to seek for your class and level.  She answers only questions
+about the game and keeps it brief.  She stays until you say DONE, leave the
+room, or fall silent a while.  The gods may bar a troublemaker from her.
+~
+
+60 FARSLAY ORACLEADMIN~
+
+Immortal tools for the Oracle and the Farslay rite.
+
+  farslay <player>      a god's Farslayer: 100%, never backfires, reaches
+                        anywhere.  Works on anyone except the divinely
+                        warded, who turn the blade back on the caster.
+  oracle                the Oracle's status and recent transcript
+  oracle dismiss        send the Oracle home now
+  oracle ban <player>   bar a player from praying to the Oracle
+  oracle allow <player> lift that bar
+
+The Oracle and Herbie cannot be fatalitied; the warded cannot be slain and
+turn Farslay back on any caster.
+~
+
 0 SUMMARY~
 
 MOVEMENT                            GROUP

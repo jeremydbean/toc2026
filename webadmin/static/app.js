@@ -7,10 +7,10 @@
     // Views that cannot show anything without the admin token. Hidden while
     // locked, and not reachable by hash either, so a stale #host bookmark
     // lands on the overview rather than an empty page.
-    const ADMIN_VIEWS = new Set(["players", "console", "logins", "chat", "logs", "host", "operations"]);
+    const ADMIN_VIEWS = new Set(["players", "console", "logins", "chat", "oracle", "logs", "host", "operations"]);
 
     const VIEW_NAMES = new Set([
-        "overview", "world", "areas", "players", "gear", "leveling", "routes", "console", "logins", "chat", "logs", "host", "operations",
+        "overview", "world", "areas", "players", "gear", "leveling", "routes", "console", "logins", "chat", "oracle", "logs", "host", "operations",
     ]);
     const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -320,6 +320,46 @@
         void loadView(view);
     }
 
+    let oracleWired = false;
+    async function loadOracle() {
+        if (!await ensureAuth()) return;
+        if (!oracleWired) {
+            oracleWired = true;
+            byId("oracle-refresh").addEventListener("click", () => void loadOracle());
+        }
+        let data;
+        try {
+            data = await api("/api/oracle?limit=100", { auth: true });
+        } catch (error) {
+            byId("oracle-totals").textContent = error.message;
+            return;
+        }
+        byId("oracle-updated").textContent = `Updated ${new Date().toLocaleTimeString()}`;
+        byId("oracle-status").textContent = data.enabled ? "Enabled" : "Disabled";
+        const t = data.totals || { chats: 0, tokens: 0, cost: 0 };
+        byId("oracle-totals").textContent =
+            `${formatNumber(t.chats)} chats · ${formatNumber(t.tokens)} tokens · $${(t.cost || 0).toFixed(4)} total`
+            + ` · today $${(data.spent_today || 0).toFixed(4)} / $${(data.daily_cap || 0).toFixed(2)} cap`;
+        const pbody = byId("oracle-players").querySelector("tbody");
+        const players = data.per_player || [];
+        pbody.replaceChildren(...(players.length ? players.map((p) => node("tr", {}, [
+            node("td", { text: p.player }),
+            node("td", { text: formatNumber(p.chats) }),
+            node("td", { text: formatNumber(p.tokens) }),
+            node("td", { text: `$${(p.cost || 0).toFixed(4)}` }),
+        ])) : [node("tr", {}, [node("td", { className: "empty-state", text: "No questions yet.", attrs: { colspan: 4 } })])]));
+        const cbody = byId("oracle-calls").querySelector("tbody");
+        const calls = data.calls || [];
+        cbody.replaceChildren(...(calls.length ? calls.map((c) => node("tr", {}, [
+            node("td", { text: new Date(c.time * 1000).toLocaleString() }),
+            node("td", { text: c.player }),
+            node("td", { text: c.question }),
+            node("td", { text: c.off_topic ? "(off-topic — refused)" : c.answer }),
+            node("td", { text: formatNumber(c.tokens) }),
+            node("td", { text: `$${(c.cost || 0).toFixed(5)}` }),
+        ])) : [node("tr", {}, [node("td", { className: "empty-state", text: "No questions yet.", attrs: { colspan: 6 } })])]));
+    }
+
     async function loadView(view) {
         // The Admin and Game lights sit in the top bar, which every view
         // shares, so they are refreshed here rather than inside one view.
@@ -335,6 +375,7 @@
         else if (view === "operations") await loadOperations();
         else if (view === "routes") await loadRoutes();
         else if (view === "leveling") await loadLeveling();
+        else if (view === "oracle") await loadOracle();
     }
 
     // Travel directions. Public, like the help text -- the same feed the

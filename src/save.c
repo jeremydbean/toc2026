@@ -603,6 +603,8 @@ void fwrite_char( CHAR_DATA *ch, FILE *fp )
     fprintf( fp, "Note %d\n",	(int)	ch->last_note	);
     if ( ch->pcdata->stash_max != STASH_SLOTS_START )
 	fprintf( fp, "StashMax %d\n", ch->pcdata->stash_max );
+    if ( ch->pcdata->no_oracle )
+	fprintf( fp, "NoOracle %d\n", ch->pcdata->no_oracle );
     if ( ch->pcdata->stash_links != NULL
     &&   ch->pcdata->stash_links[0] != '\0' )
 	fprintf( fp, "StashLinks %s~\n", ch->pcdata->stash_links );
@@ -1223,6 +1225,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     ch->pcdata->mirror_of[0]            = '\0';
     ch->pcdata->stash                   = NULL;
     ch->pcdata->stash_max               = STASH_SLOTS_START;
+    ch->pcdata->no_oracle               = 0;
     ch->pcdata->stash_links             = str_dup( "" );
     ch->pcdata->stash_offers            = str_dup( "" );
     ch->pcdata->stash_blocks            = str_dup( "" );
@@ -1791,6 +1794,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
             KEY( "NewSilv",     ch->new_silver,          fread_long( fp ) );
 	    KEY( "Name",	ch->name,		fread_string( fp ) );
 	    KEY( "Note",	ch->last_note,		fread_number( fp ) );
+            KEY( "NoOracle",    ch->pcdata->no_oracle,   fread_number( fp ) );
             KEY( "NumRemorts",  ch->pcdata->num_remorts, fread_number( fp ) );
 	    break;
 

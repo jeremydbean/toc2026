@@ -270,6 +270,22 @@ When reporting a problem, include the room name/vnum if visible, the command,
 the exact response, the expected result, and whether it is repeatable. Never
 include a password or raw player file.
 
+## The Oracle
+
+An in-game seer who answers questions about the game.
+
+| Commands | Use |
+|---|---|
+| `pray` | Call the Oracle to your room (one seeker at a time) |
+| `ask <question>` | Ask her a question; you may also `say` her a question |
+| `say done` | Send her home when you are finished |
+
+- She knows commands, classes, races, remorts, skills, areas, leveling, and
+  what gear to seek for your class and level.
+- She answers only questions about Times of Chaos, and keeps answers short.
+- She stays until you say `done`, leave the room, or fall silent a while.
+- Repeated off-topic questions make her leave; the gods may bar a troublemaker.
+
 ## Related Guides
 
 - [Player Guide](player-guide.md)

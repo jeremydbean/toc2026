@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/theme-dragon.css?v=2">
     <script src="/static/command-sequence.js?v=1" defer></script>
     <script src="/static/console-output.js?v=1" defer></script>
-    <script src="/static/app.js?v=22" defer></script>
+    <script src="/static/app.js?v=23" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -33,6 +33,7 @@
                 <button class="nav-item" type="button" data-admin data-view="console">Game console</button>
                 <button class="nav-item" type="button" data-admin data-view="logins">Logins</button>
                 <button class="nav-item" type="button" data-admin data-view="chat">Chat</button>
+                <button class="nav-item" type="button" data-admin data-view="oracle">Oracle</button>
                 <button class="nav-item" type="button" data-admin data-view="logs">Live logs</button>
                 <button class="nav-item" type="button" data-admin data-view="host">Host status</button>
                 <button class="nav-item" type="button" data-admin data-view="operations">Operations</button>
@@ -364,6 +365,40 @@
                 </section>
             </section>
 
+            <section class="view" data-admin id="oracle-view" data-title="Oracle">
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">What was asked</span>
+                        <h2>The Oracle</h2>
+                    </div>
+                    <span class="timestamp" id="oracle-updated">Not refreshed</span>
+                </div>
+                <section class="panel">
+                    <div class="panel-heading"><h3>Usage</h3><span class="panel-subtitle" id="oracle-status"></span></div>
+                    <div class="log-actions">
+                        <button class="button button-secondary compact" id="oracle-refresh" type="button">Refresh</button>
+                        <span class="panel-subtitle" id="oracle-totals"></span>
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-heading"><h3>By player</h3></div>
+                    <div class="table-frame borderless">
+                        <table id="oracle-players">
+                            <thead><tr><th>Player</th><th>Chats</th><th>Tokens</th><th>Cost</th></tr></thead>
+                            <tbody><tr><td colspan="4" class="empty-state">Admin access required.</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-heading"><h3>Recent conversations</h3><span class="panel-subtitle">Newest first</span></div>
+                    <div class="table-frame borderless">
+                        <table id="oracle-calls">
+                            <thead><tr><th>When</th><th>Player</th><th>Asked</th><th>Answered</th><th>Tokens</th><th>Cost</th></tr></thead>
+                            <tbody><tr><td colspan="6" class="empty-state">Admin access required.</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
             <section class="view" data-admin id="logs-view" data-title="Live Logs">
                 <div class="section-heading">
                     <div><span class="eyebrow">Protected server output</span><h2>Live logs</h2></div>

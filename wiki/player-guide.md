@@ -585,6 +585,19 @@ return portals.
 The full level bands, dungeon order, commands, generated-data workflow, and
 spoiler-conscious mechanics are in [Hyrule: First Quest](hyrule-area.md).
 
+## The Oracle
+
+`pray` calls the Oracle, a seer who answers questions about the game, to your
+room. `ask <question>` (or just `say` her a question) puts it to her; `say
+done` sends her home. She attends one seeker at a time.
+
+- She knows commands, classes, races, remorts, skills, areas, leveling, and
+  what gear to seek for your class and level, and can look at what you (or
+  another player) are wearing.
+- She answers only questions about Times of Chaos and keeps them brief.
+- She leaves when you say `done`, leave the room, or fall silent. Repeated
+  off-topic questions make her go, and the gods can bar a troublemaker.
+
 ## Character Settings
 
 Useful preference commands include:
