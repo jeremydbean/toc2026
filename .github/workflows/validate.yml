@@ -135,3 +135,23 @@ jobs:
         run: |
           # Exit 124 is the expected "still healthy when the timer fired".
           timeout 45s ../bin/rom 9999 || test "$?" -eq 124
+
+      # Booting and idling runs almost none of the game: nobody connects,
+      # so no command, no fight, no save. These modules play real sessions
+      # against the sanitizer binary -- combat in the training yard, the
+      # upgrade search over every reset in the world, the Oracle's
+      # sanctum, the stash, remort, Hyrule, and a spread of old bug
+      # fixes -- and an ASan or UBSan error kills the server, which fails
+      # the test. Two at a time: the sanitizer build is several times
+      # slower, and four of them on a four-core runner miss the tests'
+      # reply windows.
+      - name: Play real sessions under sanitizers
+        env:
+          ASAN_OPTIONS: detect_leaks=0:halt_on_error=1
+          UBSAN_OPTIONS: print_stacktrace=1:halt_on_error=1
+          TOC_SERVER_BINARY: bin/rom
+          JOBS: "2"
+        run: |
+          bash scripts/test-parallel.sh test_training_dummy test_compare_live \
+            test_oracle_sanctum_live test_stash test_remort_gear_live \
+            test_hyrule_access test_old_bug_reports

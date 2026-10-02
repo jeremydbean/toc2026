@@ -558,6 +558,18 @@ python3 check_resets.py
 python3 scripts/area_lint.py --fail-on critical --limit 100
 ```
 
+## The Sanitizer Job Plays
+
+The `sanitize` CI job used to boot the world and idle for 45 seconds, which
+runs almost none of the game -- nobody connects. It now also plays a set of
+live test modules against the ASan/UBSan binary (`TOC_SERVER_BINARY`,
+honoured by `tests/live_mud.py`), two at a time because the sanitizer
+build is slow enough that four at once miss the tests' reply windows. To
+reproduce locally: build with `-DENABLE_SANITIZERS=ON`, copy `bin/rom`
+somewhere, and run `TOC_SERVER_BINARY=<it> JOBS=2 scripts/test-parallel.sh
+<modules>` with `ASAN_OPTIONS=detect_leaks=0:halt_on_error=1`. Add a module
+there when it exercises code nothing else in the list does.
+
 ## The Mudlet Starter Map Is Generated
 
 `mudlet/toc-world-map.xml` is built from the rooms by
