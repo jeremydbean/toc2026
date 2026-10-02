@@ -172,6 +172,30 @@ class OracleWiringTests(unittest.TestCase):
     def test_oracle_mob_exists_in_limbo(self):
         self.assertIn("the Oracle sits here", self.read("area", "limbo.are"))
 
+    def test_off_topic_protocol_is_wired(self):
+        # The model emits a sentinel for off-topic; the game turns it into a
+        # refusal and escalates.
+        self.assertIn("__OFFTOPIC__", self.read("webadmin", "oracle.py"))
+        self.assertIn("ORACLE_OFFTOPIC", self.read("src", "oracle.c"))
+
+    def test_divine_wards_are_wired(self):
+        fight = self.read("src", "fight.c")
+        # Unattackable Oracle (melee + spells).
+        self.assertIn("is_oracle_mob", fight)
+        # Killuminati survives every instant death (raw_kill guard), and the
+        # warded set is immune to fatality.
+        self.assertIn("is_killuminati", fight)
+        self.assertIn("is_divinely_warded", fight)
+        # The god-level farslay command, warded only against Killuminati.
+        magic2 = self.read("src", "magic2.c")
+        self.assertIn("do_farslay", magic2)
+        self.assertIn("is_divinely_warded", magic2)
+        self.assertIn('{ "farslay",', self.read("src", "interp.c"))
+        # The shared ward helpers live in oracle.c.
+        oracle = self.read("src", "oracle.c")
+        self.assertIn("divine_ward_backfire", oracle)
+        self.assertIn("is_killuminati", oracle)
+
 
 if __name__ == "__main__":
     unittest.main()

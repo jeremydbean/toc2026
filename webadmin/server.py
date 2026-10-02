@@ -327,6 +327,75 @@ def require_queue_writer() -> QueueWriter:
 # tiny and rate-limited, so a couple of seconds is ample.
 ORACLE_POLL_SECONDS = float(os.getenv("ORACLE_POLL_SECONDS", "2.0"))
 
+# Question words that make a best-in-slot lookup worth the tokens. Current
+# gear is always supplied (it is small); BiS only when the question is clearly
+# about gear.
+_ORACLE_GEAR_HINTS = (
+    "gear", "upgrade", "item", "weapon", "armor", "armour", "wield", "wear",
+    "equip", "slot", "best", "bis", "ring", "amulet", "neck", "shield",
+    "sword", "mace", "dagger", "boots", "helm", "cloak", "drop", "where",
+    "better", "worn", "wearing",
+)
+
+
+def _oracle_context(player: str, question: str) -> str:
+    """Build live grounding for one question: the asker's level, class and worn
+    gear, and -- for gear questions -- the obtainable best-in-slot for their
+    class and level, with where it drops. Runs in the poller's thread; the
+    dashboard already reads player files and parses the world here."""
+    prof = parse_player_file(player)
+    if not prof:
+        return ""
+
+    cls = str(prof.get("class_name", "")).lower()
+    race = str(prof.get("race", "")).lower()
+    try:
+        lvl = max(1, min(70, int(prof.get("level", 1) or 1)))
+    except (TypeError, ValueError):
+        lvl = 1
+
+    objs = getattr(parser, "objects", {}) or {}
+    mobs = getattr(parser, "mobs", {}) or {}
+
+    lines = ["Supplicant: %s, a level %d %s %s." % (player, lvl, race or "?", cls or "?")]
+
+    worn = []
+    for it in prof.get("equipment", []):
+        obj = objs.get(it.get("vnum"))
+        name = getattr(obj, "short_desc", None) or ("item %s" % it.get("vnum"))
+        slot = WEAR_SLOT_NAMES.get(it.get("wear", -1), "worn")
+        worn.append("%s: %s (lvl %s)" % (slot, name, it.get("level", "?")))
+    lines.append("Currently worn -- " + ("; ".join(worn[:20]) if worn
+                                          else "nothing of note") + ".")
+
+    ql = (question or "").lower()
+    if cls in CLASS_WEIGHTS and race in RACE_FLAGS \
+            and any(k in ql for k in _ORACLE_GEAR_HINTS):
+        try:
+            best = asyncio.run(get_best_gear(
+                class_name=cls, race_name=race, level=lvl, limit=1))
+        except Exception:
+            best = {}
+        bis = []
+        for slot, items in best.items():
+            if not items:
+                continue
+            top = items[0]
+            where = top.get("area", "?")
+            obj = objs.get(top.get("vnum"))
+            carriers = getattr(obj, "carried_by", None) or []
+            if carriers:
+                carrier = getattr(mobs.get(carriers[0]), "short_desc", None)
+                if carrier:
+                    where = "%s in %s" % (carrier, where)
+            bis.append("%s: %s (lvl %s) from %s" % (
+                slot, top.get("name", "?"), top.get("level", "?"), where))
+        if bis:
+            lines.append("Obtainable best-in-slot for this class and level -- "
+                         + "; ".join(bis) + ".")
+
+    return "\n".join(lines)[:6000]
+
 
 async def _oracle_poll_loop():
     """Drain the Oracle's ask spool and write answers, beside the game's queue.
@@ -339,7 +408,7 @@ async def _oracle_poll_loop():
     answer = QUEUE_PATH.parent / "oracle.answer"
     while True:
         try:
-            await asyncio.to_thread(oracle.poll_once, ask, answer)
+            await asyncio.to_thread(oracle.poll_once, ask, answer, _oracle_context)
         except asyncio.CancelledError:
             raise
         except Exception:

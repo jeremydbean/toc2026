@@ -484,6 +484,7 @@ DECLARE_DO_FUN( do_spellup      );
 DECLARE_DO_FUN( do_ask          );
 DECLARE_DO_FUN( do_oracle       );
 DECLARE_DO_FUN( do_pray         );
+DECLARE_DO_FUN( do_farslay      );
 DECLARE_DO_FUN( do_spellpurge   );
 DECLARE_DO_FUN( do_summonevent  );
 DECLARE_DO_FUN( do_resetpwd     );

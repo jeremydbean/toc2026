@@ -3562,6 +3562,12 @@ void spell_vengence( int sn, int level, CHAR_DATA *ch, void *vo )
     act("The sword rips out of your hand, flashing across the sky.",
 	 ch,NULL,NULL,TO_CHAR);
 
+    if ( is_divinely_warded( victim ) )
+    {
+        divine_ward_backfire( ch, victim );
+        return;
+    }
+
     chance = number_percent();
 
     if (chance > 50)
@@ -5476,3 +5482,57 @@ void spell_flash( int sn, int level, CHAR_DATA *ch, void *vo )
 
 }
 */
+
+
+/*
+ * FARSLAY -- a god's version of the rite: it never misses and never
+ * backfires, save on Killuminati, who turns it back on the caster.
+ */
+void do_farslay( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *victim;
+
+    one_argument( argument, arg );
+    if ( arg[0] == '\0' )
+    {
+        send_to_char( "Farslay whom?\n\r", ch );
+        return;
+    }
+    if ( ( victim = get_char_world( ch, arg ) ) == NULL )
+    {
+        send_to_char( "They are not in this world.\n\r", ch );
+        return;
+    }
+    if ( victim == ch )
+    {
+        send_to_char( "You cannot farslay yourself.\n\r", ch );
+        return;
+    }
+
+    if ( is_killuminati( victim ) )
+    {
+        divine_ward_backfire( ch, victim );
+        return;
+    }
+
+    act( "Farslayer howls across the world and finds $N!", ch, NULL, victim, TO_CHAR );
+    act( "Farslayer howls across the world and finds $N!", ch, NULL, victim, TO_ROOM );
+    if ( victim->in_room != NULL )
+    {
+        act( "Farslayer does UNSPEAKABLE things to $n!", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "Farslayer does UNSPEAKABLE things to you!\n\r", victim );
+        act( "$n is DEAD!!", victim, NULL, NULL, TO_ROOM );
+        send_to_char( "You have been KILLED!!\n\r\n\r", victim );
+    }
+    victim->hit = 1;
+    victim->mana = 1;
+    victim->move = 1;
+    snprintf( buf, sizeof buf, "%s farslew %s.", ch->name, victim->name );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    log_string( buf );
+    if ( !IS_NPC(victim) )
+        achievement_record_event( victim, ACHIEVEMENT_EVENT_FARSLAYED, true );
+    raw_kill( ch, victim );
+}

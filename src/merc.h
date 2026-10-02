@@ -873,6 +873,10 @@ void  oracle_listen   args( ( CHAR_DATA *ch, const char *argument ) );
 bool  oracle_here     args( ( CHAR_DATA *ch ) );
 void  oracle_on_char_from_room args( ( CHAR_DATA *ch ) );
 bool  oracle_hears    args( ( const char *argument ) );
+bool  is_oracle_mob   args( ( CHAR_DATA *ch ) );
+bool  is_killuminati  args( ( CHAR_DATA *ch ) );
+bool  is_divinely_warded args( ( CHAR_DATA *ch ) );
+void  divine_ward_backfire args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 const char *default_prompt_text args( ( void ) );
 
 /* RT ASCII conversions */

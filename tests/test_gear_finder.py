@@ -151,6 +151,46 @@ class GearFinderTests(unittest.TestCase):
         self.assertEqual(ranked[0], 22,
                          "a very large hp bump should still win over a tiny damage gain")
 
+    # ---- the Oracle's live grounding --------------------------------
+    def test_oracle_context_describes_gear_and_obtainable_bis(self) -> None:
+        from webadmin import server
+
+        prof = {"class_name": "warrior", "race": "human", "level": 40,
+                "equipment": [{"vnum": 100, "wear": 16, "level": 35}]}
+        worn_obj = SimpleNamespace(short_desc="a dull blade", carried_by=[])
+        fake_parser = SimpleNamespace(objects={100: worn_obj}, mobs={})
+
+        async def fake_best(**_kw):
+            return {"Wielded": [
+                {"vnum": 200, "name": "Excalibur", "level": 45, "area": "Camelot"}]}
+
+        with patch.object(server, "parse_player_file", lambda n: prof), \
+                patch.object(server, "parser", fake_parser), \
+                patch.object(server, "get_best_gear", fake_best):
+            ctx = server._oracle_context("Alaric", "what is my best weapon upgrade?")
+
+        self.assertIn("level 40 human warrior", ctx)
+        self.assertIn("a dull blade", ctx)          # current gear
+        self.assertIn("Excalibur", ctx)             # obtainable BiS
+        self.assertIn("Camelot", ctx)               # where to get it
+
+    def test_oracle_context_skips_bis_for_non_gear_questions(self) -> None:
+        from webadmin import server
+
+        prof = {"class_name": "warrior", "race": "human", "level": 40,
+                "equipment": []}
+
+        async def boom(**_kw):
+            raise AssertionError("BiS should not be computed for a general question")
+
+        with patch.object(server, "parse_player_file", lambda n: prof), \
+                patch.object(server, "parser", SimpleNamespace(objects={}, mobs={})), \
+                patch.object(server, "get_best_gear", boom):
+            ctx = server._oracle_context("Alaric", "how do I flee from combat?")
+
+        self.assertIn("level 40 human warrior", ctx)
+        self.assertNotIn("best-in-slot", ctx.lower())
+
 
 if __name__ == "__main__":
     unittest.main()

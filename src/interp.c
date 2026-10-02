@@ -443,6 +443,7 @@ const	struct	cmd_type	cmd_table	[] =
 	  { "component",     do_component_update,    POS_DEAD,       L1,  LOG_ALWAYS, 1 },
     { "sla",            do_sla,         POS_DEAD,       L4,  LOG_NORMAL, 0 },
     { "slay",           do_slay,        POS_DEAD,       L4,  LOG_ALWAYS, 1 },
+    { "farslay",        do_farslay,     POS_DEAD,       MAX_LEVEL,  LOG_ALWAYS, 1 },
     { "smash",          do_smash,       POS_DEAD,       L5,  LOG_ALWAYS, 1 },
     { "stasis",         do_stasis,      POS_DEAD,       L6,  LOG_ALWAYS, 1 },
     { "mute",           do_mute,        POS_DEAD,       L5,  LOG_ALWAYS, 1 },

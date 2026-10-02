@@ -1975,6 +1975,13 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
 	return true;
     }
 
+    /* The Oracle is beyond violence. */
+    if ( is_oracle_mob(victim) )
+    {
+	send_to_char("The Oracle is beyond your reach.\n\r",ch);
+	return true;
+    }
+
 
     if ((ch->in_room->vnum == ROOM_VNUM_TEMPLE) ||
 	(victim->in_room->vnum == ROOM_VNUM_TEMPLE) ||
@@ -2081,6 +2088,10 @@ bool is_safe_spell(CHAR_DATA *ch, CHAR_DATA *victim, bool area )
     && (IS_SET(victim->act,ACT_TRAIN)
     ||  IS_SET(victim->act,ACT_PRACTICE)
     ||  IS_SET(victim->act,ACT_IS_HEALER)))
+	return true;
+
+    /* The Oracle is beyond spells too. */
+    if ( is_oracle_mob(victim) )
 	return true;
 
     /* no fighting in safe rooms
@@ -2912,6 +2923,22 @@ static void raw_kill_internal( CHAR_DATA *ch, CHAR_DATA *victim,
         victim->position = POS_STANDING;
         act( "$n wobbles on its post and rights itself, unharmed.",
              victim, NULL, NULL, TO_ROOM );
+        return;
+    }
+
+    /* Killuminati cannot be killed by any route -- a death trap, a death ray,
+       a slay, a fatality, a killing blow all arrive here, and all leave him at
+       a single hit point, shielded, rather than dead. */
+    if ( is_killuminati( victim ) )
+    {
+        stop_fighting( victim, true );
+        victim->hit = 1;
+        victim->position = POS_STANDING;
+        act( "A bright and holy light wraps around $n -- $e cannot die.",
+             victim, NULL, NULL, TO_ROOM );
+        send_to_char(
+            "A bright and holy light wraps around you -- you cannot die.\n\r",
+            victim );
         return;
     }
 
@@ -4644,6 +4671,10 @@ void do_backstab( CHAR_DATA *ch, char *argument )
     if ( is_training_dummy( victim ) )
         chance = 0;
 
+    /* The divinely warded never suffer a fatality. */
+    if ( is_divinely_warded( victim ) )
+        chance = 0;
+
     if ((chance >= number_percent()) && chance !=0)
     {
       fatality(ch,victim);
@@ -5141,6 +5172,18 @@ void do_slay( CHAR_DATA *ch, char *argument )
 	return;
     }
 
+    if ( is_killuminati(victim) )
+    {
+	divine_ward_backfire( ch, victim );
+	return;
+    }
+
+    if ( is_oracle_mob(victim) )
+    {
+	send_to_char( "The Oracle cannot be slain.  Use ORACLE DISMISS.\n\r", ch );
+	return;
+    }
+
     if ( !IS_NPC(victim) && victim->level >= get_trust(ch) )
     {
 	send_to_char( "You failed.\n\r", ch );
@@ -5339,6 +5382,10 @@ void fatality(CHAR_DATA *ch, CHAR_DATA *victim)
         reform_hyrule_ganon( ch, victim );
         return;
     }
+
+    /* The Oracle, Herbie and Killuminati cannot be finished. */
+    if ( is_divinely_warded( victim ) )
+        return;
 
     act( "$n's attack has pierced a vital organ, killing you instantly!",
 	 ch, NULL, victim, TO_VICT    );

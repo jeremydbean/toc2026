@@ -59,6 +59,13 @@
 /* She leaves after this long with no question from her supplicant. */
 #define ORACLE_IDLE_SECONDS  180
 
+/* The model answers an off-topic question with exactly this token; she turns
+   it into a refusal rather than speaking it.  After this many in one sitting
+   she leaves and the offender is held out for a while. */
+#define ORACLE_OFFTOPIC          "__OFFTOPIC__"
+#define ORACLE_OFFTOPIC_MAX      3
+#define ORACLE_COOLDOWN_SECONDS  300
+
 /* One summoning at a time.  oracle_mob is cleared on every path that removes
    her (oracle_on_char_from_room catches the extraction), so it is valid
    whenever it is non-NULL.  The summoner is held by name, not pointer, so a
@@ -67,6 +74,13 @@ static CHAR_DATA *oracle_mob      = NULL;
 static char       oracle_summoner[MAX_INPUT_LENGTH] = "";
 static int        oracle_room_vnum = 0;
 static time_t     oracle_last      = 0;
+
+/* Off-topic strikes this sitting, and a short hold on an offender after she
+   walks out on them.  In memory only -- a reboot forgives, which is fine for
+   an abuse cooldown; the lasting bar is the immortal flag, handled elsewhere. */
+static int        oracle_strikes = 0;
+static char       oracle_cooldown_name[MAX_INPUT_LENGTH] = "";
+static time_t     oracle_cooldown_until = 0;
 
 
 static CHAR_DATA *oracle_mob_in_room( ROOM_INDEX_DATA *room )
@@ -91,6 +105,63 @@ bool oracle_here( CHAR_DATA *ch )
 {
     return ch != NULL && ch->in_room != NULL
         && oracle_mob_in_room( ch->in_room ) != NULL;
+}
+
+
+/* Is this character the Oracle?  She is never a valid target: attack, spell
+   and slay paths check this so she cannot be fought, slain or farslain.  An
+   immortal who wants her gone uses ORACLE DISMISS. */
+bool is_oracle_mob( CHAR_DATA *ch )
+{
+    return ch != NULL && IS_NPC(ch) && ch->pIndexData != NULL
+        && ch->pIndexData->vnum == MOB_VNUM_ORACLE;
+}
+
+
+/* Killuminati is warded against every hostile rite, even a god's. */
+bool is_killuminati( CHAR_DATA *ch )
+{
+    return ch != NULL && !IS_NPC(ch) && ch->name != NULL
+        && !str_cmp( ch->name, "Killuminati" );
+}
+
+
+/* The Oracle, Herbie and Killuminati: warded against the ordinary rites
+   (farslay scroll, fatality). The god-level FARSLAY command answers only to
+   the narrower is_killuminati(). */
+bool is_divinely_warded( CHAR_DATA *ch )
+{
+    return is_oracle_mob( ch )
+        || ( ch != NULL && IS_NPC(ch) && ch->pIndexData != NULL
+          && ch->pIndexData->vnum == MOB_VNUM_HERBIE )
+        || is_killuminati( ch );
+}
+
+
+/* The blade -- farslay or slay -- turned back on the one who threw it, 100%,
+   mortal or god. */
+void divine_ward_backfire( CHAR_DATA *ch, CHAR_DATA *victim )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    if ( ch == NULL || victim == NULL )
+        return;
+
+    act( "A bright and holy light erupts in front of $N, redirecting the strike back at you!",
+        ch, NULL, victim, TO_CHAR );
+    act( "A bright and holy light erupts in front of $N, redirecting the strike back at $n!",
+        ch, NULL, victim, TO_ROOM );
+    act( "$n is DEAD!!", ch, NULL, NULL, TO_ROOM );
+    send_to_char( "You have been KILLED!!\n\r\n\r", ch );
+    ch->hit = 1;
+    ch->mana = 1;
+    ch->move = 1;
+    snprintf( buf, sizeof(buf),
+              "%s struck at %s and was struck down by the ward.",
+              ch->name, victim->name );
+    wizinfo( buf, LEVEL_IMMORTAL );
+    log_string( buf );
+    raw_kill( ch, ch );
 }
 
 
@@ -308,7 +379,7 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
     /* Only the one she came for may speak with her. */
     if ( str_cmp( ch->name, oracle_summoner ) != 0 )
     {
-        char buf[MAX_INPUT_LENGTH];
+        char buf[MAX_STRING_LENGTH];
         snprintf( buf, sizeof(buf),
                   "$n is attending to %s just now.  Wait, or pray when she is free.",
                   oracle_summoner[0] != '\0' ? oracle_summoner : "another" );
@@ -339,6 +410,10 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
     oracle_last = current_time > 0 ? current_time : time(NULL);
     oracle_journal( "Q", ch->name,
                     ch->in_room != NULL ? ch->in_room->vnum : 0, question );
+
+    /* Flush the character to disk so the out-of-process poller reads the gear
+       and level they have this moment, not whatever the last autosave caught. */
+    save_char_obj( ch );
 
     act( "$n gazes at you, then closes $s eyes, considering your question.",
         mob, NULL, ch, TO_VICT );
@@ -387,6 +462,36 @@ static void oracle_deliver( CHAR_DATA *mob, const char *player,
         if ( !IS_NPC(vch) && vch->name != NULL && !str_cmp( vch->name, player ) )
             break;
     }
+
+    /* An off-topic question: she refuses rather than answering, and keeps
+       count.  Too many in one sitting and she leaves, holding the offender
+       out for a while. */
+    if ( !str_cmp( answer, ORACLE_OFFTOPIC ) )
+    {
+        oracle_strikes++;
+        oracle_journal( "OFFTOPIC", player,
+                        mob->in_room != NULL ? mob->in_room->vnum : 0, "" );
+        if ( vch != NULL )
+            act( "$n fixes $N with a flat stare.  'I do not answer such things.'",
+                mob, NULL, vch, TO_ROOM );
+
+        if ( oracle_strikes >= ORACLE_OFFTOPIC_MAX )
+        {
+            if ( vch != NULL )
+                act( "$n says 'You waste my sight.  Trouble me again another day.'",
+                    mob, NULL, vch, TO_ROOM );
+            toc_strlcpy( oracle_cooldown_name, oracle_summoner,
+                         sizeof(oracle_cooldown_name) );
+            oracle_cooldown_until =
+                ( current_time > 0 ? current_time : time(NULL) )
+                + ORACLE_COOLDOWN_SECONDS;
+            oracle_dismiss();
+        }
+        return;
+    }
+
+    /* A real answer: she is being used properly, so forgive earlier strikes. */
+    oracle_strikes = 0;
 
     oracle_journal( "A", player,
                     mob->in_room != NULL ? mob->in_room->vnum : 0, answer );
@@ -554,6 +659,20 @@ void do_pray( CHAR_DATA *ch, char *argument )
         return;
     }
 
+    /* Held out after wasting her sight too often. */
+    {
+        time_t now = current_time > 0 ? current_time : time(NULL);
+
+        if ( oracle_cooldown_until > now
+          && !str_cmp( oracle_cooldown_name, ch->name ) )
+        {
+            send_to_char(
+                "The Oracle will not hear you just now.  Reflect, and return later.\n\r",
+                ch );
+            return;
+        }
+    }
+
     if ( oracle_mob != NULL )
     {
         if ( !str_cmp( oracle_summoner, ch->name )
@@ -583,6 +702,7 @@ void do_pray( CHAR_DATA *ch, char *argument )
     toc_strlcpy( oracle_summoner, ch->name, sizeof(oracle_summoner) );
     oracle_room_vnum = ch->in_room->vnum;
     oracle_last = current_time > 0 ? current_time : time(NULL);
+    oracle_strikes = 0;
 
     act( "You bow your head in prayer.  The air stirs, and the Oracle fades "
         "into being before you.", ch, NULL, NULL, TO_CHAR );
