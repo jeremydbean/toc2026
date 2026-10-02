@@ -28,13 +28,15 @@ from live_mud import (
 
 SKIP = skip_reason()
 
-# area/hyrule.are stocks these rooms with mobile 30335 (a Peahat). Its
-# world-wide cap equals the total the area asks for, so every freed slot is
-# contested on the next reset.
+# area/hyrule.are stocks these rooms with mobile 32353, the peahat built for
+# the Level 4 band (scripts/build_hyrule_area.py generates one record per
+# enemy kind per band, so every room drained here must sit in the same
+# band as the watched one). Its world-wide cap equals the total the area
+# asks for, so every freed slot is contested on the next reset.
 WATCHED_ROOM = 30201          # earliest peahat room, asks for two
 WATCHED_INTENT = 2
-DRAINED_ROOMS = (30318, 30311, 30309)   # later rooms, five peahats between them
-MOB_LONG_DESC = "A Peahat skims over the ground on whirling leaves."
+DRAINED_ROOMS = (30286, 30309, 30311)   # later rooms, six peahats between them
+MOB_LONG_DESC = "A peahat skims over the ground on whirling petals."
 
 IMMORTAL_LEVEL = 70
 PASSWORD = "Ziprepoppw"

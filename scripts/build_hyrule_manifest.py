@@ -56,9 +56,14 @@ DUNGEON_TITLES = {
     8: "The Lion",
     9: "Death Mountain",
 }
+# Character levels each dungeon is built for. Level 1 takes a character
+# straight out of school; Level 9 and Ganon are for the top of mortal play,
+# 53-59. The bands meet end to end, so every level from 2 to 59 has a
+# dungeon, and the overworld between them is graded from these (see
+# world_level).
 LEVEL_BANDS = {
-    1: [11, 20], 2: [21, 30], 3: [31, 40], 4: [41, 50],
-    5: [51, 55], 6: [56, 60], 7: [61, 64], 8: [65, 67], 9: [68, 70],
+    1: [2, 8], 2: [8, 14], 3: [14, 20], 4: [20, 27], 5: [27, 33],
+    6: [33, 40], 7: [40, 46], 8: [46, 52], 9: [53, 59],
 }
 
 DUNGEON_CELLS = {
@@ -416,15 +421,34 @@ def edge_lookup(
 
 
 def world_level(coordinate: str) -> int:
-    """Assign a useful 1-70 leveling gradient without changing screen geometry."""
-    col = ord(coordinate[0]) - ord("A")
-    row = int(coordinate[1:]) - 1
-    start_col, start_row = 7, 0
-    distance = abs(col - start_col) + abs(row - start_row)
-    danger = distance * 3 + max(0, row - 2) * 4 + max(0, 5 - col) * 2
-    if coordinate in {"B6", "C6", "F8", "K8", "L8", "N2"}:
-        danger += 14
-    return max(1, min(70, 1 + danger))
+    """The character level an overworld screen is meant for.
+
+    Each screen leans toward the dungeons near it: the level is an
+    inverse-square-distance average of every dungeon's band midpoint, with
+    the start screen anchored at level 1. Standing on a dungeon's screen
+    gives that dungeon's midpoint, the start screen gives 1, and the ground
+    between grades smoothly from one to the next.
+    """
+    def position(name: str) -> tuple[int, int]:
+        return ord(name[0]) - ord("A"), int(name[1:])
+
+    anchors = [(position("H1"), 1.0)]
+    for name, landmarks in OVERWORLD_LANDMARKS.items():
+        for landmark in landmarks:
+            if landmark.get("type") == "dungeon":
+                low, high = LEVEL_BANDS[landmark["level"]]
+                anchors.append((position(name), (low + high) / 2))
+
+    column, row = position(coordinate)
+    weighted = total = 0.0
+    for (anchor_column, anchor_row), level in anchors:
+        distance = abs(anchor_column - column) + abs(anchor_row - row)
+        if distance == 0:
+            return round(level)
+        weight = 1.0 / distance ** 2
+        weighted += weight * level
+        total += weight
+    return max(1, round(weighted / total))
 
 
 def build_overworld(reference: Path, entities: dict[str, Any]) -> list[dict[str, Any]]:
@@ -743,7 +767,7 @@ def build_dungeons(reference: Path, entity_data: dict[str, Any], unmatched: list
             rooms.append({
                 "coordinate": coordinate,
                 "vnum": coordinate_vnums[coordinate],
-                "name": f"Level {level}: {DUNGEON_TITLES[level]} [{coordinate}]",
+                # Room names and prose are in data/hyrule_room_prose.json.
                 "exits": {
                     direction: {**data, "to_vnum": coordinate_vnums[data["to"]]}
                     for direction, data in sorted(edges[coordinate].items())

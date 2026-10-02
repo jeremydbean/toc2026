@@ -24,7 +24,7 @@
       {
         "coordinate": "A1",
         "vnum": 30201,
-        "recommended_level": 32,
+        "recommended_level": 25,
         "exits": {
           "east": {
             "to": "B1",
@@ -40,7 +40,7 @@
       {
         "coordinate": "B1",
         "vnum": 30202,
-        "recommended_level": 27,
+        "recommended_level": 25,
         "exits": {
           "east": {
             "to": "C1",
@@ -73,7 +73,7 @@
       {
         "coordinate": "C1",
         "vnum": 30203,
-        "recommended_level": 22,
+        "recommended_level": 24,
         "exits": {
           "east": {
             "to": "D1",
@@ -100,7 +100,7 @@
       {
         "coordinate": "D1",
         "vnum": 30204,
-        "recommended_level": 17,
+        "recommended_level": 19,
         "exits": {
           "east": {
             "to": "E1",
@@ -126,7 +126,7 @@
       {
         "coordinate": "E1",
         "vnum": 30205,
-        "recommended_level": 12,
+        "recommended_level": 17,
         "exits": {
           "west": {
             "to": "D1",
@@ -147,7 +147,7 @@
       {
         "coordinate": "F1",
         "vnum": 30206,
-        "recommended_level": 7,
+        "recommended_level": 16,
         "exits": {
           "east": {
             "to": "G1",
@@ -169,7 +169,7 @@
       {
         "coordinate": "G1",
         "vnum": 30207,
-        "recommended_level": 4,
+        "recommended_level": 7,
         "exits": {
           "east": {
             "to": "H1",
@@ -236,7 +236,7 @@
       {
         "coordinate": "I1",
         "vnum": 30208,
-        "recommended_level": 4,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "J1",
@@ -270,7 +270,7 @@
       {
         "coordinate": "J1",
         "vnum": 30209,
-        "recommended_level": 7,
+        "recommended_level": 12,
         "exits": {
           "east": {
             "to": "K1",
@@ -315,7 +315,7 @@
       {
         "coordinate": "K1",
         "vnum": 30210,
-        "recommended_level": 10,
+        "recommended_level": 19,
         "exits": {
           "east": {
             "to": "L1",
@@ -336,7 +336,7 @@
       {
         "coordinate": "L1",
         "vnum": 30211,
-        "recommended_level": 13,
+        "recommended_level": 27,
         "exits": {
           "east": {
             "to": "M1",
@@ -367,7 +367,7 @@
       {
         "coordinate": "M1",
         "vnum": 30212,
-        "recommended_level": 16,
+        "recommended_level": 35,
         "exits": {
           "east": {
             "to": "N1",
@@ -395,7 +395,7 @@
       {
         "coordinate": "N1",
         "vnum": 30213,
-        "recommended_level": 19,
+        "recommended_level": 45,
         "exits": {
           "east": {
             "to": "O1",
@@ -424,7 +424,7 @@
       {
         "coordinate": "O1",
         "vnum": 30214,
-        "recommended_level": 22,
+        "recommended_level": 40,
         "exits": {
           "east": {
             "to": "P1",
@@ -445,7 +445,7 @@
       {
         "coordinate": "P1",
         "vnum": 30215,
-        "recommended_level": 25,
+        "recommended_level": 36,
         "exits": {
           "north": {
             "to": "P2",
@@ -466,7 +466,7 @@
       {
         "coordinate": "A2",
         "vnum": 30216,
-        "recommended_level": 35,
+        "recommended_level": 29,
         "exits": {
           "east": {
             "to": "B2",
@@ -519,7 +519,7 @@
       {
         "coordinate": "C2",
         "vnum": 30218,
-        "recommended_level": 25,
+        "recommended_level": 32,
         "exits": {
           "east": {
             "to": "D2",
@@ -557,7 +557,7 @@
       {
         "coordinate": "D2",
         "vnum": 30219,
-        "recommended_level": 20,
+        "recommended_level": 24,
         "exits": {
           "east": {
             "to": "E2",
@@ -597,7 +597,7 @@
       {
         "coordinate": "E2",
         "vnum": 30220,
-        "recommended_level": 15,
+        "recommended_level": 19,
         "exits": {
           "east": {
             "to": "F2",
@@ -637,7 +637,7 @@
       {
         "coordinate": "F2",
         "vnum": 30221,
-        "recommended_level": 10,
+        "recommended_level": 20,
         "exits": {
           "east": {
             "to": "G2",
@@ -669,7 +669,7 @@
       {
         "coordinate": "G2",
         "vnum": 30222,
-        "recommended_level": 7,
+        "recommended_level": 15,
         "exits": {
           "east": {
             "to": "H2",
@@ -702,7 +702,7 @@
       {
         "coordinate": "H2",
         "vnum": 30223,
-        "recommended_level": 4,
+        "recommended_level": 6,
         "exits": {
           "east": {
             "to": "I2",
@@ -735,7 +735,7 @@
       {
         "coordinate": "I2",
         "vnum": 30224,
-        "recommended_level": 7,
+        "recommended_level": 13,
         "exits": {
           "east": {
             "to": "J2",
@@ -774,7 +774,7 @@
       {
         "coordinate": "J2",
         "vnum": 30225,
-        "recommended_level": 10,
+        "recommended_level": 19,
         "exits": {
           "east": {
             "to": "K2",
@@ -801,7 +801,7 @@
       {
         "coordinate": "K2",
         "vnum": 30226,
-        "recommended_level": 13,
+        "recommended_level": 26,
         "exits": {
           "east": {
             "to": "L2",
@@ -836,7 +836,7 @@
       {
         "coordinate": "L2",
         "vnum": 30227,
-        "recommended_level": 16,
+        "recommended_level": 34,
         "exits": {
           "east": {
             "to": "M2",
@@ -875,7 +875,7 @@
       {
         "coordinate": "M2",
         "vnum": 30228,
-        "recommended_level": 19,
+        "recommended_level": 43,
         "exits": {
           "east": {
             "to": "N2",
@@ -901,7 +901,7 @@
       {
         "coordinate": "N2",
         "vnum": 30229,
-        "recommended_level": 36,
+        "recommended_level": 49,
         "exits": {
           "east": {
             "to": "O2",
@@ -933,7 +933,7 @@
       {
         "coordinate": "O2",
         "vnum": 30230,
-        "recommended_level": 25,
+        "recommended_level": 46,
         "exits": {
           "east": {
             "to": "P2",
@@ -955,7 +955,7 @@
       {
         "coordinate": "P2",
         "vnum": 30231,
-        "recommended_level": 28,
+        "recommended_level": 41,
         "exits": {
           "north": {
             "to": "P3",
@@ -989,7 +989,7 @@
       {
         "coordinate": "A3",
         "vnum": 30232,
-        "recommended_level": 38,
+        "recommended_level": 33,
         "exits": {
           "north": {
             "to": "A4",
@@ -1010,7 +1010,7 @@
       {
         "coordinate": "B3",
         "vnum": 30233,
-        "recommended_level": 33,
+        "recommended_level": 35,
         "exits": {
           "east": {
             "to": "C3",
@@ -1038,7 +1038,7 @@
       {
         "coordinate": "C3",
         "vnum": 30234,
-        "recommended_level": 28,
+        "recommended_level": 39,
         "exits": {
           "east": {
             "to": "D3",
@@ -1070,7 +1070,7 @@
       {
         "coordinate": "D3",
         "vnum": 30235,
-        "recommended_level": 23,
+        "recommended_level": 31,
         "exits": {
           "east": {
             "to": "E3",
@@ -1102,7 +1102,7 @@
       {
         "coordinate": "E3",
         "vnum": 30236,
-        "recommended_level": 18,
+        "recommended_level": 24,
         "exits": {
           "east": {
             "to": "F3",
@@ -1134,7 +1134,7 @@
       {
         "coordinate": "F3",
         "vnum": 30237,
-        "recommended_level": 13,
+        "recommended_level": 23,
         "exits": {
           "east": {
             "to": "G3",
@@ -1166,7 +1166,7 @@
       {
         "coordinate": "G3",
         "vnum": 30238,
-        "recommended_level": 10,
+        "recommended_level": 19,
         "exits": {
           "east": {
             "to": "H3",
@@ -1200,7 +1200,7 @@
       {
         "coordinate": "H3",
         "vnum": 30239,
-        "recommended_level": 7,
+        "recommended_level": 12,
         "exits": {
           "east": {
             "to": "I3",
@@ -1221,7 +1221,7 @@
       {
         "coordinate": "I3",
         "vnum": 30240,
-        "recommended_level": 10,
+        "recommended_level": 16,
         "exits": {
           "east": {
             "to": "J3",
@@ -1252,7 +1252,7 @@
       {
         "coordinate": "J3",
         "vnum": 30241,
-        "recommended_level": 13,
+        "recommended_level": 20,
         "exits": {
           "east": {
             "to": "K3",
@@ -1283,7 +1283,7 @@
       {
         "coordinate": "K3",
         "vnum": 30242,
-        "recommended_level": 16,
+        "recommended_level": 23,
         "exits": {
           "east": {
             "to": "L3",
@@ -1309,7 +1309,7 @@
       {
         "coordinate": "L3",
         "vnum": 30243,
-        "recommended_level": 19,
+        "recommended_level": 26,
         "exits": {
           "east": {
             "to": "M3",
@@ -1348,7 +1348,7 @@
       {
         "coordinate": "M3",
         "vnum": 30244,
-        "recommended_level": 22,
+        "recommended_level": 28,
         "exits": {
           "east": {
             "to": "N3",
@@ -1374,7 +1374,7 @@
       {
         "coordinate": "N3",
         "vnum": 30245,
-        "recommended_level": 25,
+        "recommended_level": 43,
         "exits": {
           "east": {
             "to": "O3",
@@ -1405,7 +1405,7 @@
       {
         "coordinate": "O3",
         "vnum": 30246,
-        "recommended_level": 28,
+        "recommended_level": 38,
         "exits": {
           "west": {
             "to": "N3",
@@ -1428,7 +1428,7 @@
       {
         "coordinate": "P3",
         "vnum": 30247,
-        "recommended_level": 31,
+        "recommended_level": 34,
         "exits": {
           "north": {
             "to": "P4",
@@ -1455,7 +1455,7 @@
       {
         "coordinate": "A4",
         "vnum": 30248,
-        "recommended_level": 45,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "B4",
@@ -1502,7 +1502,7 @@
       {
         "coordinate": "C4",
         "vnum": 30250,
-        "recommended_level": 35,
+        "recommended_level": 43,
         "exits": {
           "south": {
             "to": "C3",
@@ -1524,7 +1524,7 @@
       {
         "coordinate": "D4",
         "vnum": 30251,
-        "recommended_level": 30,
+        "recommended_level": 37,
         "exits": {
           "south": {
             "to": "D3",
@@ -1544,7 +1544,7 @@
       {
         "coordinate": "E4",
         "vnum": 30252,
-        "recommended_level": 25,
+        "recommended_level": 26,
         "exits": {
           "north": {
             "to": "E5",
@@ -1573,7 +1573,7 @@
       {
         "coordinate": "F4",
         "vnum": 30253,
-        "recommended_level": 20,
+        "recommended_level": 24,
         "exits": {
           "south": {
             "to": "F3",
@@ -1595,7 +1595,7 @@
       {
         "coordinate": "G4",
         "vnum": 30254,
-        "recommended_level": 17,
+        "recommended_level": 21,
         "exits": {
           "east": {
             "to": "H4",
@@ -1624,7 +1624,7 @@
       {
         "coordinate": "H4",
         "vnum": 30255,
-        "recommended_level": 14,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "I4",
@@ -1650,7 +1650,7 @@
       {
         "coordinate": "I4",
         "vnum": 30256,
-        "recommended_level": 17,
+        "recommended_level": 16,
         "exits": {
           "north": {
             "to": "I5",
@@ -1684,7 +1684,7 @@
       {
         "coordinate": "J4",
         "vnum": 30257,
-        "recommended_level": 20,
+        "recommended_level": 19,
         "exits": {
           "east": {
             "to": "K4",
@@ -1735,7 +1735,7 @@
       {
         "coordinate": "K4",
         "vnum": 30258,
-        "recommended_level": 23,
+        "recommended_level": 20,
         "exits": {
           "east": {
             "to": "L4",
@@ -1768,7 +1768,7 @@
       {
         "coordinate": "L4",
         "vnum": 30259,
-        "recommended_level": 26,
+        "recommended_level": 20,
         "exits": {
           "north": {
             "to": "L5",
@@ -1802,7 +1802,7 @@
       {
         "coordinate": "M4",
         "vnum": 30260,
-        "recommended_level": 29,
+        "recommended_level": 16,
         "exits": {
           "east": {
             "to": "N4",
@@ -1824,7 +1824,7 @@
       {
         "coordinate": "N4",
         "vnum": 30261,
-        "recommended_level": 32,
+        "recommended_level": 29,
         "exits": {
           "east": {
             "to": "O4",
@@ -1863,7 +1863,7 @@
       {
         "coordinate": "O4",
         "vnum": 30262,
-        "recommended_level": 35,
+        "recommended_level": 28,
         "exits": {
           "west": {
             "to": "N4",
@@ -1887,7 +1887,7 @@
       {
         "coordinate": "P4",
         "vnum": 30263,
-        "recommended_level": 38,
+        "recommended_level": 28,
         "exits": {
           "north": {
             "to": "P5",
@@ -1909,7 +1909,7 @@
       {
         "coordinate": "A5",
         "vnum": 30264,
-        "recommended_level": 52,
+        "recommended_level": 34,
         "exits": {
           "east": {
             "to": "B5",
@@ -1935,7 +1935,7 @@
       {
         "coordinate": "B5",
         "vnum": 30265,
-        "recommended_level": 47,
+        "recommended_level": 36,
         "exits": {
           "east": {
             "to": "C5",
@@ -1966,7 +1966,7 @@
       {
         "coordinate": "C5",
         "vnum": 30266,
-        "recommended_level": 42,
+        "recommended_level": 38,
         "exits": {
           "east": {
             "to": "D5",
@@ -1993,7 +1993,7 @@
       {
         "coordinate": "D5",
         "vnum": 30267,
-        "recommended_level": 37,
+        "recommended_level": 33,
         "exits": {
           "north": {
             "to": "D6",
@@ -2020,7 +2020,7 @@
       {
         "coordinate": "E5",
         "vnum": 30268,
-        "recommended_level": 32,
+        "recommended_level": 27,
         "exits": {
           "south": {
             "to": "E4",
@@ -2045,7 +2045,7 @@
       {
         "coordinate": "F5",
         "vnum": 30269,
-        "recommended_level": 27,
+        "recommended_level": 24,
         "exits": {
           "east": {
             "to": "G5",
@@ -2064,7 +2064,7 @@
       {
         "coordinate": "G5",
         "vnum": 30270,
-        "recommended_level": 24,
+        "recommended_level": 13,
         "exits": {
           "north": {
             "to": "G6",
@@ -2083,7 +2083,7 @@
       {
         "coordinate": "H5",
         "vnum": 30271,
-        "recommended_level": 21,
+        "recommended_level": 5,
         "exits": {
           "east": {
             "to": "I5",
@@ -2104,7 +2104,7 @@
       {
         "coordinate": "I5",
         "vnum": 30272,
-        "recommended_level": 24,
+        "recommended_level": 9,
         "exits": {
           "north": {
             "to": "I6",
@@ -2131,7 +2131,7 @@
       {
         "coordinate": "J5",
         "vnum": 30273,
-        "recommended_level": 27,
+        "recommended_level": 15,
         "exits": {
           "south": {
             "to": "J4",
@@ -2151,7 +2151,7 @@
       {
         "coordinate": "K5",
         "vnum": 30274,
-        "recommended_level": 30,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "L5",
@@ -2178,7 +2178,7 @@
       {
         "coordinate": "L5",
         "vnum": 30275,
-        "recommended_level": 33,
+        "recommended_level": 15,
         "exits": {
           "north": {
             "to": "L6",
@@ -2204,7 +2204,7 @@
       {
         "coordinate": "M5",
         "vnum": 30276,
-        "recommended_level": 36,
+        "recommended_level": 11,
         "exits": {
           "south": {
             "to": "M4",
@@ -2225,7 +2225,7 @@
       {
         "coordinate": "N5",
         "vnum": 30277,
-        "recommended_level": 39,
+        "recommended_level": 16,
         "exits": {
           "north": {
             "to": "N6",
@@ -2254,7 +2254,7 @@
       {
         "coordinate": "O5",
         "vnum": 30278,
-        "recommended_level": 42,
+        "recommended_level": 20,
         "exits": {
           "east": {
             "to": "P5",
@@ -2276,7 +2276,7 @@
       {
         "coordinate": "P5",
         "vnum": 30279,
-        "recommended_level": 45,
+        "recommended_level": 22,
         "exits": {
           "north": {
             "to": "P6",
@@ -2303,7 +2303,7 @@
       {
         "coordinate": "A6",
         "vnum": 30280,
-        "recommended_level": 59,
+        "recommended_level": 35,
         "exits": {
           "east": {
             "to": "B6",
@@ -2324,7 +2324,7 @@
       {
         "coordinate": "B6",
         "vnum": 30281,
-        "recommended_level": 68,
+        "recommended_level": 36,
         "exits": {
           "south": {
             "to": "B5",
@@ -2351,7 +2351,7 @@
       {
         "coordinate": "C6",
         "vnum": 30282,
-        "recommended_level": 63,
+        "recommended_level": 36,
         "exits": {
           "south": {
             "to": "C5",
@@ -2372,7 +2372,7 @@
       {
         "coordinate": "D6",
         "vnum": 30283,
-        "recommended_level": 44,
+        "recommended_level": 35,
         "exits": {
           "east": {
             "to": "E6",
@@ -2417,7 +2417,7 @@
       {
         "coordinate": "E6",
         "vnum": 30284,
-        "recommended_level": 39,
+        "recommended_level": 33,
         "exits": {
           "east": {
             "to": "F6",
@@ -2450,7 +2450,7 @@
       {
         "coordinate": "F6",
         "vnum": 30285,
-        "recommended_level": 34,
+        "recommended_level": 33,
         "exits": {
           "north": {
             "to": "F7",
@@ -2483,7 +2483,7 @@
       {
         "coordinate": "G6",
         "vnum": 30286,
-        "recommended_level": 31,
+        "recommended_level": 23,
         "exits": {
           "east": {
             "to": "H6",
@@ -2512,7 +2512,7 @@
       {
         "coordinate": "H6",
         "vnum": 30287,
-        "recommended_level": 28,
+        "recommended_level": 11,
         "exits": {
           "east": {
             "to": "I6",
@@ -2546,7 +2546,7 @@
       {
         "coordinate": "I6",
         "vnum": 30288,
-        "recommended_level": 31,
+        "recommended_level": 17,
         "exits": {
           "east": {
             "to": "J6",
@@ -2579,7 +2579,7 @@
       {
         "coordinate": "J6",
         "vnum": 30289,
-        "recommended_level": 34,
+        "recommended_level": 20,
         "exits": {
           "east": {
             "to": "K6",
@@ -2600,7 +2600,7 @@
       {
         "coordinate": "K6",
         "vnum": 30290,
-        "recommended_level": 37,
+        "recommended_level": 22,
         "exits": {
           "east": {
             "to": "L6",
@@ -2626,7 +2626,7 @@
       {
         "coordinate": "L6",
         "vnum": 30291,
-        "recommended_level": 40,
+        "recommended_level": 22,
         "exits": {
           "east": {
             "to": "M6",
@@ -2658,7 +2658,7 @@
       {
         "coordinate": "M6",
         "vnum": 30292,
-        "recommended_level": 43,
+        "recommended_level": 15,
         "exits": {
           "east": {
             "to": "N6",
@@ -2689,7 +2689,7 @@
       {
         "coordinate": "N6",
         "vnum": 30293,
-        "recommended_level": 46,
+        "recommended_level": 21,
         "exits": {
           "east": {
             "to": "O6",
@@ -2728,7 +2728,7 @@
       {
         "coordinate": "O6",
         "vnum": 30294,
-        "recommended_level": 49,
+        "recommended_level": 23,
         "exits": {
           "south": {
             "to": "O5",
@@ -2750,7 +2750,7 @@
       {
         "coordinate": "P6",
         "vnum": 30295,
-        "recommended_level": 52,
+        "recommended_level": 24,
         "exits": {
           "south": {
             "to": "P5",
@@ -2769,7 +2769,7 @@
       {
         "coordinate": "A7",
         "vnum": 30296,
-        "recommended_level": 66,
+        "recommended_level": 35,
         "exits": {
           "east": {
             "to": "B7",
@@ -2797,7 +2797,7 @@
       {
         "coordinate": "B7",
         "vnum": 30297,
-        "recommended_level": 61,
+        "recommended_level": 36,
         "exits": {
           "north": {
             "to": "B8",
@@ -2819,7 +2819,7 @@
       {
         "coordinate": "C7",
         "vnum": 30298,
-        "recommended_level": 56,
+        "recommended_level": 37,
         "exits": {
           "east": {
             "to": "D7",
@@ -2848,7 +2848,7 @@
       {
         "coordinate": "D7",
         "vnum": 30299,
-        "recommended_level": 51,
+        "recommended_level": 37,
         "exits": {
           "east": {
             "to": "E7",
@@ -2882,7 +2882,7 @@
       {
         "coordinate": "E7",
         "vnum": 30300,
-        "recommended_level": 46,
+        "recommended_level": 40,
         "exits": {
           "east": {
             "to": "F7",
@@ -2916,7 +2916,7 @@
       {
         "coordinate": "F7",
         "vnum": 30301,
-        "recommended_level": 41,
+        "recommended_level": 48,
         "exits": {
           "east": {
             "to": "G7",
@@ -2943,7 +2943,7 @@
       {
         "coordinate": "G7",
         "vnum": 30302,
-        "recommended_level": 38,
+        "recommended_level": 35,
         "exits": {
           "east": {
             "to": "H7",
@@ -2971,7 +2971,7 @@
       {
         "coordinate": "H7",
         "vnum": 30303,
-        "recommended_level": 35,
+        "recommended_level": 22,
         "exits": {
           "east": {
             "to": "I7",
@@ -3002,7 +3002,7 @@
       {
         "coordinate": "I7",
         "vnum": 30304,
-        "recommended_level": 38,
+        "recommended_level": 24,
         "exits": {
           "east": {
             "to": "J7",
@@ -3023,7 +3023,7 @@
       {
         "coordinate": "J7",
         "vnum": 30305,
-        "recommended_level": 41,
+        "recommended_level": 26,
         "exits": {
           "east": {
             "to": "K7",
@@ -3044,7 +3044,7 @@
       {
         "coordinate": "K7",
         "vnum": 30306,
-        "recommended_level": 44,
+        "recommended_level": 27,
         "exits": {
           "east": {
             "to": "L7",
@@ -3070,7 +3070,7 @@
       {
         "coordinate": "L7",
         "vnum": 30307,
-        "recommended_level": 47,
+        "recommended_level": 28,
         "exits": {
           "east": {
             "to": "M7",
@@ -3099,7 +3099,7 @@
       {
         "coordinate": "M7",
         "vnum": 30308,
-        "recommended_level": 50,
+        "recommended_level": 22,
         "exits": {
           "east": {
             "to": "N7",
@@ -3130,7 +3130,7 @@
       {
         "coordinate": "N7",
         "vnum": 30309,
-        "recommended_level": 53,
+        "recommended_level": 25,
         "exits": {
           "east": {
             "to": "O7",
@@ -3185,7 +3185,7 @@
       {
         "coordinate": "O7",
         "vnum": 30310,
-        "recommended_level": 56,
+        "recommended_level": 26,
         "exits": {
           "east": {
             "to": "P7",
@@ -3219,7 +3219,7 @@
       {
         "coordinate": "P7",
         "vnum": 30311,
-        "recommended_level": 59,
+        "recommended_level": 26,
         "exits": {
           "north": {
             "to": "P8",
@@ -3246,7 +3246,7 @@
       {
         "coordinate": "A8",
         "vnum": 30312,
-        "recommended_level": 70,
+        "recommended_level": 37,
         "exits": {
           "east": {
             "to": "B8",
@@ -3265,7 +3265,7 @@
       {
         "coordinate": "B8",
         "vnum": 30313,
-        "recommended_level": 68,
+        "recommended_level": 38,
         "exits": {
           "east": {
             "to": "C8",
@@ -3299,7 +3299,7 @@
       {
         "coordinate": "C8",
         "vnum": 30314,
-        "recommended_level": 63,
+        "recommended_level": 39,
         "exits": {
           "east": {
             "to": "D8",
@@ -3325,7 +3325,7 @@
       {
         "coordinate": "D8",
         "vnum": 30315,
-        "recommended_level": 58,
+        "recommended_level": 43,
         "exits": {
           "south": {
             "to": "D7",
@@ -3354,7 +3354,7 @@
       {
         "coordinate": "E8",
         "vnum": 30316,
-        "recommended_level": 53,
+        "recommended_level": 51,
         "exits": {
           "east": {
             "to": "F8",
@@ -3377,7 +3377,7 @@
       {
         "coordinate": "F8",
         "vnum": 30317,
-        "recommended_level": 62,
+        "recommended_level": 56,
         "exits": {
           "east": {
             "to": "G8",
@@ -3405,7 +3405,7 @@
       {
         "coordinate": "G8",
         "vnum": 30318,
-        "recommended_level": 45,
+        "recommended_level": 49,
         "exits": {
           "east": {
             "to": "H8",
@@ -3427,7 +3427,7 @@
       {
         "coordinate": "H8",
         "vnum": 30319,
-        "recommended_level": 42,
+        "recommended_level": 35,
         "exits": {
           "east": {
             "to": "I8",
@@ -3461,7 +3461,7 @@
       {
         "coordinate": "I8",
         "vnum": 30320,
-        "recommended_level": 45,
+        "recommended_level": 32,
         "exits": {
           "east": {
             "to": "J8",
@@ -3482,7 +3482,7 @@
       {
         "coordinate": "J8",
         "vnum": 30321,
-        "recommended_level": 48,
+        "recommended_level": 30,
         "exits": {
           "west": {
             "to": "I8",
@@ -3496,7 +3496,7 @@
       {
         "coordinate": "K8",
         "vnum": 30322,
-        "recommended_level": 65,
+        "recommended_level": 30,
         "exits": {
           "south": {
             "to": "K7",
@@ -3519,7 +3519,7 @@
       {
         "coordinate": "L8",
         "vnum": 30323,
-        "recommended_level": 68,
+        "recommended_level": 30,
         "exits": {
           "south": {
             "to": "L7",
@@ -3540,7 +3540,7 @@
       {
         "coordinate": "M8",
         "vnum": 30324,
-        "recommended_level": 57,
+        "recommended_level": 29,
         "exits": {
           "east": {
             "to": "N8",
@@ -3568,7 +3568,7 @@
       {
         "coordinate": "N8",
         "vnum": 30325,
-        "recommended_level": 60,
+        "recommended_level": 28,
         "exits": {
           "south": {
             "to": "N7",
@@ -3597,7 +3597,7 @@
       {
         "coordinate": "O8",
         "vnum": 30326,
-        "recommended_level": 63,
+        "recommended_level": 28,
         "exits": {
           "south": {
             "to": "O7",
@@ -3617,7 +3617,7 @@
       {
         "coordinate": "P8",
         "vnum": 30327,
-        "recommended_level": 66,
+        "recommended_level": 28,
         "exits": {
           "south": {
             "to": "P7",
@@ -3641,8 +3641,8 @@
       "level": 1,
       "title": "The Eagle",
       "recommended_levels": [
-        11,
-        20
+        2,
+        8
       ],
       "overworld_coordinate": "H5",
       "entrance_coordinate": "C1",
@@ -3661,7 +3661,6 @@
         {
           "coordinate": "B1",
           "vnum": 30400,
-          "name": "Level 1: The Eagle [B1]",
           "exits": {
             "east": {
               "to": "C1",
@@ -3680,7 +3679,6 @@
         {
           "coordinate": "C1",
           "vnum": 30401,
-          "name": "Level 1: The Eagle [C1]",
           "exits": {
             "east": {
               "to": "D1",
@@ -3705,7 +3703,6 @@
         {
           "coordinate": "D1",
           "vnum": 30402,
-          "name": "Level 1: The Eagle [D1]",
           "exits": {
             "west": {
               "to": "C1",
@@ -3722,7 +3719,6 @@
         {
           "coordinate": "C2",
           "vnum": 30403,
-          "name": "Level 1: The Eagle [C2]",
           "exits": {
             "north": {
               "to": "C3",
@@ -3744,7 +3740,6 @@
         {
           "coordinate": "B3",
           "vnum": 30404,
-          "name": "Level 1: The Eagle [B3]",
           "exits": {
             "east": {
               "to": "C3",
@@ -3766,7 +3761,6 @@
         {
           "coordinate": "C3",
           "vnum": 30405,
-          "name": "Level 1: The Eagle [C3]",
           "exits": {
             "east": {
               "to": "D3",
@@ -3800,7 +3794,6 @@
         {
           "coordinate": "D3",
           "vnum": 30406,
-          "name": "Level 1: The Eagle [D3]",
           "exits": {
             "north": {
               "to": "D4",
@@ -3824,7 +3817,6 @@
         {
           "coordinate": "A4",
           "vnum": 30407,
-          "name": "Level 1: The Eagle [A4]",
           "exits": {
             "east": {
               "to": "B4",
@@ -3841,7 +3833,6 @@
         {
           "coordinate": "B4",
           "vnum": 30408,
-          "name": "Level 1: The Eagle [B4]",
           "exits": {
             "east": {
               "to": "C4",
@@ -3868,7 +3859,6 @@
         {
           "coordinate": "C4",
           "vnum": 30409,
-          "name": "Level 1: The Eagle [C4]",
           "exits": {
             "east": {
               "to": "D4",
@@ -3902,7 +3892,6 @@
         {
           "coordinate": "D4",
           "vnum": 30410,
-          "name": "Level 1: The Eagle [D4]",
           "exits": {
             "east": {
               "to": "E4",
@@ -3931,7 +3920,6 @@
         {
           "coordinate": "E4",
           "vnum": 30411,
-          "name": "Level 1: The Eagle [E4]",
           "exits": {
             "north": {
               "to": "E5",
@@ -3955,7 +3943,6 @@
         {
           "coordinate": "C5",
           "vnum": 30412,
-          "name": "Level 1: The Eagle [C5]",
           "exits": {
             "north": {
               "to": "C6",
@@ -3977,7 +3964,6 @@
         {
           "coordinate": "E5",
           "vnum": 30413,
-          "name": "Level 1: The Eagle [E5]",
           "exits": {
             "east": {
               "to": "F5",
@@ -3999,7 +3985,6 @@
         {
           "coordinate": "F5",
           "vnum": 30414,
-          "name": "Level 1: The Eagle [F5]",
           "exits": {
             "west": {
               "to": "E5",
@@ -4016,7 +4001,6 @@
         {
           "coordinate": "B6",
           "vnum": 30415,
-          "name": "Level 1: The Eagle [B6]",
           "exits": {
             "east": {
               "to": "C6",
@@ -4033,7 +4017,6 @@
         {
           "coordinate": "C6",
           "vnum": 30416,
-          "name": "Level 1: The Eagle [C6]",
           "exits": {
             "south": {
               "to": "C5",
@@ -4068,8 +4051,8 @@
       "level": 2,
       "title": "The Moon",
       "recommended_levels": [
-        21,
-        30
+        8,
+        14
       ],
       "overworld_coordinate": "M5",
       "entrance_coordinate": "B1",
@@ -4088,7 +4071,6 @@
         {
           "coordinate": "B1",
           "vnum": 30418,
-          "name": "Level 2: The Moon [B1]",
           "exits": {
             "east": {
               "to": "C1",
@@ -4108,7 +4090,6 @@
         {
           "coordinate": "C1",
           "vnum": 30419,
-          "name": "Level 2: The Moon [C1]",
           "exits": {
             "north": {
               "to": "C2",
@@ -4132,7 +4113,6 @@
         {
           "coordinate": "A2",
           "vnum": 30420,
-          "name": "Level 2: The Moon [A2]",
           "exits": {
             "east": {
               "to": "B2",
@@ -4151,7 +4131,6 @@
         {
           "coordinate": "B2",
           "vnum": 30421,
-          "name": "Level 2: The Moon [B2]",
           "exits": {
             "east": {
               "to": "C2",
@@ -4178,7 +4157,6 @@
         {
           "coordinate": "C2",
           "vnum": 30422,
-          "name": "Level 2: The Moon [C2]",
           "exits": {
             "east": {
               "to": "D2",
@@ -4210,7 +4188,6 @@
         {
           "coordinate": "D2",
           "vnum": 30423,
-          "name": "Level 2: The Moon [D2]",
           "exits": {
             "north": {
               "to": "D3",
@@ -4234,7 +4211,6 @@
         {
           "coordinate": "C3",
           "vnum": 30424,
-          "name": "Level 2: The Moon [C3]",
           "exits": {
             "east": {
               "to": "D3",
@@ -4261,7 +4237,6 @@
         {
           "coordinate": "D3",
           "vnum": 30425,
-          "name": "Level 2: The Moon [D3]",
           "exits": {
             "north": {
               "to": "D4",
@@ -4290,7 +4265,6 @@
         {
           "coordinate": "C4",
           "vnum": 30426,
-          "name": "Level 2: The Moon [C4]",
           "exits": {
             "east": {
               "to": "D4",
@@ -4319,7 +4293,6 @@
         {
           "coordinate": "D4",
           "vnum": 30427,
-          "name": "Level 2: The Moon [D4]",
           "exits": {
             "north": {
               "to": "D5",
@@ -4348,7 +4321,6 @@
         {
           "coordinate": "C5",
           "vnum": 30428,
-          "name": "Level 2: The Moon [C5]",
           "exits": {
             "east": {
               "to": "D5",
@@ -4373,7 +4345,6 @@
         {
           "coordinate": "D5",
           "vnum": 30429,
-          "name": "Level 2: The Moon [D5]",
           "exits": {
             "north": {
               "to": "D6",
@@ -4401,7 +4372,6 @@
         {
           "coordinate": "C6",
           "vnum": 30430,
-          "name": "Level 2: The Moon [C6]",
           "exits": {
             "east": {
               "to": "D6",
@@ -4428,7 +4398,6 @@
         {
           "coordinate": "D6",
           "vnum": 30431,
-          "name": "Level 2: The Moon [D6]",
           "exits": {
             "north": {
               "to": "D7",
@@ -4455,7 +4424,6 @@
         {
           "coordinate": "C7",
           "vnum": 30432,
-          "name": "Level 2: The Moon [C7]",
           "exits": {
             "east": {
               "to": "D7",
@@ -4482,7 +4450,6 @@
         {
           "coordinate": "D7",
           "vnum": 30433,
-          "name": "Level 2: The Moon [D7]",
           "exits": {
             "south": {
               "to": "D6",
@@ -4504,7 +4471,6 @@
         {
           "coordinate": "B8",
           "vnum": 30434,
-          "name": "Level 2: The Moon [B8]",
           "exits": {
             "east": {
               "to": "C8",
@@ -4521,7 +4487,6 @@
         {
           "coordinate": "C8",
           "vnum": 30435,
-          "name": "Level 2: The Moon [C8]",
           "exits": {
             "south": {
               "to": "C7",
@@ -4548,8 +4513,8 @@
       "level": 3,
       "title": "The Manji",
       "recommended_levels": [
-        31,
-        40
+        14,
+        20
       ],
       "overworld_coordinate": "E1",
       "entrance_coordinate": "D1",
@@ -4568,7 +4533,6 @@
         {
           "coordinate": "C1",
           "vnum": 30436,
-          "name": "Level 3: The Manji [C1]",
           "exits": {
             "east": {
               "to": "D1",
@@ -4592,7 +4556,6 @@
         {
           "coordinate": "D1",
           "vnum": 30437,
-          "name": "Level 3: The Manji [D1]",
           "exits": {
             "west": {
               "to": "C1",
@@ -4607,7 +4570,6 @@
         {
           "coordinate": "A2",
           "vnum": 30438,
-          "name": "Level 3: The Manji [A2]",
           "exits": {
             "north": {
               "to": "A3",
@@ -4625,7 +4587,6 @@
         {
           "coordinate": "C2",
           "vnum": 30439,
-          "name": "Level 3: The Manji [C2]",
           "exits": {
             "north": {
               "to": "C3",
@@ -4649,7 +4610,6 @@
         {
           "coordinate": "A3",
           "vnum": 30440,
-          "name": "Level 3: The Manji [A3]",
           "exits": {
             "east": {
               "to": "B3",
@@ -4676,7 +4636,6 @@
         {
           "coordinate": "B3",
           "vnum": 30441,
-          "name": "Level 3: The Manji [B3]",
           "exits": {
             "east": {
               "to": "C3",
@@ -4706,7 +4665,6 @@
         {
           "coordinate": "C3",
           "vnum": 30442,
-          "name": "Level 3: The Manji [C3]",
           "exits": {
             "east": {
               "to": "D3",
@@ -4738,7 +4696,6 @@
         {
           "coordinate": "D3",
           "vnum": 30443,
-          "name": "Level 3: The Manji [D3]",
           "exits": {
             "east": {
               "to": "E3",
@@ -4765,7 +4722,6 @@
         {
           "coordinate": "E3",
           "vnum": 30444,
-          "name": "Level 3: The Manji [E3]",
           "exits": {
             "north": {
               "to": "E4",
@@ -4788,7 +4744,6 @@
         {
           "coordinate": "A4",
           "vnum": 30445,
-          "name": "Level 3: The Manji [A4]",
           "exits": {
             "east": {
               "to": "B4",
@@ -4813,7 +4768,6 @@
         {
           "coordinate": "B4",
           "vnum": 30446,
-          "name": "Level 3: The Manji [B4]",
           "exits": {
             "east": {
               "to": "C4",
@@ -4840,7 +4794,6 @@
         {
           "coordinate": "C4",
           "vnum": 30447,
-          "name": "Level 3: The Manji [C4]",
           "exits": {
             "east": {
               "to": "D4",
@@ -4874,7 +4827,6 @@
         {
           "coordinate": "D4",
           "vnum": 30448,
-          "name": "Level 3: The Manji [D4]",
           "exits": {
             "east": {
               "to": "E4",
@@ -4903,7 +4855,6 @@
         {
           "coordinate": "E4",
           "vnum": 30449,
-          "name": "Level 3: The Manji [E4]",
           "exits": {
             "north": {
               "to": "E5",
@@ -4930,7 +4881,6 @@
         {
           "coordinate": "C5",
           "vnum": 30450,
-          "name": "Level 3: The Manji [C5]",
           "exits": {
             "north": {
               "to": "C6",
@@ -4952,7 +4902,6 @@
         {
           "coordinate": "E5",
           "vnum": 30451,
-          "name": "Level 3: The Manji [E5]",
           "exits": {
             "south": {
               "to": "E4",
@@ -4969,7 +4918,6 @@
         {
           "coordinate": "B6",
           "vnum": 30452,
-          "name": "Level 3: The Manji [B6]",
           "exits": {
             "east": {
               "to": "C6",
@@ -4988,7 +4936,6 @@
         {
           "coordinate": "C6",
           "vnum": 30453,
-          "name": "Level 3: The Manji [C6]",
           "exits": {
             "south": {
               "to": "C5",
@@ -5023,8 +4970,8 @@
       "level": 4,
       "title": "The Snake",
       "recommended_levels": [
-        41,
-        50
+        20,
+        27
       ],
       "overworld_coordinate": "F4",
       "entrance_coordinate": "B1",
@@ -5043,7 +4990,6 @@
         {
           "coordinate": "A1",
           "vnum": 30455,
-          "name": "Level 4: The Snake [A1]",
           "exits": {
             "east": {
               "to": "B1",
@@ -5062,7 +5008,6 @@
         {
           "coordinate": "B1",
           "vnum": 30456,
-          "name": "Level 4: The Snake [B1]",
           "exits": {
             "north": {
               "to": "B2",
@@ -5082,7 +5027,6 @@
         {
           "coordinate": "B2",
           "vnum": 30457,
-          "name": "Level 4: The Snake [B2]",
           "exits": {
             "east": {
               "to": "C2",
@@ -5110,7 +5054,6 @@
         {
           "coordinate": "C2",
           "vnum": 30458,
-          "name": "Level 4: The Snake [C2]",
           "exits": {
             "west": {
               "to": "B2",
@@ -5129,7 +5072,6 @@
         {
           "coordinate": "A3",
           "vnum": 30459,
-          "name": "Level 4: The Snake [A3]",
           "exits": {
             "east": {
               "to": "B3",
@@ -5151,7 +5093,6 @@
         {
           "coordinate": "B3",
           "vnum": 30460,
-          "name": "Level 4: The Snake [B3]",
           "exits": {
             "south": {
               "to": "B2",
@@ -5175,7 +5116,6 @@
         {
           "coordinate": "A4",
           "vnum": 30461,
-          "name": "Level 4: The Snake [A4]",
           "exits": {
             "north": {
               "to": "A5",
@@ -5197,7 +5137,6 @@
         {
           "coordinate": "A5",
           "vnum": 30462,
-          "name": "Level 4: The Snake [A5]",
           "exits": {
             "north": {
               "to": "A6",
@@ -5220,7 +5159,6 @@
         {
           "coordinate": "B5",
           "vnum": 30463,
-          "name": "Level 4: The Snake [B5]",
           "exits": {
             "east": {
               "to": "C5",
@@ -5242,7 +5180,6 @@
         {
           "coordinate": "C5",
           "vnum": 30464,
-          "name": "Level 4: The Snake [C5]",
           "exits": {
             "west": {
               "to": "B5",
@@ -5260,7 +5197,6 @@
         {
           "coordinate": "A6",
           "vnum": 30465,
-          "name": "Level 4: The Snake [A6]",
           "exits": {
             "east": {
               "to": "B6",
@@ -5287,7 +5223,6 @@
         {
           "coordinate": "B6",
           "vnum": 30466,
-          "name": "Level 4: The Snake [B6]",
           "exits": {
             "north": {
               "to": "B7",
@@ -5316,7 +5251,6 @@
         {
           "coordinate": "A7",
           "vnum": 30467,
-          "name": "Level 4: The Snake [A7]",
           "exits": {
             "east": {
               "to": "B7",
@@ -5341,7 +5275,6 @@
         {
           "coordinate": "B7",
           "vnum": 30468,
-          "name": "Level 4: The Snake [B7]",
           "exits": {
             "east": {
               "to": "C7",
@@ -5371,7 +5304,6 @@
         {
           "coordinate": "C7",
           "vnum": 30469,
-          "name": "Level 4: The Snake [C7]",
           "exits": {
             "east": {
               "to": "D7",
@@ -5399,7 +5331,6 @@
         {
           "coordinate": "D7",
           "vnum": 30470,
-          "name": "Level 4: The Snake [D7]",
           "exits": {
             "north": {
               "to": "D8",
@@ -5421,7 +5352,6 @@
         {
           "coordinate": "A8",
           "vnum": 30471,
-          "name": "Level 4: The Snake [A8]",
           "exits": {
             "south": {
               "to": "A7",
@@ -5438,7 +5368,6 @@
         {
           "coordinate": "B8",
           "vnum": 30472,
-          "name": "Level 4: The Snake [B8]",
           "exits": {
             "east": {
               "to": "C8",
@@ -5462,7 +5391,6 @@
         {
           "coordinate": "C8",
           "vnum": 30473,
-          "name": "Level 4: The Snake [C8]",
           "exits": {
             "south": {
               "to": "C7",
@@ -5484,7 +5412,6 @@
         {
           "coordinate": "D8",
           "vnum": 30474,
-          "name": "Level 4: The Snake [D8]",
           "exits": {
             "south": {
               "to": "D7",
@@ -5514,8 +5441,8 @@
       "level": 5,
       "title": "The Lizard",
       "recommended_levels": [
-        51,
-        55
+        27,
+        33
       ],
       "overworld_coordinate": "L8",
       "entrance_coordinate": "C1",
@@ -5534,7 +5461,6 @@
         {
           "coordinate": "C1",
           "vnum": 30476,
-          "name": "Level 5: The Lizard [C1]",
           "exits": {
             "east": {
               "to": "D1",
@@ -5554,7 +5480,6 @@
         {
           "coordinate": "D1",
           "vnum": 30477,
-          "name": "Level 5: The Lizard [D1]",
           "exits": {
             "north": {
               "to": "D2",
@@ -5578,7 +5503,6 @@
         {
           "coordinate": "A2",
           "vnum": 30478,
-          "name": "Level 5: The Lizard [A2]",
           "exits": {
             "east": {
               "to": "B2",
@@ -5595,7 +5519,6 @@
         {
           "coordinate": "B2",
           "vnum": 30479,
-          "name": "Level 5: The Lizard [B2]",
           "exits": {
             "east": {
               "to": "C2",
@@ -5622,7 +5545,6 @@
         {
           "coordinate": "C2",
           "vnum": 30480,
-          "name": "Level 5: The Lizard [C2]",
           "exits": {
             "east": {
               "to": "D2",
@@ -5654,7 +5576,6 @@
         {
           "coordinate": "D2",
           "vnum": 30481,
-          "name": "Level 5: The Lizard [D2]",
           "exits": {
             "south": {
               "to": "D1",
@@ -5676,7 +5597,6 @@
         {
           "coordinate": "B3",
           "vnum": 30482,
-          "name": "Level 5: The Lizard [B3]",
           "exits": {
             "east": {
               "to": "C3",
@@ -5700,7 +5620,6 @@
         {
           "coordinate": "C3",
           "vnum": 30483,
-          "name": "Level 5: The Lizard [C3]",
           "exits": {
             "east": {
               "to": "D3",
@@ -5732,7 +5651,6 @@
         {
           "coordinate": "D3",
           "vnum": 30484,
-          "name": "Level 5: The Lizard [D3]",
           "exits": {
             "north": {
               "to": "D4",
@@ -5754,7 +5672,6 @@
         {
           "coordinate": "C4",
           "vnum": 30485,
-          "name": "Level 5: The Lizard [C4]",
           "exits": {
             "east": {
               "to": "D4",
@@ -5776,7 +5693,6 @@
         {
           "coordinate": "D4",
           "vnum": 30486,
-          "name": "Level 5: The Lizard [D4]",
           "exits": {
             "north": {
               "to": "D5",
@@ -5805,7 +5721,6 @@
         {
           "coordinate": "A5",
           "vnum": 30487,
-          "name": "Level 5: The Lizard [A5]",
           "exits": {
             "north": {
               "to": "A6",
@@ -5822,7 +5737,6 @@
         {
           "coordinate": "D5",
           "vnum": 30488,
-          "name": "Level 5: The Lizard [D5]",
           "exits": {
             "north": {
               "to": "D6",
@@ -5846,7 +5760,6 @@
         {
           "coordinate": "A6",
           "vnum": 30489,
-          "name": "Level 5: The Lizard [A6]",
           "exits": {
             "east": {
               "to": "B6",
@@ -5873,7 +5786,6 @@
         {
           "coordinate": "B6",
           "vnum": 30490,
-          "name": "Level 5: The Lizard [B6]",
           "exits": {
             "east": {
               "to": "C6",
@@ -5900,7 +5812,6 @@
         {
           "coordinate": "C6",
           "vnum": 30491,
-          "name": "Level 5: The Lizard [C6]",
           "exits": {
             "east": {
               "to": "D6",
@@ -5922,7 +5833,6 @@
         {
           "coordinate": "D6",
           "vnum": 30492,
-          "name": "Level 5: The Lizard [D6]",
           "exits": {
             "south": {
               "to": "D5",
@@ -5947,7 +5857,6 @@
         {
           "coordinate": "A7",
           "vnum": 30493,
-          "name": "Level 5: The Lizard [A7]",
           "exits": {
             "south": {
               "to": "A6",
@@ -5964,7 +5873,6 @@
         {
           "coordinate": "B7",
           "vnum": 30494,
-          "name": "Level 5: The Lizard [B7]",
           "exits": {
             "south": {
               "to": "B6",
@@ -5981,7 +5889,6 @@
         {
           "coordinate": "C7",
           "vnum": 30495,
-          "name": "Level 5: The Lizard [C7]",
           "exits": {
             "east": {
               "to": "D7",
@@ -6005,7 +5912,6 @@
         {
           "coordinate": "D7",
           "vnum": 30496,
-          "name": "Level 5: The Lizard [D7]",
           "exits": {
             "west": {
               "to": "C7",
@@ -6022,7 +5928,6 @@
         {
           "coordinate": "B8",
           "vnum": 30497,
-          "name": "Level 5: The Lizard [B8]",
           "exits": {
             "east": {
               "to": "C8",
@@ -6039,7 +5944,6 @@
         {
           "coordinate": "C8",
           "vnum": 30498,
-          "name": "Level 5: The Lizard [C8]",
           "exits": {
             "south": {
               "to": "C7",
@@ -6079,8 +5983,8 @@
       "level": 6,
       "title": "The Dragon",
       "recommended_levels": [
-        56,
-        60
+        33,
+        40
       ],
       "overworld_coordinate": "C6",
       "entrance_coordinate": "B1",
@@ -6099,7 +6003,6 @@
         {
           "coordinate": "A1",
           "vnum": 30500,
-          "name": "Level 6: The Dragon [A1]",
           "exits": {
             "east": {
               "to": "B1",
@@ -6121,7 +6024,6 @@
         {
           "coordinate": "B1",
           "vnum": 30501,
-          "name": "Level 6: The Dragon [B1]",
           "exits": {
             "east": {
               "to": "C1",
@@ -6141,7 +6043,6 @@
         {
           "coordinate": "C1",
           "vnum": 30502,
-          "name": "Level 6: The Dragon [C1]",
           "exits": {
             "north": {
               "to": "C2",
@@ -6165,7 +6066,6 @@
         {
           "coordinate": "A2",
           "vnum": 30503,
-          "name": "Level 6: The Dragon [A2]",
           "exits": {
             "north": {
               "to": "A3",
@@ -6189,7 +6089,6 @@
         {
           "coordinate": "C2",
           "vnum": 30504,
-          "name": "Level 6: The Dragon [C2]",
           "exits": {
             "south": {
               "to": "C1",
@@ -6206,7 +6105,6 @@
         {
           "coordinate": "A3",
           "vnum": 30505,
-          "name": "Level 6: The Dragon [A3]",
           "exits": {
             "north": {
               "to": "A4",
@@ -6230,7 +6128,6 @@
         {
           "coordinate": "A4",
           "vnum": 30506,
-          "name": "Level 6: The Dragon [A4]",
           "exits": {
             "north": {
               "to": "A5",
@@ -6252,7 +6149,6 @@
         {
           "coordinate": "A5",
           "vnum": 30507,
-          "name": "Level 6: The Dragon [A5]",
           "exits": {
             "north": {
               "to": "A6",
@@ -6275,7 +6171,6 @@
         {
           "coordinate": "B5",
           "vnum": 30508,
-          "name": "Level 6: The Dragon [B5]",
           "exits": {
             "east": {
               "to": "C5",
@@ -6297,7 +6192,6 @@
         {
           "coordinate": "C5",
           "vnum": 30509,
-          "name": "Level 6: The Dragon [C5]",
           "exits": {
             "west": {
               "to": "B5",
@@ -6315,7 +6209,6 @@
         {
           "coordinate": "E5",
           "vnum": 30510,
-          "name": "Level 6: The Dragon [E5]",
           "exits": {
             "north": {
               "to": "E6",
@@ -6333,7 +6226,6 @@
         {
           "coordinate": "A6",
           "vnum": 30511,
-          "name": "Level 6: The Dragon [A6]",
           "exits": {
             "east": {
               "to": "B6",
@@ -6361,7 +6253,6 @@
         {
           "coordinate": "B6",
           "vnum": 30512,
-          "name": "Level 6: The Dragon [B6]",
           "exits": {
             "north": {
               "to": "B7",
@@ -6391,7 +6282,6 @@
         {
           "coordinate": "E6",
           "vnum": 30513,
-          "name": "Level 6: The Dragon [E6]",
           "exits": {
             "east": {
               "to": "F6",
@@ -6419,7 +6309,6 @@
         {
           "coordinate": "F6",
           "vnum": 30514,
-          "name": "Level 6: The Dragon [F6]",
           "exits": {
             "north": {
               "to": "F7",
@@ -6444,7 +6333,6 @@
         {
           "coordinate": "A7",
           "vnum": 30515,
-          "name": "Level 6: The Dragon [A7]",
           "exits": {
             "east": {
               "to": "B7",
@@ -6464,7 +6352,6 @@
         {
           "coordinate": "B7",
           "vnum": 30516,
-          "name": "Level 6: The Dragon [B7]",
           "exits": {
             "east": {
               "to": "C7",
@@ -6500,7 +6387,6 @@
         {
           "coordinate": "C7",
           "vnum": 30517,
-          "name": "Level 6: The Dragon [C7]",
           "exits": {
             "east": {
               "to": "D7",
@@ -6529,7 +6415,6 @@
         {
           "coordinate": "D7",
           "vnum": 30518,
-          "name": "Level 6: The Dragon [D7]",
           "exits": {
             "north": {
               "to": "D8",
@@ -6552,7 +6437,6 @@
         {
           "coordinate": "E7",
           "vnum": 30519,
-          "name": "Level 6: The Dragon [E7]",
           "exits": {
             "north": {
               "to": "E8",
@@ -6574,7 +6458,6 @@
         {
           "coordinate": "F7",
           "vnum": 30520,
-          "name": "Level 6: The Dragon [F7]",
           "exits": {
             "south": {
               "to": "F6",
@@ -6592,7 +6475,6 @@
         {
           "coordinate": "B8",
           "vnum": 30521,
-          "name": "Level 6: The Dragon [B8]",
           "exits": {
             "east": {
               "to": "C8",
@@ -6615,7 +6497,6 @@
         {
           "coordinate": "C8",
           "vnum": 30522,
-          "name": "Level 6: The Dragon [C8]",
           "exits": {
             "east": {
               "to": "D8",
@@ -6643,7 +6524,6 @@
         {
           "coordinate": "D8",
           "vnum": 30523,
-          "name": "Level 6: The Dragon [D8]",
           "exits": {
             "south": {
               "to": "D7",
@@ -6665,7 +6545,6 @@
         {
           "coordinate": "E8",
           "vnum": 30524,
-          "name": "Level 6: The Dragon [E8]",
           "exits": {
             "south": {
               "to": "E7",
@@ -6702,8 +6581,8 @@
       "level": 7,
       "title": "The Demon",
       "recommended_levels": [
-        61,
-        64
+        40,
+        46
       ],
       "overworld_coordinate": "C4",
       "entrance_coordinate": "B1",
@@ -6722,7 +6601,6 @@
         {
           "coordinate": "A1",
           "vnum": 30526,
-          "name": "Level 7: The Demon [A1]",
           "exits": {
             "north": {
               "to": "A2",
@@ -6741,7 +6619,6 @@
         {
           "coordinate": "B1",
           "vnum": 30527,
-          "name": "Level 7: The Demon [B1]",
           "exits": {
             "east": {
               "to": "C1",
@@ -6761,7 +6638,6 @@
         {
           "coordinate": "C1",
           "vnum": 30528,
-          "name": "Level 7: The Demon [C1]",
           "exits": {
             "north": {
               "to": "C2",
@@ -6781,7 +6657,6 @@
         {
           "coordinate": "A2",
           "vnum": 30529,
-          "name": "Level 7: The Demon [A2]",
           "exits": {
             "east": {
               "to": "B2",
@@ -6809,7 +6684,6 @@
         {
           "coordinate": "B2",
           "vnum": 30530,
-          "name": "Level 7: The Demon [B2]",
           "exits": {
             "east": {
               "to": "C2",
@@ -6841,7 +6715,6 @@
         {
           "coordinate": "C2",
           "vnum": 30531,
-          "name": "Level 7: The Demon [C2]",
           "exits": {
             "east": {
               "to": "D2",
@@ -6873,7 +6746,6 @@
         {
           "coordinate": "D2",
           "vnum": 30532,
-          "name": "Level 7: The Demon [D2]",
           "exits": {
             "east": {
               "to": "E2",
@@ -6900,7 +6772,6 @@
         {
           "coordinate": "E2",
           "vnum": 30533,
-          "name": "Level 7: The Demon [E2]",
           "exits": {
             "east": {
               "to": "F2",
@@ -6922,7 +6793,6 @@
         {
           "coordinate": "F2",
           "vnum": 30534,
-          "name": "Level 7: The Demon [F2]",
           "exits": {
             "west": {
               "to": "E2",
@@ -6939,7 +6809,6 @@
         {
           "coordinate": "A3",
           "vnum": 30535,
-          "name": "Level 7: The Demon [A3]",
           "exits": {
             "east": {
               "to": "B3",
@@ -6966,7 +6835,6 @@
         {
           "coordinate": "B3",
           "vnum": 30536,
-          "name": "Level 7: The Demon [B3]",
           "exits": {
             "east": {
               "to": "C3",
@@ -6999,7 +6867,6 @@
         {
           "coordinate": "C3",
           "vnum": 30537,
-          "name": "Level 7: The Demon [C3]",
           "exits": {
             "south": {
               "to": "C2",
@@ -7023,7 +6890,6 @@
         {
           "coordinate": "D3",
           "vnum": 30538,
-          "name": "Level 7: The Demon [D3]",
           "exits": {
             "south": {
               "to": "D2",
@@ -7040,7 +6906,6 @@
         {
           "coordinate": "A4",
           "vnum": 30539,
-          "name": "Level 7: The Demon [A4]",
           "exits": {
             "south": {
               "to": "A3",
@@ -7057,7 +6922,6 @@
         {
           "coordinate": "B4",
           "vnum": 30540,
-          "name": "Level 7: The Demon [B4]",
           "exits": {
             "north": {
               "to": "B5",
@@ -7080,7 +6944,6 @@
         {
           "coordinate": "A5",
           "vnum": 30541,
-          "name": "Level 7: The Demon [A5]",
           "exits": {
             "east": {
               "to": "B5",
@@ -7103,7 +6966,6 @@
         {
           "coordinate": "B5",
           "vnum": 30542,
-          "name": "Level 7: The Demon [B5]",
           "exits": {
             "east": {
               "to": "C5",
@@ -7128,7 +6990,6 @@
         {
           "coordinate": "C5",
           "vnum": 30543,
-          "name": "Level 7: The Demon [C5]",
           "exits": {
             "west": {
               "to": "B5",
@@ -7145,7 +7006,6 @@
         {
           "coordinate": "A6",
           "vnum": 30544,
-          "name": "Level 7: The Demon [A6]",
           "exits": {
             "north": {
               "to": "A7",
@@ -7167,7 +7027,6 @@
         {
           "coordinate": "B6",
           "vnum": 30545,
-          "name": "Level 7: The Demon [B6]",
           "exits": {
             "east": {
               "to": "C6",
@@ -7185,7 +7044,6 @@
         {
           "coordinate": "C6",
           "vnum": 30546,
-          "name": "Level 7: The Demon [C6]",
           "exits": {
             "east": {
               "to": "D6",
@@ -7207,7 +7065,6 @@
         {
           "coordinate": "D6",
           "vnum": 30547,
-          "name": "Level 7: The Demon [D6]",
           "exits": {
             "west": {
               "to": "C6",
@@ -7224,7 +7081,6 @@
         {
           "coordinate": "A7",
           "vnum": 30548,
-          "name": "Level 7: The Demon [A7]",
           "exits": {
             "east": {
               "to": "B7",
@@ -7255,7 +7111,6 @@
         {
           "coordinate": "B7",
           "vnum": 30549,
-          "name": "Level 7: The Demon [B7]",
           "exits": {
             "east": {
               "to": "C7",
@@ -7282,7 +7137,6 @@
         {
           "coordinate": "C7",
           "vnum": 30550,
-          "name": "Level 7: The Demon [C7]",
           "exits": {
             "east": {
               "to": "D7",
@@ -7305,7 +7159,6 @@
         {
           "coordinate": "D7",
           "vnum": 30551,
-          "name": "Level 7: The Demon [D7]",
           "exits": {
             "east": {
               "to": "E7",
@@ -7332,7 +7185,6 @@
         {
           "coordinate": "E7",
           "vnum": 30552,
-          "name": "Level 7: The Demon [E7]",
           "exits": {
             "north": {
               "to": "E8",
@@ -7354,7 +7206,6 @@
         {
           "coordinate": "A8",
           "vnum": 30553,
-          "name": "Level 7: The Demon [A8]",
           "exits": {
             "east": {
               "to": "B8",
@@ -7374,7 +7225,6 @@
         {
           "coordinate": "B8",
           "vnum": 30554,
-          "name": "Level 7: The Demon [B8]",
           "exits": {
             "east": {
               "to": "C8",
@@ -7402,7 +7252,6 @@
         {
           "coordinate": "C8",
           "vnum": 30555,
-          "name": "Level 7: The Demon [C8]",
           "exits": {
             "west": {
               "to": "B8",
@@ -7421,7 +7270,6 @@
         {
           "coordinate": "D8",
           "vnum": 30556,
-          "name": "Level 7: The Demon [D8]",
           "exits": {
             "south": {
               "to": "D7",
@@ -7436,7 +7284,6 @@
         {
           "coordinate": "E8",
           "vnum": 30557,
-          "name": "Level 7: The Demon [E8]",
           "exits": {
             "east": {
               "to": "F8",
@@ -7458,7 +7305,6 @@
         {
           "coordinate": "F8",
           "vnum": 30558,
-          "name": "Level 7: The Demon [F8]",
           "exits": {
             "west": {
               "to": "E8",
@@ -7496,8 +7342,8 @@
       "level": 8,
       "title": "The Lion",
       "recommended_levels": [
-        65,
-        67
+        46,
+        52
       ],
       "overworld_coordinate": "N2",
       "entrance_coordinate": "D1",
@@ -7516,7 +7362,6 @@
         {
           "coordinate": "B1",
           "vnum": 30560,
-          "name": "Level 8: The Lion [B1]",
           "exits": {
             "east": {
               "to": "C1",
@@ -7534,7 +7379,6 @@
         {
           "coordinate": "C1",
           "vnum": 30561,
-          "name": "Level 8: The Lion [C1]",
           "exits": {
             "east": {
               "to": "D1",
@@ -7554,7 +7398,6 @@
         {
           "coordinate": "D1",
           "vnum": 30562,
-          "name": "Level 8: The Lion [D1]",
           "exits": {
             "east": {
               "to": "E1",
@@ -7579,7 +7422,6 @@
         {
           "coordinate": "E1",
           "vnum": 30563,
-          "name": "Level 8: The Lion [E1]",
           "exits": {
             "west": {
               "to": "D1",
@@ -7599,7 +7441,6 @@
         {
           "coordinate": "D2",
           "vnum": 30564,
-          "name": "Level 8: The Lion [D2]",
           "exits": {
             "north": {
               "to": "D3",
@@ -7619,7 +7460,6 @@
         {
           "coordinate": "B3",
           "vnum": 30565,
-          "name": "Level 8: The Lion [B3]",
           "exits": {
             "east": {
               "to": "C3",
@@ -7636,7 +7476,6 @@
         {
           "coordinate": "C3",
           "vnum": 30566,
-          "name": "Level 8: The Lion [C3]",
           "exits": {
             "east": {
               "to": "D3",
@@ -7666,7 +7505,6 @@
         {
           "coordinate": "D3",
           "vnum": 30567,
-          "name": "Level 8: The Lion [D3]",
           "exits": {
             "east": {
               "to": "E3",
@@ -7700,7 +7538,6 @@
         {
           "coordinate": "E3",
           "vnum": 30568,
-          "name": "Level 8: The Lion [E3]",
           "exits": {
             "west": {
               "to": "D3",
@@ -7719,7 +7556,6 @@
         {
           "coordinate": "A4",
           "vnum": 30569,
-          "name": "Level 8: The Lion [A4]",
           "exits": {
             "east": {
               "to": "B4",
@@ -7743,7 +7579,6 @@
         {
           "coordinate": "B4",
           "vnum": 30570,
-          "name": "Level 8: The Lion [B4]",
           "exits": {
             "north": {
               "to": "B5",
@@ -7767,7 +7602,6 @@
         {
           "coordinate": "C4",
           "vnum": 30571,
-          "name": "Level 8: The Lion [C4]",
           "exits": {
             "east": {
               "to": "D4",
@@ -7792,7 +7626,6 @@
         {
           "coordinate": "D4",
           "vnum": 30572,
-          "name": "Level 8: The Lion [D4]",
           "exits": {
             "north": {
               "to": "D5",
@@ -7820,7 +7653,6 @@
         {
           "coordinate": "A5",
           "vnum": 30573,
-          "name": "Level 8: The Lion [A5]",
           "exits": {
             "east": {
               "to": "B5",
@@ -7842,7 +7674,6 @@
         {
           "coordinate": "B5",
           "vnum": 30574,
-          "name": "Level 8: The Lion [B5]",
           "exits": {
             "north": {
               "to": "B6",
@@ -7869,7 +7700,6 @@
         {
           "coordinate": "C5",
           "vnum": 30575,
-          "name": "Level 8: The Lion [C5]",
           "exits": {
             "south": {
               "to": "C4",
@@ -7886,7 +7716,6 @@
         {
           "coordinate": "D5",
           "vnum": 30576,
-          "name": "Level 8: The Lion [D5]",
           "exits": {
             "east": {
               "to": "E5",
@@ -7911,7 +7740,6 @@
         {
           "coordinate": "E5",
           "vnum": 30577,
-          "name": "Level 8: The Lion [E5]",
           "exits": {
             "west": {
               "to": "D5",
@@ -7929,7 +7757,6 @@
         {
           "coordinate": "B6",
           "vnum": 30578,
-          "name": "Level 8: The Lion [B6]",
           "exits": {
             "south": {
               "to": "B5",
@@ -7946,7 +7773,6 @@
         {
           "coordinate": "C6",
           "vnum": 30579,
-          "name": "Level 8: The Lion [C6]",
           "exits": {
             "east": {
               "to": "D6",
@@ -7966,7 +7792,6 @@
         {
           "coordinate": "D6",
           "vnum": 30580,
-          "name": "Level 8: The Lion [D6]",
           "exits": {
             "north": {
               "to": "D7",
@@ -7993,7 +7818,6 @@
         {
           "coordinate": "C7",
           "vnum": 30581,
-          "name": "Level 8: The Lion [C7]",
           "exits": {
             "east": {
               "to": "D7",
@@ -8015,7 +7839,6 @@
         {
           "coordinate": "D7",
           "vnum": 30582,
-          "name": "Level 8: The Lion [D7]",
           "exits": {
             "east": {
               "to": "E7",
@@ -8045,7 +7868,6 @@
         {
           "coordinate": "E7",
           "vnum": 30583,
-          "name": "Level 8: The Lion [E7]",
           "exits": {
             "west": {
               "to": "D7",
@@ -8063,7 +7885,6 @@
         {
           "coordinate": "D8",
           "vnum": 30584,
-          "name": "Level 8: The Lion [D8]",
           "exits": {
             "south": {
               "to": "D7",
@@ -8107,8 +7928,8 @@
       "level": 9,
       "title": "Death Mountain",
       "recommended_levels": [
-        68,
-        70
+        53,
+        59
       ],
       "overworld_coordinate": "F8",
       "entrance_coordinate": "G1",
@@ -8127,7 +7948,6 @@
         {
           "coordinate": "B1",
           "vnum": 30587,
-          "name": "Level 9: Death Mountain [B1]",
           "exits": {
             "north": {
               "to": "B2",
@@ -8142,7 +7962,6 @@
         {
           "coordinate": "D1",
           "vnum": 30588,
-          "name": "Level 9: Death Mountain [D1]",
           "exits": {
             "east": {
               "to": "E1",
@@ -8164,7 +7983,6 @@
         {
           "coordinate": "E1",
           "vnum": 30589,
-          "name": "Level 9: Death Mountain [E1]",
           "exits": {
             "west": {
               "to": "D1",
@@ -8181,7 +7999,6 @@
         {
           "coordinate": "G1",
           "vnum": 30590,
-          "name": "Level 9: Death Mountain [G1]",
           "exits": {
             "north": {
               "to": "G2",
@@ -8196,7 +8013,6 @@
         {
           "coordinate": "B2",
           "vnum": 30591,
-          "name": "Level 9: Death Mountain [B2]",
           "exits": {
             "east": {
               "to": "C2",
@@ -8225,7 +8041,6 @@
         {
           "coordinate": "C2",
           "vnum": 30592,
-          "name": "Level 9: Death Mountain [C2]",
           "exits": {
             "east": {
               "to": "D2",
@@ -8247,7 +8062,6 @@
         {
           "coordinate": "D2",
           "vnum": 30593,
-          "name": "Level 9: Death Mountain [D2]",
           "exits": {
             "east": {
               "to": "E2",
@@ -8279,7 +8093,6 @@
         {
           "coordinate": "E2",
           "vnum": 30594,
-          "name": "Level 9: Death Mountain [E2]",
           "exits": {
             "east": {
               "to": "F2",
@@ -8307,7 +8120,6 @@
         {
           "coordinate": "F2",
           "vnum": 30595,
-          "name": "Level 9: Death Mountain [F2]",
           "exits": {
             "east": {
               "to": "G2",
@@ -8335,7 +8147,6 @@
         {
           "coordinate": "G2",
           "vnum": 30596,
-          "name": "Level 9: Death Mountain [G2]",
           "exits": {
             "north": {
               "to": "G3",
@@ -8362,7 +8173,6 @@
         {
           "coordinate": "A3",
           "vnum": 30597,
-          "name": "Level 9: Death Mountain [A3]",
           "exits": {
             "east": {
               "to": "B3",
@@ -8384,7 +8194,6 @@
         {
           "coordinate": "B3",
           "vnum": 30598,
-          "name": "Level 9: Death Mountain [B3]",
           "exits": {
             "north": {
               "to": "B4",
@@ -8411,7 +8220,6 @@
         {
           "coordinate": "C3",
           "vnum": 30599,
-          "name": "Level 9: Death Mountain [C3]",
           "exits": {
             "east": {
               "to": "D3",
@@ -8433,7 +8241,6 @@
         {
           "coordinate": "D3",
           "vnum": 30600,
-          "name": "Level 9: Death Mountain [D3]",
           "exits": {
             "north": {
               "to": "D4",
@@ -8463,7 +8270,6 @@
         {
           "coordinate": "E3",
           "vnum": 30601,
-          "name": "Level 9: Death Mountain [E3]",
           "exits": {
             "east": {
               "to": "F3",
@@ -8491,7 +8297,6 @@
         {
           "coordinate": "F3",
           "vnum": 30602,
-          "name": "Level 9: Death Mountain [F3]",
           "exits": {
             "east": {
               "to": "G3",
@@ -8523,7 +8328,6 @@
         {
           "coordinate": "G3",
           "vnum": 30603,
-          "name": "Level 9: Death Mountain [G3]",
           "exits": {
             "north": {
               "to": "G4",
@@ -8554,7 +8358,6 @@
         {
           "coordinate": "H3",
           "vnum": 30604,
-          "name": "Level 9: Death Mountain [H3]",
           "exits": {
             "north": {
               "to": "H4",
@@ -8574,7 +8377,6 @@
         {
           "coordinate": "A4",
           "vnum": 30605,
-          "name": "Level 9: Death Mountain [A4]",
           "exits": {
             "north": {
               "to": "A5",
@@ -8597,7 +8399,6 @@
         {
           "coordinate": "B4",
           "vnum": 30606,
-          "name": "Level 9: Death Mountain [B4]",
           "exits": {
             "north": {
               "to": "B5",
@@ -8620,7 +8421,6 @@
         {
           "coordinate": "C4",
           "vnum": 30607,
-          "name": "Level 9: Death Mountain [C4]",
           "exits": {
             "north": {
               "to": "C5",
@@ -8642,7 +8442,6 @@
         {
           "coordinate": "D4",
           "vnum": 30608,
-          "name": "Level 9: Death Mountain [D4]",
           "exits": {
             "south": {
               "to": "D3",
@@ -8659,7 +8458,6 @@
         {
           "coordinate": "E4",
           "vnum": 30609,
-          "name": "Level 9: Death Mountain [E4]",
           "exits": {
             "east": {
               "to": "F4",
@@ -8681,7 +8479,6 @@
         {
           "coordinate": "F4",
           "vnum": 30610,
-          "name": "Level 9: Death Mountain [F4]",
           "exits": {
             "east": {
               "to": "G4",
@@ -8711,7 +8508,6 @@
         {
           "coordinate": "G4",
           "vnum": 30611,
-          "name": "Level 9: Death Mountain [G4]",
           "exits": {
             "south": {
               "to": "G3",
@@ -8733,7 +8529,6 @@
         {
           "coordinate": "H4",
           "vnum": 30612,
-          "name": "Level 9: Death Mountain [H4]",
           "exits": {
             "north": {
               "to": "H5",
@@ -8759,7 +8554,6 @@
         {
           "coordinate": "A5",
           "vnum": 30613,
-          "name": "Level 9: Death Mountain [A5]",
           "exits": {
             "east": {
               "to": "B5",
@@ -8783,7 +8577,6 @@
         {
           "coordinate": "B5",
           "vnum": 30614,
-          "name": "Level 9: Death Mountain [B5]",
           "exits": {
             "north": {
               "to": "B6",
@@ -8813,7 +8606,6 @@
         {
           "coordinate": "C5",
           "vnum": 30615,
-          "name": "Level 9: Death Mountain [C5]",
           "exits": {
             "south": {
               "to": "C4",
@@ -8830,7 +8622,6 @@
         {
           "coordinate": "D5",
           "vnum": 30616,
-          "name": "Level 9: Death Mountain [D5]",
           "exits": {
             "east": {
               "to": "E5",
@@ -8852,7 +8643,6 @@
         {
           "coordinate": "E5",
           "vnum": 30617,
-          "name": "Level 9: Death Mountain [E5]",
           "exits": {
             "north": {
               "to": "E6",
@@ -8874,7 +8664,6 @@
         {
           "coordinate": "F5",
           "vnum": 30618,
-          "name": "Level 9: Death Mountain [F5]",
           "exits": {
             "north": {
               "to": "F6",
@@ -8894,7 +8683,6 @@
         {
           "coordinate": "G5",
           "vnum": 30619,
-          "name": "Level 9: Death Mountain [G5]",
           "exits": {
             "east": {
               "to": "H5",
@@ -8918,7 +8706,6 @@
         {
           "coordinate": "H5",
           "vnum": 30620,
-          "name": "Level 9: Death Mountain [H5]",
           "exits": {
             "north": {
               "to": "H6",
@@ -8945,7 +8732,6 @@
         {
           "coordinate": "A6",
           "vnum": 30621,
-          "name": "Level 9: Death Mountain [A6]",
           "exits": {
             "north": {
               "to": "A7",
@@ -8963,7 +8749,6 @@
         {
           "coordinate": "B6",
           "vnum": 30622,
-          "name": "Level 9: Death Mountain [B6]",
           "exits": {
             "east": {
               "to": "C6",
@@ -8990,7 +8775,6 @@
         {
           "coordinate": "C6",
           "vnum": 30623,
-          "name": "Level 9: Death Mountain [C6]",
           "exits": {
             "east": {
               "to": "D6",
@@ -9019,7 +8803,6 @@
         {
           "coordinate": "D6",
           "vnum": 30624,
-          "name": "Level 9: Death Mountain [D6]",
           "exits": {
             "east": {
               "to": "E6",
@@ -9051,7 +8834,6 @@
         {
           "coordinate": "E6",
           "vnum": 30625,
-          "name": "Level 9: Death Mountain [E6]",
           "exits": {
             "north": {
               "to": "E7",
@@ -9078,7 +8860,6 @@
         {
           "coordinate": "F6",
           "vnum": 30626,
-          "name": "Level 9: Death Mountain [F6]",
           "exits": {
             "east": {
               "to": "G6",
@@ -9107,7 +8888,6 @@
         {
           "coordinate": "G6",
           "vnum": 30627,
-          "name": "Level 9: Death Mountain [G6]",
           "exits": {
             "east": {
               "to": "H6",
@@ -9139,7 +8919,6 @@
         {
           "coordinate": "H6",
           "vnum": 30628,
-          "name": "Level 9: Death Mountain [H6]",
           "exits": {
             "north": {
               "to": "H7",
@@ -9168,7 +8947,6 @@
         {
           "coordinate": "A7",
           "vnum": 30629,
-          "name": "Level 9: Death Mountain [A7]",
           "exits": {
             "south": {
               "to": "A6",
@@ -9187,7 +8965,6 @@
         {
           "coordinate": "B7",
           "vnum": 30630,
-          "name": "Level 9: Death Mountain [B7]",
           "exits": {
             "north": {
               "to": "B8",
@@ -9209,7 +8986,6 @@
         {
           "coordinate": "C7",
           "vnum": 30631,
-          "name": "Level 9: Death Mountain [C7]",
           "exits": {
             "east": {
               "to": "D7",
@@ -9236,7 +9012,6 @@
         {
           "coordinate": "D7",
           "vnum": 30632,
-          "name": "Level 9: Death Mountain [D7]",
           "exits": {
             "south": {
               "to": "D6",
@@ -9258,7 +9033,6 @@
         {
           "coordinate": "E7",
           "vnum": 30633,
-          "name": "Level 9: Death Mountain [E7]",
           "exits": {
             "east": {
               "to": "F7",
@@ -9280,7 +9054,6 @@
         {
           "coordinate": "F7",
           "vnum": 30634,
-          "name": "Level 9: Death Mountain [F7]",
           "exits": {
             "east": {
               "to": "G7",
@@ -9307,7 +9080,6 @@
         {
           "coordinate": "G7",
           "vnum": 30635,
-          "name": "Level 9: Death Mountain [G7]",
           "exits": {
             "north": {
               "to": "G8",
@@ -9334,7 +9106,6 @@
         {
           "coordinate": "H7",
           "vnum": 30636,
-          "name": "Level 9: Death Mountain [H7]",
           "exits": {
             "north": {
               "to": "H8",
@@ -9359,7 +9130,6 @@
         {
           "coordinate": "B8",
           "vnum": 30637,
-          "name": "Level 9: Death Mountain [B8]",
           "exits": {
             "east": {
               "to": "C8",
@@ -9383,7 +9153,6 @@
         {
           "coordinate": "C8",
           "vnum": 30638,
-          "name": "Level 9: Death Mountain [C8]",
           "exits": {
             "south": {
               "to": "C7",
@@ -9405,7 +9174,6 @@
         {
           "coordinate": "D8",
           "vnum": 30639,
-          "name": "Level 9: Death Mountain [D8]",
           "exits": {
             "east": {
               "to": "E8",
@@ -9424,7 +9192,6 @@
         {
           "coordinate": "E8",
           "vnum": 30640,
-          "name": "Level 9: Death Mountain [E8]",
           "exits": {
             "west": {
               "to": "D8",
@@ -9439,7 +9206,6 @@
         {
           "coordinate": "F8",
           "vnum": 30641,
-          "name": "Level 9: Death Mountain [F8]",
           "exits": {
             "east": {
               "to": "G8",
@@ -9457,7 +9223,6 @@
         {
           "coordinate": "G8",
           "vnum": 30642,
-          "name": "Level 9: Death Mountain [G8]",
           "exits": {
             "south": {
               "to": "G7",
@@ -9479,7 +9244,6 @@
         {
           "coordinate": "H8",
           "vnum": 30643,
-          "name": "Level 9: Death Mountain [H8]",
           "exits": {
             "south": {
               "to": "H7",

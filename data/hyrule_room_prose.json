@@ -1,0 +1,1595 @@
+{
+  "_comment": [
+    "Room names and descriptions for area/hyrule.are, read by scripts/build_hyrule_area.py.",
+    "overworld: keyed by manifest coordinate. dungeons: \"L<level>:<coordinate>\", and",
+    "\"L<level>:cellar:<coordinate>\" for the block-stair cellar under that room; the generator",
+    "prefixes dungeon names with \"Level N: \". special: caves, shops and secrets.",
+    "Descriptions are one paragraph each; the generator wraps them at 75 columns."
+  ],
+  "overworld": {
+    "A1": {
+      "name": "Southwest Meadow",
+      "description": "A wide meadow of tall grass and wildflowers fills the far southwest corner of the land, hemmed in by brown rock to the south and west. Bees drone among the blossoms, and a strange whirring like a spinning top rises and fades on the wind. It is a quiet, forgotten place, and the only path leads east."
+    },
+    "B1": {
+      "name": "Woodland Rock Face",
+      "description": "Trees crowd against a wall of brown rock that marks the southern edge of the land, their roots clinging to every crack. One stretch of the rock face is fractured and crumbling, a web of fine cracks spreading from its center as if a sharp blast might open it. Paths lead north, east and west through the woods."
+    },
+    "C1": {
+      "name": "Southern Woods",
+      "description": "Old trees stand in loose rows along the southern edge of the land, their branches meeting overhead in a leafy roof. The ground is churned by heavy, clawed feet and littered with snapped twigs and gnawed bones. Somewhere off among the trunks a twig cracks. Paths lead north, east and west."
+    },
+    "D1": {
+      "name": "Path to the Manji",
+      "description": "A narrow trail winds east through the woods toward a ring of trees that grow in an oddly regular pattern, too neat to be natural. The birdsong fades and the air grows cooler and quieter the farther east the path goes. Other trails branch away north and west into the deeper forest."
+    },
+    "E1": {
+      "name": "Grove of the Manji",
+      "description": "A ring of tall trees encloses a hushed clearing, and at its center a dark stone entrance is carved in the shape of a turning, four-armed cross. Cold air breathes out of the doorway, smelling of moss, damp stone and something older. Rocks wall in the clearing on the south and east, and the only way out is west."
+    },
+    "F1": {
+      "name": "Sandy Glade",
+      "description": "A clearing of loose, pale sand opens among the trees, oddly bare where the forest should be. The sand is rippled and pocked with small round burrow holes, and every so often it seems to stir on its own. Overhead something whirrs and spins in the air. Paths lead north into the woods and east toward the hills."
+    },
+    "G1": {
+      "name": "Crags West of the Start",
+      "description": "Brown rock juts up in jagged ridges just west of a quiet green field, the ground between them dented where long-legged things have landed hard. One rock face looks cracked and weak, as if a good blast might open a way into it. Paths lead north, east toward the hills, and west into the woods."
+    },
+    "H1": {
+      "name": "The First Quest Begins",
+      "description": "A small green field lies at the foot of rocky brown hills, quiet and sunny, the grass trampled into a faint path. In the cliff face to the north a dark cave mouth opens, and from within flickers the warm glow of twin fires. The wider world is no place to wander alone and empty-handed. Paths lead north, east and west."
+    },
+    "I1": {
+      "name": "Meadow East of the Cave",
+      "description": "Open grassland stretches east from the starting hills, dotted with small boulders and clumps of bushes. Pebbles lie strewn across the grass as though spat from somewhere. One bush beside the rocks is dry and brittle, its leaves curling brown, plainly ready to burn. Paths lead north, east and west."
+    },
+    "J1": {
+      "name": "Stone Field",
+      "description": "A field of jumbled grey and brown boulders sprawls across the southern edge of the land, the grass growing in tufts between them. One great stone sits loose in its bed, with fresh-turned earth around its base, as if a strong enough arm could shift it aside. The field opens east and west."
+    },
+    "K1": {
+      "name": "Rocky Southern Ridge",
+      "description": "A rocky ridge runs along the southern edge of the land, brown stone breaking through thin, wind-flattened grass. The ground is scuffed with odd paired footprints that appear and vanish again several paces on, as if whatever made them leapt. Trails follow the ridge east and west."
+    },
+    "L1": {
+      "name": "Southern Sands",
+      "description": "Sandy ground stretches along the southern edge of the land, rippled by the wind and pocked with burrow holes that open and close like breathing. To the south rises a rock wall, and one section of it is cracked and weak, as though a blast might open it. Paths lead north, east and west."
+    },
+    "M1": {
+      "name": "Leever Dunes",
+      "description": "Low dunes of pale sand roll along the southern edge of the land, shifting and hissing whenever the wind picks up. Little whorls in the sand mark where something has burrowed down out of sight. A cracked face of rock rises at one side, as though a blast might open it. Paths lead east and west."
+    },
+    "N1": {
+      "name": "Southern Shore Path",
+      "description": "A grassy path runs along the southern edge of the land, the low boom of the sea drifting from the east. Beside the path rises a wall of brown rock, and one section is cracked and crumbling, hollow-sounding when the wind moans past it. Small stones lie scattered in the grass. Paths lead east and west."
+    },
+    "O1": {
+      "name": "Southeast Grassland",
+      "description": "Wide grassland sweeps toward the southeastern coast, the long grass bent flat by a constant wind that carries salt from the sea. Small round stones lie scattered about, some half buried as if spat with force. Gulls cry somewhere to the east. Paths lead east toward the shore and west across the grass."
+    },
+    "P1": {
+      "name": "Southeast Coast",
+      "description": "The land ends at a rocky shore in the far southeastern corner of Hyrule, where grey waves crash and white spray drifts on the wind. Gulls wheel and cry overhead, and tide pools glimmer among the tumbled rocks. It is the very end of the world in two directions. Paths lead north along the coast and west inland."
+    },
+    "A2": {
+      "name": "Western Meadow Edge",
+      "description": "Open meadow runs right up to the western edge of the land, where the grass stops at a sheer brown bluff. A strange rising whirr comes and goes on the wind, and deep, heavy hoofprints cut through the flowers as if something large and four-legged patrols here. Paths lead north toward the rocks and east into the woods."
+    },
+    "B2": {
+      "name": "The Tangled Woods",
+      "description": "Dense trees crowd close on every side, their branches knotted overhead into a dim green roof. Paths wind away in all four directions between the trunks, and the only sounds are rustling leaves and the creak of old wood. Snapped spear-shafts lie half-buried in the leaf litter, dropped by whatever hunts these woods."
+    },
+    "C2": {
+      "name": "Old Forest Clearing",
+      "description": "A hushed clearing opens among ancient oaks, their bark gnarled and split with age and their roots heaving up the soil. Fallen leaves lie ankle deep and smell of rain. At one edge a single bush has withered to a dry, papery brown, oddly lifeless beside the green. Trails wander away in every direction."
+    },
+    "D2": {
+      "name": "Bramble Wood",
+      "description": "Thorny brambles crowd between the trunks, snagging cloth and skin alike, and the trail weaves a careful line through them. A bush beside the path has dried out completely, its leaves brittle and grey, and the ground behind it rings faintly hollow underfoot. Paths break away through the thorns in all four directions."
+    },
+    "E2": {
+      "name": "The Lost Woods",
+      "description": "Every trunk here looks like every other, and the paths twist so strangely that a traveller can walk out one side of the grove and find the same trees waiting. A low rise above the trail holds the dark mouth of a cave, and a bitter smell of simmering herbs drifts from it. Near the path a lone bush stands dry and dead, brittle enough to catch from a single spark."
+    },
+    "F2": {
+      "name": "Forest Stream",
+      "description": "A narrow stream threads through the trees, chattering over pebbles and pooling in quiet, fern-hung basins. Mossy stepping stones make for an easy crossing, though now and then the water swirls and bulges with no wind to stir it. Cool air rises off the current, and paths lead away in all four directions."
+    },
+    "G2": {
+      "name": "Candle Shop Knoll",
+      "description": "A grassy knoll rises above the surrounding fields, crowned by a weathered outcrop of brown rock. A cave mouth in its side flickers with a soft yellow glow, and the warm smell of melted wax hangs about the entrance. Pebbles lie scattered over the slope as if hurled from somewhere. Paths lead east, west and south."
+    },
+    "H2": {
+      "name": "Rock Wall Above the Start",
+      "description": "A wall of brown rock rises along the north side of a grassy field, its face scarred and cracked. One section looks weaker than the rest, as if a good blast might break it open. Trails lead east and west, and south toward a cave in the hills."
+    },
+    "I2": {
+      "name": "Bush Row",
+      "description": "A tidy line of thick green bushes borders a sunny field, almost like a hedge someone once planted and forgot. One of them stands out from its neighbours, dry and brittle, its leaves browned and curled as though it would go up in flame in an instant. Worn paths cross the field to the north, south, east and west."
+    },
+    "J2": {
+      "name": "River Bend",
+      "description": "A broad river swings through open country here, its water deep and green beneath an undercut, rocky bank. Reeds grow thick along the edge and dragonflies skim the shallows. Every so often the surface bulges and a wake slides away downstream. Dry ground leads north, east and west along the curve."
+    },
+    "K2": {
+      "name": "Riverbank Thicket",
+      "description": "Dense bushes crowd the riverbank, their roots trailing into the slow brown water and their branches heavy with river mist. Among all that green, one bush stands dry and dead, its twigs grey and snapping in the breeze, as though waiting for a spark. Muddy paths lead north, east and west along the water."
+    },
+    "L2": {
+      "name": "Shaded Grove",
+      "description": "Tall elms cast deep, cool shade over a quiet grove carpeted in soft moss. Birdsong falls silent here more often than it should. Near the path one bush has withered entirely, its brown leaves rattling like paper in the faintest breeze. The grove opens onto trails heading north, south, east and west."
+    },
+    "M2": {
+      "name": "Dark Pine Stand",
+      "description": "Dark pines grow shoulder to shoulder, their needles thick and springy underfoot and their branches blotting out much of the sky. The still air smells of resin and old woodsmoke, and crude spear marks score several trunks at chest height. Narrow trails lead north, east and west between the trees."
+    },
+    "N2": {
+      "name": "The Lion's Thicket",
+      "description": "A quiet clearing in the eastern forest is empty but for a single bush standing apart, dry and brittle and rooted in strangely flat, square-cut stone. Cold air seems to seep up from beneath its roots, carrying a smell of old masonry and deep places. Paths lead north, east and west through the trees."
+    },
+    "O2": {
+      "name": "Eastern Wood Path",
+      "description": "A narrow trail runs east and west through a light, airy wood, sunlight dappling the ground between slender birches. Small round stones lie scattered along the track, some of them half buried as if they struck with force. From the east comes the steady hush of waves and a faint tang of salt on the breeze."
+    },
+    "P2": {
+      "name": "Coastal Shop Cave",
+      "description": "Grassy bluffs overlook the eastern sea, where long grey waves break white on the rocks below. In a rocky bank set back from the cliff edge a cave mouth opens, and a sharp whiff of black powder drifts out to mingle with the salt air. The coast path runs north and south, and a track heads inland to the west."
+    },
+    "A3": {
+      "name": "Western Crags",
+      "description": "Brown boulders and jagged rock spurs crowd the western edge of the world, and deep claw marks score the stone. Scattered bones bleach in the sun. To the north a channel of dark water cuts off the way, while a rough path winds south between the rocks."
+    },
+    "B3": {
+      "name": "Deepwood Corner",
+      "description": "Old trees grow so close here that their canopy blots out the sky, leaving the forest floor in green gloom. Paths of trampled earth wind east and south between the trunks, and one bush near the trail is dry and brittle, its leaves brown and curling."
+    },
+    "C3": {
+      "name": "Lost Woods Crossing",
+      "description": "The forest closes in on all sides, every trunk looking much like the next, and paths wander off in all four directions. Owls call in the shadows, and the moss grows on whichever side of the trees it pleases. To the north the trees begin to thin around a still clearing."
+    },
+    "D3": {
+      "name": "The Fairy Path",
+      "description": "A narrow, mossy trail winds between the trees, and here and there a faint glimmer of light seems to dance ahead to the north. The rest of the woods is dim and muffled, its leaves trodden flat by heavy feet. Paths lead off in every direction."
+    },
+    "E3": {
+      "name": "Forest River Ford",
+      "description": "A swift river splashes over a stony ford in the middle of the woods, cold and clear. The banks are slick with mud and covered in wet prints, and a sudden ripple now and then betrays something lurking beneath the surface. Paths lead on in all four directions."
+    },
+    "F3": {
+      "name": "Shore Below the Snake",
+      "description": "The forest gives way to Lake Hylia's western waters, which glitter under an open sky. A small island rises a short distance to the north, and a dark serpent-shaped doorway can just be glimpsed on it across a narrow channel of water. Paths lead east, west and south along the shore."
+    },
+    "G3": {
+      "name": "Lake Hylia, Southwest Bank",
+      "description": "Grassy banks slope down to the water's edge, where cattails sway and dragonflies hover. Out on the lake something breaks the surface and sinks again. A single dry bush grows near the path, ready to catch the slightest spark. Trails lead north, east and west."
+    },
+    "H3": {
+      "name": "Lakeside Meadow",
+      "description": "A pleasant open meadow stretches out beneath the sky, the grass short and green and dotted with wildflowers. Small stones lie scattered about as though spat from somewhere, and the sound of lapping water drifts from the lake to the north. The meadow runs on east and west."
+    },
+    "I3": {
+      "name": "Crossroads South of the Lake",
+      "description": "Two worn dirt roads cross in the middle of open green country. To the north the ground slopes down toward the sandy shore of Lake Hylia, and the smell of water hangs in the air. The roads lead off in all four directions across the grass."
+    },
+    "J3": {
+      "name": "Flower Field",
+      "description": "A wide field of tall grass and bright flowers sways in the wind, humming with bees. Overhead there is a strange whirring sound, like something spinning in the air. The field is open on every side, with paths heading north, south, east and west."
+    },
+    "K3": {
+      "name": "Rolling Green Downs",
+      "description": "Gentle green hills roll away beneath a broad sky, broken only by a few low rocks and scrubby bushes. The grass is pocked with small craters where stones have struck it hard. Paths lead east, west and south over the hills."
+    },
+    "L3": {
+      "name": "Eastwood Glade",
+      "description": "A sunny glade sits in a ring of tall trees, the ground churned by heavy, clawed feet. Broken spear shafts lie in the long grass. One bush at the edge of the glade is as dry as old straw. Ways lead out in every direction."
+    },
+    "M3": {
+      "name": "Pinewood Rise",
+      "description": "Tall pines climb a gentle slope, their needles thick and soft underfoot and their sap sharp in the air. Muddy tracks of something large and dog-headed criss-cross the trail. Paths lead east, west and south through the trees."
+    },
+    "N3": {
+      "name": "Moblin Hollow",
+      "description": "A shallow hollow among the trees is strewn with trampled grass, chewed bones and the ashes of a cold campfire. The forest is noisy with snapping twigs and distant grunts. Paths climb out of the hollow in all four directions."
+    },
+    "O3": {
+      "name": "Candlemaker's Dead End",
+      "description": "The forest trail runs out in a small hollow walled in by trees and a shoulder of grey rock. In the rock face a low cave mouth glows with a warm, steady flicker, and the smell of tallow and wick smoke drifts out on the still air. Beyond the hollow the woods are too thick to pass, so the only way back is west."
+    },
+    "P3": {
+      "name": "The Coast's Lonely Ledge",
+      "description": "Rough grass runs down to the eastern shore, where the sea washes against tumbled rocks. Just offshore a small flat ledge of stone sits alone above the waves, separated from the land by a narrow strip of water. The coast path leads north and south."
+    },
+    "A4": {
+      "name": "The Graveyard's Southern Fence",
+      "description": "Weathered headstones lean in crooked rows behind a low, crumbling wall, their names long since rubbed away by wind and rain. The grass grows thin and grey here and a cold mist clings to the ground. To the south the land drops to a band of dark water with a small stone landing, and the open country runs on to the east."
+    },
+    "B4": {
+      "name": "Hollow of Headstones",
+      "description": "A sunken hollow of cracked gravestones sits under a sky that never quite seems to brighten. Crows' feathers and old wilted flowers litter the bare earth between the graves, and the air smells of damp soil. The burial ground climbs away northward, while a worn path slips out between the stones to the west."
+    },
+    "C4": {
+      "name": "The Still Pond",
+      "description": "A ring of tall dark trees closes in around a round, perfectly still pond, its surface black and glassy. Smooth carved stones edge the water as though something was built beneath it long ago, and no breeze ever seems to touch the surface. Old folk say a certain tune can stir even sleeping water. The only way out is the forest track to the south."
+    },
+    "D4": {
+      "name": "Fairy Pond of the Woods",
+      "description": "The forest opens onto a bright, clear pool fed by a quiet spring, its banks soft with moss and tiny white flowers. Motes of light drift and spin over the water, and the air feels warm and restful, as if weariness itself drains away here. A narrow track leads back south into the trees."
+    },
+    "E4": {
+      "name": "Riverside Cave",
+      "description": "A swift green river cuts through the woods here, its banks lined with reeds and smooth grey stones. Across a stretch of grass a low cave mouth is set into a rocky bank, and the faint whiff of black powder drifts from inside. Trails follow the river north and south."
+    },
+    "F4": {
+      "name": "Isle of the Snake",
+      "description": "A small green island rises out of the lake, ringed on every side by cold, lapping water. At its heart a dark stone entrance is carved in the coiled shape of a serpent, its doorway breathing out damp air. Across a narrow gap of water to the south lies the lakeshore, too wide to jump but narrow enough to bridge."
+    },
+    "G4": {
+      "name": "Lake Hylia, Western Reeds",
+      "description": "Tall reeds rustle along the western edge of Lake Hylia, and the water slaps gently against a muddy bank. A lone, scraggly bush stands somewhat apart from the rest, dry and brittle as tinder. The shoreline curves away east, and a path climbs south through the grass."
+    },
+    "H4": {
+      "name": "Lake Hylia, South Shore",
+      "description": "Broad blue water stretches north as far as the eye can see, sparkling under an open sky, its far shore lost in haze. Ripples spread from somewhere out in the deep. Near the bank a single dense bush grows by itself, dry and crackling in the sun. The shore runs on east and west."
+    },
+    "I4": {
+      "name": "Lake Hylia Sand Bar",
+      "description": "A pale sand bar runs along the lake's edge, the sand rippled and pocked with odd little burrow holes. The water laps in long slow waves, and a lonely bush stands at the edge of the grass, brittle and brown. Paths lead north along the water, south toward the fields and west along the shore."
+    },
+    "J4": {
+      "name": "Boulder Meadow",
+      "description": "Rolling green meadow is broken by heavy grey boulders that lie half sunk in the turf. One sits a little apart from the others, as if it had been rolled there by some great hand and might be rolled away again by a strong enough one. Trails lead off to the north, east and south."
+    },
+    "K4": {
+      "name": "Craggy Rise",
+      "description": "Brown rock juts up through the grass in jagged ridges, and loose stones skitter down the slopes at every gust. The soil is scuffed with the prints of long-legged hopping things. Tucked under one ledge is a dark cave mouth that smells faintly of black powder. Paths run north, east and west."
+    },
+    "L4": {
+      "name": "Eastern Thicket",
+      "description": "Dense trees crowd together here, their roots knotting across a narrow trail littered with snapped arrows and gnawed bones. One bush near the path looks unusually dry, its leaves curled and ready to catch the smallest spark. The thicket opens to the north, the south and the west."
+    },
+    "M4": {
+      "name": "The Eastern Dock",
+      "description": "A weathered wooden dock juts out from the grassy bank over open water, its planks bleached grey and its posts green with weed. Water stretches away northward toward hazy islands, too far to swim. Behind the dock the meadow rolls off to the east."
+    },
+    "N4": {
+      "name": "Wooded Crossroads",
+      "description": "Four forest paths meet in a small trampled clearing ringed by stout trees. Broken spearheads and torn bits of hide lie in the leaf litter. A single bush at the clearing's edge has dried out completely, its twigs as brittle as kindling. Ways lead off in every direction."
+    },
+    "O4": {
+      "name": "Armos Sentinel Grove",
+      "description": "Stone knight statues stand in silent rows among the trees, shields raised and faces worn smooth by the years. They seem to watch the path, and one stands slightly out of line with the others, as if it had moved. The grove is a dead end, with the only way out leading back west."
+    },
+    "P4": {
+      "name": "Eastern Cliffs",
+      "description": "The land ends abruptly at a line of rocky cliffs above the sea, and salt spray drifts up on a cool wind. Gulls wheel and cry overhead while waves boom against the rocks far below. A grassy track runs along the clifftop to the north and south."
+    },
+    "A5": {
+      "name": "The Graveyard, Lower Rows",
+      "description": "The southern rows of the graveyard are crowded with weathered headstones, their names long worn away. Dead grass crackles underfoot, and a cold mist clings to the ground between the graves. The paths lead north into the older graves and east toward the living lands."
+    },
+    "B5": {
+      "name": "The Graveyard Gate",
+      "description": "Here the graves thin out toward the edge of the burial ground, where a gap in the boundary lets travellers pass. The headstones nearest the gate lean outward as if to see who comes and goes. The mist gathers thickest by the gap, and the air smells of cold earth."
+    },
+    "C5": {
+      "name": "Ghost Hill",
+      "description": "A low grassy hill overlooks the graveyard to the west, its slopes dotted with wildflowers and scarred by heavy hoofprints. The air here is warmer than among the graves. A narrow cleft runs north toward the highlands, and the way continues east and west."
+    },
+    "D5": {
+      "name": "The Cracked Bluff",
+      "description": "A tall bluff of brown rock stands at the edge of the highlands, its face stained by old water. Near its base the stone is cracked and flaking, and a faint herbal scent drifts out of the gaps. A narrow cleft leads north, and the land opens to the west."
+    },
+    "E5": {
+      "name": "The Silent Sentinels",
+      "description": "A cluster of stone soldiers stands guard on a patch of sandy ground, their spears raised in perpetual salute. The sand around them is restless and churns in small spirals. One statue stands a little apart from the others, its base scuffed as if it had shifted. The only way out leads south."
+    },
+    "F5": {
+      "name": "The Quiet Glade",
+      "description": "Tall trees ring a peaceful glade of soft grass, and the light falls in gentle patches through their leaves. Birdsong drifts from the branches. A narrow gully leads north toward the higher country, and the glade opens to the east."
+    },
+    "G5": {
+      "name": "The Sheltered Hollow",
+      "description": "A hollow is tucked between low hills, sheltered from the wind and quiet. Green grass grows thick and undisturbed, and a few trees stand at its edges. Paths lead north and west, and the stillness here feels like a held breath."
+    },
+    "H5": {
+      "name": "The Eagle's Gate",
+      "description": "On a spit of green land cut off by the river, a stone entrance stands in a rocky outcrop, its lintel carved with the spread wings of an eagle. Cool, musty air drifts from the darkness within. The river runs wide to the east, where a wooden dock waits for anyone with a way to cross."
+    },
+    "I5": {
+      "name": "The River Landing",
+      "description": "The river widens here, and a sturdy wooden dock juts out from the bank into the current. Across the water to the west a green shore waits, unreachable on foot. Grass grows thick along the bank, and the land opens to the north and south."
+    },
+    "J5": {
+      "name": "The Fairy Fountain, North",
+      "description": "A clear pool lies in a ring of soft grass, its surface glittering with tiny motes of light. The water is perfectly still and smells of rain and flowers, and a warmth seems to rise from it that eases every ache. A path leads away to the south."
+    },
+    "K5": {
+      "name": "The Peahat Fields",
+      "description": "Wide fields of grass and wildflowers stretch out under an open sky. Flowers spin and whirl as though caught in some strange wind, and patches of sand show through the turf here and there. Paths lead off to the north, east and south."
+    },
+    "L5": {
+      "name": "The Blowing Sands",
+      "description": "Sand drifts across this stretch of the field in long, low ridges, burying the grass in places. Small mounds appear and vanish in the sand, as if something stirred beneath it, and the wind lifts fine grit that stings the eyes. The way leads north, south and west."
+    },
+    "M5": {
+      "name": "The Moon Gate",
+      "description": "A stone entrance stands near the water's edge, its doorway crowned with a carved crescent moon. Damp air drifts from inside, smelling of stone and old water. The lake's edge cuts off the south, where a wooden dock juts into the water."
+    },
+    "N5": {
+      "name": "The Armos Shore",
+      "description": "A row of stone soldiers stands on a grassy rise above the lake, their spears raised. One statue stands slightly apart from the others, its base scuffed and cracked as if it had moved. Paths lead north and south along the shore, and the air smells of water and grass."
+    },
+    "O5": {
+      "name": "The Octorok Banks",
+      "description": "The grassy bank slopes gently to the water's edge, scattered with spat stones and small rocks. The lake glitters to the south and east, and reeds rustle wherever the water meets the grass. A path leads east along the shore and north toward the cliffs."
+    },
+    "P5": {
+      "name": "Lake Hylia, Eastern Dock",
+      "description": "A wooden dock reaches out into Lake Hylia from the eastern shore, and across the water a small green island sits alone. The water is deep and dark near the dock, and bubbles rise from beneath it now and then. The shore continues south and west."
+    },
+    "A6": {
+      "name": "The Old Graveyard",
+      "description": "Row upon row of grey headstones stand in the cold earth, many tilted and half sunk. The grass between them is withered, and a chill hangs in the air that the sun cannot burn off. Thin mist curls around the stones, and the silence feels like it is listening."
+    },
+    "B6": {
+      "name": "The Master Sword Grave",
+      "description": "The graveyard reaches its oldest corner here, where the headstones are tallest and most worn. One grave sits a little apart, its stone slightly askew on a slab that looks as though it could be shifted. The cold is deepest near it, and the dead seem restless all around."
+    },
+    "C6": {
+      "name": "The Dragon's Gate",
+      "description": "Bare highland rock surrounds a dark entrance carved into a low outcrop, its mouth framed by stone shaped like the coiled body of a dragon. Hot, stale air breathes out of it. Lynel tracks and scorch marks cover the ground, and a narrow gap leads away to the south."
+    },
+    "D6": {
+      "name": "The Western Warp Stone",
+      "description": "A lonely boulder sits in a ring of trampled grass, heavier and squarer than the stones around it. The earth at its base is scraped, as if something beneath had been uncovered and covered again. Deep hoofprints circle the place, and a narrow cleft drops away to the south."
+    },
+    "E6": {
+      "name": "The Armos Gallery",
+      "description": "A row of carved stone soldiers stands at attention across the highland, each holding a spear, their blank eyes fixed on the horizon. They look patient and very old. One of them stands slightly off true from the others. A narrow cleft to the north leads toward the mountain."
+    },
+    "F6": {
+      "name": "The Bomb Merchant's Cave",
+      "description": "Flowers carpet this open field, and a cave mouth yawns in a low rock face at its western side. A smell of black powder and burnt fuses lingers at the entrance. Narrow gullies cut the land to north and south, and the wind sends ripples across the grass."
+    },
+    "G6": {
+      "name": "The Meadow Bluff",
+      "description": "A grassy meadow runs up against a weathered bluff, bright with wildflowers that sway and whirl in the breeze. Part of the bluff's face is fractured and loose, with a faint draught slipping through the cracks. The meadow opens to the east and slopes down to the south."
+    },
+    "H6": {
+      "name": "Foot of Death Mountain",
+      "description": "Here the green fields meet the brown flanks of Death Mountain, and a path climbs northward into the boulders. Flowers grow thick along the trail. In a rocky outcrop beside the path, one section is cracked and crumbling, and a bitter herbal scent drifts from somewhere behind it."
+    },
+    "I6": {
+      "name": "The Withered Thicket",
+      "description": "Open grassland is broken here by clusters of dry, scrubby bushes. One bush stands alone, its branches brittle and dead, and it looks as if a single spark would set it ablaze. Blackened twigs and old ash lie scattered about it, and the field opens in every direction but north."
+    },
+    "J6": {
+      "name": "The Sandy Flats",
+      "description": "The grass gives way to a stretch of pale, shifting sand, warm underfoot and strangely restless. Small mounds rise and sink across it as though something burrowed just beneath the surface. The flats run east and west, and the air shimmers with heat."
+    },
+    "K6": {
+      "name": "The Dune Strip",
+      "description": "A long strip of dunes runs between the green fields and the mountains, the sand rippled into fine waves by the wind. Spiral burrow marks appear and fade across it. The way leads east, west and south, and the brown peaks loom to the north."
+    },
+    "L6": {
+      "name": "Below the Lost Hills",
+      "description": "Sand and scrub mingle at the foot of the rolling hills to the north, where a narrow cleft climbs toward them. The ground here is soft and pocked with burrow holes. Paths lead off in every direction, and the hills above seem to shift whenever you look away."
+    },
+    "M6": {
+      "name": "Lake Hylia, North Cliffs",
+      "description": "Brown cliffs rise from the northern edge of Lake Hylia, and the blue water glints below. The rock is dented by springing marks, and one part of the cliff face is split with deep cracks, a cool draught breathing through them. A gap in the rock leads north toward the mountains."
+    },
+    "N6": {
+      "name": "Lake Hylia, North Shore",
+      "description": "Green grass runs down to the lake's northern shore, where small waves lap at a strip of pebbles. Spat stones lie scattered on the turf. A low rock face at the back of the shore is cracked through in one place, and a narrow gap leads north into the mountains."
+    },
+    "O6": {
+      "name": "Lake Hylia, Northeast Shore",
+      "description": "The shore curves here around a broad sweep of Lake Hylia, the water deep and dark close to the bank. Bubbles rise now and then from beneath the surface. Tufts of grass fringe the rocks, and the shoreline continues west and south."
+    },
+    "P6": {
+      "name": "The Lonely Isle",
+      "description": "A small island sits alone in the eastern waters of Lake Hylia, a patch of green grass ringed by blue. Waves slap gently at its edges. No path leads here except across the water, and the only way back is by a little dock on the southern side, facing the far shore."
+    },
+    "A7": {
+      "name": "The Western Gorge",
+      "description": "Steep brown walls box in this gorge at the western edge of the mountains, and the wind funnels through with a low howl. Hoofprints cross and recross the floor. In one wall a crack spreads like a spider's web, and the stone around it rings faintly hollow. Northward, a deep crevice splits the rock."
+    },
+    "B7": {
+      "name": "The Windswept Shelf",
+      "description": "A flat shelf of rock juts out from the mountainside, scoured clean by constant wind. A few tough flowers grow in the lee of the boulders, their petals torn ragged. A crevice runs along the northern edge, and the only easy way off the shelf leads west."
+    },
+    "C7": {
+      "name": "The Shieldmaker's Bluff",
+      "description": "A blunt bluff of brown stone rises from the slope, its face streaked with mineral stains. Low down, a section of it is cracked and loose, and the faint ring of a hammer on metal seems to come from somewhere inside. The trail leads east, and a narrow gap opens in the rock to the north."
+    },
+    "D7": {
+      "name": "Broken Stone Terrace",
+      "description": "Terraces of broken stone step down the mountainside like a ruined stair. Lynel tracks, deep and wide, scar the dust between them. At the back of one terrace the cliff is fissured and weak, as if hiding a hollow behind it. A crevice to the north separates this place from the heights."
+    },
+    "E7": {
+      "name": "The Crumbling Scarp",
+      "description": "The scarp here is old and tired, its brown face slumping into heaps of rubble. One stretch looks ready to give way altogether, its cracks deep enough to whistle in the wind. Scorch marks blacken the boulders, and a narrow gully drops away to the south toward greener land."
+    },
+    "F7": {
+      "name": "Highland Overlook",
+      "description": "The mountain pauses here in a high meadow of thin grass and wildflowers, ringed by brown boulders. From its edge the whole of the western highlands spreads below. The wind carries the scent of the lowlands up the slope, and narrow clefts break the ground to north and south."
+    },
+    "G7": {
+      "name": "The Rumbling Gully",
+      "description": "A gully runs east and west beneath an unstable cliff, and every few moments a rock tumbles from above and bounds across it. Gravel crunches underfoot. One section of the gully wall is split with fresh cracks, and a faint clink, like coins being counted, seems to echo behind it."
+    },
+    "H7": {
+      "name": "The Lost Hills",
+      "description": "Brown hills rise and fall here, each fold of ground so like the last that the eye loses its place among them. The trail climbs north toward the high peaks between banks of loose scree, and paths wander off east and west along the slope. Those who know the mountain say the only way through is to keep climbing north and never turn aside."
+    },
+    "I7": {
+      "name": "The Boulder Run",
+      "description": "Loose rocks careen down the mountainside and across this stretch of trail, leaving it littered with splinters of stone. The cliffs on either side are scarred where boulders have struck them. Dust hangs in the air and the clatter never fully stops."
+    },
+    "J7": {
+      "name": "Rolling Stone Ravine",
+      "description": "A shallow ravine runs east and west between walls of crumbling brown rock. Stones break free from the rim and roll down the slope in short, bouncing bursts. Gouges in the ravine floor mark their favourite paths, and the air tastes of dust."
+    },
+    "K7": {
+      "name": "The Springing Hills",
+      "description": "Rolling brown hills begin here, each one shaped so much like the last that the eye loses its place among them. The ground is dented with springing marks, as though something leapt from hilltop to hilltop. To the north a narrow cleft divides the hills from the high country."
+    },
+    "L7": {
+      "name": "Hills Below the Basin",
+      "description": "Brown hills rise and fall in every direction here, scored by narrow crevices that cut the ground to the north and south. The wind moans through the gaps between them like distant laughter, and loose stones skitter down the slopes at every gust. Paths wind east and west along the ridgelines."
+    },
+    "M7": {
+      "name": "Lone Armos Ridge",
+      "description": "A single weathered stone soldier stands guard on this narrow ridge, its carved face worn smooth by the wind. Brown rock falls away on both sides. Gaps in the ridge open to the north and south, and the ground around the statue is oddly scuffed, as if it sometimes stepped off its post."
+    },
+    "N7": {
+      "name": "The Heavy Boulder",
+      "description": "A small high meadow is ringed by boulders, and one of them sits a little apart from the rest, squarer and heavier, with a scraped track in the earth beside it as though it had once been moved. Flowers grow thick here and bob in the wind. Narrow clefts lead north and south."
+    },
+    "O7": {
+      "name": "The Scarred Cliffs",
+      "description": "These cliffs are pocked and gouged, and one patch in particular is laced with cracks so deep that light seems to show between them. Springing marks dent the dusty ground. The way runs east and west along the base of the rock, and a crevice opens to the north."
+    },
+    "P7": {
+      "name": "The Eastern Cliffs",
+      "description": "The mountains drop sharply to the east here, and a broad shelf of rock catches the morning sun. A cave mouth opens in the cliff, and from its shadow comes the faint rattle of something being shaken, then laughter. Wildflowers grow along the shelf, and a cleft splits the rock to the north."
+    },
+    "A8": {
+      "name": "Death Mountain's Western Summit",
+      "description": "The world ends here in a wall of brown boulders, stacked shoulder to shoulder against a pale, empty sky. Thin wind whistles through the gaps and carries nothing but grit. To the south a narrow crevice splits the stone, too wide to step across and too deep to see the bottom of."
+    },
+    "B8": {
+      "name": "Lynel Ridge",
+      "description": "A high ridge of rust-brown rock runs east and west, its ground churned by heavy hooves and dotted with scorched patches where something breathed fire. One stretch of the cliff face is webbed with fine cracks, as though the stone behind it were hollow. A deep cleft bars the way south."
+    },
+    "C8": {
+      "name": "The High Boulder Pass",
+      "description": "Rounded boulders the size of huts crowd this pass, leaving a crooked lane of bare earth between them. The air is thin and cold, and every sound bounces back twice from the cliffs. Hoofprints and singed lichen mark the trail, and a sheer-sided crevice opens in the rock to the south."
+    },
+    "D8": {
+      "name": "Rockfall Crest",
+      "description": "Loose scree pours down from the peaks above, and every so often a fresh stone comes bounding across the crest with a hollow clatter. The ground is pocked with craters from earlier falls. In the northern cliff one patch of rock looks oddly brittle, flaking at a touch, and a narrow gap cuts the slope to the south."
+    },
+    "E8": {
+      "name": "The Medicine Woman's Ledge",
+      "description": "Walled in on three sides by brown crags, this quiet ledge opens only to the east. A dark cave mouth is set into the rock, its threshold swept clean, and a faint bitter smell of boiled herbs drifts out of it. The ground nearby is trampled by heavy hooves, and the wind moans over the rim."
+    },
+    "F8": {
+      "name": "Spectacle Rock",
+      "description": "Two great round boulders stand side by side on the summit, joined by a low saddle of stone, like a giant's pair of spectacles left on the mountaintop. Sand has blown into drifts between them. Part of the rock wall here sounds hollow and is seamed with hairline cracks; the air near it is colder than it ought to be."
+    },
+    "G8": {
+      "name": "East of Spectacle Rock",
+      "description": "A broad shelf of packed earth stretches between rows of brown boulders, the twin humps of Spectacle Rock just visible to the west. Wind-flattened weeds cling to the cracks, and a few hardy flowers nod in the gusts. Far below, the green of Hyrule spreads out like a quilt."
+    },
+    "H8": {
+      "name": "The Summit Road",
+      "description": "A worn path threads east and west along the mountain's crown, hemmed in by tumbled boulders. One face of the cliff shows a dark crack running from top to bottom, as if a single blow might open it. To the south the trail stops at a narrow chasm with the mountain trail visible beyond."
+    },
+    "I8": {
+      "name": "Avalanche Slope",
+      "description": "The mountain sheds itself constantly here. Rocks break loose from the heights and come bouncing down in long arcs, smashing into gravel on the boulders below. The path east and west is littered with shattered stone, and the dust never quite settles."
+    },
+    "J8": {
+      "name": "Death Mountain's Dead End",
+      "description": "Boulders close in on every side but the west, forming a still, sheltered pocket at the top of the world. The silence is heavy after the clatter of the slopes. Nothing grows here but grey lichen, and the only marks in the dust are the wind's."
+    },
+    "K8": {
+      "name": "The White Sword Falls",
+      "description": "A river spills over the lip of the mountain and drops in a roaring white curtain, filling the air with cold spray and rainbows. Beside the falls, at the very top of the climb, a cave mouth opens in the rock, half hidden by mist. Ripples in the pool below suggest something moves beneath the water."
+    },
+    "L8": {
+      "name": "The Lizard's Gate",
+      "description": "Beyond the confusing folds of the Lost Hills the ground levels into a hidden basin of reddish sand. At its heart a squat entrance is cut into the stone, framed in a carved shape like a crouching lizard, its doorway black and cool. Dry wind hisses through the sand, and a crevice bars the way back south."
+    },
+    "M8": {
+      "name": "The Candle Merchant's Hollow",
+      "description": "A dip among the high boulders shelters a cave mouth from the worst of the wind. A whiff of tallow and lamp smoke hangs at the entrance, and the dust before it is scuffed by many feet. Small craters show where something springs and lands, springs and lands, all across the hollow."
+    },
+    "N8": {
+      "name": "Tektite Heights",
+      "description": "The rock here is pitted with shallow dents, as though something heavy had been bouncing across it for years. Brown cliffs rise to the north, and one section of them is cracked and crumbling, with a faint draught whispering out of the seams. A narrow gap divides the heights from the land to the south."
+    },
+    "O8": {
+      "name": "Ledge of the Letter Cave",
+      "description": "A lonely ledge looks out over the eastern slopes, with a cave mouth gaping in the cliff behind it. Inside, a warm glow flickers, as though a pair of fires were kept burning against the cold. The wind is softer here, and the hush feels like a place where messages wait for the right hands."
+    },
+    "P8": {
+      "name": "The Northeast Crag",
+      "description": "The far corner of the mountains ends in a sheer brown crag above the eastern wilds. A dark cave opens in its base, small and easily overlooked, with an air of secrets kept from everybody. Stubborn shrubs grow in the cracks, and a deep cleft to the south falls away into shadow."
+    }
+  },
+  "dungeons": {
+    "L1:B1": {
+      "name": "West Guardroom",
+      "description": "A plain square chamber of blue-grey flagstones, its corners furred with dust and spattered with bat droppings. Something leathery has left fine scratches along the high ledges, and a faint flutter echoes now and then from the ceiling. The only way out is the open doorway east, back toward the entry."
+    },
+    "L1:C1": {
+      "name": "Eagle Gate",
+      "description": "Cold teal stone rises on every side of this first chamber, the walls carved with rows of grim, staring faces. Daylight from the stair behind fades within a few paces, and the air smells of wet rock. Open doorways lead east and west, while the northern door is barred shut and fitted with a heavy iron keyhole."
+    },
+    "L1:D1": {
+      "name": "East Bone Room",
+      "description": "Bleached bone fragments lie scattered across the tiled floor of this chamber, and the air carries the dry, chalky smell of old marrow. Two squat stone blocks stand near the middle of the room like plinths waiting for statues. A single open doorway leads west to the entry."
+    },
+    "L1:C2": {
+      "name": "Rattling Passage",
+      "description": "A row of squat stone blocks runs across the middle of this chamber, dividing it into two narrow lanes. Bones have been kicked into the corners, and a faint rattle seems to linger after every sound. A locked door with a brass-ringed keyhole leads south, and an open arch leads north."
+    },
+    "L1:B3": {
+      "name": "Shuttered West Room",
+      "description": "A low-ceilinged chamber of chill teal stone, where bat droppings crust the tops of a few scattered blocks and a papery rustle drifts down from the dark. The air tastes of dust. A heavy iron shutter fills the eastern doorway, and the north door is locked, its keyhole ringed with rust."
+    },
+    "L1:C3": {
+      "name": "Diamond-Tiled Crossing",
+      "description": "Four ways meet in this broad chamber, its floor laid in worn diamond-patterned tiles. A heavy iron shutter is sunk into the western doorway, and open arches lead east and south. Part of the north wall is crazed with dark hairline fissures, as if a sharp blow might bring it down."
+    },
+    "L1:D3": {
+      "name": "Bat Roost",
+      "description": "The ceiling of this chamber vanishes into darkness, and the stale air is thick with the musk of roosting bats. Droppings crust the floor between low rows of raised blocks, and the walls whisper with the beat of unseen wings. An open doorway leads west, and a patch of the north wall is cracked and sounds hollow."
+    },
+    "L1:A4": {
+      "name": "Hall of the Twin Fires",
+      "description": "Two fires burn in stone braziers at the far end of this quiet chamber, throwing warm, steady light across the flagstones. Between them an old man stands as though he has always been there, murmuring that the eastmost peninsula is the secret. A heavy iron shutter seals the eastern doorway."
+    },
+    "L1:B4": {
+      "name": "Slime-Slick Hall",
+      "description": "The flagstones here are tacky with a faint glistening film, and small wet smears wander across them in no particular direction. The smell is sour, like spoiled broth. A locked door with a keyhole leads south, an open archway leads east, and a heavy iron shutter fills the western doorway."
+    },
+    "L1:C4": {
+      "name": "Chamber of Pillars",
+      "description": "Square stone blocks march across this large chamber in a rigid grid, leaving narrow lanes between them, and gelatinous smears gleam on the tiles. Open doorways lead north and west, a locked door with a keyhole bars the east, and the south wall is split by a dark web of cracks."
+    },
+    "L1:D4": {
+      "name": "Scarred Hall",
+      "description": "Curved gouges and scuff marks score the walls at shoulder height, as if something has been flung against them again and again and caught on the way back. A few stone blocks crouch near the corners. An open doorway leads east, a locked door leads west, and the south wall is fractured and weak."
+    },
+    "L1:E4": {
+      "name": "Hall of Grasping Walls",
+      "description": "The walls of this chamber seem to press closer than they should, and dark handprints smudge the stone high up near the ceiling. The air is still and watchful, and the shadows along the edges never quite sit right. An open doorway leads west, while the north door is locked fast, its keyhole worn bright."
+    },
+    "L1:C5": {
+      "name": "Ossuary Hall",
+      "description": "Old bones lie heaped in drifts against the walls of this dim chamber, and a pair of stone blocks squats near its center. The faint clatter of something settling never quite stops. An open arch leads south, and a locked door with an iron keyhole stands to the north."
+    },
+    "L1:E5": {
+      "name": "Aquamentus's Lair",
+      "description": "Scorch marks blacken the floor of this long chamber, fanning out from a great ledge of stone along the eastern wall. The air is hot and stinks of sulphur and charred bone, and shed green scales glint among the cinders. A locked door leads south, and a heavy iron shutter seals the way east."
+    },
+    "L1:F5": {
+      "name": "Triforce Chamber",
+      "description": "A small, hushed chamber of smooth teal stone, its floor framed by a border of carved blocks. A soft golden glow seems to hang in the air though nothing here burns, and the stone is warm to the touch. A heavy iron shutter leads west, back toward the dragon's lair."
+    },
+    "L1:B6": {
+      "name": "Chamber of Blade Traps",
+      "description": "Deep grooves run across the floor of this chamber from its corners, polished smooth by heavy blades that rest against the walls, ready to slide. A single stone block in the middle sits a little askew, its base scraped as though it has been shifted before. A locked door leads east."
+    },
+    "L1:C6": {
+      "name": "Northern Guardroom",
+      "description": "Curved scuff marks and dents pock the walls of this high northern chamber, and the floor is littered with chips of broken stone. Cold air drifts down from cracks in the vaulted ceiling. Locked doors with heavy keyholes stand to the south and to the west."
+    },
+    "L1:cellar:B6": {
+      "name": "Bow Cellar",
+      "description": "A narrow ladder drops from the stair into a long, shadowy basement of brick ledges and black gaps that fall away into nothing. The air is cool and smells of earth and old candle wax. A raised stone shelf waits at the far end of the ledges, and the ladder climbs back to the chamber above."
+    },
+    "L2:B1": {
+      "name": "Crescent Gate",
+      "description": "Pale blue stone surrounds this entrance hall, its walls carved with crescent moons worn soft by time. A chill draft spills down the stair behind, carrying the smell of the green hills outside. Open doorways lead north and east into the darker halls beyond."
+    },
+    "L2:C1": {
+      "name": "Shed Skin Chamber",
+      "description": "Papery snake skins lie curled in the corners of this blue-walled chamber, and thin sinuous tracks wind through the dust on the floor. Squat stone blocks frame the center of the room. An open doorway leads west to the entrance, and another leads north deeper into the dungeon."
+    },
+    "L2:A2": {
+      "name": "Coiled Track Room",
+      "description": "A dead-end chamber on the dungeon's western edge, its dusty floor scored by long looping drag marks. The air is musty and faintly reptilian, and a dry rasp seems to come and go along the walls. A heavy iron shutter seals the only doorway, to the east."
+    },
+    "L2:B2": {
+      "name": "Blue Antechamber",
+      "description": "Stone blocks stand in two short rows across this chamber, and the blue walls sweat a faint chill. Shed scales gleam between the floor tiles like flakes of mica. Open doorways lead east and south toward the entrance, while the western door is a heavy iron shutter."
+    },
+    "L2:C2": {
+      "name": "Moonstone Crossroads",
+      "description": "Wide and echoing, this chamber sits where several halls meet, its tiles worn into shallow paths by the passage of countless scaled bellies. Open doorways lead north, south and west, and the east door is locked, its keyhole set in a bronze plate shaped like a waning moon."
+    },
+    "L2:D2": {
+      "name": "Dripping Chamber",
+      "description": "Water beads on the ceiling of this eastern chamber and drips onto tiles filmed with faint jelly-like slime. Rows of blocks divide the floor into narrow aisles that smell of damp. A locked door with a keyhole leads west, and the north wall is threaded with fine cracks that look ready to give."
+    },
+    "L2:C3": {
+      "name": "Gouged Hall",
+      "description": "Curving gouges mark the walls of this chamber, and the floor is littered with chips of blue stone knocked loose by something hurled hard and often. Pairs of blocks flank the middle. An open doorway leads south, a locked door bars the east, and a heavy iron shutter fills the doorway north."
+    },
+    "L2:D3": {
+      "name": "Cracked Eastern Room",
+      "description": "A narrow eastern room whose walls are fractured top and bottom, the cracks wide enough to let a cold draft whisper through. Faint slime trails glisten across the floor and dry into crusts along the baseboards. A locked door leads west, while the north and south walls look thin and hollow."
+    },
+    "L2:C4": {
+      "name": "Long Hall of the Moon",
+      "description": "This chamber is part of the long north-south spine of the dungeon, its blue walls rising unbroken to a shadowed vault. Slither marks cross the dusty floor in lazy curves between the blocks. A heavy shutter seals the south, and open doorways lead north and east."
+    },
+    "L2:D4": {
+      "name": "Eastern Hall of Cuts",
+      "description": "Deep, curving cuts score the walls of this room, and a scatter of broken masonry lies near the center. The air smells of oiled leather and old dust, and a faint whirring echo seems to circle the ceiling. An open doorway leads west, while both the north and south walls are veined with cracks."
+    },
+    "L2:C5": {
+      "name": "Silent Chamber",
+      "description": "An empty, silent chamber of pale blue stone, its floor swept bare and its corners deep in shadow. Nothing stirs here, and every footstep rings loud off the walls and comes back a moment late. Open doorways lead north, south and east along the dungeon's long spine."
+    },
+    "L2:D5": {
+      "name": "Trap-Grooved Room",
+      "description": "Polished grooves cut across the floor of this cramped eastern room, running wall to wall where something heavy slides on its own. Bat droppings stain the upper ledges, and the air is stale. An open doorway leads west, and the north and south walls are both cracked and hollow-sounding."
+    },
+    "L2:C6": {
+      "name": "Serpent Hall",
+      "description": "Coiled tracks and shed skins cover the floor of this long chamber, and the air is warm and close with reptile musk. A double row of stone blocks runs down its middle like a colonnade. An open doorway leads south, a locked door bars the east, and a heavy shutter stands to the north."
+    },
+    "L2:D6": {
+      "name": "Slime-Pooled Cell",
+      "description": "Glistening smears of slime trail across this small chamber, pooling in the grout between the tiles and dripping from the lip of the blocks. The walls are close and clammy. An open doorway leads north, a locked door with a keyhole leads west, and the south wall is laced with fine cracks."
+    },
+    "L2:C7": {
+      "name": "Smoke-Stained Antechamber",
+      "description": "Gouged walls and scattered stone chips mark this chamber below the dungeon's northern end. A low rumble seems to come from beyond the north wall, and the air smells faintly of smoke and powder. Heavy shutters stand north and south, and the east wall is split by a web of cracks."
+    },
+    "L2:D7": {
+      "name": "Northeast Hollow",
+      "description": "A quiet dead-end chamber in the dungeon's northeast corner, its tiles slick with an oily film and its blocks beaded with damp. Water drips steadily from somewhere above. An open doorway leads south, and the west wall is fractured and loose, as if only old mortar holds it up."
+    },
+    "L2:B8": {
+      "name": "Triforce Chamber",
+      "description": "A small sanctum of quiet blue stone in the dungeon's far northwest, its floor framed by a border of raised blocks. A gentle golden light seems to hang in the air, and the hush here is deep and reverent after the smoke next door. An open doorway leads east, back to the lair."
+    },
+    "L2:C8": {
+      "name": "Dodongo's Lair",
+      "description": "A broad, low chamber that stinks of smoke and scorched rock, its floor pitted with blast craters and pressed by huge three-toed footprints. Blackened scraps of fuse lie among the rubble, and the walls are sooty to the ceiling. A heavy shutter seals the south door, and an open doorway leads west."
+    },
+    "L3:C1": {
+      "name": "Ooze Chamber",
+      "description": "Thick, glistening puddles of slime spread across this square chamber, and the stone is stained a sickly green where they have dried. A pair of blocks stands near the middle, crusted at their bases. Open doorways lead east to the entrance and north into the dungeon."
+    },
+    "L3:D1": {
+      "name": "Manji Gate",
+      "description": "Green-tinged stone closes around this entrance hall, its walls carved with angular hooked patterns that turn in on themselves like the dungeon's own crooked plan. Cool, damp air rises from deeper within, smelling of moss. The only doorway leads west."
+    },
+    "L3:A2": {
+      "name": "Knight's Dead End",
+      "description": "Heavy boot prints and the long scrape of armored feet mar the dust in this far western chamber. Stone blocks stand in a loose ring, and one sits slightly out of line with the rest, its edges scuffed as though it has been shoved. A heavy iron shutter seals the doorway north."
+    },
+    "L3:C2": {
+      "name": "Streaked Hall",
+      "description": "Long streaks of slime run down the walls of this hall, as if something heavy had tried to climb them and slid back down. The air is damp and smells of rot and wet stone, and the floor squelches in places. Open doorways lead north and south."
+    },
+    "L3:A3": {
+      "name": "Armored Hall",
+      "description": "Deep blade scratches line the walls of this western hall, and the floor is scuffed by heavy armored steps that pace back and forth. Squares of stone block lie in a checker pattern. An open doorway leads north, a locked door with a keyhole leads east, and a heavy shutter seals the south."
+    },
+    "L3:B3": {
+      "name": "Hall of Blades",
+      "description": "Smooth grooves cut along the walls of this chamber, worn deep by steel-edged traps that rest in all four corners. Bat droppings speckle the floor in the lanes between them, and the ceiling rustles. Open doorways lead north and east, and a locked door with a keyhole stands to the west."
+    },
+    "L3:C3": {
+      "name": "Manji Crossing",
+      "description": "This is the heart of the dungeon's crooked cross, a broad chamber where halls meet from every side. Green slime pools in the low places between the worn floor tiles. Open doorways lead north, south and west, and the east wall is split by deep cracks that look ready to crumble."
+    },
+    "L3:D3": {
+      "name": "Eastern Slime Hall",
+      "description": "Glistening sludge coats the floor of this chamber in thick, drying layers, and the smell of damp moss hangs heavy. A row of blocks lines the far wall. An open doorway leads north, a heavy iron shutter seals the east, and the west wall is fractured and sounds hollow when struck."
+    },
+    "L3:E3": {
+      "name": "Chamber of Cold Flickers",
+      "description": "A creeping chill hangs in this small chamber, and pale blue flickers seem to dance at the edge of sight before winking out. Bat droppings and shards of old bone lie across the stone. Heavy iron shutters seal both the north and the west doorways."
+    },
+    "L3:A4": {
+      "name": "Haunted West Room",
+      "description": "A dim chamber at the dungeon's western reach, where eerie flickers of light seem to wink in the corners and vanish when looked at directly. Bat droppings crust the ledges, and the air is cold and thin. Open doorways lead east and south."
+    },
+    "L3:B4": {
+      "name": "Bat Gallery",
+      "description": "The ceiling of this chamber is pocked with crevices where bats roost, and the floor beneath is stained with their droppings. Two blocks stand near the center, chipped by claws. Open doorways lead west and south, and a locked door with a keyhole bars the east."
+    },
+    "L3:C4": {
+      "name": "Hall of Three Locks",
+      "description": "Locked doors stand on three sides of this chamber, north, east and west, each with a heavy keyhole set in iron, and only the southern arch stands open. Slime smears glisten across the floor and dry to a green crust along the base of the walls."
+    },
+    "L3:D4": {
+      "name": "Room of Sliding Blades",
+      "description": "Four steel-edged traps rest in the corners of this chamber, and the floor between them is cut with straight, polished grooves. An open doorway leads south and a locked door leads west. The east wall is cracked from floor to ceiling, and a sweet, green smell seeps through the fissures."
+    },
+    "L3:E4": {
+      "name": "Manhandla's Lair",
+      "description": "Thick vines and torn, fleshy petals carpet this chamber, and the air is heavy with the cloying sweetness of some monstrous bloom. Long whip-marks and scorch spots score the floor in every direction. Heavy shutters seal the north and south doorways, and the west wall is cracked, its stones loose."
+    },
+    "L3:C5": {
+      "name": "Blade Corridor",
+      "description": "Twin grooves cut across this narrow chamber where heavy blades rest against the walls, poised to slide at the first footstep. The stone between them is scored with fresh, bright scratches. A locked door leads south, and a heavy iron shutter seals the doorway north."
+    },
+    "L3:E5": {
+      "name": "Triforce Chamber",
+      "description": "A quiet chamber of green stone above the lair, its floor framed by a border of raised blocks. A warm golden light lingers in the air, and the stone here is clean and untouched by slime or vine. A heavy iron shutter leads south, back into the overgrown lair."
+    },
+    "L3:B6": {
+      "name": "Northwest Roost",
+      "description": "Shadows crowd the high corners of this quiet chamber, and the musk of roosting bats hangs thick in the air. Droppings stain the tiles in long pale streaks, and wings stir faintly overhead. A heavy iron shutter seals the eastern doorway, the only way in or out."
+    },
+    "L3:C6": {
+      "name": "Firelit Hall of Riddles",
+      "description": "Two fires crackle in stone braziers at the north end of this chamber, casting warm amber light across the green stone. Between them an old man waits, asking every visitor whether they got the sword from the old man atop the waterfall. Heavy iron shutters seal the south and west doorways."
+    },
+    "L3:cellar:A2": {
+      "name": "Raft Cellar",
+      "description": "A ladder descends into a cramped brick basement of narrow ledges and dark gaps, cool and smelling of wet timber and pitch. Water drips somewhere unseen below. A stone shelf sits in the gloom at the end of the ledges, and the ladder leads back up to the chamber above."
+    },
+    "L4:A1": {
+      "name": "Dripping Roost",
+      "description": "A cramped chamber of damp blue stone opens off the entry hall to the east. Bat droppings streak the floor beneath cracks in the ceiling, and the steady drip of lake water echoes from somewhere overhead. The air is thick with mildew and the sour reek of guano."
+    },
+    "L4:B1": {
+      "name": "Mouth of the Snake",
+      "description": "The entry hall of the Snake lies beneath its lake island, walls of glistening blue-green brick carved with coiling serpents. Cold, wet air breathes up from the depths to the north, and a low side opening leads west. Behind, the stair climbs back toward daylight and the lap of lake water on the shore."
+    },
+    "L4:B2": {
+      "name": "Moat Crossing",
+      "description": "A channel of dark, still water cuts across this hall, crossed by a raised strip of flagstones. Long gouges near the doorways suggest something heavy and armored paces here. A locked door with a brass keyhole is set in the east wall, while open ways lead north and south."
+    },
+    "L4:C2": {
+      "name": "Serpent Coil Chamber",
+      "description": "Blocks are laid across the floor in a slow spiral, like the coils of a great snake turning toward the center of the room. Talon scratches mark the upper walls where winged things cling. The only way out is the locked door in the west wall, its keyhole furred with green corrosion."
+    },
+    "L4:A3": {
+      "name": "Lane of Blocks",
+      "description": "Two rows of squat stone blocks march down the length of this chamber, leaving a narrow lane between them. The vaulted ceiling is cracked and stained by seepage, and dark claw marks score the plaster near its peak. Openings lead east and north."
+    },
+    "L4:B3": {
+      "name": "Seeping Gallery",
+      "description": "Water oozes from the mortar in long green stains and gathers in shallow hollows across the floor. Fluttering echoes and a litter of droppings betray a roost in the dark vault above. The way out lies south, with a second opening to the west."
+    },
+    "L4:A4": {
+      "name": "Still Corridor",
+      "description": "A long, hushed hall lies quiet but for the sound of water moving behind its walls. Carved snake heads jut from each corner, their stone tongues worn smooth by centuries of damp. Puddles on the floor ripple faintly whenever the lake shifts. Passages open north and south."
+    },
+    "L4:A5": {
+      "name": "Crackling Antechamber",
+      "description": "Faint blue sparks crackle and fade in the air of this chamber, leaving a sharp tang like an oncoming storm. The bare floor is ringed by a border of raised blocks. To the north a locked door bars the way, its keyhole crusted with verdigris, and an open way leads south."
+    },
+    "L4:B5": {
+      "name": "Hall of Biting Serpents",
+      "description": "Wide flagstones stretch between walls carved with scaled serpents swallowing their own tails. A heavy iron shutter fills the east doorway, and to the north a door is fastened with a stout lock. Fresh scratches on the lintels hint at clawed things that perch above the doors."
+    },
+    "L4:C5": {
+      "name": "Room of the Sunken Block",
+      "description": "A broad moat of black water rings the middle of this chamber, and on the island it encloses one block sits a hair out of line with its fellows. Patches of sticky, glistening residue stain the flagstones near the water. The only door, a heavy shutter, lies to the west."
+    },
+    "L4:A6": {
+      "name": "Divided Hall",
+      "description": "Rows of blocks split this chamber into narrow lanes running north to south. A shutter of banded iron blocks the north door and a locked door guards the south, while the east side stands open. Torn scraps of leathery wing membrane lie scattered beneath the ledges."
+    },
+    "L4:B6": {
+      "name": "Slick Chamber",
+      "description": "Blobs of jelly-like slime glisten in the cracks between the flagstones, and the air carries a faintly sour smell. The north wall is crazed with hairline cracks around one thin, weak-looking section. A locked door stands to the south and an open way leads west."
+    },
+    "L4:A7": {
+      "name": "Cold Crossing",
+      "description": "This bare chamber is hushed and cold, its floor broken only by a lone column of blocks. Shutters seal the north and south doorways, and the eastern wall shows a patch of crumbling, discolored brick. Water trickles unseen somewhere beneath the floor."
+    },
+    "L4:B7": {
+      "name": "The Sealed Heart",
+      "description": "A small chamber lies walled in on every side, with no proper door at all. Yet each of the four walls bears a scarred, crumbling patch where the masonry looks thin and badly set. Grit sifts from the cracks whenever the lake presses against the foundations, and the air is stale."
+    },
+    "L4:C7": {
+      "name": "Knight's Approach",
+      "description": "Polished floor tiles are scored with long scrapes, as if armored feet drag across them on patrol. A massive shutter fills the east doorway, and a hiss and a reek of sulfur seep around its edges. The west wall is cracked and weak, and an open way leads north."
+    },
+    "L4:D7": {
+      "name": "Gleeok's Lair",
+      "description": "A vast hall of scorched stone opens beneath a ceiling blackened by fire. Twin fans of soot spread from the north wall where long serpent necks have reared and lashed, and cinders crunch underfoot. The air shimmers with heat and stinks of brimstone. Shutters close the north and west doors."
+    },
+    "L4:A8": {
+      "name": "Hall of Twin Fires",
+      "description": "Two fires burn in stone braziers at the far end of this chamber, their light dancing on walls slick with lake damp. Between them is a worn patch where an old man stands and speaks of a waterfall that hides more than water. The only door, a shutter, lies south."
+    },
+    "L4:B8": {
+      "name": "Rafter Roost",
+      "description": "Rotting timber rafters cross the low ceiling of this narrow room, and droppings crust the floor beneath them. The south wall sags around a breach of loose, crumbling brick that looks ready to give. To the east an open doorway leads on."
+    },
+    "L4:C8": {
+      "name": "Gauntlet of Blades",
+      "description": "Square recesses sit in the corners of this chamber, and deep grooves run from them along the walls and across the floor where something sharp and heavy slides at speed. The stone is chipped bright along those tracks. Open doorways lead west and south."
+    },
+    "L4:D8": {
+      "name": "Triforce Chamber",
+      "description": "A small sanctum of pale stone glows with a warm golden light that seems to rise from the floor itself. The endless drip of the lake falls silent here, and the carved serpents on the walls bow their heads toward the center. A shutter leads back south to the scorched lair."
+    },
+    "L4:cellar:C5": {
+      "name": "Stepladder Cellar",
+      "description": "A ladder drops from beneath the sunken block into a cramped basement of red brick. Narrow brick ledges step across a dark floor where water gurgles in the gaps, and the low ceiling sweats with lake seepage. The only way out is back up the ladder."
+    },
+    "L5:C1": {
+      "name": "Lizard's Gate",
+      "description": "The entry hall of the Lizard lies deep beneath the Lost Hills, its gray stone pillars carved with long-tailed lizards climbing toward the ceiling. The air is dry and dusty and tastes of old tombs. Doorways open north and east, and the stair behind climbs back to the windswept hills."
+    },
+    "L5:D1": {
+      "name": "Echoing Chamber",
+      "description": "Sound behaves strangely here: footsteps return from the walls doubled and distorted, and even a whisper hums back. Small round prints pock the dust as though something hops about. The north wall is cracked and weak-looking, and the west way leads back to the gate."
+    },
+    "L5:A2": {
+      "name": "Western Stairwell",
+      "description": "A dim, close room at the western edge of the labyrinth, its floor glazed with dried trails of slime. In one corner a narrow stair plunges into darkness, running far beneath the halls toward the north. The east wall bears a sagging, crumbled patch of masonry."
+    },
+    "L5:B2": {
+      "name": "Tomb of Wrappings",
+      "description": "Stone biers line the walls of this chamber, and scraps of yellowed linen lie trampled across the floor. The air is heavy with the sweet, dusty smell of embalming resin. A shutter seals the north door, and both the east and west walls show cracked, weak patches."
+    },
+    "L5:C2": {
+      "name": "Embalmers' Hall",
+      "description": "Long stone tables stained dark with old oils stand in the middle of this cross-shaped hall. Strips of grave cloth trail from them across the floor in shuffling paths. A shutter guards the north, the west wall is cracked and thin, and open doors lead east and south."
+    },
+    "L5:D2": {
+      "name": "Hall of the Warning",
+      "description": "Two small fires flicker on either side of a worn stone patch near the wall, painting the gray brick orange. Here an old man warns that the master of this place hates a certain kind of sound. A cracked section of the south wall looks weak, and the west way stands open."
+    },
+    "L5:B3": {
+      "name": "Slime-Glazed Vault",
+      "description": "The floor of this chamber gleams with a thin glaze of green slime that pools around the blocks set in its corners. Every step makes a wet, sucking sound, and the walls drip with the same ooze. Heavy shutters stand in the east and south doorways."
+    },
+    "L5:C3": {
+      "name": "Hall of Heavy Tracks",
+      "description": "Deep three-toed tracks crush the dust of this broad hall, and the air carries a faint smell of smoke and scorched hide. Shutters guard the west and south doors and a locked door bars the north, its iron keyhole rimmed with soot. An open way leads east."
+    },
+    "L5:D3": {
+      "name": "Gray Junction",
+      "description": "Mineral water drips from a fissure in the ceiling and spreads across the floor in long, shining trails. A row of weathered blocks leans against the east wall, and a stone lizard grins down from above the north door. Open ways lead north and west."
+    },
+    "L5:C4": {
+      "name": "Hushed Archive",
+      "description": "This silent chamber is lined with niches holding crumbling clay tablets etched with lizard glyphs. Dust lies thick and undisturbed over everything, and the faint scent of old parchment hangs in the air. A locked door stands in the south wall and an open way leads east."
+    },
+    "L5:D4": {
+      "name": "Shuffling Passage",
+      "description": "A long vaulted passage runs between rows of blocks, with scraps of linen caught on their corners like flags. A cold draft moves through it smelling of the grave and of dry resin. Open doorways lead north, south and west."
+    },
+    "L5:A5": {
+      "name": "Sealed Crypt",
+      "description": "A low crypt lies at the bottom of the western halls, reached only from the north where a heavy shutter hangs. Sarcophagus lids lean against the walls, pried open from the inside, and dust and linen threads float in the still air."
+    },
+    "L5:D5": {
+      "name": "Lizard Shrine",
+      "description": "A carved lizard of green stone coils on a pedestal against the east wall of this small shrine, its eyes worn blank by time. Faint slime trails wander across the floor around it, glinting in the gloom. Doorways lead north and south."
+    },
+    "L5:A6": {
+      "name": "Digdogger's Den",
+      "description": "The floor of this chamber is churned and dented as if a great rolling bulk had bounced across it a thousand times. The walls are pocked with deep, curving dents, and a low throb hums through the stone. A locked door lies east, and shutters close the north and south."
+    },
+    "L5:B6": {
+      "name": "Whispering Gallery",
+      "description": "Curved walls of polished stone carry every sound around this gallery and back again, until a single footstep becomes a chorus. The north wall shows a web of fine cracks around one thin section. A locked door bars the west, and the east stands open."
+    },
+    "L5:C6": {
+      "name": "Ossuary",
+      "description": "Bones are stacked in neat niches from floor to ceiling, and a trodden path of linen scraps crosses between them. The air is cold and smells of dust and resin. A locked door with a heavy keyhole stands to the east, and the way west is open."
+    },
+    "L5:D6": {
+      "name": "Bat-Haunted Tomb",
+      "description": "Coffins of carved stone stand in two rows across this tomb, their lids spattered with bat droppings. The rustle of wings echoes from the shadowed ceiling, and torn wrappings trail from one cracked casket. A locked door stands in the west wall, and the south is open."
+    },
+    "L5:A7": {
+      "name": "Triforce Chamber",
+      "description": "A quiet sanctum of pale gray stone rests above the battered den, its walls carved with lizards that turn their heads toward the center of the room. A golden light gathers in the still air, warm after the cold of the tombs. A shutter leads back south."
+    },
+    "L5:B7": {
+      "name": "Hidden Sage's Nook",
+      "description": "Tucked behind a false wall, this narrow room is lit by twin fires burning in stone bowls. Between them an old man murmurs that secret power is said to be in the arrow. The only way out is the broken wall to the south, its rubble still heaped on the floor."
+    },
+    "L5:C7": {
+      "name": "Rafter Hall",
+      "description": "Rotting beams cross the ceiling of this hall, white with the droppings of the things that roost there. The east wall bulges around a cracked, weak-looking section of brick. To the north a locked door bars the way, and leathery wingbeats echo overhead."
+    },
+    "L5:D7": {
+      "name": "Sage's Bargain Room",
+      "description": "A pair of fires crackles in stone braziers on either side of a worn spot by the north wall, warming this hidden room. Here an old man offers, for a price, to let a traveler carry more bombs. The only exit is the broken wall to the west."
+    },
+    "L5:B8": {
+      "name": "Room of the Scraped Block",
+      "description": "A grid of stone blocks fills this cramped northwestern chamber, and one block near the middle shows fresh scrape marks at its base. Slime trails glisten in the lanes between the rows, and the air is close and dry. A locked door leads east, its keyhole crusted with dust."
+    },
+    "L5:C8": {
+      "name": "Stair Landing",
+      "description": "A bare stone landing where a narrow stair drops into the floor, running far to the southwest beneath the halls. Locked doors stand in the south and west walls, their keyholes cold and dark. The dust around the stair is scuffed by many feet."
+    },
+    "L5:cellar:B8": {
+      "name": "Recorder Cellar",
+      "description": "A ladder descends beneath the scraped block into a narrow brick basement, where the dry air carries a faint, high whistle like wind across a reed. Brick ledges step across the dark floor, and the low ceiling presses close. The ladder is the only way back up."
+    },
+    "L6:A1": {
+      "name": "Scorched Antechamber",
+      "description": "Black scorch marks splash the walls of this chamber in starbursts, as if bolts of magic have struck them again and again. The smell of burnt air lingers. A locked door with a keyhole stands to the east, and the way north is open."
+    },
+    "L6:B1": {
+      "name": "Dragon's Gate",
+      "description": "Dragon statues of dark red stone flank the entry hall of this labyrinth, their jaws carved wide as if to breathe fire. Heat seems to radiate from the walls themselves. A locked door lies west and an open way leads east, and the stair behind climbs back to the open air."
+    },
+    "L6:C1": {
+      "name": "Rune-Scored Hall",
+      "description": "Arcane sigils are scratched across the flagstones here, and a few still glow faintly before fading. Soot blackens the corners and the air prickles against the skin. A locked door is set into the north wall, and an open way leads west."
+    },
+    "L6:A2": {
+      "name": "Slime Cistern",
+      "description": "Puddles of green slime pool in the low places of this sunken floor, and trails of it streak the walls up to knee height. A rusted drain grate in the center gurgles softly, breathing up a cold, sour draft. Open ways lead north and south."
+    },
+    "L6:C2": {
+      "name": "Sour Cell",
+      "description": "A small cell, reached only through a locked door in the south wall, holds nothing but a few squat blocks and a smear of slime along the floor. The walls close in, damp and red-tinged, and the air smells sour and stale. Nothing stirs here."
+    },
+    "L6:A3": {
+      "name": "Smoky Roost",
+      "description": "A tall, narrow chamber whose ceiling vanishes into soot-black shadow, alive with the rustle of leathery wings. Droppings crust the floor and the red stone walls. A heavy shutter seals the north door, and an open way leads south."
+    },
+    "L6:A4": {
+      "name": "Blade Corridor",
+      "description": "Grooves cut deep into the floor run from the corners toward the middle of this chamber, and the stone along them is nicked bright by something that slides at speed. The rest of the room is bare and quiet. Shutters guard both the north and south doors."
+    },
+    "L6:A5": {
+      "name": "Flickering Hall",
+      "description": "The air here crackles with stray sparks, and patches of the walls are scorched into strange silhouettes. Two rows of blocks run along the room, their tops blistered by heat. Heavy shutters close the north and south doorways."
+    },
+    "L6:B5": {
+      "name": "Taloned Corner",
+      "description": "Deep talon gouges mark the tops of the blocks set around this corner chamber, and torn wing membrane hangs from a crack in the ceiling. The red flagstones are cool underfoot. Heavy shutters stand in the north and east doorways."
+    },
+    "L6:C5": {
+      "name": "Sorcerer's Stair",
+      "description": "A spiral of scorch marks curls across the floor of this chamber toward its center. In the corner a narrow stair sinks into the floor, leading to distant halls far to the east. A shutter in the west wall is the only door."
+    },
+    "L6:E5": {
+      "name": "Mage's Dead End",
+      "description": "Burn marks of two colors, red-black and an eerie blue-gray, overlap on every wall of this isolated chamber. The air smells of ozone and singed stone, and the floor is gritty with ash. A shutter in the north wall is the only way out."
+    },
+    "L6:A6": {
+      "name": "Statue Gallery",
+      "description": "A line of dragon statues stands along the west wall, their stone faces blistered and cracked by stray spells. The east wall shows a crumbling patch of brick that looks thin. Heavy iron shutters close the north and south doors."
+    },
+    "L6:B6": {
+      "name": "Ash Chamber",
+      "description": "A drift of fine gray ash covers the floor, swirled into patterns by drafts that seem to come from nowhere. The west wall is cracked and weak, a shutter blocks the south, and a locked door with a scorched keyhole bars the north."
+    },
+    "L6:E6": {
+      "name": "Threshold of the Nest",
+      "description": "Grooves cut by sliding blades scar the floor, and blue scorch marks stain the walls of this hall. From behind the locked door in the north wall comes a dry rustle and the clatter of hard legs on stone. A shutter lies south and the east way is open."
+    },
+    "L6:F6": {
+      "name": "Eastern Bend",
+      "description": "This chamber at the eastern edge of the labyrinth smells of storm and singed fur. Sparks wink and vanish in the corners, and talon marks score the stone above the doorways. A cracked dragon carving leans in one corner. Open ways lead north and west."
+    },
+    "L6:A7": {
+      "name": "Silent Vault",
+      "description": "Bare red stone and a ring of blocks are all this chamber holds. No drafts stir here, and the hush is so complete that every footfall rings off the walls. Faint soot marks the lintels. Heavy shutters guard the east and south doors."
+    },
+    "L6:B7": {
+      "name": "Hall of Many Doors",
+      "description": "Four doorways meet in this crowded hall: locked doors to the north and south, a shutter to the west and an open way east. The floor is smeared with slime and a sticky, glistening film, and stray sparks snap in the corners. The walls are carved with coiling dragons."
+    },
+    "L6:C7": {
+      "name": "Ember Hall",
+      "description": "Glowing embers lie scattered in the cracks of this hall as though fire had rained from nowhere. The walls are scorched red-black in broad splashes, and the air is hot and dry. A shutter guards the north, and open ways lead east and west."
+    },
+    "L6:D7": {
+      "name": "Northern Ascent",
+      "description": "Low steps of red stone climb toward a shutter in the north wall, flanked by small dragon carvings with chipped snouts. Sparks crackle along the floor, and blue scorch marks streak the steps. An open way leads back west toward the ember-strewn hall."
+    },
+    "L6:E7": {
+      "name": "Gohma's Nest",
+      "description": "Shed carapace fragments and deep scuttle marks crisscross the floor of this lair, and the walls are gouged by great pincers. Above it all a single huge eye is carved into the north wall, staring and unblinking. Shutters close the north, and a locked door lies south."
+    },
+    "L6:F7": {
+      "name": "Eastern Stairwell",
+      "description": "A narrow stair sinks into the floor in one corner of this chamber, leading back toward the western halls. A sticky, glistening film coats the stones around it, and stray sparks snap in the air. The only door is the open way south."
+    },
+    "L6:B8": {
+      "name": "Room of the Loose Block",
+      "description": "Faint glyphs circle the floor of this northern chamber, and one of its blocks sits slightly askew, its base scraped bare of soot. Burn marks of red and blue overlap on the walls. A locked door lies south and the east wall looks cracked and weak."
+    },
+    "L6:C8": {
+      "name": "Hall of Weak Walls",
+      "description": "Both the east and west walls of this hall are crazed with cracks around thin, poorly set patches of brick. A sticky residue glistens across the floor, and sparks crackle along the wall seams. A heavy shutter leads south, back toward the ember-strewn hall."
+    },
+    "L6:D8": {
+      "name": "Hall of Twin Fires",
+      "description": "Two fires burn in dragon-shaped braziers at the far end of this quiet room, and an old man stands between them. He urges aiming at the eyes of the beast in the nest nearby. A shutter leads south, and the west wall is cracked and weak."
+    },
+    "L6:E8": {
+      "name": "Triforce Chamber",
+      "description": "A sanctum of polished red stone glows with a soft golden light that warms the dragon carvings along its walls. The heat and smoke of the halls below are gone, and the air is clear and still. A shutter leads back south to the nest."
+    },
+    "L6:cellar:B8": {
+      "name": "Magical Rod Cellar",
+      "description": "A ladder drops from beneath the loose block into a cramped basement of dark brick. Brick ledges step across a floor that hums with a faint, prickling power, and the air smells of ozone. The only way out is back up the ladder."
+    },
+    "L7:A1": {
+      "name": "Hall of Shed Skins",
+      "description": "Pale, papery snakeskins lie curled in the corners of this low chamber, and thin sinuous tracks wind through the grit on the floor. The walls are cold and close, and a faint hiss seems to linger in the air long after any sound has stopped. The only way out is the open doorway to the north."
+    },
+    "L7:B1": {
+      "name": "Demon's Gate",
+      "description": "Damp stone steps come down from the drained pond above into a vestibule of green-black brick. Water still beads on the walls and gathers in the seams between the floor tiles, and the air smells of silt and old reeds. Open archways lead north and east into the dark."
+    },
+    "L7:C1": {
+      "name": "Dripping Antechamber",
+      "description": "A bare square chamber whose blue-green flagstones are slick with seep from the pond overhead. The only sound is a slow, patient dripping that echoes from every wall. An open archway leads west toward the entry stair, and another opens north into deeper halls."
+    },
+    "L7:A2": {
+      "name": "Blade Trap Corridor",
+      "description": "Deep grooves are worn into the floor between the corners, where blocks of spiked iron sit in shallow recesses, polished bright by endless sliding. The ceiling is low and hung with roosting stains. A spiderweb of cracks runs through the east wall, and open doorways lead north and south."
+    },
+    "L7:B2": {
+      "name": "Moat Crossroads",
+      "description": "A channel of black water rings a raised island of flagstones at the heart of this room, its surface still and cold. Narrow stone lips along the walls let a traveller skirt the moat to reach the open doorways east and south. Both the north and west walls are fractured and hollow-looking, as if a sharp blast would bring them down."
+    },
+    "L7:C2": {
+      "name": "Bat Roost",
+      "description": "White streaks of guano stain the walls of this chamber from the ceiling down, and the air is sour with it. Leathery rustling drifts from the shadowed rafters and dies away. Open doorways lead west, east and south, while the north wall bears a jagged crack running from floor to lintel."
+    },
+    "L7:D2": {
+      "name": "Shuttered Gallery",
+      "description": "Two rows of squat stone blocks march down the middle of this long gallery, leaving narrow lanes between them. Boomerang notches are chipped into the brickwork at shoulder height. A heavy iron shutter seals the north doorway, while open arches lead east and west."
+    },
+    "L7:E2": {
+      "name": "Urchin's Hollow",
+      "description": "Coarse sand has drifted across the floor of this chamber, and great round depressions are pressed into it as though something vast had rolled from wall to wall. Broken spines as long as a forearm lie scattered among the dunes. The room is unnaturally quiet; even footsteps seem swallowed. Open arches lead east and west."
+    },
+    "L7:F2": {
+      "name": "Bone-Strewn Alcove",
+      "description": "The far eastern end of the dungeon gathers into a cramped alcove littered with skulls, ribs and rusted sword hilts. Some of the bones look disturbed, shuffled into heaps that were not there before. The stale air carries a dry rattle, and the only way out is the open arch to the west."
+    },
+    "L7:A3": {
+      "name": "Dodongo Den",
+      "description": "Huge three-toed prints are pressed into the soot that coats this chamber, and the walls are scorched black in broad sweeping arcs. A thick reptilian musk hangs in the air alongside a whiff of brimstone. A sturdy locked door with an iron keyhole stands in the north wall; open doorways lead east and south."
+    },
+    "L7:B3": {
+      "name": "Boomerang Hall",
+      "description": "A square hall of green brick whose walls are gouged with curved nicks where thrown blades have struck and spun away. A worn track circles the floor around a single central block. A heavy shutter seals the east doorway, the south wall is cracked through, and open arches lead north and west."
+    },
+    "L7:C3": {
+      "name": "Hall of Bones",
+      "description": "Raised blocks stand in a checkerboard across this wide chamber, and every lane between them is choked with bones, shields and helmets green with age. The clatter of loose ribs underfoot sets echoes running along the walls. A heavy shutter guards the west doorway, and the south wall is split by a ragged crack."
+    },
+    "L7:D3": {
+      "name": "The Old Man's Fires",
+      "description": "Two fires burn in stone braziers on either side of a quiet figure in a red robe, and their light dances across the plain walls. A faint murmur hangs in the warm air, something about a secret in the tip of the nose. The room is otherwise bare, and a heavy shutter seals the south doorway."
+    },
+    "L7:A4": {
+      "name": "Hall of the Second Sage",
+      "description": "Twin flames crackle in low braziers, framing a robed elder who speaks of a sound the great urchin cannot bear. The firelight warms the stones of a small, square room that feels strangely safe after the halls below. The only way out is the iron-banded door with a keyhole in the south wall."
+    },
+    "L7:B4": {
+      "name": "Hall of Lingering Chill",
+      "description": "An unnatural chill pools near the floor of this chamber, and the torchless walls seem to glimmer with a faint, shifting light. Pairs of stone blocks flank the center like silent guards. An open arch leads south, and a heavy iron shutter seals the passage north."
+    },
+    "L7:A5": {
+      "name": "Western Moat",
+      "description": "A broad moat cuts across this chamber, its dark water lapping softly against a narrow causeway of stone that bends toward the far doors. The smell of wet moss is thick. A locked door with a brass keyhole stands to the north, and a heavy shutter seals the east doorway."
+    },
+    "L7:B5": {
+      "name": "Island Chamber",
+      "description": "A ring of still water surrounds a square island of flagstones in the middle of this room, and the reflections of the walls ripple whenever a drop falls from the ceiling. Heavy shutters seal the south and west doorways. The east wall is crumbling and hollow-sounding, as if little holds it together."
+    },
+    "L7:C5": {
+      "name": "Hidden Cistern",
+      "description": "Behind a broken wall lies a small forgotten cistern, its floor sunk a step lower than the rest of the dungeon and slick with standing water. Moss grows thick in the corners, and the air is close and still. The only way out is the ragged gap in the west wall."
+    },
+    "L7:A6": {
+      "name": "Hall of Grumbling",
+      "description": "Gnawed bones and an empty clay bowl lie before the north doorway, and a deep rumbling grumble seems to rise from the stones themselves. Whoever keeps this passage is plainly starving, and will let no one by on an empty stomach. A heavy shutter seals the north way, and a locked door stands to the south."
+    },
+    "L7:B6": {
+      "name": "Stairwell of the Demon",
+      "description": "A narrow stone stair drops away through the floor in one corner of this chamber, descending into a long, dripping passage that runs far beneath the dungeon. The surrounding blocks are carved with leering, horned faces. The east wall is cracked and blistered from some great heat beyond it."
+    },
+    "L7:C6": {
+      "name": "Aquamentus's Lair",
+      "description": "A long hall of scorched brick ends at a raised ledge where something huge and horned has worn the stone smooth. The walls are pocked with blackened craters, and the air is thick with smoke and the reek of burnt scale. A cracked wall leads back west, and a heavy shutter bars the east."
+    },
+    "L7:D6": {
+      "name": "Triforce Chamber",
+      "description": "A hush fills this small, high chamber, broken only by a faint golden hum that seems to come from the stones themselves. The floor rises in shallow steps to a plain stone dais at its center, swept clean as if by reverent hands. The only way out is the heavy shutter to the west."
+    },
+    "L7:A7": {
+      "name": "Teeming Moat Hall",
+      "description": "Dark water runs in a broad channel around the edges of this crowded hall, leaving a broad central floor scattered with feathers, droppings and chipped boomerang wood. The noise of the place never quite stops. A locked door stands east, a shutter seals the south, and the north wall is visibly cracked."
+    },
+    "L7:B7": {
+      "name": "Twin Pillar Hall",
+      "description": "Two massive square pillars of green stone rise from the floor of this hall, their bases worn smooth where countless hands have steadied themselves. Water trickles in a thin sheet down the north wall beside a heavy shutter. A locked door leads west, and the east wall is fractured and loose."
+    },
+    "L7:C7": {
+      "name": "Hall of the Loose Block",
+      "description": "Blocks of carved stone stand in neat rows across this chamber, all but one set firmly into the floor. That one sits a finger's width out of line, with fresh scrape marks in the dust beside it. Both the east and west walls are cracked through, as though once broken and badly mended."
+    },
+    "L7:D7": {
+      "name": "Hall of Keyholes",
+      "description": "Two stout doors banded with iron face this chamber from the north and east, each with a dark keyhole at its heart. Between them the floor is laid in a tight spiral of tiles that draws the eye inward. The west wall is cracked from floor to ceiling and looks ready to give."
+    },
+    "L7:E7": {
+      "name": "Spined Sand Pit",
+      "description": "Fine sand has been heaped into ridges across this chamber, ploughed into furrows by something round and heavy. Snapped spines jut from the drifts like broken arrows, and the hush here is deep enough to ring in the ears. A locked door leads west, and a heavy shutter seals the north."
+    },
+    "L7:A8": {
+      "name": "Forgotten Corner",
+      "description": "Dust lies undisturbed on the floor of this sealed corner chamber, and cobwebs drape the bare walls in grey veils. No door was ever hung here; the only ways in are the crumbling walls to the south and east, which sound hollow and fragile to the touch."
+    },
+    "L7:B8": {
+      "name": "Northern Moat Room",
+      "description": "A moat of black water bends around three sides of this chamber, leaving a raised stone floor where scraps of goriya armour lie rusting. The water smells of rot and iron. Heavy shutters seal the east and south doorways, and the west wall is split by a long, deep crack."
+    },
+    "L7:C8": {
+      "name": "Goriya Barracks",
+      "description": "Matted heaps of straw line the walls of this cramped room, and half-carved boomerangs and wood shavings litter the floor beside a cold firepit. It smells of fur and stale meat. The only way out is the heavy shutter in the west wall."
+    },
+    "L7:D8": {
+      "name": "Silent Vault",
+      "description": "A small, empty vault at the top of the dungeon, its walls lined with smooth slabs of dark stone that drink the light. Nothing stirs, and the dripping heard elsewhere does not reach here. The only exit is the locked door to the south."
+    },
+    "L7:E8": {
+      "name": "Smoke-Stained Den",
+      "description": "The ceiling of this low den is blackened with old smoke, and great scaly hide scrapings cling to the corners where something heavy has rubbed itself against the brick. A sulfurous fug hangs over the floor. A heavy shutter seals the south doorway, and the east wall is fractured and weak."
+    },
+    "L7:F8": {
+      "name": "Grasping Wall Chamber",
+      "description": "Long gouges run down the walls of this chamber as if great fingers had dragged themselves out of the stone and back again. A stone stair in one corner leads down into a dripping passage that winds far to the west. The west wall is cracked and loose."
+    },
+    "L7:cellar:C7": {
+      "name": "Red Candle Cellar",
+      "description": "Below the loose block, a ladder descends into a narrow basement of rough red brick. A single ledge runs the length of the cellar above a black, bottomless gap, and the air is warm and faintly waxy. The ladder rises back to the hall above."
+    },
+    "L8:B1": {
+      "name": "Tomb of Wrappings",
+      "description": "Shreds of yellowed linen wrapping cling to the corners of this cold chamber, and the air carries a dry, spiced smell of old embalming. Stone blocks stand in a neat row along the floor, one of them resting a little crooked with scrape marks at its base. A heavy shutter seals the east doorway."
+    },
+    "L8:C1": {
+      "name": "Western Antechamber",
+      "description": "A plain chamber of pale grey brick, its floor swept bare save for a few drifts of ash carried in from the entry stair. The silence is heavy and expectant. An open arch leads east, and a heavy iron shutter seals the west doorway."
+    },
+    "L8:D1": {
+      "name": "Lion's Gate",
+      "description": "Fine grey ash sifts down the stair from the burned bush overhead, settling on the first flagstones of a stern stone vestibule. Carved lion heads glare from the corners, their stone manes chipped with age. Open archways lead west, north and east."
+    },
+    "L8:E1": {
+      "name": "Eastern Roost",
+      "description": "Droppings streak the walls of this small dead-end chamber, and a faint chill lingers near the floor no matter how still the air. Fluttering echoes come and go from the shadowed ceiling. The only way out is the open arch to the west."
+    },
+    "L8:D2": {
+      "name": "Narrow Passage Hall",
+      "description": "A tall, narrow hall of grey stone runs north from the entry, its walls lined with shallow alcoves where stone lions once crouched. Only their broken paws remain. The open arch south leads back to the gate, and the north wall is cracked and crumbling."
+    },
+    "L8:B3": {
+      "name": "Quiet Western Cell",
+      "description": "A small, forgotten cell at the western edge of the dungeon, its floor clean and its walls unmarked. A thin draught sighs through the open arch to the east, carrying the faint smell of damp stone. Nothing here seems to have been disturbed in a very long time."
+    },
+    "L8:C3": {
+      "name": "Hall of Echoes",
+      "description": "Every sound in this high chamber comes back doubled and trebled from the bare walls, so that a single footstep becomes a march. Tufts of pale fur cling to the corners. Open arches lead west and north, and a heavy iron shutter seals the doorway east."
+    },
+    "L8:D3": {
+      "name": "Slime-Slick Crossing",
+      "description": "Glistening trails of green slime crisscross the flagstones of this four-way chamber, and the floor gives a faint squelch underfoot. A locked door with a keyhole stands to the east, heavy shutters guard the north and west, and the south wall is cracked through."
+    },
+    "L8:E3": {
+      "name": "Warren of Long Ears",
+      "description": "Pale fur drifts like snow across the floor of this crowded chamber, and the walls are scuffed low down by countless thumping feet. The air is warm and musky, and even the slightest sound seems to set something stirring. A locked door leads back west."
+    },
+    "L8:A4": {
+      "name": "Gel-Streaked Chamber",
+      "description": "Puddles of quivering green gel cling to the floor of this chamber, and wet smears trail up the base of the walls. The air is damp and smells faintly sweet and rotten. An open arch leads north, and a heavy shutter seals the east doorway."
+    },
+    "L8:B4": {
+      "name": "Stair Beneath the Lion",
+      "description": "A steep stone stair opens in one corner of this chamber, leading down into a passage that runs far to the east beneath the dungeon. A great stone lion's head is carved above the stairwell. The west doorway is shuttered, and the north wall is scorched and cracked."
+    },
+    "L8:C4": {
+      "name": "Hall of Crouching Lions",
+      "description": "Four stone lions crouch at the corners of this square hall, their blank eyes fixed on the middle of the floor. The paving between them is cracked in a starburst pattern. An open arch leads south, a heavy shutter seals the north, and a locked door stands to the east."
+    },
+    "L8:D4": {
+      "name": "Locked Crossway",
+      "description": "Two iron-bound doors with dark keyholes face this chamber from the north and west, and the floor between them is slick with old slime. A faint chill clings near the ceiling, and the walls weep a cold sweat. A heavy shutter seals the south doorway."
+    },
+    "L8:A5": {
+      "name": "Sage of the Northern Fire",
+      "description": "Two fires burn in stone braziers at the heart of this small, warm room, and between them the stones are worn smooth where an elder has long stood. A grave whisper hangs in the air, warning that Spectacle Rock is an entrance to death. An open arch leads south, and the east wall is cracked."
+    },
+    "L8:B5": {
+      "name": "Gleeok's Lair",
+      "description": "Four deep troughs are gouged into the north wall where great serpentine necks have thrashed against the stone, and the floor below is blackened with flame. The heat is stifling and the air tastes of ash. A heavy shutter seals the north, and cracked walls lead south and west."
+    },
+    "L8:C5": {
+      "name": "Sage of the Tenth Foe",
+      "description": "Twin fires crackle on either side of a quiet spot where a robed elder keeps watch, and their warm light fills the little chamber. A murmured counsel hangs in the air: the tenth foe carries the bomb. The only way out is the heavy shutter to the south."
+    },
+    "L8:D5": {
+      "name": "Chamber of Three Doors",
+      "description": "A plain chamber of grey stone where three very different ways out meet: a locked door with a keyhole to the south, a heavy iron shutter to the east, and a north wall split by a deep, ragged crack. The floor is bare and the silence is heavy."
+    },
+    "L8:E5": {
+      "name": "Knight's Guardroom",
+      "description": "Dented shields and broken spear shafts are stacked against the walls of this guardroom, and the floor is scored by the tread of heavy armoured boots. Strips of old linen hang from a rack. A stone stair in the corner leads down into a passage running west, and a shutter seals the west doorway."
+    },
+    "L8:B6": {
+      "name": "Triforce Chamber",
+      "description": "Golden light seems to glow faintly from the walls of this small, still chamber, though no flame burns anywhere within it. A plain stone dais stands at its center, swept clean and quiet. The only way out is the heavy shutter to the south, back toward the scorched lair."
+    },
+    "L8:C6": {
+      "name": "Lion's Den",
+      "description": "A large stone lion lies carved along the length of the west wall, its head resting on its paws as though asleep. The rest of the chamber is empty, cool and very still. An open arch leads north, and the east wall is cracked through."
+    },
+    "L8:D6": {
+      "name": "Cartographer's Hall",
+      "description": "Faded lines are scratched into the walls of this hall, as though someone once tried to chart the dungeon on its very stones. A locked door with a keyhole stands in the north wall, and both the south and west walls are cracked and hollow-sounding."
+    },
+    "L8:C7": {
+      "name": "Burrow Chamber",
+      "description": "Shallow scrapes and burrow holes pock the earthen corners of this chamber, and tufts of pale fur catch on every rough edge. The quiet here is uneasy, broken by faint scratching. An open arch leads south, and the east wall is fractured and weak."
+    },
+    "L8:D7": {
+      "name": "Northern Crossroads",
+      "description": "A broad chamber where four ways meet: heavy iron shutters to the north and east, a locked door with a keyhole to the south, and a cracked wall to the west. Carved lions' heads glower down from the lintel of every door. The floor is clean and bare."
+    },
+    "L8:E7": {
+      "name": "Hall of the Shifted Block",
+      "description": "Rows of grey blocks fill this chamber, and green slime glistens in the gaps between them. One block stands slightly out of line, a curved scrape in the floor showing where it has been moved before. A heavy shutter seals the west doorway."
+    },
+    "L8:D8": {
+      "name": "Ooze-Drenched Chamber",
+      "description": "The northernmost chamber of the dungeon is slick with puddles of trembling green ooze that cling to the walls in thick, dripping sheets. The air is damp and cloying. The only way out is the heavy shutter in the south wall."
+    },
+    "L8:cellar:B1": {
+      "name": "Magic Book Cellar",
+      "description": "Beneath the crooked block, a ladder leads down into a narrow basement of rough brick that smells of dust and old parchment. A single stone ledge runs above a dark drop, and faint chalk runes mark the walls. The ladder climbs back to the tomb above."
+    },
+    "L8:cellar:E7": {
+      "name": "Magical Key Cellar",
+      "description": "A ladder descends from the shifted block into a cramped brick basement, its far end crossed by a single stone ledge above a black gap. A faint metallic chime seems to hang in the still air. The ladder leads back up to the hall above."
+    },
+    "L9:B1": {
+      "name": "Stairwell Antechamber",
+      "description": "A narrow dead-end chamber at the dungeon's southern edge, its walls pressing close and its ceiling low. Damp seeps from the stone and pools in the cracks of the floor. A stair in one corner plunges into a tunnel running east beneath the rock, and an open doorway leads back north."
+    },
+    "L9:D1": {
+      "name": "Chamber of Locked Doors",
+      "description": "Scorch marks spatter the walls here in uneven arcs, the work of bolts flung in anger. The room is a small stone box with no open way out at all: a stout locked door stands in the north wall and another in the east, both with keyholes rimmed in tarnished brass."
+    },
+    "L9:E1": {
+      "name": "Furrowed Sand Pit",
+      "description": "Loose grey sand covers the floor of this chamber, churned into long winding furrows as though something huge has burrowed through it again and again. The air tastes of grit. A locked door with a keyhole stands in the west wall, and a stairway sunk in the sand descends into a passage running west."
+    },
+    "L9:G1": {
+      "name": "Gate Beneath Spectacle Rock",
+      "description": "Cold air pours down from the mountain's heart into this bare stone vestibule, carved where the twin crags of Spectacle Rock meet the ground. The walls are rough, sooty basalt veined with dull red, and the floor is worn smooth by centuries of grit. An open archway leads north into the dark, and a low, constant rumble seems to come from the rock itself."
+    },
+    "L9:B2": {
+      "name": "Eye of the Western Hall",
+      "description": "A swirl of dust turns slowly in the middle of this chamber, stirred by some unseen current that circles and circles again. The walls are smooth, dark stone, and a flight of steps in the floor descends into a hidden underground passage. Open doorways lead north, south and east."
+    },
+    "L9:C2": {
+      "name": "Roost of the Keese",
+      "description": "Bat droppings crust the ledges of this low, vaulted room, and the ceiling is pocked with crevices where small wings rustle in the dark. Rows of rough blocks line the floor like broken teeth. An open doorway leads west, and a locked door with a heavy keyhole guards the way east."
+    },
+    "L9:D2": {
+      "name": "Slime-Slick Junction",
+      "description": "The floor of this chamber glistens with a film of greenish ooze that clings to the boots and smells of rot. Iron-bound doors with keyholes stand in the north, south and west walls, and only the east archway hangs open. In one corner, steps cut into the stone drop away into a narrow underground passage."
+    },
+    "L9:E2": {
+      "name": "Crossroads of Ash",
+      "description": "Four squat blocks stand in a square at the room's center, their tops dusted with grey ash that drifts down from somewhere far above. Faint slime trails curl between them, and scorch marks dapple the flagstones. Open archways lead west, north and east, making this a place where the dungeon's paths first begin to divide."
+    },
+    "L9:F2": {
+      "name": "Scorched Vestibule",
+      "description": "Blackened rings and starbursts of soot mark the floor and walls, as though bolts of fire have been hurled here again and again. The smell of burnt stone hangs in the still air. A shutter door bars the way east, an open passage runs west, and the northern wall shows a web of fine cracks around one patch of mortar."
+    },
+    "L9:G2": {
+      "name": "Hall of the First Warning",
+      "description": "Two fires burn in iron braziers on either side of an aged figure, and their light barely reaches the black corners of the chamber. The old man murmurs that the true road lies onward, through the next room. Heavy shutter doors seal the west and north walls, while the archway south opens back toward the mountain gate."
+    },
+    "L9:A3": {
+      "name": "Ooze-Pooled Corner",
+      "description": "Puddles of thick ooze collect in the hollows of the uneven floor, quivering faintly whenever a breath of air passes. The corner chamber is dim and cramped, its walls blotched with mildew. A shutter door seals the east wall, and a locked door with a keyhole leads north."
+    },
+    "L9:B3": {
+      "name": "Hall of Half-Eaten Shields",
+      "description": "Bent shield straps and dissolved scraps of leather lie scattered across the floor, coated in a clear, sticky residue. The room smells of something that digests slowly. Shutter doors guard the north and west, and an open archway leads south."
+    },
+    "L9:C3": {
+      "name": "Whirling Dust Chamber",
+      "description": "Grit hangs in the air in a slow, circling cloud, as if the room itself were a whirlpool of dust. Ranks of blocks line the walls, and in one corner a stair leads down into a tunnel that runs far beneath the dungeon. An open doorway leads east and a shutter door seals the north."
+    },
+    "L9:D3": {
+      "name": "Hall of Shadows and Flame",
+      "description": "Scorch marks, slime trails and a strange chill all share this crowded chamber, as if every terror of the mountain passed through it. Two lines of blocks divide the floor into lanes. A locked door leads south, an open doorway west, and one section of the north wall looks thin and crumbling."
+    },
+    "L9:E3": {
+      "name": "Hall of Twin Pillars",
+      "description": "Two great pillars of black stone flank the center of this room, each wrapped in a spiral of soot from bolts that struck and glanced away. The silence here is heavy. Open archways lead north and south, while the eastern wall bears a long hairline crack."
+    },
+    "L9:F3": {
+      "name": "The Sealed Sand Hollow",
+      "description": "Every wall of this sandy chamber is solid, smooth and doorless, but each shows a faint web of cracks where the stone has been weakened. Long furrows wind through the sand on the floor. A stairway in one corner sinks into a tunnel leading north, the only clear way out."
+    },
+    "L9:G3": {
+      "name": "Gallery of Ooze",
+      "description": "Slime coats the lower walls of this long gallery in shining streaks, and a cold, unnatural shiver hangs in the air near the corners. The floor is set with scattered blocks. A shutter door lies to the south, an open doorway north, and the west wall shows a cracked and sagging patch."
+    },
+    "L9:H3": {
+      "name": "Eastern Spellward",
+      "description": "A secluded chamber at the dungeon's eastern edge, its walls branded with soot in strange, star-shaped patterns. Rows of dark blocks stand in neat columns down its length. The only way out is an open archway to the north."
+    },
+    "L9:A4": {
+      "name": "Corridor of Burnt Runes",
+      "description": "The western wall of this narrow room is carved with runes, and most of them have been scorched black by passing fire. The air is warm and dry and smells of smoke. Locked doors with keyholes lead north and south, and the room offers no other way through."
+    },
+    "L9:B4": {
+      "name": "Hall of Grinding Blades",
+      "description": "Deep grooves are worn into the floor in straight lines from each corner toward the center, as though heavy blades have slid back and forth across them countless times. Torn leather scraps lie in sticky heaps. Shutter doors stand at the north and south ends."
+    },
+    "L9:C4": {
+      "name": "Ganon's Dark Chamber",
+      "description": "Darkness fills this vast hall so completely that no lamp seems able to push it back. The air is hot and foul, thick with the reek of a beast, and the stone underfoot is scarred with deep claw marks. Shutter doors stand to the south, and on the north wall a great golden door gleams faintly, sealed with a heavy lock."
+    },
+    "L9:D4": {
+      "name": "Hidden Sage's Alcove",
+      "description": "Sealed away behind crumbling stone, this small room is lit only by twin fires that crackle beside an old man. He speaks softly of secrets kept where fairies do not live. The only way back is the broken wall to the south."
+    },
+    "L9:E4": {
+      "name": "Chamber of Scorch Rings",
+      "description": "Overlapping rings of black soot cover the floor, many layers deep, as though fire has burst here from every direction at once. Heat lingers in the stone long after the flames have gone. Open archways lead east and south."
+    },
+    "L9:F4": {
+      "name": "Crowded Sorcery Hall",
+      "description": "Slime, soot and a lingering cold chill mark this busy hall in equal measure. Low blocks stand in pairs across the floor, leaving narrow lanes between them. A doorway opens west, a locked door with a keyhole leads east, and the south wall looks cracked and weak."
+    },
+    "L9:G4": {
+      "name": "Hall of Blue Flames",
+      "description": "Strange pale scorch marks, more blue than black, streak the walls of this chamber, and the air crackles faintly with leftover magic. The floor is bare except for a few scattered blocks. A locked door leads west and an open doorway leads south."
+    },
+    "L9:H4": {
+      "name": "Eastern Wardroom",
+      "description": "A cold draft whispers through this chamber, and with it comes a strange unease that makes the torchlight waver. Soot stains streak the walls between plain stone blocks. Open archways lead north and south along the dungeon's eastern edge."
+    },
+    "L9:A5": {
+      "name": "Blade-Trap Stairwell",
+      "description": "Deep grooves cut the floor from each corner, worn by heavy blades that slam toward the center. Soot marks the walls above them. A locked door leads south, the east wall bears a crumbling, fractured section, and a stair in the floor descends into a long passage beneath the dungeon."
+    },
+    "L9:B5": {
+      "name": "Hall of Many Dangers",
+      "description": "Signs of every kind of menace crowd this hall: slime trails, scorched stone, and a strange chill clinging to the walls. Blocks stand in a ring around the center. Shutter doors lead north and south, and a cracked patch in the west wall hints at a hidden way."
+    },
+    "L9:C5": {
+      "name": "Princess Zelda's Chamber",
+      "description": "Warm light fills this quiet room, cast by two fires that burn steadily on either side of its center. After the darkness below, the air is clean and still, and the plain stone walls seem almost gentle. A single shutter door leads back south toward the dark chamber."
+    },
+    "L9:D5": {
+      "name": "Pool of Gel",
+      "description": "Small, jiggling droplets of jelly cling to every surface of this room, quivering with a life of their own. The floor is slick and gives off a sour, wet smell. A locked door with a keyhole leads north, and the east wall shows a thin, crumbling section."
+    },
+    "L9:E5": {
+      "name": "Bat-Haunted Gallery",
+      "description": "The rustle of leathery wings never quite stops in this high gallery, and droppings streak the walls below its dark ledges. A thin crack runs through the western wall. An open archway leads north. The stone underfoot is cold and gritty, and the air smells of must."
+    },
+    "L9:F5": {
+      "name": "Chamber of the Needle",
+      "description": "A narrow chamber, its walls scarred with scorch marks that point in every direction like the arms of a compass rose. The floor is laid with a pattern of dark and pale tiles. The only visible way out is a stretch of cracked and weakened stone in the north wall."
+    },
+    "L9:G5": {
+      "name": "Murky Junction",
+      "description": "Ooze, bat droppings and a strange lingering cold make this room an unpleasant place to linger. Rows of blocks divide the floor. A locked door with a keyhole leads north, and the east wall shows a long, fractured seam in the stone."
+    },
+    "L9:H5": {
+      "name": "Belfry of the Vires",
+      "description": "High overhead, the ceiling vanishes into blackness where something winged and heavy roosts; claw marks rake the upper walls. Shattered bits of stone litter the floor. An open archway leads south, while cracked sections mar both the north and west walls."
+    },
+    "L9:A6": {
+      "name": "Western Stair Room",
+      "description": "Scorched rings mark the floor around a stair that sinks into a tunnel running beneath the dungeon. The walls here are thick and dark, and the air is uncomfortably warm. There is no open doorway, but the north wall shows a web of fractures in the stone."
+    },
+    "L9:B6": {
+      "name": "Circling Wind Chamber",
+      "description": "A slow, endless wind circles this room, carrying fine dust round and round the walls. Swirling marks are scoured into the floor. Shutter doors lead north and south, and a cracked section of the east wall looks ready to give way."
+    },
+    "L9:C6": {
+      "name": "Hall of Slime and Shadow",
+      "description": "Pools of slime gleam on the floor in the shadow of tall stone blocks, and a strange chill hangs near the walls. Locked doors with keyholes lead north and east, while the western wall shows a crumbling, fractured patch. The air is damp."
+    },
+    "L9:D6": {
+      "name": "Gel-Choked Crossway",
+      "description": "Tiny quivering blobs of jelly cling to the walls and floor of this crossing, leaving a slick, sour-smelling film everywhere. Locked doors with keyholes stand in the north, south and west walls, and a cracked section of the east wall looks weak."
+    },
+    "L9:E6": {
+      "name": "Winged Watchtower",
+      "description": "The ceiling here rises into a tall, dark shaft, and claw marks streak its upper walls where heavy wings have gripped the stone. A cold draft spills down from above. Open archways lead north and south, and the west wall bears a thin crack."
+    },
+    "L9:F6": {
+      "name": "Ooze-Streaked Passage",
+      "description": "Streaks of slime run down the walls of this narrow chamber, and a cold, uneasy feeling lingers in the air. Rows of dark blocks line the floor. A locked door leads east, while the north and south walls both show cracked, weakened stone."
+    },
+    "L9:G6": {
+      "name": "Hall of Quivering Gel",
+      "description": "Little blobs of jelly quiver on every flagstone, leaving sticky trails behind them. The room smells sour and damp. An open archway leads north, locked doors stand to the south and west, and a cracked patch scars the east wall."
+    },
+    "L9:H6": {
+      "name": "The Cartographer's Vault",
+      "description": "Dust spins in a slow circle across the floor of this sealed eastern vault, as if stirred by an endless breath. Faded lines are etched into the walls like old surveyors' marks. There are no doorways at all, only cracked and weakened sections in the north, south and west walls."
+    },
+    "L9:A7": {
+      "name": "Sealed Western Sanctum",
+      "description": "Scorch marks and a strange chill fill this isolated corner room, and the floor is laid with a careful arrangement of stone blocks. One block sits slightly out of line with the rest, its base scraped clean. The only exit is a cracked section of the south wall."
+    },
+    "L9:B7": {
+      "name": "Sand Burrow Hall",
+      "description": "Coarse grey sand fills this hall, heaped into ridges and churned by long winding furrows. A dry, earthy smell rises from the disturbed ground. Shutter doors stand at the north and south ends. Here and there the sand has collapsed into hollows, as if the ground were hollow beneath."
+    },
+    "L9:C7": {
+      "name": "Red Sand Hall",
+      "description": "The sand on this floor is rust-red and churned into deep twisting furrows, as if something has been tunneling here without rest. Locked doors with keyholes lead east and south, and a shutter door seals the north. The air is dry and close."
+    },
+    "L9:D7": {
+      "name": "Silent Cell",
+      "description": "A small, quiet chamber with a strange chill in the air that seems to gather and drift without any wind. The floor is bare and the walls plain. Locked doors with keyholes lead south and west, and there is no other way out."
+    },
+    "L9:E7": {
+      "name": "Stair of the Devourers",
+      "description": "Sticky residue coats the floor around a stair that drops into a tunnel running deep beneath the dungeon. Scraps of chewed leather lie in heaps along the walls. An open archway leads south, and a locked door with a keyhole guards the east."
+    },
+    "L9:F7": {
+      "name": "Blue-Scorched Hall",
+      "description": "Pale bluish scorch marks streak the walls in straight lines, crossing and recrossing one another. The air carries the sharp smell of spent magic. An open doorway leads east, a locked door west, and the south wall shows a web of cracks."
+    },
+    "L9:G7": {
+      "name": "Northern Whirl Chamber",
+      "description": "A slow vortex of dust circles the center of this chamber, endlessly turning. The walls are smooth and dark, lined with low blocks. An open doorway leads west and another south, and a locked door with a keyhole guards the north."
+    },
+    "L9:H7": {
+      "name": "Eastern Gauntlet",
+      "description": "Slime, soot and a lingering cold chill fill this long chamber, every trace of danger crowded into one place. Rows of blocks run along the walls. Cracked and weakened sections of stone mark both the north and south walls."
+    },
+    "L9:B8": {
+      "name": "Northwestern Den",
+      "description": "Ooze, bat droppings and a strange lingering chill make this dim corner chamber unwelcoming. Low blocks are scattered across the floor. A shutter door leads south, and a locked door with a heavy keyhole guards the way east."
+    },
+    "L9:C8": {
+      "name": "Sage of the Northern Hall",
+      "description": "Twin fires burn on either side of an old man who keeps a lonely vigil in this quiet chamber. He mutters that the one who circles holds the map. A shutter door leads south and a locked door west. The fires cast long, wavering shadows across the bare stone floor."
+    },
+    "L9:D8": {
+      "name": "Stair of Slime",
+      "description": "Slime coats the walls of this room in glistening sheets, and a cold presence seems to drift near the ceiling. A stair in one corner descends into a long tunnel beneath the dungeon. The east wall shows a cracked and crumbling patch."
+    },
+    "L9:E8": {
+      "name": "Quiet Stair Landing",
+      "description": "A small, empty chamber, strangely still after the rest of the dungeon. A worn stair in the floor descends into a passage that runs far to the west and south. The west wall shows a web of fine cracks in the stone. Dust lies thick and undisturbed."
+    },
+    "L9:F8": {
+      "name": "Northern Stair of Flame",
+      "description": "Scorch marks blacken the walls around a stair that plunges into a tunnel leading back toward the dungeon's southern halls. The air here is warm and smells of smoke. A cracked section of the east wall is the only other way out."
+    },
+    "L9:G8": {
+      "name": "Sage of the Northern Gate",
+      "description": "Two fires flicker on either side of an old man who stands in this quiet room, his voice barely above a whisper as he speaks of hidden paths. A locked door with a keyhole leads south, and the west wall shows a cracked and weakened section."
+    },
+    "L9:H8": {
+      "name": "Northeastern Sanctum",
+      "description": "Scorch marks and a lingering cold presence fill this remote corner room. Stone blocks stand in neat rows, but one sits slightly out of line, with fresh scrapes at its base. The only exit is a cracked section of the south wall."
+    },
+    "L9:cellar:A7": {
+      "name": "Silver Arrow Cellar",
+      "description": "A ladder leads up from this narrow, side-cut basement, its walls of dark brick stacked in even rows. A hush hangs over the place, broken only by the drip of water somewhere in the dark. The floor runs level from end to end, with a raised ledge at its far side."
+    },
+    "L9:cellar:H8": {
+      "name": "Red Ring Cellar",
+      "description": "A narrow basement hollowed from the mountain's rock, reached by a ladder that rises toward the chamber above. The brick walls are warm to the touch, and a faint red glow seems to linger in the dust. A raised ledge stands at the far end of the level floor."
+    }
+  },
+  "special": {
+    "wooden_sword_cave": {
+      "name": "The Old Man's Cave",
+      "description": "A low cave opens into the hillside, its walls black with the soot of two fires that never seem to burn down. The flames stand an equal distance apart, and the bare floor between them has been swept clean, as though someone has been waiting a long time for a visitor. It is dangerous out there, and this is the place that knows it."
+    },
+    "white_sword_cave": {
+      "name": "The White Sword Cave",
+      "description": "Spray from the waterfall drifts in at the mouth of this cave and beads on the rock. Two fires burn in shallow pits against the far wall, throwing a steady light across a floor scored by the boots of the few who climbed this high. The stone here is pale and clean, as if the mountain itself were holding something worth keeping."
+    },
+    "master_sword_grave": {
+      "name": "Beneath the Hero's Grave",
+      "description": "A narrow stair beneath the old headstone ends in a cold, close vault. Twin fires burn on either side of a worn stone plinth, and their light does not reach the corners. The air smells of earth and iron, and the silence has the weight of a promise made to whoever proved strong enough to come down here."
+    },
+    "letter_cave": {
+      "name": "The Hermit's Cave",
+      "description": "This cave sits high in the northeastern rocks where few travellers think to look. Two small fires warm a dry floor, and a writing desk has been made from a flat slab of stone. Whoever lives here keeps the place tidy and keeps to the old courtesies; the royal family's seal would be known here at a glance."
+    },
+    "heart_cave_bomb": {
+      "name": "A Hidden Heart Grotto",
+      "description": "Rubble from the shattered wall lies across the mouth of this little grotto. Beyond it the cave is dry and quiet, lit by two steady fires set into the floor. Something warm and red glows on a ledge between them, a gift left for anyone determined enough to blast their way in."
+    },
+    "heart_cave_mountain": {
+      "name": "A Grotto in the Mountain",
+      "description": "The blast that opened this cave left its walls raw and sharp, and dust still hangs in the firelight. The chamber beyond is small and surprisingly warm, sheltered from the wind that scours the mountain outside. A faint red pulse of light comes from the far end, steady as a heartbeat."
+    },
+    "heart_cave_burn": {
+      "name": "Beneath the Burned Bush",
+      "description": "Ash from the burned bush has drifted down the steps into this hollow under the roots. Two fires burn here already, older than the one that opened the way, and the earthen walls are hung with pale threads of root. The place feels like a secret the forest kept for itself."
+    },
+    "heart_island": {
+      "name": "The Raft Island",
+      "description": "A spit of sand and rock stands alone in open water, reachable only by raft from the dock on the shore. Waves lap at every side, and a single scrubby tree leans over a sheltered hollow in the middle. It is the kind of place a reward would be hidden: obvious from the shore and impossible to reach without the means."
+    },
+    "heart_ledge": {
+      "name": "Across the Narrow Water",
+      "description": "This rocky ledge lies just beyond a channel of water too wide to step and too narrow to bother swimming. A traveller with a stepladder can bridge it in a moment. The ledge is quiet, sheltered from the coast wind by a shoulder of rock, and littered with gull feathers and driftwood."
+    },
+    "secret_return_tree": {
+      "name": "Hollow of the Old Tree",
+      "description": "The burned bush opened onto a hollow beneath the roots of an enormous old tree. The walls are packed earth and root, and the light here is strange: it seems to come from somewhere other than Hyrule. A soft hum fills the hollow, and the air carries a faint smell of dust, coins and arcade lights."
+    },
+    "power_bracelet_alcove": {
+      "name": "Under the Armos Statue",
+      "description": "The statue that guarded this spot has been moved, and beneath it lies a shallow stone alcove cut square into the bedrock. Its walls bear faded carvings of a hand gripping a mountain. The space is just large enough to kneel in, and it was clearly made to keep one small thing safe."
+    },
+    "rupee_burn": {
+      "name": "It's a Secret to Everybody",
+      "description": "The burned bush revealed a short stair down into a cosy earthen cave. Two fires crackle in the gloom, and the floor between them is scuffed by heavy, clawed feet. Whoever lives here is generous with strangers, provided the strangers keep quiet about where they found the money."
+    },
+    "rupee_bomb": {
+      "name": "It's a Secret to Everybody",
+      "description": "Broken stone from the bombed wall lies just inside this cramped cave. Two fires burn in the dark, and their light catches a few loose glints on the floor. The place has the cheerful untidiness of someone who hides coin for a living and expects to be found now and then."
+    },
+    "rupee_armos": {
+      "name": "It's a Secret to Everybody",
+      "description": "A narrow stair hides beneath the base of the moved Armos statue. Below, a small cave is lit by two fires and furnished with nothing at all. Someone has scratched a grinning face into the wall beside the steps, and under it, very small, the words keep it quiet."
+    },
+    "rupee_open": {
+      "name": "It's a Secret to Everybody",
+      "description": "This cave sits in plain sight on the eastern shore, which may be why nobody bothers to look in it. Two fires burn on either side of the floor, warming a chamber that smells of salt and seaweed. The secret of the place is not where it is, but how much it gives away."
+    },
+    "shop": {
+      "name": "A Merchant's Cave",
+      "description": "Two fires light a dry, low-ceilinged cave where three wares are laid out in a neat row on the bare floor. A painted price is set beneath each one in rupees, and there is no haggling. The merchant has chosen this spot carefully: close enough to the road for trade, far enough from it for safety."
+    },
+    "shop_secret": {
+      "name": "A Hidden Merchant's Cave",
+      "description": "This cave was hidden behind rock or root, and the merchant who trades here prefers it that way. Two fires burn in the dim, and a short row of goods sits on a woven mat with prices set out beneath them. The prices are kinder than in the open caves, as a reward for finding the place."
+    },
+    "potion_shop": {
+      "name": "The Medicine Woman's Cave",
+      "description": "Bundles of dried herbs hang from the ceiling of this warm cave, and two fires keep the damp off a row of stoppered bottles. The air smells of bitter roots and sweet syrup. Nothing is for sale to strangers here: the old woman who keeps the shop wants proof that the royal family sent you."
+    },
+    "door_repair": {
+      "name": "The Door-Repair Charge",
+      "description": "A freshly mended door frame stands just inside this cave, its timbers too new for the old rock around it. Two fires light a floor swept clean, and a ledger lies open on a stone ledge. The owner believes firmly that whoever opened the way should pay for the damage, and keeps a careful account."
+    },
+    "gamble": {
+      "name": "A Money-Making Game",
+      "description": "Three overturned signs lie on the floor of this cave, each hiding a sum painted on its underside. Two fires throw their light across them evenly, so nothing gives away which is which. The game is honest, in its way: anybody can play, and anybody can lose."
+    },
+    "warp_hall": {
+      "name": "The Warp Stairway Hall",
+      "description": "Beneath the moved stone a short stair descends into a long, bare hall cut from the bedrock. Three dark stairways open in its far wall, each worn smooth by long use and each leading a very long way under the land. A carving over them reads, in old letters, take any road you want."
+    }
+  }
+}
