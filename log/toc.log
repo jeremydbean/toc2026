@@ -23915,3 +23915,6 @@ Fri Oct  2 17:17:21 2026 :: EOF encountered on read.
 Fri Oct  2 17:22:16 2026 :: ANNOUNCE: ADMIN: player-state backup to GitHub is not working (last successful run was 99999 minutes ago). Saves are still on disk but are not leaving this machine.
 Fri Oct  2 17:22:25 2026 :: Sock.sinaddr:  54.87.112.51
 Fri Oct  2 17:22:25 2026 :: EOF encountered on read.
+Fri Oct  2 17:27:31 2026 :: Sock.sinaddr:  5.161.113.195
+Fri Oct  2 17:27:31 2026 :: EOF encountered on read.
+Fri Oct  2 17:30:13 2026 :: Sock.sinaddr:  185.93.89.79
