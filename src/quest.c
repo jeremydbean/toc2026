@@ -1319,12 +1319,17 @@ static bool quest_area_is_excluded( const ROOM_INDEX_DATA *room )
         || !str_cmp( room->area->file_name, QUEST_EXCLUDED_YARD );
 }
 
+#define QUEST_CLOSED_ROOMS_MAX 512
+
 static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
                                                 CHAR_DATA *questman,
-                                                CHAR_DATA *victim )
+                                                CHAR_DATA *victim,
+                                                ROOM_INDEX_DATA **closed,
+                                                int closed_count )
 {
     MOB_INDEX_DATA *index;
     ROOM_INDEX_DATA *room;
+    int i;
 
     if ( victim == NULL || !IS_NPC(victim) || victim == questman
     ||   victim->pIndexData == NULL || victim->in_room == NULL )
@@ -1359,6 +1364,11 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
     ||   IS_SET(index->act, ACT_NOKILL)
     ||   IS_SET(index->act, ACT_QUESTM)
     ||   IS_SET(index->act, ACT_PET)
+    /* A pet shop's stock is flagged on the copy, not the index: the
+       reset that loads it into the storage room sets ACT_PET there.
+       Asking only the index sent players to kill an unbought pet in a
+       room nobody can walk into. */
+    ||   IS_SET(victim->act, ACT_PET)
     ||   IS_SET(index->affected_by, AFF_CHARM)
     ||   IS_SET(index->affected_by2, AFF2_GHOST)
     ||   IS_AFFECTED(victim, AFF_CHARM)
@@ -1371,6 +1381,11 @@ static bool automatic_quest_target_is_suitable( CHAR_DATA *ch,
     ||   IS_SET(room->room_flags, ROOM_DT)
     ||   IS_SET(room->room_flags, ROOM_JAIL) )
         return false;
+
+    /* Inside a guild hall whose guard would turn this character away. */
+    for ( i = 0; i < closed_count; i++ )
+        if ( closed[i] == room )
+            return false;
 
     return true;
 }
@@ -1385,15 +1400,19 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
     char area_name [MAX_INPUT_LENGTH];
     LIST_ITERATOR iter;
     int candidate_count = 0;
+    ROOM_INDEX_DATA *closed[QUEST_CLOSED_ROOMS_MAX];
+    int closed_count;
 
     /* Choose uniformly from suitable live mobiles. The same target pool is
        used for kill and recovery quests so the destination remains level-
        appropriate and accessible to the requesting player. */
 
+    closed_count = guild_closed_rooms( ch, closed, QUEST_CLOSED_ROOMS_MAX );
     victim = NULL;
     FOR_EACH_CHARACTER( iter, candidate )
     {
-	if ( !automatic_quest_target_is_suitable(ch, questman, candidate) )
+	if ( !automatic_quest_target_is_suitable(ch, questman, candidate,
+	                                         closed, closed_count) )
 	    continue;
 	if ( number_range(1, ++candidate_count) == 1 )
 	    victim = candidate;

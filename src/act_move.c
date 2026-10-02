@@ -68,7 +68,7 @@ char *  const   sector_type     []              =
 /*
  * Local functions.
  */
-int	find_door	args( ( CHAR_DATA *ch, char *arg ) );
+int	find_door	args( ( CHAR_DATA *ch, char *argument ) );
 bool	has_key		args( ( CHAR_DATA *ch, int key ) );
 void    do_search       args( ( CHAR_DATA *ch, char * argument ) );
 void    trapped         args( ( CHAR_DATA *ch, OBJ_DATA *obj, int trap ) );
@@ -1059,11 +1059,25 @@ void move_char( CHAR_DATA *ch, int door, bool skip_special_check )
     {
 	fch_next = fch->next_in_room;
 
+	/*
+	 * Running past an aggressive mobile is riskier than walking
+	 * past it, which is the point. But the mobile still has to be
+	 * one that would attack at all: aggr_update will not send a
+	 * wimpy one after anybody awake, nor a calmed, charmed or
+	 * sleeping one, nor anything in a safe room. This path skipped
+	 * all of that, so a fido or a bruiser -- both wimpy -- jumped
+	 * players who were only running through.
+	 */
 	if(runner == 1)    /* check for agro when run, Eclipse */
 	  {
 	    if( !IS_NPC(ch) && IS_NPC(fch) &&
                 !IS_AFFECTED2(ch, AFF2_GHOST) &&
-                IS_SET(fch->act,ACT_AGGRESSIVE) )
+                IS_SET(fch->act,ACT_AGGRESSIVE) &&
+                !IS_SET(fch->act, ACT_WIMPY) &&
+                !IS_SET(to_room->room_flags, ROOM_SAFE) &&
+                !IS_AFFECTED(fch, AFF_CALM) &&
+                !IS_AFFECTED(fch, AFF_CHARM) &&
+                IS_AWAKE(fch) )
 		 {
 		   if ( ch->level < LEVEL_IMMORTAL
 		   &&   fch->level >= ch->level - 7
@@ -1247,18 +1261,38 @@ void do_run( CHAR_DATA *ch, char *argument )
     else if ( !str_cmp( arg, "nw" ) || !str_cmp( arg, "northwest"  ) ) door = 7;
     else if ( !str_cmp( arg, "se" ) || !str_cmp( arg, "southeast"  ) ) door = 8;
     else if ( !str_cmp( arg, "sw" ) || !str_cmp( arg, "southwest"  ) ) door = 9;
+    else
+    {
+	/* door starts at 0, so anything unrecognised used to run north. */
+	send_to_char( "Run in which direction?\n\r", ch );
+	runner = 0;
+	return;
+    }
 
   if( arg1[0] == '\0')
 	distance = 30;
   else if( is_number(arg1) )
-	distance = atoi( arg1 );
+	/* Long enough to overflow atoi is capped, or refused if negative. */
+	distance = strlen( arg1 ) > 4 ? ( arg1[0] == '-' ? -1 : 30 )
+	                              : atoi( arg1 );
   else
     {
-	 send_to_char("Distance must be numerical.",ch);
+	 send_to_char("Distance must be a number from 1 to 30.\n\r",ch);
          runner = 0;
 	 return;
     }
 
+  /*
+   * is_number() accepts a sign, and the loop below counts down to zero,
+   * so RUN EAST -1 never reached zero: it ran until a wall stopped it,
+   * however far that was. That is the "run ignores its maximum" report.
+   */
+  if (distance < 1)
+    {
+	 send_to_char("Distance must be a number from 1 to 30.\n\r",ch);
+         runner = 0;
+	 return;
+    }
 
   if (distance > 30)
         distance = 30;
@@ -1371,7 +1405,13 @@ void do_speedwalk( CHAR_DATA *ch, char *argument )
         /* optional leading count */
         count = 0;
         while ( *p >= '0' && *p <= '9' )
-            count = count * 10 + (*p++ - '0');
+        {
+            /* Stop growing past the cap so a long digit run cannot
+               overflow into a negative count. */
+            if ( count <= 30 )
+                count = count * 10 + (*p - '0');
+            p++;
+        }
         if ( count == 0 ) count = 1;
         if ( count > 30 ) count = 30;   /* cap matches do_run's 30-step limit */
 
@@ -1417,23 +1457,47 @@ void do_speedwalk( CHAR_DATA *ch, char *argument )
 }
 
 
-int find_door( CHAR_DATA *ch, char *arg )
+static int door_direction_word( const char *arg )
 {
+	 if ( !str_cmp( arg, "n" ) || !str_cmp( arg, "north" ) ) return 0;
+    else if ( !str_cmp( arg, "e" ) || !str_cmp( arg, "east"  ) ) return 1;
+    else if ( !str_cmp( arg, "s" ) || !str_cmp( arg, "south" ) ) return 2;
+    else if ( !str_cmp( arg, "w" ) || !str_cmp( arg, "west"  ) ) return 3;
+    else if ( !str_cmp( arg, "u" ) || !str_cmp( arg, "up"    ) ) return 4;
+    else if ( !str_cmp( arg, "d" ) || !str_cmp( arg, "down"  ) ) return 5;
+    else if ( !str_cmp( arg, "ne" ) || !str_cmp( arg, "northeast"  ) ) return 6;
+    else if ( !str_cmp( arg, "nw" ) || !str_cmp( arg, "northwest"  ) ) return 7;
+    else if ( !str_cmp( arg, "se" ) || !str_cmp( arg, "southeast"  ) ) return 8;
+    else if ( !str_cmp( arg, "sw" ) || !str_cmp( arg, "southwest"  ) ) return 9;
+    return -1;
+}
+
+/*
+ * Takes the command's whole argument, not just its first word.
+ *
+ * "open door east" used to read only "door", match it against the
+ * room's exits in direction order and open the first door it found --
+ * so in a room with two doors the second could only be reached as
+ * "open east" or "open 2.door", and the direction the player named was
+ * silently ignored. A direction after the keyword now says which door.
+ */
+int find_door( CHAR_DATA *ch, char *argument )
+{
+    char arg[MAX_INPUT_LENGTH];
+    char dir_arg[MAX_INPUT_LENGTH];
     char arg2[MAX_STRING_LENGTH];
     EXIT_DATA *pexit;
     int door;
 
-	 if ( !str_cmp( arg, "n" ) || !str_cmp( arg, "north" ) ) door = 0;
-    else if ( !str_cmp( arg, "e" ) || !str_cmp( arg, "east"  ) ) door = 1;
-    else if ( !str_cmp( arg, "s" ) || !str_cmp( arg, "south" ) ) door = 2;
-    else if ( !str_cmp( arg, "w" ) || !str_cmp( arg, "west"  ) ) door = 3;
-    else if ( !str_cmp( arg, "u" ) || !str_cmp( arg, "up"    ) ) door = 4;
-    else if ( !str_cmp( arg, "d" ) || !str_cmp( arg, "down"  ) ) door = 5;
-    else if ( !str_cmp( arg, "ne" ) || !str_cmp( arg, "northeast"  ) ) door = 6;
-    else if ( !str_cmp( arg, "nw" ) || !str_cmp( arg, "northwest"  ) ) door = 7;
-    else if ( !str_cmp( arg, "se" ) || !str_cmp( arg, "southeast"  ) ) door = 8;
-    else if ( !str_cmp( arg, "sw" ) || !str_cmp( arg, "southwest"  ) ) door = 9;
-    else
+    argument = one_argument( argument, arg );
+    one_argument( argument, dir_arg );
+
+    door = door_direction_word( arg );
+    if ( door < 0 && dir_arg[0] != '\0'
+    &&   ( door = door_direction_word( dir_arg ) ) >= 0 )
+	toc_strlcpy( arg, dir_arg, sizeof(arg) );
+
+    if ( door < 0 )
     {
 	int number;
 
@@ -1571,7 +1635,7 @@ void do_open( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( door = find_door( ch, arg ) ) >= 0 )
+    if ( ( door = find_door( ch, argument ) ) >= 0 )
     {
 	/* 'open door' */
 	ROOM_INDEX_DATA *to_room;
@@ -1690,7 +1754,7 @@ void do_close( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( door = find_door( ch, arg ) ) >= 0 )
+    if ( ( door = find_door( ch, argument ) ) >= 0 )
     {
 	/* 'close door' */
 	ROOM_INDEX_DATA *to_room;
@@ -1827,7 +1891,7 @@ void do_lock( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( door = find_door( ch, arg ) ) >= 0 )
+    if ( ( door = find_door( ch, argument ) ) >= 0 )
     {
 	/* 'lock door' */
 	ROOM_INDEX_DATA *to_room;
@@ -1884,7 +1948,7 @@ void do_doorbash( CHAR_DATA *ch, char *argument )
       return;
     }
 
-    if ( ( door = find_door( ch, arg ) ) < 0 )
+    if ( ( door = find_door( ch, argument ) ) < 0 )
         return;
 
     /* Find and validate the door before committing the skill attempt. */
@@ -1985,7 +2049,7 @@ void do_unlock( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( door = find_door( ch, arg ) ) >= 0 )
+    if ( ( door = find_door( ch, argument ) ) >= 0 )
     {
 	/* 'unlock door' */
 	ROOM_INDEX_DATA *to_room;
@@ -2116,7 +2180,7 @@ void do_pick( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if ( ( door = find_door( ch, arg ) ) >= 0 )
+    if ( ( door = find_door( ch, argument ) ) >= 0 )
     {
 	/* 'pick door' */
 	ROOM_INDEX_DATA *to_room;
@@ -4069,7 +4133,7 @@ void do_search( CHAR_DATA *ch, char *argument)
 	return;
     }
 
-    if ( ( door = find_door( ch, arg ) ) >= 0 )
+    if ( ( door = find_door( ch, argument ) ) >= 0 )
     {
 	/* 'pick door' */
 	ROOM_INDEX_DATA *to_room;

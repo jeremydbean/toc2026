@@ -324,7 +324,15 @@ void do_outfit ( CHAR_DATA *ch, char *argument )
 	equip_char( ch, obj, WEAR_SHIELD );
     }
 
-    if ( ( obj = get_eq_char( ch, WEAR_WIELD ) ) == NULL )
+    /*
+     * A monk fights with bare hands: "monk basics" is hand to hand and
+     * nothing else, and unarmed damage has a monk formula of its own.
+     * Handing one the class table's dagger started every monk on a
+     * weapon they had no use for, and floored the dagger skill below
+     * instead of the one they fight with.
+     */
+    if ( ch->class != CLASS_MONK
+    &&   ( obj = get_eq_char( ch, WEAR_WIELD ) ) == NULL )
     {
 	obj = create_object( get_obj_index(class_table[ch->class].weapon), -1 * ch->level);
 	obj_to_char( obj, ch );
@@ -4449,6 +4457,18 @@ void do_mset( CHAR_DATA *ch, char *argument )
 	{
 	    send_to_char( "Sex range is 0 to 2.\n\r", ch );
 	    return;
+	}
+	/*
+	 * CHANGE SEX is an affect with a modifier. Left standing, it wore
+	 * off after this and subtracted itself from the value set here,
+	 * flipping the character again -- or past the end of the range.
+	 * Lift it first, so what is set here is what stays.
+	 */
+	{
+	    int sn_change_sex = skill_lookup( "change sex" );
+
+	    if ( sn_change_sex > 0 && is_affected( victim, sn_change_sex ) )
+		affect_strip( victim, sn_change_sex );
 	}
    victim->sex = clamp_sh_int( value );
 

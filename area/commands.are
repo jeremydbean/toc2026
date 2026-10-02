@@ -1429,25 +1429,29 @@ See also: SCORE, REPORT
 ~
 
 0 CRAWL~
-Syntax: crawl
+Syntax: crawl <thing>
 
-Adopt a low crawling posture, allowing you to pass through narrow tunnels
-or low passages that block upright movement.  While crawling, movement
-costs extra points and your combat effectiveness is reduced.  Type STAND
-or CRAWL again to return to a normal posture.
+Crawls through something in the room -- a hole, a tunnel, a gap under a
+wall -- and out the other side.  Not every hole leads anywhere; one that
+does not answers "Nothing seems to happen."  These ways through are not
+listed among a room's exits, so read the room description and LOOK at
+what it mentions.
 
-See also: JUMP, STAND, SNEAK
+Example: crawl hole
+
+See also: CLIMB, JUMP, ENTER, LOOK
 ~
 
 0 JUMP~
-Syntax: jump
+Syntax: jump <thing>
 
-Leap over a pit, low barrier, or floor-based hazard in the current room
-when the terrain supports it.  A successful jump avoids movement penalties
-or traps triggered by walking.  Some rooms require JUMP to proceed at all.
-Failing a jump in a dangerous room may result in a fall.
+Jumps up or down something in the room -- a ledge, a pit, a chasm -- to
+wherever it leads.  As with CRAWL and CLIMB, these ways through are part
+of the room's scenery rather than its exits, so read the description.
 
-See also: CRAWL, CLIMB, LEVITATE
+Example: jump pit
+
+See also: CRAWL, CLIMB, ENTER, LOOK
 ~
 
 0 DELET DELETE~
@@ -1585,16 +1589,23 @@ See also: GOSSIP, TELL, CHANNELS
 ~
 
 0 BANK~
-All banking commands require you to be inside a bank room.  Available
-operations: BALANCE, DEPOSIT, WITHDRAW, and CONVERT.
+There is no BANK command: banking is four commands, and all of them work
+only inside a bank room.  Entering one tells you that you are in a bank.
+
+  BALANCE                       shows what you have on deposit
+  DEPOSIT <amount> [coin type]  pays coins in (platinum if no type given)
+  WITHDRAW <amount> [coin type] takes coins out, if you can carry them
+  CONVERT                       changes your carried coins into the
+                                largest denominations they make
 
 Notes:
-  - The bank earns 1% interest per real day on your balance.  Interest is
-    applied automatically while you are logged in (catching up for up to
-    7 days of offline time).  Accounts below 1 platinum do not earn interest.
+  - The bank pays 0.25% interest per real day on your balance.  Interest
+    is applied automatically while you are logged in (catching up for up
+    to 7 days of offline time).  Accounts below 1 platinum do not earn
+    interest.
   - No fees are charged on deposits or withdrawals.
   - Successful deposits and withdrawals save your character immediately.
-  - Pkiller characters cannot access banking services.
+  - Where a banker stands behind the counter, pkillers are refused service.
   - Your bank balance is retained across deaths and remorts.
 
 See also: BALANCE, DEPOSIT, WITHDRAW, CONVERT, WORTH
@@ -2491,6 +2502,13 @@ type: alias <alias name>.
 
 There is a max of 20 aliases per character.
 
+An alias stands for one command, followed by whatever you type after it.
+The game does not split an alias on semicolons: an alias saved as
+"north;east" (typed as north\;east in the browser client) is sent as one
+word and answered with Huh?.  To send several commands at once, use your
+client: the browser client sends commands separated by semicolons one
+after another, and Mudlet has aliases of its own.
+
 See also: COMMANDS, HELP
 ~
 
@@ -2947,7 +2965,9 @@ Syntax: close <object|direction>
 
 OPEN opens a door or container.  CLOSE shuts it again.  Both commands
 accept either a direction (to act on that exit's door) or an object name
-(to open a container in the room or your inventory).
+(to open a container in the room or your inventory).  In a room with more
+than one door, name the door and its direction together -- OPEN DOOR EAST
+-- or just the direction.
 
 See also: LOCK, UNLOCK, PICK, DOORBASH
 ~
@@ -4180,10 +4200,13 @@ See also: TIME, TICK
 0 TITLE~
 Syntax: title <string>
 
-Sets your title to a given string.
+Sets your title to a given string.  TITLE is available from level 3;
+before that the game answers Huh?.  A title is cut at 45 characters.
 
 The game supplies a title when your character is created and when you
-advance a level.  You can use TITLE to set your title to something else.
+advance a level.  You can use TITLE to set your title to something else,
+but advancing a level puts your class's title back, so set yours again
+after you level.
 
 See also: DESCRIPTION, SCORE, WHO
 ~

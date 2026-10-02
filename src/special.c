@@ -1438,17 +1438,20 @@ bool spec_thief( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
  
  
-bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
-{
-    UNUSED_PARAM(arg);
-    struct gg_struct {
+/*
+ * Who each guild guard lets past, and where. File scope so the quest
+ * master can ask the same table which rooms a character cannot reach.
+ */
+struct gg_struct {
 	   int mob_num;         /* Mobs vnum                    */
 	   int room_num;        /* Room number where effective  */
 	   DO_FUN *cmd;         /* Command to block             */
 	   int class;           /* Class to allow               */
 	   int guild;           /* Guild to allow               */
 	   char msg[255];       /* Message to send character when cmd blocked*/
-	   } gg_table[] =
+};
+
+static const struct gg_struct gg_table[] =
 	{
 	  { 4200,       4211,   do_north,       CLASS_CLERIC,   GUILD_ANY,
 	  "The $n stands immovable before you blocking your way." },
@@ -1471,11 +1474,135 @@ bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
 	  { 4801,       4802,   do_south,       CLASS_MONK,     GUILD_MONK,
 	  "$n holds up a hand and says, 'You are not enlightened enough to enter.'"},
 	  { 0, 0, NULL, 0, 0, ""}
- 
+
 	};
- 
+
+static bool guild_guard_admits( const struct gg_struct *entry, CHAR_DATA *ch )
+{
+    return ( entry->class == CLASS_ANY || entry->class == ch->class )
+        && ( entry->guild == GUILD_ANY
+          || ( ch->pcdata != NULL && entry->guild == ch->pcdata->guild ) );
+}
+
+static int guild_guard_door( DO_FUN *cmd )
+{
+    if ( cmd == do_north ) return DIR_NORTH;
+    if ( cmd == do_east  ) return DIR_EAST;
+    if ( cmd == do_south ) return DIR_SOUTH;
+    if ( cmd == do_west  ) return DIR_WEST;
+    if ( cmd == do_up    ) return DIR_UP;
+    if ( cmd == do_down  ) return DIR_DOWN;
+    return -1;
+}
+
+/*
+ * Every room that lies behind a guild guard who would turn `ch` away,
+ * written to `out` (at most `max`); returns how many.
+ *
+ * The quest master used to send players to kill a servant or a priest
+ * inside a guild hall they could not enter, which is a quest that can
+ * only end in failure. A hall is found by walking from the room past
+ * the guard without ever stepping back through a guard post that would
+ * refuse this character.
+ * If that walk grows past GUILD_HALL_MAX_ROOMS the hall has another way
+ * in, nothing is closed off, and none of it is reported.
+ */
+#define GUILD_HALL_MAX_ROOMS 160
+
+#define GUILD_GUARD_POSTS    32
+
+int guild_closed_rooms( CHAR_DATA *ch, ROOM_INDEX_DATA **out, int max )
+{
+    ROOM_INDEX_DATA *hall[GUILD_HALL_MAX_ROOMS];
+    ROOM_INDEX_DATA *posts[GUILD_GUARD_POSTS];
+    int post_count = 0;
+    int total = 0;
     int i;
- 
+
+    if ( ch == NULL || IS_NPC(ch) || out == NULL || max <= 0 )
+        return 0;
+
+    /* Every post that would turn this character away. A hall can have
+       several doors -- the University has three -- and the walk inside
+       must not leave through any of them. */
+    for ( i = 0; gg_table[i].mob_num != 0 && post_count < GUILD_GUARD_POSTS; i++ )
+    {
+        ROOM_INDEX_DATA *post;
+
+        if ( !guild_guard_admits( &gg_table[i], ch )
+        &&   ( post = get_room_index( gg_table[i].room_num ) ) != NULL )
+            posts[post_count++] = post;
+    }
+
+    for ( i = 0; gg_table[i].mob_num != 0; i++ )
+    {
+        ROOM_INDEX_DATA *guard_room;
+        EXIT_DATA *pexit;
+        int door, count, head, j;
+        bool open_world = false;
+
+        if ( guild_guard_admits( &gg_table[i], ch ) )
+            continue;
+        if ( ( door = guild_guard_door( gg_table[i].cmd ) ) < 0
+        ||   ( guard_room = get_room_index( gg_table[i].room_num ) ) == NULL
+        ||   ( pexit = guard_room->exit[door] ) == NULL
+        ||   pexit->u1.to_room == NULL
+        ||   pexit->u1.to_room == guard_room )
+            continue;
+
+        /* Another door into a hall already walked. */
+        for ( j = 0; j < total; j++ )
+            if ( out[j] == pexit->u1.to_room )
+                break;
+        if ( j < total )
+            continue;
+
+        hall[0] = pexit->u1.to_room;
+        count = 1;
+        for ( head = 0; head < count && !open_world; head++ )
+        {
+            int d;
+
+            for ( d = 0; d <= DIR_SOUTHWEST; d++ )
+            {
+                ROOM_INDEX_DATA *next;
+                int k;
+                bool seen = false;
+
+                if ( hall[head]->exit[d] == NULL
+                ||   ( next = hall[head]->exit[d]->u1.to_room ) == NULL )
+                    continue;
+                for ( k = 0; k < post_count; k++ )
+                    if ( posts[k] == next ) { seen = true; break; }
+                if ( seen )
+                    continue;
+                for ( k = 0; k < count; k++ )
+                    if ( hall[k] == next ) { seen = true; break; }
+                if ( seen )
+                    continue;
+                if ( count >= GUILD_HALL_MAX_ROOMS )
+                {
+                    open_world = true;
+                    break;
+                }
+                hall[count++] = next;
+            }
+        }
+
+        if ( open_world )
+            continue;
+        for ( j = 0; j < count && total < max; j++ )
+            out[total++] = hall[j];
+    }
+
+    return total;
+}
+
+bool spec_guild_guard( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
+{
+    UNUSED_PARAM(arg);
+    int i;
+
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *victim;
     CHAR_DATA *v_next;
@@ -1630,12 +1757,26 @@ bool spec_guild_clerk( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  
  
  
+/*
+ * A pet is priced in gold -- add_money() takes gold -- but the list
+ * printed the bare number, and every other shop in the world prints
+ * copper as "5g 20s". A level 20 pet listed as "4000" read as forty
+ * silver and cost four thousand gold, which is how the pet shop came to
+ * be reported as the game stealing gold coins.
+ */
+static void pet_price( long gold, char *buf, size_t size )
+{
+    gold = URANGE( 0, gold, 200000L );   /* keeps the multiply in a long */
+    format_price( gold * COPPER_PER_GOLD, buf, size );
+}
+
 bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
          char *argument)
 {
     UNUSED_PARAM(mob);
     char buf[MAX_STRING_LENGTH];
- 
+    char price_buf[MAX_INPUT_LENGTH];
+
     if ( (cmd==NULL) || (ch == NULL) || (ch->in_room == NULL)
     || (!IS_SET(ch->in_room->room_flags, ROOM_PET_SHOP) ) )
 	return false;
@@ -1664,9 +1805,11 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 		    found = true;
 		    send_to_char( "Pets for sale:\n\r", ch );
 		}
-		snprintf(buf, sizeof(buf), "[%2d] %8d - %s\n\r",
+		pet_price( 10L * pet->level * pet->level,
+		           price_buf, sizeof(price_buf) );
+		snprintf(buf, sizeof(buf), "[%2d] %10s - %s\n\r",
 		    pet->level,
-		    10 * pet->level * pet->level,
+		    price_buf,
 		    pet->short_descr );
 		send_to_char( buf, ch );
 	    }
@@ -1736,7 +1879,9 @@ bool spec_pet_shop_owner( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd,
 	if (!IS_NPC(ch) && roll < ch->pcdata->learned[gsn_haggle])
 	{
 	    cost -= cost / 2 * roll / 100;
-	    snprintf(buf, sizeof(buf),"You haggle the price down to %d coins.\n\r",cost);
+	    pet_price( cost, price_buf, sizeof(price_buf) );
+	    snprintf(buf, sizeof(buf),"You haggle the price down to %s.\n\r",
+	             price_buf);
 	    send_to_char(buf,ch);
 	    check_improve(ch,gsn_haggle,true,4);
 	}
