@@ -4943,6 +4943,36 @@ void do_pkill( CHAR_DATA *ch, char *argument)
 }
 
 
+/* On remort the body drops to level 3 and can no longer wear most of
+   what it had. Rather than leave that gear sitting unwearable in the pack
+   -- or, before the save-time level limit was removed, lose it outright --
+   it is folded into a named pack and set in the character's stash, where
+   it is safe and can be reclaimed at the altar. */
+static OBJ_DATA *remort_gear_bag( CHAR_DATA *ch, int old_level )
+{
+    OBJ_INDEX_DATA *pObjIndex = get_obj_index( OBJ_VNUM_MIRROR_PACK );
+    OBJ_DATA *bag;
+    char buf[MAX_INPUT_LENGTH];
+
+    if ( pObjIndex == NULL )
+        return NULL;
+    bag = create_object( pObjIndex, 0 );
+    bag->timer = 0;   /* stash items must never tick down and be purged */
+
+    snprintf( buf, sizeof(buf), "pack gear %s level%d", ch->name, old_level );
+    free_string( bag->name );
+    bag->name = str_dup( buf );
+    snprintf( buf, sizeof(buf), "%s's level %d gear", ch->name, old_level );
+    free_string( bag->short_descr );
+    bag->short_descr = str_dup( buf );
+    snprintf( buf, sizeof(buf),
+              "%s's level %d gear has been set here.", ch->name, old_level );
+    free_string( bag->description );
+    bag->description = str_dup( buf );
+    return bag;
+}
+
+
 void do_remort( CHAR_DATA *ch, char *arg)
 {
    char arg1[MAX_INPUT_LENGTH];
@@ -4961,6 +4991,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
    int kept_meld = 0;
    int i;
    int iWear;
+   int old_level = 0;
 
    if (IS_NPC(ch))
         return;
@@ -5197,6 +5228,7 @@ void do_remort( CHAR_DATA *ch, char *arg)
          unequip_char(ch, worn[iWear]);
    }
 
+   old_level    = ch->level;   /* the life being left behind, for the bag name */
    ch->level    = 3;
    ch->pcdata->points += 2500;
    for (i=0;i<MAX_STATS;i++) ch->perm_stat[i] = 13;
@@ -5309,17 +5341,52 @@ void do_remort( CHAR_DATA *ch, char *arg)
 
    ch->position = POS_STANDING;
 
-   /* Level checks are deliberately not re-applied: the character kept the
-      gear and was wearing it a moment ago. ITEM_ACTION is the exception --
-      equip_char fires those, and one of them recalls you while another
-      kills you -- so those stay in the pack. */
+   /* Put back only what a level-3 body can still wear. ITEM_ACTION is
+      skipped as ever -- equip_char fires those, and one recalls you while
+      another kills you. Gear now too high to wear is not re-equipped; the
+      sweep below folds it, and anything else too high in the pack, into a
+      bag in the stash so none of it is lost or left uselessly worn. */
    for (iWear = 0; iWear < MAX_WEAR; iWear++)
    {
       if (worn[iWear] == NULL || worn[iWear]->item_type == ITEM_ACTION)
          continue;
+      if (worn[iWear]->level > ch->level)
+         continue;   /* too high now -- left in the pack, swept below */
       if (get_eq_char(ch, iWear) != NULL)
          continue;
       equip_char(ch, worn[iWear], iWear);
+   }
+
+   /* Everything the new level cannot wear goes into a named pack in the
+      stash -- worn gear just taken off, and anything already carried that
+      is over level. Wearable items and anything level 3 or under stay in
+      hand. */
+   {
+      OBJ_DATA *bag = NULL;
+      OBJ_DATA *obj;
+      OBJ_DATA *obj_next;
+
+      for (obj = ch->carrying; obj != NULL; obj = obj_next)
+      {
+         obj_next = obj->next_content;
+         if (obj->wear_loc != WEAR_NONE)   /* still worn: keep it on */
+            continue;
+         if (obj->level <= ch->level)
+            continue;
+         if (bag == NULL)
+            bag = remort_gear_bag(ch, old_level);
+         if (bag == NULL)
+            break;   /* could not make the bag; leave the gear carried */
+         obj_from_char(obj);
+         obj_to_obj(obj, bag);
+      }
+
+      if (bag != NULL)
+      {
+         stash_receive(ch, bag);
+         act("The gear you have outgrown is folded into $p, set safely in "
+             "your stash.", ch, bag, NULL, TO_CHAR);
+      }
    }
    /*
    ch->pcdata->bank = 0;

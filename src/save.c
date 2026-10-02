@@ -962,10 +962,18 @@ void fwrite_obj( CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest )
 	return;
 
     /*
-     * Castrate storage characters.
+     * Keys are transient and an unidentified map carries nothing worth
+     * keeping -- both are stock Diku save exclusions.
+     *
+     * The old "castrate storage characters" clause lived here too: it
+     * dropped any item more than two levels above its owner, to stop
+     * high-level players stashing gear on low-level mules. It is gone.
+     * It destroyed remorters' kit -- a level-3 body is far more than two
+     * levels under its own armour -- and it punished the stash, which is
+     * deliberate storage, not a twink trick. The owner does not want the
+     * limit; losing a character's gear is the worse outcome by far.
      */
-    if ( (ch->level < obj->level - 2 && obj->item_type != ITEM_CONTAINER)
-    ||   obj->item_type == ITEM_KEY
+    if ( obj->item_type == ITEM_KEY
     ||   (obj->item_type == ITEM_MAP && !obj->value[0]))
 	return;
 
