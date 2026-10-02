@@ -22770,3 +22770,124 @@ Fri Oct  2 01:22:07 2026 :: Log Alaric [0]: moved to 2388 (The guarded hall)
 Fri Oct  2 01:22:07 2026 :: Log Alaric [2388]: n
 Fri Oct  2 01:22:07 2026 :: Log Alaric [0]: moved to 2387 (The Guard Post)
 Fri Oct  2 01:22:10 2026 :: Log Alaric [2387]: kill ring
+Fri Oct  2 01:22:37 2026 :: Sock.sinaddr:  5.161.61.238
+Fri Oct  2 01:22:37 2026 :: EOF encountered on read.
+Fri Oct  2 01:22:38 2026 :: Log Alaric [2387]: gos Least those items still pass the check to wear. That's what really mattered
+Fri Oct  2 01:22:42 2026 :: Log Alaric [2387]: k
+Fri Oct  2 01:22:53 2026 :: Log Alaric [2387]: k
+Fri Oct  2 01:22:58 2026 :: Log Alaric [2387]: l i cor
+Fri Oct  2 01:23:01 2026 :: Log Alaric [2387]: get ring cor
+Fri Oct  2 01:23:01 2026 :: Log Alaric [2387]: s
+Fri Oct  2 01:23:01 2026 :: Log Alaric [0]: moved to 2388 (The guarded hall)
+Fri Oct  2 01:23:04 2026 :: Log Alaric [2388]: unl east
+Fri Oct  2 01:23:06 2026 :: Log Alaric [2388]: e
+Fri Oct  2 01:23:08 2026 :: Log Alaric [2388]: n
+Fri Oct  2 01:23:08 2026 :: Log Alaric [0]: moved to 2387 (The Guard Post)
+Fri Oct  2 01:23:10 2026 :: Log Alaric [2387]: l i cor
+Fri Oct  2 01:23:11 2026 :: Log Alaric [2387]: s
+Fri Oct  2 01:23:11 2026 :: Log Alaric [0]: moved to 2388 (The guarded hall)
+Fri Oct  2 01:23:12 2026 :: Log Alaric [2388]: s
+Fri Oct  2 01:23:12 2026 :: Log Alaric [0]: moved to 2389 (The guarded hall)
+Fri Oct  2 01:23:12 2026 :: Log Alaric [2389]: s
+Fri Oct  2 01:23:12 2026 :: Log Alaric [0]: moved to 2392 (The guarded hall)
+Fri Oct  2 01:23:13 2026 :: Log Alaric [2392]: s
+Fri Oct  2 01:23:13 2026 :: Log Alaric [0]: moved to 2397 (The end of the guarded hall)
+Fri Oct  2 01:23:16 2026 :: Log Alaric [2397]: unl west
+Fri Oct  2 01:23:19 2026 :: Log Alaric [2397]: unl east
+Fri Oct  2 01:23:20 2026 :: Log Alaric [2397]: n
+Fri Oct  2 01:23:20 2026 :: Log Alaric [0]: moved to 2392 (The guarded hall)
+Fri Oct  2 01:23:21 2026 :: Log Alaric [2392]: unl west
+Fri Oct  2 01:23:23 2026 :: Log Alaric [2392]: unl east
+Fri Oct  2 01:23:24 2026 :: Log Alaric [2392]: n
+Fri Oct  2 01:23:24 2026 :: Log Alaric [0]: moved to 2389 (The guarded hall)
+Fri Oct  2 01:23:27 2026 :: Log Alaric [2389]: unl east
+Fri Oct  2 01:23:28 2026 :: Log Alaric [2389]: unl east
+Fri Oct  2 01:23:29 2026 :: Log Alaric [2389]: n
+Fri Oct  2 01:23:29 2026 :: Log Alaric [0]: moved to 2388 (The guarded hall)
+Fri Oct  2 01:23:31 2026 :: Log Alaric [2388]: unl west
+Fri Oct  2 01:23:32 2026 :: Log Alaric [2388]: unl eat
+Fri Oct  2 01:23:35 2026 :: Log Alaric [2388]: unl east
+Fri Oct  2 01:23:36 2026 :: Log Alaric [2388]: n
+Fri Oct  2 01:23:36 2026 :: Log Alaric [0]: moved to 2387 (The Guard Post)
+Fri Oct  2 01:23:37 2026 :: Log Alaric [2387]: n
+Fri Oct  2 01:23:37 2026 :: Log Alaric [0]: moved to 2382 (The Great Hall)
+Fri Oct  2 01:23:40 2026 :: Log Alaric [2382]: kill gu
+Fri Oct  2 01:23:55 2026 :: Log Alaric [2382]: l i cor
+Fri Oct  2 01:23:59 2026 :: Log Alaric [2382]: e
+Fri Oct  2 01:23:59 2026 :: Log Alaric [0]: moved to 2384 (The Great Hall)
+Fri Oct  2 01:24:00 2026 :: Log Alaric [2384]: n
+Fri Oct  2 01:24:00 2026 :: Log Alaric [0]: moved to 2383 (Standing before the throne)
+Fri Oct  2 01:24:06 2026 :: Log Alaric [2383]: open east
+Fri Oct  2 01:24:07 2026 :: Log Alaric [2383]: e
+Fri Oct  2 01:24:07 2026 :: Log Alaric [0]: moved to 2385 (The secret hallway)
+Fri Oct  2 01:24:09 2026 :: Log Alaric [2385]: kill eil
+Fri Oct  2 01:24:11 2026 :: Log Alaric [2385]: kill min
+Fri Oct  2 01:24:34 2026 :: Log Alaric [2385]: l i cor
+Fri Oct  2 01:24:38 2026 :: Log Alaric [2385]: get key ycor
+Fri Oct  2 01:24:41 2026 :: Log Alaric [2385]: get ke cor
+Fri Oct  2 01:24:53 2026 :: Log Alaric [2385]: l i cor
+Fri Oct  2 01:24:56 2026 :: Log Alaric [2385]: l
+Fri Oct  2 01:24:59 2026 :: Log Alaric [2385]: open east
+Fri Oct  2 01:25:01 2026 :: Log Alaric [2385]: unl east
+Fri Oct  2 01:25:02 2026 :: Log Alaric [2385]: open east
+Fri Oct  2 01:25:03 2026 :: Log Alaric [2385]: e
+Fri Oct  2 01:25:03 2026 :: Log Alaric [0]: moved to 2386 (Entry to the Royal Chambers)
+Fri Oct  2 01:25:05 2026 :: Log Alaric [2386]: s
+Fri Oct  2 01:25:05 2026 :: Log Alaric [0]: moved to 2393 (The Harem Room)
+Fri Oct  2 01:25:06 2026 :: Log Alaric [2393]: e
+Fri Oct  2 01:25:06 2026 :: Log Alaric [0]: moved to 2396 (The Master Bedroom)
+Fri Oct  2 01:25:07 2026 :: Log Alaric [2396]: n
+Fri Oct  2 01:25:07 2026 :: Log Alaric [0]: moved to 2395 (The main living room)
+Fri Oct  2 01:25:10 2026 :: Log Alaric [2395]: kill bu
+Fri Oct  2 01:25:17 2026 :: Log Alaric [2395]: l i cor
+Fri Oct  2 01:25:19 2026 :: Log Alaric [2395]: w
+Fri Oct  2 01:25:19 2026 :: Log Alaric [0]: moved to 2386 (Entry to the Royal Chambers)
+Fri Oct  2 01:25:19 2026 :: Log Alaric [2386]: w
+Fri Oct  2 01:25:19 2026 :: Log Alaric [0]: moved to 2385 (The secret hallway)
+Fri Oct  2 01:25:20 2026 :: Log Alaric [2385]: w
+Fri Oct  2 01:25:20 2026 :: Log Alaric [0]: moved to 2383 (Standing before the throne)
+Fri Oct  2 01:25:20 2026 :: Log Alaric [2383]: w
+Fri Oct  2 01:25:20 2026 :: Log Alaric [0]: moved to 2381 (The Grand Hall)
+Fri Oct  2 01:25:21 2026 :: Log Alaric [2381]: s
+Fri Oct  2 01:25:21 2026 :: Log Alaric [0]: moved to 2382 (The Great Hall)
+Fri Oct  2 01:25:21 2026 :: Log Alaric [2382]: s
+Fri Oct  2 01:25:21 2026 :: Log Alaric [0]: moved to 2387 (The Guard Post)
+Fri Oct  2 01:25:22 2026 :: Log Alaric [2387]: s
+Fri Oct  2 01:25:22 2026 :: Log Alaric [0]: moved to 2388 (The guarded hall)
+Fri Oct  2 01:25:23 2026 :: Log Alaric [2388]: unl east
+Fri Oct  2 01:25:25 2026 :: Log Alaric [2388]: n
+Fri Oct  2 01:25:25 2026 :: Log Alaric [0]: moved to 2387 (The Guard Post)
+Fri Oct  2 01:25:25 2026 :: Log Alaric [2387]: n
+Fri Oct  2 01:25:25 2026 :: Log Alaric [0]: moved to 2382 (The Great Hall)
+Fri Oct  2 01:25:25 2026 :: Log Alaric [2382]: n
+Fri Oct  2 01:25:25 2026 :: Log Alaric [0]: moved to 2381 (The Grand Hall)
+Fri Oct  2 01:25:26 2026 :: Log Alaric [2381]: w
+Fri Oct  2 01:25:26 2026 :: Log Alaric [0]: moved to 2380 (The Hall)
+Fri Oct  2 01:25:28 2026 :: Log Alaric [2380]: kill high
+Fri Oct  2 01:25:40 2026 :: Log Alaric [2380]: l i cor
+Fri Oct  2 01:25:43 2026 :: Log Alaric [2380]: w
+Fri Oct  2 01:25:43 2026 :: Log Alaric [0]: moved to 2379 (The entryway to the Keep of Mahn-Tor)
+Fri Oct  2 01:25:46 2026 :: Log Alaric [2379]: kill hig
+Fri Oct  2 01:26:04 2026 :: Log Alaric [2379]: l i cor
+Fri Oct  2 01:26:06 2026 :: Log Alaric [2379]: l
+Fri Oct  2 01:26:09 2026 :: Log Alaric [2379]: open west
+Fri Oct  2 01:26:11 2026 :: Log Alaric [2379]: unl west
+Fri Oct  2 01:26:13 2026 :: Log Alaric [2379]: w
+Fri Oct  2 01:26:13 2026 :: Log Alaric [0]: moved to 2377 (Before the Keep of Mahn-Tor)
+Fri Oct  2 01:26:15 2026 :: Log Alaric [2377]: e
+Fri Oct  2 01:26:15 2026 :: Log Alaric [0]: moved to 2379 (The entryway to the Keep of Mahn-Tor)
+Fri Oct  2 01:26:16 2026 :: Log Alaric [2379]: af
+Fri Oct  2 01:26:21 2026 :: Log Alaric [2379]: e
+Fri Oct  2 01:26:21 2026 :: Log Alaric [0]: moved to 2380 (The Hall)
+Fri Oct  2 01:26:22 2026 :: Log Alaric [2380]: e
+Fri Oct  2 01:26:22 2026 :: Log Alaric [0]: moved to 2381 (The Grand Hall)
+Fri Oct  2 01:26:22 2026 :: Log Alaric [2381]: s
+Fri Oct  2 01:26:22 2026 :: Log Alaric [0]: moved to 2382 (The Great Hall)
+Fri Oct  2 01:26:23 2026 :: Log Alaric [2382]: s
+Fri Oct  2 01:26:23 2026 :: Log Alaric [0]: moved to 2387 (The Guard Post)
+Fri Oct  2 01:26:23 2026 :: Log Alaric [2387]: s
+Fri Oct  2 01:26:23 2026 :: Log Alaric [0]: moved to 2388 (The guarded hall)
+Fri Oct  2 01:26:23 2026 :: Log Alaric [2388]: e
+Fri Oct  2 01:26:23 2026 :: Log Alaric [0]: moved to 2390 (Sumaron's Sanctum)
+Fri Oct  2 01:26:26 2026 :: Log Alaric [2390]: look su
+Fri Oct  2 01:26:32 2026 :: Log Alaric [2390]: kill sum
