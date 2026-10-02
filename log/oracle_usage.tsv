@@ -25,3 +25,6 @@
 1790974439	Evalcheck	claude-haiku-4-5	1899	35	0	0	0.002074	what is the most powerful weapon in the game?	I cannot see what weapons exist across all of Times of Chaos from here -- use `compare` to test specific gear against your current loadout and focus.	0
 1790974440	Evalcheck	claude-haiku-4-5	2875	42	0	0	0.003085	will the questmaster ever send me into hyrule?	No, the questmaster never sends you into Hyrule -- it is too large and too new to be fair as a quest target, and its dungeons do not let you recall.	0
 1790974441	Evalcheck	claude-haiku-4-5	1855	15	0	0	0.001930	how do I stop getting hungry?	After your first remort, hunger never affects you again.	0
+1790974677	Recheck	cache	0	0	0	0	0.000000	is there anywhere to gamble?	Yes, gamble in one of Hyrule's five gambling caves with `gamble` (costs 10 rupees per play), or use `slots`, `bet`, `roulette`, or `poker` where those NPCs are present.	1
+1790974677	Recheck	cache	0	0	0	0	0.000000	how much does it cost to make my stash bigger?	`stash buy` at the altar adds twenty-five slots each time, with the price climbing per expansion up to five hundred total.	1
+1790974677	Recheck	cache	0	0	0	0	0.000000	what is the most powerful weapon in the game?	I cannot see what weapons exist across all of Times of Chaos from here -- use `compare` to test specific gear against your current loadout and focus.	1
