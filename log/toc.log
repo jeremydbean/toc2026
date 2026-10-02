@@ -21870,3 +21870,135 @@ Fri Oct  2 00:31:35 2026 :: Log Alaric [29215]: k
 Fri Oct  2 00:31:38 2026 :: Log Alaric [29215]: k
 Fri Oct  2 00:31:49 2026 :: Sock.sinaddr:  3.20.63.178
 Fri Oct  2 00:31:49 2026 :: EOF encountered on read.
+Fri Oct  2 00:32:11 2026 :: Log Alaric [29215]: k
+Fri Oct  2 00:32:32 2026 :: Log Alaric [29215]: l i cor
+Fri Oct  2 00:32:32 2026 :: Log Alaric [29215]: eq
+Fri Oct  2 00:32:37 2026 :: Log Alaric [29215]: l
+Fri Oct  2 00:32:39 2026 :: Log Alaric [29215]: n
+Fri Oct  2 00:32:39 2026 :: Log Alaric [0]: moved to 29214 (Twist in the Maze)
+Fri Oct  2 00:32:40 2026 :: Log Alaric [29214]: scan
+Fri Oct  2 00:32:41 2026 :: Log Alaric [29214]: e
+Fri Oct  2 00:32:41 2026 :: Log Alaric [0]: moved to 29212 (Twist in the Maze)
+Fri Oct  2 00:32:42 2026 :: Log Alaric [29212]: scan
+Fri Oct  2 00:32:44 2026 :: Log Alaric [29212]: n
+Fri Oct  2 00:32:44 2026 :: Log Alaric [0]: moved to 29218 (Twist in the Maze)
+Fri Oct  2 00:32:46 2026 :: Log Alaric [29218]: kill vamp
+Fri Oct  2 00:32:51 2026 :: Log Alaric [29218]: look vamp
+Fri Oct  2 00:32:51 2026 :: Log Alaric [29218]: k
+Fri Oct  2 00:33:03 2026 :: Log Alaric [29218]: get exc
+Fri Oct  2 00:33:03 2026 :: Log Alaric [29218]: wear exc
+Fri Oct  2 00:33:05 2026 :: Log Alaric [29218]: k
+Fri Oct  2 00:33:20 2026 :: Log Alaric [29218]: l i cor
+Fri Oct  2 00:33:24 2026 :: Log Alaric [29218]: get neck cor
+Fri Oct  2 00:33:26 2026 :: Log Alaric [29218]: comp nec
+Fri Oct  2 00:33:29 2026 :: Log Alaric [29218]: drop nec
+Fri Oct  2 00:33:30 2026 :: Log Alaric [29218]: sac nec
+Fri Oct  2 00:33:31 2026 :: Log Alaric [29218]: recal
+Fri Oct  2 00:33:31 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Fri Oct  2 00:33:33 2026 :: Log Alaric [2497]: en do
+Fri Oct  2 00:33:33 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Fri Oct  2 00:33:35 2026 :: Log Alaric [2401]: jump rock
+Fri Oct  2 00:33:35 2026 :: Log Alaric [0]: moved to 1607 (House of Pancakes)
+Fri Oct  2 00:33:36 2026 :: Log Alaric [0]: moved to 4208 (Altar of the Temple of Devota.)
+Fri Oct  2 00:33:37 2026 :: Log Alaric [4208]: heal ref
+Fri Oct  2 00:33:41 2026 :: Log Alaric [4208]: heal ref
+Fri Oct  2 00:33:44 2026 :: Log Alaric [4208]: heal ref
+Fri Oct  2 00:33:48 2026 :: Log Alaric [4208]: look
+Fri Oct  2 00:33:50 2026 :: Log Alaric [4208]: wo
+Fri Oct  2 00:34:17 2026 :: Log Alaric [4208]: gos Next loops, i'm going to try and farm up better gears
+Fri Oct  2 00:34:18 2026 :: Log Alaric [4208]: wake
+Fri Oct  2 00:34:19 2026 :: Log Alaric [4208]: l
+Fri Oct  2 00:34:20 2026 :: Log Alaric [4208]: e
+Fri Oct  2 00:34:20 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Fri Oct  2 00:34:21 2026 :: Log Alaric [4207]: e
+Fri Oct  2 00:34:21 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Fri Oct  2 00:34:21 2026 :: Log Alaric [4202]: e
+Fri Oct  2 00:34:21 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Fri Oct  2 00:34:22 2026 :: Log Alaric [4201]: e
+Fri Oct  2 00:34:22 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Fri Oct  2 00:34:22 2026 :: Log Alaric [2427]: n
+Fri Oct  2 00:34:22 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Fri Oct  2 00:34:23 2026 :: Log Alaric [2404]: n
+Fri Oct  2 00:34:23 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Fri Oct  2 00:34:54 2026 :: Log Alaric [2401]: help walk
+Fri Oct  2 00:35:14 2026 :: Log Alaric [2401]: help area
+Fri Oct  2 00:35:16 2026 :: Log Alaric [2401]: areas
+Fri Oct  2 00:36:22 2026 :: Log Alaric [2401]: (refused) waLK The Lonely Mountain
+Fri Oct  2 00:36:41 2026 :: Log Alaric [2401]: west
+Fri Oct  2 00:36:41 2026 :: Log Alaric [0]: moved to 2405 (Western Oak Tree Square.)
+Fri Oct  2 00:36:41 2026 :: Log Alaric [2405]: west
+Fri Oct  2 00:36:41 2026 :: Log Alaric [0]: moved to 2433 (Temple Boulevard.)
+Fri Oct  2 00:36:41 2026 :: Log Alaric [2433]: west
+Fri Oct  2 00:36:41 2026 :: Log Alaric [0]: moved to 2434 (Temple Boulevard.)
+Fri Oct  2 00:36:41 2026 :: Log Alaric [2434]: west
+Fri Oct  2 00:36:41 2026 :: Log Alaric [0]: moved to 2435 (Temple Boulevard.)
+Fri Oct  2 00:36:42 2026 :: Log Alaric [2435]: west
+Fri Oct  2 00:36:42 2026 :: Log Alaric [0]: moved to 2436 (Temple Boulevard.)
+Fri Oct  2 00:36:42 2026 :: Log Alaric [2436]: west
+Fri Oct  2 00:36:42 2026 :: Log Alaric [0]: moved to 2437 (Temple Boulevard.)
+Fri Oct  2 00:36:42 2026 :: Log Alaric [2437]: west
+Fri Oct  2 00:36:42 2026 :: Log Alaric [0]: moved to 2438 (Inside the Western Gates of Dresden.)
+Fri Oct  2 00:36:42 2026 :: Log Alaric [2438]: open west
+Fri Oct  2 00:36:43 2026 :: Log Alaric [2438]: west
+Fri Oct  2 00:36:43 2026 :: Log Alaric [0]: moved to 2439 (Outside the Western Gates of Dresden.)
+Fri Oct  2 00:36:48 2026 :: Log Alaric [2439]: west
+Fri Oct  2 00:36:48 2026 :: Log Alaric [0]: moved to 6000 (The edge of the forest)
+Fri Oct  2 00:36:48 2026 :: Log Alaric [6000]: west
+Fri Oct  2 00:36:48 2026 :: Log Alaric [0]: moved to 6001 (A trail through the light forest)
+Fri Oct  2 00:36:49 2026 :: Log Alaric [6001]: west
+Fri Oct  2 00:36:49 2026 :: Log Alaric [0]: moved to 6002 (A trail through the light forest)
+Fri Oct  2 00:36:49 2026 :: Log Alaric [6002]: west
+Fri Oct  2 00:36:49 2026 :: Log Alaric [0]: moved to 6003 (A trail through the dense forest)
+Fri Oct  2 00:36:49 2026 :: Log Alaric [6003]: west
+Fri Oct  2 00:36:49 2026 :: Log Alaric [0]: moved to 6004 (A trail through the dense forest)
+Fri Oct  2 00:36:49 2026 :: Log Alaric [6004]: west
+Fri Oct  2 00:36:49 2026 :: Log Alaric [0]: moved to 6100 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:50 2026 :: Log Alaric [6100]: west
+Fri Oct  2 00:36:50 2026 :: Log Alaric [0]: moved to 6101 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:50 2026 :: Log Alaric [6101]: west
+Fri Oct  2 00:36:50 2026 :: Log Alaric [0]: moved to 6102 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:50 2026 :: Log Alaric [6102]: west
+Fri Oct  2 00:36:50 2026 :: Log Alaric [0]: moved to 6103 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:50 2026 :: Log Alaric [6103]: south
+Fri Oct  2 00:36:50 2026 :: Log Alaric [0]: moved to 6108 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:51 2026 :: Log Alaric [6108]: west
+Fri Oct  2 00:36:51 2026 :: Log Alaric [0]: moved to 6109 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:51 2026 :: Log Alaric [6109]: west
+Fri Oct  2 00:36:51 2026 :: Log Alaric [0]: moved to 6110 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:51 2026 :: Log Alaric [6110]: south
+Fri Oct  2 00:36:51 2026 :: Log Alaric [0]: moved to 6111 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:51 2026 :: Log Alaric [6111]: south
+Fri Oct  2 00:36:51 2026 :: Log Alaric [0]: moved to 6112 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:52 2026 :: Log Alaric [6112]: west
+Fri Oct  2 00:36:52 2026 :: Log Alaric [0]: moved to 6127 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:52 2026 :: Log Alaric [6127]: south
+Fri Oct  2 00:36:52 2026 :: Log Alaric [0]: moved to 6126 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:52 2026 :: Log Alaric [6126]: west
+Fri Oct  2 00:36:52 2026 :: Log Alaric [0]: moved to 6128 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:52 2026 :: Log Alaric [6128]: west
+Fri Oct  2 00:36:52 2026 :: Log Alaric [0]: moved to 6129 (A narrow trail through the deep, dark forest)
+Fri Oct  2 00:36:53 2026 :: Log Alaric [6129]: west
+Fri Oct  2 00:36:53 2026 :: Log Alaric [0]: moved to 6135 (A dusty trail in the deep, dark forest)
+Fri Oct  2 00:36:53 2026 :: Log Alaric [6135]: north
+Fri Oct  2 00:36:53 2026 :: Log Alaric [0]: moved to 6136 (A dusty trail in the deep, dark forest)
+Fri Oct  2 00:36:53 2026 :: Log Alaric [6136]: west
+Fri Oct  2 00:36:53 2026 :: Log Alaric [0]: moved to 6137 (At the end of the trail through the deep, dark forest)
+Fri Oct  2 00:36:53 2026 :: Log Alaric [6137]: north
+Fri Oct  2 00:36:53 2026 :: Log Alaric [0]: moved to 30 (Forest Clearing)
+Fri Oct  2 00:36:54 2026 :: Log Alaric [30]: northwest
+Fri Oct  2 00:36:54 2026 :: Log Alaric [0]: moved to 31 (A Twisting Path)
+Fri Oct  2 00:36:54 2026 :: Log Alaric [31]: west
+Fri Oct  2 00:36:54 2026 :: Log Alaric [0]: moved to 32 (An unused path)
+Fri Oct  2 00:36:54 2026 :: Log Alaric [32]: west
+Fri Oct  2 00:36:54 2026 :: Log Alaric [0]: moved to 33 (Sharp turn)
+Fri Oct  2 00:36:54 2026 :: Sock.sinaddr:  5.161.177.47
+Fri Oct  2 00:36:54 2026 :: Log Alaric [33]: northwest
+Fri Oct  2 00:36:54 2026 :: Log Alaric [0]: moved to 34 (The Wind Gap)
+Fri Oct  2 00:36:55 2026 :: EOF encountered on read.
+Fri Oct  2 00:36:55 2026 :: Log Alaric [34]: north
+Fri Oct  2 00:36:55 2026 :: Log Alaric [0]: moved to 25001 (A small mountain crevice)
+Fri Oct  2 00:36:56 2026 :: Log Alaric [25001]: get true new
+Fri Oct  2 00:36:57 2026 :: Log Alaric [25001]: ex
+Fri Oct  2 00:37:00 2026 :: Log Alaric [25001]: scan
+Fri Oct  2 00:37:02 2026 :: Log Alaric [25001]: af
+Fri Oct  2 00:37:06 2026 :: Log Alaric [25001]: l
