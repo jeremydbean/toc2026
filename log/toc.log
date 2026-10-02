@@ -25239,3 +25239,14 @@ Fri Oct  2 23:23:48 2026 :: Sock.sinaddr:  5.161.61.238
 Fri Oct  2 23:23:48 2026 :: EOF encountered on read.
 Fri Oct  2 23:28:52 2026 :: Sock.sinaddr:  52.15.147.27
 Fri Oct  2 23:28:52 2026 :: EOF encountered on read.
+Fri Oct  2 23:33:57 2026 :: Sock.sinaddr:  52.15.147.27
+Fri Oct  2 23:33:57 2026 :: EOF encountered on read.
+Fri Oct  2 23:35:08 2026 :: Sock.sinaddr:  208.126.22.104
+Fri Oct  2 23:35:12 2026 :: Loading Alaric's playerfile
+Fri Oct  2 23:35:12 2026 :: Alaric@208.126.22.104 has connected.
+Fri Oct  2 23:35:19 2026 :: Log Alaric [2437]: moved to 2437 (Temple Boulevard.)
+Fri Oct  2 23:35:22 2026 :: Log Alaric [2437]: who
+Fri Oct  2 23:35:26 2026 :: Log Alaric [2437]: pray
+Fri Oct  2 23:35:26 2026 :: Log Alaric [0]: moved to 8 (The Oracle's Sanctum)
+Fri Oct  2 23:35:26 2026 :: Oracle: Alaric prayed from room 2437 (Temple Boulevard.) and entered her sanctum.
+Fri Oct  2 23:35:29 2026 :: Oracle answered Alaric in room 8: I don't understand that command; try `help` or `commands` to see what is available.
