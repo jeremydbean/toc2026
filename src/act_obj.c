@@ -5846,15 +5846,12 @@ void do_repair( CHAR_DATA *ch, char *argument )
     }
 
     obj->number_repair++;
-    if(obj->number_repair >= 25) {
-        act( "$N starts repairing your $p and breaks it!",
-		ch, obj, rpr, TO_CHAR );
-        act( "$N starts repairing $n's $p and breaks it!",
-		ch, obj, rpr, TO_ROOM );
-        /* obj_from_char unequips first, so this is safe on a worn piece. */
-	extract_obj(obj);
-	do_say(rpr,"Heh, old thing broke apart, guess you don't have to pay.");
-} else {
+    /* Repairs never destroy a piece and never leave it short of new.  An
+       item can be battered to where it must be repaired before it can be
+       worn again, but it is always repairable all the way back -- the
+       owner's rule.  The old "breaks it on the 25th repair" path, which
+       extracted the object outright, is gone. */
+    {
 	add_money(ch,cost*-1);
         obj->condition = 100;
 

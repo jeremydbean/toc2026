@@ -6597,6 +6597,16 @@ void damage_eq(CHAR_DATA *victim, int dam)
             }
             else
             {
+                /* A dent, not a break.  The blow lowered the item's
+                   condition a point or two (above), which show_obj_condition
+                   already reports -- "great", "good", "average" and so on --
+                   and the piece is still worn and still works.  It must NOT
+                   be flagged ITEM_DAMAGED: that flag means broken, it paints
+                   a "(Damaged)" tag on the item and makes do_use refuse it,
+                   and setting it on every scratch left perfectly good gear
+                   (a pirate ring, Excalibur) reading as damaged at 99/100.
+                   Only the shatter branch above, where condition hits zero
+                   and the piece falls into the pack, flags it now. */
                 snprintf(buf, sizeof(buf),"The blow damages your %s!\n\r",
                     obj->short_descr);
                 send_to_char(buf,victim);
@@ -6606,7 +6616,6 @@ void damage_eq(CHAR_DATA *victim, int dam)
                     damage_eq(victim,dam);
                     depth--;
                 }
-                SET_BIT(obj->extra_flags, ITEM_DAMAGED);
                 return;
             }
         }
