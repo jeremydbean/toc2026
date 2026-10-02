@@ -35,6 +35,11 @@
  * (30215 -> 15 for the like like). The three vnums above are those old
  * records: they no longer exist as mobiles, and name the kind instead.
  */
+#define HYRULE_FAIRY_VNUM       30216
+#define HYRULE_OLD_MAN_VNUM     30228
+#define HYRULE_ZELDA_VNUM       30338
+#define HYRULE_REPAIR_MAN_VNUM  30344
+#define HYRULE_GAMBLER_VNUM     30345
 #define HYRULE_TIER_FIRST       31000
 #define HYRULE_TIER_LAST        32459
 #define HYRULE_KIND_BASE        30200
@@ -234,6 +239,27 @@ static bool is_hyrule_ganon( CHAR_DATA *victim )
 {
     return victim != NULL && IS_NPC(victim) && victim->pIndexData != NULL
         && victim->pIndexData->vnum == HYRULE_GANON_VNUM;
+}
+
+/*
+ * Hyrule's people who are not enemies: the old men with their hints, the
+ * door-repair man and the gambler, Princess Zelda and the fountain fairies.
+ * They are level 50 or more so nothing in their band can hurt them, which
+ * also made them the best experience in Hyrule for anyone who could. The
+ * merchants are shopkeepers and protected already.
+ */
+static bool is_hyrule_bystander( CHAR_DATA *victim )
+{
+    int vnum;
+
+    if ( victim == NULL || !IS_NPC(victim) || victim->pIndexData == NULL )
+        return false;
+    vnum = victim->pIndexData->vnum;
+    return vnum == HYRULE_OLD_MAN_VNUM
+        || vnum == HYRULE_REPAIR_MAN_VNUM
+        || vnum == HYRULE_GAMBLER_VNUM
+        || vnum == HYRULE_ZELDA_VNUM
+        || vnum == HYRULE_FAIRY_VNUM;
 }
 
 static bool is_silver_arrow_weapon( OBJ_DATA *weapon )
@@ -1993,6 +2019,12 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )
 	return true;
     }
 
+    if ( is_hyrule_bystander(victim) )
+    {
+	act("$N is no enemy of yours.",ch,NULL,victim,TO_CHAR);
+	return true;
+    }
+
     /* The Oracle is beyond violence. */
     if ( is_oracle_mob(victim) )
     {
@@ -2109,7 +2141,7 @@ bool is_safe_spell(CHAR_DATA *ch, CHAR_DATA *victim, bool area )
 	return true;
 
     /* The Oracle is beyond spells too. */
-    if ( is_oracle_mob(victim) )
+    if ( is_oracle_mob(victim) || is_hyrule_bystander(victim) )
 	return true;
 
     /* no fighting in safe rooms

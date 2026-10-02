@@ -541,7 +541,12 @@ contact effects in `src/fight.c` find their kind through
 `HYRULE_TIER_LAST` there must match `TIER_VNUM_FIRST`/`TIER_VNUM_LAST` in
 the generator. The manifest's encounters are the NES cast; the generator
 thins crowded rooms to at most three. Bosses keep their vnums (the
-achievements name them) and only their stat lines are generated.
+achievements name them) and only their stat lines are generated. Every
+item a player can get sits at or below the band it is found in -- the
+generator rewrites the retained catalog's levels and stats from the bands
+-- except the Master Sword, kept at 58 on purpose. The old men, Zelda and
+the other non-combatants are refused by `is_hyrule_bystander()` in
+`is_safe`, so their high levels cannot be farmed.
 
 Hyrule workflow:
 

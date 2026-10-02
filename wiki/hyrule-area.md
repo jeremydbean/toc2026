@@ -107,10 +107,41 @@ six screens from the start. The manifest builder needs reference images that
 are not committed, so when the bands change, apply `LEVEL_BANDS` and
 `world_level()` to the checked-in JSON as well.
 
-Equipment chests cover every player level through 70; each dungeon's map-room
-chest holds the catalog pieces for that dungeon's band (`GEAR_STAGES`). The
-Master Sword remains fixed at level 58. The required Silver Arrow is level 54,
-so characters level 54 or higher can wield it without immortal status.
+### Item Levels
+
+Every item a player can get sits at or below the band of the place it is first
+found, and its stats are rescaled to that level (`ITEM_LEVELS`,
+`gear_item_levels()` and `relevel_catalog_items()` in the generator):
+
+- Each dungeon's map-room chest (`GEAR_STAGES`) holds gear spread across the
+  levels its band adds, so with the Heart Guards every level from 1 to 59 has
+  sourced gear and nothing sourced is above 59. Armour follows the catalog's own
+  curve (an armour point per four levels); chest weapons average about 0.7 of
+  their level.
+- Each boss's Heart Guard is at the top of its dungeon's band (Ganon's crown at
+  59).
+- Caves, cellars, and quest items take the band of the screen or dungeon they
+  open from: the Wooden Sword is level 1 (2d4), the small boomerang 4, the
+  short bow 6, the Magical Boomerang 12, the raft 16, the stepladder 22, the
+  White Sword, Power Bracelet, and Recorder 30, the Magical Rod 38, the Red
+  Candle 42, the Magic Book and Magical Key 48, and each Triforce shard the
+  bottom of its dungeon's band.
+- A shop item takes the lowest band it is sold in.
+- The Master Sword is the deliberate exception: found in the graveyard (a band
+  6 screen) and kept at level 58, the NES's late-game sword.
+- The Silver Arrow stays at level 54 (`HYRULE_SILVER_ARROW_LEVEL`), inside
+  Death Mountain's band; the relics stay at 54-58.
+
+`tests/test_hyrule_progression.py` walks every room, mobile, and container
+source and fails on an item above its source's band, and on any sourced weapon
+that matches its band's boss weapon.
+
+### Hyrule's Bystanders
+
+The old men, the door-repair man, the gambler, Princess Zelda, and the fountain
+fairies are level 10-70 and fight nobody. `is_hyrule_bystander()` in
+`src/fight.c` makes them safe from attacks and spells alike, so they cannot be
+farmed for experience. The merchants were already safe as shopkeepers.
 
 ### Enemies
 
@@ -150,10 +181,10 @@ and a weapon (`BOSS_WEAPONS`) through `G` resets.
 | --- | --- | ---: | ---: | --- | ---: | ---: | --- |
 | 1 | Aquamentus | 10 | 650 | Aquamentus horn-spear 3d6, +2 hit +1 dam | 8 | 11.5 | 10.0, the large mace |
 | 2 | Dodongo | 16 | 1,250 | Dodongo tail-club 4d8, +2/+2 | 14 | 20.0 | 17.0, an icy dagger |
-| 3 | Manhandla | 23 | 2,400 | Manhandla bloom-whip 6d9, +2/+3 | 20 | 33.0 | 28.0, a barbed whip |
-| 4 | Gleeok | 30 | 4,000 | Gleeok twin-fang glaive 6d10, +3/+3 | 27 | 36.0 | 31.5, Hyrule's small boomerang |
-| 5 | Digdogger | 36 | 6,000 | Digdogger urchin flail 7d9, +3/+2 | 33 | 37.0 | 31.5, a Silver star-hilted dagger |
-| 6 | Gohma | 43 | 8,500 | Gohma eye-lance 8d10, +3/+2 | 40 | 46.0 | 41.0, the White Sword |
+| 3 | Manhandla | 23 | 2,400 | Manhandla bloom-whip 6d9, +2/+2 | 20 | 32.0 | 28.0, a barbed whip |
+| 4 | Gleeok | 30 | 4,000 | Gleeok twin-fang glaive 7d8, +3/+2 | 27 | 33.5 | 28.0, a barbed whip |
+| 5 | Digdogger | 36 | 6,000 | Digdogger urchin flail 7d9, +3/+2 | 33 | 37.0 | 32.0, Hyrule's White Sword (level 30) |
+| 6 | Gohma | 43 | 8,500 | Gohma eye-lance 7d10, +3/+1 | 40 | 39.5 | 33.5, a two-handed sword |
 | 7 | ancient Aquamentus | 49 | 9,500 | Demon's dragonbone sword 9d9, +4/+4 | 46 | 49.0 | 42.0, A Glaive-Guisarme |
 | 8 | ashen Gleeok | 55 | 15,000 | Lion's four-crowned axe 10d9, +9/+6 | 52 | 56.0 | 49.0, a flaming Light Saber |
 | 9 | Ganon | 62 | 20,000 | Trident of Ganon 11d10, +9/+3 | 59 | 63.5 | 54.0, the Power of the world |
@@ -161,7 +192,7 @@ and a weapon (`BOSS_WEAPONS`) through `G` resets.
 "Best existing" is the best weapon a character of that level could otherwise
 carry: every mobile-carried weapon in the world at or below the weapon's level,
 scored as `value[1] * (value[2] + 1) / 2` plus damroll with the dashboard
-parser, and Hyrule's own boomerang and White Sword where they beat it. Each
+parser, and Hyrule's own re-levelled weapons where they beat it. Each
 boss weapon sits 10-20% above that mark, and the test holds it there. The
 Master Sword (level 58, 62.5) stays Hyrule's signature blade; Ganon's trident
 edges it by one point at level 59.
@@ -356,7 +387,8 @@ The Hyrule tests verify:
 - live-population reset caps, including a single Ganon across empty-area resets
 - locked-door solvability using keys found in each dungeon
 - Death Mountain passages, encounters, Ganon key, and Triforce gate
-- every level from 1 through 70 having sourced weapon or armor
+- every level from 1 through 59 having sourced weapon or armor, none above 59,
+  and every item at or below the band it is found in
 - maps, compasses, shops, rupees, repairs, gambling, and warp routes
 - teleport-only entry, recall blocked only in the dungeons, and a path back
   from every Hyrule room

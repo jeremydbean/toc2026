@@ -673,14 +673,14 @@ BOSS_WEAPONS = {
     3: BossWeapon(
         30584, "manhandla bloom whip", "the Manhandla bloom-whip",
         "A whip of thorned green vine lies coiled here.", "wood", 7, (6, 9), 4,
-        20, 2, 3, 5,
+        20, 2, 2, 5,
         "Four thorned heads once grew from Manhandla's heart, and this whip is\n"
         "braided from the vine that joined them. It lashes faster than it\n"
         "should, as though it were still trying to grow."),
     4: BossWeapon(
         30585, "gleeok twin fang glaive", "the Gleeok twin-fang glaive",
-        "A long glaive set with two dragon fangs lies here.", "steel", 8, (6, 10), 21,
-        27, 3, 3, 14,
+        "A long glaive set with two dragon fangs lies here.", "steel", 8, (7, 8), 21,
+        27, 3, 2, 14,
         "Two fangs from the Snake's guardian are lashed side by side on an\n"
         "ash haft. The blade is still faintly warm, and smells of smoke."),
     5: BossWeapon(
@@ -692,8 +692,8 @@ BOSS_WEAPONS = {
         "Digdogger would have hated."),
     6: BossWeapon(
         30587, "gohma eye lance", "the Gohma eye-lance",
-        "A slender lance with a red crystal point lies here.", "steel", 3, (8, 10), 11,
-        40, 3, 2, 10,
+        "A slender lance with a red crystal point lies here.", "steel", 3, (7, 10), 11,
+        40, 3, 1, 10,
         "The point is the crystal lens of Gohma's single eye, ground to a\n"
         "needle. It finds the weak spot in armour as surely as an arrow\n"
         "found the eye."),
@@ -725,13 +725,155 @@ BOSS_WEAPON_BASELINES = {
     1: (10.0, "the large mace, sewer.are, level 8"),
     2: (17.0, "an icy dagger, icekeep.are, level 11"),
     3: (28.0, "a barbed whip, mushroom.are, level 20"),
-    4: (31.5, "a small boomerang, Hyrule Level 1, level 17"),
-    5: (31.5, "a Silver star-hilted dagger, glitter.are, level 32"),
-    6: (41.0, "the White Sword, Hyrule sword cave, level 35"),
+    4: (28.0, "a barbed whip, mushroom.are, level 20"),
+    5: (32.0, "the White Sword, Hyrule sword cave, level 30"),
+    6: (33.5, "a two-handed sword, dresden.are, level 38"),
     7: (42.0, "A Glaive-Guisarme, azeroth.are, level 45"),
     8: (49.0, "(Flaming) A Light Saber, glitter.are, level 50"),
     9: (54.0, "the Power of the world, crypt.are, level 54"),
 }
+
+
+# --------------------------------------------------------------------------
+# Item levels.
+#
+# Every item a player can get in Hyrule sits at or below the band of the
+# place it is first found: a chest at its dungeon's band, a boss's Heart
+# Guard at the top of that boss's band, a cave or a cellar at the band of
+# the screen or dungeon it opens from. The retained catalog wrote them for
+# the old 1-70 layout -- a level 15 wooden sword on the start screen, a
+# level 17 boomerang in Level 1 -- so their level, values and (for the
+# gear chests and Heart Guards) cost are rewritten here from the bands.
+#
+# The Master Sword keeps level 58 and its stats: it is the NES's late-game
+# sword, found early and usable late, and that level was asked for.
+# --------------------------------------------------------------------------
+
+def armor_values(level: int) -> str:
+    """The catalog gear's own curve: an armour point per four levels."""
+    armour = max(1, round(level / 4))
+    return f"{armour} {armour} {armour} {max(1, round(armour * 0.62))} 0"
+
+
+def weapon_dice(level: int) -> tuple[int, int]:
+    """About 0.7 of a level in average damage, the catalog's chest weapons."""
+    average = max(2.5, 0.7 * level)
+    count = max(1, round(level / 5))
+    size = max(2, round(2 * average / count - 1))
+    return count, size
+
+
+@dataclass(frozen=True)
+class ItemLevel:
+    level: int
+    values: str | None = None   # None keeps the record's values
+    cost: int | None = None     # rupees; None keeps the record's cost
+
+
+# Items with one home, levelled by hand to the band they are found in.
+ITEM_LEVELS = {
+    # The start screen's cave, for a character on their first day.
+    30219: ItemLevel(1, "1 2 4 1 0"),                 # wooden sword, 2d4
+    # Level 1, band 2-8.
+    30232: ItemLevel(4, "0 2 5 0 0"),                 # small boomerang, 2d5
+    30222: ItemLevel(6, "9 2 5 6 0"),                 # short bow, 2d5
+    30400: ItemLevel(2),                              # Triforce shards: the
+    # Level 2, band 8-14.                             # bottom of each band
+    30410: ItemLevel(12, "1 3 5 3 0"),                # Magical Boomerang, 3d5
+    30401: ItemLevel(8),
+    # Level 3, band 14-20.
+    30411: ItemLevel(16),                             # the raft
+    30402: ItemLevel(14),
+    # Level 4, band 20-27.
+    30412: ItemLevel(22, armor_values(22)),           # the stepladder
+    30403: ItemLevel(20),
+    # Level 5, band 27-33; the White Sword, Power Bracelet and Letter caves
+    # open from band 5 screens too.
+    30413: ItemLevel(30, armor_values(30)),           # the Recorder
+    30251: ItemLevel(30, "1 10 5 20 D"),              # White Sword, 10d5 +2/+2
+    30276: ItemLevel(30),                             # Power Bracelet
+    30404: ItemLevel(27),
+    # Level 6, band 33-40.
+    30245: ItemLevel(38, "38 5 5 70 0"),              # the Magical Rod
+    30405: ItemLevel(33),
+    # Level 7, band 40-46.
+    30414: ItemLevel(42),                             # the Red Candle
+    30406: ItemLevel(40),
+    # Level 8, band 46-52.
+    30415: ItemLevel(48, armor_values(48)),           # the Magic Book
+    30416: ItemLevel(48),                             # the Magical Key
+    30407: ItemLevel(46),
+    # Level 9, band 53-59.
+    30261: ItemLevel(56),                             # red ring, cellar
+}
+
+
+def gear_item_levels(manifest: dict[str, Any]) -> dict[int, int]:
+    """Chest gear spread across its dungeon's band; Heart Guards at its top.
+
+    Each chest takes the levels its band adds over the band before -- the
+    bands share their end levels -- from the bottom up, so that together
+    with the Heart Guards every level from 1 to 59 has a piece.
+    """
+    bands = manifest_bands(manifest)
+    heart_guards = set(BOSS_GEAR.values())
+    levels = {BOSS_GEAR[level]: bands[level][1] for level in BOSS_GEAR}
+    previous_high = 4                        # stage 0, the starter cave, is 1-4
+    for stage, (_, gear_vnums) in GEAR_STAGES.items():
+        pieces = [vnum for vnum in gear_vnums if vnum not in heart_guards]
+        if stage == 0:
+            low, width = 1, 4
+        else:
+            low, high = previous_high + 1, bands[stage][1]
+            width = high - low + 1
+            previous_high = high
+        for index, vnum in enumerate(pieces):
+            levels[vnum] = low + index * width // len(pieces)
+    return levels
+
+
+def relevel_object(body: str, vnum: int, level: int,
+                   values: str | None = None, cost: int | None = None) -> str:
+    """Rewrite a retained object's level, and optionally its values and cost.
+
+    The level line is the first "level weight cost condition" line in the
+    record; the values line is the one before it.
+    """
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n.*?(?=^#\d+\r?$|\Z)").search(body)
+    if not record:
+        raise ValueError(f"missing object record {vnum}")
+    level_line = re.compile(r"(?m)^(-?\d+) (\d+) (\d+) ([PGAWDBR])(?=\r?$)")
+    match = level_line.search(body, record.start(), record.end())
+    if not match:
+        raise ValueError(f"missing level line for object {vnum}")
+    new_cost = match.group(3) if cost is None else str(cost * COPPER_PER_GOLD)
+    replacement = f"{level} {match.group(2)} {new_cost} {match.group(4)}"
+    start = match.start()
+    if values is not None:
+        values_start = body.rindex("\n", record.start(), start - 1) + 1
+        start = values_start
+        replacement = f"{values}\n{replacement}"
+    return body[:start] + replacement + body[match.end():]
+
+
+def relevel_catalog_items(body: str, manifest: dict[str, Any]) -> str:
+    for vnum, level in sorted(gear_item_levels(manifest).items()):
+        values_line = re.compile(rf"(?ms)^#{vnum}\r?\n(?:[^\n]*\n){{5}}([^\n]*)\n").search(body)
+        old_values = values_line.group(1).split() if values_line else []
+        if len(old_values) == 5 and _is_weapon(body, vnum):
+            count, size = weapon_dice(level)
+            values = f"{old_values[0]} {count} {size} {old_values[3]} {old_values[4]}"
+        else:
+            values = armor_values(level)
+        body = relevel_object(body, vnum, level, values, level * level * 5)
+    for vnum, item in ITEM_LEVELS.items():
+        body = relevel_object(body, vnum, item.level, item.values, item.cost)
+    return body
+
+
+def _is_weapon(body: str, vnum: int) -> bool:
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n(?:[^\n]*\n){{4}}(\d+) ").search(body)
+    return bool(record) and record.group(1) == "5"
 
 
 def weapon_score(weapon: BossWeapon) -> float:
@@ -1252,12 +1394,12 @@ def new_object_records(manifest: dict[str, Any]) -> str:
         object_record(30544, "magical shield shop", "a Magical Shield", "A Magical Shield is displayed for 160 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 160, "A\n17 -5"),
         object_record(30545, "key small shop", "a small key", "A small key is displayed for 100 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 100),
         object_record(30546, "blue candle shop", "a Blue Candle", "A Blue Candle is displayed for 60 rupees.", "wax", "1 N AO", "0 0 999 0 0", 5, 2, 60),
-        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 15, 8, 90, "A\n17 -5"),
-        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 rupees.", "meat", "19 N A", "H 0 0 0 0", 55, 3, 100),
+        object_record(30547, "magical shield bargain shop", "a Magical Shield", "A Magical Shield is displayed for 90 rupees.", "steel", "9 N AJ", "5 5 5 3 0", 20, 8, 90, "A\n17 -5"),
+        object_record(30548, "food bait shop", "enemy bait", "Enemy bait is displayed for 100 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 100),
         object_record(30549, "heart recovery shop", "a Recovery Heart", "A Recovery Heart is displayed for 10 rupees.", "crystal", "10 N AO", "10 28 0 0 0", 1, 1, 10),
         object_record(30550, "key small bargain shop", "a small key", "A small key is displayed for 80 rupees.", "iron", "18 N A", "0 0 0 0 0", 1, 1, 80),
-        object_record(30551, "blue ring shop", "the Blue Ring", "The Blue Ring is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 35, 1, 250, "A\n13 15"),
-        object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 rupees.", "meat", "19 N A", "H 0 0 0 0", 55, 3, 60),
+        object_record(30551, "blue ring shop", "the Blue Ring", "The Blue Ring is displayed for 250 rupees.", "gold", "9 N AB", "5 5 5 3 0", 24, 1, 250, "A\n13 15"),
+        object_record(30552, "food bait bargain shop", "enemy bait", "Enemy bait is displayed for 60 rupees.", "meat", "19 N A", "H 0 0 0 0", 20, 3, 60),
         object_record(30553, "blue life potion medicine shop", "a blue Life Potion", "A blue Life Potion is displayed for 40 rupees.", "glass", "10 N AO", "30 28 28 81 0", 1, 2, 40),
         object_record(30554, "red second potion medicine shop", "a red 2nd Potion", "A red 2nd Potion is displayed for 68 rupees.", "glass", "10 N AO", "30 81 81 81 0", 1, 2, 68),
     ])
@@ -1722,6 +1864,27 @@ def render_shops() -> str:
     return "\n".join(lines)
 
 
+# The catalog's old man stood "at a counter here, selling drinks", which is
+# what fifteen dungeon rooms showed beside a description of him between two
+# fires with a hint. Stats and flags are the catalog's; is_hyrule_bystander()
+# in fight.c is what keeps his level 50 from being farmed.
+OLD_MAN_RECORD = """#30228
+old man sage~
+An old man~
+An old man stands between the fires, waiting to share what he knows.
+~
+A white-bearded old man in a long red robe. He has been down here far longer
+than anyone should be, and he speaks only to pass on a warning or a secret.
+~
+human~
+ABMV DF 0 S
+50 25 15d10+4400 1d1+0 5d8+37 16
+0 0 0 0
+0 0 0 0
+8 8 1 0
+AHMV ABCDEFGHIJK M 0"""
+
+
 def remove_tier_records(body: str) -> str:
     """Drop every generated enemy record, whatever bands it was built for."""
     pattern = re.compile(r"(?ms)^#(\d+)\r?\n.*?(?=^#\d+\r?$|\Z)")
@@ -1761,6 +1924,7 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
 
     mobile_body = remove_records(mobile_body, NEW_MOBILE_VNUMS | RETIRED_MOBILE_VNUMS)
     mobile_body = remove_tier_records(mobile_body)
+    mobile_body = replace_record(mobile_body, NPC_MOBS["old_man"], OLD_MAN_RECORD)
     for level, (mob_level, hit_points, damage) in BOSS_STATS.items():
         mobile_body = restat_mobile(mobile_body, BOSS_MOBS[level], mob_level, hit_points, damage)
     object_body = remove_records(object_body, NEW_OBJECT_VNUMS)
@@ -1768,6 +1932,7 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
     for dungeon in manifest["dungeons"]:
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))
+    object_body = relevel_catalog_items(object_body, manifest)
 
     rooms, _ = build_rooms(manifest, prose)
     room_body = "\n".join(render_room(room) for room in sorted(rooms.values(), key=lambda item: item.vnum))

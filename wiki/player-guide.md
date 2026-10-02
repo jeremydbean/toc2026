@@ -580,8 +580,14 @@ return portals.
 
 - Enter through the arcade cabinet portal; the campaign begins at its intended
   Zelda 1 entrance rather than through a normal world road.
-- Recall is disabled. Leave through the secret-tree return or the post-Ganon
-  portal.
+- Recall works everywhere in Hyrule except inside the nine `Level N`
+  dungeons; walk out of a dungeon the way you came in. The secret-tree return
+  and the post-Ganon portal are the other ways home.
+- The dungeons climb from Level 1 (character levels 2-8) to Death Mountain
+  (53-59), and the land around each dungeon matches it. What you find in a
+  place -- chest gear, a boss's Heart Guard and weapon, a shop's wares -- is
+  usable at that place's level. The Master Sword is the exception: found in
+  the graveyard, wielded at level 58.
 - A dungeon map reveals layout information.
 - A dungeon compass gives the general direction toward that dungeon's boss.
 - Candles, bombs, arrows, keys, rafts, ladders, recorders, and room actions are

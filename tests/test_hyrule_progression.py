@@ -8,6 +8,7 @@ from collections import Counter, deque
 from pathlib import Path
 
 from scripts.build_hyrule_area import (
+    BOSS_GEAR,
     BOSS_MOBS,
     BOSS_STATS,
     BOSS_WEAPON_BASELINES,
@@ -466,6 +467,112 @@ class HyruleProgressionTests(unittest.TestCase):
                 )
             previous = score
 
+    def room_bands(self) -> dict[int, int]:
+        """The band of every Hyrule room: its dungeon, its screen, or the
+        screen whose exit or portal leads into it (caves, shops, cellars)."""
+        bands = manifest_bands(self.manifest)
+        room_band = {room["vnum"]: band_index(room["recommended_level"], bands)
+                     for room in self.world.values()}
+        for level, dungeon in self.dungeons.items():
+            room_band.update({vnum: level for vnum in range(
+                dungeon["first_room_vnum"], dungeon["last_room_vnum"] + 1)})
+        changed = True
+        while changed:
+            changed = False
+            for vnum, room in self.hyrule_rooms.items():
+                if vnum not in room_band:
+                    continue
+                leads_to = {exit_data.to_room for exit_data in room.exits}
+                for object_vnum in room.objects:
+                    obj = self.parser.objects.get(object_vnum)
+                    if obj is not None and obj.item_type == "30":
+                        leads_to.add(int(obj.values[1]))
+                for target in leads_to:
+                    if target in self.hyrule_rooms and target not in room_band:
+                        room_band[target] = room_band[vnum]
+                        changed = True
+        return room_band
+
+    def test_items_sit_at_or_below_the_band_they_are_found_in(self) -> None:
+        """A level 15 wooden sword on the start screen helped nobody.
+
+        Every place an item comes from -- a room, a boss or shopkeeper, a
+        chest -- has a band, and the item must be usable at the top of
+        it. The Master Sword is the one deliberate exception: the NES's
+        late-game sword, found in the graveyard and kept at level 58.
+        """
+        bands = manifest_bands(self.manifest)
+        room_band = self.room_bands()
+        holder_band: dict[int, int] = {}
+        found: dict[int, set[int]] = {}
+        mob_room = None
+        for reset in self.resets:
+            if reset.command == "M":
+                mob_room = reset.arg3
+            elif reset.command == "O" and reset.arg3 in room_band:
+                found.setdefault(reset.arg1, set()).add(room_band[reset.arg3])
+                holder_band[reset.arg1] = room_band[reset.arg3]
+            elif reset.command in {"G", "E"} and mob_room in room_band:
+                found.setdefault(reset.arg1, set()).add(room_band[mob_room])
+                holder_band[reset.arg1] = room_band[mob_room]
+        for reset in self.resets:
+            if reset.command == "P" and reset.arg3 in holder_band:
+                found.setdefault(reset.arg1, set()).add(holder_band[reset.arg3])
+
+        too_high = []
+        for vnum, found_in in sorted(found.items()):
+            obj = self.parser.objects[vnum]
+            if vnum == 30200:
+                continue
+            for band in found_in:
+                if obj.level > bands[band][1]:
+                    too_high.append((vnum, obj.short_desc, obj.level, band, bands[band]))
+        self.assertEqual([], too_high)
+        self.assertEqual(self.parser.objects[30200].level, 58)
+
+        # The first things a new character can pick up.
+        self.assertLessEqual(self.parser.objects[30219].level, 3, "the Wooden Sword")
+        self.assertLessEqual(self.parser.objects[30232].level, bands[1][1], "the boomerang")
+        for level, heart_guard in BOSS_GEAR.items():
+            with self.subTest(level=level, heart_guard=heart_guard):
+                low, high = bands[level]
+                self.assertTrue(low <= self.parser.objects[heart_guard].level <= high)
+
+        # The Silver Arrow rule must sit inside Death Mountain's band.
+        merc = Path("src/merc.h").read_text(encoding="utf-8")
+        arrow_level = int(merc.split("#define HYRULE_SILVER_ARROW_LEVEL", 1)[1].split()[0])
+        self.assertEqual(arrow_level, self.parser.objects[30218].level)
+        self.assertTrue(bands[9][0] <= arrow_level <= bands[9][1])
+
+    def test_nothing_found_outdoes_its_bands_boss_weapon(self) -> None:
+        """The boss weapons stay best in slot after the re-levelling."""
+        bands = manifest_bands(self.manifest)
+        better = []
+        for obj in self.parser.objects.values():
+            if (obj.area_file != "hyrule.are" or obj.item_type != "5"
+                    or obj.vnum in {weapon.vnum for weapon in BOSS_WEAPONS.values()}
+                    or not self.object_is_sourced(obj.vnum)):
+                continue
+            affects = {affect["location"]: affect["modifier"] for affect in obj.affects}
+            score = int(obj.values[1]) * (int(obj.values[2]) + 1) / 2 + affects.get(19, 0)
+            for level, weapon in BOSS_WEAPONS.items():
+                if bands[level][0] <= obj.level <= bands[level][1] and score >= weapon_score(weapon):
+                    better.append((obj.vnum, obj.short_desc, obj.level, score, level))
+        self.assertEqual([], better)
+
+    def test_hyrule_bystanders_cannot_be_attacked(self) -> None:
+        """The old men are level 50 so nothing in Level 1 can hurt them,
+        which made them the best experience in Hyrule for anyone who could."""
+        fight = Path("src/fight.c").read_text(encoding="utf-8")
+        for name, vnum in (("OLD_MAN", NPC_MOBS["old_man"]), ("ZELDA", NPC_MOBS["princess_zelda"]),
+                           ("FAIRY", NPC_MOBS["fairy"]), ("REPAIR_MAN", 30344), ("GAMBLER", 30345)):
+            self.assertIn(f"#define HYRULE_{name}_VNUM", fight)
+            self.assertIn(str(vnum), fight.split(f"#define HYRULE_{name}_VNUM", 1)[1].split("\n", 1)[0])
+        safe = fight.split("bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim )", 1)[1].split("\n}\n", 1)[0]
+        self.assertIn("is_hyrule_bystander(victim)", safe)
+        self.assertGreaterEqual(fight.count("is_hyrule_bystander(victim)"), 2,
+                                "both is_safe and the quiet spell check must refuse them")
+
     def test_room_names_carry_no_grid_labels(self) -> None:
         import re
 
@@ -604,7 +711,9 @@ class HyruleProgressionTests(unittest.TestCase):
             and obj.item_type in {"5", "9"}
             and self.object_is_sourced(obj.vnum)
         }
-        self.assertEqual(set(range(1, 71)) - sourced_levels, set())
+        # Hyrule is a 1-59 climb: gear for every mortal level, none above.
+        self.assertEqual(set(range(1, 60)) - sourced_levels, set())
+        self.assertEqual({level for level in sourced_levels if level > 59}, set())
 
         for stage, (chest_vnum, gear_vnums) in GEAR_STAGES.items():
             with self.subTest(stage=stage):
