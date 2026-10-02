@@ -24251,3 +24251,23 @@ Fri Oct  2 20:59:11 2026 ::  INIT OK
 Fri Oct  2 20:59:11 2026 :: ROM is ready to rock on port 9000.
 Fri Oct  2 20:59:11 2026 :: Automated backup complete.
 Fri Oct  2 20:59:11 2026 :: Daily backup complete.
+Fri Oct  2 21:00:36 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Oct  2 21:00:40 2026 :: Log WebAdmin: fsave
+Fri Oct  2 21:00:46 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Oct  2 21:00:49 2026 :: Received signal 15; saving players and shutting down.
+Fri Oct  2 21:00:49 2026 :: Normal termination of game.
+Fri Oct  2 21:00:50 2026 ::  INIT OK 
+Fri Oct  2 21:00:50 2026 :: ROM is ready to rock on port 9000.
+Fri Oct  2 21:00:50 2026 :: Automated backup complete.
+Fri Oct  2 21:00:50 2026 :: Daily backup complete.
+Fri Oct  2 21:00:58 2026 :: Sock.sinaddr:  178.156.189.249
+Fri Oct  2 21:00:58 2026 :: EOF encountered on read.
+Fri Oct  2 21:01:53 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Oct  2 21:01:57 2026 :: Log WebAdmin: fsave
+Fri Oct  2 21:02:03 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Oct  2 21:02:06 2026 :: Received signal 15; saving players and shutting down.
+Fri Oct  2 21:02:06 2026 :: Normal termination of game.
+Fri Oct  2 21:02:06 2026 ::  INIT OK 
+Fri Oct  2 21:02:06 2026 :: ROM is ready to rock on port 9000.
+Fri Oct  2 21:02:07 2026 :: Automated backup complete.
+Fri Oct  2 21:02:07 2026 :: Daily backup complete.
