@@ -22,6 +22,11 @@ PrivateTmp=true
 ProtectHome=true
 ProtectSystem=strict
 ReadWritePaths=/srv/toc/current /var/backups/toc
+# /var/lib/toc holds the Oracle's spend/rate state and answer cache. Under
+# ProtectSystem=strict it is read-only unless declared here, and then the
+# $1/day cap silently never records spend. StateDirectory makes it writable
+# and owned by the service user.
+StateDirectory=toc
 
 [Install]
 WantedBy=multi-user.target

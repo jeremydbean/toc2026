@@ -216,6 +216,12 @@ class OracleWiringTests(unittest.TestCase):
     def test_oracle_mob_exists_in_limbo(self):
         self.assertIn("the Oracle sits here", self.read("area", "limbo.are"))
 
+    def test_web_service_can_write_oracle_state(self):
+        # ProtectSystem=strict makes /var/lib/toc read-only unless declared;
+        # without this the $1/day cap silently never recorded spend.
+        unit = self.read("deploy", "windows-vm", "toc-web.service")
+        self.assertIn("StateDirectory=toc", unit)
+
     def test_a_question_mark_anywhere_reaches_her(self):
         # "where is X?  give me directions" must count, not just a trailing ?.
         self.assertIn("strchr( said, '?' )", self.read("src", "oracle.c"))
