@@ -114,7 +114,13 @@ rsync -a --delete \
   --exclude 'area/ban' \
   --exclude 'area/*.are.*.bak' --exclude 'area/*.are.*.tmp' \
   --exclude 'area/*.txt.tmp' \
+  --exclude 'area/bugs.txt.*' --exclude 'area/typos.txt.*' \
+  --exclude 'area/ideas.txt.*' \
   "$BUILD/" "$CURRENT/"
+# Those three are REPORTS CLEAR's archives (bugs.txt.<stamp>): it renames
+# rather than deletes because they are the only record of what players
+# said, and before they were listed here --delete removed them on the
+# next deploy -- all five archives made on 2026-10-01 went that way.
 
 # area/*.txt is excluded wholesale above, but help and social text
 # files live there too and are code, so they have to come back.
