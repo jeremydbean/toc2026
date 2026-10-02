@@ -61,6 +61,12 @@ class RecallPointTests(unittest.TestCase):
             client.drain(1.0)
             client.send("quit")
             self.assertTrue(client.wait_closed(), "character did not leave")
+        # A level 40 with a new character's 20 hit points dies to the first
+        # thing that wanders through the Oak Tree Square, revives resting at
+        # the Temple, and is told "Nah... You feel too relaxed" -- which is
+        # how this test failed in CI now and then. Give it the hit points
+        # its level implies.
+        fields.setdefault("HMV", "2000 2000 100 100 100 100")
         patch_player_file(mud, name, **fields)
 
     def test_a_player_can_move_their_recall_and_put_it_back(self) -> None:

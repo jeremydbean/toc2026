@@ -70,6 +70,12 @@ IAC_TWO_BYTE_RE = re.compile(rb"\xff[\xf1-\xf9]")             # GA, NOP, etc.
 
 
 def find_binary() -> Path | None:
+    # TOC_SERVER_BINARY picks one explicitly -- the CI sanitizer job and a
+    # local ASan build use it to play real sessions under the sanitizers.
+    chosen = os.environ.get("TOC_SERVER_BINARY")
+    if chosen:
+        path = Path(chosen).resolve()
+        return path if path.is_file() and os.access(path, os.X_OK) else None
     for candidate in CANDIDATE_BINARIES:
         if candidate.is_file() and os.access(candidate, os.X_OK):
             return candidate

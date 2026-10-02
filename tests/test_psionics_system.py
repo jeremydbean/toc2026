@@ -388,8 +388,11 @@ class PsionicsSystemTests(unittest.TestCase):
         self.assertNotIn("Toggle psychic resonance mode", combined)
         self.assertNotIn("Toggle the psionic awareness channel", combined)
         self.assertNotIn("all 16 psionic", combined)
+        # Help text wraps wherever it likes, so any run of whitespace
+        # stands between the words.
         self.assertRegex(
-            self.skill_help.lower(), r"does\s+not consume a light source"
+            self.skill_help.lower(),
+            r"does\s+not\s+consume\s+a\s+light\s+source",
         )
 
     def test_psionic_mob_ai_uses_a_fair_bounded_power_pool(self) -> None:

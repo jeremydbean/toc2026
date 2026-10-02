@@ -115,9 +115,12 @@ if [ -f "$OUT/failed" ]; then
         grep -E '^(FAIL|ERROR):|^AssertionError|^[A-Za-z]*Error:|^no such module' \
             "$OUT/$mod.log" | head -12
     done <"$OUT/failed"
-    printf '\n%d module(s) failed. Full logs: rerun one with\n' \
+    # From the repository root: run from inside tests/, a third of the
+    # modules fail on imports and paths in ways that look like product
+    # bugs and are not.
+    printf '\n%d module(s) failed. Full logs: rerun one, from the repository root, with\n' \
         "$(wc -l <"$OUT/failed")"
-    printf '  cd tests && %s -m unittest <module> -v\n' "$PYTHON"
+    printf "  %s -m unittest discover -s tests -p '<module>.py' -v\n" "$PYTHON"
     exit 1
 fi
 

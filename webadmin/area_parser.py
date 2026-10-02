@@ -238,16 +238,21 @@ ITEM_FLAGS = {
     'Z': 'flags2',
 }
 
-# Object flags 2 (extra_flags2)
+# Object flags 2 (extra_flags2), as ITEM2_* in src/merc.h. B is elf and D is
+# halfling there; this map had the two the other way round, so the website
+# offered elf-only gear to halflings and halfling-only gear to elves.
 ITEM_FLAGS2 = {
     'A': 'human-only',
-    'B': 'halfling-only',
+    'B': 'elf-only',
     'C': 'dwarf-only',
-    'D': 'elf-only',
+    'D': 'halfling-only',
     'E': 'saurian-only',
     'F': 'add-invis',
     'G': 'add-detect-invis',
     'H': 'add-fly',
+    'I': 'no-can-see',
+    'J': 'nosteal',
+    'K': 'no-tport',
 }
 
 # Portal types

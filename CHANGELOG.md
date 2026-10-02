@@ -30,8 +30,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   - `compare profile` says how your damage is made: swings, hit chance,
     damage a hit, mana and casts.
   - An item goes only to the slot WEAR puts it in (a held light is a light),
-    race flags name everyone an item suits, as `wear` reads them (Eversight
-    was refused to the humans it was made for), and a saurian's tail swing
+    race flags name everyone an item suits, as `wear` reads them (a kraken
+    shell flagged for three races was refused to all three), and a saurian's tail swing
     counts.
 - **The website Gear Finder** applies the same rules: one slot per item,
   level -1 gear at the level its carrier gives it (518 obtainable pieces
@@ -40,6 +40,29 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   newbie level, and each pick names the mob that drops or sells it.
 
 ### Fixed
+
+- **Five signature relics have their powers back.** The winged boots and
+  the black feathered wings fly again, the robe of invisibility is worn
+  about the body and turns you invisible, and Eversight and Virtual Vision
+  grant detect invisible. A change on 2026-08-28 "repaired" their flag
+  lines by reading them through the dashboard parser, which had extra2 and
+  the wear flags the wrong way round -- so it turned correct lines into
+  broken ones, and wrote a test that pinned the broken reading. The
+  original lines are restored, and the test passes against the corrected
+  parser unchanged. Eversight is halfling-only, as it always was.
+- **The dashboard had elf-only and halfling-only the wrong way round**
+  (`ITEM2_ELF_ONLY` is B and `ITEM2_HALFLING_ONLY` is D in `merc.h`), so the
+  Gear Finder offered elves the halflings' gear and the reverse.
+- **A shadowmeld skill of 100 failed one time in a hundred.**
+  `number_percent()` runs 1 to 100, and the miss was `>= chance`.
+- **CI no longer stops at the first failed check.** `scripts/validate.sh`
+  runs every check after the build and lists the failures together, each
+  with the command that fixes it, also in the GitHub job summary. A stale
+  Mudlet map had stopped every push for a day before any test ran. Two
+  tests that failed now and then are fixed at the cause: the recall-point
+  fixture was a level 40 with 20 hit points, killed by whatever wandered
+  through the Oak Tree Square; and the psionics help test failed on a line
+  break inside the phrase it looked for.
 
 - **Typo reports from the archive, worked through.** Every line ever
   filed to `area/typos.txt` was checked against the current world, and

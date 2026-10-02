@@ -2554,7 +2554,10 @@ void do_shadowmeld( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( number_percent( ) >= chance )
+    /* number_percent() is 1..100, so a miss is a roll above the skill:
+       ">=" made a skill of 100 fail one time in a hundred, which is also
+       why the shadowmeld tests went red now and then. */
+    if ( number_percent( ) > chance )
     {
         send_to_char( "The shadows slip away from you.\n\r", ch );
         check_improve( ch, gsn_shadowmeld, false, 3 );
