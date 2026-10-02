@@ -21138,3 +21138,58 @@ Thu Oct  1 23:55:52 2026 :: Log Alaric [2497]: give pot ty
 Thu Oct  1 23:55:53 2026 :: Log Alaric [2497]: give pot ty
 Thu Oct  1 23:56:14 2026 :: Sock.sinaddr:  3.149.57.90
 Thu Oct  1 23:56:14 2026 :: EOF encountered on read.
+Thu Oct  1 23:57:07 2026 :: Log Alaric [2497]: i
+Thu Oct  1 23:58:07 2026 :: Log Tyrant: set obj pale extra -HJKLM
+Thu Oct  1 23:58:07 2026 :: Log Tyrant: set obj girth extra -HJKLM
+Thu Oct  1 23:58:07 2026 :: Log Tyrant: set obj heartseaker extra -HJKLM
+Thu Oct  1 23:58:07 2026 :: Log Tyrant: set obj sleeves extra -HJKLM
+Thu Oct  1 23:58:08 2026 :: Log Tyrant: set obj metallic extra -HJKLM
+Thu Oct  1 23:58:08 2026 :: Log Tyrant: set obj carcass extra -HJKLM
+Thu Oct  1 23:58:08 2026 :: Log Tyrant: set obj leggings extra -HJKLM
+Thu Oct  1 23:58:18 2026 :: Log Alaric [2497]: wear all
+Thu Oct  1 23:58:25 2026 :: Log Alaric [2497]: give pot ty
+Thu Oct  1 23:58:30 2026 :: Log Alaric [2497]: wear all
+Thu Oct  1 23:58:32 2026 :: Log Alaric [2497]: eq
+Thu Oct  1 23:58:42 2026 :: Log Alaric [2497]: wear all
+Thu Oct  1 23:58:47 2026 :: Log Alaric [2497]: say pot
+Thu Oct  1 23:58:50 2026 :: Log Alaric [2497]: give pot tyy
+Thu Oct  1 23:58:52 2026 :: Log Alaric [2497]: give pot ty
+Thu Oct  1 23:59:05 2026 :: Log Tyrant: set obj pale extra -HJKLM
+Thu Oct  1 23:59:10 2026 :: Log Alaric [2497]: wear pot
+Thu Oct  1 23:59:19 2026 :: Log Alaric [2497]: say Oh, that or opal?
+Thu Oct  1 23:59:41 2026 :: Log Alaric [2497]: wear opal
+Thu Oct  1 23:59:41 2026 :: Log Alaric [2497]: (social) nod
+Thu Oct  1 23:59:42 2026 :: Log Alaric [2497]: l
+Thu Oct  1 23:59:43 2026 :: Log Alaric [2497]: en do
+Thu Oct  1 23:59:43 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Thu Oct  1 23:59:44 2026 :: Log Alaric [2401]: d
+Thu Oct  1 23:59:44 2026 :: Log Alaric [0]: moved to 4649 (Entrance to the Hall of Hero's.)
+Thu Oct  1 23:59:44 2026 :: Log Alaric [4649]: s
+Thu Oct  1 23:59:44 2026 :: Log Alaric [0]: moved to 2419 (The Training Yard)
+Thu Oct  1 23:59:46 2026 :: Log Alaric [2419]: kill du
+Fri Oct  2 00:00:06 2026 :: Log Alaric [2419]: l
+Fri Oct  2 00:00:12 2026 :: Log Alaric [2419]: gos That's obscene damage
+Fri Oct  2 00:01:12 2026 :: Log Alaric [2419]: gos That's crazy. A decked 59 may just wander through BG3
+Fri Oct  2 00:01:16 2026 :: Log Alaric [2419]: dummy leaderboard
+Fri Oct  2 00:01:19 2026 :: Sock.sinaddr:  178.156.185.231
+Fri Oct  2 00:01:19 2026 :: EOF encountered on read.
+Fri Oct  2 00:01:26 2026 :: Log Alaric [2419]: n
+Fri Oct  2 00:01:26 2026 :: Log Alaric [0]: moved to 4649 (Entrance to the Hall of Hero's.)
+Fri Oct  2 00:01:28 2026 :: Log Alaric [4649]: u
+Fri Oct  2 00:01:28 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Fri Oct  2 00:01:29 2026 :: Log Alaric [2401]: u
+Fri Oct  2 00:01:29 2026 :: Log Alaric [0]: moved to 2410 (Climbing the Oak Tree...)
+Fri Oct  2 00:01:30 2026 :: Log Alaric [2410]: u
+Fri Oct  2 00:01:30 2026 :: Log Alaric [0]: moved to 2411 (Up in the Oak Tree.)
+Fri Oct  2 00:01:30 2026 :: Log Alaric [2411]: u
+Fri Oct  2 00:01:30 2026 :: Log Alaric [0]: moved to 2414 (Top of the oak tree.)
+Fri Oct  2 00:01:30 2026 :: Log Alaric [2414]: u
+Fri Oct  2 00:01:30 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Fri Oct  2 00:01:33 2026 :: Log Alaric [2497]: i
+Fri Oct  2 00:01:46 2026 :: Log Alaric [2497]: gos For sure
+Fri Oct  2 00:01:48 2026 :: Log Alaric [2497]: rem all
+Fri Oct  2 00:01:48 2026 :: Alaric did a remove all.
+Fri Oct  2 00:01:49 2026 :: Log Alaric [2497]: drop all
+Fri Oct  2 00:01:50 2026 :: Log Alaric [2497]: get new
+Fri Oct  2 00:01:52 2026 :: Log Alaric [2497]: get pack
+Fri Oct  2 00:01:53 2026 :: Log Alaric [2497]: i

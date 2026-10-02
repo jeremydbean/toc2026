@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790898860
+LogO 1790899032
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 50
-Plyd 228765
+Plyd 228937
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 2497
-HMV  1093 1447 1377 1438 305 394
+HMV  1178 1447 1413 1438 374 374
 NewGold 76
 NewPlat 21
 NewCopp 8
@@ -131,9 +131,9 @@ Color 16 6
 Pos  8
 Save  2
 Alig  1000
-Hit   11
-Dam   6
-ACs -14 -22 -18 60
+Hit   14
+Dam   10
+ACs -119 -136 -90 -27
 Attr 22 13 12 16 15
 AMod 0 0 0 3 -4
 Pass Al3w9zuAlwpyY~
@@ -142,7 +142,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 1072 1368 394
-Cond 0 36 18
+Cond 0 32 14
 Alias k kick~
 Alias sm smite~
 Alias mind mindleech~
@@ -178,9 +178,9 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'detect hidden'  47   8   0   0         32          0
-AffD 'detect magic'  16   8   0   0         16          0
-AffD 'detect invis'  49   8   0   0          8          0
+AffD 'detect hidden'  45   4   0   0         32          0
+AffD 'detect magic'  15   4   0   0         16          0
+AffD 'detect invis'  49   4   0   0          8          0
 End
 
 #O
@@ -923,34 +923,6 @@ Repd 10
 End
 
 #O
-Vnum 3616
-Nest 0
-ExtF 1049121
-Wear -1
-Lev  50
-Cost 50000
-Cond 100
-Repd 0
-Spell 1 'refresh'
-Spell 2 'refresh'
-Spell 3 'colour spray'
-End
-
-#O
-Vnum 3615
-Nest 0
-ExtF 1049121
-Wear -1
-Lev  50
-Cost 50000
-Cond 100
-Repd 0
-Spell 1 'energy drain'
-Spell 2 'energy drain'
-Spell 3 'energy drain'
-End
-
-#O
 Vnum 734
 Nest 0
 Wear -1
@@ -969,16 +941,6 @@ Cost 7500000
 Cond 100
 Repd 0
 Affect -1 50 -1 4 23 0 0
-End
-
-#O
-Vnum 5720
-Nest 0
-Wear -1
-Lev  50
-Cost 90000000
-Cond 100
-Repd 0
 End
 
 #O
@@ -1052,26 +1014,6 @@ Repd 0
 End
 
 #O
-Vnum 29067
-Nest 0
-Wear -1
-Lev  43
-Cost 4500000
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 29065
-Nest 0
-Wear -1
-Lev  43
-Cost 5600000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 4618
 Nest 0
 Wear 8
@@ -1099,7 +1041,7 @@ Lev  42
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 9998 0 0
+Val  0 0 9994 0 0
 End
 
 #O
@@ -1118,6 +1060,16 @@ Nest 0
 Wear 1
 Lev  29
 Cost 12500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 28129
+Nest 0
+Wear 5
+Lev  45
+Cost 5000000
 Cond 100
 Repd 0
 End
