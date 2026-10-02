@@ -441,3 +441,17 @@
 1790902592	gossip	Killuminati	god damn you're leveling fast, lol
 1790902605	gossip	Alaric	Flyying
 1790902628	gossip	Killuminati	imagine if you had maxed gear, lol
+1790902656	gossip	Alaric	For sure. I'd be near 53
+1790902659	gossip	Killuminati	hopefully claude will have this code done before you remort. lolol
+1790902711	gossip	Alaric	Big jump was due to Herbie. Those buffs are actually insane. Running around without it, now
+1790902730	gossip	Killuminati	i love that the high end AI coding basically can do anything and rarely fucks up.  but i literally have it spin up an entire mud on the side and test everyting before it implements anything.  it's found a lot of bugs that way
+1790902755	gossip	Killuminati	it like creates characters, boosts em, and tests it all.  it'll remort a character to confirm before rolling out, lol
+1790902764	gossip	Killuminati	that's hermie.  herbie's girlfriend, lol
+1790902768	gossip	Alaric	I was curious about rollbacks and whatnot. Not much data to make a backup of dates, I suppose
+1790902777	gossip	Alaric	Lol
+1790902779	gossip	Alaric	Generous bitch
+1790902787	gossip	Killuminati	oh yeah it's all github so it can always roll back
+1790902800	gossip	Killuminati	like eveyr single change is reverseable and fully logged
+1790902820	gossip	Killuminati	player files get uploaded to the cloud every 5 min, lol
+1790902824	gossip	Killuminati	plus the regular backups
+1790902861	gossip	Killuminati	i had an SD card die on the original pi this was on and no one lost anything and it had spun up a new image on a new machine within 15 min, lol
