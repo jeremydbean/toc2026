@@ -140,7 +140,7 @@ const	struct	race_type	race_table	[]		=
 	0,              0,              VULN_LIGHT,
 	A|G|W,          A|C|D|E|F|H|J|K|P,
 	"$n flaps in from $T.",
-	"After flapping by you the $n flies off $t."
+	"After flapping by you, $n flies off $t."
     },
 
     {
@@ -185,7 +185,7 @@ const	struct	race_type	race_table	[]		=
 	IMM_MAGIC,      RES_BASH|RES_LIGHT,
 	VULN_SLASH|VULN_FIRE|VULN_ACID|VULN_LIGHTNING|VULN_ENERGY,
 	E|J|M|cc,       A|B|C|G|H|K,
-	"The beautiful $n strolls in from $T.",
+	"$n strolls in from $T, looking beautiful.",
 	"$n winks at you and runs off $t."
     },
 
@@ -194,8 +194,8 @@ const	struct	race_type	race_table	[]		=
 	0, AFF_DETECT_INVIS|AFF_DETECT_HIDDEN, OFF_BASH|OFF_TAIL|OFF_CRUSH,
 	IMM_POISON,     RES_FIRE|RES_DISEASE,      0,
 	B|Z|cc,         A|C|D|E|F|H|J|K|Q|V|X,
-	"A large $n flies in from $T and lands with a loud thud!",
-	"The $n flies off to the $t leaving you choking in the dust."
+	"$n flies in from $T and lands with a loud thud!",
+	"$n flies off to the $t leaving you choking in the dust."
     },
 
     {
@@ -437,8 +437,8 @@ const	struct	race_type	race_table	[]		=
 	OFF_BASH|OFF_FAST|OFF_DODGE,
 	IMM_POISON,     0,      VULN_LIGHT,
 	B|Z|cc,         A|C|D|E|F|H|J|K|Q|V|X,
-	"A large $n flies in from $T and lands with a loud thud!",
-	"The $n flies off to the $t leaving you choking in the dust."
+	"$n flies in from $T and lands with a loud thud!",
+	"$n flies off to the $t leaving you choking in the dust."
     },
 
     {
@@ -3502,7 +3502,7 @@ const   struct  skill_type      skill_table     [MAX_SKILL]     =
 	{  62, 62, 62, 62, 22, 62 },     { 8, 8, 8, 8, 2, 8},
 	spell_null,             TAR_CHAR_SELF,          POS_RESTING,
 	&gsn_iron_skin,         SLOT( 0),       0,      24,
-	"",                     "Your skin looses its hardness."
+	"",                     "Your skin loses its hardness."
     },
 
     {

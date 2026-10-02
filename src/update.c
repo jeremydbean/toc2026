@@ -3200,7 +3200,7 @@ void disaster_update( void )
 	     switch(vch->in_room->sector_type)
 	     {
 	      case 0:
-		send_to_char("and the building your in trembles as a wall of water strikes it.\n\r",vch);
+		send_to_char("and the building you're in trembles as a wall of water strikes it.\n\r",vch);
 		hit = false;
 	      break;
 	      case 1:

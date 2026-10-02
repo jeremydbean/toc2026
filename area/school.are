@@ -695,7 +695,7 @@ cleric student~
 the student of healing~
 A student sits here learning the finer points of healing loser warriors.
 ~
-He is paying more attention to the teacher then you and only nudges you
+He is paying more attention to the teacher than you and only nudges you
  and growls when you block his view.
 ~
 human~
@@ -862,9 +862,9 @@ ABFGU 0 0 S
 8 8 0 0
 0 0 S 0
 #3758
-principle~
-the principle~
-A half-dressed principle is yelling at you to get out.
+principal principle~
+the principal~
+A half-dressed principal is yelling at you to get out.
 ~
 You can't help but laugh as he struggles and falls with his pants around
   his ankles.
@@ -1493,8 +1493,8 @@ meat~
 50 0 0 0 0
 1 1 16 P
 #3750
-nacho salsa~
-nacho's with salsa~
+nacho nachos salsa~
+nachos with salsa~
 A little mexican snack to tide you over until dinner.~
 food~
 19 0 A
@@ -3901,7 +3901,7 @@ S
 Welcome to Hell!~
 You walk in and a man gets up off of a woman laying on the desk.  Their
 clothes are half undone.  Now you've done it.  You've just caught the
-principle and one of the teachers fooling around.  You won't graduate
+principal and one of the teachers fooling around.  You won't graduate
 now.  Congratulations.
 ~
 2 DR 0
@@ -3943,10 +3943,10 @@ S
 #3211
 Cleric's classroom.~
 You stand for a few minutes in awe as a huge man in robes continually beats
-on of his students in the head with a mace and then heals him.  He takes a
+one of his students in the head with a mace and then heals him.  He takes a
 break every once in awhile to have a student try to heal, but it doesn't
 always work.  Cussing the teacher raises the student back from the dead and
-starts the brutal proccess all over again.
+starts the brutal process all over again.
 ~
 2 DR 0
 D3

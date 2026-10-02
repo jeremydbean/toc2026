@@ -3789,7 +3789,7 @@ void do_sacrifice( CHAR_DATA *ch, char *argument )
 	act( "$n offers $mself to the Gods, who graciously decline.",
 	    ch, NULL, NULL, TO_ROOM );
 	send_to_char(
-	    "The Gods appreciates your offer and may accept it later.\n\r", ch );
+	    "The Gods appreciate your offer and may accept it later.\n\r", ch );
 	return;
     }
 

@@ -2457,7 +2457,7 @@ void herbie_visit( CHAR_DATA *mob, CHAR_DATA *victim )
         mob, NULL, victim, TO_VICT);
     act("$n says, 'Someone eventually has to clean up the mess!'",
         mob, NULL, victim, TO_VICT);
-    act("$n says, 'Can't have that now, can we.'",
+    act("$n says, 'Can't have that now, can we?'",
         mob, NULL, victim, TO_VICT);
     act("$n says to $N, 'Can't have you bleeding all over the place like that.'",
         mob, NULL, victim, TO_NOTVICT);

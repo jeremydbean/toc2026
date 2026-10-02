@@ -2317,7 +2317,7 @@ void do_sleep( CHAR_DATA *ch, char *argument )
 
     if(is_affected(ch,skill_lookup("nerve damage") ) )
     {
-      send_to_char("Your in too much pain to sleep.\n\r",ch);
+      send_to_char("You're in too much pain to sleep.\n\r",ch);
       return;
     }
 
