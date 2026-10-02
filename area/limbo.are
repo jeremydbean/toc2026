@@ -838,11 +838,20 @@ AEFGHIK ABCDEFG 0 0
 #97
 oracle seer sibyl woman~
 the Oracle~
-the Oracle sits here, her eyes clouded, waiting for a question.
+the Oracle sits here, her eyes clouded, waiting for you to SAY your question.
 ~
-The Oracle has sat in this spot longer than anyone remembers.  She sees the
-world entire and will tell you what she sees if you ASK her -- where a thing
-is found, what a mob carries, how a system works.  She takes no payment.
+The Oracle has sat in this spot longer than anyone remembers.  She will tell
+you what she sees -- how a command or a system works, where a thing is found,
+what a creature carries, what to seek at your level.  She takes no payment.
+
+To speak with her, just SAY your question aloud: every word spoken in her
+sanctum is meant for her, and ASK <question> works the same.  She remembers
+what you asked a moment ago, so you may follow up.  She sees only what you
+could see for yourself, and answers only questions about this world.
+
+  SAY <question>    ask her anything about the game
+  SAY WRONG         her last answer was mistaken; the gods will hear of it
+  SAY DONE          end the audience (or step DOWN through the beads)
 ~
 unique~
 ABQ CDFHJT 1000 S
@@ -4909,6 +4918,9 @@ back in pale violet sparks.  At the centre of the room a round table draped
 in midnight silk holds a crystal ball, its depths swirling with a slow,
 milky light, and a deck of worn cards lies fanned beside it.  Strings of
 beads hang where a floor ought to be, and below them there is only mist.
+   One card stands propped against the crystal ball, lettered in a careful
+hand:  SAY your question aloud.  SAY WRONG if she errs.  SAY DONE, or go
+DOWN through the beads, when you are finished.
 ~
 0 CDKLN 0
 D5

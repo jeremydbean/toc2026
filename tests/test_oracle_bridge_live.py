@@ -4,8 +4,9 @@ The web poller appends "<id>\\t<kind>\\t<arg>" to area/oracle.query; the game
 drains it on its pulse, runs a fixed read-only scan, and appends
 "<id>\\t<finding>" to area/oracle.queryresult. This boots a real server and
 exercises every kind: a mob's live location, a player's live gear, an object
-that does not exist, a mobile's gear, and who is online -- with a wizinvis
-immortal connected, who must not appear in any of it.
+that does not exist, a mobile's gear, and who is online -- with an immortal
+connected and in plain sight, who must still not appear in any of it: she
+reveals only what the asker could see, and never the staff.
 
 It then prays, to check the game tells the poller a sitting has begun and
 that WRONG with nothing yet said is answered politely rather than filed.
@@ -42,12 +43,13 @@ def wait_for_results(path, ids, timeout=10.0):
 class OracleBridgeLive(unittest.TestCase):
     def test_game_answers_read_only_lookups(self):
         with LiveMud() as mud:
-            # A wizinvis immortal, made first and logged back in below.
+            # An immortal, visible and not wizinvis, made first and logged back
+            # in below.
             with mud.connect(timeout=120) as setup:
                 create_character(setup, HIDDEN, PW)
                 setup.send("quit")
                 self.assertTrue(setup.wait_closed())
-            patch_player_file(mud, HIDDEN, Levl=70, Invi=70, Room=4207)
+            patch_player_file(mud, HIDDEN, Levl=70, Room=4207)
 
             with mud.connect(timeout=120) as hider, \
                     mud.connect(timeout=120) as client:
@@ -57,13 +59,14 @@ class OracleBridgeLive(unittest.TestCase):
                 area = mud.root / "area"
                 query = area / "oracle.query"
                 result = area / "oracle.queryresult"
+                # "<id>\t<kind>\t<asker>\t<keyword>": answered as NAME sees it.
                 query.write_text(
-                    "r1\tmob\tdummy\n"
-                    "r2\teq\t%s\n"
-                    "r3\tobj\tzzqqxnothing\n"
-                    "r4\twho\tall\n"
-                    "r5\teq\t%s\n"
-                    "r6\tmobeq\tdummy\n" % (NAME, HIDDEN),
+                    "r1\tmob\t{n}\tdummy\n"
+                    "r2\teq\t{n}\t{n}\n"
+                    "r3\tobj\t{n}\tzzqqxnothing\n"
+                    "r4\twho\t{n}\tall\n"
+                    "r5\teq\t{n}\t{h}\n"
+                    "r6\tmobeq\t{n}\tdummy\n".format(n=NAME, h=HIDDEN),
                     encoding="utf-8")
 
                 got = wait_for_results(result, {"r1", "r2", "r3", "r4", "r5", "r6"})
@@ -81,8 +84,8 @@ class OracleBridgeLive(unittest.TestCase):
         self.assertIn("r3", got)
         self.assertIn("No 'zzqqxnothing'", got["r3"])
 
-        # Who is on, as WHO shows a mortal: the wizinvis immortal is absent,
-        # and asking after them by name says they are not online.
+        # Who is on, as the asker could see it: the immortal is absent, and
+        # asking after them by name says they are not online.
         self.assertIn("r4", got)
         self.assertIn(NAME, got["r4"])
         self.assertNotIn(HIDDEN, got["r4"])

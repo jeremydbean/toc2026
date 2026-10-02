@@ -208,7 +208,7 @@ class GearFinderTests(unittest.TestCase):
         prof = {"class_name": "warrior", "race": "human", "level": 30, "equipment": []}
         seen = {}
 
-        def fake_lookup(reqs, timeout=2.5):
+        def fake_lookup(reqs, timeout=2.5, asker=""):
             seen["reqs"] = list(reqs)
             return ["Sword of Justice carried by Augustus" if kind == "obj"
                     else "No 'sword justice' is roaming the world right now."
@@ -253,7 +253,7 @@ class GearFinderTests(unittest.TestCase):
                               "area_display": "Camelot", "commands": "n;n;e",
                               "rooms_away": 3}]}
 
-        def fake_lookup(reqs, timeout=2.5):
+        def fake_lookup(reqs, timeout=2.5, asker=""):
             return ["a grail in The Chapel (100)" if kind == "obj" else ""
                     for kind, _arg in reqs]
 

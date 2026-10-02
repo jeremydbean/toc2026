@@ -610,19 +610,133 @@ void oracle_listen( CHAR_DATA *ch, const char *argument )
 
 
 /*
- * Somebody the Oracle must not betray: a wizinvis character.  WHO hides them
- * from mortals, so she does too -- every lookup below treats them, and
- * anything they hold, as not there.  A lookup has no asker to test can_see
- * against, so this is the rule for everyone, and it is the one that matters:
- * a mortal learning an invisible immortal is online.
+ * What the Oracle may reveal is what the one asking could see for themself,
+ * and never more.  Every lookup below is answered from the asker's point of
+ * view, by these rules:
+ *
+ *   - Staff are never there.  An immortal -- by trust, wizinvis or not,
+ *     switched into a mobile or not -- is not reported online, not described,
+ *     and nothing they hold is found.
+ *   - Stealth and shadowmeld always hide.  can_see() rolls dice for both,
+ *     which is right for a glance across a room and wrong here: a question
+ *     can be asked again until the roll comes up, so the Oracle would be a
+ *     way to find anyone eventually.  She follows online_can_list(), which
+ *     never lists them, and is stricter than it.
+ *   - Invisibility and hiding hide unless the asker carries the detection
+ *     that would show them.
+ *   - Rooms barred to mortals are not hers to describe.
+ *   - A player's pack and bags are their own: of a player she sees only what
+ *     they have on, as LOOK would.
+ *
+ * The asker is the poller's to name and the game's to find.  When they cannot
+ * be found -- a check run from the host, or a player who left mid-question --
+ * the rules are applied as for an asker with no detections at all.
  */
-static bool oracle_hidden( CHAR_DATA *vch )
+static CHAR_DATA *oracle_find_asker( const char *name )
+{
+    DESCRIPTOR_DATA *d;
+
+    if ( name == NULL || name[0] == '\0' )
+        return NULL;
+
+    for ( d = descriptor_list; d != NULL; d = d->next )
+    {
+        CHAR_DATA *vch = d->original != NULL ? d->original : d->character;
+
+        if ( d->connected == CON_PLAYING && vch != NULL && vch->name != NULL
+          && !str_cmp( vch->name, name ) )
+            return vch;
+    }
+    return NULL;
+}
+
+
+static bool oracle_is_staff( CHAR_DATA *vch )
 {
     if ( vch == NULL )
         return FALSE;
-    if ( vch->desc != NULL && vch->desc->original != NULL )
-        vch = vch->desc->original;   /* a switched immortal hides as themself */
-    return !IS_NPC(vch) && vch->invis_level > 0;
+    if ( IS_NPC(vch) && vch->desc != NULL && vch->desc->original != NULL )
+        vch = vch->desc->original;   /* an immortal wearing a mobile */
+    return !IS_NPC(vch) && get_trust( vch ) >= LEVEL_IMMORTAL;
+}
+
+
+static bool oracle_room_public( CHAR_DATA *asker, ROOM_INDEX_DATA *room )
+{
+    if ( room == NULL )
+        return FALSE;
+    if ( IS_SET(room->room_flags, ROOM_IMP_ONLY)
+      || IS_SET(room->room_flags, ROOM_GODS_ONLY) )
+        return FALSE;
+    return asker == NULL || can_see_room( asker, room );
+}
+
+
+static bool oracle_can_see_char( CHAR_DATA *asker, CHAR_DATA *vch )
+{
+    bool detect_invis  = asker != NULL && IS_AFFECTED(asker, AFF_DETECT_INVIS);
+    bool detect_hidden = asker != NULL && IS_AFFECTED(asker, AFF_DETECT_HIDDEN);
+
+    if ( vch == NULL )
+        return FALSE;
+    if ( vch == asker )
+        return TRUE;
+    if ( oracle_is_staff( vch ) )
+        return FALSE;
+    if ( !IS_NPC(vch)
+      && ( IS_SET(vch->act, PLR_WIZINVIS) || IS_SET(vch->act, PLR_CLOAKED) ) )
+        return FALSE;
+    if ( IS_AFFECTED2(vch, AFF2_STEALTH) || IS_AFFECTED2(vch, AFF2_SHADOWMELD) )
+        return FALSE;
+    if ( ( IS_AFFECTED(vch, AFF_INVISIBLE) || IS_AFFECTED2(vch, AFF2_GHOST) )
+      && !detect_invis )
+        return FALSE;
+    if ( IS_AFFECTED(vch, AFF_HIDE) && !detect_hidden )
+        return FALSE;
+    return oracle_room_public( asker, vch->in_room );
+}
+
+
+static bool oracle_can_see_item( CHAR_DATA *asker, OBJ_DATA *obj )
+{
+    if ( IS_SET(obj->extra_flags, ITEM_VIS_DEATH) )
+        return FALSE;
+    if ( IS_SET(obj->extra_flags, ITEM_INVIS)
+      && ( asker == NULL || !IS_AFFECTED(asker, AFF_DETECT_INVIS) ) )
+        return FALSE;
+    return TRUE;
+}
+
+
+/*
+ * May the asker learn where this object is?  Its outermost holder decides,
+ * through any nesting of containers, so a bag hides nothing.
+ */
+static bool oracle_can_locate_obj( CHAR_DATA *asker, OBJ_DATA *obj )
+{
+    OBJ_DATA *outer = obj;
+    int depth = 0;
+
+    if ( !oracle_can_see_item( asker, obj ) )
+        return FALSE;
+
+    while ( outer->in_obj != NULL && depth++ < 32 )
+        outer = outer->in_obj;
+
+    if ( outer->carried_by != NULL )
+    {
+        CHAR_DATA *holder = outer->carried_by;
+
+        if ( !oracle_can_see_char( asker, holder ) )
+            return FALSE;
+        /* Of a player, only what they have on -- never their pack. */
+        if ( !IS_NPC(holder) && holder != asker
+          && ( obj != outer || obj->wear_loc == WEAR_NONE ) )
+            return FALSE;
+        return TRUE;
+    }
+
+    return oracle_room_public( asker, outer->in_room );
 }
 
 
@@ -635,7 +749,32 @@ static const char *oracle_holder_name( CHAR_DATA *vch )
 }
 
 
-static void oracle_lookup_obj( const char *keyword, char *out, size_t size )
+/* What someone has on, as the asker would see it in LOOK. */
+static int oracle_worn_list( CHAR_DATA *asker, CHAR_DATA *target,
+                             char *items, size_t size )
+{
+    OBJ_DATA *obj;
+    int found = 0;
+
+    items[0] = '\0';
+    for ( obj = target->carrying; obj != NULL; obj = obj->next_content )
+    {
+        char line[MAX_INPUT_LENGTH];
+
+        if ( obj->wear_loc == WEAR_NONE || !oracle_can_see_item( asker, obj ) )
+            continue;
+        snprintf( line, sizeof(line), "%s%s", found ? "; " : "",
+                  obj->short_descr != NULL ? obj->short_descr : "something" );
+        if ( strlen(items) + strlen(line) + 1 < size )
+            toc_strlcat( items, line, size );
+        found++;
+    }
+    return found;
+}
+
+
+static void oracle_lookup_obj( CHAR_DATA *asker, const char *keyword,
+                               char *out, size_t size )
 {
     LIST_ITERATOR iter;
     OBJ_DATA *obj;
@@ -649,19 +788,12 @@ static void oracle_lookup_obj( const char *keyword, char *out, size_t size )
     {
         char where[MAX_INPUT_LENGTH];
         char line[MAX_STRING_LENGTH];
-        OBJ_DATA *outer;
-        int depth = 0;
 
         if ( obj->pIndexData == NULL || obj->name == NULL )
             continue;
         if ( !is_name( keyword, obj->name ) )
             continue;
-
-        /* Whoever ultimately holds it, through any nesting of containers --
-           so a bag cannot hide what an invisible immortal is carrying. */
-        for ( outer = obj; outer->in_obj != NULL && depth < 32; depth++ )
-            outer = outer->in_obj;
-        if ( outer->carried_by != NULL && oracle_hidden( outer->carried_by ) )
+        if ( !oracle_can_locate_obj( asker, obj ) )
             continue;
 
         if ( obj->carried_by != NULL )
@@ -705,7 +837,8 @@ static void oracle_lookup_obj( const char *keyword, char *out, size_t size )
 }
 
 
-static void oracle_lookup_mob( const char *keyword, char *out, size_t size )
+static void oracle_lookup_mob( CHAR_DATA *asker, const char *keyword,
+                               char *out, size_t size )
 {
     LIST_ITERATOR iter;
     CHAR_DATA *mob;
@@ -722,7 +855,7 @@ static void oracle_lookup_mob( const char *keyword, char *out, size_t size )
         if ( !IS_NPC(mob) || mob->in_room == NULL
           || mob->pIndexData == NULL || mob->name == NULL )
             continue;
-        if ( !is_name( keyword, mob->name ) )
+        if ( !is_name( keyword, mob->name ) || !oracle_can_see_char( asker, mob ) )
             continue;
 
         snprintf( line, sizeof(line), "%s%s in %s (%d)", found ? "; " : "",
@@ -740,14 +873,14 @@ static void oracle_lookup_mob( const char *keyword, char *out, size_t size )
 }
 
 
-static void oracle_lookup_eq( const char *name, char *out, size_t size )
+static void oracle_lookup_eq( CHAR_DATA *asker, const char *name,
+                              char *out, size_t size )
 {
     LIST_ITERATOR iter;
     CHAR_DATA *vch;
     CHAR_DATA *target = NULL;
-    OBJ_DATA *obj;
-    char items[MAX_STRING_LENGTH];
-    int found = 0;
+    char items[MAX_STRING_LENGTH / 2];
+    int found;
 
     out[0] = '\0';
     if ( name == NULL || name[0] == '\0' )
@@ -762,41 +895,29 @@ static void oracle_lookup_eq( const char *name, char *out, size_t size )
         }
     }
 
-    if ( target == NULL || oracle_hidden( target ) )
+    /* Hidden and absent read the same, so the reply gives nothing away. */
+    if ( target == NULL || !oracle_can_see_char( asker, target ) )
     {
         snprintf( out, size, "%s is not online right now.", name );
         return;
     }
 
-    items[0] = '\0';
-    for ( obj = target->carrying; obj != NULL; obj = obj->next_content )
-    {
-        char line[MAX_INPUT_LENGTH];
-
-        if ( obj->wear_loc == WEAR_NONE )
-            continue;
-        snprintf( line, sizeof(line), "%s%s", found ? "; " : "",
-                  obj->short_descr != NULL ? obj->short_descr : "something" );
-        if ( strlen(items) + strlen(line) + 1 < sizeof(items) )
-            toc_strlcat( items, line, sizeof(items) );
-        found++;
-    }
-
+    found = oracle_worn_list( asker, target, items, sizeof(items) );
     snprintf( out, size, "%s is wearing right now: %s.", target->name,
               found ? items : "nothing of note" );
 }
 
 
 /* What a mobile is wearing: the first one in the world answering to the
-   keywords, and where it stands. */
-static void oracle_lookup_mobeq( const char *keyword, char *out, size_t size )
+   keywords that the asker could see, and where it stands. */
+static void oracle_lookup_mobeq( CHAR_DATA *asker, const char *keyword,
+                                 char *out, size_t size )
 {
     LIST_ITERATOR iter;
     CHAR_DATA *mob;
     CHAR_DATA *target = NULL;
-    OBJ_DATA *obj;
-    char items[MAX_STRING_LENGTH];
-    int found = 0;
+    char items[MAX_STRING_LENGTH / 2];
+    int found;
 
     out[0] = '\0';
     if ( keyword == NULL || keyword[0] == '\0' )
@@ -805,7 +926,8 @@ static void oracle_lookup_mobeq( const char *keyword, char *out, size_t size )
     FOR_EACH_CHARACTER( iter, mob )
     {
         if ( IS_NPC(mob) && mob->in_room != NULL && mob->pIndexData != NULL
-          && mob->name != NULL && is_name( keyword, mob->name ) )
+          && mob->name != NULL && is_name( keyword, mob->name )
+          && oracle_can_see_char( asker, mob ) )
         {
             target = mob;
             break;
@@ -815,20 +937,7 @@ static void oracle_lookup_mobeq( const char *keyword, char *out, size_t size )
     if ( target == NULL )
         return;     /* the plain mob lookup already says it is not about */
 
-    items[0] = '\0';
-    for ( obj = target->carrying; obj != NULL; obj = obj->next_content )
-    {
-        char line[MAX_INPUT_LENGTH];
-
-        if ( obj->wear_loc == WEAR_NONE )
-            continue;
-        snprintf( line, sizeof(line), "%s%s", found ? "; " : "",
-                  obj->short_descr != NULL ? obj->short_descr : "something" );
-        if ( strlen(items) + strlen(line) + 1 < sizeof(items) )
-            toc_strlcat( items, line, sizeof(items) );
-        found++;
-    }
-
+    found = oracle_worn_list( asker, target, items, sizeof(items) );
     snprintf( out, size, "%s, in %s (%d), is wearing right now: %s.",
               oracle_holder_name( target ),
               target->in_room->name != NULL ? target->in_room->name : "?",
@@ -836,8 +945,9 @@ static void oracle_lookup_mobeq( const char *keyword, char *out, size_t size )
 }
 
 
-/* Who is playing, as WHO shows a mortal: wizinvis characters left out. */
-static void oracle_lookup_who( char *out, size_t size )
+/* Who is playing, as far as the asker could tell: no staff, nobody stealthed,
+   melded, invisible or hidden from them. */
+static void oracle_lookup_who( CHAR_DATA *asker, char *out, size_t size )
 {
     DESCRIPTOR_DATA *d;
     char names[MAX_STRING_LENGTH];
@@ -851,7 +961,10 @@ static void oracle_lookup_who( char *out, size_t size )
         if ( d->connected != CON_PLAYING )
             continue;
         vch = d->original != NULL ? d->original : d->character;
-        if ( vch == NULL || vch->name == NULL || oracle_hidden( vch ) )
+        if ( vch == NULL || vch->name == NULL )
+            continue;
+        if ( vch != asker
+          && ( oracle_is_staff( vch ) || !oracle_can_see_char( asker, d->character ) ) )
             continue;
         if ( strlen(names) + strlen(vch->name) + 3 < sizeof(names) )
         {
@@ -959,7 +1072,9 @@ void oracle_process_queries( void )
         char ans[MAX_STRING_LENGTH];
         char *reqid;
         char *kind;
+        char *asker_name;
         char *keyword;
+        CHAR_DATA *asker;
         size_t len = strlen( buf );
 
         while ( len > 0 && ( buf[len - 1] == '\n' || buf[len - 1] == '\r' ) )
@@ -967,23 +1082,27 @@ void oracle_process_queries( void )
         if ( buf[0] == '\0' )
             continue;
 
-        reqid   = strtok( buf, "\t" );
-        kind    = strtok( NULL, "\t" );
-        keyword = strtok( NULL, "" );
-        if ( reqid == NULL || kind == NULL || keyword == NULL )
+        /* "<id>\t<kind>\t<asker>\t<keyword>": every lookup is answered from
+           the asker's point of view. */
+        reqid      = strtok( buf, "\t" );
+        kind       = strtok( NULL, "\t" );
+        asker_name = strtok( NULL, "\t" );
+        keyword    = strtok( NULL, "" );
+        if ( reqid == NULL || kind == NULL || asker_name == NULL || keyword == NULL )
             continue;
+        asker = oracle_find_asker( asker_name );
 
         ans[0] = '\0';
         if ( !str_cmp( kind, "obj" ) )
-            oracle_lookup_obj( keyword, ans, sizeof(ans) );
+            oracle_lookup_obj( asker, keyword, ans, sizeof(ans) );
         else if ( !str_cmp( kind, "mob" ) )
-            oracle_lookup_mob( keyword, ans, sizeof(ans) );
+            oracle_lookup_mob( asker, keyword, ans, sizeof(ans) );
         else if ( !str_cmp( kind, "eq" ) )
-            oracle_lookup_eq( keyword, ans, sizeof(ans) );
+            oracle_lookup_eq( asker, keyword, ans, sizeof(ans) );
         else if ( !str_cmp( kind, "mobeq" ) )
-            oracle_lookup_mobeq( keyword, ans, sizeof(ans) );
+            oracle_lookup_mobeq( asker, keyword, ans, sizeof(ans) );
         else if ( !str_cmp( kind, "who" ) )
-            oracle_lookup_who( ans, sizeof(ans) );
+            oracle_lookup_who( asker, ans, sizeof(ans) );
         else
             continue;
 
@@ -1407,7 +1526,8 @@ void do_pray( CHAR_DATA *ch, char *argument )
     oracle_spool_control( ch, "SITTING" );
 
     do_look( ch, "auto" );
-    act( "$n murmurs, 'Ask what you will.  Say DONE, or part the beads, when you are finished.'",
+    act( "$n murmurs, 'Say what you would know, and I will answer.  Say WRONG "
+        "if I err, and DONE, or part the beads, when you are finished.'",
         mob, NULL, NULL, TO_ROOM );
 
     /* An easter egg: she sees the mind for what it is.  Said only to the

@@ -537,9 +537,29 @@ _ORACLE_HELP_SKIP = frozenset(
     "what where when how who which mud times chaos".split())
 
 
+_ORACLE_HELP_INDEX: Dict[str, Any] = {"entries": None, "records": []}
+
+
+def _oracle_help_records(entries: list) -> list:
+    """Each help entry as a searchable record, rebuilt when the list changes."""
+    if _ORACLE_HELP_INDEX["entries"] is not entries:
+        records = []
+        for entry in entries:
+            body = re.sub(r"\{(?:[0-9A-Fa-f]{2}|.)", "", entry.get("body", ""))
+            rec = oracle.term_counts(body, " ".join(entry.get("keywords", [])))
+            rec["entry"] = entry
+            records.append(rec)
+        _ORACLE_HELP_INDEX.update({"entries": entries, "records": records})
+    return _ORACLE_HELP_INDEX["records"]
+
+
 def _oracle_help_lines(question: str, entries: list, limit: int = 2) -> list:
+    """The help entries that answer the question. A keyword named outright
+    ("sanctuary") wins; otherwise the bodies are searched, so "where can I
+    store my loot?" still finds STASH, which it never names."""
     ql = " " + " ".join(re.findall(r"[a-z0-9']+", (question or "").lower())) + " "
-    scored = []
+    picked: list = []
+    named = []
     for entry in entries:
         best = 0
         for kw in entry.get("keywords", []):
@@ -549,10 +569,19 @@ def _oracle_help_lines(question: str, entries: list, limit: int = 2) -> list:
             if (" " + k + " ") in ql:
                 best = max(best, len(k))
         if best:
-            scored.append((best, len(entry.get("body", "")), entry))
-    scored.sort(key=lambda s: (-s[0], s[1]))
+            named.append((best, len(entry.get("body", "")), entry))
+    named.sort(key=lambda s: (-s[0], s[1]))
+    # A topic named outright comes first; the search fills what is left, since
+    # the topic named is not always the one that answers ("what was said on
+    # gossip while I was offline" names GOSSIP and wants HISTORY).
+    picked = [e for _b, _l, e in named[:limit]]
+    for _s, rec in oracle.rank(question, _oracle_help_records(entries)):
+        if len(picked) >= limit:
+            break
+        if rec["entry"] not in picked:
+            picked.append(rec["entry"])
     lines = []
-    for _score, _len, entry in scored[:limit]:
+    for entry in picked:
         body = re.sub(r"\{(?:[0-9A-Fa-f]{2}|.)", "", entry.get("body", ""))
         body = " ".join(body.split())[:1500]
         lines.append("HELP %s -- %s" % (entry.get("title", "?").upper(), body))
@@ -566,7 +595,7 @@ _ORACLE_WHO_HINTS = (
 )
 
 
-def _oracle_live_lookup(reqs, timeout: float = 2.5) -> list:
+def _oracle_live_lookup(reqs, timeout: float = 2.5, asker: str = "") -> list:
     """Ask the running game a few read-only questions and wait for the answers.
 
     reqs is a list of (kind, arg) with kind in obj/mob/eq. They are appended to
@@ -582,14 +611,18 @@ def _oracle_live_lookup(reqs, timeout: float = 2.5) -> list:
     stamp = int(time.time() * 1000)
     ids: list = []
     out_lines = []
+    # The game answers every lookup as the asker would see it: no staff,
+    # nobody stealthed or melded, nothing hidden from them. "-" names nobody,
+    # which the game treats as an asker with no detections at all.
+    who = "".join(re.findall(r"[A-Za-z]", str(asker or "")))[:12] or "-"
     for i, (kind, arg) in enumerate(reqs):
         clean = " ".join(re.findall(r"[A-Za-z]+", str(arg)))[:60]
-        if kind not in ("obj", "mob", "eq") or not clean:
+        if kind not in ("obj", "mob", "eq", "mobeq", "who") or not clean:
             ids.append(None)
             continue
         rid = "q%d_%d" % (stamp, i)
         ids.append(rid)
-        out_lines.append("%s\t%s\t%s" % (rid, kind, clean))
+        out_lines.append("%s\t%s\t%s\t%s" % (rid, kind, who, clean))
     if not out_lines:
         return ["" for _ in reqs]
     try:
@@ -666,9 +699,13 @@ def _oracle_context(player: str, question: str) -> str:
                                               else "nothing of note") + ".")
 
     # Other players named in the question, so she can answer "is X wearing Y?".
-    # Cheap: a single stat per token (names are stored capitalised); bounded.
+    # Only their names are taken from here. What they have on comes from the
+    # game's live "eq" lookup, which answers only for somebody the asker could
+    # see -- never staff, never anyone stealthed, melded or hidden. Their saved
+    # file is not read: an offline player's kit, level or class is nothing a
+    # player could look at, and a file names a hidden immortal as readily as
+    # anyone else.
     seen = {player.casefold()}
-    others = 0
     named: list = []
     for tok in re.findall(r"[A-Za-z]{3,12}", question or ""):
         cap = tok.capitalize()
@@ -680,22 +717,8 @@ def _oracle_context(player: str, question: str) -> str:
                 continue
         except OSError:
             continue
-        cand = parse_player_file(cap)
-        if not cand:
-            continue
-        ow = []
-        for it in cand.get("equipment", []):
-            o = objs.get(it.get("vnum"))
-            ow.append("%s: %s" % (
-                WEAR_SLOT_NAMES.get(it.get("wear", -1), "worn"),
-                getattr(o, "short_desc", None) or ("item %s" % it.get("vnum"))))
-        lines.append("%s is a level %s %s %s, wearing -- %s." % (
-            cand.get("name", cap), cand.get("level", "?"),
-            cand.get("race", "?"), cand.get("class_name", "?"),
-            "; ".join(ow[:20]) if ow else "nothing of note"))
-        named.append(cand.get("name", cap))
-        others += 1
-        if others >= 2:
+        named.append(cap)
+        if len(named) >= 2:
             break
 
     # Live, from the running game (read-only): the current gear of any player
@@ -717,7 +740,7 @@ def _oracle_context(player: str, question: str) -> str:
         reqs.append(("who", "all"))
     live_rooms: list = []
     if reqs:
-        for (kind, _arg), found in zip(reqs, _oracle_live_lookup(reqs)):
+        for (kind, _arg), found in zip(reqs, _oracle_live_lookup(reqs, asker=player)):
             if not found:
                 continue
             if kind == "mob" and found.startswith("No '"):

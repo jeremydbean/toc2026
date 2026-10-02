@@ -13,7 +13,9 @@ The Oracle is an ancient seer who answers questions about Times of Chaos.
 She knows commands, classes, races, remorts, skills, areas, leveling, and
 what gear to seek for your class and level, and she has read the game's
 own help.  She can see where an item or creature is right now, what a
-player or a creature is wearing, and where an item drops.  She remembers
+player or a creature is wearing, and where an item drops -- but only as
+far as you could see for yourself: never the gods, never anyone stealthed
+or hidden from you, and never what is in someone's pack.  She remembers
 what you asked earlier in the same audience, so you may follow up.  She
 answers only questions about the game and keeps it brief.
 
@@ -761,7 +763,8 @@ Syntax: history                  -- the last 20, every channel
         history tell             -- your own tells, and nobody else's
         history list             -- what is held, and how much
 
-Read back what was said.
+Read back what was said on gossip and the other channels, including
+what you missed while you were offline.
 
 If your client stopped capturing, or you were fighting, or you simply
 scrolled past it - HISTORY on its own shows the last twenty lines from
@@ -828,7 +831,8 @@ Syntax: stash                          -- what is in it
         stash block <character>        -- and stop them asking
         stash unblock <character>      -- let them ask again
 
-Storage at the altar that survives a reboot.
+Storage at the altar that survives a reboot: a place to keep items and
+loot you do not want to carry around.
 
 STASH on its own lists what is in it, and you can read that from
 anywhere - knowing what you own is not the same as reaching it.

@@ -218,15 +218,19 @@ class OracleTests(unittest.TestCase):
         self.assertEqual(oracle._trim_truncated("Seek the old smith in the"),
                          "Seek the old smith in...")
 
-    def test_game_docs_are_cached_for_an_hour(self):
-        # A five-minute cache expired between nearly every pair of questions.
+    def test_the_whole_manual_is_never_sent(self):
+        # A cache write of ~19.7K tokens cost ~$0.04 for a sitting's first
+        # question. Only the relevant sections go now, uncached.
         self._enable()
         calls = []
         sys.modules["anthropic"] = _fake_anthropic("Yes.", calls=calls)
-        oracle.consult("Alaric", "q?")
-        docs = calls[0]["system"][1]
-        self.assertEqual(docs["cache_control"], {"type": "ephemeral", "ttl": "1h"})
-        # Spend is estimated at the 1-hour write rate, 2x input.
+        oracle.consult("Alaric", "how many times can I remort?")
+        system = calls[0]["system"]
+        self.assertTrue(all("cache_control" not in block for block in system))
+        sent = sum(len(block["text"]) for block in system)
+        self.assertLess(sent, 9000)
+        self.assertIn("Remort", system[1]["text"])
+        # Should a write ever happen, it is estimated at the 1-hour rate.
         usage = types.SimpleNamespace(input_tokens=0, output_tokens=0,
                                       cache_read_input_tokens=0,
                                       cache_creation_input_tokens=1_000_000)
@@ -344,9 +348,48 @@ class OracleContextTests(unittest.TestCase):
         ]
         lines = _server._oracle_help_lines("what does sanctuary do at my level?",
                                            entries)
-        self.assertEqual(lines, ["HELP SANCTUARY -- Sanctuary halves the damage "
-                                 "you take."])
-        self.assertEqual(_server._oracle_help_lines("hello there", entries), [])
+        # Named outright, it comes first, colour codes stripped.
+        self.assertEqual(lines[0], "HELP SANCTUARY -- Sanctuary halves the damage "
+                                   "you take.")
+        self.assertEqual(_server._oracle_help_lines("zzqx wvvy", entries), [])
+
+    def test_help_is_found_for_a_question_that_names_nothing(self):
+        # Players ask in their own words; the shipped help must still answer.
+        entries = _server.load_player_help()
+        titles = lambda q: [l.split(" -- ")[0] for l in
+                            _server._oracle_help_lines(q, entries)]
+        self.assertIn("HELP STASH",
+                      titles("where can I store items I don't want to carry around?"))
+        self.assertIn("HELP HISTORY",
+                      titles("how can I see what people said on gossip while I "
+                             "was offline?"))
+        self.assertIn("HELP BUFF", titles("how do I get free buffs?"))
+
+    def test_only_the_relevant_docs_are_sent(self):
+        # Sending the whole manual cost ~$0.04 a sitting in cache writes.
+        docs = oracle._relevant_docs("how many times can I remort?")
+        self.assertIn("Remort", docs)
+        self.assertLessEqual(len(docs), oracle._DOC_BUDGET_CHARS + oracle._DOC_SECTION_CHARS)
+        self.assertLess(len(docs), len(oracle._game_context()) / 8)
+        self.assertEqual(oracle._relevant_docs("what is the capital of france?"), "")
+
+    def test_lookups_name_the_asker_and_every_kind_reaches_the_game(self):
+        # mobeq and who were once dropped here before reaching the game.
+        import os
+        tmp = Path(tempfile.mkdtemp())
+        saved = _server.QUEUE_PATH
+        try:
+            _server.QUEUE_PATH = tmp / "webadmin.queue"
+            _server._oracle_live_lookup(
+                [("obj", "sword"), ("mob", "dummy"), ("eq", "Bob"),
+                 ("mobeq", "dummy"), ("who", "all"), ("shell", "rm")],
+                timeout=0.2, asker="Alaric")
+            sent = (tmp / "oracle.query").read_text(encoding="utf-8").splitlines()
+        finally:
+            _server.QUEUE_PATH = saved
+        kinds = [line.split("\t")[1] for line in sent]
+        self.assertEqual(kinds, ["obj", "mob", "eq", "mobeq", "who"])
+        self.assertTrue(all(line.split("\t")[2] == "Alaric" for line in sent))
 
     def test_drop_questions_are_answered_from_the_area_files(self):
         ns = types.SimpleNamespace
@@ -432,20 +475,40 @@ class OracleWiringTests(unittest.TestCase):
         self.assertIn("__OFFTOPIC__", self.read("webadmin", "oracle.py"))
         self.assertIn("ORACLE_OFFTOPIC", self.read("src", "oracle.c"))
 
-    def test_she_never_betrays_a_wizinvis_character(self):
-        # WHO hides them from mortals; every live lookup must too. The
-        # dashboard's login journal does not know who is invisible, so "who
-        # is online" is asked of the game and never read from the journal.
-        src = self.read("src", "oracle.c")
-        for fn in ("oracle_lookup_obj", "oracle_lookup_eq", "oracle_lookup_who"):
+    def test_she_sees_only_what_the_asker_could(self):
+        # Every live lookup goes through the asker-relative rule; none may
+        # read a character or an object without it.
+        src = self.read("src", "oracle.c").replace("\r\n", "\n")
+        for fn, rule in (("oracle_lookup_obj", "oracle_can_locate_obj( asker"),
+                         ("oracle_lookup_mob", "oracle_can_see_char( asker"),
+                         ("oracle_lookup_eq", "oracle_can_see_char( asker"),
+                         ("oracle_lookup_mobeq", "oracle_can_see_char( asker"),
+                         ("oracle_lookup_who", "oracle_can_see_char( asker")):
             body = src[src.index("static void " + fn + "("):]
             body = body[:body.index("\n}\n")]
-            self.assertIn("oracle_hidden(", body, fn)
+            self.assertIn(rule, body, fn)
+        rule = src[src.index("static bool oracle_can_see_char("):]
+        rule = rule[:rule.index("\n}\n")]
+        # Staff never; stealth and shadowmeld always hide, with no dice roll
+        # a repeated question could eventually win.
+        self.assertIn("oracle_is_staff( vch )", rule)
+        self.assertIn("AFF2_STEALTH", rule)
+        self.assertIn("AFF2_SHADOWMELD", rule)
+        self.assertIn("PLR_WIZINVIS", rule)
+        self.assertNotIn("number_percent", rule)
+        self.assertNotIn("can_see(", rule)
+        # A player's pack is their own: only what they have on.
+        locate = src[src.index("static bool oracle_can_locate_obj("):]
+        self.assertIn("WEAR_NONE", locate[:locate.index("\n}\n")])
+        # The dashboard's journal does not know who is invisible, and a saved
+        # file describes an offline player nobody could look at.
         ctx = self.read("webadmin", "server.py")
         ctx = ctx[ctx.index("def _oracle_context("):]
         ctx = ctx[:ctx.index("\ndef ")]
         self.assertNotIn("players_online(", ctx)
+        self.assertNotIn("parse_player_file(cap)", ctx)
         self.assertIn('("who", "all")', ctx)
+        self.assertIn("asker=player", ctx)
 
     def test_wrong_files_a_report_and_tells_the_poller(self):
         src = self.read("src", "oracle.c")

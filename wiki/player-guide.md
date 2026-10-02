@@ -612,7 +612,9 @@ curtain, returns you to where you prayed. She attends one seeker at a time.
 - She knows commands, classes, races, remorts, skills, areas, leveling, and
   what gear to seek for your class and level, and she has read the game's own
   help. She can see what players and creatures are wearing, where an item or
-  creature is right now, and where an item drops.
+  creature is right now, and where an item drops -- but only what you could
+  see yourself. She never reveals staff, anyone stealthed, shadowmelded or
+  hidden from you, or what is in another player's pack.
 - She remembers what you asked earlier in the same audience, so a follow-up
   ("and for a mage?") works.
 - If an answer is wrong, `say wrong`. The exchange is filed as a bug report
