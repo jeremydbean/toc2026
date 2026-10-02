@@ -69,6 +69,7 @@ DECLARE_SPEC_FUN(       spec_paramedic          );
 DECLARE_SPEC_FUN(       spec_quest_master       );
 DECLARE_SPEC_FUN(       spec_kidnapper          );
 DECLARE_SPEC_FUN(       spec_monk               );
+DECLARE_SPEC_FUN(       spec_oracle             );
 DECLARE_SPEC_FUN(       spec_banker             );
 
 struct quest_type
@@ -259,6 +260,7 @@ const   struct  spec_type       spec_table      [ ] =
     { "spec_quest_master",      spec_quest_master       },
     { "spec_kidnapper",         spec_kidnapper          },
     { "spec_monk",              spec_monk               },
+    { "spec_oracle",            spec_oracle             },
     { "spec_banker",            spec_banker             },
     /*
      * End of list.

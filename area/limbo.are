@@ -835,6 +835,23 @@ ABQ CDFHJT 1000 S
 AEFGHIK ABCDEFG 0 0
 8 8 1 0
 0 0 M 0
+#97
+oracle seer sibyl woman~
+the Oracle~
+the Oracle sits here, her eyes clouded, waiting for a question.
+~
+The Oracle has sat in this spot longer than anyone remembers.  She sees the
+world entire and will tell you what she sees if you ASK her -- where a thing
+is found, what a mob carries, how a system works.  She takes no payment.
+~
+unique~
+ABQ CDFHJT 1000 S
+70 10 1d1+19000 1d1+1000 10d20+100 20
+-5 -5 -5 -5
+0 ABCDEFG 0 0
+8 8 2 0
+0 0 M 0
+
 #4444
 elite guard~
 an elite guard~

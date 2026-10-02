@@ -50,6 +50,7 @@ set(SRC_FILES
     src/magic2.c
     src/maxload.c
     src/misc.c
+    src/oracle.c
     src/pkill.c
     src/quest.c
     src/save.c

@@ -128,11 +128,13 @@ try:
     from webadmin.area_parser import AreaParser, APPLY_LOCATIONS
     from webadmin.area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from webadmin.area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
+    from webadmin import oracle
 except ImportError:
     from area_health import build_area_health
     from area_parser import AreaParser, APPLY_LOCATIONS
     from area_parser import decode_applies, decode_flags, ITEM_FLAGS, ITEM_FLAGS2, WEAR_FLAGS, ITEM_TYPES, interpret_values, interpret_mob_values, SECTOR_TYPES
     from area_parser import ACT_FLAGS, OFF_FLAGS, IMM_FLAGS, RES_FLAGS, VULN_FLAGS, FORM_FLAGS, PART_FLAGS, AFFECTED_FLAGS, ROOM_FLAGS
+    import oracle
 
 # Default paths
 QUEUE_PATH: Path = Path(os.getenv("QUEUE_PATH", "area/webadmin.queue"))
@@ -321,6 +323,30 @@ def require_queue_writer() -> QueueWriter:
     return queue_writer
 
 
+# How often the Oracle poller drains the game's question spool. The feed is
+# tiny and rate-limited, so a couple of seconds is ample.
+ORACLE_POLL_SECONDS = float(os.getenv("ORACLE_POLL_SECONDS", "2.0"))
+
+
+async def _oracle_poll_loop():
+    """Drain the Oracle's ask spool and write answers, beside the game's queue.
+
+    Runs for the life of the web service and never raises out: a bad batch is
+    swallowed so this can never take the dashboard down. poll_once itself does
+    nothing (bar a quiet reply) until the Oracle is enabled with an API key.
+    """
+    ask = QUEUE_PATH.parent / "oracle.ask"
+    answer = QUEUE_PATH.parent / "oracle.answer"
+    while True:
+        try:
+            await asyncio.to_thread(oracle.poll_once, ask, answer)
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            pass
+        await asyncio.sleep(ORACLE_POLL_SECONDS)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global AREA_HEALTH_CACHE, parser, queue_writer
@@ -328,9 +354,15 @@ async def lifespan(app: FastAPI):
     parser = await asyncio.to_thread(load_area_parser, AREA_PATH)
     AREA_MAP_CACHE.clear()
     AREA_HEALTH_CACHE = None
+    oracle_task = asyncio.create_task(_oracle_poll_loop())
     try:
         yield
     finally:
+        oracle_task.cancel()
+        try:
+            await oracle_task
+        except asyncio.CancelledError:
+            pass
         queue_writer = None
 
 

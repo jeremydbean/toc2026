@@ -26,6 +26,8 @@ __pycache__/
 backups/
 corpse/
 area/webadmin.queue
+area/oracle.ask
+area/oracle.answer
 area/*.dmp
 log/
 player/*

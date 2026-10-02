@@ -235,3 +235,73 @@ def consult(player: str, question: str) -> str:
     except Exception:
         # Any API, network or parsing failure: stay quiet rather than crash.
         return _QUIET
+
+
+# ----------------------------------------------------------------- poller
+# The game appends questions to an "ask" spool (one tab-separated record per
+# line: epoch, player, question) and reads answers from an "answer" spool
+# ("player\tanswer"). This drains one batch of the ask spool, answers each
+# question through consult(), and appends the answers. The web service calls
+# it on a timer. Safe when disabled: consult() self-gates and returns a quiet
+# line, so the spool still drains rather than backing up unbounded.
+try:
+    import fcntl as _fcntl
+except ImportError:          # non-POSIX (e.g. a Windows dev box)
+    _fcntl = None
+
+
+def _lock_ex(fh) -> None:
+    """Best-effort exclusive advisory lock, matching the game's fcntl lock."""
+    if _fcntl is not None:
+        try:
+            _fcntl.lockf(fh, _fcntl.LOCK_EX)
+        except OSError:
+            pass
+
+
+def poll_once(ask_path, answer_path) -> int:
+    """Drain one batch of questions; return how many were answered."""
+    ask = Path(ask_path)
+    ans = Path(answer_path)
+
+    try:
+        if not ask.exists() or ask.stat().st_size == 0:
+            return 0
+    except OSError:
+        return 0
+
+    # Claim the whole spool under the same advisory lock the game writer takes,
+    # so a half-written record is never read.
+    try:
+        fh = open(ask, "r+", encoding="utf-8", errors="replace")
+    except OSError:
+        return 0
+    try:
+        _lock_ex(fh)
+        data = fh.read()
+        fh.seek(0)
+        fh.truncate(0)
+    finally:
+        try:
+            fh.close()
+        except OSError:
+            pass
+
+    count = 0
+    for line in data.splitlines():
+        parts = line.rstrip("\r\n").split("\t")
+        if len(parts) < 3:
+            continue
+        player = parts[1].strip()
+        question = "\t".join(parts[2:]).strip()
+        if not player or not question:
+            continue
+        answer = _one_line(consult(player, question))
+        try:
+            with open(ans, "a", encoding="utf-8") as af:
+                _lock_ex(af)
+                af.write("%s\t%s\n" % (player, answer))
+        except OSError:
+            pass
+        count += 1
+    return count

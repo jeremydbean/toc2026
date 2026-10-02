@@ -2521,6 +2521,13 @@ void do_say( CHAR_DATA *ch, char *argument )
         }
     }
 
+    /* A spoken question (or a farewell like "done") reaches the Oracle, if she
+       is standing here.  oracle_hears() keeps ordinary room chat out, so
+       casual talk near her never burns a paid API call; ASK is the explicit
+       path that needs no punctuation. */
+    if ( !IS_NPC(ch) && oracle_here(ch) && oracle_hears( argument ) )
+        oracle_listen( ch, argument );
+
     return;
 }
 

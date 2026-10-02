@@ -1540,6 +1540,7 @@ void char_from_room( CHAR_DATA *ch )
        dragged. After the null check, because breaking it speaks to the
        room. */
     shadowmeld_break( ch, "You step out of the shadows." );
+    oracle_on_char_from_room( ch );
 
     /* Leaving the training yard mid-run abandons the run and puts
        your hit points back now, while you are still standing in it:

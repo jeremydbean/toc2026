@@ -865,7 +865,14 @@ struct  kill_data
 #define MOB_VNUM_HERBIE              99
 #define MOB_VNUM_SPELLUP             98
 #define SPELLUP_DURATION             30
+/* The Oracle -- an in-game seer who answers questions by asking Claude out
+ * of process (src/oracle.c, webadmin/oracle.py).  Dormant until placed. */
+#define MOB_VNUM_ORACLE              97
 void  spellup_listen  args( ( CHAR_DATA *ch, const char *argument ) );
+void  oracle_listen   args( ( CHAR_DATA *ch, const char *argument ) );
+bool  oracle_here     args( ( CHAR_DATA *ch ) );
+void  oracle_on_char_from_room args( ( CHAR_DATA *ch ) );
+bool  oracle_hears    args( ( const char *argument ) );
 const char *default_prompt_text args( ( void ) );
 
 /* RT ASCII conversions */
