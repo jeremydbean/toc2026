@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790982045
+LogO 1790982375
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 238795
+Plyd 239125
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2497
+Room 2437
 HMV  1150 1150 1482 1482 427 427
-NewGold 115
+NewGold 75
 NewPlat 121
-NewCopp 136
-NewSilv 76
+NewCopp 36
+NewSilv 77
 BankCP 505999078
 IntTime 1790902684
 IntTotal 6999078
@@ -88,6 +88,7 @@ Achv fifty-quest-streak 1790733868
 Achv carry-ten-platinum 1790722751
 Achv visit-arena 1790817462
 Achv visit-chessboard 1790898112
+Achv visit-emerald-forest 1790982178
 Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
 Achv visit-korzath-fortress 1790899622
@@ -108,7 +109,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  125284
 Act  4261068
-AfBy 524800
+AfBy 512
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -185,7 +186,6 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'fly'  29   3   0   0     524288          0
 End
 
 #O
