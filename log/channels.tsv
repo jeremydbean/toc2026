@@ -513,3 +513,13 @@
 1790905441	gossip	Killuminati	Now I see the whole picture. The bug is magnitude: hp/mana bonuses come in tenshundreds while hitroll/damroll/stats come in single digits, so even with damroll weighted higher per point (warrior damroll 4.0 vs hp 2.0), a +50 hp roll (=100) buries a +6 damroll upgrade (=24). I'll make the survivability weights small enough that an ordinary damage upgrade wins, while a huge hp bump still can. Also scaling weapon-dice value by the class's melee weight so weapons matter for fighters, not casters. The remort
 1790905617	gossip	Killuminati	the new weights hand-check out (warrior: +8 damroll = 32 beats +50 hp = 10; but +150 hp = 30 beats +2 damroll = 8). Let me check for an existing gear-scoring test I need to keep green:
 1790905637	gossip	Alaric	Crazy how much it checks
+1790905663	gossip	Killuminati	yeah it really crunched the numbers for awhile to make the list, lol
+1790905738	gossip	Killuminati	it was already filtering by 'normal play acquirable items'.  there's some crazy immortal made but un-acquirable items. like my flaming newbie sword and some of soul's stuff, etc.
+1790905755	gossip	Killuminati	it's only supposed to recommend items that can actually drop in normal play, even if rare to spawn
+1790905815	gossip	Killuminati	dude the money code was a mess.  even when they implemented platinum, the entire money code was gold-based.  so the lowest price you used to be able to make something was 1g.  i had to completely re-structure the entire money system. which.  is fucking EVERYWHERE, lol
+1790905822	gossip	Killuminati	to get it back to copper-based
+1790905854	gossip	Alaric	The repair costs generally seem better. Some items would require an obscene amount of platinum
+1790905861	gossip	Killuminati	there were actually several bugs where you could convert and then split and re-convert and it didn't math right and you could scale up to unlimited money, lol
+1790905875	gossip	Killuminati	yeah because it was all gold based, lol
+1790905907	gossip	Killuminati	and they didn't adjust pricing on everything when they did it.  i did.  every fucking vendor, every time money was touched the code had to be changed.  it was a massive update
+1790905955	gossip	Killuminati	i think ungrim and blackbird did the platinum change didn't they?

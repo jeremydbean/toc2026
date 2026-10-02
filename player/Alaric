@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790905652
+LogO 1790905935
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 51
-Plyd 235546
+Plyd 235829
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2390
-HMV  1082 1096 1445 1445 421 421
-NewGold 113
+Room 4201
+HMV  1096 1096 1445 1445 235 421
+NewGold 60
 NewPlat 95
-NewCopp 653
-NewSilv 204
+NewCopp 53
+NewSilv 40
 BankCP 505999078
 IntTime 1790902684
 IntTotal 6999078
@@ -108,7 +108,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  124507
 Act  4261068
-AfBy 512
+AfBy 524800
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -185,6 +185,7 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'fly'  29  11   0   0     524288          0
 End
 
 #O
@@ -983,6 +984,66 @@ Cost 30000000
 Cond 100
 Repd 0
 Affect -1 29 -1 -2 5 0 0
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
+End
+
+#O
+Vnum 3091
+Nest 0
+Wear -1
+Cost 20000
+Cond 100
+Repd 0
+Spell 1 'fly'
 End
 
 #STASH
