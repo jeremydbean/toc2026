@@ -23423,3 +23423,21 @@ Fri Oct  2 03:04:04 2026 :: Oracle: Killuminati prayed; she appeared in room 421
 Fri Oct  2 03:04:07 2026 :: Sock.sinaddr:  3.149.57.90
 Fri Oct  2 03:04:07 2026 :: EOF encountered on read.
 Fri Oct  2 03:04:49 2026 :: Oracle: Killuminati prayed; she appeared in room 4216 (Death room.).
+Fri Oct  2 03:09:12 2026 :: Sock.sinaddr:  178.156.189.113
+Fri Oct  2 03:09:12 2026 :: EOF encountered on read.
+Fri Oct  2 03:12:38 2026 :: ANNOUNCE: Update incoming - saving everyone now, back in under a minute.
+Fri Oct  2 03:12:42 2026 :: Log WebAdmin: fsave
+Fri Oct  2 03:12:48 2026 :: ANNOUNCE: Everyone saved. Restarting - reconnect in a moment.
+Fri Oct  2 03:12:51 2026 :: Received signal 15; saving players and shutting down.
+Fri Oct  2 03:12:51 2026 :: Closing link to Killuminati.
+Fri Oct  2 03:12:51 2026 :: Normal termination of game.
+Fri Oct  2 03:12:51 2026 ::  INIT OK 
+Fri Oct  2 03:12:51 2026 :: ROM is ready to rock on port 9000.
+Fri Oct  2 03:12:52 2026 :: Automated backup complete.
+Fri Oct  2 03:12:52 2026 :: Daily backup complete.
+Fri Oct  2 03:14:17 2026 :: Sock.sinaddr:  5.161.194.92
+Fri Oct  2 03:14:18 2026 :: EOF encountered on read.
+Fri Oct  2 03:19:22 2026 :: Sock.sinaddr:  178.156.189.113
+Fri Oct  2 03:19:23 2026 :: EOF encountered on read.
+Fri Oct  2 03:24:27 2026 :: Sock.sinaddr:  3.12.251.153
+Fri Oct  2 03:24:27 2026 :: EOF encountered on read.
