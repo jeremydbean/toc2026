@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790981357
+LogO 1790981707
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,13 +15,13 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 238107
+Plyd 238457
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4210
-HMV  455 1110 1472 1472 339 427
+Room 2401
+HMV  1110 1110 1472 1472 427 427
 NewGold 102
 NewPlat 116
 NewCopp 105
@@ -106,9 +106,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  124759
+Exp  124749
 Act  4261068
-AfBy 568
+AfBy 524856
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -133,7 +133,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  4
+Pos  8
 Prac 8
 Trai 2
 Save  -6
@@ -185,9 +185,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'detect hidden'  42   6   0   0         32          0
-AffD 'detect magic'  34   6   0   0         16          0
-AffD 'detect invis'  29   6   0   0          8          0
+AffD 'fly'  32   8   0   0     524288          0
+AffD 'detect hidden'  41   1   0   0         32          0
+AffD 'detect magic'  34   1   0   0         16          0
+AffD 'detect invis'  29   1   0   0          8          0
 End
 
 #O
@@ -498,7 +499,7 @@ Nest 0
 Wear 5
 Lev  45
 Cost 5000000
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -974,16 +975,6 @@ Cost 30000000
 Cond 100
 Repd 0
 Affect -1 29 -1 -2 5 0 0
-End
-
-#O
-Vnum 3091
-Nest 0
-Wear -1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'fly'
 End
 
 #O
