@@ -3257,6 +3257,131 @@ async def get_best_gear(
     return result
 
 
+# --- Leveling advisor -------------------------------------------------
+# The XP a kill is worth, straight from xp_compute() in src/fight.c: a
+# table on level_range = mob_level - player_level + 3, flat +50 per level
+# above the top of the table. Solo and neutral -- the group and alignment
+# multipliers in the C only scale every mob the same way, so they do not
+# change the ranking. Keep this in step with fight.c if that table moves.
+_XP_BASE_TABLE = {-9: 1, -8: 2, -7: 5, -6: 10, -5: 15, -4: 25, -3: 35,
+                  -2: 45, -1: 60, 0: 100, 1: 125, 2: 150, 3: 175, 4: 200}
+
+
+def xp_for_kill(player_level: int, mob_level: int) -> int:
+    rng = mob_level - player_level + 3
+    if rng > 4:
+        return 200 + 50 * (rng - 4)
+    return _XP_BASE_TABLE.get(rng, 0)
+
+
+def _dice_avg(spec: str) -> float:
+    """Average of an 'XdY+Z' dice string, 0 on anything unparseable."""
+    m = re.match(r"\s*(\d+)d(\d+)(?:\s*\+\s*(\d+))?", str(spec or ""))
+    if not m:
+        return 0.0
+    n, size = int(m.group(1)), int(m.group(2))
+    bonus = int(m.group(3)) if m.group(3) else 0
+    return n * (size + 1) / 2.0 + bonus
+
+
+# Town-service NPCs you grind only by mistake.
+_LEVELING_SKIP_ACT = {"is-healer", "gain", "train", "practice"}
+# Area resets are on a roughly uniform timer, so population -- how many of
+# the mob stand in the world -- is the availability signal, not per-mob
+# spawn speed. A quiet area refills a few times an hour.
+_RESETS_PER_HOUR = 12
+
+
+@app.get("/api/leveling")
+async def get_leveling(
+    level: int = Query(..., description="Player level to advise for"),
+    limit: int = Query(20, description="How many mobs to return"),
+):
+    if level < 1 or level > 70:
+        raise HTTPException(status_code=400, detail="Level must be between 1 and 70")
+    limit = max(1, min(limit, 50))
+
+    # DPS a player of this level is assumed to do. It is a modelled
+    # estimate -- the game logs no combat damage and the dummy benchmark
+    # board is the real source once it has runs -- and, being constant for
+    # a fixed level, it only scales the xp/hour figure, never the order.
+    player_dps = max(1.0, level * 3.0)
+    player_hp = max(20.0, level * 20.0)
+
+    # The same per-area routes the Directions tab shows, keyed by area so
+    # each mob can carry the walk to its neighbourhood (from the Oak Tree
+    # Square). Routes reach an area's entrance; the player finds the mob
+    # from there.
+    # Mob area names keep the builder field's padding ("Andi    The Astral
+    # Plane") while the routes collapse it to single spaces, so match on a
+    # whitespace-normalised key.
+    def _area_key(name: str) -> str:
+        return " ".join(str(name or "").split())
+
+    directions = load_directions()
+    routes_by_area: Dict[str, Dict[str, Any]] = {}
+    for route in directions.get("routes", []):
+        for key in (route.get("area"), route.get("area_display")):
+            if key:
+                routes_by_area.setdefault(_area_key(key), route)
+
+    rows = []
+    for vnum, mob in parser.mobiles.items():
+        mob_level = int(mob.level or 0)
+        if mob_level <= 0:
+            continue
+        # Killable band: you can punch above your weight, but a mob ten
+        # levels up is a different game, and one far below is worth nothing.
+        if mob_level > level + 8 or mob_level < level - 10:
+            continue
+        xp = xp_for_kill(level, mob_level)
+        if xp <= 0:
+            continue
+        population = len(getattr(mob, "spawn_rooms", []) or [])
+        if population <= 0:
+            continue
+        if _LEVELING_SKIP_ACT & set(decode_flags(mob.act_flags, ACT_FLAGS)):
+            continue
+
+        hp = _dice_avg(mob.hitp_dice) or (mob_level * 10.0)
+        dmg = _dice_avg(mob.dam_dice)
+        kill_time = max(1.0, hp / player_dps)                 # seconds
+        solo_rate = 3600.0 / kill_time                        # kills/hour if always one up
+        supply_rate = population * _RESETS_PER_HOUR           # kills/hour the world can refill
+        kills_hr = min(solo_rate, supply_rate)
+        # Brutal mobs for their level rank lower -- dying is the slowest
+        # way to level.
+        safety = 1.0 / (1.0 + dmg / (player_hp / 4.0))
+        xp_hr = xp * kills_hr * safety
+
+        route = routes_by_area.get(_area_key(mob.area_name))
+        rows.append({
+            "vnum": mob.vnum,
+            "name": mob.short_desc,
+            "level": mob_level,
+            "area": mob.area_name,
+            "count": population,
+            "hp": round(hp),
+            "damage": round(dmg, 1),
+            "xp_per_kill": xp,
+            "kill_seconds": round(kill_time, 1),
+            "xp_per_hour": round(xp_hr),
+            "aggressive": "aggressive" in decode_flags(mob.off_flags, OFF_FLAGS)
+                          or "aggressive" in decode_flags(mob.act_flags, ACT_FLAGS),
+            "directions": route["commands"] if route else "",
+            "rooms_away": route.get("rooms_away") if route else None,
+        })
+
+    rows.sort(key=lambda r: r["xp_per_hour"], reverse=True)
+    return {
+        "level": level,
+        "player_dps_estimate": round(player_dps),
+        "note": "xp/hour is an estimate (modelled DPS); the ranking does "
+                "not depend on it. xp/kill and the band come from fight.c.",
+        "mobs": rows[:limit],
+    }
+
+
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket) -> None:
     if not websocket_origin_allowed(websocket):

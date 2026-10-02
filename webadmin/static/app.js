@@ -10,7 +10,7 @@
     const ADMIN_VIEWS = new Set(["players", "console", "logins", "chat", "logs", "host", "operations"]);
 
     const VIEW_NAMES = new Set([
-        "overview", "world", "areas", "players", "gear", "routes", "console", "logins", "chat", "logs", "host", "operations",
+        "overview", "world", "areas", "players", "gear", "leveling", "routes", "console", "logins", "chat", "logs", "host", "operations",
     ]);
     const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -334,6 +334,7 @@
         else if (view === "host") await loadHostStatus();
         else if (view === "operations") await loadOperations();
         else if (view === "routes") await loadRoutes();
+        else if (view === "leveling") await loadLeveling();
     }
 
     // Travel directions. Public, like the help text -- the same feed the
@@ -1702,6 +1703,42 @@
         results.replaceChildren(fragment);
     }
 
+    async function loadLeveling() {
+        const level = Number(byId("leveling-level").value);
+        const limit = Number(byId("leveling-limit").value);
+        const results = byId("leveling-results");
+        results.replaceChildren(node("div", { className: "empty-state large", text: "Ranking mobs..." }));
+        try {
+            const params = new URLSearchParams({ level, limit });
+            const data = await api(`/api/leveling?${params}`);
+            renderLeveling(data);
+        } catch (error) {
+            results.replaceChildren(node("div", { className: "empty-state large", text: error.message }));
+        }
+    }
+
+    function renderLeveling(data) {
+        const note = byId("leveling-note");
+        if (note) note.textContent = data.note || "";
+        const mobs = data.mobs || [];
+        const table = dataTable(mobs, [
+            { label: "Mob", value: (m) => stripMudColor(m.name) },
+            { label: "Lvl", key: "level" },
+            { label: "Count", key: "count" },
+            { label: "HP", key: "hp" },
+            { label: "XP/kill", key: "xp_per_kill" },
+            { label: "~XP/hour", value: (m) => formatNumber(m.xp_per_hour) },
+            { label: "Danger", value: (m) => m.aggressive ? "aggro" : "" },
+            { label: "Area", value: (m) => stripMudColor(m.area) },
+            { label: "Getting there (from Oak Tree Square)", value: (m) =>
+                m.directions
+                    ? `${m.rooms_away != null ? m.rooms_away + " rms — " : ""}${m.directions}`
+                    : "no published route" },
+        ], "No good targets for that level.");
+        byId("leveling-results").replaceChildren(table);
+    }
+
+
     function setConsoleConnected(connected, label = null) {
         state.terminal.connected = connected;
         byId("console-status").textContent = label || (connected ? "Connected" : "Disconnected");
@@ -2188,6 +2225,11 @@
         byId("gear-form").addEventListener("submit", (event) => {
             event.preventDefault();
             void loadGear();
+        });
+
+        byId("leveling-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            void loadLeveling();
         });
 
         byId("console-connect").addEventListener("click", connectConsole);

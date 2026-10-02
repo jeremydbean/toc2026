@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib
 import os
+import re
 import sys
 import tempfile
 import unittest
@@ -173,9 +174,18 @@ class WebAdminApiTests(unittest.TestCase):
             self.assertIn('/static/client.css', game_client.text)
             self.assertIn('/static/client.js', game_client.text)
             self.assertIn('/static/command-sequence.js', game_client.text)
+            # The client loads no external assets -- scripts, styles and
+            # images are all local, so it runs offline. The one allowed
+            # off-site URL is the Mudlet download link, a navigation anchor
+            # (not a resource load, and CSP default-src 'self' does not gate
+            # navigation), so the page still works with no internet.
+            externals = [
+                u for u in re.findall(r"https?://[^\s\"'<>]+", game_client.text)
+                if "mudlet.org" not in u
+            ]
+            self.assertEqual(externals, [],
+                             f"client should load no external assets: {externals}")
             self.assertNotIn("cdn.", game_client.text)
-            self.assertNotIn("http://", game_client.text)
-            self.assertNotIn("https://", game_client.text)
             self.assertIn("default-src 'self'", game_client.headers["Content-Security-Policy"])
 
             client_stylesheet = client.get("/static/client.css")

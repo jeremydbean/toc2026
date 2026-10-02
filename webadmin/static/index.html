@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/static/theme-dragon.css?v=2">
     <script src="/static/command-sequence.js?v=1" defer></script>
     <script src="/static/console-output.js?v=1" defer></script>
-    <script src="/static/app.js?v=21" defer></script>
+    <script src="/static/app.js?v=22" defer></script>
 </head>
 <body>
     <div class="app-shell">
@@ -28,6 +28,7 @@
                 <button class="nav-item" type="button" data-view="areas">Areas and health</button>
                 <button class="nav-item" type="button" data-admin data-view="players">Players</button>
                 <button class="nav-item" type="button" data-view="gear">Gear finder</button>
+                <button class="nav-item" type="button" data-view="leveling">Leveling</button>
                 <button class="nav-item" type="button" data-view="routes">Directions</button>
                 <button class="nav-item" type="button" data-admin data-view="console">Game console</button>
                 <button class="nav-item" type="button" data-admin data-view="logins">Logins</button>
@@ -244,6 +245,19 @@
                     <button class="button button-primary" type="submit">Find gear</button>
                 </form>
                 <div id="gear-results" class="gear-results"><div class="empty-state large">Choose a class, race, and level.</div></div>
+            </section>
+
+            <section class="view" id="leveling-view" data-title="Leveling">
+                <div class="section-heading">
+                    <div><span class="eyebrow">Best mobs to grind, ranked by estimated xp/hour</span><h2>Leveling advisor</h2></div>
+                </div>
+                <form class="filter-grid" id="leveling-form">
+                    <label>Your level<input id="leveling-level" type="number" min="1" max="70" value="30"></label>
+                    <label>Show<input id="leveling-limit" type="number" min="5" max="50" value="20"></label>
+                    <button class="button button-primary" type="submit">Find targets</button>
+                </form>
+                <p class="routes-intro" id="leveling-note"></p>
+                <div id="leveling-results" class="gear-results"><div class="empty-state large">Enter your level.</div></div>
             </section>
 
             <section class="view" id="routes-view" data-title="Directions">
