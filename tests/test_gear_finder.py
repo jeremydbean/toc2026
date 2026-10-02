@@ -124,6 +124,33 @@ class GearFinderTests(unittest.TestCase):
         result = self.find(item(8, 11, "AE", level=40), level=10)
         self.assertEqual(result["Head"], [])
 
+    # ---- damage-forward scoring --------------------------------------
+    # Survivability stats roll onto gear in large numbers; damage stats in
+    # single digits. The weights are tuned so an ordinary damage upgrade
+    # outranks an ordinary hp roll, while a genuinely huge hp bump still
+    # wins over a marginal damage gain. These pin both halves.
+    def find_as(self, class_name, *objects, level=50):
+        from webadmin import server
+
+        fake = SimpleNamespace(objects={o.vnum: o for o in objects})
+        with patch.object(server, "parser", fake):
+            return asyncio.run(server.get_best_gear(
+                class_name=class_name, race_name="human", level=level, limit=10))
+
+    def test_damage_outranks_a_plain_hp_roll_for_a_fighter(self) -> None:
+        dmg = item(20, 9, "AB", affects=[(19, 8)])    # +8 damroll
+        hp = item(21, 9, "AB", affects=[(13, 50)])    # +50 hit points
+        ranked = [i["vnum"] for i in self.find_as("warrior", dmg, hp)["Left Finger"]]
+        self.assertEqual(ranked[0], 20,
+                         "a damage upgrade should outrank a plain hp roll")
+
+    def test_a_huge_hp_bump_still_beats_a_marginal_damage_gain(self) -> None:
+        hp = item(22, 9, "AB", affects=[(13, 150)])   # +150 hit points
+        dmg = item(23, 9, "AB", affects=[(19, 2)])    # +2 damroll
+        ranked = [i["vnum"] for i in self.find_as("warrior", hp, dmg)["Left Finger"]]
+        self.assertEqual(ranked[0], 22,
+                         "a very large hp bump should still win over a tiny damage gain")
+
 
 if __name__ == "__main__":
     unittest.main()

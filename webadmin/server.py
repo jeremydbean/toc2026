@@ -440,97 +440,105 @@ def websocket_origin_allowed(websocket: WebSocket) -> bool:
     return parsed.scheme in {"http", "https"} and parsed.netloc.lower() == request_host
 
 
-# Class stat weights for gear optimization
-# Class-specific stat weights for Best Gear scoring
-# Based on code analysis:
-# - Hitroll: improves chance to hit (thac0), critical for melee DPS
-# - Damroll: adds directly to damage output, critical for melee DPS  
-# - STR: gives bonus hit/dam via str_app table (+6 hit, +9 dam at 25 str)
-# - DEX: affects thief skills, dodge/parry, AC
-# - CON: affects max HP
-# - INT: affects mana for mages, learning rate
-# - WIS: affects cleric spells, mana
-# - HP: raw survivability, important for melee tanks
-# - Mana: casting resource, critical for casters
+# Class stat weights for Best Gear scoring.
+#
+# These are DAMAGE-FORWARD on purpose: a recommendation should rank an item
+# above another mainly because it makes you hit harder, not because it pads
+# your hit points.  The one trap to design around is MAGNITUDE.  Hit points
+# and mana roll onto gear in large numbers -- tens to hundreds -- while
+# hitroll, damroll and the six stats roll in single digits.  Score each by a
+# flat per-point weight and a fat +60 hp roll (60 x anything) buries a real
+# +6 damroll upgrade every time, which is exactly the "it keeps recommending
+# HP" complaint.
+#
+# So the survivability stats carry deliberately small per-point weights, and
+# the damage stats -- hitroll, damroll, and each class's prime
+# fighting/casting stat -- carry large ones.  The arithmetic then lands where
+# it should: an ordinary damage upgrade outranks an ordinary hp roll, but a
+# genuinely huge hp bump (say +150) still wins over a marginal damage gain.
+# Constitution only feeds hp for most classes, so it is weighted like hp --
+# except for the monk, whose unarmed damage keys off CON, so there it stays a
+# prime (damage) stat.  Weapon dice are scaled by the class's melee weight
+# below, so a weapon matters to a fighter and barely moves a caster.
 
 CLASS_WEIGHTS = {
     "mage": {
-        # Pure caster: INT and mana are king, some survivability
-        "intelligence": 3.0,      # Prime stat, affects spell damage/learning
-        "mana": 1.5,              # Casting resource
-        "save vs spell": 1.0,     # Resist enemy spells
-        "hit points": 0.8,        # Survivability
-        "constitution": 0.8,      # More HP
-        "wisdom": 0.5,            # Some mana benefit
+        # Pure caster: spell damage rides on INT.
+        "intelligence": 3.0,      # Prime: spell damage / learning
+        "save vs spell": 0.8,     # Resist enemy spells
+        "mana": 0.4,              # Large magnitude -> small per-point
+        "wisdom": 0.4,            # Some mana benefit
         "dexterity": 0.3,         # Minimal AC benefit
+        "constitution": 0.25,     # Survivability (hp) only
+        "hit points": 0.12,       # Large magnitude -> small per-point
         "hitroll": 0.2,           # Rarely melee
         "damroll": 0.2,           # Rarely melee
         "strength": 0.1,          # Carry capacity only
     },
     "cleric": {
-        # Healer/buffer with some melee capability
-        "wisdom": 3.0,            # Prime stat for cleric spells
-        "mana": 1.5,              # Casting resource
-        "hit points": 1.2,        # Frontline healer needs HP
-        "constitution": 1.0,      # Survivability
-        "save vs spell": 1.0,     # Resist debuffs
-        "hitroll": 1.0,           # Can melee with mace
-        "damroll": 1.0,           # Can melee with mace
-        "strength": 0.8,          # Bonus to hit/dam
-        "intelligence": 0.3,      # Minor mana benefit
+        # Prime WIS caster who can also swing a mace.
+        "wisdom": 3.0,            # Prime: cleric spells
+        "hitroll": 1.5,           # Melee damage
+        "damroll": 1.5,           # Melee damage
+        "strength": 0.8,          # Bonus hit/dam
+        "save vs spell": 0.8,     # Resist debuffs
+        "mana": 0.4,              # Large magnitude -> small per-point
         "dexterity": 0.3,         # AC benefit
+        "intelligence": 0.3,      # Minor mana benefit
+        "constitution": 0.25,     # Survivability (hp) only
+        "hit points": 0.15,       # Large magnitude -> small per-point
     },
     "thief": {
-        # Melee DPS with DEX focus for backstab/skills
-        "dexterity": 3.0,         # Prime stat, affects skills/dodge
-        "hitroll": 3.5,           # Critical for backstab to land
-        "damroll": 3.5,           # Multiplied by backstab
-        "hit points": 1.2,        # Need to survive
-        "strength": 1.5,          # Bonus hit/dam
-        "constitution": 1.0,      # HP
-        "save vs spell": 0.5,     # Some spell resist
+        # Melee DPS: hit/dam are multiplied by backstab.
+        "hitroll": 4.0,           # Critical for backstab to land
+        "damroll": 4.0,           # Multiplied by backstab
+        "dexterity": 3.0,         # Prime: skills / dodge
+        "strength": 1.8,          # Bonus hit/dam
+        "save vs spell": 0.4,     # Some spell resist
+        "constitution": 0.3,      # Survivability (hp) only
+        "hit points": 0.2,        # Large magnitude -> small per-point
         "intelligence": 0.2,      # Minor
         "wisdom": 0.2,            # Minor
-        "mana": 0.1,              # Thieves don't cast
+        "mana": 0.0,              # Thieves don't cast
     },
     "warrior": {
-        # Tank/melee DPS, all about hit/dam and survivability
+        # Pure melee: damage first, hp is a tie-breaker.
         "hitroll": 4.0,           # Must hit to deal damage
         "damroll": 4.0,           # Direct damage boost
         "strength": 2.5,          # Bonus hit/dam via str_app
-        "hit points": 2.0,        # Tank survivability
-        "constitution": 2.0,      # More HP
         "dexterity": 1.0,         # AC, parry
-        "save vs spell": 0.5,     # Some magic resist
+        "save vs spell": 0.4,     # Some magic resist
+        "constitution": 0.3,      # Survivability (hp) only
+        "hit points": 0.2,        # Large magnitude -> small per-point
         "wisdom": 0.1,            # Useless
         "intelligence": 0.1,      # Useless
         "mana": 0.0,              # Warriors don't cast
     },
     "monk": {
-        # Unarmed fighter, CON-based, needs survivability
-        "constitution": 3.0,      # Prime stat
-        "hitroll": 3.5,           # Need to hit
-        "damroll": 3.5,           # Unarmed damage
-        "hit points": 2.0,        # Survivability
-        "strength": 1.5,          # Bonus hit/dam
-        "dexterity": 1.5,         # Dodge/AC
-        "save vs spell": 0.5,     # Magic resist
+        # Unarmed fighter whose damage keys off CON, so CON stays a prime.
+        "hitroll": 4.0,           # Need to hit
+        "damroll": 4.0,           # Unarmed damage
+        "constitution": 2.5,      # Prime: unarmed damage (and hp)
+        "strength": 1.8,          # Bonus hit/dam
+        "dexterity": 1.5,         # Dodge / AC
+        "save vs spell": 0.4,     # Magic resist
+        "hit points": 0.2,        # Large magnitude -> small per-point
         "wisdom": 0.3,            # Minor
         "intelligence": 0.2,      # Minor
-        "mana": 0.1,              # Some monk abilities use mana
+        "mana": 0.1,              # A few monk abilities use mana
     },
     "necromancer": {
-        # Dark caster with some survivability focus
-        "intelligence": 3.0,      # Prime stat
-        "mana": 1.5,              # Casting resource
-        "hit points": 1.0,        # Survivability (vampiric touch, etc.)
-        "constitution": 1.0,      # HP
-        "save vs spell": 1.0,     # Resist enemy magic
-        "wisdom": 0.5,            # Some mana benefit
+        # Dark caster: spell damage rides on INT.
+        "intelligence": 3.0,      # Prime: spell damage
+        "save vs spell": 0.8,     # Resist enemy magic
+        "mana": 0.4,              # Large magnitude -> small per-point
+        "wisdom": 0.4,            # Some mana benefit
         "dexterity": 0.3,         # AC
+        "constitution": 0.25,     # Survivability (hp) only
+        "hit points": 0.15,       # Large magnitude -> small per-point
+        "hitroll": 0.3,           # Rarely melee
+        "damroll": 0.3,           # Rarely melee
         "strength": 0.2,          # Minor
-        "hitroll": 0.2,           # Rarely melee
-        "damroll": 0.2,           # Rarely melee
     },
 }
 
@@ -3199,9 +3207,15 @@ async def get_best_gear(
                 d_num = int(obj.values[1])
                 d_size = int(obj.values[2])
                 avg_dam = d_num * (d_size + 1) / 2.0
-                s = avg_dam * 2.0
-                score += s # Weight weapon damage highly
-                breakdown.append(f"Dmg: {d_num}d{d_size} (avg {avg_dam:.1f}) x 2.0 = {s:.1f}")
+                # Scale the weapon's own damage by how much this class fights in
+                # melee (its damroll weight), so a weapon dominates a fighter's
+                # score and barely moves a caster's. 0.5 keeps a warrior's
+                # weapon weight at the old 2.0 (damroll 4.0 x 0.5).
+                wdw = weights.get("damroll", 1.0) * 0.5
+                s = avg_dam * wdw
+                score += s
+                breakdown.append(
+                    f"Dmg: {d_num}d{d_size} (avg {avg_dam:.1f}) x {wdw:g} = {s:.1f}")
             except (IndexError, TypeError, ValueError):
                 pass
 
