@@ -26412,3 +26412,43 @@ Sat Oct  3 01:25:09 2026 :: Log Alaric [29004]: eq
 Sat Oct  3 01:25:13 2026 :: Log Alaric [29004]: kill gu
 Sat Oct  3 01:25:43 2026 :: Sock.sinaddr:  34.198.201.66
 Sat Oct  3 01:25:43 2026 :: EOF encountered on read.
+Sat Oct  3 01:28:06 2026 :: Log Alaric [29004]: unl north
+Sat Oct  3 01:28:06 2026 :: Log Alaric [29004]: on
+Sat Oct  3 01:28:06 2026 :: Log Alaric [29004]: n
+Sat Oct  3 01:28:06 2026 :: Log Alaric [0]: moved to 29201 (Heroes Hall)
+Sat Oct  3 01:28:07 2026 :: Log Alaric [29201]: n
+Sat Oct  3 01:28:07 2026 :: Log Alaric [0]: moved to 29202 (Hall of Past Heroes)
+Sat Oct  3 01:28:08 2026 :: Log Alaric [29202]: w
+Sat Oct  3 01:28:08 2026 :: Log Alaric [0]: moved to 29203 (Passage to the Maze)
+Sat Oct  3 01:28:10 2026 :: Log Alaric [29203]: w
+Sat Oct  3 01:28:10 2026 :: Log Alaric [0]: moved to 29204 (Twist in the Maze)
+Sat Oct  3 01:28:31 2026 :: Log Alaric [29204]: who
+Sat Oct  3 01:29:27 2026 :: Log Alaric [29204]: flee
+Sat Oct  3 01:29:27 2026 :: Log Alaric [0]: moved to 29203 (Passage to the Maze)
+Sat Oct  3 01:29:27 2026 :: Log Alaric [29203]: flee
+Sat Oct  3 01:29:27 2026 :: Log Alaric [29203]: flee
+Sat Oct  3 01:29:28 2026 :: Log Alaric [29203]: recal
+Sat Oct  3 01:29:28 2026 :: Log Alaric [0]: moved to 2497 (A sudden wind blows you from the tree!)
+Sat Oct  3 01:29:30 2026 :: Log Alaric [2497]: eq
+Sat Oct  3 01:29:33 2026 :: Log Alaric [2497]: e
+Sat Oct  3 01:29:34 2026 :: Log Alaric [2497]: n
+Sat Oct  3 01:29:34 2026 :: Log Alaric [2497]: n
+Sat Oct  3 01:29:35 2026 :: Log Alaric [2497]: l
+Sat Oct  3 01:29:36 2026 :: Log Alaric [2497]: en do
+Sat Oct  3 01:29:36 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 01:29:36 2026 :: Log Alaric [2401]: s
+Sat Oct  3 01:29:36 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sat Oct  3 01:29:37 2026 :: Log Alaric [2404]: s
+Sat Oct  3 01:29:37 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 01:29:37 2026 :: Log Alaric [2427]: w
+Sat Oct  3 01:29:37 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 01:29:37 2026 :: Log Alaric [4201]: w
+Sat Oct  3 01:29:37 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 01:29:37 2026 :: Log Alaric [4202]: n
+Sat Oct  3 01:29:37 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 01:29:38 2026 :: Log Alaric [4203]: n
+Sat Oct  3 01:29:38 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sat Oct  3 01:29:39 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 01:30:47 2026 :: Sock.sinaddr:  5.161.61.238
+Sat Oct  3 01:30:47 2026 :: EOF encountered on read.
+Sat Oct  3 01:32:21 2026 :: Log Alaric [4210]: prac
