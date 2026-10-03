@@ -102,8 +102,10 @@ class CompareLive(unittest.TestCase):
             with mud.connect(timeout=120) as me:
                 login(me, "Zcmpchest", PW)
                 out = me.command("compare upgrades wield", 4.0)
-                self.assertIn("Master Sword", out)
-                self.assertIn("great chest", out)
+                # The source line belongs to the sword: an earlier version
+                # of the chest search credited it to the Master Assassin.
+                self.assertRegex(
+                    out, r"the Master Sword \(L58\)[^\n]*\n\s+in Ganon's great chest")
 
 
 if __name__ == "__main__":
