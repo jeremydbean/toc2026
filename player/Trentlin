@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791056507
+LogO 1791058300
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring  ~
@@ -14,18 +14,18 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown ~
 Cast none
-Levl 6
-Plyd 2566
+Levl 7
+Plyd 4359
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 4411
-HMV  62 83 154 167 26 126
-NewGold 98
-NewPlat 4
-NewCopp 24
-NewSilv 80
+Room 2401
+HMV  75 96 192 192 93 132
+NewGold 34
+NewPlat 7
+NewCopp 37
+NewSilv 4
 BankCP 0
 IntTime 1791054012
 IntTotal 0
@@ -34,8 +34,8 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 32
-AchQuests 0
+AchKills 50
+AchQuests 2
 AchDeaths 0
 AchExplore 0
 AchMaps 0
@@ -43,22 +43,28 @@ AchCompass 0
 AchTriforce 0
 Achv level-5 1791055385
 Achv first-kill 1791054159
+Achv first-quest 1791057078
+Achv quest-gamble-win 1791057092
 Achv visit-mud-school 1791053973
 Achv visit-casino 1791056149
 Achv visit-smurf 1791055506
+Achv visit-gangland 1791056925
 Achv carry-one-platinum 1791054979
 Achv four-denominations 1791055231
 Achv visit-froboz 1791055958
-LastOut  1791055183
-SesLogin 0
-SesDur   0
-SesExpG  0
-SesLvlG  0
-SesKill  0
+LastOut  1791058300
+SesLogin 1791053973
+SesDur   4327
+SesExpG  17347
+SesLvlG  7
+SesKill  50
 SesPK    0
 SesDead  0
-SesQuest 0
-Exp  14033
+SesQuest 2
+QuestPnts 104
+QuestStrk 2
+QuestNext 14
+Exp  17347
 Act  65740
 AfBy 512
 Comm 24576
@@ -86,21 +92,22 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 9
-Save  -8
-Alig  -20
-Hit   9
-Dam   2
-ACs 87 88 88 99
+Prac 1
+Trai 1
+Save  3
+Alig  -47
+Hit   2
+Dam   6
+ACs 79 71 69 99
 Attr 14 16 13 12 19
-AMod 0 10 11 0 10
+AMod 0 10 11 0 7
 Pass TrjPUdRVdu8MY~
-Titl  the Warrior~
+Titl  the Veteran~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 83 167 130
-Cond 0 12 47
+HMVP 96 192 136
+Cond 0 5 42
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -120,15 +127,15 @@ Sk 25 'mace'
 Sk 35 'polearm'
 Sk 1 'shield block'
 Sk 30 'spear'
-Sk 81 'sword'
+Sk 82 'sword'
 Sk 30 'whip'
-Sk 49 'bash'
+Sk 75 'bash'
 Sk 1 'disarm'
 Sk 1 'heroic grip'
-Sk 1 'kick'
+Sk 75 'kick'
 Sk 1 'parry'
 Sk 1 'rescue'
-Sk 1 'second attack'
+Sk 75 'second attack'
 Sk 1 'scrolls'
 Sk 1 'wands'
 Sk 62 'recall'
@@ -138,8 +145,6 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'bless'  14  25  -7  24          0          0
-AffD 'bless'  13  25   7  18          0          0
 End
 
 #O
@@ -147,18 +152,9 @@ Vnum 3716
 Nest 0
 Wear 0
 Cost 0
-Cond 100
+Cond 99
 Repd 0
-Val  0 0 158 0 0
-End
-
-#O
-Vnum 3703
-Nest 0
-Wear 5
-Cost 0
-Cond 100
-Repd 0
+Val  0 0 128 0 0
 End
 
 #O
@@ -166,7 +162,7 @@ Vnum 3704
 Nest 0
 Wear 11
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -175,7 +171,7 @@ Vnum 3702
 Nest 0
 Wear 16
 Cost 0
-Cond 98
+Cond 97
 Repd 0
 End
 
@@ -184,7 +180,7 @@ Vnum 3712
 Nest 0
 Wear 13
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 Affect -1 0 -1 -4 14 0 0
 End
@@ -194,16 +190,7 @@ Vnum 3708
 Nest 0
 Wear 8
 Cost 0
-Cond 98
-Repd 0
-End
-
-#O
-Vnum 3713
-Nest 0
-Wear 14
-Cost 0
-Cond 100
+Cond 97
 Repd 0
 End
 
@@ -239,7 +226,7 @@ End
 #O
 Vnum 2803
 Nest 0
-Wear -1
+Wear 1
 Lev  7
 Cost 36000
 Cond 100
@@ -261,7 +248,7 @@ Vnum 3710
 Nest 0
 Wear 10
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -270,7 +257,7 @@ Vnum 3715
 Nest 0
 Wear 17
 Cost 0
-Cond 100
+Cond 99
 Repd 0
 End
 
@@ -290,6 +277,59 @@ Nest 0
 Wear 6
 Lev  2
 Cost 500
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3066
+Nest 0
+Wear 5
+Lev  5
+Cost 100000
+Cond 90
+Repd 0
+End
+
+#O
+Vnum 3052
+Nest 0
+Wear 15
+Lev  5
+Cost 5100
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 3052
+Nest 0
+Wear 14
+Lev  5
+Cost 5100
+Cond 100
+Repd 0
+Affect -1 5 -1 -3 5 0 0
+End
+
+#O
+Vnum 12001
+Nest 0
+Wear -1
+Lev  5
+Cost 2000000
+Cond 100
+Repd 0
+Val  0 4 3 0 0
+Affect -1 5 -1 4 20 0 0
+End
+
+#O
+Vnum 2803
+Nest 0
+Wear 2
+Lev  7
+Cost 36000
 Cond 100
 Repd 0
 End
