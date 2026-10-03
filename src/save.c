@@ -438,7 +438,7 @@ void save_char_obj( CHAR_DATA *ch )
     if (get_trust(ch) > 59 || IS_IMMORTAL(ch))
     {
         if (fpReserve != NULL)
-            fclose(fpReserve);
+            reserve_release();
         snprintf(strsave, sizeof(strsave), "%s%s", GOD_DIR, capitalize(ch->name));
 	if ((fp = fopen(strsave,"w")) == NULL)
 	{
@@ -469,7 +469,7 @@ void save_char_obj( CHAR_DATA *ch )
     if (IS_HERO(ch) && get_trust(ch) < 60)
     {
         if (fpReserve != NULL)
-            fclose(fpReserve);
+            reserve_release();
         snprintf(strsave, sizeof(strsave), "%s%s", HERO_DIR, capitalize(ch->name));
         if ((fp = fopen(strsave,"w")) == NULL)
         {
@@ -498,7 +498,7 @@ void save_char_obj( CHAR_DATA *ch )
 
 
     if (fpReserve != NULL)
-        fclose( fpReserve );
+        reserve_release();
     snprintf(strsave, sizeof(strsave), "%s%s", PLAYER_DIR, capitalize(ch->name));
     if ( ( fp = fopen( PLAYER_TEMP, "w" ) ) == NULL )
     {
@@ -1265,7 +1265,7 @@ bool load_char_obj( DESCRIPTOR_DATA *d, char *name )
     }
 
     found = false;
-    fclose( fpReserve );
+    reserve_release();
 
     #if defined(unix)
     /* decompress if .gz file exists */
@@ -2725,7 +2725,7 @@ void corpse_back( CHAR_DATA *ch, OBJ_DATA *corpse )
 	++ch->pcdata->corpses;
 
     if (fpReserve != NULL)
-        fclose( fpReserve );
+        reserve_release();
 
 #if !defined( macintosh) && !defined( MSDOS )
     snprintf(strsave, sizeof(strsave), "%s%s.cps", CORPSE_DIR, ch->name);

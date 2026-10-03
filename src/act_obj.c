@@ -491,7 +491,7 @@ static void stash_links_on_file( const char *name, char *out, size_t size )
     snprintf( filename, sizeof(filename), "%s%s", PLAYER_DIR,
         capitalize( (char *) name ) );
 
-    fclose( fpReserve );
+    reserve_release();
     if ( ( fp = fopen( filename, "r" ) ) != NULL )
     {
         while ( fgets( line, (int)sizeof(line), fp ) != NULL )
@@ -4074,8 +4074,10 @@ void do_brandish( CHAR_DATA *ch, char *argument )
     {
 	act( "$n brandishes $p.", ch, staff, NULL, TO_ROOM );
 	act( "You brandish $p.",  ch, staff, NULL, TO_CHAR );
+	/* number_percent() is 1..100: a miss is a roll above the chance, or
+	   the 100 granted to staff 4513 fails one brandish in a hundred. */
 	if ( ch->level < staff->level
-	||   number_percent() >= chance)
+	||   number_percent() > chance)
  	{
 	    act ("You fail to invoke $p.",ch,staff,NULL,TO_CHAR);
 	    act ("...and nothing happens.",ch,NULL,NULL,TO_ROOM);

@@ -101,7 +101,7 @@ static int get_maxload_with_players(int vnum)
     /* Build a grep command that counts occurrences of the vnum in player files. */
     snprintf(buf, sizeof(buf), "grep \"Vnum %d\\b\" ../player/* | grep -c :", vnum);
 
-    fclose(fpReserve);
+    reserve_release();
 
     if ((fp = popen(buf, "r")) == NULL)
     {

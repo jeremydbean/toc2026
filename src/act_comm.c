@@ -3268,7 +3268,7 @@ int report_line_count( int kind )
     if ( kind < 0 || kind >= REPORT_KINDS )
 	return 0;
 
-    fclose( fpReserve );
+    reserve_release();
     if ( ( fp = fopen( report_files[kind], "r" ) ) != NULL )
     {
 	while ( ( c = getc( fp ) ) != EOF )
@@ -3534,7 +3534,7 @@ void do_reports( CHAR_DATA *ch, char *argument )
 	    UMIN( want, have ), have, report_kind_name( kind ),
 	    have == 1 ? "" : "s" );
 
-	fclose( fpReserve );
+	reserve_release();
 	if ( ( fp = fopen( report_files[kind], "r" ) ) != NULL )
 	{
 	    while ( !full && fgets( record, (int)sizeof(record), fp ) != NULL )

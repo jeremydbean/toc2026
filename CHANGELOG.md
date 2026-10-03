@@ -41,6 +41,20 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **A failed reopen of the spare file handle could crash the next save.**
+  `fpReserve` is closed before every file write and reopened after; if a
+  reopen ever failed it stayed NULL, and the next `fclose(NULL)` crashed,
+  and a path that returned between the close and the reopen left a closed
+  handle to be closed again. All eighteen closes go through
+  `reserve_release()`, which closes only an open handle and clears it.
+  Found by GCC's `-fanalyzer`, which also found COMPARE reading
+  `skill_table[-1]` on one path; fixed.
+- **Staff 4513, which always works, failed one brandish in a hundred**:
+  the same `>= chance` roll as shadowmeld's.
+- `tests/test_fread_key_cases.py` checks that every one of the 226 keys
+  in `fread_char`, `fread_pet` and `fread_obj` is read in its own letter's
+  case -- the mistake that once hung logins. All pass today.
+
 - **Five signature relics have their powers back.** The winged boots and
   the black feathered wings fly again, the robe of invisibility is worn
   about the body and turns you invisible, and Eversight and Virtual Vision

@@ -2543,7 +2543,7 @@ void ban_update( void )
     FILE *fp;
     BAN_DATA *pban;
 
-    fclose( fpReserve );
+    reserve_release();
 
     if( !(fp = fopen( BAN_FILE, "w" ) ) ) {
 	bug( "Ban_update: fopen of BAN_FILE failed",0);

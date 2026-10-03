@@ -271,6 +271,23 @@ DESCRIPTOR_DATA * descriptor_list;
 DESCRIPTOR_DATA * descriptor_free;
 DESCRIPTOR_DATA * d_next;
 FILE * fpReserve;
+
+/*
+ * fpReserve is a spare descriptor held open so that writing a file can
+ * always get one: it is closed just before the write and reopened
+ * after.  Close it through here.  When a reopen failed the handle was
+ * NULL, and fclose(NULL) crashes; when a path returned between the close
+ * and the reopen, the next fclose closed the same FILE twice.  Clearing
+ * the pointer makes both of those a no-op.
+ */
+void reserve_release( void )
+{
+    if ( fpReserve != NULL )
+    {
+        fclose( fpReserve );
+        fpReserve = NULL;
+    }
+}
 bool                god;
 
 struct weapon_type

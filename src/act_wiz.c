@@ -6946,7 +6946,7 @@ void do_lastlog( CHAR_DATA *ch, char *argument )
     char arg2[MAX_INPUT_LENGTH];
     char stamp[64];
     char played[24];
-    char *fields[5];
+    char *fields[5] = { NULL, NULL, NULL, NULL, NULL };
     char *point;
     FILE *fp;
     struct tm *when_tm;
@@ -7909,7 +7909,7 @@ void do_newcorpse( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    fclose( fpReserve );
+    reserve_release();
 
 #if !defined( macintosh ) && !defined( MSDOS )
     snprintf( strsave, sizeof(strsave), "%s%s.cps", CORPSE_DIR, victim->name );

@@ -175,7 +175,9 @@ static void gear_build_profile( CHAR_DATA *ch, GEAR_PROFILE *profile )
             level = skill_table[sn].skill_level[guild];
         if ( level > ch->level )
             continue;
-        if ( level > best_level
+        /* A skill_level of -1 would equal best_level's starting -1 with no
+           spell chosen yet, and read skill_table[-1]. */
+        if ( profile->spell_sn < 0 || level > best_level
             || (level == best_level
                 && skill_table[sn].min_mana
                     > skill_table[profile->spell_sn].min_mana) )
@@ -1853,7 +1855,7 @@ static void gear_send_upgrades( CHAR_DATA *ch, const GEAR_PROFILE *profile,
     int found[GEAR_GROUP_COUNT];
     char buf[MAX_STRING_LENGTH];
     char source[512];
-    char none[MAX_STRING_LENGTH];
+    char none[256];
     OBJ_DATA *worn;
     OBJ_DATA *other;
     int g;

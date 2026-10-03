@@ -35,7 +35,7 @@ void save_pkills(void)
   struct stat file_stats;
   PKILL_LIST_DATA *ptr;
 
-  fclose(fpReserve);
+  reserve_release();
   if ((fp = fopen( PKILLFILE ".tmp", "w" ) ) == NULL )
   {  log_string("Failed writing pkiller file");
      perror("Failed writing pkiler file");

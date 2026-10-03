@@ -47,7 +47,7 @@ void save_wizlist(void)
     bool found = false;
 
     if (fpReserve != NULL)
-        fclose( fpReserve );
+        reserve_release();
     if ( ( fp = fopen( WIZ_FILE, "w" ) ) == NULL )
     {
         perror( WIZ_FILE );

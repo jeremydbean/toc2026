@@ -4666,7 +4666,7 @@ void do_dump( CHAR_DATA *ch, char *argument )
     }
  
     /* open file */
-    fclose(fpReserve);
+    reserve_release();
     fp = fopen("mem.dmp","w");
     if (fp == NULL) { fpReserve = fopen(NULL_FILE, "r"); send_to_char("Could not open mem.dmp for writing.\n\r", ch); return; }
  
@@ -5226,7 +5226,7 @@ void append_file( CHAR_DATA *ch, char *file, char *str )
     if ( IS_NPC(ch) || str[0] == '\0' )
 	return;
  
-    fclose( fpReserve );
+    reserve_release();
     if ( ( fp = fopen( file, "a" ) ) == NULL )
     {
         perror( file );
@@ -5419,7 +5419,7 @@ void do_dump_exits( CHAR_DATA *ch , char *argument )
     EXIT_DATA *pexit;
     int door, i;
 
-    fclose(fpReserve);
+    reserve_release();
     fp = fopen("exits.dmp","w");
     if (fp == NULL) { fpReserve = fopen(NULL_FILE, "r"); send_to_char("Could not open exits.dmp for writing.\n\r", ch); return; }
 

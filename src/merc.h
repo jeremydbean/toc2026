@@ -2505,6 +2505,7 @@ extern          bool                    fLogAll;
 extern          bool                    merc_down;
 extern          char                   *target_name;
 extern          FILE * fpReserve;
+void    reserve_release ( void );
 extern          KILL_DATA               kill_table      [];
 extern          char                    log_buf         [];
 extern          TIME_INFO_DATA          time_info;

@@ -1320,7 +1320,7 @@ static void dps_board_load( void )
     dps_board_loaded = true;
     dps_board_count = 0;
 
-    fclose( fpReserve );
+    reserve_release();
     if ( ( fp = fopen( DPSBOARD_FILE, "r" ) ) == NULL )
     {
         /* No board yet: nobody has run the standard. */
@@ -1398,7 +1398,7 @@ static void dps_board_save( void )
     FILE *fp;
     int i;
 
-    fclose( fpReserve );
+    reserve_release();
     if ( ( fp = fopen( DPSBOARD_FILE ".tmp", "w" ) ) == NULL )
     {
         bug( "dps_board_save: cannot write the benchmark board.", 0 );
