@@ -16,6 +16,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **The report backlog is archived, and stays archived.** Every bug and
+  typo report on file has been worked through, so the old hosts' files
+  are kept as `area/bugs.txt.20260929-151146` and
+  `area/typos.txt.20260929-151146` and the live copies are gone. The
+  state sync now backs up what REPORTS CLEAR sets aside -- those
+  archives used to live on the host alone -- and drops a cleared report
+  file from git, where it had sat for ever and a restore would have put
+  the cleared reports back.
 - **The typo archive, second pass.** The first pass fixed every report
   where the player named the place; the same misspellings were still
   elsewhere in the world: "desperatly", "brige", "jewlery", "what use to

@@ -1390,6 +1390,16 @@ nobody reads. Anything genuine in there is worth turning into work --
 see the `title` command, teleport on oneself, and a Gang Land room
 describing an exit it does not have.
 
+**The archives reach git; a cleared file leaves it.** The state sync
+copies every `<file>.<stamp>` REPORTS CLEAR leaves on the host, and
+removes a report file from the repository once the host no longer has
+one (`REPORT_FILES` in `toc-state-sync` -- the report files only; a
+missing `custom.are` must never be deleted by a sync). Until 2026-10-03
+the archives lived on the host alone and a cleared file stayed in git,
+where `toc-restore` would have laid the cleared reports back down. The
+old hosts' backlog, worked through in October 2026, is
+`area/bugs.txt.20260929-151146` and `area/typos.txt.20260929-151146`.
+
 The staff half is gated with `IS_TRUSTED(ch, LEVEL_IMMORTAL)`, not
 `IS_IMMORTAL`. `is_note_to()` still uses `IS_IMMORTAL`, so a trusted
 builder does not receive notes addressed to `immortal`; that is the

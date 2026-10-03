@@ -1,1 +1,0 @@
-[29004] Alaric: Reanalyze the scaling costs of repair. I have a level 46 Shield of the Round Table that was damaged. The repair cost was 265 platinum. This is an unrealistic amount of platinum to have for repairing multiple pieces of gear at end game. Even going to low level areas, a single mob kill typically only gives a single platinum as a reward.

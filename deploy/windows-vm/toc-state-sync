@@ -52,6 +52,14 @@ STATE_FILES="area/notes.txt area/bugs.txt area/ideas.txt area/typos.txt
              area/pkilldata.txt area/wizlist.txt area/maxload.txt
              area/offense.txt area/relics.txt area/not.txt area/ban.txt
              area/dpsboard.txt area/custom.are"
+# The player report files. REPORTS CLEAR renames one aside as
+# <file>.<stamp> rather than deleting it, and those archives are the only
+# record of what players reported -- so they are saved too, and a report
+# file the game no longer has is taken out of the repository. Until
+# 2026-10-03 neither happened: the archives lived on the host alone, and
+# a cleared file sat in git for ever, where toc-restore would have laid
+# the cleared reports back down.
+REPORT_FILES="area/bugs.txt area/ideas.txt area/typos.txt"
 
 [ -d "$TOC_ROOT/player" ] || { echo "no player dir at $TOC_ROOT" >&2; exit 1; }
 [ -r "$GIT_SSH_KEY" ] || { echo "no deploy key at $GIT_SSH_KEY" >&2; exit 1; }
@@ -87,6 +95,20 @@ for f in $STATE_FILES; do
     [ -f "$TOC_ROOT/$f" ] || continue
     mkdir -p "$STATE_REPO/$(dirname "$f")"
     cp "$TOC_ROOT/$f" "$STATE_REPO/$f"
+done
+
+for f in $REPORT_FILES; do
+    for archive in "$TOC_ROOT/$f".*; do
+        [ -f "$archive" ] || continue
+        cp "$archive" "$STATE_REPO/$f.${archive##*.}"
+        git add -f "$f.${archive##*.}"
+    done
+    # Cleared on the host: retire it here too. Only the report files --
+    # a missing custom.are means something is wrong, not that it was
+    # cleared, and must never be deleted from git by a sync.
+    if [ ! -f "$TOC_ROOT/$f" ] && git ls-files --error-unmatch "$f" >/dev/null 2>&1; then
+        git rm --quiet "$f"
+    fi
 done
 
 for d in $STATE_DIRS; do

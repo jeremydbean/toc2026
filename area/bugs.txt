@@ -1,2 +1,0 @@
-[29004] Alaric: Hero leveled players should never get full. Sometimes they are permanently in a "full" state and cannot eat food or pill items
-[29212] Alaric: After logging in, players are seeing the following message, "No help on that word". The mud is attempting to force them to read a help file that doesn't exist immediately upon login. This is prior to the MOTD help file being shown.
