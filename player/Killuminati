@@ -1,7 +1,7 @@
 #PLAYER
 Name Killuminati~
 Id   30948
-LogO 1791063763
+LogO 1791064127
 Vers 4
 Desc You see something very special about him.
 ~
@@ -18,15 +18,14 @@ PsiKnown astral walk,clairvoyance,confuse,ego whip,enervate,mind leech,mindbar,m
 Cast Valh
 Levl 70
 Tru  70
-Plyd 6425231
+Plyd 6425595
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 StashMax 500
-ReportsSeen 2 0 0
 Scro 0
 Room 30615
-HMV  26404 30130 30000 30000 30000 30000
+HMV  26499 30130 30000 30000 30000 30000
 NewGold 212
 NewPlat 2503030
 NewCopp 361
@@ -102,9 +101,9 @@ Achv visit-mob-factory 1790913596
 Achv visit-glitter-palace 1790800614
 Achv visit-underdark 1790842210
 Achv visit-high-tower 1790800570
-LastOut  1790979583
-SesLogin 1790978198
-SesDur   1385
+LastOut  1791064127
+SesLogin 1791063276
+SesDur   851
 SesExpG  0
 SesLvlG  0
 SesKill  0
@@ -437,7 +436,7 @@ Vnum 20305
 Nest 0
 Wear -1
 Lev  1
-Time 120
+Time 114
 Cost 96000
 Cond 100
 Repd 0
