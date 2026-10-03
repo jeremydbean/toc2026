@@ -28487,3 +28487,14 @@ Sat Oct  3 14:32:59 2026 :: Sock.sinaddr:  5.161.73.160
 Sat Oct  3 14:32:59 2026 :: EOF encountered on read.
 Sat Oct  3 14:38:04 2026 :: Sock.sinaddr:  3.212.128.62
 Sat Oct  3 14:38:04 2026 :: EOF encountered on read.
+Sat Oct  3 14:40:43 2026 :: Log Alaric [0]: moved to 2 (Limbo)
+Sat Oct  3 14:40:44 2026 :: Log Alaric [0]: moved to 29077 (Coffee Break Room)
+Sat Oct  3 14:40:46 2026 :: Log Alaric [29077]: who
+Sat Oct  3 14:40:47 2026 :: Log Alaric [29077]: worth
+Sat Oct  3 14:42:35 2026 :: Sock.sinaddr:  185.93.89.79
+Sat Oct  3 14:43:08 2026 :: Sock.sinaddr:  3.212.128.62
+Sat Oct  3 14:43:08 2026 :: EOF encountered on read.
+Sat Oct  3 14:43:44 2026 :: Sock.sinaddr:  71.117.172.247
+Sat Oct  3 14:43:45 2026 :: Loading Look's playerfile
+Sat Oct  3 14:44:10 2026 :: Loading Farslayer's playerfile
+Sat Oct  3 14:44:40 2026 :: Farslayer@pool-71-117-172-247.prvdri.fios.verizon.net new player.
