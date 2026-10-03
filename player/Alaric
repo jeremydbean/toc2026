@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791045538
+LogO 1791045820
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 255341
+Plyd 255623
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 29078
-HMV  1040 1165 1462 1462 370 370
-NewGold 167
-NewPlat 80
-NewCopp 385
-NewSilv 333
+Room 29065
+HMV  1067 1165 1405 1462 166 370
+NewGold 207
+NewPlat 93
+NewCopp 481
+NewSilv 402
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 913
+AchKills 918
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,9 +107,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  125805
+Exp  125811
 Act  4261068
-AfBy 512
+AfBy 576
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -139,9 +139,9 @@ Prac 6
 Trai 1
 Save  -7
 Alig  1000
-Hit   42
-Dam   48
-ACs -157 -167 -124 -5
+Hit   52
+Dam   58
+ACs -57 -67 -24 95
 Attr 22 13 12 16 15
 AMod 7 10 10 2 14
 Pass Al3w9zuAlwpyY~
@@ -166,7 +166,7 @@ Sk 78 'torment'
 Sk 30 'axe'
 Sk 100 'dagger'
 Sk 25 'flail'
-Sk 89 'mace'
+Sk 90 'mace'
 Sk 35 'polearm'
 Sk 97 'shield block'
 Sk 30 'spear'
@@ -191,6 +191,9 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'berserk'   0   5 100  17         64          0
+AffD 'berserk'   0   5  10  19         64          0
+AffD 'berserk'   0   5  10  18         64          0
 End
 
 #O
@@ -988,7 +991,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 508
+Time 503
 Cost 0
 Cond 100
 Repd 0
