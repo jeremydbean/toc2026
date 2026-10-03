@@ -27968,3 +27968,37 @@ Sat Oct  3 13:17:41 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
 Sat Oct  3 13:17:42 2026 :: Log Alaric [29063]: n
 Sat Oct  3 13:17:42 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
 Sat Oct  3 13:17:43 2026 :: Log Alaric [29062]: kill he
+Sat Oct  3 13:19:37 2026 :: Log Alaric [29062]: l
+Sat Oct  3 13:19:39 2026 :: Log Alaric [29062]: kill gu
+Sat Oct  3 13:19:46 2026 :: Log Alaric [29062]: s
+Sat Oct  3 13:19:46 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
+Sat Oct  3 13:19:46 2026 :: Log Alaric [29063]: kill gu
+Sat Oct  3 13:20:34 2026 :: Log Alaric [29063]: n
+Sat Oct  3 13:20:34 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sat Oct  3 13:20:34 2026 :: Log Alaric [29062]: kill gu
+Sat Oct  3 13:20:40 2026 :: Log Alaric [29062]: s
+Sat Oct  3 13:20:40 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
+Sat Oct  3 13:20:40 2026 :: Log Alaric [29063]: kill he
+Sat Oct  3 13:21:39 2026 :: Log Alaric [29063]: kill he
+Sat Oct  3 13:21:41 2026 :: Log Alaric [29063]: prac
+Sat Oct  3 13:21:44 2026 :: Log Alaric [29063]: l
+Sat Oct  3 13:21:46 2026 :: Log Alaric [29063]: kill gu
+Sat Oct  3 13:21:53 2026 :: Log Alaric [29063]: s
+Sat Oct  3 13:21:53 2026 :: Log Alaric [0]: moved to 29065 (Service Hallway)
+Sat Oct  3 13:21:55 2026 :: Log Alaric [29065]: kill he
+Sat Oct  3 13:21:55 2026 :: Sock.sinaddr:  5.161.75.7
+Sat Oct  3 13:21:56 2026 :: EOF encountered on read.
+Sat Oct  3 13:23:03 2026 :: Log Alaric [29065]: l
+Sat Oct  3 13:23:04 2026 :: Log Alaric [29065]: kill gu
+Sat Oct  3 13:23:05 2026 :: Log Alaric [29065]: e
+Sat Oct  3 13:23:05 2026 :: Log Alaric [0]: moved to 29066 (Service Hallway)
+Sat Oct  3 13:23:06 2026 :: Log Alaric [29066]: e
+Sat Oct  3 13:23:06 2026 :: Log Alaric [0]: moved to 29067 (Service Hallway)
+Sat Oct  3 13:23:08 2026 :: Log Alaric [29067]: e
+Sat Oct  3 13:23:08 2026 :: Log Alaric [0]: moved to 29070 (Service Hallway)
+Sat Oct  3 13:23:08 2026 :: Log Alaric [29070]: e
+Sat Oct  3 13:23:08 2026 :: Log Alaric [0]: moved to 29071 (T-Junction)
+Sat Oct  3 13:23:09 2026 :: Log Alaric [29071]: e
+Sat Oct  3 13:23:09 2026 :: Log Alaric [0]: moved to 29072 (Machine Room)
+Sat Oct  3 13:23:11 2026 :: Log Alaric [29072]: kill sup
+Sat Oct  3 13:23:59 2026 :: Log Alaric [29072]: prac
