@@ -31037,3 +31037,86 @@ Sat Oct  3 19:52:20 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Hea
 Sat Oct  3 19:52:21 2026 :: Log Alaric [4210]: sleep
 Sat Oct  3 19:53:01 2026 :: Sock.sinaddr:  178.156.185.127
 Sat Oct  3 19:53:02 2026 :: EOF encountered on read.
+Sat Oct  3 19:56:06 2026 :: Sock.sinaddr:  45.79.115.134
+Sat Oct  3 19:56:12 2026 :: Log Alaric [4210]: wake
+Sat Oct  3 19:56:12 2026 :: Log Alaric [4210]: l
+Sat Oct  3 19:56:13 2026 :: Log Alaric [4210]: s
+Sat Oct  3 19:56:13 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 19:56:13 2026 :: Log Alaric [4203]: s
+Sat Oct  3 19:56:13 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 19:56:13 2026 :: Log Alaric [4202]: e
+Sat Oct  3 19:56:13 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 19:56:14 2026 :: Log Alaric [4201]: e
+Sat Oct  3 19:56:14 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 19:56:14 2026 :: Log Alaric [2427]: n
+Sat Oct  3 19:56:14 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sat Oct  3 19:56:14 2026 :: Log Alaric [2404]: n
+Sat Oct  3 19:56:14 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 19:56:14 2026 :: Log Alaric [2401]: n
+Sat Oct  3 19:56:14 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sat Oct  3 19:56:15 2026 :: Log Alaric [2402]: n
+Sat Oct  3 19:56:15 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Sat Oct  3 19:56:15 2026 :: Log Alaric [2415]: w
+Sat Oct  3 19:56:15 2026 :: Log Alaric [0]: moved to 2470 (Wizards Way.)
+Sat Oct  3 19:56:15 2026 :: Log Alaric [2470]: w
+Sat Oct  3 19:56:15 2026 :: Log Alaric [0]: moved to 2471 (Wizards Way.)
+Sat Oct  3 19:56:15 2026 :: Log Alaric [2471]: w
+Sat Oct  3 19:56:15 2026 :: Log Alaric [0]: moved to 2472 (Corner of Wizards Way and Magic Street.)
+Sat Oct  3 19:56:16 2026 :: Log Alaric [2472]: w
+Sat Oct  3 19:56:16 2026 :: Log Alaric [2472]: n
+Sat Oct  3 19:56:16 2026 :: Log Alaric [0]: moved to 2473 (Magic Street.)
+Sat Oct  3 19:56:16 2026 :: Log Alaric [2473]: w
+Sat Oct  3 19:56:16 2026 :: Log Alaric [0]: moved to 2474 (Bidom's Magic Shop.)
+Sat Oct  3 19:56:18 2026 :: Log Alaric [2474]: list
+Sat Oct  3 19:56:20 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:20 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:20 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:21 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:21 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:21 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:21 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:22 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:22 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:22 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:22 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:23 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:23 2026 :: Log Alaric [2474]: buy fly
+Sat Oct  3 19:56:23 2026 :: Log Alaric [2474]: buy tru
+Sat Oct  3 19:56:23 2026 :: Log Alaric [2474]: buy tru
+Sat Oct  3 19:56:24 2026 :: Log Alaric [2474]: buy tru
+Sat Oct  3 19:56:24 2026 :: Log Alaric [2474]: buy tru
+Sat Oct  3 19:56:24 2026 :: Log Alaric [2474]: buy tru
+Sat Oct  3 19:56:24 2026 :: Log Alaric [2474]: e
+Sat Oct  3 19:56:24 2026 :: Log Alaric [0]: moved to 2473 (Magic Street.)
+Sat Oct  3 19:56:25 2026 :: Log Alaric [2473]: s
+Sat Oct  3 19:56:25 2026 :: Log Alaric [0]: moved to 2472 (Corner of Wizards Way and Magic Street.)
+Sat Oct  3 19:56:25 2026 :: Log Alaric [2472]: e
+Sat Oct  3 19:56:25 2026 :: Log Alaric [0]: moved to 2471 (Wizards Way.)
+Sat Oct  3 19:56:25 2026 :: Log Alaric [2471]: e
+Sat Oct  3 19:56:25 2026 :: Log Alaric [0]: moved to 2470 (Wizards Way.)
+Sat Oct  3 19:56:25 2026 :: Log Alaric [2470]: e
+Sat Oct  3 19:56:25 2026 :: Log Alaric [0]: moved to 2415 (Main Processional.)
+Sat Oct  3 19:56:26 2026 :: Log Alaric [2415]: s
+Sat Oct  3 19:56:26 2026 :: Log Alaric [0]: moved to 2402 (Northern Oak Tree Square.)
+Sat Oct  3 19:56:27 2026 :: Log Alaric [2402]: s
+Sat Oct  3 19:56:27 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 19:56:28 2026 :: Log Alaric [2401]: s
+Sat Oct  3 19:56:28 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sat Oct  3 19:56:28 2026 :: Log Alaric [2404]: s
+Sat Oct  3 19:56:28 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 19:56:29 2026 :: Log Alaric [2427]: w
+Sat Oct  3 19:56:29 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 19:56:29 2026 :: Log Alaric [4201]: w
+Sat Oct  3 19:56:29 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 19:56:29 2026 :: Log Alaric [4202]: n
+Sat Oct  3 19:56:29 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 19:56:30 2026 :: Log Alaric [4203]: n
+Sat Oct  3 19:56:30 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sat Oct  3 19:56:30 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 19:56:32 2026 :: Log Alaric [4210]: i
+Sat Oct  3 19:57:26 2026 :: Log Alaric [4210]: wake
+Sat Oct  3 19:57:27 2026 :: Log Alaric [4210]: comp pend
+Sat Oct  3 19:57:28 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 19:57:37 2026 :: Trentlin has achieved level 7!
+Sat Oct  3 19:58:07 2026 :: Sock.sinaddr:  178.156.184.20
+Sat Oct  3 19:58:07 2026 :: EOF encountered on read.

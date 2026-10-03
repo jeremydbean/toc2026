@@ -1,7 +1,7 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791057131
+LogO 1791057469
 Vers 4
 Prom < %h/%H hp %v/%V mv %E>%c~
 Ignoring  ~
@@ -14,18 +14,18 @@ PsiGrant 0
 PsiSpec ~
 PsiKnown ~
 Cast none
-Levl 6
-Plyd 3190
+Levl 7
+Plyd 3528
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 4208
-HMV  75 83 167 167 114 126
+Room 2478
+HMV  67 96 173 192 66 132
 NewGold 99
 NewPlat 4
-NewCopp 25
-NewSilv 80
+NewCopp 69
+NewSilv 53
 BankCP 0
 IntTime 1791054012
 IntTotal 0
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 38
+AchKills 44
 AchQuests 1
 AchDeaths 0
 AchExplore 0
@@ -63,8 +63,8 @@ SesDead  0
 SesQuest 0
 QuestPnts 58
 QuestStrk 1
-QuestNext 14
-Exp  14963
+QuestNext 8
+Exp  15764
 Act  65740
 AfBy 512
 Comm 24576
@@ -92,21 +92,22 @@ Color 14 11
 Color 15 6
 Color 16 6
 Pos  8
-Prac 6
-Save  -8
-Alig  -26
+Prac 10
+Trai 1
+Save  -4
+Alig  -28
 Hit   9
-Dam   2
-ACs 87 79 79 99
+Dam   4
+ACs 83 75 74 99
 Attr 14 16 13 12 19
 AMod 0 10 11 0 7
 Pass TrjPUdRVdu8MY~
-Titl  the Warrior~
+Titl  the Veteran~
 Pnts 0
 TSex 1
 LLev 0
-HMVP 83 167 130
-Cond 0 2 37
+HMVP 96 192 136
+Cond 0 5 32
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -144,8 +145,8 @@ Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'bless'  12  15  -7  24          0          0
-AffD 'bless'  12  15   7  18          0          0
+AffD 'bless'  10  10  -7  24          0          0
+AffD 'bless'  12  10   7  18          0          0
 End
 
 #O
@@ -153,9 +154,9 @@ Vnum 3716
 Nest 0
 Wear 0
 Cost 0
-Cond 100
+Cond 99
 Repd 0
-Val  0 0 148 0 0
+Val  0 0 143 0 0
 End
 
 #O
@@ -191,7 +192,7 @@ Vnum 3708
 Nest 0
 Wear 8
 Cost 0
-Cond 98
+Cond 97
 Repd 0
 End
 
@@ -227,7 +228,7 @@ End
 #O
 Vnum 2803
 Nest 0
-Wear -1
+Wear 1
 Lev  7
 Cost 36000
 Cond 100
@@ -311,6 +312,18 @@ Cost 5100
 Cond 100
 Repd 0
 Affect -1 5 -1 -3 5 0 0
+End
+
+#O
+Vnum 12001
+Nest 0
+Wear -1
+Lev  5
+Cost 2000000
+Cond 100
+Repd 0
+Val  0 4 3 0 0
+Affect -1 5 -1 4 20 0 0
 End
 
 #END
