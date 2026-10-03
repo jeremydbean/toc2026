@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791062407
+LogO 1791062720
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 53
-Plyd 268579
+Plyd 268892
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 2494
-HMV  3945 6948 8389 8545 82 1880
-NewGold 3
-NewPlat 278
-NewCopp 96
-NewSilv 94
+Room 29209
+HMV  3267 6948 8239 8545 13 1880
+NewGold 27
+NewPlat 287
+NewCopp 272
+NewSilv 137
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 990
+AchKills 992
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,9 +107,9 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  140286
+Exp  140780
 Act  4261068
-AfBy 3678904
+AfBy 3678968
 AfBy2 4360
 Comm 24576
 Mounted 0
@@ -140,9 +140,9 @@ Prac 10
 Trai 2
 Save  -3
 Alig  1000
-Hit   55
-Dam   75
-ACs -277 -290 -243 -99
+Hit   65
+Dam   85
+ACs -177 -190 -143 1
 Attr 22 13 12 16 15
 AMod 24 23 26 22 23
 Pass Al3w9zuAlwpyY~
@@ -183,7 +183,7 @@ Sk 95 'kick'
 Sk 100 'parry'
 Sk 1 'rescue'
 Sk 100 'second attack'
-Sk 89 'third attack'
+Sk 90 'third attack'
 Sk 89 'fast healing'
 Sk 89 'door bash'
 Sk 80 'recall'
@@ -192,31 +192,33 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'empower'   0  25   0   0          0          0
-AffD 'sanctuary'   0  25   0   0        128          0
-AffD 'haste'   0  25   4   2    2097152          0
-AffD 'fly'   0  25   0   0     524288          0
-AffD 'pass door'   0  25   0   0    1048576          0
-AffD 'protection evil'   0  25   0   0       8192          0
-AffD 'fire shield'   0  25   0   0          0          8
-AffD 'divine protection'   0  25   0   0          0       4096
-AffD 'giant strength'   0  25  15   1          0          0
-AffD 'empower'   0  25  15   3          0          0
-AffD 'empower'   0  25  15   4          0          0
-AffD 'empower'   0  25  11   2          0          0
-AffD 'empower'   0  25  15   5          0          0
-AffD 'empower'   0  25  20  18          0          0
-AffD 'empower'   0  25  20  19          0          0
-AffD 'empower'   0  25 -100  17          0          0
-AffD 'titanic'   0  25 5770  13          0          0
-AffD 'titanic'   0  25 7160  12          0          0
-AffD 'titanic'   0  25 1555  14          0          0
-AffD 'titanic'   0  25  50  16          0          0
-AffD 'nightmare'  49  12 -44  12          0        256
-AffD 'mindbar'   0   2   0   0          0          0
-AffD 'detect invis'  51   8   0   0          8          0
-AffD 'detect magic'  51   8   0   0         16          0
-AffD 'detect hidden'  50   8   0   0         32          0
+AffD 'berserk'   0   3 100  17         64          0
+AffD 'berserk'   0   3  10  19         64          0
+AffD 'berserk'   0   3  10  18         64          0
+AffD 'empower'   0  20   0   0          0          0
+AffD 'sanctuary'   0  20   0   0        128          0
+AffD 'haste'   0  20   4   2    2097152          0
+AffD 'fly'   0  20   0   0     524288          0
+AffD 'pass door'   0  20   0   0    1048576          0
+AffD 'protection evil'   0  20   0   0       8192          0
+AffD 'fire shield'   0  20   0   0          0          8
+AffD 'divine protection'   0  20   0   0          0       4096
+AffD 'giant strength'   0  20  15   1          0          0
+AffD 'empower'   0  20  15   3          0          0
+AffD 'empower'   0  20  15   4          0          0
+AffD 'empower'   0  20  11   2          0          0
+AffD 'empower'   0  20  15   5          0          0
+AffD 'empower'   0  20  20  18          0          0
+AffD 'empower'   0  20  20  19          0          0
+AffD 'empower'   0  20 -100  17          0          0
+AffD 'titanic'   0  20 5770  13          0          0
+AffD 'titanic'   0  20 7160  12          0          0
+AffD 'titanic'   0  20 1555  14          0          0
+AffD 'titanic'   0  20  50  16          0          0
+AffD 'nightmare'  48   7 -44  12          0        256
+AffD 'detect invis'  50   3   0   0          8          0
+AffD 'detect magic'  51   3   0   0         16          0
+AffD 'detect hidden'  50   3   0   0         32          0
 End
 
 #O
@@ -815,7 +817,7 @@ Vnum 3715
 Nest 0
 Wear 17
 Cost 0
-Cond 54
+Cond 48
 Repd 1
 End
 
@@ -933,7 +935,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 290
+Time 285
 Cost 0
 Cond 100
 Repd 0
