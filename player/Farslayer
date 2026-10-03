@@ -1,7 +1,7 @@
 #PLAYER
 Name Farslayer~
 Id   21916
-LogO 1791040427
+LogO 1791040760
 Vers 4
 Prom ~
 Ignoring  ~
@@ -15,16 +15,16 @@ PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 3
-Plyd 1163
+Plyd 1496
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3713
-HMV  14 36 73 144 125 125
+Room 4216
+HMV  19 36 115 144 112 112
 NewGold 0
 NewPlat 0
-NewCopp 14
+NewCopp 16
 NewSilv 0
 BankCP 0
 IntTime 1791039310
@@ -34,9 +34,9 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 7
+AchKills 8
 AchQuests 0
-AchDeaths 1
+AchDeaths 2
 AchExplore 0
 AchMaps 0
 AchCompass 0
@@ -53,7 +53,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  6277
+Exp  6742
 Act  65788
 Comm 24576
 Mounted 0
@@ -79,14 +79,11 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  5
 Prac 7
 Trai 3
-Save  -1
 Alig  -750
-Hit   -2
-Dam   2
-ACs 88 87 87 99
+ACs 100 100 100 100
 Attr 13 13 16 13 13
 AMod 0 0 0 0 0
 Pass FarZsfmbOukHE~
@@ -95,7 +92,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 36 144 112
-Cond 0 30 30
+Cond 0 25 25
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -122,171 +119,6 @@ Sk 62 'recall'
 Gr 'rom basics'
 Gr 'mage basics'
 Gr 'mage default'
-End
-
-#O
-Vnum 3716
-Nest 0
-Wear 0
-Cost 0
-Cond 100
-Repd 0
-Val  0 0 183 0 0
-End
-
-#O
-Vnum 3703
-Nest 0
-Wear 5
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3704
-Nest 0
-Wear 11
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3701
-Nest 0
-Wear 16
-Cost 0
-Cond 99
-Repd 0
-End
-
-#O
-Vnum 3706
-Nest 0
-Wear 6
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3711
-Nest 0
-Wear 12
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3705
-Nest 0
-Wear 4
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3705
-Nest 0
-Wear 3
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3708
-Nest 0
-Wear 8
-Cost 0
-Cond 100
-Repd 0
-Affect -1 0 -1 13 14 0 0
-Affect -1 0 -1 -4 18 0 0
-End
-
-#O
-Vnum 3713
-Nest 0
-Wear 14
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3707
-Nest 0
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3712
-Nest 0
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3707
-Nest 0
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3712
-Nest 0
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3707
-Nest 0
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3712
-Nest 0
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3707
-Nest 0
-Wear -1
-Cost 0
-Cond 100
-Repd 0
-End
-
-#O
-Vnum 3712
-Nest 0
-Wear -1
-Cost 0
-Cond 100
-Repd 0
 End
 
 #END
