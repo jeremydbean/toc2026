@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791058515
+LogO 1791061871
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 264723
+Plyd 268072
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 4210
-HMV  1129 1129 1432 1432 311 311
-NewGold 94
-NewPlat 173
-NewCopp 46
-NewSilv 28
+Room 29210
+HMV  1660 6909 7825 8562 361 1874
+NewGold 193
+NewPlat 243
+NewCopp 705
+NewSilv 387
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 969
+AchKills 983
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,9 +107,10 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  126260
+Exp  135467
 Act  4261068
-AfBy 512
+AfBy 3678912
+AfBy2 4104
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -137,13 +138,13 @@ Color 16 6
 Pos  8
 Prac 6
 Trai 1
-Save  -6
+Save  -2
 Alig  1000
-Hit   35
-Dam   53
-ACs -158 -169 -124 5
+Hit   63
+Dam   85
+ACs -157 -169 -122 9
 Attr 22 13 12 16 15
-AMod 8 10 10 7 9
+AMod 24 23 26 22 23
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Third Order~
 Pnts 0
@@ -166,9 +167,9 @@ Sk 84 'torment'
 Sk 30 'axe'
 Sk 100 'dagger'
 Sk 25 'flail'
-Sk 96 'mace'
+Sk 100 'mace'
 Sk 35 'polearm'
-Sk 97 'shield block'
+Sk 98 'shield block'
 Sk 30 'spear'
 Sk 100 'sword'
 Sk 30 'whip'
@@ -183,7 +184,7 @@ Sk 100 'parry'
 Sk 1 'rescue'
 Sk 100 'second attack'
 Sk 89 'third attack'
-Sk 88 'fast healing'
+Sk 89 'fast healing'
 Sk 89 'door bash'
 Sk 80 'recall'
 Sk 75 'smite'
@@ -191,6 +192,29 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
+AffD 'berserk'   0   3 100  17         64          0
+AffD 'berserk'   0   3  10  19         64          0
+AffD 'berserk'   0   3  10  18         64          0
+AffD 'titanic'   0  35  50  16          0          0
+AffD 'titanic'   0  35 1555  14          0          0
+AffD 'titanic'   0  35 7160  12          0          0
+AffD 'titanic'   0  35 5770  13          0          0
+AffD 'empower'   0  35 -100  17          0          0
+AffD 'empower'   0  35  20  19          0          0
+AffD 'empower'   0  35  20  18          0          0
+AffD 'empower'   0  35  15   5          0          0
+AffD 'empower'   0  35  11   2          0          0
+AffD 'empower'   0  35  15   4          0          0
+AffD 'empower'   0  35  15   3          0          0
+AffD 'giant strength'   0  35  15   1          0          0
+AffD 'divine protection'   0  35   0   0          0       4096
+AffD 'fire shield'   0  35   0   0          0          8
+AffD 'protection evil'   0  35   0   0       8192          0
+AffD 'pass door'   0  35   0   0    1048576          0
+AffD 'fly'   0  35   0   0     524288          0
+AffD 'haste'   0  35   4   2    2097152          0
+AffD 'sanctuary'   0  35   0   0        128          0
+AffD 'empower'   0  35   0   0          0          0
 End
 
 #O
@@ -430,10 +454,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -3 22 0 0
-Affect -1 32 -1 -15 13 0 0
-Affect -1 32 -1 -13 12 0 0
 Affect -1 32 -1 -1 5 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -3 22 0 0
 End
 
 #O
@@ -518,6 +542,17 @@ Affect -1 51 -1 4 22 0 0
 End
 
 #O
+Vnum 3737
+Nest 1
+Wear -1
+Lev  1
+Cost 100000
+Cond 77
+Repd 10
+Val  2 2 4 0 0
+End
+
+#O
 Vnum 734
 Nest 0
 Wear -1
@@ -571,7 +606,7 @@ End
 #O
 Vnum 10059
 Nest 0
-Wear 4
+Wear -1
 Lev  33
 Cost 40000000
 Cond 91
@@ -582,7 +617,7 @@ End
 #O
 Vnum 16006
 Nest 0
-Wear 2
+Wear -1
 Lev  43
 Cost 22600000
 Cond 99
@@ -606,7 +641,7 @@ Nest 0
 Wear 9
 Lev  46
 Cost 9500000
-Cond 100
+Cond 99
 Repd 0
 Affect -1 46 -1 5 17 0 0
 End
@@ -617,7 +652,7 @@ Nest 0
 Wear 6
 Lev  25
 Cost 250000000
-Cond 91
+Cond 68
 Repd 1
 End
 
@@ -667,7 +702,7 @@ Nest 0
 Wear 0
 Lev  45
 Cost 15000000
-Cond 96
+Cond 94
 Repd 1
 Val  0 0 -1 0 0
 Affect -1 45 -1 -1 24 0 0
@@ -818,7 +853,7 @@ Vnum 3715
 Nest 0
 Wear 17
 Cost 0
-Cond 83
+Cond 60
 Repd 1
 End
 
@@ -828,10 +863,10 @@ Nest 0
 Wear 13
 Lev  50
 Cost 20000000
-Cond 93
+Cond 91
 Repd 0
-Affect -1 50 -1 -17 14 0 0
 Affect -1 50 -1 -3 2 0 0
+Affect -1 50 -1 -17 14 0 0
 End
 
 #O
@@ -874,9 +909,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 1 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 1 0 0
 End
 
 #O
@@ -908,7 +943,7 @@ Nest 0
 Wear 15
 Lev  40
 Cost 4500000
-Cond 95
+Cond 92
 Repd 0
 End
 
@@ -930,7 +965,7 @@ Wear -1
 Lev  47
 Cost 6666666
 Cond 0
-Repd 1
+Repd 2
 Val  11 12 12 -1 0
 End
 
@@ -938,7 +973,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 355
+Time 300
 Cost 0
 Cond 100
 Repd 0
@@ -986,43 +1021,9 @@ Nest 0
 Wear 12
 Lev  8
 Cost 10000000
-Cond 78
+Cond 77
 Repd 0
 Val  4 5 3 0 0
-End
-
-#O
-Vnum 29207
-Nest 0
-Wear 16
-Lev  51
-Cost 20000000
-Cond 100
-Repd 0
-Affect -1 51 -1 -8 14 0 0
-End
-
-#O
-Vnum 3737
-Nest 0
-Wear 11
-Lev  1
-Cost 100000
-Cond 77
-Repd 10
-Val  2 2 4 0 0
-End
-
-#O
-Vnum 700
-Nest 0
-ExtF 3146818
-Wear -1
-Lev  48
-Cost 25000000
-Cond 100
-Repd 0
-Affect -1 48 -1 3 20 0 0
 End
 
 #O
@@ -1045,8 +1046,8 @@ Lev  52
 Cost 25600000
 Cond 100
 Repd 0
-Affect -1 52 -1 -9 14 0 0
 Affect -1 52 -1 -1 13 0 0
+Affect -1 52 -1 -9 14 0 0
 End
 
 #O
@@ -1076,7 +1077,7 @@ Nest 0
 Wear 1
 Lev  52
 Cost 24090000
-Cond 100
+Cond 98
 Repd 0
 End
 
@@ -1161,91 +1162,48 @@ Spell 1 'fly'
 End
 
 #O
-Vnum 3091
+Vnum 29207
 Nest 0
 Wear -1
-Cost 20000
-Cond 100
+Lev  51
+Cost 20000000
+Cond 99
 Repd 0
-Spell 1 'fly'
+Affect -1 51 -1 -8 14 0 0
 End
 
 #O
-Vnum 3091
+Vnum 16030
 Nest 0
-Wear -1
-Cost 20000
+Wear 4
+Lev  52
+Cost 25600000
 Cond 100
 Repd 0
-Spell 1 'fly'
+Affect -1 52 -1 1 17 0 0
 End
 
 #O
-Vnum 3091
+Vnum 16033
 Nest 0
-Wear -1
-Cost 20000
+Wear 2
+Lev  52
+Cost 24090000
 Cond 100
 Repd 0
-Spell 1 'fly'
+Affect -1 52 -1 -2 3 0 0
 End
 
 #O
-Vnum 3091
+Vnum 700
 Nest 0
-Wear -1
-Cost 20000
+ExtF 3146818
+Wear 16
+Lev  48
+Cost 25000000
 Cond 100
 Repd 0
-Spell 1 'fly'
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
-End
-
-#O
-Vnum 3092
-Nest 0
-Wear -1
-Cost 31000
-Cond 100
-Repd 0
-Spell 1 'detect invis'
-Spell 2 'detect magic'
-Spell 3 'detect hidden'
+Affect -1 48 -1 3 20 0 0
 End
 
 #STASH
