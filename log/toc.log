@@ -30794,3 +30794,7 @@ Sat Oct  3 19:24:18 2026 :: Log Alaric [2401]: gr
 Sat Oct  3 19:24:49 2026 :: Log Trentlin: drop key
 Sat Oct  3 19:27:36 2026 :: Sock.sinaddr:  3.12.251.153
 Sat Oct  3 19:27:36 2026 :: EOF encountered on read.
+Sat Oct  3 19:29:03 2026 :: Log Trentlin: drop ha
+Sat Oct  3 19:30:51 2026 :: Log Trentlin: drop neck
+Sat Oct  3 19:32:40 2026 :: Sock.sinaddr:  178.156.185.127
+Sat Oct  3 19:32:40 2026 :: EOF encountered on read.
