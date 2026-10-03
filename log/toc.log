@@ -32801,3 +32801,35 @@ Sat Oct  3 21:32:41 2026 :: Alaric@208.126.22.104 has connected.
 Sat Oct  3 21:34:00 2026 :: Log Alaric [29212]: moved to 29212 (Twist in the Maze)
 Sat Oct  3 21:34:00 2026 :: Sock.sinaddr:  194.195.210.47
 Sat Oct  3 21:34:12 2026 :: Log Alaric [29212]: bug After logging in, players are seeing the following message, "No help on that word". The mud is attempting to force them to read a help file that doesn't exist immediately upon login. This is prior to the MOTD help file being shown.
+Sat Oct  3 21:34:16 2026 :: Log Alaric [29212]: af
+Sat Oct  3 21:34:21 2026 :: Log Alaric [29212]: worth
+Sat Oct  3 21:34:22 2026 :: Log Alaric [29212]: af
+Sat Oct  3 21:34:24 2026 :: Sock.sinaddr:  108.81.26.245
+Sat Oct  3 21:34:24 2026 :: Log Alaric [29212]: k
+Sat Oct  3 21:34:32 2026 :: Loading Killuminati's playerfile
+Sat Oct  3 21:34:34 2026 :: Sock.sinaddr:  5.161.73.160
+Sat Oct  3 21:34:35 2026 :: EOF encountered on read.
+Sat Oct  3 21:34:36 2026 :: Killuminati@108-81-26-245.lightspeed.tukrga.sbcglobal.net has connected.
+Sat Oct  3 21:35:34 2026 :: Log Alaric [29212]: l i cor
+Sat Oct  3 21:35:35 2026 :: Log Alaric [29212]: af
+Sat Oct  3 21:35:37 2026 :: Log Alaric [29212]: get dark cor
+Sat Oct  3 21:35:39 2026 :: Log Alaric [29212]: recal
+Sat Oct  3 21:35:39 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sat Oct  3 21:35:40 2026 :: Log Alaric [4207]: e
+Sat Oct  3 21:35:40 2026 :: Log Alaric [4207]: n
+Sat Oct  3 21:35:54 2026 :: Log Alaric [4207]: changes
+Sat Oct  3 21:36:13 2026 :: Log Alaric [4207]: w
+Sat Oct  3 21:36:14 2026 :: Log Alaric [4207]: l
+Sat Oct  3 21:36:59 2026 :: Log Alaric [4207]: af
+Sat Oct  3 21:37:11 2026 :: Log Alaric [4207]: who
+Sat Oct  3 21:37:13 2026 :: Log Alaric [4207]: e
+Sat Oct  3 21:37:16 2026 :: Log Alaric [4207]: e
+Sat Oct  3 21:37:16 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 21:37:17 2026 :: Log Alaric [4202]: n
+Sat Oct  3 21:37:17 2026 :: Log Alaric [0]: moved to 4203 (Halls of Healing.)
+Sat Oct  3 21:37:17 2026 :: Log Alaric [4203]: n
+Sat Oct  3 21:37:17 2026 :: Log Alaric [0]: moved to 4210 (Room of Peace and Healing.)
+Sat Oct  3 21:37:17 2026 :: Log Alaric [4210]: sleep
+Sat Oct  3 21:37:18 2026 :: Log Alaric [4210]: quit
+Sat Oct  3 21:37:18 2026 :: Alaric has quit.
+Sat Oct  3 21:37:18 2026 :: [QUIT] Player rejoined the real world.
