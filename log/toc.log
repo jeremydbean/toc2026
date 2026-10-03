@@ -25695,3 +25695,142 @@ Sat Oct  3 00:06:25 2026 :: Log Alaric [755]: open north
 Sat Oct  3 00:06:25 2026 :: Log Alaric [755]: north
 Sat Oct  3 00:06:25 2026 :: Log Alaric [0]: moved to 756 (The Great Northern Gate of Camelot)
 Sat Oct  3 00:06:30 2026 :: Log Alaric [756]: scan
+Sat Oct  3 00:06:31 2026 :: Log Alaric [756]: n
+Sat Oct  3 00:06:31 2026 :: Log Alaric [0]: moved to 782 (The Rolling Hills)
+Sat Oct  3 00:06:32 2026 :: Log Alaric [782]: scan
+Sat Oct  3 00:06:35 2026 :: Log Alaric [782]: e
+Sat Oct  3 00:06:35 2026 :: Log Alaric [0]: moved to 784 (The Grassy Plains)
+Sat Oct  3 00:06:36 2026 :: Log Alaric [784]: scan
+Sat Oct  3 00:06:39 2026 :: Log Alaric [784]: ex
+Sat Oct  3 00:06:40 2026 :: Log Alaric [784]: e
+Sat Oct  3 00:06:40 2026 :: Log Alaric [0]: moved to 786 (The Rocky Coast)
+Sat Oct  3 00:06:42 2026 :: Log Alaric [786]: scan
+Sat Oct  3 00:06:42 2026 :: Log Alaric [786]: ex
+Sat Oct  3 00:06:44 2026 :: Log Alaric [786]: d
+Sat Oct  3 00:06:44 2026 :: Log Alaric [0]: moved to 789 (The rocky beach)
+Sat Oct  3 00:06:44 2026 :: Log Alaric [789]: ex
+Sat Oct  3 00:06:45 2026 :: Log Alaric [789]: u
+Sat Oct  3 00:06:45 2026 :: Log Alaric [0]: moved to 786 (The Rocky Coast)
+Sat Oct  3 00:06:46 2026 :: Log Alaric [786]: w
+Sat Oct  3 00:06:46 2026 :: Log Alaric [0]: moved to 784 (The Grassy Plains)
+Sat Oct  3 00:06:46 2026 :: Log Alaric [784]: w
+Sat Oct  3 00:06:46 2026 :: Log Alaric [0]: moved to 782 (The Rolling Hills)
+Sat Oct  3 00:06:48 2026 :: Log Alaric [782]: ex
+Sat Oct  3 00:06:48 2026 :: Log Alaric [782]: n
+Sat Oct  3 00:06:48 2026 :: Log Alaric [0]: moved to 783 (The Rolling Hills)
+Sat Oct  3 00:06:49 2026 :: Log Alaric [783]: ex
+Sat Oct  3 00:06:51 2026 :: Log Alaric [783]: scan
+Sat Oct  3 00:06:51 2026 :: Log Alaric [783]: n
+Sat Oct  3 00:06:51 2026 :: Log Alaric [0]: moved to 785 (The Highlands)
+Sat Oct  3 00:06:52 2026 :: Log Alaric [785]: scan
+Sat Oct  3 00:06:56 2026 :: Log Alaric [785]: open north
+Sat Oct  3 00:06:57 2026 :: Log Alaric [785]: (refused) opn east
+Sat Oct  3 00:06:57 2026 :: Log Alaric [785]: ex
+Sat Oct  3 00:06:59 2026 :: Log Alaric [785]: open east
+Sat Oct  3 00:07:01 2026 :: Log Alaric [785]: ex
+Sat Oct  3 00:07:01 2026 :: Log Alaric [785]: scan
+Sat Oct  3 00:07:05 2026 :: Log Alaric [785]: e
+Sat Oct  3 00:07:05 2026 :: Log Alaric [0]: moved to 788 (An Outpost)
+Sat Oct  3 00:07:06 2026 :: Log Alaric [788]: w
+Sat Oct  3 00:07:06 2026 :: Log Alaric [0]: moved to 785 (The Highlands)
+Sat Oct  3 00:07:06 2026 :: Log Alaric [785]: n
+Sat Oct  3 00:07:06 2026 :: Log Alaric [0]: moved to 787 (The Scottish Highlands)
+Sat Oct  3 00:07:08 2026 :: Log Alaric [787]: ex
+Sat Oct  3 00:07:09 2026 :: Log Alaric [787]: u
+Sat Oct  3 00:07:09 2026 :: Log Alaric [0]: moved to 790 (Scots Keep)
+Sat Oct  3 00:07:10 2026 :: Log Alaric [790]: d
+Sat Oct  3 00:07:10 2026 :: Log Alaric [0]: moved to 787 (The Scottish Highlands)
+Sat Oct  3 00:07:11 2026 :: Log Alaric [787]: s
+Sat Oct  3 00:07:11 2026 :: Log Alaric [0]: moved to 785 (The Highlands)
+Sat Oct  3 00:07:12 2026 :: Log Alaric [785]: s
+Sat Oct  3 00:07:12 2026 :: Log Alaric [785]: s
+Sat Oct  3 00:07:16 2026 :: Log Alaric [785]: l
+Sat Oct  3 00:07:17 2026 :: Log Alaric [785]: w
+Sat Oct  3 00:07:17 2026 :: Log Alaric [0]: moved to 783 (The Rolling Hills)
+Sat Oct  3 00:07:19 2026 :: Log Alaric [783]: s
+Sat Oct  3 00:07:19 2026 :: Log Alaric [0]: moved to 782 (The Rolling Hills)
+Sat Oct  3 00:07:20 2026 :: Log Alaric [782]: s
+Sat Oct  3 00:07:20 2026 :: Log Alaric [0]: moved to 756 (The Great Northern Gate of Camelot)
+Sat Oct  3 00:07:21 2026 :: Log Alaric [756]: s
+Sat Oct  3 00:07:21 2026 :: Log Alaric [0]: moved to 755 (Squire's Run at the North Gate)
+Sat Oct  3 00:07:22 2026 :: Log Alaric [755]: w
+Sat Oct  3 00:07:22 2026 :: Log Alaric [0]: moved to 750 (Squire's Run)
+Sat Oct  3 00:07:22 2026 :: Log Alaric [750]: w
+Sat Oct  3 00:07:22 2026 :: Log Alaric [0]: moved to 745 (Corner of Knight's Way and Squire's Run)
+Sat Oct  3 00:07:23 2026 :: Log Alaric [745]: s
+Sat Oct  3 00:07:23 2026 :: Log Alaric [0]: moved to 742 (Knights Way before the stables)
+Sat Oct  3 00:07:25 2026 :: Log Alaric [742]: s
+Sat Oct  3 00:07:25 2026 :: Log Alaric [0]: moved to 741 (Victory Road and Knights Way)
+Sat Oct  3 00:07:26 2026 :: Log Alaric [741]: w
+Sat Oct  3 00:07:26 2026 :: Log Alaric [0]: moved to 726 (The Western Gate of Camelot)
+Sat Oct  3 00:07:55 2026 :: Log Alaric [726]: w
+Sat Oct  3 00:07:55 2026 :: Log Alaric [0]: moved to 725 (The Green Field Before Camelot)
+Sat Oct  3 00:07:56 2026 :: Log Alaric [725]: w
+Sat Oct  3 00:07:56 2026 :: Log Alaric [0]: moved to 722 (The Chasm)
+Sat Oct  3 00:07:58 2026 :: Log Alaric [722]: e
+Sat Oct  3 00:07:58 2026 :: Log Alaric [0]: moved to 725 (The Green Field Before Camelot)
+Sat Oct  3 00:07:58 2026 :: Log Alaric [725]: scan
+Sat Oct  3 00:08:01 2026 :: Log Alaric [725]: w
+Sat Oct  3 00:08:01 2026 :: Log Alaric [0]: moved to 722 (The Chasm)
+Sat Oct  3 00:08:02 2026 :: Log Alaric [722]: look per
+Sat Oct  3 00:08:04 2026 :: Log Alaric [722]: d
+Sat Oct  3 00:08:04 2026 :: Log Alaric [0]: moved to 721 (Hanging on the Rope Bridge)
+Sat Oct  3 00:08:06 2026 :: Log Alaric [721]: ex
+Sat Oct  3 00:08:10 2026 :: Log Alaric [721]: w
+Sat Oct  3 00:08:10 2026 :: Log Alaric [0]: moved to 720 (Hanging on the Rope Bridge)
+Sat Oct  3 00:08:11 2026 :: Log Alaric [720]: ex
+Sat Oct  3 00:08:13 2026 :: Log Alaric [720]: u
+Sat Oct  3 00:08:13 2026 :: Log Alaric [0]: moved to 719 (The Chasm)
+Sat Oct  3 00:08:15 2026 :: Log Alaric [719]: w
+Sat Oct  3 00:08:15 2026 :: Log Alaric [0]: moved to 713 (The Forest Arden)
+Sat Oct  3 00:08:15 2026 :: Log Alaric [713]: scan
+Sat Oct  3 00:08:18 2026 :: Log Alaric [713]: n
+Sat Oct  3 00:08:18 2026 :: Log Alaric [0]: moved to 714 (A Creek in the Forest Arden)
+Sat Oct  3 00:08:19 2026 :: Log Alaric [714]: scan
+Sat Oct  3 00:08:22 2026 :: Log Alaric [714]: w
+Sat Oct  3 00:08:22 2026 :: Log Alaric [0]: moved to 715 (Battleplain of Arden)
+Sat Oct  3 00:08:24 2026 :: Log Alaric [715]: look gal
+Sat Oct  3 00:08:34 2026 :: Log Alaric [715]: kill gal
+Sat Oct  3 00:08:40 2026 :: Log Alaric [715]: wear dark
+Sat Oct  3 00:08:43 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:08:44 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:07 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:08 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:16 2026 :: Log Alaric [715]: bers
+Sat Oct  3 00:09:22 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:27 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:28 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:29 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:32 2026 :: Sock.sinaddr:  18.116.205.62
+Sat Oct  3 00:09:32 2026 :: EOF encountered on read.
+Sat Oct  3 00:09:38 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:46 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:47 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:52 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:53 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:09:54 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:10:02 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:10:03 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:10:14 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:10:16 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:10:26 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:10:27 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:10:28 2026 :: Log Alaric [715]: torm
+Sat Oct  3 00:10:34 2026 :: Log Alaric [715]: l i cor
+Sat Oct  3 00:10:39 2026 :: Log Alaric [715]: get brac cor
+Sat Oct  3 00:10:40 2026 :: Log Alaric [715]: get brac cor
+Sat Oct  3 00:10:40 2026 :: Log Alaric [715]: eq
+Sat Oct  3 00:10:42 2026 :: Log Alaric [715]: sc
+Sat Oct  3 00:10:43 2026 :: Log Alaric [715]: rem pearl
+Sat Oct  3 00:10:44 2026 :: Log Alaric [715]: rem pearl
+Sat Oct  3 00:10:45 2026 :: Log Alaric [715]: wear white
+Sat Oct  3 00:10:45 2026 :: Log Alaric [715]: wear white
+Sat Oct  3 00:10:47 2026 :: Log Alaric [715]: sc
+Sat Oct  3 00:10:55 2026 :: Log Alaric [715]: drop pearl
+Sat Oct  3 00:10:56 2026 :: Log Alaric [715]: drop pearl
+Sat Oct  3 00:10:57 2026 :: Log Alaric [715]: sac pearl
+Sat Oct  3 00:10:57 2026 :: Log Alaric [715]: sac pearl
+Sat Oct  3 00:10:58 2026 :: Log Alaric [715]: score
+Sat Oct  3 00:10:59 2026 :: Log Alaric [715]: l
+Sat Oct  3 00:11:01 2026 :: Log Alaric [715]: l i cor
+Sat Oct  3 00:11:02 2026 :: Log Alaric [715]: look kn
