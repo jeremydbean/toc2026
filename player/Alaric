@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790986116
+LogO 1790986413
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 240940
+Plyd 241237
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 715
-HMV  1190 1190 1462 1462 377 377
-NewGold 9
-NewPlat 33
-NewCopp 83
-NewSilv 93
+Room 765
+HMV  1053 1190 1173 1462 378 378
+NewGold 12
+NewPlat 34
+NewCopp 275
+NewSilv 99
 BankCP 345999078
 IntTime 1790902684
 IntTotal 6999078
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 842
+AchKills 843
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -109,7 +109,7 @@ CasinoWon  51
 CasinoLost 304
 Exp  125282
 Act  4261068
-AfBy 524800
+AfBy 524864
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -137,13 +137,13 @@ Color 16 6
 Pos  8
 Prac 8
 Trai 2
-Save  3
-Alig  991
-Hit   32
-Dam   46
-ACs -147 -159 -122 -1
+Save  1
+Alig  896
+Hit   48
+Dam   56
+ACs -45 -53 -14 97
 Attr 22 13 12 16 15
-AMod 1 10 11 -2 13
+AMod 9 10 11 0 15
 Pass Al3w9zuAlwpyY~
 Titl  the Heroine of the Third Order~
 Pnts 0
@@ -186,7 +186,10 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'fly'  48   3   0   0     524288          0
+AffD 'fly'  46  11   0   0     524288          0
+AffD 'berserk'   0   1 100  17         64          0
+AffD 'berserk'   0   1  10  19         64          0
+AffD 'berserk'   0   1  10  18         64          0
 End
 
 #O
@@ -597,31 +600,6 @@ Affect -1 41 -1 -1 14 0 0
 End
 
 #O
-Vnum 16021
-Nest 0
-Wear 15
-Lev  46
-Cost 19350000
-Cond 100
-Repd 0
-Affect -1 46 -1 -1 14 0 0
-Affect -1 46 -1 2 24 0 0
-End
-
-#O
-Vnum 16021
-Nest 0
-Wear 14
-Lev  46
-Cost 19350000
-Cond 100
-Repd 1
-Affect -1 46 -1 -1 1 0 0
-Affect -1 46 -1 -5 1 0 0
-Affect -1 46 -1 -4 18 0 0
-End
-
-#O
 Vnum 725
 Nest 0
 Wear 9
@@ -898,16 +876,6 @@ Spell 3 'giant strength'
 End
 
 #O
-Vnum 29211
-Nest 0
-Wear -1
-Lev  51
-Cost 50000000
-Cond 100
-Repd 0
-End
-
-#O
 Vnum 25102
 Nest 0
 Wear -1
@@ -950,16 +918,6 @@ Cost 30000000
 Cond 100
 Repd 0
 Affect -1 29 -1 -2 5 0 0
-End
-
-#O
-Vnum 3091
-Nest 0
-Wear -1
-Cost 20000
-Cond 100
-Repd 0
-Spell 1 'fly'
 End
 
 #O
@@ -1024,6 +982,26 @@ Nest 0
 Wear 8
 Lev  39
 Cost 200000000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 717
+Nest 0
+Wear 15
+Lev  40
+Cost 4500000
+Cond 100
+Repd 0
+End
+
+#O
+Vnum 717
+Nest 0
+Wear 14
+Lev  40
+Cost 4500000
 Cond 100
 Repd 0
 End
