@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1790988801
+LogO 1790989100
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,26 +15,26 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 243625
+Plyd 243924
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 29063
-HMV  1205 1205 1201 1462 370 370
-NewGold 38
-NewPlat 41
-NewCopp 342
-NewSilv 147
-BankCP 345999078
-IntTime 1790902684
-IntTotal 6999078
+Room 29066
+HMV  1205 1205 1252 1462 370 370
+NewGold 47
+NewPlat 43
+NewCopp 364
+NewSilv 162
+BankCP 346864075
+IntTime 1790989084
+IntTotal 7864075
 Dcount 0
 SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 851
+AchKills 853
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -107,7 +107,7 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  125356
+Exp  125404
 Act  4261068
 AfBy 512
 Comm 24576
@@ -138,7 +138,7 @@ Pos  8
 Prac 8
 Trai 2
 Save  -3
-Alig  846
+Alig  862
 Hit   40
 Dam   46
 ACs -168 -177 -136 -16
@@ -166,7 +166,7 @@ Sk 78 'torment'
 Sk 30 'axe'
 Sk 100 'dagger'
 Sk 25 'flail'
-Sk 35 'mace'
+Sk 43 'mace'
 Sk 35 'polearm'
 Sk 97 'shield block'
 Sk 30 'spear'
@@ -1010,7 +1010,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 703
+Time 698
 Cost 0
 Cond 100
 Repd 0

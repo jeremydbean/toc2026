@@ -26183,3 +26183,38 @@ Sat Oct  3 00:55:41 2026 :: Log Alaric [29065]: e
 Sat Oct  3 00:55:41 2026 :: Log Alaric [0]: moved to 29066 (Service Hallway)
 Sat Oct  3 00:55:43 2026 :: Log Alaric [29066]: kill gu
 Sat Oct  3 00:56:34 2026 :: Log Alaric [29066]: kill gu
+Sat Oct  3 00:58:54 2026 :: Log Alaric [29066]: wake
+Sat Oct  3 00:58:54 2026 :: Log Alaric [29066]: l
+Sat Oct  3 00:58:56 2026 :: Log Alaric [29066]: w
+Sat Oct  3 00:58:56 2026 :: Log Alaric [0]: moved to 29065 (Service Hallway)
+Sat Oct  3 00:58:58 2026 :: Log Alaric [29065]: kill gu
+Sat Oct  3 00:59:11 2026 :: Log Alaric [29065]: e
+Sat Oct  3 00:59:11 2026 :: Log Alaric [0]: moved to 29066 (Service Hallway)
+Sat Oct  3 00:59:12 2026 :: Log Alaric [29066]: e
+Sat Oct  3 00:59:12 2026 :: Log Alaric [0]: moved to 29067 (Service Hallway)
+Sat Oct  3 00:59:14 2026 :: Log Alaric [29067]: kill he
+Sat Oct  3 01:00:19 2026 :: Sock.sinaddr:  178.156.185.127
+Sat Oct  3 01:00:19 2026 :: EOF encountered on read.
+Sat Oct  3 01:01:20 2026 :: Log Alaric [29067]: prac
+Sat Oct  3 01:01:22 2026 :: Log Alaric [29067]: wake
+Sat Oct  3 01:01:23 2026 :: Log Alaric [29067]: l
+Sat Oct  3 01:01:26 2026 :: Log Alaric [29067]: w
+Sat Oct  3 01:01:26 2026 :: Log Alaric [0]: moved to 29066 (Service Hallway)
+Sat Oct  3 01:01:27 2026 :: Log Alaric [29066]: w
+Sat Oct  3 01:01:27 2026 :: Log Alaric [0]: moved to 29065 (Service Hallway)
+Sat Oct  3 01:01:28 2026 :: Log Alaric [29065]: n
+Sat Oct  3 01:01:28 2026 :: Log Alaric [0]: moved to 29063 (Corridor)
+Sat Oct  3 01:01:28 2026 :: Log Alaric [29063]: n
+Sat Oct  3 01:01:28 2026 :: Log Alaric [0]: moved to 29062 (Corridor)
+Sat Oct  3 01:01:29 2026 :: Log Alaric [29062]: n
+Sat Oct  3 01:01:29 2026 :: Log Alaric [0]: moved to 29061 (Corridor)
+Sat Oct  3 01:01:30 2026 :: Log Alaric [29061]: w
+Sat Oct  3 01:01:32 2026 :: Log Alaric [29061]: unl west
+Sat Oct  3 01:01:33 2026 :: Log Alaric [29061]: ow
+Sat Oct  3 01:01:33 2026 :: Log Alaric [29061]: w
+Sat Oct  3 01:01:33 2026 :: Log Alaric [0]: moved to 29060 (Corridor)
+Sat Oct  3 01:01:36 2026 :: Log Alaric [29060]: sw
+Sat Oct  3 01:01:36 2026 :: Log Alaric [0]: moved to 29003 (Grand Foyer)
+Sat Oct  3 01:01:37 2026 :: Log Alaric [29003]: n
+Sat Oct  3 01:01:37 2026 :: Log Alaric [0]: moved to 29004 (Center Tunnelway)
+Sat Oct  3 01:01:39 2026 :: Log Alaric [29004]: kill gu
