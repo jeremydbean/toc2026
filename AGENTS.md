@@ -185,9 +185,9 @@ Current October 2026 Python baseline:
 ```text
 100 listed area entries
 2,427 mobiles
-3,605 objects
+3,623 objects
 7,783 rooms
-0 critical, 12 warning, 1,538 information findings
+0 critical, 12 warning, 1,539 information findings
 ```
 
 The mobile count rose by about ninety when Hyrule's enemies became one
@@ -195,7 +195,10 @@ generated record per kind per level band (see `wiki/hyrule-area.md`).
 Objects rose by thirty-five, and information findings by twenty-seven, when
 Hyrule's bosses gained Heart Containers and its enemies random drops: the
 27 drop potions are made by `make_corpse`, not by a reset, so they count as
-`object-has-no-source` exactly as Ganon's relics always have.
+`object-has-no-source` exactly as Ganon's relics always have. Eighteen more
+came with the dungeon chain -- eight guardian keys, nine chests and the
+Triforce of Power -- and one more finding, the complete Triforce, which
+COMBINE makes and nothing places.
 
 The information count fell from 1,571 when 176 resets that had been
 commented out as "(removed: room/obj does not exist)" went back in; every
@@ -556,7 +559,8 @@ achievements name them); their stat lines are generated, and their room
 lines and descriptions, like every enemy's, come from
 `data/hyrule_mob_prose.json`. Every item a player can get sits at or below
 the band it is found in -- the generator rewrites the retained catalog's
-levels and stats from the bands. The Master Sword (level 58) is Ganon's,
+levels and stats from the bands. The Master Sword (level 58) lies in
+Ganon's great chest,
 and must stay the best weapon a mortal can get anywhere at 59 or below;
 `tests/test_hyrule_progression.py` measures it against the whole world.
 The old men, Zelda and the other non-combatants are refused by
@@ -588,7 +592,25 @@ blows no parry stops, two every four seconds at random members of the
 fight; his melee barely matters. Retune him with the simulation described
 in `wiki/hyrule-area.md`, not by feel: the Silver Arrow's tenth-of-health
 floor fixes the fight's length, so his damage per pulse is what decides
-who wins.
+who wins. The other eight guardians were sized by the same simulation
+(`spec_hyrule_guardian`, `BOSS_VOLLEYS`): a lone character at the top of
+the band loses, six levels above wins, a group of three wins.
+
+**The dungeons are done in order, and the chain is data in three places
+that must agree.** Each guardian drops its dungeon's key (Ganon's is the
+Golden Key); the key opens the magical door behind it and the locked chest
+there, which holds the dungeon's Triforce piece and its treasure. The next
+dungeon's entrance asks for the piece and its guardian's chamber for the
+treasure, through `hyrule_progress_gate` in `act_move.c`, asked per
+character by `move_char` and `do_enter` -- never a door somebody else can
+hold open. The generator's `DUNGEON_TREASURE`, `ENTRY_NEEDS` and
+`GUARDIAN_NEEDS`, that C table, and the plan table in `wiki/hyrule-area.md`
+must say the same thing; `tests/test_hyrule_progression.py` checks the first
+two against each other and the chests. Pieces are treasure, not keys,
+because `save.c` drops keys at quit; they are NODROP so one character cannot
+carry another through. `reset_area` refills and relocks Hyrule's chests
+even with players about, since Hyrule is one area. `COMBINE TRIFORCE` is the
+only way to the complete Triforce.
 
 Hyrule workflow:
 

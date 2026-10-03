@@ -246,7 +246,7 @@ static const ACHIEVEMENT_DEFINITION achievement_table[] =
     { "all-dungeon-maps", "Never Lost", "Collect the map from every Hyrule dungeon.", ACH_CAT_HYRULE, 30, false, ACH_REQ_HYRULE_MAPS, 9, 0 },
     { "all-dungeon-compasses", "Eyes on the Prize", "Collect the compass from every Hyrule dungeon.", ACH_CAT_HYRULE, 30, false, ACH_REQ_HYRULE_COMPASSES, 9, 0 },
     { "fully-prepared", "Fully Prepared", "Collect all nine dungeon maps and all nine compasses.", ACH_CAT_HYRULE, 50, true, ACH_REQ_HYRULE_KIT, 18, 0 },
-    { "complete-triforce", "Power, Wisdom, Courage", "Claim the complete Triforce beyond Ganon's chamber.", ACH_CAT_HYRULE, 50, true, ACH_REQ_OBJECT, 30286, 0 },
+    { "complete-triforce", "Power, Wisdom, Courage", "Combine the nine Triforce pieces into the complete Triforce.", ACH_CAT_HYRULE, 50, true, ACH_REQ_OBJECT, 30286, 0 },
 
     { "hyrule-eagle", "The Eagle Falls", "Defeat Aquamentus in Level 1: The Eagle.", ACH_CAT_HYRULE, 15, false, ACH_REQ_BOSS, 30222, 30413 },
     { "hyrule-moon", "Smoke in the Moon", "Defeat Dodongo in Level 2: The Moon.", ACH_CAT_HYRULE, 15, false, ACH_REQ_BOSS, 30218, 30435 },

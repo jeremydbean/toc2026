@@ -48,7 +48,8 @@ NEW_OBJECT_VNUMS = (
     set(range(30500, 30515))
     | {30520}
     | set(range(30530, 30591))
-    | set(range(30591, 30630))     # heart containers and enemy drops
+    | set(range(30591, 30650))     # heart containers, drops, keys, chests
+    | {30408}                      # the ninth piece, the Triforce of Power
 )
 
 BOSS_MOBS = {
@@ -60,6 +61,11 @@ BOSS_GEAR = {
     6: 30378, 7: 30382, 8: 30385, 9: 30388,
 }
 GANON_GOLDEN_KEY_VNUM = 30243
+BOSS_NAMES = {
+    30222: "Aquamentus", 30218: "Dodongo", 30305: "Manhandla", 30307: "Gleeok",
+    30309: "Digdogger", 30223: "Gohma", 30314: "ancient Aquamentus",
+    30316: "ashen Gleeok", 30225: "Ganon",
+}
 
 # Characters who are not enemies keep the one catalog record they always had.
 NPC_MOBS = {
@@ -265,7 +271,7 @@ ENEMY_TYPES: dict[str, EnemyType] = {
         1.0, 1.5, 1.2, 10, off="H", size="L"),
     "patra": EnemyType(
         118, "unique", "patra eye", "a patra",
-        1.0, 2.0, 1.3, 19, off="F", size="L"),
+        1.0, 2.0, 1.3, 19, off="F", size="L", special="spec_hyrule_patra"),
     "dodongo": EnemyType(
         18, "lizard", "dodongo dinosaur", "a dodongo",
         1.0, 1.75, 1.1, 10, size="L"),
@@ -512,23 +518,60 @@ def enemy_tiers(manifest: dict[str, Any]) -> list[tuple[str, int]]:
 # Arrow's tenth of his health is taken after armour and is untouched.
 # --------------------------------------------------------------------------
 
+#
+# The guardians of Levels 1-8 were sized the same way, by simulation (the
+# player model and the results are in wiki/hyrule-area.md): a lone
+# character at the top of the band usually loses, one six levels above
+# usually wins, and a group of three at the band usually wins. Each now
+# has an NES attack in spec_hyrule_guardian (src/special.c), a volley of
+# spell blows at random members of the fight -- BOSS_VOLLEYS, which that
+# table must match.
+# --------------------------------------------------------------------------
+
 BOSS_STATS = {
     # dungeon: (level, hit points, average damage per blow)
-    1: (10, 650, 15),     # Aquamentus
-    2: (16, 1250, 21),    # Dodongo
-    3: (23, 2400, 30),    # Manhandla
-    4: (30, 4000, 39),    # Gleeok, two heads
-    5: (36, 6000, 48),    # Digdogger
-    6: (43, 8500, 57),    # Gohma
-    7: (49, 9500, 63),    # Aquamentus again, older and harder
-    8: (55, 15000, 73),   # Gleeok, four heads
-    9: (64, 30000, 350),  # Ganon -- see above, and spec_ganon
+    1: (10, 820, 10),     # Aquamentus
+    2: (16, 2200, 19),    # Dodongo
+    3: (23, 3400, 30),    # Manhandla
+    4: (30, 6000, 64),    # Gleeok, two heads
+    5: (36, 16800, 40),   # Digdogger
+    6: (43, 20000, 27),   # Gohma: her sanctuary and haste do the rest
+    7: (49, 30000, 66),   # Aquamentus again, older and harder
+    8: (55, 33000, 80),   # Gleeok, four heads
+    9: (64, 36000, 350),  # Ganon -- see above, and spec_ganon
+}
+# dungeon: (projectiles a pulse, least, most) -- spec_hyrule_guardian and
+# spec_ganon; src/special.c's tables must say the same.
+BOSS_VOLLEYS = {
+    1: (3, 4, 6),         # Aquamentus's fan of three fireballs
+    2: (1, 22, 31),       # Dodongo's charge
+    3: (4, 9, 13),        # Manhandla's four heads
+    4: (2, 39, 55),       # Gleeok's two heads
+    5: (1, 48, 67),       # Digdogger's roll; two at half each once split
+    6: (1, 32, 45),       # Gohma's eye
+    7: (3, 26, 36),       # the ancient Aquamentus's fan
+    8: (4, 24, 34),       # the ashen Gleeok's four heads
+    9: (2, 1400, 1900),   # Ganon's fireballs
 }
 GANON_VNUM = 30225
 GANON_ARMOR = -40
 # Spec_funs the generator owns rather than retains: Ganon's fireballs and
-# his healing out of a fight replace the necromancer's spell list he had.
-BOSS_SPECIALS = {GANON_VNUM: "spec_ganon"}
+# his healing out of a fight replace the necromancer's spell list he had,
+# and the other guardians' NES attacks replace their dragon breath, which
+# scaled with the breather's own hit points.
+BOSS_SPECIALS = {
+    **{vnum: "spec_hyrule_guardian" for level, vnum in BOSS_MOBS.items() if level <= 8},
+    GANON_VNUM: "spec_ganon",
+}
+
+
+def set_item_line(body: str, vnum: int, item_line: str) -> str:
+    """Rewrite a retained object's item line: type, extra and wear flags.
+    It is the fifth line of the record, after the four strings."""
+    record = re.compile(rf"(?ms)^#{vnum}\r?\n(?:[^\n]*\n){{4}}([^\n]*)\n").search(body)
+    if not record:
+        raise ValueError(f"missing object record {vnum}")
+    return body[:record.start(1)] + item_line + body[record.end(1):]
 
 
 def redescribe_mobile(body: str, vnum: int, long: str, description: str,
@@ -737,32 +780,25 @@ ITEM_LEVELS = {
     # Level 1, band 2-8.
     30232: ItemLevel(4, "0 2 5 0 0"),                 # small boomerang, 2d5
     30222: ItemLevel(6, "9 2 5 6 0"),                 # short bow, 2d5
-    30400: ItemLevel(2),                              # Triforce shards: the
-    # Level 2, band 8-14.                             # bottom of each band
+    # Level 2, band 8-14.
     30410: ItemLevel(12, "1 3 5 3 0"),                # Magical Boomerang, 3d5
-    30401: ItemLevel(8),
     # Level 3, band 14-20.
     30411: ItemLevel(16),                             # the raft
-    30402: ItemLevel(14),
     # Level 4, band 20-27.
     30412: ItemLevel(22, armor_values(22)),           # the stepladder
-    30403: ItemLevel(20),
     # Level 5, band 27-33; the White Sword, Power Bracelet and Letter caves
     # open from band 5 screens too.
     30413: ItemLevel(30, armor_values(30)),           # the Recorder
     30251: ItemLevel(30, "1 10 5 20 D"),              # White Sword, 10d5 +2/+2
     30276: ItemLevel(30),                             # Power Bracelet
-    30404: ItemLevel(27),
     # Level 6, band 33-40.
     30245: ItemLevel(38, "38 5 5 70 0"),              # the Magical Rod
-    30405: ItemLevel(33),
     # Level 7, band 40-46.
     30414: ItemLevel(42),                             # the Red Candle
-    30406: ItemLevel(40),
     # Level 8, band 46-52.
     30415: ItemLevel(48, armor_values(48)),           # the Magic Book
     30416: ItemLevel(48),                             # the Magical Key
-    30407: ItemLevel(46),
+    # (The Triforce pieces are written whole: see piece_record.)
     # Level 9, band 53-59: the Silver Arrow (54), the Red Ring of Hyrule
     # (58) and the Master Sword (58) are written whole further down. The
     # catalog's plain "red ring" (30261) used to fill the Red Ring Cellar;
@@ -857,6 +893,14 @@ def boss_weapon_record(dungeon_level: int) -> str:
         weapon.level, weapon.weight, weapon.level * weapon.level * 6,
         f"E\n{weapon.keywords}~\n{lore}\n~\nA\n18 {weapon.hitroll}\nA\n19 {weapon.damroll}",
     )
+
+
+# An exit's lock value as load_rooms reads it. 2 is a pickproof door that
+# takes a key. 5 looks like the same thing -- load_rooms gives it the same
+# bits -- but load_resets turns every reset of a lock 5 door into state 5,
+# "trapped", so each one went off on four unlocks in five: every locked
+# door in Hyrule was a trap until 2026-10.
+LOCKED_DOOR = 2
 
 
 @dataclass
@@ -1189,6 +1233,8 @@ def triforce_record() -> str:
     description = """E
 triforce triangles~
 Three golden triangles join as one, embodying Power, Wisdom, and Courage.
+Nobody finds it whole: COMBINE TRIFORCE makes it from the nine pieces, one
+from each of Hyrule's dungeon guardians, and it counts as all nine.
 Wear it and it rises to hover at your shoulder, lighting the way, and the
 world shows you everything: what is invisible, hidden or cloaked in the
 dark, as a level 59 hero with holy light would see it -- though not the
@@ -1312,6 +1358,115 @@ def drop_records(manifest: dict[str, Any]) -> list[str]:
             "A golden clock whose face is a stopper. In the old tales a clock\n"
             "froze every enemy where it stood; QUAFF this and time is yours,\n"
             "and for a while you move twice for every step they take."))
+    return records
+
+
+# --------------------------------------------------------------------------
+# The order of the dungeons.
+#
+# Every dungeon works the same way. Its guardian carries the dungeon's key;
+# the key opens the locked door into the room behind the guardian and the
+# locked chest standing in it; the chest holds the dungeon's Triforce piece
+# and its treasure. The piece opens the next dungeon's entrance and the
+# treasure gets you past the obstacle before the next guardian -- both
+# checked per character by hyrule_progress_gate in src/act_move.c, which
+# tests/test_hyrule_progression.py holds to the tables here. The plan, and
+# why each pairing is faithful to the NES, is in wiki/hyrule-area.md.
+# --------------------------------------------------------------------------
+
+PIECE_VNUMS = {level: 30399 + level for level in range(1, 10)}     # 30400-30408
+BOSS_KEYS = {**{level: 30629 + level for level in range(1, 9)},     # 30630-30637
+             9: GANON_GOLDEN_KEY_VNUM}
+CHESTS = {level: 30639 + level for level in range(1, 10)}          # 30640-30648
+DUNGEON_TREASURE = {
+    1: 30232,   # the boomerang: a Goriya's, in the NES
+    2: 30410,   # the Magical Boomerang
+    3: 30411,   # the raft
+    4: 30412,   # the stepladder
+    5: 30222,   # the bow, moved from Level 1 to arrive just before Gohma
+    6: 30413,   # the Recorder, moved from Level 5 to arrive just before Level 7
+    7: 30414,   # the Red Candle
+    8: 30416,   # the Magical Key
+    9: 30200,   # the Master Sword (MASTER_SWORD_VNUM)
+}
+# What each dungeon's two gates ask for: the entrance, the previous piece;
+# the guardian's chamber, the previous treasure (and a substitute, if any).
+ENTRY_NEEDS = {level: PIECE_VNUMS[level - 1] for level in range(2, 10)}
+GUARDIAN_NEEDS = {level: DUNGEON_TREASURE[level - 1] for level in range(2, 10)}
+GUARDIAN_ALSO = {2: DUNGEON_TREASURE[2]}   # the Magical Boomerang trips a lever too
+PIECE_ORDINALS = ("first", "second", "third", "fourth", "fifth", "sixth",
+                  "seventh", "eighth", "ninth")
+
+
+def piece_record(level: int, band: tuple[int, int], title: str) -> str:
+    """A Triforce piece: treasure, not a key, so it is saved when you quit
+    (save.c drops keys), and NODROP so it cannot be passed to somebody who
+    has not earned it."""
+    ordinal = PIECE_ORDINALS[level - 1]
+    if level == 9:
+        keywords = "triforce power piece ninth ganon"
+        short = "the Triforce of Power"
+        long = "The Triforce of Power, Ganon's own, smoulders here with a dark gold light."
+        origin = "Ganon's own, the ninth piece, taken from his great chest"
+    else:
+        keywords = f"triforce shard piece {ordinal} {level}"
+        short = f"the {ordinal} Triforce shard"
+        long = f"The {ordinal} shard of the Triforce of Wisdom gleams here."
+        origin = f"the {ordinal} of the eight shards of Wisdom, from the {title}'s chest"
+    use = ("It is the last; the others open the dungeons, and this one completes them."
+           if level == 9 else
+           f"Carry it: Level {level + 1}'s door opens only for one who has it.")
+    lore = textwrap.fill(
+        f"This is {origin}. It is one of nine Triforce pieces, one from each of "
+        f"Hyrule's dungeon guardians: eight of Wisdom, and Ganon's Power. {use} "
+        "With all nine in hand, type COMBINE TRIFORCE to make the complete Triforce.",
+        width=DESCRIPTION_WIDTH,
+    )
+    return object_record(
+        PIECE_VNUMS[level], keywords, short, long, "gold", "8 AGH AO",
+        "0 0 0 0 0", band[0], 1, 100 * level, f"E\n{keywords}~\n{lore}\n~",
+    )
+
+
+def boss_key_record(level: int, band: tuple[int, int], title: str) -> str:
+    plain = title.lower()
+    return object_record(
+        BOSS_KEYS[level], f"key {plain} guardian treasure", f"the {title}'s key",
+        f"A heavy key with the mark of the {title} on its bow lies here.",
+        "iron", "18 AG AO", "0 0 0 0 0", band[0], 1, 0,
+        f"E\nkey {plain}~\nThe key the {title}'s guardian carried. It opens the locked door into\n"
+        "the room behind the guardian's chamber, and the chest standing in\n"
+        "that room.\n~",
+    )
+
+
+def chest_record(level: int, band: tuple[int, int], title: str) -> str:
+    """Closed, locked and pickproof (A B C D), keyed to the guardian's key;
+    reset_area closes and locks it again whenever it refills."""
+    if level == 9:
+        keywords, short = "chest great ganon golden", "Ganon's great chest"
+        long = "A great chest of black iron and gold squats here, locked fast."
+    else:
+        keywords = f"chest treasure {title.lower()}"
+        short = f"the {title}'s treasure chest"
+        long = "A treasure chest, banded in iron and locked fast, stands here."
+    return object_record(
+        CHESTS[level], keywords, short, long, "iron", "15 G 0",
+        f"100 ABCD {BOSS_KEYS[level]} 0 0", band[0], 500, 0,
+    )
+
+
+def chain_records(manifest: dict[str, Any]) -> list[str]:
+    records = []
+    for dungeon in manifest["dungeons"]:
+        level = dungeon["level"]
+        band = tuple(dungeon["recommended_levels"])
+        title = dungeon["title"].removeprefix("The ")
+        records.append(chest_record(level, band, title))
+        if level <= 8:
+            records.append(boss_key_record(level, band, title))
+        if level == 9:
+            records.append(piece_record(level, band, title))
     return records
 
 
@@ -1576,6 +1731,7 @@ def new_object_records(manifest: dict[str, Any]) -> str:
     objects.extend(ganon_relic_records())
     objects.extend(boss_weapon_record(level) for level in sorted(BOSS_WEAPONS))
     objects.extend(drop_records(manifest))
+    objects.extend(chain_records(manifest))
     return "\n".join(objects)
 
 
@@ -1694,7 +1850,7 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
                 door_type = exit_data["type"]
                 locks, key_vnum, keyword = 0, 0, ""
                 if door_type == "locked":
-                    locks, key_vnum, keyword = 5, 30227, "locked dungeon door"
+                    locks, key_vnum, keyword = LOCKED_DOOR, 30227, "locked dungeon door"
                 elif door_type == "shutter":
                     locks, keyword = 1, "shutter"
                 elif door_type == "bombable":
@@ -1914,17 +2070,30 @@ def build_rooms(manifest: dict[str, Any], prose: Prose) -> tuple[dict[int, RoomS
         rooms[hungry_room].exits["north"].keyword = "hungry guardian passage"
         rooms[hungry_room].puzzles.append(PUZZLE_OBJECTS["feed"])
 
-    level_nine = manifest["dungeons"][8]
-    boss_vnum, goal_vnum = level_nine["boss_vnum"], level_nine["goal_vnum"]
-    add_two_way_exit(
-        rooms, boss_vnum, "north", goal_vnum,
-        locks=5, key_vnum=GANON_GOLDEN_KEY_VNUM, keyword="golden door",
-    )
-    rooms[goal_vnum].flags = "ADKN"
-    rooms[goal_vnum].objects.extend([30286, 30217])
+    # Every guardian's chamber opens on its treasure room through a door
+    # locked with the guardian's key, and the treasure room holds the chest
+    # the same key opens (see DUNGEON_CHAIN above). Each treasure room also
+    # keeps its way home -- a returning light, or Zelda's portal -- so
+    # nobody can be shut in it.
+    for dungeon in manifest["dungeons"]:
+        level = dungeon["level"]
+        boss_vnum, goal_vnum = dungeon["boss_vnum"], dungeon["goal_vnum"]
+        boss_room = next(room for room in dungeon["rooms"] if room["vnum"] == boss_vnum)
+        direction = next(
+            direction for direction, exit_data in boss_room["exits"].items()
+            if exit_data["to_vnum"] == goal_vnum
+        )
+        title = dungeon["title"].removeprefix("The ").lower()
+        add_two_way_exit(
+            rooms, boss_vnum, direction, goal_vnum,
+            locks=LOCKED_DOOR, key_vnum=BOSS_KEYS[level],
+            keyword="golden door" if level == 9 else f"{title} treasure door",
+        )
+        rooms[goal_vnum].objects.append(CHESTS[level])
+        rooms[goal_vnum].objects.append(30217 if level == 9 else 30529 + level)
 
-    for dungeon in manifest["dungeons"][:8]:
-        rooms[dungeon["goal_vnum"]].objects.append(30529 + dungeon["level"])
+    level_nine = manifest["dungeons"][8]
+    rooms[level_nine["goal_vnum"]].flags = "ADKN"
 
     # Gear is deliberately available throughout each band, not only as a final reward.
     rooms[30650].objects.append(GEAR_STAGES[0][0])
@@ -1998,9 +2167,8 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
                     lines.append(f"G 1 {BOSS_WEAPONS[level].vnum} 100")
                     if level <= 8:
                         lines.append(f"G 1 {BOSS_HEART_CONTAINER_FIRST + level - 1} 100")
-                    if level == 9:
-                        lines.append(f"G 1 {GANON_GOLDEN_KEY_VNUM} 100")
-                        lines.append(f"G 1 {MASTER_SWORD_VNUM} 100")
+                    # The dungeon's key: Ganon's is the Golden Key.
+                    lines.append(f"G 1 {BOSS_KEYS[level]} 100")
         for object_vnum in room.objects:
             lines.append(f"O 0 {object_vnum} 0 {room.vnum}")
         for puzzle_vnum in room.puzzles:
@@ -2010,13 +2178,13 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
 
         for direction, exit_spec in sorted(room.exits.items(), key=lambda item: DIRECTION_NUMBERS[item[0]]):
             if exit_spec.locks:
-                if exit_spec.key_vnum == GANON_GOLDEN_KEY_VNUM:
-                    # The Golden Key gate is magical: keyed players may unlock
-                    # it, while random area-reset traps and doorbash cannot
-                    # turn the final progression gate into a dead end.
+                if exit_spec.key_vnum in BOSS_KEYS.values():
+                    # A guardian's door is magical: its key unlocks it, while
+                    # random area-reset traps, pick lock and doorbash cannot
+                    # turn a progression gate into a dead end or a way round.
                     state = 3
                 else:
-                    state = 2 if exit_spec.locks == 5 else 1
+                    state = 2 if exit_spec.locks == LOCKED_DOOR else 1
                 lines.append(f"D 0 {room.vnum} {DIRECTION_NUMBERS[direction]} {state}")
                 if exit_spec.locks == 4 and exit_spec.keyword.startswith("cracked"):
                     puzzle_vnum = PUZZLE_OBJECTS["bomb"].get(direction)
@@ -2026,6 +2194,9 @@ def render_resets(rooms: dict[int, RoomSpec], manifest: dict[str, Any]) -> str:
     for stage, (chest_vnum, gear_vnums) in GEAR_STAGES.items():
         for gear_vnum in gear_vnums:
             lines.append(f"P 0 {gear_vnum} 0 {chest_vnum}")
+    for level in sorted(CHESTS):
+        lines.append(f"P 0 {PIECE_VNUMS[level]} 0 {CHESTS[level]}")
+        lines.append(f"P 0 {DUNGEON_TREASURE[level]} 0 {CHESTS[level]}")
     lines.append("O 0 30285 0 15068")
     lines.append("S")
     return "\n".join(lines)
@@ -2079,14 +2250,16 @@ def render_specials(retained: str, manifest: dict[str, Any]) -> str:
         fields = line.split()
         if len(fields) >= 2 and fields[0] == "M" and fields[1].isdigit():
             vnum = int(fields[1])
-            if vnum in RETIRED_MOBILE_VNUMS or TIER_VNUM_FIRST <= vnum <= TIER_VNUM_LAST:
+            if (vnum in RETIRED_MOBILE_VNUMS or vnum in BOSS_SPECIALS
+                    or TIER_VNUM_FIRST <= vnum <= TIER_VNUM_LAST):
                 continue
-            if vnum in BOSS_SPECIALS:
-                fields[2] = BOSS_SPECIALS[vnum]
-                line = " ".join(fields)
         if line.strip() == "S":
             continue
         lines.append(line.rstrip())
+    lines.extend(
+        f"M {vnum} {special} Load to: {BOSS_NAMES[vnum]}"
+        for vnum, special in sorted(BOSS_SPECIALS.items())
+    )
     lines.extend(enemy_specials(manifest))
     lines.append("S")
     return "\n".join(line for line in lines if line)
@@ -2117,6 +2290,13 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
     object_body = replace_record(object_body, 30218, silver_arrow_object_record())
     object_body = replace_record(object_body, MASTER_SWORD_VNUM, master_sword_record())
     object_body = replace_record(object_body, 30286, triforce_record())
+    for dungeon in manifest["dungeons"][:8]:
+        object_body = replace_record(object_body, PIECE_VNUMS[dungeon["level"]], piece_record(
+            dungeon["level"], tuple(dungeon["recommended_levels"]),
+            dungeon["title"].removeprefix("The ")))
+    # Keys are not saved when you quit (save.c); the Magical Key is a
+    # treasure the next dungeon needs, so it must be.
+    object_body = set_item_line(object_body, 30416, "8 G AO")
     for dungeon in manifest["dungeons"]:
         object_body = replace_record(object_body, 30479 + dungeon["level"], map_object_record(dungeon, False))
         object_body = replace_record(object_body, 30488 + dungeon["level"], map_object_record(dungeon, True))

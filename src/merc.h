@@ -1272,7 +1272,8 @@ const char *default_prompt_text args( ( void ) );
 /* The Master Sword: Ganon carries it, and it hastens whoever wields it
    through an F record on the object (see load_objects). */
 #define OBJ_VNUM_HYRULE_MASTER_SWORD  30200
-/* The complete Triforce, beyond Ganon's chamber. It is a light, and worn
+/* The complete Triforce, made with COMBINE TRIFORCE from the nine pieces
+   (do_combine in act_info.c). It is a light, and worn
    in the light slot it gives the sight of a level TRIFORCE_SIGHT_LEVEL
    character with HOLYLIGHT on -- see triforce_sight() in handler.c. */
 #define OBJ_VNUM_HYRULE_TRIFORCE      30286
@@ -1283,6 +1284,23 @@ const char *default_prompt_text args( ( void ) );
 #define OBJ_VNUM_HYRULE_HEART_FIRST   30600
 #define OBJ_VNUM_HYRULE_FAIRY_FIRST   30610
 #define OBJ_VNUM_HYRULE_CLOCK_FIRST   30620
+/* Each dungeon's guardian carries its key (Ganon's is the Golden Key);
+   the key opens the treasure room behind the guardian and the chest in
+   it. The chests are relocked and refilled at every area reset, players
+   or no players (reset_area in db.c), and the keys do not crumble in the
+   corpse the way an ordinary key does (make_corpse in fight.c). */
+#define OBJ_VNUM_HYRULE_BOSS_KEY_FIRST 30630
+#define OBJ_VNUM_HYRULE_BOSS_KEY_LAST  30637
+#define OBJ_VNUM_HYRULE_GOLDEN_KEY     30243
+#define OBJ_VNUM_HYRULE_CHEST_FIRST    30640
+#define OBJ_VNUM_HYRULE_CHEST_LAST     30648
+#define IS_HYRULE_BOSS_KEY(vnum) \
+    ( ( (vnum) >= OBJ_VNUM_HYRULE_BOSS_KEY_FIRST \
+     && (vnum) <= OBJ_VNUM_HYRULE_BOSS_KEY_LAST ) \
+   || (vnum) == OBJ_VNUM_HYRULE_GOLDEN_KEY )
+#define IS_HYRULE_CHEST(vnum) \
+    ( (vnum) >= OBJ_VNUM_HYRULE_CHEST_FIRST \
+   && (vnum) <= OBJ_VNUM_HYRULE_CHEST_LAST )
 
 /* An ordinary bag, which MIRROR RESTORE renames and enlarges for the
    kit it is handing back. */
@@ -2989,6 +3007,8 @@ int     get_obj_weight  ( OBJ_DATA *obj );
 bool    room_is_dark    ( ROOM_INDEX_DATA *pRoomIndex );
 bool    room_is_private ( ROOM_INDEX_DATA *pRoomIndex );
 bool    can_enter_private_room ( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex );
+bool    hyrule_gate_refuses ( CHAR_DATA *ch, ROOM_INDEX_DATA *from,
+                              ROOM_INDEX_DATA *to );
 bool    triforce_sight  ( const CHAR_DATA *ch );
 int     sight_trust     ( const CHAR_DATA *ch );
 bool    equipment_grants_affect ( const CHAR_DATA *ch, int bit );

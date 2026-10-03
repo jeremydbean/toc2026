@@ -575,11 +575,11 @@
     },
     "L1:E5": {
       "name": "Aquamentus's Lair",
-      "description": "Scorch marks blacken the floor of this long chamber, each blast fanning out in three paths from a great ledge of stone along the eastern wall where a horned dragon makes its stand. The air is hot and stinks of sulphur and charred bone, and shed green scales glint among the cinders. A locked door leads south, and a heavy iron shutter seals the way east."
+      "description": "Scorch marks blacken the floor of this long chamber, each blast fanning out in three paths from a great ledge of stone where a horned dragon makes its stand. The air is hot and stinks of sulphur and charred bone. A locked door leads south, and the door east, marked with an eagle around its keyhole, opens only to the guardian's key."
     },
     "L1:F5": {
-      "name": "Triforce Chamber",
-      "description": "A small, hushed chamber of smooth teal stone, its floor framed by a border of carved blocks and its walls marked with a triangle within a triangle. A soft golden glow hangs in the air though nothing here burns, and the stone is warm to the touch. A heavy iron shutter leads west, back toward the dragon's lair."
+      "name": "Treasure Chamber",
+      "description": "A small, hushed chamber of smooth teal stone, its walls marked with a triangle within a triangle. A soft golden glow hangs in the air though nothing here burns. An iron-banded chest stands at the center of the floor, and the heavy door west, back toward the dragon's lair, bears the eagle's mark around its keyhole."
     },
     "L1:B6": {
       "name": "Chamber of Blade Traps",
@@ -590,8 +590,8 @@
       "description": "Curved scuff marks and dents pock the walls of this high northern chamber, and the floor is littered with chips of broken stone and the splinters of a thrown boomerang. Cold air drifts down from cracks in the vaulted ceiling, and a pair of eagle statues glares from the corners. Locked doors with heavy keyholes stand to the south and to the west."
     },
     "L1:cellar:B6": {
-      "name": "Bow Cellar",
-      "description": "A narrow ladder drops from the stair into a long, shadowy basement of brick ledges and black gaps that fall away into nothing, the kind of place one crosses sideways, one ledge at a time. The air is cool and smells of earth, bowstring wax and old candles. A raised stone shelf waits at the far end of the ledges, and the ladder climbs back to the chamber above."
+      "name": "Hidden Cellar",
+      "description": "A narrow ladder drops from the stair into a long, shadowy basement of brick ledges and black gaps, the kind of place one crosses sideways, one ledge at a time. The air smells of earth and old candles. Somebody's hoard of rupees was tucked on a stone shelf at the far end, and the ladder climbs back to the chamber above."
     },
     "L2:B1": {
       "name": "Crescent Gate",
@@ -658,12 +658,12 @@
       "description": "A quiet dead-end chamber in the dungeon's northeast corner, its tiles slick with an oily film and its blocks beaded with damp. Water drips steadily from somewhere above into a shallow puddle that quivers with a life of its own. An open doorway leads south, and the west wall is fractured and loose, as if only old mortar holds it up."
     },
     "L2:B8": {
-      "name": "Triforce Chamber",
-      "description": "A small sanctum of quiet blue stone in the dungeon's far northwest, its floor framed by a border of raised blocks and a crescent moon carved above a triangle of gold leaf. A gentle golden light seems to hang in the air, and the hush here is deep and reverent after the smoke next door. An open doorway leads east, back to the lair."
+      "name": "Treasure Chamber",
+      "description": "A small sanctum of quiet blue stone in the dungeon's far northwest, a crescent moon carved above a triangle of gold leaf. A gentle golden light hangs in the air, and the hush is deep after the smoke next door. An iron-banded chest waits on the floor, and the door east, back to the lair, is locked with the moon's own key."
     },
     "L2:C8": {
       "name": "Dodongo's Lair",
-      "description": "A broad, low chamber that stinks of smoke and scorched rock, its floor pitted with blast craters and pressed by huge three-toed footprints of a beast too thick-hided for any blade. Blackened scraps of fuse lie among the rubble, as though something here has swallowed bombs whole and suffered for it. A heavy shutter seals the south door, and an open doorway leads west."
+      "description": "A broad, low chamber that stinks of smoke and scorched rock, its floor pitted with blast craters and pressed by huge three-toed footprints of a beast too thick-hided for any blade. Blackened scraps of fuse lie in the rubble. A heavy shutter seals the south door, and the door west is locked, a crescent moon around its keyhole."
     },
     "L3:C1": {
       "name": "Ooze Chamber",
@@ -719,15 +719,15 @@
     },
     "L3:E4": {
       "name": "Manhandla's Lair",
-      "description": "Thick vines and torn, fleshy petals carpet this chamber, and the air is heavy with the cloying sweetness of a monstrous four-headed bloom. Long whip-marks and scorch spots score the floor in every direction, and the walls are pitted where the plant has rammed itself, faster and wilder each time a head was cut away. Shutters seal north and south, and the west wall is cracked."
+      "description": "Thick vines and torn, fleshy petals carpet this chamber, heavy with the sweetness of a monstrous four-headed bloom. Whip-marks and scorch spots score the floor, and the walls are pitted where the plant rammed itself, faster each time a head was cut away. A shutter seals the south, the west wall is cracked, and the door north is locked with the guardian's key."
     },
     "L3:C5": {
       "name": "Blade Corridor",
       "description": "Twin grooves cut across this narrow chamber where spiked blades rest against the walls, poised to slide at the first footstep and grind back afterwards. The stone between them is scored with fresh, bright scratches. A locked door leads south, and a heavy iron shutter seals the doorway north."
     },
     "L3:E5": {
-      "name": "Triforce Chamber",
-      "description": "A quiet chamber of green stone above the lair, its floor framed by a border of raised blocks and a turning cross inlaid in gold at its center. A warm golden light lingers in the air, and the stone here is clean and untouched by slime or vine. A heavy iron shutter leads south, back into the overgrown lair."
+      "name": "Treasure Chamber",
+      "description": "A quiet chamber of green stone above the lair, a turning cross inlaid in gold at its center and a warm golden light in the air. The stone is clean and untouched by slime or vine. An iron-banded chest stands on the cross, and the door south, back into the overgrown lair, is locked with the guardian's key."
     },
     "L3:B6": {
       "name": "Northwest Roost",
@@ -738,8 +738,8 @@
       "description": "Two fires crackle in stone braziers at the north end of this chamber, casting warm amber light across the green stone, and the floor between them is worn smooth by long standing. A question is scratched into the wall above the flames: DID YOU GET THE SWORD FROM THE OLD MAN ON TOP OF THE WATERFALL? Heavy iron shutters seal the south and west doorways."
     },
     "L3:cellar:A2": {
-      "name": "Raft Cellar",
-      "description": "A ladder descends into a cramped brick basement of narrow ledges and dark gaps, cool and smelling of wet timber and pitch, the smell of a boatwright's yard. Water drips somewhere unseen below, and bats flit along the ledges. A stone shelf sits in the gloom at the end of the ledges, and the ladder leads back up to the chamber above."
+      "name": "Hidden Cellar",
+      "description": "A ladder descends into a cramped brick basement of narrow ledges and dark gaps, cool and smelling of wet timber and pitch. Water drips somewhere unseen below, and bats flit along the ledges. A stone shelf in the gloom at the end of the ledges is where the dungeon's keeper hides his coin. The ladder leads back up."
     },
     "L4:A1": {
       "name": "Dripping Roost",
@@ -803,7 +803,7 @@
     },
     "L4:D7": {
       "name": "Gleeok's Lair",
-      "description": "A vast hall of scorched stone opens beneath a ceiling blackened by fire. Twin fans of soot spread from the north wall where two long dragon necks reared and spat flame, and deep bite marks show where a severed head went on flying and snapping on its own. Cinders crunch underfoot and the air stinks of brimstone. Shutters close the north and west doors."
+      "description": "A vast hall of scorched stone opens beneath a ceiling blackened by fire. Twin fans of soot spread from the north wall where two long dragon necks reared and spat flame, and deep bite marks show where a severed head went on flying on its own. A shutter closes the west door, and the door north is locked, coiled serpents around its keyhole."
     },
     "L4:A8": {
       "name": "Hall of Twin Fires",
@@ -818,12 +818,12 @@
       "description": "Square recesses sit in the corners of this chamber, and deep grooves run from them along the walls and across the floor where spiked blades slide at speed toward anything in their line. The stone is chipped bright along those tracks, and the safest path is the one the blades cannot see. Open doorways lead west and south."
     },
     "L4:D8": {
-      "name": "Triforce Chamber",
-      "description": "A small sanctum of pale stone glows with a warm golden light that seems to rise from the floor itself. The endless drip of the lake falls silent here, and the carved serpents on the walls bow their heads toward a triangle of gold set in the center of the floor. A shutter leads back south to the scorched lair."
+      "name": "Treasure Chamber",
+      "description": "A small sanctum of pale stone glows with a warm golden light that seems to rise from the floor itself. The endless drip of the lake falls silent here, and the carved serpents on the walls bow their heads toward an iron-banded chest. The door south, back to the scorched lair, is locked with the Snake's key."
     },
     "L4:cellar:C5": {
-      "name": "Stepladder Cellar",
-      "description": "A ladder drops from beneath the sunken block into a cramped basement of red brick. Narrow brick ledges step across a dark floor where water gurgles in the gaps, gaps just too wide to cross without something to bridge them, and the low ceiling sweats with lake seepage. The only way out is back up the ladder."
+      "name": "Hidden Cellar",
+      "description": "A ladder drops from beneath the sunken block into a cramped basement of red brick. Narrow ledges step across a dark floor where water gurgles in the gaps, and the low ceiling sweats with lake seepage. A little hoard of rupees has been wedged on a ledge out of the wet. The only way out is back up the ladder."
     },
     "L5:C1": {
       "name": "Lizard's Gate",
@@ -879,7 +879,7 @@
     },
     "L5:A6": {
       "name": "Digdogger's Den",
-      "description": "The floor of this chamber is churned and dented as if a great spiked ball had bounced across it a thousand times, and broken spines as long as a forearm lie scattered about. The walls are pocked with deep, curving dents, and a low throb hums through the stone that falters at any shrill note. A locked door lies east, and shutters close the north and south."
+      "description": "The floor of this chamber is churned and dented as if a great spiked ball had bounced across it a thousand times, and broken spines lie scattered about. A low throb hums through the stone that falters at any shrill note. A locked door lies east, a shutter closes the south, and the door north is locked with the guardian's key."
     },
     "L5:B6": {
       "name": "Whispering Gallery",
@@ -894,8 +894,8 @@
       "description": "Coffins of carved stone stand in two rows across this tomb, their lids spattered with bat droppings. The rustle of wings echoes from the shadowed ceiling, and torn wrappings trail from one cracked casket toward the door, as though its occupant got up and left. A locked door stands in the west wall, and the south is open."
     },
     "L5:A7": {
-      "name": "Triforce Chamber",
-      "description": "A quiet sanctum of pale grey stone rests above the battered den, its walls carved with lizards that turn their heads toward a golden triangle set in the center of the floor. A golden light gathers in the still air, warm after the cold of the tombs. A shutter leads back south."
+      "name": "Treasure Chamber",
+      "description": "A quiet sanctum of pale grey stone above the battered den, its walls carved with lizards that turn their heads toward an iron-banded chest in the middle of the floor. A golden light gathers in the still air, warm after the cold of the tombs. The door south is locked with the guardian's key."
     },
     "L5:B7": {
       "name": "Hidden Sage's Nook",
@@ -918,8 +918,8 @@
       "description": "A bare stone landing where a narrow stair drops into the floor, running far to the southwest beneath the halls. Locked doors stand in the south and west walls, their keyholes cold and dark. The dust around the stair is scuffed by many feet, and a lizard is scratched on the top step pointing the way down."
     },
     "L5:cellar:B8": {
-      "name": "Recorder Cellar",
-      "description": "A ladder descends beneath the scraped block into a narrow brick basement, where the dry air carries a faint, high whistle like wind across a reed, playing the same few notes again and again. Brick ledges step across the dark floor, and the low ceiling presses close. The ladder is the only way back up."
+      "name": "Hidden Cellar",
+      "description": "A ladder descends beneath the scraped block into a narrow brick basement, where the dry air carries a faint whistle like wind across a reed. Brick ledges step across the dark floor, and a cache of rupees lies on the last of them, left by someone who meant to come back. The ladder is the only way back up."
     },
     "L6:A1": {
       "name": "Scorched Antechamber",
@@ -999,7 +999,7 @@
     },
     "L6:E7": {
       "name": "Gohma's Nest",
-      "description": "Shed carapace fragments and deep scuttle marks crisscross the floor of this lair, and the walls are gouged by great pincers. Broken arrows lie thick near the north wall, nearly all of them snapped against a hard shell, and only a few blackened where they struck something soft. Above it all a single huge eye is carved, staring. A shutter closes the north, and a locked door lies south."
+      "description": "Shed carapace fragments and deep scuttle marks crisscross the floor of this lair, and the walls are gouged by great pincers. Broken arrows lie thick near the north wall, nearly all snapped against a hard shell. Above it all a single huge eye is carved, staring. A locked door lies south, and the door north is locked with the guardian's key."
     },
     "L6:F7": {
       "name": "Eastern Stairwell",
@@ -1018,8 +1018,8 @@
       "description": "Two fires burn in dragon-shaped braziers at the far end of this quiet room, and the stone between them is worn smooth by long vigil. Words are carved above the flames, the letters deep and sure: AIM AT THE EYES OF GOHMA. An arrow is cut beneath them. A shutter leads south, and the west wall is cracked and weak."
     },
     "L6:E8": {
-      "name": "Triforce Chamber",
-      "description": "A sanctum of polished red stone glows with a soft golden light that warms the dragon carvings along its walls, every one of them turned toward a triangle of gold in the floor. The heat and smoke of the halls below are gone, and the air is clear and still. A shutter leads back south to the nest."
+      "name": "Treasure Chamber",
+      "description": "A sanctum of polished red stone glows with a soft golden light that warms the dragon carvings along its walls, every one of them turned toward an iron-banded chest on the floor. The heat and smoke of the halls below are gone. The door south, back to the nest, is locked with the Dragon's key."
     },
     "L6:cellar:B8": {
       "name": "Magical Rod Cellar",
@@ -1107,11 +1107,11 @@
     },
     "L7:C6": {
       "name": "Aquamentus's Lair",
-      "description": "A long hall of scorched brick ends at a raised ledge where something huge and horned has worn the stone smooth. The walls are pocked with blackened craters in clusters of three, each fan of fireballs spat at once, and the air is thick with smoke and the reek of burnt scale. A cracked wall leads back west, and a heavy shutter bars the east."
+      "description": "A long hall of scorched brick ends at a raised ledge where something huge and horned has worn the stone smooth. The walls are pocked with blackened craters in clusters of three, each fan of fireballs spat at once. A cracked wall leads back west, and the door east is locked, a horned face around its keyhole."
     },
     "L7:D6": {
-      "name": "Triforce Chamber",
-      "description": "A hush fills this small, high chamber, broken only by a faint golden hum that seems to come from the stones themselves. The floor rises in shallow steps to a plain stone dais at its center, swept clean as if by reverent hands, and a gold triangle is set into the top step. The only way out is the heavy shutter to the west."
+      "name": "Treasure Chamber",
+      "description": "A hush fills this small, high chamber, broken only by a faint golden hum from the stones themselves. The floor rises in shallow steps to a dais where an iron-banded chest stands, a gold triangle set into the step before it. The only way out is the door west, locked with the Demon's key."
     },
     "L7:A7": {
       "name": "Teeming Moat Hall",
@@ -1158,8 +1158,8 @@
       "description": "Long gouges run down the walls of this chamber as if great hands had dragged themselves out of the stone and back again, hauling whatever they caught back to the dungeon's mouth. A stone stair in one corner leads down into a dripping passage that winds far to the west. The west wall is cracked and loose."
     },
     "L7:cellar:C7": {
-      "name": "Red Candle Cellar",
-      "description": "Below the loose block, a ladder descends into a narrow basement of rough red brick. A single ledge runs the length of the cellar above a black, bottomless gap, and the air is warm and faintly waxy, as though a candle that never burns down were kept here. The ladder rises back to the hall above."
+      "name": "Hidden Cellar",
+      "description": "Below the loose block, a ladder descends into a narrow basement of rough red brick. A single ledge runs the length of the cellar above a black, bottomless gap, and the air is warm and faintly waxy. Rupees glint at the far end of the ledge, a hoard nobody came back for. The ladder rises back to the hall above."
     },
     "L8:B1": {
       "name": "Tomb of Wrappings",
@@ -1219,7 +1219,7 @@
     },
     "L8:B5": {
       "name": "Gleeok's Lair",
-      "description": "Four deep troughs are gouged into the north wall where four long dragon necks have thrashed against the stone, and the floor below is blackened with flame and pocked with bite marks from severed heads that kept flying. The heat is stifling and the air tastes of ash. A heavy shutter seals the north, and cracked walls lead south and west."
+      "description": "Four deep troughs are gouged into the north wall where four long dragon necks have thrashed against the stone, and the floor below is blackened and pocked with bite marks from severed heads that kept flying. The air tastes of ash. Cracked walls lead south and west, and the door north is locked, a lion's head around its keyhole."
     },
     "L8:C5": {
       "name": "Sage of the Tenth Foe",
@@ -1234,8 +1234,8 @@
       "description": "Dented shields and broken spear shafts are stacked against the walls of this guardroom, and the floor is scored by the tread of heavy armoured boots that pace and turn to face every door. Strips of old linen hang from a rack. A stone stair in the corner leads down into a passage running west, and a shutter seals the west doorway."
     },
     "L8:B6": {
-      "name": "Triforce Chamber",
-      "description": "Golden light glows faintly from the walls of this small, still chamber, though no flame burns anywhere within it. A plain stone dais stands at its center, swept clean and quiet, with a golden triangle cut into it, the last piece of wisdom in all the land. The only way out is the heavy shutter to the south, back toward the scorched lair."
+      "name": "Treasure Chamber",
+      "description": "Golden light glows faintly from the walls of this small, still chamber, though no flame burns anywhere within it. On a plain stone dais stands an iron-banded chest, the last of the eight that keep the shards of wisdom. The only way out is the door south, locked with the Lion's key, back toward the scorched lair."
     },
     "L8:C6": {
       "name": "Lion's Den",
@@ -1266,8 +1266,8 @@
       "description": "Beneath the crooked block, a ladder leads down into a narrow basement of rough brick that smells of dust and old parchment. A single stone ledge runs above a dark drop, and faint chalk runes mark the walls, some of them scorched as if a page once set fire to whatever it touched. The ladder climbs back to the tomb above."
     },
     "L8:cellar:E7": {
-      "name": "Magical Key Cellar",
-      "description": "A ladder descends from the shifted block into a cramped brick basement, its far end crossed by a single stone ledge above a black gap. A faint metallic chime hangs in the still air, and the keyhole carved on the far wall has no door around it, as if a key that fits every lock were kept close by. The ladder leads back up to the hall above."
+      "name": "Hidden Cellar",
+      "description": "A ladder descends from the shifted block into a cramped brick basement, its far end crossed by a single stone ledge above a black gap. A keyhole is carved on the far wall with no door around it, and beneath it someone has stacked a little hoard of rupees. The ladder leads back up to the hall above."
     },
     "L9:B1": {
       "name": "Stairwell Antechamber",
@@ -1383,7 +1383,7 @@
     },
     "L9:C5": {
       "name": "Princess Zelda's Chamber",
-      "description": "Warm light fills this quiet room, cast by two fires that burn steadily on either side of its center, and the flames part for those who carry the Triforce. After the darkness below, the air is clean and still, and the plain stone walls seem almost gentle. A golden triangle of light hangs over the room. A single shutter leads back south toward the dark chamber."
+      "description": "Warm light fills this quiet room, cast by two fires burning on either side of its center. After the darkness below, the air is clean and still. Between the fires squats a great chest of black iron and gold, and above it a golden triangle of light hangs, waiting for the ninth piece to join the eight. The golden door south leads back to the dark chamber."
     },
     "L9:D5": {
       "name": "Pool of Gel",
@@ -1509,7 +1509,7 @@
   "special": {
     "wooden_sword_cave": {
       "name": "The Old Man's Cave",
-      "description": "A low cave opens into the hillside, its walls black with the soot of two fires that never seem to burn down. The flames stand an equal distance apart, and the bare floor between them has been swept clean, as though someone has kept a long watch for a visitor. Scratched into the rock above the fires, in a careful old hand, are the words: IT'S DANGEROUS TO GO ALONE! TAKE THIS."
+      "description": "A low cave opens into the hillside, its walls black with the soot of two fires that never burn down. Scratched into the rock above the fires, in a careful old hand: IT'S DANGEROUS TO GO ALONE! TAKE THIS. Beneath it, smaller: NINE GUARDIANS, IN ORDER. EACH KEEPS A KEY; EACH KEY A CHEST; EACH CHEST A PIECE OF THE TRIFORCE AND WHAT THE NEXT DUNGEON ASKS OF YOU."
     },
     "white_sword_cave": {
       "name": "The White Sword Cave",

@@ -39606,7 +39606,7 @@
    <exit direction="east" target="30414" />
    <exit direction="south" target="30411" />
   </room>
-  <room id="30414" area="45" title="Level 1: Triforce Chamber" environment="12">
+  <room id="30414" area="45" title="Level 1: Treasure Chamber" environment="12">
    <coord x="2" y="8" z="-1" />
    <exit direction="west" target="30413" />
   </room>
@@ -39620,7 +39620,7 @@
    <exit direction="south" target="30412" />
    <exit direction="west" target="30415" />
   </room>
-  <room id="30417" area="45" title="Level 1: Bow Cellar" environment="12">
+  <room id="30417" area="45" title="Level 1: Hidden Cellar" environment="12">
    <coord x="-2" y="9" z="-2" />
    <exit direction="up" target="30415" />
   </room>
@@ -39716,7 +39716,7 @@
    <exit direction="south" target="30431" />
    <exit direction="west" target="30432" />
   </room>
-  <room id="30434" area="45" title="Level 2: Triforce Chamber" environment="12">
+  <room id="30434" area="45" title="Level 2: Treasure Chamber" environment="12">
    <coord x="0" y="12" z="-1" />
    <exit direction="east" target="30435" />
   </room>
@@ -39810,7 +39810,7 @@
    <exit direction="north" target="30453" />
    <exit direction="south" target="30447" />
   </room>
-  <room id="30451" area="45" title="Level 3: Triforce Chamber" environment="12">
+  <room id="30451" area="45" title="Level 3: Treasure Chamber" environment="12">
    <coord x="-2" y="1" z="-1" />
    <exit direction="south" target="30449" />
   </room>
@@ -39823,7 +39823,7 @@
    <exit direction="south" target="30450" />
    <exit direction="west" target="30452" />
   </room>
-  <room id="30454" area="45" title="Level 3: Raft Cellar" environment="12">
+  <room id="30454" area="45" title="Level 3: Hidden Cellar" environment="12">
    <coord x="-6" y="1" z="-2" />
    <exit direction="up" target="30438" />
   </room>
@@ -39927,11 +39927,11 @@
    <exit direction="south" target="30469" />
    <exit direction="west" target="30472" />
   </room>
-  <room id="30474" area="45" title="Level 4: Triforce Chamber" environment="12">
+  <room id="30474" area="45" title="Level 4: Treasure Chamber" environment="12">
    <coord x="21" y="7" z="0" />
    <exit direction="south" target="30470" />
   </room>
-  <room id="30475" area="45" title="Level 4: Stepladder Cellar" environment="12">
+  <room id="30475" area="45" title="Level 4: Hidden Cellar" environment="12">
    <coord x="20" y="4" z="-1" />
    <exit direction="up" target="30464" />
   </room>
@@ -40028,7 +40028,7 @@
    <exit direction="south" target="30488" />
    <exit direction="west" target="30491" />
   </room>
-  <room id="30493" area="45" title="Level 5: Triforce Chamber" environment="12">
+  <room id="30493" area="45" title="Level 5: Treasure Chamber" environment="12">
    <coord x="2" y="13" z="-1" />
    <exit direction="south" target="30489" />
   </room>
@@ -40056,7 +40056,7 @@
    <exit direction="west" target="30497" />
    <exit direction="up" target="30478" />
   </room>
-  <room id="30499" area="45" title="Level 5: Recorder Cellar" environment="12">
+  <room id="30499" area="45" title="Level 5: Hidden Cellar" environment="12">
    <coord x="1" y="9" z="-3" />
    <exit direction="up" target="30497" />
   </room>
@@ -40187,7 +40187,7 @@
    <exit direction="south" target="30518" />
    <exit direction="west" target="30522" />
   </room>
-  <room id="30524" area="45" title="Level 6: Triforce Chamber" environment="12">
+  <room id="30524" area="45" title="Level 6: Treasure Chamber" environment="12">
    <coord x="-10" y="10" z="-2" />
    <exit direction="south" target="30519" />
   </room>
@@ -40306,7 +40306,7 @@
    <exit direction="east" target="30547" />
    <exit direction="west" target="30545" />
   </room>
-  <room id="30547" area="45" title="Level 7: Triforce Chamber" environment="12">
+  <room id="30547" area="45" title="Level 7: Treasure Chamber" environment="12">
    <coord x="1" y="10" z="0" />
    <exit direction="west" target="30546" />
   </room>
@@ -40368,7 +40368,7 @@
    <exit direction="west" target="30557" />
    <exit direction="up" target="30545" />
   </room>
-  <room id="30559" area="45" title="Level 7: Red Candle Cellar" environment="12">
+  <room id="30559" area="45" title="Level 7: Hidden Cellar" environment="12">
    <coord x="-5" y="9" z="-2" />
    <exit direction="up" target="30550" />
   </room>
@@ -40468,7 +40468,7 @@
    <exit direction="west" target="30576" />
    <exit direction="up" target="30570" />
   </room>
-  <room id="30578" area="45" title="Level 8: Triforce Chamber" environment="12">
+  <room id="30578" area="45" title="Level 8: Treasure Chamber" environment="12">
    <coord x="9" y="7" z="0" />
    <exit direction="south" target="30574" />
   </room>
@@ -40508,7 +40508,7 @@
    <coord x="2" y="1" z="-2" />
    <exit direction="up" target="30560" />
   </room>
-  <room id="30586" area="45" title="Level 8: Magical Key Cellar" environment="12">
+  <room id="30586" area="45" title="Level 8: Hidden Cellar" environment="12">
    <coord x="9" y="7" z="-2" />
    <exit direction="up" target="30583" />
   </room>

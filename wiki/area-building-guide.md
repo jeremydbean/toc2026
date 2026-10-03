@@ -1314,15 +1314,21 @@ Used as suffix to the `D` command.
 
 First number on the `<door type> <key VNUM> <destination VNUM>` line.
 
+As `load_rooms` reads it (this table used to list values the code does not
+have):
+
 | Value | Meaning |
 |---|---|
 | 0 | Open passage (no door) |
 | 1 | Door (EX_ISDOOR) |
-| 2 | Locked door (EX_LOCKED) |
-| 3 | Pickproof locked door (EX_PICKPROOF) |
-| 4 | Secret exit (EX_SECRET) |
-| 5 | Wizard-locked door (EX_WIZLOCKED) |
-| 6 | Trapped door (EX_TRAPPED) |
+| 2 | Pickproof door (EX_ISDOOR, EX_PICKPROOF) -- the one to use for a door with a key |
+| 3 | Door (EX_ISDOOR), the same as 1 |
+| 4 | Secret door: `load_resets` turns every `D` reset of it into state 4 |
+| 5 | Pickproof door whose every `D` reset `load_resets` turns into state 5, **trapped** |
+
+A door keyword beginning `secret` makes the exit type 4 whatever the file
+says. Type 5 is not "locked": until 2026-10 Hyrule used it for every keyed
+door, and every one went off as a trap on four unlocks in five.
 
 For a secret door: use type `4`, put the secret word as `door keyword`, and leave a blank tilde for the door name. Without the keyword the exit does not appear in the room description.
 
@@ -1473,8 +1479,13 @@ Last field in the `D` reset command.
 |---|---|
 | 0 | Open |
 | 1 | Closed |
-| 2 | Locked |
-| 3 | Pickproof (locked, cannot pick) |
+| 2 | Closed and locked |
+| 3 | Closed, locked and magical (EX_WIZLOCKED): its key opens it, but no pick, doorbash or pass door below level 68, and no random trap |
+| 4 | Closed and secret, and locked if it has a key |
+| 5 | Closed, locked and trapped (pickproof removed) |
+
+Any closed, locked door that is not magical has a tiny chance at each reset of
+becoming trapped as well.
 
 ---
 

@@ -1184,9 +1184,108 @@ void do_prompt(CHAR_DATA *ch, char *argument)
  * COMBINE described a command nobody could type -- so a player who
  * wanted the long list had no way to get it.
  */
+/*
+ * COMBINE <item>: things that are made whole from their parts. COMBINE on
+ * its own is still the inventory display toggle it always was; with an
+ * argument it looks for a recipe. One recipe so far: the nine Triforce
+ * pieces, one from each of Hyrule's dungeon guardians, make the complete
+ * Triforce. The parts must be carried -- in hand, worn or loose in the
+ * inventory -- and are used up.
+ */
+typedef struct combine_recipe
+{
+    const char *name;           /* what the player types */
+    int         result;
+    int         parts[9];       /* 0 ends the list */
+    const char *missing;        /* said, with the count, when short */
+    const char *made;           /* said when it works */
+    const char *made_room;
+} COMBINE_RECIPE;
+
+static const COMBINE_RECIPE combine_recipes[] =
+{
+    { "triforce", OBJ_VNUM_HYRULE_TRIFORCE,
+      { 30400, 30401, 30402, 30403, 30404, 30405, 30406, 30407, 30408 },
+      "The Triforce is made from nine pieces, one from each of Hyrule's\n\r"
+      "dungeon guardians, and you are carrying %d of them.\n\r",
+      "The nine pieces rise from your hands, turn, and lock together into\n\r"
+      "the complete Triforce, blazing with golden light!\n\r",
+      "Nine golden pieces rise from $n's hands and lock together into the\n\r"
+      "complete Triforce!" },
+};
+
+static OBJ_DATA *combine_find_part( CHAR_DATA *ch, int vnum )
+{
+    OBJ_DATA *obj;
+
+    for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
+        if ( obj->pIndexData != NULL && obj->pIndexData->vnum == vnum )
+            return obj;
+    return NULL;
+}
+
+static void combine_recipe( CHAR_DATA *ch, const COMBINE_RECIPE *recipe )
+{
+    OBJ_INDEX_DATA *result_index;
+    OBJ_DATA *result;
+    OBJ_DATA *part;
+    char buf[MAX_STRING_LENGTH];
+    int have = 0;
+    int need = 0;
+    int i;
+
+    for ( i = 0; i < 9 && recipe->parts[i] != 0; i++ )
+    {
+        need++;
+        if ( combine_find_part( ch, recipe->parts[i] ) != NULL )
+            have++;
+    }
+    if ( have < need )
+    {
+        snprintf( buf, sizeof(buf), recipe->missing, have );
+        send_to_char( buf, ch );
+        return;
+    }
+    if ( ( result_index = get_obj_index( recipe->result ) ) == NULL )
+    {
+        bug( "Do_combine: missing result vnum %d.", recipe->result );
+        send_to_char( "Nothing happens.\n\r", ch );
+        return;
+    }
+
+    for ( i = 0; i < need; i++ )
+        if ( ( part = combine_find_part( ch, recipe->parts[i] ) ) != NULL )
+            extract_obj( part );
+
+    result = create_object( result_index, result_index->level );
+    obj_to_char( result, ch );
+    send_to_char( recipe->made, ch );
+    act( recipe->made_room, ch, NULL, NULL, TO_ROOM );
+    achievement_record_object( ch, recipe->result, true );
+    save_char_obj( ch );
+}
+
 void do_combine(CHAR_DATA *ch, char *argument)
 {
-    UNUSED_PARAM(argument);
+    char arg[MAX_INPUT_LENGTH];
+    size_t i;
+
+    one_argument( argument, arg );
+    if ( arg[0] != '\0' )
+    {
+        if ( IS_NPC(ch) )
+            return;
+        for ( i = 0; i < sizeof(combine_recipes) / sizeof(combine_recipes[0]); i++ )
+            if ( !str_prefix( arg, combine_recipes[i].name ) )
+            {
+                combine_recipe( ch, &combine_recipes[i] );
+                return;
+            }
+        send_to_char( "You know of nothing to make from that.  COMBINE TRIFORCE joins\n\r"
+                      "the nine Triforce pieces; COMBINE alone switches how your\n\r"
+                      "inventory is listed.\n\r", ch );
+        return;
+    }
 
     if (IS_SET(ch->comm,COMM_COMBINE))
     {

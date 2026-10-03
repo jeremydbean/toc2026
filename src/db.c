@@ -2116,10 +2116,31 @@ void reset_area( AREA_DATA *pArea )
                 continue;
             }
  
-            if ( pArea->nplayer > 0
+            /*
+             * A Hyrule treasure chest refills even with players about:
+             * Hyrule is one area, so with anybody anywhere in it nothing
+             * would come back, and each guardian's chest holds the one
+             * Triforce piece every member of a group needs in turn. Its
+             * guardian repops with a fresh key at the same reset.
+             */
+            if ( ( pArea->nplayer > 0 && !IS_HYRULE_CHEST(pObjToIndex->vnum) )
             || ( obj_to = get_obj_type( pObjToIndex ) ) == NULL
-            || ( obj_to->in_room == NULL && !last)
-            ||   count_obj_list( pObjIndex, obj_to->contains ) > 0 )
+            || ( obj_to->in_room == NULL && !last) )
+            {
+                last = false;
+                break;
+            }
+
+            /*
+             * ROM 2.4's "fix object lock state": a container standing in a
+             * room is closed and locked again as its builder wrote it, so
+             * a looted chest is shut at the next reset rather than left
+             * hanging open for ever. Never a container somebody carries.
+             */
+            if ( obj_to->item_type == ITEM_CONTAINER && obj_to->in_room != NULL )
+                obj_to->value[1] = obj_to->pIndexData->value[1];
+
+            if ( count_obj_list( pObjIndex, obj_to->contains ) > 0 )
             {
                 last = false;
                 break;
