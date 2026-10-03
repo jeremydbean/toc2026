@@ -16,6 +16,21 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **Ganon is a hard fight, not an execution.** With his hit points finally
+  holding, his fireballs (1,400-1,900, two every four seconds, no parry)
+  out-damaged a level 59's whole health in one pulse through sanctuary,
+  and a level 70 was shown UNSPEAKABLE on every blow. They are 300-420 now
+  and his blow averages 200 instead of 350; a lone 59 still loses, a
+  group of three wins.
+- **Gear that grants a spell shows it.** AFFECTS and the Mudlet buffs pane
+  list the Red Ring's sanctuary and the Master Sword's haste -- any spell
+  worn gear gives -- with the item giving it, for as long as it is worn.
+- **No Hyrule reward is barred by alignment.** The Master Sword was
+  anti-evil; nothing a Hyrule boss drops is now.
+- **"The final Triforce piece"** is the ninth piece's name, in place of
+  the Triforce of Power. The Red Ring of Hyrule and the Hero's Tunic no
+  longer answer to "ganon", and the old plain red ring nobody placed or
+  held is gone, so VNUM RED RING shows one.
 - **Mudlet 1.5.3: HP, mana, endurance and EXP are back across the top.**
   1.5.2 took the first three away on a misreading -- the owner wanted
   vitals kept out of the sidebar, not off the screen. They are one row on

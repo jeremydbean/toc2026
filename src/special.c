@@ -518,16 +518,18 @@ bool spec_dominion_ward( CHAR_DATA *mob, CHAR_DATA *ch, DO_FUN *cmd, char *arg )
  *     coming back. Not once he has collapsed: a stunned Ganon (one hit
  *     point and AFF2_NO_RECOVER) stays down for the finishing shot.
  *
- * The numbers come from a simulation of fight.c's formulas against a
- * player model fitted to the live player files (see wiki/hyrule-area.md
- * and scripts/build_hyrule_area.py's BOSS_VOLLEYS). A level 59 with the
- * Silver Arrow, sanctuary and the Red Ring wins about one fight in ten
- * alone even at 4,000 hit points; a group of three carrying two Silver
- * Arrows wins nine in ten, and four nearly always.
+ * The numbers must match scripts/build_hyrule_area.py's BOSS_VOLLEYS.
+ * They were 1,400-1,900, which nobody met until his hit points stopped
+ * overflowing in October 2026; then one pulse through sanctuary was more
+ * than a typical level 59 holds. At 300-420 (150-210 through sanctuary)
+ * a lone 59 still loses -- about 550 every four seconds from fire and
+ * melee together, against seven rounds of Silver Arrow -- while a group
+ * of three takes under 200 each and sees it through. See "Ganon's Fight"
+ * in wiki/hyrule-area.md.
  */
 #define GANON_FIREBALLS          2
-#define GANON_FIREBALL_MIN    1400
-#define GANON_FIREBALL_MAX    1900
+#define GANON_FIREBALL_MIN    300
+#define GANON_FIREBALL_MAX    420
 #define GANON_REGEN_DIVISOR     10
 
 static bool ganon_may_target( CHAR_DATA *mob, CHAR_DATA *victim )

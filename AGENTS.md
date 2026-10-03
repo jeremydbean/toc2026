@@ -185,10 +185,13 @@ Current October 2026 Python baseline:
 ```text
 100 listed area entries
 2,495 mobiles
-3,670 objects
+3,669 objects
 7,787 rooms
-0 critical, 12 warning, 1,584 information findings
+0 critical, 12 warning, 1,583 information findings
 ```
+
+Removing the catalog's unplaced plain red ring (`30261`) took one object
+and one `object-has-no-source` finding off in October 2026.
 
 Hyrule's NES pass (October 2026) moved all three. Mobiles rose by 68: the
 78 people of Hyrule became a record each, replacing nine shared ones, and
@@ -581,7 +584,10 @@ farmed.
 `F` / `A <location> <modifier> <bits>` and puts the bits on the prototype
 affect; the Master Sword's haste and the Red Ring's sanctuary are the two
 users. `equip_char`/`unequip_char` already apply and lift prototype
-bitvectors and restore what spells or other gear still grant. A spell that
+bitvectors and restore what spells or other gear still grant. Such a bit
+is not an `AFFECT_DATA`, so AFFECTS and the `Char.Affects` feed list it
+through `equipment_affects()` in `handler.c`, naming the item; a bit gear
+can newly grant needs a row in its `gear_affect_names` table to show. A spell that
 strips a bit by hand -- dispel magic on sanctuary, slow on haste -- must ask
 `equipment_grants_affect()` first. The dashboard parser keeps them in
 `Object.affect_bits`, apart from `affects`, which every caller reads as

@@ -3033,19 +3033,17 @@ int sight_trust( const CHAR_DATA *ch )
 }
 
 /*
- * Whether something the character is wearing grants this affected_by
- * bit, through an object affect's bitvector or an ITEM2_ADD_* flag.
- * Spells that strip a bit by hand (dispel magic on sanctuary, slow on
- * haste) ask this first, so the Red Ring's sanctuary and the Master
- * Sword's haste last exactly as long as they are worn.
+ * The first thing the character is wearing that grants this affected_by
+ * bit, through an object affect's bitvector or an ITEM2_ADD_* flag, or
+ * NULL.
  */
-bool equipment_grants_affect( const CHAR_DATA *ch, int bit )
+OBJ_DATA *equipment_affect_source( const CHAR_DATA *ch, int bit )
 {
     OBJ_DATA *obj;
     AFFECT_DATA *paf;
 
     if ( ch == NULL )
-	return false;
+	return NULL;
 
     for ( obj = ch->carrying; obj != NULL; obj = obj->next_content )
     {
@@ -3054,22 +3052,81 @@ bool equipment_grants_affect( const CHAR_DATA *ch, int bit )
 	if ( obj->pIndexData != NULL )
 	    for ( paf = obj->pIndexData->affected; paf != NULL; paf = paf->next )
 		if ( IS_SET(paf->bitvector, bit) )
-		    return true;
+		    return obj;
 	for ( paf = obj->affected; paf != NULL; paf = paf->next )
 	    if ( IS_SET(paf->bitvector, bit) )
-		return true;
+		return obj;
 	if ( IS_OBJ_STAT(obj, ITEM_ADD_AFFECT) )
 	{
 	    if ( bit == AFF_INVISIBLE && IS_OBJ_STAT2(obj, ITEM2_ADD_INVIS) )
-		return true;
+		return obj;
 	    if ( bit == AFF_DETECT_INVIS
 	    &&   IS_OBJ_STAT2(obj, ITEM2_ADD_DETECT_INVIS) )
-		return true;
+		return obj;
 	    if ( bit == AFF_FLYING && IS_OBJ_STAT2(obj, ITEM2_ADD_FLY) )
-		return true;
+		return obj;
 	}
     }
-    return false;
+    return NULL;
+}
+
+/*
+ * Whether something worn grants this bit. Spells that strip a bit by
+ * hand (dispel magic on sanctuary, slow on haste) ask this first, so the
+ * Red Ring's sanctuary and the Master Sword's haste last exactly as long
+ * as they are worn.
+ */
+bool equipment_grants_affect( const CHAR_DATA *ch, int bit )
+{
+    return equipment_affect_source( ch, bit ) != NULL;
+}
+
+/*
+ * The helpful bits gear can grant, under the spell a player knows each
+ * by. A bit on an item is not an AFFECT_DATA on the character, so the
+ * AFFECTS list and the Char.Affects feed used to say nothing about the
+ * Red Ring's sanctuary or the Master Sword's haste; both now ask this.
+ */
+static const struct
+{
+    int		bit;
+    const char *name;
+} gear_affect_names[] =
+{
+    { AFF_SANCTUARY,     "sanctuary"     },
+    { AFF_HASTE,         "haste"         },
+    { AFF_FLYING,        "fly"           },
+    { AFF_INVISIBLE,     "invis"         },
+    { AFF_PASS_DOOR,     "pass door"     },
+    { AFF_DETECT_INVIS,  "detect invis"  },
+    { AFF_DETECT_HIDDEN, "detect hidden" },
+    { AFF_DETECT_MAGIC,  "detect magic"  },
+    { AFF_DETECT_EVIL,   "detect evil"   },
+    { AFF_INFRARED,      "infravision"   },
+    { AFF_REGENERATION,  "regeneration"  },
+    { AFF_SNEAK,         "sneak"         }
+};
+
+/*
+ * Fills names[] and sources[] with what the character's worn gear grants,
+ * at most max of them, and returns how many.
+ */
+int equipment_affects( const CHAR_DATA *ch, const char **names,
+		       OBJ_DATA **sources, int max )
+{
+    OBJ_DATA *obj;
+    size_t i;
+    int count = 0;
+
+    for ( i = 0; i < sizeof(gear_affect_names) / sizeof(gear_affect_names[0])
+		 && count < max; i++ )
+	if ( ( obj = equipment_affect_source( ch, gear_affect_names[i].bit ) ) != NULL )
+	{
+	    names[count] = gear_affect_names[i].name;
+	    sources[count] = obj;
+	    count++;
+	}
+    return count;
 }
 
 /*

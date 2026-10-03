@@ -462,6 +462,41 @@ void gmcp_send_affects( DESCRIPTOR_DATA *d )
         toc_strlcat( json, "}", sizeof(json) );
     }
 
+    /* Gear that grants a spell is a bit, not an AFFECT_DATA, so the
+       walk above cannot see it: the Red Ring's sanctuary and the Master
+       Sword's haste are listed here, as lasting while worn, unless a
+       cast of the same spell is already in the list. */
+    {
+        const char *gear_names[MAX_GEAR_AFFECTS];
+        OBJ_DATA *gear_sources[MAX_GEAR_AFFECTS];
+        int gear_count = equipment_affects( ch, gear_names, gear_sources,
+                                            MAX_GEAR_AFFECTS );
+        int g;
+
+        for ( g = 0; g < gear_count; g++ )
+        {
+            int sn = skill_lookup( gear_names[g] );
+
+            for ( i = 0; i < seen_count; i++ )
+                if ( sn >= 0 && seen[i] == sn )
+                    break;
+            if ( i < seen_count )
+                continue;
+
+            if ( !first )
+                toc_strlcat( json, ",", sizeof(json) );
+            first = false;
+            toc_strlcat( json, "{\"name\":", sizeof(json) );
+            gmcp_json_append_quoted( json, sizeof(json), gear_names[g] );
+            toc_strlcat( json, ",\"duration\":-1,\"level\":0,\"source\":",
+                         sizeof(json) );
+            gmcp_json_append_quoted( json, sizeof(json),
+                gear_sources[g]->short_descr != NULL
+                    ? gear_sources[g]->short_descr : "" );
+            toc_strlcat( json, "}", sizeof(json) );
+        }
+    }
+
     if ( !IS_NPC(ch) && IS_AFFECTED2(ch, AFF2_SHADOWMELD) )
     {
         if ( !first )

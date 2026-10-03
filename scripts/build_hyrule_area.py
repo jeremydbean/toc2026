@@ -50,8 +50,13 @@ NEW_OBJECT_VNUMS = (
     | set(range(30530, 30591))
     | set(range(30591, 30650))     # heart containers, drops, keys, chests
     | set(range(30649, 30700))     # the Magical Sword, boss drops, bombs, the bomb bag
-    | {30408}                      # the ninth piece, the Triforce of Power
+    | {30408}                      # the ninth piece, the final Triforce piece
 )
+# Catalog objects taken out altogether. The plain "red ring" (30261) filled
+# the Red Ring Cellar until the Red Ring of Hyrule (30579) took its place;
+# nothing placed it after that and no saved character held one, so the
+# owner had it removed rather than leave a second red ring in VNUM.
+RETIRED_OBJECT_VNUMS = {30261}
 
 # Everyone who is not an enemy has a record of their own, written from the
 # "npcs" table of data/hyrule_mob_prose.json: each dungeon and cave old man,
@@ -574,19 +579,26 @@ def enemy_tiers(manifest: dict[str, Any]) -> list[tuple[str, int]]:
 # data/hyrule_mob_prose.json; names, flags, resistances and Ganon's silver
 # vulnerability stay as the catalog has them.
 #
-# Ganon is sized to need a group. Solo, a level 59 lands the ten Silver
-# Arrow blows that bring him down at a little under one and a half a round
-# through his parry and dodge (a level 64 parries and dodges a level 59 35%
-# of the time each), so the fight lasts about seven rounds. His melee is
-# ordinary and a hero with every defence turns most of it aside; what
-# kills is spec_ganon in src/special.c: every four seconds two fireballs
-# of 1,600-2,200 at random members of the fight, which no parry stops.
-# Against a hero with about 4,000 hit points, sanctuary and the Red Ring
-# that is roughly 1,500 a pulse after wards -- dead in about four rounds,
-# winning about one fight in twenty. A group of three or four splits the
-# fire and wins nearly always. GANON_ARMOR is the file value, times ten
-# in game: -400 shaves about 80 off each ordinary blow, while the Silver
-# Arrow's tenth of his health is taken after armour and is untouched.
+# Ganon is sized to need a group, but not to flatten one. Solo, a level
+# 59 lands the ten Silver Arrow blows that bring him down at a little
+# under one and a half a round through his parry and dodge (a level 64
+# parries and dodges a level 59 35% of the time each), so the fight lasts
+# about seven rounds. What hurts is spec_ganon in src/special.c: every
+# four seconds two fireballs of 300-420 at random members of the fight,
+# which no parry stops -- 150-210 each through sanctuary.
+#
+# They were 1,400-1,900, sized against a 4,000 hit point hero, and
+# nobody met them until October 2026: Ganon's hit points overflowed a
+# short and he fell to the first punch. Once he could fight, one pulse
+# through sanctuary was more than a typical level 59 has (about 1,640),
+# and even a level 70 was shown UNSPEAKABLE on every blow. Retuned by
+# hand, not by the simulation the other guardians came from: a soloist
+# with sanctuary now takes roughly 550 per four seconds from fire and
+# melee together, dead in about four rounds of the seven the arrow
+# needs; three split it to under 200 each and see the fight out.
+# GANON_ARMOR is the file value, times ten in game: -400 shaves about 80
+# off each ordinary blow, while the Silver Arrow's tenth of his health is
+# taken after armour and is untouched.
 # --------------------------------------------------------------------------
 
 #
@@ -609,7 +621,7 @@ BOSS_STATS = {
     6: (43, 20000, 27),   # Gohma: her sanctuary and haste do the rest
     7: (49, 30000, 66),   # Aquamentus again, older and harder
     8: (55, 33000, 80),   # Gleeok, four heads
-    9: (64, 36000, 350),  # Ganon -- see above, and spec_ganon
+    9: (64, 36000, 200),  # Ganon -- see above, and spec_ganon
 }
 # dungeon: (projectiles a pulse, least, most) -- spec_hyrule_guardian and
 # spec_ganon; src/special.c's tables must say the same.
@@ -622,7 +634,7 @@ BOSS_VOLLEYS = {
     6: (1, 32, 45),       # Gohma's eye
     7: (3, 26, 36),       # the ancient Aquamentus's fan
     8: (4, 24, 34),       # the ashen Gleeok's four heads
-    9: (2, 1400, 1900),   # Ganon's fireballs
+    9: (2, 300, 420),     # Ganon's fireballs
 }
 GANON_VNUM = 30225
 GANON_ARMOR = -40
@@ -1125,8 +1137,7 @@ ITEM_LEVELS = {
     # (The Triforce pieces are written whole: see piece_record.)
     # Level 9, band 53-59: the Silver Arrow (54), the Red Ring of Hyrule
     # (58) and the Master Sword (58) are written whole further down. The
-    # catalog's plain "red ring" (30261) used to fill the Red Ring Cellar;
-    # it is no longer placed, and keeps its record for anyone holding one.
+    # catalog's plain "red ring" (30261) is gone: see RETIRED_OBJECT_VNUMS.
 }
 
 
@@ -1550,7 +1561,7 @@ A 0 0 {AFF_HASTE_FLAG}"""
         "the Master Sword",
         "The Master Sword rests here, its sacred blade shining with golden light.",
         "steel",
-        "5 ABGHKUV AN",
+        "5 ABGHUV AN",          # no alignment bar: anyone may wield it
         f"1 {count} {size} 3 DE",
         MASTER_SWORD_LEVEL,
         20,
@@ -1745,10 +1756,14 @@ def piece_record(level: int, band: tuple[int, int], title: str) -> str:
     has not earned it."""
     ordinal = PIECE_ORDINALS[level - 1]
     if level == 9:
-        keywords = "triforce power piece ninth ganon"
-        short = "the Triforce of Power"
-        long = "The Triforce of Power, Ganon's own, smoulders here with a dark gold light."
-        origin = "Ganon's own, the ninth piece, taken from his great chest"
+        # Named for what it is to the player -- the last one -- at the
+        # owner's request; "power" and "ganon" stay among the keywords so
+        # the old name still finds it.
+        keywords = "triforce final piece ninth power ganon"
+        short = "the final Triforce piece"
+        long = "The final Triforce piece, Ganon's own, smoulders here with a dark gold light."
+        origin = ("the final piece, Ganon's own Triforce of Power, taken from "
+                  "his great chest")
     else:
         keywords = f"triforce shard piece {ordinal} {level}"
         short = f"the {ordinal} Triforce shard"
@@ -1870,7 +1885,7 @@ def ganon_relic_records() -> list[str]:
     return [
         object_record(
             30577,
-            "heros hero tunic green courage ganon relic",
+            "heros hero tunic green courage relic",
             "the Hero's Tunic",
             "The Hero's Tunic rests here, bright as Hyrule Field.",
             "cloth",
@@ -1918,7 +1933,7 @@ A
         ),
         object_record(
             30579,
-            "red ring hyrule power ganon relic",
+            "red ring hyrule power relic",
             "the Red Ring of Hyrule",
             "A red ring burns here with a fierce protective light.",
             "gold",
@@ -2642,7 +2657,7 @@ def build_area(manifest_path: Path, area_path: Path, prose_path: Path = DEFAULT_
             mobile_body, BOSS_MOBS[level], text["long"], description,
             text.get("short"))
     mobile_body = rearm_mobile(mobile_body, GANON_VNUM, GANON_ARMOR)
-    object_body = remove_records(object_body, NEW_OBJECT_VNUMS)
+    object_body = remove_records(object_body, NEW_OBJECT_VNUMS | RETIRED_OBJECT_VNUMS)
     object_body = replace_record(object_body, 30218, silver_arrow_object_record())
     object_body = replace_record(object_body, MASTER_SWORD_VNUM, master_sword_record())
     object_body = replace_record(object_body, 30286, triforce_record())

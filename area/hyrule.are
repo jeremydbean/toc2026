@@ -132,7 +132,7 @@ level 54+ hero must wield the Silver Arrow and SHOOT GANON to end it.
 ~
 pig~
 ABFMRV CDFHJQUV -800 S
-64 32 16d10+35912 17d10+840 5d55+210 7
+64 32 16d10+35912 17d10+840 5d31+120 7
 -40 -40 -40 -40
 BCDE B CP Y
 8 8 0 0
@@ -4357,7 +4357,7 @@ master sword blade triforce~
 the Master Sword~
 The Master Sword rests here, its sacred blade shining with golden light.~
 steel~
-5 ABGHKUV AN
+5 ABGHUV AN
 1 13 9 3 DE
 58 20 500000000 P
 E
@@ -4893,16 +4893,6 @@ gold~
 15 0 0
 100 AC 0 0 0
 0 15 0 P
-#30261
-red ring~
-a red ring~
-A red ring glows softly here.~
-gold~
-9 ABGKUV AB
-8 8 8 6 0
-56 1 80000000 P
-A
-13 35
 #30262
 skeleton corpse~
 a skeleton~
@@ -7386,7 +7376,7 @@ A
 A
 19 3
 #30577
-heros hero tunic green courage ganon relic~
+heros hero tunic green courage relic~
 the Hero's Tunic~
 The Hero's Tunic rests here, bright as Hyrule Field.~
 cloth~
@@ -7426,7 +7416,7 @@ A
 A
 24 -1
 #30579
-red ring hyrule power ganon relic~
+red ring hyrule power relic~
 the Red Ring of Hyrule~
 A red ring burns here with a fierce protective light.~
 gold~
@@ -9196,20 +9186,20 @@ iron~
 100 ABCD 30243 0 0
 53 500 0 P
 #30408
-triforce power piece ninth ganon~
-the Triforce of Power~
-The Triforce of Power, Ganon's own, smoulders here with a dark gold light.~
+triforce final piece ninth power ganon~
+the final Triforce piece~
+The final Triforce piece, Ganon's own, smoulders here with a dark gold light.~
 gold~
 8 AGH AO
 0 0 0 0 0
 53 1 9000000 P
 E
-triforce power piece ninth ganon~
-This is Ganon's own, the ninth piece, taken from his great chest. It is one
-of nine Triforce pieces, one from each of Hyrule's dungeon guardians: eight
-of Wisdom, and Ganon's Power. It is the last; the others open the dungeons,
-and this one completes them. With all nine in hand, type COMBINE TRIFORCE
-to make the Triforce.
+triforce final piece ninth power ganon~
+This is the final piece, Ganon's own Triforce of Power, taken from his
+great chest. It is one of nine Triforce pieces, one from each of Hyrule's
+dungeon guardians: eight of Wisdom, and Ganon's Power. It is the last; the
+others open the dungeons, and this one completes them. With all nine in
+hand, type COMBINE TRIFORCE to make the Triforce.
 ~
 #0
 

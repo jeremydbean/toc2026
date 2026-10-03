@@ -138,15 +138,25 @@ class WornPowersTests(unittest.TestCase):
                 wielded = run(hero, "wield sword", settle=2.0)
                 self.assertIn("haste", affected_by(god, "zswordhand"),
                               f"the Master Sword hastens its wielder:\n{wielded}")
+                # ...and AFFECTS says so, with what is giving it: a bit
+                # on an item is not an affect on the character, and the
+                # list used to leave it out.
+                listed = run(hero, "affect", settle=1.5)
+                self.assertIn("Spell: 'haste' from the Master Sword", listed)
                 run(hero, "remove sword", settle=2.0)
                 self.assertNotIn("haste", affected_by(god, "zswordhand"),
                                  "and the haste goes with it")
+                self.assertNotIn("'haste'", run(hero, "affect", settle=1.5))
 
                 run(hero, "wear ring", settle=2.0)
                 self.assertIn("sanctuary", affected_by(god, "zswordhand"),
                               "the Red Ring gives sanctuary")
+                listed = run(hero, "affect", settle=1.5)
+                self.assertIn("Spell: 'sanctuary' from the Red Ring of Hyrule",
+                              listed)
                 run(hero, "remove ring", settle=2.0)
                 self.assertNotIn("sanctuary", affected_by(god, "zswordhand"))
+                self.assertNotIn("'sanctuary'", run(hero, "affect", settle=1.5))
 
                 # Haste from a spell outlasts the sword.
                 quaffed = run(hero, "quaff clock", settle=2.0)

@@ -3131,6 +3131,10 @@ bool    achievement_has_key    ( const CHAR_DATA *ch, const char *key );
 bool    triforce_sight  ( const CHAR_DATA *ch );
 int     sight_trust     ( const CHAR_DATA *ch );
 bool    equipment_grants_affect ( const CHAR_DATA *ch, int bit );
+OBJ_DATA *equipment_affect_source ( const CHAR_DATA *ch, int bit );
+#define MAX_GEAR_AFFECTS 12
+int     equipment_affects       ( const CHAR_DATA *ch, const char **names,
+                                  OBJ_DATA **sources, int max );
 bool    can_see         ( CHAR_DATA *ch, const CHAR_DATA *victim );
 bool    online_can_list ( CHAR_DATA *ch, const CHAR_DATA *wch );
 bool    can_see_obj     ( CHAR_DATA *ch, const OBJ_DATA *obj );

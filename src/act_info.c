@@ -1983,6 +1983,10 @@ void do_affect( CHAR_DATA *ch, char *argument)
     int count;
     const int max_affect_nodes = 1024;
     bool melded;
+    const char *gear_names[MAX_GEAR_AFFECTS];
+    OBJ_DATA *gear_sources[MAX_GEAR_AFFECTS];
+    int gear_count;
+    int i;
 
     /*
      * Shadowmeld is a bare bit in affected_by2 rather than an AFFECT_DATA
@@ -1993,7 +1997,12 @@ void do_affect( CHAR_DATA *ch, char *argument)
      */
     melded = IS_AFFECTED2(ch, AFF2_SHADOWMELD);
 
-    if( ch->affected == NULL && !melded )
+    /* Gear that grants a spell -- the Red Ring's sanctuary, the Master
+       Sword's haste -- sets a bit, not an AFFECT_DATA, so it is listed
+       by hand as well, with what is giving it. */
+    gear_count = equipment_affects( ch, gear_names, gear_sources, MAX_GEAR_AFFECTS );
+
+    if( ch->affected == NULL && !melded && gear_count == 0 )
     {
 	send_to_char( "You are not affected by any spells.\n\r",ch);
 	return;
@@ -2019,6 +2028,14 @@ void do_affect( CHAR_DATA *ch, char *argument)
 
 	if ( melded )
 	    send_to_char( "Skill: 'shadowmeld' until you move.\n\r", ch );
+
+	for ( i = 0; i < gear_count; i++ )
+	{
+	    snprintf( buf, sizeof(buf),
+		"Spell: '%s' from %s, for as long as it is worn.\n\r",
+		gear_names[i], gear_sources[i]->short_descr );
+	    send_to_char( buf, ch );
+	}
 
 	for( paf = ch->affected; paf != NULL; paf = paf->next )
 	{

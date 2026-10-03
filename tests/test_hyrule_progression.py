@@ -938,7 +938,14 @@ class HyruleProgressionTests(unittest.TestCase):
         # The file's armour; load_mobiles multiplies it by ten.
         self.assertEqual(ganon.ac, [GANON_ARMOR] * 4)
         self.assertGreaterEqual(hit_points, 30000)
-        self.assertGreaterEqual(damage, 300)
+        # The heaviest blow of any guardian, but -- the owner's call, once
+        # he could finally be fought -- neither it nor a fireball reaches
+        # UNSPEAKABLE (over 250) through sanctuary, which halves both.
+        self.assertGreater(damage, max(stats[2] for lvl, stats in BOSS_STATS.items() if lvl < 9))
+        self.assertLessEqual(damage // 2, 250)
+        count, low, high = BOSS_VOLLEYS[9]
+        self.assertLessEqual(high // 2, 250)
+        self.assertGreaterEqual(count * low, 500, "his fire is still the fight")
         specials = Path("area/hyrule.are").read_text(encoding="latin-1")
         self.assertIn(f"M {GANON_VNUM} spec_ganon", specials)
         self.assertNotIn(f"M {GANON_VNUM} spec_cast_necro", specials)
@@ -1379,6 +1386,17 @@ class HyruleProgressionTests(unittest.TestCase):
         self.assertIn("obj->pIndexData->vnum == 30564", act_obj)
         self.assertIn("charge_hyrule_door_repair", act_move)
         self.assertIn('{ "gamble",', interp)
+
+    def test_no_hyrule_gear_is_barred_by_alignment(self) -> None:
+        """The owner's rule: the Master Sword and every boss's gear can be
+        worn by anyone, good, neutral or evil -- no ITEM_ANTI_GOOD (J),
+        ANTI_EVIL (K) or ANTI_NEUTRAL (L)."""
+        barred = sorted(
+            vnum for vnum, obj in self.parser.objects.items()
+            if obj.area_file == "hyrule.are"
+            and not obj.extra_flags.lstrip("-").isdigit()
+            and set("JKL") & set(obj.extra_flags))
+        self.assertEqual(barred, [])
 
     def test_ganon_drops_the_key_to_zelda_and_the_triforce(self) -> None:
         level_nine = self.dungeons[9]

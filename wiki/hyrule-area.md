@@ -146,7 +146,7 @@ in one, and `goto` and `transfer` are staff commands.
 | 6: The Dragon | Piece 5 | Gohma's eye is armoured against everything but an arrow: the bow | Piece 6 + the Recorder (`30413`) | NES exactly: a bow and arrow beat Gohma, and Gohma still takes only an arrow's finishing blow. The Recorder moves here from Level 5, one dungeon later, so it is in hand for Level 7, where the NES uses it. |
 | 7: The Demon | Piece 6, and the Recorder's song to drain the lake (as before) | Two Digdoggers block the way to the guardian; the Recorder shrinks them | Piece 7 + the Red Candle (`30414`) | NES exactly: the Recorder drains Level 7's lake and shrinks Digdogger, and the Red Candle is the Demon's treasure. |
 | 8: The Lion | Piece 7, and a candle to burn the bush (as before) | The way to the guardian is utterly dark: the Red Candle | Piece 8 + the Magical Key (`30416`) | NES: the Red Candle lights dark rooms and burns Level 8's bush; the Magical Key is the Lion's treasure. |
-| 9: Death Mountain | Piece 8 (and all eight pieces and a bomb at the door, as before) | The doors before Ganon's lair: the Magical Key | Great chest: piece 9, the Triforce of Power (`30408`), + the Master Sword (`30200`) | NES: the Magical Key opens every lock in the last dungeons. The Silver Arrow that finishes Ganon is in Death Mountain's own cellar, where the NES keeps it, before his lair; the Red Ring is in its other cellar. |
+| 9: Death Mountain | Piece 8 (and all eight pieces and a bomb at the door, as before) | The doors before Ganon's lair: the Magical Key | Great chest: piece 9, the final Triforce piece (`30408`, Ganon's Power), + the Master Sword (`30200`) | NES: the Magical Key opens every lock in the last dungeons. The Silver Arrow that finishes Ganon is in Death Mountain's own cellar, where the NES keeps it, before his lair; the Red Ring is in its other cellar. |
 
 After Ganon, `COMBINE TRIFORCE` joins the nine pieces into The Triforce
 (see below). The Triforce counts as every piece, so its
@@ -395,14 +395,14 @@ worn. IDENTIFY lists them as "Grants haste while worn."
 Ganon is meant to need a group: a solo level 59 with maximum stats should very
 likely lose, and three or four should win. The numbers:
 
-- **Level 64, 36,000 hit points, armour -40 (-400 in game), average blow 350
-  (5d55+210), sanctuary and haste as before.** Level 64 parries and dodges a
+- **Level 64, 36,000 hit points, armour -40 (-400 in game), average blow 200
+  (5d31+120), sanctuary and haste as before.** Level 64 parries and dodges a
   level 59 35% of the time each (`min(30, level) + level - 59`), so about four
   in ten blows land. The armour shaves about 80 off each ordinary blow; the
   Silver Arrow's tenth of his health is taken after armour, so it is untouched.
 - **`spec_ganon` (`src/special.c`) replaces the necromancer's spell list.**
   Every mobile pulse (four seconds) he blinks to another spot in the dark and
-  throws two fireballs of 1,400-1,900, each at a random player in the fight:
+  throws two fireballs of 300-420, each at a random player in the fight:
   anyone fighting him or grouped with someone who is. A fireball is a spell
   blow, so parry, dodge and shield block do nothing; sanctuary halves it, the
   Red Ring takes a fifth and the Mirror Shield three twentieths. His melee is
@@ -420,19 +420,24 @@ hit points are. A level 59 with haste and second and third attack swings about
 3.75 times a round, lands about 1.5 of those through his defences, and so needs
 about seven rounds.
 
-The fireballs were first sized against a hero of 4,000 hit points. Against the
-player model fitted to the live player files (Guardian Fights, below) that was
-too much for an ordinary group, so they came down to 1,400-1,900 and his hit
-points went up to 36,000 to stay above the ashen Gleeok's. With every level 59
-holding sanctuary, the arrow-holder the Red Ring:
+The fireballs were first sized against a hero of 4,000 hit points, then cut
+to 1,400-1,900 by the simulation below -- and nobody met them, because until
+October 2026 Ganon's hit points overflowed a 16-bit field and he fell to the
+first punch. Once he could fight, the owner, at level 70 with sanctuary, was
+shown UNSPEAKABLE on every blow: one pulse through sanctuary (1,400-1,900
+halved, twice) was more than the 1,640 hit points a typical level 59 holds,
+and his 350-point blow added more. That simulation's win table no longer
+describes him and has been taken out.
 
-| Party | Wins |
-| --- | ---: |
-| Solo, Silver Arrow, a typical 59 | 0% |
-| Solo, Silver Arrow, 4,000 hit points | 10% |
-| Three: arrow-tank, cleric, a second arrow | 90% |
-| Three: arrow-tank, cleric, damage | 26% |
-| Four: arrow-tank, cleric, a second arrow, damage | 98% |
+He was retuned by hand, to fireballs of 300-420 and a 200-point blow. The
+arithmetic, for a level 59 with sanctuary: two fireballs are 150-210 each
+after the halving, about 360 a pulse; his hasted melee lands about one and a
+half blows a round through a hero's defences at about 100 each. That is
+roughly 550 every four seconds. A soloist of about 1,640 hit points lasts some
+four rounds of the seven the Silver Arrow needs, so still loses; one with
+4,000 hit points and potions can win. Three split the fire to under 200 each
+every four seconds, which a cleric keeps up with. The blows now read
+ERADICATE and ANNIHILATE rather than UNSPEAKABLE.
 
 A group wants two Silver Arrows: the arrow's tenth of his health is what ends
 the fight, and the second arrow halves its length. Both cellars refill at each
@@ -441,7 +446,7 @@ reset, so a group can arm itself over two visits.
 Death Mountain requires all eight Triforce shards before its bombed entrance
 can be used. Ganon drops Golden Key `30243`, Death Mountain's guardian key;
 it opens Zelda's room and Ganon's great chest in it (`30648`), which holds the
-Triforce of Power `30408` and the Master Sword. The room's portal `30217`
+final Triforce piece `30408` and the Master Sword. The room's portal `30217`
 leads home.
 
 ### Guardian Fights
@@ -541,7 +546,7 @@ are usable below the immortal level boundary:
 The **Red Ring of Hyrule** (`30579`, level 58, finger) used to be a fifth entry.
 It is found now, not rolled for: it lies in Death Mountain's Red Ring Cellar
 (`30645`), where the NES keeps it, in place of the catalog's plain red ring
-(`30261`, still in the catalog for anyone who holds one). It reduces all
+(`30261`), which was removed in October 2026 -- nobody held one. It reduces all
 incoming damage by 20%, and it gives permanent sanctuary while worn through an
 `F` record (`A 0 0 H`), applied and lifted like the Master Sword's haste.
 

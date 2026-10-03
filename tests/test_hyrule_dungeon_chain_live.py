@@ -163,7 +163,7 @@ class DungeonChainTests(unittest.TestCase):
                 carried = run(hero, "inventory", settle=1.5)
                 self.assertIn("The Triforce", carried, carried)
                 self.assertNotIn("Triforce shard", carried, carried)
-                self.assertNotIn("Triforce of Power", carried, carried)
+                self.assertNotIn("final Triforce piece", carried, carried)
 
                 # COMBINE alone is still the inventory toggle.
                 toggled = run(hero, "combine", settle=1.5)
