@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791063141
+LogO 1791063438
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,17 +15,17 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 53
-Plyd 269313
+Plyd 269591
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
-Room 29212
-HMV  2512 6948 8076 8545 5 1880
-NewGold 105
-NewPlat 316
-NewCopp 798
-NewSilv 276
+Room 4210
+HMV  6948 6948 8589 8589 67 1880
+NewGold 122
+NewPlat 322
+NewCopp 839
+NewSilv 306
 BankCP 196864075
 IntTime 1790989084
 IntTotal 7864075
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 998
+AchKills 999
 AchQuests 136
 AchDeaths 0
 AchExplore 5
@@ -92,12 +92,12 @@ Achv visit-emerald-forest 1790982178
 Achv visit-underdark 1790903709
 Achv visit-new-thalos 1790818086
 Achv visit-korzath-fortress 1790899622
-LastOut  1791047373
-SesLogin 1791045368
-SesDur   2005
-SesExpG  -1
+LastOut  1791063438
+SesLogin 1791063240
+SesDur   198
+SesExpG  554
 SesLvlG  0
-SesKill  31
+SesKill  1
 SesPK    0
 SesDead  0
 SesQuest 0
@@ -107,10 +107,10 @@ QuestPnts 13
 QuestStrk 25
 CasinoWon  51
 CasinoLost 304
-Exp  143023
+Exp  143577
 Act  4261068
 AfBy 3678912
-AfBy2 4360
+AfBy2 4104
 Comm 24576
 Mounted 0
 On_Quest 0
@@ -135,7 +135,7 @@ Color 13 7
 Color 14 11
 Color 15 6
 Color 16 6
-Pos  8
+Pos  4
 Prac 10
 Trai 2
 Save  -3
@@ -192,30 +192,29 @@ Gr 'rom basics'
 Gr 'warrior basics'
 Gr 'warrior default'
 Gr 'warrior guild'
-AffD 'berserk'  51   3 100  17         64          0
-AffD 'berserk'  48   3  10  19         64          0
-AffD 'berserk'  51   3  10  18         64          0
-AffD 'empower'   0  14   0   0          0          0
-AffD 'sanctuary'   0  14   0   0        128          0
-AffD 'haste'   0  14   4   2    2097152          0
-AffD 'fly'   0  14   0   0     524288          0
-AffD 'pass door'   0  14   0   0    1048576          0
-AffD 'protection evil'   0  14   0   0       8192          0
-AffD 'fire shield'   0  14   0   0          0          8
-AffD 'divine protection'   0  14   0   0          0       4096
-AffD 'giant strength'   0  14  15   1          0          0
-AffD 'empower'   0  14  15   3          0          0
-AffD 'empower'   0  14  15   4          0          0
-AffD 'empower'   0  14  11   2          0          0
-AffD 'empower'   0  14  15   5          0          0
-AffD 'empower'   0  14  20  18          0          0
-AffD 'empower'   0  14  20  19          0          0
-AffD 'empower'   0  14 -100  17          0          0
-AffD 'titanic'   0  14 5770  13          0          0
-AffD 'titanic'   0  14 7160  12          0          0
-AffD 'titanic'   0  14 1555  14          0          0
-AffD 'titanic'   0  14  50  16          0          0
-AffD 'nightmare'  46   1 -44  12          0        256
+AffD 'titanic'   0  12  50  16          0          0
+AffD 'titanic'   0  12 1555  14          0          0
+AffD 'titanic'   0  12 7160  12          0          0
+AffD 'titanic'   0  12 5770  13          0          0
+AffD 'empower'   0  12 -100  17          0          0
+AffD 'empower'   0  12  20  19          0          0
+AffD 'empower'   0  12  20  18          0          0
+AffD 'empower'   0  12  15   5          0          0
+AffD 'empower'   0  12  11   2          0          0
+AffD 'empower'   0  12  15   4          0          0
+AffD 'empower'   0  12  15   3          0          0
+AffD 'giant strength'   0  12  15   1          0          0
+AffD 'divine protection'   0  12   0   0          0       4096
+AffD 'fire shield'   0  12   0   0          0          8
+AffD 'protection evil'   0  12   0   0       8192          0
+AffD 'pass door'   0  12   0   0    1048576          0
+AffD 'fly'   0  12   0   0     524288          0
+AffD 'haste'   0  12   4   2    2097152          0
+AffD 'sanctuary'   0  12   0   0        128          0
+AffD 'empower'   0  12   0   0          0          0
+AffD 'berserk'  50   1  10  18         64          0
+AffD 'berserk'  47   1  10  19         64          0
+AffD 'berserk'  51   1 100  17         64          0
 End
 
 #O
@@ -455,10 +454,10 @@ Lev  32
 Cost 23000000
 Cond 100
 Repd 1
-Affect -1 32 -1 -3 22 0 0
-Affect -1 32 -1 -15 13 0 0
-Affect -1 32 -1 -13 12 0 0
 Affect -1 32 -1 -1 5 0 0
+Affect -1 32 -1 -13 12 0 0
+Affect -1 32 -1 -15 13 0 0
+Affect -1 32 -1 -3 22 0 0
 End
 
 #O
@@ -826,8 +825,8 @@ Lev  50
 Cost 20000000
 Cond 91
 Repd 0
-Affect -1 50 -1 -17 14 0 0
 Affect -1 50 -1 -3 2 0 0
+Affect -1 50 -1 -17 14 0 0
 End
 
 #O
@@ -870,9 +869,9 @@ Lev  29
 Cost 30000000
 Cond 100
 Repd 0
-Affect -1 29 -1 -4 1 0 0
-Affect -1 29 -1 -1 1 0 0
 Affect -1 29 -1 -4 2 0 0
+Affect -1 29 -1 -1 1 0 0
+Affect -1 29 -1 -4 1 0 0
 End
 
 #O
@@ -932,7 +931,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 278
+Time 275
 Cost 0
 Cond 100
 Repd 0
@@ -968,7 +967,7 @@ Nest 0
 Wear 12
 Lev  8
 Cost 10000000
-Cond 71
+Cond 61
 Repd 0
 Val  4 5 3 0 0
 End
@@ -993,8 +992,8 @@ Lev  52
 Cost 25600000
 Cond 100
 Repd 0
-Affect -1 52 -1 -9 14 0 0
 Affect -1 52 -1 -1 13 0 0
+Affect -1 52 -1 -9 14 0 0
 End
 
 #O
@@ -1195,6 +1194,18 @@ Cost 50000000
 Cond 100
 Repd 0
 Affect -1 51 -1 2 5 0 0
+End
+
+#O
+Vnum 29211
+Nest 0
+Wear -1
+Lev  51
+Cost 50000000
+Cond 99
+Repd 0
+Affect -1 51 -1 4 23 0 0
+Affect -1 51 -1 20 14 0 0
 End
 
 #STASH
