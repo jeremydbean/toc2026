@@ -33574,3 +33574,42 @@ Sat Oct  3 23:45:10 2026 :: Log Alaric [0]: moved to 16018 (Main Deck of the Roy
 Sat Oct  3 23:45:11 2026 :: Log Alaric [16018]: kill sw
 Sat Oct  3 23:45:21 2026 :: Log Alaric [16018]: wear mace
 Sat Oct  3 23:45:24 2026 :: Log Alaric [16018]: torm
+Sat Oct  3 23:46:19 2026 :: Log Alaric [16018]: scan
+Sat Oct  3 23:46:21 2026 :: Log Alaric [16018]: n
+Sat Oct  3 23:46:21 2026 :: Log Alaric [0]: moved to 16023 (Main Deck)
+Sat Oct  3 23:46:21 2026 :: Log Alaric [16023]: n
+Sat Oct  3 23:46:21 2026 :: Log Alaric [0]: moved to 16028 (Main Deck)
+Sat Oct  3 23:46:22 2026 :: Log Alaric [16028]: scan
+Sat Oct  3 23:46:23 2026 :: Log Alaric [16028]: n
+Sat Oct  3 23:46:23 2026 :: Log Alaric [0]: moved to 16033 (Base of the Mast)
+Sat Oct  3 23:46:24 2026 :: Log Alaric [16033]: kill sw
+Sat Oct  3 23:46:43 2026 :: Sock.sinaddr:  52.22.236.30
+Sat Oct  3 23:46:43 2026 :: EOF encountered on read.
+Sat Oct  3 23:48:15 2026 :: Log Alaric [16033]: l
+Sat Oct  3 23:48:17 2026 :: Log Alaric [16033]: u
+Sat Oct  3 23:48:17 2026 :: Log Alaric [0]: moved to 16078 (The Mast)
+Sat Oct  3 23:48:19 2026 :: Log Alaric [16078]: scan
+Sat Oct  3 23:48:20 2026 :: Log Alaric [16078]: e
+Sat Oct  3 23:48:20 2026 :: Log Alaric [0]: moved to 16079 (Out on the Mast)
+Sat Oct  3 23:48:21 2026 :: Log Alaric [16079]: kill sw
+Sat Oct  3 23:48:27 2026 :: Log Alaric [16079]: torm
+Sat Oct  3 23:49:06 2026 :: Log Alaric [16079]: torm
+Sat Oct  3 23:49:21 2026 :: Log Alaric [16079]: torm
+Sat Oct  3 23:50:36 2026 :: Log Alaric [16079]: scan
+Sat Oct  3 23:50:38 2026 :: Log Alaric [16079]: w
+Sat Oct  3 23:50:38 2026 :: Log Alaric [0]: moved to 16078 (The Mast)
+Sat Oct  3 23:50:39 2026 :: Log Alaric [16078]: scan
+Sat Oct  3 23:50:43 2026 :: Log Alaric [16078]: wo
+Sat Oct  3 23:50:44 2026 :: Log Alaric [16078]: d
+Sat Oct  3 23:50:44 2026 :: Log Alaric [0]: moved to 16033 (Base of the Mast)
+Sat Oct  3 23:50:48 2026 :: Log Alaric [16033]: s
+Sat Oct  3 23:50:48 2026 :: Log Alaric [0]: moved to 16028 (Main Deck)
+Sat Oct  3 23:50:48 2026 :: Log Alaric [16028]: s
+Sat Oct  3 23:50:48 2026 :: Log Alaric [0]: moved to 16023 (Main Deck)
+Sat Oct  3 23:50:49 2026 :: Log Alaric [16023]: s
+Sat Oct  3 23:50:49 2026 :: Log Alaric [0]: moved to 16018 (Main Deck of the Royal Eagle)
+Sat Oct  3 23:50:53 2026 :: Log Alaric [16018]: open down
+Sat Oct  3 23:50:56 2026 :: Log Alaric [16018]: door down
+Sat Oct  3 23:51:01 2026 :: Log Alaric [16018]: wake
+Sat Oct  3 23:51:01 2026 :: Log Alaric [16018]: door down
+Sat Oct  3 23:51:05 2026 :: Log Alaric [16018]: eq
