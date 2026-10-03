@@ -30639,3 +30639,144 @@ Sat Oct  3 19:17:34 2026 :: Log Alaric [4207]: who
 Sat Oct  3 19:17:35 2026 :: Log Alaric [4207]: sc
 Sat Oct  3 19:17:37 2026 :: Log Alaric [4207]: where
 Sat Oct  3 19:17:41 2026 :: Log Alaric [4207]: who
+Sat Oct  3 19:18:00 2026 :: Log Alaric [4207]: who
+Sat Oct  3 19:18:09 2026 :: Log Alaric [4207]: who
+Sat Oct  3 19:18:27 2026 :: Log Alaric [4207]: who
+Sat Oct  3 19:18:29 2026 :: Log Alaric [4207]: who
+Sat Oct  3 19:18:55 2026 :: Log Alaric [4207]: who
+Sat Oct  3 19:18:58 2026 :: Log Trentlin: join warrior
+Sat Oct  3 19:19:15 2026 :: Log Alaric [4207]: sc
+Sat Oct  3 19:19:17 2026 :: Log Alaric [4207]: who
+Sat Oct  3 19:19:24 2026 :: Log Alaric [4207]: score
+Sat Oct  3 19:19:26 2026 :: Log Alaric [4207]: score
+Sat Oct  3 19:19:28 2026 :: Log Alaric [4207]: l
+Sat Oct  3 19:19:32 2026 :: Log Alaric [4207]: tk opal
+Sat Oct  3 19:19:33 2026 :: Log Alaric [4207]: tk opal
+Sat Oct  3 19:19:34 2026 :: Log Alaric [4207]: tk opal
+Sat Oct  3 19:19:42 2026 :: Log Alaric [4207]: r e 3
+Sat Oct  3 19:19:42 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 19:19:42 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 19:19:42 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 19:19:43 2026 :: EOF encountered on read.
+Sat Oct  3 19:19:43 2026 :: Closing link to Trentlin.
+Sat Oct  3 19:19:43 2026 :: Log Alaric [2427]: s
+Sat Oct  3 19:19:43 2026 :: Log Alaric [0]: moved to 2428 (Main Processional.)
+Sat Oct  3 19:19:44 2026 :: Log Alaric [2428]: s
+Sat Oct  3 19:19:44 2026 :: Log Alaric [0]: moved to 2429 (Bridge of the Mermaids.)
+Sat Oct  3 19:19:45 2026 :: Log Alaric [2429]: s
+Sat Oct  3 19:19:45 2026 :: Log Alaric [0]: moved to 2430 (Main Processional.)
+Sat Oct  3 19:19:45 2026 :: Log Alaric [2430]: s
+Sat Oct  3 19:19:45 2026 :: Log Alaric [0]: moved to 2431 (Inside the Southern Gates of Dresden.)
+Sat Oct  3 19:19:46 2026 :: Log Alaric [2431]: s
+Sat Oct  3 19:19:48 2026 :: Log Alaric [2431]: os
+Sat Oct  3 19:19:48 2026 :: Log Alaric [2431]: s
+Sat Oct  3 19:19:48 2026 :: Log Alaric [0]: moved to 2432 (Outside the Southern Gates of Dresden.)
+Sat Oct  3 19:19:49 2026 :: Log Alaric [2432]: s
+Sat Oct  3 19:19:49 2026 :: Log Alaric [0]: moved to 3505 (The Trail to Miden'nir)
+Sat Oct  3 19:19:49 2026 :: Log Alaric [3505]: s
+Sat Oct  3 19:19:49 2026 :: Log Alaric [0]: moved to 3507 (A Burned Cart)
+Sat Oct  3 19:19:50 2026 :: Loading Trentlin's playerfile
+Sat Oct  3 19:19:50 2026 :: Log Alaric [3507]: s
+Sat Oct  3 19:19:50 2026 :: Log Alaric [0]: moved to 3510 (A Crossroads)
+Sat Oct  3 19:19:52 2026 :: Log Alaric [3510]: s
+Sat Oct  3 19:19:52 2026 :: Log Alaric [0]: moved to 3516 (Muddy Ground)
+Sat Oct  3 19:19:52 2026 :: Log Alaric [3516]: d
+Sat Oct  3 19:19:52 2026 :: Log Alaric [0]: moved to 19 (Soggy Cave)
+Sat Oct  3 19:19:53 2026 :: Trentlin@24.2.118.125 reconnected.
+Sat Oct  3 19:19:53 2026 :: Log Alaric [19]: s
+Sat Oct  3 19:19:53 2026 :: Log Alaric [0]: moved to 2801 (Wastedump)
+Sat Oct  3 19:19:53 2026 :: Log Alaric [2801]: s
+Sat Oct  3 19:19:53 2026 :: Log Alaric [0]: moved to 2803 (Troll's Living Room)
+Sat Oct  3 19:19:53 2026 :: Log Alaric [2803]: s
+Sat Oct  3 19:19:53 2026 :: Log Alaric [0]: moved to 2805 (Troll's Bedroom)
+Sat Oct  3 19:19:54 2026 :: Log Alaric [2805]: s
+Sat Oct  3 19:19:58 2026 :: Log Alaric [2805]: s
+Sat Oct  3 19:19:58 2026 :: Log Alaric [2805]: s
+Sat Oct  3 19:20:00 2026 :: Log Alaric [2805]: get opal bed
+Sat Oct  3 19:20:02 2026 :: Log Alaric [2805]: recal
+Sat Oct  3 19:20:02 2026 :: Log Alaric [0]: moved to 4207 (Before the Altar.)
+Sat Oct  3 19:20:33 2026 :: Log Alaric [4207]: where
+Sat Oct  3 19:20:37 2026 :: Log Alaric [4207]: i
+Sat Oct  3 19:20:46 2026 :: Log Alaric [4207]: score
+Sat Oct  3 19:20:47 2026 :: Log Alaric [4207]: l
+Sat Oct  3 19:20:55 2026 :: Log Alaric [4207]: give opal trentlin
+Sat Oct  3 19:20:57 2026 :: Log Alaric [4207]: who
+Sat Oct  3 19:20:58 2026 :: Log Alaric [4207]: where
+Sat Oct  3 19:20:58 2026 :: Log Alaric [4207]: e
+Sat Oct  3 19:20:58 2026 :: Log Alaric [0]: moved to 4202 (Halls of Healing.)
+Sat Oct  3 19:20:59 2026 :: Log Alaric [4202]: e
+Sat Oct  3 19:20:59 2026 :: Log Alaric [0]: moved to 4201 (Entrance to the Temple of Devota.)
+Sat Oct  3 19:21:00 2026 :: Log Alaric [4201]: e
+Sat Oct  3 19:21:00 2026 :: Log Alaric [0]: moved to 2427 (Main Processional.)
+Sat Oct  3 19:21:01 2026 :: Log Alaric [2427]: n
+Sat Oct  3 19:21:01 2026 :: Log Alaric [0]: moved to 2404 (Southern Oak Tree Square.)
+Sat Oct  3 19:21:01 2026 :: Log Alaric [2404]: n
+Sat Oct  3 19:21:01 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 19:21:01 2026 :: Log Alaric [2401]: e
+Sat Oct  3 19:21:01 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sat Oct  3 19:21:02 2026 :: Log Alaric [2403]: e
+Sat Oct  3 19:21:02 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sat Oct  3 19:21:03 2026 :: Log Alaric [2420]: e
+Sat Oct  3 19:21:03 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sat Oct  3 19:21:04 2026 :: Log Alaric [2421]: e
+Sat Oct  3 19:21:04 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sat Oct  3 19:21:05 2026 :: Log Alaric [2422]: e
+Sat Oct  3 19:21:05 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sat Oct  3 19:21:07 2026 :: Log Alaric [2423]: scan
+Sat Oct  3 19:21:10 2026 :: Log Alaric [2423]: e
+Sat Oct  3 19:21:10 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sat Oct  3 19:21:11 2026 :: Log Alaric [2424]: give opal trentlin
+Sat Oct  3 19:21:11 2026 :: Log Alaric [2424]: e
+Sat Oct  3 19:21:11 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sat Oct  3 19:21:12 2026 :: Log Alaric [2425]: w
+Sat Oct  3 19:21:12 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sat Oct  3 19:21:12 2026 :: Log Alaric [2424]: w
+Sat Oct  3 19:21:12 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sat Oct  3 19:21:13 2026 :: Log Alaric [2423]: scan
+Sat Oct  3 19:21:14 2026 :: Log Alaric [2423]: e
+Sat Oct  3 19:21:14 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sat Oct  3 19:21:15 2026 :: Log Alaric [2424]: scan
+Sat Oct  3 19:21:15 2026 :: Log Alaric [2424]: e
+Sat Oct  3 19:21:15 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sat Oct  3 19:21:16 2026 :: Log Alaric [2425]: scan
+Sat Oct  3 19:21:17 2026 :: Log Alaric [2425]: n
+Sat Oct  3 19:21:17 2026 :: Log Alaric [0]: moved to 4401 (Before Gates to the Citadel of War.)
+Sat Oct  3 19:21:18 2026 :: Log Alaric [4401]: where
+Sat Oct  3 19:21:20 2026 :: Log Alaric [4401]: n
+Sat Oct  3 19:21:20 2026 :: Log Alaric [0]: moved to 4402 (Tunnel to courtyard.)
+Sat Oct  3 19:21:21 2026 :: Log Alaric [4402]: n
+Sat Oct  3 19:21:21 2026 :: Log Alaric [0]: moved to 4403 (Courtyard.)
+Sat Oct  3 19:21:23 2026 :: Log Alaric [4403]: scan
+Sat Oct  3 19:21:25 2026 :: Log Alaric [4403]: n
+Sat Oct  3 19:21:25 2026 :: Log Alaric [0]: moved to 4411 (Center of Courtyard.)
+Sat Oct  3 19:21:27 2026 :: Log Alaric [4411]: give opal trentlin
+Sat Oct  3 19:21:29 2026 :: Log Alaric [4411]: s
+Sat Oct  3 19:21:29 2026 :: Log Alaric [0]: moved to 4403 (Courtyard.)
+Sat Oct  3 19:21:29 2026 :: Log Alaric [4403]: s
+Sat Oct  3 19:21:29 2026 :: Log Alaric [0]: moved to 4402 (Tunnel to courtyard.)
+Sat Oct  3 19:21:30 2026 :: Log Alaric [4402]: s
+Sat Oct  3 19:21:30 2026 :: Log Alaric [0]: moved to 4401 (Before Gates to the Citadel of War.)
+Sat Oct  3 19:21:30 2026 :: Log Alaric [4401]: s
+Sat Oct  3 19:21:30 2026 :: Log Alaric [0]: moved to 2425 (Gate to Citadel of War on Battle Road)
+Sat Oct  3 19:21:31 2026 :: Log Alaric [2425]: w
+Sat Oct  3 19:21:31 2026 :: Log Alaric [0]: moved to 2424 (Battle Road)
+Sat Oct  3 19:21:31 2026 :: Log Alaric [2424]: w
+Sat Oct  3 19:21:31 2026 :: Log Alaric [0]: moved to 2423 (Battle Road)
+Sat Oct  3 19:21:32 2026 :: Log Alaric [2423]: w
+Sat Oct  3 19:21:32 2026 :: Log Alaric [0]: moved to 2422 (Battle Road)
+Sat Oct  3 19:21:32 2026 :: Log Alaric [2422]: w
+Sat Oct  3 19:21:32 2026 :: Log Alaric [0]: moved to 2421 (Battle Road)
+Sat Oct  3 19:21:32 2026 :: Log Alaric [2421]: w
+Sat Oct  3 19:21:32 2026 :: Log Alaric [0]: moved to 2420 (Battle Road)
+Sat Oct  3 19:21:32 2026 :: Log Alaric [2420]: w
+Sat Oct  3 19:21:32 2026 :: Log Alaric [0]: moved to 2403 (Eastern Oak Tree Square.)
+Sat Oct  3 19:21:33 2026 :: Log Alaric [2403]: w
+Sat Oct  3 19:21:33 2026 :: Log Alaric [0]: moved to 2401 (Center of Oak Tree Square.)
+Sat Oct  3 19:21:36 2026 :: Log Alaric [2401]: score
+Sat Oct  3 19:21:36 2026 :: Log Alaric [2401]: who
+Sat Oct  3 19:22:08 2026 :: Log Alaric [2401]: gos Did you happen to get a mud school diploma?
+Sat Oct  3 19:22:10 2026 :: Log Alaric [2401]: who
+Sat Oct  3 19:22:11 2026 :: Log Alaric [2401]: score
+Sat Oct  3 19:22:12 2026 :: Log Alaric [2401]: score
+Sat Oct  3 19:22:30 2026 :: Sock.sinaddr:  5.161.73.160
+Sat Oct  3 19:22:31 2026 :: EOF encountered on read.

@@ -1,31 +1,31 @@
 #PLAYER
 Name Trentlin~
 Id   18408
-LogO 1791054913
+LogO 1791055243
 Vers 4
-Prom < %h/%H %v/%V %e tnl>%c~
+Prom code%c~
 Ignoring  ~
 Race dwarf~
 Sex  1
 Cla  3
-Gui  11
+Gui  3
 Psionic  0
 PsiGrant 0
 PsiSpec ~
 PsiKnown ~
 Cast none
 Levl 4
-Plyd 972
+Plyd 1302
 ListRemorts ~
 NumRemorts 0
 Note 0
 Scro 22
-Room 3712
-HMV  56 56 128 130 114 114
-NewGold 0
-NewPlat 0
-NewCopp 14
-NewSilv 0
+Room 2423
+HMV  56 56 130 130 89 114
+NewGold 99
+NewPlat 4
+NewCopp 18
+NewSilv 1
 BankCP 0
 IntTime 1791054012
 IntTotal 0
@@ -34,7 +34,7 @@ SavedOnce 1
 Corpses	0
 PkRec 0
 PkGiv 0
-AchKills 13
+AchKills 18
 AchQuests 0
 AchDeaths 0
 AchExplore 0
@@ -43,7 +43,9 @@ AchCompass 0
 AchTriforce 0
 Achv first-kill 1791054159
 Achv visit-mud-school 1791053973
-LastOut  0
+Achv carry-one-platinum 1791054979
+Achv four-denominations 1791055231
+LastOut  1791055183
 SesLogin 0
 SesDur   0
 SesExpG  0
@@ -52,7 +54,7 @@ SesKill  0
 SesPK    0
 SesDead  0
 SesQuest 0
-Exp  9131
+Exp  10489
 Act  65740
 AfBy 512
 Comm 24576
@@ -83,7 +85,7 @@ Pos  8
 Prac 8
 Trai 1
 Save  -8
-Alig  0
+Alig  -4
 Hit   9
 Dam   2
 ACs 71 70 70 79
@@ -95,7 +97,7 @@ Pnts 0
 TSex 1
 LLev 0
 HMVP 56 130 118
-Cond 0 31 31
+Cond 0 26 26
 Sk 1 'armor'
 Sk 1 'burning hands'
 Sk 1 'chill touch'
@@ -115,13 +117,15 @@ Sk 25 'mace'
 Sk 35 'polearm'
 Sk 1 'shield block'
 Sk 30 'spear'
-Sk 80 'sword'
+Sk 81 'sword'
 Sk 30 'whip'
 Sk 1 'bash'
 Sk 1 'disarm'
+Sk 1 'heroic grip'
 Sk 1 'kick'
 Sk 1 'parry'
 Sk 1 'rescue'
+Sk 1 'second attack'
 Sk 1 'scrolls'
 Sk 1 'wands'
 Sk 62 'recall'
@@ -130,9 +134,10 @@ Gr 'mage basics'
 Gr 'warrior basics'
 Gr 'mage default'
 Gr 'warrior default'
-AffD 'armor'   0  12 -20  17          0          0
-AffD 'bless'  19  50  -7  24          0          0
-AffD 'bless'  18  50   7  18          0          0
+Gr 'warrior guild'
+AffD 'armor'   0   7 -20  17          0          0
+AffD 'bless'  17  45  -7  24          0          0
+AffD 'bless'  18  45   7  18          0          0
 End
 
 #O
@@ -142,7 +147,7 @@ Wear 0
 Cost 0
 Cond 100
 Repd 0
-Val  0 0 183 0 0
+Val  0 0 178 0 0
 End
 
 #O
@@ -168,7 +173,7 @@ Vnum 3702
 Nest 0
 Wear 16
 Cost 0
-Cond 99
+Cond 98
 Repd 0
 End
 

@@ -1,7 +1,7 @@
 #PLAYER
 Name Alaric~
 Id   22012
-LogO 1791054848
+LogO 1791055167
 Vers 4
 Prom ~
 Ignoring ~
@@ -15,15 +15,15 @@ PsiSpec ~
 PsiKnown torment,telekinesis,mindbar,mind leech~
 Cast none
 Levl 52
-Plyd 261056
+Plyd 261375
 ListRemorts ~
 NumRemorts 0
 Note 1790386686
 Scro 22
 Room 4207
-HMV  840 1129 1432 1432 311 311
+HMV  979 1129 1432 1432 311 311
 NewGold 136
-NewPlat 178
+NewPlat 173
 NewCopp 196
 NewSilv 184
 BankCP 196864075
@@ -938,7 +938,7 @@ End
 Vnum 48
 Nest 0
 Wear -1
-Time 415
+Time 410
 Cost 0
 Cond 100
 Repd 0
