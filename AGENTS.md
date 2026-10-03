@@ -545,6 +545,13 @@ whoever pushes it; arming that is a gameplay decision, not a repair.
 - Explain intentional warning/info findings with evidence instead of adding a
   silent allowlist.
 
+**Retiring an object players can hold needs a row in `retired_objects`**
+(`src/save.c`): the retired vnum and what replaces it. Without one,
+`fread_obj` drops the item at the holder's next login with a "bad vnum"
+bug line -- which is how Alaric lost four satchels of bombs when the
+Hyrule NES pass retired 30542. `tests/test_retired_objects.py` checks
+every row points from a vnum that is gone to one that exists.
+
 **Check that the generator still reproduces the file before regenerating.**
 It had drifted: 197 rooms in `area/hyrule.are` carried recall and always-lit
 flags that had been applied to the generated output by hand, and

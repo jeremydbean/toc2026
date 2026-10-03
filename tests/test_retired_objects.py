@@ -1,0 +1,82 @@
+"""An object a generator retires is swapped for its replacement at login.
+
+The Hyrule NES pass took the shops' satchel of bombs (30542) out of the
+world, and the next time Alaric logged in the game dropped the four he
+carried with a "Fread_obj: bad vnum" line each. retired_objects in
+src/save.c maps a retired vnum to what replaced it, and the swapped item
+takes the replacement's own stats rather than the saved ones.
+"""
+from __future__ import annotations
+
+import re
+import sys
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from live_mud import LiveMud, create_character, login, patch_player_file, skip_reason  # noqa: E402
+from webadmin.area_parser import AreaParser  # noqa: E402
+
+SKIP = skip_reason()
+PASSWORD = "Zretire1"
+
+
+def retired_table() -> dict[int, int]:
+    save = (ROOT / "src" / "save.c").read_text(encoding="latin-1")
+    table = save.split("} retired_objects[] =", 1)[1].split("};", 1)[0]
+    return {int(a): int(b) for a, b in re.findall(r"\{\s*(\d+),\s*(\d+)\s*\}", table)}
+
+
+class RetiredObjectTableTests(unittest.TestCase):
+    def test_every_row_points_from_a_gone_vnum_to_a_live_one(self) -> None:
+        parser = AreaParser(ROOT / "area")
+        parser.parse_all()
+        table = retired_table()
+        self.assertIn(30542, table)
+        for retired, replacement in table.items():
+            self.assertNotIn(retired, parser.objects,
+                             f"{retired} still exists, so its row never fires")
+            self.assertIn(replacement, parser.objects,
+                          f"{retired} would be swapped for a missing {replacement}")
+
+
+@unittest.skipIf(SKIP is not None, SKIP or "")
+class RetiredObjectLiveTests(unittest.TestCase):
+    def test_a_retired_satchel_comes_back_as_bombs(self) -> None:
+        with LiveMud() as mud:
+            with mud.connect(timeout=120) as client:
+                create_character(client, "Zretiree", PASSWORD)
+                client.send("quit")
+                self.assertTrue(client.wait_closed())
+            patch_player_file(mud, "Zretiree", Room=4207)
+
+            # Two satchels as an old save holds them: level and cost of
+            # their own, which must not stick to the bombs.
+            path = mud.player_dir / "Zretiree"
+            text = path.read_text(encoding="latin-1")
+            satchel = ("#O\nVnum 30542\nNest 0\nWear -1\nLev  5\nCost 20\n"
+                       "Cond 100\nRepd 0\nEnd\n\n")
+            text = text.replace("#END", satchel * 2 + "#END", 1)
+            path.write_text(text, encoding="latin-1")
+
+            with mud.connect(timeout=120) as client:
+                login(client, "Zretiree", PASSWORD)
+                client.drain(0.5)
+                mark = len(client.transcript)
+                client.send("inventory")
+                client.drain(1.5)
+                shown = client.transcript[mark:]
+                self.assertIn("four bombs", shown, shown)
+                self.assertNotIn("satchel", shown.lower(), shown)
+
+            log = mud.root / "log" / "toc.log"
+            self.assertTrue(log.is_file(), log)
+            written = log.read_text(encoding="latin-1", errors="replace")
+            self.assertIn("retired object 30542 swapped for 30695", written)
+            self.assertNotIn("bad vnum 30542", written)
+
+
+if __name__ == "__main__":
+    unittest.main()

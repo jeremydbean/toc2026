@@ -16,6 +16,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   Undead Cleric (up to 45,000) were broken the same way. The fields are
   `int` now, and the area loader stopped clamping a mobile's hit dice at
   32,767. `tests/test_big_hit_points.py`.
+- **A retired item is swapped for its replacement at login, not dropped.**
+  The Hyrule NES pass took the shops' satchel of bombs (30542) out of the
+  world, and Alaric's four were dropped the next time he logged in, with a
+  "bad vnum" line each. `retired_objects` in `src/save.c` maps a retired
+  vnum to what replaced it -- the satchel to four bombs, Ganon's old Blue
+  Ring to the Blue Ring of Hyrule -- and the swapped item takes the
+  replacement's own stats. Add a row whenever an item players can hold is
+  removed. `tests/test_retired_objects.py`.
 - **The report backlog is archived, and stays archived.** Every bug and
   typo report on file has been worked through, so the old hosts' files
   are kept as `area/bugs.txt.20260929-151146` and

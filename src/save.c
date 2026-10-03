@@ -2235,6 +2235,60 @@ void fread_pet( CHAR_DATA *ch, FILE *fp )
 
 }
 
+/*
+ * Objects a generator has retired, and what a character holding one gets
+ * instead. Without this an item whose vnum is gone is dropped at login
+ * with a "bad vnum" bug line: the Hyrule NES pass retired the shops'
+ * satchel of bombs (30542) and Alaric lost the four he carried. Add a
+ * row whenever an object players can hold is taken out of the world.
+ */
+static const struct
+{
+    int retired;
+    int replacement;
+} retired_objects[] =
+{
+    { 30542, 30695 },   /* satchel of bombs  -> four bombs             */
+    { 30578, 30551 }    /* Ganon's Blue Ring -> the Blue Ring of Hyrule */
+};
+
+static int retired_object_replacement( int vnum )
+{
+    size_t i;
+
+    for ( i = 0; i < sizeof(retired_objects) / sizeof(retired_objects[0]); i++ )
+	if ( retired_objects[i].retired == vnum )
+	    return retired_objects[i].replacement;
+    return 0;
+}
+
+/* A swapped object takes the replacement's own stats, not the saved ones
+   that belonged to the retired item. */
+static void reset_swapped_object( OBJ_DATA *obj )
+{
+    OBJ_INDEX_DATA *idx = obj->pIndexData;
+    int i;
+
+    if ( idx == NULL )
+	return;
+    if ( obj->name != idx->name )
+    { free_string( obj->name );        obj->name        = idx->name; }
+    if ( obj->short_descr != idx->short_descr )
+    { free_string( obj->short_descr ); obj->short_descr = idx->short_descr; }
+    if ( obj->description != idx->description )
+    { free_string( obj->description ); obj->description = idx->description; }
+    if ( idx->level != -1 )
+	obj->level   = idx->level;
+    obj->item_type   = idx->item_type;
+    obj->extra_flags = idx->extra_flags;
+    obj->extra_flags2 = idx->extra_flags2;
+    obj->wear_flags  = idx->wear_flags;
+    obj->weight      = idx->weight;
+    obj->cost        = idx->cost;
+    for ( i = 0; i < 5; i++ )
+	obj->value[i] = idx->value[i];
+}
+
 void fread_obj( CHAR_DATA *ch, FILE *fp )
 {
     static OBJ_DATA obj_zero;
@@ -2247,12 +2301,14 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
     bool first;
     bool new_format;  /* to prevent errors */
     bool make_new;    /* update object */
+    bool swapped;     /* a retired vnum, loaded as its replacement */
 
     fVnum = false;
     obj = NULL;
     first = true;  /* used to counter fp offset */
     new_format = false;
     make_new = false;
+    swapped = false;
 
     word   = feof( fp ) ? "End" : fread_word( fp );
     if (!str_cmp(word,"Vnum" ))
@@ -2261,6 +2317,18 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 	first = false;  /* fp will be in right place */
 
 	vnum = fread_number( fp );
+	if ( get_obj_index( vnum ) == NULL
+	&&   retired_object_replacement( vnum ) != 0
+	&&   get_obj_index( retired_object_replacement( vnum ) ) != NULL )
+	{
+	    snprintf( log_buf, 2 * MAX_INPUT_LENGTH,
+		"Fread_obj: retired object %d swapped for %d on %s.",
+		vnum, retired_object_replacement( vnum ),
+		ch != NULL && ch->name != NULL ? ch->name : "(nobody)" );
+	    log_string( log_buf );
+	    vnum = retired_object_replacement( vnum );
+	    swapped = true;
+	}
 	if (  get_obj_index( vnum )  == NULL )
 	{
 	    bug( "Fread_obj: bad vnum %d.", vnum );
@@ -2448,6 +2516,8 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 			obj->value[1] = obj->value[0];
 			obj->value[2] = obj->value[0];
 		    }
+		    if ( swapped )
+			reset_swapped_object( obj );
 		    if (make_new)
 		    {
 			int wear;
@@ -2633,6 +2703,12 @@ void fread_obj( CHAR_DATA *ch, FILE *fp )
 		int vnum;
 
 		vnum = fread_number( fp );
+		if ( get_obj_index( vnum ) == NULL
+		&&   retired_object_replacement( vnum ) != 0 )
+		{
+		    vnum = retired_object_replacement( vnum );
+		    swapped = true;
+		}
 		if ( ( obj->pIndexData = get_obj_index( vnum ) ) == NULL )
 		    bug( "Fread_obj: bad vnum %d.", vnum );
 		else
